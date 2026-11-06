@@ -1,0 +1,2623 @@
+{
+  "schema_version": 1,
+  "count": 149,
+  "source_repository": "montrealroots/SLATE",
+  "source_tree_sha": "acf1874da57732c9f9408bae8b7846aa2e34f153",
+  "source_path": "src/person/genres/genres.json",
+  "source_blob_sha": "82ff633d4e2b012af7c9633539adf9f085bb721d",
+  "records": [
+    {
+      "id": "absurdist",
+      "name": "Absurdist",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Meaning and orderly explanations remain unstable or elusive.",
+      "mechanic_specification": "Track intentional broken expectations and unresolved meaning; distinguish deliberate absurdity from continuity mistakes.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/absurdist_2",
+          "title": "Oxford Learner's Dictionaries: absurdist (adjective)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "action",
+      "name": "Action",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Physical conflict and urgent activity carry substantial story weight.",
+      "mechanic_specification": "Track action objectives, geography, cause and effect, preparation, and stunt or animation requirements.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/english/action-movie",
+          "title": "Cambridge Dictionary: action movie"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "action-comedy",
+      "name": "Action Comedy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Action and humor jointly shape the story.",
+      "mechanic_specification": "Connect physical set pieces with comic setup and payoff; prevent duplicate action bonuses.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://dictionary.langeek.co/en/word/221005?entry=action+comedy",
+          "title": "LanGeek Dictionary, entry 'Action comedy' (noun)"
+        },
+        {
+          "url": "https://www.encyclopedia.com/arts/encyclopedias-almanacs-transcripts-and-maps/action-and-adventure-films",
+          "title": "Yvonne Tasker, 'Action and Adventure Films', Schirmer Encyclopedia of Film (ed. Barry Keith Grant, 2007), hosted on Encyclopedia.com"
+        },
+        {
+          "url": "https://www.encyclopedia.com/arts/encyclopedias-almanacs-transcripts-and-maps/action-and-adventure-films",
+          "title": "Yvonne Tasker, 'Action and Adventure Films', Schirmer Encyclopedia of Film (ed. Barry Keith Grant, 2007), hosted on Encyclopedia.com"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "adventure",
+      "name": "Adventure",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A journey, discovery, or risky undertaking drives the story.",
+      "mechanic_specification": "Track destinations, obstacles, discoveries, and changing objectives without restricting the setting to historical periods.",
+      "legacy_parent_label": "Adventure",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026005.json",
+          "title": "Library of Congress Genre/Form Terms: Action and adventure films (gf2011026005)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "alternate-history",
+      "name": "Alternate History",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The story explores a world where history diverged.",
+      "mechanic_specification": "Record the divergence and propagate its consequences through institutions, technology, and character histories.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2019026156.json",
+          "title": "Library of Congress Genre/Form Terms: Alternative histories (Motion pictures) (gf2019026156)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "animated",
+      "name": "Animated",
+      "classification": "medium",
+      "working_definition": "Movement is created through animation techniques.",
+      "mechanic_specification": "Route to animation production methods rather than assign a narrative genre score.",
+      "legacy_parent_label": "Animation",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026049.json",
+          "title": "Library of Congress Genre/Form Terms: Animated films (gf2011026049)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "anime",
+      "name": "Anime",
+      "classification": "animation tradition/style",
+      "working_definition": "Animation uses traditions associated with Japanese animation.",
+      "mechanic_specification": "Choose specific visual and storytelling conventions without inferring creator nationality or one universal style.",
+      "legacy_parent_label": "Animation",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2023026046.json",
+          "title": "Library of Congress Genre/Form Terms: Anime (Motion pictures) (gf2023026046)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "anthology",
+      "name": "Anthology",
+      "classification": "structure",
+      "working_definition": "Distinct stories share a framing concept or connection.",
+      "mechanic_specification": "Create separate story units and shared links; preserve independent casts and continuity boundaries.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026051.json",
+          "title": "Library of Congress Genre/Form Terms: Anthology films (gf2011026051)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "apocalyptic",
+      "name": "Apocalyptic",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A civilization-threatening catastrophe is central.",
+      "mechanic_specification": "Define whether catastrophe is approaching, occurring, or recently occurred; track escalation and survival conditions.",
+      "legacy_parent_label": "Science fiction",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026808.json",
+          "title": "Library of Congress Genre/Form Terms: Apocalyptic films (gf2011026808)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "art-house",
+      "name": "Art House",
+      "classification": "artistic positioning",
+      "working_definition": "A project prioritizes distinctive artistic expression.",
+      "mechanic_specification": "Set formal intentions and audience positioning; do not equate commercial popularity with artistic achievement.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/art%20film",
+          "title": "Merriam-Webster Dictionary: art film"
+        },
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/english/art-house",
+          "title": "Cambridge Dictionary: art house"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "avant-garde",
+      "name": "Avant-Garde",
+      "classification": "movement/approach",
+      "working_definition": "The work challenges established expressive conventions.",
+      "mechanic_specification": "Support intentional departures in image, sound, narrative, and presentation with explicit creative aims.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026235.json",
+          "title": "Library of Congress Genre/Form Terms: Experimental films (gf2011026235)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "backstage-musical",
+      "name": "Backstage Musical",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Musical performance and the work of putting on a show drive events.",
+      "mechanic_specification": "Connect rehearsal, performance, and offstage story; derive song, dance, and staging needs.",
+      "legacy_parent_label": "Musical",
+      "source_references": [
+        {
+          "url": "https://kbzf.publia.org/kbzf/article/download/47/31/34",
+          "title": "Agnieszka Zagozdzon, 'Backstage am Broadway: das Filmmusical 42ND STREET', Kieler Beiträge zur Filmmusikforschung 14 (2019), abstract"
+        },
+        {
+          "url": "https://kbzf.publia.org/kbzf/article/download/165/142",
+          "title": "Julia Steimle, 'Stage-Worlds and World-Stages in Hollywood Musicals', Kieler Beiträge zur Filmmusikforschung 6 (2010)"
+        },
+        {
+          "url": "https://journals.ed.ac.uk/music-ology-eca/article/view/5697",
+          "title": "Natasha Anderson, 'Narrative and Number in Busby Berkeley's Footlight Parade', Music-ology (University of Edinburgh) vol. 1 (2020), abstract"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "biker",
+      "name": "Biker",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Motorcycle culture and its participants are central.",
+      "mechanic_specification": "Track motorcycle action and social context; require vehicles and safety support only for scenes that use them.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026407.json",
+          "title": "Library of Congress Genre/Form Terms: Motorcycle films (gf2011026407)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "biographical",
+      "name": "Biographical",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The story dramatizes a real person's life.",
+      "mechanic_specification": "Track researched events, invented scenes, chronology, and historical departures separately.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026089.json",
+          "title": "Library of Congress Genre/Form Terms: Biographical films (gf2011026089)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "black-comedy",
+      "name": "Black Comedy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Comedy draws on disturbing, taboo, or painful situations.",
+      "mechanic_specification": "Model intended comic targets, tonal context, and audience response without generic tragedy bonuses.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026190.json",
+          "title": "Library of Congress Genre/Form Terms: Dark comedy films (gf2011026190)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "blaxploitation",
+      "name": "Blaxploitation",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The project draws on a historically situated Black-centered exploitation-film tradition.",
+      "mechanic_specification": "Document historical context and selected conventions; avoid translating racial identity into ability or behavior.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026092.json",
+          "title": "Library of Congress Genre/Form Terms: Blaxploitation films (gf2011026092)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "body-horror",
+      "name": "Body Horror",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Bodily transformation or violation is central to the horror.",
+      "mechanic_specification": "Specify transformations, embodiment rules, effects method, and continuity across appearances.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2020026051.json",
+          "title": "Library of Congress Genre/Form Terms: Body horror films (gf2020026051)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "buddy-comedy",
+      "name": "Buddy Comedy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A central relationship generates comedy through contrast and cooperation.",
+      "mechanic_specification": "Track the pair's contrasting aims, relationship changes, and shared comic payoffs.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://dictionary.langeek.co/en/word/221006?entry=buddy+comedy",
+          "title": "LanGeek Dictionary, entry 'Buddy comedy' (noun)"
+        },
+        {
+          "url": "https://sk.sagepub.com/ency/edvol/embed/masculinities/chpt/buddy-films",
+          "title": "Philippa Gates, 'Buddy Films', in American Masculinities: A Historical Encyclopedia (SAGE), doi:10.4135/9781412956369.n36, opening paragraph"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "buddy-cop",
+      "name": "Buddy Cop",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A policing partnership drives action, investigation, and interpersonal friction.",
+      "mechanic_specification": "Connect partner dynamics to investigative choices and action; avoid counting buddy/action effects twice.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://www.acmi.net.au/stories-and-ideas/rush-hour-words/",
+          "title": "ACMI (Australian Centre for the Moving Image), Stories & Ideas: Maria Lewis, 'Rush Hour – \"Do you understand the words that are coming out of my mouth?!\"' (1 Nov 2020)"
+        },
+        {
+          "url": "https://www.acmi.net.au/stories-and-ideas/rush-hour-words/",
+          "title": "ACMI (Australian Centre for the Moving Image), Stories & Ideas: Maria Lewis, 'Rush Hour – \"Do you understand the words that are coming out of my mouth?!\"' (1 Nov 2020)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "caper",
+      "name": "Caper",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "An elaborate scheme or theft is presented with playful complication.",
+      "mechanic_specification": "Track plan, specialist roles, setbacks, and reversals with a lighter tonal intention.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026108.json",
+          "title": "Library of Congress Genre/Form Terms: Caper films (gf2011026108)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "chanbara",
+      "name": "Chanbara",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Sword combat is a major organizing element of a Japanese period-action story.",
+      "mechanic_specification": "Track combat staging, period setting, choreography, and appropriate research without requiring every scene to fight.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026553.json",
+          "title": "Library of Congress Genre/Form Terms: Samurai films (gf2011026553)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "chase",
+      "name": "Chase",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Pursuit structures the story.",
+      "mechanic_specification": "Track pursuer knowledge, route, distance, obstacles, and changing initiative.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026120.json",
+          "title": "Library of Congress Genre/Form Terms: Chase films (gf2011026120)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "childrens",
+      "name": "Children's",
+      "classification": "audience",
+      "working_definition": "The intended audience is children.",
+      "mechanic_specification": "Specify audience age range, clarity, themes, and presentation; do not assume animation.",
+      "legacy_parent_label": "Family",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026123.json",
+          "title": "Library of Congress Genre/Form Terms: Children's films (gf2011026123)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "christmas",
+      "name": "Christmas",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Christmas meaning, timing, or traditions shape the story.",
+      "mechanic_specification": "Connect selected traditions and date to character decisions without treating observance as universal.",
+      "legacy_parent_label": "Family",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026131.json",
+          "title": "Library of Congress Genre/Form Terms: Christmas films (gf2011026131)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "comedy",
+      "name": "Comedy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Humor is a central intended response.",
+      "mechanic_specification": "Track comic setups, reversals, timing, viewpoint, and payoffs rather than count jokes alone.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026147.json",
+          "title": "Library of Congress Genre/Form Terms: Comedy films (gf2011026147)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "coming-of-age",
+      "name": "Coming Of Age",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A character undergoes a formative transition toward greater maturity or independence.",
+      "mechanic_specification": "Track starting beliefs, formative choices, relationships, and earned change.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026148.json",
+          "title": "Library of Congress Genre/Form Terms: Coming-of-age films (gf2011026148)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "concert-film",
+      "name": "Concert Film",
+      "classification": "format",
+      "working_definition": "A filmed musical performance is the central subject.",
+      "mechanic_specification": "Use setlists, performance coverage, sound capture, audience coverage, and edit continuity.",
+      "legacy_parent_label": "Documentary",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026161.json",
+          "title": "Library of Congress Genre/Form Terms: Concert films (gf2011026161)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "conspiracy-thriller",
+      "name": "Conspiracy Thriller",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Hidden coordinated activity creates danger and uncertainty.",
+      "mechanic_specification": "Track evidence, competing explanations, institutional actors, and what each character knows.",
+      "legacy_parent_label": "Thriller",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2014027197.json",
+          "title": "Library of Congress Genre/Form Terms: Conspiracy films (gf2014027197)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "cosmic-horror",
+      "name": "Cosmic Horror",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Human understanding or significance is challenged by vast unknowable forces.",
+      "mechanic_specification": "Control revelation, uncertainty, and scale; do not require a fully explained monster.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://sf-encyclopedia.com/entry/lovecraft_h_p",
+          "title": "The Encyclopedia of Science Fiction: Lovecraft, H P"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "costume-drama",
+      "name": "Costume Drama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Period setting and its social world are emphasized through dramatic presentation.",
+      "mechanic_specification": "Derive period research and wardrobe requirements from actual scenes and characters.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/english/costume-drama",
+          "title": "Cambridge Dictionary: costume drama"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "courtroom-drama",
+      "name": "Courtroom Drama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Legal proceedings organize dramatic conflict.",
+      "mechanic_specification": "Track case claims, evidence, witnesses, hearing order, and dramatic stakes using stated procedural assumptions.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026353.json",
+          "title": "Library of Congress Genre/Form Terms: Legal films (gf2011026353)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "creature-feature",
+      "name": "Creature Feature",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A distinctive creature drives threat or fascination.",
+      "mechanic_specification": "Define creature behavior, scale, reveal strategy, and physical or digital realization.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026402.json",
+          "title": "Library of Congress Genre/Form Terms: Monster films (gf2011026402)"
+        },
+        {
+          "url": "https://www.dictionary.com/browse/creature-feature",
+          "title": "Dictionary.com: creature feature"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "crime",
+      "name": "Crime",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Criminal acts and their consequences organize the story.",
+      "mechanic_specification": "Track motives, acts, evidence, victims, investigation, and consequences without forcing a police protagonist.",
+      "legacy_parent_label": "Crime",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026177.json",
+          "title": "Library of Congress Genre/Form Terms: Crime films (gf2011026177)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "cyberpunk",
+      "name": "Cyberpunk",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Advanced technology intersects with concentrated power and social marginalization.",
+      "mechanic_specification": "Connect technology access, institutions, identity, and inequality to story choices and production design.",
+      "legacy_parent_label": "Science fiction",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2019026021.json",
+          "title": "Library of Congress Genre/Form Terms: Cyberpunk films (gf2019026021)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "dance",
+      "name": "Dance",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Dance and dancers are central to the project.",
+      "mechanic_specification": "Track choreography, rehearsal, performance coverage, and character meaning in dance sequences.",
+      "legacy_parent_label": "Musical",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026188.json",
+          "title": "Library of Congress Genre/Form Terms: Dance films (gf2011026188)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "dark-fantasy",
+      "name": "Dark Fantasy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Fantastic elements coexist with dread or disturbing themes.",
+      "mechanic_specification": "Maintain fantasy rules and the intended relationship between wonder and fear.",
+      "legacy_parent_label": "Fantasy",
+      "source_references": [
+        {
+          "url": "https://sf-encyclopedia.com/fe/dark_fantasy",
+          "title": "The Encyclopedia of Fantasy (1997): Dark Fantasy"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "detective",
+      "name": "Detective",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Solving a mystery through investigation drives the story.",
+      "mechanic_specification": "Track clues, inference, suspect timelines, and the detective's knowledge.",
+      "legacy_parent_label": "Crime",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026195.json",
+          "title": "Library of Congress Genre/Form Terms: Detective and mystery films (gf2011026195)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "disaster",
+      "name": "Disaster",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A large destructive event structures danger and response.",
+      "mechanic_specification": "Track hazard progression, geography, rescue choices, and aftermath; derive effects requirements.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026200.json",
+          "title": "Library of Congress Genre/Form Terms: Disaster films (gf2011026200)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "docudrama",
+      "name": "Docudrama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Documented events are dramatized with performers.",
+      "mechanic_specification": "Separate sourced events from dramatization and track historically grounded continuity.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/docudrama",
+          "title": "Merriam-Webster Dictionary: docudrama"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "docufiction",
+      "name": "Docufiction",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Documentary material and fictional invention are deliberately combined.",
+      "mechanic_specification": "Mark each sequence's factual or invented basis and preserve disclosure intentions.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://www.dictionary.com/browse/docufiction",
+          "title": "Dictionary.com: docufiction (Pop Culture Dictionary)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "documentary",
+      "name": "Documentary",
+      "classification": "nonfiction form",
+      "working_definition": "The project makes nonfiction claims about its subject.",
+      "mechanic_specification": "Use research, access, interviews, actuality, evidence, consent records, and an evolving edit structure.",
+      "legacy_parent_label": "Documentary",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026205.json",
+          "title": "Library of Congress Genre/Form Terms: Documentary films (gf2011026205)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "domestic-drama",
+      "name": "Domestic Drama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Household or family relationships are the primary dramatic setting.",
+      "mechanic_specification": "Track relationship obligations, shared spaces, conflict history, and changing alliances.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2017026052.json",
+          "title": "Library of Congress Genre/Form Terms: Domestic drama (Motion pictures) (gf2017026052)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "drama",
+      "name": "Drama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Character conflict and consequential choices carry the story.",
+      "mechanic_specification": "Track objectives, obstacles, relationships, and earned changes; avoid a generic prestige multiplier.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2014026297.json",
+          "title": "Library of Congress Genre/Form Terms: Drama (gf2014026297)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "dystopian",
+      "name": "Dystopian",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "An oppressive or damaging social order shapes life.",
+      "mechanic_specification": "Define institutions, enforcement, everyday consequences, and the possibilities of resistance.",
+      "legacy_parent_label": "Science fiction",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026217.json",
+          "title": "Library of Congress Genre/Form Terms: Dystopian films (gf2011026217)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "eco-horror",
+      "name": "Eco-Horror",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Environmental damage or ecological forces organize horror.",
+      "mechanic_specification": "Connect the environmental mechanism to the threat, setting, and character decisions.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://www.psupress.org/books/titles/978-0-271-09021-4.html",
+          "title": "Penn State University Press: Fear and Nature: Ecohorror Studies in the Anthropocene, ed. Christy Tidwell and Carter Soles (2021)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "epic",
+      "name": "Epic",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The story emphasizes large scale, substantial stakes, or broad historical scope.",
+      "mechanic_specification": "Derive cast, locations, time span, and production complexity from the actual outline.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026225.json",
+          "title": "Library of Congress Genre/Form Terms: Epic films (gf2011026225)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "erotic-thriller",
+      "name": "Erotic Thriller",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Desire, intimacy, and suspense interact.",
+      "mechanic_specification": "Track trust, secrets, power, and boundaries; require appropriate intimacy planning for scripted scenes.",
+      "legacy_parent_label": "Thriller",
+      "source_references": [
+        {
+          "url": "https://feeld.co/magazine/pleasures/essays/is-challengers-an-erotic-thriller",
+          "title": "Feeld Magazine essay, 'Is Challengers an erotic thriller?'"
+        },
+        {
+          "url": "https://www.pedestrian.tv/entertainment/best-erotic-thrillers/",
+          "title": "PEDESTRIAN.TV, best erotic thrillers"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "espionage",
+      "name": "Espionage",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Intelligence operations and secrecy drive events.",
+      "mechanic_specification": "Track covers, information, handlers, tradecraft assumptions, and exposure consequences.",
+      "legacy_parent_label": "Thriller",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026604.json",
+          "title": "Library of Congress Genre/Form Terms: Spy films (gf2011026604)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "experimental",
+      "name": "Experimental",
+      "classification": "approach",
+      "working_definition": "The project tests unconventional film forms or storytelling methods.",
+      "mechanic_specification": "Set formal rules and intended experiences; allow non-narrative structure and evaluate consistency with intent.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026235.json",
+          "title": "Library of Congress Genre/Form Terms: Experimental films (gf2011026235)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "exploitation",
+      "name": "Exploitation",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The project foregrounds sensational subject matter or niche market appeal.",
+      "mechanic_specification": "Specify the actual subject, audience promise, and marketing approach; no automatic content or quality assumption.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026236.json",
+          "title": "Library of Congress Genre/Form Terms: Exploitation films (gf2011026236)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "fairy-tale",
+      "name": "Fairy Tale",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A story draws on fairy-tale patterns, transformations, or symbolic logic.",
+      "mechanic_specification": "Track promises, prohibitions, magical rules, and transformations; allow reinterpretation.",
+      "legacy_parent_label": "Fantasy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2014026329.json",
+          "title": "Library of Congress Genre/Form Terms: Fairy tales (gf2014026329)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "family",
+      "name": "Family",
+      "classification": "audience",
+      "working_definition": "The project is intended for a broad family audience.",
+      "mechanic_specification": "Define audience range and shared appeal without assuming a child protagonist or animation.",
+      "legacy_parent_label": "Family",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/family",
+          "title": "Merriam-Webster Dictionary: family"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "fantasy",
+      "name": "Fantasy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Fantastic forces or worlds are integral to events.",
+      "mechanic_specification": "Record world rules, exceptions, costs, and what characters know about them.",
+      "legacy_parent_label": "Fantasy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026242.json",
+          "title": "Library of Congress Genre/Form Terms: Fantasy films (gf2011026242)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "farce",
+      "name": "Farce",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Escalating misunderstandings and improbable situations create comedy.",
+      "mechanic_specification": "Track who knows what, entrances, mistaken assumptions, and escalating complications.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/english/farce",
+          "title": "Cambridge Dictionary: farce"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "film-noir",
+      "name": "Film Noir",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Crime or moral danger is shaped by noir traditions.",
+      "mechanic_specification": "Specify fatalism, ambiguity, visual approach, and narrative viewpoint without requiring monochrome.",
+      "legacy_parent_label": "Crime",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026257.json",
+          "title": "Library of Congress Genre/Form Terms: Film noir (gf2011026257)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "folk-horror",
+      "name": "Folk Horror",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Local traditions, landscape, or community beliefs shape horror.",
+      "mechanic_specification": "Research the chosen context and connect rituals, isolation, and belief to events.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://www.dictionary.com/browse/folk-horror",
+          "title": "Dictionary.com: folk horror"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "found-footage",
+      "name": "Found Footage",
+      "classification": "presentation",
+      "working_definition": "The work presents material as recordings made within its world.",
+      "mechanic_specification": "Give recordings an operator, purpose, availability, and plausible survival or recovery path.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://sf-encyclopedia.com/entry/found_footage",
+          "title": "The Encyclopedia of Science Fiction: Found Footage"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "gangster",
+      "name": "Gangster",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Organized criminal life and its power relations dominate.",
+      "mechanic_specification": "Track organization, loyalty, hierarchy, ambition, and consequences of criminal choices.",
+      "legacy_parent_label": "Crime",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026290.json",
+          "title": "Library of Congress Genre/Form Terms: Gangster films (gf2011026290)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "giallo",
+      "name": "Giallo",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The work draws on Italian thriller traditions combining mystery and stylized menace.",
+      "mechanic_specification": "Specify selected investigative, visual, and suspense conventions; do not impose one mandatory plot.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://www.bfi.org.uk/features/where-begin-giallo",
+          "title": "BFI: Where to begin with giallo (Chris Gallant, 12 December 2017)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "gothic-horror",
+      "name": "Gothic Horror",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Decay, haunting histories, or oppressive spaces generate fear.",
+      "mechanic_specification": "Track setting history, atmosphere, secrets, and how revelations change interpretation.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2014026360.json",
+          "title": "Library of Congress Genre/Form Terms: Gothic fiction (gf2014026360)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "grindhouse",
+      "name": "Grindhouse",
+      "classification": "presentation/tradition",
+      "working_definition": "The project evokes exploitation exhibition aesthetics or traditions.",
+      "mechanic_specification": "Specify texture, presentation, pacing, and audience positioning without lowering technical quality automatically.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/grindhouse",
+          "title": "Merriam-Webster Dictionary: grindhouse"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "hangout",
+      "name": "Hangout",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Time spent with characters and their relationships is a major appeal.",
+      "mechanic_specification": "Track social rhythms, recurring spaces, conversation, and incremental change without forcing a large external plot.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://dergipark.org.tr/en/pub/akil/article/1789962",
+          "title": "Mehmet Sarı, 'Hangout Films as Atmospheric Assemblage: Vibing with Dazed and Confused', Akdeniz Üniversitesi İletişim Fakültesi Dergisi 51 (27 Mar 2026), doi:10.31123/akil.1789962, abstract"
+        },
+        {
+          "url": "https://www.slashfilm.com/1180092/quentin-tarantino-wanted-jackie-brown-to-be-birds-of-a-feather-with-rio-bravo/",
+          "title": "/Film, 'Quentin Tarantino Wanted Jackie Brown To Be Birds Of A Feather With Rio Bravo'"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "heist",
+      "name": "Heist",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Planning and executing a theft structures the story.",
+      "mechanic_specification": "Create target, security, team tasks, dependencies, contingencies, and consequences.",
+      "legacy_parent_label": "Crime",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026108.json",
+          "title": "Library of Congress Genre/Form Terms: Caper films (gf2011026108)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "historical-drama",
+      "name": "Historical Drama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Dramatic action occurs within a researched historical context.",
+      "mechanic_specification": "Maintain period chronology, institutions, technology, and documented versus invented events.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026311.json",
+          "title": "Library of Congress Genre/Form Terms: Historical films (gf2011026311)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "historical-fiction",
+      "name": "Historical Fiction",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Invented characters or events inhabit a historical setting.",
+      "mechanic_specification": "Track historical constraints and deliberate departures without demanding a biographical subject.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2014026370.json",
+          "title": "Library of Congress Genre/Form Terms: Historical fiction (gf2014026370)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "holiday",
+      "name": "Holiday",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A named holiday or observance materially shapes the story.",
+      "mechanic_specification": "Choose specific observances, dates, places, and character participation; no universal cultural behavior.",
+      "legacy_parent_label": "Family",
+      "source_references": [
+        {
+          "url": "https://libguides.ithaca.edu/holidayfilms",
+          "title": "Ithaca College Library, LibGuide 'Holiday Movies: Get Started'"
+        },
+        {
+          "url": "https://libguides.ithaca.edu/holidayfilms/tradition",
+          "title": "Ithaca College Library, LibGuide 'Holiday Movies: Traditional'"
+        },
+        {
+          "url": "https://id.loc.gov/authorities/subjects/sh2019000622.json",
+          "title": "Library of Congress Subject Headings, 'Holiday films' (sh2019000622), citation note"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "hood-film",
+      "name": "Hood Film",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Urban neighborhood life and its social pressures are central.",
+      "mechanic_specification": "Build specific community relationships and conditions; do not make race or neighborhood a crime modifier.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "http://cinephile.ca/archives/volume-4-post-genre/the-geography-of-melodrama-the-melodrama-of-geography-the-hood-films-spatial-pathos/",
+          "title": "Andrew deWaard, 'The Geography of Melodrama, The Melodrama of Geography: The ‘Hood Film’s Spatial Pathos', Cinephile (University of British Columbia's film journal) 4.1 (2008), 58-65"
+        },
+        {
+          "url": "https://journals.openedition.org/ejas/12967",
+          "title": "Mikkel Jensen, 'Intertextual Dialogue and Humanization in David Simon’s The Corner', European Journal of American Studies 13-2 (26 June 2018), OpenEdition"
+        },
+        {
+          "url": "https://journals.openedition.org/ejas/12967",
+          "title": "Mikkel Jensen, 'Intertextual Dialogue and Humanization in David Simon’s The Corner', European Journal of American Studies 13-2 (26 June 2018), OpenEdition"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "horror",
+      "name": "Horror",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Fear, dread, or disturbing uncertainty is a central intention.",
+      "mechanic_specification": "Define threat, vulnerability, reveal pacing, atmosphere, and consequences.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026321.json",
+          "title": "Library of Congress Genre/Form Terms: Horror films (gf2011026321)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "horror-comedy",
+      "name": "Horror Comedy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Horror and comedy coexist or alternate deliberately.",
+      "mechanic_specification": "Track tonal transitions and which moments aim for fear, humor, or both.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://www.bfi.org.uk/lists/10-great-comedy-horror-films",
+          "title": "BFI, '10 great comedy horror films' (Anton Bitel, 3 Oct 2024)"
+        },
+        {
+          "url": "https://cronfa.swan.ac.uk/Record/cronfa57686/Download/57686__20698__adf0f3d8801a4dafbbf6ba58cad1a579.pdf",
+          "title": "Sarah Crowther, 'Bloody Disgusting! Abjection, Excess & Absurdity: The Carnivalesque Cohesion Between Horror & Comedy in Film & Television', PhD thesis, Swansea University (2021)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "isekai",
+      "name": "Isekai",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A character enters or is reborn into another world.",
+      "mechanic_specification": "Track transfer circumstances, retained knowledge, new rules, and identity adaptation.",
+      "legacy_parent_label": "Animation",
+      "source_references": [
+        {
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/isekai",
+          "title": "Oxford Learner's Dictionaries: isekai"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "jidaigeki",
+      "name": "Jidaigeki",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A Japanese historical-period setting organizes the work.",
+      "mechanic_specification": "Research the chosen period and institutions; sword action is optional rather than automatic.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://www.tkgje.jp/entries/12500/12968_jidaigeki.html",
+          "title": "TKG Japanese-English Learner's Dictionary: 時代劇 (jidaigeki)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "jukebox-musical",
+      "name": "Jukebox Musical",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Existing songs are organized into a dramatic musical work.",
+      "mechanic_specification": "Track song choices, dramatic purpose, performance needs, and music-rights clearance status.",
+      "legacy_parent_label": "Musical",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2017026030.json",
+          "title": "Library of Congress Genre/Form Terms: Jukebox musicals (gf2017026030)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "kaiju",
+      "name": "Kaiju",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Giant creatures are central to spectacle or conflict.",
+      "mechanic_specification": "Track scale, geography, destruction continuity, and the chosen practical/digital technique.",
+      "legacy_parent_label": "Science fiction",
+      "source_references": [
+        {
+          "url": "https://sf-encyclopedia.com/entry/kaiju",
+          "title": "The Encyclopedia of Science Fiction: Kaiju"
+        },
+        {
+          "url": "https://www.merriam-webster.com/dictionary/kaiju",
+          "title": "Merriam-Webster Dictionary: kaiju"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "kitchen-sink-drama",
+      "name": "Kitchen Sink Drama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Everyday material pressures and social relationships shape intimate drama.",
+      "mechanic_specification": "Track work, household constraints, spaces, and character choices without forcing melodrama.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/english/kitchen-sink",
+          "title": "Cambridge Dictionary: kitchen-sink (adjective)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "legal-drama",
+      "name": "Legal Drama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Legal work or disputes form the main dramatic arena.",
+      "mechanic_specification": "Track participants, arguments, evidence, and procedure assumptions beyond courtroom scenes alone.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026353.json",
+          "title": "Library of Congress Genre/Form Terms: Legal films (gf2011026353)"
+        },
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026359.json",
+          "title": "Library of Congress Genre/Form Terms: Legal television programs (gf2011026359)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "magical-realism",
+      "name": "Magical Realism",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Extraordinary elements exist within an otherwise grounded world without constant explanatory separation.",
+      "mechanic_specification": "Set how characters accept the extraordinary and preserve that narrative perspective.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2018026155.json",
+          "title": "Magic realist films (Library of Congress Genre/Form Terms, gf2018026155)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "martial-arts",
+      "name": "Martial Arts",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Martial performance and combat traditions are central.",
+      "mechanic_specification": "Track choreography, performer preparation, fighting styles, spatial clarity, and safety.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026388.json",
+          "title": "Martial arts films (Library of Congress Genre/Form Terms, gf2011026388)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "medical-drama",
+      "name": "Medical Drama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Healthcare situations and professional/personal choices organize drama.",
+      "mechanic_specification": "Track patient/story continuity, professional roles, research notes, and episode-level cases.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026392.json",
+          "title": "Medical television programs (Library of Congress Genre/Form Terms, gf2011026392)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "melodrama",
+      "name": "Melodrama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Heightened emotion and sharply consequential relationships organize the story.",
+      "mechanic_specification": "Track emotional escalation, reversals, recognition, and relationship stakes.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026393.json",
+          "title": "Melodramas (Motion pictures) (Library of Congress Genre/Form Terms, gf2011026393)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "military",
+      "name": "Military",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Military institutions and service are central.",
+      "mechanic_specification": "Track ranks, roles, command relationships, duties, and setting-specific equipment.",
+      "legacy_parent_label": "War",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026395.json",
+          "title": "Military films (Library of Congress Genre/Form Terms, gf2011026395)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "mockumentary",
+      "name": "Mockumentary",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Fiction adopts documentary presentation conventions.",
+      "mechanic_specification": "Track interview framing, camera awareness, staged evidence, and the intended satirical or dramatic perspective.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026208.json",
+          "title": "Documentary-style films (Library of Congress Genre/Form Terms, gf2011026208)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "monster-movie",
+      "name": "Monster Movie",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A monstrous being drives central conflict.",
+      "mechanic_specification": "Define the being's rules, vulnerabilities, viewpoint, and practical realization; share compatible creature mechanics.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026402.json",
+          "title": "Monster films (Library of Congress Genre/Form Terms, gf2011026402)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "mumblecore",
+      "name": "Mumblecore",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The project draws on intimate, conversational, naturalistic independent-film traditions.",
+      "mechanic_specification": "Support improvisation, small-scale relationships, performance continuity, and conversational scene structure.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2017026033.json",
+          "title": "Mumblecore films (Library of Congress Genre/Form Terms, gf2017026033)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "musical",
+      "name": "Musical",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Songs or musical performance carry narrative or expressive meaning.",
+      "mechanic_specification": "Track song placement, dramatic function, vocal casting, choreography, recording, and continuity.",
+      "legacy_parent_label": "Musical",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026414.json",
+          "title": "Musical films (Library of Congress Genre/Form Terms, gf2011026414)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "mystery",
+      "name": "Mystery",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Unanswered questions and their resolution organize attention.",
+      "mechanic_specification": "Track truth, clues, concealment, competing hypotheses, and fair revelation.",
+      "legacy_parent_label": "Suspense",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026195.json",
+          "title": "Detective and mystery films (Library of Congress Genre/Form Terms, gf2011026195)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "nature-documentary",
+      "name": "Nature Documentary",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Nonfiction observation of nature is central.",
+      "mechanic_specification": "Track subject access, seasons, observation opportunities, evidence, and narration claims.",
+      "legacy_parent_label": "Documentary",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026416.json",
+          "title": "Nature films (Library of Congress Genre/Form Terms, gf2011026416)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "neo-noir",
+      "name": "Neo-Noir",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Noir traditions are reworked in later or contemporary contexts.",
+      "mechanic_specification": "Combine noir perspective with a specified social setting and contemporary technique.",
+      "legacy_parent_label": "Crime",
+      "source_references": [
+        {
+          "url": "https://www.dictionary.com/browse/neo-noir",
+          "title": "neo-noir, Collins English Dictionary (Complete & Unabridged, 2012 Digital Edition), via Dictionary.com"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "neorealism",
+      "name": "Neorealism",
+      "classification": "movement/approach",
+      "working_definition": "The work draws on traditions emphasizing everyday life and social conditions.",
+      "mechanic_specification": "Specify locations, casting/performance approach, and observation without a universal style score.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/neorealism",
+          "title": "neorealism, Merriam-Webster Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "new-wave",
+      "name": "New Wave",
+      "classification": "movement/context",
+      "working_definition": "The work draws on a particular film movement challenging prevailing conventions.",
+      "mechanic_specification": "Require the selected movement/context rather than treating all national new waves as identical.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/new%20wave",
+          "title": "new wave, Merriam-Webster Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "nordic-noir",
+      "name": "Nordic Noir",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Crime storytelling draws on Nordic noir settings or conventions.",
+      "mechanic_specification": "Specify social setting, investigation, tone, and regional research; avoid generic weather-based quality bonuses.",
+      "legacy_parent_label": "Crime",
+      "source_references": [
+        {
+          "url": "https://www.oxfordlearnersdictionaries.com/definition/english/nordic-noir",
+          "title": "Nordic noir, Oxford Advanced Learner's Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "occult",
+      "name": "Occult",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Hidden supernatural practices or knowledge are central.",
+      "mechanic_specification": "Define belief versus reality, ritual rules, investigation, and consequences.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2022026056.json",
+          "title": "Paranormal films (Library of Congress Genre/Form Terms, gf2022026056)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "parody",
+      "name": "Parody",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The work imitates recognizable conventions for comic effect.",
+      "mechanic_specification": "Identify the target conventions, transformations, and audience knowledge needed for the joke.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026436.json",
+          "title": "Parody films (Library of Congress Genre/Form Terms, gf2011026436)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "period-drama",
+      "name": "Period Drama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The story is set in an earlier era.",
+      "mechanic_specification": "Derive clothing, locations, language choices, props, and social research from the selected time/place.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/english/period-drama",
+          "title": "period drama, Cambridge Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "picaresque",
+      "name": "Picaresque",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "An episodic journey follows a resourceful outsider through social encounters.",
+      "mechanic_specification": "Track encounter sequence, character continuity, and social contrasts without forced three-act structure.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2015026114.json",
+          "title": "Picaresque films (Library of Congress Genre/Form Terms, gf2015026114)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "police-procedural",
+      "name": "Police Procedural",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Police investigation and professional methods structure the story.",
+      "mechanic_specification": "Track evidence handling, team roles, investigative sequence, and setting-specific procedure assumptions.",
+      "legacy_parent_label": "Crime",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/police%20procedural",
+          "title": "police procedural, Merriam-Webster Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "political-drama",
+      "name": "Political Drama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Political power, institutions, and personal decisions drive drama.",
+      "mechanic_specification": "Track competing aims, constituencies, alliances, and consequences.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026452.json",
+          "title": "Political films (Library of Congress Genre/Form Terms, gf2011026452)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "political-thriller",
+      "name": "Political Thriller",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Political conflict is organized around danger and suspense.",
+      "mechanic_specification": "Track threat, information, institutional stakes, and deadline escalation.",
+      "legacy_parent_label": "Thriller",
+      "source_references": [
+        {
+          "url": "https://repositorio.consejodecomunicacion.gob.ec/bitstream/CONSEJO_REP/3826/1/Towards.pdf",
+          "title": "Castrillo, P. & Echart, P., \"Towards a narrative definition of the American political thriller film\", Communication & Society 28(4), 2015, pp. 109-123 (peer-reviewed)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "post-apocalyptic",
+      "name": "Post-Apocalyptic",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Life after a major catastrophe is central.",
+      "mechanic_specification": "Track elapsed time since disaster, surviving institutions, resources, and world continuity.",
+      "legacy_parent_label": "Science fiction",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026808.json",
+          "title": "Apocalyptic films (Library of Congress Genre/Form Terms, gf2011026808)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "prison-film",
+      "name": "Prison Film",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Confinement and prison relationships organize events.",
+      "mechanic_specification": "Track spaces, access, routines, authority, alliances, and escape or adaptation stakes.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026463.json",
+          "title": "Prison films (Library of Congress Genre/Form Terms, gf2011026463)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "psychological-horror",
+      "name": "Psychological Horror",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Fear centers on perception, mental experience, or uncertain reality.",
+      "mechanic_specification": "Track viewpoint reliability and revelations without treating mental illness itself as villainy.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://www.paradigmpress.org/as/article/download/765/649",
+          "title": "Logan Baako (University of Illinois at Chicago), 'The Evolution of Horror Films: From Classic Monsters to Psychological Terrors', Art and Society 2(5) (Oct. 2023), doi:10.56397/AS.2023.10.01, section 4"
+        },
+        {
+          "url": "https://www.paradigmpress.org/as/article/download/765/649",
+          "title": "Logan Baako (University of Illinois at Chicago), 'The Evolution of Horror Films: From Classic Monsters to Psychological Terrors', Art and Society 2(5) (Oct. 2023), doi:10.56397/AS.2023.10.01, section 4"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "psychological-thriller",
+      "name": "Psychological Thriller",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Suspense centers on motives, perception, or manipulation.",
+      "mechanic_specification": "Track knowledge, trust, deception, and viewpoint-dependent clues.",
+      "legacy_parent_label": "Thriller",
+      "source_references": [
+        {
+          "url": "https://dictionary.cambridge.org/dictionary/english/psychological-thriller",
+          "title": "psychological thriller, Cambridge Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "queer-cinema",
+      "name": "Queer Cinema",
+      "classification": "perspective/tradition",
+      "working_definition": "Queer lives, perspectives, or expressive traditions are central.",
+      "mechanic_specification": "Specify individual characters and context; no automatic plot, personality, or market penalty from identity.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2022026039.json",
+          "title": "Queer films (Library of Congress Genre/Form Terms, gf2022026039)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "revenge",
+      "name": "Revenge",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Seeking retaliation organizes the main narrative.",
+      "mechanic_specification": "Track grievance, targets, escalation, moral choices, and the cost of retaliation.",
+      "legacy_parent_label": "Thriller",
+      "source_references": [
+        {
+          "url": "https://ijse.padovauniversitypress.it/system/files/papers/%2520IJSE-2019-2-11_0.pdf",
+          "title": "Ferdinando Spina, 'Stories of Revenge in Italian Popular Culture. A Narrative Study of Vigilante Films', Italian Journal of Sociology of Education 11(2) (2019), 218-252, doi:10.14658/PUPJ-IJSE-2019-2-11, pp. 224-225"
+        },
+        {
+          "url": "https://ijse.padovauniversitypress.it/system/files/papers/%2520IJSE-2019-2-11_0.pdf",
+          "title": "Ferdinando Spina, 'Stories of Revenge in Italian Popular Culture. A Narrative Study of Vigilante Films', Italian Journal of Sociology of Education 11(2) (2019), 218-252, doi:10.14658/PUPJ-IJSE-2019-2-11, pp. 224-225"
+        },
+        {
+          "url": "https://id.loc.gov/authorities/subjects/sh2010001127.json",
+          "title": "Library of Congress Subject Headings, 'Revenge in motion pictures' (sh2010001127)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "road-movie",
+      "name": "Road Movie",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Travel along a route organizes encounters and change.",
+      "mechanic_specification": "Track stops, journey time, relationships, and location requirements.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026535.json",
+          "title": "Road films (Library of Congress Genre/Form Terms, gf2011026535)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "rockumentary",
+      "name": "Rockumentary",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Nonfiction explores rock music, musicians, or their performances.",
+      "mechanic_specification": "Track archival material, interviews, performance coverage, chronology, and music permissions.",
+      "legacy_parent_label": "Documentary",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/rockumentary",
+          "title": "rockumentary, Merriam-Webster Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "romance",
+      "name": "Romance",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A developing romantic relationship is central.",
+      "mechanic_specification": "Track attraction, compatibility, obstacles, choices, intimacy boundaries, and relationship resolution.",
+      "legacy_parent_label": "Romance",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026543.json",
+          "title": "Romance films (Library of Congress Genre/Form Terms, gf2011026543)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "romantic-comedy",
+      "name": "Romantic Comedy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Romantic development is shaped through comedy.",
+      "mechanic_specification": "Connect relationship obstacles with comic causality and earned emotional payoff.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026545.json",
+          "title": "Romantic comedy films (Library of Congress Genre/Form Terms, gf2011026545)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "romantic-drama",
+      "name": "Romantic Drama",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Romantic relationships carry substantial dramatic conflict.",
+      "mechanic_specification": "Track relationship decisions, competing needs, and consequences without requiring a happy ending.",
+      "legacy_parent_label": "Romance",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2014026519.json",
+          "title": "Romantic plays (Library of Congress Genre/Form Terms, gf2014026519)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "samurai",
+      "name": "Samurai",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Samurai characters or institutions are central.",
+      "mechanic_specification": "Specify era, social role, obligations, and conflict; combat is scene-dependent.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026553.json",
+          "title": "Samurai films (Library of Congress Genre/Form Terms, gf2011026553)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "satire",
+      "name": "Satire",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Humor or exaggeration critiques conduct, institutions, or ideas.",
+      "mechanic_specification": "Define the target, perspective, contradictions, and intended audience interpretation.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2012025034.json",
+          "title": "Satirical films (Library of Congress Genre/Form Terms, gf2012025034)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "science-fantasy",
+      "name": "Science Fantasy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Scientific imagery and fantastic rules coexist.",
+      "mechanic_specification": "Record which rules are technological or fantastic and enforce the chosen boundaries.",
+      "legacy_parent_label": "Science fiction",
+      "source_references": [
+        {
+          "url": "https://sf-encyclopedia.com/entry/science_fantasy",
+          "title": "Science Fantasy, The Encyclopedia of Science Fiction (Clute, Langford, Sleight, eds.; entry updated 23 March 2026)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "science-fiction",
+      "name": "Science Fiction",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Speculative science or technology changes the world or story.",
+      "mechanic_specification": "Define the speculative premise and its coherent personal/social consequences.",
+      "legacy_parent_label": "Science fiction",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026556.json",
+          "title": "Science fiction films (Library of Congress Genre/Form Terms, gf2011026556)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "screwball-comedy",
+      "name": "Screwball Comedy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Fast-paced romantic or social conflict creates comic reversals.",
+      "mechanic_specification": "Track verbal exchanges, status changes, mistaken assumptions, and comic rhythm.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026565.json",
+          "title": "Screwball comedy films (Library of Congress Genre/Form Terms, gf2011026565)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "sea-adventure",
+      "name": "Sea Adventure",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A maritime journey or undertaking structures adventure.",
+      "mechanic_specification": "Track vessels, routes, weather requirements, practical filming, and character duties.",
+      "legacy_parent_label": "Adventure",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2016026006.json",
+          "title": "Sea fiction (Library of Congress Genre/Form Terms, gf2016026006)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "silent-film",
+      "name": "Silent Film",
+      "classification": "presentation",
+      "working_definition": "The work uses a predominantly non-spoken-dialogue presentation.",
+      "mechanic_specification": "Plan visual communication, intertitles where chosen, performance, music, and delivery format.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026575.json",
+          "title": "Silent films (Library of Congress Genre/Form Terms, gf2011026575)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "slapstick",
+      "name": "Slapstick",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Physical actions and mishaps produce comedy.",
+      "mechanic_specification": "Track physical setup/payoff, timing, choreography, and safe production methods.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026582.json",
+          "title": "Slapstick comedy films (Library of Congress Genre/Form Terms, gf2011026582)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "slasher",
+      "name": "Slasher",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "A recurring attacker threatens a group in a horror narrative.",
+      "mechanic_specification": "Track attacker access, victim knowledge, spatial continuity, suspense, and aftermath.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026584.json",
+          "title": "Slasher films (Library of Congress Genre/Form Terms, gf2011026584)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "slice-of-life",
+      "name": "Slice Of Life",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Ordinary experiences and incremental changes organize the work.",
+      "mechanic_specification": "Track routines, small decisions, relationships, and cumulative change without mandatory spectacle.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/slice-of-life",
+          "title": "slice-of-life, Merriam-Webster Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "social-realism",
+      "name": "Social Realism",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The work foregrounds material and social conditions through grounded representation.",
+      "mechanic_specification": "Tie institutions, labor, environment, and relationships to particular character choices.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://www.dictionary.com/browse/social%20realism",
+          "title": "social realism (British), Collins English Dictionary (Complete & Unabridged, 2012 Digital Edition), via Dictionary.com"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "space-opera",
+      "name": "Space Opera",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Large-scale adventure or conflict unfolds across space settings.",
+      "mechanic_specification": "Track factions, worlds, travel rules, spectacle, and effects assets.",
+      "legacy_parent_label": "Science fiction",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2019026020.json",
+          "title": "Space operas (Motion pictures) (Library of Congress Genre/Form Terms, gf2019026020)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "spaghetti-western",
+      "name": "Spaghetti Western",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The work draws on Italian Western traditions.",
+      "mechanic_specification": "Specify moral outlook, pacing, staging, sound, and visual references without forcing nationality.",
+      "legacy_parent_label": "Western",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026595.json",
+          "title": "Spaghetti Westerns (Library of Congress Genre/Form Terms, gf2011026595)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "splatter",
+      "name": "Splatter",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Graphic bodily destruction is a central horror presentation choice.",
+      "mechanic_specification": "Track effects design, continuity, practical/digital method, and audience-content settings.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2012025038.json",
+          "title": "Splatter films (Library of Congress Genre/Form Terms, gf2012025038)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "sports",
+      "name": "Sports",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Sport and its participants organize the story.",
+      "mechanic_specification": "Track competition rules, training/performance needs, sporting continuity, and event coverage.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026601.json",
+          "title": "Sports films (Library of Congress Genre/Form Terms, gf2011026601)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "spy",
+      "name": "Spy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Secret intelligence activity drives the story.",
+      "mechanic_specification": "Use shared espionage mechanics while preserving the user's chosen label and tone.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026606.json",
+          "title": "Spy television programs (Library of Congress Genre/Form Terms, gf2011026606)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "steampunk",
+      "name": "Steampunk",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The setting reimagines technology through steam-era aesthetics or assumptions.",
+      "mechanic_specification": "Define technological limits, social setting, costumes, props, and causal consistency.",
+      "legacy_parent_label": "Science fiction",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/steampunk",
+          "title": "steampunk, Merriam-Webster Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "stoner-comedy",
+      "name": "Stoner Comedy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Cannabis-related situations or culture shape comedy.",
+      "mechanic_specification": "Track character choices and comic consequences without universal personality or ability assumptions.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://www.screeningthepast.com/issue-46-first-release/systematically-stoned-the-stoner-film-as-genre/",
+          "title": "Slattery, A., \"Systematically Stoned: The Stoner Film as Genre\", Screening the Past, issue 46"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "superhero",
+      "name": "Superhero",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Extraordinary abilities or heroic identities drive conflict.",
+      "mechanic_specification": "Define powers, limits, identities, collateral effects, and stunt/VFX requirements.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026621.json",
+          "title": "Superhero films (Library of Congress Genre/Form Terms, gf2011026621)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "supernatural",
+      "name": "Supernatural",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Forces beyond ordinary natural explanation affect events.",
+      "mechanic_specification": "Record powers, limits, beliefs, and revelation; does not automatically imply horror.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2022026056.json",
+          "title": "Paranormal films (Library of Congress Genre/Form Terms, gf2022026056)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "surrealist",
+      "name": "Surrealist",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Dreamlike or unconventional associations shape expression.",
+      "mechanic_specification": "Specify visual/narrative logic and intentional discontinuities; preserve production continuity separately.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026625.json",
+          "title": "Surrealist films (Library of Congress Genre/Form Terms, gf2011026625)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "survival",
+      "name": "Survival",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Characters struggle to remain alive under severe constraints.",
+      "mechanic_specification": "Track threats, resources, environment, decisions, and evolving physical circumstances within the story.",
+      "legacy_parent_label": "Thriller",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026626.json",
+          "title": "Survival films (Library of Congress Genre/Form Terms, gf2011026626)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "swashbuckler",
+      "name": "Swashbuckler",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Flamboyant adventure and physical daring shape the work.",
+      "mechanic_specification": "Track duels, escapes, character objectives, period assets, and stunt choreography.",
+      "legacy_parent_label": "Adventure",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026628.json",
+          "title": "Swashbuckler films (Library of Congress Genre/Form Terms, gf2011026628)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "sword-and-sandal",
+      "name": "Sword And Sandal",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Ancient-world adventure emphasizes heroic action or spectacle.",
+      "mechanic_specification": "Specify historical/fantastic setting, costumes, combat, sets, and crowd needs.",
+      "legacy_parent_label": "Adventure",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026439.json",
+          "title": "Peplum films (Library of Congress Genre/Form Terms, gf2011026439)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "sword-and-sorcery",
+      "name": "Sword And Sorcery",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Personal adventure combines martial action and supernatural forces.",
+      "mechanic_specification": "Track quest, combat, magic rules, costs, and creature/effects requirements.",
+      "legacy_parent_label": "Fantasy",
+      "source_references": [
+        {
+          "url": "https://sf-encyclopedia.com/entry/sword_and_sorcery",
+          "title": "Sword and Sorcery, The Encyclopedia of Science Fiction (Clute, Langford, Sleight, eds.; entry updated 10 November 2025)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "techno-thriller",
+      "name": "Techno-Thriller",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Technical systems or capabilities are central to suspense.",
+      "mechanic_specification": "Track system assumptions, evidence, failure chains, and deadline stakes.",
+      "legacy_parent_label": "Thriller",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/techno-thriller",
+          "title": "techno-thriller, Merriam-Webster Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "teen",
+      "name": "Teen",
+      "classification": "audience/subject",
+      "working_definition": "Adolescent experiences or an adolescent audience are central.",
+      "mechanic_specification": "Specify whether this describes protagonists, audience, or both; derive casting and scheduling needs separately.",
+      "legacy_parent_label": "Comedy",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026632.json",
+          "title": "Teen films (Library of Congress Genre/Form Terms, gf2011026632)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "thriller",
+      "name": "Thriller",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Anticipation, danger, and escalating uncertainty drive attention.",
+      "mechanic_specification": "Track threats, withheld information, reversals, and consequences of delay.",
+      "legacy_parent_label": "Thriller",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026692.json",
+          "title": "Thrillers (Motion pictures) (Library of Congress Genre/Form Terms, gf2011026692)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "time-travel",
+      "name": "Time Travel",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Movement between times is central.",
+      "mechanic_specification": "Define timeline rules, causality, paradox policy, and character knowledge by time period.",
+      "legacy_parent_label": "Science fiction",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2018026154.json",
+          "title": "Time-travel films (Library of Congress Genre/Form Terms, gf2018026154)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "tokusatsu",
+      "name": "Tokusatsu",
+      "classification": "effects tradition",
+      "working_definition": "The project draws on Japanese special-effects production traditions.",
+      "mechanic_specification": "Specify suit performance, miniatures, compositing, transformations, and chosen genre rather than equating it with animation.",
+      "legacy_parent_label": "Science fiction",
+      "source_references": [
+        {
+          "url": "https://www.dictionary.com/browse/tokusatsu",
+          "title": "tokusatsu, Dictionary.com Unabridged (based on the Random House Unabridged Dictionary)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "tragedy",
+      "name": "Tragedy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Consequential choices or circumstances lead toward profound loss.",
+      "mechanic_specification": "Track causal progression, turning points, recognition, and the earned ending.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2014026576.json",
+          "title": "Tragedies (Drama) (Library of Congress Genre/Form Terms, gf2014026576)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "tragicomedy",
+      "name": "Tragicomedy",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Comic and tragic experience coexist meaningfully.",
+      "mechanic_specification": "Track tonal balance, transitions, character perspective, and consequences.",
+      "legacy_parent_label": "Drama",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2014026577.json",
+          "title": "Tragicomedies (Library of Congress Genre/Form Terms, gf2014026577)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "true-crime",
+      "name": "True Crime",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Nonfiction examines actual crimes and their contexts.",
+      "mechanic_specification": "Separate allegations, established facts, evidence, interviews, and unresolved claims.",
+      "legacy_parent_label": "Crime",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026711.json",
+          "title": "True crime television programs (Library of Congress Genre/Form Terms, gf2011026711)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "vampire",
+      "name": "Vampire",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Vampiric beings or mythology are central.",
+      "mechanic_specification": "Choose lore, powers, limits, feeding rules, and visual/performance method.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026716.json",
+          "title": "Vampire films (Library of Congress Genre/Form Terms, gf2011026716)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "war",
+      "name": "War",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Armed conflict and its consequences shape events.",
+      "mechanic_specification": "Track factions, objectives, geography, chronology, civilian impact, and scene-derived production needs.",
+      "legacy_parent_label": "War",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026729.json",
+          "title": "War films (Library of Congress Genre/Form Terms, gf2011026729)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "werewolf",
+      "name": "Werewolf",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Human-to-wolf transformation or related mythology is central.",
+      "mechanic_specification": "Define transformation rules, continuity, identity conflict, and creature realization.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026733.json",
+          "title": "Werewolf films (Library of Congress Genre/Form Terms, gf2011026733)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "western",
+      "name": "Western",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Frontier settings or Western traditions organize the story.",
+      "mechanic_specification": "Specify place/era, land and power conflicts, characters, and scene-derived horses, props, locations, and stunt needs.",
+      "legacy_parent_label": "Western",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026735.json",
+          "title": "Western films (Library of Congress Genre/Form Terms, gf2011026735)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "whodunit",
+      "name": "Whodunit",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "The central mystery asks which suspect committed an act.",
+      "mechanic_specification": "Maintain culprit truth, means/motive/opportunity, clues, red herrings, and reveal consistency.",
+      "legacy_parent_label": "Suspense",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/whodunit",
+          "title": "whodunit, Merriam-Webster Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "wuxia",
+      "name": "Wuxia",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Martial heroes and a world of chivalric obligations structure the story.",
+      "mechanic_specification": "Track martial conventions, allegiances, codes, choreography, and the chosen degree of fantasy.",
+      "legacy_parent_label": "Action",
+      "source_references": [
+        {
+          "url": "https://www.merriam-webster.com/dictionary/wuxia",
+          "title": "wuxia, Merriam-Webster Dictionary"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "yakuza",
+      "name": "Yakuza",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Japanese organized crime and its relationships are central.",
+      "mechanic_specification": "Specify organization, obligations, era, conflicts, and researched context without identity stereotypes.",
+      "legacy_parent_label": "Crime",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026290.json",
+          "title": "Gangster films (Library of Congress Genre/Form Terms, gf2011026290)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    },
+    {
+      "id": "zombie",
+      "name": "Zombie",
+      "classification": "genre/subgenre/theme",
+      "working_definition": "Reanimated or zombie-like beings drive central events.",
+      "mechanic_specification": "Define origin, transmission if any, movement, cognition, vulnerabilities, crowd needs, and continuity.",
+      "legacy_parent_label": "Horror",
+      "source_references": [
+        {
+          "url": "https://id.loc.gov/authorities/genreForms/gf2011026749.json",
+          "title": "Zombie films (Library of Congress Genre/Form Terms, gf2011026749)"
+        }
+      ],
+      "evidence_status": "References inherited from SLATE catalog; not independently reverified in this pass. Definition and mechanic are original working design.",
+      "implementation_status": "Specification supplied; runtime consumer and behavior tests must be implemented.",
+      "acceptance_requirement": "Demonstrate the mechanic specified for this entry in a supported project, and verify that changing a relevant input changes its appropriate downstream state without changing unrelated state."
+    }
+  ]
+}
