@@ -39,9 +39,13 @@ jobs:
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}
+      - name: Make apt give up on stalled downloads and retry
+        # The Ubuntu package mirror has stalled the browser install three times, with apt waiting on a dead connection.
+        # Short network timeouts make a stalled download fail fast, and apt retries it.
+        run: printf 'Acquire::Retries "5";\nAcquire::http::Timeout "30";\nAcquire::https::Timeout "30";\n' | sudo tee /etc/apt/apt.conf.d/80-ci-retries
       - name: Install Playwright browsers matching the lockfile
-        # The Ubuntu package mirror has stalled this step twice (once over 40 minutes). Each attempt is bounded and
-        # retried once; the browsers themselves come from the cache when the locked version hasn't changed.
+        # Each attempt is bounded and retried once; the browsers themselves come from the cache when the locked version
+        # hasn't changed.
         timeout-minutes: 20
         run: |
           for attempt in 1 2; do

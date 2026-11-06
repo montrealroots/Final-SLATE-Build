@@ -132,5 +132,10 @@ The Competition and Special Screenings sections, and every other Cannes rule, re
 Berlinale, Venice, TIFF, San Sebastián, Busan, Sitges, IDFA, Hot Docs, SXSW, Series Mania, Locarno, FESPACO, Annecy,
 BAFTA Film and Television, Golden Globes, Emmys, International Emmys, Spirit, Gotham, DGA, WGA, PGA, Actor Awards,
 César, Goya, Canadian Screen, AACTA, AMAA, Japan Academy, Blue Dragon, European Film Awards; and the remaining
-categories of Cannes. The search notes in this session found secondary summaries for some (Annecy, BAFTA), which were not
-used. Each needs its organizer's document for the edition in play.
+categories of Cannes. Each needs its organizer's document for the edition in play. Attempted on November 6, 2026:
+
+- **BAFTA Film Awards 2027:** bafta.org (rules page and the "2027 EE BAFTA Film Awards opens for entries" release)
+  refused requests from this environment (HTTP 403). Secondary coverage was found but not used. Read the organizer's
+  2027 Rules and Guidelines from a normal browser.
+- **Annecy 2027:** the festival has not published 2027 terms; its 2026 Feature Films and Short Films Terms and
+  Conditions exist (annecyfestival.com) and could support projected rules, like Cannes short films.
