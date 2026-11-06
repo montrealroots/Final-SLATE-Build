@@ -130,3 +130,48 @@ test('no tutorial, no excluded systems, no raw IDs or source text on screen', as
   // Polar night is reported truthfully in Tromsø in mid-December.
   await expect(page.getByText("the sun won't rise today")).toBeVisible();
 });
+
+async function clockSeconds(page: Page): Promise<number> {
+  const t = (await page.locator('.clockface').innerText()).trim(); // e.g. 11:30:05 AM
+  const m = /(\d+):(\d+):(\d+) (AM|PM)/.exec(t)!;
+  const h = (Number(m[1]) % 12) + (m[4] === 'PM' ? 12 : 0);
+  return h * 3600 + Number(m[2]) * 60 + Number(m[3]);
+}
+
+test('the clock runs 1:1 while visible and stops while hidden, with no catch-up', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'Lifecycle check runs once.');
+  await seedGame(page);
+  const a = await clockSeconds(page);
+  await page.waitForTimeout(5000);
+  const b = await clockSeconds(page);
+  expect(b - a).toBeGreaterThanOrEqual(4);
+  expect(b - a).toBeLessThanOrEqual(6);
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'hidden' });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
+  await page.waitForTimeout(4000);
+  await page.evaluate(() => {
+    Object.defineProperty(document, 'visibilityState', { configurable: true, get: () => 'visible' });
+    document.dispatchEvent(new Event('visibilitychange'));
+  });
+  await page.waitForTimeout(600);
+  const c = await clockSeconds(page);
+  expect(c - b).toBeLessThanOrEqual(2); // hidden time did not accumulate
+});
+
+test('a second tab opens the same save read-only until it takes over', async ({ page, context }, info) => {
+  test.skip(info.project.name !== 'desktop', 'Lifecycle check runs once.');
+  await seedGame(page);
+  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  await page.getByRole('button', { name: 'Resume' }).first().click();
+  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  const second = await context.newPage();
+  await second.goto('/');
+  await second.getByRole('button', { name: 'Resume' }).first().click();
+  await expect(second.getByText('This game is open in another tab')).toBeVisible();
+  await expect(second.getByRole('button', { name: 'Advance', exact: true })).toBeDisabled();
+  await second.getByRole('button', { name: 'Take Over Here' }).click();
+  await expect(second.getByRole('button', { name: 'Advance', exact: true })).toBeEnabled();
+  await expect(page.getByText('This game is open in another tab')).toBeVisible({ timeout: 8000 });
+});
