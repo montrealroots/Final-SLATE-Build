@@ -6,7 +6,7 @@ import {
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
-  type StaffingProposal,
+  type StaffingProposal, covers,
 } from '../engine';
 import type { Hire, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
@@ -181,6 +181,8 @@ export function CrewTab({ p }: { p: Project }) {
   const status = (roleId: string) => {
     const hs = p.hires.filter((h) => h.roleId === roleId);
     if (hs.some((h) => h.status === 'accepted')) return { label: `Hired (${hs.filter((h) => h.status === 'accepted').length})`, cls: 'good' };
+    const cover = p.hires.find((h) => h.status === 'accepted' && covers(h.roleId, roleId));
+    if (cover) return { label: `Covered By Your ${roleLabel(cover.roleId)}`, cls: 'good' };
     if (hs.some((h) => h.status === 'offered' || h.status === 'countered')) return { label: 'Offer Out', cls: 'warn' };
     return { label: 'Not Hired', cls: '' };
   };

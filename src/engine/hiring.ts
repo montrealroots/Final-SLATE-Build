@@ -5,7 +5,7 @@
 import { getPlace } from '../data/places';
 import { cancel, commit, ledgerTotals, money, reserve, FundsError } from './budget';
 import { genre } from './genres';
-import { candidates, countryLanguage, isAvailable, personById, role, roleLabel, type Person } from './people';
+import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
 import { buildTasks, coachingNeeded, estimatedShootDays, planShootDays } from './production';
 import { approvalRights, approvedCharacters, approvedScenes, isNonfiction, projectModules, sceneTechnique } from './projects';
 import { stream } from './rng';
@@ -39,7 +39,8 @@ export function neededRoles(p: Project, state?: GameState): NeededRole[] {
   };
   const scenes = approvedScenes(p);
   const live = scenes.some((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival');
-  if (live) for (const [r, why, req] of LIVE_CORE) add(r, why, req);
+  const litScenes = scenes.some((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival' && (s.heading.intExt !== 'EXT' || s.heading.time === 'NIGHT'));
+  if (live) for (const [r, why, req] of LIVE_CORE) add(r, r === 'gaffer' && litScenes ? 'Lights interiors and night scenes. Required for this script.' : why, r === 'gaffer' ? litScenes : req);
   const tasks = p.tasks.length ? p.tasks : buildTasks(p);
   for (const t of tasks) add(t.roleId, `Needed for ${t.label.toLowerCase()}.`, true);
   const mods = projectModules(p);
@@ -71,7 +72,9 @@ export function estimateDays(p: Project, roleId: string, characterId?: string, m
     const ratio = scenes.length / Math.max(1, approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live').length);
     return Math.max(1, Math.ceil(shootDays * Math.max(ratio, 0.15)) + Math.ceil(p.schedule.rehearsalDays / 2));
   }
-  const own = tasks.filter((t) => t.roleId === roleId).reduce((a, t) => a + Math.max(1, Math.ceil(t.units)), 0);
+  // Days include roles this person would cover as a second job when no one else holds them.
+  const coveredByOthers = (r: string) => p.hires.some((h) => h.roleId === r && ['offered', 'accepted', 'countered'].includes(h.status));
+  const own = tasks.filter((t) => t.roleId === roleId || ((COMBINES[roleId] ?? []).includes(t.roleId) && !coveredByOthers(t.roleId))).reduce((a, t) => a + Math.max(1, Math.ceil(t.units)), 0);
   const onSet = ['dop', 'sound-mixer', 'gaffer', 'first-ad', 'hair-makeup', 'camera-operator', 'video-assist', 'script-supervisor', 'boom-operator', 'key-grip', 'camera-assistant'].includes(roleId);
   const specialist = ['stunt-coordinator', 'animal-wrangler', 'vehicle-coordinator', 'marine-coordinator', 'intimacy-coordinator', 'extras-casting', 'choreographer', 'fight-choreographer', 'dialect-coach'].includes(roleId);
   let days = own;
@@ -361,8 +364,10 @@ export function proposeStaffing(state: GameState, p: Project, dept: string): { p
   const skipped: string[] = [];
   const win = productionWindow(state, p);
   let budget = ledgerTotals(p).available;
-  for (const nr of neededRoles(p, state).filter((r) => r.dept === dept)) {
-    if (p.hires.some((h) => h.roleId === nr.roleId && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
+  // Proposals cover required roles; optional ones stay a deliberate choice.
+  for (const nr of neededRoles(p, state).filter((r) => r.dept === dept && r.required)) {
+    if (p.hires.some((h) => covers(h.roleId, nr.roleId) && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
+    if (proposals.some((x) => covers(x.roleId, nr.roleId))) continue;
     const pool = roleCandidates(state, p, nr.roleId)
       .filter((c) => c.experience >= 2 && isAvailable(state, c, win.from, win.to, p.id).ok)
       .sort((a, b) => a.dayRate - b.dayRate);

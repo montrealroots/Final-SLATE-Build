@@ -55,6 +55,33 @@ export const ROLES: RoleDef[] = [
 ];
 
 const roleById = new Map(ROLES.map((r) => [r.id, r]));
+
+/**
+ * Compatible roles one person may combine at small scale (DESIGN section 9). One person still works
+ * only one task a day, so combining saves money but not time. A working default, not an industry rule.
+ */
+export const COMBINES: Record<string, string[]> = {
+  editor: ['colorist', 'subtitler', 'qc-technician', 'assistant-editor'],
+  'sound-designer': ['re-recording-mixer'],
+  dop: ['camera-operator', 'gaffer', 'stage-dp'],
+  'production-designer': ['prop-master', 'art-director', 'set-builder', 'location-manager'],
+  'costume-designer': ['hair-makeup'],
+  composer: ['music-supervisor'],
+  'first-ad': ['production-coordinator', 'script-supervisor'],
+  researcher: ['fact-checker', 'archive-producer'],
+  'character-designer': ['visdev-artist'],
+  'visdev-artist': ['character-designer', 'background-artist'],
+  'storyboard-artist': ['layout-artist'],
+  animator: ['assistant-animator'],
+  modeler: ['rigger'],
+  'lighting-artist': ['compositor', 'fx-artist'],
+  'puppet-fabricator': ['armature-fabricator'],
+};
+
+/** Does someone hired as \`hiredRole\` cover \`neededRole\`? */
+export function covers(hiredRole: string, neededRole: string): boolean {
+  return hiredRole === neededRole || (COMBINES[hiredRole]?.includes(neededRole) ?? false);
+}
 export function role(id: string): RoleDef {
   const r = roleById.get(id);
   if (!r) throw new Error(`Unknown role ${id}`);

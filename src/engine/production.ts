@@ -5,14 +5,14 @@
 import { getPlace } from '../data/places';
 import { cancel, commit, ledgerTotals, money, reserve, settle, spend, FundsError } from './budget';
 import { holidaysOn } from './holidays';
-import { isAvailable, personById, roleLabel } from './people';
+import { covers, isAvailable, personById, roleLabel } from './people';
 import {
   approvedCharacters, approvedScenes, approvalRights, isEpisodic, isNonfiction, projectModules, sceneLabel, sceneTechnique,
 } from './projects';
 import { stream } from './rng';
 import { addLog, cancelEvents, newId, registerCommitmentSource, registerHandler, schedule } from './state';
 import { HOUR, addDaysToKey, dateKey, dayNumber, formatDateKey, localParts, localToInstant, parseYmd, weekdayOfKey } from './time';
-import type { Asset, GameState, Project, Scene, SceneCapture, ShootDay, Task } from './types';
+import type { Asset, GameState, Obligation, Project, Scene, SceneCapture, ShootDay, Task } from './types';
 import { forecast, precipitationDuring, weatherOn, daylightWindowLocal } from './weather';
 
 // ---------------- Rates (simulation assumptions) ----------------
@@ -40,6 +40,12 @@ const MATERIAL_COST: Record<string, number> = {
 };
 export const LOCATION_FEE_PER_DAY = 1200;
 export const EQUIPMENT_PER_DAY = 1500;
+/** Location and equipment costs scale with the production's scale (simulation assumption): micro shoots use borrowed gear and free locations. */
+export const DAY_COST_SCALE: Record<string, number> = { micro: 0.3, low: 1, mid: 2, commissioned: 3 };
+export function dayFees(p: Project): { location: number; equipment: number } {
+  const k = DAY_COST_SCALE[p.funding.scenarioId] ?? 1;
+  return { location: Math.round(LOCATION_FEE_PER_DAY * k), equipment: Math.round(EQUIPMENT_PER_DAY * k) };
+}
 export const VOICE_SESSION_STUDIO = 400;
 
 // ---------------- Task generation ----------------
@@ -329,6 +335,7 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   if (!/^\d{4}-\d{2}-\d{2}$/.test(startDate)) throw new Error('Choose a start date.');
   const today = dateKey(state.now, getPlace(p.axes.basePlaceId).zone);
   if (startDate < today) throw new Error('Choose a start date from today onward.');
+  const backup = { tasks: p.tasks, assets: p.assets, startDate: p.schedule.startDate };
   const fresh = buildTasks(p);
   const old = new Map(p.tasks.map((x) => [x.id, x]));
   p.tasks = fresh.map((nt) => {
@@ -348,6 +355,24 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   const kept = p.schedule.days.filter((d) => d.status !== 'scheduled');
   const capturedIds = new Set(p.captures.filter((c) => c.captured >= 0.999 && c.version === p.approvedDraft).map((c) => c.sceneId));
   const planned = planShootDays(state, p, shootStart).map((d) => ({ ...d, sceneIds: d.sceneIds.filter((s) => !capturedIds.has(s)) })).filter((d) => d.sceneIds.length);
+  // Budget the schedule: shoot-day costs and materials are reserved now, so they can't be spent twice.
+  const shootCost = planned.length * (dayFees(p).location + dayFees(p).equipment) +
+    planned.reduce((a, d) => a + approvedScenes(p).filter((sc) => d.sceneIds.includes(sc.id)).reduce((b, sc) => b + sc.crowd * 180, 0), 0);
+  const matCost = p.tasks.filter((x) => x.status !== 'done').reduce((a, x) => a + materialCost(x), 0);
+  const previous = p.obligations.filter((o) => (o.ref === 'plan:shoot' || o.ref === 'plan:materials') && (o.state === 'reserved' || o.state === 'committed'));
+  const freed = previous.reduce((a, o) => a + Math.max(0, o.amount - o.settled), 0);
+  if (shootCost + matCost > ledgerTotals(p).available + freed) {
+    p.tasks = backup.tasks;
+    p.assets = backup.assets;
+    p.schedule.startDate = backup.startDate;
+    throw new FundsError(
+      `This schedule needs ${money(shootCost + matCost)} for locations, equipment and materials, but only ${money(ledgerTotals(p).available + freed)} is uncommitted. Release someone, cut scenes, or bring in more funding.`,
+      shootCost + matCost - ledgerTotals(p).available - freed,
+    );
+  }
+  for (const o of previous) cancel(state, p, o.id);
+  if (shootCost > 0) reserve(state, p, 'Shoot Days: Locations, Equipment And Crowds', 'locations', shootCost, 'plan:shoot');
+  if (matCost > 0) reserve(state, p, 'Materials, Builds And Licensing', 'materials', matCost, 'plan:materials');
   cancelEvents(state, (e) => e.payload.projectId === p.id && (e.kind === 'shoot-call' || e.kind === 'shoot-wrap' || e.kind === 'weather-check'));
   p.schedule.days = [...kept, ...planned];
   for (const d of planned) scheduleShootDay(state, p, d);
@@ -410,7 +435,9 @@ export function ensureWorkEvent(state: GameState, p: Project): void {
 
 export function teamFor(p: Project, roleId: string, episode: number): string[] {
   return p.hires
-    .filter((h) => h.roleId === roleId && h.status === 'accepted' && (h.episodes === 'all' || h.episodes.includes(episode)))
+    .filter((h) => covers(h.roleId, roleId) && h.status === 'accepted' && (h.episodes === 'all' || h.episodes.includes(episode)))
+    // Specialists first, then people covering the role as a second job.
+    .sort((a, b) => Number(a.roleId !== roleId) - Number(b.roleId !== roleId))
     .map((h) => h.personId);
 }
 
@@ -546,7 +573,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
     } else {
       const team = teamFor(p, task.roleId, task.episode).filter((id) => !used.has(id));
       if (!team.length) {
-        const anyone = p.hires.some((h) => h.roleId === task.roleId && h.status === 'accepted');
+        const anyone = p.hires.some((h) => covers(h.roleId, task.roleId) && h.status === 'accepted');
         task.status = 'blocked';
         task.blockedReason = anyone ? `Your ${roleLabel(task.roleId).toLowerCase()} is busy on other work today.` : `No one is hired as ${roleLabel(task.roleId).toLowerCase()}.`;
         continue;
@@ -558,7 +585,8 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
         const chars = (scene?.participants ?? []).filter((c) => p.tasks.some((x) => x.id === `sm:costume:${c}`));
         const stageFree = p.schedule.stages - stagesInUse;
         const puppetFree = Math.min(...chars.map((c) => (p.schedule.puppetCopies[c] ?? 1) - (puppetInUse.get(c) ?? 0)), 99);
-        workers = Math.min(workers, stageFree, puppetFree);
+        // One shot occupies one stage and one animator; extra animators work other shots.
+        workers = Math.min(workers, stageFree, puppetFree, 1);
         if (workers <= 0) {
           task.status = 'blocked';
           task.blockedReason = stageFree <= 0 ? 'Every stage is in use today.' : 'The puppets it needs are on another stage. A duplicate puppet would let both shots continue.';
@@ -571,11 +599,11 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
       assigned.forEach((id) => used.add(id));
       let wagesOk = true;
       for (const pid of assigned) {
-        const h = p.hires.find((x) => x.personId === pid && x.status === 'accepted' && x.roleId === task.roleId);
+        const h = p.hires.find((x) => x.personId === pid && x.status === 'accepted' && covers(x.roleId, task.roleId));
         if (!h || !h.obligationId) continue;
         const pay = h.dayRate * (holiday ? HOLIDAY_PREMIUM : 1);
         const o = p.obligations.find((x) => x.id === h.obligationId)!;
-        if (o.settled + pay > o.amount && ledgerTotals(p).available < pay) {
+        if (o.settled + pay > o.amount && ledgerTotals(p).available < o.settled + pay - Math.max(o.amount, o.settled)) {
           wagesOk = false;
           continue;
         }
@@ -614,20 +642,40 @@ function addLogOnce(state: GameState, p: Project, key: string, text: string): vo
   addLog(state, text, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
 }
 
+export function materialCost(task: Task): number {
+  const base = MATERIAL_COST[task.kind];
+  if (!base) return 0;
+  let qty = task.units;
+  if (task.kind === 'prep:creature') qty = task.units / 3;
+  if (task.kind === 'sm:armature') qty = task.units / 4;
+  if (task.kind === 'sm:puppet') qty = task.units / 5;
+  if (task.kind === 'sm:sets') qty = task.units / 8;
+  if (task.kind === 'post:clearance') qty = task.units / 2;
+  if (task.kind === 'doc:archive') qty = 1;
+  return Math.round(base * qty);
+}
+
+/** Pay from the schedule's reserved plan line when it has room; otherwise it is a new cost that needs uncommitted funds. */
+function payPlanned(state: GameState, p: Project, ref: 'plan:shoot' | 'plan:materials', label: string, category: Obligation['category'], amount: number, key: string): void {
+  if (amount <= 0) return;
+  if (p.obligations.some((o) => o.postings.some((x) => x.key === key))) return;
+  const o = p.obligations.find((x) => x.ref === ref && (x.state === 'reserved' || x.state === 'committed') && x.amount - x.settled >= amount);
+  if (o) settle(state, p, o.id, amount, key);
+  else spend(state, p, label, category, amount, key);
+}
+
+/** Cost still planned on the schedule's reserved lines. */
+function plannedRemaining(p: Project, ref: string): number {
+  return p.obligations.filter((o) => o.ref === ref && (o.state === 'reserved' || o.state === 'committed')).reduce((a, o) => a + Math.max(0, o.amount - o.settled), 0);
+}
+
 function onTaskDone(state: GameState, p: Project, task: Task, date: string): void {
   const base = MATERIAL_COST[task.kind];
   if (base) {
-    let qty = task.units;
-    if (task.kind === 'prep:creature') qty = task.units / 3;
-    if (task.kind === 'sm:armature') qty = task.units / 4;
-    if (task.kind === 'sm:puppet') qty = task.units / 5;
-    if (task.kind === 'sm:sets') qty = task.units / 8;
-    if (task.kind === 'post:clearance') qty = task.units / 2;
-    if (task.kind === 'doc:archive') qty = 1;
     try {
-      spend(state, p, `${task.label} Materials`, task.kind.startsWith('post:clearance') || task.kind === 'doc:archive' ? 'licensing' : 'materials', base * qty, `mat:${task.id}`);
+      payPlanned(state, p, 'plan:materials', `${task.label} Materials`, task.kind.startsWith('post:clearance') || task.kind === 'doc:archive' ? 'licensing' : 'materials', materialCost(task), `mat:${task.id}`);
     } catch (e) {
-      if (e instanceof FundsError) addLogOnce(state, p, `mat:${task.id}`, `${task.label} is done, but its materials (${money(base * qty)}) are unpaid. Add funding to settle it.`);
+      if (e instanceof FundsError) addLogOnce(state, p, `mat:${task.id}`, `${task.label} is done, but its materials (${money(materialCost(task))}) are unpaid. Add funding to settle it.`);
     }
   }
   const asset = task.assetRef ? p.assets.find((a) => a.characterId === task.assetRef && (task.kind.startsWith('sm:') ? a.kind === 'puppet' : task.kind === 'anim:rig' ? a.kind === 'rig' : task.kind === 'anim:model' ? a.kind === 'model' : a.kind === 'design')) : undefined;
@@ -762,7 +810,7 @@ export function swapWithInteriorDay(state: GameState, p: Project, dayId: string)
 }
 
 function hasCrew(p: Project, roleId: string): boolean {
-  return p.hires.some((h) => h.roleId === roleId && h.status === 'accepted');
+  return p.hires.some((h) => covers(h.roleId, roleId) && h.status === 'accepted');
 }
 
 export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
@@ -781,6 +829,21 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     d.result = 'No camera crew was hired, so nothing could be shot.';
     rescheduleScenes(state, p, d.sceneIds, d);
     addLog(state, `${p.title}: ${d.result}`, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'crew' } });
+    return d.result;
+  }
+  // Money first: a day whose cost exceeds agreed amounts and uncommitted funds doesn't run.
+  const holidayToday = holidaysOn(place.country, place.regionCode, d.date).length > 0;
+  const onSetHires = p.hires.filter((h) => h.status === 'accepted' && h.obligationId &&
+    (SHOOT_CREW.has(h.roleId) || (h.kind === 'cast' && h.method !== 'voice' && scenes.some((s) => s.participants.includes(h.characterId ?? '')))));
+  const overrun = onSetHires.reduce((a, h) => {
+    const o = p.obligations.find((x) => x.id === h.obligationId)!;
+    const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
+    return a + Math.max(0, o.settled + pay - Math.max(o.amount, o.settled));
+  }, 0) + Math.max(0, dayFees(p).location + dayFees(p).equipment + scenes.reduce((a, s) => a + s.crowd, 0) * 180 - plannedRemaining(p, 'plan:shoot'));
+  if (overrun > ledgerTotals(p).available) {
+    d.status = 'lost';
+    d.result = `There wasn't enough money for this shoot day (${money(overrun)} needed beyond what's already agreed). Add funding or cut scope, then rebuild the schedule.`;
+    addLogOnce(state, p, `funds:${d.id}`, `${p.title}: ${d.result}`);
     return d.result;
   }
   let capacity = BASE_MINUTES_PER_SHOOT_DAY;
@@ -878,17 +941,14 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     }
   }
   // Costs: everyone on the shoot crew and the cast in today's scenes is paid once for the day.
-  const holiday = holidaysOn(place.country, place.regionCode, d.date).length > 0;
-  for (const h of p.hires.filter((x) => x.status === 'accepted')) {
-    const onSet = SHOOT_CREW.has(h.roleId) || (h.kind === 'cast' && h.method !== 'voice' && scenes.some((s) => s.participants.includes(h.characterId ?? '')));
-    if (!onSet || !h.obligationId) continue;
-    if (settle(state, p, h.obligationId, h.dayRate * (holiday ? HOLIDAY_PREMIUM : 1), `${h.id}:${d.date}`)) h.daysWorked += 1;
+  for (const h of onSetHires) {
+    if (settle(state, p, h.obligationId!, h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1), `${h.id}:${d.date}`)) h.daysWorked += 1;
   }
   try {
-    spend(state, p, `Location Fee (${d.date})`, 'locations', LOCATION_FEE_PER_DAY, `loc:${d.id}`);
-    spend(state, p, `Equipment Package (${d.date})`, 'equipment', EQUIPMENT_PER_DAY, `eq:${d.id}`);
+    payPlanned(state, p, 'plan:shoot', `Location Fee (${d.date})`, 'locations', dayFees(p).location, `loc:${d.id}`);
+    payPlanned(state, p, 'plan:shoot', `Equipment Package (${d.date})`, 'equipment', dayFees(p).equipment, `eq:${d.id}`);
     const crowd = scenes.reduce((a, s) => a + s.crowd, 0);
-    if (crowd) spend(state, p, `Background Performers (${d.date})`, 'cast', crowd * 180, `crowd:${d.id}`);
+    if (crowd) payPlanned(state, p, 'plan:shoot', `Background Performers (${d.date})`, 'cast', crowd * 180, `crowd:${d.id}`);
   } catch (e) {
     if (e instanceof FundsError) addLogOnce(state, p, `day:${d.id}`, `${p.title} couldn't pay for today's location and equipment. Add funding before the next shoot day.`);
   }

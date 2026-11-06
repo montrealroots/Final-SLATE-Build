@@ -134,7 +134,7 @@ export function deliver(state: GameState, p: Project): void {
   for (const h of p.hires.filter((x) => x.status === 'accepted')) {
     if (h.obligationId) cancel(state, p, h.obligationId);
   }
-  for (const o of p.obligations.filter((x) => x.state === 'reserved')) cancel(state, p, o.id);
+  for (const o of p.obligations.filter((x) => x.state === 'reserved' || (x.ref?.startsWith('plan:') && x.state === 'committed'))) cancel(state, p, o.id);
   const ps = Object.values(state.people);
   for (const x of ps) x.bookings = x.bookings.filter((b2) => b2.projectId !== p.id);
   addLog(state, `${p.title} is delivered. It runs ${runtime} ${runtime === 1 ? 'minute' : 'minutes'}.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });

@@ -2,7 +2,7 @@ import {
   acceptCounter, addCharacter, addScene, approveDraft, assemblyComplete, castPlayer, castRoleFor, createProject, deliver, deliveryBlockers,
   emptyDraft, generatePlan, ledgerTotals, lockBlockers, lockPicture, makeOffer, neededRoles, newGame, processUntil, proposeStaffing, roleCandidates,
   saveDraft, sendStaffingOffers, startCutPass, updateCharacter, updateScene, productionWindow, isAvailable, approvedCharacters, approvedScenes,
-  DAY, dateKey, addDaysToKey, getProjectZone,
+  DAY, dateKey, addDaysToKey, getProjectZone, FundsError, bringInCoProducer,
 } from './engine-api';
 import type { CreationDraft, Format, GameState, Medium, PerformanceMethod, Project, Technique } from '../src/engine/types';
 
@@ -70,7 +70,8 @@ export function castAll(state: GameState, p: Project, playerRoles: { character: 
   for (const c of approvedCharacters(p)) {
     if (c.roleSize === 'background') continue;
     if (!approvedScenes(p).some((s) => s.participants.includes(c.id))) continue;
-    const method: PerformanceMethod = c.methods.includes('voice') && p.axes.medium === 'animation' ? 'voice' : 'on-camera';
+    const animated = p.axes.medium === 'animation' || (['cg', 'drawn', 'puppet'].includes(c.realization) && c.methods.includes('voice'));
+    const method: PerformanceMethod = animated ? 'voice' : 'on-camera';
     if (p.cast.some((a) => a.characterId === c.id && a.method === method)) continue;
     if (p.hires.some((h) => h.characterId === c.id && h.method === method && ['offered', 'countered', 'accepted'].includes(h.status))) continue;
     const roleId = castRoleFor(method);
@@ -109,6 +110,19 @@ export function manage(state: GameState, p: Project): string[] {
   if (!p.delivered) {
     staffAll(state, p);
     castAll(state, p);
+    // Recovery a player would choose when money runs out: bring in a partner, then rebuild the schedule.
+    const broke = p.tasks.some((t) => t.status === 'blocked' && /money/.test(t.blockedReason ?? '')) || p.schedule.days.some((d) => d.status === 'lost' && /enough money/.test(d.result ?? ''));
+    if (broke && !p.funding.extra.length) {
+      bringInCoProducer(state, p);
+      did.push('co-producer');
+      if (p.schedule.startDate && !p.schedule.days.some((d) => d.status === 'scheduled')) {
+        try {
+          generatePlan(state, p, addDaysToKey(dateKey(state.now, getProjectZone(p)), 2));
+        } catch {
+          /* still short: stays blocked */
+        }
+      }
+    }
   }
   if (assemblyComplete(p) && !p.edit.pictureLocked && !p.tasks.some((t) => t.kind === 'post:cutpass' && t.status !== 'done')) {
     if (lockBlockers(p).length === 0) {
@@ -139,9 +153,19 @@ export function runDays(state: GameState, p: Project, days: number, onDay?: (i: 
   }
 }
 
-export function startProduction(state: GameState, p: Project, leadDays = 10): void {
+/** Builds the schedule; on a funding shortfall it brings in a co-producer once, as a player could. */
+export function startProduction(state: GameState, p: Project, leadDays = 10): { neededCoProducer: boolean } {
   const zone = getProjectZone(p);
-  generatePlan(state, p, addDaysToKey(dateKey(state.now, zone), leadDays));
+  const start = addDaysToKey(dateKey(state.now, zone), leadDays);
+  try {
+    generatePlan(state, p, start);
+    return { neededCoProducer: false };
+  } catch (e) {
+    if (!(e instanceof FundsError)) throw e;
+    bringInCoProducer(state, p);
+    generatePlan(state, p, start);
+    return { neededCoProducer: true };
+  }
 }
 
 export function summary(p: Project) {
