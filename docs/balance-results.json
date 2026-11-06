@@ -48,23 +48,23 @@
       },
       "overall": {
         "n": 30,
-        "mean": 59.7,
-        "sd": 2.3,
-        "min": 55,
-        "p10": 57,
-        "median": 59,
-        "p90": 63,
-        "max": 64
+        "mean": 58,
+        "sd": 2.1,
+        "min": 54,
+        "p10": 56,
+        "median": 58,
+        "p90": 61,
+        "max": 62
       },
       "reception": {
         "n": 30,
-        "mean": 60,
+        "mean": 58.3,
         "sd": 7.2,
-        "min": 47,
-        "p10": 51,
-        "median": 61,
-        "p90": 69,
-        "max": 71
+        "min": 45,
+        "p10": 49,
+        "median": 59,
+        "p90": 68,
+        "max": 69
       },
       "integrity": {
         "negativeCash": 0,
@@ -117,23 +117,23 @@
       },
       "overall": {
         "n": 30,
-        "mean": 59,
-        "sd": 1.8,
-        "min": 55,
-        "p10": 57,
-        "median": 59,
-        "p90": 62,
-        "max": 63
+        "mean": 57.5,
+        "sd": 1.9,
+        "min": 53,
+        "p10": 55,
+        "median": 57,
+        "p90": 60,
+        "max": 62
       },
       "reception": {
         "n": 30,
-        "mean": 58.2,
+        "mean": 56.6,
         "sd": 7.9,
-        "min": 42,
-        "p10": 48,
-        "median": 60,
-        "p90": 68,
-        "max": 70
+        "min": 40,
+        "p10": 47,
+        "median": 59,
+        "p90": 67,
+        "max": 69
       },
       "integrity": {
         "negativeCash": 0,
@@ -186,23 +186,23 @@
       },
       "overall": {
         "n": 30,
-        "mean": 62.6,
+        "mean": 61.1,
         "sd": 1,
-        "min": 61,
-        "p10": 62,
-        "median": 62,
-        "p90": 64,
-        "max": 65
+        "min": 60,
+        "p10": 60,
+        "median": 61,
+        "p90": 63,
+        "max": 63
       },
       "reception": {
         "n": 30,
-        "mean": 63.8,
+        "mean": 62.3,
         "sd": 6.8,
-        "min": 47,
-        "p10": 56,
-        "median": 63,
-        "p90": 75,
-        "max": 75
+        "min": 45,
+        "p10": 54,
+        "median": 62,
+        "p90": 73,
+        "max": 73
       },
       "integrity": {
         "negativeCash": 0,
@@ -255,23 +255,23 @@
       },
       "overall": {
         "n": 30,
-        "mean": 62.6,
-        "sd": 1.1,
-        "min": 60,
-        "p10": 61,
-        "median": 63,
-        "p90": 64,
-        "max": 65
+        "mean": 60.9,
+        "sd": 1,
+        "min": 59,
+        "p10": 60,
+        "median": 61,
+        "p90": 62,
+        "max": 63
       },
       "reception": {
         "n": 30,
-        "mean": 64,
-        "sd": 4.6,
-        "min": 53,
-        "p10": 58,
-        "median": 64,
-        "p90": 69,
-        "max": 76
+        "mean": 62.4,
+        "sd": 4.7,
+        "min": 51,
+        "p10": 56,
+        "median": 62,
+        "p90": 68,
+        "max": 74
       },
       "integrity": {
         "negativeCash": 0,
@@ -324,23 +324,23 @@
       },
       "overall": {
         "n": 30,
-        "mean": 62.3,
+        "mean": 60.7,
         "sd": 1.4,
-        "min": 60,
-        "p10": 61,
-        "median": 62,
-        "p90": 64,
-        "max": 66
+        "min": 58,
+        "p10": 59,
+        "median": 61,
+        "p90": 63,
+        "max": 64
       },
       "reception": {
         "n": 30,
-        "mean": 64,
+        "mean": 62.4,
         "sd": 7.2,
-        "min": 42,
-        "p10": 57,
-        "median": 64,
-        "p90": 73,
-        "max": 74
+        "min": 40,
+        "p10": 55,
+        "median": 62,
+        "p90": 71,
+        "max": 72
       },
       "integrity": {
         "negativeCash": 0,
@@ -393,23 +393,23 @@
       },
       "overall": {
         "n": 30,
-        "mean": 60.2,
+        "mean": 58.8,
         "sd": 1.9,
-        "min": 53,
-        "p10": 59,
-        "median": 61,
-        "p90": 62,
-        "max": 63
+        "min": 52,
+        "p10": 57,
+        "median": 59,
+        "p90": 61,
+        "max": 62
       },
       "reception": {
         "n": 30,
-        "mean": 56.6,
-        "sd": 7.9,
-        "min": 43,
-        "p10": 49,
-        "median": 57,
-        "p90": 69,
-        "max": 76
+        "mean": 55.2,
+        "sd": 8.1,
+        "min": 42,
+        "p10": 47,
+        "median": 55,
+        "p90": 68,
+        "max": 75
       },
       "integrity": {
         "negativeCash": 0,
@@ -421,23 +421,23 @@
     "feature: rehearsal 0 vs 8 days (overall quality)": {
       "rehearsal0": {
         "n": 15,
-        "mean": 57.5,
+        "mean": 55.9,
+        "sd": 2,
+        "min": 52,
+        "p10": 54,
+        "median": 55,
+        "p90": 59,
+        "max": 60
+      },
+      "rehearsal8": {
+        "n": 15,
+        "mean": 57.3,
         "sd": 2.2,
         "min": 53,
         "p10": 55,
         "median": 57,
         "p90": 60,
         "max": 62
-      },
-      "rehearsal8": {
-        "n": 15,
-        "mean": 58.9,
-        "sd": 2,
-        "min": 55,
-        "p10": 57,
-        "median": 58,
-        "p90": 62,
-        "max": 63
       }
     },
     "feature: low vs mid budget scenario (same hiring policy)": {
@@ -487,23 +487,23 @@
         },
         "overall": {
           "n": 15,
-          "mean": 58.9,
-          "sd": 2,
-          "min": 55,
-          "p10": 57,
-          "median": 58,
-          "p90": 62,
-          "max": 63
+          "mean": 57.5,
+          "sd": 2.2,
+          "min": 53,
+          "p10": 55,
+          "median": 57,
+          "p90": 60,
+          "max": 62
         },
         "reception": {
           "n": 15,
-          "mean": 58.8,
-          "sd": 8.3,
-          "min": 42,
-          "p10": 48,
-          "median": 60,
-          "p90": 68,
-          "max": 70
+          "mean": 57.3,
+          "sd": 8.2,
+          "min": 40,
+          "p10": 47,
+          "median": 58,
+          "p90": 66,
+          "max": 69
         },
         "integrity": {
           "negativeCash": 0,
@@ -556,23 +556,23 @@
         },
         "overall": {
           "n": 15,
-          "mean": 58.9,
-          "sd": 2,
-          "min": 55,
-          "p10": 57,
-          "median": 58,
-          "p90": 62,
-          "max": 63
+          "mean": 57.5,
+          "sd": 2.2,
+          "min": 53,
+          "p10": 55,
+          "median": 57,
+          "p90": 60,
+          "max": 62
         },
         "reception": {
           "n": 15,
-          "mean": 58.8,
-          "sd": 8.3,
-          "min": 42,
-          "p10": 48,
-          "median": 60,
-          "p90": 68,
-          "max": 70
+          "mean": 57.3,
+          "sd": 8.2,
+          "min": 40,
+          "p10": 47,
+          "median": 58,
+          "p90": 66,
+          "max": 69
         },
         "integrity": {
           "negativeCash": 0,

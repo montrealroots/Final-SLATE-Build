@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { languageName } from '../data/identity';
 import {
-  MODULE_LABELS, TECHNIQUE_LABELS, addCharacter, addNote, addScene, applyDesignChange, approveDraft, composeGenres, deleteScene, describeImpact,
+  MODULE_LABELS, TECHNIQUE_LABELS, addCharacter, addNote, addScene, noteFromIssue, applyDesignChange, approveDraft, composeGenres, deleteScene, describeImpact,
   designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter,
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, type ModuleId,
@@ -83,6 +83,7 @@ export function ScriptTab({ p }: { p: Project }) {
       </div>
       <section className="panel">
         <h2>{nonfiction ? 'Subject And Approach' : 'Story'}</h2>
+        <p className="dim">Your own words for the project. SLATE keeps them with the script; it doesn't read them for meaning.</p>
         <div className="grid2">
           {nonfiction && <TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} />}
           <TextField label="Logline" multiline value={p.story.logline} maxLength={300} onChange={(v) => edit(p, () => (p.story.logline = v))} />
@@ -131,6 +132,7 @@ export function ScriptTab({ p }: { p: Project }) {
 
       <section className="panel">
         <h2>Readiness</h2>
+        <p className="dim">Readiness checks follow the script's structure: scenes, who is in them, objectives, setups and their payoffs, the questions your genres raise. For written answers they check that something is there, not whether it is good.</p>
         {blocking.length ? (
           <>
             <p>These must be fixed before a draft can be approved:</p>
@@ -140,7 +142,15 @@ export function ScriptTab({ p }: { p: Project }) {
         {notes.length > 0 && (
           <details>
             <summary>{plural(notes.length, 'note')} to consider</summary>
-            <ul>{notes.map((i, k) => <li key={k}>{i.text}</li>)}</ul>
+            <ul>{notes.map((i, k) => {
+              const added = p.notes.some((n) => n.source === 'readiness' && n.text === i.text && n.status !== 'addressed');
+              return (
+                <li key={k}>
+                  {i.text}{' '}
+                  {added ? <span className="chip">In Revision Notes</span> : <button className="btn btn-small" onClick={() => setErr(store.act((s) => void noteFromIssue(s, s.projects.find((x) => x.id === p.id)!, i.text)))}>Add To Revision Notes</button>}
+                </li>
+              );
+            })}</ul>
           </details>
         )}
       </section>
@@ -353,6 +363,7 @@ function WorldRules({ p, title }: { p: Project; title: string }) {
   return (
     <section className="panel">
       <h2>{title}</h2>
+      <p className="dim">SLATE records these rules and checks that some are written down. It can't tell whether a scene breaks one: that is yours to keep track of.</p>
       <ul className="list">{p.worldRules.map((r) => <li key={r.id} className="row"><span className="grow"><strong>{r.rule}</strong>{r.limit ? <span className="muted"> Limit or cost: {r.limit}</span> : null}</span><button className="btn btn-small" onClick={() => edit(p, () => (p.worldRules = p.worldRules.filter((x) => x.id !== r.id)))}>Remove</button></li>)}</ul>
       <div className="inline-form">
         <TextField label="Rule" value={rule} onChange={setRule} />
@@ -473,6 +484,7 @@ function Notes({ p }: { p: Project }) {
     <section className="panel">
       <h2>Revision Notes</h2>
       <p className="muted">Accept notes you want to work on, then start a revision pass. Revisions take time.</p>
+      <p className="dim">Notes raised by the readiness checks count toward the script's modeled quality once a revision addresses them. Notes you add yourself are for your own process and don't change it.</p>
       {p.revision && <p className="alert info">Revision pass underway. It finishes in {formatDuration(p.revision.endsAt - g.now)}.</p>}
       <ul className="list">
         {p.notes.map((n) => (

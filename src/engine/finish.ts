@@ -209,9 +209,16 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   const setups = p.setups.length ? p.setups.filter((x) => x.plantedIn && x.paidIn).length / p.setups.length : 0.6;
   const { questions } = composeGenres(p.axes.genres.map((g) => g.id));
   const answered = questions.length ? questions.filter((q) => (p.genreNotes[q.key] ?? '').trim()).length / questions.length : 0.7;
-  const addressed = p.notes.filter((n) => n.status === 'addressed').length;
+  // Only notes the readiness checks raised count, once a revision pass has addressed them. Notes you write yourself are
+  // for your own process, and a pass with nothing to address adds nothing: repeating passes can't manufacture quality.
+  // ...and only when the check it came from is gone from the script's readiness checks.
+  const open = new Set(issues.map((i) => i.text));
+  const addressed = p.notes.filter((n) => n.status === 'addressed' && n.source === 'readiness' && !open.has(n.text)).length;
   const writerHelp = p.hires.filter((h) => ['co-writer', 'script-editor'].includes(h.roleId) && h.status !== 'declined').map((h) => personById(state, h.personId).capability);
-  const script = clamp(35 + objectives * 15 + setups * 12 + answered * 10 + Math.min(12, p.revisionPasses * 4 + addressed) - Math.min(20, notes * 1.5) + (writerHelp.length ? (avg(writerHelp) - 60) / 6 : 0));
+  // Free text is checked for presence only (objectives, answers to genre questions), so it weighs little; structure the
+  // engine can follow (setups planted and paid off in named scenes), addressed readiness notes and skilled writing help
+  // weigh more. Filling every field on your own tops out around 70 of 100.
+  const script = clamp(40 + objectives * 6 + setups * 10 + answered * 4 + Math.min(10, addressed * 2) - Math.min(20, notes * 1.5) + (writerHelp.length ? (avg(writerHelp) - 50) / 3 : 0));
   const caps = p.captures.filter((c) => scenes.some((s) => s.id === c.sceneId));
   const captureQ = avg(caps.map((c) => c.quality), 60);
   const lostDays = p.schedule.days.filter((d) => d.status === 'lost').length;
