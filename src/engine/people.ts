@@ -21,6 +21,7 @@ export const ROLES: RoleDef[] = [
   R('co-writer', 'Co-Writer', 'Writing', 400), R('script-editor', 'Script Editor', 'Writing', 350), R('episode-writer', 'Episode Writer', 'Writing', 500),
   R('line-producer', 'Line Producer', 'Producing', 550), R('production-manager', 'Production Manager', 'Producing', 450),
   R('production-coordinator', 'Production Coordinator', 'Producing', 300),
+  R('story-producer', 'Story Producer', 'Producing', 450),
   R('first-ad', 'First Assistant Director', 'Direction', 550), R('script-supervisor', 'Script Supervisor', 'Direction', 400),
   R('episode-director', 'Episode Director', 'Direction', 900), R('video-assist', 'Video Assist Operator', 'Direction', 320),
   R('casting-director', 'Casting Director', 'Casting And Performance', 500), R('actor', 'Performer', 'Casting And Performance', 700, true),

@@ -670,10 +670,78 @@ registerHandler('edition-deadline', (state, ev) => {
 const RIVAL_WORDS_A = ['Quiet', 'Salt', 'Paper', 'Northern', 'Last', 'Glass', 'Hollow', 'Bright', 'Small', 'Burning', 'Silent', 'Iron', 'Little', 'Distant', 'Golden', 'Low', 'Wild', 'Late', 'Blue', 'Second'];
 const RIVAL_WORDS_B = ['Harbor', 'Summer', 'Orchard', 'Signal', 'River', 'Kingdom', 'Witness', 'Houses', 'Tide', 'Season', 'Weather', 'Mountain', 'Archive', 'Garden', 'Crossing', 'Lights', 'Hours', 'Field', 'Animals', 'Room'];
 
+export interface SlateFilm {
+  id: string;
+  title: string;
+  format: Format;
+  medium: Medium;
+  genres: string[];
+  runtimeMin: number;
+  people: Record<string, string>;
+  scores: Record<Recipient, number>;
+}
+
+const SLATE_GENRES = ['drama', 'comedy', 'thriller', 'horror', 'romance', 'science-fiction', 'fantasy', 'crime', 'musical', 'documentary', 'war', 'western', 'family'];
+const slateCache = new Map<string, SlateFilm[]>();
+
+/**
+ * One season's competing work: a deterministic slate of simulated films and series, so the same
+ * titles move from festivals into the following awards season with consistent strengths.
+ */
+export function seasonSlate(seed: number, seasonYear: number): SlateFilm[] {
+  const key = `${seed}|${seasonYear}`;
+  const hit = slateCache.get(key);
+  if (hit) return hit;
+  const r = stream(seed, 'slate', seasonYear);
+  const out: SlateFilm[] = [];
+  const firsts = ['Iris', 'Teo', 'Marisol', 'Kwame', 'Ana', 'Lars', 'Mina', 'Rafi', 'Odile', 'Sung-min', 'Leila', 'Joaquín', 'Ngozi', 'Yuki', 'Farid', 'Elsa'];
+  const lasts = ['Varga', 'Mbeki', 'Holt', 'Ruiz', 'Okoro', 'Aalto', 'Brandt', 'Sato', 'Navarro', 'Achterberg', 'Kader', 'Lindqvist', 'Moreau', 'Osei', 'Petrova', 'Tanaka'];
+  const name = () => `${pick(r, firsts)} ${pick(r, lasts)}`;
+  for (let i = 0; i < 120; i++) {
+    const roll = r();
+    const format: Format = roll < 0.5 ? 'feature' : roll < 0.62 ? 'documentary-feature' : roll < 0.74 ? 'short' : roll < 0.8 ? 'documentary-short' : roll < 0.9 ? 'series' : roll < 0.95 ? 'limited-series' : 'documentary-series';
+    const m = r();
+    const medium: Medium = format.startsWith('documentary') ? (m < 0.9 ? 'live-action' : 'animation') : m < 0.72 ? 'live-action' : m < 0.94 ? 'animation' : 'hybrid';
+    const base = Math.max(25, Math.min(96, gaussian(r, 62, 11)));
+    const off = () => gaussian(r, 0, 6);
+    const genres = format.startsWith('documentary') ? ['documentary'] : [pick(r, SLATE_GENRES.filter((g) => g !== 'documentary'))];
+    if (r() < 0.3) genres.push(pick(r, SLATE_GENRES.filter((g) => g !== 'documentary')));
+    out.push({
+      id: `sl${seasonYear}-${i}`,
+      title: `${pick(r, ['The ', '', '', 'A '])}${pick(r, RIVAL_WORDS_A)} ${pick(r, RIVAL_WORDS_B)}`,
+      format, medium, genres, runtimeMin: format === 'short' || format === 'documentary-short' ? intBetween(r, 6, 30) : format.includes('series') ? intBetween(r, 25, 60) : intBetween(r, 80, 150),
+      people: { director: name(), writer: name(), lead: name() },
+      scores: { project: base, producer: base, director: base + off(), writer: base + off(), lead: base + off(), supporting: base + off(), voice: base + off(), ensemble: base + off() },
+    });
+  }
+  // The same title can't appear twice in one season.
+  const seen = new Set<string>();
+  const unique = out.filter((f) => (seen.has(f.title) ? false : (seen.add(f.title), true)));
+  if (slateCache.size > 40) slateCache.clear();
+  slateCache.set(key, unique);
+  return unique;
+}
+
+function seasonOf(ed: Edition): number {
+  return institution(ed.institutionId).kind === 'festival' ? ed.year : ed.year - 1;
+}
+
 function rivalsFor(state: GameState, ed: Edition, cat: Category): Rival[] {
+  const slate = seasonSlate(state.seed, seasonOf(ed)).filter((f) =>
+    cat.formats.includes(f.format) && (!cat.mediums || cat.mediums.includes(f.medium)) &&
+    (!cat.genres || f.genres.some((g) => cat.genres!.includes(g))) && (!cat.excludeGenres || !f.genres.some((g) => cat.excludeGenres!.includes(g))));
+  const fromSlate: Rival[] = slate.map((f) => ({
+    id: `${ed.id}:${cat.id}:${f.id}`, title: f.title, people: f.people, format: f.format, medium: f.medium, runtimeMin: f.runtimeMin, premiereCountry: 'US',
+    scores: { [cat.id]: f.scores[cat.recipient] },
+  }));
+  const needed = Math.max(cat.slots * 3, cat.slots + 6);
+  if (fromSlate.length >= needed) return fromSlate;
+  return [...fromSlate, ...generatedRivals(state, ed, cat, needed - fromSlate.length)];
+}
+
+function generatedRivals(state: GameState, ed: Edition, cat: Category, n: number): Rival[] {
   const inst = institution(ed.institutionId);
   const r = stream(state.seed, 'rivals', ed.id, cat.id);
-  const n = Math.max(cat.slots * 3, cat.slots + 6);
   const out: Rival[] = [];
   for (let i = 0; i < n; i++) {
     const title = `${pick(r, ['The ', '', '', 'A '])}${pick(r, RIVAL_WORDS_A)} ${pick(r, RIVAL_WORDS_B)}`;
@@ -794,12 +862,36 @@ registerHandler('edition-start', (state, ev) => {
       continue;
     }
     if (!p.premiere) p.premiere = { kind: 'world', date: startKey, country: getPlace(inst.placeId).country, venue: ed.label, editionId: ed.id };
-    p.history.push({ at: state.now, text: `Screened at the ${ed.label} (${cat.name}).` });
+    // Two public screenings inside the festival dates. They happen whether or not you attend.
+    ed.screenings ??= [];
+    const slots: [number, number][] = [[1, 19], [3, 14]];
+    for (const [dayOffset, hour] of slots) {
+      const k = addDaysToKey(startKey, Math.min(dayOffset, inst.duration - 1));
+      const { year, month, day } = parseYmd(k);
+      const at = Math.min(ed.end - 3600_000, localToInstant(zone, year, month, day, hour).instant);
+      if (ed.screenings.some((x) => x.projectId === p.id && x.at === at)) continue;
+      ed.screenings.push({ projectId: p.id, at, done: false });
+      schedule(state, at, 'screening', { editionId: ed.id, projectId: p.id, at }, { attention: 'notify', priority: 31 });
+    }
     messages.push(`${p.title} screens at the ${ed.label} this week.`);
     schedule(state, ed.end + DAY, 'distribution-offer', { projectId: p.id, wave: ed.id, exposure: Math.round(institution(ed.institutionId).prestige / 8) }, { attention: 'notify', priority: 55 });
   }
   for (const m of messages) addLog(state, m, 'festival', { route: { view: 'event', editionId: ed.id } });
   return messages.length ? { message: messages[0] } : involved(state, ed) ? { message: `The ${ed.label} opens today.` } : { suppressInterrupt: true };
+});
+
+registerHandler('screening', (state, ev) => {
+  const ed = edition(state, ev.payload.editionId as string);
+  const sc = ed.screenings?.find((x) => x.projectId === ev.payload.projectId && x.at === ev.payload.at);
+  const p = state.projects.find((x) => x.id === ev.payload.projectId);
+  if (!sc || sc.done || !p) return { suppressInterrupt: true };
+  sc.done = true;
+  const reception = p.quality?.reception ?? 50;
+  const response = reception >= 75 ? 'warm' : reception >= 55 ? 'mixed but attentive' : 'cool';
+  const text = `${p.title} screened at the ${ed.label}. The audience response was ${response}.`;
+  p.history.push({ at: state.now, text });
+  addLog(state, text, 'festival', { projectId: p.id, route: { view: 'event', editionId: ed.id } });
+  return { message: text };
 });
 
 registerHandler('edition-results', (state, ev) => {
@@ -882,6 +974,11 @@ registerCommitmentSource((state, from, to) => {
   for (const ed of state.editions) {
     const mine = ed.entries.some((e) => ['selected', 'nominated'].includes(e.status));
     if (mine && ed.start >= from && ed.start <= to) out.push({ at: ed.start, label: ed.label, route: { view: 'event', editionId: ed.id }, kind: 'event' });
+    for (const sc of ed.screenings ?? []) {
+      if (sc.done || sc.at < from || sc.at > to) continue;
+      const title = state.projects.find((x) => x.id === sc.projectId)?.title ?? 'Your film';
+      out.push({ at: sc.at, label: `Screening Of ${title} At The ${ed.label}`, route: { view: 'event', editionId: ed.id }, kind: 'event' });
+    }
     if (state.followed.includes(ed.institutionId) && ed.deadline >= from && ed.deadline <= to) out.push({ at: ed.deadline, label: `${ed.label} entry deadline`, route: { view: 'event', editionId: ed.id }, kind: 'deadline' });
   }
   return out;

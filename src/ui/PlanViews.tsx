@@ -126,7 +126,9 @@ export function CastTab({ p }: { p: Project }) {
         <p className="muted">You can cast yourself in any role, or stay behind the camera. Writing a character doesn't earn an acting credit.</p>
         <ul className="list">
           {chars.map((c) => {
-            const methods: PerformanceMethod[] = c.roleSize === 'background' ? [] : p.axes.medium === 'animation' ? ['voice'] : c.methods.filter((m) => m === 'on-camera' || m === 'voice' || m === 'motion-capture');
+            const methods: PerformanceMethod[] = c.roleSize === 'background' ? [] : p.axes.medium === 'animation'
+              ? ['voice', ...(c.methods.includes('motion-capture') ? ['motion-capture' as const] : [])]
+              : c.methods.filter((m) => m === 'on-camera' || m === 'voice' || m === 'motion-capture');
             return (
               <li key={c.id}>
                 <div className="row">

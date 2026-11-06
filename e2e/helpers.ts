@@ -156,12 +156,23 @@ export async function castRoles(page: Page, yourself: string[] = []): Promise<vo
     const btn = roles.locator('li', { hasText: name }).getByRole('button', { name: 'Cast Yourself' }).first();
     if (await btn.isVisible()) await btn.click();
   }
-  for (const btn of await roles.getByRole('button', { name: 'Find Performers' }).all()) {
-    if (!(await btn.isVisible())) continue;
-    await btn.click();
-    const offers = page.getByRole('dialog').getByRole('button', { name: 'Make Offer' });
-    if (await offers.count()) await offers.first().click();
-    else await page.getByRole('dialog').getByRole('button', { name: 'Close' }).click();
+  // Re-query after every offer: the list re-renders once a role has an offer out.
+  const tried = new Set<string>();
+  for (let guard = 0; guard < 12; guard++) {
+    const items = roles.locator('li').filter({ has: page.getByRole('button', { name: 'Find Performers' }) });
+    let target = null;
+    for (const li of await items.all()) {
+      const key = (await li.locator('strong').first().innerText()).trim();
+      if (!tried.has(key)) { target = li; tried.add(key); break; }
+    }
+    if (!target) break;
+    await target.getByRole('button', { name: 'Find Performers' }).first().click();
+    const dialog = page.getByRole('dialog');
+    const offers = dialog.getByRole('button', { name: 'Make Offer' });
+    const n = await offers.count();
+    // An offer can be refused (for example, one performer can't play two characters in a scene): try the next person.
+    for (let i = 0; i < n && (await dialog.isVisible()); i++) await offers.nth(i).click();
+    if (await dialog.isVisible()) await dialog.getByRole('button', { name: 'Close' }).click();
   }
   for (const b of await page.getByRole('button', { name: 'Accept Counteroffer' }).all()) await b.click();
 }
@@ -179,7 +190,11 @@ export async function produceToDelivery(page: Page, opts: { yourself?: string[];
     await castRoles(page);
     // Documentary facts can be checked once research is done.
     await section(page, 'Script');
-    for (const b of await page.getByRole('button', { name: 'Mark As Checked' }).all()) if (await b.isEnabled()) await b.click();
+    for (let k = 0; k < 10; k++) {
+      const b = page.getByRole('button', { name: 'Mark As Checked' }).first();
+      if (!(await b.isVisible()) || !(await b.isEnabled())) break;
+      await b.click();
+    }
     await section(page, 'Edit');
     const deliver = page.getByRole('button', { name: 'Deliver Project' });
     if (await deliver.isVisible() && await deliver.isEnabled()) {

@@ -1,13 +1,16 @@
 import { describe, expect, it } from 'vitest';
 import { institution, processUntil, upcomingCommitments, DAY, seasonSlate, announceEdition } from './engine-api';
-import { startLife } from './helpers';
+import { approve, buildProject, startLife } from './helpers';
 
 describe('festival screenings', () => {
   it('a selection creates screenings inside the festival dates that happen whether or not you attend', () => {
     const s = startLife('screen');
     const ed = s.editions.find((e) => e.institutionId === 'venice' && e.year === 2026)!;
-    const p = { id: 'px', title: 'Salt Road' } as never;
-    s.projects.push({ ...(p as object), credits: [], releases: [], premiere: null, history: [], offers: [], quality: { overall: 90, reception: 90, direction: 90, script: 90 }, delivered: { at: 0, runtimeMin: 100 }, axes: { basePlaceId: 'it-rome', format: 'feature', medium: 'live-action', genres: [] }, drafts: [], approvedDraft: null, noticeKeys: [] } as never);
+    const proj = buildProject(s, { title: 'Salt Road', format: 'feature', medium: 'live-action', runtime: 100 }, [{ name: 'A' }], [{ place: 'Room', chars: ['A'], minutes: 50 }]);
+    approve(s, proj);
+    proj.id = 'px';
+    proj.delivered = { at: s.now, runtimeMin: 100 };
+    proj.quality = { overall: 90, reception: 90, direction: 90, script: 90 };
     ed.entries.push({ id: 'en1', projectId: 'px', categoryId: 'competition', submittedAt: 0, status: 'selected', recipients: [], fee: 0 });
     ed.results.competition = { stage: 'selection', projectIds: ['px'], rivalIds: [], revealed: true };
     ed.status = 'announced';

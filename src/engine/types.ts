@@ -498,6 +498,7 @@ export interface Edition {
   rivals: Rival[];
   results: Record<string, { stage: 'selection' | 'nomination' | 'winner'; projectIds: string[]; rivalIds: string[]; winner?: string; revealed: boolean }>;
   status: 'upcoming' | 'open' | 'closed' | 'judging' | 'announced' | 'complete';
+  screenings?: { projectId: string; at: number; done: boolean }[];
 }
 
 export interface Settings {

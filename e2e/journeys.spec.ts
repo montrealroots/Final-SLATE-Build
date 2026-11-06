@@ -121,7 +121,8 @@ test('documentary: consent and fact checks gate delivery', async ({ page }) => {
   await page.getByLabel('Claim').fill('The lock has operated since 1673.');
   await page.getByLabel('Status', { exact: true }).selectOption({ label: 'Established' });
   await page.getByRole('button', { name: 'Add Fact' }).click();
-  for (const b of await page.getByRole('button', { name: 'Request Consent' }).all()) await b.click();
+  for (let k = 0; k < 3; k++) await page.getByRole('button', { name: 'Request Consent' }).first().click();
+  await expect(page.getByRole('button', { name: 'Request Consent' })).toHaveCount(0);
   await advance(page, 'week');
   await advance(page, 'week');
   await section(page, 'Script');

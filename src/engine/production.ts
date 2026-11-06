@@ -4,7 +4,7 @@
 
 import { getPlace } from '../data/places';
 import { cancel, commit, ledgerTotals, money, reserve, settle, spend, FundsError } from './budget';
-import { holidaysOn } from './holidays';
+import { holidaysOn, isMakeUpWorkday } from './holidays';
 import { covers, isAvailable, personById, roleLabel } from './people';
 import {
   approvedCharacters, approvedScenes, approvalRights, isEpisodic, isNonfiction, projectModules, sceneLabel, sceneTechnique,
@@ -47,6 +47,10 @@ export function dayFees(p: Project): { location: number; equipment: number } {
   return { location: Math.round(LOCATION_FEE_PER_DAY * k), equipment: Math.round(EQUIPMENT_PER_DAY * k) };
 }
 export const VOICE_SESSION_STUDIO = 400;
+/** Capture stage, suits and solving per session (simulation assumption). */
+export const MOCAP_SESSION_STAGE = 1500;
+/** Share of keyframe work left when a shot uses captured performance (simulation assumption). */
+export const MOCAP_ANIMATION_FACTOR = 0.6;
 
 // ---------------- Task generation ----------------
 
@@ -68,6 +72,7 @@ export function buildTasks(p: Project): Task[] {
   const liveScenes = scenes.filter((s) => sceneTechnique(p, s) === 'live');
   const animScenes = scenes.filter((s) => sceneTechnique(p, s) !== 'live');
   const nonfiction = isNonfiction(p.axes.format);
+  const unscripted = p.axes.format === 'unscripted-series';
   const periodFactor = mods.has('period') && !/contemporary|present/i.test(p.axes.storyEra) ? 1.5 : 1;
   const prepIds: string[] = [];
 
@@ -100,7 +105,7 @@ export function buildTasks(p: Project): Task[] {
       prepIds.push('prep:rehearsal:all');
     }
   }
-  if (nonfiction) {
+  if (nonfiction && !unscripted) {
     tasks.push(t('doc:research', 'all', 'Research And Access Planning', 'Documentary', 'researcher', 3 + p.evidence.length, 'items'));
     prepIds.push('doc:research:all');
     if (p.evidence.some((e) => e.status !== 'dramatized')) {
@@ -150,13 +155,21 @@ export function buildTasks(p: Project): Task[] {
         }
         const envs = new Set(tScenes.map((s) => s.storyLocation || s.heading.place));
         tasks.push(t('anim:envs', 'all', 'Environment Models', 'Animation', 'modeler', envs.size * 5, 'days', ['anim:visdev:all']));
+        // Motion capture: one session per scene for each captured character, feeding animation.
+        const capChars = animChars.filter((c) => c.methods.includes('motion-capture') && tScenes.some((s) => s.participants.includes(c.id)));
+        for (const c of capChars) {
+          const sessions = tScenes.filter((s) => s.participants.includes(c.id)).length;
+          tasks.push(t('anim:mocap', c.id, `Motion Capture: ${c.name}`, 'Casting And Performance', 'director', sessions, 'sessions', ['anim:animatic:all'], { assetRef: c.id }));
+        }
         for (const s of tScenes) {
           const rigDeps = s.participants.filter((c) => animChars.some((x) => x.id === c)).map((c) => `anim:rig:${c}`);
+          const capDeps = capChars.filter((c) => s.participants.includes(c.id)).map((c) => `anim:mocap:${c.id}`);
           const fxNeeded = s.vfx.length > 0 || s.crowd > 0;
           tasks.push(t('anim:layout', s.id, `Layout: ${sceneLabel(p, s)}`, 'Animation', 'layout-artist', Math.max(0.5, s.estMinutes * 1.5), 'days', ['anim:animatic:all', 'anim:envs:all'], { sceneIds: [s.id], episode: s.episode }));
           const actionFactor = s.stunts.trim() ? 1.3 : 1;
-          tasks.push(t('anim:animation', s.id, `Animate ${sceneLabel(p, s)}`, 'Animation', 'animator', ((s.estMinutes * 60) / rate[q]) * actionFactor, 'animator days',
-            [`anim:layout:${s.id}`, ...rigDeps, ...voiceDeps(s)], { sceneIds: [s.id], episode: s.episode }));
+          const capFactor = capDeps.length ? MOCAP_ANIMATION_FACTOR : 1;
+          tasks.push(t('anim:animation', s.id, `Animate ${sceneLabel(p, s)}`, 'Animation', 'animator', ((s.estMinutes * 60) / rate[q]) * actionFactor * capFactor, 'animator days',
+            [`anim:layout:${s.id}`, ...rigDeps, ...capDeps, ...voiceDeps(s)], { sceneIds: [s.id], episode: s.episode }));
           if (fxNeeded) tasks.push(t('anim:fx', s.id, `Effects And Simulation: ${sceneLabel(p, s)}`, 'Animation', 'fx-artist', 2 + s.vfx.length * 2 + (s.crowd > 0 ? 3 : 0), 'days', [`anim:animation:${s.id}`], { sceneIds: [s.id], episode: s.episode }));
           tasks.push(t('anim:lighting', s.id, `Lighting: ${sceneLabel(p, s)}`, 'Animation', 'lighting-artist', Math.max(0.5, s.estMinutes * 1.2), 'days', [fxNeeded ? `anim:fx:${s.id}` : `anim:animation:${s.id}`], { sceneIds: [s.id], episode: s.episode }));
           tasks.push(t('anim:render', s.id, `Render: ${sceneLabel(p, s)}`, 'Animation', 'render', s.estMinutes * 60 * OUTPUT_FPS, 'frames', [`anim:lighting:${s.id}`], { sceneIds: [s.id], episode: s.episode }));
@@ -205,6 +218,13 @@ export function buildTasks(p: Project): Task[] {
     });
     if (eScenes.some((s) => sceneTechnique(p, s) === 'live')) capDeps.push(`capture:${e}`);
     if (nonfiction) capDeps.push(...eScenes.filter((s) => s.kind === 'archival').map((s) => `doc:archive:${s.id}`));
+    if (unscripted) {
+      // Unscripted shows find their story in the footage: log it, then shape each episode before assembly.
+      const segs = eScenes.filter((s) => s.kind === 'segment').length || 1;
+      tasks.push(t('unscripted:logging', String(e), `Footage Logging${epSuffix(p, e)}`, 'Post Production', 'assistant-editor', segs * 1.5, 'days', [`capture:${e}`], { episode: e }));
+      tasks.push(t('unscripted:story', String(e), `Story Producing${epSuffix(p, e)}`, 'Producing', 'story-producer', segs, 'days', [`unscripted:logging:${e}`], { episode: e }));
+      capDeps.push(`unscripted:story:${e}`);
+    }
     tasks.push(t('post:assembly', String(e), `Assembly Edit${isEpisodic(p.axes.format) ? `, Episode ${e}` : ''}`, 'Post Production', 'editor', Math.max(1, minutes / 6), 'days', capDeps, { episode: e }));
     const lock = `milestone:lock:${e}`;
     const hasVfx = eScenes.some((s) => s.vfx.length && sceneTechnique(p, s) === 'live');
@@ -240,6 +260,8 @@ export function sceneComplexity(s: Scene, mods: Set<string>): number {
 }
 
 export function isWorkingDay(p: Project, key: string): boolean {
+  const base = getPlace(p.axes.basePlaceId);
+  if (isMakeUpWorkday(base.country, key)) return true;
   const wd = weekdayOfKey(key);
   if (wd === 0) return false;
   if (wd === 6 && !p.schedule.sixDayWeeks) return false;
@@ -392,7 +414,7 @@ function ensureAssets(p: Project): void {
   const keep = new Map(p.assets.map((a) => [a.id, a]));
   const next: Asset[] = [];
   for (const task of p.tasks) {
-    if (!task.assetRef) continue;
+    if (!task.assetRef || !/^(sm:(armature|puppet|costume)|anim:(model|rig))$/.test(task.kind)) continue;
     const c = chars.find((x) => x.id === task.assetRef);
     if (!c) continue;
     const kind: Asset['kind'] = task.kind.startsWith('sm:') ? 'puppet' : task.kind === 'anim:rig' ? 'rig' : task.kind === 'anim:model' ? 'model' : 'design';
@@ -470,9 +492,14 @@ export function depsMet(p: Project, task: Task): { ok: boolean; reason?: string 
     if (d && d.status !== 'done') return { ok: false, reason: `Waiting for ${d.label}.` };
   }
   if (task.kind === 'anim:voice' && task.assetRef) {
-    const cast = p.cast.find((c) => c.characterId === task.assetRef && (c.method === 'voice' || c.performer === 'player'));
+    const cast = p.cast.find((c) => c.characterId === task.assetRef && c.method === 'voice');
     if (!cast) return { ok: false, reason: 'This character has no voice performer yet.' };
     if (cast.performer !== 'player' && !p.hires.some((h) => h.id === cast.hireId && h.status === 'accepted')) return { ok: false, reason: 'The voice performer hasn\'t accepted yet.' };
+  }
+  if (task.kind === 'anim:mocap' && task.assetRef) {
+    const cast = p.cast.find((c) => c.characterId === task.assetRef && c.method === 'motion-capture');
+    if (!cast) return { ok: false, reason: 'This character has no performance-capture performer yet.' };
+    if (cast.performer !== 'player' && !p.hires.some((h) => h.id === cast.hireId && h.status === 'accepted')) return { ok: false, reason: "The capture performer hasn't accepted yet." };
   }
   if (task.kind === 'prep:rehearsal' && !p.cast.length) return { ok: false, reason: 'Cast the roles before rehearsing.' };
   return { ok: true };
@@ -553,12 +580,22 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
       task.status = 'active';
       task.workedDays += 1;
     } else if (playerDoes(task.roleId)) {
-      if (state.sleep.asleep && task.kind !== 'anim:voice') {
+      if (state.sleep.asleep && task.kind !== 'anim:voice' && task.kind !== 'anim:mocap') {
         task.status = 'ready';
         continue;
       }
+      if (task.kind === 'anim:mocap') {
+        const cast = p.cast.find((c) => c.characterId === task.assetRef && c.method === 'motion-capture');
+        if (cast?.hireId) {
+          const h = p.hires.find((x) => x.id === cast.hireId);
+          if (h && h.status === 'accepted' && h.obligationId) {
+            if (settle(state, p, h.obligationId, h.dayRate, `${h.id}:${date}`)) h.daysWorked += 1;
+          }
+        }
+        spend(state, p, `Capture Stage (${date})`, 'post', MOCAP_SESSION_STAGE, `mocap:${task.id}:${date}`);
+      }
       if (task.kind === 'anim:voice') {
-        const cast = p.cast.find((c) => c.characterId === task.assetRef);
+        const cast = p.cast.find((c) => c.characterId === task.assetRef && c.method !== 'motion-capture');
         if (cast?.hireId) {
           const h = p.hires.find((x) => x.id === cast.hireId);
           if (h && h.status === 'accepted' && h.obligationId) {
@@ -867,6 +904,11 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
       [!!s.stunts.trim(), 'stunt-coordinator'], [s.animals.length > 0, 'animal-wrangler'], [s.water, 'marine-coordinator'], [s.intimacy, 'intimacy-coordinator'],
       [s.crowd > 20, 'extras-casting'], [s.heading.time === 'NIGHT' || s.heading.intExt !== 'EXT', 'gaffer'], [s.vehicles.length > 0, 'vehicle-coordinator'],
     ];
+    if (s.kind === 'segment' && !p.hires.some((h) => h.roleId === 'camera-operator' && h.status === 'accepted')) {
+      reasons.push(`${label} needs a second camera: hire a camera operator for multi-camera coverage.`);
+      pending.push(s.id);
+      continue;
+    }
     const missing = need.find(([cond, r]) => cond && !hasCrew(p, r));
     if (missing) {
       reasons.push(`${label} needs a ${roleLabel(missing[1]).toLowerCase()}, so it wasn't shot.`);
