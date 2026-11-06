@@ -29,11 +29,11 @@ This repository is the continuing base for the game. It is a working, tested bas
 - **After delivery:**
   - Credits based on actual contributions, including per-episode credits.
   - Fictional distribution offers and release planning.
-  - 16 festivals and 21 award events (141 sections and categories; see `docs/world/CATEGORY-AUDIT.md`) with eligibility checks, submission, selection or nomination, screenings, results saved once, and honors that go to the credited people. Rival work comes from a consistent slate each season.
+  - 16 festivals and 21 award events (142 sections and categories; see `docs/world/CATEGORY-AUDIT.md`) with eligibility checks, submission, selection or nomination, screenings, results saved once, and honors that go to the credited people. Rival work comes from a consistent slate each season.
 
 ## Current Limitations
 
-- Festival and award rules: 23 of 141 categories (Academy Awards 99th, Sundance 2027, Clermont-Ferrand 2027, Annie Awards 54th) follow the organizers' published rules, and Cannes short films use the 2026 rules carried forward; the rest are **simulated** and labelled so in the game (`docs/world/RULEBOOK-AUDIT.md`). Dates are organizer-announced for 19 of 37 institutions and planning dates otherwise (`docs/world/INSTITUTION-AUDIT.md`).
+- Festival and award rules: 47 of 142 categories (Academy Awards 99th, Sundance 2027, Clermont-Ferrand 2027, Annie Awards 54th, Annecy 2026, Venice 2026, Golden Globes 84th, Emmys 78th) follow the organizers' published rules, and Cannes short films and the Berlinale competition use projected rules; the rest are **simulated** and labelled so in the game (`docs/world/RULEBOOK-AUDIT.md`). Dates are organizer-announced for 19 of 37 institutions and planning dates otherwise (`docs/world/INSTITUTION-AUDIT.md`).
 - Weather is **modeled** from station climate normals (or a labelled model where no station is near), not observed data. Places come from a 171,750-place GeoNames catalog, not every settlement.
 - Lunar-calendar holidays use official dates for 2026; later years are projected and labelled (see `docs/world/` holiday notes).
 - Rates, fees, throughput and quality assessments are **simulation assumptions** (`docs/ASSUMPTIONS.md`), not real salaries or measures of artistic merit.

@@ -86,7 +86,7 @@ Tests: `F` = `tests/foundation.test.ts`, `J` = `tests/journeys.test.ts`, `M` = `
 
 | Requirement | Trigger | Engine | Persistence | Player-facing | Tests | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| Organizer rules applied per edition, versioned | Edition created; save migration | `rulebooks.ts`, `applyRulebook`, `checkEligibility`, `categoryDeadline` | `Edition.rulesId`, `defaultDeadline`; save version 3 with backup | Official Rules / Projected Rules chips, category deadlines, "How These Rules Apply" | `tests/rulebooks.test.ts` (21) | Tested for 23 verified + 1 projected categories; 117 simulated |
+| Organizer rules applied per edition, versioned | Edition created; save migration | `rulebooks.ts`, `applyRulebook`, `checkEligibility`, `categoryDeadline` | `Edition.rulesId`, `defaultDeadline`; save version 3 with backup | Official Rules / Projected Rules chips, category deadlines, "How These Rules Apply" | `tests/rulebooks.test.ts` (33) | Tested for 47 verified + 2 projected categories; 93 simulated |
 | Runtime, completion, premiere, prior showing, online, origin, re-entry, theatrical-first, qualifying release or festival win | Entry and deadline recheck | `checkEligibility` | Entries keep their status and reason | Reasons in plain words | `tests/rulebooks.test.ts` | Tested |
 | Deadlines in the organizer's time zone, by category and completion date | Entry | `categoryDeadline` | Deadline events moved on migration | Local and player times | `tests/rulebooks.test.ts` | Tested |
 | Recipients named by the organizer (producers, at most three; director) | Entry | `categoryRecipients` | Entry recipients | Submission dialog | `tests/rulebooks.test.ts` | Tested |
