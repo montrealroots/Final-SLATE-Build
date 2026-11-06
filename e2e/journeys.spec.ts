@@ -1,7 +1,7 @@
 import { expect, test, type Page } from '@playwright/test';
 import { addScene, advance, creditsTable, nav, produceToDelivery, quickLife, saveAndApprove, section } from './helpers';
 
-test.describe.configure({ timeout: 900_000 });
+test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
 test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop', 'Full media journeys run once, at desktop width.'));
 
 async function newProject(page: Page, o: { title: string; format: string; medium?: string; technique?: string; finish?: string; episodes?: string; runtime?: string }): Promise<void> {
@@ -59,15 +59,15 @@ test('2D animation: deliver, release digitally, enter the Annie Awards and reach
   await advance(page, 'month');
   await section(page, 'Release');
   await expect(page.locator('section', { hasText: 'Release History' }).getByText('Released', { exact: true }).first()).toBeVisible();
-  // Award entry once the Annie Awards 2027 open.
+  // Award entry once the 54th Annie Awards (2027, organizer-announced date) open.
   await section(page, 'Festivals And Awards');
-  for (let i = 0; i < 10 && !(await page.locator('li', { hasText: 'Annie Awards 2027' }).filter({ hasText: 'Open To You' }).isVisible()); i++) {
+  for (let i = 0; i < 10 && !(await page.locator('li', { hasText: '54th Annie Awards' }).filter({ hasText: 'Open To You' }).isVisible()); i++) {
     await advance(page, 'month');
     await nav(page, 'Projects');
     await page.getByRole('button', { name: 'Paper Kite' }).click();
     await section(page, 'Festivals And Awards');
   }
-  await page.locator('li', { hasText: 'Annie Awards 2027' }).getByRole('button', { name: 'Annie Awards 2027' }).click();
+  await page.locator('li', { hasText: '54th Annie Awards' }).getByRole('button', { name: '54th Annie Awards' }).click();
   await page.locator('li', { hasText: 'Best Short Subject' }).getByRole('button', { name: 'Prepare Submission' }).click();
   await expect(page.getByText("This entry meets the game's rules for this category.")).toBeVisible();
   await page.getByRole('dialog').getByRole('button', { name: 'Submit Entry' }).click();
@@ -87,7 +87,7 @@ test('2D animation: deliver, release digitally, enter the Annie Awards and reach
     }
   }
   expect(['Won', 'Did Not Win', 'Not Nominated', 'Not Accepted']).toContain(await entryStatus(page));
-  await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: 'Annie Awards 2027' }).click();
+  await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: '54th Annie Awards' }).click();
   await expect(page.locator('li', { hasText: 'Best Short Subject' }).getByText(/Winner: /)).toBeVisible();
   await page.screenshot({ path: 'test-results/journey-2d-awards.png', fullPage: true });
 });
