@@ -35,3 +35,10 @@ Every number here is a game calibration value. None is a quoted real-world rate 
 | Rival slate | 120 simulated works per season (features, documentaries, shorts, series); strength N(62, 11) with role offsets N(0, 6); generated fill-ins only when the slate lacks eligible work | `awards.ts` |
 | Climate station range | A station further than 400 km isn't treated as evidence for a place; that normal is modeled from latitude and height (warmest month around July in the north and January in the south) | `world/climate.ts` |
 | Weather around station normals | Daily departure spread is 0.3 × the day's normal range (1 to 4 °C), with spells correlated over about 4 days; wet days run 2 °C cooler by day and 1 °C warmer at night; sunnier months give more clear days | `engine/weather.ts` |
+
+## World Places (M2)
+
+- A GeoNames place with no recorded height is treated as being at sea level for its record; its weather comes from station normals, which are corrected to the station's own height, so the effect is limited to the modeled fallback.
+- World places have no coastline record; nothing in the simulation reads one.
+- The summary climate fields of a world place (warmest and coldest month highs, wet-day share, wet season) are derived from its monthly normals; a place with fewer than 20 wet days a year counts as arid.
+- The world map is an equirectangular picture for pointing at places. Travel time comes from great-circle distance between coordinates, using the existing travel rule.

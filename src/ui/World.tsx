@@ -390,6 +390,7 @@ export function PlaceView() {
               <li key={pl.id}><button className="btn btn-quiet" onClick={() => store.go({ view: 'place', placeId: pl.id })}>{placeLabel(pl)}</button> <span className="dim">{longLocal(now, pl.zone).time}</span></li>
             ))}
           </ul>
+          <button className="btn" onClick={() => store.go({ view: 'world' })}>Browse The World</button>
         </section>
       </div>
     </>

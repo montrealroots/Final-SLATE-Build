@@ -10,6 +10,7 @@ import { store, useClock, useGame, useStore } from './store';
 const NAV = [
   { view: 'home', label: 'Home' },
   { view: 'calendar', label: 'Calendar' },
+  { view: 'world', label: 'World' },
   { view: 'projects', label: 'Projects' },
   { view: 'profile', label: 'Profile' },
 ];
@@ -20,7 +21,7 @@ export function Shell({ children }: { children: ReactNode }) {
   const [settings, setSettings] = useState(false);
   const [exitError, setExitError] = useState(false);
   const route = s.route;
-  const active = route.view === 'project' || route.view === 'new-project' ? 'projects' : route.view === 'place' ? 'home' : route.view === 'event' ? 'calendar' : route.view;
+  const active = route.view === 'project' || route.view === 'new-project' ? 'projects' : route.view === 'place' ? 'world' : route.view === 'event' ? 'calendar' : route.view;
 
   useEffect(() => {
     if (!drawer) return;

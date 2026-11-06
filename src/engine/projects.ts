@@ -1,5 +1,6 @@
 import { composeGenres, genreName, type ModuleId } from './genres';
-import { addLog, newId, registerHandler, schedule } from './state';
+import { findPlace } from '../data/places';
+import { addLog, adoptPlace, newId, registerHandler, schedule } from './state';
 import type {
   Draft, Format, GameState, Medium, Project, ProjectAxes, Requirement, RevisionNote, Scene, StoryCharacter, Technique,
 } from './types';
@@ -113,6 +114,9 @@ export function createProject(state: GameState, input: NewProjectInput): Project
   };
   const problems = validateAxes(axes);
   if (problems.length) throw new Error(problems[0]);
+  const base = findPlace(axes.basePlaceId);
+  if (!base) throw new Error('Choose a production base.');
+  adoptPlace(state, base); // a world place used as a base is kept in the save
   const p: Project = {
     id: newId(state, 'pr'),
     title,
