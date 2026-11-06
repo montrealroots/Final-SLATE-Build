@@ -416,7 +416,10 @@ export interface ReleaseRecord {
   territories: string[];
   distributor: string | null;
   note: string;
-  status: 'planned' | 'released';
+  status: 'planned' | 'released' | 'cancelled';
+  /** The accepted offer this release fulfils, and its delivery-materials budget line. */
+  offerId?: string;
+  obligationId?: string;
 }
 
 export interface DistributionOffer {
@@ -427,7 +430,7 @@ export interface DistributionOffer {
   territories: string[];
   releaseWindowDays: number;
   expiresAt: number;
-  status: 'open' | 'accepted' | 'declined' | 'expired';
+  status: 'open' | 'accepted' | 'declined' | 'expired' | 'cancelled';
 }
 
 export interface Project {

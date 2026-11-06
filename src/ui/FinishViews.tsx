@@ -4,7 +4,7 @@ import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
   qualityWords, requestPickups, depsMet, startCutPass, submitEntry, unlockPicture, withdrawEntry, addDaysToKey, categoryRecipients, type Category,
-  MOCAP_SESSION_STAGE, approveTake, bookMocap, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
+  DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, MOCAP_SESSION_STAGE, approveTake, bookMocap, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
 } from '../engine';
 import type { GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, SelectField, TextField, longLocal, plural } from './components';
@@ -151,6 +151,7 @@ export function ReleaseTab({ p }: { p: Project }) {
   const [date, setDate] = useState(addDaysToKey(today, 30));
   const [terr, setTerr] = useState(place.country);
   const [err, setErr] = useState<string | null>(null);
+  const [cancelling, setCancelling] = useState<string | null>(null);
   if (!p.delivered) return <div className="panel"><h2>Not Delivered Yet</h2><p>Credits and release plans become available once the project is delivered.</p></div>;
   const episodic = isEpisodic(p.axes.format);
   const open = p.offers.filter((o) => o.status === 'open' && o.expiresAt > g.now);
@@ -180,7 +181,7 @@ export function ReleaseTab({ p }: { p: Project }) {
           <ul className="list">
             {open.map((o) => (
               <li key={o.id} className="row">
-                <span className="grow"><strong>{o.distributor}</strong>: {ROUTE_LABELS[o.route]} release in {o.territories.join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}, releasing about {o.releaseWindowDays} days after you accept.<span className="dim"> Distributors in this game are fictional.</span></span>
+                <span className="grow"><strong>{o.distributor}</strong>: {ROUTE_LABELS[o.route]} release in {o.territories.join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(DELIVERY_MATERIALS[o.route])}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
                 <div className="btn-row">
                   <button className="btn btn-small btn-primary" onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id)))}>Accept Offer</button>
                   <button className="btn btn-small" onClick={() => setErr(store.act(() => declineDistribution(p, o.id)))}>Decline Offer</button>
@@ -203,9 +204,19 @@ export function ReleaseTab({ p }: { p: Project }) {
       <section className="panel">
         <h2>Release History</h2>
         {p.premiere && <p>Premiered {formatDateKey(p.premiere.date)} at {p.premiere.venue}.</p>}
-        {p.releases.length ? <ul className="list">{p.releases.map((r) => <li key={r.id}>{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''} <span className="chip">{r.status === 'released' ? 'Released' : 'Planned'}</span></li>)}</ul> : <p className="muted">No releases yet.</p>}
+        {p.releases.length ? <ul className="list">{p.releases.map((r) => <li key={r.id} className="row"><span className="grow">{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && <button className="btn btn-small btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</li>)}</ul> : <p className="muted">No releases yet.</p>}
         {p.quality && <p className="dim">Reception in this game: {qualityWords(p.quality.reception)}.</p>}
       </section>
+      {cancelling && (
+        <Modal title="Cancel This Release?" onClose={() => setCancelling(null)} footer={
+          <>
+            <button className="btn" onClick={() => setCancelling(null)}>Keep The Release</button>
+            <button className="btn btn-danger" onClick={() => { setErr(store.act((s) => cancelRelease(s, s.projects.find((x) => x.id === p.id)!, cancelling))); setCancelling(null); }}>Cancel Release</button>
+          </>
+        }>
+          <p>{releaseCancelTerms(p, cancelling)}</p>
+        </Modal>
+      )}
     </>
   );
 }

@@ -47,6 +47,14 @@ test('2D animation: deliver, release digitally, enter the Annie Awards and reach
   await page.getByLabel('Route').selectOption({ label: 'Digital Self-Release' });
   await page.getByLabel('Territory Code').fill('US');
   await page.getByRole('button', { name: 'Plan Release' }).click();
+  // A second plan, then cancelled: the confirmation states the terms, and the history keeps it as cancelled.
+  await page.getByLabel('Territory Code').fill('CA');
+  await page.getByRole('button', { name: 'Plan Release' }).click();
+  const history = page.locator('section', { hasText: 'Release History' });
+  await history.locator('li', { hasText: 'in CA' }).getByRole('button', { name: 'Cancel Release' }).click();
+  await expect(page.getByRole('dialog', { name: 'Cancel This Release?' })).toBeVisible();
+  await page.getByRole('dialog', { name: 'Cancel This Release?' }).getByRole('button', { name: 'Cancel Release' }).click();
+  await expect(history.locator('li', { hasText: 'in CA' }).getByText('Cancelled', { exact: true })).toBeVisible();
   await advance(page, 'month');
   await advance(page, 'month');
   await section(page, 'Release');
