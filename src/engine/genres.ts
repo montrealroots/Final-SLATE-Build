@@ -1,0 +1,287 @@
+// The 149-entry catalog. Each registry record maps to (a) shared mechanic modules, the actual
+// consumers that change readiness, breakdown, schedule, cost or routing, and (b) its own
+// convention questions. Modules compose as a set, so Crime + Detective + Whodunit use ONE clue
+// ledger rather than tripling an effect. Genres never add prestige or ability modifiers.
+
+import registry from '../data/genre-registry.json';
+
+export type ModuleId =
+  | 'world-rules' | 'clues' | 'setups' | 'action' | 'creature' | 'music' | 'period' | 'factual' | 'relationships'
+  | 'threat' | 'journey' | 'scale' | 'tonal' | 'formal' | 'combat' | 'vehicles' | 'animation-medium' | 'audience'
+  | 'anthology' | 'concert' | 'documentary' | 'presentation' | 'competition';
+
+export interface GenreRecord {
+  id: string;
+  name: string;
+  classification: string;
+  definition: string;
+  mechanic: string;
+  parent: string;
+  modules: ModuleId[];
+  questions: { key: string; label: string }[];
+}
+
+export const MODULE_LABELS: Record<ModuleId, string> = {
+  'world-rules': 'Story World Rules',
+  clues: 'Clues And Evidence Trail',
+  setups: 'Setups And Payoffs',
+  action: 'Action Planning',
+  creature: 'Creature Realization',
+  music: 'Songs And Music',
+  period: 'Period Research',
+  factual: 'Facts And Sources',
+  relationships: 'Relationships',
+  threat: 'Threat And Reveals',
+  journey: 'Journey And Locations',
+  scale: 'Scale And Crowds',
+  tonal: 'Tone By Scene',
+  formal: 'Formal Approach',
+  combat: 'Fight Choreography',
+  vehicles: 'Vehicles',
+  'animation-medium': 'Animation Medium',
+  audience: 'Intended Audience',
+  anthology: 'Separate Stories',
+  concert: 'Performance Coverage',
+  documentary: 'Documentary Structure',
+  presentation: 'Presentation Rules',
+  competition: 'Competition Coverage',
+};
+
+type Spec = [ModuleId[], string[]];
+
+const SPEC: Record<string, Spec> = {
+  absurdist: [['formal', 'setups'], ['Expectations Broken On Purpose', 'What Stays Unexplained']],
+  action: [['action'], ['Action Objective', 'Geography Of The Set Pieces', 'Preparation And Consequences']],
+  'action-comedy': [['action', 'setups'], ['Comic Set Pieces', 'Action Objective']],
+  adventure: [['journey'], ['Destinations', 'Main Obstacles', 'Discoveries']],
+  'alternate-history': [['world-rules', 'period'], ['Point Of Divergence', 'Changed Institutions And Technology']],
+  animated: [['animation-medium'], ['Animation Approach']],
+  anime: [['animation-medium'], ['Visual Conventions', 'Storytelling Conventions']],
+  anthology: [['anthology'], ['Story Units', 'Shared Link Between Stories']],
+  apocalyptic: [['world-rules', 'threat'], ['Catastrophe Stage', 'Survival Conditions']],
+  'art-house': [['formal'], ['Formal Intentions', 'Intended Audience Positioning']],
+  'avant-garde': [['formal'], ['Intended Departures In Image And Sound', 'Creative Aim']],
+  'backstage-musical': [['music', 'relationships'], ['Show Within The Story', 'Rehearsal And Performance Arc']],
+  biker: [['vehicles', 'action'], ['Motorcycle Culture And Setting', 'Riding Scenes']],
+  biographical: [['factual', 'period'], ['Subject', 'Documented Events', 'Invented Scenes And Departures']],
+  'black-comedy': [['tonal', 'setups'], ['Comic Targets', 'Tonal Boundaries']],
+  blaxploitation: [['period', 'action'], ['Historical Context', 'Conventions Selected']],
+  'body-horror': [['creature', 'threat'], ['Transformation Rules', 'Effects Method', 'Continuity Across Appearances']],
+  'buddy-comedy': [['relationships', 'setups'], ['The Pair And Their Contrasting Aims', 'Shared Comic Payoffs']],
+  'buddy-cop': [['relationships', 'clues', 'action'], ['The Pair And Their Contrasting Aims', 'The Case']],
+  caper: [['setups', 'tonal'], ['The Plan', 'Specialists', 'Setbacks And Reversals']],
+  chanbara: [['combat', 'period'], ['Combat Style', 'Period Setting']],
+  chase: [['action', 'vehicles'], ['Pursuer And Pursued', 'Route', 'Changing Initiative']],
+  childrens: [['audience'], ['Audience Age Range', 'Themes Suited To The Audience']],
+  christmas: [['setups'], ['Traditions Chosen', 'Story Date']],
+  comedy: [['setups', 'tonal'], ['Comic Setups', 'Comic Viewpoint']],
+  'coming-of-age': [['relationships'], ['Starting Beliefs', 'Formative Choices', 'Earned Change']],
+  'concert-film': [['concert', 'music'], ['Setlist', 'Performance Coverage Plan', 'Audience Coverage']],
+  'conspiracy-thriller': [['clues', 'threat'], ['Competing Explanations', 'Institutional Players', 'Who Knows What']],
+  'cosmic-horror': [['threat', 'formal'], ['Scale Of The Unknown', 'What Stays Unexplained']],
+  'costume-drama': [['period'], ['Period And Place', 'Wardrobe Research']],
+  'courtroom-drama': [['clues'], ['Case Claims', 'Witnesses', 'Hearing Order', 'Procedural Assumptions']],
+  'creature-feature': [['creature', 'threat'], ['Creature Behavior', 'Creature Scale', 'Reveal Strategy']],
+  crime: [['clues'], ['Motive', 'The Crime', 'Consequences']],
+  cyberpunk: [['world-rules'], ['Technology Access', 'Institutions And Inequality']],
+  dance: [['music'], ['Choreography Plan', 'What Dance Means To The Characters']],
+  'dark-fantasy': [['world-rules', 'threat'], ['Magic Rules And Costs', 'Balance Of Wonder And Fear']],
+  detective: [['clues'], ['Clue Trail', 'Suspect Timelines', "Detective's Knowledge"]],
+  disaster: [['scale', 'threat'], ['Hazard Progression', 'Rescue Choices', 'Aftermath']],
+  docudrama: [['factual'], ['Sourced Events', 'Dramatized Scenes']],
+  docufiction: [['factual', 'formal'], ['Factual Sequences', 'Invented Sequences', 'Disclosure Approach']],
+  documentary: [['documentary', 'factual'], ['Central Question', 'Access Plan', 'Consent Approach']],
+  'domestic-drama': [['relationships'], ['Household Obligations', 'Shared Spaces', 'Conflict History']],
+  drama: [['relationships'], ['Objectives And Obstacles', 'Earned Change']],
+  dystopian: [['world-rules'], ['Institutions', 'Enforcement', 'Possibilities Of Resistance']],
+  'eco-horror': [['threat', 'world-rules'], ['Environmental Mechanism', 'Threat']],
+  epic: [['scale', 'journey'], ['Time Span', 'Scope Of Locations']],
+  'erotic-thriller': [['relationships', 'threat'], ['Secrets And Power', 'Intimacy Boundaries']],
+  espionage: [['clues'], ['Covers', 'Handlers', 'Tradecraft Assumptions', 'Exposure Consequences']],
+  experimental: [['formal'], ['Formal Rules', 'Intended Experience']],
+  exploitation: [['tonal'], ['Actual Subject', 'Audience Promise', 'Marketing Approach']],
+  'fairy-tale': [['world-rules'], ['Promises And Prohibitions', 'Magical Rules', 'Transformations']],
+  family: [['audience'], ['Audience Age Range', 'Shared Appeal']],
+  fantasy: [['world-rules'], ['Magic Rules And Costs', 'What Characters Know About The Rules']],
+  farce: [['setups'], ['Who Knows What', 'Entrances And Exits', 'Escalating Complications']],
+  'film-noir': [['formal', 'clues'], ['Fatalism And Ambiguity', 'Visual Approach', 'Narrative Viewpoint']],
+  'folk-horror': [['threat', 'period'], ['Context Researched', 'Rituals And Beliefs', 'Isolation']],
+  'found-footage': [['presentation'], ['Who Records And Why', 'How The Footage Survived']],
+  gangster: [['relationships'], ['Organization And Hierarchy', 'Loyalty', 'Consequences Of Criminal Choices']],
+  giallo: [['clues', 'threat'], ['Investigative Conventions', 'Visual Conventions']],
+  'gothic-horror': [['threat'], ['Setting History', 'Secrets', 'Atmosphere']],
+  grindhouse: [['presentation'], ['Texture And Presentation', 'Intended Audience Positioning']],
+  hangout: [['relationships'], ['Social Rhythms', 'Recurring Spaces']],
+  heist: [['setups', 'clues'], ['Target', 'Security', 'Team Tasks', 'Contingencies']],
+  'historical-drama': [['period', 'factual'], ['Period Chronology', 'Documented Versus Invented Events']],
+  'historical-fiction': [['period'], ['Historical Constraints', 'Deliberate Departures']],
+  holiday: [['setups'], ['Observances Chosen', 'Story Date']],
+  'hood-film': [['relationships'], ['Community Relationships', 'Conditions And Pressures']],
+  horror: [['threat'], ['Threat', 'Vulnerability', 'Reveal Pacing']],
+  'horror-comedy': [['threat', 'tonal'], ['Threat', 'Balance Of Fear And Humor']],
+  isekai: [['world-rules'], ['Transfer Circumstances', 'Retained Knowledge', 'New World Rules']],
+  jidaigeki: [['period'], ['Period And Institutions', 'Role Of Swordplay']],
+  'jukebox-musical': [['music'], ['Song Choices', 'Dramatic Purpose Of Songs']],
+  kaiju: [['creature', 'scale'], ['Creature Scale', 'Destruction Continuity', 'Realization Technique']],
+  'kitchen-sink-drama': [['relationships'], ['Work And Household Constraints', 'Spaces']],
+  'legal-drama': [['clues'], ['Participants', 'Arguments', 'Procedural Assumptions']],
+  'magical-realism': [['world-rules', 'formal'], ['How Characters Accept The Extraordinary', 'Narrative Perspective']],
+  'martial-arts': [['combat', 'action'], ['Fighting Styles', 'Performer Preparation']],
+  'medical-drama': [['relationships'], ['Professional Roles', 'Case Continuity', 'Research Notes']],
+  melodrama: [['relationships', 'tonal'], ['Emotional Escalation', 'Recognition Moments']],
+  military: [['scale'], ['Ranks And Command Relationships', 'Setting-Specific Equipment']],
+  mockumentary: [['formal', 'setups'], ['Interview Framing', 'Camera Awareness', 'Satirical Perspective']],
+  'monster-movie': [['creature', 'threat'], ['Creature Rules', 'Vulnerabilities', 'Practical Realization']],
+  mumblecore: [['relationships', 'formal'], ['Improvisation Approach', 'Conversational Structure']],
+  musical: [['music'], ['Song Placement', 'Dramatic Function Of Songs', 'Vocal Casting']],
+  mystery: [['clues'], ['The Truth', 'Concealment', 'Competing Hypotheses']],
+  'nature-documentary': [['documentary', 'factual'], ['Subject Species Or Place', 'Seasons And Observation Windows']],
+  'neo-noir': [['formal', 'clues'], ['Social Setting', 'Noir Perspective']],
+  neorealism: [['formal'], ['Location Approach', 'Casting And Performance Approach']],
+  'new-wave': [['formal'], ['Movement And Context', 'Formal Choices']],
+  'nordic-noir': [['clues', 'tonal'], ['Social Setting', 'Regional Research']],
+  occult: [['world-rules', 'threat'], ['Belief Versus Reality', 'Ritual Rules']],
+  parody: [['setups'], ['Target Conventions', 'Transformations', 'Audience Knowledge Needed']],
+  'period-drama': [['period'], ['Period And Place', 'Language Choices', 'Social Research']],
+  picaresque: [['journey'], ['Encounter Sequence', 'Social Contrasts']],
+  'police-procedural': [['clues'], ['Evidence Handling', 'Team Roles', 'Procedure Assumptions']],
+  'political-drama': [['relationships'], ['Competing Aims', 'Constituencies', 'Alliances']],
+  'political-thriller': [['threat', 'clues'], ['Threat', 'Institutional Stakes', 'Deadline']],
+  'post-apocalyptic': [['world-rules'], ['Time Since Disaster', 'Surviving Institutions', 'Resources']],
+  'prison-film': [['relationships'], ['Spaces And Access', 'Routines And Authority', 'Escape Or Adaptation Stakes']],
+  'psychological-horror': [['threat', 'formal'], ['Viewpoint Reliability', 'Revelations']],
+  'psychological-thriller': [['threat', 'clues'], ['Trust And Deception', 'Viewpoint Reliability']],
+  'queer-cinema': [['relationships'], ['Characters And Context', 'Perspective']],
+  revenge: [['relationships', 'threat'], ['Grievance', 'Targets', 'Cost Of Retaliation']],
+  'road-movie': [['journey', 'vehicles'], ['Stops', 'Journey Time']],
+  rockumentary: [['documentary', 'music'], ['Archival Material', 'Performance Coverage Plan', 'Music Permissions']],
+  romance: [['relationships'], ['Attraction And Obstacles', 'Relationship Resolution', 'Intimacy Boundaries']],
+  'romantic-comedy': [['relationships', 'setups'], ['Attraction And Obstacles', 'Comic Causality']],
+  'romantic-drama': [['relationships'], ['Relationship Decisions', 'Competing Needs']],
+  samurai: [['period', 'combat'], ['Era And Social Role', 'Obligations']],
+  satire: [['setups', 'tonal'], ['Satirical Target', 'Contradictions Exposed', 'Intended Interpretation']],
+  'science-fantasy': [['world-rules'], ['Technological Rules', 'Fantastic Rules', 'Boundary Between Them']],
+  'science-fiction': [['world-rules'], ['Speculative Premise', 'Personal And Social Consequences']],
+  'screwball-comedy': [['setups', 'relationships'], ['Verbal Exchanges', 'Status Changes']],
+  'sea-adventure': [['journey', 'vehicles'], ['Vessels', 'Routes', 'Duties Aboard']],
+  'silent-film': [['presentation'], ['Visual Communication', 'Intertitles', 'Music Approach']],
+  slapstick: [['action', 'setups'], ['Physical Setups And Payoffs', 'Safe Production Methods']],
+  slasher: [['threat'], ['Attacker Access', 'Victim Knowledge', 'Spatial Continuity']],
+  'slice-of-life': [['relationships'], ['Routines', 'Small Decisions']],
+  'social-realism': [['relationships'], ['Institutions And Labor', 'Environment']],
+  'space-opera': [['world-rules', 'scale'], ['Factions', 'Worlds', 'Travel Rules']],
+  'spaghetti-western': [['period', 'action'], ['Moral Outlook', 'Pacing And Staging', 'Sound Approach']],
+  splatter: [['threat'], ['Effects Design', 'Practical Or Digital Method', 'Audience Content Settings']],
+  sports: [['competition', 'scale'], ['Competition Rules', 'Training And Performance Needs', 'Event Coverage']],
+  spy: [['clues'], ['Covers', 'Handlers', 'Exposure Consequences']],
+  steampunk: [['world-rules', 'period'], ['Technological Limits', 'Social Setting']],
+  'stoner-comedy': [['setups'], ['Character Choices', 'Comic Consequences']],
+  superhero: [['world-rules', 'action'], ['Powers And Limits', 'Secret Identities', 'Collateral Effects']],
+  supernatural: [['world-rules'], ['Powers And Limits', 'Beliefs', 'Revelation']],
+  surrealist: [['formal'], ['Visual And Narrative Logic', 'Intentional Discontinuities']],
+  survival: [['threat'], ['Threats', 'Resources', 'Environment']],
+  swashbuckler: [['combat', 'action'], ['Duels And Escapes', 'Period Assets']],
+  'sword-and-sandal': [['period', 'combat', 'scale'], ['Historical Or Fantastic Setting', 'Combat', 'Crowd Needs']],
+  'sword-and-sorcery': [['world-rules', 'combat'], ['Quest', 'Magic Rules And Costs']],
+  'techno-thriller': [['threat', 'clues'], ['System Assumptions', 'Failure Chain', 'Deadline']],
+  teen: [['audience'], ['Protagonists, Audience Or Both', 'Audience Age Range']],
+  thriller: [['threat'], ['Threat', 'Withheld Information', 'Consequences Of Delay']],
+  'time-travel': [['world-rules'], ['Timeline Rules', 'Paradox Policy', 'Knowledge By Time Period']],
+  tokusatsu: [['creature', 'presentation'], ['Suit Performance', 'Miniatures', 'Transformations']],
+  tragedy: [['relationships'], ['Causal Progression', 'Recognition', 'Earned Ending']],
+  tragicomedy: [['tonal', 'relationships'], ['Tonal Balance', 'Character Perspective']],
+  'true-crime': [['factual', 'clues'], ['Allegations', 'Established Facts', 'Unresolved Claims']],
+  vampire: [['creature', 'world-rules'], ['Lore', 'Powers And Limits', 'Feeding Rules', 'Realization Method']],
+  war: [['scale', 'period'], ['Factions', 'Objectives', 'Civilian Impact']],
+  werewolf: [['creature', 'world-rules'], ['Transformation Rules', 'Identity Conflict', 'Realization Method']],
+  western: [['period', 'action'], ['Place And Era', 'Land And Power Conflicts']],
+  whodunit: [['clues'], ['Culprit', 'Means, Motive And Opportunity', 'Red Herrings']],
+  wuxia: [['combat', 'world-rules'], ['Martial Codes', 'Allegiances', 'Degree Of Fantasy']],
+  yakuza: [['relationships', 'period'], ['Organization', 'Obligations', 'Era']],
+  zombie: [['creature', 'scale'], ['Origin', 'Transmission', 'Movement And Cognition', 'Vulnerabilities']],
+};
+
+function slug(label: string): string {
+  return label.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+interface RawRecord {
+  id: string; name: string; classification: string; working_definition: string; mechanic_specification: string; legacy_parent_label: string;
+}
+
+export const GENRES: GenreRecord[] = (registry as { records: RawRecord[] }).records.map((r) => {
+  const spec = SPEC[r.id];
+  if (!spec) throw new Error(`Genre ${r.id} has no mechanic mapping`);
+  return {
+    id: r.id,
+    name: r.name,
+    classification: r.classification,
+    definition: r.working_definition,
+    mechanic: r.mechanic_specification,
+    parent: r.legacy_parent_label,
+    modules: spec[0],
+    questions: spec[1].map((label) => ({ key: slug(label), label })),
+  };
+});
+
+const byId = new Map(GENRES.map((g) => [g.id, g]));
+
+export function genre(id: string): GenreRecord {
+  const g = byId.get(id);
+  if (!g) throw new Error(`Unknown genre ${id}`);
+  return g;
+}
+
+export function genreName(id: string): string {
+  return byId.get(id)?.name ?? id;
+}
+
+/** Composition: union of modules and questions. Each module/question appears once. */
+export function composeGenres(ids: string[]): { modules: Set<ModuleId>; questions: { key: string; label: string; genres: string[] }[] } {
+  const modules = new Set<ModuleId>();
+  const qmap = new Map<string, { key: string; label: string; genres: string[] }>();
+  for (const id of ids) {
+    const g = byId.get(id);
+    if (!g) continue;
+    g.modules.forEach((m) => modules.add(m));
+    for (const q of g.questions) {
+      const hit = qmap.get(q.key);
+      if (hit) hit.genres.push(g.name);
+      else qmap.set(q.key, { ...q, genres: [g.name] });
+    }
+  }
+  return { modules, questions: [...qmap.values()] };
+}
+
+function fold(s: string): string {
+  return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+}
+
+export function searchGenres(q: string): GenreRecord[] {
+  const f = fold(q.trim());
+  if (!f) return GENRES;
+  return GENRES.filter((g) => fold(g.name).includes(f) || fold(g.definition).includes(f) || fold(g.parent).includes(f));
+}
+
+/** Plain-language category for display (classification without research jargon). */
+export function genreCategory(g: GenreRecord): string {
+  const map: Record<string, string> = {
+    'genre/subgenre/theme': 'Genre',
+    'movement/approach': 'Movement Or Approach',
+    audience: 'Audience',
+    presentation: 'Presentation',
+    medium: 'Medium',
+    'animation tradition/style': 'Animation Tradition',
+    structure: 'Structure',
+    'artistic positioning': 'Artistic Positioning',
+    format: 'Format',
+    'nonfiction form': 'Nonfiction Form',
+    approach: 'Approach',
+    'presentation/tradition': 'Presentation Tradition',
+    'movement/context': 'Movement',
+    'perspective/tradition': 'Perspective',
+    'audience/subject': 'Audience Or Subject',
+    'effects tradition': 'Effects Tradition',
+  };
+  return map[g.classification] ?? 'Genre';
+}
