@@ -136,7 +136,7 @@ test('documentary: consent and fact checks gate delivery', async ({ page }) => {
   await produceToDelivery(page, {});
   const credits = await creditsTable(page);
   expect(credits).toContain('Researcher');
-  expect(credits).not.toContain('Cast');
+  expect(credits).not.toMatch(/^(Cast|Voice Cast|Performance Capture)\t/m); // a documentary has no cast credits (a name may contain "Cast")
 });
 
 test('TV limited series: episodes, a guest role and episode-level credits', async ({ page }) => {

@@ -41,7 +41,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Milestone Log
 
-- **M1 world data and climate:** implemented and tested; see `QA-REPORT.md`. Pull request and merge SHA recorded at the checkpoint.
+- **M1 world data and climate:** implemented and tested. `npm run check` passed (51 tests, world check 0 problems); e2e 23 passed, 16 skipped by design after a test-only fix. Merged by checkpoint pull request (see the git log on `main`).
 
 ## Remaining Work, In Order
 
