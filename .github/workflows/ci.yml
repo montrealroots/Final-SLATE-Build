@@ -11,7 +11,7 @@ permissions:
 jobs:
   checks:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -24,6 +24,13 @@ jobs:
       - run: npm run typecheck
       - run: npm test
       - run: npm run build
+      - name: Size budgets
+        timeout-minutes: 2
+        run: npm run budget
+      - name: Balance runs
+        # About 100 seconds locally; each batch of events is rolled back as a unit if it fails, which costs copies.
+        timeout-minutes: 10
+        run: npm run balance
       - name: Install Playwright browsers matching the lockfile
         # A stalled package mirror once hung this step for over 40 minutes; fail fast instead.
         timeout-minutes: 10
