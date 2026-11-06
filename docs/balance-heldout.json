@@ -1,0 +1,39 @@
+{
+  "generatedBy": "npm run balance",
+  "heldOutSeeds": 10,
+  "combos": {
+    "mocap + world place": {
+      "runs": 10,
+      "deliveredRate": 1,
+      "medianDays": 62,
+      "meanOverall": 65.7,
+      "withdrawals": 0,
+      "integrity": {
+        "negativeCash": 0,
+        "doubleSettlements": 0
+      }
+    },
+    "live action + world place": {
+      "runs": 10,
+      "deliveredRate": 1,
+      "medianDays": 23,
+      "meanOverall": 62,
+      "withdrawals": 0,
+      "integrity": {
+        "negativeCash": 0,
+        "doubleSettlements": 0
+      }
+    },
+    "competition + world place + withdrawal": {
+      "runs": 10,
+      "deliveredRate": 1,
+      "medianDays": 41,
+      "meanOverall": 58.2,
+      "withdrawals": 10,
+      "integrity": {
+        "negativeCash": 0,
+        "doubleSettlements": 0
+      }
+    }
+  }
+}
