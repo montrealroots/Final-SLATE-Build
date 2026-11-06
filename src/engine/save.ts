@@ -7,7 +7,7 @@ import { findPlace, isCatalogPlace, registerPlace, type Place } from '../data/pl
 import type { CreationDraft, GameState } from './types';
 import { SAVE_VERSION } from './types';
 import { SaveValidationError, validateGameState } from './validate';
-import { migrateV2toV3 } from './awards';
+import { migrateV2toV3, migrateV3toV4 } from './awards';
 
 export interface KeyValueStore {
   getItem(key: string): string | null;
@@ -135,6 +135,8 @@ export const MIGRATIONS: Record<number, Migration> = {
   1: (raw) => ({ ...raw, places: (raw.places as Record<string, unknown> | undefined) ?? {} }),
   // v2 -> v3: competing films stored once; each edition records the rules it is judged by (awards.ts).
   2: migrateV2toV3,
+  // v3 -> v4: finished editions keep results and titles but not competing works' judging strengths (awards.ts).
+  3: migrateV3toV4,
 };
 
 export function migrate(raw: unknown): GameState {
@@ -352,7 +354,7 @@ export function deleteSave(store: KeyValueStore, saveId: string): void {
 
 // ---------------- Recovery copies and storage use ----------------
 
-export type RecoveryKind = 'interrupted' | 'migration' | 'repair' | 'damaged';
+export type RecoveryKind = 'interrupted' | 'migration' | 'repair' | 'damaged' | 'conflict';
 
 export interface RecoveryCopy {
   key: string;
@@ -368,7 +370,7 @@ export interface RecoveryCopy {
   version: number | null;
 }
 
-const RECOVERY = /^slate\.v1\.save\.([^.]+)\.(tmp|backup-v\d+|backup-repair|damaged-(\d+))$/;
+const RECOVERY = /^slate\.v1\.save\.([^.]+)\.(tmp|backup-v\d+|backup-repair|damaged-(\d+)|conflict-(\d+))$/;
 
 /**
  * Copies the game keeps so progress can be recovered: an interrupted write's copy, backups taken before a save was
@@ -378,20 +380,31 @@ const RECOVERY = /^slate\.v1\.save\.([^.]+)\.(tmp|backup-v\d+|backup-repair|dama
 export function listRecoveryCopies(store: KeyValueStore): RecoveryCopy[] {
   const out: RecoveryCopy[] = [];
   for (const key of store.keys()) {
-    const m = RECOVERY.exec(key);
-    if (!m) continue;
+    if (!RECOVERY.test(key)) continue;
     const text = store.getItem(key) ?? '';
-    let savedAtReal: number | null = null;
-    try {
-      const v = Number(JSON.parse(JSON.parse(text).data).updatedAtReal);
-      savedAtReal = Number.isFinite(v) ? v : null;
-    } catch {
-      savedAtReal = null;
-    }
-    const kind: RecoveryKind = m[2] === 'tmp' ? 'interrupted' : m[2] === 'backup-repair' ? 'repair' : m[2].startsWith('damaged-') ? 'damaged' : 'migration';
-    out.push({ key, saveId: m[1], kind, chars: key.length + text.length, keptAtReal: m[3] ? Number(m[3]) : null, savedAtReal, version: storedVersion(text) });
+    out.push(recoveryCopyOf(key, key.length + text.length, recordMeta(text))!);
   }
+  return sortCopies(out);
+}
+
+export function sortCopies(out: RecoveryCopy[]): RecoveryCopy[] {
   return out.sort((a, b) => (b.keptAtReal ?? b.savedAtReal ?? 0) - (a.keptAtReal ?? a.savedAtReal ?? 0));
+}
+
+/** A stored record's version and save time, read from its text without parsing a possibly large save. */
+export function recordMeta(text: string): { savedAtReal: number | null; version: number | null } {
+  const v = /^\{"format":"slate-save","version":(\d+)/.exec(text);
+  const t = /\\"updatedAtReal\\":(\d+)/.exec(text);
+  return { version: v ? Number(v[1]) : null, savedAtReal: t ? Number(t[1]) : null };
+}
+
+/** Describes a recovery copy from its key and metadata; null when the key isn't one. */
+export function recoveryCopyOf(key: string, chars: number, meta: { savedAtReal: number | null; version: number | null }): RecoveryCopy | null {
+  const m = RECOVERY.exec(key);
+  if (!m) return null;
+  const kind: RecoveryKind = m[2] === 'tmp' ? 'interrupted' : m[2] === 'backup-repair' ? 'repair' : m[2].startsWith('damaged-') ? 'damaged' : m[2].startsWith('conflict-') ? 'conflict' : 'migration';
+  const kept = m[3] ?? m[4];
+  return { key, saveId: m[1], kind, chars, keptAtReal: kept ? Number(kept) : null, savedAtReal: meta.savedAtReal, version: meta.version };
 }
 
 /** Deletes one recovery copy the player chose. Refuses any key that isn't a recovery copy. */

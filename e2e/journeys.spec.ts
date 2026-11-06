@@ -1,5 +1,6 @@
 import { expect, test, type Page } from '@playwright/test';
-import { addScene, advance, creditsTable, nav, produceToDelivery, quickLife, readSavedState, saveAndApprove, section } from './helpers';
+import { addScene, advance, creditsTable, nav, produceToDelivery, quickLife, readSavedState, saveAndApprove, section, saveAndExit } from './helpers';
+import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
 test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop', 'Full media journeys run once, at desktop width.'));
@@ -292,14 +293,14 @@ async function advanceUntil(page: Page, date: string): Promise<void> {
 
 /** Edit the saved game in place (keeping its checksum and event order), then reopen it: a save-and-reload in the middle. */
 async function editSaveAndReopen(page: Page, fn: (state: Record<string, any>) => void): Promise<void> { // eslint-disable-line @typescript-eslint/no-explicit-any
-  await page.getByRole('button', { name: 'Save And Exit' }).click();
-  const id = await page.evaluate(() => JSON.parse(localStorage.getItem('slate.v1.index')!)[0].saveId as string);
-  const env = JSON.parse(await page.evaluate((k) => localStorage.getItem(k)!, `slate.v1.save.${id}`));
+  await saveAndExit(page);
+  const id = await firstSaveId(page);
+  const env = JSON.parse((await readRecord(page, `slate.v1.save.${id}`))!);
   const state = JSON.parse(env.data);
   fn(state);
   const data = JSON.stringify(state);
   const { hashString } = await import('../src/engine/rng');
-  await page.evaluate(([k, v]) => localStorage.setItem(k, v), [`slate.v1.save.${id}`, JSON.stringify({ ...env, checksum: hashString(data), data })]);
+  await writeRecords(page, { [`slate.v1.save.${id}`]: JSON.stringify({ ...env, checksum: hashString(data), data }) });
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
@@ -368,7 +369,7 @@ test('festival under official rules: submit, selection, screening attended, resu
   await expect(page.locator('li', { hasText: 'Short Film Program' }).getByText(/Winner: /)).toBeVisible();
 
   // Save, reload, and keep playing: one result message, one fee payment, the same winner.
-  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  await saveAndExit(page);
   const before = await readSavedState(page);
   const resultLogs = (s: any) => s.log.filter((l: any) => /(won|didn't win) Short Film Program at the Sundance Film Festival 2027/.test(l.text)).length; // eslint-disable-line @typescript-eslint/no-explicit-any
   expect(resultLogs(before)).toBe(1);
@@ -378,7 +379,7 @@ test('festival under official rules: submit, selection, screening attended, resu
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await advance(page, 'month');
-  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  await saveAndExit(page);
   const after = await readSavedState(page);
   expect(resultLogs(after)).toBe(1);
   expect(feePostings(after)).toBe(1);

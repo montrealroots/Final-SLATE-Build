@@ -6,6 +6,7 @@ import {
 import { deserialize, memoryStore, openSave, serialize, writeSave } from '../src/engine/save';
 import { isValidDate, localToInstant } from '../src/engine/time';
 import type { Credit, Edition, GameState, Project } from '../src/engine/types';
+import { SAVE_VERSION } from '../src/engine/types';
 import { hashString } from '../src/engine/rng';
 import { approve, buildProject, startLife } from './helpers';
 
@@ -370,7 +371,7 @@ describe('history and saves', () => {
     expect(checkEligibility(s, p, e, cat(e, 'live-short')).reasons.join(' ')).toMatch(/Short categories need 40 or fewer/);
   });
 
-  it('a version-2 save in storage opens, is backed up first, and saves as version 3', () => {
+  it('a version-2 save in storage opens, is backed up first, and saves as the current version', () => {
     const s = startLife('store');
     const raw = asVersion2(s);
     const data = JSON.stringify(raw);
@@ -378,7 +379,7 @@ describe('history and saves', () => {
     const kv = memoryStore();
     kv.setItem(`slate.v1.save.${s.saveId}`, text);
     const { state } = openSave(kv, s.saveId, 1);
-    expect(state.version).toBe(3);
+    expect(state.version).toBe(SAVE_VERSION);
     expect(kv.getItem(`slate.v1.save.${s.saveId}.backup-v2`)).toBe(text);
     expect(writeSave(kv, state, 2).ok).toBe(true);
     expect(deserialize(kv.getItem(`slate.v1.save.${s.saveId}`)!).rivalFilms).toEqual(state.rivalFilms);
@@ -398,5 +399,23 @@ describe('audit counts', () => {
       }
     }
     expect([verified, projected]).toEqual([23, 1]);
+  });
+});
+
+describe('finished editions are kept compactly', () => {
+  it('keeps every nominee, winner and entry after results, without the judging strengths', async () => {
+    const { processUntil, DAY } = await import('../src/engine');
+    const s = startLife('compact');
+    const e = ed(s, 'venice-2026');
+    announceEdition(s, e);
+    const before = Object.fromEntries(Object.entries(e.results).map(([k, r]) => [k, r.rivalIds.map((x) => rivalTitle(s, e, x))]));
+    processUntil(s, e.end + 2 * DAY, 'tick', 1_000_000);
+    expect(e.status).toBe('complete');
+    expect(e.compact).toBe(true);
+    expect(e.rivals).toEqual([]);
+    const after = Object.fromEntries(Object.entries(e.results).map(([k, r]) => [k, r.rivalIds.map((x) => rivalTitle(s, e, x))]));
+    expect(after).toEqual(before);
+    for (const r of Object.values(e.results)) if (r.winner) expect(rivalTitle(s, e, r.winner) ?? s.projects.find((p) => p.id === r.winner)?.title).toBeTruthy();
+    expect(deserialize(serialize(s)).editions.find((x) => x.id === e.id)).toEqual(JSON.parse(JSON.stringify(e)));
   });
 });

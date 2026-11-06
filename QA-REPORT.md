@@ -8,18 +8,18 @@
 
 ## Commands And Results
 
-Latest full run: November 6, 2026, rulebook checkpoint (organizer rules for 23 categories plus 1 projected, save version 3), local Linux container. Measurements are in `docs/PERFORMANCE.md` and `docs/STORAGE.md`; the rules audit is `docs/world/RULEBOOK-AUDIT.md`.
+Latest full run: November 6, 2026, long-career storage checkpoint (save vault on IndexedDB, save version 4), local Linux container. Storage measurements in `docs/STORAGE.md`.
 
 | Command | Exit | Result |
 | --- | --- | --- |
 | `npm run world:check` | 0 | 252 entries (246 playable), 3,865 regions, 246 shards, 171,750 rows with 171,750 unique IDs, 175 outlines, 218 holiday entries, 11,459 stations; 0 problems. |
 | `npm run typecheck` | 0 | No type errors (strict mode). |
-| `npm test` | 0 | 21 files, 146 tests passed, 0 skipped (21 in `tests/rulebooks.test.ts`). |
+| `npm test` | 0 | 22 files, 162 tests passed, 0 skipped (15 in `tests/vault.test.ts`). |
 | `npm run build` | 0 | Built with no warnings. |
-| `npm run budget` | 0 | Startup JavaScript 654 kB raw, 202 kB gzipped (691 and 205 before the performance checkpoint; the storage panel added 5 kB and the rulebooks 15 kB), in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
+| `npm run budget` | 0 | Startup JavaScript 665 kB raw, 205 kB gzipped (the save vault added 11 kB) (691 and 205 before the performance checkpoint; the storage panel added 5 kB and the rulebooks 15 kB), in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
 | `npm run balance` | 0 | 2 tests passed: 180 family runs, 120 sensitivity runs, determinism check, and 30 held-out combination runs. Results byte-identical to the previous run. Took 36 seconds on the rulebook checkpoint (98 seconds before the snapshot change, same machine). |
 | `npm run perf:engine` | 0 | Fresh, medium and long saves; see `docs/PERFORMANCE.md`. |
-| `npm run e2e -- --trace off` | 0 | 62 passed, 19 skipped, 0 failed, across 5 projects. The new journey ("festival under official rules") passed in 19 s on desktop. One documentary or unscripted journey skipped itself because simulated contributors declined in that run (a designed skip); rerun alone, both passed. Expected otherwise: 63 passed, 18 skipped,: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
+| `npm run e2e -- --trace off` | 0 | 68 passed, 19 skipped, 0 failed, across 5 projects. The new journey ("festival under official rules") passed in 19 s on desktop. One documentary or unscripted journey skipped itself because simulated contributors declined in that run (a designed skip); rerun alone, both passed. Expected otherwise: 63 passed, 18 skipped,: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
 
 ### Why 17 Browser Tests Are Skipped
 
@@ -74,6 +74,9 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 | Medium | Entering again after withdrawing reused the withdrawn entry's ID, so the new entry couldn't be withdrawn, and recorded a fee that wasn't charged | Each entry gets its own ID; the fee is charged and recorded once per category | `tests/rulebooks.test.ts` |
 | Low | A cancelled release counted as a prior showing against premiere rules | Cancelled releases are ignored | `tests/rulebooks.test.ts` |
 | Medium | Saves grew 0.6 MB per game year because every edition stored full copies of competing films | Save version 3 stores each film once (long save 1,100 to 859 kB) | `tests/rulebooks.test.ts` |
+| High | Long careers outgrew localStorage: a single career stopped saving after about 5 game years (50 years measured at 19.8 MB) | Save version 4 compacts finished editions; saves live in IndexedDB, compressed, through the save vault | `tests/vault.test.ts`, `e2e/storage.spec.ts`, `tests/perf/career.perf.ts` |
+| High | (Found while moving to IndexedDB) WebKit refuses Blobs in IndexedDB in private sessions, so the first save never stored | Compressed saves are stored as ArrayBuffers; opening the vault checks a test write and falls back to localStorage | WebKit iPhone projects in the browser suite |
+| Medium | (Found while moving to IndexedDB) A reload right after an action could lose it, because an asynchronous write may not finish as a page closes | A closing-page journal in localStorage, applied on the next start | `tests/vault.test.ts`, `e2e/world.spec.ts` |
 | High | Saving needed room for three copies of a game, so a long game with two recovery copies (5.5 MB at peak) could not save in a browser | Saving no longer writes a temporary copy; peak is two copies | `tests/save-recovery.test.ts` (real-limit store) |
 | Medium | Deleting a save left its damaged copies in storage, unlisted, forever | Deleting a save removes all its copies after a confirmation that counts them; recovery copies are listed with Export and Delete | `tests/save-recovery.test.ts`, `e2e/storage.spec.ts` |
 | Medium | A full browser storage gave the same message as any other failed save, with no way to free space | Storage-full message with Free Up Space; Saved Games shows storage use | `e2e/storage.spec.ts`, `e2e/failures.spec.ts` |

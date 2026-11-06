@@ -56,12 +56,18 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### This Request, In Order (started November 6, 2026)
+### Current Request, In Order (started November 6, 2026, evening)
 
-1. Checkpoint A (above): done, montrealroots/Final-SLATE-Build#14.
-2. Performance: done, see `docs/PERFORMANCE.md`. Rollback snapshots copy plain data (4-6× faster, 43% less memory on a long save; balance 98 s to 37 s; identical results). Startup JavaScript 691 to 634 kB by removing data the game never reads. Engine harness `npm run perf:engine`; browser harness `scripts/perf-browser.mjs` on production builds.
-3. Storage: done, see `docs/STORAGE.md`. Saving needs two copies of a game, not three (no temporary copy); peak measured for fresh, medium and long saves with and without recovery copies; recovery copies listed in Saved Games with Export and Delete, never deleted by the game; deleting a save says how many copies go with it; storage-full message with Free Up Space; exhaustion tested at every step. **Still open:** saves grow about 0.6 MB per game year from festival and award history, so one game hits the browser limit after about four game years. Fix in item 4, which changes the same records: store rival works compactly, once per season, with a save migration.
-4. Festival and award rulebooks: done for the organizers whose documents were read; see `docs/world/RULEBOOK-AUDIT.md`. Versioned rulebooks (`src/engine/rulebooks.ts`) for the Academy Awards 99th, Sundance 2027, Clermont-Ferrand 2027 and Annie Awards 54th (23 categories, verified), and Cannes 2027 short films (projected from 2026). Each edition records its rules (`rulesId`); save version 3 migrates with a backup, keeps past and entered editions on simulated rules, lets untouched future editions adopt published rules, and stores competing films once (long save 1,100 to 859 kB). Tests in `tests/rulebooks.test.ts`; browser journey in `e2e/journeys.spec.ts` ("festival under official rules"). **Still open:** the other 32 institutions' rules (list at the end of the audit).
+1. **Long-career storage: done** (this checkpoint), see `docs/STORAGE.md`. Measured 1-50-year engine careers (`tests/perf/career.perf.ts`): 19.8 MB at 50 years before. Save version 4 compacts finished editions (12.4 MB at 50 years). Saves now live in IndexedDB, gzip-compressed (1.3 MB per copy at 50 years), through the save vault (`src/engine/vault.ts`, `src/ui/idb.ts`): atomic commits, verified move out of localStorage under a Web Lock with conflict copies, a closing-page journal, localStorage fallback. Still open: competing films and projects keep growing (about 0.25 MB raw a year); real Safari/Firefox quotas unmeasured.
+2. Festival and award rules: next. Recount first (last: 23 verified, 1 projected, 117 simulated of 141). Priority: Annecy, Berlinale, Venice, TIFF, BAFTA Film, Golden Globes, Emmys, then the rest.
+3. Country and holiday detail: recount (last: 246 playable, holiday rules for 218), placeholders, missing holiday rules, English names, weather audit.
+4. Deterministic required journeys: the documentary and unscripted journeys skip themselves when simulated contributors decline; make them fail instead, with controlled fixtures, and test declines separately.
+5. Deep Playwright playthroughs on the production build across media, profiles and failure paths.
+
+### Previous Request (done)
+
+- Checkpoint A, montrealroots/Final-SLATE-Build#14; performance, #15 (`docs/PERFORMANCE.md`); storage, #16; rulebooks and save version 3, #17 (`docs/world/RULEBOOK-AUDIT.md`).
+
 ### Coding Gaps
 
 1. **M2 follow-ups:** none open. Map markers are keyboard buttons ("Open {place}"); the repair screen for unresolvable places is done.
@@ -85,4 +91,4 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 - No tutorial, taxes, housing, banking, visas or attribute progression.
 - Rules are simulated and labelled as such, except where `docs/world/RULEBOOK-AUDIT.md` lists organizer rules.
-- Saves are local to the browser.
+- Saves are local to the browser (IndexedDB, or localStorage where it isn't available). Export Save is the copy outside it; importing isn't supported.

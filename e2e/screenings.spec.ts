@@ -1,20 +1,21 @@
 import { expect, test, type Page } from '@playwright/test';
 import { hashString } from '../src/engine/rng';
-import { advance, nav, quickLife } from './helpers';
+import { advance, nav, quickLife, saveAndExit } from './helpers';
+import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test.beforeEach(({}, info) => test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.'));
 
 /** Edit the saved game in place (as the save format stores it, with its checksum), then reopen it. */
 async function editSave(page: Page, fn: (state: Record<string, any>) => void): Promise<void> {
-  await page.getByRole('button', { name: 'Save And Exit' }).click();
-  const id = await page.evaluate(() => JSON.parse(localStorage.getItem('slate.v1.index')!)[0].saveId as string);
-  const env = JSON.parse(await page.evaluate((k) => localStorage.getItem(k)!, `slate.v1.save.${id}`));
+  await saveAndExit(page);
+  const id = await firstSaveId(page);
+  const env = JSON.parse((await readRecord(page, `slate.v1.save.${id}`))!);
   const state = JSON.parse(env.data);
   fn(state);
   // The engine keeps its queue in time order (then priority, then id); keep seeded events in it the same way.
   state.events.sort((a: { at: number; priority: number; id: string }, b: { at: number; priority: number; id: string }) => a.at - b.at || a.priority - b.priority || a.id.localeCompare(b.id));
   const data = JSON.stringify(state);
-  await page.evaluate(([k, v]) => localStorage.setItem(k, v), [`slate.v1.save.${id}`, JSON.stringify({ ...env, checksum: hashString(data), data })]);
+  await writeRecords(page, { [`slate.v1.save.${id}`]: JSON.stringify({ ...env, checksum: hashString(data), data }) });
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();

@@ -99,7 +99,7 @@ export function Creation() {
                   goto(problems[0].step);
                   return;
                 }
-                setBeginError(store.begin());
+                void store.begin().then(setBeginError);
               }}>Start My Story</button>
             )}
           </div>

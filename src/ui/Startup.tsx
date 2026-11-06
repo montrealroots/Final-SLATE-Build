@@ -70,6 +70,8 @@ export function Startup() {
       <div className="startup-card">
         <Wordmark as="h1" />
         <p className="tagline">Your next story starts here.</p>
+        {!s.storageReady && <p role="status" className="muted">Looking for your saved games…</p>}
+        {s.storageNote && <p role="alert" className="muted">{s.storageNote}</p>}
 
         {latest && (
           <section className="panel" aria-labelledby="resume-h">
@@ -78,7 +80,7 @@ export function Startup() {
           </section>
         )}
 
-        <div className="btn-row startup-actions" role="group" aria-label="Start">
+        <div className="btn-row startup-actions" role="group" aria-label="Start" hidden={!s.storageReady}>
           <button className={latest ? 'btn' : 'btn btn-primary'} onClick={newGame}>New Game</button>
           {latest && <button className="btn btn-primary" onClick={() => store.open(latest.saveId)}>Continue</button>}
           <button className="btn" onClick={() => setView('saves')}>Saved Games</button>
@@ -158,7 +160,7 @@ export function SavedGamesList() {
         <Modal title="Rename Save" onClose={() => setRenaming(null)} footer={
           <>
             <button className="btn" onClick={() => setRenaming(null)}>Cancel</button>
-            <button className="btn btn-primary" onClick={() => { const err = store.renameSave(renaming.id, renaming.name); if (err) setRenameError(err); else setRenaming(null); }}>Rename Save</button>
+            <button className="btn btn-primary" onClick={() => void store.renameSave(renaming.id, renaming.name).then((err) => { if (err) setRenameError(err); else setRenaming(null); })}>Rename Save</button>
           </>
         }>
           <TextField label="Save Name" value={renaming.name} maxLength={80} error={renameError} onChange={(v) => setRenaming({ ...renaming, name: v })} />
@@ -169,8 +171,9 @@ export function SavedGamesList() {
   );
 }
 
-function size(chars: number): string {
-  return chars >= 1_000_000 ? `${(chars / 1_048_576).toFixed(1)} MB` : `${Math.max(1, Math.round(chars / 1024))} KB`;
+function size(n: number): string {
+  if (n >= 1_000_000_000) return `${(n / 1_073_741_824).toFixed(1)} GB`;
+  return n >= 1_000_000 ? `${(n / 1_048_576).toFixed(1)} MB` : `${Math.max(1, Math.round(n / 1024))} KB`;
 }
 
 type Copy = ReturnType<typeof store.recoveryCopies>[number];
@@ -179,6 +182,7 @@ function copyLabel(c: Copy): string {
   if (c.kind === 'damaged') return 'Damaged save';
   if (c.kind === 'migration') return 'Copy from before an update';
   if (c.kind === 'repair') return 'Copy from before places were repaired';
+  if (c.kind === 'conflict') return 'Copy saved by another tab';
   return 'Copy from an interrupted save';
 }
 
@@ -307,7 +311,7 @@ function RepairPlaces() {
         ))}
         {error && <p role="alert" className="error">{error}</p>}
         <div className="btn-row spaced">
-          <button className="btn btn-primary" disabled={!ready} onClick={() => setError(store.repairAndOpen(chosen))}>Repair And Continue</button>
+          <button className="btn btn-primary" disabled={!ready} onClick={() => void store.repairAndOpen(chosen).then(setError)}>Repair And Continue</button>
           <button className="btn" onClick={() => store.backToStartup()}>Back To Start Screen</button>
         </div>
       </div>
