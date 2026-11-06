@@ -8,6 +8,11 @@ import type { CreationDraft, GameState, Route } from '../engine/types';
 import type { Place } from '../data/places';
 import { loadWorldHolidays, worldHolidaysLoaded } from '../world/holidays/holidays';
 
+/** A real-world time in the player's words, for messages about saves. */
+function realTime(ms: number): string {
+  return new Date(ms).toLocaleString('en', { dateStyle: 'medium', timeStyle: 'short' });
+}
+
 export type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 export interface Notice {
   title: string;
@@ -127,15 +132,12 @@ class Store {
     setTimeout(() => {
       try {
         const { state, recovery } = openSave(this.kv, saveId);
-        this.enter(state);
-        if (recovery) {
-          this.notice = {
-            title: 'Opened The Last Good Copy',
-            text: `Your latest save couldn't be used (${recovery.problem.replace(/\.$/, '')}), so ${recovery.source === 'backup' ? 'the previous save' : 'a complete copy from an interrupted save'} was opened. The damaged save is kept, not deleted.`,
-            kind: 'info',
-          };
-          this.emit();
-        }
+        // The notice travels with the entry: entering can wait for holiday rules, and entering clears old notices.
+        this.enter(state, recovery ? {
+          title: 'Opened The Last Good Copy',
+          text: `Your latest save couldn't be used (${recovery.problem.replace(/\.$/, '')}), so ${recovery.source === 'backup' ? 'the previous save' : 'a complete copy from an interrupted save'}, from ${realTime(state.updatedAtReal)}, was opened. The damaged save is kept, not deleted.`,
+          kind: 'info',
+        } : null);
       } catch (e) {
         if (e instanceof MissingPlacesError) {
           this.repair = { saveId, ids: e.ids, uses: e.uses };
@@ -163,23 +165,25 @@ class Store {
     }
   }
 
-  private enter(state: GameState) {
+  private enter(state: GameState, notice: Notice | null = null) {
     // Production checks holidays as time passes, so wait for the rules (or their failure, which the Place view explains).
     if (!worldHolidaysLoaded()) {
       this.screen = 'loading';
       this.emit();
-      void this.holidays.then(() => this.enterNow(state));
+      void this.holidays.then(() => this.enterNow(state, notice));
       return;
     }
-    this.enterNow(state);
+    this.enterNow(state, notice);
   }
 
-  private enterNow(state: GameState) {
+  private enterNow(state: GameState, notice: Notice | null = null) {
     this.state = state;
     this.screen = 'game';
     this.route = { view: 'home' };
     this.history = [];
-    this.notice = null;
+    this.notice = notice;
+    // A paused clock belongs to the game that failed, never to the one being opened.
+    this.processingProblem = null;
     this.readOnly = !canTakeLock(this.kv, state.saveId, TAB_ID, Date.now());
     if (!this.readOnly) this.holdLock();
     document.documentElement.dataset.theme = state.settings.theme;

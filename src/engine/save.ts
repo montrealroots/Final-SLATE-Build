@@ -177,6 +177,9 @@ export function writeSave(store: KeyValueStore, state: GameState, realNow: numbe
     state.updatedAtReal = realNow;
     const text = serialize(state);
     deserialize(text); // never write a save this build couldn't open
+    const current = store.getItem(mainKey(state.saveId));
+    // Another tab or a newer build may have saved in a format this build can't read; never replace or demote it.
+    if (current !== null && (storedVersion(current) ?? 0) > SAVE_VERSION) throw new Error('This save was made by a newer version of the game, so it was not replaced.');
     store.setItem(tmpKey(state.saveId), text);
     const back = store.getItem(tmpKey(state.saveId));
     if (back !== text) throw new Error('Verification failed');
