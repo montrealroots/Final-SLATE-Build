@@ -16,7 +16,6 @@ export interface GenreRecord {
   name: string;
   classification: string;
   definition: string;
-  mechanic: string;
   parent: string;
   modules: ModuleId[];
   questions: { key: string; label: string }[];
@@ -207,7 +206,7 @@ function slug(label: string): string {
 }
 
 interface RawRecord {
-  id: string; name: string; classification: string; working_definition: string; mechanic_specification: string; legacy_parent_label: string;
+  id: string; name: string; classification: string; working_definition: string; legacy_parent_label: string;
 }
 
 export const GENRES: GenreRecord[] = (registry as { records: RawRecord[] }).records.map((r) => {
@@ -218,7 +217,6 @@ export const GENRES: GenreRecord[] = (registry as { records: RawRecord[] }).reco
     name: r.name,
     classification: r.classification,
     definition: r.working_definition,
-    mechanic: r.mechanic_specification,
     parent: r.legacy_parent_label,
     modules: spec[0],
     questions: spec[1].map((label) => ({ key: slug(label), label })),

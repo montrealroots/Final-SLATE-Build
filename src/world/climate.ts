@@ -38,7 +38,8 @@ export interface MonthlyNormals {
 
 export interface ClimateSource {
   kind: 'stations' | 'partly-modeled' | 'modeled';
-  params: Partial<Record<Param, ParamSource | { modeled: true; reason: string }>>;
+  /** Which station supplied each value. Left out of the 66 catalog places at runtime; kept in docs/world/legacy-place-climate.json. */
+  params?: Partial<Record<Param, ParamSource | { modeled: true; reason: string }>>;
 }
 
 /** Stations further than this are not treated as evidence for a place (simulation assumption, docs/ASSUMPTIONS.md). */

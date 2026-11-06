@@ -36,3 +36,44 @@ describe('processing failures leave a consistent, recoverable state', () => {
     expect(runs - before2).toBe(1); // never twice
   });
 });
+
+describe('the rollback snapshot', () => {
+  it('restores deep changes to projects, ledgers and lists when a later event fails', async () => {
+    const { approve, buildProject, castAll, staffAll, startProduction } = await import('./helpers');
+    const s = startLife('deep-rollback');
+    const p = buildProject(s, { title: 'Deep', format: 'short', medium: 'live-action', scenario: 'micro' }, [{ name: 'A', patch: { roleSize: 'lead' } }], [{ place: 'Room', chars: ['A'], minutes: 2 }]);
+    approve(s, p);
+    castAll(s, p);
+    staffAll(s, p);
+    startProduction(s, p, 10);
+    registerHandler('test-deep', (state) => {
+      const pr = state.projects[0];
+      pr.obligations[0].postings.push({ ...pr.obligations[0].postings[0], key: 'x' });
+      pr.tasks[0].done = pr.tasks[0].units;
+      state.log.unshift({ ...state.log[0], id: 'fake' });
+      state.events.splice(0, 3);
+      throw new Error('deep boom');
+    });
+    schedule(s, s.now + 60_000, 'test-deep', {}, { id: 'deep-1' });
+    const before = JSON.stringify(s);
+    expect(() => processUntil(s, s.now + DAY, 'advance', 500)).toThrow(ProcessingError);
+    expect(JSON.stringify(s)).toBe(before);
+  });
+
+  it('copies plain data exactly, shares nothing with the original, and still copies non-plain values', async () => {
+    const { copyPlain } = await import('../src/engine/copy');
+    const s = startLife('copy-check');
+    const c = copyPlain(s);
+    expect(c).toEqual(structuredClone(s));
+    expect(c.events).not.toBe(s.events);
+    expect(c.events[0]).not.toBe(s.events[0]);
+    expect(c.character.birth).not.toBe(s.character.birth);
+    const odd = { d: new Date(5), m: new Map([[1, { a: 1 }]]), u: undefined, n: NaN, nested: [[1, { x: Infinity }]] };
+    const oc = copyPlain(odd);
+    expect(oc).toEqual(odd);
+    expect(oc.d).not.toBe(odd.d);
+    expect(oc.d).toBeInstanceOf(Date);
+    expect(oc.m.get(1)).not.toBe(odd.m.get(1));
+    expect('u' in oc).toBe(true);
+  });
+});

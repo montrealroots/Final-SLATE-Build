@@ -1,0 +1,2972 @@
+{
+ "us-los-angeles": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00072295:0-20000-0-72295",
+    "stationName": "LOS_ANGELES_INTL_AP",
+    "country": "US",
+    "km": 19,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00072295:0-20000-0-72295",
+    "stationName": "LOS_ANGELES_INTL_AP",
+    "country": "US",
+    "km": 19,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00072295:0-20000-0-72295",
+    "stationName": "LOS_ANGELES_INTL_AP",
+    "country": "US",
+    "km": 19,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00072295:0-20000-0-72295",
+    "stationName": "LOS_ANGELES_INTL_AP",
+    "country": "US",
+    "km": 19,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:4US72000000451151",
+    "stationName": "LOS ANGELES/WBO CA",
+    "country": "US",
+    "km": 1,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "us-new-york": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00072506:0-20000-0-72506",
+    "stationName": "NEW_YORK_CNTRL_PK_TWR",
+    "country": "US",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00072506:0-20000-0-72506",
+    "stationName": "NEW_YORK_CNTRL_PK_TWR",
+    "country": "US",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00072506:0-20000-0-72506",
+    "stationName": "NEW_YORK_CNTRL_PK_TWR",
+    "country": "US",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00072506:0-20000-0-72506",
+    "stationName": "NEW_YORK_CNTRL_PK_TWR",
+    "country": "US",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:4US72000003058011",
+    "stationName": "NEW YORK CENTRAL PARK, NY",
+    "country": "US",
+    "km": 9,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "us-atlanta": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00072219:0-20000-0-72219",
+    "stationName": "ATLANTA_HARTSFIELD_INTL_AP",
+    "country": "US",
+    "km": 14,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00072219:0-20000-0-72219",
+    "stationName": "ATLANTA_HARTSFIELD_INTL_AP",
+    "country": "US",
+    "km": 14,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00072219:0-20000-0-72219",
+    "stationName": "ATLANTA_HARTSFIELD_INTL_AP",
+    "country": "US",
+    "km": 14,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00072219:0-20000-0-72219",
+    "stationName": "ATLANTA_HARTSFIELD_INTL_AP",
+    "country": "US",
+    "km": 14,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:4US72219000904511",
+    "stationName": "ATLANTA/HARTSFIELD INTL AP GA",
+    "country": "US",
+    "km": 12,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "us-austin": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00072254:0-20000-0-72254",
+    "stationName": "AUSTIN-CAMP_MABRY",
+    "country": "US",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00072254:0-20000-0-72254",
+    "stationName": "AUSTIN-CAMP_MABRY",
+    "country": "US",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00072254:0-20000-0-72254",
+    "stationName": "AUSTIN-CAMP_MABRY",
+    "country": "US",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00072254:0-20000-0-72254",
+    "stationName": "AUSTIN-CAMP_MABRY",
+    "country": "US",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:4US72254004104281",
+    "stationName": "AUSTIN/MUNICIPAL AP TX",
+    "country": "US",
+    "km": 4,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "us-chicago": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00072534:0-20000-0-72534",
+    "stationName": "CHICAGO_MIDWAY_AP",
+    "country": "US",
+    "km": 15,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00072534:0-20000-0-72534",
+    "stationName": "CHICAGO_MIDWAY_AP",
+    "country": "US",
+    "km": 15,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00072534:0-20000-0-72534",
+    "stationName": "CHICAGO_MIDWAY_AP",
+    "country": "US",
+    "km": 15,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00072534:0-20000-0-72534",
+    "stationName": "CHICAGO_MIDWAY_AP",
+    "country": "US",
+    "km": 15,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:4US72530001115491",
+    "stationName": "CHICAGO/0'HARE, IL",
+    "country": "US",
+    "km": 25,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "us-boulder": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:99999999:",
+    "stationName": "BOULDER_14_W",
+    "country": "US",
+    "km": 23,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:99999999:",
+    "stationName": "BOULDER_14_W",
+    "country": "US",
+    "km": 23,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:99999999:",
+    "stationName": "BOULDER_14_W",
+    "country": "US",
+    "km": 23,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:99999999:",
+    "stationName": "BOULDER_14_W",
+    "country": "US",
+    "km": 23,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:4US72469000522201",
+    "stationName": "DENVER/STAPLETON INT'L AP CO",
+    "country": "US",
+    "km": 44,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "us-albuquerque": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00072365:0-20000-0-72365",
+    "stationName": "ALBUQUERQUE_INTL_AP",
+    "country": "US",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00072365:0-20000-0-72365",
+    "stationName": "ALBUQUERQUE_INTL_AP",
+    "country": "US",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00072365:0-20000-0-72365",
+    "stationName": "ALBUQUERQUE_INTL_AP",
+    "country": "US",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00072365:0-20000-0-72365",
+    "stationName": "ALBUQUERQUE_INTL_AP",
+    "country": "US",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:4US72365002902341",
+    "stationName": "ALBUQUERQUE/INT'L ARPT NM",
+    "country": "US",
+    "km": 5,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "us-anchorage": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00070273:0-20000-0-70273",
+    "stationName": "ANCHORAGE_INTL_AP",
+    "country": "US",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00070273:0-20000-0-70273",
+    "stationName": "ANCHORAGE_INTL_AP",
+    "country": "US",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00070273:0-20000-0-70273",
+    "stationName": "ANCHORAGE_INTL_AP",
+    "country": "US",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00070273:0-20000-0-70273",
+    "stationName": "ANCHORAGE_INTL_AP",
+    "country": "US",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:4US70273005002801",
+    "stationName": "ANCHORAGE/INTL, AK",
+    "country": "US",
+    "km": 9,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "us-honolulu": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00091182:0-20000-0-91182",
+    "stationName": "HONOLULU_INTL_AP",
+    "country": "US",
+    "km": 7,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00091182:0-20000-0-91182",
+    "stationName": "HONOLULU_INTL_AP",
+    "country": "US",
+    "km": 7,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00091182:0-20000-0-91182",
+    "stationName": "HONOLULU_INTL_AP",
+    "country": "US",
+    "km": 7,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00091182:0-20000-0-91182",
+    "stationName": "HONOLULU_INTL_AP",
+    "country": "US",
+    "km": 7,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:5U191182005119191",
+    "stationName": "HONOLULU, OAHU, HI",
+    "country": "US",
+    "km": 6,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "ca-toronto": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00071508:0-20000-0-71508",
+    "stationName": "Toronto_City",
+    "country": "CA",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00071508:0-20000-0-71508",
+    "stationName": "Toronto_City",
+    "country": "CA",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "6190:4CN71265061586650",
+    "stationName": "TORONTO ISLAND A , ON",
+    "country": "CA",
+    "km": 2,
+    "period": "1961-1990",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00071508:0-20000-0-71508",
+    "stationName": "Toronto_City",
+    "country": "CA",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:4CN71623061444750",
+    "stationName": "LONDON A , ON",
+    "country": "CA",
+    "km": 159,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "ca-vancouver": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00071207:0-20000-0-71207",
+    "stationName": "Squamish_Airport",
+    "country": "CA",
+    "km": 56,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00071207:0-20000-0-71207",
+    "stationName": "Squamish_Airport",
+    "country": "CA",
+    "km": 56,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00071741:0-20000-0-71741",
+    "stationName": "Kamloops_Aut",
+    "country": "CA",
+    "km": 248,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00071207:0-20000-0-71207",
+    "stationName": "Squamish_Airport",
+    "country": "CA",
+    "km": 56,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:4CN71892011084470",
+    "stationName": "VANCOUVER INT'L A , BC",
+    "country": "CA",
+    "km": 11,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "ca-montreal": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00071063:0-20000-0-71063",
+    "stationName": "Ottawa_Cda_Rcs",
+    "country": "CA",
+    "km": 168,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00071063:0-20000-0-71063",
+    "stationName": "Ottawa_Cda_Rcs",
+    "country": "CA",
+    "km": 168,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00071727:0-20000-0-71727",
+    "stationName": "Bagotville_A",
+    "country": "CA",
+    "km": 371,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00071063:0-20000-0-71063",
+    "stationName": "Ottawa_Cda_Rcs",
+    "country": "CA",
+    "km": 168,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:4CN71720070367620",
+    "stationName": "STE AGATHE DES MONTS , QC",
+    "country": "CA",
+    "km": 82,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "mx-mexico-city": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00076680:0-20000-0-76680",
+    "stationName": "Tacubaya",
+    "country": "MX",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00076680:0-20000-0-76680",
+    "stationName": "Tacubaya",
+    "country": "MX",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00076680:0-20000-0-76680",
+    "stationName": "Tacubaya",
+    "country": "MX",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00076680:0-20000-0-76680",
+    "stationName": "Tacubaya",
+    "country": "MX",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00076680:0-20000-0-76680",
+    "stationName": "Tacubaya",
+    "country": "MX",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "mx-guadalajara": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00076656:0-20000-0-76656",
+    "stationName": "CiudadGuizman",
+    "country": "MX",
+    "km": 107,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00076656:0-20000-0-76656",
+    "stationName": "CiudadGuizman",
+    "country": "MX",
+    "km": 107,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00076656:0-20000-0-76656",
+    "stationName": "CiudadGuizman",
+    "country": "MX",
+    "km": 107,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00076656:0-20000-0-76656",
+    "stationName": "CiudadGuizman",
+    "country": "MX",
+    "km": 107,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00076654:0-20000-0-76654",
+    "stationName": "Manzanillo",
+    "country": "MX",
+    "km": 207,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "br-sao-paulo": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00083683:0-20000-0-83683",
+    "stationName": "MACHADO",
+    "country": "BR",
+    "km": 220,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00083683:0-20000-0-83683",
+    "stationName": "MACHADO",
+    "country": "BR",
+    "km": 220,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00083683:0-20000-0-83683",
+    "stationName": "MACHADO",
+    "country": "BR",
+    "km": 220,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00083683:0-20000-0-83683",
+    "stationName": "MACHADO",
+    "country": "BR",
+    "km": 220,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00083683:0-20000-0-83683",
+    "stationName": "MACHADO",
+    "country": "BR",
+    "km": 220,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "br-rio-de-janeiro": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00083692:0-20000-0-83692",
+    "stationName": "JUIZ_DE_FORA",
+    "country": "BR",
+    "km": 128,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00083692:0-20000-0-83692",
+    "stationName": "JUIZ_DE_FORA",
+    "country": "BR",
+    "km": 128,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00083692:0-20000-0-83692",
+    "stationName": "JUIZ_DE_FORA",
+    "country": "BR",
+    "km": 128,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00083692:0-20000-0-83692",
+    "stationName": "JUIZ_DE_FORA",
+    "country": "BR",
+    "km": 128,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00083692:0-20000-0-83692",
+    "stationName": "JUIZ_DE_FORA",
+    "country": "BR",
+    "km": 128,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "ar-buenos-aires": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00087582:0-20000-0-87582",
+    "stationName": "AEROPARQUE_AERO",
+    "country": "AR",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00087582:0-20000-0-87582",
+    "stationName": "AEROPARQUE_AERO",
+    "country": "AR",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00087582:0-20000-0-87582",
+    "stationName": "AEROPARQUE_AERO",
+    "country": "AR",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00087582:0-20000-0-87582",
+    "stationName": "AEROPARQUE_AERO",
+    "country": "AR",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00087582:0-20000-0-87582",
+    "stationName": "AEROPARQUE_AERO",
+    "country": "AR",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "ar-mar-del-plata": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00087692:0-20000-0-87692",
+    "stationName": "MAR_DEL_PLATA_AERO",
+    "country": "AR",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00087692:0-20000-0-87692",
+    "stationName": "MAR_DEL_PLATA_AERO",
+    "country": "AR",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00087692:0-20000-0-87692",
+    "stationName": "MAR_DEL_PLATA_AERO",
+    "country": "AR",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00087692:0-20000-0-87692",
+    "stationName": "MAR_DEL_PLATA_AERO",
+    "country": "AR",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00087692:0-20000-0-87692",
+    "stationName": "MAR_DEL_PLATA_AERO",
+    "country": "AR",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "ar-ushuaia": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00087938:0-20000-0-87938",
+    "stationName": "USHUAIA_AERO",
+    "country": "AR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00087934:0-20000-0-87934",
+    "stationName": "RIO_GRANDE_B_A",
+    "country": "AR",
+    "km": 119,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00087938:0-20000-0-87938",
+    "stationName": "USHUAIA_AERO",
+    "country": "AR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00087938:0-20000-0-87938",
+    "stationName": "USHUAIA_AERO",
+    "country": "AR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00087938:0-20000-0-87938",
+    "stationName": "USHUAIA_AERO",
+    "country": "AR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "gb-london": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00003770:",
+    "stationName": "London",
+    "country": "GB",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00003770:",
+    "stationName": "London",
+    "country": "GB",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00003770:",
+    "stationName": "London",
+    "country": "GB",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00003770:",
+    "stationName": "London",
+    "country": "GB",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00003772:",
+    "stationName": "Heathrow",
+    "country": "GB",
+    "km": 22,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "gb-sheffield": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00003354:",
+    "stationName": "Nottingham",
+    "country": "GB",
+    "km": 44,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00003354:",
+    "stationName": "Nottingham",
+    "country": "GB",
+    "km": 44,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00003354:",
+    "stationName": "Nottingham",
+    "country": "GB",
+    "km": 44,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00003354:",
+    "stationName": "Nottingham",
+    "country": "GB",
+    "km": 44,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00003377:",
+    "stationName": "Waddington",
+    "country": "GB",
+    "km": 67,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "gb-edinburgh": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00003155:",
+    "stationName": "Drumalbin",
+    "country": "GB",
+    "km": 50,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00003155:",
+    "stationName": "Drumalbin",
+    "country": "GB",
+    "km": 50,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00003155:",
+    "stationName": "Drumalbin",
+    "country": "GB",
+    "km": 50,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00003155:",
+    "stationName": "Drumalbin",
+    "country": "GB",
+    "km": 50,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00003171:",
+    "stationName": "Leuchars",
+    "country": "GB",
+    "km": 52,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "ie-dublin": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00003969:0-20000-0-99999",
+    "stationName": "DublinAirport",
+    "country": "IE",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00003969:0-20000-0-99999",
+    "stationName": "DublinAirport",
+    "country": "IE",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00003969:0-20000-0-99999",
+    "stationName": "DublinAirport",
+    "country": "IE",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00003969:0-20000-0-99999",
+    "stationName": "DublinAirport",
+    "country": "IE",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00003969:0-20000-0-99999",
+    "stationName": "DublinAirport",
+    "country": "IE",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "fr-paris": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00007156:0-20000-0-99999",
+    "stationName": "PARIS_MONTSOURIS",
+    "country": "FR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00007156:0-20000-0-99999",
+    "stationName": "PARIS_MONTSOURIS",
+    "country": "FR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00007156:0-20000-0-99999",
+    "stationName": "PARIS_MONTSOURIS",
+    "country": "FR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00007156:0-20000-0-99999",
+    "stationName": "PARIS_MONTSOURIS",
+    "country": "FR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00007156:0-20000-0-99999",
+    "stationName": "PARIS_MONTSOURIS",
+    "country": "FR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "fr-cannes": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00007684:0-20000-0-99999",
+    "stationName": "CANNES",
+    "country": "FR",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00007684:0-20000-0-99999",
+    "stationName": "CANNES",
+    "country": "FR",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00007684:0-20000-0-99999",
+    "stationName": "CANNES",
+    "country": "FR",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00007684:0-20000-0-99999",
+    "stationName": "CANNES",
+    "country": "FR",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00007690:0-20000-0-99999",
+    "stationName": "NICE",
+    "country": "FR",
+    "km": 19,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "fr-annecy": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00007490:0-20000-0-99999",
+    "stationName": "MEYTHET",
+    "country": "FR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00007490:0-20000-0-99999",
+    "stationName": "MEYTHET",
+    "country": "FR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00007490:0-20000-0-99999",
+    "stationName": "MEYTHET",
+    "country": "FR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00007490:0-20000-0-99999",
+    "stationName": "MEYTHET",
+    "country": "FR",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00007491:0-20000-0-99999",
+    "stationName": "CHAMBERY_AIX",
+    "country": "FR",
+    "km": 35,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "fr-clermont-ferrand": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00007460:0-20000-0-99999",
+    "stationName": "CLERMONT_FD",
+    "country": "FR",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00007460:0-20000-0-99999",
+    "stationName": "CLERMONT_FD",
+    "country": "FR",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00007460:0-20000-0-99999",
+    "stationName": "CLERMONT_FD",
+    "country": "FR",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00007460:0-20000-0-99999",
+    "stationName": "CLERMONT_FD",
+    "country": "FR",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00007460:0-20000-0-99999",
+    "stationName": "CLERMONT_FD",
+    "country": "FR",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "fr-lille": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00007015:0-20000-0-99999",
+    "stationName": "LILLE_LESQUIN",
+    "country": "FR",
+    "km": 7,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00007015:0-20000-0-99999",
+    "stationName": "LILLE_LESQUIN",
+    "country": "FR",
+    "km": 7,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00007015:0-20000-0-99999",
+    "stationName": "LILLE_LESQUIN",
+    "country": "FR",
+    "km": 7,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00007015:0-20000-0-99999",
+    "stationName": "LILLE_LESQUIN",
+    "country": "FR",
+    "km": 7,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00007015:0-20000-0-99999",
+    "stationName": "LILLE_LESQUIN",
+    "country": "FR",
+    "km": 7,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "mc-monaco": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "mf:99138001:1981-2010",
+    "stationName": "MONACO",
+    "country": "MC",
+    "km": 2,
+    "period": "1981-2010",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "mf:99138001:1981-2010",
+    "stationName": "MONACO",
+    "country": "MC",
+    "km": 2,
+    "period": "1981-2010",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "mf:99138001:1983-2010",
+    "stationName": "MONACO",
+    "country": "MC",
+    "km": 2,
+    "period": "1983-2010",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "mf:99138001:1983-2010",
+    "stationName": "MONACO",
+    "country": "MC",
+    "km": 2,
+    "period": "1983-2010",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00007690:0-20000-0-99999",
+    "stationName": "NICE",
+    "country": "FR",
+    "km": 20,
+    "period": "1991-2020",
+    "borrowed": true
+   }
+  }
+ },
+ "de-berlin": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00010384:0-20000-0-99999",
+    "stationName": "Berlin-Tempelhof",
+    "country": "DE",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00010384:0-20000-0-99999",
+    "stationName": "Berlin-Tempelhof",
+    "country": "DE",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00010384:0-20000-0-99999",
+    "stationName": "Berlin-Tempelhof",
+    "country": "DE",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00010384:0-20000-0-99999",
+    "stationName": "Berlin-Tempelhof",
+    "country": "DE",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00010384:0-20000-0-99999",
+    "stationName": "Berlin-Tempelhof",
+    "country": "DE",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "de-oberhausen": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00010410:0-20000-0-99999",
+    "stationName": "Essen-Bredeney",
+    "country": "DE",
+    "km": 11,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00010410:0-20000-0-99999",
+    "stationName": "Essen-Bredeney",
+    "country": "DE",
+    "km": 11,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00010410:0-20000-0-99999",
+    "stationName": "Essen-Bredeney",
+    "country": "DE",
+    "km": 11,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00010410:0-20000-0-99999",
+    "stationName": "Essen-Bredeney",
+    "country": "DE",
+    "km": 11,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00010410:0-20000-0-99999",
+    "stationName": "Essen-Bredeney",
+    "country": "DE",
+    "km": 11,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "es-madrid": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00008222:0-20000-0-08222",
+    "stationName": "MADRIDRETIRO",
+    "country": "ES",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00008222:0-20000-0-08222",
+    "stationName": "MADRIDRETIRO",
+    "country": "ES",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00008222:0-20000-0-08222",
+    "stationName": "MADRIDRETIRO",
+    "country": "ES",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00008222:0-20000-0-08222",
+    "stationName": "MADRIDRETIRO",
+    "country": "ES",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00008223:0-20000-0-08223",
+    "stationName": "MADRIDCUATROVIENTOS",
+    "country": "ES",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "es-barcelona": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00008181:0-20000-0-08181",
+    "stationName": "BARCELONAAEROPUERTO",
+    "country": "ES",
+    "km": 14,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00008181:0-20000-0-08181",
+    "stationName": "BARCELONAAEROPUERTO",
+    "country": "ES",
+    "km": 14,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00008181:0-20000-0-08181",
+    "stationName": "BARCELONAAEROPUERTO",
+    "country": "ES",
+    "km": 14,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00008181:0-20000-0-08181",
+    "stationName": "BARCELONAAEROPUERTO",
+    "country": "ES",
+    "km": 14,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00008181:0-20000-0-08181",
+    "stationName": "BARCELONAAEROPUERTO",
+    "country": "ES",
+    "km": 14,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "es-sitges": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00008181:0-20000-0-08181",
+    "stationName": "BARCELONAAEROPUERTO",
+    "country": "ES",
+    "km": 23,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00008181:0-20000-0-08181",
+    "stationName": "BARCELONAAEROPUERTO",
+    "country": "ES",
+    "km": 23,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00008181:0-20000-0-08181",
+    "stationName": "BARCELONAAEROPUERTO",
+    "country": "ES",
+    "km": 23,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00008181:0-20000-0-08181",
+    "stationName": "BARCELONAAEROPUERTO",
+    "country": "ES",
+    "km": 23,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00008181:0-20000-0-08181",
+    "stationName": "BARCELONAAEROPUERTO",
+    "country": "ES",
+    "km": 23,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "es-san-sebastian": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00008027:0-20000-0-08027",
+    "stationName": "SANSEBASTIANIGUELDO",
+    "country": "ES",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00008027:0-20000-0-08027",
+    "stationName": "SANSEBASTIANIGUELDO",
+    "country": "ES",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00008027:0-20000-0-08027",
+    "stationName": "SANSEBASTIANIGUELDO",
+    "country": "ES",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00008027:0-20000-0-08027",
+    "stationName": "SANSEBASTIANIGUELDO",
+    "country": "ES",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00008027:0-20000-0-08027",
+    "stationName": "SANSEBASTIANIGUELDO",
+    "country": "ES",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "it-rome": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00016239:0-20000-0-99999",
+    "stationName": "Roma_Ciampino",
+    "country": "IT",
+    "km": 14,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00016239:0-20000-0-99999",
+    "stationName": "Roma_Ciampino",
+    "country": "IT",
+    "km": 14,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00016234:0-20000-0-99999",
+    "stationName": "Guidonia",
+    "country": "IT",
+    "km": 22,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00016234:0-20000-0-99999",
+    "stationName": "Guidonia",
+    "country": "IT",
+    "km": 22,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00016224:0-20000-0-99999",
+    "stationName": "Vigna_di_Valle",
+    "country": "IT",
+    "km": 31,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "it-venice": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00016099:0-20000-0-99999",
+    "stationName": "Treviso_Sant_Angelo",
+    "country": "IT",
+    "km": 26,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00016105:0-20000-0-99999",
+    "stationName": "Venezia_Tessera",
+    "country": "IT",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00016105:0-20000-0-99999",
+    "stationName": "Venezia_Tessera",
+    "country": "IT",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00016105:0-20000-0-99999",
+    "stationName": "Venezia_Tessera",
+    "country": "IT",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00016216:0-20000-0-99999",
+    "stationName": "Viterbo",
+    "country": "IT",
+    "km": 334,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "nl-amsterdam": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00006240:0-20000-0-06240",
+    "stationName": "AmsterdamSchipholAp",
+    "country": "NL",
+    "km": 10,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00006240:0-20000-0-06240",
+    "stationName": "AmsterdamSchipholAp",
+    "country": "NL",
+    "km": 10,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00006240:0-20000-0-06240",
+    "stationName": "AmsterdamSchipholAp",
+    "country": "NL",
+    "km": 10,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00006240:0-20000-0-06240",
+    "stationName": "AmsterdamSchipholAp",
+    "country": "NL",
+    "km": 10,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00006240:0-20000-0-06240",
+    "stationName": "AmsterdamSchipholAp",
+    "country": "NL",
+    "km": 10,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "nl-rotterdam": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00006344:0-20000-0-06344",
+    "stationName": "RotterdamTheHagueAp",
+    "country": "NL",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00006344:0-20000-0-06344",
+    "stationName": "RotterdamTheHagueAp",
+    "country": "NL",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00006344:0-20000-0-06344",
+    "stationName": "RotterdamTheHagueAp",
+    "country": "NL",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00006344:0-20000-0-06344",
+    "stationName": "RotterdamTheHagueAp",
+    "country": "NL",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00006344:0-20000-0-06344",
+    "stationName": "RotterdamTheHagueAp",
+    "country": "NL",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "ch-locarno": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00006760:0-20000-0-06760",
+    "stationName": "LocarnoMonti",
+    "country": "CH",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00006760:0-20000-0-06760",
+    "stationName": "LocarnoMonti",
+    "country": "CH",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00006760:0-20000-0-06760",
+    "stationName": "LocarnoMonti",
+    "country": "CH",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00006760:0-20000-0-06760",
+    "stationName": "LocarnoMonti",
+    "country": "CH",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00006760:0-20000-0-06760",
+    "stationName": "LocarnoMonti",
+    "country": "CH",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "cz-prague": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00011520:0-20000-0-11520",
+    "stationName": "PrahaLibus",
+    "country": "CZ",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00011520:0-20000-0-11520",
+    "stationName": "PrahaLibus",
+    "country": "CZ",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00011520:0-20000-0-11520",
+    "stationName": "PrahaLibus",
+    "country": "CZ",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00011520:0-20000-0-11520",
+    "stationName": "PrahaLibus",
+    "country": "CZ",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00011520:0-20000-0-11520",
+    "stationName": "PrahaLibus",
+    "country": "CZ",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "cz-karlovy-vary": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00011414:0-20000-0-11414",
+    "stationName": "KarlovyVary",
+    "country": "CZ",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00011414:0-20000-0-11414",
+    "stationName": "KarlovyVary",
+    "country": "CZ",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00011414:0-20000-0-11414",
+    "stationName": "KarlovyVary",
+    "country": "CZ",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00011414:0-20000-0-11414",
+    "stationName": "KarlovyVary",
+    "country": "CZ",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00011414:0-20000-0-11414",
+    "stationName": "KarlovyVary",
+    "country": "CZ",
+    "km": 4,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "se-stockholm": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00002484:0-20000-0-02484",
+    "stationName": "Stockholm_Observatoriekullen_A",
+    "country": "SE",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00002484:0-20000-0-02484",
+    "stationName": "Stockholm_Observatoriekullen_A",
+    "country": "SE",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00002485:0-20000-0-02485",
+    "stationName": "Stockholm_Observatoriekullen",
+    "country": "SE",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00002485:0-20000-0-02485",
+    "stationName": "Stockholm_Observatoriekullen",
+    "country": "SE",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00002483:0-20000-0-02483",
+    "stationName": "Stockholm_Sol",
+    "country": "SE",
+    "km": 3,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "no-tromso": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00001026:0-20000-0-01026",
+    "stationName": "TROMSO",
+    "country": "NO",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00001026:0-20000-0-01026",
+    "stationName": "TROMSO",
+    "country": "NO",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00001026:0-20000-0-01026",
+    "stationName": "TROMSO",
+    "country": "NO",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00001026:0-20000-0-01026",
+    "stationName": "TROMSO",
+    "country": "NO",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:6NO01026000904500",
+    "stationName": "TROMSO",
+    "country": "NO",
+    "km": 1,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "dk-copenhagen": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "6190:6DN06180",
+    "stationName": "KASTRUP LUFTHAVN",
+    "country": "DK",
+    "km": 9,
+    "period": "1961-1990",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "6190:6DN06180",
+    "stationName": "KASTRUP LUFTHAVN",
+    "country": "DK",
+    "km": 9,
+    "period": "1961-1990",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00006186:0-208-0-06186",
+    "stationName": "LANDBOHYJSKOLEN",
+    "country": "DK",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00006186:0-208-0-06186",
+    "stationName": "LANDBOHYJSKOLEN",
+    "country": "DK",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:6DN06000000303400",
+    "stationName": "KBENHAVNS TOLDBOD",
+    "country": "DK",
+    "km": 2,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "tr-istanbul": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00017061:0-20000-0-17061",
+    "stationName": "Sariyer",
+    "country": "TR",
+    "km": 16,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00017061:0-20000-0-17061",
+    "stationName": "Sariyer",
+    "country": "TR",
+    "km": 16,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00017061:0-20000-0-17061",
+    "stationName": "Sariyer",
+    "country": "TR",
+    "km": 16,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00017061:0-20000-0-17061",
+    "stationName": "Sariyer",
+    "country": "TR",
+    "km": 16,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00017066:0-792-0-17066",
+    "stationName": "Kocaeli",
+    "country": "TR",
+    "km": 83,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "eg-cairo": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00062366:0-20000-0-99999",
+    "stationName": "CairoAP",
+    "country": "EG",
+    "km": 19,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00062366:0-20000-0-99999",
+    "stationName": "CairoAP",
+    "country": "EG",
+    "km": 19,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00062366:0-20000-0-99999",
+    "stationName": "CairoAP",
+    "country": "EG",
+    "km": 19,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00062366:0-20000-0-99999",
+    "stationName": "CairoAP",
+    "country": "EG",
+    "km": 19,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:1UB62378",
+    "stationName": "HELWAN",
+    "country": "EG",
+    "km": 21,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "ma-marrakech": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00060230:0-20000-0-60230",
+    "stationName": "MARRAKECH",
+    "country": "MA",
+    "km": 3,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00060230:0-20000-0-60230",
+    "stationName": "MARRAKECH",
+    "country": "MA",
+    "km": 3,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00060230:0-20000-0-60230",
+    "stationName": "MARRAKECH",
+    "country": "MA",
+    "km": 3,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00060230:0-20000-0-60230",
+    "stationName": "MARRAKECH",
+    "country": "MA",
+    "km": 3,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:1FM60230",
+    "stationName": "MARRAKECH",
+    "country": "MA",
+    "km": 3,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "ng-lagos": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00065201:0-20000-0-65201",
+    "stationName": "Ikeja",
+    "country": "NG",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00065201:0-20000-0-65201",
+    "stationName": "Ikeja",
+    "country": "NG",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00065201:0-20000-0-65201",
+    "stationName": "Ikeja",
+    "country": "NG",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00065201:0-20000-0-65201",
+    "stationName": "Ikeja",
+    "country": "NG",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:1NI65201",
+    "stationName": "LAGOS",
+    "country": "NG",
+    "km": 9,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "bf-ouagadougou": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00065503:0-20000-0-65503",
+    "stationName": "OUAGADOUGOU",
+    "country": "BF",
+    "km": 72,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00065503:0-20000-0-65503",
+    "stationName": "OUAGADOUGOU",
+    "country": "BF",
+    "km": 72,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00065503:0-20000-0-65503",
+    "stationName": "OUAGADOUGOU",
+    "country": "BF",
+    "km": 72,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00065503:0-20000-0-65503",
+    "stationName": "OUAGADOUGOU",
+    "country": "BF",
+    "km": 72,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00065503:0-20000-0-65503",
+    "stationName": "OUAGADOUGOU",
+    "country": "BF",
+    "km": 72,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "ke-nairobi": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "6190:1KN63741",
+    "stationName": "DAGORETTI",
+    "country": "KE",
+    "km": 8,
+    "period": "1961-1990",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "6190:1KN63741",
+    "stationName": "DAGORETTI",
+    "country": "KE",
+    "km": 8,
+    "period": "1961-1990",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "6190:1KN63741",
+    "stationName": "DAGORETTI",
+    "country": "KE",
+    "km": 8,
+    "period": "1961-1990",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "6190:1KN63741",
+    "stationName": "DAGORETTI",
+    "country": "KE",
+    "km": 8,
+    "period": "1961-1990",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:1KN63741",
+    "stationName": "DAGORETTI",
+    "country": "KE",
+    "km": 8,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "za-johannesburg": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00068461:0-20000-0-68461",
+    "stationName": "Bethlehem",
+    "country": "ZA",
+    "km": 230,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00068461:0-20000-0-68461",
+    "stationName": "Bethlehem",
+    "country": "ZA",
+    "km": 230,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00068461:0-20000-0-68461",
+    "stationName": "Bethlehem",
+    "country": "ZA",
+    "km": 230,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00068461:0-20000-0-68461",
+    "stationName": "Bethlehem",
+    "country": "ZA",
+    "km": 230,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00068461:0-20000-0-68461",
+    "stationName": "Bethlehem",
+    "country": "ZA",
+    "km": 230,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "za-durban": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00068461:0-20000-0-68461",
+    "stationName": "Bethlehem",
+    "country": "ZA",
+    "km": 317,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00068461:0-20000-0-68461",
+    "stationName": "Bethlehem",
+    "country": "ZA",
+    "km": 317,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00068461:0-20000-0-68461",
+    "stationName": "Bethlehem",
+    "country": "ZA",
+    "km": 317,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00068461:0-20000-0-68461",
+    "stationName": "Bethlehem",
+    "country": "ZA",
+    "km": 317,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00068461:0-20000-0-68461",
+    "stationName": "Bethlehem",
+    "country": "ZA",
+    "km": 317,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "za-cape-town": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00068816:0-20000-0-68816",
+    "stationName": "CapeTown",
+    "country": "ZA",
+    "km": 17,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00068816:0-20000-0-68816",
+    "stationName": "CapeTown",
+    "country": "ZA",
+    "km": 17,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00068816:0-20000-0-68816",
+    "stationName": "CapeTown",
+    "country": "ZA",
+    "km": 17,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00068816:0-20000-0-68816",
+    "stationName": "CapeTown",
+    "country": "ZA",
+    "km": 17,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00068816:0-20000-0-68816",
+    "stationName": "CapeTown",
+    "country": "ZA",
+    "km": 17,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "ae-dubai": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00041194:0-20000-0-41194",
+    "stationName": "DubaiIntlAirport",
+    "country": "AE",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00041194:0-20000-0-41194",
+    "stationName": "DubaiIntlAirport",
+    "country": "AE",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00041194:0-20000-0-41194",
+    "stationName": "DubaiIntlAirport",
+    "country": "AE",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00041194:0-20000-0-41194",
+    "stationName": "DubaiIntlAirport",
+    "country": "AE",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00041194:0-20000-0-41194",
+    "stationName": "DubaiIntlAirport",
+    "country": "AE",
+    "km": 8,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "sa-jeddah": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00041024:",
+    "stationName": "Jeddah_KAIA",
+    "country": "SA",
+    "km": 24,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00041024:",
+    "stationName": "Jeddah_KAIA",
+    "country": "SA",
+    "km": 24,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00041024:",
+    "stationName": "Jeddah_KAIA",
+    "country": "SA",
+    "km": 24,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00041024:",
+    "stationName": "Jeddah_KAIA",
+    "country": "SA",
+    "km": 24,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:1SU62641",
+    "stationName": "PORT SUDAN",
+    "country": "SD",
+    "km": 295,
+    "period": "1961-1990",
+    "borrowed": true
+   }
+  }
+ },
+ "in-mumbai": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00043003:0-20000-0-43003",
+    "stationName": "MUMBAI_SANTACRUZ",
+    "country": "IN",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00043003:0-20000-0-43003",
+    "stationName": "MUMBAI_SANTACRUZ",
+    "country": "IN",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00043003:0-20000-0-43003",
+    "stationName": "MUMBAI_SANTACRUZ",
+    "country": "IN",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "6190:2IN43057",
+    "stationName": "MUMBAI(BOMBAY)COLABA",
+    "country": "IN",
+    "km": 21,
+    "period": "1961-1990",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:2IN43057",
+    "stationName": "MUMBAI(BOMBAY)COLABA",
+    "country": "IN",
+    "km": 21,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "in-panaji": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00043192:0-20000-0-43192",
+    "stationName": "PANJIM",
+    "country": "IN",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00043192:0-20000-0-43192",
+    "stationName": "PANJIM",
+    "country": "IN",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00043192:0-20000-0-43192",
+    "stationName": "PANJIM",
+    "country": "IN",
+    "km": 2,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "6190:2IN43192",
+    "stationName": "GOA(PANJIM)",
+    "country": "IN",
+    "km": 2,
+    "period": "1961-1990",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "6190:2IN43192",
+    "stationName": "GOA(PANJIM)",
+    "country": "IN",
+    "km": 2,
+    "period": "1961-1990",
+    "borrowed": false
+   }
+  }
+ },
+ "jp-tokyo": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00047662:0-20000-0-47662",
+    "stationName": "Tokyo",
+    "country": "JP",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00047662:0-20000-0-47662",
+    "stationName": "Tokyo",
+    "country": "JP",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00047662:0-20000-0-47662",
+    "stationName": "Tokyo",
+    "country": "JP",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00047662:0-20000-0-47662",
+    "stationName": "Tokyo",
+    "country": "JP",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00047662:0-20000-0-47662",
+    "stationName": "Tokyo",
+    "country": "JP",
+    "km": 6,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "kr-seoul": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00047108:0-20000-0-99999",
+    "stationName": "Seoul",
+    "country": "KR",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00047108:0-20000-0-99999",
+    "stationName": "Seoul",
+    "country": "KR",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00047108:0-20000-0-99999",
+    "stationName": "Seoul",
+    "country": "KR",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00047108:0-20000-0-99999",
+    "stationName": "Seoul",
+    "country": "KR",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00047108:0-20000-0-99999",
+    "stationName": "Seoul",
+    "country": "KR",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "kr-busan": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00047159:",
+    "stationName": "Busan",
+    "country": "KR",
+    "km": 10,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00047159:",
+    "stationName": "Busan",
+    "country": "KR",
+    "km": 10,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00047159:",
+    "stationName": "Busan",
+    "country": "KR",
+    "km": 10,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00047159:",
+    "stationName": "Busan",
+    "country": "KR",
+    "km": 10,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00047159:",
+    "stationName": "Busan",
+    "country": "KR",
+    "km": 10,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "cn-shanghai": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00058362:0-20000-0-58362",
+    "stationName": "SHANGHAI__BAOSHAN",
+    "country": "CN",
+    "km": 21,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00058362:0-20000-0-58362",
+    "stationName": "SHANGHAI__BAOSHAN",
+    "country": "CN",
+    "km": 21,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00058362:0-20000-0-58362",
+    "stationName": "SHANGHAI__BAOSHAN",
+    "country": "CN",
+    "km": 21,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00058362:0-20000-0-58362",
+    "stationName": "SHANGHAI__BAOSHAN",
+    "country": "CN",
+    "km": 21,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00058362:0-20000-0-58362",
+    "stationName": "SHANGHAI__BAOSHAN",
+    "country": "CN",
+    "km": 21,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "au-sydney": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00094768:0-36-9-94768",
+    "stationName": "SydneyObservatoryHill",
+    "country": "AU",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00094768:0-36-9-94768",
+    "stationName": "SydneyObservatoryHill",
+    "country": "AU",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00094768:0-36-9-94768",
+    "stationName": "SydneyObservatoryHill",
+    "country": "AU",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00094768:0-36-9-94768",
+    "stationName": "SydneyObservatoryHill",
+    "country": "AU",
+    "km": 1,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00094767:0-36-9-94767",
+    "stationName": "SydneyAirport",
+    "country": "AU",
+    "km": 9,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "au-melbourne": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00095936:0-36-9-95936",
+    "stationName": "MelbourneOlympicPark",
+    "country": "AU",
+    "km": 3,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00095936:0-36-9-95936",
+    "stationName": "MelbourneOlympicPark",
+    "country": "AU",
+    "km": 3,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00095936:0-36-9-95936",
+    "stationName": "MelbourneOlympicPark",
+    "country": "AU",
+    "km": 3,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00095936:0-36-9-95936",
+    "stationName": "MelbourneOlympicPark",
+    "country": "AU",
+    "km": 3,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00094882:0-36-9-94882",
+    "stationName": "LakeEildon",
+    "country": "AU",
+    "km": 106,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "nz-auckland": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00093012:0-20000-0-93012",
+    "stationName": "Kaitaia_Observatory",
+    "country": "NZ",
+    "km": 234,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00093012:0-20000-0-93012",
+    "stationName": "Kaitaia_Observatory",
+    "country": "NZ",
+    "km": 234,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00093012:0-20000-0-93012",
+    "stationName": "Kaitaia_Observatory",
+    "country": "NZ",
+    "km": 234,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00093012:0-20000-0-93012",
+    "stationName": "Kaitaia_Observatory",
+    "country": "NZ",
+    "km": 234,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00093012:0-20000-0-93012",
+    "stationName": "Kaitaia_Observatory",
+    "country": "NZ",
+    "km": 234,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ },
+ "nz-wellington": {
+  "kind": "stations",
+  "params": {
+   "tmax": {
+    "station": "9120:00093439:0-20000-0-93439",
+    "stationName": "Wellington_Aero_AWS",
+    "country": "NZ",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "tmin": {
+    "station": "9120:00093439:0-20000-0-93439",
+    "stationName": "Wellington_Aero_AWS",
+    "country": "NZ",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "prcp": {
+    "station": "9120:00093439:0-20000-0-93439",
+    "stationName": "Wellington_Aero_AWS",
+    "country": "NZ",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "wet": {
+    "station": "9120:00093439:0-20000-0-93439",
+    "stationName": "Wellington_Aero_AWS",
+    "country": "NZ",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   },
+   "sun": {
+    "station": "9120:00093439:0-20000-0-93439",
+    "stationName": "Wellington_Aero_AWS",
+    "country": "NZ",
+    "km": 5,
+    "period": "1991-2020",
+    "borrowed": false
+   }
+  }
+ }
+}

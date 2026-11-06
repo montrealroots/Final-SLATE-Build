@@ -9,7 +9,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience). `main` was at `3845c2d` when the Gap Completion Package was applied.
+- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`). `main` was at `3845c2d` when the Gap Completion Package was applied.
 - **Package:** "SLATE Gap Completion Package" (predates #2 and #3). Its references are not committed; the imported data is under `src/world/` and `docs/world/`.
 - **Run first:**
 
@@ -57,8 +57,8 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ### This Request, In Order (started November 6, 2026)
 
-1. Checkpoint A (above): done.
-2. Performance: profile rollback copying on fresh, medium and long saves (tick, event-heavy advance, sleep, memory, balance); optimize while keeping rollback, determinism and exactly-once; reduce startup JavaScript by measured lazy loading.
+1. Checkpoint A (above): done, montrealroots/Final-SLATE-Build#14.
+2. Performance: done, see `docs/PERFORMANCE.md`. Rollback snapshots copy plain data (4-6× faster, 43% less memory on a long save; balance 98 s to 37 s; identical results). Startup JavaScript 691 to 634 kB by removing data the game never reads. Engine harness `npm run perf:engine`; browser harness `scripts/perf-browser.mjs` on production builds.
 3. Storage: measure peak storage during a save (main, temporary copy, backup, migration backups, damaged copies); documented retention with export and cleanup choices; exhaustion at every save stage.
 4. Festival and award rulebooks: recount institutions and entries; verify edition-specific rules with sources; versioned rule data wired to projects, releases, screenings, credits, submissions and the calendar; boundary tests; a full browser journey from submission to results with save and reload.
 
