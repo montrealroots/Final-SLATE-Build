@@ -158,23 +158,22 @@ export async function castRoles(page: Page, yourself: string[] = []): Promise<vo
     const btn = roles.locator('li', { hasText: name }).getByRole('button', { name: 'Cast Yourself' }).first();
     if (await btn.isVisible()) await btn.click();
   }
-  // Re-query after every offer: the list re-renders once a role has an offer out.
-  const tried = new Set<string>();
-  for (let guard = 0; guard < 12; guard++) {
-    const items = roles.locator('li').filter({ has: page.getByRole('button', { name: 'Find Performers' }) });
-    let target = null;
-    for (const li of await items.all()) {
-      const key = (await li.locator('strong').first().innerText()).trim();
-      if (!tried.has(key)) { target = li; tried.add(key); break; }
-    }
-    if (!target) break;
-    await target.getByRole('button', { name: 'Find Performers' }).first().click();
+  // Re-query after every offer: a successful offer removes that role's button, so the same index
+  // then points at the next role. Roles nobody can take are skipped past.
+  const buttons = roles.getByRole('button', { name: 'Find Performers' });
+  let skipped = 0;
+  for (let guard = 0; guard < 16; guard++) {
+    if ((await buttons.count()) <= skipped) break;
+    await buttons.nth(skipped).click();
     const dialog = page.getByRole('dialog');
     const offers = dialog.getByRole('button', { name: 'Make Offer' });
     const n = await offers.count();
     // An offer can be refused (for example, one performer can't play two characters in a scene): try the next person.
     for (let i = 0; i < n && (await dialog.isVisible()); i++) await offers.nth(i).click();
-    if (await dialog.isVisible()) await dialog.getByRole('button', { name: 'Close' }).click();
+    if (await dialog.isVisible()) {
+      await dialog.getByRole('button', { name: 'Close' }).click();
+      skipped += 1;
+    }
   }
   for (const b of await page.getByRole('button', { name: 'Accept Counteroffer' }).all()) await b.click();
 }

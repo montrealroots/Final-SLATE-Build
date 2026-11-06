@@ -169,3 +169,71 @@ test('web series: short-form episodes deliver with per-episode work', async ({ p
   const credits = await creditsTable(page);
   expect(credits).not.toMatch(/Cast\s+Nia Halvorsen-Mbeki/); // stayed behind the camera
 });
+
+test('3D animation to delivery, with a motion-capture performance', async ({ page }) => {
+  await quickLife(page, 'ca-vancouver', '2026-01-05');
+  await newProject(page, { title: 'Iron Orchard', format: 'Short Film', medium: 'Animation', technique: '3D CG', finish: 'Limited Animation', runtime: '2' });
+  await addCharacters(page, ['Wren', 'The Golem']);
+  await section(page, 'Characters');
+  const golem = page.getByRole('article', { name: 'The Golem' });
+  await golem.getByRole('button', { name: 'Edit Character' }).click();
+  await golem.getByLabel('Entity').selectOption({ label: 'Monster' });
+  await golem.getByRole('checkbox', { name: 'Motion Capture' }).check();
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Orchard', chars: ['Wren', 'The Golem'], minutes: '0.5' });
+  await saveAndApprove(page);
+  await section(page, 'Cast');
+  await expect(page.getByText('Performance Capture:')).toBeVisible();
+  await produceToDelivery(page, { yourself: ['Wren'], step: 'month', weeks: 30 });
+  await section(page, 'Production');
+  await expect(page.getByText('Motion Capture: The Golem', { exact: true })).toBeVisible();
+  await expect(page.getByText('Render: Scene 1 (Orchard)', { exact: true })).toBeVisible();
+  const credits = await creditsTable(page);
+  expect(credits).toMatch(/Performance Capture[\s\S]*as The Golem/);
+  expect(credits).toMatch(/Voice Cast[\s\S]*as Wren/);
+});
+
+test('stop motion to delivery: puppets, sets and stages', async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-01-05');
+  await newProject(page, { title: 'Button Moon', format: 'Short Film', medium: 'Animation', technique: 'Stop Motion', finish: 'Limited Animation', runtime: '2' });
+  await addCharacters(page, ['Pip']);
+  await addScene(page, { index: 0, place: 'Drawer', chars: ['Pip'], minutes: '0.5' });
+  await saveAndApprove(page);
+  await section(page, 'Schedule');
+  await expect(page.getByLabel('Pip Puppet Copies')).toBeVisible();
+  await produceToDelivery(page, { yourself: ['Pip'], step: 'month', weeks: 30 });
+  await section(page, 'Production');
+  for (const t of ['Armature: Pip', 'Puppet Fabrication: Pip', 'Puppet Costume Fitting: Pip', 'Miniature Sets', 'Stage Camera And Lighting Setup']) await expect(page.getByText(t, { exact: true })).toBeVisible();
+  await expect(page.getByText('Ready for the stage.')).toBeVisible();
+});
+
+test('unscripted series: format rules, hosts and participants, story producing per episode', async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-03-02');
+  await newProject(page, { title: 'Bake Or Break', format: 'Unscripted Series', episodes: '2', runtime: '20' });
+  await expect(page.getByRole('heading', { name: 'Format Rules' })).toBeVisible();
+  await expect(page.getByText('Write the format rules for your show.')).toBeVisible();
+  await page.getByLabel('Rule', { exact: true }).fill('Three bakers compete; one leaves each episode.');
+  await page.getByRole('button', { name: 'Add Rule' }).click();
+  for (const [n, r] of [['Priya Shah', 'Host'], ['Tom Ellery', 'Participant'], ['Ana Ruiz', 'Participant'], ['Ken Mori', 'Participant']]) {
+    await page.getByLabel('Contributor Name').fill(n);
+    await page.getByLabel('Who They Are').fill(r);
+    await page.getByRole('button', { name: 'Add Contributor' }).click();
+  }
+  for (let k = 0; k < 4; k++) await page.getByRole('button', { name: 'Request Consent' }).first().click();
+  await advance(page, 'week');
+  await advance(page, 'week');
+  await section(page, 'Script');
+  const given: string[] = [];
+  for (const n of ['Priya Shah', 'Tom Ellery', 'Ana Ruiz', 'Ken Mori']) if (await page.locator('li', { hasText: n }).getByText('Consent Given').isVisible()) given.push(n);
+  test.skip(given.length < 2, 'Fewer than two contributors agreed in this seeded world.');
+  await addScene(page, { index: 0, place: 'Tent', contributors: given.slice(0, 2), minutes: '8', episodeButton: 'Add Sequence To Episode 1' });
+  await addScene(page, { index: 1, place: 'Tent', contributors: given.slice(0, 2), minutes: '8', episodeButton: 'Add Sequence To Episode 2' });
+  await saveAndApprove(page);
+  await section(page, 'Crew');
+  await expect(page.getByText('Story Producer', { exact: true })).toBeVisible();
+  await expect(page.getByText('Camera Operator', { exact: true })).toBeVisible();
+  await produceToDelivery(page, {});
+  await section(page, 'Production');
+  for (const t of ['Footage Logging, Episode 1', 'Story Producing, Episode 2']) await expect(page.getByText(t, { exact: true })).toBeVisible();
+  expect(await creditsTable(page)).toContain('Story Producer');
+});
