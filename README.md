@@ -6,7 +6,7 @@ This repository is the continuing base for the game. It is a working, tested bas
 
 ## What Works Now
 
-- **Startup and saves:** Resume, New Game, Saved Games (rename, delete with confirmation), Settings, a saved creation draft, loading and load-failure screens, and Save And Exit. "Saved" appears only after the save has been written and read back.
+- **Startup and saves:** New Game, Continue, Saved Games (continue, rename, export, delete with confirmation), Settings, a saved creation draft, loading, load-failure and repair screens, and Save And Exit. "Saved" appears only after every step of the save, including the save list, has succeeded.
 - **Character creation:** name, pronouns and acting title; birth date and birthplace; multiple heritages, including your own description; main and other languages with proficiency; starting place, date (2026) and local time; review. All four professions are part of the character from the start.
 - **One world, one clock:** 1:1 time while the game is open and visible. No Pause button and no offline catch-up. Advance (to the next event, tomorrow, a week, a month or a chosen time) and Sleep (wake time, alarm, snooze) use the same event rules as normal ticking.
 - **Places, time and weather:** 66 cities in 33 countries with real IANA time zones; sunrise and sunset, including polar day and night; modeled seasonal weather with forecasts that get less certain further ahead; public holidays for every country in the catalog; birthdays, including leap-day birthdays; travel between places.
@@ -29,7 +29,7 @@ This repository is the continuing base for the game. It is a working, tested bas
 - **After delivery:**
   - Credits based on actual contributions, including per-episode credits.
   - Fictional distribution offers and release planning.
-  - 16 festivals and 21 award events (137 sections and categories) with eligibility checks, submission, selection or nomination, screenings, results saved once, and honors that go to the credited people. Rival work comes from a consistent slate each season.
+  - 16 festivals and 21 award events (141 sections and categories; see `docs/world/CATEGORY-AUDIT.md`) with eligibility checks, submission, selection or nomination, screenings, results saved once, and honors that go to the credited people. Rival work comes from a consistent slate each season.
 
 ## Current Limitations
 
@@ -81,12 +81,15 @@ npm run build
 - `npm test` runs the unit and engine journey tests (Vitest).
 - `npm run e2e` runs the browser journeys, layout checks and WebKit iPhone emulation (Playwright; it starts its own dev server on port 5174). In this cloud environment the WebKit projects use the installed WebKit build; set `SLATE_WEBKIT_PATH` to change it.
 - `npm run catalog` regenerates the runtime genre catalog from the full registry.
-- `npm run balance` runs the 30-seed balance experiments and writes `docs/balance-results.json`.
-- `npm run check` runs typecheck, unit tests and build together.
+- `npm run balance` runs the 30-seed balance experiments and the held-out combinations, writing `docs/balance-results.json` and `docs/balance-heldout.json` (about 100 seconds).
+- `npm run budget` checks build sizes after `npm run build`.
+- `npm run check` runs the world data check, typecheck, unit tests, build and size budgets together. CI also runs balance and the browser journeys.
 
 ## Saves
 
-- Each save is written to a temporary key, read back and verified, and only then replaces the previous save. A failed write keeps the last good save and shows "Couldn't Save".
+- Each save is validated, written to a temporary key, read back and verified, and only then replaces the previous save, which is kept as a backup. A failed write keeps the last good save and shows "Your game couldn't be saved. Keep this window open and try again."
+- Opening a save validates it in depth. A missing, damaged or invalid save opens the newest sound copy (an interrupted write's temporary copy, then the backup) after the damaged one is kept; the player is told. A save from a newer version is refused and left unchanged. A save naming unknown places asks for replacements.
+- If something fails while time passes, the game is returned to how it was before that step, time pauses, and the player is told.
 - Saves carry a schema version. `src/engine/save.ts` holds the migration table; add one migration per schema change and never reset player progress to add a feature.
 - Only one browser tab runs a save at a time. Another tab opens it read-only and can take over.
 - Closing or hiding the game stops time. Reopening resumes at the saved time with no catch-up.

@@ -8,25 +8,31 @@
 
 ## Commands And Results
 
+Latest full run: November 6, 2026, on the branch that adds the reliability pass (pull request montrealroots/Final-SLATE-Build#13), local Linux container.
+
 | Command | Exit | Result |
 | --- | --- | --- |
 | `npm run world:check` | 0 | 252 entries (246 playable), 3,865 regions, 246 shards, 171,750 rows with 171,750 unique IDs, 175 outlines, 218 holiday entries, 11,459 stations; 0 problems. |
 | `npm run typecheck` | 0 | No type errors (strict mode). |
-| `npm test` | 0 | 51 tests passed (adds `tests/migration.test.ts`). |
+| `npm test` | 0 | 20 files, 110 tests passed, 0 skipped. |
 | `npm run build` | 0 | Built with no warnings. |
-| `npm run budget` | 0 | Startup JavaScript 675 kB raw, 200 kB gzipped, in 4 files including React (budgets 700 and 220 kB, set at the measured size as a growth guard). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
-| `npm run balance` | 0 | 1 test passed; 180 family runs plus 120 sensitivity runs. |
-| `npm run e2e -- --trace off` | 1, then 0 | M1 run: 22 passed, 1 failed, 16 skipped. The failure was the documentary test matching "Cast" inside a generated name ("Bruno Castillo"); the assertion now checks for cast credit rows, and the test passed on rerun. Earlier full run: 23 passed, 16 skipped, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max, and iPhone 15 Pro Max landscape. The skips are tests that run on one project only by design. |
+| `npm run budget` | 0 | Startup JavaScript 691 kB raw, 205 kB gzipped, in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
+| `npm run balance` | 0 | 2 tests passed: 180 family runs, 120 sensitivity runs, determinism check, and 30 held-out combination runs. Results identical to the previous run. Took about 100 seconds (see `docs/ASSUMPTIONS.md`, Reliability). |
+| `npm run e2e -- --trace off` | 0 | 54 passed, 17 skipped, 0 failed, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
 
-Counts at M7 (local): `npm run check` passed (79 unit and engine tests, world check 0 problems, build, size budget); `npm run balance` passed (tuned families unchanged; held-out combinations in `docs/balance-heldout.json`); the full browser run is recorded in `RESUME-HERE.md` with the checkpoint. New browser checks: failure paths (`e2e/failures.spec.ts`: failed save, version-1 save, holiday rules and map failing to load), screenings (`e2e/screenings.spec.ts`), performance (`e2e/performance.spec.ts`: on the dev server, startup 527 ms, United States places 314 ms, search 118 ms, at most 20 results drawn), accessibility (`e2e/accessibility.spec.ts`: names on every control, unique ids, one h1, reduced motion, 200% text without sideways scrolling, on all seven main screens; its audit was checked against injected faults).
+### Why 17 Browser Tests Are Skipped
 
-Counts at M5 (local): `npm run check` passed with 77 unit and engine tests (adds motion-capture flow, unscripted families, release contracts and writing-regression tests), the world check at 0 problems and the build; `npm run balance` passed with unchanged results; `npm run e2e -- --trace off` gave 31 passed, 16 skipped by design, 0 failed (the 3D journey now books, captures, approves a take and checks the booking line; the unscripted journey checks the format family and withdrawal dialog; the 2D journey cancels a planned release).
+Skipped tests did not run and are not counted as passed. Each is skipped on purpose for the project named:
 
-Counts at M3 and M4 (local, before the M3/M4 push): `npm run check` passed with 65 unit and engine tests, the world check at 0 problems and the build; `npm run balance` passed; `npm run e2e -- --trace off` gave 31 passed, 16 skipped by design, 0 failed. Adds the projected-holiday check, in-game Saved Games and Settings, and widths 393 and 414 to the viewport sweep (12 sizes, World, Saved Games and Settings included). An earlier M3-only run had 1 failure (phone live-action, blank page while a rebase rewrote files under the dev server); it passed alone and in this run.
+- **1 on desktop:** the phone device test runs only on the iPhone emulation projects.
+- **16 on phone (Chromium 390×844):** journeys that run once, at desktop width (2D, hybrid, documentary, TV, web series, 3D with motion capture, stop motion, unscripted, the two media checks), the performance measurement, and four lifecycle and layout checks that set their own viewports or tabs (every-viewport sweep, keyboard, clock while hidden, second tab).
+- WebKit iPhone projects only run `live-action` and `devices` specs (configured in `playwright.config.ts`), so other specs are not listed for them at all.
 
-Counts at M2 (local run before the M2 commit): `npm run check` passed with 58 unit and engine tests and the world check at 0 problems; `npm run e2e -- --trace off` gave 27 passed, 16 skipped by design, 0 failed (adds `e2e/world.spec.ts` on desktop and phone). The M3 holiday-engine tests (5) were added after that run and pass on their own. Startup JavaScript then was 432 kB excluding the 219 kB React chunk, which also loads at startup; the M7 budget check measures all startup files (675 kB with React). Country shards, regions, stations and map outlines load on demand.
+### Not Automated
 
-Counts at M1: 74 automated checks passed after the test fix (51 unit and engine tests, 23 browser tests), 16 skipped by design. Earlier base count: 72 automated checks passed, 0 failed, 16 skipped by design.
+- No physical iPhone or real Safari: WebKit emulation only.
+- No screen-reader pass by a person; the accessibility checks are automated.
+- No human playtesting for enjoyment or balance.
 
 ## Also Checked During Development
 
@@ -52,6 +58,12 @@ Counts at M1: 74 automated checks passed after the test fix (51 unit and engine 
 | Low | Waiting tasks gave no reason | Reason shown for every waiting task | 3D e2e |
 | Medium | Voice sessions created spurious design assets | Only real builds become assets | Motion-capture test |
 | Medium | A motion-capture casting counted as a voice casting | Voice sessions check for a voice casting | Motion-capture test |
+| High | A corrupted main save had no backup to recover from (the backup was deleted after every write) | Previous sound save kept; recovery with the damaged copy preserved | `tests/save-recovery.test.ts`, `e2e/failures.spec.ts` |
+| High | An exception while time passed left the game busy, the clock stopped, and the event half-applied and gone | All-or-nothing processing per call; time pauses with an explanation | `tests/processing.test.ts`, `e2e/failures.spec.ts` |
+| Medium | Impossible dates such as 31 February were accepted | Real-date checks | `tests/dates.test.ts` |
+| Medium | `commit` and `settle` accepted NaN, Infinity and negative amounts; closed lines could take payments | Same checks as reservations | `tests/ledger.test.ts` |
+| Medium | Saves were only shallowly validated | Deep validation with readable errors | `tests/save-recovery.test.ts` |
+| Low | A failed index write could hide a save from the list | The list is rebuilt from the saves | `tests/save-recovery.test.ts` |
 | Medium | A screening whose project couldn't be found never finished | The screening completes and logs "Your film" | `e2e/screenings.spec.ts` |
 | Low | The Save And Exit error banner stayed after a later successful save | It clears once the game is saved | `e2e/failures.spec.ts` |
 | High | Approving a new draft after filming made every scene's footage stale, not just the changed ones | Unchanged scenes carry their captures forward; changed scenes' work resets after a confirmation | `tests/writing.test.ts` |
