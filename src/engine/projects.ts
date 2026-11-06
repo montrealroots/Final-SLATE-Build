@@ -1,6 +1,7 @@
 import { composeGenres, genreName, type ModuleId } from './genres';
 import { findPlace } from '../data/places';
 import { addLog, adoptPlace, newId, registerHandler, schedule } from './state';
+import { unscriptedIssues } from './unscripted';
 import type {
   Draft, Format, GameState, Medium, Project, ProjectAxes, Requirement, RevisionNote, Scene, StoryCharacter, Technique,
 } from './types';
@@ -337,6 +338,7 @@ export function scriptIssues(p: Project): Issue[] {
   const nonfiction = isNonfiction(p.axes.format);
   if (!p.scenes.length) out.push({ severity: 'blocking', area: 'structure', text: 'Add at least one scene.' });
   if (p.axes.format === 'unscripted-series') {
+    out.push(...unscriptedIssues(p));
     if (!p.worldRules.length) out.push({ severity: 'blocking', area: 'structure', text: 'Write the format rules for your show.' });
     for (const s of p.scenes.filter((x) => x.kind === 'segment' && !x.contributorIds.length)) {
       out.push({ severity: 'blocking', area: 'structure', text: `${sceneLabel(p, s)} has no host or participants.`, sceneId: s.id });

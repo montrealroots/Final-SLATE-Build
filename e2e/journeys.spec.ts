@@ -227,6 +227,13 @@ test('unscripted series: format rules, hosts and participants, story producing p
     await page.getByLabel('Who They Are').fill(r);
     await page.getByRole('button', { name: 'Add Contributor' }).click();
   }
+  // The format family exposes only its own rules: a competition asks for contestants and how many leave.
+  await expect(page.getByLabel('Format Family')).toHaveValue('observational');
+  await page.getByLabel('Format Family').selectOption({ label: 'Competition' });
+  await expect(page.getByRole('group', { name: 'Contestants' })).toBeVisible();
+  await expect(page.getByText(/A 2-episode competition with 1 leaving each episode needs at least 3 contestants\./)).toBeVisible();
+  await page.getByLabel('Format Family').selectOption({ label: 'Observational Or Docuseries' });
+  await expect(page.getByRole('group', { name: 'Contestants' })).toHaveCount(0);
   for (let k = 0; k < 4; k++) await page.getByRole('button', { name: 'Request Consent' }).first().click();
   await advance(page, 'week');
   await advance(page, 'week');
@@ -237,6 +244,10 @@ test('unscripted series: format rules, hosts and participants, story producing p
   await addScene(page, { index: 0, place: 'Tent', contributors: given.slice(0, 2), minutes: '8', episodeButton: 'Add Sequence To Episode 1' });
   await addScene(page, { index: 1, place: 'Tent', contributors: given.slice(0, 2), minutes: '8', episodeButton: 'Add Sequence To Episode 2' });
   await saveAndApprove(page);
+  // Withdrawal is offered with its consequence, and can be backed out of.
+  await page.getByRole('button', { name: 'Record Withdrawal' }).first().click();
+  await expect(page.getByText(/will be redacted by your editor before those episodes can be delivered/)).toBeVisible();
+  await page.getByRole('button', { name: 'Keep Them In The Show' }).click();
   await section(page, 'Crew');
   await expect(page.getByText('Story Producer', { exact: true })).toBeVisible();
   await expect(page.getByText('Camera Operator', { exact: true })).toBeVisible();

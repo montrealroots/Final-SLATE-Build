@@ -11,6 +11,7 @@ import {
 } from './projects';
 import { MOCAP_CLEANUP_PER_SESSION, approvedTake, payStageSession, recordTake, stageBlock } from './mocap';
 import { stream } from './rng';
+import { decideCompetition } from './unscripted';
 import { addLog, cancelEvents, newId, registerCommitmentSource, registerHandler, schedule } from './state';
 import { HOUR, addDaysToKey, dateKey, dayNumber, formatDateKey, localParts, localToInstant, parseYmd, weekdayOfKey } from './time';
 import type { Asset, GameState, Obligation, Project, Scene, SceneCapture, ShootDay, Task } from './types';
@@ -680,6 +681,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
     addLog(state, msg, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'production' } });
   }
   maybePuppetDamage(state, p, date);
+  if (p.axes.format === 'unscripted-series') decideCompetition(state, p, (e) => milestoneDone(p, `capture:${e}`));
 }
 
 function addLogOnce(state: GameState, p: Project, key: string, text: string): void {

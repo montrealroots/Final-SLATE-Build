@@ -215,7 +215,7 @@ export interface Contributor {
   id: string;
   name: string;
   role: string;
-  consent: 'not-asked' | 'requested' | 'given' | 'declined';
+  consent: 'not-asked' | 'requested' | 'given' | 'declined' | 'withdrawn';
 }
 
 export interface WorldRule {
@@ -350,6 +350,21 @@ export interface ShootDay {
   weatherAnyway?: boolean;
 }
 
+export type UnscriptedFamily = 'talk' | 'observational' | 'competition' | 'factual' | 'studio-variety';
+
+export interface CompetitionResult {
+  episode: number;
+  scores: Record<string, number>;
+  advancing: string[];
+  eliminated: string[];
+}
+
+export interface UnscriptedSetup {
+  family: UnscriptedFamily;
+  competition?: { contestants: string[]; eliminatePerEpisode: number; results: CompetitionResult[] };
+  redactions: { contributorId: string; episode: number; sceneIds: string[]; taskId: string }[];
+}
+
 export interface MocapTake {
   id: string;
   date: string;
@@ -462,6 +477,8 @@ export interface Project {
   captures: SceneCapture[];
   /** Motion-capture work by character (booking, takes, approved take). Absent in older saves. */
   mocap?: Record<string, MocapRecord>;
+  /** Unscripted format family, competition season and redactions. Absent in older saves (treated as observational). */
+  unscripted?: UnscriptedSetup;
   edit: EditState;
   delivered: { at: number; runtimeMin: number } | null;
   credits: Credit[];

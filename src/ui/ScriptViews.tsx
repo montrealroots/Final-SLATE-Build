@@ -5,6 +5,7 @@ import {
   designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter,
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, type ModuleId,
+  FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, type UnscriptedFamily,
 } from '../engine';
 import type { Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
@@ -108,6 +109,7 @@ export function ScriptTab({ p }: { p: Project }) {
         </section>
       )}
 
+      {p.axes.format === 'unscripted-series' && <ShowFormat p={p} />}
       {(mods.has('world-rules') || p.axes.format === 'unscripted-series') && <WorldRules p={p} title={p.axes.format === 'unscripted-series' ? 'Format Rules' : 'Story World Rules'} />}
       {(mods.has('clues') || mods.has('setups') || mods.has('threat') || p.setups.length > 0) && <Setups p={p} />}
       {(mods.has('relationships') || p.relationships.length > 0) && <Relationships p={p} />}
@@ -426,9 +428,10 @@ function Facts({ p }: { p: Project }) {
       <ul className="list">
         {p.contributors.map((c) => (
           <li key={c.id} className="row">
-            <span className="grow">{c.name}{c.role ? `, ${c.role}` : ''} <span className={`chip ${c.consent === 'given' ? 'good' : c.consent === 'declined' ? 'bad' : 'warn'}`}>{{ 'not-asked': 'Consent Not Requested', requested: 'Consent Requested', given: 'Consent Given', declined: 'Consent Declined' }[c.consent]}</span></span>
+            <span className="grow">{c.name}{c.role ? `, ${c.role}` : ''} <span className={`chip ${c.consent === 'given' ? 'good' : c.consent === 'declined' || c.consent === 'withdrawn' ? 'bad' : 'warn'}`}>{{ 'not-asked': 'Consent Not Requested', requested: 'Consent Requested', given: 'Consent Given', declined: 'Consent Declined', withdrawn: 'Withdrew' }[c.consent]}</span></span>
             <div className="btn-row">
               {c.consent === 'not-asked' && <button className="btn btn-small" onClick={() => store.act((s) => requestConsent(s, p, c.id))}>Request Consent</button>}
+              {p.axes.format === 'unscripted-series' && c.consent === 'given' && !p.delivered && <WithdrawButton p={p} contributorId={c.id} name={c.name} />}
               <button className="btn btn-small" onClick={() => edit(p, () => (p.contributors = p.contributors.filter((x) => x.id !== c.id)))}>Remove</button>
             </div>
           </li>
@@ -587,3 +590,71 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
 }
 
 export { ordinal };
+
+// ---------------- Unscripted format ----------------
+
+function ShowFormat({ p }: { p: Project }) {
+  const u = unscriptedOf(p);
+  const [error, setError] = useState<string | null>(null);
+  const comp = u.competition;
+  const locked = !!comp?.results.length;
+  const nameOf = (id: string) => p.contributors.find((c) => c.id === id)?.name ?? 'A participant';
+  return (
+    <section className="panel" aria-labelledby="fmt-h">
+      <h2 id="fmt-h">Show Format</h2>
+      <SelectField label="Format Family" value={u.family} options={(Object.keys(FAMILIES) as UnscriptedFamily[]).map((f) => ({ value: f, label: FAMILIES[f].label }))}
+        hint={FAMILIES[u.family].description} onChange={(v) => setError(edit(p, () => setFamily(p, v)))} />
+      {u.family === 'competition' && (
+        <>
+          <fieldset style={{ border: 0, padding: 0 }} disabled={locked}>
+            <legend style={{ fontWeight: 600, marginBottom: 8 }}>Contestants</legend>
+            {p.contributors.length === 0 && <p className="muted">Add participants below, then choose who competes.</p>}
+            {p.contributors.map((c) => (
+              <Check key={c.id} label={c.name} checked={!!comp?.contestants.includes(c.id)} onChange={(on) => setError(edit(p, () => {
+                const list = new Set(comp?.contestants ?? []);
+                if (on) list.add(c.id); else list.delete(c.id);
+                setupCompetition(p, [...list], comp?.eliminatePerEpisode ?? 1);
+              }))} />
+            ))}
+            <NumberField label="Leave Each Episode" min={1} max={5} value={comp?.eliminatePerEpisode ?? 1} onChange={(n) => setError(edit(p, () => setupCompetition(p, comp?.contestants ?? [], n)))} />
+          </fieldset>
+          {locked && <p className="dim">Results are in, so the contestants and rules are fixed for this season.</p>}
+          {comp && comp.results.length > 0 && (
+            <>
+              <h3>Results</h3>
+              <ul className="list">
+                {comp.results.map((r) => (
+                  <li key={r.episode}>
+                    Episode {r.episode}: {r.episode === p.axes.episodeCount ? `${nameOf(r.advancing[0])} wins.` : `${r.eliminated.map(nameOf).join(' and ')} ${r.eliminated.length === 1 ? 'leaves' : 'leave'}; ${r.advancing.map(nameOf).join(', ')} ${r.advancing.length === 1 ? 'advances' : 'advance'}.`}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </>
+      )}
+      {error && <p role="alert" className="error">{error}</p>}
+    </section>
+  );
+}
+
+function WithdrawButton({ p, contributorId, name }: { p: Project; contributorId: string; name: string }) {
+  const [open, setOpen] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  return (
+    <>
+      <button className="btn btn-small btn-danger" onClick={() => setOpen(true)}>Record Withdrawal</button>
+      {open && (
+        <Modal title={`${name} Withdraws?`} onClose={() => setOpen(false)} footer={
+          <>
+            <button className="btn" onClick={() => setOpen(false)}>Keep Them In The Show</button>
+            <button className="btn btn-danger" onClick={() => { const e = store.act((s) => { withdrawRelease(s, s.projects.find((x) => x.id === p.id)!, contributorId); }); setError(e); if (!e) setOpen(false); }}>Record Withdrawal</button>
+          </>
+        }>
+          <p>{name} no longer agrees to appear. Footage already recorded with them will be redacted by your editor before those episodes can be delivered.</p>
+          {error && <p role="alert" className="error">{error}</p>}
+        </Modal>
+      )}
+    </>
+  );
+}
