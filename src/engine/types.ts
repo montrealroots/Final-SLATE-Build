@@ -540,7 +540,20 @@ export interface Edition {
   rivals: Rival[];
   results: Record<string, { stage: 'selection' | 'nomination' | 'winner'; projectIds: string[]; rivalIds: string[]; winner?: string; revealed: boolean }>;
   status: 'upcoming' | 'open' | 'closed' | 'judging' | 'announced' | 'complete';
-  screenings?: { projectId: string; at: number; done: boolean }[];
+  screenings?: Screening[];
+  /** Official dates whose entry deadline wasn't confirmed: the deadline shown is a planning date. */
+  deadlinePlanned?: boolean;
+}
+
+/** A public screening of a selected project. The invitation to attend is separate from the selection itself. */
+export interface Screening {
+  projectId: string;
+  at: number;
+  done: boolean;
+  /** Reply by this instant; older saves have none and are treated as not yet answered. */
+  rsvpBy?: number;
+  rsvp?: 'pending' | 'accepted' | 'declined' | 'expired';
+  attended?: boolean;
 }
 
 export interface Settings {

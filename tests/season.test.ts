@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { institution, processUntil, upcomingCommitments, DAY, seasonSlate, announceEdition } from './engine-api';
+import { institution, processUntil, upcomingCommitments, DAY, seasonSlate, announceEdition, rsvpScreening, screeningTravel, travelTo } from './engine-api';
 import { approve, buildProject, startLife } from './helpers';
 
 describe('festival screenings', () => {
@@ -25,6 +25,55 @@ describe('festival screenings', () => {
     expect(listed.length).toBeGreaterThan(0);
     processUntil(s, ed.end + DAY, 'tick', 100000);
     expect(s.log.some((l) => l.text.includes('Salt Road screened at'))).toBe(true);
+  });
+});
+
+describe('screening invitations', () => {
+  function selected(tag: string) {
+    const s = startLife(tag);
+    const ed = s.editions.find((e) => e.institutionId === 'venice' && e.year === 2026)!;
+    const proj = buildProject(s, { title: 'Salt Road', format: 'feature', medium: 'live-action', runtime: 100 }, [{ name: 'A' }], [{ place: 'Room', chars: ['A'], minutes: 50 }]);
+    approve(s, proj);
+    proj.id = 'px';
+    proj.delivered = { at: s.now, runtimeMin: 100 };
+    proj.quality = { overall: 90, reception: 90, direction: 90, script: 90 };
+    ed.entries.push({ id: 'en1', projectId: 'px', categoryId: 'competition', submittedAt: 0, status: 'selected', recipients: [], fee: 0 });
+    ed.results.competition = { stage: 'selection', projectIds: ['px'], rivalIds: [], revealed: true };
+    ed.status = 'announced';
+    processUntil(s, ed.start + 1, 'tick', 100000);
+    return { s, ed, venue: institution(ed.institutionId).placeId };
+  }
+
+  it('invites with a reply deadline; travel must arrive in time; declining keeps the selection', () => {
+    const { s, ed } = selected('rsvp');
+    const [first, second] = ed.screenings!;
+    expect(first.rsvp).toBe('pending');
+    expect(first.rsvpBy).toBe(first.at - DAY);
+    // From London the trip to Venice is a few hours; accepting works while there's time.
+    const t = screeningTravel(s, ed, first);
+    expect(t.here).toBe(false);
+    expect(t.arrivesInTime).toBe(true);
+    rsvpScreening(s, ed.id, 'px', first.at, true);
+    expect(first.rsvp).toBe('accepted');
+    rsvpScreening(s, ed.id, 'px', second.at, false);
+    expect(second.rsvp).toBe('declined');
+    expect(ed.entries[0].status).toBe('selected'); // declining attendance keeps the selection
+    // Go there, see the 30-minute reminder, attend.
+    travelTo(s, institution(ed.institutionId).placeId);
+    processUntil(s, first.at + 60_000, 'tick', 100000);
+    expect(s.log.some((l) => l.text === 'Your screening starts in 30 minutes.')).toBe(true);
+    expect(first.attended).toBe(true);
+    processUntil(s, ed.end + DAY, 'tick', 100000);
+    expect(second.attended).toBe(false);
+  });
+
+  it("refuses a trip that can't arrive in time, and an answer after the deadline", () => {
+    const { s, ed } = selected('rsvp-late');
+    const sc = ed.screenings![0];
+    // Just before the screening, from London: too late to get there.
+    processUntil(s, sc.at - 2 * 3600_000, 'tick', 100000);
+    expect(() => rsvpScreening(s, ed.id, 'px', sc.at, true)).toThrow(/deadline has passed|couldn't arrive in time/);
+    expect(s.locationId).not.toBe(institution(ed.institutionId).placeId);
   });
 });
 

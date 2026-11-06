@@ -7,11 +7,12 @@ import { getPlace } from '../data/places';
 import { ledgerTotals, money, spend } from './budget';
 import { genre } from './genres';
 import { personById } from './people';
-import { isEpisodic, isNonfiction } from './projects';
+import { approvedScenes as approvedScenesOf, isEpisodic, isNonfiction } from './projects';
+import { travelHours } from './state';
 import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { addLog, onNewGame, registerCommitmentSource, registerHandler, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localParts, localToInstant, parseYmd, weekdayOfKey, ymd } from './time';
-import type { Credit, Edition, EditionEntry, Format, GameState, Medium, Project, Rival } from './types';
+import type { Credit, Edition, EditionEntry, Format, GameState, Medium, Project, Rival, Screening } from './types';
 
 export type Recipient = 'project' | 'director' | 'writer' | 'lead' | 'supporting' | 'producer' | 'voice' | 'ensemble';
 export type Judging = 'programmers' | 'jury' | 'members' | 'audience';
@@ -49,7 +50,8 @@ export interface Institution {
   requiresRelease?: { routes: string[]; countries?: string[] };
   prestige: number; // rival strength (simulation assumption)
   categories: Category[];
-  official?: Record<number, { start: string; end: string; deadline: string; opens?: string; label?: string; source: string }>;
+  /** Dates the organizer announced. A missing deadline means it wasn't confirmed: a planning deadline is used and labelled. */
+  official?: Record<number, { start: string; end: string; deadline?: string; opens?: string; label?: string; source: string; checked?: string }>;
   description: string;
   ordinalBase?: number;
 }
@@ -72,6 +74,7 @@ const EUROPE = ['GB', 'IE', 'FR', 'DE', 'ES', 'IT', 'NL', 'CH', 'CZ', 'SE', 'NO'
 export const INSTITUTIONS: Institution[] = [
   {
     id: 'sundance', name: 'Sundance Film Festival', short: 'Sundance', kind: 'festival', placeId: 'us-boulder', window: [1, 20, 27], duration: 11, cadence: 1, eligibility: 'premiere', prestige: 66,
+    official: { 2027: { start: '2027-01-21', end: '2027-01-31', source: 'https://www.cu.edu/node/348345', checked: '2026-11-06' } },
     description: 'An independent film festival in January with dramatic, documentary, short and episodic programs.',
     categories: [
       C('dramatic', 'Dramatic Competition', 'project', FILM, 'programmers', 16, { fee: 100, premiere: 'world' }),
@@ -82,6 +85,7 @@ export const INSTITUTIONS: Institution[] = [
   },
   {
     id: 'berlinale', name: 'Berlin International Film Festival', short: 'Berlinale', kind: 'festival', placeId: 'de-berlin', window: [2, 10, 16], duration: 11, cadence: 1, eligibility: 'premiere', prestige: 70,
+    official: { 2027: { start: '2027-02-10', end: '2027-02-21', label: '77th Berlin International Film Festival', source: 'https://www.berlinale.de/en/2027/news-press-releases/278428.html', checked: '2026-11-06' } },
     description: 'A February festival with a main competition, a panorama of audience favorites and short films.',
     categories: [
       C('competition', 'Competition', 'project', [...FILM, ...DOCS], 'jury', 20, { fee: 100, premiere: 'world' }),
@@ -91,6 +95,7 @@ export const INSTITUTIONS: Institution[] = [
   },
   {
     id: 'cannes', name: 'Cannes Film Festival', short: 'Cannes', kind: 'festival', placeId: 'fr-cannes', window: [5, 12, 19], duration: 12, cadence: 1, eligibility: 'premiere', prestige: 76,
+    official: { 2027: { start: '2027-05-11', end: '2027-05-22', label: '80th Cannes Film Festival', source: 'https://www.screendaily.com/news/cannes-film-festival-confirms-2027-dates-for-80th-edition/5217448.article', checked: '2026-11-06' } },
     description: 'A May festival with a main competition, out-of-competition screenings and a short film competition.',
     categories: [
       C('competition', 'Competition', 'project', FILM, 'jury', 21, { fee: 150, premiere: 'world' }),
@@ -140,6 +145,7 @@ export const INSTITUTIONS: Institution[] = [
   },
   {
     id: 'idfa', name: 'International Documentary Film Festival Amsterdam', short: 'IDFA', kind: 'festival', placeId: 'nl-amsterdam', window: [11, 12, 19], duration: 11, cadence: 1, eligibility: 'premiere', prestige: 66,
+    official: { 2026: { start: '2026-11-12', end: '2026-11-22', source: 'https://festival.idfa.nl/en/idfa-2026-2/', checked: '2026-11-06' } },
     description: 'A November documentary festival with feature and short competitions.',
     categories: [
       C('features', 'Feature Documentary Competition', 'project', [...DOCS, ...DOC_SERIES], 'jury', 16, { fee: 80, premiere: 'international' }),
@@ -153,11 +159,13 @@ export const INSTITUTIONS: Institution[] = [
   },
   {
     id: 'clermont', name: 'Clermont-Ferrand International Short Film Festival', short: 'Clermont-Ferrand', kind: 'festival', placeId: 'fr-clermont-ferrand', window: [1, 30, 31], duration: 9, cadence: 1, eligibility: 'premiere', prestige: 62,
+    official: { 2027: { start: '2027-01-29', end: '2027-02-06', deadline: '2026-09-24', label: '49th Clermont-Ferrand International Short Film Festival', source: 'https://www.lecourt-clermont.org/wp-content/uploads/2026/06/EN-Reglement-international-2027.pdf', checked: '2026-11-06' } },
     description: 'A short film festival in late January and early February.',
     categories: [C('international', 'International Competition', 'project', SHORTS, 'jury', 75, { fee: 0, premiere: 'none' })],
   },
   {
     id: 'sxsw', name: 'SXSW Film & TV Festival', short: 'SXSW', kind: 'festival', placeId: 'us-austin', window: [3, 6, 13], duration: 9, cadence: 1, eligibility: 'premiere', prestige: 60,
+    official: { 2027: { start: '2027-03-13', end: '2027-03-21', source: 'https://sxsw.com/wp-content/uploads/2026/04/SXSW-Announces-2027-Dates.pdf', checked: '2026-11-06' } },
     description: 'A March festival with narrative, documentary, short and episodic programs and audience awards.',
     categories: [
       C('narrative', 'Narrative Feature Competition', 'project', FILM, 'jury', 10, { fee: 90, premiere: 'world' }),
@@ -235,6 +243,7 @@ export const INSTITUTIONS: Institution[] = [
   {
     id: 'golden-globes', name: 'Golden Globe Awards', short: 'Golden Globes', kind: 'award', placeId: 'us-los-angeles', window: [1, 4, 12], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 72,
     requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast'], countries: ['US'] },
+    official: { 2027: { start: '2027-01-10', end: '2027-01-10', label: '84th Golden Globe Awards', source: 'https://www.paramountpressexpress.com/cbs-entertainment/shows/84th-annual-golden-globes/about/', checked: '2026-11-06' } },
     description: 'Annual film and television awards. Film comedy and musical work competes separately from drama.',
     categories: [
       C('drama', 'Best Motion Picture, Drama', 'producer', FILM, 'members', 6, { excludeGenres: COMEDY_MUSICAL }),
@@ -263,6 +272,7 @@ export const INSTITUTIONS: Institution[] = [
   {
     id: 'international-emmys', name: 'International Emmy Awards', short: 'International Emmys', kind: 'award', placeId: 'us-new-york', window: [11, 20, 25], duration: 1, cadence: 1, eligibility: 'oct-sep', prestige: 66,
     requiresRelease: { routes: ['broadcast', 'streaming'] },
+    official: { 2026: { start: '2026-11-23', end: '2026-11-23', label: '54th International Emmy Awards', source: 'https://en.unifrance.org/news/17531/the-nominations-for-french-audiovisual-productions-at-the-54th-international-emmy-awards', checked: '2026-11-06' } },
     description: 'Annual awards for television made outside the United States. In this game, entries need a production base outside the US and a broadcast or streaming release.',
     origin: ['CA', 'MX', 'BR', 'AR', 'GB', 'IE', 'FR', 'MC', 'DE', 'ES', 'IT', 'NL', 'CH', 'CZ', 'SE', 'NO', 'DK', 'TR', 'EG', 'MA', 'NG', 'BF', 'KE', 'ZA', 'AE', 'SA', 'IN', 'JP', 'KR', 'CN', 'AU', 'NZ'],
     categories: [
@@ -276,6 +286,7 @@ export const INSTITUTIONS: Institution[] = [
   {
     id: 'annie', name: 'Annie Awards', short: 'Annies', kind: 'award', placeId: 'us-los-angeles', window: [2, 15, 28], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 66,
     requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast', 'digital'] },
+    official: { 2027: { start: '2027-02-20', end: '2027-02-20', label: '54th Annie Awards', source: 'https://www.cartoonbrew.com/awards/annie-award-submissions-open-anime-category-265121.html', checked: '2026-11-06' } },
     description: 'Annual animation awards with feature, short, television and individual achievement categories.',
     categories: [
       C('feature', 'Best Feature', 'producer', FILM, 'members', 5, { mediums: ['animation', 'hybrid'] }),
@@ -289,6 +300,7 @@ export const INSTITUTIONS: Institution[] = [
   {
     id: 'spirit', name: 'Film Independent Spirit Awards', short: 'Spirit Awards', kind: 'award', placeId: 'us-los-angeles', window: [2, 21, 28], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 64,
     requiresRelease: { routes: ['theatrical', 'streaming', 'festival-premiere', 'digital'] },
+    official: { 2027: { start: '2027-03-06', end: '2027-03-06', deadline: '2026-12-02', label: '42nd Film Independent Spirit Awards', source: 'https://www.filmindependent.org/press-releases/film-independent-spirit-awards-announces-2027-and-2028-dates/', checked: '2026-11-06' } },
     description: 'Annual awards for independent film and television. Performance categories are gender-neutral. In this game, commissioned projects are not eligible.',
     categories: [
       C('feature', 'Best Feature', 'producer', FILM, 'members', 5), C('director', 'Best Director', 'director', FILM, 'members', 5),
@@ -300,6 +312,7 @@ export const INSTITUTIONS: Institution[] = [
   {
     id: 'gotham', name: 'Gotham Awards', short: 'Gothams', kind: 'award', placeId: 'us-new-york', window: [12, 1, 3], duration: 1, cadence: 1, eligibility: 'oct-sep', prestige: 62,
     requiresRelease: { routes: ['theatrical', 'streaming', 'festival-premiere', 'digital', 'broadcast'] },
+    official: { 2026: { start: '2026-11-30', end: '2026-11-30', label: '36th Gotham Film Awards', source: 'https://thegotham.org/press/dates-set-3rd-annual-gotham-television-awards-36th-annual-gotham-film-awards/', checked: '2026-11-06' } },
     description: 'Annual awards for independent film and series. Performance categories are gender-neutral.',
     categories: [
       C('feature', 'Best Feature', 'producer', FILM, 'jury', 5), C('documentary', 'Best Documentary Feature', 'producer', DOCS, 'jury', 5),
@@ -309,6 +322,7 @@ export const INSTITUTIONS: Institution[] = [
   {
     id: 'dga', name: 'Directors Guild Of America Awards', short: 'DGA Awards', kind: 'award', placeId: 'us-los-angeles', window: [2, 7, 14], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 72,
     requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast'] },
+    official: { 2027: { start: '2027-01-30', end: '2027-01-30', label: '79th DGA Awards', source: 'https://www.dga.org/News/PressReleases/2026/260416_DGA-Announces-Date-For-2027-Awards-Ceremony', checked: '2026-11-06' } },
     description: 'Annual awards for directing in film, documentary and television.',
     categories: [C('feature', 'Theatrical Feature Film', 'director', FILM, 'members', 5), C('documentary', 'Documentary', 'director', DOCS, 'members', 5), C('drama', 'Dramatic Series', 'director', SERIES, 'jury', 5)],
   },
@@ -321,12 +335,14 @@ export const INSTITUTIONS: Institution[] = [
   {
     id: 'pga', name: 'Producers Guild Awards', short: 'PGA Awards', kind: 'award', placeId: 'us-los-angeles', window: [2, 21, 28], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 70,
     requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast'] },
+    official: { 2027: { start: '2027-02-27', end: '2027-02-27', label: '38th PGA Awards', source: 'https://producersguild.org/2027-2028-producers-guild-awards-key-dates/', checked: '2026-11-06' } },
     description: 'Annual awards for producing in film and television.',
     categories: [C('theatrical', 'Theatrical Motion Picture', 'producer', FILM, 'members', 10), C('animated', 'Animated Theatrical Motion Picture', 'producer', FILM, 'members', 5, { mediums: ['animation'] }), C('documentary', 'Documentary Motion Picture', 'producer', DOCS, 'members', 5), C('drama', 'Episodic Television, Drama', 'producer', SERIES, 'members', 5)],
   },
   {
     id: 'actor-awards', name: 'Actor Awards', short: 'Actor Awards', kind: 'award', placeId: 'us-los-angeles', window: [3, 1, 1], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 72,
     requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast'] },
+    official: { 2027: { start: '2027-02-28', end: '2027-02-28', label: '33rd Actor Awards', source: 'https://www.thewrap.com/creative-content/movies/actor-awards-set-2027-2028-dates-at-netflix/', checked: '2026-11-06' } },
     description: 'Annual awards for screen performers, voted by performers.',
     categories: [
       C('male-lead', 'Male Actor In A Leading Role', 'lead', FILM, 'members', 5, { actingTitle: 'Actor' }),
@@ -337,12 +353,14 @@ export const INSTITUTIONS: Institution[] = [
   {
     id: 'cesar', name: 'César Awards', short: 'César', kind: 'award', placeId: 'fr-paris', window: [2, 20, 28], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 68, origin: ['FR', 'MC'],
     requiresRelease: { routes: ['theatrical'], countries: ['FR'] },
+    official: { 2027: { start: '2027-02-25', end: '2027-02-25', label: '52nd César Awards', source: 'https://www.parismatch.be/culture/cinema/2026/09/29/voici-le-nom-de-la-personne-qui-succede-a-benjamin-lavernhe-a-lanimation-de-la-ceremonie-des-cesar-2027-V3WASYGVRBDQZC4IUSXG2DBZ7Q/', checked: '2026-11-06' } },
     description: 'Annual French film awards. In this game, entries need a French production base and a theatrical release in France.',
     categories: [C('film', 'Best Film', 'producer', FILM, 'members', 5), C('director', 'Best Director', 'director', FILM, 'members', 5), C('screenplay', 'Best Original Screenplay', 'writer', FILM, 'members', 5), C('animated', 'Best Animated Film', 'producer', FILM, 'members', 3, { mediums: ['animation'] }), C('documentary', 'Best Documentary', 'producer', DOCS, 'members', 5)],
   },
   {
     id: 'goya', name: 'Goya Awards', short: 'Goya', kind: 'award', placeId: 'es-madrid', window: [2, 7, 14], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 66, origin: ['ES'],
     requiresRelease: { routes: ['theatrical'], countries: ['ES'] },
+    official: { 2027: { start: '2027-02-06', end: '2027-02-06', label: '41st Goya Awards', source: 'https://rtvc.es/pamplona-acogera-gala-premios-goya-30-septiemmbre-2026/', checked: '2026-11-06' } },
     description: 'Annual Spanish film awards. In this game, entries need a Spanish production base and a theatrical release in Spain.',
     categories: [C('film', 'Best Film', 'producer', FILM, 'members', 5), C('director', 'Best Director', 'director', FILM, 'members', 5), C('screenplay', 'Best Original Screenplay', 'writer', FILM, 'members', 5)],
   },
@@ -379,6 +397,7 @@ export const INSTITUTIONS: Institution[] = [
   {
     id: 'european-film-awards', name: 'European Film Awards', short: 'European Film Awards', kind: 'award', placeId: 'de-berlin', window: [12, 6, 13], duration: 1, cadence: 1, eligibility: 'oct-sep', prestige: 64, origin: EUROPE,
     requiresRelease: { routes: ['theatrical', 'festival-premiere', 'streaming'] },
+    official: { 2026: { start: '2027-01-16', end: '2027-01-16', label: '39th European Film Awards', source: 'https://www.europeanfilmawards.eu/regulations/', checked: '2026-11-06' } },
     description: 'Annual awards for European film. In this game, entries need a European production base.',
     categories: [C('film', 'European Film', 'producer', [...FILM, ...DOCS], 'members', 5), C('director', 'European Director', 'director', FILM, 'members', 5), C('animated', 'European Animated Feature Film', 'producer', FILM, 'members', 4, { mediums: ['animation'] })],
   },
@@ -407,11 +426,13 @@ export function editionDates(seed: number, inst: Institution, year: number) {
   let deadlineKey: string;
   let opensKey: string;
   let provenance: 'official' | 'simulated' = 'simulated';
+  let deadlinePlanned = false;
   if (off) {
     startKey = off.start;
     endKey = off.end;
-    deadlineKey = off.deadline;
-    opensKey = off.opens ?? addDaysToKey(off.deadline, -150);
+    deadlineKey = off.deadline ?? addDaysToKey(startKey, inst.kind === 'award' ? -100 : -110);
+    opensKey = off.opens ?? addDaysToKey(deadlineKey, -150);
+    deadlinePlanned = !off.deadline;
     provenance = 'official';
   } else {
     const [m, d1, d2] = inst.window;
@@ -433,7 +454,7 @@ export function editionDates(seed: number, inst: Institution, year: number) {
   };
   return {
     start: at(startKey, inst.kind === 'award' ? 17 : 10), end: at(endKey, 22), deadline: at(deadlineKey, 23) + 59 * 60000 + 59000, submissionOpens: at(opensKey, 9),
-    announce: at(announceKey, 9), provenance, startKey, endKey, deadlineKey, label: off?.label,
+    announce: at(announceKey, 9), provenance, startKey, endKey, deadlineKey, label: off?.label, deadlinePlanned,
   };
 }
 
@@ -453,7 +474,7 @@ export function ensureEditions(state: GameState, year: number): void {
     const label = d.label ?? (inst.ordinalBase ? `${ordinal(year - inst.ordinalBase)} ${inst.name}` : `${inst.name} ${year}`);
     const ed: Edition = {
       id, institutionId: inst.id, year, label, start: d.start, end: d.end, submissionOpens: d.submissionOpens, deadline: d.deadline, announce: d.announce,
-      eligibility: eligibilityWindow(inst, year, d.startKey), provenance: d.provenance, entries: [], rivals: [], results: {},
+      eligibility: eligibilityWindow(inst, year, d.startKey), provenance: d.provenance, deadlinePlanned: d.deadlinePlanned || undefined, entries: [], rivals: [], results: {},
       status: state.now > d.deadline ? 'closed' : state.now >= d.submissionOpens ? 'open' : 'upcoming',
     };
     state.editions.push(ed);
@@ -870,8 +891,10 @@ registerHandler('edition-start', (state, ev) => {
       const { year, month, day } = parseYmd(k);
       const at = Math.min(ed.end - 3600_000, localToInstant(zone, year, month, day, hour).instant);
       if (ed.screenings.some((x) => x.projectId === p.id && x.at === at)) continue;
-      ed.screenings.push({ projectId: p.id, at, done: false });
+      // You're invited to attend; reply at least a day ahead. The screening happens either way.
+      ed.screenings.push({ projectId: p.id, at, done: false, rsvpBy: at - DAY, rsvp: 'pending' });
       schedule(state, at, 'screening', { editionId: ed.id, projectId: p.id, at }, { attention: 'notify', priority: 31 });
+      schedule(state, at - 30 * 60_000, 'screening-reminder', { editionId: ed.id, projectId: p.id, at }, { attention: 'interrupt', priority: 30 });
     }
     messages.push(`${p.title} screens at the ${ed.label} this week.`);
     schedule(state, ed.end + DAY, 'distribution-offer', { projectId: p.id, wave: ed.id, exposure: Math.round(institution(ed.institutionId).prestige / 8) }, { attention: 'notify', priority: 55 });
@@ -886,13 +909,70 @@ registerHandler('screening', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
   if (!sc || sc.done || !p) return { suppressInterrupt: true };
   sc.done = true;
+  const inst = institution(ed.institutionId);
+  sc.attended = sc.rsvp === 'accepted' && state.locationId === inst.placeId && !state.travel;
+  if (sc.rsvp === 'pending') sc.rsvp = 'expired';
   const reception = p.quality?.reception ?? 50;
   const response = reception >= 75 ? 'warm' : reception >= 55 ? 'mixed but attentive' : 'cool';
-  const text = `${p.title} screened at the ${ed.label}. The audience response was ${response}.`;
+  const presence = sc.attended ? ' You were there and answered questions afterward.' : sc.rsvp === 'accepted' ? " You'd said you would attend, but you weren't there." : '';
+  const text = `${p.title} screened at the ${ed.label}. The audience response was ${response}.${presence}`;
   p.history.push({ at: state.now, text });
   addLog(state, text, 'festival', { projectId: p.id, route: { view: 'event', editionId: ed.id } });
   return { message: text };
 });
+
+registerHandler('screening-reminder', (state, ev) => {
+  const ed = edition(state, ev.payload.editionId as string);
+  const sc = ed.screenings?.find((x) => x.projectId === ev.payload.projectId && x.at === ev.payload.at);
+  if (!sc || sc.done || sc.rsvp === 'declined') return { suppressInterrupt: true };
+  const text = 'Your screening starts in 30 minutes.';
+  addLog(state, text, 'festival', { projectId: sc.projectId, route: { view: 'event', editionId: ed.id } });
+  return { message: text };
+});
+
+/** How long the trip to a screening's venue takes from where you are, and whether you'd arrive in time. */
+export function screeningTravel(state: GameState, ed: Edition, sc: Screening): { here: boolean; hours: number; arrivesInTime: boolean } {
+  const venue = getPlace(institution(ed.institutionId).placeId);
+  const here = state.locationId === venue.id && !state.travel;
+  const hours = here ? 0 : travelHours(getPlace(state.locationId), venue);
+  return { here, hours, arrivesInTime: here || state.now + hours * 3600_000 <= sc.at };
+}
+
+/** Your own work that overlaps a screening day: shoot days you direct or act on. */
+export function screeningConflicts(state: GameState, ed: Edition, sc: Screening): string[] {
+  const out: string[] = [];
+  for (const p of state.projects) {
+    if (p.delivered) continue;
+    const zone = getPlace(p.axes.basePlaceId).zone;
+    const day = dateKey(sc.at, zone);
+    for (const d of p.schedule.days.filter((x) => x.date === day && x.status === 'scheduled')) {
+      const eps = [...new Set(approvedScenesOf(p).filter((s) => d.sceneIds.includes(s.id)).map((s) => s.episode))];
+      const what = isEpisodic(p.axes.format) && eps.length ? `Episode ${eps.join(' and ')}` : p.title;
+      out.push(`You're scheduled to direct ${what} during this screening.`);
+    }
+  }
+  void ed;
+  return out;
+}
+
+/** Answer a screening invitation. Accepting checks that you can get there in time; declining keeps the selection. */
+export function rsvpScreening(state: GameState, editionId: string, projectId: string, at: number, accept: boolean): void {
+  const ed = edition(state, editionId);
+  const sc = ed.screenings?.find((x) => x.projectId === projectId && x.at === at);
+  if (!sc || sc.done) throw new Error('That screening has already happened.');
+  if (sc.rsvpBy !== undefined && state.now > sc.rsvpBy && sc.rsvp === 'pending') {
+    sc.rsvp = 'expired';
+    throw new Error('The reply deadline has passed.');
+  }
+  if (!accept) {
+    sc.rsvp = 'declined';
+    addLog(state, `You declined the invitation to attend the screening at the ${ed.label}. It still screens.`, 'festival', { route: { view: 'event', editionId: ed.id } });
+    return;
+  }
+  const t = screeningTravel(state, ed, sc);
+  if (!t.arrivesInTime) throw new Error(`You couldn't arrive in time: the trip takes about ${Math.round(t.hours)} hours.`);
+  sc.rsvp = 'accepted';
+}
 
 registerHandler('edition-results', (state, ev) => {
   const ed = edition(state, ev.payload.editionId as string);
