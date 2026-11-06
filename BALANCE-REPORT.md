@@ -36,6 +36,18 @@ Rerun on November 6, 2026 after the Gap Completion Package's M1, which drives Lo
 
 Integrity across all 180 runs: 0 negative cash balances and 0 duplicate settlements. Two runs of the same seed produced identical output.
 
+## Held-Out Seeds And Feature Combinations
+
+Ten seeds never used for tuning (`holdout1` to `holdout10`), on combinations of features added by the Gap Completion Package. Raw results: `docs/balance-heldout.json`.
+
+| Combination | Delivered | Days To Delivery, Median | Overall Assessment, Mean | Integrity |
+| --- | --- | --- | --- | --- |
+| Motion capture + a world place (Kraków) | 100% | 62 | 65.7 | 0 negative cash, 0 duplicate settlements |
+| Live action + a world place with worldwide holidays (Valparaíso) | 100% | 23 | 62.0 | 0 negative cash, 0 duplicate settlements |
+| Unscripted competition + a world place (Galway) + a withdrawal before delivery (all 10 runs) | 100% | 41 | 58.2 | 0 negative cash, 0 duplicate settlements |
+
+These are diagnostics, not targets: they show the combined systems finish and keep the money consistent on unseen seeds. They don't show the experience is enjoyable; that needs human play.
+
 ## Sensitivity (15 Seeds, One Change Each)
 
 | Change | Result |

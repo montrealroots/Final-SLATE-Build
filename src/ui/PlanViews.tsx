@@ -360,7 +360,7 @@ export function ScheduleTab({ p }: { p: Project }) {
                   </div>
                   {fc && !d.interior && fc.chanceOfPrecip >= 40 && (
                     <div className="btn-row">
-                      <button className="btn btn-small" onClick={() => setErr(store.act((s) => void swapWithInteriorDay(s, p, d.id)))}>Swap With An Interior Day</button>
+                      {p.schedule.days.some((o) => o.interior && o.status === 'scheduled' && o.date > d.date) && <button className="btn btn-small" onClick={() => setErr(store.act((s) => void swapWithInteriorDay(s, p, d.id)))}>Film an Interior Scene</button>}
                       <button className="btn btn-small" aria-pressed={!!d.weatherAnyway} onClick={() => setErr(store.act((s) => keepWeatherPlan(s, p, d.id)))}>{d.weatherAnyway ? 'Shooting In Any Weather' : 'Keep The Plan'}</button>
                     </div>
                   )}

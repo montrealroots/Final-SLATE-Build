@@ -801,7 +801,10 @@ registerHandler('weather-check', (state, ev) => {
   const issued = dateKey(state.now, place.zone);
   const f = forecast(state.seed, place, d.date, issued);
   if (f.chanceOfPrecip >= 40) {
-    const text = `${f.summary === 'Rain Likely' || f.summary === 'Snow Likely' ? (f.summary.startsWith('Snow') ? 'Snow is' : 'Rain is') + ' expected' : 'There is a chance of ' + (f.summary.includes('Snow') ? 'snow' : 'rain')} during tomorrow's exterior shoot on ${p.title}. You can swap it with an interior day or keep the plan.`;
+    // Package copy: "Rain is expected during your exterior shoot." Offer an interior scene only when one is scheduled.
+    const lead = f.summary === 'Rain Likely' || f.summary === 'Snow Likely' ? `${f.summary.startsWith('Snow') ? 'Snow' : 'Rain'} is expected during your exterior shoot.` : `There's a chance of ${f.summary.includes('Snow') ? 'snow' : 'rain'} during your exterior shoot.`;
+    const interior = p.schedule.days.some((o) => o.interior && o.status === 'scheduled' && o.date > d.date);
+    const text = `${lead} ${p.title} films outside tomorrow. ${interior ? 'You can film an interior scene instead, or keep the plan.' : 'There is no interior day to film instead; you can keep the plan.'}`;
     addLog(state, text, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
     return { message: text };
   }
