@@ -33,3 +33,5 @@ Every number here is a game calibration value. None is a quoted real-world rate 
 | Unscripted TV | 1.5 days of footage logging and 1 day of story producing per segment; segments need a dedicated camera operator | `production.ts` |
 | Festival screenings | Two public screenings per selection, on day 2 at 7 PM and day 4 at 2 PM local time; audience response follows the reception assessment | `awards.ts` |
 | Rival slate | 120 simulated works per season (features, documentaries, shorts, series); strength N(62, 11) with role offsets N(0, 6); generated fill-ins only when the slate lacks eligible work | `awards.ts` |
+| Climate station range | A station further than 400 km isn't treated as evidence for a place; that normal is modeled from latitude and height (warmest month around July in the north and January in the south) | `world/climate.ts` |
+| Weather around station normals | Daily departure spread is 0.3 × the day's normal range (1 to 4 °C), with spells correlated over about 4 days; wet days run 2 °C cooler by day and 1 °C warmer at night; sunnier months give more clear days | `engine/weather.ts` |

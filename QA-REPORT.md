@@ -10,13 +10,14 @@
 
 | Command | Exit | Result |
 | --- | --- | --- |
+| `npm run world:check` | 0 | 252 entries (246 playable), 3,865 regions, 246 shards, 171,750 rows with 171,750 unique IDs, 175 outlines, 218 holiday entries, 11,459 stations; 0 problems. |
 | `npm run typecheck` | 0 | No type errors (strict mode). |
-| `npm test` | 0 | 9 files, 48 tests passed. |
-| `npm run build` | 0 | Built with no warnings. Main chunk 316 kB, React 219 kB; project screens load on demand (90 kB). |
+| `npm test` | 0 | 51 tests passed (adds `tests/migration.test.ts`). |
+| `npm run build` | 0 | Built with no warnings. Main chunk 387 kB (the 66 legacy-place climate records add 71 kB), React 219 kB; project screens load on demand (90 kB). |
 | `npm run balance` | 0 | 1 test passed; 180 family runs plus 120 sensitivity runs. |
-| `npm run e2e -- --trace off` | 0 | 23 passed, 16 skipped, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max, and iPhone 15 Pro Max landscape. The skips are tests that run on one project only by design. |
+| `npm run e2e -- --trace off` | 1, then 0 | M1 run: 22 passed, 1 failed, 16 skipped. The failure was the documentary test matching "Cast" inside a generated name ("Bruno Castillo"); the assertion now checks for cast credit rows, and the test passed on rerun. Earlier full run: 23 passed, 16 skipped, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max, and iPhone 15 Pro Max landscape. The skips are tests that run on one project only by design. |
 
-Counts: 72 automated checks passed, 0 failed, 16 skipped by design.
+Counts at M1: 74 automated checks passed after the test fix (51 unit and engine tests, 23 browser tests), 16 skipped by design. Earlier base count: 72 automated checks passed, 0 failed, 16 skipped by design.
 
 ## Also Checked During Development
 
@@ -42,6 +43,8 @@ Counts: 72 automated checks passed, 0 failed, 16 skipped by design.
 | Low | Waiting tasks gave no reason | Reason shown for every waiting task | 3D e2e |
 | Medium | Voice sessions created spurious design assets | Only real builds become assets | Motion-capture test |
 | Medium | A motion-capture casting counted as a voice casting | Voice sessions check for a voice casting | Motion-capture test |
+| Low | Documentary test treated a name containing "Cast" as a cast credit | Assertion checks credit rows | Documentary e2e |
+| Medium | Toronto precipitation fell back to the model because only 1991-2020 stations were searched | Tiered station search: own country recent, own country any period, then anywhere | Legacy migration report (all 66 from stations) |
 | Low | China's computed holidays were wrong for 2026 | Official 2026 arrangement used, with make-up working days | Lunar holiday test |
 
 ## Acceptance Status
@@ -50,7 +53,7 @@ Counts: 72 automated checks passed, 0 failed, 16 skipped by design.
 
 - No physical iPhone or real Safari verification. WebKit emulation passed, but the on-screen keyboard can't be emulated.
 - Lunar holidays exist for 2026 only.
-- Place coordinates have consistency checks only.
+- The 66 legacy places are matched to GeoNames (64 high confidence, 2 reviewed by hand); the world search and pickers are not built yet (M2).
 - Festival and award rules are simulated.
 
 This base is not claimed to be finished, bug-free or fully realistic.

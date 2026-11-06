@@ -1,0 +1,78 @@
+{
+ "country": "VC",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://pmoffice.gov.vc/pmoffice/index.php/public-holidays",
+   "title": "Office of the Prime Minister, Saint Vincent and the Grenadines, Public Holidays",
+   "read": "2026-11-02",
+   "said": "'Public Holidays 2026: New Year's Day Thursday, 1st January; National Heroes' Day Saturday, 14th March; Good Friday Friday, 3rd April; Easter Monday Monday, 6th April; National Workers' Day Friday, 1st May; Spiritual Baptist Liberation Day Thursday, 21st May; Whit Monday Monday, 25th May; Carnival Monday Monday, 6th July; Carnival Tuesday Tuesday, 7th July; Emancipation Day Saturday, 1st August; Independence Day Tuesday, 27th October; Christmas Day Friday, 25th December; Boxing Day Saturday, 26th December.' '*Please be advised where a Public Holiday falls on a Sunday, the following Monday shall be observed as the Public Holiday.*'"
+  },
+  {
+   "kind": "primary",
+   "url": "https://legal.gov.vc/legal/images/PDF/2026Gazettes/Gazette_No_18_2026.pdf",
+   "title": "Saint Vincent and the Grenadines Government Gazette, Vol. 159, No. 18, Tuesday 21st April 2026",
+   "read": "2026-11-02",
+   "said": "'S. R. & O. No. 8 of 2026:– Proclamation declaring Monday the 6th day of July, 2026 and Tuesday 7th day of July, 2026 as Public Holidays.'"
+  }
+ ],
+ "lists": [
+  {
+   "year": 2026,
+   "days": [
+    [
+     "2026-01-01",
+     "New Year’s Day"
+    ],
+    [
+     "2026-03-14",
+     "National Heroes’ Day"
+    ],
+    [
+     "2026-04-03",
+     "Good Friday"
+    ],
+    [
+     "2026-04-06",
+     "Easter Monday"
+    ],
+    [
+     "2026-05-01",
+     "National Workers’ Day"
+    ],
+    [
+     "2026-05-21",
+     "Spiritual Baptist Liberation Day"
+    ],
+    [
+     "2026-05-25",
+     "Whit Monday"
+    ],
+    [
+     "2026-07-06",
+     "Carnival Monday"
+    ],
+    [
+     "2026-07-07",
+     "Carnival Tuesday"
+    ],
+    [
+     "2026-08-01",
+     "Emancipation Day"
+    ],
+    [
+     "2026-10-27",
+     "Independence Day"
+    ],
+    [
+     "2026-12-25",
+     "Christmas Day"
+    ],
+    [
+     "2026-12-26",
+     "Boxing Day"
+    ]
+   ]
+  }
+ ]
+}

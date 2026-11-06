@@ -1,0 +1,42 @@
+{
+  "country_entries": 252,
+  "regions": 3865,
+  "place_shards": 246,
+  "place_rows": 171750,
+  "unique_place_ids": 171750,
+  "map_outlines": 175,
+  "station_records": 11459,
+  "missing_shards": [
+    "AN",
+    "AQ",
+    "BV",
+    "CS",
+    "HM",
+    "UM"
+  ],
+  "structural_errors": [],
+  "place_region_references_not_in_region_table": 0,
+  "source_status_counts": {
+    "gazetteer": {
+      "researched": 252
+    },
+    "clock": {
+      "researched": 246,
+      "proven": 6
+    },
+    "map": {
+      "researched": 252
+    },
+    "holidays": {
+      "researched": 211,
+      "blocked": 35,
+      "proven": 6
+    },
+    "weather": {
+      "researched": 206,
+      "blocked": 40,
+      "proven": 6
+    }
+  },
+  "verification": "Package-level source counts and structural checks only. Donor game tests and new implementation were not run."
+}

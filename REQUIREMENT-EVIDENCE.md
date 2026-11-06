@@ -26,6 +26,10 @@ Tests: `F` = `tests/foundation.test.ts`, `J` = `tests/journeys.test.ts`, `M` = `
 | Holidays with observed rules | Country and region | Calendar, production working days, holiday premium, China make-up working days | Schedule dates | Calendar, Home, Place; expected dates labelled | F, E3 (December 25 in Norway), `tests/lunar-mocap.test.ts` | Tested; lunar holidays for 2026 only |
 | Daylight and polar conditions | Coordinates | Home, Place, exterior shoot check | Shoot outcome | "The sun won't rise today" | F, E3 | Tested |
 | Weather, forecasts, certainty | Place, date, seed | Home, Place, weather warning, exterior shoot result | Lost or compromised scenes | Warnings with Swap or Keep choices | F, J | Tested, modeled |
+| World gazetteer import (252 entries, 3,865 regions, 171,750 places) | GeoNames-derived data | `npm run world:check` | `src/world/gazetteer/index.json`, `docs/world/world-coverage.json` | — | `scripts/world-import.mjs` (0 problems) | Tested (data); no UI yet (M2) |
+| Climate from WMO station normals, modeled fallback labelled | Place coordinates and height | `climateFor`, `weatherOn` | Weather days | Provenance per normal | F (seasonal and determinism), `tests/migration.test.ts` | Tested, source-verified data |
+| Legacy places aliased to GeoNames | 66 catalog IDs | `getPlace`, saves | Same IDs | — | `docs/world/legacy-place-migration.json`, `tests/migration.test.ts` | Tested |
+| Save version 2 migration with backup first | Version-1 save | `readSave`, `migrate` | `…backup-v1` key, migrated save | "This save needs an update, and there is no room to keep a backup first…" | `tests/migration.test.ts` | Tested (engine); no browser journey yet (M7) |
 | Birthdays and leap-day policy | Birth date | Event queue | Log | "Today is your birthday" | F | Tested |
 | Personal plans and reminders | Add Plan | Events, schedule conflicts | Plans | Reminders, missed-plan notice | F | Tested |
 | Travel and location | Travel Here | Location; presence on set | Location | Arrival notice; late call if away | Code | Implemented; not tested |

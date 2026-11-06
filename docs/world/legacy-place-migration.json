@@ -1,0 +1,1520 @@
+[
+  {
+    "legacyId": "us-los-angeles",
+    "name": "Los Angeles",
+    "country": "US",
+    "original": [
+      34.05,
+      -118.24
+    ],
+    "candidate": {
+      "geonameId": "5368361",
+      "name": "Los Angeles",
+      "coords": [
+        34.05223,
+        -118.24368
+      ],
+      "zone": "America/Los_Angeles",
+      "km": 0.4
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "us-new-york",
+    "name": "New York",
+    "country": "US",
+    "original": [
+      40.71,
+      -74.01
+    ],
+    "candidate": {
+      "geonameId": "5128581",
+      "name": "New York City",
+      "coords": [
+        40.71427,
+        -74.00597
+      ],
+      "zone": "America/New_York",
+      "km": 0.6
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "us-atlanta",
+    "name": "Atlanta",
+    "country": "US",
+    "original": [
+      33.75,
+      -84.39
+    ],
+    "candidate": {
+      "geonameId": "4180439",
+      "name": "Atlanta",
+      "coords": [
+        33.749,
+        -84.38798
+      ],
+      "zone": "America/New_York",
+      "km": 0.2
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "us-austin",
+    "name": "Austin",
+    "country": "US",
+    "original": [
+      30.27,
+      -97.74
+    ],
+    "candidate": {
+      "geonameId": "4671654",
+      "name": "Austin",
+      "coords": [
+        30.26715,
+        -97.74306
+      ],
+      "zone": "America/Chicago",
+      "km": 0.4
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "us-chicago",
+    "name": "Chicago",
+    "country": "US",
+    "original": [
+      41.88,
+      -87.63
+    ],
+    "candidate": {
+      "geonameId": "4887398",
+      "name": "Chicago",
+      "coords": [
+        41.85003,
+        -87.65005
+      ],
+      "zone": "America/Chicago",
+      "km": 3.7
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "us-boulder",
+    "name": "Boulder",
+    "country": "US",
+    "original": [
+      40.01,
+      -105.27
+    ],
+    "candidate": {
+      "geonameId": "5574991",
+      "name": "Boulder",
+      "coords": [
+        40.01499,
+        -105.27055
+      ],
+      "zone": "America/Denver",
+      "km": 0.6
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "us-albuquerque",
+    "name": "Albuquerque",
+    "country": "US",
+    "original": [
+      35.08,
+      -106.65
+    ],
+    "candidate": {
+      "geonameId": "5454711",
+      "name": "Albuquerque",
+      "coords": [
+        35.08449,
+        -106.65114
+      ],
+      "zone": "America/Denver",
+      "km": 0.5
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "us-anchorage",
+    "name": "Anchorage",
+    "country": "US",
+    "original": [
+      61.22,
+      -149.9
+    ],
+    "candidate": {
+      "geonameId": "5879400",
+      "name": "Anchorage",
+      "coords": [
+        61.21806,
+        -149.90028
+      ],
+      "zone": "America/Anchorage",
+      "km": 0.2
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "us-honolulu",
+    "name": "Honolulu",
+    "country": "US",
+    "original": [
+      21.31,
+      -157.86
+    ],
+    "candidate": {
+      "geonameId": "5856195",
+      "name": "Honolulu",
+      "coords": [
+        21.30694,
+        -157.85833
+      ],
+      "zone": "Pacific/Honolulu",
+      "km": 0.4
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ca-toronto",
+    "name": "Toronto",
+    "country": "CA",
+    "original": [
+      43.65,
+      -79.38
+    ],
+    "candidate": {
+      "geonameId": "6167865",
+      "name": "Toronto",
+      "coords": [
+        43.70643,
+        -79.39864
+      ],
+      "zone": "America/Toronto",
+      "km": 6.5
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ca-vancouver",
+    "name": "Vancouver",
+    "country": "CA",
+    "original": [
+      49.28,
+      -123.12
+    ],
+    "candidate": {
+      "geonameId": "6173331",
+      "name": "Vancouver",
+      "coords": [
+        49.24966,
+        -123.11934
+      ],
+      "zone": "America/Vancouver",
+      "km": 3.4
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ca-montreal",
+    "name": "Montréal",
+    "country": "CA",
+    "original": [
+      45.5,
+      -73.57
+    ],
+    "candidate": {
+      "geonameId": "6077243",
+      "name": "Montréal",
+      "coords": [
+        45.50884,
+        -73.58781
+      ],
+      "zone": "America/Toronto",
+      "km": 1.7
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "mx-mexico-city",
+    "name": "Mexico City",
+    "country": "MX",
+    "original": [
+      19.43,
+      -99.13
+    ],
+    "candidate": {
+      "geonameId": "3530597",
+      "name": "Mexico City",
+      "coords": [
+        19.42847,
+        -99.12766
+      ],
+      "zone": "America/Mexico_City",
+      "km": 0.3
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "mx-guadalajara",
+    "name": "Guadalajara",
+    "country": "MX",
+    "original": [
+      20.67,
+      -103.35
+    ],
+    "candidate": {
+      "geonameId": "4005539",
+      "name": "Guadalajara",
+      "coords": [
+        20.67738,
+        -103.34749
+      ],
+      "zone": "America/Mexico_City",
+      "km": 0.9
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "br-sao-paulo",
+    "name": "São Paulo",
+    "country": "BR",
+    "original": [
+      -23.55,
+      -46.63
+    ],
+    "candidate": {
+      "geonameId": "3448439",
+      "name": "São Paulo",
+      "coords": [
+        -23.5475,
+        -46.63611
+      ],
+      "zone": "America/Sao_Paulo",
+      "km": 0.7
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "br-rio-de-janeiro",
+    "name": "Rio de Janeiro",
+    "country": "BR",
+    "original": [
+      -22.91,
+      -43.17
+    ],
+    "candidate": {
+      "geonameId": "3451190",
+      "name": "Rio de Janeiro",
+      "coords": [
+        -22.90642,
+        -43.18223
+      ],
+      "zone": "America/Sao_Paulo",
+      "km": 1.3
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ar-buenos-aires",
+    "name": "Buenos Aires",
+    "country": "AR",
+    "original": [
+      -34.6,
+      -58.38
+    ],
+    "candidate": {
+      "geonameId": "3435910",
+      "name": "Buenos Aires",
+      "coords": [
+        -34.61315,
+        -58.37723
+      ],
+      "zone": "America/Argentina/Buenos_Aires",
+      "km": 1.5
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ar-mar-del-plata",
+    "name": "Mar del Plata",
+    "country": "AR",
+    "original": [
+      -38,
+      -57.56
+    ],
+    "candidate": {
+      "geonameId": "3430863",
+      "name": "Mar del Plata",
+      "coords": [
+        -38.00042,
+        -57.5562
+      ],
+      "zone": "America/Argentina/Buenos_Aires",
+      "km": 0.3
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ar-ushuaia",
+    "name": "Ushuaia",
+    "country": "AR",
+    "original": [
+      -54.8,
+      -68.3
+    ],
+    "candidate": {
+      "geonameId": "3833367",
+      "name": "Ushuaia",
+      "coords": [
+        -54.81084,
+        -68.31591
+      ],
+      "zone": "America/Argentina/Ushuaia",
+      "km": 1.6
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "gb-london",
+    "name": "London",
+    "country": "GB",
+    "original": [
+      51.51,
+      -0.13
+    ],
+    "candidate": {
+      "geonameId": "2643743",
+      "name": "London",
+      "coords": [
+        51.50853,
+        -0.12574
+      ],
+      "zone": "Europe/London",
+      "km": 0.3
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "gb-sheffield",
+    "name": "Sheffield",
+    "country": "GB",
+    "original": [
+      53.38,
+      -1.47
+    ],
+    "candidate": {
+      "geonameId": "2638077",
+      "name": "Sheffield",
+      "coords": [
+        53.38297,
+        -1.4659
+      ],
+      "zone": "Europe/London",
+      "km": 0.4
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "gb-edinburgh",
+    "name": "Edinburgh",
+    "country": "GB",
+    "original": [
+      55.95,
+      -3.19
+    ],
+    "candidate": {
+      "geonameId": "2650225",
+      "name": "Edinburgh",
+      "coords": [
+        55.95206,
+        -3.19648
+      ],
+      "zone": "Europe/London",
+      "km": 0.5
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ie-dublin",
+    "name": "Dublin",
+    "country": "IE",
+    "original": [
+      53.35,
+      -6.26
+    ],
+    "candidate": {
+      "geonameId": "2964574",
+      "name": "Dublin",
+      "coords": [
+        53.33306,
+        -6.24889
+      ],
+      "zone": "Europe/Dublin",
+      "km": 2
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "fr-paris",
+    "name": "Paris",
+    "country": "FR",
+    "original": [
+      48.86,
+      2.35
+    ],
+    "candidate": {
+      "geonameId": "2988507",
+      "name": "Paris",
+      "coords": [
+        48.85341,
+        2.3488
+      ],
+      "zone": "Europe/Paris",
+      "km": 0.7
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "fr-cannes",
+    "name": "Cannes",
+    "country": "FR",
+    "original": [
+      43.55,
+      7.01
+    ],
+    "candidate": {
+      "geonameId": "3028808",
+      "name": "Cannes",
+      "coords": [
+        43.55135,
+        7.01275
+      ],
+      "zone": "Europe/Paris",
+      "km": 0.3
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "fr-annecy",
+    "name": "Annecy",
+    "country": "FR",
+    "original": [
+      45.9,
+      6.13
+    ],
+    "candidate": {
+      "geonameId": "3037543",
+      "name": "Annecy",
+      "coords": [
+        45.90878,
+        6.12565
+      ],
+      "zone": "Europe/Paris",
+      "km": 1
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "fr-clermont-ferrand",
+    "name": "Clermont-Ferrand",
+    "country": "FR",
+    "original": [
+      45.78,
+      3.08
+    ],
+    "candidate": {
+      "geonameId": "3024635",
+      "name": "Clermont-Ferrand",
+      "coords": [
+        45.77969,
+        3.08682
+      ],
+      "zone": "Europe/Paris",
+      "km": 0.5
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "fr-lille",
+    "name": "Lille",
+    "country": "FR",
+    "original": [
+      50.63,
+      3.06
+    ],
+    "candidate": {
+      "geonameId": "2998324",
+      "name": "Lille",
+      "coords": [
+        50.63391,
+        3.05512
+      ],
+      "zone": "Europe/Paris",
+      "km": 0.6
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "mc-monaco",
+    "name": "Monaco",
+    "country": "MC",
+    "original": [
+      43.74,
+      7.42
+    ],
+    "candidate": {
+      "geonameId": "2993458",
+      "name": "Monaco",
+      "coords": [
+        43.73718,
+        7.42145
+      ],
+      "zone": "Europe/Monaco",
+      "km": 0.3
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "de-berlin",
+    "name": "Berlin",
+    "country": "DE",
+    "original": [
+      52.52,
+      13.4
+    ],
+    "candidate": {
+      "geonameId": "2950159",
+      "name": "Berlin",
+      "coords": [
+        52.52437,
+        13.41053
+      ],
+      "zone": "Europe/Berlin",
+      "km": 0.9
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "de-oberhausen",
+    "name": "Oberhausen",
+    "country": "DE",
+    "original": [
+      51.47,
+      6.85
+    ],
+    "candidate": {
+      "geonameId": "2860410",
+      "name": "Oberhausen",
+      "coords": [
+        51.47805,
+        6.8625
+      ],
+      "zone": "Europe/Berlin",
+      "km": 1.2
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "es-madrid",
+    "name": "Madrid",
+    "country": "ES",
+    "original": [
+      40.42,
+      -3.7
+    ],
+    "candidate": {
+      "geonameId": "3117735",
+      "name": "Madrid",
+      "coords": [
+        40.4165,
+        -3.70256
+      ],
+      "zone": "Europe/Madrid",
+      "km": 0.4
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "es-barcelona",
+    "name": "Barcelona",
+    "country": "ES",
+    "original": [
+      41.39,
+      2.17
+    ],
+    "candidate": {
+      "geonameId": "3128760",
+      "name": "Barcelona",
+      "coords": [
+        41.38879,
+        2.15899
+      ],
+      "zone": "Europe/Madrid",
+      "km": 0.9
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "es-sitges",
+    "name": "Sitges",
+    "country": "ES",
+    "original": [
+      41.24,
+      1.81
+    ],
+    "candidate": {
+      "geonameId": "3108877",
+      "name": "Sitges",
+      "coords": [
+        41.23506,
+        1.81193
+      ],
+      "zone": "Europe/Madrid",
+      "km": 0.6
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "es-san-sebastian",
+    "name": "San Sebastián",
+    "country": "ES",
+    "original": [
+      43.32,
+      -1.98
+    ],
+    "candidate": {
+      "geonameId": "3110044",
+      "name": "Donostia / San Sebastián",
+      "coords": [
+        43.31283,
+        -1.97499
+      ],
+      "zone": "Europe/Madrid",
+      "km": 0.9
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "it-rome",
+    "name": "Rome",
+    "country": "IT",
+    "original": [
+      41.9,
+      12.5
+    ],
+    "candidate": {
+      "geonameId": "3169070",
+      "name": "Rome",
+      "coords": [
+        41.89193,
+        12.51133
+      ],
+      "zone": "Europe/Rome",
+      "km": 1.3
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "it-venice",
+    "name": "Venice",
+    "country": "IT",
+    "original": [
+      45.44,
+      12.32
+    ],
+    "candidate": {
+      "geonameId": "3164603",
+      "name": "Venice",
+      "coords": [
+        45.43713,
+        12.33265
+      ],
+      "zone": "Europe/Rome",
+      "km": 1
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "nl-amsterdam",
+    "name": "Amsterdam",
+    "country": "NL",
+    "original": [
+      52.37,
+      4.9
+    ],
+    "candidate": {
+      "geonameId": "2759794",
+      "name": "Amsterdam",
+      "coords": [
+        52.37403,
+        4.88969
+      ],
+      "zone": "Europe/Amsterdam",
+      "km": 0.8
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "nl-rotterdam",
+    "name": "Rotterdam",
+    "country": "NL",
+    "original": [
+      51.92,
+      4.48
+    ],
+    "candidate": {
+      "geonameId": "2747891",
+      "name": "Rotterdam",
+      "coords": [
+        51.9225,
+        4.47917
+      ],
+      "zone": "Europe/Amsterdam",
+      "km": 0.3
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ch-locarno",
+    "name": "Locarno",
+    "country": "CH",
+    "original": [
+      46.17,
+      8.8
+    ],
+    "candidate": {
+      "geonameId": "2659869",
+      "name": "Locarno",
+      "coords": [
+        46.17086,
+        8.79953
+      ],
+      "zone": "Europe/Zurich",
+      "km": 0.1
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "cz-prague",
+    "name": "Prague",
+    "country": "CZ",
+    "original": [
+      50.08,
+      14.44
+    ],
+    "candidate": {
+      "geonameId": "3067696",
+      "name": "Prague",
+      "coords": [
+        50.08804,
+        14.42076
+      ],
+      "zone": "Europe/Prague",
+      "km": 1.6
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "cz-karlovy-vary",
+    "name": "Karlovy Vary",
+    "country": "CZ",
+    "original": [
+      50.23,
+      12.87
+    ],
+    "candidate": {
+      "geonameId": "3073803",
+      "name": "Karlovy Vary",
+      "coords": [
+        50.23271,
+        12.87117
+      ],
+      "zone": "Europe/Prague",
+      "km": 0.3
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "se-stockholm",
+    "name": "Stockholm",
+    "country": "SE",
+    "original": [
+      59.33,
+      18.07
+    ],
+    "candidate": {
+      "geonameId": "2673730",
+      "name": "Stockholm",
+      "coords": [
+        59.32938,
+        18.06871
+      ],
+      "zone": "Europe/Stockholm",
+      "km": 0.1
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "no-tromso",
+    "name": "Tromsø",
+    "country": "NO",
+    "original": [
+      69.65,
+      18.96
+    ],
+    "candidate": {
+      "geonameId": "3133895",
+      "name": "Tromsø",
+      "coords": [
+        69.6489,
+        18.95508
+      ],
+      "zone": "Europe/Oslo",
+      "km": 0.2
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "dk-copenhagen",
+    "name": "Copenhagen",
+    "country": "DK",
+    "original": [
+      55.68,
+      12.57
+    ],
+    "candidate": {
+      "geonameId": "2618425",
+      "name": "Copenhagen",
+      "coords": [
+        55.67594,
+        12.56553
+      ],
+      "zone": "Europe/Copenhagen",
+      "km": 0.5
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "tr-istanbul",
+    "name": "Istanbul",
+    "country": "TR",
+    "original": [
+      41.01,
+      28.98
+    ],
+    "candidate": {
+      "geonameId": "745044",
+      "name": "Istanbul",
+      "coords": [
+        41.01384,
+        28.94966
+      ],
+      "zone": "Europe/Istanbul",
+      "km": 2.6
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "eg-cairo",
+    "name": "Cairo",
+    "country": "EG",
+    "original": [
+      30.04,
+      31.24
+    ],
+    "candidate": {
+      "geonameId": "360630",
+      "name": "Cairo",
+      "coords": [
+        30.06263,
+        31.24967
+      ],
+      "zone": "Africa/Cairo",
+      "km": 2.7
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ma-marrakech",
+    "name": "Marrakech",
+    "country": "MA",
+    "original": [
+      31.63,
+      -8.01
+    ],
+    "candidate": {
+      "geonameId": "2542997",
+      "name": "Marrakesh",
+      "coords": [
+        31.63416,
+        -7.99994
+      ],
+      "zone": "Africa/Casablanca",
+      "km": 1.1
+    },
+    "confidence": "reviewed",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ng-lagos",
+    "name": "Lagos",
+    "country": "NG",
+    "original": [
+      6.52,
+      3.38
+    ],
+    "candidate": {
+      "geonameId": "2332459",
+      "name": "Lagos",
+      "coords": [
+        6.45407,
+        3.39467
+      ],
+      "zone": "Africa/Lagos",
+      "km": 7.5
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "bf-ouagadougou",
+    "name": "Ouagadougou",
+    "country": "BF",
+    "original": [
+      12.37,
+      -1.52
+    ],
+    "candidate": {
+      "geonameId": "2357048",
+      "name": "Ouagadougou",
+      "coords": [
+        12.36566,
+        -1.53388
+      ],
+      "zone": "Africa/Ouagadougou",
+      "km": 1.6
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ke-nairobi",
+    "name": "Nairobi",
+    "country": "KE",
+    "original": [
+      -1.29,
+      36.82
+    ],
+    "candidate": {
+      "geonameId": "184745",
+      "name": "Nairobi",
+      "coords": [
+        -1.28333,
+        36.81667
+      ],
+      "zone": "Africa/Nairobi",
+      "km": 0.8
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "za-johannesburg",
+    "name": "Johannesburg",
+    "country": "ZA",
+    "original": [
+      -26.2,
+      28.05
+    ],
+    "candidate": {
+      "geonameId": "993800",
+      "name": "Johannesburg",
+      "coords": [
+        -26.20227,
+        28.04363
+      ],
+      "zone": "Africa/Johannesburg",
+      "km": 0.7
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "za-durban",
+    "name": "Durban",
+    "country": "ZA",
+    "original": [
+      -29.86,
+      31.02
+    ],
+    "candidate": {
+      "geonameId": "1007311",
+      "name": "Durban",
+      "coords": [
+        -29.8579,
+        31.0292
+      ],
+      "zone": "Africa/Johannesburg",
+      "km": 0.9
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "za-cape-town",
+    "name": "Cape Town",
+    "country": "ZA",
+    "original": [
+      -33.92,
+      18.42
+    ],
+    "candidate": {
+      "geonameId": "3369157",
+      "name": "Cape Town",
+      "coords": [
+        -33.92584,
+        18.42322
+      ],
+      "zone": "Africa/Johannesburg",
+      "km": 0.7
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "ae-dubai",
+    "name": "Dubai",
+    "country": "AE",
+    "original": [
+      25.2,
+      55.27
+    ],
+    "candidate": {
+      "geonameId": "292223",
+      "name": "Dubai",
+      "coords": [
+        25.07725,
+        55.30927
+      ],
+      "zone": "Asia/Dubai",
+      "km": 14.2
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "sa-jeddah",
+    "name": "Jeddah",
+    "country": "SA",
+    "original": [
+      21.49,
+      39.19
+    ],
+    "candidate": {
+      "geonameId": "105343",
+      "name": "Jeddah",
+      "coords": [
+        21.49012,
+        39.18624
+      ],
+      "zone": "Asia/Riyadh",
+      "km": 0.4
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "in-mumbai",
+    "name": "Mumbai",
+    "country": "IN",
+    "original": [
+      19.08,
+      72.88
+    ],
+    "candidate": {
+      "geonameId": "1275339",
+      "name": "Mumbai",
+      "coords": [
+        19.07283,
+        72.88261
+      ],
+      "zone": "Asia/Kolkata",
+      "km": 0.8
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "in-panaji",
+    "name": "Panaji",
+    "country": "IN",
+    "original": [
+      15.49,
+      73.83
+    ],
+    "candidate": {
+      "geonameId": "1260607",
+      "name": "Panjim",
+      "coords": [
+        15.49574,
+        73.82624
+      ],
+      "zone": "Asia/Kolkata",
+      "km": 0.8
+    },
+    "confidence": "reviewed",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "jp-tokyo",
+    "name": "Tokyo",
+    "country": "JP",
+    "original": [
+      35.68,
+      139.69
+    ],
+    "candidate": {
+      "geonameId": "1850147",
+      "name": "Tokyo",
+      "coords": [
+        35.6895,
+        139.69171
+      ],
+      "zone": "Asia/Tokyo",
+      "km": 1.1
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "kr-seoul",
+    "name": "Seoul",
+    "country": "KR",
+    "original": [
+      37.57,
+      126.98
+    ],
+    "candidate": {
+      "geonameId": "1835848",
+      "name": "Seoul",
+      "coords": [
+        37.566,
+        126.9784
+      ],
+      "zone": "Asia/Seoul",
+      "km": 0.5
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "kr-busan",
+    "name": "Busan",
+    "country": "KR",
+    "original": [
+      35.18,
+      129.08
+    ],
+    "candidate": {
+      "geonameId": "1838524",
+      "name": "Busan",
+      "coords": [
+        35.10168,
+        129.03004
+      ],
+      "zone": "Asia/Seoul",
+      "km": 9.8
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "cn-shanghai",
+    "name": "Shanghai",
+    "country": "CN",
+    "original": [
+      31.23,
+      121.47
+    ],
+    "candidate": {
+      "geonameId": "1796236",
+      "name": "Shanghai",
+      "coords": [
+        31.22222,
+        121.45806
+      ],
+      "zone": "Asia/Shanghai",
+      "km": 1.4
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "au-sydney",
+    "name": "Sydney",
+    "country": "AU",
+    "original": [
+      -33.87,
+      151.21
+    ],
+    "candidate": {
+      "geonameId": "2147714",
+      "name": "Sydney",
+      "coords": [
+        -33.86785,
+        151.20732
+      ],
+      "zone": "Australia/Sydney",
+      "km": 0.3
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "au-melbourne",
+    "name": "Melbourne",
+    "country": "AU",
+    "original": [
+      -37.81,
+      144.96
+    ],
+    "candidate": {
+      "geonameId": "2158177",
+      "name": "Melbourne",
+      "coords": [
+        -37.814,
+        144.96332
+      ],
+      "zone": "Australia/Melbourne",
+      "km": 0.5
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "nz-auckland",
+    "name": "Auckland",
+    "country": "NZ",
+    "original": [
+      -36.85,
+      174.76
+    ],
+    "candidate": {
+      "geonameId": "2193733",
+      "name": "Auckland",
+      "coords": [
+        -36.84853,
+        174.76349
+      ],
+      "zone": "Pacific/Auckland",
+      "km": 0.4
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  },
+  {
+    "legacyId": "nz-wellington",
+    "name": "Wellington",
+    "country": "NZ",
+    "original": [
+      -41.29,
+      174.78
+    ],
+    "candidate": {
+      "geonameId": "2179537",
+      "name": "Wellington",
+      "coords": [
+        -41.28664,
+        174.77557
+      ],
+      "zone": "Pacific/Auckland",
+      "km": 0.5
+    },
+    "confidence": "high",
+    "resolution": "aliased",
+    "zoneMatches": true,
+    "climateSource": "stations"
+  }
+]

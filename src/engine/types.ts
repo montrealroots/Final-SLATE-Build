@@ -1,7 +1,9 @@
 // The persistent game state. Every screen reads these records; later features extend them
 // through save migrations (save.ts) rather than parallel copies.
 
-export const SAVE_VERSION = 1;
+import type { Place } from '../data/places';
+
+export const SAVE_VERSION = 2;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -44,6 +46,8 @@ export interface CreationDraft {
   startDate: string;
   startTime: string; // HH:MM
   updatedAt: number;
+  /** World-catalog places chosen during creation (catalog places don't need a record here). */
+  places?: Record<string, Place>;
 }
 
 export type Attention = 'interrupt' | 'notify' | 'silent';
@@ -533,4 +537,6 @@ export interface GameState {
   followed: string[];
   calendarFilters: string[];
   settings: Settings;
+  /** Every world-catalog place this save uses, so it opens without loading the catalog. Added in save version 2. */
+  places: Record<string, Place>;
 }
