@@ -418,6 +418,7 @@ export function travelTo(state: GameState, placeId: string): number {
   if (placeId === state.locationId) throw new Error("You're already here.");
   const from = getPlace(state.locationId);
   const to = getPlace(placeId);
+  adoptPlace(state, to); // a world place travelled to is kept in the save
   const arriveAt = state.now + travelHours(from, to) * 3600_000;
   state.travel = { from: from.id, to: to.id, arriveAt };
   schedule(state, arriveAt, 'arrive', { to: to.id }, { attention: 'interrupt', priority: 6 });

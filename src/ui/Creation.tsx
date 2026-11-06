@@ -1,10 +1,11 @@
-import { useId, useState } from 'react';
+import { useState } from 'react';
 import { PRONOUNS, defaultActingTitle, languageName, searchHeritages, searchLanguages } from '../data/identity';
-import { findPlace, placeLabel, searchPlaces } from '../data/places';
+import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
 import { ageOn, parseYmd, validateDraft, type DraftProblem } from '../engine';
 import type { CreationDraft, Proficiency } from '../engine/types';
 import { Field, SelectField, TextField, Wordmark } from './components';
 import { store, useStore } from './store';
+import { WorldPlacePicker } from './WorldPicker';
 
 const PAGES = ['Name And Pronouns', 'Birth Date And Birthplace', 'Ethnicity And Heritage', 'Languages', 'Starting Location And Date', 'Review Character'];
 const DESCRIPTIONS = [
@@ -65,14 +66,14 @@ export function Creation() {
           {step === 1 && (
             <>
               <TextField label="Birth Date" type="date" value={d.birthDate} error={err('birthDate')} hint="You must be at least 16 on your starting date." onChange={(v) => set({ birthDate: v })} />
-              <PlacePicker label="Birthplace" value={d.birthplaceId} error={err('birthplaceId')} onChange={(id) => set({ birthplaceId: id })} />
+              <PlacePicker label="Birthplace" value={d.birthplaceId} error={err('birthplaceId')} onChange={(id, pl) => set({ birthplaceId: id, places: keepPlaces(d, 'birthplaceId', pl) })} />
             </>
           )}
           {step === 2 && <HeritageStep d={d} set={set} error={err('heritages')} />}
           {step === 3 && <LanguageStep d={d} set={set} error={err('mainLanguage')} />}
           {step === 4 && (
             <>
-              <PlacePicker label="Starting Location" value={d.startPlaceId} error={err('startPlaceId')} onChange={(id) => set({ startPlaceId: id })} />
+              <PlacePicker label="Starting Location" value={d.startPlaceId} error={err('startPlaceId')} onChange={(id, pl) => set({ startPlaceId: id, places: keepPlaces(d, 'startPlaceId', pl) })} />
               <div className="grid2">
                 <TextField label="Starting Date" type="date" value={d.startDate} error={err('startDate')} hint="Any date in 2026." onChange={(v) => set({ startDate: v })} />
                 <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you start." onChange={(v) => set({ startTime: v })} />
@@ -108,29 +109,16 @@ export function Creation() {
   );
 }
 
-export function PlacePicker(props: { label: string; value: string; error?: string | null; onChange: (id: string) => void }) {
-  const [q, setQ] = useState('');
-  const listId = useId();
-  const chosen = findPlace(props.value);
-  const results = searchPlaces(q, 10);
-  return (
-    <Field label={props.label} error={props.error} hint={chosen ? `Chosen: ${placeLabel(chosen)}` : 'Search by city, region or country.'}>
-      {(id, db) => (
-        <>
-          <input id={id} type="search" value={q} placeholder="Search Places" aria-describedby={db} aria-controls={listId} aria-invalid={!!props.error} onChange={(e) => setQ(e.target.value)} />
-          <div className="picklist" id={listId} role="group" aria-label={`${props.label} Results`}>
-            {results.map((p) => (
-              <button key={p.id} type="button" aria-pressed={p.id === props.value} onClick={() => props.onChange(p.id)}>
-                <span>{p.name}</span>
-                <span className="dim">{p.region !== p.name ? `${p.region}, ` : ''}{p.countryName}</span>
-              </button>
-            ))}
-            {!results.length && <p className="muted" style={{ padding: 12 }}>No places match. This game includes a curated list of cities.</p>}
-          </div>
-        </>
-      )}
-    </Field>
-  );
+/** Picks any playable place; world places come back with their record so the draft and save can keep them. */
+export function PlacePicker(props: { label: string; value: string; error?: string | null; onChange: (id: string, place: Place) => void }) {
+  return <WorldPlacePicker label={props.label} value={props.value} error={props.error} onChoose={(pl) => props.onChange(pl.id, pl)} />;
+}
+
+/** The draft's world places, keeping only those still chosen. */
+function keepPlaces(d: CreationDraft, field: 'birthplaceId' | 'startPlaceId', place: Place): Record<string, Place> {
+  const next = { ...d, [field]: place.id };
+  const all = { ...(d.places ?? {}), ...(isCatalogPlace(place.id) ? {} : { [place.id]: place }) };
+  return Object.fromEntries(Object.entries(all).filter(([id]) => id === next.birthplaceId || id === next.startPlaceId));
 }
 
 function HeritageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<CreationDraft>) => void; error: string | null }) {

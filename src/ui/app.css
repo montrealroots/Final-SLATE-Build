@@ -189,3 +189,10 @@ main { padding: var(--s5) max(var(--s4), env(safe-area-inset-right)) calc(var(--
 .steps { display: flex; flex-wrap: wrap; gap: var(--s2); list-style: none; padding: 0; margin: 0 0 var(--s4); font-size: var(--size-sm); }
 .steps li { color: var(--text-muted); }
 .steps li[aria-current='step'] { color: var(--accent-strong); font-weight: 700; }
+.worldmap { display: block; width: 100%; height: auto; aspect-ratio: 2 / 1; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface-2); }
+.worldmap-sea { fill: var(--bg); }
+.worldmap-country { fill: var(--surface-hover); stroke: var(--bg); cursor: pointer; }
+.worldmap-country:hover { fill: var(--surface-hover); }
+.worldmap-country[data-selected='true'] { fill: var(--accent-line); stroke: var(--accent); }
+.worldmap-marker { fill: var(--accent); cursor: pointer; }
+.worldmap-here { fill: none; stroke: var(--accent-strong); stroke-width: 0.6; }

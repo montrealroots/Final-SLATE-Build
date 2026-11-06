@@ -9,6 +9,7 @@ import { CalendarView, Home, PlaceView, Profile } from './World';
 const ProjectsList = lazy(() => import('./Projects').then((m) => ({ default: m.ProjectsList })));
 const NewProject = lazy(() => import('./Projects').then((m) => ({ default: m.NewProject })));
 const ProjectWorkspace = lazy(() => import('./Projects').then((m) => ({ default: m.ProjectWorkspace })));
+const WorldView = lazy(() => import('./WorldView').then((m) => ({ default: m.WorldView })));
 const EventDetail = lazy(() => import('./FinishViews').then((m) => ({ default: m.EventDetail })));
 
 export function App() {
@@ -21,6 +22,7 @@ export function App() {
       <Suspense fallback={<p role="status">Loading…</p>}>
       {v === 'home' && <Home />}
       {v === 'calendar' && <CalendarView />}
+      {v === 'world' && <WorldView />}
       {v === 'place' && <PlaceView />}
       {v === 'profile' && <Profile />}
       {v === 'projects' && <ProjectsList />}

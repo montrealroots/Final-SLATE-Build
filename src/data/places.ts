@@ -30,7 +30,7 @@ export interface Place {
   lon: number;
   zone: string;
   elevation: number; // metres
-  coastal: boolean;
+  coastal?: boolean; // catalog places only; world places have no coastline record
   climate: Climate;
   /** The GeoNames record this place is (catalog places are aliased to one; see docs/world/legacy-place-migration.json). */
   geonameId?: string;

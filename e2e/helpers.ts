@@ -16,6 +16,9 @@ export interface CharacterOpts {
   mainLanguage: string;
   extraLanguages: string[];
   start: string;
+  /** Pick from a country's full place list instead of the featured cities. */
+  birthCountry?: string;
+  startCountry?: string;
   startDate: string;
   startTime: string;
 }
@@ -27,8 +30,7 @@ export async function createCharacter(page: Page, o: CharacterOpts): Promise<voi
   await page.getByRole('button', { name: 'Next: Birth Date And Birthplace' }).click();
   await expect(page.getByRole('heading', { name: 'Birth Date And Birthplace' })).toBeVisible();
   await page.getByLabel('Birth Date').fill(o.birthDate);
-  await page.getByRole('searchbox', { name: 'Birthplace' }).fill(o.birthplace);
-  await page.getByRole('group', { name: 'Birthplace Results' }).getByRole('button').first().click();
+  await pickPlace(page, 'Birthplace', o.birthplace, o.birthCountry);
   await page.getByRole('button', { name: 'Next: Ethnicity And Heritage' }).click();
   for (const h of o.heritages) {
     await page.getByRole('searchbox', { name: 'Search Backgrounds' }).fill(h);
@@ -46,8 +48,7 @@ export async function createCharacter(page: Page, o: CharacterOpts): Promise<voi
     await page.getByRole('button', { name: `Add Language: ${l}` }).click();
   }
   await page.getByRole('button', { name: 'Next: Starting Location And Date' }).click();
-  await page.getByRole('searchbox', { name: 'Starting Location' }).fill(o.start);
-  await page.getByRole('group', { name: 'Starting Location Results' }).getByRole('button').first().click();
+  await pickPlace(page, 'Starting Location', o.start, o.startCountry);
   await page.getByLabel('Starting Date').fill(o.startDate);
   await page.getByLabel('Starting Time').fill(o.startTime);
   await page.getByRole('button', { name: 'Review Character' }).click();
@@ -56,13 +57,22 @@ export async function createCharacter(page: Page, o: CharacterOpts): Promise<voi
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
 }
 
+export async function pickPlace(page: Page, label: string, query: string, country?: string): Promise<void> {
+  if (country) await page.getByLabel('Country Or Territory').selectOption({ label: country });
+  await page.getByRole('searchbox', { name: label }).fill(query);
+  const first = page.getByRole('group', { name: `${label} Results` }).getByRole('button').first();
+  await expect(first).toContainText(new RegExp(query.slice(0, 3), 'i'));
+  await first.click();
+  await expect(page.getByText(/^Chosen: /)).toBeVisible();
+}
+
 export async function openMenuIfNeeded(page: Page): Promise<void> {
   await expect(page.getByRole('banner')).toBeVisible();
   const menu = page.getByRole('button', { name: 'Menu' });
   if (await menu.isVisible()) await menu.click();
 }
 
-export async function nav(page: Page, label: 'Home' | 'Calendar' | 'Projects' | 'Profile'): Promise<void> {
+export async function nav(page: Page, label: 'Home' | 'Calendar' | 'World' | 'Projects' | 'Profile'): Promise<void> {
   await openMenuIfNeeded(page);
   await page.getByRole('navigation', { name: 'Main' }).filter({ visible: true }).getByRole('link', { name: label }).click();
 }
