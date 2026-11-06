@@ -1,0 +1,162 @@
+# Section And Category Audit
+
+Checked on November 6, 2026. The game models a selection of each institution's real sections and categories (141 after this pass: 137 before, plus four Emmy comedy categories that the drama/comedy split requires). The selection is not meant to be complete.
+
+## Statuses
+
+- **Corrected:** changed in this pass to match the organizer, with the source.
+- **Confirmed:** looked up in this pass and found current, with the source.
+- **Matches published name:** the name and scope match the organizer's published categories as known before this pass; not re-fetched. These remain to be checked against each current rulebook.
+
+Rules inside each category (eligibility details, entry limits, juries) remain simulated and are labelled so in the game. Gotham's Breakthrough Series keeps its ID so older saves still resolve, but it is only offered for editions it really existed in (2015-2023).
+
+## Corrections In This Pass
+
+- **Primetime Emmys:** directing, writing and lead acting are split into drama and comedy, as the Television Academy awards them (limited-series versions are not modeled).
+- **Gotham Awards:** Breakthrough Series left the film awards in 2024 for the separate Gotham TV Awards; it no longer appears in 2024 and later editions.
+
+## By Category
+
+| Institution | Section Or Category | Status | Evidence And Notes |
+| --- | --- | --- | --- |
+| Sundance Film Festival | Dramatic Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Sundance Film Festival | Documentary Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Sundance Film Festival | Short Film Program | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Sundance Film Festival | Episodic Program | Confirmed | https://www.sundance.org/blogs/2026-sundance-film-festival-unveils-97-projects-selected-for-the-feature-film-and-episodic-program/ |
+| Berlin International Film Festival | Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Berlin International Film Festival | Panorama Audience Award | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Berlin International Film Festival | Short Film Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Cannes Film Festival | Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Cannes Film Festival | Special Screenings | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Cannes Film Festival | Short Film Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Annecy International Animation Film Festival | Feature Film Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Annecy International Animation Film Festival | Short Film Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Annecy International Animation Film Festival | Television Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Venice International Film Festival | Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Venice International Film Festival | Horizons | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Toronto International Film Festival | People's Choice Award | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Toronto International Film Festival | Short Cuts | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| San Sebastián International Film Festival | Official Selection | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Busan International Film Festival | Competition | Confirmed | https://www.screendaily.com/news/busan-film-festival-reveals-first-competition-lineup-ahead-of-30th-edition/5208202.article |
+| Busan International Film Festival | Short Films | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Sitges Film Festival | Fantastic Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| International Documentary Film Festival Amsterdam | Feature Documentary Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| International Documentary Film Festival Amsterdam | Short Documentary Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Hot Docs Canadian International Documentary Festival | Audience Award | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Clermont-Ferrand International Short Film Festival | International Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| SXSW Film & TV Festival | Narrative Feature Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| SXSW Film & TV Festival | Documentary Feature Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| SXSW Film & TV Festival | Episodic Pilot Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| SXSW Film & TV Festival | Short Film Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Series Mania | International Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Locarno Film Festival | International Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| FESPACO | Feature Fiction Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| FESPACO | Documentary Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| FESPACO | Short Film Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| FESPACO | Series Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Picture | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Director | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass. Official name: Directing. |
+| Academy Awards | Best Original Screenplay | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Actor In A Leading Role | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Actress In A Leading Role | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Actor In A Supporting Role | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Actress In A Supporting Role | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Animated Feature Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Documentary Feature Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Live Action Short Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Animated Short Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Documentary Short Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Film Awards | Best Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Film Awards | Director | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Film Awards | Original Screenplay | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Film Awards | Leading Actor | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Film Awards | Leading Actress | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Film Awards | Animated Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Film Awards | Documentary | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Television Awards | Drama Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Television Awards | Limited Drama | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Television Awards | Factual Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Television Awards | Leading Actor | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| BAFTA Television Awards | Leading Actress | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Golden Globe Awards | Best Motion Picture, Drama | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Golden Globe Awards | Best Motion Picture, Musical Or Comedy | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Golden Globe Awards | Best Motion Picture, Animated | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Golden Globe Awards | Best Director, Motion Picture | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Golden Globe Awards | Best Screenplay, Motion Picture | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Golden Globe Awards | Best Television Series, Drama | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Golden Globe Awards | Best Television Series, Musical Or Comedy | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Primetime Emmy Awards | Outstanding Drama Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Primetime Emmy Awards | Outstanding Comedy Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Primetime Emmy Awards | Outstanding Limited Or Anthology Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Primetime Emmy Awards | Outstanding Directing For A Drama Series | Corrected | https://www.televisionacademy.com/calendar (eligibility June 1 to May 31); the drama/comedy split follows the Television Academy rules (known; the rules document was not re-fetched) |
+| Primetime Emmy Awards | Outstanding Writing For A Drama Series | Corrected | https://www.televisionacademy.com/calendar (eligibility June 1 to May 31); the drama/comedy split follows the Television Academy rules (known; the rules document was not re-fetched) |
+| Primetime Emmy Awards | Outstanding Lead Actor In A Drama Series | Corrected | https://www.televisionacademy.com/calendar (eligibility June 1 to May 31); the drama/comedy split follows the Television Academy rules (known; the rules document was not re-fetched) |
+| Primetime Emmy Awards | Outstanding Lead Actress In A Drama Series | Corrected | https://www.televisionacademy.com/calendar (eligibility June 1 to May 31); the drama/comedy split follows the Television Academy rules (known; the rules document was not re-fetched) |
+| Primetime Emmy Awards | Outstanding Directing For A Comedy Series | Corrected | https://www.televisionacademy.com/calendar (eligibility June 1 to May 31); the drama/comedy split follows the Television Academy rules (known; the rules document was not re-fetched) |
+| Primetime Emmy Awards | Outstanding Writing For A Comedy Series | Corrected | https://www.televisionacademy.com/calendar (eligibility June 1 to May 31); the drama/comedy split follows the Television Academy rules (known; the rules document was not re-fetched) |
+| Primetime Emmy Awards | Outstanding Lead Actor In A Comedy Series | Corrected | https://www.televisionacademy.com/calendar (eligibility June 1 to May 31); the drama/comedy split follows the Television Academy rules (known; the rules document was not re-fetched) |
+| Primetime Emmy Awards | Outstanding Lead Actress In A Comedy Series | Corrected | https://www.televisionacademy.com/calendar (eligibility June 1 to May 31); the drama/comedy split follows the Television Academy rules (known; the rules document was not re-fetched) |
+| Primetime Emmy Awards | Outstanding Television Movie | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Primetime Emmy Awards | Outstanding Documentary Or Nonfiction Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| International Emmy Awards | Drama Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| International Emmy Awards | Comedy | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| International Emmy Awards | TV Movie Or Mini-Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| International Emmy Awards | Documentary | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| International Emmy Awards | Best Performance By An Actor | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| International Emmy Awards | Best Performance By An Actress | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Annie Awards | Best Feature | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Annie Awards | Best Short Subject | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Annie Awards | Best TV Or Media Production | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass. Simplified: the Annies have several TV/media categories by audience; the game models one. |
+| Annie Awards | Directing In A Feature Production | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Annie Awards | Writing In A Feature Production | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Annie Awards | Voice Acting In A Feature Production | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Film Independent Spirit Awards | Best Feature | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Film Independent Spirit Awards | Best Director | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Film Independent Spirit Awards | Best Screenplay | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Film Independent Spirit Awards | Best Lead Performance | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Film Independent Spirit Awards | Best Supporting Performance | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Film Independent Spirit Awards | Best Documentary Feature | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Film Independent Spirit Awards | Best New Scripted Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Gotham Awards | Best Feature | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Gotham Awards | Best Documentary Feature | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Gotham Awards | Outstanding Lead Performance | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Gotham Awards | Breakthrough Series | Corrected | https://en.wikipedia.org/wiki/Gotham_Awards (Breakthrough Series 2015-2023; moved to the Gotham TV Awards in 2024) |
+| Directors Guild Of America Awards | Theatrical Feature Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Directors Guild Of America Awards | Documentary | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Directors Guild Of America Awards | Dramatic Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Writers Guild Awards | Original Screenplay | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Writers Guild Awards | Episodic Drama | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Producers Guild Awards | Theatrical Motion Picture | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Producers Guild Awards | Animated Theatrical Motion Picture | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Producers Guild Awards | Documentary Motion Picture | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Producers Guild Awards | Episodic Television, Drama | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Actor Awards | Male Actor In A Leading Role | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Actor Awards | Female Actor In A Leading Role | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Actor Awards | Cast In A Motion Picture | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| César Awards | Best Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| César Awards | Best Director | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| César Awards | Best Original Screenplay | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| César Awards | Best Animated Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| César Awards | Best Documentary | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Goya Awards | Best Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Goya Awards | Best Director | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Goya Awards | Best Original Screenplay | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Canadian Screen Awards | Best Motion Picture | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Canadian Screen Awards | Best Drama Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Canadian Screen Awards | Best Feature Length Documentary | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| AACTA Awards | Best Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| AACTA Awards | Best Drama Series | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| AACTA Awards | Best Documentary | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Africa Movie Academy Awards | Best Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Africa Movie Academy Awards | Best Director | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Africa Movie Academy Awards | Best Documentary | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Africa Movie Academy Awards | Best Short Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Japan Academy Film Prize | Picture Of The Year | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Japan Academy Film Prize | Animation Of The Year | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Japan Academy Film Prize | Director Of The Year | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Blue Dragon Film Awards | Best Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Blue Dragon Film Awards | Best Director | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Blue Dragon Film Awards | Best Screenplay | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| European Film Awards | European Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass. Eligibility differs: the January 2026 ceremony took films first shown 1 June 2024 to 30 September 2025 after its date change; the game uses October to September. |
+| European Film Awards | European Director | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass. Eligibility differs: the January 2026 ceremony took films first shown 1 June 2024 to 30 September 2025 after its date change; the game uses October to September. |
+| European Film Awards | European Animated Feature Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass. Eligibility differs: the January 2026 ceremony took films first shown 1 June 2024 to 30 September 2025 after its date change; the game uses October to September. |

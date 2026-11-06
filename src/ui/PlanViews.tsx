@@ -5,7 +5,7 @@ import {
   CO_PRODUCTION_TERMS, EXPERIENCE, acceptCounter, approvedCharacters, approvedScenes, bringInCoProducer, castPlayer, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
-  sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
+  sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
   type StaffingProposal, covers,
 } from '../engine';
 import type { Hire, PerformanceMethod, Project } from '../engine/types';
@@ -360,6 +360,7 @@ export function ScheduleTab({ p }: { p: Project }) {
                   </div>
                   {fc && !d.interior && fc.chanceOfPrecip >= 40 && (
                     <div className="btn-row">
+                      <button className="btn btn-small" onClick={() => setErr(store.act((s) => void moveShootDay(s, p, d.id)))}>Move the Shoot</button>
                       {p.schedule.days.some((o) => o.interior && o.status === 'scheduled' && o.date > d.date) && <button className="btn btn-small" onClick={() => setErr(store.act((s) => void swapWithInteriorDay(s, p, d.id)))}>Film an Interior Scene</button>}
                       <button className="btn btn-small" aria-pressed={!!d.weatherAnyway} onClick={() => setErr(store.act((s) => keepWeatherPlan(s, p, d.id)))}>{d.weatherAnyway ? 'Shooting In Any Weather' : 'Keep The Plan'}</button>
                     </div>

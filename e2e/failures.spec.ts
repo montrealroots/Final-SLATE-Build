@@ -74,7 +74,7 @@ test('holiday dates and the map that fail to load are explained, and Try Again r
   await expect(holidays.getByRole('listitem').first()).toBeVisible();
   // Coming back to World loads the map again on its own now that it can.
   await nav(page, 'World');
-  await expect(page.getByRole('img', { name: /Map of/ })).toBeVisible();
+  await expect(page.getByRole('group', { name: /Map of/ })).toBeVisible();
 });
 
 test("a save that mentions a place the game can't find asks for a replacement, keeping a backup", async ({ page }) => {

@@ -32,6 +32,8 @@ export interface Category {
   genres?: string[]; // at least one of these genre ids required
   excludeGenres?: string[];
   premiere?: 'world' | 'international' | 'none';
+  /** First and last edition years the organizer held this category, where it hasn't always existed. */
+  years?: [number, number];
 }
 
 export interface Institution {
@@ -60,6 +62,7 @@ const FILM: Format[] = ['feature'];
 const SHORTS: Format[] = ['short', 'documentary-short'];
 const DOCS: Format[] = ['documentary-feature'];
 const SERIES: Format[] = ['series', 'limited-series', 'anthology-series', 'web-series'];
+const ONGOING: Format[] = ['series', 'anthology-series', 'web-series'];
 const DOC_SERIES: Format[] = ['documentary-series', 'unscripted-series'];
 const COMEDY_MUSICAL = ['comedy', 'musical', 'romantic-comedy', 'action-comedy', 'buddy-comedy', 'screwball-comedy', 'slapstick', 'farce', 'parody', 'satire', 'black-comedy', 'stoner-comedy', 'horror-comedy', 'backstage-musical', 'jukebox-musical'];
 const GENRE_FANTASTIC = ['horror', 'fantasy', 'science-fiction', 'dark-fantasy', 'cosmic-horror', 'slasher', 'zombie', 'vampire', 'werewolf', 'creature-feature', 'monster-movie', 'kaiju', 'body-horror', 'folk-horror', 'gothic-horror', 'psychological-horror', 'supernatural', 'occult', 'splatter', 'cyberpunk', 'space-opera', 'time-travel', 'giallo', 'sword-and-sorcery', 'science-fantasy', 'horror-comedy', 'eco-horror'];
@@ -67,6 +70,11 @@ const GENRE_FANTASTIC = ['horror', 'fantasy', 'science-fiction', 'dark-fantasy',
 const C = (id: string, name: string, recipient: Recipient, formats: Format[], judging: Judging, slots: number, extra: Partial<Category> = {}): Category => ({
   id, name, recipient, formats, judging, slots, competitive: true, fee: 0, ...extra,
 });
+
+/** The categories an edition actually holds. Lookups by ID use the full list, so older saves keep their entries. */
+export function categoriesFor(inst: Institution, year: number): Category[] {
+  return inst.categories.filter((c) => !c.years || (year >= c.years[0] && year <= c.years[1]));
+}
 
 const AFRICA = ['NG', 'BF', 'KE', 'ZA', 'EG', 'MA', 'GH', 'SN'];
 const EUROPE = ['GB', 'IE', 'FR', 'DE', 'ES', 'IT', 'NL', 'CH', 'CZ', 'SE', 'NO', 'DK', 'MC'];
@@ -262,9 +270,15 @@ export const INSTITUTIONS: Institution[] = [
       C('drama', 'Outstanding Drama Series', 'producer', ['series', 'anthology-series', 'web-series'], 'members', 7, { excludeGenres: COMEDY_MUSICAL }),
       C('comedy', 'Outstanding Comedy Series', 'producer', ['series', 'anthology-series', 'web-series'], 'members', 7, { genres: COMEDY_MUSICAL }),
       C('limited', 'Outstanding Limited Or Anthology Series', 'producer', ['limited-series', 'anthology-series'], 'members', 5),
-      C('directing', 'Outstanding Directing For A Series', 'director', SERIES, 'members', 6), C('writing', 'Outstanding Writing For A Series', 'writer', SERIES, 'members', 6),
-      C('lead-actor', 'Outstanding Lead Actor In A Series', 'lead', SERIES, 'members', 6, { actingTitle: 'Actor' }),
-      C('lead-actress', 'Outstanding Lead Actress In A Series', 'lead', SERIES, 'members', 6, { actingTitle: 'Actress' }),
+      // The Television Academy splits these by drama and comedy (limited series have their own, not modeled here).
+      C('directing', 'Outstanding Directing For A Drama Series', 'director', ONGOING, 'members', 6, { excludeGenres: COMEDY_MUSICAL }),
+      C('writing', 'Outstanding Writing For A Drama Series', 'writer', ONGOING, 'members', 6, { excludeGenres: COMEDY_MUSICAL }),
+      C('lead-actor', 'Outstanding Lead Actor In A Drama Series', 'lead', ONGOING, 'members', 6, { actingTitle: 'Actor', excludeGenres: COMEDY_MUSICAL }),
+      C('lead-actress', 'Outstanding Lead Actress In A Drama Series', 'lead', ONGOING, 'members', 6, { actingTitle: 'Actress', excludeGenres: COMEDY_MUSICAL }),
+      C('directing-comedy', 'Outstanding Directing For A Comedy Series', 'director', ONGOING, 'members', 6, { genres: COMEDY_MUSICAL }),
+      C('writing-comedy', 'Outstanding Writing For A Comedy Series', 'writer', ONGOING, 'members', 6, { genres: COMEDY_MUSICAL }),
+      C('lead-actor-comedy', 'Outstanding Lead Actor In A Comedy Series', 'lead', ONGOING, 'members', 6, { actingTitle: 'Actor', genres: COMEDY_MUSICAL }),
+      C('lead-actress-comedy', 'Outstanding Lead Actress In A Comedy Series', 'lead', ONGOING, 'members', 6, { actingTitle: 'Actress', genres: COMEDY_MUSICAL }),
       C('tv-movie', 'Outstanding Television Movie', 'producer', ['tv-film'], 'members', 5),
       C('documentary', 'Outstanding Documentary Or Nonfiction Series', 'producer', DOC_SERIES, 'members', 5),
     ],
@@ -313,10 +327,10 @@ export const INSTITUTIONS: Institution[] = [
     id: 'gotham', name: 'Gotham Awards', short: 'Gothams', kind: 'award', placeId: 'us-new-york', window: [12, 1, 3], duration: 1, cadence: 1, eligibility: 'oct-sep', prestige: 62,
     requiresRelease: { routes: ['theatrical', 'streaming', 'festival-premiere', 'digital', 'broadcast'] },
     official: { 2026: { start: '2026-11-30', end: '2026-11-30', label: '36th Gotham Film Awards', source: 'https://thegotham.org/press/dates-set-3rd-annual-gotham-television-awards-36th-annual-gotham-film-awards/', checked: '2026-11-06' } },
-    description: 'Annual awards for independent film and series. Performance categories are gender-neutral.',
+    description: 'Annual awards for independent film. Performance categories are gender-neutral. Series awards moved to separate television awards in 2024.',
     categories: [
       C('feature', 'Best Feature', 'producer', FILM, 'jury', 5), C('documentary', 'Best Documentary Feature', 'producer', DOCS, 'jury', 5),
-      C('lead', 'Outstanding Lead Performance', 'lead', FILM, 'jury', 10), C('series', 'Breakthrough Series', 'producer', SERIES, 'jury', 5),
+      C('lead', 'Outstanding Lead Performance', 'lead', FILM, 'jury', 10), C('series', 'Breakthrough Series', 'producer', SERIES, 'jury', 5, { years: [2015, 2023] }), // moved to the Gotham TV Awards in 2024
     ],
   },
   {
@@ -618,6 +632,7 @@ export function submitEntry(state: GameState, p: Project, editionId: string, cat
   const inst = institution(ed.institutionId);
   const cat = inst.categories.find((c) => c.id === categoryId);
   if (!cat) throw new Error('That category doesn\'t exist.');
+  if (!categoriesFor(inst, ed.year).includes(cat)) throw new Error(`The ${ed.label} doesn't hold that category.`);
   if (ed.entries.some((e) => e.projectId === p.id && e.categoryId === categoryId && e.status !== 'withdrawn')) throw new Error('This project is already entered in that category.');
   const el = checkEligibility(state, p, ed, cat, recipientIds);
   if (!el.eligible) throw new Error(el.reasons[0]);
@@ -829,7 +844,7 @@ export function announceEdition(state: GameState, ed: Edition): HandlerResult {
   const inst = institution(ed.institutionId);
   ed.status = 'announced';
   const messages: string[] = [];
-  for (const cat of inst.categories) {
+  for (const cat of categoriesFor(inst, ed.year)) {
     if (ed.results[cat.id]) continue; // persisted once; never rerolled
     const entries = ed.entries.filter((e) => e.categoryId === cat.id && e.status === 'accepted');
     const rivals = rivalsFor(state, ed, cat);
@@ -983,7 +998,7 @@ registerHandler('edition-results', (state, ev) => {
     announceEdition(state, ed);
   }
   const messages: string[] = [];
-  for (const cat of inst.categories) {
+  for (const cat of categoriesFor(inst, ed.year)) {
     const res = ed.results[cat.id];
     if (!res || !cat.competitive || res.winner) continue;
     const pool = [
