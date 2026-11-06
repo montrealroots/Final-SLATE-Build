@@ -97,4 +97,4 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 - No tutorial, taxes, housing, banking, visas or attribute progression.
 - Rules are simulated and labelled as such, except where `docs/world/RULEBOOK-AUDIT.md` lists organizer rules.
-- Saves are local to the browser (IndexedDB, or localStorage where it isn't available). Export Save is the copy outside it; importing isn't supported.
+- Saves are local to the browser (IndexedDB, or localStorage where it isn't available). Export Save is the copy outside it; Import Save brings one back (`docs/STORAGE.md`).

@@ -554,3 +554,54 @@ export function repairSave(store: KeyValueStore, saveId: string, replacements: R
   if (!res.ok) throw new SaveFormatError('The repaired save could not be written. Free some browser storage and try again.');
   return s;
 }
+
+// ---------------- Import ----------------
+
+/** Bigger than any save the game writes (a 50-year career is about 12 MB); larger files are refused before parsing. */
+export const IMPORT_LIMIT_CHARS = 64 * 1024 * 1024;
+
+/**
+ * Read a file the player chose to import: an exported save (any version this build can upgrade). It is checked,
+ * upgraded and validated in memory; nothing is stored. Throws SaveTooNewError for a newer version and
+ * SaveFormatError, with a message for the player, for anything else it can't use.
+ */
+export function readImport(text: string): GameState {
+  if (text.length > IMPORT_LIMIT_CHARS) throw new SaveFormatError('This file is too large to be a SLATE save.');
+  if (!text.trim()) throw new SaveFormatError('This file is empty.');
+  const state = deserialize(text);
+  const missing = missingPlaces(state);
+  if (missing.length) throw new SaveFormatError('This save mentions places this version of SLATE can’t find, so it can’t be imported.');
+  return state;
+}
+
+/** How an imported save is stored when one with its ID exists: never decided by the game. */
+export type ImportMode = 'new' | 'copy' | 'replace';
+
+export class ImportConflictError extends Error {
+  constructor(readonly existing: SaveSummary) {
+    super('A save with this ID is already here.');
+  }
+}
+
+/** The save already stored under an imported save's ID, if any. */
+export function existingSave(store: KeyValueStore, saveId: string): SaveSummary | null {
+  return listSaves(store).find((x) => x.saveId === saveId) ?? null;
+}
+
+/**
+ * Store an imported save. 'new' refuses (ImportConflictError) if its ID is taken; 'copy' stores it under a new ID and
+ * name, leaving the existing save alone; 'replace' writes it over the existing save, which writeSave keeps as the
+ * backup when it is sound (and never replaces a save from a newer version). Returns the stored save's ID.
+ */
+export function importSave(store: KeyValueStore, imported: GameState, mode: ImportMode, realNow: number): { saveId: string; result: SaveResult } {
+  const state = JSON.parse(JSON.stringify(imported)) as GameState; // the caller's copy stays as read from the file
+  const existing = existingSave(store, state.saveId) ?? (store.getItem(mainKey(state.saveId)) !== null ? { saveId: state.saveId } as SaveSummary : null);
+  if (mode === 'new' && existing) throw new ImportConflictError(existing);
+  if (mode === 'copy') {
+    let id = `${state.saveId}-c${realNow.toString(36)}`;
+    for (let n = 2; store.getItem(mainKey(id)) !== null || existingSave(store, id); n++) id = `${state.saveId}-c${realNow.toString(36)}${n}`;
+    state.saveId = id;
+    state.saveName = `${state.saveName} (Imported Copy)`.slice(0, 80);
+  }
+  return { saveId: state.saveId, result: writeSave(store, state, realNow) };
+}

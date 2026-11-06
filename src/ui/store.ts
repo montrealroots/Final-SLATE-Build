@@ -5,7 +5,7 @@ import {
   type SaveSummary,
 } from '../engine';
 export type StorageReport = StorageUse & { backend?: string; quotaKnown?: boolean };
-import { BROWSER_STORAGE_CHARS, deleteRecoveryCopy, isQuotaError, type RecoveryCopy, type SaveResult, type StorageUse } from '../engine/save';
+import { BROWSER_STORAGE_CHARS, deleteRecoveryCopy, existingSave, importSave, isQuotaError, readImport, LOCK_STALE_MS, type ImportMode, type RecoveryCopy, type SaveResult, type StorageUse } from '../engine/save';
 import { journalKey, type Vault } from '../engine/vault';
 import { openVault } from './idb';
 import type { CreationDraft, GameState, Route } from '../engine/types';
@@ -487,6 +487,50 @@ class Store {
       return ok;
     })();
     return this.saving;
+  }
+
+  /**
+   * Import a save file. Without a mode it only stores a save whose ID is new; if the ID is taken it returns the save
+   * that has it, so the player chooses a separate copy or a confirmed replacement. The file is never changed, and
+   * nothing already stored changes unless the whole import commits.
+   */
+  async importSaveFile(text: string, mode: ImportMode = 'new'): Promise<
+    { ok: true; saveId: string; name: string } | { ok: false; error: string } | { ok: false; conflict: SaveSummary }
+  > {
+    let state: GameState;
+    try {
+      state = readImport(text);
+    } catch (e) {
+      return { ok: false, error: e instanceof Error ? e.message : String(e) };
+    }
+    const id = state.saveId;
+    if (mode === 'replace') {
+      if (this.state?.saveId === id) return { ok: false, error: 'That save is the game you are playing. Save And Exit first, then import it.' };
+      const lock = readLock(this.kv, id);
+      if (lock && Date.now() - lock.beat <= LOCK_STALE_MS) return { ok: false, error: 'That save is open in another tab. Close it there, then import it.' };
+    }
+    let v: Vault;
+    try {
+      v = await this.v();
+    } catch (e) {
+      return { ok: false, error: e instanceof Error ? e.message : String(e) };
+    }
+    if (mode === 'new') {
+      const taken = await v.forImport(id, (kv) => existingSave(kv, id) ?? (kv.keys().includes(`slate.v1.save.${id}`) ? { saveId: id } as SaveSummary : null));
+      if (taken.value) return { ok: false, conflict: taken.value };
+    }
+    const r = await v.forImport(id, (kv) => importSave(kv, state, mode, Date.now()));
+    await this.refresh();
+    if (r.commitError) {
+      return { ok: false, error: isQuotaError(r.commitError) ? "There isn't room in this browser's storage to import it. Nothing was changed. Free up space and try again." : `It couldn't be stored, so nothing was changed. (${r.commitError instanceof Error ? r.commitError.message : String(r.commitError)})` };
+    }
+    if (r.error) {
+      const msg = r.error instanceof Error ? r.error.message : String(r.error);
+      return { ok: false, error: /newer version/.test(msg) ? 'The save here was made by a newer version of SLATE, so it was not replaced.' : msg };
+    }
+    const { saveId, result } = r.value!;
+    if (!result.ok) return { ok: false, error: result.storageFull ? "There isn't room in this browser's storage to import it. Nothing was changed. Free up space and try again." : result.error };
+    return { ok: true, saveId, name: mode === 'copy' ? `${state.saveName} (Imported Copy)`.slice(0, 80) : state.saveName };
   }
 
   /** Download a save as a file: the game being played (from memory, so it works when storage is full) or a stored one. */
