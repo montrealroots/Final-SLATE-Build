@@ -81,7 +81,7 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 | High | An older build could replace a save written by a newer version, pushing it into the backup where the next save overwrote it | Writing refuses to replace a newer-version save and says why | `tests/save-recovery.test.ts` |
 | Medium | Time paused after a failure in one save stayed paused in the next save opened | Opening a save clears the pause | `e2e/reliability.spec.ts` |
 | Medium | The "last good copy" message was lost when opening waited for holiday rules, and didn't say which copy was opened | The message travels with the opened game and names the copy's save time | `e2e/reliability.spec.ts`, `e2e/failures.spec.ts` |
-| Low | CI failed when the browser install stalled on the package mirror | Browsers cached by Playwright version; install retried within a time limit | CI runs |
+| Low | CI failed when the browser install stalled or crawled on the Ubuntu package mirror (three times); a timed-out attempt left apt holding the package lock | CI runs in Microsoft's Playwright image for the locked version, so nothing is installed | CI run for #17: 63 passed, 18 skipped in 7.3 minutes |
 | Low | China's computed holidays were wrong for 2026 | Official 2026 arrangement used, with make-up working days | Lunar holiday test |
 
 ## Acceptance Status
