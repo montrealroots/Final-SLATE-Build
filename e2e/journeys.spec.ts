@@ -184,10 +184,18 @@ test('3D animation to delivery, with a motion-capture performance', async ({ pag
   await saveAndApprove(page);
   await section(page, 'Cast');
   await expect(page.getByText('Performance Capture:')).toBeVisible();
-  await produceToDelivery(page, { yourself: ['Wren'], step: 'month', weeks: 30 });
+  await produceToDelivery(page, { yourself: ['Wren'], step: 'month', weeks: 30, mocap: true });
   await section(page, 'Production');
   await expect(page.getByText('Motion Capture: The Golem', { exact: true })).toBeVisible();
+  // The full capture flow ran: calibration, captured takes, an approved take, then cleanup before animation.
+  const golemCap = page.getByRole('article', { name: 'Motion Capture For The Golem' });
+  await expect(golemCap.getByText('Approved', { exact: true })).toBeVisible();
+  await expect(golemCap.getByText(/^Take 1: quality \d+/)).toBeVisible();
+  for (const t of ['Capture Rehearsal And Calibration: The Golem', 'Capture Cleanup And Retargeting: The Golem']) await expect(page.getByText(t, { exact: true })).toBeVisible();
   await expect(page.getByText('Render: Scene 1 (Orchard)', { exact: true })).toBeVisible();
+  await section(page, 'Budget');
+  await page.getByText(/^\d+ lines$/).click(); // open the budget lines
+  await expect(page.getByText('Capture Stage Booking').first()).toBeVisible();
   const credits = await creditsTable(page);
   expect(credits).toMatch(/Performance Capture[\s\S]*as The Golem/);
   expect(credits).toMatch(/Voice Cast[\s\S]*as Wren/);

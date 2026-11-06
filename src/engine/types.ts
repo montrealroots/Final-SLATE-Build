@@ -350,6 +350,22 @@ export interface ShootDay {
   weatherAnyway?: boolean;
 }
 
+export interface MocapTake {
+  id: string;
+  date: string;
+  quality: number; // 0..100
+  retake: boolean;
+}
+
+export interface MocapRecord {
+  /** The stage booking's budget line; reserved when booked, drawn down by sessions, released (less the fee) on cancellation. */
+  bookingId: string | null;
+  status: 'unbooked' | 'booked' | 'cancelled';
+  takes: MocapTake[];
+  approvedTakeId: string | null;
+  retakes: number;
+}
+
 export interface SceneCapture {
   sceneId: string;
   captured: number; // 0..1 coverage of planned material
@@ -444,6 +460,8 @@ export interface Project {
   tasks: Task[];
   assets: Asset[];
   captures: SceneCapture[];
+  /** Motion-capture work by character (booking, takes, approved take). Absent in older saves. */
+  mocap?: Record<string, MocapRecord>;
   edit: EditState;
   delivered: { at: number; runtimeMin: number } | null;
   credits: Credit[];

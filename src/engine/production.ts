@@ -9,6 +9,7 @@ import { covers, isAvailable, personById, roleLabel } from './people';
 import {
   approvedCharacters, approvedScenes, approvalRights, isEpisodic, isNonfiction, projectModules, sceneLabel, sceneTechnique,
 } from './projects';
+import { MOCAP_CLEANUP_PER_SESSION, approvedTake, payStageSession, recordTake, stageBlock } from './mocap';
 import { stream } from './rng';
 import { addLog, cancelEvents, newId, registerCommitmentSource, registerHandler, schedule } from './state';
 import { HOUR, addDaysToKey, dateKey, dayNumber, formatDateKey, localParts, localToInstant, parseYmd, weekdayOfKey } from './time';
@@ -48,7 +49,6 @@ export function dayFees(p: Project): { location: number; equipment: number } {
 }
 export const VOICE_SESSION_STUDIO = 400;
 /** Capture stage, suits and solving per session (simulation assumption). */
-export const MOCAP_SESSION_STAGE = 1500;
 /** Share of keyframe work left when a shot uses captured performance (simulation assumption). */
 export const MOCAP_ANIMATION_FACTOR = 0.6;
 
@@ -158,12 +158,14 @@ export function buildTasks(p: Project): Task[] {
         // Motion capture: one session per scene for each captured character, feeding animation.
         const capChars = animChars.filter((c) => c.methods.includes('motion-capture') && tScenes.some((s) => s.participants.includes(c.id)));
         for (const c of capChars) {
-          const sessions = tScenes.filter((s) => s.participants.includes(c.id)).length;
-          tasks.push(t('anim:mocap', c.id, `Motion Capture: ${c.name}`, 'Casting And Performance', 'director', sessions, 'sessions', ['anim:animatic:all'], { assetRef: c.id }));
+          const sessions = tScenes.filter((s) => s.participants.includes(c.id)).length + (p.mocap?.[c.id]?.retakes ?? 0);
+          tasks.push(t('anim:mocap-calib', c.id, `Capture Rehearsal And Calibration: ${c.name}`, 'Casting And Performance', 'director', 1, 'sessions', ['anim:animatic:all'], { assetRef: c.id }));
+          tasks.push(t('anim:mocap', c.id, `Motion Capture: ${c.name}`, 'Casting And Performance', 'director', sessions, 'sessions', [`anim:mocap-calib:${c.id}`], { assetRef: c.id }));
+          tasks.push(t('anim:mocap-cleanup', c.id, `Capture Cleanup And Retargeting: ${c.name}`, 'Animation', 'animator', Math.max(1, sessions * MOCAP_CLEANUP_PER_SESSION), 'days', [`anim:mocap:${c.id}`, `anim:rig:${c.id}`], { assetRef: c.id }));
         }
         for (const s of tScenes) {
           const rigDeps = s.participants.filter((c) => animChars.some((x) => x.id === c)).map((c) => `anim:rig:${c}`);
-          const capDeps = capChars.filter((c) => s.participants.includes(c.id)).map((c) => `anim:mocap:${c.id}`);
+          const capDeps = capChars.filter((c) => s.participants.includes(c.id)).map((c) => `anim:mocap-cleanup:${c.id}`);
           const fxNeeded = s.vfx.length > 0 || s.crowd > 0;
           tasks.push(t('anim:layout', s.id, `Layout: ${sceneLabel(p, s)}`, 'Animation', 'layout-artist', Math.max(0.5, s.estMinutes * 1.5), 'days', ['anim:animatic:all', 'anim:envs:all'], { sceneIds: [s.id], episode: s.episode }));
           const actionFactor = s.stunts.trim() ? 1.3 : 1;
@@ -496,10 +498,13 @@ export function depsMet(p: Project, task: Task): { ok: boolean; reason?: string 
     if (!cast) return { ok: false, reason: 'This character has no voice performer yet.' };
     if (cast.performer !== 'player' && !p.hires.some((h) => h.id === cast.hireId && h.status === 'accepted')) return { ok: false, reason: 'The voice performer hasn\'t accepted yet.' };
   }
-  if (task.kind === 'anim:mocap' && task.assetRef) {
+  if (task.kind === 'anim:mocap-cleanup' && task.assetRef && !approvedTake(p, task.assetRef)) return { ok: false, reason: 'Choose the approved take first.' };
+  if ((task.kind === 'anim:mocap' || task.kind === 'anim:mocap-calib') && task.assetRef) {
     const cast = p.cast.find((c) => c.characterId === task.assetRef && c.method === 'motion-capture');
     if (!cast) return { ok: false, reason: 'This character has no performance-capture performer yet.' };
     if (cast.performer !== 'player' && !p.hires.some((h) => h.id === cast.hireId && h.status === 'accepted')) return { ok: false, reason: "The capture performer hasn't accepted yet." };
+    const block = stageBlock(p, task.assetRef);
+    if (block) return { ok: false, reason: block };
   }
   if (task.kind === 'prep:rehearsal' && !p.cast.length) return { ok: false, reason: 'Cast the roles before rehearsing.' };
   return { ok: true };
@@ -557,7 +562,22 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
       task.blockedReason = dep.reason;
       continue;
     }
-    if (task.roleId === 'render') {
+    if (task.kind === 'anim:mocap' || task.kind === 'anim:mocap-calib') {
+      // A stage session: paid from the booking once per day; the performer is paid once per day even when they also voice the role.
+      const charId = task.assetRef!;
+      if (!payStageSession(state, p, charId, `mocap:${task.id}:${date}`)) {
+        task.status = 'blocked';
+        task.blockedReason = 'The capture booking has no sessions left. Ask for a retake or book the stage again.';
+        continue;
+      }
+      const cast = p.cast.find((c) => c.characterId === charId && c.method === 'motion-capture');
+      const h = cast?.hireId ? p.hires.find((x) => x.id === cast.hireId) : undefined;
+      if (h && h.status === 'accepted' && h.obligationId && settle(state, p, h.obligationId, h.dayRate, `${h.id}:${date}`)) h.daysWorked += 1;
+      if (task.kind === 'anim:mocap') recordTake(state, p, charId, date);
+      task.done += 1;
+      task.status = 'active';
+      task.workedDays += 1;
+    } else if (task.roleId === 'render') {
       const nodesLeft = p.schedule.renderNodes - renderNodeDays;
       if (nodesLeft <= 0) {
         task.status = 'blocked';
@@ -580,19 +600,9 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
       task.status = 'active';
       task.workedDays += 1;
     } else if (playerDoes(task.roleId)) {
-      if (state.sleep.asleep && task.kind !== 'anim:voice' && task.kind !== 'anim:mocap') {
+      if (state.sleep.asleep && task.kind !== 'anim:voice') {
         task.status = 'ready';
         continue;
-      }
-      if (task.kind === 'anim:mocap') {
-        const cast = p.cast.find((c) => c.characterId === task.assetRef && c.method === 'motion-capture');
-        if (cast?.hireId) {
-          const h = p.hires.find((x) => x.id === cast.hireId);
-          if (h && h.status === 'accepted' && h.obligationId) {
-            if (settle(state, p, h.obligationId, h.dayRate, `${h.id}:${date}`)) h.daysWorked += 1;
-          }
-        }
-        spend(state, p, `Capture Stage (${date})`, 'post', MOCAP_SESSION_STAGE, `mocap:${task.id}:${date}`);
       }
       if (task.kind === 'anim:voice') {
         const cast = p.cast.find((c) => c.characterId === task.assetRef && c.method !== 'motion-capture');

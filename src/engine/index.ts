@@ -15,3 +15,4 @@ export * from './holidays';
 export * from './save';
 export * from './clock';
 export * from './documentary';
+export * from './mocap';
