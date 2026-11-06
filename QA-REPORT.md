@@ -8,17 +8,17 @@
 
 ## Commands And Results
 
-Latest full run: November 6, 2026, on the branch that adds the reliability pass (pull request montrealroots/Final-SLATE-Build#13), local Linux container.
+Latest full run: November 6, 2026, checkpoint A of the rulebook, performance and storage request (cross-save reliability fixes), local Linux container. The browser suite first ran 56 passed, 2 failed, 17 skipped: the two failures were an older test expecting the previous recovery wording, which now also names the copy's save time. After updating that locator, `e2e/failures.spec.ts` passed 14 of 14 on desktop and phone. Balance is unchanged by this checkpoint and runs in CI; the numbers below are from the previous local run.
 
 | Command | Exit | Result |
 | --- | --- | --- |
 | `npm run world:check` | 0 | 252 entries (246 playable), 3,865 regions, 246 shards, 171,750 rows with 171,750 unique IDs, 175 outlines, 218 holiday entries, 11,459 stations; 0 problems. |
 | `npm run typecheck` | 0 | No type errors (strict mode). |
-| `npm test` | 0 | 20 files, 110 tests passed, 0 skipped. |
+| `npm test` | 0 | 20 files, 117 tests passed, 0 skipped. |
 | `npm run build` | 0 | Built with no warnings. |
 | `npm run budget` | 0 | Startup JavaScript 691 kB raw, 205 kB gzipped, in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
 | `npm run balance` | 0 | 2 tests passed: 180 family runs, 120 sensitivity runs, determinism check, and 30 held-out combination runs. Results identical to the previous run. Took about 100 seconds (see `docs/ASSUMPTIONS.md`, Reliability). |
-| `npm run e2e -- --trace off` | 0 | 54 passed, 17 skipped, 0 failed, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
+| `npm run e2e -- --trace off` | 0 after fix | 58 passed (56 in the full run plus the 2 fixed, rerun in their file), 17 skipped, 0 failed, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
 
 ### Why 17 Browser Tests Are Skipped
 
@@ -70,6 +70,10 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 | Medium | Capture-stage cost was only paid when the player directed | Stage sessions are paid from the booking whoever directs | `tests/lunar-mocap.test.ts` |
 | Low | Documentary test treated a name containing "Cast" as a cast credit | Assertion checks credit rows | Documentary e2e |
 | Medium | Toronto precipitation fell back to the model because only 1991-2020 stations were searched | Tiered station search: own country recent, own country any period, then anywhere | Legacy migration report (all 66 from stations) |
+| High | An older build could replace a save written by a newer version, pushing it into the backup where the next save overwrote it | Writing refuses to replace a newer-version save and says why | `tests/save-recovery.test.ts` |
+| Medium | Time paused after a failure in one save stayed paused in the next save opened | Opening a save clears the pause | `e2e/reliability.spec.ts` |
+| Medium | The "last good copy" message was lost when opening waited for holiday rules, and didn't say which copy was opened | The message travels with the opened game and names the copy's save time | `e2e/reliability.spec.ts`, `e2e/failures.spec.ts` |
+| Low | CI failed when the browser install stalled on the package mirror | Browsers cached by Playwright version; install retried within a time limit | CI runs |
 | Low | China's computed holidays were wrong for 2026 | Official 2026 arrangement used, with make-up working days | Lunar holiday test |
 
 ## Acceptance Status
@@ -79,6 +83,6 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 - No physical iPhone or real Safari verification. WebKit emulation passed, but the on-screen keyboard can't be emulated.
 - Lunar holidays exist for 2026 only.
 - The 66 legacy places are matched to GeoNames (64 high confidence, 2 reviewed by hand); the world search and pickers are not built yet (M2).
-- Festival and award rules are simulated.
+- Festival and award rules are simulated apart from the announced dates and categories listed in `docs/world/INSTITUTION-AUDIT.md` and `docs/world/CATEGORY-AUDIT.md`.
 
 This base is not claimed to be finished, bug-free or fully realistic.

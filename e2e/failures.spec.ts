@@ -108,7 +108,7 @@ test('a damaged save opens the last good copy, says so, and keeps the damaged on
   const damaged = await page.evaluate((k) => { const t = localStorage.getItem(k)!.slice(0, 300); localStorage.setItem(k, t); return t; }, `slate.v1.save.${id}`);
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(page.getByText(/so the previous save was opened\. The damaged save is kept, not deleted\./)).toBeVisible();
+  await expect(page.getByText(/so the previous save, from .+, was opened\. The damaged save is kept, not deleted\./)).toBeVisible();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
   const kept = await page.evaluate((prefix) => Object.keys(localStorage).filter((k) => k.startsWith(prefix)).map((k) => localStorage.getItem(k)), `slate.v1.save.${id}.damaged-`);
   expect(kept).toContain(damaged);

@@ -162,3 +162,75 @@ describe('malformed projects inside a save', () => {
     }
   });
 });
+
+describe('repeated failures keep every recoverable copy', () => {
+  const stages: [string, RegExp][] = [
+    ['temporary copy', /\.tmp$/],
+    ['backup', /\.bak$/],
+    ['replacing the save', /^slate\.v1\.save\.r1$/],
+    ['index', /index$/],
+  ];
+  for (const [stage, pattern] of stages) {
+    it(`a write that fails at the ${stage} never loses the last good save, and is never reported as saved`, () => {
+      const { kv, failOn } = flakyStore();
+      const s = game();
+      expect(writeSave(kv, s, 1).ok).toBe(true);
+      s.saveName = 'Second';
+      expect(writeSave(kv, s, 2).ok).toBe(true);
+      s.saveName = 'Third';
+      failOn(pattern);
+      for (let i = 0; i < 3; i++) expect(writeSave(kv, s, 3 + i).ok).toBe(false);
+      failOn(null);
+      expect(listSaves(kv).map((x) => x.saveId)).toEqual(['r1']);
+      expect(['Second', 'Third']).toContain(readSave(kv, 'r1').saveName);
+      expect(kv.keys().filter((k) => k.includes('.damaged-'))).toEqual([]);
+      expect(writeSave(kv, s, 9).ok).toBe(true);
+      expect(readSave(kv, 'r1').saveName).toBe('Third');
+    });
+  }
+
+  it('keeps a damaged save when there is no room to preserve it, instead of replacing it', () => {
+    const { kv, failOn } = flakyStore();
+    const s = game();
+    writeSave(kv, s, 1);
+    writeSave(kv, s, 2);
+    kv.setItem(KEY, 'garbage');
+    failOn(/damaged-/);
+    expect(writeSave(kv, s, 3).ok).toBe(false);
+    expect(kv.getItem(KEY)).toBe('garbage');
+    expect(() => openSave(kv, 'r1', 4)).toThrow(/no room to keep the damaged one/);
+    failOn(null);
+    const { state, recovery } = openSave(kv, 'r1', 5);
+    expect(recovery?.source).toBe('interrupted-write'); // the failed write left a complete, newer copy
+    expect(state.updatedAtReal).toBe(3);
+    expect(kv.getItem(recovery!.damagedKey!)).toBe('garbage');
+  });
+
+  it('opening a damaged save again and again keeps one damaged copy, and the next save does not add another', () => {
+    const kv = memoryStore();
+    const s = game();
+    writeSave(kv, s, 1);
+    writeSave(kv, s, 2);
+    kv.setItem(KEY, 'garbage');
+    for (let i = 0; i < 4; i++) openSave(kv, 'r1', 10 + i);
+    const { state } = openSave(kv, 'r1', 20);
+    expect(writeSave(kv, state, 21).ok).toBe(true);
+    const damaged = kv.keys().filter((k) => k.includes('.damaged-'));
+    expect(damaged).toHaveLength(1);
+    expect(kv.getItem(damaged[0])).toBe('garbage');
+  });
+
+  it('never overwrites a save written by a newer version of the game', () => {
+    const kv = memoryStore();
+    const s = game();
+    writeSave(kv, s, 1);
+    const newer = wrap({ ...JSON.parse(JSON.stringify(s)), version: 99 });
+    kv.setItem(KEY, newer);
+    const res = writeSave(kv, s, 2);
+    expect(res.ok).toBe(false);
+    expect(res.ok ? '' : res.error).toMatch(/newer version/);
+    expect(writeSave(kv, s, 3).ok).toBe(false);
+    expect(kv.getItem(KEY)).toBe(newer);
+    expect(kv.getItem(`${KEY}.bak`)).not.toBe(newer);
+  });
+});

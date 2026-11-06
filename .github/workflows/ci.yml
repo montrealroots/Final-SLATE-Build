@@ -31,10 +31,25 @@ jobs:
         # About 100 seconds locally; each batch of events is rolled back as a unit if it fails, which costs copies.
         timeout-minutes: 10
         run: npm run balance
+      - name: Read the locked Playwright version
+        id: pw
+        run: echo "version=$(node -p "require('./node_modules/@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}
       - name: Install Playwright browsers matching the lockfile
-        # A stalled package mirror once hung this step for over 40 minutes; fail fast instead.
-        timeout-minutes: 10
-        run: npx playwright install --with-deps chromium webkit
+        # The Ubuntu package mirror has stalled this step twice (once over 40 minutes). Each attempt is bounded and
+        # retried once; the browsers themselves come from the cache when the locked version hasn't changed.
+        timeout-minutes: 20
+        run: |
+          for attempt in 1 2; do
+            timeout 540 npx playwright install --with-deps chromium webkit && exit 0
+            echo "Install attempt $attempt did not finish; retrying."
+            sleep 15
+          done
+          exit 1
       - name: Browser journeys
         timeout-minutes: 20
         run: npm run e2e -- --trace retain-on-failure
