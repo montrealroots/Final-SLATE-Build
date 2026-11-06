@@ -1,0 +1,92 @@
+{
+  "generatedBy": "npm run world:check",
+  "timeZoneData": "2026e",
+  "entries": 252,
+  "playable": 246,
+  "notPlayable": [
+    {
+      "code": "AN",
+      "reason": "Historical entry: the Netherlands Antilles were dissolved in 2010. Its former islands are listed under CW, SX and BQ."
+    },
+    {
+      "code": "AQ",
+      "reason": "No populated place in the source (Antarctica)."
+    },
+    {
+      "code": "BV",
+      "reason": "No populated place in the source (Bouvet Island)."
+    },
+    {
+      "code": "CS",
+      "reason": "Historical entry: Serbia and Montenegro split in 2006. Use RS or ME."
+    },
+    {
+      "code": "HM",
+      "reason": "No populated place in the source (Heard Island and McDonald Islands)."
+    },
+    {
+      "code": "UM",
+      "reason": "No populated place in the source (United States Minor Outlying Islands)."
+    }
+  ],
+  "regions": 3865,
+  "shards": 246,
+  "placeRows": 171750,
+  "uniquePlaceIds": 171750,
+  "outlines": 175,
+  "entriesWithoutOutline": 77,
+  "holidayRuleEntries": 218,
+  "entriesWithoutHolidayRules": [
+    "AF",
+    "AN",
+    "AQ",
+    "BT",
+    "BV",
+    "CF",
+    "CS",
+    "CV",
+    "ER",
+    "FO",
+    "GM",
+    "GQ",
+    "GW",
+    "HM",
+    "HT",
+    "IO",
+    "IR",
+    "KP",
+    "LA",
+    "LS",
+    "MM",
+    "MW",
+    "PW",
+    "SJ",
+    "SL",
+    "SO",
+    "SR",
+    "SS",
+    "SZ",
+    "TF",
+    "TJ",
+    "TK",
+    "TV",
+    "UM"
+  ],
+  "stationRecords": 11459,
+  "entriesWithoutOwnStation": [
+    "AN",
+    "BV",
+    "CS",
+    "HM",
+    "HT",
+    "NR",
+    "NU",
+    "PS",
+    "SM",
+    "TC",
+    "TK",
+    "VA",
+    "VG"
+  ],
+  "problems": []
+}

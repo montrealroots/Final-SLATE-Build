@@ -1,0 +1,113 @@
+{
+ "country": "BS",
+ "sources": [
+  {
+   "kind": "primary",
+   "url": "https://laws.bahamas.gov.bs/cms/images/LEGISLATION/PRINCIPAL/1938/1938-0015/1938-0015_2.pdf",
+   "title": "Statute Law of The Bahamas, Chapter 36, Public Holidays Act (15 of 1938 as amended to 40 of 2013), LRO 1/2017",
+   "read": "2026-11-02",
+   "said": "s. 3: 'The several days mentioned in the First Schedule ... shall be kept as close holidays in all public offices and banks, and in all shops: Provided that when any public holiday shall fall on a Sunday the following day shall be observed and kept as a public holiday' (46 of 1962). s. 4: the Governor-General may by Order in the Gazette substitute a day or appoint a special day. First Schedule: '1st of January. Majority Rule Day (10th of January). Good Friday. 1st Monday after Easter. 1st Monday after Whitsunday. Randol Fawkes Labour Day (first Friday in June). Independence Day (10th of July). 1st Monday in August. 12th of October. Christmas Day. Boxing Day (26th of December).'",
+   "note": "The Law Revision's consolidation LRO 1/2017 (amendments to 40 of 2013), read from the Law Revision's own site on 2026-11-02 (first held from archive.org's snapshot of 18 July 2026, read 2026-10-31, when the site refused). Section 4 lets the Governor-General move a day or appoint a special one by Order in the Gazette; no such Order for 2026 or 2027 was read, so a day moved or added that way (for instance a polling day) isn't kept. Readings: the Schedule names neither the first Monday in August nor 12 October; they are called here Emancipation Day and National Heroes Day, the names in common use (no source read gives them), and the day is the Schedule's 12 October, not a Monday. 'The following day' is read as the Monday only, so a Sunday holiday whose Monday is already one (Christmas on a Sunday) gives no further day. A Saturday holiday isn't moved. The lists are the Act's days reckoned for 2026 and 2027. The aggregators' Saturday days in place (12 January and 28 December 2026) come from yearly Orders under section 4 that no source read gives, so they aren't kept."
+  }
+ ],
+ "lists": [
+  {
+   "year": 2026,
+   "days": [
+    [
+     "2026-01-01",
+     "New Year’s Day"
+    ],
+    [
+     "2026-01-10",
+     "Majority Rule Day"
+    ],
+    [
+     "2026-04-03",
+     "Good Friday"
+    ],
+    [
+     "2026-04-06",
+     "Easter Monday"
+    ],
+    [
+     "2026-05-25",
+     "Whit Monday"
+    ],
+    [
+     "2026-06-05",
+     "Randol Fawkes Labour Day"
+    ],
+    [
+     "2026-07-10",
+     "Independence Day"
+    ],
+    [
+     "2026-08-03",
+     "Emancipation Day"
+    ],
+    [
+     "2026-10-12",
+     "National Heroes Day"
+    ],
+    [
+     "2026-12-25",
+     "Christmas Day"
+    ],
+    [
+     "2026-12-26",
+     "Boxing Day"
+    ]
+   ]
+  },
+  {
+   "year": 2027,
+   "days": [
+    [
+     "2027-01-01",
+     "New Year’s Day"
+    ],
+    [
+     "2027-01-11",
+     "Majority Rule Day (Monday for Sunday)"
+    ],
+    [
+     "2027-03-26",
+     "Good Friday"
+    ],
+    [
+     "2027-03-29",
+     "Easter Monday"
+    ],
+    [
+     "2027-05-17",
+     "Whit Monday"
+    ],
+    [
+     "2027-06-04",
+     "Randol Fawkes Labour Day"
+    ],
+    [
+     "2027-07-10",
+     "Independence Day"
+    ],
+    [
+     "2027-08-02",
+     "Emancipation Day"
+    ],
+    [
+     "2027-10-12",
+     "National Heroes Day"
+    ],
+    [
+     "2027-12-25",
+     "Christmas Day"
+    ],
+    [
+     "2027-12-27",
+     "Boxing Day (Monday for Sunday)"
+    ]
+   ]
+  }
+ ]
+}

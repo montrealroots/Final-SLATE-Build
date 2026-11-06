@@ -1,4 +1,4 @@
-import { getPlace, findPlace, type Place } from '../data/places';
+import { getPlace, findPlace, isCatalogPlace, registerPlace, type Place } from '../data/places';
 import { hashString } from './rng';
 import {
   DAY, MINUTE, addLocal, ageOn, formatClock, localParts, localToInstant, observedBirthday, parseYmd,
@@ -27,7 +27,14 @@ export interface DraftProblem {
 }
 
 /** Validation for creation. Birth date is checked against the chosen start date. */
+/** Make a world-catalog place available to a save (and to the engine for this session). */
+export function adoptPlace(state: GameState, place: Place): void {
+  registerPlace(place);
+  if (!isCatalogPlace(place.id)) state.places[place.id] = place;
+}
+
 export function validateDraft(d: CreationDraft): DraftProblem[] {
+  for (const pl of Object.values(d.places ?? {})) registerPlace(pl);
   const out: DraftProblem[] = [];
   if (!d.name.trim()) out.push({ field: 'name', step: 0, message: 'Enter a name.' });
   if (d.name.trim().length > 80) out.push({ field: 'name', step: 0, message: 'Use 80 characters or fewer.' });
@@ -102,7 +109,12 @@ export function newGame(d: CreationDraft, realNow: number, saveId: string): Game
     followed: [],
     calendarFilters: ['Birthdays', 'Holidays', 'Festivals', 'Awards', 'Deadlines', 'My Schedule'],
     settings: { theme: 'dark', reducedMotion: false, largeText: false, wakeForObligations: true },
+    places: {},
   };
+  for (const id of [d.birthplaceId, d.startPlaceId]) {
+    const pl = d.places?.[id];
+    if (pl) adoptPlace(state, pl);
+  }
   scheduleNextBirthday(state);
   for (const fn of initHooks) fn(state);
   return state;

@@ -1,0 +1,96 @@
+{
+ "country": "TZ",
+ "sources": [
+  {
+   "kind": "secondary",
+   "url": "https://dse.co.tz/storage/news/HopTtaYPXi9RqX5c8aOmW8Jyu8CmyWH8dYzzmAdZ.pdf",
+   "title": "Dar es Salaam Stock Exchange, Public Holidays of Tanzania - 2026 (created 1 December 2025)",
+   "read": "2026-11-02",
+   "quotes": "https://www.pmo.go.tz/",
+   "said": "Thursday Jan 01, 2026 New Year's Day; Monday Jan 12, 2026 Zanzibar Revolutionary Day; Friday Mar 20, 2026 Eid-al-Fitr**; Saturday Mar 21, 2026 Eid-al-Fitr**; Friday Apr 03, 2026 Good Friday; Monday Apr 06, 2026 Easter Monday; Tuesday Apr 07, 2026 Karume Day; Sunday Apr 26, 2026 Union Day; Friday May 01, 2026 Labour Day; Wednesday May 27, 2026 Eid al-Hajj**; Tuesday Jul 07, 2026 Saba Saba; Saturday Aug 08, 2026 Nane Nane; Tuesday Aug 25, 2026 Maulid Day**; Wednesday Oct 14, 2026 Nyerere Day; Wednesday Dec 09, 2026 Independence Day; Friday Dec 25, 2026 Christmas; Saturday Dec 26, 2026 Boxing Day. ** Subject to moon sighting."
+  },
+  {
+   "kind": "secondary",
+   "url": "https://dailynews.co.tz/when-zuchu-thumps-alembic-bass-its-kools-celebration-all-over/",
+   "title": "Daily News (Tanzania Standard Newspapers, state-owned), 20 March 2026",
+   "read": "2026-11-02",
+   "quotes": "https://www.pmo.go.tz/",
+   "said": "IT is Eid celebration across Tanzanian regions today, March 20, 2026 ... (with 'BAKWATA calls on Tanzanians to continue safeguarding the country's peace', 21 March 2026: the Mufti of Tanzania delivered the message during the national Eid Baraza)."
+  }
+ ],
+ "lists": [
+  {
+   "year": 2026,
+   "days": [
+    [
+     "2026-01-01",
+     "New Year’s Day"
+    ],
+    [
+     "2026-01-12",
+     "Zanzibar Revolutionary Day"
+    ],
+    [
+     "2026-03-20",
+     "Eid-al-Fitr"
+    ],
+    [
+     "2026-03-21",
+     "Eid-al-Fitr"
+    ],
+    [
+     "2026-04-03",
+     "Good Friday"
+    ],
+    [
+     "2026-04-06",
+     "Easter Monday"
+    ],
+    [
+     "2026-04-07",
+     "Karume Day"
+    ],
+    [
+     "2026-04-26",
+     "Union Day"
+    ],
+    [
+     "2026-05-01",
+     "Labour Day"
+    ],
+    [
+     "2026-05-27",
+     "Eid al-Hajj"
+    ],
+    [
+     "2026-07-07",
+     "Saba Saba"
+    ],
+    [
+     "2026-08-08",
+     "Nane Nane"
+    ],
+    [
+     "2026-08-25",
+     "Maulid Day"
+    ],
+    [
+     "2026-10-14",
+     "Nyerere Day"
+    ],
+    [
+     "2026-12-09",
+     "Independence Day"
+    ],
+    [
+     "2026-12-25",
+     "Christmas"
+    ],
+    [
+     "2026-12-26",
+     "Boxing Day"
+    ]
+   ]
+  }
+ ]
+}

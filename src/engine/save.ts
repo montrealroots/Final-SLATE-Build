@@ -3,6 +3,7 @@
 // until the new one verifies, so an interrupted write never destroys the last good save.
 
 import { hashString } from './rng';
+import { registerPlace } from '../data/places';
 import type { CreationDraft, GameState } from './types';
 import { SAVE_VERSION } from './types';
 
@@ -88,8 +89,12 @@ export function deserialize(text: string): GameState {
 }
 
 type Migration = (raw: Record<string, unknown>) => Record<string, unknown>;
-/** Migrations keyed by the version they upgrade FROM. Add one per schema change. */
-export const MIGRATIONS: Record<number, Migration> = {};
+/** Migrations keyed by the version they upgrade FROM. Add one per schema change. Each must be idempotent. */
+export const MIGRATIONS: Record<number, Migration> = {
+  // v1 -> v2: a registry of world-catalog places. Version-1 saves only used the 66 catalog places, whose IDs stay
+  // valid (each is now aliased to its GeoNames record), so nothing else changes.
+  1: (raw) => ({ ...raw, places: (raw.places as Record<string, unknown> | undefined) ?? {} }),
+};
 
 export function migrate(raw: unknown): GameState {
   if (!raw || typeof raw !== 'object') throw new SaveFormatError('The save file is not readable.');
@@ -106,7 +111,18 @@ export function migrate(raw: unknown): GameState {
   }
   const s = obj as unknown as GameState;
   validateState(s);
+  for (const place of Object.values(s.places ?? {})) registerPlace(place);
   return s;
+}
+
+/** The version a stored save was written with, without migrating it. */
+export function storedVersion(text: string): number | null {
+  try {
+    const env = JSON.parse(text);
+    return Number(JSON.parse(env.data).version) || null;
+  } catch {
+    return null;
+  }
 }
 
 function validateState(s: GameState): void {
@@ -159,8 +175,21 @@ export function writeSave(store: KeyValueStore, state: GameState, realNow: numbe
   }
 }
 
+export const backupKey = (id: string, version: number) => `${PREFIX}save.${id}.backup-v${version}`;
+
 export function readSave(store: KeyValueStore, saveId: string): GameState {
   const text = store.getItem(mainKey(saveId));
+  // Keep an untouched copy of an older save before it is migrated; if that can't be written, don't migrate.
+  if (text !== null) {
+    const v = storedVersion(text);
+    if (v !== null && v < SAVE_VERSION && store.getItem(backupKey(saveId, v)) === null) {
+      try {
+        store.setItem(backupKey(saveId, v), text);
+      } catch {
+        throw new SaveFormatError('This save needs an update, and there is no room to keep a backup first. Free some browser storage and try again.');
+      }
+    }
+  }
   if (text === null) {
     // A crash between backup and replacement leaves only the backup: recover it.
     const bak = store.getItem(bakKey(saveId));
@@ -171,6 +200,7 @@ export function readSave(store: KeyValueStore, saveId: string): GameState {
 }
 
 export function deleteSave(store: KeyValueStore, saveId: string): void {
+  for (const k of store.keys()) if (k.startsWith(`${PREFIX}save.${saveId}.backup-v`)) store.removeItem(k);
   store.removeItem(mainKey(saveId));
   store.removeItem(tmpKey(saveId));
   store.removeItem(bakKey(saveId));

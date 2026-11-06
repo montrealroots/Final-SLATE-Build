@@ -15,8 +15,10 @@
     "test": "vitest run",
     "e2e": "playwright test",
     "balance": "vitest run --config vitest.balance.config.ts",
-    "check": "npm run typecheck && npm run test && npm run build",
-    "catalog": "node scripts/trim-genre-registry.mjs"
+    "check": "npm run world:check && npm run typecheck && npm run test && npm run build",
+    "catalog": "node scripts/trim-genre-registry.mjs",
+    "world:check": "node scripts/world-import.mjs",
+    "world:legacy": "node scripts/legacy-places.mjs"
   },
   "dependencies": {
     "react": "19.3.1",

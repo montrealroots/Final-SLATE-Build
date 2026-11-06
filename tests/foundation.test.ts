@@ -3,30 +3,12 @@ import { ActiveClock } from '../src/engine/clock';
 import { holidaysForYear, easterSunday } from '../src/engine/holidays';
 import { memoryStore, readSave, writeSave, deserialize, serialize, listSaves, SaveFormatError, canTakeLock, takeLock } from '../src/engine/save';
 import {
-  addPlan, advanceTargetInstant, characterAge, emptyDraft, newGame, processUntil, startSleep, validateDraft, snooze,
+  addPlan, advanceTargetInstant, characterAge, newGame, processUntil, startSleep, validateDraft, snooze,
 } from '../src/engine/state';
 import { DAY, HOUR, MINUTE, addLocal, ageOn, localParts, localToInstant, observedBirthday } from '../src/engine/time';
 import { daylight, forecast, weatherOn, wetProbability } from '../src/engine/weather';
 import { getPlace, PLACES } from '../src/data/places';
-import type { CreationDraft } from '../src/engine/types';
-
-export function draft(over: Partial<CreationDraft> = {}): CreationDraft {
-  return {
-    ...emptyDraft(),
-    name: 'Ada Okafor-Lindqvist',
-    pronouns: 'she',
-    actingTitle: 'Actress',
-    birthDate: '1996-02-29',
-    birthplaceId: 'ng-lagos',
-    heritages: [{ id: 'Yoruba', label: 'Yoruba', custom: false }, { id: 'Swedish', label: 'Swedish', custom: false }],
-    mainLanguage: 'en',
-    languages: [{ code: 'yo', proficiency: 'Conversational' }, { code: 'sv', proficiency: 'Basic' }],
-    startPlaceId: 'gb-london',
-    startDate: '2026-03-27',
-    startTime: '08:00',
-    ...over,
-  };
-}
+import { draft } from './fixtures';
 
 describe('clock', () => {
   it('60 s of measured real time gives 60 game seconds despite irregular callbacks', () => {
@@ -242,7 +224,7 @@ describe('saves', () => {
     const text = serialize(s);
     expect(() => deserialize(text.slice(0, text.length - 40))).toThrow(SaveFormatError);
     const env = JSON.parse(text);
-    env.data = env.data.replace('"version":1', '"version":99');
+    env.data = env.data.replace('"version":2', '"version":99');
     expect(() => deserialize(JSON.stringify(env))).toThrow(SaveFormatError);
     const store = memoryStore();
     store.setItem('slate.v1.save.bad', '{oops');
