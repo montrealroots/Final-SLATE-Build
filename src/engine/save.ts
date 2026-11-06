@@ -7,6 +7,7 @@ import { findPlace, isCatalogPlace, registerPlace, type Place } from '../data/pl
 import type { CreationDraft, GameState } from './types';
 import { SAVE_VERSION } from './types';
 import { SaveValidationError, validateGameState } from './validate';
+import { migrateV2toV3 } from './awards';
 
 export interface KeyValueStore {
   getItem(key: string): string | null;
@@ -132,6 +133,8 @@ export const MIGRATIONS: Record<number, Migration> = {
   // v1 -> v2: a registry of world-catalog places. Version-1 saves only used the 66 catalog places, whose IDs stay
   // valid (each is now aliased to its GeoNames record), so nothing else changes.
   1: (raw) => ({ ...raw, places: (raw.places as Record<string, unknown> | undefined) ?? {} }),
+  // v2 -> v3: competing films stored once; each edition records the rules it is judged by (awards.ts).
+  2: migrateV2toV3,
 };
 
 export function migrate(raw: unknown): GameState {

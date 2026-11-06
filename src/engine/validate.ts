@@ -104,9 +104,21 @@ export function validateGameState(raw: unknown): asserts raw is GameState {
   (s.projects as unknown[]).forEach((pr, i) => validateProject(pr, i, projectIds));
 
   need(Array.isArray(s.editions), 'festival and award editions', 'are missing');
+  need(isObj(s.rivalFilms), 'competing films', 'are missing');
+  const films = s.rivalFilms as Obj;
+  for (const [key, f] of Object.entries(films)) {
+    need(isObj(f) && isStr(f.title) && isObj(f.people) && isStr(f.format) && isStr(f.medium) && isNum(f.runtimeMin), `the competing film ${key}`, 'is malformed');
+  }
   for (const ed of s.editions as unknown[]) {
     need(isObj(ed) && isId(ed.id) && isId(ed.institutionId) && Number.isInteger(ed.year) && isNum(ed.start) && isNum(ed.end) && isNum(ed.deadline)
-      && Array.isArray(ed.entries) && isObj(ed.results), 'a festival or award edition', 'is malformed');
+      && Array.isArray(ed.entries) && isObj(ed.results) && Array.isArray(ed.rivals), 'a festival or award edition', 'is malformed');
+    const e = ed as Obj;
+    need(e.rulesId === undefined || isId(e.rulesId), `the ${e.id} edition`, 'names unknown rules');
+    need(e.defaultDeadline === undefined || isNum(e.defaultDeadline), `the ${e.id} edition`, 'has an invalid deadline');
+    for (const r of e.rivals as unknown[]) {
+      need(isObj(r) && isId(r.id) && isStr(r.film) && isNum(r.score), `a competing work in ${e.id}`, 'is malformed');
+      need(Object.hasOwn(films, (r as Obj).film as string), `a competing work in ${e.id}`, 'refers to a film that is missing');
+    }
   }
 }
 

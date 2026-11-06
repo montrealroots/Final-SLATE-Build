@@ -6,6 +6,7 @@ Checked on November 6, 2026. The game models a selection of each institution's r
 
 - **Corrected:** changed in this pass to match the organizer, with the source.
 - **Confirmed:** looked up in this pass and found current, with the source.
+- **Rules verified / Rules projected:** the organizer's rules for the edition were read and are applied (November 6, 2026; `RULEBOOK-AUDIT.md`).
 - **Matches published name:** the name and scope match the organizer's published categories as known before this pass; not re-fetched. These remain to be checked against each current rulebook.
 
 Rules inside each category (eligibility details, entry limits, juries) remain simulated and are labelled so in the game. Gotham's Breakthrough Series keeps its ID so older saves still resolve, but it is only offered for editions it really existed in (2015-2023).
@@ -19,16 +20,16 @@ Rules inside each category (eligibility details, entry limits, juries) remain si
 
 | Institution | Section Or Category | Status | Evidence And Notes |
 | --- | --- | --- | --- |
-| Sundance Film Festival | Dramatic Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Sundance Film Festival | Documentary Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Sundance Film Festival | Short Film Program | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Sundance Film Festival | Episodic Program | Confirmed | https://www.sundance.org/blogs/2026-sundance-film-festival-unveils-97-projects-selected-for-the-feature-film-and-episodic-program/ |
+| Sundance Film Festival | Dramatic Competition | Rules verified | 2027 Sundance submission rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Sundance Film Festival | Documentary Competition | Rules verified | 2027 Sundance submission rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Sundance Film Festival | Short Film Program | Rules verified | 2027 Sundance submission rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Sundance Film Festival | Episodic Program | Rules verified | 2027 Sundance submission rules (name confirmed earlier from the 2026 program); see `RULEBOOK-AUDIT.md` for which rules |
 | Berlin International Film Festival | Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | Berlin International Film Festival | Panorama Audience Award | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | Berlin International Film Festival | Short Film Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | Cannes Film Festival | Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | Cannes Film Festival | Special Screenings | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Cannes Film Festival | Short Film Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Cannes Film Festival | Short Film Competition | Rules projected | 2026 short film regulations carried forward; 2027 not published; see `RULEBOOK-AUDIT.md` |
 | Annecy International Animation Film Festival | Feature Film Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | Annecy International Animation Film Festival | Short Film Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | Annecy International Animation Film Festival | Television Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
@@ -43,7 +44,7 @@ Rules inside each category (eligibility details, entry limits, juries) remain si
 | International Documentary Film Festival Amsterdam | Feature Documentary Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | International Documentary Film Festival Amsterdam | Short Documentary Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | Hot Docs Canadian International Documentary Festival | Audience Award | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Clermont-Ferrand International Short Film Festival | International Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Clermont-Ferrand International Short Film Festival | International Competition | Rules verified | 2027 International Competition regulations; see `RULEBOOK-AUDIT.md` for which rules |
 | SXSW Film & TV Festival | Narrative Feature Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | SXSW Film & TV Festival | Documentary Feature Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | SXSW Film & TV Festival | Episodic Pilot Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
@@ -54,18 +55,18 @@ Rules inside each category (eligibility details, entry limits, juries) remain si
 | FESPACO | Documentary Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | FESPACO | Short Film Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | FESPACO | Series Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Academy Awards | Best Picture | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Academy Awards | Best Director | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass. Official name: Directing. |
-| Academy Awards | Best Original Screenplay | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Academy Awards | Best Actor In A Leading Role | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Academy Awards | Best Actress In A Leading Role | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Academy Awards | Best Actor In A Supporting Role | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Academy Awards | Best Actress In A Supporting Role | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Academy Awards | Best Animated Feature Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Academy Awards | Best Documentary Feature Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Academy Awards | Best Live Action Short Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Academy Awards | Best Animated Short Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Academy Awards | Best Documentary Short Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Academy Awards | Best Picture | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Academy Awards | Best Director | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Academy Awards | Best Original Screenplay | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Academy Awards | Best Actor In A Leading Role | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Academy Awards | Best Actress In A Leading Role | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Academy Awards | Best Actor In A Supporting Role | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Academy Awards | Best Actress In A Supporting Role | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Academy Awards | Best Animated Feature Film | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Academy Awards | Best Documentary Feature Film | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Academy Awards | Best Live Action Short Film | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Academy Awards | Best Animated Short Film | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
+| Academy Awards | Best Documentary Short Film | Rules verified | 99th Academy Awards (2027) rules; see `RULEBOOK-AUDIT.md` for which rules |
 | BAFTA Film Awards | Best Film | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | BAFTA Film Awards | Director | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | BAFTA Film Awards | Original Screenplay | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
@@ -104,12 +105,12 @@ Rules inside each category (eligibility details, entry limits, juries) remain si
 | International Emmy Awards | Documentary | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | International Emmy Awards | Best Performance By An Actor | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | International Emmy Awards | Best Performance By An Actress | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Annie Awards | Best Feature | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Annie Awards | Best Short Subject | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Annie Awards | Best TV Or Media Production | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass. Simplified: the Annies have several TV/media categories by audience; the game models one. |
-| Annie Awards | Directing In A Feature Production | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Annie Awards | Writing In A Feature Production | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| Annie Awards | Voice Acting In A Feature Production | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| Annie Awards | Best Feature | Rules verified | 54th Annie Awards call for submissions; see `RULEBOOK-AUDIT.md` for which rules |
+| Annie Awards | Best Short Subject | Rules verified | 54th Annie Awards call for submissions; see `RULEBOOK-AUDIT.md` for which rules |
+| Annie Awards | Best TV Or Media Production | Rules verified | 54th Annie Awards call for submissions; see `RULEBOOK-AUDIT.md` for which rules |
+| Annie Awards | Directing In A Feature Production | Rules verified | 54th Annie Awards call for submissions; see `RULEBOOK-AUDIT.md` for which rules |
+| Annie Awards | Writing In A Feature Production | Rules verified | 54th Annie Awards call for submissions; see `RULEBOOK-AUDIT.md` for which rules |
+| Annie Awards | Voice Acting In A Feature Production | Rules verified | 54th Annie Awards call for submissions; see `RULEBOOK-AUDIT.md` for which rules |
 | Film Independent Spirit Awards | Best Feature | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | Film Independent Spirit Awards | Best Director | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | Film Independent Spirit Awards | Best Screenplay | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |

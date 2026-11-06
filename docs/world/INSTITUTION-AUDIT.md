@@ -6,7 +6,7 @@ Checked on November 6, 2026, for the Gap Completion Package (milestone M6). The 
 
 - **Edition dates.** For each institution, the next edition's dates were searched for in the organizer's announcements and trade press. Where the organizer has announced them, the edition uses those dates and the event screen says they were announced. Elsewhere the game uses its planning dates and says: "Dates haven't been announced. Planning dates are shown."
 - **Entry deadlines.** Only recorded where the organizer published one (Clermont-Ferrand's 24 September 2026 call; the Spirit Awards' 2 December 2026 submissions). Other announced editions keep a planning deadline, and the event screen says so.
-- **Sections, categories and eligibility rules: not audited in this pass.** They remain simulated, and the event screen says rules are simulated. Each institution's current rulebook still needs reading and comparing category by category (research still to do in `RESUME-HERE.md`).
+- **Sections, categories and eligibility rules:** audited separately in `RULEBOOK-AUDIT.md` (November 6, 2026): the Academy Awards, Sundance, Clermont-Ferrand and Annie Awards rules for their next editions are verified and applied, Cannes short films are projected from 2026, and the rest stay simulated; the event screen labels each section Official Rules, Projected Rules or simulated. Each institution's current rulebook still needs reading and comparing category by category (research still to do in `RESUME-HERE.md`).
 
 Editions already created in a save keep their dates and results; official dates apply when an edition is first created (new games, and later years as a save reaches them).
 

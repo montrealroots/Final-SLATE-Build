@@ -66,6 +66,9 @@ What was removed from the startup files (both were data the game never reads):
 - **Research mechanic specifications for the 149 genres** (14 kB of text). The game's mechanics are the module mapping
   in `src/engine/genres.ts`; the full text stays in `src/data/genre-registry.json`.
 
+Later, the festival and award rulebooks (`src/engine/rulebooks.ts`, rulebook checkpoint) added 15 kB: startup is now
+654 kB, 202 kB gzipped. They stay in the startup files because new games create editions with their rules synchronously.
+
 Route views (projects, world, saved games, settings, event details) were already loaded on demand with a loading state.
 The engine itself is still in the startup files: the start screen lists saves, which needs save reading and validation,
 and loading the engine later would delay Continue. The budget (700 kB, 220 kB gzipped) was not raised.

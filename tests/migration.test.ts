@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { SAVE_VERSION } from '../src/engine/types';
 import { backupKey, deserialize, memoryStore, migrate, readSave, serialize, writeSave, SaveFormatError } from '../src/engine/save';
 import { hashString } from '../src/engine/rng';
 import { newGame } from '../src/engine/state';
@@ -15,12 +16,12 @@ function v1Text(): { text: string; saveId: string } {
 }
 
 describe('save migration', () => {
-  it('backs up a version-1 save, then migrates it to version 2 without losing anything', () => {
+  it('backs up a version-1 save, then migrates it to the current version without losing anything', () => {
     const store = memoryStore();
     const { text, saveId } = v1Text();
     store.setItem(`slate.v1.save.${saveId}`, text);
     const s = readSave(store, saveId);
-    expect(s.version).toBe(2);
+    expect(s.version).toBe(SAVE_VERSION);
     expect(s.places).toEqual({});
     expect(store.getItem(backupKey(saveId, 1))).toBe(text);
     expect(getPlace(s.locationId).geonameId).toBe('2643743'); // London's catalog ID is aliased to GeoNames

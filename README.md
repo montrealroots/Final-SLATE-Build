@@ -33,9 +33,9 @@ This repository is the continuing base for the game. It is a working, tested bas
 
 ## Current Limitations
 
-- Festival and award **rules are simulated game rules**, not official rulebooks. Dates are simulated except the officially announced editions recorded in `docs/DATA-PROVENANCE.md` (99th and 100th Academy Awards, FESPACO 2027).
-- Weather is **modeled** from typical climate, not observed data. The place list is a curated set of cities, not every settlement.
-- Lunar-calendar holidays are included only for 2026, from sourced tables: China's official arrangement, South Korea's dates, and expected Eid dates labelled as expected. Later years and Diwali are not included yet.
+- Festival and award rules: 23 of 141 categories (Academy Awards 99th, Sundance 2027, Clermont-Ferrand 2027, Annie Awards 54th) follow the organizers' published rules, and Cannes short films use the 2026 rules carried forward; the rest are **simulated** and labelled so in the game (`docs/world/RULEBOOK-AUDIT.md`). Dates are organizer-announced for 19 of 37 institutions and planning dates otherwise (`docs/world/INSTITUTION-AUDIT.md`).
+- Weather is **modeled** from station climate normals (or a labelled model where no station is near), not observed data. Places come from a 171,750-place GeoNames catalog, not every settlement.
+- Lunar-calendar holidays use official dates for 2026; later years are projected and labelled (see `docs/world/` holiday notes).
 - Rates, fees, throughput and quality assessments are **simulation assumptions** (`docs/ASSUMPTIONS.md`), not real salaries or measures of artistic merit.
 - Not modeled yet: personal finances, reputation, and offers from other producers.
 - Saves live in this browser's local storage. Clearing site data deletes them.

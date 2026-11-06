@@ -4,7 +4,7 @@ import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
   qualityWords, requestPickups, depsMet, startCutPass, submitEntry, unlockPicture, withdrawEntry, addDaysToKey, categoryRecipients, type Category,
-  categoriesFor, rsvpScreening, screeningConflicts, screeningTravel, travelTo, DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, MOCAP_SESSION_STAGE, approveTake, bookMocap, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
+  categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, rsvpScreening, screeningConflicts, screeningTravel, travelTo, DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, MOCAP_SESSION_STAGE, approveTake, bookMocap, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
 } from '../engine';
 import type { GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, SelectField, TextField, longLocal, plural } from './components';
@@ -307,7 +307,7 @@ export function EventDetail() {
             {inst.kind === 'award' && <><dt>Eligibility Period</dt><dd>{formatDateKey(ed.eligibility.from)} to {formatDateKey(ed.eligibility.to)}</dd></>}
             <dt>Status</dt><dd>{{ upcoming: 'Entries not open yet', open: 'Open for entries', closed: 'Entries closed', judging: 'Judging', announced: inst.kind === 'festival' ? 'Selection announced' : 'Nominations announced', complete: 'Finished' }[ed.status]}</dd>
           </dl>
-          <p className="dim">{ed.provenance === 'official' ? `These dates were announced by the organizer.${ed.deadlinePlanned ? ' The entry deadline is a planning date.' : ''} Rules in this game are simulated.` : "Dates haven't been announced. Planning dates are shown. Rules in this game are simulated."}</p>
+          <p className="dim">{ed.provenance === 'official' ? `These dates were announced by the organizer.${ed.deadlinePlanned ? ' The entry deadline is a planning date.' : ''}` : "Dates haven't been announced. Planning dates are shown."} {rulebook(ed.rulesId) ? `${inst.kind === 'festival' ? 'Sections' : 'Categories'} marked Official Rules follow the organizer's rules for this edition; Projected Rules carry last year's forward until this year's are published. Everything else is simulated.` : 'Rules in this game are simulated.'}</p>
         </section>
         {(ed.screenings ?? []).length > 0 && <ScreeningsPanel editionId={ed.id} />}
         <section className="panel">
@@ -318,13 +318,22 @@ export function EventDetail() {
               return (
                 <li key={c.id}>
                   <div className="row">
-                    <span className="grow"><strong>{c.name}</strong>{!c.competitive ? <span className="chip"> Not Competitive</span> : null}<div className="dim">{c.judging === 'audience' ? 'Decided by audiences.' : c.judging === 'jury' ? 'Decided by a jury.' : c.judging === 'members' ? 'Voted by members.' : 'Chosen by programmers.'}{c.fee ? ` Entry fee ${money(c.fee)}.` : ''}{c.premiere === 'world' ? ' World premieres only.' : c.premiere === 'international' ? ' International premieres only.' : ''}{c.actingTitle ? ` For performers credited as ${c.actingTitle.toLowerCase()}.` : ''}</div></span>
-                    {delivered.length > 0 && ed.deadline > g.now && <button className="btn btn-small" onClick={() => setPreparing({ projectId: delivered[0].id, cat: c })}>Prepare Submission</button>}
+                    <span className="grow"><strong>{c.name}</strong>{!c.competitive ? <span className="chip"> Not Competitive</span> : null}{(() => {
+                      const st = categoryRuleStatus(rulebook(ed.rulesId), c.id);
+                      return st === 'simulated' ? null : <span className="chip">{st === 'verified' ? 'Official Rules' : 'Projected Rules'}</span>;
+                    })()}<div className="dim">{c.judging === 'audience' ? 'Decided by audiences.' : c.judging === 'jury' ? 'Decided by a jury.' : c.judging === 'members' ? 'Voted by members.' : 'Chosen by programmers.'}{c.fee ? ` Entry fee ${money(c.fee)}.` : ''}{c.premiere === 'world' ? ' World premieres only.' : c.premiere === 'international' ? ' International premieres only.' : ''}{c.actingTitle ? ` For performers credited as ${c.actingTitle.toLowerCase()}.` : ''}{(() => {
+                      const dl = categoryDeadline(ed, c);
+                      if (dl === ed.deadline) return '';
+                      const t = longLocal(dl, place.zone);
+                      return ` Entries close ${t.date}, ${t.time} local time.`;
+                    })()}</div>
+                    <RuleNotes ed={ed} categoryId={c.id} /></span>
+                    {delivered.length > 0 && categoryDeadline(ed, c) > g.now && <button className="btn btn-small" onClick={() => setPreparing({ projectId: delivered[0].id, cat: c })}>Prepare Submission</button>}
                   </div>
                   {res?.revealed && (
                     <div className="dim">
-                      {res.winner ? `Winner: ${g.projects.find((x) => x.id === res.winner)?.title ?? ed.rivals.find((r) => r.id === res.winner)?.title}. ` : ''}
-                      {inst.kind === 'festival' ? 'Selected' : 'Nominees'}: {[...res.projectIds.map((id) => g.projects.find((x) => x.id === id)?.title), ...res.rivalIds.slice(0, 8).map((id) => ed.rivals.find((r) => r.id === id)?.title)].filter(Boolean).join(', ')}{res.rivalIds.length > 8 ? ', and others' : ''}.
+                      {res.winner ? `Winner: ${g.projects.find((x) => x.id === res.winner)?.title ?? rivalTitle(g, ed, res.winner)}. ` : ''}
+                      {inst.kind === 'festival' ? 'Selected' : 'Nominees'}: {[...res.projectIds.map((id) => g.projects.find((x) => x.id === id)?.title), ...res.rivalIds.slice(0, 8).map((id) => rivalTitle(g, ed, id))].filter(Boolean).join(', ')}{res.rivalIds.length > 8 ? ', and others' : ''}.
                     </div>
                   )}
                 </li>
@@ -387,7 +396,10 @@ function SubmissionDialog({ editionId, cat, onClose, onError }: { editionId: str
         </fieldset>
       )}
       {el.eligible ? (
-        <div className="alert good"><p>This entry meets the game's rules for this category.{el.provisional ? ' It counts on a planned release that must happen within the eligibility period.' : ''}</p></div>
+        <div className="alert good"><p>{(() => {
+          const st = categoryRuleStatus(rulebook(ed.rulesId), cat.id);
+          return st === 'verified' ? "This entry meets the organizer's published rules for this category." : st === 'projected' ? "This entry meets last year's rules, carried forward until this year's are published." : "This entry meets the game's rules for this category.";
+        })()}{el.provisional ? ' It counts on a planned release that must happen within the eligibility period.' : ''}</p></div>
       ) : (
         <div className="alert"><p>This entry can't be submitted yet:</p><ul>{el.reasons.map((r, i) => <li key={i}>{r}</li>)}</ul></div>
       )}
@@ -519,5 +531,18 @@ function ScreeningsPanel({ editionId }: { editionId: string }) {
       </ul>
       <p className="dim">Declining to attend doesn't change the selection.</p>
     </section>
+  );
+}
+
+/** How SLATE applies an organizer's rules where the game is simpler than the real process. Short, and only when there are notes. */
+function RuleNotes({ ed, categoryId }: { ed: Parameters<typeof categoryRules>[0]; categoryId: string }) {
+  const rules = categoryRules(ed, categoryId);
+  const notes = rules ? [...new Set(Object.values(rules).map((r) => (r as { note?: string }).note).filter((n): n is string => !!n))] : [];
+  if (!notes.length) return null;
+  return (
+    <details className="dim">
+      <summary>How These Rules Apply</summary>
+      <ul>{notes.map((n) => <li key={n}>{n}</li>)}</ul>
+    </details>
   );
 }
