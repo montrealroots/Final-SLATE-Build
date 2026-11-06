@@ -9,7 +9,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1, merge `2f488bb`). `main` was at `3845c2d` when the Gap Completion Package was applied.
+- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7). `main` was at `3845c2d` when the Gap Completion Package was applied.
 - **Package:** "SLATE Gap Completion Package" (predates #2 and #3). Its references are not committed; the imported data is under `src/world/` and `docs/world/`.
 - **Run first:**
 
@@ -46,18 +46,19 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 - **M3 worldwide holidays and M4 1221 UI adaptation:** merged as montrealroots/Final-SLATE-Build#6 (`2d9ebbc`). The first CI run hung installing browsers and was cancelled; CI steps now have timeouts; the second run passed.
 - **M5 motion capture, unscripted families, release contracts, writing regression:** merged as montrealroots/Final-SLATE-Build#7 (`e1d4964`).
 - **M6 screening invitations and announced edition dates:** merged as montrealroots/Final-SLATE-Build#8 (`a979714`).
-- **M7 failure paths, screenings in the UI, held-out balance, budgets, accessibility:** local `npm run check` passed (79 tests, budget within limits), `npm run balance` passed, e2e 44 passed, 17 skipped by design, 0 failed; checkpoint pull request follows.
+- **M7 failure paths, screenings in the UI, held-out balance, budgets, accessibility:** merged as montrealroots/Final-SLATE-Build#9 (`24f0cff`); CI passed.
+- **Repair screen for unresolvable places and Export Save:** local `npm run check` passed (80 tests, startup JavaScript 679 kB, 201 kB gzipped, within budget), e2e 46 passed, 17 skipped by design, 0 failed. Final checkpoint of this package.
 
 ## Remaining Work, In Order
 
 ### Coding Gaps
 
-1. **M2 follow-ups (small):** a repair screen when a save references a place that can't be found (package: "Invalid/unavailable place references give a repair screen"); today such a save shows the load error and is left untouched. Map markers are pointer-only; the list is the keyboard and screen-reader path.
+1. **M2 follow-ups (small):** map markers are pointer-only; the list is the keyboard and screen-reader path. (The repair screen for places a save can't resolve is done: it asks for replacements and keeps a `backup-repair` copy.)
 2. **M3 follow-ups:** holiday names for countries without curated rules are in the official language (for example Chinese, Russian, Korean for later years); an English display name table would help players. Holidays are national or first-level-regional only; local (city) holidays are not included.
-3. **M4 follow-ups:** "Export Save" is not offered (no export exists yet). The weather warning now uses "Rain is expected during your exterior shoot." and offers "Film an Interior Scene" only when an interior day is scheduled; "Move the Shoot" (to another date) isn't a separate action yet.
+3. **M4 follow-ups:** Export Save is offered for every saved game and next to a failed save. The weather warning now uses "Rain is expected during your exterior shoot." and offers "Film an Interior Scene" only when an interior day is scheduled; "Move the Shoot" (to another date) isn't a separate action yet.
 4. **M5 follow-ups:** capture sessions aren't placed on the calendar as fixed appointments (they run on working days once booked), so performer conflicts with shoot days are shown as task blocks, not calendar clashes; facial and body capture are one contribution; credits after replacing a performer mid-production are not separately tested.
 5. **M6 follow-ups:** the 137 sections and categories are not yet audited against each rulebook (research, below).
-6. **M7 follow-ups:** the repair screen above; a manual screen-reader pass (automated checks only so far); production timings (budgets are measured on the dev server).
+6. **M7 follow-ups:** a manual screen-reader pass (automated checks only so far); production timings (budgets are measured on the dev server).
 
 ### Research Still To Do
 

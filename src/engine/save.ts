@@ -3,7 +3,7 @@
 // until the new one verifies, so an interrupted write never destroys the last good save.
 
 import { hashString } from './rng';
-import { registerPlace } from '../data/places';
+import { findPlace, isCatalogPlace, registerPlace, type Place } from '../data/places';
 import type { CreationDraft, GameState } from './types';
 import { SAVE_VERSION } from './types';
 
@@ -196,11 +196,14 @@ export function readSave(store: KeyValueStore, saveId: string): GameState {
     if (bak) return deserialize(bak);
     throw new SaveFormatError('This save could not be found.');
   }
-  return deserialize(text);
+  const state = deserialize(text);
+  const missing = missingPlaces(state);
+  if (missing.length) throw new MissingPlacesError(saveId, missing, missingPlaceUses(state));
+  return state;
 }
 
 export function deleteSave(store: KeyValueStore, saveId: string): void {
-  for (const k of store.keys()) if (k.startsWith(`${PREFIX}save.${saveId}.backup-v`)) store.removeItem(k);
+  for (const k of store.keys()) if (k.startsWith(`${PREFIX}save.${saveId}.backup-`)) store.removeItem(k);
   store.removeItem(mainKey(saveId));
   store.removeItem(tmpKey(saveId));
   store.removeItem(bakKey(saveId));
@@ -269,4 +272,57 @@ export function takeLock(store: KeyValueStore, saveId: string, tabId: string, re
 export function releaseLock(store: KeyValueStore, saveId: string, tabId: string): void {
   const lock = readLock(store, saveId);
   if (lock?.tabId === tabId) store.removeItem(lockKey(saveId));
+}
+
+// ---------- Place references a save can't resolve ----------
+
+/** Place IDs a save refers to that neither the catalog nor the save's own records know. */
+export function missingPlaces(s: GameState): string[] {
+  const refs = [s.locationId, s.character.birthplaceId, s.travel?.from, s.travel?.to, ...s.projects.map((p) => p.axes.basePlaceId)];
+  return [...new Set(refs.filter((id): id is string => !!id && !findPlace(id)))];
+}
+
+/** Where each missing place is used, in the player's words. */
+export function missingPlaceUses(s: GameState): Record<string, string[]> {
+  const out: Record<string, string[]> = {};
+  const add = (id: string | undefined, use: string) => {
+    if (id && !findPlace(id)) (out[id] ??= []).push(use);
+  };
+  add(s.locationId, 'Where you are');
+  add(s.character.birthplaceId, 'Your birthplace');
+  add(s.travel?.from, 'Where your trip started');
+  add(s.travel?.to, 'Where your trip is going');
+  for (const p of s.projects) add(p.axes.basePlaceId, `Production base of ${p.title}`);
+  return out;
+}
+
+export class MissingPlacesError extends SaveFormatError {
+  constructor(public saveId: string, public ids: string[], public uses: Record<string, string[]> = {}) {
+    super(ids.length === 1 ? 'This save mentions a place the game can’t find.' : `This save mentions ${ids.length} places the game can’t find.`);
+  }
+}
+
+/**
+ * Replace unresolvable place IDs with chosen places, after keeping an untouched copy of the save
+ * (`…backup-repair`). Nothing else in the save changes.
+ */
+export function repairSave(store: KeyValueStore, saveId: string, replacements: Record<string, Place>, realNow: number): GameState {
+  const text = store.getItem(mainKey(saveId));
+  if (text === null) throw new SaveFormatError('This save could not be found.');
+  const s = deserialize(text);
+  const missing = missingPlaces(s);
+  if (missing.some((id) => !replacements[id])) throw new Error('Choose a place for each missing one.');
+  if (store.getItem(`${mainKey(saveId)}.backup-repair`) === null) store.setItem(`${mainKey(saveId)}.backup-repair`, text);
+  const swap = (id: string) => replacements[id]?.id ?? id;
+  for (const pl of Object.values(replacements)) {
+    registerPlace(pl);
+    if (!isCatalogPlace(pl.id)) (s.places ??= {})[pl.id] = pl;
+  }
+  s.locationId = swap(s.locationId);
+  s.character.birthplaceId = swap(s.character.birthplaceId);
+  if (s.travel) s.travel = { ...s.travel, from: swap(s.travel.from), to: swap(s.travel.to) };
+  for (const p of s.projects) p.axes.basePlaceId = swap(p.axes.basePlaceId);
+  const res = writeSave(store, s, realNow);
+  if (!res.ok) throw new SaveFormatError('The repaired save could not be written. Free some browser storage and try again.');
+  return s;
 }
