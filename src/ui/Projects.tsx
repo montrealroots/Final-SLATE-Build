@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { LANGUAGES, languageName } from '../data/identity';
 import { getPlace, placeLabel } from '../data/places';
 import {
-  FORMAT_LABELS, FUNDING_SCENARIOS, GENRES, MEDIUM_LABELS, MODULE_LABELS, TECHNIQUE_LABELS, approvalRights, composeGenres, createProject, genre,
+  FORMAT_LABELS, FUNDING_SCENARIOS, dateKey, deals, financeSummary, formatDateKey, GENRES, MEDIUM_LABELS, MODULE_LABELS, TECHNIQUE_LABELS, approvalRights, composeGenres, createProject, genre,
   genreCategory, hasTrackRecord, isEpisodic, isNonfiction, ledgerTotals, money, projectGenreLabel, projectModules, qualityWords, scriptIssues,
   searchGenres, type ModuleId,
 } from '../engine';
@@ -125,14 +125,14 @@ export function NewProject() {
         <h2>Production</h2>
         <PlacePicker label="Production Base" value={base} onChange={setBase} />
         <fieldset style={{ border: 0, padding: 0 }}>
-          <legend style={{ fontWeight: 600, marginBottom: 8 }}>Funding</legend>
-          <p className="dim">Amounts are game scenarios, not real industry prices.</p>
+          <legend style={{ fontWeight: 600, marginBottom: 8 }}>Budget Size</legend>
+          <p className="dim">This sets your budget estimate and how much you aim to raise. It doesn't put money in the project: backers do, once your script is approved (Budget). Amounts are game calibration, not real industry prices.</p>
           {FUNDING_SCENARIOS.map((f) => {
             const locked = f.needsTrackRecord && !hasTrackRecord(g);
             return (
               <label key={f.id} className="check" style={{ alignItems: 'flex-start', marginBottom: 8 }}>
                 <input type="radio" name="funding" value={f.id} checked={scenario === f.id} disabled={locked} onChange={() => setScenario(f.id)} />
-                <span><strong>{f.label}: {money(f.fund)}</strong><br /><span className="muted">{f.description}{locked ? ' Available after you deliver a project.' : ''}</span></span>
+                <span><strong>{f.label}: about {money(f.fund)}</strong><br /><span className="muted">{f.description}{locked ? ' Available after you deliver a project.' : ''}</span></span>
               </label>
             );
           })}
@@ -250,7 +250,13 @@ export function ProjectWorkspace() {
 
 function nextStep(p: Project): { text: string; tab: Tab } {
   if (!p.scenes.length) return { text: 'Write your first scene.', tab: 'script' };
-  if (p.approvedDraft === null) return { text: 'Save a draft and approve it to start planning production.', tab: 'script' };
+  if (p.approvedDraft === null) return { text: 'Save a draft and approve it to start planning production. Backers read an approved script before they fund it.', tab: 'script' };
+  const fin = financeSummary(p);
+  const offer = deals(p).find((d) => d.status === 'offered');
+  if (offer) return { text: `The ${offer.backer.toLowerCase()} offered ${money(offer.amount)}. Read the terms before you accept.`, tab: 'budget' };
+  const waiting = deals(p).find((d) => d.status === 'considering');
+  if (fin.received <= 0 && waiting) return { text: `The ${waiting.backer.toLowerCase()} is considering your project. Their answer is due ${formatDateKey(dateKey(waiting.decideAt ?? 0, getPlace(p.axes.basePlaceId).zone))}.`, tab: 'budget' };
+  if (fin.received <= 0 && !p.delivered) return { text: `Raise money: no backer has paid in yet, and hiring needs money. Your target is ${money(fin.target)}.`, tab: 'budget' };
   const uncast = p.requirements.filter((r) => r.kind === 'performer' && r.status === 'needed').length - new Set(p.cast.map((c) => c.characterId)).size;
   if (uncast > 0) return { text: `${plural(uncast, 'role')} still ${uncast === 1 ? 'needs' : 'need'} casting.`, tab: 'cast' };
   if (!p.schedule.startDate) return { text: 'Hire your crew and build a schedule.', tab: 'crew' };
@@ -288,7 +294,9 @@ function Overview({ p }: { p: Project }) {
       <section className="panel">
         <h2>Money</h2>
         <dl className="kv">
-          <dt>Fund</dt><dd>{money(t.fund)}</dd>
+          <dt>Budget Estimate</dt><dd>{money(financeSummary(p).estimate)}</dd>
+          <dt>Promised By Backers</dt><dd>{money(financeSummary(p).promised)}</dd>
+          <dt>Received</dt><dd>{money(t.fund)}</dd>
           <dt>Spent</dt><dd>{money(t.settled)}</dd>
           <dt>Committed</dt><dd>{money(t.committedOutstanding + t.reserved)}</dd>
           <dt>Uncommitted</dt><dd>{money(t.available)}</dd>

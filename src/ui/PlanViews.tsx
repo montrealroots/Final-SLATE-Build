@@ -2,13 +2,13 @@ import { Fragment, useState } from 'react';
 import { languageName } from '../data/identity';
 import { getPlace } from '../data/places';
 import {
-  CO_PRODUCTION_TERMS, EXPERIENCE, acceptCounter, approvedCharacters, approvedScenes, bringInCoProducer, castPlayer, castRoleFor, categoryTotals,
+  BACKERS, EXPERIENCE, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
   type StaffingProposal, covers,
 } from '../engine';
-import type { Hire, PerformanceMethod, Project } from '../engine/types';
+import type { FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
 import { store, useGame } from './store';
 
@@ -379,17 +379,14 @@ export function ScheduleTab({ p }: { p: Project }) {
 
 export function BudgetTab({ p }: { p: Project }) {
   useGame();
-  const [confirm, setConfirm] = useState(false);
-  const [err, setErr] = useState<string | null>(null);
   const t = ledgerTotals(p);
   const cats = categoryTotals(p);
-  const hasPartner = p.funding.extra.some((e) => e.label === 'Co-Production Partner');
   return (
     <>
       <section className="panel">
         <h2>Summary</h2>
         <dl className="kv">
-          <dt>Production Fund</dt><dd>{money(p.funding.fund)}</dd>
+          <dt>Received From Backers</dt><dd>{money(p.funding.fund)}</dd>
           {p.funding.extra.map((e) => <Fragment key={e.label}><dt>{e.label}</dt><dd>{money(e.amount)}</dd></Fragment>)}
           {p.revenue > 0 && <><dt>Distribution Income</dt><dd>{money(p.revenue)}</dd></>}
           <dt>Spent</dt><dd>{money(t.settled)}</dd>
@@ -421,23 +418,87 @@ export function BudgetTab({ p }: { p: Project }) {
           </ul>
         </details>
       </section>
-      <section className="panel">
-        <h2>More Funding</h2>
-        {hasPartner ? <p>A co-production partner has already joined. Their approval right: {CO_PRODUCTION_TERMS.approvalRights.join(', ')}.</p> : (
-          <>
-            <p>A co-production partner would add {money(Math.round(p.funding.fund * CO_PRODUCTION_TERMS.share))}. In return they approve lead casting and take a co-production credit.</p>
-            <button className="btn" disabled={!!p.delivered} onClick={() => setConfirm(true)}>Bring In A Co-Producer</button>
-          </>
-        )}
+      <FinancingPanel p={p} />
+    </>
+  );
+}
+
+/** Financing: the estimate, the target, what backers promised and paid, and who to approach next. */
+function FinancingPanel({ p }: { p: Project }) {
+  const g = useGame();
+  const f = financeSummary(p);
+  const [target, setTarget] = useState(f.target);
+  const [targetErr, setTargetErr] = useState<string | null>(null);
+  const [err, setErr] = useState<string | null>(null);
+  const [accepting, setAccepting] = useState<FinanceDeal | null>(null);
+  const status: Record<FinanceDeal['status'], string> = { considering: 'Considering', offered: 'Offer Made', declined: 'Said No', refused: 'You Turned Down', accepted: 'Backing', breached: 'Repayment Owed' };
+  const live = (s: GameState) => s.projects.find((x) => x.id === p.id)!;
+  return (
+    <>
+      <section className="panel" aria-labelledby="fin-h">
+        <h2 id="fin-h">Financing</h2>
+        <p className="muted">Your budget size is an estimate. Money arrives only from backers whose terms you accept.</p>
+        <dl className="kv">
+          <dt>Budget Estimate</dt><dd>{money(f.estimate)}</dd>
+          <dt>Financing Target</dt><dd>{money(f.target)}</dd>
+          <dt>Promised By Backers</dt><dd>{money(f.promised)}</dd>
+          <dt>Received</dt><dd>{money(f.received)}{f.owedOnDelivery > 0 ? ` (${money(f.owedOnDelivery)} more on delivery)` : ''}</dd>
+          <dt>Still To Raise</dt><dd><strong>{money(f.stillToRaise)}</strong></dd>
+        </dl>
+        <div className="inline-form spaced">
+          <NumberField label="Change Financing Target" value={target} min={1000} step={1000} error={targetErr} onChange={setTarget} />
+          <button className="btn" onClick={() => setTargetErr(store.act((s) => setFinanceTarget(live(s), target)))}>Set Target</button>
+        </div>
+      </section>
+      {deals(p).length > 0 && (
+        <section className="panel" aria-labelledby="backers-h">
+          <h2 id="backers-h">Backers</h2>
+          <ul className="list">
+            {deals(p).map((d) => (
+              <li key={d.id}>
+                <div className="row">
+                  <span className="grow"><strong>{d.backer}</strong>{d.amount ? `: ${money(d.amount)}` : ''}</span>
+                  <span className={`chip ${d.status === 'accepted' ? 'good' : d.status === 'declined' || d.status === 'breached' ? 'bad' : d.status === 'offered' ? 'gold' : ''}`}>{status[d.status]}</span>
+                </div>
+                {d.status === 'considering' && <p className="muted">Their answer is due {formatDateKey(dateKey(d.decideAt ?? g.now, getPlace(p.axes.basePlaceId).zone))}.</p>}
+                {d.reason && <p className="muted">{d.reason}</p>}
+                {(d.status === 'offered' || d.status === 'accepted' || d.status === 'breached') && <ul className="dim">{dealTerms(d).map((t) => <li key={t}>{t}</li>)}</ul>}
+                {(d.status === 'accepted' || d.status === 'breached') && d.terms.recoup > 0 && <p className="dim">Repaid so far: {money(d.repaid)} of {money(d.terms.recoup)}.</p>}
+                {d.status === 'offered' && (
+                  <div className="btn-row">
+                    <button className="btn btn-primary" onClick={() => setAccepting(d)}>Accept Offer</button>
+                    <button className="btn" onClick={() => setErr(store.act((s) => refuseDeal(s, live(s), d.id)))}>Turn Down</button>
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+      <section className="panel" aria-labelledby="raise-h">
+        <h2 id="raise-h">Raise Money</h2>
+        <ul className="list">
+          {backerOptions(g, p).map((o) => (
+            <li key={o.kind} className="row">
+              <div className="grow">
+                <strong>{BACKERS[o.kind].name}</strong>{o.kind === 'starting' ? <> <span className="chip">Agreed Starting Scenario</span></> : null}
+                <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why}</p>
+                {!o.ready && <p className="dim">{o.needs}</p>}
+              </div>
+              <button className="btn btn-small" disabled={!o.ready} onClick={() => setErr(store.act((s) => void approachBacker(s, live(s), o.kind)))} aria-label={`Approach ${BACKERS[o.kind].name}`}>{o.kind === 'starting' ? 'Ask For The Agreed Backing' : 'Approach'}</button>
+            </li>
+          ))}
+        </ul>
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       </section>
-      {confirm && (
-        <Modal title="Bring In A Co-Producer?" onClose={() => setConfirm(false)} footer={<>
-          <button className="btn" onClick={() => setConfirm(false)}>Not Now</button>
-          <button className="btn btn-primary" onClick={() => { setErr(store.act((s) => void bringInCoProducer(s, p))); setConfirm(false); }}>Sign The Agreement</button>
+      {accepting && (
+        <Modal title="Accept These Terms?" onClose={() => setAccepting(null)} footer={<>
+          <button className="btn" onClick={() => setAccepting(null)}>Not Yet</button>
+          <button className="btn btn-primary" onClick={() => { setErr(store.act((s) => acceptDeal(s, live(s), accepting.id))); setAccepting(null); }}>Accept {money(accepting.amount)}</button>
         </>}>
-          <p>Your partner adds {money(Math.round(p.funding.fund * CO_PRODUCTION_TERMS.share))} to this project.</p>
-          <p>They will approve who plays the leads, which adds a couple of days to lead casting offers, and they will be credited as a co-production partner.</p>
+          <p>The {accepting.backer.toLowerCase()} backs {p.title} with {money(accepting.amount)} on these terms:</p>
+          <ul>{dealTerms(accepting).map((t) => <li key={t}>{t}</li>)}</ul>
+          <p className="muted">These terms apply for the life of the project.</p>
         </Modal>
       )}
     </>

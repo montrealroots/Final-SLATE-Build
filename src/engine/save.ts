@@ -9,6 +9,7 @@ import { SAVE_VERSION } from './types';
 import { SaveValidationError, validateGameState } from './validate';
 import { adoptPublishedRules, migrateV2toV3, migrateV3toV4 } from './awards';
 import { normalizeDraft } from './state';
+import { migrateV4toV5 } from './finance';
 
 export interface KeyValueStore {
   getItem(key: string): string | null;
@@ -138,6 +139,8 @@ export const MIGRATIONS: Record<number, Migration> = {
   2: migrateV2toV3,
   // v3 -> v4: finished editions keep results and titles but not competing works' judging strengths (awards.ts).
   3: migrateV3toV4,
+  // v4 -> v5: financing. Money a project had is kept, recorded as funding agreed before financing existed (finance.ts).
+  4: migrateV4toV5,
 };
 
 export function migrate(raw: unknown): GameState {

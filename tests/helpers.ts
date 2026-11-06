@@ -4,6 +4,7 @@ import {
   saveDraft, sendStaffingOffers, startCutPass, updateCharacter, updateScene, productionWindow, isAvailable, approvedCharacters, approvedScenes,
   DAY, dateKey, addDaysToKey, getProjectZone, FundsError, bringInCoProducer, approveTake, bookMocap, mocapRecord,
 } from './engine-api';
+import { fundingScenario } from '../src/engine/projects';
 import type { CreationDraft, Format, GameState, Medium, PerformanceMethod, Project, Technique } from '../src/engine/types';
 
 export function startLife(seedTag: string, placeId = 'gb-london', over: Partial<CreationDraft> = {}): GameState {
@@ -24,6 +25,21 @@ export interface SceneSpec {
   extra?: Record<string, unknown>;
 }
 
+/**
+ * Labelled test fixture: the project's estimate is already agreed and paid in, as an accepted deal of the kind saves
+ * from before financing get (so engine tests start from the same money as before). Gameplay never does this:
+ * money comes from backers the player approaches (tests/finance.test.ts).
+ */
+export function agreedFunding(p: Project, amount = p.finance?.estimate ?? 0): void {
+  p.finance ??= { estimate: amount, target: amount, deals: [] };
+  p.finance.deals.push({
+    id: `${p.id}-fixture`, kind: 'agreed', backer: 'Test fixture: agreed funding', amount, status: 'accepted', askedAt: 0, reason: 'Test fixture.',
+    // The approval rights this budget size carried before financing existed (as migrateV4toV5 keeps them).
+    received: amount, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [...fundingScenario(p.funding.scenarioId).rights], credit: null, onDelivery: 0, deliverBy: null },
+  });
+  p.funding.fund += amount;
+}
+
 export function buildProject(
   state: GameState,
   opts: { title: string; format: Format; medium: Medium; technique?: Technique; scenario?: string; genres?: string[]; runtime?: number; episodes?: number; quality?: 'limited' | 'tv' | 'feature' },
@@ -38,6 +54,7 @@ export function buildProject(
       ...(opts.runtime ? { targetRuntimeMin: opts.runtime } : {}), ...(opts.episodes ? { episodeCount: opts.episodes } : {}), ...(opts.quality ? { animationQuality: opts.quality } : {}),
     },
   });
+  agreedFunding(p);
   p.axes.genres = (opts.genres ?? []).map((id, i) => ({ id, emphasis: i === 0 ? 'primary' : 'secondary' }));
   const ids: Record<string, string> = {};
   for (const c of characters) {

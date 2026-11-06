@@ -8,26 +8,26 @@
 
 ## Commands And Results
 
-Latest full run: November 6, 2026, deterministic journeys and production-build checkpoint (after montrealroots/Final-SLATE-Build#21), local Linux container. Storage measurements in `docs/STORAGE.md`.
+Latest full run: November 6, 2026, first-project journey and financing checkpoint (after montrealroots/Final-SLATE-Build#24), local Linux container.
 
 | Command | Exit | Result |
 | --- | --- | --- |
 | `npm run world:check` | 0 | 252 entries (246 playable), 3,865 regions, 246 shards, 171,750 rows with 171,750 unique IDs, 175 outlines, 219 holiday entries, 11,459 stations; 0 problems. Ledger classifications resolved (`docs/world/COUNTRY-DETAIL-AUDIT.md`). |
 | `npm run typecheck` | 0 | No type errors (strict mode). |
-| `npm test` | 0 | 23 files, 188 tests passed, 0 skipped (33 in `tests/rulebooks.test.ts`, 15 in `tests/vault.test.ts`, 10 in `tests/climate-audit.test.ts`). |
+| `npm test` | 0 | 28 files, 209 tests passed, 0 skipped (new: `tests/finance.test.ts` 10, `tests/import.test.ts` 7, `tests/creation.test.ts` 4). |
 | `npm run build` | 0 | Built. One existing Vite notice (Startup is imported both statically and dynamically), present before this checkpoint. |
-| `npm run budget` | 0 | Startup JavaScript 677 kB raw, 209 kB gzipped (the climate note added 1 kB, the rulebooks 11 kB, the save vault 11 kB) (691 and 205 before the performance checkpoint; the storage panel added 5 kB and the rulebooks 15 kB), in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
+| `npm run budget` | 0 | Startup JavaScript 695 kB raw, 214 kB gzipped, in 4 files including React (budgets 700 and 220 kB): financing, Import Save and the creation registry added 18 kB since the last checkpoint, leaving 5 kB of room. World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
 | `npm run balance` | 0 | 2 tests passed: 180 family runs, 120 sensitivity runs, determinism check, and 30 held-out combination runs. Took 34 seconds on this checkpoint (98 seconds before the snapshot change, same machine). |
 | `npm run perf:engine` | 0 | Fresh, medium and long saves; see `docs/PERFORMANCE.md`. |
-| `npm run e2e -- --trace off` | 0 | Dev server: 72 passed, 21 skipped, 0 failed, in 6.5 minutes, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. Every test also failed on any console error, page error or failed request (none). |
-| `SLATE_E2E_PROD=1 npm run e2e -- --trace off` | 1, then 0 | Production build (`vite build`, `vite preview`): the last full run had 71 passed, 21 skipped, 1 failed. The failure was the new diagnostics flagging a request WebKit cancelled during a reload; cancellations are now ignored, and the affected specs (devices, live-action, all projects) then passed twice in a row, 7 of 7. Earlier production runs found the Blob and route-pattern defects below. Responsiveness on the production build: startup 157 ms, the US places file 363 ms, a search 54 ms (dev server: 427, 414 and 127 ms); the festival journey reaches delivery in 9 s and a result in 15 s. |
+| `npm run e2e -- --trace off` | 0 | Dev server: 103 passed, 22 skipped, 0 failed (before the first-project spec was added; that spec then passed alone: 3 passed, 1 skipped), with console, page-error and failed-request checks on every test. |
+| `SLATE_E2E_PROD=1 npm run e2e -- --trace off` | 0 | Production build (`vite build`, `vite preview`), the complete suite including the first-project journey: 106 passed, 23 skipped, 0 failed, in 6.7 minutes. |
 
-### Why 21 Browser Tests Are Skipped
+### Why 23 Browser Tests Are Skipped
 
 Skipped tests did not run and are not counted as passed. Each is skipped on purpose for the project named, by an explicit `test.skip(project…)`; no test skips itself on an outcome any more:
 
 - **1 on desktop:** the phone device test runs only on the iPhone emulation projects.
-- **20 on phone (Chromium 390×844):** journeys that run once, at desktop width (2D, hybrid, documentary and its decline, TV, web series, 3D with motion capture, stop motion, unscripted and its withdrawal, the two media checks), the performance measurement, the two-tab storage check, and four lifecycle and layout checks that set their own viewports or tabs (every-viewport sweep, keyboard, clock while hidden, second tab).
+- **22 on phone (Chromium 390×844):** the first-project journey, the two-tab import check, and journeys that run once, at desktop width (2D, hybrid, documentary and its decline, TV, web series, 3D with motion capture, stop motion, unscripted and its withdrawal, the two media checks), the performance measurement, the two-tab storage check, and four lifecycle and layout checks that set their own viewports or tabs (every-viewport sweep, keyboard, clock while hidden, second tab).
 - WebKit iPhone projects only run `live-action` and `devices` specs (configured in `playwright.config.ts`), so other specs are not listed for them at all.
 
 ### Not Automated
@@ -35,7 +35,7 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 - No physical iPhone or real Safari: WebKit emulation only.
 - No screen-reader pass by a person; the accessibility checks are automated.
 - No human playtesting for enjoyment or balance.
-- Unexplained, test-side only: in WebKit on the production build, text typed into a creation step immediately after Next was sometimes lost (2 of 6 runs). The helper now waits until the step has settled (focus on its heading); no remount or reset was found in the code, and whether a person typing that fast could hit it is unverified.
+- The WebKit typing loss noted at the last checkpoint is explained and fixed (focus timing; see Defects). The test-side wait was removed.
 
 ## Also Checked During Development
 
@@ -75,6 +75,11 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 | Medium | Toronto precipitation fell back to the model because only 1991-2020 stations were searched | Tiered station search: own country recent, own country any period, then anywhere | Legacy migration report (all 66 from stations) |
 | Medium | Entering again after withdrawing reused the withdrawn entry's ID, so the new entry couldn't be withdrawn, and recorded a fee that wasn't charged | Each entry gets its own ID; the fee is charged and recorded once per category | `tests/rulebooks.test.ts` |
 | Low | A cancelled release counted as a prior showing against premiere rules | Cancelled releases are ignored | `tests/rulebooks.test.ts` |
+| High | Choosing a budget size put its whole amount into the project at once (for example $4,000,000 for Mid Budget), so money never had to be raised | A budget size is now an estimate and a target; money arrives only from backers' accepted deals, with terms enforced; existing projects keep their money (save version 5) | `tests/finance.test.ts`, `e2e/first-project.spec.ts` |
+| Medium | Several Review edit buttons in character creation opened the wrong screen ("Edit Birth Date And Birthplace" opened Pronouns) | One step registry; one edit per row, each to its own screen; Save And Return To Review | `tests/creation.test.ts`, `e2e/creation.spec.ts` |
+| Medium | WebKit: text typed into a field right after Next was lost (focus moved to the heading a frame later) | Focus moves in the same commit | `e2e/creation.spec.ts` (fails with the old code in WebKit) |
+| Low | Start My Story with something missing jumped to the screen but cleared its message | The message is kept | `e2e/creation.spec.ts` |
+| Low | Two buttons were named "Continue {save}" after an import | The import's is "Open Imported Save" | `e2e/backup.spec.ts` |
 | High | Recording an unscripted participant's withdrawal before the shoot left the game unable to save ("Your game couldn't be saved"): a redaction task was added for footage not yet shot, depending on work that didn't exist | Nothing filmed, nothing to redact: the withdrawal is recorded and the dialog says so; a withdrawal refused because the picture is locked now changes nothing | `tests/unscripted.test.ts`, `e2e/journeys.spec.ts` (found by the new withdrawal journey) |
 | Medium | WebKit: a save written while the page unloaded raised an uncaught error ("… due to access control checks") because compression read a Blob through a blob URL | Compression streams straight from a Response, without a Blob | `e2e/test.ts` diagnostics on the WebKit projects, production build |
 | Low (tests) | Documentary and unscripted journeys skipped themselves when contributors declined; route patterns missed the production build's hashed file names | Seeded fixtures (`seededLife`); patterns accept hashed names | `e2e/journeys.spec.ts`, `e2e/world.spec.ts`, `e2e/failures.spec.ts` |

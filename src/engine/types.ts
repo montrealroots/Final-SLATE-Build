@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 4;
+export const SAVE_VERSION = 5;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -297,10 +297,33 @@ export interface CastAssignment {
   hireId?: string;
 }
 
+export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner';
+
+/** A backer approached for a project, and what was agreed (finance.ts). */
+export interface FinanceDeal {
+  id: string;
+  kind: FinanceDealKind;
+  backer: string;
+  amount: number; // promised in total
+  status: 'considering' | 'offered' | 'declined' | 'refused' | 'accepted' | 'breached';
+  askedAt: number;
+  decideAt?: number;
+  reason: string; // why they agreed, or why not
+  received: number; // paid into the project so far
+  repaid: number; // paid back to them from income so far
+  terms: { recoup: number; incomeShare: number; approvalRights: string[]; credit: string | null; onDelivery: number; deliverBy: number | null };
+}
+
+export interface ProjectFinance {
+  estimate: number;
+  target: number;
+  deals: FinanceDeal[];
+}
+
 export interface Obligation {
   id: string;
   label: string;
-  category: 'cast' | 'crew' | 'materials' | 'locations' | 'equipment' | 'licensing' | 'post' | 'festival' | 'contingency' | 'travel';
+  category: 'cast' | 'crew' | 'materials' | 'locations' | 'equipment' | 'licensing' | 'post' | 'festival' | 'contingency' | 'travel' | 'finance';
   amount: number; // planned or agreed amount
   state: 'reserved' | 'committed' | 'settled' | 'cancelled';
   settled: number; // amount paid so far
@@ -445,7 +468,13 @@ export interface Project {
   createdAt: number;
   phase: 'development' | 'pre-production' | 'production' | 'post-production' | 'delivered' | 'released';
   axes: ProjectAxes;
+  /**
+   * scenarioId is the budget size chosen (it scales day costs); fund is money actually received from backers' deals
+   * (finance.ts). extra holds co-production money from saves made before financing existed.
+   */
   funding: { scenarioId: string; fund: number; extra: { label: string; amount: number; approvalRights: string[] }[] };
+  /** The budget estimate, the financing target and every backer approached (save version 5). */
+  finance?: ProjectFinance;
   story: {
     logline: string; premise: string; stakes: string; conflict: string; viewpoint: string; theme: string;
     ending: string; intendedExperience: string; question: string;

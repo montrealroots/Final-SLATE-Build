@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { advance, nav, section } from './helpers';
+import { advance, nav, section, secureStartingBacking } from './helpers';
 
 // The package's required widths (360, 390, 393, 414, 430, 768, 1024, 1440, 1920), plus 440, 1280 and a phone landscape.
 const VIEWPORTS: [number, number][] = [[360, 800], [390, 844], [393, 852], [414, 896], [430, 932], [440, 956], [768, 1024], [1024, 768], [1280, 720], [1440, 900], [1920, 1080], [844, 390]];
@@ -66,6 +66,7 @@ test('every main screen fits each viewport without sideways scrolling', async ({
   await page.getByRole('button', { name: 'Save Draft' }).click();
   await page.getByRole('button', { name: 'Approve This Draft' }).click();
   await expect(page.getByText('Approved', { exact: true })).toBeVisible();
+  await secureStartingBacking(page);
   await advance(page, 'next-day');
 
   const problems: string[] = [];
