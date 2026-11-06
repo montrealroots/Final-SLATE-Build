@@ -7,7 +7,7 @@ import { findPlace, isCatalogPlace, registerPlace, type Place } from '../data/pl
 import type { CreationDraft, GameState } from './types';
 import { SAVE_VERSION } from './types';
 import { SaveValidationError, validateGameState } from './validate';
-import { migrateV2toV3, migrateV3toV4 } from './awards';
+import { adoptPublishedRules, migrateV2toV3, migrateV3toV4 } from './awards';
 
 export interface KeyValueStore {
   getItem(key: string): string | null;
@@ -160,6 +160,7 @@ export function migrate(raw: unknown): GameState {
   }
   const s = obj as unknown as GameState;
   for (const place of Object.values(s.places ?? {})) registerPlace(place);
+  adoptPublishedRules(s);
   return s;
 }
 

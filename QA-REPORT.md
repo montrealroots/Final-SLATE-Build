@@ -8,18 +8,18 @@
 
 ## Commands And Results
 
-Latest full run: November 6, 2026, long-career storage checkpoint (save vault on IndexedDB, save version 4), local Linux container. Storage measurements in `docs/STORAGE.md`.
+Latest full run: November 6, 2026, rulebook checkpoint (Annecy, Venice, Berlinale, Golden Globes, Emmys), local Linux container. Storage measurements in `docs/STORAGE.md`.
 
 | Command | Exit | Result |
 | --- | --- | --- |
 | `npm run world:check` | 0 | 252 entries (246 playable), 3,865 regions, 246 shards, 171,750 rows with 171,750 unique IDs, 175 outlines, 218 holiday entries, 11,459 stations; 0 problems. |
 | `npm run typecheck` | 0 | No type errors (strict mode). |
-| `npm test` | 0 | 22 files, 162 tests passed, 0 skipped (15 in `tests/vault.test.ts`). |
-| `npm run build` | 0 | Built with no warnings. |
-| `npm run budget` | 0 | Startup JavaScript 665 kB raw, 205 kB gzipped (the save vault added 11 kB) (691 and 205 before the performance checkpoint; the storage panel added 5 kB and the rulebooks 15 kB), in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
-| `npm run balance` | 0 | 2 tests passed: 180 family runs, 120 sensitivity runs, determinism check, and 30 held-out combination runs. Results byte-identical to the previous run. Took 36 seconds on the rulebook checkpoint (98 seconds before the snapshot change, same machine). |
+| `npm test` | 0 | 22 files, 173 tests passed, 0 skipped (33 in `tests/rulebooks.test.ts`, 15 in `tests/vault.test.ts`). |
+| `npm run build` | 0 | Built. One existing Vite notice (Startup is imported both statically and dynamically), present before this checkpoint. |
+| `npm run budget` | 0 | Startup JavaScript 676 kB raw, 208 kB gzipped (the new rulebooks added 11 kB, the save vault 11 kB before) (691 and 205 before the performance checkpoint; the storage panel added 5 kB and the rulebooks 15 kB), in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
+| `npm run balance` | 0 | 2 tests passed: 180 family runs, 120 sensitivity runs, determinism check, and 30 held-out combination runs. Took 34 seconds on this checkpoint (98 seconds before the snapshot change, same machine). |
 | `npm run perf:engine` | 0 | Fresh, medium and long saves; see `docs/PERFORMANCE.md`. |
-| `npm run e2e -- --trace off` | 0 | 68 passed, 19 skipped, 0 failed, across 5 projects. The new journey ("festival under official rules") passed in 19 s on desktop. One documentary or unscripted journey skipped itself because simulated contributors declined in that run (a designed skip); rerun alone, both passed. Expected otherwise: 63 passed, 18 skipped,: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
+| `npm run e2e -- --trace off` | 0 | 68 passed, 19 skipped, 0 failed, in 6.3 minutes, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
 
 ### Why 17 Browser Tests Are Skipped
 
@@ -94,6 +94,6 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 - No physical iPhone or real Safari verification. WebKit emulation passed, but the on-screen keyboard can't be emulated.
 - Lunar holidays exist for 2026 only.
 - The 66 legacy places are matched to GeoNames (64 high confidence, 2 reviewed by hand); the world search and pickers are not built yet (M2).
-- Festival and award rules: 23 of 141 categories use organizer rules read for their next edition and 1 uses last year's carried forward (`docs/world/RULEBOOK-AUDIT.md`); the other 117 are simulated and labelled.
+- Festival and award rules: 47 of 142 categories use organizer rules read for an edition in play and 2 use projected rules (`docs/world/RULEBOOK-AUDIT.md`); the other 93 are simulated and labelled. TIFF and BAFTA could not be read (HTTP 403).
 
 This base is not claimed to be finished, bug-free or fully realistic.

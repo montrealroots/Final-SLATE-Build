@@ -44,10 +44,16 @@ export interface DeadlineRule {
   ifCompletedBefore?: string;
   /** True when the document gives the date but not the time; SLATE uses the end of that day. */
   timeAssumed?: boolean;
+  /** Applies only to these formats (a section with different deadlines for shorts and features). */
+  formats?: Format[];
 }
 
 export interface CategoryRules {
   runtime?: Ruled<RuntimeRule>;
+  /** Running time for short formats where a section takes shorts and features under different limits. */
+  runtimeShort?: Ruled<RuntimeRule>;
+  /** Series must have at least this many episodes. */
+  minEpisodes?: Ruled<number>;
   mediums?: Ruled<Medium[]>;
   formats?: Ruled<Format[]>;
   /** The work must be completed on or after this date. */
@@ -70,13 +76,19 @@ export interface CategoryRules {
   /** Not shown at another festival, and not online, before this festival. */
   noOtherFestival?: Ruled<true>;
   noOnline?: Ruled<true>;
+  /** Not broadcast on television or released online (streaming or digital) before this festival. */
+  noTvOrOnline?: Ruled<true>;
+  /** Not shown publicly in these countries before the festival, except at these institutions' editions. */
+  notShownIn?: Ruled<{ countries: string[]; exceptAt?: string[] }>;
+  /** Television work must not have had a theatrical release in these countries before its first broadcast or stream there. */
+  tvFirst?: Ruled<{ countries: string[] }>;
   /** Production countries (SLATE uses the production base as the country of origin). */
   origin?: Ruled<{ only?: string[]; not?: string[] }>;
   /** A work entered at an earlier edition can't be entered again. */
   noReentry?: Ruled<true>;
   deadlines?: Ruled<DeadlineRule[]>;
   /** Who is named and receives the award for a work: credited directors, or credited producers (at most `max`). */
-  recipients?: Ruled<{ credit: 'director' | 'producer'; max?: number }>;
+  recipients?: Ruled<{ credit: 'director' | 'producer' | 'director-and-producer'; max?: number }>;
 }
 
 export interface RuleBook {
@@ -234,8 +246,147 @@ const CANNES_2027: RuleBook = {
   },
 };
 
+
+// ---------------- Annecy 2026 (verified) and 2027 (projected) ----------------
+
+const ANNECY_SOURCES: RuleSource[] = [
+  { id: 'an26-features', publisher: 'CITIA, Annecy International Animation Film Festival', title: '2026 Terms and Conditions - Feature Films', url: 'https://www.annecyfestival.com/sites/default/files/2025-11/Annecy_Festival_2026_Feature_Films_Terms_and_Conditions.pdf', edition: 'Annecy 2026', retrieved: CHECKED },
+  { id: 'an26-shorts', publisher: 'CITIA, Annecy International Animation Film Festival', title: '2026 Terms and Conditions - Short Films', url: 'https://www.annecyfestival.com/sites/default/files/2025-11/Annecy_Festival_2026_Short_Films_Terms_and_Conditions.pdf', edition: 'Annecy 2026', retrieved: CHECKED },
+];
+const PARIS = 'Europe/Paris';
+const BEFORE_DAY = 'The document says "before" the date; SLATE closes entries at the end of the previous day in France.';
+
+function annecy(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const projNote = year === 2026 ? undefined : 'From the 2026 terms; the 2027 terms are not published yet.';
+  const note = (n?: string) => [n, projNote].filter(Boolean).join(' ') || undefined;
+  return {
+    features: {
+      runtime: mk({ over: 60 }, 'an26-features', note('Over 60 minutes, credits included.')!),
+      completedFrom: mk(`${year - 1}-01-02`, 'an26-features', note(`Completed after January 1, ${year - 1}.`)!),
+      noReentry: mk(true, 'an26-features', note('Submitted for the first time.')!),
+      notShownIn: mk({ countries: ['FR'], exceptAt: ['cannes'] }, 'an26-features', note('Selected features must not have been screened in France before the festival ends; the Cannes Film Festival is the exception.')!),
+      deadlines: mk([{ date: `${year}-03-14`, time: '23:59', zone: PARIS, timeAssumed: true }], 'an26-features', note(BEFORE_DAY)!),
+    },
+    shorts: {
+      runtime: mk({ under: 60 }, 'an26-shorts', note('Under 59 minutes 59 seconds, credits included.')!),
+      completedFrom: mk(`${year - 1}-01-02`, 'an26-shorts', note(`Completed after January 1, ${year - 1}.`)!),
+      noReentry: mk(true, 'an26-shorts', note('Submitted for the first time.')!),
+      premiere: mk('none', 'an26-shorts', note('No premiere requirement for short films.')!),
+      deadlines: mk([{ date: `${year}-02-14`, time: '23:59', zone: PARIS, timeAssumed: true }], 'an26-shorts', note(BEFORE_DAY)!),
+    },
+  };
+}
+const ANNECY_2026: RuleBook = { id: 'annecy-2026@1', institutionId: 'annecy', year: 2026, version: 1, checked: CHECKED, sources: ANNECY_SOURCES, categories: annecy(2026, v) };
+const ANNECY_2027: RuleBook = {
+  id: 'annecy-2027@1', institutionId: 'annecy', year: 2027, version: 1, checked: CHECKED, sources: ANNECY_SOURCES,
+  categories: annecy(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 terms.')) as typeof v),
+};
+
+// ---------------- Venice: 83rd (2026, verified) and 84th (2027, projected) ----------------
+
+const VENICE_SOURCES: RuleSource[] = [
+  { id: 've83-reg', publisher: 'La Biennale di Venezia', title: 'Regulations - 83rd Venice International Film Festival', url: 'https://static.labiennale.org/files/cinema/2026/Documenti/regulations-83.pdf', edition: '83rd Venice International Film Festival (2026)', retrieved: CHECKED },
+];
+const ROME = 'Europe/Rome';
+function venice(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const p = year === 2026 ? '' : ' From the 2026 regulations; the 2027 regulations are not published yet.';
+  const common: CategoryRules = {
+    premiere: mk('world', 've83-reg', `World premieres only: not shown to the public or press, nor at another festival, even at home.${p}`),
+    noOtherFestival: mk(true, 've83-reg', `Not presented at any other festival or film event.${p}`),
+    noOnline: mk(true, 've83-reg', `No commercial distribution or exhibition on the internet.${p}`),
+    completedFrom: mk(`${year - 1}-09-07`, 've83-reg', `Completed after September 6, ${year - 1}.${p}`),
+    noReentry: mk(true, 've83-reg', `Not presented in any form for selection at an earlier Venice edition.${p}`),
+  };
+  const time = { time: '23:59', zone: ROME, timeAssumed: true };
+  return {
+    competition: { ...common, runtime: mk({ atLeast: 60 }, 've83-reg', `At least 60 minutes, credits included.${p}`), deadlines: mk([{ date: `${year}-06-04`, ...time }], 've83-reg', `The time of day is not given; SLATE uses the end of the day in Venice.${p}`) },
+    orizzonti: {
+      ...common,
+      runtime: mk({ atLeast: 60 }, 've83-reg', `Features at least 60 minutes, credits included.${p}`),
+      runtimeShort: mk({ atMost: 20 }, 've83-reg', `Short films in competition at most 20 minutes, credits included.${p}`),
+      deadlines: mk([{ date: `${year}-05-28`, ...time, formats: ['short', 'documentary-short'] }, { date: `${year}-06-04`, ...time }], 've83-reg', `Shorts close May 28, features June 4. The time of day is not given; SLATE uses the end of the day in Venice.${p}`),
+    },
+  };
+}
+const VENICE_2026: RuleBook = { id: 'venice-2026@1', institutionId: 'venice', year: 2026, version: 1, checked: CHECKED, sources: VENICE_SOURCES, opens: v('2026-02-09', 've83-reg'), categories: venice(2026, v) };
+const VENICE_2027: RuleBook = { id: 'venice-2027@1', institutionId: 'venice', year: 2027, version: 1, checked: CHECKED, sources: VENICE_SOURCES, categories: venice(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) };
+
+// ---------------- Berlinale 2027: Competition, projected ----------------
+
+const BERLINALE_2027: RuleBook = {
+  id: 'berlinale-2027@1', institutionId: 'berlinale', year: 2027, version: 1, checked: CHECKED,
+  sources: [{ id: 'bl-competition', publisher: 'Internationale Filmfestspiele Berlin', title: 'Competition Regulations', url: 'https://www.berlinale.de/en/film-entry/guidelines/competition.html', edition: 'Current regulations; the page names no edition year', retrieved: CHECKED }],
+  categories: {
+    competition: {
+      runtime: proj({ atLeast: 60 }, 'bl-competition', 'At least 60 minutes. The regulations page names no edition year, so its rules are shown as projected.'),
+      premiere: proj('international', 'bl-competition', 'World or international premieres: not presented publicly outside the country of origin (undated regulations page).'),
+      noTvOrOnline: proj(true, 'bl-competition', 'Neither broadcast on television nor presented on the internet or VOD (undated regulations page).'),
+      completedFrom: proj('2026-02-10', 'bl-competition', 'Completed within the 12 months before the festival (undated regulations page, applied to the 2027 dates).'),
+    },
+  },
+};
+
+// ---------------- Golden Globes, 84th (2027) ----------------
+
+const GG_SOURCE: RuleSource = { id: 'gg84-rules', publisher: 'Golden Globes', title: '84th Annual Golden Globes Eligibility and Consideration Rules (updated August 3, 2026)', url: 'https://goldenglobes.com/wp-content/uploads/2026/08/FINAL_84th-ANNUAL-GOLDEN-GLOBES-ELIGIBILITY-AND-CONSIDERATION-RULES_8_3_2026.pdf', edition: '84th Golden Globes (2027)', retrieved: CHECKED };
+const GG_FILM: CategoryRules = {
+  runtime: v({ atLeast: 70 }, 'gg84-rules', 'Feature-length scripted motion pictures, 70 minutes or longer.'),
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'gg84-rules'),
+  release: v({ routes: ['theatrical', 'digital'], countries: ['US'] }, 'gg84-rules', 'Released in commercial theaters or on pay-per-view (not subscription) in one of seven US metro areas for seven consecutive days; SLATE treats a US theatrical or digital release as that. A festival screening alone does not count.'),
+  deadlines: v([{ date: '2026-12-02', time: '23:59', zone: PT, timeAssumed: true }], 'gg84-rules', 'The film must be on the voters\' viewing platform by December 2, 2026. The time of day is not given; SLATE uses the end of the day in Los Angeles.'),
+};
+const GG_TV: CategoryRules = {
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'gg84-rules', 'The season\'s first episode first made available in the United States in 2026.'),
+  release: v({ routes: ['broadcast', 'streaming', 'digital'], countries: ['US'] }, 'gg84-rules'),
+  origin: v({ only: ['US'] }, 'gg84-rules', 'Programs produced principally outside the United States are eligible only as US co-productions; SLATE uses the production base.'),
+  recipients: v({ credit: 'producer' }, 'gg84-rules'),
+};
+const GOLDEN_GLOBES_2027: RuleBook = {
+  id: 'golden-globes-2027@1', institutionId: 'golden-globes', year: 2027, version: 1, checked: CHECKED, sources: [GG_SOURCE],
+  categories: {
+    drama: { ...GG_FILM, recipients: v({ credit: 'producer' }, 'gg84-rules', 'All accredited producers.') },
+    comedy: { ...GG_FILM, recipients: v({ credit: 'producer' }, 'gg84-rules', 'All accredited producers.') },
+    animated: { ...GG_FILM, mediums: v(['animation'], 'gg84-rules', 'At least 75 percent animation of the main characters; motion capture alone does not count. SLATE accepts animated projects and not hybrid ones.'), recipients: v({ credit: 'director-and-producer' }, 'gg84-rules', 'Directors, co-directors and accredited producers.') },
+    director: GG_FILM,
+    screenplay: GG_FILM,
+    'tv-drama': GG_TV,
+    'tv-comedy': GG_TV,
+  },
+};
+
+// ---------------- Primetime Emmys: 78th (2026, verified) and 79th (2027, projected) ----------------
+
+const EMMY_SOURCE: RuleSource = { id: 'em78-rules', publisher: 'Television Academy', title: '78th Emmy Awards 2025-2026 Rules and Procedures (version 4, April 7, 2026)', url: 'https://www.televisionacademy.com/rules', edition: '78th Primetime Emmy Awards (2026)', retrieved: CHECKED };
+function emmys(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const p = year === 2026 ? '' : ' From the 2025-2026 rules; the 2026-2027 rules are not published yet.';
+  const base: CategoryRules = {
+    qualifying: mk({ from: `${year - 1}-06-01`, to: `${year}-05-31` }, 'em78-rules', `Premiere airing on a US national platform in the eligibility year.${p}`),
+    release: mk({ routes: ['broadcast', 'streaming', 'digital'], countries: ['US'] }, 'em78-rules', p.trim() || undefined),
+    tvFirst: mk({ countries: ['US'] }, 'em78-rules', `A general US theatrical release before airing rules a program out (SLATE doesn't model limited releases).${p}`),
+    origin: mk({ only: ['US'] }, 'em78-rules', `Foreign productions are eligible only as US co-productions begun before production; SLATE uses the production base.${p}`),
+    deadlines: mk([{ date: `${year}-05-07`, time: '23:59', zone: PT, timeAssumed: true }], 'em78-rules', `Entries close May 7. The time of day is not given; SLATE uses the end of the day in Los Angeles.${p}`),
+    recipients: mk({ credit: 'producer' }, 'em78-rules', `Producers whose credit and functions support it.${p}`),
+  };
+  const series = { ...base, minEpisodes: mk(6, 'em78-rules', `Six episodes must premiere by May 31.${p}`) };
+  const { recipients: _producers, ...individual } = series; // individual categories name the credited person, not producers
+  void _producers;
+  return {
+    drama: series, comedy: series,
+    limited: base,
+    directing: individual, writing: individual, 'lead-actor': individual, 'lead-actress': individual,
+    'directing-comedy': individual, 'writing-comedy': individual, 'lead-actor-comedy': individual, 'lead-actress-comedy': individual,
+    movie: { ...base, runtime: mk({ atLeast: 75 }, 'em78-rules', `One part of at least 75 minutes.${p}`) },
+    documentary: { ...base, minEpisodes: mk(3, 'em78-rules', `Three episodes for documentary series.${p}`) },
+  };
+}
+const EMMYS_2026: RuleBook = { id: 'emmys-2026@1', institutionId: 'emmys', year: 2026, version: 1, checked: CHECKED, sources: [EMMY_SOURCE], categories: emmys(2026, v) };
+const EMMYS_2027: RuleBook = { id: 'emmys-2027@1', institutionId: 'emmys', year: 2027, version: 1, checked: CHECKED, sources: [EMMY_SOURCE], categories: emmys(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2025-2026 rules.')) as typeof v) };
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
-export const RULEBOOKS: RuleBook[] = [OSCARS_2027, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027];
+export const RULEBOOKS: RuleBook[] = [
+  OSCARS_2027, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027,
+];
 
 const byId = new Map(RULEBOOKS.map((b) => [b.id, b]));
 
