@@ -3,6 +3,7 @@
 import { writeFileSync } from 'fs';
 import { expect, it } from 'vitest';
 import { DAY, processUntil, serialize } from '../engine-api';
+import { BROWSER_STORAGE_CHARS, memoryStore, writeSave } from '../../src/engine/save';
 import { hashString } from '../../src/engine/rng';
 import { copyPlain } from '../../src/engine/copy';
 import { startSleep } from '../../src/engine/state';
@@ -86,6 +87,32 @@ function drive(s: GameState, to: number, mode: 'tick' | 'advance' | 'sleep', bat
   }
 }
 
+/**
+ * Storage during saving, in characters as browsers count them. "Normal" is a save with its backup; "with recovery copies"
+ * adds a migration backup and a damaged copy of the same size. Peak is the most in use at any moment of the next save.
+ */
+function storage(base: GameState) {
+  const run = (extras: boolean) => {
+    const kv = memoryStore();
+    const s = copyPlain(base);
+    writeSave(kv, s, 1);
+    s.now += 60_000;
+    writeSave(kv, s, 2);
+    if (extras) {
+      const main = kv.getItem(`slate.v1.save.${s.saveId}`)!;
+      kv.setItem(`slate.v1.save.${s.saveId}.backup-v1`, main);
+      kv.setItem(`slate.v1.save.${s.saveId}.damaged-3`, main.slice(0, -10));
+    }
+    const steady = kv.used();
+    kv.peak = steady;
+    s.now += 60_000;
+    const ok = writeSave(kv, s, 4).ok;
+    return { steadyKB: Math.round(steady / 1024), peakKB: Math.round(kv.peak / 1024), peakOverSaveSize: Math.round((kv.peak / serialize(s).length) * 100) / 100, ok };
+  };
+  const normal = run(false);
+  return { normal, withRecoveryCopies: run(true), browserLimitKB: Math.round(BROWSER_STORAGE_CHARS / 1024) };
+}
+
 function measure(name: string, base: GameState) {
   const size = serialize(base).length;
   const cloneMs = time(() => structuredClone(base), 30);
@@ -117,7 +144,7 @@ function measure(name: string, base: GameState) {
   }, (_s, r) => { slp = r; });
   const parts = Object.fromEntries(Object.entries(base).map(([k, v]) => [k, Math.round((JSON.stringify(v) ?? '').length / 1024)]).filter(([, kb]) => (kb as number) >= 5));
   return {
-    name, saveKB: Math.round(size / 1024), events: base.events.length, projects: base.projects.length, log: base.log.length,
+    name, saveKB: Math.round(size / 1024), storage: storage(base), events: base.events.length, projects: base.projects.length, log: base.log.length,
     structuredCloneMs: cloneMs, snapshotMs, snapshotHeapKB: heap, partsKB: parts,
     tick: { ms: tickMs, calls: 96 * 7, events: tickEvents, msPerCall: Math.round((tickMs / (96 * 7)) * 1000) / 1000, resultHash: tickHash },
     advance30Days: { ms: advanceMs, ...adv, resultHash: advHash },

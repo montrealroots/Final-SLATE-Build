@@ -8,18 +8,18 @@
 
 ## Commands And Results
 
-Latest full run: November 6, 2026, performance checkpoint (faster rollback snapshots, smaller startup files), local Linux container. Measurements are in `docs/PERFORMANCE.md`.
+Latest full run: November 6, 2026, storage checkpoint (two-copy saving, recovery copies, storage-full handling), local Linux container. Measurements are in `docs/PERFORMANCE.md` and `docs/STORAGE.md`. Balance was not rerun for this checkpoint (no engine timing or outcome changes; CI runs it); the balance row is from the performance checkpoint.
 
 | Command | Exit | Result |
 | --- | --- | --- |
 | `npm run world:check` | 0 | 252 entries (246 playable), 3,865 regions, 246 shards, 171,750 rows with 171,750 unique IDs, 175 outlines, 218 holiday entries, 11,459 stations; 0 problems. |
 | `npm run typecheck` | 0 | No type errors (strict mode). |
-| `npm test` | 0 | 20 files, 119 tests passed, 0 skipped. |
+| `npm test` | 0 | 20 files, 125 tests passed, 0 skipped. |
 | `npm run build` | 0 | Built with no warnings. |
-| `npm run budget` | 0 | Startup JavaScript 634 kB raw, 196 kB gzipped (691 and 205 before this checkpoint), in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
+| `npm run budget` | 0 | Startup JavaScript 639 kB raw, 198 kB gzipped (691 and 205 before the performance checkpoint; the storage panel added 5 kB), in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
 | `npm run balance` | 0 | 2 tests passed: 180 family runs, 120 sensitivity runs, determinism check, and 30 held-out combination runs. Results byte-identical to the previous run. Took 37 seconds (98 seconds before the snapshot change, same machine). |
 | `npm run perf:engine` | 0 | Fresh, medium and long saves; see `docs/PERFORMANCE.md`. |
-| `npm run e2e -- --trace off` | 0 | 58 passed, 17 skipped, 0 failed, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
+| `npm run e2e -- --trace off` | 0 | 62 passed, 17 skipped, 0 failed, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
 
 ### Why 17 Browser Tests Are Skipped
 
@@ -71,6 +71,10 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 | Medium | Capture-stage cost was only paid when the player directed | Stage sessions are paid from the booking whoever directs | `tests/lunar-mocap.test.ts` |
 | Low | Documentary test treated a name containing "Cast" as a cast credit | Assertion checks credit rows | Documentary e2e |
 | Medium | Toronto precipitation fell back to the model because only 1991-2020 stations were searched | Tiered station search: own country recent, own country any period, then anywhere | Legacy migration report (all 66 from stations) |
+| High | Saving needed room for three copies of a game, so a long game with two recovery copies (5.5 MB at peak) could not save in a browser | Saving no longer writes a temporary copy; peak is two copies | `tests/save-recovery.test.ts` (real-limit store) |
+| Medium | Deleting a save left its damaged copies in storage, unlisted, forever | Deleting a save removes all its copies after a confirmation that counts them; recovery copies are listed with Export and Delete | `tests/save-recovery.test.ts`, `e2e/storage.spec.ts` |
+| Medium | A full browser storage gave the same message as any other failed save, with no way to free space | Storage-full message with Free Up Space; Saved Games shows storage use | `e2e/storage.spec.ts`, `e2e/failures.spec.ts` |
+| Low | A save whose only good copy was a backup taken before an update was not listed, and a stale interrupted copy could be opened over a newer backup | Saves are found by any openable copy; the newest sound copy opens | `tests/save-recovery.test.ts`, `e2e/storage.spec.ts` |
 | High | An older build could replace a save written by a newer version, pushing it into the backup where the next save overwrote it | Writing refuses to replace a newer-version save and says why | `tests/save-recovery.test.ts` |
 | Medium | Time paused after a failure in one save stayed paused in the next save opened | Opening a save clears the pause | `e2e/reliability.spec.ts` |
 | Medium | The "last good copy" message was lost when opening waited for holiday rules, and didn't say which copy was opened | The message travels with the opened game and names the copy's save time | `e2e/reliability.spec.ts`, `e2e/failures.spec.ts` |
