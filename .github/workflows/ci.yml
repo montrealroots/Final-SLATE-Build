@@ -11,6 +11,12 @@ permissions:
 jobs:
   checks:
     runs-on: ubuntu-latest
+    # Microsoft's Playwright image for the locked version ships Chromium, WebKit and their system libraries, so CI never
+    # installs packages from the Ubuntu mirror (which stalled or crawled at about 40 kB/s three times). Keep the tag equal
+    # to @playwright/test in package.json; the first browser step checks it.
+    container:
+      image: mcr.microsoft.com/playwright:v1.63.0-noble
+      options: --ipc=host
     timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
@@ -31,31 +37,14 @@ jobs:
         # About 100 seconds locally; each batch of events is rolled back as a unit if it fails, which costs copies.
         timeout-minutes: 10
         run: npm run balance
-      - name: Read the locked Playwright version
-        id: pw
-        run: echo "version=$(node -p "require('./node_modules/@playwright/test/package.json').version")" >> "$GITHUB_OUTPUT"
-      - name: Cache Playwright browsers
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: playwright-${{ runner.os }}-${{ steps.pw.outputs.version }}
-      - name: Make apt give up on stalled downloads and retry
-        # The Ubuntu package mirror has stalled the browser install three times, with apt waiting on a dead connection.
-        # Short network timeouts make a stalled download fail fast, and apt retries it.
-        run: printf 'Acquire::Retries "5";\nAcquire::http::Timeout "30";\nAcquire::https::Timeout "30";\n' | sudo tee /etc/apt/apt.conf.d/80-ci-retries
-      - name: Install Playwright browsers matching the lockfile
-        # Each attempt is bounded and retried once; the browsers themselves come from the cache when the locked version
-        # hasn't changed.
-        timeout-minutes: 20
+      - name: The container's Playwright matches the lockfile
         run: |
-          for attempt in 1 2; do
-            timeout 540 npx playwright install --with-deps chromium webkit && exit 0
-            echo "Install attempt $attempt did not finish; retrying."
-            sleep 15
-          done
-          exit 1
+          locked=$(node -p "require('./node_modules/@playwright/test/package.json').version")
+          test "$locked" = "1.63.0" || { echo "package.json locks Playwright $locked; update the container image tag in ci.yml to match."; exit 1; }
       - name: Browser journeys
         timeout-minutes: 20
+        env:
+          HOME: /root
         run: npm run e2e -- --trace retain-on-failure
       - name: Upload failure artifacts
         if: failure()
