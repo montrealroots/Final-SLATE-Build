@@ -4,9 +4,22 @@ import {
   readLock, openSave, releaseLock, repairSave, serialize, MissingPlacesError, renameSave, startSleep, takeLock, wakeEarly, writeDraft, writeSave, type AdvanceTarget, type KeyValueStore,
   type SaveSummary,
 } from '../engine';
+import { deleteRecoveryCopy, listRecoveryCopies, storageUse, type RecoveryCopy, type StorageUse } from '../engine/save';
 import type { CreationDraft, GameState, Route } from '../engine/types';
 import type { Place } from '../data/places';
 import { loadWorldHolidays, worldHolidaysLoaded } from '../world/holidays/holidays';
+
+/** Offers text as a downloaded file named after the save. */
+function download(text: string, name: string) {
+  const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `${name.replace(/[^\p{L}\p{N} _()-]+/gu, '').trim() || 'SLATE save'}.slate-save.json`;
+  document.body.append(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
 
 /** A real-world time in the player's words, for messages about saves. */
 function realTime(ms: number): string {
@@ -31,6 +44,8 @@ class Store {
   clockVersion = 0;
   saveStatus: SaveStatus = 'idle';
   saveError = '';
+  /** The last save failed because browser storage is full (the player can free space in Saved Games). */
+  saveStorageFull = false;
   readOnly = false;
   busy: string | null = null;
   notice: Notice | null = null;
@@ -135,7 +150,7 @@ class Store {
         // The notice travels with the entry: entering can wait for holiday rules, and entering clears old notices.
         this.enter(state, recovery ? {
           title: 'Opened The Last Good Copy',
-          text: `Your latest save couldn't be used (${recovery.problem.replace(/\.$/, '')}), so ${recovery.source === 'backup' ? 'the previous save' : 'a complete copy from an interrupted save'}, from ${realTime(state.updatedAtReal)}, was opened. The damaged save is kept, not deleted.`,
+          text: `${recovery.damagedKey ? `Your latest save couldn't be used (${recovery.problem.replace(/\.$/, '')})` : "Your latest save couldn't be found"}, so ${recovery.source === 'backup' ? 'the previous save' : recovery.source === 'migration-backup' ? 'the copy kept before this save was updated' : 'a complete copy from an interrupted save'}, from ${realTime(state.updatedAtReal)}, was opened.${recovery.damagedKey ? ' The damaged save is kept, not deleted.' : ''}`,
           kind: 'info',
         } : null);
       } catch (e) {
@@ -265,6 +280,24 @@ class Store {
     deleteSave(this.kv, saveId);
     this.emit();
   }
+  recoveryCopies(): RecoveryCopy[] {
+    return listRecoveryCopies(this.kv);
+  }
+  storageUse(): StorageUse {
+    return storageUse(this.kv);
+  }
+  deleteRecoveryCopy(key: string) {
+    deleteRecoveryCopy(this.kv, key);
+    this.emit();
+  }
+  /** Download one recovery copy exactly as stored, so it can be kept before it is deleted. */
+  exportRecoveryCopy(copy: RecoveryCopy): string | null {
+    const text = this.kv.getItem(copy.key);
+    if (text === null) return 'That copy could not be found.';
+    const name = this.saves().find((x) => x.saveId === copy.saveId)?.saveName ?? 'SLATE save';
+    download(text, `${name} (${copy.kind} copy)`);
+    return null;
+  }
   renameSave(saveId: string, name: string): string | null {
     try {
       const r = renameSave(this.kv, saveId, name);
@@ -348,6 +381,7 @@ class Store {
     const res = writeSave(this.kv, this.state, Date.now());
     this.saveStatus = res.ok ? 'saved' : 'error';
     this.saveError = res.ok ? '' : res.error;
+    this.saveStorageFull = !res.ok && !!res.storageFull;
     this.emit();
     return res.ok;
   }
@@ -357,14 +391,7 @@ class Store {
     const text = saveId && saveId !== this.state?.saveId ? this.kv.getItem(`slate.v1.save.${saveId}`) : this.state ? serialize(this.state) : null;
     if (!text) return 'That save could not be found.';
     const name = (saveId ? this.saves().find((x) => x.saveId === saveId)?.saveName : this.state?.saveName) ?? 'SLATE save';
-    const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `${name.replace(/[^\p{L}\p{N} _-]+/gu, '').trim() || 'SLATE save'}.slate-save.json`;
-    document.body.append(a);
-    a.click();
-    a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    download(text, name);
     return null;
   }
 

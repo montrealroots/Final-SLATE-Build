@@ -120,7 +120,8 @@ export function SavedGamesList() {
   const [deleting, setDeleting] = useState<{ id: string; name: string } | null>(null);
   const [renaming, setRenaming] = useState<{ id: string; name: string } | null>(null);
   const [renameError, setRenameError] = useState<string | null>(null);
-  if (!saves.length) return <p className="muted">No saved games yet. Start a new game to create your character.</p>;
+  if (!saves.length) return <><p className="muted">No saved games yet. Start a new game to create your character.</p><StoragePanel /></>;
+  const copiesOf = (id: string) => s.recoveryCopies().filter((c) => c.saveId === id).length;
   return (
     <>
       <ul className="list">
@@ -147,7 +148,10 @@ export function SavedGamesList() {
             <button className="btn btn-primary" onClick={() => setDeleting(null)}>Keep Save</button>
           </>
         }>
-          <p>This will permanently delete {deleting.name}'s saved game.</p>
+          <p>This will permanently delete {deleting.name}'s saved game{(() => {
+            const n = copiesOf(deleting.id);
+            return n ? `, its backup and ${n === 1 ? 'its recovery copy' : `its ${n} recovery copies`}` : ' and its backup';
+          })()}.</p>
         </Modal>
       )}
       {renaming && (
@@ -160,7 +164,77 @@ export function SavedGamesList() {
           <TextField label="Save Name" value={renaming.name} maxLength={80} error={renameError} onChange={(v) => setRenaming({ ...renaming, name: v })} />
         </Modal>
       )}
+      <StoragePanel />
     </>
+  );
+}
+
+function size(chars: number): string {
+  return chars >= 1_000_000 ? `${(chars / 1_048_576).toFixed(1)} MB` : `${Math.max(1, Math.round(chars / 1024))} KB`;
+}
+
+type Copy = ReturnType<typeof store.recoveryCopies>[number];
+
+function copyLabel(c: Copy): string {
+  if (c.kind === 'damaged') return 'Damaged save';
+  if (c.kind === 'migration') return 'Copy from before an update';
+  if (c.kind === 'repair') return 'Copy from before places were repaired';
+  return 'Copy from an interrupted save';
+}
+
+/** How much browser storage the games use, and the recovery copies the game keeps, with Export and Delete. */
+function StoragePanel() {
+  const s = useStore();
+  const use = s.storageUse();
+  const copies = s.recoveryCopies();
+  const names = new Map(s.saves().map((x) => [x.saveId, x.saveName]));
+  const [deleting, setDeleting] = useState<Copy | null>(null);
+  const share = use.usedChars / use.limitChars;
+  return (
+    <section className="panel spaced" aria-labelledby="storage-h">
+      <h2 id="storage-h">Storage</h2>
+      <p>Your games use about {size(use.usedChars)} of the roughly {size(use.limitChars)} this browser keeps for SLATE.</p>
+      {share > 0.6 && <p className="muted">Saving needs room for about two copies of a game. If saving starts to fail, export and delete copies you don't need.</p>}
+      <h3>Recovery Copies</h3>
+      {copies.length === 0 ? (
+        <p className="muted">None. Each game also keeps its previous save as a backup, replaced as you play.</p>
+      ) : (
+        <>
+          <p className="muted">SLATE keeps these so lost progress can be recovered, and never deletes them by itself. Export a copy to keep it as a file.</p>
+          <ul className="list" aria-label="Recovery Copies">
+            {copies.map((c) => {
+              const label = `${copyLabel(c)} of ${names.get(c.saveId) ?? 'a deleted game'}`;
+              const when = c.keptAtReal ?? c.savedAtReal;
+              return (
+                <li key={c.key}>
+                  <div className="row">
+                    <div className="grow">
+                      <div style={{ fontWeight: 700 }}>{label}</div>
+                      <div className="dim">{when ? `${c.kind === 'damaged' ? 'Kept' : 'Saved'} ${realTimestamp(when)} · ` : ''}{size(c.chars)}</div>
+                    </div>
+                    <div className="btn-row">
+                      <button className="btn btn-small" onClick={() => store.exportRecoveryCopy(c)} aria-label={`Export ${label}`}>Export Copy</button>
+                      <button className="btn btn-small btn-danger" onClick={() => setDeleting(c)} aria-label={`Delete ${label}`}>Delete Copy</button>
+                    </div>
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
+        </>
+      )}
+      {deleting && (
+        <Modal title="Delete This Copy?" onClose={() => setDeleting(null)} footer={
+          <>
+            <button className="btn btn-danger" onClick={() => { store.deleteRecoveryCopy(deleting.key); setDeleting(null); }}>Delete Copy</button>
+            <button className="btn" onClick={() => store.exportRecoveryCopy(deleting)}>Export First</button>
+            <button className="btn btn-primary" onClick={() => setDeleting(null)}>Keep Copy</button>
+          </>
+        }>
+          <p>This permanently deletes the copy and frees {size(deleting.chars)}. Your saved game and its backup won't change.</p>
+        </Modal>
+      )}
+    </section>
   );
 }
 

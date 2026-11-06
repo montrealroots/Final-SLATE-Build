@@ -24,20 +24,55 @@ export function browserStore(): KeyValueStore {
   };
 }
 
-export function memoryStore(): KeyValueStore & { failWrites: boolean; data: Map<string, string> } {
+/**
+ * An in-memory store that counts space the way Chromium and WebKit count localStorage: key plus value characters,
+ * 5,242,880 per site (measured November 6, 2026), with a replaced value charged only the difference. `peak` is the most
+ * ever in use, for measuring how much room saving needs.
+ */
+export function memoryStore(capacity = Infinity) {
   const data = new Map<string, string>();
+  let used = 0;
   const store = {
     data,
     failWrites: false,
+    capacity,
+    peak: 0,
+    used: () => used,
     getItem: (k: string) => data.get(k) ?? null,
     setItem: (k: string, v: string) => {
-      if (store.failWrites) throw new Error('QuotaExceededError');
+      if (store.failWrites) throw quotaError();
+      const old = data.get(k);
+      const delta = old === undefined ? k.length + v.length : v.length - old.length;
+      if (used + delta > store.capacity) throw quotaError();
       data.set(k, v);
+      used += delta;
+      store.peak = Math.max(store.peak, used);
     },
-    removeItem: (k: string) => void data.delete(k),
+    removeItem: (k: string) => {
+      const old = data.get(k);
+      if (old === undefined) return;
+      data.delete(k);
+      used -= k.length + old.length;
+    },
     keys: () => [...data.keys()],
   };
   return store;
+}
+
+/** What browsers allow a site in localStorage, in characters (Chromium and WebKit, measured November 6, 2026). */
+export const BROWSER_STORAGE_CHARS = 5_242_880;
+
+function quotaError(): Error {
+  const e = new Error('The browser storage for this site is full.');
+  e.name = 'QuotaExceededError';
+  return e;
+}
+
+/** True for the error a browser throws when localStorage is full. */
+export function isQuotaError(e: unknown): boolean {
+  if (!(e instanceof Error) && !(typeof e === 'object' && e !== null)) return false;
+  const x = e as { name?: string; code?: number; message?: string };
+  return x.name === 'QuotaExceededError' || x.name === 'NS_ERROR_DOM_QUOTA_REACHED' || x.code === 22 || x.code === 1014 || /quota/i.test(x.message ?? '');
 }
 
 const PREFIX = 'slate.v1.';
@@ -151,51 +186,64 @@ export function listSaves(store: KeyValueStore): SaveSummary[] {
     list = [];
   }
   const known = new Set(list.map((x) => x.saveId));
-  for (const k of store.keys()) {
-    const m = /^slate\.v1\.save\.([^.]+)$/.exec(k);
+  const keys = store.keys();
+  for (const k of keys) {
+    const m = OPENABLE.exec(k);
     if (!m || known.has(m[1])) continue;
-    try {
-      const st = deserialize(store.getItem(k)!);
-      list.push(summaryOf(st, st.updatedAtReal));
-    } catch {
-      list.push({ saveId: m[1], saveName: 'Damaged save', characterName: '', locationId: '', gameNow: 0, savedAtReal: 0 });
-    }
     known.add(m[1]);
+    const sound = openableKeys(keys, m[1]).map((key) => readQuietly(store.getItem(key))).find((x) => x !== null);
+    list.push(sound ? summaryOf(sound, sound.updatedAtReal) : { saveId: m[1], saveName: 'Damaged save', characterName: '', locationId: '', gameNow: 0, savedAtReal: 0 });
   }
-  return list.filter((s) => store.getItem(mainKey(s.saveId)) !== null || store.getItem(bakKey(s.saveId)) !== null).sort((a, b) => b.savedAtReal - a.savedAtReal);
+  return list.filter((s) => openableKeys(keys, s.saveId).length > 0).sort((a, b) => b.savedAtReal - a.savedAtReal);
 }
 
-export type SaveResult = { ok: true; savedAtReal: number } | { ok: false; error: string };
+/** Keys that hold a copy of a save the game can open: the save, its backup, an interrupted write, a migration backup. */
+const OPENABLE = /^slate\.v1\.save\.([^.]+)(?:\.(?:bak|tmp|backup-v\d+))?$/;
+
+function openableKeys(keys: string[], id: string): string[] {
+  const main = mainKey(id);
+  const own = keys.filter((k) => k === main || (k.startsWith(`${main}.`) && OPENABLE.test(k)));
+  return own.sort((a, b) => (a === main ? -1 : b === main ? 1 : 0));
+}
+
+function readQuietly(text: string | null): GameState | null {
+  if (text === null) return null;
+  try {
+    return deserialize(text);
+  } catch {
+    return null;
+  }
+}
+
+export type SaveResult = { ok: true; savedAtReal: number } | { ok: false; error: string; storageFull?: boolean };
 
 /**
- * Write a save durably: validate it, write a temporary copy and read it back, keep the current save as the backup
- * (only if it is itself sound; a damaged one is preserved under its own key instead), replace, verify, then update the
- * index. "Saved" (ok: true) is returned only when every step succeeded.
+ * Write a save durably: validate it, keep the current save as the backup (only if it is itself sound; a damaged one is
+ * preserved under its own key instead), replace the save, read it back, then update the index. "Saved" (ok: true) is
+ * returned only when every step succeeded. Browsers replace a stored value in one step and charge only the difference
+ * in size, so the save is replaced in place: at every moment the previous good save is still stored (as the save, the
+ * backup, or both), and saving needs room for about two copies, not three (docs/STORAGE.md).
  */
 export function writeSave(store: KeyValueStore, state: GameState, realNow: number): SaveResult {
   try {
     state.updatedAtReal = realNow;
     const text = serialize(state);
     deserialize(text); // never write a save this build couldn't open
-    const current = store.getItem(mainKey(state.saveId));
-    // Another tab or a newer build may have saved in a format this build can't read; never replace or demote it.
-    if (current !== null && (storedVersion(current) ?? 0) > SAVE_VERSION) throw new Error('This save was made by a newer version of the game, so it was not replaced.');
-    store.setItem(tmpKey(state.saveId), text);
-    const back = store.getItem(tmpKey(state.saveId));
-    if (back !== text) throw new Error('Verification failed');
     const previous = store.getItem(mainKey(state.saveId));
+    // Another tab or a newer build may have saved in a format this build can't read; never replace or demote it.
+    if (previous !== null && (storedVersion(previous) ?? 0) > SAVE_VERSION) throw new Error('This save was made by a newer version of the game, so it was not replaced.');
     if (previous !== null && previous !== text) {
       if (isSound(previous)) store.setItem(bakKey(state.saveId), previous);
       else if (!damagedCopies(store, state.saveId).some((k) => store.getItem(k) === previous)) store.setItem(`${mainKey(state.saveId)}.damaged-${realNow}`, previous);
     }
     store.setItem(mainKey(state.saveId), text);
     if (store.getItem(mainKey(state.saveId)) !== text) throw new Error('Verification failed');
-    store.removeItem(tmpKey(state.saveId));
     const index = listSaves(store).filter((s) => s.saveId !== state.saveId);
     index.push(summaryOf(state, realNow));
     store.setItem(INDEX, JSON.stringify(index));
     return { ok: true, savedAtReal: realNow };
   } catch (e) {
+    if (isQuotaError(e)) return { ok: false, storageFull: true, error: 'The browser storage for SLATE is full.' };
     return { ok: false, error: e instanceof Error ? e.message : String(e) };
   }
 }
@@ -214,7 +262,9 @@ const damagedCopies = (store: KeyValueStore, id: string) => store.keys().filter(
 export const backupKey = (id: string, version: number) => `${PREFIX}save.${id}.backup-v${version}`;
 
 export interface Recovery {
-  source: 'backup' | 'interrupted-write';
+  source: 'backup' | 'interrupted-write' | 'migration-backup';
+  /** The copy that was opened. */
+  key: string;
   /** Where the damaged save was kept (never deleted by the game). */
   damagedKey?: string;
   problem: string;
@@ -237,15 +287,17 @@ export function openSave(store: KeyValueStore, saveId: string, realNow = Date.no
       problem = e instanceof Error ? e.message : String(e);
     }
   }
-  for (const [source, key] of [['interrupted-write', tmpKey(saveId)], ['backup', bakKey(saveId)]] as const) {
-    const copy = store.getItem(key);
-    if (copy === null) continue;
-    let state: GameState;
-    try {
-      state = deserialize(copy);
-    } catch {
-      continue;
-    }
+  // The newest sound copy wins: a complete copy from an interrupted write, the backup, or a migration backup.
+  const candidates: { source: Recovery['source']; key: string; state: GameState }[] = [];
+  const sources: [Recovery['source'], string][] = [['interrupted-write', tmpKey(saveId)], ['backup', bakKey(saveId)],
+    ...store.keys().filter((k) => /\.backup-v\d+$/.test(k) && k.startsWith(`${mainKey(saveId)}.`)).sort().reverse().map((k) => ['migration-backup', k] as [Recovery['source'], string])];
+  for (const [source, key] of sources) {
+    const state = readQuietly(store.getItem(key));
+    if (state) candidates.push({ source, key, state });
+  }
+  candidates.sort((x, y) => y.state.updatedAtReal - x.state.updatedAtReal);
+  const pick = candidates[0];
+  if (pick) {
     let damagedKey: string | undefined;
     if (text !== null) {
       damagedKey = damagedCopies(store, saveId).find((k) => store.getItem(k) === text);
@@ -258,9 +310,9 @@ export function openSave(store: KeyValueStore, saveId: string, realNow = Date.no
         }
       }
     }
-    const missing = missingPlaces(state);
-    if (missing.length) throw new MissingPlacesError(saveId, missing, missingPlaceUses(state));
-    return { state, recovery: { source, damagedKey, problem } };
+    const missing = missingPlaces(pick.state);
+    if (missing.length) throw new MissingPlacesError(saveId, missing, missingPlaceUses(pick.state));
+    return { state: pick.state, recovery: { source: pick.source, key: pick.key, damagedKey, problem } };
   }
   throw new SaveFormatError(text === null ? 'This save could not be found.' : `${problem} No good copy was found to open instead.`);
 }
@@ -288,13 +340,85 @@ export function readSave(store: KeyValueStore, saveId: string): GameState {
   return openSave(store, saveId).state;
 }
 
+/** Deletes a save with its backup and every recovery copy kept for it (the player confirms, seeing how many). */
 export function deleteSave(store: KeyValueStore, saveId: string): void {
-  for (const k of store.keys()) if (k.startsWith(`${PREFIX}save.${saveId}.backup-`)) store.removeItem(k);
-  store.removeItem(mainKey(saveId));
-  store.removeItem(tmpKey(saveId));
-  store.removeItem(bakKey(saveId));
+  for (const k of store.keys()) if (k === mainKey(saveId) || k.startsWith(`${mainKey(saveId)}.`)) store.removeItem(k);
   const index = listSaves(store).filter((s) => s.saveId !== saveId);
   store.setItem(INDEX, JSON.stringify(index));
+}
+
+// ---------------- Recovery copies and storage use ----------------
+
+export type RecoveryKind = 'interrupted' | 'migration' | 'repair' | 'damaged';
+
+export interface RecoveryCopy {
+  key: string;
+  saveId: string;
+  kind: RecoveryKind;
+  /** Characters, as browsers count storage. */
+  chars: number;
+  /** When the game kept it (damaged copies), if known. */
+  keptAtReal: number | null;
+  /** When the game in it was last saved, if it can be read. */
+  savedAtReal: number | null;
+  /** The game version it was written by, if it can be read. */
+  version: number | null;
+}
+
+const RECOVERY = /^slate\.v1\.save\.([^.]+)\.(tmp|backup-v\d+|backup-repair|damaged-(\d+))$/;
+
+/**
+ * Copies the game keeps so progress can be recovered: an interrupted write's copy, backups taken before a save was
+ * updated or repaired, and damaged saves. The game never deletes these by itself; the player can export or delete them.
+ * (The backup of the previous save, `.bak`, is not listed: it is part of every save and replaced as the game saves.)
+ */
+export function listRecoveryCopies(store: KeyValueStore): RecoveryCopy[] {
+  const out: RecoveryCopy[] = [];
+  for (const key of store.keys()) {
+    const m = RECOVERY.exec(key);
+    if (!m) continue;
+    const text = store.getItem(key) ?? '';
+    let savedAtReal: number | null = null;
+    try {
+      const v = Number(JSON.parse(JSON.parse(text).data).updatedAtReal);
+      savedAtReal = Number.isFinite(v) ? v : null;
+    } catch {
+      savedAtReal = null;
+    }
+    const kind: RecoveryKind = m[2] === 'tmp' ? 'interrupted' : m[2] === 'backup-repair' ? 'repair' : m[2].startsWith('damaged-') ? 'damaged' : 'migration';
+    out.push({ key, saveId: m[1], kind, chars: key.length + text.length, keptAtReal: m[3] ? Number(m[3]) : null, savedAtReal, version: storedVersion(text) });
+  }
+  return out.sort((a, b) => (b.keptAtReal ?? b.savedAtReal ?? 0) - (a.keptAtReal ?? a.savedAtReal ?? 0));
+}
+
+/** Deletes one recovery copy the player chose. Refuses any key that isn't a recovery copy. */
+export function deleteRecoveryCopy(store: KeyValueStore, key: string): boolean {
+  if (!RECOVERY.test(key)) return false;
+  store.removeItem(key);
+  return true;
+}
+
+export interface StorageUse {
+  /** Everything this site keeps in browser storage, in characters as browsers count it. */
+  usedChars: number;
+  limitChars: number;
+  /** Per save: the save and its backup, and its recovery copies. */
+  bySave: Record<string, { saveChars: number; recoveryChars: number }>;
+}
+
+export function storageUse(store: KeyValueStore): StorageUse {
+  let usedChars = 0;
+  const bySave: StorageUse['bySave'] = {};
+  for (const key of store.keys()) {
+    const chars = key.length + (store.getItem(key)?.length ?? 0);
+    usedChars += chars;
+    const m = /^slate\.v1\.save\.([^.]+)(\..+)?$/.exec(key);
+    if (!m) continue;
+    const row = (bySave[m[1]] ??= { saveChars: 0, recoveryChars: 0 });
+    if (RECOVERY.test(key)) row.recoveryChars += chars;
+    else row.saveChars += chars;
+  }
+  return { usedChars, limitChars: BROWSER_STORAGE_CHARS, bySave };
 }
 
 export function renameSave(store: KeyValueStore, saveId: string, name: string): SaveResult {

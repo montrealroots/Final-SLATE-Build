@@ -59,7 +59,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 1. Checkpoint A (above): done, montrealroots/Final-SLATE-Build#14.
 2. Performance: done, see `docs/PERFORMANCE.md`. Rollback snapshots copy plain data (4-6× faster, 43% less memory on a long save; balance 98 s to 37 s; identical results). Startup JavaScript 691 to 634 kB by removing data the game never reads. Engine harness `npm run perf:engine`; browser harness `scripts/perf-browser.mjs` on production builds.
-3. Storage: measure peak storage during a save (main, temporary copy, backup, migration backups, damaged copies); documented retention with export and cleanup choices; exhaustion at every save stage.
+3. Storage: done, see `docs/STORAGE.md`. Saving needs two copies of a game, not three (no temporary copy); peak measured for fresh, medium and long saves with and without recovery copies; recovery copies listed in Saved Games with Export and Delete, never deleted by the game; deleting a save says how many copies go with it; storage-full message with Free Up Space; exhaustion tested at every step. **Still open:** saves grow about 0.6 MB per game year from festival and award history, so one game hits the browser limit after about four game years. Fix in item 4, which changes the same records: store rival works compactly, once per season, with a save migration.
 4. Festival and award rulebooks: recount institutions and entries; verify edition-specific rules with sources; versioned rule data wired to projects, releases, screenings, credits, submissions and the calendar; boundary tests; a full browser journey from submission to results with save and reload.
 
 ### Coding Gaps

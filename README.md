@@ -87,8 +87,8 @@ npm run build
 
 ## Saves
 
-- Each save is validated, written to a temporary key, read back and verified, and only then replaces the previous save, which is kept as a backup. A failed write keeps the last good save and shows "Your game couldn't be saved. Keep this window open and try again."
-- Opening a save validates it in depth. A missing, damaged or invalid save opens the newest sound copy (an interrupted write's temporary copy, then the backup) after the damaged one is kept; the player is told. A save from a newer version is refused and left unchanged. A save naming unknown places asks for replacements.
+- Each save is validated; the previous sound save is kept as a backup; then the save is replaced and read back. Saving needs room for about two copies of a game. A failed write keeps the last good save and says so, and says when browser storage is full (see `docs/STORAGE.md`).
+- Opening a save validates it in depth. A missing, damaged or invalid save opens the newest sound copy (the backup, an interrupted write's copy from an earlier build, or a backup taken before an update) after the damaged one is kept; the player is told which copy opened. Saved Games lists every recovery copy with Export and Delete; the game never deletes them by itself. A save from a newer version is refused and left unchanged. A save naming unknown places asks for replacements.
 - If something fails while time passes, the game is returned to how it was before that step, time pauses, and the player is told.
 - Saves carry a schema version. `src/engine/save.ts` holds the migration table; add one migration per schema change and never reset player progress to add a feature.
 - Only one browser tab runs a save at a time. Another tab opens it read-only and can take over.

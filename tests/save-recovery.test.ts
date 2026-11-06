@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import {
   SaveFormatError, SaveTooNewError, deserialize, listSaves, memoryStore, newGame, openSave, readSave, serialize, writeSave,
 } from '../src/engine';
+import { backupKey, deleteRecoveryCopy, deleteSave, listRecoveryCopies, storageUse } from '../src/engine/save';
 import { hashString } from '../src/engine/rng';
 import type { GameState } from '../src/engine/types';
 import { draft } from './fixtures';
@@ -165,7 +166,6 @@ describe('malformed projects inside a save', () => {
 
 describe('repeated failures keep every recoverable copy', () => {
   const stages: [string, RegExp][] = [
-    ['temporary copy', /\.tmp$/],
     ['backup', /\.bak$/],
     ['replacing the save', /^slate\.v1\.save\.r1$/],
     ['index', /index$/],
@@ -201,8 +201,8 @@ describe('repeated failures keep every recoverable copy', () => {
     expect(() => openSave(kv, 'r1', 4)).toThrow(/no room to keep the damaged one/);
     failOn(null);
     const { state, recovery } = openSave(kv, 'r1', 5);
-    expect(recovery?.source).toBe('interrupted-write'); // the failed write left a complete, newer copy
-    expect(state.updatedAtReal).toBe(3);
+    expect(recovery?.source).toBe('backup');
+    expect(state.updatedAtReal).toBe(1); // the save before the last one written
     expect(kv.getItem(recovery!.damagedKey!)).toBe('garbage');
   });
 
@@ -232,5 +232,142 @@ describe('repeated failures keep every recoverable copy', () => {
     expect(writeSave(kv, s, 3).ok).toBe(false);
     expect(kv.getItem(KEY)).toBe(newer);
     expect(kv.getItem(`${KEY}.bak`)).not.toBe(newer);
+  });
+});
+
+describe('storage: room needed to save, running out, and what is kept', () => {
+  const longish = () => {
+    const s = game();
+    for (let i = 0; i < 400; i++) s.log.push({ id: `l${i}`, at: s.now, text: 'A long day of work on set, recorded for the history of this save.', kind: 'personal' } as never);
+    return s;
+  };
+
+  it('saving needs room for about two copies of the save, never a third', () => {
+    const kv = memoryStore();
+    const s = longish();
+    writeSave(kv, s, 1);
+    writeSave(kv, s, 2);
+    const size = serialize(s).length;
+    kv.peak = kv.used();
+    s.now += 1;
+    expect(writeSave(kv, s, 3).ok).toBe(true);
+    expect(kv.peak).toBeLessThan(2.05 * size);
+    expect(kv.keys().some((k) => k.endsWith('.tmp'))).toBe(false);
+  });
+
+  it('a store just big enough for a save and its backup can keep saving', () => {
+    const s = longish();
+    const size = serialize(s).length;
+    const kv = memoryStore(2 * size + 2000);
+    for (let i = 1; i <= 5; i++) {
+      s.now += 1;
+      expect(writeSave(kv, s, i).ok, `save ${i}`).toBe(true);
+    }
+  });
+
+  it('running out of space at each step leaves every save discoverable and openable, and says storage is full', () => {
+    for (const stage of ['backup', 'replace', 'index'] as const) {
+      const s = longish();
+      const other = game();
+      other.saveId = 'r10';
+      other.saveName = 'Other';
+      const probe = memoryStore();
+      writeSave(probe, other, 1);
+      writeSave(probe, s, 1);
+      s.saveName = 'Second';
+      writeSave(probe, s, 2);
+      const before = probe.used();
+      s.saveName = 'Third Save'; // longer, so the index grows too
+      // Find a capacity at which the next save fails at the chosen step.
+      const kv = memoryStore();
+      for (const k of probe.keys()) kv.setItem(k, probe.getItem(k)!);
+      const text = serialize({ ...s, updatedAtReal: 3 });
+      const main = probe.getItem(KEY)!;
+      const bak = probe.getItem(`${KEY}.bak`)!;
+      const afterBackup = before + (main.length - bak.length);
+      const afterReplace = afterBackup + (text.length - main.length);
+      kv.capacity = stage === 'backup' ? afterBackup - 1 : stage === 'replace' ? Math.max(afterBackup, afterReplace - 1) : afterReplace + 1;
+      if (stage === 'replace' && afterReplace <= afterBackup) continue; // the new save is not larger: nothing to run out of
+      const res = writeSave(kv, s, 3);
+      expect(res.ok, stage).toBe(false);
+      if (!res.ok) expect(res.storageFull, stage).toBe(true);
+      kv.capacity = Infinity;
+      expect(listSaves(kv).map((x) => x.saveId).sort(), stage).toEqual(['r1', 'r10']);
+      expect(['Second', 'Third Save'], stage).toContain(openSave(kv, 'r1', 4).state.saveName);
+      expect(openSave(kv, 'r10', 4).state.saveName).toBe('Other');
+    }
+  });
+
+  it('lists recovery copies of every kind, deletes only what the player picks, and never touches a save or its backup', () => {
+    const kv = memoryStore();
+    const s = game();
+    writeSave(kv, s, 1);
+    writeSave(kv, s, 2);
+    const main = kv.getItem(KEY)!;
+    kv.setItem(`${KEY}.tmp`, main);
+    kv.setItem(backupKey('r1', 1), main);
+    kv.setItem(`${KEY}.backup-repair`, main);
+    kv.setItem(`${KEY}.damaged-77`, 'garbage');
+    const copies = listRecoveryCopies(kv);
+    expect(copies.map((c) => c.kind).sort()).toEqual(['damaged', 'interrupted', 'migration', 'repair']);
+    expect(copies.find((c) => c.kind === 'damaged')).toMatchObject({ keptAtReal: 77, savedAtReal: null, saveId: 'r1' });
+    expect(copies.find((c) => c.kind === 'migration')?.savedAtReal).toBe(2);
+    expect(deleteRecoveryCopy(kv, KEY)).toBe(false);
+    expect(deleteRecoveryCopy(kv, `${KEY}.bak`)).toBe(false);
+    expect(deleteRecoveryCopy(kv, `${KEY}.damaged-77`)).toBe(true);
+    expect(kv.getItem(KEY)).toBe(main);
+    const use = storageUse(kv);
+    expect(use.usedChars).toBe(kv.used());
+    expect(use.bySave.r1.recoveryChars).toBe(listRecoveryCopies(kv).reduce((a, c) => a + c.chars, 0));
+  });
+
+  it('deleting a save removes its copies and nothing of another save with a similar ID', () => {
+    const kv = memoryStore();
+    const a = game();
+    const b = game();
+    b.saveId = 'r10';
+    writeSave(kv, a, 1);
+    writeSave(kv, a, 2);
+    writeSave(kv, b, 1);
+    kv.setItem(`${KEY}.damaged-5`, 'x');
+    kv.setItem('slate.v1.save.r10.damaged-5', 'y');
+    deleteSave(kv, 'r1');
+    expect(kv.keys().filter((k) => k.startsWith('slate.v1.save.r1.') || k === KEY)).toEqual([]);
+    expect(kv.getItem('slate.v1.save.r10.damaged-5')).toBe('y');
+    expect(listSaves(kv).map((x) => x.saveId)).toEqual(['r10']);
+  });
+
+  it('finds and opens a save whose only remaining copy is its backup or a migration backup', () => {
+    const kv = memoryStore();
+    const s = game();
+    const first = s.saveName;
+    writeSave(kv, s, 1);
+    s.saveName = 'Newer';
+    writeSave(kv, s, 2);
+    kv.removeItem(KEY);
+    kv.removeItem('slate.v1.index');
+    expect(listSaves(kv).map((x) => x.saveName)).toEqual([first]);
+    expect(openSave(kv, 'r1', 3).recovery?.source).toBe('backup');
+    const only = memoryStore();
+    only.setItem(backupKey('r1', 2), kv.getItem(`${KEY}.bak`)!);
+    expect(listSaves(only).map((x) => x.saveId)).toEqual(['r1']);
+    const { recovery } = openSave(only, 'r1', 3);
+    expect(recovery).toMatchObject({ source: 'migration-backup', key: backupKey('r1', 2) });
+  });
+
+  it('opens the newest sound copy when the save is damaged, not a stale one', () => {
+    const kv = memoryStore();
+    const s = game();
+    s.saveName = 'Old interrupted';
+    s.updatedAtReal = 1;
+    kv.setItem(`${KEY}.tmp`, serialize(s));
+    s.saveName = 'Kept';
+    writeSave(kv, s, 5);
+    s.saveName = 'Latest';
+    writeSave(kv, s, 6);
+    kv.setItem(KEY, 'garbage');
+    const { state, recovery } = openSave(kv, 'r1', 7);
+    expect(recovery?.source).toBe('backup');
+    expect(state.saveName).toBe('Kept');
   });
 });

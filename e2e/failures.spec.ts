@@ -18,7 +18,7 @@ test('a failed save says so, keeps you in the game, and Try Again saves once sto
     };
   });
   await advance(page, 'next-day');
-  await expect(page.getByText("Your game couldn't be saved. Keep this window open and try again.").first()).toBeVisible();
+  await expect(page.getByText("Your game couldn't be saved because this browser's storage for SLATE is full. Your last save is still there.", { exact: false }).first()).toBeVisible();
   // Export Save still works with storage full: the file is a complete, checksummed save.
   const download = page.waitForEvent('download');
   await page.getByRole('button', { name: 'Export Save' }).first().click();
@@ -33,7 +33,7 @@ test('a failed save says so, keeps you in the game, and Try Again saves once sto
   await page.evaluate(() => { (window as unknown as { __failSaves: boolean }).__failSaves = false; });
   await page.getByRole('button', { name: 'Try Again' }).first().click();
   await expect(page.getByRole('banner').getByText('Saved', { exact: true })).toBeVisible();
-  await expect(page.getByText("Your game couldn't be saved. Keep this window open and try again.")).toHaveCount(0);
+  await expect(page.getByText(/Your game couldn't be saved/)).toHaveCount(0);
 });
 
 test('a version-1 save opens after a backup copy is kept', async ({ page }) => {
