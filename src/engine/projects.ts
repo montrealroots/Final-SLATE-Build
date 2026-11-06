@@ -630,6 +630,7 @@ export function approveDraft(state: GameState, p: Project, number: number): { re
   const blocking = scriptIssues(current).filter((i) => i.severity === 'blocking');
   if (blocking.length) throw new Error(`This draft can't be approved yet. ${blocking[0].text}`);
   const before = p.requirements;
+  const prevApproved = p.drafts.find((x) => x.number === p.approvedDraft) ?? null;
   const next = deriveRequirements(p, d.scenes, d.characters);
   p.drafts.forEach((x) => (x.approved = x.number === number));
   p.approvedDraft = number;
@@ -642,15 +643,15 @@ export function approveDraft(state: GameState, p: Project, number: number): { re
   for (const r of next) if (!beforeKeys.has(r.key)) changes.push(`Needs ${r.label} (${requirementKindLabel(r.kind)}).`);
   for (const r of before) if (!nextKeys.has(r.key)) changes.push(`No longer needs ${r.label} (${requirementKindLabel(r.kind)}).`);
   p.history.push({ at: state.now, text: `Approved draft ${number}.` });
-  for (const fn of approvalHooks) fn(state, p, d);
+  for (const fn of approvalHooks) fn(state, p, d, prevApproved);
   addLog(state, `You approved the ${ordinal(number)} draft of ${p.title}.${changes.length && before.length ? ` ${changes.length} production ${changes.length === 1 ? 'requirement changed' : 'requirements changed'}.` : ''}`, 'project', {
     projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'overview' },
   });
   return { requirementChanges: changes };
 }
 
-const approvalHooks: ((s: GameState, p: Project, d: Draft) => void)[] = [];
-export function onDraftApproved(fn: (s: GameState, p: Project, d: Draft) => void): void {
+const approvalHooks: ((s: GameState, p: Project, d: Draft, prev: Draft | null) => void)[] = [];
+export function onDraftApproved(fn: (s: GameState, p: Project, d: Draft, prev: Draft | null) => void): void {
   approvalHooks.push(fn);
 }
 
@@ -677,4 +678,10 @@ export function requirementKindLabel(k: Requirement['kind']): string {
 
 export function projectGenreLabel(p: Project): string {
   return p.axes.genres.map((g) => genreName(g.id)).join(', ');
+}
+
+/** Scenes of a draft that differ from (or are new since) the approved draft. */
+export function changedSince(prev: { scenes: Scene[] } | null, next: { scenes: Scene[] }): Set<string> {
+  const before = new Map((prev?.scenes ?? []).map((sc) => [sc.id, JSON.stringify(sc)]));
+  return new Set(next.scenes.filter((sc) => before.get(sc.id) !== JSON.stringify(sc)).map((sc) => sc.id));
 }

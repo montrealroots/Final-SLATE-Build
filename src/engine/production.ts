@@ -7,7 +7,7 @@ import { cancel, commit, ledgerTotals, money, reserve, settle, spend, FundsError
 import { isMakeUpWorkday, placeHolidaysOn } from './holidays';
 import { covers, isAvailable, personById, roleLabel } from './people';
 import {
-  approvedCharacters, approvedScenes, approvalRights, isEpisodic, isNonfiction, projectModules, sceneLabel, sceneTechnique,
+  approvedCharacters, approvedScenes, approvalRights, changedSince, isEpisodic, isNonfiction, onDraftApproved, projectModules, sceneLabel, sceneTechnique,
 } from './projects';
 import { MOCAP_CLEANUP_PER_SESSION, approvedTake, payStageSession, recordTake, stageBlock } from './mocap';
 import { stream } from './rng';
@@ -1203,3 +1203,35 @@ export function estimatedShootDays(p: Project): number {
 }
 
 export { dayNumber, HOUR, reserve, commit, cancel, approvalRights };
+
+// ---------------- Re-approving a script ----------------
+
+/** What approving a draft would undo: footage of changed scenes and progress on work built on them. Unchanged scenes keep theirs. */
+export function approvalImpact(p: Project, number: number): string[] {
+  const d = p.drafts.find((x) => x.number === number);
+  const prev = p.drafts.find((x) => x.number === p.approvedDraft) ?? null;
+  if (!d || !prev || prev.number === number) return [];
+  const changed = changedSince(prev, d);
+  const out: string[] = [];
+  for (const c of p.captures.filter((x) => x.version === prev.number && x.captured > 0 && changed.has(x.sceneId))) {
+    const sc = prev.scenes.find((x) => x.id === c.sceneId);
+    out.push(`${sc ? sceneLabel(p, sc) : 'A scene'} was filmed; it will need filming again.`);
+  }
+  for (const t of p.tasks.filter((x) => x.done > 0 && x.sceneIds.some((id) => changed.has(id)))) out.push(`${t.label} starts over.`);
+  return out;
+}
+
+onDraftApproved((_state, p, d, prev) => {
+  if (!prev || prev.number === d.number) return;
+  const changed = changedSince(prev, d);
+  // Unchanged scenes keep their footage; changed ones keep the old record, which no longer counts.
+  for (const c of p.captures) if (c.version === prev.number && !changed.has(c.sceneId)) c.version = d.number;
+  for (const t of p.tasks) {
+    if (t.done > 0 && t.sceneIds.some((id) => changed.has(id))) {
+      t.done = 0;
+      t.workedDays = 0;
+      t.status = 'waiting';
+      t.doneAt = undefined;
+    }
+  }
+});

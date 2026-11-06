@@ -5,7 +5,7 @@ import {
   designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter,
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, type ModuleId,
-  FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, type UnscriptedFamily,
+  approvalImpact, FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, type UnscriptedFamily,
 } from '../engine';
 import type { Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
@@ -55,6 +55,7 @@ export function ScriptTab({ p }: { p: Project }) {
   useGame();
   const [err, setErr] = useState<string | null>(null);
   const [draftLabel, setDraftLabel] = useState('');
+  const [approving, setApproving] = useState<{ number: number; impact: string[] } | null>(null);
   const [compare, setCompare] = useState<number | null>(null);
   const [deleting, setDeleting] = useState<Scene | null>(null);
   const [renaming, setRenaming] = useState<{ number: number; label: string } | null>(null);
@@ -144,6 +145,17 @@ export function ScriptTab({ p }: { p: Project }) {
         )}
       </section>
 
+      {approving && (
+        <Modal title="Approve This Draft?" onClose={() => setApproving(null)} footer={
+          <>
+            <button className="btn" onClick={() => setApproving(null)}>Keep The Current Draft</button>
+            <button className="btn btn-primary" onClick={() => { setErr(store.act((s) => { approveDraft(s, p, approving.number); })); setApproving(null); }}>Approve And Redo This Work</button>
+          </>
+        }>
+          <p>Some scenes changed since the approved draft. Work on unchanged scenes is kept. This work starts over:</p>
+          <ul>{approving.impact.map((t) => <li key={t}>{t}</li>)}</ul>
+        </Modal>
+      )}
       <section className="panel">
         <h2>Drafts</h2>
         {changed && p.drafts.length > 0 && <p className="muted">You have changes since your last saved draft.</p>}
@@ -163,7 +175,11 @@ export function ScriptTab({ p }: { p: Project }) {
                   <button className="btn btn-small" onClick={() => setCompare(d.number)}>Compare With Working Copy</button>
                   <button className="btn btn-small" disabled={locked} onClick={() => setErr(edit(p, () => restoreDraft(p, d.number)))}>Restore This Draft</button>
                   <button className="btn btn-small" disabled={locked} onClick={() => setRenaming({ number: d.number, label: d.label })}>Rename Draft</button>
-                  {!d.approved && <button className="btn btn-small btn-primary" disabled={locked} onClick={() => setErr(store.act((s) => { approveDraft(s, p, d.number); }))}>Approve This Draft</button>}
+                  {!d.approved && <button className="btn btn-small btn-primary" disabled={locked} onClick={() => {
+                    const impact = approvalImpact(p, d.number);
+                    if (impact.length) setApproving({ number: d.number, impact });
+                    else setErr(store.act((s) => { approveDraft(s, p, d.number); }));
+                  }}>Approve This Draft</button>}
                 </div>
               </div>
             </li>
