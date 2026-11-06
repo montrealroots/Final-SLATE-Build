@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { createCharacter, freshStart, nav } from './helpers';
+import { createCharacter, freshStart, nav, quickLife } from './helpers';
 
 test('a life can start anywhere in the world, and world places travel and persist', async ({ page }) => {
   await freshStart(page);
@@ -47,4 +47,14 @@ test('a failed place load offers Try Again and recovers', async ({ page }) => {
   await page.getByRole('button', { name: 'Try Again' }).click();
   await page.getByRole('searchbox', { name: 'Birthplace' }).fill('reykjav');
   await expect(page.getByRole('group', { name: 'Birthplace Results' }).getByRole('button').first()).toContainText('Reykjavík');
+});
+
+test('holidays past the last official announcement are shown as projected', async ({ page }) => {
+  await quickLife(page, 'cn-shanghai', '2026-12-20');
+  await nav(page, 'World');
+  await page.getByRole('searchbox', { name: 'Search Places' }).fill('shanghai');
+  await page.getByRole('list', { name: 'Places' }).getByRole('button', { name: 'Shanghai', exact: true }).click();
+  const panel = page.getByRole('region', { name: 'Upcoming Public Holidays' });
+  await expect(panel.getByText(/2027.*\(projected\)/).first()).toBeVisible();
+  await expect(panel.getByText('Dates after 2026 are projected from the law until the government announces them.')).toBeVisible();
 });

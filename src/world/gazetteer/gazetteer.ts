@@ -139,6 +139,7 @@ export async function toGamePlace(w: WorldPlace): Promise<Place> {
     id: placeIdForGeoname(w.id),
     name: w.name,
     region,
+    regionKey: w.region || undefined,
     country: w.country,
     countryName: countryName(w.country),
     lat: w.lat,

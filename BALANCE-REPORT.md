@@ -25,12 +25,14 @@ A real player can make different choices.
 
 | Family | Delivered | Needed Extra Funding | Days From Schedule To Delivery, Median | Share Of Fund Spent (%), Median | Lost Shoot Days, Mean | Overall Assessment, Mean ± SD | Reception, Mean ± SD |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Live-action short, micro budget | 100% | 40% | 28 (27 to 43) | 68.6 (53.1 to 74.7) | 1.3 | 59.4 ± 2.2 | 59.7 ± 6.9 |
-| Live-action feature, low budget | 100% | 0% | 78 (76 to 90) | 53.4 (49.8 to 57.8) | 4.0 | 59.1 ± 1.9 | 58.2 ± 7.8 |
+| Live-action short, micro budget | 100% | 27% | 27 (27 to 43) | 68.7 (57.3 to 74.7) | 1.0 | 59.7 ± 2.3 | 60.0 ± 7.2 |
+| Live-action feature, low budget | 100% | 0% | 78 (76 to 91) | 54.6 (49.8 to 59.5) | 4.5 | 59.0 ± 1.8 | 58.2 ± 7.9 |
 | 2D drawn short | 100% | 0% | 203 (203 to 203) | 19.5 (18.6 to 20.9) | 0 | 62.6 ± 1.0 | 63.8 ± 6.8 |
 | 3D CG short | 100% | 0% | 142 (142 to 142) | 17.0 (16.1 to 18.0) | 0 | 62.6 ± 1.1 | 64.0 ± 4.6 |
 | Stop-motion short | 100% | 0% | 237 (232 to 239) | 28.6 (27.7 to 31.3) | 0 | 62.3 ± 1.4 | 64.0 ± 7.2 |
-| TV limited series, 2 episodes | 100% | 0% | 27 (27 to 28) | 8.6 (8.3 to 10.1) | 0.5 | 60.2 ± 1.5 | 56.6 ± 7.9 |
+| TV limited series, 2 episodes | 100% | 0% | 27 (27 to 29) | 8.6 (8.3 to 10.1) | 0.6 | 60.2 ± 1.9 | 56.6 ± 7.9 |
+
+Rerun on November 6, 2026 after the Gap Completion Package's M1, which drives London's weather from WMO station normals instead of hand-written climate: the live-action and TV rows changed slightly (fewer micro shorts needed extra funding, 27% instead of 40%); the animation rows did not change.
 
 Integrity across all 180 runs: 0 negative cash balances and 0 duplicate settlements. Two runs of the same seed produced identical output.
 
@@ -39,7 +41,7 @@ Integrity across all 180 runs: 0 negative cash balances and 0 duplicate settleme
 | Change | Result |
 | --- | --- |
 | Feature: 0 vs 8 rehearsal days | Mean assessment 57.5 vs 58.9. Small and positive, as intended. |
-| Feature: low vs mid budget, same hiring policy | Assessment 59.1 vs 59.1. Median spend $207,590 vs $264,290 (mid shoot days cost more). Money alone buys nothing. |
+| Feature: low vs mid budget, same hiring policy | Assessment 58.9 vs 58.9. Median spend $211,220 vs $270,620 (mid shoot days cost more). Money alone buys nothing. |
 | Stop motion: 1 vs 2 copies of each puppet | Mean 236 vs 230 days. Duplicates let shots run in parallel but cost more to build. |
 | 3D: 4 vs 40 render nodes | Mean 152 vs 141 days. Render capacity is a real bottleneck. |
 

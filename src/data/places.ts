@@ -24,6 +24,7 @@ export interface Place {
   name: string;
   region: string; // human-readable state/province/region
   regionCode?: string; // used for regional holiday rules, e.g. GB-SCT
+  regionKey?: string; // the gazetteer's first-level region key ("GB.SCT"), used by the worldwide holiday rules
   country: string; // ISO 3166-1 alpha-2
   countryName: string;
   lat: number;

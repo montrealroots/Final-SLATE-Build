@@ -47,3 +47,30 @@ describe('worldwide holiday rules', () => {
     expect(eng).not.toContain('2nd January');
   });
 });
+
+describe('holidays at a place', () => {
+  it('keeps curated countries curated, and fills years past their tables from the worldwide rules', async () => {
+    await loadWorldHolidays();
+    const { placeHolidays, placeHolidayCoverage } = await import('../src/engine/holidays');
+    const { getPlace } = await import('../src/data/places');
+    const shanghai = getPlace('cn-shanghai');
+    expect(placeHolidays(shanghai, 2026).some((h) => h.projected)).toBe(false); // official 2026 notice
+    const cn2027 = placeHolidays(shanghai, 2027);
+    expect(cn2027.length).toBeGreaterThan(5);
+    expect(cn2027.every((h) => h.projected)).toBe(true);
+    expect(placeHolidayCoverage(shanghai, 2027)).toEqual({ kind: 'projected', announcedTo: 2026 });
+    const riyadh = getPlace('sa-jeddah');
+    const sa2027 = placeHolidays(riyadh, 2027);
+    expect(sa2027.some((h) => h.name === 'Founding Day')).toBe(true);
+    expect(sa2027.some((h) => h.estimated)).toBe(true);
+    expect(placeHolidayCoverage(getPlace('gb-london'), 2026)).toEqual({ kind: 'kept' });
+  });
+
+  it('gives a world place its own country and region holidays', async () => {
+    await loadWorldHolidays();
+    const { placeHolidays } = await import('../src/engine/holidays');
+    const pl = placeHolidays({ country: 'PL', regionKey: 'PL.77' }, 2026).map((h) => h.date);
+    expect(pl).toContain('2026-11-11'); // Independence Day
+    expect(pl).toContain('2026-05-03'); // Constitution Day
+  });
+});

@@ -5,12 +5,15 @@
 // A holiday only changes gameplay where a production calendar observes it (see schedule.ts).
 
 import { addDaysToKey, daysInMonth, weekdayOfKey, ymd } from './time';
+import type { Place } from '../data/places';
+import { worldHolidayCoverage, worldHolidaysForYear, type HolidayCoverage } from '../world/holidays/holidays';
 
 export interface Holiday {
   date: string; // local date key
   name: string;
   observedFor?: string; // set when this is a substitute day
   estimated?: boolean; // lunar dates that depend on moon sighting
+  projected?: boolean; // later than the government's last announcement: projected from the law
 }
 
 type Subst = 'none' | 'us' | 'next-weekday' | 'sun-to-mon';
@@ -373,4 +376,41 @@ export function holidaysForYear(country: string, regionCode: string | undefined,
 export function holidaysOn(country: string, regionCode: string | undefined, date: string): Holiday[] {
   const year = Number(date.slice(0, 4));
   return holidaysForYear(country, regionCode, year).filter((h) => h.date === date);
+}
+
+// ---------- Worldwide coverage ----------
+// The curated rules above stay authoritative for their countries (sourced, English names, official 2026 overrides).
+// Every other country uses the worldwide rules; so do China and South Korea, and the Islamic feasts of the curated
+// countries, in years the curated tables don't cover, so future years stay playable (marked projected or expected).
+
+const CURATED_LUNAR_YEARS: Record<string, (year: number) => boolean> = {
+  CN: (y) => !!CN_OFFICIAL[y],
+  KR: (y) => !!KR_LUNAR[y],
+};
+
+export function placeHolidays(place: Pick<Place, 'country' | 'regionCode' | 'regionKey'>, year: number): Holiday[] {
+  const c = place.country;
+  if (!(c in RULES)) return worldHolidaysForYear(c, year, place.regionKey).map(fromWorld);
+  const curated = holidaysForYear(c, place.regionCode, year);
+  if (c in CURATED_LUNAR_YEARS) return CURATED_LUNAR_YEARS[c](year) ? curated : worldHolidaysForYear(c, year).map(fromWorld);
+  if (ISLAMIC_COUNTRIES.has(c) && !ISLAMIC[year]) {
+    const taken = new Set(curated.map((h) => h.date));
+    const feasts = worldHolidaysForYear(c, year).filter((h) => h.lunar && !taken.has(h.date)).map(fromWorld);
+    return [...curated, ...feasts].sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0));
+  }
+  return curated;
+}
+
+export function placeHolidaysOn(place: Pick<Place, 'country' | 'regionCode' | 'regionKey'>, date: string): Holiday[] {
+  return placeHolidays(place, Number(date.slice(0, 4))).filter((h) => h.date === date);
+}
+
+function fromWorld(h: { date: string; name: string; estimated?: boolean; projected?: boolean }): Holiday {
+  return { date: h.date, name: h.name, estimated: h.estimated, projected: h.projected };
+}
+
+/** What can be said about a place's holiday dates in a year (the UI explains anything other than "kept"). */
+export function placeHolidayCoverage(place: Pick<Place, 'country' | 'regionKey'>, year: number): HolidayCoverage {
+  if (place.country in RULES && !(place.country in CURATED_LUNAR_YEARS && !CURATED_LUNAR_YEARS[place.country](year))) return { kind: 'kept' };
+  return worldHolidayCoverage(place.country, year, place.regionKey);
 }
