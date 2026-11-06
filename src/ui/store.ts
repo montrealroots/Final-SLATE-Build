@@ -1,10 +1,13 @@
 import { useSyncExternalStore } from 'react';
 import {
-  ActiveClock, advanceTargetInstant, browserStore, canTakeLock, clearDraft, deleteSave, emptyDraft, listSaves, newGame, processUntil, readDraft,
+  ActiveClock, advanceTargetInstant, browserStore, canTakeLock, clearDraft, deleteSave, emptyDraft, newGame, processUntil, readDraft,
   readLock, openSave, releaseLock, repairSave, serialize, MissingPlacesError, renameSave, startSleep, takeLock, wakeEarly, writeDraft, writeSave, type AdvanceTarget, type KeyValueStore,
   type SaveSummary,
 } from '../engine';
-import { deleteRecoveryCopy, listRecoveryCopies, storageUse, type RecoveryCopy, type StorageUse } from '../engine/save';
+export type StorageReport = StorageUse & { backend?: string; quotaKnown?: boolean };
+import { BROWSER_STORAGE_CHARS, deleteRecoveryCopy, isQuotaError, type RecoveryCopy, type SaveResult, type StorageUse } from '../engine/save';
+import { journalKey, type Vault } from '../engine/vault';
+import { openVault } from './idb';
 import type { CreationDraft, GameState, Route } from '../engine/types';
 import type { Place } from '../data/places';
 import { loadWorldHolidays, worldHolidaysLoaded } from '../world/holidays/holidays';
@@ -68,9 +71,35 @@ class Store {
   private heartbeat: ReturnType<typeof setInterval> | null = null;
   private lastPeriodicSave = 0;
 
+  /** Where saves live (IndexedDB, or localStorage where that can't open); null until opened. */
+  vault: Vault | null = null;
+  /** Saves have been looked up; until then the start screen says so instead of offering New Game as if there were none. */
+  storageReady = false;
+  /** Shown on the start screen when saves couldn't be moved or opened. */
+  storageNote = '';
+  private saveList: SaveSummary[] = [];
+  private copies: RecoveryCopy[] = [];
+  private use: StorageReport | null = null;
+  private ready: Promise<void>;
+  private saving: Promise<boolean> | null = null;
+  private lastWriteMs = 0;
+  /** Counts changes to the game, so a save asked for while one is running is repeated only if something changed. */
+  private changes = 0;
+  private saveAgain = false;
+
   constructor() {
     this.kv = browserStore();
     this.draft = readDraft(this.kv);
+    this.ready = openVault(this.kv).then(async ({ vault, kept }) => {
+      this.vault = vault;
+      if (kept) this.storageNote = "Some saved games couldn't be moved to this browser's larger storage yet. They are still kept and will be moved next time.";
+      await this.refresh();
+    }).catch(() => {
+      this.storageNote = "Saved games couldn't be opened in this browser. Reload to try again.";
+    }).finally(() => {
+      this.storageReady = true;
+      this.emit();
+    });
     document.addEventListener('visibilitychange', () => this.onVisibility());
     window.addEventListener('pagehide', () => this.suspend());
     window.addEventListener('storage', (e) => this.onStorage(e));
@@ -99,7 +128,22 @@ class Store {
 
   // ---------- saves list ----------
   saves(): SaveSummary[] {
-    return listSaves(this.kv);
+    return this.saveList;
+  }
+
+  private async v(): Promise<Vault> {
+    await this.ready;
+    if (!this.vault) throw new Error("Saved games aren't available in this browser.");
+    return this.vault;
+  }
+
+  /** Re-read the list of saves, recovery copies and storage use after anything that changed them. */
+  async refresh() {
+    if (!this.vault) return;
+    this.saveList = await this.vault.saves();
+    this.copies = this.vault.recoveryCopies();
+    this.use = await this.vault.storageUse();
+    this.emit();
   }
 
   // ---------- creation draft ----------
@@ -122,7 +166,7 @@ class Store {
     this.draft = null;
     this.emit();
   }
-  begin(): string | null {
+  async begin(): Promise<string | null> {
     if (!this.draft) return 'Your choices could not be found.';
     const saveId = `s${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
     let state: GameState;
@@ -131,7 +175,7 @@ class Store {
     } catch (e) {
       return e instanceof Error ? e.message : String(e);
     }
-    const res = writeSave(this.kv, state, Date.now());
+    const res = await this.write(state);
     if (!res.ok) return "Your game couldn't be saved, so it hasn't started. Free some browser storage and try again.";
     clearDraft(this.kv);
     this.draft = null;
@@ -144,9 +188,15 @@ class Store {
   open(saveId: string) {
     this.screen = 'loading';
     this.emit();
-    setTimeout(() => {
+    void (async () => {
       try {
-        const { state, recovery } = openSave(this.kv, saveId);
+        const v = await this.v();
+        const r = await v.forSave(saveId, (kv) => openSave(kv, saveId));
+        if (r.error) throw r.error;
+        // A backup or damaged copy made while opening must be stored before the game can change the save.
+        if (r.commitError) throw new Error("This save needs a backup before it opens, and there isn't room in browser storage. Free some space and try again.");
+        void this.refresh();
+        const { state, recovery } = r.value!;
         // The notice travels with the entry: entering can wait for holiday rules, and entering clears old notices.
         this.enter(state, recovery ? {
           title: 'Opened The Last Good Copy',
@@ -164,20 +214,20 @@ class Store {
         }
         this.emit();
       }
-    }, 0);
+    })();
   }
 
   /** Open a save after replacing the places it couldn't resolve. The untouched save is kept as a backup first. */
-  repairAndOpen(replacements: Record<string, Place>): string | null {
+  async repairAndOpen(replacements: Record<string, Place>): Promise<string | null> {
     if (!this.repair) return 'There is nothing to repair.';
-    try {
-      const state = repairSave(this.kv, this.repair.saveId, replacements, Date.now());
-      this.repair = null;
-      this.enter(state);
-      return null;
-    } catch (e) {
-      return e instanceof Error ? e.message : String(e);
-    }
+    const id = this.repair.saveId;
+    const r = await (await this.v()).forSave(id, (kv) => repairSave(kv, id, replacements, Date.now()));
+    if (r.error) return r.error instanceof Error ? r.error.message : String(r.error);
+    if (r.commitError) return "The repaired save couldn't be stored. Free some browser storage and try again.";
+    this.repair = null;
+    this.enter(r.value!);
+    void this.refresh();
+    return null;
   }
 
   private enter(state: GameState, notice: Notice | null = null) {
@@ -206,14 +256,12 @@ class Store {
     this.emit();
   }
 
-  takeOver() {
+  async takeOver() {
     if (!this.state) return;
     // Pick up the latest saved world from the other tab before running it here.
-    try {
-      this.state = openSave(this.kv, this.state.saveId).state;
-    } catch {
-      /* keep what we have */
-    }
+    const id = this.state.saveId;
+    const r = await (await this.v()).forSave(id, (kv) => openSave(kv, id).state);
+    if (r.value && !r.error && this.state?.saveId === id) this.state = r.value;
     this.readOnly = false;
     this.holdLock();
     this.resume();
@@ -257,7 +305,7 @@ class Store {
   async saveAndExit(): Promise<boolean> {
     if (!this.state) return true;
     this.suspendClock();
-    const ok = this.saveNow();
+    const ok = await this.saveNow();
     if (!ok) {
       this.resume();
       return false;
@@ -276,36 +324,34 @@ class Store {
     this.emit();
   }
 
-  deleteSave(saveId: string) {
-    deleteSave(this.kv, saveId);
-    this.emit();
+  async deleteSave(saveId: string) {
+    await (await this.v()).forSave(saveId, (kv) => deleteSave(kv, saveId));
+    await this.refresh();
   }
   recoveryCopies(): RecoveryCopy[] {
-    return listRecoveryCopies(this.kv);
+    return this.copies;
   }
-  storageUse(): StorageUse {
-    return storageUse(this.kv);
+  storageUse(): StorageReport {
+    return this.use ?? { usedChars: 0, limitChars: BROWSER_STORAGE_CHARS, bySave: {} };
   }
-  deleteRecoveryCopy(key: string) {
-    deleteRecoveryCopy(this.kv, key);
-    this.emit();
+  async deleteRecoveryCopy(key: string) {
+    await (await this.v()).work((k) => k === key, (kv) => deleteRecoveryCopy(kv, key));
+    await this.refresh();
   }
   /** Download one recovery copy exactly as stored, so it can be kept before it is deleted. */
-  exportRecoveryCopy(copy: RecoveryCopy): string | null {
-    const text = this.kv.getItem(copy.key);
+  async exportRecoveryCopy(copy: RecoveryCopy): Promise<string | null> {
+    const text = await (await this.v()).readText(copy.key);
     if (text === null) return 'That copy could not be found.';
     const name = this.saves().find((x) => x.saveId === copy.saveId)?.saveName ?? 'SLATE save';
     download(text, `${name} (${copy.kind} copy)`);
     return null;
   }
-  renameSave(saveId: string, name: string): string | null {
-    try {
-      const r = renameSave(this.kv, saveId, name);
-      this.emit();
-      return r.ok ? null : r.error === 'Enter a name.' ? r.error : "The new name couldn't be saved.";
-    } catch {
-      return "That save couldn't be opened to rename it.";
-    }
+  async renameSave(saveId: string, name: string): Promise<string | null> {
+    const r = await (await this.v()).forSave(saveId, (kv) => renameSave(kv, saveId, name));
+    if (r.error) return "That save couldn't be opened to rename it.";
+    await this.refresh();
+    if (r.commitError) return "The new name couldn't be saved.";
+    return r.value!.ok ? null : r.value!.error === 'Enter a name.' ? r.value!.error : "The new name couldn't be saved.";
   }
 
   // ---------- clock ----------
@@ -323,7 +369,19 @@ class Store {
   private suspend() {
     if (!this.state || this.readOnly) return;
     this.suspendClock();
-    this.saveNow();
+    this.writeJournal();
+    void this.saveNow();
+  }
+
+  /** The page may close before IndexedDB finishes: keep the game synchronously in localStorage until it does (vault.ts). */
+  private writeJournal() {
+    if (!this.state || this.readOnly) return;
+    try {
+      this.state.updatedAtReal = Date.now();
+      this.kv.setItem(journalKey(this.state.saveId), serialize(this.state));
+    } catch {
+      /* too large or full: the last stored save (at most about 30 seconds old) is what opens next time */
+    }
   }
   private onVisibility() {
     if (document.visibilityState === 'hidden') this.suspend();
@@ -348,7 +406,7 @@ class Store {
     if (res.processed > 0 || (s.log[0]?.id ?? '') !== before) this.changed();
     if (Date.now() - this.lastPeriodicSave > 30000) {
       this.lastPeriodicSave = Date.now();
-      this.saveNow();
+      void this.saveNow();
     }
   }
 
@@ -368,27 +426,72 @@ class Store {
   }
 
   private changed() {
+    this.changes += 1;
     this.emit();
     if (this.saveTimer) clearTimeout(this.saveTimer);
-    this.saveTimer = setTimeout(() => this.saveNow(), 1200);
+    // A long career's save takes longer to write (docs/STORAGE.md): wait longer before saving again after a change, so
+    // a burst of actions isn't followed by a write each. The 30-second save and the closing-page journal still apply.
+    this.saveTimer = setTimeout(() => void this.saveNow(), Math.min(10_000, Math.max(1200, this.lastWriteMs * 10)));
   }
 
-  saveNow(): boolean {
-    if (!this.state || this.readOnly) return false;
+  /** Write a game through the vault. "Saved" only when the vault has committed the save, its backup and the index. */
+  private async write(state: GameState): Promise<SaveResult> {
+    let v: Vault;
+    try {
+      v = await this.v();
+    } catch (e) {
+      return { ok: false, error: e instanceof Error ? e.message : String(e) };
+    }
+    const r = await v.forWrite(state.saveId, (kv) => writeSave(kv, state, Date.now()));
+    if (r.commitError) {
+      return isQuotaError(r.commitError) ? { ok: false, storageFull: true, error: 'The browser storage for SLATE is full.' } : { ok: false, error: r.commitError instanceof Error ? r.commitError.message : String(r.commitError) };
+    }
+    if (r.error) return { ok: false, error: r.error instanceof Error ? r.error.message : String(r.error) };
+    return r.value!;
+  }
+
+  /**
+   * Save the game being played. Saves never overlap: a request while one is being written runs once more afterwards,
+   * with the game as it is then, and every caller's promise settles after the last of them.
+   */
+  saveNow(): Promise<boolean> {
+    if (!this.state || this.readOnly) return Promise.resolve(false);
     if (this.saveTimer) clearTimeout(this.saveTimer);
-    this.saveStatus = 'saving';
-    this.emit();
-    const res = writeSave(this.kv, this.state, Date.now());
-    this.saveStatus = res.ok ? 'saved' : 'error';
-    this.saveError = res.ok ? '' : res.error;
-    this.saveStorageFull = !res.ok && !!res.storageFull;
-    this.emit();
-    return res.ok;
+    if (this.saving) {
+      this.saveAgain = true;
+      return this.saving;
+    }
+    this.saving = (async () => {
+      let ok = false;
+      let written = { changes: -1, now: -1 };
+      do {
+        this.saveAgain = false;
+        const state = this.state;
+        if (!state || this.readOnly) break;
+        if (ok && written.changes === this.changes && written.now === state.now) break; // nothing new since the last write
+        written = { changes: this.changes, now: state.now };
+        this.saveStatus = 'saving';
+        this.emit();
+        const t0 = performance.now();
+        const res = await this.write(state);
+        this.lastWriteMs = performance.now() - t0;
+        ok = res.ok;
+        if (ok) this.kv.removeItem(journalKey(state.saveId));
+        this.saveStatus = res.ok ? 'saved' : 'error';
+        this.saveError = res.ok ? '' : res.error;
+        this.saveStorageFull = !res.ok && !!res.storageFull;
+        this.emit();
+      } while (this.saveAgain);
+      this.saving = null;
+      void this.refresh();
+      return ok;
+    })();
+    return this.saving;
   }
 
   /** Download a save as a file: the game being played (from memory, so it works when storage is full) or a stored one. */
-  exportSave(saveId?: string): string | null {
-    const text = saveId && saveId !== this.state?.saveId ? this.kv.getItem(`slate.v1.save.${saveId}`) : this.state ? serialize(this.state) : null;
+  async exportSave(saveId?: string): Promise<string | null> {
+    const text = saveId && saveId !== this.state?.saveId ? await (await this.v()).readText(`slate.v1.save.${saveId}`) : this.state ? serialize(this.state) : null;
     if (!text) return 'That save could not be found.';
     const name = (saveId ? this.saves().find((x) => x.saveId === saveId)?.saveName : this.state?.saveName) ?? 'SLATE save';
     download(text, name);
@@ -433,7 +536,7 @@ class Store {
       this.notice = null;
     }
     this.changed();
-    this.saveNow();
+    void this.saveNow();
     this.resume();
   }
 
@@ -442,7 +545,7 @@ class Store {
     this.suspendClock();
     this.processingProblem = e instanceof Error ? e.message : String(e);
     this.notice = { title: 'Time Is Paused', text: this.processingProblem, kind: 'info' };
-    this.saveNow();
+    void this.saveNow();
     this.emit();
   }
 

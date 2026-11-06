@@ -1,4 +1,5 @@
 import { expect, type Page } from '@playwright/test';
+import { firstSaveId, readRecord } from './vault';
 
 export async function freshStart(page: Page): Promise<void> {
   await page.goto('/');
@@ -116,11 +117,15 @@ export async function staffEveryDepartment(page: Page): Promise<number> {
 
 /** The saved game as stored on disk; assertions run in the test, not in the page. */
 export async function readSavedState(page: Page): Promise<any> { // eslint-disable-line @typescript-eslint/no-explicit-any
-  return page.evaluate(() => {
-    const key = Object.keys(localStorage).find((k) => /^slate\.v1\.save\.[^.]+$/.test(k));
-    if (!key) return null;
-    return JSON.parse(JSON.parse(localStorage.getItem(key)!).data);
-  });
+  const id = await firstSaveId(page).catch(() => null);
+  if (!id) return null;
+  return JSON.parse(JSON.parse((await readRecord(page, `slate.v1.save.${id}`))!).data);
+}
+
+/** Save And Exit, waiting until the save is stored and the start screen is back. */
+export async function saveAndExit(page: Page): Promise<void> {
+  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  await expect(page.getByRole('button', { name: 'Continue', exact: true })).toBeVisible();
 }
 
 export async function quickLife(page: Page, startPlaceId: string, startDate: string): Promise<void> {

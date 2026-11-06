@@ -931,8 +931,24 @@ function generatedRivals(state: GameState, ed: Edition, cat: Category, n: number
 
 /** The title of a competing work in an edition, by its entry ID. */
 export function rivalTitle(state: GameState, ed: Edition, id: string): string | undefined {
+  if (ed.compact) return state.rivalFilms[id]?.title;
   const r = ed.rivals.find((x) => x.id === id);
   return r ? state.rivalFilms[r.film]?.title : undefined;
+}
+
+/**
+ * A finished edition keeps who was selected, nominated and won, but not the competing works' strengths, which only
+ * mattered while judging (measured: about half of a long career's save). Idempotent.
+ */
+export function compactEdition(ed: Edition): void {
+  if (ed.compact || ed.status !== 'complete') return;
+  const film = new Map(ed.rivals.map((r) => [r.id, r.film]));
+  for (const r of Object.values(ed.results)) {
+    r.rivalIds = r.rivalIds.map((id) => film.get(id) ?? id);
+    if (r.winner && film.has(r.winner)) r.winner = film.get(r.winner);
+  }
+  ed.rivals = [];
+  ed.compact = true;
 }
 
 function playerScore(p: Project, cat: Category, recipients: string[], judging: Judging): number {
@@ -1177,6 +1193,7 @@ registerHandler('edition-results', (state, ev) => {
     }
   }
   ed.status = 'complete';
+  compactEdition(ed);
   for (const m of messages) addLog(state, m, inst.kind === 'festival' ? 'festival' : 'award', { route: { view: 'event', editionId: ed.id } });
   return messages.length ? { message: messages[0] } : { suppressInterrupt: true };
 });
@@ -1275,4 +1292,14 @@ export function migrateV2toV3(raw: Record<string, unknown>): Record<string, unkn
   });
   events.sort((a, b) => a.at - b.at || a.priority - b.priority || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
   return { ...raw, editions, events, rivalFilms: films };
+}
+
+/** Version 4: finished editions are compacted (compactEdition). */
+export function migrateV3toV4(raw: Record<string, unknown>): Record<string, unknown> {
+  const editions = ((raw.editions as Edition[] | undefined) ?? []).map((e) => {
+    const ed: Edition = { ...e, results: Object.fromEntries(Object.entries(e.results ?? {}).map(([k, r]) => [k, { ...r, rivalIds: [...r.rivalIds] }])), rivals: [...(e.rivals ?? [])] };
+    compactEdition(ed);
+    return ed;
+  });
+  return { ...raw, editions };
 }

@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 3;
+export const SAVE_VERSION = 4;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -553,6 +553,11 @@ export interface Edition {
   rulesId?: string;
   /** With a rulebook: the general deadline for categories that have no deadline of their own (`deadline` is the latest). */
   defaultDeadline?: number;
+  /**
+   * Set once results are final: `rivals` is emptied (strengths only matter while judging) and each result's rivalIds and
+   * winner name films directly (keys of GameState.rivalFilms). Titles, nominees, winners and entries are all kept.
+   */
+  compact?: true;
 }
 
 /** A public screening of a selected project. The invitation to attend is separate from the selection itself. */

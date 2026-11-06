@@ -119,6 +119,12 @@ export function validateGameState(raw: unknown): asserts raw is GameState {
       need(isObj(r) && isId(r.id) && isStr(r.film) && isNum(r.score), `a competing work in ${e.id}`, 'is malformed');
       need(Object.hasOwn(films, (r as Obj).film as string), `a competing work in ${e.id}`, 'refers to a film that is missing');
     }
+    if (e.compact) {
+      need((e.rivals as unknown[]).length === 0, `the ${e.id} edition`, 'is marked final but still has competing works');
+      for (const r of Object.values(e.results as Obj)) {
+        need(isObj(r) && Array.isArray(r.rivalIds) && (r.rivalIds as unknown[]).every((k) => isStr(k) && Object.hasOwn(films, k)), `the results of ${e.id}`, 'name a film that is missing');
+      }
+    }
   }
 }
 

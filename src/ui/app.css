@@ -21,6 +21,7 @@ h3 { font-size: var(--size-md); }
 p { margin: 0 0 var(--s3); overflow-wrap: anywhere; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+[hidden] { display: none !important; }
 .skip-link { position: absolute; left: var(--s3); top: -60px; z-index: 100; background: var(--accent); color: var(--text-inverse); padding: var(--s2) var(--s4); border-radius: var(--radius-sm); }
 .skip-link:focus { top: var(--s3); }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
