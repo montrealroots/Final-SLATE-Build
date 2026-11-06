@@ -69,6 +69,8 @@ export async function nav(page: Page, label: 'Home' | 'Calendar' | 'Projects' | 
 
 export async function section(page: Page, label: string): Promise<void> {
   const tab = page.getByRole('tab', { name: label, exact: true });
+  // Project screens load on first use; wait for the tabs (desktop) or the section selector (phone).
+  await expect(tab.or(page.getByRole('combobox', { name: 'Project Sections' }))).toBeVisible();
   if (await tab.isVisible()) await tab.click();
   else await page.getByRole('combobox', { name: 'Project Sections' }).selectOption({ label });
 }

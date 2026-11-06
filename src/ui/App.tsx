@@ -1,10 +1,15 @@
+import { lazy, Suspense } from 'react';
 import { Creation } from './Creation';
-import { EventDetail } from './FinishViews';
-import { NewProject, ProjectWorkspace, ProjectsList } from './Projects';
 import { Shell } from './Shell';
 import { Startup } from './Startup';
 import { useStore } from './store';
 import { CalendarView, Home, PlaceView, Profile } from './World';
+
+// Project and event screens load on first use to keep startup small.
+const ProjectsList = lazy(() => import('./Projects').then((m) => ({ default: m.ProjectsList })));
+const NewProject = lazy(() => import('./Projects').then((m) => ({ default: m.NewProject })));
+const ProjectWorkspace = lazy(() => import('./Projects').then((m) => ({ default: m.ProjectWorkspace })));
+const EventDetail = lazy(() => import('./FinishViews').then((m) => ({ default: m.EventDetail })));
 
 export function App() {
   const s = useStore();
@@ -13,6 +18,7 @@ export function App() {
   const v = s.route.view;
   return (
     <Shell>
+      <Suspense fallback={<p role="status">Loading…</p>}>
       {v === 'home' && <Home />}
       {v === 'calendar' && <CalendarView />}
       {v === 'place' && <PlaceView />}
@@ -21,6 +27,7 @@ export function App() {
       {v === 'new-project' && <NewProject />}
       {v === 'project' && <ProjectWorkspace />}
       {v === 'event' && <EventDetail />}
+      </Suspense>
     </Shell>
   );
 }

@@ -48,6 +48,37 @@ Browser journeys use the real interface through Playwright 1.63.0 and Chromium (
 
 **Bugs found and fixed while doing this:** phone calendar entry counts were hidden by CSS order; the drawer didn't move focus; waiting tasks gave no reason; the native rename prompt was replaced with a dialog; status chips weren't in Title Case.
 
+### 5. Media Journeys To Delivery (Desktop, `e2e/journeys.spec.ts`)
+
+Each journey uses shared helpers that play a project the way a player would:
+- Cast through Find Performers, trying the next person when an offer is refused.
+- Staff each department from reviewed proposals.
+- Build the schedule, then advance week by week, re-offering declined roles.
+- Mark facts as checked once research is done.
+- Cut, lock picture and deliver.
+
+| Journey | What Was Checked | Outcome |
+| --- | --- | --- |
+| 2D drawn short "Paper Kite" (Los Angeles) | Voice cast credits; digital self-release, then released; Annie Awards 2027 entry for Best Short Subject meets the rules; nominations; winner shown after the ceremony | Delivered and released. In the recorded run the entry was **Not Nominated**, and the category winner was public after the February 28, 2027 ceremony. |
+| Hybrid short "Bramblewood" (London) | A live-action Kitchen scene is shot on scheduled days; the 3D Burrow scene is animated and plate-integrated, never "shot"; the CG character has a voice credit | Delivered |
+| Documentary short "Lock Keepers" (Amsterdam) | Three consent requests, then a sequence with a consenting contributor; Researcher credited; no Cast credits | Delivered (the test skips if all three decline, about 1 in 100 worlds) |
+| TV limited series "Night Ward" (Atlanta) | Episode Writers And Directors panel; showrunner credit; Marcus credited for episode 1 only, Dr. Ines Park for episodes 1 and 2 | Delivered |
+| Web series "Tiny Flat" (Sydney) | One assembly edit per episode; the player stayed behind the camera, so has no Cast credit | Delivered |
+
+**Bugs found and fixed:**
+- The award test first stopped at "Not Nominated", before the ceremony; it now waits for the results.
+- The helpers reused stale button lists and left a refused offer's dialog open; they now re-query after every click and close the dialog.
+
+### 6. WebKit iPhone Emulation (`iphone-15-plus`, `iphone-15-pro-max`, `iphone-15-pro-max-landscape`)
+
+Playwright's WebKit iPhone 15 Plus and 15 Pro Max profiles (430×739 portrait, 814×380 landscape) ran with the WebKit build installed in this environment. On both portrait profiles:
+- The full live-action journey passed.
+- Tap navigation through the drawer worked.
+- No screen or project section scrolls sideways.
+- A focused field lower on the New Script form stays in view.
+
+**This is WebKit emulation, not Safari on a physical iPhone.** The on-screen keyboard can't be emulated.
+
 ## Engine Journeys (`npm test`, Exit 0: 37 Passed)
 
 | Journey | File | Outcome |
@@ -64,8 +95,7 @@ Browser journeys use the real interface through Playwright 1.63.0 and Chromium (
 
 ## Not Played Through The Browser
 
-- Delivery of animation, stop-motion, hybrid, documentary and TV projects (verified at engine level instead).
-- Award nominations and ceremonies.
-- Distribution offers and accepting them.
-- A short-form web series.
-- Physical devices and Safari.
+- Stop-motion and 3D delivery (3D is played through production, not to delivery; both are verified to delivery at engine level).
+- Accepting a distribution offer (the journey accepts one only if a distributor makes one; the engine path is tested).
+- Unscripted TV and motion capture through the UI (engine tests only).
+- Physical devices and real Safari.

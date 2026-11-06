@@ -23,7 +23,7 @@ Tests: `F` = `tests/foundation.test.ts`, `J` = `tests/journeys.test.ts`, `M` = `
 | One tab per save | Second tab | Save lock | Lock key | Read-only banner, Take Over Here | F, E3 | Tested |
 | Advance and Sleep share event rules; exact-once events | Advance, Sleep | `processUntil` | Events consumed once | Stop notices, wake message, snooze | F | Tested |
 | Time zones, gaps, overlaps, month-end clamp, leap days, age | Dates | `time.ts` | Instants | Local dates everywhere | F | Tested |
-| Holidays with observed rules | Country and region | Calendar, production working days, holiday premium | Schedule dates | Calendar, Home, Place | F, E3 (December 25 in Norway) | Tested; lunar holidays not built |
+| Holidays with observed rules | Country and region | Calendar, production working days, holiday premium, China make-up working days | Schedule dates | Calendar, Home, Place; expected dates labelled | F, E3 (December 25 in Norway), `tests/lunar-mocap.test.ts` | Tested; lunar holidays for 2026 only |
 | Daylight and polar conditions | Coordinates | Home, Place, exterior shoot check | Shoot outcome | "The sun won't rise today" | F, E3 | Tested |
 | Weather, forecasts, certainty | Place, date, seed | Home, Place, weather warning, exterior shoot result | Lost or compromised scenes | Warnings with Swap or Keep choices | F, J | Tested, modeled |
 | Birthdays and leap-day policy | Birth date | Event queue | Log | "Today is your birthday" | F | Tested |
@@ -45,15 +45,15 @@ Tests: `F` = `tests/foundation.test.ts`, `J` = `tests/journeys.test.ts`, `M` = `
 | Finite render capacity | Render nodes | Render tasks | Render costs | Blocked reason | M, B | Tested |
 | Documentary: consent, facts, archive, no dialogue | Contributors, facts | Shoot days, delivery gate | Consent records | Consent notices | M, E2 | Tested |
 | TV: episodes, episode credits, shared sets, showrunner | Episodes | Tasks per episode, credits | Credits | Release tab | M | Tested |
-| Unscripted TV format rules | Format | Documentary pipeline | — | — | — | Partial |
-| Motion-capture sessions | Performance method | — | — | — | — | Not Built (noted) |
+| Unscripted TV format rules | Format rules, hosts, participants, segments | Readiness, multi-camera shoot rule, logging and story tasks | Tasks, credits | Format Rules panel, blocked reasons | `tests/unscripted.test.ts` | Tested (engine); no browser journey |
+| Motion-capture sessions | Performance method | Capture tasks gate animation | Capture costs, Performance Capture credit | Production tab | `tests/lunar-mocap.test.ts` | Tested (engine) |
 | Edit, lock, pickups, delivery gate | Edit tab | Post tasks | Edit state | Lock and delivery blockers | J, E1 | Tested |
 | Credits from actual contributions | Delivery | Credits | Locked credits | Release tab, Profile | J, M, E1 | Tested |
 | Release routes and distributors | Release form, offers | Release events, eligibility | Releases, premiere | Release tab | Code | Implemented; release routes not e2e-tested |
-| Festival and award editions, eligibility, submission, results once, credited recipients | Submissions | Editions | Entries, results | Event detail, Profile honors | J, G, E1 | Tested (festival path); award nominations covered by the shared engine, not directly tested |
+| Festival and award editions, eligibility, submission, screenings, results once, credited recipients, season rivals | Submissions | Editions | Entries, results, screenings | Event detail, Calendar, Profile honors | J, G, E1, `e2e/journeys.spec.ts` (Annie Awards through the ceremony), `tests/season.test.ts` | Tested |
 | Premiere status affects other festivals | Releases, premieres | `checkEligibility` | — | Reasons listed | Code | Implemented; not tested |
 | Official versus simulated dates labeled | Edition data | Event detail | — | Provenance line | Code | Implemented |
-| Desktop and mobile parity, no overflow | Viewports | CSS, components | — | — | E1 (phone), E3 (10 sizes) | Tested in emulation only |
+| Desktop and mobile parity, no overflow | Viewports | CSS, components | — | — | E1 (phone), E3 (10 sizes), `e2e/devices.spec.ts` (WebKit iPhone 15 Plus and Pro Max) | Tested in emulation only |
 | Title Case labels, sentence-case prose, no jargon or IDs | All copy | — | — | — | E3 content check, review | Partly tested |
 | No tutorial or excluded systems | — | — | — | — | E3 | Tested |
 | Accessibility basics (labels, focus, Escape, skip link) | Keyboard | Modal, drawer | — | — | E3 | Tested (keyboard); screen reader not tested |

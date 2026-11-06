@@ -24,25 +24,22 @@ This repository is the continuing base for the game. It is a working, tested bas
 - **Production by medium:**
   - Live action uses shoot days grouped by location, with weather, daylight, staffing, safety specialists, presence on set and holiday rules.
   - Drawn and rigged 2D, 3D CG (models, rigs, layout, animation, effects, lighting, finite render capacity) and stop motion (armatures, puppets, costume fitting, miniature sets, stages, the rule that a puppet can be on only one stage at a time, repairs).
-  - Hybrid, documentary (contributors, consent, fact checks, archive licensing) and TV episodes.
+  - Hybrid, documentary (contributors, consent, fact checks, archive licensing), TV episodes, motion-capture sessions, and unscripted TV (format rules, hosts and participants, multi-camera segments, footage logging, story producing).
 - **Finishing:** assembly, cut passes, coverage gaps and pickups, picture lock (with commissioner approval where agreed), sound, score, color, captions, quality control, then delivery.
 - **After delivery:**
   - Credits based on actual contributions, including per-episode credits.
   - Fictional distribution offers and release planning.
-  - 16 festivals and 21 award events (137 sections and categories) with eligibility checks, submission, selection or nomination, results saved once, and honors that go to the credited people.
+  - 16 festivals and 21 award events (137 sections and categories) with eligibility checks, submission, selection or nomination, screenings, results saved once, and honors that go to the credited people. Rival work comes from a consistent slate each season.
 
 ## Current Limitations
 
 - Festival and award **rules are simulated game rules**, not official rulebooks. Dates are simulated except the officially announced editions recorded in `docs/DATA-PROVENANCE.md` (99th and 100th Academy Awards, FESPACO 2027).
 - Weather is **modeled** from typical climate, not observed data. The place list is a curated set of cities, not every settlement.
-- Lunar and lunisolar holidays (for example Lunar New Year, Eid, Diwali) and government-announced holiday moves are not modeled.
+- Lunar-calendar holidays are included only for 2026, from sourced tables: China's official arrangement, South Korea's dates, and expected Eid dates labelled as expected. Later years and Diwali are not included yet.
 - Rates, fees, throughput and quality assessments are **simulation assumptions** (`docs/ASSUMPTIONS.md`), not real salaries or measures of artistic merit.
-- Not modeled yet:
-  - Motion-capture sessions as separate production work.
-  - A dedicated unscripted-TV format engine (unscripted series use the documentary pipeline).
-  - Personal finances, reputation and offers from other producers.
+- Not modeled yet: personal finances, reputation, and offers from other producers.
 - Saves live in this browser's local storage. Clearing site data deletes them.
-- Browser testing used Chromium at emulated sizes. No physical iPhone or Safari testing has been done.
+- Browser testing used Chromium at emulated sizes and WebKit with iPhone 15 Plus and 15 Pro Max profiles. No physical iPhone or real Safari testing has been done.
 - There is no tutorial. One will be designed separately.
 
 ## Requirements
@@ -82,7 +79,8 @@ npm run build
 
 - `npm run dev` starts the game at http://localhost:5173.
 - `npm test` runs the unit and engine journey tests (Vitest).
-- `npm run e2e` runs the browser journeys and layout checks (Playwright; it starts its own dev server on port 5174).
+- `npm run e2e` runs the browser journeys, layout checks and WebKit iPhone emulation (Playwright; it starts its own dev server on port 5174). In this cloud environment the WebKit projects use the installed WebKit build; set `SLATE_WEBKIT_PATH` to change it.
+- `npm run catalog` regenerates the runtime genre catalog from the full registry.
 - `npm run balance` runs the 30-seed balance experiments and writes `docs/balance-results.json`.
 - `npm run check` runs typecheck, unit tests and build together.
 
