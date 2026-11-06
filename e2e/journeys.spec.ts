@@ -1,5 +1,5 @@
-import { expect, test, type Page } from '@playwright/test';
-import { addScene, advance, creditsTable, nav, produceToDelivery, quickLife, readSavedState, saveAndApprove, section, saveAndExit } from './helpers';
+import { expect, test, type Page } from './test';
+import { addScene, advance, creditsTable, nav, produceToDelivery, quickLife, readSavedState, saveAndApprove, section, saveAndExit, seededLife } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
@@ -121,8 +121,13 @@ test('hybrid: a live-action scene and a 3D scene share one production', async ({
   expect(credits).toMatch(/Voice Cast[\s\S]*as Sprite/);
 });
 
-test('documentary: consent and fact checks gate delivery', async ({ page }) => {
-  await quickLife(page, 'nl-amsterdam', '2026-03-02');
+// World seeds for the consent journeys (labelled fixtures, see seededLife): with seed 2 everyone asked agrees; with
+// seed 3 the documentary's third contributor declines. Each answer is drawn from the seed, the project and the person.
+const ALL_AGREE = 2;
+const ONE_DECLINES = 3;
+
+async function lockKeepers(page: Page, seed: number): Promise<void> {
+  await seededLife(page, 'nl-amsterdam', '2026-03-02', seed);
   await newProject(page, { title: 'Lock Keepers', format: 'Documentary Short', runtime: '6' });
   for (const [n, r] of [['Joost de Vries', 'Lock keeper'], ['Fenna Bakker', 'Historian'], ['Ruud Smit', 'Boat owner']]) {
     await page.getByLabel('Contributor Name').fill(n);
@@ -137,17 +142,30 @@ test('documentary: consent and fact checks gate delivery', async ({ page }) => {
   await advance(page, 'week');
   await advance(page, 'week');
   await section(page, 'Script');
-  const given = [];
-  for (const n of ['Joost de Vries', 'Fenna Bakker', 'Ruud Smit']) {
-    if (await page.locator('li', { hasText: n }).getByText('Consent Given').isVisible()) given.push(n);
-  }
-  test.skip(given.length === 0, 'All three contributors declined in this seeded world (about 1 in 100).');
-  await addScene(page, { index: 0, place: 'Lock House', contributors: [given[0]], minutes: '2', episodeButton: 'Add Sequence' });
+}
+
+const consentOf = (page: Page, name: string) => page.locator('li', { hasText: name }).locator('.chip');
+
+test('documentary: consent and fact checks gate delivery', async ({ page }) => {
+  await lockKeepers(page, ALL_AGREE);
+  for (const n of ['Joost de Vries', 'Fenna Bakker', 'Ruud Smit']) await expect(consentOf(page, n)).toHaveText('Consent Given');
+  await addScene(page, { index: 0, place: 'Lock House', contributors: ['Joost de Vries'], minutes: '2', episodeButton: 'Add Sequence' });
   await saveAndApprove(page);
   await produceToDelivery(page, {});
   const credits = await creditsTable(page);
   expect(credits).toContain('Researcher');
   expect(credits).not.toMatch(/^(Cast|Voice Cast|Performance Capture)\t/m); // a documentary has no cast credits (a name may contain "Cast")
+});
+
+test('documentary: a contributor who declines is told apart, and the player is told why their scenes cannot be filmed', async ({ page }) => {
+  await lockKeepers(page, ONE_DECLINES);
+  await expect(consentOf(page, 'Joost de Vries')).toHaveText('Consent Given');
+  await expect(consentOf(page, 'Fenna Bakker')).toHaveText('Consent Given');
+  await expect(consentOf(page, 'Ruud Smit')).toHaveText('Consent Declined');
+  const log = (await readSavedState(page)).log.map((l: { text: string }) => l.text);
+  expect(log).toContain("Ruud Smit declined to take part in Lock Keepers. Scenes with Ruud Smit can't be filmed; you can remove them or find another contributor.");
+  // Nobody can be asked twice.
+  await expect(page.getByRole('button', { name: 'Request Consent' })).toHaveCount(0);
 });
 
 test('TV limited series: episodes, a guest role and episode-level credits', async ({ page }) => {
@@ -226,8 +244,8 @@ test('stop motion to delivery: puppets, sets and stages', async ({ page }) => {
   await expect(page.getByText('Ready for the stage.')).toBeVisible();
 });
 
-test('unscripted series: format rules, hosts and participants, story producing per episode', async ({ page }) => {
-  await quickLife(page, 'gb-london', '2026-03-02');
+async function bakeOrBreak(page: Page): Promise<void> {
+  await seededLife(page, 'gb-london', '2026-03-02', ALL_AGREE);
   await newProject(page, { title: 'Bake Or Break', format: 'Unscripted Series', episodes: '2', runtime: '20' });
   await expect(page.getByRole('heading', { name: 'Format Rules' })).toBeVisible();
   await expect(page.getByText('Write the format rules for your show.')).toBeVisible();
@@ -249,15 +267,17 @@ test('unscripted series: format rules, hosts and participants, story producing p
   await advance(page, 'week');
   await advance(page, 'week');
   await section(page, 'Script');
-  const given: string[] = [];
-  for (const n of ['Priya Shah', 'Tom Ellery', 'Ana Ruiz', 'Ken Mori']) if (await page.locator('li', { hasText: n }).getByText('Consent Given').isVisible()) given.push(n);
-  test.skip(given.length < 2, 'Fewer than two contributors agreed in this seeded world.');
-  await addScene(page, { index: 0, place: 'Tent', contributors: given.slice(0, 2), minutes: '8', episodeButton: 'Add Sequence To Episode 1' });
-  await addScene(page, { index: 1, place: 'Tent', contributors: given.slice(0, 2), minutes: '8', episodeButton: 'Add Sequence To Episode 2' });
+  for (const n of ['Priya Shah', 'Tom Ellery', 'Ana Ruiz', 'Ken Mori']) await expect(consentOf(page, n)).toHaveText('Consent Given');
+  await addScene(page, { index: 0, place: 'Tent', contributors: ['Priya Shah', 'Tom Ellery'], minutes: '8', episodeButton: 'Add Sequence To Episode 1' });
+  await addScene(page, { index: 1, place: 'Tent', contributors: ['Priya Shah', 'Tom Ellery'], minutes: '8', episodeButton: 'Add Sequence To Episode 2' });
   await saveAndApprove(page);
+}
+
+test('unscripted series: format rules, hosts and participants, story producing per episode', async ({ page }) => {
+  await bakeOrBreak(page);
   // Withdrawal is offered with its consequence, and can be backed out of.
   await page.getByRole('button', { name: 'Record Withdrawal' }).first().click();
-  await expect(page.getByText(/will be redacted by your editor before those episodes can be delivered/)).toBeVisible();
+  await expect(page.getByText(/Nothing has been filmed with them yet. Scenes with them can't be filmed now/)).toBeVisible();
   await page.getByRole('button', { name: 'Keep Them In The Show' }).click();
   await section(page, 'Crew');
   await expect(page.getByText('Story Producer', { exact: true })).toBeVisible();
@@ -266,6 +286,24 @@ test('unscripted series: format rules, hosts and participants, story producing p
   await section(page, 'Production');
   for (const t of ['Footage Logging, Episode 1', 'Story Producing, Episode 2']) await expect(page.getByText(t, { exact: true })).toBeVisible();
   expect(await creditsTable(page)).toContain('Story Producer');
+});
+
+test('unscripted series: a participant who withdraws before the shoot is recorded as withdrawn, and the game keeps saving', async ({ page }) => {
+  await bakeOrBreak(page);
+  const tom = page.locator('li', { hasText: 'Tom Ellery' });
+  await tom.getByRole('button', { name: 'Record Withdrawal' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Tom Ellery Withdraws?' });
+  await expect(dialog).toContainText("Nothing has been filmed with them yet. Scenes with them can't be filmed now, so take them out of those scenes or find someone else.");
+  await dialog.getByRole('button', { name: 'Record Withdrawal' }).click();
+  await expect(consentOf(page, 'Tom Ellery')).toHaveText('Withdrew');
+  await expect(tom.getByRole('button', { name: 'Record Withdrawal' })).toHaveCount(0);
+  await expect(consentOf(page, 'Priya Shah')).toHaveText('Consent Given'); // nobody else is affected
+  // The save after the withdrawal lands (this failed before November 6, 2026: a redaction of footage not yet shot).
+  await expect.poll(async () => (await readSavedState(page)).projects[0].contributors.find((c: { name: string }) => c.name === 'Tom Ellery').consent, { timeout: 15_000 }).toBe('withdrawn');
+  await expect(page.locator('.save-state')).toHaveText(/Saved/);
+  const p = (await readSavedState(page)).projects[0];
+  expect(p.tasks.filter((t: { kind: string }) => t.kind === 'unscripted:redact')).toEqual([]);
+  expect((await readSavedState(page)).log.map((l: { text: string }) => l.text)).toContain('Tom Ellery withdrew from Bake Or Break. They were not recorded.');
 });
 
 /** The in-game date shown in the header. */

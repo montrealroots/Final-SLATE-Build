@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { buildTasks, scriptIssues, neededRoles, processUntil, DAY, setFamily, setupCompetition, stillIn, withdrawRelease, deliveryBlockers, approvedScenes, depsMet } from './engine-api';
 import type { Contributor, GameState, Project } from '../src/engine/types';
+import { validateGameState } from '../src/engine/validate';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
 
 describe('unscripted TV', () => {
@@ -149,3 +150,39 @@ describe('unscripted families', () => {
     void depsMet;
   }, 60000);
 });
+
+describe('withdrawals', () => {
+  function show(tag: string) {
+    const s = startLife(tag, 'gb-london');
+    const p = buildProject(s, { title: 'Bake Or Break', format: 'unscripted-series', medium: 'live-action', episodes: 2, runtime: 20 }, [], []);
+    p.worldRules.push({ id: 'fr1', rule: 'Three bakers compete; one leaves each episode.', limit: '' });
+    p.contributors.push({ id: 'h1', name: 'Priya Shah', role: 'Host', consent: 'given' }, { id: 'c1', name: 'Tom Ellery', role: 'Participant', consent: 'given' });
+    const seg = (id: string, ep: number) => ({
+      id, episode: ep, heading: { intExt: 'INT' as const, place: 'Tent', time: 'DAY' as const }, storyLocation: 'Tent', participants: [], objective: 'Challenge', action: '', dialogue: [], turningPoint: '',
+      estMinutes: 8, props: [], animals: [], vehicles: [], stunts: '', crowd: 0, intimacy: false, water: false, vfx: [], songs: [], dance: false, kind: 'segment' as const,
+      basis: 'sourced' as const, contributorIds: ['h1', 'c1'], evidenceIds: [], intentionalDiscontinuity: false,
+    });
+    p.scenes.push(seg('s1', 1), seg('s2', 2));
+    approve(s, p);
+    return { s, p };
+  }
+
+  it('before the shoot there is nothing to redact: the withdrawal is recorded and the game still saves', () => {
+    const { s, p } = show('withdraw-early');
+    expect(withdrawRelease(s, p, 'c1')).toEqual([]);
+    expect(p.contributors.find((c) => c.id === 'c1')!.consent).toBe('withdrawn');
+    expect(p.tasks.some((t) => t.kind === 'unscripted:redact')).toBe(false);
+    expect(s.log.map((l) => l.text)).toContain('Tom Ellery withdrew from Bake Or Break. They were not recorded.');
+    expect(() => validateGameState(JSON.parse(JSON.stringify(s)))).not.toThrow();
+  });
+
+  it('a withdrawal refused because the picture is locked changes nothing', () => {
+    const { s, p } = show('withdraw-locked');
+    p.tasks = buildTasks(p); // footage is being logged
+    p.edit.pictureLocked = true;
+    const before = JSON.stringify(p);
+    expect(() => withdrawRelease(s, p, 'c1')).toThrow(/Unlock the picture first/);
+    expect(JSON.stringify(p)).toBe(before);
+  });
+});
+

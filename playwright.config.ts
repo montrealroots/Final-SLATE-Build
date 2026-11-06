@@ -6,6 +6,9 @@ import { defineConfig, devices } from '@playwright/test';
 const webkitPath = process.env.SLATE_WEBKIT_PATH ?? '/opt/pw-browsers/webkit-2386/pw_run.sh';
 const webkitLaunch = existsSync(webkitPath) ? { launchOptions: { executablePath: webkitPath } } : {};
 
+const prod = process.env.SLATE_E2E_PROD === '1';
+const port = prod ? 4175 : 5174;
+
 export default defineConfig({
   testDir: 'e2e',
   timeout: 240_000,
@@ -14,8 +17,11 @@ export default defineConfig({
   workers: 1,
   reporter: [['list']],
   outputDir: 'test-results',
-  use: { baseURL: 'http://localhost:5174', trace: 'off', screenshot: 'only-on-failure' },
-  webServer: { command: 'npx vite --port 5174 --strictPort', url: 'http://localhost:5174', reuseExistingServer: true, timeout: 60_000 },
+  use: { baseURL: `http://localhost:${port}`, trace: 'off', screenshot: 'only-on-failure' },
+  // SLATE_E2E_PROD=1 runs every journey against the production build (vite build, then vite preview) instead of the dev server.
+  webServer: prod
+    ? { command: `npx vite build && npx vite preview --port ${port} --strictPort`, url: `http://localhost:${port}`, reuseExistingServer: false, timeout: 180_000 }
+    : { command: `npx vite --port ${port} --strictPort`, url: `http://localhost:${port}`, reuseExistingServer: true, timeout: 60_000 },
   projects: [
     { name: 'desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 720 } } },
     { name: 'phone', use: { ...devices['Desktop Chrome'], viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } },

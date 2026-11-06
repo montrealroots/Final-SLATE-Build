@@ -1,5 +1,6 @@
 import { expect, type Page } from '@playwright/test';
-import { firstSaveId, readRecord } from './vault';
+import { hashString } from '../src/engine/rng';
+import { firstSaveId, readRecord, writeRecords } from './vault';
 
 export async function freshStart(page: Page): Promise<void> {
   await page.goto('/');
@@ -24,13 +25,22 @@ export interface CharacterOpts {
   startTime: string;
 }
 
+/**
+ * Go to the next creation step and wait until it has settled (it moves focus to its heading): text typed before then
+ * was lost in WebKit runs, about one in three on the production build.
+ */
+async function nextStep(page: Page, name: string): Promise<void> {
+  await page.getByRole('button', { name: `Next: ${name}` }).click();
+  await expect(page.getByRole('heading', { name, level: 1 })).toBeFocused();
+}
+
 export async function createCharacter(page: Page, o: CharacterOpts): Promise<void> {
   await page.getByRole('button', { name: 'New Game' }).first().click();
   await expect(page.getByRole('heading', { name: 'Your Name' })).toBeVisible();
   await page.getByRole('textbox', { name: 'Name' }).fill(o.name);
-  await page.getByRole('button', { name: 'Next: Pronouns' }).click();
+  await nextStep(page, 'Pronouns');
   await page.getByLabel('Pronouns').selectOption({ label: o.pronouns });
-  await page.getByRole('button', { name: 'Next: Background' }).click();
+  await nextStep(page, 'Background');
   for (const h of o.heritages) {
     await page.getByRole('searchbox', { name: 'Search Backgrounds' }).fill(h);
     await page.getByRole('button', { name: `Add A Background: ${h}` }).click();
@@ -39,22 +49,22 @@ export async function createCharacter(page: Page, o: CharacterOpts): Promise<voi
     await page.getByRole('textbox', { name: 'Describe Your Background' }).fill(o.customHeritage);
     await page.getByRole('button', { name: 'Add A Background', exact: true }).click();
   }
-  await page.getByRole('button', { name: 'Next: Languages' }).click();
+  await nextStep(page, 'Languages');
   await page.getByRole('searchbox', { name: 'Which language do you use most?' }).fill(o.mainLanguage);
   await page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button', { name: o.mainLanguage, exact: true }).click();
   for (const l of o.extraLanguages) {
     await page.getByRole('searchbox', { name: 'Add Language' }).fill(l);
     await page.getByRole('button', { name: `Add Language: ${l}` }).click();
   }
-  await page.getByRole('button', { name: 'Next: Birthday' }).click();
+  await nextStep(page, 'Birthday');
   await page.getByLabel('Birth Date').fill(o.birthDate);
   await pickPlace(page, 'Birthplace', o.birthplace, o.birthCountry);
-  await page.getByRole('button', { name: 'Next: Starting Date' }).click();
+  await nextStep(page, 'Starting Date');
   await page.getByLabel('Starting Date').fill(o.startDate);
   await page.getByLabel('Starting Time').fill(o.startTime);
-  await page.getByRole('button', { name: 'Next: Starting Location' }).click();
+  await nextStep(page, 'Starting Location');
   await pickPlace(page, 'Starting Location', o.start, o.startCountry);
-  await page.getByRole('button', { name: 'Next: Review' }).click();
+  await nextStep(page, 'Review');
   await expect(page.getByRole('heading', { name: 'Review', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
@@ -242,4 +252,25 @@ export async function produceToDelivery(page: Page, opts: { yourself?: string[];
 export async function creditsTable(page: Page): Promise<string> {
   await section(page, 'Release');
   return page.locator('section.panel', { hasText: 'Credits' }).first().innerText();
+}
+
+/**
+ * A new life whose world seed is fixed, so everything the game decides by chance (consent, hiring, weather) comes out
+ * the same on every run. Labelled fixture: the game is created through the UI, then its stored seed is replaced while
+ * no game is open (so no closing-page copy can bring the old one back), and it is opened again with Continue.
+ */
+export async function seededLife(page: Page, startPlaceId: string, startDate: string, seed: number): Promise<void> {
+  await quickLife(page, startPlaceId, startDate);
+  await saveAndExit(page);
+  const id = await firstSaveId(page);
+  const key = `slate.v1.save.${id}`;
+  const env = JSON.parse((await readRecord(page, key))!);
+  const state = JSON.parse(env.data);
+  state.seed = seed;
+  const data = JSON.stringify(state);
+  await writeRecords(page, { [key]: JSON.stringify({ ...env, checksum: hashString(data), data }) });
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  expect((await readSavedState(page)).seed).toBe(seed);
 }

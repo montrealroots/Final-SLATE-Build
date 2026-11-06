@@ -667,7 +667,9 @@ function WithdrawButton({ p, contributorId, name }: { p: Project; contributorId:
             <button className="btn btn-danger" onClick={() => { const e = store.act((s) => { withdrawRelease(s, s.projects.find((x) => x.id === p.id)!, contributorId); }); setError(e); if (!e) setOpen(false); }}>Record Withdrawal</button>
           </>
         }>
-          <p>{name} no longer agrees to appear. Footage already recorded with them will be redacted by your editor before those episodes can be delivered.</p>
+          <p>{name} no longer agrees to appear. {p.tasks.some((t) => t.id.startsWith('unscripted:logging:'))
+            ? 'Footage already recorded with them will be redacted by your editor before those episodes can be delivered.'
+            : "Nothing has been filmed with them yet. Scenes with them can't be filmed now, so take them out of those scenes or find someone else."}</p>
           {error && <p role="alert" className="error">{error}</p>}
         </Modal>
       )}

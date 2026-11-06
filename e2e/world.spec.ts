@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, expectErrors, test } from './test';
 import { createCharacter, freshStart, nav, quickLife } from './helpers';
 
 test('a life can start anywhere in the world, and world places travel and persist', async ({ page }) => {
@@ -34,10 +34,12 @@ test('a life can start anywhere in the world, and world places travel and persis
 });
 
 test('a failed place load offers Try Again and recovers', async ({ page }) => {
+  expectErrors('Aborts the Iceland places request.');
   await freshStart(page);
   let fail = true;
-  // Only the data fetch (no query string); the dev server also serves the shard's URL as a module.
-  await page.route((url) => url.pathname.endsWith('/IS.tsv') && !url.search, (route) => (fail ? route.abort() : route.continue()));
+  // Only the data fetch (no query string; the dev server also serves the shard's URL as a module). The production
+  // build names the file with a content hash (IS-<hash>.tsv).
+  await page.route((url) => /\/IS(-[\w-]+)?\.tsv$/.test(url.pathname) && !url.search, (route) => (fail ? route.abort() : route.continue()));
   // A draft paused at Birthday, so the test reaches the birthplace picker directly.
   await page.evaluate(() => localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
     step: 4, name: 'Test', pronouns: 'she', actingTitle: 'Actress', birthDate: '', birthplaceId: '', heritages: [{ id: 'Icelandic', label: 'Icelandic', custom: false }],
