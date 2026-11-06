@@ -108,7 +108,7 @@ export function ScriptTab({ p }: { p: Project }) {
         </section>
       )}
 
-      {mods.has('world-rules') && <WorldRules p={p} />}
+      {(mods.has('world-rules') || p.axes.format === 'unscripted-series') && <WorldRules p={p} title={p.axes.format === 'unscripted-series' ? 'Format Rules' : 'Story World Rules'} />}
       {(mods.has('clues') || mods.has('setups') || mods.has('threat') || p.setups.length > 0) && <Setups p={p} />}
       {(mods.has('relationships') || p.relationships.length > 0) && <Relationships p={p} />}
       {(nonfiction || mods.has('factual')) && <Facts p={p} />}
@@ -329,12 +329,12 @@ function Dialogue({ p, s, up }: { p: Project; s: Scene; up: (patch: Partial<Scen
   );
 }
 
-function WorldRules({ p }: { p: Project }) {
+function WorldRules({ p, title }: { p: Project; title: string }) {
   const [rule, setRule] = useState('');
   const [limit, setLimit] = useState('');
   return (
     <section className="panel">
-      <h2>Story World Rules</h2>
+      <h2>{title}</h2>
       <ul className="list">{p.worldRules.map((r) => <li key={r.id} className="row"><span className="grow"><strong>{r.rule}</strong>{r.limit ? <span className="muted"> Limit or cost: {r.limit}</span> : null}</span><button className="btn btn-small" onClick={() => edit(p, () => (p.worldRules = p.worldRules.filter((x) => x.id !== r.id)))}>Remove</button></li>)}</ul>
       <div className="inline-form">
         <TextField label="Rule" value={rule} onChange={setRule} />

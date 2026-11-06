@@ -29,3 +29,7 @@ Every number here is a game calibration value. None is a quoted real-world rate 
 | Judging | Noise by model: programmers 7, jury 9, members 5 plus up to 8 points of season visibility, audience 6. Rival strength depends on each event's prestige setting. | `awards.ts` |
 | Distribution | Zero to three fictional offers depending on reception and festival exposure; the minimum guarantee goes to project income | `finish.ts` |
 | Runtime classes | In this game, features run more than 40 minutes and shorts 40 or fewer | `awards.ts` |
+| Motion capture | One capture session per scene for each captured character; $1,500 stage cost per session; captured shots need 60% of the keyframe work | `production.ts` |
+| Unscripted TV | 1.5 days of footage logging and 1 day of story producing per segment; segments need a dedicated camera operator | `production.ts` |
+| Festival screenings | Two public screenings per selection, on day 2 at 7 PM and day 4 at 2 PM local time; audience response follows the reception assessment | `awards.ts` |
+| Rival slate | 120 simulated works per season (features, documentaries, shorts, series); strength N(62, 11) with role offsets N(0, 6); generated fill-ins only when the slate lacks eligible work | `awards.ts` |

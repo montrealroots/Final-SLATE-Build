@@ -58,6 +58,7 @@ export function neededRoles(p: Project, state?: GameState): NeededRole[] {
   if (p.cast.some((c) => c.performer === 'player') && live && p.episodes.some((e) => e.director === 'player')) {
     add('video-assist', "You're acting and directing. Playback helps you review your own takes.", false);
   }
+  if (p.axes.format === 'unscripted-series' && live) add('camera-operator', 'Segments are covered with more than one camera.', true);
   if (state && coachingNeeded(state, p).length) add('dialect-coach', 'Some performers need coaching in a dialogue language.', true);
   return [...out.values()].sort((a, b) => a.dept.localeCompare(b.dept) || roleLabel(a.roleId).localeCompare(roleLabel(b.roleId)));
 }
@@ -68,6 +69,10 @@ export function estimateDays(p: Project, roleId: string, characterId?: string, m
   const shootDays = p.schedule.days.length ? p.schedule.days.filter((d) => d.status === 'scheduled' || d.status === 'shot' || d.status === 'partial').length : estimatedShootDays(p);
   if (characterId) {
     if (method === 'voice') return Math.max(1, tasks.filter((t) => t.kind === 'anim:voice' && t.assetRef === characterId).length);
+    if (method === 'motion-capture') {
+      const cap = tasks.find((t) => t.kind === 'anim:mocap' && t.assetRef === characterId);
+      if (cap) return Math.max(1, Math.ceil(cap.units));
+    }
     const scenes = approvedScenes(p).filter((s) => s.participants.includes(characterId) && sceneTechnique(p, s) === 'live');
     const ratio = scenes.length / Math.max(1, approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live').length);
     return Math.max(1, Math.ceil(shootDays * Math.max(ratio, 0.15)) + Math.ceil(p.schedule.rehearsalDays / 2));
@@ -366,8 +371,9 @@ export function proposeStaffing(state: GameState, p: Project, dept: string): { p
   let budget = ledgerTotals(p).available;
   // Proposals cover required roles; optional ones stay a deliberate choice.
   for (const nr of neededRoles(p, state).filter((r) => r.dept === dept && r.required)) {
-    if (p.hires.some((h) => covers(h.roleId, nr.roleId) && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
-    if (proposals.some((x) => covers(x.roleId, nr.roleId))) continue;
+    const needsOwnPerson = nr.roleId === 'camera-operator' && p.axes.format === 'unscripted-series';
+    if (p.hires.some((h) => (needsOwnPerson ? h.roleId === nr.roleId : covers(h.roleId, nr.roleId)) && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
+    if (!needsOwnPerson && proposals.some((x) => covers(x.roleId, nr.roleId))) continue;
     const pool = roleCandidates(state, p, nr.roleId)
       .filter((c) => c.experience >= 2 && isAvailable(state, c, win.from, win.to, p.id).ok)
       .sort((a, b) => a.dayRate - b.dayRate);

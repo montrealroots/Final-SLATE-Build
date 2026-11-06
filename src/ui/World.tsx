@@ -54,7 +54,7 @@ export function Home() {
           <h2 id="today-h">Today</h2>
           <p>It's {t.time} on {t.weekday}, {t.date}. You're in {place.name}.</p>
           <p className="muted">{weatherLine}</p>
-          {hol.map((h) => <p key={h.name} className="muted">Today is {h.name} in {place.countryName}.</p>)}
+          {hol.map((h) => <p key={h.name} className="muted">{h.estimated ? `${h.name} is expected today in ${place.countryName}, depending on the moon sighting.` : `Today is ${h.name} in ${place.countryName}.`}</p>)}
           <button className="btn btn-small" onClick={() => store.go({ view: 'place', placeId: place.id })}>Weather And Place Details</button>
         </section>
         <section className="panel" aria-labelledby="next-h">
@@ -129,7 +129,7 @@ function calendarItems(g: GameState, year: number, month: number): Map<string, C
     if (obs.month === month) push(ymd(year, obs.month, obs.day), { label: `Your Birthday (${year - g.character.birth.year})`, kind: 'Birthdays' });
   }
   if (g.calendarFilters.includes('Holidays')) {
-    for (const h of holidaysForYear(place.country, place.regionCode, year)) if (h.date >= first && h.date <= last) push(h.date, { label: h.name, kind: 'Holidays' });
+    for (const h of holidaysForYear(place.country, place.regionCode, year)) if (h.date >= first && h.date <= last) push(h.date, { label: `${h.name}${h.estimated ? ' (Expected)' : ''}`, kind: 'Holidays' });
   }
   for (const ed of g.editions) {
     const inst = institution(ed.institutionId);
@@ -378,9 +378,9 @@ export function PlaceView() {
         <section className="panel" aria-labelledby="pl-hol">
           <h2 id="pl-hol">Upcoming Public Holidays</h2>
           {hasHolidayRules(place.country) ? (
-            <ul className="list">{hols.map((h) => <li key={h.date + h.name}>{formatDateKey(h.date, true)}: {h.name}</li>)}</ul>
+            <ul className="list">{hols.map((h) => <li key={h.date + h.name}>{formatDateKey(h.date, true)}: {h.name}{h.estimated ? ' (expected; depends on the moon sighting)' : ''}</li>)}</ul>
           ) : <p className="muted">Holiday dates for this country aren't included yet.</p>}
-          <p className="dim">Lunar-calendar observances aren't included yet.</p>
+          <p className="dim">Lunar-calendar holidays are included only for years with published dates.</p>
         </section>
         <section className="panel" aria-labelledby="pl-other">
           <h2 id="pl-other">Other Places</h2>

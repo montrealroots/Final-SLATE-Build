@@ -10,6 +10,7 @@ export interface Holiday {
   date: string; // local date key
   name: string;
   observedFor?: string; // set when this is a substitute day
+  estimated?: boolean; // lunar dates that depend on moon sighting
 }
 
 type Subst = 'none' | 'us' | 'next-weekday' | 'sun-to-mon';
@@ -19,6 +20,7 @@ interface Rule {
   regions?: string[];
   date: (year: number) => string | null;
   subst?: Subst;
+  fromYear?: number;
 }
 
 export function easterSunday(year: number): string {
@@ -220,6 +222,7 @@ const RULES: Record<string, Rule[]> = {
   KR: [
     fixed("New Year's Day", 1, 1), fixed('Independence Movement Day', 3, 1), fixed("Children's Day", 5, 5), fixed('Memorial Day', 6, 6),
     fixed('Liberation Day', 8, 15), fixed('National Foundation Day', 10, 3), fixed('Hangul Day', 10, 9), fixed('Christmas Day', 12, 25),
+    { ...fixed('Labour Day', 5, 1), fromYear: 2026 }, { ...fixed('Constitution Day', 7, 17), fromYear: 2026 },
   ],
   CN: [fixed("New Year's Day", 1, 1), fixed('Labour Day', 5, 1), fixed('Labour Day Holiday', 5, 2), fixed('National Day', 10, 1), fixed('National Day Holiday', 10, 2), fixed('National Day Holiday', 10, 3)],
   AU: [
@@ -235,6 +238,58 @@ const RULES: Record<string, Rule[]> = {
   ],
 };
 
+/**
+ * Dated tables, used instead of rules where a calendar can't be computed simply. Each year here is
+ * sourced (docs/DATA-PROVENANCE.md). Islamic dates depend on moon sighting and are marked estimated.
+ * Years not listed have no lunar holidays rather than invented ones.
+ */
+interface TableEntry {
+  date: string;
+  name: string;
+  estimated?: boolean;
+}
+const range = (from: string, to: string, name: string): TableEntry[] => {
+  const out: TableEntry[] = [];
+  for (let d = from; d <= to; d = addDaysToKey(d, 1)) out.push({ date: d, name });
+  return out;
+};
+/** China: the whole year comes from the State Council's notice, replacing the rules for that year. */
+const CN_OFFICIAL: Record<number, { holidays: TableEntry[]; workdays: string[] }> = {
+  2026: {
+    holidays: [
+      ...range('2026-01-01', '2026-01-03', "New Year's Day Holiday"), ...range('2026-02-15', '2026-02-23', 'Spring Festival Holiday'),
+      ...range('2026-04-04', '2026-04-06', 'Qingming Festival Holiday'), ...range('2026-05-01', '2026-05-05', 'Labour Day Holiday'),
+      ...range('2026-06-19', '2026-06-21', 'Dragon Boat Festival Holiday'), ...range('2026-09-25', '2026-09-27', 'Mid-Autumn Festival Holiday'),
+      ...range('2026-10-01', '2026-10-07', 'National Day Holiday'),
+    ],
+    workdays: ['2026-01-04', '2026-02-14', '2026-02-28', '2026-05-09', '2026-09-20', '2026-10-10'],
+  },
+};
+const KR_LUNAR: Record<number, TableEntry[]> = {
+  2026: [
+    { date: '2026-02-16', name: 'Seollal Holiday' }, { date: '2026-02-17', name: 'Seollal' }, { date: '2026-02-18', name: 'Seollal Holiday' },
+    { date: '2026-05-24', name: "Buddha's Birthday" }, { date: '2026-05-25', name: "Buddha's Birthday (Substitute Holiday)" },
+    { date: '2026-09-24', name: 'Chuseok Holiday' }, { date: '2026-09-25', name: 'Chuseok' }, { date: '2026-09-26', name: 'Chuseok Holiday' },
+  ],
+};
+/** Expected 2026 dates for the first day of each Eid; local announcements can move them by a day. */
+const ISLAMIC: Record<number, TableEntry[]> = {
+  2026: [{ date: '2026-03-20', name: 'Eid al-Fitr', estimated: true }, { date: '2026-05-27', name: 'Eid al-Adha', estimated: true }],
+};
+const ISLAMIC_COUNTRIES = new Set(['EG', 'MA', 'AE', 'SA', 'TR', 'NG', 'BF', 'KE']);
+
+function tableFor(country: string, year: number): TableEntry[] {
+  if (country === 'CN') return CN_OFFICIAL[year]?.holidays ?? [];
+  if (country === 'KR') return KR_LUNAR[year] ?? [];
+  if (ISLAMIC_COUNTRIES.has(country)) return ISLAMIC[year] ?? [];
+  return [];
+}
+
+/** Weekend days that are official working days (China's make-up days). */
+export function isMakeUpWorkday(country: string, date: string): boolean {
+  return country === 'CN' && (CN_OFFICIAL[Number(date.slice(0, 4))]?.workdays ?? []).includes(date);
+}
+
 const KR_SUBSTITUTE = new Set(['Independence Movement Day', "Children's Day", 'Liberation Day', 'National Foundation Day', 'Hangul Day', 'Christmas Day']);
 
 const cache = new Map<string, Holiday[]>();
@@ -247,9 +302,15 @@ export function holidaysForYear(country: string, regionCode: string | undefined,
   const key = `${country}|${regionCode ?? ''}|${year}`;
   const hit = cache.get(key);
   if (hit) return hit;
-  const rules = (RULES[country] ?? []).filter((r) => !r.regions || (regionCode && r.regions.includes(regionCode)));
+  const official = country === 'CN' && CN_OFFICIAL[year];
+  const rules = official ? [] : (RULES[country] ?? []).filter((r) => (!r.regions || (regionCode && r.regions.includes(regionCode))) && (!r.fromYear || year >= r.fromYear));
   const list: Holiday[] = [];
   const taken = new Set<string>();
+  for (const t of tableFor(country, year)) {
+    if (taken.has(t.date) && !t.estimated) continue;
+    list.push({ date: t.date, name: t.name, estimated: t.estimated });
+    taken.add(t.date);
+  }
   for (const r of rules) {
     const d = r.date(year);
     if (d) {

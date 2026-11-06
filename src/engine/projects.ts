@@ -250,7 +250,7 @@ export function blankScene(state: GameState, p: Project, episode = 1): Scene {
   return {
     id: newId(state, 's'), episode, heading: { intExt: 'INT', place: '', time: 'DAY' }, storyLocation: '', participants: [], objective: '', action: '',
     dialogue: [], turningPoint: '', estMinutes: 2, props: [], animals: [], vehicles: [], stunts: '', crowd: 0, intimacy: false, water: false, vfx: [],
-    songs: [], dance: false, kind: nonfiction ? 'interview' : 'scripted', basis: nonfiction ? 'sourced' : 'invented', contributorIds: [], evidenceIds: [],
+    songs: [], dance: false, kind: p.axes.format === 'unscripted-series' ? 'segment' : nonfiction ? 'interview' : 'scripted', basis: nonfiction ? 'sourced' : 'invented', contributorIds: [], evidenceIds: [],
     intentionalDiscontinuity: false,
   };
 }
@@ -332,6 +332,12 @@ export function scriptIssues(p: Project): Issue[] {
   const mods = projectModules(p);
   const nonfiction = isNonfiction(p.axes.format);
   if (!p.scenes.length) out.push({ severity: 'blocking', area: 'structure', text: 'Add at least one scene.' });
+  if (p.axes.format === 'unscripted-series') {
+    if (!p.worldRules.length) out.push({ severity: 'blocking', area: 'structure', text: 'Write the format rules for your show.' });
+    for (const s of p.scenes.filter((x) => x.kind === 'segment' && !x.contributorIds.length)) {
+      out.push({ severity: 'blocking', area: 'structure', text: `${sceneLabel(p, s)} has no host or participants.`, sceneId: s.id });
+    }
+  }
   for (let e = 1; e <= p.axes.episodeCount; e++) {
     if (isEpisodic(p.axes.format) && !p.scenes.some((s) => s.episode === e)) out.push({ severity: 'blocking', area: 'structure', text: `Episode ${e} has no scenes yet.` });
   }

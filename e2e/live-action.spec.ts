@@ -124,6 +124,8 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   const openRow = page.locator('li', { hasText: /Open To You/ }).first();
   await expect(openRow).toBeVisible();
   await openRow.getByRole('button').first().click();
+  // The event page loads on first use; wait for it before counting its actions.
+  await expect(page.getByRole('heading', { name: 'When And Where' })).toBeVisible();
   const prepare = page.getByRole('button', { name: 'Prepare Submission' });
   let submitted = false;
   for (let i = 0; i < await prepare.count() && !submitted; i++) {
