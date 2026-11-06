@@ -5,7 +5,7 @@ import {
   DAY, MINUTE, addLocal, ageOn, formatClock, localParts, localToInstant, observedBirthday, parseYmd, isDateKey,
 } from './time';
 import type {
-  Attention, CharacterIdentity, CreationDraft, GameState, LogEntry, Route, ScheduledEvent,
+  Attention, CharacterIdentity, CreationDraft, CreationStepId, GameState, LogEntry, Route, ScheduledEvent,
 } from './types';
 import { SAVE_VERSION } from './types';
 
@@ -16,15 +16,51 @@ export function newId(state: GameState, prefix: string): string {
 
 export function emptyDraft(): CreationDraft {
   return {
-    step: 0, name: '', pronouns: '', actingTitle: '', birthDate: '', birthplaceId: '', heritages: [], heritageCustomText: '',
+    step: 'name', name: '', pronouns: '', actingTitle: '', birthDate: '', birthplaceId: '', heritages: [], heritageCustomText: '',
     mainLanguage: '', languages: [], startPlaceId: '', startDate: '2026-01-05', startTime: '08:00', updatedAt: 0,
   };
+}
+
+/**
+ * Character creation's screens in order, with the fields each one owns. Everything that names a screen (navigation,
+ * validation, Review's edit actions, saved drafts) uses these ids, never a position.
+ */
+export const CREATION_STEPS: readonly { id: CreationStepId; title: string; fields: readonly (keyof CreationDraft)[] }[] = [
+  { id: 'name', title: 'Your Name', fields: ['name'] },
+  { id: 'pronouns', title: 'Pronouns', fields: ['pronouns', 'actingTitle'] },
+  { id: 'background', title: 'Background', fields: ['heritages', 'heritageCustomText'] },
+  { id: 'languages', title: 'Languages', fields: ['mainLanguage', 'languages'] },
+  { id: 'birthday', title: 'Birthday', fields: ['birthDate', 'birthplaceId'] },
+  { id: 'start-date', title: 'Starting Date', fields: ['startDate', 'startTime'] },
+  { id: 'start-location', title: 'Starting Location', fields: ['startPlaceId'] },
+  { id: 'review', title: 'Review', fields: [] },
+];
+export const creationStep = (id: CreationStepId) => CREATION_STEPS.find((x) => x.id === id)!;
+export const creationStepIndex = (id: CreationStepId) => CREATION_STEPS.findIndex((x) => x.id === id);
+
+/** A stored draft made safe to reopen: missing fields take their defaults, and an old numeric step becomes its id. */
+export function normalizeDraft(raw: unknown): CreationDraft | null {
+  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return null;
+  const r = raw as Record<string, unknown>;
+  const base = emptyDraft();
+  const d = { ...base, ...r } as CreationDraft;
+  const step = r.step;
+  d.step = typeof step === 'number' ? (CREATION_STEPS[Math.max(0, Math.min(CREATION_STEPS.length - 1, Math.trunc(step)))] ?? CREATION_STEPS[0]).id
+    : CREATION_STEPS.some((x) => x.id === step) ? (step as CreationStepId) : 'name';
+  for (const k of ['name', 'pronouns', 'actingTitle', 'birthDate', 'birthplaceId', 'heritageCustomText', 'mainLanguage', 'startPlaceId', 'startDate', 'startTime'] as const) {
+    if (typeof d[k] !== 'string') (d as unknown as Record<string, unknown>)[k] = base[k];
+  }
+  if (!Array.isArray(d.heritages)) d.heritages = [];
+  if (!Array.isArray(d.languages)) d.languages = [];
+  if (typeof d.updatedAt !== 'number') d.updatedAt = 0;
+  if (d.returnToReview !== true) delete d.returnToReview;
+  return d;
 }
 
 export interface DraftProblem {
   field: string;
   message: string;
-  step: number;
+  step: CreationStepId;
 }
 
 /** Validation for creation. Birth date is checked against the chosen start date. */
@@ -37,34 +73,34 @@ export function adoptPlace(state: GameState, place: Place): void {
 export function validateDraft(d: CreationDraft): DraftProblem[] {
   for (const pl of Object.values(d.places ?? {})) registerPlace(pl);
   const out: DraftProblem[] = [];
-  if (!d.name.trim()) out.push({ field: 'name', step: 0, message: 'Enter a name.' });
-  if (d.name.trim().length > 80) out.push({ field: 'name', step: 0, message: 'Use 80 characters or fewer.' });
-  if (!d.pronouns) out.push({ field: 'pronouns', step: 1, message: 'Choose pronouns.' });
-  if (!d.actingTitle) out.push({ field: 'actingTitle', step: 1, message: 'Choose an acting title.' });
+  if (!d.name.trim()) out.push({ field: 'name', step: 'name', message: 'Enter a name.' });
+  if (d.name.trim().length > 80) out.push({ field: 'name', step: 'name', message: 'Use 80 characters or fewer.' });
+  if (!d.pronouns) out.push({ field: 'pronouns', step: 'pronouns', message: 'Choose pronouns.' });
+  if (!d.actingTitle) out.push({ field: 'actingTitle', step: 'pronouns', message: 'Choose an acting title.' });
   // Real calendar dates only: Date.UTC would quietly turn 31 February into 3 March.
   const start = isDateKey(d.startDate) ? parseYmd(d.startDate) : null;
   const birth = isDateKey(d.birthDate) ? parseYmd(d.birthDate) : null;
   if (!birth) {
-    out.push({ field: 'birthDate', step: 4, message: 'Enter your birth date.' });
+    out.push({ field: 'birthDate', step: 'birthday', message: 'Enter your birth date.' });
   } else if (start) {
     const age = ageOn(birth, start);
     if (Date.UTC(birth.year, birth.month - 1, birth.day) > Date.UTC(start.year, start.month - 1, start.day)) {
-      out.push({ field: 'birthDate', step: 4, message: 'Your birth date must be before your starting date.' });
+      out.push({ field: 'birthDate', step: 'birthday', message: 'Your birth date must be before your starting date.' });
     } else if (age < 16) {
       // Working default: a configurable minimum so working-age rules can be added later.
-      out.push({ field: 'birthDate', step: 4, message: 'Your character must be at least 16 on the starting date.' });
+      out.push({ field: 'birthDate', step: 'birthday', message: 'Your character must be at least 16 on the starting date.' });
     } else if (age > 100) {
-      out.push({ field: 'birthDate', step: 4, message: 'Choose a birth date within the last 100 years.' });
+      out.push({ field: 'birthDate', step: 'birthday', message: 'Choose a birth date within the last 100 years.' });
     }
   }
-  if (!findPlace(d.birthplaceId)) out.push({ field: 'birthplaceId', step: 4, message: 'Choose a birthplace.' });
-  if (d.heritages.length === 0) out.push({ field: 'heritages', step: 2, message: 'Add at least one background, or describe your own.' });
-  if (!d.mainLanguage) out.push({ field: 'mainLanguage', step: 3, message: 'Choose your main language.' });
-  if (!findPlace(d.startPlaceId)) out.push({ field: 'startPlaceId', step: 6, message: 'Choose where your story begins.' });
+  if (!findPlace(d.birthplaceId)) out.push({ field: 'birthplaceId', step: 'birthday', message: 'Choose a birthplace.' });
+  if (d.heritages.length === 0) out.push({ field: 'heritages', step: 'background', message: 'Add at least one background, or describe your own.' });
+  if (!d.mainLanguage) out.push({ field: 'mainLanguage', step: 'languages', message: 'Choose your main language.' });
+  if (!findPlace(d.startPlaceId)) out.push({ field: 'startPlaceId', step: 'start-location', message: 'Choose where your story begins.' });
   if (!start || start.year !== 2026) {
-    out.push({ field: 'startDate', step: 5, message: 'Choose a date in 2026.' });
+    out.push({ field: 'startDate', step: 'start-date', message: 'Choose a date in 2026.' });
   }
-  if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(d.startTime)) out.push({ field: 'startTime', step: 5, message: 'Enter a time such as 08:00.' });
+  if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(d.startTime)) out.push({ field: 'startTime', step: 'start-date', message: 'Enter a time such as 08:00.' });
   return out;
 }
 

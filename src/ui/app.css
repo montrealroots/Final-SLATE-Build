@@ -78,6 +78,8 @@ input[aria-invalid='true'], select[aria-invalid='true'], textarea[aria-invalid='
 .kv { display: grid; grid-template-columns: minmax(110px, max-content) 1fr; gap: var(--s1) var(--s4); margin: 0; }
 .kv dt { color: var(--text-muted); }
 .kv dd { margin: 0; overflow-wrap: anywhere; }
+.review-list .review-row { display: contents; }
+.review-list dd { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); align-items: baseline; justify-content: space-between; }
 .alert { border: 1px solid var(--warning); background: var(--warning-dim); padding: var(--s3) var(--s4); border-radius: var(--radius-sm); margin-bottom: var(--s4); }
 .alert.bad { border-color: var(--negative); background: var(--negative-dim); }
 .alert.good { border-color: var(--positive); background: var(--positive-dim); }

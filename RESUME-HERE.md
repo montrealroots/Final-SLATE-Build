@@ -56,6 +56,12 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
+### Latest Request (November 6, 2026, night): in progress
+
+1. Verification: CI green through #23; full dev and production-build suites 96 passed, 21 skipped (project exclusions), 0 failed with the creation changes.
+2. **Character creation: done, not yet merged.** Step registry `CREATION_STEPS` (`src/engine/state.ts`); drafts store a step id (older numeric and partial drafts are normalized by `normalizeDraft`); Review has one edit action per row, each to its own screen, and "Save And Return To Review"; Start My Story now keeps the messages on the screen it jumps to. WebKit input loss: the cause was focus moved to the heading one animation frame after a step change, taking focus from a field already chosen; focus now moves in the same commit (`e2e/creation.spec.ts` fails with the old code in WebKit, passes now). The test-side wait was removed.
+3. Next: Import Save (not started; design: `deserialize` + duplicate-ID choice of copy or confirmed replacement, through the vault), then the first-project journey and funding, screenwriting audit, integration gaps, acceptance journeys.
+
 ### Current Request, In Order (started November 6, 2026, evening)
 
 1. **Long-career storage: done** (this checkpoint), see `docs/STORAGE.md`. Measured 1-50-year engine careers (`tests/perf/career.perf.ts`): 19.8 MB at 50 years before. Save version 4 compacts finished editions (12.4 MB at 50 years). Saves now live in IndexedDB, gzip-compressed (1.3 MB per copy at 50 years), through the save vault (`src/engine/vault.ts`, `src/ui/idb.ts`): atomic commits, verified move out of localStorage under a Web Lock with conflict copies, a closing-page journal, localStorage fallback. Still open: competing films and projects keep growing (about 0.25 MB raw a year); real Safari/Firefox quotas unmeasured.

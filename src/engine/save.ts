@@ -8,6 +8,7 @@ import type { CreationDraft, GameState } from './types';
 import { SAVE_VERSION } from './types';
 import { SaveValidationError, validateGameState } from './validate';
 import { adoptPublishedRules, migrateV2toV3, migrateV3toV4 } from './awards';
+import { normalizeDraft } from './state';
 
 export interface KeyValueStore {
   getItem(key: string): string | null;
@@ -449,7 +450,7 @@ export function renameSave(store: KeyValueStore, saveId: string, name: string): 
 export function readDraft(store: KeyValueStore): CreationDraft | null {
   try {
     const raw = store.getItem(DRAFT);
-    return raw ? (JSON.parse(raw) as CreationDraft) : null;
+    return raw ? normalizeDraft(JSON.parse(raw)) : null;
   } catch {
     return null;
   }

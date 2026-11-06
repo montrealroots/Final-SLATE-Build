@@ -25,13 +25,9 @@ export interface CharacterOpts {
   startTime: string;
 }
 
-/**
- * Go to the next creation step and wait until it has settled (it moves focus to its heading): text typed before then
- * was lost in WebKit runs, about one in three on the production build.
- */
+/** Go to the next creation step. No waiting: typing straight away must work (e2e/creation.spec.ts). */
 async function nextStep(page: Page, name: string): Promise<void> {
   await page.getByRole('button', { name: `Next: ${name}` }).click();
-  await expect(page.getByRole('heading', { name, level: 1 })).toBeFocused();
 }
 
 export async function createCharacter(page: Page, o: CharacterOpts): Promise<void> {
