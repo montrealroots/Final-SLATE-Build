@@ -98,6 +98,11 @@ Tests: `F` = `tests/foundation.test.ts`, `J` = `tests/journeys.test.ts`, `M` = `
 | Requirement | Trigger | Engine | Persistence | Player-facing | Tests | Status |
 | --- | --- | --- | --- | --- | --- | --- |
 | Careers of 50 years keep saving | Every save | `compactEdition`, save version 4 | IndexedDB, gzip, one transaction per save (`Vault`, `IdbBackend`) | "Saved" after the commit; storage use with the browser's quota | `tests/perf/career.perf.ts` (measured), `tests/vault.test.ts`, `e2e/storage.spec.ts` | Measured and tested |
+| Budget size is an estimate; money only from accepted backers | Project creation; Budget | `createProject`, `finance.ts` (`approachBacker`, `acceptDeal`) | `Project.finance` (estimate, target, deals); save version 5 | Financing panel: estimate, target, promised, received, still to raise; Next Step | `tests/finance.test.ts`, `e2e/first-project.spec.ts` | Tested |
+| Backers' terms enforced | Income, delivery, deadlines, casting and picture approval, credits | `receiveIncome`, `onProjectDelivered`, `finance-deadline`, `approvalRights`, `computeCredits` | Deal `received`, `repaid`, `status` | Terms dialog before accepting; Backers list | `tests/finance.test.ts` | Tested |
+| Existing funded projects keep their money | Save migration | `migrateV4toV5` | Accepted "agreed before financing" deal | Backers list | `tests/finance.test.ts` | Tested |
+| Import Save | Saved Games | `readImport`, `importSave`, `Vault.forImport` | Copy or confirmed replacement; backup kept | Import Save, conflict and replace dialogs | `tests/import.test.ts`, `e2e/backup.spec.ts` | Tested |
+| Character creation step registry and Review edits | Creation | `CREATION_STEPS`, `normalizeDraft` | Draft step ids | Review rows with edit actions; Save And Return To Review | `tests/creation.test.ts`, `e2e/creation.spec.ts` (desktop, phone, WebKit) | Tested |
 | Saves move out of localStorage safely | First start | `migrateFromLocal` | Verified before removal; conflict copies; Web Lock | "Copy saved by another tab" recovery copies; a note if a save couldn't move | `tests/vault.test.ts`, `e2e/storage.spec.ts` (two tabs, interrupted, conflict) | Tested |
 | Progress survives closing the page | Page hidden or closed | `applyJournal` | localStorage journal | — | `tests/vault.test.ts`, `e2e/world.spec.ts` | Tested |
 

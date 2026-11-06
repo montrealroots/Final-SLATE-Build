@@ -670,7 +670,7 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   if (rules?.origin?.value.only && !rules.origin.value.only.includes(origin)) reasons.push(`This section is for work made in ${rules.origin.value.only.map(countryWords).join(' or ')}.`);
   if (rules?.origin?.value.not?.includes(origin)) reasons.push(`Work made mainly in ${countryWords(origin)} enters the festival's national competition instead.`);
   if (inst.id === 'international-emmys' && origin === 'US') reasons.push('This event is for productions made outside the United States.');
-  if (inst.id === 'spirit' && p.funding.scenarioId === 'commissioned') reasons.push('Commissioned projects aren\'t eligible in this game.');
+  if (inst.id === 'spirit' && (p.funding.scenarioId === 'commissioned' || p.finance?.deals.some((d) => d.kind === 'commissioner' && d.status === 'accepted'))) reasons.push('Commissioned projects aren\'t eligible in this game.');
   if (!p.delivered) {
     if (inst.kind === 'festival') reasons.push('Deliver the project before submitting it.');
     else reasons.push('Deliver the project before entering it.');

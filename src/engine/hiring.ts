@@ -195,7 +195,7 @@ export function resolveOffer(state: GameState, p: Project, h: Hire): string {
     text = `${person.name} turned down ${roleWord}. ${cap} ${person.pronouns === 'they' ? "aren't" : "isn't"} free during your production.`;
   } else if (lead && approvalRights(p).includes('Casting Approval') && person.experience < 3) {
     decline(state, p, h);
-    text = `Your ${p.funding.scenarioId === 'commissioned' ? 'commissioner' : 'co-production partner'} didn't approve ${person.name} for ${roleWord}. They want a more experienced lead.`;
+    text = `Your ${p.funding.scenarioId === 'commissioned' || p.finance?.deals.some((d) => d.kind === 'commissioner' && d.status === 'accepted') ? 'commissioner' : 'co-production partner'} didn't approve ${person.name} for ${roleWord}. They want a more experienced lead.`;
   } else {
     const ratio = h.dayRate / person.dayRate;
     if (ratio >= 1 || (ratio >= 0.9 && r < 0.6)) {

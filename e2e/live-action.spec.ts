@@ -1,5 +1,5 @@
 import { expect, test } from './test';
-import { advance, createCharacter, freshStart, nav, readSavedState, section, staffEveryDepartment } from './helpers';
+import { advance, createCharacter, freshStart, nav, readSavedState, section, staffEveryDepartment, secureStartingBacking } from './helpers';
 
 test('live-action short: create, write, cast yourself, staff, shoot, cut, deliver, credits', async ({ page }, info) => {
   await freshStart(page);
@@ -68,6 +68,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await expect(page.getByText('Draft 1', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Approve This Draft' }).click();
   await expect(page.getByText('Approved', { exact: true })).toBeVisible();
+  await secureStartingBacking(page);
 
   // Cast: Odile is the player; the Ferryman goes to a performer.
   await section(page, 'Cast');

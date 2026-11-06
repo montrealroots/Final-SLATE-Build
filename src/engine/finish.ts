@@ -1,5 +1,6 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
+import { financeCredits, onProjectDelivered, receiveIncome } from './finance';
 import { getPlace } from '../data/places';
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { personById, roleLabel } from './people';
@@ -130,6 +131,7 @@ export function deliver(state: GameState, p: Project): void {
   if (b.length) throw new Error(b[0]);
   const runtime = Math.round(approvedScenes(p).reduce((a, s) => a + s.estMinutes, 0));
   p.delivered = { at: state.now, runtimeMin: runtime };
+  onProjectDelivered(state, p);
   p.phase = 'delivered';
   p.quality = assessQuality(state, p);
   p.credits = computeCredits(state, p);
@@ -171,6 +173,7 @@ export function computeCredits(state: GameState, p: Project): Credit[] {
   }
   add({ person: 'player', personName: me, contribution: episodic ? 'Executive Producer And Showrunner' : 'Produced By', roleId: 'producer', episodes: 'all' });
   for (const x of p.funding.extra) add({ person: 'partner', personName: x.label, contribution: 'Co-Production Partner', roleId: 'co-producer', episodes: 'all' });
+  for (const c of financeCredits(p)) add({ person: 'backer', personName: c.backer, contribution: c.label, roleId: 'backer', episodes: 'all' });
   const chars = approvedCharacters(p);
   const sizeOrder = ['lead', 'co-lead', 'ensemble-lead', 'supporting', 'featured', 'cameo', 'background'];
   const cast = [...p.cast].sort((a, b) => sizeOrder.indexOf(chars.find((c) => c.id === a.characterId)?.roleSize ?? 'background') - sizeOrder.indexOf(chars.find((c) => c.id === b.characterId)?.roleSize ?? 'background'));
@@ -342,7 +345,7 @@ export function acceptDistribution(state: GameState, p: Project, offerId: string
   const materials = reserve(state, p, `Delivery Materials For ${o.distributor}`, 'post', DELIVERY_MATERIALS[o.route], `release-offer:${o.id}`);
   o.status = 'accepted';
   for (const other of p.offers.filter((x) => x.status === 'open' && x.route === o.route)) other.status = 'declined';
-  p.revenue += o.minimumGuarantee;
+  p.revenue += receiveIncome(state, p, o.minimumGuarantee, o.distributor); // backers are repaid first
   const zone = getPlace(p.axes.basePlaceId).zone;
   const date = addDaysToKey(dateKey(state.now, zone), o.releaseWindowDays);
   addLog(state, `You accepted ${o.distributor}'s offer of ${money(o.minimumGuarantee)} for ${p.title}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });

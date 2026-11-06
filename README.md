@@ -12,7 +12,7 @@ This repository is the continuing base for the game. It is a working, tested bas
 - **Places, time and weather:** 66 cities in 33 countries with real IANA time zones; sunrise and sunset, including polar day and night; modeled seasonal weather with forecasts that get less certain further ahead; public holidays for every country in the catalog; birthdays, including leap-day birthdays; travel between places.
 - **Calendar:** month view with filters for birthdays, holidays, festivals, awards, deadlines and your schedule; personal plans with reminders.
 - **Projects:**
-  - Independent axes for format, medium, technique, narrative basis, genres, audience, era, setting, languages, runtime and funding scenario.
+  - Independent axes for format, medium, technique, narrative basis, genres, audience, era, setting, languages, runtime and budget size (an estimate and a financing target, not money).
   - All 149 catalog genres, searchable and multi-select. Each maps to shared mechanic tools and its own convention questions.
 - **Script:** story fields; structured scenes with stable IDs; dialogue; setups, clues and reveals; world rules; relationships; documentary facts and contributors; readiness checks; drafts (save, compare, restore, rename, approve); revision notes and passes that take scheduled time; undo.
 - **Characters:** role size, story function, entity, performance method and realization are recorded independently.
@@ -20,7 +20,7 @@ This repository is the continuing base for the game. It is a working, tested bas
 - **Casting and crew:**
   - Search, offers, counteroffers and declines on the shared clock; release; cast yourself in any role or none; fit notes for age, skills and language.
   - Department staffing proposals you review before sending, compatible role combining, and episode writers and directors.
-- **Money:** a ledger that reserves, commits, settles and cancels, so nothing is paid twice. A schedule reserves its shoot-day and material costs, and shortfalls are explained with what to do next. Co-production funding is available, with its terms shown before you sign.
+- **Money:** a ledger that reserves, commits, settles and cancels, so nothing is paid twice. A schedule reserves its shoot-day and material costs, and shortfalls are explained with what to do next. Projects are financed by backers (`docs/FIRST-PROJECT-JOURNEY.md`): the agreed starting backing for a first project, an arts grant, a private investor, a co-producer and, after a delivered project, a commissioner. Each decides on its own terms, some say no, and every term shown before you accept is enforced afterwards (repayment and share of income, approval rights, credits, a delivery deadline). Saves can be exported and imported again (`docs/STORAGE.md`).
 - **Production by medium:**
   - Live action uses shoot days grouped by location, with weather, daylight, staffing, safety specialists, presence on set and holiday rules.
   - Drawn and rigged 2D, 3D CG (models, rigs, layout, animation, effects, lighting, finite render capacity) and stop motion (armatures, puppets, costume fitting, miniature sets, stages, the rule that a puppet can be on only one stage at a time, repairs).

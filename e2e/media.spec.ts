@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { advance, section, staffEveryDepartment } from './helpers';
+import { advance, section, staffEveryDepartment, secureStartingBacking } from './helpers';
 
 async function quickStart(page: Page, place: string): Promise<void> {
   await page.goto('/');
@@ -39,6 +39,7 @@ test('3D animation through the UI: voice cast, modeling and rigging before anima
   await c.getByLabel('Estimated Minutes').fill('1');
   await page.getByRole('button', { name: 'Save Draft' }).click();
   await page.getByRole('button', { name: 'Approve This Draft' }).click();
+  await secureStartingBacking(page);
   await section(page, 'Cast');
   // Animation roles are voice roles; no on-camera casting is offered.
   await expect(page.getByText('Voice: ').first()).toBeVisible();
@@ -88,6 +89,7 @@ test('documentary through the UI: contributors, consent, facts, no scripted dial
   await expect(c.getByText('Dialogue')).toHaveCount(0);
   await page.getByRole('button', { name: 'Save Draft' }).click();
   await page.getByRole('button', { name: 'Approve This Draft' }).click();
+  await secureStartingBacking(page);
   for (let i = 0; i < 2; i++) await advance(page, 'week');
   await section(page, 'Script');
   await expect(page.getByText(/Consent Given|Consent Declined/)).toBeVisible();

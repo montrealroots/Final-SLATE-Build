@@ -1,3 +1,4 @@
+import { financeRights } from './finance';
 import { composeGenres, genreName, type ModuleId } from './genres';
 import { findPlace } from '../data/places';
 import { addLog, adoptPlace, newId, registerHandler, schedule } from './state';
@@ -45,14 +46,18 @@ export function isNonfiction(f: Format): boolean {
   return NONFICTION.includes(f);
 }
 
-/** Simulation scenarios for the starting production fund. Amounts are game calibration inputs, not industry prices. */
+/**
+ * Budget sizes: each gives a budget estimate and a financing target (fund) and scales day costs. None puts money in a
+ * project; backers do (finance.ts). Amounts are game calibration inputs, not industry prices. `rights` are the approval
+ * rights saves from before financing existed carried for this size (migrateV4toV5).
+ */
 export const FUNDING_SCENARIOS = [
-  { id: 'micro', label: 'Micro Budget', fund: 40_000, description: 'A small self-funded production.', needsTrackRecord: false, rights: [] as string[] },
-  { id: 'low', label: 'Low Budget', fund: 400_000, description: 'An independent production with private backing.', needsTrackRecord: false, rights: [] as string[] },
-  { id: 'mid', label: 'Mid Budget', fund: 4_000_000, description: 'A co-production. Your partner contributes funds and must approve lead casting.', needsTrackRecord: false, rights: ['Casting Approval'] },
+  { id: 'micro', label: 'Micro Budget', fund: 40_000, description: 'A small production with a tiny crew.', needsTrackRecord: false, rights: [] as string[] },
+  { id: 'low', label: 'Low Budget', fund: 400_000, description: 'An independent production.', needsTrackRecord: false, rights: [] as string[] },
+  { id: 'mid', label: 'Mid Budget', fund: 4_000_000, description: 'Usually needs several backers, such as a co-production partner.', needsTrackRecord: false, rights: ['Casting Approval'] },
   {
     id: 'commissioned', label: 'Commissioned', fund: 15_000_000,
-    description: 'A commissioned production. The commissioner approves lead casting and the final cut.', needsTrackRecord: true, rights: ['Casting Approval', 'Picture Approval'],
+    description: 'Sized for a commissioner, who pays the full target and approves lead casting and the final cut.', needsTrackRecord: true, rights: ['Casting Approval', 'Picture Approval'],
   },
 ] as const;
 
@@ -66,8 +71,9 @@ export function hasTrackRecord(state: GameState): boolean {
   return state.projects.some((p) => p.delivered !== null);
 }
 
+/** Approval rights the project's backers hold (finance.ts), and co-production partners from before financing existed. */
 export function approvalRights(p: Project): string[] {
-  return [...fundingScenario(p.funding.scenarioId).rights, ...p.funding.extra.flatMap((e) => e.approvalRights)];
+  return [...new Set([...financeRights(p), ...p.funding.extra.flatMap((e) => e.approvalRights)])];
 }
 
 // ---------------- Creation ----------------
@@ -124,7 +130,9 @@ export function createProject(state: GameState, input: NewProjectInput): Project
     createdAt: state.now,
     phase: 'development',
     axes,
-    funding: { scenarioId: scenario.id, fund: scenario.fund, extra: [] },
+    // The budget size is an estimate and a target; money comes only from backers' deals (finance.ts).
+    funding: { scenarioId: scenario.id, fund: 0, extra: [] },
+    finance: { estimate: scenario.fund, target: scenario.fund, deals: [] },
     story: { logline: '', premise: '', stakes: '', conflict: '', viewpoint: '', theme: '', ending: '', intendedExperience: '', question: '' },
     genreNotes: {},
     worldRules: [],

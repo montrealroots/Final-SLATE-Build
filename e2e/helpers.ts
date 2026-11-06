@@ -171,6 +171,24 @@ export async function saveAndApprove(page: Page): Promise<void> {
   await page.getByRole('button', { name: 'Save Draft' }).click();
   await page.getByRole('button', { name: 'Approve This Draft' }).first().click();
   await expect(page.getByText('Approved', { exact: true })).toBeVisible();
+  await secureStartingBacking(page);
+}
+
+/**
+ * Fund a first project the way a player does: Budget, ask for the agreed starting backing, read its terms, accept.
+ * Asserts the money really arrives (nothing is in the budget before).
+ */
+export async function secureStartingBacking(page: Page): Promise<void> {
+  await section(page, 'Budget');
+  const fin = page.locator('section.panel', { has: page.getByRole('heading', { name: 'Financing' }) });
+  await expect(fin.locator('dt', { hasText: /^Received$/ }).locator('xpath=following-sibling::dd[1]')).toHaveText('$0');
+  await page.getByRole('button', { name: 'Approach Starting Backing' }).click();
+  await page.getByRole('button', { name: 'Accept Offer' }).click();
+  const terms = page.getByRole('dialog', { name: 'Accept These Terms?' });
+  await expect(terms).toContainText("from the project's income before the project keeps any");
+  await terms.getByRole('button', { name: /^Accept \$/ }).click();
+  await expect(fin.locator('dt', { hasText: /^Received$/ }).locator('xpath=following-sibling::dd[1]')).not.toHaveText('$0');
+  await section(page, 'Script'); // back where approval left the player
 }
 
 /** Cast every uncast role through Find Performers (or yourself for named roles). */
@@ -257,6 +275,15 @@ export async function creditsTable(page: Page): Promise<string> {
  */
 export async function seededLife(page: Page, startPlaceId: string, startDate: string, seed: number): Promise<void> {
   await quickLife(page, startPlaceId, startDate);
+  await pinSeed(page, seed);
+}
+
+/**
+ * Labelled fixture: fix the world seed of the game being played (made through the UI), so what the game decides by
+ * chance comes out the same on every run. The game is saved and left, its stored seed replaced while no game is open,
+ * and it is opened again with Continue.
+ */
+export async function pinSeed(page: Page, seed: number): Promise<void> {
   await saveAndExit(page);
   const id = await firstSaveId(page);
   const key = `slate.v1.save.${id}`;
@@ -272,7 +299,7 @@ export async function seededLife(page: Page, startPlaceId: string, startDate: st
 }
 
 /** Start a project from the Projects screen through its form. */
-export async function newProject(page: Page, o: { title: string; format: string; medium?: string; technique?: string; finish?: string; episodes?: string; runtime?: string }): Promise<void> {
+export async function newProject(page: Page, o: { title: string; format: string; medium?: string; technique?: string; finish?: string; episodes?: string; runtime?: string; budget?: string }): Promise<void> {
   await page.getByRole('button', { name: 'New Script' }).first().click();
   await page.getByLabel('Working Title').fill(o.title);
   await page.getByLabel('Format').selectOption({ label: o.format });
@@ -281,6 +308,7 @@ export async function newProject(page: Page, o: { title: string; format: string;
   if (o.finish) await page.getByLabel('Animation Finish').selectOption({ label: o.finish });
   if (o.episodes) await page.getByLabel('Episodes').fill(o.episodes);
   if (o.runtime) await page.getByLabel(/Target (Runtime In Minutes|Minutes Per Episode)/).fill(o.runtime);
+  if (o.budget) await page.getByRole('radio', { name: new RegExp(`^${o.budget}:`) }).check();
   await page.getByRole('button', { name: 'Create Project' }).click();
   await expect(page.getByRole('heading', { name: o.title, level: 1 })).toBeVisible();
 }

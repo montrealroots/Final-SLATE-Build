@@ -137,6 +137,9 @@ function zoneOk(zone: string): boolean {
   }
 }
 
+const FINANCE_STATUSES = ['considering', 'offered', 'declined', 'refused', 'accepted', 'breached'];
+const FINANCE_KINDS = ['agreed', 'starting', 'grant', 'investor', 'co-producer', 'commissioner'];
+
 function validateProject(raw: unknown, i: number, seen: Set<string>): void {
   const where = `project ${i + 1}`;
   need(isObj(raw), where, 'is malformed');
@@ -151,6 +154,18 @@ function validateProject(raw: unknown, i: number, seen: Set<string>): void {
   need(Number.isInteger(a.episodeCount) && (a.episodeCount as number) >= 1, name, 'has an invalid episode count');
   need(isObj(p.funding) && isNum((p.funding as Obj).fund) && ((p.funding as Obj).fund as number) >= 0, name, 'has an invalid fund');
   need(isNum(p.revenue), name, 'has invalid revenue');
+  if (p.finance !== undefined) {
+    const f = p.finance as Obj;
+    need(isObj(f) && isNum(f.estimate) && isNum(f.target) && (f.target as number) >= 0 && Array.isArray(f.deals), name, 'has malformed financing');
+    const dealIds = new Set<string>();
+    for (const d of f.deals as unknown[]) {
+      need(isObj(d) && isId(d.id) && !dealIds.has(d.id as string) && FINANCE_STATUSES.includes(d.status as string) && FINANCE_KINDS.includes(d.kind as string), `a backer of ${name}`, 'is malformed');
+      const x = d as Obj;
+      dealIds.add(x.id as string);
+      need(isNum(x.amount) && isNum(x.received) && isNum(x.repaid) && (x.received as number) <= (x.amount as number) + 0.5 && (x.received as number) >= 0 && (x.repaid as number) >= 0, `the ${x.backer} deal of ${name}`, 'has invalid amounts');
+      need(isObj(x.terms) && Array.isArray((x.terms as Obj).approvalRights), `the ${x.backer} deal of ${name}`, 'has malformed terms');
+    }
+  }
 
   need(Array.isArray(p.obligations), name, 'has no budget lines');
   const obligationIds = new Set<string>();
