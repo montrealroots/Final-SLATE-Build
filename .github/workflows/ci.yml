@@ -46,6 +46,13 @@ jobs:
         env:
           HOME: /root
         run: npm run e2e -- --trace retain-on-failure
+      - name: Browser journeys on the production build
+        # The same suite against vite build + vite preview (playwright.config.ts, SLATE_E2E_PROD); about 5 minutes locally.
+        timeout-minutes: 20
+        env:
+          HOME: /root
+          SLATE_E2E_PROD: '1'
+        run: npm run e2e -- --trace retain-on-failure
       - name: Upload failure artifacts
         if: failure()
         uses: actions/upload-artifact@v4
