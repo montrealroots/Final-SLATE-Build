@@ -108,3 +108,94 @@ export async function readSavedState(page: Page): Promise<any> { // eslint-disab
     return JSON.parse(JSON.parse(localStorage.getItem(key)!).data);
   });
 }
+
+export async function quickLife(page: Page, startPlaceId: string, startDate: string): Promise<void> {
+  await page.goto('/');
+  await page.evaluate(({ pl, sd }) => {
+    localStorage.clear();
+    localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
+      step: 5, name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
+      heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }, { id: 'Norwegian', label: 'Norwegian', custom: false }], heritageCustomText: '', mainLanguage: 'en',
+      languages: [{ code: 'sw', proficiency: 'Fluent' }, { code: 'no', proficiency: 'Conversational' }], startPlaceId: pl, startDate: sd, startTime: '08:00', updatedAt: 1,
+    }));
+  }, { pl: startPlaceId, sd: startDate });
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue Creation' }).click();
+  await page.getByRole('button', { name: 'Begin' }).click();
+  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+}
+
+export async function addScene(page: Page, opts: { index: number; place: string; chars?: string[]; contributors?: string[]; minutes?: string; exterior?: boolean; episodeButton?: string; kind?: string; technique?: string }): Promise<void> {
+  await page.getByRole('button', { name: opts.episodeButton ?? 'Add Scene' }).first().click();
+  const c = page.locator('article.scene-card').nth(opts.index);
+  await c.getByRole('button', { name: 'Edit Scene' }).click();
+  if (opts.exterior) await c.getByLabel('Interior Or Exterior').selectOption({ label: 'Exterior' });
+  await c.getByLabel('Place', { exact: true }).fill(opts.place);
+  if (opts.kind) await c.getByLabel('Kind', { exact: true }).selectOption({ label: opts.kind });
+  if (opts.technique) await c.getByLabel('Technique For This Scene').selectOption({ label: opts.technique });
+  for (const w of opts.chars ?? []) await c.getByRole('checkbox', { name: w, exact: true }).check();
+  for (const w of opts.contributors ?? []) await c.getByRole('checkbox', { name: w, exact: true }).check();
+  if (opts.minutes) await c.getByLabel('Estimated Minutes').fill(opts.minutes);
+  await c.getByLabel('Objective').fill('Move the story forward.');
+  await c.getByRole('button', { name: 'Close Scene' }).click();
+}
+
+export async function saveAndApprove(page: Page): Promise<void> {
+  await section(page, 'Script');
+  await expect(page.getByText('Nothing blocks approval.')).toBeVisible();
+  await page.getByRole('button', { name: 'Save Draft' }).click();
+  await page.getByRole('button', { name: 'Approve This Draft' }).first().click();
+  await expect(page.getByText('Approved', { exact: true })).toBeVisible();
+}
+
+/** Cast every uncast role through Find Performers (or yourself for named roles). */
+export async function castRoles(page: Page, yourself: string[] = []): Promise<void> {
+  await section(page, 'Cast');
+  const roles = page.locator('section.panel', { hasText: 'Roles' }).first();
+  for (const name of yourself) {
+    const btn = roles.locator('li', { hasText: name }).getByRole('button', { name: 'Cast Yourself' }).first();
+    if (await btn.isVisible()) await btn.click();
+  }
+  for (const btn of await roles.getByRole('button', { name: 'Find Performers' }).all()) {
+    if (!(await btn.isVisible())) continue;
+    await btn.click();
+    const offers = page.getByRole('dialog').getByRole('button', { name: 'Make Offer' });
+    if (await offers.count()) await offers.first().click();
+    else await page.getByRole('dialog').getByRole('button', { name: 'Close' }).click();
+  }
+  for (const b of await page.getByRole('button', { name: 'Accept Counteroffer' }).all()) await b.click();
+}
+
+/** Play a project from an approved draft to delivery through the interface. */
+export async function produceToDelivery(page: Page, opts: { yourself?: string[]; weeks?: number; step?: 'week' | 'month' } = {}): Promise<void> {
+  await castRoles(page, opts.yourself ?? []);
+  await staffEveryDepartment(page);
+  await advance(page, 'next-day');
+  await section(page, 'Schedule');
+  await page.getByRole('button', { name: /Build Schedule|Rebuild Schedule/ }).click();
+  for (let i = 0; i < (opts.weeks ?? 60); i++) {
+    await advance(page, opts.step ?? 'week');
+    await staffEveryDepartment(page);
+    await castRoles(page);
+    // Documentary facts can be checked once research is done.
+    await section(page, 'Script');
+    for (const b of await page.getByRole('button', { name: 'Mark As Checked' }).all()) if (await b.isEnabled()) await b.click();
+    await section(page, 'Edit');
+    const deliver = page.getByRole('button', { name: 'Deliver Project' });
+    if (await deliver.isVisible() && await deliver.isEnabled()) {
+      await deliver.click();
+      await expect(page.getByText(/Delivered at \d+ minutes/)).toBeVisible();
+      return;
+    }
+    const lock = page.getByRole('button', { name: 'Lock Picture' });
+    if (await lock.isVisible() && await lock.isEnabled()) { await lock.click(); continue; }
+    const cut = page.getByRole('button', { name: 'Start Cut Pass' });
+    if (await cut.isEnabled()) await cut.click();
+  }
+  throw new Error('The project was not delivered in time.');
+}
+
+export async function creditsTable(page: Page): Promise<string> {
+  await section(page, 'Release');
+  return page.locator('section.panel', { hasText: 'Credits' }).first().innerText();
+}

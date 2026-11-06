@@ -71,18 +71,20 @@ export function castAll(state: GameState, p: Project, playerRoles: { character: 
     if (c.roleSize === 'background') continue;
     if (!approvedScenes(p).some((s) => s.participants.includes(c.id))) continue;
     const animated = p.axes.medium === 'animation' || (['cg', 'drawn', 'puppet'].includes(c.realization) && c.methods.includes('voice'));
-    const method: PerformanceMethod = animated ? 'voice' : 'on-camera';
-    if (p.cast.some((a) => a.characterId === c.id && a.method === method)) continue;
-    if (p.hires.some((h) => h.characterId === c.id && h.method === method && ['offered', 'countered', 'accepted'].includes(h.status))) continue;
-    const roleId = castRoleFor(method);
-    const tried = new Set(p.hires.filter((h) => h.characterId === c.id).map((h) => h.personId));
-    const pool = roleCandidates(state, p, roleId).filter((x) => !tried.has(x.id) && isAvailable(state, x, win.from, win.to, p.id).ok && x.experience >= 3).sort((a, b) => a.dayRate - b.dayRate);
-    for (const pick of pool) {
-      try {
-        makeOffer(state, p, { personId: pick.id, roleId, dayRate: pick.dayRate, characterId: c.id, method });
-        break;
-      } catch {
-        /* clash or funds: try the next candidate */
+    const methods: PerformanceMethod[] = animated ? ['voice', ...(c.methods.includes('motion-capture') ? ['motion-capture' as const] : [])] : ['on-camera'];
+    for (const method of methods) {
+      if (p.cast.some((a) => a.characterId === c.id && a.method === method)) continue;
+      if (p.hires.some((h) => h.characterId === c.id && h.method === method && ['offered', 'countered', 'accepted'].includes(h.status))) continue;
+      const roleId = castRoleFor(method);
+      const tried = new Set(p.hires.filter((h) => h.characterId === c.id && h.method === method).map((h) => h.personId));
+      const pool = roleCandidates(state, p, roleId).filter((x) => !tried.has(x.id) && isAvailable(state, x, win.from, win.to, p.id).ok && x.experience >= 3).sort((a, b) => a.dayRate - b.dayRate);
+      for (const pick of pool) {
+        try {
+          makeOffer(state, p, { personId: pick.id, roleId, dayRate: pick.dayRate, characterId: c.id, method });
+          break;
+        } catch {
+          /* clash or funds: try the next candidate */
+        }
       }
     }
   }
