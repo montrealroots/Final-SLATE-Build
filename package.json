@@ -19,7 +19,8 @@
     "catalog": "node scripts/trim-genre-registry.mjs",
     "world:check": "node scripts/world-import.mjs",
     "world:legacy": "node scripts/legacy-places.mjs",
-    "budget": "node scripts/perf-budget.mjs"
+    "budget": "node scripts/perf-budget.mjs",
+    "perf:engine": "vitest run --config vitest.perf.config.ts"
   },
   "dependencies": {
     "react": "19.3.1",

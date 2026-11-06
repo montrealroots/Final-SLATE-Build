@@ -1,4 +1,5 @@
 import { getPlace, findPlace, isCatalogPlace, registerPlace, type Place } from '../data/places';
+import { copyPlain } from './copy';
 import { hashString } from './rng';
 import {
   DAY, MINUTE, addLocal, ageOn, formatClock, localParts, localToInstant, observedBirthday, parseYmd, isDateKey,
@@ -214,7 +215,7 @@ export function processUntil(state: GameState, target: number, mode: Mode, maxEv
     state.now = Math.max(state.now, target);
     return { reached: state.now, done: true, processed: 0 };
   }
-  const snapshot = structuredClone(state);
+  const snapshot = copyPlain(state);
   let current = '';
   try {
     return runEvents(state, target, mode, maxEvents, (kind) => { current = kind; });

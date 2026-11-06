@@ -45,6 +45,6 @@ Every number here is a game calibration value. None is a quoted real-world rate 
 
 ## Reliability (November 6, 2026)
 
-- Each call that processes due events snapshots the game first and restores it if a handler fails, so a batch is all-or-nothing. The cost is one copy per batch with due events: balance runs that process every day of hundreds of productions take about 98 seconds instead of about 13; in play it is one copy per Advance step or per clock tick with events due.
+- Each call that processes due events snapshots the game first and restores it if a handler fails, so a batch is all-or-nothing. The cost is one copy per batch with due events: about 1.7 ms for a 1.1 MB save (plain-data copy, `src/engine/copy.ts`; `structuredClone` took 6.9 ms). Balance runs that process every day of hundreds of productions take about 37 seconds (98 with `structuredClone`, about 13 with no rollback); in play it is one copy per Advance step or per clock tick with events due. See `docs/PERFORMANCE.md`.
 - A budget line that is paid in full or cancelled takes no further payments. Overruns on an open line are still recorded (the line's amount grows), never hidden.
 - Each save keeps its previous sound version as a backup, which roughly doubles the storage a save uses.

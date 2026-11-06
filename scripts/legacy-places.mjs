@@ -14,6 +14,7 @@ const index = indexStations(readStations(JSON.parse(read('src/world/weather/stat
 // Reviewed by hand: GeoNames spells these places differently ("Marrakesh", "Panjim"); same place, under 1 km apart.
 const REVIEWED = { 'ma-marrakech': '2542997', 'in-panaji': '1260607' };
 const out = {};
+const sources = {};
 const report = [];
 for (const m of rows) {
   const [, id, name, , country, lat, lon, zone, elevation] = m;
@@ -29,7 +30,9 @@ for (const m of rows) {
   const resolution = ['high', 'medium', 'reviewed'].includes(confidence) ? 'aliased' : 'kept-legacy-record';
   const el = pick?.g.el ?? Number(elevation);
   const climate = climateFor({ country, lat: Number(lat), lon: Number(lon), elevation: el }, index);
-  out[id] = { geonameId: resolution === 'aliased' ? pick.g.gid : null, population: pick?.g.pop ?? 0, zoneMatches: pick ? pick.g.z === zone : false, climate };
+  // The game needs the normals and the kind of source; which station supplied each value is developer provenance.
+  out[id] = { geonameId: resolution === 'aliased' ? pick.g.gid : null, population: pick?.g.pop ?? 0, zoneMatches: pick ? pick.g.z === zone : false, climate: { monthly: climate.monthly, source: { kind: climate.source.kind } } };
+  sources[id] = climate.source;
   report.push({
     legacyId: id, name, country, original: [Number(lat), Number(lon)], candidate: pick ? { geonameId: pick.g.gid, name: pick.g.gname, coords: [pick.g.la, pick.g.lo], zone: pick.g.z, km: Math.round(pick.km * 10) / 10 } : null,
     confidence, resolution, zoneMatches: pick ? pick.g.z === zone : false, climateSource: climate.source.kind,
@@ -37,5 +40,6 @@ for (const m of rows) {
 }
 writeFileSync(new URL('src/data/legacy-places.json', root), `${JSON.stringify(out)}\n`);
 writeFileSync(new URL('docs/world/legacy-place-migration.json', root), `${JSON.stringify(report, null, 2)}\n`);
+writeFileSync(new URL('docs/world/legacy-place-climate.json', root), `${JSON.stringify(sources, null, 1)}\n`);
 const by = (k) => report.reduce((a, r) => ({ ...a, [r[k]]: (a[r[k]] ?? 0) + 1 }), {});
 console.log(`${report.length} legacy places`, by('confidence'), by('resolution'), 'zone mismatches:', report.filter((r) => !r.zoneMatches).map((r) => r.legacyId), 'climate:', by('climateSource'));

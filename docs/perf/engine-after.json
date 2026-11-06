@@ -1,0 +1,109 @@
+{
+  "label": "after",
+  "node": "v22.23.4",
+  "date": "2026-11-06",
+  "buildSavesMs": 747,
+  "rows": [
+    {
+      "name": "fresh",
+      "saveKB": 93,
+      "events": 372,
+      "projects": 0,
+      "log": 0,
+      "structuredCloneMs": 0.656,
+      "snapshotMs": 0.123,
+      "snapshotHeapKB": 94,
+      "partsKB": {
+        "events": 54,
+        "editions": 26
+      },
+      "tick": {
+        "ms": 2.632,
+        "calls": 672,
+        "events": 7,
+        "msPerCall": 0.004,
+        "resultHash": 1410113983
+      },
+      "advance30Days": {
+        "ms": 2.546,
+        "events": 22,
+        "calls": 1,
+        "resultHash": 3168981903
+      },
+      "sleep8Hours": {
+        "ms": 0.274,
+        "events": 1,
+        "calls": 2
+      }
+    },
+    {
+      "name": "medium",
+      "saveKB": 296,
+      "events": 390,
+      "projects": 1,
+      "log": 35,
+      "structuredCloneMs": 1.612,
+      "snapshotMs": 0.317,
+      "snapshotHeapKB": 330,
+      "partsKB": {
+        "events": 56,
+        "log": 7,
+        "projects": 33,
+        "editions": 160
+      },
+      "tick": {
+        "ms": 11.038,
+        "calls": 672,
+        "events": 25,
+        "msPerCall": 0.016,
+        "resultHash": 2377133514
+      },
+      "advance30Days": {
+        "ms": 14.484,
+        "events": 90,
+        "calls": 15,
+        "resultHash": 2082404034
+      },
+      "sleep8Hours": {
+        "ms": 1.112,
+        "events": 1,
+        "calls": 2
+      }
+    },
+    {
+      "name": "long",
+      "saveKB": 1100,
+      "events": 233,
+      "projects": 3,
+      "log": 211,
+      "structuredCloneMs": 6.956,
+      "snapshotMs": 1.694,
+      "snapshotHeapKB": 975,
+      "partsKB": {
+        "events": 34,
+        "processedEventIds": 6,
+        "log": 39,
+        "projects": 146,
+        "editions": 736
+      },
+      "tick": {
+        "ms": 9.317,
+        "calls": 672,
+        "events": 4,
+        "msPerCall": 0.014,
+        "resultHash": 3537934046
+      },
+      "advance30Days": {
+        "ms": 2.97,
+        "events": 16,
+        "calls": 1,
+        "resultHash": 918249983
+      },
+      "sleep8Hours": {
+        "ms": 1.925,
+        "events": 1,
+        "calls": 2
+      }
+    }
+  ]
+}

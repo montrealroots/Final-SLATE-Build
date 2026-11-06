@@ -29,8 +29,9 @@ describe('the 149-entry catalog', () => {
     const catalog = (await import('../src/data/genre-catalog.json')).default as { records: Record<string, string>[] };
     const recs = (registry as { records: Record<string, unknown>[] }).records;
     expect(catalog.records.length).toBe(recs.length);
+    expect(Object.keys(catalog.records[0])).not.toContain('mechanic_specification'); // provenance only, kept out of the startup bundle
     catalog.records.forEach((c, i) => {
-      for (const k of ['id', 'name', 'classification', 'working_definition', 'mechanic_specification', 'legacy_parent_label']) expect(c[k], `${c.id}.${k}`).toBe(recs[i][k]);
+      for (const k of ['id', 'name', 'classification', 'working_definition', 'legacy_parent_label']) expect(c[k], `${c.id}.${k}`).toBe(recs[i][k]);
     });
   });
 

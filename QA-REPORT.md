@@ -8,17 +8,18 @@
 
 ## Commands And Results
 
-Latest full run: November 6, 2026, checkpoint A of the rulebook, performance and storage request (cross-save reliability fixes), local Linux container. The browser suite first ran 56 passed, 2 failed, 17 skipped: the two failures were an older test expecting the previous recovery wording, which now also names the copy's save time. After updating that locator, `e2e/failures.spec.ts` passed 14 of 14 on desktop and phone. Balance is unchanged by this checkpoint and runs in CI; the numbers below are from the previous local run.
+Latest full run: November 6, 2026, performance checkpoint (faster rollback snapshots, smaller startup files), local Linux container. Measurements are in `docs/PERFORMANCE.md`.
 
 | Command | Exit | Result |
 | --- | --- | --- |
 | `npm run world:check` | 0 | 252 entries (246 playable), 3,865 regions, 246 shards, 171,750 rows with 171,750 unique IDs, 175 outlines, 218 holiday entries, 11,459 stations; 0 problems. |
 | `npm run typecheck` | 0 | No type errors (strict mode). |
-| `npm test` | 0 | 20 files, 117 tests passed, 0 skipped. |
+| `npm test` | 0 | 20 files, 119 tests passed, 0 skipped. |
 | `npm run build` | 0 | Built with no warnings. |
-| `npm run budget` | 0 | Startup JavaScript 691 kB raw, 205 kB gzipped, in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
-| `npm run balance` | 0 | 2 tests passed: 180 family runs, 120 sensitivity runs, determinism check, and 30 held-out combination runs. Results identical to the previous run. Took about 100 seconds (see `docs/ASSUMPTIONS.md`, Reliability). |
-| `npm run e2e -- --trace off` | 0 after fix | 58 passed (56 in the full run plus the 2 fixed, rerun in their file), 17 skipped, 0 failed, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
+| `npm run budget` | 0 | Startup JavaScript 634 kB raw, 196 kB gzipped (691 and 205 before this checkpoint), in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
+| `npm run balance` | 0 | 2 tests passed: 180 family runs, 120 sensitivity runs, determinism check, and 30 held-out combination runs. Results byte-identical to the previous run. Took 37 seconds (98 seconds before the snapshot change, same machine). |
+| `npm run perf:engine` | 0 | Fresh, medium and long saves; see `docs/PERFORMANCE.md`. |
+| `npm run e2e -- --trace off` | 0 | 58 passed, 17 skipped, 0 failed, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
 
 ### Why 17 Browser Tests Are Skipped
 
