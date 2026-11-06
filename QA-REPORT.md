@@ -17,6 +17,8 @@
 | `npm run balance` | 0 | 1 test passed; 180 family runs plus 120 sensitivity runs. |
 | `npm run e2e -- --trace off` | 1, then 0 | M1 run: 22 passed, 1 failed, 16 skipped. The failure was the documentary test matching "Cast" inside a generated name ("Bruno Castillo"); the assertion now checks for cast credit rows, and the test passed on rerun. Earlier full run: 23 passed, 16 skipped, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max, and iPhone 15 Pro Max landscape. The skips are tests that run on one project only by design. |
 
+Counts at M2 (local run before the M2 commit): `npm run check` passed with 58 unit and engine tests and the world check at 0 problems; `npm run e2e -- --trace off` gave 27 passed, 16 skipped by design, 0 failed (adds `e2e/world.spec.ts` on desktop and phone). The M3 holiday-engine tests (5) were added after that run and pass on their own. Startup JavaScript is 432 kB (93 kB entry plus 338 kB shared chunk); country shards, regions, stations and map outlines load on demand.
+
 Counts at M1: 74 automated checks passed after the test fix (51 unit and engine tests, 23 browser tests), 16 skipped by design. Earlier base count: 72 automated checks passed, 0 failed, 16 skipped by design.
 
 ## Also Checked During Development
