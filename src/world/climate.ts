@@ -178,3 +178,22 @@ export function climateFor(place: { country: string; lat: number; lon: number; e
   const kind = core === 4 ? 'stations' : core === 0 ? 'modeled' : 'partly-modeled';
   return { monthly, source: { kind, params } };
 }
+
+const regionNames = typeof Intl.DisplayNames === 'function' ? new Intl.DisplayNames(['en'], { type: 'region' }) : null;
+const countryWord = (code: string) => regionNames?.of(code) ?? code;
+const PARAM_WORDS: Record<string, string> = { tmax: 'highs', tmin: 'lows', wet: 'wet days', prcp: 'rainfall', sun: 'sunshine' };
+
+/** Where a place's typical climate comes from, in one sentence for the player (null for places without a record). */
+export function climateNote(source: ClimateSource | undefined): string | null {
+  const params = source?.params;
+  if (!source || !params) return null;
+  const core = (['tmax', 'tmin', 'wet', 'prcp'] as const).map((p) => [p, params[p]] as const);
+  const measured = core.filter(([, v]) => v && 'station' in v).map(([p, v]) => [p, v as ParamSource] as const);
+  const modeled = core.filter(([, v]) => !v || 'modeled' in v).map(([p]) => PARAM_WORDS[p]);
+  if (!measured.length) return `No weather station within ${FAR_KM} km has records for this place, so its typical climate is modeled from latitude and height.`;
+  const main = measured[0][1];
+  const where = main.borrowed ? ` (${countryWord(main.country)})` : '';
+  const from = `Typical climate from weather station records ${main.km} km away${where}`;
+  if (!modeled.length) return `${from}.`;
+  return `${from}; ${modeled.join(' and ')} ${modeled.length === 1 && !modeled[0].endsWith('s') ? 'is' : 'are'} modeled, with no station within ${FAR_KM} km.`;
+}

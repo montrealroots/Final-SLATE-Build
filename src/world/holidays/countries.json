@@ -14640,7 +14640,8 @@
       1,
       1
      ]
-    }
+    },
+    "en": "New Year’s Day"
    },
    {
     "name": "Θεοφάνεια",
@@ -14649,14 +14650,16 @@
       1,
       6
      ]
-    }
+    },
+    "en": "Epiphany Day"
    },
    {
     "name": "Καθαρά Δευτέρα",
     "when": {
      "easter": -48,
      "orthodox": true
-    }
+    },
+    "en": "Green Monday"
    },
    {
     "name": "Ελληνική Εθνική Επέτειος",
@@ -14665,7 +14668,8 @@
       3,
       25
      ]
-    }
+    },
+    "en": "Greek Independence Day"
    },
    {
     "name": "Κυπριακή Εθνική Επέτειος",
@@ -14674,21 +14678,24 @@
       4,
       1
      ]
-    }
+    },
+    "en": "Cyprus National Day"
    },
    {
     "name": "Μεγάλη Παρασκευή",
     "when": {
      "easter": -2,
      "orthodox": true
-    }
+    },
+    "en": "Good Friday"
    },
    {
     "name": "Δευτέρα του Πάσχα",
     "when": {
      "easter": 1,
      "orthodox": true
-    }
+    },
+    "en": "Easter Monday"
    },
    {
     "name": "Πρωτομαγιά",
@@ -14697,14 +14704,16 @@
       5,
       1
      ]
-    }
+    },
+    "en": "Labour Day"
    },
    {
     "name": "Αγίου Πνεύματος (Κατακλυσμός)",
     "when": {
      "easter": 50,
      "orthodox": true
-    }
+    },
+    "en": "Pentecost"
    },
    {
     "name": "Κοίμηση της Θεοτόκου",
@@ -14713,7 +14722,8 @@
       8,
       15
      ]
-    }
+    },
+    "en": "Assumption Day"
    },
    {
     "name": "Ημέρα της Κυπριακής Ανεξαρτησίας",
@@ -14722,7 +14732,8 @@
       10,
       1
      ]
-    }
+    },
+    "en": "Cyprus Independence Day"
    },
    {
     "name": "Ημέρα του Όχι",
@@ -14731,7 +14742,8 @@
       10,
       28
      ]
-    }
+    },
+    "en": "Greek National Day"
    },
    {
     "name": "Χριστούγεννα",
@@ -14740,7 +14752,8 @@
       12,
       25
      ]
-    }
+    },
+    "en": "Christmas Day"
    },
    {
     "name": "Δεύτερη μέρα των Χριστουγέννων",
@@ -14749,7 +14762,8 @@
       12,
       26
      ]
-    }
+    },
+    "en": "Boxing Day"
    }
   ]
  },
@@ -43869,6 +43883,100 @@
      ]
     }
    }
+  ]
+ },
+ "SR": {
+  "holidays": [
+   {
+    "name": "Nieuwjaarsdag",
+    "when": {
+     "fixed": [
+      1,
+      1
+     ]
+    }
+   },
+   {
+    "name": "Goede Vrijdag",
+    "when": {
+     "easter": -2
+    }
+   },
+   {
+    "name": "Tweede Paasdag",
+    "when": {
+     "easter": 1
+    }
+   },
+   {
+    "name": "Dag van de Arbeid",
+    "when": {
+     "fixed": [
+      5,
+      1
+     ]
+    }
+   },
+   {
+    "name": "Dag der Vrijheden",
+    "when": {
+     "fixed": [
+      7,
+      1
+     ]
+    }
+   },
+   {
+    "name": "Dag der Inheemsen",
+    "when": {
+     "fixed": [
+      8,
+      9
+     ]
+    }
+   },
+   {
+    "name": "Dag der Marrons",
+    "when": {
+     "fixed": [
+      10,
+      10
+     ]
+    }
+   },
+   {
+    "name": "Onafhankelijkheidsdag",
+    "when": {
+     "fixed": [
+      11,
+      25
+     ]
+    }
+   },
+   {
+    "name": "Eerste Kerstdag",
+    "when": {
+     "fixed": [
+      12,
+      25
+     ]
+    }
+   },
+   {
+    "name": "Tweede Kerstdag",
+    "when": {
+     "fixed": [
+      12,
+      26
+     ]
+    }
+   }
+  ],
+  "unannounced": [
+   "Holi-Phagwa",
+   "Divali",
+   "Ied-Ul-Fitre",
+   "Ied Ul-Adha"
   ]
  },
  "ST": {

@@ -64,6 +64,23 @@ test('holidays past the last official announcement are shown as projected', asyn
   await expect(panel.getByText('Dates after 2026 are projected from the law until the government announces them.')).toBeVisible();
 });
 
+test('a place says where its climate comes from, and which named holidays are not dated yet', async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-05-04');
+  await nav(page, 'World');
+  await page.getByLabel('Country Or Territory').selectOption({ label: 'Vatican' });
+  await page.getByRole('searchbox', { name: 'Search Places' }).fill('vatican');
+  await page.getByRole('list', { name: 'Places' }).getByRole('button', { name: 'Vatican City', exact: true }).click();
+  await expect(page.getByText(/Typical climate from weather station records 6 km away \(Italy\)\./)).toBeVisible();
+
+  await nav(page, 'World');
+  await page.getByLabel('Country Or Territory').selectOption({ label: 'Suriname' });
+  await page.getByRole('searchbox', { name: 'Search Places' }).fill('paramaribo');
+  await page.getByRole('list', { name: 'Places' }).getByRole('button', { name: 'Paramaribo', exact: true }).click();
+  const panel = page.getByRole('region', { name: 'Upcoming Public Holidays' });
+  await expect(panel.getByText(/Dag der Vrijheden/)).toBeVisible();
+  await expect(panel.getByText('Not on the calendar until announced each year: Holi-Phagwa, Divali, Ied-Ul-Fitre, Ied Ul-Adha.')).toBeVisible();
+});
+
 test('map markers work from the keyboard: Tab to a marker, Enter opens the place', async ({ page }) => {
   await quickLife(page, 'gb-london', '2026-05-04');
   await nav(page, 'World');
