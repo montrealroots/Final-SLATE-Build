@@ -2,6 +2,10 @@
 
 The base build is implemented and every automated check passes on this branch (see `QA-REPORT.md`). Acceptance is **pending** on the items below. Pick up from this list; there is no need to reread the package or redo finished work.
 
+## Standing Rule
+
+At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026).
+
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. Nothing has been merged into `main`.
