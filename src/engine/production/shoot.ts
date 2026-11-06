@@ -324,7 +324,10 @@ export function schedulePickups(state: GameState, p: Project, sceneIds: string[]
 
 export function markCaptured(p: Project, sceneId: string, captured: number, quality: number, weatherCompromised: boolean): void {
   const existing = p.captures.find((c) => c.sceneId === sceneId);
-  const rec: SceneCapture = { sceneId, captured: Math.min(1, captured), quality, version: p.approvedDraft ?? 0, weatherCompromised };
+  const scene = p.scenes.find((s) => s.id === sceneId);
+  const now = p.cast.filter((c) => c.method !== 'voice' && scene?.participants.includes(c.characterId)).map((c) => c.performer);
+  const performers = [...new Set([...(existing?.performers ?? []), ...now])];
+  const rec: SceneCapture = { sceneId, captured: Math.min(1, captured), quality, version: p.approvedDraft ?? 0, weatherCompromised, ...(performers.length ? { performers } : {}) };
   if (existing) Object.assign(existing, rec);
   else p.captures.push(rec);
 }

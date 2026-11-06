@@ -37,7 +37,7 @@ Rules inside each category (eligibility details, entry limits, juries) remain si
 | Venice International Film Festival | Horizons | Rules verified | 83rd Venice regulations (2027 projected); see `RULEBOOK-AUDIT.md` |
 | Toronto International Film Festival | People's Choice Award | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | Toronto International Film Festival | Short Cuts | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
-| San Sebastián International Film Festival | Official Selection | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
+| San Sebastián International Film Festival | Official Selection | Rules verified | 74th edition regulations (2027 projected); see `RULEBOOK-AUDIT.md` |
 | Busan International Film Festival | Competition | Confirmed | https://www.screendaily.com/news/busan-film-festival-reveals-first-competition-lineup-ahead-of-30th-edition/5208202.article |
 | Busan International Film Festival | Short Films | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |
 | Sitges Film Festival | Fantastic Competition | Matches published name | Known from the organizer’s published categories; not re-fetched in this pass |

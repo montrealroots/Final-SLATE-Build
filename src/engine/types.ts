@@ -399,6 +399,19 @@ export interface MocapTake {
   date: string;
   quality: number; // 0..100
   retake: boolean;
+  /** Who performed it (person id or 'player'); takes recorded before November 2026 don't say. */
+  performer?: string;
+}
+
+/** What a capture session records: the body, the face, or both (full performance capture). */
+export type CapturePart = 'body' | 'face';
+
+/** A dated capture-stage session (bookings made before November 2026 have none and run on any working day). */
+export interface MocapSession {
+  date: string;
+  kind: 'calibration' | 'capture';
+  status: 'booked' | 'done' | 'missed';
+  note?: string;
 }
 
 export interface MocapRecord {
@@ -408,6 +421,9 @@ export interface MocapRecord {
   takes: MocapTake[];
   approvedTakeId: string | null;
   retakes: number;
+  /** Body, face or both; bookings before November 2026 were both. */
+  parts?: CapturePart[];
+  sessions?: MocapSession[];
 }
 
 export interface SceneCapture {
@@ -416,6 +432,8 @@ export interface SceneCapture {
   quality: number; // modeled 0..100
   version: number; // script version captured
   weatherCompromised: boolean;
+  /** Who performed in it (person ids or 'player'), so a replaced performer whose work remains is still credited. */
+  performers?: string[];
 }
 
 export interface EditState {

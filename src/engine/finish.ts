@@ -1,5 +1,6 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
+import { approvedTake, captureCredit } from './mocap';
 import { financeCredits, onProjectDelivered, receiveIncome } from './finance';
 import { getPlace } from '../data/places';
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
@@ -183,7 +184,19 @@ export function computeCredits(state: GameState, p: Project): Credit[] {
     const eps = [...new Set(approvedScenes(p).filter((s) => s.participants.includes(c.id)).map((s) => s.episode))];
     if (!eps.length) continue;
     const name = a.performer === 'player' ? me : personById(state, a.performer).name;
-    add({ person: a.performer, personName: name, contribution: a.method === 'voice' ? 'Voice Cast' : a.method === 'motion-capture' ? 'Performance Capture' : 'Cast', roleId: a.method === 'voice' ? 'voice-actor' : 'actor', characterName: c.name, episodes: episodic ? eps : 'all' });
+    add({ person: a.performer, personName: name, contribution: a.method === 'voice' ? 'Voice Cast' : a.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: a.method === 'voice' ? 'voice-actor' : 'actor', characterName: c.name, episodes: episodic ? eps : 'all' });
+  }
+  // Performers replaced after contributing keep their credit while their work is still in the film: a capture of a
+  // scene they performed, or the approved motion-capture take.
+  for (const h of p.hires.filter((x) => x.kind === 'cast' && x.status === 'released' && x.daysWorked > 0 && x.characterId)) {
+    const c = chars.find((x) => x.id === h.characterId);
+    if (!c || p.cast.some((a) => a.characterId === c.id && a.performer === h.personId)) continue;
+    const scenesOf = approvedScenes(p).filter((s) => s.participants.includes(c.id));
+    const inCapture = h.method !== 'voice' && h.method !== 'motion-capture' && p.captures.some((cp) => scenesOf.some((s) => s.id === cp.sceneId) && cp.performers?.includes(h.personId));
+    const inTake = h.method === 'motion-capture' && approvedTake(p, c.id)?.performer === h.personId;
+    if (!inCapture && !inTake) continue;
+    const eps = [...new Set(scenesOf.map((s) => s.episode))];
+    add({ person: h.personId, personName: personById(state, h.personId).name, contribution: h.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: 'actor', characterName: c.name, episodes: episodic ? eps : 'all' });
   }
   for (const h of p.hires.filter((x) => x.kind === 'crew' && x.daysWorked > 0 && x.roleId !== 'co-writer' && x.roleId !== 'episode-writer' && x.roleId !== 'episode-director')) {
     add({ person: h.personId, personName: personById(state, h.personId).name, contribution: roleLabel(h.roleId), roleId: h.roleId, episodes: h.episodes });

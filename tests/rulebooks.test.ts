@@ -391,13 +391,13 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('47 categories follow verified rules for at least one edition, 2 only projected ones; the other 93 are simulated', () => {
+  it('48 categories follow verified rules for at least one edition, 2 only projected ones; the other 92 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
     const n = { verified: 0, projected: 0, simulated: 0 };
     for (const inst of INSTITUTIONS) for (const c of inst.categories) n[best(inst.id, c.id)] += 1;
-    expect(n).toEqual({ verified: 47, projected: 2, simulated: 93 });
+    expect(n).toEqual({ verified: 48, projected: 2, simulated: 92 });
   });
 });
 
@@ -527,6 +527,22 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(e.entries[0].id).toBe('emmys-2026:tv-movie:p'); // the entry keeps its identity
     expect(Object.keys(e.results)).toEqual(['movie']);
     expect(categoriesFor(institution('emmys'), 2026).some((c) => c.id === 'movie')).toBe(true);
+  });
+
+  it('San Sebastián 2026 Official Selection: over 60 minutes, produced within the year, no earlier festival or VOD, June 16 in San Sebastián', () => {
+    const s = startLife('ss');
+    s.now = at('Europe/Madrid', '2026-05-01', 9);
+    const e = ed(s, 'san-sebastian-2026');
+    expect(e.rulesId).toBe('san-sebastian-2026@1');
+    const f = (rt: number, done = '2026-02-01') => work(s, { format: 'feature', runtime: rt, completed: done, base: 'gb-london' });
+    expect(r(s, f(60), e, 'official')).toMatch(/more than 60/);
+    expect(r(s, f(61), e, 'official')).toBe('');
+    expect(r(s, f(90, '2025-09-17'), e, 'official')).toMatch(/completed from September 18, 2025/);
+    const streamed = f(90);
+    release(streamed, 'streaming', '2026-04-01', ['GB']);
+    expect(r(s, streamed, e, 'official')).toMatch(/online/);
+    expect(categoryDeadline(e, cat(e, 'official'), f(90))).toBe(at('Europe/Madrid', '2026-06-16', 23, 59, 59));
+    expect(categoryRuleStatus(rulebook('san-sebastian-2027@1'), 'official')).toBe('projected');
   });
 
   it('a save opened after these rules were published adopts them for untouched future editions only', () => {

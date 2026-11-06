@@ -4,13 +4,13 @@ import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
   qualityWords, requestPickups, depsMet, startCutPass, submitEntry, unlockPicture, withdrawEntry, addDaysToKey, categoryRecipients, type Category,
-  categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, rsvpScreening, screeningConflicts, screeningTravel, travelTo, DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, MOCAP_SESSION_STAGE, approveTake, bookMocap, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
+  categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, rsvpScreening, screeningConflicts, screeningTravel, travelTo, DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
 } from '../engine';
-import type { GameState, Project, ReleaseRecord } from '../engine/types';
+import type { CapturePart, GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
-import { FollowButton } from './World';
+import { FollowButton } from './Places';
 
 // ---------------- Production ----------------
 
@@ -416,12 +416,15 @@ export { Fragment, approvedCharacters };
 function MocapPanel({ p }: { p: Project }) {
   const [error, setError] = useState<string | null>(null);
   const [confirm, setConfirm] = useState<{ charId: string; takeId: string; names: string[] } | null>(null);
+  const [parts, setParts] = useState<Record<string, string>>({});
+  const [skipped, setSkipped] = useState<Record<string, string>>({});
   const caps = p.tasks.filter((t) => t.kind === 'anim:mocap' && t.assetRef);
+  const PARTS: Record<string, CapturePart[]> = { both: ['body', 'face'], body: ['body'], face: ['face'] };
   const act = (fn: (s: GameState, proj: Project) => void) => setError(store.act((s) => fn(s, s.projects.find((x) => x.id === p.id)!)));
   return (
     <section className="panel" aria-labelledby="mocap-h">
       <h2 id="mocap-h">Motion Capture</h2>
-      <p className="dim">Book the capture stage, rehearse and calibrate, then capture. Choose the take that goes forward; cleanup and retargeting start from it.</p>
+      <p className="dim">Book the capture stage, rehearse and calibrate, then capture. Sessions are dated and go on your calendar; dates when the performer is shooting, or the stage is taken, are passed over. Choose the take that goes forward; cleanup and retargeting start from it.</p>
       {error && <p role="alert" className="error">{error}</p>}
       {caps.map((cap) => {
         const charId = cap.assetRef!;
@@ -437,16 +440,35 @@ function MocapPanel({ p }: { p: Project }) {
             </p>
             <div className="btn-row">
               {!booked && cap.status !== 'done' && (
-                <button className="btn btn-primary" onClick={() => act((s, proj) => bookMocap(s, proj, charId))}>Book Capture Stage ({money(bookingCost(p, charId))})</button>
+                <>
+                  <SelectField label={`What To Capture For ${name}`} value={parts[charId] ?? 'both'} onChange={(v) => setParts({ ...parts, [charId]: v })}
+                    options={[{ value: 'both', label: 'Performance Capture (Body And Face)' }, { value: 'body', label: 'Motion Capture (Body Only)' }, { value: 'face', label: 'Facial Capture Only' }]} />
+                  <button className="btn btn-primary" onClick={() => act((s, proj) => {
+                    const passed = bookMocap(s, proj, charId, PARTS[parts[charId] ?? 'both']);
+                    setSkipped({ ...skipped, [charId]: passed.length ? `Passed over: ${passed.slice(0, 4).map((x) => `${formatDateKey(x.date)} (${x.reason})`).join('; ')}.` : '' });
+                  })}>Book Capture Stage ({money(bookingCost(p, charId, PARTS[parts[charId] ?? 'both']))})</button>
+                </>
               )}
               {booked && (
                 <>
-                  <button className="btn" onClick={() => act((s, proj) => requestRetake(s, proj, charId))}>Request A Retake ({money(MOCAP_SESSION_STAGE)})</button>
+                  <button className="btn" onClick={() => act((s, proj) => requestRetake(s, proj, charId))}>Request A Retake ({money(sessionCost(p, charId))})</button>
                   {cap.status !== 'done' && <button className="btn btn-danger" onClick={() => act((s, proj) => { cancelMocapBooking(s, proj, charId); })}>Cancel Booking</button>}
                 </>
               )}
             </div>
             {booked && cap.status !== 'done' && <p className="dim">{cancellationTerms(p, charId)}</p>}
+            {rec?.parts && <p className="muted">{captureCredit(rec.parts)}{rec.parts.includes('face') ? `: each session includes a facial rig (${money(FACIAL_RIG_PER_SESSION)}), and a facial solve follows cleanup.` : '.'}</p>}
+            {skipped[charId] && <p className="dim">{skipped[charId]}</p>}
+            {rec?.sessions && rec.sessions.length > 0 && (
+              <ul className="list" aria-label={`Capture Sessions For ${name}`}>
+                {[...rec.sessions].sort((a, b) => (a.date < b.date ? -1 : 1)).map((x, i) => (
+                  <li key={`${x.date}-${i}`} className="row">
+                    <span className="grow">{formatDateKey(x.date, true)}: {x.kind === 'calibration' ? 'Calibration' : 'Capture'}{x.note ? ` (${x.note})` : ''}</span>
+                    <span className={`chip ${x.status === 'done' ? 'good' : x.status === 'missed' ? 'bad' : ''}`}>{x.status === 'booked' ? 'Booked' : x.status === 'done' ? 'Done' : 'Missed, Rebooked'}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
             {rec && rec.takes.length > 0 && (
               <ul className="list" aria-label={`Takes For ${name}`}>
                 {rec.takes.map((t, i) => (

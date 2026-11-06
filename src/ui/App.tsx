@@ -3,7 +3,7 @@ import { Creation } from './Creation';
 import { Shell } from './Shell';
 import { Startup } from './Startup';
 import { useStore } from './store';
-import { CalendarView, Home, PlaceView, Profile } from './World';
+import { Home } from './World';
 
 // Project and event screens load on first use to keep startup small.
 const ProjectsList = lazy(() => import('./Projects').then((m) => ({ default: m.ProjectsList })));
@@ -12,6 +12,9 @@ const ProjectWorkspace = lazy(() => import('./Projects').then((m) => ({ default:
 const WorldView = lazy(() => import('./WorldView').then((m) => ({ default: m.WorldView })));
 const SavedGamesPage = lazy(() => import('./Startup').then((m) => ({ default: () => <><h1>Saved Games</h1><m.SavedGamesList /></> })));
 const SettingsPage = lazy(() => import('./Startup').then((m) => ({ default: () => <><h1>Settings</h1><section className="panel"><m.SettingsPanel /></section></> })));
+const CalendarView = lazy(() => import('./Places').then((m) => ({ default: m.CalendarView })));
+const PlaceView = lazy(() => import('./Places').then((m) => ({ default: m.PlaceView })));
+const Profile = lazy(() => import('./Places').then((m) => ({ default: m.Profile })));
 const EventDetail = lazy(() => import('./FinishViews').then((m) => ({ default: m.EventDetail })));
 
 export function App() {
