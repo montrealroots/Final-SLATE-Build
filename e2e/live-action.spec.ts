@@ -3,8 +3,10 @@ import { advance, createCharacter, freshStart, nav, readSavedState, section, sta
 
 test('live-action short: create, write, cast yourself, staff, shoot, cut, deliver, credits', async ({ page }, info) => {
   await freshStart(page);
-  await expect(page.getByText('Write your stories. Bring them to the screen.')).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'No Saved Games' })).toBeVisible();
+  await expect(page.getByText('Your next story starts here.')).toBeVisible();
+  // A fresh start has no Continue; New Game, Saved Games and Settings are there.
+  await expect(page.getByRole('button', { name: 'Continue', exact: true })).toHaveCount(0);
+  for (const a of ['New Game', 'Saved Games', 'Settings']) await expect(page.getByRole('button', { name: a, exact: true })).toBeVisible();
   await createCharacter(page, {
     name: 'Amaranta Okonkwo-Villaseñor de la Cruz', pronouns: 'She/Her', birthDate: '1994-02-28', birthplace: 'Lagos', heritages: ['Igbo', 'Mexican'],
     customHeritage: 'Afro-Mexican from Costa Chica', mainLanguage: 'English', extraLanguages: ['Spanish', 'Igbo'], start: 'Toronto', startDate: '2026-03-02', startTime: '08:00',
@@ -148,10 +150,10 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
 
   // Saved state matches and survives reload.
   await page.getByRole('button', { name: 'Save And Exit' }).click();
-  await expect(page.getByRole('heading', { name: 'Saved Games' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Continue', exact: true })).toBeVisible();
   const saved = await readSavedState(page);
   expect(saved.projects[0].delivered).not.toBeNull();
-  await page.getByRole('button', { name: 'Resume' }).first().click();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await nav(page, 'Profile');
   await expect(page.getByText('The Last Ferry To Wolfe Island').first()).toBeVisible();
 });

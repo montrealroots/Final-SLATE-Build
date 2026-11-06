@@ -38,31 +38,31 @@ export function validateDraft(d: CreationDraft): DraftProblem[] {
   const out: DraftProblem[] = [];
   if (!d.name.trim()) out.push({ field: 'name', step: 0, message: 'Enter a name.' });
   if (d.name.trim().length > 80) out.push({ field: 'name', step: 0, message: 'Use 80 characters or fewer.' });
-  if (!d.pronouns) out.push({ field: 'pronouns', step: 0, message: 'Choose pronouns.' });
-  if (!d.actingTitle) out.push({ field: 'actingTitle', step: 0, message: 'Choose an acting title.' });
+  if (!d.pronouns) out.push({ field: 'pronouns', step: 1, message: 'Choose pronouns.' });
+  if (!d.actingTitle) out.push({ field: 'actingTitle', step: 1, message: 'Choose an acting title.' });
   const start = /^\d{4}-\d{2}-\d{2}$/.test(d.startDate) ? parseYmd(d.startDate) : null;
   const birth = /^\d{4}-\d{2}-\d{2}$/.test(d.birthDate) ? parseYmd(d.birthDate) : null;
   if (!birth || Number.isNaN(Date.UTC(birth.year, birth.month - 1, birth.day))) {
-    out.push({ field: 'birthDate', step: 1, message: 'Enter your birth date.' });
+    out.push({ field: 'birthDate', step: 4, message: 'Enter your birth date.' });
   } else if (start) {
     const age = ageOn(birth, start);
     if (Date.UTC(birth.year, birth.month - 1, birth.day) > Date.UTC(start.year, start.month - 1, start.day)) {
-      out.push({ field: 'birthDate', step: 1, message: 'Your birth date must be before your starting date.' });
+      out.push({ field: 'birthDate', step: 4, message: 'Your birth date must be before your starting date.' });
     } else if (age < 16) {
       // Working default: a configurable minimum so working-age rules can be added later.
-      out.push({ field: 'birthDate', step: 1, message: 'Your character must be at least 16 on the starting date.' });
+      out.push({ field: 'birthDate', step: 4, message: 'Your character must be at least 16 on the starting date.' });
     } else if (age > 100) {
-      out.push({ field: 'birthDate', step: 1, message: 'Choose a birth date within the last 100 years.' });
+      out.push({ field: 'birthDate', step: 4, message: 'Choose a birth date within the last 100 years.' });
     }
   }
-  if (!findPlace(d.birthplaceId)) out.push({ field: 'birthplaceId', step: 1, message: 'Choose a birthplace.' });
+  if (!findPlace(d.birthplaceId)) out.push({ field: 'birthplaceId', step: 4, message: 'Choose a birthplace.' });
   if (d.heritages.length === 0) out.push({ field: 'heritages', step: 2, message: 'Add at least one background, or describe your own.' });
   if (!d.mainLanguage) out.push({ field: 'mainLanguage', step: 3, message: 'Choose your main language.' });
-  if (!findPlace(d.startPlaceId)) out.push({ field: 'startPlaceId', step: 4, message: 'Choose where your story begins.' });
+  if (!findPlace(d.startPlaceId)) out.push({ field: 'startPlaceId', step: 6, message: 'Choose where your story begins.' });
   if (!start || start.year !== 2026 || Number.isNaN(Date.UTC(start.year, start.month - 1, start.day))) {
-    out.push({ field: 'startDate', step: 4, message: 'Choose a date in 2026.' });
+    out.push({ field: 'startDate', step: 5, message: 'Choose a date in 2026.' });
   }
-  if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(d.startTime)) out.push({ field: 'startTime', step: 4, message: 'Enter a time such as 08:00.' });
+  if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(d.startTime)) out.push({ field: 'startTime', step: 5, message: 'Enter a time such as 08:00.' });
   return out;
 }
 

@@ -5,6 +5,7 @@ import {
   type SaveSummary,
 } from '../engine';
 import type { CreationDraft, GameState, Route } from '../engine/types';
+import { loadWorldHolidays, worldHolidaysLoaded } from '../world/holidays/holidays';
 
 export type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
 export interface Notice {
@@ -46,7 +47,10 @@ class Store {
     document.addEventListener('visibilitychange', () => this.onVisibility());
     window.addEventListener('pagehide', () => this.suspend());
     window.addEventListener('storage', (e) => this.onStorage(e));
+    // Holiday rules for the whole world are fetched once, in the background, from the start.
+    this.holidays = loadWorldHolidays().catch(() => undefined);
   }
+  private holidays: Promise<void>;
 
   // ---------- subscriptions ----------
   subscribe = (fn: () => void) => {
@@ -126,6 +130,17 @@ class Store {
   }
 
   private enter(state: GameState) {
+    // Production checks holidays as time passes, so wait for the rules (or their failure, which the Place view explains).
+    if (!worldHolidaysLoaded()) {
+      this.screen = 'loading';
+      this.emit();
+      void this.holidays.then(() => this.enterNow(state));
+      return;
+    }
+    this.enterNow(state);
+  }
+
+  private enterNow(state: GameState) {
     this.state = state;
     this.screen = 'game';
     this.route = { view: 'home' };
@@ -177,6 +192,13 @@ class Store {
     if (!this.state || !e.key || !e.key.endsWith(`lock.${this.state.saveId}`) || this.readOnly) return;
     const lock = readLock(this.kv, this.state.saveId);
     if (lock && lock.tabId !== TAB_ID) this.loseLock();
+  }
+
+  /** Save and leave this game, then open another. Stays in this game if it couldn't be saved. */
+  async switchTo(saveId: string): Promise<boolean> {
+    if (!(await this.saveAndExit())) return false;
+    this.open(saveId);
+    return true;
   }
 
   async saveAndExit(): Promise<boolean> {

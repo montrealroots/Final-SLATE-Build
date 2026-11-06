@@ -25,13 +25,11 @@ export interface CharacterOpts {
 
 export async function createCharacter(page: Page, o: CharacterOpts): Promise<void> {
   await page.getByRole('button', { name: 'New Game' }).first().click();
+  await expect(page.getByRole('heading', { name: 'Your Name' })).toBeVisible();
   await page.getByRole('textbox', { name: 'Name' }).fill(o.name);
+  await page.getByRole('button', { name: 'Next: Pronouns' }).click();
   await page.getByLabel('Pronouns').selectOption({ label: o.pronouns });
-  await page.getByRole('button', { name: 'Next: Birth Date And Birthplace' }).click();
-  await expect(page.getByRole('heading', { name: 'Birth Date And Birthplace' })).toBeVisible();
-  await page.getByLabel('Birth Date').fill(o.birthDate);
-  await pickPlace(page, 'Birthplace', o.birthplace, o.birthCountry);
-  await page.getByRole('button', { name: 'Next: Ethnicity And Heritage' }).click();
+  await page.getByRole('button', { name: 'Next: Background' }).click();
   for (const h of o.heritages) {
     await page.getByRole('searchbox', { name: 'Search Backgrounds' }).fill(h);
     await page.getByRole('button', { name: `Add A Background: ${h}` }).click();
@@ -41,19 +39,23 @@ export async function createCharacter(page: Page, o: CharacterOpts): Promise<voi
     await page.getByRole('button', { name: 'Add A Background', exact: true }).click();
   }
   await page.getByRole('button', { name: 'Next: Languages' }).click();
-  await page.getByRole('searchbox', { name: 'Main Language' }).fill(o.mainLanguage);
-  await page.getByRole('group', { name: 'Main Language Results' }).getByRole('button', { name: o.mainLanguage, exact: true }).click();
+  await page.getByRole('searchbox', { name: 'Which language do you use most?' }).fill(o.mainLanguage);
+  await page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button', { name: o.mainLanguage, exact: true }).click();
   for (const l of o.extraLanguages) {
     await page.getByRole('searchbox', { name: 'Add Language' }).fill(l);
     await page.getByRole('button', { name: `Add Language: ${l}` }).click();
   }
-  await page.getByRole('button', { name: 'Next: Starting Location And Date' }).click();
-  await pickPlace(page, 'Starting Location', o.start, o.startCountry);
+  await page.getByRole('button', { name: 'Next: Birthday' }).click();
+  await page.getByLabel('Birth Date').fill(o.birthDate);
+  await pickPlace(page, 'Birthplace', o.birthplace, o.birthCountry);
+  await page.getByRole('button', { name: 'Next: Starting Date' }).click();
   await page.getByLabel('Starting Date').fill(o.startDate);
   await page.getByLabel('Starting Time').fill(o.startTime);
-  await page.getByRole('button', { name: 'Review Character' }).click();
-  await expect(page.getByRole('heading', { name: 'Review Character' })).toBeVisible();
-  await page.getByRole('button', { name: 'Begin' }).click();
+  await page.getByRole('button', { name: 'Next: Starting Location' }).click();
+  await pickPlace(page, 'Starting Location', o.start, o.startCountry);
+  await page.getByRole('button', { name: 'Next: Review' }).click();
+  await expect(page.getByRole('heading', { name: 'Review', exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
 }
 
@@ -72,7 +74,7 @@ export async function openMenuIfNeeded(page: Page): Promise<void> {
   if (await menu.isVisible()) await menu.click();
 }
 
-export async function nav(page: Page, label: 'Home' | 'Calendar' | 'World' | 'Projects' | 'Profile'): Promise<void> {
+export async function nav(page: Page, label: 'Home' | 'Calendar' | 'World' | 'Projects' | 'Profile' | 'Saved Games' | 'Settings'): Promise<void> {
   await openMenuIfNeeded(page);
   await page.getByRole('navigation', { name: 'Main' }).filter({ visible: true }).getByRole('link', { name: label }).click();
 }
@@ -126,14 +128,14 @@ export async function quickLife(page: Page, startPlaceId: string, startDate: str
   await page.evaluate(({ pl, sd }) => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 5, name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
+      step: 7, name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
       heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }, { id: 'Norwegian', label: 'Norwegian', custom: false }], heritageCustomText: '', mainLanguage: 'en',
       languages: [{ code: 'sw', proficiency: 'Fluent' }, { code: 'no', proficiency: 'Conversational' }], startPlaceId: pl, startDate: sd, startTime: '08:00', updatedAt: 1,
     }));
   }, { pl: startPlaceId, sd: startDate });
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
-  await page.getByRole('button', { name: 'Begin' }).click();
+  await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
 }
 

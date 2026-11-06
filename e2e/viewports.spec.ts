@@ -1,14 +1,15 @@
 import { expect, test, type Page } from '@playwright/test';
 import { advance, nav, section } from './helpers';
 
-const VIEWPORTS: [number, number][] = [[360, 800], [390, 844], [430, 932], [440, 956], [768, 1024], [1024, 768], [1280, 720], [1440, 900], [1920, 1080], [844, 390]];
+// The package's required widths (360, 390, 393, 414, 430, 768, 1024, 1440, 1920), plus 440, 1280 and a phone landscape.
+const VIEWPORTS: [number, number][] = [[360, 800], [390, 844], [393, 852], [414, 896], [430, 932], [440, 956], [768, 1024], [1024, 768], [1280, 720], [1440, 900], [1920, 1080], [844, 390]];
 
 async function seedGame(page: Page): Promise<void> {
   await page.goto('/');
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 5, name: 'Wilhelmina Oyelaran-Castellanos Bjørnstad', pronouns: 'they', actingTitle: 'Actor', birthDate: '1988-02-29', birthplaceId: 'no-tromso',
+      step: 7, name: 'Wilhelmina Oyelaran-Castellanos Bjørnstad', pronouns: 'they', actingTitle: 'Actor', birthDate: '1988-02-29', birthplaceId: 'no-tromso',
       heritages: [{ id: 'Yoruba', label: 'Yoruba', custom: false }, { id: 'Sámi', label: 'Sámi', custom: false }, { id: 'c1', label: 'Norwegian-Nigerian from Tromsø', custom: true }],
       heritageCustomText: '', mainLanguage: 'no', languages: [{ code: 'en', proficiency: 'Fluent' }, { code: 'yo', proficiency: 'Conversational' }, { code: 'se', proficiency: 'Basic' }],
       startPlaceId: 'no-tromso', startDate: '2026-12-15', startTime: '11:30', updatedAt: 1,
@@ -16,7 +17,7 @@ async function seedGame(page: Page): Promise<void> {
   });
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
-  await page.getByRole('button', { name: 'Begin' }).click();
+  await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
 }
 
@@ -74,6 +75,9 @@ test('every main screen fits each viewport without sideways scrolling', async ({
     ['Profile', () => nav(page, 'Profile')],
     ['Projects', () => nav(page, 'Projects')],
     ['Place', async () => { await nav(page, 'Home'); await page.getByRole('button', { name: 'Weather And Place Details' }).click(); }],
+    ['World', async () => { await nav(page, 'World'); await expect(page.getByRole('img', { name: /Map of/ })).toBeVisible(); }],
+    ['Saved Games', () => nav(page, 'Saved Games')],
+    ['Settings', () => nav(page, 'Settings')],
   ];
   const tabs = ['Overview', 'Script', 'Characters', 'Cast', 'Crew', 'Schedule', 'Budget', 'Production', 'Edit', 'Release', 'Festivals And Awards'];
   for (const [w, h] of VIEWPORTS) {
@@ -114,10 +118,10 @@ test('keyboard: skip link, focus order, Escape closes dialogs and returns focus'
   await expect(page.getByRole('dialog', { name: 'Advance' })).toBeHidden();
   await expect(advanceBtn).toBeFocused();
   // Light theme and larger text both work.
-  await page.getByRole('button', { name: 'Settings' }).click();
-  await page.getByRole('dialog', { name: 'Settings' }).getByRole('button', { name: 'Light', exact: true }).click();
+  await page.getByRole('banner').getByRole('button', { name: 'Settings' }).click();
+  await expect(page.getByRole('heading', { name: 'Settings', level: 1 })).toBeVisible();
+  await page.getByRole('button', { name: 'Light', exact: true }).click();
   await page.getByRole('checkbox', { name: 'Larger Text' }).check();
-  await page.getByRole('button', { name: 'Done' }).click();
   expect(await page.evaluate(() => document.documentElement.dataset.theme)).toBe('light');
   await page.screenshot({ path: 'test-results/light-large-text.png', fullPage: true });
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1)).toBe(true);
@@ -164,14 +168,34 @@ test('a second tab opens the same save read-only until it takes over', async ({ 
   test.skip(info.project.name !== 'desktop', 'Lifecycle check runs once.');
   await seedGame(page);
   await page.getByRole('button', { name: 'Save And Exit' }).click();
-  await page.getByRole('button', { name: 'Resume' }).first().click();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
   const second = await context.newPage();
   await second.goto('/');
-  await second.getByRole('button', { name: 'Resume' }).first().click();
+  await second.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(second.getByText('This game is open in another tab')).toBeVisible();
   await expect(second.getByRole('button', { name: 'Advance', exact: true })).toBeDisabled();
   await second.getByRole('button', { name: 'Take Over Here' }).click();
   await expect(second.getByRole('button', { name: 'Advance', exact: true })).toBeEnabled();
   await expect(page.getByText('This game is open in another tab')).toBeVisible({ timeout: 8000 });
+});
+
+test('in-game Saved Games and Settings come from the same navigation', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop' && info.project.name !== 'phone', 'Runs on desktop and phone.');
+  await seedGame(page);
+  await nav(page, 'Saved Games');
+  await expect(page.getByRole('heading', { name: 'Saved Games', level: 1 })).toBeVisible();
+  await expect(page.getByText('Playing Now')).toBeVisible();
+  // The game being played can't be deleted from here.
+  await expect(page.getByRole('button', { name: /^Delete Save/ })).toHaveCount(0);
+  await nav(page, 'Settings');
+  await expect(page.getByRole('heading', { name: 'Settings', level: 1 })).toBeVisible();
+  await page.getByRole('button', { name: 'Light', exact: true }).click();
+  expect(await page.evaluate(() => document.documentElement.dataset.theme)).toBe('light');
+  // Phones never get entry fields under 16px (they would zoom the page).
+  if (info.project.name === 'phone') {
+    await nav(page, 'World');
+    const size = await page.getByRole('searchbox', { name: 'Search Places' }).evaluate((el) => parseFloat(getComputedStyle(el).fontSize));
+    expect(size).toBeGreaterThanOrEqual(16);
+  }
 });

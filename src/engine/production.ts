@@ -4,7 +4,7 @@
 
 import { getPlace } from '../data/places';
 import { cancel, commit, ledgerTotals, money, reserve, settle, spend, FundsError } from './budget';
-import { holidaysOn, isMakeUpWorkday } from './holidays';
+import { isMakeUpWorkday, placeHolidaysOn } from './holidays';
 import { covers, isAvailable, personById, roleLabel } from './people';
 import {
   approvedCharacters, approvedScenes, approvalRights, isEpisodic, isNonfiction, projectModules, sceneLabel, sceneTechnique,
@@ -267,7 +267,7 @@ export function isWorkingDay(p: Project, key: string): boolean {
   if (wd === 6 && !p.schedule.sixDayWeeks) return false;
   if (!p.schedule.workHolidays) {
     const place = getPlace(p.axes.basePlaceId);
-    if (holidaysOn(place.country, place.regionCode, key).length) return false;
+    if (placeHolidaysOn(place, key).length) return false;
   }
   return true;
 }
@@ -538,7 +538,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
   if (!isWorkingDay(p, date) && !p.schedule.days.some((d) => d.date === date)) return;
   const holiday = (() => {
     const place = getPlace(p.axes.basePlaceId);
-    return holidaysOn(place.country, place.regionCode, date).length > 0;
+    return placeHolidaysOn(place, date).length > 0;
   })();
   const used = new Set<string>(); // people busy today
   // Shoot-day crews are busy on set.
@@ -869,7 +869,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     return d.result;
   }
   // Money first: a day whose cost exceeds agreed amounts and uncommitted funds doesn't run.
-  const holidayToday = holidaysOn(place.country, place.regionCode, d.date).length > 0;
+  const holidayToday = placeHolidaysOn(place, d.date).length > 0;
   const onSetHires = p.hires.filter((h) => h.status === 'accepted' && h.obligationId &&
     (SHOOT_CREW.has(h.roleId) || (h.kind === 'cast' && h.method !== 'voice' && scenes.some((s) => s.participants.includes(h.characterId ?? '')))));
   const overrun = onSetHires.reduce((a, h) => {

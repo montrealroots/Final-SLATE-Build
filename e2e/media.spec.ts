@@ -6,14 +6,14 @@ async function quickStart(page: Page, place: string): Promise<void> {
   await page.evaluate((pl) => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 5, name: 'Kwame Asante-Lindgren', pronouns: 'he', actingTitle: 'Actor', birthDate: '1985-07-04', birthplaceId: 'za-johannesburg',
+      step: 7, name: 'Kwame Asante-Lindgren', pronouns: 'he', actingTitle: 'Actor', birthDate: '1985-07-04', birthplaceId: 'za-johannesburg',
       heritages: [{ id: 'Akan', label: 'Akan', custom: false }, { id: 'Swedish', label: 'Swedish', custom: false }], heritageCustomText: '', mainLanguage: 'en',
       languages: [{ code: 'tw', proficiency: 'Fluent' }], startPlaceId: pl, startDate: '2026-04-06', startTime: '09:00', updatedAt: 1,
     }));
   }, place);
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
-  await page.getByRole('button', { name: 'Begin' }).click();
+  await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
 }
 

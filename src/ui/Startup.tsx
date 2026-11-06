@@ -7,9 +7,7 @@ export function Startup() {
   const s = useStore();
   const saves = s.saves();
   const [confirmStartOver, setConfirmStartOver] = useState(false);
-  const [deleting, setDeleting] = useState<{ id: string; name: string } | null>(null);
-  const [renaming, setRenaming] = useState<{ id: string; name: string } | null>(null);
-  const [renameError, setRenameError] = useState<string | null>(null);
+  const [view, setView] = useState<'home' | 'saves'>('home');
   const [showDraftOffer, setShowDraftOffer] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const latest = saves[0];
@@ -49,25 +47,43 @@ export function Startup() {
     else store.startCreation(true);
   };
 
+  if (view === 'saves') {
+    return (
+      <div className="startup">
+        <div className="startup-card">
+          <Wordmark />
+          <h1>Saved Games</h1>
+          <SavedGamesList />
+          <div className="btn-row spaced">
+            <button className="btn" onClick={() => setView('home')}>Back To Start Screen</button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="startup">
       <div className="startup-card">
         <Wordmark as="h1" />
-        <p className="tagline">Write your stories. Bring them to the screen.</p>
+        <p className="tagline">Your next story starts here.</p>
 
         {latest && (
           <section className="panel" aria-labelledby="resume-h">
             <h2 id="resume-h" className="sr-only">Most Recent Game</h2>
             <SaveLine summary={latest} />
-            <div className="btn-row spaced">
-              <button className="btn btn-primary" onClick={() => store.open(latest.saveId)}>Resume</button>
-              <button className="btn" onClick={newGame}>New Game</button>
-            </div>
           </section>
         )}
 
+        <div className="btn-row startup-actions" role="group" aria-label="Start">
+          <button className={latest ? 'btn' : 'btn btn-primary'} onClick={newGame}>New Game</button>
+          {latest && <button className="btn btn-primary" onClick={() => store.open(latest.saveId)}>Continue</button>}
+          <button className="btn" onClick={() => setView('saves')}>Saved Games</button>
+          <button className="btn" onClick={() => setSettingsOpen(true)}>Settings</button>
+        </div>
+
         {(showDraftOffer || (!latest && draft)) && draft && (
-          <section className="panel" aria-labelledby="draft-h">
+          <section className="panel spaced" aria-labelledby="draft-h">
             <h2 id="draft-h">Continue Creating Your Character</h2>
             <p>Your choices are saved. Pick up where you left off.</p>
             <div className="btn-row">
@@ -76,38 +92,6 @@ export function Startup() {
             </div>
           </section>
         )}
-
-        {!latest && !draft && (
-          <section className="panel" aria-labelledby="none-h">
-            <h2 id="none-h">No Saved Games</h2>
-            <p>Start a new game to create your character.</p>
-            <button className="btn btn-primary" onClick={newGame}>New Game</button>
-          </section>
-        )}
-
-        {saves.length > 0 && (
-          <section className="panel" aria-labelledby="saves-h">
-            <h2 id="saves-h">Saved Games</h2>
-            <ul className="list">
-              {saves.map((sv) => (
-                <li key={sv.saveId}>
-                  <div className="row">
-                    <div className="grow"><SaveLine summary={sv} /></div>
-                    <div className="btn-row">
-                      <button className="btn btn-small" onClick={() => store.open(sv.saveId)} aria-label={`Resume ${sv.saveName}`}>Resume</button>
-                      <button className="btn btn-small" onClick={() => { setRenaming({ id: sv.saveId, name: sv.saveName }); setRenameError(null); }} aria-label={`Rename Save ${sv.saveName}`}>Rename Save</button>
-                      <button className="btn btn-small btn-danger" onClick={() => setDeleting({ id: sv.saveId, name: sv.characterName })} aria-label={`Delete Save ${sv.saveName}`}>Delete Save</button>
-                    </div>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        <div className="btn-row">
-          <button className="btn" onClick={() => setSettingsOpen(true)}>Settings</button>
-        </div>
       </div>
 
       {confirmStartOver && (
@@ -120,6 +104,38 @@ export function Startup() {
           <p>This will discard your unfinished character. Your saved games won't change.</p>
         </Modal>
       )}
+      {settingsOpen && <SettingsDialog onClose={() => setSettingsOpen(false)} />}
+    </div>
+  );
+}
+
+/** Every saved game, with Continue, Rename and Delete. In a game, the one being played can't be deleted from here. */
+export function SavedGamesList() {
+  const s = useStore();
+  const saves = s.saves();
+  const current = s.state?.saveId;
+  const [deleting, setDeleting] = useState<{ id: string; name: string } | null>(null);
+  const [renaming, setRenaming] = useState<{ id: string; name: string } | null>(null);
+  const [renameError, setRenameError] = useState<string | null>(null);
+  if (!saves.length) return <p className="muted">No saved games yet. Start a new game to create your character.</p>;
+  return (
+    <>
+      <ul className="list">
+        {saves.map((sv) => (
+          <li key={sv.saveId}>
+            <div className="row">
+              <div className="grow"><SaveLine summary={sv} /></div>
+              <div className="btn-row">
+                {sv.saveId === current ? <span className="chip gold">Playing Now</span> : (
+                  <button className="btn btn-small" onClick={() => void store.switchTo(sv.saveId)} aria-label={`Continue ${sv.saveName}`}>Continue</button>
+                )}
+                <button className="btn btn-small" onClick={() => { setRenaming({ id: sv.saveId, name: sv.saveName }); setRenameError(null); }} aria-label={`Rename Save ${sv.saveName}`}>Rename Save</button>
+                {sv.saveId !== current && <button className="btn btn-small btn-danger" onClick={() => setDeleting({ id: sv.saveId, name: sv.characterName })} aria-label={`Delete Save ${sv.saveName}`}>Delete Save</button>}
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
       {deleting && (
         <Modal title="Delete This Save?" onClose={() => setDeleting(null)} footer={
           <>
@@ -140,8 +156,7 @@ export function Startup() {
           <TextField label="Save Name" value={renaming.name} maxLength={80} error={renameError} onChange={(v) => setRenaming({ ...renaming, name: v })} />
         </Modal>
       )}
-      {settingsOpen && <SettingsDialog onClose={() => setSettingsOpen(false)} />}
-    </div>
+    </>
   );
 }
 
@@ -158,11 +173,20 @@ function SaveLine({ summary }: { summary: ReturnType<typeof store.saves>[number]
 }
 
 export function SettingsDialog({ onClose }: { onClose: () => void }) {
+  return (
+    <Modal title="Settings" onClose={onClose} footer={<button className="btn btn-primary" onClick={onClose}>Done</button>}>
+      <SettingsPanel />
+    </Modal>
+  );
+}
+
+/** The settings themselves: shown in a dialog on the start screen and as the Settings page in a game. */
+export function SettingsPanel() {
   const s = useStore();
   const theme = (document.documentElement.dataset.theme as 'dark' | 'light') || 'dark';
   const large = document.documentElement.dataset.text === 'large';
   return (
-    <Modal title="Settings" onClose={onClose} footer={<button className="btn btn-primary" onClick={onClose}>Done</button>}>
+    <>
       <fieldset style={{ border: 0, padding: 0, margin: '0 0 16px' }}>
         <legend style={{ fontWeight: 600, marginBottom: 8 }}>Theme</legend>
         <div className="btn-row">
@@ -180,6 +204,6 @@ export function SettingsDialog({ onClose }: { onClose: () => void }) {
           onChange={(v) => store.act((g) => (g.settings.wakeForObligations = v))} />
       )}
       <p className="dim">Motion follows your device's reduced-motion setting.</p>
-    </Modal>
+    </>
   );
 }

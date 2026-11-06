@@ -1,15 +1,16 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { languageName, PRONOUNS } from '../data/identity';
 import { getPlace, placeLabel, searchPlaces, type Place } from '../data/places';
 import {
   DAY, FORECAST_HORIZON_DAYS, addDaysToKey, addPlan, cancelPlan, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast,
-  formatClock, formatDateKey, hasHolidayRules, holidaysForYear, honors, institution, localParts, localToInstant, monthName, nextBirthdayInstant,
+  formatClock, formatDateKey, honors, placeHolidayCoverage, placeHolidays, placeHolidaysOn, institution, localParts, localToInstant, monthName, nextBirthdayInstant,
   observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours,
 } from '../engine';
 import type { Edition, GameState } from '../engine/types';
-import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
+import { Check, Modal, NumberField, Professions, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { store, useClock, useGame } from './store';
+import { loadWorldHolidays } from '../world/holidays/holidays';
 
 const PHASE_LABEL: Record<string, string> = {
   development: 'In Development', 'pre-production': 'In Pre-Production', production: 'In Production', 'post-production': 'In Post-Production', delivered: 'Delivered', released: 'Released',
@@ -29,7 +30,7 @@ export function Home() {
   const endOfDay = localToInstant(zone, p.year, p.month, p.day, 23, 59).instant;
   const todays = upcomingCommitments(g, now, endOfDay);
   const later = upcomingCommitments(g, endOfDay + 1, now + 7 * DAY).slice(0, 6);
-  const hol = hasHolidayRules(place.country) ? holidaysForYear(place.country, place.regionCode, p.year).filter((h) => h.date === today) : [];
+  const hol = placeHolidaysOn(place, today);
   const weatherLine = (() => {
     const temp = Math.round(temperatureAt(w, p.hour + p.minute / 60));
     if (dl.polar === 'night') return `It's ${temp}°C and the sun won't rise today.`;
@@ -129,7 +130,7 @@ function calendarItems(g: GameState, year: number, month: number): Map<string, C
     if (obs.month === month) push(ymd(year, obs.month, obs.day), { label: `Your Birthday (${year - g.character.birth.year})`, kind: 'Birthdays' });
   }
   if (g.calendarFilters.includes('Holidays')) {
-    for (const h of holidaysForYear(place.country, place.regionCode, year)) if (h.date >= first && h.date <= last) push(h.date, { label: `${h.name}${h.estimated ? ' (Expected)' : ''}`, kind: 'Holidays' });
+    for (const h of placeHolidays(place, year)) if (h.date >= first && h.date <= last) push(h.date, { label: `${h.name}${h.estimated ? ' (Expected)' : h.projected ? ' (Projected)' : ''}`, kind: 'Holidays' });
   }
   for (const ed of g.editions) {
     const inst = institution(ed.institutionId);
@@ -332,7 +333,7 @@ export function PlaceView() {
   const issued = dateKey(now, place.zone);
   const fc = Array.from({ length: FORECAST_HORIZON_DAYS }, (_, i) => forecast(g.seed, place, addDaysToKey(today, i + 1), issued));
   const year = parseYmd(today).year;
-  const hols = hasHolidayRules(place.country) ? [...holidaysForYear(place.country, place.regionCode, year), ...holidaysForYear(place.country, place.regionCode, year + 1)].filter((h) => h.date >= today).slice(0, 6) : [];
+  const hols = [...placeHolidays(place, year), ...placeHolidays(place, year + 1)].filter((h) => h.date >= today).slice(0, 6);
   const [q, setQ] = useState('');
   const [travelError, setTravelError] = useState<string | null>(null);
   return (
@@ -377,10 +378,8 @@ export function PlaceView() {
         </section>
         <section className="panel" aria-labelledby="pl-hol">
           <h2 id="pl-hol">Upcoming Public Holidays</h2>
-          {hasHolidayRules(place.country) ? (
-            <ul className="list">{hols.map((h) => <li key={h.date + h.name}>{formatDateKey(h.date, true)}: {h.name}{h.estimated ? ' (expected; depends on the moon sighting)' : ''}</li>)}</ul>
-          ) : <p className="muted">Holiday dates for this country aren't included yet.</p>}
-          <p className="dim">Lunar-calendar holidays are included only for years with published dates.</p>
+          {hols.length > 0 && <ul className="list">{hols.map((h) => <li key={h.date + h.name}>{formatDateKey(h.date, true)}: {h.name}{h.estimated ? ' (expected; depends on the moon sighting)' : h.projected ? ' (projected)' : ''}</li>)}</ul>}
+          <HolidayNote place={place} year={hols.some((h) => h.projected) ? year + 1 : year} />
         </section>
         <section className="panel" aria-labelledby="pl-other">
           <h2 id="pl-other">Other Places</h2>
@@ -397,6 +396,31 @@ export function PlaceView() {
   );
 }
 
+/** Explains anything about a place's holiday dates other than "all kept". */
+function HolidayNote({ place, year }: { place: Place; year: number }) {
+  const [, rerender] = useState(0);
+  const [failed, setFailed] = useState(false);
+  const c = placeHolidayCoverage(place, year);
+  if (c.kind === 'not-loaded') {
+    return (
+      <div role="status">
+        <p className="muted">{failed ? "Holiday dates couldn't be loaded. Until they are, no day here is treated as a holiday." : 'Loading holiday dates…'}</p>
+        {failed && <button className="btn" onClick={() => { setFailed(false); loadWorldHolidays().then(() => rerender((n) => n + 1), () => setFailed(true)); }}>Try Again</button>}
+        <HolidayLoader onFail={() => setFailed(true)} onLoad={() => rerender((n) => n + 1)} />
+      </div>
+    );
+  }
+  if (c.kind === 'not-kept') return <p className="muted">Holiday dates for {place.countryName} aren't included yet, so no day here is treated as a holiday.</p>;
+  if (c.kind === 'outside-years') return <p className="muted">Holiday dates are included for 2026 to 2100.</p>;
+  if (c.kind === 'projected') return <p className="dim">Dates after {c.announcedTo} are projected from the law until the government announces them.</p>;
+  return <p className="dim">Dates marked expected depend on a moon sighting and can move by a day.</p>;
+}
+
+function HolidayLoader({ onFail, onLoad }: { onFail: () => void; onLoad: () => void }) {
+  useEffect(() => { let live = true; loadWorldHolidays().then(() => live && onLoad(), () => live && onFail()); return () => { live = false; }; }, []);
+  return null;
+}
+
 // ---------------- Profile ----------------
 
 export function Profile() {
@@ -410,7 +434,7 @@ export function Profile() {
   return (
     <>
       <h1>{c.name}</h1>
-      <p className="chips"><span className="chip gold">{c.actingTitle}</span><span aria-hidden="true">·</span><span className="chip gold">Screenwriter</span><span aria-hidden="true">·</span><span className="chip gold">Producer</span><span aria-hidden="true">·</span><span className="chip gold">Director</span></p>
+      <Professions actingTitle={c.actingTitle} />
       <div className="panel-grid">
         <section className="panel">
           <h2>About</h2>

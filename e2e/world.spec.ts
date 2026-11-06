@@ -1,5 +1,5 @@
 import { expect, test } from '@playwright/test';
-import { createCharacter, freshStart, nav } from './helpers';
+import { createCharacter, freshStart, nav, quickLife } from './helpers';
 
 test('a life can start anywhere in the world, and world places travel and persist', async ({ page }) => {
   await freshStart(page);
@@ -27,7 +27,7 @@ test('a life can start anywhere in the world, and world places travel and persis
 
   // The world place survives a reload from the saved game.
   await page.reload();
-  await page.getByRole('button', { name: 'Resume', exact: true }).click();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
   await nav(page, 'World');
   await expect(page.getByText(/You're in Turku, .*Finland/)).toBeVisible();
@@ -36,15 +36,30 @@ test('a life can start anywhere in the world, and world places travel and persis
 test('a failed place load offers Try Again and recovers', async ({ page }) => {
   await freshStart(page);
   let fail = true;
-  await page.route(/places\/IS\.tsv/, (route) => (fail ? route.abort() : route.continue()));
-  await page.getByRole('button', { name: 'New Game' }).first().click();
-  await page.getByRole('textbox', { name: 'Name' }).fill('Test');
-  await page.getByLabel('Pronouns').selectOption({ label: 'She/Her' });
-  await page.getByRole('button', { name: 'Next: Birth Date And Birthplace' }).click();
+  // Only the data fetch (no query string); the dev server also serves the shard's URL as a module.
+  await page.route((url) => url.pathname.endsWith('/IS.tsv') && !url.search, (route) => (fail ? route.abort() : route.continue()));
+  // A draft paused at Birthday, so the test reaches the birthplace picker directly.
+  await page.evaluate(() => localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
+    step: 4, name: 'Test', pronouns: 'she', actingTitle: 'Actress', birthDate: '', birthplaceId: '', heritages: [{ id: 'Icelandic', label: 'Icelandic', custom: false }],
+    heritageCustomText: '', mainLanguage: 'en', languages: [], startPlaceId: '', startDate: '2026-03-02', startTime: '08:00', updatedAt: 1,
+  })));
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue Creation' }).click();
+  await expect(page.getByRole('heading', { name: 'Birthday' })).toBeVisible();
   await page.getByLabel('Country Or Territory').selectOption({ label: 'Iceland' });
   await expect(page.getByText("Places couldn't be loaded.")).toBeVisible();
   fail = false;
   await page.getByRole('button', { name: 'Try Again' }).click();
   await page.getByRole('searchbox', { name: 'Birthplace' }).fill('reykjav');
   await expect(page.getByRole('group', { name: 'Birthplace Results' }).getByRole('button').first()).toContainText('Reykjavík');
+});
+
+test('holidays past the last official announcement are shown as projected', async ({ page }) => {
+  await quickLife(page, 'cn-shanghai', '2026-12-20');
+  await nav(page, 'World');
+  await page.getByRole('searchbox', { name: 'Search Places' }).fill('shanghai');
+  await page.getByRole('list', { name: 'Places' }).getByRole('button', { name: 'Shanghai', exact: true }).click();
+  const panel = page.getByRole('region', { name: 'Upcoming Public Holidays' });
+  await expect(panel.getByText(/2027.*\(projected\)/).first()).toBeVisible();
+  await expect(panel.getByText('Dates after 2026 are projected from the law until the government announces them.')).toBeVisible();
 });

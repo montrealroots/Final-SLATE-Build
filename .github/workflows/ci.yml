@@ -25,8 +25,11 @@ jobs:
       - run: npm test
       - run: npm run build
       - name: Install Playwright browsers matching the lockfile
+        # A stalled package mirror once hung this step for over 40 minutes; fail fast instead.
+        timeout-minutes: 10
         run: npx playwright install --with-deps chromium webkit
       - name: Browser journeys
+        timeout-minutes: 20
         run: npm run e2e -- --trace retain-on-failure
       - name: Upload failure artifacts
         if: failure()
