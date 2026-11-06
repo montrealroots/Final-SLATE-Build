@@ -46,8 +46,8 @@ function rulesOf(country: string): CountryRules | undefined {
 }
 
 export type HolidayCoverage =
-  | { kind: 'kept'; announcedTo?: number }
-  | { kind: 'projected'; announcedTo: number } // later than the last year the government has announced
+  | { kind: 'kept'; announcedTo?: number; unannounced?: string[] }
+  | { kind: 'projected'; announcedTo: number; unannounced?: string[] } // later than the last year the government has announced
   | { kind: 'not-kept' } // no rules for this country
   | { kind: 'outside-years' }
   | { kind: 'not-loaded' };
@@ -58,7 +58,8 @@ export function worldHolidayCoverage(country: string, year: number, regionKey?: 
   if (!rules) return { kind: 'not-kept' };
   if (year < FIRST_YEAR || year > LAST_YEAR) return { kind: 'outside-years' };
   const last = (regionKey && rules.regionsAnnouncedTo?.[regionKey]) || rules.announcedTo;
-  return last !== undefined && year > last ? { kind: 'projected', announcedTo: last } : { kind: 'kept', announcedTo: last };
+  const unannounced = rules.unannounced;
+  return last !== undefined && year > last ? { kind: 'projected', announcedTo: last, unannounced } : { kind: 'kept', announcedTo: last, unannounced };
 }
 
 export interface WorldHoliday {
@@ -91,8 +92,9 @@ export function worldHolidaysForYear(country: string, year: number, regionKey?: 
     .map((h): WorldHoliday => {
       const rule = byName.get(h.name);
       const date = toKey(h.day);
+      const name = rule?.en ? `${h.name} (${rule.en})` : h.name; // the original name, then the official English one
       return {
-        date, name: h.substitute ? `${h.name} (Observed)` : h.name,
+        date, name: h.substitute ? `${name} (Observed)` : name,
         substitute: h.substitute || undefined,
         estimated: rule ? isSighted(rule) : undefined,
         lunar: rule ? isLunar(rule) : undefined,

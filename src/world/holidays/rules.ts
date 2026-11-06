@@ -106,7 +106,10 @@ export type When =
   | { dates: string[] };
 
 export interface Rule {
+  /** As the law or the government's list names it, in its own language. */
   name: string;
+  /** The English name an official English source gives (only then: never a translation of our own). */
+  en?: string;
   when: When;
   /** Days after the day the rule gives (the second day of a feast is 1). */
   plus?: number;
@@ -175,6 +178,8 @@ export interface CountryRules {
   unmoved?: string[];
   /** A day between two holidays (not substitutes) is one too, by this name (Japan's Act on National Holidays, article 3(3)). */
   between?: string;
+  /** Holidays the law names whose dates are set year by year and haven't been read: not on the calendar, and said so. */
+  unannounced?: string[];
 }
 
 export interface Holiday {

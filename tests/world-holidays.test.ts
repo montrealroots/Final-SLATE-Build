@@ -74,3 +74,28 @@ describe('holidays at a place', () => {
     expect(pl).toContain('2026-05-03'); // Constitution Day
   });
 });
+
+describe('holidays added and named on November 6, 2026', () => {
+  it('Suriname keeps the days its Algemene termijnenwet lists, and names the feasts set year by year instead of guessing them', async () => {
+    await loadWorldHolidays();
+    const sr = worldHolidaysForYear('SR', 2026);
+    expect(sr.map((h) => [h.date, h.name])).toEqual([
+      ['2026-01-01', 'Nieuwjaarsdag'], ['2026-04-03', 'Goede Vrijdag'], ['2026-04-06', 'Tweede Paasdag'], ['2026-05-01', 'Dag van de Arbeid'],
+      ['2026-07-01', 'Dag der Vrijheden'], ['2026-08-09', 'Dag der Inheemsen'], ['2026-10-10', 'Dag der Marrons'], ['2026-11-25', 'Onafhankelijkheidsdag'],
+      ['2026-12-25', 'Eerste Kerstdag'], ['2026-12-26', 'Tweede Kerstdag'],
+    ]);
+    expect(sr.some((h) => h.substitute)).toBe(false); // the law moves nothing off a weekend
+    expect(worldHolidayCoverage('SR', 2026)).toEqual({ kind: 'kept', unannounced: ['Holi-Phagwa', 'Divali', 'Ied-Ul-Fitre', 'Ied Ul-Adha'] });
+  });
+
+  it('Cyprus shows each holiday by its Greek name and the English name the Central Bank of Cyprus publishes', async () => {
+    await loadWorldHolidays();
+    const cy = worldHolidaysForYear('CY', 2026);
+    expect(cy.find((h) => h.date === '2026-01-01')?.name).toBe('Πρωτοχρονιά (New Year’s Day)');
+    expect(cy.find((h) => h.date === '2026-02-23')?.name).toBe('Καθαρά Δευτέρα (Green Monday)');
+    expect(cy.find((h) => h.date === '2026-10-01')?.name).toBe('Ημέρα της Κυπριακής Ανεξαρτησίας (Cyprus Independence Day)');
+    expect(cy.every((h) => /\(.+\)/.test(h.name))).toBe(true);
+    // Without an official English source the original name stands alone.
+    expect(worldHolidaysForYear('GE', 2026)[0].name).toBe('ახალი წელი');
+  });
+});

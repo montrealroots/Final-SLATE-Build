@@ -11,6 +11,7 @@ import { Check, Modal, NumberField, Professions, SelectField, TextField, longLoc
 import { Breadcrumbs } from './Shell';
 import { store, useClock, useGame } from './store';
 import { loadWorldHolidays } from '../world/holidays/holidays';
+import { climateNote } from '../world/climate';
 
 const PHASE_LABEL: Record<string, string> = {
   development: 'In Development', 'pre-production': 'In Pre-Production', production: 'In Production', 'post-production': 'In Post-Production', delivered: 'Delivered', released: 'Released',
@@ -346,7 +347,7 @@ export function PlaceView() {
           <p>It's {lt.time} on {lt.weekday}, {lt.date} here.</p>
           <p>{w.condition}, {Math.round(temperatureAt(w, localParts(now, place.zone).hour))}°C now. High {Math.round(w.high)}°C, low {Math.round(w.low)}°C.{w.precipHours ? ` ${w.snow ? 'Snow' : 'Rain'} from about ${formatClock(w.precipHours[0], 0)} to ${formatClock(w.precipHours[1] % 24, 0)}.` : ''}</p>
           <p>{dl.polar === 'day' ? 'The sun stays up all day.' : dl.polar === 'night' ? "The sun doesn't rise today." : `Sunrise ${longLocal(dl.sunrise!, place.zone).time}, sunset ${longLocal(dl.sunset!, place.zone).time} (${dl.dayLengthHours.toFixed(1)} hours of daylight).`}</p>
-          <p className="dim">Weather in SLATE is simulated from typical local climate, not live observations.</p>
+          <p className="dim">Weather in SLATE is simulated from typical local climate, not live observations.{climateNote(place.climate.source) ? ` ${climateNote(place.climate.source)}` : ''}</p>
           {!here && (
             <>
               <button className="btn btn-primary" disabled={!!g.travel} onClick={() => { let at = 0; const err = store.act((s) => { at = travelTo(s, place.id); }); setTravelError(err); if (!err) void store.advance({ at }); }}>Travel Here</button>
@@ -412,8 +413,10 @@ function HolidayNote({ place, year }: { place: Place; year: number }) {
   }
   if (c.kind === 'not-kept') return <p className="muted">Holiday dates for {place.countryName} aren't included yet, so no day here is treated as a holiday.</p>;
   if (c.kind === 'outside-years') return <p className="muted">Holiday dates are included for 2026 to 2100.</p>;
-  if (c.kind === 'projected') return <p className="dim">Dates after {c.announcedTo} are projected from the law until the government announces them.</p>;
-  return <p className="dim">Dates marked expected depend on a moon sighting and can move by a day.</p>;
+  const missing = c.kind === 'projected' || c.kind === 'kept' ? c.unannounced : undefined;
+  const notYet = missing?.length ? <p className="dim">Not on the calendar until announced each year: {missing.join(', ')}.</p> : null;
+  if (c.kind === 'projected') return <>{notYet}<p className="dim">Dates after {c.announcedTo} are projected from the law until the government announces them.</p></>;
+  return <>{notYet}<p className="dim">Dates marked expected depend on a moon sighting and can move by a day.</p></>;
 }
 
 function HolidayLoader({ onFail, onLoad }: { onFail: () => void; onLoad: () => void }) {

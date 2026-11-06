@@ -8,18 +8,18 @@
 
 ## Commands And Results
 
-Latest full run: November 6, 2026, rulebook checkpoint (Annecy, Venice, Berlinale, Golden Globes, Emmys), local Linux container. Storage measurements in `docs/STORAGE.md`.
+Latest full run: November 6, 2026, country and holiday detail checkpoint (after the rulebook checkpoint, montrealroots/Final-SLATE-Build#20), local Linux container. Storage measurements in `docs/STORAGE.md`.
 
 | Command | Exit | Result |
 | --- | --- | --- |
-| `npm run world:check` | 0 | 252 entries (246 playable), 3,865 regions, 246 shards, 171,750 rows with 171,750 unique IDs, 175 outlines, 218 holiday entries, 11,459 stations; 0 problems. |
+| `npm run world:check` | 0 | 252 entries (246 playable), 3,865 regions, 246 shards, 171,750 rows with 171,750 unique IDs, 175 outlines, 219 holiday entries, 11,459 stations; 0 problems. Ledger classifications resolved (`docs/world/COUNTRY-DETAIL-AUDIT.md`). |
 | `npm run typecheck` | 0 | No type errors (strict mode). |
-| `npm test` | 0 | 22 files, 173 tests passed, 0 skipped (33 in `tests/rulebooks.test.ts`, 15 in `tests/vault.test.ts`). |
+| `npm test` | 0 | 23 files, 185 tests passed, 0 skipped (33 in `tests/rulebooks.test.ts`, 15 in `tests/vault.test.ts`, 10 in `tests/climate-audit.test.ts`). |
 | `npm run build` | 0 | Built. One existing Vite notice (Startup is imported both statically and dynamically), present before this checkpoint. |
-| `npm run budget` | 0 | Startup JavaScript 676 kB raw, 208 kB gzipped (the new rulebooks added 11 kB, the save vault 11 kB before) (691 and 205 before the performance checkpoint; the storage panel added 5 kB and the rulebooks 15 kB), in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
+| `npm run budget` | 0 | Startup JavaScript 677 kB raw, 209 kB gzipped (the climate note added 1 kB, the rulebooks 11 kB, the save vault 11 kB) (691 and 205 before the performance checkpoint; the storage panel added 5 kB and the rulebooks 15 kB), in 4 files including React (budgets 700 and 220 kB). World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
 | `npm run balance` | 0 | 2 tests passed: 180 family runs, 120 sensitivity runs, determinism check, and 30 held-out combination runs. Took 34 seconds on this checkpoint (98 seconds before the snapshot change, same machine). |
 | `npm run perf:engine` | 0 | Fresh, medium and long saves; see `docs/PERFORMANCE.md`. |
-| `npm run e2e -- --trace off` | 0 | 68 passed, 19 skipped, 0 failed, in 6.3 minutes, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
+| `npm run e2e -- --trace off` | 0 | 70 passed, 19 skipped, 0 failed, in 6.3 minutes, across 5 projects (new: climate source and undated holidays on a place screen, desktop and phone): desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max and iPhone 15 Pro Max landscape. |
 
 ### Why 17 Browser Tests Are Skipped
 
