@@ -31,8 +31,14 @@ export interface CharacterIdentity {
   languages: LanguageSkill[]; // additional languages
 }
 
+/** Character creation's screens, in order (the registry is CREATION_STEPS in state.ts). */
+export type CreationStepId = 'name' | 'pronouns' | 'background' | 'languages' | 'birthday' | 'start-date' | 'start-location' | 'review';
+
 export interface CreationDraft {
-  step: number;
+  /** The screen the player is on. Drafts saved before November 2026 stored its position as a number; readDraft converts them. */
+  step: CreationStepId;
+  /** Set when the player went from Review to edit a screen: that screen then offers to go straight back to Review. */
+  returnToReview?: boolean;
   name: string;
   pronouns: PronounSet | '';
   actingTitle: ActingTitle | '';

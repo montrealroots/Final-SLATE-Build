@@ -61,7 +61,25 @@ no room, everything stays in localStorage and the start screen says so; it moves
 The game never deletes a recovery copy by itself. Saved Games shows how much storage the games use (and, where the
 browser says, how much it allows) and lists every recovery copy with **Export Copy** and **Delete Copy** (asks first,
 with **Export First**). Deleting a save says how many recovery copies go with it. **Export Save** downloads the game
-being played from memory, so it works even when storage is full. Importing a save file is not supported.
+being played from memory, so it works even when storage is full.
+
+### Import Save
+
+**Import Save** (Saved Games, also with no saves yet) reads an exported file in memory: the checksum must match, a
+newer version is refused ("made by a newer version of SLATE"), older versions are upgraded and the result is validated
+(`readImport`, `src/engine/save.ts`). Nothing is stored until all of that has passed, and the file is never changed.
+
+- A save whose ID is new is stored as it is.
+- A save whose ID is already here is never replaced silently: the player chooses **Import As A Separate Copy** (new ID,
+  name ending "(Imported Copy)", the save here untouched) or **Replace The Save Here**, which asks again; the save it
+  replaces is kept as the backup. A save here from a newer version is never replaced. The game being played, or a save
+  open in another tab, can't be replaced (the player is told why); a separate copy still can.
+- The import is one vault transaction (`Vault.forImport`): with no room, or a failed write, nothing changes and the
+  player is told so. It works the same on IndexedDB and on the localStorage fallback.
+- Tested: `tests/import.test.ts` (round trip with history, credits, money, places, events and editions; older and
+  newer versions; malformed files; duplicates; failed and full commits; localStorage fallback) and `e2e/backup.spec.ts`
+  (export, import into a fresh browser profile, open, play, save, reload; copy and confirmed replacement; refusals;
+  two tabs).
 
 ## Long Careers
 

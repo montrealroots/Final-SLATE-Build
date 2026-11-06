@@ -25,13 +25,9 @@ export interface CharacterOpts {
   startTime: string;
 }
 
-/**
- * Go to the next creation step and wait until it has settled (it moves focus to its heading): text typed before then
- * was lost in WebKit runs, about one in three on the production build.
- */
+/** Go to the next creation step. No waiting: typing straight away must work (e2e/creation.spec.ts). */
 async function nextStep(page: Page, name: string): Promise<void> {
   await page.getByRole('button', { name: `Next: ${name}` }).click();
-  await expect(page.getByRole('heading', { name, level: 1 })).toBeFocused();
 }
 
 export async function createCharacter(page: Page, o: CharacterOpts): Promise<void> {
@@ -273,4 +269,18 @@ export async function seededLife(page: Page, startPlaceId: string, startDate: st
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
   expect((await readSavedState(page)).seed).toBe(seed);
+}
+
+/** Start a project from the Projects screen through its form. */
+export async function newProject(page: Page, o: { title: string; format: string; medium?: string; technique?: string; finish?: string; episodes?: string; runtime?: string }): Promise<void> {
+  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByLabel('Working Title').fill(o.title);
+  await page.getByLabel('Format').selectOption({ label: o.format });
+  if (o.medium) await page.getByLabel('Medium').selectOption({ label: o.medium });
+  if (o.technique) await page.getByLabel(/^Animation Technique/).selectOption({ label: o.technique });
+  if (o.finish) await page.getByLabel('Animation Finish').selectOption({ label: o.finish });
+  if (o.episodes) await page.getByLabel('Episodes').fill(o.episodes);
+  if (o.runtime) await page.getByLabel(/Target (Runtime In Minutes|Minutes Per Episode)/).fill(o.runtime);
+  await page.getByRole('button', { name: 'Create Project' }).click();
+  await expect(page.getByRole('heading', { name: o.title, level: 1 })).toBeVisible();
 }

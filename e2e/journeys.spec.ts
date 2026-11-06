@@ -1,22 +1,9 @@
 import { expect, test, type Page } from './test';
-import { addScene, advance, creditsTable, nav, produceToDelivery, quickLife, readSavedState, saveAndApprove, section, saveAndExit, seededLife } from './helpers';
+import { addScene, advance, creditsTable, nav, produceToDelivery, quickLife, readSavedState, saveAndApprove, section, saveAndExit, seededLife, newProject } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
 test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop', 'Full media journeys run once, at desktop width.'));
-
-async function newProject(page: Page, o: { title: string; format: string; medium?: string; technique?: string; finish?: string; episodes?: string; runtime?: string }): Promise<void> {
-  await page.getByRole('button', { name: 'New Script' }).first().click();
-  await page.getByLabel('Working Title').fill(o.title);
-  await page.getByLabel('Format').selectOption({ label: o.format });
-  if (o.medium) await page.getByLabel('Medium').selectOption({ label: o.medium });
-  if (o.technique) await page.getByLabel(/^Animation Technique/).selectOption({ label: o.technique });
-  if (o.finish) await page.getByLabel('Animation Finish').selectOption({ label: o.finish });
-  if (o.episodes) await page.getByLabel('Episodes').fill(o.episodes);
-  if (o.runtime) await page.getByLabel(/Target (Runtime In Minutes|Minutes Per Episode)/).fill(o.runtime);
-  await page.getByRole('button', { name: 'Create Project' }).click();
-  await expect(page.getByRole('heading', { name: o.title, level: 1 })).toBeVisible();
-}
 
 async function addCharacters(page: Page, names: string[]): Promise<void> {
   await section(page, 'Characters');

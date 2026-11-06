@@ -78,6 +78,15 @@ export class Vault {
     });
   }
 
+  /** For importSave: every record of a save ID and of the copies named after it (`<id>-c…`), and the index. */
+  forImport<T>(saveId: string, fn: (kv: KeyValueStore) => T): Promise<WorkResult<T>> {
+    const prefix = `slate.v1.save.${saveId}`;
+    return this.serial(async () => {
+      const gaps = await this.indexGaps();
+      return this.run((k) => k.startsWith(prefix) || k === 'slate.v1.index' || gaps.some((g) => saveKeys(g)(k)), fn);
+    });
+  }
+
   private serial<T>(task: () => Promise<T>): Promise<T> {
     const p = this.chain.then(task, task);
     this.chain = p.catch(() => undefined);

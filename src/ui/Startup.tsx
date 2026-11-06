@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { findPlace, placeLabel, type Place } from '../data/places';
 import { WorldPlacePicker } from './WorldPicker';
 import { Check, Modal, TextField, Wordmark, longLocal, realTimestamp } from './components';
@@ -122,7 +122,7 @@ export function SavedGamesList() {
   const [deleting, setDeleting] = useState<{ id: string; name: string } | null>(null);
   const [renaming, setRenaming] = useState<{ id: string; name: string } | null>(null);
   const [renameError, setRenameError] = useState<string | null>(null);
-  if (!saves.length) return <><p className="muted">No saved games yet. Start a new game to create your character.</p><StoragePanel /></>;
+  if (!saves.length) return <><p className="muted">No saved games yet. Start a new game to create your character, or import a save you exported.</p><ImportSave /><StoragePanel /></>;
   const copiesOf = (id: string) => s.recoveryCopies().filter((c) => c.saveId === id).length;
   return (
     <>
@@ -143,6 +143,7 @@ export function SavedGamesList() {
           </li>
         ))}
       </ul>
+      <ImportSave />
       {deleting && (
         <Modal title="Delete This Save?" onClose={() => setDeleting(null)} footer={
           <>
@@ -168,6 +169,80 @@ export function SavedGamesList() {
       )}
       <StoragePanel />
     </>
+  );
+}
+
+type ImportStage =
+  | { kind: 'idle' }
+  | { kind: 'busy' }
+  | { kind: 'done'; saveId: string; name: string }
+  | { kind: 'error'; message: string }
+  | { kind: 'conflict'; text: string; existing: ReturnType<typeof store.saves>[number] }
+  | { kind: 'confirm-replace'; text: string; existing: ReturnType<typeof store.saves>[number] };
+
+/**
+ * Import Save: reads an exported save file, checks and upgrades it, and stores it. A save with the same ID is never
+ * replaced silently: the player chooses a separate copy or confirms a replacement. The file itself is never changed.
+ */
+function ImportSave() {
+  const s = useStore();
+  const input = useRef<HTMLInputElement>(null);
+  const [stage, setStage] = useState<ImportStage>({ kind: 'idle' });
+  const run = async (text: string, mode?: 'copy' | 'replace') => {
+    setStage({ kind: 'busy' });
+    const r = await store.importSaveFile(text, mode);
+    if (r.ok) setStage({ kind: 'done', saveId: r.saveId, name: r.name });
+    else if ('conflict' in r) setStage({ kind: 'conflict', text, existing: r.conflict });
+    else setStage({ kind: 'error', message: r.error });
+  };
+  const choose = async (file: File | undefined) => {
+    if (!file) return;
+    let text: string;
+    try {
+      text = await file.text();
+    } catch {
+      setStage({ kind: 'error', message: "The file couldn't be read." });
+      return;
+    }
+    await run(text);
+  };
+  return (
+    <section className="panel spaced" aria-labelledby="import-h">
+      <h2 id="import-h">Import Save</h2>
+      <p className="muted">Bring back a save you exported from SLATE, from this browser or another. The file isn't changed.</p>
+      <input ref={input} type="file" accept=".json,application/json" hidden aria-label="Save File To Import"
+        onChange={(e) => { const f = e.target.files?.[0]; e.target.value = ''; void choose(f); }} />
+      <button className="btn" disabled={stage.kind === 'busy'} onClick={() => input.current?.click()}>{stage.kind === 'busy' ? 'Importing…' : 'Import Save'}</button>
+      {stage.kind === 'error' && <p role="alert" className="error">This save couldn't be imported. {stage.message}</p>}
+      {stage.kind === 'done' && (
+        <div role="status" className="row spaced">
+          <span className="grow">Imported {stage.name}. It's in your saved games.</span>
+          {s.state?.saveId !== stage.saveId && <button className="btn btn-small btn-primary" onClick={() => void (s.state ? store.switchTo(stage.saveId) : store.open(stage.saveId))}>Open Imported Save</button>}
+        </div>
+      )}
+      {stage.kind === 'conflict' && (
+        <Modal title="This Save Is Already Here" onClose={() => setStage({ kind: 'idle' })} footer={
+          <>
+            <button className="btn" onClick={() => setStage({ kind: 'idle' })}>Cancel</button>
+            <button className="btn" onClick={() => setStage({ kind: 'confirm-replace', text: stage.text, existing: stage.existing })}>Replace The Save Here</button>
+            <button className="btn btn-primary" onClick={() => void run(stage.text, 'copy')}>Import As A Separate Copy</button>
+          </>
+        }>
+          <p>The file is the same saved game as {stage.existing.saveName ? <><strong>{stage.existing.saveName}</strong>{stage.existing.savedAtReal ? `, saved ${realTimestamp(stage.existing.savedAtReal)}` : ''}</> : 'a save already here'}.</p>
+          <p>A separate copy keeps both. Nothing is replaced unless you choose to.</p>
+        </Modal>
+      )}
+      {stage.kind === 'confirm-replace' && (
+        <Modal title="Replace This Save?" onClose={() => setStage({ kind: 'idle' })} footer={
+          <>
+            <button className="btn btn-primary" onClick={() => setStage({ kind: 'conflict', text: stage.text, existing: stage.existing })}>Keep The Save Here</button>
+            <button className="btn btn-danger" onClick={() => void run(stage.text, 'replace')}>Replace Save</button>
+          </>
+        }>
+          <p>{stage.existing.saveName || 'The save here'} will be replaced by the file. The save it replaces is kept as this save's backup until the next time it is saved; export it first if you want to keep it for longer.</p>
+        </Modal>
+      )}
+    </section>
   );
 }
 
