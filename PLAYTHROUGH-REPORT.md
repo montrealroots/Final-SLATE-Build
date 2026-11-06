@@ -64,6 +64,9 @@ Each journey uses shared helpers that play a project the way a player would:
 | Documentary short "Lock Keepers" (Amsterdam) | Three consent requests, then a sequence with a consenting contributor; Researcher credited; no Cast credits | Delivered (the test skips if all three decline, about 1 in 100 worlds) |
 | TV limited series "Night Ward" (Atlanta) | Episode Writers And Directors panel; showrunner credit; Marcus credited for episode 1 only, Dr. Ines Park for episodes 1 and 2 | Delivered |
 | Web series "Tiny Flat" (Sydney) | One assembly edit per episode; the player stayed behind the camera, so has no Cast credit | Delivered |
+| 3D short "Iron Orchard" with motion capture (Vancouver) | The Golem has a performance-capture role on the Cast tab; Motion Capture and Render tasks; credits for Performance Capture as The Golem and Voice Cast as Wren | Delivered |
+| Stop-motion short "Button Moon" (London) | Puppet copies setting; Armature, Puppet Fabrication, Costume Fitting, Miniature Sets and Stage setup tasks; the puppet reaches "Ready for the stage." | Delivered |
+| Unscripted series "Bake Or Break" (London) | The Format Rules panel and its required-rule message; hosts and participants with consent; Story Producer and Camera Operator required; Footage Logging and Story Producing per episode; Story Producer credited | Delivered (skips if fewer than two contributors agree) |
 
 **Bugs found and fixed:**
 - The award test first stopped at "Not Nominated", before the ceremony; it now waits for the results.
@@ -95,7 +98,5 @@ Playwright's WebKit iPhone 15 Plus and 15 Pro Max profiles (430×739 portrait, 8
 
 ## Not Played Through The Browser
 
-- Stop-motion and 3D delivery (3D is played through production, not to delivery; both are verified to delivery at engine level).
-- Accepting a distribution offer (the journey accepts one only if a distributor makes one; the engine path is tested).
-- Unscripted TV and motion capture through the UI (engine tests only).
+- Accepting a distribution offer is exercised only when a distributor makes one in that world; the engine path is tested.
 - Physical devices and real Safari.

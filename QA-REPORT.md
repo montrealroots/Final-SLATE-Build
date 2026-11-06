@@ -14,9 +14,9 @@
 | `npm test` | 0 | 9 files, 48 tests passed. |
 | `npm run build` | 0 | Built with no warnings. Main chunk 316 kB, React 219 kB; project screens load on demand (90 kB). |
 | `npm run balance` | 0 | 1 test passed; 180 family runs plus 120 sensitivity runs. |
-| `npm run e2e -- --trace off` | 0 | 20 passed, 13 skipped, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max, and iPhone 15 Pro Max landscape. The skips are tests that run on one project only by design. |
+| `npm run e2e -- --trace off` | 0 | 23 passed, 16 skipped, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max, and iPhone 15 Pro Max landscape. The skips are tests that run on one project only by design. |
 
-Counts: 69 automated checks passed, 0 failed, 13 skipped by design.
+Counts: 72 automated checks passed, 0 failed, 16 skipped by design.
 
 ## Also Checked During Development
 
@@ -49,7 +49,6 @@ Counts: 69 automated checks passed, 0 failed, 13 skipped by design.
 **Pending.** All required automated checks pass on this revision. Still open (see `RESUME-HERE.md`):
 
 - No physical iPhone or real Safari verification. WebKit emulation passed, but the on-screen keyboard can't be emulated.
-- Stop-motion, 3D, unscripted TV and motion capture are verified to delivery at engine level, not through the browser.
 - Lunar holidays exist for 2026 only.
 - Place coordinates have consistency checks only.
 - Festival and award rules are simulated.
