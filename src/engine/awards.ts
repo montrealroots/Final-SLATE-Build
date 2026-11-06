@@ -907,17 +907,17 @@ registerHandler('screening', (state, ev) => {
   const ed = edition(state, ev.payload.editionId as string);
   const sc = ed.screenings?.find((x) => x.projectId === ev.payload.projectId && x.at === ev.payload.at);
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
-  if (!sc || sc.done || !p) return { suppressInterrupt: true };
+  if (!sc || sc.done) return { suppressInterrupt: true };
   sc.done = true;
   const inst = institution(ed.institutionId);
   sc.attended = sc.rsvp === 'accepted' && state.locationId === inst.placeId && !state.travel;
   if (sc.rsvp === 'pending') sc.rsvp = 'expired';
-  const reception = p.quality?.reception ?? 50;
+  const reception = p?.quality?.reception ?? 50;
   const response = reception >= 75 ? 'warm' : reception >= 55 ? 'mixed but attentive' : 'cool';
   const presence = sc.attended ? ' You were there and answered questions afterward.' : sc.rsvp === 'accepted' ? " You'd said you would attend, but you weren't there." : '';
-  const text = `${p.title} screened at the ${ed.label}. The audience response was ${response}.${presence}`;
-  p.history.push({ at: state.now, text });
-  addLog(state, text, 'festival', { projectId: p.id, route: { view: 'event', editionId: ed.id } });
+  const text = `${p?.title ?? 'Your film'} screened at the ${ed.label}. The audience response was ${response}.${presence}`;
+  p?.history.push({ at: state.now, text });
+  addLog(state, text, 'festival', { projectId: p?.id, route: { view: 'event', editionId: ed.id } });
   return { message: text };
 });
 
