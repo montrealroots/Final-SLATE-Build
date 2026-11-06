@@ -10,6 +10,8 @@ const ProjectsList = lazy(() => import('./Projects').then((m) => ({ default: m.P
 const NewProject = lazy(() => import('./Projects').then((m) => ({ default: m.NewProject })));
 const ProjectWorkspace = lazy(() => import('./Projects').then((m) => ({ default: m.ProjectWorkspace })));
 const WorldView = lazy(() => import('./WorldView').then((m) => ({ default: m.WorldView })));
+const SavedGamesPage = lazy(() => import('./Startup').then((m) => ({ default: () => <><h1>Saved Games</h1><m.SavedGamesList /></> })));
+const SettingsPage = lazy(() => import('./Startup').then((m) => ({ default: () => <><h1>Settings</h1><section className="panel"><m.SettingsPanel /></section></> })));
 const EventDetail = lazy(() => import('./FinishViews').then((m) => ({ default: m.EventDetail })));
 
 export function App() {
@@ -29,6 +31,8 @@ export function App() {
       {v === 'new-project' && <NewProject />}
       {v === 'project' && <ProjectWorkspace />}
       {v === 'event' && <EventDetail />}
+      {v === 'saves' && <SavedGamesPage />}
+      {v === 'settings' && <SettingsPage />}
       </Suspense>
     </Shell>
   );

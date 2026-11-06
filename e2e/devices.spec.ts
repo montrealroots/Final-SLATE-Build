@@ -8,14 +8,14 @@ test('phone device: screens fit, drawer works, focused fields stay visible', asy
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
-      step: 5, name: 'Zoë Nakamura-Fitzgerald Ó Briain', pronouns: 'she', actingTitle: 'Actress', birthDate: '1999-11-02', birthplaceId: 'ie-dublin',
+      step: 7, name: 'Zoë Nakamura-Fitzgerald Ó Briain', pronouns: 'she', actingTitle: 'Actress', birthDate: '1999-11-02', birthplaceId: 'ie-dublin',
       heritages: [{ id: 'Irish', label: 'Irish', custom: false }, { id: 'Japanese', label: 'Japanese', custom: false }], heritageCustomText: '', mainLanguage: 'en',
       languages: [{ code: 'ga', proficiency: 'Conversational' }, { code: 'ja', proficiency: 'Basic' }], startPlaceId: 'au-melbourne', startDate: '2026-07-01', startTime: '19:45', updatedAt: 1,
     }));
   });
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).tap();
-  await page.getByRole('button', { name: 'Begin' }).tap();
+  await page.getByRole('button', { name: 'Start My Story' }).tap();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
   const overflow = () => page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   for (const v of ['Home', 'Calendar', 'Projects', 'Profile'] as const) {

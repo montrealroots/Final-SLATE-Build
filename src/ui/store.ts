@@ -194,6 +194,13 @@ class Store {
     if (lock && lock.tabId !== TAB_ID) this.loseLock();
   }
 
+  /** Save and leave this game, then open another. Stays in this game if it couldn't be saved. */
+  async switchTo(saveId: string): Promise<boolean> {
+    if (!(await this.saveAndExit())) return false;
+    this.open(saveId);
+    return true;
+  }
+
   async saveAndExit(): Promise<boolean> {
     if (!this.state) return true;
     this.suspendClock();

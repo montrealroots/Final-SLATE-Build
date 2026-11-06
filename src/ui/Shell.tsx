@@ -4,24 +4,16 @@ import {
   DAY, FORECAST_HORIZON_DAYS, addLocal, currentPlace, currentZone, dateKey, formatDuration, localParts, localToInstant, nextNotableEvent, weatherOn,
 } from '../engine';
 import { Check, Modal, SelectField, TextField, Wordmark, longLocal } from './components';
-import { SettingsDialog } from './Startup';
+import { DESTINATIONS, destinationOf } from './routes';
 import { store, useClock, useGame, useStore } from './store';
 
-const NAV = [
-  { view: 'home', label: 'Home' },
-  { view: 'calendar', label: 'Calendar' },
-  { view: 'world', label: 'World' },
-  { view: 'projects', label: 'Projects' },
-  { view: 'profile', label: 'Profile' },
-];
 
 export function Shell({ children }: { children: ReactNode }) {
   const s = useStore();
   const [drawer, setDrawer] = useState(false);
-  const [settings, setSettings] = useState(false);
   const [exitError, setExitError] = useState(false);
   const route = s.route;
-  const active = route.view === 'project' || route.view === 'new-project' ? 'projects' : route.view === 'place' ? 'world' : route.view === 'event' ? 'calendar' : route.view;
+  const active = destinationOf(route.view).view;
 
   useEffect(() => {
     if (!drawer) return;
@@ -48,7 +40,7 @@ export function Shell({ children }: { children: ReactNode }) {
 
   const nav = (
     <nav aria-label="Main">
-      {NAV.map((n) => (
+      {DESTINATIONS.map((n) => (
         <a key={n.view} href={`#${n.view}`} aria-current={active === n.view ? 'page' : undefined}
           onClick={(e) => { e.preventDefault(); setDrawer(false); store.go({ view: n.view }); }}>{n.label}</a>
       ))}
@@ -58,7 +50,7 @@ export function Shell({ children }: { children: ReactNode }) {
   return (
     <div className="shell">
       <a className="skip-link" href="#main">Skip To Content</a>
-      <TopBar onMenu={() => setDrawer(true)} onSettings={() => setSettings(true)} onExit={async () => setExitError(!(await store.saveAndExit()))} />
+      <TopBar onMenu={() => setDrawer(true)} onSettings={() => store.go({ view: 'settings' })} onExit={async () => setExitError(!(await store.saveAndExit()))} />
       {s.readOnly && (
         <div className="alert bad" role="alert" style={{ margin: '12px 16px 0' }}>
           <p>This game is open in another tab, so time isn't running here and changes are paused.</p>
@@ -67,8 +59,8 @@ export function Shell({ children }: { children: ReactNode }) {
       )}
       {exitError && (
         <div className="alert bad" role="alert" style={{ margin: '12px 16px 0' }}>
-          <p><strong>Couldn't Save</strong>. Your latest changes haven't been saved. Try again before closing the game.</p>
-          <button className="btn btn-primary" onClick={async () => setExitError(!(await store.saveAndExit()))}>Try Saving Again</button>
+          <p>Your game couldn't be saved. Keep this window open and try again.</p>
+          <button className="btn btn-primary" onClick={async () => setExitError(!(await store.saveAndExit()))}>Try Again</button>
         </div>
       )}
       <div className="body">
@@ -89,7 +81,6 @@ export function Shell({ children }: { children: ReactNode }) {
           </div>
         </>
       )}
-      {settings && <SettingsDialog onClose={() => setSettings(false)} />}
     </div>
   );
 }
@@ -120,7 +111,6 @@ function TopBar({ onMenu, onSettings, onExit }: { onMenu: () => void; onSettings
       </div>
       <div className="tools">
         <span className={`save-state ${s.saveStatus === 'error' ? 'error' : ''}`} role="status" aria-live="polite">{s.busy ? `${s.busy}…` : saveLabel}</span>
-        {s.saveStatus === 'error' && <button className="btn btn-small" onClick={() => store.saveNow()}>Try Saving Again</button>}
         <button className="btn btn-small btn-primary" disabled={!!s.busy || s.readOnly || g.sleep.asleep} onClick={() => setAdvance(true)}>Advance</button>
         <button className="btn btn-small" disabled={!!s.busy || s.readOnly || g.sleep.asleep} onClick={() => setSleep(true)}>Sleep</button>
         <button className="btn btn-small" onClick={onSettings}>Settings</button>
@@ -129,7 +119,10 @@ function TopBar({ onMenu, onSettings, onExit }: { onMenu: () => void; onSettings
       {advance && <AdvanceDialog onClose={() => setAdvance(false)} />}
       {sleep && <SleepDialog onClose={() => setSleep(false)} />}
       {s.saveStatus === 'error' && (
-        <p className="sr-only" role="alert">Your latest changes haven't been saved. Try again before closing the game.</p>
+        <div className="alert bad save-alert" role="alert">
+          <p>Your game couldn't be saved. Keep this window open and try again.</p>
+          <button className="btn btn-primary" onClick={() => store.saveNow()}>Try Again</button>
+        </div>
       )}
     </header>
   );

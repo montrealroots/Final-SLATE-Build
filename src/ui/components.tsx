@@ -175,3 +175,13 @@ export function plural(n: number, word: string, pluralWord?: string): string {
 export function realTimestamp(ms: number): string {
   return new Date(ms).toLocaleString('en-US', { dateStyle: 'medium', timeStyle: 'short' });
 }
+
+/** The four professions every character has, in the 1221 order; the acting title is the player's choice. */
+export function Professions({ actingTitle }: { actingTitle: string }) {
+  const all = ['Screenwriter', 'Producer', 'Director', actingTitle || 'Actor'];
+  return (
+    <p className="chips" aria-label={all.join(', ')}>
+      {all.map((t, i) => <span key={t} aria-hidden="true">{i > 0 && <span className="dot"> · </span>}<span className="chip gold">{t}</span></span>)}
+    </p>
+  );
+}

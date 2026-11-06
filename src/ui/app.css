@@ -196,3 +196,9 @@ main { padding: var(--s5) max(var(--s4), env(safe-area-inset-right)) calc(var(--
 .worldmap-country[data-selected='true'] { fill: var(--accent-line); stroke: var(--accent); }
 .worldmap-marker { fill: var(--accent); cursor: pointer; }
 .worldmap-here { fill: none; stroke: var(--accent-strong); stroke-width: 0.6; }
+.save-alert { flex-basis: 100%; margin: 0; }
+.startup-actions { margin-top: var(--s4); }
+.startup-actions .btn { min-height: 44px; }
+.chips .dot { color: var(--text-dim); }
+/* Phones zoom into fields under 16px; keep entry fields at 16px on small screens. */
+@media (max-width: 56.25em) { input, select, textarea { font-size: 16px; } }

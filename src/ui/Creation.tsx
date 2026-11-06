@@ -3,18 +3,22 @@ import { PRONOUNS, defaultActingTitle, languageName, searchHeritages, searchLang
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
 import { ageOn, parseYmd, validateDraft, type DraftProblem } from '../engine';
 import type { CreationDraft, Proficiency } from '../engine/types';
-import { Field, SelectField, TextField, Wordmark } from './components';
+import { Field, Professions, SelectField, TextField, Wordmark } from './components';
 import { store, useStore } from './store';
 import { WorldPlacePicker } from './WorldPicker';
 
-const PAGES = ['Name And Pronouns', 'Birth Date And Birthplace', 'Ethnicity And Heritage', 'Languages', 'Starting Location And Date', 'Review Character'];
+// Section names and order from the 1221 adaptation (UI-1221-ADAPTATION.md).
+const PAGES = ['Your Name', 'Pronouns', 'Background', 'Languages', 'Birthday', 'Starting Date', 'Starting Location', 'Review'];
+const LAST = PAGES.length - 1;
 const DESCRIPTIONS = [
-  "Choose your name and how you'd like to be referred to.",
-  'Choose when and where you were born.',
+  'Choose the name people will know you by.',
+  "Choose how you'd like to be referred to, and the title you'd like as an actor.",
   'Choose as many backgrounds as you need. You can describe your own.',
-  'Choose your main language and any others you know.',
-  'Choose where your story begins and the date and local time.',
-  'Take a look before you begin. You can go back and change any choice.',
+  'Choose the language you use most and any others you know.',
+  'Choose when and where you were born.',
+  'Choose the date and local time your story begins. Any date in 2026.',
+  'Choose where your story begins.',
+  'Take a look before you start. You can go back and change any choice.',
 ];
 const PROFICIENCIES: Proficiency[] = ['Native', 'Fluent', 'Conversational', 'Basic'];
 
@@ -23,7 +27,7 @@ export function Creation() {
   const d = s.draft!;
   const [shown, setShown] = useState<DraftProblem[]>([]);
   const [beginError, setBeginError] = useState<string | null>(null);
-  const step = Math.min(d.step, 5);
+  const step = Math.min(d.step, LAST);
   const set = (patch: Partial<CreationDraft>) => store.updateDraft(patch);
   const current = validateDraft(d);
   // Errors appear after a Next attempt and clear as soon as the field becomes valid.
@@ -52,35 +56,33 @@ export function Creation() {
         <section className="panel">
           <h1 id="creation-h" tabIndex={-1}>{PAGES[step]}</h1>
           <p className="muted">{DESCRIPTIONS[step]}</p>
-          {step === 0 && (
+          {step === 0 && <TextField label="Name" value={d.name} maxLength={80} autoComplete="off" error={err('name')} onChange={(v) => set({ name: v })} />}
+          {step === 1 && (
             <>
-              <TextField label="Name" value={d.name} maxLength={80} autoComplete="off" error={err('name')} onChange={(v) => set({ name: v })} />
               <SelectField label="Pronouns" value={d.pronouns} error={err('pronouns')}
                 options={[{ value: '', label: 'Choose Pronouns' }, ...(['he', 'she', 'they'] as const).map((k) => ({ value: k, label: PRONOUNS[k].label }))]}
                 onChange={(v) => set({ pronouns: v, actingTitle: d.actingTitle || (v ? defaultActingTitle(v) : '') })} />
-              <SelectField label="Acting Title" value={d.actingTitle} error={err('actingTitle')} hint="Actor can be used by anyone."
+              <SelectField label="Acting Title" value={d.actingTitle} error={err('actingTitle')} hint="Actor can be used by anyone. Your pronouns and your title are separate choices."
                 options={[{ value: '', label: 'Choose A Title' }, { value: 'Actor', label: 'Actor' }, { value: 'Actress', label: 'Actress' }]}
                 onChange={(v) => set({ actingTitle: v })} />
-            </>
-          )}
-          {step === 1 && (
-            <>
-              <TextField label="Birth Date" type="date" value={d.birthDate} error={err('birthDate')} hint="You must be at least 16 on your starting date." onChange={(v) => set({ birthDate: v })} />
-              <PlacePicker label="Birthplace" value={d.birthplaceId} error={err('birthplaceId')} onChange={(id, pl) => set({ birthplaceId: id, places: keepPlaces(d, 'birthplaceId', pl) })} />
             </>
           )}
           {step === 2 && <HeritageStep d={d} set={set} error={err('heritages')} />}
           {step === 3 && <LanguageStep d={d} set={set} error={err('mainLanguage')} />}
           {step === 4 && (
             <>
-              <PlacePicker label="Starting Location" value={d.startPlaceId} error={err('startPlaceId')} onChange={(id, pl) => set({ startPlaceId: id, places: keepPlaces(d, 'startPlaceId', pl) })} />
-              <div className="grid2">
-                <TextField label="Starting Date" type="date" value={d.startDate} error={err('startDate')} hint="Any date in 2026." onChange={(v) => set({ startDate: v })} />
-                <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you start." onChange={(v) => set({ startTime: v })} />
-              </div>
+              <TextField label="Birth Date" type="date" value={d.birthDate} error={err('birthDate')} hint="You must be at least 16 on your starting date." onChange={(v) => set({ birthDate: v })} />
+              <PlacePicker label="Birthplace" value={d.birthplaceId} error={err('birthplaceId')} onChange={(id, pl) => set({ birthplaceId: id, places: keepPlaces(d, 'birthplaceId', pl) })} />
             </>
           )}
-          {step === 5 && <Review d={d} goto={goto} />}
+          {step === 5 && (
+            <div className="grid2">
+              <TextField label="Starting Date" type="date" value={d.startDate} error={err('startDate')} hint="Any date in 2026." onChange={(v) => set({ startDate: v })} />
+              <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you start." onChange={(v) => set({ startTime: v })} />
+            </div>
+          )}
+          {step === 6 && <PlacePicker label="Starting Location" value={d.startPlaceId} error={err('startPlaceId')} onChange={(id, pl) => set({ startPlaceId: id, places: keepPlaces(d, 'startPlaceId', pl) })} />}
+          {step === LAST && <Review d={d} goto={goto} />}
           {beginError && <p role="alert" style={{ color: 'var(--negative)' }}>{beginError}</p>}
           <div className="btn-row spread spaced">
             {step === 0 ? (
@@ -88,9 +90,8 @@ export function Creation() {
             ) : (
               <button className="btn" onClick={() => goto(step - 1)}>Back To {PAGES[step - 1]}</button>
             )}
-            {step < 4 && <button className="btn btn-primary" onClick={next}>Next: {PAGES[step + 1]}</button>}
-            {step === 4 && <button className="btn btn-primary" onClick={next}>Review Character</button>}
-            {step === 5 && (
+            {step < LAST && <button className="btn btn-primary" onClick={next}>Next: {PAGES[step + 1]}</button>}
+            {step === LAST && (
               <button className="btn btn-primary" onClick={() => {
                 const problems = validateDraft(d);
                 if (problems.length) {
@@ -99,7 +100,7 @@ export function Creation() {
                   return;
                 }
                 setBeginError(store.begin());
-              }}>Begin</button>
+              }}>Start My Story</button>
             )}
           </div>
         </section>
@@ -169,11 +170,11 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
   const addResults = searchLanguages(q, 8).filter((l) => l.code !== d.mainLanguage && !d.languages.some((x) => x.code === l.code));
   return (
     <>
-      <Field label="Main Language" error={error} hint={d.mainLanguage ? `Chosen: ${languageName(d.mainLanguage)}` : 'Search, then choose one.'}>
+      <Field label="Which language do you use most?" error={error} hint={d.mainLanguage ? `Chosen: ${languageName(d.mainLanguage)}` : 'Search, then choose one.'}>
         {(id, db) => (
           <>
             <input id={id} type="search" value={mq} aria-describedby={db} aria-invalid={!!error} onChange={(e) => setMq(e.target.value)} />
-            <div className="picklist" role="group" aria-label="Main Language Results">
+            <div className="picklist" role="group" aria-label="Language You Use Most Results">
               {mainResults.map((l) => (
                 <button key={l.code} type="button" aria-pressed={l.code === d.mainLanguage} onClick={() => set({ mainLanguage: l.code, languages: d.languages.filter((x) => x.code !== l.code) })}>{l.name}</button>
               ))}
@@ -217,7 +218,7 @@ function Review({ d, goto }: { d: CreationDraft; goto: (n: number) => void }) {
     <div className="stack">
       <div className="panel">
         <h2>{d.name || 'Unnamed'}</h2>
-        <p className="chips"><span className="chip gold">{d.actingTitle || 'Actor'}</span><span aria-hidden="true">·</span><span className="chip gold">Screenwriter</span><span aria-hidden="true">·</span><span className="chip gold">Producer</span><span aria-hidden="true">·</span><span className="chip gold">Director</span></p>
+        <Professions actingTitle={d.actingTitle} />
         <dl className="kv">
           <dt>Pronouns</dt><dd>{pron}</dd>
           <dt>Born</dt><dd>{d.birthDate || 'Not chosen'}{birth ? ` in ${placeLabel(birth)}` : ''}{age !== null ? ` (age ${age} at the start)` : ''}</dd>

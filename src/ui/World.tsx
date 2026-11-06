@@ -7,7 +7,7 @@ import {
   observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours,
 } from '../engine';
 import type { Edition, GameState } from '../engine/types';
-import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
+import { Check, Modal, NumberField, Professions, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { store, useClock, useGame } from './store';
 import { loadWorldHolidays } from '../world/holidays/holidays';
@@ -434,7 +434,7 @@ export function Profile() {
   return (
     <>
       <h1>{c.name}</h1>
-      <p className="chips"><span className="chip gold">{c.actingTitle}</span><span aria-hidden="true">·</span><span className="chip gold">Screenwriter</span><span aria-hidden="true">·</span><span className="chip gold">Producer</span><span aria-hidden="true">·</span><span className="chip gold">Director</span></p>
+      <Professions actingTitle={c.actingTitle} />
       <div className="panel-grid">
         <section className="panel">
           <h2>About</h2>

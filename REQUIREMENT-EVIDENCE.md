@@ -10,7 +10,10 @@ Tests: `F` = `tests/foundation.test.ts`, `J` = `tests/journeys.test.ts`, `M` = `
 
 | Requirement | Input | Consumer | Persistent Consequence | Player Feedback | Evidence | Status |
 | --- | --- | --- | --- | --- | --- | --- |
-| Exact startup copy and save browser | First launch, saves | `Startup.tsx` | Index of saves | Resume details, delete and start-over confirmations | E1, E3 | Tested |
+| Startup copy and actions (1221): "Your next story starts here.", New Game, Continue only with a save, Saved Games, Settings | First launch, saves | `Startup.tsx` | Index of saves | Continue details, delete and start-over confirmations | E1, E3 | Tested |
+| Creation in the 1221 order (Your Name to Review), "Which language do you use most?", Start My Story | Creation | `Creation.tsx`, `validateDraft` | Draft | Errors on the right section | E1 (`createCharacter`), `e2e/world.spec.ts` | Tested |
+| One route registry for sidebar, drawer, active state; Saved Games and Settings in a game | Navigation | `routes.ts`, `Shell.tsx` | — | Playing Now marker; the current game can't be deleted | E3 ("in-game Saved Games and Settings") | Tested |
+| Save error: "Your game couldn't be saved. Keep this window open and try again." with Try Again | Failed write | Top bar alert, Save And Exit | Stays in the game | Alert | Code path; failed-write UI journey is M7 | Implemented |
 | Load failure keeps the save | Corrupt data | `readSave`, load-error screen | File untouched | "Couldn't Open This Save" | F (corrupt and newer-version cases) | Tested (engine); screen built |
 | Verified saves; Saving, Saved, Couldn't Save | Any change | `writeSave` | Temporary write, read back, then replace | Save indicator | F (round trip, failed write keeps the old save) | Tested |
 | Save And Exit doesn't exit on failure | Exit | `store.saveAndExit` | Stays in game | Banner with Try Saving Again | Code path | Implemented |
