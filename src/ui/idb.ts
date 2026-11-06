@@ -29,13 +29,15 @@ const canGzip = typeof CompressionStream === 'function' && typeof DecompressionS
 
 async function pack(text: string): Promise<Stored> {
   if (!canGzip) return { data: text, gz: false };
-  const bytes = await new Response(new Blob([text]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer();
+  // Streams straight from a Response, not a Blob: WebKit reads a Blob through a blob URL, which it refuses while the page
+  // unloads ("... due to access control checks"), and the save then fails with an uncaught error.
+  const bytes = await new Response(new Response(text).body!.pipeThrough(new CompressionStream('gzip'))).arrayBuffer();
   return { data: bytes, gz: true };
 }
 
 async function unpack(s: Stored): Promise<string> {
   if (!s.gz) return s.data as string;
-  return new Response(new Blob([s.data as ArrayBuffer]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+  return new Response(new Response(s.data as ArrayBuffer).body!.pipeThrough(new DecompressionStream('gzip'))).text();
 }
 
 export class IdbBackend implements Backend {

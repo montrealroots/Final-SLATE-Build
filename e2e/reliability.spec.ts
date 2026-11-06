@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test';
 import { hashString } from '../src/engine/rng';
 import { advance, nav, quickLife, saveAndExit } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';

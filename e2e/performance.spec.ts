@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './test';
 import { nav, quickLife } from './helpers';
 
 // Interaction budgets, measured on the dev server (uncompressed, unminified): an upper bound, not production numbers.

@@ -123,14 +123,17 @@ export function withdrawRelease(state: GameState, p: Project, contributorId: str
   const c = p.contributors.find((x) => x.id === contributorId);
   if (!c) throw new Error('That participant is no longer in the show.');
   if (c.consent === 'withdrawn') throw new Error(`${c.name} has already withdrawn.`);
+  const affected = approvedScenes(p).filter((s) => s.contributorIds.includes(contributorId));
+  // Only episodes whose footage is being logged hold recordings to take out; before the shoot there is nothing to redact.
+  const recorded = [...new Set(affected.map((s) => s.episode))].filter((e) => p.tasks.some((t) => t.id === `unscripted:logging:${e}`));
+  // Checked before anything changes: a refused withdrawal leaves the show as it was.
+  if (recorded.length && p.edit.pictureLocked) throw new Error(`Unlock the picture first; ${c.name}'s footage has to be taken out of Episode ${recorded[0]}.`);
   c.consent = 'withdrawn';
   const u = unscriptedOf(p);
-  const affected = approvedScenes(p).filter((s) => s.contributorIds.includes(contributorId));
   const made: Task[] = [];
-  for (const e of [...new Set(affected.map((s) => s.episode))]) {
+  for (const e of recorded) {
     const sceneIds = affected.filter((s) => s.episode === e).map((s) => s.id);
     const id = `unscripted:redact:${contributorId}:${e}`;
-    if (p.edit.pictureLocked) throw new Error(`Unlock the picture first; ${c.name}'s footage has to be taken out of Episode ${e}.`);
     const task: Task = {
       id, kind: 'unscripted:redact', label: `Redact ${c.name}: Episode ${e}`, dept: 'Post Production', roleId: 'editor', units: Math.max(1, sceneIds.length),
       unitLabel: 'days', done: 0, dependsOn: [`unscripted:logging:${e}`], status: 'waiting', episode: e, sceneIds, workedDays: 0,

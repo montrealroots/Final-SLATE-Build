@@ -140,8 +140,9 @@ describe('hybrid', () => {
 });
 
 describe('documentary', () => {
-  it('uses contributors, consent and fact checks instead of scripted dialogue', () => {
-    const s = startLife('doc', 'za-durban');
+  /** Labelled fixture: the contributors' answers are set directly (the game draws them from the world seed). */
+  function documentary(tag: string, interviewee: 'given' | 'declined') {
+    const s = startLife(tag, 'za-durban');
     const p = buildProject(s, { title: 'Tide Keepers', format: 'documentary-short', medium: 'live-action', genres: ['documentary', 'sports'], runtime: 15 }, [], []);
     p.contributors.push({ id: 'ct1', name: 'Nomvula Dube', role: 'Lifeguard', consent: 'not-asked' }, { id: 'ct2', name: 'Sipho Khumalo', role: 'Coach', consent: 'not-asked' });
     p.evidence.push({ id: 'ev1', claim: 'The club has run since 1952.', status: 'established', sourceNote: 'Club archive', verified: false });
@@ -156,15 +157,28 @@ describe('documentary', () => {
     requestConsent(s, p, 'ct1');
     requestConsent(s, p, 'ct2');
     hireUp(s, p, 10);
-    expect(p.contributors.every((c) => c.consent === 'given' || c.consent === 'declined')).toBe(true);
+    expect(p.contributors.every((c) => c.consent === 'given' || c.consent === 'declined')).toBe(true); // the game answered
+    p.contributors.find((c) => c.id === 'ct1')!.consent = interviewee;
     startProduction(s, p, 5);
     runDays(s, p, 200);
-    // Delivery waits for checked facts.
-    if (!p.delivered) expect(deliveryBlockers(p).join(' ')).toMatch(/verified|consent|unfinished|Lock/);
+    return { s, p };
+  }
+
+  it('uses contributors, consent and fact checks instead of scripted dialogue, and delivers once the facts are checked', () => {
+    const { s, p } = documentary('doc', 'given');
+    expect(p.delivered).toBeNull(); // delivery waits for checked facts
+    expect(deliveryBlockers(p).join(' ')).toMatch(/verified/);
     p.evidence[0].verified = true;
     runDays(s, p, 60);
-    if (p.contributors.find((c) => c.id === 'ct1')!.consent === 'given') expect(p.delivered).not.toBeNull();
-    else expect(p.delivered).toBeNull(); // no consent, no delivery
+    expect(p.delivered).not.toBeNull();
+  }, 60000);
+
+  it("a contributor who declined can't be filmed, so their interview is skipped and the film can't be delivered", () => {
+    const { s, p } = documentary('doc-declined', 'declined');
+    p.evidence[0].verified = true;
+    runDays(s, p, 60);
+    expect(p.delivered).toBeNull();
+    expect(s.log.some((l) => /skipped: Nomvula Dube hasn't given consent/.test(l.text))).toBe(true);
   }, 60000);
 });
 

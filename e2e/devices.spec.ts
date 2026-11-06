@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './test';
 import { nav, section } from './helpers';
 
 // Runs on the WebKit iPhone emulation projects: layout, touch navigation and focused-field visibility.

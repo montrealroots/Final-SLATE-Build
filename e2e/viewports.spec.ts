@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test';
 import { advance, nav, section } from './helpers';
 
 // The package's required widths (360, 390, 393, 414, 430, 768, 1024, 1440, 1920), plus 440, 1280 and a phone landscape.

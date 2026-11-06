@@ -1,4 +1,4 @@
-import { expect, test, type Page } from '@playwright/test';
+import { expect, test, type Page } from './test';
 import { advance, section, staffEveryDepartment } from './helpers';
 
 async function quickStart(page: Page, place: string): Promise<void> {

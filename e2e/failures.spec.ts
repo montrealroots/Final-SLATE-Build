@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, expectErrors, test } from './test';
 import { readFileSync } from 'node:fs';
 import { hashString } from '../src/engine/rng';
 import { advance, nav, quickLife, saveAndExit } from './helpers';
@@ -52,9 +52,11 @@ test('a version-1 save opens after a backup copy is kept', async ({ page }) => {
 });
 
 test('holiday dates and the map that fail to load are explained, and Try Again recovers', async ({ page }) => {
+  expectErrors('Aborts the holiday and map data requests.');
   let fail = true;
-  // Only the data fetches (no query string); the dev server also serves the files' URLs as modules.
-  await page.route((url) => /\/(countries|calendars|world-map)\.json$/.test(url.pathname) && !url.search, (route) => (fail ? route.abort() : route.continue()));
+  // Only the data fetches (no query string; the dev server also serves the files' URLs as modules). The production
+  // build names each file with a content hash (countries-<hash>.json).
+  await page.route((url) => /\/(countries|calendars|world-map)(-[\w-]+)?\.json$/.test(url.pathname) && !url.search, (route) => (fail ? route.abort() : route.continue()));
   await quickLife(page, 'gb-london', '2026-05-04');
   await nav(page, 'World');
   await expect(page.getByText("The map couldn't be loaded. The list of places still works.")).toBeVisible();

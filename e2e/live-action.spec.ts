@@ -1,4 +1,4 @@
-import { expect, test } from '@playwright/test';
+import { expect, test } from './test';
 import { advance, createCharacter, freshStart, nav, readSavedState, section, staffEveryDepartment } from './helpers';
 
 test('live-action short: create, write, cast yourself, staff, shoot, cut, deliver, credits', async ({ page }, info) => {
