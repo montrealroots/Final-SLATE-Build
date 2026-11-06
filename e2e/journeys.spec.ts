@@ -47,6 +47,14 @@ test('2D animation: deliver, release digitally, enter the Annie Awards and reach
   await page.getByLabel('Route').selectOption({ label: 'Digital Self-Release' });
   await page.getByLabel('Territory Code').fill('US');
   await page.getByRole('button', { name: 'Plan Release' }).click();
+  // A second plan, then cancelled: the confirmation states the terms, and the history keeps it as cancelled.
+  await page.getByLabel('Territory Code').fill('CA');
+  await page.getByRole('button', { name: 'Plan Release' }).click();
+  const history = page.locator('section', { hasText: 'Release History' });
+  await history.locator('li', { hasText: 'in CA' }).getByRole('button', { name: 'Cancel Release' }).click();
+  await expect(page.getByRole('dialog', { name: 'Cancel This Release?' })).toBeVisible();
+  await page.getByRole('dialog', { name: 'Cancel This Release?' }).getByRole('button', { name: 'Cancel Release' }).click();
+  await expect(history.locator('li', { hasText: 'in CA' }).getByText('Cancelled', { exact: true })).toBeVisible();
   await advance(page, 'month');
   await advance(page, 'month');
   await section(page, 'Release');
@@ -184,10 +192,18 @@ test('3D animation to delivery, with a motion-capture performance', async ({ pag
   await saveAndApprove(page);
   await section(page, 'Cast');
   await expect(page.getByText('Performance Capture:')).toBeVisible();
-  await produceToDelivery(page, { yourself: ['Wren'], step: 'month', weeks: 30 });
+  await produceToDelivery(page, { yourself: ['Wren'], step: 'month', weeks: 30, mocap: true });
   await section(page, 'Production');
   await expect(page.getByText('Motion Capture: The Golem', { exact: true })).toBeVisible();
+  // The full capture flow ran: calibration, captured takes, an approved take, then cleanup before animation.
+  const golemCap = page.getByRole('article', { name: 'Motion Capture For The Golem' });
+  await expect(golemCap.getByText('Approved', { exact: true })).toBeVisible();
+  await expect(golemCap.getByText(/^Take 1: quality \d+/)).toBeVisible();
+  for (const t of ['Capture Rehearsal And Calibration: The Golem', 'Capture Cleanup And Retargeting: The Golem']) await expect(page.getByText(t, { exact: true })).toBeVisible();
   await expect(page.getByText('Render: Scene 1 (Orchard)', { exact: true })).toBeVisible();
+  await section(page, 'Budget');
+  await page.getByText(/^\d+ lines$/).click(); // open the budget lines
+  await expect(page.getByText('Capture Stage Booking').first()).toBeVisible();
   const credits = await creditsTable(page);
   expect(credits).toMatch(/Performance Capture[\s\S]*as The Golem/);
   expect(credits).toMatch(/Voice Cast[\s\S]*as Wren/);
@@ -219,6 +235,13 @@ test('unscripted series: format rules, hosts and participants, story producing p
     await page.getByLabel('Who They Are').fill(r);
     await page.getByRole('button', { name: 'Add Contributor' }).click();
   }
+  // The format family exposes only its own rules: a competition asks for contestants and how many leave.
+  await expect(page.getByLabel('Format Family')).toHaveValue('observational');
+  await page.getByLabel('Format Family').selectOption({ label: 'Competition' });
+  await expect(page.getByRole('group', { name: 'Contestants' })).toBeVisible();
+  await expect(page.getByText(/A 2-episode competition with 1 leaving each episode needs at least 3 contestants\./)).toBeVisible();
+  await page.getByLabel('Format Family').selectOption({ label: 'Observational Or Docuseries' });
+  await expect(page.getByRole('group', { name: 'Contestants' })).toHaveCount(0);
   for (let k = 0; k < 4; k++) await page.getByRole('button', { name: 'Request Consent' }).first().click();
   await advance(page, 'week');
   await advance(page, 'week');
@@ -229,6 +252,10 @@ test('unscripted series: format rules, hosts and participants, story producing p
   await addScene(page, { index: 0, place: 'Tent', contributors: given.slice(0, 2), minutes: '8', episodeButton: 'Add Sequence To Episode 1' });
   await addScene(page, { index: 1, place: 'Tent', contributors: given.slice(0, 2), minutes: '8', episodeButton: 'Add Sequence To Episode 2' });
   await saveAndApprove(page);
+  // Withdrawal is offered with its consequence, and can be backed out of.
+  await page.getByRole('button', { name: 'Record Withdrawal' }).first().click();
+  await expect(page.getByText(/will be redacted by your editor before those episodes can be delivered/)).toBeVisible();
+  await page.getByRole('button', { name: 'Keep Them In The Show' }).click();
   await section(page, 'Crew');
   await expect(page.getByText('Story Producer', { exact: true })).toBeVisible();
   await expect(page.getByText('Camera Operator', { exact: true })).toBeVisible();

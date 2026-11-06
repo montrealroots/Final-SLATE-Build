@@ -17,6 +17,8 @@
 | `npm run balance` | 0 | 1 test passed; 180 family runs plus 120 sensitivity runs. |
 | `npm run e2e -- --trace off` | 1, then 0 | M1 run: 22 passed, 1 failed, 16 skipped. The failure was the documentary test matching "Cast" inside a generated name ("Bruno Castillo"); the assertion now checks for cast credit rows, and the test passed on rerun. Earlier full run: 23 passed, 16 skipped, across 5 projects: desktop, phone (Chromium 390×844), WebKit iPhone 15 Plus, iPhone 15 Pro Max, and iPhone 15 Pro Max landscape. The skips are tests that run on one project only by design. |
 
+Counts at M5 (local): `npm run check` passed with 77 unit and engine tests (adds motion-capture flow, unscripted families, release contracts and writing-regression tests), the world check at 0 problems and the build; `npm run balance` passed with unchanged results; `npm run e2e -- --trace off` gave 31 passed, 16 skipped by design, 0 failed (the 3D journey now books, captures, approves a take and checks the booking line; the unscripted journey checks the format family and withdrawal dialog; the 2D journey cancels a planned release).
+
 Counts at M3 and M4 (local, before the M3/M4 push): `npm run check` passed with 65 unit and engine tests, the world check at 0 problems and the build; `npm run balance` passed; `npm run e2e -- --trace off` gave 31 passed, 16 skipped by design, 0 failed. Adds the projected-holiday check, in-game Saved Games and Settings, and widths 393 and 414 to the viewport sweep (12 sizes, World, Saved Games and Settings included). An earlier M3-only run had 1 failure (phone live-action, blank page while a rebase rewrote files under the dev server); it passed alone and in this run.
 
 Counts at M2 (local run before the M2 commit): `npm run check` passed with 58 unit and engine tests and the world check at 0 problems; `npm run e2e -- --trace off` gave 27 passed, 16 skipped by design, 0 failed (adds `e2e/world.spec.ts` on desktop and phone). The M3 holiday-engine tests (5) were added after that run and pass on their own. Startup JavaScript is 432 kB (93 kB entry plus 338 kB shared chunk); country shards, regions, stations and map outlines load on demand.
@@ -47,6 +49,8 @@ Counts at M1: 74 automated checks passed after the test fix (51 unit and engine 
 | Low | Waiting tasks gave no reason | Reason shown for every waiting task | 3D e2e |
 | Medium | Voice sessions created spurious design assets | Only real builds become assets | Motion-capture test |
 | Medium | A motion-capture casting counted as a voice casting | Voice sessions check for a voice casting | Motion-capture test |
+| High | Approving a new draft after filming made every scene's footage stale, not just the changed ones | Unchanged scenes carry their captures forward; changed scenes' work resets after a confirmation | `tests/writing.test.ts` |
+| Medium | Capture-stage cost was only paid when the player directed | Stage sessions are paid from the booking whoever directs | `tests/lunar-mocap.test.ts` |
 | Low | Documentary test treated a name containing "Cast" as a cast credit | Assertion checks credit rows | Documentary e2e |
 | Medium | Toronto precipitation fell back to the model because only 1991-2020 stations were searched | Tiered station search: own country recent, own country any period, then anywhere | Legacy migration report (all 66 from stations) |
 | Low | China's computed holidays were wrong for 2026 | Official 2026 arrangement used, with make-up working days | Lunar holiday test |

@@ -35,7 +35,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 | Search and map, world pickers | Catalog search of 66 cities | M2: lazily fetched country shards, accent-insensitive ranked search, region filter, World route with list and outline map, world places in creation, travel and production bases, kept in saves |
 | Holidays worldwide | Hand rules for the 66 places' countries, sourced 2026 lunar dates | M3: donor engine for 218 entries (2026-2100), curated rules kept authoritative, later lunar years projected or expected, coverage notes instead of silent ordinary days; production applies holidays through each project's holiday policy |
 | 1221 UI adaptation | Shell, tokens and startup already on the 1221 palette | M4: startup copy and actions (New Game, Continue, Saved Games, Settings), eight creation sections ending in Start My Story, one route registry (`src/ui/routes.ts`) with in-game Saved Games and Settings, save-error copy with Try Again, 16px fields on phones, widths 360-1920 checked, `docs/COPY-GUIDE.md` |
-| Motion capture, unscripted families | Sessions and one unscripted pipeline | M5 (to do): full mocap flow, five unscripted families, release and finance UI |
+| Motion capture, unscripted families, release, writing | Capture sessions, one unscripted pipeline, offers and releases, drafts | M5: capture booking, calibration, takes, retakes, approved take, cleanup and retargeting with cancellation terms; talk, observational, competition (stored deterministic rounds), factual and studio variety with withdrawal and redaction; distribution contracts with delivery materials and release cancellation; re-approval keeps unchanged scenes' work |
 | Screenings, festival and award rules | Screenings, simulated rules | M6 (to do): RSVP and travel conflicts, audited edition rules |
 | Failure-path journeys, balance, performance | Happy-path journeys, balance runs | M7 (to do) |
 
@@ -43,7 +43,8 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 - **M1 world data and climate:** implemented and tested. `npm run check` passed (51 tests, world check 0 problems); e2e 23 passed, 16 skipped by design after a test-only fix; GitHub Actions CI passed. Merged as montrealroots/Final-SLATE-Build#4 (`2f488bb`).
 - **M2 world search and map:** merged as montrealroots/Final-SLATE-Build#5 (`d171f95`); CI passed.
-- **M3 worldwide holidays and M4 1221 UI adaptation:** implemented and tested together in montrealroots/Final-SLATE-Build#6 (the first CI run hung installing browsers and was cancelled; CI steps now have timeouts). Local: `npm run check` passed, e2e 31 passed, 16 skipped by design, 0 failed.
+- **M3 worldwide holidays and M4 1221 UI adaptation:** merged as montrealroots/Final-SLATE-Build#6 (`2d9ebbc`). The first CI run hung installing browsers and was cancelled; CI steps now have timeouts; the second run passed.
+- **M5 motion capture, unscripted families, release contracts, writing regression:** implemented and tested; checkpoint pull request follows (see `QA-REPORT.md`).
 
 ## Remaining Work, In Order
 
@@ -52,7 +53,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 1. **M2 follow-ups (small):** a repair screen when a save references a place that can't be found (package: "Invalid/unavailable place references give a repair screen"); today such a save shows the load error and is left untouched. Map markers are pointer-only; the list is the keyboard and screen-reader path.
 2. **M3 follow-ups:** holiday names for countries without curated rules are in the official language (for example Chinese, Russian, Korean for later years); an English display name table would help players. Holidays are national or first-level-regional only; local (city) holidays are not included.
 3. **M4 follow-ups:** "Export Save" is not offered (no export exists yet); a 200% text-size and screen-reader pass are manual checks still to do; the weather, screening and conflict strings arrive with M5 and M6.
-4. **M5:** motion capture from booking to integration with cancellation terms; unscripted talk, observational, competition, factual and studio variety; release and finance in the UI.
+4. **M5 follow-ups:** capture sessions aren't placed on the calendar as fixed appointments (they run on working days once booked), so performer conflicts with shoot days are shown as task blocks, not calendar clashes; facial and body capture are one contribution; credits after replacing a performer mid-production are not separately tested.
 5. **M6:** screening invitations with RSVP deadlines and travel conflicts; edition rule records for 16 festivals and 21 award events.
 6. **M7:** failure-path journeys (failed save, legacy import, missing data); held-out balance seeds; performance budgets; accessibility; report reconciliation.
 

@@ -2,7 +2,7 @@ import {
   acceptCounter, addCharacter, addScene, approveDraft, assemblyComplete, castPlayer, castRoleFor, createProject, deliver, deliveryBlockers,
   emptyDraft, generatePlan, ledgerTotals, lockBlockers, lockPicture, makeOffer, neededRoles, newGame, processUntil, proposeStaffing, roleCandidates,
   saveDraft, sendStaffingOffers, startCutPass, updateCharacter, updateScene, productionWindow, isAvailable, approvedCharacters, approvedScenes,
-  DAY, dateKey, addDaysToKey, getProjectZone, FundsError, bringInCoProducer,
+  DAY, dateKey, addDaysToKey, getProjectZone, FundsError, bringInCoProducer, approveTake, bookMocap, mocapRecord,
 } from './engine-api';
 import type { CreationDraft, Format, GameState, Medium, PerformanceMethod, Project, Technique } from '../src/engine/types';
 
@@ -112,6 +112,22 @@ export function manage(state: GameState, p: Project): string[] {
   if (!p.delivered) {
     staffAll(state, p);
     castAll(state, p);
+    // Motion capture: book the stage once the schedule exists, then approve the best take when capture is done.
+    for (const t of p.tasks.filter((x) => x.kind === 'anim:mocap' && x.assetRef)) {
+      const rec = mocapRecord(p, t.assetRef!);
+      if (rec.status !== 'booked' && t.status !== 'done') {
+        try {
+          bookMocap(state, p, t.assetRef!);
+          did.push('mocap-booked');
+        } catch {
+          /* not cast yet or short of funds */
+        }
+      }
+      if (t.status === 'done' && !rec.approvedTakeId && rec.takes.length) {
+        approveTake(p, t.assetRef!, [...rec.takes].sort((a, b) => b.quality - a.quality)[0].id);
+        did.push('take-approved');
+      }
+    }
     // Recovery a player would choose when money runs out: bring in a partner, then rebuild the schedule.
     const broke = p.tasks.some((t) => t.status === 'blocked' && /money/.test(t.blockedReason ?? '')) || p.schedule.days.some((d) => d.status === 'lost' && /enough money/.test(d.result ?? ''));
     if (broke && !p.funding.extra.length) {

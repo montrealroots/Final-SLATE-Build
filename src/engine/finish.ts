@@ -1,7 +1,7 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
 import { getPlace } from '../data/places';
-import { cancel, ledgerTotals, money } from './budget';
+import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { personById, roleLabel } from './people';
 import {
   approvalRights, approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, scriptIssues, sceneLabel, sceneTechnique,
@@ -9,7 +9,8 @@ import {
 import { composeGenres } from './genres';
 import { ensureWorkEvent, schedulePickups } from './production';
 import { gaussian, pick, stream } from './rng';
-import { addLog, newId, registerHandler, schedule } from './state';
+import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
+import { redactionComplete } from './unscripted';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localToInstant, parseYmd } from './time';
 import type { Credit, DistributionOffer, GameState, Project, ReleaseRecord, Task } from './types';
 
@@ -116,8 +117,10 @@ export function deliveryBlockers(p: Project): string[] {
   const open = p.tasks.filter((t) => t.status !== 'done');
   if (open.length) out.push(`${open.length} production ${open.length === 1 ? 'task is' : 'tasks are'} unfinished, including ${open[0].label}.`);
   const contributorsUsed = new Set(approvedScenes(p).flatMap((s) => s.contributorIds));
-  const noConsent = p.contributors.filter((c) => contributorsUsed.has(c.id) && c.consent !== 'given');
+  const noConsent = p.contributors.filter((c) => contributorsUsed.has(c.id) && c.consent !== 'given' && c.consent !== 'withdrawn');
   if (noConsent.length) out.push(`${noConsent[0].name} hasn't given consent to appear.`);
+  const unredacted = p.contributors.filter((c) => c.consent === 'withdrawn' && contributorsUsed.has(c.id) && !redactionComplete(p, c.id));
+  if (unredacted.length) out.push(`${unredacted[0].name} withdrew; their footage still has to be redacted.`);
   if (isNonfiction(p.axes.format) && p.evidence.some((e) => e.status !== 'dramatized' && !e.verified)) out.push('Some claims haven\'t been verified.');
   return out;
 }
@@ -273,6 +276,14 @@ registerHandler('release', (state, ev) => {
   if (!p || !r || r.status !== 'planned') return { suppressInterrupt: true };
   r.status = 'released';
   p.phase = 'released';
+  // The contract's delivery materials are paid now, once.
+  if (r.obligationId) {
+    const ob = p.obligations.find((x) => x.id === r.obligationId);
+    if (ob && (ob.state === 'reserved' || ob.state === 'committed')) {
+      settle(state, p, ob.id, ob.amount - ob.settled, `${ob.id}:release`);
+      closeSettled(p, ob.id);
+    }
+  }
   if (!p.premiere) p.premiere = { kind: 'world', date: r.date, country: r.territories[0], venue: ROUTE_LABELS[r.route] };
   const text = `${p.title} is out today (${ROUTE_LABELS[r.route].toLowerCase()}).`;
   addLog(state, text, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
@@ -326,13 +337,55 @@ export function acceptDistribution(state: GameState, p: Project, offerId: string
     o.status = 'expired';
     throw new Error('That offer has expired.');
   }
+  // The contract obliges you to supply delivery materials; their cost is reserved now and paid on release.
+  const materials = reserve(state, p, `Delivery Materials For ${o.distributor}`, 'post', DELIVERY_MATERIALS[o.route], `release-offer:${o.id}`);
   o.status = 'accepted';
   for (const other of p.offers.filter((x) => x.status === 'open' && x.route === o.route)) other.status = 'declined';
   p.revenue += o.minimumGuarantee;
   const zone = getPlace(p.axes.basePlaceId).zone;
   const date = addDaysToKey(dateKey(state.now, zone), o.releaseWindowDays);
   addLog(state, `You accepted ${o.distributor}'s offer of ${money(o.minimumGuarantee)} for ${p.title}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
-  return planRelease(state, p, { route: o.route, date, territories: o.territories, distributor: o.distributor });
+  const rec = planRelease(state, p, { route: o.route, date, territories: o.territories, distributor: o.distributor });
+  rec.offerId = o.id;
+  rec.obligationId = materials.id;
+  return rec;
+}
+
+/** Delivery materials a distributor's contract requires (captions, music and effects track, artwork), by route. Simulation assumption. */
+export const DELIVERY_MATERIALS: Record<DistributionOffer['route'], number> = { theatrical: 6000, streaming: 4000, broadcast: 3000, digital: 1500 };
+
+/** What cancelling a planned release does, in words, for the confirmation. */
+export function releaseCancelTerms(p: Project, releaseId: string): string {
+  const r = p.releases.find((x) => x.id === releaseId);
+  const o = r?.offerId ? p.offers.find((x) => x.id === r.offerId) : undefined;
+  if (!r || r.status !== 'planned') return '';
+  if (!o) return 'The planned release is removed from your calendar.';
+  return `${o.distributor}'s minimum guarantee of ${money(o.minimumGuarantee)} is returned and the delivery-materials budget is released.`;
+}
+
+/** Cancel a release before it happens. A contracted release returns the minimum guarantee and frees its reserved materials budget. */
+export function cancelRelease(state: GameState, p: Project, releaseId: string): void {
+  const r = p.releases.find((x) => x.id === releaseId);
+  if (!r) throw new Error('That release is no longer planned.');
+  if (r.status !== 'planned') throw new Error(r.status === 'released' ? 'This release has already happened.' : 'This release was already cancelled.');
+  const offer = r.offerId ? p.offers.find((x) => x.id === r.offerId) : undefined;
+  if (offer) {
+    const ob = r.obligationId ? p.obligations.find((x) => x.id === r.obligationId) : undefined;
+    const freed = ob && (ob.state === 'reserved' || ob.state === 'committed') ? ob.amount - ob.settled : 0;
+    if (ledgerTotals(p).available + freed < offer.minimumGuarantee) {
+      throw new Error(`Cancelling means returning ${money(offer.minimumGuarantee)} to ${offer.distributor}, and only ${money(ledgerTotals(p).available + freed)} would be free.`);
+    }
+  }
+  r.status = 'cancelled';
+  cancelEvents(state, (e) => e.kind === 'release' && e.payload.releaseId === r.id);
+  if (r.obligationId) cancel(state, p, r.obligationId);
+  const o = r.offerId ? p.offers.find((x) => x.id === r.offerId) : undefined;
+  if (o) {
+    o.status = 'cancelled';
+    p.revenue -= o.minimumGuarantee;
+  }
+  addLog(state, `The ${ROUTE_LABELS[r.route].toLowerCase()} release of ${p.title} is cancelled.${o ? ` ${money(o.minimumGuarantee)} goes back to ${o.distributor}.` : ''}`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
+  p.history.push({ at: state.now, text: `Cancelled: ${ROUTE_LABELS[r.route]} release planned for ${r.date}.` });
 }
 
 export function declineDistribution(p: Project, offerId: string): void {

@@ -191,7 +191,7 @@ export async function castRoles(page: Page, yourself: string[] = []): Promise<vo
 }
 
 /** Play a project from an approved draft to delivery through the interface. */
-export async function produceToDelivery(page: Page, opts: { yourself?: string[]; weeks?: number; step?: 'week' | 'month' } = {}): Promise<void> {
+export async function produceToDelivery(page: Page, opts: { yourself?: string[]; weeks?: number; step?: 'week' | 'month'; mocap?: boolean } = {}): Promise<void> {
   await castRoles(page, opts.yourself ?? []);
   await staffEveryDepartment(page);
   await advance(page, 'next-day');
@@ -201,6 +201,17 @@ export async function produceToDelivery(page: Page, opts: { yourself?: string[];
     await advance(page, opts.step ?? 'week');
     await staffEveryDepartment(page);
     await castRoles(page);
+    // Motion capture: book the stage, then approve a take once one exists.
+    if (opts.mocap) {
+      await section(page, 'Production');
+      const book = page.getByRole('button', { name: /^Book Capture Stage/ });
+      if (await book.first().isVisible()) await book.first().click();
+      for (const art of await page.getByRole('article', { name: /^Motion Capture For/ }).all()) {
+        if (await art.getByText('Approved', { exact: true }).count()) continue;
+        const approve = art.getByRole('button', { name: /^Approve Take 1 For/ });
+        if (await approve.isVisible()) await approve.click();
+      }
+    }
     // Documentary facts can be checked once research is done.
     await section(page, 'Script');
     for (let k = 0; k < 10; k++) {

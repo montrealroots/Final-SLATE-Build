@@ -215,7 +215,7 @@ export interface Contributor {
   id: string;
   name: string;
   role: string;
-  consent: 'not-asked' | 'requested' | 'given' | 'declined';
+  consent: 'not-asked' | 'requested' | 'given' | 'declined' | 'withdrawn';
 }
 
 export interface WorldRule {
@@ -350,6 +350,37 @@ export interface ShootDay {
   weatherAnyway?: boolean;
 }
 
+export type UnscriptedFamily = 'talk' | 'observational' | 'competition' | 'factual' | 'studio-variety';
+
+export interface CompetitionResult {
+  episode: number;
+  scores: Record<string, number>;
+  advancing: string[];
+  eliminated: string[];
+}
+
+export interface UnscriptedSetup {
+  family: UnscriptedFamily;
+  competition?: { contestants: string[]; eliminatePerEpisode: number; results: CompetitionResult[] };
+  redactions: { contributorId: string; episode: number; sceneIds: string[]; taskId: string }[];
+}
+
+export interface MocapTake {
+  id: string;
+  date: string;
+  quality: number; // 0..100
+  retake: boolean;
+}
+
+export interface MocapRecord {
+  /** The stage booking's budget line; reserved when booked, drawn down by sessions, released (less the fee) on cancellation. */
+  bookingId: string | null;
+  status: 'unbooked' | 'booked' | 'cancelled';
+  takes: MocapTake[];
+  approvedTakeId: string | null;
+  retakes: number;
+}
+
 export interface SceneCapture {
   sceneId: string;
   captured: number; // 0..1 coverage of planned material
@@ -385,7 +416,10 @@ export interface ReleaseRecord {
   territories: string[];
   distributor: string | null;
   note: string;
-  status: 'planned' | 'released';
+  status: 'planned' | 'released' | 'cancelled';
+  /** The accepted offer this release fulfils, and its delivery-materials budget line. */
+  offerId?: string;
+  obligationId?: string;
 }
 
 export interface DistributionOffer {
@@ -396,7 +430,7 @@ export interface DistributionOffer {
   territories: string[];
   releaseWindowDays: number;
   expiresAt: number;
-  status: 'open' | 'accepted' | 'declined' | 'expired';
+  status: 'open' | 'accepted' | 'declined' | 'expired' | 'cancelled';
 }
 
 export interface Project {
@@ -444,6 +478,10 @@ export interface Project {
   tasks: Task[];
   assets: Asset[];
   captures: SceneCapture[];
+  /** Motion-capture work by character (booking, takes, approved take). Absent in older saves. */
+  mocap?: Record<string, MocapRecord>;
+  /** Unscripted format family, competition season and redactions. Absent in older saves (treated as observational). */
+  unscripted?: UnscriptedSetup;
   edit: EditState;
   delivered: { at: number; runtimeMin: number } | null;
   credits: Credit[];
