@@ -33,7 +33,8 @@ export function Startup() {
           <Wordmark as="h1" />
           <div className="panel" role="alert">
             <h2>Couldn't Open This Save</h2>
-            <p>Your saved game couldn't be opened. It hasn't been deleted.</p>
+            <p>Your saved game couldn't be opened. It hasn't been deleted or changed.</p>
+            {s.loadErrorMessage && <p className="muted">{s.loadErrorMessage}</p>}
             <div className="btn-row">
               <button className="btn btn-primary" onClick={() => s.loadErrorSave && store.open(s.loadErrorSave)}>Try Again</button>
               <button className="btn" onClick={() => store.backToStartup()}>Back To Saved Games</button>

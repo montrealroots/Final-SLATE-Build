@@ -13,7 +13,7 @@ import { MOCAP_CLEANUP_PER_SESSION, approvedTake, payStageSession, recordTake, s
 import { stream } from './rng';
 import { decideCompetition } from './unscripted';
 import { addLog, cancelEvents, newId, registerCommitmentSource, registerHandler, schedule } from './state';
-import { HOUR, addDaysToKey, dateKey, dayNumber, formatDateKey, localParts, localToInstant, parseYmd, weekdayOfKey } from './time';
+import { HOUR, addDaysToKey, dateKey, dayNumber, formatDateKey, isDateKey, localParts, localToInstant, parseYmd, weekdayOfKey } from './time';
 import type { Asset, GameState, Obligation, Project, Scene, SceneCapture, ShootDay, Task } from './types';
 import { forecast, precipitationDuring, weatherOn, daylightWindowLocal } from './weather';
 
@@ -357,7 +357,7 @@ export interface PlanResult {
 export function generatePlan(state: GameState, p: Project, startDate: string): PlanResult {
   if (p.approvedDraft === null) throw new Error('Approve a draft before planning production.');
   if (p.delivered) throw new Error('This project has already been delivered.');
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(startDate)) throw new Error('Choose a start date.');
+  if (!isDateKey(startDate)) throw new Error('Choose a start date.');
   const today = dateKey(state.now, getPlace(p.axes.basePlaceId).zone);
   if (startDate < today) throw new Error('Choose a start date from today onward.');
   const backup = { tasks: p.tasks, assets: p.assets, startDate: p.schedule.startDate };

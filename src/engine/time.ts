@@ -161,6 +161,13 @@ export function isValidDate(year: number, month: number, day: number): boolean {
   return Number.isInteger(year) && month >= 1 && month <= 12 && day >= 1 && day <= daysInMonth(year, month);
 }
 
+/** A real calendar date written YYYY-MM-DD: checks the month's length and leap years instead of letting Date.UTC roll over. */
+export function isDateKey(key: string): boolean {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(key)) return false;
+  const { year, month, day } = parseYmd(key);
+  return isValidDate(year, month, day);
+}
+
 export function dayOfYear(year: number, month: number, day: number): number {
   return Math.floor((Date.UTC(year, month - 1, day) - Date.UTC(year, 0, 1)) / DAY) + 1;
 }

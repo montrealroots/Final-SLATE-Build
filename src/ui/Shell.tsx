@@ -111,13 +111,22 @@ function TopBar({ onMenu, onSettings, onExit }: { onMenu: () => void; onSettings
       </div>
       <div className="tools">
         <span className={`save-state ${s.saveStatus === 'error' ? 'error' : ''}`} role="status" aria-live="polite">{s.busy ? `${s.busy}…` : saveLabel}</span>
-        <button className="btn btn-small btn-primary" disabled={!!s.busy || s.readOnly || g.sleep.asleep} onClick={() => setAdvance(true)}>Advance</button>
-        <button className="btn btn-small" disabled={!!s.busy || s.readOnly || g.sleep.asleep} onClick={() => setSleep(true)}>Sleep</button>
+        <button className="btn btn-small btn-primary" disabled={!!s.busy || s.readOnly || g.sleep.asleep || !!s.processingProblem} onClick={() => setAdvance(true)}>Advance</button>
+        <button className="btn btn-small" disabled={!!s.busy || s.readOnly || g.sleep.asleep || !!s.processingProblem} onClick={() => setSleep(true)}>Sleep</button>
         <button className="btn btn-small" onClick={onSettings}>Settings</button>
         <button className="btn btn-small" onClick={onExit}>Save And Exit</button>
       </div>
       {advance && <AdvanceDialog onClose={() => setAdvance(false)} />}
       {sleep && <SleepDialog onClose={() => setSleep(false)} />}
+      {s.processingProblem && (
+        <div className="alert bad save-alert" role="alert">
+          <p>Time is paused. {s.processingProblem}</p>
+          <div className="btn-row">
+            <button className="btn btn-primary" onClick={() => store.retryTime()}>Try Again</button>
+            <button className="btn" onClick={() => store.exportSave()}>Export Save</button>
+          </div>
+        </div>
+      )}
       {s.saveStatus === 'error' && (
         <div className="alert bad save-alert" role="alert">
           <p>Your game couldn't be saved. Keep this window open and try again.</p>
