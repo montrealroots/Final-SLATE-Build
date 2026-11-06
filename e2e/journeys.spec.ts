@@ -1,5 +1,5 @@
 import { expect, test, type Page } from '@playwright/test';
-import { addScene, advance, creditsTable, nav, produceToDelivery, quickLife, saveAndApprove, section } from './helpers';
+import { addScene, advance, creditsTable, nav, produceToDelivery, quickLife, readSavedState, saveAndApprove, section } from './helpers';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
 test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop', 'Full media journeys run once, at desktop width.'));
@@ -69,7 +69,9 @@ test('2D animation: deliver, release digitally, enter the Annie Awards and reach
   }
   await page.locator('li', { hasText: '54th Annie Awards' }).getByRole('button', { name: '54th Annie Awards' }).click();
   await page.locator('li', { hasText: 'Best Short Subject' }).getByRole('button', { name: 'Prepare Submission' }).click();
-  await expect(page.getByText("This entry meets the game's rules for this category.")).toBeVisible();
+  // The 54th Annie Awards use the organizer's published rules (rulebooks.ts).
+  await expect(page.locator('li', { hasText: 'Best Short Subject' }).getByText('Official Rules')).toBeVisible();
+  await expect(page.getByText("This entry meets the organizer's published rules for this category.")).toBeVisible();
   await page.getByRole('dialog').getByRole('button', { name: 'Submit Entry' }).click();
   await expect(page.locator('section', { hasText: 'Your Entries' }).getByText('Submitted')).toBeVisible();
   // Through nominations and the ceremony.
@@ -263,4 +265,125 @@ test('unscripted series: format rules, hosts and participants, story producing p
   await section(page, 'Production');
   for (const t of ['Footage Logging, Episode 1', 'Story Producing, Episode 2']) await expect(page.getByText(t, { exact: true })).toBeVisible();
   expect(await creditsTable(page)).toContain('Story Producer');
+});
+
+/** The in-game date shown in the header. */
+async function gameDate(page: Page): Promise<string> {
+  const text = await page.getByRole('banner').getByText(/^[A-Z][a-z]+day, [A-Z][a-z]+ \d{1,2}, \d{4}$/).innerText();
+  const d = new Date(`${text.replace(/^[A-Za-z]+, /, '')} 12:00 UTC`);
+  return d.toISOString().slice(0, 10);
+}
+
+/** Advance to a chosen date (9 AM), pressing Advance again whenever something stops it, as a player would. */
+async function advanceUntil(page: Page, date: string): Promise<void> {
+  for (let i = 0; i < 80 && (await gameDate(page)) < date; i++) {
+    await page.getByRole('button', { name: 'Advance', exact: true }).first().click();
+    const dialog = page.getByRole('dialog', { name: 'Advance' });
+    await dialog.getByLabel('Advance To').selectOption('time');
+    await dialog.getByLabel('Date').fill(date);
+    await dialog.getByLabel('Time').fill('09:00');
+    await dialog.getByRole('button', { name: 'Advance' }).click();
+    await expect(page.locator('.save-state')).not.toHaveText(/Advancing/, { timeout: 60_000 });
+    const dismiss = page.getByRole('button', { name: 'Dismiss' });
+    if (await dismiss.isVisible()) await dismiss.click();
+  }
+  expect(await gameDate(page)).toBe(date);
+}
+
+/** Edit the saved game in place (keeping its checksum and event order), then reopen it: a save-and-reload in the middle. */
+async function editSaveAndReopen(page: Page, fn: (state: Record<string, any>) => void): Promise<void> { // eslint-disable-line @typescript-eslint/no-explicit-any
+  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  const id = await page.evaluate(() => JSON.parse(localStorage.getItem('slate.v1.index')!)[0].saveId as string);
+  const env = JSON.parse(await page.evaluate((k) => localStorage.getItem(k)!, `slate.v1.save.${id}`));
+  const state = JSON.parse(env.data);
+  fn(state);
+  const data = JSON.stringify(state);
+  const { hashString } = await import('../src/engine/rng');
+  await page.evaluate(([k, v]) => localStorage.setItem(k, v), [`slate.v1.save.${id}`, JSON.stringify({ ...env, checksum: hashString(data), data })]);
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+}
+
+test('festival under official rules: submit, selection, screening attended, results, save and reload, once each', async ({ page }) => {
+  test.setTimeout(Number(process.env.SLATE_JOURNEY_TIMEOUT) || 1_500_000);
+  const started = Date.now();
+  const marks: Record<string, number> = {};
+  const mark = (k: string) => { marks[k] = Math.round((Date.now() - started) / 1000); };
+  await quickLife(page, 'us-los-angeles', '2026-01-05');
+  await newProject(page, { title: 'Night Ferry', format: 'Short Film', runtime: '3' });
+  await addCharacters(page, ['Odile', 'Ferryman']);
+  await addScene(page, { index: 0, place: 'Ferry Dock', chars: ['Odile', 'Ferryman'], minutes: '1.5' });
+  await saveAndApprove(page);
+  await produceToDelivery(page, { yourself: ['Odile'] });
+  mark('delivered');
+  const open = async () => {
+    await nav(page, 'Projects');
+    await page.getByRole('button', { name: 'Night Ferry' }).click();
+    await section(page, 'Festivals And Awards');
+  };
+  // Sundance 2027 short films: the organizer's 2027 rules, deadline August 31, 2026 (end of day in Boulder).
+  await open();
+  if (!(await page.locator('li', { hasText: 'Sundance Film Festival 2027' }).filter({ hasText: 'Open To You' }).isVisible())) {
+    await advanceUntil(page, '2026-06-01'); // entries open in May
+    await open();
+  }
+  await page.locator('li', { hasText: 'Sundance Film Festival 2027' }).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
+  const shorts = page.locator('li', { hasText: 'Short Film Program' });
+  await expect(shorts.getByText('Official Rules')).toBeVisible();
+  await expect(shorts.getByText(/Entries close August 31, 2026, 11:59 PM local time\./)).toBeVisible();
+  await shorts.getByRole('button', { name: 'Prepare Submission' }).click();
+  await expect(page.getByText("This entry meets the organizer's published rules for this category.")).toBeVisible();
+  await page.getByRole('dialog').getByRole('button', { name: 'Submit Entry' }).click();
+  await expect(page.locator('section', { hasText: 'Your Entries' }).getByText('Submitted')).toBeVisible();
+  mark('submitted');
+
+  // Make the film strong enough to be selected (the judging is simulated), and reopen the save mid-journey.
+  await editSaveAndReopen(page, (s) => { s.projects[0].quality = { ...s.projects[0].quality, overall: 99, reception: 99, direction: 99, script: 99 }; });
+  const feePostings = (s: any) => s.projects[0].obligations.flatMap((o: any) => o.postings).filter((x: any) => x.kind === 'settle' && x.key === 'fee:sundance-2027:shorts').length; // eslint-disable-line @typescript-eslint/no-explicit-any
+
+  // Selection is announced about three weeks before the festival (January 21 to 31, 2027).
+  await advanceUntil(page, '2027-01-02');
+  await open();
+  expect(await entryStatus(page)).toBe('Selected');
+
+  mark('selected');
+  // Screening invitations arrive when the festival opens on January 21: accept one, travel to Boulder in time, attend.
+  await advanceUntil(page, '2027-01-21');
+  await open();
+  await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
+  const panel = page.getByRole('region', { name: 'Screenings' });
+  await panel.getByRole('button', { name: 'Accept Invitation' }).first().click();
+  await panel.getByRole('button', { name: 'Travel to the Venue' }).first().click();
+  for (let i = 0; i < 60 && !(await panel.getByText('You attended.').first().isVisible()); i++) await advance(page, 'next-event');
+  await expect(panel.getByText('You attended.').first()).toBeVisible();
+  mark('attended');
+
+  // Results after the festival ends on January 31.
+  await advanceUntil(page, '2027-02-03');
+  await open();
+  const result = await entryStatus(page);
+  expect(['Won', 'Did Not Win']).toContain(result);
+  await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
+  await expect(page.locator('li', { hasText: 'Short Film Program' }).getByText(/Winner: /)).toBeVisible();
+
+  // Save, reload, and keep playing: one result message, one fee payment, the same winner.
+  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  const before = await readSavedState(page);
+  const resultLogs = (s: any) => s.log.filter((l: any) => /(won|didn't win) Short Film Program at the Sundance Film Festival 2027/.test(l.text)).length; // eslint-disable-line @typescript-eslint/no-explicit-any
+  expect(resultLogs(before)).toBe(1);
+  expect(feePostings(before)).toBe(1);
+  const winner = before.editions.find((e: { id: string }) => e.id === 'sundance-2027').results.shorts.winner;
+  expect(before.editions.find((e: { id: string }) => e.id === 'sundance-2027').rulesId).toBe('sundance-2027@1');
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await advance(page, 'month');
+  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  const after = await readSavedState(page);
+  expect(resultLogs(after)).toBe(1);
+  expect(feePostings(after)).toBe(1);
+  expect(after.editions.find((e: { id: string }) => e.id === 'sundance-2027').results.shorts.winner).toBe(winner);
+  expect(after.projects[0].history.filter((h: { text: string }) => /Sundance Film Festival 2027/.test(h.text)).length).toBe(before.projects[0].history.filter((h: { text: string }) => /Sundance Film Festival 2027/.test(h.text)).length);
+  mark('done');
+  console.log(JSON.stringify({ journeySeconds: marks, result }));
 });

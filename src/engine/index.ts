@@ -10,6 +10,7 @@ export * from './production';
 export * from './hiring';
 export * from './finish';
 export * from './awards';
+export * from './rulebooks';
 export * from './weather';
 export * from './holidays';
 export * from './save';

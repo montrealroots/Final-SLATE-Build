@@ -108,6 +108,7 @@ export function newGame(d: CreationDraft, realNow: number, saveId: string): Game
     projects: [],
     people: {},
     editions: [],
+    rivalFilms: {},
     followed: [],
     calendarFilters: ['Birthdays', 'Holidays', 'Festivals', 'Awards', 'Deadlines', 'My Schedule'],
     settings: { theme: 'dark', reducedMotion: false, largeText: false, wakeForObligations: true },

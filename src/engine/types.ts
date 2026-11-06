@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 2;
+export const SAVE_VERSION = 3;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -513,15 +513,21 @@ export interface EditionEntry {
   fee: number;
 }
 
-export interface Rival {
-  id: string;
+/** A competing work from the simulated season, stored once per save and shared by every edition it appears in. */
+export interface RivalFilm {
   title: string;
   people: Record<string, string>;
   format: Format;
   medium: Medium;
   runtimeMin: number;
-  premiereCountry: string;
-  scores: Record<string, number>;
+}
+
+/** A competing work selected or nominated in one category of one edition: which film, and its strength there. */
+export interface Rival {
+  id: string;
+  /** Key in GameState.rivalFilms. */
+  film: string;
+  score: number;
 }
 
 export interface Edition {
@@ -543,6 +549,10 @@ export interface Edition {
   screenings?: Screening[];
   /** Official dates whose entry deadline wasn't confirmed: the deadline shown is a planning date. */
   deadlinePlanned?: boolean;
+  /** The rulebook this edition is judged by (rulebooks.ts), fixed when the edition is created; 'simulated' when none. */
+  rulesId?: string;
+  /** With a rulebook: the general deadline for categories that have no deadline of their own (`deadline` is the latest). */
+  defaultDeadline?: number;
 }
 
 /** A public screening of a selected project. The invitation to attend is separate from the selection itself. */
@@ -585,6 +595,8 @@ export interface GameState {
   projects: Project[];
   people: Record<string, PersonState>;
   editions: Edition[];
+  /** Competing works of the simulated seasons, by key (see Rival.film). */
+  rivalFilms: Record<string, RivalFilm>;
   followed: string[];
   calendarFilters: string[];
   settings: Settings;

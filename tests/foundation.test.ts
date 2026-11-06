@@ -1,3 +1,4 @@
+import { SAVE_VERSION } from '../src/engine/types';
 import { describe, expect, it } from 'vitest';
 import { ActiveClock } from '../src/engine/clock';
 import { holidaysForYear, easterSunday } from '../src/engine/holidays';
@@ -224,7 +225,7 @@ describe('saves', () => {
     const text = serialize(s);
     expect(() => deserialize(text.slice(0, text.length - 40))).toThrow(SaveFormatError);
     const env = JSON.parse(text);
-    env.data = env.data.replace('"version":2', '"version":99');
+    env.data = env.data.replace(`"version":${SAVE_VERSION}`, '"version":99');
     expect(() => deserialize(JSON.stringify(env))).toThrow(SaveFormatError);
     const store = memoryStore();
     store.setItem('slate.v1.save.bad', '{oops');

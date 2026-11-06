@@ -81,3 +81,15 @@ Tests: `F` = `tests/foundation.test.ts`, `J` = `tests/journeys.test.ts`, `M` = `
 | Failure paths: failed save, version-1 save, data that fails to load | Storage refusing writes, an old save, blocked fetches | Store, save migration, World and Place views | Save kept; backup-v1 key | Save error with Try Again; "Places couldn't be loaded."; map and holiday messages with Try Again | `e2e/failures.spec.ts`, `e2e/world.spec.ts` | Tested |
 | Places a save can't resolve: repair screen; Export Save | Damaged place reference; Export Save buttons | `missingPlaces`, `repairSave`, `exportSave` | `backup-repair` copy; a downloaded save file | "Choose Missing Places", where each place was used; Export Save beside a failed save | `tests/migration.test.ts`, `e2e/failures.spec.ts` | Tested |
 | Performance budgets | Build output, largest shard | `npm run budget`, `e2e/performance.spec.ts` | — | — | Measured: 675 kB startup JS (200 kB gzipped); dev-server startup 527 ms, US shard 314 ms, search 118 ms | Tested (budgets) |
+
+## Festival And Award Rules (November 6, 2026)
+
+| Requirement | Trigger | Engine | Persistence | Player-facing | Tests | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Organizer rules applied per edition, versioned | Edition created; save migration | `rulebooks.ts`, `applyRulebook`, `checkEligibility`, `categoryDeadline` | `Edition.rulesId`, `defaultDeadline`; save version 3 with backup | Official Rules / Projected Rules chips, category deadlines, "How These Rules Apply" | `tests/rulebooks.test.ts` (21) | Tested for 23 verified + 1 projected categories; 117 simulated |
+| Runtime, completion, premiere, prior showing, online, origin, re-entry, theatrical-first, qualifying release or festival win | Entry and deadline recheck | `checkEligibility` | Entries keep their status and reason | Reasons in plain words | `tests/rulebooks.test.ts` | Tested |
+| Deadlines in the organizer's time zone, by category and completion date | Entry | `categoryDeadline` | Deadline events moved on migration | Local and player times | `tests/rulebooks.test.ts` | Tested |
+| Recipients named by the organizer (producers, at most three; director) | Entry | `categoryRecipients` | Entry recipients | Submission dialog | `tests/rulebooks.test.ts` | Tested |
+| Duplicates, withdrawals, one fee per category | Entry | `submitEntry`, `withdrawEntry` | Unique entry IDs; fee key | Entry list | `tests/rulebooks.test.ts`, `e2e/journeys.spec.ts` | Tested |
+| History preserved; competing films stored once | Save migration | `migrateV2toV3` | `GameState.rivalFilms` | Results unchanged | `tests/rulebooks.test.ts` | Tested |
+

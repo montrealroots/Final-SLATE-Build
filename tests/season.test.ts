@@ -91,17 +91,19 @@ describe('rival slate across a season', () => {
     }
     const titles = (id: string) => {
       const ed = s.editions.find((e) => e.id === id)!;
-      return new Set(ed.rivals.map((r) => r.title));
+      return new Set(ed.rivals.map((r) => s.rivalFilms[r.film].title));
     };
     const fest = new Set([...titles('venice-2026'), ...titles('tiff-2026')]);
     const awards = new Set([...titles('oscars-2027'), ...titles('golden-globes-2027')]);
     expect([...awards].some((t) => fest.has(t))).toBe(true); // festival films return in awards season
     const venice = s.editions.find((e) => e.id === 'venice-2026')!;
     const oscars = s.editions.find((e) => e.id === 'oscars-2027')!;
-    const shared = venice.rivals.find((r) => oscars.rivals.some((o) => o.title === r.title));
+    const title = (r: { film: string }) => s.rivalFilms[r.film].title;
+    const shared = venice.rivals.find((r) => oscars.rivals.some((o) => title(o) === title(r)));
     if (shared) {
-      const again = oscars.rivals.find((o) => o.title === shared.title)!;
-      expect(again.people).toEqual(shared.people);
+      // The same film is stored once and shared by both events, so its people and details can't drift apart.
+      const again = oscars.rivals.find((o) => title(o) === title(shared))!;
+      expect(again.film).toBe(shared.film);
     }
     expect(institution('venice').kind).toBe('festival');
   });

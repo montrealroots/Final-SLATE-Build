@@ -62,11 +62,11 @@ Before this change, the long save with two recovery copies could not be saved at
 
 ## Limits
 
-- **Saves grow with play,** mostly from festival and award history: every edition of all 37 institutions stores its
-  selected or nominated rival works (title, people, scores), about 85% of edition data. The long workload is 1.1 MB after
-  1.6 game years, roughly 0.6 MB a game year. A game can keep saving while two copies of it, plus other saves and
-  recovery copies, fit in about 5 MB, so a single game reaches the limit after about four game years. **Open, scheduled
-  with the rulebook integration** (which changes the same edition records and needs a save migration anyway): store
-  rival works compactly, once per season, instead of per category and edition.
+- **Saves grow with play,** mostly from festival and award history. Save version 3 stores each competing film once
+  instead of in every category of every edition (`GameState.rivalFilms`): the long workload went from 1,100 kB to 859 kB
+  (edition data 736 kB to 360 kB; `docs/perf/engine-v3.json`), and the medium one from 296 kB to 255 kB. Growth is now
+  roughly 0.45 MB per game year, so a single game reaches the browser limit (two copies of it in about 5 MB) after about
+  five game years, instead of about four. **Still open:** compressing saves, or trimming the stored history of events the
+  player never entered, would extend this further; both need care to keep past results intact.
 - Other sites' storage does not count, but other SLATE saves and recovery copies do.
 - Real Safari and Firefox were not measured; their documented limits are similar (about 5 MB) but unverified here.

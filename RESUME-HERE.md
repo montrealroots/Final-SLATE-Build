@@ -9,7 +9,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`). `main` was at `3845c2d` when the Gap Completion Package was applied.
+- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`). `main` was at `3845c2d` when the Gap Completion Package was applied.
 - **Package:** "SLATE Gap Completion Package" (predates #2 and #3). Its references are not committed; the imported data is under `src/world/` and `docs/world/`.
 - **Run first:**
 
@@ -60,20 +60,19 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 1. Checkpoint A (above): done, montrealroots/Final-SLATE-Build#14.
 2. Performance: done, see `docs/PERFORMANCE.md`. Rollback snapshots copy plain data (4-6× faster, 43% less memory on a long save; balance 98 s to 37 s; identical results). Startup JavaScript 691 to 634 kB by removing data the game never reads. Engine harness `npm run perf:engine`; browser harness `scripts/perf-browser.mjs` on production builds.
 3. Storage: done, see `docs/STORAGE.md`. Saving needs two copies of a game, not three (no temporary copy); peak measured for fresh, medium and long saves with and without recovery copies; recovery copies listed in Saved Games with Export and Delete, never deleted by the game; deleting a save says how many copies go with it; storage-full message with Free Up Space; exhaustion tested at every step. **Still open:** saves grow about 0.6 MB per game year from festival and award history, so one game hits the browser limit after about four game years. Fix in item 4, which changes the same records: store rival works compactly, once per season, with a save migration.
-4. Festival and award rulebooks: recount institutions and entries; verify edition-specific rules with sources; versioned rule data wired to projects, releases, screenings, credits, submissions and the calendar; boundary tests; a full browser journey from submission to results with save and reload.
-
+4. Festival and award rulebooks: done for the organizers whose documents were read; see `docs/world/RULEBOOK-AUDIT.md`. Versioned rulebooks (`src/engine/rulebooks.ts`) for the Academy Awards 99th, Sundance 2027, Clermont-Ferrand 2027 and Annie Awards 54th (23 categories, verified), and Cannes 2027 short films (projected from 2026). Each edition records its rules (`rulesId`); save version 3 migrates with a backup, keeps past and entered editions on simulated rules, lets untouched future editions adopt published rules, and stores competing films once (long save 1,100 to 859 kB). Tests in `tests/rulebooks.test.ts`; browser journey in `e2e/journeys.spec.ts` ("festival under official rules"). **Still open:** the other 32 institutions' rules (list at the end of the audit).
 ### Coding Gaps
 
 1. **M2 follow-ups:** none open. Map markers are keyboard buttons ("Open {place}"); the repair screen for unresolvable places is done.
 2. **M3 follow-ups:** holiday names for countries without curated rules are in the official language (for example Chinese, Russian, Korean for later years); an English display name table would help players. Holidays are national or first-level-regional only; local (city) holidays are not included.
 3. **M4 follow-ups:** Export Save is offered for every saved game and next to a failed save. The weather warning now uses "Rain is expected during your exterior shoot." and offers "Film an Interior Scene" only when an interior day is scheduled; "Move the Shoot" moves the day to the first free working day after the shoot, if everyone on set is free.
 4. **M5 follow-ups:** capture sessions aren't placed on the calendar as fixed appointments (they run on working days once booked), so performer conflicts with shoot days are shown as task blocks, not calendar clashes; facial and body capture are one contribution; credits after replacing a performer mid-production are not separately tested.
-5. **M6 follow-ups:** none open in code. The category audit (`docs/world/CATEGORY-AUDIT.md`) corrected the Emmys drama/comedy split and Gotham's Breakthrough Series; 130 of 141 entries match the organizers' published names but were not re-fetched (research, below).
+5. **M6 follow-ups:** none open in code. The category audit (`docs/world/CATEGORY-AUDIT.md`) marks 23 categories Rules verified and 1 Rules projected; 107 entries still only match published names (research, below).
 6. **M7 follow-ups:** a manual screen-reader pass (automated checks only so far); production timings (budgets are measured on the dev server).
 
 ### Research Still To Do
 
-- Festival and award rulebooks: 130 of 141 categories are marked "Matches published name" without a fresh source; reading each current rulebook (eligibility, entry limits, premiere rules) remains. European Film Awards eligibility differs slightly (see the audit). Dates were checked on November 6, 2026; see `docs/world/INSTITUTION-AUDIT.md` for which are still planning dates (Annecy 2027 has only tourism listings; BAFTA 2027 is unannounced; WGA, Series Mania and Hot Docs 2027 not found).
+- Festival and award rulebooks: 117 of 141 categories still use simulated rules. Next, in order of player impact: Annecy, Berlinale, Venice, TIFF, BAFTA Film, Golden Globes, Emmys, then the rest listed in `docs/world/RULEBOOK-AUDIT.md`. Each needs its organizer's document for the edition in play; add a new rulebook version, never edit one an edition already uses. European Film Awards eligibility differs slightly (see the category audit). Dates: Annecy 2027, BAFTA 2027, WGA, Series Mania and Hot Docs 2027 are still planning dates.
 
 ### External Or Manual (never blocks other work or future years)
 
@@ -84,5 +83,5 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## Known Limits That Are Deliberate
 
 - No tutorial, taxes, housing, banking, visas or attribute progression.
-- Rules are simulated and labelled as such.
+- Rules are simulated and labelled as such, except where `docs/world/RULEBOOK-AUDIT.md` lists organizer rules.
 - Saves are local to the browser.

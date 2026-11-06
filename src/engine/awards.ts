@@ -1,7 +1,7 @@
-// Festivals and awards. Institutions are real names; their rules in this game are SIMULATED
-// game rules modeled on each event's general shape, not official rulebooks. Dates are official
-// only where docs/DATA-PROVENANCE.md cites an announcement; all others are generated once per
-// edition from a seasonal window and saved, so reloading never moves them.
+// Festivals and awards. Institutions are real names. Where an organizer's rules for an edition were read, they are
+// applied from versioned rulebooks (rulebooks.ts) and labelled official or projected; everything else uses SIMULATED
+// game rules modeled on each event's general shape. Dates are official only where docs/DATA-PROVENANCE.md cites an
+// announcement; all others are generated once per edition from a seasonal window and saved, so reloading never moves them.
 
 import { getPlace } from '../data/places';
 import { ledgerTotals, money, spend } from './budget';
@@ -12,7 +12,8 @@ import { travelHours } from './state';
 import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { addLog, onNewGame, registerCommitmentSource, registerHandler, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localParts, localToInstant, parseYmd, weekdayOfKey, ymd } from './time';
-import type { Credit, Edition, EditionEntry, Format, GameState, Medium, Project, Rival, Screening } from './types';
+import type { Credit, Edition, EditionEntry, Format, GameState, Medium, Project, RivalFilm, Screening } from './types';
+import { currentRulebook, rulebook, type CategoryRules, type DeadlineRule, type RuleBook, type RuntimeRule } from './rulebooks';
 
 export type Recipient = 'project' | 'director' | 'writer' | 'lead' | 'supporting' | 'producer' | 'voice' | 'ensemble';
 export type Judging = 'programmers' | 'jury' | 'members' | 'audience';
@@ -489,8 +490,11 @@ export function ensureEditions(state: GameState, year: number): void {
     const ed: Edition = {
       id, institutionId: inst.id, year, label, start: d.start, end: d.end, submissionOpens: d.submissionOpens, deadline: d.deadline, announce: d.announce,
       eligibility: eligibilityWindow(inst, year, d.startKey), provenance: d.provenance, deadlinePlanned: d.deadlinePlanned || undefined, entries: [], rivals: [], results: {},
-      status: state.now > d.deadline ? 'closed' : state.now >= d.submissionOpens ? 'open' : 'upcoming',
+      status: 'upcoming', rulesId: 'simulated',
     };
+    const book = currentRulebook(inst.id, year);
+    if (book) applyRulebook(ed, book);
+    ed.status = state.now > ed.deadline ? 'closed' : state.now >= ed.submissionOpens ? 'open' : 'upcoming';
     state.editions.push(ed);
     if (ed.deadline > state.now) {
       if (d.submissionOpens > state.now) schedule(state, d.submissionOpens, 'edition-open', { editionId: id }, { id: `${id}:open` });
@@ -518,6 +522,50 @@ registerHandler('editions-roll', (state, ev) => {
   schedule(state, Date.UTC(y, 0, 1), 'editions-roll', { year: y + 1 }, { id: `roll-${y + 1}` });
 });
 
+function deadlineInstant(d: DeadlineRule): number {
+  const { year, month, day } = parseYmd(d.date);
+  const [hh, mm] = d.time.split(':').map(Number);
+  return localToInstant(d.zone, year, month, day, hh, mm).instant + (mm === 59 ? 59_000 : 0);
+}
+
+/**
+ * Attach a rulebook to an edition being created (or, through the save migration, to a future edition nobody has
+ * entered): its opening date, and per-category deadlines. The edition's own deadline becomes the latest of them, so
+ * the edition stays open for every category; categories without a rule deadline keep the edition's general deadline.
+ */
+export function applyRulebook(ed: Pick<Edition, 'institutionId' | 'year' | 'deadline' | 'submissionOpens' | 'deadlinePlanned' | 'rulesId' | 'defaultDeadline'>, book: RuleBook): void {
+  ed.rulesId = book.id;
+  ed.defaultDeadline ??= ed.deadline;
+  const inst = institution(ed.institutionId);
+  const held = categoriesFor(inst, ed.year);
+  const all = held.flatMap((c) => book.categories[c.id]?.deadlines?.value ?? []).map(deadlineInstant);
+  const everyCategoryRuled = held.every((c) => book.categories[c.id]?.deadlines);
+  ed.deadline = Math.max(everyCategoryRuled ? -Infinity : ed.defaultDeadline, ...all);
+  if (everyCategoryRuled) ed.deadlinePlanned = undefined;
+  if (book.opens) {
+    const { year, month, day } = parseYmd(book.opens.value);
+    ed.submissionOpens = localToInstant(getPlace(inst.placeId).zone, year, month, day, 9).instant;
+  }
+}
+
+/** The rules an edition's category is judged by, if the organizer's were read; otherwise SLATE's simulated rules. */
+export function categoryRules(ed: Edition, categoryId: string): CategoryRules | undefined {
+  return rulebook(ed.rulesId)?.categories[categoryId];
+}
+
+function completedKey(p: Project): string | null {
+  return p.delivered ? dateKey(p.delivered.at, getPlace(p.axes.basePlaceId).zone) : null;
+}
+
+/** When entries for one category close: its own rule deadline (which can depend on when the work was completed), else the edition's. */
+export function categoryDeadline(ed: Edition, cat: Category, p?: Project): number {
+  const list = categoryRules(ed, cat.id)?.deadlines?.value;
+  if (!list?.length) return ed.defaultDeadline ?? ed.deadline;
+  const done = p ? completedKey(p) : null;
+  const pick = list.find((d) => !d.ifCompletedBefore || (done !== null && done < d.ifCompletedBefore)) ?? list.filter((d) => !d.ifCompletedBefore).at(-1) ?? list[list.length - 1];
+  return deadlineInstant(pick);
+}
+
 export function edition(state: GameState, id: string): Edition {
   const e = state.editions.find((x) => x.id === id);
   if (!e) throw new Error('That event edition no longer exists.');
@@ -542,52 +590,124 @@ function releaseFits(p: Project, inst: Institution, ed: Edition): { ok: boolean;
   if (p.premiere?.editionId) all.push({ route: 'festival-premiere', territories: [p.premiere.country], date: p.premiere.date, status: 'released' });
   if (all.some((r) => r.status === 'released' && fits(r))) return { ok: true, provisional: false };
   if (all.some((r) => r.status === 'planned' && fits(r))) return { ok: true, provisional: true };
-  const where = countries ? ` in ${countries.map((c) => (c === 'US' ? 'the United States' : c === 'GB' ? 'the United Kingdom' : c)).join(' or ')}` : '';
+  const where = countries ? ` in ${countries.map(countryWords).join(' or ')}` : '';
   const routeWords = routes.map((r) => (r === 'festival-premiere' ? 'festival premiere' : r)).join(', ');
   return { ok: false, provisional: false, reason: `It needs a ${routeWords} release${where} between ${formatDateKey(ed.eligibility.from)} and ${formatDateKey(ed.eligibility.to)}.` };
 }
 
+function countryWords(c: string): string {
+  return c === 'US' ? 'the United States' : c === 'GB' ? 'the United Kingdom' : c === 'FR' ? 'France' : c;
+}
+
+/** A qualifying release under an organizer's rule, or a top award at one of its qualifying festivals. */
+function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: CategoryRules): { ok: boolean; provisional: boolean; reason?: string } {
+  const { routes, countries, exempt, festivalAwards } = rules.release!.value;
+  if (exempt?.includes(p.axes.format)) return { ok: true, provisional: false };
+  const win = rules.qualifying?.value ?? ed.eligibility;
+  const fits = (r: Project['releases'][number]) => (routes as string[]).includes(r.route) && r.territories.some((t) => countries.includes(t)) && r.date >= win.from && r.date <= win.to;
+  if (p.releases.some((r) => r.status === 'released' && fits(r))) return { ok: true, provisional: false };
+  if (festivalAwards && festivalWin(state, p, festivalAwards, win)) return { ok: true, provisional: false };
+  if (p.releases.some((r) => r.status === 'planned' && fits(r))) return { ok: true, provisional: true };
+  const how = routes.length === 1 ? `a ${routes[0]} release` : 'a release';
+  const orFest = festivalAwards ? ', or a top award at one of its qualifying festivals in that time' : '';
+  return { ok: false, provisional: false, reason: `It needs ${how} in ${countries.map(countryWords).join(' or ')} between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}${orFest}.` };
+}
+
+function festivalWin(state: GameState, p: Project, awards: string[], win: { from: string; to: string }): boolean {
+  return state.editions.some((e) => {
+    const end = dateKey(e.end, getPlace(institution(e.institutionId).placeId).zone);
+    return end >= win.from && end <= win.to && Object.entries(e.results).some(([catId, r]) => r.revealed && r.winner === p.id && awards.includes(`${e.institutionId}:${catId}`));
+  });
+}
+
+function runtimeProblem(rt: number, r: RuntimeRule): string | null {
+  if (r.over !== undefined && rt <= r.over) return `It runs ${rt} minutes. This category needs more than ${r.over}.`;
+  if (r.atLeast !== undefined && rt < r.atLeast) return `It runs ${rt} minutes. This category needs at least ${r.atLeast}.`;
+  if (r.atMost !== undefined && rt > r.atMost) return `It runs ${rt} minutes. This category takes ${r.atMost} minutes or less, credits included.`;
+  if (r.under !== undefined && rt >= r.under) return `It runs ${rt} minutes. This category takes work under ${r.under} minutes, credits included.`;
+  return null;
+}
+
+/** Public showings before a date: releases that weren't cancelled, and a premiere at another edition. */
+function showingsBefore(p: Project, before: string, exceptEdition?: string): { date: string; countries: string[]; route: string }[] {
+  const out = p.releases.filter((r) => r.status !== 'cancelled' && r.date < before).map((r) => ({ date: r.date, countries: r.territories, route: r.route as string }));
+  if (p.premiere && p.premiere.date < before && (!p.premiere.editionId || p.premiere.editionId !== exceptEdition)) {
+    out.push({ date: p.premiere.date, countries: [p.premiere.country], route: p.premiere.editionId ? 'festival-premiere' : 'release' });
+  }
+  return out;
+}
+
 export function checkEligibility(state: GameState, p: Project, ed: Edition, cat: Category, recipientIds?: string[]): Eligibility {
   const inst = institution(ed.institutionId);
+  const rules = categoryRules(ed, cat.id);
   const reasons: string[] = [];
   let provisional = false;
-  if (!cat.formats.includes(p.axes.format)) reasons.push(`This category doesn't accept ${p.axes.format.replace('-', ' ')} projects.`);
+  const origin = getPlace(p.axes.basePlaceId).country;
+  const formats = rules?.formats?.value ?? cat.formats;
+  if (!formats.includes(p.axes.format)) reasons.push(`This category doesn't accept ${p.axes.format.replace('-', ' ')} projects.`);
   if (p.delivered) {
-    // Runtime classification in this game: features run more than 40 minutes, shorts 40 or fewer.
     const rt = p.delivered.runtimeMin;
-    if (cat.formats.some((f) => f === 'feature' || f === 'documentary-feature') && !cat.formats.some((f) => f === 'short' || f === 'documentary-short') && rt <= 40) reasons.push(`It runs ${rt} minutes. Feature categories need more than 40.`);
-    if (cat.formats.every((f) => f === 'short' || f === 'documentary-short') && rt > 40) reasons.push(`It runs ${rt} minutes. Short categories need 40 or fewer.`);
+    if (rules?.runtime) {
+      const why = runtimeProblem(rt, rules.runtime.value);
+      if (why) reasons.push(why);
+    } else {
+      // Runtime classification in this game: features run more than 40 minutes, shorts 40 or fewer.
+      if (cat.formats.some((f) => f === 'feature' || f === 'documentary-feature') && !cat.formats.some((f) => f === 'short' || f === 'documentary-short') && rt <= 40) reasons.push(`It runs ${rt} minutes. Feature categories need more than 40.`);
+      if (cat.formats.every((f) => f === 'short' || f === 'documentary-short') && rt > 40) reasons.push(`It runs ${rt} minutes. Short categories need 40 or fewer.`);
+    }
   }
-  if (cat.mediums && !cat.mediums.includes(p.axes.medium)) reasons.push(`This category is for ${cat.mediums.join(' or ').replace('-', ' ')} work.`);
+  const mediums = rules?.mediums?.value ?? cat.mediums;
+  if (mediums && !mediums.includes(p.axes.medium)) reasons.push(`This category is for ${mediums.join(' or ').replace('-', ' ')} work.`);
   if (cat.genres && !p.axes.genres.some((g) => cat.genres!.includes(g.id))) reasons.push(`This category needs one of its genres, such as ${genre(cat.genres[0]).name}.`);
   if (cat.excludeGenres && p.axes.genres.some((g) => cat.excludeGenres!.includes(g.id))) reasons.push('Comedy and musical work competes in a separate category.');
-  if (inst.origin && !inst.origin.includes(getPlace(p.axes.basePlaceId).country)) reasons.push('Your production base country isn\'t eligible for this event.');
-  if (inst.id === 'international-emmys' && getPlace(p.axes.basePlaceId).country === 'US') reasons.push('This event is for productions made outside the United States.');
+  if (inst.origin && !inst.origin.includes(origin)) reasons.push('Your production base country isn\'t eligible for this event.');
+  if (rules?.origin?.value.only && !rules.origin.value.only.includes(origin)) reasons.push(`This section is for work made in ${rules.origin.value.only.map(countryWords).join(' or ')}.`);
+  if (rules?.origin?.value.not?.includes(origin)) reasons.push(`Work made mainly in ${countryWords(origin)} enters the festival's national competition instead.`);
+  if (inst.id === 'international-emmys' && origin === 'US') reasons.push('This event is for productions made outside the United States.');
   if (inst.id === 'spirit' && p.funding.scenarioId === 'commissioned') reasons.push('Commissioned projects aren\'t eligible in this game.');
   if (!p.delivered) {
     if (inst.kind === 'festival') reasons.push('Deliver the project before submitting it.');
     else reasons.push('Deliver the project before entering it.');
   }
-  if (state.now > ed.deadline) reasons.push('The entry deadline has passed.');
+  const done = completedKey(p);
+  if (rules?.completedFrom && done && done < rules.completedFrom.value) reasons.push(`It was completed on ${formatDateKey(done)}. This category takes work completed from ${formatDateKey(rules.completedFrom.value)}.`);
+  if (state.now > categoryDeadline(ed, cat, p)) reasons.push('The entry deadline has passed.');
   if (state.now < ed.submissionOpens) reasons.push(`Entries open on ${formatDateKey(dateKey(ed.submissionOpens, getPlace(inst.placeId).zone))}.`);
+  if (rules?.noReentry && state.editions.some((e) => e.institutionId === ed.institutionId && e.year < ed.year && e.entries.some((x) => x.projectId === p.id))) {
+    reasons.push(`It was entered at an earlier ${inst.short}, and work can't be entered again.`);
+  }
   if (inst.kind === 'festival') {
     const startKey = dateKey(ed.start, getPlace(inst.placeId).zone);
-    const prior = [...p.releases.filter((r) => r.date < startKey).flatMap((r) => r.territories), ...(p.premiere && p.premiere.date < startKey && p.premiere.editionId !== ed.id ? [p.premiere.country] : [])];
-    if (cat.premiere === 'world' && prior.length) reasons.push('This section requires a world premiere, and your project has already been shown.');
-    if (cat.premiere === 'international' && prior.some((c) => c !== getPlace(p.axes.basePlaceId).country)) reasons.push('This section requires an international premiere, and your project has already been shown abroad.');
-    if (p.premiere?.editionId && p.premiere.editionId !== ed.id && cat.premiere === 'world') reasons.push(`It premiered at ${state.editions.find((e) => e.id === p.premiere?.editionId)?.label ?? 'another festival'}.`);
+    const shown = showingsBefore(p, startKey, ed.id);
+    const asked = rules?.premiere?.value ?? cat.premiere;
+    const premiere = asked === 'world-if-domestic' ? (origin === getPlace(inst.placeId).country ? 'world' : 'international') : asked;
+    if (premiere === 'world' && shown.length) reasons.push('This section requires a world premiere, and your project has already been shown.');
+    if (premiere === 'international' && shown.some((x) => x.countries.some((c) => c !== origin))) reasons.push('This section requires an international premiere, and your project has already been shown abroad.');
+    if (p.premiere?.editionId && p.premiere.editionId !== ed.id && premiere === 'world') reasons.push(`It premiered at ${state.editions.find((e) => e.id === p.premiere?.editionId)?.label ?? 'another festival'}.`);
+    const nsb = rules?.notShownBefore?.value;
+    if (nsb && !(nsb.unlessCompletedAfter && done && done > nsb.unlessCompletedAfter) && showingsBefore(p, nsb.date, ed.id).length) {
+      reasons.push(`It was shown publicly before ${formatDateKey(nsb.date)}${nsb.unlessCompletedAfter ? ` and completed before ${formatDateKey(addDaysToKey(nsb.unlessCompletedAfter, 1))}` : ''}.`);
+    }
+    if (rules?.noOtherFestival && p.premiere?.editionId && p.premiere.editionId !== ed.id && p.premiere.date < startKey) reasons.push(`It has already screened at the ${state.editions.find((e) => e.id === p.premiere?.editionId)?.label ?? 'another festival'}.`);
+    if (rules?.noOnline && shown.some((x) => x.route === 'streaming' || x.route === 'digital')) reasons.push('It has been released online, and this section only takes work not yet shown online.');
   } else {
-    const rel = releaseFits(p, inst, ed);
+    const rel = rules?.release ? ruledReleaseFits(state, p, ed, rules) : releaseFits(p, inst, ed);
     if (!rel.ok) reasons.push(rel.reason!);
     provisional = rel.provisional;
-    if (provisional && p.releases.some((r) => r.status === 'planned' && r.date > ed.eligibility.to)) provisional = true;
+    const tf = rules?.theatricalFirst?.value;
+    if (tf) {
+      const inC = (r: Project['releases'][number]) => r.status !== 'cancelled' && r.territories.some((t) => tf.countries.includes(t));
+      const theatrical = p.releases.filter((r) => inC(r) && r.route === 'theatrical').map((r) => r.date).sort()[0];
+      const other = p.releases.filter((r) => inC(r) && r.route !== 'theatrical').map((r) => r.date).sort()[0];
+      if (other && (!theatrical || other < theatrical)) reasons.push(`It was released on ${formatDateKey(other)} outside cinemas in ${tf.countries.map(countryWords).join(' or ')}, before any theatrical run there, which rules it out.`);
+    }
   }
-  // Shorts at the Oscars qualify through a festival win in this game, or a US theatrical release.
-  if (inst.id === 'oscars' && SHORTS.includes(p.axes.format) && reasons.some((r) => r.startsWith('It needs a'))) {
-    const festivalWin = state.editions.some((e) => institution(e.institutionId).kind === 'festival' && Object.values(e.results).some((r) => r.revealed && r.winner === p.id));
-    if (festivalWin) reasons.splice(reasons.findIndex((r) => r.startsWith('It needs a')), 1);
+  // Simulated rules only: shorts at the Oscars qualify through any festival win, or a US theatrical release.
+  if (!rules && inst.id === 'oscars' && SHORTS.includes(p.axes.format) && reasons.some((r) => r.startsWith('It needs a'))) {
+    const festivalWon = state.editions.some((e) => institution(e.institutionId).kind === 'festival' && Object.values(e.results).some((r) => r.revealed && r.winner === p.id));
+    if (festivalWon) reasons.splice(reasons.findIndex((r) => r.startsWith('It needs a')), 1);
   }
-  const recipients = categoryRecipients(state, p, cat, recipientIds);
+  const recipients = categoryRecipients(state, p, cat, recipientIds, rules);
   if (!recipients.length) reasons.push(recipientMissingReason(cat));
   return { eligible: reasons.length === 0, provisional, reasons, recipients };
 }
@@ -601,10 +721,17 @@ function recipientMissingReason(cat: Category): string {
 }
 
 /** Credited recipients: only people with the relevant actual contribution. */
-export function categoryRecipients(state: GameState, p: Project, cat: Category, chosen?: string[]): Credit[] {
+export function categoryRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
   const credits = p.credits;
   const chars = p.drafts.find((d) => d.number === p.approvedDraft)?.characters ?? [];
   let pool: Credit[];
+  const named = rules?.recipients?.value;
+  if (named) {
+    // The organizer names who receives the award: credited directors, or credited producers up to a limit.
+    pool = credits.filter((c) => (named.credit === 'director' ? c.contribution === 'Directed By' : c.roleId === 'producer')).sort((a, b) => a.billing - b.billing);
+    if (chosen?.length) pool = pool.filter((c) => chosen.includes(c.id));
+    return named.max ? pool.slice(0, named.max) : pool;
+  }
   switch (cat.recipient) {
     case 'director': pool = credits.filter((c) => c.contribution === 'Directed By'); break;
     case 'writer': pool = credits.filter((c) => c.contribution === 'Written By' || c.contribution === 'Co-Written By'); break;
@@ -636,12 +763,17 @@ export function submitEntry(state: GameState, p: Project, editionId: string, cat
   if (ed.entries.some((e) => e.projectId === p.id && e.categoryId === categoryId && e.status !== 'withdrawn')) throw new Error('This project is already entered in that category.');
   const el = checkEligibility(state, p, ed, cat, recipientIds);
   if (!el.eligible) throw new Error(el.reasons[0]);
-  if (cat.fee) {
+  // One fee per project, category and edition: entering again after withdrawing doesn't charge it twice.
+  const feeKey = `fee:${editionId}:${categoryId}`;
+  const alreadyPaid = p.obligations.some((o) => o.postings.some((x) => x.key === feeKey));
+  if (cat.fee && !alreadyPaid) {
     if (ledgerTotals(p).available < cat.fee) throw new Error(`The entry fee is ${money(cat.fee)}, and this project has ${money(ledgerTotals(p).available)} uncommitted.`);
-    spend(state, p, `${inst.short} Entry Fee`, 'festival', cat.fee, `fee:${editionId}:${categoryId}`);
+    spend(state, p, `${inst.short} Entry Fee`, 'festival', cat.fee, feeKey);
   }
+  const base = `${editionId}:${categoryId}:${p.id}`;
+  const tries = ed.entries.filter((e) => e.id === base || e.id.startsWith(`${base}#`)).length;
   const entry: EditionEntry = {
-    id: `${editionId}:${categoryId}:${p.id}`, projectId: p.id, categoryId, submittedAt: state.now, status: 'submitted', recipients: el.recipients.map((r) => r.id), fee: cat.fee,
+    id: tries ? `${base}#${tries + 1}` : base, projectId: p.id, categoryId, submittedAt: state.now, status: 'submitted', recipients: el.recipients.map((r) => r.id), fee: cat.fee && !alreadyPaid ? cat.fee : 0,
     reason: el.provisional ? 'Entered provisionally. The planned release must happen within the eligibility period.' : undefined,
   };
   ed.entries.push(entry);
@@ -690,7 +822,7 @@ registerHandler('edition-deadline', (state, ev) => {
     const cat = inst.categories.find((c) => c.id === e.categoryId);
     if (!p || !cat) continue;
     const saved = state.now;
-    state.now = ed.deadline - 1;
+    state.now = Math.min(ed.deadline, categoryDeadline(ed, cat, p)) - 1;
     const el = checkEligibility(state, p, ed, cat, e.recipients);
     state.now = saved;
     if (el.eligible) e.status = 'accepted';
@@ -762,33 +894,45 @@ function seasonOf(ed: Edition): number {
   return institution(ed.institutionId).kind === 'festival' ? ed.year : ed.year - 1;
 }
 
-function rivalsFor(state: GameState, ed: Edition, cat: Category): Rival[] {
+/** A candidate competing work for one category: its film (stored once per save if chosen) and its strength there. */
+interface Candidate { id: string; filmKey: string; film: RivalFilm; score: number }
+
+function rivalsFor(state: GameState, ed: Edition, cat: Category): Candidate[] {
   const slate = seasonSlate(state.seed, seasonOf(ed)).filter((f) =>
     cat.formats.includes(f.format) && (!cat.mediums || cat.mediums.includes(f.medium)) &&
     (!cat.genres || f.genres.some((g) => cat.genres!.includes(g))) && (!cat.excludeGenres || !f.genres.some((g) => cat.excludeGenres!.includes(g))));
-  const fromSlate: Rival[] = slate.map((f) => ({
-    id: `${ed.id}:${cat.id}:${f.id}`, title: f.title, people: f.people, format: f.format, medium: f.medium, runtimeMin: f.runtimeMin, premiereCountry: 'US',
-    scores: { [cat.id]: f.scores[cat.recipient] },
+  const fromSlate: Candidate[] = slate.map((f) => ({
+    id: `${ed.id}:${cat.id}:${f.id}`, filmKey: f.id, film: { title: f.title, people: f.people, format: f.format, medium: f.medium, runtimeMin: f.runtimeMin }, score: f.scores[cat.recipient],
   }));
   const needed = Math.max(cat.slots * 3, cat.slots + 6);
   if (fromSlate.length >= needed) return fromSlate;
   return [...fromSlate, ...generatedRivals(state, ed, cat, needed - fromSlate.length)];
 }
 
-function generatedRivals(state: GameState, ed: Edition, cat: Category, n: number): Rival[] {
+function generatedRivals(state: GameState, ed: Edition, cat: Category, n: number): Candidate[] {
   const inst = institution(ed.institutionId);
   const r = stream(state.seed, 'rivals', ed.id, cat.id);
-  const out: Rival[] = [];
+  const out: Candidate[] = [];
   for (let i = 0; i < n; i++) {
     const title = `${pick(r, ['The ', '', '', 'A '])}${pick(r, RIVAL_WORDS_A)} ${pick(r, RIVAL_WORDS_B)}`;
     // Rival work strength by event prestige; a simulation assumption.
     const score = Math.max(20, Math.min(97, gaussian(r, inst.prestige - 8, 10)));
+    const id = `${ed.id}:${cat.id}:r${i}`;
     out.push({
-      id: `${ed.id}:${cat.id}:r${i}`, title, people: { lead: `${pick(r, ['Iris', 'Teo', 'Marisol', 'Kwame', 'Ana', 'Lars', 'Mina', 'Rafi', 'Odile', 'Sung-min'])} ${pick(r, ['Varga', 'Mbeki', 'Holt', 'Ruiz', 'Okoro', 'Aalto', 'Brandt', 'Sato', 'Navarro', 'Achterberg'])}` },
-      format: cat.formats[0], medium: cat.mediums?.[0] ?? 'live-action', runtimeMin: cat.formats.includes('short') ? intBetween(r, 6, 30) : intBetween(r, 80, 140), premiereCountry: 'US', scores: { [cat.id]: score },
+      id, filmKey: id, score,
+      film: {
+        title, people: { lead: `${pick(r, ['Iris', 'Teo', 'Marisol', 'Kwame', 'Ana', 'Lars', 'Mina', 'Rafi', 'Odile', 'Sung-min'])} ${pick(r, ['Varga', 'Mbeki', 'Holt', 'Ruiz', 'Okoro', 'Aalto', 'Brandt', 'Sato', 'Navarro', 'Achterberg'])}` },
+        format: cat.formats[0], medium: cat.mediums?.[0] ?? 'live-action', runtimeMin: cat.formats.includes('short') ? intBetween(r, 6, 30) : intBetween(r, 80, 140),
+      },
     });
   }
   return out;
+}
+
+/** The title of a competing work in an edition, by its entry ID. */
+export function rivalTitle(state: GameState, ed: Edition, id: string): string | undefined {
+  const r = ed.rivals.find((x) => x.id === id);
+  return r ? state.rivalFilms[r.film]?.title : undefined;
 }
 
 function playerScore(p: Project, cat: Category, recipients: string[], judging: Judging): number {
@@ -854,11 +998,14 @@ export function announceEdition(state: GameState, ed: Edition): HandlerResult {
         const vis = cat.judging === 'members' ? visibility(state, p, ed.announce) : 0;
         return { id: p.id, kind: 'project' as const, score: playerScore(p, cat, e.recipients, cat.judging) + vis };
       }),
-      ...rivals.map((x) => ({ id: x.id, kind: 'rival' as const, score: x.scores[cat.id] })),
+      ...rivals.map((x) => ({ id: x.id, kind: 'rival' as const, score: x.score })),
     ];
     const ranked = judge(state, ed, cat, 'selection', pool).slice(0, cat.slots);
     const chosenRivals = rivals.filter((x) => ranked.some((y) => y.id === x.id));
-    ed.rivals.push(...chosenRivals);
+    for (const x of chosenRivals) {
+      state.rivalFilms[x.filmKey] ??= x.film;
+      ed.rivals.push({ id: x.id, film: x.filmKey, score: x.score });
+    }
     ed.results[cat.id] = { stage: inst.kind === 'festival' ? 'selection' : 'nomination', projectIds: ranked.filter((x) => x.kind === 'project').map((x) => x.id), rivalIds: chosenRivals.map((x) => x.id), revealed: true };
     for (const e of entries) {
       const p = state.projects.find((x) => x.id === e.projectId)!;
@@ -1008,7 +1155,7 @@ registerHandler('edition-results', (state, ev) => {
         const vis = cat.judging === 'members' ? visibility(state, p, ed.start) : 0;
         return { id, kind: 'project' as const, score: playerScore(p, cat, e?.recipients ?? [], cat.judging) + vis };
       }).filter((x) => ed.entries.some((e) => e.projectId === x.id && e.categoryId === cat.id && e.status !== 'withdrawn')),
-      ...res.rivalIds.map((id) => ({ id, kind: 'rival' as const, score: ed.rivals.find((r) => r.id === id)?.scores[cat.id] ?? 50 })),
+      ...res.rivalIds.map((id) => ({ id, kind: 'rival' as const, score: ed.rivals.find((r) => r.id === id)?.score ?? 50 })),
     ];
     if (!pool.length) continue;
     const ranked = judge(state, ed, cat, 'winner', pool);
@@ -1024,7 +1171,7 @@ registerHandler('edition-results', (state, ev) => {
         messages.push(`${who} won ${cat.name} at the ${ed.label}.`);
         p.history.push({ at: state.now, text: `Won ${cat.name}, ${ed.label}.` });
       } else {
-        const winnerTitle = state.projects.find((x) => x.id === res.winner)?.title ?? ed.rivals.find((x) => x.id === res.winner)?.title ?? 'another work';
+        const winnerTitle = state.projects.find((x) => x.id === res.winner)?.title ?? rivalTitle(state, ed, res.winner!) ?? 'another work';
         messages.push(`${p.title} didn't win ${cat.name} at the ${ed.label}. It went to ${winnerTitle}.`);
       }
     }
@@ -1083,3 +1230,49 @@ export function isTv(p: Project): boolean {
   return isEpisodic(p.axes.format) || p.axes.format === 'tv-film';
 }
 export { isNonfiction, personById };
+
+// ---------------- Save version 2 -> 3 ----------------
+
+/**
+ * Version 3 stores each competing film once (GameState.rivalFilms) instead of in every category of every edition, and
+ * records which rules each edition is judged by. Past and current editions, and any edition with entries, keep the
+ * simulated rules they were created with (`rulesId: 'simulated'`), so no entry or result is judged differently. A
+ * future edition nobody has entered adopts the organizer's published rules, with its deadlines moved to match.
+ */
+export function migrateV2toV3(raw: Record<string, unknown>): Record<string, unknown> {
+  type RawRival = { id: string; film?: string; score?: number; title?: string; people?: Record<string, string>; format?: Format; medium?: Medium; runtimeMin?: number; scores?: Record<string, number> };
+  type RawEdition = Omit<Edition, 'rivals'> & { rivals: RawRival[] };
+  const films: Record<string, RivalFilm> = { ...((raw.rivalFilms as Record<string, RivalFilm> | undefined) ?? {}) };
+  const events = [...((raw.events as GameState['events'] | undefined) ?? [])];
+  const editions = ((raw.editions as RawEdition[] | undefined) ?? []).map((e) => {
+    const rivals = (e.rivals ?? []).map((r) => {
+      if (r.film !== undefined && r.score !== undefined) return { id: r.id, film: r.film, score: r.score };
+      const parts = String(r.id).split(':');
+      const tail = parts[parts.length - 1];
+      const film: RivalFilm = { title: r.title ?? 'Untitled', people: r.people ?? {}, format: r.format ?? 'feature', medium: r.medium ?? 'live-action', runtimeMin: r.runtimeMin ?? 90 };
+      // Season films share a key across editions; anything else, or a mismatch, keeps its own key.
+      let key = /^sl\d/.test(tail) ? tail : r.id;
+      if (films[key] && JSON.stringify(films[key]) !== JSON.stringify(film)) key = r.id;
+      films[key] ??= film;
+      const catId = parts.length >= 3 ? parts[parts.length - 2] : '';
+      return { id: r.id, film: key, score: r.scores?.[catId] ?? Object.values(r.scores ?? {})[0] ?? 50 };
+    });
+    const ed: Edition = { ...e, rivals };
+    if (ed.rulesId === undefined) {
+      const book = currentRulebook(ed.institutionId, ed.year);
+      if (book && ed.entries.length === 0 && (ed.status === 'upcoming' || ed.status === 'open')) {
+        applyRulebook(ed, book);
+        for (const ev of events) {
+          if (ev.id === `${ed.id}:deadline`) ev.at = ed.deadline;
+          if (ev.id === `${ed.id}:soon`) ev.at = ed.deadline - DAY;
+          if (ev.id === `${ed.id}:open`) ev.at = ed.submissionOpens;
+        }
+      } else {
+        ed.rulesId = 'simulated';
+      }
+    }
+    return ed;
+  });
+  events.sort((a, b) => a.at - b.at || a.priority - b.priority || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
+  return { ...raw, editions, events, rivalFilms: films };
+}
