@@ -4,7 +4,7 @@ import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
   qualityWords, requestPickups, depsMet, startCutPass, submitEntry, unlockPicture, withdrawEntry, addDaysToKey, categoryRecipients, type Category,
-  DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, MOCAP_SESSION_STAGE, approveTake, bookMocap, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
+  rsvpScreening, screeningConflicts, screeningTravel, travelTo, DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, MOCAP_SESSION_STAGE, approveTake, bookMocap, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
 } from '../engine';
 import type { GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, SelectField, TextField, longLocal, plural } from './components';
@@ -307,8 +307,9 @@ export function EventDetail() {
             {inst.kind === 'award' && <><dt>Eligibility Period</dt><dd>{formatDateKey(ed.eligibility.from)} to {formatDateKey(ed.eligibility.to)}</dd></>}
             <dt>Status</dt><dd>{{ upcoming: 'Entries not open yet', open: 'Open for entries', closed: 'Entries closed', judging: 'Judging', announced: inst.kind === 'festival' ? 'Selection announced' : 'Nominations announced', complete: 'Finished' }[ed.status]}</dd>
           </dl>
-          <p className="dim">{ed.provenance === 'official' ? 'These dates were announced by the organizer. Rules in this game are simulated.' : 'These dates are simulated for this game. Rules in this game are simulated.'}</p>
+          <p className="dim">{ed.provenance === 'official' ? `These dates were announced by the organizer.${ed.deadlinePlanned ? ' The entry deadline is a planning date.' : ''} Rules in this game are simulated.` : "Dates haven't been announced. Planning dates are shown. Rules in this game are simulated."}</p>
         </section>
+        {(ed.screenings ?? []).length > 0 && <ScreeningsPanel editionId={ed.id} />}
         <section className="panel">
           <h2>{inst.kind === 'festival' ? 'Sections' : 'Categories'}</h2>
           <ul className="list">
@@ -464,6 +465,59 @@ function MocapPanel({ p }: { p: Project }) {
           <ul>{confirm.names.map((n) => <li key={n}>{n}</li>)}</ul>
         </Modal>
       )}
+    </section>
+  );
+}
+
+// ---------------- Screening invitations ----------------
+
+function ScreeningsPanel({ editionId }: { editionId: string }) {
+  const g = useGame();
+  const [err, setErr] = useState<string | null>(null);
+  const ed = g.editions.find((x) => x.id === editionId)!;
+  const inst = institution(ed.institutionId);
+  const venue = getPlace(inst.placeId);
+  return (
+    <section className="panel" aria-labelledby="scr-h">
+      <h2 id="scr-h">Screenings</h2>
+      {err && <p role="alert" className="error">{err}</p>}
+      <ul className="list">
+        {(ed.screenings ?? []).map((sc) => {
+          const p = g.projects.find((x) => x.id === sc.projectId);
+          const when = longLocal(sc.at, venue.zone);
+          const travel = screeningTravel(g, ed, sc);
+          const conflicts = sc.done ? [] : screeningConflicts(g, ed, sc);
+          const late = sc.rsvpBy !== undefined && g.now > sc.rsvpBy;
+          const open = !sc.done && (sc.rsvp ?? 'pending') === 'pending' && !late;
+          const accept = () => setErr(store.act((s) => rsvpScreening(s, ed.id, sc.projectId, sc.at, true)));
+          const decline = () => setErr(store.act((s) => rsvpScreening(s, ed.id, sc.projectId, sc.at, false)));
+          const travelThere = () => setErr(store.act((s) => { rsvpScreening(s, ed.id, sc.projectId, sc.at, true); travelTo(s, inst.placeId); }));
+          return (
+            <li key={sc.at} aria-label={`Screening Of ${p?.title ?? 'Your Film'} On ${when.date}`}>
+              <div><strong>{p?.title ?? 'Your film'}</strong>: {when.weekday}, {when.date}, {when.time} at the {ed.label}, {venue.name}.</div>
+              <div className="dim">
+                {sc.done ? (sc.attended ? 'You attended.' : 'It screened without you.')
+                  : sc.rsvp === 'accepted' ? (travel.here ? "You're attending, and you're here." : `You're attending. The trip takes about ${Math.round(travel.hours)} hours.`)
+                  : sc.rsvp === 'declined' ? 'You declined. It still screens.'
+                  : late || sc.rsvp === 'expired' ? 'The reply deadline has passed. It still screens.'
+                  : `Reply by ${longLocal(sc.rsvpBy ?? sc.at, venue.zone).date}.`}
+              </div>
+              {!sc.done && conflicts.map((c) => <p key={c} className="warn">{c}</p>)}
+              {!sc.done && !travel.here && !travel.arrivesInTime && sc.rsvp !== 'declined' && <p className="dim">You couldn't arrive in time from where you are: the trip takes about {Math.round(travel.hours)} hours.</p>}
+              {!sc.done && (
+                <div className="btn-row">
+                  {open && travel.here && <button className="btn btn-primary btn-small" onClick={accept}>Attend Screening</button>}
+                  {open && !travel.here && travel.arrivesInTime && <button className="btn btn-primary btn-small" onClick={accept}>Accept Invitation</button>}
+                  {sc.rsvp === 'accepted' && !travel.here && travel.arrivesInTime && !g.travel && <button className="btn btn-small" onClick={travelThere}>Travel to the Venue</button>}
+                  {conflicts.length > 0 && p && <button className="btn btn-small" onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'schedule' })}>View Schedule</button>}
+                  {(open || sc.rsvp === 'accepted') && <button className="btn btn-small" onClick={decline}>Decline Invitation</button>}
+                </div>
+              )}
+            </li>
+          );
+        })}
+      </ul>
+      <p className="dim">Declining to attend doesn't change the selection.</p>
     </section>
   );
 }

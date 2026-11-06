@@ -36,7 +36,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 | Holidays worldwide | Hand rules for the 66 places' countries, sourced 2026 lunar dates | M3: donor engine for 218 entries (2026-2100), curated rules kept authoritative, later lunar years projected or expected, coverage notes instead of silent ordinary days; production applies holidays through each project's holiday policy |
 | 1221 UI adaptation | Shell, tokens and startup already on the 1221 palette | M4: startup copy and actions (New Game, Continue, Saved Games, Settings), eight creation sections ending in Start My Story, one route registry (`src/ui/routes.ts`) with in-game Saved Games and Settings, save-error copy with Try Again, 16px fields on phones, widths 360-1920 checked, `docs/COPY-GUIDE.md` |
 | Motion capture, unscripted families, release, writing | Capture sessions, one unscripted pipeline, offers and releases, drafts | M5: capture booking, calibration, takes, retakes, approved take, cleanup and retargeting with cancellation terms; talk, observational, competition (stored deterministic rounds), factual and studio variety with withdrawal and redaction; distribution contracts with delivery materials and release cancellation; re-approval keeps unchanged scenes' work |
-| Screenings, festival and award rules | Screenings, simulated rules | M6 (to do): RSVP and travel conflicts, audited edition rules |
+| Screenings, festival and award rules, competing projects | Screenings, simulated rules, stored season rival slates | M6: invitations with reply deadlines, travel-in-time checks, schedule conflicts, a 30-minute reminder and attendance; 19 of 37 institutions on organizer-announced dates (sources in `docs/world/INSTITUTION-AUDIT.md`), planning dates labelled for the rest |
 | Failure-path journeys, balance, performance | Happy-path journeys, balance runs | M7 (to do) |
 
 ## Milestone Log
@@ -54,12 +54,12 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 2. **M3 follow-ups:** holiday names for countries without curated rules are in the official language (for example Chinese, Russian, Korean for later years); an English display name table would help players. Holidays are national or first-level-regional only; local (city) holidays are not included.
 3. **M4 follow-ups:** "Export Save" is not offered (no export exists yet); a 200% text-size and screen-reader pass are manual checks still to do; the weather, screening and conflict strings arrive with M5 and M6.
 4. **M5 follow-ups:** capture sessions aren't placed on the calendar as fixed appointments (they run on working days once booked), so performer conflicts with shoot days are shown as task blocks, not calendar clashes; facial and body capture are one contribution; credits after replacing a performer mid-production are not separately tested.
-5. **M6:** screening invitations with RSVP deadlines and travel conflicts; edition rule records for 16 festivals and 21 award events.
+5. **M6 follow-ups:** the screening flow has engine tests but no browser journey yet (M7); the 137 sections and categories are not yet audited against each rulebook (research, below).
 6. **M7:** failure-path journeys (failed save, legacy import, missing data); held-out balance seeds; performance budgets; accessibility; report reconciliation.
 
 ### Research Still To Do
 
-- Festival and award rulebooks per edition (M6). Where no rulebook is published, keep the simulated rule and label it.
+- Festival and award rulebooks: read each institution's current rules and compare its sections and categories, eligibility and premiere rules (137 entries). Dates were checked on November 6, 2026; see `docs/world/INSTITUTION-AUDIT.md` for which are still planning dates (Annecy 2027 has only tourism listings; BAFTA 2027 is unannounced; WGA, Series Mania and Hot Docs 2027 not found).
 
 ### External Or Manual (never blocks other work or future years)
 
