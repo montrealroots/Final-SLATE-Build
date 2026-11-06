@@ -4,7 +4,7 @@ import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
   qualityWords, requestPickups, depsMet, startCutPass, submitEntry, unlockPicture, withdrawEntry, addDaysToKey, categoryRecipients, type Category,
-  rsvpScreening, screeningConflicts, screeningTravel, travelTo, DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, MOCAP_SESSION_STAGE, approveTake, bookMocap, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
+  categoriesFor, rsvpScreening, screeningConflicts, screeningTravel, travelTo, DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, MOCAP_SESSION_STAGE, approveTake, bookMocap, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
 } from '../engine';
 import type { GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, SelectField, TextField, longLocal, plural } from './components';
@@ -251,7 +251,7 @@ export function FestivalsTab({ p }: { p: Project }) {
         <ul className="list">
           {relevant.map((e) => {
             const inst = institution(e.institutionId);
-            const fits = inst.categories.filter((c) => c.formats.includes(p.axes.format));
+            const fits = categoriesFor(inst, e.year).filter((c) => c.formats.includes(p.axes.format));
             if (!fits.length) return null;
             const elig = fits.map((c) => ({ c, r: checkEligibility(g, p, e, c) }));
             const ok = elig.filter((x) => x.r.eligible);
@@ -313,7 +313,7 @@ export function EventDetail() {
         <section className="panel">
           <h2>{inst.kind === 'festival' ? 'Sections' : 'Categories'}</h2>
           <ul className="list">
-            {inst.categories.map((c) => {
+            {categoriesFor(inst, ed.year).map((c) => {
               const res = ed.results[c.id];
               return (
                 <li key={c.id}>

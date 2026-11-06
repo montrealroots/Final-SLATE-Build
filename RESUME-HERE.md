@@ -53,16 +53,16 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ### Coding Gaps
 
-1. **M2 follow-ups (small):** map markers are pointer-only; the list is the keyboard and screen-reader path. (The repair screen for places a save can't resolve is done: it asks for replacements and keeps a `backup-repair` copy.)
+1. **M2 follow-ups:** none open. Map markers are keyboard buttons ("Open {place}"); the repair screen for unresolvable places is done.
 2. **M3 follow-ups:** holiday names for countries without curated rules are in the official language (for example Chinese, Russian, Korean for later years); an English display name table would help players. Holidays are national or first-level-regional only; local (city) holidays are not included.
-3. **M4 follow-ups:** Export Save is offered for every saved game and next to a failed save. The weather warning now uses "Rain is expected during your exterior shoot." and offers "Film an Interior Scene" only when an interior day is scheduled; "Move the Shoot" (to another date) isn't a separate action yet.
+3. **M4 follow-ups:** Export Save is offered for every saved game and next to a failed save. The weather warning now uses "Rain is expected during your exterior shoot." and offers "Film an Interior Scene" only when an interior day is scheduled; "Move the Shoot" moves the day to the first free working day after the shoot, if everyone on set is free.
 4. **M5 follow-ups:** capture sessions aren't placed on the calendar as fixed appointments (they run on working days once booked), so performer conflicts with shoot days are shown as task blocks, not calendar clashes; facial and body capture are one contribution; credits after replacing a performer mid-production are not separately tested.
-5. **M6 follow-ups:** the 137 sections and categories are not yet audited against each rulebook (research, below).
+5. **M6 follow-ups:** none open in code. The category audit (`docs/world/CATEGORY-AUDIT.md`) corrected the Emmys drama/comedy split and Gotham's Breakthrough Series; 130 of 141 entries match the organizers' published names but were not re-fetched (research, below).
 6. **M7 follow-ups:** a manual screen-reader pass (automated checks only so far); production timings (budgets are measured on the dev server).
 
 ### Research Still To Do
 
-- Festival and award rulebooks: read each institution's current rules and compare its sections and categories, eligibility and premiere rules (137 entries). Dates were checked on November 6, 2026; see `docs/world/INSTITUTION-AUDIT.md` for which are still planning dates (Annecy 2027 has only tourism listings; BAFTA 2027 is unannounced; WGA, Series Mania and Hot Docs 2027 not found).
+- Festival and award rulebooks: 130 of 141 categories are marked "Matches published name" without a fresh source; reading each current rulebook (eligibility, entry limits, premiere rules) remains. European Film Awards eligibility differs slightly (see the audit). Dates were checked on November 6, 2026; see `docs/world/INSTITUTION-AUDIT.md` for which are still planning dates (Annecy 2027 has only tourism listings; BAFTA 2027 is unannounced; WGA, Series Mania and Hot Docs 2027 not found).
 
 ### External Or Manual (never blocks other work or future years)
 

@@ -50,6 +50,9 @@ Tests: `F` = `tests/foundation.test.ts`, `J` = `tests/journeys.test.ts`, `M` = `
 | Casting and crew loop; player in any or no role | Offers | Response events | Hires, cast, bookings | Accept, counter and decline messages | J, E1 | Tested |
 | Role combining; specialists required by scenes | Staffing | Coverage | Hires | "Covered By Your …" | B, E1 | Tested |
 | Live-action production (weather, daylight, staffing, presence, holidays, pickups) | Schedule | Shoot days | Captures | Day results | J, B, E1 | Tested |
+| Weather: Move the Shoot, Film an Interior Scene | Schedule tab weather actions | `moveShootDay`, `swapWithInteriorDay` | Day date, bookings extended, events moved; costs unchanged | "Rain is expected during your exterior shoot." | `tests/schedule.test.ts` | Tested (engine) |
+| Keyboard-operable map markers | Tab, Enter | World map | — | "Open {place}" buttons | `e2e/world.spec.ts` | Tested |
+| Category audit | Institution data | `categoriesFor` | Category year ranges | — | `tests/awards-audit.test.ts`, `docs/world/CATEGORY-AUDIT.md` | 9 corrected and 2 confirmed with sources; 130 not re-fetched |
 | 2D, 3D, stop motion, hybrid pipelines | Technique | Task graphs | Tasks, assets | Production tab | M, E2 | Tested |
 | Stop-motion puppet and stage limits; design-change impact | Copies, stages, design edits | Daily work | Tasks reset | "affects N shots…", "armature is ready, but its costume still needs fitting" | M | Tested |
 | Finite render capacity | Render nodes | Render tasks | Render costs | Blocked reason | M, B | Tested |

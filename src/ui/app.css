@@ -202,3 +202,5 @@ main { padding: var(--s5) max(var(--s4), env(safe-area-inset-right)) calc(var(--
 .chips .dot { color: var(--text-dim); }
 /* Phones zoom into fields under 16px; keep entry fields at 16px on small screens. */
 @media (max-width: 56.25em) { input, select, textarea { font-size: 16px; } }
+.worldmap-marker:focus { outline: none; }
+.worldmap-marker:focus-visible { stroke: var(--text); stroke-width: 0.8; fill: var(--accent-strong); }

@@ -75,7 +75,7 @@ test('every main screen fits each viewport without sideways scrolling', async ({
     ['Profile', () => nav(page, 'Profile')],
     ['Projects', () => nav(page, 'Projects')],
     ['Place', async () => { await nav(page, 'Home'); await page.getByRole('button', { name: 'Weather And Place Details' }).click(); }],
-    ['World', async () => { await nav(page, 'World'); await expect(page.getByRole('img', { name: /Map of/ })).toBeVisible(); }],
+    ['World', async () => { await nav(page, 'World'); await expect(page.getByRole('group', { name: /Map of/ })).toBeVisible(); }],
     ['Saved Games', () => nav(page, 'Saved Games')],
     ['Settings', () => nav(page, 'Settings')],
   ];

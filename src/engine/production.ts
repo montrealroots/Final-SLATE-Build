@@ -804,7 +804,7 @@ registerHandler('weather-check', (state, ev) => {
     // Package copy: "Rain is expected during your exterior shoot." Offer an interior scene only when one is scheduled.
     const lead = f.summary === 'Rain Likely' || f.summary === 'Snow Likely' ? `${f.summary.startsWith('Snow') ? 'Snow' : 'Rain'} is expected during your exterior shoot.` : `There's a chance of ${f.summary.includes('Snow') ? 'snow' : 'rain'} during your exterior shoot.`;
     const interior = p.schedule.days.some((o) => o.interior && o.status === 'scheduled' && o.date > d.date);
-    const text = `${lead} ${p.title} films outside tomorrow. ${interior ? 'You can film an interior scene instead, or keep the plan.' : 'There is no interior day to film instead; you can keep the plan.'}`;
+    const text = `${lead} ${p.title} films outside tomorrow. ${interior ? 'You can move the shoot, film an interior scene instead, or keep the plan.' : 'You can move the shoot or keep the plan.'}`;
     addLog(state, text, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
     return { message: text };
   }
@@ -859,6 +859,38 @@ export function swapWithInteriorDay(state: GameState, p: Project, dayId: string)
   scheduleShootDay(state, p, other);
   addLog(state, `You swapped the ${d.locationLabel} exterior with the ${other.locationLabel} interior day.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
   return other.date;
+}
+
+/**
+ * Move the Shoot: put a scheduled day on the first free working day after the last scheduled shoot day. Everyone
+ * needed on set must be free that day; their bookings are extended to cover it. Costs are unchanged (the same day
+ * is shot, later), and the day's call, wrap and weather check move with it.
+ */
+export function moveShootDay(state: GameState, p: Project, dayId: string): string {
+  const d = p.schedule.days.find((x) => x.id === dayId && x.status === 'scheduled');
+  if (!d) throw new Error('That shoot day can no longer be changed.');
+  const taken = new Set(p.schedule.days.filter((x) => x.status === 'scheduled').map((x) => x.date));
+  let k = addDaysToKey(p.schedule.days.filter((x) => x.status === 'scheduled').reduce((m, x) => (x.date > m ? x.date : m), d.date), 1);
+  for (let i = 0; i < 60 && (!isWorkingDay(p, k) || taken.has(k)); i++) k = addDaysToKey(k, 1);
+  if (!isWorkingDay(p, k) || taken.has(k)) throw new Error('There is no free working day to move the shoot to.');
+  const onSet = p.hires.filter((h) => h.status === 'accepted' && (SHOOT_CREW.has(h.roleId) || h.kind === 'cast'));
+  for (const h of onSet) {
+    const person = personById(state, h.personId);
+    if (!person) continue;
+    const free = isAvailable(state, person, k, k, p.id);
+    if (!free.ok) throw new Error(`${free.reason} The shoot can't move to ${formatDateKey(k, true)}.`);
+  }
+  for (const h of onSet) {
+    const b = state.people[h.personId]?.bookings.find((x) => x.projectId === p.id);
+    if (b && b.to < k) b.to = k;
+  }
+  const from = d.date;
+  d.date = k;
+  d.weatherAnyway = undefined;
+  cancelEvents(state, (e) => e.payload.dayId === d.id && ['shoot-call', 'shoot-wrap', 'weather-check'].includes(e.kind));
+  scheduleShootDay(state, p, d);
+  addLog(state, `You moved the ${d.locationLabel} ${d.interior ? 'interior' : 'exterior'} from ${formatDateKey(from, true)} to ${formatDateKey(k, true)}.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
+  return k;
 }
 
 function hasCrew(p: Project, roleId: string): boolean {

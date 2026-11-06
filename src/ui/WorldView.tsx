@@ -102,22 +102,27 @@ function WorldMap(props: { country: string; here: { lat: number; lon: number; na
   const me = projectPoint(props.here.lat, props.here.lon, data);
   return (
     <>
-      <svg className="worldmap" viewBox={viewBoxOf(view)} preserveAspectRatio="xMidYMid meet" role="img" aria-label={`Map of ${props.country ? countryName(props.country) : 'the world'}, with the listed places marked`}>
-        <rect className="worldmap-sea" x={0} y={0} width={data.width} height={data.height} />
-        {Object.entries(data.countries).map(([code, d]) => (
-          <path key={code} d={d} className="worldmap-country" data-selected={code === props.country || undefined} strokeWidth={strokeAt(view, data)} onClick={() => props.onCountry(code)}>
-            <title>{countryName(code)}</title>
-          </path>
-        ))}
+      {/* The outlines are a pointer shortcut for the country list; each marker is a real button for keyboards and screen readers. */}
+      <svg className="worldmap" viewBox={viewBoxOf(view)} preserveAspectRatio="xMidYMid meet" role="group" aria-label={`Map of ${props.country ? countryName(props.country) : 'the world'}. Each listed place is a marker you can choose.`}>
+        <rect className="worldmap-sea" x={0} y={0} width={data.width} height={data.height} aria-hidden="true" />
+        <g aria-hidden="true">
+          {Object.entries(data.countries).map(([code, d]) => (
+            <path key={code} d={d} className="worldmap-country" data-selected={code === props.country || undefined} strokeWidth={strokeAt(view, data)} onClick={() => props.onCountry(code)}>
+              <title>{countryName(code)}</title>
+            </path>
+          ))}
+        </g>
         {props.places.map((w) => {
           const p = projectPoint(w.lat, w.lon, data);
+          const choose = () => props.onPlace(w);
           return (
-            <circle key={w.id} className="worldmap-marker" cx={p.x} cy={p.y} r={r} onClick={() => props.onPlace(w)}>
+            <circle key={w.id} className="worldmap-marker" cx={p.x} cy={p.y} r={r} role="button" tabIndex={0} aria-label={`Open ${w.name}`} onClick={choose}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(); } }}>
               <title>{w.name}</title>
             </circle>
           );
         })}
-        <circle className="worldmap-here" cx={me.x} cy={me.y} r={r * 1.4}><title>You're in {props.here.name}</title></circle>
+        <circle className="worldmap-here" cx={me.x} cy={me.y} r={r * 1.4} role="img" aria-label={`You're in ${props.here.name}`}><title>You're in {props.here.name}</title></circle>
       </svg>
       <p className="dim">Outlines: Natural Earth. Small countries and territories that can't be drawn at this scale are still in the list. Your location is ringed.</p>
     </>

@@ -19,7 +19,7 @@ test('a life can start anywhere in the world, and world places travel and persis
   await page.getByRole('searchbox', { name: 'Search Places' }).fill('zzzzqx');
   await expect(page.getByText("No places match 'zzzzqx'. Try a city, region, or country.")).toBeVisible();
   await page.getByRole('searchbox', { name: 'Search Places' }).fill('turku');
-  await expect(page.getByRole('img', { name: /Map of Finland/ })).toBeVisible();
+  await expect(page.getByRole('group', { name: /Map of Finland/ })).toBeVisible();
   await page.getByRole('list', { name: 'Places' }).getByRole('button', { name: 'Turku', exact: true }).click();
   await expect(page.getByRole('heading', { name: /Turku/, level: 1 })).toBeVisible();
   await page.getByRole('button', { name: 'Travel Here' }).click();
@@ -62,4 +62,19 @@ test('holidays past the last official announcement are shown as projected', asyn
   const panel = page.getByRole('region', { name: 'Upcoming Public Holidays' });
   await expect(panel.getByText(/2027.*\(projected\)/).first()).toBeVisible();
   await expect(panel.getByText('Dates after 2026 are projected from the law until the government announces them.')).toBeVisible();
+});
+
+test('map markers work from the keyboard: Tab to a marker, Enter opens the place', async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-05-04');
+  await nav(page, 'World');
+  await page.getByLabel('Country Or Territory').selectOption({ label: 'Finland' });
+  await page.getByRole('searchbox', { name: 'Search Places' }).fill('turku');
+  const marker = page.getByRole('group', { name: /Map of Finland/ }).getByRole('button', { name: 'Open Turku' });
+  await expect(marker).toBeVisible();
+  // Reach it by Tab from the search box, as a keyboard user would.
+  await page.getByRole('searchbox', { name: 'Search Places' }).focus();
+  for (let i = 0; i < 60 && !(await marker.evaluate((el) => el === document.activeElement)); i++) await page.keyboard.press('Tab');
+  await expect(marker).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('heading', { name: /Turku/, level: 1 })).toBeVisible();
 });
