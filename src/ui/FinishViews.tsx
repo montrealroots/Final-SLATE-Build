@@ -3,7 +3,7 @@ import { getPlace, placeLabel } from '../data/places';
 import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
-  qualityWords, requestPickups, startCutPass, submitEntry, unlockPicture, withdrawEntry, addDaysToKey, categoryRecipients, type Category,
+  qualityWords, requestPickups, depsMet, startCutPass, submitEntry, unlockPicture, withdrawEntry, addDaysToKey, categoryRecipients, type Category,
 } from '../engine';
 import type { Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, SelectField, TextField, longLocal, plural } from './components';
@@ -14,7 +14,7 @@ import { FollowButton } from './World';
 // ---------------- Production ----------------
 
 export function ProductionTab({ p }: { p: Project }) {
-  useGame();
+  const g = useGame();
   if (!p.tasks.length) {
     return (
       <div className="panel">
@@ -26,6 +26,15 @@ export function ProductionTab({ p }: { p: Project }) {
   }
   const depts = [...new Set(p.tasks.map((t) => t.dept))];
   const done = p.tasks.filter((t) => t.status === 'done').length;
+  const today = dateKey(g.now, getPlace(p.axes.basePlaceId).zone);
+  const notStarted = !!p.schedule.startDate && today < p.schedule.startDate;
+  // Every waiting task states its real reason, even before the first working day has run.
+  const why = (t: Project['tasks'][number]) => {
+    if (t.status === 'done') return '';
+    if (notStarted) return `Production starts on ${formatDateKey(p.schedule.startDate!, true)}.`;
+    if (t.status === 'waiting') return depsMet(p, t).reason ?? 'Ready for the next working day.';
+    return t.blockedReason ?? '';
+  };
   const blocked = p.tasks.filter((t) => t.status === 'blocked');
   const puppets = p.assets.filter((a) => a.kind === 'puppet');
   return (
@@ -65,7 +74,7 @@ export function ProductionTab({ p }: { p: Project }) {
                   <span className={`chip ${t.status === 'done' ? 'good' : t.status === 'blocked' ? 'bad' : t.status === 'active' ? 'gold' : ''}`}>{{ waiting: 'Waiting', ready: 'Ready', active: 'Underway', done: 'Done', blocked: 'Blocked' }[t.status]}</span>
                 </div>
                 <div className="meter" style={{ marginTop: 6 }} role="img" aria-label={`${Math.round((t.done / t.units) * 100)} percent done`}><span style={{ width: `${(t.done / t.units) * 100}%` }} /></div>
-                <div className="dim">{Math.round(t.done * 10) / 10} of {Math.round(t.units * 10) / 10} {t.unitLabel}{t.blockedReason && t.status !== 'done' ? ` · ${t.blockedReason}` : ''}</div>
+                <div className="dim">{Math.round(t.done * 10) / 10} of {Math.round(t.units * 10) / 10} {t.unitLabel}{why(t) ? ` · ${why(t)}` : ''}</div>
               </li>
             ))}
           </ul>
@@ -237,7 +246,7 @@ export function FestivalsTab({ p }: { p: Project }) {
               <li key={e.id}>
                 <div className="row">
                   <span className="grow"><button className="btn btn-quiet" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button><span className="dim"> · Entries close {formatDateKey(dateKey(e.deadline, zone))}</span></span>
-                  <span className={`chip ${ok.length ? 'good' : ''}`}>{ok.length ? `${plural(ok.length, 'category', 'categories')} open to you` : 'Not eligible now'}</span>
+                  <span className={`chip ${ok.length ? 'good' : ''}`}>{ok.length ? `${plural(ok.length, 'Category', 'Categories')} Open To You` : 'Not Eligible Now'}</span>
                 </div>
                 {!ok.length && <div className="dim">{elig[0].r.reasons[0]}</div>}
               </li>

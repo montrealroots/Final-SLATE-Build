@@ -171,8 +171,8 @@ main { padding: var(--s5) max(var(--s4), env(safe-area-inset-right)) calc(var(--
 .cal-day[aria-pressed='true'] { outline: 2px solid var(--accent); }
 .cal-day .n { font-weight: 700; font-size: var(--size-sm); }
 .cal-day .dot { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-@media (max-width: 520px) { .cal-day { min-height: 54px; } .cal-day .dot { display: none; } .cal-day .count { display: block; color: var(--accent-strong); } }
 .cal-day .count { display: none; }
+@media (max-width: 520px) { .cal-day { min-height: 54px; } .cal-day .dot { display: none; } .cal-day .count { display: block; color: var(--accent-strong); } }
 
 .progress-note { font-size: var(--size-sm); color: var(--text-muted); }
 .stack > * + * { margin-top: var(--s3); }

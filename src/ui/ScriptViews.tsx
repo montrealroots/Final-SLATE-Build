@@ -56,6 +56,8 @@ export function ScriptTab({ p }: { p: Project }) {
   const [draftLabel, setDraftLabel] = useState('');
   const [compare, setCompare] = useState<number | null>(null);
   const [deleting, setDeleting] = useState<Scene | null>(null);
+  const [renaming, setRenaming] = useState<{ number: number; label: string } | null>(null);
+  const [renameErr, setRenameErr] = useState<string | null>(null);
   const mods = projectModules(p);
   const nonfiction = isNonfiction(p.axes.format);
   const issues = scriptIssues(p);
@@ -158,7 +160,7 @@ export function ScriptTab({ p }: { p: Project }) {
                 <div className="btn-row">
                   <button className="btn btn-small" onClick={() => setCompare(d.number)}>Compare With Working Copy</button>
                   <button className="btn btn-small" disabled={locked} onClick={() => setErr(edit(p, () => restoreDraft(p, d.number)))}>Restore This Draft</button>
-                  <button className="btn btn-small" disabled={locked} onClick={() => { const name = prompt('New name for this draft', d.label); if (name !== null) setErr(store.act(() => renameDraft(p, d.number, name))); }}>Rename Draft</button>
+                  <button className="btn btn-small" disabled={locked} onClick={() => setRenaming({ number: d.number, label: d.label })}>Rename Draft</button>
                   {!d.approved && <button className="btn btn-small btn-primary" disabled={locked} onClick={() => setErr(store.act((s) => { approveDraft(s, p, d.number); }))}>Approve This Draft</button>}
                 </div>
               </div>
@@ -178,6 +180,14 @@ export function ScriptTab({ p }: { p: Project }) {
             const diff = diffDrafts(d, { scenes: p.scenes, characters: p.characters });
             return <ul>{diff.map((x, i) => <li key={i}>{x}</li>)}</ul>;
           })()}
+        </Modal>
+      )}
+      {renaming && (
+        <Modal title="Rename Draft" onClose={() => setRenaming(null)} footer={<>
+          <button className="btn" onClick={() => setRenaming(null)}>Cancel</button>
+          <button className="btn btn-primary" onClick={() => { const e = store.act(() => renameDraft(p, renaming.number, renaming.label)); setRenameErr(e); if (!e) setRenaming(null); }}>Rename Draft</button>
+        </>}>
+          <TextField label="Draft Name" value={renaming.label} maxLength={60} error={renameErr} onChange={(v) => setRenaming({ ...renaming, label: v })} />
         </Modal>
       )}
       {deleting && (

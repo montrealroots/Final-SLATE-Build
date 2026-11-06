@@ -119,6 +119,31 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await expect(credits.getByText('as Odile')).toBeVisible();
   await page.screenshot({ path: `test-results/${info.project.name}-release.png`, fullPage: true });
 
+  // Festival submission through the UI, then let the edition run.
+  await section(page, 'Festivals And Awards');
+  const openRow = page.locator('li', { hasText: /Open To You/ }).first();
+  await expect(openRow).toBeVisible();
+  await openRow.getByRole('button').first().click();
+  const prepare = page.getByRole('button', { name: 'Prepare Submission' });
+  let submitted = false;
+  for (let i = 0; i < await prepare.count() && !submitted; i++) {
+    await prepare.nth(i).click();
+    const submit = page.getByRole('dialog').getByRole('button', { name: 'Submit Entry' });
+    if (await submit.isEnabled()) {
+      await submit.click();
+      submitted = true;
+    } else await page.getByRole('dialog').getByRole('button', { name: 'Cancel' }).click();
+  }
+  expect(submitted).toBe(true);
+  await expect(page.locator('section', { hasText: 'Your Entries' }).getByText('Submitted')).toBeVisible();
+  for (let i = 0; i < 8; i++) await advance(page, 'month');
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'The Last Ferry To Wolfe Island' }).click();
+  await section(page, 'Festivals And Awards');
+  const status = await page.locator('section', { hasText: 'Your Entries' }).locator('.chip').first().innerText();
+  expect(['Selected', 'Not Selected', 'Won', 'Did Not Win', 'Accepted For Consideration', 'Not Accepted']).toContain(status);
+  await page.screenshot({ path: `test-results/${info.project.name}-festival.png`, fullPage: true });
+
   // Saved state matches and survives reload.
   await page.getByRole('button', { name: 'Save And Exit' }).click();
   await expect(page.getByRole('heading', { name: 'Saved Games' })).toBeVisible();
