@@ -1,7 +1,7 @@
 import { useSyncExternalStore } from 'react';
 import {
   ActiveClock, advanceTargetInstant, browserStore, canTakeLock, clearDraft, deleteSave, emptyDraft, listSaves, newGame, processUntil, readDraft,
-  readLock, readSave, releaseLock, repairSave, serialize, MissingPlacesError, renameSave, startSleep, takeLock, wakeEarly, writeDraft, writeSave, type AdvanceTarget, type KeyValueStore,
+  readLock, openSave, releaseLock, repairSave, serialize, MissingPlacesError, renameSave, startSleep, takeLock, wakeEarly, writeDraft, writeSave, type AdvanceTarget, type KeyValueStore,
   type SaveSummary,
 } from '../engine';
 import type { CreationDraft, GameState, Route } from '../engine/types';
@@ -35,6 +35,10 @@ class Store {
   /** A save that needs places chosen before it can open. */
   repair: { saveId: string; ids: string[]; uses: Record<string, string[]> } | null = null;
   loadErrorSave: string | null = null;
+  /** Why the last save couldn't be opened, in the player's words. */
+  loadErrorMessage = '';
+  /** Set when processing time failed. The game was rolled back and time stays paused until the player tries again. */
+  processingProblem: string | null = null;
   draft: CreationDraft | null = null;
   private listeners = new Set<() => void>();
   private clockListeners = new Set<() => void>();
@@ -122,8 +126,16 @@ class Store {
     this.emit();
     setTimeout(() => {
       try {
-        const state = readSave(this.kv, saveId);
+        const { state, recovery } = openSave(this.kv, saveId);
         this.enter(state);
+        if (recovery) {
+          this.notice = {
+            title: 'Opened The Last Good Copy',
+            text: `Your latest save couldn't be used (${recovery.problem.replace(/\.$/, '')}), so ${recovery.source === 'backup' ? 'the previous save' : 'a complete copy from an interrupted save'} was opened. The damaged save is kept, not deleted.`,
+            kind: 'info',
+          };
+          this.emit();
+        }
       } catch (e) {
         if (e instanceof MissingPlacesError) {
           this.repair = { saveId, ids: e.ids, uses: e.uses };
@@ -131,6 +143,7 @@ class Store {
         } else {
           this.screen = 'load-error';
           this.loadErrorSave = saveId;
+          this.loadErrorMessage = e instanceof Error ? e.message : String(e);
         }
         this.emit();
       }
@@ -178,7 +191,7 @@ class Store {
     if (!this.state) return;
     // Pick up the latest saved world from the other tab before running it here.
     try {
-      this.state = readSave(this.kv, this.state.saveId);
+      this.state = openSave(this.kv, this.state.saveId).state;
     } catch {
       /* keep what we have */
     }
@@ -260,7 +273,7 @@ class Store {
 
   // ---------- clock ----------
   private resume() {
-    if (!this.state || this.readOnly) return;
+    if (!this.state || this.readOnly || this.processingProblem) return;
     if (document.visibilityState !== 'visible') return;
     this.clock.start(this.state.now);
     if (!this.timer) this.timer = setInterval(() => this.tick(), 250);
@@ -286,7 +299,13 @@ class Store {
     const target = this.clock.target();
     if (target === null) return;
     const before = s.log.length > 0 ? s.log[0].id : '';
-    const res = processUntil(s, target, 'tick', 200);
+    let res: ReturnType<typeof processUntil>;
+    try {
+      res = processUntil(s, target, 'tick', 200);
+    } catch (e) {
+      this.halt(e);
+      return;
+    }
     if (!res.done) this.clock.start(s.now); // re-anchor if processing was bounded
     this.emitClock();
     if (res.processed > 0 || (s.log[0]?.id ?? '') !== before) this.changed();
@@ -350,16 +369,26 @@ class Store {
     const s = this.state;
     if (!s || this.readOnly || this.busy) return;
     const to = mode === 'sleep' ? s.sleep.wakeAt ?? s.now : advanceTargetInstant(s, target as AdvanceTarget);
+    if (this.processingProblem) return;
     this.suspendClock();
     this.busy = mode === 'sleep' ? 'Sleeping' : 'Advancing';
     this.emit();
-    let result = processUntil(s, to, mode, 400);
-    while (!result.done && !result.interruptedBy) {
-      this.emitClock();
-      await new Promise((r) => setTimeout(r, 0));
+    let result: ReturnType<typeof processUntil>;
+    try {
       result = processUntil(s, to, mode, 400);
+      while (!result.done && !result.interruptedBy) {
+        this.emitClock();
+        await new Promise((r) => setTimeout(r, 0));
+        if (this.state !== s) return; // the game was closed meanwhile
+        result = processUntil(s, to, mode, 400);
+      }
+    } catch (e) {
+      this.halt(e);
+      return;
+    } finally {
+      this.busy = null;
+      this.emit();
     }
-    this.busy = null;
     if (result.interruptedBy) {
       const ev = result.interruptedBy.event;
       if (mode === 'sleep' && ev.kind !== 'wake') wakeEarly(s);
@@ -375,6 +404,23 @@ class Store {
     this.changed();
     this.saveNow();
     this.resume();
+  }
+
+  /** Processing failed: keep the rolled-back state, save it, pause time and explain. Never resume on its own. */
+  private halt(e: unknown) {
+    this.suspendClock();
+    this.processingProblem = e instanceof Error ? e.message : String(e);
+    this.notice = { title: 'Time Is Paused', text: this.processingProblem, kind: 'info' };
+    this.saveNow();
+    this.emit();
+  }
+
+  /** Try running time again after a processing failure. */
+  retryTime() {
+    this.processingProblem = null;
+    this.notice = null;
+    this.resume();
+    this.emit();
   }
 
   sleep(wakeAt: number, alarm: boolean): string | null {

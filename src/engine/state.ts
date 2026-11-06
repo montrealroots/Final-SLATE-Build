@@ -1,7 +1,7 @@
 import { getPlace, findPlace, isCatalogPlace, registerPlace, type Place } from '../data/places';
 import { hashString } from './rng';
 import {
-  DAY, MINUTE, addLocal, ageOn, formatClock, localParts, localToInstant, observedBirthday, parseYmd,
+  DAY, MINUTE, addLocal, ageOn, formatClock, localParts, localToInstant, observedBirthday, parseYmd, isDateKey,
 } from './time';
 import type {
   Attention, CharacterIdentity, CreationDraft, GameState, LogEntry, Route, ScheduledEvent,
@@ -40,9 +40,10 @@ export function validateDraft(d: CreationDraft): DraftProblem[] {
   if (d.name.trim().length > 80) out.push({ field: 'name', step: 0, message: 'Use 80 characters or fewer.' });
   if (!d.pronouns) out.push({ field: 'pronouns', step: 1, message: 'Choose pronouns.' });
   if (!d.actingTitle) out.push({ field: 'actingTitle', step: 1, message: 'Choose an acting title.' });
-  const start = /^\d{4}-\d{2}-\d{2}$/.test(d.startDate) ? parseYmd(d.startDate) : null;
-  const birth = /^\d{4}-\d{2}-\d{2}$/.test(d.birthDate) ? parseYmd(d.birthDate) : null;
-  if (!birth || Number.isNaN(Date.UTC(birth.year, birth.month - 1, birth.day))) {
+  // Real calendar dates only: Date.UTC would quietly turn 31 February into 3 March.
+  const start = isDateKey(d.startDate) ? parseYmd(d.startDate) : null;
+  const birth = isDateKey(d.birthDate) ? parseYmd(d.birthDate) : null;
+  if (!birth) {
     out.push({ field: 'birthDate', step: 4, message: 'Enter your birth date.' });
   } else if (start) {
     const age = ageOn(birth, start);
@@ -59,7 +60,7 @@ export function validateDraft(d: CreationDraft): DraftProblem[] {
   if (d.heritages.length === 0) out.push({ field: 'heritages', step: 2, message: 'Add at least one background, or describe your own.' });
   if (!d.mainLanguage) out.push({ field: 'mainLanguage', step: 3, message: 'Choose your main language.' });
   if (!findPlace(d.startPlaceId)) out.push({ field: 'startPlaceId', step: 6, message: 'Choose where your story begins.' });
-  if (!start || start.year !== 2026 || Number.isNaN(Date.UTC(start.year, start.month - 1, start.day))) {
+  if (!start || start.year !== 2026) {
     out.push({ field: 'startDate', step: 5, message: 'Choose a date in 2026.' });
   }
   if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(d.startTime)) out.push({ field: 'startTime', step: 5, message: 'Enter a time such as 08:00.' });
@@ -197,12 +198,40 @@ export interface ProcessResult {
  * in (time, priority, id) order. Advance/Sleep stop at events whose attention is 'interrupt'.
  * Processing is bounded by maxEvents so the UI can show progress and stay responsive.
  */
+/** An event handler failed. The batch was rolled back: no event was skipped, run twice, or half-applied. */
+export class ProcessingError extends Error {
+  constructor(public eventKind: string, public cause: unknown) {
+    super(`Something went wrong while time passed (${eventKind.replace(/-/g, ' ')}). Your game was returned to how it was before, so nothing was skipped or paid twice.`);
+  }
+}
+
+/**
+ * Run due events up to `target`. Each call is all-or-nothing: if a handler throws, the state is restored in place to
+ * how it was when the call began (the event stays queued) and a ProcessingError is thrown.
+ */
 export function processUntil(state: GameState, target: number, mode: Mode, maxEvents = 500): ProcessResult {
+  if (!(state.events.length && state.events[0].at <= target)) {
+    state.now = Math.max(state.now, target);
+    return { reached: state.now, done: true, processed: 0 };
+  }
+  const snapshot = structuredClone(state);
+  let current = '';
+  try {
+    return runEvents(state, target, mode, maxEvents, (kind) => { current = kind; });
+  } catch (e) {
+    for (const k of Object.keys(state)) delete (state as unknown as Record<string, unknown>)[k];
+    Object.assign(state, snapshot);
+    throw new ProcessingError(current || 'an event', e);
+  }
+}
+
+function runEvents(state: GameState, target: number, mode: Mode, maxEvents: number, onEvent: (kind: string) => void): ProcessResult {
   let processed = 0;
   while (state.events.length && state.events[0].at <= target) {
     if (processed >= maxEvents) return { reached: state.now, done: false, processed };
     const ev = state.events.shift()!;
     if (state.processedEventIds.includes(ev.id)) continue;
+    onEvent(ev.kind);
     state.now = Math.max(state.now, ev.at);
     const fn = handlers.get(ev.kind);
     const res = fn ? fn(state, ev) ?? {} : {};

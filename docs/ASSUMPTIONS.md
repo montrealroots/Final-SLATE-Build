@@ -42,3 +42,9 @@ Every number here is a game calibration value. None is a quoted real-world rate 
 - World places have no coastline record; nothing in the simulation reads one.
 - The summary climate fields of a world place (warmest and coldest month highs, wet-day share, wet season) are derived from its monthly normals; a place with fewer than 20 wet days a year counts as arid.
 - The world map is an equirectangular picture for pointing at places. Travel time comes from great-circle distance between coordinates, using the existing travel rule.
+
+## Reliability (November 6, 2026)
+
+- Each call that processes due events snapshots the game first and restores it if a handler fails, so a batch is all-or-nothing. The cost is one copy per batch with due events: balance runs that process every day of hundreds of productions take about 98 seconds instead of about 13; in play it is one copy per Advance step or per clock tick with events due.
+- A budget line that is paid in full or cancelled takes no further payments. Overruns on an open line are still recorded (the line's amount grows), never hidden.
+- Each save keeps its previous sound version as a backup, which roughly doubles the storage a save uses.

@@ -6,6 +6,7 @@ import { hashString } from './rng';
 import { findPlace, isCatalogPlace, registerPlace, type Place } from '../data/places';
 import type { CreationDraft, GameState } from './types';
 import { SAVE_VERSION } from './types';
+import { SaveValidationError, validateGameState } from './validate';
 
 export interface KeyValueStore {
   getItem(key: string): string | null;
@@ -69,6 +70,8 @@ export function serialize(state: GameState): string {
 }
 
 export class SaveFormatError extends Error {}
+/** A save written by a newer version of SLATE. It is left exactly as it is and never replaced by an older copy. */
+export class SaveTooNewError extends SaveFormatError {}
 
 export function deserialize(text: string): GameState {
   let env: Envelope;
@@ -101,7 +104,7 @@ export function migrate(raw: unknown): GameState {
   let obj = raw as Record<string, unknown>;
   let v = Number(obj.version);
   if (!Number.isInteger(v) || v < 1) throw new SaveFormatError('This save has an unknown version.');
-  if (v > SAVE_VERSION) throw new SaveFormatError('This save was made by a newer version of SLATE.');
+  if (v > SAVE_VERSION) throw new SaveTooNewError('This save was made by a newer version of SLATE. Open it there; this version leaves it unchanged.');
   while (v < SAVE_VERSION) {
     const m = MIGRATIONS[v];
     if (!m) throw new SaveFormatError(`No upgrade path from save version ${v}.`);
@@ -109,8 +112,13 @@ export function migrate(raw: unknown): GameState {
     v += 1;
     obj.version = v;
   }
+  try {
+    validateGameState(obj);
+  } catch (e) {
+    if (e instanceof SaveValidationError) throw new SaveFormatError(`This save is damaged (${e.message}).`);
+    throw e;
+  }
   const s = obj as unknown as GameState;
-  validateState(s);
   for (const place of Object.values(s.places ?? {})) registerPlace(place);
   return s;
 }
@@ -125,49 +133,63 @@ export function storedVersion(text: string): number | null {
   }
 }
 
-function validateState(s: GameState): void {
-  const ok =
-    typeof s.saveId === 'string' && typeof s.now === 'number' && Number.isFinite(s.now) && s.character && typeof s.character.name === 'string' &&
-    Array.isArray(s.events) && Array.isArray(s.projects) && Array.isArray(s.log) && Array.isArray(s.editions) && typeof s.seed === 'number';
-  if (!ok) throw new SaveFormatError('The save file is missing required information.');
+function summaryOf(state: GameState, savedAtReal: number): SaveSummary {
+  return { saveId: state.saveId, saveName: state.saveName, characterName: state.character.name, locationId: state.locationId, gameNow: state.now, savedAtReal };
 }
 
+/**
+ * Every save in storage, newest first. The index is a convenience: a save missing from it (an index write that failed,
+ * or a damaged index) is found by its key and listed from its own contents.
+ */
 export function listSaves(store: KeyValueStore): SaveSummary[] {
+  let list: SaveSummary[] = [];
   try {
     const raw = store.getItem(INDEX);
-    const list: SaveSummary[] = raw ? JSON.parse(raw) : [];
-    return list.filter((s) => store.getItem(mainKey(s.saveId)) !== null).sort((a, b) => b.savedAtReal - a.savedAtReal);
+    const parsed = raw ? JSON.parse(raw) : [];
+    if (Array.isArray(parsed)) list = parsed.filter((x) => x && typeof x.saveId === 'string');
   } catch {
-    return [];
+    list = [];
   }
+  const known = new Set(list.map((x) => x.saveId));
+  for (const k of store.keys()) {
+    const m = /^slate\.v1\.save\.([^.]+)$/.exec(k);
+    if (!m || known.has(m[1])) continue;
+    try {
+      const st = deserialize(store.getItem(k)!);
+      list.push(summaryOf(st, st.updatedAtReal));
+    } catch {
+      list.push({ saveId: m[1], saveName: 'Damaged save', characterName: '', locationId: '', gameNow: 0, savedAtReal: 0 });
+    }
+    known.add(m[1]);
+  }
+  return list.filter((s) => store.getItem(mainKey(s.saveId)) !== null || store.getItem(bakKey(s.saveId)) !== null).sort((a, b) => b.savedAtReal - a.savedAtReal);
 }
 
 export type SaveResult = { ok: true; savedAtReal: number } | { ok: false; error: string };
 
+/**
+ * Write a save durably: validate it, write a temporary copy and read it back, keep the current save as the backup
+ * (only if it is itself sound; a damaged one is preserved under its own key instead), replace, verify, then update the
+ * index. "Saved" (ok: true) is returned only when every step succeeded.
+ */
 export function writeSave(store: KeyValueStore, state: GameState, realNow: number): SaveResult {
   try {
     state.updatedAtReal = realNow;
     const text = serialize(state);
+    deserialize(text); // never write a save this build couldn't open
     store.setItem(tmpKey(state.saveId), text);
-    // Verify the temporary copy before it replaces anything.
     const back = store.getItem(tmpKey(state.saveId));
     if (back !== text) throw new Error('Verification failed');
-    deserialize(back);
     const previous = store.getItem(mainKey(state.saveId));
-    if (previous !== null) store.setItem(bakKey(state.saveId), previous);
+    if (previous !== null && previous !== text) {
+      if (isSound(previous)) store.setItem(bakKey(state.saveId), previous);
+      else if (!damagedCopies(store, state.saveId).some((k) => store.getItem(k) === previous)) store.setItem(`${mainKey(state.saveId)}.damaged-${realNow}`, previous);
+    }
     store.setItem(mainKey(state.saveId), text);
     if (store.getItem(mainKey(state.saveId)) !== text) throw new Error('Verification failed');
     store.removeItem(tmpKey(state.saveId));
-    store.removeItem(bakKey(state.saveId));
     const index = listSaves(store).filter((s) => s.saveId !== state.saveId);
-    index.push({
-      saveId: state.saveId,
-      saveName: state.saveName,
-      characterName: state.character.name,
-      locationId: state.locationId,
-      gameNow: state.now,
-      savedAtReal: realNow,
-    });
+    index.push(summaryOf(state, realNow));
     store.setItem(INDEX, JSON.stringify(index));
     return { ok: true, savedAtReal: realNow };
   } catch (e) {
@@ -175,31 +197,92 @@ export function writeSave(store: KeyValueStore, state: GameState, realNow: numbe
   }
 }
 
+function isSound(text: string): boolean {
+  try {
+    deserialize(text);
+    return true;
+  } catch (e) {
+    return e instanceof SaveTooNewError; // never demote a newer save to "damaged"
+  }
+}
+
+const damagedCopies = (store: KeyValueStore, id: string) => store.keys().filter((k) => k.startsWith(`${mainKey(id)}.damaged-`));
+
 export const backupKey = (id: string, version: number) => `${PREFIX}save.${id}.backup-v${version}`;
 
-export function readSave(store: KeyValueStore, saveId: string): GameState {
+export interface Recovery {
+  source: 'backup' | 'interrupted-write';
+  /** Where the damaged save was kept (never deleted by the game). */
+  damagedKey?: string;
+  problem: string;
+}
+
+/**
+ * Open a save. A main save that is missing, unreadable or fails validation is replaced by the newest sound copy
+ * (a complete temporary copy from an interrupted write, then the backup), after the damaged one is preserved.
+ * A save from a newer version is refused without falling back. Unresolvable places are reported for repair.
+ */
+export function openSave(store: KeyValueStore, saveId: string, realNow = Date.now()): { state: GameState; recovery?: Recovery } {
   const text = store.getItem(mainKey(saveId));
-  // Keep an untouched copy of an older save before it is migrated; if that can't be written, don't migrate.
+  let problem = 'The save could not be found.';
   if (text !== null) {
-    const v = storedVersion(text);
-    if (v !== null && v < SAVE_VERSION && store.getItem(backupKey(saveId, v)) === null) {
-      try {
-        store.setItem(backupKey(saveId, v), text);
-      } catch {
-        throw new SaveFormatError('This save needs an update, and there is no room to keep a backup first. Free some browser storage and try again.');
-      }
+    try {
+      const state = readCurrent(store, saveId, text);
+      return { state };
+    } catch (e) {
+      if (e instanceof SaveTooNewError || e instanceof MissingPlacesError || e instanceof BackupRequiredError) throw e;
+      problem = e instanceof Error ? e.message : String(e);
     }
   }
-  if (text === null) {
-    // A crash between backup and replacement leaves only the backup: recover it.
-    const bak = store.getItem(bakKey(saveId));
-    if (bak) return deserialize(bak);
-    throw new SaveFormatError('This save could not be found.');
+  for (const [source, key] of [['interrupted-write', tmpKey(saveId)], ['backup', bakKey(saveId)]] as const) {
+    const copy = store.getItem(key);
+    if (copy === null) continue;
+    let state: GameState;
+    try {
+      state = deserialize(copy);
+    } catch {
+      continue;
+    }
+    let damagedKey: string | undefined;
+    if (text !== null) {
+      damagedKey = damagedCopies(store, saveId).find((k) => store.getItem(k) === text);
+      if (!damagedKey) {
+        damagedKey = `${mainKey(saveId)}.damaged-${realNow}`;
+        try {
+          store.setItem(damagedKey, text);
+        } catch {
+          throw new SaveFormatError(`${problem} A good copy exists, but there is no room to keep the damaged one first. Free some browser storage and try again.`);
+        }
+      }
+    }
+    const missing = missingPlaces(state);
+    if (missing.length) throw new MissingPlacesError(saveId, missing, missingPlaceUses(state));
+    return { state, recovery: { source, damagedKey, problem } };
+  }
+  throw new SaveFormatError(text === null ? 'This save could not be found.' : `${problem} No good copy was found to open instead.`);
+}
+
+/** The main save as stored, migrated (after keeping an untouched copy of an older version) and checked. */
+function readCurrent(store: KeyValueStore, saveId: string, text: string): GameState {
+  const v = storedVersion(text);
+  if (v !== null && v < SAVE_VERSION && store.getItem(backupKey(saveId, v)) === null) {
+    try {
+      store.setItem(backupKey(saveId, v), text);
+    } catch {
+      throw new BackupRequiredError('This save needs an update, and there is no room to keep a backup first. Free some browser storage and try again.');
+    }
   }
   const state = deserialize(text);
   const missing = missingPlaces(state);
   if (missing.length) throw new MissingPlacesError(saveId, missing, missingPlaceUses(state));
   return state;
+}
+
+/** Not a damaged save: an update that can't keep its backup. Surfaced as-is rather than recovered around. */
+class BackupRequiredError extends SaveFormatError {}
+
+export function readSave(store: KeyValueStore, saveId: string): GameState {
+  return openSave(store, saveId).state;
 }
 
 export function deleteSave(store: KeyValueStore, saveId: string): void {

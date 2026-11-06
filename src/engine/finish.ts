@@ -11,7 +11,7 @@ import { ensureWorkEvent, schedulePickups } from './production';
 import { gaussian, pick, stream } from './rng';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
 import { redactionComplete } from './unscripted';
-import { DAY, addDaysToKey, dateKey, formatDateKey, localToInstant, parseYmd } from './time';
+import { DAY, addDaysToKey, dateKey, formatDateKey, isDateKey, localToInstant, parseYmd } from './time';
 import type { Credit, DistributionOffer, GameState, Project, ReleaseRecord, Task } from './types';
 
 // ---------------- Editing ----------------
@@ -258,6 +258,7 @@ export function planRelease(state: GameState, p: Project, input: { route: Releas
   if (!input.territories.length) throw new Error('Choose at least one territory.');
   const zone = getPlace(p.axes.basePlaceId).zone;
   const today = dateKey(state.now, zone);
+  if (!isDateKey(input.date)) throw new Error('Choose a real release date.');
   if (input.date < today) throw new Error('Choose a release date from today onward.');
   if ((input.route === 'theatrical' || input.route === 'broadcast') && !input.distributor) {
     throw new Error(input.route === 'theatrical' ? 'A theatrical release needs a distributor. Accept a distribution offer first.' : 'A broadcast needs a broadcaster. Accept an offer first.');

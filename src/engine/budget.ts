@@ -33,8 +33,13 @@ export function money(n: number): string {
   return `${sign}$${Math.abs(Math.round(n)).toLocaleString('en-US')}`;
 }
 
+/** Amounts must be finite and not negative; malformed input never reaches the ledger. */
+function checkAmount(amount: number): void {
+  if (typeof amount !== 'number' || !Number.isFinite(amount) || amount < 0) throw new Error('Invalid amount.');
+}
+
 export function reserve(state: GameState, p: Project, label: string, category: Obligation['category'], amount: number, ref?: string): Obligation {
-  if (!(amount >= 0) || !Number.isFinite(amount)) throw new Error('Invalid amount.');
+  checkAmount(amount);
   const { available } = ledgerTotals(p);
   if (amount > available) {
     throw new FundsError(
@@ -52,6 +57,7 @@ export function commit(state: GameState, p: Project, id: string, amount?: number
   const o = obligation(p, id);
   if (o.state !== 'reserved') throw new Error('Only reserved funds can be committed.');
   if (amount !== undefined) {
+    checkAmount(amount);
     const delta = amount - o.amount;
     if (delta > ledgerTotals(p).available) throw new FundsError(`The agreed amount is ${money(delta)} more than you have uncommitted.`, delta);
     o.amount = Math.round(amount);
@@ -63,8 +69,10 @@ export function commit(state: GameState, p: Project, id: string, amount?: number
 
 /** Pay part of an obligation once per key. Returns false if this key was already paid. */
 export function settle(state: GameState, p: Project, id: string, amount: number, key: string): boolean {
+  checkAmount(amount);
   const o = obligation(p, id);
-  if (o.state === 'cancelled') return false;
+  // A closed line (paid in full, or cancelled) takes no further payments.
+  if (o.state === 'cancelled' || o.state === 'settled') return false;
   if (o.postings.some((x) => x.key === key)) return false;
   const pay = Math.round(amount);
   if (pay <= 0) return false;
@@ -99,6 +107,7 @@ export function obligation(p: Project, id: string): Obligation {
 
 /** Pay a one-off cost immediately (reserve + settle), refusing if funds are short. */
 export function spend(state: GameState, p: Project, label: string, category: Obligation['category'], amount: number, key: string): Obligation | null {
+  checkAmount(amount);
   const existing = p.obligations.find((o) => o.postings.some((x) => x.key === key));
   if (existing) return null;
   const o = reserve(state, p, label, category, amount);
