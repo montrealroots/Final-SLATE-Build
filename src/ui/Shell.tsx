@@ -57,7 +57,7 @@ export function Shell({ children }: { children: ReactNode }) {
           <button className="btn btn-primary" onClick={() => store.takeOver()}>Take Over Here</button>
         </div>
       )}
-      {exitError && (
+      {exitError && s.saveStatus !== 'saved' && (
         <div className="alert bad" role="alert" style={{ margin: '12px 16px 0' }}>
           <p>Your game couldn't be saved. Keep this window open and try again.</p>
           <button className="btn btn-primary" onClick={async () => setExitError(!(await store.saveAndExit()))}>Try Again</button>
