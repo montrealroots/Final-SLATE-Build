@@ -1,4 +1,4 @@
-import { getPlace, findPlace } from '../data/places';
+import { getPlace, findPlace, type Place } from '../data/places';
 import { hashString } from './rng';
 import {
   DAY, MINUTE, addLocal, ageOn, formatClock, localParts, localToInstant, observedBirthday, parseYmd,
@@ -381,3 +381,43 @@ export function advanceTargetInstant(state: GameState, target: AdvanceTarget): n
   const ev = nextNotableEvent(state);
   return ev ? ev.at : addLocal(state.now, zone, { days: 1 });
 }
+
+// ---------------- Travel (location changes go through the same clock) ----------------
+
+export function distanceKm(a: Place, b: Place): number {
+  const R = 6371;
+  const toRad = (d: number) => (d * Math.PI) / 180;
+  const dLat = toRad(b.lat - a.lat);
+  const dLon = toRad(b.lon - a.lon);
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(a.lat)) * Math.cos(toRad(b.lat)) * Math.sin(dLon / 2) ** 2;
+  return 2 * R * Math.asin(Math.sqrt(h));
+}
+
+/** Working default: ground travel under 300 km at 80 km/h; otherwise flights at 800 km/h plus 3 hours. */
+export function travelHours(a: Place, b: Place): number {
+  const km = distanceKm(a, b);
+  if (km < 300) return Math.max(1, Math.round(km / 80));
+  return Math.round(km / 800 + 3);
+}
+
+export function travelTo(state: GameState, placeId: string): number {
+  if (state.sleep.asleep) throw new Error("You're asleep.");
+  if (state.travel) throw new Error("You're already traveling.");
+  if (placeId === state.locationId) throw new Error("You're already here.");
+  const from = getPlace(state.locationId);
+  const to = getPlace(placeId);
+  const arriveAt = state.now + travelHours(from, to) * 3600_000;
+  state.travel = { from: from.id, to: to.id, arriveAt };
+  schedule(state, arriveAt, 'arrive', { to: to.id }, { attention: 'interrupt', priority: 6 });
+  return arriveAt;
+}
+
+registerHandler('arrive', (state, ev) => {
+  const to = String(ev.payload.to);
+  state.locationId = to;
+  state.travel = null;
+  const place = getPlace(to);
+  const text = `You've arrived in ${place.name}.`;
+  addLog(state, text, 'personal', { route: { view: 'place', placeId: to } });
+  return { message: text };
+});

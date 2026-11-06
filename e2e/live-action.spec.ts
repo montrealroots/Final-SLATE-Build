@@ -1,0 +1,130 @@
+import { expect, test } from '@playwright/test';
+import { advance, createCharacter, freshStart, nav, readSavedState, section, staffEveryDepartment } from './helpers';
+
+test('live-action short: create, write, cast yourself, staff, shoot, cut, deliver, credits', async ({ page }, info) => {
+  await freshStart(page);
+  await expect(page.getByText('Write your stories. Bring them to the screen.')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'No Saved Games' })).toBeVisible();
+  await createCharacter(page, {
+    name: 'Amaranta Okonkwo-Villaseñor de la Cruz', pronouns: 'She/Her', birthDate: '1994-02-28', birthplace: 'Lagos', heritages: ['Igbo', 'Mexican'],
+    customHeritage: 'Afro-Mexican from Costa Chica', mainLanguage: 'English', extraLanguages: ['Spanish', 'Igbo'], start: 'Toronto', startDate: '2026-03-02', startTime: '08:00',
+  });
+  // Home truthfulness and empty states.
+  await expect(page.getByText(/It's 8:0\d AM on Monday, March 2, 2026\. You're in Toronto\./)).toBeVisible();
+  await expect(page.getByText("You haven't started a project yet.")).toBeVisible();
+  await expect(page.getByText("You're up to date.")).toBeVisible();
+  await expect(page.getByText('You have nothing scheduled today.')).toBeVisible();
+  await page.screenshot({ path: `test-results/${info.project.name}-home.png`, fullPage: true });
+
+  // New Script.
+  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByLabel('Working Title').fill('The Last Ferry To Wolfe Island');
+  await page.getByLabel('Format').selectOption({ label: 'Short Film' });
+  await page.getByRole('searchbox', { name: 'Search Genres' }).fill('drama');
+  await page.getByRole('button', { name: 'Add Drama' }).click();
+  await page.getByRole('searchbox', { name: 'Search Genres' }).fill('mystery');
+  await page.getByRole('button', { name: 'Add Mystery' }).click();
+  await expect(page.getByText('Clues And Evidence Trail')).toBeVisible();
+  await page.getByRole('button', { name: 'Create Project' }).click();
+  await expect(page.getByRole('heading', { name: 'The Last Ferry To Wolfe Island' })).toBeVisible();
+
+  // Characters.
+  await section(page, 'Characters');
+  for (const n of ['Odile', 'The Ferryman']) {
+    await page.getByLabel('Character Name').fill(n);
+    await page.getByRole('button', { name: 'Add Character' }).click();
+  }
+  const odile = page.getByRole('article', { name: 'Odile' });
+  await odile.getByRole('button', { name: 'Edit Character' }).click();
+  await odile.getByLabel('Role Size').selectOption({ label: 'Lead' });
+  await odile.getByRole('checkbox', { name: 'Protagonist' }).check();
+
+  // Script: two scenes and a clue.
+  await section(page, 'Script');
+  await page.getByRole('button', { name: 'Add Scene' }).click();
+  await page.getByRole('button', { name: 'Add Scene' }).click();
+  const cards = page.locator('article.scene-card');
+  const fillScene = async (i: number, place: string, ext: boolean, who: string[]) => {
+    const c = cards.nth(i);
+    await c.getByRole('button', { name: 'Edit Scene' }).click();
+    if (ext) await c.getByLabel('Interior Or Exterior').selectOption({ label: 'Exterior' });
+    await c.getByLabel('Place', { exact: true }).fill(place);
+    for (const w of who) await c.getByRole('checkbox', { name: w }).check();
+    await c.getByLabel('Objective').fill('Find out who sent the letter.');
+    await c.getByLabel('Props').fill('Unsigned letter');
+    await c.getByRole('button', { name: 'Close Scene' }).click();
+  };
+  await fillScene(0, 'Ferry Dock', true, ['Odile', 'The Ferryman']);
+  await fillScene(1, 'Wheelhouse', false, ['Odile', 'The Ferryman']);
+  await page.getByLabel('What Is Set Up').fill('The ferryman knows the handwriting');
+  await page.getByLabel('Kind', { exact: true }).selectOption({ label: 'Clue' });
+  await page.getByRole('button', { name: 'Add Setup' }).click();
+  await page.getByLabel('Planted In').selectOption({ index: 1 });
+  await page.getByLabel('Pays Off In').selectOption({ index: 2 });
+  await expect(page.getByText('Nothing blocks approval.')).toBeVisible();
+  await page.getByRole('button', { name: 'Save Draft' }).click();
+  await expect(page.getByText('Draft 1', { exact: true })).toBeVisible();
+  await page.getByRole('button', { name: 'Approve This Draft' }).click();
+  await expect(page.getByText('Approved', { exact: true })).toBeVisible();
+
+  // Cast: Odile is the player; the Ferryman goes to a performer.
+  await section(page, 'Cast');
+  const roles = page.locator('section.panel', { hasText: 'Roles' }).first();
+  await roles.locator('li', { hasText: 'Odile' }).getByRole('button', { name: 'Cast Yourself' }).click();
+  await roles.locator('li', { hasText: 'The Ferryman' }).getByRole('button', { name: 'Find Performers' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Make Offer' }).first().click();
+
+  // Crew through department proposals.
+  const sent = await staffEveryDepartment(page);
+  expect(sent).toBeGreaterThan(2);
+
+  // Schedule.
+  await advance(page, 'next-event');
+  await section(page, 'Schedule');
+  await page.getByRole('button', { name: 'Build Schedule' }).click();
+  await expect(page.getByRole('heading', { name: 'Shoot Days' })).toBeVisible();
+  await expect(page.locator('li', { hasText: 'Ferry Dock' }).first()).toBeVisible();
+
+  // Let production run; keep staffing and move the edit along.
+  for (let i = 0; i < 24; i++) {
+    await advance(page, 'week');
+    await staffEveryDepartment(page);
+    // A performer might decline: offer the role to the next person.
+    await section(page, 'Cast');
+    const find = page.locator('li', { hasText: 'The Ferryman' }).getByRole('button', { name: 'Find Performers' });
+    if (await find.isVisible()) {
+      await find.click();
+      await page.getByRole('dialog').getByRole('button', { name: 'Make Offer' }).first().click();
+    }
+    await section(page, 'Edit');
+    const deliver = page.getByRole('button', { name: 'Deliver Project' });
+    if (await deliver.isVisible() && await deliver.isEnabled()) {
+      await deliver.click();
+      break;
+    }
+    const lock = page.getByRole('button', { name: 'Lock Picture' });
+    if (await lock.isEnabled()) {
+      await lock.click();
+      continue;
+    }
+    const cut = page.getByRole('button', { name: 'Start Cut Pass' });
+    if (await cut.isEnabled()) await cut.click();
+  }
+  await expect(page.getByText(/Delivered at \d+ minutes/)).toBeVisible();
+
+  // Credits: all four professions earned on this project.
+  await section(page, 'Release');
+  const credits = page.locator('section.panel', { hasText: 'Credits' }).first();
+  for (const c of ['Written By', 'Directed By', 'Produced By']) await expect(credits.getByText(c, { exact: true })).toBeVisible();
+  await expect(credits.getByText('as Odile')).toBeVisible();
+  await page.screenshot({ path: `test-results/${info.project.name}-release.png`, fullPage: true });
+
+  // Saved state matches and survives reload.
+  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  await expect(page.getByRole('heading', { name: 'Saved Games' })).toBeVisible();
+  const saved = await readSavedState(page);
+  expect(saved.projects[0].delivered).not.toBeNull();
+  await page.getByRole('button', { name: 'Resume' }).first().click();
+  await nav(page, 'Profile');
+  await expect(page.getByText('The Last Ferry To Wolfe Island').first()).toBeVisible();
+});

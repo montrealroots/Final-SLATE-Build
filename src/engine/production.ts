@@ -718,9 +718,12 @@ registerHandler('shoot-call', (state, ev) => {
   const directorHired = p.episodes.find((e) => e.number === d.episode)?.director !== 'player';
   const playerNeeded = !directorHired || d.playerActing;
   if (!playerNeeded) return { suppressInterrupt: true };
-  if (state.sleep.asleep) {
+  const away = state.locationId !== p.axes.basePlaceId || !!state.travel;
+  if (state.sleep.asleep || away) {
     d.late = true;
-    const text = `You weren't on set for the call on ${p.title}. The day started late.`;
+    const text = away
+      ? `You weren't in ${getPlace(p.axes.basePlaceId).name} for the call on ${p.title}. The day started late without you.`
+      : `You weren't on set for the call on ${p.title}. The day started late.`;
     addLog(state, text, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
     return { message: text };
   }

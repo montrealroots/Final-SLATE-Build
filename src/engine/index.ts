@@ -14,3 +14,4 @@ export * from './weather';
 export * from './holidays';
 export * from './save';
 export * from './clock';
+export * from './documentary';

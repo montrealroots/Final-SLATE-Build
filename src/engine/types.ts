@@ -525,6 +525,7 @@ export interface GameState {
   log: LogEntry[];
   plans: Plan[];
   sleep: { asleep: boolean; since?: number; wakeAt?: number; alarm: boolean };
+  travel?: { to: string; from: string; arriveAt: number } | null;
   projects: Project[];
   people: Record<string, PersonState>;
   editions: Edition[];
