@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { findPlace, placeLabel } from '../data/places';
+import { findPlace, placeLabel, type Place } from '../data/places';
+import { WorldPlacePicker } from './WorldPicker';
 import { Check, Modal, TextField, Wordmark, longLocal, realTimestamp } from './components';
 import { store, useStore } from './store';
 
@@ -24,6 +25,7 @@ export function Startup() {
       </div>
     );
   }
+  if (s.screen === 'repair' && s.repair) return <RepairPlaces />;
   if (s.screen === 'load-error') {
     return (
       <div className="startup">
@@ -130,6 +132,7 @@ export function SavedGamesList() {
                   <button className="btn btn-small" onClick={() => void store.switchTo(sv.saveId)} aria-label={`Continue ${sv.saveName}`}>Continue</button>
                 )}
                 <button className="btn btn-small" onClick={() => { setRenaming({ id: sv.saveId, name: sv.saveName }); setRenameError(null); }} aria-label={`Rename Save ${sv.saveName}`}>Rename Save</button>
+                <button className="btn btn-small" onClick={() => store.exportSave(sv.saveId)} aria-label={`Export Save ${sv.saveName}`}>Export Save</button>
                 {sv.saveId !== current && <button className="btn btn-small btn-danger" onClick={() => setDeleting({ id: sv.saveId, name: sv.characterName })} aria-label={`Delete Save ${sv.saveName}`}>Delete Save</button>}
               </div>
             </div>
@@ -205,5 +208,34 @@ export function SettingsPanel() {
       )}
       <p className="dim">Motion follows your device's reduced-motion setting.</p>
     </>
+  );
+}
+
+/** A save that mentions places the game can't find: choose a replacement for each before it opens. */
+function RepairPlaces() {
+  const s = useStore();
+  const r = s.repair!;
+  const [chosen, setChosen] = useState<Record<string, Place>>({});
+  const [error, setError] = useState<string | null>(null);
+  const ready = r.ids.every((id) => chosen[id]);
+  return (
+    <div className="startup">
+      <div className="startup-card" style={{ width: 'min(760px, 100%)' }}>
+        <Wordmark />
+        <h1>Choose Missing Places</h1>
+        <p>This save mentions {r.ids.length === 1 ? 'a place' : `${r.ids.length} places`} the game can't find. Choose {r.ids.length === 1 ? 'a place' : 'places'} to use instead. An untouched copy of the save is kept first, and nothing else changes.</p>
+        {r.ids.map((id, i) => (
+          <section key={id} className="panel spaced" aria-labelledby={`miss-${i}`}>
+            <h2 id={`miss-${i}`}>{(r.uses[id] ?? ['A place in this save']).join(', ')}</h2>
+            <WorldPlacePicker label={`Replacement Place ${i + 1}`} value={chosen[id]?.id ?? ''} onChoose={(pl) => setChosen({ ...chosen, [id]: pl })} />
+          </section>
+        ))}
+        {error && <p role="alert" className="error">{error}</p>}
+        <div className="btn-row spaced">
+          <button className="btn btn-primary" disabled={!ready} onClick={() => setError(store.repairAndOpen(chosen))}>Repair And Continue</button>
+          <button className="btn" onClick={() => store.backToStartup()}>Back To Start Screen</button>
+        </div>
+      </div>
+    </div>
   );
 }

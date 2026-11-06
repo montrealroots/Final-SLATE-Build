@@ -44,3 +44,30 @@ describe('save migration', () => {
     expect(store.getItem(`slate.v1.save.${saveId}`)).toBe(text);
   });
 });
+
+describe('saves that mention places the game can’t find', () => {
+  it('refuse to open silently, then open after a repair that keeps a backup and changes only the places', async () => {
+    const { MissingPlacesError, memoryStore, newGame, readSave, repairSave, writeSave } = await import('../src/engine');
+    const { getPlace } = await import('../src/data/places');
+    const { draft } = await import('./fixtures');
+    const kv = memoryStore();
+    const s = newGame(draft(), 1, 'rp');
+    writeSave(kv, s, 1);
+    // Damage it: the current location points at a place the game doesn't know.
+    const env = JSON.parse(kv.getItem('slate.v1.save.rp')!);
+    const data = JSON.parse(env.data);
+    data.locationId = 'gn:999999999';
+    const { serialize } = await import('../src/engine');
+    kv.setItem('slate.v1.save.rp', serialize(data));
+    let caught: InstanceType<typeof MissingPlacesError> | null = null;
+    try { readSave(kv, 'rp'); } catch (e) { caught = e as InstanceType<typeof MissingPlacesError>; }
+    expect(caught).toBeInstanceOf(MissingPlacesError);
+    expect(caught!.ids).toEqual(['gn:999999999']);
+    expect(caught!.uses['gn:999999999']).toEqual(['Where you are']);
+    const damaged = kv.getItem('slate.v1.save.rp');
+    const fixed = repairSave(kv, 'rp', { 'gn:999999999': getPlace('gb-london') }, 2);
+    expect(fixed.locationId).toBe('gb-london');
+    expect(kv.getItem('slate.v1.save.rp.backup-repair')).toBe(damaged);
+    expect(readSave(kv, 'rp').character.name).toBe(s.character.name);
+  });
+});

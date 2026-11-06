@@ -52,12 +52,12 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ### Coding Gaps
 
-1. **M2 follow-ups (small):** a repair screen when a save references a place that can't be found (package: "Invalid/unavailable place references give a repair screen"); today such a save shows the load error and is left untouched. Map markers are pointer-only; the list is the keyboard and screen-reader path.
+1. **M2 follow-ups (small):** map markers are pointer-only; the list is the keyboard and screen-reader path. (The repair screen for places a save can't resolve is done: it asks for replacements and keeps a `backup-repair` copy.)
 2. **M3 follow-ups:** holiday names for countries without curated rules are in the official language (for example Chinese, Russian, Korean for later years); an English display name table would help players. Holidays are national or first-level-regional only; local (city) holidays are not included.
-3. **M4 follow-ups:** "Export Save" is not offered (no export exists yet). The weather warning now uses "Rain is expected during your exterior shoot." and offers "Film an Interior Scene" only when an interior day is scheduled; "Move the Shoot" (to another date) isn't a separate action yet.
+3. **M4 follow-ups:** Export Save is offered for every saved game and next to a failed save. The weather warning now uses "Rain is expected during your exterior shoot." and offers "Film an Interior Scene" only when an interior day is scheduled; "Move the Shoot" (to another date) isn't a separate action yet.
 4. **M5 follow-ups:** capture sessions aren't placed on the calendar as fixed appointments (they run on working days once booked), so performer conflicts with shoot days are shown as task blocks, not calendar clashes; facial and body capture are one contribution; credits after replacing a performer mid-production are not separately tested.
 5. **M6 follow-ups:** the 137 sections and categories are not yet audited against each rulebook (research, below).
-6. **M7 follow-ups:** the repair screen above; a manual screen-reader pass (automated checks only so far); production timings (budgets are measured on the dev server).
+6. **M7 follow-ups:** a manual screen-reader pass (automated checks only so far); production timings (budgets are measured on the dev server).
 
 ### Research Still To Do
 

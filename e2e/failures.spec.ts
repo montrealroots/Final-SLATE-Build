@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test';
+import { readFileSync } from 'node:fs';
 import { hashString } from '../src/engine/rng';
 import { advance, nav, quickLife } from './helpers';
 
@@ -18,6 +19,14 @@ test('a failed save says so, keeps you in the game, and Try Again saves once sto
   });
   await advance(page, 'next-day');
   await expect(page.getByText("Your game couldn't be saved. Keep this window open and try again.").first()).toBeVisible();
+  // Export Save still works with storage full: the file is a complete, checksummed save.
+  const download = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Export Save' }).first().click();
+  const file = await download;
+  expect(file.suggestedFilename()).toMatch(/\.slate-save\.json$/);
+  const env = JSON.parse(readFileSync((await file.path())!, 'utf8'));
+  expect(env.format).toBe('slate-save');
+  expect(hashString(env.data)).toBe(env.checksum);
   // Save And Exit refuses to leave while the save fails.
   await page.getByRole('button', { name: 'Save And Exit' }).click();
   await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
@@ -66,4 +75,27 @@ test('holiday dates and the map that fail to load are explained, and Try Again r
   // Coming back to World loads the map again on its own now that it can.
   await nav(page, 'World');
   await expect(page.getByRole('img', { name: /Map of/ })).toBeVisible();
+});
+
+test("a save that mentions a place the game can't find asks for a replacement, keeping a backup", async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-03-02');
+  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  const id = await page.evaluate(() => JSON.parse(localStorage.getItem('slate.v1.index')!)[0].saveId as string);
+  const env = JSON.parse(await page.evaluate((k) => localStorage.getItem(k)!, `slate.v1.save.${id}`));
+  const state = JSON.parse(env.data);
+  state.locationId = 'gn:999999999';
+  const data = JSON.stringify(state);
+  const damaged = JSON.stringify({ ...env, checksum: hashString(data), data });
+  await page.evaluate(([k, v]) => localStorage.setItem(k, v), [`slate.v1.save.${id}`, damaged]);
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Choose Missing Places' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Where you are' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Repair And Continue' })).toBeDisabled();
+  await page.getByRole('searchbox', { name: 'Replacement Place 1' }).fill('Edinburgh');
+  await page.getByRole('group', { name: 'Replacement Place 1 Results' }).getByRole('button').first().click();
+  await page.getByRole('button', { name: 'Repair And Continue' }).click();
+  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByText(/You're in Edinburgh/)).toBeVisible();
+  expect(await page.evaluate((k) => localStorage.getItem(k), `slate.v1.save.${id}.backup-repair`)).toBe(damaged);
 });

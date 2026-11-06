@@ -1,10 +1,11 @@
 import { useSyncExternalStore } from 'react';
 import {
   ActiveClock, advanceTargetInstant, browserStore, canTakeLock, clearDraft, deleteSave, emptyDraft, listSaves, newGame, processUntil, readDraft,
-  readLock, readSave, releaseLock, renameSave, startSleep, takeLock, wakeEarly, writeDraft, writeSave, type AdvanceTarget, type KeyValueStore,
+  readLock, readSave, releaseLock, repairSave, serialize, MissingPlacesError, renameSave, startSleep, takeLock, wakeEarly, writeDraft, writeSave, type AdvanceTarget, type KeyValueStore,
   type SaveSummary,
 } from '../engine';
 import type { CreationDraft, GameState, Route } from '../engine/types';
+import type { Place } from '../data/places';
 import { loadWorldHolidays, worldHolidaysLoaded } from '../world/holidays/holidays';
 
 export type SaveStatus = 'idle' | 'saving' | 'saved' | 'error';
@@ -30,7 +31,9 @@ class Store {
   notice: Notice | null = null;
   route: Route = { view: 'home' };
   history: Route[] = [];
-  screen: 'startup' | 'creation' | 'loading' | 'load-error' | 'game' = 'startup';
+  screen: 'startup' | 'creation' | 'loading' | 'load-error' | 'repair' | 'game' = 'startup';
+  /** A save that needs places chosen before it can open. */
+  repair: { saveId: string; ids: string[]; uses: Record<string, string[]> } | null = null;
   loadErrorSave: string | null = null;
   draft: CreationDraft | null = null;
   private listeners = new Set<() => void>();
@@ -121,12 +124,30 @@ class Store {
       try {
         const state = readSave(this.kv, saveId);
         this.enter(state);
-      } catch {
-        this.screen = 'load-error';
-        this.loadErrorSave = saveId;
+      } catch (e) {
+        if (e instanceof MissingPlacesError) {
+          this.repair = { saveId, ids: e.ids, uses: e.uses };
+          this.screen = 'repair';
+        } else {
+          this.screen = 'load-error';
+          this.loadErrorSave = saveId;
+        }
         this.emit();
       }
     }, 0);
+  }
+
+  /** Open a save after replacing the places it couldn't resolve. The untouched save is kept as a backup first. */
+  repairAndOpen(replacements: Record<string, Place>): string | null {
+    if (!this.repair) return 'There is nothing to repair.';
+    try {
+      const state = repairSave(this.kv, this.repair.saveId, replacements, Date.now());
+      this.repair = null;
+      this.enter(state);
+      return null;
+    } catch (e) {
+      return e instanceof Error ? e.message : String(e);
+    }
   }
 
   private enter(state: GameState) {
@@ -306,6 +327,22 @@ class Store {
     this.saveError = res.ok ? '' : res.error;
     this.emit();
     return res.ok;
+  }
+
+  /** Download a save as a file: the game being played (from memory, so it works when storage is full) or a stored one. */
+  exportSave(saveId?: string): string | null {
+    const text = saveId && saveId !== this.state?.saveId ? this.kv.getItem(`slate.v1.save.${saveId}`) : this.state ? serialize(this.state) : null;
+    if (!text) return 'That save could not be found.';
+    const name = (saveId ? this.saves().find((x) => x.saveId === saveId)?.saveName : this.state?.saveName) ?? 'SLATE save';
+    const url = URL.createObjectURL(new Blob([text], { type: 'application/json' }));
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${name.replace(/[^\p{L}\p{N} _-]+/gu, '').trim() || 'SLATE save'}.slate-save.json`;
+    document.body.append(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+    return null;
   }
 
   // ---------- Advance & Sleep: same event rules, bounded and truthful progress ----------

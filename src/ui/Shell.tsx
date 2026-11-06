@@ -121,7 +121,10 @@ function TopBar({ onMenu, onSettings, onExit }: { onMenu: () => void; onSettings
       {s.saveStatus === 'error' && (
         <div className="alert bad save-alert" role="alert">
           <p>Your game couldn't be saved. Keep this window open and try again.</p>
-          <button className="btn btn-primary" onClick={() => store.saveNow()}>Try Again</button>
+          <div className="btn-row">
+            <button className="btn btn-primary" onClick={() => store.saveNow()}>Try Again</button>
+            <button className="btn" onClick={() => store.exportSave()}>Export Save</button>
+          </div>
         </div>
       )}
     </header>
