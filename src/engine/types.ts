@@ -116,6 +116,9 @@ export interface GenrePick {
   emphasis: 'primary' | 'secondary';
 }
 
+export type ContentIssue = 'violence' | 'sexual-content' | 'nudity' | 'language' | 'drugs' | 'threat';
+export type ContentLevel = 'mild' | 'moderate' | 'strong';
+
 export interface ProjectAxes {
   format: Format;
   medium: Medium;
@@ -126,10 +129,15 @@ export interface ProjectAxes {
   audience: string; // e.g. 'General', 'Adult', 'Family', 'Children (6–11)'
   storyEra: string;
   storySetting: string;
-  /** Where the story is set, as a place (optional): shooting away from it adds a scouting trip there (production/tasks.ts). */
+  /** Where the story is set, as a place (optional). A creative and research reference: where you shoot is the base. */
   settingPlaceId?: string;
   /** Where awards that split drama from comedy consider it; unset, its genres decide (script-effects.ts). */
   register?: 'comedy' | 'drama';
+  /**
+   * What the finished work shows, declared by the producer as for a classification body: each issue at a level. Unset
+   * means not declared yet; {} means declared as containing none. Never a rating: only a classification body gives one.
+   */
+  content?: Partial<Record<ContentIssue, ContentLevel>>;
   dialogueLanguages: string[];
   targetRuntimeMin: number;
   episodeCount: number; // 1 for single works
@@ -163,7 +171,12 @@ export interface StoryCharacter {
   wants: string;
   fears: string;
   seriesInvolvement: 'regular' | 'recurring' | 'guest' | 'single';
-  /** The character's backgrounds as written (labels from HERITAGES). A performer who shares one counts toward the performance (finish.ts). */
+  /**
+   * Where award entries place the performance, chosen by the producer as entrants do. Unset: by role size. Story functions
+   * (antagonist, narrator...) never set it (script-effects.ts castPlacement).
+   */
+  awardPlacement?: 'lead' | 'supporting' | 'none';
+  /** The character's backgrounds as written (labels from HERITAGES). Casting shows who shares one; it never scores a performance. */
   heritages?: string[];
   designVersion: number; // bumping invalidates downstream design-dependent work
   groupSize?: number; // background groups
@@ -188,7 +201,9 @@ export interface Scene {
   objective: string;
   action: string;
   dialogue: DialogueLine[];
-  turningPoint: string;
+  turningPoint: string; // the writer's note on what turns here; kept, never read
+  /** Declared essential to the story: if it isn't shot, the edit has to bridge a gap the audience notices (finish.ts). */
+  essential?: boolean;
   estMinutes: number;
   // Production-relevant elements (structured, never parsed from prose).
   props: string[];
@@ -267,6 +282,8 @@ export interface RevisionNote {
   sceneId: string | null;
   status: 'open' | 'accepted' | 'rejected' | 'addressed';
   source: 'readiness' | 'player';
+  /** Came from advice (a prompt that only checks a text field is filled, or a fit suggestion): addressing it earns nothing (finish.ts). */
+  advisory?: boolean;
 }
 
 export interface Requirement {
@@ -323,6 +340,8 @@ export interface FinanceDeal {
   received: number; // paid into the project so far
   repaid: number; // paid back to them from income so far
   terms: { recoup: number; incomeShare: number; approvalRights: string[]; credit: string | null; onDelivery: number; deliverBy: number | null };
+  /** The documents sent with the approach (names, as listed when it was made). */
+  sent?: string[];
 }
 
 export interface ProjectFinance {
@@ -382,7 +401,7 @@ export interface ShootDay {
   locationLabel: string;
   interior: boolean;
   night: boolean;
-  status: 'scheduled' | 'shot' | 'partial' | 'lost' | 'moved';
+  status: 'scheduled' | 'shot' | 'partial' | 'lost' | 'moved' | 'cancelled';
   result?: string;
   playerActing: boolean;
   conflicts: string[];
@@ -451,6 +470,8 @@ export interface EditState {
   assembly: boolean;
   cutPasses: number;
   pickupsNeeded: string[];
+  /** Scenes the producer chose to cut from the edit rather than shoot or pick up (the revised edit plan). */
+  cutSceneIds?: string[];
   pictureLocked: boolean;
   lockedAt?: number;
   versions: { number: number; at: number; runtimeMin: number; note: string }[];
@@ -489,6 +510,14 @@ export interface DistributionOffer {
   releaseWindowDays: number;
   expiresAt: number;
   status: 'open' | 'accepted' | 'declined' | 'expired' | 'cancelled';
+  /**
+   * Broadcast only: 'late' when the declared content can't air before the watershed. The guarantee shown is the late
+   * slot's; a broadcast edit (an extra deliverable) earns `editedGuarantee` for an earlier slot.
+   */
+  slot?: 'any' | 'late';
+  editedGuarantee?: number;
+  /** Accepted with a broadcast edit. */
+  broadcastEdit?: boolean;
 }
 
 export interface Project {

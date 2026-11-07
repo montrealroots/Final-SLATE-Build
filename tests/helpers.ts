@@ -74,13 +74,15 @@ export function buildProject(
 }
 
 /**
- * Labelled fixture: the pitch and grant statement a player writes in the Story panel (logline, premise, stakes, theme),
- * which backers, festival entries and distributors ask for (script-effects.ts). Never read for meaning.
+ * Labelled fixture: the documents a player writes in the Story panel (Pitch, Treatment, Statement Of Intent), which
+ * backers, festival entry forms and distribution contracts include (script-effects.ts DOCUMENTS), and a content
+ * declaration of none, which streaming contracts ask for. Never read for meaning; tests of the requirements clear them.
  */
 export function writePitch(p: Project): void {
   Object.assign(p.story, { logline: 'A test logline.', premise: 'A test premise.', stakes: 'Test stakes.', theme: 'A test theme.', question: 'A test question.',
     conflict: 'A test conflict.', viewpoint: 'Hers.', ending: 'A test ending.', intendedExperience: 'A test experience.' });
   p.axes.storySetting ||= 'A test setting.';
+  p.axes.content ??= {};
 }
 
 export function approve(state: GameState, p: Project): void {

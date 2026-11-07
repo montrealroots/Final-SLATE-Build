@@ -1,116 +1,102 @@
-// What the script's fields drive downstream, beyond the breakdown (November 7, 2026). The rule from the screenwriting
-// audit holds: prose is never read for meaning and never raises quality. Prose counts by presence (the pitch documents
-// backers, festivals and distributors ask for) and by length (spoken minutes, page count, subtitling words). Structured
-// choices drive engines directly: award placement, booking, ratings, scouting, edit structure.
-import type { Project, Scene, StoryCharacter } from './types';
+// What the script's fields drive downstream (November 7, 2026; revised the same day after review). The rules:
+// - Prose is never read for meaning, never raises quality and never buys time. It is the player's creative record and the
+//   material of real documents (pitch, treatment, statement of intent) that some processes ask for by name; a process
+//   that needs one says which, and which fields are still empty, and the player sends it explicitly.
+// - Structured choices drive engines only where the choice itself is what a real process reads: the producer's award
+//   placement, a series regular's contract, a narrator's recording session, declared content against an outlet's rules.
+// - What was removed in the revision, and why, is in docs/SCREENWRITING-AUDIT.md: story functions deciding award
+//   placement, a rating inferred from one checkbox, an 18+ ban on broadcast, text-presence delays and bonuses, the
+//   turning-point penalty, word-count notes and word-priced subtitles.
+import type { ContentLevel, Project, RoleSize, StoryCharacter } from './types';
 
 /** Comedy and musical genres: the categories that split drama from comedy read these (awards.ts). */
 export const COMEDY_MUSICAL = ['comedy', 'musical', 'romantic-comedy', 'action-comedy', 'buddy-comedy', 'screwball-comedy', 'slapstick', 'farce', 'parody', 'satire', 'black-comedy', 'stoner-comedy', 'horror-comedy', 'backstage-musical', 'jukebox-musical'];
 
-/** Where the project competes where awards split drama from comedy: the producer's choice, else its genres. */
+/** Where the project competes where awards split drama from comedy: the producer's declaration, else its genres. */
 export function competesAs(p: Project): 'comedy' | 'drama' {
   if (p.axes.register) return p.axes.register;
   return p.axes.genres.some((g) => COMEDY_MUSICAL.includes(g.id)) ? 'comedy' : 'drama';
 }
 
-/** Story functions that put a part in the leading acting categories, whatever its size on the page. */
-export const LEAD_FUNCTIONS = ['protagonist', 'deuteragonist', 'antagonist'];
+// ---------------- Award placement ----------------
 
-/** The acting category a character's performer is considered for: leading, supporting, or neither (cameo, background). */
-export function castPlacement(c: Pick<StoryCharacter, 'roleSize' | 'functions'>): 'lead' | 'supporting' | null {
-  if (c.roleSize === 'background') return null;
-  if (['lead', 'co-lead', 'ensemble-lead'].includes(c.roleSize) || c.functions.some((f) => LEAD_FUNCTIONS.includes(f))) return 'lead';
-  return c.roleSize === 'supporting' || c.roleSize === 'featured' ? 'supporting' : null;
+/** The acting category a part's size suggests when the producer hasn't placed it. Cameos and background aren't entered. */
+const PLACEMENT_BY_SIZE: Record<RoleSize, 'lead' | 'supporting' | null> = {
+  lead: 'lead', 'co-lead': 'lead', 'ensemble-lead': 'lead', supporting: 'supporting', featured: 'supporting', cameo: null, background: null,
+};
+
+/**
+ * The acting category a performance is entered in: the producer's placement, else the part's size. Entrants declare
+ * placement in practice; an organizer that decides it by its own vote isn't modeled. Story functions never decide it:
+ * an antagonist can be a supporting part, a narrator a small one.
+ */
+export function castPlacement(c: Pick<StoryCharacter, 'roleSize' | 'awardPlacement'>): 'lead' | 'supporting' | null {
+  if (c.awardPlacement) return c.awardPlacement === 'none' ? null : c.awardPlacement;
+  return PLACEMENT_BY_SIZE[c.roleSize];
 }
 
-export type AgeRating = 'All Ages' | '12+' | '15+' | '18+';
+// ---------------- Content ----------------
 
-/** The project's age rating, from its intended audience and what its scenes contain (modeled, not a ratings board). */
-export function ageRating(p: Project, scenes: Scene[]): AgeRating {
-  const intimate = scenes.some((s) => s.intimacy);
-  const action = scenes.some((s) => s.stunts.trim().length > 0);
-  if (/adult/i.test(p.axes.audience) && intimate) return '18+';
-  if (intimate) return '15+';
-  if (action || /adult|young/i.test(p.axes.audience)) return '12+';
-  return 'All Ages';
+const LEVELS: ContentLevel[] = ['mild', 'moderate', 'strong'];
+
+/** The highest level declared, 'none' when declared as containing none, null when not declared yet. A model, not a rating. */
+export function contentLevel(p: Project): ContentLevel | 'none' | null {
+  const c = p.axes.content;
+  if (!c) return null;
+  const top = Object.values(c).reduce((m, l) => (l && LEVELS.indexOf(l) > m ? LEVELS.indexOf(l) : m), -1);
+  return top < 0 ? 'none' : LEVELS[top];
 }
 
-/** Rough words for length, never for meaning. */
-export function wordCount(text: string): number {
-  return text.trim() ? text.trim().split(/\s+/).length : 0;
+/** Whether declared content keeps a broadcast to a late slot: only content declared strong does. */
+export function broadcastSlotFor(p: Project): 'any' | 'late' {
+  return contentLevel(p) === 'strong' ? 'late' : 'any';
 }
 
-/** Spoken words a minute, and script words a page (about a page a minute on screen). Modeled. */
-export const WORDS_PER_MINUTE = 150;
-export const WORDS_PER_PAGE = 180;
+/** A late slot reaches fewer viewers, so it pays less; a broadcast edit for an earlier slot costs a deliverable. Simulation assumptions. */
+export const LATE_SLOT_SHARE = 0.75;
+export const BROADCAST_EDIT_COST = 2500;
 
-/** How long the scene's dialogue takes to say, in minutes. */
-export function spokenMinutes(s: Scene): number {
-  return s.dialogue.reduce((n, d) => n + wordCount(d.text), 0) / WORDS_PER_MINUTE;
+// ---------------- Documents ----------------
+
+export type DocumentId = 'pitch' | 'treatment' | 'statement';
+type StoryKey = keyof Project['story'];
+
+/** The documents some processes ask for, and the Story panel fields each is made from. */
+export const DOCUMENTS: Record<DocumentId, { name: string; fields: (nonfiction: boolean) => [StoryKey, string][] }> = {
+  pitch: { name: 'Pitch', fields: () => [['logline', 'Logline'], ['premise', 'Premise']] },
+  treatment: { name: 'Treatment', fields: () => [['conflict', 'Central Conflict'], ['viewpoint', 'Point Of View'], ['ending', 'Intended Ending']] },
+  statement: {
+    name: 'Statement Of Intent',
+    fields: (nf) => [['theme', 'Theme'], ['stakes', 'Stakes'], ...(nf ? [['question', 'Central Question'] as [StoryKey, string]] : [])],
+  },
+};
+
+/** The Story panel fields a document still needs. Presence only: SLATE never judges what is written. */
+export function missingFields(p: Project, doc: DocumentId, nonfiction: boolean): string[] {
+  return DOCUMENTS[doc].fields(nonfiction).filter(([k]) => !String(p.story[k] ?? '').trim()).map(([, label]) => label);
 }
 
-/** The script's length in pages, from its action and dialogue. */
-export function scriptPages(scenes: Scene[]): number {
-  const words = scenes.reduce((n, s) => n + wordCount(s.action) + s.dialogue.reduce((m, d) => m + wordCount(d.text), 0), 0);
-  return words / WORDS_PER_PAGE;
+const list = (xs: string[]) => (xs.length < 2 ? xs.join('') : `${xs.slice(0, -1).join(', ')} and ${xs[xs.length - 1]}`);
+
+/** The documents' names in words: "a Pitch and a Treatment". */
+export function documentNames(docs: DocumentId[]): string {
+  return list(docs.map((d) => `a ${DOCUMENTS[d].name}`));
 }
 
-/** Dialogue words in each language: subtitling and captioning for a territory is priced by the words not in its language. */
-export function dialogueWords(scenes: Scene[]): Record<string, number> {
-  const out: Record<string, number> = {};
-  for (const s of scenes) for (const d of s.dialogue) out[d.language] = (out[d.language] ?? 0) + wordCount(d.text);
-  return out;
+/**
+ * What a submission still needs, or null when every document it includes can be sent. `who` names the submission:
+ * "A grant application".
+ */
+export function documentsNeeded(p: Project, docs: DocumentId[], nonfiction: boolean, who: string): string | null {
+  const missing = [...new Set(docs.flatMap((d) => missingFields(p, d, nonfiction)))];
+  if (!missing.length) return null;
+  return `${who} includes ${documentNames(docs)}. Still to write in the Story panel: ${list(missing)}.`;
 }
 
-/** Subtitling cost per thousand words of dialogue in another language. Simulation assumption. */
-export const SUBTITLE_PER_THOUSAND_WORDS = 250;
+/** Subtitling, per finished minute for each language a territory needs that the dialogue isn't in. Simulation assumption. */
+export const SUBTITLE_PER_MINUTE = 12;
 
-/** What the pitch still needs before backers, festivals or distributors take it: a logline and a premise (the synopsis). */
-export function pitchMissing(p: Project): string | null {
-  if (!p.story.logline.trim() && !p.story.premise.trim()) return 'Write a logline and a premise in the Story panel first: they read a pitch.';
-  if (!p.story.logline.trim()) return 'Write a logline in the Story panel first: they read a pitch.';
-  if (!p.story.premise.trim()) return 'Write a premise in the Story panel first: it is the synopsis they read.';
-  return null;
-}
+// ---------------- Structure ----------------
 
-/** A grant application asks for more than a pitch: the stakes and the theme, and for nonfiction its central question. */
-export function grantApplicationMissing(p: Project, nonfiction = false): string | null {
-  const pitch = pitchMissing(p);
-  if (pitch) return pitch;
-  if (!p.story.stakes.trim() || !p.story.theme.trim()) return 'Write the stakes and the theme in the Story panel first: a grant application asks for them.';
-  if (nonfiction && !p.story.question.trim()) return 'Write the central question in the Subject And Approach panel first: a grant application asks for it.';
-  return null;
-}
-
-/** A treatment: the conflict, the point of view and the ending written. Backers who must read one without it answer later. */
-export function treatmentComplete(p: Project): boolean {
-  return !!(p.story.conflict.trim() && p.story.viewpoint.trim() && p.story.ending.trim());
-}
-export const NO_TREATMENT_DELAY_DAYS = 7;
-
-/** The composer's brief: the tone or the intended experience written. Without one the score takes a day longer. */
-export const musicBrief = (p: Project): boolean => !!(p.axes.tone.trim() || p.story.intendedExperience.trim());
-
-/** The design brief: where the story is set, in words or as a chosen place. Without one design work takes a unit longer. */
-export const designBrief = (p: Project): boolean => !!(p.axes.storySetting.trim() || p.axes.settingPlaceId);
-
-/** A character's casting breakdown is complete when the description, wants and fears are written. */
-export function breakdownComplete(c: Pick<StoryCharacter, 'description' | 'wants' | 'fears'>): boolean {
-  return !!(c.description.trim() && c.wants.trim() && c.fears.trim());
-}
-
-/** A scene with a turning point written is a structural beat: losing it costs the edit more (finish.ts). */
-export const isTurningPoint = (s: Scene): boolean => s.turningPoint.trim().length > 0;
-export const LOST_TURNING_POINT_COST = 6;
-
-/** A character's pronouns as written (He, She or They; anything else, or nothing, is open to anyone). */
-export function characterPronouns(c: Pick<StoryCharacter, 'pronouns'>): 'he' | 'she' | 'they' | null {
-  const m = /^\s*(he|she|they)\b/i.exec(c.pronouns);
-  return m ? (m[1].toLowerCase() as 'he' | 'she' | 'they') : null;
-}
-
-/** Whether a performer's pronouns match the part's; parts open to anyone match everyone. Casting sorts and marks by it. */
-export function pronounsMatch(c: Pick<StoryCharacter, 'pronouns'>, performerPronouns: 'he' | 'she' | 'they'): boolean {
-  const want = characterPronouns(c);
-  return want === null || want === performerPronouns;
-}
+/** Cutting a scene declared essential leaves a gap the audience notices. Simulation assumption, in editing points. */
+export const ESSENTIAL_CUT_COST = 8;

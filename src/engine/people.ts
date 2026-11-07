@@ -110,7 +110,7 @@ export interface Person {
   dayRate: number; // asking rate
   languages: string[];
   homeCountry: string;
-  /** Their backgrounds (labels from HERITAGES): authentic casting reads them against a character's (finish.ts). */
+  /** Their backgrounds (labels from HERITAGES): casting shows which a character's share, as information; never scored. */
   heritages: string[];
   playingAge?: [number, number];
   skills: Skill[];
@@ -249,10 +249,10 @@ export function isAvailable(state: GameState, p: Person, from: string, to: strin
   return { ok: true };
 }
 
-/** What a shared background adds to a performance score (finish.ts): modeled, and only ever added. */
-export const AUTHENTIC_CASTING_BONUS = 6;
-
-/** The backgrounds a performer (you, or someone in the pool) shares with a character as written. */
+/**
+ * The backgrounds a performer (you, or someone in the pool) shares with a character as written. Shown in casting as
+ * information for the producer's choice; it never scores a performance (it added 6 until the review of November 7, 2026).
+ */
 export function sharedHeritages(state: GameState, p: Project, characterId: string, performer: 'player' | string): string[] {
   const wanted = p.characters.find((c) => c.id === characterId)?.heritages ?? [];
   if (!wanted.length) return [];

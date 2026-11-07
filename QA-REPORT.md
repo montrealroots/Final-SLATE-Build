@@ -8,7 +8,22 @@
 
 ## Commands And Results
 
-Latest full run: November 6-7, 2026, screenwriting, motion-capture and replacement checkpoint (after montrealroots/Final-SLATE-Build#25), local Linux container.
+### Current: Script Rules Review (November 7, 2026)
+
+Local Linux container, branch `claude/clever-archimedes-x0r26v` after `main` at `4e9e484` (#33). The commands ran on the
+branch's final source (the commits that follow change only these reports). See the PR for CI.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 30 files, 250 tests passed (`tests/script-effects.test.ts` 23); build passed; startup JavaScript 700 kB raw, 216 kB gzipped (budgets 700 and 220 kB, 0 problems). It reached 703 kB with the review's engine code; explanations only the project screens use moved to `src/engine/script-explain.ts`, loaded with those screens, instead of raising the budget. |
+| `npm run balance` | 0 | 2 tests passed. Family means within half a point of before after the script base went from 40 to 42; two held-out combinations fell about 2 overall (see `docs/SCREENWRITING-AUDIT.md`). |
+| `npx playwright test e2e/script-rules.spec.ts` (production build, desktop and phone) | 0 | 3 passed, 1 skipped (the mature-project journey runs at desktop width only). Screenshots inspected: supporting antagonist placement, incomplete pitch (desktop and phone), treatment sent, content declared, cut dialog, pickup, late-slot broadcast offers. They led to three copy fixes (see Defects). |
+| `npm run e2e -- --trace off` | 1 | Development server: 120 passed, 24 skipped, 1 failed: `e2e/live-action.spec.ts` on `iphone-15-pro-max` (WebKit), where the typed working title was gone when Create Project was pressed ("Enter a working title."). The same spec repeated 6 times on that project passed 6 times, and a minimal fill-and-check repeated 30 times on both iPhone projects passed 30 times. It is recorded as an open intermittent WebKit fault together with CI run 63's (see Open below), not as a pass. |
+| `SLATE_E2E_PROD=1 npm run e2e -- --trace retain-on-failure` | 0 | Production build, the complete suite: 121 passed, 24 skipped, 0 failed, in 9.7 minutes, with console, page-error and failed-request checks on every test. The 24 skips are the 23 listed below plus the mature-project playthrough on phone (desktop only, by design). |
+
+### Previous: November 6-7, 2026
+
+Screenwriting, motion-capture and replacement checkpoint (after montrealroots/Final-SLATE-Build#25), local Linux container.
 
 | Command | Exit | Result |
 | --- | --- | --- |
@@ -61,6 +76,12 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 
 | Severity | Defect | Fix | Regression Check |
 | --- | --- | --- | --- |
+| High | (Found by the mature-project playthrough) A pickup asked for before or during the shoot was booked three days out, ahead of prep: the day was lost but still paid fees and crew, and the project could no longer afford the reshoot or deliver | Pickups are booked after the last scheduled shoot day | `tests/script-effects.test.ts` ("a pickup asked for before the shoot"), `e2e/script-rules.spec.ts` |
+| High | A scene cut from the edit still held up the assembly edit, which waited for every approved scene's footage | The capture milestone skips scenes cut from the edit | `tests/script-effects.test.ts` ("a shoot day left empty by a cut") |
+| Medium | Rules merged in #33 rewarded filling boxes or were arbitrary: story functions forced leading placement; an "18+" rating inferred from one checkbox barred broadcast; text presence bought time (a week, a day) and design work; the turning-point penalty could never apply; a shared background scored performances | Replaced or removed as traced in `docs/SCREENWRITING-AUDIT.md` | `tests/script-effects.test.ts`, `tests/heritage.test.ts`, `tests/genres.test.ts` |
+| Medium | Text-presence prompts (objective, genre questions and others) cost script quality and lowered backers' odds while open, so any text raised both | Prompts are advisory: shown, never counted, and resolving one earns nothing | `tests/script-effects.test.ts` |
+| Low | The setups ledger appeared only for genres with clue or setup conventions, so other projects couldn't declare the dependencies the edit plan reads | Offered to every scripted project | `e2e/script-rules.spec.ts` |
+| Low | (Found in playthrough screenshots) The Backgrounds panel still said a shared background counts toward the performance; a blocked backer listed its documents twice; the Coverage card called scenes waiting for their shoot day short of material | Copy corrected | `e2e/script-rules.spec.ts` |
 | High | Shoot days could pay past the fund (negative cash) | Funds checked before any payment beyond agreed amounts; schedules reserve their costs | Balance integrity assertion |
 | High | Micro budgets could never finish | Required-only staffing proposals, role combining, scaled day fees | Balance results |
 | High | Gaffer optional, so interiors were never shot | Required when the script has interiors or night scenes | Live-action e2e |
@@ -114,6 +135,14 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 | Medium | The "last good copy" message was lost when opening waited for holiday rules, and didn't say which copy was opened | The message travels with the opened game and names the copy's save time | `e2e/reliability.spec.ts`, `e2e/failures.spec.ts` |
 | Low | CI failed when the browser install stalled or crawled on the Ubuntu package mirror (three times); a timed-out attempt left apt holding the package lock | CI runs in Microsoft's Playwright image for the locked version, so nothing is installed | CI run for #17: 63 passed, 18 skipped in 7.3 minutes |
 | Low | China's computed holidays were wrong for 2026 | Official 2026 arrangement used, with make-up working days | Lunar holiday test |
+
+## Open
+
+- **Intermittent WebKit input loss after a screen change.** Twice: CI run 63 on `main` (creation: Save And Return To
+  Review left the Identity screen showing, `iphone-15-plus`) and the development-server suite for this checkpoint (New
+  Script: the working title was empty at Create Project, `iphone-15-pro-max`). Neither reproduced in 6 repeats of the
+  journey and 30 repeats of a minimal check; no trace was kept from either failure. Not fixed. The earlier WebKit
+  typing loss had a focus-timing cause; nothing equivalent was found in the New Script screen.
 
 ## Acceptance Status
 

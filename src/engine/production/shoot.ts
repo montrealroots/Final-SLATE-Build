@@ -304,7 +304,11 @@ export function schedulePickups(state: GameState, p: Project, sceneIds: string[]
     (groups.get(k) ?? groups.set(k, []).get(k)!).push(s);
   }
   const zone = getPlace(p.axes.basePlaceId).zone;
-  let date = nextWorkingDay(p, addDaysToKey(dateKey(state.now, zone), 3));
+  // Pickups follow main photography: from three days out, and never before the last scheduled shoot day. Until November 7,
+  // 2026 they were always three days out, so a pickup asked for before the shoot ran ahead of prep and was lost, still paid.
+  const lastScheduled = p.schedule.days.filter((x) => x.status === 'scheduled').reduce((m, x) => (x.date > m ? x.date : m), '');
+  const soonest = addDaysToKey(dateKey(state.now, zone), 3);
+  let date = nextWorkingDay(p, lastScheduled && lastScheduled >= soonest ? addDaysToKey(lastScheduled, 1) : soonest);
   let n = 0;
   for (const [k, list] of groups) {
     const [ep, place, ie, dn] = k.split('|');

@@ -28,9 +28,11 @@ The game's visible words follow these rules. They come from the 1221 adaptation 
 | Place search, load failure | Places couldn't be loaded. Action: Try Again |
 | Navigation (one registry, `src/ui/routes.ts`) | Home; You: Player Profile; Your Day: World (Calendar is Home's, by Open Calendar); Your Work: Projects; Your Game: Saved Games, Settings |
 | Home heading | Good Morning / Afternoon / Evening, {first name}. |
-| Pitch needed (November 7, 2026) | Write a logline and a premise in the Story panel first: they read a pitch. (a grant: Write the stakes and the theme in the Story panel first: a grant application asks for them.) |
+| Documents needed (November 7, 2026, revised) | "{Submission} includes {a Pitch, a Treatment and a Statement Of Intent}. Still to write in the Story panel: {fields}." Submissions: A grant application, An approach to an investor, Every entry form, The contract's delivery list. After sending: "Sent with the approved script: {documents}. They read it; SLATE doesn't judge it." |
+| Content (November 7, 2026) | Content card: Violence, Threat And Horror, Sexual Content, Nudity, Language, Drug Use at None, Mild, Moderate or Strong; Declare None Of These. Offers: Accept The Late Slot, Accept With A Broadcast Edit |
+| Edit plan (November 7, 2026) | Essential To The Story; Cut It From The Edit; Cut This Scene From The Edit? (Keep It, Cut It); Restore It; Awards Placement: By Role Size, Leading, Supporting, Not Entered |
 | Story panel fields | Logline, Premise, Stakes, Central Conflict, Point Of View, Theme, Intended Ending, Intended Experience, Tone, Story Setting (Central Question for nonfiction) |
-| Character pronouns (script) | Open To Anyone, He/Him, She/Her, They/Them; casting marks a match with Pronouns Match |
+| Character pronouns (script) | Open To Anyone, He/Him, She/Her, They/Them; casting marks a match with Pronouns Match, and List Matching Pronouns First is the player's choice |
 | New Script, competing | Competes As: By Its Genres, Drama, Comedy Or Musical; Where The Story Is Set (Optional) |
 | The bar | the time, date, zone, Running or Paused (Asleep while you sleep), Sleep, Advance; then Saved and Save & Exit |
 

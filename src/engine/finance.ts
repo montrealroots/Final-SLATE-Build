@@ -6,7 +6,7 @@
 // and a delivery deadline. Amounts and decisions are game calibration, not industry figures.
 
 import { money } from './budget';
-import { NO_TREATMENT_DELAY_DAYS, grantApplicationMissing, pitchMissing, treatmentComplete } from './script-effects';
+import { DOCUMENTS, documentNames, documentsNeeded, type DocumentId } from './script-effects';
 import { isNonfiction, scriptIssues } from './projects';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
@@ -74,6 +74,26 @@ const delivered = (state: GameState) => state.projects.filter((x) => x.delivered
 const usedStarting = (state: GameState) => state.projects.some((x) => deals(x).some((d) => d.kind === 'starting' && d.status !== 'declined' && d.status !== 'refused'));
 const scriptApproved = (p: Project) => p.approvedDraft !== null && p.approvedDraft !== undefined;
 
+/**
+ * The documents each backer's submission includes, besides the approved script: the backer reads them, and SLATE never
+ * judges them. Asking for a synopsis, a treatment and a statement of intent is what screen funds and commissioners do; which
+ * backer asks for which is a simulation assumption. Until the review of November 7, 2026 a missing treatment made every
+ * backer answer a week later instead; it now simply has to be written before the application that includes it is sent.
+ */
+export const BACKER_DOCUMENTS: Record<Exclude<FinanceDealKind, 'agreed'>, DocumentId[]> = {
+  starting: [], investor: ['pitch'], 'co-producer': ['pitch'], commissioner: ['pitch', 'treatment'], grant: ['pitch', 'treatment', 'statement'],
+};
+const SUBMISSION: Record<Exclude<FinanceDealKind, 'agreed'>, string> = {
+  starting: 'The starting backing', investor: 'An approach to an investor', 'co-producer': 'An approach to a co-production partner',
+  commissioner: 'A pitch to a commissioner', grant: 'A grant application',
+};
+
+/** What a backer's submission includes, in words, for the approach button and its record. */
+export function backerDocuments(kind: Exclude<FinanceDealKind, 'agreed'>): string {
+  const d = BACKER_DOCUMENTS[kind];
+  return d.length ? `${SUBMISSION[kind]} includes the approved script and ${documentNames(d)}.` : '';
+}
+
 /** Each backer the player could approach for this project, with what it needs and whether that is met. */
 export function backerOptions(state: GameState, p: Project): { kind: Exclude<FinanceDealKind, 'agreed'>; ready: boolean; needs: string }[] {
   // One approach per backer per project: a backer who said no, or was turned down, isn't asked again for it.
@@ -85,11 +105,12 @@ export function backerOptions(state: GameState, p: Project): { kind: Exclude<Fin
   if (!usedStarting(state) || has('starting')) {
     out.push({ kind: 'starting', ready: false, needs: why('starting', state.projects.some((x) => x.id !== p.id && x.delivered) ? 'Only for your first project.' : !scriptApproved(p) ? 'Approve a script first.' : null) });
   }
-  // Backers read a pitch (logline and premise); a grant application asks for the stakes and theme too (script-effects.ts).
-  out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : grantApplicationMissing(p, isNonfiction(p.axes.format))) });
-  out.push({ kind: 'investor', ready: false, needs: why('investor', !scriptApproved(p) ? 'Approve a script first.' : pitchMissing(p)) });
-  out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : pitchMissing(p)) });
-  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : !scriptApproved(p) ? 'Approve a script first.' : pitchMissing(p)) });
+  // The documents a submission includes must be written before it is sent (BACKER_DOCUMENTS).
+  const docs = (k: Exclude<FinanceDealKind, 'agreed'>) => documentsNeeded(p, BACKER_DOCUMENTS[k], isNonfiction(p.axes.format), SUBMISSION[k]);
+  out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : docs('grant')) });
+  out.push({ kind: 'investor', ready: false, needs: why('investor', !scriptApproved(p) ? 'Approve a script first.' : docs('investor')) });
+  out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : docs('co-producer')) });
+  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : !scriptApproved(p) ? 'Approve a script first.' : docs('commissioner')) });
   for (const o of out) o.ready = o.needs === '';
   return out;
 }
@@ -101,17 +122,18 @@ export function approachBacker(state: GameState, p: Project, kind: Exclude<Finan
   if (!opt.ready) throw new Error(opt.needs);
   p.finance ??= { estimate: p.funding.fund, target: p.funding.fund, deals: [] };
   const b = BACKERS[kind];
-  // A backer who takes time to decide reads a treatment; without one they take a week longer (script-effects.ts).
-  const days = b.decideDays && !treatmentComplete(p) ? b.decideDays + NO_TREATMENT_DELAY_DAYS : b.decideDays;
+  const days = b.decideDays;
+  const sent = BACKER_DOCUMENTS[kind].map((d) => DOCUMENTS[d].name);
   const deal: FinanceDeal = {
     id: newId(state, 'fd'), kind, backer: b.name, amount: 0, status: 'considering', askedAt: state.now, decideAt: state.now + days * DAY,
     reason: '', received: 0, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null },
+    ...(sent.length ? { sent } : {}),
   };
   p.finance.deals.push(deal);
   if (b.decideDays === 0) decide(state, p, deal);
   else {
     schedule(state, deal.decideAt!, 'finance-decision', { projectId: p.id, dealId: deal.id }, { attention: 'notify', priority: 40 });
-    addLog(state, `You asked the ${b.name.toLowerCase()} to back ${p.title}. They will answer in about ${days} days.${days > b.decideDays ? ' Without a treatment (the conflict, point of view and ending) they take a week longer.' : ''}`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+    addLog(state, `You asked the ${b.name.toLowerCase()} to back ${p.title}${sent.length ? `, sending the approved script and your ${sent.join(', ').toLowerCase()}` : ''}. They will answer in about ${days} days.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
   }
   return deal;
 }
@@ -122,7 +144,8 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
   const roll = stream(state.seed, 'finance', p.id, deal.id)();
   const proven = delivered(state);
   // The backers' modeled read of the script: open readiness notes on it lower it (scriptIssues: structure, causality...).
-  const notes = scriptIssues(p).filter((i) => i.severity !== 'blocking').length;
+  // Advisory prompts (a text field left empty, a fit suggestion) aren't faults and don't count (projects.ts Issue).
+  const notes = scriptIssues(p).filter((i) => i.severity !== 'blocking' && !i.advisory).length;
   const scriptScore = Math.max(20, 90 - notes * 8);
   const t = deal.terms;
   let offer = 0;

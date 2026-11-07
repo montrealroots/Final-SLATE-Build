@@ -56,7 +56,32 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 7, 2026, final): every script field has an effect
+### Newest Request (November 7, 2026, review): believable, connected script rules
+
+"Every field has an effect" wasn't enough: the review replaced the arbitrary effects merged in #33 (and some older
+ones). `docs/SCREENWRITING-AUDIT.md` traces every recent field effect from input to outcome, says where the player is
+told, and classes it as a real constraint, a labelled simulation assumption, a creative description, or a corrected
+shortcut. In short:
+- **Awards:** the producer places a part (Awards Placement, else role size), and story functions never do.
+- **Content:** declared by issue and level, never a rating. Strong content gets late-slot broadcast offers or the full
+  guarantee with a broadcast edit; GB and US watershed rules are cited.
+- **Documents:** Pitch, Treatment and Statement Of Intent are explicit submissions, and anything missing names the
+  empty fields. Text never buys time or quality, and presence-only checks are advisory prompts.
+- **Structure:** Essential To The Story and the setups ledger (now on every scripted project) drive the Coverage card's
+  choices: pickup, or Cut It From The Edit and Restore It.
+- **Other:** shared backgrounds don't score; pronoun ordering is optional; the setting place adds no trip.
+
+Two engine faults were found and fixed along the way:
+- A scene cut from the edit held up assembly.
+- A pickup asked for before the shoot was booked ahead of prep, was lost but still paid, and the project couldn't deliver.
+
+Pickups now follow main photography. The script base is 42, calibrated to the balance suite, and saves need no
+migration. Tests: `tests/script-effects.test.ts`, `e2e/script-rules.spec.ts`. Results: `QA-REPORT.md`. Open: the WebKit
+creation test that failed once on `main` after #32 (CI run 63; not reproduced, no artifact read).
+
+### Earlier Request (November 7, 2026, final): every script field has an effect
+
+Superseded in part by the review above: the effects listed here that the audit marks as corrected shortcuts were removed.
 
 "Build all of them, and give the prose fields effects too." The audit had found script fields nothing read. Each now
 drives something (`src/engine/script-effects.ts`; `docs/SCREENWRITING-AUDIT.md` has the full table):

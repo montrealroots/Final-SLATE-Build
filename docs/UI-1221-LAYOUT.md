@@ -65,7 +65,8 @@ Every choice in creation now changes something in the game:
 
 Backgrounds are the game's word for heritage, what 1221 calls race or ethnicity. 1221 deliberately gives that no
 effect; here the user asked for one, and it only ever adds: suggestions anyone can ignore, holidays anyone may keep,
-and lived experience counted for a shared background, with no penalty or block for not sharing one. Holiday dates come
+and casting showing who shares a background. Until the review of November 7, 2026 a shared background also added 6 to
+a performance score; that inferred ability from ethnicity and was removed (`docs/SCREENWRITING-AUDIT.md`). Holiday dates come
 from the holiday rules of a country that keeps each publicly; where a country hasn't announced a year (Diwali, Vesak,
 Thai Pongal, the Sinhala and Tamil, Khmer and Mongolian new years beyond their announced years), the game says it isn't
 dated yet rather than guessing.

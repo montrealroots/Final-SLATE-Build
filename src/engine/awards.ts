@@ -4,7 +4,7 @@
 // announcement; all others are generated once per edition from a seasonal window and saved, so reloading never moves them.
 
 import { getPlace } from '../data/places';
-import { COMEDY_MUSICAL, castPlacement, competesAs, pitchMissing } from './script-effects';
+import { COMEDY_MUSICAL, castPlacement, competesAs, documentsNeeded } from './script-effects';
 import { ledgerTotals, money, spend } from './budget';
 import { genre } from './genres';
 import { personById } from './people';
@@ -765,7 +765,7 @@ export function categoryRecipients(state: GameState, p: Project, cat: Category, 
     case 'ensemble': pool = credits.filter((c) => c.contribution === 'Cast'); break;
     case 'voice': pool = credits.filter((c) => c.contribution === 'Voice Cast'); break;
     default: {
-      // Leading or supporting by the part's size, and by its story function: a protagonist, deuteragonist or antagonist leads.
+      // Leading or supporting as the producer placed the part, else by its size; story functions never decide it.
       const placed = (name?: string) => { const ch = chars.find((x) => x.name === name); return ch ? castPlacement(ch) : null; };
       pool = credits.filter((c) => (c.contribution === 'Cast' || c.contribution === 'Performance Capture') && placed(c.characterName) === cat.recipient);
       if (cat.actingTitle) {
@@ -781,6 +781,11 @@ export function categoryRecipients(state: GameState, p: Project, cat: Category, 
 
 // ---------------- Submission ----------------
 
+/** What an entry form still needs from the Story panel, or null. */
+export function entryNeeds(p: Project): string | null {
+  return documentsNeeded(p, ['pitch'], isNonfiction(p.axes.format), 'Every entry form');
+}
+
 export function submitEntry(state: GameState, p: Project, editionId: string, categoryId: string, recipientIds?: string[]): EditionEntry {
   const ed = edition(state, editionId);
   const inst = institution(ed.institutionId);
@@ -790,9 +795,9 @@ export function submitEntry(state: GameState, p: Project, editionId: string, cat
   if (ed.entries.some((e) => e.projectId === p.id && e.categoryId === categoryId && e.status !== 'withdrawn')) throw new Error('This project is already entered in that category.');
   const el = checkEligibility(state, p, ed, cat, recipientIds);
   if (!el.eligible) throw new Error(el.reasons[0]);
-  // Every entry form asks for a logline and a synopsis (the premise).
-  const pitch = pitchMissing(p);
-  if (pitch) throw new Error(pitch.replace('they read a pitch', 'every entry asks for one').replace('it is the synopsis they read', 'it is the synopsis every entry asks for'));
+  // Entry forms ask for a logline and a synopsis (the Pitch). SLATE checks they are written, never what they say.
+  const pitch = entryNeeds(p);
+  if (pitch) throw new Error(pitch);
   // One fee per project, category and edition: entering again after withdrawing doesn't charge it twice.
   const feeKey = `fee:${editionId}:${categoryId}`;
   const alreadyPaid = p.obligations.some((o) => o.postings.some((x) => x.key === feeKey));

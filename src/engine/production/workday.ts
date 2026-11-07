@@ -38,7 +38,9 @@ export function milestoneDone(p: Project, dep: string): boolean {
   const c = /^capture:(\d+)$/.exec(dep);
   if (c) {
     const ep = Number(c[1]);
-    const live = approvedScenes(p).filter((s) => s.episode === ep && sceneTechnique(p, s) === 'live' && s.kind !== 'archival' && s.kind !== 'narration');
+    // Scenes cut from the edit (finish.ts cutFromEdit) aren't waited for.
+    const cut = new Set(p.edit.cutSceneIds ?? []);
+    const live = approvedScenes(p).filter((s) => s.episode === ep && !cut.has(s.id) && sceneTechnique(p, s) === 'live' && s.kind !== 'archival' && s.kind !== 'narration');
     return live.every((s) => (p.captures.find((x) => x.sceneId === s.id)?.captured ?? 0) >= 0.8);
   }
   return false;
