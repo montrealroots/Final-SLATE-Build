@@ -11,6 +11,8 @@ export async function audit(page: Page, where: string): Promise<string[]> {
     };
     for (const el of document.querySelectorAll('button, a[href], input:not([type=hidden]), select, textarea, [role=button]')) {
       if (!(el as HTMLElement).offsetParent && getComputedStyle(el).position !== 'fixed') continue;
+      // A closed drawer is visibility: hidden, so neither seen nor read out.
+      if (getComputedStyle(el).visibility === 'hidden') continue;
       if (!nameOf(el)) out.push(`${w}: a ${el.tagName.toLowerCase()} has no accessible name`);
     }
     const ids = [...document.querySelectorAll('[id]')].map((e) => e.id);

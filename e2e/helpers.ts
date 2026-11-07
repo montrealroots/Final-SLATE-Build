@@ -63,7 +63,7 @@ export async function createCharacter(page: Page, o: CharacterOpts): Promise<voi
   await nextStep(page, 'Review');
   await expect(page.getByRole('heading', { name: 'Review', exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Start My Story' }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 }
 
 export async function pickPlace(page: Page, label: string, query: string, country?: string): Promise<void> {
@@ -75,23 +75,34 @@ export async function pickPlace(page: Page, label: string, query: string, countr
   await expect(page.getByText(/^Chosen: /)).toBeVisible();
 }
 
+/** Below a laptop the rail is a drawer, as in 1221: open it with Menu unless it's open already. */
 export async function openMenuIfNeeded(page: Page): Promise<void> {
   await expect(page.getByRole('banner')).toBeVisible();
-  const menu = page.getByRole('button', { name: 'Menu' });
-  if (await menu.isVisible()) await menu.click();
+  const menu = page.getByRole('button', { name: 'Menu', exact: true });
+  if ((await menu.isVisible()) && (await menu.getAttribute('aria-expanded')) !== 'true') await menu.click();
 }
 
+/** Through the rail. The calendar is Home's, as 1221's is: its way in is Up Next's Open Calendar. */
 export async function nav(page: Page, label: 'Home' | 'Calendar' | 'World' | 'Projects' | 'Profile' | 'Saved Games' | 'Settings'): Promise<void> {
+  if (label === 'Calendar') {
+    await nav(page, 'Home');
+    await page.getByRole('button', { name: 'Open Calendar' }).click();
+    return;
+  }
   await openMenuIfNeeded(page);
-  await page.getByRole('navigation', { name: 'Main' }).filter({ visible: true }).getByRole('link', { name: label }).click();
+  const name = label === 'Profile' ? 'Player Profile' : label;
+  await page.getByRole('navigation', { name: 'Main Navigation' }).getByRole('button', { name, exact: true }).click();
+}
+
+/** Save & Exit: in the bar, or in the drawer's foot where the rail is a drawer. */
+export async function pressSaveAndExit(page: Page): Promise<void> {
+  await openMenuIfNeeded(page);
+  await page.getByRole('button', { name: 'Save & Exit' }).click();
 }
 
 export async function section(page: Page, label: string): Promise<void> {
   const tab = page.getByRole('tab', { name: label, exact: true });
-  // Project screens load on first use; wait for the tabs (desktop) or the section selector (phone).
-  await expect(tab.or(page.getByRole('combobox', { name: 'Project Sections' }))).toBeVisible();
-  if (await tab.isVisible()) await tab.click();
-  else await page.getByRole('combobox', { name: 'Project Sections' }).selectOption({ label });
+  await tab.click();
 }
 
 export async function advance(page: Page, value: 'next-event' | 'next-day' | 'week' | 'month'): Promise<void> {
@@ -128,9 +139,9 @@ export async function readSavedState(page: Page): Promise<any> { // eslint-disab
   return JSON.parse(JSON.parse((await readRecord(page, `slate.v1.save.${id}`))!).data);
 }
 
-/** Save And Exit, waiting until the save is stored and the start screen is back. */
+/** Save & Exit, waiting until the save is stored and the start screen is back. */
 export async function saveAndExit(page: Page): Promise<void> {
-  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  await pressSaveAndExit(page);
   await expect(page.getByRole('button', { name: 'Continue', exact: true })).toBeVisible();
 }
 
@@ -147,7 +158,7 @@ export async function quickLife(page: Page, startPlaceId: string, startDate: str
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
   await page.getByRole('button', { name: 'Start My Story' }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 }
 
 export async function addScene(page: Page, opts: { index: number; place: string; chars?: string[]; contributors?: string[]; minutes?: string; exterior?: boolean; episodeButton?: string; kind?: string; technique?: string }): Promise<void> {
@@ -180,7 +191,7 @@ export async function saveAndApprove(page: Page): Promise<void> {
  */
 export async function secureStartingBacking(page: Page): Promise<void> {
   await section(page, 'Budget');
-  const fin = page.locator('section.panel', { has: page.getByRole('heading', { name: 'Financing' }) });
+  const fin = page.locator('section.card', { has: page.getByRole('heading', { name: 'Financing' }) });
   await expect(fin.locator('dt', { hasText: /^Received$/ }).locator('xpath=following-sibling::dd[1]')).toHaveText('$0');
   await page.getByRole('button', { name: 'Approach Starting Backing' }).click();
   await page.getByRole('button', { name: 'Accept Offer' }).click();
@@ -194,7 +205,7 @@ export async function secureStartingBacking(page: Page): Promise<void> {
 /** Cast every uncast role through Find Performers (or yourself for named roles). */
 export async function castRoles(page: Page, yourself: string[] = []): Promise<void> {
   await section(page, 'Cast');
-  const roles = page.locator('section.panel', { hasText: 'Roles' }).first();
+  const roles = page.locator('section.card', { hasText: 'Roles' }).first();
   for (const name of yourself) {
     const btn = roles.locator('li', { hasText: name }).getByRole('button', { name: 'Cast Yourself' }).first();
     if (await btn.isVisible()) await btn.click();
@@ -212,7 +223,7 @@ export async function castRoles(page: Page, yourself: string[] = []): Promise<vo
     // An offer can be refused (for example, one performer can't play two characters in a scene): try the next person.
     for (let i = 0; i < n && (await dialog.isVisible()); i++) await offers.nth(i).click();
     if (await dialog.isVisible()) {
-      await dialog.getByRole('button', { name: 'Close' }).click();
+      await dialog.getByRole('button', { name: 'Close', exact: true }).click();
       skipped += 1;
     }
   }
@@ -265,7 +276,7 @@ export async function produceToDelivery(page: Page, opts: { yourself?: string[];
 
 export async function creditsTable(page: Page): Promise<string> {
   await section(page, 'Release');
-  return page.locator('section.panel', { hasText: 'Credits' }).first().innerText();
+  return page.locator('section.card', { hasText: 'Credits' }).first().innerText();
 }
 
 /**
@@ -294,7 +305,7 @@ export async function pinSeed(page: Page, seed: number): Promise<void> {
   await writeRecords(page, { [key]: JSON.stringify({ ...env, checksum: hashString(data), data }) });
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   expect((await readSavedState(page)).seed).toBe(seed);
 }
 

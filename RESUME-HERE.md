@@ -56,7 +56,23 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Latest Request (November 6, 2026, night): in progress
+### Newest Request (November 7, 2026): the 1221 layout, done in this checkpoint
+
+The user asked for the screens to be set up exactly like the `montrealroots/1221` repository and, asked to choose, picked
+"look and layout": 1221's design, keeping Final SLATE's own game and engines, adding none of 1221's features (it is an
+actor's life simulator with a school, a bank and tax papers). See `docs/UI-1221-LAYOUT.md`. 1221 was read, never
+changed. `src/ui/app.css` is 1221's stylesheet whole, plus a short section for Final SLATE's own elements;
+`tokens.css` is gone (1221's file holds the same tokens). The shell, the grouped rail and drawer, Home, page heads,
+tab bars, dialogs, the start screen and creation follow 1221's markup. Browser-test helpers follow it too: `nav()`
+uses the rail's buttons and reaches the calendar through Home's Open Calendar; `pressSaveAndExit()` opens the drawer
+where needed; Home's heading is the greeting. Startup JavaScript is 697 kB of the 700 kB budget.
+Two 1221 stylesheet faults were fixed here rather than copied: its drawer opened at a fixed 56px, over the second row
+of a phone's bar, and its drawer shade was hidden by a later rule. Local results on the final code: `npm run check`
+219 tests, 0 problems; dev-server suite 106 passed, 23 skipped by project design, 0 failed; production-build suite
+106 passed, 23 skipped, 0 failed (run just before the drawer fix). Not checked: real phones, a person's judgment of
+the look against 1221 beyond the side-by-side captures.
+
+### Latest Request (November 6, 2026, night): done
 
 1. Verification: CI green through #23; full dev and production-build suites 96 passed, 21 skipped (project exclusions), 0 failed with the creation changes.
 2. **Character creation: done** (merged in #24). Step registry `CREATION_STEPS` (`src/engine/state.ts`); drafts store a step id (older numeric and partial drafts are normalized by `normalizeDraft`); Review has one edit action per row, each to its own screen, and "Save And Return To Review"; Start My Story now keeps the messages on the screen it jumps to. WebKit input loss: the cause was focus moved to the heading one animation frame after a step change, taking focus from a field already chosen; focus now moves in the same commit (`e2e/creation.spec.ts` fails with the old code in WebKit, passes now). The test-side wait was removed.

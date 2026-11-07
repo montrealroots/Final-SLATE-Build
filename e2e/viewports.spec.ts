@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { advance, nav, section, secureStartingBacking } from './helpers';
+import { advance, nav, section, secureStartingBacking, pressSaveAndExit } from './helpers';
 
 // The package's required widths (360, 390, 393, 414, 430, 768, 1024, 1440, 1920), plus 440, 1280 and a phone landscape.
 const VIEWPORTS: [number, number][] = [[360, 800], [390, 844], [393, 852], [414, 896], [430, 932], [440, 956], [768, 1024], [1024, 768], [1280, 720], [1440, 900], [1920, 1080], [844, 390]];
@@ -18,7 +18,7 @@ async function seedGame(page: Page): Promise<void> {
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
   await page.getByRole('button', { name: 'Start My Story' }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 }
 
 async function checkLayout(page: Page, label: string): Promise<string[]> {
@@ -29,7 +29,9 @@ async function checkLayout(page: Page, label: string): Promise<string[]> {
     for (const el of document.querySelectorAll<HTMLElement>('button, a, input, select, textarea, h1, h2, p, label')) {
       const r = el.getBoundingClientRect();
       if (!r.width || !r.height) continue;
-      if (el.closest('.table-wrap, .picklist, .cal-grid, .modal-body')) continue;
+      // A closed drawer is hidden off the edge, and the tab bar scrolls sideways with a fade, both as in 1221.
+      if (getComputedStyle(el).visibility === 'hidden' || el.closest('#rail[data-open="false"]')) continue;
+      if (el.closest('.table-wrap, .picklist, .cal-grid, .modal-body, .tabs')) continue;
       if (r.right > vw + 1 || r.left < -1) problems.push(`${where}: ${el.tagName.toLowerCase()} "${(el.textContent || el.getAttribute('aria-label') || '').trim().slice(0, 40)}" is outside the viewport`);
     }
     return problems.slice(0, 5);
@@ -119,7 +121,7 @@ test('keyboard: skip link, focus order, Escape closes dialogs and returns focus'
   await expect(page.getByRole('dialog', { name: 'Advance' })).toBeHidden();
   await expect(advanceBtn).toBeFocused();
   // Light theme and larger text both work.
-  await page.getByRole('banner').getByRole('button', { name: 'Settings' }).click();
+  await nav(page, 'Settings');
   await expect(page.getByRole('heading', { name: 'Settings', level: 1 })).toBeVisible();
   await page.getByRole('button', { name: 'Light', exact: true }).click();
   await page.getByRole('checkbox', { name: 'Larger Text' }).check();
@@ -168,9 +170,9 @@ test('the clock runs 1:1 while visible and stops while hidden, with no catch-up'
 test('a second tab opens the same save read-only until it takes over', async ({ page, context }, info) => {
   test.skip(info.project.name !== 'desktop', 'Lifecycle check runs once.');
   await seedGame(page);
-  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  await pressSaveAndExit(page);
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   const second = await context.newPage();
   await second.goto('/');
   await second.getByRole('button', { name: 'Continue', exact: true }).click();

@@ -76,15 +76,15 @@ export function ScriptTab({ p }: { p: Project }) {
   };
   return (
     <>
-      {locked && <div className="alert info"><p>This project has been delivered. The script is locked.</p></div>}
-      {err && <div className="alert bad" role="alert"><p>{err}</p></div>}
-      <div className="btn-row" style={{ marginBottom: 16 }}>
+      {locked && <div className="callout callout-info"><p>This project has been delivered. The script is locked.</p></div>}
+      {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
+      <div className="row gap-2 wrap" style={{ marginBottom: 16 }}>
         <button className="btn" disabled={!undoStack.get(p.id)?.length || locked} onClick={undo}>Undo Last Change</button>
       </div>
-      <section className="panel">
+      <section className="card">
         <h2>{nonfiction ? 'Subject And Approach' : 'Story'}</h2>
         <p className="dim">Your own words for the project. SLATE keeps them with the script; it doesn't read them for meaning.</p>
-        <div className="grid2">
+        <div className="grid grid-2 form">
           {nonfiction && <TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} />}
           <TextField label="Logline" multiline value={p.story.logline} maxLength={300} onChange={(v) => edit(p, () => (p.story.logline = v))} />
           <TextField label="Premise" multiline value={p.story.premise} onChange={(v) => edit(p, () => (p.story.premise = v))} />
@@ -98,12 +98,12 @@ export function ScriptTab({ p }: { p: Project }) {
       </section>
 
       {(questions.length > 0 || mods.size > 0) && (
-        <section className="panel">
+        <section className="card">
           <h2>Genre Conventions</h2>
           {mods.size > 0 && (
             <ul className="list">{[...mods].map((m) => <li key={m}><strong>{MODULE_LABELS[m]}</strong>: <span className="muted">{MODULE_HELP[m]}</span></li>)}</ul>
           )}
-          <div className="grid2 spaced">
+          <div className="grid grid-2 form spaced">
             {questions.map((q) => (
               <TextField key={q.key} label={q.label} multiline hint={`For ${q.genres.join(' and ')}. Optional; you can subvert it.`} value={p.genreNotes[q.key] ?? ''} onChange={(v) => edit(p, () => (p.genreNotes[q.key] = v))} />
             ))}
@@ -117,8 +117,8 @@ export function ScriptTab({ p }: { p: Project }) {
       {(mods.has('relationships') || p.relationships.length > 0) && <Relationships p={p} />}
       {(nonfiction || mods.has('factual')) && <Facts p={p} />}
 
-      <section className="panel">
-        <div className="btn-row spread"><h2 style={{ margin: 0 }}>Scenes</h2><span className="muted">{plural(p.scenes.length, 'scene')}, about {Math.round(p.scenes.reduce((a, s) => a + s.estMinutes, 0))} minutes</span></div>
+      <section className="card">
+        <div className="row-between wrap"><h2 style={{ margin: 0 }}>Scenes</h2><span className="muted">{plural(p.scenes.length, 'scene')}, about {Math.round(p.scenes.reduce((a, s) => a + s.estMinutes, 0))} minutes</span></div>
         {Array.from({ length: p.axes.episodeCount }, (_, i) => i + 1).map((ep) => (
           <div key={ep} className="spaced">
             {isEpisodic(p.axes.format) && <h3>{p.episodes[ep - 1]?.title ?? `Episode ${ep}`}</h3>}
@@ -130,7 +130,7 @@ export function ScriptTab({ p }: { p: Project }) {
         ))}
       </section>
 
-      <section className="panel">
+      <section className="card">
         <h2>Readiness</h2>
         <p className="dim">Readiness checks follow the script's structure: scenes, who is in them, objectives, setups and their payoffs, the questions your genres raise. For written answers they check that something is there, not whether it is good.</p>
         {blocking.length ? (
@@ -147,7 +147,7 @@ export function ScriptTab({ p }: { p: Project }) {
               return (
                 <li key={k}>
                   {i.text}{' '}
-                  {added ? <span className="chip">In Revision Notes</span> : <button className="btn btn-small" onClick={() => setErr(store.act((s) => void noteFromIssue(s, s.projects.find((x) => x.id === p.id)!, i.text)))}>Add To Revision Notes</button>}
+                  {added ? <span className="chip">In Revision Notes</span> : <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void noteFromIssue(s, s.projects.find((x) => x.id === p.id)!, i.text)))}>Add To Revision Notes</button>}
                 </li>
               );
             })}</ul>
@@ -166,7 +166,7 @@ export function ScriptTab({ p }: { p: Project }) {
           <ul>{approving.impact.map((t) => <li key={t}>{t}</li>)}</ul>
         </Modal>
       )}
-      <section className="panel">
+      <section className="card">
         <h2>Drafts</h2>
         {changed && p.drafts.length > 0 && <p className="muted">You have changes since your last saved draft.</p>}
         <div className="inline-form">
@@ -176,16 +176,16 @@ export function ScriptTab({ p }: { p: Project }) {
         <ul className="list spaced">
           {[...p.drafts].reverse().map((d) => (
             <li key={d.number}>
-              <div className="row">
+              <div className="row-wrap">
                 <div className="grow">
-                  <strong>{d.label}</strong> {d.approved && <span className="chip good">Approved</span>}
+                  <strong>{d.label}</strong> {d.approved && <span className="chip chip-positive">Approved</span>}
                   <div className="dim">{d.summary || 'First draft.'}</div>
                 </div>
-                <div className="btn-row">
-                  <button className="btn btn-small" onClick={() => setCompare(d.number)}>Compare With Working Copy</button>
-                  <button className="btn btn-small" disabled={locked} onClick={() => setErr(edit(p, () => restoreDraft(p, d.number)))}>Restore This Draft</button>
-                  <button className="btn btn-small" disabled={locked} onClick={() => setRenaming({ number: d.number, label: d.label })}>Rename Draft</button>
-                  {!d.approved && <button className="btn btn-small btn-primary" disabled={locked} onClick={() => {
+                <div className="row gap-2 wrap">
+                  <button className="btn btn-sm" onClick={() => setCompare(d.number)}>Compare With Working Copy</button>
+                  <button className="btn btn-sm" disabled={locked} onClick={() => setErr(edit(p, () => restoreDraft(p, d.number)))}>Restore This Draft</button>
+                  <button className="btn btn-sm" disabled={locked} onClick={() => setRenaming({ number: d.number, label: d.label })}>Rename Draft</button>
+                  {!d.approved && <button className="btn btn-sm btn-primary" disabled={locked} onClick={() => {
                     const impact = approvalImpact(p, d.number);
                     if (impact.length) setApproving({ number: d.number, impact });
                     else setErr(store.act((s) => { approveDraft(s, p, d.number); }));
@@ -248,22 +248,22 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
   const label = sceneLabel(p, s);
   return (
     <article className="scene-card" aria-label={label}>
-      <div className="row">
+      <div className="row-wrap">
         <div className="grow">
           <h3>{label}</h3>
           <p className="dim" style={{ margin: 0 }}>{s.heading.intExt}. {s.heading.place || 'No place yet'} – {s.heading.time} · {s.estMinutes} min{s.participants.length ? ` · ${s.participants.map((c) => p.characters.find((x) => x.id === c)?.name).filter(Boolean).join(', ')}` : ''}</p>
         </div>
-        <div className="btn-row">
-          <button className="btn btn-small" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? 'Close Scene' : 'Edit Scene'}</button>
-          <button className="btn btn-small" disabled={locked} aria-label={`Move ${label} Up`} onClick={() => edit(p, () => moveScene(p, s.id, -1))}>Move Up</button>
-          <button className="btn btn-small" disabled={locked} aria-label={`Move ${label} Down`} onClick={() => edit(p, () => moveScene(p, s.id, 1))}>Move Down</button>
-          <button className="btn btn-small btn-danger" disabled={locked} aria-label={`Delete ${label}`} onClick={onDelete}>Delete</button>
+        <div className="row gap-2 wrap">
+          <button className="btn btn-sm" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? 'Close Scene' : 'Edit Scene'}</button>
+          <button className="btn btn-sm" disabled={locked} aria-label={`Move ${label} Up`} onClick={() => edit(p, () => moveScene(p, s.id, -1))}>Move Up</button>
+          <button className="btn btn-sm" disabled={locked} aria-label={`Move ${label} Down`} onClick={() => edit(p, () => moveScene(p, s.id, 1))}>Move Down</button>
+          <button className="btn btn-sm btn-danger" disabled={locked} aria-label={`Delete ${label}`} onClick={onDelete}>Delete</button>
         </div>
       </div>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       {open && (
         <fieldset disabled={locked} style={{ border: 0, padding: 0, margin: '12px 0 0' }}>
-          <div className="grid3">
+          <div className="grid grid-3 form">
             <SelectField label="Interior Or Exterior" value={s.heading.intExt} options={[{ value: 'INT', label: 'Interior' }, { value: 'EXT', label: 'Exterior' }, { value: 'INT/EXT', label: 'Interior And Exterior' }]} onChange={(v) => up({ heading: { ...s.heading, intExt: v } })} />
             <TextField label="Place" value={s.heading.place} maxLength={80} onChange={(v) => up({ heading: { ...s.heading, place: v }, storyLocation: s.storyLocation && s.storyLocation !== s.heading.place ? s.storyLocation : v })} />
             <SelectField label="Time Of Day" value={s.heading.time} options={(['DAY', 'NIGHT', 'DAWN', 'DUSK'] as const).map((t) => ({ value: t, label: t.charAt(0) + t.slice(1).toLowerCase() }))} onChange={(v) => up({ heading: { ...s.heading, time: v } })} />
@@ -279,7 +279,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
           {!nonfiction || s.kind === 'reconstruction' ? (
             <fieldset style={{ border: 0, padding: 0 }}>
               <legend style={{ fontWeight: 600 }}>Characters In The Scene</legend>
-              <div className="chips">
+              <div className="chip-row">
                 {p.characters.map((c) => <Check key={c.id} label={c.name} checked={s.participants.includes(c.id)} onChange={(v) => up({ participants: v ? [...s.participants, c.id] : s.participants.filter((x) => x !== c.id) })} />)}
                 {!p.characters.length && <p className="muted">Add characters in the Characters section.</p>}
               </div>
@@ -287,19 +287,19 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
           ) : (
             <fieldset style={{ border: 0, padding: 0 }}>
               <legend style={{ fontWeight: 600 }}>Contributors</legend>
-              <div className="chips">
+              <div className="chip-row">
                 {p.contributors.map((c) => <Check key={c.id} label={c.name} checked={s.contributorIds.includes(c.id)} onChange={(v) => up({ contributorIds: v ? [...s.contributorIds, c.id] : s.contributorIds.filter((x) => x !== c.id) })} />)}
                 {!p.contributors.length && <p className="muted">Add contributors under Facts And Contributors.</p>}
               </div>
               {p.evidence.length > 0 && (
                 <>
                   <legend style={{ fontWeight: 600 }}>Facts Shown</legend>
-                  <div className="chips">{p.evidence.map((e) => <Check key={e.id} label={e.claim.slice(0, 50)} checked={s.evidenceIds.includes(e.id)} onChange={(v) => up({ evidenceIds: v ? [...s.evidenceIds, e.id] : s.evidenceIds.filter((x) => x !== e.id) })} />)}</div>
+                  <div className="chip-row">{p.evidence.map((e) => <Check key={e.id} label={e.claim.slice(0, 50)} checked={s.evidenceIds.includes(e.id)} onChange={(v) => up({ evidenceIds: v ? [...s.evidenceIds, e.id] : s.evidenceIds.filter((x) => x !== e.id) })} />)}</div>
                 </>
               )}
             </fieldset>
           )}
-          <div className="grid2">
+          <div className="grid grid-2 form">
             <TextField label="Objective" multiline value={s.objective} onChange={(v) => up({ objective: v })} />
             <TextField label={nonfiction ? 'What Happens' : 'Action'} multiline value={s.action} onChange={(v) => up({ action: v })} />
             <TextField label="Turning Point" multiline value={s.turningPoint} onChange={(v) => up({ turningPoint: v })} />
@@ -307,7 +307,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
           {!nonfiction && <Dialogue p={p} s={s} up={up} />}
           <h4>Production Needs</h4>
           <p className="dim">These drive the breakdown. Nothing is guessed from the text above.</p>
-          <div className="grid3">
+          <div className="grid grid-3 form">
             <TextField label="Props" hint="Separate with commas." value={listText(s.props)} onChange={(v) => up({ props: parseList(v) })} />
             <TextField label="Animals" hint="Separate with commas." value={listText(s.animals)} onChange={(v) => up({ animals: parseList(v) })} />
             <TextField label="Vehicles" hint="Separate with commas." value={listText(s.vehicles)} onChange={(v) => up({ vehicles: parseList(v) })} />
@@ -316,7 +316,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
             <TextField label="Visual Effects" hint="Separate with commas." value={listText(s.vfx)} onChange={(v) => up({ vfx: parseList(v) })} />
             <TextField label="Songs" hint="Separate with commas. Mark licensed songs below." value={listText(s.songs.map((x) => x.title))} onChange={(v) => up({ songs: parseList(v).map((t) => ({ title: t, licensed: s.songs.find((x) => x.title === t)?.licensed ?? false })) })} />
           </div>
-          <div className="chips">
+          <div className="chip-row">
             {s.songs.map((song) => <Check key={song.title} label={`${song.title} Is Licensed`} checked={song.licensed} onChange={(v) => up({ songs: s.songs.map((x) => (x.title === song.title ? { ...x, licensed: v } : x)) })} />)}
             <Check label="Dance" checked={s.dance} onChange={(v) => up({ dance: v })} />
             <Check label="Intimate Scene" checked={s.intimacy} onChange={(v) => up({ intimacy: v })} />
@@ -337,9 +337,9 @@ function Dialogue({ p, s, up }: { p: Project; s: Scene; up: (patch: Partial<Scen
       <h4>Dialogue</h4>
       <ul className="list">
         {s.dialogue.map((d) => (
-          <li key={d.id} className="row">
+          <li key={d.id} className="row-wrap">
             <span className="grow"><strong>{p.characters.find((c) => c.id === d.characterId)?.name ?? 'Unknown'}</strong>{p.axes.dialogueLanguages.length > 1 ? ` (${languageName(d.language)})` : ''}: {d.text}</span>
-            <button className="btn btn-small" onClick={() => up({ dialogue: s.dialogue.filter((x) => x.id !== d.id) })}>Remove Line</button>
+            <button className="btn btn-sm" onClick={() => up({ dialogue: s.dialogue.filter((x) => x.id !== d.id) })}>Remove Line</button>
           </li>
         ))}
       </ul>
@@ -361,10 +361,10 @@ function WorldRules({ p, title }: { p: Project; title: string }) {
   const [rule, setRule] = useState('');
   const [limit, setLimit] = useState('');
   return (
-    <section className="panel">
+    <section className="card">
       <h2>{title}</h2>
       <p className="dim">SLATE records these rules and checks that some are written down. It can't tell whether a scene breaks one: that is yours to keep track of.</p>
-      <ul className="list">{p.worldRules.map((r) => <li key={r.id} className="row"><span className="grow"><strong>{r.rule}</strong>{r.limit ? <span className="muted"> Limit or cost: {r.limit}</span> : null}</span><button className="btn btn-small" onClick={() => edit(p, () => (p.worldRules = p.worldRules.filter((x) => x.id !== r.id)))}>Remove</button></li>)}</ul>
+      <ul className="list">{p.worldRules.map((r) => <li key={r.id} className="row-wrap"><span className="grow"><strong>{r.rule}</strong>{r.limit ? <span className="muted"> Limit or cost: {r.limit}</span> : null}</span><button className="btn btn-sm" onClick={() => edit(p, () => (p.worldRules = p.worldRules.filter((x) => x.id !== r.id)))}>Remove</button></li>)}</ul>
       <div className="inline-form">
         <TextField label="Rule" value={rule} onChange={setRule} />
         <TextField label="Limit Or Cost" value={limit} onChange={setLimit} />
@@ -379,13 +379,13 @@ function Setups({ p }: { p: Project }) {
   const [kind, setKind] = useState<'clue' | 'setup' | 'foreshadowing' | 'gag' | 'reveal'>('setup');
   const sceneOpts = [{ value: '', label: 'Not Yet' }, ...p.scenes.map((s) => ({ value: s.id, label: sceneLabel(p, s) }))];
   return (
-    <section className="panel">
+    <section className="card">
       <h2>Setups, Clues And Reveals</h2>
       <ul className="list">
         {p.setups.map((sp) => (
           <li key={sp.id}>
-            <div className="row"><strong className="grow">{sp.label} <span className="chip">{sp.kind.charAt(0).toUpperCase() + sp.kind.slice(1)}</span></strong><button className="btn btn-small" onClick={() => edit(p, () => (p.setups = p.setups.filter((x) => x.id !== sp.id)))}>Remove</button></div>
-            <div className="grid2">
+            <div className="row-wrap"><strong className="grow">{sp.label} <span className="chip">{sp.kind.charAt(0).toUpperCase() + sp.kind.slice(1)}</span></strong><button className="btn btn-sm" onClick={() => edit(p, () => (p.setups = p.setups.filter((x) => x.id !== sp.id)))}>Remove</button></div>
+            <div className="grid grid-2 form">
               <SelectField label="Planted In" value={sp.plantedIn ?? ''} options={sceneOpts} onChange={(v) => edit(p, () => (sp.plantedIn = v || null))} />
               <SelectField label="Pays Off In" value={sp.paidIn ?? ''} options={sceneOpts} onChange={(v) => edit(p, () => (sp.paidIn = v || null))} />
             </div>
@@ -409,10 +409,10 @@ function Relationships({ p }: { p: Project }) {
   const [end, setEnd] = useState('');
   const opts = [{ value: '', label: 'Choose A Character' }, ...p.characters.map((c) => ({ value: c.id, label: c.name }))];
   return (
-    <section className="panel">
+    <section className="card">
       <h2>Relationships</h2>
-      <ul className="list">{p.relationships.map((r) => <li key={r.id} className="row"><span className="grow">{p.characters.find((c) => c.id === r.a)?.name} and {p.characters.find((c) => c.id === r.b)?.name}: {r.kind}. {r.start ? `Starts: ${r.start}. ` : ''}{r.end ? `Ends: ${r.end}.` : ''}</span><button className="btn btn-small" onClick={() => edit(p, () => (p.relationships = p.relationships.filter((x) => x.id !== r.id)))}>Remove</button></li>)}</ul>
-      <div className="grid3">
+      <ul className="list">{p.relationships.map((r) => <li key={r.id} className="row-wrap"><span className="grow">{p.characters.find((c) => c.id === r.a)?.name} and {p.characters.find((c) => c.id === r.b)?.name}: {r.kind}. {r.start ? `Starts: ${r.start}. ` : ''}{r.end ? `Ends: ${r.end}.` : ''}</span><button className="btn btn-sm" onClick={() => edit(p, () => (p.relationships = p.relationships.filter((x) => x.id !== r.id)))}>Remove</button></li>)}</ul>
+      <div className="grid grid-3 form">
         <SelectField label="First Character" value={a} options={opts} onChange={setA} />
         <SelectField label="Second Character" value={b} options={opts} onChange={setB} />
         <TextField label="Relationship" value={kind} onChange={setKind} />
@@ -431,21 +431,21 @@ function Facts({ p }: { p: Project }) {
   const [name, setName] = useState('');
   const [role, setRole] = useState('');
   return (
-    <section className="panel">
+    <section className="card">
       <h2>Facts And Contributors</h2>
       <h3>Facts</h3>
       <ul className="list">
         {p.evidence.map((e) => (
-          <li key={e.id} className="row">
-            <span className="grow">{e.claim} <span className="chip">{e.status.charAt(0).toUpperCase() + e.status.slice(1)}</span> {e.verified ? <span className="chip good">Checked</span> : e.status !== 'dramatized' ? <span className="chip warn">Not Checked</span> : null}<span className="dim"> {e.sourceNote}</span></span>
-            <div className="btn-row">
-              {!e.verified && e.status !== 'dramatized' && <button className="btn btn-small" disabled={!p.tasks.some((t) => t.kind === 'doc:factcheck' && t.status === 'done') && !p.tasks.some((t) => t.kind === 'doc:research' && t.status === 'done')} title="Available once research or fact checking is done." onClick={() => edit(p, () => (e.verified = true))}>Mark As Checked</button>}
-              <button className="btn btn-small" onClick={() => edit(p, () => (p.evidence = p.evidence.filter((x) => x.id !== e.id)))}>Remove</button>
+          <li key={e.id} className="row-wrap">
+            <span className="grow">{e.claim} <span className="chip">{e.status.charAt(0).toUpperCase() + e.status.slice(1)}</span> {e.verified ? <span className="chip chip-positive">Checked</span> : e.status !== 'dramatized' ? <span className="chip chip-warning">Not Checked</span> : null}<span className="dim"> {e.sourceNote}</span></span>
+            <div className="row gap-2 wrap">
+              {!e.verified && e.status !== 'dramatized' && <button className="btn btn-sm" disabled={!p.tasks.some((t) => t.kind === 'doc:factcheck' && t.status === 'done') && !p.tasks.some((t) => t.kind === 'doc:research' && t.status === 'done')} title="Available once research or fact checking is done." onClick={() => edit(p, () => (e.verified = true))}>Mark As Checked</button>}
+              <button className="btn btn-sm" onClick={() => edit(p, () => (p.evidence = p.evidence.filter((x) => x.id !== e.id)))}>Remove</button>
             </div>
           </li>
         ))}
       </ul>
-      <div className="grid3">
+      <div className="grid grid-3 form">
         <TextField label="Claim" value={claim} onChange={setClaim} />
         <SelectField label="Status" value={status} options={[{ value: 'established', label: 'Established' }, { value: 'alleged', label: 'Alleged' }, { value: 'unverified', label: 'Unverified' }, { value: 'dramatized', label: 'Dramatized' }]} onChange={setStatus} />
         <TextField label="Source Note" value={source} onChange={setSource} />
@@ -454,12 +454,12 @@ function Facts({ p }: { p: Project }) {
       <h3 className="spaced">Contributors</h3>
       <ul className="list">
         {p.contributors.map((c) => (
-          <li key={c.id} className="row">
-            <span className="grow">{c.name}{c.role ? `, ${c.role}` : ''} <span className={`chip ${c.consent === 'given' ? 'good' : c.consent === 'declined' || c.consent === 'withdrawn' ? 'bad' : 'warn'}`}>{{ 'not-asked': 'Consent Not Requested', requested: 'Consent Requested', given: 'Consent Given', declined: 'Consent Declined', withdrawn: 'Withdrew' }[c.consent]}</span></span>
-            <div className="btn-row">
-              {c.consent === 'not-asked' && <button className="btn btn-small" onClick={() => store.act((s) => requestConsent(s, p, c.id))}>Request Consent</button>}
+          <li key={c.id} className="row-wrap">
+            <span className="grow">{c.name}{c.role ? `, ${c.role}` : ''} <span className={`chip ${c.consent === 'given' ? 'chip-positive' : c.consent === 'declined' || c.consent === 'withdrawn' ? 'chip-negative' : 'chip-warning'}`}>{{ 'not-asked': 'Consent Not Requested', requested: 'Consent Requested', given: 'Consent Given', declined: 'Consent Declined', withdrawn: 'Withdrew' }[c.consent]}</span></span>
+            <div className="row gap-2 wrap">
+              {c.consent === 'not-asked' && <button className="btn btn-sm" onClick={() => store.act((s) => requestConsent(s, p, c.id))}>Request Consent</button>}
               {p.axes.format === 'unscripted-series' && c.consent === 'given' && !p.delivered && <WithdrawButton p={p} contributorId={c.id} name={c.name} />}
-              <button className="btn btn-small" onClick={() => edit(p, () => (p.contributors = p.contributors.filter((x) => x.id !== c.id)))}>Remove</button>
+              <button className="btn btn-sm" onClick={() => edit(p, () => (p.contributors = p.contributors.filter((x) => x.id !== c.id)))}>Remove</button>
             </div>
           </li>
         ))}
@@ -481,19 +481,19 @@ function Notes({ p }: { p: Project }) {
   const [err, setErr] = useState<string | null>(null);
   const accepted = p.notes.filter((n) => n.status === 'accepted');
   return (
-    <section className="panel">
+    <section className="card">
       <h2>Revision Notes</h2>
       <p className="muted">Accept notes you want to work on, then start a revision pass. Revisions take time.</p>
       <p className="dim">Notes raised by the readiness checks count toward the script's modeled quality once a revision addresses them. Notes you add yourself are for your own process and don't change it.</p>
-      {p.revision && <p className="alert info">Revision pass underway. It finishes in {formatDuration(p.revision.endsAt - g.now)}.</p>}
+      {p.revision && <p className="callout callout-info">Revision pass underway. It finishes in {formatDuration(p.revision.endsAt - g.now)}.</p>}
       <ul className="list">
         {p.notes.map((n) => (
-          <li key={n.id} className="row">
-            <span className="grow">{n.text} <span className="chip">{n.area.charAt(0).toUpperCase() + n.area.slice(1)}</span> <span className={`chip ${n.status === 'addressed' ? 'good' : n.status === 'rejected' ? 'bad' : ''}`}>{n.status.charAt(0).toUpperCase() + n.status.slice(1)}</span></span>
+          <li key={n.id} className="row-wrap">
+            <span className="grow">{n.text} <span className="chip">{n.area.charAt(0).toUpperCase() + n.area.slice(1)}</span> <span className={`chip ${n.status === 'addressed' ? 'chip-positive' : n.status === 'rejected' ? 'chip-negative' : ''}`}>{n.status.charAt(0).toUpperCase() + n.status.slice(1)}</span></span>
             {n.status !== 'addressed' && (
-              <div className="btn-row">
-                {n.status !== 'accepted' && <button className="btn btn-small" onClick={() => store.act(() => setNoteStatus(p, n.id, 'accepted'))}>Accept Note</button>}
-                {n.status !== 'rejected' && <button className="btn btn-small" onClick={() => store.act(() => setNoteStatus(p, n.id, 'rejected'))}>Reject Note</button>}
+              <div className="row gap-2 wrap">
+                {n.status !== 'accepted' && <button className="btn btn-sm" onClick={() => store.act(() => setNoteStatus(p, n.id, 'accepted'))}>Accept Note</button>}
+                {n.status !== 'rejected' && <button className="btn btn-sm" onClick={() => store.act(() => setNoteStatus(p, n.id, 'rejected'))}>Reject Note</button>}
               </div>
             )}
           </li>
@@ -531,24 +531,24 @@ export function CharactersTab({ p }: { p: Project }) {
   const locked = !!p.delivered;
   return (
     <>
-      {err && <div className="alert bad" role="alert"><p>{err}</p></div>}
+      {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
       {impact && (
-        <div className="alert">
+        <div className="callout callout-warning">
           <p>{describeImpact(designChangeImpact(p, impact))}</p>
-          <div className="btn-row">
-            <button className="btn btn-small" onClick={() => { setErr(store.act((s) => applyDesignChange(s, p, impact, false))); setImpact(null); }}>Keep Finished Shots</button>
-            <button className="btn btn-small" onClick={() => { setErr(store.act((s) => applyDesignChange(s, p, impact, true))); setImpact(null); }}>Redo Finished Shots</button>
+          <div className="row gap-2 wrap">
+            <button className="btn btn-sm" onClick={() => { setErr(store.act((s) => applyDesignChange(s, p, impact, false))); setImpact(null); }}>Keep Finished Shots</button>
+            <button className="btn btn-sm" onClick={() => { setErr(store.act((s) => applyDesignChange(s, p, impact, true))); setImpact(null); }}>Redo Finished Shots</button>
           </div>
         </div>
       )}
-      <section className="panel">
+      <section className="card">
         <div className="inline-form">
           <TextField label="Character Name" value={name} maxLength={80} onChange={setName} />
           <button className="btn btn-primary" disabled={locked} onClick={() => { const e = edit(p, () => void addCharacter(store.state!, p, name)); setErr(e); if (!e) setName(''); }}>Add Character</button>
         </div>
       </section>
       {p.characters.map((c) => <CharacterCard key={c.id} p={p} c={c} onRemove={() => { const imp = removeCharacterImpact(p, c.id); if (imp.length) setRemoving(c); else edit(p, () => removeCharacter(p, c.id)); }} onDesignChange={() => p.tasks.length > 0 && setImpact(c.id)} />)}
-      {!p.characters.length && <div className="panel"><p>No characters yet.</p></div>}
+      {!p.characters.length && <div className="card"><p>No characters yet.</p></div>}
       {removing && (
         <Modal title="Remove This Character?" onClose={() => setRemoving(null)} footer={<>
           <button className="btn btn-danger" onClick={() => { edit(p, () => removeCharacter(p, removing.id)); setRemoving(null); }}>Remove Character</button>
@@ -572,21 +572,21 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
   };
   const scenes = p.scenes.filter((s) => s.participants.includes(c.id)).length;
   return (
-    <article className="panel" aria-label={c.name}>
-      <div className="row">
+    <article className="card" aria-label={c.name}>
+      <div className="row-wrap">
         <div className="grow">
           <h2 style={{ marginBottom: 4 }}>{c.name}</h2>
           <p className="dim" style={{ margin: 0 }}>{title(c.roleSize)}{c.functions.length ? ` · ${c.functions.map(title).join(', ')}` : ''} · {title(c.entity)} · {c.methods.map(title).join(', ')} · {plural(scenes, 'scene')}</p>
         </div>
-        <div className="btn-row">
-          <button className="btn btn-small" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? 'Close' : 'Edit Character'}</button>
-          <button className="btn btn-small btn-danger" disabled={!!p.delivered} onClick={onRemove}>Remove</button>
+        <div className="row gap-2 wrap">
+          <button className="btn btn-sm" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? 'Close' : 'Edit Character'}</button>
+          <button className="btn btn-sm btn-danger" disabled={!!p.delivered} onClick={onRemove}>Remove</button>
         </div>
       </div>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       {open && (
         <fieldset disabled={!!p.delivered} style={{ border: 0, padding: 0, marginTop: 12 }}>
-          <div className="grid3">
+          <div className="grid grid-3 form">
             <TextField label="Name" value={c.name} onChange={(v) => up({ name: v })} />
             <SelectField label="Role Size" value={c.roleSize} options={ROLE_SIZES.map((r) => ({ value: r, label: title(r) }))} onChange={(v) => up({ roleSize: v })} />
             <SelectField label="Entity" value={c.entity} options={ENTITIES.map((r) => ({ value: r, label: title(r) }))} onChange={(v) => up({ entity: v })} />
@@ -599,13 +599,13 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
           <fieldset style={{ border: 0, padding: 0 }}>
             <legend style={{ fontWeight: 600 }}>Story Functions</legend>
             <p className="dim">Independent of role size. A lead doesn't have to be the protagonist.</p>
-            <div className="chips">{FUNCTIONS.map((f) => <Check key={f} label={title(f)} checked={c.functions.includes(f)} onChange={(v) => up({ functions: v ? [...c.functions, f] : c.functions.filter((x) => x !== f) })} />)}</div>
+            <div className="chip-row">{FUNCTIONS.map((f) => <Check key={f} label={title(f)} checked={c.functions.includes(f)} onChange={(v) => up({ functions: v ? [...c.functions, f] : c.functions.filter((x) => x !== f) })} />)}</div>
           </fieldset>
           <fieldset style={{ border: 0, padding: 0 }}>
             <legend style={{ fontWeight: 600 }}>Performance Methods</legend>
-            <div className="chips">{METHODS.map((m) => <Check key={m} label={title(m)} checked={c.methods.includes(m)} onChange={(v) => up({ methods: v ? [...c.methods, m] : c.methods.filter((x) => x !== m) })} />)}</div>
+            <div className="chip-row">{METHODS.map((m) => <Check key={m} label={title(m)} checked={c.methods.includes(m)} onChange={(v) => up({ methods: v ? [...c.methods, m] : c.methods.filter((x) => x !== m) })} />)}</div>
           </fieldset>
-          <div className="grid2">
+          <div className="grid grid-2 form">
             {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} onChange={(v) => up({ entityNote: v })} />}
             <TextField label="Description" multiline value={c.description} onChange={(v) => up({ description: v })} />
             <TextField label="Wants" multiline value={c.wants} onChange={(v) => up({ wants: v })} />
@@ -628,7 +628,7 @@ function ShowFormat({ p }: { p: Project }) {
   const locked = !!comp?.results.length;
   const nameOf = (id: string) => p.contributors.find((c) => c.id === id)?.name ?? 'A participant';
   return (
-    <section className="panel" aria-labelledby="fmt-h">
+    <section className="card" aria-labelledby="fmt-h">
       <h2 id="fmt-h">Show Format</h2>
       <SelectField label="Format Family" value={u.family} options={(Object.keys(FAMILIES) as UnscriptedFamily[]).map((f) => ({ value: f, label: FAMILIES[f].label }))}
         hint={FAMILIES[u.family].description} onChange={(v) => setError(edit(p, () => setFamily(p, v)))} />
@@ -671,7 +671,7 @@ function WithdrawButton({ p, contributorId, name }: { p: Project; contributorId:
   const [error, setError] = useState<string | null>(null);
   return (
     <>
-      <button className="btn btn-small btn-danger" onClick={() => setOpen(true)}>Record Withdrawal</button>
+      <button className="btn btn-sm btn-danger" onClick={() => setOpen(true)}>Record Withdrawal</button>
       {open && (
         <Modal title={`${name} Withdraws?`} onClose={() => setOpen(false)} footer={
           <>

@@ -1,14 +1,32 @@
-import { useEffect, useId, useRef, type ReactNode } from 'react';
+import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { getPlace } from '../data/places';
 import { formatClock, localParts, monthName, weekdayName } from '../engine';
 
+/** The start screen's mark, as 1221 draws it: the clapper, then SLATE spaced wide. */
 export function Wordmark({ as = 'div' }: { as?: 'div' | 'h1' }) {
   const Tag = as;
   return (
-    <Tag className="wordmark" aria-label="SLATE">
-      <span className="clap" aria-hidden="true" />
-      <span aria-hidden="true">SLATE</span>
-    </Tag>
+    <>
+      <span className="clapper" aria-hidden="true">🎬</span>
+      <Tag className="wordmark" aria-label="SLATE"><span aria-hidden="true">SLATE</span></Tag>
+    </>
+  );
+}
+
+/** A screen's head, as 1221's: where it sits, its name, and a line on what it's for. */
+export function PageHead({ eyebrow, title, lede, actions, children }: { eyebrow?: ReactNode; title: ReactNode; lede?: ReactNode; actions?: ReactNode; children?: ReactNode }) {
+  return (
+    <div className="page-head">
+      <div className="row-between wrap" style={{ alignItems: 'flex-start' }}>
+        <div className="grow">
+          {eyebrow && <div className="eyebrow">{eyebrow}</div>}
+          <h1>{title}</h1>
+          {lede && <p className="muted" style={{ fontSize: 'var(--size-md)' }}>{lede}</p>}
+        </div>
+        {actions && <div className="row gap-2 wrap">{actions}</div>}
+      </div>
+      {children}
+    </div>
   );
 }
 
@@ -114,32 +132,87 @@ export function Modal(props: { title: string; onClose: () => void; children: Rea
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="modal-backdrop" onMouseDown={(e) => e.target === e.currentTarget && props.onClose()}>
+    <div className="overlay" onMouseDown={(e) => e.target === e.currentTarget && props.onClose()}>
       <div className="modal" role="dialog" aria-modal="true" aria-labelledby={titleId} ref={ref} tabIndex={-1}>
-        <header><h2 id={titleId}>{props.title}</h2></header>
+        <div className="modal-head">
+          <div className="row-between">
+            <h2 id={titleId}>{props.title}</h2>
+            <button className="btn btn-ghost btn-sm modal-close" onClick={props.onClose} aria-label="Close This Dialog">✕</button>
+          </div>
+        </div>
         <div className="modal-body">{props.children}</div>
-        <footer>{props.footer}</footer>
+        <div className="modal-foot">{props.footer}</div>
       </div>
     </div>
   );
 }
 
+/**
+ * 1221's tab bar (`ui/components/TabBar.tsx`): one row under the screen's head, scrolling sideways with a fade at the
+ * edge that has more, and the arrow keys moving through the tabs.
+ */
 export function SectionNav<T extends string>(props: { label: string; items: { id: T; label: string }[]; current: T; onChange: (id: T) => void }) {
-  const selId = useId();
+  const prefix = useId();
+  const list = useRef<HTMLDivElement>(null);
+  const [overflow, setOverflow] = useState<'none' | 'start' | 'end' | 'both'>('none');
+  useEffect(() => {
+    const el = list.current;
+    if (!el) return;
+    const read = () => {
+      const start = el.scrollLeft > 2;
+      const end = el.scrollLeft + el.clientWidth < el.scrollWidth - 2;
+      setOverflow(start && end ? 'both' : start ? 'start' : end ? 'end' : 'none');
+    };
+    read();
+    el.addEventListener('scroll', read, { passive: true });
+    const sized = typeof ResizeObserver === 'undefined' ? undefined : new ResizeObserver(read);
+    sized?.observe(el);
+    return () => { el.removeEventListener('scroll', read); sized?.disconnect(); };
+  }, [props.items.length]);
+  useEffect(() => {
+    list.current?.querySelector<HTMLElement>('[aria-selected="true"]')?.scrollIntoView?.({ block: 'nearest', inline: 'nearest' });
+  }, [props.current]);
+  const go = (i: number) => {
+    const next = props.items[(i + props.items.length) % props.items.length];
+    props.onChange(next.id);
+    document.getElementById(`${prefix}-tab-${next.id}`)?.focus();
+  };
+  const scroll = (way: 1 | -1) => list.current?.scrollBy?.({ left: way * list.current.clientWidth * 0.7, behavior: 'smooth' });
   return (
-    <>
-      <div className="tabs" role="tablist" aria-label={props.label}>
-        {props.items.map((it) => (
-          <button key={it.id} role="tab" aria-selected={it.id === props.current} onClick={() => props.onChange(it.id)}>{it.label}</button>
+    <div className="tabs-wrap" data-overflow={overflow}>
+      <button type="button" className="tabs-more" data-side="start" tabIndex={-1} aria-hidden="true" onClick={() => scroll(-1)}>‹</button>
+      <div className="tabs" role="tablist" aria-label={props.label} ref={list}>
+        {props.items.map((it, i) => (
+          <button key={it.id} id={`${prefix}-tab-${it.id}`} type="button" role="tab" className="tab" aria-selected={it.id === props.current} tabIndex={it.id === props.current ? 0 : -1}
+            onClick={() => props.onChange(it.id)}
+            onKeyDown={(e) => {
+              if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1); }
+              else if (e.key === 'ArrowLeft') { e.preventDefault(); go(i - 1); }
+              else if (e.key === 'Home') { e.preventDefault(); go(0); }
+              else if (e.key === 'End') { e.preventDefault(); go(props.items.length - 1); }
+            }}>{it.label}</button>
         ))}
       </div>
-      <div className="section-select field">
-        <label htmlFor={selId}>{props.label}</label>
-        <select id={selId} value={props.current} onChange={(e) => props.onChange(e.target.value as T)}>
-          {props.items.map((it) => <option key={it.id} value={it.id}>{it.label}</option>)}
-        </select>
-      </div>
-    </>
+      <button type="button" className="tabs-more" data-side="end" tabIndex={-1} aria-hidden="true" onClick={() => scroll(1)}>›</button>
+    </div>
+  );
+}
+
+/** A card with its head, as 1221's `Panel`: the title and a line under it on the left, its actions on the right. */
+export function Panel({ title, subtitle, actions, children, flush, id }: { title?: ReactNode; subtitle?: ReactNode; actions?: ReactNode; children: ReactNode; flush?: boolean; id?: string }) {
+  return (
+    <section id={id} className={`card${flush ? ' card-flush' : ''}`}>
+      {(title || actions) && (
+        <div className="panel-head" style={flush ? { padding: 'var(--s4) var(--s4) 0' } : undefined}>
+          <div>
+            {title && <h2>{title}</h2>}
+            {subtitle && <p className="muted small" style={{ margin: 0 }}>{subtitle}</p>}
+          </div>
+          {actions && <div className="row gap-2 panel-actions">{actions}</div>}
+        </div>
+      )}
+      {children}
+    </section>
   );
 }
 
@@ -149,7 +222,7 @@ export function ErrorText({ error }: { error: string | null | undefined }) {
 
 export function Empty({ title, children }: { title: string; children?: ReactNode }) {
   return (
-    <div className="panel">
+    <div className="card empty">
       <h3>{title}</h3>
       {children}
     </div>
@@ -180,8 +253,8 @@ export function realTimestamp(ms: number): string {
 export function Professions({ actingTitle }: { actingTitle: string }) {
   const all = ['Screenwriter', 'Producer', 'Director', actingTitle || 'Actor'];
   return (
-    <p className="chips" aria-label={all.join(', ')}>
-      {all.map((t, i) => <span key={t} aria-hidden="true">{i > 0 && <span className="dot"> · </span>}<span className="chip gold">{t}</span></span>)}
+    <p className="chip-row" aria-label={all.join(', ')}>
+      {all.map((t, i) => <span key={t} aria-hidden="true">{i > 0 && <span className="dot"> · </span>}<span className="chip chip-accent">{t}</span></span>)}
     </p>
   );
 }

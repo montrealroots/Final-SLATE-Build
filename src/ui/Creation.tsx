@@ -3,7 +3,7 @@ import { PRONOUNS, defaultActingTitle, languageName, searchHeritages, searchLang
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
 import { CREATION_STEPS, ageOn, creationStep, creationStepIndex, parseYmd, validateDraft, type DraftProblem } from '../engine';
 import type { CreationDraft, CreationStepId, Proficiency } from '../engine/types';
-import { Field, Professions, SelectField, TextField, Wordmark } from './components';
+import { Field, Professions, SelectField, TextField } from './components';
 import { store, useStore } from './store';
 import { WorldPlacePicker } from './WorldPicker';
 
@@ -59,14 +59,27 @@ export function Creation() {
   };
 
   return (
-    <div className="startup">
-      <div className="startup-card" style={{ width: 'min(760px, 100%)' }}>
-        <Wordmark />
-        <ol className="steps" aria-label="Character Creation Steps">
-          {CREATION_STEPS.map((p, i) => <li key={p.id} aria-current={p.id === step ? 'step' : undefined}>{i + 1}. {p.title}</li>)}
-        </ol>
-        <section className="panel">
-          <h1 id="creation-h" ref={heading} tabIndex={-1}>{creationStep(step).title}</h1>
+    <div className="start-page">
+      <div className="creation" style={{ padding: 0 }}>
+        <div className="row-between" style={{ marginBottom: 'var(--s5)', alignItems: 'flex-start' }}>
+          <div className="row gap-2" style={{ alignItems: 'flex-start' }}>
+            <span role="img" aria-label="SLATE" style={{ fontSize: 22 }}>🎬</span>
+            <div>
+              <div className="eyebrow">New Game</div>
+              <div className="creation-title">Who Are You Going To Be?</div>
+              <p className="muted small" style={{ marginTop: 2 }}>Here you create the screenwriter, producer, director and {(d.actingTitle || 'actor').toLowerCase()} you’ll play.</p>
+            </div>
+          </div>
+          <button className="btn btn-ghost btn-sm" onClick={() => store.backToStartup()}>Cancel</button>
+        </div>
+        <div className="creation-steps" role="list" aria-label="Character Creation Steps">
+          {CREATION_STEPS.map((p, i) => {
+            const at = CREATION_STEPS.findIndex((x) => x.id === step);
+            return <div key={p.id} className="creation-step" role="listitem" aria-current={p.id === step ? 'step' : undefined} data-state={p.id === step ? 'active' : i < at ? 'done' : 'waiting'}>{p.title}</div>;
+          })}
+        </div>
+        <section className="card">
+          <h1 id="creation-h" ref={heading} tabIndex={-1} style={{ fontSize: 'var(--size-lg)', marginBottom: 'var(--s1)' }}>{creationStep(step).title}</h1>
           <p className="muted">{DESCRIPTIONS[step]}</p>
           {step === 'name' && <TextField label="Name" value={d.name} maxLength={80} autoComplete="off" error={err('name')} onChange={(v) => set({ name: v })} />}
           {step === 'pronouns' && (
@@ -88,7 +101,7 @@ export function Creation() {
             </>
           )}
           {step === 'start-date' && (
-            <div className="grid2">
+            <div className="grid grid-2 form">
               <TextField label="Starting Date" type="date" value={d.startDate} error={err('startDate')} hint="Any date in 2026." onChange={(v) => set({ startDate: v })} />
               <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you start." onChange={(v) => set({ startTime: v })} />
             </div>
@@ -96,7 +109,8 @@ export function Creation() {
           {step === 'start-location' && <PlacePicker label="Starting Location" value={d.startPlaceId} error={err('startPlaceId')} onChange={(id, pl) => set({ startPlaceId: id, places: keepPlaces(d, 'startPlaceId', pl) })} />}
           {step === 'review' && <Review d={d} edit={(id) => goto(id, true)} />}
           {beginError && <p role="alert" style={{ color: 'var(--negative)' }}>{beginError}</p>}
-          <div className="btn-row spread spaced">
+        </section>
+          <div className="row-between wrap creation-foot">
             {prev ? (
               <button className="btn" onClick={() => goto(prev.id)}>Back To {prev.title}</button>
             ) : (
@@ -116,8 +130,7 @@ export function Creation() {
               }}>Start My Story</button>
             )}
           </div>
-        </section>
-        <p className="dim">Your choices are saved as you go.</p>
+        <p className="dim xs center" style={{ marginTop: 'var(--s5)' }}>Your choices are saved as you go.</p>
       </div>
     </div>
   );
@@ -165,9 +178,9 @@ function HeritageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
       {d.heritages.length ? (
         <ul className="list">
           {d.heritages.map((h) => (
-            <li key={h.id} className="row">
+            <li key={h.id} className="row-wrap">
               <span className="grow">{h.label}{h.custom ? <span className="dim"> (in your words)</span> : null}</span>
-              <button className="btn btn-small" onClick={() => set({ heritages: d.heritages.filter((x) => x.id !== h.id) })} aria-label={`Remove ${h.label}`}>Remove</button>
+              <button className="btn btn-sm" onClick={() => set({ heritages: d.heritages.filter((x) => x.id !== h.id) })} aria-label={`Remove ${h.label}`}>Remove</button>
             </li>
           ))}
         </ul>
@@ -207,13 +220,13 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
       {d.languages.length ? (
         <ul className="list">
           {d.languages.map((l) => (
-            <li key={l.code} className="row">
+            <li key={l.code} className="row-wrap">
               <span className="grow">{languageName(l.code)}</span>
               <div style={{ minWidth: 200 }}>
                 <SelectField label={`${languageName(l.code)} Proficiency`} value={l.proficiency} options={PROFICIENCIES.map((p) => ({ value: p, label: p }))}
                   onChange={(v) => set({ languages: d.languages.map((x) => (x.code === l.code ? { ...x, proficiency: v } : x)) })} />
               </div>
-              <button className="btn btn-small" onClick={() => set({ languages: d.languages.filter((x) => x.code !== l.code) })} aria-label={`Remove ${languageName(l.code)}`}>Remove</button>
+              <button className="btn btn-sm" onClick={() => set({ languages: d.languages.filter((x) => x.code !== l.code) })} aria-label={`Remove ${languageName(l.code)}`}>Remove</button>
             </li>
           ))}
         </ul>
@@ -249,7 +262,7 @@ function Review({ d, edit }: { d: CreationDraft; edit: (id: CreationStepId) => v
   };
   return (
     <div className="stack">
-      <div className="panel">
+      <div className="card">
         <h2>{d.name || 'Unnamed'}</h2>
         <Professions actingTitle={d.actingTitle} />
         <dl className="kv review-list">
@@ -258,7 +271,7 @@ function Review({ d, edit }: { d: CreationDraft; edit: (id: CreationStepId) => v
               <dt>{r.label}</dt>
               <dd>
                 <span>{value[r.step]}</span>
-                <button className="btn btn-small" onClick={() => edit(r.step)}>{r.edit}</button>
+                <button className="btn btn-sm" onClick={() => edit(r.step)}>{r.edit}</button>
               </dd>
             </div>
           ))}

@@ -78,7 +78,7 @@ test('Start My Story with something missing goes to that screen, and back to Rev
   await page.getByRole('button', { name: 'Save And Return To Review' }).click();
   await expect(row(page, 'Born')).toContainText('Mexico City');
   await page.getByRole('button', { name: 'Start My Story' }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 });
 
 test('typing straight after Next is kept, even when the field is chosen within a frame of the new screen appearing', async ({ page }) => {

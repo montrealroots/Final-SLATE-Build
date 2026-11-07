@@ -16,7 +16,7 @@ test('phone device: screens fit, drawer works, focused fields stay visible', asy
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).tap();
   await page.getByRole('button', { name: 'Start My Story' }).tap();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   const overflow = () => page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   for (const v of ['Home', 'Calendar', 'Projects', 'Profile'] as const) {
     await nav(page, v);

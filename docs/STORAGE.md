@@ -123,7 +123,7 @@ Stored in IndexedDB (gzip), per copy:
 
 The game itself, production build in Chromium (`scripts/perf-browser.mjs`, median of 3):
 
-| Career | Open (Continue) | Advance one month | Save And Exit after it |
+| Career | Open (Continue) | Advance one month | Save & Exit after it |
 | --- | --- | --- | --- |
 | 1 year | 74 ms | 117 ms | 117 ms |
 | 10 years | 108 ms | 336 ms | 227 ms |
@@ -154,7 +154,7 @@ batch of events copies the game for rollback (`docs/PERFORMANCE.md`), about 1.5 
 ## Failure Behavior, Tested
 
 - **Full storage:** the transaction fails as a whole; nothing from that save is stored; the game says the storage is
-  full, that the last save is still there, and offers Free Up Space and Export Save; Save And Exit stays in the game.
+  full, that the last save is still there, and offers Free Up Space and Export Save; Save & Exit stays in the game.
   (`e2e/storage.spec.ts`, `e2e/failures.spec.ts` with injected QuotaExceededError; `tests/vault.test.ts`.)
 - **Failed writes at every step** of the save function (`tests/save-recovery.test.ts`), and failed commits
   (`tests/vault.test.ts`): the last good save stays, and the save is never reported as saved.

@@ -34,13 +34,13 @@ test("a processing failure in one save doesn't leave another save's clock stoppe
   await page.reload();
   await page.getByRole('button', { name: 'Saved Games' }).click();
   await page.getByRole('button', { name: 'Continue Broken Save' }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await advance(page, 'next-day');
   await expect(page.getByText(/Time is paused\./).first()).toBeVisible();
   // Switch to the other save from inside the game.
   await nav(page, 'Saved Games');
   await page.getByRole('button', { name: /^Continue (?!Broken)/ }).first().click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await expect(page.getByText(/Time is paused\./)).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Advance', exact: true }).first()).toBeEnabled();
   const t1 = await clockText(page);
@@ -61,7 +61,7 @@ test('a recovery message survives slow loading and names the copy that was opene
   });
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   const notice = page.getByText(/so the previous save, from .+, was opened\. The damaged save is kept, not deleted\./);
   await expect(notice).toBeVisible();
   const when = new Date(bak.updatedAtReal);

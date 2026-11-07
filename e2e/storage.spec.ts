@@ -9,7 +9,7 @@ test.beforeEach(({}, info) => test.skip(!['desktop', 'phone'].includes(info.proj
 async function continueGame(page: Page) {
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 }
 
 test('full storage: saving says why, the last save stays, recovery copies can be exported and deleted, and saving resumes', async ({ page }) => {
@@ -60,7 +60,7 @@ test('a save whose only good copy is a backup taken before an update is still li
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByText(/^Your latest save couldn't be found, so the copy kept before this save was updated, from .+, was opened\.$/)).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await nav(page, 'Saved Games');
   await expect(page.getByRole('list', { name: 'Recovery Copies' }).getByText(/^Copy from before an update of /)).toBeVisible();
 });

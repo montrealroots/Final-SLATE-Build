@@ -14,7 +14,7 @@ async function quickStart(page: Page, place: string): Promise<void> {
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
   await page.getByRole('button', { name: 'Start My Story' }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 }
 
 test('3D animation through the UI: voice cast, modeling and rigging before animation, render capacity', async ({ page }, info) => {

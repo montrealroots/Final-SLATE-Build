@@ -1,141 +1,193 @@
 import { useEffect, useState, type ReactNode } from 'react';
-import { placeLabel } from '../data/places';
 import {
-  DAY, FORECAST_HORIZON_DAYS, addLocal, currentPlace, currentZone, dateKey, formatDuration, localParts, localToInstant, nextNotableEvent, weatherOn,
+  DAY, FORECAST_HORIZON_DAYS, addLocal, currentZone, dateKey, formatDuration, formatZoneAbbrev, localParts, localToInstant, nextNotableEvent,
 } from '../engine';
-import { Check, Modal, SelectField, TextField, Wordmark, longLocal } from './components';
-import { DESTINATIONS, destinationOf } from './routes';
+import { Check, Modal, SelectField, TextField, longLocal } from './components';
+import { HOME, RAIL_DESTINATIONS, destinationOf, type Destination } from './routes';
 import { store, useClock, useGame, useStore } from './store';
 
 
+export const DRAWER_QUERY = '(max-width: 56.25em), (max-height: 500px)';
+
+function useMedia(query: string): boolean {
+  const [on, setOn] = useState(() => typeof matchMedia === 'function' && matchMedia(query).matches);
+  useEffect(() => {
+    if (typeof matchMedia !== 'function') return;
+    const m = matchMedia(query);
+    const read = () => setOn(m.matches);
+    read();
+    m.addEventListener('change', read);
+    return () => m.removeEventListener('change', read);
+  }, [query]);
+  return on;
+}
+
+/** The game's frame, as 1221's (`ui/shell/GameShell.tsx`): the bar across the top, the rail down the left, the screen. */
 export function Shell({ children }: { children: ReactNode }) {
   const s = useStore();
-  const [drawer, setDrawer] = useState(false);
+  const g = useGame();
+  const [railOpen, setRailOpen] = useState(false);
   const [exitError, setExitError] = useState(false);
+  const drawer = useMedia(DRAWER_QUERY);
   const route = s.route;
-  const active = destinationOf(route.view).view;
+  const here = destinationOf(route.view);
 
   useEffect(() => {
-    if (!drawer) return;
-    const opener = document.activeElement as HTMLElement | null;
-    // Move focus into the drawer, keep Tab inside it, and return focus when it closes.
-    requestAnimationFrame(() => document.querySelector<HTMLElement>('.drawer nav a')?.focus());
+    if (!railOpen) return;
+    // Into the drawer as it opens; Escape closes it and returns to Menu.
+    requestAnimationFrame(() => document.querySelector<HTMLElement>('#rail .rail-item')?.focus());
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setDrawer(false);
-      if (e.key === 'Tab') {
-        const items = [...document.querySelectorAll<HTMLElement>('.drawer a, .drawer button')];
-        if (!items.length) return;
-        const first = items[0];
-        const last = items[items.length - 1];
-        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
-      }
+      if (e.key === 'Escape') { setRailOpen(false); document.querySelector<HTMLElement>('.rail-toggle')?.focus(); }
     };
-    document.addEventListener('keydown', onKey);
-    return () => {
-      document.removeEventListener('keydown', onKey);
-      opener?.focus?.();
-    };
-  }, [drawer]);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [railOpen]);
 
-  const nav = (
-    <nav aria-label="Main">
-      {DESTINATIONS.map((n) => (
-        <a key={n.view} href={`#${n.view}`} aria-current={active === n.view ? 'page' : undefined}
-          onClick={(e) => { e.preventDefault(); setDrawer(false); store.go({ view: n.view }); }}>{n.label}</a>
-      ))}
-    </nav>
-  );
+  // The drawer and its shade start under the bar, which is two rows on a phone.
+  useEffect(() => {
+    const bar = document.querySelector<HTMLElement>('.topbar');
+    if (!bar || typeof ResizeObserver === 'undefined') return;
+    const set = () => document.documentElement.style.setProperty('--bar-h', `${bar.offsetHeight}px`);
+    set();
+    const ro = new ResizeObserver(set);
+    ro.observe(bar);
+    return () => ro.disconnect();
+  }, []);
+
+  const go = (view: string) => { setRailOpen(false); store.go({ view }); };
+  // The drawer closes first, so a save that fails shows its message rather than sitting under the drawer.
+  const exit = async () => { setRailOpen(false); setExitError(!(await store.saveAndExit())); };
+  const current = (d: Destination) => (here === d ? (route.view === d.view || !d.homeOnly ? 'page' : 'true') : d === HOME && here.homeOnly ? 'true' : undefined);
 
   return (
     <div className="shell">
-      <a className="skip-link" href="#main">Skip To Content</a>
-      <TopBar onMenu={() => setDrawer(true)} onSettings={() => store.go({ view: 'settings' })} onExit={async () => setExitError(!(await store.saveAndExit()))} />
-      {s.readOnly && (
-        <div className="alert bad" role="alert" style={{ margin: '12px 16px 0' }}>
-          <p>This game is open in another tab, so time isn't running here and changes are paused.</p>
-          <button className="btn btn-primary" onClick={() => store.takeOver()}>Take Over Here</button>
-        </div>
-      )}
-      {exitError && s.saveStatus !== 'saved' && (
-        <div className="alert bad" role="alert" style={{ margin: '12px 16px 0' }}>
-          <p>Your game couldn't be saved. Keep this window open and try again.</p>
-          <button className="btn btn-primary" onClick={async () => setExitError(!(await store.saveAndExit()))}>Try Again</button>
-        </div>
-      )}
-      <div className="body">
-        <aside className="rail" aria-label="Navigation">{nav}</aside>
-        <main id="main" tabIndex={-1}>
-          <div className="page">
+      <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>Skip To Content</a>
+      <TopBar railOpen={railOpen} onMenu={() => setRailOpen((o) => !o)} drawer={drawer} hereLabel={here.label} onExit={exit} />
+      <div className="shell-body">
+        <nav className="rail" id="rail" data-open={railOpen} aria-label="Main Navigation">
+          <div className="rail-group">
+            <button className="rail-item" aria-current={current(HOME)} title={HOME.detail} onClick={() => go('home')}>
+              <span className="grow truncate">Home</span>
+            </button>
+          </div>
+          {RAIL_DESTINATIONS.map((group) => (
+            <div key={group.label} className="rail-group">
+              <div className="rail-group-label">{group.label}</div>
+              {group.items.map((item) => (
+                <button key={item.view} className="rail-item" aria-current={current(item)} title={item.detail} onClick={() => go(item.view)}>
+                  <span className="grow truncate">{item.label}</span>
+                </button>
+              ))}
+            </div>
+          ))}
+          <div className="rail-group rail-player">
+            <div className="rail-group-label">You</div>
+            <button type="button" className="rail-you rail-item" aria-label={`${g.character.name}, Open Your Player Profile`} onClick={() => go('profile')}>
+              <span className="col gap-1">
+                <span className="small strong truncate">{g.character.name}</span>
+                <span className="xs dim truncate">{g.character.actingTitle || 'Actor'}</span>
+              </span>
+            </button>
+          </div>
+          {drawer && (
+            <div className="rail-group rail-foot">
+              <SaveGroup onExit={exit} />
+            </div>
+          )}
+        </nav>
+        {railOpen && <button type="button" className="rail-shade" aria-label="Close Navigation" onClick={() => setRailOpen(false)} />}
+        <main className="main" id="main" tabIndex={-1}>
+          <div className="main-inner">
+            {s.readOnly && (
+              <div className="callout callout-negative" role="alert">
+                <p>This game is open in another tab, so time isn't running here and changes are paused.</p>
+                <button className="btn btn-primary btn-sm" onClick={() => store.takeOver()}>Take Over Here</button>
+              </div>
+            )}
+            {exitError && s.saveStatus !== 'saved' && (
+              <div className="callout callout-negative" role="alert">
+                <p>Your game couldn't be saved. Keep this window open and try again.</p>
+                <button className="btn btn-primary btn-sm" onClick={exit}>Try Again</button>
+              </div>
+            )}
             <NoticeBanner />
             {children}
           </div>
         </main>
       </div>
-      {drawer && (
-        <>
-          <div className="drawer-backdrop" onClick={() => setDrawer(false)} />
-          <div className="drawer" role="dialog" aria-modal="true" aria-label="Menu">
-            <div className="btn-row spread"><Wordmark /><button className="btn" onClick={() => setDrawer(false)}>Close Menu</button></div>
-            <div className="spaced">{nav}</div>
-          </div>
-        </>
-      )}
     </div>
   );
 }
 
-function TopBar({ onMenu, onSettings, onExit }: { onMenu: () => void; onSettings: () => void; onExit: () => void }) {
+/** The save side of the bar: whether it's saved, and Save & Exit. In the drawer's foot while the rail is a drawer. */
+function SaveGroup({ onExit }: { onExit: () => void }) {
+  const s = useStore();
+  const saveLabel = s.saveStatus === 'saving' ? 'Saving…' : s.saveStatus === 'saved' ? 'Saved' : s.saveStatus === 'error' ? "Couldn't Save" : 'Not Saved Yet';
+  return (
+    <div className="topbar-group" role="group" aria-label="Your Save">
+      <span className={`save-state xs ${s.saveStatus === 'error' ? 'negative' : 'dim'}`} role="status" aria-live="polite" style={{ minWidth: 52, textAlign: 'right' }}>{s.busy ? `${s.busy}…` : saveLabel}</span>
+      <button className="btn btn-ghost btn-sm" onClick={onExit}>Save &amp; Exit</button>
+    </div>
+  );
+}
+
+function TopBar({ railOpen, onMenu, drawer, hereLabel, onExit }: { railOpen: boolean; onMenu: () => void; drawer: boolean; hereLabel: string; onExit: () => void }) {
   const s = useStore();
   const g = useGame();
   const now = useClock() || g.now;
-  const place = currentPlace(g);
   const zone = currentZone(g);
   const t = longLocal(now, zone);
   const p = localParts(now, zone);
-  const w = weatherOn(g.seed, place, dateKey(now, zone));
   const [advance, setAdvance] = useState(false);
   const [sleep, setSleep] = useState(false);
-  const saveLabel = s.saveStatus === 'saving' ? 'Saving' : s.saveStatus === 'saved' ? 'Saved' : s.saveStatus === 'error' ? "Couldn't Save" : '';
+  const blocked = !!s.busy || s.readOnly || g.sleep.asleep || !!s.processingProblem;
+  const running = !s.readOnly && !s.processingProblem;
   return (
     <header className="topbar">
-      <button className="btn menu-btn" onClick={onMenu} aria-haspopup="dialog">Menu</button>
-      <Wordmark />
-      <div className="context" aria-label="Current Status">
-        <span className="who">{g.character.name}</span>
-        <button className="btn-quiet btn btn-small" onClick={() => store.go({ view: 'place', placeId: place.id })} aria-label={`${placeLabel(place)}, ${w.condition}, ${Math.round(w.high)} degrees. Open place details.`}>
-          {place.name} · {w.condition} · {Math.round(w.low)}° To {Math.round(w.high)}°C
-        </button>
-        <span>{t.weekday}, {t.date}</span>
-        <span className="clockface" aria-live="off">{t.time.replace(' ', `:${String(p.second).padStart(2, '0')} `)}</span>
+      <button className="btn btn-ghost btn-sm rail-toggle" onClick={onMenu} aria-expanded={railOpen} aria-controls="rail">Menu</button>
+      <button className="topbar-brand btn btn-ghost" onClick={() => store.go({ view: 'home' })} aria-label="SLATE, Go To Home">
+        <span aria-hidden="true">🎬</span>
+        <span className="hide-sm">SLATE</span>
+      </button>
+      {drawer && <span className="topbar-here">{hereLabel}</span>}
+      <div className="topbar-clock" aria-live="off">
+        <strong className="clockface">{t.time.replace(' ', `:${String(p.second).padStart(2, '0')} `)}</strong>
+        <span className="topbar-clock-sep" aria-hidden="true">·</span>
+        <span className="topbar-clock-date">{t.weekday}, {t.date}</span>
+        <span className="topbar-clock-zone">{formatZoneAbbrev(now, zone)}</span>
+        <span className="clock-state" data-running={running}>{g.sleep.asleep ? 'Asleep' : running ? 'Running' : 'Paused'}</span>
       </div>
-      <div className="tools">
-        <span className={`save-state ${s.saveStatus === 'error' ? 'error' : ''}`} role="status" aria-live="polite">{s.busy ? `${s.busy}…` : saveLabel}</span>
-        <button className="btn btn-small btn-primary" disabled={!!s.busy || s.readOnly || g.sleep.asleep || !!s.processingProblem} onClick={() => setAdvance(true)}>Advance</button>
-        <button className="btn btn-small" disabled={!!s.busy || s.readOnly || g.sleep.asleep || !!s.processingProblem} onClick={() => setSleep(true)}>Sleep</button>
-        <button className="btn btn-small" onClick={onSettings}>Settings</button>
-        <button className="btn btn-small" onClick={onExit}>Save And Exit</button>
+      <div className="topbar-time row gap-2" role="group" aria-label="Time">
+        <button className="btn btn-sm" disabled={blocked} onClick={() => setSleep(true)}>Sleep</button>
+        <button className="btn btn-sm" disabled={blocked} onClick={() => setAdvance(true)}>Advance</button>
       </div>
+      <div className="grow" />
+      {!drawer && (
+        <>
+          <span className="topbar-divider" aria-hidden="true" />
+          <SaveGroup onExit={onExit} />
+        </>
+      )}
       {advance && <AdvanceDialog onClose={() => setAdvance(false)} />}
       {sleep && <SleepDialog onClose={() => setSleep(false)} />}
       {s.processingProblem && (
-        <div className="alert bad save-alert" role="alert">
+        <div className="callout callout-negative save-alert" role="alert">
           <p>Time is paused. {s.processingProblem}</p>
-          <div className="btn-row">
-            <button className="btn btn-primary" onClick={() => store.retryTime()}>Try Again</button>
-            <button className="btn" onClick={() => store.exportSave()}>Export Save</button>
+          <div className="row gap-2 wrap">
+            <button className="btn btn-primary btn-sm" onClick={() => store.retryTime()}>Try Again</button>
+            <button className="btn btn-sm" onClick={() => store.exportSave()}>Export Save</button>
           </div>
         </div>
       )}
       {s.saveStatus === 'error' && (
-        <div className="alert bad save-alert" role="alert">
+        <div className="callout callout-negative save-alert" role="alert">
           {s.saveStorageFull
             ? <p>Your game couldn't be saved because this browser's storage for SLATE is full. Your last save is still there. Free up space in Saved Games, or export this game, then try again.</p>
             : <p>Your game couldn't be saved. Keep this window open and try again.</p>}
-          <div className="btn-row">
-            <button className="btn btn-primary" onClick={() => store.saveNow()}>Try Again</button>
-            {s.saveStorageFull && <button className="btn" onClick={() => store.go({ view: 'saves' })}>Free Up Space</button>}
-            <button className="btn" onClick={() => store.exportSave()}>Export Save</button>
+          <div className="row gap-2 wrap">
+            <button className="btn btn-primary btn-sm" onClick={() => store.saveNow()}>Try Again</button>
+            {s.saveStorageFull && <button className="btn btn-sm" onClick={() => store.go({ view: 'saves' })}>Free Up Space</button>}
+            <button className="btn btn-sm" onClick={() => store.exportSave()}>Export Save</button>
           </div>
         </div>
       )}
@@ -182,7 +234,7 @@ function AdvanceDialog({ onClose }: { onClose: () => void }) {
         { value: 'time', label: 'A Time I Choose' },
       ]} />
       {mode === 'time' && (
-        <div className="grid2">
+        <div className="grid grid-2 form">
           <TextField label="Date" type="date" value={date} onChange={setDate} />
           <TextField label="Time" type="time" value={time} onChange={setTime} error={error} />
         </div>
@@ -237,12 +289,12 @@ function NoticeBanner() {
   const n = s.notice;
   if (!n) return null;
   return (
-    <div className={`alert ${n.kind === 'interrupt' ? '' : 'info'}`} role="status" aria-live="polite">
-      <h2 style={{ fontSize: 'var(--size-md)' }}>{n.title}</h2>
+    <div className={`callout ${n.kind === 'interrupt' ? 'callout-warning' : 'callout-info'}`} role="status" aria-live="polite">
+      <h2 style={{ fontSize: 'var(--size-md)', marginBottom: 'var(--s1)' }}>{n.title}</h2>
       <p>{n.text}</p>
-      <div className="btn-row">
-        {n.snooze && !g.sleep.asleep && <button className="btn btn-small" onClick={() => { store.dismissNotice(); store.sleep(g.now + 10 * 60_000, true); }}>Snooze 10 Minutes</button>}
-        <button className="btn btn-small btn-primary" onClick={() => store.dismissNotice()}>Dismiss</button>
+      <div className="row gap-2 wrap">
+        {n.snooze && !g.sleep.asleep && <button className="btn btn-sm" onClick={() => { store.dismissNotice(); store.sleep(g.now + 10 * 60_000, true); }}>Snooze 10 Minutes</button>}
+        <button className="btn btn-sm btn-primary" onClick={() => store.dismissNotice()}>Dismiss</button>
       </div>
     </div>
   );
@@ -250,11 +302,11 @@ function NoticeBanner() {
 
 export function Breadcrumbs({ items }: { items: { label: string; route?: { view: string; projectId?: string; tab?: string } }[] }) {
   return (
-    <nav className="crumbs" aria-label="Breadcrumb">
+    <nav className="breadcrumbs" aria-label="Breadcrumb">
       {items.map((it, i) => (
-        <span key={i}>
-          {it.route ? <button onClick={() => store.go(it.route!)}>{it.label}</button> : <span aria-current="page">{it.label}</span>}
-          {i < items.length - 1 && <span aria-hidden="true"> / </span>}
+        <span key={i} className="row gap-2">
+          {i > 0 && <span aria-hidden="true">›</span>}
+          {it.route ? <button onClick={() => store.go(it.route!)}>{it.label}</button> : <span className="muted" aria-current="page">{it.label}</span>}
         </span>
       ))}
     </nav>
