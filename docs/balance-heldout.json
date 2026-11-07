@@ -16,7 +16,7 @@
     "live action + world place": {
       "runs": 10,
       "deliveredRate": 1,
-      "medianDays": 23,
+      "medianDays": 27,
       "meanOverall": 60.7,
       "withdrawals": 0,
       "integrity": {

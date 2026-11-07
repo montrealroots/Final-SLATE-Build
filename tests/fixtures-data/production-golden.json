@@ -1,16 +1,16 @@
 {
   "live-action short / g1": {
     "delivered": true,
-    "days": 23,
-    "settled": 18730,
-    "payments": 28417405,
+    "days": 26,
+    "settled": 17630,
+    "payments": 133502192,
     "tasks": 3811957035,
     "shootDays": "2026-01-29:shot 2026-01-30:shot",
-    "credits": "Cast:Thandiwe Kim:Lead; Colorist:Darius Moreau; Composer:Zara Tran; Costume Designer:Chloé Wójcik; Delivery Quality Control:Benedikt Moreau; Directed By:Rin Sato-Moreau; Director Of Photography:Yusuf Gallagher; Editor:Yara Dubois; Produced By:Rin Sato-Moreau; Production Designer:Gabriel Chowdhury; Re-Recording Mixer:Yohannes Haddad; Sound Designer:Jae-won Hosseini; Written By:Rin Sato-Moreau",
+    "credits": "Cast:Thandiwe Kim:Lead; Composer:Zara Tran; Costume Designer:Chloé Wójcik; Directed By:Rin Sato-Moreau; Director Of Photography:Yusuf Gallagher; Editor:Yara Dubois; Produced By:Rin Sato-Moreau; Production Designer:Gabriel Chowdhury; Sound Designer:Jae-won Hosseini; Written By:Rin Sato-Moreau",
     "quality": {
       "script": 48,
       "direction": 69,
-      "craft": 62,
+      "craft": 61,
       "editing": 74,
       "music": 64,
       "performance:c3:np_actor_GB_17": 69,
@@ -20,12 +20,12 @@
   },
   "live-action short / g2": {
     "delivered": true,
-    "days": 23,
-    "settled": 18430,
-    "payments": 1603826165,
+    "days": 26,
+    "settled": 17300,
+    "payments": 224196662,
     "tasks": 3811957035,
     "shootDays": "2026-01-29:shot 2026-01-30:shot",
-    "credits": "Cast:Pilar Ibrahim:Lead; Colorist:Bruno Van Dijk; Composer:Willa Ibrahim; Costume Designer:Xiomara Fitzgerald; Delivery Quality Control:Dmitri Laurent; Directed By:Rin Sato-Moreau; Director Of Photography:Beatriz Hosseini; Editor:Esi Yamamoto; Produced By:Rin Sato-Moreau; Production Designer:Elif Santos; Re-Recording Mixer:Ingrid Usman; Sound Designer:Dev Achebe; Written By:Rin Sato-Moreau",
+    "credits": "Cast:Pilar Ibrahim:Lead; Composer:Willa Ibrahim; Costume Designer:Xiomara Fitzgerald; Directed By:Rin Sato-Moreau; Director Of Photography:Beatriz Hosseini; Editor:Esi Yamamoto; Produced By:Rin Sato-Moreau; Production Designer:Elif Santos; Sound Designer:Dev Achebe; Written By:Rin Sato-Moreau",
     "quality": {
       "script": 48,
       "direction": 68,

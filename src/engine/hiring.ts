@@ -372,21 +372,55 @@ export interface StaffingProposal {
   total: number;
 }
 
+/** Experienced people free for the production, cheapest first: whom proposals and estimates pick from. */
+function affordablePool(state: GameState, p: Project, roleId: string, win = productionWindow(state, p)): Person[] {
+  return roleCandidates(state, p, roleId)
+    .filter((c) => c.experience >= 2 && isAvailable(state, c, win.from, win.to, p.id).ok)
+    .sort((a, b) => a.dayRate - b.dayRate);
+}
+
+/**
+ * Every required role still to fill, at its lowest experienced rate: what a producer budgets before hiring. Optional
+ * roles stay a deliberate choice. On a micro budget a role that can take on other needed roles comes first, so one
+ * person combines them (COMBINES). Until November 7, 2026 proposals went alphabetically, so the colorist and the
+ * re-recording mixer were hired before the editor and sound designer who would have covered them.
+ */
+export function requiredCrewPlan(state: GameState, p: Project): { nr: NeededRole; cost: number }[] {
+  const win = productionWindow(state, p);
+  let required = neededRoles(p, state).filter((r) => r.required);
+  if (p.funding.scenarioId === 'micro') {
+    const ids = new Set(required.map((r) => r.roleId));
+    const reach = (r: NeededRole) => (COMBINES[r.roleId] ?? []).filter((x) => ids.has(x)).length;
+    required = [...required].sort((a, b) => reach(b) - reach(a));
+  }
+  const plan: { nr: NeededRole; cost: number }[] = [];
+  for (const nr of required) {
+    const needsOwnPerson = nr.roleId === 'camera-operator' && p.axes.format === 'unscripted-series';
+    if (p.hires.some((h) => (needsOwnPerson ? h.roleId === nr.roleId : covers(h.roleId, nr.roleId)) && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
+    if (!needsOwnPerson && plan.some((x) => covers(x.nr.roleId, nr.roleId))) continue;
+    const cheapest = affordablePool(state, p, nr.roleId, win)[0];
+    plan.push({ nr, cost: cheapest ? cheapest.dayRate * estimateDays(p, nr.roleId) : 0 });
+  }
+  return plan;
+}
+
 export function proposeStaffing(state: GameState, p: Project, dept: string): { proposals: StaffingProposal[]; skipped: string[] } {
   const proposals: StaffingProposal[] = [];
   const skipped: string[] = [];
   const win = productionWindow(state, p);
-  let budget = ledgerTotals(p).available;
-  // Proposals cover required roles; optional ones stay a deliberate choice.
-  for (const nr of neededRoles(p, state).filter((r) => r.dept === dept && r.required)) {
-    const needsOwnPerson = nr.roleId === 'camera-operator' && p.axes.format === 'unscripted-series';
-    if (p.hires.some((h) => (needsOwnPerson ? h.roleId === nr.roleId : covers(h.roleId, nr.roleId)) && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
-    if (!needsOwnPerson && proposals.some((x) => covers(x.roleId, nr.roleId))) continue;
-    const pool = roleCandidates(state, p, nr.roleId)
-      .filter((c) => c.experience >= 2 && isAvailable(state, c, win.from, win.to, p.id).ok)
-      .sort((a, b) => a.dayRate - b.dayRate);
+  const available = ledgerTotals(p).available;
+  const plan = requiredCrewPlan(state, p);
+  // Hire for a crew the money can pay, or not at all. Until November 7, 2026 the first departments staffed could take
+  // everything, and a micro stop-motion short hired its puppet makers and composer but never its animator.
+  const crew = plan.reduce((a, x) => a + x.cost, 0);
+  if (crew > available) {
+    if (plan.some((x) => x.nr.dept === dept)) skipped.push(`The required crew still to hire costs about ${money(crew)} at the lowest rates, and ${money(available)} is uncommitted. Raise the rest before staffing, or cut scope.`);
+    return { proposals, skipped };
+  }
+  let budget = available;
+  for (const { nr } of plan.filter((x) => x.nr.dept === dept)) {
     const days = estimateDays(p, nr.roleId);
-    const pick = pool.find((c) => c.dayRate * days <= budget);
+    const pick = affordablePool(state, p, nr.roleId, win).find((c) => c.dayRate * days <= budget);
     if (!pick) {
       skipped.push(`${roleLabel(nr.roleId)}: no available candidate fits the remaining budget.`);
       continue;

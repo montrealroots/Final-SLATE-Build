@@ -3,7 +3,7 @@
 import { writeFileSync } from 'fs';
 import { expect, it } from 'vitest';
 import { DAY, ledgerTotals, processUntil } from '../engine-api';
-import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from '../helpers';
+import { agreedFunding, approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from '../helpers';
 import type { GameState, Project } from '../../src/engine/types';
 
 const SEEDS = Array.from({ length: 30 }, (_, i) => `seed${i + 1}`);
@@ -36,6 +36,12 @@ const families: Record<string, Family> = {
     if (v.copies) for (const c of p.characters) p.schedule.puppetCopies[c.id] = v.copies;
     return p;
   },
+  // Micro-budget animation (November 7, 2026): funded as a player is, by the starting backing up to a target that
+  // follows the approved script's estimate (src/engine/estimate.ts). Before the estimate, both delivered in no seed.
+  'stop-motion short (micro budget)': (s) => buildProject(s, { title: 'H', format: 'short', medium: 'animation', technique: 'stop-motion', genres: ['family'], runtime: 2, quality: 'limited', scenario: 'micro' },
+    [{ name: 'Pip', patch: { roleSize: 'lead' } }, { name: 'Crow', patch: { functions: ['antagonist'] } }], [{ place: 'Drawer', chars: ['Pip'], minutes: 1 }, { place: 'Sill', chars: ['Pip', 'Crow'], minutes: 1 }]),
+  '3D CG short (micro budget)': (s) => buildProject(s, { title: 'I', format: 'short', medium: 'animation', technique: '3d-cg', genres: ['science-fiction'], runtime: 2, quality: 'limited', scenario: 'micro' },
+    [{ name: 'Nova', patch: { roleSize: 'lead' } }, { name: 'Drone', patch: { entity: 'robot' } }], [{ place: 'Deck', chars: ['Nova', 'Drone'], minutes: 1 }, { place: 'Hangar', chars: ['Drone'], minutes: 1 }]),
   'TV limited series (2 episodes)': (s) => buildProject(s, { title: 'G', format: 'limited-series', medium: 'live-action', genres: ['crime'], episodes: 2, runtime: 25 },
     [{ name: 'Detective', patch: { roleSize: 'lead' } }, { name: 'Suspect', patch: { seriesInvolvement: 'guest' } }],
     [{ place: 'Precinct', chars: ['Detective'], minutes: 3, extra: { episode: 1 } }, { place: 'Alley', intExt: 'EXT', chars: ['Detective', 'Suspect'], minutes: 3, extra: { episode: 1 } }, { place: 'Precinct', chars: ['Detective'], minutes: 3, extra: { episode: 2 } }]),
@@ -45,6 +51,9 @@ function run(name: string, seed: string, variant: Record<string, number> = {}) {
   const s = startLife(`${name}-${seed}`, 'gb-london');
   const p = families[name](s, variant);
   approve(s, p);
+  // The starting backing pays what is still to raise toward the target (finance.ts); for a micro-budget script the
+  // target follows its estimate. Low-budget families start at their size's amount, as before.
+  if (p.funding.scenarioId === 'micro' && p.finance!.target > p.funding.fund) agreedFunding(p, p.finance!.target - p.funding.fund);
   castAll(s, p);
   staffAll(s, p);
   for (let i = 0; i < 10; i++) {
@@ -89,6 +98,8 @@ it('balance experiments', () => {
     (out.families as Record<string, unknown>)[name] = summarize(rows);
     const bad = rows.filter((r) => r.cashNegative || r.doubleSettle); if (bad.length) writeFileSync("docs/_bad.json", JSON.stringify({ name, bad }, null, 1));
     expect(bad.length).toBe(0);
+    // A micro budget finishes what it was sized for, in every seed.
+    if (name.includes('micro')) expect(rows.filter((r) => !r.delivered).length).toBe(0);
   }
   const sub = SEEDS.slice(0, 15);
   const sens = out.sensitivity as Record<string, unknown>;
