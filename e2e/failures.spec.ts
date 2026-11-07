@@ -157,3 +157,27 @@ test('a failure while time passes pauses time, keeps the game as it was, and nev
   await advance(page, 'next-day');
   await expect(page.getByText(/Time is paused\. Something went wrong while time passed \(arrive\)/)).toBeVisible();
 });
+
+test('a genre catalog that fails to load stops the game from opening with the reason, and Try Again opens it', async ({ page }) => {
+  expectErrors('Aborts the genre catalog request.');
+  let fail = true;
+  // The catalog is fetched on its own since November 7, 2026 (genre-catalog-<hash>.json in the production build). Only
+  // the data fetch is refused: the dev server also serves the file's URL as a module, with a query string.
+  await page.route((url) => /genre-catalog/.test(url.pathname) && !url.search, (route) => (fail ? route.abort() : route.continue()));
+  await page.goto('/');
+  await page.evaluate(() => {
+    localStorage.clear();
+    localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
+      step: 'review', name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
+      heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }], heritageCustomText: '', mainLanguage: 'en', languages: [],
+      startPlaceId: 'gb-london', startDate: '2026-05-04', startTime: '08:00', updatedAt: 1,
+    }));
+  });
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue Creation' }).click();
+  await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByText("The game's genre catalog couldn't be loaded. Check your connection and try again.")).toBeVisible();
+  fail = false;
+  await page.getByRole('button', { name: 'Try Again' }).click();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+});

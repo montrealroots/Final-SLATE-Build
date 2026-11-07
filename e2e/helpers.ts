@@ -33,7 +33,7 @@ async function nextStep(page: Page, name: string): Promise<void> {
 }
 
 /** Creation as 1221 lays it out: Identity, Background & Languages, Starting Point, Review. */
-export async function createCharacter(page: Page, o: CharacterOpts): Promise<void> {
+export async function createCharacter(page: Page, o: CharacterOpts, atReview?: (page: Page) => Promise<void>): Promise<void> {
   await page.getByRole('button', { name: 'New Game' }).first().click();
   await expect(page.getByRole('heading', { name: 'Identity', level: 1 })).toBeVisible();
   await page.getByRole('textbox', { name: 'Name', exact: true }).fill(o.name);
@@ -62,6 +62,7 @@ export async function createCharacter(page: Page, o: CharacterOpts): Promise<voi
   await page.getByLabel('Starting Time').fill(o.startTime);
   await nextStep(page, 'Review');
   await expect(page.getByText('Ready To Begin')).toBeVisible();
+  if (atReview) await atReview(page);
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 }

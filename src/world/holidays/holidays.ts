@@ -2,8 +2,8 @@
 // fetched once when the game starts, not bundled; until then, and if the fetch fails, a country's holidays are reported
 // as not loaded rather than as ordinary days. Years outside 2026-2100 are reported as outside the supported range.
 
-import seasons from '../seasons.json' with { type: 'json' };
 import rulesUrl from './countries.json?url';
+import seasonsUrl from '../seasons.json?url';
 import calendarsUrl from './calendars.json?url';
 import type { CalendarData } from './calendars';
 import { daysFromCivil, holidaysIn, toKey, type CountryRules, type Rule, type RuleContext } from './rules';
@@ -15,8 +15,9 @@ type Kept = CountryRules | { of: string };
 let RULES: Record<string, Kept> | null = null;
 let CTX: RuleContext | null = null;
 
-const SEASONS = seasons as { first: number; last: number; starts: number[][] };
-const seasonStarts = (year: number): readonly number[] => SEASONS.starts[year - SEASONS.first] ?? [];
+// Equinox and solstice tables, loaded with the rules (they were part of the startup JavaScript until November 7, 2026).
+type Seasons = { first: number; last: number; starts: number[][] };
+const seasonStartsOf = (s: Seasons) => (year: number): readonly number[] => s.starts[year - s.first] ?? [];
 
 async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url);
@@ -29,9 +30,9 @@ let pending: Promise<void> | null = null;
 export function loadWorldHolidays(): Promise<void> {
   if (RULES && CTX) return Promise.resolve();
   if (!pending) {
-    pending = Promise.all([fetchJson<Record<string, Kept>>(rulesUrl), fetchJson<CalendarData>(calendarsUrl)]).then(([r, c]) => {
+    pending = Promise.all([fetchJson<Record<string, Kept>>(rulesUrl), fetchJson<CalendarData>(calendarsUrl), fetchJson<Seasons>(seasonsUrl)]).then(([r, c, s]) => {
       RULES = r;
-      CTX = { calendars: c, seasonStarts };
+      CTX = { calendars: c, seasonStarts: seasonStartsOf(s) };
       cache.clear();
     });
     pending.catch(() => { pending = null; });

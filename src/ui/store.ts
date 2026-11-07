@@ -11,6 +11,7 @@ import { openVault } from './idb';
 import type { CreationDraft, GameState, Route } from '../engine/types';
 import type { Place } from '../data/places';
 import { loadWorldHolidays, worldHolidaysLoaded } from '../world/holidays/holidays';
+import { genreCatalogLoaded, loadGenreCatalog } from '../engine/genres';
 
 /** Offers text as a downloaded file named after the save. */
 function download(text: string, name: string) {
@@ -63,6 +64,8 @@ class Store {
   /** Set when processing time failed. The game was rolled back and time stays paused until the player tries again. */
   processingProblem: string | null = null;
   draft: CreationDraft | null = null;
+  /** Set by go(): the shell moves focus to the new screen in the commit that shows it (Shell.tsx). */
+  focusMain = false;
   private listeners = new Set<() => void>();
   private clockListeners = new Set<() => void>();
   private clock = new ActiveClock(() => performance.now());
@@ -105,6 +108,8 @@ class Store {
     window.addEventListener('storage', (e) => this.onStorage(e));
     // Holiday rules for the whole world are fetched once, in the background, from the start.
     this.holidays = loadWorldHolidays().catch(() => undefined);
+    // So is the genre catalog, which every game needs (a failure is retried when a game opens).
+    void loadGenreCatalog().catch(() => undefined);
   }
   private holidays: Promise<void>;
 
@@ -231,11 +236,17 @@ class Store {
   }
 
   private enter(state: GameState, notice: Notice | null = null) {
-    // Production checks holidays as time passes, so wait for the rules (or their failure, which the Place view explains).
-    if (!worldHolidaysLoaded()) {
+    // Production checks holidays as time passes, so wait for the rules (or their failure, which the Place view explains),
+    // and for the genre catalog, without which no project can be read: that failure stops here, with Try Again.
+    if (!worldHolidaysLoaded() || !genreCatalogLoaded()) {
       this.screen = 'loading';
       this.emit();
-      void this.holidays.then(() => this.enterNow(state, notice));
+      void Promise.all([this.holidays, loadGenreCatalog()]).then(() => this.enterNow(state, notice), () => {
+        this.screen = 'load-error';
+        this.loadErrorSave = state.saveId;
+        this.loadErrorMessage = "The game's genre catalog couldn't be loaded. Check your connection and try again.";
+        this.emit();
+      });
       return;
     }
     this.enterNow(state, notice);
@@ -618,8 +629,10 @@ class Store {
     this.history.push(this.route);
     if (this.history.length > 50) this.history.shift();
     this.route = route;
+    // Until November 7, 2026 focus moved here a frame later: on a busy device that frame came after the player had
+    // started typing in the new screen's first field, and the rest of what they typed went nowhere.
+    this.focusMain = true;
     this.emit();
-    requestAnimationFrame(() => document.getElementById('main')?.focus({ preventScroll: false }));
   }
   back() {
     const r = this.history.pop();

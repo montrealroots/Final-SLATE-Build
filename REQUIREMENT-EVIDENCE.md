@@ -127,3 +127,12 @@ traces each one). `S` = `tests/script-effects.test.ts`, `R` = `e2e/script-rules.
 | Nonlinear structure isn't penalized | Setups, Intentional Discontinuity | `scriptIssues`, `assessQuality` | — | — | S | Tested |
 | A shared background never scores a performance | Character and performer backgrounds | `assessQuality` | — | Shares A Background chip | `tests/heritage.test.ts` | Tested |
 | Saves keep the new choices; delivered results are never recomputed | Save and load | `serialize`, `deserialize`, `migrate` | Optional fields; stored quality | — | S | Tested |
+
+## Input, Startup And Connected Journeys (November 7, 2026, after #34)
+
+| Requirement | Input | Consumer | Persistent Consequence | Player Feedback | Evidence | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| Typing straight after a screen change keeps every character | Navigation, then typing | `store.go`, `Shell.tsx` layout effect | — | Focus lands on the new screen before any field can be reached | `e2e/focus.spec.ts` (desktop, phone, both iPhone projects; failed 8 of 8 on the old code) | Tested |
+| Nothing under the world map moves when the map arrives | Opening a screen with a map | `WorldPicker.tsx`, `WorldView.tsx` placeholder | — | "Loading the map…" in the map's own box | `e2e/focus.spec.ts` (failed on every run on the old code) | Tested |
+| Startup loads only what the start screen and creation need; the genre catalog and seasons load before a game opens | App start, opening a game | `loadGenreCatalog`, `loadWorldHolidays`, `store.enter` | — | Load error with the reason and Try Again if the catalog fails | `npm run budget` (661 kB), `e2e/failures.spec.ts` | Tested |
+| One connected career through the interface, saved and reloaded on the way | Every step from creation to a broadcast deal | The whole game | The save, checked after two reloads | Each screen along the way | `e2e/connected.spec.ts` (desktop, phone, `iphone-15-pro-max`: emulation) | Tested |

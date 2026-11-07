@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import {
   DAY, FORECAST_HORIZON_DAYS, addLocal, currentZone, dateKey, formatDuration, formatZoneAbbrev, localParts, localToInstant, nextNotableEvent,
 } from '../engine';
@@ -31,6 +31,13 @@ export function Shell({ children }: { children: ReactNode }) {
   const drawer = useMedia(DRAWER_QUERY);
   const route = s.route;
   const here = destinationOf(route.view);
+  // A new screen takes focus as it is shown, in the same commit, before the player can reach any of its fields.
+  const main = useRef<HTMLElement>(null);
+  useLayoutEffect(() => {
+    if (!store.focusMain) return;
+    store.focusMain = false;
+    main.current?.focus({ preventScroll: false });
+  });
 
   useEffect(() => {
     if (!railOpen) return;
@@ -96,7 +103,7 @@ export function Shell({ children }: { children: ReactNode }) {
           )}
         </nav>
         {railOpen && <button type="button" className="rail-shade" aria-label="Close Navigation" onClick={() => setRailOpen(false)} />}
-        <main className="main" id="main" tabIndex={-1}>
+        <main className="main" id="main" tabIndex={-1} ref={main}>
           <div className="main-inner">
             {s.readOnly && (
               <div className="callout callout-negative" role="alert">

@@ -13,3 +13,7 @@ globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
     return new Response('Not found', { status: 404 });
   }
 }) as typeof fetch;
+
+// The genre catalog loads before any game opens in the app (ui/store.ts); engine tests start from that state.
+const { loadGenreCatalog } = await import('../src/engine/genres');
+await loadGenreCatalog();

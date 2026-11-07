@@ -9,7 +9,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`). `main` was at `3845c2d` when the Gap Completion Package was applied.
+- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`), #25 (financing: money from backers, save version 5), #26 (screenwriting audit, dated motion-capture sessions, replacement credits, San Sebastián rules), #27 (the 1221 layout), #28 (1221's creation suite), #29 and #30 (pronouns settle the billing), #31 (backgrounds: kept holidays, casting information, languages), #32 (language suggestions for every background but Assyrian), #33 (script field effects), #34 (script rules review; `6e2abf0`). `main` was at `3845c2d` when the Gap Completion Package was applied.
 - **Package:** "SLATE Gap Completion Package" (predates #2 and #3). Its references are not committed; the imported data is under `src/world/` and `docs/world/`.
 - **Run first:**
 
@@ -56,7 +56,22 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 7, 2026, review): believable, connected script rules
+### Newest Request (November 7, 2026, after #34): input loss, startup size, connected journeys
+
+- **WebKit input loss: found and fixed.** There were two causes, neither specific to WebKit:
+  - **New Script:** focus moved a frame after the screen changed, so text typed in that frame was lost. Focus now
+    moves in the same commit (`Shell.tsx`).
+  - **Creation:** the world map grew after it was drawn and pushed Save And Return To Review away from a click. The
+    placeholder is now the map's own box. Tests: `e2e/focus.spec.ts`.
+- **Startup JavaScript:** 718,078 bytes became 676,736. The genre catalog and the seasons table now load in the
+  background before a game opens, and a failed catalog shows Try Again. Details: `docs/PERFORMANCE.md`.
+- **Connected career journey:** `e2e/connected.spec.ts` runs on desktop, phone and `iphone-15-pro-max`, all in
+  emulation.
+- **Reports reconciled:** this file, `QA-REPORT.md` and `docs/PERFORMANCE.md` now match the code and this pass's
+  results. Both complete browser suites: 134 passed, 24 skipped by design, 0 failed.
+- **Next startup candidates:** the legacy places' climate and the award rules, as `docs/PERFORMANCE.md` says.
+
+### Earlier Request (November 7, 2026, review): believable, connected script rules
 
 "Every field has an effect" wasn't enough: the review replaced the arbitrary effects merged in #33 (and some older
 ones). `docs/SCREENWRITING-AUDIT.md` traces every recent field effect from input to outcome, says where the player is
@@ -76,8 +91,8 @@ Two engine faults were found and fixed along the way:
 - A pickup asked for before the shoot was booked ahead of prep, was lost but still paid, and the project couldn't deliver.
 
 Pickups now follow main photography. The script base is 42, calibrated to the balance suite, and saves need no
-migration. Tests: `tests/script-effects.test.ts`, `e2e/script-rules.spec.ts`. Results: `QA-REPORT.md`. Open: the WebKit
-creation test that failed once on `main` after #32 (CI run 63; not reproduced, no artifact read).
+migration. Tests: `tests/script-effects.test.ts`, `e2e/script-rules.spec.ts`. Results: `QA-REPORT.md`. The WebKit
+creation test that failed once on `main` after #32 (CI run 63) was explained and fixed in the next request.
 
 ### Earlier Request (November 7, 2026, final): every script field has an effect
 
@@ -151,7 +166,7 @@ of a phone's bar, and its drawer shade was hidden by a later rule. Local results
 106 passed, 23 skipped, 0 failed (run just before the drawer fix). Not checked: real phones, a person's judgment of
 the look against 1221 beyond the side-by-side captures.
 
-### Latest Request (November 6, 2026, night): done
+### Earlier Request (November 6, 2026, night): done
 
 1. Verification: CI green through #23; full dev and production-build suites 96 passed, 21 skipped (project exclusions), 0 failed with the creation changes.
 2. **Character creation: done** (merged in #24). Step registry `CREATION_STEPS` (`src/engine/state.ts`); drafts store a step id (older numeric and partial drafts are normalized by `normalizeDraft`); Review has one edit action per row, each to its own screen, and "Save And Return To Review"; Start My Story now keeps the messages on the screen it jumps to. WebKit input loss: the cause was focus moved to the heading one animation frame after a step change, taking focus from a field already chosen; focus now moves in the same commit (`e2e/creation.spec.ts` fails with the old code in WebKit, passes now). The test-side wait was removed.
@@ -164,12 +179,12 @@ the look against 1221 beyond the side-by-side captures.
    - Rulebooks: San Sebastián 74th edition read and applied (2027 projected): 48 verified, 2 projected, 92 simulated of 142.
    - Holidays: Eswatini's Public Holidays Act found but its schedule is behind a bot check (not bypassed); recorded.
    - Startup files were over budget (702 kB): the Calendar, Place and Profile screens now load on first use (687 kB).
-7. Next: acceptance journeys (part 7) beyond those already added (`e2e/first-project.spec.ts`, `e2e/backup.spec.ts`, `e2e/creation.spec.ts`).
+7. Acceptance journeys (part 7): done in later checkpoints (`e2e/first-project.spec.ts`, `e2e/script-rules.spec.ts`, `e2e/connected.spec.ts`).
 
-### Current Request, In Order (started November 6, 2026, evening)
+### Earlier Request (November 6, 2026, evening): done
 
 1. **Long-career storage: done** (this checkpoint), see `docs/STORAGE.md`. Measured 1-50-year engine careers (`tests/perf/career.perf.ts`): 19.8 MB at 50 years before. Save version 4 compacts finished editions (12.4 MB at 50 years). Saves now live in IndexedDB, gzip-compressed (1.3 MB per copy at 50 years), through the save vault (`src/engine/vault.ts`, `src/ui/idb.ts`): atomic commits, verified move out of localStorage under a Web Lock with conflict copies, a closing-page journal, localStorage fallback. Still open: competing films and projects keep growing (about 0.25 MB raw a year); real Safari/Firefox quotas unmeasured.
-2. **Festival and award rules: done for what was readable** (this checkpoint). Recount: 37 institutions, 142 categories (the Emmys' Outstanding Movie replaced Outstanding Television Movie from 2026). 47 verified, 2 projected, 93 simulated. New rulebooks: Annecy 2026 (2027 projected), Venice 2026 (2027 projected), Berlinale 2027 competition (projected: undated page), Golden Globes 2027, Emmys 2026 (2027 projected). Untouched future editions in existing saves adopt published rules on load. TIFF and BAFTA refused this environment (HTTP 403) twice and stay simulated; see `docs/world/RULEBOOK-AUDIT.md`.
+2. **Festival and award rules: done for what was readable** (this checkpoint). Recount: 37 institutions, 142 categories (the Emmys' Outstanding Movie replaced Outstanding Television Movie from 2026). 47 verified, 2 projected, 93 simulated (48, 2 and 92 after San Sebastián in #26). New rulebooks: Annecy 2026 (2027 projected), Venice 2026 (2027 projected), Berlinale 2027 competition (projected: undated page), Golden Globes 2027, Emmys 2026 (2027 projected). Untouched future editions in existing saves adopt published rules on load. TIFF and BAFTA refused this environment (HTTP 403) twice and stay simulated; see `docs/world/RULEBOOK-AUDIT.md`.
 3. **Country and holiday detail: done for what was readable** (this checkpoint), see `docs/world/COUNTRY-DETAIL-AUDIT.md`. Every entry classified (193 UN members, 2 observer states, 2 limited recognition, 1 disputed territory, 51 territories with their sovereign, 2 historical). Suriname's holidays added from its Staatsblad (219 entries with rules; 27 playable without, each listed with what blocked it). Official English names shown beside original names where an official English list exists (Cyprus). The place screen says where its climate comes from (9 entries borrow or model it).
 4. **Deterministic required journeys: done** (this checkpoint). No journey skips itself any more: `seededLife` (`e2e/helpers.ts`) fixes the world seed of a game made through the UI, so the documentary and unscripted journeys run with everyone agreeing (seed 2) and fail if anyone doesn't. Declines and withdrawals have their own journeys (seed 3: one documentary contributor declines; an unscripted participant withdraws before the shoot) and unit tests (`tests/media.test.ts`, `tests/unscripted.test.ts`). The game still draws every answer by chance. Remaining project exclusions are explicit `test.skip(project…)` lines.
 5. **Production build and diagnostics: done** (this checkpoint). `SLATE_E2E_PROD=1 npm run e2e` runs every journey on `vite build` + `vite preview`. Every test now records console errors, page errors and failed requests (`e2e/test.ts`) and fails on any, except tests that inject failures (`expectErrors`). CI runs the suite on both the dev server and the production build. Still open: real devices and human feedback (below).
@@ -183,13 +198,13 @@ the look against 1221 beyond the side-by-side captures.
 1. **M2 follow-ups:** none open. Map markers are keyboard buttons ("Open {place}"); the repair screen for unresolvable places is done.
 2. **M3 follow-ups:** holiday names stay in the official language unless an official English source gives one (field `en`, so far Cyprus); 32 more countries with non-Latin names need such a source (China, Korea and Georgia were tried; see `docs/world/COUNTRY-DETAIL-AUDIT.md`). Holidays are national or first-level-regional only; local (city) holidays are not included.
 3. **M4 follow-ups:** Export Save is offered for every saved game and next to a failed save. The weather warning now uses "Rain is expected during your exterior shoot." and offers "Film an Interior Scene" only when an interior day is scheduled; "Move the Shoot" moves the day to the first free working day after the shoot, if everyone on set is free.
-4. **M5 follow-ups:** capture sessions aren't placed on the calendar as fixed appointments (they run on working days once booked), so performer conflicts with shoot days are shown as task blocks, not calendar clashes; facial and body capture are one contribution; credits after replacing a performer mid-production are not separately tested.
-5. **M6 follow-ups:** none open in code. The category audit (`docs/world/CATEGORY-AUDIT.md`) marks 47 categories Rules verified and 2 Rules projected; the rest still only match published names (research, below).
+4. **M5 follow-ups:** none open in code. Since #26 capture sessions are dated and on the calendar, pass over the performer's shoot days, and are rebooked when missed; body, face or both is chosen at booking; a replaced performer keeps the credit while their work stays (`tests/mocap-calendar.test.ts`).
+5. **M6 follow-ups:** none open in code. The category audit (`docs/world/CATEGORY-AUDIT.md`) marks 48 categories Rules verified and 2 Rules projected; the rest still only match published names (research, below).
 6. **M7 follow-ups:** a manual screen-reader pass (automated checks only so far); production timings (budgets are measured on the dev server).
 
 ### Research Still To Do
 
-- Festival and award rulebooks: 93 of 142 categories still use simulated rules. TIFF and BAFTA Film need their organizers' documents read from a network that can reach tiff.net and bafta.org; then the rest listed in `docs/world/RULEBOOK-AUDIT.md`. Each needs its organizer's document for the edition in play; add a new rulebook version, never edit one an edition already uses. European Film Awards eligibility differs slightly (see the category audit). Dates: Annecy 2027, BAFTA 2027, WGA, Series Mania and Hot Docs 2027 are still planning dates.
+- Festival and award rulebooks: 92 of 142 categories still use simulated rules. TIFF and BAFTA Film need their organizers' documents read from a network that can reach tiff.net and bafta.org; then the rest listed in `docs/world/RULEBOOK-AUDIT.md`. Each needs its organizer's document for the edition in play; add a new rulebook version, never edit one an edition already uses. European Film Awards eligibility differs slightly (see the category audit). Dates: Annecy 2027, BAFTA 2027, WGA, Series Mania and Hot Docs 2027 are still planning dates.
 
 ### External Or Manual (never blocks other work or future years)
 
