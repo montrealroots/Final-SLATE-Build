@@ -30,13 +30,15 @@ async function nextStep(page: Page, name: string): Promise<void> {
   await page.getByRole('button', { name: `Next: ${name}` }).click();
 }
 
+/** Creation as 1221 lays it out: Identity, Background & Languages, Starting Point, Review. */
 export async function createCharacter(page: Page, o: CharacterOpts): Promise<void> {
   await page.getByRole('button', { name: 'New Game' }).first().click();
-  await expect(page.getByRole('heading', { name: 'Your Name' })).toBeVisible();
-  await page.getByRole('textbox', { name: 'Name' }).fill(o.name);
-  await nextStep(page, 'Pronouns');
+  await expect(page.getByRole('heading', { name: 'Identity', level: 1 })).toBeVisible();
+  await page.getByRole('textbox', { name: 'Name', exact: true }).fill(o.name);
   await page.getByLabel('Pronouns').selectOption({ label: o.pronouns });
-  await nextStep(page, 'Background');
+  await fillBirthDate(page, o.birthDate);
+  await pickPlace(page, 'Place Of Birth', o.birthplace, o.birthCountry);
+  await nextStep(page, 'Background & Languages');
   for (const h of o.heritages) {
     await page.getByRole('searchbox', { name: 'Search Backgrounds' }).fill(h);
     await page.getByRole('button', { name: `Add A Background: ${h}` }).click();
@@ -45,25 +47,28 @@ export async function createCharacter(page: Page, o: CharacterOpts): Promise<voi
     await page.getByRole('textbox', { name: 'Describe Your Background' }).fill(o.customHeritage);
     await page.getByRole('button', { name: 'Add A Background', exact: true }).click();
   }
-  await nextStep(page, 'Languages');
   await page.getByRole('searchbox', { name: 'Which language do you use most?' }).fill(o.mainLanguage);
   await page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button', { name: o.mainLanguage, exact: true }).click();
   for (const l of o.extraLanguages) {
     await page.getByRole('searchbox', { name: 'Add Language' }).fill(l);
     await page.getByRole('button', { name: `Add Language: ${l}` }).click();
   }
-  await nextStep(page, 'Birthday');
-  await page.getByLabel('Birth Date').fill(o.birthDate);
-  await pickPlace(page, 'Birthplace', o.birthplace, o.birthCountry);
-  await nextStep(page, 'Starting Date');
+  await nextStep(page, 'Starting Point');
+  await pickPlace(page, 'Where You Live', o.start, o.startCountry);
   await page.getByLabel('Starting Date').fill(o.startDate);
   await page.getByLabel('Starting Time').fill(o.startTime);
-  await nextStep(page, 'Starting Location');
-  await pickPlace(page, 'Starting Location', o.start, o.startCountry);
   await nextStep(page, 'Review');
-  await expect(page.getByRole('heading', { name: 'Review', exact: true })).toBeVisible();
+  await expect(page.getByText('Ready To Begin')).toBeVisible();
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+}
+
+/** The date of birth in 1221's three fields: year, month, day. */
+export async function fillBirthDate(page: Page, ymd: string): Promise<void> {
+  const [y, m, d] = ymd.split('-');
+  await page.getByLabel('Year Of Birth').fill(y);
+  await page.getByLabel('Month', { exact: true }).selectOption(m);
+  await page.getByLabel('Day', { exact: true }).fill(String(Number(d)));
 }
 
 export async function pickPlace(page: Page, label: string, query: string, country?: string): Promise<void> {

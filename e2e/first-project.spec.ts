@@ -16,7 +16,7 @@ async function addCharacters(page: Page, names: string[]) {
   await section(page, 'Script');
 }
 
-/** Creation as a player finishes it: a draft at Review, one choice changed from Review, then Start My Story. */
+/** Creation as a player finishes it: a draft at Review, the starting time changed from Review, then Start My Story. */
 async function createFromReview(page: Page) {
   await page.goto('/');
   await page.evaluate(() => {
@@ -29,10 +29,10 @@ async function createFromReview(page: Page) {
   });
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
-  await page.locator('.review-row', { hasText: 'Starts On' }).getByRole('button', { name: 'Edit Starting Date And Time' }).click();
+  await page.getByRole('button', { name: 'Edit Starting Point' }).click();
   await page.getByLabel('Starting Time').fill('09:15');
   await page.getByRole('button', { name: 'Save And Return To Review' }).click();
-  await expect(page.locator('.review-row', { hasText: 'Starts On' })).toContainText('2026-03-02 at 09:15');
+  await expect(page.locator('section.card', { hasText: 'Starts On' })).toContainText('March 2, 2026 at 09:15');
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 }

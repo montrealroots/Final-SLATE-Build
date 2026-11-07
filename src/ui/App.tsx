@@ -1,12 +1,12 @@
 import { lazy, Suspense } from 'react';
-import { Creation } from './Creation';
 import { PageHead } from './components';
 import { Shell } from './Shell';
 import { Startup } from './Startup';
 import { useStore } from './store';
 import { Home } from './World';
 
-// Project and event screens load on first use to keep startup small.
+// Creation, project and event screens load on first use to keep startup small.
+const Creation = lazy(() => import('./Creation').then((m) => ({ default: m.Creation })));
 const ProjectsList = lazy(() => import('./Projects').then((m) => ({ default: m.ProjectsList })));
 const NewProject = lazy(() => import('./Projects').then((m) => ({ default: m.NewProject })));
 const ProjectWorkspace = lazy(() => import('./Projects').then((m) => ({ default: m.ProjectWorkspace })));
@@ -20,7 +20,7 @@ const EventDetail = lazy(() => import('./FinishViews').then((m) => ({ default: m
 
 export function App() {
   const s = useStore();
-  if (s.screen === 'creation' && s.draft) return <Creation />;
+  if (s.screen === 'creation' && s.draft) return <Suspense fallback={<p role="status">Loading…</p>}><Creation /></Suspense>;
   if (s.screen !== 'game' || !s.state) return <Startup />;
   const v = s.route.view;
   return (

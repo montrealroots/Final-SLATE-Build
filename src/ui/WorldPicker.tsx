@@ -1,9 +1,11 @@
-import { useEffect, useId, useMemo, useState } from 'react';
+import { lazy, Suspense, useEffect, useId, useMemo, useState } from 'react';
 import { findPlace, placeLabel, searchPlaces, type Place } from '../data/places';
 import { PLAYABLE_COUNTRIES, placesOf, regionsOf, search, toGamePlace, type WorldPlace } from '../world/gazetteer/gazetteer';
 import { Field } from './components';
 
 const SHOWN = 20;
+// The map loads with the World screen's file, only when a picker shows it, so it stays out of the startup files.
+const WorldMap = lazy(() => import('./WorldView').then((m) => ({ default: m.WorldMap })));
 
 export interface WorldSearch {
   country: string;
@@ -85,7 +87,8 @@ export function LoadProblem({ onRetry }: { onRetry: () => void }) {
 export const noMatch = (q: string) => `No places match '${q.trim()}'. Try a city, region, or country.`;
 
 /** Choose any playable place on Earth: featured cities without a country, or any GeoNames place within one. */
-export function WorldPlacePicker(props: { label: string; value: string; error?: string | null; onChoose: (place: Place) => void }) {
+export function WorldPlacePicker(props: { label: string; value: string; error?: string | null; onChoose: (place: Place) => void; map?: boolean }) {
+  const [mapOpen, setMapOpen] = useState(true);
   const chosen = findPlace(props.value);
   const ws = useWorldSearch();
   const listId = useId();
@@ -106,6 +109,19 @@ export function WorldPlacePicker(props: { label: string; value: string; error?: 
   const shown = ws.matches.slice(0, SHOWN);
   return (
     <>
+      {props.map && (
+        <div className="col gap-2" style={{ marginBottom: 'var(--s4)' }}>
+          <div className="row-between wrap gap-2">
+            <p className="xs dim" style={{ margin: 0 }}>Pick a country on the map, or find it in the list below.</p>
+            <button type="button" className="btn btn-ghost btn-sm" aria-expanded={mapOpen} onClick={() => setMapOpen(!mapOpen)}>{mapOpen ? 'Hide Map' : 'Show Map'}</button>
+          </div>
+          {mapOpen && (
+            <Suspense fallback={<p role="status" className="muted">Loading the map…</p>}>
+              <WorldMap country={ws.country} places={ws.status === 'ready' ? shown : []} onCountry={ws.setCountry} onPlace={(w) => void choose(w)} verb="Choose" />
+            </Suspense>
+          )}
+        </div>
+      )}
       <CountryAndRegion ws={ws} featured />
       <Field label={props.label} error={props.error} hint={chosen ? `Chosen: ${placeLabel(chosen)}` : 'Search by city, or choose a country or territory to search all of its places.'}>
         {(id, db) => (

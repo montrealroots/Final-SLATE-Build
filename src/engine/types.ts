@@ -32,7 +32,8 @@ export interface CharacterIdentity {
 }
 
 /** Character creation's screens, in order (the registry is CREATION_STEPS in state.ts). */
-export type CreationStepId = 'name' | 'pronouns' | 'background' | 'languages' | 'birthday' | 'start-date' | 'start-location' | 'review';
+/** Creation's steps, laid out as 1221's (Identity, then what you come from, then where you start, then Review). */
+export type CreationStepId = 'identity' | 'background' | 'starting-point' | 'review';
 
 export interface CreationDraft {
   /** The screen the player is on. Drafts saved before November 2026 stored its position as a number; readDraft converts them. */

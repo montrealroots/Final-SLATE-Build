@@ -56,7 +56,20 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 7, 2026): the 1221 layout, done in this checkpoint
+### Newest Request (November 7, 2026, later): 1221's creation suite, done in this checkpoint
+
+"I need that whole creation suite ... what's not there then don't add it." Creation now follows 1221's
+`CharacterCreation.tsx`: Identity, Background & Languages, Starting Point, Review, keeping only what the engine
+stores (see the table in `docs/UI-1221-LAYOUT.md`). `CREATION_STEPS` has four ids (`identity`, `background`,
+`starting-point`, `review`); drafts saved with the eight-step ids or numbers reopen on the step that now holds those
+fields. The place pickers show the world map (loaded with the World screen's file); creation itself now loads on first
+use, so startup JavaScript went down to 687 kB. Browser helpers: `createCharacter` and `fillBirthDate` follow the new
+steps; `e2e/creation.spec.ts` was rewritten for them (Review edits per step, invalid edits, a missing field at Start My
+Story, Billed As following pronouns until chosen, the WebKit typing case, keyboard focus, reload, I Still Live Where I
+Was Born). Local results: `npm run check` 220 tests, 0 problems; dev-server and production-build suites each 114 passed,
+23 skipped by project design, 0 failed.
+
+### Earlier Request (November 7, 2026): the 1221 layout, done
 
 The user asked for the screens to be set up exactly like the `montrealroots/1221` repository and, asked to choose, picked
 "look and layout": 1221's design, keeping Final SLATE's own game and engines, adding none of 1221's features (it is an
