@@ -51,7 +51,7 @@ test('export, then import into a fresh browser: it opens, plays on, saves and re
   await importFile(other, file);
   await expect(other.getByRole('status')).toContainText(`Imported ${name}. It's in your saved games.`);
   await other.getByRole('button', { name: 'Open Imported Save' }).click();
-  await expect(other.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(other.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   const imported = await readSavedState(other);
   expect(essentials(imported)).toBe(essentials(state));
   expect(imported.projects[0].title).toBe('Harbour Lights');
@@ -60,7 +60,7 @@ test('export, then import into a fresh browser: it opens, plays on, saves and re
   await expect(other.locator('.save-state')).toHaveText(/Saved/);
   await other.reload();
   await other.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(other.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(other.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   const after = await readSavedState(other);
   expect(after.now).toBeGreaterThan(state.now as number);
   expect(after.projects.map((p: { title: string }) => p.title)).toEqual(['Harbour Lights']);
@@ -121,7 +121,7 @@ test('a save open in another tab is not replaced by an import there; a separate 
   // This tab plays the save; a second tab imports the same file.
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   const second = await context.newPage();
   await second.goto('/');
   await openSavedGames(second);

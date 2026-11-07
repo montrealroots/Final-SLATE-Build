@@ -1,7 +1,7 @@
 import { expect, expectErrors, test } from './test';
 import { readFileSync } from 'node:fs';
 import { hashString } from '../src/engine/rng';
-import { advance, nav, quickLife, saveAndExit } from './helpers';
+import { advance, nav, quickLife, saveAndExit, pressSaveAndExit } from './helpers';
 import { firstSaveId, listRecords, readRecord, refuseSaveWrites, writeRecords } from './vault';
 
 // Failure paths through the real UI (Gap Completion Package, M7). Desktop and phone.
@@ -21,19 +21,19 @@ test('a failed save says so, keeps you in the game, and Try Again saves once sto
   const env = JSON.parse(readFileSync((await file.path())!, 'utf8'));
   expect(env.format).toBe('slate-save');
   expect(hashString(env.data)).toBe(env.checksum);
-  // Save And Exit refuses to leave while the save fails.
-  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  // Save & Exit refuses to leave while the save fails.
+  await pressSaveAndExit(page);
   await expect(page.getByText("Your game couldn't be saved. Keep this window open and try again.")).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await refuseSaveWrites(page, false);
   await page.getByRole('button', { name: 'Try Again' }).first().click();
-  await expect(page.getByRole('banner').getByText('Saved', { exact: true })).toBeVisible();
+  await expect(page.locator('.save-state')).toHaveText('Saved');
   await expect(page.getByText(/Your game couldn't be saved/)).toHaveCount(0);
 });
 
 test('a version-1 save opens after a backup copy is kept', async ({ page }) => {
   await quickLife(page, 'fr-paris', '2026-04-06');
-  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  await pressSaveAndExit(page);
   // Turn the save into a version-1 save, as the base build wrote them (no place registry).
   const id = await firstSaveId(page);
   const text = (await readRecord(page, `slate.v1.save.${id}`))!;
@@ -46,8 +46,8 @@ test('a version-1 save opens after a backup copy is kept', async ({ page }) => {
   await writeRecords(page, { [`slate.v1.save.${id}`]: v1 });
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
-  await expect(page.getByText(/You're in Paris/)).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  await expect(page.getByText(/\d [AP]M in Paris, /)).toBeVisible();
   expect(await readRecord(page, `slate.v1.save.${id}.backup-v1`)).toBe(v1);
 });
 
@@ -92,8 +92,8 @@ test("a save that mentions a place the game can't find asks for a replacement, k
   await page.getByRole('searchbox', { name: 'Replacement Place 1' }).fill('Edinburgh');
   await page.getByRole('group', { name: 'Replacement Place 1 Results' }).getByRole('button').first().click();
   await page.getByRole('button', { name: 'Repair And Continue' }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
-  await expect(page.getByText(/You're in Edinburgh/)).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  await expect(page.getByText(/\d [AP]M in Edinburgh, /)).toBeVisible();
   expect(await readRecord(page, `slate.v1.save.${id}.backup-repair`)).toBe(damaged);
 });
 
@@ -107,7 +107,7 @@ test('a damaged save opens the last good copy, says so, and keeps the damaged on
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByText(/so the previous save, from .+, was opened\. The damaged save is kept, not deleted\./)).toBeVisible();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await expect.poll(async () => (await listRecords(page)).some((k) => k.startsWith(`slate.v1.save.${id}.damaged-`))).toBe(true);
   const kept = await Promise.all((await listRecords(page)).filter((k) => k.startsWith(`slate.v1.save.${id}.damaged-`)).map((k) => readRecord(page, k)));
   expect(kept).toContain(damaged);
@@ -141,7 +141,7 @@ test('a failure while time passes pauses time, keeps the game as it was, and nev
   await writeRecords(page, { [`slate.v1.save.${id}`]: JSON.stringify({ ...env, checksum: hashString(data), data }) });
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   const clock = await page.getByRole('banner').innerText();
   await advance(page, 'next-day');
   await expect(page.getByText(/Time is paused\. Something went wrong while time passed \(arrive\)/)).toBeVisible();

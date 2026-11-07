@@ -7,7 +7,7 @@ import {
   categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, rsvpScreening, screeningConflicts, screeningTravel, travelTo, DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
 } from '../engine';
 import type { CapturePart, GameState, Project, ReleaseRecord } from '../engine/types';
-import { Check, Modal, SelectField, TextField, longLocal, plural } from './components';
+import { Check, Modal, PageHead, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
@@ -18,7 +18,7 @@ export function ProductionTab({ p }: { p: Project }) {
   const g = useGame();
   if (!p.tasks.length) {
     return (
-      <div className="panel">
+      <div className="card">
         <h2>Nothing Scheduled Yet</h2>
         <p>{p.approvedDraft === null ? 'Approve a draft, hire your team and build a schedule to start production.' : 'Build a schedule to turn the breakdown into production work.'}</p>
         <button className="btn" onClick={() => { store.route = { ...store.route, tab: p.approvedDraft === null ? 'script' : 'schedule' }; store.emit(); }}>{p.approvedDraft === null ? 'Open Script' : 'Open Schedule'}</button>
@@ -40,12 +40,12 @@ export function ProductionTab({ p }: { p: Project }) {
   const puppets = p.assets.filter((a) => a.kind === 'puppet');
   return (
     <>
-      <section className="panel">
+      <section className="card">
         <h2>Progress</h2>
         <p>{done} of {plural(p.tasks.length, 'task')} finished.</p>
         <div className="meter" role="img" aria-label={`${Math.round((done / p.tasks.length) * 100)} percent of tasks finished`}><span style={{ width: `${(done / p.tasks.length) * 100}%` }} /></div>
         {blocked.length > 0 && (
-          <div className="alert spaced">
+          <div className="callout callout-warning spaced">
             <p><strong>{plural(blocked.length, 'task')} can't move today.</strong></p>
             <ul>{blocked.slice(0, 5).map((t) => <li key={t.id}>{t.label}: {t.blockedReason}</li>)}</ul>
           </div>
@@ -54,26 +54,26 @@ export function ProductionTab({ p }: { p: Project }) {
       </section>
       {p.tasks.some((t) => t.kind === 'anim:mocap') && <MocapPanel p={p} />}
       {puppets.length > 0 && (
-        <section className="panel">
+        <section className="card">
           <h2>Puppets</h2>
           <ul className="list">{puppets.map((a) => <li key={a.id}><strong>{a.label}</strong> ({plural(a.copies, 'copy', 'copies')}): {puppetStatus(p, a.characterId!)}</li>)}</ul>
         </section>
       )}
       {p.assets.some((a) => a.kind !== 'puppet') && (
-        <section className="panel">
+        <section className="card">
           <h2>Assets</h2>
           <ul className="list">{p.assets.filter((a) => a.kind !== 'puppet').map((a) => <li key={a.id}>{a.label}: {a.ready ? 'Ready' : a.stage}</li>)}</ul>
         </section>
       )}
       {depts.map((d) => (
-        <section key={d} className="panel">
+        <section key={d} className="card">
           <h2>{d}</h2>
           <ul className="list">
             {p.tasks.filter((t) => t.dept === d).map((t) => (
               <li key={t.id}>
-                <div className="row">
+                <div className="row-wrap">
                   <span className="grow">{t.label}</span>
-                  <span className={`chip ${t.status === 'done' ? 'good' : t.status === 'blocked' ? 'bad' : t.status === 'active' ? 'gold' : ''}`}>{{ waiting: 'Waiting', ready: 'Ready', active: 'Underway', done: 'Done', blocked: 'Blocked' }[t.status]}</span>
+                  <span className={`chip ${t.status === 'done' ? 'chip-positive' : t.status === 'blocked' ? 'chip-negative' : t.status === 'active' ? 'chip-accent' : ''}`}>{{ waiting: 'Waiting', ready: 'Ready', active: 'Underway', done: 'Done', blocked: 'Blocked' }[t.status]}</span>
                 </div>
                 <div className="meter" style={{ marginTop: 6 }} role="img" aria-label={`${Math.round((t.done / t.units) * 100)} percent done`}><span style={{ width: `${(t.done / t.units) * 100}%` }} /></div>
                 <div className="dim">{Math.round(t.done * 10) / 10} of {Math.round(t.units * 10) / 10} {t.unitLabel}{why(t) ? ` · ${why(t)}` : ''}</div>
@@ -98,15 +98,15 @@ export function EditTab({ p }: { p: Project }) {
   const cutting = p.tasks.find((t) => t.kind === 'post:cutpass' && t.status !== 'done');
   return (
     <>
-      {err && <div className="alert bad" role="alert"><p>{err}</p></div>}
-      <section className="panel">
+      {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
+      <section className="card">
         <h2>Cut</h2>
         <dl className="kv">
           <dt>Assembly</dt><dd>{assemblyComplete(p) ? 'Finished' : 'Not finished yet. It starts when the material for each episode is in.'}</dd>
           <dt>Cut Passes</dt><dd>{p.edit.cutPasses}{cutting ? ` (pass ${p.edit.cutPasses + 1} underway, ${Math.round((cutting.done / cutting.units) * 100)}%)` : ''}</dd>
           <dt>Picture</dt><dd>{p.edit.pictureLocked ? 'Locked' : 'Not locked'}</dd>
         </dl>
-        <div className="btn-row spaced">
+        <div className="row gap-2 wrap spaced">
           <button className="btn" disabled={!assemblyComplete(p) || p.edit.pictureLocked || !!cutting} onClick={() => setErr(store.act((s) => void startCutPass(s, p)))}>Start Cut Pass</button>
           {!p.edit.pictureLocked ? (
             <button className="btn btn-primary" disabled={lb.length > 0} onClick={() => setErr(store.act((s) => lockPicture(s, p)))}>Lock Picture</button>
@@ -117,7 +117,7 @@ export function EditTab({ p }: { p: Project }) {
           <details className="spaced"><summary>Versions</summary><ul>{p.edit.versions.map((v) => <li key={v.number}>Version {v.number}: {v.note}, about {v.runtimeMin} minutes</li>)}</ul></details>
         )}
       </section>
-      <section className="panel">
+      <section className="card">
         <h2>Coverage</h2>
         {gaps.length ? (
           <>
@@ -127,7 +127,7 @@ export function EditTab({ p }: { p: Project }) {
           </>
         ) : <p className="muted">No coverage gaps found.</p>}
       </section>
-      <section className="panel">
+      <section className="card">
         <h2>Delivery</h2>
         {p.delivered ? <p>Delivered at {p.delivered.runtimeMin} minutes. Spent {money(ledgerTotals(p).settled)}.</p> : (
           <>
@@ -152,13 +152,13 @@ export function ReleaseTab({ p }: { p: Project }) {
   const [terr, setTerr] = useState(place.country);
   const [err, setErr] = useState<string | null>(null);
   const [cancelling, setCancelling] = useState<string | null>(null);
-  if (!p.delivered) return <div className="panel"><h2>Not Delivered Yet</h2><p>Credits and release plans become available once the project is delivered.</p></div>;
+  if (!p.delivered) return <div className="card"><h2>Not Delivered Yet</h2><p>Credits and release plans become available once the project is delivered.</p></div>;
   const episodic = isEpisodic(p.axes.format);
   const open = p.offers.filter((o) => o.status === 'open' && o.expiresAt > g.now);
   return (
     <>
-      {err && <div className="alert bad" role="alert"><p>{err}</p></div>}
-      <section className="panel">
+      {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
+      <section className="card">
         <h2>Credits</h2>
         <div className="table-wrap">
           <table className="data">
@@ -175,25 +175,25 @@ export function ReleaseTab({ p }: { p: Project }) {
           </table>
         </div>
       </section>
-      <section className="panel">
+      <section className="card">
         <h2>Distribution Offers</h2>
         {open.length ? (
           <ul className="list">
             {open.map((o) => (
-              <li key={o.id} className="row">
+              <li key={o.id} className="row-wrap">
                 <span className="grow"><strong>{o.distributor}</strong>: {ROUTE_LABELS[o.route]} release in {o.territories.join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(DELIVERY_MATERIALS[o.route])}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
-                <div className="btn-row">
-                  <button className="btn btn-small btn-primary" onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id)))}>Accept Offer</button>
-                  <button className="btn btn-small" onClick={() => setErr(store.act(() => declineDistribution(p, o.id)))}>Decline Offer</button>
+                <div className="row gap-2 wrap">
+                  <button className="btn btn-sm btn-primary" onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id)))}>Accept Offer</button>
+                  <button className="btn btn-sm" onClick={() => setErr(store.act(() => declineDistribution(p, o.id)))}>Decline Offer</button>
                 </div>
               </li>
             ))}
           </ul>
         ) : <p className="muted">No open offers. Festival selections can bring interest. You can always release it yourself.</p>}
       </section>
-      <section className="panel">
+      <section className="card">
         <h2>Plan A Release</h2>
-        <div className="grid3">
+        <div className="grid grid-3 form">
           <SelectField label="Route" value={route} options={(['digital', 'streaming', 'theatrical', 'broadcast'] as const).map((r) => ({ value: r, label: ROUTE_LABELS[r] }))} onChange={setRoute} />
           <TextField label="Release Date" type="date" value={date} onChange={setDate} />
           <TextField label="Territory Code" value={terr} maxLength={2} hint="Two-letter country code, such as US or GB." onChange={(v) => setTerr(v.toUpperCase())} />
@@ -201,10 +201,10 @@ export function ReleaseTab({ p }: { p: Project }) {
         <p className="dim">Theatrical and broadcast releases need a distributor or broadcaster. Release choices affect premiere status for festivals.</p>
         <button className="btn btn-primary" onClick={() => setErr(store.act((s) => void planRelease(s, p, { route, date, territories: [terr] })))}>Plan Release</button>
       </section>
-      <section className="panel">
+      <section className="card">
         <h2>Release History</h2>
         {p.premiere && <p>Premiered {formatDateKey(p.premiere.date)} at {p.premiere.venue}.</p>}
-        {p.releases.length ? <ul className="list">{p.releases.map((r) => <li key={r.id} className="row"><span className="grow">{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && <button className="btn btn-small btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</li>)}</ul> : <p className="muted">No releases yet.</p>}
+        {p.releases.length ? <ul className="list">{p.releases.map((r) => <li key={r.id} className="row-wrap"><span className="grow">{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && <button className="btn btn-sm btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</li>)}</ul> : <p className="muted">No releases yet.</p>}
         {p.quality && <p className="dim">Reception in this game: {qualityWords(p.quality.reception)}.</p>}
       </section>
       {cancelling && (
@@ -230,22 +230,22 @@ export function FestivalsTab({ p }: { p: Project }) {
   const entries = g.editions.flatMap((e) => e.entries.filter((x) => x.projectId === p.id).map((x) => ({ e, x })));
   return (
     <>
-      <section className="panel">
+      <section className="card">
         <h2>Your Entries</h2>
         {entries.length ? (
           <ul className="list">
             {entries.map(({ e, x }) => {
               const cat = institution(e.institutionId).categories.find((c) => c.id === x.categoryId)!;
               return (
-                <li key={x.id} className="row">
-                  <span className="grow"><button className="btn btn-quiet" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button>: {cat.name} <span className="chip">{entryStatus(x.status)}</span>{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
+                <li key={x.id} className="row-wrap">
+                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button>: {cat.name} <span className="chip">{entryStatus(x.status)}</span>{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
                 </li>
               );
             })}
           </ul>
         ) : <p className="muted">No entries yet.</p>}
       </section>
-      <section className="panel">
+      <section className="card">
         <h2>Open And Upcoming</h2>
         {!p.delivered && <p className="muted">Deliver the project to enter it. You can still see what it could qualify for.</p>}
         <ul className="list">
@@ -257,9 +257,9 @@ export function FestivalsTab({ p }: { p: Project }) {
             const ok = elig.filter((x) => x.r.eligible);
             return (
               <li key={e.id}>
-                <div className="row">
-                  <span className="grow"><button className="btn btn-quiet" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button><span className="dim"> · Entries close {formatDateKey(dateKey(e.deadline, zone))}</span></span>
-                  <span className={`chip ${ok.length ? 'good' : ''}`}>{ok.length ? `${plural(ok.length, 'Category', 'Categories')} Open To You` : 'Not Eligible Now'}</span>
+                <div className="row-wrap">
+                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button><span className="dim"> · Entries close {formatDateKey(dateKey(e.deadline, zone))}</span></span>
+                  <span className={`chip ${ok.length ? 'chip-positive' : ''}`}>{ok.length ? `${plural(ok.length, 'Category', 'Categories')} Open To You` : 'Not Eligible Now'}</span>
                 </div>
                 {!ok.length && <div className="dim">{elig[0].r.reasons[0]}</div>}
               </li>
@@ -293,12 +293,11 @@ export function EventDetail() {
   return (
     <>
       <Breadcrumbs items={[{ label: 'Calendar', route: { view: 'calendar' } }, { label: ed.label }]} />
-      <h1>{ed.label}</h1>
-      <p className="muted">{inst.description}</p>
-      <div className="btn-row" style={{ marginBottom: 16 }}><FollowButton id={inst.id} /></div>
-      {err && <div className="alert bad" role="alert"><p>{err}</p></div>}
-      <div className="panel-grid">
-        <section className="panel">
+      <PageHead eyebrow="Your Day" title={ed.label} lede={inst.description} />
+      <div className="row gap-2 wrap" style={{ marginBottom: 16 }}><FollowButton id={inst.id} /></div>
+      {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
+      <div className="card-grid">
+        <section className="card">
           <h2>When And Where</h2>
           <dl className="kv">
             <dt>Where</dt><dd>{placeLabel(place)}</dd>
@@ -310,14 +309,14 @@ export function EventDetail() {
           <p className="dim">{ed.provenance === 'official' ? `These dates were announced by the organizer.${ed.deadlinePlanned ? ' The entry deadline is a planning date.' : ''}` : "Dates haven't been announced. Planning dates are shown."} {rulebook(ed.rulesId) ? `${inst.kind === 'festival' ? 'Sections' : 'Categories'} marked Official Rules follow the organizer's rules for this edition; Projected Rules carry last year's forward until this year's are published. Everything else is simulated.` : 'Rules in this game are simulated.'}</p>
         </section>
         {(ed.screenings ?? []).length > 0 && <ScreeningsPanel editionId={ed.id} />}
-        <section className="panel">
+        <section className="card">
           <h2>{inst.kind === 'festival' ? 'Sections' : 'Categories'}</h2>
           <ul className="list">
             {categoriesFor(inst, ed.year).map((c) => {
               const res = ed.results[c.id];
               return (
                 <li key={c.id}>
-                  <div className="row">
+                  <div className="row-wrap">
                     <span className="grow"><strong>{c.name}</strong>{!c.competitive ? <span className="chip"> Not Competitive</span> : null}{(() => {
                       const st = categoryRuleStatus(rulebook(ed.rulesId), c.id);
                       return st === 'simulated' ? null : <span className="chip">{st === 'verified' ? 'Official Rules' : 'Projected Rules'}</span>;
@@ -328,7 +327,7 @@ export function EventDetail() {
                       return ` Entries close ${t.date}, ${t.time} local time.`;
                     })()}</div>
                     <RuleNotes ed={ed} categoryId={c.id} /></span>
-                    {delivered.length > 0 && categoryDeadline(ed, c) > g.now && <button className="btn btn-small" onClick={() => setPreparing({ projectId: delivered[0].id, cat: c })}>Prepare Submission</button>}
+                    {delivered.length > 0 && categoryDeadline(ed, c) > g.now && <button className="btn btn-sm" onClick={() => setPreparing({ projectId: delivered[0].id, cat: c })}>Prepare Submission</button>}
                   </div>
                   {res?.revealed && (
                     <div className="dim">
@@ -341,7 +340,7 @@ export function EventDetail() {
             })}
           </ul>
         </section>
-        <section className="panel">
+        <section className="card">
           <h2>Your Entries</h2>
           {ed.entries.length ? (
             <ul className="list">
@@ -349,9 +348,9 @@ export function EventDetail() {
                 const p = g.projects.find((pp) => pp.id === x.projectId);
                 const cat = inst.categories.find((c) => c.id === x.categoryId);
                 return (
-                  <li key={x.id} className="row">
+                  <li key={x.id} className="row-wrap">
                     <span className="grow">{p?.title}: {cat?.name} <span className="chip">{entryStatus(x.status)}</span>{x.reason ? <div className="dim">{x.reason}</div> : null}</span>
-                    {['submitted', 'accepted'].includes(x.status) && <button className="btn btn-small" onClick={() => setErr(store.act((s) => withdrawEntry(s, ed.id, x.id)))}>Withdraw Entry</button>}
+                    {['submitted', 'accepted'].includes(x.status) && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => withdrawEntry(s, ed.id, x.id)))}>Withdraw Entry</button>}
                   </li>
                 );
               })}
@@ -396,12 +395,12 @@ function SubmissionDialog({ editionId, cat, onClose, onError }: { editionId: str
         </fieldset>
       )}
       {el.eligible ? (
-        <div className="alert good"><p>{(() => {
+        <div className="callout callout-positive"><p>{(() => {
           const st = categoryRuleStatus(rulebook(ed.rulesId), cat.id);
           return st === 'verified' ? "This entry meets the organizer's published rules for this category." : st === 'projected' ? "This entry meets last year's rules, carried forward until this year's are published." : "This entry meets the game's rules for this category.";
         })()}{el.provisional ? ' It counts on a planned release that must happen within the eligibility period.' : ''}</p></div>
       ) : (
-        <div className="alert"><p>This entry can't be submitted yet:</p><ul>{el.reasons.map((r, i) => <li key={i}>{r}</li>)}</ul></div>
+        <div className="callout callout-warning"><p>This entry can't be submitted yet:</p><ul>{el.reasons.map((r, i) => <li key={i}>{r}</li>)}</ul></div>
       )}
       {cat.fee > 0 && <p>Entry fee: {money(cat.fee)}, paid from the project's budget.</p>}
       <p>Credited for this category: {el.recipients.map((r) => r.personName).join(', ') || 'No one yet'}.</p>
@@ -422,7 +421,7 @@ function MocapPanel({ p }: { p: Project }) {
   const PARTS: Record<string, CapturePart[]> = { both: ['body', 'face'], body: ['body'], face: ['face'] };
   const act = (fn: (s: GameState, proj: Project) => void) => setError(store.act((s) => fn(s, s.projects.find((x) => x.id === p.id)!)));
   return (
-    <section className="panel" aria-labelledby="mocap-h">
+    <section className="card" aria-labelledby="mocap-h">
       <h2 id="mocap-h">Motion Capture</h2>
       <p className="dim">Book the capture stage, rehearse and calibrate, then capture. Sessions are dated and go on your calendar; dates when the performer is shooting, or the stage is taken, are passed over. Choose the take that goes forward; cleanup and retargeting start from it.</p>
       {error && <p role="alert" className="error">{error}</p>}
@@ -438,7 +437,7 @@ function MocapPanel({ p }: { p: Project }) {
               {booked ? 'The capture stage is booked.' : rec?.status === 'cancelled' ? 'The booking was cancelled.' : 'The capture stage isn\'t booked yet.'}{' '}
               {cap.done} of {plural(cap.units, 'session')} captured{rec?.retakes ? `, including ${plural(rec.retakes, 'retake')}` : ''}.
             </p>
-            <div className="btn-row">
+            <div className="row gap-2 wrap">
               {!booked && cap.status !== 'done' && (
                 <>
                   <SelectField label={`What To Capture For ${name}`} value={parts[charId] ?? 'both'} onChange={(v) => setParts({ ...parts, [charId]: v })}
@@ -462,9 +461,9 @@ function MocapPanel({ p }: { p: Project }) {
             {rec?.sessions && rec.sessions.length > 0 && (
               <ul className="list" aria-label={`Capture Sessions For ${name}`}>
                 {[...rec.sessions].sort((a, b) => (a.date < b.date ? -1 : 1)).map((x, i) => (
-                  <li key={`${x.date}-${i}`} className="row">
+                  <li key={`${x.date}-${i}`} className="row-wrap">
                     <span className="grow">{formatDateKey(x.date, true)}: {x.kind === 'calibration' ? 'Calibration' : 'Capture'}{x.note ? ` (${x.note})` : ''}</span>
-                    <span className={`chip ${x.status === 'done' ? 'good' : x.status === 'missed' ? 'bad' : ''}`}>{x.status === 'booked' ? 'Booked' : x.status === 'done' ? 'Done' : 'Missed, Rebooked'}</span>
+                    <span className={`chip ${x.status === 'done' ? 'chip-positive' : x.status === 'missed' ? 'chip-negative' : ''}`}>{x.status === 'booked' ? 'Booked' : x.status === 'done' ? 'Done' : 'Missed, Rebooked'}</span>
                   </li>
                 ))}
               </ul>
@@ -472,10 +471,10 @@ function MocapPanel({ p }: { p: Project }) {
             {rec && rec.takes.length > 0 && (
               <ul className="list" aria-label={`Takes For ${name}`}>
                 {rec.takes.map((t, i) => (
-                  <li key={t.id} className="row">
+                  <li key={t.id} className="row-wrap">
                     <span className="grow">Take {i + 1}{t.retake ? ' (Retake)' : ''}: quality {t.quality} · {formatDateKey(t.date, true)}</span>
-                    {rec.approvedTakeId === t.id ? <span className="chip good">Approved</span> : (
-                      <button className="btn btn-small" aria-label={`Approve Take ${i + 1} For ${name}`} onClick={() => {
+                    {rec.approvedTakeId === t.id ? <span className="chip chip-positive">Approved</span> : (
+                      <button className="btn btn-sm" aria-label={`Approve Take ${i + 1} For ${name}`} onClick={() => {
                         const impact = takeChangeImpact(p, charId);
                         if (impact.length) setConfirm({ charId, takeId: t.id, names: impact.map((x) => x.label) });
                         else act((_, proj) => { approveTake(proj, charId, t.id); });
@@ -512,7 +511,7 @@ function ScreeningsPanel({ editionId }: { editionId: string }) {
   const inst = institution(ed.institutionId);
   const venue = getPlace(inst.placeId);
   return (
-    <section className="panel" aria-labelledby="scr-h">
+    <section className="card" aria-labelledby="scr-h">
       <h2 id="scr-h">Screenings</h2>
       {err && <p role="alert" className="error">{err}</p>}
       <ul className="list">
@@ -539,12 +538,12 @@ function ScreeningsPanel({ editionId }: { editionId: string }) {
               {!sc.done && conflicts.map((c) => <p key={c} className="warn">{c}</p>)}
               {!sc.done && !travel.here && !travel.arrivesInTime && sc.rsvp !== 'declined' && <p className="dim">You couldn't arrive in time from where you are: the trip takes about {Math.round(travel.hours)} hours.</p>}
               {!sc.done && (
-                <div className="btn-row">
-                  {open && travel.here && <button className="btn btn-primary btn-small" onClick={accept}>Attend Screening</button>}
-                  {open && !travel.here && travel.arrivesInTime && <button className="btn btn-primary btn-small" onClick={accept}>Accept Invitation</button>}
-                  {sc.rsvp === 'accepted' && !travel.here && travel.arrivesInTime && !g.travel && <button className="btn btn-small" onClick={travelThere}>Travel to the Venue</button>}
-                  {conflicts.length > 0 && p && <button className="btn btn-small" onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'schedule' })}>View Schedule</button>}
-                  {(open || sc.rsvp === 'accepted') && <button className="btn btn-small" onClick={decline}>Decline Invitation</button>}
+                <div className="row gap-2 wrap">
+                  {open && travel.here && <button className="btn btn-primary btn-sm" onClick={accept}>Attend Screening</button>}
+                  {open && !travel.here && travel.arrivesInTime && <button className="btn btn-primary btn-sm" onClick={accept}>Accept Invitation</button>}
+                  {sc.rsvp === 'accepted' && !travel.here && travel.arrivesInTime && !g.travel && <button className="btn btn-sm" onClick={travelThere}>Travel to the Venue</button>}
+                  {conflicts.length > 0 && p && <button className="btn btn-sm" onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'schedule' })}>View Schedule</button>}
+                  {(open || sc.rsvp === 'accepted') && <button className="btn btn-sm" onClick={decline}>Decline Invitation</button>}
                 </div>
               )}
             </li>

@@ -16,8 +16,8 @@ test('main screens: names, ids, headings; reduced motion; 200% text without side
     await expect(page.getByRole('heading', { level: 1 }).first()).toBeVisible();
     problems.push(...(await audit(page, s)));
   }
-  // Reduced motion: no transitions run.
-  const moving = await page.evaluate(() => [...document.querySelectorAll('button')].some((b) => parseFloat(getComputedStyle(b).transitionDuration) > 0));
+  // Reduced motion: no transition runs longer than a millisecond (1221's rule cuts them to 0.001ms rather than none).
+  const moving = await page.evaluate(() => [...document.querySelectorAll('button')].some((b) => parseFloat(getComputedStyle(b).transitionDuration) > 0.001));
   expect(moving).toBe(false);
   // 200% text: the root size doubles; nothing scrolls sideways on any main screen.
   await page.evaluate(() => { document.documentElement.style.fontSize = '200%'; });

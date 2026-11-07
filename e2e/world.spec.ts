@@ -28,7 +28,7 @@ test('a life can start anywhere in the world, and world places travel and persis
   // The world place survives a reload from the saved game.
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await nav(page, 'World');
   await expect(page.getByText(/You're in Turku, .*Finland/)).toBeVisible();
 });

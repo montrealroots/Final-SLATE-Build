@@ -4,6 +4,7 @@ import { travelHours } from '../engine';
 import { countryName, toGamePlace, type WorldPlace } from '../world/gazetteer/gazetteer';
 import { boxAround, frameBox, loadMap, markerRadiusAt, projectPoint, strokeAt, viewBoxOf, type WorldMapData } from '../world/map/map';
 import { formatDuration } from '../engine';
+import { PageHead } from './components';
 import { store, useGame } from './store';
 import { CountryAndRegion, LoadProblem, noMatch, useWorldSearch } from './WorldPicker';
 
@@ -32,10 +33,9 @@ export function WorldView() {
   };
   return (
     <>
-      <h1>World</h1>
-      <p className="muted">You're in {placeLabel(here)}. Choose a country or territory to see its places. Travel times come from the distance between places.</p>
-      <div className="panel-grid">
-        <section className="panel" aria-labelledby="w-find">
+      <PageHead eyebrow="Your Day" title="World" lede={`You're in ${placeLabel(here)}. Choose a country or territory to see its places. Travel times come from the distance between places.`} />
+      <div className="card-grid">
+        <section className="card" aria-labelledby="w-find">
           <h2 id="w-find">Find A Place</h2>
           <CountryAndRegion ws={ws} />
           <div className="field">
@@ -51,7 +51,7 @@ export function WorldView() {
                   const hours = travelHours(here, { ...here, lat: w.lat, lon: w.lon });
                   return (
                     <li key={w.id}>
-                      <button className="btn btn-quiet" disabled={!!opening} onClick={() => void open(w)}>{w.name}</button>{' '}
+                      <button className="btn btn-ghost" disabled={!!opening} onClick={() => void open(w)}>{w.name}</button>{' '}
                       <span className="dim">{[ws.regionNames.get(w.region), countryName(w.country)].filter(Boolean).join(', ')} · about {formatDuration(hours * 3600_000)} away</span>
                     </li>
                   );
@@ -61,7 +61,7 @@ export function WorldView() {
           )}
           {ws.status === 'ready' && ws.matches.length > SHOWN && <p className="dim">Showing {SHOWN} of {ws.matches.length.toLocaleString('en')} places, largest first. Type more of the name to narrow the list.</p>}
         </section>
-        <section className="panel" aria-labelledby="w-map">
+        <section className="card" aria-labelledby="w-map">
           <h2 id="w-map">Map</h2>
           <WorldMap country={ws.country} here={here} places={ws.status === 'ready' ? shown : []} onCountry={ws.setCountry} onPlace={(w) => void open(w)} />
         </section>

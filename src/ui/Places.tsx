@@ -4,7 +4,7 @@ import { languageName, PRONOUNS } from '../data/identity';
 import { getPlace, placeLabel, searchPlaces, type Place } from '../data/places';
 import { FORECAST_HORIZON_DAYS, addDaysToKey, addPlan, cancelPlan, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, honors, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
 import type { GameState } from '../engine/types';
-import { Check, Modal, NumberField, Professions, SelectField, TextField, longLocal, plural } from './components';
+import { Check, Modal, NumberField, PageHead, Professions, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { store, useClock, useGame } from './store';
 import { loadWorldHolidays } from '../world/holidays/holidays';
@@ -91,17 +91,21 @@ export function CalendarView() {
   const plansToday = g.plans.filter((pl) => pl.status === 'upcoming' && dateKey(pl.start, zone) === selected);
   return (
     <>
-      <h1>Calendar</h1>
-      <fieldset className="panel" style={{ border: '1px solid var(--line)' }}>
+      <div className="page-head">
+        <button type="button" className="btn btn-ghost btn-sm back-home" onClick={() => store.go({ view: 'home' })}>Back To Home</button>
+        <h1>Calendar</h1>
+        <p className="muted">Your schedule, birthdays, festivals, awards and their deadlines, and the public holidays where you are.</p>
+      </div>
+      <fieldset className="card" style={{ border: '1px solid var(--line)' }}>
         <legend className="sr-only">Show On Calendar</legend>
-        <div className="chips">
+        <div className="chip-row">
           {FILTERS.map((f) => (
             <Check key={f} label={f} checked={g.calendarFilters.includes(f)} onChange={(v) => store.act((s) => { s.calendarFilters = v ? [...s.calendarFilters, f] : s.calendarFilters.filter((x) => x !== f); })} />
           ))}
         </div>
       </fieldset>
-      <div className="panel">
-        <div className="btn-row spread">
+      <div className="card">
+        <div className="row-between wrap">
           <button className="btn" onClick={() => move(-1)}>Previous Month</button>
           <h2 style={{ margin: 0 }} aria-live="polite">{monthName(cursor.month)} {cursor.year}</h2>
           <button className="btn" onClick={() => move(1)}>Next Month</button>
@@ -120,17 +124,17 @@ export function CalendarView() {
           )}
         </div>
       </div>
-      <section className="panel" aria-labelledby="day-h">
-        <div className="btn-row spread">
+      <section className="card" aria-labelledby="day-h">
+        <div className="row-between wrap">
           <h2 id="day-h" style={{ margin: 0 }}>{formatDateKey(selected, true)}</h2>
-          {selected >= today && <button className="btn btn-small" onClick={() => setAdding(true)}>Add Plan</button>}
+          {selected >= today && <button className="btn btn-sm" onClick={() => setAdding(true)}>Add Plan</button>}
         </div>
         {selItems.length ? (
           <ul className="list spaced">
             {selItems.map((it, i) => (
-              <li key={i} className="row">
+              <li key={i} className="row-wrap">
                 <span className="grow">{it.time ? `${it.time}: ` : ''}{it.label} <span className="chip">{it.kind}</span></span>
-                {it.route && <button className="btn btn-small" onClick={() => store.go(it.route!)}>View Details</button>}
+                {it.route && <button className="btn btn-sm" onClick={() => store.go(it.route!)}>View Details</button>}
               </li>
             ))}
           </ul>
@@ -140,9 +144,9 @@ export function CalendarView() {
             <h3>Your Plans</h3>
             <ul className="list">
               {plansToday.map((pl) => (
-                <li key={pl.id} className="row">
+                <li key={pl.id} className="row-wrap">
                   <span className="grow">{longLocal(pl.start, zone).time}: {pl.title}</span>
-                  <button className="btn btn-small btn-danger" onClick={() => store.act((s) => cancelPlan(s, pl.id))}>Cancel Plan</button>
+                  <button className="btn btn-sm btn-danger" onClick={() => store.act((s) => cancelPlan(s, pl.id))}>Cancel Plan</button>
                 </li>
               ))}
             </ul>
@@ -162,16 +166,16 @@ function FollowedEvents() {
   const [q, setQ] = useState('');
   const shown = upcoming.filter((e) => e.label.toLowerCase().includes(q.toLowerCase())).slice(0, 12);
   return (
-    <section className="panel" aria-labelledby="ev-h">
+    <section className="card" aria-labelledby="ev-h">
       <h2 id="ev-h">Festivals And Awards</h2>
       <TextField label="Search Events" type="search" value={q} onChange={setQ} />
       <ul className="list">
         {shown.map((e) => {
           const inst = institution(e.institutionId);
           return (
-            <li key={e.id} className="row">
+            <li key={e.id} className="row-wrap">
               <div className="grow">
-                <button className="btn btn-quiet" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button>
+                <button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button>
                 <div className="dim">{inst.kind === 'festival' ? 'Festival' : 'Awards'} · {formatDateKey(dateKey(e.start, zone))} · Entries {e.deadline > g.now ? `close ${formatDateKey(dateKey(e.deadline, zone))}` : 'closed'}</div>
               </div>
               <FollowButton id={inst.id} />
@@ -187,7 +191,7 @@ export function FollowButton({ id }: { id: string }) {
   const g = useGame();
   const on = g.followed.includes(id);
   return (
-    <button className="btn btn-small" aria-pressed={on} onClick={() => store.act((s) => { s.followed = on ? s.followed.filter((x) => x !== id) : [...s.followed, id]; })}>
+    <button className="btn btn-sm" aria-pressed={on} onClick={() => store.act((s) => { s.followed = on ? s.followed.filter((x) => x !== id) : [...s.followed, id]; })}>
       {on ? 'Unfollow Event' : 'Follow Event'}
     </button>
   );
@@ -242,9 +246,9 @@ export function PlaceView() {
   return (
     <>
       <Breadcrumbs items={[{ label: 'Home', route: { view: 'home' } }, { label: place.name }]} />
-      <h1>{placeLabel(place)}</h1>
-      <div className="panel-grid">
-        <section className="panel" aria-labelledby="pl-now">
+      <PageHead eyebrow="Your Day" title={placeLabel(place)} />
+      <div className="card-grid">
+        <section className="card" aria-labelledby="pl-now">
           <h2 id="pl-now">Now</h2>
           <p>It's {lt.time} on {lt.weekday}, {lt.date} here.</p>
           <p>{w.condition}, {Math.round(temperatureAt(w, localParts(now, place.zone).hour))}°C now. High {Math.round(w.high)}°C, low {Math.round(w.low)}°C.{w.precipHours ? ` ${w.snow ? 'Snow' : 'Rain'} from about ${formatClock(w.precipHours[0], 0)} to ${formatClock(w.precipHours[1] % 24, 0)}.` : ''}</p>
@@ -257,9 +261,9 @@ export function PlaceView() {
               {travelError && <p role="alert" style={{ color: 'var(--negative)' }}>{travelError}</p>}
             </>
           )}
-          {here && <p className="chip gold">You're here</p>}
+          {here && <p className="chip chip-accent">You're here</p>}
         </section>
-        <section className="panel" aria-labelledby="pl-fc">
+        <section className="card" aria-labelledby="pl-fc">
           <h2 id="pl-fc">Forecast</h2>
           <div className="table-wrap">
             <table className="data">
@@ -279,17 +283,17 @@ export function PlaceView() {
           </div>
           <p className="dim">Forecasts get less certain the further ahead they look.</p>
         </section>
-        <section className="panel" aria-labelledby="pl-hol">
+        <section className="card" aria-labelledby="pl-hol">
           <h2 id="pl-hol">Upcoming Public Holidays</h2>
           {hols.length > 0 && <ul className="list">{hols.map((h) => <li key={h.date + h.name}>{formatDateKey(h.date, true)}: {h.name}{h.estimated ? ' (expected; depends on the moon sighting)' : h.projected ? ' (projected)' : ''}</li>)}</ul>}
           <HolidayNote place={place} year={hols.some((h) => h.projected) ? year + 1 : year} />
         </section>
-        <section className="panel" aria-labelledby="pl-other">
+        <section className="card" aria-labelledby="pl-other">
           <h2 id="pl-other">Other Places</h2>
           <TextField label="Search Places" type="search" value={q} onChange={setQ} />
           <ul className="list">
             {searchPlaces(q, 8).map((pl: Place) => (
-              <li key={pl.id}><button className="btn btn-quiet" onClick={() => store.go({ view: 'place', placeId: pl.id })}>{placeLabel(pl)}</button> <span className="dim">{longLocal(now, pl.zone).time}</span></li>
+              <li key={pl.id}><button className="btn btn-ghost" onClick={() => store.go({ view: 'place', placeId: pl.id })}>{placeLabel(pl)}</button> <span className="dim">{longLocal(now, pl.zone).time}</span></li>
             ))}
           </ul>
           <button className="btn" onClick={() => store.go({ view: 'world' })}>Browse The World</button>
@@ -338,10 +342,9 @@ export function Profile() {
   const h = honors(g);
   return (
     <>
-      <h1>{c.name}</h1>
-      <Professions actingTitle={c.actingTitle} />
-      <div className="panel-grid">
-        <section className="panel">
+      <PageHead eyebrow="Player Profile" title={c.name}><Professions actingTitle={c.actingTitle} /></PageHead>
+      <div className="card-grid">
+        <section className="card">
           <h2>About</h2>
           <dl className="kv">
             <dt>Pronouns</dt><dd>{PRONOUNS[c.pronouns].label}</dd>
@@ -353,26 +356,26 @@ export function Profile() {
             <dt>Now In</dt><dd>{placeLabel(currentPlace(g))}</dd>
           </dl>
         </section>
-        <section className="panel">
+        <section className="card">
           <h2>Credits</h2>
           {credits.length ? (
             <ul className="list">
               {credits.map(({ p, x }) => (
                 <li key={p.id + x.id}>
-                  <button className="btn btn-quiet" onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'release' })}>{p.title}</button>
+                  <button className="btn btn-ghost" onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'release' })}>{p.title}</button>
                   <div className="dim">{x.contribution}{x.characterName ? ` (${x.characterName})` : ''}{x.episodes !== 'all' ? `, ${plural(x.episodes.length, 'episode')}` : ''}</div>
                 </li>
               ))}
             </ul>
           ) : <p className="muted">Credits appear here when a project is delivered.</p>}
         </section>
-        <section className="panel">
+        <section className="card">
           <h2>Festivals And Awards</h2>
           {h.length ? (
             <ul className="list">{h.map((x, i) => <li key={i}><strong>{x.result}</strong>: {x.category}, {x.editionLabel} ({x.projectTitle}){x.personal ? '' : <span className="dim"> · credited to others on your project</span>}</li>)}</ul>
           ) : <p className="muted">Selections, nominations and wins appear here.</p>}
         </section>
-        <section className="panel">
+        <section className="card">
           <h2>History</h2>
           <ul className="list">{g.log.filter((l) => l.kind === 'personal').slice(0, 6).map((l) => <li key={l.id}>{l.text} <span className="dim">{longLocal(l.at, zone).date}</span></li>)}</ul>
           {!g.log.some((l) => l.kind === 'personal') && <p className="muted">Nothing yet.</p>}

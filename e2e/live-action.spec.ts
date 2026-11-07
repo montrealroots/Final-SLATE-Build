@@ -1,5 +1,5 @@
 import { expect, test } from './test';
-import { advance, createCharacter, freshStart, nav, readSavedState, section, staffEveryDepartment, secureStartingBacking } from './helpers';
+import { advance, createCharacter, freshStart, nav, readSavedState, section, staffEveryDepartment, secureStartingBacking, pressSaveAndExit } from './helpers';
 
 test('live-action short: create, write, cast yourself, staff, shoot, cut, deliver, credits', async ({ page }, info) => {
   await freshStart(page);
@@ -12,7 +12,8 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
     customHeritage: 'Afro-Mexican from Costa Chica', mainLanguage: 'English', extraLanguages: ['Spanish', 'Igbo'], start: 'Toronto', startDate: '2026-03-02', startTime: '08:00',
   });
   // Home truthfulness and empty states.
-  await expect(page.getByText(/It's 8:0\d AM on Monday, March 2, 2026\. You're in Toronto\./)).toBeVisible();
+  await expect(page.getByText(/^Monday, March 2, 2026 · /)).toBeVisible();
+  await expect(page.getByText(/^8:0\d AM in Toronto, /)).toBeVisible();
   await expect(page.getByText("You haven't started a project yet.")).toBeVisible();
   await expect(page.getByText("You're up to date.")).toBeVisible();
   await expect(page.getByText('You have nothing scheduled today.')).toBeVisible();
@@ -72,7 +73,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
 
   // Cast: Odile is the player; the Ferryman goes to a performer.
   await section(page, 'Cast');
-  const roles = page.locator('section.panel', { hasText: 'Roles' }).first();
+  const roles = page.locator('section.card', { hasText: 'Roles' }).first();
   await roles.locator('li', { hasText: 'Odile' }).getByRole('button', { name: 'Cast Yourself' }).click();
   await roles.locator('li', { hasText: 'The Ferryman' }).getByRole('button', { name: 'Find Performers' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Make Offer' }).first().click();
@@ -117,7 +118,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
 
   // Credits: all four professions earned on this project.
   await section(page, 'Release');
-  const credits = page.locator('section.panel', { hasText: 'Credits' }).first();
+  const credits = page.locator('section.card', { hasText: 'Credits' }).first();
   for (const c of ['Written By', 'Directed By', 'Produced By']) await expect(credits.getByText(c, { exact: true })).toBeVisible();
   await expect(credits.getByText('as Odile')).toBeVisible();
   await page.screenshot({ path: `test-results/${info.project.name}-release.png`, fullPage: true });
@@ -150,7 +151,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await page.screenshot({ path: `test-results/${info.project.name}-festival.png`, fullPage: true });
 
   // Saved state matches and survives reload.
-  await page.getByRole('button', { name: 'Save And Exit' }).click();
+  await pressSaveAndExit(page);
   await expect(page.getByRole('button', { name: 'Continue', exact: true })).toBeVisible();
   const saved = await readSavedState(page);
   expect(saved.projects[0].delivered).not.toBeNull();

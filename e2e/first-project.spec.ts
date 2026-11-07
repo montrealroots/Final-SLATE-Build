@@ -34,10 +34,10 @@ async function createFromReview(page: Page) {
   await page.getByRole('button', { name: 'Save And Return To Review' }).click();
   await expect(page.locator('.review-row', { hasText: 'Starts On' })).toContainText('2026-03-02 at 09:15');
   await page.getByRole('button', { name: 'Start My Story' }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 }
 
-const amount = (page: Page, label: string) => page.locator('section.panel', { has: page.getByRole('heading', { name: 'Financing' }) })
+const amount = (page: Page, label: string) => page.locator('section.card', { has: page.getByRole('heading', { name: 'Financing' }) })
   .locator('dt', { hasText: new RegExp(`^${label}$`) }).locator('xpath=following-sibling::dd[1]');
 
 test('first project: write, approve, a refusal, the agreed backing, production, release, and a second project with its history intact', async ({ page }, info) => {
@@ -63,7 +63,7 @@ test('first project: write, approve, a refusal, the agreed backing, production, 
   await section(page, 'Overview');
   await expect(page.getByText(/Raise money: no backer has paid in yet, and hiring needs money\. Your target is \$40,000\./)).toBeVisible();
   await section(page, 'Cast');
-  const roles = page.locator('section.panel', { hasText: 'Roles' }).first();
+  const roles = page.locator('section.card', { hasText: 'Roles' }).first();
   await roles.locator('li', { hasText: 'The Conductor' }).getByRole('button', { name: 'Find Performers' }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Make Offer' }).first().click();
   await expect(page.getByRole('dialog').getByRole('alert').first()).toContainText('but only $0 is uncommitted');
@@ -74,7 +74,7 @@ test('first project: write, approve, a refusal, the agreed backing, production, 
   await expect(amount(page, 'Budget Estimate')).toHaveText('$40,000');
   await expect(amount(page, 'Received')).toHaveText('$0');
   await page.getByRole('button', { name: 'Approach Screen Arts Fund Grant' }).click();
-  const backers = page.locator('section.panel', { has: page.getByRole('heading', { name: 'Backers' }) });
+  const backers = page.locator('section.card', { has: page.getByRole('heading', { name: 'Backers' }) });
   await expect(backers).toContainText('Considering');
   await expect(backers).toContainText('Their answer is due');
   for (let i = 0; i < 4; i++) await advance(page, 'week');
@@ -124,7 +124,7 @@ test('first project: write, approve, a refusal, the agreed backing, production, 
   await expect(page.getByRole('heading', { name: 'Night Shift At The Depot', level: 1 })).toBeVisible();
   await section(page, 'Budget');
   await expect(page.getByRole('button', { name: 'Approach Starting Backing' })).toHaveCount(0);
-  const raise = page.locator('section.panel', { has: page.getByRole('heading', { name: 'Raise Money' }) });
+  const raise = page.locator('section.card', { has: page.getByRole('heading', { name: 'Raise Money' }) });
   await expect(raise.locator('li', { hasText: 'Commissioner' })).toContainText('Approve a script first.');
   await expect(raise.locator('li', { hasText: 'Commissioner' })).not.toContainText('Deliver a project first.');
   await expect.poll(async () => (await readSavedState(page)).projects.map((p: { title: string }) => p.title), { timeout: 20_000 }).toEqual(['The Last Tram', 'Night Shift At The Depot']);

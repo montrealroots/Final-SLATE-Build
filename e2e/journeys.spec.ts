@@ -328,7 +328,7 @@ async function editSaveAndReopen(page: Page, fn: (state: Record<string, any>) =>
   await writeRecords(page, { [`slate.v1.save.${id}`]: JSON.stringify({ ...env, checksum: hashString(data), data }) });
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
-  await expect(page.getByRole('heading', { name: 'Home', level: 1 })).toBeVisible();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 }
 
 test('festival under official rules: submit, selection, screening attended, results, save and reload, once each', async ({ page }) => {
