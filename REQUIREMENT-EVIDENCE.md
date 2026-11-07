@@ -106,3 +106,24 @@ Tests: `F` = `tests/foundation.test.ts`, `J` = `tests/journeys.test.ts`, `M` = `
 | Saves move out of localStorage safely | First start | `migrateFromLocal` | Verified before removal; conflict copies; Web Lock | "Copy saved by another tab" recovery copies; a note if a save couldn't move | `tests/vault.test.ts`, `e2e/storage.spec.ts` (two tabs, interrupted, conflict) | Tested |
 | Progress survives closing the page | Page hidden or closed | `applyJournal` | localStorage journal | — | `tests/vault.test.ts`, `e2e/world.spec.ts` | Tested |
 
+
+## Script Rules Review (November 7, 2026)
+
+The review replaced arbitrary field effects from montrealroots/Final-SLATE-Build#33 with connected decisions (`docs/SCREENWRITING-AUDIT.md`
+traces each one). `S` = `tests/script-effects.test.ts`, `R` = `e2e/script-rules.spec.ts` (production build, desktop and phone).
+
+| Requirement | Input | Consumer | Persistent Consequence | Player Feedback | Evidence | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| A supporting antagonist stays supporting unless the producer places it otherwise | Role size, Awards Placement | `castPlacement`, `categoryRecipients` | `StoryCharacter.awardPlacement` | Placement hint; How Parts Are Placed in the entry dialog | S (real entry pools), R (hint changes with the choice) | Tested |
+| A narrator with limited involvement records narration and is booked a day for it, whatever the size | Story functions | `buildTasks`, `estimateDays` | Tasks, offer days | Story Functions text | S | Tested |
+| Content declared by issue and level; no rating inferred | Content card | `contentLevel`, offers | `axes.content` (fixed at delivery) | "Only a classification body gives a rating" | S, R | Tested |
+| Strong content gets broadcast offers for a late slot, or the full guarantee with a broadcast edit; every other term the same | Declared content | `distribution-offer` handler, `acceptDistribution` | Offer `slot`, `editedGuarantee`, materials | Offer text cites Ofcom (GB) or FCC (US), or says it is the game's assumption | S (same seed, moderate vs strong) | Tested |
+| Streaming contracts need the declaration; contracts need the Pitch; offers still come without one | Content, Story panel | `offerNeeds` | — | Accept disabled with the reason | S | Tested |
+| A family audience with mature content is advised, not blocked | Audience, content | `audienceContentNote` | — | Content card | S, `tests/genres.test.ts` | Tested |
+| Meaningless text manufactures no quality; empty fields cost none; filler resolving a prompt earns nothing | Objectives, genre answers, prompts | `assessQuality`, `Issue.advisory` | — | Prompts listed apart, "never count either way" | S | Tested |
+| Missing documents produce a clear, actionable response, then an explicit submission | Approaches, entries | `documentsNeeded`, `backerOptions`, `entryNeeds` | `FinanceDeal.sent` | Names the document and the empty fields; "Sent with the approved script: …" | S, R (incomplete pitch, revised treatment, sent) | Tested |
+| Text never buys time: treatment, briefs and casting breakdown change no timing or work | Story panel, characters | `approachBacker`, `buildTasks`, `makeOffer` | — | Hints say so | S | Tested |
+| Missing structural footage offers a pickup or a cut, with the consequences from declared essentials and setups | Coverage card | `coverageGaps`, `cutConsequences`, `cutFromEdit`, `restoreToEdit`, `requestPickups` | `Edit.cutSceneIds`; emptied days cancelled; pickups after main photography | Cut dialog lists consequences; lock blockers name the choices | S, R (cut, restore, pickup, delivered) | Tested |
+| Nonlinear structure isn't penalized | Setups, Intentional Discontinuity | `scriptIssues`, `assessQuality` | — | — | S | Tested |
+| A shared background never scores a performance | Character and performer backgrounds | `assessQuality` | — | Shares A Background chip | `tests/heritage.test.ts` | Tested |
+| Saves keep the new choices; delivered results are never recomputed | Save and load | `serialize`, `deserialize`, `migrate` | Optional fields; stored quality | — | S | Tested |
