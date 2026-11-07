@@ -74,7 +74,7 @@ are the files as built; gzipped is `gzip -9` of each file, an estimate of what a
 
 | What | When | Bytes | Gzipped |
 | --- | --- | --- | --- |
-| Startup JavaScript (4 files: entry, React, runtime) | Before the start screen | 676,736 | 205 kB |
+| Startup JavaScript (4 files: entry, React, runtime) | Before the start screen | 676,736 (679,394 after the budget estimate, November 7) | 205 kB (206 kB after) |
 | Stylesheet | Before the start screen | 60,606 | 12,270 |
 | Holiday rules (`countries.json`) | Fetched from startup, before a game opens | 662,994 | 62,518 |
 | Calendars (`calendars.json`) | Fetched from startup, before a game opens | 119,863 | 31,642 |
@@ -88,7 +88,7 @@ are the files as built; gzipped is `gzip -9` of each file, an estimate of what a
 | Weather stations (`stations.json`) | When a catalog place's weather is needed | 3,292,995 | 1,151,024 |
 | Place shards (246 `.tsv` files, one per country) | One country at a time, when searched | 12,011,972 in all | 4,161,411 in all |
 
-So a player who opens a game downloads about 1.56 MB before it opens (about 330 kB gzipped). The budget (700 kB,
+So a player who opens a game downloads about 1.56 MB before it opens (about 330 kB gzipped). The budget estimate (`src/engine/estimate.ts`, later on November 7) added 2,658 bytes of engine code to the startup files: 663 kB, 206 kB gzipped by `npm run budget`. The budget (700 kB,
 220 kB gzipped) covers only the startup JavaScript, and that is unchanged.
 
 ## Startup JavaScript, earlier pass (montrealroots/Final-SLATE-Build#15, historical)

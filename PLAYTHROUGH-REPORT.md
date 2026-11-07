@@ -94,7 +94,7 @@ Playwright's WebKit iPhone 15 Plus and 15 Pro Max profiles (430×739 portrait, 8
 | Hybrid | `tests/media.test.ts` | Live scenes shot, animated scene animated and integrated, no duplicate charges. Delivered. |
 | Documentary | `tests/media.test.ts` | Interview, consent, fact-check and archive requirements; no dialogue; delivery blocked until facts are verified and consent given. |
 | TV limited series, 2 episodes | `tests/media.test.ts` | One shared location requirement; a guest character credited for episode 1 only, the lead for 1 and 2; showrunner credit; one assembly per episode. |
-| Failure and recovery | balance runs | Micro budgets run out of money in 40% of seeds. Adding a co-producer and rebuilding the schedule recovers all of them. |
+| Failure and recovery | balance runs | Micro-budget live-action shorts funded at $40,000 run out of money in 23% of seeds (40% before the weather change, 27% before the staffing change of November 7, 2026). Adding a co-producer and rebuilding the schedule recovers all of them. Micro-budget animation is funded to its script's estimate and delivers in every seed (`BALANCE-REPORT.md`). |
 
 ## Not Played Through The Browser
 
