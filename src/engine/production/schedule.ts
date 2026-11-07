@@ -5,6 +5,7 @@ import type { Asset, GameState, Project, Scene, ShootDay } from '../types';
 import { getPlace } from '../../data/places';
 import { cancel, ledgerTotals, money, reserve, FundsError } from '../budget';
 import { isMakeUpWorkday, placeHolidaysOn } from '../holidays';
+import { observancesOn } from '../observances';
 import { approvedCharacters, approvedScenes, projectModules, sceneTechnique } from '../projects';
 import { addLog, cancelEvents, newId, schedule } from '../state';
 import { addDaysToKey, dateKey, formatDateKey, isDateKey, localParts, localToInstant, parseYmd, weekdayOfKey } from '../time';
@@ -35,6 +36,7 @@ export function isWorkingDay(p: Project, key: string): boolean {
   if (!p.schedule.workHolidays) {
     const place = getPlace(p.axes.basePlaceId);
     if (placeHolidaysOn(place, key).length) return false;
+    if (observancesOn(p.schedule.observances, key).length) return false; // the holidays you keep, wherever you shoot
   }
   return true;
 }

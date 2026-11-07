@@ -4,7 +4,7 @@ import { approvedTake, captureCredit } from './mocap';
 import { financeCredits, onProjectDelivered, receiveIncome } from './finance';
 import { getPlace } from '../data/places';
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
-import { personById, roleLabel } from './people';
+import { AUTHENTIC_CASTING_BONUS, personById, roleLabel, sharedHeritages } from './people';
 import {
   approvalRights, approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, scriptIssues, sceneLabel, sceneTechnique,
 } from './projects';
@@ -251,10 +251,13 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   for (const a of p.cast) {
     const sc = scenes.filter((s) => s.participants.includes(a.characterId)).map((s) => p.captures.find((c) => c.sceneId === s.id)?.quality ?? 60);
     const base = a.performer === 'player' ? 58 + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability;
-    out[`performance:${a.characterId}:${a.performer}`] = clamp(base * 0.6 + avg(sc, 60) * 0.4);
+    // Authentic casting: a performer who shares a background the character is written with brings lived experience to it.
+    // Never a penalty: a character written without backgrounds, or played by someone who doesn't share them, scores as before.
+    const lived = sharedHeritages(state, p, a.characterId, a.performer).length ? AUTHENTIC_CASTING_BONUS : 0;
+    out[`performance:${a.characterId}:${a.performer}`] = clamp(base * 0.6 + avg(sc, 60) * 0.4 + lived);
   }
   const perf = avg(Object.entries(out).filter(([k]) => k.startsWith('performance:')).map(([, v]) => v), 55);
-  // Rounded to the nearest whole value; never derived from genre labels, budget size or identity.
+  // Rounded to the nearest whole value; never derived from genre labels or budget size, and identity only ever adds (authentic casting).
   out.overall = clamp(script * 0.3 + direction * 0.25 + craft * 0.2 + perf * 0.25);
   const r = stream(state.seed, 'reception', p.id);
   out.reception = clamp(out.overall + gaussian(r, 0, 8)); // audiences and critics vary

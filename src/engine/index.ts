@@ -19,3 +19,4 @@ export * from './documentary';
 export * from './mocap';
 export * from './unscripted';
 export * from './finance';
+export * from './observances';

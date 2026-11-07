@@ -1,4 +1,4 @@
-import { DAY, addLocal, currentPlace, currentZone, dateKey, daylight, formatZoneAbbrev, placeHolidaysOn, localParts, localToInstant, upcomingCommitments, weatherOn, temperatureAt, weekdayName } from '../engine';
+import { DAY, addLocal, currentPlace, currentZone, dateKey, daylight, formatZoneAbbrev, placeHolidaysOn, localParts, localToInstant, upcomingCommitments, weatherOn, temperatureAt, weekdayName, observancesOn } from '../engine';
 import type { Condition } from '../engine/weather';
 import { placeLabel } from '../data/places';
 import type { Edition } from '../engine/types';
@@ -77,6 +77,7 @@ export function Home() {
             {t.time} in {placeLabel(place)} · {formatZoneAbbrev(now, zone)} · {seasonAt(place.lat, p.month)} · {daylightWords}
           </p>
           {hol.map((h) => <p key={h.name} className="small today-line">{h.estimated ? `${h.name} is expected today in ${place.countryName}, depending on the moon sighting.` : `Today is ${h.name} in ${place.countryName}.`}</p>)}
+          {observancesOn(g.character.observances, today).map((o) => <p key={o.id} className="small today-line">Today is {o.name}, which you keep.</p>)}
           <div className="help-below today-actions">
             <button className="btn btn-sm" onClick={() => store.go({ view: 'place', placeId: place.id })}>Weather And Place Details</button>
           </div>

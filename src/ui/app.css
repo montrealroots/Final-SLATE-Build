@@ -1935,3 +1935,5 @@ table.data th { color: var(--text-dim); font-weight: 650; font-size: var(--size-
 .field > .hint { display: block; }
 input[type='time'] { width: 100%; min-height: var(--control); padding: var(--s2) var(--s3); border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--text); font: inherit; font-size: var(--size-sm); color-scheme: dark; }
 :root[data-theme='light'] input[type='time'] { color-scheme: light; }
+/* A list of checkboxes (creation's holidays): the hint under each, not a field's gap. */
+.col.gap-1 > .field { margin-bottom: var(--s1); }

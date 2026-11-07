@@ -2,10 +2,11 @@
 // calibration (docs/ASSUMPTIONS.md), not quoted real-world wages. NPC capability is a modeled
 // value that lets hiring choices differ; the player has no attribute or skill numbers.
 
+import { HERITAGES } from '../data/identity';
 import { getPlace } from '../data/places';
 import { gaussian, intBetween, pick, stream } from './rng';
 import { addDaysToKey, dayNumber } from './time';
-import type { GameState } from './types';
+import type { GameState, Project } from './types';
 
 export interface RoleDef {
   id: string;
@@ -109,6 +110,8 @@ export interface Person {
   dayRate: number; // asking rate
   languages: string[];
   homeCountry: string;
+  /** Their backgrounds (labels from HERITAGES): authentic casting reads them against a character's (finish.ts). */
+  heritages: string[];
   playingAge?: [number, number];
   skills: Skill[];
   samples: string;
@@ -133,6 +136,28 @@ const LANG_BY_COUNTRY: Record<string, string> = {
   US: 'en', CA: 'en', GB: 'en', IE: 'en', AU: 'en', NZ: 'en', NG: 'en', KE: 'sw', ZA: 'en', IN: 'hi', FR: 'fr', MC: 'fr', BF: 'fr', DE: 'de', CH: 'it',
   ES: 'es', MX: 'es', AR: 'es', BR: 'pt', IT: 'it', NL: 'nl', CZ: 'cs', SE: 'sv', NO: 'no', DK: 'da', TR: 'tr', EG: 'ar', MA: 'ar', AE: 'ar', SA: 'ar',
   JP: 'ja', KR: 'ko', CN: 'zh',
+};
+
+/**
+ * Backgrounds common among performers based in a country, for the modeled casting pool; a quarter of people are drawn
+ * from every background instead, as anywhere's population is. Modeled, not census figures.
+ */
+const COUNTRY_HERITAGES: Record<string, string[]> = {
+  US: ['American', 'African American', 'Mexican', 'Puerto Rican', 'Irish', 'Italian', 'Chinese', 'Filipino', 'Korean', 'Indian', 'Ashkenazi Jewish', 'Vietnamese', 'Haitian', 'Cherokee', 'Navajo (Diné)'],
+  CA: ['Canadian', 'French Canadian', 'First Nations', 'Métis', 'Inuit', 'Chinese', 'Indian', 'Punjabi', 'Filipino', 'Jamaican', 'Italian', 'Scottish', 'Irish'],
+  GB: ['English', 'Scottish', 'Welsh', 'Irish', 'Indian', 'Pakistani', 'Bangladeshi', 'Jamaican', 'Nigerian', 'Ghanaian', 'Polish', 'Chinese', 'Somali'],
+  IE: ['Irish', 'Polish', 'Nigerian', 'British'], AU: ['Australian', 'Aboriginal Australian', 'English', 'Chinese', 'Indian', 'Vietnamese', 'Greek', 'Italian', 'Filipino', 'Lebanese', 'Samoan'],
+  NZ: ['New Zealander', 'Māori', 'Samoan', 'Tongan', 'Chinese', 'Indian', 'Fijian'], NG: ['Yoruba', 'Igbo', 'Hausa', 'Fulani', 'Nigerian'],
+  KE: ['Kikuyu', 'Luo', 'Kenyan', 'Swahili', 'Somali', 'Indian'], ZA: ['Zulu', 'Xhosa', 'South African', 'Indian', 'English'],
+  IN: ['Indian', 'Punjabi', 'Gujarati', 'Tamil', 'Telugu', 'Malayali', 'Bengali', 'Sikh'],
+  FR: ['French', 'Algerian', 'Moroccan', 'Tunisian', 'Senegalese', 'Vietnamese', 'Portuguese', 'Amazigh'], MC: ['French', 'Italian'], BF: ['Fulani', 'French'],
+  DE: ['German', 'Turkish', 'Kurdish', 'Polish', 'Russian', 'Syrian', 'Italian', 'Greek'], CH: ['Swiss', 'Italian', 'German', 'French', 'Portuguese', 'Albanian'],
+  ES: ['Spanish', 'Catalan', 'Basque', 'Moroccan', 'Romani', 'Colombian', 'Ecuadorian'], MX: ['Mexican', 'Mestizo', 'Indigenous Mexican', 'Maya'],
+  AR: ['Argentine', 'Italian', 'Spanish', 'Mapuche'], BR: ['Brazilian', 'Afro-Brazilian', 'Portuguese', 'Japanese', 'Italian'],
+  IT: ['Italian', 'Romanian', 'Albanian', 'Moroccan', 'Chinese'], NL: ['Dutch', 'Moroccan', 'Turkish', 'Indonesian'], CZ: ['Czech', 'Slovak', 'Romani', 'Ukrainian'],
+  SE: ['Swedish', 'Finnish', 'Sámi', 'Iraqi', 'Syrian', 'Somali'], NO: ['Norwegian', 'Sámi', 'Polish', 'Pakistani', 'Somali'], DK: ['Danish', 'Turkish', 'Polish'],
+  TR: ['Turkish', 'Kurdish', 'Armenian'], EG: ['Egyptian', 'Arab'], MA: ['Moroccan', 'Amazigh', 'Arab'], AE: ['Emirati', 'Indian', 'Pakistani', 'Filipino', 'Arab'],
+  SA: ['Saudi', 'Arab', 'Yemeni'], JP: ['Japanese', 'Okinawan', 'Korean'], KR: ['Korean'], CN: ['Chinese', 'Han Chinese', 'Tibetan', 'Uyghur', 'Mongolian'],
 };
 
 export function countryLanguage(country: string): string {
@@ -191,8 +216,13 @@ function person(state: GameState, roleId: string, country: string, i: number): P
     : `${credits} ${credits === 1 ? 'production' : 'productions'} as ${def.label.toLowerCase()}.`;
   const p: Person = {
     id, name: `${pick(r, GIVEN)} ${pick(r, FAMILY)}`, pronouns, roleId, experience, capability, dayRate: rate, languages, homeCountry: country,
+    heritages: [],
     playingAge: ageLow !== undefined ? [ageLow, ageLow + intBetween(r, 6, 14)] : undefined, skills, samples, busy,
   };
+  // Drawn after everything else, so adding backgrounds left every earlier field of every person as it was.
+  const local = COUNTRY_HERITAGES[country];
+  p.heritages.push(local && r() < 0.75 ? pick(r, local) : pick(r, HERITAGES));
+  if (r() < 0.2) p.heritages = [...new Set([...p.heritages, pick(r, local ?? HERITAGES)])];
   personCache.set(cacheKey, p);
   return p;
 }
@@ -217,4 +247,15 @@ export function isAvailable(state: GameState, p: Person, from: string, to: strin
     if (dayNumber(blk.from) <= b && dayNumber(blk.to) >= a) return { ok: false, reason: `${p.name} is already working on another of your projects then.` };
   }
   return { ok: true };
+}
+
+/** What a shared background adds to a performance score (finish.ts): modeled, and only ever added. */
+export const AUTHENTIC_CASTING_BONUS = 6;
+
+/** The backgrounds a performer (you, or someone in the pool) shares with a character as written. */
+export function sharedHeritages(state: GameState, p: Project, characterId: string, performer: 'player' | string): string[] {
+  const wanted = p.characters.find((c) => c.id === characterId)?.heritages ?? [];
+  if (!wanted.length) return [];
+  const theirs = performer === 'player' ? state.character.heritages.map((h) => h.label) : personById(state, performer).heritages;
+  return wanted.filter((h) => theirs.includes(h));
 }

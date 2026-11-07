@@ -208,3 +208,35 @@ test('Starting Point: where you were born, or somewhere else', async ({ page }) 
   await page.getByRole('button', { name: 'Save And Return To Review' }).click();
   await expect(card(page, 'Starting Point')).toContainText('Mexico City');
 });
+
+test('backgrounds drive the game: their holidays are offered first and kept, their languages suggested first', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await page.getByRole('button', { name: 'New Game' }).first().click();
+  await fillIdentity(page, 'Min-jun Park', 'He/Him');
+  await page.getByRole('button', { name: 'Next: Background & Languages' }).click();
+  await expect(page.getByText('Add your backgrounds above and the holidays they keep come first here.')).toBeVisible();
+  await page.getByRole('searchbox', { name: 'Search Backgrounds' }).fill('Korean');
+  await page.getByRole('button', { name: 'Add A Background: Korean' }).click();
+  const suggested = page.getByRole('group', { name: 'From Your Backgrounds' });
+  await expect(suggested.getByRole('checkbox')).toHaveCount(2); // Seollal and Chuseok
+  await suggested.getByRole('checkbox', { name: 'Seollal' }).check();
+  await expect(suggested.getByText('In 2026: February 17.')).toBeVisible();
+  // Every other holiday stays open to anyone.
+  await page.getByText('Other Holidays').click();
+  await page.getByRole('checkbox', { name: 'Diwali' }).check();
+  // Korean comes first among the languages, marked as from your backgrounds.
+  const main = page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button').first();
+  await expect(main).toContainText('Korean');
+  await expect(main).toContainText('From your backgrounds');
+  await main.click();
+  await page.getByRole('button', { name: 'Next: Starting Point' }).click();
+  await pickPlace(page, 'Where You Live', 'Seoul');
+  await page.getByRole('button', { name: 'Next: Review' }).click();
+  await expect(card(page, 'Background & Languages')).toContainText('Seollal, Diwali');
+  await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('slate.v1.creationDraft') ?? 'null'));
+  expect(saved).toBeNull(); // the draft became the game
+});

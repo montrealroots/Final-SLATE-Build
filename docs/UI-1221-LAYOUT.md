@@ -47,3 +47,25 @@ Asked for "that whole creation suite", with nothing added that the engine doesn'
 your own words, which is what its engine stores. Drafts saved by the eight-step creation reopen on the step that now
 holds the same fields (`normalizeDraft`). The map under each place picker loads with the World screen's file only when
 shown, so the startup files don't grow.
+
+## What Each Creation Choice Drives (November 7, 2026)
+
+Every choice in creation now changes something in the game:
+
+| Choice | What reads it |
+| --- | --- |
+| Name | Credits, the save's name, the world's seed |
+| Pronouns and Billed As | The award categories split by title |
+| Date of birth | Age, the birthday on the calendar, the 16-and-over rule |
+| Place of birth | The time zone your birthday is counted in |
+| Backgrounds | The holidays suggested to you, the languages suggested to you, and authentic casting: a character written with a background you share counts it in your performance (`src/engine/observances.ts`, `src/data/heritage-languages.ts`, `sharedHeritages` in `src/engine/people.ts`) |
+| Holidays you keep | Your calendar and Home, and the shoot days of every project you make (`isWorkingDay`) |
+| Languages | Which roles you play without coaching, coaching costs, a new project's default language |
+| Where you live, starting date and time | Holidays, weather, travel, when the clock starts |
+
+Backgrounds are the game's word for heritage, what 1221 calls race or ethnicity. 1221 deliberately gives that no
+effect; here the user asked for one, and it only ever adds: suggestions anyone can ignore, holidays anyone may keep,
+and lived experience counted for a shared background, with no penalty or block for not sharing one. Holiday dates come
+from the holiday rules of a country that keeps each publicly; where a country hasn't announced a year (Diwali, Vesak,
+Thai Pongal, the Sinhala and Tamil, Khmer and Mongolian new years beyond their announced years), the game says it isn't
+dated yet rather than guessing.

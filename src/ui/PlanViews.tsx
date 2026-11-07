@@ -4,7 +4,7 @@ import { getPlace } from '../data/places';
 import {
   BACKERS, EXPERIENCE, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
-  ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
+  ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
   type StaffingProposal, covers,
 } from '../engine';
@@ -85,7 +85,8 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
               <div className="row-wrap">
                 <div className="grow">
                   <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>
-                  <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{c.playingAge ? ` Plays ages ${c.playingAge[0]} to ${c.playingAge[1]}.` : ''} Asks {money(c.dayRate)} a day.</div>
+                  <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{c.playingAge ? ` Plays ages ${c.playingAge[0]} to ${c.playingAge[1]}.` : ''} Background: {c.heritages.join(', ')}. Asks {money(c.dayRate)} a day.</div>
+                  {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip chip-positive">Shares {sharedHeritages(g, p, characterId, c.id).join(', ')}</span> <span className="dim">Lived experience counts toward the performance.</span></div>}
                   {!av.ok && <div className="dim" style={{ color: 'var(--warning)' }}>{av.reason}</div>}
                   {notes.map((n) => <div key={n} className="dim" style={{ color: 'var(--warning)' }}>{n}</div>)}
                 </div>
@@ -135,6 +136,7 @@ export function CastTab({ p }: { p: Project }) {
                   <div className="grow">
                     <strong>{c.name}</strong> <span className="dim">{c.roleSize} · {plural(approvedScenes(p).filter((s) => s.participants.includes(c.id)).length, 'scene')}</span>
                     {c.roleSize === 'background' && <div className="dim">Background performers are booked per shoot day.</div>}
+                    {!!c.heritages?.length && <div className="dim">Written as {c.heritages.join(', ')}.{sharedHeritages(g, p, c.id, 'player').length ? ' You share this background.' : ''}</div>}
                   </div>
                 </div>
                 {methods.map((m) => {
@@ -142,7 +144,7 @@ export function CastTab({ p }: { p: Project }) {
                   const pending = p.hires.find((h) => h.characterId === c.id && h.method === m && (h.status === 'offered' || h.status === 'countered'));
                   return (
                     <div key={m} className="row-wrap spaced">
-                      <span className="grow">{m === 'voice' ? 'Voice' : m === 'motion-capture' ? 'Performance Capture' : 'On Camera'}: {a ? (a.performer === 'player' ? <strong>You</strong> : <strong>{personById(g, a.performer).name}</strong>) : pending ? <span className="muted">Offer out to {personById(g, pending.personId).name}</span> : <span className="muted">Not cast</span>}</span>
+                      <span className="grow">{m === 'voice' ? 'Voice' : m === 'motion-capture' ? 'Performance Capture' : 'On Camera'}: {a ? (a.performer === 'player' ? <strong>You</strong> : <strong>{personById(g, a.performer).name}</strong>) : pending ? <span className="muted">Offer out to {personById(g, pending.personId).name}</span> : <span className="muted">Not cast</span>}{a && sharedHeritages(g, p, c.id, a.performer).length > 0 && <> <span className="chip chip-positive">Lived Experience</span></>}</span>
                       <div className="row gap-2 wrap">
                         {!a && !pending && <button className="btn btn-sm" onClick={() => setSearching({ characterId: c.id, method: m })}>Find Performers</button>}
                         {!a && !pending && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void castPlayer(s, p, c.id, m)))}>Cast Yourself</button>}
@@ -323,7 +325,7 @@ export function ScheduleTab({ p }: { p: Project }) {
           {has3d && <NumberField label="Render Nodes" value={p.schedule.renderNodes} min={1} max={500} hint="Finite render capacity, paid per node day." onChange={(v) => set(() => (p.schedule.renderNodes = Math.max(1, Math.min(500, Math.round(v || 1)))))} />}
         </div>
         <Check label="Six-Day Weeks" checked={p.schedule.sixDayWeeks} onChange={(v) => set(() => (p.schedule.sixDayWeeks = v))} />
-        <Check label="Work On Public Holidays" hint={`Holiday work is paid at 1.5 times the day rate in this game. Holidays follow ${place.countryName}.`} checked={p.schedule.workHolidays} onChange={(v) => set(() => (p.schedule.workHolidays = v))} />
+        <Check label="Work On Public Holidays" hint={`Holiday work is paid at 1.5 times the day rate in this game. Holidays follow ${place.countryName}${p.schedule.observances?.length ? `, and the holidays you keep (${p.schedule.observances.map((id) => observance(id)?.name).filter(Boolean).join(', ')}) are kept free too` : ''}.`} checked={p.schedule.workHolidays} onChange={(v) => set(() => (p.schedule.workHolidays = v))} />
         {animChars.length > 0 && (
           <>
             <h3>Puppets</h3>

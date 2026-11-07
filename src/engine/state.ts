@@ -1,5 +1,6 @@
 import { getPlace, findPlace, isCatalogPlace, registerPlace, type Place } from '../data/places';
 import { settledTitle } from '../data/identity';
+import { observance } from './observances';
 import { copyPlain } from './copy';
 import { hashString } from './rng';
 import {
@@ -17,7 +18,7 @@ export function newId(state: GameState, prefix: string): string {
 
 export function emptyDraft(): CreationDraft {
   return {
-    step: 'identity', name: '', pronouns: '', actingTitle: '', birthDate: '', birthplaceId: '', heritages: [], heritageCustomText: '',
+    step: 'identity', name: '', pronouns: '', actingTitle: '', birthDate: '', birthplaceId: '', heritages: [], heritageCustomText: '', observances: [],
     mainLanguage: '', languages: [], startPlaceId: '', startDate: '2026-01-05', startTime: '08:00', updatedAt: 0,
   };
 }
@@ -28,7 +29,7 @@ export function emptyDraft(): CreationDraft {
  */
 export const CREATION_STEPS: readonly { id: CreationStepId; title: string; fields: readonly (keyof CreationDraft)[] }[] = [
   { id: 'identity', title: 'Identity', fields: ['name', 'pronouns', 'actingTitle', 'birthDate', 'birthplaceId'] },
-  { id: 'background', title: 'Background & Languages', fields: ['heritages', 'heritageCustomText', 'mainLanguage', 'languages'] },
+  { id: 'background', title: 'Background & Languages', fields: ['heritages', 'heritageCustomText', 'observances', 'mainLanguage', 'languages'] },
   { id: 'starting-point', title: 'Starting Point', fields: ['startPlaceId', 'startDate', 'startTime'] },
   { id: 'review', title: 'Review', fields: [] },
 ];
@@ -56,6 +57,7 @@ export function normalizeDraft(raw: unknown): CreationDraft | null {
   }
   if (!Array.isArray(d.heritages)) d.heritages = [];
   if (!Array.isArray(d.languages)) d.languages = [];
+  d.observances = Array.isArray(d.observances) ? d.observances.filter((o): o is string => typeof o === 'string' && !!observance(o)) : [];
   if (typeof d.updatedAt !== 'number') d.updatedAt = 0;
   if (d.returnToReview !== true) delete d.returnToReview;
   // A draft from before the pronouns settled the title takes the settled one.
@@ -128,6 +130,7 @@ export function newGame(d: CreationDraft, realNow: number, saveId: string): Game
     heritages: d.heritages,
     mainLanguage: d.mainLanguage,
     languages: d.languages.filter((l) => l.code !== d.mainLanguage),
+    observances: d.observances?.filter((o) => !!observance(o)) ?? [],
   };
   const seed = hashString(`${saveId}|${d.name}|${d.birthDate}|${d.startDate}`);
   const state: GameState = {

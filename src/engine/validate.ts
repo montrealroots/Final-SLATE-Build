@@ -58,6 +58,7 @@ export function validateGameState(raw: unknown): asserts raw is GameState {
   need(isObj(b) && isValidDate(b.year as number, b.month as number, b.day as number), 'the character', 'has an impossible birth date');
   need(isId(ch.birthplaceId), 'the character', 'has no birthplace');
   need(Array.isArray(ch.heritages) && Array.isArray(ch.languages) && isStr(ch.mainLanguage), 'the character', 'has malformed backgrounds or languages');
+  need(ch.observances === undefined || (Array.isArray(ch.observances) && (ch.observances as unknown[]).every(isStr)), 'the character', 'has malformed holidays');
 
   need(isId(s.locationId), 'where you are', 'is missing');
   need(isStr(s.ageZone) && zoneOk(s.ageZone as string), 'the character', 'has an unknown time zone');
@@ -201,6 +202,8 @@ function validateProject(raw: unknown, i: number, seen: Set<string>): void {
     need(ob === undefined || ob === null || obligationIds.has(ob as string), `a hire of ${name}`, 'points at a budget line that does not exist');
   }
   need(isObj(p.schedule) && Array.isArray((p.schedule as Obj).days), name, 'has no schedule');
+  const kept = (p.schedule as Obj).observances;
+  need(kept === undefined || (Array.isArray(kept) && (kept as unknown[]).every(isStr)), name, 'has malformed holidays');
   for (const d of (p.schedule as Obj).days as unknown[]) need(isObj(d) && isId(d.id) && dateKeyOk(d.date), `a shoot day of ${name}`, 'has an impossible date');
   for (const k of ['scenes', 'characters', 'drafts', 'cast', 'captures', 'releases', 'offers', 'credits', 'history', 'contributors', 'evidence']) {
     need(Array.isArray(p[k]), name, `is missing its ${k}`);

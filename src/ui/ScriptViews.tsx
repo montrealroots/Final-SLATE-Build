@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { languageName } from '../data/identity';
+import { languageName, searchHeritages } from '../data/identity';
 import {
   MODULE_LABELS, TECHNIQUE_LABELS, addCharacter, addNote, addScene, noteFromIssue, applyDesignChange, approveDraft, composeGenres, deleteScene, describeImpact,
   designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter,
@@ -605,6 +605,7 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
             <legend style={{ fontWeight: 600 }}>Performance Methods</legend>
             <div className="chip-row">{METHODS.map((m) => <Check key={m} label={title(m)} checked={c.methods.includes(m)} onChange={(v) => up({ methods: v ? [...c.methods, m] : c.methods.filter((x) => x !== m) })} />)}</div>
           </fieldset>
+          <CharacterBackgrounds name={c.name} value={c.heritages ?? []} onChange={(v) => up({ heritages: v })} />
           <div className="grid grid-2 form">
             {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} onChange={(v) => up({ entityNote: v })} />}
             <TextField label="Description" multiline value={c.description} onChange={(v) => up({ description: v })} />
@@ -686,5 +687,31 @@ function WithdrawButton({ p, contributorId, name }: { p: Project; contributorId:
         </Modal>
       )}
     </>
+  );
+}
+
+/**
+ * A character's backgrounds as written. Casting shows who shares one, and a performer who does brings lived
+ * experience to the part (the performance counts it, finish.ts); nobody is turned away or marked down for not sharing.
+ */
+function CharacterBackgrounds({ name, value, onChange }: { name: string; value: string[]; onChange: (v: string[]) => void }) {
+  const [q, setQ] = useState('');
+  const results = q.trim() ? searchHeritages(q, 6).filter((h) => !value.includes(h)) : [];
+  return (
+    <fieldset style={{ border: 0, padding: 0 }}>
+      <legend style={{ fontWeight: 600 }}>Backgrounds</legend>
+      <p className="dim">Optional. A performer who shares one of {name || 'this character'}’s backgrounds brings lived experience to the part, and the performance counts it. No one is turned away for not sharing it.</p>
+      {value.length > 0 && (
+        <div className="chip-row" style={{ marginBottom: 'var(--s2)' }}>
+          {value.map((h) => <button key={h} type="button" className="btn btn-sm" aria-label={`Remove Background: ${h}`} onClick={() => onChange(value.filter((x) => x !== h))}>{h} ✕</button>)}
+        </div>
+      )}
+      <TextField label={`Add A Background For ${name || 'This Character'}`} type="search" value={q} onChange={setQ} />
+      {results.length > 0 && (
+        <div className="picklist" role="group" aria-label="Character Background Results">
+          {results.map((h) => <button key={h} type="button" onClick={() => { onChange([...value, h]); setQ(''); }}>{h}</button>)}
+        </div>
+      )}
+    </fieldset>
   );
 }
