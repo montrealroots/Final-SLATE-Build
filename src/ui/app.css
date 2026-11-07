@@ -1830,7 +1830,7 @@ section.card[tabindex="-1"]:focus { outline: none; }
 .card > h2, .card > h3, .card > header > h2 { margin-bottom: var(--s3); }
 .card > h3:not(:first-child), .card > h2:not(:first-child) { margin-top: var(--s4); }
 .card + .card { margin-top: var(--s5); }
-.home-grid > .card + .card { margin-top: 0; }
+.home-grid > .card + .card, .grid > .card + .card, .col > .card + .card { margin-top: 0; }
 .card-grid { display: grid; gap: var(--s4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); align-items: start; margin-bottom: var(--s5); }
 .card-grid > .card { margin: 0; }
 .card-grid > .card + .card { margin-top: 0; }
@@ -1848,8 +1848,6 @@ ul.list > li:last-child { border-bottom: 0; }
 .kv { display: grid; grid-template-columns: minmax(110px, max-content) 1fr; gap: var(--s1) var(--s4); margin: 0; font-size: var(--size-sm); }
 .kv dt { color: var(--text-dim); }
 .kv dd { margin: 0; }
-.review-list .review-row { display: contents; }
-.review-list dd { display: flex; flex-wrap: wrap; gap: var(--s2) var(--s3); align-items: baseline; justify-content: space-between; }
 
 /* A note that sits in the page: 1221's callout, with a green for what went well. */
 .callout { margin-bottom: var(--s4); }
@@ -1933,3 +1931,7 @@ table.data th { color: var(--text-dim); font-weight: 650; font-size: var(--size-
 }
 /* Checkboxes in a row (the calendar's filters): room between them, no field gap under the row. */
 .chip-row > .field { margin: 0 var(--s4) 0 0; }
+/* A field's hint sits on its own line, under the label. 1221 styles no time field; it gets the date field's look. */
+.field > .hint { display: block; }
+input[type='time'] { width: 100%; min-height: var(--control); padding: var(--s2) var(--s3); border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--text); font: inherit; font-size: var(--size-sm); color-scheme: dark; }
+:root[data-theme='light'] input[type='time'] { color-scheme: light; }

@@ -40,20 +40,20 @@ test('a failed place load offers Try Again and recovers', async ({ page }) => {
   // Only the data fetch (no query string; the dev server also serves the shard's URL as a module). The production
   // build names the file with a content hash (IS-<hash>.tsv).
   await page.route((url) => /\/IS(-[\w-]+)?\.tsv$/.test(url.pathname) && !url.search, (route) => (fail ? route.abort() : route.continue()));
-  // A draft paused at Birthday, so the test reaches the birthplace picker directly.
+  // A draft paused at the old Birthday screen (numeric step 4), which reopens on Identity with the place-of-birth picker.
   await page.evaluate(() => localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
     step: 4, name: 'Test', pronouns: 'she', actingTitle: 'Actress', birthDate: '', birthplaceId: '', heritages: [{ id: 'Icelandic', label: 'Icelandic', custom: false }],
     heritageCustomText: '', mainLanguage: 'en', languages: [], startPlaceId: '', startDate: '2026-03-02', startTime: '08:00', updatedAt: 1,
   })));
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
-  await expect(page.getByRole('heading', { name: 'Birthday' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Identity', level: 1 })).toBeVisible();
   await page.getByLabel('Country Or Territory').selectOption({ label: 'Iceland' });
   await expect(page.getByText("Places couldn't be loaded.")).toBeVisible();
   fail = false;
   await page.getByRole('button', { name: 'Try Again' }).click();
-  await page.getByRole('searchbox', { name: 'Birthplace' }).fill('reykjav');
-  await expect(page.getByRole('group', { name: 'Birthplace Results' }).getByRole('button').first()).toContainText('Reykjavík');
+  await page.getByRole('searchbox', { name: 'Place Of Birth' }).fill('reykjav');
+  await expect(page.getByRole('group', { name: 'Place Of Birth Results' }).getByRole('button').first()).toContainText('Reykjavík');
 });
 
 test('holidays past the last official announcement are shown as projected', async ({ page }) => {

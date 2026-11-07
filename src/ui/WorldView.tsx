@@ -70,7 +70,8 @@ export function WorldView() {
   );
 }
 
-function WorldMap(props: { country: string; here: { lat: number; lon: number; name: string }; places: WorldPlace[]; onCountry: (c: string) => void; onPlace: (w: WorldPlace) => void }) {
+/** The outline map. Also shown under creation's place pickers, as 1221's are, with `verb` naming what a marker does there. */
+export function WorldMap(props: { country: string; here?: { lat: number; lon: number; name: string }; places: WorldPlace[]; onCountry: (c: string) => void; onPlace: (w: WorldPlace) => void; verb?: string }) {
   const [data, setData] = useState<WorldMapData | null>(null);
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
@@ -99,7 +100,7 @@ function WorldMap(props: { country: string; here: { lat: number; lon: number; na
   }
   if (!data || !view) return <p role="status" className="muted">Loading the map…</p>;
   const r = markerRadiusAt(view, data);
-  const me = projectPoint(props.here.lat, props.here.lon, data);
+  const me = props.here ? projectPoint(props.here.lat, props.here.lon, data) : null;
   return (
     <>
       {/* The outlines are a pointer shortcut for the country list; each marker is a real button for keyboards and screen readers. */}
@@ -116,15 +117,15 @@ function WorldMap(props: { country: string; here: { lat: number; lon: number; na
           const p = projectPoint(w.lat, w.lon, data);
           const choose = () => props.onPlace(w);
           return (
-            <circle key={w.id} className="worldmap-marker" cx={p.x} cy={p.y} r={r} role="button" tabIndex={0} aria-label={`Open ${w.name}`} onClick={choose}
+            <circle key={w.id} className="worldmap-marker" cx={p.x} cy={p.y} r={r} role="button" tabIndex={0} aria-label={`${props.verb ?? 'Open'} ${w.name}`} onClick={choose}
               onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); choose(); } }}>
               <title>{w.name}</title>
             </circle>
           );
         })}
-        <circle className="worldmap-here" cx={me.x} cy={me.y} r={r * 1.4} role="img" aria-label={`You're in ${props.here.name}`}><title>You're in {props.here.name}</title></circle>
+        {me && props.here && <circle className="worldmap-here" cx={me.x} cy={me.y} r={r * 1.4} role="img" aria-label={`You're in ${props.here.name}`}><title>You're in {props.here.name}</title></circle>}
       </svg>
-      <p className="dim">Outlines: Natural Earth. Small countries and territories that can't be drawn at this scale are still in the list. Your location is ringed.</p>
+      <p className="dim xs">Outlines: Natural Earth. Small countries and territories that can't be drawn at this scale are still in the list.{props.here ? ' Your location is ringed.' : ''}</p>
     </>
   );
 }

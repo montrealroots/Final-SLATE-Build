@@ -1,25 +1,26 @@
-import { useLayoutEffect, useRef, useState } from 'react';
+import { useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from 'react';
 import { PRONOUNS, defaultActingTitle, languageName, searchHeritages, searchLanguages } from '../data/identity';
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
-import { CREATION_STEPS, ageOn, creationStep, creationStepIndex, parseYmd, validateDraft, type DraftProblem } from '../engine';
+import { CREATION_STEPS, ageOn, creationStepIndex, formatZoneAbbrev, parseYmd, validateDraft, type DraftProblem } from '../engine';
 import type { CreationDraft, CreationStepId, Proficiency } from '../engine/types';
 import { Field, Professions, SelectField, TextField } from './components';
 import { store, useStore } from './store';
 import { WorldPlacePicker } from './WorldPicker';
 
-// Section names and order from the 1221 adaptation (UI-1221-ADAPTATION.md); the order lives in CREATION_STEPS.
-const DESCRIPTIONS: Record<CreationStepId, string> = {
-  name: 'Choose the name people will know you by.',
-  pronouns: "Choose how you'd like to be referred to, and the title you'd like as an actor.",
-  background: 'Choose as many backgrounds as you need. You can describe your own.',
-  languages: 'Choose the language you use most and any others you know.',
-  birthday: 'Choose when and where you were born.',
-  'start-date': 'Choose the date and local time your story begins. Any date in 2026.',
-  'start-location': 'Choose where your story begins.',
-  review: 'Take a look before you start. You can go back and change any choice.',
-};
 const PROFICIENCIES: Proficiency[] = ['Native', 'Fluent', 'Conversational', 'Basic'];
+const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+type Set = (patch: Partial<CreationDraft>) => void;
 
+/** Age on the starting date, once both dates are whole. */
+function ageAtStart(d: CreationDraft): number | null {
+  return /^\d{4}-\d{2}-\d{2}$/.test(d.birthDate) && /^\d{4}-\d{2}-\d{2}$/.test(d.startDate) ? ageOn(parseYmd(d.birthDate), parseYmd(d.startDate)) : null;
+}
+
+/**
+ * Character creation, laid out as 1221's (`ui/creation/CharacterCreation.tsx`): the steps as a row across the top, each
+ * step's cards, and Back and Next under them. Only what Final SLATE's engine keeps is asked: 1221's portrait, middle and
+ * preferred names, dispositions and traits, genres, body, money and citizenship are 1221's systems, not this game's.
+ */
 export function Creation() {
   const s = useStore();
   const d = s.draft!;
@@ -29,7 +30,7 @@ export function Creation() {
   const index = creationStepIndex(step);
   const prev = CREATION_STEPS[index - 1];
   const next = CREATION_STEPS[index + 1];
-  const set = (patch: Partial<CreationDraft>) => store.updateDraft(patch);
+  const set: Set = (patch) => store.updateDraft(patch);
   const current = validateDraft(d);
   // Errors appear after a Next attempt and clear as soon as the field becomes valid.
   const err = (field: string) => (shown.some((p) => p.field === field) ? current.find((p) => p.field === field)?.message ?? null : null);
@@ -57,6 +58,14 @@ export function Creation() {
     }
     goto(id);
   };
+  const h1 = (text: string, line: string) => (
+    <div className="panel-head">
+      <div>
+        <h1 id="creation-h" ref={heading} tabIndex={-1} style={{ fontSize: 'var(--size-lg)' }}>{text}</h1>
+        <p className="muted small" style={{ margin: 0 }}>{line}</p>
+      </div>
+    </div>
+  );
 
   return (
     <div className="start-page">
@@ -73,53 +82,42 @@ export function Creation() {
           <button className="btn btn-ghost btn-sm" onClick={() => store.backToStartup()}>Cancel</button>
         </div>
         <div className="creation-steps" role="list" aria-label="Character Creation Steps">
-          {CREATION_STEPS.map((p, i) => {
-            const at = CREATION_STEPS.findIndex((x) => x.id === step);
-            return <div key={p.id} className="creation-step" role="listitem" aria-current={p.id === step ? 'step' : undefined} data-state={p.id === step ? 'active' : i < at ? 'done' : 'waiting'}>{p.title}</div>;
-          })}
-        </div>
-        <section className="card">
-          <h1 id="creation-h" ref={heading} tabIndex={-1} style={{ fontSize: 'var(--size-lg)', marginBottom: 'var(--s1)' }}>{creationStep(step).title}</h1>
-          <p className="muted">{DESCRIPTIONS[step]}</p>
-          {step === 'name' && <TextField label="Name" value={d.name} maxLength={80} autoComplete="off" error={err('name')} onChange={(v) => set({ name: v })} />}
-          {step === 'pronouns' && (
-            <>
-              <SelectField label="Pronouns" value={d.pronouns} error={err('pronouns')}
-                options={[{ value: '', label: 'Choose Pronouns' }, ...(['he', 'she', 'they'] as const).map((k) => ({ value: k, label: PRONOUNS[k].label }))]}
-                onChange={(v) => set({ pronouns: v, actingTitle: d.actingTitle || (v ? defaultActingTitle(v) : '') })} />
-              <SelectField label="Acting Title" value={d.actingTitle} error={err('actingTitle')} hint="Actor can be used by anyone. Your pronouns and your title are separate choices."
-                options={[{ value: '', label: 'Choose A Title' }, { value: 'Actor', label: 'Actor' }, { value: 'Actress', label: 'Actress' }]}
-                onChange={(v) => set({ actingTitle: v })} />
-            </>
-          )}
-          {step === 'background' && <HeritageStep d={d} set={set} error={err('heritages')} />}
-          {step === 'languages' && <LanguageStep d={d} set={set} error={err('mainLanguage')} />}
-          {step === 'birthday' && (
-            <>
-              <TextField label="Birth Date" type="date" value={d.birthDate} error={err('birthDate')} hint="You must be at least 16 on your starting date." onChange={(v) => set({ birthDate: v })} />
-              <PlacePicker label="Birthplace" value={d.birthplaceId} error={err('birthplaceId')} onChange={(id, pl) => set({ birthplaceId: id, places: keepPlaces(d, 'birthplaceId', pl) })} />
-            </>
-          )}
-          {step === 'start-date' && (
-            <div className="grid grid-2 form">
-              <TextField label="Starting Date" type="date" value={d.startDate} error={err('startDate')} hint="Any date in 2026." onChange={(v) => set({ startDate: v })} />
-              <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you start." onChange={(v) => set({ startTime: v })} />
+          {CREATION_STEPS.map((p, i) => (
+            <div key={p.id} className="creation-step" role="listitem" aria-current={p.id === step ? 'step' : undefined} data-state={p.id === step ? 'active' : i < index ? 'done' : 'waiting'}>
+              {p.title.replace(' & ', ' & ')}
             </div>
+          ))}
+        </div>
+
+        {step === 'identity' && <IdentityStep d={d} set={set} err={err} head={h1('Identity', 'Your name is the one your credits carry. Pronouns and how you’re billed are yours to choose, separately.')} />}
+        {step === 'background' && (
+          <div className="col gap-5">
+            <section className="card">
+              {h1('Background', 'Who you come from. Choose as many backgrounds as are true, or describe your own.')}
+              <HeritageStep d={d} set={set} error={err('heritages')} />
+            </section>
+            <section className="card">
+              <div className="panel-head"><div><h2>Languages</h2><p className="muted small" style={{ margin: 0 }}>The language you use most, and any others you speak.</p></div></div>
+              <LanguageStep d={d} set={set} error={err('mainLanguage')} />
+            </section>
+          </div>
+        )}
+        {step === 'starting-point' && <StartingPointStep d={d} set={set} err={err} head={h1('Where You Live', 'Where your story begins decides whose holidays you keep, the weather you shoot in and how far everything is.')} />}
+        {step === 'review' && <Review d={d} edit={(id) => goto(id, true)} heading={heading} />}
+
+        {beginError && <div className="callout callout-negative" role="alert" style={{ marginTop: 'var(--s5)' }}>{beginError}</div>}
+
+        <div className="row-between wrap creation-foot">
+          {prev ? (
+            <button className="btn" onClick={() => goto(prev.id)}>Back To {prev.title}</button>
+          ) : (
+            <button className="btn" onClick={() => store.backToStartup()}>Back To Start Screen</button>
           )}
-          {step === 'start-location' && <PlacePicker label="Starting Location" value={d.startPlaceId} error={err('startPlaceId')} onChange={(id, pl) => set({ startPlaceId: id, places: keepPlaces(d, 'startPlaceId', pl) })} />}
-          {step === 'review' && <Review d={d} edit={(id) => goto(id, true)} />}
-          {beginError && <p role="alert" style={{ color: 'var(--negative)' }}>{beginError}</p>}
-        </section>
-          <div className="row-between wrap creation-foot">
-            {prev ? (
-              <button className="btn" onClick={() => goto(prev.id)}>Back To {prev.title}</button>
-            ) : (
-              <button className="btn" onClick={() => store.backToStartup()}>Back To Start Screen</button>
-            )}
+          <div className="row gap-2 wrap">
             {d.returnToReview && step !== 'review' && <button className="btn" onClick={() => leaveTo('review')}>Save And Return To Review</button>}
             {next && <button className="btn btn-primary" onClick={() => leaveTo(next.id)}>Next: {next.title}</button>}
             {step === 'review' && (
-              <button className="btn btn-primary" onClick={() => {
+              <button className="btn btn-primary btn-lg" onClick={() => {
                 const problems = validateDraft(d);
                 if (problems.length) {
                   // Go to the first screen with something missing, with its messages showing.
@@ -130,15 +128,129 @@ export function Creation() {
               }}>Start My Story</button>
             )}
           </div>
+        </div>
         <p className="dim xs center" style={{ marginTop: 'var(--s5)' }}>Your choices are saved as you go.</p>
       </div>
     </div>
   );
 }
 
+/** Identity, as 1221's: name and pronouns, Billed As, the date of birth in three fields, the place of birth, the age. */
+function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: (f: string) => string | null; head: ReactNode }) {
+  const [y = '', m = '', day = ''] = d.birthDate.split('-');
+  const setBirth = (yy: string, mm: string, dd: string) => set({ birthDate: yy || mm || dd ? `${yy}-${mm}-${dd}` : '' });
+  const age = ageAtStart(d);
+  const billedError = err('actingTitle');
+  return (
+    <section className="card">
+      {head}
+      <div className="field-row">
+        <TextField label="Name" value={d.name} maxLength={80} autoComplete="off" error={err('name')} hint="The name people know you by, and the one your credits carry." onChange={(v) => set({ name: v })} />
+        <SelectField label="Pronouns" value={d.pronouns} error={err('pronouns')}
+          options={[{ value: '', label: 'Choose Pronouns' }, ...(['she', 'he', 'they'] as const).map((k) => ({ value: k, label: PRONOUNS[k].label }))]}
+          onChange={(v) => set({ pronouns: v, actingTitle: d.actingTitle || (v ? defaultActingTitle(v) : '') })} />
+      </div>
+      <div className="field">
+        <span className="label" id="billed-as">Billed As</span>
+        <div className="row gap-2" role="group" aria-labelledby="billed-as">
+          {(['Actor', 'Actress'] as const).map((t) => (
+            <button key={t} type="button" className="trait grow" aria-pressed={d.actingTitle === t} onClick={() => set({ actingTitle: t })}>
+              <div className="trait-name">{t}</div>
+            </button>
+          ))}
+        </div>
+        {billedError && <span className="error" role="alert">{billedError}</span>}
+        <p className="xs dim" style={{ marginTop: 4 }}>Actor and Actress are two words for the same craft, and neither counts for more. Actor can be used by anyone; your pronouns and how you’re billed are separate choices.</p>
+      </div>
+
+      <hr className="divider" />
+
+      <div className="field-row">
+        <TextField label="Year Of Birth" type="number" inputMode="numeric" value={y} onChange={(v) => setBirth(v.slice(0, 4), m, day)} />
+        <SelectField label="Month" value={m} options={[{ value: '', label: 'Choose A Month' }, ...MONTHS.map((name, i) => ({ value: String(i + 1).padStart(2, '0'), label: name }))]} onChange={(v) => setBirth(y, v, day)} />
+        <TextField label="Day" type="number" inputMode="numeric" value={day ? String(Number(day)) : ''} onChange={(v) => setBirth(y, m, v ? v.slice(0, 2).padStart(2, '0') : '')} />
+      </div>
+      {err('birthDate') ? <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('birthDate')}</p> : <p className="xs dim">You must be at least 16 on your starting date.</p>}
+
+      <hr className="divider" />
+
+      <div className="panel-head">
+        <div>
+          <h3>Place Of Birth</h3>
+          <p className="muted small" style={{ margin: 0 }}>Where you’re from, which isn’t always where you live now. It’s what you tell people when they ask.</p>
+        </div>
+      </div>
+      <PlacePicker label="Place Of Birth" value={d.birthplaceId} error={err('birthplaceId')} map onChange={(id, pl) => set({ birthplaceId: id, places: keepPlaces(d, 'birthplaceId', pl) })} />
+
+      {age !== null && age >= 0 && (
+        <div className="callout" style={{ marginTop: 'var(--s4)' }}>You’ll be <strong>{age}</strong> when you start.</div>
+      )}
+    </section>
+  );
+}
+
+/** Starting Point, as 1221's: where you live (where you were born, or somewhere else), what that place is, and when it begins. */
+function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: (f: string) => string | null; head: ReactNode }) {
+  const birthplace = findPlace(d.birthplaceId);
+  const city = findPlace(d.startPlaceId);
+  const [elsewhere, setElsewhere] = useState(!d.startPlaceId || d.startPlaceId !== d.birthplaceId);
+  const zoneAt = (() => {
+    if (!city || !/^\d{4}-\d{2}-\d{2}$/.test(d.startDate)) return null;
+    const { year, month, day } = parseYmd(d.startDate);
+    return formatZoneAbbrev(Date.UTC(year, month - 1, day, 12), city.zone);
+  })();
+  return (
+    <div className="col gap-5">
+      <section className="card">
+        {head}
+        {birthplace && (
+          <label className="check" htmlFor="live-here">
+            <input id="live-here" type="checkbox" checked={!elsewhere} onChange={(e) => {
+              if (e.target.checked) { setElsewhere(false); set({ startPlaceId: birthplace.id, places: keepPlaces(d, 'startPlaceId', birthplace) }); }
+              else setElsewhere(true);
+            }} />
+            <span>I Still Live Where I Was Born<span className="dim"> — {placeLabel(birthplace)}</span></span>
+          </label>
+        )}
+        {(elsewhere || !birthplace) && (
+          <PlacePicker label="Where You Live" value={d.startPlaceId} error={err('startPlaceId')} map onChange={(id, pl) => set({ startPlaceId: id, places: keepPlaces(d, 'startPlaceId', pl) })} />
+        )}
+        {!elsewhere && err('startPlaceId') && <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('startPlaceId')}</p>}
+        {city && (
+          <div className="grid grid-3" style={{ marginTop: 'var(--s4)' }}>
+            <div className="stat">
+              <span className="stat-label">Place</span>
+              <span className="stat-value" style={{ fontSize: 'var(--size-md)' }}>{city.name}</span>
+              <span className="stat-note">{[city.region !== city.name ? city.region : '', city.countryName].filter(Boolean).join(', ')}</span>
+            </div>
+            {typeof city.population === 'number' && city.population > 0 && (
+              <div className="stat">
+                <span className="stat-label">Population</span>
+                <span className="stat-value">{city.population.toLocaleString('en')}</span>
+              </div>
+            )}
+            <div className="stat">
+              <span className="stat-label">Time Zone</span>
+              <span className="stat-value" style={{ fontSize: 'var(--size-md)' }}>{zoneAt ?? city.zone}</span>
+              <span className="stat-note">{city.zone}</span>
+            </div>
+          </div>
+        )}
+      </section>
+      <section className="card">
+        <div className="panel-head"><div><h2>When It Begins</h2><p className="muted small" style={{ margin: 0 }}>The date and the local time where you live when your story starts. Any date in 2026.</p></div></div>
+        <div className="field-row">
+          <TextField label="Starting Date" type="date" value={d.startDate} error={err('startDate')} onChange={(v) => set({ startDate: v })} />
+          <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you start." onChange={(v) => set({ startTime: v })} />
+        </div>
+      </section>
+    </div>
+  );
+}
+
 /** Picks any playable place; world places come back with their record so the draft and save can keep them. */
-export function PlacePicker(props: { label: string; value: string; error?: string | null; onChange: (id: string, place: Place) => void }) {
-  return <WorldPlacePicker label={props.label} value={props.value} error={props.error} onChoose={(pl) => props.onChange(pl.id, pl)} />;
+export function PlacePicker(props: { label: string; value: string; error?: string | null; map?: boolean; onChange: (id: string, place: Place) => void }) {
+  return <WorldPlacePicker label={props.label} value={props.value} error={props.error} map={props.map} onChoose={(pl) => props.onChange(pl.id, pl)} />;
 }
 
 /** The draft's world places, keeping only those still chosen. */
@@ -173,7 +285,7 @@ function HeritageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
           set({ heritages: [...d.heritages, { id: `custom_${Date.now().toString(36)}`, label: t, custom: true }], heritageCustomText: '' });
         }}>Add A Background</button>
       </div>
-      <h2 className="spaced">Your Backgrounds</h2>
+      <h3 className="spaced">Your Backgrounds</h3>
       {error && <p role="alert" style={{ color: 'var(--negative)' }}>{error}</p>}
       {d.heritages.length ? (
         <ul className="list">
@@ -216,7 +328,7 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
           </button>
         ))}
       </div>
-      <h2 className="spaced">Other Languages</h2>
+      <h3 className="spaced">Other Languages</h3>
       {d.languages.length ? (
         <ul className="list">
           {d.languages.map((l) => (
@@ -235,47 +347,67 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
   );
 }
 
-/** What Review shows, each with the one screen where it is changed. */
-const REVIEW_ROWS: { label: string; step: CreationStepId; edit: string }[] = [
-  { label: 'Name', step: 'name', edit: 'Edit Name' },
-  { label: 'Pronouns', step: 'pronouns', edit: 'Edit Pronouns And Acting Title' },
-  { label: 'Backgrounds', step: 'background', edit: 'Edit Backgrounds' },
-  { label: 'Languages', step: 'languages', edit: 'Edit Languages' },
-  { label: 'Born', step: 'birthday', edit: 'Edit Birth Date And Birthplace' },
-  { label: 'Starts On', step: 'start-date', edit: 'Edit Starting Date And Time' },
-  { label: 'Starts In', step: 'start-location', edit: 'Edit Starting Location' },
-];
+/** One line of Review, as 1221's: the label on the left, the value against the right edge. */
+function Line({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="row-between" style={{ padding: '3px 0', gap: 'var(--s3)', alignItems: 'baseline' }}>
+      <span className="small muted" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>{label}</span>
+      <span className="small strong" style={{ textAlign: 'right' }}>{value}</span>
+    </div>
+  );
+}
 
-function Review({ d, edit }: { d: CreationDraft; edit: (id: CreationStepId) => void }) {
+/** A Review card: what one step chose, with the button that goes back to that step. */
+function ReviewCard({ title, edit, onEdit, children }: { title: string; edit: string; onEdit: () => void; children: ReactNode }) {
+  return (
+    <section className="card">
+      <div className="row-between wrap" style={{ marginBottom: 'var(--s3)' }}>
+        <h2 className="eyebrow" style={{ margin: 0 }}>{title}</h2>
+        <button className="btn btn-sm" onClick={onEdit}>{edit}</button>
+      </div>
+      {children}
+    </section>
+  );
+}
+
+/** Review, as 1221's: who you'll be at the top, then each step's choices in its own card. */
+function Review({ d, edit, heading }: { d: CreationDraft; edit: (id: CreationStepId) => void; heading: RefObject<HTMLHeadingElement | null> }) {
   const birth = findPlace(d.birthplaceId);
   const start = findPlace(d.startPlaceId);
-  const age = /^\d{4}-\d{2}-\d{2}$/.test(d.birthDate) && /^\d{4}-\d{2}-\d{2}$/.test(d.startDate) ? ageOn(parseYmd(d.birthDate), parseYmd(d.startDate)) : null;
-  const value: Record<CreationStepId, string> = {
-    name: d.name || 'Not chosen',
-    pronouns: `${d.pronouns ? PRONOUNS[d.pronouns].label : 'Not chosen'}${d.actingTitle ? `; credited as ${d.actingTitle.toLowerCase()}` : ''}`,
-    background: d.heritages.map((h) => h.label).join(', ') || 'None added',
-    languages: `${d.mainLanguage ? `${languageName(d.mainLanguage)} (main)` : 'Not chosen'}${d.languages.map((l) => `, ${languageName(l.code)} (${l.proficiency.toLowerCase()})`).join('')}`,
-    birthday: `${d.birthDate || 'Not chosen'}${birth ? ` in ${placeLabel(birth)}` : ''}${age !== null ? ` (age ${age} at the start)` : ''}`,
-    'start-date': `${d.startDate} at ${d.startTime}`,
-    'start-location': start ? placeLabel(start) : 'Not chosen',
-    review: '',
-  };
+  const age = ageAtStart(d);
+  const born = /^\d{4}-\d{2}-\d{2}$/.test(d.birthDate) ? (() => { const b = parseYmd(d.birthDate); return `${MONTHS[b.month - 1]} ${b.day}, ${b.year}`; })() : 'Not chosen';
+  const starts = /^\d{4}-\d{2}-\d{2}$/.test(d.startDate) ? (() => { const b = parseYmd(d.startDate); return `${MONTHS[b.month - 1]} ${b.day}, ${b.year} at ${d.startTime}`; })() : 'Not chosen';
   return (
-    <div className="stack">
-      <div className="card">
-        <h2>{d.name || 'Unnamed'}</h2>
-        <Professions actingTitle={d.actingTitle} />
-        <dl className="kv review-list">
-          {REVIEW_ROWS.map((r) => (
-            <div key={r.step} className="review-row">
-              <dt>{r.label}</dt>
-              <dd>
-                <span>{value[r.step]}</span>
-                <button className="btn btn-sm" onClick={() => edit(r.step)}>{r.edit}</button>
-              </dd>
-            </div>
-          ))}
-        </dl>
+    <div className="col gap-5">
+      <section className="card">
+        <div className="center" style={{ padding: 'var(--s4) 0' }}>
+          <div className="eyebrow">Ready To Begin</div>
+          <h1 id="creation-h" ref={heading} tabIndex={-1} style={{ fontSize: 'var(--size-2xl)', margin: 'var(--s2) 0' }}>{d.name || 'Unnamed'}</h1>
+          <p className="muted">{[age !== null ? String(age) : '', d.actingTitle, start?.name].filter(Boolean).join(' · ')}</p>
+          <div className="row" style={{ justifyContent: 'center' }}><Professions actingTitle={d.actingTitle} /></div>
+        </div>
+      </section>
+      <div className="grid grid-2">
+        <ReviewCard title="Identity" edit="Edit Identity" onEdit={() => edit('identity')}>
+          <Line label="Name" value={d.name || 'Not chosen'} />
+          <Line label="Pronouns" value={d.pronouns ? PRONOUNS[d.pronouns].label : 'Not chosen'} />
+          <Line label="Billed As" value={d.actingTitle || 'Not chosen'} />
+          <Line label="Born" value={born} />
+          <Line label="Place Of Birth" value={birth ? placeLabel(birth) : 'Not chosen'} />
+        </ReviewCard>
+        <ReviewCard title="Starting Point" edit="Edit Starting Point" onEdit={() => edit('starting-point')}>
+          <Line label="Where You Live" value={start ? placeLabel(start) : 'Not chosen'} />
+          <Line label="Starts On" value={starts} />
+          {age !== null && <Line label="Age At The Start" value={String(age)} />}
+        </ReviewCard>
+      </div>
+      <ReviewCard title="Background & Languages" edit="Edit Background And Languages" onEdit={() => edit('background')}>
+        <Line label="Backgrounds" value={d.heritages.map((h) => h.label).join(', ') || 'None added'} />
+        <Line label="Main Language" value={d.mainLanguage ? languageName(d.mainLanguage) : 'Not chosen'} />
+        <Line label="Other Languages" value={d.languages.map((l) => `${languageName(l.code)} (${l.proficiency.toLowerCase()})`).join(', ') || 'None'} />
+      </ReviewCard>
+      <div className="callout callout-accent">
+        Once you start, the clock runs while you play. Sleep and Advance move it on faster, and Advance stops early if something needs you.
       </div>
     </div>
   );

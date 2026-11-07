@@ -13,18 +13,27 @@ describe('character creation steps', () => {
     expect(new Set(owners).size).toBe(owners.length);
   });
 
-  it('a draft saved with a numeric step reopens on the same screen, by id', () => {
-    const old = { ...draft(), step: 4 } as unknown;
-    expect(normalizeDraft(old)!.step).toBe('birthday');
+  it("creation has 1221's steps, holding only what the engine keeps", () => {
+    expect(CREATION_STEPS.map((s) => s.title)).toEqual(['Identity', 'Background & Languages', 'Starting Point', 'Review']);
+  });
+
+  it('a draft saved by the eight-step creation reopens on the step that now holds the same fields', () => {
+    const old = { ...draft(), step: 4 } as unknown; // the old Birthday screen, by number
+    expect(normalizeDraft(old)!.step).toBe('identity');
     expect(normalizeDraft({ ...draft(), step: 7 })!.step).toBe('review');
     expect(normalizeDraft({ ...draft(), step: 99 })!.step).toBe('review');
-    expect(normalizeDraft({ ...draft(), step: 'nowhere' })!.step).toBe('name');
+    expect(normalizeDraft({ ...draft(), step: 'nowhere' })!.step).toBe('identity');
+    const byId: Record<string, string> = {
+      name: 'identity', pronouns: 'identity', birthday: 'identity', background: 'background', languages: 'background',
+      'start-date': 'starting-point', 'start-location': 'starting-point', review: 'review', 'starting-point': 'starting-point',
+    };
+    for (const [old2, now] of Object.entries(byId)) expect(normalizeDraft({ ...draft(), step: old2 })!.step, old2).toBe(now);
   });
 
   it('a partial or damaged draft keeps what it has and fills the rest, instead of breaking the screen', () => {
-    const d = normalizeDraft({ name: 'Ines', step: 'languages', heritages: 'oops', languages: null })!;
+    const d = normalizeDraft({ name: 'Ines', step: 'background', heritages: 'oops', languages: null })!;
     expect(d.name).toBe('Ines');
-    expect(d.step).toBe('languages');
+    expect(d.step).toBe('background');
     expect(d.heritages).toEqual([]);
     expect(d.languages).toEqual([]);
     expect(d.startTime).toBe('08:00');
@@ -34,7 +43,7 @@ describe('character creation steps', () => {
 
   it('everything entered survives a save and reopen, including the return-to-Review flag', () => {
     const kv = memoryStore();
-    const d = { ...draft(), step: 'languages' as const, returnToReview: true, heritageCustomText: 'half typed' };
+    const d = { ...draft(), step: 'background' as const, returnToReview: true, heritageCustomText: 'half typed' };
     writeDraft(kv, d);
     expect(readDraft(kv)).toEqual(d);
   });
