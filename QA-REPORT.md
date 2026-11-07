@@ -11,8 +11,7 @@
 ### Current: Script Rules Review (November 7, 2026)
 
 Local Linux container, branch `claude/clever-archimedes-x0r26v` after `main` at `4e9e484` (#33). The commands ran on the
-branch's final source (the commits that follow change only these reports). The production-build suite result is given
-as it finished; see the PR for CI.
+branch's final source (the commits that follow change only these reports). See the PR for CI.
 
 | Command | Exit | Result |
 | --- | --- | --- |
@@ -20,6 +19,7 @@ as it finished; see the PR for CI.
 | `npm run balance` | 0 | 2 tests passed. Family means within half a point of before after the script base went from 40 to 42; two held-out combinations fell about 2 overall (see `docs/SCREENWRITING-AUDIT.md`). |
 | `npx playwright test e2e/script-rules.spec.ts` (production build, desktop and phone) | 0 | 3 passed, 1 skipped (the mature-project journey runs at desktop width only). Screenshots inspected: supporting antagonist placement, incomplete pitch (desktop and phone), treatment sent, content declared, cut dialog, pickup, late-slot broadcast offers. They led to three copy fixes (see Defects). |
 | `npm run e2e -- --trace off` | 1 | Development server: 120 passed, 24 skipped, 1 failed: `e2e/live-action.spec.ts` on `iphone-15-pro-max` (WebKit), where the typed working title was gone when Create Project was pressed ("Enter a working title."). The same spec repeated 6 times on that project passed 6 times, and a minimal fill-and-check repeated 30 times on both iPhone projects passed 30 times. It is recorded as an open intermittent WebKit fault together with CI run 63's (see Open below), not as a pass. |
+| `SLATE_E2E_PROD=1 npm run e2e -- --trace retain-on-failure` | 0 | Production build, the complete suite: 121 passed, 24 skipped, 0 failed, in 9.7 minutes, with console, page-error and failed-request checks on every test. The 24 skips are the 23 listed below plus the mature-project playthrough on phone (desktop only, by design). |
 
 ### Previous: November 6-7, 2026
 
