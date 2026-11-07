@@ -63,6 +63,8 @@ class Store {
   /** Set when processing time failed. The game was rolled back and time stays paused until the player tries again. */
   processingProblem: string | null = null;
   draft: CreationDraft | null = null;
+  /** Set by go(): the shell moves focus to the new screen in the commit that shows it (Shell.tsx). */
+  focusMain = false;
   private listeners = new Set<() => void>();
   private clockListeners = new Set<() => void>();
   private clock = new ActiveClock(() => performance.now());
@@ -618,8 +620,10 @@ class Store {
     this.history.push(this.route);
     if (this.history.length > 50) this.history.shift();
     this.route = route;
+    // Until November 7, 2026 focus moved here a frame later: on a busy device that frame came after the player had
+    // started typing in the new screen's first field, and the rest of what they typed went nowhere.
+    this.focusMain = true;
     this.emit();
-    requestAnimationFrame(() => document.getElementById('main')?.focus({ preventScroll: false }));
   }
   back() {
     const r = this.history.pop();

@@ -1,4 +1,5 @@
 import { lazy, Suspense, useEffect, useId, useMemo, useState } from 'react';
+import { MAP_CREDIT } from '../world/map/map';
 import { findPlace, placeLabel, searchPlaces, type Place } from '../data/places';
 import { PLAYABLE_COUNTRIES, placesOf, regionsOf, search, toGamePlace, type WorldPlace } from '../world/gazetteer/gazetteer';
 import { Field } from './components';
@@ -116,7 +117,7 @@ export function WorldPlacePicker(props: { label: string; value: string; error?: 
             <button type="button" className="btn btn-ghost btn-sm" aria-expanded={mapOpen} onClick={() => setMapOpen(!mapOpen)}>{mapOpen ? 'Hide Map' : 'Show Map'}</button>
           </div>
           {mapOpen && (
-            <Suspense fallback={<p role="status" className="muted">Loading the map…</p>}>
+            <Suspense fallback={<><div role="status" className="worldmap worldmap-loading muted">Loading the map…</div><p className="dim xs">{MAP_CREDIT}</p></>}>
               <WorldMap country={ws.country} places={ws.status === 'ready' ? shown : []} onCountry={ws.setCountry} onPlace={(w) => void choose(w)} verb="Choose" />
             </Suspense>
           )}

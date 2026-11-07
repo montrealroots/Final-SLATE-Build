@@ -1185,6 +1185,7 @@ kbd {
   /* A tap is a tap. No double-tap-to-zoom swallowing the first one. */
   touch-action: manipulation;
 }
+.worldmap-loading { display: flex; align-items: center; justify-content: center; }
 .worldmap-sea { fill: var(--map-sea); }
 .worldmap-country {
   fill: var(--map-land); stroke: var(--map-sea);

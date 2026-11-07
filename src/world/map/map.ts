@@ -39,6 +39,9 @@ export const viewBoxOf = (b: Box): string => [b.x, b.y, b.width, b.height].map((
 export const strokeAt = (v: Box, s: { width: number }): number => Math.max(0.25, 1.4 / (s.width / Math.max(v.width, 1)));
 export const markerRadiusAt = (v: Box, s: { width: number }): number => Math.max(1.2, 9 / (s.width / Math.max(v.width, 1)));
 
+/** The line under every map, shown while it loads too so nothing below it moves when the map arrives. */
+export const MAP_CREDIT = "Outlines: Natural Earth. Small countries and territories that can't be drawn at this scale are still in the list.";
+
 let pending: Promise<WorldMapData> | undefined;
 /** The outlines, fetched once when a map is first shown; a failed fetch is tried again next time. */
 export function loadMap(): Promise<WorldMapData> {
