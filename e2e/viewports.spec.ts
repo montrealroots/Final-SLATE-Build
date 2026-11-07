@@ -183,6 +183,18 @@ test('a second tab opens the same save read-only until it takes over', async ({ 
   await expect(page.getByText('This game is open in another tab')).toBeVisible({ timeout: 8000 });
 });
 
+// Found by e2e/careers.spec.ts on November 7, 2026: a page reloaded mid-game left its tab's lock fresh for up to six
+// seconds, so Continue straight after opened the game read-only, as if another tab had it.
+test('reloading the page and continuing at once opens the game in this tab, not read-only', async ({ page }, info) => {
+  test.skip(info.project.name !== 'desktop', 'Lifecycle check runs once.');
+  await seedGame(page);
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  await expect(page.getByText('This game is open in another tab')).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Advance', exact: true })).toBeEnabled();
+});
+
 test('in-game Saved Games and Settings come from the same navigation', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop' && info.project.name !== 'phone', 'Runs on desktop and phone.');
   await seedGame(page);
