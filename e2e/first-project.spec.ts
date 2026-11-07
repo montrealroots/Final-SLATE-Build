@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { addScene, advance, creditsTable, nav, newProject, pinSeed, produceToDelivery, readSavedState, section } from './helpers';
+import { addScene, advance, writePitch, creditsTable, nav, newProject, pinSeed, produceToDelivery, readSavedState, section } from './helpers';
 
 // The first-project journey, through visible controls only, from character creation to a second project.
 // Labelled fixture: the world seed is fixed after creation (pinSeed), so backers' answers are the same every run.
@@ -54,6 +54,7 @@ test('first project: write, approve, a refusal, the agreed backing, production, 
   await addCharacters(page, ['Marta', 'The Conductor']);
   await addScene(page, { index: 0, place: 'Tram Depot', chars: ['Marta', 'The Conductor'], minutes: '3' });
   await addScene(page, { index: 1, place: 'Tram', chars: ['Marta'], minutes: '3' });
+  await writePitch(page);
   await expect(page.getByText('Nothing blocks approval.')).toBeVisible();
   await page.getByRole('button', { name: 'Save Draft' }).click();
   await page.getByRole('button', { name: 'Approve This Draft' }).first().click();

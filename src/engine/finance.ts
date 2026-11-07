@@ -6,6 +6,7 @@
 // and a delivery deadline. Amounts and decisions are game calibration, not industry figures.
 
 import { money } from './budget';
+import { grantApplicationMissing, pitchMissing } from './script-effects';
 import { scriptIssues } from './projects';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
@@ -84,10 +85,11 @@ export function backerOptions(state: GameState, p: Project): { kind: Exclude<Fin
   if (!usedStarting(state) || has('starting')) {
     out.push({ kind: 'starting', ready: false, needs: why('starting', state.projects.some((x) => x.id !== p.id && x.delivered) ? 'Only for your first project.' : !scriptApproved(p) ? 'Approve a script first.' : null) });
   }
-  out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : null) });
-  out.push({ kind: 'investor', ready: false, needs: why('investor', !scriptApproved(p) ? 'Approve a script first.' : null) });
-  out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : null) });
-  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : !scriptApproved(p) ? 'Approve a script first.' : null) });
+  // Backers read a pitch (logline and premise); a grant application asks for the stakes and theme too (script-effects.ts).
+  out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : grantApplicationMissing(p)) });
+  out.push({ kind: 'investor', ready: false, needs: why('investor', !scriptApproved(p) ? 'Approve a script first.' : pitchMissing(p)) });
+  out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : pitchMissing(p)) });
+  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : !scriptApproved(p) ? 'Approve a script first.' : pitchMissing(p)) });
   for (const o of out) o.ready = o.needs === '';
   return out;
 }

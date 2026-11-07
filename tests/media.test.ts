@@ -202,7 +202,7 @@ describe('TV season', () => {
     const marcus = p.credits.find((c) => c.characterName === 'Marcus')!;
     expect(marcus.episodes).toEqual([1]);
     const ines = p.credits.find((c) => c.characterName === 'Dr. Ines Park')!;
-    expect(ines.episodes).toEqual([1, 2]);
+    expect(ines.episodes).toBe('all'); // a series regular is credited in every episode (script-effects.ts)
     expect(p.credits.find((c) => c.contribution === 'Executive Producer And Showrunner')?.person).toBe('player');
     expect(p.tasks.filter((t) => t.kind === 'post:assembly').length).toBe(2);
     expect(ledgerTotals(p).cash).toBeGreaterThanOrEqual(0);

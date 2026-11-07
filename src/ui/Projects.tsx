@@ -62,6 +62,8 @@ export function NewProject() {
   const [tone, setTone] = useState('');
   const [era, setEra] = useState('Contemporary');
   const [setting, setSetting] = useState('');
+  const [settingPlace, setSettingPlace] = useState('');
+  const [register, setRegister] = useState<'' | 'comedy' | 'drama'>('');
   const [quality, setQuality] = useState<'limited' | 'tv' | 'feature'>('tv');
   const [langs, setLangs] = useState<string[]>([g.character.mainLanguage]);
   const [genres, setGenres] = useState<{ id: string; emphasis: 'primary' | 'secondary' }[]>([]);
@@ -73,7 +75,8 @@ export function NewProject() {
     const err = store.act((s) => {
       const p = createProject(s, {
         title, scenarioId: scenario,
-        axes: { format, medium, technique: medium === 'live-action' ? 'none' : technique === 'none' ? '3d-cg' : technique, episodeCount: episodic ? episodes : 1, targetRuntimeMin: runtime, basePlaceId: base, audience, tone, storyEra: era, storySetting: setting, dialogueLanguages: langs, animationQuality: quality, genres },
+        axes: { format, medium, technique: medium === 'live-action' ? 'none' : technique === 'none' ? '3d-cg' : technique, episodeCount: episodic ? episodes : 1, targetRuntimeMin: runtime, basePlaceId: base, audience, tone, storyEra: era, storySetting: setting, dialogueLanguages: langs, animationQuality: quality, genres,
+          ...(settingPlace ? { settingPlaceId: settingPlace } : {}), ...(register ? { register } : {}) },
       });
       id = p.id;
     });
@@ -115,11 +118,17 @@ export function NewProject() {
         <h2>Story And Audience</h2>
         <div className="grid grid-2 form">
           <SelectField label="Intended Audience" value={audience} options={AUDIENCES.map((a) => ({ value: a, label: a }))} onChange={setAudience} />
-          <TextField label="Tone" value={tone} maxLength={80} hint="For example: dry and tense, warm and absurd." onChange={setTone} />
+          <TextField label="Tone" value={tone} maxLength={80} hint="For example: dry and tense, warm and absurd. Your own words for the pitch." onChange={setTone} />
+          <SelectField label="Competes As" value={register} hint="Where awards that split drama from comedy consider it." options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]} onChange={setRegister} />
           <TextField label="Story Era" value={era} maxLength={60} hint="When the story takes place. Period settings add research and wardrobe work." onChange={setEra} />
           <TextField label="Story Setting" value={setting} maxLength={120} hint="Where the story takes place. This is separate from where you shoot." onChange={setSetting} />
         </div>
         <LanguagePicker value={langs} onChange={setLangs} />
+        <details className="section-fold">
+          <summary>Where The Story Is Set (Optional)</summary>
+          <p className="dim">If it's set somewhere other than your production base, the location manager scouts there before the shoot (two days, four abroad).</p>
+          <PlacePicker label="Story Setting Place" value={settingPlace} onChange={setSettingPlace} />
+        </details>
       </section>
       <section className="card">
         <h2>Production</h2>

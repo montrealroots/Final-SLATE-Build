@@ -184,8 +184,20 @@ export async function addScene(page: Page, opts: { index: number; place: string;
   await c.getByRole('button', { name: 'Close Scene' }).click();
 }
 
+/**
+ * Write the pitch in the Story panel (on the Script page): backers, festival entries and distributors ask for a logline
+ * and premise, and a grant application for the stakes and theme too.
+ */
+export async function writePitch(page: Page): Promise<void> {
+  await page.getByLabel('Logline', { exact: true }).fill('A night shift that will not end.');
+  await page.getByLabel('Premise', { exact: true }).fill('Two strangers keep the last service running until dawn.');
+  await page.getByLabel('Stakes', { exact: true }).fill('If the service stops, the city strands its night workers.');
+  await page.getByLabel('Theme', { exact: true }).fill('Care as work.');
+}
+
 export async function saveAndApprove(page: Page): Promise<void> {
   await section(page, 'Script');
+  await writePitch(page);
   await expect(page.getByText('Nothing blocks approval.')).toBeVisible();
   await page.getByRole('button', { name: 'Save Draft' }).click();
   await page.getByRole('button', { name: 'Approve This Draft' }).first().click();

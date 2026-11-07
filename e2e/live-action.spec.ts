@@ -1,5 +1,5 @@
 import { expect, test } from './test';
-import { advance, createCharacter, freshStart, nav, readSavedState, section, staffEveryDepartment, secureStartingBacking, pressSaveAndExit } from './helpers';
+import { advance, createCharacter, freshStart, nav, readSavedState, section, staffEveryDepartment, secureStartingBacking, pressSaveAndExit, writePitch } from './helpers';
 
 test('live-action short: create, write, cast yourself, staff, shoot, cut, deliver, credits', async ({ page }, info) => {
   await freshStart(page);
@@ -64,6 +64,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await page.getByRole('button', { name: 'Add Setup' }).click();
   await page.getByLabel('Planted In').selectOption({ index: 1 });
   await page.getByLabel('Pays Off In').selectOption({ index: 2 });
+  await writePitch(page);
   await expect(page.getByText('Nothing blocks approval.')).toBeVisible();
   await page.getByRole('button', { name: 'Save Draft' }).click();
   await expect(page.getByText('Draft 1', { exact: true })).toBeVisible();

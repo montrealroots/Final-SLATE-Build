@@ -6,6 +6,7 @@ import {
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, type ModuleId,
   approvalImpact, FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, type UnscriptedFamily,
+  characterPronouns,
 } from '../engine';
 import type { Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
@@ -83,7 +84,7 @@ export function ScriptTab({ p }: { p: Project }) {
       </div>
       <section className="card">
         <h2>{nonfiction ? 'Subject And Approach' : 'Story'}</h2>
-        <p className="dim">Your own words for the project. SLATE keeps them with the script; it doesn't read them for meaning.</p>
+        <p className="dim">Your own words for the project. Backers, festival entries and distributors ask for the logline and premise (your pitch), and a grant application for the stakes and theme too. SLATE never reads them for meaning, and they don't change the script's quality.</p>
         <div className="grid grid-2 form">
           {nonfiction && <TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} />}
           <TextField label="Logline" multiline value={p.story.logline} maxLength={300} onChange={(v) => edit(p, () => (p.story.logline = v))} />
@@ -302,7 +303,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
           <div className="grid grid-2 form">
             <TextField label="Objective" multiline value={s.objective} onChange={(v) => up({ objective: v })} />
             <TextField label={nonfiction ? 'What Happens' : 'Action'} multiline value={s.action} onChange={(v) => up({ action: v })} />
-            <TextField label="Turning Point" multiline value={s.turningPoint} onChange={(v) => up({ turningPoint: v })} />
+            <TextField label="Turning Point" multiline value={s.turningPoint} hint="Writing one marks this scene as a turning point: if the shoot loses it, the edit can't cover the hole." onChange={(v) => up({ turningPoint: v })} />
           </div>
           {!nonfiction && <Dialogue p={p} s={s} up={up} />}
           <h4>Production Needs</h4>
@@ -592,13 +593,13 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
             <SelectField label="Entity" value={c.entity} options={ENTITIES.map((r) => ({ value: r, label: title(r) }))} onChange={(v) => up({ entity: v })} />
             <SelectField label="Realized As" value={c.realization} options={REALIZATIONS.map((r) => ({ value: r, label: REAL_LABEL[r] }))} onChange={(v) => up({ realization: v })} />
             <TextField label="Age In Story" value={c.ageInStory} onChange={(v) => up({ ageInStory: v })} />
-            <TextField label="Pronouns" value={c.pronouns} onChange={(v) => up({ pronouns: v })} />
+            <SelectField label="Pronouns" value={characterPronouns(c) ?? ''} hint="Casting lists performers who match first." options={[{ value: '', label: 'Open To Anyone' }, { value: 'he', label: 'He/Him' }, { value: 'she', label: 'She/Her' }, { value: 'they', label: 'They/Them' }]} onChange={(v) => up({ pronouns: v })} />
             <SelectField label="Speaks" value={c.languages[0] ?? p.axes.dialogueLanguages[0]} options={p.axes.dialogueLanguages.map((l) => ({ value: l, label: languageName(l) }))} onChange={(v) => up({ languages: [v] })} />
-            {isEpisodic(p.axes.format) && <SelectField label="Series Involvement" value={c.seriesInvolvement} options={[{ value: 'regular', label: 'Regular' }, { value: 'recurring', label: 'Recurring' }, { value: 'guest', label: 'Guest' }, { value: 'single', label: 'One Episode' }]} onChange={(v) => up({ seriesInvolvement: v })} />}
+            {isEpisodic(p.axes.format) && <SelectField label="Series Involvement" value={c.seriesInvolvement} hint="A regular is booked for at least a day in every episode and credited in each; others in the episodes they're in." options={[{ value: 'regular', label: 'Regular' }, { value: 'recurring', label: 'Recurring' }, { value: 'guest', label: 'Guest' }, { value: 'single', label: 'One Episode' }]} onChange={(v) => up({ seriesInvolvement: v })} />}
           </div>
           <fieldset style={{ border: 0, padding: 0 }}>
             <legend style={{ fontWeight: 600 }}>Story Functions</legend>
-            <p className="dim">Independent of role size. A lead doesn't have to be the protagonist.</p>
+            <p className="dim">Independent of role size. A protagonist, deuteragonist or antagonist competes in the leading acting categories whatever the part's size; a narrator records narration before the mix.</p>
             <div className="chip-row">{FUNCTIONS.map((f) => <Check key={f} label={title(f)} checked={c.functions.includes(f)} onChange={(v) => up({ functions: v ? [...c.functions, f] : c.functions.filter((x) => x !== f) })} />)}</div>
           </fieldset>
           <fieldset style={{ border: 0, padding: 0 }}>
@@ -607,8 +608,8 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
           </fieldset>
           <CharacterBackgrounds name={c.name} value={c.heritages ?? []} onChange={(v) => up({ heritages: v })} />
           <div className="grid grid-2 form">
-            {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} onChange={(v) => up({ entityNote: v })} />}
-            <TextField label="Description" multiline value={c.description} onChange={(v) => up({ description: v })} />
+            {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Design and casting wait on this." onChange={(v) => up({ entityNote: v })} />}
+            <TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown agents read: without all three, offers are answered a day later." onChange={(v) => up({ description: v })} />
             <TextField label="Wants" multiline value={c.wants} onChange={(v) => up({ wants: v })} />
             <TextField label="Fears" multiline value={c.fears} onChange={(v) => up({ fears: v })} />
           </div>

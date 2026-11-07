@@ -2,6 +2,7 @@
 // Part of the production engine; src/engine/production.ts is its public interface.
 
 import type { Project, Scene, Task } from '../types';
+import { findPlace } from '../../data/places';
 import { approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneLabel, sceneTechnique } from '../projects';
 import { MOCAP_CLEANUP_PER_SESSION } from '../mocap';
 import { ANIM_RATE, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS } from './rates';
@@ -37,6 +38,13 @@ export function buildTasks(p: Project): Task[] {
   if (liveScenes.length && !nonfiction) {
     const locs = count('location');
     tasks.push(t('prep:locations', 'all', 'Location Scouting And Permits', 'Locations', 'location-manager', Math.max(1, locs), 'locations'));
+    // Shooting away from where the story is set: a scouting trip there first, longer abroad (simulation assumption).
+    const setting = p.axes.settingPlaceId && p.axes.settingPlaceId !== p.axes.basePlaceId ? findPlace(p.axes.settingPlaceId) : undefined;
+    if (setting) {
+      const abroad = setting.country !== findPlace(p.axes.basePlaceId)?.country;
+      tasks.push(t('prep:scout', 'setting', `Scouting Trip To ${setting.name}`, 'Locations', 'location-manager', abroad ? 4 : 2, 'days'));
+      prepIds.push('prep:scout:setting');
+    }
     tasks.push(t('prep:design', 'all', 'Production Design And Props', 'Art', 'production-designer', Math.max(1, count('prop') + count('clue-prop') + Math.ceil(locs / 2)), 'items',
       count('period-research') ? ['prep:research:period'] : []));
     tasks.push(t('prep:costume', 'all', 'Costumes', 'Costume And Makeup', 'costume-designer', Math.max(1, chars.filter((c) => c.roleSize !== 'background').length * periodFactor), 'costumes',
@@ -191,6 +199,12 @@ export function buildTasks(p: Project): Task[] {
     tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, minutes / 30), 'days', [`post:sound:${e}`, `post:music:${e}`, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
     tasks.push(t('post:captions', String(e), `Captions And Subtitles${epSuffix(p, e)}`, 'Post Production', 'subtitler', Math.max(1, (minutes / 30) * p.axes.dialogueLanguages.length), 'days', [`post:mix:${e}`], { episode: e }));
     tasks.push(t('post:qc', String(e), `Delivery Quality Control${epSuffix(p, e)}`, 'Post Production', 'qc-technician', 1, 'days', [`post:color:${e}`, `post:mix:${e}`, `post:captions:${e}`], { episode: e }));
+  }
+  // A narrator records their narration once the picture is locked; every mix waits for it.
+  for (const c of chars.filter((x) => x.functions.includes('narrator') && x.roleSize !== 'background')) {
+    const id = `post:narration:${c.id}`;
+    tasks.push(t('post:narration', c.id, `Record ${c.name}'s Narration`, 'Post Production', 'sound-designer', 1, 'sessions', ['milestone:lock:1']));
+    for (const mix of tasks.filter((x) => x.kind === 'post:mix')) mix.dependsOn.push(id);
   }
   // Prep must finish before live capture.
   for (const task of tasks) if (task.kind === 'prep:rehearsal') task.dependsOn.push(...prepIds.filter((x) => x !== 'prep:rehearsal:all' && x !== 'doc:research:all'));

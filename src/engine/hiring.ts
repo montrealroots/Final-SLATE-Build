@@ -3,11 +3,12 @@
 // availability for the production window and the offered rate. Offers reserve (not spend) funds.
 
 import { getPlace } from '../data/places';
+import { breakdownComplete } from './script-effects';
 import { cancel, commit, ledgerTotals, money, reserve, FundsError } from './budget';
 import { genre } from './genres';
 import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
 import { buildTasks, coachingNeeded, estimatedShootDays, planShootDays } from './production';
-import { approvalRights, approvedCharacters, approvedScenes, isNonfiction, projectModules, sceneTechnique } from './projects';
+import { approvalRights, approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneTechnique } from './projects';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY, HOUR, addDaysToKey, dateKey, formatDateKey, weekdayName, weekdayOfKey } from './time';
@@ -75,7 +76,12 @@ export function estimateDays(p: Project, roleId: string, characterId?: string, m
     }
     const scenes = approvedScenes(p).filter((s) => s.participants.includes(characterId) && sceneTechnique(p, s) === 'live');
     const ratio = scenes.length / Math.max(1, approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live').length);
-    return Math.max(1, Math.ceil(shootDays * Math.max(ratio, 0.15)) + Math.ceil(p.schedule.rehearsalDays / 2));
+    const ch = approvedCharacters(p).find((c) => c.id === characterId);
+    let days = Math.max(1, Math.ceil(shootDays * Math.max(ratio, 0.15)) + Math.ceil(p.schedule.rehearsalDays / 2));
+    // A series regular is guaranteed at least a day in every episode; a narrator adds a recording session.
+    if (ch && isEpisodic(p.axes.format) && ch.seriesInvolvement === 'regular') days = Math.max(days, p.axes.episodeCount);
+    if (ch?.functions.includes('narrator')) days += 1;
+    return days;
   }
   // Days include roles this person would cover as a second job when no one else holds them.
   const coveredByOthers = (r: string) => p.hires.some((h) => h.roleId === r && ['offered', 'accepted', 'countered'].includes(h.status));
@@ -160,7 +166,10 @@ export function makeOffer(state: GameState, p: Project, input: OfferInput): Hire
   const r = stream(state.seed, 'offer-delay', p.id, input.personId, p.hires.length);
   const lead = input.characterId && ['lead', 'co-lead', 'ensemble-lead'].includes(approvedCharacters(p).find((c) => c.id === input.characterId)?.roleSize ?? '');
   const approvalDelay = lead && approvalRights(p).includes('Casting Approval') ? 2 * DAY : 0;
-  const responseAt = state.now + DAY + Math.floor(r() * 2 * DAY) + approvalDelay;
+  // Agents ask for the character breakdown (description, wants, fears) before answering: without it, a day longer.
+  const ch = input.characterId ? approvedCharacters(p).find((c) => c.id === input.characterId) : undefined;
+  const breakdownDelay = ch && !breakdownComplete(ch) ? DAY : 0;
+  const responseAt = state.now + DAY + Math.floor(r() * 2 * DAY) + approvalDelay + breakdownDelay;
   const hire: Hire = {
     id: newId(state, 'h'), personId: input.personId, roleId: input.roleId, kind: role(input.roleId).cast ? 'cast' : 'crew', characterId: input.characterId,
     method: input.characterId ? input.method ?? 'on-camera' : undefined, episodes: input.episodes ?? 'all', dayRate: Math.round(input.dayRate), estDays: days,
