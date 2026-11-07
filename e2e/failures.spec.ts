@@ -180,4 +180,41 @@ test('a genre catalog that fails to load stops the game from opening with the re
   fail = false;
   await page.getByRole('button', { name: 'Try Again' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  // The whole catalog arrived: New Script offers all 149 entries.
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await expect(page.getByText('All 149 catalog entries are searchable.')).toBeVisible();
+});
+
+test('a damaged genre catalog publishes nothing; Try Again with a good one opens the game with the whole catalog', async ({ page }) => {
+  expectErrors('Serves a damaged genre catalog first.');
+  let damaged = true;
+  // Half the records, then one with no mechanic mapping: until November 7, 2026 the first half was kept and counted as loaded.
+  await page.route((url) => /genre-catalog/.test(url.pathname) && !url.search, async (route) => {
+    if (!damaged) return route.continue();
+    const good = await (await route.fetch()).json() as { records: { id: string }[] };
+    const half = good.records.slice(0, 70);
+    await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ records: [...half, { ...good.records[70], id: 'not-a-genre' }] }) });
+  });
+  await page.goto('/');
+  await page.evaluate(() => {
+    localStorage.clear();
+    localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
+      step: 'review', name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
+      heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }], heritageCustomText: '', mainLanguage: 'en', languages: [],
+      startPlaceId: 'gb-london', startDate: '2026-05-04', startTime: '08:00', updatedAt: 1,
+    }));
+  });
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue Creation' }).click();
+  await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByText("The game's genre catalog couldn't be loaded. Check your connection and try again.")).toBeVisible();
+  damaged = false;
+  await page.getByRole('button', { name: 'Try Again' }).click();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await expect(page.getByText('All 149 catalog entries are searchable.')).toBeVisible();
+  await page.getByRole('searchbox', { name: 'Search Genres' }).fill('zombie');
+  await expect(page.getByRole('button', { name: 'Add Zombie' })).toBeVisible();
 });

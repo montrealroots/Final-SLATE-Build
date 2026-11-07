@@ -212,33 +212,60 @@ interface RawRecord {
 /**
  * The catalog, filled by loadGenreCatalog. It loads in the background from startup and every game waits for it before
  * opening (ui/store.ts enter); nothing before a game reads it. It was part of the startup JavaScript until November 7, 2026.
+ * It is published whole or not at all (applyGenreCatalog): until November 7, 2026 a bad record halfway through left the
+ * records before it published and the catalog reported as loaded, and a retry then kept that partial catalog.
  */
 export const GENRES: GenreRecord[] = [];
 const byId = new Map<string, GenreRecord>();
 let catalog: Promise<void> | null = null;
 
+const isText = (v: unknown): v is string => typeof v === 'string';
+
+/** Build and check the whole catalog from its raw file, without publishing anything. Throws on the first problem. */
+export function buildGenreCatalog(raw: unknown): GenreRecord[] {
+  const records = (raw as { records?: unknown } | null)?.records;
+  if (!Array.isArray(records) || !records.length) throw new Error('The genre catalog has no records.');
+  const seen = new Set<string>();
+  return records.map((r: Partial<RawRecord> | null, i) => {
+    if (!r || !isText(r.id) || !r.id || !isText(r.name) || !isText(r.classification) || !isText(r.working_definition) || !isText(r.legacy_parent_label)) {
+      throw new Error(`Genre record ${i + 1} is malformed.`);
+    }
+    if (seen.has(r.id)) throw new Error(`Genre ${r.id} appears twice.`);
+    seen.add(r.id);
+    const spec = SPEC[r.id];
+    if (!spec) throw new Error(`Genre ${r.id} has no mechanic mapping`);
+    return {
+      id: r.id, name: r.name, classification: r.classification, definition: r.working_definition, parent: r.legacy_parent_label,
+      modules: spec[0], questions: spec[1].map((label) => ({ key: slug(label), label })),
+    };
+  });
+}
+
+/** Publish a catalog built from `raw`, replacing any before it in one step; if it doesn't build, nothing changes. */
+export function applyGenreCatalog(raw: unknown): void {
+  const built = buildGenreCatalog(raw);
+  GENRES.splice(0, GENRES.length, ...built);
+  byId.clear();
+  for (const g of built) byId.set(g.id, g);
+}
+
 /**
- * Load the catalog once; a failed load is tried again on the next call. Fetched, not imported: a browser keeps a failed
- * dynamic import failed, so Try Again could never succeed.
+ * Load the catalog. Callers at the same time share one load; once a catalog is published, calls resolve at once. A failed
+ * load publishes nothing and is fetched again on the next call. Fetched, not imported: a browser keeps a failed dynamic
+ * import failed, so Try Again could never succeed.
  */
 export function loadGenreCatalog(): Promise<void> {
-  catalog ??= fetch(catalogUrl).then((r) => {
-    if (!r.ok) throw new Error(`Couldn't load the genre catalog (${r.status}).`);
-    return r.json() as Promise<{ records: RawRecord[] }>;
-  }).then((m) => {
-    if (GENRES.length) return;
-    for (const r of m.records) {
-      const spec = SPEC[r.id];
-      if (!spec) throw new Error(`Genre ${r.id} has no mechanic mapping`);
-      const g: GenreRecord = {
-        id: r.id, name: r.name, classification: r.classification, definition: r.working_definition, parent: r.legacy_parent_label,
-        modules: spec[0], questions: spec[1].map((label) => ({ key: slug(label), label })),
-      };
-      GENRES.push(g);
-      byId.set(g.id, g);
-    }
-  });
-  catalog.catch(() => { catalog = null; });
+  if (genreCatalogLoaded()) return Promise.resolve();
+  if (!catalog) {
+    const attempt: Promise<void> = fetch(catalogUrl)
+      .then((r) => {
+        if (!r.ok) throw new Error(`Couldn't load the genre catalog (${r.status}).`);
+        return r.json() as Promise<unknown>;
+      })
+      .then(applyGenreCatalog)
+      .finally(() => { if (catalog === attempt) catalog = null; });
+    catalog = attempt;
+  }
   return catalog;
 }
 export const genreCatalogLoaded = (): boolean => GENRES.length > 0;

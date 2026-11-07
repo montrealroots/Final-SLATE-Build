@@ -104,7 +104,14 @@ class Store {
       this.emit();
     });
     document.addEventListener('visibilitychange', () => this.onVisibility());
-    window.addEventListener('pagehide', () => this.suspend());
+    window.addEventListener('pagehide', () => {
+      this.suspend();
+      // A page that goes away no longer holds the game. Until November 7, 2026 its lock stayed fresh for up to six seconds,
+      // so a reload followed by Continue opened the game read-only, as if another tab had it. A page restored from the
+      // back-forward cache takes the lock again at its next heartbeat, unless another tab took it meanwhile (then it is
+      // read-only, as it should be). A tab that is only hidden keeps the lock.
+      if (this.state && !this.readOnly) releaseLock(this.kv, this.state.saveId, TAB_ID);
+    });
     window.addEventListener('storage', (e) => this.onStorage(e));
     // Holiday rules for the whole world are fetched once, in the background, from the start.
     this.holidays = loadWorldHolidays().catch(() => undefined);

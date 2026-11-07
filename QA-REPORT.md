@@ -8,7 +8,29 @@
 
 ## Commands And Results
 
-### Current: Input Loss, Startup And Connected Journeys (November 7, 2026, after #34)
+### Current: Genre Catalog Loading And More Connected Careers (November 7, 2026, after #35)
+
+Local Linux container, branch `claude/clever-archimedes-x0r26v` from `main` at `c00c261` (#35). The commands ran on the
+branch's final source; the commit after the runs changes only these reports. See the PR for CI.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 31 files, 256 tests passed (`tests/genre-catalog.test.ts` 6, three of which fail on the old loader); build passed; startup JavaScript 661 kB raw (676,736 bytes), 205 kB gzipped, budgets 700 and 220 kB, 0 problems. |
+| `npm run balance` | 0 | 2 tests passed; `docs/balance-results.json` and `docs/balance-heldout.json` unchanged. |
+| `npm run perf:engine` | 0 | 2 tests passed. |
+| `SLATE_E2E_PROD=1 npm run e2e -- --trace retain-on-failure` | 0 | Production build, the complete suite: 141 passed, 27 skipped, 0 failed, in 14.3 minutes. |
+| `npm run e2e -- --trace retain-on-failure` | 0 | Development server, the complete suite: 141 passed, 27 skipped, 0 failed, in 17.4 minutes. |
+| `e2e/viewports.spec.ts` reload test, old code against new | | Failed on the old code (the game opened read-only after a reload); passes with the fix, and the two-tab test still passes. |
+
+168 browser tests are listed: 70 on desktop, 70 on phone, 13 on `iphone-15-plus`, 14 on `iphone-15-pro-max`, 1 on
+`iphone-15-pro-max-landscape` (`npx playwright test --list`).
+
+**What a browser downloads** (`docs/PERFORMANCE.md`): the startup JavaScript (676,736 bytes, 205 kB gzipped) is what the
+budget covers. The holiday rules, calendars, genre catalog and seasons table are fetched in the background from startup
+and must arrive before a game opens. That's another 826,260 bytes, about 107 kB gzipped. Moving data out of the
+JavaScript moved when it downloads, not whether.
+
+### Previous: Input Loss, Startup And Connected Journeys (November 7, 2026, after #34)
 
 Local Linux container, branch `claude/clever-archimedes-x0r26v` from `main` at `6e2abf0` (#34). The commands ran on the
 branch's final source; the commits after the runs change only these reports. See the PR for CI.
@@ -60,6 +82,10 @@ Screenwriting, motion-capture and replacement checkpoint (after montrealroots/Fi
 | Journey | Test | Where it runs |
 | --- | --- | --- |
 | One connected career: creation with two Review edits; naming characters with a supporting antagonist; script choices (an essential scene, a clue planted and paid off, declared strong content); the grant blocked on missing documents, then the documents written and sent; casting; crew; the schedule; an essential scene cut, restored and picked up; production; the edit; delivery; a late-slot broadcast offer taken with a broadcast edit; Save & Exit and Continue mid-production and at the end, checking every choice survived | `e2e/connected.spec.ts` | desktop, phone, `iphone-15-pro-max` |
+| A TV season (3 episodes): a regular and a guest; the approved script changed after the first scene was filmed, re-approved with the refilm named, the scene picked up; delivered at 9 minutes with the guest credited for their episode; self-released and reloaded | `e2e/careers.spec.ts` (seed 11) | desktop |
+| Stop motion: an offer refused with no money; the schedule refused with its shortfall; the target raised and an investor's offer accepted; reopened while the genre catalog and holiday rules fail to load, then Try Again with progress unchanged; puppets, sets, delivery, credits, release | `e2e/careers.spec.ts` (seed 23) | desktop |
+| Writing, producing and directing without acting: a performer booked elsewhere turns the part down (Cast table and Home say so); recast; credits behind the camera only, unchanged after a reload | `e2e/careers.spec.ts` (seed 31) | desktop, phone |
+| A damaged genre catalog publishes nothing; Try Again with a good one opens the game with all 149 entries | `e2e/failures.spec.ts` | desktop, phone |
 | Supporting-antagonist placement, an incomplete pitch, a revised treatment; a mature project with a cut and picked-up essential scene and the late slot | `e2e/script-rules.spec.ts` | desktop and phone; the mature journey on desktop |
 | Creation, every Review edit, invalid edits, Start My Story with something missing, keyboard and reload | `e2e/creation.spec.ts` | desktop, phone, both iPhone projects |
 | Typing straight after a screen change; Save And Return To Review while the map arrives | `e2e/focus.spec.ts` | desktop, phone, both iPhone projects |
@@ -68,17 +94,20 @@ Screenwriting, motion-capture and replacement checkpoint (after montrealroots/Fi
 | Export, import into a fresh browser, duplicates, refusals, two tabs; recovery copies, full storage, failed saves, missing data | `e2e/backup.spec.ts`, `e2e/storage.spec.ts`, `e2e/failures.spec.ts`, `e2e/reliability.spec.ts` | desktop and phone |
 | Revisions | `tests/writing.test.ts`, `tests/screenwriting.test.ts` | engine only; not a browser journey |
 
-Screenshots of the connected journey (desktop, phone and `iphone-15-pro-max`), the script-rules journeys and the focus
-tests were inspected; traces are kept for any failure.
+Screenshots of the connected journey (desktop, phone and `iphone-15-pro-max`), the three careers, the script-rules
+journeys and the focus tests were inspected; traces are kept for any failure. Nothing overlapped, clipped or became
+unreadable. Two things were noted and not changed. On the phone, the scrolling tab bar's arrows cover the first letters
+of the edge tabs ("‹roduction"); that is the existing scroll affordance. A section scrolled into view sits partly
+under the sticky header on the iPhone; in the screenshot, the Distribution Offers heading was cut off.
 
-### Why 24 Browser Tests Are Skipped
+### Why 27 Browser Tests Are Skipped
 
 Skipped tests did not run and are not counted as passed. Each is skipped on purpose for the project named, by an
 explicit `test.skip(project…)`; no test skips itself on an outcome:
 
 - **1 on desktop:** the phone device test runs only on the iPhone projects.
-- **23 on phone (Chromium 390×844):** the device test (iPhone projects only), and the journeys and checks that run once,
-  at desktop width: the first-project journey (1), the two-tab import and storage checks (2), the 11 journeys in
+- **26 on phone (Chromium 390×844):** the device test (iPhone projects only), and the journeys and checks that run once,
+  at desktop width: the TV and stop-motion careers (2), the reload lifecycle check (1), the first-project journey (1), the two-tab import and storage checks (2), the 11 journeys in
   `e2e/journeys.spec.ts` (2D, hybrid, documentary and its decline, TV, web series, 3D with motion capture, stop motion,
   unscripted and its withdrawal, festival under official rules), the two media checks (2), the performance measurement
   (1), the mature-project script-rules journey (1), and four layout and lifecycle checks that set their own viewports or
@@ -103,6 +132,8 @@ explicit `test.skip(project…)`; no test skips itself on an outcome:
 
 | Severity | Defect | Fix | Regression Check |
 | --- | --- | --- | --- |
+| High | (Found by the stop-motion career, after #35) A reload followed by Continue within six seconds opened the game read-only ("This game is open in another tab") with no other tab: the closed page's lock was still fresh | A page that goes away releases its lock; a hidden tab keeps it | `e2e/viewports.spec.ts` (failed on the old code) |
+| Medium | (After #35) A genre catalog with a bad record halfway through left the records before it published and the catalog counted as loaded; a later load added them again | The whole catalog is built and checked before anything is published; a valid catalog survives a bad one | `tests/genre-catalog.test.ts` (three tests fail on the old loader), `e2e/failures.spec.ts` |
 | High | (The intermittent WebKit failure in New Script, after #34) Text typed right after a screen change was lost: `store.go` moved focus to the screen one animation frame later, and on a busy device that frame arrived mid-typing ("The Last Ferry" became "Th"). Not WebKit-specific: reproduced on Chromium too once frames were made late | Focus moves in a layout effect in the commit that shows the screen | `e2e/focus.spec.ts` (failed 8 of 8 on the old code) |
 | Medium | (The CI run 63 failure in creation) The world map drew a one-line placeholder, then grew 364 px on desktop and 195 px on an iPhone a moment later, pushing Save And Return To Review down after it was drawn; a click or tap aimed at it landed elsewhere | The placeholder is the map's own box with its credit line | `e2e/focus.spec.ts` (failed on every run on the old code) |
 | Medium | (Found moving the genre catalog out of startup) A catalog that failed to load could never be retried: browsers keep a failed dynamic import failed | Fetched instead of imported; a failure stops the game opening with the reason and Try Again | `e2e/failures.spec.ts` |
@@ -169,14 +200,18 @@ explicit `test.skip(project…)`; no test skips itself on an outcome:
 
 ## Open
 
-- No code fault is open from this pass. The intermittent WebKit input loss recorded at #34 was reproduced and fixed (see
-  Defects). Physical devices, a person's screen-reader pass and human playtesting remain outside what was tested.
+- No code fault is open from this pass. Physical devices, a person's screen-reader pass and human playtesting remain
+  outside what was tested.
+- Balance, observed in the stop-motion career rather than fixed: a micro budget ($40,000) doesn't pay for a two-minute
+  stop-motion short with every department staffed. The game refuses the schedule, then the animators, saying how much is
+  missing; the journey raises the target to $75,000 with an investor. Whether the budget sizes suit stop motion is a
+  balance question for the owner. Nothing was changed to make the journey pass.
+- On the iPhone, a section scrolled into view can sit partly under the sticky header (see Acceptance Journeys).
 
 ## Acceptance Status
 
 **Pending owner acceptance.** On the final source of this pass every required automated check passed: `npm run check`,
-the balance and engine performance tests, and both complete browser suites (134 passed, 24 skipped by design, 0
-failed). Still open (see `RESUME-HERE.md`):
+the balance and engine performance tests, and both complete browser suites (141 passed, 27 skipped by design, 0 failed). Still open (see `RESUME-HERE.md`):
 
 - No physical iPhone or real Safari verification; WebKit emulation only.
 - Holidays: dated from 2026 to 2100 by the worldwide rules, with lunar and announced holidays beyond their published
