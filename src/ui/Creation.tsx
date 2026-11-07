@@ -89,7 +89,7 @@ export function Creation() {
           ))}
         </div>
 
-        {step === 'identity' && <IdentityStep d={d} set={set} err={err} head={h1('Identity', 'Your name is the one your credits carry. Pronouns and how you’re billed are yours to choose, separately.')} />}
+        {step === 'identity' && <IdentityStep d={d} set={set} err={err} head={h1('Identity', 'Your name is the one your credits carry. Your pronouns decide how you’re billed: He/Him as Actor, She/Her as Actress, and with They/Them you choose.')} />}
         {step === 'background' && (
           <div className="col gap-5">
             <section className="card">
