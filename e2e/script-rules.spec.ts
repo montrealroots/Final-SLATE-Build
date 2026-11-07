@@ -5,7 +5,8 @@
 import { expect, test, type Page } from './test';
 import { addScene, advance, castRoles, newProject, pinSeed, quickLife, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
 
-const SEED = Number(process.env.RULES_SEED) || 20261107;
+// Seed 7 was chosen because its offers include a broadcaster, so the late-slot choice is played; the seed is the only fixture.
+const SEED = Number(process.env.RULES_SEED) || 7;
 // A control that never appears fails within seconds, naming it, instead of waiting out the whole journey.
 test.use({ actionTimeout: 20_000 });
 
