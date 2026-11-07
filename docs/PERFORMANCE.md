@@ -66,6 +66,31 @@ import failed. The budget is unchanged. What remains is React (218,747 bytes), t
 and shell. The next candidates, each needing the same wait-before-a-game treatment, are the 66 legacy places' climate
 (28.6 kB) and the award and festival rules (`awards.ts` and `rulebooks.ts`, the largest engine modules).
 
+## What A Browser Downloads, November 7, 2026
+
+Moving data out of the startup JavaScript didn't remove its download: the files are still fetched, only later and beside
+the start screen instead of before it. Measured on the production build that `SLATE_E2E_PROD=1` serves (`vite build`). Bytes
+are the files as built; gzipped is `gzip -9` of each file, an estimate of what a compressing server sends.
+
+| What | When | Bytes | Gzipped |
+| --- | --- | --- | --- |
+| Startup JavaScript (4 files: entry, React, runtime) | Before the start screen | 676,736 | 205 kB |
+| Stylesheet | Before the start screen | 60,606 | 12,270 |
+| Holiday rules (`countries.json`) | Fetched from startup, before a game opens | 662,994 | 62,518 |
+| Calendars (`calendars.json`) | Fetched from startup, before a game opens | 119,863 | 31,642 |
+| Genre catalog (`genre-catalog.json`) | Fetched from startup, before a game opens | 29,121 | 5,942 |
+| Equinoxes and solstices (`seasons.json`) | Fetched from startup, before a game opens | 14,282 | 6,400 |
+| Background data fetched from startup, total | | 826,260 | 106,502 |
+| Climate for the 66 legacy places (`climate.js`) | When first needed | 374,180 | 117,248 |
+| Project views (`Projects`, `FinishViews`) | When a project opens | 124,223 | 33,523 |
+| World map (`world-map.json`) | When a map is shown | 135,896 | 51,587 |
+| Regions (`regions.json`) | When places are searched | 158,117 | 35,989 |
+| Weather stations (`stations.json`) | When a catalog place's weather is needed | 3,292,995 | 1,151,024 |
+| Place shards (246 `.tsv` files, one per country) | One country at a time, when searched | 12,011,972 in all | 4,161,411 in all |
+
+So a player who opens a game downloads about 1.56 MB before it opens (about 330 kB gzipped). The budget (700 kB,
+220 kB gzipped) covers only the startup JavaScript, and that is unchanged.
+
 ## Startup JavaScript, earlier pass (montrealroots/Final-SLATE-Build#15, historical)
 
 | Measure | Before | After |
