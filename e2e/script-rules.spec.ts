@@ -6,6 +6,8 @@ import { expect, test, type Page } from './test';
 import { addScene, advance, castRoles, newProject, pinSeed, quickLife, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
 
 const SEED = Number(process.env.RULES_SEED) || 20261107;
+// A control that never appears fails within seconds, naming it, instead of waiting out the whole journey.
+test.use({ actionTimeout: 20_000 });
 
 async function addCharacters(page: Page, names: string[]): Promise<void> {
   await section(page, 'Characters');
