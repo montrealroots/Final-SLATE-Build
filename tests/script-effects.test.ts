@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
-  LOST_TURNING_POINT_COST, ageRating, approachBacker, approvedScenes, assessQuality, backerOptions, buildTasks, castPlacement,
+  BACKERS, LOST_TURNING_POINT_COST, NO_TREATMENT_DELAY_DAYS, ageRating, approachBacker, approvedScenes, assessQuality, backerOptions, buildTasks, castPlacement,
   competesAs, computeCredits, estimateDays, makeOffer, scriptIssues, subtitlingCost,
 } from '../src/engine';
 import type { GameState, Project } from '../src/engine/types';
@@ -140,5 +140,42 @@ describe('prose counts by presence and length, never by meaning', () => {
     expect(notes(p)).toContain('Describe what kind of being Golem is, so design and casting can start.');
     p.characters[0].entityNote = 'Clay, ten feet tall.';
     expect(notes(p)).not.toContain('Describe what kind of being Golem is, so design and casting can start.');
+  });
+
+  it('a treatment (conflict, point of view, ending) makes backers answer a week sooner', () => {
+    const ask = (blank: boolean) => {
+      const { s, p } = film('fx-treatment');
+      p.finance!.deals = [];
+      p.funding.fund = 0;
+      if (blank) p.story.ending = '';
+      return (approachBacker(s, p, 'investor').decideAt! - s.now) / (24 * 3600 * 1000);
+    };
+    expect(ask(false)).toBe(BACKERS.investor.decideDays);
+    expect(ask(true)).toBe(BACKERS.investor.decideDays + NO_TREATMENT_DELAY_DAYS);
+  });
+
+  it('a documentary grant asks for the central question', () => {
+    const { s, p } = film('fx-question');
+    p.axes.format = 'documentary-short'; // approved as written; the grant reads the format when asked
+    p.finance!.deals = [];
+    p.funding.fund = 0;
+    const grant = () => backerOptions(s, p).find((o) => o.kind === 'grant')!.needs;
+    expect(grant()).toBe('');
+    p.story.question = '';
+    expect(grant()).toBe('Write the central question in the Subject And Approach panel first: a grant application asks for it.');
+  });
+
+  it('without a music brief the score takes a day longer; without a design brief design takes a unit longer', () => {
+    const { p } = film('fx-briefs');
+    const units = (kind: string) => buildTasks(p).filter((t) => t.kind === kind).reduce((n, t) => n + t.units, 0);
+    const score = units('post:music');
+    const design = units('prep:design');
+    p.axes.tone = '';
+    p.story.intendedExperience = '';
+    p.axes.storySetting = '';
+    expect(units('post:music')).toBe(score + 1);
+    expect(units('prep:design')).toBe(design + 1);
+    p.axes.settingPlaceId = 'gb-edinburgh'; // a chosen place is a design brief too
+    expect(units('prep:design')).toBe(design);
   });
 });

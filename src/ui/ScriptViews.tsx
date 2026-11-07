@@ -84,7 +84,7 @@ export function ScriptTab({ p }: { p: Project }) {
       </div>
       <section className="card">
         <h2>{nonfiction ? 'Subject And Approach' : 'Story'}</h2>
-        <p className="dim">Your own words for the project. Backers, festival entries and distributors ask for the logline and premise (your pitch), and a grant application for the stakes and theme too. SLATE never reads them for meaning, and they don't change the script's quality.</p>
+        <p className="dim">Your own words for the project. SLATE never reads them for meaning, and they don't change the script's quality, but people ask for them. Backers, festival entries and distributors ask for the logline and premise (your pitch); a grant application asks for the stakes and theme too{nonfiction ? ', and the central question' : ''}. Backers answer a week sooner when the conflict, point of view and ending are written (a treatment). The composer works from the tone or the intended experience, and design from where the story is set: without them, that work takes longer.</p>
         <div className="grid grid-2 form">
           {nonfiction && <TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} />}
           <TextField label="Logline" multiline value={p.story.logline} maxLength={300} onChange={(v) => edit(p, () => (p.story.logline = v))} />
@@ -95,6 +95,8 @@ export function ScriptTab({ p }: { p: Project }) {
           <TextField label="Theme" value={p.story.theme} onChange={(v) => edit(p, () => (p.story.theme = v))} />
           <TextField label="Intended Ending" multiline value={p.story.ending} onChange={(v) => edit(p, () => (p.story.ending = v))} />
           <TextField label="Intended Experience" multiline value={p.story.intendedExperience} onChange={(v) => edit(p, () => (p.story.intendedExperience = v))} />
+          <TextField label="Tone" value={p.axes.tone} maxLength={80} onChange={(v) => edit(p, () => (p.axes.tone = v))} />
+          <TextField label="Story Setting" maxLength={120} value={p.axes.storySetting} onChange={(v) => edit(p, () => (p.axes.storySetting = v))} />
         </div>
       </section>
 

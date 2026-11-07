@@ -13,7 +13,10 @@ effects (`src/engine/script-effects.ts`, `tests/script-effects.test.ts`). Every 
 | --- | --- | --- |
 | Logline and premise | Creative description; presence gate | The pitch. Investors, co-producers, commissioners, festival entries and distribution offers need both written (`pitchMissing`); without them a release gets no offers. |
 | Stakes and theme | Creative description; presence gate | A grant application asks for them as well as the pitch (`grantApplicationMissing`). |
-| Conflict, viewpoint, ending, intended experience, question | Creative description | Kept with drafts. Not read for meaning; the Story panel says so. Nothing reads them. |
+| Stakes and theme (grant) and central question (nonfiction grant) | Creative description; presence gate | A documentary or unscripted grant application also asks for the central question. |
+| Conflict, point of view, ending | Creative description; presence | The treatment. Backers who take time to decide answer a week sooner when all three are written (`treatmentComplete`, `NO_TREATMENT_DELAY_DAYS`). |
+| Tone, intended experience | Creative description; presence | The composer's brief: without either, each score takes a day longer (`musicBrief`). Tone is editable in the Story panel as well as at creation. |
+| Story setting (words) | Creative description; presence | The design brief: without it (or a story setting place), production design and visual development take one unit longer (`designBrief`). Editable in the Story panel. |
 | Genre conventions and genre questions (`genreNotes`) | Readiness check; small quality influence | Each open question is a note. An answer counts if it isn't empty: up to +4. |
 | Story world or format rules | Readiness check (presence); creative description | A note, or for unscripted shows a blocking check, until at least one rule exists. SLATE can't tell whether a scene breaks a rule; the panel says so. |
 | Relationships | Readiness check (presence); creative description | A note until one exists. |

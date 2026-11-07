@@ -69,9 +69,14 @@ and casting lists matching performers first; a turning point the shoot never cap
 Prose is still never read for meaning: backers, festival entries and distribution need a logline and premise, a grant
 also stakes and theme; a missing casting breakdown makes an offer's answer a day later; dialogue longer than its scene,
 and a script far longer than its runtime, are notes; subtitling is priced by foreign-language dialogue words.
-Browser helpers write the pitch (`writePitch` in `e2e/helpers.ts`) before approving. Not built: editing the register
-or the setting place after creation. Startup JavaScript is 700 kB, exactly the budget: the next startup growth has
-to be lazy-loaded or the budget reconsidered. Tests: `tests/script-effects.test.ts`.
+The rest of the prose counts by presence too: the conflict, point of view and ending
+make a treatment (backers answer a week sooner), the tone or intended experience is the composer's brief and the story
+setting the design brief (each missing brief adds a unit of that work), and a nonfiction grant asks for the central
+question. Tone and story setting are now editable in the Story panel. Browser helpers write all of it
+(`writePitch` in `e2e/helpers.ts`) before approving. Not built: editing the register
+or the setting place after creation. Startup JavaScript went 194 bytes over the 700 kB budget; dropping `zoneMatches` (read by
+nothing in the game; the migration report in `docs/world/` keeps it) from `src/data/legacy-places.json` brought it to
+699 kB. The next startup growth has to be lazy-loaded or the budget reconsidered. Tests: `tests/script-effects.test.ts`.
 
 ### Earlier Request (November 7, 2026, last): every creation choice has an engine behind it
 

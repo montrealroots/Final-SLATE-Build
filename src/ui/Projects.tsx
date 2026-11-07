@@ -118,10 +118,10 @@ export function NewProject() {
         <h2>Story And Audience</h2>
         <div className="grid grid-2 form">
           <SelectField label="Intended Audience" value={audience} options={AUDIENCES.map((a) => ({ value: a, label: a }))} onChange={setAudience} />
-          <TextField label="Tone" value={tone} maxLength={80} hint="For example: dry and tense, warm and absurd. Your own words for the pitch." onChange={setTone} />
+          <TextField label="Tone" value={tone} maxLength={80} hint="For example: dry and tense, warm and absurd. The composer works from it; you can change it in the Story panel." onChange={setTone} />
           <SelectField label="Competes As" value={register} hint="Where awards that split drama from comedy consider it." options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]} onChange={setRegister} />
           <TextField label="Story Era" value={era} maxLength={60} hint="When the story takes place. Period settings add research and wardrobe work." onChange={setEra} />
-          <TextField label="Story Setting" value={setting} maxLength={120} hint="Where the story takes place. This is separate from where you shoot." onChange={setSetting} />
+          <TextField label="Story Setting" value={setting} maxLength={120} hint="Where the story takes place, separate from where you shoot. Design works from it." onChange={setSetting} />
         </div>
         <LanguagePicker value={langs} onChange={setLangs} />
         <details className="section-fold">

@@ -29,6 +29,7 @@ The game's visible words follow these rules. They come from the 1221 adaptation 
 | Navigation (one registry, `src/ui/routes.ts`) | Home; You: Player Profile; Your Day: World (Calendar is Home's, by Open Calendar); Your Work: Projects; Your Game: Saved Games, Settings |
 | Home heading | Good Morning / Afternoon / Evening, {first name}. |
 | Pitch needed (November 7, 2026) | Write a logline and a premise in the Story panel first: they read a pitch. (a grant: Write the stakes and the theme in the Story panel first: a grant application asks for them.) |
+| Story panel fields | Logline, Premise, Stakes, Central Conflict, Point Of View, Theme, Intended Ending, Intended Experience, Tone, Story Setting (Central Question for nonfiction) |
 | Character pronouns (script) | Open To Anyone, He/Him, She/Her, They/Them; casting marks a match with Pronouns Match |
 | New Script, competing | Competes As: By Its Genres, Drama, Comedy Or Musical; Where The Story Is Set (Optional) |
 | The bar | the time, date, zone, Running or Paused (Asleep while you sleep), Sleep, Advance; then Saved and Save & Exit |

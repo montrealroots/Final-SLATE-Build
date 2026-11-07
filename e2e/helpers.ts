@@ -193,6 +193,14 @@ export async function writePitch(page: Page): Promise<void> {
   await page.getByLabel('Premise', { exact: true }).fill('Two strangers keep the last service running until dawn.');
   await page.getByLabel('Stakes', { exact: true }).fill('If the service stops, the city strands its night workers.');
   await page.getByLabel('Theme', { exact: true }).fill('Care as work.');
+  // The treatment (backers answer a week sooner) and the briefs the composer and design work from.
+  await page.getByLabel('Central Conflict', { exact: true }).fill('The depot wants the line closed.');
+  await page.getByLabel('Point Of View', { exact: true }).fill('The driver.');
+  await page.getByLabel('Intended Ending', { exact: true }).fill('The first morning tram runs.');
+  await page.getByLabel('Intended Experience', { exact: true }).fill('Quiet, then hopeful.');
+  await page.getByLabel('Story Setting', { exact: true }).fill('A city at night.');
+  const question = page.getByLabel('Central Question', { exact: true });
+  if (await question.count()) await question.fill('Who keeps a city running at night?');
 }
 
 export async function saveAndApprove(page: Page): Promise<void> {

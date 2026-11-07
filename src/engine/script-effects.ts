@@ -73,13 +73,26 @@ export function pitchMissing(p: Project): string | null {
   return null;
 }
 
-/** A grant application asks for more than a pitch: the stakes and the theme, as a statement of intent. */
-export function grantApplicationMissing(p: Project): string | null {
+/** A grant application asks for more than a pitch: the stakes and the theme, and for nonfiction its central question. */
+export function grantApplicationMissing(p: Project, nonfiction = false): string | null {
   const pitch = pitchMissing(p);
   if (pitch) return pitch;
   if (!p.story.stakes.trim() || !p.story.theme.trim()) return 'Write the stakes and the theme in the Story panel first: a grant application asks for them.';
+  if (nonfiction && !p.story.question.trim()) return 'Write the central question in the Subject And Approach panel first: a grant application asks for it.';
   return null;
 }
+
+/** A treatment: the conflict, the point of view and the ending written. Backers who must read one without it answer later. */
+export function treatmentComplete(p: Project): boolean {
+  return !!(p.story.conflict.trim() && p.story.viewpoint.trim() && p.story.ending.trim());
+}
+export const NO_TREATMENT_DELAY_DAYS = 7;
+
+/** The composer's brief: the tone or the intended experience written. Without one the score takes a day longer. */
+export const musicBrief = (p: Project): boolean => !!(p.axes.tone.trim() || p.story.intendedExperience.trim());
+
+/** The design brief: where the story is set, in words or as a chosen place. Without one design work takes a unit longer. */
+export const designBrief = (p: Project): boolean => !!(p.axes.storySetting.trim() || p.axes.settingPlaceId);
 
 /** A character's casting breakdown is complete when the description, wants and fears are written. */
 export function breakdownComplete(c: Pick<StoryCharacter, 'description' | 'wants' | 'fears'>): boolean {

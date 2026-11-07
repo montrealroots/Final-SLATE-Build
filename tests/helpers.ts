@@ -78,7 +78,9 @@ export function buildProject(
  * which backers, festival entries and distributors ask for (script-effects.ts). Never read for meaning.
  */
 export function writePitch(p: Project): void {
-  Object.assign(p.story, { logline: 'A test logline.', premise: 'A test premise.', stakes: 'Test stakes.', theme: 'A test theme.' });
+  Object.assign(p.story, { logline: 'A test logline.', premise: 'A test premise.', stakes: 'Test stakes.', theme: 'A test theme.', question: 'A test question.',
+    conflict: 'A test conflict.', viewpoint: 'Hers.', ending: 'A test ending.', intendedExperience: 'A test experience.' });
+  p.axes.storySetting ||= 'A test setting.';
 }
 
 export function approve(state: GameState, p: Project): void {
