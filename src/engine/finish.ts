@@ -274,10 +274,11 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   const addressed = p.notes.filter((n) => n.status === 'addressed' && n.source === 'readiness' && !n.advisory && !open.has(n.text)).length;
   const writerHelp = p.hires.filter((h) => ['co-writer', 'script-editor'].includes(h.roleId) && h.status !== 'declined').map((h) => personById(state, h.personId).capability);
   // Text earns nothing: until the review of November 7, 2026 a filled objective was worth up to 6 and answered genre
-  // questions up to 4, which writing anything satisfied. The base went from 40 to 48 so a typical script scores about as
-  // before; what moves it is structure the engine can follow (setups planted and paid off in named scenes, both in the
-  // cut), readiness notes resolved by revision, skilled writing help, and open structural notes.
-  const script = clamp(48 + setups * 10 + Math.min(10, addressed * 2) - Math.min(20, notes * 1.5) + (writerHelp.length ? (avg(writerHelp) - 50) / 3 : 0));
+  // questions up to 4, which writing anything satisfied, and every empty-field prompt cost 1.5. The base went from 40 to
+  // 42, set so the balance suite's mean quality per family stays where it was (docs/balance-results.json); what moves
+  // the score is structure the engine can follow (setups planted and paid off in named scenes, both in the cut),
+  // readiness notes resolved by revision, skilled writing help, and open structural notes.
+  const script = clamp(42 + setups * 10 + Math.min(10, addressed * 2) - Math.min(20, notes * 1.5) + (writerHelp.length ? (avg(writerHelp) - 50) / 3 : 0));
   const caps = p.captures.filter((c) => scenes.some((s) => s.id === c.sceneId));
   const captureQ = avg(caps.map((c) => c.quality), 60);
   const lostDays = p.schedule.days.filter((d) => d.status === 'lost').length;
