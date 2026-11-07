@@ -122,7 +122,8 @@ export function ScriptTab({ p }: { p: Project }) {
 
       {p.axes.format === 'unscripted-series' && <ShowFormat p={p} />}
       {(mods.has('world-rules') || p.axes.format === 'unscripted-series') && <WorldRules p={p} title={p.axes.format === 'unscripted-series' ? 'Format Rules' : 'Story World Rules'} />}
-      {(mods.has('clues') || mods.has('setups') || mods.has('threat') || p.setups.length > 0) && <Setups p={p} />}
+      {/* Every scripted story can declare its setups and payoffs: the edit plan reads them (finish.ts cutConsequences). */}
+      {(!nonfiction || mods.has('clues') || mods.has('setups') || mods.has('threat') || p.setups.length > 0) && <Setups p={p} />}
       {(mods.has('relationships') || p.relationships.length > 0) && <Relationships p={p} />}
       {(nonfiction || mods.has('factual')) && <Facts p={p} />}
 
