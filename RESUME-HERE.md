@@ -56,7 +56,24 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 7, 2026, last): every creation choice has an engine behind it
+### Newest Request (November 7, 2026, final): every script field has an effect
+
+"Build all of them, and give the prose fields effects too." The audit had found script fields nothing read. Each now
+drives something (`src/engine/script-effects.ts`; `docs/SCREENWRITING-AUDIT.md` has the full table):
+story functions place a part in the leading acting categories, and a narrator records narration before the mix;
+regulars are booked for and credited in every episode, and a guest written into two episodes gets a note (new
+characters default to recurring); a new "Competes As" choice (or the genres) decides comedy or drama at awards;
+the intended audience and the scenes set an age rating (18+ gets no TV offers; a family project can't approve an
+intimate scene); a story setting place chosen at creation adds a scouting trip there; character pronouns are a choice,
+and casting lists matching performers first; a turning point the shoot never captured costs the edit 6.
+Prose is still never read for meaning: backers, festival entries and distribution need a logline and premise, a grant
+also stakes and theme; a missing casting breakdown makes an offer's answer a day later; dialogue longer than its scene,
+and a script far longer than its runtime, are notes; subtitling is priced by foreign-language dialogue words.
+Browser helpers write the pitch (`writePitch` in `e2e/helpers.ts`) before approving. Not built: editing the register
+or the setting place after creation. Startup JavaScript is 700 kB, exactly the budget: the next startup growth has
+to be lazy-loaded or the budget reconsidered. Tests: `tests/script-effects.test.ts`.
+
+### Earlier Request (November 7, 2026, last): every creation choice has an engine behind it
 
 Backgrounds were the one creation choice nothing read. Asked, the user chose effects for them, "all that fits": holidays
 you keep (`src/engine/observances.ts`: 27 observances dated from existing holiday rules, suggested by backgrounds,
