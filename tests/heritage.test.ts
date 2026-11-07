@@ -32,6 +32,8 @@ describe('backgrounds suggest holidays you keep, dated by the holiday rules', ()
   it('every background named in the tables is a real background, and every suggested language a real language', () => {
     for (const o of OBSERVANCES) for (const h of o.heritages) expect(HERITAGES, `${o.id}: ${h}`).toContain(h);
     const codes = new Set(LANGUAGES.map((l) => l.code));
+    // Every background suggests a language, except Assyrian (Neo-Aramaic isn't among the game's languages).
+    expect(HERITAGES.filter((h) => !HERITAGE_LANGUAGES[h])).toEqual(['Assyrian']);
     for (const [h, langs] of Object.entries(HERITAGE_LANGUAGES)) {
       expect(HERITAGES, h).toContain(h);
       for (const l of langs) expect(codes.has(l), `${h}: ${l}`).toBe(true);
