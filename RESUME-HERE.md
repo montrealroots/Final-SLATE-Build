@@ -66,6 +66,11 @@ changed. `src/ui/app.css` is 1221's stylesheet whole, plus a short section for F
 tab bars, dialogs, the start screen and creation follow 1221's markup. Browser-test helpers follow it too: `nav()`
 uses the rail's buttons and reaches the calendar through Home's Open Calendar; `pressSaveAndExit()` opens the drawer
 where needed; Home's heading is the greeting. Startup JavaScript is 697 kB of the 700 kB budget.
+Two 1221 stylesheet faults were fixed here rather than copied: its drawer opened at a fixed 56px, over the second row
+of a phone's bar, and its drawer shade was hidden by a later rule. Local results on the final code: `npm run check`
+219 tests, 0 problems; dev-server suite 106 passed, 23 skipped by project design, 0 failed; production-build suite
+106 passed, 23 skipped, 0 failed (run just before the drawer fix). Not checked: real phones, a person's judgment of
+the look against 1221 beyond the side-by-side captures.
 
 ### Latest Request (November 6, 2026, night): done
 
