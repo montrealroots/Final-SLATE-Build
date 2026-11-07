@@ -118,15 +118,15 @@ export function NewProject() {
         <h2>Story And Audience</h2>
         <div className="grid grid-2 form">
           <SelectField label="Intended Audience" value={audience} options={AUDIENCES.map((a) => ({ value: a, label: a }))} onChange={setAudience} />
-          <TextField label="Tone" value={tone} maxLength={80} hint="For example: dry and tense, warm and absurd. The composer works from it; you can change it in the Story panel." onChange={setTone} />
-          <SelectField label="Competes As" value={register} hint="Where awards that split drama from comedy consider it." options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]} onChange={setRegister} />
+          <TextField label="Tone" value={tone} maxLength={80} hint="For example: dry and tense, warm and absurd. Your own words, kept with the script; you can change it in the Story panel." onChange={setTone} />
+          <SelectField label="Competes As" value={register} hint="Where awards that split drama from comedy enter it. You can change it in the Story panel." options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]} onChange={setRegister} />
           <TextField label="Story Era" value={era} maxLength={60} hint="When the story takes place. Period settings add research and wardrobe work." onChange={setEra} />
-          <TextField label="Story Setting" value={setting} maxLength={120} hint="Where the story takes place, separate from where you shoot. Design works from it." onChange={setSetting} />
+          <TextField label="Story Setting" value={setting} maxLength={120} hint="Where the story takes place, in your words, separate from where you shoot." onChange={setSetting} />
         </div>
         <LanguagePicker value={langs} onChange={setLangs} />
         <details className="section-fold">
           <summary>Where The Story Is Set (Optional)</summary>
-          <p className="dim">If it's set somewhere other than your production base, the location manager scouts there before the shoot (two days, four abroad).</p>
+          <p className="dim">A reference for you and your designers, kept with the project. You shoot at your production base; choosing a setting doesn't add travel or work.</p>
           <PlacePicker label="Story Setting Place" value={settingPlace} onChange={setSettingPlace} />
         </details>
       </section>

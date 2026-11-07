@@ -1,21 +1,20 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
 import { approvedTake, captureCredit } from './mocap';
-import { LOST_TURNING_POINT_COST, SUBTITLE_PER_THOUSAND_WORDS, ageRating, dialogueWords, isTurningPoint, pitchMissing } from './script-effects';
+import { BROADCAST_EDIT_COST, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
 import { financeCredits, onProjectDelivered, receiveIncome } from './finance';
 import { getPlace } from '../data/places';
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
-import { AUTHENTIC_CASTING_BONUS, countryLanguage, personById, roleLabel, sharedHeritages } from './people';
+import { countryLanguage, personById, roleLabel } from './people';
 import {
   approvalRights, approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, scriptIssues, sceneLabel, sceneTechnique,
 } from './projects';
-import { composeGenres } from './genres';
 import { ensureWorkEvent, schedulePickups } from './production';
 import { gaussian, pick, stream } from './rng';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
 import { redactionComplete } from './unscripted';
 import { DAY, addDaysToKey, dateKey, formatDateKey, isDateKey, localToInstant, parseYmd } from './time';
-import type { Credit, DistributionOffer, GameState, Project, ReleaseRecord, Task } from './types';
+import type { Credit, DistributionOffer, GameState, Project, ReleaseRecord, Scene, Task } from './types';
 
 // ---------------- Editing ----------------
 
@@ -40,14 +39,56 @@ export function startCutPass(state: GameState, p: Project): Task {
   return task;
 }
 
-export function coverageGaps(p: Project): { sceneId: string; label: string; reason: string }[] {
-  const out: { sceneId: string; label: string; reason: string }[] = [];
-  for (const s of approvedScenes(p)) {
+/** Scenes the producer cut from the edit (the revised edit plan). */
+export function cutScenes(p: Project): Set<string> {
+  return new Set(p.edit.cutSceneIds ?? []);
+}
+
+/** The approved scenes still in the edit. */
+export function editScenes(p: Project): Scene[] {
+  const cut = cutScenes(p);
+  return approvedScenes(p).filter((s) => !cut.has(s.id));
+}
+
+/**
+ * Cut a scene from the edit instead of shooting it or picking it up: the revised edit plan. It leaves any shoot day it was
+ * scheduled on (an emptied day is cancelled), stops blocking assembly and picture lock, and its consequences
+ * (script-explain.ts cutConsequences) apply. The script is unchanged; Restore puts it back.
+ */
+export function cutFromEdit(state: GameState, p: Project, sceneId: string): void {
+  if (p.edit.pictureLocked) throw new Error('The picture is locked. Unlock it to change the edit plan.');
+  if (p.delivered) throw new Error('This project is delivered.');
+  const s = approvedScenes(p).find((x) => x.id === sceneId);
+  if (!s) throw new Error('That scene isn\'t in the approved script.');
+  p.edit.cutSceneIds = [...cutScenes(p), sceneId];
+  p.edit.pickupsNeeded = p.edit.pickupsNeeded.filter((x) => x !== sceneId);
+  for (const d of p.schedule.days.filter((x) => x.status === 'scheduled' && x.sceneIds.includes(sceneId))) {
+    d.sceneIds = d.sceneIds.filter((x) => x !== sceneId);
+    if (!d.sceneIds.length) { d.status = 'cancelled'; d.result = 'Cancelled: its scenes were cut from the edit.'; }
+  }
+  ensureWorkEvent(state, p);
+  addLog(state, `You cut ${sceneLabel(p, s)} from the edit of ${p.title}.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'edit' } });
+  p.history.push({ at: state.now, text: `${sceneLabel(p, s)} cut from the edit.` });
+}
+
+/** Put a cut scene back in the edit plan. Without enough material it shows as a coverage gap again, to shoot or pick up. */
+export function restoreToEdit(state: GameState, p: Project, sceneId: string): void {
+  if (p.edit.pictureLocked) throw new Error('The picture is locked. Unlock it to change the edit plan.');
+  if (!cutScenes(p).has(sceneId)) throw new Error('That scene isn\'t cut.');
+  p.edit.cutSceneIds = (p.edit.cutSceneIds ?? []).filter((x) => x !== sceneId);
+  const s = p.scenes.find((x) => x.id === sceneId);
+  addLog(state, `You restored ${s ? sceneLabel(p, s) : 'a scene'} to the edit of ${p.title}.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'edit' } });
+}
+
+export function coverageGaps(p: Project): { sceneId: string; label: string; reason: string; scheduled?: string }[] {
+  const out: { sceneId: string; label: string; reason: string; scheduled?: string }[] = [];
+  for (const s of editScenes(p)) {
     const c = p.captures.find((x) => x.sceneId === s.id);
     const tech = sceneTechnique(p, s);
     if (tech !== 'live' && !c) continue; // animated scenes are tracked through their tasks
     if (s.kind === 'archival' || s.kind === 'narration') continue;
-    if (!c || c.captured < 0.8) out.push({ sceneId: s.id, label: sceneLabel(p, s), reason: 'Not enough material was captured.' });
+    const day = p.schedule.days.filter((d) => d.status === 'scheduled' && d.sceneIds.includes(s.id)).map((d) => d.date).sort()[0];
+    if (!c || c.captured < 0.8) out.push({ sceneId: s.id, label: sceneLabel(p, s), reason: day ? `Not shot yet: scheduled for ${formatDateKey(day)}.` : 'Not enough material was captured.', ...(day ? { scheduled: day } : {}) });
     else if (c.version !== p.approvedDraft) out.push({ sceneId: s.id, label: sceneLabel(p, s), reason: 'It was shot from an older draft.' });
     else if (c.weatherCompromised) out.push({ sceneId: s.id, label: sceneLabel(p, s), reason: 'It was shot in bad weather.' });
   }
@@ -57,7 +98,7 @@ export function coverageGaps(p: Project): { sceneId: string; label: string; reas
 export function requestPickups(state: GameState, p: Project, sceneIds: string[]): number {
   if (p.edit.pictureLocked) throw new Error('The picture is locked. Unlock it to add pickups.');
   const live = sceneIds.filter((id) => {
-    const s = approvedScenes(p).find((x) => x.id === id);
+    const s = editScenes(p).find((x) => x.id === id);
     return s && sceneTechnique(p, s) === 'live';
   });
   if (!live.length) throw new Error('Choose live-action scenes to reshoot.');
@@ -81,8 +122,8 @@ export function lockBlockers(p: Project): string[] {
   }
   if (p.tasks.some((t) => t.kind === 'post:cutpass' && t.status !== 'done')) out.push('Wait for the current cut pass to finish.');
   if (p.schedule.days.some((d) => d.status === 'scheduled')) out.push('Some shoot days are still scheduled.');
-  const gaps = coverageGaps(p).filter((g) => g.reason === 'Not enough material was captured.');
-  if (gaps.length) out.push(`${gaps[0].label} is missing coverage.`);
+  const gaps = coverageGaps(p).filter((g) => !g.scheduled && g.reason === 'Not enough material was captured.');
+  if (gaps.length) out.push(`${gaps[0].label} is missing coverage. Schedule a pickup, or cut it from the edit.`);
   return out;
 }
 
@@ -131,7 +172,7 @@ export function deliveryBlockers(p: Project): string[] {
 export function deliver(state: GameState, p: Project): void {
   const b = deliveryBlockers(p);
   if (b.length) throw new Error(b[0]);
-  const runtime = Math.round(approvedScenes(p).reduce((a, s) => a + s.estMinutes, 0));
+  const runtime = Math.round(editScenes(p).reduce((a, s) => a + s.estMinutes, 0));
   p.delivered = { at: state.now, runtimeMin: runtime };
   onProjectDelivered(state, p);
   p.phase = 'delivered';
@@ -218,23 +259,25 @@ const clamp = (x: number) => Math.round(Math.max(0, Math.min(100, x)));
  * outcomes, edit passes). They are not a claim that software can measure artistic merit.
  */
 export function assessQuality(state: GameState, p: Project): Record<string, number> {
-  const scenes = approvedScenes(p);
-  const issues = scriptIssues({ ...p, scenes, characters: approvedCharacters(p) } as Project);
-  const notes = issues.filter((i) => i.severity === 'note').length;
-  const objectives = scenes.filter((s) => s.kind !== 'scripted' || s.objective.trim()).length / Math.max(1, scenes.length);
-  const setups = p.setups.length ? p.setups.filter((x) => x.plantedIn && x.paidIn).length / p.setups.length : 0.6;
-  const { questions } = composeGenres(p.axes.genres.map((g) => g.id));
-  const answered = questions.length ? questions.filter((q) => (p.genreNotes[q.key] ?? '').trim()).length / questions.length : 0.7;
+  const approved = approvedScenes(p);
+  const scenes = editScenes(p); // what is in the cut
+  const issues = scriptIssues({ ...p, scenes: approved, characters: approvedCharacters(p) } as Project);
+  // Advisory prompts only check that a text field is filled (or suggest a fit), so they neither cost nor earn anything.
+  const notes = issues.filter((i) => i.severity === 'note' && !i.advisory).length;
+  // A setup counts when the scenes that plant and pay it off are both in the cut.
+  const inCut = new Set(scenes.map((s) => s.id));
+  const setups = p.setups.length ? p.setups.filter((x) => x.plantedIn && x.paidIn && inCut.has(x.plantedIn) && inCut.has(x.paidIn)).length / p.setups.length : 0.6;
   // Only notes the readiness checks raised count, once a revision pass has addressed them. Notes you write yourself are
   // for your own process, and a pass with nothing to address adds nothing: repeating passes can't manufacture quality.
-  // ...and only when the check it came from is gone from the script's readiness checks.
+  // ...and only when the check it came from is gone from the script's readiness checks, and wasn't advice.
   const open = new Set(issues.map((i) => i.text));
-  const addressed = p.notes.filter((n) => n.status === 'addressed' && n.source === 'readiness' && !open.has(n.text)).length;
+  const addressed = p.notes.filter((n) => n.status === 'addressed' && n.source === 'readiness' && !n.advisory && !open.has(n.text)).length;
   const writerHelp = p.hires.filter((h) => ['co-writer', 'script-editor'].includes(h.roleId) && h.status !== 'declined').map((h) => personById(state, h.personId).capability);
-  // Free text is checked for presence only (objectives, answers to genre questions), so it weighs little; structure the
-  // engine can follow (setups planted and paid off in named scenes), addressed readiness notes and skilled writing help
-  // weigh more. Filling every field on your own tops out around 70 of 100.
-  const script = clamp(40 + objectives * 6 + setups * 10 + answered * 4 + Math.min(10, addressed * 2) - Math.min(20, notes * 1.5) + (writerHelp.length ? (avg(writerHelp) - 50) / 3 : 0));
+  // Text earns nothing: until the review of November 7, 2026 a filled objective was worth up to 6 and answered genre
+  // questions up to 4, which writing anything satisfied. The base went from 40 to 48 so a typical script scores about as
+  // before; what moves it is structure the engine can follow (setups planted and paid off in named scenes, both in the
+  // cut), readiness notes resolved by revision, skilled writing help, and open structural notes.
+  const script = clamp(48 + setups * 10 + Math.min(10, addressed * 2) - Math.min(20, notes * 1.5) + (writerHelp.length ? (avg(writerHelp) - 50) / 3 : 0));
   const caps = p.captures.filter((c) => scenes.some((s) => s.id === c.sceneId));
   const captureQ = avg(caps.map((c) => c.quality), 60);
   const lostDays = p.schedule.days.filter((d) => d.status === 'lost').length;
@@ -249,20 +292,20 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   const craftRoles = ['dop', 'production-designer', 'costume-designer', 'sound-designer', 'editor', 'composer', 'colorist', 'visdev-artist'];
   const craftCaps = craftRoles.map(crewCap).filter((x): x is number => x !== null);
   const craft = clamp(avg([...craftCaps, ...anim], 50) * 0.85 + 8);
-  // A turning point the shoot never captured leaves a hole the edit can't cover (script-effects.ts).
-  const lostBeats = scenes.filter((s) => isTurningPoint(s) && sceneTechnique(p, s) === 'live' && !p.captures.some((c) => c.sceneId === s.id)).length;
-  const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10 - lostBeats * LOST_TURNING_POINT_COST), music: clamp((crewCap('composer') ?? 45) * 0.9 + 5) };
+  // A scene the producer declared essential and then cut from the edit leaves a gap (cutConsequences). The turning-point
+  // text did this until the review of November 7, 2026; picture lock already required coverage, so it never applied.
+  const gapsLeft = approved.filter((s) => s.essential && !inCut.has(s.id)).length;
+  const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10 - gapsLeft * ESSENTIAL_CUT_COST), music: clamp((crewCap('composer') ?? 45) * 0.9 + 5) };
   if (anim.length) out.animation = clamp(avg(anim) * 0.9 + 6);
   for (const a of p.cast) {
     const sc = scenes.filter((s) => s.participants.includes(a.characterId)).map((s) => p.captures.find((c) => c.sceneId === s.id)?.quality ?? 60);
     const base = a.performer === 'player' ? 58 + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability;
-    // Authentic casting: a performer who shares a background the character is written with brings lived experience to it.
-    // Never a penalty: a character written without backgrounds, or played by someone who doesn't share them, scores as before.
-    const lived = sharedHeritages(state, p, a.characterId, a.performer).length ? AUTHENTIC_CASTING_BONUS : 0;
-    out[`performance:${a.characterId}:${a.performer}`] = clamp(base * 0.6 + avg(sc, 60) * 0.4 + lived);
+    // A shared background never scores a performance: ability isn't inferred from ethnicity. It added 6 until the review
+    // of November 7, 2026; casting still shows who shares one, as information.
+    out[`performance:${a.characterId}:${a.performer}`] = clamp(base * 0.6 + avg(sc, 60) * 0.4);
   }
   const perf = avg(Object.entries(out).filter(([k]) => k.startsWith('performance:')).map(([, v]) => v), 55);
-  // Rounded to the nearest whole value; never derived from genre labels or budget size, and identity only ever adds (authentic casting).
+  // Rounded to the nearest whole value; never derived from genre labels, budget size or identity.
   out.overall = clamp(script * 0.3 + direction * 0.25 + craft * 0.2 + perf * 0.25);
   const r = stream(state.seed, 'reception', p.id);
   out.reception = clamp(out.overall + gaussian(r, 0, 8)); // audiences and critics vary
@@ -341,25 +384,24 @@ registerHandler('distribution-offer', (state, ev) => {
   const r = stream(state.seed, 'distribution', p.id, wave);
   const exposure = (ev.payload.exposure as number | undefined) ?? 0;
   const appeal = p.quality.reception + exposure;
-  // Distributors market from the logline and synopsis: without them, no one makes an offer.
-  const pitch = pitchMissing(p);
-  if (pitch) {
-    const text = `No distributor could market ${p.title} without a logline and a premise. ${pitch.replace(': they read a pitch', '').replace(': it is the synopsis they read', '')} Offers can follow your next festival screening.`;
-    addLog(state, text, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'script' } });
-    return { message: text };
-  }
-  const rating = ageRating(p, approvedScenes(p));
+  // Offers come from the film itself. Until the review of November 7, 2026 a missing pitch stopped every offer and 18+ work
+  // got no broadcast offers; the pitch is now a deliverable checked on acceptance, and declared content sets a broadcast's
+  // slot (offerTerms). Neither draws from the random stream, so offers for the same film are the same as before.
+  const slot = broadcastSlotFor(p);
   const count = appeal >= 80 ? 3 : appeal >= 65 ? 2 : appeal >= 50 ? 1 : 0;
   const runtimeFactor = Math.min(1, (p.delivered.runtimeMin) / 90);
   const made: DistributionOffer[] = [];
   for (let i = 0; i < count; i++) {
-    // Broadcasters in this model don't carry 18+ work: those offers go to the other routes.
-    const route = pick(r, rating === '18+' ? ['streaming', 'theatrical', 'digital', 'digital'] as const : ['streaming', 'theatrical', 'digital', 'broadcast'] as const);
+    const route = pick(r, ['streaming', 'theatrical', 'digital', 'broadcast'] as const);
     const mg = Math.round(((appeal - 40) * 6000 * runtimeFactor * (0.6 + r() * 0.8) * (route === 'theatrical' ? 1.4 : 1)) / 1000) * 1000;
     if (mg <= 0) continue;
+    // Content declared strong can't air before the watershed: the broadcaster offers a late slot, which pays less, or the
+    // full guarantee for an earlier slot if you deliver a broadcast edit (script-effects.ts).
+    const late = route === 'broadcast' && slot === 'late';
     const offer: DistributionOffer = {
-      id: newId(state, 'do'), distributor: pick(r, DISTRIBUTORS), route, minimumGuarantee: mg, territories: [getPlace(p.axes.basePlaceId).country],
+      id: newId(state, 'do'), distributor: pick(r, DISTRIBUTORS), route, minimumGuarantee: late ? Math.round((mg * LATE_SLOT_SHARE) / 1000) * 1000 : mg, territories: [getPlace(p.axes.basePlaceId).country],
       releaseWindowDays: 60 + Math.floor(r() * 90), expiresAt: state.now + 21 * DAY, status: 'open',
+      ...(route === 'broadcast' ? { slot: late ? 'late' as const : 'any' as const } : {}), ...(late ? { editedGuarantee: mg } : {}),
     };
     p.offers.push(offer);
     made.push(offer);
@@ -371,16 +413,37 @@ registerHandler('distribution-offer', (state, ev) => {
   return { message: text };
 });
 
-export function acceptDistribution(state: GameState, p: Project, offerId: string): ReleaseRecord {
+/**
+ * What a distribution contract needs from you before you can sign it, or null. The delivery list includes a logline and
+ * synopsis for marketing (a Pitch), and a streaming service's includes content advisories, so your content declaration.
+ */
+export function offerNeeds(p: Project, o: DistributionOffer): string | null {
+  const pitch = documentsNeeded(p, ['pitch'], isNonfiction(p.axes.format), "The contract's delivery list");
+  if (pitch) return pitch;
+  if (o.route === 'streaming' && contentLevel(p) === null) return "A streaming service's delivery list includes content advisories. Declare the content on the Script page first.";
+  return null;
+}
+
+/** The delivery materials an offer requires, in money: the route's list, subtitles and, if chosen, a broadcast edit. */
+export function offerMaterials(p: Project, o: DistributionOffer, broadcastEdit = false): number {
+  return DELIVERY_MATERIALS[o.route] + subtitlingCost(p, o.territories) + (broadcastEdit ? BROADCAST_EDIT_COST : 0);
+}
+
+export function acceptDistribution(state: GameState, p: Project, offerId: string, opts: { broadcastEdit?: boolean } = {}): ReleaseRecord {
   const o = p.offers.find((x) => x.id === offerId);
   if (!o || o.status !== 'open') throw new Error('That offer is no longer open.');
   if (o.expiresAt < state.now) {
     o.status = 'expired';
     throw new Error('That offer has expired.');
   }
+  const needs = offerNeeds(p, o);
+  if (needs) throw new Error(needs);
+  const edit = !!opts.broadcastEdit;
+  if (edit && o.slot !== 'late') throw new Error('This broadcaster can already air it in any slot; no broadcast edit is needed.');
   // The contract obliges you to supply delivery materials; their cost is reserved now and paid on release.
-  const materials = reserve(state, p, `Delivery Materials For ${o.distributor}`, 'post', DELIVERY_MATERIALS[o.route] + subtitlingCost(p, o.territories), `release-offer:${o.id}`);
+  const materials = reserve(state, p, `Delivery Materials For ${o.distributor}`, 'post', offerMaterials(p, o, edit), `release-offer:${o.id}`);
   o.status = 'accepted';
+  if (edit) { o.broadcastEdit = true; o.minimumGuarantee = o.editedGuarantee ?? o.minimumGuarantee; }
   for (const other of p.offers.filter((x) => x.status === 'open' && x.route === o.route)) other.status = 'declined';
   p.revenue += receiveIncome(state, p, o.minimumGuarantee, o.distributor); // backers are repaid first
   const zone = getPlace(p.axes.basePlaceId).zone;
@@ -392,15 +455,17 @@ export function acceptDistribution(state: GameState, p: Project, offerId: string
   return rec;
 }
 
-/** Subtitles for every territory whose language isn't the dialogue's, priced by the dialogue's words (script-effects.ts). */
+/**
+ * Subtitles for each territory language the dialogue isn't in, priced by the finished runtime and the languages the
+ * project declares it is spoken in. Until the review of November 7, 2026 it was priced by the words written in the
+ * script, so leaving dialogue unwritten made it cheaper.
+ */
 export function subtitlingCost(p: Project, territories: string[]): number {
-  const words = dialogueWords(approvedScenes(p));
-  let cost = 0;
-  for (const t of new Set(territories.map(countryLanguage))) {
-    const foreign = Object.entries(words).filter(([lang]) => lang !== t).reduce((n, [, w]) => n + w, 0);
-    cost += Math.ceil(foreign / 1000) * SUBTITLE_PER_THOUSAND_WORDS;
-  }
-  return cost;
+  const spoken = new Set(p.axes.dialogueLanguages);
+  if (!spoken.size) return 0; // no dialogue to subtitle
+  const minutes = p.delivered?.runtimeMin ?? Math.round(editScenes(p).reduce((a, s) => a + s.estMinutes, 0));
+  const needed = [...new Set(territories.map(countryLanguage))].filter((l) => !spoken.has(l));
+  return needed.length * Math.ceil(minutes) * SUBTITLE_PER_MINUTE;
 }
 
 /** Delivery materials a distributor's contract requires (captions, music and effects track, artwork), by route. Simulation assumption. */

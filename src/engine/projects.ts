@@ -1,5 +1,4 @@
 import { financeRights } from './finance';
-import { scriptPages, spokenMinutes } from './script-effects';
 import { composeGenres, genreName, type ModuleId } from './genres';
 import { findPlace } from '../data/places';
 import { addLog, adoptPlace, newId, registerHandler, schedule } from './state';
@@ -340,6 +339,12 @@ export interface Issue {
   text: string;
   sceneId?: string;
   module?: ModuleId;
+  /**
+   * Advice, not a fault: a prompt that only checks a text field is filled, or a suggestion about fit. Shown to help the
+   * writer, but it never counts against the script's assessment or with backers, and resolving it earns nothing:
+   * meaningless text could satisfy it (review, November 7, 2026).
+   */
+  advisory?: true;
 }
 
 /** Inspectable structural facts about the script. Blocking issues prevent approval. */
@@ -366,7 +371,7 @@ export function scriptIssues(p: Project): Issue[] {
       out.push({ severity: 'blocking', area: 'structure', text: `${label} has no characters and no action.`, sceneId: s.id });
     }
     if (s.kind === 'interview' && !s.contributorIds.length) out.push({ severity: 'blocking', area: 'structure', text: `${label} is an interview with no contributor.`, sceneId: s.id });
-    if (!s.objective.trim() && s.kind === 'scripted') out.push({ severity: 'note', area: 'causality', text: `${label} has no stated objective.`, sceneId: s.id });
+    if (!s.objective.trim() && s.kind === 'scripted') out.push({ severity: 'note', area: 'causality', text: `${label} has no stated objective.`, sceneId: s.id, advisory: true });
     for (const d of s.dialogue) {
       if (!s.participants.includes(d.characterId) && !s.intentionalDiscontinuity) {
         out.push({ severity: 'blocking', area: 'continuity', text: `${label} has dialogue for a character who isn't in the scene.`, sceneId: s.id });
@@ -377,17 +382,14 @@ export function scriptIssues(p: Project): Issue[] {
       out.push({ severity: 'note', area: 'continuity', text: `${label} presents sourced material without a linked fact.`, sceneId: s.id });
     }
     if (mods.has('presentation') && p.axes.genres.some((g) => g.id === 'found-footage') && !s.operator?.trim()) {
-      out.push({ severity: 'note', area: 'visual', text: `${label} needs an in-story camera operator.`, sceneId: s.id, module: 'presentation' });
+      out.push({ severity: 'note', area: 'visual', text: `${label} needs an in-story camera operator.`, sceneId: s.id, module: 'presentation', advisory: true });
     }
-    if (mods.has('tonal') && !s.tone?.trim()) out.push({ severity: 'note', area: 'pacing', text: `${label} has no tonal intention.`, sceneId: s.id, module: 'tonal' });
-    // The intended audience is a rating promise for every project, not only those whose genre asks (ageRating).
-    if (s.intimacy && /child|famil|preschool/i.test(p.axes.audience)) {
-      out.push({ severity: 'blocking', area: 'structure', text: `${label} includes an intimate scene, which doesn't fit a ${p.axes.audience.toLowerCase()} audience.`, sceneId: s.id, module: mods.has('audience') ? 'audience' : undefined });
-    }
-    // Dialogue counted by length, never meaning: about 150 spoken words a minute.
-    const spoken = spokenMinutes(s);
-    if (spoken > s.estMinutes * 1.25 + 0.25) {
-      out.push({ severity: 'note', area: 'pacing', text: `${label} has about ${Math.ceil(spoken)} minutes of dialogue in a scene estimated at ${s.estMinutes}. Lengthen the estimate or trim the lines.`, sceneId: s.id });
+    if (mods.has('tonal') && !s.tone?.trim()) out.push({ severity: 'note', area: 'pacing', text: `${label} has no tonal intention.`, sceneId: s.id, module: 'tonal', advisory: true });
+    // An intimate scene in a project aimed at children or families is the genre's own convention check (the audience
+    // module); for other projects the audience and the declared content are advice (audienceContentNote), never a block.
+    // Until the review of November 7, 2026 every project's intimate scene blocked approval under a family audience.
+    if (mods.has('audience') && s.intimacy && /child|famil|preschool/i.test(p.axes.audience)) {
+      out.push({ severity: 'note', area: 'structure', text: `${label} is marked as an intimate scene in a project aimed at a ${p.axes.audience.toLowerCase()} audience. Check it suits them.`, sceneId: s.id, module: 'audience', advisory: true });
     }
   }
   const total = p.scenes.reduce((a, s) => a + s.estMinutes, 0);
@@ -415,8 +417,8 @@ export function scriptIssues(p: Project): Issue[] {
   needLedger('clues', ['clue'], 'Add the clues your audience can follow.');
   needLedger('setups', ['setup', 'gag', 'foreshadowing'], 'Add the setups your payoffs depend on.');
   needLedger('threat', ['reveal', 'foreshadowing'], 'Plan how the threat is revealed.');
-  if (mods.has('world-rules') && !p.worldRules.length) out.push({ severity: 'note', area: 'continuity', text: 'Record the rules of your story world.', module: 'world-rules' });
-  if (mods.has('relationships') && !p.relationships.length) out.push({ severity: 'note', area: 'characterization', text: 'Record how the central relationships change.', module: 'relationships' });
+  if (mods.has('world-rules') && !p.worldRules.length) out.push({ severity: 'note', area: 'continuity', text: 'Record the rules of your story world.', module: 'world-rules', advisory: true });
+  if (mods.has('relationships') && !p.relationships.length) out.push({ severity: 'note', area: 'characterization', text: 'Record how the central relationships change.', module: 'relationships', advisory: true });
   if (mods.has('journey') && new Set(p.scenes.map((s) => s.storyLocation || s.heading.place)).size < 2) {
     out.push({ severity: 'note', area: 'structure', text: 'A journey story needs more than one place.', module: 'journey' });
   }
@@ -435,20 +437,15 @@ export function scriptIssues(p: Project): Issue[] {
     for (const c of p.characters) {
       const eps = new Set(p.scenes.filter((s) => s.participants.includes(c.id)).map((s) => s.episode));
       if (eps.size > 1 && !(p.genreNotes['shared-link-between-stories'] ?? '').trim()) {
-        out.push({ severity: 'note', area: 'continuity', text: `${c.name} appears in more than one story. Describe the shared link if that's intended.`, module: 'anthology' });
+        out.push({ severity: 'note', area: 'continuity', text: `${c.name} appears in more than one story. Describe the shared link if that's intended.`, module: 'anthology', advisory: true });
       }
     }
   }
-  // The written script's length: about a page a minute. Only an overlong script is flagged: not every scene is written out.
-  const pages = scriptPages(p.scenes);
-  const target = p.axes.targetRuntimeMin * (isEpisodic(p.axes.format) ? p.axes.episodeCount : 1);
-  if (pages >= 5 && pages > target * 1.5) out.push({ severity: 'note', area: 'pacing', text: `The script runs about ${Math.round(pages)} pages for ${target} minutes of screen time (about a page a minute). Cut it down or raise the target runtime.` });
+  // Word-count notes on dialogue minutes and page counts were removed in the review of November 7, 2026: a rule of thumb
+  // isn't a fault, and each open note cost quality. The scene editor shows the spoken length instead. So was a note on a
+  // guest part written into several episodes: recurring guest parts are common.
   for (const c of p.characters) {
-    if (c.entity !== 'human' && !c.entityNote.trim()) out.push({ severity: 'note', area: 'visual', text: `Describe what kind of being ${c.name} is, so design and casting can start.` });
-    if (isEpisodic(p.axes.format) && (c.seriesInvolvement === 'guest' || c.seriesInvolvement === 'single')) {
-      const eps = new Set(p.scenes.filter((s) => s.participants.includes(c.id)).map((s) => s.episode));
-      if (eps.size > 1) out.push({ severity: 'note', area: 'characterization', text: `${c.name} is written as a ${c.seriesInvolvement === 'guest' ? 'guest' : 'one-episode'} part but appears in ${eps.size} episodes. Make them recurring, or keep them to one episode.` });
-    }
+    if (c.entity !== 'human' && !c.entityNote.trim()) out.push({ severity: 'note', area: 'visual', text: `Describe what kind of being ${c.name} is, for design and casting.`, advisory: true });
   }
   if (p.axes.genres.some((g) => g.id === 'animated' || g.id === 'anime') && p.axes.medium === 'live-action') {
     out.push({ severity: 'blocking', area: 'structure', text: 'This project is tagged as animated, but its medium is live action. Change the medium or the tag.', module: 'animation-medium' });
@@ -456,7 +453,7 @@ export function scriptIssues(p: Project): Issue[] {
   // Open convention questions are advice, never a quota.
   const { questions } = composeGenres(p.axes.genres.map((g) => g.id));
   for (const q of questions) {
-    if (!(p.genreNotes[q.key] ?? '').trim()) out.push({ severity: 'note', area: 'structure', text: `Open question for ${q.genres.join(' and ')}: ${q.label}.`, module: undefined });
+    if (!(p.genreNotes[q.key] ?? '').trim()) out.push({ severity: 'note', area: 'structure', text: `Open question for ${q.genres.join(' and ')}: ${q.label}.`, module: undefined, advisory: true });
   }
   return out;
 }
@@ -546,7 +543,7 @@ export function noteFromIssue(state: GameState, p: Project, text: string): Revis
   const issue = scriptIssues(p).find((i) => i.text === text && i.severity === 'note');
   if (!issue) throw new Error('That readiness check no longer applies.');
   if (p.notes.some((n) => n.source === 'readiness' && n.text === text && n.status !== 'addressed')) throw new Error('That check is already in your revision notes.');
-  const n: RevisionNote = { id: newId(state, 'n'), text, area: issue.area === 'production' ? 'continuity' : issue.area === 'genre' ? 'structure' : issue.area, sceneId: issue.sceneId ?? null, status: 'open', source: 'readiness' };
+  const n: RevisionNote = { id: newId(state, 'n'), text, area: issue.area === 'production' ? 'continuity' : issue.area === 'genre' ? 'structure' : issue.area, sceneId: issue.sceneId ?? null, status: 'open', source: 'readiness', ...(issue.advisory ? { advisory: true } : {}) };
   p.notes.push(n);
   return n;
 }

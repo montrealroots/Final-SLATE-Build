@@ -4,10 +4,11 @@ import { getPlace } from '../data/places';
 import {
   BACKERS, EXPERIENCE, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
-  ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, pronounsMatch, characterPronouns, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
+  ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
   type StaffingProposal, covers,
 } from '../engine';
+import { breakdownComplete, characterPronouns, pronounsMatch } from '../engine/script-explain';
 import type { FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
 import { store, useGame } from './store';
@@ -70,16 +71,20 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
   const [rates, setRates] = useState<Record<string, number>>({});
   const [err, setErr] = useState<Record<string, string>>({});
   const [onlyFree, setOnlyFree] = useState(true);
+  const [pronounsFirst, setPronounsFirst] = useState(false);
   const part = characterId ? approvedCharacters(p).find((x) => x.id === characterId) : undefined;
   const fits = (c: Person) => !part || pronounsMatch(part, c.pronouns);
-  // Performers whose pronouns match the part come first; the part's own pronouns decide (script-effects.ts).
+  // Matching the part's written pronouns is marked, and listing matches first is the producer's choice: it is a casting
+  // preference, never a measure of ability, and nobody is filtered out (until the review of November 7, 2026 it always sorted).
   const list = roleCandidates(g, p, roleId).map((c) => ({ c, av: isAvailable(g, c, win.from, win.to, p.id) })).filter((x) => !onlyFree || x.av.ok)
-    .sort((a, b) => Number(fits(b.c)) - Number(fits(a.c)) || b.c.experience - a.c.experience || a.c.dayRate - b.c.dayRate);
+    .sort((a, b) => (pronounsFirst ? Number(fits(b.c)) - Number(fits(a.c)) : 0) || b.c.experience - a.c.experience || a.c.dayRate - b.c.dayRate);
   const days = estimateDays(p, roleId, characterId, method);
   return (
     <div className="spaced">
       <p className="muted">Production window: {formatDateKey(win.from)} to {formatDateKey(win.to)}. About {plural(days, 'paid day')}. Uncommitted funds: {money(ledgerTotals(p).available)}.</p>
+      {part && <p className="dim">{breakdownComplete(part) ? `Offers include ${part.name}'s casting breakdown (description, wants and fears).` : `Offers go with the script pages. ${part.name}'s casting breakdown isn't written yet (description, wants and fears on the Characters page); it doesn't change who accepts.`}</p>}
       <Check label="Only Show People Who Are Free" checked={onlyFree} onChange={setOnlyFree} />
+      {part && characterPronouns(part) && <Check label="List Matching Pronouns First" checked={pronounsFirst} onChange={setPronounsFirst} />}
       <ul className="list">
         {list.map(({ c, av }) => {
           const notes = characterId ? fitNotes(g, p, c, characterId) : [];
@@ -90,7 +95,7 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
                 <div className="grow">
                   <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
                   <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{c.playingAge ? ` Plays ages ${c.playingAge[0]} to ${c.playingAge[1]}.` : ''} Background: {c.heritages.join(', ')}. Asks {money(c.dayRate)} a day.</div>
-                  {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip chip-positive">Shares {sharedHeritages(g, p, characterId, c.id).join(', ')}</span> <span className="dim">Lived experience counts toward the performance.</span></div>}
+                  {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip">Shares A Background: {sharedHeritages(g, p, characterId, c.id).join(', ')}</span></div>}
                   {!av.ok && <div className="dim" style={{ color: 'var(--warning)' }}>{av.reason}</div>}
                   {notes.map((n) => <div key={n} className="dim" style={{ color: 'var(--warning)' }}>{n}</div>)}
                 </div>
@@ -140,7 +145,7 @@ export function CastTab({ p }: { p: Project }) {
                   <div className="grow">
                     <strong>{c.name}</strong> <span className="dim">{c.roleSize} · {plural(approvedScenes(p).filter((s) => s.participants.includes(c.id)).length, 'scene')}</span>
                     {c.roleSize === 'background' && <div className="dim">Background performers are booked per shoot day.</div>}
-                    {!!c.heritages?.length && <div className="dim">Written as {c.heritages.join(', ')}.{sharedHeritages(g, p, c.id, 'player').length ? ' You share this background.' : ''}</div>}
+                    {!!c.heritages?.length && <div className="dim">Written as {c.heritages.join(', ')}.{sharedHeritages(g, p, c.id, 'player').length ? ' You share a background with this part.' : ''}</div>}
                   </div>
                 </div>
                 {methods.map((m) => {
@@ -148,7 +153,7 @@ export function CastTab({ p }: { p: Project }) {
                   const pending = p.hires.find((h) => h.characterId === c.id && h.method === m && (h.status === 'offered' || h.status === 'countered'));
                   return (
                     <div key={m} className="row-wrap spaced">
-                      <span className="grow">{m === 'voice' ? 'Voice' : m === 'motion-capture' ? 'Performance Capture' : 'On Camera'}: {a ? (a.performer === 'player' ? <strong>You</strong> : <strong>{personById(g, a.performer).name}</strong>) : pending ? <span className="muted">Offer out to {personById(g, pending.personId).name}</span> : <span className="muted">Not cast</span>}{a && sharedHeritages(g, p, c.id, a.performer).length > 0 && <> <span className="chip chip-positive">Lived Experience</span></>}</span>
+                      <span className="grow">{m === 'voice' ? 'Voice' : m === 'motion-capture' ? 'Performance Capture' : 'On Camera'}: {a ? (a.performer === 'player' ? <strong>You</strong> : <strong>{personById(g, a.performer).name}</strong>) : pending ? <span className="muted">Offer out to {personById(g, pending.personId).name}</span> : <span className="muted">Not cast</span>}{a && sharedHeritages(g, p, c.id, a.performer).length > 0 && <> <span className="chip">Shares A Background</span></>}</span>
                       <div className="row gap-2 wrap">
                         {!a && !pending && <button className="btn btn-sm" onClick={() => setSearching({ characterId: c.id, method: m })}>Find Performers</button>}
                         {!a && !pending && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void castPlayer(s, p, c.id, m)))}>Cast Yourself</button>}
@@ -358,7 +363,7 @@ export function ScheduleTab({ p }: { p: Project }) {
               <li key={d.id}>
                 <div className="row-wrap">
                   <div className="grow">
-                    <strong>{formatDateKey(d.date, true)}</strong>{isEpisodic(p.axes.format) ? ` · Episode ${d.episode}` : ''} · {d.locationLabel} ({d.interior ? 'Interior' : 'Exterior'}{d.night ? ', Night' : ''}) <span className={`chip ${d.status === 'shot' ? 'chip-positive' : d.status === 'lost' ? 'chip-negative' : d.status === 'partial' ? 'chip-warning' : ''}`}>{{ scheduled: 'Scheduled', shot: 'Shot', partial: 'Partly Shot', lost: 'Lost', moved: 'Moved' }[d.status]}</span>
+                    <strong>{formatDateKey(d.date, true)}</strong>{isEpisodic(p.axes.format) ? ` · Episode ${d.episode}` : ''} · {d.locationLabel} ({d.interior ? 'Interior' : 'Exterior'}{d.night ? ', Night' : ''}) <span className={`chip ${d.status === 'shot' ? 'chip-positive' : d.status === 'lost' ? 'chip-negative' : d.status === 'partial' ? 'chip-warning' : ''}`}>{{ scheduled: 'Scheduled', shot: 'Shot', partial: 'Partly Shot', lost: 'Lost', moved: 'Moved', cancelled: 'Cancelled' }[d.status]}</span>
                     <div className="dim">{d.sceneIds.map((id) => { const sc = approvedScenes(p).find((s) => s.id === id); return sc ? sceneLabel(p, sc) : 'Removed scene'; }).join(', ')}{d.playerActing ? ' · You act today' : ''}</div>
                     {fc && !d.interior && fc.leadDays <= 10 && <div className="dim">Forecast: {fc.summary}, {fc.chanceOfPrecip}% chance of rain or snow.</div>}
                     {d.result && <div className="dim">{d.result}</div>}

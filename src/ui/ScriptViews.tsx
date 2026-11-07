@@ -6,9 +6,9 @@ import {
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, type ModuleId,
   approvalImpact, FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, type UnscriptedFamily,
-  characterPronouns,
 } from '../engine';
-import type { Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
+import { CONTENT_ISSUES, audienceContentNote, characterPronouns, contentSuggestions, contentSummary, placementExplained, spokenMinutes } from '../engine/script-explain';
+import type { ContentIssue, ContentLevel, Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
 import { store, useGame } from './store';
 
@@ -65,7 +65,8 @@ export function ScriptTab({ p }: { p: Project }) {
   const nonfiction = isNonfiction(p.axes.format);
   const issues = scriptIssues(p);
   const blocking = issues.filter((i) => i.severity === 'blocking');
-  const notes = issues.filter((i) => i.severity === 'note');
+  const notes = issues.filter((i) => i.severity === 'note' && !i.advisory);
+  const prompts = issues.filter((i) => i.severity === 'note' && i.advisory);
   const { questions } = composeGenres(p.axes.genres.map((x) => x.id));
   const locked = !!p.delivered;
   const changed = workingCopyDiffersFromLatestDraft(p);
@@ -84,7 +85,7 @@ export function ScriptTab({ p }: { p: Project }) {
       </div>
       <section className="card">
         <h2>{nonfiction ? 'Subject And Approach' : 'Story'}</h2>
-        <p className="dim">Your own words for the project. SLATE never reads them for meaning, and they don't change the script's quality, but people ask for them. Backers, festival entries and distributors ask for the logline and premise (your pitch); a grant application asks for the stakes and theme too{nonfiction ? ', and the central question' : ''}. Backers answer a week sooner when the conflict, point of view and ending are written (a treatment). The composer works from the tone or the intended experience, and design from where the story is set: without them, that work takes longer.</p>
+        <p className="dim">Your own words for the project. SLATE never reads them for meaning, and they never change the script's quality or how fast anyone answers. They are also the documents some people ask for by name, and an approach that includes one can't be sent until its fields are written: the Pitch (logline and premise) for backers, festival entry forms and distribution contracts; the Treatment (central conflict, point of view and intended ending) for a commissioner or a grant; the Statement Of Intent (theme and stakes{nonfiction ? ', and the central question' : ''}) for a grant. What they decide doesn't depend on what you wrote.</p>
         <div className="grid grid-2 form">
           {nonfiction && <TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} />}
           <TextField label="Logline" multiline value={p.story.logline} maxLength={300} onChange={(v) => edit(p, () => (p.story.logline = v))} />
@@ -97,8 +98,13 @@ export function ScriptTab({ p }: { p: Project }) {
           <TextField label="Intended Experience" multiline value={p.story.intendedExperience} onChange={(v) => edit(p, () => (p.story.intendedExperience = v))} />
           <TextField label="Tone" value={p.axes.tone} maxLength={80} onChange={(v) => edit(p, () => (p.axes.tone = v))} />
           <TextField label="Story Setting" maxLength={120} value={p.axes.storySetting} onChange={(v) => edit(p, () => (p.axes.storySetting = v))} />
+          <SelectField label="Competes As" value={p.axes.register ?? ''} hint="Where awards that split drama from comedy enter it, as you declare it. Left to its genres, comedy and musical genres compete as comedy."
+            options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]}
+            onChange={(v) => edit(p, () => { if (v) p.axes.register = v as 'comedy' | 'drama'; else delete p.axes.register; })} />
         </div>
       </section>
+
+      <ContentCard p={p} locked={locked} />
 
       {(questions.length > 0 || mods.size > 0) && (
         <section className="card">
@@ -135,7 +141,7 @@ export function ScriptTab({ p }: { p: Project }) {
 
       <section className="card">
         <h2>Readiness</h2>
-        <p className="dim">Readiness checks follow the script's structure: scenes, who is in them, objectives, setups and their payoffs, the questions your genres raise. For written answers they check that something is there, not whether it is good.</p>
+        <p className="dim">Readiness checks follow the script's structure: scenes, who is in them, setups and their payoffs. Notes count in the game's assessment of the script and with backers. Prompts only check that a text field is filled, so they never count either way.</p>
         {blocking.length ? (
           <>
             <p>These must be fixed before a draft can be approved:</p>
@@ -154,6 +160,12 @@ export function ScriptTab({ p }: { p: Project }) {
                 </li>
               );
             })}</ul>
+          </details>
+        )}
+        {prompts.length > 0 && (
+          <details>
+            <summary>{plural(prompts.length, 'prompt')} for your own writing</summary>
+            <ul>{prompts.map((i, k) => <li key={k}>{i.text}</li>)}</ul>
           </details>
         )}
       </section>
@@ -305,9 +317,11 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
           <div className="grid grid-2 form">
             <TextField label="Objective" multiline value={s.objective} onChange={(v) => up({ objective: v })} />
             <TextField label={nonfiction ? 'What Happens' : 'Action'} multiline value={s.action} onChange={(v) => up({ action: v })} />
-            <TextField label="Turning Point" multiline value={s.turningPoint} hint="Writing one marks this scene as a turning point: if the shoot loses it, the edit can't cover the hole." onChange={(v) => up({ turningPoint: v })} />
+            <TextField label="Turning Point" multiline value={s.turningPoint} hint="Your note on what turns here. Kept with the script; SLATE doesn't read it." onChange={(v) => up({ turningPoint: v })} />
           </div>
+          <Check label="Essential To The Story" checked={!!s.essential} hint="The story doesn't work without this scene. If it isn't shot, the edit offers a pickup or cutting around it, and cutting an essential scene leaves a gap." onChange={(v) => up({ essential: v || undefined })} />
           {!nonfiction && <Dialogue p={p} s={s} up={up} />}
+          {!nonfiction && s.dialogue.length > 0 && <p className="dim">The written dialogue takes about {Math.max(1, Math.round(spokenMinutes(s)))} {Math.round(spokenMinutes(s)) > 1 ? 'minutes' : 'minute'} to say at a typical pace (about 150 words a minute); the scene is estimated at {s.estMinutes}. A guide only: pace and pauses vary, and nothing checks it.</p>}
           <h4>Production Needs</h4>
           <p className="dim">These drive the breakdown. Nothing is guessed from the text above.</p>
           <div className="grid grid-3 form">
@@ -324,7 +338,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
             <Check label="Dance" checked={s.dance} onChange={(v) => up({ dance: v })} />
             <Check label="Intimate Scene" checked={s.intimacy} onChange={(v) => up({ intimacy: v })} />
             <Check label="Water Work" checked={s.water} onChange={(v) => up({ water: v })} />
-            {mods.has('formal') && <Check label="Intentional Discontinuity" hint="Continuity checks treat breaks here as deliberate." checked={s.intentionalDiscontinuity} onChange={(v) => up({ intentionalDiscontinuity: v })} />}
+            <Check label="Intentional Discontinuity" hint="Continuity checks treat breaks here as deliberate, such as a payoff shown before its setup in a nonlinear story." checked={s.intentionalDiscontinuity} onChange={(v) => up({ intentionalDiscontinuity: v })} />
           </div>
         </fieldset>
       )}
@@ -595,13 +609,16 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
             <SelectField label="Entity" value={c.entity} options={ENTITIES.map((r) => ({ value: r, label: title(r) }))} onChange={(v) => up({ entity: v })} />
             <SelectField label="Realized As" value={c.realization} options={REALIZATIONS.map((r) => ({ value: r, label: REAL_LABEL[r] }))} onChange={(v) => up({ realization: v })} />
             <TextField label="Age In Story" value={c.ageInStory} onChange={(v) => up({ ageInStory: v })} />
-            <SelectField label="Pronouns" value={characterPronouns(c) ?? ''} hint="Casting lists performers who match first." options={[{ value: '', label: 'Open To Anyone' }, { value: 'he', label: 'He/Him' }, { value: 'she', label: 'She/Her' }, { value: 'they', label: 'They/Them' }]} onChange={(v) => up({ pronouns: v })} />
+            <SelectField label="Pronouns" value={characterPronouns(c) ?? ''} hint="Casting marks performers who match, and can list them first." options={[{ value: '', label: 'Open To Anyone' }, { value: 'he', label: 'He/Him' }, { value: 'she', label: 'She/Her' }, { value: 'they', label: 'They/Them' }]} onChange={(v) => up({ pronouns: v })} />
             <SelectField label="Speaks" value={c.languages[0] ?? p.axes.dialogueLanguages[0]} options={p.axes.dialogueLanguages.map((l) => ({ value: l, label: languageName(l) }))} onChange={(v) => up({ languages: [v] })} />
-            {isEpisodic(p.axes.format) && <SelectField label="Series Involvement" value={c.seriesInvolvement} hint="A regular is booked for at least a day in every episode and credited in each; others in the episodes they're in." options={[{ value: 'regular', label: 'Regular' }, { value: 'recurring', label: 'Recurring' }, { value: 'guest', label: 'Guest' }, { value: 'single', label: 'One Episode' }]} onChange={(v) => up({ seriesInvolvement: v })} />}
+            <SelectField label="Awards Placement" value={c.awardPlacement ?? ''} hint={placementExplained(c)}
+              options={[{ value: '', label: 'By Role Size' }, { value: 'lead', label: 'Leading' }, { value: 'supporting', label: 'Supporting' }, { value: 'none', label: 'Not Entered' }]}
+              onChange={(v) => up({ awardPlacement: (v || undefined) as StoryCharacter['awardPlacement'] })} />
+            {isEpisodic(p.axes.format) && <SelectField label="Series Involvement" value={c.seriesInvolvement} hint="A regular is contracted for every episode: booked at least a day in each and credited in all. Others are booked and credited for the episodes they appear in." options={[{ value: 'regular', label: 'Regular' }, { value: 'recurring', label: 'Recurring' }, { value: 'guest', label: 'Guest' }, { value: 'single', label: 'One Episode' }]} onChange={(v) => up({ seriesInvolvement: v })} />}
           </div>
           <fieldset style={{ border: 0, padding: 0 }}>
             <legend style={{ fontWeight: 600 }}>Story Functions</legend>
-            <p className="dim">Independent of role size. A protagonist, deuteragonist or antagonist competes in the leading acting categories whatever the part's size; a narrator records narration before the mix.</p>
+            <p className="dim">What the part does in the story, independent of its size: a supporting antagonist stays supporting. They don't decide award placement (Awards Placement does). A narrator records narration in post-production, before the mix, and is booked a day for it.</p>
             <div className="chip-row">{FUNCTIONS.map((f) => <Check key={f} label={title(f)} checked={c.functions.includes(f)} onChange={(v) => up({ functions: v ? [...c.functions, f] : c.functions.filter((x) => x !== f) })} />)}</div>
           </fieldset>
           <fieldset style={{ border: 0, padding: 0 }}>
@@ -610,8 +627,8 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
           </fieldset>
           <CharacterBackgrounds name={c.name} value={c.heritages ?? []} onChange={(v) => up({ heritages: v })} />
           <div className="grid grid-2 form">
-            {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Design and casting wait on this." onChange={(v) => up({ entityNote: v })} />}
-            <TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown agents read: without all three, offers are answered a day later." onChange={(v) => up({ description: v })} />
+            {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Your description for design and casting. Kept with the script; SLATE doesn't read it." onChange={(v) => up({ entityNote: v })} />}
+            <TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown sent with offers. It doesn't change who accepts or how fast." onChange={(v) => up({ description: v })} />
             <TextField label="Wants" multiline value={c.wants} onChange={(v) => up({ wants: v })} />
             <TextField label="Fears" multiline value={c.fears} onChange={(v) => up({ fears: v })} />
           </div>
@@ -716,5 +733,38 @@ function CharacterBackgrounds({ name, value, onChange }: { name: string; value: 
         </div>
       )}
     </fieldset>
+  );
+}
+
+/**
+ * What the finished work shows, declared as for a classification body. Declaring is the player's call: scene flags only
+ * suggest. It sets what outlets ask of the release (finish.ts offerNeeds and broadcast slots), never a rating, and it is
+ * fixed once the project is delivered.
+ */
+function ContentCard({ p, locked }: { p: Project; locked: boolean }) {
+  const label = (id: string) => { const sc = p.scenes.find((x) => x.id === id); return sc ? sceneLabel(p, sc) : 'A scene'; };
+  const tips = contentSuggestions(p, label);
+  const advice = audienceContentNote(p);
+  const set = (k: ContentIssue, v: string) => edit(p, () => {
+    const c = { ...(p.axes.content ?? {}) };
+    if (v) c[k] = v as ContentLevel; else delete c[k];
+    p.axes.content = c;
+  });
+  return (
+    <section className="card" aria-labelledby="content-h">
+      <h2 id="content-h">Content</h2>
+      <p className="dim">Declare what the finished work shows, as you would describe it to a classification body. Only a classification body gives a rating; SLATE uses your declaration for what outlets ask of the release, such as a broadcast slot, and for streaming's content advisories. It is fixed once the project is delivered.</p>
+      <p><strong>Declared:</strong> {contentSummary(p)}.</p>
+      <div className="grid grid-3 form">
+        {CONTENT_ISSUES.map((i) => (
+          <SelectField key={i.id} label={i.label} value={p.axes.content?.[i.id] ?? ''} disabled={locked}
+            options={[{ value: '', label: 'None' }, { value: 'mild', label: 'Mild' }, { value: 'moderate', label: 'Moderate' }, { value: 'strong', label: 'Strong' }]}
+            onChange={(v) => set(i.id, v)} />
+        ))}
+      </div>
+      {!p.axes.content && !locked && <button className="btn btn-sm spaced" onClick={() => edit(p, () => { p.axes.content = {}; })}>Declare None Of These</button>}
+      {tips.map((t) => <p key={t} className="dim">{t}</p>)}
+      {advice && <p className="dim">{advice}</p>}
+    </section>
   );
 }

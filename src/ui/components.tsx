@@ -59,11 +59,11 @@ export function TextField(props: { label: string; value: string; onChange: (v: s
   );
 }
 
-export function SelectField<T extends string>(props: { label: string; value: T; options: { value: T; label: string }[]; onChange: (v: T) => void; error?: string | null; hint?: string }) {
+export function SelectField<T extends string>(props: { label: string; value: T; options: { value: T; label: string }[]; onChange: (v: T) => void; error?: string | null; hint?: string; disabled?: boolean }) {
   return (
     <Field label={props.label} error={props.error} hint={props.hint}>
       {(id, db) => (
-        <select id={id} value={props.value} aria-invalid={!!props.error} aria-describedby={db} onChange={(e) => props.onChange(e.target.value as T)}>
+        <select id={id} value={props.value} disabled={props.disabled} aria-invalid={!!props.error} aria-describedby={db} onChange={(e) => props.onChange(e.target.value as T)}>
           {props.options.map((o) => (
             <option key={o.value} value={o.value}>{o.label}</option>
           ))}

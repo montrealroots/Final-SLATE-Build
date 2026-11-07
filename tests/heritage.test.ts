@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { HERITAGES, LANGUAGES } from '../src/data/identity';
 import { HERITAGE_LANGUAGES, heritageLanguages } from '../src/data/heritage-languages';
-import { AUTHENTIC_CASTING_BONUS, OBSERVANCES, assessQuality, candidates, createProject, isWorkingDay, observanceDate, observancesOn, personById, sharedHeritages, suggestedObservances } from '../src/engine';
+import { OBSERVANCES, assessQuality, candidates, createProject, isWorkingDay, observanceDate, observancesOn, personById, sharedHeritages, suggestedObservances } from '../src/engine';
 import { loadWorldHolidays } from '../src/world/holidays/holidays';
 import type { GameState, Project } from '../src/engine/types';
 import { buildProject, startLife } from './helpers';
@@ -63,7 +63,9 @@ describe('backgrounds suggest holidays you keep, dated by the holiday rules', ()
   });
 });
 
-describe('authentic casting: a shared background counts toward the performance, and nothing is ever taken away', () => {
+// Until the review of November 7, 2026 a shared background added 6 to a performance. Ability isn't inferred from
+// ethnicity: casting shows who shares a background, as information for the producer, and the score ignores it.
+describe('a shared background is shown in casting and never scores a performance', () => {
   function cast(s: GameState, heritages: string[] | undefined, performer: 'player' | string): Project {
     const p = buildProject(s, { title: 'Harbour', format: 'short', medium: 'live-action', runtime: 10 }, [{ name: 'Ines', patch: { roleSize: 'lead', heritages } }], [{ place: 'Harbour', chars: ['Ines'], minutes: 6 }]);
     p.cast = [{ characterId: p.characters[0].id, performer, method: 'on-camera', note: '' }];
@@ -77,8 +79,8 @@ describe('authentic casting: a shared background counts toward the performance, 
     expect(sharedHeritages(s, shared, shared.characters[0].id, 'player')).toEqual(['Japanese']);
     const unwritten = cast(s, undefined, 'player');
     const unshared = cast(s, ['Korean'], 'player');
-    expect(perf(s, shared)).toBe(Math.min(100, perf(s, unwritten) + AUTHENTIC_CASTING_BONUS));
-    expect(perf(s, unshared)).toBe(perf(s, unwritten)); // no penalty
+    expect(perf(s, shared)).toBe(perf(s, unwritten));
+    expect(perf(s, unshared)).toBe(perf(s, unwritten));
   });
 
   it('a performer from the pool, whose backgrounds are drawn with the rest of them and stay the same', () => {
@@ -89,6 +91,7 @@ describe('authentic casting: a shared background counts toward the performance, 
     expect(personById(startLife('auth-pool'), actor.id).heritages).toEqual(actor.heritages); // deterministic
     const shared = cast(s, [actor.heritages[0]], actor.id);
     const unwritten = cast(s, undefined, actor.id);
-    expect(perf(s, shared) - perf(s, unwritten)).toBe(Math.min(AUTHENTIC_CASTING_BONUS, 100 - perf(s, unwritten)));
+    expect(sharedHeritages(s, shared, shared.characters[0].id, actor.id)).toEqual([actor.heritages[0]]);
+    expect(perf(s, shared)).toBe(perf(s, unwritten));
   });
 });

@@ -119,10 +119,12 @@ describe('the 149-entry catalog', () => {
   it('classification entries do their actual job', () => {
     // Animated label on a live-action project is flagged instead of silently changing the medium.
     expect(scriptIssues(withGenres(['animated'])).some((i) => i.severity === 'blocking' && i.text.includes('medium is live action'))).toBe(true);
-    // Audience: an intimate scene conflicts with a children's audience.
+    // Audience: an intimate scene in a children's project is flagged for the producer to check. Since the review of
+    // November 7, 2026 it is advice, not a block: the flag isn't a content level (tests/script-effects.test.ts).
     const kids = withGenres(['childrens'], [{ place: 'Park', chars: ['Ana'], extra: { intimacy: true } }]);
     kids.axes.audience = 'Children (6 To 11)';
-    expect(scriptIssues(kids).some((i) => i.severity === 'blocking')).toBe(true);
+    expect(scriptIssues(kids).some((i) => i.module === 'audience' && i.advisory && /Check it suits them/.test(i.text))).toBe(true);
+    expect(scriptIssues(kids).some((i) => i.severity === 'blocking')).toBe(false);
     // Anthology: a character crossing stories needs a declared shared link.
     const s = startLife('anth');
     const a = buildProject(s, { title: 'Tales', format: 'anthology-series', medium: 'live-action', genres: ['anthology'], episodes: 2 }, [{ name: 'Wren' }],

@@ -3,7 +3,6 @@
 // availability for the production window and the offered rate. Offers reserve (not spend) funds.
 
 import { getPlace } from '../data/places';
-import { breakdownComplete } from './script-effects';
 import { cancel, commit, ledgerTotals, money, reserve, FundsError } from './budget';
 import { genre } from './genres';
 import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
@@ -78,7 +77,8 @@ export function estimateDays(p: Project, roleId: string, characterId?: string, m
     const ratio = scenes.length / Math.max(1, approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live').length);
     const ch = approvedCharacters(p).find((c) => c.id === characterId);
     let days = Math.max(1, Math.ceil(shootDays * Math.max(ratio, 0.15)) + Math.ceil(p.schedule.rehearsalDays / 2));
-    // A series regular is guaranteed at least a day in every episode; a narrator adds a recording session.
+    // A series regular is contracted for every episode, so at least a day in each; a narrator adds a recording session
+    // (the narration task in production/tasks.ts). Both read the part's own declared terms, never its prose.
     if (ch && isEpisodic(p.axes.format) && ch.seriesInvolvement === 'regular') days = Math.max(days, p.axes.episodeCount);
     if (ch?.functions.includes('narrator')) days += 1;
     return days;
@@ -166,10 +166,9 @@ export function makeOffer(state: GameState, p: Project, input: OfferInput): Hire
   const r = stream(state.seed, 'offer-delay', p.id, input.personId, p.hires.length);
   const lead = input.characterId && ['lead', 'co-lead', 'ensemble-lead'].includes(approvedCharacters(p).find((c) => c.id === input.characterId)?.roleSize ?? '');
   const approvalDelay = lead && approvalRights(p).includes('Casting Approval') ? 2 * DAY : 0;
-  // Agents ask for the character breakdown (description, wants, fears) before answering: without it, a day longer.
-  const ch = input.characterId ? approvedCharacters(p).find((c) => c.id === input.characterId) : undefined;
-  const breakdownDelay = ch && !breakdownComplete(ch) ? DAY : 0;
-  const responseAt = state.now + DAY + Math.floor(r() * 2 * DAY) + approvalDelay + breakdownDelay;
+  // A missing casting breakdown delayed the answer a day until the review of November 7, 2026; it is now shown with the
+  // offer as information and changes nothing (script-effects.ts breakdownComplete).
+  const responseAt = state.now + DAY + Math.floor(r() * 2 * DAY) + approvalDelay;
   const hire: Hire = {
     id: newId(state, 'h'), personId: input.personId, roleId: input.roleId, kind: role(input.roleId).cast ? 'cast' : 'crew', characterId: input.characterId,
     method: input.characterId ? input.method ?? 'on-camera' : undefined, episodes: input.episodes ?? 'all', dayRate: Math.round(input.dayRate), estDays: days,

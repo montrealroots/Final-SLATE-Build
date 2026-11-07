@@ -4,8 +4,10 @@ import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
   qualityWords, requestPickups, depsMet, startCutPass, submitEntry, unlockPicture, withdrawEntry, addDaysToKey, categoryRecipients, type Category,
-  categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, rsvpScreening, screeningConflicts, screeningTravel, travelTo, DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
-  ageRating, approvedScenes, pitchMissing, subtitlingCost } from '../engine';
+  categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, rsvpScreening, screeningConflicts, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
+  approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, restoreToEdit,
+  cutScenes, entryNeeds, castPlacement, sceneLabel } from '../engine';
+import { contentSummary, cutConsequences, placementExplained, watershedRule } from '../engine/script-explain';
 import type { CapturePart, GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, PageHead, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
@@ -92,7 +94,9 @@ export function EditTab({ p }: { p: Project }) {
   useGame();
   const [err, setErr] = useState<string | null>(null);
   const [pick, setPick] = useState<string[]>([]);
+  const [cutting2, setCutting2] = useState<string | null>(null);
   const gaps = coverageGaps(p);
+  const cut = [...cutScenes(p)].map((id) => approvedScenes(p).find((s) => s.id === id)).filter((s): s is NonNullable<typeof s> => !!s);
   const lb = lockBlockers(p);
   const db = deliveryBlockers(p);
   const cutting = p.tasks.find((t) => t.kind === 'post:cutpass' && t.status !== 'done');
@@ -121,12 +125,41 @@ export function EditTab({ p }: { p: Project }) {
         <h2>Coverage</h2>
         {gaps.length ? (
           <>
-            <p>These scenes may need more material:</p>
-            <ul className="list">{gaps.map((g) => <li key={g.sceneId}><Check label={`${g.label}: ${g.reason}`} checked={pick.includes(g.sceneId)} onChange={(v) => setPick(v ? [...pick, g.sceneId] : pick.filter((x) => x !== g.sceneId))} /></li>)}</ul>
+            <p>These scenes need more material. For each, schedule a pickup (a shoot day, paid like any other), wait for its scheduled day, or cut it from the edit and accept what that does to the story.</p>
+            <ul className="list">{gaps.map((g) => (
+              <li key={g.sceneId}>
+                {g.scheduled ? <p><strong>{g.label}</strong>: {g.reason}</p> : <Check label={`${g.label}: ${g.reason}`} checked={pick.includes(g.sceneId)} onChange={(v) => setPick(v ? [...pick, g.sceneId] : pick.filter((x) => x !== g.sceneId))} />}
+                {!p.edit.pictureLocked && <button className="btn btn-sm" onClick={() => setCutting2(g.sceneId)} aria-label={`Cut ${g.label} From The Edit`}>Cut It From The Edit</button>}
+              </li>
+            ))}</ul>
             <button className="btn" disabled={!pick.length || p.edit.pictureLocked} onClick={() => { setErr(store.act((s) => void requestPickups(s, p, pick))); setPick([]); }}>Request Pickups</button>
           </>
         ) : <p className="muted">No coverage gaps found.</p>}
+        {cut.length > 0 && (
+          <div className="spaced">
+            <h3>Cut From The Edit</h3>
+            <ul className="list">{cut.map((sc) => (
+              <li key={sc.id} className="row-wrap">
+                <span className="grow"><strong>{sceneLabel(p, sc)}</strong>{sc.essential ? ' · marked essential: the edit carries the gap' : ''}</span>
+                {!p.edit.pictureLocked && !p.delivered && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => restoreToEdit(s, p, sc.id)))} aria-label={`Restore ${sceneLabel(p, sc)}`}>Restore It</button>}
+              </li>
+            ))}</ul>
+          </div>
+        )}
       </section>
+      {cutting2 && (() => {
+        const sc = approvedScenes(p).find((x) => x.id === cutting2)!;
+        return (
+          <Modal title="Cut This Scene From The Edit?" onClose={() => setCutting2(null)} footer={<>
+            <button className="btn" onClick={() => setCutting2(null)}>Keep It</button>
+            <button className="btn btn-danger" onClick={() => { setErr(store.act((s) => void cutFromEdit(s, s.projects.find((x) => x.id === p.id)!, cutting2))); setCutting2(null); }}>Cut It</button>
+          </>}>
+            <p><strong>{sceneLabel(p, sc)}</strong> leaves the edit. The script keeps it, and you can restore it until picture lock.</p>
+            <ul>{cutConsequences(p, cutting2).map((c) => <li key={c}>{c}</li>)}</ul>
+            {p.schedule.days.some((d) => d.status === 'scheduled' && d.sceneIds.includes(cutting2)) && <p className="dim">It comes off its scheduled shoot day; a day left with nothing to shoot is cancelled.</p>}
+          </Modal>
+        );
+      })()}
       <section className="card">
         <h2>Delivery</h2>
         {p.delivered ? <p>Delivered at {p.delivered.runtimeMin} minutes. Spent {money(ledgerTotals(p).settled)}.</p> : (
@@ -177,18 +210,27 @@ export function ReleaseTab({ p }: { p: Project }) {
       </section>
       <section className="card">
         <h2>Distribution Offers</h2>
-        <p className="muted">Rated {ageRating(p, approvedScenes(p))}, from its intended audience ({p.axes.audience.toLowerCase()}) and what its scenes contain{ageRating(p, approvedScenes(p)) === '18+' ? '. Broadcasters in this game don’t carry 18+ work' : ''}.{pitchMissing(p) ? ` Distributors market from your pitch: ${pitchMissing(p)}` : ''}</p>
+        <p className="muted">Declared content: {contentSummary(p)}. This is your declaration, not a rating: before release a classification body rates the film where the territory requires one.</p>
         {open.length ? (
           <ul className="list">
-            {open.map((o) => (
-              <li key={o.id} className="row-wrap">
-                <span className="grow"><strong>{o.distributor}</strong>: {ROUTE_LABELS[o.route]} release in {o.territories.join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(DELIVERY_MATERIALS[o.route] + subtitlingCost(p, o.territories))}{subtitlingCost(p, o.territories) ? `, including ${money(subtitlingCost(p, o.territories))} of subtitles for dialogue not in the territory's language` : ''}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
-                <div className="row gap-2 wrap">
-                  <button className="btn btn-sm btn-primary" onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id)))}>Accept Offer</button>
-                  <button className="btn btn-sm" onClick={() => setErr(store.act(() => declineDistribution(p, o.id)))}>Decline Offer</button>
-                </div>
-              </li>
-            ))}
+            {open.map((o) => {
+              const needs = offerNeeds(p, o);
+              const subs = subtitlingCost(p, o.territories);
+              return (
+                <li key={o.id}>
+                  <div className="row-wrap">
+                    <span className="grow"><strong>{o.distributor}</strong>: {ROUTE_LABELS[o.route]} release in {o.territories.join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}{o.slot === 'late' ? ' in a late-evening slot' : ''}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(offerMaterials(p, o))}{subs ? `, including ${money(subs)} of subtitles for languages the dialogue isn't in` : ''}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
+                    <div className="row gap-2 wrap">
+                      <button className="btn btn-sm btn-primary" disabled={!!needs} onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id)))}>{o.slot === 'late' ? 'Accept The Late Slot' : 'Accept Offer'}</button>
+                      {o.slot === 'late' && <button className="btn btn-sm" disabled={!!needs} onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id, { broadcastEdit: true })))}>Accept With A Broadcast Edit</button>}
+                      <button className="btn btn-sm" onClick={() => setErr(store.act(() => declineDistribution(p, o.id)))}>Decline Offer</button>
+                    </div>
+                  </div>
+                  {o.slot === 'late' && <p className="dim">You declared strong content. {watershedRule(o.territories[0])} The late slot pays {money(o.minimumGuarantee)}. A broadcast edit, cut for an earlier slot, costs about {money(BROADCAST_EDIT_COST)} more in delivery materials and earns the full {money(o.editedGuarantee ?? o.minimumGuarantee)}.</p>}
+                  {needs && <p className="dim" style={{ color: 'var(--warning)' }}>{needs}</p>}
+                </li>
+              );
+            })}
           </ul>
         ) : <p className="muted">No open offers. Festival selections can bring interest. You can always release it yourself.</p>}
       </section>
@@ -382,10 +424,14 @@ function SubmissionDialog({ editionId, cat, onClose, onError }: { editionId: str
   const el = checkEligibility(g, p, ed, cat, recipients.length ? recipients : undefined);
   const pool = categoryRecipients(g, p, cat);
   const personal = ['lead', 'supporting', 'voice'].includes(cat.recipient);
+  const docs = entryNeeds(p);
+  // Acting categories: where each cast part is placed, and why (script-effects.ts placementExplained).
+  const castParts = cat.recipient === 'lead' || cat.recipient === 'supporting'
+    ? approvedCharacters(p).filter((c) => p.cast.some((a) => a.characterId === c.id && a.method !== 'voice')) : [];
   return (
     <Modal title="Prepare Submission" onClose={onClose} footer={<>
       <button className="btn" onClick={onClose}>Cancel</button>
-      <button className="btn btn-primary" disabled={!el.eligible} onClick={() => { const e = store.act((s) => void submitEntry(s, p, editionId, cat.id, recipients.length ? recipients : undefined)); onError(e); if (!e) onClose(); }}>Submit Entry</button>
+      <button className="btn btn-primary" disabled={!el.eligible || !!docs} onClick={() => { const e = store.act((s) => void submitEntry(s, p, editionId, cat.id, recipients.length ? recipients : undefined)); onError(e); if (!e) onClose(); }}>Submit Entry</button>
     </>}>
       <p><strong>{cat.name}</strong>, {ed.label}</p>
       <SelectField label="Project" value={projectId} options={delivered.map((x) => ({ value: x.id, label: x.title }))} onChange={(v) => { setProjectId(v); setRecipients([]); }} />
@@ -395,6 +441,14 @@ function SubmissionDialog({ editionId, cat, onClose, onError }: { editionId: str
           {pool.map((c) => <Check key={c.id} label={`${c.personName} as ${c.characterName}`} checked={recipients.includes(c.id)} onChange={(v) => setRecipients(v ? [c.id] : [])} />)}
         </fieldset>
       )}
+      {castParts.length > 0 && (
+        <details className="spaced" open={!pool.length}>
+          <summary>How Parts Are Placed</summary>
+          <ul>{castParts.map((c) => <li key={c.id}>{placementExplained(c)}{castPlacement(c) === cat.recipient ? '' : ' Not in this category.'}</li>)}</ul>
+          <p className="dim">Story functions such as protagonist or antagonist don't decide the category. Organizers that decide placement themselves aren't modeled.</p>
+        </details>
+      )}
+      {docs && <div className="callout callout-warning"><p>{docs}</p></div>}
       {el.eligible ? (
         <div className="callout callout-positive"><p>{(() => {
           const st = categoryRuleStatus(rulebook(ed.rulesId), cat.id);
