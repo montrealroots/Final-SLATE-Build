@@ -6,7 +6,7 @@ import {
   BACKERS, BROADCAST_EDIT_COST, DAY, DELIVERY_MATERIALS, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, acceptDistribution, approachBacker,
   approvedScenes, assessQuality, backerOptions, buildTasks, castPlacement, categoryRecipients, competesAs, composeGenres, computeCredits,
   coverageGaps, cutFromEdit, deserialize, entryNeeds, estimateDays, lockBlockers, makeOffer, migrate, noteFromIssue, offerNeeds,
-  processUntil, restoreToEdit, schedule, scriptIssues, serialize, subtitlingCost,
+  processUntil, requestPickups, restoreToEdit, schedule, scriptIssues, serialize, subtitlingCost,
 } from './engine-api';
 import type { Category } from '../src/engine/awards';
 import { audienceContentNote, cutConsequences, placementExplained } from '../src/engine/script-explain';
@@ -306,6 +306,31 @@ describe('structure: essential scenes and the edit plan', () => {
     expect(p.delivered).not.toBeNull();
     expect(p.delivered!.runtimeMin).toBe(4);
     expect(p.captures.some((c) => c.sceneId === essential.id)).toBe(false);
+  });
+});
+
+describe('a pickup asked for before the shoot', () => {
+  it('is booked after the last scheduled shoot day, so prep is done and the crew is still on, and the project delivers', () => {
+    const s = startLife('fx-pickup', 'gb-london');
+    const chars: CharSpec[] = [{ name: 'Ada', patch: { roleSize: 'lead' } }, { name: 'Ben', patch: { roleSize: 'supporting' } }];
+    const p = buildProject(s, { title: 'Tidewater', format: 'short', medium: 'live-action', scenario: 'micro' }, chars,
+      [['Pier', ['Ada']], ['Boat', ['Ada', 'Ben']], ['Shed', ['Ben']]].map(([place, who]) => ({ place: place as string, intExt: 'INT' as const, chars: who as string[], minutes: 2 })));
+    approve(s, p);
+    castAll(s, p);
+    staffAll(s, p);
+    for (let i = 0; i < 6; i++) { manage(s, p); processUntil(s, s.now + DAY, 'tick', 100000); }
+    startProduction(s, p, 5);
+    const scene = approvedScenes(p)[1];
+    cutFromEdit(s, p, scene.id);
+    restoreToEdit(s, p, scene.id);
+    expect(coverageGaps(p).find((g) => g.sceneId === scene.id)!.reason).toBe('Nothing has been shot for it yet.');
+    const lastMain = p.schedule.days.filter((d) => d.status === 'scheduled').map((d) => d.date).sort().at(-1)!;
+    requestPickups(s, p, [scene.id]);
+    const pickup = p.schedule.days.find((d) => d.status === 'scheduled' && d.sceneIds.includes(scene.id))!;
+    expect(pickup.date > lastMain).toBe(true);
+    runDays(s, p, 200);
+    expect(p.delivered).not.toBeNull();
+    expect(p.schedule.days.filter((d) => d.status === 'lost')).toEqual([]);
   });
 });
 

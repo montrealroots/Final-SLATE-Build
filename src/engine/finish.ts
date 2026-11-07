@@ -88,7 +88,7 @@ export function coverageGaps(p: Project): { sceneId: string; label: string; reas
     if (tech !== 'live' && !c) continue; // animated scenes are tracked through their tasks
     if (s.kind === 'archival' || s.kind === 'narration') continue;
     const day = p.schedule.days.filter((d) => d.status === 'scheduled' && d.sceneIds.includes(s.id)).map((d) => d.date).sort()[0];
-    if (!c || c.captured < 0.8) out.push({ sceneId: s.id, label: sceneLabel(p, s), reason: day ? `Not shot yet: scheduled for ${formatDateKey(day)}.` : 'Not enough material was captured.', ...(day ? { scheduled: day } : {}) });
+    if (!c || c.captured < 0.8) out.push({ sceneId: s.id, label: sceneLabel(p, s), reason: day ? `Not shot yet: scheduled for ${formatDateKey(day)}.` : c && c.captured > 0 ? 'Not enough material was captured.' : 'Nothing has been shot for it yet.', ...(day ? { scheduled: day } : {}) });
     else if (c.version !== p.approvedDraft) out.push({ sceneId: s.id, label: sceneLabel(p, s), reason: 'It was shot from an older draft.' });
     else if (c.weatherCompromised) out.push({ sceneId: s.id, label: sceneLabel(p, s), reason: 'It was shot in bad weather.' });
   }
@@ -122,7 +122,7 @@ export function lockBlockers(p: Project): string[] {
   }
   if (p.tasks.some((t) => t.kind === 'post:cutpass' && t.status !== 'done')) out.push('Wait for the current cut pass to finish.');
   if (p.schedule.days.some((d) => d.status === 'scheduled')) out.push('Some shoot days are still scheduled.');
-  const gaps = coverageGaps(p).filter((g) => !g.scheduled && g.reason === 'Not enough material was captured.');
+  const gaps = coverageGaps(p).filter((g) => !g.scheduled && (g.reason === 'Not enough material was captured.' || g.reason === 'Nothing has been shot for it yet.'));
   if (gaps.length) out.push(`${gaps[0].label} is missing coverage. Schedule a pickup, or cut it from the edit.`);
   return out;
 }

@@ -147,8 +147,8 @@ test('a mature project: declared content, an essential scene cut then picked up,
   // Changing course: restore it, and the gap is there to fill with a pickup day.
   await section(page, 'Edit');
   await coverage.getByRole('button', { name: /^Restore Scene 2/ }).click();
-  await expect(coverage).toContainText('Not enough material was captured.');
-  await coverage.getByRole('checkbox', { name: /^Scene 2 .*Not enough material was captured\.$/ }).check();
+  await expect(coverage).toContainText('Nothing has been shot for it yet.');
+  await coverage.getByRole('checkbox', { name: /^Scene 2 .*Nothing has been shot for it yet\.$/ }).check();
   await coverage.getByRole('button', { name: 'Request Pickups' }).click();
   await expect(coverage).toContainText('Not shot yet: scheduled for');
   await page.screenshot({ path: 'test-results/rules-desktop-pickup.png', fullPage: true });
