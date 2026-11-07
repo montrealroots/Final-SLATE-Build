@@ -193,7 +193,7 @@ export async function writePitch(page: Page): Promise<void> {
   await page.getByLabel('Premise', { exact: true }).fill('Two strangers keep the last service running until dawn.');
   await page.getByLabel('Stakes', { exact: true }).fill('If the service stops, the city strands its night workers.');
   await page.getByLabel('Theme', { exact: true }).fill('Care as work.');
-  // The treatment (backers answer a week sooner) and the briefs the composer and design work from.
+  // The Treatment and Statement Of Intent a grant application includes; the tone and setting are the writer's record.
   await page.getByLabel('Central Conflict', { exact: true }).fill('The depot wants the line closed.');
   await page.getByLabel('Point Of View', { exact: true }).fill('The driver.');
   await page.getByLabel('Intended Ending', { exact: true }).fill('The first morning tram runs.');
@@ -201,6 +201,9 @@ export async function writePitch(page: Page): Promise<void> {
   await page.getByLabel('Story Setting', { exact: true }).fill('A city at night.');
   const question = page.getByLabel('Central Question', { exact: true });
   if (await question.count()) await question.fill('Who keeps a city running at night?');
+  // The content declaration a streaming contract asks for: these journeys' films contain none of the listed issues.
+  const none = page.getByRole('button', { name: 'Declare None Of These' });
+  if (await none.count()) await none.click();
 }
 
 export async function saveAndApprove(page: Page): Promise<void> {
@@ -265,6 +268,11 @@ export async function produceToDelivery(page: Page, opts: { yourself?: string[];
   await advance(page, 'next-day');
   await section(page, 'Schedule');
   await page.getByRole('button', { name: /Build Schedule|Rebuild Schedule/ }).click();
+  await runToDelivery(page, opts);
+}
+
+/** From a built schedule, keep the production moving (staff, cast, cut passes, lock) until it is delivered. */
+export async function runToDelivery(page: Page, opts: { weeks?: number; step?: 'week' | 'month'; mocap?: boolean } = {}): Promise<void> {
   for (let i = 0; i < (opts.weeks ?? 60); i++) {
     await advance(page, opts.step ?? 'week');
     await staffEveryDepartment(page);
@@ -338,7 +346,7 @@ export async function pinSeed(page: Page, seed: number): Promise<void> {
 }
 
 /** Start a project from the Projects screen through its form. */
-export async function newProject(page: Page, o: { title: string; format: string; medium?: string; technique?: string; finish?: string; episodes?: string; runtime?: string; budget?: string }): Promise<void> {
+export async function newProject(page: Page, o: { title: string; format: string; medium?: string; technique?: string; finish?: string; episodes?: string; runtime?: string; budget?: string; audience?: string }): Promise<void> {
   await page.getByRole('button', { name: 'New Script' }).first().click();
   await page.getByLabel('Working Title').fill(o.title);
   await page.getByLabel('Format').selectOption({ label: o.format });
@@ -348,6 +356,7 @@ export async function newProject(page: Page, o: { title: string; format: string;
   if (o.episodes) await page.getByLabel('Episodes').fill(o.episodes);
   if (o.runtime) await page.getByLabel(/Target (Runtime In Minutes|Minutes Per Episode)/).fill(o.runtime);
   if (o.budget) await page.getByRole('radio', { name: new RegExp(`^${o.budget}:`) }).check();
+  if (o.audience) await page.getByLabel('Intended Audience').selectOption({ label: o.audience });
   await page.getByRole('button', { name: 'Create Project' }).click();
   await expect(page.getByRole('heading', { name: o.title, level: 1 })).toBeVisible();
 }

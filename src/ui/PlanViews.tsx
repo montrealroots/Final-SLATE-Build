@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import { languageName } from '../data/identity';
 import { getPlace } from '../data/places';
 import {
-  BACKERS, EXPERIENCE, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
+  BACKERS, EXPERIENCE, backerDocuments, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
@@ -471,6 +471,7 @@ function FinancingPanel({ p }: { p: Project }) {
                   <span className="grow"><strong>{d.backer}</strong>{d.amount ? `: ${money(d.amount)}` : ''}</span>
                   <span className={`chip ${d.status === 'accepted' ? 'chip-positive' : d.status === 'declined' || d.status === 'breached' ? 'chip-negative' : d.status === 'offered' ? 'chip-accent' : ''}`}>{status[d.status]}</span>
                 </div>
+                {d.sent?.length ? <p className="dim">Sent with the approved script: {d.sent.join(', ')}. They read it; SLATE doesn't judge it.</p> : null}
                 {d.status === 'considering' && <p className="muted">Their answer is due {formatDateKey(dateKey(d.decideAt ?? g.now, getPlace(p.axes.basePlaceId).zone))}.</p>}
                 {d.reason && <p className="muted">{d.reason}</p>}
                 {(d.status === 'offered' || d.status === 'accepted' || d.status === 'breached') && <ul className="dim">{dealTerms(d).map((t) => <li key={t}>{t}</li>)}</ul>}
@@ -493,7 +494,7 @@ function FinancingPanel({ p }: { p: Project }) {
             <li key={o.kind} className="row-wrap">
               <div className="grow">
                 <strong>{BACKERS[o.kind].name}</strong>{o.kind === 'starting' ? <> <span className="chip">Agreed Starting Scenario</span></> : null}
-                <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why}</p>
+                <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why} {backerDocuments(o.kind)}</p>
                 {!o.ready && <p className="dim">{o.needs}</p>}
               </div>
               <button className="btn btn-sm" disabled={!o.ready} onClick={() => setErr(store.act((s) => void approachBacker(s, live(s), o.kind)))} aria-label={`Approach ${BACKERS[o.kind].name}`}>{o.kind === 'starting' ? 'Ask For The Agreed Backing' : 'Approach'}</button>
