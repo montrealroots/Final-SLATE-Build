@@ -155,7 +155,7 @@ export function createProject(state: GameState, input: NewProjectInput): Project
     cast: [],
     hires: [],
     obligations: [],
-    schedule: { startDate: null, rehearsalDays: 3, sixDayWeeks: false, workHolidays: false, stages: 2, renderNodes: 20, puppetCopies: {}, days: [] },
+    schedule: { startDate: null, rehearsalDays: 3, sixDayWeeks: false, workHolidays: false, observances: [...(state.character.observances ?? [])], stages: 2, renderNodes: 20, puppetCopies: {}, days: [] },
     tasks: [],
     assets: [],
     captures: [],

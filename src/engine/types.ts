@@ -29,6 +29,8 @@ export interface CharacterIdentity {
   heritages: Heritage[];
   mainLanguage: string;
   languages: LanguageSkill[]; // additional languages
+  /** Holidays kept from your backgrounds (observance ids, observances.ts); saves from before have none. */
+  observances?: string[];
 }
 
 /** Character creation's screens, in order (the registry is CREATION_STEPS in state.ts). */
@@ -49,6 +51,8 @@ export interface CreationDraft {
   heritageCustomText: string;
   mainLanguage: string;
   languages: LanguageSkill[];
+  /** Holidays you keep (observance ids). */
+  observances: string[];
   startPlaceId: string;
   startDate: string;
   startTime: string; // HH:MM
@@ -155,6 +159,8 @@ export interface StoryCharacter {
   wants: string;
   fears: string;
   seriesInvolvement: 'regular' | 'recurring' | 'guest' | 'single';
+  /** The character's backgrounds as written (labels from HERITAGES). A performer who shares one counts toward the performance (finish.ts). */
+  heritages?: string[];
   designVersion: number; // bumping invalidates downstream design-dependent work
   groupSize?: number; // background groups
 }
@@ -524,6 +530,8 @@ export interface Project {
     rehearsalDays: number;
     sixDayWeeks: boolean;
     workHolidays: boolean;
+    /** Holidays the producer keeps (copied from the character when the project is made): shoot days skip them too. */
+    observances?: string[];
     stages: number;
     renderNodes: number;
     puppetCopies: Record<string, number>;

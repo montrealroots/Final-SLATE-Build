@@ -56,7 +56,17 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 7, 2026, latest): pronouns settle the billing, as 1221's do
+### Newest Request (November 7, 2026, last): every creation choice has an engine behind it
+
+Backgrounds were the one creation choice nothing read. Asked, the user chose effects for them, "all that fits": holidays
+you keep (`src/engine/observances.ts`: 27 observances dated from existing holiday rules, suggested by backgrounds,
+open to anyone; on the calendar and Home; copied into each new project's schedule, whose shoot days skip them),
+authentic casting (performers in the pool have backgrounds, drawn last so no earlier field changed; script characters
+can be written with backgrounds; a shared one adds 6 to that performance, never a penalty), and language suggestions
+(`src/data/heritage-languages.ts`, loaded with creation). Holidays you keep are fixed after creation (Profile shows them;
+editing them in game isn't built). Tests: `tests/heritage.test.ts`, `e2e/creation.spec.ts`. See `docs/UI-1221-LAYOUT.md`.
+
+### Earlier Request (November 7, 2026, latest): pronouns settle the billing, as 1221's do
 
 "The automatic actor/actress engine when choosing pronoun isn't there." It is now: `settledTitle` (`src/data/identity.ts`)
 bills He/Him as Actor and She/Her as Actress with nothing to pick, and They/Them chooses (cleared when the pronouns

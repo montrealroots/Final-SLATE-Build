@@ -1,9 +1,10 @@
 import { useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from 'react';
-import { PRONOUNS, languageName, searchHeritages, searchLanguages, settledTitle } from '../data/identity';
+import { heritageLanguages } from '../data/heritage-languages';
+import { LANGUAGES, PRONOUNS, languageName, searchHeritages, searchLanguages, settledTitle, type LanguageInfo } from '../data/identity';
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
-import { CREATION_STEPS, ageOn, creationStepIndex, formatZoneAbbrev, parseYmd, validateDraft, type DraftProblem } from '../engine';
+import { CREATION_STEPS, OBSERVANCES, ageOn, creationStepIndex, formatZoneAbbrev, monthName, observance, observanceDate, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
 import type { CreationDraft, CreationStepId, Proficiency } from '../engine/types';
-import { Field, Professions, SelectField, TextField } from './components';
+import { Check, Field, Professions, SelectField, TextField } from './components';
 import { store, useStore } from './store';
 import { WorldPlacePicker } from './WorldPicker';
 
@@ -97,7 +98,11 @@ export function Creation() {
               <HeritageStep d={d} set={set} error={err('heritages')} />
             </section>
             <section className="card">
-              <div className="panel-head"><div><h2>Languages</h2><p className="muted small" style={{ margin: 0 }}>The language you use most, and any others you speak.</p></div></div>
+              <div className="panel-head"><div><h2>Holidays You Keep</h2><p className="muted small" style={{ margin: 0 }}>Beyond the public holidays where you live. They go on your calendar, and your projects don’t schedule shoot days on them.</p></div></div>
+              <ObservanceStep d={d} set={set} />
+            </section>
+            <section className="card">
+              <div className="panel-head"><div><h2>Languages</h2><p className="muted small" style={{ margin: 0 }}>The language you use most, and any others you speak. They decide which roles you can play without coaching.</p></div></div>
               <LanguageStep d={d} set={set} error={err('mainLanguage')} />
             </section>
           </div>
@@ -317,11 +322,42 @@ function HeritageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
   );
 }
 
+/** The holidays you keep: your backgrounds' first, every other one open to anyone. Dates are the holiday rules'. */
+function ObservanceStep({ d, set }: { d: CreationDraft; set: (p: Partial<CreationDraft>) => void }) {
+  const suggested = suggestedObservances(d.heritages.map((h) => h.label));
+  const others = OBSERVANCES.filter((o) => !suggested.includes(o));
+  const year = /^\d{4}/.test(d.startDate) ? Number(d.startDate.slice(0, 4)) : 2026;
+  const kept = new Set(d.observances ?? []);
+  const toggle = (id: string, on: boolean) => set({ observances: on ? [...kept, id] : [...kept].filter((x) => x !== id) });
+  const row = (o: Observance) => {
+    const date = observanceDate(o.id, year);
+    return <Check key={o.id} label={o.name} checked={kept.has(o.id)} onChange={(on) => toggle(o.id, on)}
+      hint={date ? `In ${year}: ${monthName(Number(date.slice(5, 7)))} ${Number(date.slice(8, 10))}.` : `Not dated for ${year} yet: kept once it's announced.`} />;
+  };
+  return (
+    <>
+      {suggested.length > 0 ? (
+        <fieldset className="col gap-1" style={{ border: 0, padding: 0, margin: 0 }}>
+          <legend className="eyebrow" style={{ marginBottom: 'var(--s2)' }}>From Your Backgrounds</legend>
+          {suggested.map(row)}
+        </fieldset>
+      ) : <p className="muted small">{d.heritages.length ? 'Your backgrounds suggest none of these. Any of them can still be yours.' : 'Add your backgrounds above and the holidays they keep come first here.'}</p>}
+      <details className="section-fold" style={{ marginTop: 'var(--s3)' }}>
+        <summary>Other Holidays</summary>
+        <div className="col gap-1" style={{ marginTop: 'var(--s2)' }}>{others.map(row)}</div>
+      </details>
+    </>
+  );
+}
+
 function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<CreationDraft>) => void; error: string | null }) {
   const [q, setQ] = useState('');
   const [mq, setMq] = useState('');
-  const mainResults = searchLanguages(mq, 8);
-  const addResults = searchLanguages(q, 8).filter((l) => l.code !== d.mainLanguage && !d.languages.some((x) => x.code === l.code));
+  // Your backgrounds' languages come first while nothing is typed (HERITAGE_LANGUAGES).
+  const suggested = new Set(heritageLanguages(d.heritages.map((h) => h.label)));
+  const first = (list: LanguageInfo[], typed: string) => (typed.trim() ? list : [...LANGUAGES.filter((l) => suggested.has(l.code)), ...list.filter((l) => !suggested.has(l.code))]);
+  const mainResults = first(searchLanguages(mq, 8), mq);
+  const addResults = first(searchLanguages(q, 8), q).filter((l) => l.code !== d.mainLanguage && !d.languages.some((x) => x.code === l.code));
   return (
     <>
       <Field label="Which language do you use most?" error={error} hint={d.mainLanguage ? `Chosen: ${languageName(d.mainLanguage)}` : 'Search, then choose one.'}>
@@ -330,7 +366,9 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
             <input id={id} type="search" value={mq} aria-describedby={db} aria-invalid={!!error} onChange={(e) => setMq(e.target.value)} />
             <div className="picklist" role="group" aria-label="Language You Use Most Results">
               {mainResults.map((l) => (
-                <button key={l.code} type="button" aria-pressed={l.code === d.mainLanguage} onClick={() => set({ mainLanguage: l.code, languages: d.languages.filter((x) => x.code !== l.code) })}>{l.name}</button>
+                <button key={l.code} type="button" aria-pressed={l.code === d.mainLanguage} onClick={() => set({ mainLanguage: l.code, languages: d.languages.filter((x) => x.code !== l.code) })}>
+                  <span>{l.name}</span>{suggested.has(l.code) && <span className="dim">From your backgrounds</span>}
+                </button>
               ))}
             </div>
           </>
@@ -340,7 +378,7 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
       <div className="picklist" role="group" aria-label="Additional Language Results">
         {addResults.map((l) => (
           <button key={l.code} type="button" onClick={() => set({ languages: [...d.languages, { code: l.code, proficiency: 'Conversational' }] })} aria-label={`Add Language: ${l.name}`}>
-            <span>{l.name}</span><span className="dim">Add Language</span>
+            <span>{l.name}</span><span className="dim">{suggested.has(l.code) ? 'From your backgrounds' : 'Add Language'}</span>
           </button>
         ))}
       </div>
@@ -421,6 +459,7 @@ function Review({ d, edit, heading }: { d: CreationDraft; edit: (id: CreationSte
         <Line label="Backgrounds" value={d.heritages.map((h) => h.label).join(', ') || 'None added'} />
         <Line label="Main Language" value={d.mainLanguage ? languageName(d.mainLanguage) : 'Not chosen'} />
         <Line label="Other Languages" value={d.languages.map((l) => `${languageName(l.code)} (${l.proficiency.toLowerCase()})`).join(', ') || 'None'} />
+        <Line label="Holidays You Keep" value={(d.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you live'} />
       </ReviewCard>
       <div className="callout callout-accent">
         Once you start, the clock runs while you play. Sleep and Advance move it on faster, and Advance stops early if something needs you.

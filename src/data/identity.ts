@@ -86,3 +86,4 @@ export const PRONOUNS = {
 export function settledTitle(pronouns: string): 'Actor' | 'Actress' | undefined {
   return pronouns === 'he' ? 'Actor' : pronouns === 'she' ? 'Actress' : undefined;
 }
+
