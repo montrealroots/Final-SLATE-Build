@@ -28,6 +28,7 @@ const NAME = 'Itzel Ramírez-Okafor';
 async function fillIdentity(page: Page, name: string, pronouns: string): Promise<void> {
   await page.getByRole('textbox', { name: 'Name', exact: true }).fill(name);
   await page.getByLabel('Pronouns').selectOption({ label: pronouns });
+  if (pronouns === 'They/Them') await page.getByRole('group', { name: 'Billed As' }).getByRole('button', { name: 'Actor', exact: true }).click();
   await fillBirthDate(page, '1994-05-20');
   await pickPlace(page, 'Place Of Birth', 'Lagos');
 }
@@ -91,20 +92,37 @@ test('Start My Story with something missing goes to that step, and back to Revie
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 });
 
-test('a step with something missing says what, and Billed As follows the pronouns until you choose', async ({ page }) => {
+test('a step with something missing says what; He/Him and She/Her settle the billing, They/Them chooses', async ({ page }) => {
   await page.goto('/');
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByRole('button', { name: 'New Game' }).first().click();
   await page.getByRole('button', { name: 'Next: Background & Languages' }).click();
   await expect(heading(page)).toHaveText('Identity');
-  for (const m of ['Enter a name.', 'Choose pronouns.', 'Enter your birth date.', 'Choose a birthplace.']) await expect(page.getByText(m)).toBeVisible();
+  for (const m of ['Enter a name.', 'Choose pronouns.', 'Choose how you are billed.', 'Enter your birth date.', 'Choose a birthplace.']) await expect(page.getByText(m)).toBeVisible();
+  const billedAs = page.locator('.field', { has: page.locator('#billed-as') });
+  // She/Her: Actress, nothing to pick.
   await page.getByLabel('Pronouns').selectOption({ label: 'She/Her' });
-  const billed = page.getByRole('group', { name: 'Billed As' });
-  await expect(billed.getByRole('button', { name: 'Actress', exact: true })).toHaveAttribute('aria-pressed', 'true');
-  await billed.getByRole('button', { name: 'Actor', exact: true }).click();
+  await expect(billedAs.locator('output')).toHaveText('Actress');
+  await expect(billedAs.getByRole('button')).toHaveCount(0);
+  await expect(page.getByText('Choose how you are billed.')).toHaveCount(0);
+  // He/Him: Actor.
+  await page.getByLabel('Pronouns').selectOption({ label: 'He/Him' });
+  await expect(billedAs.locator('output')).toHaveText('Actor');
+  // They/Them: no title until one is picked, and the pick is kept.
   await page.getByLabel('Pronouns').selectOption({ label: 'They/Them' });
-  await expect(billed.getByRole('button', { name: 'Actor', exact: true })).toHaveAttribute('aria-pressed', 'true'); // a choice made stays made
+  const tiles = page.getByRole('group', { name: 'Billed As' });
+  await expect(tiles.getByRole('button', { name: 'Actor', exact: true })).toHaveAttribute('aria-pressed', 'false');
+  await expect(tiles.getByRole('button', { name: 'Actress', exact: true })).toHaveAttribute('aria-pressed', 'false');
+  await expect(page.getByText('Choose how you are billed.')).toBeVisible();
+  await tiles.getByRole('button', { name: 'Actress', exact: true }).click();
+  await expect(tiles.getByRole('button', { name: 'Actress', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByText('Choose how you are billed.')).toHaveCount(0);
+  // Back to He/Him and then They/Them: the pick made under They/Them doesn't survive behind He/Him.
+  await page.getByLabel('Pronouns').selectOption({ label: 'He/Him' });
+  await expect(billedAs.locator('output')).toHaveText('Actor');
+  await page.getByLabel('Pronouns').selectOption({ label: 'They/Them' });
+  await expect(tiles.getByRole('button', { name: 'Actress', exact: true })).toHaveAttribute('aria-pressed', 'false');
   await fillBirthDate(page, '2015-01-01');
   await expect(page.getByText('Your character must be at least 16 on the starting date.')).toBeVisible();
 });
@@ -159,7 +177,7 @@ test('keyboard only: Next moves focus to the new heading, Tab reaches its field,
   await page.getByRole('button', { name: 'Back To Identity' }).click();
   await expect(page.getByRole('textbox', { name: 'Name', exact: true })).toHaveValue('Kofi Mensah');
   await expect(page.getByLabel('Pronouns')).toHaveValue('he');
-  await expect(page.getByRole('group', { name: 'Billed As' }).getByRole('button', { name: 'Actor', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.field', { has: page.locator('#billed-as') }).locator('output')).toHaveText('Actor'); // settled by He/Him
   await expect(page.getByLabel('Year Of Birth')).toHaveValue('1990');
 });
 

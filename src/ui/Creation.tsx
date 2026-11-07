@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from 'react';
-import { PRONOUNS, defaultActingTitle, languageName, searchHeritages, searchLanguages } from '../data/identity';
+import { PRONOUNS, languageName, searchHeritages, searchLanguages, settledTitle } from '../data/identity';
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
 import { CREATION_STEPS, ageOn, creationStepIndex, formatZoneAbbrev, parseYmd, validateDraft, type DraftProblem } from '../engine';
 import type { CreationDraft, CreationStepId, Proficiency } from '../engine/types';
@@ -141,6 +141,7 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
   const setBirth = (yy: string, mm: string, dd: string) => set({ birthDate: yy || mm || dd ? `${yy}-${mm}-${dd}` : '' });
   const age = ageAtStart(d);
   const billedError = err('actingTitle');
+  const settled = settledTitle(d.pronouns);
   return (
     <section className="card">
       {head}
@@ -148,19 +149,34 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
         <TextField label="Name" value={d.name} maxLength={80} autoComplete="off" error={err('name')} hint="The name people know you by, and the one your credits carry." onChange={(v) => set({ name: v })} />
         <SelectField label="Pronouns" value={d.pronouns} error={err('pronouns')}
           options={[{ value: '', label: 'Choose Pronouns' }, ...(['she', 'he', 'they'] as const).map((k) => ({ value: k, label: PRONOUNS[k].label }))]}
-          onChange={(v) => set({ pronouns: v, actingTitle: d.actingTitle || (v ? defaultActingTitle(v) : '') })} />
+          // The title moves with the pronouns: settled where they settle it, and cleared where they don't, so a pick made
+          // under They/Them can't survive behind He/Him (as 1221's Identity step does).
+          onChange={(v) => set({ pronouns: v, actingTitle: settledTitle(v) ?? '' })} />
       </div>
       <div className="field">
         <span className="label" id="billed-as">Billed As</span>
-        <div className="row gap-2" role="group" aria-labelledby="billed-as">
-          {(['Actor', 'Actress'] as const).map((t) => (
-            <button key={t} type="button" className="trait grow" aria-pressed={d.actingTitle === t} onClick={() => set({ actingTitle: t })}>
-              <div className="trait-name">{t}</div>
-            </button>
-          ))}
-        </div>
-        {billedError && <span className="error" role="alert">{billedError}</span>}
-        <p className="xs dim" style={{ marginTop: 4 }}>Actor and Actress are two words for the same craft, and neither counts for more. Actor can be used by anyone; your pronouns and how you’re billed are separate choices.</p>
+        {settled ? (
+          <>
+            <output className="settled-title" aria-labelledby="billed-as">{settled}</output>
+            <p className="xs dim" style={{ marginTop: 4 }}>Your pronouns decide this, so there’s nothing to pick. Change your pronouns and it changes too.</p>
+          </>
+        ) : (
+          <>
+            <div className="row gap-2" role="group" aria-labelledby="billed-as">
+              {(['Actor', 'Actress'] as const).map((t) => (
+                <button key={t} type="button" className="trait grow" aria-pressed={d.actingTitle === t} disabled={!d.pronouns} onClick={() => set({ actingTitle: t })}>
+                  <div className="trait-name">{t}</div>
+                </button>
+              ))}
+            </div>
+            {billedError && <span className="error" role="alert">{billedError}</span>}
+            <p className="xs dim" style={{ marginTop: 4 }}>
+              {d.pronouns
+                ? 'With They/Them, you choose. Actor and Actress are two words for the same craft, and neither counts for more. Awards that split their acting categories consider you under the one you pick.'
+                : 'Choose your pronouns first. He/Him is billed as Actor and She/Her as Actress; with They/Them, you choose.'}
+            </p>
+          </>
+        )}
       </div>
 
       <hr className="divider" />

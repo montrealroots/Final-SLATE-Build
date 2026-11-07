@@ -56,7 +56,16 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 7, 2026, later): 1221's creation suite, done in this checkpoint
+### Newest Request (November 7, 2026, latest): pronouns settle the billing, as 1221's do
+
+"The automatic actor/actress engine when choosing pronoun isn't there." It is now: `settledTitle` (`src/data/identity.ts`)
+bills He/Him as Actor and She/Her as Actress with nothing to pick, and They/Them chooses (cleared when the pronouns
+change, so a pick can't survive behind He/Him). `validateDraft` asks for a title only under They/Them, `newGame` takes
+the settled title over anything stored, and `normalizeDraft` corrects older drafts. Games already started keep their
+title. The award categories split by title (Best Actor, Best Actress) read it. Tests: `tests/creation.test.ts`,
+`e2e/creation.spec.ts`.
+
+### Earlier Request (November 7, 2026, later): 1221's creation suite, done
 
 "I need that whole creation suite ... what's not there then don't add it." Creation now follows 1221's
 `CharacterCreation.tsx`: Identity, Background & Languages, Starting Point, Review, keeping only what the engine
