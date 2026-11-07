@@ -190,6 +190,13 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
         continue;
       }
       if (task.kind === 'anim:voice') {
+        // Checked before anyone is paid, like render time and wages. Until November 7, 2026 an unaffordable studio threw,
+        // which failed the whole day and stopped time.
+        if (ledgerTotals(p).available < VOICE_SESSION_STUDIO) {
+          task.status = 'blocked';
+          task.blockedReason = "There isn't enough money left for recording studio time. Add funding or cut scope.";
+          continue;
+        }
         const cast = p.cast.find((c) => c.characterId === task.assetRef && c.method !== 'motion-capture');
         if (cast?.hireId) {
           const h = p.hires.find((x) => x.id === cast.hireId);

@@ -8,7 +8,27 @@
 
 ## Commands And Results
 
-### Current: Genre Catalog Loading And More Connected Careers (November 7, 2026, after #35)
+### Current: Micro-Budget Tuning (November 7, 2026, after #36)
+
+Local Linux container, branch `claude/clever-archimedes-x0r26v` from `main` at `5e142f4` (#36). The commands ran on the
+branch's final source; the commit after the runs changes only these reports. See the PR for CI.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 32 files, 262 tests passed (`tests/tight-budget.test.ts` 6); build passed; startup JavaScript 663 kB raw (679,394 bytes), 206 kB gzipped, budgets 700 and 220 kB, 0 problems. |
+| `npm run balance` | 0 | 2 tests passed; 240 family runs. Two new families, stop motion and 3D CG at micro budget, deliver in 30 of 30 seeds, and the harness now fails if any micro family doesn't. The live-action micro row moved (staffing change); every low-budget row is unchanged (`BALANCE-REPORT.md`). |
+| `npm run perf:engine` | 0 | 2 tests passed. |
+| `SLATE_E2E_PROD=1 npm run e2e -- --trace retain-on-failure` | 0 | Production build, the complete suite: 141 passed, 27 skipped, 0 failed, in 14.0 minutes. |
+| `npm run e2e -- --trace retain-on-failure` | 0 | Development server, the complete suite: 141 passed, 27 skipped, 0 failed, in 17.4 minutes. |
+| Old code against new | | Each new unit test fails on the old code or a mutation: the studio fee (the day threw), combining order, all-or-nothing staffing, the estimate's floor at the budget size, and a target the player set. |
+
+**Measured before the change** (engine, 8 seeds each, Micro Budget at $40,000, the game's own staffing proposals): stop
+motion delivered in 0 of 8 at 1, 2 and 4 minutes; 3D CG in 0 of 8 at 2 minutes; 2D drawn in 6 of 8; live action and 2D
+rigged in 8 of 8. **After**, funded by the starting backing up to the script's estimate: 8 of 8 in every case. Estimates:
+stop motion $68,000 (1 minute), $80,000 (2 minutes), $151,000 (4 minutes at TV quality); 3D CG $57,000; 2D drawn $43,000;
+live action and 2D rigged stay $40,000. Spending lands at 79% to 85% of the estimate.
+
+### Previous: Genre Catalog Loading And More Connected Careers (November 7, 2026, after #35)
 
 Local Linux container, branch `claude/clever-archimedes-x0r26v` from `main` at `c00c261` (#35). The commands ran on the
 branch's final source; the commit after the runs changes only these reports. See the PR for CI.
@@ -132,6 +152,11 @@ explicit `test.skip(project…)`; no test skips itself on an outcome:
 
 | Severity | Defect | Fix | Regression Check |
 | --- | --- | --- | --- |
+| High | (Found measuring micro budgets, after #36) A voice session the production could no longer pay the studio for threw an error: the whole day rolled back and time paused with "Something went wrong while time passed" | The session waits with the reason, as render time and wages already did | `tests/tight-budget.test.ts` (threw on the old code) |
+| High | (After #36) Micro-budget stop motion and 3D could never finish: staffing proposals went department by department in alphabetical order and spent the money before reaching the animator or the storyboard artist | Proposals hire a required crew the money can pay, or no one, and name the shortfall | `tests/tight-budget.test.ts`, `e2e/careers.spec.ts` stop motion |
+| Medium | (After #36) Role combining rarely happened: the colorist and re-recording mixer were hired before the editor and sound designer who cover them | On a micro budget, covering roles are proposed first | `tests/tight-budget.test.ts`, `tests/production-golden.test.ts` (regenerated for this intended change) |
+| Medium | (After #36) A project's Budget Estimate was its size's fixed amount whatever the script, so the agreed starting backing was asked for too little | After approval, the estimate is what the script needs at its size, with a tenth for contingency, never below the size; the target follows it unless the player set one | `tests/tight-budget.test.ts`, `e2e/careers.spec.ts` |
+| Low | (Found in a screenshot) The staffing dialog said "Every role here already has someone or an offer out" beside a shortfall that had stopped every offer | The line shows only when it's true | `e2e/careers.spec.ts` |
 | High | (Found by the stop-motion career, after #35) A reload followed by Continue within six seconds opened the game read-only ("This game is open in another tab") with no other tab: the closed page's lock was still fresh | A page that goes away releases its lock; a hidden tab keeps it | `e2e/viewports.spec.ts` (failed on the old code) |
 | Medium | (After #35) A genre catalog with a bad record halfway through left the records before it published and the catalog counted as loaded; a later load added them again | The whole catalog is built and checked before anything is published; a valid catalog survives a bad one | `tests/genre-catalog.test.ts` (three tests fail on the old loader), `e2e/failures.spec.ts` |
 | High | (The intermittent WebKit failure in New Script, after #34) Text typed right after a screen change was lost: `store.go` moved focus to the screen one animation frame later, and on a busy device that frame arrived mid-typing ("The Last Ferry" became "Th"). Not WebKit-specific: reproduced on Chromium too once frames were made late | Focus moves in a layout effect in the commit that shows the screen | `e2e/focus.spec.ts` (failed 8 of 8 on the old code) |
@@ -202,10 +227,9 @@ explicit `test.skip(project…)`; no test skips itself on an outcome:
 
 - No code fault is open from this pass. Physical devices, a person's screen-reader pass and human playtesting remain
   outside what was tested.
-- Balance, observed in the stop-motion career rather than fixed: a micro budget ($40,000) doesn't pay for a two-minute
-  stop-motion short with every department staffed. The game refuses the schedule, then the animators, saying how much is
-  missing; the journey raises the target to $75,000 with an investor. Whether the budget sizes suit stop motion is a
-  balance question for the owner. Nothing was changed to make the journey pass.
+- The micro-budget balance question recorded at #36 was worked through after it (see Current and `BALANCE-REPORT.md`).
+  Still for the owner: a micro animated short's estimate can be about twice the size's $40,000. Is "Micro Budget" still
+  the right label? And the balance runs are an autopilot, not human play.
 - On the iPhone, a section scrolled into view can sit partly under the sticky header (see Acceptance Journeys).
 
 ## Acceptance Status

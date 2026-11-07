@@ -4,62 +4,62 @@
   "families": {
     "live-action short (micro budget)": {
       "runs": 30,
-      "neededCoProducerRate": 0.26666666666666666,
+      "neededCoProducerRate": 0.23333333333333334,
       "deliveredRate": 1,
       "days": {
         "n": 30,
-        "mean": 31,
-        "sd": 7,
-        "min": 27,
-        "p10": 27,
-        "median": 27,
-        "p90": 43,
-        "max": 49
+        "mean": 33.1,
+        "sd": 7.4,
+        "min": 29,
+        "p10": 29,
+        "median": 29,
+        "p90": 47,
+        "max": 51
       },
       "spent": {
         "n": 30,
-        "mean": 30103.3,
-        "sd": 4416.9,
-        "min": 26660,
-        "p10": 27080,
-        "median": 28410,
-        "p90": 36830,
-        "max": 47610
+        "mean": 30208,
+        "sd": 5547.9,
+        "min": 26020,
+        "p10": 26490,
+        "median": 27940,
+        "p90": 39360,
+        "max": 50120
       },
       "spentShareOfFund": {
         "n": 30,
-        "mean": 67.3,
-        "sd": 6.5,
-        "min": 52.3,
-        "p10": 57.3,
-        "median": 68.7,
-        "p90": 74.7,
-        "max": 79.4
+        "mean": 67.9,
+        "sd": 5,
+        "min": 57.1,
+        "p10": 64.2,
+        "median": 67.1,
+        "p90": 74,
+        "max": 83.5
       },
       "lostDays": {
         "n": 30,
-        "mean": 1,
-        "sd": 1.8,
+        "mean": 1.2,
+        "sd": 2.2,
         "min": 0,
         "p10": 0,
         "median": 0,
-        "p90": 4,
-        "max": 8
+        "p90": 5,
+        "max": 9
       },
       "overall": {
         "n": 30,
         "mean": 58,
-        "sd": 2.1,
+        "sd": 2.2,
         "min": 54,
         "p10": 56,
         "median": 58,
-        "p90": 61,
+        "p90": 62,
         "max": 62
       },
       "reception": {
         "n": 30,
         "mean": 58.3,
-        "sd": 7.2,
+        "sd": 7.1,
         "min": 45,
         "p10": 49,
         "median": 59,
@@ -341,6 +341,144 @@
         "median": 63,
         "p90": 72,
         "max": 73
+      },
+      "integrity": {
+        "negativeCash": 0,
+        "doubleSettlements": 0
+      }
+    },
+    "stop-motion short (micro budget)": {
+      "runs": 30,
+      "neededCoProducerRate": 0,
+      "deliveredRate": 1,
+      "days": {
+        "n": 30,
+        "mean": 104.8,
+        "sd": 1.2,
+        "min": 103,
+        "p10": 103,
+        "median": 105,
+        "p90": 106,
+        "max": 107
+      },
+      "spent": {
+        "n": 30,
+        "mean": 64106,
+        "sd": 2507.9,
+        "min": 59940,
+        "p10": 61730,
+        "median": 63420,
+        "p90": 69190,
+        "max": 71300
+      },
+      "spentShareOfFund": {
+        "n": 30,
+        "mean": 78.9,
+        "sd": 0.9,
+        "min": 77.4,
+        "p10": 77.8,
+        "median": 79.1,
+        "p90": 80,
+        "max": 81.3
+      },
+      "lostDays": {
+        "n": 30,
+        "mean": 0,
+        "sd": 0,
+        "min": 0,
+        "p10": 0,
+        "median": 0,
+        "p90": 0,
+        "max": 0
+      },
+      "overall": {
+        "n": 30,
+        "mean": 60.9,
+        "sd": 1,
+        "min": 59,
+        "p10": 60,
+        "median": 61,
+        "p90": 62,
+        "max": 63
+      },
+      "reception": {
+        "n": 30,
+        "mean": 62,
+        "sd": 7.3,
+        "min": 46,
+        "p10": 52,
+        "median": 62,
+        "p90": 74,
+        "max": 75
+      },
+      "integrity": {
+        "negativeCash": 0,
+        "doubleSettlements": 0
+      }
+    },
+    "3D CG short (micro budget)": {
+      "runs": 30,
+      "neededCoProducerRate": 0,
+      "deliveredRate": 1,
+      "days": {
+        "n": 30,
+        "mean": 97,
+        "sd": 0,
+        "min": 97,
+        "p10": 97,
+        "median": 97,
+        "p90": 97,
+        "max": 97
+      },
+      "spent": {
+        "n": 30,
+        "mean": 45723.7,
+        "sd": 2042.2,
+        "min": 42620,
+        "p10": 43410,
+        "median": 45430,
+        "p90": 49040,
+        "max": 50390
+      },
+      "spentShareOfFund": {
+        "n": 30,
+        "mean": 78.1,
+        "sd": 0.5,
+        "min": 76.8,
+        "p10": 77.5,
+        "median": 78.1,
+        "p90": 78.7,
+        "max": 79.1
+      },
+      "lostDays": {
+        "n": 30,
+        "mean": 0,
+        "sd": 0,
+        "min": 0,
+        "p10": 0,
+        "median": 0,
+        "p90": 0,
+        "max": 0
+      },
+      "overall": {
+        "n": 30,
+        "mean": 61.1,
+        "sd": 1.2,
+        "min": 59,
+        "p10": 60,
+        "median": 61,
+        "p90": 63,
+        "max": 64
+      },
+      "reception": {
+        "n": 30,
+        "mean": 59.3,
+        "sd": 8.1,
+        "min": 45,
+        "p10": 49,
+        "median": 59,
+        "p90": 73,
+        "max": 78
       },
       "integrity": {
         "negativeCash": 0,

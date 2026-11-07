@@ -1,6 +1,6 @@
 // Three careers that complement e2e/connected.spec.ts (November 7, 2026), each through the real interface with a failure
 // it must recover from: a TV season whose approved script changes after filming; a stop-motion short refused an offer for
-// lack of money and reopened while its data fails to load; and a live-action short the player writes, produces and directs
+// lack of money, then short of crew money when backed for less than its estimate, and reopened while its data fails to load; and a live-action short the player writes, produces and directs
 // without acting, with an offer to a performer booked elsewhere. Each asserts what the game did (runtimes, credits, task
 // progress, release history), not only that buttons could be pressed.
 //
@@ -125,7 +125,7 @@ test('a TV season: a regular and a guest, an approved scene changed after filmin
   await shot(page, 'tv', '02-released');
 });
 
-test('stop motion: refused for lack of money, then backed; reopened while its data fails to load; delivered and released', async ({ page }, info) => {
+test('stop motion: refused for lack of money, backed for less than its estimate, then funded; reopened while its data fails to load; delivered and released', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'Runs once, at desktop width.');
   test.setTimeout(1_500_000);
   expectErrors('Refuses the genre catalog and holiday rules on one reload to test recovery.');
@@ -151,23 +151,33 @@ test('stop motion: refused for lack of money, then backed; reopened while its da
   await expect(page.getByRole('dialog').getByRole('alert').first()).toContainText('but only $0 is uncommitted');
   await shot(page, 'stop-motion', '01-refused-no-money');
   await page.keyboard.press('Escape');
-  await secureStartingBacking(page);
-
-  await castRoles(page, []);
-  await staffEveryDepartment(page);
-  await advance(page, 'next-day');
-
-  // A micro budget doesn't stretch to a stop-motion production with every department staffed: the schedule is refused
-  // with the shortfall and the ways out. Raising the target to what the whole production needs (the stage materials and
-  // the stop-motion animators' days as well as the crew already offered) and bringing in an investor pays for it. A
-  // target raised only enough for the schedule left the animators unaffordable and the animation blocked.
-  await section(page, 'Schedule');
-  await page.getByRole('button', { name: /Build Schedule|Rebuild Schedule/ }).click();
-  await expect(page.getByText(/^This schedule needs \$[\d,]+ for locations, equipment and materials, but only \$[\d,]+ is uncommitted\. Release someone, cut scenes, or bring in more funding\.$/)).toBeVisible();
-  await expect(page.getByText('Build a schedule to see shoot days.')).toBeVisible();
-  await shot(page, 'stop-motion', '02-schedule-needs-money');
+  // Once the script is approved, its estimate is what it needs at micro size: more than the size's $40,000. The player
+  // asks the starting backing for only $40,000; staffing then names the shortfall and hires no one, rather than the
+  // puppet makers without the animator. Raising the target back to the estimate, an investor makes up the difference.
   await section(page, 'Budget');
-  await page.getByLabel('Change Financing Target').fill('75000');
+  const fin = page.locator('section.card', { has: page.getByRole('heading', { name: 'Financing' }) });
+  const amount = (label: string) => fin.locator('dt', { hasText: new RegExp(`^${label}$`) }).locator('xpath=following-sibling::dd[1]');
+  await expect(fin).toContainText('The estimate is what the approved script needs at micro budget size');
+  const estimate = Number((await amount('Budget Estimate').innerText()).replace(/\D/g, ''));
+  const dollars = (n: number) => `$${n.toLocaleString('en-US')}`;
+  expect(estimate).toBeGreaterThan(40_000);
+  await expect(amount('Financing Target')).toHaveText(dollars(estimate));
+  await fin.scrollIntoViewIfNeeded();
+  await shot(page, 'stop-motion', '02-estimate');
+  await page.getByLabel('Change Financing Target').fill('40000');
+  await page.getByRole('button', { name: 'Set Target' }).click();
+  await secureStartingBacking(page);
+  await castRoles(page, []);
+  await section(page, 'Crew');
+  await page.locator('section.card', { has: page.getByRole('heading', { name: 'Stop Motion' }) }).getByRole('button', { name: 'Staff This Department' }).click();
+  const staff = page.getByRole('dialog');
+  await expect(staff).toContainText(/The required crew still to hire costs about \$[\d,]+ at the lowest rates, and \$[\d,]+ is uncommitted\. Raise the rest before staffing, or cut scope\./);
+  await expect(staff.getByRole('button', { name: 'Send Offers' })).toBeDisabled();
+  await expect(staff).not.toContainText('Every role here already has someone');
+  await shot(page, 'stop-motion', '03-crew-short');
+  await staff.getByRole('button', { name: 'Cancel' }).click();
+  await section(page, 'Budget');
+  await page.getByLabel('Change Financing Target').fill(String(estimate));
   await page.getByRole('button', { name: 'Set Target' }).click();
   await page.getByRole('button', { name: 'Approach Private Investor' }).click();
   const backers = page.locator('section.card', { has: page.getByRole('heading', { name: 'Backers' }) });
@@ -177,10 +187,13 @@ test('stop motion: refused for lack of money, then backed; reopened while its da
     await advance(page, 'week');
     await section(page, 'Budget');
   }
-  await expect(investor).toContainText('$35,000 when you sign.');
+  await expect(investor).toContainText(`${dollars(estimate - 40_000)} when you sign.`);
   await investor.getByRole('button', { name: 'Accept Offer' }).click();
   await page.getByRole('dialog', { name: 'Accept These Terms?' }).getByRole('button', { name: /^Accept \$/ }).click();
-  await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Financing' }) })).toContainText('$75,000');
+  await expect(amount('Promised By Backers')).toHaveText(dollars(estimate));
+  await staffEveryDepartment(page);
+  await castRoles(page, []);
+  await advance(page, 'next-day');
   await section(page, 'Schedule');
   await page.getByRole('button', { name: /Build Schedule|Rebuild Schedule/ }).click();
   await expect(page.getByText('Build a schedule to see shoot days.')).toHaveCount(0);
@@ -198,7 +211,7 @@ test('stop motion: refused for lack of money, then backed; reopened while its da
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByText("The game's genre catalog couldn't be loaded. Check your connection and try again.")).toBeVisible();
-  await shot(page, 'stop-motion', '03-data-failed');
+  await shot(page, 'stop-motion', '04-data-failed');
   refuse = false;
   await page.getByRole('button', { name: 'Try Again' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();

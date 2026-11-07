@@ -6,7 +6,7 @@ import {
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
-  type StaffingProposal, covers,
+  type StaffingProposal, covers, fundingScenario,
 } from '../engine';
 import { breakdownComplete, characterPronouns, pronounsMatch } from '../engine/script-explain';
 import type { FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
@@ -248,7 +248,7 @@ export function CrewTab({ p }: { p: Project }) {
           <p className="muted">Review these suggestions before any offers go out. They're the most affordable available people with some experience.</p>
           {proposal.proposals.length ? (
             <ul className="list">{proposal.proposals.map((x) => <li key={x.roleId}><strong>{roleLabel(x.roleId)}</strong>: {x.name}, {money(x.dayRate)} a day for about {plural(x.days, 'day')} ({money(x.total)})</li>)}</ul>
-          ) : <p>Every role here already has someone or an offer out.</p>}
+          ) : proposal.skipped.length ? null : <p>Every role here already has someone or an offer out.</p>}
           {proposal.skipped.map((x) => <p key={x} className="dim" style={{ color: 'var(--warning)' }}>{x}</p>)}
         </Modal>
       )}
@@ -448,7 +448,12 @@ function FinancingPanel({ p }: { p: Project }) {
     <>
       <section className="card" aria-labelledby="fin-h">
         <h2 id="fin-h">Financing</h2>
-        <p className="muted">Your budget size is an estimate. Money arrives only from backers whose terms you accept.</p>
+        <p className="muted">
+          {p.approvedDraft === null
+            ? 'Until a script is approved, the estimate is your budget size. '
+            : `The estimate is what the approved script needs at ${fundingScenario(p.funding.scenarioId).label.toLowerCase()} size: the crew and cast still to hire at the lowest rates, materials, shoot days, studio and render time, what's already spent or agreed, and a tenth more for what goes wrong. It's never below the budget size. `}
+          Money arrives only from backers whose terms you accept.
+        </p>
         <dl className="kv">
           <dt>Budget Estimate</dt><dd>{money(f.estimate)}</dd>
           <dt>Financing Target</dt><dd>{money(f.target)}</dd>
