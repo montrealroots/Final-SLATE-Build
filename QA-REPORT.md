@@ -3,12 +3,30 @@
 ## Revision And Environment
 
 - Branch `claude/clever-archimedes-x0r26v` at the commit that updates this report, merged into `main` by checkpoint pull request. Repository remote: https://github.com/montrealroots/Final-SLATE-Build.
-- Linux cloud container; Node 22.23.4; npm 10.9.9; TypeScript 6.0.2; Vite 8.3.6; React 19.3.1; Vitest 5.1.0; Playwright 1.63.0 with its bundled Chromium.
+- Linux cloud container; Node 22.23.4; npm 10.9.9; TypeScript 6.0.2; Vite 8.3.6; React 19.3.1; Vitest 5.1.0; Playwright 1.63.0 with its bundled Chromium and the installed WebKit build. All browser testing is emulation: Chromium at desktop and phone sizes, WebKit with Playwright's iPhone 15 Plus and 15 Pro Max profiles. No physical device or real Safari was used.
 - Seeds: the engine journeys use fixed save tags; the balance runs use `seed1` to `seed30`.
 
 ## Commands And Results
 
-### Current: Script Rules Review (November 7, 2026)
+### Current: Input Loss, Startup And Connected Journeys (November 7, 2026, after #34)
+
+Local Linux container, branch `claude/clever-archimedes-x0r26v` from `main` at `6e2abf0` (#34). The commands ran on the
+branch's final source; the commits after the runs change only these reports. See the PR for CI.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 30 files, 250 tests passed; build passed; startup JavaScript 661 kB raw (676,736 bytes), 205 kB gzipped, budgets 700 and 220 kB, 0 problems. Before this pass it was 701 kB (718,078 bytes), over budget (`docs/PERFORMANCE.md`). |
+| `npm run balance` | 0 | 2 tests passed; `docs/balance-results.json` and `docs/balance-heldout.json` unchanged. |
+| `npm run perf:engine` | 0 | 2 tests passed. |
+| `npm run e2e -- --trace retain-on-failure` | 0 | Development server, the complete suite: 134 passed, 24 skipped, 0 failed, in 16.8 minutes. |
+| `SLATE_E2E_PROD=1 npm run e2e -- --trace retain-on-failure` | 0 | Production build, the complete suite: 134 passed, 24 skipped, 0 failed, in 12.7 minutes. |
+| `e2e/focus.spec.ts`, old code against new | | With the old code: the typing test failed 8 of 8 runs (desktop and `iphone-15-plus`), the map test every run. With the fix: 24 of 24 passed (desktop, phone, both iPhone projects, three runs each). |
+
+158 browser tests are listed: 65 on desktop, 65 on phone, 13 on `iphone-15-plus`, 14 on `iphone-15-pro-max`, 1 on
+`iphone-15-pro-max-landscape` (`npx playwright test --list`). Every test also fails on any console error, page error or
+failed request, unless it injects that failure on purpose (`e2e/test.ts`).
+
+### Previous: Script Rules Review (November 7, 2026, #34)
 
 Local Linux container, branch `claude/clever-archimedes-x0r26v` after `main` at `4e9e484` (#33). The commands ran on the
 branch's final source (the commits that follow change only these reports). See the PR for CI.
@@ -18,10 +36,10 @@ branch's final source (the commits that follow change only these reports). See t
 | `npm run check` | 0 | World check 0 problems; typecheck clean; 30 files, 250 tests passed (`tests/script-effects.test.ts` 23); build passed; startup JavaScript 700 kB raw, 216 kB gzipped (budgets 700 and 220 kB, 0 problems). It reached 703 kB with the review's engine code; explanations only the project screens use moved to `src/engine/script-explain.ts`, loaded with those screens, instead of raising the budget. |
 | `npm run balance` | 0 | 2 tests passed. Family means within half a point of before after the script base went from 40 to 42; two held-out combinations fell about 2 overall (see `docs/SCREENWRITING-AUDIT.md`). |
 | `npx playwright test e2e/script-rules.spec.ts` (production build, desktop and phone) | 0 | 3 passed, 1 skipped (the mature-project journey runs at desktop width only). Screenshots inspected: supporting antagonist placement, incomplete pitch (desktop and phone), treatment sent, content declared, cut dialog, pickup, late-slot broadcast offers. They led to three copy fixes (see Defects). |
-| `npm run e2e -- --trace off` | 1 | Development server: 120 passed, 24 skipped, 1 failed: `e2e/live-action.spec.ts` on `iphone-15-pro-max` (WebKit), where the typed working title was gone when Create Project was pressed ("Enter a working title."). The same spec repeated 6 times on that project passed 6 times, and a minimal fill-and-check repeated 30 times on both iPhone projects passed 30 times. It is recorded as an open intermittent WebKit fault together with CI run 63's (see Open below), not as a pass. |
+| `npm run e2e -- --trace off` | 1 | Development server: 120 passed, 24 skipped, 1 failed: `e2e/live-action.spec.ts` on `iphone-15-pro-max` (WebKit; explained and fixed after #34, see Defects), where the typed working title was gone when Create Project was pressed ("Enter a working title."). The same spec repeated 6 times on that project passed 6 times, and a minimal fill-and-check repeated 30 times on both iPhone projects passed 30 times. It is recorded as an open intermittent WebKit fault together with CI run 63's (see Open below), not as a pass. |
 | `SLATE_E2E_PROD=1 npm run e2e -- --trace retain-on-failure` | 0 | Production build, the complete suite: 121 passed, 24 skipped, 0 failed, in 9.7 minutes, with console, page-error and failed-request checks on every test. The 24 skips are the 23 listed below plus the mature-project playthrough on phone (desktop only, by design). |
 
-### Previous: November 6-7, 2026
+### Earlier: November 6-7, 2026
 
 Screenwriting, motion-capture and replacement checkpoint (after montrealroots/Final-SLATE-Build#25), local Linux container.
 
@@ -37,34 +55,43 @@ Screenwriting, motion-capture and replacement checkpoint (after montrealroots/Fi
 | `npm run e2e -- --trace off` | 0 | Dev server: 106 passed, 23 skipped, 0 failed, with console, page-error and failed-request checks on every test. (An earlier run failed one journey because a source file was edited mid-run and the dev server reloaded the page; the clean rerun is the result given.) |
 | `SLATE_E2E_PROD=1 npm run e2e -- --trace retain-on-failure` | 0 | Production build, the complete suite: 106 passed, 23 skipped, 0 failed, in 8.0 minutes. |
 
-### Acceptance Journeys (This Request)
+### Acceptance Journeys (current)
 
-| Journey | Test |
-| --- | --- |
-| Creation, Review edits, Start My Story | `e2e/creation.spec.ts` (desktop, phone, WebKit), `e2e/first-project.spec.ts` |
-| Script, budget, funding refused and secured, casting and crew, schedule, production, finishing, release | `e2e/first-project.spec.ts` |
-| A second project with the first one's history intact | `e2e/first-project.spec.ts` |
-| Export, import into a fresh browser, open, play, save, reload; duplicates; refusals; two tabs | `e2e/backup.spec.ts` |
-| Recovery copies, full storage, failed saves | `e2e/storage.spec.ts`, `e2e/failures.spec.ts` |
-| Insufficient funds | `e2e/first-project.spec.ts` (an offer refused: "only $0 is uncommitted") |
-| Schedule conflicts | `e2e/screenings.spec.ts` (screening conflicts), `e2e/live-action.spec.ts` (weather), `tests/mocap-calendar.test.ts` (capture sessions) |
-| Revisions | `tests/writing.test.ts`, `tests/screenwriting.test.ts` (engine; not yet a browser journey) |
-| Screenshots | Desktop and phone screenshots of the financing screens and terms dialog were inspected; traces are kept on failure |
+| Journey | Test | Where it runs |
+| --- | --- | --- |
+| One connected career: creation with two Review edits; naming characters with a supporting antagonist; script choices (an essential scene, a clue planted and paid off, declared strong content); the grant blocked on missing documents, then the documents written and sent; casting; crew; the schedule; an essential scene cut, restored and picked up; production; the edit; delivery; a late-slot broadcast offer taken with a broadcast edit; Save & Exit and Continue mid-production and at the end, checking every choice survived | `e2e/connected.spec.ts` | desktop, phone, `iphone-15-pro-max` |
+| Supporting-antagonist placement, an incomplete pitch, a revised treatment; a mature project with a cut and picked-up essential scene and the late slot | `e2e/script-rules.spec.ts` | desktop and phone; the mature journey on desktop |
+| Creation, every Review edit, invalid edits, Start My Story with something missing, keyboard and reload | `e2e/creation.spec.ts` | desktop, phone, both iPhone projects |
+| Typing straight after a screen change; Save And Return To Review while the map arrives | `e2e/focus.spec.ts` | desktop, phone, both iPhone projects |
+| First project: write, approve, a grant refused, the agreed backing, production, release, a second project with history intact | `e2e/first-project.spec.ts` | desktop; financing screens on phone |
+| Media journeys: 2D, hybrid, documentary and a decline, TV, web series, 3D with motion capture, stop motion, unscripted and a withdrawal, festivals and awards to the ceremony | `e2e/journeys.spec.ts`, `e2e/media.spec.ts` | desktop |
+| Export, import into a fresh browser, duplicates, refusals, two tabs; recovery copies, full storage, failed saves, missing data | `e2e/backup.spec.ts`, `e2e/storage.spec.ts`, `e2e/failures.spec.ts`, `e2e/reliability.spec.ts` | desktop and phone |
+| Revisions | `tests/writing.test.ts`, `tests/screenwriting.test.ts` | engine only; not a browser journey |
 
-### Why 23 Browser Tests Are Skipped
+Screenshots of the connected journey (desktop, phone and `iphone-15-pro-max`), the script-rules journeys and the focus
+tests were inspected; traces are kept for any failure.
 
-Skipped tests did not run and are not counted as passed. Each is skipped on purpose for the project named, by an explicit `test.skip(project…)`; no test skips itself on an outcome any more:
+### Why 24 Browser Tests Are Skipped
 
-- **1 on desktop:** the phone device test runs only on the iPhone emulation projects.
-- **22 on phone (Chromium 390×844):** the first-project journey, the two-tab import check, and journeys that run once, at desktop width (2D, hybrid, documentary and its decline, TV, web series, 3D with motion capture, stop motion, unscripted and its withdrawal, the two media checks), the performance measurement, the two-tab storage check, and four lifecycle and layout checks that set their own viewports or tabs (every-viewport sweep, keyboard, clock while hidden, second tab).
-- WebKit iPhone projects only run `live-action` and `devices` specs (configured in `playwright.config.ts`), so other specs are not listed for them at all.
+Skipped tests did not run and are not counted as passed. Each is skipped on purpose for the project named, by an
+explicit `test.skip(project…)`; no test skips itself on an outcome:
+
+- **1 on desktop:** the phone device test runs only on the iPhone projects.
+- **23 on phone (Chromium 390×844):** the device test (iPhone projects only), and the journeys and checks that run once,
+  at desktop width: the first-project journey (1), the two-tab import and storage checks (2), the 11 journeys in
+  `e2e/journeys.spec.ts` (2D, hybrid, documentary and its decline, TV, web series, 3D with motion capture, stop motion,
+  unscripted and its withdrawal, festival under official rules), the two media checks (2), the performance measurement
+  (1), the mature-project script-rules journey (1), and four layout and lifecycle checks that set their own viewports or
+  tabs (4).
+- The WebKit iPhone projects list only the specs they run (`playwright.config.ts`): `iphone-15-plus` runs creation,
+  focus, live-action and devices; `iphone-15-pro-max` the same plus the connected journey; the landscape project runs
+  devices. Specs they don't list aren't counted for them at all.
 
 ### Not Automated
 
-- No physical iPhone or real Safari: WebKit emulation only.
+- No physical iPhone or real Safari: WebKit emulation only, and the on-screen keyboard can't be emulated.
 - No screen-reader pass by a person; the accessibility checks are automated.
 - No human playtesting for enjoyment or balance.
-- The WebKit typing loss noted at the last checkpoint is explained and fixed (focus timing; see Defects). The test-side wait was removed.
 
 ## Also Checked During Development
 
@@ -76,6 +103,10 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 
 | Severity | Defect | Fix | Regression Check |
 | --- | --- | --- | --- |
+| High | (The intermittent WebKit failure in New Script, after #34) Text typed right after a screen change was lost: `store.go` moved focus to the screen one animation frame later, and on a busy device that frame arrived mid-typing ("The Last Ferry" became "Th"). Not WebKit-specific: reproduced on Chromium too once frames were made late | Focus moves in a layout effect in the commit that shows the screen | `e2e/focus.spec.ts` (failed 8 of 8 on the old code) |
+| Medium | (The CI run 63 failure in creation) The world map drew a one-line placeholder, then grew 364 px on desktop and 195 px on an iPhone a moment later, pushing Save And Return To Review down after it was drawn; a click or tap aimed at it landed elsewhere | The placeholder is the map's own box with its credit line | `e2e/focus.spec.ts` (failed on every run on the old code) |
+| Medium | (Found moving the genre catalog out of startup) A catalog that failed to load could never be retried: browsers keep a failed dynamic import failed | Fetched instead of imported; a failure stops the game opening with the reason and Try Again | `e2e/failures.spec.ts` |
+| Low | Startup JavaScript was over its 700 kB budget (701 kB) | The genre catalog and seasons table load in the background before a game opens (661 kB); the budget unchanged | `npm run budget` |
 | High | (Found by the mature-project playthrough) A pickup asked for before or during the shoot was booked three days out, ahead of prep: the day was lost but still paid fees and crew, and the project could no longer afford the reshoot or deliver | Pickups are booked after the last scheduled shoot day | `tests/script-effects.test.ts` ("a pickup asked for before the shoot"), `e2e/script-rules.spec.ts` |
 | High | A scene cut from the edit still held up the assembly edit, which waited for every approved scene's footage | The capture milestone skips scenes cut from the edit | `tests/script-effects.test.ts` ("a shoot day left empty by a cut") |
 | Medium | Rules merged in #33 rewarded filling boxes or were arbitrary: story functions forced leading placement; an "18+" rating inferred from one checkbox barred broadcast; text presence bought time (a week, a day) and design work; the turning-point penalty could never apply; a shared background scored performances | Replaced or removed as traced in `docs/SCREENWRITING-AUDIT.md` | `tests/script-effects.test.ts`, `tests/heritage.test.ts`, `tests/genres.test.ts` |
@@ -138,19 +169,20 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 
 ## Open
 
-- **Intermittent WebKit input loss after a screen change.** Twice: CI run 63 on `main` (creation: Save And Return To
-  Review left the Identity screen showing, `iphone-15-plus`) and the development-server suite for this checkpoint (New
-  Script: the working title was empty at Create Project, `iphone-15-pro-max`). Neither reproduced in 6 repeats of the
-  journey and 30 repeats of a minimal check; no trace was kept from either failure. Not fixed. The earlier WebKit
-  typing loss had a focus-timing cause; nothing equivalent was found in the New Script screen.
+- No code fault is open from this pass. The intermittent WebKit input loss recorded at #34 was reproduced and fixed (see
+  Defects). Physical devices, a person's screen-reader pass and human playtesting remain outside what was tested.
 
 ## Acceptance Status
 
-**Pending.** All required automated checks pass on this revision. Still open (see `RESUME-HERE.md`):
+**Pending owner acceptance.** On the final source of this pass every required automated check passed: `npm run check`,
+the balance and engine performance tests, and both complete browser suites (134 passed, 24 skipped by design, 0
+failed). Still open (see `RESUME-HERE.md`):
 
-- No physical iPhone or real Safari verification. WebKit emulation passed, but the on-screen keyboard can't be emulated.
-- Lunar holidays exist for 2026 only.
-- The 66 legacy places are matched to GeoNames (64 high confidence, 2 reviewed by hand); the world search and pickers are not built yet (M2).
-- Festival and award rules: 47 of 142 categories use organizer rules read for an edition in play and 2 use projected rules (`docs/world/RULEBOOK-AUDIT.md`); the other 93 are simulated and labelled. TIFF and BAFTA could not be read (HTTP 403).
+- No physical iPhone or real Safari verification; WebKit emulation only.
+- Holidays: dated from 2026 to 2100 by the worldwide rules, with lunar and announced holidays beyond their published
+  years labelled projected or expected, and some not dated until their country announces them.
+- Festival and award rules: 48 of 142 categories use organizer rules read for an edition in play and 2 use projected
+  rules (`docs/world/RULEBOOK-AUDIT.md`); the other 92 are simulated and labelled. TIFF and BAFTA couldn't be read
+  (HTTP 403).
 
 This base is not claimed to be finished, bug-free or fully realistic.
