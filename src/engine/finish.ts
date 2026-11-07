@@ -1,5 +1,6 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
+import { approvedTake, captureCredit } from './mocap';
 import { financeCredits, onProjectDelivered, receiveIncome } from './finance';
 import { getPlace } from '../data/places';
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
@@ -183,7 +184,19 @@ export function computeCredits(state: GameState, p: Project): Credit[] {
     const eps = [...new Set(approvedScenes(p).filter((s) => s.participants.includes(c.id)).map((s) => s.episode))];
     if (!eps.length) continue;
     const name = a.performer === 'player' ? me : personById(state, a.performer).name;
-    add({ person: a.performer, personName: name, contribution: a.method === 'voice' ? 'Voice Cast' : a.method === 'motion-capture' ? 'Performance Capture' : 'Cast', roleId: a.method === 'voice' ? 'voice-actor' : 'actor', characterName: c.name, episodes: episodic ? eps : 'all' });
+    add({ person: a.performer, personName: name, contribution: a.method === 'voice' ? 'Voice Cast' : a.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: a.method === 'voice' ? 'voice-actor' : 'actor', characterName: c.name, episodes: episodic ? eps : 'all' });
+  }
+  // Performers replaced after contributing keep their credit while their work is still in the film: a capture of a
+  // scene they performed, or the approved motion-capture take.
+  for (const h of p.hires.filter((x) => x.kind === 'cast' && x.status === 'released' && x.daysWorked > 0 && x.characterId)) {
+    const c = chars.find((x) => x.id === h.characterId);
+    if (!c || p.cast.some((a) => a.characterId === c.id && a.performer === h.personId)) continue;
+    const scenesOf = approvedScenes(p).filter((s) => s.participants.includes(c.id));
+    const inCapture = h.method !== 'voice' && h.method !== 'motion-capture' && p.captures.some((cp) => scenesOf.some((s) => s.id === cp.sceneId) && cp.performers?.includes(h.personId));
+    const inTake = h.method === 'motion-capture' && approvedTake(p, c.id)?.performer === h.personId;
+    if (!inCapture && !inTake) continue;
+    const eps = [...new Set(scenesOf.map((s) => s.episode))];
+    add({ person: h.personId, personName: personById(state, h.personId).name, contribution: h.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: 'actor', characterName: c.name, episodes: episodic ? eps : 'all' });
   }
   for (const h of p.hires.filter((x) => x.kind === 'crew' && x.daysWorked > 0 && x.roleId !== 'co-writer' && x.roleId !== 'episode-writer' && x.roleId !== 'episode-director')) {
     add({ person: h.personId, personName: personById(state, h.personId).name, contribution: roleLabel(h.roleId), roleId: h.roleId, episodes: h.episodes });
@@ -209,9 +222,16 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   const setups = p.setups.length ? p.setups.filter((x) => x.plantedIn && x.paidIn).length / p.setups.length : 0.6;
   const { questions } = composeGenres(p.axes.genres.map((g) => g.id));
   const answered = questions.length ? questions.filter((q) => (p.genreNotes[q.key] ?? '').trim()).length / questions.length : 0.7;
-  const addressed = p.notes.filter((n) => n.status === 'addressed').length;
+  // Only notes the readiness checks raised count, once a revision pass has addressed them. Notes you write yourself are
+  // for your own process, and a pass with nothing to address adds nothing: repeating passes can't manufacture quality.
+  // ...and only when the check it came from is gone from the script's readiness checks.
+  const open = new Set(issues.map((i) => i.text));
+  const addressed = p.notes.filter((n) => n.status === 'addressed' && n.source === 'readiness' && !open.has(n.text)).length;
   const writerHelp = p.hires.filter((h) => ['co-writer', 'script-editor'].includes(h.roleId) && h.status !== 'declined').map((h) => personById(state, h.personId).capability);
-  const script = clamp(35 + objectives * 15 + setups * 12 + answered * 10 + Math.min(12, p.revisionPasses * 4 + addressed) - Math.min(20, notes * 1.5) + (writerHelp.length ? (avg(writerHelp) - 60) / 6 : 0));
+  // Free text is checked for presence only (objectives, answers to genre questions), so it weighs little; structure the
+  // engine can follow (setups planted and paid off in named scenes), addressed readiness notes and skilled writing help
+  // weigh more. Filling every field on your own tops out around 70 of 100.
+  const script = clamp(40 + objectives * 6 + setups * 10 + answered * 4 + Math.min(10, addressed * 2) - Math.min(20, notes * 1.5) + (writerHelp.length ? (avg(writerHelp) - 50) / 3 : 0));
   const caps = p.captures.filter((c) => scenes.some((s) => s.id === c.sceneId));
   const captureQ = avg(caps.map((c) => c.quality), 60);
   const lostDays = p.schedule.days.filter((d) => d.status === 'lost').length;

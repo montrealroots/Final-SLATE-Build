@@ -518,6 +518,19 @@ export function addNote(state: GameState, p: Project, text: string, area: Revisi
   return n;
 }
 
+/**
+ * Turn a readiness check into a revision note (source 'readiness'). Only a check the script really has now can be
+ * added, once; its quality credit comes later, only when a revision has addressed it and the check no longer appears.
+ */
+export function noteFromIssue(state: GameState, p: Project, text: string): RevisionNote {
+  const issue = scriptIssues(p).find((i) => i.text === text && i.severity === 'note');
+  if (!issue) throw new Error('That readiness check no longer applies.');
+  if (p.notes.some((n) => n.source === 'readiness' && n.text === text && n.status !== 'addressed')) throw new Error('That check is already in your revision notes.');
+  const n: RevisionNote = { id: newId(state, 'n'), text, area: issue.area === 'production' ? 'continuity' : issue.area === 'genre' ? 'structure' : issue.area, sceneId: issue.sceneId ?? null, status: 'open', source: 'readiness' };
+  p.notes.push(n);
+  return n;
+}
+
 export function setNoteStatus(p: Project, id: string, status: 'accepted' | 'rejected' | 'open'): void {
   const n = p.notes.find((x) => x.id === id);
   if (!n) throw new Error('That note no longer exists.');

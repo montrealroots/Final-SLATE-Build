@@ -106,7 +106,7 @@ describe('motion capture', () => {
     const calib = p.tasks.find((t) => t.id === `anim:mocap-calib:${golem.id}`)!;
     expect(depsMet(p, calib)).toEqual({ ok: false, reason: expect.stringMatching(/Book the capture stage first|Waiting for/) });
     const before = ledgerTotals(p).available;
-    bookMocap(s, p, golem.id);
+    bookMocap(s, p, golem.id, ['body']); // body only: the stage's base price per session
     const cost = 3 * MOCAP_SESSION_STAGE; // calibration plus two scenes
     expect(before - ledgerTotals(p).available).toBe(cost);
     expect(() => bookMocap(s, p, golem.id)).toThrow(/already booked/);
@@ -115,7 +115,7 @@ describe('motion capture', () => {
     expect(released).toBe(cost - fee);
     expect(before - ledgerTotals(p).available).toBe(fee);
     expect(stageBlock(p, golem.id)).toMatch(/cancelled/);
-    bookMocap(s, p, golem.id); // rebooking works
+    bookMocap(s, p, golem.id, ['body']); // rebooking works
     expect(stageBlock(p, golem.id)).toBeNull();
   }, 60000);
 });
@@ -136,7 +136,7 @@ describe('motion capture takes', () => {
     }
     startProduction(s, p, 3);
     const golem = p.characters.find((c) => c.name === 'Golem')!;
-    bookMocap(s, p, golem.id);
+    bookMocap(s, p, golem.id, ['body']); // body only: the stage's base price per session
     const cap = p.tasks.find((t) => t.id === `anim:mocap:${golem.id}`)!;
     for (let i = 0; i < 200 && cap.status !== 'done'; i++) processUntil(s, s.now + DAY, 'tick', 100000);
     const rec = mocapRecord(p, golem.id);

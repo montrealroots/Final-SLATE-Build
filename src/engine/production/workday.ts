@@ -7,11 +7,11 @@ import { ledgerTotals, money, settle, spend, FundsError } from '../budget';
 import { placeHolidaysOn } from '../holidays';
 import { covers, roleLabel } from '../people';
 import { approvedCharacters, approvedScenes, sceneTechnique } from '../projects';
-import { approvedTake, payStageSession, recordTake, stageBlock } from '../mocap';
+import { approvedTake, payStageSession, performerOnSet, rebookMissed, rebookPassed, recordTake, sessionToday, stageBlock } from '../mocap';
 import { stream } from '../rng';
 import { decideCompetition } from '../unscripted';
 import { addLog, registerHandler, schedule } from '../state';
-import { addDaysToKey, localToInstant, parseYmd } from '../time';
+import { addDaysToKey, formatDateKey, localToInstant, parseYmd } from '../time';
 import { HOLIDAY_PREMIUM, MATERIAL_COST, RENDER_HOURS_PER_FRAME, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO } from './rates';
 import { SHOOT_CREW, markCaptured } from './shoot';
 import { t } from './tasks';
@@ -111,6 +111,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
   // Shoot-day crews are busy on set.
   const shootToday = p.schedule.days.find((d) => d.date === date && d.status !== 'scheduled');
   if (shootToday) for (const h of p.hires) if (SHOOT_CREW.has(h.roleId) && h.status === 'accepted') used.add(h.personId);
+  rebookPassed(state, p, date);
   const completed: string[] = [];
   let renderNodeDays = 0;
   const puppetInUse = new Map<string, number>();
@@ -127,6 +128,25 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
     if (task.kind === 'anim:mocap' || task.kind === 'anim:mocap-calib') {
       // A stage session: paid from the booking once per day; the performer is paid once per day even when they also voice the role.
       const charId = task.assetRef!;
+      // Dated bookings: work only on the character's booked session days.
+      const rec = p.mocap?.[charId];
+      let session = undefined as ReturnType<typeof sessionToday>;
+      if (rec?.sessions) {
+        const kind = task.kind === 'anim:mocap-calib' ? 'calibration' : 'capture';
+        session = sessionToday(p, charId, kind, date);
+        if (!session) {
+          const next = rec.sessions.filter((x) => x.status === 'booked' && x.kind === kind).map((x) => x.date).sort()[0];
+          task.status = 'waiting';
+          task.blockedReason = next ? `Next ${kind === 'calibration' ? 'calibration' : 'capture'} session: ${formatDateKey(next)}.` : 'No session is booked. Ask for a retake or book the stage again.';
+          continue;
+        }
+        const busy = performerOnSet(state, p, charId, date);
+        if (busy) {
+          rebookMissed(state, p, charId, session, busy);
+          task.status = 'waiting';
+          continue;
+        }
+      }
       if (!payStageSession(state, p, charId, `mocap:${task.id}:${date}`)) {
         task.status = 'blocked';
         task.blockedReason = 'The capture booking has no sessions left. Ask for a retake or book the stage again.';
@@ -136,6 +156,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
       const h = cast?.hireId ? p.hires.find((x) => x.id === cast.hireId) : undefined;
       if (h && h.status === 'accepted' && h.obligationId && settle(state, p, h.obligationId, h.dayRate, `${h.id}:${date}`)) h.daysWorked += 1;
       if (task.kind === 'anim:mocap') recordTake(state, p, charId, date);
+      if (session) session.status = 'done';
       task.done += 1;
       task.status = 'active';
       task.workedDays += 1;

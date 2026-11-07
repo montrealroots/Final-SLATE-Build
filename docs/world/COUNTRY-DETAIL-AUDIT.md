@@ -48,11 +48,12 @@ Tried this session and not readable from here, or not found in an official sourc
 | Entry | What happened |
 | --- | --- |
 | MW Malawi | Public Holidays Act (Cap. 18:05) found on MalawiLII; its schedule is behind a bot check, which was not bypassed. Search excerpts give sections 2-4 (Minister may add or move days; weekend days move) but not the dates |
+| SZ Eswatini | Public Holidays Act, 1938 (as at 1998) found on EswatiniLII; its search excerpt gives the Sunday rule (a holiday on a Sunday is observed on the Monday), but the schedule of days is behind a bot check, which was not bypassed (second pass, November 6, 2026) |
 | FO Faroe Islands | No løgtingslóg text reached (logir.fo path not found; norden.org 403). Secondary sources only |
 | SJ Svalbard and Jan Mayen | Norway's Helligdagsfredloven read on Lovdata, but it says nothing about Svalbard, and the Svalbard Act applies other Norwegian law only where specially provided. Norway's days are **not** copied |
 | PW Palau | Palau National Code Title 1 ch. 7 on PacLII (403) and its AustLII mirror (connection dropped) |
 | TJ Tajikistan, CV Cabo Verde | Only commercial calendars found; Cabo Verde's Decreto-Lei n.º 18/84 named by them but not reached |
-| AF, BT, CF, ER, GM, GQ, GW, HT, IO, IR, KP, LA, LS, MM, SL, SO, SS, SZ, TF, TK, TV | Not researched this session (blocked in the package's ledger) |
+| AF, BT, CF, ER, GM, GQ, GW, HT, IO, IR, KP, LA, LS, MM, SL, SO, SS, TF, TK, TV | Not researched this session (blocked in the package's ledger) |
 
 The game says "Holiday dates for {country} aren't included yet, so no day here is treated as a holiday." for these.
 A fallback is not verified data, so none is used.

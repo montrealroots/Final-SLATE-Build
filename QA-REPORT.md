@@ -8,19 +8,33 @@
 
 ## Commands And Results
 
-Latest full run: November 6, 2026, first-project journey and financing checkpoint (after montrealroots/Final-SLATE-Build#24), local Linux container.
+Latest full run: November 6-7, 2026, screenwriting, motion-capture and replacement checkpoint (after montrealroots/Final-SLATE-Build#25), local Linux container.
 
 | Command | Exit | Result |
 | --- | --- | --- |
 | `npm run world:check` | 0 | 252 entries (246 playable), 3,865 regions, 246 shards, 171,750 rows with 171,750 unique IDs, 175 outlines, 219 holiday entries, 11,459 stations; 0 problems. Ledger classifications resolved (`docs/world/COUNTRY-DETAIL-AUDIT.md`). |
 | `npm run typecheck` | 0 | No type errors (strict mode). |
-| `npm test` | 0 | 28 files, 209 tests passed, 0 skipped (new: `tests/finance.test.ts` 10, `tests/import.test.ts` 7, `tests/creation.test.ts` 4). |
+| `npm test` | 0 | 30 files, 219 tests passed, 0 skipped (new this request: `tests/finance.test.ts` 10, `tests/import.test.ts` 7, `tests/screenwriting.test.ts` 5, `tests/creation.test.ts` 4, `tests/mocap-calendar.test.ts` 4). |
 | `npm run build` | 0 | Built. One existing Vite notice (Startup is imported both statically and dynamically), present before this checkpoint. |
-| `npm run budget` | 0 | Startup JavaScript 695 kB raw, 214 kB gzipped, in 4 files including React (budgets 700 and 220 kB): financing, Import Save and the creation registry added 18 kB since the last checkpoint, leaving 5 kB of room. World data is never in the startup files; the largest on-demand file is the station table, 3,216 kB. |
+| `npm run budget` | 0 | Startup JavaScript 687 kB raw, 212 kB gzipped, in 4 files including React (budgets 700 and 220 kB). It reached 702 kB with this checkpoint's engine code; the Calendar, Place and Profile screens now load on first use instead of raising the budget. The largest on-demand file is the station table, 3,216 kB. |
 | `npm run balance` | 0 | 2 tests passed: 180 family runs, 120 sensitivity runs, determinism check, and 30 held-out combination runs. Took 34 seconds on this checkpoint (98 seconds before the snapshot change, same machine). |
 | `npm run perf:engine` | 0 | Fresh, medium and long saves; see `docs/PERFORMANCE.md`. |
-| `npm run e2e -- --trace off` | 0 | Dev server: 103 passed, 22 skipped, 0 failed (before the first-project spec was added; that spec then passed alone: 3 passed, 1 skipped), with console, page-error and failed-request checks on every test. |
-| `SLATE_E2E_PROD=1 npm run e2e -- --trace off` | 0 | Production build (`vite build`, `vite preview`), the complete suite including the first-project journey: 106 passed, 23 skipped, 0 failed, in 6.7 minutes. |
+| `npm run e2e -- --trace off` | 0 | Dev server: 106 passed, 23 skipped, 0 failed, with console, page-error and failed-request checks on every test. (An earlier run failed one journey because a source file was edited mid-run and the dev server reloaded the page; the clean rerun is the result given.) |
+| `SLATE_E2E_PROD=1 npm run e2e -- --trace retain-on-failure` | 0 | Production build, the complete suite: 106 passed, 23 skipped, 0 failed, in 8.0 minutes. |
+
+### Acceptance Journeys (This Request)
+
+| Journey | Test |
+| --- | --- |
+| Creation, Review edits, Start My Story | `e2e/creation.spec.ts` (desktop, phone, WebKit), `e2e/first-project.spec.ts` |
+| Script, budget, funding refused and secured, casting and crew, schedule, production, finishing, release | `e2e/first-project.spec.ts` |
+| A second project with the first one's history intact | `e2e/first-project.spec.ts` |
+| Export, import into a fresh browser, open, play, save, reload; duplicates; refusals; two tabs | `e2e/backup.spec.ts` |
+| Recovery copies, full storage, failed saves | `e2e/storage.spec.ts`, `e2e/failures.spec.ts` |
+| Insufficient funds | `e2e/first-project.spec.ts` (an offer refused: "only $0 is uncommitted") |
+| Schedule conflicts | `e2e/screenings.spec.ts` (screening conflicts), `e2e/live-action.spec.ts` (weather), `tests/mocap-calendar.test.ts` (capture sessions) |
+| Revisions | `tests/writing.test.ts`, `tests/screenwriting.test.ts` (engine; not yet a browser journey) |
+| Screenshots | Desktop and phone screenshots of the financing screens and terms dialog were inspected; traces are kept on failure |
 
 ### Why 23 Browser Tests Are Skipped
 
@@ -75,6 +89,10 @@ Skipped tests did not run and are not counted as passed. Each is skipped on purp
 | Medium | Toronto precipitation fell back to the model because only 1991-2020 stations were searched | Tiered station search: own country recent, own country any period, then anywhere | Legacy migration report (all 66 from stations) |
 | Medium | Entering again after withdrawing reused the withdrawn entry's ID, so the new entry couldn't be withdrawn, and recorded a fee that wasn't charged | Each entry gets its own ID; the fee is charged and recorded once per category | `tests/rulebooks.test.ts` |
 | Low | A cancelled release counted as a prior showing against premiere rules | Cancelled releases are ignored | `tests/rulebooks.test.ts` |
+| Medium | A performer replaced after contributing lost their credit even when their work stayed in the film | Captures and takes record their performers; released performers whose work remains are credited | `tests/mocap-calendar.test.ts` |
+| Medium | Motion-capture sessions had no dates: not on the calendar, no check against the performer's shoot days or the stage | Dated sessions with conflict checks, on the calendar; missed sessions rebooked | `tests/mocap-calendar.test.ts`, `tests/media.test.ts` (hybrid) |
+| Low | Startup JavaScript went over its 700 kB budget (702 kB) with this checkpoint's engine code | Calendar, Place and Profile screens load on first use (687 kB); the budget was not raised | `npm run budget` |
+| Medium | Modeled script quality could be raised by filling text fields with anything and by repeating revision passes (up to about 84 of 100 alone) | Presence of free text weighs little; passes and your own notes add nothing; readiness notes count once resolved | `tests/screenwriting.test.ts` |
 | High | Choosing a budget size put its whole amount into the project at once (for example $4,000,000 for Mid Budget), so money never had to be raised | A budget size is now an estimate and a target; money arrives only from backers' accepted deals, with terms enforced; existing projects keep their money (save version 5) | `tests/finance.test.ts`, `e2e/first-project.spec.ts` |
 | Medium | Several Review edit buttons in character creation opened the wrong screen ("Edit Birth Date And Birthplace" opened Pronouns) | One step registry; one edit per row, each to its own screen; Save And Return To Review | `tests/creation.test.ts`, `e2e/creation.spec.ts` |
 | Medium | WebKit: text typed into a field right after Next was lost (focus moved to the heading a frame later) | Focus moves in the same commit | `e2e/creation.spec.ts` (fails with the old code in WebKit) |

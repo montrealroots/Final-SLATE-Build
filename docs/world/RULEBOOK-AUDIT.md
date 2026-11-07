@@ -17,9 +17,9 @@ A category counts once, at the best status any of its editions has.
 | | Institutions | Categories |
 | --- | --- | --- |
 | In the catalog | 37 | 142 |
-| Organizer rules read for an edition (verified) | 8 (Academy Awards, Sundance, Clermont-Ferrand, Annie Awards, Annecy, Venice, Golden Globes, Primetime Emmys) | 47 (12 + 4 + 1 + 6 + 2 + 2 + 7 + 13) |
+| Organizer rules read for an edition (verified) | 9 (Academy Awards, Sundance, Clermont-Ferrand, Annie Awards, Annecy, Venice, Golden Globes, Primetime Emmys, San Sebastián) | 48 (12 + 4 + 1 + 6 + 2 + 2 + 7 + 13 + 1) |
 | Only rules carried forward or from an undated page (projected) | 2 (Cannes short films, Berlinale Competition) | 2 |
-| Rules still simulated | 27 fully, plus the remaining categories of Cannes, Annecy, Berlinale and the Emmys | 93 |
+| Rules still simulated | 26 fully, plus the remaining categories of Cannes, Annecy, Berlinale and the Emmys | 92 |
 
 Editions per institution with rules: Annecy 2026 (verified) and 2027 (projected from 2026); Venice 2026 (verified) and
 2027 (projected); Emmys 2026 (verified) and 2027 (projected); Golden Globes 2027, Academy Awards 2027, Sundance 2027,
@@ -208,6 +208,23 @@ are not published; 2027 carries these forward, labelled projected.
 | Outstanding Movie (category 82, renamed from Outstanding Television Movie): one part of at least 75 minutes | Outstanding Movie, held from 2026 |
 | Program awards go to producers whose credits and functions support it | Program categories |
 
+## San Sebastián, 74th Edition (2026, Verified) And 75th (2027, Projected)
+
+Source: "Rules and Regulations - 74th San Sebastian International Film Festival" (sansebastianfestival.com, read November 6,
+2026). Festival September 18-26, 2026; entries from January 16.
+
+| Rule | Value | Article |
+| --- | --- | --- |
+| Length | Feature films over 60 minutes | II, 2 |
+| Completed | In the 12 months before the festival starts (from September 18, 2025) | II, 2 |
+| Other festivals | Not in any other festival before San Sebastián | II, 7 |
+| Online | Not on video-on-demand platforms | II, 7 |
+| Deadline | June 16, 2026 (time not given; SLATE uses the end of the day in San Sebastián); later entries at the festival's discretion | II, 6 |
+
+Simplifications, as written in the rules' notes: the exceptions for FIAPF non-competitive festivals and national
+competitions in the country of production are not modeled; films produced entirely in Spain must also be world premieres,
+which SLATE does not check separately. The 2027 rules are the 2026 ones carried forward, labelled projected.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two
@@ -230,7 +247,7 @@ when it premieres elsewhere first.
 
 ## Still To Read (rules simulated until then)
 
-TIFF, San Sebastián, Busan, Sitges, IDFA, Hot Docs, SXSW, Series Mania, Locarno, FESPACO, BAFTA Film and Television,
+TIFF, Busan, Sitges, IDFA, Hot Docs, SXSW, Series Mania, Locarno, FESPACO, BAFTA Film and Television,
 International Emmys, Spirit, Gotham, DGA, WGA, PGA, Actor Awards, César, Goya, Canadian Screen, AACTA, AMAA, Japan
 Academy, Blue Dragon and European Film Awards; and the remaining sections of Cannes (Competition, Special Screenings),
 Berlinale (Panorama, Shorts), Annecy (Television) and the Emmys' pre-2026 Outstanding Television Movie. Each needs its

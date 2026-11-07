@@ -8,14 +8,14 @@
     "shootDays": "2026-01-29:shot 2026-01-30:shot",
     "credits": "Cast:Thandiwe Kim:Lead; Colorist:Darius Moreau; Composer:Zara Tran; Costume Designer:Chloé Wójcik; Delivery Quality Control:Benedikt Moreau; Directed By:Rin Sato-Moreau; Director Of Photography:Yusuf Gallagher; Editor:Yara Dubois; Produced By:Rin Sato-Moreau; Production Designer:Gabriel Chowdhury; Re-Recording Mixer:Yohannes Haddad; Sound Designer:Jae-won Hosseini; Written By:Rin Sato-Moreau",
     "quality": {
-      "script": 53,
+      "script": 48,
       "direction": 69,
       "craft": 62,
       "editing": 74,
       "music": 64,
       "performance:c3:np_actor_GB_17": 69,
-      "overall": 63,
-      "reception": 56
+      "overall": 61,
+      "reception": 54
     }
   },
   "live-action short / g2": {
@@ -27,14 +27,14 @@
     "shootDays": "2026-01-29:shot 2026-01-30:shot",
     "credits": "Cast:Pilar Ibrahim:Lead; Colorist:Bruno Van Dijk; Composer:Willa Ibrahim; Costume Designer:Xiomara Fitzgerald; Delivery Quality Control:Dmitri Laurent; Directed By:Rin Sato-Moreau; Director Of Photography:Beatriz Hosseini; Editor:Esi Yamamoto; Produced By:Rin Sato-Moreau; Production Designer:Elif Santos; Re-Recording Mixer:Ingrid Usman; Sound Designer:Dev Achebe; Written By:Rin Sato-Moreau",
     "quality": {
-      "script": 53,
+      "script": 48,
       "direction": 68,
       "craft": 60,
       "editing": 64,
       "music": 66,
       "performance:c3:np_actor_GB_3": 70,
-      "overall": 62,
-      "reception": 57
+      "overall": 61,
+      "reception": 56
     }
   },
   "2D short / g1": {
@@ -46,15 +46,15 @@
     "shootDays": "",
     "credits": "Animator:Rohan Zhang; Background Artist:Bruno Bianchi; Colorist:Sione Laurent; Composer:Farah Dlamini; Compositor:Sakura Iyer; Delivery Quality Control:Ifeoma Varga; Directed By:Rin Sato-Moreau; Editor:Yusuf Fernandes; Produced By:Rin Sato-Moreau; Re-Recording Mixer:Felix Xu; Sound Designer:Wei Park; Storyboard Artist:Dmitri Tanaka; Visual Development Artist:Thandiwe Iyer; Voice Cast:Rafael Ibrahim:Kit; Written By:Rin Sato-Moreau",
     "quality": {
-      "script": 54,
+      "script": 49,
       "direction": 71,
       "craft": 63,
       "editing": 70,
       "music": 64,
       "animation": 88,
       "performance:c3:np_voice-actor_GB_3": 73,
-      "overall": 65,
-      "reception": 73
+      "overall": 63,
+      "reception": 71
     }
   },
   "2D short / g2": {
@@ -66,27 +66,27 @@
     "shootDays": "",
     "credits": "Animator:Ifeoma Moreau; Background Artist:Omar Gallagher; Colorist:Sione Rossi; Composer:Tomás Jovanović; Compositor:Zeynep Ndlovu; Delivery Quality Control:Kavya Santos; Directed By:Rin Sato-Moreau; Editor:Ifeoma Laurent; Produced By:Rin Sato-Moreau; Re-Recording Mixer:Felix Bergström; Sound Designer:Alejandro Petrov; Storyboard Artist:Wanjiru Reyes; Visual Development Artist:Hugo Lindqvist; Voice Cast:Chiara Laurent:Kit; Written By:Rin Sato-Moreau",
     "quality": {
-      "script": 54,
+      "script": 49,
       "direction": 71,
       "craft": 57,
       "editing": 63,
       "music": 59,
       "animation": 48,
       "performance:c3:np_voice-actor_GB_2": 56,
-      "overall": 59,
-      "reception": 56
+      "overall": 58,
+      "reception": 55
     }
   },
   "3D with motion capture / g1": {
     "delivered": true,
     "days": 44,
-    "settled": 27325,
-    "payments": 2255763426,
-    "tasks": 1630393300,
+    "settled": 29575,
+    "payments": 2503357109,
+    "tasks": 1357720131,
     "shootDays": "",
     "credits": "Animator:Ingrid Quispe; Colorist:Soren Moreau; Composer:Viktor Quispe; Compositor:Ingrid Varga; Delivery Quality Control:Quinn Dlamini; Directed By:Rin Sato-Moreau; Editor:Ifeoma Iyer; Layout Artist:Mateo Usman; Lighting Artist:Aiko Bianchi; Modeler:Maya Walker; Performance Capture:Wanjiru Laurent:Golem; Produced By:Rin Sato-Moreau; Re-Recording Mixer:Alejandro Walker; Sound Designer:Priya Bergström; Storyboard Artist:Chloé Chowdhury; Visual Development Artist:Camila Rossi; Voice Cast:Olumide Quispe:Golem; Written By:Rin Sato-Moreau",
     "quality": {
-      "script": 64,
+      "script": 55,
       "direction": 71,
       "craft": 57,
       "editing": 55,
@@ -94,20 +94,20 @@
       "animation": 61,
       "performance:c3:np_voice-actor_GB_11": 66,
       "performance:c3:np_actor_GB_5": 74,
-      "overall": 66,
-      "reception": 62
+      "overall": 63,
+      "reception": 59
     }
   },
   "3D with motion capture / g2": {
     "delivered": true,
     "days": 44,
-    "settled": 31165,
-    "payments": 881177155,
-    "tasks": 1630393300,
+    "settled": 33505,
+    "payments": 2623578177,
+    "tasks": 1357720131,
     "shootDays": "",
     "credits": "Animator:Yohannes Dubois; Colorist:Felix Jensen; Composer:Aiko Laurent; Compositor:Chloé Castillo; Delivery Quality Control:Soren Castillo; Directed By:Rin Sato-Moreau; Editor:Uma Gallagher; Layout Artist:Rohan Fitzgerald; Lighting Artist:Freya Quispe; Modeler:Rania Cohen; Performance Capture:Jonas Achebe:Golem; Produced By:Rin Sato-Moreau; Re-Recording Mixer:Rohan Quispe; Sound Designer:Yusuf Kowalski; Storyboard Artist:Kofi Kowalski; Visual Development Artist:Zara Chowdhury; Voice Cast:Priya Walker:Golem; Written By:Rin Sato-Moreau",
     "quality": {
-      "script": 64,
+      "script": 55,
       "direction": 71,
       "craft": 63,
       "editing": 66,
@@ -115,8 +115,8 @@
       "animation": 67,
       "performance:c3:np_actor_GB_11": 66,
       "performance:c3:np_voice-actor_GB_2": 72,
-      "overall": 67,
-      "reception": 76
+      "overall": 64,
+      "reception": 73
     }
   },
   "stop motion / g1": {
@@ -128,15 +128,15 @@
     "shootDays": "",
     "credits": "Armature Fabricator:Lorenzo Iyer; Colorist:Farah Ibrahim; Composer:Kenji Ueda; Compositor:Valentina Evans; Costume Designer:Nikolai Quispe; Delivery Quality Control:Valentina Dlamini; Directed By:Rin Sato-Moreau; Editor:Oren Eriksen; Miniature Set Builder:Tariq Nakamura; Produced By:Rin Sato-Moreau; Puppet Fabricator:Zeynep Adeyemi; Re-Recording Mixer:Emeka García; Sound Designer:Leila Tran; Stage Camera And Lighting:Rafael Iyer; Stop-Motion Animator:Ingrid Achebe; Storyboard Artist:Emeka Haddad; Visual Development Artist:Yara Gallagher; Voice Cast:Omar Fitzgerald:Button; Written By:Rin Sato-Moreau",
     "quality": {
-      "script": 64,
+      "script": 55,
       "direction": 71,
       "craft": 61,
       "editing": 59,
       "music": 48,
       "animation": 66,
       "performance:c3:np_voice-actor_GB_11": 75,
-      "overall": 68,
-      "reception": 78
+      "overall": 65,
+      "reception": 75
     }
   },
   "stop motion / g2": {
@@ -148,15 +148,15 @@
     "shootDays": "",
     "credits": "Armature Fabricator:Ulla Schmidt; Colorist:Olumide Dlamini; Composer:Wei O'Neill; Compositor:Rohan Ndlovu; Costume Designer:Ulla Achebe; Delivery Quality Control:Maya Santos; Directed By:Rin Sato-Moreau; Editor:Mei Schmidt; Miniature Set Builder:Noa Jovanović; Produced By:Rin Sato-Moreau; Puppet Fabricator:Felix Cohen; Re-Recording Mixer:Yara O'Neill; Sound Designer:Farah Mensah; Stage Camera And Lighting:Imani Wójcik; Stop-Motion Animator:Viktor Fernandes; Storyboard Artist:Yara Schmidt; Visual Development Artist:Freya Mensah; Voice Cast:Hugo Dlamini:Button; Written By:Rin Sato-Moreau",
     "quality": {
-      "script": 64,
+      "script": 55,
       "direction": 71,
       "craft": 59,
       "editing": 56,
       "music": 68,
       "animation": 63,
       "performance:c3:np_voice-actor_GB_0": 79,
-      "overall": 69,
-      "reception": 67
+      "overall": 66,
+      "reception": 64
     }
   },
   "TV limited series / g1": {
@@ -168,14 +168,14 @@
     "shootDays": "2026-01-29:shot 2026-01-30:shot",
     "credits": "Cast:Lorenzo Walker:Detective; Colorist:Lucas Reyes; Composer:Bruno Tran; Costume Designer:Jae-won Yilmaz; Delivery Quality Control:Sakura Bergström; Directed By:Rin Sato-Moreau; Director Of Photography:Mei Bergström; Editor:Gabriel Varga; Executive Producer And Showrunner:Rin Sato-Moreau; Production Designer:Alejandro O'Neill; Re-Recording Mixer:Farah Tanaka; Sound Designer:Camila Tanaka; Written By:Rin Sato-Moreau",
     "quality": {
-      "script": 51,
+      "script": 46,
       "direction": 69,
       "craft": 59,
       "editing": 47,
       "music": 75,
       "performance:c3:np_actor_GB_5": 70,
-      "overall": 62,
-      "reception": 67
+      "overall": 60,
+      "reception": 65
     }
   },
   "TV limited series / g2": {
@@ -187,14 +187,14 @@
     "shootDays": "2026-01-29:shot 2026-01-30:lost 2026-02-02:shot",
     "credits": "Cast:Ximena Okafor:Detective; Colorist:Yusuf Usman; Composer:Leila Brennan; Costume Designer:Yara Dlamini; Delivery Quality Control:Freya García; Directed By:Rin Sato-Moreau; Director Of Photography:Pilar Gallagher; Editor:Paloma O'Neill; Executive Producer And Showrunner:Rin Sato-Moreau; Production Designer:Chiara Dlamini; Re-Recording Mixer:Wanjiru Yilmaz; Sound Designer:Hana Xu; Written By:Rin Sato-Moreau",
     "quality": {
-      "script": 51,
+      "script": 46,
       "direction": 57,
       "craft": 56,
       "editing": 58,
       "music": 48,
       "performance:c3:np_actor_GB_30": 61,
-      "overall": 56,
-      "reception": 49
+      "overall": 55,
+      "reception": 48
     }
   }
 }
