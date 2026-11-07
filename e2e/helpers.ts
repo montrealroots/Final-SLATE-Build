@@ -11,6 +11,8 @@ export async function freshStart(page: Page): Promise<void> {
 export interface CharacterOpts {
   name: string;
   pronouns: 'He/Him' | 'She/Her' | 'They/Them';
+  /** With They/Them the player picks the billing (Actor unless given); He/Him and She/Her settle it. */
+  billedAs?: 'Actor' | 'Actress';
   birthDate: string;
   birthplace: string;
   heritages: string[];
@@ -36,6 +38,7 @@ export async function createCharacter(page: Page, o: CharacterOpts): Promise<voi
   await expect(page.getByRole('heading', { name: 'Identity', level: 1 })).toBeVisible();
   await page.getByRole('textbox', { name: 'Name', exact: true }).fill(o.name);
   await page.getByLabel('Pronouns').selectOption({ label: o.pronouns });
+  if (o.pronouns === 'They/Them') await page.getByRole('group', { name: 'Billed As' }).getByRole('button', { name: o.billedAs ?? 'Actor', exact: true }).click();
   await fillBirthDate(page, o.birthDate);
   await pickPlace(page, 'Place Of Birth', o.birthplace, o.birthCountry);
   await nextStep(page, 'Background & Languages');

@@ -17,7 +17,8 @@ The game's visible words follow these rules. They come from the 1221 adaptation 
 | Startup line | Your next story starts here. |
 | Startup actions, in order | New Game, Continue (only when a save exists), Saved Games, Settings |
 | Creation steps, in order (1221's layout, November 7, 2026) | Identity, Background & Languages, Starting Point, Review; under "Who Are You Going To Be?", with Cancel |
-| Creation fields | Name, Pronouns, Billed As (Actor or Actress), Year Of Birth, Month, Day, Place Of Birth; Search Backgrounds, Describe Your Background, Which language do you use most?, Add Language; I Still Live Where I Was Born, Where You Live, Starting Date, Starting Time |
+| Billed As | He/Him: Actor and She/Her: Actress, shown with "Your pronouns decide this, so there's nothing to pick."; They/Them: Actor or Actress, picked |
+| Creation fields | Name, Pronouns, Billed As, Year Of Birth, Month, Day, Place Of Birth; Search Backgrounds, Describe Your Background, Which language do you use most?, Add Language; I Still Live Where I Was Born, Where You Live, Starting Date, Starting Time |
 | Review | Ready To Begin, the name, then Identity, Starting Point and Background & Languages, each with its edit button (Edit Identity, Edit Starting Point, Edit Background And Languages) |
 | Main language question | Which language do you use most? |
 | Professions | Screenwriter · Producer · Director · Actor (or the player's chosen acting title) |

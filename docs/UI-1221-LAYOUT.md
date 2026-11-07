@@ -37,7 +37,7 @@ Asked for "that whole creation suite", with nothing added that the engine doesn'
 
 | 1221 step | Here | Left out (1221's systems, not this game's) |
 | --- | --- | --- |
-| Identity: name, pronouns, Billed As tiles, race or ethnicity, year, month and day of birth, place of birth with the map, citizenship, "You'll be N when you start" | Identity: Name, Pronouns, Billed As (Actor or Actress, chosen separately from pronouns, as before), Year Of Birth, Month, Day, Place Of Birth with the map, the age callout | Portrait, middle and preferred names, citizenship |
+| Identity: name, pronouns, Billed As tiles, race or ethnicity, year, month and day of birth, place of birth with the map, citizenship, "You'll be N when you start" | Identity: Name, Pronouns, Billed As, settled by the pronouns as in 1221 (He/Him is Actor, She/Her is Actress, They/Them picks; the award categories split by title read it), Year Of Birth, Month, Day, Place Of Birth with the map, the age callout | Portrait, middle and preferred names, citizenship |
 | Dispositions & Traits | Not shown | The whole step: the engine has no personality |
 | Genres & Background | Background & Languages: the backgrounds list and your own description, the main language and others | Genres |
 | Starting Point: body, where you live (I Still Live Where I Was Born), population and time zone, money | Starting Point: I Still Live Where I Was Born or Where You Live with the map, the place's population and time zone, and When It Begins (date and time, which the engine keeps and 1221 doesn't ask) | Height and weight, cost of living, bank and money |

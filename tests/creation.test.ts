@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { CREATION_STEPS, creationStep, emptyDraft, normalizeDraft, validateDraft } from '../src/engine/state';
+import { CREATION_STEPS, creationStep, emptyDraft, newGame, normalizeDraft, validateDraft } from '../src/engine/state';
+import { settledTitle } from '../src/data/identity';
 import { memoryStore, readDraft, writeDraft } from '../src/engine/save';
 import { draft } from './fixtures';
 
@@ -46,5 +47,20 @@ describe('character creation steps', () => {
     const d = { ...draft(), step: 'background' as const, returnToReview: true, heritageCustomText: 'half typed' };
     writeDraft(kv, d);
     expect(readDraft(kv)).toEqual(d);
+  });
+
+  it('pronouns settle the billing as 1221 does: He/Him is Actor, She/Her is Actress, They/Them chooses', () => {
+    expect(settledTitle('he')).toBe('Actor');
+    expect(settledTitle('she')).toBe('Actress');
+    expect(settledTitle('they')).toBeUndefined();
+    // They/Them with nothing chosen can't start; a choice is kept.
+    const titles = (d: ReturnType<typeof draft>) => validateDraft(d).filter((p) => p.field === 'actingTitle').map((p) => p.message);
+    expect(titles(draft({ pronouns: 'they', actingTitle: '' }))).toEqual(['Choose how you are billed.']);
+    expect(newGame(draft({ pronouns: 'they', actingTitle: 'Actress' }), 0, 'save-a').character.actingTitle).toBe('Actress');
+    // He/Him and She/Her need no choice, and a stale one never wins (the award categories read this title).
+    expect(titles(draft({ pronouns: 'he', actingTitle: '' }))).toEqual([]);
+    expect(newGame(draft({ pronouns: 'he', actingTitle: 'Actress' }), 0, 'save-b').character.actingTitle).toBe('Actor');
+    expect(normalizeDraft({ ...draft(), pronouns: 'she', actingTitle: 'Actor' })!.actingTitle).toBe('Actress');
+    expect(normalizeDraft({ ...draft(), pronouns: 'they', actingTitle: 'Actress' })!.actingTitle).toBe('Actress');
   });
 });

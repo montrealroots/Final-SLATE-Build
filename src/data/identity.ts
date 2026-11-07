@@ -79,7 +79,10 @@ export const PRONOUNS = {
   they: { subject: 'they', object: 'them', possessive: 'their', label: 'They/Them' },
 } as const;
 
-/** The user's preferred convention: actor for he, actress for she, actor as the neutral title. */
-export function defaultActingTitle(pronouns: string): 'Actor' | 'Actress' {
-  return pronouns === 'she' ? 'Actress' : 'Actor';
+/**
+ * The title the pronouns settle, as 1221's `settledTitle`: He/Him is billed as Actor and She/Her as Actress, with nothing
+ * to pick; They/Them settles nothing, and the player chooses. Award categories split by title read it (`awards.ts`).
+ */
+export function settledTitle(pronouns: string): 'Actor' | 'Actress' | undefined {
+  return pronouns === 'he' ? 'Actor' : pronouns === 'she' ? 'Actress' : undefined;
 }

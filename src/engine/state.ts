@@ -1,4 +1,5 @@
 import { getPlace, findPlace, isCatalogPlace, registerPlace, type Place } from '../data/places';
+import { settledTitle } from '../data/identity';
 import { copyPlain } from './copy';
 import { hashString } from './rng';
 import {
@@ -57,6 +58,9 @@ export function normalizeDraft(raw: unknown): CreationDraft | null {
   if (!Array.isArray(d.languages)) d.languages = [];
   if (typeof d.updatedAt !== 'number') d.updatedAt = 0;
   if (d.returnToReview !== true) delete d.returnToReview;
+  // A draft from before the pronouns settled the title takes the settled one.
+  const settled = settledTitle(d.pronouns);
+  if (settled) d.actingTitle = settled;
   return d;
 }
 
@@ -79,7 +83,8 @@ export function validateDraft(d: CreationDraft): DraftProblem[] {
   if (!d.name.trim()) out.push({ field: 'name', step: 'identity', message: 'Enter a name.' });
   if (d.name.trim().length > 80) out.push({ field: 'name', step: 'identity', message: 'Use 80 characters or fewer.' });
   if (!d.pronouns) out.push({ field: 'pronouns', step: 'identity', message: 'Choose pronouns.' });
-  if (!d.actingTitle) out.push({ field: 'actingTitle', step: 'identity', message: 'Choose how you are billed.' });
+  // Settled by He/Him and She/Her; with They/Them it's the player's choice, and must be made.
+  if (!settledTitle(d.pronouns) && !d.actingTitle) out.push({ field: 'actingTitle', step: 'identity', message: 'Choose how you are billed.' });
   // Real calendar dates only: Date.UTC would quietly turn 31 February into 3 March.
   const start = isDateKey(d.startDate) ? parseYmd(d.startDate) : null;
   const birth = isDateKey(d.birthDate) ? parseYmd(d.birthDate) : null;
@@ -117,7 +122,7 @@ export function newGame(d: CreationDraft, realNow: number, saveId: string): Game
   const character: CharacterIdentity = {
     name: d.name.trim(),
     pronouns: d.pronouns as CharacterIdentity['pronouns'],
-    actingTitle: d.actingTitle as CharacterIdentity['actingTitle'],
+    actingTitle: (settledTitle(d.pronouns) ?? d.actingTitle) as CharacterIdentity['actingTitle'],
     birth: parseYmd(d.birthDate),
     birthplaceId: d.birthplaceId,
     heritages: d.heritages,
