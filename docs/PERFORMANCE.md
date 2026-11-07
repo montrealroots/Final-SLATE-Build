@@ -49,7 +49,24 @@ the log and the event queue restores the game exactly, and that the copy is exac
 **Tradeoff:** unlike `structuredClone`, a value referenced from two places is copied twice. Saved games never share
 references (they are JSON), so this changes nothing for them.
 
-## Startup JavaScript
+## Startup JavaScript, November 7, 2026 (current)
+
+Measured with `npm run build` then `npm run budget`, on the files `dist/index.html` loads before anything else.
+
+| Measure | Before | After |
+| --- | --- | --- |
+| Startup JavaScript, bytes | 718,078 | 676,736 |
+| Startup JavaScript (`npm run budget`) | 701 kB, 217 kB gzipped (over the 700 kB budget) | 661 kB, 205 kB gzipped |
+
+The genre catalog (27.7 kB) and the equinox and solstice table (14.3 kB) left the startup files. Neither is read
+before a game opens. They are fetched in the background from startup, beside the holiday rules, and every game waits
+for them before it opens (`src/ui/store.ts` `enter`). A catalog that fails to load stops the game with the reason and
+Try Again (`e2e/failures.spec.ts`). They are fetched rather than imported, because a browser keeps a failed dynamic
+import failed. The budget is unchanged. What remains is React (218,747 bytes), the game engine, and the start screen
+and shell. The next candidates, each needing the same wait-before-a-game treatment, are the 66 legacy places' climate
+(28.6 kB) and the award and festival rules (`awards.ts` and `rulebooks.ts`, the largest engine modules).
+
+## Startup JavaScript, earlier pass (montrealroots/Final-SLATE-Build#15, historical)
 
 | Measure | Before | After |
 | --- | --- | --- |
