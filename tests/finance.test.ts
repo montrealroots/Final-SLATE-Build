@@ -7,7 +7,7 @@ import { migrateV4toV5, onProjectDelivered } from '../src/engine/finance';
 import { deserialize } from '../src/engine/save';
 import { hashString } from '../src/engine/rng';
 import type { GameState, Project } from '../src/engine/types';
-import { approve, buildProject, startLife } from './helpers';
+import { approve, buildProject, startLife, writePitch } from './helpers';
 
 /** A project made the way the game makes it: no money until a backer's deal is accepted. */
 function unfunded(s: GameState, scenarioId = 'low', title = 'Night Ferry'): Project {
@@ -19,6 +19,7 @@ function withScript(s: GameState, p: Project): Project {
   const q = buildProject(s, { title: 'tmp', format: 'short', medium: 'live-action', runtime: 10 }, [{ name: 'Ines', patch: { roleSize: 'lead' } }], [{ place: 'Dock', chars: ['Ines'], minutes: 3 }]);
   p.characters = q.characters;
   p.scenes = q.scenes;
+  writePitch(p);
   s.projects = s.projects.filter((x) => x.id !== q.id);
   approve(s, p);
   return p;

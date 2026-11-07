@@ -31,7 +31,7 @@ for (const m of rows) {
   const el = pick?.g.el ?? Number(elevation);
   const climate = climateFor({ country, lat: Number(lat), lon: Number(lon), elevation: el }, index);
   // The game needs the normals and the kind of source; which station supplied each value is developer provenance.
-  out[id] = { geonameId: resolution === 'aliased' ? pick.g.gid : null, population: pick?.g.pop ?? 0, zoneMatches: pick ? pick.g.z === zone : false, climate: { monthly: climate.monthly, source: { kind: climate.source.kind } } };
+  out[id] = { geonameId: resolution === 'aliased' ? pick.g.gid : null, population: pick?.g.pop ?? 0, climate: { monthly: climate.monthly, source: { kind: climate.source.kind } } };
   sources[id] = climate.source;
   report.push({
     legacyId: id, name, country, original: [Number(lat), Number(lon)], candidate: pick ? { geonameId: pick.g.gid, name: pick.g.gname, coords: [pick.g.la, pick.g.lo], zone: pick.g.z, km: Math.round(pick.km * 10) / 10 } : null,

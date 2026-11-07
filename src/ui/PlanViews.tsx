@@ -4,7 +4,7 @@ import { getPlace } from '../data/places';
 import {
   BACKERS, EXPERIENCE, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
-  ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
+  ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, pronounsMatch, characterPronouns, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
   type StaffingProposal, covers,
 } from '../engine';
@@ -70,7 +70,11 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
   const [rates, setRates] = useState<Record<string, number>>({});
   const [err, setErr] = useState<Record<string, string>>({});
   const [onlyFree, setOnlyFree] = useState(true);
-  const list = roleCandidates(g, p, roleId).map((c) => ({ c, av: isAvailable(g, c, win.from, win.to, p.id) })).filter((x) => !onlyFree || x.av.ok).sort((a, b) => b.c.experience - a.c.experience || a.c.dayRate - b.c.dayRate);
+  const part = characterId ? approvedCharacters(p).find((x) => x.id === characterId) : undefined;
+  const fits = (c: Person) => !part || pronounsMatch(part, c.pronouns);
+  // Performers whose pronouns match the part come first; the part's own pronouns decide (script-effects.ts).
+  const list = roleCandidates(g, p, roleId).map((c) => ({ c, av: isAvailable(g, c, win.from, win.to, p.id) })).filter((x) => !onlyFree || x.av.ok)
+    .sort((a, b) => Number(fits(b.c)) - Number(fits(a.c)) || b.c.experience - a.c.experience || a.c.dayRate - b.c.dayRate);
   const days = estimateDays(p, roleId, characterId, method);
   return (
     <div className="spaced">
@@ -84,7 +88,7 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
             <li key={c.id}>
               <div className="row-wrap">
                 <div className="grow">
-                  <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>
+                  <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
                   <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{c.playingAge ? ` Plays ages ${c.playingAge[0]} to ${c.playingAge[1]}.` : ''} Background: {c.heritages.join(', ')}. Asks {money(c.dayRate)} a day.</div>
                   {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip chip-positive">Shares {sharedHeritages(g, p, characterId, c.id).join(', ')}</span> <span className="dim">Lived experience counts toward the performance.</span></div>}
                   {!av.ok && <div className="dim" style={{ color: 'var(--warning)' }}>{av.reason}</div>}

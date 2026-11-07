@@ -6,7 +6,8 @@
 // and a delivery deadline. Amounts and decisions are game calibration, not industry figures.
 
 import { money } from './budget';
-import { scriptIssues } from './projects';
+import { NO_TREATMENT_DELAY_DAYS, grantApplicationMissing, pitchMissing, treatmentComplete } from './script-effects';
+import { isNonfiction, scriptIssues } from './projects';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY } from './time';
@@ -84,10 +85,11 @@ export function backerOptions(state: GameState, p: Project): { kind: Exclude<Fin
   if (!usedStarting(state) || has('starting')) {
     out.push({ kind: 'starting', ready: false, needs: why('starting', state.projects.some((x) => x.id !== p.id && x.delivered) ? 'Only for your first project.' : !scriptApproved(p) ? 'Approve a script first.' : null) });
   }
-  out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : null) });
-  out.push({ kind: 'investor', ready: false, needs: why('investor', !scriptApproved(p) ? 'Approve a script first.' : null) });
-  out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : null) });
-  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : !scriptApproved(p) ? 'Approve a script first.' : null) });
+  // Backers read a pitch (logline and premise); a grant application asks for the stakes and theme too (script-effects.ts).
+  out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : grantApplicationMissing(p, isNonfiction(p.axes.format))) });
+  out.push({ kind: 'investor', ready: false, needs: why('investor', !scriptApproved(p) ? 'Approve a script first.' : pitchMissing(p)) });
+  out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : pitchMissing(p)) });
+  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : !scriptApproved(p) ? 'Approve a script first.' : pitchMissing(p)) });
   for (const o of out) o.ready = o.needs === '';
   return out;
 }
@@ -99,15 +101,17 @@ export function approachBacker(state: GameState, p: Project, kind: Exclude<Finan
   if (!opt.ready) throw new Error(opt.needs);
   p.finance ??= { estimate: p.funding.fund, target: p.funding.fund, deals: [] };
   const b = BACKERS[kind];
+  // A backer who takes time to decide reads a treatment; without one they take a week longer (script-effects.ts).
+  const days = b.decideDays && !treatmentComplete(p) ? b.decideDays + NO_TREATMENT_DELAY_DAYS : b.decideDays;
   const deal: FinanceDeal = {
-    id: newId(state, 'fd'), kind, backer: b.name, amount: 0, status: 'considering', askedAt: state.now, decideAt: state.now + b.decideDays * DAY,
+    id: newId(state, 'fd'), kind, backer: b.name, amount: 0, status: 'considering', askedAt: state.now, decideAt: state.now + days * DAY,
     reason: '', received: 0, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null },
   };
   p.finance.deals.push(deal);
   if (b.decideDays === 0) decide(state, p, deal);
   else {
     schedule(state, deal.decideAt!, 'finance-decision', { projectId: p.id, dealId: deal.id }, { attention: 'notify', priority: 40 });
-    addLog(state, `You asked the ${b.name.toLowerCase()} to back ${p.title}. They will answer in about ${b.decideDays} days.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+    addLog(state, `You asked the ${b.name.toLowerCase()} to back ${p.title}. They will answer in about ${days} days.${days > b.decideDays ? ' Without a treatment (the conflict, point of view and ending) they take a week longer.' : ''}`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
   }
   return deal;
 }

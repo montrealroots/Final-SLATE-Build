@@ -2,8 +2,10 @@
 // Part of the production engine; src/engine/production.ts is its public interface.
 
 import type { Project, Scene, Task } from '../types';
+import { findPlace } from '../../data/places';
 import { approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneLabel, sceneTechnique } from '../projects';
 import { MOCAP_CLEANUP_PER_SESSION } from '../mocap';
+import { designBrief, musicBrief } from '../script-effects';
 import { ANIM_RATE, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS } from './rates';
 
 // ---------------- Task generation ----------------
@@ -22,6 +24,9 @@ export function buildTasks(p: Project): Task[] {
   const mods = projectModules(p);
   const q = p.axes.animationQuality;
   const tasks: Task[] = [];
+  // Briefs written in the Story panel (script-effects.ts): without one, that department takes a unit longer.
+  const noDesignBrief = designBrief(p) ? 0 : 1;
+  const noMusicBrief = musicBrief(p) ? 0 : 1;
   const count = (k: string) => reqs.filter((r) => r.kind === k).length;
   const liveScenes = scenes.filter((s) => sceneTechnique(p, s) === 'live');
   const animScenes = scenes.filter((s) => sceneTechnique(p, s) !== 'live');
@@ -37,7 +42,14 @@ export function buildTasks(p: Project): Task[] {
   if (liveScenes.length && !nonfiction) {
     const locs = count('location');
     tasks.push(t('prep:locations', 'all', 'Location Scouting And Permits', 'Locations', 'location-manager', Math.max(1, locs), 'locations'));
-    tasks.push(t('prep:design', 'all', 'Production Design And Props', 'Art', 'production-designer', Math.max(1, count('prop') + count('clue-prop') + Math.ceil(locs / 2)), 'items',
+    // Shooting away from where the story is set: a scouting trip there first, longer abroad (simulation assumption).
+    const setting = p.axes.settingPlaceId && p.axes.settingPlaceId !== p.axes.basePlaceId ? findPlace(p.axes.settingPlaceId) : undefined;
+    if (setting) {
+      const abroad = setting.country !== findPlace(p.axes.basePlaceId)?.country;
+      tasks.push(t('prep:scout', 'setting', `Scouting Trip To ${setting.name}`, 'Locations', 'location-manager', abroad ? 4 : 2, 'days'));
+      prepIds.push('prep:scout:setting');
+    }
+    tasks.push(t('prep:design', 'all', 'Production Design And Props', 'Art', 'production-designer', Math.max(1, count('prop') + count('clue-prop') + Math.ceil(locs / 2)) + noDesignBrief, 'items',
       count('period-research') ? ['prep:research:period'] : []));
     tasks.push(t('prep:costume', 'all', 'Costumes', 'Costume And Makeup', 'costume-designer', Math.max(1, chars.filter((c) => c.roleSize !== 'background').length * periodFactor), 'costumes',
       count('period-research') ? ['prep:research:period'] : []));
@@ -75,7 +87,7 @@ export function buildTasks(p: Project): Task[] {
     const techs = new Set(animScenes.map((s) => sceneTechnique(p, s)));
     const animChars = chars.filter((c) => animScenes.some((s) => s.participants.includes(c.id)));
     const animPlaces = new Set(animScenes.map((s) => s.storyLocation || s.heading.place));
-    tasks.push(t('anim:visdev', 'all', 'Visual Development And Designs', 'Animation', 'visdev-artist', animChars.length + animPlaces.size, 'designs'));
+    tasks.push(t('anim:visdev', 'all', 'Visual Development And Designs', 'Animation', 'visdev-artist', animChars.length + animPlaces.size + noDesignBrief, 'designs'));
     const animMinutes = animScenes.reduce((a, s) => a + s.estMinutes, 0);
     tasks.push(t('anim:boards', 'all', 'Storyboards', 'Animation', 'storyboard-artist', Math.max(1, animMinutes * 2.5), 'board days', ['anim:visdev:all']));
     tasks.push(t('anim:animatic', 'all', 'Animatic', 'Post Production', 'editor', Math.max(1, animMinutes / 4), 'days', ['anim:boards:all']));
@@ -185,12 +197,18 @@ export function buildTasks(p: Project): Task[] {
     const lock = `milestone:lock:${e}`;
     const hasVfx = eScenes.some((s) => s.vfx.length && sceneTechnique(p, s) === 'live');
     tasks.push(t('post:sound', String(e), `Sound Editing${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 5), 'days', [lock], { episode: e }));
-    tasks.push(t('post:music', String(e), `Score${epSuffix(p, e)}`, 'Music', 'composer', Math.max(1, minutes / 4), 'days', [lock], { episode: e }));
+    tasks.push(t('post:music', String(e), `Score${epSuffix(p, e)}`, 'Music', 'composer', Math.max(1, minutes / 4) + noMusicBrief, 'days', [lock], { episode: e }));
     if (hasVfx) tasks.push(t('post:vfx', String(e), `Visual Effects${epSuffix(p, e)}`, 'Post Production', 'vfx-artist', eScenes.reduce((a, s) => a + s.vfx.length * 4, 0), 'days', [lock], { episode: e }));
     tasks.push(t('post:color', String(e), `Color Grade${epSuffix(p, e)}`, 'Post Production', 'colorist', Math.max(1, minutes / 20), 'days', [lock, ...(hasVfx ? [`post:vfx:${e}`] : [])], { episode: e }));
     tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, minutes / 30), 'days', [`post:sound:${e}`, `post:music:${e}`, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
     tasks.push(t('post:captions', String(e), `Captions And Subtitles${epSuffix(p, e)}`, 'Post Production', 'subtitler', Math.max(1, (minutes / 30) * p.axes.dialogueLanguages.length), 'days', [`post:mix:${e}`], { episode: e }));
     tasks.push(t('post:qc', String(e), `Delivery Quality Control${epSuffix(p, e)}`, 'Post Production', 'qc-technician', 1, 'days', [`post:color:${e}`, `post:mix:${e}`, `post:captions:${e}`], { episode: e }));
+  }
+  // A narrator records their narration once the picture is locked; every mix waits for it.
+  for (const c of chars.filter((x) => x.functions.includes('narrator') && x.roleSize !== 'background')) {
+    const id = `post:narration:${c.id}`;
+    tasks.push(t('post:narration', c.id, `Record ${c.name}'s Narration`, 'Post Production', 'sound-designer', 1, 'sessions', ['milestone:lock:1']));
+    for (const mix of tasks.filter((x) => x.kind === 'post:mix')) mix.dependsOn.push(id);
   }
   // Prep must finish before live capture.
   for (const task of tasks) if (task.kind === 'prep:rehearsal') task.dependsOn.push(...prepIds.filter((x) => x !== 'prep:rehearsal:all' && x !== 'doc:research:all'));

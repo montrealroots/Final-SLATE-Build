@@ -1,10 +1,11 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
 import { approvedTake, captureCredit } from './mocap';
+import { LOST_TURNING_POINT_COST, SUBTITLE_PER_THOUSAND_WORDS, ageRating, dialogueWords, isTurningPoint, pitchMissing } from './script-effects';
 import { financeCredits, onProjectDelivered, receiveIncome } from './finance';
 import { getPlace } from '../data/places';
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
-import { AUTHENTIC_CASTING_BONUS, personById, roleLabel, sharedHeritages } from './people';
+import { AUTHENTIC_CASTING_BONUS, countryLanguage, personById, roleLabel, sharedHeritages } from './people';
 import {
   approvalRights, approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, scriptIssues, sceneLabel, sceneTechnique,
 } from './projects';
@@ -183,8 +184,10 @@ export function computeCredits(state: GameState, p: Project): Credit[] {
     if (!c) continue;
     const eps = [...new Set(approvedScenes(p).filter((s) => s.participants.includes(c.id)).map((s) => s.episode))];
     if (!eps.length) continue;
+    // A series regular is credited in every episode; everyone else in the episodes they appear in.
+    const credited = episodic && c.seriesInvolvement === 'regular' ? 'all' : episodic ? eps : 'all';
     const name = a.performer === 'player' ? me : personById(state, a.performer).name;
-    add({ person: a.performer, personName: name, contribution: a.method === 'voice' ? 'Voice Cast' : a.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: a.method === 'voice' ? 'voice-actor' : 'actor', characterName: c.name, episodes: episodic ? eps : 'all' });
+    add({ person: a.performer, personName: name, contribution: a.method === 'voice' ? 'Voice Cast' : a.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: a.method === 'voice' ? 'voice-actor' : 'actor', characterName: c.name, episodes: credited });
   }
   // Performers replaced after contributing keep their credit while their work is still in the film: a capture of a
   // scene they performed, or the approved motion-capture take.
@@ -246,7 +249,9 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   const craftRoles = ['dop', 'production-designer', 'costume-designer', 'sound-designer', 'editor', 'composer', 'colorist', 'visdev-artist'];
   const craftCaps = craftRoles.map(crewCap).filter((x): x is number => x !== null);
   const craft = clamp(avg([...craftCaps, ...anim], 50) * 0.85 + 8);
-  const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10), music: clamp((crewCap('composer') ?? 45) * 0.9 + 5) };
+  // A turning point the shoot never captured leaves a hole the edit can't cover (script-effects.ts).
+  const lostBeats = scenes.filter((s) => isTurningPoint(s) && sceneTechnique(p, s) === 'live' && !p.captures.some((c) => c.sceneId === s.id)).length;
+  const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10 - lostBeats * LOST_TURNING_POINT_COST), music: clamp((crewCap('composer') ?? 45) * 0.9 + 5) };
   if (anim.length) out.animation = clamp(avg(anim) * 0.9 + 6);
   for (const a of p.cast) {
     const sc = scenes.filter((s) => s.participants.includes(a.characterId)).map((s) => p.captures.find((c) => c.sceneId === s.id)?.quality ?? 60);
@@ -336,11 +341,20 @@ registerHandler('distribution-offer', (state, ev) => {
   const r = stream(state.seed, 'distribution', p.id, wave);
   const exposure = (ev.payload.exposure as number | undefined) ?? 0;
   const appeal = p.quality.reception + exposure;
+  // Distributors market from the logline and synopsis: without them, no one makes an offer.
+  const pitch = pitchMissing(p);
+  if (pitch) {
+    const text = `No distributor could market ${p.title} without a logline and a premise. ${pitch.replace(': they read a pitch', '').replace(': it is the synopsis they read', '')} Offers can follow your next festival screening.`;
+    addLog(state, text, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'script' } });
+    return { message: text };
+  }
+  const rating = ageRating(p, approvedScenes(p));
   const count = appeal >= 80 ? 3 : appeal >= 65 ? 2 : appeal >= 50 ? 1 : 0;
   const runtimeFactor = Math.min(1, (p.delivered.runtimeMin) / 90);
   const made: DistributionOffer[] = [];
   for (let i = 0; i < count; i++) {
-    const route = pick(r, ['streaming', 'theatrical', 'digital', 'broadcast'] as const);
+    // Broadcasters in this model don't carry 18+ work: those offers go to the other routes.
+    const route = pick(r, rating === '18+' ? ['streaming', 'theatrical', 'digital', 'digital'] as const : ['streaming', 'theatrical', 'digital', 'broadcast'] as const);
     const mg = Math.round(((appeal - 40) * 6000 * runtimeFactor * (0.6 + r() * 0.8) * (route === 'theatrical' ? 1.4 : 1)) / 1000) * 1000;
     if (mg <= 0) continue;
     const offer: DistributionOffer = {
@@ -365,7 +379,7 @@ export function acceptDistribution(state: GameState, p: Project, offerId: string
     throw new Error('That offer has expired.');
   }
   // The contract obliges you to supply delivery materials; their cost is reserved now and paid on release.
-  const materials = reserve(state, p, `Delivery Materials For ${o.distributor}`, 'post', DELIVERY_MATERIALS[o.route], `release-offer:${o.id}`);
+  const materials = reserve(state, p, `Delivery Materials For ${o.distributor}`, 'post', DELIVERY_MATERIALS[o.route] + subtitlingCost(p, o.territories), `release-offer:${o.id}`);
   o.status = 'accepted';
   for (const other of p.offers.filter((x) => x.status === 'open' && x.route === o.route)) other.status = 'declined';
   p.revenue += receiveIncome(state, p, o.minimumGuarantee, o.distributor); // backers are repaid first
@@ -376,6 +390,17 @@ export function acceptDistribution(state: GameState, p: Project, offerId: string
   rec.offerId = o.id;
   rec.obligationId = materials.id;
   return rec;
+}
+
+/** Subtitles for every territory whose language isn't the dialogue's, priced by the dialogue's words (script-effects.ts). */
+export function subtitlingCost(p: Project, territories: string[]): number {
+  const words = dialogueWords(approvedScenes(p));
+  let cost = 0;
+  for (const t of new Set(territories.map(countryLanguage))) {
+    const foreign = Object.entries(words).filter(([lang]) => lang !== t).reduce((n, [, w]) => n + w, 0);
+    cost += Math.ceil(foreign / 1000) * SUBTITLE_PER_THOUSAND_WORDS;
+  }
+  return cost;
 }
 
 /** Delivery materials a distributor's contract requires (captions, music and effects track, artwork), by route. Simulation assumption. */

@@ -126,6 +126,10 @@ export interface ProjectAxes {
   audience: string; // e.g. 'General', 'Adult', 'Family', 'Children (6–11)'
   storyEra: string;
   storySetting: string;
+  /** Where the story is set, as a place (optional): shooting away from it adds a scouting trip there (production/tasks.ts). */
+  settingPlaceId?: string;
+  /** Where awards that split drama from comedy consider it; unset, its genres decide (script-effects.ts). */
+  register?: 'comedy' | 'drama';
   dialogueLanguages: string[];
   targetRuntimeMin: number;
   episodeCount: number; // 1 for single works

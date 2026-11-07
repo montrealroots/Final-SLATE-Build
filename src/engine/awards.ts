@@ -4,6 +4,7 @@
 // announcement; all others are generated once per edition from a seasonal window and saved, so reloading never moves them.
 
 import { getPlace } from '../data/places';
+import { COMEDY_MUSICAL, castPlacement, competesAs, pitchMissing } from './script-effects';
 import { ledgerTotals, money, spend } from './budget';
 import { genre } from './genres';
 import { personById } from './people';
@@ -65,7 +66,6 @@ const DOCS: Format[] = ['documentary-feature'];
 const SERIES: Format[] = ['series', 'limited-series', 'anthology-series', 'web-series'];
 const ONGOING: Format[] = ['series', 'anthology-series', 'web-series'];
 const DOC_SERIES: Format[] = ['documentary-series', 'unscripted-series'];
-const COMEDY_MUSICAL = ['comedy', 'musical', 'romantic-comedy', 'action-comedy', 'buddy-comedy', 'screwball-comedy', 'slapstick', 'farce', 'parody', 'satire', 'black-comedy', 'stoner-comedy', 'horror-comedy', 'backstage-musical', 'jukebox-musical'];
 const GENRE_FANTASTIC = ['horror', 'fantasy', 'science-fiction', 'dark-fantasy', 'cosmic-horror', 'slasher', 'zombie', 'vampire', 'werewolf', 'creature-feature', 'monster-movie', 'kaiju', 'body-horror', 'folk-horror', 'gothic-horror', 'psychological-horror', 'supernatural', 'occult', 'splatter', 'cyberpunk', 'space-opera', 'time-travel', 'giallo', 'sword-and-sorcery', 'science-fantasy', 'horror-comedy', 'eco-horror'];
 
 const C = (id: string, name: string, recipient: Recipient, formats: Format[], judging: Judging, slots: number, extra: Partial<Category> = {}): Category => ({
@@ -664,8 +664,11 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   const mediums = rules?.mediums?.value ?? cat.mediums;
   if (mediums && !mediums.includes(p.axes.medium)) reasons.push(`This category is for ${mediums.join(' or ').replace('-', ' ')} work.`);
   if (rules?.minEpisodes && p.axes.episodeCount < rules.minEpisodes.value) reasons.push(`It has ${p.axes.episodeCount} episode${p.axes.episodeCount === 1 ? '' : 's'}. This category needs at least ${rules.minEpisodes.value}.`);
-  if (cat.genres && !p.axes.genres.some((g) => cat.genres!.includes(g.id))) reasons.push(`This category needs one of its genres, such as ${genre(cat.genres[0]).name}.`);
-  if (cat.excludeGenres && p.axes.genres.some((g) => cat.excludeGenres!.includes(g.id))) reasons.push('Comedy and musical work competes in a separate category.');
+  // Drama or comedy: where you said it competes, else its genres (competesAs).
+  if (cat.genres === COMEDY_MUSICAL) { if (competesAs(p) !== 'comedy') reasons.push('This category is for comedy and musical work; this project competes as drama.'); }
+  else if (cat.genres && !p.axes.genres.some((g) => cat.genres!.includes(g.id))) reasons.push(`This category needs one of its genres, such as ${genre(cat.genres[0]).name}.`);
+  if (cat.excludeGenres === COMEDY_MUSICAL) { if (competesAs(p) === 'comedy') reasons.push('Comedy and musical work competes in a separate category.'); }
+  else if (cat.excludeGenres && p.axes.genres.some((g) => cat.excludeGenres!.includes(g.id))) reasons.push('Its genres compete in a separate category.');
   if (inst.origin && !inst.origin.includes(origin)) reasons.push('Your production base country isn\'t eligible for this event.');
   if (rules?.origin?.value.only && !rules.origin.value.only.includes(origin)) reasons.push(`This section is for work made in ${rules.origin.value.only.map(countryWords).join(' or ')}.`);
   if (rules?.origin?.value.not?.includes(origin)) reasons.push(`Work made mainly in ${countryWords(origin)} enters the festival's national competition instead.`);
@@ -762,8 +765,9 @@ export function categoryRecipients(state: GameState, p: Project, cat: Category, 
     case 'ensemble': pool = credits.filter((c) => c.contribution === 'Cast'); break;
     case 'voice': pool = credits.filter((c) => c.contribution === 'Voice Cast'); break;
     default: {
-      const sizes = cat.recipient === 'lead' ? ['lead', 'co-lead', 'ensemble-lead'] : ['supporting', 'featured'];
-      pool = credits.filter((c) => (c.contribution === 'Cast' || c.contribution === 'Performance Capture') && sizes.includes(chars.find((x) => x.name === c.characterName)?.roleSize ?? ''));
+      // Leading or supporting by the part's size, and by its story function: a protagonist, deuteragonist or antagonist leads.
+      const placed = (name?: string) => { const ch = chars.find((x) => x.name === name); return ch ? castPlacement(ch) : null; };
+      pool = credits.filter((c) => (c.contribution === 'Cast' || c.contribution === 'Performance Capture') && placed(c.characterName) === cat.recipient);
       if (cat.actingTitle) {
         // Gendered categories: the player's own entry uses the acting title they chose. Simulated
         // performers are not auto-assigned a gendered category from pronouns.
@@ -786,6 +790,9 @@ export function submitEntry(state: GameState, p: Project, editionId: string, cat
   if (ed.entries.some((e) => e.projectId === p.id && e.categoryId === categoryId && e.status !== 'withdrawn')) throw new Error('This project is already entered in that category.');
   const el = checkEligibility(state, p, ed, cat, recipientIds);
   if (!el.eligible) throw new Error(el.reasons[0]);
+  // Every entry form asks for a logline and a synopsis (the premise).
+  const pitch = pitchMissing(p);
+  if (pitch) throw new Error(pitch.replace('they read a pitch', 'every entry asks for one').replace('it is the synopsis they read', 'it is the synopsis every entry asks for'));
   // One fee per project, category and edition: entering again after withdrawing doesn't charge it twice.
   const feeKey = `fee:${editionId}:${categoryId}`;
   const alreadyPaid = p.obligations.some((o) => o.postings.some((x) => x.key === feeKey));

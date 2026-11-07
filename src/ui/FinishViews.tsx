@@ -5,7 +5,7 @@ import {
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
   qualityWords, requestPickups, depsMet, startCutPass, submitEntry, unlockPicture, withdrawEntry, addDaysToKey, categoryRecipients, type Category,
   categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, rsvpScreening, screeningConflicts, screeningTravel, travelTo, DELIVERY_MATERIALS, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
-} from '../engine';
+  ageRating, approvedScenes, pitchMissing, subtitlingCost } from '../engine';
 import type { CapturePart, GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, PageHead, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
@@ -177,11 +177,12 @@ export function ReleaseTab({ p }: { p: Project }) {
       </section>
       <section className="card">
         <h2>Distribution Offers</h2>
+        <p className="muted">Rated {ageRating(p, approvedScenes(p))}, from its intended audience ({p.axes.audience.toLowerCase()}) and what its scenes contain{ageRating(p, approvedScenes(p)) === '18+' ? '. Broadcasters in this game don’t carry 18+ work' : ''}.{pitchMissing(p) ? ` Distributors market from your pitch: ${pitchMissing(p)}` : ''}</p>
         {open.length ? (
           <ul className="list">
             {open.map((o) => (
               <li key={o.id} className="row-wrap">
-                <span className="grow"><strong>{o.distributor}</strong>: {ROUTE_LABELS[o.route]} release in {o.territories.join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(DELIVERY_MATERIALS[o.route])}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
+                <span className="grow"><strong>{o.distributor}</strong>: {ROUTE_LABELS[o.route]} release in {o.territories.join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(DELIVERY_MATERIALS[o.route] + subtitlingCost(p, o.territories))}{subtitlingCost(p, o.territories) ? `, including ${money(subtitlingCost(p, o.territories))} of subtitles for dialogue not in the territory's language` : ''}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
                 <div className="row gap-2 wrap">
                   <button className="btn btn-sm btn-primary" onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id)))}>Accept Offer</button>
                   <button className="btn btn-sm" onClick={() => setErr(store.act(() => declineDistribution(p, o.id)))}>Decline Offer</button>

@@ -1,4 +1,5 @@
 import { financeRights } from './finance';
+import { scriptPages, spokenMinutes } from './script-effects';
 import { composeGenres, genreName, type ModuleId } from './genres';
 import { findPlace } from '../data/places';
 import { addLog, adoptPlace, newId, registerHandler, schedule } from './state';
@@ -124,6 +125,8 @@ export function createProject(state: GameState, input: NewProjectInput): Project
   const base = findPlace(axes.basePlaceId);
   if (!base) throw new Error('Choose a production base.');
   adoptPlace(state, base); // a world place used as a base is kept in the save
+  const setting = axes.settingPlaceId ? findPlace(axes.settingPlaceId) : undefined;
+  if (setting) adoptPlace(state, setting); // and one where the story is set
   const p: Project = {
     id: newId(state, 'pr'),
     title,
@@ -205,7 +208,7 @@ export function assertEditable(p: Project): void {
 export function blankCharacter(state: GameState, name: string): StoryCharacter {
   return {
     id: newId(state, 'c'), name: name.trim(), roleSize: 'supporting', functions: [], entity: 'human', entityNote: '', methods: ['on-camera'],
-    realization: 'performer', ageInStory: '', pronouns: '', languages: [], description: '', wants: '', fears: '', seriesInvolvement: 'regular',
+    realization: 'performer', ageInStory: '', pronouns: '', languages: [], description: '', wants: '', fears: '', seriesInvolvement: 'recurring',
     designVersion: 1,
   };
 }
@@ -377,8 +380,14 @@ export function scriptIssues(p: Project): Issue[] {
       out.push({ severity: 'note', area: 'visual', text: `${label} needs an in-story camera operator.`, sceneId: s.id, module: 'presentation' });
     }
     if (mods.has('tonal') && !s.tone?.trim()) out.push({ severity: 'note', area: 'pacing', text: `${label} has no tonal intention.`, sceneId: s.id, module: 'tonal' });
-    if (mods.has('audience') && s.intimacy && /child|famil/i.test(p.axes.audience)) {
-      out.push({ severity: 'blocking', area: 'structure', text: `${label} includes an intimate scene, which doesn't fit a ${p.axes.audience.toLowerCase()} audience.`, sceneId: s.id, module: 'audience' });
+    // The intended audience is a rating promise for every project, not only those whose genre asks (ageRating).
+    if (s.intimacy && /child|famil|preschool/i.test(p.axes.audience)) {
+      out.push({ severity: 'blocking', area: 'structure', text: `${label} includes an intimate scene, which doesn't fit a ${p.axes.audience.toLowerCase()} audience.`, sceneId: s.id, module: mods.has('audience') ? 'audience' : undefined });
+    }
+    // Dialogue counted by length, never meaning: about 150 spoken words a minute.
+    const spoken = spokenMinutes(s);
+    if (spoken > s.estMinutes * 1.25 + 0.25) {
+      out.push({ severity: 'note', area: 'pacing', text: `${label} has about ${Math.ceil(spoken)} minutes of dialogue in a scene estimated at ${s.estMinutes}. Lengthen the estimate or trim the lines.`, sceneId: s.id });
     }
   }
   const total = p.scenes.reduce((a, s) => a + s.estMinutes, 0);
@@ -428,6 +437,17 @@ export function scriptIssues(p: Project): Issue[] {
       if (eps.size > 1 && !(p.genreNotes['shared-link-between-stories'] ?? '').trim()) {
         out.push({ severity: 'note', area: 'continuity', text: `${c.name} appears in more than one story. Describe the shared link if that's intended.`, module: 'anthology' });
       }
+    }
+  }
+  // The written script's length: about a page a minute. Only an overlong script is flagged: not every scene is written out.
+  const pages = scriptPages(p.scenes);
+  const target = p.axes.targetRuntimeMin * (isEpisodic(p.axes.format) ? p.axes.episodeCount : 1);
+  if (pages >= 5 && pages > target * 1.5) out.push({ severity: 'note', area: 'pacing', text: `The script runs about ${Math.round(pages)} pages for ${target} minutes of screen time (about a page a minute). Cut it down or raise the target runtime.` });
+  for (const c of p.characters) {
+    if (c.entity !== 'human' && !c.entityNote.trim()) out.push({ severity: 'note', area: 'visual', text: `Describe what kind of being ${c.name} is, so design and casting can start.` });
+    if (isEpisodic(p.axes.format) && (c.seriesInvolvement === 'guest' || c.seriesInvolvement === 'single')) {
+      const eps = new Set(p.scenes.filter((s) => s.participants.includes(c.id)).map((s) => s.episode));
+      if (eps.size > 1) out.push({ severity: 'note', area: 'characterization', text: `${c.name} is written as a ${c.seriesInvolvement === 'guest' ? 'guest' : 'one-episode'} part but appears in ${eps.size} episodes. Make them recurring, or keep them to one episode.` });
     }
   }
   if (p.axes.genres.some((g) => g.id === 'animated' || g.id === 'anime') && p.axes.medium === 'live-action') {
