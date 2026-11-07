@@ -125,7 +125,7 @@ export function EditTab({ p }: { p: Project }) {
         <h2>Coverage</h2>
         {gaps.length ? (
           <>
-            <p>These scenes need more material. For each, schedule a pickup (a shoot day, paid like any other), wait for its scheduled day, or cut it from the edit and accept what that does to the story.</p>
+            <p>Scenes without enough material yet. A scheduled scene is shot on its day; for any other, request a pickup (a shoot day after the main shoot, paid like any other). You can also cut a scene from the edit and accept what that does to the story.</p>
             <ul className="list">{gaps.map((g) => (
               <li key={g.sceneId}>
                 {g.scheduled ? <p><strong>{g.label}</strong>: {g.reason}</p> : <Check label={`${g.label}: ${g.reason}`} checked={pick.includes(g.sceneId)} onChange={(v) => setPick(v ? [...pick, g.sceneId] : pick.filter((x) => x !== g.sceneId))} />}

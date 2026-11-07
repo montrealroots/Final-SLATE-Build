@@ -712,8 +712,9 @@ function WithdrawButton({ p, contributorId, name }: { p: Project; contributorId:
 }
 
 /**
- * A character's backgrounds as written. Casting shows who shares one, and a performer who does brings lived
- * experience to the part (the performance counts it, finish.ts); nobody is turned away or marked down for not sharing.
+ * A character's backgrounds as written. Casting shows who shares one, as information for the producer's choice. Until
+ * the review of November 7, 2026 a shared background added 6 to the performance score; ability isn't inferred from
+ * ethnicity, so it scores nothing now.
  */
 function CharacterBackgrounds({ name, value, onChange }: { name: string; value: string[]; onChange: (v: string[]) => void }) {
   const [q, setQ] = useState('');
@@ -721,7 +722,7 @@ function CharacterBackgrounds({ name, value, onChange }: { name: string; value: 
   return (
     <fieldset style={{ border: 0, padding: 0 }}>
       <legend style={{ fontWeight: 600 }}>Backgrounds</legend>
-      <p className="dim">Optional. A performer who shares one of {name || 'this character'}’s backgrounds brings lived experience to the part, and the performance counts it. No one is turned away for not sharing it.</p>
+      <p className="dim">Optional. Casting shows which performers share one of {name || 'this character'}’s backgrounds, as information for your choice. It never changes how a performance is judged, and no one is turned away for not sharing it.</p>
       {value.length > 0 && (
         <div className="chip-row" style={{ marginBottom: 'var(--s2)' }}>
           {value.map((h) => <button key={h} type="button" className="btn btn-sm" aria-label={`Remove Background: ${h}`} onClick={() => onChange(value.filter((x) => x !== h))}>{h} ✕</button>)}

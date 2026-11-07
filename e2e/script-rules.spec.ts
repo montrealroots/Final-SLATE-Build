@@ -41,6 +41,7 @@ test('a supporting antagonist, an incomplete pitch and a revised treatment: what
   await marcus.getByRole('checkbox', { name: 'Antagonist' }).check();
   await expect(marcus.getByText("Marcus is entered in the supporting categories, from the part's size (Supporting). Change Awards Placement on the character to enter it elsewhere.")).toBeVisible();
   await expect(marcus.getByText('a supporting antagonist stays supporting', { exact: false })).toBeVisible();
+  await marcus.getByLabel('Awards Placement').scrollIntoViewIfNeeded();
   await page.screenshot({ path: `test-results/rules-${info.project.name}-supporting-antagonist.png`, fullPage: true });
   // Placing it is the producer's choice, and is said back; By Role Size returns it.
   await marcus.getByLabel('Awards Placement').selectOption({ label: 'Leading' });
@@ -56,9 +57,10 @@ test('a supporting antagonist, an incomplete pitch and a revised treatment: what
 
   // Before the agreed starting backing (which would cover the whole target), the grant names its documents and the fields still empty; nothing about their content is judged.
   await section(page, 'Budget');
-  await expect(grantRow(page)).toContainText('A grant application includes the approved script and a Pitch, a Treatment and a Statement Of Intent.');
+  await expect(grantRow(page)).toContainText('A grant application includes a Pitch, a Treatment and a Statement Of Intent.');
   await expect(grantRow(page)).toContainText('Still to write in the Story panel: Premise, Central Conflict, Point Of View, Intended Ending, Theme and Stakes.');
   await expect(page.getByRole('button', { name: 'Approach Screen Arts Fund Grant' })).toBeDisabled();
+  await grantRow(page).scrollIntoViewIfNeeded();
   await page.screenshot({ path: `test-results/rules-${info.project.name}-incomplete-pitch.png`, fullPage: true });
 
   // The pitch and statement written; the treatment is what's left.
@@ -82,6 +84,7 @@ test('a supporting antagonist, an incomplete pitch and a revised treatment: what
   await expect(grant).toContainText('Considering');
   await expect(grant).toContainText("Sent with the approved script: Pitch, Treatment, Statement Of Intent. They read it; SLATE doesn't judge it.");
   await expect(grant).toContainText('Their answer is due');
+  await grant.scrollIntoViewIfNeeded();
   await page.screenshot({ path: `test-results/rules-${info.project.name}-treatment-sent.png`, fullPage: true });
 });
 
@@ -118,6 +121,7 @@ test('a mature project: declared content, an essential scene cut then picked up,
   await content.getByLabel('Language', { exact: true }).selectOption({ label: 'Moderate' });
   await expect(content).toContainText('Declared: Strong violence, moderate language.');
   await expect(content).toContainText('Only a classification body gives a rating');
+  await content.scrollIntoViewIfNeeded();
   await page.screenshot({ path: 'test-results/rules-desktop-content-declared.png', fullPage: true });
   await approveDraft(page);
   await secureStartingBacking(page);
@@ -152,6 +156,7 @@ test('a mature project: declared content, an essential scene cut then picked up,
   await coverage.getByRole('checkbox', { name: /^Scene 2 .*Nothing has been shot for it yet\.$/ }).check();
   await coverage.getByRole('button', { name: 'Request Pickups' }).click();
   await expect(coverage).toContainText('Not shot yet: scheduled for');
+  await coverage.scrollIntoViewIfNeeded();
   await page.screenshot({ path: 'test-results/rules-desktop-pickup.png', fullPage: true });
 
   await runToDelivery(page);
@@ -168,6 +173,7 @@ test('a mature project: declared content, an essential scene cut then picked up,
   await expect(late).toContainText('in a late-evening slot');
   await expect(late).toContainText("Ofcom's Broadcasting Code keeps material unsuitable for children until after the 9pm watershed on free-to-air television.");
   await expect(late).toContainText('A broadcast edit, cut for an earlier slot, costs about $2,500 more in delivery materials');
+  await late.scrollIntoViewIfNeeded();
   await page.screenshot({ path: 'test-results/rules-desktop-late-slot.png', fullPage: true });
   await late.getByRole('button', { name: 'Accept With A Broadcast Edit' }).click();
   const history = page.locator('section.card', { has: page.getByRole('heading', { name: 'Release History' }) });

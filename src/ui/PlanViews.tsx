@@ -494,7 +494,7 @@ function FinancingPanel({ p }: { p: Project }) {
             <li key={o.kind} className="row-wrap">
               <div className="grow">
                 <strong>{BACKERS[o.kind].name}</strong>{o.kind === 'starting' ? <> <span className="chip">Agreed Starting Scenario</span></> : null}
-                <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why} {backerDocuments(o.kind)}</p>
+                <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why}{o.needs.includes('Still to write') ? '' : ` ${backerDocuments(o.kind)}`}</p>
                 {!o.ready && <p className="dim">{o.needs}</p>}
               </div>
               <button className="btn btn-sm" disabled={!o.ready} onClick={() => setErr(store.act((s) => void approachBacker(s, live(s), o.kind)))} aria-label={`Approach ${BACKERS[o.kind].name}`}>{o.kind === 'starting' ? 'Ask For The Agreed Backing' : 'Approach'}</button>
