@@ -56,7 +56,22 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 7, 2026, review): believable, connected script rules
+### Newest Request (November 7, 2026, after #34): input loss, startup size, connected journeys
+
+- **WebKit input loss: found and fixed.** There were two causes, neither specific to WebKit:
+  - **New Script:** focus moved a frame after the screen changed, so text typed in that frame was lost. Focus now
+    moves in the same commit (`Shell.tsx`).
+  - **Creation:** the world map grew after it was drawn and pushed Save And Return To Review away from a click. The
+    placeholder is now the map's own box. Tests: `e2e/focus.spec.ts`.
+- **Startup JavaScript:** 718,078 bytes became 676,736. The genre catalog and the seasons table now load in the
+  background before a game opens, and a failed catalog shows Try Again. Details: `docs/PERFORMANCE.md`.
+- **Connected career journey:** `e2e/connected.spec.ts` runs on desktop, phone and `iphone-15-pro-max`, all in
+  emulation.
+- **Reports reconciled:** this file, `QA-REPORT.md` and `docs/PERFORMANCE.md` now match the code and this pass's
+  results. Both complete browser suites: 134 passed, 24 skipped by design, 0 failed.
+- **Next startup candidates:** the legacy places' climate and the award rules, as `docs/PERFORMANCE.md` says.
+
+### Earlier Request (November 7, 2026, review): believable, connected script rules
 
 "Every field has an effect" wasn't enough: the review replaced the arbitrary effects merged in #33 (and some older
 ones). `docs/SCREENWRITING-AUDIT.md` traces every recent field effect from input to outcome, says where the player is
