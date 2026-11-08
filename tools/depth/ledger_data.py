@@ -426,7 +426,9 @@ C = {
 '15-05': ('Edit, Release', 'src/engine/finish.ts', [
   ('Delivery checks name what is missing', 'VE', ['tests/script-effects.test.ts::a shoot day left empty by a cut is cancelled'], ''),
   ('A broadcast edit as a separate deliverable', 'VE', ['e2e/script-rules.spec.ts::what the broadcaster offers'], ''),
-  ('Festival and distribution versions with their own runtime and credits', 'MI', [], 'One delivered version plus the broadcast edit'),
+  ('Festival and distribution versions with their own runtime and credits', 'V',
+   ['tests/versions.test.ts::a version is conformed from the locked cut as a day of editing, with its own runtime and credits', 'tests/versions.test.ts::a festival\'s runtime rules read the version entered', 'e2e/live-action.spec.ts::A Festival Cut without the wheelhouse scene (SLATE-15-05.03)'],
+   'Versions leave scenes out of the locked cut; credits drop people whose scenes are left out'),
 ]),
 '16-01': ('Release', 'src/engine/finish.ts', [
   ('Choose a route and date', 'VE', ['tests/release.test.ts::a contracted release happens on its date'], ''),

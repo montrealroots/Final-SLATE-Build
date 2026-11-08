@@ -5,6 +5,7 @@
 
 import { getPlace } from '../data/places';
 import institutionsUrl from '../data/institutions.json?url';
+import { versionRuntime } from './versions';
 import { COMEDY_MUSICAL, castPlacement, competesAs, documentsNeeded } from './script-effects';
 import { genre } from './genres';
 import { personById } from './people';
@@ -335,7 +336,7 @@ function showingsBefore(p: Project, before: string, exceptEdition?: string): { d
   return out;
 }
 
-export function checkEligibility(state: GameState, p: Project, ed: Edition, cat: Category, recipientIds?: string[]): Eligibility {
+export function checkEligibility(state: GameState, p: Project, ed: Edition, cat: Category, recipientIds?: string[], versionId?: string): Eligibility {
   const inst = institution(ed.institutionId);
   const rules = categoryRules(ed, cat.id);
   const reasons: string[] = [];
@@ -343,8 +344,11 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   const origin = getPlace(p.axes.basePlaceId).country;
   const formats = rules?.formats?.value ?? cat.formats;
   if (!formats.includes(p.axes.format)) reasons.push(`This category doesn't accept ${p.axes.format.replace('-', ' ')} projects.`);
+  // A version entered instead of the main cut is judged at its own runtime (versions.ts).
+  const version = versionId ? p.versions?.find((v) => v.id === versionId) : undefined;
+  if (versionId && !version) reasons.push('That version no longer exists.');
   if (p.delivered) {
-    const rt = p.delivered.runtimeMin;
+    const rt = version ? versionRuntime(p, version) : p.delivered.runtimeMin;
     const shortForm = p.axes.format === 'short' || p.axes.format === 'documentary-short';
     const runtimeRule = shortForm && rules?.runtimeShort ? rules.runtimeShort : rules?.runtime;
     if (runtimeRule) {

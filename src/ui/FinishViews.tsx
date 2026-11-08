@@ -18,6 +18,7 @@ import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
 import { editScenes } from '../engine/finish';
+import { VERSION_LABELS, addVersion, removeVersion, versionCredits, versionRuntime } from '../engine/versions';
 import { designStatus, designsToReview, type DesignStatus } from '../engine/designs';
 
 // ---------------- Production ----------------
@@ -125,6 +126,39 @@ export function ProductionTab({ p }: { p: Project }) {
 
 // ---------------- Edit and delivery ----------------
 
+/** Festival and distribution versions conformed from the locked cut (versions.ts, SLATE-15-05.03). */
+function VersionsCard({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
+  const g = useGame();
+  const [label, setLabel] = useState<string>(VERSION_LABELS[0]);
+  const [leaveOut, setLeaveOut] = useState<string[]>([]);
+  const scenes = editScenes(p);
+  const preview = Math.round(scenes.filter((s) => !leaveOut.includes(s.id)).reduce((a, s) => a + s.estMinutes, 0));
+  const main = Math.round(scenes.reduce((a, s) => a + s.estMinutes, 0));
+  return (
+    <section className="card" aria-labelledby="versions-h">
+      <h2 id="versions-h">Versions</h2>
+      <p className="dim">Besides the main cut ({main} minutes), the editor can conform a Festival Cut or a Distribution Cut that leaves scenes out: a day of their work that delivery waits for. A version has its own runtime, which festival rules read when it is the one entered, and its own credits, without anyone whose scenes it leaves out.</p>
+      {(p.versions ?? []).length > 0 && <ul className="list">{p.versions!.map((v) => (
+        <li key={v.id} className="row-wrap">
+          <span className="grow"><strong>{v.label}</strong> <span className="dim">· {versionRuntime(p, v)} minutes · {plural(versionCredits(g, p, v).length, 'credit')}{p.tasks.find((x) => x.id === `post:version:${v.id}`)?.status === 'done' ? ' · Ready' : ''}</span></span>
+          {!p.delivered && <button className="btn btn-sm" aria-label={`Remove The ${v.label}`} onClick={() => onError(store.act(() => removeVersion(p, v.id)))}>Remove</button>}
+        </li>
+      ))}</ul>}
+      {p.edit.pictureLocked && !p.delivered && (
+        <>
+          <SelectField label="Version" value={label} options={VERSION_LABELS.filter((l) => !(p.versions ?? []).some((v) => v.label === l)).map((l) => ({ value: l, label: l }))} onChange={setLabel} />
+          <fieldset style={{ border: 0, padding: 0 }}>
+            <legend className="small">Scenes It Leaves Out</legend>
+            <div className="chip-row">{scenes.map((s) => <Check key={s.id} label={sceneLabel(p, s)} checked={leaveOut.includes(s.id)} onChange={(v) => setLeaveOut(v ? [...leaveOut, s.id] : leaveOut.filter((x) => x !== s.id))} />)}</div>
+          </fieldset>
+          <p className="dim">This version would run {preview} minutes.</p>
+          <button className="btn" disabled={!VERSION_LABELS.some((l) => l === label && !(p.versions ?? []).some((v) => v.label === l))} onClick={() => { const e = store.act((s) => void addVersion(s, p, label, leaveOut)); onError(e); if (!e) setLeaveOut([]); }}>Add Version</button>
+        </>
+      )}
+    </section>
+  );
+}
+
 /** Contributors who approve how they appear (documentary.ts, SLATE-14-02.02): show them the locked cut, or cut them. */
 function ApprovalsCard({ p, onError, onCut }: { p: Project; onError: (e: string | null) => void; onCut: (sceneId: string) => void }) {
   useGame();
@@ -212,6 +246,7 @@ export function EditTab({ p }: { p: Project }) {
         )}
       </section>
       {p.captures.some((c) => (c.takes?.length ?? 0) > 1) && <TakesCard p={p} onError={setErr} />}
+      {(p.edit.pictureLocked || (p.versions?.length ?? 0) > 0) && <VersionsCard p={p} onError={setErr} />}
       {p.contributors.some((c) => c.consent === 'given' && c.restrictions?.includes('approval')) && <ApprovalsCard p={p} onError={setErr} onCut={setCutting2} />}
       <section className="card">
         <h2>Coverage</h2>
@@ -512,8 +547,9 @@ function SubmissionDialog({ editionId, cat, onClose, onError }: { editionId: str
   const [projectId, setProjectId] = useState(delivered[0]?.id ?? '');
   const p = delivered.find((x) => x.id === projectId);
   const [recipients, setRecipients] = useState<string[]>([]);
+  const [versionId, setVersionId] = useState('');
   if (!p) return null;
-  const el = checkEligibility(g, p, ed, cat, recipients.length ? recipients : undefined);
+  const el = checkEligibility(g, p, ed, cat, recipients.length ? recipients : undefined, versionId || undefined);
   const pool = categoryRecipients(g, p, cat);
   const personal = ['lead', 'supporting', 'voice'].includes(cat.recipient);
   const docs = entryNeeds(p);
@@ -523,10 +559,11 @@ function SubmissionDialog({ editionId, cat, onClose, onError }: { editionId: str
   return (
     <Modal title="Prepare Submission" onClose={onClose} footer={<>
       <button className="btn" onClick={onClose}>Cancel</button>
-      <button className="btn btn-primary" disabled={!el.eligible || !!docs} onClick={() => { const e = store.act((s) => void submitEntry(s, p, editionId, cat.id, recipients.length ? recipients : undefined)); onError(e); if (!e) onClose(); }}>Submit Entry</button>
+      <button className="btn btn-primary" disabled={!el.eligible || !!docs} onClick={() => { const e = store.act((s) => void submitEntry(s, p, editionId, cat.id, recipients.length ? recipients : undefined, versionId || undefined)); onError(e); if (!e) onClose(); }}>Submit Entry</button>
     </>}>
       <p><strong>{cat.name}</strong>, {ed.label}</p>
-      <SelectField label="Project" value={projectId} options={delivered.map((x) => ({ value: x.id, label: x.title }))} onChange={(v) => { setProjectId(v); setRecipients([]); }} />
+      <SelectField label="Project" value={projectId} options={delivered.map((x) => ({ value: x.id, label: x.title }))} onChange={(v) => { setProjectId(v); setRecipients([]); setVersionId(''); }} />
+      {(p.versions ?? []).length > 0 && <SelectField label="Version To Enter" value={versionId} options={[{ value: '', label: `The Main Cut (${p.delivered!.runtimeMin} Minutes)` }, ...p.versions!.map((v) => ({ value: v.id, label: `${v.label} (${versionRuntime(p, v)} Minutes)` }))]} onChange={setVersionId} />}
       {personal && pool.length > 0 && (
         <fieldset style={{ border: 0, padding: 0 }}>
           <legend style={{ fontWeight: 600 }}>Performance To Enter</legend>

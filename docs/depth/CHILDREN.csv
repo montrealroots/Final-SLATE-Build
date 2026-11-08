@@ -187,7 +187,7 @@ SLATE-15-04.02,SLATE-15-04,Dialogue edit with ADR and Foley as their own work,VE
 SLATE-15-04.03,SLATE-15-04,Unlocking the picture reopens the finishing work it affects,IMPLEMENTED UNVERIFIED,,unlockPicture exists; no test
 SLATE-15-05.01,SLATE-15-05,Delivery checks name what is missing,VERIFIED EXISTING,tests/script-effects.test.ts::a shoot day left empty by a cut is cancelled,
 SLATE-15-05.02,SLATE-15-05,A broadcast edit as a separate deliverable,VERIFIED EXISTING,e2e/script-rules.spec.ts::what the broadcaster offers,
-SLATE-15-05.03,SLATE-15-05,Festival and distribution versions with their own runtime and credits,MISSING,,One delivered version plus the broadcast edit
+SLATE-15-05.03,SLATE-15-05,Festival and distribution versions with their own runtime and credits,VERIFIED,"tests/versions.test.ts::a version is conformed from the locked cut as a day of editing, with its own runtime and credits | tests/versions.test.ts::a festival's runtime rules read the version entered | e2e/live-action.spec.ts::A Festival Cut without the wheelhouse scene (SLATE-15-05.03)",Versions leave scenes out of the locked cut; credits drop people whose scenes are left out
 SLATE-16-01.01,SLATE-16-01,Choose a route and date,VERIFIED EXISTING,tests/release.test.ts::a contracted release happens on its date,
 SLATE-16-01.02,SLATE-16-01,Territories and exclusivity compared before accepting,MISSING,,Offers list territories; no exclusivity conflict
 SLATE-16-02.01,SLATE-16-02,Accept or decline; delivery materials reserved; cancellation terms,VERIFIED EXISTING,tests/release.test.ts::accepting reserves delivery materials,

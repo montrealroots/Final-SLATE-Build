@@ -553,6 +553,9 @@ export interface SceneCapture {
   perf?: number;
 }
 
+/** A festival or distribution version: the delivered cut less the scenes it leaves out (versions.ts). */
+export interface ProjectVersion { id: string; label: string; leaveOut: string[] }
+
 export interface EditState {
   assembly: boolean;
   cutPasses: number;
@@ -642,6 +645,8 @@ export interface Project {
   /** Live-action scenes are shot to a plan of coverage and takes (takes.ts); unset on projects started before. */
   takesModel?: boolean;
   shotPlans?: Record<string, { coverage: 'master' | 'standard' | 'full'; takes: 'one' | 'few' | 'many' }>;
+  /** Versions conformed from the locked cut besides the main one (versions.ts). */
+  versions?: ProjectVersion[];
   /** Sites chosen for each place after scouting, the backup, and those that fell through (locations.ts). */
   locationChoices?: Record<string, { main?: 'real' | 'stage' | 'standin'; backup?: 'real' | 'stage' | 'standin'; lost?: ('real' | 'stage' | 'standin')[] }>;
   /** Auditions and callbacks for its parts (auditions.ts). */
@@ -717,6 +722,8 @@ export interface EditionEntry {
   id: string;
   projectId: string;
   categoryId: string;
+  /** The version entered, when not the main cut (versions.ts). */
+  versionId?: string;
   episode?: number;
   submittedAt: number;
   status: 'submitted' | 'needs-correction' | 'rejected' | 'withdrawn' | 'accepted' | 'selected' | 'not-selected' | 'nominated' | 'not-nominated' | 'won' | 'lost';

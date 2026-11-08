@@ -170,7 +170,11 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       (the units of the old single sound pass; a day or two longer for short works); the mix waits for all three.
       Dialogue is replaced (ADR) when there was no sound mixer or, on new projects, when weather spoiled a scene
       (`needsDialogueReplacement`); the dialogue edit waits for it. Production golden regenerated (days +1 to +3).
-    - still to do: replacement voice and effects revisions `15-03.02`, festival and distribution versions `15-05.03`.
+    - versions (`15-05.03`, `versions.ts`), VERIFIED: after lock and before delivery, a Festival Cut or Distribution Cut
+      leaves chosen scenes out; it is a day of the editor's work that delivery waits for, has its own runtime (festival
+      runtime rules read the version entered; the submission dialog offers it) and its own credits (people whose scenes
+      it leaves out aren't credited on it).
+    - still to do: replacement voice and effects revisions `15-03.02`.
 - **Next:** finish stage 9; stage 10:
   territories `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11: relationships `18-02`,
   opportunities `18-03`.

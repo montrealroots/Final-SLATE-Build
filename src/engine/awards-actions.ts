@@ -9,14 +9,14 @@ import { addLog } from './state';
 import { dateKey } from './time';
 import type { Edition, EditionEntry, GameState, Project, Screening } from './types';
 
-export function submitEntry(state: GameState, p: Project, editionId: string, categoryId: string, recipientIds?: string[]): EditionEntry {
+export function submitEntry(state: GameState, p: Project, editionId: string, categoryId: string, recipientIds?: string[], versionId?: string): EditionEntry {
   const ed = edition(state, editionId);
   const inst = institution(ed.institutionId);
   const cat = inst.categories.find((c) => c.id === categoryId);
   if (!cat) throw new Error('That category doesn\'t exist.');
   if (!categoriesFor(inst, ed.year).includes(cat)) throw new Error(`The ${ed.label} doesn't hold that category.`);
   if (ed.entries.some((e) => e.projectId === p.id && e.categoryId === categoryId && e.status !== 'withdrawn')) throw new Error('This project is already entered in that category.');
-  const el = checkEligibility(state, p, ed, cat, recipientIds);
+  const el = checkEligibility(state, p, ed, cat, recipientIds, versionId);
   if (!el.eligible) throw new Error(el.reasons[0]);
   // Entry forms ask for a logline and a synopsis (the Pitch). SLATE checks they are written, never what they say.
   const pitch = entryNeeds(p);
@@ -33,6 +33,7 @@ export function submitEntry(state: GameState, p: Project, editionId: string, cat
   const entry: EditionEntry = {
     id: tries ? `${base}#${tries + 1}` : base, projectId: p.id, categoryId, submittedAt: state.now, status: 'submitted', recipients: el.recipients.map((r) => r.id), fee: cat.fee && !alreadyPaid ? cat.fee : 0,
     reason: el.provisional ? 'Entered provisionally. The planned release must happen within the eligibility period.' : undefined,
+    ...(versionId ? { versionId } : {}),
   };
   ed.entries.push(entry);
   if (!state.followed.includes(inst.id)) state.followed.push(inst.id);

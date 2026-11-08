@@ -138,6 +138,11 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
       await expect(dockTakes.locator('li', { hasText: new RegExp(`^Take ${n}: .* · In the cut$`) })).toHaveCount(1);
       await expect(dockTakes.locator('li', { hasText: / · In the cut$/ })).toHaveCount(1);
       await lock.click();
+      // A Festival Cut without the wheelhouse scene (SLATE-15-05.03): its own runtime, a day of editing before delivery.
+      const versions = page.locator('section.card', { has: page.getByRole('heading', { name: 'Versions', exact: true }) });
+      await versions.getByRole('checkbox', { name: 'Scene 2 (Wheelhouse)' }).check();
+      await versions.getByRole('button', { name: 'Add Version' }).click();
+      await expect(versions).toContainText(/Festival Cut · \d+ minutes · \d+ credits/);
       continue;
     }
     const cut = page.getByRole('button', { name: 'Start Cut Pass' });
@@ -163,6 +168,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   let submitted = false;
   for (let i = 0; i < await prepare.count() && !submitted; i++) {
     await prepare.nth(i).click();
+    await expect(page.getByRole('dialog').getByLabel('Version To Enter').locator('option')).toContainText([/^The Main Cut \(\d+ Minutes\)$/, /^Festival Cut \(\d+ Minutes\)$/]);
     const submit = page.getByRole('dialog').getByRole('button', { name: 'Submit Entry' });
     if (await submit.isEnabled()) {
       await submit.click();
