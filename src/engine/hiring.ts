@@ -446,9 +446,11 @@ export function proposeStaffing(state: GameState, p: Project, dept: string): { p
   let budget = available;
   for (const { nr } of plan.filter((x) => x.nr.dept === dept)) {
     const days = estimateDays(p, nr.roleId);
-    const pick = affordablePool(state, p, nr.roleId, win).find((c) => c.dayRate * days <= budget);
+    const pool = affordablePool(state, p, nr.roleId, win);
+    const pick = pool.find((c) => c.dayRate * days <= budget);
     if (!pick) {
-      skipped.push(`${roleLabel(nr.roleId)}: no available candidate fits the remaining budget.`);
+      // No one free at all is a different gap from no one affordable (SLATE-10-02, November 8, 2026); both were one sentence.
+      skipped.push(pool.length ? `${roleLabel(nr.roleId)}: no available candidate fits the remaining budget.` : `${roleLabel(nr.roleId)}: no one is free for your production window. Clear Only Show People Who Are Free on the Crew page to see who is booked, or move your start date.`);
       continue;
     }
     budget -= pick.dayRate * days;

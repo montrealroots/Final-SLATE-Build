@@ -1,7 +1,7 @@
 // Stage 12 of the gameplay-depth package: tests for children that were built before the package and had none
 // (docs/depth/COVERAGE-LEDGER.csv rows marked IMPLEMENTED UNVERIFIED). Each asserts the rule, not only the sentence.
 import { describe, expect, it } from 'vitest';
-import { computeCredits, neededRoles, projectedCost, roleCandidates, scriptIssues, unlockPicture, validateAxes } from '../src/engine';
+import { computeCredits, neededRoles, projectedCost, proposeStaffing, roleCandidates, scriptIssues, unlockPicture, validateAxes } from '../src/engine';
 import { buildTasks } from '../src/engine/production/tasks';
 import { breakdownComplete } from '../src/engine/script-explain';
 import type { ProjectAxes } from '../src/engine/types';
@@ -135,5 +135,19 @@ describe('a character in no scene (SLATE-05-05)', () => {
     const credits = computeCredits(s, with_);
     expect(credits.some((c) => c.characterName === 'Ada')).toBe(true); // a part in a scene is credited
     expect(credits.some((c) => c.characterName === 'Ghost')).toBe(false);
+  });
+});
+
+describe('no candidate (SLATE-10-02)', () => {
+  it('staffing names a role no one is free for, apart from one no one affordable can take', () => {
+    const s = startLife('gaps-nobody');
+    const p = buildProject(s, { title: 'Ink', format: 'short', medium: 'live-action', runtime: 10 }, [{ name: 'Ada' }], [{ place: 'Room', chars: ['Ada'] }]);
+    approve(s, p);
+    const dept = neededRoles(p, s).find((r) => r.roleId === 'editor')!.dept;
+    expect(proposeStaffing(s, p, dept).proposals.some((x) => x.roleId === 'editor')).toBe(true);
+    for (const x of roleCandidates(s, p, 'editor')) x.busy.push({ from: '2026-01-01', to: '2030-12-31' }); // labelled fixture: every editor booked elsewhere
+    const { proposals, skipped } = proposeStaffing(s, p, dept);
+    expect(proposals.some((x) => x.roleId === 'editor')).toBe(false);
+    expect(skipped).toContain('Editor: no one is free for your production window. Clear Only Show People Who Are Free on the Crew page to see who is booked, or move your start date.');
   });
 });

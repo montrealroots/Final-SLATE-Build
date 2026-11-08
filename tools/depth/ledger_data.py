@@ -299,7 +299,7 @@ C = {
 ]),
 '10-02': ('Crew > Find', 'src/engine/hiring.ts', [
   ('Compare experience, rate and availability', 'VE', ['e2e/connected.spec.ts::a connected career'], ''),
-  ('No candidate is an explicit gap', 'IU', [], 'Shown; no test'),
+  ('No candidate is an explicit gap', 'V', ['tests/depth-gaps.test.ts::staffing names a role no one is free for, apart from one no one affordable can take', 'tests/depth-gaps.test.ts::names a part no experienced performer can take, instead of counting it as free'], ''),
 ]),
 '10-03': ('Crew', 'src/engine/hiring.ts', [
   ('Offer, book and assign dates; declines release only their reservations', 'VE', ['tests/tight-budget.test.ts::staffing hires a required crew'], ''),
