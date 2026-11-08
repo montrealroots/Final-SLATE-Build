@@ -529,7 +529,7 @@ C = {
 ]),
 '20-04': ('e2e', 'e2e', [
   ('Desktop, phone and WebKit journeys for creation, funding, casting, revision, save and recovery', 'VE', ['e2e/careers.spec.ts::stop motion: refused for lack of money'], ''),
-  ('Journeys for the features this package adds', 'MI', [], 'Added with each stage'),
+  ('Journeys for the features this package adds', 'V', ['e2e/negotiation.spec.ts::an investor offer: when it lapses, asking for better terms, and their answer', 'e2e/auditions.spec.ts::called back with a chemistry read, then offered the part', 'e2e/season.spec.ts::a season planned and reordered', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)', 'e2e/live-action.spec.ts::Before locking, the takes (SLATE-12-03)', 'e2e/career.spec.ts::a proposal is accepted into a funded project', 'e2e/connected.spec.ts::Earnings (SLATE-16-04.02)'], 'Versions (15-05.03), territories offered per route (16-01.02) and later windows (16-05) are covered by unit tests only'),
 ]),
 '20-05': ('People', '', [
   ('Human play and real devices', 'EB', [], 'Needs the owner and real devices'),
