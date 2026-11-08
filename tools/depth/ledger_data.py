@@ -329,7 +329,7 @@ C = {
   ('Approve or reject a design before building', 'V',
    ['tests/designs.test.ts::builds wait for an approved design', 'e2e/media.spec.ts::Nothing is built until its design is approved (SLATE-11-03.02).'],
    'Projects started before November 8, 2026 build without approval (designReview unset)'),
-  ('Damaged puppets are repaired', 'IU', [], 'maybePuppetDamage exists; no test'),
+  ('Damaged puppets are repaired', 'V', ['tests/depth-gaps-production.test.ts::a damaged puppet is repaired by its maker, and the shots with it wait for the repair'], ''),
 ]),
 '11-04': ('Schedule', 'src/engine/production/tasks.ts', [
   ('Rehearsal days, stunt and choreography rehearsal, storyboards and animatic as work', 'VE',
@@ -359,7 +359,7 @@ C = {
    'Takes are chosen before the day (the policy) and reviewed in the edit; the shoot itself runs unattended'),
 ]),
 '12-04': ('Production', 'src/engine/production/shoot.ts', [
-  ('Weather loses or compromises a day and the log says so', 'IU', [], 'runShootDay records lost and partial days; no test'),
+  ('Weather loses or compromises a day and the log says so', 'V', ['tests/depth-gaps-production.test.ts::rain stops an exterior day, the log says so, and the scenes move to a new day', 'tests/depth-gaps-production.test.ts::shooting in the rain anyway records the scene, compromised'], ''),
   ('A failed day rolls back; completed work is kept', 'VE', ['tests/processing.test.ts::rolls the batch back'], ''),
 ]),
 '12-05': ('Edit > Pickups', 'src/engine/production/shoot.ts', [
@@ -375,12 +375,12 @@ C = {
 ]),
 '13-03': ('Production', 'src/engine/production/workday.ts', [
   ('Puppets, sets, stages and frames; copies allow parallel stages', 'VE', ['tests/media.test.ts::a puppet cannot serve two stages at once'], ''),
-  ('Damage and repair', 'IU', [], 'See 11-03'),
+  ('Damage and repair', 'V', ['tests/depth-gaps-production.test.ts::with a duplicate puppet the shots carry on while the repair is made', 'tests/depth-gaps-production.test.ts::a damaged puppet is repaired by its maker'], ''),
 ]),
 '13-04': ('Production > Capture, Voice', 'src/engine/mocap.ts', [
   ('Book sessions, record, retake, approve, clean up and retarget', 'VE', ['tests/lunar-mocap.test.ts::a changed take resets cleanup'], ''),
   ('A session the studio cannot be paid for waits, with the reason', 'VE', ['tests/tight-budget.test.ts::a voice session it can no longer pay'], ''),
-  ('A missed session is rebooked', 'IU', [], 'rebookMissed exists; no test'),
+  ('A missed session is rebooked', 'V', ['tests/depth-gaps-production.test.ts::is marked missed with the reason and rebooked on the next free date'], ''),
 ]),
 '13-05': ('Production', 'src/engine/production/tasks.ts', [
   ('Plates and digital scenes in one production; plate integration', 'VE', ['tests/media.test.ts::shoots live scenes and animates the rest'], ''),

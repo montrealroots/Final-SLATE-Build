@@ -145,7 +145,7 @@ SLATE-11-02.01,SLATE-11-02,Location scouting and permits as work with a cost,VER
 SLATE-11-02.02,SLATE-11-02,"Choose among scouted locations, keep a backup, lose one and fall back",VERIFIED,tests/locations.test.ts::a site that falls through goes to the backup | tests/locations.test.ts::a place with no site after a loss loses its day | e2e/live-action.spec.ts::a cheaper stand-in with the real place as the backup,"Three site kinds per place (real, stage set, stand-in); fees and risks are game calibration; no choice keeps the old behaviour"
 SLATE-11-03.01,SLATE-11-03,Assets with versions and readiness; a design change rebuilds only what depends on it,VERIFIED EXISTING,tests/media.test.ts::a design change reports its impact and rebuilds only affected work,
 SLATE-11-03.02,SLATE-11-03,Approve or reject a design before building,VERIFIED,tests/designs.test.ts::builds wait for an approved design | e2e/media.spec.ts::Nothing is built until its design is approved (SLATE-11-03.02).,"Projects started before November 8, 2026 build without approval (designReview unset)"
-SLATE-11-03.03,SLATE-11-03,Damaged puppets are repaired,IMPLEMENTED UNVERIFIED,,maybePuppetDamage exists; no test
+SLATE-11-03.03,SLATE-11-03,Damaged puppets are repaired,VERIFIED,"tests/depth-gaps-production.test.ts::a damaged puppet is repaired by its maker, and the shots with it wait for the repair",
 SLATE-11-04.01,SLATE-11-04,"Rehearsal days, stunt and choreography rehearsal, storyboards and animatic as work",VERIFIED EXISTING,"tests/media.test.ts::follows boards, animatic, voice and animation dependencies",
 SLATE-11-04.02,SLATE-11-04,Preparation has a bounded effect,IMPLEMENTED UNVERIFIED,,Rehearsal days are capped; no test of the bound
 SLATE-11-05.01,SLATE-11-05,"Plan shoot days by availability, holidays and six-day weeks",VERIFIED EXISTING,tests/heritage.test.ts::its shoot days skip them,
@@ -156,7 +156,7 @@ SLATE-12-01.02,SLATE-12-01,"Missing people or gear: switch scenes, delay or canc
 SLATE-12-02.01,SLATE-12-02,A shoot day captures its scenes with coverage and quality,VERIFIED EXISTING,tests/journeys.test.ts::runs from script to delivery,
 SLATE-12-02.02,SLATE-12-02,"Setups, coverage choices and takes per scene",VERIFIED,tests/takes.test.ts::more coverage and more takes use more of the day | e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02),Coverage and take policies per scene; time factors and spreads are game calibration; projects from before keep one result per scene
 SLATE-12-03.01,SLATE-12-03,"Review a take, ask for another, or move on, at a time cost",VERIFIED,tests/takes.test.ts::choosing another take moves the performance and the direction | e2e/live-action.spec.ts::the cut uses the best balanced one; use another for the dock scene,Takes are chosen before the day (the policy) and reviewed in the edit; the shoot itself runs unattended
-SLATE-12-04.01,SLATE-12-04,Weather loses or compromises a day and the log says so,IMPLEMENTED UNVERIFIED,,runShootDay records lost and partial days; no test
+SLATE-12-04.01,SLATE-12-04,Weather loses or compromises a day and the log says so,VERIFIED,"tests/depth-gaps-production.test.ts::rain stops an exterior day, the log says so, and the scenes move to a new day | tests/depth-gaps-production.test.ts::shooting in the rain anyway records the scene, compromised",
 SLATE-12-04.02,SLATE-12-04,A failed day rolls back; completed work is kept,VERIFIED EXISTING,tests/processing.test.ts::rolls the batch back,
 SLATE-12-05.01,SLATE-12-05,Pickups are booked after the last shoot day and capture the missing scene,VERIFIED EXISTING,tests/script-effects.test.ts::is booked after the last scheduled shoot day,
 SLATE-13-01.01,SLATE-13-01,"Design, boards, animatic, layout, animation, cleanup and colour, composite",VERIFIED EXISTING,e2e/journeys.spec.ts::2D animation: deliver,
@@ -164,10 +164,10 @@ SLATE-13-01.02,SLATE-13-01,A late change reworks only what depends on it,VERIFIE
 SLATE-13-02.01,SLATE-13-02,"Model, rig, layout, animation, effects, lighting, render, composite",VERIFIED EXISTING,e2e/media.spec.ts::modeling and rigging before animation,
 SLATE-13-02.02,SLATE-13-02,Render capacity is finite; more nodes cost money,VERIFIED EXISTING,tests/media.test.ts::uses finite render capacity,
 SLATE-13-03.01,SLATE-13-03,"Puppets, sets, stages and frames; copies allow parallel stages",VERIFIED EXISTING,tests/media.test.ts::a puppet cannot serve two stages at once,
-SLATE-13-03.02,SLATE-13-03,Damage and repair,IMPLEMENTED UNVERIFIED,,See 11-03
+SLATE-13-03.02,SLATE-13-03,Damage and repair,VERIFIED,tests/depth-gaps-production.test.ts::with a duplicate puppet the shots carry on while the repair is made | tests/depth-gaps-production.test.ts::a damaged puppet is repaired by its maker,
 SLATE-13-04.01,SLATE-13-04,"Book sessions, record, retake, approve, clean up and retarget",VERIFIED EXISTING,tests/lunar-mocap.test.ts::a changed take resets cleanup,
 SLATE-13-04.02,SLATE-13-04,"A session the studio cannot be paid for waits, with the reason",VERIFIED EXISTING,tests/tight-budget.test.ts::a voice session it can no longer pay,
-SLATE-13-04.03,SLATE-13-04,A missed session is rebooked,IMPLEMENTED UNVERIFIED,,rebookMissed exists; no test
+SLATE-13-04.03,SLATE-13-04,A missed session is rebooked,VERIFIED,tests/depth-gaps-production.test.ts::is marked missed with the reason and rebooked on the next free date,
 SLATE-13-05.01,SLATE-13-05,Plates and digital scenes in one production; plate integration,VERIFIED EXISTING,tests/media.test.ts::shoots live scenes and animates the rest,
 SLATE-13-05.02,SLATE-13-05,A changed plate flags its integration task and cost,IMPLEMENTED UNVERIFIED,,Change orders exist; no test for plates
 SLATE-14-01.01,SLATE-14-01,Research and access planning; contributors and archives,VERIFIED EXISTING,e2e/media.spec.ts::documentary through the UI,
