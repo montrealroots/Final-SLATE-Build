@@ -6,7 +6,7 @@ import { getPlace, placeLabel } from '../data/places';
 import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
-  qualityWords, requestPickups, depsMet, startCutPass, unlockPicture, addDaysToKey, categoryRecipients, type Category,
+  qualityWords, requestPickups, pickupIntegration, depsMet, startCutPass, unlockPicture, addDaysToKey, categoryRecipients, type Category,
   categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
   approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, restoreToEdit,
   cutScenes, entryNeeds, castPlacement, sceneLabel } from '../engine';
@@ -18,6 +18,12 @@ import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
 import { editScenes } from '../engine/finish';
+import { reviseEffects, rerecordLines } from '../engine/revisions';
+import { countryName } from '../world/gazetteer/gazetteer';
+import { EXCLUSIVE_DAYS, offerConflicts } from '../engine/finish';
+import { REPORT_MONTHS } from '../engine/distribution';
+import { personById } from '../engine/people';
+import { VERSION_LABELS, addVersion, removeVersion, versionCredits, versionRuntime } from '../engine/versions';
 import { designStatus, designsToReview, type DesignStatus } from '../engine/designs';
 
 // ---------------- Production ----------------
@@ -125,6 +131,65 @@ export function ProductionTab({ p }: { p: Project }) {
 
 // ---------------- Edit and delivery ----------------
 
+/** Effects revisions and re-recorded lines, before picture lock (revisions.ts, SLATE-15-03.02). */
+function AdditionalWorkCard({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
+  const g = useGame();
+  const vfxScenes = editScenes(p).filter((s) => s.vfx.length && p.tasks.some((x) => x.id === `post:vfx:${s.episode}`));
+  const parts = p.cast.filter((a, i) => p.cast.findIndex((b) => b.characterId === a.characterId) === i && editScenes(p).some((s) => s.participants.includes(a.characterId) && s.dialogue.length));
+  const state = (id: string) => p.tasks.find((x) => x.id === id)?.status;
+  if (!vfxScenes.length && !parts.length) return null;
+  return (
+    <section className="card" aria-labelledby="additional-h">
+      <h2 id="additional-h">Additional Work</h2>
+      <p className="dim">Before picture is locked you can send a scene's effects back for a revision, or bring a performer back to re-record a part's lines. Each is paid work that takes days: the effects artist's time, or a dialogue session at the performer's day rate. Once it is done, that scene or performance is a little stronger.</p>
+      <ul className="list">
+        {vfxScenes.map((s) => {
+          const st = state(`post:vfx-rev:${s.id}`);
+          return <li key={s.id} className="row-wrap"><span className="grow">{sceneLabel(p, s)} <span className="dim">· effects{st ? ` revision ${st === 'done' ? 'done' : 'underway'}` : ''}</span></span>{!st && <button className="btn btn-sm" aria-label={`Revise The Effects In ${sceneLabel(p, s)}`} onClick={() => onError(store.act(() => reviseEffects(p, s.id)))}>Revise Effects</button>}</li>;
+        })}
+        {parts.map((a) => {
+          const c = p.characters.find((x) => x.id === a.characterId)!;
+          const st = state(`post:revoice:${c.id}`);
+          return <li key={c.id} className="row-wrap"><span className="grow">{c.name} <span className="dim">· {a.performer === 'player' ? 'you' : personById(g, a.performer).name}{st ? `, re-recording ${st === 'done' ? 'done' : 'booked'}` : ''}</span></span>{!st && <button className="btn btn-sm" aria-label={`Re-Record ${c.name}'s Lines`} onClick={() => onError(store.act((s) => rerecordLines(s, s.projects.find((x) => x.id === p.id)!, c.id)))}>Re-Record Lines</button>}</li>;
+        })}
+      </ul>
+    </section>
+  );
+}
+
+/** Festival and distribution versions conformed from the locked cut (versions.ts, SLATE-15-05.03). */
+function VersionsCard({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
+  const g = useGame();
+  const [label, setLabel] = useState<string>(VERSION_LABELS[0]);
+  const [leaveOut, setLeaveOut] = useState<string[]>([]);
+  const scenes = editScenes(p);
+  const preview = Math.round(scenes.filter((s) => !leaveOut.includes(s.id)).reduce((a, s) => a + s.estMinutes, 0));
+  const main = Math.round(scenes.reduce((a, s) => a + s.estMinutes, 0));
+  return (
+    <section className="card" aria-labelledby="versions-h">
+      <h2 id="versions-h">Versions</h2>
+      <p className="dim">Besides the main cut ({main} minutes), the editor can conform a Festival Cut or a Distribution Cut that leaves scenes out: a day of their work that delivery waits for. A version has its own runtime, which festival rules read when it is the one entered, and its own credits, without anyone whose scenes it leaves out.</p>
+      {(p.versions ?? []).length > 0 && <ul className="list">{p.versions!.map((v) => (
+        <li key={v.id} className="row-wrap">
+          <span className="grow"><strong>{v.label}</strong> <span className="dim">· {versionRuntime(p, v)} minutes · {plural(versionCredits(g, p, v).length, 'credit')}{p.tasks.find((x) => x.id === `post:version:${v.id}`)?.status === 'done' ? ' · Ready' : ''}</span></span>
+          {!p.delivered && <button className="btn btn-sm" aria-label={`Remove The ${v.label}`} onClick={() => onError(store.act(() => removeVersion(p, v.id)))}>Remove</button>}
+        </li>
+      ))}</ul>}
+      {p.edit.pictureLocked && !p.delivered && (
+        <>
+          <SelectField label="Version" value={label} options={VERSION_LABELS.filter((l) => !(p.versions ?? []).some((v) => v.label === l)).map((l) => ({ value: l, label: l }))} onChange={setLabel} />
+          <fieldset style={{ border: 0, padding: 0 }}>
+            <legend className="small">Scenes It Leaves Out</legend>
+            <div className="chip-row">{scenes.map((s) => <Check key={s.id} label={sceneLabel(p, s)} checked={leaveOut.includes(s.id)} onChange={(v) => setLeaveOut(v ? [...leaveOut, s.id] : leaveOut.filter((x) => x !== s.id))} />)}</div>
+          </fieldset>
+          <p className="dim">This version would run {preview} minutes.{(p.versions ?? []).some((v) => v.label === label) ? ` There is a ${label} already; remove it first to make another.` : ''}</p>
+          <button className="btn" disabled={!VERSION_LABELS.some((l) => l === label && !(p.versions ?? []).some((v) => v.label === l))} onClick={() => { const e = store.act((s) => void addVersion(s, p, label, leaveOut)); onError(e); if (!e) setLeaveOut([]); }}>Add Version</button>
+        </>
+      )}
+    </section>
+  );
+}
+
 /** Contributors who approve how they appear (documentary.ts, SLATE-14-02.02): show them the locked cut, or cut them. */
 function ApprovalsCard({ p, onError, onCut }: { p: Project; onError: (e: string | null) => void; onCut: (sceneId: string) => void }) {
   useGame();
@@ -206,12 +271,15 @@ export function EditTab({ p }: { p: Project }) {
             <button className="btn btn-primary" disabled={lb.length > 0} onClick={() => setErr(store.act((s) => lockPicture(s, p)))}>Lock Picture</button>
           ) : !p.delivered && <button className="btn" onClick={() => setErr(store.act((s) => void unlockPicture(s, p)))}>Unlock Picture</button>}
         </div>
+        {!p.edit.pictureLocked && !assemblyComplete(p) && <p className="dim">A cut pass starts once the assembly edit is finished.</p>}
         {!p.edit.pictureLocked && lb.length > 0 && <p className="dim">Before you lock: {lb.join(' ')}</p>}
         {p.edit.versions.length > 0 && (
           <details className="spaced"><summary>Versions</summary><ul>{p.edit.versions.map((v) => <li key={v.number}>Version {v.number}: {v.note}, about {v.runtimeMin} minutes</li>)}</ul></details>
         )}
       </section>
       {p.captures.some((c) => (c.takes?.length ?? 0) > 1) && <TakesCard p={p} onError={setErr} />}
+      {!p.delivered && !p.edit.pictureLocked && p.tasks.length > 0 && <AdditionalWorkCard p={p} onError={setErr} />}
+      {(p.edit.pictureLocked || (p.versions?.length ?? 0) > 0) && <VersionsCard p={p} onError={setErr} />}
       {p.contributors.some((c) => c.consent === 'given' && c.restrictions?.includes('approval')) && <ApprovalsCard p={p} onError={setErr} onCut={setCutting2} />}
       <section className="card">
         <h2>Coverage</h2>
@@ -224,6 +292,7 @@ export function EditTab({ p }: { p: Project }) {
                 {!p.edit.pictureLocked && <button className="btn btn-sm" onClick={() => setCutting2(g.sceneId)} aria-label={`Cut ${g.label} From The Edit`}>Cut It From The Edit</button>}
               </li>
             ))}</ul>
+            {(() => { const redo = pickupIntegration(p, pick); return redo.length ? <p className="callout callout-warning">New plates restart {redo.map((t) => t.label).join(', ')}: about {plural(Math.ceil(redo.reduce((a, t) => a + t.units, 0)), 'compositor day')} worked again.</p> : null; })()}
             <button className="btn" disabled={!pick.length || p.edit.pictureLocked} onClick={() => { setErr(store.act((s) => void requestPickups(s, p, pick))); setPick([]); }}>Request Pickups</button>
           </>
         ) : <p className="muted">No coverage gaps found.</p>}
@@ -311,7 +380,7 @@ export function ReleaseTab({ p }: { p: Project }) {
               return (
                 <li key={o.id}>
                   <div className="row-wrap">
-                    <span className="grow"><strong>{o.distributor}</strong>: {ROUTE_LABELS[o.route]} release in {o.territories.join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}{o.slot === 'late' ? ' in a late-evening slot' : ''}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(offerMaterials(p, o))}{subs ? `, including ${money(subs)} of subtitles for languages the dialogue isn't in` : ''}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
+                    <span className="grow"><strong>{o.distributor}</strong>{o.exclusive ? <> <span className="chip">Exclusive</span></> : null}: {ROUTE_LABELS[o.route]} release in {o.territories.length > 6 ? `${o.territories.length} territories (${o.territories.slice(0, 3).map(countryName).join(', ')} and others)` : o.territories.map(countryName).join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}{o.slot === 'late' ? ' in a late-evening slot' : ''}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(offerMaterials(p, o))}{subs ? `, including ${money(subs)} of subtitles for languages the dialogue isn't in` : ''}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
                     <div className="row gap-2 wrap">
                       <button className="btn btn-sm btn-primary" disabled={!!needs} onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id)))}>{o.slot === 'late' ? 'Accept The Late Slot' : 'Accept Offer'}</button>
                       {o.slot === 'late' && <button className="btn btn-sm" disabled={!!needs} onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id, { broadcastEdit: true })))}>Accept With A Broadcast Edit</button>}
@@ -320,12 +389,31 @@ export function ReleaseTab({ p }: { p: Project }) {
                   </div>
                   {o.slot === 'late' && <p className="dim">You declared strong content. {watershedRule(o.territories[0])} The late slot pays {money(o.minimumGuarantee)}. A broadcast edit, cut for an earlier slot, costs about {money(BROADCAST_EDIT_COST)} more in delivery materials and earns the full {money(o.editedGuarantee ?? o.minimumGuarantee)}.</p>}
                   {needs && <p className="dim" style={{ color: 'var(--warning)' }}>{needs}</p>}
+                  {(() => { const ends = offerConflicts(p, o); return ends.length ? <p className="dim">Accepting it ends {ends.map((x) => `${x.distributor}'s ${ROUTE_LABELS[x.route].toLowerCase()} offer`).join(' and ')}{o.exclusive ? ': its rights are exclusive there' : ': they cover the same territories'}.</p> : null; })()}
+                  {o.exclusive && <p className="dim">Exclusive for {EXCLUSIVE_DAYS} days from its release: no other deal in its territories until then.</p>}
                 </li>
               );
             })}
           </ul>
         ) : <p className="muted">No open offers. Festival selections can bring interest. You can always release it yourself.</p>}
       </section>
+      {p.offers.some((o) => o.status === 'accepted') && (
+        <section className="card" aria-labelledby="earnings-h">
+          <h2 id="earnings-h">Earnings</h2>
+          <p className="dim">What each distributor reports is not what you receive. Their fee comes off what they report first, and what is left repays the guarantee they already paid you. Only what they report beyond that reaches you, as an overage. They report monthly for {REPORT_MONTHS} months after release.</p>
+          <ul className="list">{p.offers.filter((o) => o.status === 'accepted').map((o) => (
+            <li key={o.id}>
+              <strong>{o.distributor}</strong> <span className="dim">· {ROUTE_LABELS[o.route]}</span>
+              <dl className="kv">
+                <dt>Reported Earnings</dt><dd>{money(o.reported?.gross ?? 0)}</dd>
+                <dt>After Their Fee</dt><dd>{money(o.reported?.net ?? 0)}</dd>
+                <dt>Guarantee Recouped</dt><dd>{money(Math.min(o.reported?.net ?? 0, o.minimumGuarantee))} of {money(o.minimumGuarantee)}</dd>
+                <dt>Received By You</dt><dd>{money(o.minimumGuarantee + (o.reported?.overagePaid ?? 0))}</dd>
+              </dl>
+            </li>
+          ))}</ul>
+        </section>
+      )}
       <section className="card">
         <h2>Plan A Release</h2>
         <div className="grid grid-3 form">
@@ -512,8 +600,9 @@ function SubmissionDialog({ editionId, cat, onClose, onError }: { editionId: str
   const [projectId, setProjectId] = useState(delivered[0]?.id ?? '');
   const p = delivered.find((x) => x.id === projectId);
   const [recipients, setRecipients] = useState<string[]>([]);
+  const [versionId, setVersionId] = useState('');
   if (!p) return null;
-  const el = checkEligibility(g, p, ed, cat, recipients.length ? recipients : undefined);
+  const el = checkEligibility(g, p, ed, cat, recipients.length ? recipients : undefined, versionId || undefined);
   const pool = categoryRecipients(g, p, cat);
   const personal = ['lead', 'supporting', 'voice'].includes(cat.recipient);
   const docs = entryNeeds(p);
@@ -523,10 +612,11 @@ function SubmissionDialog({ editionId, cat, onClose, onError }: { editionId: str
   return (
     <Modal title="Prepare Submission" onClose={onClose} footer={<>
       <button className="btn" onClick={onClose}>Cancel</button>
-      <button className="btn btn-primary" disabled={!el.eligible || !!docs} onClick={() => { const e = store.act((s) => void submitEntry(s, p, editionId, cat.id, recipients.length ? recipients : undefined)); onError(e); if (!e) onClose(); }}>Submit Entry</button>
+      <button className="btn btn-primary" disabled={!el.eligible || !!docs} onClick={() => { const e = store.act((s) => void submitEntry(s, p, editionId, cat.id, recipients.length ? recipients : undefined, versionId || undefined)); onError(e); if (!e) onClose(); }}>Submit Entry</button>
     </>}>
       <p><strong>{cat.name}</strong>, {ed.label}</p>
-      <SelectField label="Project" value={projectId} options={delivered.map((x) => ({ value: x.id, label: x.title }))} onChange={(v) => { setProjectId(v); setRecipients([]); }} />
+      <SelectField label="Project" value={projectId} options={delivered.map((x) => ({ value: x.id, label: x.title }))} onChange={(v) => { setProjectId(v); setRecipients([]); setVersionId(''); }} />
+      {(p.versions ?? []).length > 0 && <SelectField label="Version To Enter" value={versionId} options={[{ value: '', label: `The Main Cut (${p.delivered!.runtimeMin} Minutes)` }, ...p.versions!.map((v) => ({ value: v.id, label: `${v.label} (${versionRuntime(p, v)} Minutes)` }))]} onChange={setVersionId} />}
       {personal && pool.length > 0 && (
         <fieldset style={{ border: 0, padding: 0 }}>
           <legend style={{ fontWeight: 600 }}>Performance To Enter</legend>

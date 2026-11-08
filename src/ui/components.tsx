@@ -241,6 +241,22 @@ export function longLocal(instant: number, zone: string): { time: string; weekda
   return { time: formatClock(p.hour, p.minute), weekday: weekdayName(p.weekday), date: `${monthName(p.month)} ${p.day}, ${p.year}` };
 }
 
+/**
+ * When another project has the same title, the date this one was started tells them apart (SLATE-03-04, November 8,
+ * 2026). Until then two projects called the same showed identically in every list.
+ */
+export function startedNote(projects: { id: string; title: string; createdAt: number }[], p: { id: string; title: string; createdAt: number }, zone: string): string {
+  const key = p.title.trim().toLowerCase();
+  const twins = projects.filter((q) => q.title.trim().toLowerCase() === key);
+  if (twins.length < 2) return '';
+  const date = longLocal(p.createdAt, zone).date;
+  // Started the same day as another of that title: which one it is, in the order they were started.
+  const sameDay = twins.filter((q) => longLocal(q.createdAt, zone).date === date);
+  const n = sameDay.indexOf(sameDay.find((q) => q.id === p.id)!) + 1;
+  return `started ${date}${sameDay.length > 1 ? `, ${ORDINALS[n - 1] ?? `number ${n}`} of that title` : ''}`;
+}
+const ORDINALS = ['first', 'second', 'third', 'fourth', 'fifth'];
+
 export function plural(n: number, word: string, pluralWord?: string): string {
   return `${n} ${n === 1 ? word : pluralWord ?? `${word}s`}`;
 }

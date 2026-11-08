@@ -145,6 +145,13 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   // Production, the edit, delivery.
   await runToDelivery(page);
   await shot(page, p, '05-delivered');
+  // Working relationships (SLATE-18-02): the crew who saw Hard Water through are kept on Profile.
+  await nav(page, 'Profile');
+  await expect(page.locator('section.card', { has: page.getByRole('heading', { name: "People You've Worked With" }) })).toContainText(/Hard Water \([^)]*, worked through to delivery\)/);
+  // Credits across projects (SLATE-18-01): the delivered project is listed with what you did on it.
+  await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Credits', exact: true }) }).getByRole('button', { name: 'Hard Water' }).first()).toBeVisible();
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Hard Water' }).click();
 
   // Distribution: strong content, a late broadcast slot or a broadcast edit; the edit is taken.
   await section(page, 'Release');
@@ -161,6 +168,10 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   await late.getByRole('button', { name: 'Accept With A Broadcast Edit' }).click();
   const history = page.locator('section.card', { has: page.getByRole('heading', { name: 'Release History' }) });
   await expect(history).toContainText('Broadcast in GB');
+  // Earnings (SLATE-16-04.02): what the broadcaster reports is kept apart from what you receive.
+  const earnings = page.locator('section.card', { has: page.getByRole('heading', { name: 'Earnings' }) });
+  await expect(earnings).toContainText('What each distributor reports is not what you receive.');
+  await expect(earnings).toContainText(/Received By You\s*\$[\d,]+/);
 
   // Saved and reloaded at the end: the deal and the delivered project are kept.
   await saveAndReload(page);

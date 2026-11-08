@@ -9,7 +9,7 @@ import {
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
-  type StaffingProposal, covers, fundingScenario,
+  type StaffingProposal, covers, fundingScenario, projectedCost,
 } from '../engine';
 import { breakdownComplete, characterPronouns, pronounsMatch } from '../engine/script-explain';
 import { AUDITION_NOTICE_DAYS, auditionsFor, callBack, chemistryPartners, inviteRefusal, inviteToAudition, setShortlisted } from '../engine/casting-calls';
@@ -18,7 +18,7 @@ import { callSheet } from '../engine/callsheet';
 import { costCuts, type CostCut } from '../engine/cost-cuts';
 import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, scoutedPlaces, site } from '../engine/locations';
-import { dayFees } from '../engine';
+import { dayFees, willingness } from '../engine';
 import { COVERAGE, TAKES, planTime, shotPlan, type Coverage, type TakePolicy } from '../engine/takes';
 import type { Audition, FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
@@ -49,7 +49,7 @@ function HireRow({ p, h }: { p: Project; h: Hire }) {
       <td data-label="Status">
         <span className={`chip ${h.status === 'accepted' ? 'chip-positive' : h.status === 'declined' ? 'chip-negative' : h.status === 'countered' ? 'chip-warning' : ''}`}>{STATUS_LABEL[h.status]}</span>
         {h.status === 'offered' && <div className="dim">Answer by about {formatDateKey(dateKey(h.responseAt, zone))}</div>}
-        {h.status === 'countered' && <div className="dim">Asks {money(h.counterRate ?? 0)} a day</div>}
+        {h.status === 'countered' && <div className="dim">Asks {money(h.counterRate ?? 0)} a day{h.counterUntil ? `, until ${formatDateKey(dateKey(h.counterUntil, zone))}` : ''}</div>}
         {h.daysWorked > 0 && <div className="dim">{plural(h.daysWorked, 'day')} worked</div>}
         {err && <div role="alert" style={{ color: 'var(--negative)' }}>{err}</div>}
       </td>
@@ -109,6 +109,7 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
                   <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{c.playingAge ? ` Plays ages ${c.playingAge[0]} to ${c.playingAge[1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>
                   {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip">Shares A Background: {sharedHeritages(g, p, characterId, c.id).join(', ')}</span></div>}
                   {!av.ok && <div className="dim" style={{ color: 'var(--warning)' }}>{av.reason}</div>}
+                  {willingness(g, c.id).reason && <div className="dim">{willingness(g, c.id).reason}</div>}
                   {notes.map((n) => <div key={n} className="dim" style={{ color: 'var(--warning)' }}>{n}</div>)}
                 </div>
                 <div className="inline-form" style={{ maxWidth: 320 }}>
@@ -287,6 +288,7 @@ export function CrewTab({ p }: { p: Project }) {
   return (
     <>
       {msg && <div className="callout callout-info" role="status"><p>{msg}</p></div>}
+      {p.delivered && <div className="callout callout-info"><p>This project has been delivered, so its crew can't change.</p></div>}
       {isEpisodic(p.axes.format) && <EpisodeAssignments p={p} />}
       {depts.map((d) => (
         <section key={d} className="card">
@@ -436,6 +438,7 @@ export function ScheduleTab({ p }: { p: Project }) {
           </>
         )}
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+        {p.delivered && <p className="dim">This project has been delivered; its schedule is final.</p>}
         <button className="btn btn-primary" disabled={!!p.delivered} onClick={() => setErr(store.act((s) => void generatePlan(s, p, start)))}>{p.schedule.startDate ? 'Rebuild Schedule' : 'Build Schedule'}</button>
         {p.schedule.startDate && <p className="dim">Rebuilding keeps finished work and moves only what hasn't happened yet.</p>}
       </section>
@@ -640,6 +643,10 @@ function FinancingPanel({ p }: { p: Project }) {
           <dt>Received</dt><dd>{money(f.received)}{f.owedOnDelivery > 0 ? ` (${money(f.owedOnDelivery)} more on delivery)` : ''}</dd>
           <dt>Still To Raise</dt><dd><strong>{money(f.stillToRaise)}</strong></dd>
         </dl>
+        {(() => {
+          const unpriced = p.approvedDraft === null || p.delivered ? [] : projectedCost(g, p).uncertain;
+          return unpriced.length ? <p className="callout callout-warning">The estimate can't price {unpriced.join(', ')}: no one available can take {unpriced.length === 1 ? 'it' : 'them'} on now, so the real cost is likely higher.</p> : null;
+        })()}
         <div className="inline-form spaced">
           <NumberField label="Change Financing Target" value={target} min={1000} step={1000} error={targetErr} onChange={setTarget} />
           <button className="btn" onClick={() => setTargetErr(store.act((s) => setFinanceTarget(live(s), target)))}>Set Target</button>

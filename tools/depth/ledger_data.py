@@ -106,7 +106,7 @@ C = {
   ('Format, basis, medium and technique chosen separately', 'VE', ['tests/media.test.ts::follows boards, animatic, voice and animation dependencies'], ''),
   ('Each combination routes to its own production', 'VE',
    ['e2e/journeys.spec.ts::hybrid: a live-action scene and a 3D scene share one production', 'e2e/journeys.spec.ts::stop motion to delivery'], ''),
-  ('An unsupported combination says why and is not converted', 'IU', [], 'validateAxes refuses with a message; no test'),
+  ('An unsupported combination says why and is not converted', 'V', ['tests/depth-gaps.test.ts::an unsupported combination is refused with the reason, and the axes are left as they were'], ''),
 ]),
 '03-02': ('New Script, Overview', 'src/engine/genres.ts; src/engine/script-effects.ts', [
   ('Title, several genres, tone, setting, audience and dialogue languages', 'VE', ['tests/genres.test.ts::composes shared mechanics once'], ''),
@@ -122,11 +122,10 @@ C = {
   ('Create, save and reopen a project by a stable ID', 'VE', ['tests/journeys.test.ts::runs from script to delivery'], ''),
   ('Shelving or cancelling a project settles its commitments and keeps its history', 'V',
    ['tests/shelve.test.ts::says what it will do; then releases people', 'tests/shelve.test.ts::refuses changes and hiring until it is taken up again', 'e2e/structure.spec.ts::a project shelved and taken up again'], ''),
-  ('Projects with the same title stay distinguishable', 'IU', [], 'IDs differ; the list shows only titles'),
+  ('Projects with the same title stay distinguishable', 'V', ['e2e/career.spec.ts::two projects with one title are told apart'], 'Repaired November 8, 2026: the lists showed only titles; same-title projects now show when each was started'),
 ]),
 '03-05': ('Overview', 'src/engine/projects.ts', [
-  ('The stages a project will go through, and what each needs, are shown before development', 'IU', [],
-   'projectModules drives the tabs; no test of the explanation'),
+  ('The stages a project will go through, and what each needs, are shown before development', 'V', ['tests/stages.test.ts::changes with the medium, technique and format, as the work built for them does', 'e2e/career.spec.ts::New Script says what the project goes through'], 'Repaired November 8, 2026: nothing explained them; the New Script form now lists them (src/engine/stages.ts)'),
   ('No inert control appears as implemented', 'VE', ['e2e/viewports.spec.ts::no tutorial, no excluded systems'], ''),
 ]),
 '04-01': ('Script > Story', 'src/engine/script-effects.ts', [
@@ -169,17 +168,17 @@ C = {
 '05-03': ('Character editor', 'src/engine/production/tasks.ts; src/engine/mocap.ts', [
   ('Being type and performance methods drive the work (voice, capture, puppet, creature)', 'VE',
    ['tests/media.test.ts::cannot animate before rigs exist', 'tests/lunar-mocap.test.ts::capture sessions feed animation'], ''),
-  ('One method never fulfils another (a voice session is not capture)', 'IU', [], 'Separate tasks exist; no test asserts it'),
+  ('One method never fulfils another (a voice session is not capture)', 'V', ['tests/depth-gaps-production.test.ts::a voice performer is not a capture performer'], ''),
 ]),
 '05-04': ('Script > Relationships', 'src/engine/projects.ts', [
-  ('Wants and fears per character; directed relationships between characters', 'IU', [], 'Fields and editor exist; no test'),
+  ('Wants and fears per character; directed relationships between characters', 'V', ['tests/depth-gaps.test.ts::a casting breakdown goes with offers only once the description, wants and fears are all written', 'tests/episodes.test.ts::a relationship touches every scene its two characters share'], 'A relationship is kept from one character to the other with one kind; the reverse has no separate kind'),
   ('Arc beats tied to scenes', 'V', ['tests/structure.test.ts::a beat goes only in a scene the character is in'], ''),
   ('Removing a character previews dependent scenes and relationships first', 'V', ['tests/scenes.test.ts::removing a character lists the scenes that use them'], ''),
 ]),
 '05-05': ('Script > Characters, Cast', 'src/engine/hiring.ts', [
   ('Scenes and episodes a character appears in drive casting days and credits', 'VE',
    ['tests/script-effects.test.ts::series regulars are booked for every episode'], ''),
-  ('A character in no scene creates no booking, fee or credit', 'IU', [], 'neededRoles skips them; no test'),
+  ('A character in no scene creates no booking, fee or credit', 'V', ['tests/depth-gaps.test.ts::creates no casting offer, no fee in the estimate, no work and no credit'], ''),
 ]),
 '06-01': ('Script > Scene editor', 'src/engine/projects.ts', [
   ('Episode, place, interior or exterior, time of day, participants and length', 'VE', ['tests/media.test.ts::produces episodes with episode-specific credits'], ''),
@@ -188,7 +187,7 @@ C = {
 '06-02': ('Scene editor', 'src/engine/script-explain.ts', [
   ('Action and dialogue with speakers and languages', 'VE', ['tests/script-effects.test.ts::subtitles are priced by runtime for each language'], ''),
   ('Length is not quality', 'VE', ['tests/script-effects.test.ts::meaningless text manufactures no quality'], ''),
-  ('A line whose speaker is no longer in the scene asks for repair', 'IU', [], 'scriptIssues reports it; no test'),
+  ('A line whose speaker is no longer in the scene asks for repair', 'V', ['tests/depth-gaps.test.ts::a line whose speaker has left the scene blocks approval until repaired or marked deliberate'], ''),
 ]),
 '06-03': ('Scene editor > Breakdown', 'src/engine/projects.ts', [
   ('Props, crowd, animals, stunts, intimacy, music, vehicles and effects declared per scene', 'VE',
@@ -218,7 +217,7 @@ C = {
   ('A season arc and episode order', 'V',
    ['tests/episodes.test.ts::an episode moves with its scenes, in every draft, and its writer', 'e2e/season.spec.ts::a season planned and reordered'],
    'The arc is the writer\'s plan: advice notes only, carried into the next season; it scores nothing'),
-  ('The estimate covers every episode, not one', 'IU', [], 'scriptEstimate sums scenes across episodes; no test'),
+  ('The estimate covers every episode, not one', 'V', ['tests/depth-gaps.test.ts::covers every episode: scenes added to a later episode raise the projected cost'], ''),
 ]),
 '07-03': ('Cast', 'src/engine/hiring.ts', [
   ('Regulars, recurring parts and guests booked for the episodes they appear in', 'VE',
@@ -239,7 +238,7 @@ C = {
 ]),
 '08-01': ('Budget', 'src/engine/estimate.ts; src/engine/budget.ts', [
   ('The estimate by category with contingency, separate from money in hand', 'VE', ['tests/finance.test.ts::a new project has an estimate and a target'], ''),
-  ('A line with no available candidate is flagged as uncertain, never free', 'IU', [], 'projectedCost prices roles by rate; no test for a role with no candidate'),
+  ('A line with no available candidate is flagged as uncertain, never free', 'V', ['tests/depth-gaps.test.ts::names a part no experienced performer can take, instead of counting it as free'], 'Repaired November 8, 2026: it was counted at nothing; the Financing card now names it'),
 ]),
 '08-02': ('Budget > Backers', 'src/engine/finance.ts', [
   ('Each backer says what it needs; send; an answer after some days', 'VE',
@@ -283,7 +282,7 @@ C = {
 '09-03': ('Cast', 'src/engine/hiring.ts', [
   ('Offer, then acceptance, refusal or counteroffer', 'VE', ['e2e/careers.spec.ts::an offer to a performer booked elsewhere is turned down'], ''),
   ('A booking reserves the dates and the money together; no double booking', 'VE', ['tests/schedule.test.ts::refuses when someone needed on set is busy'], ''),
-  ('An unanswered offer lapses and releases what it held', 'IU', [], 'Offers resolve by responseAt; no test of a lapse'),
+  ('An unanswered offer lapses and releases what it held', 'V', ['tests/relationships.test.ts::waits its open days, then lapses, releasing the money it held and the part'], 'Repaired November 8, 2026: an unanswered counteroffer held the part for good; it now lapses after 7 days (game calibration)'),
 ]),
 '09-04': ('Cast', 'src/engine/hiring.ts; src/engine/mocap.ts', [
   ('Cast yourself or not, per part', 'VE', ['e2e/live-action.spec.ts::cast yourself'], ''),
@@ -295,23 +294,23 @@ C = {
 ]),
 '10-01': ('Crew', 'src/engine/hiring.ts', [
   ('Required crew derived from the work', 'VE', ['tests/tight-budget.test.ts::staffing hires a required crew the money can pay'], ''),
-  ('Each role says why it is needed', 'IU', [], 'Roles name their department; no test of the reason shown'),
+  ('Each role says why it is needed', 'V', ['tests/depth-gaps.test.ts::each role says why it is needed, and a scene element brings its specialist with that reason'], ''),
   ('Unfilled required work stays blocked with the reason', 'VE', ['tests/tight-budget.test.ts::a voice session it can no longer pay'], ''),
 ]),
 '10-02': ('Crew > Find', 'src/engine/hiring.ts', [
   ('Compare experience, rate and availability', 'VE', ['e2e/connected.spec.ts::a connected career'], ''),
-  ('No candidate is an explicit gap', 'IU', [], 'Shown; no test'),
+  ('No candidate is an explicit gap', 'V', ['tests/depth-gaps.test.ts::staffing names a role no one is free for, apart from one no one affordable can take', 'tests/depth-gaps.test.ts::names a part no experienced performer can take, instead of counting it as free'], ''),
 ]),
 '10-03': ('Crew', 'src/engine/hiring.ts', [
   ('Offer, book and assign dates; declines release only their reservations', 'VE', ['tests/tight-budget.test.ts::staffing hires a required crew'], ''),
 ]),
 '10-04': ('Crew', 'src/engine/people.ts', [
   ('Combine compatible roles on small productions', 'VE', ['tests/tight-budget.test.ts::on a micro budget, one person takes the roles they can combine'], ''),
-  ('A combined role works one task at a time', 'IU', [], 'teamFor assigns one task per worker per day; no test'),
+  ('A combined role works one task at a time', 'V', ['tests/relationships.test.ts::an editor who also covers the grade works one of the two tasks each day, paid once'], ''),
 ]),
 '10-05': ('Crew', 'src/engine/hiring.ts', [
   ('Releasing someone keeps done work, pay owed and credit', 'VE', ['tests/mocap-calendar.test.ts::still credited for the work that stays'], ''),
-  ('A handover to a replacement mid-task', 'IU', [], 'releaseHire then a new hire; no test of the handover'),
+  ('A handover to a replacement mid-task', 'V', ['tests/relationships.test.ts::releasing someone keeps the work they did and their credit; the replacement carries on from there'], ''),
 ]),
 '11-01': ('Production > Readiness', 'src/engine/projects.ts', [
   ('Approved scenes become a breakdown of requirements', 'VE', ['tests/genres.test.ts::requirements come from scenes, not labels'], ''),
@@ -329,12 +328,12 @@ C = {
   ('Approve or reject a design before building', 'V',
    ['tests/designs.test.ts::builds wait for an approved design', 'e2e/media.spec.ts::Nothing is built until its design is approved (SLATE-11-03.02).'],
    'Projects started before November 8, 2026 build without approval (designReview unset)'),
-  ('Damaged puppets are repaired', 'IU', [], 'maybePuppetDamage exists; no test'),
+  ('Damaged puppets are repaired', 'V', ['tests/depth-gaps-production.test.ts::a damaged puppet is repaired by its maker, and the shots with it wait for the repair'], ''),
 ]),
 '11-04': ('Schedule', 'src/engine/production/tasks.ts', [
   ('Rehearsal days, stunt and choreography rehearsal, storyboards and animatic as work', 'VE',
    ['tests/media.test.ts::follows boards, animatic, voice and animation dependencies'], ''),
-  ('Preparation has a bounded effect', 'IU', [], 'Rehearsal days are capped; no test of the bound'),
+  ('Preparation has a bounded effect', 'V', ['tests/depth-gaps-production.test.ts::rehearsal lifts your own captured performance only up to a cap'], 'The cap (seven days) is game calibration'),
 ]),
 '11-05': ('Schedule', 'src/engine/production/schedule.ts; src/engine/callsheet.ts', [
   ('Plan shoot days by availability, holidays and six-day weeks', 'VE', ['tests/heritage.test.ts::its shoot days skip them'], ''),
@@ -345,7 +344,7 @@ C = {
 ]),
 '12-01': ('Production', 'src/engine/production/shoot.ts', [
   ('A day runs only with the people it needs', 'VE', ['tests/schedule.test.ts::refuses when someone needed on set is busy'], ''),
-  ('Missing people or gear: switch scenes, delay or cancel, with costs', 'IU', [], 'Partly via moveShootDay; no test of a missing-resource day'),
+  ('Missing people or gear: switch scenes, delay or cancel, with costs', 'V', ['tests/depth-gaps-production.test.ts::with no camera crew the day is lost, the log says why and points to the crew', 'tests/schedule.test.ts::moves a day to the first free working day after the shoot, keeps costs', 'tests/schedule.test.ts::swaps dates with the next interior day'], 'Gear is not modeled apart from the crew who bring it'),
 ]),
 '12-02': ('Production', 'src/engine/production/shoot.ts; src/engine/takes.ts', [
   ('A shoot day captures its scenes with coverage and quality', 'VE', ['tests/journeys.test.ts::runs from script to delivery'], ''),
@@ -359,7 +358,7 @@ C = {
    'Takes are chosen before the day (the policy) and reviewed in the edit; the shoot itself runs unattended'),
 ]),
 '12-04': ('Production', 'src/engine/production/shoot.ts', [
-  ('Weather loses or compromises a day and the log says so', 'IU', [], 'runShootDay records lost and partial days; no test'),
+  ('Weather loses or compromises a day and the log says so', 'V', ['tests/depth-gaps-production.test.ts::rain stops an exterior day, the log says so, and the scenes move to a new day', 'tests/depth-gaps-production.test.ts::shooting in the rain anyway records the scene, compromised'], ''),
   ('A failed day rolls back; completed work is kept', 'VE', ['tests/processing.test.ts::rolls the batch back'], ''),
 ]),
 '12-05': ('Edit > Pickups', 'src/engine/production/shoot.ts', [
@@ -375,16 +374,16 @@ C = {
 ]),
 '13-03': ('Production', 'src/engine/production/workday.ts', [
   ('Puppets, sets, stages and frames; copies allow parallel stages', 'VE', ['tests/media.test.ts::a puppet cannot serve two stages at once'], ''),
-  ('Damage and repair', 'IU', [], 'See 11-03'),
+  ('Damage and repair', 'V', ['tests/depth-gaps-production.test.ts::with a duplicate puppet the shots carry on while the repair is made', 'tests/depth-gaps-production.test.ts::a damaged puppet is repaired by its maker'], ''),
 ]),
 '13-04': ('Production > Capture, Voice', 'src/engine/mocap.ts', [
   ('Book sessions, record, retake, approve, clean up and retarget', 'VE', ['tests/lunar-mocap.test.ts::a changed take resets cleanup'], ''),
   ('A session the studio cannot be paid for waits, with the reason', 'VE', ['tests/tight-budget.test.ts::a voice session it can no longer pay'], ''),
-  ('A missed session is rebooked', 'IU', [], 'rebookMissed exists; no test'),
+  ('A missed session is rebooked', 'V', ['tests/depth-gaps-production.test.ts::is marked missed with the reason and rebooked on the next free date'], ''),
 ]),
 '13-05': ('Production', 'src/engine/production/tasks.ts', [
   ('Plates and digital scenes in one production; plate integration', 'VE', ['tests/media.test.ts::shoots live scenes and animates the rest'], ''),
-  ('A changed plate flags its integration task and cost', 'IU', [], 'Change orders exist; no test for plates'),
+  ('A changed plate flags its integration task and cost', 'V', ['tests/depth-gaps-production.test.ts::a pickup of a live scene in a hybrid project restarts the plate integration begun in its episode, and says so'], 'Repaired November 8, 2026: a pickup left finished integration on the old plate; it now restarts it, and the Edit page previews the compositor days'),
 ]),
 '14-01': ('Script (documentary)', 'src/engine/documentary.ts', [
   ('Research and access planning; contributors and archives', 'VE', ['e2e/media.spec.ts::documentary through the UI'], ''),
@@ -395,7 +394,7 @@ C = {
   ('Restrictions on use (no face, no name, approval of use) carried into the edit', 'V',
    ['tests/restrictions.test.ts::a hidden face adds blurring after lock that delivery waits for', 'tests/restrictions.test.ts::a refusal holds delivery until their scenes are cut', 'e2e/journeys.spec.ts::Joost agrees on condition his face isn\'t shown'],
    'Shares of each condition are simulation assumptions; cut approval reads the locked cut and resets on unlock'),
-  ('Withdrawal before filming adds no redaction; after filming, redaction work', 'VE', ['tests/unscripted.test.ts::before the shoot there is nothing to redact'], ''),
+  ('Withdrawal before filming adds no redaction; after filming, redaction work', 'VE', ['tests/unscripted.test.ts::before the shoot there is nothing to redact', 'tests/restrictions.test.ts::after filming: the scenes with their footage are redacted by the editor, and delivery waits for it'], 'Documentaries gained it November 8, 2026; it was unscripted shows only'),
 ]),
 '14-03': ('Production (documentary)', 'src/engine/production/tasks.ts', [
   ('Interviews and actuality captured; claims checked', 'VE', ['e2e/journeys.spec.ts::documentary: consent and fact checks gate delivery'], ''),
@@ -414,21 +413,29 @@ C = {
 ]),
 '15-03': ('Edit', 'src/engine/production/shoot.ts', [
   ('Pickups with cost and dates', 'VE', ['tests/script-effects.test.ts::is booked after the last scheduled shoot day'], ''),
-  ('Replacement voice or effects revisions as additional work', 'MI', [], 'Only pickups'),
+  ('Replacement voice or effects revisions as additional work', 'V',
+   ['tests/revisions.test.ts::work the grade waits for, and counts once it is done', 'tests/revisions.test.ts::re-recorded lines are a dialogue session the sound waits for', 'e2e/live-action.spec.ts::Additional work before lock (SLATE-15-03.02)'],
+   'Gains (effects +5 to the scene capture, re-recording +4 to the performance) are game calibration'),
 ]),
 '15-04': ('Edit, Production', 'src/engine/production/tasks.ts', [
   ('Sound, music, effects, colour, mix and captions as dependent work', 'VE', ['tests/journeys.test.ts::runs from script to delivery'], ''),
-  ('Dialogue edit with ADR and Foley as their own work', 'MI', [], 'post:sound covers them as one task'),
-  ('Unlocking the picture reopens the finishing work it affects', 'IU', [], 'unlockPicture exists; no test'),
+  ('Dialogue edit with ADR and Foley as their own work', 'V',
+   ['tests/post-sound.test.ts::a new project edits dialogue, records Foley and cuts effects as separate work', 'tests/post-sound.test.ts::when the weather spoiled the sound', 'e2e/media.spec.ts::Sound finishing as its own work (SLATE-15-04.02)'],
+   'New projects only; the sound designer does all three, so short works take a day or two longer'),
+  ('Unlocking the picture reopens the finishing work it affects', 'V', ['tests/depth-gaps.test.ts::restarts finishing work that waited on the lock and leaves the rest alone'], ''),
 ]),
 '15-05': ('Edit, Release', 'src/engine/finish.ts', [
   ('Delivery checks name what is missing', 'VE', ['tests/script-effects.test.ts::a shoot day left empty by a cut is cancelled'], ''),
   ('A broadcast edit as a separate deliverable', 'VE', ['e2e/script-rules.spec.ts::what the broadcaster offers'], ''),
-  ('Festival and distribution versions with their own runtime and credits', 'MI', [], 'One delivered version plus the broadcast edit'),
+  ('Festival and distribution versions with their own runtime and credits', 'V',
+   ['tests/versions.test.ts::a version is conformed from the locked cut as a day of editing, with its own runtime and credits', 'tests/versions.test.ts::a festival\'s runtime rules read the version entered', 'e2e/live-action.spec.ts::A Festival Cut without the wheelhouse scene (SLATE-15-05.03)'],
+   'Versions leave scenes out of the locked cut; credits drop people whose scenes are left out'),
 ]),
 '16-01': ('Release', 'src/engine/finish.ts', [
   ('Choose a route and date', 'VE', ['tests/release.test.ts::a contracted release happens on its date'], ''),
-  ('Territories and exclusivity compared before accepting', 'MI', [], 'Offers list territories; no exclusivity conflict'),
+  ('Territories and exclusivity compared before accepting', 'V',
+   ['tests/territories.test.ts::offers range from the home country to worldwide', 'tests/territories.test.ts::accepting ends overlapping offers on the same route, or on any route if exclusive'],
+   'Scopes, the exclusive window (365 days) and the territory pay factor are game calibration'),
 ]),
 '16-02': ('Release', 'src/engine/finish.ts', [
   ('Accept or decline; delivery materials reserved; cancellation terms', 'VE', ['tests/release.test.ts::accepting reserves delivery materials'], ''),
@@ -436,12 +443,16 @@ C = {
 '16-03': ('Script > Content, Release', 'src/engine/script-effects.ts', [
   ('Declared content sets outlet conditions; late slot or broadcast edit', 'VE', ['tests/script-effects.test.ts::strong content still gets a broadcast offer'], ''),
 ]),
-'16-04': ('Release, Budget', 'src/engine/finance.ts', [
+'16-04': ('Release, Budget', 'src/engine/finance.ts; src/engine/distribution.ts', [
   ('Income arrives once and repays backers in order', 'VE', ['tests/finance.test.ts::income repays backers first'], ''),
-  ('Reported earnings shown apart from money received', 'MI', [], 'One revenue figure'),
+  ('Reported earnings shown apart from money received', 'V',
+   ['tests/territories.test.ts::monthly reports recoup the guarantee first', 'e2e/connected.spec.ts::what the broadcaster reports is kept apart from what you receive'],
+   'Earnings curve and the 35% distributor fee are game calibration'),
 ]),
-'16-05': ('Release', '', [
-  ('Later windows and territories after the first release', 'MI', [], 'One release per offer, no later windows'),
+'16-05': ('Release', 'src/engine/distribution.ts', [
+  ('Later windows and territories after the first release', 'V',
+   ['tests/territories.test.ts::A later window offers only what isn\'t held', 'tests/territories.test.ts::the later window is scheduled on a wave of its own'],
+   'Later windows come 120 days after a release (game calibration)'),
 ]),
 '17-01': ('Festivals And Awards', 'src/engine/awards.ts', [
   ('Editions per year with their own dates, projected when not announced', 'VE', ['tests/rulebooks.test.ts::new editions record the rules they use'], ''),
@@ -459,14 +470,19 @@ C = {
   ('Results kept per edition; later rule changes never rewrite them', 'VE', ['tests/rulebooks.test.ts::keeps every nominee, winner and entry after results'], ''),
 ]),
 '18-01': ('Profile', 'src/ui/Places.tsx', [
-  ('Credits across projects on Profile', 'IU', [], 'Profile lists credits; no test'),
+  ('Credits across projects on Profile', 'VE', ['e2e/connected.spec.ts::Credits across projects (SLATE-18-01)'], ''),
 ]),
-'18-02': ('Profile, Cast, Crew', '', [
-  ('Collaboration history with people you have worked with', 'MI', [], 'No relationship history'),
-  ('History changes their willingness for related work only', 'MI', [], 'Depends on history'),
+'18-02': ('Profile, Cast, Crew', 'src/engine/relationships.ts; src/engine/hiring.ts', [
+  ('Collaboration history with people you have worked with', 'V',
+   ['tests/relationships.test.ts::someone who saw a project through with you takes a fair offer'], 'Shown on Profile (People You' + "'" + 've Worked With); not driven in a browser test'),
+  ('History changes their willingness for related work only', 'V',
+   ['tests/relationships.test.ts::letting someone go makes them ask for more, and twice makes them refuse', 'tests/relationships.test.ts::means they won'], ''),
 ]),
-'18-03': ('Home', '', [
-  ('Proposals tied to your past work, with terms, accepted or declined', 'MI', [], 'No opportunities'),
+'18-03': ('Home', 'src/engine/opportunities.ts', [
+  ('Proposals tied to your past work, with terms, accepted or declined', 'V',
+   ['tests/opportunities.test.ts::comes only for well received work, decided by reception and the world seed, and at most once',
+    'tests/opportunities.test.ts::starts a project funded by the commission with its delivery deadline', 'tests/opportunities.test.ts::declined, is closed and starts nothing'],
+   'Home Proposals panel not driven in a browser test; reception threshold and amounts are game calibration'),
 ]),
 '18-04': ('Projects', 'src/engine/continuation.ts', [
   ('A sequel or new season carries story continuity and eligible assets', 'V',
@@ -489,7 +505,7 @@ C = {
 ]),
 '19-03': ('Every action', 'src/ui', [
   ('Preview cost and time before committing; outcome after', 'IU', [], 'Many actions preview; no audit'),
-  ('Disabled actions say why', 'IU', [], 'Many say why; no audit'),
+  ('Disabled actions say why', 'V', ['tests/disabled-reasons.test.ts::every disabled control in the interface is recorded with where its reason is shown'], 'Repaired November 8, 2026: seven controls gave no reason; each now says, and a new disabled control fails the test until recorded'),
 ]),
 '19-04': ('Saved Games, Settings', 'src/engine/save.ts; src/engine/vault.ts', [
   ('Export, import, newer and duplicate saves', 'VE', ['e2e/backup.spec.ts::export, then import into a fresh browser'], ''),
@@ -506,14 +522,14 @@ C = {
 '20-02': ('docs/DATA-PROVENANCE.md, rulebooks', 'src/engine/rulebooks.ts', [
   ('Festival and award rules cite their source, edition and status', 'VE', ['tests/rulebooks.test.ts::every rule names a real institution, category and source'], ''),
   ('World data sources recorded', 'VE', ['tests/world-holidays.test.ts::labels years past the last announcement as projected'], ''),
-  ('Production-process sources per feature ID', 'MI', [], 'Production rates are modeled with no per-feature source register'),
+  ('Production-process sources per feature ID', 'V', ['tests/production-sources.test.ts::names every exported calibration constant, each with a status and a source column'], 'docs/depth/PRODUCTION-SOURCES.md: every rate is recorded per feature ID as a labelled model; no primary source was consulted for any of them'),
 ]),
 '20-03': ('tests', 'tests', [
   ('Transitions, boundaries, failures, determinism and migration tested', 'VE', ['tests/processing.test.ts::processes it exactly once'], ''),
 ]),
 '20-04': ('e2e', 'e2e', [
   ('Desktop, phone and WebKit journeys for creation, funding, casting, revision, save and recovery', 'VE', ['e2e/careers.spec.ts::stop motion: refused for lack of money'], ''),
-  ('Journeys for the features this package adds', 'MI', [], 'Added with each stage'),
+  ('Journeys for the features this package adds', 'V', ['e2e/negotiation.spec.ts::an investor offer: when it lapses, asking for better terms, and their answer', 'e2e/auditions.spec.ts::called back with a chemistry read, then offered the part', 'e2e/season.spec.ts::a season planned and reordered', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)', 'e2e/live-action.spec.ts::Before locking, the takes (SLATE-12-03)', 'e2e/career.spec.ts::a proposal is accepted into a funded project', 'e2e/connected.spec.ts::Earnings (SLATE-16-04.02)'], 'Versions (15-05.03), territories offered per route (16-01.02) and later windows (16-05) are covered by unit tests only'),
 ]),
 '20-05': ('People', '', [
   ('Human play and real devices', 'EB', [], 'Needs the owner and real devices'),

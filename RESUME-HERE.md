@@ -9,7 +9,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`), #25 (financing: money from backers, save version 5), #26 (screenwriting audit, dated motion-capture sessions, replacement credits, San Sebastián rules), #27 (the 1221 layout), #28 (1221's creation suite), #29 and #30 (pronouns settle the billing), #31 (backgrounds: kept holidays, casting information, languages), #32 (language suggestions for every background but Assyrian), #33 (script field effects), #34 (script rules review; `6e2abf0`), #35 (input loss, startup size, connected journey; `c00c261`), #36 (atomic genre catalog, careers, reload lock; `5e142f4`), #37 (micro-budget tuning; `fddd6b6`), #38 (budget-size wording; `b025147`). `main` was at `3845c2d` when the Gap Completion Package was applied.
+- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`), #25 (financing: money from backers, save version 5), #26 (screenwriting audit, dated motion-capture sessions, replacement credits, San Sebastián rules), #27 (the 1221 layout), #28 (1221's creation suite), #29 and #30 (pronouns settle the billing), #31 (backgrounds: kept holidays, casting information, languages), #32 (language suggestions for every background but Assyrian), #33 (script field effects), #34 (script rules review; `6e2abf0`), #35 (input loss, startup size, connected journey; `c00c261`), #36 (atomic genre catalog, careers, reload lock; `5e142f4`), #37 (micro-budget tuning; `fddd6b6`), #38 (budget-size wording; `b025147`), #39 to #41 (screen review, identity, depth stages 1 to 4), #42 (depth stages 5 to 8; `cfe7d71`). `main` was at `3845c2d` when the Gap Completion Package was applied.
 - **Package:** "SLATE Gap Completion Package" (predates #2 and #3). Its references are not committed; the imported data is under `src/world/` and `docs/world/`.
 - **Run first:**
 
@@ -125,8 +125,9 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
   - Startup JavaScript budget: page-only engine code now loads with its page (`season.ts`, `sequel.ts`, `shelve.ts`,
     `structure-edit.ts`, `casting-calls.ts`, `cost-cuts.ts`, `negotiation-actions.ts`, `awards-actions.ts`,
     `callsheet.ts`, `takes-actions.ts`, `designs-actions.ts`, `locations-actions.ts`, `documentary-actions.ts`).
-    After stage 8 startup is 698.1 kB of 700, so stage 9 needs room first. The large remaining item is `awards.ts`
-    (about 60 kB at startup, mostly the institutions table its handlers read). Measure what each source adds with a
+    After stage 8 startup was 698.1 kB of 700; the festival and awards calendar then became data
+    (`src/data/institutions.json`, fetched at startup like the genre catalog, every game waiting for it, Try Again on
+    failure), and startup is 670.5 kB. Measure what each source adds with a
     sourcemap build (`npx vite build --outDir <dir> --sourcemap`, then sum each source's mapped bytes in the store
     chunk with `source-map-js`).
   - Stage 6, preparation, everything below now VERIFIED:
@@ -164,10 +165,75 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
     "Featuring"); approval means showing them the locked cut (3 days), and a refusal holds delivery until their scenes
     are cut; unlocking picture means showing them again. Test helpers (`manage`, `contributorApprovals`) do what a
     producer would.
-- **Next:** stage 9: replacement voice and effects `15-03.02`, ADR and Foley `15-04.02`, versions `15-05.03`; stage 10:
-  territories `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11: relationships `18-02`,
-  opportunities `18-03`.
-  - Also still open: the IMPLEMENTED UNVERIFIED children (25) that need only a test.
+  - Stage 9, post, everything below now VERIFIED:
+    - ADR and Foley (`15-04.02`), VERIFIED: new projects edit dialogue, record Foley and cut effects as three tasks
+      (the units of the old single sound pass; a day or two longer for short works); the mix waits for all three.
+      Dialogue is replaced (ADR) when there was no sound mixer or, on new projects, when weather spoiled a scene
+      (`needsDialogueReplacement`); the dialogue edit waits for it. Production golden regenerated (days +1 to +3).
+    - versions (`15-05.03`, `versions.ts`), VERIFIED: after lock and before delivery, a Festival Cut or Distribution Cut
+      leaves chosen scenes out; it is a day of the editor's work that delivery waits for, has its own runtime (festival
+      runtime rules read the version entered; the submission dialog offers it) and its own credits (people whose scenes
+      it leaves out aren't credited on it).
+    - additional work (`15-03.02`, `revisions.ts`): before lock, Revise Effects (the effects artist's days, the grade
+      waits) or Re-Record Lines (a sound designer's day plus the performer's day rate, paid when booked; the sound waits).
+      Once done, the assessment counts the scene's capture +5 or the performance +4, once (game calibration).
+  - Stage 10, release, everything below now VERIFIED:
+    - territories and exclusivity (`16-01.02`, `finish.ts offerScope/offerConflicts/exclusiveHolder`): offers cover the
+      home country, a few large markets, or worldwide (streaming and digital); theatrical deals and wide streaming deals
+      are exclusive; each extra territory adds a quarter to the guarantee (up to 2.5 times), and subtitles cost more. An
+      offer says what accepting it ends; an accepted exclusive deal holds its territories for 365 days after release.
+      Drawn from a separate seed stream, so the offers a film got before keep their distributor, route and window;
+    - reported vs received (`16-04.02`, `distribution.ts`): six monthly reports after release; the 35% fee comes off
+      first, the rest recoups the guarantee, and only the overage is paid. The Release page shows reported, after fee,
+      recouped and received apart;
+    - later windows (`16-05`): 120 days after a release, a new wave of offers for territories no exclusive deal holds
+      and this route hasn't released.
+  - Stage 11, career, VERIFIED (unit tests; `e2e/career.spec.ts` drives Proposals on desktop, phone and WebKit, and
+    `e2e/connected.spec.ts` checks People You've Worked With after delivery):
+    - relationships (`18-02`, `relationships.ts`): each person keeps a history with you (completed a project, let go,
+      turned down their counteroffer). Someone who saw a project through takes 90% of their rate without haggling;
+      someone let go once asks 115%, twice refuses; someone whose counter you declined won't go below their rate. No
+      history keeps the old acceptance rule, so saves from before play as they did. Profile lists People You've Worked
+      With; the hiring list says why someone will or won't.
+    - opportunities (`18-03`, `opportunities.ts`): 45 days after a delivery received at 60 or more, a commissioner may
+      propose to fund a new project of the same kind (half the time at 65, nearly always at 85; seed-decided; at most one
+      per project; never from a project that itself came from a proposal). Open 30 days on Home (Proposals); accepting
+      names and starts a project funded by a commissioner deal (85% income share, picture approval, 20% on delivery,
+      deliver within 540 days, enforced by the existing finance deadline); declining closes it. Calibration is game
+      calibration.
+  - Stage 12, under way. Every IMPLEMENTED UNVERIFIED child but the two `19-03` audits now has a test of its rule
+    (`tests/depth-gaps.test.ts`, `tests/depth-gaps-production.test.ts`, `tests/relationships.test.ts`,
+    `tests/stages.test.ts`, `e2e/career.spec.ts`, `e2e/connected.spec.ts`). Seven were repairs, not only tests:
+    - `08-01`: a role or part no one available could take was priced at nothing. `projectedCost(...).uncertain` names
+      them, and the Financing card says the estimate can't price them.
+    - `09-03`: an unanswered counteroffer held the part and its money for good. It now lapses after 7 days
+      (`hiring.ts COUNTER_OPEN_DAYS`, `counter-lapse`); letting it lapse isn't recorded as turning them down.
+    - `13-05`: a pickup in a hybrid project left finished plate integration on the old plate. It now restarts the
+      episode's integration (`finish.ts pickupIntegration`), and the Coverage card previews the compositor days.
+    - `03-05`: nothing explained a project's stages before it began. The New Script form lists them
+      (`src/engine/stages.ts`).
+    - `03-04`: same-title projects looked identical in the lists. They now show when each was started, and which of
+      that title it is when two share a day.
+    - `10-02`: staffing said "no available candidate fits the remaining budget" when no one was free at all. It now
+      tells the two apart.
+    - `19-03` (disabled actions): seven controls gave no reason; each now says, and `tests/disabled-reasons.test.ts`
+      lists every disabled control with where its reason shows, failing a new one until recorded.
+    - `20-02`: `docs/depth/PRODUCTION-SOURCES.md` records every production, money and career calibration per feature
+      as a labelled model (no primary source was used for any), ratcheted by `tests/production-sources.test.ts`.
+    - `20-04`: the package's features have browser journeys (negotiation, auditions, season, shot plan and takes,
+      proposals, earnings); versions, territories and later windows are unit-tested only.
+    - Playthrough families: `docs/depth/PLAYTHROUGHS.md` maps the package's fifteen to the journeys that run them and
+      names what none runs. Mapping it found that a documentary contributor couldn't withdraw after filming; that is
+      now modeled (`unscripted.ts withdrawRelease`, `doc:redact`), unit-tested in `tests/restrictions.test.ts`.
+  - Ledger now: 149 verified existing, 77 verified, 1 implemented unverified, 2 external blockers, 0 missing.
+- **Next:**
+  - `19-03` previews: every action that spends money or time shows both first, and its outcome after. Many do; no
+    audit lists them all yet. Plan: a ratchet like `tests/disabled-reasons.test.ts` over the actions that call
+    `reserve`, `commit` or schedule work.
+  - The browser-only gaps named in `docs/depth/PLAYTHROUGHS.md` (weather loss on a chosen day, puppet repair, a
+    missed capture session, documentary withdrawal after filming, festival withdrawal and resubmission, territory
+    conflicts), each as a journey step.
+  - Human acceptance and real-device checks (`19-05.03`, `20-05`) stay with the owner.
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 

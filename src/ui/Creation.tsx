@@ -200,6 +200,7 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
                 </button>
               ))}
             </div>
+            {!d.pronouns && <p className="xs dim" style={{ marginTop: 4 }}>Choose your pronouns first.</p>}
             {billedError && <span className="error" role="alert">{billedError}</span>}
             <p className="xs dim" style={{ marginTop: 4 }}>
               {d.pronouns

@@ -1,10 +1,10 @@
 {
   "live-action short / g1": {
     "delivered": true,
-    "days": 26,
-    "settled": 17630,
-    "payments": 133502192,
-    "tasks": 3811957035,
+    "days": 28,
+    "settled": 18690,
+    "payments": 3121144526,
+    "tasks": 2851435415,
     "shootDays": "2026-01-29:shot 2026-01-30:shot",
     "credits": "Cast:Thandiwe Kim:Lead; Composer:Zara Tran; Costume Designer:Chloé Wójcik; Directed By:Rin Sato-Moreau; Director Of Photography:Yusuf Gallagher; Editor:Yara Dubois; Produced By:Rin Sato-Moreau; Production Designer:Gabriel Chowdhury; Sound Designer:Jae-won Hosseini; Written By:Rin Sato-Moreau",
     "quality": {
@@ -20,10 +20,10 @@
   },
   "live-action short / g2": {
     "delivered": true,
-    "days": 26,
-    "settled": 17300,
-    "payments": 224196662,
-    "tasks": 3811957035,
+    "days": 28,
+    "settled": 18420,
+    "payments": 2706561746,
+    "tasks": 2851435415,
     "shootDays": "2026-01-29:shot 2026-01-30:shot",
     "credits": "Cast:Pilar Ibrahim:Lead; Composer:Willa Ibrahim; Costume Designer:Xiomara Fitzgerald; Directed By:Rin Sato-Moreau; Director Of Photography:Beatriz Hosseini; Editor:Esi Yamamoto; Produced By:Rin Sato-Moreau; Production Designer:Elif Santos; Sound Designer:Dev Achebe; Written By:Rin Sato-Moreau",
     "quality": {
@@ -39,10 +39,10 @@
   },
   "2D short / g1": {
     "delivered": true,
-    "days": 42,
-    "settled": 22270,
-    "payments": 2224608662,
-    "tasks": 32868163,
+    "days": 43,
+    "settled": 23350,
+    "payments": 902445767,
+    "tasks": 120253785,
     "shootDays": "",
     "credits": "Animator:Rohan Zhang; Background Artist:Bruno Bianchi; Colorist:Sione Laurent; Composer:Farah Dlamini; Compositor:Sakura Iyer; Delivery Quality Control:Ifeoma Varga; Directed By:Rin Sato-Moreau; Editor:Yusuf Fernandes; Produced By:Rin Sato-Moreau; Re-Recording Mixer:Felix Xu; Sound Designer:Wei Park; Storyboard Artist:Dmitri Tanaka; Visual Development Artist:Thandiwe Iyer; Voice Cast:Rafael Ibrahim:Kit; Written By:Rin Sato-Moreau",
     "quality": {
@@ -59,10 +59,10 @@
   },
   "2D short / g2": {
     "delivered": true,
-    "days": 42,
-    "settled": 20600,
-    "payments": 2930299857,
-    "tasks": 32868163,
+    "days": 43,
+    "settled": 21660,
+    "payments": 2784884908,
+    "tasks": 120253785,
     "shootDays": "",
     "credits": "Animator:Ifeoma Moreau; Background Artist:Omar Gallagher; Colorist:Sione Rossi; Composer:Tomás Jovanović; Compositor:Zeynep Ndlovu; Delivery Quality Control:Kavya Santos; Directed By:Rin Sato-Moreau; Editor:Ifeoma Laurent; Produced By:Rin Sato-Moreau; Re-Recording Mixer:Felix Bergström; Sound Designer:Alejandro Petrov; Storyboard Artist:Wanjiru Reyes; Visual Development Artist:Hugo Lindqvist; Voice Cast:Chiara Laurent:Kit; Written By:Rin Sato-Moreau",
     "quality": {
@@ -79,10 +79,10 @@
   },
   "3D with motion capture / g1": {
     "delivered": true,
-    "days": 44,
-    "settled": 29575,
-    "payments": 3138734550,
-    "tasks": 1357720131,
+    "days": 47,
+    "settled": 30655,
+    "payments": 835442595,
+    "tasks": 2272298637,
     "shootDays": "",
     "credits": "Animator:Ingrid Quispe; Colorist:Soren Moreau; Composer:Viktor Quispe; Compositor:Ingrid Varga; Delivery Quality Control:Quinn Dlamini; Directed By:Rin Sato-Moreau; Editor:Ifeoma Iyer; Layout Artist:Mateo Usman; Lighting Artist:Aiko Bianchi; Modeler:Maya Walker; Performance Capture:Wanjiru Laurent:Golem; Produced By:Rin Sato-Moreau; Re-Recording Mixer:Alejandro Walker; Sound Designer:Priya Bergström; Storyboard Artist:Chloé Chowdhury; Visual Development Artist:Camila Rossi; Voice Cast:Olumide Quispe:Golem; Written By:Rin Sato-Moreau",
     "quality": {
@@ -100,10 +100,10 @@
   },
   "3D with motion capture / g2": {
     "delivered": true,
-    "days": 44,
-    "settled": 33505,
-    "payments": 2154464754,
-    "tasks": 1357720131,
+    "days": 47,
+    "settled": 34585,
+    "payments": 3193346851,
+    "tasks": 2272298637,
     "shootDays": "",
     "credits": "Animator:Yohannes Dubois; Colorist:Felix Jensen; Composer:Aiko Laurent; Compositor:Chloé Castillo; Delivery Quality Control:Soren Castillo; Directed By:Rin Sato-Moreau; Editor:Uma Gallagher; Layout Artist:Rohan Fitzgerald; Lighting Artist:Freya Quispe; Modeler:Rania Cohen; Performance Capture:Jonas Achebe:Golem; Produced By:Rin Sato-Moreau; Re-Recording Mixer:Rohan Quispe; Sound Designer:Yusuf Kowalski; Storyboard Artist:Kofi Kowalski; Visual Development Artist:Zara Chowdhury; Voice Cast:Priya Walker:Golem; Written By:Rin Sato-Moreau",
     "quality": {
@@ -121,10 +121,10 @@
   },
   "stop motion / g1": {
     "delivered": true,
-    "days": 90,
-    "settled": 47240,
-    "payments": 4155872411,
-    "tasks": 1411818966,
+    "days": 91,
+    "settled": 48420,
+    "payments": 468569744,
+    "tasks": 166039420,
     "shootDays": "",
     "credits": "Armature Fabricator:Lorenzo Iyer; Colorist:Farah Ibrahim; Composer:Kenji Ueda; Compositor:Valentina Evans; Costume Designer:Nikolai Quispe; Delivery Quality Control:Valentina Dlamini; Directed By:Rin Sato-Moreau; Editor:Oren Eriksen; Miniature Set Builder:Tariq Nakamura; Produced By:Rin Sato-Moreau; Puppet Fabricator:Zeynep Adeyemi; Re-Recording Mixer:Emeka García; Sound Designer:Leila Tran; Stage Camera And Lighting:Rafael Iyer; Stop-Motion Animator:Ingrid Achebe; Storyboard Artist:Emeka Haddad; Visual Development Artist:Yara Gallagher; Voice Cast:Omar Fitzgerald:Button; Written By:Rin Sato-Moreau",
     "quality": {
@@ -141,10 +141,10 @@
   },
   "stop motion / g2": {
     "delivered": true,
-    "days": 89,
-    "settled": 50420,
-    "payments": 891734909,
-    "tasks": 70125039,
+    "days": 90,
+    "settled": 51540,
+    "payments": 2921883592,
+    "tasks": 3212058681,
     "shootDays": "",
     "credits": "Armature Fabricator:Ulla Schmidt; Colorist:Olumide Dlamini; Composer:Wei O'Neill; Compositor:Rohan Ndlovu; Costume Designer:Ulla Achebe; Delivery Quality Control:Maya Santos; Directed By:Rin Sato-Moreau; Editor:Mei Schmidt; Miniature Set Builder:Noa Jovanović; Produced By:Rin Sato-Moreau; Puppet Fabricator:Felix Cohen; Re-Recording Mixer:Yara O'Neill; Sound Designer:Farah Mensah; Stage Camera And Lighting:Imani Wójcik; Stop-Motion Animator:Viktor Fernandes; Storyboard Artist:Yara Schmidt; Visual Development Artist:Freya Mensah; Voice Cast:Hugo Dlamini:Button; Written By:Rin Sato-Moreau",
     "quality": {
@@ -161,10 +161,10 @@
   },
   "TV limited series / g1": {
     "delivered": true,
-    "days": 26,
-    "settled": 25520,
-    "payments": 3746606844,
-    "tasks": 3019452014,
+    "days": 29,
+    "settled": 28490,
+    "payments": 384881611,
+    "tasks": 4230261048,
     "shootDays": "2026-01-29:shot 2026-01-30:shot",
     "credits": "Cast:Lorenzo Walker:Detective; Colorist:Lucas Reyes; Composer:Bruno Tran; Costume Designer:Jae-won Yilmaz; Delivery Quality Control:Sakura Bergström; Directed By:Rin Sato-Moreau; Director Of Photography:Mei Bergström; Editor:Gabriel Varga; Executive Producer And Showrunner:Rin Sato-Moreau; Production Designer:Alejandro O'Neill; Re-Recording Mixer:Farah Tanaka; Sound Designer:Camila Tanaka; Written By:Rin Sato-Moreau",
     "quality": {
@@ -180,10 +180,10 @@
   },
   "TV limited series / g2": {
     "delivered": true,
-    "days": 27,
-    "settled": 29390,
-    "payments": 2693747320,
-    "tasks": 3019452014,
+    "days": 30,
+    "settled": 32050,
+    "payments": 2732018824,
+    "tasks": 4230261048,
     "shootDays": "2026-01-29:shot 2026-01-30:lost 2026-02-02:shot",
     "credits": "Cast:Ximena Okafor:Detective; Colorist:Yusuf Usman; Composer:Leila Brennan; Costume Designer:Yara Dlamini; Delivery Quality Control:Freya García; Directed By:Rin Sato-Moreau; Director Of Photography:Pilar Gallagher; Editor:Paloma O'Neill; Executive Producer And Showrunner:Rin Sato-Moreau; Production Designer:Chiara Dlamini; Re-Recording Mixer:Wanjiru Yilmaz; Sound Designer:Hana Xu; Written By:Rin Sato-Moreau",
     "quality": {

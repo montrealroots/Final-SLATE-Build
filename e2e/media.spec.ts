@@ -54,6 +54,8 @@ test('3D animation through the UI: voice cast, modeling and rigging before anima
   await expect(page.getByText('This project has no live-action shoot days.')).toBeVisible();
   await section(page, 'Production');
   for (const t of ['Model And Surfacing: Tilly', 'Rigging: Cog', 'Layout: Scene 1 (Workshop)', 'Animate Scene 1 (Workshop)', 'Render: Scene 1 (Workshop)']) await expect(page.getByText(t, { exact: true })).toBeVisible();
+  // Sound finishing as its own work (SLATE-15-04.02): dialogue edit, Foley and effects, before the mix.
+  for (const t of ['Dialogue Edit', 'Foley', 'Sound Effects Editing', 'Final Mix']) await expect(page.getByText(t, { exact: true })).toBeVisible();
   await advance(page, 'week');
   await section(page, 'Production');
   await expect(page.getByText(/Production starts on/).first()).toBeVisible();

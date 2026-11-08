@@ -17,3 +17,6 @@ globalThis.fetch = (async (input: RequestInfo | URL, init?: RequestInit) => {
 // The genre catalog loads before any game opens in the app (ui/store.ts); engine tests start from that state.
 const { loadGenreCatalog } = await import('../src/engine/genres');
 await loadGenreCatalog();
+// So does the festival and awards calendar.
+const { loadInstitutions } = await import('../src/engine/awards');
+await loadInstitutions();

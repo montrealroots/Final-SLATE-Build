@@ -91,15 +91,15 @@ migration and tests, and moves its children to VERIFIED.
    - call sheets (`11-05.03`).
 7. Live action (done): setups and takes (`12-02.02`, `12-03`).
 8. Animation and documentary (done): use restrictions (`14-02.02`).
-9. Post:
+9. Post (done):
    - replacement voice and effects work (`15-03.02`);
    - ADR and Foley (`15-04.02`);
    - festival and distribution versions (`15-05.03`).
-10. Release:
+10. Release (done):
     - territories and exclusivity (`16-01.02`);
     - reported against received income (`16-04.02`);
     - later windows (`16-05`).
-11. Career:
+11. Career (done):
     - relationships (`18-02`);
     - opportunities (`18-03`);
     - sequels and seasons (`18-04`).

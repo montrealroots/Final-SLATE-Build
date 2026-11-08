@@ -8,6 +8,7 @@ import { genre } from './genres';
 import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
 import { buildTasks, coachingNeeded, estimatedShootDays, planShootDays } from './production';
 import { approvalRights, approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneTechnique } from './projects';
+import { recordHistory, willingness } from './relationships';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY, HOUR, addDaysToKey, dateKey, formatDateKey, weekdayName, weekdayOfKey } from './time';
@@ -205,9 +206,15 @@ export function resolveOffer(state: GameState, p: Project, h: Hire): string {
   } else if (lead && approvalRights(p).includes('Casting Approval') && person.experience < 3) {
     decline(state, p, h);
     text = `Your ${p.funding.scenarioId === 'commissioned' || p.finance?.deals.some((d) => d.kind === 'commissioner' && d.status === 'accepted') ? 'commissioner' : 'co-production partner'} didn't approve ${person.name} for ${roleWord}. They want a more experienced lead.`;
+  } else if (willingness(state, h.personId).refuses) {
+    decline(state, p, h);
+    text = `${person.name} turned down ${roleWord}. ${willingness(state, h.personId).reason}`;
   } else {
     const ratio = h.dayRate / person.dayRate;
-    if (ratio >= 1 || (ratio >= 0.9 && r < 0.6)) {
+    // Their history with you (relationships.ts): someone you saw through a project takes a fair offer without haggling;
+    // someone you let go asks for more. Without history, as before.
+    const w = willingness(state, h.personId);
+    if (w.minRatio !== null ? ratio >= w.minRatio : (ratio >= 1 || (ratio >= 0.9 && r < 0.6))) {
       try {
         accept(state, p, h, h.dayRate);
         text = acceptedText(state, p, h, person.name, person.pronouns);
@@ -217,8 +224,12 @@ export function resolveOffer(state: GameState, p: Project, h: Hire): string {
       }
     } else if (ratio >= 0.7) {
       h.status = 'countered';
-      h.counterRate = person.dayRate;
-      text = `${person.name} would take ${roleWord} at ${money(person.dayRate)} a day instead of ${money(h.dayRate)}.`;
+      h.counterRate = Math.round(person.dayRate * Math.max(1, w.minRatio ?? 1));
+      // A counteroffer waits COUNTER_OPEN_DAYS for an answer, then lapses and frees the part (SLATE-09-03, November 8,
+      // 2026). Until then an unanswered counter held the role and its reserved money for good.
+      h.counterUntil = state.now + COUNTER_OPEN_DAYS * DAY;
+      schedule(state, h.counterUntil, 'counter-lapse', { projectId: p.id, hireId: h.id }, { attention: 'notify', priority: 55 });
+      text = `${person.name} would take ${roleWord} at ${money(h.counterRate)} a day instead of ${money(h.dayRate)}. They'll wait ${COUNTER_OPEN_DAYS} days for your answer.${(w.minRatio ?? 1) > 1 && w.reason ? ` ${w.reason}` : ''}`;
     } else {
       decline(state, p, h);
       text = `${person.name} turned down ${roleWord}. The rate was too low.`;
@@ -270,6 +281,18 @@ function accept(state: GameState, p: Project, h: Hire, rate: number): void {
   }
 }
 
+export const COUNTER_OPEN_DAYS = 7;
+
+registerHandler('counter-lapse', (state, ev) => {
+  const p = state.projects.find((x) => x.id === ev.payload.projectId);
+  const h = p?.hires.find((x) => x.id === ev.payload.hireId);
+  if (!p || !h || h.status !== 'countered') return { suppressInterrupt: true };
+  decline(state, p, h);
+  const text = `${personById(state, h.personId).name}'s counteroffer for ${roleLabel(h.roleId).toLowerCase()} on ${p.title} lapsed unanswered. The part is open again.`;
+  addLog(state, text, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: h.kind === 'cast' ? 'cast' : 'crew' } });
+  return { message: text };
+});
+
 function decline(state: GameState, p: Project, h: Hire): void {
   h.status = 'declined';
   if (h.obligationId) cancel(state, p, h.obligationId);
@@ -292,6 +315,7 @@ export function declineCounter(state: GameState, p: Project, hireId: string): vo
   const h = p.hires.find((x) => x.id === hireId);
   if (!h || h.status !== 'countered') throw new Error('There is no counteroffer to decline.');
   decline(state, p, h);
+  recordHistory(state, h.personId, p, roleLabel(h.roleId), 'counter-declined');
 }
 
 export function withdrawOffer(state: GameState, p: Project, hireId: string): void {
@@ -307,6 +331,7 @@ export function releaseHire(state: GameState, p: Project, hireId: string): void 
   if (!h || h.status !== 'accepted') throw new Error('Only someone who has accepted can be released.');
   h.status = 'released';
   if (h.obligationId) cancel(state, p, h.obligationId);
+  if (!p.delivered) recordHistory(state, h.personId, p, roleLabel(h.roleId), 'let-go');
   p.cast = p.cast.filter((c) => c.hireId !== h.id);
   const ps = state.people[h.personId];
   if (ps) ps.bookings = ps.bookings.filter((b) => b.projectId !== p.id);
@@ -386,7 +411,7 @@ function affordablePool(state: GameState, p: Project, roleId: string, win = prod
  * person combines them (COMBINES). Until November 7, 2026 proposals went alphabetically, so the colorist and the
  * re-recording mixer were hired before the editor and sound designer who would have covered them.
  */
-export function requiredCrewPlan(state: GameState, p: Project): { nr: NeededRole; cost: number }[] {
+export function requiredCrewPlan(state: GameState, p: Project): { nr: NeededRole; cost: number; noCandidate?: true }[] {
   const win = productionWindow(state, p);
   let required = neededRoles(p, state).filter((r) => r.required);
   if (p.funding.scenarioId === 'micro') {
@@ -394,13 +419,13 @@ export function requiredCrewPlan(state: GameState, p: Project): { nr: NeededRole
     const reach = (r: NeededRole) => (COMBINES[r.roleId] ?? []).filter((x) => ids.has(x)).length;
     required = [...required].sort((a, b) => reach(b) - reach(a));
   }
-  const plan: { nr: NeededRole; cost: number }[] = [];
+  const plan: { nr: NeededRole; cost: number; noCandidate?: true }[] = [];
   for (const nr of required) {
     const needsOwnPerson = nr.roleId === 'camera-operator' && p.axes.format === 'unscripted-series';
     if (p.hires.some((h) => (needsOwnPerson ? h.roleId === nr.roleId : covers(h.roleId, nr.roleId)) && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
     if (!needsOwnPerson && plan.some((x) => covers(x.nr.roleId, nr.roleId))) continue;
     const cheapest = affordablePool(state, p, nr.roleId, win)[0];
-    plan.push({ nr, cost: cheapest ? cheapest.dayRate * estimateDays(p, nr.roleId) : 0 });
+    plan.push(cheapest ? { nr, cost: cheapest.dayRate * estimateDays(p, nr.roleId) } : { nr, cost: 0, noCandidate: true });
   }
   return plan;
 }
@@ -421,9 +446,11 @@ export function proposeStaffing(state: GameState, p: Project, dept: string): { p
   let budget = available;
   for (const { nr } of plan.filter((x) => x.nr.dept === dept)) {
     const days = estimateDays(p, nr.roleId);
-    const pick = affordablePool(state, p, nr.roleId, win).find((c) => c.dayRate * days <= budget);
+    const pool = affordablePool(state, p, nr.roleId, win);
+    const pick = pool.find((c) => c.dayRate * days <= budget);
     if (!pick) {
-      skipped.push(`${roleLabel(nr.roleId)}: no available candidate fits the remaining budget.`);
+      // No one free at all is a different gap from no one affordable (SLATE-10-02, November 8, 2026); both were one sentence.
+      skipped.push(pool.length ? `${roleLabel(nr.roleId)}: no available candidate fits the remaining budget.` : `${roleLabel(nr.roleId)}: no one is free for your production window. Clear Only Show People Who Are Free on the Crew page to see who is booked, or move your start date.`);
       continue;
     }
     budget -= pick.dayRate * days;

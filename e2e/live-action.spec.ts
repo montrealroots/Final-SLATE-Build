@@ -55,6 +55,11 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
     for (const w of who) await c.getByRole('checkbox', { name: w }).check();
     await c.getByLabel('Objective').fill('Find out who sent the letter.');
     await c.getByLabel('Props').fill('Unsigned letter');
+    if (i === 0) {
+      await c.getByLabel('Speaker').selectOption({ label: 'Odile' });
+      await c.getByLabel('Line', { exact: true }).fill('Who sent this?');
+      await c.getByRole('button', { name: 'Add Line' }).click();
+    }
     await c.getByRole('button', { name: 'Close Scene' }).click();
   };
   await fillScene(0, 'Ferry Dock', true, ['Odile', 'The Ferryman']);
@@ -110,6 +115,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await expect(sites).toContainText('Costs less; arrangements like this fall through more often.');
 
   // Let production run; keep staffing and move the edit along.
+  let rerecorded = false;
   for (let i = 0; i < 24; i++) {
     await advance(page, 'week');
     await staffEveryDepartment(page);
@@ -127,6 +133,14 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
       break;
     }
     const lock = page.getByRole('button', { name: 'Lock Picture', exact: true });
+    // Additional work before lock (SLATE-15-03.02): re-record Odile's line, once; the sound waits for the session.
+    const rerecord = page.getByRole('button', { name: "Re-Record Odile's Lines" });
+    if (!rerecorded && await rerecord.count()) {
+      await rerecord.click();
+      await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Additional Work' }) })).toContainText('Odile · you, re-recording booked');
+      rerecorded = true;
+      continue;
+    }
     if (await lock.isEnabled()) {
       // Before locking, the takes (SLATE-12-03): the cut uses the best balanced one; use another for the dock scene.
       const takes = page.locator('section.card', { has: page.getByRole('heading', { name: 'Takes' }) });
@@ -138,12 +152,18 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
       await expect(dockTakes.locator('li', { hasText: new RegExp(`^Take ${n}: .* · In the cut$`) })).toHaveCount(1);
       await expect(dockTakes.locator('li', { hasText: / · In the cut$/ })).toHaveCount(1);
       await lock.click();
+      // A Festival Cut without the wheelhouse scene (SLATE-15-05.03): its own runtime, a day of editing before delivery.
+      const versions = page.locator('section.card', { has: page.getByRole('heading', { name: 'Versions', exact: true }) });
+      await versions.getByRole('checkbox', { name: 'Scene 2 (Wheelhouse)' }).check();
+      await versions.getByRole('button', { name: 'Add Version' }).click();
+      await expect(versions).toContainText(/Festival Cut · \d+ minutes · \d+ credits/);
       continue;
     }
     const cut = page.getByRole('button', { name: 'Start Cut Pass' });
     if (await cut.isEnabled()) await cut.click();
   }
   await expect(page.getByText(/Delivered at \d+ minutes/)).toBeVisible();
+  expect(rerecorded).toBe(true);
 
   // Credits: all four professions earned on this project.
   await section(page, 'Release');
@@ -163,6 +183,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   let submitted = false;
   for (let i = 0; i < await prepare.count() && !submitted; i++) {
     await prepare.nth(i).click();
+    await expect(page.getByRole('dialog').getByLabel('Version To Enter').locator('option')).toContainText([/^The Main Cut \(\d+ Minutes\)$/, /^Festival Cut \(\d+ Minutes\)$/]);
     const submit = page.getByRole('dialog').getByRole('button', { name: 'Submit Entry' });
     if (await submit.isEnabled()) {
       await submit.click();

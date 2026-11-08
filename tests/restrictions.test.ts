@@ -1,7 +1,8 @@
 // SLATE-14-02.02: contributors' conditions on use are recorded with consent and respected in post, credits and delivery.
 import { showCut } from '../src/engine/documentary-actions';
 import { describe, expect, it } from 'vitest';
-import { DAY, computeCredits, deliveryBlockers, processUntil, requestConsent } from './engine-api';
+import { DAY, computeCredits, deliveryBlockers, processUntil, requestConsent, withdrawRelease } from './engine-api';
+import { redactionComplete } from '../src/engine/unscripted';
 import { CUT_REVIEW_DAYS, ensureBlurTasks } from '../src/engine/documentary';
 import { buildTasks } from '../src/engine/production/tasks';
 import { editScenes, unlockPicture } from '../src/engine/finish';
@@ -77,4 +78,41 @@ describe("contributors' conditions on use", () => {
     expect(deliveryBlockers(p).some((b) => b.includes('Nomvula'))).toBe(false);
   });
 
+});
+
+// SLATE-14-02 / playthrough family 8: a documentary contributor withdraws after being filmed.
+describe('a documentary contributor withdraws', () => {
+  it('after filming: the scenes with their footage are redacted by the editor, and delivery waits for it', () => {
+    const { s, p } = doc('withdraw-after');
+    c1(p).consent = 'given'; // labelled fixture: they agreed and were filmed
+    p.tasks = buildTasks(p);
+    p.captures.push({ sceneId: 'a1', captured: 1, quality: 60, version: p.approvedDraft!, weatherCompromised: false }); // filmed
+    const made = withdrawRelease(s, p, 'ct1');
+    expect(c1(p).consent).toBe('withdrawn');
+    expect(made.map((t) => [t.kind, t.roleId, t.sceneIds])).toEqual([['doc:redact', 'editor', ['a1']]]); // a2 was never shot
+    expect(s.log[0].text).toBe('Nomvula Dube withdrew from Tide Keepers. Their footage is being redacted from the film.');
+    expect(redactionComplete(p, 'ct1')).toBe(false);
+    for (const t of p.tasks) { t.status = 'done'; t.done = t.units; } // labelled fixture: every other piece of work finished
+    made[0].status = 'waiting';
+    p.edit.pictureLocked = true;
+    expect(deliveryBlockers(p).some((b) => b.includes('Nomvula Dube'))).toBe(true);
+    made[0].status = 'done';
+    expect(redactionComplete(p, 'ct1')).toBe(true);
+    expect(deliveryBlockers(p).some((b) => b.includes('Nomvula Dube'))).toBe(false);
+    expect(() => withdrawRelease(s, p, 'ct1')).toThrow('Nomvula Dube has already withdrawn.');
+  });
+
+  it('before filming: nothing to redact; with the picture locked after filming, unlock first', () => {
+    const before = doc('withdraw-before');
+    c1(before.p).consent = 'given';
+    before.p.tasks = buildTasks(before.p);
+    expect(withdrawRelease(before.s, before.p, 'ct1')).toEqual([]);
+    const locked = doc('withdraw-locked');
+    c1(locked.p).consent = 'given';
+    locked.p.tasks = buildTasks(locked.p);
+    locked.p.captures.push({ sceneId: 'a2', captured: 1, quality: 60, version: locked.p.approvedDraft!, weatherCompromised: false });
+    locked.p.edit.pictureLocked = true;
+    expect(() => withdrawRelease(locked.s, locked.p, 'ct1')).toThrow("Unlock the picture first; Nomvula Dube's footage has to be taken out of the cut.");
+    expect(c1(locked.p).consent).toBe('given'); // refused, nothing changed
+  });
 });
