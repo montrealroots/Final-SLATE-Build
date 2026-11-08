@@ -15,7 +15,8 @@ import { breakdownComplete, characterPronouns, pronounsMatch } from '../engine/s
 import { AUDITION_NOTICE_DAYS, auditionsFor, callBack, chemistryPartners, inviteRefusal, inviteToAudition, setShortlisted } from '../engine/casting-calls';
 import { chemistryWords, qualityWords } from '../engine';
 import { callSheet } from '../engine/callsheet';
-import { costCuts, type CostCut } from '../engine/cost-cuts';
+import { costCuts, estimateAgainstSpending, type CostCut } from '../engine/cost-cuts';
+import { CONTINGENCY, costBreakdown, type CostArea } from '../engine/estimate';
 import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, scoutedPlaces, site } from '../engine/locations';
 import { dayFees, estimatedShootDays, willingness } from '../engine';
@@ -554,6 +555,57 @@ function LocationsCard({ p }: { p: Project }) {
 // ---------------- Budget ----------------
 
 /** Ways to cost less, worked out when asked: each is the estimate again without that thing (SLATE-03-03.02). */
+const AREA_WORDS: Record<CostArea, string> = { crew: 'Crew', cast: 'Cast', shoot: 'Shoot Days', builds: 'Builds And Materials', facilities: 'Studio, Render And Capture' };
+
+/**
+ * What the estimate is made of (estimate.ts costBreakdown): money by how sure it is, the work still to come by area and
+ * what drives it, what is uncertain and how to resolve it, and the risks the contingency is for.
+ */
+function WhatItCostsCard({ p }: { p: Project }) {
+  const g = useGame();
+  const b = costBreakdown(g, p);
+  const toCome = b.toCome.reduce((a, x) => a + x.amount, 0);
+  const contingency = Math.round(b.total * CONTINGENCY);
+  const top = [...b.toCome].sort((x, y) => y.amount - x.amount).slice(0, 5);
+  const vs = estimateAgainstSpending(p);
+  const areas = (Object.keys(AREA_WORDS) as CostArea[]).filter((a) => b.toCome.some((x) => x.area === a));
+  return (
+    <section className="card" aria-labelledby="costs-h">
+      <h2 id="costs-h">What It Costs</h2>
+      <p className="dim">The estimate is built from the work the approved script needs, priced by the same rules the production pays by. It is a projection, not a quote.</p>
+      <dl className="kv">
+        <dt>Spent</dt><dd>{money(b.spent)}</dd>
+        <dt>Agreed, Not Yet Paid</dt><dd>{money(b.committed)}</dd>
+        <dt>Held For Plans And Offers</dt><dd>{money(b.reserved)}</dd>
+        <dt>Still To Come, Estimated</dt><dd>{money(toCome)}</dd>
+        <dt>Contingency ({Math.round(CONTINGENCY * 100)}%)</dt><dd>{money(contingency)}</dd>
+        <dt>Shoot Days Still To Come</dt><dd>{b.shootDays}</dd>
+      </dl>
+      {top.length > 0 && <>
+        <h3>What Makes It Expensive</h3>
+        <ul className="list">{top.map((x) => <li key={x.area + x.label}><strong>{x.label}</strong>: {money(x.amount)} <span className="dim">· {x.driver}</span></li>)}</ul>
+        <details className="spaced"><summary>Everything Still To Come ({plural(b.toCome.length, 'line')})</summary>
+          {areas.map((a) => <Fragment key={a}><h4>{AREA_WORDS[a]}: {money(b.toCome.filter((x) => x.area === a).reduce((s, x) => s + x.amount, 0))}</h4>
+            <ul className="list">{b.toCome.filter((x) => x.area === a).map((x) => <li key={x.label}>{x.label}: {money(x.amount)} <span className="dim">· {x.driver}</span></li>)}</ul></Fragment>)}
+        </details>
+      </>}
+      {b.uncertain.length > 0 && <div className="callout callout-warning spaced"><p><strong>Uncertain</strong></p><ul>{b.uncertain.map((u) => <li key={u.item}>{u.item} {u.resolve}</li>)}</ul></div>}
+      {b.risks.length > 0 && <>
+        <h3>What The Contingency Is For</h3>
+        <ul className="list">{b.risks.map((r) => <li key={r.item}>{r.item}{r.cost ? ` One costs about ${money(r.cost)}${r.cost <= contingency ? `; the contingency covers about ${Math.floor(contingency / r.cost)}.` : ', more than the contingency.'}` : ''}</li>)}</ul>
+      </>}
+      {vs && vs.rows.some((r) => r.actual) && <>
+        <h3>Estimate Against Spending</h3>
+        <div className="table-wrap"><table className="data">
+          <thead><tr><th>Area</th><th>Estimated At Approval</th><th>Spent Or Agreed</th></tr></thead>
+          <tbody>{vs.rows.map((r) => <tr key={r.area}><td data-label="Area">{r.label}</td><td data-label="Estimated At Approval">{money(r.estimated)}</td><td data-label="Spent Or Agreed">{money(r.actual)}</td></tr>)}</tbody>
+        </table></div>
+        {vs.reasons.length > 0 && <ul className="list">{vs.reasons.map((r) => <li key={r}>{r}</li>)}</ul>}
+      </>}
+    </section>
+  );
+}
+
 function CostCutsCard({ p }: { p: Project }) {
   const g = useGame();
   const [cuts, setCuts] = useState<CostCut[] | null>(null);
@@ -563,7 +615,7 @@ function CostCutsCard({ p }: { p: Project }) {
       <p className="dim">What the estimate would save without each of these. They change the film, so they are choices, not advice; make one in the Script and approve a new draft.</p>
       {cuts === null ? <button className="btn" onClick={() => setCuts(costCuts(g, p))}>Work Out Savings</button>
         : cuts.length ? (
-          <ul className="list">{cuts.map((c) => <li key={c.label}><strong>{c.label}</strong>: saves about {money(c.saving)}. <span className="dim">{c.how}</span></li>)}</ul>
+          <ul className="list">{cuts.map((c) => <li key={c.label}><strong>{c.label}</strong>: saves about {money(c.saving)}{c.days ? `, ${c.days < 0 ? `${plural(-c.days, 'shoot day')} fewer` : `${plural(c.days, 'shoot day')} more`}` : ''}. <span className="dim">{c.how}</span></li>)}</ul>
         ) : <p className="muted">Nothing here would save $1,000 or more. Essential scenes aren't offered.</p>}
     </section>
   );
@@ -589,6 +641,7 @@ export function BudgetTab({ p }: { p: Project }) {
         <div className="meter spaced" role="img" aria-label={`${Math.round((t.settled / Math.max(1, t.fund)) * 100)} percent spent`}><span style={{ width: `${Math.min(100, (t.settled / Math.max(1, t.fund)) * 100)}%` }} /></div>
         <p className="dim">Rates and fees are game assumptions, not quoted industry prices.</p>
       </section>
+      {p.approvedDraft !== null && !p.delivered && <WhatItCostsCard p={p} />}
       {p.approvedDraft !== null && !p.delivered && <CostCutsCard p={p} />}
       <section className="card">
         <h2>By Category</h2>

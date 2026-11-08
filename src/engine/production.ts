@@ -4,16 +4,15 @@
 
 import { getPlace } from '../data/places';
 import { cancel, commit, reserve } from './budget';
-import { approvedScenes, approvalRights, changedSince, onDraftApproved, projectModules, sceneLabel, sceneTechnique } from './projects';
+import { approvedScenes, approvalRights, changedSince, onDraftApproved, sceneLabel } from './projects';
 import { newId, registerCommitmentSource } from './state';
 import { HOUR, dayNumber, localToInstant, parseYmd } from './time';
 import type { GameState, Project, ShootDay } from './types';
-import { BASE_MINUTES_PER_SHOOT_DAY } from './production/rates';
-import { ensureWorkEvent, sceneComplexity } from './production/schedule';
+import { ensureWorkEvent, groupShootDays } from './production/schedule';
 
-export { BASE_MINUTES_PER_SHOOT_DAY, DAY_COST_SCALE, EQUIPMENT_PER_DAY, HOLIDAY_PREMIUM, LOCATION_FEE_PER_DAY, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO, dayFees } from './production/rates';
+export { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, DAY_COST_SCALE, EQUIPMENT_PER_DAY, HOLIDAY_PREMIUM, LOCATION_FEE_PER_DAY, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO, dayFees } from './production/rates';
 export { buildTasks } from './production/tasks';
-export { ensureWorkEvent, generatePlan, isWorkingDay, nextWorkingDay, planShootDays, sceneComplexity } from './production/schedule';
+export { ensureWorkEvent, generatePlan, groupShootDays, isWorkingDay, nextWorkingDay, planShootDays, sceneComplexity, sceneLoad, type ShootDayGroup } from './production/schedule';
 export { depsMet, materialCost, playerDoes, puppetStatus, runWorkDay, teamFor } from './production/workday';
 export { keepWeatherPlan, moveShootDay, runShootDay, schedulePickups, swapWithInteriorDay } from './production/shoot';
 export type { PlanResult } from './production/schedule';
@@ -108,10 +107,9 @@ export function shootDayStart(p: Project, d: ShootDay): number {
   return localToInstant(zone, year, month, day, d.night ? 17 : 7).instant;
 }
 
+/** The shoot days the approved script needs: the schedule's own grouping (production/schedule.ts groupShootDays), counted. */
 export function estimatedShootDays(p: Project): number {
-  const mods = projectModules(p);
-  const live = approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival' && s.kind !== 'narration');
-  return Math.max(0, Math.ceil(live.reduce((a, s) => a + s.estMinutes / sceneComplexity(s, mods), 0) / BASE_MINUTES_PER_SHOOT_DAY));
+  return groupShootDays(p).length;
 }
 
 export { dayNumber, HOUR, reserve, commit, cancel, approvalRights };

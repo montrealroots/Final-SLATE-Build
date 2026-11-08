@@ -21,6 +21,8 @@ export const RENDER_NODE_DAY_COST = 35;
 /** Live-action screen minutes captured per shoot day before complexity adjustments. */
 export const BASE_MINUTES_PER_SHOOT_DAY = 4;
 export const HOLIDAY_PREMIUM = 1.5;
+/** A background performer for a day (game calibration). */
+export const CROWD_DAY_RATE = 180;
 
 export const MATERIAL_COST: Record<string, number> = {
   'prep:design': 900, 'prep:costume': 600, 'prep:creature': 4000, 'sm:armature': 900, 'sm:puppet': 1500, 'sm:costume': 300, 'sm:sets': 2500,

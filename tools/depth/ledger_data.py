@@ -238,7 +238,7 @@ C = {
 ]),
 '08-01': ('Budget', 'src/engine/estimate.ts; src/engine/budget.ts', [
   ('The estimate by category with contingency, separate from money in hand', 'VE', ['tests/finance.test.ts::a new project has an estimate and a target'], ''),
-  ('A line with no available candidate is flagged as uncertain, never free', 'V', ['tests/depth-gaps.test.ts::names a part no experienced performer can take, instead of counting it as free'], 'Repaired November 8, 2026: it was counted at nothing; the Financing card now names it'),
+  ('A line with no available candidate is flagged as uncertain, never free', 'V', ['tests/depth-gaps.test.ts::names a part no experienced performer can take and prices it at the lowest rate, never as free'], 'Repaired November 8, 2026: it was counted at nothing; the Financing card now names it'),
 ]),
 '08-02': ('Budget > Backers', 'src/engine/finance.ts', [
   ('Each backer says what it needs; send; an answer after some days', 'VE',
@@ -299,7 +299,7 @@ C = {
 ]),
 '10-02': ('Crew > Find', 'src/engine/hiring.ts', [
   ('Compare experience, rate and availability', 'VE', ['e2e/connected.spec.ts::a connected career'], ''),
-  ('No candidate is an explicit gap', 'V', ['tests/depth-gaps.test.ts::staffing names a role no one is free for, apart from one no one affordable can take', 'tests/depth-gaps.test.ts::names a part no experienced performer can take, instead of counting it as free'], ''),
+  ('No candidate is an explicit gap', 'V', ['tests/depth-gaps.test.ts::staffing names a role no one is free for, apart from one no one affordable can take', 'tests/depth-gaps.test.ts::names a part no experienced performer can take and prices it at the lowest rate, never as free'], ''),
 ]),
 '10-03': ('Crew', 'src/engine/hiring.ts', [
   ('Offer, book and assign dates; declines release only their reservations', 'VE', ['tests/tight-budget.test.ts::staffing hires a required crew'], ''),

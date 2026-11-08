@@ -411,7 +411,12 @@ function affordablePool(state: GameState, p: Project, roleId: string, win = prod
  * person combines them (COMBINES). Until November 7, 2026 proposals went alphabetically, so the colorist and the
  * re-recording mixer were hired before the editor and sound designer who would have covered them.
  */
-export function requiredCrewPlan(state: GameState, p: Project): { nr: NeededRole; cost: number; noCandidate?: true }[] {
+/**
+ * Each required role still to fill, priced at the lowest experienced rate of someone free in the production window. A
+ * role no one free can take is priced at the lowest rate of anyone who does that job (`noCandidate`), never at nothing
+ * (November 8, 2026): the estimate says it is uncertain and how to resolve it (estimate.ts).
+ */
+export function requiredCrewPlan(state: GameState, p: Project): { nr: NeededRole; cost: number; days: number; rate: number; noCandidate?: true }[] {
   const win = productionWindow(state, p);
   let required = neededRoles(p, state).filter((r) => r.required);
   if (p.funding.scenarioId === 'micro') {
@@ -419,13 +424,16 @@ export function requiredCrewPlan(state: GameState, p: Project): { nr: NeededRole
     const reach = (r: NeededRole) => (COMBINES[r.roleId] ?? []).filter((x) => ids.has(x)).length;
     required = [...required].sort((a, b) => reach(b) - reach(a));
   }
-  const plan: { nr: NeededRole; cost: number; noCandidate?: true }[] = [];
+  const plan: { nr: NeededRole; cost: number; days: number; rate: number; noCandidate?: true }[] = [];
   for (const nr of required) {
     const needsOwnPerson = nr.roleId === 'camera-operator' && p.axes.format === 'unscripted-series';
     if (p.hires.some((h) => (needsOwnPerson ? h.roleId === nr.roleId : covers(h.roleId, nr.roleId)) && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
     if (!needsOwnPerson && plan.some((x) => covers(x.nr.roleId, nr.roleId))) continue;
+    const days = estimateDays(p, nr.roleId);
     const cheapest = affordablePool(state, p, nr.roleId, win)[0];
-    plan.push(cheapest ? { nr, cost: cheapest.dayRate * estimateDays(p, nr.roleId) } : { nr, cost: 0, noCandidate: true });
+    const anyone = cheapest ?? roleCandidates(state, p, nr.roleId).sort((a, b) => a.dayRate - b.dayRate)[0];
+    const rate = anyone?.dayRate ?? 0;
+    plan.push(cheapest ? { nr, cost: rate * days, days, rate } : { nr, cost: rate * days, days, rate, noCandidate: true });
   }
   return plan;
 }
@@ -438,7 +446,8 @@ export function proposeStaffing(state: GameState, p: Project, dept: string): { p
   const plan = requiredCrewPlan(state, p);
   // Hire for a crew the money can pay, or not at all. Until November 7, 2026 the first departments staffed could take
   // everything, and a micro stop-motion short hired its puppet makers and composer but never its animator.
-  const crew = plan.reduce((a, x) => a + x.cost, 0);
+  // Staffing can only hire someone free: a role no one free can take is the estimate's uncertainty, not money to find now.
+  const crew = plan.filter((x) => !x.noCandidate).reduce((a, x) => a + x.cost, 0);
   if (crew > available) {
     if (plan.some((x) => x.nr.dept === dept)) skipped.push(`The required crew still to hire costs about ${money(crew)} at the lowest rates, and ${money(available)} is uncommitted. Raise the rest before staffing, or cut scope.`);
     return { proposals, skipped };

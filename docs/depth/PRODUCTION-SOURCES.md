@@ -20,6 +20,7 @@ applicability, and its status becomes "verified fact".
 | `RENDER_NODE_DAY_COST` | `src/engine/production/rates.ts` | $35 a node a day | 13-02, 08-01 | Modeled assumption | None |
 | `BASE_MINUTES_PER_SHOOT_DAY` | `src/engine/production/rates.ts` | 4 screen minutes | 12-02, 11-05 | Modeled assumption | None |
 | `HOLIDAY_PREMIUM` | `src/engine/production/rates.ts` | 1.5 times the day rate | 11-05, 12-01 | Modeled assumption | None |
+| `CROWD_DAY_RATE` | `src/engine/production/rates.ts` | $180 a background performer a day | 12-02, 08-01 | Modeled assumption | None |
 | `MATERIAL_COST` | `src/engine/production/rates.ts` | per build or prep task | 11-03, 13-03, 08-01 | Modeled assumption | None |
 | `LOCATION_FEE_PER_DAY` | `src/engine/production/rates.ts` | $1,200 | 11-02, 12-02 | Modeled assumption | None |
 | `EQUIPMENT_PER_DAY` | `src/engine/production/rates.ts` | $1,500 | 12-02 | Modeled assumption | None |

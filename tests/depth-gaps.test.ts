@@ -1,7 +1,7 @@
 // Stage 12 of the gameplay-depth package: tests for children that were built before the package and had none
 // (docs/depth/COVERAGE-LEDGER.csv rows marked IMPLEMENTED UNVERIFIED). Each asserts the rule, not only the sentence.
 import { describe, expect, it } from 'vitest';
-import { computeCredits, neededRoles, projectedCost, proposeStaffing, roleCandidates, scriptIssues, unlockPicture, validateAxes } from '../src/engine';
+import { computeCredits, costBreakdown, estimateDays, neededRoles, projectedCost, proposeStaffing, roleCandidates, scriptIssues, unlockPicture, validateAxes } from '../src/engine';
 import { buildTasks } from '../src/engine/production/tasks';
 import { breakdownComplete } from '../src/engine/script-explain';
 import type { ProjectAxes } from '../src/engine/types';
@@ -90,7 +90,7 @@ describe('unlocking the picture (SLATE-15-04)', () => {
 });
 
 describe('the estimate with no one to price (SLATE-08-01)', () => {
-  it('names a part no experienced performer can take, instead of counting it as free', () => {
+  it('names a part no experienced performer can take and prices it at the lowest rate, never as free', () => {
     const s = startLife('gaps-unpriced');
     const p = buildProject(s, { title: 'Ink', format: 'short', medium: 'live-action', runtime: 10 }, [{ name: 'Ada', patch: { roleSize: 'lead' } }], [{ place: 'Room', chars: ['Ada'] }]);
     approve(s, p);
@@ -100,7 +100,10 @@ describe('the estimate with no one to price (SLATE-08-01)', () => {
     for (const x of roleCandidates(s, p, 'actor')) x.experience = 1; // labelled fixture: no experienced actor in the pool
     const unpriced = projectedCost(s, p);
     expect(unpriced.uncertain).toEqual(['Ada (on camera)']);
-    expect(unpriced.cast).toBe(0);
+    // Priced at the lowest rate anyone asks, never at nothing (November 8, 2026), and flagged with how to resolve it.
+    const cheapest = Math.min(...roleCandidates(s, p, 'actor').map((x) => x.dayRate));
+    expect(unpriced.cast).toBe(cheapest * estimateDays(p, 'actor', p.characters[0].id, 'on-camera'));
+    expect(costBreakdown(s, p).uncertain[0].resolve).toBe('Cast yourself, consider less experienced performers, or invite people to read.');
   });
 });
 

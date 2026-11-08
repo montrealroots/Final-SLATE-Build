@@ -8,15 +8,15 @@ import { covers, isAvailable, personById, roleLabel } from '../people';
 import { approvedCharacters, approvedScenes, isNonfiction, projectModules, sceneLabel } from '../projects';
 import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
-import { BASE_MINUTES_PER_SHOOT_DAY, HOLIDAY_PREMIUM, dayFees } from './rates';
-import { ensureWorkEvent, isWorkingDay, nextWorkingDay, sceneComplexity, scheduleShootDay } from './schedule';
+import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees } from './rates';
+import { ensureWorkEvent, isWorkingDay, nextWorkingDay, sceneLoad, scheduleShootDay } from './schedule';
 import { addLogOnce, payPlanned, plannedRemaining } from './workday';
 import { t } from './tasks';
 import { personLanguagesFit } from './language';
 import type { GameState, Project, Scene, SceneCapture, ShootDay } from '../types';
 import { forecast, precipitationDuring, weatherOn, daylightWindowLocal } from '../weather';
 import { siteFactor, siteOnTheDay } from '../locations';
-import { planTime, recordTakes, shotPlan, takeFigures } from '../takes';
+import { recordTakes, shotPlan, takeFigures } from '../takes';
 
 // ---------------- Shoot days ----------------
 
@@ -170,7 +170,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const o = p.obligations.find((x) => x.id === h.obligationId)!;
     const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
     return a + Math.max(0, o.settled + pay - Math.max(o.amount, o.settled));
-  }, 0) + Math.max(0, locationFee + dayFees(p).equipment + scenes.reduce((a, s) => a + s.crowd, 0) * 180 - plannedRemaining(p, 'plan:shoot'));
+  }, 0) + Math.max(0, locationFee + dayFees(p).equipment + scenes.reduce((a, s) => a + s.crowd, 0) * CROWD_DAY_RATE - plannedRemaining(p, 'plan:shoot'));
   if (overrun > ledgerTotals(p).available) {
     d.status = 'lost';
     d.result = `There wasn't enough money for this shoot day (${money(overrun)} needed beyond what's already agreed). Add funding or cut scope, then rebuild the schedule.`;
@@ -254,7 +254,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
         continue;
       }
     }
-    const need2 = (s.estMinutes / sceneComplexity(s, mods)) * planTime(p, s);
+    const need2 = sceneLoad(p, s, mods);
     const cap = p.captures.find((c) => c.sceneId === s.id);
     const already = cap && cap.version === p.approvedDraft ? cap.captured : 0;
     const remainingNeed = need2 * (1 - already);
@@ -293,7 +293,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     payPlanned(state, p, 'plan:shoot', `Location Fee (${d.date})`, 'locations', locationFee, `loc:${d.id}`);
     payPlanned(state, p, 'plan:shoot', `Equipment Package (${d.date})`, 'equipment', dayFees(p).equipment, `eq:${d.id}`);
     const crowd = scenes.reduce((a, s) => a + s.crowd, 0);
-    if (crowd) payPlanned(state, p, 'plan:shoot', `Background Performers (${d.date})`, 'cast', crowd * 180, `crowd:${d.id}`);
+    if (crowd) payPlanned(state, p, 'plan:shoot', `Background Performers (${d.date})`, 'cast', crowd * CROWD_DAY_RATE, `crowd:${d.id}`);
   } catch (e) {
     if (e instanceof FundsError) addLogOnce(state, p, `day:${d.id}`, `${p.title} couldn't pay for today's location and equipment. Add funding before the next shoot day.`);
   }

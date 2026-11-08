@@ -14,6 +14,8 @@ import { addAct, addBeat, addThread, removeAct, removeBeat, removeThread, setSce
 // Loaded with this page, not at startup (the startup budget): the engine index leaves season.ts out.
 import { moveEpisode, removeRelationship, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule, type SharedFact } from '../engine/season';
 import { RESTRICTION_WORDS } from '../engine/documentary';
+import { money } from '../engine/budget';
+import { approvalScope, type ScopeChange } from '../engine/cost-cuts';
 import { CONTENT_ISSUES, audienceContentNote, characterPronouns, contentSuggestions, contentSummary, placementExplained, spokenMinutes } from '../engine/script-explain';
 import type { ContentIssue, ContentLevel, Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
@@ -63,7 +65,7 @@ export function ScriptTab({ p }: { p: Project }) {
   useGame();
   const [err, setErr] = useState<string | null>(null);
   const [draftLabel, setDraftLabel] = useState('');
-  const [approving, setApproving] = useState<{ number: number; impact: string[] } | null>(null);
+  const [approving, setApproving] = useState<{ number: number; impact: string[]; scope: ScopeChange | null } | null>(null);
   const [compare, setCompare] = useState<number | null>(null);
   const [deleting, setDeleting] = useState<Scene | null>(null);
   const [renaming, setRenaming] = useState<{ number: number; label: string } | null>(null);
@@ -185,11 +187,14 @@ export function ScriptTab({ p }: { p: Project }) {
         <Modal title="Approve This Draft?" onClose={() => setApproving(null)} footer={
           <>
             <button className="btn" onClick={() => setApproving(null)}>Keep The Current Draft</button>
-            <button className="btn btn-primary" onClick={() => { setErr(store.act((s) => { approveDraft(s, p, approving.number); })); setApproving(null); }}>Approve And Redo This Work</button>
+            <button className="btn btn-primary" onClick={() => { setErr(store.act((s) => { approveDraft(s, p, approving.number); })); setApproving(null); }}>{approving.impact.length ? 'Approve And Redo This Work' : 'Approve The Change'}</button>
           </>
         }>
-          <p>Some scenes changed since the approved draft. Work on unchanged scenes is kept. This work starts over:</p>
-          <ul>{approving.impact.map((t) => <li key={t}>{t}</li>)}</ul>
+          {approving.scope && <ScopeSummary scope={approving.scope} />}
+          {approving.impact.length > 0 && <>
+            <p>Some scenes changed since the approved draft. Work on unchanged scenes is kept. This work starts over:</p>
+            <ul>{approving.impact.map((t) => <li key={t}>{t}</li>)}</ul>
+          </>}
         </Modal>
       )}
       <section className="card">
@@ -213,7 +218,11 @@ export function ScriptTab({ p }: { p: Project }) {
                   <button className="btn btn-sm" disabled={locked} onClick={() => setRenaming({ number: d.number, label: d.label })}>Rename Draft</button>
                   {!d.approved && <button className="btn btn-sm btn-primary" disabled={locked} onClick={() => {
                     const impact = [...approvalImpact(p, d.number), ...requirementRemovalImpact(store.state!, p, d.number)];
-                    if (impact.length) setApproving({ number: d.number, impact });
+                    // A change to an approved script is a change of scope: its cost and schedule are shown first.
+                    let scope: ScopeChange | null = null;
+                    if (p.approvedDraft !== null) { try { scope = approvalScope(store.state!, p, d.number); } catch { scope = null; } }
+                    const moves = !!scope && (Math.abs(scope.before.total - scope.after.total) >= 1 || scope.before.shootDays !== scope.after.shootDays || scope.commitments.length > 0);
+                    if (impact.length || moves) setApproving({ number: d.number, impact, scope });
                     else setErr(store.act((s) => { approveDraft(s, p, d.number); }));
                   }}>Approve This Draft</button>}
                 </div>
@@ -1032,5 +1041,19 @@ function ContentCard({ p, locked }: { p: Project; locked: boolean }) {
       {tips.map((t) => <p key={t} className="dim">{t}</p>)}
       {advice && <p className="dim">{advice}</p>}
     </section>
+  );
+}
+
+/** A change of scope before it is made: the estimate and shoot days before and after, and commitments that stay. */
+export function ScopeSummary({ scope }: { scope: ScopeChange }) {
+  const d = scope.after.estimate - scope.before.estimate;
+  const days = scope.after.shootDays - scope.before.shootDays;
+  return (
+    <div className="spaced" aria-label="What The Change Does">
+      <p><strong>Budget estimate:</strong> {money(scope.before.estimate)} now, {money(scope.after.estimate)} after{d ? ` (${d > 0 ? 'up' : 'down'} ${money(Math.abs(d))})` : ', no change'}.
+        {' '}<strong>Shoot days still to come:</strong> {scope.before.shootDays} now, {scope.after.shootDays} after{days ? ` (${days > 0 ? `${days} more` : `${-days} fewer`})` : ''}.</p>
+      {scope.before.estimate === scope.after.estimate && scope.before.total !== scope.after.total && <p className="dim">The work changes by {money(Math.abs(scope.after.total - scope.before.total))}, but the estimate stays at the budget size's amount.</p>}
+      {scope.commitments.length > 0 && <><p>These agreements stay after the change:</p><ul>{scope.commitments.map((c) => <li key={c}>{c}</li>)}</ul></>}
+    </div>
   );
 }
