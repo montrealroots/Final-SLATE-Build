@@ -310,7 +310,7 @@ C = {
 ]),
 '10-05': ('Crew', 'src/engine/hiring.ts', [
   ('Releasing someone keeps done work, pay owed and credit', 'VE', ['tests/mocap-calendar.test.ts::still credited for the work that stays'], ''),
-  ('A handover to a replacement mid-task', 'IU', [], 'releaseHire then a new hire; no test of the handover'),
+  ('A handover to a replacement mid-task', 'V', ['tests/relationships.test.ts::releasing someone keeps the work they did and their credit; the replacement carries on from there'], ''),
 ]),
 '11-01': ('Production > Readiness', 'src/engine/projects.ts', [
   ('Approved scenes become a breakdown of requirements', 'VE', ['tests/genres.test.ts::requirements come from scenes, not labels'], ''),

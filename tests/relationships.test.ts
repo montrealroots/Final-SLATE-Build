@@ -1,6 +1,6 @@
 // SLATE-18-02: a person's own history with you changes how they answer your offers; nothing else does.
 import { describe, expect, it } from 'vitest';
-import { COUNTER_OPEN_DAYS, DAY, declineCounter, historyWith, ledgerTotals, makeOffer, processUntil, recordHistory, releaseHire, resolveOffer, roleCandidates, willingness } from './engine-api';
+import { COUNTER_OPEN_DAYS, DAY, buildTasks, computeCredits, declineCounter, teamFor, historyWith, ledgerTotals, makeOffer, processUntil, recordHistory, releaseHire, resolveOffer, roleCandidates, willingness } from './engine-api';
 import type { Project } from '../src/engine/types';
 import { approve, buildProject, startLife } from './helpers';
 
@@ -74,5 +74,27 @@ describe('a counteroffer left unanswered', () => {
     expect(s.log.some((l) => l.text === `${ed.name}'s counteroffer for editor on Tidewater lapsed unanswered. The part is open again.`)).toBe(true);
     expect(historyWith(s, ed.id)).toEqual([]); // letting it lapse isn't turning them down
     expect(answer(s, p, ed.id, 1).status).toBe('accepted');
+  });
+});
+
+// SLATE-10-05: a replacement takes over work in progress; nothing done is lost and both are credited for what they did.
+describe('a handover mid-task', () => {
+  it('releasing someone keeps the work they did and their credit; the replacement carries on from there', () => {
+    const { s, p } = project('rel-handover');
+    p.tasks = buildTasks(p); // as production start builds them
+    const [first, second] = roleCandidates(s, p, 'editor').filter((x) => x.experience >= 2);
+    const h1 = answer(s, p, first.id, 1.2);
+    expect(h1.status).toBe('accepted');
+    const task = p.tasks.find((t) => t.roleId === 'editor')!;
+    task.done = 2; task.status = 'active'; h1.daysWorked = 2; // labelled fixture: two days of their work so far
+    releaseHire(s, p, h1.id);
+    expect(teamFor(p, 'editor', 1)).toEqual([]);
+    expect(task.done).toBe(2);
+    const h2 = answer(s, p, second.id, 1.2);
+    expect(h2.status).toBe('accepted');
+    expect(teamFor(p, 'editor', 1)).toEqual([second.id]);
+    expect(task.done).toBe(2);
+    const editors = computeCredits(s, p).filter((c) => c.roleId === 'editor').map((c) => c.person);
+    expect(editors).toContain(first.id);
   });
 });
