@@ -24,7 +24,7 @@ export const COUNTER_DAYS = 5;
 
 export type BetterTerm = 'share' | 'recoup' | 'signing' | 'approval';
 
-const NOT_NEGOTIABLE = new Set(['starting', 'grant', 'agreed']);
+export const NOT_NEGOTIABLE = new Set(['starting', 'grant', 'agreed']);
 
 /** The better terms you could ask this backer for, each with what it would change. */
 export function betterTerms(d: FinanceDeal): { term: BetterTerm; label: string; change: string }[] {
@@ -48,27 +48,6 @@ export function leverage(state: GameState, p: Project, d: FinanceDeal): number {
 export function openOffer(state: GameState, p: Project, d: FinanceDeal): void {
   d.expiresAt = state.now + OFFER_OPEN_DAYS * DAY;
   schedule(state, d.expiresAt, 'finance-offer-lapse', { projectId: p.id, dealId: d.id }, { attention: 'notify', priority: 40 });
-}
-
-/** Why you can't ask this backer for better terms now, or null when you can. */
-export function askRefusal(state: GameState, d: FinanceDeal): string | null {
-  if (d.status !== 'offered') return 'That offer is no longer open.';
-  if (NOT_NEGOTIABLE.has(d.kind)) return d.kind === 'grant' ? "A grant's terms are the fund's rules; they aren't negotiated." : 'These terms were agreed when your story began.';
-  if (d.counter) return d.counter.outcome ? 'You have asked them once already.' : 'They are considering what you asked.';
-  if (d.expiresAt !== undefined && state.now + COUNTER_DAYS * DAY > d.expiresAt) return `There isn't time: they take ${COUNTER_DAYS} days to answer, and the offer lapses first.`;
-  return null;
-}
-
-/** Ask for one better term. They answer in COUNTER_DAYS; meanwhile the offer can't be accepted as it stands. */
-export function askForBetterTerms(state: GameState, p: Project, dealId: string, term: BetterTerm): void {
-  const d = deals(p).find((x) => x.id === dealId);
-  if (!d) throw new Error('That offer is no longer open.');
-  const why = askRefusal(state, d);
-  if (why) throw new Error(why);
-  if (!betterTerms(d).some((x) => x.term === term)) throw new Error("They don't offer that term, so there is nothing to ask.");
-  d.counter = { term, askedAt: state.now, answerAt: state.now + COUNTER_DAYS * DAY };
-  schedule(state, d.counter.answerAt, 'finance-counter', { projectId: p.id, dealId: d.id }, { attention: 'notify', priority: 40 });
-  addLog(state, `You asked the ${d.backer.toLowerCase()} for better terms on ${p.title}. They will answer in about ${COUNTER_DAYS} days.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
 }
 
 function apply(d: FinanceDeal, term: BetterTerm): void {

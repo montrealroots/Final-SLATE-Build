@@ -1,10 +1,11 @@
 // Stage 5 of the gameplay-depth package: asking a backer for better terms, and offers that lapse (SLATE-08-03.02, .03).
 import { describe, expect, it } from 'vitest';
 import {
-  COUNTER_DAYS, DAY, OFFER_OPEN_DAYS, acceptDeal, askForBetterTerms, askRefusal, backerOptions, betterTerms, leverage, processUntil,
+  COUNTER_DAYS, DAY, OFFER_OPEN_DAYS, acceptDeal, backerOptions, betterTerms, leverage, processUntil,
 } from '../src/engine';
 import { deserialize, serialize } from '../src/engine/save';
 import { openOffer } from '../src/engine/negotiation';
+import { askForBetterTerms, askRefusal } from '../src/engine/negotiation-actions';
 import { stream } from '../src/engine/rng';
 import type { FinanceDeal, GameState, Project } from '../src/engine/types';
 import { approve, buildProject, startLife, writePitch } from './helpers';

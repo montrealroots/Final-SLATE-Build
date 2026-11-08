@@ -3,7 +3,7 @@ import { languageName } from '../data/identity';
 import { getPlace } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
 import {
-  BACKERS, EXPERIENCE, askForBetterTerms, askRefusal, betterTerms, COUNTER_DAYS, type BetterTerm, assignEpisodeRole, backerDocuments, costCuts, type CostCut, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
+  BACKERS, EXPERIENCE, betterTerms, COUNTER_DAYS, type BetterTerm, assignEpisodeRole, backerDocuments, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
@@ -13,6 +13,8 @@ import { breakdownComplete, characterPronouns, pronounsMatch } from '../engine/s
 import { AUDITION_NOTICE_DAYS, auditionsFor, callBack, chemistryPartners, inviteRefusal, inviteToAudition, setShortlisted } from '../engine/casting-calls';
 import { chemistryWords, qualityWords } from '../engine';
 import { callSheet } from '../engine/callsheet';
+import { costCuts, type CostCut } from '../engine/cost-cuts';
+import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, chooseSite, scoutedPlaces, site } from '../engine/locations';
 import { dayFees } from '../engine';
 import type { Audition, FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';

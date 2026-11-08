@@ -1,6 +1,7 @@
 // SLATE-03-03.02 and 08-05.03: ways to cost less, each with the saving the engine's own estimate gives for it.
 import { describe, expect, it } from 'vitest';
-import { costCuts, deleteScene, projectedCost } from './engine-api';
+import { deleteScene, projectedCost } from './engine-api';
+import { costCuts } from '../src/engine/cost-cuts';
 import { approve, buildProject, startLife } from './helpers';
 
 function script(tag: string, scenario = 'low') {
