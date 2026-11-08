@@ -4,10 +4,10 @@ import { getPlace, placeLabel } from '../data/places';
 import {
   FORMAT_LABELS, FUNDING_SCENARIOS, dateKey, deals, financeSummary, formatDateKey, GENRES, MEDIUM_LABELS, MODULE_LABELS, TECHNIQUE_LABELS, approvalRights, composeGenres, createProject, genre,
   genreCategory, hasTrackRecord, isEpisodic, isNonfiction, ledgerTotals, money, projectGenreLabel, projectModules, qualityWords, scriptIssues,
-  searchGenres, type ModuleId,
+  resumeProject, searchGenres, shelveImpact, shelveProject, type ModuleId,
 } from '../engine';
 import type { Format, Medium, Project, Technique } from '../engine/types';
-import { Check, Field, NumberField, PageHead, SectionNav, SelectField, TextField, longLocal, plural } from './components';
+import { Check, Field, Modal, NumberField, PageHead, SectionNav, SelectField, TextField, longLocal, plural } from './components';
 import { PlacePicker } from './Creation';
 import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
@@ -32,7 +32,7 @@ export function ProjectsList() {
               <section key={p.id} className="card">
                 <h2><button className="btn btn-ghost" style={{ fontSize: 'inherit', padding: 0 }} onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'overview' })}>{p.title}</button></h2>
                 <p className="muted">{FORMAT_LABELS[p.axes.format]} · {MEDIUM_LABELS[p.axes.medium]}{p.axes.technique !== 'none' ? ` · ${TECHNIQUE_LABELS[p.axes.technique]}` : ''}</p>
-                <p><span className="chip">{PHASES[p.phase]}</span></p>
+                <p><span className="chip">{PHASES[p.phase]}</span>{p.shelved ? <> <span className="chip">Shelved</span></> : null}</p>
                 {p.axes.genres.length > 0 && <p className="dim">{projectGenreLabel(p)}</p>}
               </section>
             ))}
@@ -282,13 +282,31 @@ function Overview({ p }: { p: Project }) {
   const mods = [...projectModules(p)] as ModuleId[];
   const issues = scriptIssues(p);
   const ns = nextStep(p);
+  const [shelving, setShelving] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
   return (
     <div className="card-grid">
+      {shelving && (
+        <Modal title="Shelve The Project" onClose={() => setShelving(false)} footer={<><button className="btn" onClick={() => setShelving(false)}>Keep Working On It</button><button className="btn btn-danger" onClick={() => { setErr(store.act((s) => shelveProject(s, p))); setShelving(false); }}>Shelve The Project</button></>}>
+          <ul>{shelveImpact(g, p).map((x) => <li key={x}>{x}</li>)}</ul>
+        </Modal>
+      )}
+      {p.shelved ? (
+        <section className="card">
+          <h2>Shelved</h2>
+          <p>You shelved this project on {longLocal(p.shelved.at, getPlace(g.locationId).zone).date}. Its people were released and its shoot days cancelled; what you agreed with backers still stands.</p>
+          <button className="btn btn-primary" onClick={() => setErr(store.act((s) => resumeProject(s, p)))}>Take It Up Again</button>
+          {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+        </section>
+      ) : (
       <section className="card">
         <h2>Next Step</h2>
         <p>{ns.text}</p>
         <button className="btn btn-primary" onClick={() => { store.route = { ...store.route, tab: ns.tab }; store.emit(); }}>Open {TABS.find((x) => x.id === ns.tab)?.label}</button>
+        {!p.delivered && <p style={{ marginTop: 'var(--s3)' }}><button className="btn btn-sm" onClick={() => setShelving(true)}>Shelve The Project</button></p>}
+        {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       </section>
+      )}
       <section className="card">
         <h2>Project</h2>
         <dl className="kv">

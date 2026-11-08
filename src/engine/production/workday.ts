@@ -90,7 +90,7 @@ export function puppetStatus(p: Project, characterId: string): string {
 
 registerHandler('work-day', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
-  if (!p || p.delivered) return { suppressInterrupt: true };
+  if (!p || p.delivered || p.shelved) return { suppressInterrupt: true };
   const date = ev.payload.date as string;
   runWorkDay(state, p, date);
   // Chain the next working day while unfinished work remains.

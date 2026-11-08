@@ -23,3 +23,6 @@ export * from './observances';
 export * from './script-effects';
 export * from './estimate';
 export * from './identity';
+export * from './shelve';
+export * from './structure';
+export * from './research';

@@ -1,0 +1,230 @@
+child_id,parent_id,requirement,status,evidence,remaining_gap
+SLATE-01-01.01,SLATE-01-01,"Enter first, middle and last name, preferred name and pronouns; the acting title follows the pronouns",VERIFIED EXISTING,tests/identity.test.ts::credits carry the legal name | tests/creation.test.ts::pronouns settle the billing,
+SLATE-01-01.02,SLATE-01-01,A missing or invalid entry keeps every other entry and names what to fix,VERIFIED EXISTING,e2e/creation.spec.ts::a step with something missing says what | tests/creation.test.ts::every validation problem points at the screen,
+SLATE-01-01.03,SLATE-01-01,"The legal name carries into credits; the preferred name into Home, the rail, Profile and saves",VERIFIED EXISTING,"tests/identity.test.ts::credits carry the legal name | e2e/identity.spec.ts::a preferred name, a headshot and a citizenship",
+SLATE-01-01.04,SLATE-01-01,"Everything entered survives save, reload and older saves",VERIFIED EXISTING,tests/creation.test.ts::everything entered survives a save and reopen | tests/identity.test.ts::a version 5 save gets its name in parts,
+SLATE-01-02.01,SLATE-01-02,"Several ethnicities and several nationalities, at least one of each",VERIFIED EXISTING,tests/identity.test.ts::Ethnicity offers peoples and the broad groups | e2e/creation.spec.ts::ethnicity and nationality are both asked,
+SLATE-01-02.02,SLATE-01-02,"A main language and others with a proficiency; suggestions are marked, never chosen for you",VERIFIED EXISTING,e2e/creation.spec.ts::backgrounds drive the game | tests/identity.test.ts::a nationality suggests what its word did,
+SLATE-01-02.03,SLATE-01-02,A duplicate or blank entry in your own words is refused with a reason,VERIFIED,e2e/creation.spec.ts::an ethnicity in your own words: blank or repeated is refused,
+SLATE-01-02.04,SLATE-01-02,Languages decide coaching and casting fit; heritage informs casting and never scores,VERIFIED EXISTING,tests/heritage.test.ts::a performer from the pool | tests/identity.test.ts::casting a Cuban woman,
+SLATE-01-02.05,SLATE-01-02,Saves and drafts from before the split convert without loss,VERIFIED EXISTING,tests/identity.test.ts::a version 6 save: nationality words become countries | tests/creation.test.ts::a draft from before nationality was asked,
+SLATE-01-03.01,SLATE-01-03,"Birthplace, where you live, birth date and a start from 2026 (default) to 2050 with a time; at least 19 that day",VERIFIED EXISTING,tests/dates.test.ts::you must be at least 19 on the starting date | e2e/creation.spec.ts::Starting Point: featured cities A to Z,"Owner decision of November 8, 2026 widened the package's 2026-only start to 2026-2050"
+SLATE-01-03.02,SLATE-01-03,"Local context before confirming: zone, date and time in words, population, the chosen place on the map",VERIFIED EXISTING,e2e/creation.spec.ts::Starting Point: featured cities A to Z,
+SLATE-01-03.03,SLATE-01-03,The life starts at the chosen local time and zone; birthdays and holidays follow it,VERIFIED EXISTING,tests/foundation.test.ts::starts the life at the chosen local time | tests/foundation.test.ts::a whole simulated year fires each birthday,
+SLATE-01-03.04,SLATE-01-03,"Impossible dates and unavailable places block starting, with editing and Try Again",VERIFIED EXISTING,tests/dates.test.ts::creation refuses impossible birth and start dates | e2e/world.spec.ts::a failed place load offers Try Again,
+SLATE-01-04.01,SLATE-01-04,"Screenwriter, producer, director and actor or actress from the start",VERIFIED EXISTING,"e2e/careers.spec.ts::writing, producing and directing without acting",
+SLATE-01-04.02,SLATE-01-04,Acting is chosen per project; no acting means no acting credit,VERIFIED EXISTING,tests/journeys.test.ts::the player behind the camera only gets no acting credit,
+SLATE-01-04.03,SLATE-01-04,Credits follow the work actually done,VERIFIED EXISTING,tests/journeys.test.ts::runs from script to delivery,
+SLATE-01-04.04,SLATE-01-04,Acting on a day you also direct is a visible constraint on that day,VERIFIED,tests/schedule.test.ts::a day you act on is marked,
+SLATE-01-04.05,SLATE-01-04,Handing writing or directing of an episode to someone else keeps your authorship of work already done,VERIFIED,tests/handover.test.ts::a writer replaced after their draft was approved | tests/handover.test.ts::a director replaced after a day of their episode was shot,
+SLATE-01-05.01,SLATE-01-05,The draft is saved as you go and reopens on the same step,VERIFIED EXISTING,e2e/creation.spec.ts::a reload in the middle of creation reopens the same step,
+SLATE-01-05.02,SLATE-01-05,Each Review card edits its step and returns to Review,VERIFIED EXISTING,e2e/creation.spec.ts::each Review edit goes to the step it names,
+SLATE-01-05.03,SLATE-01-05,Start My Story with something missing goes to that step,VERIFIED EXISTING,e2e/creation.spec.ts::Start My Story with something missing goes to that step,
+SLATE-01-05.04,SLATE-01-05,"Starting twice (double press, two tabs) creates one life, and the draft becomes the save",VERIFIED,e2e/creation.spec.ts::pressing Start My Story twice starts one life,
+SLATE-02-01.01,SLATE-02-01,One real second is one game second while visible,VERIFIED EXISTING,tests/foundation.test.ts::60 s of measured real time gives 60 game seconds,
+SLATE-02-01.02,SLATE-02-01,Hidden tabs and suspension stop the clock with no catch-up,VERIFIED EXISTING,tests/foundation.test.ts::suspension stops accumulation and resume does not catch up | e2e/viewports.spec.ts::the clock runs 1:1 while visible,
+SLATE-02-01.03,SLATE-02-01,A second tab cannot run the same save,VERIFIED EXISTING,tests/foundation.test.ts::only one live tab may run a save | e2e/viewports.spec.ts::a second tab opens the same save read-only,
+SLATE-02-01.04,SLATE-02-01,Closing and reopening continues at the saved instant,VERIFIED EXISTING,e2e/viewports.spec.ts::reloading the page and continuing at once,
+SLATE-02-02.01,SLATE-02-02,Advance by a duration or to the next event; Sleep to an alarm,VERIFIED EXISTING,tests/foundation.test.ts::Advance stops at a reminder,
+SLATE-02-02.02,SLATE-02-02,Sleep wakes for obligations by default; snoozing past one misses it,VERIFIED EXISTING,tests/foundation.test.ts::sleep wakes for obligations by default,
+SLATE-02-02.03,SLATE-02-02,A failed event batch rolls back and runs exactly once after the fault,VERIFIED EXISTING,tests/processing.test.ts::rolls the batch back | e2e/failures.spec.ts::a failure while time passes pauses time,
+SLATE-02-02.04,SLATE-02-02,"Before advancing, the commitments the advance will pass are listed",VERIFIED,e2e/viewports.spec.ts::Advance lists the plans it will pass,
+SLATE-02-02.05,SLATE-02-02,There is no manual pause control,VERIFIED,e2e/viewports.spec.ts::there is nothing to pause the clock with,
+SLATE-02-03.01,SLATE-02-03,"Find any country or territory, region and place",VERIFIED EXISTING,tests/gazetteer.test.ts::lists every entry | e2e/world.spec.ts::a life can start anywhere in the world,
+SLATE-02-03.02,SLATE-02-03,"A place shows its zone, climate source and holidays",VERIFIED EXISTING,e2e/world.spec.ts::a place says where its climate comes from,
+SLATE-02-03.03,SLATE-02-03,Travel takes time by distance; an arrival too late is refused with the reason,VERIFIED EXISTING,tests/season.test.ts::invites with a reply deadline; travel must arrive in time,
+SLATE-02-03.04,SLATE-02-03,"A place that cannot be loaded is named, with Try Again",VERIFIED EXISTING,tests/gazetteer.test.ts::retries a failed load | e2e/failures.spec.ts::holiday dates and the map that fail to load are explained,
+SLATE-02-04.01,SLATE-02-04,"A forecast for the coming days, reproducible, true on the day",VERIFIED EXISTING,tests/foundation.test.ts::forecasts are reproducible,
+SLATE-02-04.02,SLATE-02-04,"Weather differs by place, season and hemisphere",VERIFIED EXISTING,"tests/foundation.test.ts::is deterministic, bounded and seasonal by hemisphere",
+SLATE-02-04.03,SLATE-02-04,"A wet exterior day can be swapped with an interior day, shot anyway or moved",VERIFIED,tests/schedule.test.ts::swaps dates with the next interior day | tests/schedule.test.ts::shooting anyway is recorded on the day,
+SLATE-02-04.04,SLATE-02-04,"A moved day keeps its costs, bookings and history",VERIFIED EXISTING,tests/schedule.test.ts::moves a day to the first free working day,
+SLATE-02-04.05,SLATE-02-04,Night and day scenes respect daylight at the place and date,VERIFIED,tests/schedule.test.ts::polar night an exterior day scene is not shot,
+SLATE-02-05.01,SLATE-02-05,Plans with reminders; Advance stops at a reminder,VERIFIED EXISTING,e2e/screenings.spec.ts::the 30-minute reminder,
+SLATE-02-05.02,SLATE-02-05,"Invitations are accepted, declined or expire; decisions keep their consequences",VERIFIED EXISTING,tests/season.test.ts::invites with a reply deadline | e2e/screenings.spec.ts::declining keeps the selection,
+SLATE-02-05.03,SLATE-02-05,Conflicts name the commitment in the way,VERIFIED EXISTING,tests/schedule.test.ts::refuses when someone needed on set is busy,
+SLATE-02-05.04,SLATE-02-05,"Event buttons say what they do (Travel To The Venue, Accept Invitation)",VERIFIED EXISTING,"e2e/screenings.spec.ts::accept, travel to the venue",
+SLATE-02-05.05,SLATE-02-05,"Birthdays, kept holidays and project days share the calendar",VERIFIED EXISTING,tests/foundation.test.ts::a whole simulated year fires each birthday | e2e/creation.spec.ts::Home says so on the second day,
+SLATE-03-01.01,SLATE-03-01,"Format, basis, medium and technique chosen separately",VERIFIED EXISTING,"tests/media.test.ts::follows boards, animatic, voice and animation dependencies",
+SLATE-03-01.02,SLATE-03-01,Each combination routes to its own production,VERIFIED EXISTING,e2e/journeys.spec.ts::hybrid: a live-action scene and a 3D scene share one production | e2e/journeys.spec.ts::stop motion to delivery,
+SLATE-03-01.03,SLATE-03-01,An unsupported combination says why and is not converted,IMPLEMENTED UNVERIFIED,,validateAxes refuses with a message; no test
+SLATE-03-02.01,SLATE-03-02,"Title, several genres, tone, setting, audience and dialogue languages",VERIFIED EXISTING,tests/genres.test.ts::composes shared mechanics once,
+SLATE-03-02.02,SLATE-03-02,Genres raise their questions and requirements,VERIFIED EXISTING,tests/genres.test.ts::every entry reaches a consumer,
+SLATE-03-02.03,SLATE-03-02,A genre never grants prestige or quality by itself,VERIFIED EXISTING,"tests/genres.test.ts::genres route to award and festival categories by rule, not prestige",
+SLATE-03-03.01,SLATE-03-03,"Runtime, scenes, cast and technique drive the estimate",VERIFIED EXISTING,tests/tight-budget.test.ts::follows what the script needs,
+SLATE-03-03.02,SLATE-03-03,An estimate over what can be raised offers concrete ways to cut cost,VERIFIED,tests/cost-cuts.test.ts::lists cuts with their savings | tests/cost-cuts.test.ts::the saving shown is what the estimate really drops by,
+SLATE-03-04.01,SLATE-03-04,"Create, save and reopen a project by a stable ID",VERIFIED EXISTING,tests/journeys.test.ts::runs from script to delivery,
+SLATE-03-04.02,SLATE-03-04,Shelving or cancelling a project settles its commitments and keeps its history,VERIFIED,tests/shelve.test.ts::says what it will do; then releases people | tests/shelve.test.ts::refuses changes and hiring until it is taken up again | e2e/structure.spec.ts::a project shelved and taken up again,
+SLATE-03-04.03,SLATE-03-04,Projects with the same title stay distinguishable,IMPLEMENTED UNVERIFIED,,IDs differ; the list shows only titles
+SLATE-03-05.01,SLATE-03-05,"The stages a project will go through, and what each needs, are shown before development",IMPLEMENTED UNVERIFIED,,projectModules drives the tabs; no test of the explanation
+SLATE-03-05.02,SLATE-03-05,No inert control appears as implemented,VERIFIED EXISTING,"e2e/viewports.spec.ts::no tutorial, no excluded systems",
+SLATE-04-01.01,SLATE-04-01,"Premise, logline, question, stakes, theme and intended experience, revised freely",VERIFIED EXISTING,tests/screenwriting.test.ts::filling every text field with anything moves the score only a little,
+SLATE-04-01.02,SLATE-04-01,Completeness is checked; prose is never judged,VERIFIED EXISTING,tests/screenwriting.test.ts::nothing is guessed from prose,
+SLATE-04-02.01,SLATE-04-02,Turning points per scene and a declared nonlinear structure,VERIFIED EXISTING,"tests/script-effects.test.ts::a nonlinear structure (payoff shown first, marked deliberate)",
+SLATE-04-02.02,SLATE-04-02,"Acts or sequences group scenes, and story threads connect scenes and characters",VERIFIED,"tests/structure.test.ts::group scenes; an empty act is noted | tests/structure.test.ts::deleting the resolving scene names what broke | e2e/structure.spec.ts::acts, threads, research and arcs kept",
+SLATE-04-02.03,SLATE-04-02,A thread left open on purpose is a valid choice,VERIFIED,tests/structure.test.ts::either way is valid and only an unchosen one is noted,
+SLATE-04-03.01,SLATE-04-03,"Declare a setup, where it is planted and where it pays off",VERIFIED EXISTING,"e2e/script-rules.spec.ts::a supporting antagonist, an incomplete pitch",
+SLATE-04-03.02,SLATE-04-03,Cutting a planting scene warns the payoff loses its setup,VERIFIED EXISTING,tests/script-effects.test.ts::cutting a scene that plants a clue,
+SLATE-04-03.03,SLATE-04-03,Restore the scene or move the setup,VERIFIED EXISTING,e2e/script-rules.spec.ts::an essential scene cut then picked up,
+SLATE-04-04.01,SLATE-04-04,Documentary claims carry a source note and a checked status,VERIFIED EXISTING,tests/unscripted.test.ts::factual shows need claims to check,
+SLATE-04-04.02,SLATE-04-04,"Fiction research questions and references, marked reviewed or uncertain",VERIFIED,tests/structure.test.ts::note open and uncertain questions on their scenes,
+SLATE-04-05.01,SLATE-04-05,"Outline, treatment, pitch and statement; what is missing is named by field",VERIFIED EXISTING,tests/script-effects.test.ts::a grant application names the documents and fields it still needs,
+SLATE-04-05.02,SLATE-04-05,A backer receives the documents as they were when sent; later edits do not change what was sent,VERIFIED,tests/finance.test.ts::keeps each document word for word with the approved draft,
+SLATE-05-01.01,SLATE-05-01,"Name, pronouns, age in story, description and background",VERIFIED EXISTING,tests/identity.test.ts::casting a Cuban woman,
+SLATE-05-01.02,SLATE-05-01,Aliases,VERIFIED,tests/scenes.test.ts::renaming changes the name everywhere,
+SLATE-05-01.03,SLATE-05-01,Renaming keeps every link by ID and the history,VERIFIED,"tests/scenes.test.ts::every scene, line and setup still points at the same ID",
+SLATE-05-02.01,SLATE-05-02,"Size, several functions and award placement chosen separately",VERIFIED EXISTING,tests/script-effects.test.ts::a supporting antagonist stays supporting,
+SLATE-05-02.02,SLATE-05-02,"Award entries follow placement and organizer rules, never the story function",VERIFIED EXISTING,tests/script-effects.test.ts::in a real entry: the antagonist is offered for supporting,
+SLATE-05-03.01,SLATE-05-03,"Being type and performance methods drive the work (voice, capture, puppet, creature)",VERIFIED EXISTING,tests/media.test.ts::cannot animate before rigs exist | tests/lunar-mocap.test.ts::capture sessions feed animation,
+SLATE-05-03.02,SLATE-05-03,One method never fulfils another (a voice session is not capture),IMPLEMENTED UNVERIFIED,,Separate tasks exist; no test asserts it
+SLATE-05-04.01,SLATE-05-04,Wants and fears per character; directed relationships between characters,IMPLEMENTED UNVERIFIED,,Fields and editor exist; no test
+SLATE-05-04.02,SLATE-05-04,Arc beats tied to scenes,VERIFIED,tests/structure.test.ts::a beat goes only in a scene the character is in,
+SLATE-05-04.03,SLATE-05-04,Removing a character previews dependent scenes and relationships first,VERIFIED,tests/scenes.test.ts::removing a character lists the scenes that use them,
+SLATE-05-05.01,SLATE-05-05,Scenes and episodes a character appears in drive casting days and credits,VERIFIED EXISTING,tests/script-effects.test.ts::series regulars are booked for every episode,
+SLATE-05-05.02,SLATE-05-05,"A character in no scene creates no booking, fee or credit",IMPLEMENTED UNVERIFIED,,neededRoles skips them; no test
+SLATE-06-01.01,SLATE-06-01,"Episode, place, interior or exterior, time of day, participants and length",VERIFIED EXISTING,tests/media.test.ts::produces episodes with episode-specific credits,
+SLATE-06-01.02,SLATE-06-01,Impossible or missing combinations give an actionable message,VERIFIED EXISTING,tests/screenwriting.test.ts::a readiness check counts only once revised,
+SLATE-06-02.01,SLATE-06-02,Action and dialogue with speakers and languages,VERIFIED EXISTING,tests/script-effects.test.ts::subtitles are priced by runtime for each language,
+SLATE-06-02.02,SLATE-06-02,Length is not quality,VERIFIED EXISTING,tests/script-effects.test.ts::meaningless text manufactures no quality,
+SLATE-06-02.03,SLATE-06-02,A line whose speaker is no longer in the scene asks for repair,IMPLEMENTED UNVERIFIED,,scriptIssues reports it; no test
+SLATE-06-03.01,SLATE-06-03,"Props, crowd, animals, stunts, intimacy, music, vehicles and effects declared per scene",VERIFIED EXISTING,tests/screenwriting.test.ts::the same scene with and without a stunt,
+SLATE-06-03.02,SLATE-06-03,Removing a requirement previews the bookings and assets it strands,VERIFIED,tests/scenes.test.ts::names the requirement and whoever is booked only for it,
+SLATE-06-04.01,SLATE-06-04,Insert and reorder scenes,VERIFIED EXISTING,e2e/careers.spec.ts::an approved scene changed after filming,
+SLATE-06-04.02,SLATE-06-04,"Duplicate a scene (new ID), split one in two, combine two, remapping links explicitly",VERIFIED,"tests/scenes.test.ts::makes a new scene with its own ID | tests/scenes.test.ts::splits before a line | tests/scenes.test.ts::folds a scene into another | e2e/structure.spec.ts::scenes duplicated, split and combined",
+SLATE-06-04.03,SLATE-06-04,Cut from the edit and restore,VERIFIED EXISTING,tests/script-effects.test.ts::missing footage names the scene and the choices,
+SLATE-06-05.01,SLATE-06-05,"Save a draft, compare, restore; the working copy stays separate",VERIFIED EXISTING,"tests/writing.test.ts::compares drafts, restores an earlier one",
+SLATE-06-05.02,SLATE-06-05,Re-approving after filming keeps unchanged scenes and redoes only changed ones,VERIFIED EXISTING,tests/writing.test.ts::re-approving after filming keeps unchanged scenes | e2e/careers.spec.ts::an approved scene changed after filming,
+SLATE-06-05.03,SLATE-06-05,Repeated revision earns nothing,VERIFIED EXISTING,tests/screenwriting.test.ts::your own notes and repeated revision passes add nothing,
+SLATE-07-01.01,SLATE-07-01,World rules and relationships shared across episodes,IMPLEMENTED UNVERIFIED,,worldRules and relationships exist; no series-bible test
+SLATE-07-01.02,SLATE-07-01,Changing a shared fact previews the episodes it touches,MISSING,,No preview
+SLATE-07-02.01,SLATE-07-02,Episodes with titles and scenes; work and credits per episode,VERIFIED EXISTING,tests/media.test.ts::produces episodes with episode-specific credits,
+SLATE-07-02.02,SLATE-07-02,A season arc and episode order,MISSING,,Episodes are numbered; no season arc or reordering
+SLATE-07-02.03,SLATE-07-02,"The estimate covers every episode, not one",IMPLEMENTED UNVERIFIED,,scriptEstimate sums scenes across episodes; no test
+SLATE-07-03.01,SLATE-07-03,"Regulars, recurring parts and guests booked for the episodes they appear in",VERIFIED EXISTING,tests/script-effects.test.ts::series regulars are booked for every episode | e2e/careers.spec.ts::a TV season: a regular and a guest,
+SLATE-07-03.02,SLATE-07-03,Episode credits follow appearances and work,VERIFIED EXISTING,"e2e/journeys.spec.ts::TV limited series: episodes, a guest role and episode-level credits",
+SLATE-07-04.01,SLATE-07-04,Each episode names its writer and director,IMPLEMENTED UNVERIFIED,,Stored; no test or handover
+SLATE-07-04.02,SLATE-07-04,Block scheduling of episodes sharing sets and locations,MISSING,,Days are planned per episode in order
+SLATE-07-05.01,SLATE-07-05,Deliver the season with per-episode credits,VERIFIED EXISTING,e2e/careers.spec.ts::per-episode credits,
+SLATE-07-05.02,SLATE-07-05,A commissioner renews or cancels; a renewal starts a new season with returning cast and new contracts,MISSING,,No renewal or next season
+SLATE-08-01.01,SLATE-08-01,"The estimate by category with contingency, separate from money in hand",VERIFIED EXISTING,tests/finance.test.ts::a new project has an estimate and a target,
+SLATE-08-01.02,SLATE-08-01,"A line with no available candidate is flagged as uncertain, never free",IMPLEMENTED UNVERIFIED,,projectedCost prices roles by rate; no test for a role with no candidate
+SLATE-08-02.01,SLATE-08-02,Each backer says what it needs; send; an answer after some days,VERIFIED EXISTING,tests/finance.test.ts::each backer says what it needs | tests/finance.test.ts::a grant and an investor answer after some days,
+SLATE-08-02.02,SLATE-08-02,A refusal says why and leaves other backers open,VERIFIED EXISTING,"e2e/first-project.spec.ts::a refusal, the agreed backing",
+SLATE-08-03.01,SLATE-08-03,"Terms: amount, timing, recoupment, share, approvals, credit; accept or refuse",VERIFIED EXISTING,tests/finance.test.ts::a commissioner pays most on signing | tests/finance.test.ts::a co-producer only joins a backed project,
+SLATE-08-03.02,SLATE-08-03,An offer that has expired cannot be accepted,IMPLEMENTED UNVERIFIED,,No expiry on finance offers is tested
+SLATE-08-03.03,SLATE-08-03,Negotiating a backer's terms,MISSING,,Finance terms are take-or-leave
+SLATE-08-04.01,SLATE-08-04,"Reserved, committed, settled and cancelled amounts by line, from postings",VERIFIED EXISTING,"tests/ledger.test.ts::settle rejects malformed amounts, pays once per key",
+SLATE-08-04.02,SLATE-08-04,"No negative, NaN or duplicate payments; a failed action charges nothing",VERIFIED EXISTING,"tests/ledger.test.ts::commit rejects NaN | tests/processing.test.ts::restores deep changes to projects, ledgers",
+SLATE-08-05.01,SLATE-08-05,A shortfall stops spending with the exact amount; more backing resumes it,VERIFIED EXISTING,e2e/careers.spec.ts::stop motion: refused for lack of money,
+SLATE-08-05.02,SLATE-08-05,"Income repays backers in order, then shares",VERIFIED EXISTING,tests/finance.test.ts::income repays backers first,
+SLATE-08-05.03,SLATE-08-05,Compare cutting scope against postponing or raising more,VERIFIED,tests/cost-cuts.test.ts::the saving shown is what the estimate really drops by,
+SLATE-09-01.01,SLATE-09-01,"Candidates with rates, languages, playing age, availability and shared background",VERIFIED EXISTING,tests/identity.test.ts::casting a Cuban woman,
+SLATE-09-01.02,SLATE-09-01,A performer booked elsewhere is shown as unavailable with the dates,VERIFIED EXISTING,e2e/careers.spec.ts::an offer to a performer booked elsewhere is turned down,
+SLATE-09-02.01,SLATE-09-02,"Invite to audition, schedule it, see the read, shortlist",MISSING,,No auditions
+SLATE-09-02.02,SLATE-09-02,Callbacks and chemistry reads,MISSING,,No auditions
+SLATE-09-02.03,SLATE-09-02,A missed or declined audition leaves the others; background casting skips auditions,MISSING,,No auditions
+SLATE-09-03.01,SLATE-09-03,"Offer, then acceptance, refusal or counteroffer",VERIFIED EXISTING,e2e/careers.spec.ts::an offer to a performer booked elsewhere is turned down,
+SLATE-09-03.02,SLATE-09-03,A booking reserves the dates and the money together; no double booking,VERIFIED EXISTING,tests/schedule.test.ts::refuses when someone needed on set is busy,
+SLATE-09-03.03,SLATE-09-03,An unanswered offer lapses and releases what it held,IMPLEMENTED UNVERIFIED,,Offers resolve by responseAt; no test of a lapse
+SLATE-09-04.01,SLATE-09-04,"Cast yourself or not, per part",VERIFIED EXISTING,e2e/live-action.spec.ts::cast yourself,
+SLATE-09-04.02,SLATE-09-04,A replaced performer keeps pay and credit for work that stays,VERIFIED EXISTING,tests/mocap-calendar.test.ts::keeps what they were paid,
+SLATE-09-05.01,SLATE-09-05,"Credits by part, method and episode",VERIFIED EXISTING,e2e/journeys.spec.ts::episode-level credits,
+SLATE-09-05.02,SLATE-09-05,Award entries name the people the organizer names,VERIFIED EXISTING,tests/rulebooks.test.ts::project awards name the credited people,
+SLATE-10-01.01,SLATE-10-01,Required crew derived from the work,VERIFIED EXISTING,tests/tight-budget.test.ts::staffing hires a required crew the money can pay,
+SLATE-10-01.02,SLATE-10-01,Each role says why it is needed,IMPLEMENTED UNVERIFIED,,Roles name their department; no test of the reason shown
+SLATE-10-01.03,SLATE-10-01,Unfilled required work stays blocked with the reason,VERIFIED EXISTING,tests/tight-budget.test.ts::a voice session it can no longer pay,
+SLATE-10-02.01,SLATE-10-02,"Compare experience, rate and availability",VERIFIED EXISTING,e2e/connected.spec.ts::a connected career,
+SLATE-10-02.02,SLATE-10-02,No candidate is an explicit gap,IMPLEMENTED UNVERIFIED,,Shown; no test
+SLATE-10-03.01,SLATE-10-03,"Offer, book and assign dates; declines release only their reservations",VERIFIED EXISTING,tests/tight-budget.test.ts::staffing hires a required crew,
+SLATE-10-04.01,SLATE-10-04,Combine compatible roles on small productions,VERIFIED EXISTING,"tests/tight-budget.test.ts::on a micro budget, one person takes the roles they can combine",
+SLATE-10-04.02,SLATE-10-04,A combined role works one task at a time,IMPLEMENTED UNVERIFIED,,teamFor assigns one task per worker per day; no test
+SLATE-10-05.01,SLATE-10-05,"Releasing someone keeps done work, pay owed and credit",VERIFIED EXISTING,tests/mocap-calendar.test.ts::still credited for the work that stays,
+SLATE-10-05.02,SLATE-10-05,A handover to a replacement mid-task,IMPLEMENTED UNVERIFIED,,releaseHire then a new hire; no test of the handover
+SLATE-11-01.01,SLATE-11-01,Approved scenes become a breakdown of requirements,VERIFIED EXISTING,"tests/genres.test.ts::requirements come from scenes, not labels",
+SLATE-11-01.02,SLATE-11-01,Readiness links each unresolved item,VERIFIED EXISTING,tests/genres.test.ts::its questions appear in readiness,
+SLATE-11-02.01,SLATE-11-02,Location scouting and permits as work with a cost,VERIFIED EXISTING,tests/production-golden.test.ts::fixed-seed production outcomes are unchanged,
+SLATE-11-02.02,SLATE-11-02,"Choose among scouted locations, keep a backup, lose one and fall back",MISSING,,One location per scene heading; no options or backup
+SLATE-11-03.01,SLATE-11-03,Assets with versions and readiness; a design change rebuilds only what depends on it,VERIFIED EXISTING,tests/media.test.ts::a design change reports its impact and rebuilds only affected work,
+SLATE-11-03.02,SLATE-11-03,Approve or reject a design before building,MISSING,,Designs are built when their task completes
+SLATE-11-03.03,SLATE-11-03,Damaged puppets are repaired,IMPLEMENTED UNVERIFIED,,maybePuppetDamage exists; no test
+SLATE-11-04.01,SLATE-11-04,"Rehearsal days, stunt and choreography rehearsal, storyboards and animatic as work",VERIFIED EXISTING,"tests/media.test.ts::follows boards, animatic, voice and animation dependencies",
+SLATE-11-04.02,SLATE-11-04,Preparation has a bounded effect,IMPLEMENTED UNVERIFIED,,Rehearsal days are capped; no test of the bound
+SLATE-11-05.01,SLATE-11-05,"Plan shoot days by availability, holidays and six-day weeks",VERIFIED EXISTING,tests/heritage.test.ts::its shoot days skip them,
+SLATE-11-05.02,SLATE-11-05,Move a day without paying twice,VERIFIED EXISTING,tests/schedule.test.ts::moves a day to the first free working day,
+SLATE-11-05.03,SLATE-11-05,"A call sheet for each day: who, where, when",MISSING,,Days list scenes and location; no call sheet
+SLATE-12-01.01,SLATE-12-01,A day runs only with the people it needs,VERIFIED EXISTING,tests/schedule.test.ts::refuses when someone needed on set is busy,
+SLATE-12-01.02,SLATE-12-01,"Missing people or gear: switch scenes, delay or cancel, with costs",IMPLEMENTED UNVERIFIED,,Partly via moveShootDay; no test of a missing-resource day
+SLATE-12-02.01,SLATE-12-02,A shoot day captures its scenes with coverage and quality,VERIFIED EXISTING,tests/journeys.test.ts::runs from script to delivery,
+SLATE-12-02.02,SLATE-12-02,"Setups, coverage choices and takes per scene",MISSING,,Capture is one result per scene
+SLATE-12-03.01,SLATE-12-03,"Review a take, ask for another, or move on, at a time cost",MISSING,,Takes exist only for motion capture
+SLATE-12-04.01,SLATE-12-04,Weather loses or compromises a day and the log says so,IMPLEMENTED UNVERIFIED,,runShootDay records lost and partial days; no test
+SLATE-12-04.02,SLATE-12-04,A failed day rolls back; completed work is kept,VERIFIED EXISTING,tests/processing.test.ts::rolls the batch back,
+SLATE-12-05.01,SLATE-12-05,Pickups are booked after the last shoot day and capture the missing scene,VERIFIED EXISTING,tests/script-effects.test.ts::is booked after the last scheduled shoot day,
+SLATE-13-01.01,SLATE-13-01,"Design, boards, animatic, layout, animation, cleanup and colour, composite",VERIFIED EXISTING,e2e/journeys.spec.ts::2D animation: deliver,
+SLATE-13-01.02,SLATE-13-01,A late change reworks only what depends on it,VERIFIED EXISTING,tests/media.test.ts::a design change reports its impact,
+SLATE-13-02.01,SLATE-13-02,"Model, rig, layout, animation, effects, lighting, render, composite",VERIFIED EXISTING,e2e/media.spec.ts::modeling and rigging before animation,
+SLATE-13-02.02,SLATE-13-02,Render capacity is finite; more nodes cost money,VERIFIED EXISTING,tests/media.test.ts::uses finite render capacity,
+SLATE-13-03.01,SLATE-13-03,"Puppets, sets, stages and frames; copies allow parallel stages",VERIFIED EXISTING,tests/media.test.ts::a puppet cannot serve two stages at once,
+SLATE-13-03.02,SLATE-13-03,Damage and repair,IMPLEMENTED UNVERIFIED,,See 11-03
+SLATE-13-04.01,SLATE-13-04,"Book sessions, record, retake, approve, clean up and retarget",VERIFIED EXISTING,tests/lunar-mocap.test.ts::a changed take resets cleanup,
+SLATE-13-04.02,SLATE-13-04,"A session the studio cannot be paid for waits, with the reason",VERIFIED EXISTING,tests/tight-budget.test.ts::a voice session it can no longer pay,
+SLATE-13-04.03,SLATE-13-04,A missed session is rebooked,IMPLEMENTED UNVERIFIED,,rebookMissed exists; no test
+SLATE-13-05.01,SLATE-13-05,Plates and digital scenes in one production; plate integration,VERIFIED EXISTING,tests/media.test.ts::shoots live scenes and animates the rest,
+SLATE-13-05.02,SLATE-13-05,A changed plate flags its integration task and cost,IMPLEMENTED UNVERIFIED,,Change orders exist; no test for plates
+SLATE-14-01.01,SLATE-14-01,Research and access planning; contributors and archives,VERIFIED EXISTING,e2e/media.spec.ts::documentary through the UI,
+SLATE-14-01.02,SLATE-14-01,A refusal says what it affects and offers alternatives,VERIFIED EXISTING,e2e/journeys.spec.ts::a contributor who declines is told apart,
+SLATE-14-02.01,SLATE-14-02,"Ask for consent; given, declined or withdrawn",VERIFIED EXISTING,"tests/media.test.ts::uses contributors, consent and fact checks",
+SLATE-14-02.02,SLATE-14-02,"Restrictions on use (no face, no name, approval of use) carried into the edit",MISSING,,Consent is all-or-nothing
+SLATE-14-02.03,SLATE-14-02,"Withdrawal before filming adds no redaction; after filming, redaction work",VERIFIED EXISTING,tests/unscripted.test.ts::before the shoot there is nothing to redact,
+SLATE-14-03.01,SLATE-14-03,Interviews and actuality captured; claims checked,VERIFIED EXISTING,e2e/journeys.spec.ts::documentary: consent and fact checks gate delivery,
+SLATE-14-04.01,SLATE-14-04,Format rules per family; deterministic competition rounds,VERIFIED EXISTING,"tests/unscripted.test.ts::competition: deterministic, stored rounds",
+SLATE-14-05.01,SLATE-14-05,"Unchecked claims and unresolved withdrawals block delivery, with the way out",VERIFIED EXISTING,tests/unscripted.test.ts::factual shows need claims to check,
+SLATE-15-01.01,SLATE-15-01,Assembly only from captured material; gaps named,VERIFIED EXISTING,tests/script-effects.test.ts::missing footage names the scene,
+SLATE-15-02.01,SLATE-15-02,"Cut, restore and the essential-scene warnings",VERIFIED EXISTING,e2e/script-rules.spec.ts::an essential scene cut then picked up,
+SLATE-15-03.01,SLATE-15-03,Pickups with cost and dates,VERIFIED EXISTING,tests/script-effects.test.ts::is booked after the last scheduled shoot day,
+SLATE-15-03.02,SLATE-15-03,Replacement voice or effects revisions as additional work,MISSING,,Only pickups
+SLATE-15-04.01,SLATE-15-04,"Sound, music, effects, colour, mix and captions as dependent work",VERIFIED EXISTING,tests/journeys.test.ts::runs from script to delivery,
+SLATE-15-04.02,SLATE-15-04,Dialogue edit with ADR and Foley as their own work,MISSING,,post:sound covers them as one task
+SLATE-15-04.03,SLATE-15-04,Unlocking the picture reopens the finishing work it affects,IMPLEMENTED UNVERIFIED,,unlockPicture exists; no test
+SLATE-15-05.01,SLATE-15-05,Delivery checks name what is missing,VERIFIED EXISTING,tests/script-effects.test.ts::a shoot day left empty by a cut is cancelled,
+SLATE-15-05.02,SLATE-15-05,A broadcast edit as a separate deliverable,VERIFIED EXISTING,e2e/script-rules.spec.ts::what the broadcaster offers,
+SLATE-15-05.03,SLATE-15-05,Festival and distribution versions with their own runtime and credits,MISSING,,One delivered version plus the broadcast edit
+SLATE-16-01.01,SLATE-16-01,Choose a route and date,VERIFIED EXISTING,tests/release.test.ts::a contracted release happens on its date,
+SLATE-16-01.02,SLATE-16-01,Territories and exclusivity compared before accepting,MISSING,,Offers list territories; no exclusivity conflict
+SLATE-16-02.01,SLATE-16-02,Accept or decline; delivery materials reserved; cancellation terms,VERIFIED EXISTING,tests/release.test.ts::accepting reserves delivery materials,
+SLATE-16-03.01,SLATE-16-03,Declared content sets outlet conditions; late slot or broadcast edit,VERIFIED EXISTING,tests/script-effects.test.ts::strong content still gets a broadcast offer,
+SLATE-16-04.01,SLATE-16-04,Income arrives once and repays backers in order,VERIFIED EXISTING,tests/finance.test.ts::income repays backers first,
+SLATE-16-04.02,SLATE-16-04,Reported earnings shown apart from money received,MISSING,,One revenue figure
+SLATE-16-05.01,SLATE-16-05,Later windows and territories after the first release,MISSING,,"One release per offer, no later windows"
+SLATE-17-01.01,SLATE-17-01,"Editions per year with their own dates, projected when not announced",VERIFIED EXISTING,tests/rulebooks.test.ts::new editions record the rules they use,
+SLATE-17-02.01,SLATE-17-02,Eligibility explained per category with edition rules,VERIFIED EXISTING,tests/rulebooks.test.ts::runtime limits,
+SLATE-17-03.01,SLATE-17-03,Submit with a fee; withdraw and enter again without paying twice,VERIFIED EXISTING,tests/rulebooks.test.ts::refuses a duplicate,
+SLATE-17-04.01,SLATE-17-04,"Selection, invitation, travel and attendance",VERIFIED EXISTING,e2e/screenings.spec.ts::a screening invitation,
+SLATE-17-05.01,SLATE-17-05,Results kept per edition; later rule changes never rewrite them,VERIFIED EXISTING,"tests/rulebooks.test.ts::keeps every nominee, winner and entry after results",
+SLATE-18-01.01,SLATE-18-01,Credits across projects on Profile,IMPLEMENTED UNVERIFIED,,Profile lists credits; no test
+SLATE-18-02.01,SLATE-18-02,Collaboration history with people you have worked with,MISSING,,No relationship history
+SLATE-18-02.02,SLATE-18-02,History changes their willingness for related work only,MISSING,,Depends on history
+SLATE-18-03.01,SLATE-18-03,"Proposals tied to your past work, with terms, accepted or declined",MISSING,,No opportunities
+SLATE-18-04.01,SLATE-18-04,A sequel or new season carries story continuity and eligible assets,MISSING,,No sequels or seasons
+SLATE-18-04.02,SLATE-18-04,Returning people are asked again and paid again,MISSING,,No sequels or seasons
+SLATE-18-05.01,SLATE-18-05,Bookings across projects never overlap for one person,VERIFIED EXISTING,tests/schedule.test.ts::refuses when someone needed on set is busy,
+SLATE-18-05.02,SLATE-18-05,Debts and duties of one project survive starting another,VERIFIED EXISTING,e2e/first-project.spec.ts::a second project,
+SLATE-18-05.03,SLATE-18-05,Cancel or hand over a project explicitly,VERIFIED,tests/shelve.test.ts::a backer | tests/handover.test.ts::a writer replaced after their draft was approved,
+SLATE-19-01.01,SLATE-19-01,"Natural, specific wording; no raw IDs or engine terms",VERIFIED EXISTING,e2e/viewports.spec.ts::no raw IDs or source text on screen,
+SLATE-19-02.01,SLATE-19-02,"Desktop, phone and iPhone emulation fit without sideways scrolling",VERIFIED EXISTING,e2e/viewports.spec.ts::every main screen fits each viewport,
+SLATE-19-02.02,SLATE-19-02,Focus and input kept through rerenders,VERIFIED EXISTING,e2e/focus.spec.ts::typing straight into New Script keeps every character,
+SLATE-19-02.03,SLATE-19-02,Jumping to a section is not hidden under the sticky header,VERIFIED,e2e/viewports.spec.ts::a destination scrolled to or focused is never hidden under the top bar,
+SLATE-19-03.01,SLATE-19-03,Preview cost and time before committing; outcome after,IMPLEMENTED UNVERIFIED,,Many actions preview; no audit
+SLATE-19-03.02,SLATE-19-03,Disabled actions say why,IMPLEMENTED UNVERIFIED,,Many say why; no audit
+SLATE-19-04.01,SLATE-19-04,"Export, import, newer and duplicate saves",VERIFIED EXISTING,"e2e/backup.spec.ts::export, then import into a fresh browser",
+SLATE-19-04.02,SLATE-19-04,"Atomic writes, backups, quota and migration",VERIFIED EXISTING,tests/save-recovery.test.ts::keeps the previous good save as a backup,
+SLATE-19-05.01,SLATE-19-05,Recovery from damaged saves and failed loads,VERIFIED EXISTING,e2e/failures.spec.ts::a damaged save opens the last good copy,
+SLATE-19-05.02,SLATE-19-05,Keyboard and screen-reader names,VERIFIED EXISTING,"e2e/viewports.spec.ts::keyboard: skip link, focus order",
+SLATE-19-05.03,SLATE-19-05,Physical-device and human accessibility checks,EXTERNAL BLOCKER,,Needs real devices and people; browser emulation only
+SLATE-20-01.01,SLATE-20-01,"Every group has children, a status from the evidence, and evidence that exists",VERIFIED,tests/depth-ledger.test.ts::every group,
+SLATE-20-02.01,SLATE-20-02,"Festival and award rules cite their source, edition and status",VERIFIED EXISTING,"tests/rulebooks.test.ts::every rule names a real institution, category and source",
+SLATE-20-02.02,SLATE-20-02,World data sources recorded,VERIFIED EXISTING,tests/world-holidays.test.ts::labels years past the last announcement as projected,
+SLATE-20-02.03,SLATE-20-02,Production-process sources per feature ID,MISSING,,Production rates are modeled with no per-feature source register
+SLATE-20-03.01,SLATE-20-03,"Transitions, boundaries, failures, determinism and migration tested",VERIFIED EXISTING,tests/processing.test.ts::processes it exactly once,
+SLATE-20-04.01,SLATE-20-04,"Desktop, phone and WebKit journeys for creation, funding, casting, revision, save and recovery",VERIFIED EXISTING,e2e/careers.spec.ts::stop motion: refused for lack of money,
+SLATE-20-04.02,SLATE-20-04,Journeys for the features this package adds,MISSING,,Added with each stage
+SLATE-20-05.01,SLATE-20-05,Human play and real devices,EXTERNAL BLOCKER,,Needs the owner and real devices

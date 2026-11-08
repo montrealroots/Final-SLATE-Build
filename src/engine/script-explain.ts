@@ -1,5 +1,6 @@
 // Explanations and helpers only the project screens use (loaded with them, not at startup). They describe the rules in
 // script-effects.ts for the player; none of them changes an outcome.
+import { threadCutConsequences } from './structure';
 import { editScenes } from './finish';
 import { approvedScenes, sceneLabel } from './projects';
 import { ESSENTIAL_CUT_COST, castPlacement, contentLevel } from './script-effects';
@@ -114,6 +115,7 @@ export function cutConsequences(p: Project, sceneId: string): string[] {
     if (sp.plantedIn === sceneId && sp.paidIn && kept.has(sp.paidIn)) out.push(`It plants "${sp.label}", which pays off in ${name(sp.paidIn)}: that payoff would have no setup.`);
     if (sp.paidIn === sceneId && sp.plantedIn && kept.has(sp.plantedIn)) out.push(`It pays off "${sp.label}", planted in ${name(sp.plantedIn)}: that setup would never pay off.`);
   }
+  out.push(...threadCutConsequences(p, sceneId));
   const minutes = s.estMinutes;
   out.push(`The cut runs about ${minutes} ${minutes === 1 ? 'minute' : 'minutes'} shorter.`);
   return out;

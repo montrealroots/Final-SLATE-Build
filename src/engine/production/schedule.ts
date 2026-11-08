@@ -123,6 +123,7 @@ export interface PlanResult {
 export function generatePlan(state: GameState, p: Project, startDate: string): PlanResult {
   if (p.approvedDraft === null) throw new Error('Approve a draft before planning production.');
   if (p.delivered) throw new Error('This project has already been delivered.');
+  if (p.shelved) throw new Error('This project is shelved. Take it up again to plan it.');
   if (!isDateKey(startDate)) throw new Error('Choose a start date.');
   const today = dateKey(state.now, getPlace(p.axes.basePlaceId).zone);
   if (startDate < today) throw new Error('Choose a start date from today onward.');
@@ -210,7 +211,7 @@ export function scheduleShootDay(state: GameState, p: Project, d: ShootDay): voi
 }
 
 export function ensureWorkEvent(state: GameState, p: Project): void {
-  if (p.delivered) return;
+  if (p.delivered || p.shelved) return;
   if (state.events.some((e) => e.kind === 'work-day' && e.payload.projectId === p.id)) return;
   const zone = getPlace(p.axes.basePlaceId).zone;
   let key = dateKey(state.now, zone);

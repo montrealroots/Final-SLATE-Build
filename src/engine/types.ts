@@ -188,6 +188,10 @@ export interface StoryCharacter {
   methods: PerformanceMethod[];
   realization: Realization;
   ageInStory: string;
+  /** Other names the character goes by (SLATE-05-01.02): a record for the writer, shown with the part in casting. */
+  aliases?: string[];
+  /** How the character changes, beat by beat, each in a scene (structure.ts, SLATE-05-04.02). Never scored. */
+  beats?: { id: string; sceneId: string; change: string }[];
   pronouns: string;
   languages: string[];
   description: string;
@@ -247,9 +251,30 @@ export interface Scene {
   contributorIds: string[];
   evidenceIds: string[];
   technique?: Technique; // per-scene override for hybrids / mixed technique
+  /** The act or sequence the scene belongs to (structure.ts); none when unset. */
+  act?: string;
   tone?: string;
   intentionalDiscontinuity: boolean;
   operator?: string; // found footage: who is recording
+}
+
+/** A research question behind a fiction script (research.ts, SLATE-04-04.02): the writer's record, never verified by the game. */
+export interface ResearchNote {
+  id: string;
+  question: string;
+  reference: string;
+  status: 'open' | 'reviewed' | 'uncertain';
+  sceneIds: string[];
+}
+
+/** A story line through scenes and characters (structure.ts, SLATE-04-02.02). Left open on purpose is a valid choice. */
+export interface StoryThread {
+  id: string;
+  name: string;
+  characterIds: string[];
+  sceneIds: string[];
+  resolution: 'resolves' | 'open';
+  resolvedIn: string | null;
 }
 
 export interface SetupPayoff {
@@ -367,6 +392,11 @@ export interface FinanceDeal {
   terms: { recoup: number; incomeShare: number; approvalRights: string[]; credit: string | null; onDelivery: number; deliverBy: number | null };
   /** The documents sent with the approach (names, as listed when it was made). */
   sent?: string[];
+  /**
+   * What was sent, word for word, and with which approved draft (SLATE-04-05.02, November 8, 2026): later edits to the
+   * Story panel never change it. Approaches made before then have only the names.
+   */
+  sentCopy?: { draft: number | null; documents: { name: string; fields: { label: string; text: string }[] }[] };
 }
 
 export interface ProjectFinance {
@@ -567,8 +597,17 @@ export interface Project {
   relationships: Relationship[];
   characters: StoryCharacter[];
   scenes: Scene[];
-  episodes: { number: number; title: string; writer: 'player' | string; director: 'player' | string }[];
+  /**
+   * Who writes and directs each episode. Someone replaced after contributing (an approved draft of the episode, a day of it
+   * shot) is kept in formerWriters or formerDirectors and stays credited (projects.ts assignEpisodeRole, SLATE-01-04.05).
+   */
+  episodes: { number: number; title: string; writer: 'player' | string; director: 'player' | string; formerWriters?: string[]; formerDirectors?: string[] }[];
   setups: SetupPayoff[];
+  /** Acts or sequences, and story threads (structure.ts). Absent in older saves. */
+  acts?: { id: string; name: string }[];
+  threads?: StoryThread[];
+  /** Research questions and references for a fiction script (research.ts). Absent in older saves. */
+  research?: ResearchNote[];
   evidence: Evidence[];
   contributors: Contributor[];
   drafts: Draft[];
@@ -612,6 +651,8 @@ export interface Project {
   quality: Record<string, number> | null; // modeled, locked at delivery
   history: { at: number; text: string }[];
   workEventScheduled: boolean;
+  /** Shelved, with its commitments settled (shelve.ts); taken up again by removing it. */
+  shelved?: { at: number };
   noticeKeys: string[];
 }
 

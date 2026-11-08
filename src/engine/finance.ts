@@ -141,10 +141,13 @@ export function approachBacker(state: GameState, p: Project, kind: Exclude<Finan
   const b = BACKERS[kind];
   const days = b.decideDays;
   const sent = BACKER_DOCUMENTS[kind].map((d) => DOCUMENTS[d].name);
+  // A copy of each document as it stands now: what the backer reads is what was sent, whatever is edited later.
+  const nf = isNonfiction(p.axes.format);
+  const documents = BACKER_DOCUMENTS[kind].map((d) => ({ name: DOCUMENTS[d].name, fields: DOCUMENTS[d].fields(nf).map(([k, label]) => ({ label, text: String(p.story[k] ?? '') })) }));
   const deal: FinanceDeal = {
     id: newId(state, 'fd'), kind, backer: b.name, amount: 0, status: 'considering', askedAt: state.now, decideAt: state.now + days * DAY,
     reason: '', received: 0, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null },
-    ...(sent.length ? { sent } : {}),
+    ...(sent.length ? { sent, sentCopy: { draft: p.approvedDraft, documents } } : {}),
   };
   p.finance.deals.push(deal);
   if (b.decideDays === 0) decide(state, p, deal);

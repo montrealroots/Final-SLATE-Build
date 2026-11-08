@@ -130,6 +130,7 @@ export function activeHireFor(p: Project, input: { roleId: string; characterId?:
 export function makeOffer(state: GameState, p: Project, input: OfferInput): Hire {
   if (p.approvedDraft === null) throw new Error('Approve a draft before hiring.');
   if (p.delivered) throw new Error('This project has already been delivered.');
+  if (p.shelved) throw new Error('This project is shelved. Take it up again to hire for it.');
   const person = personById(state, input.personId);
   if (person.roleId !== input.roleId) throw new Error(`${person.name} doesn't work as ${roleLabel(input.roleId).toLowerCase()}.`);
   if (!(input.dayRate > 0) || !Number.isFinite(input.dayRate)) throw new Error('Offer a day rate above zero.');

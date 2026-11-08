@@ -178,7 +178,18 @@ class Store {
     this.draft = null;
     this.emit();
   }
+  /** Set while Start My Story is saving: a second press waits for nothing and starts nothing (SLATE-01-05.04). */
+  private beginning = false;
   async begin(): Promise<string | null> {
+    if (this.beginning) return null;
+    this.beginning = true;
+    try {
+      return await this.beginOnce();
+    } finally {
+      this.beginning = false;
+    }
+  }
+  private async beginOnce(): Promise<string | null> {
     if (!this.draft) return 'Your choices could not be found.';
     const saveId = `s${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
     let state: GameState;

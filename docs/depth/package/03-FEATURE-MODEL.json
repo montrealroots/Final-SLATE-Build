@@ -1,0 +1,826 @@
+{
+  "schema_version": 1,
+  "kind": "planning_specification_not_runtime_data",
+  "modules": [
+    {
+      "id": "01",
+      "title": "Identity And Creation",
+      "leaves": [
+        {
+          "id": "SLATE-01-01",
+          "name": "Identity",
+          "loop": "Enter name, pronouns and acting title; preview; edit; confirm",
+          "effects": "Names and wording propagate into dialogue labels, contracts, credits and history",
+          "recovery": "Invalid or unsupported input stays editable without clearing other entries"
+        },
+        {
+          "id": "SLATE-01-02",
+          "name": "Background And Languages",
+          "loop": "Select multiple ethnicities; select primary and additional languages with proficiency; review custom entries",
+          "effects": "Chosen language proficiency informs appropriate communication and casting requirements; heritage remains identity, never an automatic ability bonus",
+          "recovery": "Duplicates and unsupported entries get a clear correction path; suggestions never silently select fluency"
+        },
+        {
+          "id": "SLATE-01-03",
+          "name": "Starting Circumstances",
+          "loop": "Choose birthplace, starting place, birthday and valid 2026 date/time; preview local context",
+          "effects": "Initial timezone, calendar, weather and birthdays use the selected place and date",
+          "recovery": "Invalid dates and unavailable location data prevent confirmation with retry or editing"
+        },
+        {
+          "id": "SLATE-01-04",
+          "name": "Four Professions",
+          "loop": "Make screenwriting, producing, directing and acting available immediately; choose participation per project",
+          "effects": "Actual work creates credits; simultaneous roles create scheduling and responsibility constraints",
+          "recovery": "Leaving a role requires a replacement or a clear blocked dependency, not lost authorship"
+        },
+        {
+          "id": "SLATE-01-05",
+          "name": "Review And Draft",
+          "loop": "Save creation draft; inspect each field; edit from Review; return; start",
+          "effects": "One authoritative creation record becomes the save; draft survives interruption",
+          "recovery": "Validation preserves input; recovery never opens the wrong step or creates duplicate lives"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "title": "World And Time",
+      "leaves": [
+        {
+          "id": "SLATE-02-01",
+          "name": "Active Clock",
+          "loop": "Run at one real second per game second during the defined active session; save time; close and reopen",
+          "effects": "Every engine reads one authoritative instant and derives local time",
+          "recovery": "No offline catch-up; no double counting from duplicate tabs; define hidden-tab and device-suspension behavior explicitly"
+        },
+        {
+          "id": "SLATE-02-02",
+          "name": "Advance And Sleep",
+          "loop": "Choose duration or destination; preview intervening commitments; process events in order; stop at required decisions",
+          "effects": "Deadlines, work, weather, fatigue if explicitly in scope, and calendar updates share elapsed time",
+          "recovery": "Rollback failed event batches; resume safely without repeating payments or losing events; no manual play/pause control"
+        },
+        {
+          "id": "SLATE-02-03",
+          "name": "Geography And Travel",
+          "loop": "Find country or territory, region and city; inspect production relevance; arrange necessary travel",
+          "effects": "Location affects timezone, weather, daylight, holidays and arrival feasibility",
+          "recovery": "Unavailable geography is identified; impossible arrival blocks attendance with reschedule options; no unrelated tourism or housing system"
+        },
+        {
+          "id": "SLATE-02-04",
+          "name": "Weather And Daylight",
+          "loop": "Inspect forecast; schedule work; encounter conditions; move indoors, protect work or postpone",
+          "effects": "Outdoor work, continuity, available daylight and production costs reflect conditions",
+          "recovery": "Forecast uncertainty is visible; no identical weather everywhere; postponed work retains reservations and history correctly"
+        },
+        {
+          "id": "SLATE-02-05",
+          "name": "Calendar And Commitments",
+          "loop": "Create or receive event; inspect; accept; get reminder; attend, decline, cancel or reschedule",
+          "effects": "Birthdays, meetings, shoots, recordings, screenings and deadlines link to their actual activity",
+          "recovery": "Conflicts name the affected commitments; meaningful event-specific buttons replace generic Go or Stand There"
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "title": "Project Conception",
+      "leaves": [
+        {
+          "id": "SLATE-03-01",
+          "name": "Format And Medium",
+          "loop": "Choose format, story approach, medium and technique as separate dimensions; inspect compatible combinations",
+          "effects": "Feature, short, series, special, fiction, documentary, animation, live action and hybrid route into appropriate production",
+          "recovery": "Unsupported combinations explain the constraint; do not silently convert the project"
+        },
+        {
+          "id": "SLATE-03-02",
+          "name": "Creative Identity",
+          "loop": "Set title, multiple genres, tone, setting, audience and languages",
+          "effects": "Genre conventions create relevant questions and explicit requirements; identity follows all project documents",
+          "recovery": "No genre selection alone grants prestige or quality; preserve custom creative text"
+        },
+        {
+          "id": "SLATE-03-03",
+          "name": "Scope",
+          "loop": "Set runtime, cast scale, locations and technical ambition; preview resource drivers",
+          "effects": "Scenes and assets determine estimates, staffing and capacity",
+          "recovery": "Overambitious scope remains editable; give concrete cost-reduction options"
+        },
+        {
+          "id": "SLATE-03-04",
+          "name": "Project Workspace",
+          "loop": "Create concept; save; reopen; compare current state; archive or cancel deliberately",
+          "effects": "Stable project ID connects documents, deals, participants, schedules and history",
+          "recovery": "Cancellation settles commitments rather than deleting them; duplicate titles remain distinguishable"
+        },
+        {
+          "id": "SLATE-03-05",
+          "name": "Compatibility Review",
+          "loop": "Explain applicable stages and conditional requirements before development",
+          "effects": "A shared project model supports distinct medium pipelines",
+          "recovery": "Every unsupported branch has an explicit status; never show an inert control as implemented"
+        }
+      ]
+    },
+    {
+      "id": "04",
+      "title": "Story Development",
+      "leaves": [
+        {
+          "id": "SLATE-04-01",
+          "name": "Concept And Intent",
+          "loop": "Write premise, logline, question, stakes, themes and intended experience; revise",
+          "effects": "Documents and creative reference use exact player text",
+          "recovery": "Completeness can be checked; the engine must not pretend it understands prose quality"
+        },
+        {
+          "id": "SLATE-04-02",
+          "name": "Structure And Threads",
+          "loop": "Create acts or sequences; establish turns; connect threads to scenes and characters; resolve or deliberately leave open",
+          "effects": "Structure guides revision and editing dependencies",
+          "recovery": "Broken links identify exact scenes; intentional unresolved threads remain valid choices"
+        },
+        {
+          "id": "SLATE-04-03",
+          "name": "Setups And Payoffs",
+          "loop": "Declare setup, planting scene and payoff scene; inspect connection; change or remove",
+          "effects": "Cutting or rewriting linked scenes creates specific editorial warnings",
+          "recovery": "Restore a scene, relocate setup/payoff or explicitly revise the dependency"
+        },
+        {
+          "id": "SLATE-04-04",
+          "name": "Research And References",
+          "loop": "Record factual questions and production references; attach notes; mark reviewed or uncertain",
+          "effects": "Research informs explicit setting and production choices; provenance remains in developer records",
+          "recovery": "Unverified claims remain unverified; blocked sources lead to alternate public primary sources, never invented verification"
+        },
+        {
+          "id": "SLATE-04-05",
+          "name": "Documents And Submissions",
+          "loop": "Build outline, treatment, pitch and statement; review required fields; explicitly submit snapshot",
+          "effects": "Backers and institutions receive the correct version with timestamp and requirements",
+          "recovery": "Later edits do not rewrite previously sent documents; missing material names exact fields"
+        }
+      ]
+    },
+    {
+      "id": "05",
+      "title": "Characters And Relationships",
+      "leaves": [
+        {
+          "id": "SLATE-05-01",
+          "name": "Character Definition",
+          "loop": "Create name, aliases, pronouns, age range, description and background; edit",
+          "effects": "Stable character identity links scenes, casts, assets, episode appearances and credits",
+          "recovery": "Renaming updates displays without breaking IDs or erasing history"
+        },
+        {
+          "id": "SLATE-05-02",
+          "name": "Size And Function",
+          "loop": "Choose role size independently from narrative functions; allow multiple functions; choose award placement where applicable",
+          "effects": "Billing, participation and category entries remain separate from protagonist or antagonist status",
+          "recovery": "Supporting antagonist stays supporting unless placement changes; organizer-specific restrictions override generic defaults"
+        },
+        {
+          "id": "SLATE-05-03",
+          "name": "Type And Performance",
+          "loop": "Choose human, animal, creature or other supported type; select on-camera, voice, capture, puppetry or combined methods",
+          "effects": "Costume, makeup, creature assets, performers, stunts and recording work derive from explicit needs",
+          "recovery": "Unsupported methods explain why; one method must not falsely fulfill another"
+        },
+        {
+          "id": "SLATE-05-04",
+          "name": "Arcs And Relationships",
+          "loop": "Define objectives, obstacles and changes; establish directed relationships; connect beats to scenes",
+          "effects": "Scene continuity and series development track declared changes",
+          "recovery": "Deleting a character previews dependent relationships and scenes; remap or deliberately remove"
+        },
+        {
+          "id": "SLATE-05-05",
+          "name": "Appearance Breakdown",
+          "loop": "Assign scenes and episodes; review screen participation and requirements",
+          "effects": "Casting days, regular/guest commitments, costume continuity and credits reflect actual work",
+          "recovery": "A character with no production participation must not generate unexplained fees or credits"
+        }
+      ]
+    },
+    {
+      "id": "06",
+      "title": "Scenes And Drafts",
+      "leaves": [
+        {
+          "id": "SLATE-06-01",
+          "name": "Scene Setup",
+          "loop": "Choose episode, sequence, location, interior/exterior, day/night, participants and duration",
+          "effects": "Breakdown, schedules, cast bookings, runtime and daylight requirements",
+          "recovery": "Impossible or missing combinations are actionable validation messages"
+        },
+        {
+          "id": "SLATE-06-02",
+          "name": "Action And Dialogue",
+          "loop": "Write action and dialogue; assign speakers and languages; save",
+          "effects": "Player text persists into screenplay and creative reference; explicit language choices drive recording/localization needs",
+          "recovery": "Text length is not a quality score; unsupported speaker references require repair"
+        },
+        {
+          "id": "SLATE-06-03",
+          "name": "Production Breakdown",
+          "loop": "Declare props, crowds, animals, stunts, intimacy, music, vehicles and effects; review linked tasks",
+          "effects": "Required resources, specialist crew, preparation, costs and dependencies",
+          "recovery": "Remove a requirement only with a preview of cancelled bookings or stranded assets"
+        },
+        {
+          "id": "SLATE-06-04",
+          "name": "Scene Organization",
+          "loop": "Insert, reorder, duplicate, split, combine, cut and restore",
+          "effects": "Order and IDs preserve links across threads, assets and editing",
+          "recovery": "Copies receive new IDs; split/combine operations explicitly remap links rather than guessing"
+        },
+        {
+          "id": "SLATE-06-05",
+          "name": "Draft Approval And Revision",
+          "loop": "Save version; compare; review notes; approve; revise approved material with impact preview",
+          "effects": "Unchanged filmed work survives; changed work creates precise reshoot, asset or schedule consequences",
+          "recovery": "Confirm costly revisions; preserve old versions and explain incompatible footage; no reward for repeatedly clicking revise"
+        }
+      ]
+    },
+    {
+      "id": "07",
+      "title": "Television And Episodes",
+      "leaves": [
+        {
+          "id": "SLATE-07-01",
+          "name": "Series Bible",
+          "loop": "Define series premise, format, continuing world, characters and continuity rules",
+          "effects": "Shared reference governs season and episode planning",
+          "recovery": "Changing shared facts previews affected episodes instead of silently rewriting history"
+        },
+        {
+          "id": "SLATE-07-02",
+          "name": "Season And Episode Planning",
+          "loop": "Create season arc; order episodes; set durations; allocate stories, scenes and locations",
+          "effects": "Season budget aggregates episode work without treating one episode as the whole season",
+          "recovery": "Missing episodes or unresolved delivery obligations remain visible"
+        },
+        {
+          "id": "SLATE-07-03",
+          "name": "Regulars Guests And Credits",
+          "loop": "Choose recurring participation; book actual episode work; assign episode-specific crew",
+          "effects": "Contracts, availability, fees and credits reflect appearances and contributed work",
+          "recovery": "Guest spanning episodes prompts contract review; regular status does not create footage or earned credit automatically"
+        },
+        {
+          "id": "SLATE-07-04",
+          "name": "Showrunning And Production",
+          "loop": "Assign creative oversight; writing and directing responsibilities; choose supported block scheduling",
+          "effects": "Shared sets and locations can be reused with explicit continuity and booking constraints",
+          "recovery": "Responsibility conflicts require delegation or rescheduling; available professions do not imply unlimited time"
+        },
+        {
+          "id": "SLATE-07-05",
+          "name": "Delivery And Continuation",
+          "loop": "Deliver episodes; finish season; receive commissioning, renewal or cancellation decisions",
+          "effects": "Returning cast, assets, unresolved stories and agreements feed the next season",
+          "recovery": "Cancellation settles existing work; renewal never silently resets contracts or creates funding"
+        }
+      ]
+    },
+    {
+      "id": "08",
+      "title": "Financing And Producing",
+      "leaves": [
+        {
+          "id": "SLATE-08-01",
+          "name": "Estimate And Assumptions",
+          "loop": "Break down development, cast, crew, production, facilities, post and delivery; inspect contingency",
+          "effects": "Approved scope creates estimate and an explicit financing target, not cash",
+          "recovery": "Unknown prices or unavailable candidates must not be estimated as free; expose uncertain lines"
+        },
+        {
+          "id": "SLATE-08-02",
+          "name": "Funding Applications",
+          "loop": "Choose eligible backer; prepare documents; send; await decision",
+          "effects": "Calendar deadlines and submitted snapshots connect to funding pipeline",
+          "recovery": "Refusal offers understandable next options without guaranteed acceptance"
+        },
+        {
+          "id": "SLATE-08-03",
+          "name": "Offers And Terms",
+          "loop": "Review amount, payment timing, obligations, supported rights and revenue terms; negotiate where supported; accept or reject",
+          "effects": "Accepted deals create receivables and obligations; received payments increase available funds",
+          "recovery": "Expired or incompatible offers cannot be accepted; cancellation preserves liabilities"
+        },
+        {
+          "id": "SLATE-08-04",
+          "name": "Ledger And Payments",
+          "loop": "Track promised, received, reserved, committed, spent and distributable amounts",
+          "effects": "Hiring, bookings, production and revenue share one ledger",
+          "recovery": "Finite nonnegative money; no duplicate settlement; failed action must not partially charge"
+        },
+        {
+          "id": "SLATE-08-05",
+          "name": "Shortfalls And Closure",
+          "loop": "Compare scope reductions, postponement and additional funding; settle final obligations",
+          "effects": "Creative revisions change remaining cost; revenues follow agreed repayment order",
+          "recovery": "No unexplained bailout; show exact shortage and recovery; do not introduce personal tax or banking systems"
+        }
+      ]
+    },
+    {
+      "id": "09",
+      "title": "Casting",
+      "leaves": [
+        {
+          "id": "SLATE-09-01",
+          "name": "Role Brief And Search",
+          "loop": "Create brief from character and dates; filter candidates; inspect availability and rates",
+          "effects": "Search reflects performance method, language requirements and actual work",
+          "recovery": "Unavailable candidate is not a zero-cost placeholder; identify booking conflicts"
+        },
+        {
+          "id": "SLATE-09-02",
+          "name": "Auditions And Callbacks",
+          "loop": "Invite; schedule; review performance evidence; shortlist; callback or chemistry read when relevant",
+          "effects": "Selection gives a reasoned comparison rather than a single universal best score",
+          "recovery": "Declines and missed auditions allow alternatives; background casting can use a simpler appropriate flow"
+        },
+        {
+          "id": "SLATE-09-03",
+          "name": "Offers And Booking",
+          "loop": "Offer terms; handle acceptance, refusal, counteroffer and expiry; reserve dates",
+          "effects": "Project ledger and participant calendar update together",
+          "recovery": "Cannot double-book or double-charge; cancellation and changes use explicit terms"
+        },
+        {
+          "id": "SLATE-09-04",
+          "name": "Self Casting And Recasting",
+          "loop": "Choose own role or no role; replace performer when necessary; review affected work",
+          "effects": "Directing/acting conflicts and reshoots are visible; used former-performer work retains credit",
+          "recovery": "Replacement cannot erase contributions or grant unearned work to successor"
+        },
+        {
+          "id": "SLATE-09-05",
+          "name": "Billing And Award Entry",
+          "loop": "Review character credits, methods, episode participation, billing and category placement",
+          "effects": "Delivered versions and eligibility use the actual contributors",
+          "recovery": "Story function never substitutes for size or organizer rules; prevent duplicate or missing credits"
+        }
+      ]
+    },
+    {
+      "id": "10",
+      "title": "Crew And Collaboration",
+      "leaves": [
+        {
+          "id": "SLATE-10-01",
+          "name": "Department Breakdown",
+          "loop": "Derive required and optional roles from project; inspect why each is needed",
+          "effects": "Departments cover production tasks and readiness",
+          "recovery": "Unfilled required work remains blocked and explained"
+        },
+        {
+          "id": "SLATE-10-02",
+          "name": "Candidate Comparison",
+          "loop": "Inspect experience relevant to task, rate, availability and existing commitments",
+          "effects": "Hiring tradeoffs affect capacity and cost without inherited identity bonuses",
+          "recovery": "No available candidate remains an explicit feasibility gap"
+        },
+        {
+          "id": "SLATE-10-03",
+          "name": "Offers And Work Assignment",
+          "loop": "Negotiate supported terms; book; assign responsibility and dates",
+          "effects": "Task ownership, contracts, costs and calendars stay aligned",
+          "recovery": "Declines and expiry release only appropriate reservations"
+        },
+        {
+          "id": "SLATE-10-04",
+          "name": "Role Combining And Capacity",
+          "loop": "Combine compatible roles at suitable scale; inspect workload and concurrency",
+          "effects": "Savings come with genuine capacity limits; no free simultaneous work",
+          "recovery": "Do not combine incompatible work or overwhelm one worker; split roles when scope expands"
+        },
+        {
+          "id": "SLATE-10-05",
+          "name": "Replacement And History",
+          "loop": "Handle absence, handover, cancellation and additional staffing",
+          "effects": "Preserve work already done, credit and relationship history",
+          "recovery": "Replacing a person must not reset completed tasks or avoid owed pay"
+        }
+      ]
+    },
+    {
+      "id": "11",
+      "title": "Pre Production",
+      "leaves": [
+        {
+          "id": "SLATE-11-01",
+          "name": "Breakdown And Readiness",
+          "loop": "Convert approved scenes to resource list; assign owners; inspect missing dependencies",
+          "effects": "One readiness view links directly to unresolved work",
+          "recovery": "No generic Ready label while required resources remain unavailable"
+        },
+        {
+          "id": "SLATE-11-02",
+          "name": "Locations And Logistics",
+          "loop": "Search, scout, compare, book, establish access and backup locations",
+          "effects": "Travel, daylight, weather exposure, costs and scheduling",
+          "recovery": "Location loss triggers alternatives and affected-scene review"
+        },
+        {
+          "id": "SLATE-11-03",
+          "name": "Design And Builds",
+          "loop": "Request concepts; approve; build or acquire props, costumes, sets and creatures; inspect",
+          "effects": "Assets have versions, readiness, costs and reuse constraints",
+          "recovery": "Rejected design revises affected work; lost or damaged assets require repair or replacement"
+        },
+        {
+          "id": "SLATE-11-04",
+          "name": "Rehearsal And Planning",
+          "loop": "Schedule table reads, blocking, stunt preparation, storyboards, shots and animatics",
+          "effects": "Preparation addresses explicit production needs and discovers conflicts",
+          "recovery": "Preparation has bounded effects, never infinite quality through repetition"
+        },
+        {
+          "id": "SLATE-11-05",
+          "name": "Scheduling",
+          "loop": "Order work by dependencies and availability; reserve resources; publish call sheets",
+          "effects": "Cross-department schedules include holidays, travel, daylight and contingency",
+          "recovery": "Explain conflicts; reschedule without double charging; capacity assumptions remain visible"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "title": "Live Action",
+      "leaves": [
+        {
+          "id": "SLATE-12-01",
+          "name": "Daily Readiness",
+          "loop": "Check call sheet, attendance, location, equipment and scene requirements",
+          "effects": "Only feasible work starts; attendance and booking history persist",
+          "recovery": "Missing resources prompt switch of scene, delay or cancellation with costs"
+        },
+        {
+          "id": "SLATE-12-02",
+          "name": "Scene And Setup Work",
+          "loop": "Block; rehearse; light; check sound; choose coverage; record takes",
+          "effects": "Each setup consumes time and produces distinct available material",
+          "recovery": "No material created when required people or equipment are absent"
+        },
+        {
+          "id": "SLATE-12-03",
+          "name": "Directorial Choices",
+          "loop": "Review take; request adjustment; choose another take or move on",
+          "effects": "Recorded choices constrain edit options and remaining daily capacity",
+          "recovery": "Additional takes have costs and diminishing opportunity, not automatic perfection"
+        },
+        {
+          "id": "SLATE-12-04",
+          "name": "Disruptions And Wrap",
+          "loop": "Respond to weather, continuity or resource trouble; log completed and unfinished work",
+          "effects": "Update money, footage, reports and next-day schedule together",
+          "recovery": "A failed event rolls back consistently; partial completed work is explicitly retained"
+        },
+        {
+          "id": "SLATE-12-05",
+          "name": "Pickups And Reshoots",
+          "loop": "Identify missing work; estimate; book participants; schedule after prerequisites; capture",
+          "effects": "New material supplements or replaces correct scenes and versions",
+          "recovery": "Do not book pickups before feasible prep or primary work; preserve existing footage and credits"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "title": "Animation Stop Motion And Hybrid",
+      "leaves": [
+        {
+          "id": "SLATE-13-01",
+          "name": "2D Pipeline",
+          "loop": "Design; storyboard; animatic; layout; animate; clean up; colour; composite",
+          "effects": "Approved assets and shot dependencies determine tasks, capacity and revisions",
+          "recovery": "Late animatic or design changes identify rework rather than restarting everything"
+        },
+        {
+          "id": "SLATE-13-02",
+          "name": "3D Pipeline",
+          "loop": "Model; rig; layout; animate; simulate; light; render; composite",
+          "effects": "Rig readiness, render capacity and asset versions govern completion",
+          "recovery": "Failed or changed assets invalidate only dependent work; render expansion costs money"
+        },
+        {
+          "id": "SLATE-13-03",
+          "name": "Stop Motion Pipeline",
+          "loop": "Design puppets and sets; fabricate; rig; test lighting; capture frames; repair; clean up",
+          "effects": "Puppet copies, stage access, continuity and animator capacity determine throughput",
+          "recovery": "Damage or unavailable stages have repair/rebook paths; duplicates cost resources and enable only feasible concurrency"
+        },
+        {
+          "id": "SLATE-13-04",
+          "name": "Voice And Capture",
+          "loop": "Cast; book; record voice or calibrate capture; select takes; retake; clean; retarget; integrate",
+          "effects": "Voice and body/face capture remain distinct work with dated sessions and used-performer credits",
+          "recovery": "Insufficient studio funds block cleanly; missed sessions rebook; one performance method cannot impersonate another"
+        },
+        {
+          "id": "SLATE-13-05",
+          "name": "Hybrid Integration",
+          "loop": "Plan plates, tracking, practical and digital assets; approve integration; finish shots",
+          "effects": "Cross-medium dependencies link filmed work to effects and final composite",
+          "recovery": "Changed plates or camera work flag specific downstream tasks and revised costs"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "title": "Documentary And Unscripted",
+      "leaves": [
+        {
+          "id": "SLATE-14-01",
+          "name": "Research And Access",
+          "loop": "Define questions; identify contributors, locations and archives; arrange access",
+          "effects": "Available factual material and access shape the project",
+          "recovery": "Refused access prompts editorial alternatives; do not fabricate factual verification"
+        },
+        {
+          "id": "SLATE-14-02",
+          "name": "Contributors And Restrictions",
+          "loop": "Invite; record agreement and use restrictions; schedule; handle withdrawal",
+          "effects": "Footage use, redaction, credits and delivery respect recorded restrictions",
+          "recovery": "Withdrawal before filming creates no phantom redaction work; later withdrawal shows affected material"
+        },
+        {
+          "id": "SLATE-14-03",
+          "name": "Documentary Capture",
+          "loop": "Plan interviews and observations; record opportunities; log coverage and factual claims",
+          "effects": "Editing uses actual recorded material and research status",
+          "recovery": "Missing material leads to additional interviews, archive work or a revised structure"
+        },
+        {
+          "id": "SLATE-14-04",
+          "name": "Unscripted Format",
+          "loop": "Define segments or competition rules; schedule participants; record progression",
+          "effects": "Episode results and participant continuity persist deterministically",
+          "recovery": "Format-specific rules govern outcomes; do not force every format into a scripted fiction workflow"
+        },
+        {
+          "id": "SLATE-14-05",
+          "name": "Editorial Assembly",
+          "loop": "Review material; verify claims; assemble; resolve restrictions; deliver",
+          "effects": "Clearances and factual issues gate affected uses and deliverables",
+          "recovery": "Unresolved issues remain explicit; alternatives include replacement, omission or revised delivery"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "title": "Editing And Post",
+      "leaves": [
+        {
+          "id": "SLATE-15-01",
+          "name": "Material Review And Assembly",
+          "loop": "Inspect footage, takes, recordings and technical gaps; select; order scenes",
+          "effects": "Available material constrains what can be edited",
+          "recovery": "No selecting footage that was never captured; identify stale or incompatible versions"
+        },
+        {
+          "id": "SLATE-15-02",
+          "name": "Structural Revision",
+          "loop": "Adjust pacing and runtime; cut, restore or rearrange; review setups and payoffs",
+          "effects": "Declared essential scenes and dependencies provide specific warnings",
+          "recovery": "Allow intentional choices; restore or revise dependency; no penalty based merely on prose presence"
+        },
+        {
+          "id": "SLATE-15-03",
+          "name": "Additional Work",
+          "loop": "Request pickups, replacement voice, effects revisions or missing assets",
+          "effects": "Tasks require funding, participants and schedule capacity",
+          "recovery": "Explain delay and cost; preserve previously approved usable material"
+        },
+        {
+          "id": "SLATE-15-04",
+          "name": "Sound And Picture Finish",
+          "loop": "Edit dialogue; record ADR and Foley; add music; mix; colour; finish effects; titles and credits",
+          "effects": "Dependencies and versions determine picture/sound readiness",
+          "recovery": "Changing locked picture shows affected sound, captions, effects and delivery work"
+        },
+        {
+          "id": "SLATE-15-05",
+          "name": "Versions And Delivery",
+          "loop": "Create festival, distribution and broadcast cuts; captions, subtitles and required materials; review; lock; submit",
+          "effects": "Each version has runtime, credits, content and eligibility history",
+          "recovery": "Failed delivery identifies corrections; reopening a lock creates revision work rather than silently overwriting accepted files"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "title": "Distribution And Audiences",
+      "leaves": [
+        {
+          "id": "SLATE-16-01",
+          "name": "Release Strategy",
+          "loop": "Choose supported territories, languages, methods and windows; compare commitments",
+          "effects": "Premiere eligibility, localization, audience access and deals interact",
+          "recovery": "Conflicts and exclusivity appear before acceptance"
+        },
+        {
+          "id": "SLATE-16-02",
+          "name": "Offers And Delivery",
+          "loop": "Inspect supported terms and requirements; accept or refuse; supply correct version; receive acceptance",
+          "effects": "Contracts create schedule, delivery and payment obligations",
+          "recovery": "Missed materials and rejected deliveries have correction paths"
+        },
+        {
+          "id": "SLATE-16-03",
+          "name": "Content And Versions",
+          "loop": "Declare content; inspect outlet-specific modeled conditions; choose supported alternate edit",
+          "effects": "A restriction affects the relevant outlet or territory, not all TV globally",
+          "recovery": "No universal mature-content ban; clearly separate simulation assumptions from classification authority"
+        },
+        {
+          "id": "SLATE-16-04",
+          "name": "Audience And Revenue",
+          "loop": "Release; observe exposure, audience fit, reception and accounting",
+          "effects": "Reported earnings, received funds and contractual shares remain distinct",
+          "recovery": "No guarantee of success; no duplicate revenue when events replay"
+        },
+        {
+          "id": "SLATE-16-05",
+          "name": "Later Windows",
+          "loop": "Consider new territories, licensing or later releases; preserve release history",
+          "effects": "Earlier releases constrain later deals and festival entry",
+          "recovery": "Cancelled releases must not count as completed showings; agreement changes preserve obligations"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "title": "Festivals And Awards",
+      "leaves": [
+        {
+          "id": "SLATE-17-01",
+          "name": "Edition Calendar",
+          "loop": "Track institution, edition, submissions, deadlines, nominations, screenings and ceremony",
+          "effects": "Each year has its own data and status; scheduled events connect to attendance",
+          "recovery": "Future unknown dates remain projections, not invented confirmed dates; same date in two years is allowed if correct"
+        },
+        {
+          "id": "SLATE-17-02",
+          "name": "Eligibility And Categories",
+          "loop": "Evaluate format, runtime, territory, release history, premiere status, credits and edition-specific rules",
+          "effects": "Explain eligible and ineligible categories with evidence",
+          "recovery": "Simulated rules stay labeled; official facts override generic assumptions for that edition"
+        },
+        {
+          "id": "SLATE-17-03",
+          "name": "Submission",
+          "loop": "Choose version and category; attach materials; review fee; submit snapshot",
+          "effects": "Ledger, deadline, eligibility and entry status update together",
+          "recovery": "Withdraw and resubmit with unique entries and correct charges; prevent duplicate accidental submissions"
+        },
+        {
+          "id": "SLATE-17-04",
+          "name": "Selection And Attendance",
+          "loop": "Receive result; accept invitation; resolve travel and conflicts; attend screening or ceremony",
+          "effects": "Calendar, expenses, exposure and relationship history connect",
+          "recovery": "Declining or missing events has proportionate consequences; award outcomes are not guaranteed"
+        },
+        {
+          "id": "SLATE-17-05",
+          "name": "Results And History",
+          "loop": "Record nomination, win, rejection or disqualification; propagate correct credits",
+          "effects": "Filmography and relevant future opportunities reflect actual results",
+          "recovery": "No invented verified rulebooks; organizer changes apply to correct editions without rewriting past outcomes"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "title": "Career Continuity",
+      "leaves": [
+        {
+          "id": "SLATE-18-01",
+          "name": "Credits And Filmography",
+          "loop": "Review projects, versions, episodes, roles and collaborators",
+          "effects": "Persistent portfolio supports future pitches and opportunities",
+          "recovery": "Only earned contributions receive credit; historical records remain stable"
+        },
+        {
+          "id": "SLATE-18-02",
+          "name": "Professional Relationships",
+          "loop": "Record specific collaboration, fulfilled promises and relevant disputes",
+          "effects": "Future availability and willingness may reflect relevant history",
+          "recovery": "No arbitrary global relationship penalty from unrelated decisions"
+        },
+        {
+          "id": "SLATE-18-03",
+          "name": "Opportunities",
+          "loop": "Receive a proposal tied to prior work; inspect terms; accept or decline",
+          "effects": "New work inherits actual resource and scheduling constraints",
+          "recovery": "Explain why opportunity appeared; avoid guaranteed endless offers"
+        },
+        {
+          "id": "SLATE-18-04",
+          "name": "Sequels And Returning Seasons",
+          "loop": "Reuse explicit story continuity and eligible assets; negotiate returning participants",
+          "effects": "Reuse can save work but requires availability, permissions and version compatibility",
+          "recovery": "Do not carry over expired agreements or assume returning cast is free"
+        },
+        {
+          "id": "SLATE-18-05",
+          "name": "Obligations And Portfolio",
+          "loop": "Manage concurrent projects, remaining repayments and delivery duties",
+          "effects": "One person's time and shared resources are finite across projects",
+          "recovery": "New project cannot erase old debts or commitments; cancel or delegate explicitly"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "title": "Player Experience And Persistence",
+      "leaves": [
+        {
+          "id": "SLATE-19-01",
+          "name": "Navigation And Voice",
+          "loop": "Show current situation, meaningful choices, next action and relevant history",
+          "effects": "Natural event-specific language; consistent established title-case rules",
+          "recovery": "No robotic generic headings, unexplained numbers or dead-end screens; do not invent absent donor rules"
+        },
+        {
+          "id": "SLATE-19-02",
+          "name": "Responsive Interface",
+          "loop": "Provide equivalent controls on desktop and mobile; handle drawer, safe areas, keyboard, scrolling and focus",
+          "effects": "No overlap, clipped actions, lost input or sticky-header-covered destinations",
+          "recovery": "Recover focus after dialogs; reserve loading space; preserve input through rerender and navigation"
+        },
+        {
+          "id": "SLATE-19-03",
+          "name": "Decisions And Feedback",
+          "loop": "Preview cost, time and effects; commit once; show outcome and next options",
+          "effects": "Every action links to meaningful state or a legitimate creative record",
+          "recovery": "Disabled actions name why and how to resolve; no decorative unimplemented features"
+        },
+        {
+          "id": "SLATE-19-04",
+          "name": "Save Export Import",
+          "loop": "Persist full state; reopen; export/import; distinguish duplicate lives and newer versions",
+          "effects": "Documents, IDs, RNG state, events, ledger and history survive consistently",
+          "recovery": "Atomic writes, sound backups, quota handling, migrations and multi-tab ownership protect progress"
+        },
+        {
+          "id": "SLATE-19-05",
+          "name": "Recovery And Accessibility",
+          "loop": "Retry failed loads; recover damaged save; navigate by keyboard and assistive technology",
+          "effects": "Errors preserve work and explain recovery; screen-reader labels match actions",
+          "recovery": "No silent reset or fake success; physical-device and human accessibility checks remain separately recorded"
+        }
+      ]
+    },
+    {
+      "id": "20",
+      "title": "Evidence And Completion",
+      "leaves": [
+        {
+          "id": "SLATE-20-01",
+          "name": "Feature Ledger",
+          "loop": "Give every leaf an ID; map UI, engine, dependencies, outcomes, tests and source status",
+          "effects": "An auditable coverage matrix distinguishes planned from implemented and verified",
+          "recovery": "No feature marked complete because a screen or helper exists"
+        },
+        {
+          "id": "SLATE-20-02",
+          "name": "Research Ledger",
+          "loop": "Record source, edition, retrieval date, applicability and verified/modelled/projected status",
+          "effects": "Real rules and calibrated game assumptions stay distinguishable",
+          "recovery": "Unavailable evidence triggers alternate public primary research or an honest gap, never invented certainty"
+        },
+        {
+          "id": "SLATE-20-03",
+          "name": "Engine Verification",
+          "loop": "Test state transitions, boundaries, failure paths, determinism and migration",
+          "effects": "Money, time, identities, dependencies and history remain internally consistent",
+          "recovery": "Meaningful tests fail on old defects; no tests that merely echo the implementation"
+        },
+        {
+          "id": "SLATE-20-04",
+          "name": "Browser Journeys",
+          "loop": "Exercise real decisions from creation through next project on desktop and mobile",
+          "effects": "Screenshots, traces, state assertions and reload checks prove connected behavior",
+          "recovery": "Do not conceal failure with arbitrary sleeps, forced clicks, retries or skips; label fixtures"
+        },
+        {
+          "id": "SLATE-20-05",
+          "name": "Human Acceptance",
+          "loop": "Play varied careers; assess clarity, agency, pacing and variety; inspect real devices",
+          "effects": "Feedback informs tuning without claiming automated tests measure enjoyment",
+          "recovery": "Record remaining limitations; no assertion of perfection or universal coverage from finite samples"
+        }
+      ]
+    }
+  ]
+}

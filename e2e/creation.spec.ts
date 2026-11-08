@@ -1,5 +1,6 @@
 import { expect, test, type Page } from './test';
 import { fillBirthDate, fillName, pickPlace } from './helpers';
+import { listRecords } from './vault';
 
 // Character creation, laid out as 1221's (Identity, Background & Languages, Starting Point, Review), on desktop, phone
 // and the WebKit iPhone projects (playwright.config.ts).
@@ -376,4 +377,30 @@ test('the country list and the map follow the place chosen; another country is s
   await results.getByRole('button', { name: /Toronto/ }).first().click();
   await expect(page.getByText('Chosen: Toronto', { exact: false })).toBeVisible();
   await expect(country.locator('option:checked')).toHaveText('Canada');
+});
+
+// SLATE-01-05.04: Start My Story pressed twice in a row makes one life, not two.
+test('pressing Start My Story twice starts one life', async ({ page }) => {
+  await draftAtReview(page);
+  await page.getByRole('button', { name: 'Start My Story' }).dblclick();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  await expect.poll(async () => (await listRecords(page)).filter((k) => /^slate\.v1\.save\.[^.]+$/.test(k)).length).toBe(1);
+});
+
+// SLATE-01-02.03: your own words are refused when blank or already there, and nothing else is lost.
+test('an ethnicity in your own words: blank or repeated is refused with the reason', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await page.getByRole('button', { name: 'New Game' }).first().click();
+  await fillIdentity(page, 'Ana Folau', 'She/Her');
+  await page.getByRole('button', { name: 'Next: Background & Languages' }).click();
+  await page.getByRole('button', { name: 'Add Your Ethnicity' }).click();
+  await expect(page.getByText('Write a description first.')).toBeVisible();
+  await page.getByRole('textbox', { name: 'Describe Your Ethnicity' }).fill('Tongan and Welsh');
+  await page.getByRole('button', { name: 'Add Your Ethnicity' }).click();
+  await page.getByRole('textbox', { name: 'Describe Your Ethnicity' }).fill('tongan and welsh');
+  await page.getByRole('button', { name: 'Add Your Ethnicity' }).click();
+  await expect(page.getByText("You've already added that.")).toBeVisible();
+  await expect(page.getByRole('list').filter({ hasText: 'Tongan and Welsh' }).getByRole('listitem')).toHaveCount(1);
 });

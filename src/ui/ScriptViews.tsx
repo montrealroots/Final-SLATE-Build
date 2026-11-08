@@ -7,7 +7,8 @@ import {
   designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter,
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, type ModuleId,
-  approvalImpact, FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, type UnscriptedFamily,
+  requirementRemovalImpact, addAct, addBeat, addResearch, addThread, removeBeat, removeAct, removeResearch, updateResearch, removeThread, resolutionLabel, setSceneAct, updateThread,
+  approvalImpact, combineScenes, combineScenesImpact, duplicateScene, splitScene, splitSceneImpact, FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, type UnscriptedFamily,
 } from '../engine';
 import { CONTENT_ISSUES, audienceContentNote, characterPronouns, contentSuggestions, contentSummary, placementExplained, spokenMinutes } from '../engine/script-explain';
 import type { ContentIssue, ContentLevel, Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
@@ -125,6 +126,8 @@ export function ScriptTab({ p }: { p: Project }) {
       {p.axes.format === 'unscripted-series' && <ShowFormat p={p} />}
       {(mods.has('world-rules') || p.axes.format === 'unscripted-series') && <WorldRules p={p} title={p.axes.format === 'unscripted-series' ? 'Format Rules' : 'Story World Rules'} />}
       {/* Every scripted story can declare its setups and payoffs: the edit plan reads them (finish.ts cutConsequences). */}
+      {!nonfiction && <Structure p={p} />}
+      {!nonfiction && <Research p={p} />}
       {(!nonfiction || mods.has('clues') || mods.has('setups') || mods.has('threat') || p.setups.length > 0) && <Setups p={p} />}
       {(mods.has('relationships') || p.relationships.length > 0) && <Relationships p={p} />}
       {(nonfiction || mods.has('factual')) && <Facts p={p} />}
@@ -204,7 +207,7 @@ export function ScriptTab({ p }: { p: Project }) {
                   <button className="btn btn-sm" disabled={locked} onClick={() => setErr(edit(p, () => restoreDraft(p, d.number)))}>Restore This Draft</button>
                   <button className="btn btn-sm" disabled={locked} onClick={() => setRenaming({ number: d.number, label: d.label })}>Rename Draft</button>
                   {!d.approved && <button className="btn btn-sm btn-primary" disabled={locked} onClick={() => {
-                    const impact = approvalImpact(p, d.number);
+                    const impact = [...approvalImpact(p, d.number), ...requirementRemovalImpact(store.state!, p, d.number)];
                     if (impact.length) setApproving({ number: d.number, impact });
                     else setErr(store.act((s) => { approveDraft(s, p, d.number); }));
                   }}>Approve This Draft</button>}
@@ -264,8 +267,18 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
   const locked = !!p.delivered;
   const up = (patch: Partial<Scene>) => setErr(edit(p, () => { updateScene(p, s.id, patch); }));
   const label = sceneLabel(p, s);
+  // Split and combine say what they will do before they do it (SLATE-06-04.02).
+  const [confirm, setConfirm] = useState<{ title: string; lines: string[]; act: () => void } | null>(null);
+  const next = p.scenes[p.scenes.indexOf(s) + 1];
+  const nextInEpisode = next && next.episode === s.episode ? next : null;
   return (
     <article className="scene-card" aria-label={label}>
+      {confirm && (
+        <Modal title={confirm.title} onClose={() => setConfirm(null)} footer={<><button className="btn" onClick={() => setConfirm(null)}>Cancel</button><button className="btn btn-primary" onClick={() => { setErr(edit(p, confirm.act)); setConfirm(null); }}>{confirm.title}</button></>}>
+          <ul>{confirm.lines.map((x, i) => <li key={i}>{x}</li>)}</ul>
+          <p className="dim">Your approved draft and anything filmed stay as they are until you approve a new draft.</p>
+        </Modal>
+      )}
       <div className="row-wrap">
         <div className="grow">
           <h3>{label}</h3>
@@ -275,6 +288,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
           <button className="btn btn-sm" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? 'Close Scene' : 'Edit Scene'}</button>
           <button className="btn btn-sm" disabled={locked} aria-label={`Move ${label} Up`} onClick={() => edit(p, () => moveScene(p, s.id, -1))}>Move Up</button>
           <button className="btn btn-sm" disabled={locked} aria-label={`Move ${label} Down`} onClick={() => edit(p, () => moveScene(p, s.id, 1))}>Move Down</button>
+          <button className="btn btn-sm" disabled={locked} aria-label={`Duplicate ${label}`} onClick={() => setErr(edit(p, () => { duplicateScene(store.state!, p, s.id); }))}>Duplicate</button>
           <button className="btn btn-sm btn-danger" disabled={locked} aria-label={`Delete ${label}`} onClick={onDelete}>Delete</button>
         </div>
       </div>
@@ -291,6 +305,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
             {(p.axes.medium === 'hybrid' || p.axes.technique === 'mixed') && (
               <SelectField label="Technique For This Scene" value={(s.technique ?? 'none') as Technique} options={[{ value: 'none' as Technique, label: p.axes.medium === 'hybrid' ? 'Live Action' : 'Project Default' }, ...(['2d-drawn', '2d-rigged', '3d-cg', 'stop-motion', 'rotoscope'] as Technique[]).map((t) => ({ value: t, label: TECHNIQUE_LABELS[t] }))]} onChange={(v) => up({ technique: v })} />
             )}
+            {(p.acts ?? []).length > 0 && <SelectField label="Act" value={s.act ?? ''} options={[{ value: '', label: 'No Act' }, ...(p.acts ?? []).map((a) => ({ value: a.id, label: a.name }))]} onChange={(v) => setErr(edit(p, () => setSceneAct(p, s.id, v || null)))} />}
             {mods.has('tonal') && <TextField label="Tonal Intention" value={s.tone ?? ''} onChange={(v) => up({ tone: v })} />}
             {p.axes.genres.some((g) => g.id === 'found-footage') && <TextField label="Who Is Recording" value={s.operator ?? ''} onChange={(v) => up({ operator: v })} />}
           </div>
@@ -323,7 +338,10 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
             <TextField label="Turning Point" multiline value={s.turningPoint} hint="Your note on what turns here. Kept with the script; SLATE doesn't read it." onChange={(v) => up({ turningPoint: v })} />
           </div>
           <Check label="Essential To The Story" checked={!!s.essential} hint="The story doesn't work without this scene. If it isn't shot, the edit offers a pickup or cutting around it, and cutting an essential scene leaves a gap." onChange={(v) => up({ essential: v || undefined })} />
-          {!nonfiction && <Dialogue p={p} s={s} up={up} />}
+          {!nonfiction && <Dialogue p={p} s={s} up={up} onSplit={(at) => setConfirm({ title: 'Split The Scene', lines: splitSceneImpact(p, s.id, at), act: () => { splitScene(store.state!, p, s.id, at); } })} />}
+          {nextInEpisode && (
+            <button className="btn btn-sm" aria-label={`Combine ${label} With ${sceneLabel(p, nextInEpisode)}`} onClick={() => setConfirm({ title: 'Combine The Scenes', lines: combineScenesImpact(p, s.id, nextInEpisode.id), act: () => combineScenes(p, s.id, nextInEpisode.id) })}>Combine With The Next Scene</button>
+          )}
           {!nonfiction && s.dialogue.length > 0 && <p className="dim">The written dialogue takes about {Math.max(1, Math.round(spokenMinutes(s)))} {Math.round(spokenMinutes(s)) > 1 ? 'minutes' : 'minute'} to say at a typical pace (about 150 words a minute); the scene is estimated at {s.estMinutes}. A guide only: pace and pauses vary, and nothing checks it.</p>}
           <h4>Production Needs</h4>
           <p className="dim">These drive the breakdown. Nothing is guessed from the text above.</p>
@@ -349,15 +367,16 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
   );
 }
 
-function Dialogue({ p, s, up }: { p: Project; s: Scene; up: (patch: Partial<Scene>) => void }) {
+function Dialogue({ p, s, up, onSplit }: { p: Project; s: Scene; up: (patch: Partial<Scene>) => void; onSplit: (at: number) => void }) {
   const [who, setWho] = useState(s.participants[0] ?? '');
   const [text, setText] = useState('');
   return (
     <div>
       <h4>Dialogue</h4>
       <ul className="list">
-        {s.dialogue.map((d) => (
+        {s.dialogue.map((d, i) => (
           <li key={d.id} className="row-wrap">
+            {i > 0 && <button className="btn btn-sm" aria-label={`Split Before Line ${i + 1}`} onClick={() => onSplit(i)}>Split Here</button>}
             <span className="grow"><strong>{p.characters.find((c) => c.id === d.characterId)?.name ?? 'Unknown'}</strong>{p.axes.dialogueLanguages.length > 1 ? ` (${languageName(d.language)})` : ''}: {d.text}</span>
             <button className="btn btn-sm" onClick={() => up({ dialogue: s.dialogue.filter((x) => x.id !== d.id) })}>Remove Line</button>
           </li>
@@ -389,6 +408,82 @@ function WorldRules({ p, title }: { p: Project; title: string }) {
         <TextField label="Rule" value={rule} onChange={setRule} />
         <TextField label="Limit Or Cost" value={limit} onChange={setLimit} />
         <button className="btn" disabled={!rule.trim()} onClick={() => { edit(p, () => p.worldRules.push({ id: newId(store.state!, 'wr'), rule: rule.trim(), limit: limit.trim() })); setRule(''); setLimit(''); }}>Add Rule</button>
+      </div>
+    </section>
+  );
+}
+
+/** Acts and story threads: the writer's structure, shown and linked by scene, never scored (structure.ts). */
+function Structure({ p }: { p: Project }) {
+  const [act, setAct] = useState('');
+  const [thread, setThread] = useState('');
+  const [err, setErr] = useState<string | null>(null);
+  const sceneOpts = p.scenes.map((s) => ({ value: s.id, label: sceneLabel(p, s) }));
+  return (
+    <section className="card" aria-labelledby="structure-h">
+      <h2 id="structure-h">Acts And Threads</h2>
+      <p className="dim">Your structure. Acts group scenes; a thread follows a story line to the scene that resolves it, or is left open on purpose. Cuts and changes say which thread they touch. SLATE doesn't score either.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      <h3>Acts</h3>
+      {(p.acts ?? []).length ? (
+        <ul className="list">{(p.acts ?? []).map((a) => (
+          <li key={a.id} className="row-wrap">
+            <span className="grow">{a.name} <span className="dim">· {plural(p.scenes.filter((s) => s.act === a.id).length, 'scene')}</span></span>
+            <button className="btn btn-sm" aria-label={`Remove ${a.name}`} onClick={() => setErr(edit(p, () => removeAct(p, a.id)))}>Remove</button>
+          </li>
+        ))}</ul>
+      ) : <p className="muted">No acts yet. Choose a scene's act in the scene itself once you add some.</p>}
+      <div className="inline-form">
+        <TextField label="New Act Or Sequence" value={act} maxLength={80} onChange={setAct} />
+        <button className="btn" disabled={!act.trim()} onClick={() => { setErr(edit(p, () => { addAct(store.state!, p, act); })); setAct(''); }}>Add Act</button>
+      </div>
+      <h3>Threads</h3>
+      <ul className="list">{(p.threads ?? []).map((t) => (
+        <li key={t.id}>
+          <div className="row-wrap"><strong className="grow">{t.name}</strong><span className="dim">{resolutionLabel(p, t)}</span><button className="btn btn-sm" aria-label={`Remove The Thread ${t.name}`} onClick={() => setErr(edit(p, () => removeThread(p, t.id)))}>Remove</button></div>
+          <fieldset style={{ border: 0, padding: 0 }}>
+            <legend className="small">Scenes In {t.name}</legend>
+            <div className="chip-row">{sceneOpts.map((o) => <Check key={o.value} label={o.label} checked={t.sceneIds.includes(o.value)} onChange={(v) => setErr(edit(p, () => { updateThread(p, t.id, { sceneIds: v ? [...t.sceneIds, o.value] : t.sceneIds.filter((x) => x !== o.value) }); }))} />)}</div>
+          </fieldset>
+          <fieldset style={{ border: 0, padding: 0 }}>
+            <legend className="small">Characters In {t.name}</legend>
+            <div className="chip-row">{p.characters.map((c) => <Check key={c.id} label={c.name} checked={t.characterIds.includes(c.id)} onChange={(v) => setErr(edit(p, () => { updateThread(p, t.id, { characterIds: v ? [...t.characterIds, c.id] : t.characterIds.filter((x) => x !== c.id) }); }))} />)}</div>
+          </fieldset>
+          <SelectField label={`How ${t.name} Ends`} value={t.resolution === 'open' ? 'open' : t.resolvedIn ?? ''}
+            options={[{ value: '', label: 'Not Decided Yet' }, { value: 'open', label: 'Left Open On Purpose' }, ...sceneOpts.map((o) => ({ value: o.value, label: `Resolves In ${o.label}` }))]}
+            onChange={(v) => setErr(edit(p, () => { updateThread(p, t.id, v === 'open' ? { resolution: 'open' } : { resolution: 'resolves', resolvedIn: v || null }); }))} />
+        </li>
+      ))}</ul>
+      <div className="inline-form">
+        <TextField label="New Thread" value={thread} maxLength={80} onChange={setThread} />
+        <button className="btn" disabled={!thread.trim()} onClick={() => { setErr(edit(p, () => { addThread(store.state!, p, thread); })); setThread(''); }}>Add Thread</button>
+      </div>
+    </section>
+  );
+}
+
+/** Research questions behind the script: a record, never verified or scored by the game (research.ts). */
+function Research({ p }: { p: Project }) {
+  const [q, setQ] = useState('');
+  const [err, setErr] = useState<string | null>(null);
+  return (
+    <section className="card" aria-labelledby="research-h">
+      <h2 id="research-h">Research</h2>
+      <p className="dim">Questions your story rests on, what you checked them against, and the scenes they inform. SLATE doesn't verify them; an open or uncertain one is noted on its scenes until you mark it reviewed.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      <ul className="list">{(p.research ?? []).map((n) => (
+        <li key={n.id}>
+          <div className="row-wrap"><strong className="grow">{n.question}</strong><button className="btn btn-sm" aria-label={`Remove The Question ${n.question}`} onClick={() => setErr(edit(p, () => removeResearch(p, n.id)))}>Remove</button></div>
+          <div className="grid grid-2 form">
+            <TextField label="Reference" hint="A book, archive, expert or source you checked." value={n.reference} maxLength={200} onChange={(v) => setErr(edit(p, () => { updateResearch(p, n.id, { reference: v }); }))} />
+            <SelectField label="Status" value={n.status} options={[{ value: 'open', label: 'Open' }, { value: 'uncertain', label: 'Uncertain' }, { value: 'reviewed', label: 'Reviewed' }]} onChange={(v) => setErr(edit(p, () => { updateResearch(p, n.id, { status: v }); }))} />
+          </div>
+          <div className="chip-row">{p.scenes.map((s) => <Check key={s.id} label={sceneLabel(p, s)} checked={n.sceneIds.includes(s.id)} onChange={(v) => setErr(edit(p, () => { updateResearch(p, n.id, { sceneIds: v ? [...n.sceneIds, s.id] : n.sceneIds.filter((x) => x !== s.id) }); }))} />)}</div>
+        </li>
+      ))}</ul>
+      <div className="inline-form">
+        <TextField label="New Question" value={q} maxLength={200} onChange={setQ} />
+        <button className="btn" disabled={!q.trim()} onClick={() => { setErr(edit(p, () => { addResearch(store.state!, p, q); })); setQ(''); }}>Add Question</button>
       </div>
     </section>
   );
@@ -581,6 +676,31 @@ export function CharactersTab({ p }: { p: Project }) {
   );
 }
 
+/** How the character changes, beat by beat, each in a scene they are in (structure.ts addBeat). Never scored. */
+function ArcBeats({ p, c }: { p: Project; c: StoryCharacter }) {
+  const scenes = p.scenes.filter((s) => s.participants.includes(c.id));
+  const [scene, setScene] = useState(scenes[0]?.id ?? '');
+  const [change, setChange] = useState('');
+  const [err, setErr] = useState<string | null>(null);
+  return (
+    <fieldset style={{ border: 0, padding: 0 }}>
+      <legend style={{ fontWeight: 600 }}>Arc</legend>
+      <p className="dim">Where {c.name || 'this character'} changes. Cutting one of these scenes says what the audience no longer sees; nothing is scored.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      <ul className="list">{(c.beats ?? []).map((b) => { const s = p.scenes.find((x) => x.id === b.sceneId); return (
+        <li key={b.id} className="row-wrap"><span className="grow">{s ? sceneLabel(p, s) : 'A removed scene'}: {b.change}</span><button className="btn btn-sm" aria-label={`Remove The Beat ${b.change}`} onClick={() => setErr(edit(p, () => removeBeat(p, c.id, b.id)))}>Remove</button></li>
+      ); })}</ul>
+      {scenes.length ? (
+        <div className="inline-form">
+          <SelectField label="Scene" value={scene || scenes[0].id} options={scenes.map((s) => ({ value: s.id, label: sceneLabel(p, s) }))} onChange={setScene} />
+          <TextField label="What Changes" value={change} maxLength={200} onChange={setChange} />
+          <button className="btn" disabled={!change.trim()} onClick={() => { setErr(edit(p, () => { addBeat(store.state!, p, c.id, scene || scenes[0].id, change); })); setChange(''); }}>Add Beat</button>
+        </div>
+      ) : <p className="muted">Put {c.name || 'them'} in a scene to mark where they change.</p>}
+    </fieldset>
+  );
+}
+
 function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: StoryCharacter; onRemove: () => void; onDesignChange: () => void }) {
   const [open, setOpen] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -612,6 +732,7 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
             <SelectField label="Entity" value={c.entity} options={ENTITIES.map((r) => ({ value: r, label: title(r) }))} onChange={(v) => up({ entity: v })} />
             <SelectField label="Realized As" value={c.realization} options={REALIZATIONS.map((r) => ({ value: r, label: REAL_LABEL[r] }))} onChange={(v) => up({ realization: v })} />
             <TextField label="Age In Story" value={c.ageInStory} onChange={(v) => up({ ageInStory: v })} />
+            <TextField label="Also Called" hint="Other names they go by, separated with commas. Shown with the part in casting; the character stays one character." value={(c.aliases ?? []).join(', ')} onChange={(v) => up({ aliases: parseList(v).length ? [...new Set(parseList(v))] : undefined })} />
             <SelectField label="Pronouns" value={characterPronouns(c) ?? ''} hint="Casting marks performers who match, and can list them first." options={[{ value: '', label: 'Open To Anyone' }, { value: 'he', label: 'He/Him' }, { value: 'she', label: 'She/Her' }, { value: 'they', label: 'They/Them' }]} onChange={(v) => up({ pronouns: v })} />
             <SelectField label="Speaks" value={c.languages[0] ?? p.axes.dialogueLanguages[0]} options={p.axes.dialogueLanguages.map((l) => ({ value: l, label: languageName(l) }))} onChange={(v) => up({ languages: [v] })} />
             <SelectField label="Awards Placement" value={c.awardPlacement ?? ''} hint={placementExplained(c)}
@@ -629,6 +750,7 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
             <div className="chip-row">{METHODS.map((m) => <Check key={m} label={title(m)} checked={c.methods.includes(m)} onChange={(v) => up({ methods: v ? [...c.methods, m] : c.methods.filter((x) => x !== m) })} />)}</div>
           </fieldset>
           <CharacterBackgrounds name={c.name} ethnicities={c.heritages ?? []} nationalities={c.nationalities ?? []} onChange={(patch) => up(patch)} />
+          <ArcBeats p={p} c={c} />
           <div className="grid grid-2 form">
             {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Your description for design and casting. Kept with the script; SLATE doesn't read it." onChange={(v) => up({ entityNote: v })} />}
             <TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown sent with offers. It doesn't change who accepts or how fast." onChange={(v) => up({ description: v })} />

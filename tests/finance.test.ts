@@ -216,3 +216,22 @@ describe('saves from before financing', () => {
     expect(approvalRights(p)).toEqual(['Casting Approval']);
   });
 });
+
+// SLATE-04-05.02: a backer reads what was sent, as it was then; editing the script later changes their copy in no way.
+describe('documents as they were sent', () => {
+  it('keeps each document word for word with the approved draft, and later edits never reach it', () => {
+    const s = startLife('fin-copy');
+    const p = withScript(s, unfunded(s, 'micro'));
+    const before = { logline: p.story.logline, premise: p.story.premise };
+    const d = approachBacker(s, p, 'grant');
+    expect(d.sentCopy?.draft).toBe(p.approvedDraft);
+    const pitch = d.sentCopy!.documents.find((x) => x.name === 'Pitch')!;
+    expect(pitch.fields).toEqual([{ label: 'Logline', text: before.logline }, { label: 'Premise', text: before.premise }]);
+    expect(d.sentCopy!.documents.map((x) => x.name)).toEqual(d.sent);
+    p.story.logline = 'A completely different film.';
+    p.story.premise = '';
+    expect(pitch.fields[0].text).toBe(before.logline);
+    // A deal is plain data: the copy survives a save round trip unchanged.
+    expect(JSON.parse(JSON.stringify(d)).sentCopy).toEqual(d.sentCopy);
+  });
+});
