@@ -1,11 +1,11 @@
 // Stage 12 of the gameplay-depth package: tests for children that were built before the package and had none
 // (docs/depth/COVERAGE-LEDGER.csv rows marked IMPLEMENTED UNVERIFIED). Each asserts the rule, not only the sentence.
 import { describe, expect, it } from 'vitest';
-import { neededRoles, projectedCost, roleCandidates, scriptIssues, unlockPicture, validateAxes } from '../src/engine';
+import { computeCredits, neededRoles, projectedCost, roleCandidates, scriptIssues, unlockPicture, validateAxes } from '../src/engine';
 import { buildTasks } from '../src/engine/production/tasks';
 import { breakdownComplete } from '../src/engine/script-explain';
 import type { ProjectAxes } from '../src/engine/types';
-import { approve, buildProject, startLife } from './helpers';
+import { approve, buildProject, castAll, startLife } from './helpers';
 
 describe('project axes (SLATE-03-01)', () => {
   it('an unsupported combination is refused with the reason, and the axes are left as they were', () => {
@@ -111,5 +111,29 @@ describe('wants and fears (SLATE-05-04)', () => {
     expect(breakdownComplete({ ...part, fears: 'The sea.' })).toBe(true);
     expect(breakdownComplete({ ...part, fears: '   ' })).toBe(false);
     expect(breakdownComplete({ ...part, wants: '', fears: 'The sea.' })).toBe(false);
+  });
+});
+
+describe('a character in no scene (SLATE-05-05)', () => {
+  it('creates no casting offer, no fee in the estimate, no work and no credit', () => {
+    const s = startLife('gaps-ghost');
+    const make = (title: string, ghost: boolean) => {
+      const p = buildProject(s, { title, format: 'short', medium: 'live-action', runtime: 10 },
+        [{ name: 'Ada', patch: { roleSize: 'lead' } }, ...(ghost ? [{ name: 'Ghost', patch: { roleSize: 'supporting' } }] : [])], [{ place: 'Room', chars: ['Ada'] }]);
+      approve(s, p);
+      return p;
+    };
+    const with_ = make('With A Ghost', true);
+    const without = make('Without', false);
+    const ghost = with_.characters.find((c) => c.name === 'Ghost')!.id;
+    expect(projectedCost(s, with_).cast).toBe(projectedCost(s, without).cast);
+    castAll(s, with_);
+    expect(with_.hires.some((h) => h.characterId === ghost)).toBe(false);
+    expect(buildTasks(with_).some((t) => t.assetRef === ghost)).toBe(false);
+    with_.cast.push({ characterId: ghost, performer: 'player', method: 'on-camera', note: '' }); // labelled fixture: cast anyway
+    with_.cast.push({ characterId: with_.characters.find((c) => c.name === 'Ada')!.id, performer: 'player', method: 'on-camera', note: '' });
+    const credits = computeCredits(s, with_);
+    expect(credits.some((c) => c.characterName === 'Ada')).toBe(true); // a part in a scene is credited
+    expect(credits.some((c) => c.characterName === 'Ghost')).toBe(false);
   });
 });

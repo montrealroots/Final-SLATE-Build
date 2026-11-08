@@ -80,7 +80,7 @@ SLATE-05-04.01,SLATE-05-04,Wants and fears per character; directed relationships
 SLATE-05-04.02,SLATE-05-04,Arc beats tied to scenes,VERIFIED,tests/structure.test.ts::a beat goes only in a scene the character is in,
 SLATE-05-04.03,SLATE-05-04,Removing a character previews dependent scenes and relationships first,VERIFIED,tests/scenes.test.ts::removing a character lists the scenes that use them,
 SLATE-05-05.01,SLATE-05-05,Scenes and episodes a character appears in drive casting days and credits,VERIFIED EXISTING,tests/script-effects.test.ts::series regulars are booked for every episode,
-SLATE-05-05.02,SLATE-05-05,"A character in no scene creates no booking, fee or credit",IMPLEMENTED UNVERIFIED,,neededRoles skips them; no test
+SLATE-05-05.02,SLATE-05-05,"A character in no scene creates no booking, fee or credit",VERIFIED,"tests/depth-gaps.test.ts::creates no casting offer, no fee in the estimate, no work and no credit",
 SLATE-06-01.01,SLATE-06-01,"Episode, place, interior or exterior, time of day, participants and length",VERIFIED EXISTING,tests/media.test.ts::produces episodes with episode-specific credits,
 SLATE-06-01.02,SLATE-06-01,Impossible or missing combinations give an actionable message,VERIFIED EXISTING,tests/screenwriting.test.ts::a readiness check counts only once revised,
 SLATE-06-02.01,SLATE-06-02,Action and dialogue with speakers and languages,VERIFIED EXISTING,tests/script-effects.test.ts::subtitles are priced by runtime for each language,

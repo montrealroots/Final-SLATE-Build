@@ -178,7 +178,7 @@ C = {
 '05-05': ('Script > Characters, Cast', 'src/engine/hiring.ts', [
   ('Scenes and episodes a character appears in drive casting days and credits', 'VE',
    ['tests/script-effects.test.ts::series regulars are booked for every episode'], ''),
-  ('A character in no scene creates no booking, fee or credit', 'IU', [], 'neededRoles skips them; no test'),
+  ('A character in no scene creates no booking, fee or credit', 'V', ['tests/depth-gaps.test.ts::creates no casting offer, no fee in the estimate, no work and no credit'], ''),
 ]),
 '06-01': ('Script > Scene editor', 'src/engine/projects.ts', [
   ('Episode, place, interior or exterior, time of day, participants and length', 'VE', ['tests/media.test.ts::produces episodes with episode-specific credits'], ''),
