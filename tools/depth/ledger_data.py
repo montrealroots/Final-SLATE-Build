@@ -122,10 +122,10 @@ C = {
   ('Create, save and reopen a project by a stable ID', 'VE', ['tests/journeys.test.ts::runs from script to delivery'], ''),
   ('Shelving or cancelling a project settles its commitments and keeps its history', 'V',
    ['tests/shelve.test.ts::says what it will do; then releases people', 'tests/shelve.test.ts::refuses changes and hiring until it is taken up again', 'e2e/structure.spec.ts::a project shelved and taken up again'], ''),
-  ('Projects with the same title stay distinguishable', 'IU', [], 'IDs differ; the list shows only titles'),
+  ('Projects with the same title stay distinguishable', 'V', ['e2e/career.spec.ts::two projects with one title are told apart'], 'Repaired November 8, 2026: the lists showed only titles; same-title projects now show when each was started'),
 ]),
 '03-05': ('Overview', 'src/engine/projects.ts', [
-  ('The stages a project will go through, and what each needs, are shown before development', 'V', ['tests/stages.test.ts::changes with the medium, technique and format, as the work built for them does'], 'Repaired November 8, 2026: nothing explained them; the New Script form now lists them (src/engine/stages.ts)'),
+  ('The stages a project will go through, and what each needs, are shown before development', 'V', ['tests/stages.test.ts::changes with the medium, technique and format, as the work built for them does', 'e2e/career.spec.ts::New Script says what the project goes through'], 'Repaired November 8, 2026: nothing explained them; the New Script form now lists them (src/engine/stages.ts)'),
   ('No inert control appears as implemented', 'VE', ['e2e/viewports.spec.ts::no tutorial, no excluded systems'], ''),
 ]),
 '04-01': ('Script > Story', 'src/engine/script-effects.ts', [
@@ -470,7 +470,7 @@ C = {
   ('Results kept per edition; later rule changes never rewrite them', 'VE', ['tests/rulebooks.test.ts::keeps every nominee, winner and entry after results'], ''),
 ]),
 '18-01': ('Profile', 'src/ui/Places.tsx', [
-  ('Credits across projects on Profile', 'IU', [], 'Profile lists credits; no test'),
+  ('Credits across projects on Profile', 'VE', ['e2e/connected.spec.ts::Credits across projects (SLATE-18-01)'], ''),
 ]),
 '18-02': ('Profile, Cast, Crew', 'src/engine/relationships.ts; src/engine/hiring.ts', [
   ('Collaboration history with people you have worked with', 'V',

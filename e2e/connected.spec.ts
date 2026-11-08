@@ -148,6 +148,8 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   // Working relationships (SLATE-18-02): the crew who saw Hard Water through are kept on Profile.
   await nav(page, 'Profile');
   await expect(page.locator('section.card', { has: page.getByRole('heading', { name: "People You've Worked With" }) })).toContainText(/Hard Water \([^)]*, worked through to delivery\)/);
+  // Credits across projects (SLATE-18-01): the delivered project is listed with what you did on it.
+  await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Credits', exact: true }) }).getByRole('button', { name: 'Hard Water' }).first()).toBeVisible();
   await nav(page, 'Projects');
   await page.getByRole('button', { name: 'Hard Water' }).click();
 

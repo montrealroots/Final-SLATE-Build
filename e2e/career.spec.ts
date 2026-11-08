@@ -44,3 +44,34 @@ test('a proposal is accepted into a funded project, another is declined, and bot
   await nav(page, 'Projects');
   await expect(page.getByRole('button', { name: 'Second Crossing' })).toBeVisible();
 });
+
+test('New Script says what the project goes through, and two projects with one title are told apart', async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-05-04');
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'New Script' }).first().click();
+  // SLATE-03-05: the stages follow the medium and technique chosen.
+  const stages = page.locator('section.card', { has: page.getByRole('heading', { name: 'What This Project Goes Through' }) });
+  await expect(stages).toContainText('Production: Shoot days on location');
+  await page.getByLabel('Medium').selectOption({ label: 'Animation' });
+  await expect(stages).toContainText('motion capture sessions for any captured part');
+  await page.getByLabel(/^Animation Technique/).selectOption({ label: 'Stop Motion' });
+  await expect(stages).toContainText('build armatures, puppets and sets');
+  await expect(stages).not.toContainText('Shoot days on location');
+  await page.getByLabel('Medium').selectOption({ label: 'Live Action' });
+  await page.getByLabel('Working Title').fill('Twin');
+  await page.getByRole('button', { name: 'Create Project' }).click();
+  await expect(page.getByRole('heading', { name: 'Twin', level: 1 })).toBeVisible();
+  // SLATE-03-04: a second project with the same title.
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByLabel('Working Title').fill('Twin');
+  await page.getByLabel('Format').selectOption({ label: 'Short Film' });
+  await page.getByRole('button', { name: 'Create Project' }).click();
+  await expect(page.getByRole('heading', { name: 'Twin', level: 1 })).toBeVisible();
+  await nav(page, 'Projects');
+  await expect(page.getByRole('button', { name: /^Twin, started May 4, 2026, first of that title$/ })).toBeVisible();
+  await expect(page.getByRole('button', { name: /^Twin, started May 4, 2026, second of that title$/ })).toBeVisible();
+  await expect(page.getByText(/Short Film · Live Action · started May 4, 2026, second of that title/)).toBeVisible();
+  await nav(page, 'Home');
+  await expect(page.getByText(', started May 4, 2026, first of that title')).toBeVisible();
+});
