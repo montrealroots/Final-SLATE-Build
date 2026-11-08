@@ -9,7 +9,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`), #25 (financing: money from backers, save version 5), #26 (screenwriting audit, dated motion-capture sessions, replacement credits, San Sebastián rules), #27 (the 1221 layout), #28 (1221's creation suite), #29 and #30 (pronouns settle the billing), #31 (backgrounds: kept holidays, casting information, languages), #32 (language suggestions for every background but Assyrian), #33 (script field effects), #34 (script rules review; `6e2abf0`), #35 (input loss, startup size, connected journey; `c00c261`), #36 (atomic genre catalog, careers, reload lock; `5e142f4`), #37 (micro-budget tuning; `fddd6b6`), #38 (budget-size wording; `b025147`). `main` was at `3845c2d` when the Gap Completion Package was applied.
+- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`), #25 (financing: money from backers, save version 5), #26 (screenwriting audit, dated motion-capture sessions, replacement credits, San Sebastián rules), #27 (the 1221 layout), #28 (1221's creation suite), #29 and #30 (pronouns settle the billing), #31 (backgrounds: kept holidays, casting information, languages), #32 (language suggestions for every background but Assyrian), #33 (script field effects), #34 (script rules review; `6e2abf0`), #35 (input loss, startup size, connected journey; `c00c261`), #36 (atomic genre catalog, careers, reload lock; `5e142f4`), #37 (micro-budget tuning; `fddd6b6`), #38 (budget-size wording; `b025147`), #39 to #41 (screen review, identity, depth stages 1 to 4), #42 (depth stages 5 to 8; `cfe7d71`). `main` was at `3845c2d` when the Gap Completion Package was applied.
 - **Package:** "SLATE Gap Completion Package" (predates #2 and #3). Its references are not committed; the imported data is under `src/world/` and `docs/world/`.
 - **Run first:**
 
@@ -188,7 +188,8 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       recouped and received apart;
     - later windows (`16-05`): 120 days after a release, a new wave of offers for territories no exclusive deal holds
       and this route hasn't released.
-  - Stage 11, career, VERIFIED by unit tests (browser coverage of the two new screens is still to add):
+  - Stage 11, career, VERIFIED (unit tests; `e2e/career.spec.ts` drives Proposals on desktop, phone and WebKit, and
+    `e2e/connected.spec.ts` checks People You've Worked With after delivery):
     - relationships (`18-02`, `relationships.ts`): each person keeps a history with you (completed a project, let go,
       turned down their counteroffer). Someone who saw a project through takes 90% of their rate without haggling;
       someone let go once asks 115%, twice refuses; someone whose counter you declined won't go below their rate. No
@@ -200,9 +201,13 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       names and starts a project funded by a commissioner deal (85% income share, picture approval, 20% on delivery,
       deliver within 540 days, enforced by the existing finance deadline); declining closes it. Calibration is game
       calibration.
-- **Next:** browser checks for the Proposals panel and the People You've Worked With list; then the IMPLEMENTED
-  UNVERIFIED children (25) that need only a test, and the package's playthroughs
-  (`docs/depth/package/05-PLAYTHROUGHS-AND-ACCEPTANCE.md`).
+  - Stage 12, under way (`tests/depth-gaps.test.ts`): `03-01`, `06-02`, `07-02`, `10-01`, `15-04` now have tests of the
+    rule. `08-01` was NEEDS REPAIR in practice: a role or part no available person could take was priced at nothing.
+    `projectedCost(...).uncertain` now names them and the Financing card says the estimate can't price them.
+- **Next:** the remaining IMPLEMENTED UNVERIFIED children (19: `03-04`, `03-05`, `05-03`, `05-04`, `05-05`, `09-03`,
+  `10-02`, `10-04`, `10-05`, `11-03`/`13-03` puppet repair, `11-04`, `12-01`, `12-04`, `13-04`, `13-05`, `18-01`,
+  `19-03` x2), then the package's playthroughs (`docs/depth/package/05-PLAYTHROUGHS-AND-ACCEPTANCE.md`). Missing:
+  `20-02` (a per-feature source register for production rates) and `20-04` (journeys, added per stage).
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 
