@@ -395,7 +395,7 @@ function affordablePool(state: GameState, p: Project, roleId: string, win = prod
  * person combines them (COMBINES). Until November 7, 2026 proposals went alphabetically, so the colorist and the
  * re-recording mixer were hired before the editor and sound designer who would have covered them.
  */
-export function requiredCrewPlan(state: GameState, p: Project): { nr: NeededRole; cost: number }[] {
+export function requiredCrewPlan(state: GameState, p: Project): { nr: NeededRole; cost: number; noCandidate?: true }[] {
   const win = productionWindow(state, p);
   let required = neededRoles(p, state).filter((r) => r.required);
   if (p.funding.scenarioId === 'micro') {
@@ -403,13 +403,13 @@ export function requiredCrewPlan(state: GameState, p: Project): { nr: NeededRole
     const reach = (r: NeededRole) => (COMBINES[r.roleId] ?? []).filter((x) => ids.has(x)).length;
     required = [...required].sort((a, b) => reach(b) - reach(a));
   }
-  const plan: { nr: NeededRole; cost: number }[] = [];
+  const plan: { nr: NeededRole; cost: number; noCandidate?: true }[] = [];
   for (const nr of required) {
     const needsOwnPerson = nr.roleId === 'camera-operator' && p.axes.format === 'unscripted-series';
     if (p.hires.some((h) => (needsOwnPerson ? h.roleId === nr.roleId : covers(h.roleId, nr.roleId)) && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
     if (!needsOwnPerson && plan.some((x) => covers(x.nr.roleId, nr.roleId))) continue;
     const cheapest = affordablePool(state, p, nr.roleId, win)[0];
-    plan.push({ nr, cost: cheapest ? cheapest.dayRate * estimateDays(p, nr.roleId) : 0 });
+    plan.push(cheapest ? { nr, cost: cheapest.dayRate * estimateDays(p, nr.roleId) } : { nr, cost: 0, noCandidate: true });
   }
   return plan;
 }

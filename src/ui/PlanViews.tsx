@@ -9,7 +9,7 @@ import {
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
-  type StaffingProposal, covers, fundingScenario,
+  type StaffingProposal, covers, fundingScenario, projectedCost,
 } from '../engine';
 import { breakdownComplete, characterPronouns, pronounsMatch } from '../engine/script-explain';
 import { AUDITION_NOTICE_DAYS, auditionsFor, callBack, chemistryPartners, inviteRefusal, inviteToAudition, setShortlisted } from '../engine/casting-calls';
@@ -641,6 +641,10 @@ function FinancingPanel({ p }: { p: Project }) {
           <dt>Received</dt><dd>{money(f.received)}{f.owedOnDelivery > 0 ? ` (${money(f.owedOnDelivery)} more on delivery)` : ''}</dd>
           <dt>Still To Raise</dt><dd><strong>{money(f.stillToRaise)}</strong></dd>
         </dl>
+        {(() => {
+          const unpriced = p.approvedDraft === null || p.delivered ? [] : projectedCost(g, p).uncertain;
+          return unpriced.length ? <p className="callout callout-warning">The estimate can't price {unpriced.join(', ')}: no one available can take {unpriced.length === 1 ? 'it' : 'them'} on now, so the real cost is likely higher.</p> : null;
+        })()}
         <div className="inline-form spaced">
           <NumberField label="Change Financing Target" value={target} min={1000} step={1000} error={targetErr} onChange={setTarget} />
           <button className="btn" onClick={() => setTargetErr(store.act((s) => setFinanceTarget(live(s), target)))}>Set Target</button>

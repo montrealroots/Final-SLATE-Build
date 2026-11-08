@@ -8,6 +8,7 @@
 
 import { ledgerTotals } from './budget';
 import { castRoleFor, estimateDays, requiredCrewPlan, roleCandidates } from './hiring';
+import { roleLabel } from './people';
 import { buildTasks, dayFees, estimatedShootDays, materialCost, VOICE_SESSION_STUDIO, RENDER_NODE_DAY_COST } from './production';
 import { RENDER_HOURS_PER_FRAME } from './production/rates';
 import { approvedCharacters, approvedScenes, fundingScenario, onDraftApproved } from './projects';
@@ -26,12 +27,19 @@ export interface CostProjection {
   /** Recording studio and render time still to come. */
   facilities: number;
   total: number;
+  /**
+   * Roles and parts no one available can fill, so the total can't price them (SLATE-08-01, November 8, 2026). Until
+   * then they were counted at nothing, and a script needing someone the pool lacks looked cheaper than one that didn't.
+   */
+  uncertain: string[];
 }
 
 export function projectedCost(state: GameState, p: Project): CostProjection {
   const t = ledgerTotals(p);
   const used = t.fund - t.available;
-  const crew = requiredCrewPlan(state, p).reduce((a, x) => a + x.cost, 0);
+  const plan = requiredCrewPlan(state, p);
+  const crew = plan.reduce((a, x) => a + x.cost, 0);
+  const uncertain = plan.filter((x) => x.noCandidate).map((x) => roleLabel(x.nr.roleId));
   // Every part still to cast, by the methods the Cast page offers for it.
   let cast = 0;
   for (const c of approvedCharacters(p)) {
@@ -43,6 +51,7 @@ export function projectedCost(state: GameState, p: Project): CostProjection {
       if (p.cast.some((a) => a.characterId === c.id && a.method === m)) continue;
       const cheapest = roleCandidates(state, p, castRoleFor(m)).filter((x) => x.experience >= 2).sort((a, b) => a.dayRate - b.dayRate)[0];
       if (cheapest) cast += cheapest.dayRate * estimateDays(p, castRoleFor(m), c.id, m);
+      else uncertain.push(`${c.name} (${m.replace('-', ' ')})`);
     }
   }
   // Planned: the plan's tasks. Not yet planned: the work the script needs, less anything finished already (a sequel's
@@ -59,7 +68,7 @@ export function projectedCost(state: GameState, p: Project): CostProjection {
     if (x.kind === 'anim:render') return a + Math.ceil(((x.units - x.done) * RENDER_HOURS_PER_FRAME[p.axes.animationQuality]) / 24) * RENDER_NODE_DAY_COST;
     return a;
   }, 0);
-  return { used, crew, cast, production, facilities, total: used + crew + cast + production + facilities };
+  return { used, crew, cast, production, facilities, total: used + crew + cast + production + facilities, uncertain };
 }
 
 /** The Budget Estimate for an approved script: its projected cost with the contingency, in whole thousands. */

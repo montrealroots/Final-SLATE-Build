@@ -106,7 +106,7 @@ C = {
   ('Format, basis, medium and technique chosen separately', 'VE', ['tests/media.test.ts::follows boards, animatic, voice and animation dependencies'], ''),
   ('Each combination routes to its own production', 'VE',
    ['e2e/journeys.spec.ts::hybrid: a live-action scene and a 3D scene share one production', 'e2e/journeys.spec.ts::stop motion to delivery'], ''),
-  ('An unsupported combination says why and is not converted', 'IU', [], 'validateAxes refuses with a message; no test'),
+  ('An unsupported combination says why and is not converted', 'V', ['tests/depth-gaps.test.ts::an unsupported combination is refused with the reason, and the axes are left as they were'], ''),
 ]),
 '03-02': ('New Script, Overview', 'src/engine/genres.ts; src/engine/script-effects.ts', [
   ('Title, several genres, tone, setting, audience and dialogue languages', 'VE', ['tests/genres.test.ts::composes shared mechanics once'], ''),
@@ -188,7 +188,7 @@ C = {
 '06-02': ('Scene editor', 'src/engine/script-explain.ts', [
   ('Action and dialogue with speakers and languages', 'VE', ['tests/script-effects.test.ts::subtitles are priced by runtime for each language'], ''),
   ('Length is not quality', 'VE', ['tests/script-effects.test.ts::meaningless text manufactures no quality'], ''),
-  ('A line whose speaker is no longer in the scene asks for repair', 'IU', [], 'scriptIssues reports it; no test'),
+  ('A line whose speaker is no longer in the scene asks for repair', 'V', ['tests/depth-gaps.test.ts::a line whose speaker has left the scene blocks approval until repaired or marked deliberate'], ''),
 ]),
 '06-03': ('Scene editor > Breakdown', 'src/engine/projects.ts', [
   ('Props, crowd, animals, stunts, intimacy, music, vehicles and effects declared per scene', 'VE',
@@ -218,7 +218,7 @@ C = {
   ('A season arc and episode order', 'V',
    ['tests/episodes.test.ts::an episode moves with its scenes, in every draft, and its writer', 'e2e/season.spec.ts::a season planned and reordered'],
    'The arc is the writer\'s plan: advice notes only, carried into the next season; it scores nothing'),
-  ('The estimate covers every episode, not one', 'IU', [], 'scriptEstimate sums scenes across episodes; no test'),
+  ('The estimate covers every episode, not one', 'V', ['tests/depth-gaps.test.ts::covers every episode: scenes added to a later episode raise the projected cost'], ''),
 ]),
 '07-03': ('Cast', 'src/engine/hiring.ts', [
   ('Regulars, recurring parts and guests booked for the episodes they appear in', 'VE',
@@ -239,7 +239,7 @@ C = {
 ]),
 '08-01': ('Budget', 'src/engine/estimate.ts; src/engine/budget.ts', [
   ('The estimate by category with contingency, separate from money in hand', 'VE', ['tests/finance.test.ts::a new project has an estimate and a target'], ''),
-  ('A line with no available candidate is flagged as uncertain, never free', 'IU', [], 'projectedCost prices roles by rate; no test for a role with no candidate'),
+  ('A line with no available candidate is flagged as uncertain, never free', 'V', ['tests/depth-gaps.test.ts::names a part no experienced performer can take, instead of counting it as free'], 'Repaired November 8, 2026: it was counted at nothing; the Financing card now names it'),
 ]),
 '08-02': ('Budget > Backers', 'src/engine/finance.ts', [
   ('Each backer says what it needs; send; an answer after some days', 'VE',
@@ -295,7 +295,7 @@ C = {
 ]),
 '10-01': ('Crew', 'src/engine/hiring.ts', [
   ('Required crew derived from the work', 'VE', ['tests/tight-budget.test.ts::staffing hires a required crew the money can pay'], ''),
-  ('Each role says why it is needed', 'IU', [], 'Roles name their department; no test of the reason shown'),
+  ('Each role says why it is needed', 'V', ['tests/depth-gaps.test.ts::each role says why it is needed, and a scene element brings its specialist with that reason'], ''),
   ('Unfilled required work stays blocked with the reason', 'VE', ['tests/tight-budget.test.ts::a voice session it can no longer pay'], ''),
 ]),
 '10-02': ('Crew > Find', 'src/engine/hiring.ts', [
@@ -423,7 +423,7 @@ C = {
   ('Dialogue edit with ADR and Foley as their own work', 'V',
    ['tests/post-sound.test.ts::a new project edits dialogue, records Foley and cuts effects as separate work', 'tests/post-sound.test.ts::when the weather spoiled the sound', 'e2e/media.spec.ts::Sound finishing as its own work (SLATE-15-04.02)'],
    'New projects only; the sound designer does all three, so short works take a day or two longer'),
-  ('Unlocking the picture reopens the finishing work it affects', 'IU', [], 'unlockPicture exists; no test'),
+  ('Unlocking the picture reopens the finishing work it affects', 'V', ['tests/depth-gaps.test.ts::restarts finishing work that waited on the lock and leaves the rest alone'], ''),
 ]),
 '15-05': ('Edit, Release', 'src/engine/finish.ts', [
   ('Delivery checks name what is missing', 'VE', ['tests/script-effects.test.ts::a shoot day left empty by a cut is cancelled'], ''),
