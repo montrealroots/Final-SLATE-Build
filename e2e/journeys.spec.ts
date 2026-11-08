@@ -14,8 +14,10 @@ async function addCharacters(page: Page, names: string[]): Promise<void> {
   await section(page, 'Script');
 }
 
+/** The live entry: an entry withdrawn and replaced stays listed as Withdrawn. */
+const liveEntry = (page: Page) => page.locator('section', { hasText: 'Your Entries' }).first().locator('li').filter({ hasNot: page.locator('.chip', { hasText: /^Withdrawn$/ }) }).first();
 async function entryStatus(page: Page): Promise<string> {
-  return (await page.locator('section', { hasText: 'Your Entries' }).first().locator('.chip').first().innerText()).trim();
+  return (await liveEntry(page).locator('.chip').innerText()).trim();
 }
 
 test('2D animation: deliver, release digitally, enter the Annie Awards and reach the ceremony', async ({ page }) => {
@@ -395,6 +397,14 @@ test('festival under official rules: submit, selection, screening attended, resu
   await expect(page.getByText("This entry meets the organizer's published rules for this category.")).toBeVisible();
   await page.getByRole('dialog').getByRole('button', { name: 'Submit Entry' }).click();
   await expect(page.locator('section', { hasText: 'Your Entries' }).getByText('Submitted')).toBeVisible();
+  // Withdrawn and entered again before the deadline (SLATE-17-03): the fee is paid once, checked after the results.
+  const entries = page.locator('section', { hasText: 'Your Entries' });
+  await entries.getByRole('button', { name: 'Withdraw Entry' }).click();
+  await expect(entries.locator('.chip', { hasText: /^Withdrawn$/ })).toBeVisible();
+  await shorts.getByRole('button', { name: 'Prepare Submission' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Submit Entry' }).click();
+  await expect(entries.locator('.chip', { hasText: /^Submitted$/ })).toBeVisible();
+  await expect(entries.locator('.chip', { hasText: /^Withdrawn$/ })).toBeVisible();
   mark('submitted');
 
   // Make the film strong enough to be selected (the judging is simulated), and reopen the save mid-journey.
@@ -410,7 +420,7 @@ test('festival under official rules: submit, selection, screening attended, resu
   // Screening invitations arrive when the festival opens on January 21: accept one, travel to Boulder in time, attend.
   await advanceUntil(page, '2027-01-21');
   await open();
-  await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
+  await liveEntry(page).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
   const panel = page.getByRole('region', { name: 'Screenings' });
   await panel.getByRole('button', { name: 'Accept Invitation' }).first().click();
   await panel.getByRole('button', { name: 'Travel to the Venue' }).first().click();
@@ -423,7 +433,7 @@ test('festival under official rules: submit, selection, screening attended, resu
   await open();
   const result = await entryStatus(page);
   expect(['Won', 'Did Not Win']).toContain(result);
-  await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
+  await liveEntry(page).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
   await expect(page.locator('li', { hasText: 'Short Film Program' }).getByText(/Winner: /)).toBeVisible();
 
   // Save, reload, and keep playing: one result message, one fee payment, the same winner.
