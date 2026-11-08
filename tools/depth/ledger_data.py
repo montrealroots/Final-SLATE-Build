@@ -328,7 +328,7 @@ C = {
   ('Approve or reject a design before building', 'V',
    ['tests/designs.test.ts::builds wait for an approved design', 'e2e/media.spec.ts::Nothing is built until its design is approved (SLATE-11-03.02).'],
    'Projects started before November 8, 2026 build without approval (designReview unset)'),
-  ('Damaged puppets are repaired', 'V', ['tests/depth-gaps-production.test.ts::a damaged puppet is repaired by its maker, and the shots with it wait for the repair'], ''),
+  ('Damaged puppets are repaired', 'V', ['e2e/journeys.spec.ts::stop motion: a puppet damaged on set holds its shots until it is repaired', 'tests/depth-gaps-production.test.ts::a damaged puppet is repaired by its maker, and the shots with it wait for the repair'], ''),
 ]),
 '11-04': ('Schedule', 'src/engine/production/tasks.ts', [
   ('Rehearsal days, stunt and choreography rehearsal, storyboards and animatic as work', 'VE',
@@ -358,7 +358,7 @@ C = {
    'Takes are chosen before the day (the policy) and reviewed in the edit; the shoot itself runs unattended'),
 ]),
 '12-04': ('Production', 'src/engine/production/shoot.ts', [
-  ('Weather loses or compromises a day and the log says so', 'V', ['tests/depth-gaps-production.test.ts::rain stops an exterior day, the log says so, and the scenes move to a new day', 'tests/depth-gaps-production.test.ts::shooting in the rain anyway records the scene, compromised'], ''),
+  ('Weather loses or compromises a day and the log says so', 'V', ['e2e/journeys.spec.ts::live action in a wet October: rain stops an exterior day', 'tests/depth-gaps-production.test.ts::rain stops an exterior day, the log says so, and the scenes move to a new day', 'tests/depth-gaps-production.test.ts::shooting in the rain anyway records the scene, compromised'], ''),
   ('A failed day rolls back; completed work is kept', 'VE', ['tests/processing.test.ts::rolls the batch back'], ''),
 ]),
 '12-05': ('Edit > Pickups', 'src/engine/production/shoot.ts', [
@@ -379,7 +379,7 @@ C = {
 '13-04': ('Production > Capture, Voice', 'src/engine/mocap.ts', [
   ('Book sessions, record, retake, approve, clean up and retarget', 'VE', ['tests/lunar-mocap.test.ts::a changed take resets cleanup'], ''),
   ('A session the studio cannot be paid for waits, with the reason', 'VE', ['tests/tight-budget.test.ts::a voice session it can no longer pay'], ''),
-  ('A missed session is rebooked', 'V', ['tests/depth-gaps-production.test.ts::is marked missed with the reason and rebooked on the next free date'], ''),
+  ('A missed session is rebooked', 'V', ['e2e/journeys.spec.ts::motion capture: a session the performer can', 'tests/depth-gaps-production.test.ts::is marked missed with the reason and rebooked on the next free date'], ''),
 ]),
 '13-05': ('Production', 'src/engine/production/tasks.ts', [
   ('Plates and digital scenes in one production; plate integration', 'VE', ['tests/media.test.ts::shoots live scenes and animates the rest'], ''),
@@ -394,7 +394,7 @@ C = {
   ('Restrictions on use (no face, no name, approval of use) carried into the edit', 'V',
    ['tests/restrictions.test.ts::a hidden face adds blurring after lock that delivery waits for', 'tests/restrictions.test.ts::a refusal holds delivery until their scenes are cut', 'e2e/journeys.spec.ts::Joost agrees on condition his face isn\'t shown'],
    'Shares of each condition are simulation assumptions; cut approval reads the locked cut and resets on unlock'),
-  ('Withdrawal before filming adds no redaction; after filming, redaction work', 'VE', ['tests/unscripted.test.ts::before the shoot there is nothing to redact', 'tests/restrictions.test.ts::after filming: the scenes with their footage are redacted by the editor, and delivery waits for it'], 'Documentaries gained it November 8, 2026; it was unscripted shows only'),
+  ('Withdrawal before filming adds no redaction; after filming, redaction work', 'VE', ['e2e/journeys.spec.ts::documentary: a contributor who withdraws after filming is redacted before delivery', 'tests/unscripted.test.ts::before the shoot there is nothing to redact', 'tests/restrictions.test.ts::after filming: the scenes with their footage are redacted by the editor, and delivery waits for it'], 'Documentaries gained it November 8, 2026; it was unscripted shows only'),
 ]),
 '14-03': ('Production (documentary)', 'src/engine/production/tasks.ts', [
   ('Interviews and actuality captured; claims checked', 'VE', ['e2e/journeys.spec.ts::documentary: consent and fact checks gate delivery'], ''),
@@ -434,7 +434,7 @@ C = {
 '16-01': ('Release', 'src/engine/finish.ts', [
   ('Choose a route and date', 'VE', ['tests/release.test.ts::a contracted release happens on its date'], ''),
   ('Territories and exclusivity compared before accepting', 'V',
-   ['tests/territories.test.ts::offers range from the home country to worldwide', 'tests/territories.test.ts::accepting ends overlapping offers on the same route, or on any route if exclusive'],
+   ['e2e/connected.spec.ts::Territories and exclusivity (SLATE-16-01.02)', 'tests/territories.test.ts::offers range from the home country to worldwide', 'tests/territories.test.ts::accepting ends overlapping offers on the same route, or on any route if exclusive'],
    'Scopes, the exclusive window (365 days) and the territory pay factor are game calibration'),
 ]),
 '16-02': ('Release', 'src/engine/finish.ts', [
@@ -461,7 +461,7 @@ C = {
   ('Eligibility explained per category with edition rules', 'VE', ['tests/rulebooks.test.ts::runtime limits'], ''),
 ]),
 '17-03': ('Festivals And Awards', 'src/engine/awards.ts', [
-  ('Submit with a fee; withdraw and enter again without paying twice', 'VE', ['tests/rulebooks.test.ts::refuses a duplicate'], ''),
+  ('Submit with a fee; withdraw and enter again without paying twice', 'VE', ['e2e/journeys.spec.ts::Withdrawn and entered again before the deadline (SLATE-17-03)', 'tests/rulebooks.test.ts::refuses a duplicate'], ''),
 ]),
 '17-04': ('Festivals, Calendar', 'src/engine/awards.ts', [
   ('Selection, invitation, travel and attendance', 'VE', ['e2e/screenings.spec.ts::a screening invitation'], ''),
@@ -504,7 +504,7 @@ C = {
   ('Jumping to a section is not hidden under the sticky header', 'V', ['e2e/viewports.spec.ts::a destination scrolled to or focused is never hidden under the top bar'], ''),
 ]),
 '19-03': ('Every action', 'src/ui', [
-  ('Preview cost and time before committing; outcome after', 'IU', [], 'Many actions preview; no audit'),
+  ('Preview cost and time before committing; outcome after', 'V', ['tests/action-previews.test.ts::each previews its cost or time and shows its outcome'], 'Repaired November 8, 2026: eight actions previewed nothing; each now does, and a new spending action fails the test until recorded'),
   ('Disabled actions say why', 'V', ['tests/disabled-reasons.test.ts::every disabled control in the interface is recorded with where its reason is shown'], 'Repaired November 8, 2026: seven controls gave no reason; each now says, and a new disabled control fails the test until recorded'),
 ]),
 '19-04': ('Saved Games, Settings', 'src/engine/save.ts; src/engine/vault.ts', [
@@ -529,7 +529,7 @@ C = {
 ]),
 '20-04': ('e2e', 'e2e', [
   ('Desktop, phone and WebKit journeys for creation, funding, casting, revision, save and recovery', 'VE', ['e2e/careers.spec.ts::stop motion: refused for lack of money'], ''),
-  ('Journeys for the features this package adds', 'V', ['e2e/negotiation.spec.ts::an investor offer: when it lapses, asking for better terms, and their answer', 'e2e/auditions.spec.ts::called back with a chemistry read, then offered the part', 'e2e/season.spec.ts::a season planned and reordered', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)', 'e2e/live-action.spec.ts::Before locking, the takes (SLATE-12-03)', 'e2e/career.spec.ts::a proposal is accepted into a funded project', 'e2e/connected.spec.ts::Earnings (SLATE-16-04.02)'], 'Versions (15-05.03), territories offered per route (16-01.02) and later windows (16-05) are covered by unit tests only'),
+  ('Journeys for the features this package adds', 'V', ['e2e/negotiation.spec.ts::an investor offer: when it lapses, asking for better terms, and their answer', 'e2e/auditions.spec.ts::called back with a chemistry read, then offered the part', 'e2e/season.spec.ts::a season planned and reordered', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)', 'e2e/live-action.spec.ts::Before locking, the takes (SLATE-12-03)', 'e2e/career.spec.ts::a proposal is accepted into a funded project', 'e2e/connected.spec.ts::Earnings (SLATE-16-04.02)'], 'Versions (15-05.03) and later windows (16-05) are covered by unit tests only'),
 ]),
 '20-05': ('People', '', [
   ('Human play and real devices', 'EB', [], 'Needs the owner and real devices'),

@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { addScene, advance, creditsTable, nav, produceToDelivery, quickLife, readSavedState, saveAndApprove, section, saveAndExit, seededLife, newProject } from './helpers';
+import { addScene, advance, approveDesigns, castRoles, creditsTable, nav, produceToDelivery, quickLife, readSavedState, runToDelivery, saveAndApprove, section, saveAndExit, seededLife, newProject, staffEveryDepartment } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
@@ -14,8 +14,10 @@ async function addCharacters(page: Page, names: string[]): Promise<void> {
   await section(page, 'Script');
 }
 
+/** The live entry: an entry withdrawn and replaced stays listed as Withdrawn. */
+const liveEntry = (page: Page) => page.locator('section', { hasText: 'Your Entries' }).first().locator('li').filter({ hasNot: page.locator('.chip', { hasText: /^Withdrawn$/ }) }).first();
 async function entryStatus(page: Page): Promise<string> {
-  return (await page.locator('section', { hasText: 'Your Entries' }).first().locator('.chip').first().innerText()).trim();
+  return (await liveEntry(page).locator('.chip').innerText()).trim();
 }
 
 test('2D animation: deliver, release digitally, enter the Annie Awards and reach the ceremony', async ({ page }) => {
@@ -111,6 +113,8 @@ test('hybrid: a live-action scene and a 3D scene share one production', async ({
 // World seeds for the consent journeys (labelled fixtures, see seededLife): with seed 2 everyone asked agrees; with
 // seed 3 the documentary's third contributor declines. Each answer is drawn from the seed, the project and the person.
 const ALL_AGREE = 2;
+const RAIN_SEED = 2;
+const PUPPET_SEED = 2;
 const ONE_DECLINES = 3;
 
 async function lockKeepers(page: Page, seed: number): Promise<void> {
@@ -133,6 +137,24 @@ async function lockKeepers(page: Page, seed: number): Promise<void> {
 
 const consentOf = (page: Page, name: string) => page.locator('li', { hasText: name }).locator('.chip');
 
+test('live action in a wet October: rain stops an exterior day, and the schedule and log say so', async ({ page }) => {
+  // Labelled fixture: the pinned world seed, chosen so it rains on a shoot day (the weather is the seed's, not set).
+  await seededLife(page, 'gb-london', '2026-10-05', RAIN_SEED);
+  await newProject(page, { title: 'Wet Streets', format: 'Short Film', runtime: '4' });
+  await addCharacters(page, ['Ada']);
+  for (let i = 0; i < 3; i++) await addScene(page, { index: i, place: `Street ${i + 1}`, chars: ['Ada'], minutes: '1', exterior: true });
+  await saveAndApprove(page);
+  await produceToDelivery(page, {});
+  // SLATE-12-04: a day rain stopped is lost, says why, and its scenes moved to a new day that was then shot.
+  const s = await readSavedState(page);
+  const wet = s.projects[0].schedule.days.filter((d: { status: string; result?: string }) => d.status === 'lost' && /^Rain stopped /.test(d.result ?? ''));
+  expect(wet.length).toBeGreaterThan(0);
+  const logs = s.log.map((l: { text: string }) => l.text);
+  for (const d of wet) expect(logs.some((t: string) => t.startsWith('Wet Streets, ') && t.includes(d.result) && t.endsWith('The remaining work moved to a new day.'))).toBe(true);
+  await section(page, 'Schedule');
+  await expect(page.getByText(/Rain stopped Scene \d \(Street \d\)\./).first()).toBeVisible();
+});
+
 test('documentary: consent and fact checks gate delivery', async ({ page }) => {
   await lockKeepers(page, ALL_AGREE);
   for (const n of ['Joost de Vries', 'Fenna Bakker', 'Ruud Smit']) await expect(consentOf(page, n)).toHaveText('Consent Given');
@@ -147,6 +169,34 @@ test('documentary: consent and fact checks gate delivery', async ({ page }) => {
   expect(credits).toContain('Researcher');
   expect(credits).toMatch(/Featuring\s+Joost de Vries/);
   expect(credits).not.toMatch(/^(Cast|Voice Cast|Performance Capture)\t/m); // a documentary has no cast credits (a name may contain "Cast")
+});
+
+test('documentary: a contributor who withdraws after filming is redacted before delivery', async ({ page }) => {
+  await lockKeepers(page, ALL_AGREE);
+  await addScene(page, { index: 0, place: 'Archive Room', contributors: ['Fenna Bakker'], minutes: '2', episodeButton: 'Add Sequence' });
+  await saveAndApprove(page);
+  await castRoles(page);
+  await staffEveryDepartment(page);
+  await advance(page, 'next-day');
+  await section(page, 'Schedule');
+  await page.getByRole('button', { name: /Build Schedule|Rebuild Schedule/ }).click();
+  // Until her scene has been filmed (the save says so; the player sees it on the Edit page's coverage).
+  const filmed = async () => ((await readSavedState(page)).projects[0].captures as { captured: number }[]).some((c) => c.captured > 0);
+  for (let i = 0; i < 20 && !(await filmed()); i++) { await advance(page, 'week'); await staffEveryDepartment(page); }
+  expect(await filmed()).toBe(true);
+  // SLATE-14-02: she withdraws. Her footage is redacted by the editor, and delivery waits for it.
+  await section(page, 'Script');
+  await page.locator('li', { hasText: 'Fenna Bakker' }).getByRole('button', { name: 'Record Withdrawal' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Fenna Bakker Withdraws?' });
+  await expect(dialog).toContainText('Footage already recorded with them will be redacted by your editor before the film can be delivered.');
+  await dialog.getByRole('button', { name: 'Record Withdrawal' }).click();
+  await expect(consentOf(page, 'Fenna Bakker')).toHaveText('Withdrew');
+  await expect.poll(async () => (await readSavedState(page)).log.map((l: { text: string }) => l.text)).toContain('Fenna Bakker withdrew from Lock Keepers. Their footage is being redacted from the film.');
+  await section(page, 'Production');
+  await expect(page.locator('li', { hasText: 'Redact Fenna Bakker' }).first()).toBeVisible();
+  await runToDelivery(page);
+  await section(page, 'Production');
+  await expect(page.locator('li', { hasText: 'Redact Fenna Bakker' }).first()).toContainText('Done');
 });
 
 test('documentary: a contributor who declines is told apart, and the player is told why their scenes cannot be filmed', async ({ page }) => {
@@ -250,6 +300,62 @@ test('3D animation to delivery, with a motion-capture performance', async ({ pag
   expect(credits).toMatch(/Voice Cast[\s\S]*as Wren/);
 });
 
+test('motion capture: a session the performer can\'t attend is missed and rebooked', async ({ page }) => {
+  await quickLife(page, 'ca-vancouver', '2026-01-05');
+  await newProject(page, { title: 'Iron Orchard', format: 'Short Film', medium: 'Animation', technique: '3D CG', finish: 'Limited Animation', runtime: '2' });
+  await addCharacters(page, ['Wren', 'The Golem']);
+  await section(page, 'Characters');
+  const golem = page.getByRole('article', { name: 'The Golem' });
+  await golem.getByRole('button', { name: 'Edit Character' }).click();
+  await golem.getByLabel('Entity').selectOption({ label: 'Monster' });
+  await golem.getByRole('checkbox', { name: 'Motion Capture' }).check();
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Orchard', chars: ['Wren', 'The Golem'], minutes: '0.5' });
+  await saveAndApprove(page);
+  await castRoles(page, ['Wren']);
+  await staffEveryDepartment(page);
+  await advance(page, 'next-day');
+  await section(page, 'Schedule');
+  await page.getByRole('button', { name: /Build Schedule|Rebuild Schedule/ }).click();
+  // Book the capture stage once a capture performer has accepted.
+  const booked = async () => Object.values((await readSavedState(page)).projects[0].mocap ?? {}).some((r: any) => r.status === 'booked'); // eslint-disable-line @typescript-eslint/no-explicit-any
+  for (let i = 0; i < 12 && !(await booked()); i++) {
+    await advance(page, 'week');
+    await castRoles(page);
+    await staffEveryDepartment(page);
+    await approveDesigns(page);
+    const book = page.getByRole('button', { name: /^Book Capture Stage/ });
+    if (await book.first().isVisible()) await book.first().click();
+  }
+  await expect.poll(booked).toBe(true);
+  // Day by day until the calibration is ready and only waits for its session date (an earlier session whose work wasn't
+  // ready just moves, with nothing missed).
+  const waiting = async () => ((await readSavedState(page)).projects[0].tasks as { kind: string; blockedReason?: string }[]).some((t) => t.kind === 'anim:mocap-calib' && /^Next calibration session: /.test(t.blockedReason ?? ''));
+  for (let i = 0; i < 60 && !(await waiting()); i++) await advance(page, 'next-day');
+  expect(await waiting()).toBe(true);
+  // Labelled fixture: the capture performer is also cast in another production, shooting on that session's date.
+  let first = '';
+  let performer = '';
+  await editSaveAndReopen(page, (st) => {
+    const p = st.projects[0];
+    const [cid, rec] = Object.entries(p.mocap).find(([, r]: any) => r.status === 'booked') as [string, any]; // eslint-disable-line @typescript-eslint/no-explicit-any
+    first = rec.sessions.find((x: { status: string; kind: string }) => x.status === 'booked' && x.kind === 'calibration').date; // the session the work waits for
+    performer = p.cast.find((c: { characterId: string; method: string }) => c.characterId === cid && c.method === 'motion-capture').performer;
+    const other = JSON.parse(JSON.stringify(p));
+    Object.assign(other, { id: 'p-fixture-other', title: 'Other Picture', mocap: {}, tasks: [], obligations: [], hires: [], delivered: null, cast: [{ characterId: cid, performer, method: 'on-camera', note: '' }] });
+    other.schedule.days = [{ id: 'd-fixture-other', date: first, episode: 1, sceneIds: [p.scenes[0].id], locationLabel: 'Orchard', interior: false, night: false, status: 'scheduled', playerActing: false, conflicts: [] }];
+    st.projects.push(other);
+  });
+  // SLATE-13-04: on the day, the session can't run; it is marked missed with the reason and rebooked on a free date.
+  const missed = () => readSavedState(page).then((st) => st.log.map((l: { text: string }) => l.text).find((t: string) => t.startsWith('The capture session for The Golem on ')));
+  for (let i = 0; i < 12 && !(await missed()); i++) await advance(page, 'week');
+  expect(await missed()).toMatch(/^The capture session for The Golem on .+ couldn't run \(.+ was shooting Other Picture\)\. It is rebooked for .+\.$/);
+  const rec = Object.values((await readSavedState(page)).projects[0].mocap).find((r: any) => r.sessions?.some((x: { status: string }) => x.status === 'missed')) as any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  const miss = rec.sessions.find((x: { status: string }) => x.status === 'missed');
+  expect(miss.date).toBe(first);
+  expect(rec.sessions.some((x: { status: string; date: string; kind: string }) => x.date > first && x.kind === miss.kind)).toBe(true);
+});
+
 test('stop motion to delivery: puppets, sets and stages', async ({ page }) => {
   await quickLife(page, 'gb-london', '2026-01-05');
   await newProject(page, { title: 'Button Moon', format: 'Short Film', medium: 'Animation', technique: 'Stop Motion', finish: 'Limited Animation', runtime: '2' });
@@ -262,6 +368,22 @@ test('stop motion to delivery: puppets, sets and stages', async ({ page }) => {
   await section(page, 'Production');
   for (const t of ['Armature: Pip', 'Puppet Fabrication: Pip', 'Puppet Costume Fitting: Pip', 'Miniature Sets', 'Stage Camera And Lighting Setup']) await expect(page.getByText(t, { exact: true })).toBeVisible();
   await expect(page.getByText('Ready for the stage.')).toBeVisible();
+});
+
+test('stop motion: a puppet damaged on set holds its shots until it is repaired', async ({ page }) => {
+  // Labelled fixture: the pinned world seed, chosen so a puppet is damaged during the stage weeks (about one chance in
+  // twenty-five each stage day); the damage and the repair are the engine's.
+  await seededLife(page, 'gb-london', '2026-01-05', PUPPET_SEED);
+  await newProject(page, { title: 'Button Moon', format: 'Short Film', medium: 'Animation', technique: 'Stop Motion', finish: 'Limited Animation', runtime: '3' });
+  await addCharacters(page, ['Pip']);
+  await addScene(page, { index: 0, place: 'Drawer', chars: ['Pip'], minutes: '3' });
+  await saveAndApprove(page);
+  await produceToDelivery(page, { yourself: ['Pip'], step: 'month', weeks: 40 });
+  // SLATE-11-03, 13-03: the damage is logged, the maker's repair was worked, and the film was delivered after it.
+  const logs = (await readSavedState(page)).log.map((l: { text: string }) => l.text);
+  expect(logs).toContain("Pip's puppet was damaged on set. Shots with Pip wait for a repair unless a duplicate is available.");
+  await section(page, 'Production');
+  await expect(page.locator('li', { hasText: 'Repair Puppet: Pip' }).first()).toContainText('Done');
 });
 
 async function bakeOrBreak(page: Page): Promise<void> {
@@ -395,6 +517,14 @@ test('festival under official rules: submit, selection, screening attended, resu
   await expect(page.getByText("This entry meets the organizer's published rules for this category.")).toBeVisible();
   await page.getByRole('dialog').getByRole('button', { name: 'Submit Entry' }).click();
   await expect(page.locator('section', { hasText: 'Your Entries' }).getByText('Submitted')).toBeVisible();
+  // Withdrawn and entered again before the deadline (SLATE-17-03): the fee is paid once, checked after the results.
+  const entries = page.locator('section', { hasText: 'Your Entries' });
+  await entries.getByRole('button', { name: 'Withdraw Entry' }).click();
+  await expect(entries.locator('.chip', { hasText: /^Withdrawn$/ })).toBeVisible();
+  await shorts.getByRole('button', { name: 'Prepare Submission' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: 'Submit Entry' }).click();
+  await expect(entries.locator('.chip', { hasText: /^Submitted$/ })).toBeVisible();
+  await expect(entries.locator('.chip', { hasText: /^Withdrawn$/ })).toBeVisible();
   mark('submitted');
 
   // Make the film strong enough to be selected (the judging is simulated), and reopen the save mid-journey.
@@ -410,7 +540,7 @@ test('festival under official rules: submit, selection, screening attended, resu
   // Screening invitations arrive when the festival opens on January 21: accept one, travel to Boulder in time, attend.
   await advanceUntil(page, '2027-01-21');
   await open();
-  await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
+  await liveEntry(page).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
   const panel = page.getByRole('region', { name: 'Screenings' });
   await panel.getByRole('button', { name: 'Accept Invitation' }).first().click();
   await panel.getByRole('button', { name: 'Travel to the Venue' }).first().click();
@@ -423,7 +553,7 @@ test('festival under official rules: submit, selection, screening attended, resu
   await open();
   const result = await entryStatus(page);
   expect(['Won', 'Did Not Win']).toContain(result);
-  await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
+  await liveEntry(page).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
   await expect(page.locator('li', { hasText: 'Short Film Program' }).getByText(/Winner: /)).toBeVisible();
 
   // Save, reload, and keep playing: one result message, one fee payment, the same winner.

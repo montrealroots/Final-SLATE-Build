@@ -18,7 +18,7 @@ import { callSheet } from '../engine/callsheet';
 import { costCuts, type CostCut } from '../engine/cost-cuts';
 import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, scoutedPlaces, site } from '../engine/locations';
-import { dayFees, willingness } from '../engine';
+import { dayFees, estimatedShootDays, willingness } from '../engine';
 import { COVERAGE, TAKES, planTime, shotPlan, type Coverage, type TakePolicy } from '../engine/takes';
 import type { Audition, FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
@@ -439,6 +439,7 @@ export function ScheduleTab({ p }: { p: Project }) {
         )}
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
         {p.delivered && <p className="dim">This project has been delivered; its schedule is final.</p>}
+        {!p.delivered && approvedScenes(p).some((s) => sceneTechnique(p, s) === 'live') && <p className="dim">About {plural(estimatedShootDays(p), 'shoot day')}, each about {money(dayFees(p).location + dayFees(p).equipment)} for the location and equipment, reserved when the schedule is built.</p>}
         <button className="btn btn-primary" disabled={!!p.delivered} onClick={() => setErr(store.act((s) => void generatePlan(s, p, start)))}>{p.schedule.startDate ? 'Rebuild Schedule' : 'Build Schedule'}</button>
         {p.schedule.startDate && <p className="dim">Rebuilding keeps finished work and moves only what hasn't happened yet.</p>}
       </section>
@@ -482,6 +483,7 @@ export function ScheduleTab({ p }: { p: Project }) {
                   </div>
                   {fc && !d.interior && fc.chanceOfPrecip >= 40 && (
                     <div className="row gap-2 wrap">
+                      <p className="dim small" style={{ flexBasis: '100%', margin: 0 }}>Move the Shoot puts this day after the last scheduled shoot day; Film an Interior Scene swaps dates with the next interior day. Agreed costs stay as they are.</p>
                       <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void moveShootDay(s, p, d.id)))}>Move the Shoot</button>
                       {p.schedule.days.some((o) => o.interior && o.status === 'scheduled' && o.date > d.date) && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void swapWithInteriorDay(s, p, d.id)))}>Film an Interior Scene</button>}
                       <button className="btn btn-sm" aria-pressed={!!d.weatherAnyway} onClick={() => setErr(store.act((s) => keepWeatherPlan(s, p, d.id)))}>{d.weatherAnyway ? 'Shooting In Any Weather' : 'Keep The Plan'}</button>
@@ -720,7 +722,7 @@ function FinancingPanel({ p }: { p: Project }) {
             <li key={o.kind} className="row-wrap">
               <div className="grow">
                 <strong>{BACKERS[o.kind].name}</strong>{o.kind === 'starting' ? <> <span className="chip">Agreed Starting Scenario</span></> : null}
-                <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why}{o.needs.includes('Still to write') ? '' : ` ${backerDocuments(o.kind)}`}</p>
+                <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why}{o.needs.includes('Still to write') ? '' : ` ${backerDocuments(o.kind)}`} They answer within {plural(BACKERS[o.kind].decideDays, 'day')}.</p>
                 {!o.ready && <p className="dim">{o.needs}</p>}
               </div>
               <button className="btn btn-sm" disabled={!o.ready} onClick={() => setErr(store.act((s) => void approachBacker(s, live(s), o.kind)))} aria-label={`Approach ${BACKERS[o.kind].name}`}>{o.kind === 'starting' ? 'Ask For The Agreed Backing' : 'Approach'}</button>

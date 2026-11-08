@@ -6,7 +6,7 @@ import { getPlace, placeLabel } from '../data/places';
 import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
-  qualityWords, requestPickups, pickupIntegration, depsMet, startCutPass, unlockPicture, addDaysToKey, categoryRecipients, type Category,
+  qualityWords, requestPickups, pickupIntegration, cutPassDays, CUT_REVIEW_DAYS, depsMet, startCutPass, unlockPicture, addDaysToKey, categoryRecipients, type Category,
   categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
   approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, restoreToEdit,
   cutScenes, entryNeeds, castPlacement, sceneLabel } from '../engine';
@@ -182,7 +182,7 @@ function VersionsCard({ p, onError }: { p: Project; onError: (e: string | null) 
             <legend className="small">Scenes It Leaves Out</legend>
             <div className="chip-row">{scenes.map((s) => <Check key={s.id} label={sceneLabel(p, s)} checked={leaveOut.includes(s.id)} onChange={(v) => setLeaveOut(v ? [...leaveOut, s.id] : leaveOut.filter((x) => x !== s.id))} />)}</div>
           </fieldset>
-          <p className="dim">This version would run {preview} minutes.{(p.versions ?? []).some((v) => v.label === label) ? ` There is a ${label} already; remove it first to make another.` : ''}</p>
+          <p className="dim">This version would run {preview} minutes, and conforming it takes the editor a day after picture lock.{(p.versions ?? []).some((v) => v.label === label) ? ` There is a ${label} already; remove it first to make another.` : ''}</p>
           <button className="btn" disabled={!VERSION_LABELS.some((l) => l === label && !(p.versions ?? []).some((v) => v.label === l))} onClick={() => { const e = store.act((s) => void addVersion(s, p, label, leaveOut)); onError(e); if (!e) setLeaveOut([]); }}>Add Version</button>
         </>
       )}
@@ -198,7 +198,7 @@ function ApprovalsCard({ p, onError, onCut }: { p: Project; onError: (e: string 
   return (
     <section className="card" aria-labelledby="approvals-h">
       <h2 id="approvals-h">Contributors' Approval</h2>
-      <p className="dim">These contributors agreed on condition they approve how they appear. They see the locked cut; unlocking it later means showing them again. If one doesn't approve, cut their scenes to deliver.</p>
+      <p className="dim">These contributors agreed on condition they approve how they appear. They see the locked cut; unlocking it later means showing them again. If one doesn't approve, cut their scenes to deliver. Each answers {CUT_REVIEW_DAYS} days after you show them the cut.</p>
       <ul className="list">{p.contributors.filter((c) => c.consent === 'given' && c.restrictions?.includes('approval')).map((c) => {
         const theirs = inCut.filter((s) => s.contributorIds.includes(c.id));
         const st = c.cutApproval?.status;
@@ -272,6 +272,7 @@ export function EditTab({ p }: { p: Project }) {
           ) : !p.delivered && <button className="btn" onClick={() => setErr(store.act((s) => void unlockPicture(s, p)))}>Unlock Picture</button>}
         </div>
         {!p.edit.pictureLocked && !assemblyComplete(p) && <p className="dim">A cut pass starts once the assembly edit is finished.</p>}
+        {!p.edit.pictureLocked && assemblyComplete(p) && <p className="dim">A cut pass takes the editor about {plural(cutPassDays(p), 'day')}. Locking the picture starts the finishing work that waits for it{(() => { const n = p.tasks.filter((t) => t.status !== 'done' && t.dependsOn.some((d) => d.startsWith('milestone:lock'))).length; return n ? ` (${plural(n, 'task')})` : ''; })()}.</p>}
         {!p.edit.pictureLocked && lb.length > 0 && <p className="dim">Before you lock: {lb.join(' ')}</p>}
         {p.edit.versions.length > 0 && (
           <details className="spaced"><summary>Versions</summary><ul>{p.edit.versions.map((v) => <li key={v.number}>Version {v.number}: {v.note}, about {v.runtimeMin} minutes</li>)}</ul></details>

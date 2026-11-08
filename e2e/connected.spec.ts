@@ -160,12 +160,18 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
     await advance(page, 'week');
     await section(page, 'Release');
   }
+  // Territories and exclusivity (SLATE-16-01.02): the exclusive offer says which other offer accepting it ends.
+  const kestrel = offers.locator('li', { hasText: 'Kestrel Media' }).first();
+  await expect(kestrel).toContainText("Accepting it ends Cobalt Screen's broadcast offer: its rights are exclusive there.");
+  await expect(kestrel).toContainText('Exclusive for 365 days from its release');
   const late = offers.locator('li', { has: page.getByRole('button', { name: 'Accept With A Broadcast Edit' }) }).first();
   await expect(late).toContainText('in a late-evening slot');
   await expect(late).toContainText("Ofcom's Broadcasting Code");
   await late.scrollIntoViewIfNeeded();
   await shot(page, p, '06-late-slot');
   await late.getByRole('button', { name: 'Accept With A Broadcast Edit' }).click();
+  // Accepting it ended the competing offer: Cobalt Screen's can no longer be accepted.
+  await expect(offers.locator('li', { hasText: 'Cobalt Screen' }).getByRole('button', { name: /^Accept/ })).toHaveCount(0);
   const history = page.locator('section.card', { has: page.getByRole('heading', { name: 'Release History' }) });
   await expect(history).toContainText('Broadcast in GB');
   // Earnings (SLATE-16-04.02): what the broadcaster reports is kept apart from what you receive.
