@@ -366,7 +366,7 @@ export function Profile() {
             <dt>Lives In</dt><dd>{placeLabel(getPlace(c.livesIn))}</dd>
             <dt>Home Countries</dt><dd>{homeCountries(g).map((h) => `${h.name} (${[h.citizen && 'citizen', h.resident && 'you live there'].filter(Boolean).join(', ')})`).join(', ')}<span className="dim"> · their public screen funds support you</span></dd>
             <dt>Backgrounds</dt><dd>{c.heritages.map((x) => x.label).join(', ')}</dd>
-            <dt>Holidays You Keep</dt><dd>{(c.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you are'}{c.observances?.length ? <span className="dim"> · new projects don’t shoot on them</span> : null}</dd>
+            <dt>Holidays You Keep</dt><dd>{(c.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you are'}{c.observances?.length ? <span className="dim"> · your projects don’t work on them</span> : null}</dd>
             <dt>Languages</dt><dd>{languageName(c.mainLanguage)} (main){c.languages.map((l) => `, ${languageName(l.code)} (${l.proficiency.toLowerCase()})`).join('')}</dd>
             <dt>Now In</dt><dd>{placeLabel(currentPlace(g))}</dd>
           </dl>

@@ -106,7 +106,7 @@ export function Creation() {
               <HeritageStep d={d} set={set} error={err('heritages')} />
             </section>
             <section className="card">
-              <div className="panel-head"><div><h2>Holidays You Keep</h2><p className="muted small" style={{ margin: 0 }}>Beyond the public holidays where you live. They go on your calendar, and your projects don’t schedule shoot days on them.</p></div></div>
+              <div className="panel-head"><div><h2>Holidays You Keep</h2><p className="muted small" style={{ margin: 0 }}>Beyond the public holidays where you live. They go on your calendar and on Home that day, and your projects don’t work on them, unless a project is set to work on public holidays.</p></div></div>
               <ObservanceStep d={d} set={set} />
             </section>
             <section className="card">
@@ -329,21 +329,12 @@ function HeritageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
       <div className="picklist" role="group" aria-label="Background Results">
         {results.map((h) => (
           <button key={h} type="button" onClick={() => set({ heritages: [...d.heritages, { id: h, label: h, custom: false }] })} aria-label={`Add A Background: ${h}`}>
-            <span>{h}</span><span className="dim">Add A Background</span>
+            <span>{h}</span>
           </button>
         ))}
         {!results.length && <p className="muted" style={{ padding: 12 }}>Nothing matches. You can describe your background below.</p>}
       </div>
-      <div className="inline-form spaced">
-        <TextField label="Describe Your Background" value={d.heritageCustomText} maxLength={80} error={customError} onChange={(v) => set({ heritageCustomText: v })} />
-        <button className="btn" type="button" onClick={() => {
-          const t = d.heritageCustomText.trim();
-          if (!t) return setCustomError('Write a description first.');
-          if (d.heritages.some((x) => x.label.toLowerCase() === t.toLowerCase())) return setCustomError("You've already added that.");
-          setCustomError(null);
-          set({ heritages: [...d.heritages, { id: `custom_${Date.now().toString(36)}`, label: t, custom: true }], heritageCustomText: '' });
-        }}>Add A Background</button>
-      </div>
+      {/* What you've chosen sits right under where you choose it; describing your own comes last (November 8, 2026). */}
       <h3 className="spaced">Your Backgrounds</h3>
       {error && <p role="alert" style={{ color: 'var(--negative)' }}>{error}</p>}
       {d.heritages.length ? (
@@ -356,6 +347,16 @@ function HeritageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
           ))}
         </ul>
       ) : <p className="muted">None added yet.</p>}
+      <div className="inline-form spaced">
+        <TextField label="Describe Your Background" value={d.heritageCustomText} maxLength={80} error={customError} hint="If it isn't in the list, in your own words." onChange={(v) => set({ heritageCustomText: v })} />
+        <button className="btn" type="button" onClick={() => {
+          const t = d.heritageCustomText.trim();
+          if (!t) return setCustomError('Write a description first.');
+          if (d.heritages.some((x) => x.label.toLowerCase() === t.toLowerCase())) return setCustomError("You've already added that.");
+          setCustomError(null);
+          set({ heritages: [...d.heritages, { id: `custom_${Date.now().toString(36)}`, label: t, custom: true }], heritageCustomText: '' });
+        }}>Add A Background</button>
+      </div>
     </>
   );
 }
@@ -415,8 +416,8 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
       <TextField label="Add Language" type="search" value={q} onChange={setQ} hint="Search for other languages you know." />
       <div className="picklist" role="group" aria-label="Additional Language Results">
         {addResults.map((l) => (
-          <button key={l.code} type="button" onClick={() => set({ languages: [...d.languages, { code: l.code, proficiency: 'Conversational' }] })} aria-label={`Add Language: ${l.name}`}>
-            <span>{l.name}</span><span className="dim">{suggested.has(l.code) ? 'From your backgrounds' : 'Add Language'}</span>
+          <button key={l.code} type="button" onClick={() => { set({ languages: [...d.languages, { code: l.code, proficiency: 'Conversational' }] }); setQ(''); }} aria-label={`Add Language: ${l.name}`}>
+            <span>{l.name}</span>{suggested.has(l.code) && <span className="dim">From your backgrounds</span>}
           </button>
         ))}
       </div>
@@ -424,13 +425,13 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
       {d.languages.length ? (
         <ul className="list">
           {d.languages.map((l) => (
-            <li key={l.code} className="row-wrap">
-              <span className="grow">{languageName(l.code)}</span>
+            <li key={l.code} className="row-wrap" style={{ alignItems: 'flex-end' }}>
+              <span className="grow" style={{ alignSelf: 'center' }}>{languageName(l.code)}</span>
               <div style={{ minWidth: 200 }}>
                 <SelectField label={`${languageName(l.code)} Proficiency`} value={l.proficiency} options={PROFICIENCIES.map((p) => ({ value: p, label: p }))}
                   onChange={(v) => set({ languages: d.languages.map((x) => (x.code === l.code ? { ...x, proficiency: v } : x)) })} />
               </div>
-              <button className="btn btn-sm" onClick={() => set({ languages: d.languages.filter((x) => x.code !== l.code) })} aria-label={`Remove ${languageName(l.code)}`}>Remove</button>
+              <button className="btn btn-sm" style={{ marginBottom: 'var(--s4)', minHeight: 'var(--control)' }} onClick={() => set({ languages: d.languages.filter((x) => x.code !== l.code) })} aria-label={`Remove ${languageName(l.code)}`}>Remove</button>
             </li>
           ))}
         </ul>

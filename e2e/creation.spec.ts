@@ -236,6 +236,10 @@ test('backgrounds drive the game: their holidays are offered first and kept, the
   await expect(main).toContainText('Korean');
   await expect(main).toContainText('From your backgrounds');
   await main.click();
+  // Adding a language empties its search, so the next suggestions show (November 8, 2026: the typed word stayed).
+  await page.getByRole('searchbox', { name: 'Add Language' }).fill('English');
+  await page.getByRole('button', { name: 'Add Language: English' }).click();
+  await expect(page.getByRole('searchbox', { name: 'Add Language' })).toHaveValue('');
   await page.getByRole('button', { name: 'Next: Starting Point' }).click();
   await pickPlace(page, 'Where You Live', 'Seoul');
   await page.getByRole('button', { name: 'Next: Review' }).click();
