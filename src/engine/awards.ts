@@ -5,15 +5,14 @@
 
 import { getPlace } from '../data/places';
 import { COMEDY_MUSICAL, castPlacement, competesAs, documentsNeeded } from './script-effects';
-import { ledgerTotals, money, spend } from './budget';
 import { genre } from './genres';
 import { personById } from './people';
-import { approvedScenes as approvedScenesOf, isEpisodic, isNonfiction } from './projects';
+import { isNonfiction } from './projects';
 import { travelHours } from './state';
 import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { addLog, onNewGame, registerCommitmentSource, registerHandler, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localParts, localToInstant, parseYmd, weekdayOfKey, ymd } from './time';
-import type { Credit, Edition, EditionEntry, Format, GameState, Medium, Project, RivalFilm, Screening } from './types';
+import type { Credit, Edition, Format, GameState, Medium, Project, RivalFilm, Screening } from './types';
 import { currentRulebook, rulebook, type CategoryRules, type DeadlineRule, type RuleBook, type RuntimeRule } from './rulebooks';
 
 export type Recipient = 'project' | 'director' | 'writer' | 'lead' | 'supporting' | 'producer' | 'voice' | 'ensemble';
@@ -786,45 +785,6 @@ export function entryNeeds(p: Project): string | null {
   return documentsNeeded(p, ['pitch'], isNonfiction(p.axes.format), 'Every entry form');
 }
 
-export function submitEntry(state: GameState, p: Project, editionId: string, categoryId: string, recipientIds?: string[]): EditionEntry {
-  const ed = edition(state, editionId);
-  const inst = institution(ed.institutionId);
-  const cat = inst.categories.find((c) => c.id === categoryId);
-  if (!cat) throw new Error('That category doesn\'t exist.');
-  if (!categoriesFor(inst, ed.year).includes(cat)) throw new Error(`The ${ed.label} doesn't hold that category.`);
-  if (ed.entries.some((e) => e.projectId === p.id && e.categoryId === categoryId && e.status !== 'withdrawn')) throw new Error('This project is already entered in that category.');
-  const el = checkEligibility(state, p, ed, cat, recipientIds);
-  if (!el.eligible) throw new Error(el.reasons[0]);
-  // Entry forms ask for a logline and a synopsis (the Pitch). SLATE checks they are written, never what they say.
-  const pitch = entryNeeds(p);
-  if (pitch) throw new Error(pitch);
-  // One fee per project, category and edition: entering again after withdrawing doesn't charge it twice.
-  const feeKey = `fee:${editionId}:${categoryId}`;
-  const alreadyPaid = p.obligations.some((o) => o.postings.some((x) => x.key === feeKey));
-  if (cat.fee && !alreadyPaid) {
-    if (ledgerTotals(p).available < cat.fee) throw new Error(`The entry fee is ${money(cat.fee)}, and this project has ${money(ledgerTotals(p).available)} uncommitted.`);
-    spend(state, p, `${inst.short} Entry Fee`, 'festival', cat.fee, feeKey);
-  }
-  const base = `${editionId}:${categoryId}:${p.id}`;
-  const tries = ed.entries.filter((e) => e.id === base || e.id.startsWith(`${base}#`)).length;
-  const entry: EditionEntry = {
-    id: tries ? `${base}#${tries + 1}` : base, projectId: p.id, categoryId, submittedAt: state.now, status: 'submitted', recipients: el.recipients.map((r) => r.id), fee: cat.fee && !alreadyPaid ? cat.fee : 0,
-    reason: el.provisional ? 'Entered provisionally. The planned release must happen within the eligibility period.' : undefined,
-  };
-  ed.entries.push(entry);
-  if (!state.followed.includes(inst.id)) state.followed.push(inst.id);
-  addLog(state, `You entered ${p.title} for ${cat.name} at the ${ed.label}.`, inst.kind === 'festival' ? 'festival' : 'award', { projectId: p.id, route: { view: 'event', editionId } });
-  return entry;
-}
-
-export function withdrawEntry(state: GameState, editionId: string, entryId: string): void {
-  const ed = edition(state, editionId);
-  const e = ed.entries.find((x) => x.id === entryId);
-  if (!e || !['submitted', 'accepted', 'needs-correction'].includes(e.status)) throw new Error('That entry can no longer be withdrawn.');
-  e.status = 'withdrawn';
-  e.reason = 'You withdrew this entry. Entry fees are not refunded.';
-}
-
 // ---------------- Lifecycle handlers ----------------
 
 function involved(state: GameState, ed: Edition): boolean {
@@ -1151,42 +1111,6 @@ export function screeningTravel(state: GameState, ed: Edition, sc: Screening): {
   return { here, hours, arrivesInTime: here || state.now + hours * 3600_000 <= sc.at };
 }
 
-/** Your own work that overlaps a screening day: shoot days you direct or act on. */
-export function screeningConflicts(state: GameState, ed: Edition, sc: Screening): string[] {
-  const out: string[] = [];
-  for (const p of state.projects) {
-    if (p.delivered) continue;
-    const zone = getPlace(p.axes.basePlaceId).zone;
-    const day = dateKey(sc.at, zone);
-    for (const d of p.schedule.days.filter((x) => x.date === day && x.status === 'scheduled')) {
-      const eps = [...new Set(approvedScenesOf(p).filter((s) => d.sceneIds.includes(s.id)).map((s) => s.episode))];
-      const what = isEpisodic(p.axes.format) && eps.length ? `Episode ${eps.join(' and ')}` : p.title;
-      out.push(`You're scheduled to direct ${what} during this screening.`);
-    }
-  }
-  void ed;
-  return out;
-}
-
-/** Answer a screening invitation. Accepting checks that you can get there in time; declining keeps the selection. */
-export function rsvpScreening(state: GameState, editionId: string, projectId: string, at: number, accept: boolean): void {
-  const ed = edition(state, editionId);
-  const sc = ed.screenings?.find((x) => x.projectId === projectId && x.at === at);
-  if (!sc || sc.done) throw new Error('That screening has already happened.');
-  if (sc.rsvpBy !== undefined && state.now > sc.rsvpBy && sc.rsvp === 'pending') {
-    sc.rsvp = 'expired';
-    throw new Error('The reply deadline has passed.');
-  }
-  if (!accept) {
-    sc.rsvp = 'declined';
-    addLog(state, `You declined the invitation to attend the screening at the ${ed.label}. It still screens.`, 'festival', { route: { view: 'event', editionId: ed.id } });
-    return;
-  }
-  const t = screeningTravel(state, ed, sc);
-  if (!t.arrivesInTime) throw new Error(`You couldn't arrive in time: the trip takes about ${Math.round(t.hours)} hours.`);
-  sc.rsvp = 'accepted';
-}
-
 registerHandler('edition-results', (state, ev) => {
   const ed = edition(state, ev.payload.editionId as string);
   if (ed.status === 'complete') return { suppressInterrupt: true };
@@ -1244,23 +1168,6 @@ export interface Honor {
   at: number;
 }
 
-export function honors(state: GameState): Honor[] {
-  const out: Honor[] = [];
-  for (const ed of state.editions) {
-    const inst = institution(ed.institutionId);
-    for (const e of ed.entries) {
-      if (!['selected', 'nominated', 'won', 'lost'].includes(e.status)) continue;
-      const p = state.projects.find((x) => x.id === e.projectId);
-      const cat = inst.categories.find((c) => c.id === e.categoryId);
-      if (!p || !cat) continue;
-      const personal = e.recipients.some((rid) => p.credits.find((c) => c.id === rid)?.person === 'player');
-      const result = e.status === 'won' ? 'Won' : inst.kind === 'festival' ? 'Selected' : 'Nominated';
-      out.push({ editionLabel: ed.label, category: cat.name, projectTitle: p.title, result, personal, at: ed.end });
-    }
-  }
-  return out.sort((a, b) => b.at - a.at);
-}
-
 // ---------------- Calendar contributions ----------------
 
 registerCommitmentSource((state, from, to) => {
@@ -1278,9 +1185,6 @@ registerCommitmentSource((state, from, to) => {
   return out;
 });
 
-export function isTv(p: Project): boolean {
-  return isEpisodic(p.axes.format) || p.axes.format === 'tv-film';
-}
 export { isNonfiction, personById };
 
 // ---------------- Adopting rules published after an edition was created ----------------

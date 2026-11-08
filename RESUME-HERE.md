@@ -107,13 +107,67 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
     the exact shortfall until season 2 raises its own money.
   - Ledger after stage 4: parents 54 VERIFIED EXISTING, 4 VERIFIED, 22 IMPLEMENTED UNVERIFIED, 13 NEEDS REPAIR,
     5 MISSING, 2 EXTERNAL BLOCKER; children 148 / 32 / 26 / 0 / 21 MISSING / 2.
-- **Next:** stage 5 (finance negotiation `08-03.03`, auditions `09-02`), then the rest of `docs/depth/README.md`,
-  Build Order (stage 6: location options `11-02.02`, design approval `11-03.02`, call sheets `11-05.03`; stage 7:
-  live-action setups and takes `12-02.02`, `12-03`; stage 8: contributor use restrictions `14-02.02`; stage 9:
-  replacement voice and effects `15-03.02`, ADR and Foley `15-04.02`, versions `15-05.03`; stage 10: territories
-  `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11: relationships `18-02`, opportunities
-  `18-03`).
-  - Also still open: the IMPLEMENTED UNVERIFIED children (26) that need only a test.
+  - Stage 5, money and people, everything below now VERIFIED:
+    - offers lapse (`08-03.02`, `negotiation.ts`): a backer's offer is open 21 days, then lapses and that backer isn't
+      asked again for the project; offers from older saves have no lapse date and stay open;
+    - asking for better terms (`08-03.03`): once per offer, one term the backer has (a smaller income share, less to
+      repay first, more on signing, no casting approval). They answer in 5 days; leverage (open script notes, delivered
+      work, another open offer) sets the odds and the world seed settles it: agree, keep their terms, or take it back.
+      Grants and the starting backing aren't negotiable;
+    - auditions (`09-02`, `auditions.ts`, `casting-calls.ts`): invite performers to read (3 days' notice, on the
+      calendar); a booked performer declines saying so, some miss it; a read shows their real capability as a range in
+      words; a callback narrows it and can be a chemistry read with someone cast or seen in the same scenes. Chemistry
+      is a modeled pair property that now moves shared-scene performances by half its value (finish.ts), read or not.
+      The comparison sits side by side, never one score; background parts aren't auditioned.
+  - Browser tests: `e2e/negotiation.spec.ts`, `e2e/auditions.spec.ts` (desktop, phone; world seed 11).
+  - Ledger after stage 5: parents 55 VERIFIED EXISTING, 5 VERIFIED, 22 IMPLEMENTED UNVERIFIED, 12 NEEDS REPAIR,
+    4 MISSING, 2 EXTERNAL BLOCKER; children 148 / 37 / 25 / 0 / 17 MISSING / 2.
+  - Startup JavaScript budget: page-only engine code now loads with its page (`season.ts`, `sequel.ts`, `shelve.ts`,
+    `structure-edit.ts`, `casting-calls.ts`, `cost-cuts.ts`, `negotiation-actions.ts`, `awards-actions.ts`,
+    `callsheet.ts`, `takes-actions.ts`, `designs-actions.ts`, `locations-actions.ts`, `documentary-actions.ts`).
+    After stage 8 startup is 698.1 kB of 700, so stage 9 needs room first. The large remaining item is `awards.ts`
+    (about 60 kB at startup, mostly the institutions table its handlers read). Measure what each source adds with a
+    sourcemap build (`npx vite build --outDir <dir> --sourcemap`, then sum each source's mapped bytes in the store
+    chunk with `source-map-js`).
+  - Stage 6, preparation, everything below now VERIFIED:
+    - call sheets (`11-05.03`, `callsheet.ts`), VERIFIED: each scheduled shoot day has one, derived from what the day runs
+      on (call 7 AM or 5 PM for night, wrap, who is paid on set, uncast parts, crew, crowd, holiday premium, daylight for
+      an exterior, the forecast once there is one); browser check in `e2e/live-action.spec.ts`;
+    - design approval (`11-03.02`, `designs.ts`), VERIFIED: once visual development is done, each character's design
+      waits for the producer; Approve lets its builds start, Ask For Changes adds a day of visual development that every
+      build waits for; a later design change needs approving again. Projects started before keep building without it
+      (`designReview` unset). The test helpers (`tests/helpers.ts manage`, `e2e/helpers.ts runToDelivery`) approve finished
+      designs as a producer would; the production golden's payment hashes were regenerated for that one-day wait (days,
+      quality and credits unchanged);
+    - location sites (`11-02.02`, `locations.ts`): once scouting is done each place offers the real place, a stage set
+      (1.6 times the day fee, never falls through) and a cheaper stand-in (0.6 times, falls through more often). A
+      chosen site can fall through on the shoot morning: to the backup if there is one, else the day is lost, its
+      scenes move later and the place needs a new choice. No choice keeps the old behaviour (real place, old fee, no
+      risk). Browser check in `e2e/live-action.spec.ts`. Limitation: the Budget Estimate still prices days at the
+      base fee, whatever site is chosen.
+  - Stage 7, live action, everything below now VERIFIED:
+    - shot plans (`12-02.02`, `takes.ts`): each live-action scene of a new project is shot to a coverage (a master only,
+      master and singles, full coverage) and a takes policy (one, a few, keep going). Both scale the scene's share of the
+      day (master 0.7, full 1.4; one take 0.85, many 1.3), so richer plans need more shoot days. Coverage moves the
+      editing score (master -6, full +5). Set on each day's call sheet;
+    - takes (`12-03`): each take has a performance and a technical quality drawn from the world seed, centred 4 below
+      the old single result so the default few takes match it on average (diminishing returns, never perfection). The
+      cut uses the best balanced take; on the Edit page another can be used until picture is locked: the performance
+      side feeds the performances, the technical side the direction. Projects from before keep one result per scene
+      (`takesModel` unset). The production golden was regenerated: live-action and TV quality figures moved by a few
+      points, with days unchanged;
+    - browser checks in `e2e/live-action.spec.ts` (desktop, phone, WebKit iPhone).
+  - Stage 8, documentary, VERIFIED: contributors' conditions on use (`14-02.02`, `documentary.ts`). An agreement can come
+    with conditions drawn from the world seed (face not shown 25%, name not used 20%, approval of how they appear 20%;
+    simulation assumptions), recorded and shown with the consent. A hidden face adds blurring work after lock that
+    delivery waits for (`post:blur`); a withheld name is credited as such (documentary contributors are now credited
+    "Featuring"); approval means showing them the locked cut (3 days), and a refusal holds delivery until their scenes
+    are cut; unlocking picture means showing them again. Test helpers (`manage`, `contributorApprovals`) do what a
+    producer would.
+- **Next:** stage 9: replacement voice and effects `15-03.02`, ADR and Foley `15-04.02`, versions `15-05.03`; stage 10:
+  territories `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11: relationships `18-02`,
+  opportunities `18-03`.
+  - Also still open: the IMPLEMENTED UNVERIFIED children (25) that need only a test.
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 

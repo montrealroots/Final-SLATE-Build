@@ -246,11 +246,15 @@ C = {
    ['tests/finance.test.ts::each backer says what it needs', 'tests/finance.test.ts::a grant and an investor answer after some days'], ''),
   ('A refusal says why and leaves other backers open', 'VE', ['e2e/first-project.spec.ts::a refusal, the agreed backing'], ''),
 ]),
-'08-03': ('Budget > Backers', 'src/engine/finance.ts', [
+'08-03': ('Budget > Backers', 'src/engine/finance.ts; src/engine/negotiation.ts', [
   ('Terms: amount, timing, recoupment, share, approvals, credit; accept or refuse', 'VE',
    ['tests/finance.test.ts::a commissioner pays most on signing', 'tests/finance.test.ts::a co-producer only joins a backed project'], ''),
-  ('An offer that has expired cannot be accepted', 'IU', [], 'No expiry on finance offers is tested'),
-  ('Negotiating a backer\'s terms', 'MI', [], 'Finance terms are take-or-leave'),
+  ('An offer that has expired cannot be accepted', 'V',
+   ['tests/negotiation.test.ts::after its open days it can\'t be accepted', 'e2e/negotiation.spec.ts::Left unanswered past February 9, it lapses'],
+   'Offers stay open 21 days (game calibration); offers made before this have no lapse date and stay open'),
+  ('Negotiating a backer\'s terms', 'V',
+   ['tests/negotiation.test.ts::they agree, keep their terms or take it back, by your leverage', 'e2e/negotiation.spec.ts::asking for better terms holds it while they consider'],
+   'One request per offer; leverage (script notes, delivered work, a competing offer) sets the odds and the world seed settles it: game calibration'),
 ]),
 '08-04': ('Budget', 'src/engine/budget.ts', [
   ('Reserved, committed, settled and cancelled amounts by line, from postings', 'VE', ['tests/ledger.test.ts::settle rejects malformed amounts, pays once per key'], ''),
@@ -266,10 +270,15 @@ C = {
   ('Candidates with rates, languages, playing age, availability and shared background', 'VE', ['tests/identity.test.ts::casting a Cuban woman'], ''),
   ('A performer booked elsewhere is shown as unavailable with the dates', 'VE', ['e2e/careers.spec.ts::an offer to a performer booked elsewhere is turned down'], ''),
 ]),
-'09-02': ('Cast', '', [
-  ('Invite to audition, schedule it, see the read, shortlist', 'MI', [], 'No auditions'),
-  ('Callbacks and chemistry reads', 'MI', [], 'No auditions'),
-  ('A missed or declined audition leaves the others; background casting skips auditions', 'MI', [], 'No auditions'),
+'09-02': ('Cast', 'src/engine/auditions.ts; src/engine/casting-calls.ts', [
+  ('Invite to audition, schedule it, see the read, shortlist', 'V',
+   ['tests/auditions.test.ts::a read is a range that contains their real capability', 'e2e/auditions.spec.ts::each read is a range in words beside the rate and the fit notes'],
+   'The read reveals the modeled capability that drives a performance; spreads and notice are game calibration'),
+  ('Callbacks and chemistry reads', 'V',
+   ['tests/auditions.test.ts::a callback narrows it, still containing it', 'tests/auditions.test.ts::which moves their performances in shared scenes', 'e2e/auditions.spec.ts::Nothing in particular between them, reading with you.'],
+   'Chemistry is a modeled pair property (world seed), half-weighted into shared-scene performances: game calibration'),
+  ('A missed or declined audition leaves the others; background casting skips auditions', 'V',
+   ['tests/auditions.test.ts::someone booked on the session day declines, saying so, and the others still read', 'tests/auditions.test.ts::background parts, cast parts and repeat invitations are refused with a reason'], ''),
 ]),
 '09-03': ('Cast', 'src/engine/hiring.ts', [
   ('Offer, then acceptance, refusal or counteroffer', 'VE', ['e2e/careers.spec.ts::an offer to a performer booked elsewhere is turned down'], ''),
@@ -308,14 +317,18 @@ C = {
   ('Approved scenes become a breakdown of requirements', 'VE', ['tests/genres.test.ts::requirements come from scenes, not labels'], ''),
   ('Readiness links each unresolved item', 'VE', ['tests/genres.test.ts::its questions appear in readiness'], ''),
 ]),
-'11-02': ('Production', 'src/engine/production/tasks.ts', [
+'11-02': ('Production', 'src/engine/production/tasks.ts; src/engine/locations.ts', [
   ('Location scouting and permits as work with a cost', 'VE', ['tests/production-golden.test.ts::fixed-seed production outcomes are unchanged'], ''),
-  ('Choose among scouted locations, keep a backup, lose one and fall back', 'MI', [], 'One location per scene heading; no options or backup'),
+  ('Choose among scouted locations, keep a backup, lose one and fall back', 'V',
+   ['tests/locations.test.ts::a site that falls through goes to the backup', 'tests/locations.test.ts::a place with no site after a loss loses its day', 'e2e/live-action.spec.ts::a cheaper stand-in with the real place as the backup'],
+   'Three site kinds per place (real, stage set, stand-in); fees and risks are game calibration; no choice keeps the old behaviour'),
 ]),
-'11-03': ('Production', 'src/engine/production.ts', [
+'11-03': ('Production', 'src/engine/production.ts; src/engine/designs.ts', [
   ('Assets with versions and readiness; a design change rebuilds only what depends on it', 'VE',
    ['tests/media.test.ts::a design change reports its impact and rebuilds only affected work'], ''),
-  ('Approve or reject a design before building', 'MI', [], 'Designs are built when their task completes'),
+  ('Approve or reject a design before building', 'V',
+   ['tests/designs.test.ts::builds wait for an approved design', 'e2e/media.spec.ts::Nothing is built until its design is approved (SLATE-11-03.02).'],
+   'Projects started before November 8, 2026 build without approval (designReview unset)'),
   ('Damaged puppets are repaired', 'IU', [], 'maybePuppetDamage exists; no test'),
 ]),
 '11-04': ('Schedule', 'src/engine/production/tasks.ts', [
@@ -323,21 +336,27 @@ C = {
    ['tests/media.test.ts::follows boards, animatic, voice and animation dependencies'], ''),
   ('Preparation has a bounded effect', 'IU', [], 'Rehearsal days are capped; no test of the bound'),
 ]),
-'11-05': ('Schedule', 'src/engine/production/schedule.ts', [
+'11-05': ('Schedule', 'src/engine/production/schedule.ts; src/engine/callsheet.ts', [
   ('Plan shoot days by availability, holidays and six-day weeks', 'VE', ['tests/heritage.test.ts::its shoot days skip them'], ''),
   ('Move a day without paying twice', 'VE', ['tests/schedule.test.ts::moves a day to the first free working day'], ''),
-  ('A call sheet for each day: who, where, when', 'MI', [], 'Days list scenes and location; no call sheet'),
+  ('A call sheet for each day: who, where, when', 'V',
+   ['tests/callsheet.test.ts::says the call the game schedules, who is called for which scenes', 'e2e/live-action.spec.ts::Each day\'s call sheet (SLATE-11-05.03)'],
+   'Derived from the day (call and wrap events, who it pays, daylight, forecast); never stored'),
 ]),
 '12-01': ('Production', 'src/engine/production/shoot.ts', [
   ('A day runs only with the people it needs', 'VE', ['tests/schedule.test.ts::refuses when someone needed on set is busy'], ''),
   ('Missing people or gear: switch scenes, delay or cancel, with costs', 'IU', [], 'Partly via moveShootDay; no test of a missing-resource day'),
 ]),
-'12-02': ('Production', 'src/engine/production/shoot.ts', [
+'12-02': ('Production', 'src/engine/production/shoot.ts; src/engine/takes.ts', [
   ('A shoot day captures its scenes with coverage and quality', 'VE', ['tests/journeys.test.ts::runs from script to delivery'], ''),
-  ('Setups, coverage choices and takes per scene', 'MI', [], 'Capture is one result per scene'),
+  ('Setups, coverage choices and takes per scene', 'V',
+   ['tests/takes.test.ts::more coverage and more takes use more of the day', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)'],
+   'Coverage and take policies per scene; time factors and spreads are game calibration; projects from before keep one result per scene'),
 ]),
-'12-03': ('Production', '', [
-  ('Review a take, ask for another, or move on, at a time cost', 'MI', [], 'Takes exist only for motion capture'),
+'12-03': ('Production, Edit', 'src/engine/takes.ts', [
+  ('Review a take, ask for another, or move on, at a time cost', 'V',
+   ['tests/takes.test.ts::choosing another take moves the performance and the direction', 'e2e/live-action.spec.ts::the cut uses the best balanced one; use another for the dock scene'],
+   'Takes are chosen before the day (the policy) and reviewed in the edit; the shoot itself runs unattended'),
 ]),
 '12-04': ('Production', 'src/engine/production/shoot.ts', [
   ('Weather loses or compromises a day and the log says so', 'IU', [], 'runShootDay records lost and partial days; no test'),
@@ -373,7 +392,9 @@ C = {
 ]),
 '14-02': ('Contributors', 'src/engine/documentary.ts; src/engine/unscripted.ts', [
   ('Ask for consent; given, declined or withdrawn', 'VE', ['tests/media.test.ts::uses contributors, consent and fact checks'], ''),
-  ('Restrictions on use (no face, no name, approval of use) carried into the edit', 'MI', [], 'Consent is all-or-nothing'),
+  ('Restrictions on use (no face, no name, approval of use) carried into the edit', 'V',
+   ['tests/restrictions.test.ts::a hidden face adds blurring after lock that delivery waits for', 'tests/restrictions.test.ts::a refusal holds delivery until their scenes are cut', 'e2e/journeys.spec.ts::Joost agrees on condition his face isn\'t shown'],
+   'Shares of each condition are simulation assumptions; cut approval reads the locked cut and resets on unlock'),
   ('Withdrawal before filming adds no redaction; after filming, redaction work', 'VE', ['tests/unscripted.test.ts::before the shoot there is nothing to redact'], ''),
 ]),
 '14-03': ('Production (documentary)', 'src/engine/production/tasks.ts', [

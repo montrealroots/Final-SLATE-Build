@@ -81,16 +81,16 @@ migration and tests, and moves its children to VERIFIED.
    - season arc and order (`07-02.02`);
    - block scheduling (`07-04.02`);
    - renewal (`07-05.02`).
-5. Money and people:
+5. Money and people (done):
    - negotiating finance terms (`08-03.03`);
    - comparing scope cuts (`08-05.03`);
    - auditions (`09-02`).
-6. Preparation:
+6. Preparation (done):
    - location options and a backup (`11-02.02`);
    - design approval (`11-03.02`);
    - call sheets (`11-05.03`).
-7. Live action: setups and takes (`12-02.02`, `12-03`).
-8. Animation and documentary: use restrictions (`14-02.02`).
+7. Live action (done): setups and takes (`12-02.02`, `12-03`).
+8. Animation and documentary (done): use restrictions (`14-02.02`).
 9. Post:
    - replacement voice and effects work (`15-03.02`);
    - ADR and Foley (`15-04.02`);

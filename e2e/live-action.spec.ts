@@ -89,6 +89,25 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await page.getByRole('button', { name: 'Build Schedule' }).click();
   await expect(page.getByRole('heading', { name: 'Shoot Days' })).toBeVisible();
   await expect(page.locator('li', { hasText: 'Ferry Dock' }).first()).toBeVisible();
+  // Each day's call sheet (SLATE-11-05.03): the call, where, who is called for which scenes, daylight for an exterior.
+  const dock = page.locator('section.card', { has: page.getByRole('heading', { name: 'Shoot Days' }) }).locator('li', { hasText: 'Ferry Dock' }).first();
+  await dock.getByText('Call Sheet', { exact: true }).click();
+  await expect(dock).toContainText('7:00 AM');
+  await expect(dock).toContainText('Ferry Dock, exterior');
+  await expect(dock).toContainText('You as Odile');
+  await expect(dock).toContainText(/Sunrise \d+:\d\d AM, sunset \d+:\d\d PM\./);
+  // The shot plan (SLATE-12-02.02): more takes for the dock scene take more of the day.
+  await dock.getByLabel('Takes For Scene 1 (Ferry Dock)').selectOption({ label: 'Keep Going Until It Is Right' });
+  await expect(dock).toContainText('About 130% of the standard plan\'s time.');
+  // Once scouting is done, each place offers three sites; a cheaper stand-in with the real place as the backup
+  // (SLATE-11-02.02). If the stand-in falls through on the day, the shoot goes to the backup.
+  const sites = page.locator('section.card', { has: page.getByRole('heading', { name: 'Locations' }) });
+  for (let i = 0; i < 6 && !(await sites.count()); i++) { await advance(page, 'week'); await section(page, 'Schedule'); }
+  await expect(sites).toContainText('Scouting found three sites for each place.');
+  await expect(sites.getByLabel('Site For Wheelhouse').locator('option')).toContainText([/^The Real Place \(Not Chosen Yet\)$/, /^The Real Place: \$[\d,]+ a day$/, /^A Stage Set Built To Match: \$[\d,]+ a day$/, /^A Cheaper Stand-In: \$[\d,]+ a day$/]);
+  await sites.getByLabel('Site For Wheelhouse').selectOption('standin');
+  await sites.getByLabel('Backup For Wheelhouse').selectOption('real');
+  await expect(sites).toContainText('Costs less; arrangements like this fall through more often.');
 
   // Let production run; keep staffing and move the edit along.
   for (let i = 0; i < 24; i++) {
@@ -107,8 +126,17 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
       await deliver.click();
       break;
     }
-    const lock = page.getByRole('button', { name: 'Lock Picture' });
+    const lock = page.getByRole('button', { name: 'Lock Picture', exact: true });
     if (await lock.isEnabled()) {
+      // Before locking, the takes (SLATE-12-03): the cut uses the best balanced one; use another for the dock scene.
+      const takes = page.locator('section.card', { has: page.getByRole('heading', { name: 'Takes' }) });
+      await expect(takes).toContainText('In the cut');
+      const use = takes.getByRole('button', { name: /^Use Take \d Of Scene 1 \(Ferry Dock\)$/ }).first();
+      const n = (await use.getAttribute('aria-label'))!.match(/Take (\d)/)![1];
+      await use.click();
+      const dockTakes = takes.locator('li', { has: page.locator('strong', { hasText: 'Scene 1 (Ferry Dock)' }) });
+      await expect(dockTakes.locator('li', { hasText: new RegExp(`^Take ${n}: .* · In the cut$`) })).toHaveCount(1);
+      await expect(dockTakes.locator('li', { hasText: / · In the cut$/ })).toHaveCount(1);
       await lock.click();
       continue;
     }

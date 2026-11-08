@@ -110,8 +110,8 @@ SLATE-08-01.02,SLATE-08-01,"A line with no available candidate is flagged as unc
 SLATE-08-02.01,SLATE-08-02,Each backer says what it needs; send; an answer after some days,VERIFIED EXISTING,tests/finance.test.ts::each backer says what it needs | tests/finance.test.ts::a grant and an investor answer after some days,
 SLATE-08-02.02,SLATE-08-02,A refusal says why and leaves other backers open,VERIFIED EXISTING,"e2e/first-project.spec.ts::a refusal, the agreed backing",
 SLATE-08-03.01,SLATE-08-03,"Terms: amount, timing, recoupment, share, approvals, credit; accept or refuse",VERIFIED EXISTING,tests/finance.test.ts::a commissioner pays most on signing | tests/finance.test.ts::a co-producer only joins a backed project,
-SLATE-08-03.02,SLATE-08-03,An offer that has expired cannot be accepted,IMPLEMENTED UNVERIFIED,,No expiry on finance offers is tested
-SLATE-08-03.03,SLATE-08-03,Negotiating a backer's terms,MISSING,,Finance terms are take-or-leave
+SLATE-08-03.02,SLATE-08-03,An offer that has expired cannot be accepted,VERIFIED,"tests/negotiation.test.ts::after its open days it can't be accepted | e2e/negotiation.spec.ts::Left unanswered past February 9, it lapses",Offers stay open 21 days (game calibration); offers made before this have no lapse date and stay open
+SLATE-08-03.03,SLATE-08-03,Negotiating a backer's terms,VERIFIED,"tests/negotiation.test.ts::they agree, keep their terms or take it back, by your leverage | e2e/negotiation.spec.ts::asking for better terms holds it while they consider","One request per offer; leverage (script notes, delivered work, a competing offer) sets the odds and the world seed settles it: game calibration"
 SLATE-08-04.01,SLATE-08-04,"Reserved, committed, settled and cancelled amounts by line, from postings",VERIFIED EXISTING,"tests/ledger.test.ts::settle rejects malformed amounts, pays once per key",
 SLATE-08-04.02,SLATE-08-04,"No negative, NaN or duplicate payments; a failed action charges nothing",VERIFIED EXISTING,"tests/ledger.test.ts::commit rejects NaN | tests/processing.test.ts::restores deep changes to projects, ledgers",
 SLATE-08-05.01,SLATE-08-05,A shortfall stops spending with the exact amount; more backing resumes it,VERIFIED EXISTING,e2e/careers.spec.ts::stop motion: refused for lack of money,
@@ -119,9 +119,9 @@ SLATE-08-05.02,SLATE-08-05,"Income repays backers in order, then shares",VERIFIE
 SLATE-08-05.03,SLATE-08-05,Compare cutting scope against postponing or raising more,VERIFIED,tests/cost-cuts.test.ts::the saving shown is what the estimate really drops by,
 SLATE-09-01.01,SLATE-09-01,"Candidates with rates, languages, playing age, availability and shared background",VERIFIED EXISTING,tests/identity.test.ts::casting a Cuban woman,
 SLATE-09-01.02,SLATE-09-01,A performer booked elsewhere is shown as unavailable with the dates,VERIFIED EXISTING,e2e/careers.spec.ts::an offer to a performer booked elsewhere is turned down,
-SLATE-09-02.01,SLATE-09-02,"Invite to audition, schedule it, see the read, shortlist",MISSING,,No auditions
-SLATE-09-02.02,SLATE-09-02,Callbacks and chemistry reads,MISSING,,No auditions
-SLATE-09-02.03,SLATE-09-02,A missed or declined audition leaves the others; background casting skips auditions,MISSING,,No auditions
+SLATE-09-02.01,SLATE-09-02,"Invite to audition, schedule it, see the read, shortlist",VERIFIED,tests/auditions.test.ts::a read is a range that contains their real capability | e2e/auditions.spec.ts::each read is a range in words beside the rate and the fit notes,The read reveals the modeled capability that drives a performance; spreads and notice are game calibration
+SLATE-09-02.02,SLATE-09-02,Callbacks and chemistry reads,VERIFIED,"tests/auditions.test.ts::a callback narrows it, still containing it | tests/auditions.test.ts::which moves their performances in shared scenes | e2e/auditions.spec.ts::Nothing in particular between them, reading with you.","Chemistry is a modeled pair property (world seed), half-weighted into shared-scene performances: game calibration"
+SLATE-09-02.03,SLATE-09-02,A missed or declined audition leaves the others; background casting skips auditions,VERIFIED,"tests/auditions.test.ts::someone booked on the session day declines, saying so, and the others still read | tests/auditions.test.ts::background parts, cast parts and repeat invitations are refused with a reason",
 SLATE-09-03.01,SLATE-09-03,"Offer, then acceptance, refusal or counteroffer",VERIFIED EXISTING,e2e/careers.spec.ts::an offer to a performer booked elsewhere is turned down,
 SLATE-09-03.02,SLATE-09-03,A booking reserves the dates and the money together; no double booking,VERIFIED EXISTING,tests/schedule.test.ts::refuses when someone needed on set is busy,
 SLATE-09-03.03,SLATE-09-03,An unanswered offer lapses and releases what it held,IMPLEMENTED UNVERIFIED,,Offers resolve by responseAt; no test of a lapse
@@ -142,20 +142,20 @@ SLATE-10-05.02,SLATE-10-05,A handover to a replacement mid-task,IMPLEMENTED UNVE
 SLATE-11-01.01,SLATE-11-01,Approved scenes become a breakdown of requirements,VERIFIED EXISTING,"tests/genres.test.ts::requirements come from scenes, not labels",
 SLATE-11-01.02,SLATE-11-01,Readiness links each unresolved item,VERIFIED EXISTING,tests/genres.test.ts::its questions appear in readiness,
 SLATE-11-02.01,SLATE-11-02,Location scouting and permits as work with a cost,VERIFIED EXISTING,tests/production-golden.test.ts::fixed-seed production outcomes are unchanged,
-SLATE-11-02.02,SLATE-11-02,"Choose among scouted locations, keep a backup, lose one and fall back",MISSING,,One location per scene heading; no options or backup
+SLATE-11-02.02,SLATE-11-02,"Choose among scouted locations, keep a backup, lose one and fall back",VERIFIED,tests/locations.test.ts::a site that falls through goes to the backup | tests/locations.test.ts::a place with no site after a loss loses its day | e2e/live-action.spec.ts::a cheaper stand-in with the real place as the backup,"Three site kinds per place (real, stage set, stand-in); fees and risks are game calibration; no choice keeps the old behaviour"
 SLATE-11-03.01,SLATE-11-03,Assets with versions and readiness; a design change rebuilds only what depends on it,VERIFIED EXISTING,tests/media.test.ts::a design change reports its impact and rebuilds only affected work,
-SLATE-11-03.02,SLATE-11-03,Approve or reject a design before building,MISSING,,Designs are built when their task completes
+SLATE-11-03.02,SLATE-11-03,Approve or reject a design before building,VERIFIED,tests/designs.test.ts::builds wait for an approved design | e2e/media.spec.ts::Nothing is built until its design is approved (SLATE-11-03.02).,"Projects started before November 8, 2026 build without approval (designReview unset)"
 SLATE-11-03.03,SLATE-11-03,Damaged puppets are repaired,IMPLEMENTED UNVERIFIED,,maybePuppetDamage exists; no test
 SLATE-11-04.01,SLATE-11-04,"Rehearsal days, stunt and choreography rehearsal, storyboards and animatic as work",VERIFIED EXISTING,"tests/media.test.ts::follows boards, animatic, voice and animation dependencies",
 SLATE-11-04.02,SLATE-11-04,Preparation has a bounded effect,IMPLEMENTED UNVERIFIED,,Rehearsal days are capped; no test of the bound
 SLATE-11-05.01,SLATE-11-05,"Plan shoot days by availability, holidays and six-day weeks",VERIFIED EXISTING,tests/heritage.test.ts::its shoot days skip them,
 SLATE-11-05.02,SLATE-11-05,Move a day without paying twice,VERIFIED EXISTING,tests/schedule.test.ts::moves a day to the first free working day,
-SLATE-11-05.03,SLATE-11-05,"A call sheet for each day: who, where, when",MISSING,,Days list scenes and location; no call sheet
+SLATE-11-05.03,SLATE-11-05,"A call sheet for each day: who, where, when",VERIFIED,"tests/callsheet.test.ts::says the call the game schedules, who is called for which scenes | e2e/live-action.spec.ts::Each day's call sheet (SLATE-11-05.03)","Derived from the day (call and wrap events, who it pays, daylight, forecast); never stored"
 SLATE-12-01.01,SLATE-12-01,A day runs only with the people it needs,VERIFIED EXISTING,tests/schedule.test.ts::refuses when someone needed on set is busy,
 SLATE-12-01.02,SLATE-12-01,"Missing people or gear: switch scenes, delay or cancel, with costs",IMPLEMENTED UNVERIFIED,,Partly via moveShootDay; no test of a missing-resource day
 SLATE-12-02.01,SLATE-12-02,A shoot day captures its scenes with coverage and quality,VERIFIED EXISTING,tests/journeys.test.ts::runs from script to delivery,
-SLATE-12-02.02,SLATE-12-02,"Setups, coverage choices and takes per scene",MISSING,,Capture is one result per scene
-SLATE-12-03.01,SLATE-12-03,"Review a take, ask for another, or move on, at a time cost",MISSING,,Takes exist only for motion capture
+SLATE-12-02.02,SLATE-12-02,"Setups, coverage choices and takes per scene",VERIFIED,tests/takes.test.ts::more coverage and more takes use more of the day | e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02),Coverage and take policies per scene; time factors and spreads are game calibration; projects from before keep one result per scene
+SLATE-12-03.01,SLATE-12-03,"Review a take, ask for another, or move on, at a time cost",VERIFIED,tests/takes.test.ts::choosing another take moves the performance and the direction | e2e/live-action.spec.ts::the cut uses the best balanced one; use another for the dock scene,Takes are chosen before the day (the policy) and reviewed in the edit; the shoot itself runs unattended
 SLATE-12-04.01,SLATE-12-04,Weather loses or compromises a day and the log says so,IMPLEMENTED UNVERIFIED,,runShootDay records lost and partial days; no test
 SLATE-12-04.02,SLATE-12-04,A failed day rolls back; completed work is kept,VERIFIED EXISTING,tests/processing.test.ts::rolls the batch back,
 SLATE-12-05.01,SLATE-12-05,Pickups are booked after the last shoot day and capture the missing scene,VERIFIED EXISTING,tests/script-effects.test.ts::is booked after the last scheduled shoot day,
@@ -173,7 +173,7 @@ SLATE-13-05.02,SLATE-13-05,A changed plate flags its integration task and cost,I
 SLATE-14-01.01,SLATE-14-01,Research and access planning; contributors and archives,VERIFIED EXISTING,e2e/media.spec.ts::documentary through the UI,
 SLATE-14-01.02,SLATE-14-01,A refusal says what it affects and offers alternatives,VERIFIED EXISTING,e2e/journeys.spec.ts::a contributor who declines is told apart,
 SLATE-14-02.01,SLATE-14-02,"Ask for consent; given, declined or withdrawn",VERIFIED EXISTING,"tests/media.test.ts::uses contributors, consent and fact checks",
-SLATE-14-02.02,SLATE-14-02,"Restrictions on use (no face, no name, approval of use) carried into the edit",MISSING,,Consent is all-or-nothing
+SLATE-14-02.02,SLATE-14-02,"Restrictions on use (no face, no name, approval of use) carried into the edit",VERIFIED,tests/restrictions.test.ts::a hidden face adds blurring after lock that delivery waits for | tests/restrictions.test.ts::a refusal holds delivery until their scenes are cut | e2e/journeys.spec.ts::Joost agrees on condition his face isn't shown,Shares of each condition are simulation assumptions; cut approval reads the locked cut and resets on unlock
 SLATE-14-02.03,SLATE-14-02,"Withdrawal before filming adds no redaction; after filming, redaction work",VERIFIED EXISTING,tests/unscripted.test.ts::before the shoot there is nothing to redact,
 SLATE-14-03.01,SLATE-14-03,Interviews and actuality captured; claims checked,VERIFIED EXISTING,e2e/journeys.spec.ts::documentary: consent and fact checks gate delivery,
 SLATE-14-04.01,SLATE-14-04,Format rules per family; deterministic competition rounds,VERIFIED EXISTING,"tests/unscripted.test.ts::competition: deterministic, stored rounds",

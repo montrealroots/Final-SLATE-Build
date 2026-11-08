@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
+import { approveDesign } from '../src/engine/designs-actions';
 import { holidaysForYear, buildTasks, isWorkingDay, approvedScenes } from './engine-api';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
 import { processUntil, DAY, depsMet, ledgerTotals, bookMocap, cancelMocapBooking, stageBlock, requestRetake, approveTake, takeChangeImpact, mocapRecord, obligation, MOCAP_SESSION_STAGE, MOCAP_CANCEL_SHARE } from './engine-api';
+import { designStatus } from '../src/engine/designs';
 
 describe('sourced 2026 lunar-calendar holidays', () => {
   it('China 2026 follows the State Council notice, including make-up working days', () => {
@@ -144,7 +146,10 @@ describe('motion capture takes', () => {
     expect(rec.takes.every((t) => t.quality >= 0 && t.quality <= 100)).toBe(true);
     // Cleanup waits for a chosen take.
     const cleanup = p.tasks.find((t) => t.id === `anim:mocap-cleanup:${golem.id}`)!;
-    for (let i = 0; i < 200 && /^Waiting for/.test(depsMet(p, cleanup).reason ?? ''); i++) processUntil(s, s.now + DAY, 'tick', 100000);
+    for (let i = 0; i < 200 && /^Waiting for/.test(depsMet(p, cleanup).reason ?? ''); i++) {
+      if (designStatus(p, golem.id) === 'awaiting') approveDesign(p, golem.id); // the producer approves the design (designs.ts)
+      processUntil(s, s.now + DAY, 'tick', 100000);
+    }
     expect(depsMet(p, cleanup).reason).toBe('Choose the approved take first.');
     // A retake adds one session and one session's stage cost to the same booking line.
     const booking = p.obligations.find((o) => o.ref === `mocap:${golem.id}`)!;

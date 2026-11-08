@@ -258,6 +258,22 @@ export interface Scene {
   operator?: string; // found footage: who is recording
 }
 
+/** An invitation to read for a part, and what came of it (auditions.ts, SLATE-09-02). */
+export interface Audition {
+  id: string;
+  characterId: string;
+  method: PerformanceMethod;
+  personId: string;
+  /** The session day, local to the production base. */
+  date: string;
+  status: 'invited' | 'declined' | 'missed' | 'seen';
+  reason?: string;
+  /** The read: a range in the 0 to 100 capability scale that contains the truth, shown in words only. */
+  read?: [number, number];
+  shortlisted?: boolean;
+  callback?: { date: string; status: 'scheduled' | 'missed' | 'seen'; partnerId?: string; chemistry?: number };
+}
+
 /** A research question behind a fiction script (research.ts, SLATE-04-04.02): the writer's record, never verified by the game. */
 export interface ResearchNote {
   id: string;
@@ -298,6 +314,10 @@ export interface Contributor {
   name: string;
   role: string;
   consent: 'not-asked' | 'requested' | 'given' | 'declined' | 'withdrawn';
+  /** What they agreed to on condition of (documentary.ts): their face hidden, their name withheld, approval of the cut. */
+  restrictions?: ('face' | 'name' | 'approval')[];
+  /** For approval of the cut: shown to them, and their answer. */
+  cutApproval?: { status: 'shown' | 'approved' | 'refused'; answerAt: number };
 }
 
 export interface WorldRule {
@@ -385,9 +405,13 @@ export interface FinanceDeal {
   kind: FinanceDealKind;
   backer: string;
   amount: number; // promised in total
-  status: 'considering' | 'offered' | 'declined' | 'refused' | 'accepted' | 'breached';
+  status: 'considering' | 'offered' | 'declined' | 'refused' | 'accepted' | 'breached' | 'lapsed' | 'withdrawn';
   askedAt: number;
   decideAt?: number;
+  /** When an open offer lapses unanswered (negotiation.ts). Offers made before November 8, 2026 have none and stay open. */
+  expiresAt?: number;
+  /** The one request for better terms an offer allows, and the backer's answer (negotiation.ts). */
+  counter?: { term: 'share' | 'recoup' | 'signing' | 'approval'; askedAt: number; answerAt: number; outcome?: 'agreed' | 'held' | 'withdrawn' };
   reason: string; // why they agreed, or why not
   received: number; // paid into the project so far
   repaid: number; // paid back to them from income so far
@@ -523,6 +547,10 @@ export interface SceneCapture {
   weatherCompromised: boolean;
   /** Who performed in it (person ids or 'player'), so a replaced performer whose work remains is still credited. */
   performers?: string[];
+  /** Its takes and the one used, with that take's performance side (takes.ts); absent for projects without shot plans. */
+  takes?: { perf: number; tech: number }[];
+  chosenTake?: number;
+  perf?: number;
 }
 
 export interface EditState {
@@ -608,6 +636,16 @@ export interface Project {
   episodes: { number: number; title: string; writer: 'player' | string; director: 'player' | string; formerWriters?: string[]; formerDirectors?: string[]; /** What this episode moves in the season arc (season.ts). */ arc?: string }[];
   /** The season's arc, in the writer's words (season.ts). Scores nothing; a continuation starts from it. */
   seasonArc?: string;
+  /** Designs wait for the producer's approval before they are built (designs.ts); unset on projects started before. */
+  designReview?: boolean;
+  designApprovals?: Record<string, { version: number; status: 'approved' | 'changes' }>;
+  /** Live-action scenes are shot to a plan of coverage and takes (takes.ts); unset on projects started before. */
+  takesModel?: boolean;
+  shotPlans?: Record<string, { coverage: 'master' | 'standard' | 'full'; takes: 'one' | 'few' | 'many' }>;
+  /** Sites chosen for each place after scouting, the backup, and those that fell through (locations.ts). */
+  locationChoices?: Record<string, { main?: 'real' | 'stage' | 'standin'; backup?: 'real' | 'stage' | 'standin'; lost?: ('real' | 'stage' | 'standin')[] }>;
+  /** Auditions and callbacks for its parts (auditions.ts). */
+  auditions?: Audition[];
   setups: SetupPayoff[];
   /** Acts or sequences, and story threads (structure.ts). Absent in older saves. */
   acts?: { id: string; name: string }[];

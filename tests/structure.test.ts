@@ -1,8 +1,9 @@
 // SLATE-04-02.02 and .03: acts and threads are the writer's structure; links stay true when scenes change, and nothing scores.
 import { describe, expect, it } from 'vitest';
 import {
-  addAct, addBeat, addResearch, addThread, assessQuality, combineScenes, deleteScene, removeResearch, updateResearch, removeAct, resolutionLabel, scriptIssues, setSceneAct, splitScene, updateThread,
+  addResearch, assessQuality, combineScenes, deleteScene, removeResearch, updateResearch, resolutionLabel, scriptIssues, splitScene,
 } from './engine-api';
+import { addAct, addBeat, addThread, removeAct, setSceneAct, updateThread } from '../src/engine/structure-edit';
 import { cutConsequences } from '../src/engine/script-explain';
 import { approve, buildProject, startLife } from './helpers';
 

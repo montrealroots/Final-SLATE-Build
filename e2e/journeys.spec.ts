@@ -136,11 +136,16 @@ const consentOf = (page: Page, name: string) => page.locator('li', { hasText: na
 test('documentary: consent and fact checks gate delivery', async ({ page }) => {
   await lockKeepers(page, ALL_AGREE);
   for (const n of ['Joost de Vries', 'Fenna Bakker', 'Ruud Smit']) await expect(consentOf(page, n)).toHaveText('Consent Given');
+  // Seed 2: Joost agrees on condition his face isn't shown (SLATE-14-02.02); the edit hides it before delivery.
+  await expect(page.locator('li', { hasText: 'Joost de Vries' }).first()).toContainText('On condition: their face is not shown.');
   await addScene(page, { index: 0, place: 'Lock House', contributors: ['Joost de Vries'], minutes: '2', episodeButton: 'Add Sequence' });
   await saveAndApprove(page);
   await produceToDelivery(page, {});
+  await section(page, 'Production');
+  await expect(page.locator('li', { hasText: "Hide Joost de Vries's Face" }).first()).toContainText('Done');
   const credits = await creditsTable(page);
   expect(credits).toContain('Researcher');
+  expect(credits).toMatch(/Featuring\s+Joost de Vries/);
   expect(credits).not.toMatch(/^(Cast|Voice Cast|Performance Capture)\t/m); // a documentary has no cast credits (a name may contain "Cast")
 });
 

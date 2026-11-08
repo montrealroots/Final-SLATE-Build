@@ -1,8 +1,9 @@
 // Stage 4 of the gameplay-depth package: episodes. Block scheduling (SLATE-07-04.02), the series bible's shared facts
 // (07-01.02), the season plan (07-02.02) and continuations (07-05.02, 18-04).
 import { describe, expect, it } from 'vitest';
-import { DAY, RENEWAL_DECISION_DAYS, addThread, assignEpisodeRole, deleteScene, scriptIssues, backerOptions, buildTasks, makeOffer, planShootDays, processUntil, projectedCost, roleCandidates, scheduleRenewal, updateCharacter } from './engine-api';
+import { DAY, RENEWAL_DECISION_DAYS, assignEpisodeRole, deleteScene, scriptIssues, backerOptions, buildTasks, makeOffer, planShootDays, processUntil, projectedCost, roleCandidates, scheduleRenewal, updateCharacter } from './engine-api';
 import { continueProject } from '../src/engine/sequel';
+import { addThread } from '../src/engine/structure-edit';
 import { moveEpisode, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule } from '../src/engine/season';
 import type { GameState, Project } from '../src/engine/types';
 import { approve, buildProject, startLife } from './helpers';

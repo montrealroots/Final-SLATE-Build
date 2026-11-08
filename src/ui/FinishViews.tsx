@@ -1,20 +1,54 @@
 import { Fragment, useState } from 'react';
+import { approveDesign, askForDesignChanges } from '../engine/designs-actions';
+import { showCut } from '../engine/documentary-actions';
+import { chooseTake } from '../engine/takes-actions';
 import { getPlace, placeLabel } from '../data/places';
 import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
-  qualityWords, requestPickups, depsMet, startCutPass, submitEntry, unlockPicture, withdrawEntry, addDaysToKey, categoryRecipients, type Category,
-  categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, rsvpScreening, screeningConflicts, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
+  qualityWords, requestPickups, depsMet, startCutPass, unlockPicture, addDaysToKey, categoryRecipients, type Category,
+  categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
   approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, restoreToEdit,
   cutScenes, entryNeeds, castPlacement, sceneLabel } from '../engine';
+import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
 import { contentSummary, cutConsequences, placementExplained, watershedRule } from '../engine/script-explain';
 import type { CapturePart, GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, PageHead, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
+import { editScenes } from '../engine/finish';
+import { designStatus, designsToReview, type DesignStatus } from '../engine/designs';
 
 // ---------------- Production ----------------
+
+/** Each character's design waits for the producer before it is built (designs.ts, SLATE-11-03.02). */
+function DesignsPanel({ p }: { p: Project }) {
+  const [err, setErr] = useState<string | null>(null);
+  const words: Record<DesignStatus, string> = { designing: 'Being designed', awaiting: 'Ready for your approval', approved: 'Approved: building can start', changes: 'Changes asked for: being redrawn' };
+  return (
+    <section className="card" aria-labelledby="designs-h">
+      <h2 id="designs-h">Designs</h2>
+      <p className="dim">Nothing is built until you approve its design. Asking for changes adds a day of visual development that every build waits for, so it costs time and money before anything is made rather than after.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      <ul className="list">{designsToReview(p).map((cid) => {
+        const c = p.characters.find((x) => x.id === cid)!;
+        const st = designStatus(p, cid);
+        return (
+          <li key={cid} className="row-wrap">
+            <span className="grow"><strong>{c.name}</strong> <span className="dim">· {words[st]}</span></span>
+            {st === 'awaiting' && !p.delivered && (
+              <div className="row gap-2 wrap">
+                <button className="btn btn-sm btn-primary" aria-label={`Approve ${c.name}'s Design`} onClick={() => setErr(store.act(() => approveDesign(p, cid)))}>Approve Design</button>
+                <button className="btn btn-sm" aria-label={`Ask For Changes To ${c.name}'s Design`} onClick={() => setErr(store.act(() => askForDesignChanges(p, cid)))}>Ask For Changes</button>
+              </div>
+            )}
+          </li>
+        );
+      })}</ul>
+    </section>
+  );
+}
 
 export function ProductionTab({ p }: { p: Project }) {
   const g = useGame();
@@ -54,6 +88,7 @@ export function ProductionTab({ p }: { p: Project }) {
         )}
         <p className="dim">Work happens on working days at the production base. Advance or let time pass to see it move.</p>
       </section>
+      {designsToReview(p).length > 0 && <DesignsPanel p={p} />}
       {p.tasks.some((t) => t.kind === 'anim:mocap') && <MocapPanel p={p} />}
       {puppets.length > 0 && (
         <section className="card">
@@ -90,6 +125,61 @@ export function ProductionTab({ p }: { p: Project }) {
 
 // ---------------- Edit and delivery ----------------
 
+/** Contributors who approve how they appear (documentary.ts, SLATE-14-02.02): show them the locked cut, or cut them. */
+function ApprovalsCard({ p, onError, onCut }: { p: Project; onError: (e: string | null) => void; onCut: (sceneId: string) => void }) {
+  useGame();
+  const inCut = editScenes(p);
+  const zone = getPlace(p.axes.basePlaceId).zone;
+  return (
+    <section className="card" aria-labelledby="approvals-h">
+      <h2 id="approvals-h">Contributors' Approval</h2>
+      <p className="dim">These contributors agreed on condition they approve how they appear. They see the locked cut; unlocking it later means showing them again. If one doesn't approve, cut their scenes to deliver.</p>
+      <ul className="list">{p.contributors.filter((c) => c.consent === 'given' && c.restrictions?.includes('approval')).map((c) => {
+        const theirs = inCut.filter((s) => s.contributorIds.includes(c.id));
+        const st = c.cutApproval?.status;
+        return (
+          <li key={c.id}>
+            <div className="row-wrap">
+              <span className="grow"><strong>{c.name}</strong> <span className="dim">· {!theirs.length ? 'Not in the cut' : st === 'approved' ? 'Approved the cut' : st === 'refused' ? "Didn't approve the cut" : st === 'shown' ? `Reviewing the cut; answer due ${formatDateKey(dateKey(c.cutApproval!.answerAt, zone))}` : 'Not shown the cut yet'}</span></span>
+              {theirs.length > 0 && !st && p.edit.pictureLocked && !p.delivered && <button className="btn btn-sm" aria-label={`Show ${c.name} The Cut`} onClick={() => onError(store.act((s) => showCut(s, s.projects.find((x) => x.id === p.id)!, c.id)))}>Show Them The Cut</button>}
+            </div>
+            {st === 'refused' && theirs.length > 0 && (
+              p.edit.pictureLocked
+                ? <p className="dim">Unlock picture to cut their scenes.</p>
+                : <ul className="list">{theirs.map((sc) => <li key={sc.id} className="row-wrap"><span className="grow">{sceneLabel(p, sc)}</span><button className="btn btn-sm" aria-label={`Cut ${sceneLabel(p, sc)} From The Edit`} onClick={() => onCut(sc.id)}>Cut It From The Edit</button></li>)}</ul>
+            )}
+          </li>
+        );
+      })}</ul>
+    </section>
+  );
+}
+
+/** The takes of each scene, and the one the cut uses (takes.ts, SLATE-12-03). Choosing trades performance against craft. */
+function TakesCard({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
+  const scenes = approvedScenes(p).filter((s) => (p.captures.find((c) => c.sceneId === s.id)?.takes?.length ?? 0) > 1);
+  return (
+    <section className="card" aria-labelledby="takes-h">
+      <h2 id="takes-h">Takes</h2>
+      <p className="dim">The cut uses each scene's best balanced take. Another may have the stronger performance, or the cleaner camera and sound: the performance side counts toward the performances, the technical side toward the direction. You can change takes until picture is locked.</p>
+      <ul className="list">{scenes.map((s) => {
+        const c = p.captures.find((x) => x.sceneId === s.id)!;
+        return (
+          <li key={s.id}>
+            <strong>{sceneLabel(p, s)}</strong>
+            <ul className="list">{c.takes!.map((t, i) => (
+              <li key={i} className="row-wrap">
+                <span className="grow">Take {i + 1}: performance {qualityWords(t.perf).toLowerCase()}, technical {qualityWords(t.tech).toLowerCase()}{c.chosenTake === i ? ' · In the cut' : ''}</span>
+                {c.chosenTake !== i && !p.edit.pictureLocked && <button className="btn btn-sm" aria-label={`Use Take ${i + 1} Of ${sceneLabel(p, s)}`} onClick={() => onError(store.act(() => chooseTake(p, s.id, i)))}>Use This Take</button>}
+              </li>
+            ))}</ul>
+          </li>
+        );
+      })}</ul>
+    </section>
+  );
+}
+
 export function EditTab({ p }: { p: Project }) {
   useGame();
   const [err, setErr] = useState<string | null>(null);
@@ -121,6 +211,8 @@ export function EditTab({ p }: { p: Project }) {
           <details className="spaced"><summary>Versions</summary><ul>{p.edit.versions.map((v) => <li key={v.number}>Version {v.number}: {v.note}, about {v.runtimeMin} minutes</li>)}</ul></details>
         )}
       </section>
+      {p.captures.some((c) => (c.takes?.length ?? 0) > 1) && <TakesCard p={p} onError={setErr} />}
+      {p.contributors.some((c) => c.consent === 'given' && c.restrictions?.includes('approval')) && <ApprovalsCard p={p} onError={setErr} onCut={setCutting2} />}
       <section className="card">
         <h2>Coverage</h2>
         {gaps.length ? (

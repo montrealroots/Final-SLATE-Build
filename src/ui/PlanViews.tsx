@@ -1,16 +1,26 @@
 import { Fragment, useState } from 'react';
+import { setShotPlan } from '../engine/takes-actions';
+import { chooseSite } from '../engine/locations-actions';
 import { languageName } from '../data/identity';
 import { getPlace } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
 import {
-  BACKERS, EXPERIENCE, assignEpisodeRole, backerDocuments, costCuts, type CostCut, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
+  BACKERS, EXPERIENCE, betterTerms, COUNTER_DAYS, type BetterTerm, assignEpisodeRole, backerDocuments, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
   type StaffingProposal, covers, fundingScenario,
 } from '../engine';
 import { breakdownComplete, characterPronouns, pronounsMatch } from '../engine/script-explain';
-import type { FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
+import { AUDITION_NOTICE_DAYS, auditionsFor, callBack, chemistryPartners, inviteRefusal, inviteToAudition, setShortlisted } from '../engine/casting-calls';
+import { chemistryWords, qualityWords } from '../engine';
+import { callSheet } from '../engine/callsheet';
+import { costCuts, type CostCut } from '../engine/cost-cuts';
+import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
+import { SITES, scoutedPlaces, site } from '../engine/locations';
+import { dayFees } from '../engine';
+import { COVERAGE, TAKES, planTime, shotPlan, type Coverage, type TakePolicy } from '../engine/takes';
+import type { Audition, FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
 import { store, useGame } from './store';
 
@@ -83,6 +93,7 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
   return (
     <div className="spaced">
       <p className="muted">Production window: {formatDateKey(win.from)} to {formatDateKey(win.to)}. About {plural(days, 'paid day')}. Uncommitted funds: {money(ledgerTotals(p).available)}.</p>
+      {part && part.roleSize !== 'background' && <p className="dim">Invite people to read before you choose: auditions are on the next working day {AUDITION_NOTICE_DAYS} days ahead, and a read shows how strong they'd be in the part, as a range. The comparison is on the Cast page.</p>}
       {part && <p className="dim">{breakdownComplete(part) ? `Offers include ${part.name}'s casting breakdown (description, wants and fears).` : `Offers go with the script pages. ${part.name}'s casting breakdown isn't written yet (description, wants and fears on the Characters page); it doesn't change who accepts.`}</p>}
       <Check label="Only Show People Who Are Free" checked={onlyFree} onChange={setOnlyFree} />
       {part && characterPronouns(part) && <Check label="List Matching Pronouns First" checked={pronounsFirst} onChange={setPronounsFirst} />}
@@ -107,6 +118,12 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
                     if (e) setErr({ ...err, [c.id]: e });
                     else onDone();
                   }}>Make Offer</button>
+                  {characterId && method && part?.roleSize !== 'background' && (() => {
+                    const why = inviteRefusal(g, p, characterId, method, c.id);
+                    return why === 'They have been asked to read for this part already.'
+                      ? <span className="chip">Asked To Read</span>
+                      : <button className="btn" aria-label={`Invite ${c.name} To Read`} disabled={!!why} title={why ?? undefined} onClick={() => { const e = store.act((s) => void inviteToAudition(s, p, characterId, method, c.id)); if (e) setErr({ ...err, [c.id]: e }); }}>Invite To Read</button>;
+                  })()}
                 </div>
               </div>
               {err[c.id] && <p role="alert" style={{ color: 'var(--negative)' }}>{err[c.id]}</p>}
@@ -178,6 +195,7 @@ export function CastTab({ p }: { p: Project }) {
                         {!a && !pending && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void castPlayer(s, p, c.id, m)))}>Cast Yourself</button>}
                         {a?.performer === 'player' && !p.delivered && <button className="btn btn-sm" onClick={() => setErr(store.act(() => uncastPlayer(p, c.id)))}>Step Out Of This Role</button>}
                       </div>
+                      {auditionsFor(p, c.id, m).length > 0 && <AuditionList p={p} characterId={c.id} method={m} cast={!!a} pending={!!pending} onError={setErr} />}
                     </div>
                   );
                 })}
@@ -197,6 +215,54 @@ export function CastTab({ p }: { p: Project }) {
         </Modal>
       )}
     </>
+  );
+}
+
+/** The reads for a part, side by side: never one score, so the choice is yours (auditions.ts). */
+function AuditionList({ p, characterId, method, cast, pending, onError }: { p: Project; characterId: string; method: PerformanceMethod; cast: boolean; pending: boolean; onError: (e: string | null) => void }) {
+  const g = useGame();
+  const [partner, setPartner] = useState<Record<string, string>>({});
+  const part = p.characters.find((c) => c.id === characterId)!;
+  const range = (r: [number, number]) => (qualityWords(r[0]) === qualityWords(r[1]) ? qualityWords(r[0]) : `${qualityWords(r[0])} to ${qualityWords(r[1])}`);
+  const when = (a: Audition): string => {
+    if (a.callback) return a.callback.status === 'scheduled' ? `Called back for ${formatDateKey(a.callback.date)}` : a.callback.status === 'missed' ? `Missed the callback on ${formatDateKey(a.callback.date)}` : `Called back on ${formatDateKey(a.callback.date)}`;
+    return { invited: `Reads on ${formatDateKey(a.date)}`, declined: a.reason ?? 'Declined', missed: `Didn't come on ${formatDateKey(a.date)}`, seen: `Read on ${formatDateKey(a.date)}` }[a.status];
+  };
+  const list = [...auditionsFor(p, characterId, method)].sort((x, y) => Number(!!y.shortlisted) - Number(!!x.shortlisted));
+  const open = !cast && !pending && !p.delivered;
+  return (
+    <div className="table-wrap" style={{ flexBasis: '100%' }}>
+      <table className="data">
+        <caption className="sr-only">Auditions For {part.name}</caption>
+        <thead><tr><th>Person</th><th>When</th><th>Their Read</th><th>Asks</th><th>Notes</th><th><span className="sr-only">Actions</span></th></tr></thead>
+        <tbody>{list.map((a) => {
+          const who = personById(g, a.personId);
+          const notes = fitNotes(g, p, who, characterId);
+          const partners = a.status === 'seen' && !a.callback ? chemistryPartners(g, p, a) : [];
+          const chem = a.callback?.chemistry !== undefined && a.callback.partnerId ? `${chemistryWords(a.callback.chemistry)}, reading with ${a.callback.partnerId === 'player' ? 'you' : personById(g, a.callback.partnerId).name}.` : '';
+          return (
+            <tr key={a.id}>
+              <td>{who.name}{a.shortlisted && <> <span className="chip chip-accent">Shortlisted</span></>}</td>
+              <td>{when(a)}</td>
+              <td>{a.read ? range(a.read) : '—'}{chem && <div className="dim">{chem}</div>}</td>
+              <td>{money(who.dayRate)} a day</td>
+              <td>{notes.length ? notes.join(' ') : 'No fit notes.'}</td>
+              <td>{open && (
+                <div className="row gap-2 wrap">
+                  {a.status === 'seen' && <button className="btn btn-sm" onClick={() => onError(store.act(() => setShortlisted(p, a.id, !a.shortlisted)))}>{a.shortlisted ? 'Take Off Shortlist' : 'Shortlist'}</button>}
+                  {a.status === 'seen' && !a.callback && partners.length > 0 && (
+                    <SelectField label={`Read ${who.name} With`} value={partner[a.id] ?? ''} options={[{ value: '', label: 'Nobody' }, ...partners.map((x) => ({ value: x.personId, label: x.label }))]} onChange={(v) => setPartner({ ...partner, [a.id]: v })} />
+                  )}
+                  {a.status === 'seen' && !a.callback && <button className="btn btn-sm" aria-label={`Call Back ${who.name}`} onClick={() => onError(store.act((s) => void callBack(s, p, a.id, partner[a.id] || undefined)))}>Call Back</button>}
+                  {a.status === 'seen' && <button className="btn btn-sm btn-primary" aria-label={`Offer ${part.name} To ${who.name}`} onClick={() => onError(store.act((s) => void makeOffer(s, p, { personId: a.personId, roleId: castRoleFor(method), dayRate: who.dayRate, characterId, method })))}>Make Offer</button>}
+                  {a.status === 'missed' && <button className="btn btn-sm" aria-label={`Ask ${who.name} To Read Again`} onClick={() => onError(store.act((s) => void inviteToAudition(s, p, characterId, method, a.personId)))}>Ask Again</button>}
+                </div>
+              )}</td>
+            </tr>
+          );
+        })}</tbody>
+      </table>
+    </div>
   );
 }
 
@@ -373,6 +439,7 @@ export function ScheduleTab({ p }: { p: Project }) {
         <button className="btn btn-primary" disabled={!!p.delivered} onClick={() => setErr(store.act((s) => void generatePlan(s, p, start)))}>{p.schedule.startDate ? 'Rebuild Schedule' : 'Build Schedule'}</button>
         {p.schedule.startDate && <p className="dim">Rebuilding keeps finished work and moves only what hasn't happened yet.</p>}
       </section>
+      {scoutedPlaces(p).length > 0 && <LocationsCard p={p} />}
       <section className="card">
         <h2>Shoot Days</h2>
         {!days.length && <p className="muted">{p.schedule.startDate ? 'This project has no live-action shoot days.' : 'Build a schedule to see shoot days.'}</p>}
@@ -388,6 +455,27 @@ export function ScheduleTab({ p }: { p: Project }) {
                     {fc && !d.interior && fc.leadDays <= 10 && <div className="dim">Forecast: {fc.summary}, {fc.chanceOfPrecip}% chance of rain or snow.</div>}
                     {d.result && <div className="dim">{d.result}</div>}
                     {d.conflicts.map((c) => <div key={c} className="dim" style={{ color: 'var(--warning)' }}>{c}</div>)}
+                    {d.status === 'scheduled' && (() => {
+                      const cs = callSheet(g, p, d.id);
+                      return (
+                        <details className="section-fold">
+                          <summary>Call Sheet</summary>
+                          <dl className="kv">
+                            <dt>Call</dt><dd>{cs.call}</dd>
+                            <dt>Wrap</dt><dd>{cs.wrap}</dd>
+                            <dt>Where</dt><dd>{cs.where}</dd>
+                            <dt>Scenes</dt><dd>{cs.scenes.join(', ') || 'None'}</dd>
+                          </dl>
+                          <h4>Cast</h4>
+                          {cs.cast.length ? <ul className="list">{cs.cast.map((c) => <li key={c.part}>{c.who} as {c.part} <span className="dim">· {c.scenes.join(', ')}</span></li>)}</ul> : <p className="muted">No one cast is called.</p>}
+                          {cs.uncast.map((u) => <p key={u} className="dim" style={{ color: 'var(--warning)' }}>{u}</p>)}
+                          <h4>Crew</h4>
+                          {cs.crew.length ? <ul className="list">{cs.crew.map((c) => <li key={c.role + c.who}>{c.role}: {c.who}</li>)}</ul> : <p className="muted">No shoot crew hired yet.</p>}
+                          {cs.notes.length > 0 && <><h4>Notes</h4><ul className="list">{cs.notes.map((n) => <li key={n}>{n}</li>)}</ul></>}
+                          {p.takesModel && <ShotPlans p={p} sceneIds={d.sceneIds} />}
+                        </details>
+                      );
+                    })()}
                   </div>
                   {fc && !d.interior && fc.chanceOfPrecip >= 40 && (
                     <div className="row gap-2 wrap">
@@ -403,6 +491,58 @@ export function ScheduleTab({ p }: { p: Project }) {
         </ul>
       </section>
     </>
+  );
+}
+
+/** How each scene of a day is shot: coverage and takes, against the day's time (takes.ts, SLATE-12-02.02). */
+function ShotPlans({ p, sceneIds }: { p: Project; sceneIds: string[] }) {
+  const [err, setErr] = useState<string | null>(null);
+  return (
+    <>
+      <h4>Shot Plan</h4>
+      <p className="dim small">More coverage gives the editor more to cut with; more takes give more to choose from, with diminishing returns. Both use more of the day, so fewer scenes fit and the shoot can run longer.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      {sceneIds.map((id) => {
+        const s = approvedScenes(p).find((x) => x.id === id);
+        const plan = shotPlan(p, id);
+        if (!s || !plan) return null;
+        return (
+          <div key={id} className="grid grid-3 form">
+            <SelectField label={`Coverage For ${sceneLabel(p, s)}`} value={plan.coverage} options={(Object.keys(COVERAGE) as Coverage[]).map((k) => ({ value: k, label: COVERAGE[k].label }))} onChange={(v) => setErr(store.act(() => setShotPlan(p, id, { coverage: v })))} />
+            <SelectField label={`Takes For ${sceneLabel(p, s)}`} value={plan.takes} options={(Object.keys(TAKES) as TakePolicy[]).map((k) => ({ value: k, label: TAKES[k].label }))} onChange={(v) => setErr(store.act(() => setShotPlan(p, id, { takes: v })))} />
+            <p className="dim small">About {Math.round(planTime(p, s) * 100)}% of the standard plan's time.</p>
+          </div>
+        );
+      })}
+    </>
+  );
+}
+
+/** The sites scouting found for each place, the one chosen and a backup (locations.ts, SLATE-11-02.02). */
+function LocationsCard({ p }: { p: Project }) {
+  const [err, setErr] = useState<string | null>(null);
+  const fee = dayFees(p).location;
+  return (
+    <section className="card" aria-labelledby="locations-h">
+      <h2 id="locations-h">Locations</h2>
+      <p className="dim">Scouting found three sites for each place. A site can fall through on the morning of a shoot: with a backup the day goes ahead there, without one the day is lost and its scenes move later. Until you choose, each place is the real one at {money(fee)} a day.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      <ul className="list">{scoutedPlaces(p).map((place) => {
+        const rec = p.locationChoices?.[place] ?? {};
+        const opts = (exclude?: string) => SITES.filter((o) => !rec.lost?.includes(o.id) && o.id !== exclude).map((o) => ({ value: o.id, label: `${o.name}: ${money(Math.round(fee * o.factor))} a day` }));
+        return (
+          <li key={place}>
+            <strong>{place}</strong>
+            {!!rec.lost?.length && <div className="dim" style={{ color: 'var(--warning)' }}>Fell through: {rec.lost.map((x) => site(x)!.name).join(', ')}.</div>}
+            <div className="grid grid-3 form">
+              <SelectField label={`Site For ${place}`} value={rec.main ?? ''} options={[{ value: '', label: rec.lost?.length ? 'Choose A Site' : 'The Real Place (Not Chosen Yet)' }, ...opts(rec.backup)]} onChange={(v) => setErr(store.act(() => chooseSite(p, place, 'main', (v || null) as never)))} />
+              <SelectField label={`Backup For ${place}`} value={rec.backup ?? ''} options={[{ value: '', label: 'No Backup' }, ...opts(rec.main)]} onChange={(v) => setErr(store.act(() => chooseSite(p, place, 'backup', (v || null) as never)))} />
+            </div>
+            {rec.main && <p className="dim small">{site(rec.main)!.note}</p>}
+          </li>
+        );
+      })}</ul>
+    </section>
   );
 }
 
@@ -479,7 +619,9 @@ function FinancingPanel({ p }: { p: Project }) {
   const [targetErr, setTargetErr] = useState<string | null>(null);
   const [err, setErr] = useState<string | null>(null);
   const [accepting, setAccepting] = useState<FinanceDeal | null>(null);
-  const status: Record<FinanceDeal['status'], string> = { considering: 'Considering', offered: 'Offer Made', declined: 'Said No', refused: 'You Turned Down', accepted: 'Backing', breached: 'Repayment Owed' };
+  const [asks, setAsks] = useState<Record<string, BetterTerm>>({});
+  const zone = getPlace(p.axes.basePlaceId).zone;
+  const status: Record<FinanceDeal['status'], string> = { considering: 'Considering', offered: 'Offer Made', declined: 'Said No', refused: 'You Turned Down', accepted: 'Backing', breached: 'Repayment Owed', lapsed: 'Lapsed', withdrawn: 'Offer Taken Back' };
   const live = (s: GameState) => s.projects.find((x) => x.id === p.id)!;
   return (
     <>
@@ -511,7 +653,7 @@ function FinancingPanel({ p }: { p: Project }) {
               <li key={d.id}>
                 <div className="row-wrap">
                   <span className="grow"><strong>{d.backer}</strong>{d.amount ? `: ${money(d.amount)}` : ''}</span>
-                  <span className={`chip ${d.status === 'accepted' ? 'chip-positive' : d.status === 'declined' || d.status === 'breached' ? 'chip-negative' : d.status === 'offered' ? 'chip-accent' : ''}`}>{status[d.status]}</span>
+                  <span className={`chip ${d.status === 'accepted' ? 'chip-positive' : d.status === 'declined' || d.status === 'breached' || d.status === 'withdrawn' || d.status === 'lapsed' ? 'chip-negative' : d.status === 'offered' ? 'chip-accent' : ''}`}>{status[d.status]}</span>
                 </div>
                 {d.sent?.length ? <p className="dim">Sent with the approved script{d.sentCopy?.draft ? ` (draft ${d.sentCopy.draft})` : ''}: {d.sent.join(', ')}. They read it; SLATE doesn't judge it.</p> : null}
                 {d.sentCopy && (
@@ -530,12 +672,35 @@ function FinancingPanel({ p }: { p: Project }) {
                 {d.reason && <p className="muted">{d.reason}</p>}
                 {(d.status === 'offered' || d.status === 'accepted' || d.status === 'breached') && <ul className="dim">{dealTerms(d).map((t) => <li key={t}>{t}</li>)}</ul>}
                 {(d.status === 'accepted' || d.status === 'breached') && d.terms.recoup > 0 && <p className="dim">Repaid so far: {money(d.repaid)} of {money(d.terms.recoup)}.</p>}
+                {d.status === 'offered' && d.expiresAt !== undefined && <p className="muted">Open until {formatDateKey(dateKey(d.expiresAt, zone))}. After that it lapses, and they aren't asked again for this project.</p>}
+                {d.counter && (
+                  <p className="muted">{(() => {
+                    const what = { share: 'a smaller share of income', recoup: 'less to repay first', signing: 'more on signing', approval: 'no casting approval' }[d.counter.term];
+                    if (!d.counter.outcome) return `You asked for ${what}. Their answer is due ${formatDateKey(dateKey(d.counter.answerAt, zone))}; until then the offer can't be accepted.`;
+                    return { agreed: `You asked for ${what}, and they agreed: the terms above include it.`, held: `You asked for ${what}. They kept their terms; the offer is open as it was.`, withdrawn: `You asked for ${what}, and they took the offer back.` }[d.counter.outcome];
+                  })()}</p>
+                )}
                 {d.status === 'offered' && (
                   <div className="row gap-2 wrap">
-                    <button className="btn btn-primary" onClick={() => setAccepting(d)}>Accept Offer</button>
+                    <button className="btn btn-primary" disabled={!!d.counter && !d.counter.outcome} onClick={() => setAccepting(d)}>Accept Offer</button>
                     <button className="btn" onClick={() => setErr(store.act((s) => refuseDeal(s, live(s), d.id)))}>Turn Down</button>
                   </div>
                 )}
+                {d.status === 'offered' && !d.counter && betterTerms(d).length > 0 && (() => {
+                  const options = betterTerms(d);
+                  const pick = asks[d.id] ?? options[0].term;
+                  const why = askRefusal(g, d);
+                  return (
+                    <div className="spaced">
+                      <div className="inline-form">
+                        <SelectField label={`Ask The ${d.backer} For`} value={pick} options={options.map((o) => ({ value: o.term, label: o.label }))} onChange={(v) => setAsks({ ...asks, [d.id]: v })} />
+                        <button className="btn" disabled={!!why} onClick={() => setErr(store.act((s) => askForBetterTerms(s, live(s), d.id, pick)))}>Ask For Better Terms</button>
+                      </div>
+                      <p className="dim small">{options.find((o) => o.term === pick)!.change} You can ask once. They answer in {COUNTER_DAYS} days and may agree, keep their terms, or take the offer back; a script with fewer open notes, delivered work and another offer open make agreement likelier.</p>
+                      {why && <p className="dim small">{why}</p>}
+                    </div>
+                  );
+                })()}
               </li>
             ))}
           </ul>

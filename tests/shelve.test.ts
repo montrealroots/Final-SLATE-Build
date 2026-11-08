@@ -1,6 +1,7 @@
 // SLATE-03-04.02 and 18-05.03: shelving a project settles its commitments and keeps its history; it can be taken up again.
 import { describe, expect, it } from 'vitest';
-import { DAY, approachBacker, createProject, ledgerTotals, makeOffer, processUntil, resumeProject, roleCandidates, shelveImpact, shelveProject, updateScene } from './engine-api';
+import { DAY, approachBacker, createProject, ledgerTotals, makeOffer, processUntil, roleCandidates, updateScene } from './engine-api';
+import { resumeProject, shelveImpact, shelveProject } from '../src/engine/shelve';
 import { approve, buildProject, castAll, manage, staffAll, startLife, startProduction, writePitch } from './helpers';
 
 function underway(tag: string) {

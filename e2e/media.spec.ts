@@ -63,6 +63,16 @@ test('3D animation through the UI: voice cast, modeling and rigging before anima
   const animate = page.locator('li', { hasText: 'Animate Scene 1 (Workshop)' }).first();
   await expect(animate).toContainText(/Waiting for (Layout|Rigging)/);
   await expect(page.locator('li', { hasText: 'Render: Scene 1 (Workshop)' }).first()).toContainText('Waiting for Lighting');
+  // Nothing is built until its design is approved (SLATE-11-03.02).
+  const designs = page.locator('section.card', { has: page.getByRole('heading', { name: 'Designs' }) });
+  await expect(designs).toContainText("Tilly · Ready for your approval");
+  await expect(page.locator('li', { hasText: 'Model And Surfacing: Tilly' }).first()).toContainText("Waiting for you to approve Tilly's design.");
+  await designs.getByRole('button', { name: "Approve Tilly's Design" }).click();
+  await expect(designs).toContainText('Tilly · Approved: building can start');
+  // Changes to Cog send the visual development back for another day, which every build waits for.
+  await designs.getByRole('button', { name: "Ask For Changes To Cog's Design" }).click();
+  await expect(designs).toContainText('Cog · Changes asked for: being redrawn');
+  await expect(page.locator('li', { hasText: 'Model And Surfacing: Tilly' }).first()).toContainText('Waiting for Visual Development And Designs.');
   await page.screenshot({ path: 'test-results/desktop-3d-production.png', fullPage: true });
 });
 

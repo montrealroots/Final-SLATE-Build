@@ -17,7 +17,9 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.63.0-noble
       options: --ipc=host
-    timeout-minutes: 45
+    # The two browser steps run the whole suite on one worker each (about 14 minutes locally on the production build in
+    # November 2026, and slower on the dev server); the job allows both plus the checks before them.
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -42,13 +44,14 @@ jobs:
           locked=$(node -p "require('./node_modules/@playwright/test/package.json').version")
           test "$locked" = "1.63.0" || { echo "package.json locks Playwright $locked; update the container image tag in ci.yml to match."; exit 1; }
       - name: Browser journeys
-        timeout-minutes: 20
+        # The suite outgrew 20 minutes on November 8, 2026 (PR #42: it was cut 7 seconds before its last test finished).
+        timeout-minutes: 30
         env:
           HOME: /root
         run: npm run e2e -- --trace retain-on-failure
       - name: Browser journeys on the production build
-        # The same suite against vite build + vite preview (playwright.config.ts, SLATE_E2E_PROD); about 5 minutes locally.
-        timeout-minutes: 20
+        # The same suite against vite build + vite preview (playwright.config.ts, SLATE_E2E_PROD); about 14 minutes locally.
+        timeout-minutes: 30
         env:
           HOME: /root
           SLATE_E2E_PROD: '1'

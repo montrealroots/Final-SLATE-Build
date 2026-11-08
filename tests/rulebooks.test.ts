@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
   INSTITUTIONS, RULEBOOKS, categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, checkEligibility, institution, migrateV2toV3,
-  rulebook, submitEntry, withdrawEntry, rivalTitle, announceEdition, processUntil, schedule, DAY,
+  rulebook, rivalTitle, announceEdition, processUntil, schedule, DAY,
 } from '../src/engine';
+import { submitEntry, withdrawEntry } from '../src/engine/awards-actions';
 import { deserialize, memoryStore, openSave, serialize, writeSave } from '../src/engine/save';
 import { isValidDate, localToInstant } from '../src/engine/time';
 import type { Credit, Edition, GameState, Project } from '../src/engine/types';

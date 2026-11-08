@@ -145,6 +145,8 @@ export function createProject(state: GameState, input: NewProjectInput): Project
     genreNotes: {},
     worldRules: [],
     relationships: [],
+    designReview: true,
+    takesModel: true,
     characters: [],
     scenes: [],
     episodes: Array.from({ length: axes.episodeCount }, (_, i) => ({ number: i + 1, title: episodic ? `Episode ${i + 1}` : title, writer: 'player', director: 'player' })),

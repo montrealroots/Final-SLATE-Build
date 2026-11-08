@@ -1,5 +1,7 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
+import { pairChemistry } from './auditions';
+import { coverageEdit } from './takes';
 import { scheduleRenewal } from './continuation';
 import { approvedTake, captureCredit } from './mocap';
 import { BROADCAST_EDIT_COST, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
@@ -142,6 +144,9 @@ export function unlockPicture(state: GameState, p: Project): string[] {
   if (!p.edit.pictureLocked) throw new Error('The picture isn\'t locked.');
   if (p.delivered) throw new Error('A delivered project can\'t be unlocked.');
   p.edit.pictureLocked = false;
+  // A contributor's approval was of the locked cut; a changed cut needs showing again (documentary.ts). A refusal stays:
+  // unlocking is how their scenes get cut.
+  for (const c of p.contributors) if (c.cutApproval && c.cutApproval.status !== 'refused') delete c.cutApproval;
   const reset: string[] = [];
   for (const t of p.tasks) {
     if (t.dependsOn.some((d) => d.startsWith('milestone:lock')) && t.done > 0) {
@@ -166,6 +171,11 @@ export function deliveryBlockers(p: Project): string[] {
   if (noConsent.length) out.push(`${noConsent[0].name} hasn't given consent to appear.`);
   const unredacted = p.contributors.filter((c) => c.consent === 'withdrawn' && contributorsUsed.has(c.id) && !redactionComplete(p, c.id));
   if (unredacted.length) out.push(`${unredacted[0].name} withdrew; their footage still has to be redacted.`);
+  // Approval of how they appear (documentary.ts): only for contributors still in the cut.
+  const inEdit = new Set(editScenes(p).flatMap((s) => s.contributorIds));
+  for (const c of p.contributors.filter((x) => x.consent === 'given' && x.restrictions?.includes('approval') && inEdit.has(x.id) && x.cutApproval?.status !== 'approved')) {
+    out.push(c.cutApproval?.status === 'refused' ? `${c.name} didn't approve how they appear. Cut their scenes to deliver.` : c.cutApproval?.status === 'shown' ? `${c.name} is reviewing the cut.` : `${c.name} approves how they appear: show them the locked cut.`);
+  }
   if (isNonfiction(p.axes.format) && p.evidence.some((e) => e.status !== 'dramatized' && !e.verified)) out.push('Some claims haven\'t been verified.');
   return out;
 }
@@ -247,6 +257,13 @@ export function computeCredits(state: GameState, p: Project): Credit[] {
     const eps = [...new Set(scenesOf.map((s) => s.episode))];
     add({ person: h.personId, personName: personById(state, h.personId).name, contribution: h.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: 'actor', characterName: c.name, episodes: episodic ? eps : 'all' });
   }
+  // Documentary contributors in the cut, under the name they agreed to (documentary.ts): withheld when they asked.
+  if (nonfiction) {
+    const inCut = new Set(editScenes(p).flatMap((s) => s.contributorIds));
+    for (const c of p.contributors.filter((x) => x.consent === 'given' && inCut.has(x.id))) {
+      add({ person: `contributor:${c.id}`, personName: c.restrictions?.includes('name') ? 'Name withheld at their request' : c.name, contribution: 'Featuring', roleId: 'contributor', episodes: 'all' });
+    }
+  }
   for (const h of p.hires.filter((x) => x.kind === 'crew' && x.daysWorked > 0 && x.roleId !== 'co-writer' && x.roleId !== 'episode-writer' && x.roleId !== 'episode-director')) {
     add({ person: h.personId, personName: personById(state, h.personId).name, contribution: roleLabel(h.roleId), roleId: h.roleId, episodes: h.episodes });
   }
@@ -301,14 +318,21 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   // A scene the producer declared essential and then cut from the edit leaves a gap (cutConsequences). The turning-point
   // text did this until the review of November 7, 2026; picture lock already required coverage, so it never applied.
   const gapsLeft = approved.filter((s) => s.essential && !inCut.has(s.id)).length;
-  const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10 - gapsLeft * ESSENTIAL_CUT_COST), music: clamp((crewCap('composer') ?? 45) * 0.9 + 5) };
+  const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10 - gapsLeft * ESSENTIAL_CUT_COST + coverageEdit(p, [...inCut])), music: clamp((crewCap('composer') ?? 45) * 0.9 + 5) };
   if (anim.length) out.animation = clamp(avg(anim) * 0.9 + 6);
   for (const a of p.cast) {
-    const sc = scenes.filter((s) => s.participants.includes(a.characterId)).map((s) => p.captures.find((c) => c.sceneId === s.id)?.quality ?? 60);
+    // A take's performance side, where takes were recorded (takes.ts); else the capture's quality, as before.
+    const sc = scenes.filter((s) => s.participants.includes(a.characterId)).map((s) => { const c = p.captures.find((x) => x.sceneId === s.id); return c?.perf ?? c?.quality ?? 60; });
     const base = a.performer === 'player' ? 58 + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability;
     // A shared background never scores a performance: ability isn't inferred from ethnicity. It added 6 until the review
     // of November 7, 2026; casting still shows who shares one, as information.
-    out[`performance:${a.characterId}:${a.performer}`] = clamp(base * 0.6 + avg(sc, 60) * 0.4);
+    // How they play with the others in each of their scenes (auditions.ts pairChemistry, -8 to +8), at half weight; a
+    // chemistry read only reveals it. From November 8, 2026: before, performances ignored who they played against.
+    const chem = scenes.filter((s) => s.participants.includes(a.characterId)).map((s) => {
+      const others = p.cast.filter((b) => b.performer !== a.performer && b.characterId !== a.characterId && s.participants.includes(b.characterId));
+      return avg(others.map((b) => pairChemistry(state, a.performer, b.performer)), 0);
+    });
+    out[`performance:${a.characterId}:${a.performer}`] = clamp(base * 0.6 + avg(sc, 60) * 0.4 + avg(chem, 0) * 0.5);
   }
   const perf = avg(Object.entries(out).filter(([k]) => k.startsWith('performance:')).map(([, v]) => v), 55);
   // Rounded to the nearest whole value; never derived from genre labels, budget size or identity.
