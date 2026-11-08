@@ -223,7 +223,7 @@ SLATE-19-05.03,SLATE-19-05,Physical-device and human accessibility checks,EXTERN
 SLATE-20-01.01,SLATE-20-01,"Every group has children, a status from the evidence, and evidence that exists",VERIFIED,tests/depth-ledger.test.ts::every group,
 SLATE-20-02.01,SLATE-20-02,"Festival and award rules cite their source, edition and status",VERIFIED EXISTING,"tests/rulebooks.test.ts::every rule names a real institution, category and source",
 SLATE-20-02.02,SLATE-20-02,World data sources recorded,VERIFIED EXISTING,tests/world-holidays.test.ts::labels years past the last announcement as projected,
-SLATE-20-02.03,SLATE-20-02,Production-process sources per feature ID,MISSING,,Production rates are modeled with no per-feature source register
+SLATE-20-02.03,SLATE-20-02,Production-process sources per feature ID,VERIFIED,"tests/production-sources.test.ts::names every exported calibration constant, each with a status and a source column",docs/depth/PRODUCTION-SOURCES.md: every rate is recorded per feature ID as a labelled model; no primary source was consulted for any of them
 SLATE-20-03.01,SLATE-20-03,"Transitions, boundaries, failures, determinism and migration tested",VERIFIED EXISTING,tests/processing.test.ts::processes it exactly once,
 SLATE-20-04.01,SLATE-20-04,"Desktop, phone and WebKit journeys for creation, funding, casting, revision, save and recovery",VERIFIED EXISTING,e2e/careers.spec.ts::stop motion: refused for lack of money,
 SLATE-20-04.02,SLATE-20-04,Journeys for the features this package adds,MISSING,,Added with each stage

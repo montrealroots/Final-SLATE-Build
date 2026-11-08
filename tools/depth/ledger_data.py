@@ -522,7 +522,7 @@ C = {
 '20-02': ('docs/DATA-PROVENANCE.md, rulebooks', 'src/engine/rulebooks.ts', [
   ('Festival and award rules cite their source, edition and status', 'VE', ['tests/rulebooks.test.ts::every rule names a real institution, category and source'], ''),
   ('World data sources recorded', 'VE', ['tests/world-holidays.test.ts::labels years past the last announcement as projected'], ''),
-  ('Production-process sources per feature ID', 'MI', [], 'Production rates are modeled with no per-feature source register'),
+  ('Production-process sources per feature ID', 'V', ['tests/production-sources.test.ts::names every exported calibration constant, each with a status and a source column'], 'docs/depth/PRODUCTION-SOURCES.md: every rate is recorded per feature ID as a labelled model; no primary source was consulted for any of them'),
 ]),
 '20-03': ('tests', 'tests', [
   ('Transitions, boundaries, failures, determinism and migration tested', 'VE', ['tests/processing.test.ts::processes it exactly once'], ''),
