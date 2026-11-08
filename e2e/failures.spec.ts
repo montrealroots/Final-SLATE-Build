@@ -186,6 +186,29 @@ test('a genre catalog that fails to load stops the game from opening with the re
   await expect(page.getByText('All 149 catalog entries are searchable.')).toBeVisible();
 });
 
+test('a festival and awards calendar that fails to load stops the game from opening with the reason, and Try Again opens it', async ({ page }) => {
+  expectErrors('Aborts the festival and awards calendar request.');
+  let fail = true;
+  // The calendar is data fetched on its own since November 8, 2026 (institutions-<hash>.json in the production build).
+  await page.route((url) => /institutions/.test(url.pathname) && !url.search, (route) => (fail ? route.abort() : route.continue()));
+  await page.goto('/');
+  await page.evaluate(() => {
+    localStorage.clear();
+    localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
+      step: 'review', name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
+      heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }], heritageCustomText: '', mainLanguage: 'en', languages: [],
+      startPlaceId: 'gb-london', startDate: '2026-05-04', startTime: '08:00', updatedAt: 1,
+    }));
+  });
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue Creation' }).click();
+  await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByText("The festival and awards calendar couldn't be loaded. Check your connection and try again.")).toBeVisible();
+  fail = false;
+  await page.getByRole('button', { name: 'Try Again' }).click();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+});
+
 test('a damaged genre catalog publishes nothing; Try Again with a good one opens the game with the whole catalog', async ({ page }) => {
   expectErrors('Serves a damaged genre catalog first.');
   let damaged = true;

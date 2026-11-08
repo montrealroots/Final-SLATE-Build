@@ -125,8 +125,9 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
   - Startup JavaScript budget: page-only engine code now loads with its page (`season.ts`, `sequel.ts`, `shelve.ts`,
     `structure-edit.ts`, `casting-calls.ts`, `cost-cuts.ts`, `negotiation-actions.ts`, `awards-actions.ts`,
     `callsheet.ts`, `takes-actions.ts`, `designs-actions.ts`, `locations-actions.ts`, `documentary-actions.ts`).
-    After stage 8 startup is 698.1 kB of 700, so stage 9 needs room first. The large remaining item is `awards.ts`
-    (about 60 kB at startup, mostly the institutions table its handlers read). Measure what each source adds with a
+    After stage 8 startup was 698.1 kB of 700; the festival and awards calendar then became data
+    (`src/data/institutions.json`, fetched at startup like the genre catalog, every game waiting for it, Try Again on
+    failure), and startup is 670.5 kB. Measure what each source adds with a
     sourcemap build (`npx vite build --outDir <dir> --sourcemap`, then sum each source's mapped bytes in the store
     chunk with `source-map-js`).
   - Stage 6, preparation, everything below now VERIFIED:

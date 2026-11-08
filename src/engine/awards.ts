@@ -4,6 +4,7 @@
 // announcement; all others are generated once per edition from a seasonal window and saved, so reloading never moves them.
 
 import { getPlace } from '../data/places';
+import institutionsUrl from '../data/institutions.json?url';
 import { COMEDY_MUSICAL, castPlacement, competesAs, documentsNeeded } from './script-effects';
 import { genre } from './genres';
 import { personById } from './people';
@@ -59,367 +60,62 @@ export interface Institution {
   ordinalBase?: number;
 }
 
-const FILM: Format[] = ['feature'];
 const SHORTS: Format[] = ['short', 'documentary-short'];
-const DOCS: Format[] = ['documentary-feature'];
-const SERIES: Format[] = ['series', 'limited-series', 'anthology-series', 'web-series'];
-const ONGOING: Format[] = ['series', 'anthology-series', 'web-series'];
-const DOC_SERIES: Format[] = ['documentary-series', 'unscripted-series'];
-const GENRE_FANTASTIC = ['horror', 'fantasy', 'science-fiction', 'dark-fantasy', 'cosmic-horror', 'slasher', 'zombie', 'vampire', 'werewolf', 'creature-feature', 'monster-movie', 'kaiju', 'body-horror', 'folk-horror', 'gothic-horror', 'psychological-horror', 'supernatural', 'occult', 'splatter', 'cyberpunk', 'space-opera', 'time-travel', 'giallo', 'sword-and-sorcery', 'science-fantasy', 'horror-comedy', 'eco-horror'];
-
-const C = (id: string, name: string, recipient: Recipient, formats: Format[], judging: Judging, slots: number, extra: Partial<Category> = {}): Category => ({
-  id, name, recipient, formats, judging, slots, competitive: true, fee: 0, ...extra,
-});
 
 /** The categories an edition actually holds. Lookups by ID use the full list, so older saves keep their entries. */
 export function categoriesFor(inst: Institution, year: number): Category[] {
   return inst.categories.filter((c) => !c.years || (year >= c.years[0] && year <= c.years[1]));
 }
 
-const AFRICA = ['NG', 'BF', 'KE', 'ZA', 'EG', 'MA', 'GH', 'SN'];
-const EUROPE = ['GB', 'IE', 'FR', 'DE', 'ES', 'IT', 'NL', 'CH', 'CZ', 'SE', 'NO', 'DK', 'MC'];
+/**
+ * The festivals and awards with their categories, rules and announced dates: data, not code, in data/institutions.json
+ * (November 8, 2026). It was part of the startup JavaScript (about 60 kB with its builders) until then; now it is fetched
+ * in the background from startup, like the genre catalog, and every game waits for it before opening (ui/store.ts enter),
+ * so nothing that runs in a game reads it empty. Published whole or not at all; a failed load is fetched again.
+ */
+export const INSTITUTIONS: Institution[] = [];
+const instById = new Map<string, Institution>();
+let institutionsLoad: Promise<void> | null = null;
 
-export const INSTITUTIONS: Institution[] = [
-  {
-    id: 'sundance', name: 'Sundance Film Festival', short: 'Sundance', kind: 'festival', placeId: 'us-boulder', window: [1, 20, 27], duration: 11, cadence: 1, eligibility: 'premiere', prestige: 66,
-    official: { 2027: { start: '2027-01-21', end: '2027-01-31', source: 'https://www.cu.edu/node/348345', checked: '2026-11-06' } },
-    description: 'An independent film festival in January with dramatic, documentary, short and episodic programs.',
-    categories: [
-      C('dramatic', 'Dramatic Competition', 'project', FILM, 'programmers', 16, { fee: 100, premiere: 'world' }),
-      C('documentary', 'Documentary Competition', 'project', DOCS, 'programmers', 16, { fee: 100, premiere: 'world' }),
-      C('shorts', 'Short Film Program', 'project', SHORTS, 'programmers', 40, { fee: 60, premiere: 'international' }),
-      C('episodic', 'Episodic Program', 'project', [...SERIES, ...DOC_SERIES], 'programmers', 6, { fee: 80, competitive: false, premiere: 'world' }),
-    ],
-  },
-  {
-    id: 'berlinale', name: 'Berlin International Film Festival', short: 'Berlinale', kind: 'festival', placeId: 'de-berlin', window: [2, 10, 16], duration: 11, cadence: 1, eligibility: 'premiere', prestige: 70,
-    official: { 2027: { start: '2027-02-10', end: '2027-02-21', label: '77th Berlin International Film Festival', source: 'https://www.berlinale.de/en/2027/news-press-releases/278428.html', checked: '2026-11-06' } },
-    description: 'A February festival with a main competition, a panorama of audience favorites and short films.',
-    categories: [
-      C('competition', 'Competition', 'project', [...FILM, ...DOCS], 'jury', 20, { fee: 100, premiere: 'world' }),
-      C('panorama', 'Panorama Audience Award', 'project', [...FILM, ...DOCS], 'audience', 30, { fee: 100, premiere: 'international' }),
-      C('shorts', 'Short Film Competition', 'project', SHORTS, 'jury', 20, { fee: 60, premiere: 'world' }),
-    ],
-  },
-  {
-    id: 'cannes', name: 'Cannes Film Festival', short: 'Cannes', kind: 'festival', placeId: 'fr-cannes', window: [5, 12, 19], duration: 12, cadence: 1, eligibility: 'premiere', prestige: 76,
-    official: { 2027: { start: '2027-05-11', end: '2027-05-22', label: '80th Cannes Film Festival', source: 'https://www.screendaily.com/news/cannes-film-festival-confirms-2027-dates-for-80th-edition/5217448.article', checked: '2026-11-06' } },
-    description: 'A May festival with a main competition, out-of-competition screenings and a short film competition.',
-    categories: [
-      C('competition', 'Competition', 'project', FILM, 'jury', 21, { fee: 150, premiere: 'world' }),
-      C('special', 'Special Screenings', 'project', [...FILM, ...DOCS], 'programmers', 12, { fee: 150, competitive: false, premiere: 'world' }),
-      C('shorts', 'Short Film Competition', 'project', ['short'], 'jury', 10, { fee: 60, premiere: 'world' }),
-    ],
-  },
-  {
-    id: 'annecy', name: 'Annecy International Animation Film Festival', short: 'Annecy', kind: 'festival', placeId: 'fr-annecy', window: [6, 8, 15], duration: 7, cadence: 1, eligibility: 'premiere', prestige: 68,
-    description: 'A June festival dedicated to animation, with feature, short and television competitions.',
-    categories: [
-      C('features', 'Feature Film Competition', 'project', [...FILM, ...DOCS], 'jury', 10, { mediums: ['animation', 'hybrid'], fee: 80, premiere: 'international' }),
-      C('shorts', 'Short Film Competition', 'project', SHORTS, 'jury', 40, { mediums: ['animation', 'hybrid'], fee: 40, premiere: 'none' }),
-      C('tv', 'Television Competition', 'project', [...SERIES, 'tv-film'], 'jury', 12, { mediums: ['animation', 'hybrid'], fee: 60, premiere: 'none' }),
-    ],
-  },
-  {
-    id: 'venice', name: 'Venice International Film Festival', short: 'Venice', kind: 'festival', placeId: 'it-venice', window: [8, 26, 31], duration: 11, cadence: 1, eligibility: 'premiere', prestige: 74,
-    description: 'A late-summer festival with a main competition and an out-of-competition program.',
-    categories: [
-      C('competition', 'Competition', 'project', FILM, 'jury', 21, { fee: 120, premiere: 'world' }),
-      C('orizzonti', 'Horizons', 'project', [...FILM, ...DOCS, 'short'], 'jury', 18, { fee: 100, premiere: 'world' }),
-    ],
-  },
-  {
-    id: 'tiff', name: 'Toronto International Film Festival', short: 'TIFF', kind: 'festival', placeId: 'ca-toronto', window: [9, 3, 10], duration: 11, cadence: 1, eligibility: 'premiere', prestige: 68,
-    description: 'A September festival whose audience award is decided by festival audiences.',
-    categories: [
-      C('peoples-choice', "People's Choice Award", 'project', [...FILM, ...DOCS], 'audience', 60, { fee: 120, premiere: 'international' }),
-      C('shorts', 'Short Cuts', 'project', SHORTS, 'programmers', 40, { fee: 60, premiere: 'international' }),
-    ],
-  },
-  {
-    id: 'san-sebastian', name: 'San Sebastián International Film Festival', short: 'San Sebastián', kind: 'festival', placeId: 'es-san-sebastian', window: [9, 17, 24], duration: 9, cadence: 1, eligibility: 'premiere', prestige: 66,
-    description: 'A September festival in the Basque Country with an official competition.',
-    categories: [C('official', 'Official Selection', 'project', FILM, 'jury', 16, { fee: 90, premiere: 'international' })],
-  },
-  {
-    id: 'busan', name: 'Busan International Film Festival', short: 'Busan', kind: 'festival', placeId: 'kr-busan', window: [9, 29, 30], duration: 10, cadence: 1, eligibility: 'premiere', prestige: 63,
-    description: 'An autumn festival with a competition and a large program of new work.',
-    categories: [C('competition', 'Competition', 'project', [...FILM, ...DOCS], 'jury', 12, { fee: 80, premiere: 'international' }), C('shorts', 'Short Films', 'project', SHORTS, 'programmers', 30, { fee: 40, premiere: 'none' })],
-  },
-  {
-    id: 'sitges', name: 'Sitges Film Festival', short: 'Sitges', kind: 'festival', placeId: 'es-sitges', window: [10, 2, 9], duration: 10, cadence: 1, eligibility: 'premiere', prestige: 60,
-    description: 'An October festival of fantastic and horror cinema.',
-    categories: [C('fantastic', 'Fantastic Competition', 'project', [...FILM, 'short'], 'jury', 24, { fee: 70, genres: GENRE_FANTASTIC, premiere: 'none' })],
-  },
-  {
-    id: 'idfa', name: 'International Documentary Film Festival Amsterdam', short: 'IDFA', kind: 'festival', placeId: 'nl-amsterdam', window: [11, 12, 19], duration: 11, cadence: 1, eligibility: 'premiere', prestige: 66,
-    official: { 2026: { start: '2026-11-12', end: '2026-11-22', source: 'https://festival.idfa.nl/en/idfa-2026-2/', checked: '2026-11-06' } },
-    description: 'A November documentary festival with feature and short competitions.',
-    categories: [
-      C('features', 'Feature Documentary Competition', 'project', [...DOCS, ...DOC_SERIES], 'jury', 16, { fee: 80, premiere: 'international' }),
-      C('shorts', 'Short Documentary Competition', 'project', ['documentary-short'], 'jury', 16, { fee: 40, premiere: 'international' }),
-    ],
-  },
-  {
-    id: 'hot-docs', name: 'Hot Docs Canadian International Documentary Festival', short: 'Hot Docs', kind: 'festival', placeId: 'ca-toronto', window: [4, 23, 30], duration: 11, cadence: 1, eligibility: 'premiere', prestige: 60,
-    description: 'An April documentary festival with an audience award.',
-    categories: [C('audience', 'Audience Award', 'project', [...DOCS, 'documentary-short'], 'audience', 40, { fee: 60, premiere: 'none' })],
-  },
-  {
-    id: 'clermont', name: 'Clermont-Ferrand International Short Film Festival', short: 'Clermont-Ferrand', kind: 'festival', placeId: 'fr-clermont-ferrand', window: [1, 30, 31], duration: 9, cadence: 1, eligibility: 'premiere', prestige: 62,
-    official: { 2027: { start: '2027-01-29', end: '2027-02-06', deadline: '2026-09-24', label: '49th Clermont-Ferrand International Short Film Festival', source: 'https://www.lecourt-clermont.org/wp-content/uploads/2026/06/EN-Reglement-international-2027.pdf', checked: '2026-11-06' } },
-    description: 'A short film festival in late January and early February.',
-    categories: [C('international', 'International Competition', 'project', SHORTS, 'jury', 75, { fee: 0, premiere: 'none' })],
-  },
-  {
-    id: 'sxsw', name: 'SXSW Film & TV Festival', short: 'SXSW', kind: 'festival', placeId: 'us-austin', window: [3, 6, 13], duration: 9, cadence: 1, eligibility: 'premiere', prestige: 60,
-    official: { 2027: { start: '2027-03-13', end: '2027-03-21', source: 'https://sxsw.com/wp-content/uploads/2026/04/SXSW-Announces-2027-Dates.pdf', checked: '2026-11-06' } },
-    description: 'A March festival with narrative, documentary, short and episodic programs and audience awards.',
-    categories: [
-      C('narrative', 'Narrative Feature Competition', 'project', FILM, 'jury', 10, { fee: 90, premiere: 'world' }),
-      C('documentary', 'Documentary Feature Competition', 'project', DOCS, 'jury', 10, { fee: 90, premiere: 'world' }),
-      C('episodic', 'Episodic Pilot Competition', 'project', [...SERIES, ...DOC_SERIES], 'audience', 12, { fee: 70, premiere: 'world' }),
-      C('shorts', 'Short Film Competition', 'project', SHORTS, 'jury', 40, { fee: 50, premiere: 'none' }),
-    ],
-  },
-  {
-    id: 'series-mania', name: 'Series Mania', short: 'Series Mania', kind: 'festival', placeId: 'fr-lille', window: [3, 19, 27], duration: 8, cadence: 1, eligibility: 'premiere', prestige: 62,
-    description: 'A March festival for television series.',
-    categories: [C('international', 'International Competition', 'project', [...SERIES, ...DOC_SERIES], 'jury', 10, { fee: 0, premiere: 'international' })],
-  },
-  {
-    id: 'locarno', name: 'Locarno Film Festival', short: 'Locarno', kind: 'festival', placeId: 'ch-locarno', window: [8, 5, 8], duration: 11, cadence: 1, eligibility: 'premiere', prestige: 64,
-    description: 'An August festival with an international competition and a large open-air audience.',
-    categories: [C('concorso', 'International Competition', 'project', FILM, 'jury', 17, { fee: 80, premiere: 'world' })],
-  },
-  {
-    id: 'fespaco', name: 'FESPACO', short: 'FESPACO', kind: 'festival', placeId: 'bf-ouagadougou', window: [2, 22, 28], duration: 8, cadence: 2, cadenceParity: 1, eligibility: 'premiere', prestige: 60,
-    origin: AFRICA, description: 'The Pan-African film and television festival, held every two years in Ouagadougou. In this game, entries need an African production base.',
-    categories: [
-      C('fiction', 'Feature Fiction Competition', 'project', FILM, 'jury', 20, { fee: 0, premiere: 'none' }),
-      C('documentary', 'Documentary Competition', 'project', DOCS, 'jury', 15, { fee: 0, premiere: 'none' }),
-      C('shorts', 'Short Film Competition', 'project', SHORTS, 'jury', 20, { fee: 0, premiere: 'none' }),
-      C('series', 'Series Competition', 'project', SERIES, 'jury', 8, { fee: 0, premiere: 'none' }),
-    ],
-    official: { 2027: { start: '2027-03-20', end: '2027-03-27', deadline: '2026-10-20', opens: '2026-02-24', source: 'https://fespaco.bf/en/call-for-entries-fespaco-2027/' } },
-  },
-  // ---------------- Awards ----------------
-  {
-    id: 'oscars', name: 'Academy Awards', short: 'Oscars', kind: 'award', placeId: 'us-los-angeles', window: [3, 1, 15], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 80, ordinalBase: 1928,
-    requiresRelease: { routes: ['theatrical'], countries: ['US'] },
-    description: 'Annual film awards voted by Academy members. In this game, features need a theatrical release in the United States during the eligibility year; shorts need a festival award or a US theatrical release.',
-    categories: [
-      C('picture', 'Best Picture', 'producer', FILM, 'members', 10),
-      C('director', 'Best Director', 'director', FILM, 'members', 5),
-      C('screenplay', 'Best Original Screenplay', 'writer', FILM, 'members', 5),
-      C('actor', 'Best Actor In A Leading Role', 'lead', FILM, 'members', 5, { actingTitle: 'Actor' }),
-      C('actress', 'Best Actress In A Leading Role', 'lead', FILM, 'members', 5, { actingTitle: 'Actress' }),
-      C('supporting-actor', 'Best Actor In A Supporting Role', 'supporting', FILM, 'members', 5, { actingTitle: 'Actor' }),
-      C('supporting-actress', 'Best Actress In A Supporting Role', 'supporting', FILM, 'members', 5, { actingTitle: 'Actress' }),
-      C('animated', 'Best Animated Feature Film', 'producer', FILM, 'members', 5, { mediums: ['animation'] }),
-      C('documentary', 'Best Documentary Feature Film', 'producer', DOCS, 'members', 5),
-      C('live-short', 'Best Live Action Short Film', 'producer', ['short'], 'members', 5, { mediums: ['live-action', 'hybrid'] }),
-      C('animated-short', 'Best Animated Short Film', 'producer', ['short'], 'members', 5, { mediums: ['animation'] }),
-      C('doc-short', 'Best Documentary Short Film', 'producer', ['documentary-short'], 'members', 5),
-    ],
-    official: {
-      2027: { start: '2027-03-14', end: '2027-03-14', deadline: '2026-11-14', label: '99th Academy Awards', source: 'https://press.oscars.org/news/academy-and-abc-announce-show-dates-99th-and-100th-oscarsr' },
-      2028: { start: '2028-03-05', end: '2028-03-05', deadline: '2027-11-13', label: '100th Academy Awards', source: 'https://press.oscars.org/news/academy-and-abc-announce-show-dates-99th-and-100th-oscarsr' },
-    },
-  },
-  {
-    id: 'bafta-film', name: 'BAFTA Film Awards', short: 'BAFTA Film', kind: 'award', placeId: 'gb-london', window: [2, 14, 23], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 76,
-    requiresRelease: { routes: ['theatrical'], countries: ['GB'] },
-    description: 'Annual film awards. In this game, entries need a UK theatrical release during the eligibility year.',
-    categories: [
-      C('film', 'Best Film', 'producer', FILM, 'members', 5), C('director', 'Director', 'director', FILM, 'members', 6),
-      C('screenplay', 'Original Screenplay', 'writer', FILM, 'members', 5), C('leading-actor', 'Leading Actor', 'lead', FILM, 'members', 6, { actingTitle: 'Actor' }),
-      C('leading-actress', 'Leading Actress', 'lead', FILM, 'members', 6, { actingTitle: 'Actress' }), C('animated', 'Animated Film', 'producer', FILM, 'members', 4, { mediums: ['animation'] }),
-      C('documentary', 'Documentary', 'producer', DOCS, 'members', 5),
-    ],
-  },
-  {
-    id: 'bafta-tv', name: 'BAFTA Television Awards', short: 'BAFTA TV', kind: 'award', placeId: 'gb-london', window: [5, 4, 15], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 72,
-    requiresRelease: { routes: ['broadcast', 'streaming'], countries: ['GB'] },
-    description: 'Annual television awards. In this game, entries need a UK broadcast or streaming release during the eligibility year.',
-    categories: [
-      C('drama', 'Drama Series', 'producer', ['series', 'anthology-series', 'web-series'], 'jury', 4), C('limited', 'Limited Drama', 'producer', ['limited-series'], 'jury', 4),
-      C('factual', 'Factual Series', 'producer', DOC_SERIES, 'jury', 4), C('leading-actor', 'Leading Actor', 'lead', SERIES, 'jury', 6, { actingTitle: 'Actor' }),
-      C('leading-actress', 'Leading Actress', 'lead', SERIES, 'jury', 6, { actingTitle: 'Actress' }),
-    ],
-  },
-  {
-    id: 'golden-globes', name: 'Golden Globe Awards', short: 'Golden Globes', kind: 'award', placeId: 'us-los-angeles', window: [1, 4, 12], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 72,
-    requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast'], countries: ['US'] },
-    official: { 2027: { start: '2027-01-10', end: '2027-01-10', label: '84th Golden Globe Awards', source: 'https://www.paramountpressexpress.com/cbs-entertainment/shows/84th-annual-golden-globes/about/', checked: '2026-11-06' } },
-    description: 'Annual film and television awards. Film comedy and musical work competes separately from drama.',
-    categories: [
-      C('drama', 'Best Motion Picture, Drama', 'producer', FILM, 'members', 6, { excludeGenres: COMEDY_MUSICAL }),
-      C('comedy', 'Best Motion Picture, Musical Or Comedy', 'producer', FILM, 'members', 6, { genres: COMEDY_MUSICAL }),
-      C('animated', 'Best Motion Picture, Animated', 'producer', FILM, 'members', 6, { mediums: ['animation'] }),
-      C('director', 'Best Director, Motion Picture', 'director', FILM, 'members', 6), C('screenplay', 'Best Screenplay, Motion Picture', 'writer', FILM, 'members', 6),
-      C('tv-drama', 'Best Television Series, Drama', 'producer', SERIES, 'members', 6, { excludeGenres: COMEDY_MUSICAL }),
-      C('tv-comedy', 'Best Television Series, Musical Or Comedy', 'producer', SERIES, 'members', 6, { genres: COMEDY_MUSICAL }),
-    ],
-  },
-  {
-    id: 'emmys', name: 'Primetime Emmy Awards', short: 'Emmys', kind: 'award', placeId: 'us-los-angeles', window: [9, 13, 21], duration: 1, cadence: 1, eligibility: 'jun-may', prestige: 74,
-    requiresRelease: { routes: ['broadcast', 'streaming'], countries: ['US'] },
-    description: 'Annual US television awards. In this game, entries need a US broadcast or streaming release between June 1 and May 31.',
-    categories: [
-      C('drama', 'Outstanding Drama Series', 'producer', ['series', 'anthology-series', 'web-series'], 'members', 7, { excludeGenres: COMEDY_MUSICAL }),
-      C('comedy', 'Outstanding Comedy Series', 'producer', ['series', 'anthology-series', 'web-series'], 'members', 7, { genres: COMEDY_MUSICAL }),
-      C('limited', 'Outstanding Limited Or Anthology Series', 'producer', ['limited-series', 'anthology-series'], 'members', 5),
-      // The Television Academy splits these by drama and comedy (limited series have their own, not modeled here).
-      C('directing', 'Outstanding Directing For A Drama Series', 'director', ONGOING, 'members', 6, { excludeGenres: COMEDY_MUSICAL }),
-      C('writing', 'Outstanding Writing For A Drama Series', 'writer', ONGOING, 'members', 6, { excludeGenres: COMEDY_MUSICAL }),
-      C('lead-actor', 'Outstanding Lead Actor In A Drama Series', 'lead', ONGOING, 'members', 6, { actingTitle: 'Actor', excludeGenres: COMEDY_MUSICAL }),
-      C('lead-actress', 'Outstanding Lead Actress In A Drama Series', 'lead', ONGOING, 'members', 6, { actingTitle: 'Actress', excludeGenres: COMEDY_MUSICAL }),
-      C('directing-comedy', 'Outstanding Directing For A Comedy Series', 'director', ONGOING, 'members', 6, { genres: COMEDY_MUSICAL }),
-      C('writing-comedy', 'Outstanding Writing For A Comedy Series', 'writer', ONGOING, 'members', 6, { genres: COMEDY_MUSICAL }),
-      C('lead-actor-comedy', 'Outstanding Lead Actor In A Comedy Series', 'lead', ONGOING, 'members', 6, { actingTitle: 'Actor', genres: COMEDY_MUSICAL }),
-      C('lead-actress-comedy', 'Outstanding Lead Actress In A Comedy Series', 'lead', ONGOING, 'members', 6, { actingTitle: 'Actress', genres: COMEDY_MUSICAL }),
-      // Renamed Outstanding Movie for the 78th Emmys (2025-2026 Rules and Procedures, category 82); older editions keep the old name.
-      C('tv-movie', 'Outstanding Television Movie', 'producer', ['tv-film'], 'members', 5, { years: [1900, 2025] }),
-      C('movie', 'Outstanding Movie', 'producer', ['tv-film'], 'members', 5, { years: [2026, 9999] }),
-      C('documentary', 'Outstanding Documentary Or Nonfiction Series', 'producer', DOC_SERIES, 'members', 5),
-    ],
-  },
-  {
-    id: 'international-emmys', name: 'International Emmy Awards', short: 'International Emmys', kind: 'award', placeId: 'us-new-york', window: [11, 20, 25], duration: 1, cadence: 1, eligibility: 'oct-sep', prestige: 66,
-    requiresRelease: { routes: ['broadcast', 'streaming'] },
-    official: { 2026: { start: '2026-11-23', end: '2026-11-23', label: '54th International Emmy Awards', source: 'https://en.unifrance.org/news/17531/the-nominations-for-french-audiovisual-productions-at-the-54th-international-emmy-awards', checked: '2026-11-06' } },
-    description: 'Annual awards for television made outside the United States. In this game, entries need a production base outside the US and a broadcast or streaming release.',
-    origin: ['CA', 'MX', 'BR', 'AR', 'GB', 'IE', 'FR', 'MC', 'DE', 'ES', 'IT', 'NL', 'CH', 'CZ', 'SE', 'NO', 'DK', 'TR', 'EG', 'MA', 'NG', 'BF', 'KE', 'ZA', 'AE', 'SA', 'IN', 'JP', 'KR', 'CN', 'AU', 'NZ'],
-    categories: [
-      C('drama', 'Drama Series', 'producer', ['series', 'limited-series', 'anthology-series'], 'jury', 4, { excludeGenres: COMEDY_MUSICAL }),
-      C('comedy', 'Comedy', 'producer', ['series', 'web-series'], 'jury', 4, { genres: COMEDY_MUSICAL }),
-      C('tv-movie', 'TV Movie Or Mini-Series', 'producer', ['tv-film', 'limited-series'], 'jury', 4), C('documentary', 'Documentary', 'producer', [...DOC_SERIES, 'documentary-feature'], 'jury', 4),
-      C('actor', 'Best Performance By An Actor', 'lead', [...SERIES, 'tv-film'], 'jury', 4, { actingTitle: 'Actor' }),
-      C('actress', 'Best Performance By An Actress', 'lead', [...SERIES, 'tv-film'], 'jury', 4, { actingTitle: 'Actress' }),
-    ],
-  },
-  {
-    id: 'annie', name: 'Annie Awards', short: 'Annies', kind: 'award', placeId: 'us-los-angeles', window: [2, 15, 28], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 66,
-    requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast', 'digital'] },
-    official: { 2027: { start: '2027-02-20', end: '2027-02-20', label: '54th Annie Awards', source: 'https://www.cartoonbrew.com/awards/annie-award-submissions-open-anime-category-265121.html', checked: '2026-11-06' } },
-    description: 'Annual animation awards with feature, short, television and individual achievement categories.',
-    categories: [
-      C('feature', 'Best Feature', 'producer', FILM, 'members', 5, { mediums: ['animation', 'hybrid'] }),
-      C('short', 'Best Short Subject', 'producer', SHORTS, 'members', 5, { mediums: ['animation', 'hybrid'] }),
-      C('tv', 'Best TV Or Media Production', 'producer', [...SERIES, 'tv-film'], 'members', 5, { mediums: ['animation', 'hybrid'] }),
-      C('directing', 'Directing In A Feature Production', 'director', FILM, 'members', 5, { mediums: ['animation', 'hybrid'] }),
-      C('writing', 'Writing In A Feature Production', 'writer', FILM, 'members', 5, { mediums: ['animation', 'hybrid'] }),
-      C('voice', 'Voice Acting In A Feature Production', 'voice', FILM, 'members', 5, { mediums: ['animation', 'hybrid'] }),
-    ],
-  },
-  {
-    id: 'spirit', name: 'Film Independent Spirit Awards', short: 'Spirit Awards', kind: 'award', placeId: 'us-los-angeles', window: [2, 21, 28], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 64,
-    requiresRelease: { routes: ['theatrical', 'streaming', 'festival-premiere', 'digital'] },
-    official: { 2027: { start: '2027-03-06', end: '2027-03-06', deadline: '2026-12-02', label: '42nd Film Independent Spirit Awards', source: 'https://www.filmindependent.org/press-releases/film-independent-spirit-awards-announces-2027-and-2028-dates/', checked: '2026-11-06' } },
-    description: 'Annual awards for independent film and television. Performance categories are gender-neutral. In this game, commissioned projects are not eligible.',
-    categories: [
-      C('feature', 'Best Feature', 'producer', FILM, 'members', 5), C('director', 'Best Director', 'director', FILM, 'members', 5),
-      C('screenplay', 'Best Screenplay', 'writer', FILM, 'members', 5), C('lead', 'Best Lead Performance', 'lead', FILM, 'members', 10),
-      C('supporting', 'Best Supporting Performance', 'supporting', FILM, 'members', 10), C('documentary', 'Best Documentary Feature', 'producer', DOCS, 'members', 5),
-      C('series', 'Best New Scripted Series', 'producer', SERIES, 'members', 5),
-    ],
-  },
-  {
-    id: 'gotham', name: 'Gotham Awards', short: 'Gothams', kind: 'award', placeId: 'us-new-york', window: [12, 1, 3], duration: 1, cadence: 1, eligibility: 'oct-sep', prestige: 62,
-    requiresRelease: { routes: ['theatrical', 'streaming', 'festival-premiere', 'digital', 'broadcast'] },
-    official: { 2026: { start: '2026-11-30', end: '2026-11-30', label: '36th Gotham Film Awards', source: 'https://thegotham.org/press/dates-set-3rd-annual-gotham-television-awards-36th-annual-gotham-film-awards/', checked: '2026-11-06' } },
-    description: 'Annual awards for independent film. Performance categories are gender-neutral. Series awards moved to separate television awards in 2024.',
-    categories: [
-      C('feature', 'Best Feature', 'producer', FILM, 'jury', 5), C('documentary', 'Best Documentary Feature', 'producer', DOCS, 'jury', 5),
-      C('lead', 'Outstanding Lead Performance', 'lead', FILM, 'jury', 10), C('series', 'Breakthrough Series', 'producer', SERIES, 'jury', 5, { years: [2015, 2023] }), // moved to the Gotham TV Awards in 2024
-    ],
-  },
-  {
-    id: 'dga', name: 'Directors Guild Of America Awards', short: 'DGA Awards', kind: 'award', placeId: 'us-los-angeles', window: [2, 7, 14], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 72,
-    requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast'] },
-    official: { 2027: { start: '2027-01-30', end: '2027-01-30', label: '79th DGA Awards', source: 'https://www.dga.org/News/PressReleases/2026/260416_DGA-Announces-Date-For-2027-Awards-Ceremony', checked: '2026-11-06' } },
-    description: 'Annual awards for directing in film, documentary and television.',
-    categories: [C('feature', 'Theatrical Feature Film', 'director', FILM, 'members', 5), C('documentary', 'Documentary', 'director', DOCS, 'members', 5), C('drama', 'Dramatic Series', 'director', SERIES, 'jury', 5)],
-  },
-  {
-    id: 'wga', name: 'Writers Guild Awards', short: 'WGA Awards', kind: 'award', placeId: 'us-los-angeles', window: [2, 28, 28], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 70,
-    requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast'] },
-    description: 'Annual awards for screen and television writing.',
-    categories: [C('original', 'Original Screenplay', 'writer', FILM, 'members', 5), C('episodic', 'Episodic Drama', 'writer', SERIES, 'members', 5)],
-  },
-  {
-    id: 'pga', name: 'Producers Guild Awards', short: 'PGA Awards', kind: 'award', placeId: 'us-los-angeles', window: [2, 21, 28], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 70,
-    requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast'] },
-    official: { 2027: { start: '2027-02-27', end: '2027-02-27', label: '38th PGA Awards', source: 'https://producersguild.org/2027-2028-producers-guild-awards-key-dates/', checked: '2026-11-06' } },
-    description: 'Annual awards for producing in film and television.',
-    categories: [C('theatrical', 'Theatrical Motion Picture', 'producer', FILM, 'members', 10), C('animated', 'Animated Theatrical Motion Picture', 'producer', FILM, 'members', 5, { mediums: ['animation'] }), C('documentary', 'Documentary Motion Picture', 'producer', DOCS, 'members', 5), C('drama', 'Episodic Television, Drama', 'producer', SERIES, 'members', 5)],
-  },
-  {
-    id: 'actor-awards', name: 'Actor Awards', short: 'Actor Awards', kind: 'award', placeId: 'us-los-angeles', window: [3, 1, 1], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 72,
-    requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast'] },
-    official: { 2027: { start: '2027-02-28', end: '2027-02-28', label: '33rd Actor Awards', source: 'https://www.thewrap.com/creative-content/movies/actor-awards-set-2027-2028-dates-at-netflix/', checked: '2026-11-06' } },
-    description: 'Annual awards for screen performers, voted by performers.',
-    categories: [
-      C('male-lead', 'Male Actor In A Leading Role', 'lead', FILM, 'members', 5, { actingTitle: 'Actor' }),
-      C('female-lead', 'Female Actor In A Leading Role', 'lead', FILM, 'members', 5, { actingTitle: 'Actress' }),
-      C('cast', 'Cast In A Motion Picture', 'ensemble', FILM, 'members', 5),
-    ],
-  },
-  {
-    id: 'cesar', name: 'César Awards', short: 'César', kind: 'award', placeId: 'fr-paris', window: [2, 20, 28], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 68, origin: ['FR', 'MC'],
-    requiresRelease: { routes: ['theatrical'], countries: ['FR'] },
-    official: { 2027: { start: '2027-02-25', end: '2027-02-25', label: '52nd César Awards', source: 'https://www.parismatch.be/culture/cinema/2026/09/29/voici-le-nom-de-la-personne-qui-succede-a-benjamin-lavernhe-a-lanimation-de-la-ceremonie-des-cesar-2027-V3WASYGVRBDQZC4IUSXG2DBZ7Q/', checked: '2026-11-06' } },
-    description: 'Annual French film awards. In this game, entries need a French production base and a theatrical release in France.',
-    categories: [C('film', 'Best Film', 'producer', FILM, 'members', 5), C('director', 'Best Director', 'director', FILM, 'members', 5), C('screenplay', 'Best Original Screenplay', 'writer', FILM, 'members', 5), C('animated', 'Best Animated Film', 'producer', FILM, 'members', 3, { mediums: ['animation'] }), C('documentary', 'Best Documentary', 'producer', DOCS, 'members', 5)],
-  },
-  {
-    id: 'goya', name: 'Goya Awards', short: 'Goya', kind: 'award', placeId: 'es-madrid', window: [2, 7, 14], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 66, origin: ['ES'],
-    requiresRelease: { routes: ['theatrical'], countries: ['ES'] },
-    official: { 2027: { start: '2027-02-06', end: '2027-02-06', label: '41st Goya Awards', source: 'https://rtvc.es/pamplona-acogera-gala-premios-goya-30-septiemmbre-2026/', checked: '2026-11-06' } },
-    description: 'Annual Spanish film awards. In this game, entries need a Spanish production base and a theatrical release in Spain.',
-    categories: [C('film', 'Best Film', 'producer', FILM, 'members', 5), C('director', 'Best Director', 'director', FILM, 'members', 5), C('screenplay', 'Best Original Screenplay', 'writer', FILM, 'members', 5)],
-  },
-  {
-    id: 'canadian-screen', name: 'Canadian Screen Awards', short: 'Canadian Screen Awards', kind: 'award', placeId: 'ca-toronto', window: [5, 25, 31], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 60, origin: ['CA'],
-    requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast', 'digital'], countries: ['CA'] },
-    description: 'Annual Canadian film and television awards. In this game, entries need a Canadian production base.',
-    categories: [C('film', 'Best Motion Picture', 'producer', FILM, 'members', 5), C('drama', 'Best Drama Series', 'producer', SERIES, 'members', 5), C('documentary', 'Best Feature Length Documentary', 'producer', DOCS, 'members', 5)],
-  },
-  {
-    id: 'aacta', name: 'AACTA Awards', short: 'AACTA', kind: 'award', placeId: 'au-sydney', window: [2, 5, 12], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 60, origin: ['AU', 'NZ'],
-    requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast'], countries: ['AU'] },
-    description: 'Annual Australian screen awards. In this game, entries need an Australian or New Zealand production base and an Australian release.',
-    categories: [C('film', 'Best Film', 'producer', FILM, 'members', 6), C('drama', 'Best Drama Series', 'producer', SERIES, 'members', 6), C('documentary', 'Best Documentary', 'producer', [...DOCS, ...DOC_SERIES], 'jury', 5)],
-  },
-  {
-    id: 'amaa', name: 'Africa Movie Academy Awards', short: 'AMAA', kind: 'award', placeId: 'ng-lagos', window: [10, 15, 30], duration: 1, cadence: 1, eligibility: 'oct-sep', prestige: 58, origin: AFRICA,
-    requiresRelease: { routes: ['theatrical', 'streaming', 'broadcast', 'festival-premiere', 'digital'] },
-    description: 'Annual awards for African film. In this game, entries need an African production base.',
-    categories: [C('film', 'Best Film', 'producer', FILM, 'jury', 6), C('director', 'Best Director', 'director', FILM, 'jury', 6), C('documentary', 'Best Documentary', 'producer', DOCS, 'jury', 5), C('short', 'Best Short Film', 'producer', SHORTS, 'jury', 6)],
-  },
-  {
-    id: 'japan-academy', name: 'Japan Academy Film Prize', short: 'Japan Academy Film Prize', kind: 'award', placeId: 'jp-tokyo', window: [3, 6, 14], duration: 1, cadence: 1, eligibility: 'prior-year', prestige: 62, origin: ['JP'],
-    requiresRelease: { routes: ['theatrical'], countries: ['JP'] },
-    description: 'Annual Japanese film awards. In this game, entries need a Japanese production base and a theatrical release in Japan.',
-    categories: [C('picture', 'Picture Of The Year', 'producer', FILM, 'members', 5), C('animation', 'Animation Of The Year', 'producer', FILM, 'members', 5, { mediums: ['animation'] }), C('director', 'Director Of The Year', 'director', FILM, 'members', 5)],
-  },
-  {
-    id: 'blue-dragon', name: 'Blue Dragon Film Awards', short: 'Blue Dragon', kind: 'award', placeId: 'kr-seoul', window: [11, 18, 28], duration: 1, cadence: 1, eligibility: 'oct-sep', prestige: 62, origin: ['KR'],
-    requiresRelease: { routes: ['theatrical'], countries: ['KR'] },
-    description: 'Annual South Korean film awards. In this game, entries need a South Korean production base and a theatrical release in South Korea.',
-    categories: [C('film', 'Best Film', 'producer', FILM, 'jury', 5), C('director', 'Best Director', 'director', FILM, 'jury', 5), C('screenplay', 'Best Screenplay', 'writer', FILM, 'jury', 5)],
-  },
-  {
-    id: 'european-film-awards', name: 'European Film Awards', short: 'European Film Awards', kind: 'award', placeId: 'de-berlin', window: [12, 6, 13], duration: 1, cadence: 1, eligibility: 'oct-sep', prestige: 64, origin: EUROPE,
-    requiresRelease: { routes: ['theatrical', 'festival-premiere', 'streaming'] },
-    official: { 2026: { start: '2027-01-16', end: '2027-01-16', label: '39th European Film Awards', source: 'https://www.europeanfilmawards.eu/regulations/', checked: '2026-11-06' } },
-    description: 'Annual awards for European film. In this game, entries need a European production base.',
-    categories: [C('film', 'European Film', 'producer', [...FILM, ...DOCS], 'members', 5), C('director', 'European Director', 'director', FILM, 'members', 5), C('animated', 'European Animated Feature Film', 'producer', FILM, 'members', 4, { mediums: ['animation'] })],
-  },
-];
+/** Build and check the institutions from their raw file, without publishing anything. Throws on the first problem. */
+export function buildInstitutions(raw: unknown): Institution[] {
+  const list = (raw as { institutions?: unknown } | null)?.institutions;
+  if (!Array.isArray(list) || !list.length) throw new Error('The festival and awards calendar has no entries.');
+  const seen = new Set<string>();
+  for (const [n, inst] of list.entries()) {
+    const ok = inst && typeof inst.id === 'string' && typeof inst.name === 'string' && typeof inst.placeId === 'string' && Array.isArray(inst.window) && Array.isArray(inst.categories) && inst.categories.length > 0;
+    if (!ok) throw new Error(`Festival or award ${n + 1} is malformed.`);
+    if (seen.has(inst.id)) throw new Error(`${inst.id} appears twice.`);
+    seen.add(inst.id);
+  }
+  return list as Institution[];
+}
 
-const instById = new Map(INSTITUTIONS.map((i) => [i.id, i]));
+export function applyInstitutions(raw: unknown): void {
+  const built = buildInstitutions(raw);
+  INSTITUTIONS.splice(0, INSTITUTIONS.length, ...built);
+  instById.clear();
+  for (const i of built) instById.set(i.id, i);
+}
+
+export const institutionsLoaded = (): boolean => INSTITUTIONS.length > 0;
+
+/** Load the calendar; callers at the same time share one load, and a failed load publishes nothing and is retried. */
+export function loadInstitutions(): Promise<void> {
+  if (institutionsLoaded()) return Promise.resolve();
+  if (!institutionsLoad) {
+    const attempt: Promise<void> = fetch(institutionsUrl)
+      .then((r) => {
+        if (!r.ok) throw new Error(`Couldn't load the festival and awards calendar (${r.status}).`);
+        return r.json() as Promise<unknown>;
+      })
+      .then(applyInstitutions)
+      .finally(() => { if (institutionsLoad === attempt) institutionsLoad = null; });
+    institutionsLoad = attempt;
+  }
+  return institutionsLoad;
+}
+
 export function institution(id: string): Institution {
   const i = instById.get(id);
   if (!i) throw new Error('Unknown event');
