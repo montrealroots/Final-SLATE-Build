@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { addScene, advance, creditsTable, nav, produceToDelivery, quickLife, readSavedState, saveAndApprove, section, saveAndExit, seededLife, newProject } from './helpers';
+import { addScene, advance, castRoles, creditsTable, nav, produceToDelivery, quickLife, readSavedState, runToDelivery, saveAndApprove, section, saveAndExit, seededLife, newProject, staffEveryDepartment } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
@@ -149,6 +149,34 @@ test('documentary: consent and fact checks gate delivery', async ({ page }) => {
   expect(credits).toContain('Researcher');
   expect(credits).toMatch(/Featuring\s+Joost de Vries/);
   expect(credits).not.toMatch(/^(Cast|Voice Cast|Performance Capture)\t/m); // a documentary has no cast credits (a name may contain "Cast")
+});
+
+test('documentary: a contributor who withdraws after filming is redacted before delivery', async ({ page }) => {
+  await lockKeepers(page, ALL_AGREE);
+  await addScene(page, { index: 0, place: 'Archive Room', contributors: ['Fenna Bakker'], minutes: '2', episodeButton: 'Add Sequence' });
+  await saveAndApprove(page);
+  await castRoles(page);
+  await staffEveryDepartment(page);
+  await advance(page, 'next-day');
+  await section(page, 'Schedule');
+  await page.getByRole('button', { name: /Build Schedule|Rebuild Schedule/ }).click();
+  // Until her scene has been filmed (the save says so; the player sees it on the Edit page's coverage).
+  const filmed = async () => ((await readSavedState(page)).projects[0].captures as { captured: number }[]).some((c) => c.captured > 0);
+  for (let i = 0; i < 20 && !(await filmed()); i++) { await advance(page, 'week'); await staffEveryDepartment(page); }
+  expect(await filmed()).toBe(true);
+  // SLATE-14-02: she withdraws. Her footage is redacted by the editor, and delivery waits for it.
+  await section(page, 'Script');
+  await page.locator('li', { hasText: 'Fenna Bakker' }).getByRole('button', { name: 'Record Withdrawal' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Fenna Bakker Withdraws?' });
+  await expect(dialog).toContainText('Footage already recorded with them will be redacted by your editor before the film can be delivered.');
+  await dialog.getByRole('button', { name: 'Record Withdrawal' }).click();
+  await expect(consentOf(page, 'Fenna Bakker')).toHaveText('Withdrew');
+  await expect.poll(async () => (await readSavedState(page)).log.map((l: { text: string }) => l.text)).toContain('Fenna Bakker withdrew from Lock Keepers. Their footage is being redacted from the film.');
+  await section(page, 'Production');
+  await expect(page.locator('li', { hasText: 'Redact Fenna Bakker' }).first()).toBeVisible();
+  await runToDelivery(page);
+  await section(page, 'Production');
+  await expect(page.locator('li', { hasText: 'Redact Fenna Bakker' }).first()).toContainText('Done');
 });
 
 test('documentary: a contributor who declines is told apart, and the player is told why their scenes cannot be filmed', async ({ page }) => {
