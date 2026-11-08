@@ -8,7 +8,29 @@
 
 ## Commands And Results
 
-### Current: Estimates That Follow The Work, Contextual Directing (November 8, 2026, after #44)
+### Current: Browser Journeys For The Last Unit-Only Behaviours (November 8, 2026, after #45)
+
+Tested revision `543e3bf` on top of `main` at `c61c1ea`.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 63 files, 440 tests passed (a later-window test added to `tests/territories.test.ts`); build passed; startup JavaScript 689 kB, 218 kB gzipped, 0 problems. |
+| `npx playwright test e2e/live-action.spec.ts e2e/connected.spec.ts` (every project each runs on) | 0 | 7 passed: live-action on desktop, phone, iPhone 15 Plus and iPhone 15 Pro Max; connected on desktop, phone and iPhone 15 Pro Max. |
+| `SLATE_E2E_PROD=1 npx playwright test --trace retain-on-failure` | 0 | Production build, the complete suite: 193 passed, 32 skipped (the new hybrid journey is desktop-only like the rest of `journeys.spec.ts`; see Why 32 Browser Tests Are Skipped), 0 failed, in 19.6 minutes. |
+
+What the new steps check, and the defect found:
+- **Versions:** the Festival Cut is entered at a festival, and Your Entries names it.
+- **Later windows:** the connected journey's later window found everything it would offer held by Kestrel's exclusive
+  deal. The log said "No distributors have made an offer for Hard Water yet", the first wave's line, so the window looked
+  like no interest at all.
+  - Fixed: later-window offers are marked and say so on the Release page, and the log names the held rights.
+  - Unit-tested both ways: offers made and marked, and offers all held.
+- **Plate integration:** in a hybrid, a live scene changed after its plate was integrated is picked up. The Coverage card
+  says the integration will be worked again, Home logs the restart, and it is done again before delivery.
+- **Dailies pickup:** the dock's missing inserts are shot on a pickup day, and Lock Picture waits for the day. The
+  wheelhouse's gap is accepted. The take, the inserts and the acceptance survive a save and reopen.
+
+### Previous: Estimates That Follow The Work, Contextual Directing (November 8, 2026, after #44)
 
 Tested revision: the branch's commits `2f4f0fa` (estimates), `3eadff8` (directing), `b9a9766` (journeys, ledger,
 research) and `a2d6bb5` (resume notes) on top of `main` at `37123f5`. The browser suite and checks below ran on `a2d6bb5`.
@@ -17,7 +39,7 @@ research) and `a2d6bb5` (resume notes) on top of `main` at `37123f5`. The browse
 | --- | --- | --- |
 | `npm run check` | 0 | World check 0 problems; typecheck clean; 63 files, 439 tests passed (`tests/estimates.test.ts` 11, `tests/directing.test.ts` 11 new); build passed; startup JavaScript 689 kB, 218 kB gzipped (budgets 700 and 220), 0 problems. |
 | `npm run balance`, `npm run perf:engine` | 0 | 2 and 2 tests passed. Balance moved: the low-budget live-action feature now averages 74.4 days (was 82.2) and spends 48.3% of its fund (was 54.6), because the default shot plan covers what each scene needs instead of master and singles everywhere; the micro short 33.5 days (34.6). Delivered rate unchanged (1) in every family; the held-out mean overall moved 60.8 to 60.9. |
-| `SLATE_E2E_PROD=1 npx playwright test --trace retain-on-failure` | 0 | Production build, the complete suite: 192 passed, 31 skipped (all by project; listed under Why 31 Browser Tests Are Skipped), 0 failed, in 18.0 minutes. |
+| `SLATE_E2E_PROD=1 npx playwright test --trace retain-on-failure` | 0 | Production build, the complete suite: 192 passed, 31 skipped (all by project; listed under Why 31 Browser Tests Are Skipped at the time), 0 failed, in 18.0 minutes. |
 | `npx playwright test e2e/live-action.spec.ts` (all four projects) and `e2e/careers.spec.ts` (desktop) | 0 | Run while writing the journeys: live-action passed on desktop, phone, iPhone 15 Plus and iPhone 15 Pro Max; the TV season passed. |
 
 Comparison tests, each on more than one seed or scenario: same runtime with different complexity (three world seeds);
@@ -185,15 +207,15 @@ unreadable. Two things were noted and not changed. On the phone, the scrolling t
 of the edge tabs ("‹roduction"); that is the existing scroll affordance. A section scrolled into view sits partly
 under the sticky header on the iPhone; in the screenshot, the Distribution Offers heading was cut off.
 
-### Why 31 Browser Tests Are Skipped
+### Why 32 Browser Tests Are Skipped
 
 Skipped tests did not run and are not counted as passed. Each is skipped on purpose for the project named, by an
 explicit `test.skip(project…)`; no test skips itself on an outcome. The list was taken from a run on November 8, 2026
-(after #44) with a reporter that prints every skipped test:
+(after #44) with a reporter that prints every skipped test; after #45 the new hybrid journey added one on phone:
 
 - **1 on desktop:** the phone device test runs only on the iPhone projects.
-- **30 on phone (Chromium 390×844):** the device test (iPhone projects only), and the journeys and checks that run once,
-  at desktop width: the 15 journeys in `e2e/journeys.spec.ts`, the TV and stop-motion careers (2), the first-project
+- **31 on phone (Chromium 390×844):** the device test (iPhone projects only), and the journeys and checks that run once,
+  at desktop width: the 16 journeys in `e2e/journeys.spec.ts`, the TV and stop-motion careers (2), the first-project
   journey (1), the two media journeys (2), the mature-project script-rules journey (1), the performance measurement (1),
   the two-tab import and storage checks (2), and five layout, keyboard and lifecycle checks in `e2e/viewports.spec.ts`
   that set their own viewports or tabs (5).
