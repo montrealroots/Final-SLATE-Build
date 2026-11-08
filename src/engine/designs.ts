@@ -5,12 +5,11 @@
 // money before anything is fabricated rather than after. A design changed later on the Characters page needs approving
 // again (its version moves on), as its builds are redone. Projects started before this keep building without it
 // (designReview unset), so no production already under way stops.
-import { assertEditable } from './projects';
 import type { Project, Task } from './types';
 
 const GATED = new Set(['sm:armature', 'anim:model', 'anim:rig']);
 
-const visdev = (p: Project) => p.tasks.find((t) => t.kind === 'anim:visdev');
+export const visdev = (p: Project) => p.tasks.find((t) => t.kind === 'anim:visdev');
 
 export type DesignStatus = 'designing' | 'awaiting' | 'approved' | 'changes';
 
@@ -37,22 +36,3 @@ export function designGate(p: Project, task: Task): string | null {
   return name ? `Waiting for you to approve ${name}'s design.` : 'Waiting for you to approve the design.';
 }
 
-export function approveDesign(p: Project, characterId: string): void {
-  assertEditable(p);
-  const c = p.characters.find((x) => x.id === characterId);
-  if (!c || !designsToReview(p).includes(characterId)) throw new Error('That character has nothing to build.');
-  if (designStatus(p, characterId) !== 'awaiting') throw new Error(designStatus(p, characterId) === 'approved' ? 'That design is approved already.' : "The designs aren't finished yet.");
-  (p.designApprovals ??= {})[characterId] = { version: c.designVersion, status: 'approved' };
-}
-
-/** Send a design back: another day of visual development, and every build waits for it. Refused once building began. */
-export function askForDesignChanges(p: Project, characterId: string): void {
-  assertEditable(p);
-  const c = p.characters.find((x) => x.id === characterId);
-  const v = visdev(p);
-  if (!c || !v || !designsToReview(p).includes(characterId)) throw new Error('That character has nothing to build.');
-  if (designStatus(p, characterId) !== 'awaiting') throw new Error("You can ask for changes once the designs are finished, before you approve one.");
-  v.units += 1;
-  v.status = 'waiting';
-  (p.designApprovals ??= {})[characterId] = { version: c.designVersion, status: 'changes' };
-}

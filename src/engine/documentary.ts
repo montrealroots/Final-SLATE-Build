@@ -8,8 +8,7 @@
 import { t } from './production/tasks';
 import { stream } from './rng';
 import { addLog, registerHandler, schedule } from './state';
-import { DAY, formatDateKey, dateKey } from './time';
-import { getPlace } from '../data/places';
+import { DAY } from './time';
 import type { GameState, Project } from './types';
 
 /** Simulation assumption: about four in five contributors agree to take part. */
@@ -27,17 +26,6 @@ export function ensureBlurTasks(p: Project): void {
     if (!scenes.length || p.tasks.some((x) => x.id === `post:blur:${c.id}`)) continue;
     p.tasks.push(t('post:blur', c.id, `Hide ${c.name}'s Face`, 'Post Production', 'editor', Math.max(1, scenes.length * 0.5), 'days', ['milestone:lock:1'], { sceneIds: scenes.map((s) => s.id) }));
   }
-}
-
-/** Show a contributor with approval the locked cut. They answer in a few days. */
-export function showCut(state: GameState, p: Project, contributorId: string): void {
-  const c = p.contributors.find((x) => x.id === contributorId);
-  if (!c?.restrictions?.includes('approval')) throw new Error('They have no approval over the cut.');
-  if (!p.edit.pictureLocked) throw new Error('Lock picture first: they approve the cut as it will be delivered.');
-  if (c.cutApproval?.status === 'shown' || c.cutApproval?.status === 'approved') throw new Error(c.cutApproval.status === 'shown' ? 'They are reviewing it.' : 'They approved it already.');
-  c.cutApproval = { status: 'shown', answerAt: state.now + CUT_REVIEW_DAYS * DAY };
-  schedule(state, c.cutApproval.answerAt, 'contributor-cut', { projectId: p.id, contributorId: c.id }, { attention: 'notify', priority: 36 });
-  addLog(state, `You showed ${c.name} the cut of ${p.title}. Their answer is due ${formatDateKey(dateKey(c.cutApproval.answerAt, getPlace(p.axes.basePlaceId).zone))}.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'edit' } });
 }
 
 registerHandler('contributor-cut', (state, ev) => {

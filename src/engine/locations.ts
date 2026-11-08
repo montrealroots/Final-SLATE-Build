@@ -30,16 +30,6 @@ export function siteFactor(p: Project, place: string): number {
   return site(p.locationChoices?.[place]?.main)?.factor ?? 1;
 }
 
-export function chooseSite(p: Project, place: string, which: 'main' | 'backup', id: SiteOption['id'] | null): void {
-  if (!scoutedPlaces(p).includes(place)) throw new Error('Scouting hasn\'t found sites for that place yet.');
-  const rec = ((p.locationChoices ??= {})[place] ??= {});
-  if (id && rec.lost?.includes(id)) throw new Error('That site fell through and is no longer available.');
-  if (id && (which === 'main' ? rec.backup : rec.main) === id) throw new Error('The main site and the backup must be different.');
-  if (which === 'main' && !id) throw new Error('Choose a site.');
-  if (id) rec[which] = id;
-  else delete rec[which];
-}
-
 /**
  * On a shoot day: whether the chosen site fell through, and what happened. Only a site the producer chose can fall
  * through; with no choice made the day runs as it always did. Deterministic for the world seed, place and date.

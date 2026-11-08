@@ -1,7 +1,8 @@
 // SLATE-12-02.02 and 12-03: setups and takes use the day, and the edit chooses among recorded takes.
+import { chooseTake, setShotPlan } from '../src/engine/takes-actions';
 import { describe, expect, it } from 'vitest';
 import { DAY, assessQuality, processUntil } from './engine-api';
-import { COVERAGE, TAKES, chooseTake, coverageEdit, planTime, setShotPlan } from '../src/engine/takes';
+import { COVERAGE, TAKES, coverageEdit, planTime } from '../src/engine/takes';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
 
 function shot(tag: string, plan?: { coverage: 'master' | 'standard' | 'full'; takes: 'one' | 'few' | 'many' }) {

@@ -1,7 +1,8 @@
 // SLATE-14-02.02: contributors' conditions on use are recorded with consent and respected in post, credits and delivery.
+import { showCut } from '../src/engine/documentary-actions';
 import { describe, expect, it } from 'vitest';
 import { DAY, computeCredits, deliveryBlockers, processUntil, requestConsent } from './engine-api';
-import { CUT_REVIEW_DAYS, ensureBlurTasks, showCut } from '../src/engine/documentary';
+import { CUT_REVIEW_DAYS, ensureBlurTasks } from '../src/engine/documentary';
 import { buildTasks } from '../src/engine/production/tasks';
 import { editScenes, unlockPicture } from '../src/engine/finish';
 import type { Project, Scene } from '../src/engine/types';

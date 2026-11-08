@@ -1,4 +1,7 @@
 import { Fragment, useState } from 'react';
+import { approveDesign, askForDesignChanges } from '../engine/designs-actions';
+import { showCut } from '../engine/documentary-actions';
+import { chooseTake } from '../engine/takes-actions';
 import { getPlace, placeLabel } from '../data/places';
 import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
@@ -14,10 +17,8 @@ import { Check, Modal, PageHead, SelectField, TextField, longLocal, plural } fro
 import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
-import { chooseTake } from '../engine/takes';
-import { showCut } from '../engine/documentary';
 import { editScenes } from '../engine/finish';
-import { approveDesign, askForDesignChanges, designStatus, designsToReview, type DesignStatus } from '../engine/designs';
+import { designStatus, designsToReview, type DesignStatus } from '../engine/designs';
 
 // ---------------- Production ----------------
 

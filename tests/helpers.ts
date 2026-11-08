@@ -4,10 +4,11 @@ import {
   saveDraft, sendStaffingOffers, startCutPass, updateCharacter, updateScene, productionWindow, isAvailable, approvedCharacters, approvedScenes,
   DAY, dateKey, addDaysToKey, getProjectZone, FundsError, bringInCoProducer, approveTake, bookMocap, mocapRecord,
 } from './engine-api';
+import { showCut } from '../src/engine/documentary-actions';
+import { approveDesign } from '../src/engine/designs-actions';
 import { fundingScenario } from '../src/engine/projects';
 import type { CreationDraft, Format, GameState, Medium, PerformanceMethod, Project, Technique } from '../src/engine/types';
-import { approveDesign, designStatus, designsToReview } from '../src/engine/designs';
-import { showCut } from '../src/engine/documentary';
+import { designStatus, designsToReview } from '../src/engine/designs';
 import { cutFromEdit, editScenes, unlockPicture } from '../src/engine/finish';
 
 export function startLife(seedTag: string, placeId = 'gb-london', over: Partial<CreationDraft> = {}): GameState {

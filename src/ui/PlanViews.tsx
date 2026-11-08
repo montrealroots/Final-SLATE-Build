@@ -1,4 +1,6 @@
 import { Fragment, useState } from 'react';
+import { setShotPlan } from '../engine/takes-actions';
+import { chooseSite } from '../engine/locations-actions';
 import { languageName } from '../data/identity';
 import { getPlace } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
@@ -15,9 +17,9 @@ import { chemistryWords, qualityWords } from '../engine';
 import { callSheet } from '../engine/callsheet';
 import { costCuts, type CostCut } from '../engine/cost-cuts';
 import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
-import { SITES, chooseSite, scoutedPlaces, site } from '../engine/locations';
+import { SITES, scoutedPlaces, site } from '../engine/locations';
 import { dayFees } from '../engine';
-import { COVERAGE, TAKES, planTime, setShotPlan, shotPlan, type Coverage, type TakePolicy } from '../engine/takes';
+import { COVERAGE, TAKES, planTime, shotPlan, type Coverage, type TakePolicy } from '../engine/takes';
 import type { Audition, FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
 import { store, useGame } from './store';

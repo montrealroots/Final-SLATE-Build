@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
+import { approveDesign } from '../src/engine/designs-actions';
 import { holidaysForYear, buildTasks, isWorkingDay, approvedScenes } from './engine-api';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
 import { processUntil, DAY, depsMet, ledgerTotals, bookMocap, cancelMocapBooking, stageBlock, requestRetake, approveTake, takeChangeImpact, mocapRecord, obligation, MOCAP_SESSION_STAGE, MOCAP_CANCEL_SHARE } from './engine-api';
-import { approveDesign, designStatus } from '../src/engine/designs';
+import { designStatus } from '../src/engine/designs';
 
 describe('sourced 2026 lunar-calendar holidays', () => {
   it('China 2026 follows the State Council notice, including make-up working days', () => {

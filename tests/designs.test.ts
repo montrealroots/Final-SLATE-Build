@@ -1,7 +1,8 @@
 // SLATE-11-03.02: a design is approved before it is built; asking for changes costs a day of visual development first.
+import { approveDesign, askForDesignChanges } from '../src/engine/designs-actions';
 import { describe, expect, it } from 'vitest';
 import { DAY, depsMet, processUntil } from './engine-api';
-import { approveDesign, askForDesignChanges, designStatus, designsToReview } from '../src/engine/designs';
+import { designStatus, designsToReview } from '../src/engine/designs';
 import { approve, buildProject, castAll, staffAll, startLife, startProduction } from './helpers';
 
 function threeD(tag: string) {

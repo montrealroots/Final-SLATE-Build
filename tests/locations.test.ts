@@ -1,7 +1,8 @@
 // SLATE-11-02.02: choose among scouted sites, keep a backup, lose one and fall back.
+import { chooseSite } from '../src/engine/locations-actions';
 import { describe, expect, it } from 'vitest';
 import { DAY, addDaysToKey, dayFees, processUntil } from './engine-api';
-import { chooseSite, scoutedPlaces, siteFactor, siteOnTheDay } from '../src/engine/locations';
+import { scoutedPlaces, siteFactor, siteOnTheDay } from '../src/engine/locations';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
 
 function scouted(tag: string) {
