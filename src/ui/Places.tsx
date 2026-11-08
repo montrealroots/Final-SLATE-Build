@@ -264,7 +264,7 @@ export function PlaceView() {
           {!here && (
             <>
               <button className="btn btn-primary" disabled={!!g.travel} onClick={() => { let at = 0; const err = store.act((s) => { at = travelTo(s, place.id); }); setTravelError(err); if (!err) void store.advance({ at }); }}>Travel Here</button>
-              <p className="dim">The trip takes about {travelHours(currentPlace(g), place)} hours. Time passes on the way.</p>
+              <p className="dim">{g.travel ? "You're travelling already; you can set off again once you arrive." : `The trip takes about ${travelHours(currentPlace(g), place)} hours. Time passes on the way.`}</p>
               {travelError && <p role="alert" style={{ color: 'var(--negative)' }}>{travelError}</p>}
             </>
           )}

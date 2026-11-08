@@ -1,0 +1,70 @@
+// SLATE-19-03: a disabled action says why. Every `disabled={...}` in src/ui is listed here with where the player reads
+// the reason, so a new disabled control fails this test until its reason is shown and recorded (November 8, 2026). The
+// audit that built this list found these with no reason anywhere (Travel Here during a trip, Start A Sequel
+// before delivery, Start Cut Pass before the assembly, Add Version for a name in use, the acting title before
+// pronouns, Mark As Checked before research, and the Crew and Schedule pages of a delivered project); each now says.
+import { readFileSync, readdirSync } from 'node:fs';
+import { describe, expect, it } from 'vitest';
+
+const FIELD = 'Waits for the text field just above it; the field says what to enter.';
+const DELIVERED_SCRIPT = 'The Script page says the project has been delivered and the script is locked.';
+const REASONS: Record<string, string> = {
+  'Creation.tsx | !d.pronouns': 'Choose your pronouns first, under the buttons.',
+  'FinishViews.tsx | !VERSION_LABELS.some((l) => l === label && !(p.versions ?? []).some((v) => v.label === l))': 'The runtime line says a version with that name exists already.',
+  'FinishViews.tsx | !assemblyComplete(p) || p.edit.pictureLocked || !!cutting': 'A line under the buttons says a cut pass waits for the assembly; Picture says Locked; Cut Passes shows a pass under way.',
+  'FinishViews.tsx | !el.eligible || !!docs': 'The dialog lists why the entry can\'t be submitted, and the missing documents.',
+  'FinishViews.tsx | !pick.length || p.edit.pictureLocked': 'Choose scenes in the list above; Picture says Locked.',
+  'FinishViews.tsx | db.length > 0': 'The list above the button names what delivery still needs.',
+  'FinishViews.tsx | lb.length > 0': '"Before you lock:" lists what is missing.',
+  'FinishViews.tsx | !!needs': 'The offer shows what accepting it needs.',
+  'Places.tsx | !!g.travel': 'The trip line says you are travelling already.',
+  'PlanViews.tsx | !!d.counter && !d.counter.outcome': 'The counter line says when their answer is due and that the offer can\'t be accepted until then.',
+  'PlanViews.tsx | !o.ready': 'The backer row shows what approaching them needs.',
+  'PlanViews.tsx | !proposal.proposals.length': 'The staffing dialog lists why each role was skipped.',
+  'PlanViews.tsx | !!why': 'The reason is shown beside the button (and as its title for Invite To Read).',
+  'PlanViews.tsx | !!p.delivered': 'The Crew and Schedule pages say the project has been delivered.',
+  'Projects.tsx | !!canContinue(p)': 'The reason (deliver it first, or it already has one) is shown above the button.',
+  'Projects.tsx | !add': 'Waits for a language to be chosen in the list beside it.',
+  'Projects.tsx | locked': 'The budget size says it is available after you deliver a project.',
+  'ScriptViews.tsx | locked': DELIVERED_SCRIPT,
+  'ScriptViews.tsx | !!p.delivered': DELIVERED_SCRIPT,
+  'ScriptViews.tsx | !accepted.length || !!p.revision || !!p.delivered': 'The button counts accepted notes; a revision under way is shown on the page; the script is locked once delivered.',
+  'ScriptViews.tsx | !undoStack.get(p.id)?.length || locked': 'Nothing to undo yet; or the script is locked once delivered.',
+  'ScriptViews.tsx | locked || (!changed && p.drafts.length > 0)': 'Nothing changed since the last draft; or the script is locked once delivered.',
+  'ScriptViews.tsx | first || !!refusal': 'The first episode can\'t move earlier; a refusal is shown under the plan.',
+  'ScriptViews.tsx | last || !!refusal': 'The last episode can\'t move later; a refusal is shown under the plan.',
+  'ScriptViews.tsx | !title.trim() || title.trim() === e.title': FIELD,
+  'ScriptViews.tsx | !a || !b || a === b || !kind.trim()': 'Waits for two different characters and what the relationship is, in the fields above.',
+  "ScriptViews.tsx | !p.tasks.some((t) => t.kind === 'doc:factcheck' && t.status === 'done') && !p.tasks.some((t) => t.kind === 'doc:research' && t.status === 'done')": 'A line under Facts says a fact can be checked once research or a fact check is done.',
+  'Shell.tsx | blocked': 'The clock says Asleep; a read-only save or a processing problem shows its own banner; while busy the game is processing.',
+  'Startup.tsx | !ready': 'The page asks you to choose a replacement for each missing place.',
+  "Startup.tsx | stage.kind === 'busy'": 'The button reads Importing… while it works.',
+  'WorldPicker.tsx | !!busy': 'A place is being opened; the list shows it loading.',
+  "WorldPicker.tsx | ws.status !== 'ready'": 'Loading places… is shown until the regions arrive.',
+  'WorldView.tsx | !!opening': 'A place is being opened.',
+  'WorldView.tsx | !ws.country': 'Choose a country first, in the field above.',
+  'components.tsx | props.disabled': 'Passed through from the caller, which is listed here in its own right.',
+};
+for (const f of ['!act.trim()', '!change.trim()', '!changing.kind.trim()', '!changing.rule.trim()', '!claim.trim()', '!label.trim()', '!name.trim()', '!q.trim()', '!rule.trim()', '!thread.trim()', '!text.trim()']) REASONS[`ScriptViews.tsx | ${f}`] = FIELD;
+REASONS['World.tsx | !title.trim()'] = 'Waits for a title for the new project, in the field above.';
+
+function disabledControls(): Set<string> {
+  const out = new Set<string>();
+  for (const f of readdirSync('src/ui').filter((x) => x.endsWith('.tsx'))) {
+    const s = readFileSync(`src/ui/${f}`, 'utf8');
+    for (const m of s.matchAll(/disabled=\{/g)) {
+      let i = m.index! + 10;
+      for (let depth = 1; depth; i++) depth += s[i] === '{' ? 1 : s[i] === '}' ? -1 : 0;
+      out.add(`${f} | ${s.slice(m.index! + 10, i - 1)}`);
+    }
+  }
+  return out;
+}
+
+describe('disabled actions say why', () => {
+  it('every disabled control in the interface is recorded with where its reason is shown, and no record is stale', () => {
+    const found = disabledControls();
+    expect([...found].filter((k) => !REASONS[k])).toEqual([]);
+    expect(Object.keys(REASONS).filter((k) => !found.has(k))).toEqual([]);
+  });
+});

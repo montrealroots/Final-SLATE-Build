@@ -182,7 +182,7 @@ function VersionsCard({ p, onError }: { p: Project; onError: (e: string | null) 
             <legend className="small">Scenes It Leaves Out</legend>
             <div className="chip-row">{scenes.map((s) => <Check key={s.id} label={sceneLabel(p, s)} checked={leaveOut.includes(s.id)} onChange={(v) => setLeaveOut(v ? [...leaveOut, s.id] : leaveOut.filter((x) => x !== s.id))} />)}</div>
           </fieldset>
-          <p className="dim">This version would run {preview} minutes.</p>
+          <p className="dim">This version would run {preview} minutes.{(p.versions ?? []).some((v) => v.label === label) ? ` There is a ${label} already; remove it first to make another.` : ''}</p>
           <button className="btn" disabled={!VERSION_LABELS.some((l) => l === label && !(p.versions ?? []).some((v) => v.label === l))} onClick={() => { const e = store.act((s) => void addVersion(s, p, label, leaveOut)); onError(e); if (!e) setLeaveOut([]); }}>Add Version</button>
         </>
       )}
@@ -271,6 +271,7 @@ export function EditTab({ p }: { p: Project }) {
             <button className="btn btn-primary" disabled={lb.length > 0} onClick={() => setErr(store.act((s) => lockPicture(s, p)))}>Lock Picture</button>
           ) : !p.delivered && <button className="btn" onClick={() => setErr(store.act((s) => void unlockPicture(s, p)))}>Unlock Picture</button>}
         </div>
+        {!p.edit.pictureLocked && !assemblyComplete(p) && <p className="dim">A cut pass starts once the assembly edit is finished.</p>}
         {!p.edit.pictureLocked && lb.length > 0 && <p className="dim">Before you lock: {lb.join(' ')}</p>}
         {p.edit.versions.length > 0 && (
           <details className="spaced"><summary>Versions</summary><ul>{p.edit.versions.map((v) => <li key={v.number}>Version {v.number}: {v.note}, about {v.runtimeMin} minutes</li>)}</ul></details>

@@ -669,6 +669,7 @@ function Facts({ p }: { p: Project }) {
     <section className="card">
       <h2>Facts And Contributors</h2>
       <h3>Facts</h3>
+      {p.evidence.some((e) => !e.verified && e.status !== 'dramatized') && !p.tasks.some((t) => (t.kind === 'doc:factcheck' || t.kind === 'doc:research') && t.status === 'done') && <p className="dim">A fact can be marked checked once the research or a fact check is done in production.</p>}
       <ul className="list">
         {p.evidence.map((e) => (
           <li key={e.id} className="row-wrap">

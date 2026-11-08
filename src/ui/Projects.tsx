@@ -325,6 +325,7 @@ function Overview({ p }: { p: Project }) {
           ) : (
             <>
               <p className="dim">The characters, their designs, the world and any threads left open carry over, with finished puppets, models and rigs. Nobody returns automatically: you ask people back and pay them again, and raise the money again{p.renewal?.outcome === 'renewed' ? ', starting with the commissioner\'s offer' : ''}.</p>
+              {canContinue(p) && <p className="dim">{canContinue(p)}</p>}
               <button className="btn btn-primary" disabled={!!canContinue(p)} onClick={() => setErr(store.act((s) => { const next = continueProject(s, p); store.go({ view: 'project', projectId: next.id, tab: 'overview' }); }))}>{p.episodes.length > 1 ? 'Start The Next Season' : 'Start A Sequel'}</button>
             </>
           )}

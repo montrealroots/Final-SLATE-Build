@@ -505,7 +505,7 @@ C = {
 ]),
 '19-03': ('Every action', 'src/ui', [
   ('Preview cost and time before committing; outcome after', 'IU', [], 'Many actions preview; no audit'),
-  ('Disabled actions say why', 'IU', [], 'Many say why; no audit'),
+  ('Disabled actions say why', 'V', ['tests/disabled-reasons.test.ts::every disabled control in the interface is recorded with where its reason is shown'], 'Repaired November 8, 2026: seven controls gave no reason; each now says, and a new disabled control fails the test until recorded'),
 ]),
 '19-04': ('Saved Games, Settings', 'src/engine/save.ts; src/engine/vault.ts', [
   ('Export, import, newer and duplicate saves', 'VE', ['e2e/backup.spec.ts::export, then import into a fresh browser'], ''),

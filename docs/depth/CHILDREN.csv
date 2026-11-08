@@ -214,7 +214,7 @@ SLATE-19-02.01,SLATE-19-02,"Desktop, phone and iPhone emulation fit without side
 SLATE-19-02.02,SLATE-19-02,Focus and input kept through rerenders,VERIFIED EXISTING,e2e/focus.spec.ts::typing straight into New Script keeps every character,
 SLATE-19-02.03,SLATE-19-02,Jumping to a section is not hidden under the sticky header,VERIFIED,e2e/viewports.spec.ts::a destination scrolled to or focused is never hidden under the top bar,
 SLATE-19-03.01,SLATE-19-03,Preview cost and time before committing; outcome after,IMPLEMENTED UNVERIFIED,,Many actions preview; no audit
-SLATE-19-03.02,SLATE-19-03,Disabled actions say why,IMPLEMENTED UNVERIFIED,,Many say why; no audit
+SLATE-19-03.02,SLATE-19-03,Disabled actions say why,VERIFIED,tests/disabled-reasons.test.ts::every disabled control in the interface is recorded with where its reason is shown,"Repaired November 8, 2026: seven controls gave no reason; each now says, and a new disabled control fails the test until recorded"
 SLATE-19-04.01,SLATE-19-04,"Export, import, newer and duplicate saves",VERIFIED EXISTING,"e2e/backup.spec.ts::export, then import into a fresh browser",
 SLATE-19-04.02,SLATE-19-04,"Atomic writes, backups, quota and migration",VERIFIED EXISTING,tests/save-recovery.test.ts::keeps the previous good save as a backup,
 SLATE-19-05.01,SLATE-19-05,Recovery from damaged saves and failed loads,VERIFIED EXISTING,e2e/failures.spec.ts::a damaged save opens the last good copy,

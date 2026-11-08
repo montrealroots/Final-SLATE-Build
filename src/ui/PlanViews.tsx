@@ -288,6 +288,7 @@ export function CrewTab({ p }: { p: Project }) {
   return (
     <>
       {msg && <div className="callout callout-info" role="status"><p>{msg}</p></div>}
+      {p.delivered && <div className="callout callout-info"><p>This project has been delivered, so its crew can't change.</p></div>}
       {isEpisodic(p.axes.format) && <EpisodeAssignments p={p} />}
       {depts.map((d) => (
         <section key={d} className="card">
@@ -437,6 +438,7 @@ export function ScheduleTab({ p }: { p: Project }) {
           </>
         )}
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+        {p.delivered && <p className="dim">This project has been delivered; its schedule is final.</p>}
         <button className="btn btn-primary" disabled={!!p.delivered} onClick={() => setErr(store.act((s) => void generatePlan(s, p, start)))}>{p.schedule.startDate ? 'Rebuild Schedule' : 'Build Schedule'}</button>
         {p.schedule.startDate && <p className="dim">Rebuilding keeps finished work and moves only what hasn't happened yet.</p>}
       </section>
