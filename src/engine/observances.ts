@@ -1,9 +1,11 @@
 // Holidays a character keeps from their own backgrounds, beyond where they live: Lunar New Year, Eid, Diwali, Pesach and
 // the rest. Backgrounds suggest them; anyone may keep any of them. Each date is the one the game's holiday rules already
 // give for a country that keeps it publicly (holidays.ts, src/world/holidays), so nothing here invents a date. Kept
-// observances go on the calendar, and a project's shoot days skip them (production/schedule.ts isWorkingDay).
+// observances go on the calendar, and a project's working days skip them (production/schedule.ts isWorkingDay).
+// Until November 8, 2026 every observance was one day; the Jewish holidays now keep all their days of no work.
 import { easter, toKey } from '../world/holidays/rules';
 import { placeHolidays } from './holidays';
+import { addDaysToKey } from './time';
 
 export interface Observance {
   id: string;
@@ -15,6 +17,12 @@ export interface Observance {
   from: { country: string; names: string[] }[] | 'easter' | 'orthodox-easter';
   /** Backgrounds that suggest it (labels from HERITAGES). Empty: offered to everyone, suggested to no one. */
   heritages: string[];
+  /**
+   * When more than its first day is kept: each named holiday of the first source's country, and how many days run from
+   * it. The Jewish holidays keep the days of no work as they're kept outside Israel, where a festival's first day (and
+   * Pesach's last) is doubled; Israel's own public holidays already cover anyone living there.
+   */
+  spans?: { name: string; days: number }[];
 }
 
 const MUSLIM_MAJORITY_HERITAGES = [
@@ -22,7 +30,7 @@ const MUSLIM_MAJORITY_HERITAGES = [
   'Hausa', 'Indonesian', 'Iraqi', 'Jordanian', 'Kazakh', 'Kurdish', 'Lebanese', 'Malay', 'Moroccan', 'Pakistani', 'Palestinian', 'Pashtun',
   'Saudi', 'Senegalese', 'Sindhi', 'Somali', 'Sudanese', 'Syrian', 'Tatar', 'Tunisian', 'Turkish', 'Uyghur', 'Wolof', 'Yemeni',
 ];
-const JEWISH = ['Ashkenazi Jewish', 'Sephardic Jewish', 'Mizrahi Jewish', 'Israeli'];
+const JEWISH = ['Ashkenazi Jewish', 'Beta Israel', 'Sephardic Jewish', 'Mizrahi Jewish', 'Israeli'];
 const ORTHODOX = ['Belarusian', 'Eritrean', 'Ethiopian', 'Georgian', 'Russian', 'Serbian', 'Ukrainian'];
 const CHINESE = ['Chinese', 'Han Chinese', 'Hong Konger', 'Singaporean', 'Taiwanese'];
 const SOUTH_ASIAN_HINDU = ['Bengali', 'Gujarati', 'Indian', 'Malayali', 'Nepali', 'Punjabi', 'Sikh', 'Sindhi', 'Tamil', 'Telugu'];
@@ -43,9 +51,12 @@ export const OBSERVANCES: readonly Observance[] = [
   { id: 'vesak', name: 'Vesak', from: [{ country: 'SG', names: ['Vesak Day'] }, { country: 'MY', names: ['Hari Wesak'] }], heritages: ['Burmese', 'Cambodian', 'Khmer', 'Lao', 'Mongolian', 'Nepali', 'Sri Lankan', 'Thai', 'Tibetan'] },
   { id: 'songkran', name: 'Songkran', from: [{ country: 'TH', names: ['Songkran Festival'] }], heritages: ['Lao', 'Thai'] },
   { id: 'khmer-new-year', name: 'Khmer New Year', from: [{ country: 'KH', names: ['Khmer New Year'] }], heritages: ['Cambodian', 'Khmer'] },
-  { id: 'pesach', name: 'Pesach (Passover)', from: [{ country: 'IL', names: ['Pesach'] }], heritages: JEWISH },
-  { id: 'rosh-hashanah', name: 'Rosh Hashanah', from: [{ country: 'IL', names: ['Rosh Hashanah'] }], heritages: JEWISH },
+  // In the year's order from Pesach: its first two days and last two, Shavuot's two, Rosh Hashanah's two, Yom Kippur, Sukkot's first two.
+  { id: 'pesach', name: 'Pesach (Passover)', from: [{ country: 'IL', names: ['Pesach'] }], heritages: JEWISH, spans: [{ name: 'Pesach', days: 2 }, { name: 'Seventh day of Pesach', days: 2 }] },
+  { id: 'shavuot', name: 'Shavuot', from: [{ country: 'IL', names: ['Shavuot'] }], heritages: JEWISH, spans: [{ name: 'Shavuot', days: 2 }] },
+  { id: 'rosh-hashanah', name: 'Rosh Hashanah', from: [{ country: 'IL', names: ['Rosh Hashanah'] }], heritages: JEWISH, spans: [{ name: 'Rosh Hashanah', days: 2 }] },
   { id: 'yom-kippur', name: 'Yom Kippur', from: [{ country: 'IL', names: ['Yom Kippur'] }], heritages: JEWISH },
+  { id: 'sukkot', name: 'Sukkot', from: [{ country: 'IL', names: ['Sukkot'] }], heritages: JEWISH, spans: [{ name: 'Sukkot', days: 2 }] },
   { id: 'orthodox-christmas', name: 'Orthodox Christmas', from: [{ country: 'RS', names: ['Božić'] }], heritages: ORTHODOX },
   { id: 'orthodox-easter', name: 'Orthodox Easter', from: 'orthodox-easter', heritages: [...ORTHODOX, 'Bulgarian', 'Greek', 'Romanian'] },
   { id: 'enkutatash', name: 'Enkutatash (Ethiopian New Year)', from: [{ country: 'ET', names: ['Enkutatash (New Year)'] }], heritages: ['Eritrean', 'Ethiopian'] },
@@ -62,7 +73,7 @@ export const observance = (id: string): Observance | undefined => byId.get(id);
 
 const cache = new Map<string, string | null>();
 
-/** The observance's date in a year, from the holiday rules; null where the rules don't give one (yet). */
+/** The observance's first day in a year, from the holiday rules; null where the rules don't give one (yet). */
 export function observanceDate(id: string, year: number): string | null {
   const key = `${id}|${year}`;
   if (cache.has(key)) return cache.get(key)!;
@@ -75,10 +86,32 @@ export function observanceDate(id: string, year: number): string | null {
   return date;
 }
 
-/** The kept observances that fall on a date. */
+const daysCache = new Map<string, string[]>();
+
+/** Every day the observance is kept in a year, in order; empty where the rules don't date it (yet). */
+export function observanceDates(id: string, year: number): string[] {
+  const key = `${id}|${year}`;
+  const hit = daysCache.get(key);
+  if (hit) return hit;
+  const o = byId.get(id);
+  const first = observanceDate(id, year);
+  if (!o || !first) return [];
+  let days = [first];
+  if (o.spans && Array.isArray(o.from)) {
+    const named = placeHolidays({ country: o.from[0].country }, year);
+    days = o.spans.flatMap((s) => {
+      const start = named.find((h) => h.name === s.name)?.date;
+      return start ? Array.from({ length: s.days }, (_, i) => addDaysToKey(start, i)) : [];
+    });
+  }
+  daysCache.set(key, days);
+  return days;
+}
+
+/** The kept observances that fall on a date, on any of their days. */
 export function observancesOn(ids: readonly string[] | undefined, date: string): Observance[] {
   const year = Number(date.slice(0, 4));
-  return (ids ?? []).filter((id) => observanceDate(id, year) === date).map((id) => byId.get(id)!);
+  return (ids ?? []).filter((id) => observanceDates(id, year).includes(date)).map((id) => byId.get(id)!);
 }
 
 /** The observances a character's backgrounds suggest, in list order; the rest stay open to choose. */

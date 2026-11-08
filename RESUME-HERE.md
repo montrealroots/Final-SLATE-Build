@@ -59,7 +59,24 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 
 The owner is reviewing every screen in order with full-page captures (`docs`: none; captures are made per request and
-kept out of the repository). Screens 1 (start) and 2 (Identity) are done; screen 3, Background & Languages, is next.
+kept out of the repository). Screens 1 (start), 2 (Identity) and 3 (Background & Languages) are done; screen 4,
+Starting Point, is next.
+
+- **Background & Languages fixes from the review:**
+  - What you've chosen sits under the search, and describing your own comes last.
+  - Adding a background or a language empties its search. Before, the chosen name stayed, over "Nothing matches".
+  - Holidays are listed in the order they fall in your starting year.
+  - The holiday copy says what the engine does: your projects don't work on them, not only don't shoot.
+  - The Remove button for a language sits level with its proficiency box.
+- **Jewish holidays (the owner's ask):**
+  - Each holiday now keeps every day of no work, as kept outside Israel:
+    - Pesach: its first two and last two days.
+    - Rosh Hashanah: two days.
+    - Shavuot and Sukkot (new): two days each.
+    - Yom Kippur: one day.
+  - The code is `spans` and `observanceDates` in `src/engine/observances.ts`. Every day reaches the calendar, Home and a project's working days.
+  - Beta Israel is a new background. It suggests these holidays, and Hebrew and Amharic.
+  - Shemini Atzeret was left out by decision: nothing beyond what was asked.
 
 - **Identity fixes from the review:**
   - the place picker follows the chosen place (country list, map zoom and highlight);
@@ -78,7 +95,7 @@ kept out of the repository). Screens 1 (start) and 2 (Identity) are done; screen
   - New Script's two country lists have distinct screen-reader names;
   - the ported headshot picker re-saved without end under a parent that passes a new callback each render.
 - **Results:** `npm run check` (292 unit tests, startup 668 kB, within budget), balance and perf, and the complete production-build browser suite (147 passed, 27 skipped by design, 0 failed).
-- **Next:** screen 3 of the review, then the big gameplay update, then the input audit (the owner's order).
+- **Next:** screen 4 of the review, then the big gameplay update, then the input audit (the owner's order).
 
 ### Earlier Request (November 8, 2026, after #37): decide the budget-size naming
 
@@ -185,7 +202,7 @@ nothing in the game; the migration report in `docs/world/` keeps it) from `src/d
 ### Earlier Request (November 7, 2026, last): every creation choice has an engine behind it
 
 Backgrounds were the one creation choice nothing read. Asked, the user chose effects for them, "all that fits": holidays
-you keep (`src/engine/observances.ts`: 27 observances dated from existing holiday rules, suggested by backgrounds,
+you keep (`src/engine/observances.ts`: 27 observances, 29 since November 8, 2026, dated from existing holiday rules, suggested by backgrounds,
 open to anyone; on the calendar and Home; copied into each new project's schedule, whose shoot days skip them),
 authentic casting (performers in the pool have backgrounds, drawn last so no earlier field changed; script characters
 can be written with backgrounds; a shared one adds 6 to that performance, never a penalty), and language suggestions

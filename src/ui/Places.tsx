@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { languageName, PRONOUNS } from '../data/identity';
 import { getPlace, placeLabel, searchPlaces, type Place } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
-import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, knownAs, addPlan, cancelPlan, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, honors, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDate, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
+import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, knownAs, addPlan, cancelPlan, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, honors, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDates, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
 import type { GameState } from '../engine/types';
 import { Check, Modal, NumberField, PageHead, Professions, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
@@ -37,8 +37,7 @@ function calendarItems(g: GameState, year: number, month: number): Map<string, C
     for (const h of placeHolidays(place, year)) if (h.date >= first && h.date <= last) push(h.date, { label: `${h.name}${h.estimated ? ' (Expected)' : h.projected ? ' (Projected)' : ''}`, kind: 'Holidays' });
     // The holidays you keep from your backgrounds, wherever you are.
     for (const id of g.character.observances ?? []) {
-      const k = observanceDate(id, year);
-      if (k && k >= first && k <= last) push(k, { label: `${observance(id)!.name} (You Keep It)`, kind: 'Holidays' });
+      for (const k of observanceDates(id, year)) if (k >= first && k <= last) push(k, { label: `${observance(id)!.name} (You Keep It)`, kind: 'Holidays' });
     }
   }
   for (const ed of g.editions) {

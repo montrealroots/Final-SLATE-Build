@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef, useState, type ReactNode, type RefObject } fro
 import { heritageLanguages } from '../data/heritage-languages';
 import { LANGUAGES, PRONOUNS, languageName, searchHeritages, searchLanguages, settledTitle, type LanguageInfo } from '../data/identity';
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
-import { CREATION_STEPS, FIRST_START_YEAR, LAST_START_YEAR, MIN_START_AGE, OBSERVANCES, ageOn, citizenshipFor, draftNames, latestBirthDate, creationStepIndex, formatZoneAbbrev, monthName, observance, observanceDate, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
+import { CREATION_STEPS, FIRST_START_YEAR, LAST_START_YEAR, MIN_START_AGE, OBSERVANCES, ageOn, citizenshipFor, draftNames, latestBirthDate, creationStepIndex, formatZoneAbbrev, monthName, observance, observanceDates, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
 import type { CreationDraft, CreationStepId, Proficiency } from '../engine/types';
 import { Check, Field, Professions, SelectField, TextField } from './components';
 import { store, useStore } from './store';
@@ -328,7 +328,7 @@ function HeritageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
       <TextField label="Search Backgrounds" type="search" value={q} onChange={setQ} />
       <div className="picklist" role="group" aria-label="Background Results">
         {results.map((h) => (
-          <button key={h} type="button" onClick={() => set({ heritages: [...d.heritages, { id: h, label: h, custom: false }] })} aria-label={`Add A Background: ${h}`}>
+          <button key={h} type="button" onClick={() => { set({ heritages: [...d.heritages, { id: h, label: h, custom: false }] }); setQ(''); }} aria-label={`Add A Background: ${h}`}>
             <span>{h}</span>
           </button>
         ))}
@@ -361,17 +361,36 @@ function HeritageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
   );
 }
 
+/** Days as words, runs of days together: "April 2 and 3, April 8 and 9"; "September 30 to October 2". */
+function daysInWords(dates: string[]): string {
+  const say = (k: string) => `${monthName(Number(k.slice(5, 7)))} ${Number(k.slice(8, 10))}`;
+  const runs: string[][] = [];
+  for (const k of dates) {
+    const run = runs[runs.length - 1];
+    if (run && (Date.parse(k) - Date.parse(run[run.length - 1])) === 86400000) run.push(k); else runs.push([k]);
+  }
+  return runs.map((r) => {
+    if (r.length === 1) return say(r[0]);
+    const a = r[0], b = r[r.length - 1];
+    const end = a.slice(5, 7) === b.slice(5, 7) ? String(Number(b.slice(8, 10))) : say(b);
+    return `${say(a)} ${r.length === 2 ? 'and' : 'to'} ${end}`;
+  }).join(', ');
+}
+
 /** The holidays you keep: your backgrounds' first, every other one open to anyone. Dates are the holiday rules'. */
 function ObservanceStep({ d, set }: { d: CreationDraft; set: (p: Partial<CreationDraft>) => void }) {
-  const suggested = suggestedObservances(d.heritages.map((h) => h.label));
-  const others = OBSERVANCES.filter((o) => !suggested.includes(o));
   const year = /^\d{4}/.test(d.startDate) ? Number(d.startDate.slice(0, 4)) : 2026;
+  // In the order they fall in your starting year; ones not dated that year last (November 8, 2026).
+  const byDate = (list: readonly Observance[]) => [...list].sort((a, b) => (observanceDates(a.id, year)[0] ?? '9').localeCompare(observanceDates(b.id, year)[0] ?? '9'));
+  const suggestedRaw = suggestedObservances(d.heritages.map((h) => h.label));
+  const suggested = byDate(suggestedRaw);
+  const others = byDate(OBSERVANCES.filter((o) => !suggestedRaw.includes(o)));
   const kept = new Set(d.observances ?? []);
   const toggle = (id: string, on: boolean) => set({ observances: on ? [...kept, id] : [...kept].filter((x) => x !== id) });
   const row = (o: Observance) => {
-    const date = observanceDate(o.id, year);
+    const days = observanceDates(o.id, year);
     return <Check key={o.id} label={o.name} checked={kept.has(o.id)} onChange={(on) => toggle(o.id, on)}
-      hint={date ? `In ${year}: ${monthName(Number(date.slice(5, 7)))} ${Number(date.slice(8, 10))}.` : `Not dated for ${year} yet: kept once it's announced.`} />;
+      hint={days.length ? `In ${year}: ${daysInWords(days)}.` : `Not dated for ${year} yet: kept once it's announced.`} />;
   };
   return (
     <>

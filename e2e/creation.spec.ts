@@ -203,6 +203,34 @@ test('a reload in the middle of creation reopens the same step with everything e
   await expect(page.getByLabel('Pronouns')).toHaveValue('they');
 });
 
+test('a Jewish background keeps every day of no work, in the order they fall, and Home says so on the second day', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await page.getByRole('button', { name: 'New Game' }).first().click();
+  await fillIdentity(page, 'Tsega Mekonnen', 'She/Her');
+  await page.getByRole('button', { name: 'Next: Background & Languages' }).click();
+  await page.getByRole('searchbox', { name: 'Search Backgrounds' }).fill('Beta Israel');
+  await page.getByRole('button', { name: 'Add A Background: Beta Israel' }).click();
+  // Adding a background empties its search (November 8, 2026: the chosen name stayed, over "Nothing matches").
+  await expect(page.getByRole('searchbox', { name: 'Search Backgrounds' })).toHaveValue('');
+  const suggested = page.getByRole('group', { name: 'From Your Backgrounds' });
+  const order = ['Pesach (Passover)', 'Shavuot', 'Rosh Hashanah', 'Yom Kippur', 'Sukkot'];
+  await expect(suggested.getByRole('checkbox')).toHaveCount(order.length);
+  for (const [i, name] of order.entries()) await expect(suggested.getByRole('checkbox').nth(i)).toHaveAccessibleName(name);
+  await expect(suggested.getByText('In 2026: April 2 and 3, April 8 and 9.')).toBeVisible();
+  await expect(suggested.getByText('In 2026: September 12 and 13.')).toBeVisible();
+  await suggested.getByRole('checkbox', { name: 'Rosh Hashanah' }).check();
+  await page.getByRole('searchbox', { name: 'Which language do you use most?' }).fill('Hebrew');
+  await page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button', { name: /^Hebrew/ }).click(); // marked as from your backgrounds
+  await page.getByRole('button', { name: 'Next: Starting Point' }).click();
+  await pickPlace(page, 'Where You Live', 'Toronto');
+  await page.getByLabel('Starting Date').fill('2026-09-13');
+  await page.getByRole('button', { name: 'Next: Review' }).click();
+  await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByText('Today is Rosh Hashanah, which you keep.')).toBeVisible();
+});
+
 test('Starting Point: where you were born, or somewhere else', async ({ page }) => {
   await draftAtReview(page);
   await page.getByRole('button', { name: 'Edit Starting Point' }).click();
