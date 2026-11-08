@@ -9,7 +9,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`), #25 (financing: money from backers, save version 5), #26 (screenwriting audit, dated motion-capture sessions, replacement credits, San Sebastián rules), #27 (the 1221 layout), #28 (1221's creation suite), #29 and #30 (pronouns settle the billing), #31 (backgrounds: kept holidays, casting information, languages), #32 (language suggestions for every background but Assyrian), #33 (script field effects), #34 (script rules review; `6e2abf0`), #35 (input loss, startup size, connected journey; `c00c261`), #36 (atomic genre catalog, careers, reload lock; `5e142f4`), #37 (micro-budget tuning; `fddd6b6`), #38 (budget-size wording; `b025147`), #39 to #41 (screen review, identity, depth stages 1 to 4), #42 (depth stages 5 to 8; `cfe7d71`). `main` was at `3845c2d` when the Gap Completion Package was applied.
+- **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`), #25 (financing: money from backers, save version 5), #26 (screenwriting audit, dated motion-capture sessions, replacement credits, San Sebastián rules), #27 (the 1221 layout), #28 (1221's creation suite), #29 and #30 (pronouns settle the billing), #31 (backgrounds: kept holidays, casting information, languages), #32 (language suggestions for every background but Assyrian), #33 (script field effects), #34 (script rules review; `6e2abf0`), #35 (input loss, startup size, connected journey; `c00c261`), #36 (atomic genre catalog, careers, reload lock; `5e142f4`), #37 (micro-budget tuning; `fddd6b6`), #38 (budget-size wording; `b025147`), #39 to #41 (screen review, identity, depth stages 1 to 4), #42 (depth stages 5 to 8; `cfe7d71`), #43 and #44 (action previews audit, remaining browser journeys; `37123f5`). `main` was at `3845c2d` when the Gap Completion Package was applied.
 - **Package:** "SLATE Gap Completion Package" (predates #2 and #3). Its references are not committed; the imported data is under `src/world/` and `docs/world/`.
 - **Run first:**
 
@@ -209,7 +209,7 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
     - `09-03`: an unanswered counteroffer held the part and its money for good. It now lapses after 7 days
       (`hiring.ts COUNTER_OPEN_DAYS`, `counter-lapse`); letting it lapse isn't recorded as turning them down.
     - `13-05`: a pickup in a hybrid project left finished plate integration on the old plate. It now restarts the
-      episode's integration (`finish.ts pickupIntegration`), and the Coverage card previews the compositor days.
+      episode's integration (`finish.ts pickupIntegration`, in `edit-actions.ts` since November 8, 2026), and the Coverage card previews the compositor days.
     - `03-05`: nothing explained a project's stages before it began. The New Script form lists them
       (`src/engine/stages.ts`).
     - `03-04`: same-title projects looked identical in the lists. They now show when each was started, and which of
@@ -238,6 +238,37 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
 - **Next:** nothing from the package is left but the owner's acceptance and real-device checks (`19-05.03`, `20-05`).
   Still unit-tested only: versions entered at festivals (`15-05.03`), later distribution windows (`16-05`), plate
   integration restarted by a pickup (`13-05`).
+
+### Newest Request (November 8, 2026, after #44): estimates that follow the work, contextual directing
+
+- **Estimates** (`estimate.ts`, `cost-cuts.ts`, `production/schedule.ts`; notes in `docs/depth/ESTIMATES-RESEARCH.md`):
+  - One rule (`groupShootDays`) makes the days the estimate counts and the days the schedule plans.
+  - What It Costs on the Budget page splits money into spent, agreed, held, still to come and contingency, each
+    counted once. It lists what makes it expensive and every line with its driver, what is uncertain and how to
+    resolve it, and what the contingency is for.
+  - Unavailable people are priced at the lowest rate, never as free.
+  - Approving a changed draft first shows the estimate and shoot days before and after, and the agreements that stay
+    (`approvalScope`, run on a copy of the game).
+  - Ways To Cost Less gives shoot days too.
+  - The estimate by area is stored at approval (`finance.estimateAtApproval`) and compared with spending, with the
+    reasons for each difference.
+- **Directing** (`takes.ts` v2, `directing.ts`, `edit-actions.ts`; notes in `docs/depth/DIRECTING-RESEARCH.md`):
+  - New projects carry `directing: 2`; older ones keep the earlier rules and footage.
+  - What a scene needs comes from its facts and the emphasis. Missing coverage costs the edit; surplus costs only time.
+  - Takes follow a rule (one; until one is usable; five). They can show a performance, camera or sound problem.
+  - The Edit page's Dailies card offers fixes with their costs: another take, replaced lines, a targeted pickup
+    (refused without the money), or accept.
+  - The edit-room actions moved into a page module to keep startup JavaScript in budget (689 kB, 218 kB gzipped).
+- **Ledger:** 250 children (149 verified existing, 99 verified, 2 external blockers). The new ones carry a detail record:
+  player control, prerequisites, rule, cost, downstream, failure, save, research.
+  `tests/depth-ledger.test.ts` fails a detail record with a part left empty.
+- **Journeys:** `e2e/live-action.spec.ts` runs on desktop, phone and both WebKit iPhones. It covers the estimate,
+  alternatives, a scope preview kept back, spending against the estimate, a lighter plan, the dailies, and a save
+  and reopen. In `e2e/careers.spec.ts` the player's own heavier plan now makes the day overrun.
+- **Limits:**
+  - The browser journey takes the accept route in the dailies; the pickup route is tested in the engine.
+  - No primary source was found for the estimating process.
+  - Rest between shoot days is not modeled.
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 
