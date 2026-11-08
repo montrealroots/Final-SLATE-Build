@@ -113,6 +113,7 @@ test('hybrid: a live-action scene and a 3D scene share one production', async ({
 // World seeds for the consent journeys (labelled fixtures, see seededLife): with seed 2 everyone asked agrees; with
 // seed 3 the documentary's third contributor declines. Each answer is drawn from the seed, the project and the person.
 const ALL_AGREE = 2;
+const RAIN_SEED = 2;
 const ONE_DECLINES = 3;
 
 async function lockKeepers(page: Page, seed: number): Promise<void> {
@@ -134,6 +135,24 @@ async function lockKeepers(page: Page, seed: number): Promise<void> {
 }
 
 const consentOf = (page: Page, name: string) => page.locator('li', { hasText: name }).locator('.chip');
+
+test('live action in a wet October: rain stops an exterior day, and the schedule and log say so', async ({ page }) => {
+  // Labelled fixture: the pinned world seed, chosen so it rains on a shoot day (the weather is the seed's, not set).
+  await seededLife(page, 'gb-london', '2026-10-05', RAIN_SEED);
+  await newProject(page, { title: 'Wet Streets', format: 'Short Film', runtime: '4' });
+  await addCharacters(page, ['Ada']);
+  for (let i = 0; i < 3; i++) await addScene(page, { index: i, place: `Street ${i + 1}`, chars: ['Ada'], minutes: '1', exterior: true });
+  await saveAndApprove(page);
+  await produceToDelivery(page, {});
+  // SLATE-12-04: a day rain stopped is lost, says why, and its scenes moved to a new day that was then shot.
+  const s = await readSavedState(page);
+  const wet = s.projects[0].schedule.days.filter((d: { status: string; result?: string }) => d.status === 'lost' && /^Rain stopped /.test(d.result ?? ''));
+  expect(wet.length).toBeGreaterThan(0);
+  const logs = s.log.map((l: { text: string }) => l.text);
+  for (const d of wet) expect(logs.some((t: string) => t.startsWith('Wet Streets, ') && t.includes(d.result) && t.endsWith('The remaining work moved to a new day.'))).toBe(true);
+  await section(page, 'Schedule');
+  await expect(page.getByText(/Rain stopped Scene \d \(Street \d\)\./).first()).toBeVisible();
+});
 
 test('documentary: consent and fact checks gate delivery', async ({ page }) => {
   await lockKeepers(page, ALL_AGREE);
