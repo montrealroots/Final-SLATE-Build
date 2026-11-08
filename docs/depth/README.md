@@ -89,7 +89,7 @@ migration and tests, and moves its children to VERIFIED.
    - location options and a backup (`11-02.02`);
    - design approval (`11-03.02`);
    - call sheets (`11-05.03`).
-7. Live action: setups and takes (`12-02.02`, `12-03`).
+7. Live action (done): setups and takes (`12-02.02`, `12-03`).
 8. Animation and documentary: use restrictions (`14-02.02`).
 9. Post:
    - replacement voice and effects work (`15-03.02`);

@@ -141,7 +141,19 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       scenes move later and the place needs a new choice. No choice keeps the old behaviour (real place, old fee, no
       risk). Browser check in `e2e/live-action.spec.ts`. Limitation: the Budget Estimate still prices days at the
       base fee, whatever site is chosen.
-- **Next:** stage 7: live-action setups and takes `12-02.02`, `12-03`; stage 8:
+  - Stage 7, live action, everything below now VERIFIED:
+    - shot plans (`12-02.02`, `takes.ts`): each live-action scene of a new project is shot to a coverage (a master only,
+      master and singles, full coverage) and a takes policy (one, a few, keep going). Both scale the scene's share of the
+      day (master 0.7, full 1.4; one take 0.85, many 1.3), so richer plans need more shoot days. Coverage moves the
+      editing score (master -6, full +5). Set on each day's call sheet;
+    - takes (`12-03`): each take has a performance and a technical quality drawn from the world seed, centred 4 below
+      the old single result so the default few takes match it on average (diminishing returns, never perfection). The
+      cut uses the best balanced take; on the Edit page another can be used until picture is locked: the performance
+      side feeds the performances, the technical side the direction. Projects from before keep one result per scene
+      (`takesModel` unset). The production golden was regenerated: live-action and TV quality figures moved by a few
+      points, with days unchanged;
+    - browser checks in `e2e/live-action.spec.ts` (desktop, phone, WebKit iPhone).
+- **Next:** stage 8:
   contributor use restrictions `14-02.02`; stage 9: replacement voice and effects `15-03.02`, ADR and Foley `15-04.02`,
   versions `15-05.03`; stage 10: territories `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11:
   relationships `18-02`, opportunities `18-03`.

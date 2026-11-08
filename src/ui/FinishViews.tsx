@@ -14,6 +14,7 @@ import { Check, Modal, PageHead, SelectField, TextField, longLocal, plural } fro
 import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
+import { chooseTake } from '../engine/takes';
 import { approveDesign, askForDesignChanges, designStatus, designsToReview, type DesignStatus } from '../engine/designs';
 
 // ---------------- Production ----------------
@@ -121,6 +122,31 @@ export function ProductionTab({ p }: { p: Project }) {
 
 // ---------------- Edit and delivery ----------------
 
+/** The takes of each scene, and the one the cut uses (takes.ts, SLATE-12-03). Choosing trades performance against craft. */
+function TakesCard({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
+  const scenes = approvedScenes(p).filter((s) => (p.captures.find((c) => c.sceneId === s.id)?.takes?.length ?? 0) > 1);
+  return (
+    <section className="card" aria-labelledby="takes-h">
+      <h2 id="takes-h">Takes</h2>
+      <p className="dim">The cut uses each scene's best balanced take. Another may have the stronger performance, or the cleaner camera and sound: the performance side counts toward the performances, the technical side toward the direction. You can change takes until picture is locked.</p>
+      <ul className="list">{scenes.map((s) => {
+        const c = p.captures.find((x) => x.sceneId === s.id)!;
+        return (
+          <li key={s.id}>
+            <strong>{sceneLabel(p, s)}</strong>
+            <ul className="list">{c.takes!.map((t, i) => (
+              <li key={i} className="row-wrap">
+                <span className="grow">Take {i + 1}: performance {qualityWords(t.perf).toLowerCase()}, technical {qualityWords(t.tech).toLowerCase()}{c.chosenTake === i ? ' · In the cut' : ''}</span>
+                {c.chosenTake !== i && !p.edit.pictureLocked && <button className="btn btn-sm" aria-label={`Use Take ${i + 1} Of ${sceneLabel(p, s)}`} onClick={() => onError(store.act(() => chooseTake(p, s.id, i)))}>Use This Take</button>}
+              </li>
+            ))}</ul>
+          </li>
+        );
+      })}</ul>
+    </section>
+  );
+}
+
 export function EditTab({ p }: { p: Project }) {
   useGame();
   const [err, setErr] = useState<string | null>(null);
@@ -152,6 +178,7 @@ export function EditTab({ p }: { p: Project }) {
           <details className="spaced"><summary>Versions</summary><ul>{p.edit.versions.map((v) => <li key={v.number}>Version {v.number}: {v.note}, about {v.runtimeMin} minutes</li>)}</ul></details>
         )}
       </section>
+      {p.captures.some((c) => (c.takes?.length ?? 0) > 1) && <TakesCard p={p} onError={setErr} />}
       <section className="card">
         <h2>Coverage</h2>
         {gaps.length ? (

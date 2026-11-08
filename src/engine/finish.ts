@@ -1,6 +1,7 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
 import { pairChemistry } from './auditions';
+import { coverageEdit } from './takes';
 import { scheduleRenewal } from './continuation';
 import { approvedTake, captureCredit } from './mocap';
 import { BROADCAST_EDIT_COST, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
@@ -302,10 +303,11 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   // A scene the producer declared essential and then cut from the edit leaves a gap (cutConsequences). The turning-point
   // text did this until the review of November 7, 2026; picture lock already required coverage, so it never applied.
   const gapsLeft = approved.filter((s) => s.essential && !inCut.has(s.id)).length;
-  const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10 - gapsLeft * ESSENTIAL_CUT_COST), music: clamp((crewCap('composer') ?? 45) * 0.9 + 5) };
+  const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10 - gapsLeft * ESSENTIAL_CUT_COST + coverageEdit(p, [...inCut])), music: clamp((crewCap('composer') ?? 45) * 0.9 + 5) };
   if (anim.length) out.animation = clamp(avg(anim) * 0.9 + 6);
   for (const a of p.cast) {
-    const sc = scenes.filter((s) => s.participants.includes(a.characterId)).map((s) => p.captures.find((c) => c.sceneId === s.id)?.quality ?? 60);
+    // A take's performance side, where takes were recorded (takes.ts); else the capture's quality, as before.
+    const sc = scenes.filter((s) => s.participants.includes(a.characterId)).map((s) => { const c = p.captures.find((x) => x.sceneId === s.id); return c?.perf ?? c?.quality ?? 60; });
     const base = a.performer === 'player' ? 58 + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability;
     // A shared background never scores a performance: ability isn't inferred from ethnicity. It added 6 until the review
     // of November 7, 2026; casting still shows who shares one, as information.

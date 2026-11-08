@@ -17,6 +17,7 @@ import { costCuts, type CostCut } from '../engine/cost-cuts';
 import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, chooseSite, scoutedPlaces, site } from '../engine/locations';
 import { dayFees } from '../engine';
+import { COVERAGE, TAKES, planTime, setShotPlan, shotPlan, type Coverage, type TakePolicy } from '../engine/takes';
 import type { Audition, FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
 import { store, useGame } from './store';
@@ -469,6 +470,7 @@ export function ScheduleTab({ p }: { p: Project }) {
                           <h4>Crew</h4>
                           {cs.crew.length ? <ul className="list">{cs.crew.map((c) => <li key={c.role + c.who}>{c.role}: {c.who}</li>)}</ul> : <p className="muted">No shoot crew hired yet.</p>}
                           {cs.notes.length > 0 && <><h4>Notes</h4><ul className="list">{cs.notes.map((n) => <li key={n}>{n}</li>)}</ul></>}
+                          {p.takesModel && <ShotPlans p={p} sceneIds={d.sceneIds} />}
                         </details>
                       );
                     })()}
@@ -486,6 +488,30 @@ export function ScheduleTab({ p }: { p: Project }) {
           })}
         </ul>
       </section>
+    </>
+  );
+}
+
+/** How each scene of a day is shot: coverage and takes, against the day's time (takes.ts, SLATE-12-02.02). */
+function ShotPlans({ p, sceneIds }: { p: Project; sceneIds: string[] }) {
+  const [err, setErr] = useState<string | null>(null);
+  return (
+    <>
+      <h4>Shot Plan</h4>
+      <p className="dim small">More coverage gives the editor more to cut with; more takes give more to choose from, with diminishing returns. Both use more of the day, so fewer scenes fit and the shoot can run longer.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      {sceneIds.map((id) => {
+        const s = approvedScenes(p).find((x) => x.id === id);
+        const plan = shotPlan(p, id);
+        if (!s || !plan) return null;
+        return (
+          <div key={id} className="grid grid-3 form">
+            <SelectField label={`Coverage For ${sceneLabel(p, s)}`} value={plan.coverage} options={(Object.keys(COVERAGE) as Coverage[]).map((k) => ({ value: k, label: COVERAGE[k].label }))} onChange={(v) => setErr(store.act(() => setShotPlan(p, id, { coverage: v })))} />
+            <SelectField label={`Takes For ${sceneLabel(p, s)}`} value={plan.takes} options={(Object.keys(TAKES) as TakePolicy[]).map((k) => ({ value: k, label: TAKES[k].label }))} onChange={(v) => setErr(store.act(() => setShotPlan(p, id, { takes: v })))} />
+            <p className="dim small">About {Math.round(planTime(p, s) * 100)}% of the standard plan's time.</p>
+          </div>
+        );
+      })}
     </>
   );
 }

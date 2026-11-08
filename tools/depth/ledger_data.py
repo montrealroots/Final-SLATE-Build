@@ -347,12 +347,16 @@ C = {
   ('A day runs only with the people it needs', 'VE', ['tests/schedule.test.ts::refuses when someone needed on set is busy'], ''),
   ('Missing people or gear: switch scenes, delay or cancel, with costs', 'IU', [], 'Partly via moveShootDay; no test of a missing-resource day'),
 ]),
-'12-02': ('Production', 'src/engine/production/shoot.ts', [
+'12-02': ('Production', 'src/engine/production/shoot.ts; src/engine/takes.ts', [
   ('A shoot day captures its scenes with coverage and quality', 'VE', ['tests/journeys.test.ts::runs from script to delivery'], ''),
-  ('Setups, coverage choices and takes per scene', 'MI', [], 'Capture is one result per scene'),
+  ('Setups, coverage choices and takes per scene', 'V',
+   ['tests/takes.test.ts::more coverage and more takes use more of the day', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)'],
+   'Coverage and take policies per scene; time factors and spreads are game calibration; projects from before keep one result per scene'),
 ]),
-'12-03': ('Production', '', [
-  ('Review a take, ask for another, or move on, at a time cost', 'MI', [], 'Takes exist only for motion capture'),
+'12-03': ('Production, Edit', 'src/engine/takes.ts', [
+  ('Review a take, ask for another, or move on, at a time cost', 'V',
+   ['tests/takes.test.ts::choosing another take moves the performance and the direction', 'e2e/live-action.spec.ts::the cut uses the best balanced one; use another for the dock scene'],
+   'Takes are chosen before the day (the policy) and reviewed in the edit; the shoot itself runs unattended'),
 ]),
 '12-04': ('Production', 'src/engine/production/shoot.ts', [
   ('Weather loses or compromises a day and the log says so', 'IU', [], 'runShootDay records lost and partial days; no test'),

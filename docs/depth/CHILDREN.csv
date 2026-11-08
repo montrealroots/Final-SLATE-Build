@@ -154,8 +154,8 @@ SLATE-11-05.03,SLATE-11-05,"A call sheet for each day: who, where, when",VERIFIE
 SLATE-12-01.01,SLATE-12-01,A day runs only with the people it needs,VERIFIED EXISTING,tests/schedule.test.ts::refuses when someone needed on set is busy,
 SLATE-12-01.02,SLATE-12-01,"Missing people or gear: switch scenes, delay or cancel, with costs",IMPLEMENTED UNVERIFIED,,Partly via moveShootDay; no test of a missing-resource day
 SLATE-12-02.01,SLATE-12-02,A shoot day captures its scenes with coverage and quality,VERIFIED EXISTING,tests/journeys.test.ts::runs from script to delivery,
-SLATE-12-02.02,SLATE-12-02,"Setups, coverage choices and takes per scene",MISSING,,Capture is one result per scene
-SLATE-12-03.01,SLATE-12-03,"Review a take, ask for another, or move on, at a time cost",MISSING,,Takes exist only for motion capture
+SLATE-12-02.02,SLATE-12-02,"Setups, coverage choices and takes per scene",VERIFIED,tests/takes.test.ts::more coverage and more takes use more of the day | e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02),Coverage and take policies per scene; time factors and spreads are game calibration; projects from before keep one result per scene
+SLATE-12-03.01,SLATE-12-03,"Review a take, ask for another, or move on, at a time cost",VERIFIED,tests/takes.test.ts::choosing another take moves the performance and the direction | e2e/live-action.spec.ts::the cut uses the best balanced one; use another for the dock scene,Takes are chosen before the day (the policy) and reviewed in the edit; the shoot itself runs unattended
 SLATE-12-04.01,SLATE-12-04,Weather loses or compromises a day and the log says so,IMPLEMENTED UNVERIFIED,,runShootDay records lost and partial days; no test
 SLATE-12-04.02,SLATE-12-04,A failed day rolls back; completed work is kept,VERIFIED EXISTING,tests/processing.test.ts::rolls the batch back,
 SLATE-12-05.01,SLATE-12-05,Pickups are booked after the last shoot day and capture the missing scene,VERIFIED EXISTING,tests/script-effects.test.ts::is booked after the last scheduled shoot day,

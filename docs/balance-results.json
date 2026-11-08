@@ -49,17 +49,17 @@
       "overall": {
         "n": 30,
         "mean": 58.3,
-        "sd": 2.3,
-        "min": 53,
+        "sd": 2.5,
+        "min": 52,
         "p10": 55,
-        "median": 58,
+        "median": 59,
         "p90": 62,
-        "max": 62
+        "max": 63
       },
       "reception": {
         "n": 30,
         "mean": 58.6,
-        "sd": 7.1,
+        "sd": 7.3,
         "min": 46,
         "p10": 49,
         "median": 60,
@@ -117,23 +117,23 @@
       },
       "overall": {
         "n": 30,
-        "mean": 57.9,
-        "sd": 2,
+        "mean": 58.1,
+        "sd": 2.1,
         "min": 53,
         "p10": 56,
         "median": 58,
         "p90": 61,
-        "max": 62
+        "max": 63
       },
       "reception": {
         "n": 30,
-        "mean": 57.1,
-        "sd": 7.9,
+        "mean": 57.2,
+        "sd": 8,
         "min": 40,
-        "p10": 47,
+        "p10": 48,
         "median": 59,
         "p90": 67,
-        "max": 69
+        "max": 70
       },
       "integrity": {
         "negativeCash": 0,
@@ -531,22 +531,22 @@
       },
       "overall": {
         "n": 30,
-        "mean": 59.2,
-        "sd": 2,
-        "min": 52,
-        "p10": 57,
+        "mean": 59.7,
+        "sd": 2.1,
+        "min": 53,
+        "p10": 58,
         "median": 60,
-        "p90": 61,
-        "max": 63
+        "p90": 62,
+        "max": 64
       },
       "reception": {
         "n": 30,
-        "mean": 55.6,
-        "sd": 8.1,
+        "mean": 56.1,
+        "sd": 8,
         "min": 43,
-        "p10": 47,
+        "p10": 48,
         "median": 55,
-        "p90": 69,
+        "p90": 70,
         "max": 76
       },
       "integrity": {
@@ -560,8 +560,8 @@
       "rehearsal0": {
         "n": 15,
         "mean": 56.6,
-        "sd": 2.2,
-        "min": 52,
+        "sd": 2.5,
+        "min": 51,
         "p10": 54,
         "median": 56,
         "p90": 60,
@@ -570,12 +570,12 @@
       "rehearsal8": {
         "n": 15,
         "mean": 57.8,
-        "sd": 2.3,
+        "sd": 2.5,
         "min": 53,
         "p10": 55,
         "median": 58,
         "p90": 61,
-        "max": 62
+        "max": 63
       }
     },
     "feature: low vs mid budget scenario (same hiring policy)": {
@@ -625,23 +625,23 @@
         },
         "overall": {
           "n": 15,
-          "mean": 57.8,
-          "sd": 2.3,
+          "mean": 57.9,
+          "sd": 2.5,
           "min": 53,
           "p10": 55,
           "median": 58,
           "p90": 61,
-          "max": 62
+          "max": 63
         },
         "reception": {
           "n": 15,
           "mean": 57.7,
-          "sd": 8.4,
+          "sd": 8.5,
           "min": 40,
-          "p10": 47,
+          "p10": 46,
           "median": 59,
           "p90": 67,
-          "max": 69
+          "max": 70
         },
         "integrity": {
           "negativeCash": 0,
@@ -694,23 +694,23 @@
         },
         "overall": {
           "n": 15,
-          "mean": 57.8,
-          "sd": 2.3,
+          "mean": 57.9,
+          "sd": 2.5,
           "min": 53,
           "p10": 55,
           "median": 58,
           "p90": 61,
-          "max": 62
+          "max": 63
         },
         "reception": {
           "n": 15,
           "mean": 57.7,
-          "sd": 8.4,
+          "sd": 8.5,
           "min": 40,
-          "p10": 47,
+          "p10": 46,
           "median": 59,
           "p90": 67,
-          "max": 69
+          "max": 70
         },
         "integrity": {
           "negativeCash": 0,

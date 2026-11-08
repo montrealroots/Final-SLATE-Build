@@ -543,6 +543,10 @@ export interface SceneCapture {
   weatherCompromised: boolean;
   /** Who performed in it (person ids or 'player'), so a replaced performer whose work remains is still credited. */
   performers?: string[];
+  /** Its takes and the one used, with that take's performance side (takes.ts); absent for projects without shot plans. */
+  takes?: { perf: number; tech: number }[];
+  chosenTake?: number;
+  perf?: number;
 }
 
 export interface EditState {
@@ -631,6 +635,9 @@ export interface Project {
   /** Designs wait for the producer's approval before they are built (designs.ts); unset on projects started before. */
   designReview?: boolean;
   designApprovals?: Record<string, { version: number; status: 'approved' | 'changes' }>;
+  /** Live-action scenes are shot to a plan of coverage and takes (takes.ts); unset on projects started before. */
+  takesModel?: boolean;
+  shotPlans?: Record<string, { coverage: 'master' | 'standard' | 'full'; takes: 'one' | 'few' | 'many' }>;
   /** Sites chosen for each place after scouting, the backup, and those that fell through (locations.ts). */
   locationChoices?: Record<string, { main?: 'real' | 'stage' | 'standin'; backup?: 'real' | 'stage' | 'standin'; lost?: ('real' | 'stage' | 'standin')[] }>;
   /** Auditions and callbacks for its parts (auditions.ts). */

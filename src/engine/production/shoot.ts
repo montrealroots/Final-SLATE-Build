@@ -16,6 +16,7 @@ import { personLanguagesFit } from './language';
 import type { GameState, Project, Scene, SceneCapture, ShootDay } from '../types';
 import { forecast, precipitationDuring, weatherOn, daylightWindowLocal } from '../weather';
 import { siteFactor, siteOnTheDay } from '../locations';
+import { planTime, recordTakes, shotPlan, takeFigures } from '../takes';
 
 // ---------------- Shoot days ----------------
 
@@ -248,14 +249,17 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
         continue;
       }
     }
-    const need2 = s.estMinutes / sceneComplexity(s, mods);
+    const need2 = (s.estMinutes / sceneComplexity(s, mods)) * planTime(p, s);
     const cap = p.captures.find((c) => c.sceneId === s.id);
     const already = cap && cap.version === p.approvedDraft ? cap.captured : 0;
     const remainingNeed = need2 * (1 - already);
     const fraction = Math.min(1, capacity / Math.max(0.01, remainingNeed));
     capacity -= Math.min(capacity, remainingNeed);
     const quality = captureQuality(state, p, s, compromised, f.late);
-    markCaptured(p, s.id, already + (1 - already) * fraction, quality, compromised);
+    // With a shot plan, the takes are recorded and the best balanced one is used (takes.ts).
+    const recorded = shotPlan(p, s.id) ? recordTakes(state.seed, p, s, d.date, quality) : null;
+    markCaptured(p, s.id, already + (1 - already) * fraction, recorded ? takeFigures(recorded.takes[recorded.chosen]).quality : quality, compromised);
+    if (recorded) Object.assign(p.captures.find((c) => c.sceneId === s.id)!, { takes: recorded.takes, chosenTake: recorded.chosen, perf: recorded.takes[recorded.chosen].perf });
     if (!hasCrew(p, 'sound-mixer') && s.dialogue.length) {
       const id = `post:adr:${s.id}`;
       if (!p.tasks.some((x) => x.id === id)) p.tasks.push(t('post:adr', s.id, `Dialogue Replacement: ${label}`, 'Post Production', 'sound-designer', 1, 'days', [`milestone:lock:${s.episode}`], { sceneIds: [s.id], episode: s.episode }));
