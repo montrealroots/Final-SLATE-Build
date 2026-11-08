@@ -2,7 +2,7 @@ import { useEffect, useId, useMemo, useState } from 'react';
 import { getPlace, placeLabel } from '../data/places';
 import { travelHours } from '../engine';
 import { countryName, toGamePlace, type WorldPlace } from '../world/gazetteer/gazetteer';
-import { MAP_CREDIT, boxAround, frameBox, loadMap, markerRadiusAt, projectPoint, strokeAt, viewBoxOf, type WorldMapData } from '../world/map/map';
+import { CHOSEN_NOTE, MAP_CREDIT, boxAround, frameBox, loadMap, markerRadiusAt, projectPoint, strokeAt, viewBoxOf, type WorldMapData } from '../world/map/map';
 import { formatDuration } from '../engine';
 import { PageHead } from './components';
 import { store, useGame } from './store';
@@ -113,7 +113,7 @@ export function WorldMap(props: { country: string; here?: { lat: number; lon: nu
   }
   // The placeholder is the map's own box, so what is under it doesn't move when the map arrives (November 7, 2026: a
   // click aimed at Save And Return To Review below it landed elsewhere as the map pushed it 200-360 px down).
-  if (!data || !view) return <><div role="status" className="worldmap worldmap-loading muted">Loading the map…</div><p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}</p></>;
+  if (!data || !view) return <><div role="status" className="worldmap worldmap-loading muted">Loading the map…</div><p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}{props.chosen ? CHOSEN_NOTE : ''}</p></>;
   const r = markerRadiusAt(view, data);
   const me = props.here ? projectPoint(props.here.lat, props.here.lon, data) : null;
   // A picker rings the place already chosen, so it stands out from the other markers (November 8, 2026).
@@ -142,7 +142,7 @@ export function WorldMap(props: { country: string; here?: { lat: number; lon: nu
         {mine && props.chosen && <circle className="worldmap-chosen" cx={mine.x} cy={mine.y} r={r * 1.4} role="img" aria-label={`${props.chosen.name}, your choice`}><title>{props.chosen.name}, your choice</title></circle>}
         {me && props.here && <circle className="worldmap-here" cx={me.x} cy={me.y} r={r * 1.4} role="img" aria-label={`You're in ${props.here.name}`}><title>You're in {props.here.name}</title></circle>}
       </svg>
-      <p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}{props.chosen ? ' The place you chose is the solid dot.' : ''}</p>
+      <p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}{props.chosen ? CHOSEN_NOTE : ''}</p>
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useId, useMemo, useState } from 'react';
-import { MAP_CREDIT } from '../world/map/map';
+import { CHOSEN_NOTE, MAP_CREDIT } from '../world/map/map';
 import { findPlace, placeLabel, searchPlaces, type Place } from '../data/places';
 import { PLAYABLE_COUNTRIES, placesOf, regionsOf, search, toGamePlace, type WorldPlace } from '../world/gazetteer/gazetteer';
 import { Field } from './components';
@@ -141,7 +141,7 @@ export function WorldPlacePicker(props: { label: string; headed?: boolean; value
             <button type="button" className="btn btn-ghost btn-sm" aria-expanded={mapOpen} onClick={() => setMapOpen(!mapOpen)}>{mapOpen ? 'Hide Map' : 'Show Map'}</button>
           </div>
           {mapOpen && (
-            <Suspense fallback={<><div role="status" className="worldmap worldmap-loading muted">Loading the map…</div><p className="dim xs">{MAP_CREDIT}</p></>}>
+            <Suspense fallback={<><div role="status" className="worldmap worldmap-loading muted">Loading the map…</div><p className="dim xs">{MAP_CREDIT}{chosen && chosen.country === ws.country ? CHOSEN_NOTE : ''}</p></>}>
               <WorldMap country={ws.country} chosen={chosen && chosen.country === ws.country ? chosen : undefined} places={ws.status === 'ready' ? shown : []} onCountry={ws.setCountry} onPlace={(w) => void choose(w)} verb="Choose" />
             </Suspense>
           )}
