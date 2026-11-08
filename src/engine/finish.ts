@@ -1,5 +1,6 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
+import { scheduleRenewal } from './continuation';
 import { approvedTake, captureCredit } from './mocap';
 import { BROADCAST_EDIT_COST, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
 import { financeCredits, onProjectDelivered, receiveIncome } from './finance';
@@ -175,6 +176,7 @@ export function deliver(state: GameState, p: Project): void {
   const runtime = Math.round(editScenes(p).reduce((a, s) => a + s.estMinutes, 0));
   p.delivered = { at: state.now, runtimeMin: runtime };
   onProjectDelivered(state, p);
+  scheduleRenewal(state, p);
   p.phase = 'delivered';
   p.quality = assessQuality(state, p);
   p.credits = computeCredits(state, p);
@@ -201,18 +203,21 @@ export function computeCredits(state: GameState, p: Project): Credit[] {
   const episodic = isEpisodic(p.axes.format);
   const nonfiction = isNonfiction(p.axes.format);
   // Writing: the player wrote unless an episode writer was hired for an episode.
-  const playerWroteEps = p.episodes.filter((e) => e.writer === 'player').map((e) => e.number);
+  // Whoever wrote or directed an episode before being replaced keeps that credit beside their successor's (assignEpisodeRole).
+  const wrote = (who: string) => p.episodes.filter((e) => e.writer === who || e.formerWriters?.includes(who)).map((e) => e.number);
+  const directed = (who: string) => p.episodes.filter((e) => e.director === who || e.formerDirectors?.includes(who)).map((e) => e.number);
+  const playerWroteEps = wrote('player');
   if (playerWroteEps.length && !nonfiction) add({ person: 'player', personName: me, contribution: 'Written By', roleId: 'writer', episodes: episodic ? playerWroteEps : 'all' });
-  for (const e of p.episodes.filter((x) => x.writer !== 'player')) {
-    add({ person: e.writer, personName: personById(state, e.writer).name, contribution: 'Written By', roleId: 'episode-writer', episodes: [e.number] });
+  for (const who of [...new Set(p.episodes.flatMap((e) => [e.writer, ...(e.formerWriters ?? [])]))].filter((x) => x !== 'player')) {
+    add({ person: who, personName: personById(state, who).name, contribution: 'Written By', roleId: 'episode-writer', episodes: wrote(who) });
   }
   for (const h of p.hires.filter((x) => x.roleId === 'co-writer' && x.daysWorked > 0)) {
     add({ person: h.personId, personName: personById(state, h.personId).name, contribution: 'Co-Written By', roleId: 'co-writer', episodes: h.episodes });
   }
-  const playerDirectedEps = p.episodes.filter((e) => e.director === 'player').map((e) => e.number);
+  const playerDirectedEps = directed('player');
   if (playerDirectedEps.length) add({ person: 'player', personName: me, contribution: 'Directed By', roleId: 'director', episodes: episodic ? playerDirectedEps : 'all' });
-  for (const e of p.episodes.filter((x) => x.director !== 'player')) {
-    add({ person: e.director, personName: personById(state, e.director).name, contribution: 'Directed By', roleId: 'episode-director', episodes: [e.number] });
+  for (const who of [...new Set(p.episodes.flatMap((e) => [e.director, ...(e.formerDirectors ?? [])]))].filter((x) => x !== 'player')) {
+    add({ person: who, personName: personById(state, who).name, contribution: 'Directed By', roleId: 'episode-director', episodes: directed(who) });
   }
   add({ person: 'player', personName: me, contribution: episodic ? 'Executive Producer And Showrunner' : 'Produced By', roleId: 'producer', episodes: 'all' });
   for (const x of p.funding.extra) add({ person: 'partner', personName: x.label, contribution: 'Co-Production Partner', roleId: 'co-producer', episodes: 'all' });

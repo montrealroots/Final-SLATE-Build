@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 6;
+export const SAVE_VERSION = 7;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -37,7 +37,10 @@ export interface CharacterIdentity {
   actingTitle: ActingTitle;
   birth: { year: number; month: number; day: number };
   birthplaceId: string;
+  /** Your ethnicities (save version 7; until then backgrounds mixed ethnicities and nationalities). */
   heritages: Heritage[];
+  /** Your nationalities, as country codes (identity.ts): where you and your family come from. Not your citizenship. */
+  nationalities: string[];
   mainLanguage: string;
   languages: LanguageSkill[]; // additional languages
   /** Holidays kept from your backgrounds (observance ids, observances.ts); saves from before have none. */
@@ -64,8 +67,11 @@ export interface CreationDraft {
   actingTitle: ActingTitle | '';
   birthDate: string; // YYYY-MM-DD
   birthplaceId: string;
+  /** Your ethnicities. */
   heritages: Heritage[];
   heritageCustomText: string;
+  /** Your nationalities (country codes). A draft from before they were asked takes them from its backgrounds. */
+  nationalities: string[];
   mainLanguage: string;
   languages: LanguageSkill[];
   /** Holidays you keep (observance ids). */
@@ -182,6 +188,10 @@ export interface StoryCharacter {
   methods: PerformanceMethod[];
   realization: Realization;
   ageInStory: string;
+  /** Other names the character goes by (SLATE-05-01.02): a record for the writer, shown with the part in casting. */
+  aliases?: string[];
+  /** How the character changes, beat by beat, each in a scene (structure.ts, SLATE-05-04.02). Never scored. */
+  beats?: { id: string; sceneId: string; change: string }[];
   pronouns: string;
   languages: string[];
   description: string;
@@ -193,8 +203,10 @@ export interface StoryCharacter {
    * (antagonist, narrator...) never set it (script-effects.ts castPlacement).
    */
   awardPlacement?: 'lead' | 'supporting' | 'none';
-  /** The character's backgrounds as written (labels from HERITAGES). Casting shows who shares one; it never scores a performance. */
+  /** The character's ethnicities as written (labels from ETHNICITIES). Casting shows who shares one; it never scores a performance. */
   heritages?: string[];
+  /** The character's nationalities as written (country codes), as the player's are; casting shows who shares one (save version 7). */
+  nationalities?: string[];
   designVersion: number; // bumping invalidates downstream design-dependent work
   groupSize?: number; // background groups
 }
@@ -239,9 +251,30 @@ export interface Scene {
   contributorIds: string[];
   evidenceIds: string[];
   technique?: Technique; // per-scene override for hybrids / mixed technique
+  /** The act or sequence the scene belongs to (structure.ts); none when unset. */
+  act?: string;
   tone?: string;
   intentionalDiscontinuity: boolean;
   operator?: string; // found footage: who is recording
+}
+
+/** A research question behind a fiction script (research.ts, SLATE-04-04.02): the writer's record, never verified by the game. */
+export interface ResearchNote {
+  id: string;
+  question: string;
+  reference: string;
+  status: 'open' | 'reviewed' | 'uncertain';
+  sceneIds: string[];
+}
+
+/** A story line through scenes and characters (structure.ts, SLATE-04-02.02). Left open on purpose is a valid choice. */
+export interface StoryThread {
+  id: string;
+  name: string;
+  characterIds: string[];
+  sceneIds: string[];
+  resolution: 'resolves' | 'open';
+  resolvedIn: string | null;
 }
 
 export interface SetupPayoff {
@@ -271,6 +304,8 @@ export interface WorldRule {
   id: string;
   rule: string;
   limit: string;
+  /** Scenes that rely on the rule: changing it previews them, by episode (season.ts). */
+  sceneIds?: string[];
 }
 
 export interface Relationship {
@@ -359,6 +394,11 @@ export interface FinanceDeal {
   terms: { recoup: number; incomeShare: number; approvalRights: string[]; credit: string | null; onDelivery: number; deliverBy: number | null };
   /** The documents sent with the approach (names, as listed when it was made). */
   sent?: string[];
+  /**
+   * What was sent, word for word, and with which approved draft (SLATE-04-05.02, November 8, 2026): later edits to the
+   * Story panel never change it. Approaches made before then have only the names.
+   */
+  sentCopy?: { draft: number | null; documents: { name: string; fields: { label: string; text: string }[] }[] };
 }
 
 export interface ProjectFinance {
@@ -414,6 +454,8 @@ export interface ShootDay {
   id: string;
   date: string;
   episode: number;
+  /** A block day's episodes, when it serves more than one (schedule.ts block scheduling); `episode` is the first. */
+  episodes?: number[];
   sceneIds: string[];
   locationLabel: string;
   interior: boolean;
@@ -559,8 +601,19 @@ export interface Project {
   relationships: Relationship[];
   characters: StoryCharacter[];
   scenes: Scene[];
-  episodes: { number: number; title: string; writer: 'player' | string; director: 'player' | string }[];
+  /**
+   * Who writes and directs each episode. Someone replaced after contributing (an approved draft of the episode, a day of it
+   * shot) is kept in formerWriters or formerDirectors and stays credited (projects.ts assignEpisodeRole, SLATE-01-04.05).
+   */
+  episodes: { number: number; title: string; writer: 'player' | string; director: 'player' | string; formerWriters?: string[]; formerDirectors?: string[]; /** What this episode moves in the season arc (season.ts). */ arc?: string }[];
+  /** The season's arc, in the writer's words (season.ts). Scores nothing; a continuation starts from it. */
+  seasonArc?: string;
   setups: SetupPayoff[];
+  /** Acts or sequences, and story threads (structure.ts). Absent in older saves. */
+  acts?: { id: string; name: string }[];
+  threads?: StoryThread[];
+  /** Research questions and references for a fiction script (research.ts). Absent in older saves. */
+  research?: ResearchNote[];
   evidence: Evidence[];
   contributors: Contributor[];
   drafts: Draft[];
@@ -579,6 +632,8 @@ export interface Project {
     startDate: string | null;
     rehearsalDays: number;
     sixDayWeeks: boolean;
+    /** Series: scenes at one place across episodes with the same director share days (SLATE-07-04.02). */
+    blockEpisodes?: boolean;
     workHolidays: boolean;
     /** Holidays the producer keeps (copied from the character when the project is made): shoot days skip them too. */
     observances?: string[];
@@ -604,6 +659,13 @@ export interface Project {
   quality: Record<string, number> | null; // modeled, locked at delivery
   history: { at: number; text: string }[];
   workEventScheduled: boolean;
+  /** Shelved, with its commitments settled (shelve.ts); taken up again by removing it. */
+  shelved?: { at: number };
+  /** A next season or sequel of another project (continuation.ts), and the people to ask back. */
+  continues?: { from: string; number: number; previousArc?: string; returning: { characterId: string; personId: string; method: PerformanceMethod; rate: number }[] };
+  continuedBy?: string;
+  /** A commissioner's decision on another season (continuation.ts). */
+  renewal?: { decidedAt: number; outcome: 'renewed' | 'cancelled'; reason: string };
   noticeKeys: string[];
 }
 

@@ -23,7 +23,7 @@ test('a preferred name, a headshot and a citizenship, and what each one changes'
   const photo = await makePhoto(page);
   await createCharacter(page, {
     name: 'Nia Halvorsen', middleName: 'Wanjiru', preferredName: 'Wanjiru', portrait: photo, pronouns: 'She/Her', birthDate: '1990-05-20',
-    birthplace: 'Nairobi', heritages: ['Kikuyu'], mainLanguage: 'English', extraLanguages: [], start: 'London', startDate: '2026-01-05', startTime: '08:00',
+    birthplace: 'Nairobi', heritages: ['Kikuyu'], nationalities: ['Kenya'], mainLanguage: 'English', extraLanguages: [], start: 'London', startDate: '2026-01-05', startTime: '08:00',
   }, async (page) => {
     // Review says who you'll be: the legal name as the heading, the headshot, the preferred name and citizenship.
     await expect(page.locator('#creation-h')).toHaveText('Nia Wanjiru Halvorsen');

@@ -1,9 +1,10 @@
 import { useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from 'react';
 import { heritageLanguages } from '../data/heritage-languages';
-import { LANGUAGES, PRONOUNS, languageName, searchHeritages, searchLanguages, settledTitle, type LanguageInfo } from '../data/identity';
+import { countryLanguages } from '../data/country-languages';
+import { LANGUAGES, PRONOUNS, languageName, searchEthnicities, searchLanguages, settledTitle, type LanguageInfo } from '../data/identity';
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
-import { CREATION_STEPS, FIRST_START_YEAR, LAST_START_YEAR, MIN_START_AGE, OBSERVANCES, ageOn, citizenshipFor, draftNames, latestBirthDate, creationStepIndex, formatZoneAbbrev, monthName, observance, observanceDates, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
-import type { CreationDraft, CreationStepId, Proficiency } from '../engine/types';
+import { CREATION_STEPS, FIRST_START_YEAR, LAST_START_YEAR, MIN_START_AGE, NATIONALITIES, OBSERVANCES, ageOn, backgroundLabels, citizenshipFor, draftNames, latestBirthDate, creationStepIndex, formatClock, formatZoneAbbrev, monthName, weekdayName, weekdayOfKey, observance, observanceDates, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
+import type { CreationDraft, CreationStepId, Heritage, Proficiency } from '../engine/types';
 import { Check, Field, Professions, SelectField, TextField } from './components';
 import { store, useStore } from './store';
 import { WorldPlacePicker } from './WorldPicker';
@@ -102,8 +103,8 @@ export function Creation() {
         {step === 'background' && (
           <div className="col gap-5">
             <section className="card">
-              {h1('Background', 'Who you come from. Choose as many backgrounds as are true, or describe your own.')}
-              <HeritageStep d={d} set={set} error={err('heritages')} />
+              {h1('Background', 'Who you come from: your ethnicity and your nationality. Choose at least one of each.')}
+              <HeritageStep d={d} set={set} err={err} />
             </section>
             <section className="card">
               <div className="panel-head"><div><h2>Holidays You Keep</h2><p className="muted small" style={{ margin: 0 }}>Beyond the public holidays where you live. They go on your calendar and on Home that day, and your projects don’t work on them, unless a project is set to work on public holidays.</p></div></div>
@@ -248,6 +249,16 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
 }
 
 /** Starting Point, as 1221's: where you live (where you were born, or somewhere else), what that place is, and when it begins. */
+/** When the story starts, as the game writes it: "Monday, January 5, 2026, at 8:00 AM GMT" (Starting Point and Review). */
+function startWords(d: CreationDraft): string | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d.startDate) || !/^([01]\d|2[0-3]):[0-5]\d$/.test(d.startTime)) return null;
+  const [hh, mm] = d.startTime.split(':').map(Number);
+  const city = findPlace(d.startPlaceId);
+  const { year, month, day } = parseYmd(d.startDate);
+  const zone = city ? ` ${formatZoneAbbrev(Date.UTC(year, month - 1, day, 12), city.zone)}` : '';
+  return `${weekdayName(weekdayOfKey(d.startDate))}, ${longDate(d.startDate)}, at ${formatClock(hh, mm)}${zone}`;
+}
+
 function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: (f: string) => string | null; head: ReactNode }) {
   const birthplace = findPlace(d.birthplaceId);
   const city = findPlace(d.startPlaceId);
@@ -257,6 +268,7 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
     const { year, month, day } = parseYmd(d.startDate);
     return formatZoneAbbrev(Date.UTC(year, month - 1, day, 12), city.zone);
   })();
+  const startsAt = startWords(d) && `${startWords(d)}${city ? ` in ${city.name}` : ''}`;
   return (
     <div className="col gap-5">
       <section className="card">
@@ -271,16 +283,12 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
           </label>
         )}
         {(elsewhere || !birthplace) && (
-          <PlacePicker label="Where You Live" value={d.startPlaceId} error={err('startPlaceId')} map onChange={(id, pl) => set({ startPlaceId: id, places: keepPlaces(d, 'startPlaceId', pl) })} />
+          <PlacePicker label="Where You Live" headed value={d.startPlaceId} error={err('startPlaceId')} map onChange={(id, pl) => set({ startPlaceId: id, places: keepPlaces(d, 'startPlaceId', pl) })} />
         )}
         {!elsewhere && err('startPlaceId') && <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('startPlaceId')}</p>}
         {city && (
-          <div className="grid grid-3" style={{ marginTop: 'var(--s4)' }}>
-            <div className="stat">
-              <span className="stat-label">Place</span>
-              <span className="stat-value" style={{ fontSize: 'var(--size-md)' }}>{city.name}</span>
-              <span className="stat-note">{[city.region !== city.name ? city.region : '', city.countryName].filter(Boolean).join(', ')}</span>
-            </div>
+          // The place itself is named once, in the picker's "Chosen:" note; this says what that note doesn't (November 8, 2026).
+          <div className="grid grid-2" style={{ marginTop: 'var(--s4)' }}>
             {typeof city.population === 'number' && city.population > 0 && (
               <div className="stat">
                 <span className="stat-label">Population</span>
@@ -296,11 +304,14 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
         )}
       </section>
       <section className="card">
-        <div className="panel-head"><div><h2>When It Begins</h2><p className="muted small" style={{ margin: 0 }}>The date and the local time where you live when your story starts. Any date in 2026.</p></div></div>
+        <div className="panel-head"><div><h2>When It Begins</h2><p className="muted small" style={{ margin: 0 }}>The date and the local time where you live when your story starts.</p></div></div>
         <div className="field-row">
-          <TextField label="Starting Date" type="date" value={d.startDate} min={`${FIRST_START_YEAR}-01-01`} max={`${LAST_START_YEAR}-12-31`} error={err('startDate')} hint={`Any day from ${FIRST_START_YEAR}, the default, to ${LAST_START_YEAR}. You must be at least ${MIN_START_AGE} on it.`} onChange={(v) => set({ startDate: v })} />
-          <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you start." onChange={(v) => set({ startTime: v })} />
+          <TextField label="Starting Date" type="date" value={d.startDate} min={`${FIRST_START_YEAR}-01-01`} max={`${LAST_START_YEAR}-12-31`} error={err('startDate')} hint={`Any day from ${FIRST_START_YEAR} to ${LAST_START_YEAR}.`} onChange={(v) => set({ startDate: v })} />
+          <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you live." onChange={(v) => set({ startTime: v })} />
         </div>
+        {/* The date and time as the game writes them, not the browser's 01/05/2026 (November 8, 2026). */}
+        {/* Each box's note is one short line, so the two boxes sit level; the rest is said here (November 8, 2026). */}
+        <p className="small" style={{ marginTop: 'var(--s3)' }}>{startsAt ? `Your story starts on ${startsAt}. ` : ''}{FIRST_START_YEAR} is the default year. You must be at least {MIN_START_AGE} on the day.</p>
       </section>
     </div>
   );
@@ -319,24 +330,36 @@ function keepPlaces(d: CreationDraft, field: 'birthplaceId' | 'startPlaceId', pl
   return Object.fromEntries(Object.entries(all).filter(([id]) => id === next.birthplaceId || id === next.startPlaceId));
 }
 
-function HeritageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<CreationDraft>) => void; error: string | null }) {
+/** What you come from, asked as two things (November 8, 2026): your ethnicities, then your nationalities. Both needed. */
+function HeritageStep({ d, set, err }: { d: CreationDraft; set: (p: Partial<CreationDraft>) => void; err: (f: string) => string | null }) {
   const [q, setQ] = useState('');
+  const [nq, setNq] = useState('');
   const [customError, setCustomError] = useState<string | null>(null);
-  const results = searchHeritages(q, 12).filter((h) => !d.heritages.some((x) => x.label === h));
+  const results = searchEthnicities(q, 12).filter((h) => !d.heritages.some((x) => x.label === h));
+  // Every country by name, in alphabetical order; your citizenship is marked where it falls (it came first until the owner asked for A to Z).
+  const citizen = citizenshipFor(d.birthplaceId);
+  const nf = nq.trim().toLowerCase();
+  const countries = nf ? NATIONALITIES.filter((n) => n.name.toLowerCase().includes(nf)).sort((a, b) => Number(!a.name.toLowerCase().startsWith(nf)) - Number(!b.name.toLowerCase().startsWith(nf))) : NATIONALITIES;
+  // What you've chosen reads A to Z as well.
+  const byLabel = (list: Heritage[]) => [...list].sort((a, b) => a.label.localeCompare(b.label, 'en'));
+  const byCountry = (codes: string[]) => [...codes].sort((a, b) => countryName(a).localeCompare(countryName(b), 'en'));
+  const nationResults = countries.filter((n) => !d.nationalities.includes(n.code)).slice(0, 12);
   return (
     <>
-      <TextField label="Search Backgrounds" type="search" value={q} onChange={setQ} />
-      <div className="picklist" role="group" aria-label="Background Results">
+      <h2 className="spaced">Ethnicity</h2>
+      <p className="muted small" style={{ marginTop: 0 }}>The peoples you come from. Choose as many as are true, or describe your own.</p>
+      <TextField label="Search Ethnicities" type="search" value={q} onChange={setQ} />
+      <div className="picklist" role="group" aria-label="Ethnicity Results">
         {results.map((h) => (
-          <button key={h} type="button" onClick={() => { set({ heritages: [...d.heritages, { id: h, label: h, custom: false }] }); setQ(''); }} aria-label={`Add A Background: ${h}`}>
+          <button key={h} type="button" onClick={() => { set({ heritages: byLabel([...d.heritages, { id: h, label: h, custom: false }]) }); setQ(''); }} aria-label={`Add Ethnicity: ${h}`}>
             <span>{h}</span>
           </button>
         ))}
-        {!results.length && <p className="muted" style={{ padding: 12 }}>Nothing matches. You can describe your background below.</p>}
+        {!results.length && <p className="muted" style={{ padding: 12 }}>Nothing matches. You can describe your ethnicity below.</p>}
       </div>
       {/* What you've chosen sits right under where you choose it; describing your own comes last (November 8, 2026). */}
-      <h3 className="spaced">Your Backgrounds</h3>
-      {error && <p role="alert" style={{ color: 'var(--negative)' }}>{error}</p>}
+      <h3 className="spaced">Your Ethnicities</h3>
+      {err('heritages') && <p role="alert" style={{ color: 'var(--negative)' }}>{err('heritages')}</p>}
       {d.heritages.length ? (
         <ul className="list">
           {d.heritages.map((h) => (
@@ -348,15 +371,39 @@ function HeritageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
         </ul>
       ) : <p className="muted">None added yet.</p>}
       <div className="inline-form spaced">
-        <TextField label="Describe Your Background" value={d.heritageCustomText} maxLength={80} error={customError} hint="If it isn't in the list, in your own words." onChange={(v) => set({ heritageCustomText: v })} />
+        <TextField label="Describe Your Ethnicity" value={d.heritageCustomText} maxLength={80} error={customError} hint="If it isn't in the list, in your own words." onChange={(v) => set({ heritageCustomText: v })} />
         <button className="btn" type="button" onClick={() => {
           const t = d.heritageCustomText.trim();
           if (!t) return setCustomError('Write a description first.');
           if (d.heritages.some((x) => x.label.toLowerCase() === t.toLowerCase())) return setCustomError("You've already added that.");
           setCustomError(null);
-          set({ heritages: [...d.heritages, { id: `custom_${Date.now().toString(36)}`, label: t, custom: true }], heritageCustomText: '' });
-        }}>Add A Background</button>
+          set({ heritages: byLabel([...d.heritages, { id: `custom_${Date.now().toString(36)}`, label: t, custom: true }]), heritageCustomText: '' });
+        }}>Add Your Ethnicity</button>
       </div>
+
+      <h2 className="spaced">Nationality</h2>
+      <p className="muted small" style={{ marginTop: 0 }}>The countries you and your family come from. Choose as many as are true. Your citizenship comes from where you were born{citizen ? `: ${countryName(citizen)}` : ''}. Each one suggests its languages below.</p>
+      <TextField label="Search Nationalities" type="search" value={nq} onChange={setNq} />
+      <div className="picklist" role="group" aria-label="Nationality Results">
+        {nationResults.map((n) => (
+          <button key={n.code} type="button" onClick={() => { set({ nationalities: byCountry([...d.nationalities, n.code]) }); setNq(''); }} aria-label={`Add Nationality: ${n.name}`}>
+            <span>{n.name}</span>{n.code === citizen && <span className="dim">Your citizenship</span>}
+          </button>
+        ))}
+        {!nationResults.length && <p className="muted" style={{ padding: 12 }}>No country or territory matches.</p>}
+      </div>
+      <h3 className="spaced">Your Nationalities</h3>
+      {err('nationalities') && <p role="alert" style={{ color: 'var(--negative)' }}>{err('nationalities')}</p>}
+      {d.nationalities.length ? (
+        <ul className="list">
+          {d.nationalities.map((c) => (
+            <li key={c} className="row-wrap">
+              <span className="grow">{countryName(c)}</span>
+              <button className="btn btn-sm" onClick={() => set({ nationalities: d.nationalities.filter((x) => x !== c) })} aria-label={`Remove ${countryName(c)}`}>Remove</button>
+            </li>
+          ))}
+        </ul>
+      ) : <p className="muted">None added yet.</p>}
     </>
   );
 }
@@ -382,7 +429,7 @@ function ObservanceStep({ d, set }: { d: CreationDraft; set: (p: Partial<Creatio
   const year = /^\d{4}/.test(d.startDate) ? Number(d.startDate.slice(0, 4)) : 2026;
   // In the order they fall in your starting year; ones not dated that year last (November 8, 2026).
   const byDate = (list: readonly Observance[]) => [...list].sort((a, b) => (observanceDates(a.id, year)[0] ?? '9').localeCompare(observanceDates(b.id, year)[0] ?? '9'));
-  const suggestedRaw = suggestedObservances(d.heritages.map((h) => h.label));
+  const suggestedRaw = suggestedObservances(backgroundLabels(d.heritages, d.nationalities));
   const suggested = byDate(suggestedRaw);
   const others = byDate(OBSERVANCES.filter((o) => !suggestedRaw.includes(o)));
   const kept = new Set(d.observances ?? []);
@@ -399,7 +446,7 @@ function ObservanceStep({ d, set }: { d: CreationDraft; set: (p: Partial<Creatio
           <legend className="eyebrow" style={{ marginBottom: 'var(--s2)' }}>From Your Backgrounds</legend>
           {suggested.map(row)}
         </fieldset>
-      ) : <p className="muted small">{d.heritages.length ? 'Your backgrounds suggest none of these. Any of them can still be yours.' : 'Add your backgrounds above and the holidays they keep come first here.'}</p>}
+      ) : <p className="muted small">{d.heritages.length || d.nationalities.length ? 'Your ethnicity and nationality suggest none of these. Any of them can still be yours.' : 'Add your ethnicity and nationality above and the holidays they keep come first here.'}</p>}
       <details className="section-fold" style={{ marginTop: 'var(--s3)' }}>
         <summary>Other Holidays</summary>
         <div className="col gap-1" style={{ marginTop: 'var(--s2)' }}>{others.map(row)}</div>
@@ -412,7 +459,8 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
   const [q, setQ] = useState('');
   const [mq, setMq] = useState('');
   // Your backgrounds' languages come first while nothing is typed (HERITAGE_LANGUAGES).
-  const suggested = new Set(heritageLanguages(d.heritages.map((h) => h.label)));
+  // Your ethnicities' languages and every nationality's own (country-languages.ts), each country on the map.
+  const suggested = new Set([...heritageLanguages(backgroundLabels(d.heritages, d.nationalities)), ...countryLanguages(d.nationalities)]);
   const first = (list: LanguageInfo[], typed: string) => (typed.trim() ? list : [...LANGUAGES.filter((l) => suggested.has(l.code)), ...list.filter((l) => !suggested.has(l.code))]);
   const mainResults = first(searchLanguages(mq, 8), mq);
   const addResults = first(searchLanguages(q, 8), q).filter((l) => l.code !== d.mainLanguage && !d.languages.some((x) => x.code === l.code));
@@ -424,7 +472,7 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
             <input id={id} type="search" value={mq} aria-describedby={db} aria-invalid={!!error} onChange={(e) => setMq(e.target.value)} />
             <div className="picklist" role="group" aria-label="Language You Use Most Results">
               {mainResults.map((l) => (
-                <button key={l.code} type="button" aria-pressed={l.code === d.mainLanguage} onClick={() => set({ mainLanguage: l.code, languages: d.languages.filter((x) => x.code !== l.code) })}>
+                <button key={l.code} type="button" aria-pressed={l.code === d.mainLanguage} onClick={() => { set({ mainLanguage: l.code, languages: d.languages.filter((x) => x.code !== l.code) }); setMq(''); }}>
                   <span>{l.name}</span>{suggested.has(l.code) && <span className="dim">From your backgrounds</span>}
                 </button>
               ))}
@@ -475,7 +523,8 @@ function ReviewCard({ title, edit, onEdit, children }: { title: string; edit: st
     <section className="card">
       <div className="row-between wrap" style={{ marginBottom: 'var(--s3)' }}>
         <h2 className="eyebrow" style={{ margin: 0 }}>{title}</h2>
-        <button className="btn btn-sm" onClick={onEdit}>{edit}</button>
+        {/* "Edit" on each card, so the button sits beside its title in a half-width card; its name keeps the step. */}
+        <button className="btn btn-sm" aria-label={edit} onClick={onEdit}>Edit</button>
       </div>
       {children}
     </section>
@@ -488,7 +537,8 @@ function Review({ d, edit, heading }: { d: CreationDraft; edit: (id: CreationSte
   const start = findPlace(d.startPlaceId);
   const age = ageAtStart(d);
   const born = /^\d{4}-\d{2}-\d{2}$/.test(d.birthDate) ? (() => { const b = parseYmd(d.birthDate); return `${MONTHS[b.month - 1]} ${b.day}, ${b.year}`; })() : 'Not chosen';
-  const starts = /^\d{4}-\d{2}-\d{2}$/.test(d.startDate) ? (() => { const b = parseYmd(d.startDate); return `${MONTHS[b.month - 1]} ${b.day}, ${b.year} at ${d.startTime}`; })() : 'Not chosen';
+  // As Starting Point says it (it read "January 5, 2026 at 08:00" until November 8, 2026).
+  const starts = startWords(d) ?? 'Not chosen';
   return (
     <div className="col gap-5">
       <section className="card">
@@ -500,6 +550,7 @@ function Review({ d, edit, heading }: { d: CreationDraft; edit: (id: CreationSte
           <div className="row" style={{ justifyContent: 'center' }}><Professions actingTitle={d.actingTitle} /></div>
         </div>
       </section>
+      {/* In the steps' order: Identity, Background & Languages, then Starting Point (it came before Background until November 8, 2026). */}
       <div className="grid grid-2">
         <ReviewCard title="Identity" edit="Edit Identity" onEdit={() => edit('identity')}>
           <Line label="Headshot" value={d.portrait ? 'Added' : 'None'} />
@@ -511,17 +562,18 @@ function Review({ d, edit, heading }: { d: CreationDraft; edit: (id: CreationSte
           <Line label="Place Of Birth" value={birth ? placeLabel(birth) : 'Not chosen'} />
           <Line label="Citizenship" value={citizenshipFor(d.birthplaceId) ? countryName(citizenshipFor(d.birthplaceId)!) : 'Not decided'} />
         </ReviewCard>
-        <ReviewCard title="Starting Point" edit="Edit Starting Point" onEdit={() => edit('starting-point')}>
-          <Line label="Where You Live" value={start ? placeLabel(start) : 'Not chosen'} />
-          <Line label="Starts On" value={starts} />
-          {age !== null && <Line label="Age At The Start" value={String(age)} />}
+        <ReviewCard title="Background & Languages" edit="Edit Background & Languages" onEdit={() => edit('background')}>
+          <Line label="Ethnicity" value={d.heritages.map((h) => h.label).join(', ') || 'None added'} />
+          <Line label="Nationality" value={d.nationalities.map(countryName).join(', ') || 'None added'} />
+          <Line label="Main Language" value={d.mainLanguage ? languageName(d.mainLanguage) : 'Not chosen'} />
+          <Line label="Other Languages" value={d.languages.map((l) => `${languageName(l.code)} (${l.proficiency.toLowerCase()})`).join(', ') || 'None'} />
+          <Line label="Holidays You Keep" value={(d.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you live'} />
         </ReviewCard>
       </div>
-      <ReviewCard title="Background & Languages" edit="Edit Background And Languages" onEdit={() => edit('background')}>
-        <Line label="Backgrounds" value={d.heritages.map((h) => h.label).join(', ') || 'None added'} />
-        <Line label="Main Language" value={d.mainLanguage ? languageName(d.mainLanguage) : 'Not chosen'} />
-        <Line label="Other Languages" value={d.languages.map((l) => `${languageName(l.code)} (${l.proficiency.toLowerCase()})`).join(', ') || 'None'} />
-        <Line label="Holidays You Keep" value={(d.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you live'} />
+      <ReviewCard title="Starting Point" edit="Edit Starting Point" onEdit={() => edit('starting-point')}>
+        <Line label="Where You Live" value={start ? placeLabel(start) : 'Not chosen'} />
+        <Line label="Starts On" value={starts} />
+        {age !== null && <Line label="Age At The Start" value={String(age)} />}
       </ReviewCard>
       <div className="callout callout-accent">
         Once you start, the clock runs while you play. Sleep and Advance move it on faster, and Advance stops early if something needs you.

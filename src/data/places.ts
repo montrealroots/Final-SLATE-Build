@@ -164,7 +164,8 @@ function fold(s: string): string {
 
 export function searchPlaces(query: string, limit = 12): Place[] {
   const q = fold(query.trim());
-  if (!q) return PLACES.slice(0, limit);
+  // Nothing typed: A to Z (November 8, 2026; it was the catalog's order, Los Angeles first).
+  if (!q) return [...PLACES].sort((a, b) => fold(a.name).localeCompare(fold(b.name), 'en')).slice(0, limit);
   const scored = PLACES.map((pl) => {
     const name = fold(pl.name);
     const all = fold(`${pl.name} ${pl.region} ${pl.countryName} ${pl.country}`);

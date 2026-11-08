@@ -1,0 +1,45 @@
+{
+  "package": "SLATE Gameplay Depth",
+  "files": [
+    {
+      "name": "00-START-HERE.md",
+      "bytes": 2537,
+      "sha256": "a16fe44088901b8243dd4a8b0edaa35b4d3f88999d2993b3de974e6a45463836"
+    },
+    {
+      "name": "01-GAMEPLAY-DEPTH-SPEC.md",
+      "bytes": 57737,
+      "sha256": "d9618413268cf40c1afd79501eecfe4fc963b962f86cd2e911e102fdca57a26d"
+    },
+    {
+      "name": "02-COVERAGE-LEDGER.csv",
+      "bytes": 36224,
+      "sha256": "4c7c2c10980f75c7f989f82edcab277dd8960aa038d1aa70a23b33a474e5f69f"
+    },
+    {
+      "name": "03-FEATURE-MODEL.json",
+      "bytes": 43242,
+      "sha256": "3ff770db23ce486e02d884a5860ee631fdd24cd4b50e21d40925043e920bbe27"
+    },
+    {
+      "name": "04-BUILD-ORDER-AND-CONNECTIONS.md",
+      "bytes": 5993,
+      "sha256": "bd6f639319caa9ffc26bd98580d46f7cdd215548dc5c5c9e1ed6d3aefab3b136"
+    },
+    {
+      "name": "05-PLAYTHROUGHS-AND-ACCEPTANCE.md",
+      "bytes": 6663,
+      "sha256": "9a573e65596da063a011622c506613953e53d284fc64e388fee876f3704b032e"
+    },
+    {
+      "name": "06-RESEARCH-AND-NATURAL-COPY.md",
+      "bytes": 3850,
+      "sha256": "36168bcc3df323e2ef7982b9462cc9e4073f5dc6710c1aefeaff352b3e836c11"
+    },
+    {
+      "name": "07-CLAUDE-START-COMMAND.txt",
+      "bytes": 4181,
+      "sha256": "3fbc0c8613d8020e81646857eb984076a49f05b796279c29a72f991a5bd179c8"
+    }
+  ]
+}

@@ -1915,6 +1915,8 @@ table.data th { color: var(--text-dim); font-weight: 650; font-size: var(--size-
 .spaced { margin-top: var(--s4); }
 .right { text-align: right; }
 .worldmap-here { fill: none; stroke: var(--accent-strong); stroke-width: 0.6; }
+/* The place a picker already has: a solid dot with a dark rim, readable on a highlighted country (November 8, 2026). */
+.worldmap-chosen { fill: var(--text); stroke: var(--bg); stroke-width: 0.5; pointer-events: none; }
 .worldmap-marker:focus { outline: none; }
 .worldmap-marker:focus-visible { stroke: var(--text); stroke-width: 0.8; fill: var(--accent-strong); }
 /* Phones zoom into fields under 16px; keep entry fields at 16px on small screens. */

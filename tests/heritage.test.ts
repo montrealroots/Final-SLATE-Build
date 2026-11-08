@@ -110,8 +110,9 @@ describe('a shared background is shown in casting and never scores a performance
   it('a performer from the pool, whose backgrounds are drawn with the rest of them and stay the same', () => {
     const s = startLife('auth-pool');
     const pool = candidates(s, 'actor', 'GB');
-    expect(pool.every((x) => x.heritages.length >= 1 && x.heritages.every((h) => HERITAGES.includes(h)))).toBe(true);
-    const actor = pool[0];
+    // Since November 8, 2026 their words are split into ethnicities and nationalities, as yours are.
+    expect(pool.every((x) => x.heritages.length + x.nationalities.length >= 1 && x.heritages.every((h) => HERITAGES.includes(h)))).toBe(true);
+    const actor = pool.find((x) => x.heritages.length)!;
     expect(personById(startLife('auth-pool'), actor.id).heritages).toEqual(actor.heritages); // deterministic
     const shared = cast(s, [actor.heritages[0]], actor.id);
     const unwritten = cast(s, undefined, actor.id);

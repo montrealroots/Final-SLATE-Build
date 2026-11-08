@@ -8,7 +8,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await expect(page.getByRole('button', { name: 'Continue', exact: true })).toHaveCount(0);
   for (const a of ['New Game', 'Saved Games', 'Settings']) await expect(page.getByRole('button', { name: a, exact: true })).toBeVisible();
   await createCharacter(page, {
-    name: 'Amaranta Okonkwo-Villaseñor de la Cruz', pronouns: 'She/Her', birthDate: '1994-02-28', birthplace: 'Lagos', heritages: ['Igbo', 'Mexican'],
+    name: 'Amaranta Okonkwo-Villaseñor de la Cruz', pronouns: 'She/Her', birthDate: '1994-02-28', birthplace: 'Lagos', heritages: ['Igbo', 'Hispanic Or Latino'], nationalities: ['Nigeria', 'Mexico'],
     customHeritage: 'Afro-Mexican from Costa Chica', mainLanguage: 'English', extraLanguages: ['Spanish', 'Igbo'], start: 'Toronto', startDate: '2026-03-02', startTime: '08:00',
   });
   // Home truthfulness and empty states.

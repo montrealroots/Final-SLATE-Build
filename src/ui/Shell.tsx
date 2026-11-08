@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import {
-  DAY, FORECAST_HORIZON_DAYS, addLocal, currentZone, dateKey, formatDuration, formatZoneAbbrev, localParts, localToInstant, nextNotableEvent, knownAs } from '../engine';
+  DAY, FORECAST_HORIZON_DAYS, addLocal, currentZone, dateKey, formatDuration, formatZoneAbbrev, localParts, localToInstant, nextNotableEvent, knownAs, advanceTargetInstant, upcomingCommitments } from '../engine';
 import { Check, Modal, SelectField, TextField, longLocal } from './components';
 import { HOME, RAIL_DESTINATIONS, destinationOf, type Destination } from './routes';
 import { store, useClock, useGame, useStore } from './store';
@@ -214,6 +214,14 @@ function AdvanceDialog({ onClose }: { onClose: () => void }) {
     const t = longLocal(at, zone);
     return `${t.weekday}, ${t.date}, ${t.time}`;
   };
+  // What the advance will pass, before it is made (SLATE-02-02.04, November 8, 2026).
+  const target = (() => {
+    if (mode !== 'time') return advanceTargetInstant(g, mode);
+    const [y, m, d] = date.split('-').map(Number);
+    const [hh, mm] = time.split(':').map(Number);
+    return y && !Number.isNaN(hh) ? localToInstant(zone, y, m, d, hh, mm).instant : null;
+  })();
+  const passing = target && target > g.now ? upcomingCommitments(g, g.now, target) : [];
   const go = () => {
     if (mode === 'time') {
       const [y, m, d] = date.split('-').map(Number);
@@ -246,6 +254,17 @@ function AdvanceDialog({ onClose }: { onClose: () => void }) {
         </div>
       )}
       {mode !== 'time' && error && <p role="alert" style={{ color: 'var(--negative)' }}>{error}</p>}
+      <div aria-live="polite" style={{ marginTop: 'var(--s3)' }}>
+        {passing.length ? (
+          <>
+            <p className="small" style={{ marginBottom: 'var(--s1)' }}>Along the way:</p>
+            <ul className="list small" aria-label="Along The Way">
+              {passing.slice(0, 6).map((c) => <li key={`${c.at}-${c.label}`}>{describe(c.at)}: {c.label}</li>)}
+            </ul>
+            {passing.length > 6 && <p className="dim small">And {passing.length - 6} more.</p>}
+          </>
+        ) : target && target > g.now ? <p className="dim small">Nothing on your calendar along the way.</p> : null}
+      </div>
     </Modal>
   );
 }

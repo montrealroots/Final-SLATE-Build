@@ -40,6 +40,8 @@ export const strokeAt = (v: Box, s: { width: number }): number => Math.max(0.25,
 export const markerRadiusAt = (v: Box, s: { width: number }): number => Math.max(1.2, 9 / (s.width / Math.max(v.width, 1)));
 
 /** The line under every map, shown while it loads too so nothing below it moves when the map arrives. */
+/** Said under a picker's map, the same while it loads as once it's drawn, so nothing below it moves (e2e/focus.spec.ts). */
+export const CHOSEN_NOTE = ' The place you chose is the solid dot.';
 export const MAP_CREDIT = "Outlines: Natural Earth. Small countries and territories that can't be drawn at this scale are still in the list.";
 
 let pending: Promise<WorldMapData> | undefined;

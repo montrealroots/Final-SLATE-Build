@@ -214,3 +214,45 @@ test('in-game Saved Games and Settings come from the same navigation', async ({ 
     expect(size).toBeGreaterThanOrEqual(16);
   }
 });
+
+// SLATE-19-02.03: the bar at the top sits outside the scrolling area, so nothing scrolled to or focused lands under it.
+test('a destination scrolled to or focused is never hidden under the top bar', async ({ page }) => {
+  await seedGame(page);
+  await nav(page, 'Calendar');
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  const covered = await page.evaluate(() => {
+    const bar = document.querySelector('.topbar')!.getBoundingClientRect();
+    const scroller = document.getElementById('main')!;
+    const targets = [...scroller.querySelectorAll<HTMLElement>('h2, h3, button, a, input, select')].filter((el) => el.getBoundingClientRect().height > 0);
+    const out: string[] = targets.length < 4 ? [`only ${targets.length} things to scroll to`] : [];
+    for (const el of [targets[targets.length - 1], targets[Math.floor(targets.length / 2)]]) {
+      el.scrollIntoView({ block: 'start' });
+      el.focus?.();
+      const r = el.getBoundingClientRect();
+      if (r.top < bar.bottom - 0.5) out.push(`${el.tagName} "${(el.textContent || '').trim().slice(0, 30)}" top ${r.top} under bar ${bar.bottom}`);
+    }
+    const style = getComputedStyle(document.querySelector('.topbar')!);
+    if (style.position === 'sticky' || style.position === 'fixed') out.push(`the bar is ${style.position} inside the page`);
+    return out;
+  });
+  expect(covered).toEqual([]);
+});
+
+// SLATE-02-02.04 and .05: Advance says what it will pass before you commit to it; there is no pause control.
+test('Advance lists the plans it will pass, and there is nothing to pause the clock with', async ({ page }) => {
+  await seedGame(page);
+  await nav(page, 'Calendar');
+  await page.getByRole('button', { name: 'Add Plan' }).click();
+  await page.getByRole('textbox', { name: 'Title' }).fill('Coffee With Liv');
+  await page.getByLabel('Start Time').fill('18:00');
+  await page.getByRole('dialog').getByRole('button', { name: 'Add Plan' }).click();
+  await page.getByRole('button', { name: 'Advance', exact: true }).click();
+  const dialog = page.getByRole('dialog', { name: 'Advance' });
+  await dialog.getByLabel('Advance To').selectOption('next-day');
+  await expect(dialog.getByRole('list', { name: 'Along The Way' })).toContainText('Coffee With Liv');
+  await dialog.getByLabel('Advance To').selectOption('time');
+  await dialog.getByLabel('Time').fill('12:00');
+  await expect(dialog.getByText('Nothing on your calendar along the way.')).toBeVisible();
+  await dialog.getByRole('button', { name: 'Cancel' }).click();
+  await expect(page.getByRole('button', { name: /pause/i })).toHaveCount(0);
+});

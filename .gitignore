@@ -11,3 +11,4 @@ coverage/
 .env.*
 artifacts/screenshots-local/
 .impeccable/hook.cache.json
+__pycache__/

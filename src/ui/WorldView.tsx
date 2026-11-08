@@ -2,7 +2,7 @@ import { useEffect, useId, useMemo, useState } from 'react';
 import { getPlace, placeLabel } from '../data/places';
 import { travelHours } from '../engine';
 import { countryName, toGamePlace, type WorldPlace } from '../world/gazetteer/gazetteer';
-import { MAP_CREDIT, boxAround, frameBox, loadMap, markerRadiusAt, projectPoint, strokeAt, viewBoxOf, type WorldMapData } from '../world/map/map';
+import { CHOSEN_NOTE, MAP_CREDIT, boxAround, frameBox, loadMap, markerRadiusAt, projectPoint, strokeAt, viewBoxOf, type WorldMapData } from '../world/map/map';
 import { formatDuration } from '../engine';
 import { PageHead } from './components';
 import { store, useGame } from './store';
@@ -71,7 +71,20 @@ export function WorldView() {
 }
 
 /** The outline map. Also shown under creation's place pickers, as 1221's are, with `verb` naming what a marker does there. */
-export function WorldMap(props: { country: string; here?: { lat: number; lon: number; name: string }; places: WorldPlace[]; onCountry: (c: string) => void; onPlace: (w: WorldPlace) => void; verb?: string }) {
+/**
+ * The places whose markers don't sit on one already drawn, largest first as listed: London's City and West End were
+ * drawn over London itself (November 8, 2026). The hidden ones are still in the list beside the map.
+ */
+function apart(places: WorldPlace[], data: WorldMapData, r: number): { w: WorldPlace; p: { x: number; y: number } }[] {
+  const out: { w: WorldPlace; p: { x: number; y: number } }[] = [];
+  for (const w of places) {
+    const p = projectPoint(w.lat, w.lon, data);
+    if (out.every((o) => Math.hypot(o.p.x - p.x, o.p.y - p.y) >= r * 2.2)) out.push({ w, p });
+  }
+  return out;
+}
+
+export function WorldMap(props: { country: string; here?: { lat: number; lon: number; name: string }; chosen?: { lat: number; lon: number; name: string }; places: WorldPlace[]; onCountry: (c: string) => void; onPlace: (w: WorldPlace) => void; verb?: string }) {
   const [data, setData] = useState<WorldMapData | null>(null);
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
@@ -100,9 +113,11 @@ export function WorldMap(props: { country: string; here?: { lat: number; lon: nu
   }
   // The placeholder is the map's own box, so what is under it doesn't move when the map arrives (November 7, 2026: a
   // click aimed at Save And Return To Review below it landed elsewhere as the map pushed it 200-360 px down).
-  if (!data || !view) return <><div role="status" className="worldmap worldmap-loading muted">Loading the map…</div><p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}</p></>;
+  if (!data || !view) return <><div role="status" className="worldmap worldmap-loading muted">Loading the map…</div><p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}{props.chosen ? CHOSEN_NOTE : ''}</p></>;
   const r = markerRadiusAt(view, data);
   const me = props.here ? projectPoint(props.here.lat, props.here.lon, data) : null;
+  // A picker rings the place already chosen, so it stands out from the other markers (November 8, 2026).
+  const mine = props.chosen ? projectPoint(props.chosen.lat, props.chosen.lon, data) : null;
   return (
     <>
       {/* The outlines are a pointer shortcut for the country list; each marker is a real button for keyboards and screen readers. */}
@@ -115,8 +130,7 @@ export function WorldMap(props: { country: string; here?: { lat: number; lon: nu
             </path>
           ))}
         </g>
-        {props.places.map((w) => {
-          const p = projectPoint(w.lat, w.lon, data);
+        {apart(props.places, data, r).map(({ w, p }) => {
           const choose = () => props.onPlace(w);
           return (
             <circle key={w.id} className="worldmap-marker" cx={p.x} cy={p.y} r={r} role="button" tabIndex={0} aria-label={`${props.verb ?? 'Open'} ${w.name}`} onClick={choose}
@@ -125,9 +139,10 @@ export function WorldMap(props: { country: string; here?: { lat: number; lon: nu
             </circle>
           );
         })}
+        {mine && props.chosen && <circle className="worldmap-chosen" cx={mine.x} cy={mine.y} r={r * 1.4} role="img" aria-label={`${props.chosen.name}, your choice`}><title>{props.chosen.name}, your choice</title></circle>}
         {me && props.here && <circle className="worldmap-here" cx={me.x} cy={me.y} r={r * 1.4} role="img" aria-label={`You're in ${props.here.name}`}><title>You're in {props.here.name}</title></circle>}
       </svg>
-      <p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}</p>
+      <p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}{props.chosen ? CHOSEN_NOTE : ''}</p>
     </>
   );
 }

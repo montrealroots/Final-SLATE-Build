@@ -1,8 +1,9 @@
 import { Fragment, useState } from 'react';
 import { languageName } from '../data/identity';
 import { getPlace } from '../data/places';
+import { countryName } from '../world/gazetteer/gazetteer';
 import {
-  BACKERS, EXPERIENCE, backerDocuments, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
+  BACKERS, EXPERIENCE, assignEpisodeRole, backerDocuments, costCuts, type CostCut, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
@@ -94,7 +95,7 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
               <div className="row-wrap">
                 <div className="grow">
                   <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
-                  <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{c.playingAge ? ` Plays ages ${c.playingAge[0]} to ${c.playingAge[1]}.` : ''} Background: {c.heritages.join(', ')}. Asks {money(c.dayRate)} a day.</div>
+                  <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{c.playingAge ? ` Plays ages ${c.playingAge[0]} to ${c.playingAge[1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>
                   {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip">Shares A Background: {sharedHeritages(g, p, characterId, c.id).join(', ')}</span></div>}
                   {!av.ok && <div className="dim" style={{ color: 'var(--warning)' }}>{av.reason}</div>}
                   {notes.map((n) => <div key={n} className="dim" style={{ color: 'var(--warning)' }}>{n}</div>)}
@@ -131,6 +132,23 @@ export function CastTab({ p }: { p: Project }) {
     <>
       {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
       {coaching.length > 0 && <div className="callout callout-warning"><p>{coaching.join(' and ')} {coaching.length === 1 ? 'needs' : 'need'} coaching in a dialogue language. Hire a dialect and language coach in Crew.</p></div>}
+      {(p.continues?.returning ?? []).filter((r) => chars.some((c) => c.id === r.characterId) && !p.cast.some((a) => a.characterId === r.characterId && a.method === r.method)).length > 0 && (
+        <section className="card" aria-labelledby="back-h">
+          <h2 id="back-h">Ask Them Back</h2>
+          <p className="dim">Who played these parts last time, at the rate they were paid then. Asking is an offer like any other: they may be booked elsewhere, may ask for more, and are paid again.</p>
+          <ul className="list">{p.continues!.returning.filter((r) => chars.some((c) => c.id === r.characterId) && !p.cast.some((a) => a.characterId === r.characterId && a.method === r.method)).map((r) => {
+            const c = chars.find((x) => x.id === r.characterId)!;
+            const who = personById(g, r.personId);
+            const pending = p.hires.some((h) => h.personId === r.personId && h.characterId === r.characterId && (h.status === 'offered' || h.status === 'countered'));
+            return (
+              <li key={`${r.characterId}-${r.method}`} className="row-wrap">
+                <span className="grow">{who.name} as {c.name} <span className="dim">· {money(r.rate)} a day last time</span></span>
+                {pending ? <span className="chip">Offer Sent</span> : <button className="btn btn-sm" onClick={() => setErr(store.act((s) => { makeOffer(s, p, { personId: r.personId, roleId: castRoleFor(r.method), dayRate: r.rate, characterId: r.characterId, method: r.method }); }))}>Ask {who.name} Back</button>}
+              </li>
+            );
+          })}</ul>
+        </section>
+      )}
       <section className="card">
         <h2>Roles</h2>
         <p className="muted">You can cast yourself in any role, or stay behind the camera. Writing a character doesn't earn an acting credit.</p>
@@ -145,7 +163,8 @@ export function CastTab({ p }: { p: Project }) {
                   <div className="grow">
                     <strong>{c.name}</strong> <span className="dim">{c.roleSize} · {plural(approvedScenes(p).filter((s) => s.participants.includes(c.id)).length, 'scene')}</span>
                     {c.roleSize === 'background' && <div className="dim">Background performers are booked per shoot day.</div>}
-                    {!!c.heritages?.length && <div className="dim">Written as {c.heritages.join(', ')}.{sharedHeritages(g, p, c.id, 'player').length ? ' You share a background with this part.' : ''}</div>}
+                    {!!c.aliases?.length && <div className="dim">Also called {c.aliases.join(', ')}.</div>}
+                    {!!(c.heritages?.length || c.nationalities?.length) && <div className="dim">Written as {[...(c.heritages ?? []), ...(c.nationalities ?? []).map(countryName)].join(', ')}.{sharedHeritages(g, p, c.id, 'player').length ? ' You share a background with this part.' : ''}</div>}
                   </div>
                 </div>
                 {methods.map((m) => {
@@ -275,11 +294,11 @@ function EpisodeAssignments({ p }: { p: Project }) {
                 <td data-label="Episode">{e.number}. {e.title}</td>
                 <td data-label="Written By">
                   <SelectField label={`Writer For Episode ${e.number}`} value={e.writer} options={[{ value: 'player', label: 'You' }, ...writers.map((h) => ({ value: h.personId, label: personById(g, h.personId).name }))]}
-                    onChange={(v) => setErr(store.act(() => { if (p.delivered) throw new Error('This project has been delivered.'); e.writer = v; }))} />
+                    onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'writer', v)))} />
                 </td>
                 <td data-label="Directed By">
                   <SelectField label={`Director For Episode ${e.number}`} value={e.director} options={[{ value: 'player', label: 'You' }, ...directors.map((h) => ({ value: h.personId, label: personById(g, h.personId).name }))]}
-                    onChange={(v) => setErr(store.act(() => { if (p.delivered) throw new Error('This project has been delivered.'); e.director = v; }))} />
+                    onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'director', v)))} />
                 </td>
               </tr>
             ))}
@@ -334,6 +353,7 @@ export function ScheduleTab({ p }: { p: Project }) {
           {has3d && <NumberField label="Render Nodes" value={p.schedule.renderNodes} min={1} max={500} hint="Finite render capacity, paid per node day." onChange={(v) => set(() => (p.schedule.renderNodes = Math.max(1, Math.min(500, Math.round(v || 1)))))} />}
         </div>
         <Check label="Six-Day Weeks" checked={p.schedule.sixDayWeeks} onChange={(v) => set(() => (p.schedule.sixDayWeeks = v))} />
+        {p.episodes.length > 1 && <Check label="Shoot Episodes In Blocks" hint="Scenes at the same place in episodes with the same director share days, so fewer days are paid for. Episodes with different directors keep their own days. Takes effect when the schedule is built." checked={!!p.schedule.blockEpisodes} onChange={(v) => set(() => { if (v) p.schedule.blockEpisodes = true; else delete p.schedule.blockEpisodes; })} />}
         <Check label="Work On Public Holidays" hint={`Holiday work is paid at 1.5 times the day rate in this game. Holidays follow ${place.countryName}${p.schedule.observances?.length ? `, and the holidays you keep (${p.schedule.observances.map((id) => observance(id)?.name).filter(Boolean).join(', ')}) are kept free too` : ''}.`} checked={p.schedule.workHolidays} onChange={(v) => set(() => (p.schedule.workHolidays = v))} />
         {animChars.length > 0 && (
           <>
@@ -388,6 +408,22 @@ export function ScheduleTab({ p }: { p: Project }) {
 
 // ---------------- Budget ----------------
 
+/** Ways to cost less, worked out when asked: each is the estimate again without that thing (SLATE-03-03.02). */
+function CostCutsCard({ p }: { p: Project }) {
+  const g = useGame();
+  const [cuts, setCuts] = useState<CostCut[] | null>(null);
+  return (
+    <section className="card" aria-labelledby="cuts-h">
+      <h2 id="cuts-h">Ways To Cost Less</h2>
+      <p className="dim">What the estimate would save without each of these. They change the film, so they are choices, not advice; make one in the Script and approve a new draft.</p>
+      {cuts === null ? <button className="btn" onClick={() => setCuts(costCuts(g, p))}>Work Out Savings</button>
+        : cuts.length ? (
+          <ul className="list">{cuts.map((c) => <li key={c.label}><strong>{c.label}</strong>: saves about {money(c.saving)}. <span className="dim">{c.how}</span></li>)}</ul>
+        ) : <p className="muted">Nothing here would save $1,000 or more. Essential scenes aren't offered.</p>}
+    </section>
+  );
+}
+
 export function BudgetTab({ p }: { p: Project }) {
   useGame();
   const t = ledgerTotals(p);
@@ -408,6 +444,7 @@ export function BudgetTab({ p }: { p: Project }) {
         <div className="meter spaced" role="img" aria-label={`${Math.round((t.settled / Math.max(1, t.fund)) * 100)} percent spent`}><span style={{ width: `${Math.min(100, (t.settled / Math.max(1, t.fund)) * 100)}%` }} /></div>
         <p className="dim">Rates and fees are game assumptions, not quoted industry prices.</p>
       </section>
+      {p.approvedDraft !== null && !p.delivered && <CostCutsCard p={p} />}
       <section className="card">
         <h2>By Category</h2>
         <div className="table-wrap">
@@ -476,7 +513,19 @@ function FinancingPanel({ p }: { p: Project }) {
                   <span className="grow"><strong>{d.backer}</strong>{d.amount ? `: ${money(d.amount)}` : ''}</span>
                   <span className={`chip ${d.status === 'accepted' ? 'chip-positive' : d.status === 'declined' || d.status === 'breached' ? 'chip-negative' : d.status === 'offered' ? 'chip-accent' : ''}`}>{status[d.status]}</span>
                 </div>
-                {d.sent?.length ? <p className="dim">Sent with the approved script: {d.sent.join(', ')}. They read it; SLATE doesn't judge it.</p> : null}
+                {d.sent?.length ? <p className="dim">Sent with the approved script{d.sentCopy?.draft ? ` (draft ${d.sentCopy.draft})` : ''}: {d.sent.join(', ')}. They read it; SLATE doesn't judge it.</p> : null}
+                {d.sentCopy && (
+                  <details className="section-fold">
+                    <summary>What You Sent</summary>
+                    <p className="dim small">As it was when you sent it. Later changes to your script aren't in it.</p>
+                    {d.sentCopy.documents.map((doc) => (
+                      <div key={doc.name}>
+                        <h4>{doc.name}</h4>
+                        <dl className="dl">{doc.fields.map((f) => <div key={f.label}><dt>{f.label}</dt><dd>{f.text || '—'}</dd></div>)}</dl>
+                      </div>
+                    ))}
+                  </details>
+                )}
                 {d.status === 'considering' && <p className="muted">Their answer is due {formatDateKey(dateKey(d.decideAt ?? g.now, getPlace(p.axes.basePlaceId).zone))}.</p>}
                 {d.reason && <p className="muted">{d.reason}</p>}
                 {(d.status === 'offered' || d.status === 'accepted' || d.status === 'breached') && <ul className="dim">{dealTerms(d).map((t) => <li key={t}>{t}</li>)}</ul>}

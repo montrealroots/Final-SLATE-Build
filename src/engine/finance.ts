@@ -127,7 +127,9 @@ export function backerOptions(state: GameState, p: Project): { kind: Exclude<Fin
   out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : fundClosedTo(state, p) ?? docs('grant')) });
   out.push({ kind: 'investor', ready: false, needs: why('investor', !scriptApproved(p) ? 'Approve a script first.' : docs('investor')) });
   out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : docs('co-producer')) });
-  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : !scriptApproved(p) ? 'Approve a script first.' : docs('commissioner')) });
+  // A commissioner who didn't renew the series won't fund its next season (continuation.ts).
+  const notRenewed = p.continues && state.projects.find((x) => x.id === p.continues!.from)?.renewal?.outcome === 'cancelled' ? "The commissioner didn't renew the series." : null;
+  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : notRenewed ?? (!scriptApproved(p) ? 'Approve a script first.' : docs('commissioner'))) });
   for (const o of out) o.ready = o.needs === '';
   return out;
 }
@@ -141,10 +143,13 @@ export function approachBacker(state: GameState, p: Project, kind: Exclude<Finan
   const b = BACKERS[kind];
   const days = b.decideDays;
   const sent = BACKER_DOCUMENTS[kind].map((d) => DOCUMENTS[d].name);
+  // A copy of each document as it stands now: what the backer reads is what was sent, whatever is edited later.
+  const nf = isNonfiction(p.axes.format);
+  const documents = BACKER_DOCUMENTS[kind].map((d) => ({ name: DOCUMENTS[d].name, fields: DOCUMENTS[d].fields(nf).map(([k, label]) => ({ label, text: String(p.story[k] ?? '') })) }));
   const deal: FinanceDeal = {
     id: newId(state, 'fd'), kind, backer: b.name, amount: 0, status: 'considering', askedAt: state.now, decideAt: state.now + days * DAY,
     reason: '', received: 0, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null },
-    ...(sent.length ? { sent } : {}),
+    ...(sent.length ? { sent, sentCopy: { draft: p.approvedDraft, documents } } : {}),
   };
   p.finance.deals.push(deal);
   if (b.decideDays === 0) decide(state, p, deal);

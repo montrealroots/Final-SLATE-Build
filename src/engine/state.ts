@@ -10,7 +10,7 @@ import type {
   Attention, CharacterIdentity, CreationDraft, CreationStepId, GameState, LogEntry, Route, ScheduledEvent,
 } from './types';
 import { SAVE_VERSION } from './types';
-import { draftNames, isPortrait, legalName } from './identity';
+import { citizenshipFor, draftNames, isNationality, isPortrait, legalName, splitBackgrounds } from './identity';
 
 export function newId(state: GameState, prefix: string): string {
   state.idCounter += 1;
@@ -19,7 +19,7 @@ export function newId(state: GameState, prefix: string): string {
 
 export function emptyDraft(): CreationDraft {
   return {
-    step: 'identity', firstName: '', middleName: '', lastName: '', preferredName: '', pronouns: '', actingTitle: '', birthDate: '', birthplaceId: '', heritages: [], heritageCustomText: '', observances: [],
+    step: 'identity', firstName: '', middleName: '', lastName: '', preferredName: '', pronouns: '', actingTitle: '', birthDate: '', birthplaceId: '', heritages: [], heritageCustomText: '', nationalities: [], observances: [],
     mainLanguage: '', languages: [], startPlaceId: '', startDate: '2026-01-05', startTime: '08:00', updatedAt: 0,
   };
 }
@@ -30,7 +30,7 @@ export function emptyDraft(): CreationDraft {
  */
 export const CREATION_STEPS: readonly { id: CreationStepId; title: string; fields: readonly (keyof CreationDraft)[] }[] = [
   { id: 'identity', title: 'Identity', fields: ['portrait', 'firstName', 'middleName', 'lastName', 'preferredName', 'pronouns', 'actingTitle', 'birthDate', 'birthplaceId'] },
-  { id: 'background', title: 'Background & Languages', fields: ['heritages', 'heritageCustomText', 'observances', 'mainLanguage', 'languages'] },
+  { id: 'background', title: 'Background & Languages', fields: ['heritages', 'heritageCustomText', 'nationalities', 'observances', 'mainLanguage', 'languages'] },
   { id: 'starting-point', title: 'Starting Point', fields: ['startPlaceId', 'startDate', 'startTime'] },
   { id: 'review', title: 'Review', fields: [] },
 ];
@@ -61,6 +61,9 @@ export function normalizeDraft(raw: unknown): CreationDraft | null {
   delete d.name;
   if (typeof d.portrait !== 'string' || !isPortrait(d.portrait)) delete d.portrait;
   if (!Array.isArray(d.heritages)) d.heritages = [];
+  // A draft from before nationality was asked: its nationality words become countries (identity.ts splitBackgrounds).
+  if (!Array.isArray(r.nationalities)) Object.assign(d, splitBackgrounds(d.heritages, citizenshipFor(d.birthplaceId)));
+  d.nationalities = [...new Set(d.nationalities.filter(isNationality))];
   if (!Array.isArray(d.languages)) d.languages = [];
   d.observances = Array.isArray(d.observances) ? d.observances.filter((o): o is string => typeof o === 'string' && !!observance(o)) : [];
   if (typeof d.updatedAt !== 'number') d.updatedAt = 0;
@@ -131,7 +134,8 @@ export function validateDraft(d: CreationDraft): DraftProblem[] {
     }
   }
   if (!findPlace(d.birthplaceId)) out.push({ field: 'birthplaceId', step: 'identity', message: 'Choose a birthplace.' });
-  if (d.heritages.length === 0) out.push({ field: 'heritages', step: 'background', message: 'Add at least one background, or describe your own.' });
+  if (d.heritages.length === 0) out.push({ field: 'heritages', step: 'background', message: 'Add at least one ethnicity, or describe your own.' });
+  if (!(d.nationalities ?? []).some(isNationality)) out.push({ field: 'nationalities', step: 'background', message: 'Add at least one nationality.' });
   if (!d.mainLanguage) out.push({ field: 'mainLanguage', step: 'background', message: 'Choose your main language.' });
   if (!findPlace(d.startPlaceId)) out.push({ field: 'startPlaceId', step: 'starting-point', message: 'Choose where your story begins.' });
   if (!start || start.year < FIRST_START_YEAR || start.year > LAST_START_YEAR) {
@@ -159,6 +163,7 @@ export function newGame(d: CreationDraft, realNow: number, saveId: string): Game
     birth: parseYmd(d.birthDate),
     birthplaceId: d.birthplaceId,
     heritages: d.heritages,
+    nationalities: [...new Set(d.nationalities.filter(isNationality))],
     mainLanguage: d.mainLanguage,
     languages: d.languages.filter((l) => l.code !== d.mainLanguage),
     observances: d.observances?.filter((o) => !!observance(o)) ?? [],

@@ -11,9 +11,10 @@
 // under the nationality law of the state it belongs to. With where you live, it makes your home countries, and a
 // country's public screen fund supports its citizens and residents (finance.ts). Travel and work permits don't read it.
 
+import { NATIONAL_LABEL, NATIONALITY_ONLY } from '../data/identity';
 import { findPlace } from '../data/places';
-import { countryName } from '../world/gazetteer/gazetteer';
-import type { CharacterIdentity, CreationDraft, GameState } from './types';
+import { COUNTRIES, countryName } from '../world/gazetteer/gazetteer';
+import type { CharacterIdentity, CreationDraft, GameState, Heritage } from './types';
 
 /** Territories whose people hold another country's citizenship, by the country that gives it (from 1221). */
 export const TERRITORY_CITIZENSHIP: Readonly<Record<string, string>> = {
@@ -108,4 +109,57 @@ export function migrateV5toV6(raw: Record<string, unknown>): Record<string, unkn
     c.livesIn = travel && typeof travel.from === 'string' ? travel.from : raw.locationId;
   }
   return { ...raw, character: c };
+}
+
+// Ethnicity and nationality (November 8, 2026). Your ethnicities are `heritages`, as backgrounds were; your
+// nationalities are countries. Both are asked, at least one of each. A nationality is where you and your family come
+// from, which can differ from your citizenship (the country of your place of birth, above), and it changes no legal
+// standing: it suggests holidays and languages and shows in casting, as the word for it did when it was a background.
+
+/** Gazetteer entries that are no one's nationality: uninhabited, or no longer a country. */
+const NO_NATIONALITY = new Set(['AQ', 'BV', 'HM', 'GS', 'TF', 'UM', 'IO', 'AN', 'CS']);
+
+/** Every country or territory a nationality can be, by name. */
+export const NATIONALITIES: readonly { code: string; name: string }[] = COUNTRIES.filter((c) => !NO_NATIONALITY.has(c.code)).map((c) => ({ code: c.code, name: c.name }));
+export const isNationality = (code: unknown): code is string => typeof code === 'string' && NATIONALITIES.some((n) => n.code === code);
+
+/** The words your ethnicities and nationalities stand for, for holidays, languages and casting (HERITAGES labels). */
+export function backgroundLabels(heritages: readonly Heritage[], nationalities: readonly string[] | undefined): string[] {
+  return [...new Set([...heritages.map((h) => h.label), ...(nationalities ?? []).map((c) => NATIONAL_LABEL[c]).filter(Boolean)])];
+}
+
+/**
+ * One mixed list into the two: a chosen word that's only a nationality becomes its country; everything else stays an
+ * ethnicity. With no nationality among them, the nationality is the citizenship, when it's known.
+ */
+export function splitBackgrounds(heritages: readonly Heritage[], citizenship: string | undefined): { heritages: Heritage[]; nationalities: string[] } {
+  const byLabel = new Map<string, string>();
+  for (const [code, label] of Object.entries(NATIONAL_LABEL)) if (!byLabel.has(label)) byLabel.set(label, code);
+  const nationalities = new Set<string>();
+  const kept: Heritage[] = [];
+  for (const h of heritages) {
+    const code = !h.custom && NATIONALITY_ONLY.has(h.label) ? byLabel.get(h.label) : undefined;
+    if (code) nationalities.add(code); else kept.push(h);
+  }
+  if (!nationalities.size && citizenship && isNationality(citizenship)) nationalities.add(citizenship);
+  return { heritages: kept, nationalities: [...nationalities] };
+}
+
+/** v6 -> v7: backgrounds asked as ethnicity and nationality (splitBackgrounds), with the citizenship the save's own place gives. */
+export function migrateV6toV7(raw: Record<string, unknown>): Record<string, unknown> {
+  const c = { ...(raw.character as Record<string, unknown>) };
+  const birthplaceId = typeof c.birthplaceId === 'string' ? c.birthplaceId : '';
+  const own = (raw.places as Record<string, { country?: string }> | undefined)?.[birthplaceId]?.country ?? findPlace(birthplaceId)?.country;
+  const citizenship = own ? TERRITORY_CITIZENSHIP[own] ?? own : undefined;
+  Object.assign(c, splitBackgrounds(Array.isArray(c.heritages) ? (c.heritages as Heritage[]) : [], citizenship));
+  // Script characters were written with the one list too: their nationality words become countries (no fallback).
+  const projects = Array.isArray(raw.projects) ? (raw.projects as Record<string, unknown>[]).map((p) => ({
+    ...p,
+    characters: Array.isArray(p.characters) ? (p.characters as Record<string, unknown>[]).map((ch) => {
+      if (!Array.isArray(ch.heritages) || !ch.heritages.length) return ch;
+      const split = splitBackgrounds((ch.heritages as string[]).map((h) => ({ id: h, label: h, custom: false })), undefined);
+      return { ...ch, heritages: split.heritages.map((h) => h.label), ...(split.nationalities.length ? { nationalities: split.nationalities } : {}) };
+    }) : p.characters,
+  })) : raw.projects;
+  return { ...raw, character: c, projects };
 }

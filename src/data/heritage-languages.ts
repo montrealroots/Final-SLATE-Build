@@ -9,7 +9,7 @@ export const HERITAGE_LANGUAGES: Record<string, string[]> = {
   English: ['en'], Fijian: ['en'], Jamaican: ['en'], Liberian: ['en'], Luo: ['sw', 'en'], 'New Zealander': ['en'], Singaporean: ['en', 'zh', 'ms', 'ta'],
   Trinidadian: ['en'],
   'Aboriginal Australian': ['en'], Acadian: ['fr'], Afghan: ['prs', 'ps'], 'Afro-Brazilian': ['pt'], 'Afro-Caribbean': ['en'], 'Afro-Latino': ['es'],
-  Akan: ['tw'], Albanian: ['sq'], Algerian: ['ar', 'fr'], Amazigh: ['ar'], Arab: ['ar'], Argentine: ['es'], Armenian: ['hy'],
+  Akan: ['tw'], Albanian: ['sq'], Algerian: ['ar', 'fr'], Amazigh: ['zgh', 'kab', 'ar'], Arab: ['ar'], Argentine: ['es'], Armenian: ['hy'],
   'Ashkenazi Jewish': ['yi', 'he'], Austrian: ['de'], Azerbaijani: ['az'], Bangladeshi: ['bn'], Basque: ['eu', 'es'], Belarusian: ['be', 'ru'],
   Belgian: ['nl', 'fr'], Bengali: ['bn'], 'Beta Israel': ['he', 'am'], Bosnian: ['bs'], Brazilian: ['pt'], Bulgarian: ['bg'], Burmese: ['my'], Cambodian: ['km'],
   Cameroonian: ['fr', 'en'], 'Cape Verdean': ['pt'], Catalan: ['ca', 'es'], Chechen: ['ru'], Cherokee: ['chr'], Chilean: ['es'],

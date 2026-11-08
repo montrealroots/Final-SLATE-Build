@@ -1,0 +1,21 @@
+Use the attached SLATE Gameplay Depth Package to extend Final-SLATE-Build. This is the full agreed gameplay-depth scope, not permission to rebuild the game or discard working systems.
+
+Use one agent only: no subagents, delegated agent workflows or parallel agents. Use available tools that do not require me to supply API keys. Verify relevant tools with actual calls; do not reinstall everything unnecessarily.
+
+Read 00-START-HERE.md and all package files. Fetch and inspect the current main and active work; the package's b025147 / PR #38 reference is historical. Preserve unrelated and uncommitted work. Follow current repository instructions within my authorized scope.
+
+Reconcile all 20 areas and 100 feature groups against the actual code, UI and tests. Expand each group into child requirements covering the features inside the features: entry, prerequisites, decisions, validation, state changes, cost, time, dependencies, consequences, cancellation, failure, recovery, persistence, natural copy and evidence. Retain every original ID. Mark existing verified work accurately and implement missing or disconnected parts. Do not invent completeness, silently drop rows, or call a documentation entry an implemented feature.
+
+Follow 04-BUILD-ORDER-AND-CONNECTIONS.md. Deliver each slice with its player controls, engine behavior, downstream effects, failure/recovery paths, save compatibility and tests. Continue through the full agreed scope; do not stop after planning or one showcase journey. Keep stages reviewable rather than producing one unreviewable rewrite. Resolve routine design details consistently with the package and current game; record material assumptions.
+
+Preserve all four professions from the start, optional acting per project, the active real-time clock with no offline progression, advance and sleep, global context, established UI and wording rules, desktop/mobile capability parity, and the current exclusions. No new tutorial, personal housing/banking/taxes/visas or attribute-progression system. No paid in-game LLM or API-key dependency. Do not attach arbitrary quality bonuses to prose or demographics.
+
+Research the real process behind implemented mechanics using applicable accessible primary sources. Keep edition and territory differences. Maintain provenance behind the engine. Clearly classify verified facts, calibrated models and projections. Never invent official rules or dates when a source is inaccessible; try appropriate alternatives and record exact remaining gaps while completing independent work.
+
+Run the engine checks and real UI journeys in 05-PLAYTHROUGHS-AND-ACCEPTANCE.md, including desktop and mobile/WebKit, alternative media, TV episodes, no-acting participation, funding shortages, changed approved scripts, resource conflicts, save/reload and recovery. Inspect screenshots and retain failure traces. Do not hide failures through weakened assertions, arbitrary sleeps, forced clicks, retries or skipped failing tests. Separate browser emulation from physical-device testing and automated balance from human enjoyment.
+
+Keep existing performance budgets and measure background downloads separately from startup JavaScript. Fix regressions, including the sticky-header scroll issue if still present. Preserve save migrations, deterministic event handling and financial integrity.
+
+For each completed coherent section: update the coverage ledger and repository evidence, run required checks, commit intended changes, push and open/update a PR. Merge only after required CI passes, then check resulting main CI. Do not include secrets, installed dependencies or disposable test artifacts in commits. Never discard unrelated work.
+
+At each checkpoint report the exact commit, completed feature IDs, concrete player-visible behavior, tests and journeys run, intentional skips, open gaps and next dependency. If session limits interrupt the work, save an exact resume point with completed/pending IDs and the next action. Never claim perfect realism, universal coverage, zero defects or physical-device verification without evidence. Finish the package's scope or explicitly account for every remaining blocked requirement.

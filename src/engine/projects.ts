@@ -3,6 +3,9 @@ import { composeGenres, genreName, type ModuleId } from './genres';
 import { findPlace } from '../data/places';
 import { addLog, adoptPlace, newId, registerHandler, schedule } from './state';
 import { unscriptedIssues } from './unscripted';
+import { remapThreads, seasonNotes, structureNotes } from './structure';
+import { researchNotes } from './research';
+import { personById, roleLabel } from './people';
 import type {
   Draft, Format, GameState, Medium, Project, ProjectAxes, Requirement, RevisionNote, Scene, StoryCharacter, Technique,
 } from './types';
@@ -203,6 +206,7 @@ export function setGenres(p: Project, picks: { id: string; emphasis: 'primary' |
 
 export function assertEditable(p: Project): void {
   if (p.delivered) throw new Error('This project has been delivered. Its script is locked.');
+  if (p.shelved) throw new Error('This project is shelved. Take it up again to make changes.');
 }
 
 // ---------------- Characters ----------------
@@ -213,6 +217,33 @@ export function blankCharacter(state: GameState, name: string): StoryCharacter {
     realization: 'performer', ageInStory: '', pronouns: '', languages: [], description: '', wants: '', fears: '', seriesInvolvement: 'recurring',
     designVersion: 1,
   };
+}
+
+/**
+ * Hands an episode's writing or directing to someone else (you, or a hired episode writer or director). Whoever is replaced
+ * keeps their credit for work already in the episode: a writer whose approved draft has scenes in it, a director with a
+ * day of it shot. Until November 8, 2026 the select simply overwrote the name, and the credit went with it.
+ */
+export function assignEpisodeRole(p: Project, episode: number, role: 'writer' | 'director', who: 'player' | string): void {
+  assertEditable(p);
+  if (p.delivered) throw new Error('This project has been delivered.');
+  const e = p.episodes.find((x) => x.number === episode);
+  if (!e) throw new Error('That episode no longer exists.');
+  const roleId = role === 'writer' ? 'episode-writer' : 'episode-director';
+  if (who !== 'player' && !p.hires.some((h) => h.personId === who && h.roleId === roleId && h.status === 'accepted')) {
+    throw new Error(`Hire them as an episode ${role} first.`);
+  }
+  const current = e[role];
+  if (current === who) return;
+  const contributed = role === 'writer'
+    ? p.approvedDraft !== null && approvedScenes(p).some((s) => s.episode === episode)
+    : p.schedule.days.some((d) => (d.episode === episode || d.episodes?.includes(episode)) && (d.status === 'shot' || d.status === 'partial'));
+  const key = role === 'writer' ? 'formerWriters' : 'formerDirectors';
+  const former = (e[key] ?? []).filter((x) => x !== who);
+  if (contributed && !former.includes(current)) former.push(current);
+  e[key] = former.length ? former : undefined;
+  if (!e[key]) delete e[key];
+  e[role] = who;
 }
 
 export function addCharacter(state: GameState, p: Project, name: string): StoryCharacter {
@@ -317,10 +348,116 @@ export function sceneDeleteImpact(p: Project, id: string): string[] {
 export function deleteScene(p: Project, id: string): void {
   assertEditable(p);
   p.scenes = p.scenes.filter((s) => s.id !== id);
+  remapThreads(p, id, null);
   for (const sp of p.setups) {
     if (sp.plantedIn === id) sp.plantedIn = null;
     if (sp.paidIn === id) sp.paidIn = null;
   }
+}
+
+// ---------------- Duplicate, split, combine (SLATE-06-04.02, November 8, 2026) ----------------
+// Each works on the working copy, so nothing filmed changes until a draft is approved again, when approval's own preview
+// says which footage the changes affect. Copies get new IDs; links (setups, payoffs) are never guessed: they stay where
+// they were or move with the scene that absorbs theirs, and the notes returned say which.
+
+function copyLines(state: GameState, lines: Scene['dialogue']): Scene['dialogue'] {
+  return lines.map((l) => ({ ...l, id: newId(state, 'l') }));
+}
+
+const half = (m: number) => Math.max(0.5, Math.round(m * 2) / 2);
+
+/** A copy of the scene right after it, with a new ID and new line IDs. The original keeps its setups and payoffs. */
+export function duplicateScene(state: GameState, p: Project, id: string): Scene {
+  assertEditable(p);
+  const s = p.scenes.find((x) => x.id === id);
+  if (!s) throw new Error('That scene no longer exists.');
+  const copy: Scene = JSON.parse(JSON.stringify(s));
+  copy.id = newId(state, 's');
+  copy.dialogue = copyLines(state, s.dialogue);
+  delete copy.essential;
+  p.scenes.splice(p.scenes.indexOf(s) + 1, 0, copy);
+  return copy;
+}
+
+/** What splitting a scene before a line will do, said before it is done. */
+export function splitSceneImpact(p: Project, id: string, atLine: number): string[] {
+  const s = p.scenes.find((x) => x.id === id);
+  if (!s) return ['That scene no longer exists.'];
+  const out = [`Lines ${atLine + 1} onward move to a new scene right after this one, ${s.dialogue.length - atLine} of ${s.dialogue.length}.`];
+  out.push('Both scenes keep everyone in this scene; take out whoever is not in each part.');
+  if (s.props.length || s.animals.length || s.vehicles.length || s.stunts || s.crowd || s.vfx.length || s.songs.length) out.push('The production needs (props, stunts, crowd and the rest) stay with the first part. Move any the second part needs.');
+  const links = p.setups.filter((x) => x.plantedIn === id || x.paidIn === id);
+  if (links.length) out.push(`${links.map((x) => x.label || 'A setup').join(', ')} stay${links.length === 1 ? 's' : ''} linked to the first part. Relink any that happen in the second.`);
+  if (s.essential) out.push('The first part stays essential; mark the second part too if the story needs it.');
+  return out;
+}
+
+/** Split a scene before a dialogue line: the scene keeps its ID and the lines before; a new scene takes the rest. */
+export function splitScene(state: GameState, p: Project, id: string, atLine: number): Scene {
+  assertEditable(p);
+  const s = p.scenes.find((x) => x.id === id);
+  if (!s) throw new Error('That scene no longer exists.');
+  if (!Number.isInteger(atLine) || atLine < 1 || atLine >= s.dialogue.length) throw new Error('Split between two lines of dialogue.');
+  const second = blankScene(state, p, s.episode);
+  Object.assign(second, {
+    heading: { ...s.heading }, storyLocation: s.storyLocation, participants: [...s.participants], technique: s.technique, tone: s.tone,
+    kind: s.kind, basis: s.basis, dialogue: s.dialogue.slice(atLine),
+  });
+  const share = (s.dialogue.length - atLine) / s.dialogue.length;
+  second.estMinutes = half(s.estMinutes * share);
+  s.estMinutes = half(s.estMinutes * (1 - share));
+  s.dialogue = s.dialogue.slice(0, atLine);
+  p.scenes.splice(p.scenes.indexOf(s) + 1, 0, second);
+  return second;
+}
+
+/** What combining two scenes of an episode will do, said before it is done. */
+export function combineScenesImpact(p: Project, keepId: string, mergeId: string): string[] {
+  const keep = p.scenes.find((x) => x.id === keepId);
+  const merge = p.scenes.find((x) => x.id === mergeId);
+  if (!keep || !merge) return ['That scene no longer exists.'];
+  const out = [`${sceneLabel(p, merge)} joins ${sceneLabel(p, keep)}: its action, lines, people and production needs are added, and it is removed from the script.`];
+  const links = [...p.setups.filter((x) => x.plantedIn === mergeId || x.paidIn === mergeId).map((x) => x.label || 'A setup'), ...(p.threads ?? []).filter((t) => t.sceneIds.includes(mergeId)).map((t) => `the thread "${t.name}"`)];
+  if (links.length) out.push(`${links.join(', ').replace(/^t/, 'T')} move${links.length === 1 ? 's' : ''} to ${sceneLabel(p, keep)}.`);
+  if (p.captures.some((c) => c.sceneId === mergeId && c.captured > 0)) out.push(`Footage of ${sceneLabel(p, merge)} is kept, but the combined scene is new writing: approving it shows what needs shooting again.`);
+  if (keep.heading.place !== merge.heading.place || keep.heading.intExt !== merge.heading.intExt || keep.heading.time !== merge.heading.time) out.push(`The combined scene keeps ${sceneLabel(p, keep)}'s heading (${keep.heading.intExt}. ${keep.heading.place || 'No place'} – ${keep.heading.time}).`);
+  return out;
+}
+
+/** Combine a scene into another of the same episode. The kept scene keeps its ID; the other's links move to it. */
+export function combineScenes(p: Project, keepId: string, mergeId: string): void {
+  assertEditable(p);
+  const keep = p.scenes.find((x) => x.id === keepId);
+  const merge = p.scenes.find((x) => x.id === mergeId);
+  if (!keep || !merge) throw new Error('That scene no longer exists.');
+  if (keepId === mergeId) throw new Error('Choose two different scenes.');
+  if (keep.episode !== merge.episode) throw new Error('Only scenes of the same episode can be combined.');
+  const union = <T,>(a: T[], b: T[]) => [...new Set([...a, ...b])];
+  keep.action = [keep.action, merge.action].filter((x) => x.trim()).join('\n\n');
+  keep.objective = [keep.objective, merge.objective].filter((x) => x.trim()).join(' ');
+  keep.turningPoint = [keep.turningPoint, merge.turningPoint].filter((x) => x.trim()).join(' ');
+  keep.dialogue = [...keep.dialogue, ...merge.dialogue];
+  keep.participants = union(keep.participants, merge.participants);
+  keep.props = union(keep.props, merge.props);
+  keep.animals = union(keep.animals, merge.animals);
+  keep.vehicles = union(keep.vehicles, merge.vehicles);
+  keep.vfx = union(keep.vfx, merge.vfx);
+  keep.songs = [...keep.songs, ...merge.songs.filter((x) => !keep.songs.some((y) => y.title === x.title))];
+  keep.stunts = [keep.stunts, merge.stunts].filter((x) => x.trim()).join('; ');
+  keep.crowd = Math.max(keep.crowd, merge.crowd);
+  keep.intimacy ||= merge.intimacy;
+  keep.water ||= merge.water;
+  keep.dance ||= merge.dance;
+  keep.contributorIds = union(keep.contributorIds, merge.contributorIds);
+  keep.evidenceIds = union(keep.evidenceIds, merge.evidenceIds);
+  if (merge.essential) keep.essential = true;
+  keep.estMinutes = Math.min(60, keep.estMinutes + merge.estMinutes);
+  for (const sp of p.setups) {
+    if (sp.plantedIn === mergeId) sp.plantedIn = keepId;
+    if (sp.paidIn === mergeId) sp.paidIn = keepId;
+  }
+  remapThreads(p, mergeId, keepId);
+  p.scenes = p.scenes.filter((x) => x.id !== mergeId);
 }
 
 export function sceneNumber(p: Project, id: string): number {
@@ -458,6 +595,10 @@ export function scriptIssues(p: Project): Issue[] {
   for (const q of questions) {
     if (!(p.genreNotes[q.key] ?? '').trim()) out.push({ severity: 'note', area: 'structure', text: `Open question for ${q.genres.join(' and ')}: ${q.label}.`, module: undefined, advisory: true });
   }
+  // Acts and threads: advice by scene, never a block and never a score (structure.ts).
+  for (const n of researchNotes(p)) out.push({ severity: 'note', area: 'continuity', text: n.text, sceneId: n.sceneId, advisory: true });
+  for (const n of seasonNotes(p)) out.push({ severity: 'note', area: 'structure', text: n.text, advisory: true });
+  for (const n of structureNotes(p)) out.push({ severity: 'note', area: 'structure', text: n.text, ...(n.sceneId ? { sceneId: n.sceneId } : {}), advisory: true });
   return out;
 }
 
@@ -661,6 +802,38 @@ export function deriveRequirements(p: Project, scenes: Scene[], characters: Stor
     const prev = p.requirements.find((x) => x.key === r.key);
     return prev?.status === 'waived' ? { ...r, status: 'waived' as const, note: prev.note } : r;
   });
+}
+
+/** Roles that exist only for one kind of requirement: with none of it left, the person is booked for nothing. */
+const ROLE_FOR_KIND: Partial<Record<Requirement['kind'], string[]>> = {
+  stunt: ['stunt-coordinator', 'fight-choreographer'], animal: ['animal-wrangler'], water: ['marine-coordinator'],
+  intimacy: ['intimacy-coordinator'], choreography: ['choreographer'],
+};
+
+/**
+ * What approving a draft strands when it no longer needs something (SLATE-06-03.02, November 8, 2026): the requirement
+ * itself, anyone booked only for that kind of work, and anything already made for it. Said before approving; nothing is
+ * released or thrown away by approval itself, so the player decides.
+ */
+export function requirementRemovalImpact(state: GameState, p: Project, number: number): string[] {
+  const d = p.drafts.find((x) => x.number === number);
+  if (!d || p.approvedDraft === null) return [];
+  const next = deriveRequirements(p, d.scenes, d.characters);
+  const nextKeys = new Set(next.map((r) => r.key));
+  const removed = p.requirements.filter((r) => !nextKeys.has(r.key));
+  const out: string[] = [];
+  for (const r of removed) {
+    out.push(`No longer needs ${r.label} (${requirementKindLabel(r.kind)}).`);
+    const made = p.assets.filter((a) => (a.version > 1 || a.ready) && (a.label.toLowerCase().includes(r.label.toLowerCase()) || (a.characterId && r.key.endsWith(a.characterId))));
+    for (const a of made) out.push(`${a.label} was already made for it. It is kept, unused.`);
+  }
+  for (const [kind, roles] of Object.entries(ROLE_FOR_KIND) as [Requirement['kind'], string[]][]) {
+    if (!removed.some((r) => r.kind === kind) || next.some((r) => r.kind === kind)) continue;
+    for (const h of p.hires.filter((x) => x.status === 'accepted' && roles.includes(x.roleId))) {
+      out.push(`${personById(state, h.personId).name} (${roleLabel(h.roleId)}) is still booked with nothing of that kind left to do. Release them in Crew if you don't need them; work done stays paid.`);
+    }
+  }
+  return out;
 }
 
 export function approveDraft(state: GameState, p: Project, number: number): { requirementChanges: string[] } {

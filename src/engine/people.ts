@@ -3,7 +3,10 @@
 // value that lets hiring choices differ; the player has no attribute or skill numbers.
 
 import { HERITAGES } from '../data/identity';
+import { COUNTRY_LANGUAGES } from '../data/country-languages';
 import { getPlace } from '../data/places';
+import { splitBackgrounds } from './identity';
+import { countryName } from '../world/gazetteer/gazetteer';
 import { gaussian, intBetween, pick, stream } from './rng';
 import { addDaysToKey, dayNumber } from './time';
 import type { GameState, Project } from './types';
@@ -110,8 +113,10 @@ export interface Person {
   dayRate: number; // asking rate
   languages: string[];
   homeCountry: string;
-  /** Their backgrounds (labels from HERITAGES): casting shows which a character's share, as information; never scored. */
+  /** Their ethnicities (labels): casting shows which a character's share, as information; never scored. */
   heritages: string[];
+  /** Their nationalities (country codes): from a nationality word drawn with their background, else where they're based. */
+  nationalities: string[];
   playingAge?: [number, number];
   skills: Skill[];
   samples: string;
@@ -161,7 +166,8 @@ const COUNTRY_HERITAGES: Record<string, string[]> = {
 };
 
 export function countryLanguage(country: string): string {
-  return LANG_BY_COUNTRY[country] ?? 'en';
+  // Countries the pool had no entry for spoke English until November 8, 2026; now their own first language.
+  return LANG_BY_COUNTRY[country] ?? COUNTRY_LANGUAGES[country]?.[0] ?? 'en';
 }
 
 const POOL_SIZE: Record<string, number> = { actor: 36, 'voice-actor': 14, background: 6, animator: 10, 'stopmo-animator': 8 };
@@ -218,12 +224,17 @@ function person(state: GameState, roleId: string, country: string, i: number): P
   const p: Person = {
     id, name: `${pick(r, GIVEN)} ${pick(r, FAMILY)}`, pronouns, roleId, experience, capability, dayRate: rate, languages, homeCountry: country,
     heritages: [],
+    nationalities: [],
     playingAge: ageLow !== undefined ? [ageLow, ageLow + intBetween(r, 6, 14)] : undefined, skills, samples, busy,
   };
   // Drawn after everything else, so adding backgrounds left every earlier field of every person as it was.
   const local = COUNTRY_HERITAGES[country];
   p.heritages.push(local && r() < 0.75 ? pick(r, local) : pick(r, HERITAGES));
   if (r() < 0.2) p.heritages = [...new Set([...p.heritages, pick(r, local ?? HERITAGES)])];
+  // Ethnicity and nationality apart, as yours are (November 8, 2026), from the same draws: no person changed.
+  const split = splitBackgrounds(p.heritages.map((h) => ({ id: h, label: h, custom: false })), country);
+  p.heritages = split.heritages.map((h) => h.label);
+  p.nationalities = split.nationalities;
   personCache.set(cacheKey, p);
   return p;
 }
@@ -255,8 +266,13 @@ export function isAvailable(state: GameState, p: Person, from: string, to: strin
  * information for the producer's choice; it never scores a performance (it added 6 until the review of November 7, 2026).
  */
 export function sharedHeritages(state: GameState, p: Project, characterId: string, performer: 'player' | string): string[] {
-  const wanted = p.characters.find((c) => c.id === characterId)?.heritages ?? [];
-  if (!wanted.length) return [];
-  const theirs = performer === 'player' ? state.character.heritages.map((h) => h.label) : personById(state, performer).heritages;
-  return wanted.filter((h) => theirs.includes(h));
+  const part = p.characters.find((c) => c.id === characterId);
+  const ethnicities = part?.heritages ?? [];
+  const nationalities = part?.nationalities ?? [];
+  if (!ethnicities.length && !nationalities.length) return [];
+  // Ethnicity meets ethnicity and nationality meets nationality (November 8, 2026); a nationality reads as its country.
+  const who = performer === 'player'
+    ? { heritages: state.character.heritages.map((h) => h.label), nationalities: state.character.nationalities ?? [] }
+    : personById(state, performer);
+  return [...ethnicities.filter((h) => who.heritages.includes(h)), ...nationalities.filter((c) => who.nationalities.includes(c)).map(countryName)];
 }

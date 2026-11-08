@@ -152,6 +152,9 @@ describe('creation and events', () => {
     expect(validateDraft(draft({ startDate: '2027-01-01' })).map((p) => p.field)).not.toContain('startDate');
     expect(validateDraft(draft({ startDate: '2051-01-01' })).map((p) => p.field)).toContain('startDate');
     expect(validateDraft(draft({ heritages: [] })).map((p) => p.field)).toContain('heritages');
+    // Both are asked (November 8, 2026): an ethnicity and a nationality, a real country.
+    expect(validateDraft(draft({ nationalities: [] })).map((p) => p.field)).toContain('nationalities');
+    expect(validateDraft(draft({ nationalities: ['ZZ'] })).map((p) => p.field)).toContain('nationalities');
   });
   it('starts the life at the chosen local time in the chosen zone', () => {
     const s = newGame(draft(), 0, 'save1');

@@ -19,8 +19,11 @@ export interface CharacterOpts {
   billedAs?: 'Actor' | 'Actress';
   birthDate: string;
   birthplace: string;
+  /** Ethnicities, from the list. */
   heritages: string[];
   customHeritage?: string;
+  /** Nationalities, by country name (at least one; November 8, 2026). */
+  nationalities: string[];
   mainLanguage: string;
   extraLanguages: string[];
   start: string;
@@ -53,15 +56,19 @@ export async function createCharacter(page: Page, o: CharacterOpts, atReview?: (
   await pickPlace(page, 'Place Of Birth', o.birthplace, o.birthCountry);
   await nextStep(page, 'Background & Languages');
   for (const h of o.heritages) {
-    await page.getByRole('searchbox', { name: 'Search Backgrounds' }).fill(h);
-    await page.getByRole('button', { name: `Add A Background: ${h}` }).click();
+    await page.getByRole('searchbox', { name: 'Search Ethnicities' }).fill(h);
+    await page.getByRole('button', { name: `Add Ethnicity: ${h}` }).click();
   }
   if (o.customHeritage) {
-    await page.getByRole('textbox', { name: 'Describe Your Background' }).fill(o.customHeritage);
-    await page.getByRole('button', { name: 'Add A Background', exact: true }).click();
+    await page.getByRole('textbox', { name: 'Describe Your Ethnicity' }).fill(o.customHeritage);
+    await page.getByRole('button', { name: 'Add Your Ethnicity' }).click();
+  }
+  for (const n of o.nationalities) {
+    await page.getByRole('searchbox', { name: 'Search Nationalities' }).fill(n);
+    await page.getByRole('button', { name: `Add Nationality: ${n}`, exact: true }).click();
   }
   await page.getByRole('searchbox', { name: 'Which language do you use most?' }).fill(o.mainLanguage);
-  await page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button', { name: o.mainLanguage, exact: true }).click();
+  await page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button', { name: new RegExp(`^${o.mainLanguage}( From your backgrounds)?$`) }).click(); // suggested ones are marked
   for (const l of o.extraLanguages) {
     await page.getByRole('searchbox', { name: 'Add Language' }).fill(l);
     await page.getByRole('button', { name: `Add Language: ${l}` }).click();
