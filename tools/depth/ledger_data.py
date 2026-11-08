@@ -171,7 +171,7 @@ C = {
   ('One method never fulfils another (a voice session is not capture)', 'V', ['tests/depth-gaps-production.test.ts::a voice performer is not a capture performer'], ''),
 ]),
 '05-04': ('Script > Relationships', 'src/engine/projects.ts', [
-  ('Wants and fears per character; directed relationships between characters', 'IU', [], 'Fields and editor exist; no test'),
+  ('Wants and fears per character; directed relationships between characters', 'V', ['tests/depth-gaps.test.ts::a casting breakdown goes with offers only once the description, wants and fears are all written', 'tests/episodes.test.ts::a relationship touches every scene its two characters share'], 'A relationship is kept from one character to the other with one kind; the reverse has no separate kind'),
   ('Arc beats tied to scenes', 'V', ['tests/structure.test.ts::a beat goes only in a scene the character is in'], ''),
   ('Removing a character previews dependent scenes and relationships first', 'V', ['tests/scenes.test.ts::removing a character lists the scenes that use them'], ''),
 ]),

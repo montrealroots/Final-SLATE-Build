@@ -3,6 +3,7 @@
 import { describe, expect, it } from 'vitest';
 import { neededRoles, projectedCost, roleCandidates, scriptIssues, unlockPicture, validateAxes } from '../src/engine';
 import { buildTasks } from '../src/engine/production/tasks';
+import { breakdownComplete } from '../src/engine/script-explain';
 import type { ProjectAxes } from '../src/engine/types';
 import { approve, buildProject, startLife } from './helpers';
 
@@ -100,5 +101,15 @@ describe('the estimate with no one to price (SLATE-08-01)', () => {
     const unpriced = projectedCost(s, p);
     expect(unpriced.uncertain).toEqual(['Ada (on camera)']);
     expect(unpriced.cast).toBe(0);
+  });
+});
+
+describe('wants and fears (SLATE-05-04)', () => {
+  it('a casting breakdown goes with offers only once the description, wants and fears are all written', () => {
+    const part = { description: 'A ferry captain.', wants: 'To keep the route.', fears: '' };
+    expect(breakdownComplete(part)).toBe(false);
+    expect(breakdownComplete({ ...part, fears: 'The sea.' })).toBe(true);
+    expect(breakdownComplete({ ...part, fears: '   ' })).toBe(false);
+    expect(breakdownComplete({ ...part, wants: '', fears: 'The sea.' })).toBe(false);
   });
 });
