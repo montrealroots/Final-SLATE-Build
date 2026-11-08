@@ -152,5 +152,14 @@ export function migrateV6toV7(raw: Record<string, unknown>): Record<string, unkn
   const own = (raw.places as Record<string, { country?: string }> | undefined)?.[birthplaceId]?.country ?? findPlace(birthplaceId)?.country;
   const citizenship = own ? TERRITORY_CITIZENSHIP[own] ?? own : undefined;
   Object.assign(c, splitBackgrounds(Array.isArray(c.heritages) ? (c.heritages as Heritage[]) : [], citizenship));
-  return { ...raw, character: c };
+  // Script characters were written with the one list too: their nationality words become countries (no fallback).
+  const projects = Array.isArray(raw.projects) ? (raw.projects as Record<string, unknown>[]).map((p) => ({
+    ...p,
+    characters: Array.isArray(p.characters) ? (p.characters as Record<string, unknown>[]).map((ch) => {
+      if (!Array.isArray(ch.heritages) || !ch.heritages.length) return ch;
+      const split = splitBackgrounds((ch.heritages as string[]).map((h) => ({ id: h, label: h, custom: false })), undefined);
+      return { ...ch, heritages: split.heritages.map((h) => h.label), ...(split.nationalities.length ? { nationalities: split.nationalities } : {}) };
+    }) : p.characters,
+  })) : raw.projects;
+  return { ...raw, character: c, projects };
 }

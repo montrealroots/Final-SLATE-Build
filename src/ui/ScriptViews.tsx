@@ -1,5 +1,7 @@
 import { useState } from 'react';
-import { languageName, searchHeritages } from '../data/identity';
+import { languageName, searchEthnicities } from '../data/identity';
+import { NATIONALITIES } from '../engine/identity';
+import { countryName } from '../world/gazetteer/gazetteer';
 import {
   MODULE_LABELS, TECHNIQUE_LABELS, addCharacter, addNote, addScene, noteFromIssue, applyDesignChange, approveDraft, composeGenres, deleteScene, describeImpact,
   designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter,
@@ -626,7 +628,7 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
             <legend style={{ fontWeight: 600 }}>Performance Methods</legend>
             <div className="chip-row">{METHODS.map((m) => <Check key={m} label={title(m)} checked={c.methods.includes(m)} onChange={(v) => up({ methods: v ? [...c.methods, m] : c.methods.filter((x) => x !== m) })} />)}</div>
           </fieldset>
-          <CharacterBackgrounds name={c.name} value={c.heritages ?? []} onChange={(v) => up({ heritages: v })} />
+          <CharacterBackgrounds name={c.name} ethnicities={c.heritages ?? []} nationalities={c.nationalities ?? []} onChange={(patch) => up(patch)} />
           <div className="grid grid-2 form">
             {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Your description for design and casting. Kept with the script; SLATE doesn't read it." onChange={(v) => up({ entityNote: v })} />}
             <TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown sent with offers. It doesn't change who accepts or how fast." onChange={(v) => up({ description: v })} />
@@ -712,28 +714,46 @@ function WithdrawButton({ p, contributorId, name }: { p: Project; contributorId:
 }
 
 /**
- * A character's backgrounds as written. Casting shows who shares one, as information for the producer's choice. Until
- * the review of November 7, 2026 a shared background added 6 to the performance score; ability isn't inferred from
- * ethnicity, so it scores nothing now.
+ * A character's ethnicity and nationality as written, asked apart as the player's are (November 8, 2026). Casting shows
+ * who shares one, as information for the producer's choice. Until the review of November 7, 2026 a shared background
+ * added 6 to the performance score; ability isn't inferred from ethnicity, so it scores nothing now.
  */
-function CharacterBackgrounds({ name, value, onChange }: { name: string; value: string[]; onChange: (v: string[]) => void }) {
+function CharacterBackgrounds({ name, ethnicities, nationalities, onChange }: { name: string; ethnicities: string[]; nationalities: string[]; onChange: (patch: { heritages?: string[]; nationalities?: string[] }) => void }) {
   const [q, setQ] = useState('');
-  const results = q.trim() ? searchHeritages(q, 6).filter((h) => !value.includes(h)) : [];
+  const [nq, setNq] = useState('');
+  const who = name || 'This Character';
+  const results = q.trim() ? searchEthnicities(q, 6).filter((h) => !ethnicities.includes(h)) : [];
+  const nf = nq.trim().toLowerCase();
+  const countries = nf ? NATIONALITIES.filter((n) => n.name.toLowerCase().includes(nf) && !nationalities.includes(n.code))
+    .sort((a, b) => Number(!a.name.toLowerCase().startsWith(nf)) - Number(!b.name.toLowerCase().startsWith(nf))).slice(0, 6) : [];
   return (
     <fieldset style={{ border: 0, padding: 0 }}>
-      <legend style={{ fontWeight: 600 }}>Backgrounds</legend>
-      <p className="dim">Optional. Casting shows which performers share one of {name || 'this character'}’s backgrounds, as information for your choice. It never changes how a performance is judged, and no one is turned away for not sharing it.</p>
-      {value.length > 0 && (
+      <legend style={{ fontWeight: 600 }}>Ethnicity And Nationality</legend>
+      <p className="dim">Optional. Casting shows which performers share {name || 'this character'}’s ethnicity or nationality, as information for your choice. It never changes how a performance is judged, and no one is turned away for not sharing it.</p>
+      {(ethnicities.length > 0 || nationalities.length > 0) && (
         <div className="chip-row" style={{ marginBottom: 'var(--s2)' }}>
-          {value.map((h) => <button key={h} type="button" className="btn btn-sm" aria-label={`Remove Background: ${h}`} onClick={() => onChange(value.filter((x) => x !== h))}>{h} ✕</button>)}
+          {ethnicities.map((h) => <button key={h} type="button" className="btn btn-sm" aria-label={`Remove Ethnicity: ${h}`} onClick={() => onChange({ heritages: ethnicities.filter((x) => x !== h) })}>{h} ✕</button>)}
+          {nationalities.map((c) => <button key={c} type="button" className="btn btn-sm" aria-label={`Remove Nationality: ${countryName(c)}`} onClick={() => onChange({ nationalities: nationalities.filter((x) => x !== c) })}>{countryName(c)} ✕</button>)}
         </div>
       )}
-      <TextField label={`Add A Background For ${name || 'This Character'}`} type="search" value={q} onChange={setQ} />
-      {results.length > 0 && (
-        <div className="picklist" role="group" aria-label="Character Background Results">
-          {results.map((h) => <button key={h} type="button" onClick={() => { onChange([...value, h]); setQ(''); }}>{h}</button>)}
+      <div className="grid grid-2 form">
+        <div>
+          <TextField label={`Add Ethnicity For ${who}`} type="search" value={q} onChange={setQ} />
+          {results.length > 0 && (
+            <div className="picklist" role="group" aria-label="Character Ethnicity Results">
+              {results.map((h) => <button key={h} type="button" onClick={() => { onChange({ heritages: [...ethnicities, h].sort((a, b) => a.localeCompare(b, 'en')) }); setQ(''); }}>{h}</button>)}
+            </div>
+          )}
         </div>
-      )}
+        <div>
+          <TextField label={`Add Nationality For ${who}`} type="search" value={nq} onChange={setNq} />
+          {countries.length > 0 && (
+            <div className="picklist" role="group" aria-label="Character Nationality Results">
+              {countries.map((n) => <button key={n.code} type="button" onClick={() => { onChange({ nationalities: [...nationalities, n.code].sort((a, b) => countryName(a).localeCompare(countryName(b), 'en')) }); setNq(''); }}>{n.name}</button>)}
+            </div>
+          )}
+        </div>
+      </div>
     </fieldset>
   );
 }

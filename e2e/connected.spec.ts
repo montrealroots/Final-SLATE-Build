@@ -56,6 +56,12 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   const ada = page.getByRole('article', { name: 'Ada' });
   await ada.getByRole('button', { name: 'Edit Character' }).click();
   await ada.getByLabel('Role Size').selectOption({ label: 'Lead' });
+  // Written with an ethnicity and a nationality, as you are (November 8, 2026); casting says which you share.
+  await ada.getByRole('searchbox', { name: 'Add Ethnicity For Ada' }).fill('Kikuyu');
+  await ada.getByRole('group', { name: 'Character Ethnicity Results' }).getByRole('button', { name: 'Kikuyu', exact: true }).click();
+  await ada.getByRole('searchbox', { name: 'Add Nationality For Ada' }).fill('Kenya');
+  await ada.getByRole('group', { name: 'Character Nationality Results' }).getByRole('button', { name: 'Kenya', exact: true }).click();
+  await expect(ada.getByRole('button', { name: 'Remove Nationality: Kenya' })).toBeVisible();
   await ada.getByRole('button', { name: 'Close' }).click();
   const ben = page.getByRole('article', { name: 'Ben' });
   await ben.getByRole('button', { name: 'Edit Character' }).click();
@@ -103,6 +109,8 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   await secureStartingBacking(page);
 
   // Casting, crew, the schedule.
+  await section(page, 'Cast');
+  await expect(page.getByText('Written as Kikuyu, Kenya. You share a background with this part.')).toBeVisible();
   await castRoles(page, []);
   await staffEveryDepartment(page);
   await advance(page, 'next-day');

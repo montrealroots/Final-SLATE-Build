@@ -199,8 +199,10 @@ export interface StoryCharacter {
    * (antagonist, narrator...) never set it (script-effects.ts castPlacement).
    */
   awardPlacement?: 'lead' | 'supporting' | 'none';
-  /** The character's backgrounds as written (labels from HERITAGES). Casting shows who shares one; it never scores a performance. */
+  /** The character's ethnicities as written (labels from ETHNICITIES). Casting shows who shares one; it never scores a performance. */
   heritages?: string[];
+  /** The character's nationalities as written (country codes), as the player's are; casting shows who shares one (save version 7). */
+  nationalities?: string[];
   designVersion: number; // bumping invalidates downstream design-dependent work
   groupSize?: number; // background groups
 }

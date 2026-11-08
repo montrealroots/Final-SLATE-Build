@@ -102,7 +102,13 @@ Starting Point, is next.
   - Nationality: any inhabited country or territory, with your citizenship offered first. It isn't your citizenship and changes nothing legal.
   - Through `NATIONAL_LABEL`, a nationality brings what its word did: suggested holidays and languages, and a shared background in casting.
   - Save version 7. `migrateV6toV7` and old drafts turn nationality words into countries; with none, the nationality is the citizenship.
-  - Not changed: performers and script characters keep the single backgrounds list.
+  - Then, at the owner's ask:
+    - Ethnicity, Nationality and Languages are each one A to Z list. The broad groups sit among the peoples, and the citizenship is marked where it falls.
+    - Every country and territory on the map has its own languages (`src/data/country-languages.ts`). 46 languages were added for them.
+    - A nationality suggests its country's languages. Performers based in a country the pool had no entry for speak its first language, not English.
+    - Script characters are written with an ethnicity and a nationality ("a Cuban woman": Afro-Latino, Cuba).
+    - Performers carry both, split from the same draws, so no performer changed. Casting matches ethnicity to ethnicity and nationality to nationality.
+    - `migrateV6toV7` converts script characters' nationality words too.
 - **Next:** screen 4 of the review, then the big gameplay update, then the input audit (the owner's order).
 
 ### Earlier Request (November 8, 2026, after #37): decide the budget-size naming

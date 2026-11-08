@@ -203,7 +203,7 @@ test('a reload in the middle of creation reopens the same step with everything e
   await expect(page.getByLabel('Pronouns')).toHaveValue('they');
 });
 
-test('ethnicity and nationality are both asked: Next says which is missing, and your citizenship is offered first', async ({ page }) => {
+test('ethnicity and nationality are both asked, A to Z: Next says which is missing, and your citizenship is marked', async ({ page }) => {
   await page.goto('/');
   await page.evaluate(() => localStorage.clear());
   await page.reload();
@@ -220,10 +220,14 @@ test('ethnicity and nationality are both asked: Next says which is missing, and 
   await page.getByRole('button', { name: 'Next: Starting Point' }).click();
   await expect(page.getByText('Add at least one nationality.')).toBeVisible();
   await expect(heading(page)).toHaveText('Background');
-  const first = page.getByRole('group', { name: 'Nationality Results' }).getByRole('button').first();
-  await expect(first).toHaveAccessibleName('Add Nationality: Nigeria');
-  await expect(first).toContainText('Your citizenship');
-  await first.click();
+  // A to Z (the owner asked): Afghanistan first, and your citizenship marked where it falls.
+  await expect(page.getByRole('group', { name: 'Nationality Results' }).getByRole('button').first()).toHaveAccessibleName('Add Nationality: Afghanistan');
+  await page.getByRole('searchbox', { name: 'Search Nationalities' }).fill('Nigeria');
+  const mine = page.getByRole('button', { name: 'Add Nationality: Nigeria', exact: true });
+  await expect(mine).toContainText('Your citizenship');
+  await mine.click();
+  // Nigeria suggests its languages, Hausa among them.
+  await expect(page.getByRole('button', { name: 'Add Language: Hausa' })).toContainText('From your backgrounds');
   await expect(page.getByText('Add at least one nationality.')).toHaveCount(0);
   await page.getByRole('button', { name: 'Remove Igbo' }).click();
   await page.getByRole('button', { name: 'Next: Starting Point' }).click();

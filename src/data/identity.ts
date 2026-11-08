@@ -68,8 +68,9 @@ export const BROAD_ETHNICITIES: readonly string[] = [
   'Native Hawaiian Or Pacific Islander', 'White',
 ];
 
-/** What Ethnicity offers: the broad groups first, then the peoples, in alphabetical order. */
-export const ETHNICITIES: readonly string[] = [...BROAD_ETHNICITIES, ...HERITAGES.filter((h) => !NATIONALITY_ONLY.has(h))];
+/** What Ethnicity offers: the broad groups and the peoples together, in alphabetical order (they were apart until the owner asked). */
+export const ETHNICITIES: readonly string[] = [...BROAD_ETHNICITIES, ...HERITAGES.filter((h) => !NATIONALITY_ONLY.has(h))]
+  .sort((a, b) => fold(a).localeCompare(fold(b), 'en'));
 
 export function searchEthnicities(q: string, limit = 14): string[] {
   const f = fold(q.trim());
@@ -104,7 +105,18 @@ export const LANGUAGES: LanguageInfo[] = [
   ['tn', 'Tswana'], ['tr', 'Turkish'], ['tk', 'Turkmen'], ['tw', 'Twi'], ['uk', 'Ukrainian'], ['ur', 'Urdu'], ['ug', 'Uyghur'],
   ['uz', 'Uzbek'], ['vi', 'Vietnamese'], ['cy', 'Welsh'], ['wo', 'Wolof'], ['xh', 'Xhosa'], ['yi', 'Yiddish'], ['yo', 'Yoruba'],
   ['zu', 'Zulu'], ['ase', 'American Sign Language'], ['bfi', 'British Sign Language'], ['fsl', 'French Sign Language'],
-].map(([code, name]) => ({ code, name }));
+  // Added November 8, 2026, so every country and territory on the map has its own languages (country-languages.ts).
+  ['aa', 'Afar'], ['bm', 'Bambara'], ['bem', 'Bemba'], ['bi', 'Bislama'], ['kea', 'Cape Verdean Creole'], ['ch', 'Chamorro'],
+  ['zdj', 'Comorian'], ['rar', 'Cook Islands Māori'], ['dv', 'Dhivehi'], ['din', 'Dinka'], ['fj', 'Fijian'], ['fon', 'Fon'],
+  ['gcf', 'Antillean Creole'], ['gil', 'Gilbertese'], ['ho', 'Hiri Motu'], ['kab', 'Kabyle'], ['kg', 'Kongo'], ['kri', 'Krio'],
+  ['lg', 'Luganda'], ['mnk', 'Mandinka'], ['mh', 'Marshallese'], ['mfe', 'Mauritian Creole'], ['mos', 'Mooré'], ['na', 'Nauruan'],
+  ['niu', 'Niuean'], ['nd', 'Northern Ndebele'], ['pau', 'Palauan'], ['pap', 'Papiamento'], ['rm', 'Romansh'], ['sg', 'Sango'],
+  ['crs', 'Seychellois Creole'], ['pis', 'Solomon Islands Pijin'], ['nr', 'Southern Ndebele'], ['srn', 'Sranan Tongo'], ['ss', 'Swati'],
+  ['ty', 'Tahitian'], ['zgh', 'Tamazight'], ['tet', 'Tetum'], ['tpi', 'Tok Pisin'], ['tkl', 'Tokelauan'], ['ts', 'Tsonga'],
+  ['tvl', 'Tuvaluan'], ['ve', 'Venda'], ['wls', 'Wallisian'], ['dje', 'Zarma'],
+].map(([code, name]) => ({ code, name }))
+  // In alphabetical order (November 8, 2026: a few were out of place, and the sign languages sat at the end).
+  .sort((a, b) => fold(a.name).localeCompare(fold(b.name), 'en'));
 
 const langByCode = new Map(LANGUAGES.map((l) => [l.code, l]));
 

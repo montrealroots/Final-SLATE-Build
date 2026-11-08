@@ -1,9 +1,10 @@
 import { useLayoutEffect, useRef, useState, type ReactNode, type RefObject } from 'react';
 import { heritageLanguages } from '../data/heritage-languages';
+import { countryLanguages } from '../data/country-languages';
 import { LANGUAGES, PRONOUNS, languageName, searchEthnicities, searchLanguages, settledTitle, type LanguageInfo } from '../data/identity';
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
 import { CREATION_STEPS, FIRST_START_YEAR, LAST_START_YEAR, MIN_START_AGE, NATIONALITIES, OBSERVANCES, ageOn, backgroundLabels, citizenshipFor, draftNames, latestBirthDate, creationStepIndex, formatZoneAbbrev, monthName, observance, observanceDates, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
-import type { CreationDraft, CreationStepId, Proficiency } from '../engine/types';
+import type { CreationDraft, CreationStepId, Heritage, Proficiency } from '../engine/types';
 import { Check, Field, Professions, SelectField, TextField } from './components';
 import { store, useStore } from './store';
 import { WorldPlacePicker } from './WorldPicker';
@@ -325,11 +326,13 @@ function HeritageStep({ d, set, err }: { d: CreationDraft; set: (p: Partial<Crea
   const [nq, setNq] = useState('');
   const [customError, setCustomError] = useState<string | null>(null);
   const results = searchEthnicities(q, 12).filter((h) => !d.heritages.some((x) => x.label === h));
-  // Your citizenship comes first while nothing is typed; then every country, by name.
+  // Every country by name, in alphabetical order; your citizenship is marked where it falls (it came first until the owner asked for A to Z).
   const citizen = citizenshipFor(d.birthplaceId);
   const nf = nq.trim().toLowerCase();
-  const countries = nf ? NATIONALITIES.filter((n) => n.name.toLowerCase().includes(nf)).sort((a, b) => Number(!a.name.toLowerCase().startsWith(nf)) - Number(!b.name.toLowerCase().startsWith(nf)))
-    : [...NATIONALITIES.filter((n) => n.code === citizen), ...NATIONALITIES.filter((n) => n.code !== citizen)];
+  const countries = nf ? NATIONALITIES.filter((n) => n.name.toLowerCase().includes(nf)).sort((a, b) => Number(!a.name.toLowerCase().startsWith(nf)) - Number(!b.name.toLowerCase().startsWith(nf))) : NATIONALITIES;
+  // What you've chosen reads A to Z as well.
+  const byLabel = (list: Heritage[]) => [...list].sort((a, b) => a.label.localeCompare(b.label, 'en'));
+  const byCountry = (codes: string[]) => [...codes].sort((a, b) => countryName(a).localeCompare(countryName(b), 'en'));
   const nationResults = countries.filter((n) => !d.nationalities.includes(n.code)).slice(0, 12);
   return (
     <>
@@ -338,7 +341,7 @@ function HeritageStep({ d, set, err }: { d: CreationDraft; set: (p: Partial<Crea
       <TextField label="Search Ethnicities" type="search" value={q} onChange={setQ} />
       <div className="picklist" role="group" aria-label="Ethnicity Results">
         {results.map((h) => (
-          <button key={h} type="button" onClick={() => { set({ heritages: [...d.heritages, { id: h, label: h, custom: false }] }); setQ(''); }} aria-label={`Add Ethnicity: ${h}`}>
+          <button key={h} type="button" onClick={() => { set({ heritages: byLabel([...d.heritages, { id: h, label: h, custom: false }]) }); setQ(''); }} aria-label={`Add Ethnicity: ${h}`}>
             <span>{h}</span>
           </button>
         ))}
@@ -364,16 +367,16 @@ function HeritageStep({ d, set, err }: { d: CreationDraft; set: (p: Partial<Crea
           if (!t) return setCustomError('Write a description first.');
           if (d.heritages.some((x) => x.label.toLowerCase() === t.toLowerCase())) return setCustomError("You've already added that.");
           setCustomError(null);
-          set({ heritages: [...d.heritages, { id: `custom_${Date.now().toString(36)}`, label: t, custom: true }], heritageCustomText: '' });
+          set({ heritages: byLabel([...d.heritages, { id: `custom_${Date.now().toString(36)}`, label: t, custom: true }]), heritageCustomText: '' });
         }}>Add Your Ethnicity</button>
       </div>
 
       <h2 className="spaced">Nationality</h2>
-      <p className="muted small" style={{ marginTop: 0 }}>The countries you and your family come from. Choose as many as are true. Your citizenship comes from where you were born{citizen ? `: ${countryName(citizen)}` : ''}.</p>
+      <p className="muted small" style={{ marginTop: 0 }}>The countries you and your family come from. Choose as many as are true. Your citizenship comes from where you were born{citizen ? `: ${countryName(citizen)}` : ''}. Each one suggests its languages below.</p>
       <TextField label="Search Nationalities" type="search" value={nq} onChange={setNq} />
       <div className="picklist" role="group" aria-label="Nationality Results">
         {nationResults.map((n) => (
-          <button key={n.code} type="button" onClick={() => { set({ nationalities: [...d.nationalities, n.code] }); setNq(''); }} aria-label={`Add Nationality: ${n.name}`}>
+          <button key={n.code} type="button" onClick={() => { set({ nationalities: byCountry([...d.nationalities, n.code]) }); setNq(''); }} aria-label={`Add Nationality: ${n.name}`}>
             <span>{n.name}</span>{n.code === citizen && <span className="dim">Your citizenship</span>}
           </button>
         ))}
@@ -446,7 +449,8 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
   const [q, setQ] = useState('');
   const [mq, setMq] = useState('');
   // Your backgrounds' languages come first while nothing is typed (HERITAGE_LANGUAGES).
-  const suggested = new Set(heritageLanguages(backgroundLabels(d.heritages, d.nationalities)));
+  // Your ethnicities' languages and every nationality's own (country-languages.ts), each country on the map.
+  const suggested = new Set([...heritageLanguages(backgroundLabels(d.heritages, d.nationalities)), ...countryLanguages(d.nationalities)]);
   const first = (list: LanguageInfo[], typed: string) => (typed.trim() ? list : [...LANGUAGES.filter((l) => suggested.has(l.code)), ...list.filter((l) => !suggested.has(l.code))]);
   const mainResults = first(searchLanguages(mq, 8), mq);
   const addResults = first(searchLanguages(q, 8), q).filter((l) => l.code !== d.mainLanguage && !d.languages.some((x) => x.code === l.code));
