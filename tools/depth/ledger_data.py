@@ -434,7 +434,9 @@ C = {
 ]),
 '16-01': ('Release', 'src/engine/finish.ts', [
   ('Choose a route and date', 'VE', ['tests/release.test.ts::a contracted release happens on its date'], ''),
-  ('Territories and exclusivity compared before accepting', 'MI', [], 'Offers list territories; no exclusivity conflict'),
+  ('Territories and exclusivity compared before accepting', 'V',
+   ['tests/territories.test.ts::offers range from the home country to worldwide', 'tests/territories.test.ts::accepting ends overlapping offers on the same route, or on any route if exclusive'],
+   'Scopes, the exclusive window (365 days) and the territory pay factor are game calibration'),
 ]),
 '16-02': ('Release', 'src/engine/finish.ts', [
   ('Accept or decline; delivery materials reserved; cancellation terms', 'VE', ['tests/release.test.ts::accepting reserves delivery materials'], ''),
@@ -442,12 +444,16 @@ C = {
 '16-03': ('Script > Content, Release', 'src/engine/script-effects.ts', [
   ('Declared content sets outlet conditions; late slot or broadcast edit', 'VE', ['tests/script-effects.test.ts::strong content still gets a broadcast offer'], ''),
 ]),
-'16-04': ('Release, Budget', 'src/engine/finance.ts', [
+'16-04': ('Release, Budget', 'src/engine/finance.ts; src/engine/distribution.ts', [
   ('Income arrives once and repays backers in order', 'VE', ['tests/finance.test.ts::income repays backers first'], ''),
-  ('Reported earnings shown apart from money received', 'MI', [], 'One revenue figure'),
+  ('Reported earnings shown apart from money received', 'V',
+   ['tests/territories.test.ts::monthly reports recoup the guarantee first', 'e2e/connected.spec.ts::what the broadcaster reports is kept apart from what you receive'],
+   'Earnings curve and the 35% distributor fee are game calibration'),
 ]),
-'16-05': ('Release', '', [
-  ('Later windows and territories after the first release', 'MI', [], 'One release per offer, no later windows'),
+'16-05': ('Release', 'src/engine/distribution.ts', [
+  ('Later windows and territories after the first release', 'V',
+   ['tests/territories.test.ts::A later window offers only what isn\'t held', 'tests/territories.test.ts::the later window is scheduled on a wave of its own'],
+   'Later windows come 120 days after a release (game calibration)'),
 ]),
 '17-01': ('Festivals And Awards', 'src/engine/awards.ts', [
   ('Editions per year with their own dates, projected when not announced', 'VE', ['tests/rulebooks.test.ts::new editions record the rules they use'], ''),

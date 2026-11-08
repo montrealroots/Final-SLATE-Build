@@ -161,6 +161,10 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   await late.getByRole('button', { name: 'Accept With A Broadcast Edit' }).click();
   const history = page.locator('section.card', { has: page.getByRole('heading', { name: 'Release History' }) });
   await expect(history).toContainText('Broadcast in GB');
+  // Earnings (SLATE-16-04.02): what the broadcaster reports is kept apart from what you receive.
+  const earnings = page.locator('section.card', { has: page.getByRole('heading', { name: 'Earnings' }) });
+  await expect(earnings).toContainText('What each distributor reports is not what you receive.');
+  await expect(earnings).toContainText(/Received By You\s*\$[\d,]+/);
 
   // Saved and reloaded at the end: the deal and the delivered project are kept.
   await saveAndReload(page);

@@ -95,7 +95,7 @@ migration and tests, and moves its children to VERIFIED.
    - replacement voice and effects work (`15-03.02`);
    - ADR and Foley (`15-04.02`);
    - festival and distribution versions (`15-05.03`).
-10. Release:
+10. Release (done):
     - territories and exclusivity (`16-01.02`);
     - reported against received income (`16-04.02`);
     - later windows (`16-05`).

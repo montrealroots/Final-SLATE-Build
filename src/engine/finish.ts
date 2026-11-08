@@ -2,6 +2,7 @@
 
 import { pairChemistry } from './auditions';
 import { coverageEdit } from './takes';
+import { laterWindowTerritories, onDealReleased } from './distribution';
 import { EFFECTS_REVISION_GAIN, REVOICE_GAIN } from './revisions';
 import { scheduleRenewal } from './continuation';
 import { approvedTake, captureCredit } from './mocap';
@@ -395,6 +396,8 @@ registerHandler('release', (state, ev) => {
     }
   }
   if (!p.premiere) p.premiere = { kind: 'world', date: r.date, country: r.territories[0], venue: ROUTE_LABELS[r.route] };
+  // A distributor's release reports its earnings and opens later windows (distribution.ts).
+  if (r.offerId) onDealReleased(state, p, r.offerId);
   const text = `${p.title} is out today (${ROUTE_LABELS[r.route].toLowerCase()}).`;
   addLog(state, text, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
   p.history.push({ at: state.now, text: `Released: ${ROUTE_LABELS[r.route]} on ${r.date}.` });
@@ -433,10 +436,21 @@ registerHandler('distribution-offer', (state, ev) => {
     // Content declared strong can't air before the watershed: the broadcaster offers a late slot, which pays less, or the
     // full guarantee for an earlier slot if you deliver a broadcast edit (script-effects.ts).
     const late = route === 'broadcast' && slot === 'late';
+    // Territories and exclusivity (SLATE-16-01.02, November 8, 2026), drawn from a stream of their own so that the
+    // offers a film got before keep their distributor, route, guarantee and window.
+    const terms = offerScope(state.seed, p, wave, i, route);
+    // A later window offers only what no exclusive deal holds and this route hasn't already released (distribution.ts).
+    if (wave.startsWith('window:')) {
+      terms.territories = laterWindowTerritories(p, route, terms.territories, dateKey(state.now, getPlace(p.axes.basePlaceId).zone));
+      if (!terms.territories.length) continue;
+      terms.factor = Math.min(2.5, 1 + 0.25 * (terms.territories.length - 1));
+    }
+    const scaled = Math.round((mg * terms.factor) / 1000) * 1000;
     const offer: DistributionOffer = {
-      id: newId(state, 'do'), distributor: pick(r, DISTRIBUTORS), route, minimumGuarantee: late ? Math.round((mg * LATE_SLOT_SHARE) / 1000) * 1000 : mg, territories: [getPlace(p.axes.basePlaceId).country],
+      id: newId(state, 'do'), distributor: pick(r, DISTRIBUTORS), route, minimumGuarantee: late ? Math.round((scaled * LATE_SLOT_SHARE) / 1000) * 1000 : scaled, territories: terms.territories,
+      ...(terms.exclusive ? { exclusive: true } : {}),
       releaseWindowDays: 60 + Math.floor(r() * 90), expiresAt: state.now + 21 * DAY, status: 'open',
-      ...(route === 'broadcast' ? { slot: late ? 'late' as const : 'any' as const } : {}), ...(late ? { editedGuarantee: mg } : {}),
+      ...(route === 'broadcast' ? { slot: late ? 'late' as const : 'any' as const } : {}), ...(late ? { editedGuarantee: scaled } : {}),
     };
     p.offers.push(offer);
     made.push(offer);
@@ -447,6 +461,42 @@ registerHandler('distribution-offer', (state, ev) => {
   addLog(state, text, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
   return { message: text };
 });
+
+// ---------------- Territories and exclusivity (SLATE-16-01.02) ----------------
+
+/** How long an exclusive deal holds its territories after its release. Simulation assumption. */
+export const EXCLUSIVE_DAYS = 365;
+const BIG_MARKETS = ['US', 'GB', 'FR', 'DE', 'ES', 'IT', 'JP', 'BR', 'CA', 'AU', 'KR', 'MX', 'IN'];
+
+/**
+ * An offer's territories and exclusivity, and what wider rights pay: the home country, a few large markets besides it,
+ * or worldwide for a streamer or digital seller. Theatrical deals are exclusive in their territories; a streamer taking
+ * more than home is too. Each extra territory adds a quarter to the guarantee, up to two and a half times.
+ */
+export function offerScope(seed: number, p: Project, wave: string, i: number, route: DistributionOffer['route']): { territories: string[]; exclusive: boolean; factor: number } {
+  const r = stream(seed, 'distribution-terms', p.id, wave, String(i));
+  const home = getPlace(p.axes.basePlaceId).country;
+  const roll = r();
+  const others = BIG_MARKETS.filter((c) => c !== home);
+  let territories = [home];
+  if ((route === 'streaming' || route === 'digital') && roll > 0.8) territories = [home, ...others];
+  else if (roll > 0.55) territories = [home, ...others.filter((_, k) => k % 4 === Math.floor(r() * 4)).slice(0, 3)];
+  const exclusive = route === 'theatrical' || (route === 'streaming' && territories.length > 1) || r() < 0.3;
+  return { territories, exclusive, factor: Math.min(2.5, 1 + 0.25 * (territories.length - 1)) };
+}
+
+const overlaps = (a: string[], b: string[]) => a.some((x) => b.includes(x));
+
+/** The open offers accepting `o` would end. */
+export function offerConflicts(p: Project, o: DistributionOffer): DistributionOffer[] {
+  return p.offers.filter((x) => x.id !== o.id && x.status === 'open' && overlaps(x.territories, o.territories) && (x.route === o.route || !!o.exclusive || !!x.exclusive));
+}
+
+/** Why `o` can't be signed because an accepted exclusive deal still holds some of its territories, or null. */
+export function exclusiveHolder(p: Project, o: DistributionOffer, today: string): string | null {
+  const h = p.offers.find((x) => x.status === 'accepted' && x.exclusive && x.exclusiveUntil && today < x.exclusiveUntil && overlaps(x.territories, o.territories));
+  return h ? `${h.distributor} holds exclusive rights in ${h.territories.filter((c) => o.territories.includes(c)).join(', ')} until ${h.exclusiveUntil}.` : null;
+}
 
 /**
  * What a distribution contract needs from you before you can sign it, or null. The delivery list includes a logline and
@@ -473,18 +523,22 @@ export function acceptDistribution(state: GameState, p: Project, offerId: string
   }
   const needs = offerNeeds(p, o);
   if (needs) throw new Error(needs);
+  const held = exclusiveHolder(p, o, dateKey(state.now, getPlace(p.axes.basePlaceId).zone));
+  if (held) throw new Error(held);
   const edit = !!opts.broadcastEdit;
   if (edit && o.slot !== 'late') throw new Error('This broadcaster can already air it in any slot; no broadcast edit is needed.');
   // The contract obliges you to supply delivery materials; their cost is reserved now and paid on release.
   const materials = reserve(state, p, `Delivery Materials For ${o.distributor}`, 'post', offerMaterials(p, o, edit), `release-offer:${o.id}`);
   o.status = 'accepted';
   if (edit) { o.broadcastEdit = true; o.minimumGuarantee = o.editedGuarantee ?? o.minimumGuarantee; }
-  for (const other of p.offers.filter((x) => x.status === 'open' && x.route === o.route)) other.status = 'declined';
+  // Offers this one ends: the same route where territories overlap, or any route if either is exclusive there.
+  for (const other of offerConflicts(p, o)) other.status = 'declined';
   p.revenue += receiveIncome(state, p, o.minimumGuarantee, o.distributor); // backers are repaid first
   const zone = getPlace(p.axes.basePlaceId).zone;
   const date = addDaysToKey(dateKey(state.now, zone), o.releaseWindowDays);
   addLog(state, `You accepted ${o.distributor}'s offer of ${money(o.minimumGuarantee)} for ${p.title}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
   const rec = planRelease(state, p, { route: o.route, date, territories: o.territories, distributor: o.distributor });
+  if (o.exclusive) o.exclusiveUntil = addDaysToKey(date, EXCLUSIVE_DAYS);
   rec.offerId = o.id;
   rec.obligationId = materials.id;
   return rec;

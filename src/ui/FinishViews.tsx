@@ -19,6 +19,9 @@ import { store, useGame } from './store';
 import { FollowButton } from './Places';
 import { editScenes } from '../engine/finish';
 import { reviseEffects, rerecordLines } from '../engine/revisions';
+import { countryName } from '../world/gazetteer/gazetteer';
+import { EXCLUSIVE_DAYS, offerConflicts } from '../engine/finish';
+import { REPORT_MONTHS } from '../engine/distribution';
 import { personById } from '../engine/people';
 import { VERSION_LABELS, addVersion, removeVersion, versionCredits, versionRuntime } from '../engine/versions';
 import { designStatus, designsToReview, type DesignStatus } from '../engine/designs';
@@ -375,7 +378,7 @@ export function ReleaseTab({ p }: { p: Project }) {
               return (
                 <li key={o.id}>
                   <div className="row-wrap">
-                    <span className="grow"><strong>{o.distributor}</strong>: {ROUTE_LABELS[o.route]} release in {o.territories.join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}{o.slot === 'late' ? ' in a late-evening slot' : ''}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(offerMaterials(p, o))}{subs ? `, including ${money(subs)} of subtitles for languages the dialogue isn't in` : ''}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
+                    <span className="grow"><strong>{o.distributor}</strong>{o.exclusive ? <> <span className="chip">Exclusive</span></> : null}: {ROUTE_LABELS[o.route]} release in {o.territories.length > 6 ? `${o.territories.length} territories (${o.territories.slice(0, 3).map(countryName).join(', ')} and others)` : o.territories.map(countryName).join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}{o.slot === 'late' ? ' in a late-evening slot' : ''}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(offerMaterials(p, o))}{subs ? `, including ${money(subs)} of subtitles for languages the dialogue isn't in` : ''}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
                     <div className="row gap-2 wrap">
                       <button className="btn btn-sm btn-primary" disabled={!!needs} onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id)))}>{o.slot === 'late' ? 'Accept The Late Slot' : 'Accept Offer'}</button>
                       {o.slot === 'late' && <button className="btn btn-sm" disabled={!!needs} onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id, { broadcastEdit: true })))}>Accept With A Broadcast Edit</button>}
@@ -384,12 +387,31 @@ export function ReleaseTab({ p }: { p: Project }) {
                   </div>
                   {o.slot === 'late' && <p className="dim">You declared strong content. {watershedRule(o.territories[0])} The late slot pays {money(o.minimumGuarantee)}. A broadcast edit, cut for an earlier slot, costs about {money(BROADCAST_EDIT_COST)} more in delivery materials and earns the full {money(o.editedGuarantee ?? o.minimumGuarantee)}.</p>}
                   {needs && <p className="dim" style={{ color: 'var(--warning)' }}>{needs}</p>}
+                  {(() => { const ends = offerConflicts(p, o); return ends.length ? <p className="dim">Accepting it ends {ends.map((x) => `${x.distributor}'s ${ROUTE_LABELS[x.route].toLowerCase()} offer`).join(' and ')}{o.exclusive ? ': its rights are exclusive there' : ': they cover the same territories'}.</p> : null; })()}
+                  {o.exclusive && <p className="dim">Exclusive for {EXCLUSIVE_DAYS} days from its release: no other deal in its territories until then.</p>}
                 </li>
               );
             })}
           </ul>
         ) : <p className="muted">No open offers. Festival selections can bring interest. You can always release it yourself.</p>}
       </section>
+      {p.offers.some((o) => o.status === 'accepted') && (
+        <section className="card" aria-labelledby="earnings-h">
+          <h2 id="earnings-h">Earnings</h2>
+          <p className="dim">What each distributor reports is not what you receive. Their fee comes off what they report first, and what is left repays the guarantee they already paid you. Only what they report beyond that reaches you, as an overage. They report monthly for {REPORT_MONTHS} months after release.</p>
+          <ul className="list">{p.offers.filter((o) => o.status === 'accepted').map((o) => (
+            <li key={o.id}>
+              <strong>{o.distributor}</strong> <span className="dim">· {ROUTE_LABELS[o.route]}</span>
+              <dl className="kv">
+                <dt>Reported Earnings</dt><dd>{money(o.reported?.gross ?? 0)}</dd>
+                <dt>After Their Fee</dt><dd>{money(o.reported?.net ?? 0)}</dd>
+                <dt>Guarantee Recouped</dt><dd>{money(Math.min(o.reported?.net ?? 0, o.minimumGuarantee))} of {money(o.minimumGuarantee)}</dd>
+                <dt>Received By You</dt><dd>{money(o.minimumGuarantee + (o.reported?.overagePaid ?? 0))}</dd>
+              </dl>
+            </li>
+          ))}</ul>
+        </section>
+      )}
       <section className="card">
         <h2>Plan A Release</h2>
         <div className="grid grid-3 form">

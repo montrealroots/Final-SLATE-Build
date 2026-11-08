@@ -177,9 +177,19 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
     - additional work (`15-03.02`, `revisions.ts`): before lock, Revise Effects (the effects artist's days, the grade
       waits) or Re-Record Lines (a sound designer's day plus the performer's day rate, paid when booked; the sound waits).
       Once done, the assessment counts the scene's capture +5 or the performance +4, once (game calibration).
-- **Next:** stage 10:
-  territories `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11: relationships `18-02`,
-  opportunities `18-03`.
+  - Stage 10, release, everything below now VERIFIED:
+    - territories and exclusivity (`16-01.02`, `finish.ts offerScope/offerConflicts/exclusiveHolder`): offers cover the
+      home country, a few large markets, or worldwide (streaming and digital); theatrical deals and wide streaming deals
+      are exclusive; each extra territory adds a quarter to the guarantee (up to 2.5 times), and subtitles cost more. An
+      offer says what accepting it ends; an accepted exclusive deal holds its territories for 365 days after release.
+      Drawn from a separate seed stream, so the offers a film got before keep their distributor, route and window;
+    - reported vs received (`16-04.02`, `distribution.ts`): six monthly reports after release; the 35% fee comes off
+      first, the rest recoups the guarantee, and only the overage is paid. The Release page shows reported, after fee,
+      recouped and received apart;
+    - later windows (`16-05`): 120 days after a release, a new wave of offers for territories no exclusive deal holds
+      and this route hasn't released.
+- **Next:** stage 11: relationships `18-02`, opportunities `18-03`. Then the IMPLEMENTED UNVERIFIED children that need
+  only a test, and the package's playthroughs (`docs/depth/package/05-PLAYTHROUGHS-AND-ACCEPTANCE.md`).
   - Also still open: the IMPLEMENTED UNVERIFIED children (25) that need only a test.
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
