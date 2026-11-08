@@ -10,6 +10,7 @@ import type {
   Attention, CharacterIdentity, CreationDraft, CreationStepId, GameState, LogEntry, Route, ScheduledEvent,
 } from './types';
 import { SAVE_VERSION } from './types';
+import { draftNames, isPortrait, legalName } from './identity';
 
 export function newId(state: GameState, prefix: string): string {
   state.idCounter += 1;
@@ -18,7 +19,7 @@ export function newId(state: GameState, prefix: string): string {
 
 export function emptyDraft(): CreationDraft {
   return {
-    step: 'identity', name: '', pronouns: '', actingTitle: '', birthDate: '', birthplaceId: '', heritages: [], heritageCustomText: '', observances: [],
+    step: 'identity', firstName: '', middleName: '', lastName: '', preferredName: '', pronouns: '', actingTitle: '', birthDate: '', birthplaceId: '', heritages: [], heritageCustomText: '', observances: [],
     mainLanguage: '', languages: [], startPlaceId: '', startDate: '2026-01-05', startTime: '08:00', updatedAt: 0,
   };
 }
@@ -28,7 +29,7 @@ export function emptyDraft(): CreationDraft {
  * validation, Review's edit actions, saved drafts) uses these ids, never a position.
  */
 export const CREATION_STEPS: readonly { id: CreationStepId; title: string; fields: readonly (keyof CreationDraft)[] }[] = [
-  { id: 'identity', title: 'Identity', fields: ['name', 'pronouns', 'actingTitle', 'birthDate', 'birthplaceId'] },
+  { id: 'identity', title: 'Identity', fields: ['portrait', 'firstName', 'middleName', 'lastName', 'preferredName', 'pronouns', 'actingTitle', 'birthDate', 'birthplaceId'] },
   { id: 'background', title: 'Background & Languages', fields: ['heritages', 'heritageCustomText', 'observances', 'mainLanguage', 'languages'] },
   { id: 'starting-point', title: 'Starting Point', fields: ['startPlaceId', 'startDate', 'startTime'] },
   { id: 'review', title: 'Review', fields: [] },
@@ -52,9 +53,13 @@ export function normalizeDraft(raw: unknown): CreationDraft | null {
   // A number is the eight-step creation's index, older than its ids.
   const old = typeof step === 'number' ? OLD_ORDER[Math.max(0, Math.min(OLD_ORDER.length - 1, Math.trunc(step)))] : step;
   d.step = CREATION_STEPS.some((x) => x.id === old) ? (old as CreationStepId) : typeof old === 'string' && OLD_STEPS[old] ? OLD_STEPS[old] : 'identity';
-  for (const k of ['name', 'pronouns', 'actingTitle', 'birthDate', 'birthplaceId', 'heritageCustomText', 'mainLanguage', 'startPlaceId', 'startDate', 'startTime'] as const) {
+  for (const k of ['firstName', 'middleName', 'lastName', 'preferredName', 'pronouns', 'actingTitle', 'birthDate', 'birthplaceId', 'heritageCustomText', 'mainLanguage', 'startPlaceId', 'startDate', 'startTime'] as const) {
     if (typeof d[k] !== 'string') (d as unknown as Record<string, unknown>)[k] = base[k];
   }
+  // A draft from before names had parts holds one name: its first word is the first name, the rest the last.
+  Object.assign(d, draftNames(d));
+  delete d.name;
+  if (typeof d.portrait !== 'string' || !isPortrait(d.portrait)) delete d.portrait;
   if (!Array.isArray(d.heritages)) d.heritages = [];
   if (!Array.isArray(d.languages)) d.languages = [];
   d.observances = Array.isArray(d.observances) ? d.observances.filter((o): o is string => typeof o === 'string' && !!observance(o)) : [];
@@ -82,8 +87,12 @@ export function adoptPlace(state: GameState, place: Place): void {
 export function validateDraft(d: CreationDraft): DraftProblem[] {
   for (const pl of Object.values(d.places ?? {})) registerPlace(pl);
   const out: DraftProblem[] = [];
-  if (!d.name.trim()) out.push({ field: 'name', step: 'identity', message: 'Enter a name.' });
-  if (d.name.trim().length > 80) out.push({ field: 'name', step: 'identity', message: 'Use 80 characters or fewer.' });
+  const n = draftNames(d);
+  // As 1221's: a first and a last name. Each part, and the legal name they make, has room for long names, not essays.
+  if (!n.firstName) out.push({ field: 'firstName', step: 'identity', message: 'Enter a first name.' });
+  if (!n.lastName) out.push({ field: 'lastName', step: 'identity', message: 'Enter a last name.' });
+  if (legalName(n).length > 80) out.push({ field: 'lastName', step: 'identity', message: 'Your full name has to be 80 characters or fewer.' });
+  if ((d.preferredName ?? '').trim().length > 40) out.push({ field: 'preferredName', step: 'identity', message: 'Use 40 characters or fewer.' });
   if (!d.pronouns) out.push({ field: 'pronouns', step: 'identity', message: 'Choose pronouns.' });
   // Settled by He/Him and She/Her; with They/Them it's the player's choice, and must be made.
   if (!settledTitle(d.pronouns) && !d.actingTitle) out.push({ field: 'actingTitle', step: 'identity', message: 'Choose how you are billed.' });
@@ -122,7 +131,11 @@ export function newGame(d: CreationDraft, realNow: number, saveId: string): Game
   const place = getPlace(d.startPlaceId);
   const { instant } = localToInstant(place.zone, start.year, start.month, start.day, hh, mm);
   const character: CharacterIdentity = {
-    name: d.name.trim(),
+    name: legalName(draftNames(d)),
+    ...draftNames(d),
+    ...(d.preferredName?.trim() ? { preferredName: d.preferredName.trim() } : {}),
+    livesIn: d.startPlaceId,
+    ...(d.portrait && isPortrait(d.portrait) ? { portrait: d.portrait } : {}),
     pronouns: d.pronouns as CharacterIdentity['pronouns'],
     actingTitle: (settledTitle(d.pronouns) ?? d.actingTitle) as CharacterIdentity['actingTitle'],
     birth: parseYmd(d.birthDate),
@@ -132,7 +145,8 @@ export function newGame(d: CreationDraft, realNow: number, saveId: string): Game
     languages: d.languages.filter((l) => l.code !== d.mainLanguage),
     observances: d.observances?.filter((o) => !!observance(o)) ?? [],
   };
-  const seed = hashString(`${saveId}|${d.name}|${d.birthDate}|${d.startDate}`);
+  // The legal name is joined as the one-field name was, so a save's seed is what it was before names had parts.
+  const seed = hashString(`${saveId}|${legalName(draftNames(d))}|${d.birthDate}|${d.startDate}`);
   const state: GameState = {
     version: SAVE_VERSION,
     saveId,

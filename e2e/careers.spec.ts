@@ -236,7 +236,7 @@ test('writing, producing and directing without acting: an offer to a performer b
   test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs at desktop and phone width.');
   test.setTimeout(1_200_000);
   const p = info.project.name;
-  await quickLife(page, 'ca-toronto', '2026-03-02');
+  await quickLife(page, 'ca-toronto', '2026-03-02', { portrait: true });
   await pinSeed(page, SEEDS.behindTheCamera);
   await newProject(page, { title: 'The Ferryman', format: 'Short Film', runtime: '6', budget: 'Micro Budget' });
   await addCharacters(page, ['Odile', 'The Ferryman']);
@@ -290,6 +290,10 @@ test('writing, producing and directing without acting: an offer to a performer b
   expect(credits).toMatch(/as Odile/);
   expect(credits).toMatch(/as The Ferryman/);
   expect(credits).not.toContain(busyName);
+  // Your headshot sits beside your own credit lines, and only theirs (November 8, 2026, from 1221's Identity).
+  const creditRows = page.locator('section.card', { has: page.getByRole('heading', { name: 'Credits' }) }).locator('tbody tr');
+  await expect(creditRows.filter({ hasText: 'Nia Halvorsen-Mbeki' }).first().locator('img.headshot-sm')).toBeVisible();
+  await expect(creditRows.filter({ hasNotText: 'Nia Halvorsen-Mbeki' }).locator('img.headshot-sm')).toHaveCount(0);
   await selfRelease(page, 'CA');
   await saveAndReload(page, 'The Ferryman');
   expect(await creditsTable(page)).toBe(credits);

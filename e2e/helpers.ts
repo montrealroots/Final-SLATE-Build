@@ -10,6 +10,10 @@ export async function freshStart(page: Page): Promise<void> {
 
 export interface CharacterOpts {
   name: string;
+  middleName?: string;
+  preferredName?: string;
+  /** A photo to upload as the headshot (makePhoto). */
+  portrait?: { name: string; mimeType: string; buffer: Buffer };
   pronouns: 'He/Him' | 'She/Her' | 'They/Them';
   /** With They/Them the player picks the billing (Actor unless given); He/Him and She/Her settle it. */
   billedAs?: 'Actor' | 'Actress';
@@ -36,7 +40,13 @@ async function nextStep(page: Page, name: string): Promise<void> {
 export async function createCharacter(page: Page, o: CharacterOpts, atReview?: (page: Page) => Promise<void>): Promise<void> {
   await page.getByRole('button', { name: 'New Game' }).first().click();
   await expect(page.getByRole('heading', { name: 'Identity', level: 1 })).toBeVisible();
-  await page.getByRole('textbox', { name: 'Name', exact: true }).fill(o.name);
+  await fillName(page, o.name);
+  if (o.middleName) await page.getByRole('textbox', { name: 'Middle Name (Optional)' }).fill(o.middleName);
+  if (o.preferredName) await page.getByRole('textbox', { name: 'Preferred Name' }).fill(o.preferredName);
+  if (o.portrait) {
+    await page.locator('#portrait-file').setInputFiles(o.portrait);
+    await expect(page.getByRole('slider', { name: 'Zoom' })).toBeVisible();
+  }
   await page.getByLabel('Pronouns').selectOption({ label: o.pronouns });
   if (o.pronouns === 'They/Them') await page.getByRole('group', { name: 'Billed As' }).getByRole('button', { name: o.billedAs ?? 'Actor', exact: true }).click();
   await fillBirthDate(page, o.birthDate);
@@ -68,6 +78,29 @@ export async function createCharacter(page: Page, o: CharacterOpts, atReview?: (
 }
 
 /** The date of birth in 1221's three fields: year, month, day. */
+/**
+ * Labelled fixture: a photo, drawn in the page and returned as a PNG (a 3:2 landscape, so the picker has to crop it).
+ * Only what a player's upload would be; nothing about it is read by the game.
+ */
+export async function makePhoto(page: Page): Promise<{ name: string; mimeType: string; buffer: Buffer }> {
+  const dataUrl = await page.evaluate(() => {
+    const c = document.createElement('canvas');
+    c.width = 900; c.height = 600;
+    const x = c.getContext('2d')!;
+    x.fillStyle = '#3a6ea5'; x.fillRect(0, 0, 900, 600);
+    x.fillStyle = '#f2c38f'; x.beginPath(); x.arc(450, 260, 140, 0, Math.PI * 2); x.fill();
+    return c.toDataURL('image/png');
+  });
+  return { name: 'headshot.png', mimeType: 'image/png', buffer: Buffer.from(dataUrl.split(',')[1], 'base64') };
+}
+
+/** A full name into Identity's parts, as 1221's asks for them: the first word is the first name, the rest the last. */
+export async function fillName(page: Page, full: string): Promise<void> {
+  const [first, ...rest] = full.trim().split(/\s+/);
+  await page.getByRole('textbox', { name: 'First Name', exact: true }).fill(first ?? '');
+  await page.getByRole('textbox', { name: 'Last Name', exact: true }).fill(rest.join(' '));
+}
+
 export async function fillBirthDate(page: Page, ymd: string): Promise<void> {
   const [y, m, d] = ymd.split('-');
   await page.getByLabel('Year Of Birth').fill(y);
@@ -76,7 +109,7 @@ export async function fillBirthDate(page: Page, ymd: string): Promise<void> {
 }
 
 export async function pickPlace(page: Page, label: string, query: string, country?: string): Promise<void> {
-  if (country) await page.getByLabel('Country Or Territory').selectOption({ label: country });
+  if (country) await page.getByRole('combobox', { name: `${label}, Country Or Territory` }).selectOption({ label: country });
   await page.getByRole('searchbox', { name: label }).fill(query);
   const first = page.getByRole('group', { name: `${label} Results` }).getByRole('button').first();
   await expect(first).toContainText(new RegExp(query.slice(0, 3), 'i'));
@@ -154,16 +187,22 @@ export async function saveAndExit(page: Page): Promise<void> {
   await expect(page.getByRole('button', { name: 'Continue', exact: true })).toBeVisible();
 }
 
-export async function quickLife(page: Page, startPlaceId: string, startDate: string): Promise<void> {
+export async function quickLife(page: Page, startPlaceId: string, startDate: string, opts: { portrait?: boolean } = {}): Promise<void> {
   await page.goto('/');
-  await page.evaluate(({ pl, sd }) => {
+  await page.evaluate(({ pl, sd, withPortrait }) => {
     localStorage.clear();
+    const c = document.createElement('canvas');
+    c.width = 512; c.height = 640;
+    const x = c.getContext('2d')!;
+    x.fillStyle = '#7a4b8c'; x.fillRect(0, 0, 512, 640);
+    const portrait = withPortrait ? c.toDataURL('image/jpeg', 0.86) : undefined;
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
       step: 7, name: 'Nia Halvorsen-Mbeki', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
       heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }, { id: 'Norwegian', label: 'Norwegian', custom: false }], heritageCustomText: '', mainLanguage: 'en',
       languages: [{ code: 'sw', proficiency: 'Fluent' }, { code: 'no', proficiency: 'Conversational' }], startPlaceId: pl, startDate: sd, startTime: '08:00', updatedAt: 1,
+      ...(portrait ? { portrait } : {}),
     }));
-  }, { pl: startPlaceId, sd: startDate });
+  }, { pl: startPlaceId, sd: startDate, withPortrait: !!opts.portrait });
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
   await page.getByRole('button', { name: 'Start My Story' }).click();
@@ -347,7 +386,7 @@ export async function pinSeed(page: Page, seed: number): Promise<void> {
 }
 
 /** Start a project from the Projects screen through its form. */
-export async function newProject(page: Page, o: { title: string; format: string; medium?: string; technique?: string; finish?: string; episodes?: string; runtime?: string; budget?: string; audience?: string }): Promise<void> {
+export async function newProject(page: Page, o: { title: string; format: string; medium?: string; technique?: string; finish?: string; episodes?: string; runtime?: string; budget?: string; audience?: string; base?: { place: string; country?: string } }): Promise<void> {
   await page.getByRole('button', { name: 'New Script' }).first().click();
   await page.getByLabel('Working Title').fill(o.title);
   await page.getByLabel('Format').selectOption({ label: o.format });
@@ -358,6 +397,7 @@ export async function newProject(page: Page, o: { title: string; format: string;
   if (o.runtime) await page.getByLabel(/Target (Runtime In Minutes|Minutes Per Episode)/).fill(o.runtime);
   if (o.budget) await page.getByRole('radio', { name: new RegExp(`^${o.budget}:`) }).check();
   if (o.audience) await page.getByLabel('Intended Audience').selectOption({ label: o.audience });
+  if (o.base) await pickPlace(page, 'Production Base', o.base.place, o.base.country);
   await page.getByRole('button', { name: 'Create Project' }).click();
   await expect(page.getByRole('heading', { name: o.title, level: 1 })).toBeVisible();
 }

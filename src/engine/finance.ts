@@ -6,6 +6,8 @@
 // and a delivery deadline. Amounts and decisions are game calibration, not industry figures.
 
 import { money } from './budget';
+import { getPlace } from '../data/places';
+import { TERRITORY_CITIZENSHIP, countryInSentence, homeCountries } from './identity';
 import { DOCUMENTS, documentNames, documentsNeeded, type DocumentId } from './script-effects';
 import { isNonfiction, scriptIssues } from './projects';
 import { stream } from './rng';
@@ -23,7 +25,7 @@ export const BACKERS: Record<Exclude<FinanceDealKind, 'agreed'>, { name: string;
   },
   grant: {
     name: 'Screen Arts Fund Grant',
-    who: 'A public arts fund that supports new screen work.',
+    who: 'A public arts fund that supports new screen work by the citizens and residents of the country where the project is based.',
     why: 'Its panel reads approved scripts and funds the ones it rates highest each round; a finished project of yours helps.',
     decideDays: 21,
   },
@@ -94,6 +96,21 @@ export function backerDocuments(kind: Exclude<FinanceDealKind, 'agreed'>): strin
   return d.length ? `${SUBMISSION[kind]} includes the approved script and ${documentNames(d)}.` : '';
 }
 
+/**
+ * A country's public screen fund supports its citizens and the people who live there (November 8, 2026, with
+ * citizenship from 1221's Identity): the fund approached is the one where the project is based. Null when you may apply.
+ */
+export function fundClosedTo(state: GameState, p: Project): string | null {
+  const where = getPlace(p.axes.basePlaceId).country;
+  const country = TERRITORY_CITIZENSHIP[where] ?? where;
+  const home = homeCountries(state);
+  if (home.some((h) => h.code === country)) return null;
+  const citizen = home.find((h) => h.citizen);
+  const resident = home.find((h) => h.resident);
+  const you = [citizen && `a citizen of ${countryInSentence(citizen.code)}`, resident && `live in ${countryInSentence(resident.code)}`].filter(Boolean).join(' and ');
+  return `This project is based in ${countryInSentence(country)}, and its public fund supports its citizens and the people who live there. You're ${you}.`;
+}
+
 /** Each backer the player could approach for this project, with what it needs and whether that is met. */
 export function backerOptions(state: GameState, p: Project): { kind: Exclude<FinanceDealKind, 'agreed'>; ready: boolean; needs: string }[] {
   // One approach per backer per project: a backer who said no, or was turned down, isn't asked again for it.
@@ -107,7 +124,7 @@ export function backerOptions(state: GameState, p: Project): { kind: Exclude<Fin
   }
   // The documents a submission includes must be written before it is sent (BACKER_DOCUMENTS).
   const docs = (k: Exclude<FinanceDealKind, 'agreed'>) => documentsNeeded(p, BACKER_DOCUMENTS[k], isNonfiction(p.axes.format), SUBMISSION[k]);
-  out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : docs('grant')) });
+  out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : fundClosedTo(state, p) ?? docs('grant')) });
   out.push({ kind: 'investor', ready: false, needs: why('investor', !scriptApproved(p) ? 'Approve a script first.' : docs('investor')) });
   out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : docs('co-producer')) });
   out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : !scriptApproved(p) ? 'Approve a script first.' : docs('commissioner')) });

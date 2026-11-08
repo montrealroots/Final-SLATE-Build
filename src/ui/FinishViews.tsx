@@ -200,7 +200,7 @@ export function ReleaseTab({ p }: { p: Project }) {
               {p.credits.map((c) => (
                 <tr key={c.id}>
                   <td data-label="Credit">{c.contribution}</td>
-                  <td data-label="Name">{c.person === 'player' ? <strong>{c.personName}</strong> : c.personName}</td>
+                  <td data-label="Name">{c.person === 'player' ? <strong>{g.character.portrait && <img className="headshot headshot-sm" src={g.character.portrait} alt="" />}{c.personName}</strong> : c.personName}</td>
                   <td data-label="Details">{c.characterName ? `as ${c.characterName}` : ''}{episodic && c.episodes !== 'all' ? `${c.characterName ? ', ' : ''}Episodes ${c.episodes.join(', ')}` : ''}</td>
                 </tr>
               ))}

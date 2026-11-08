@@ -30,14 +30,14 @@ export function PageHead({ eyebrow, title, lede, actions, children }: { eyebrow?
   );
 }
 
-export function Field(props: { label: string; labelHidden?: boolean; error?: string | null; hint?: string; children: (id: string, describedBy: string | undefined) => ReactNode }) {
+export function Field(props: { label: string; error?: string | null; hint?: string; children: (id: string, describedBy: string | undefined) => ReactNode }) {
   const id = useId();
   const errId = `${id}-err`;
   const hintId = `${id}-hint`;
   const describedBy = [props.error ? errId : '', props.hint ? hintId : ''].filter(Boolean).join(' ') || undefined;
   return (
     <div className="field">
-      <label htmlFor={id} className={props.labelHidden ? 'sr-only' : undefined}>{props.label}</label>
+      <label htmlFor={id}>{props.label}</label>
       {props.hint && <span className="hint" id={hintId}>{props.hint}</span>}
       {props.children(id, describedBy)}
       {props.error && <span className="error" id={errId} role="alert">{props.error}</span>}

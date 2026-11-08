@@ -30,7 +30,7 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
     mainLanguage: 'English', extraLanguages: ['Swahili'], start: 'London', startDate: '2026-01-05', startTime: '08:00',
   }, async (page) => {
     await page.getByRole('button', { name: 'Edit Identity' }).click();
-    await page.getByRole('textbox', { name: 'Name', exact: true }).fill('Nia Halvorsen-Mbeki');
+    await page.getByRole('textbox', { name: 'Last Name', exact: true }).fill('Halvorsen-Mbeki');
     await page.getByRole('button', { name: 'Save And Return To Review' }).click();
     await expect(page.locator('#creation-h')).toHaveText('Nia Halvorsen-Mbeki');
     await page.getByRole('button', { name: 'Edit Starting Point' }).click();

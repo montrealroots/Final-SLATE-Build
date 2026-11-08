@@ -10,6 +10,7 @@ import { SaveValidationError, validateGameState } from './validate';
 import { adoptPublishedRules, migrateV2toV3, migrateV3toV4 } from './awards';
 import { normalizeDraft } from './state';
 import { migrateV4toV5 } from './finance';
+import { knownAs, migrateV5toV6 } from './identity';
 
 export interface KeyValueStore {
   getItem(key: string): string | null;
@@ -141,6 +142,8 @@ export const MIGRATIONS: Record<number, Migration> = {
   3: migrateV3toV4,
   // v4 -> v5: financing. Money a project had is kept, recorded as funding agreed before financing existed (finance.ts).
   4: migrateV4toV5,
+  // v5 -> v6: a legal name in parts, a preferred name, where you live and room for a headshot (identity.ts).
+  5: migrateV5toV6,
 };
 
 export function migrate(raw: unknown): GameState {
@@ -179,7 +182,7 @@ export function storedVersion(text: string): number | null {
 }
 
 function summaryOf(state: GameState, savedAtReal: number): SaveSummary {
-  return { saveId: state.saveId, saveName: state.saveName, characterName: state.character.name, locationId: state.locationId, gameNow: state.now, savedAtReal };
+  return { saveId: state.saveId, saveName: state.saveName, characterName: knownAs(state.character), locationId: state.locationId, gameNow: state.now, savedAtReal };
 }
 
 /**

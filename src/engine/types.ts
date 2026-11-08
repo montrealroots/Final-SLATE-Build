@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 5;
+export const SAVE_VERSION = 6;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -21,7 +21,18 @@ export interface LanguageSkill {
 }
 
 export interface CharacterIdentity {
+  /** The legal name, first, middle and last as written: what credits carry (identity.ts). */
   name: string;
+  /** Its parts (save version 6). Saves from before have them split from `name`. */
+  firstName: string;
+  middleName?: string;
+  lastName: string;
+  /** What people call you; blank means your first and last name (identity.ts knownAs). */
+  preferredName?: string;
+  /** Where you live: the place your story began (save version 6). With your citizenship, your home countries. */
+  livesIn: string;
+  /** A headshot, 512 by 640, re-encoded as a JPEG data URL (ui/portrait.ts); shown on Profile and beside your credits. */
+  portrait?: string;
   pronouns: PronounSet;
   actingTitle: ActingTitle;
   birth: { year: number; month: number; day: number };
@@ -42,7 +53,13 @@ export interface CreationDraft {
   step: CreationStepId;
   /** Set when the player went from Review to edit a screen: that screen then offers to go straight back to Review. */
   returnToReview?: boolean;
-  name: string;
+  firstName: string;
+  middleName: string;
+  lastName: string;
+  preferredName: string;
+  portrait?: string;
+  /** One field, before names had parts (November 8, 2026): split into first and last when the parts are empty. */
+  name?: string;
   pronouns: PronounSet | '';
   actingTitle: ActingTitle | '';
   birthDate: string; // YYYY-MM-DD

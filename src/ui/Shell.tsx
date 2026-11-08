@@ -1,7 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState, type ReactNode } from 'react';
 import {
-  DAY, FORECAST_HORIZON_DAYS, addLocal, currentZone, dateKey, formatDuration, formatZoneAbbrev, localParts, localToInstant, nextNotableEvent,
-} from '../engine';
+  DAY, FORECAST_HORIZON_DAYS, addLocal, currentZone, dateKey, formatDuration, formatZoneAbbrev, localParts, localToInstant, nextNotableEvent, knownAs } from '../engine';
 import { Check, Modal, SelectField, TextField, longLocal } from './components';
 import { HOME, RAIL_DESTINATIONS, destinationOf, type Destination } from './routes';
 import { store, useClock, useGame, useStore } from './store';
@@ -89,9 +88,9 @@ export function Shell({ children }: { children: ReactNode }) {
           ))}
           <div className="rail-group rail-player">
             <div className="rail-group-label">You</div>
-            <button type="button" className="rail-you rail-item" aria-label={`${g.character.name}, Open Your Player Profile`} onClick={() => go('profile')}>
+            <button type="button" className="rail-you rail-item" aria-label={`${knownAs(g.character)}, Open Your Player Profile`} onClick={() => go('profile')}>
               <span className="col gap-1">
-                <span className="small strong truncate">{g.character.name}</span>
+                <span className="small strong truncate">{knownAs(g.character)}</span>
                 <span className="xs dim truncate">{g.character.actingTitle || 'Actor'}</span>
               </span>
             </button>

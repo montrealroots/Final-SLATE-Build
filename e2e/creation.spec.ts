@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { fillBirthDate, pickPlace } from './helpers';
+import { fillBirthDate, fillName, pickPlace } from './helpers';
 
 // Character creation, laid out as 1221's (Identity, Background & Languages, Starting Point, Review), on desktop, phone
 // and the WebKit iPhone projects (playwright.config.ts).
@@ -26,7 +26,7 @@ const NAME = 'Itzel Ramírez-Okafor';
 
 /** Identity filled in through its controls, ready for Next. */
 async function fillIdentity(page: Page, name: string, pronouns: string): Promise<void> {
-  await page.getByRole('textbox', { name: 'Name', exact: true }).fill(name);
+  await fillName(page, name);
   await page.getByLabel('Pronouns').selectOption({ label: pronouns });
   if (pronouns === 'They/Them') await page.getByRole('group', { name: 'Billed As' }).getByRole('button', { name: 'Actor', exact: true }).click();
   await fillBirthDate(page, '1994-05-20');
@@ -62,13 +62,13 @@ test('each Review edit goes to the step it names, and Save And Return To Review 
 test('editing from Review: a change is kept, an invalid change stops you on that step with its message', async ({ page }) => {
   await draftAtReview(page);
   await page.getByRole('button', { name: 'Edit Identity' }).click();
-  const name = page.getByRole('textbox', { name: 'Name', exact: true });
-  await name.fill('');
+  const last = page.getByRole('textbox', { name: 'Last Name', exact: true });
+  await last.fill('');
   await page.getByRole('button', { name: 'Save And Return To Review' }).click();
   await expect(heading(page)).toHaveText('Identity');
-  await expect(page.getByText('Enter a name.')).toBeVisible();
-  await name.fill('Itzel Ramírez');
-  await expect(page.getByText('Enter a name.')).toHaveCount(0); // clears once valid
+  await expect(page.getByText('Enter a last name.')).toBeVisible();
+  await last.fill('Ramírez');
+  await expect(page.getByText('Enter a last name.')).toHaveCount(0); // clears once valid
   await page.getByRole('button', { name: 'Save And Return To Review' }).click();
   await expect(card(page, 'Identity')).toContainText('Itzel Ramírez');
   // Going forward with Next instead also keeps the change.
@@ -99,7 +99,7 @@ test('a step with something missing says what; He/Him and She/Her settle the bil
   await page.getByRole('button', { name: 'New Game' }).first().click();
   await page.getByRole('button', { name: 'Next: Background & Languages' }).click();
   await expect(heading(page)).toHaveText('Identity');
-  for (const m of ['Enter a name.', 'Choose pronouns.', 'Choose how you are billed.', 'Enter your birth date.', 'Choose a birthplace.']) await expect(page.getByText(m)).toBeVisible();
+  for (const m of ['Enter a first name.', 'Enter a last name.', 'Choose pronouns.', 'Choose how you are billed.', 'Enter your birth date.', 'Choose a birthplace.']) await expect(page.getByText(m)).toBeVisible();
   const billedAs = page.locator('.field', { has: page.locator('#billed-as') });
   // She/Her: Actress, nothing to pick.
   await page.getByLabel('Pronouns').selectOption({ label: 'She/Her' });
@@ -158,8 +158,9 @@ test('keyboard only: Next moves focus to the new heading, Tab reaches its field,
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByRole('button', { name: 'New Game' }).first().click();
-  await page.getByRole('textbox', { name: 'Name', exact: true }).focus();
-  await page.keyboard.type('Kofi Mensah');
+  await page.getByRole('textbox', { name: 'First Name', exact: true }).focus();
+  await page.keyboard.type('Kofi');
+  await page.getByRole('textbox', { name: 'Last Name', exact: true }).fill('Mensah');
   await page.getByLabel('Pronouns').selectOption({ label: 'He/Him' });
   await fillBirthDate(page, '1990-11-03');
   await pickPlace(page, 'Place Of Birth', 'Lagos');
@@ -175,7 +176,8 @@ test('keyboard only: Next moves focus to the new heading, Tab reaches its field,
     await page.getByRole('button', { name: 'Next: Background & Languages' }).click();
   }
   await page.getByRole('button', { name: 'Back To Identity' }).click();
-  await expect(page.getByRole('textbox', { name: 'Name', exact: true })).toHaveValue('Kofi Mensah');
+  await expect(page.getByRole('textbox', { name: 'First Name', exact: true })).toHaveValue('Kofi');
+  await expect(page.getByRole('textbox', { name: 'Last Name', exact: true })).toHaveValue('Mensah');
   await expect(page.getByLabel('Pronouns')).toHaveValue('he');
   await expect(page.locator('.field', { has: page.locator('#billed-as') }).locator('output')).toHaveText('Actor'); // settled by He/Him
   await expect(page.getByLabel('Year Of Birth')).toHaveValue('1990');
@@ -253,14 +255,15 @@ test('the country list and the map follow the place chosen; another country is s
   await pickPlace(page, 'Place Of Birth', 'Nairobi');
   await expect(country.locator('option:checked')).toHaveText('Kenya');
   await expect(page.getByRole('group', { name: 'Map of Kenya. Each listed place is a marker you can choose.' })).toBeVisible();
-  // The field keeps its name for screen readers; the heading above names it on screen, once.
+  // Under the heading, the field is Town Or City, as 1221's; its name for screen readers keeps the purpose.
   await expect(page.getByRole('searchbox', { name: 'Place Of Birth' })).toBeVisible();
-  await expect(page.locator('label', { hasText: /^Place Of Birth$/ })).toHaveClass('sr-only');
-  await expect(page.getByRole('heading', { name: 'Place Of Birth', level: 3 })).toBeVisible();
-  // Changing your mind: nothing in Kenya is called Toronto, so the featured cities that are come up.
+  await expect(page.getByText('Town Or City', { exact: true })).toBeVisible();
+  await expect(page.getByText('Place Of Birth', { exact: true })).toHaveCount(1); // the heading, once
+  // Changing your mind: nothing in Kenya is called Toronto; the featured cities in other countries that are come up.
   await page.getByRole('searchbox', { name: 'Place Of Birth' }).fill('Toronto');
   const results = page.getByRole('group', { name: 'Place Of Birth Results' });
-  await expect(results).toContainText("Nothing in Kenya matches 'Toronto'. Featured cities that do:");
+  await expect(results).toContainText("Nothing in Kenya matches 'Toronto'.");
+  await expect(results).toContainText('Featured cities in other countries:');
   await results.getByRole('button', { name: /Toronto/ }).first().click();
   await expect(page.getByText('Chosen: Toronto', { exact: false })).toBeVisible();
   await expect(country.locator('option:checked')).toHaveText('Canada');
