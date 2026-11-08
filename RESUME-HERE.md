@@ -59,8 +59,21 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 
 The owner is reviewing every screen in order with full-page captures (`docs`: none; captures are made per request and
-kept out of the repository). Screens 1 (start), 2 (Identity) and 3 (Background & Languages) are done; screen 4,
-Starting Point, is next.
+kept out of the repository). The whole creation suite is done: screens 1 (start), 2 (Identity), 3 (Background &
+Languages), 4 (Starting Point) and 5 (Review). The owner sends the big gameplay update next.
+
+- **Starting Point fixes from the review:**
+  - The When It Begins note no longer says "Any date in 2026."
+  - The search field is "Town Or City" under the Where You Live heading, so the heading isn't said twice.
+  - Featured cities are listed A to Z.
+  - Choosing a place empties the search and settles the list (Place Of Birth does the same).
+  - Map markers that would overlap a larger place's aren't drawn. The chosen place is a solid dot on the map.
+  - The place is named once, in the "Chosen:" note.
+  - The date and time boxes sit level, and the start is said in words.
+- **Review fixes:**
+  - The cards follow the steps' order.
+  - Starts On reads like Starting Point: "Monday, January 5, 2026, at 8:00 AM GMT".
+  - Each card has an Edit button whose name keeps the step.
 
 - **Background & Languages fixes from the review:**
   - What you've chosen sits under the search, and describing your own comes last.
@@ -111,7 +124,7 @@ Starting Point, is next.
     - `migrateV6toV7` converts script characters' nationality words too.
   - The language you use most empties its search once chosen, as every picker on the page does.
 - **Results (ethnicity and nationality):** `npm run check` (303 unit tests, startup 678 kB, within budget) and the complete production-build browser suite (155 passed, 27 skipped by design, 0 failed).
-- **Next:** screen 4 of the review, then the big gameplay update, then the input audit (the owner's order).
+- **Next:** the big gameplay update (the owner sends it), then the input audit (the owner's order).
 
 ### Earlier Request (November 8, 2026, after #37): decide the budget-size naming
 
