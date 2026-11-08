@@ -1,6 +1,12 @@
 # Reconciliation of the SLATE Gameplay Depth package against Final-SLATE-Build (November 8, 2026).
 # Statuses: VE = VERIFIED EXISTING, V = VERIFIED, IU = IMPLEMENTED UNVERIFIED, NR = NEEDS REPAIR, MI = MISSING,
 # EB = EXTERNAL BLOCKER. Evidence: "path::fragment", the fragment being words in that file (the checker reads them).
+R_EST = ('Modeled: built from the breakdown and the schedule by the rules the production pays by; no primary source was consulted for the '
+         'process (docs/depth/ESTIMATES-RESEARCH.md), and every rate and duration is game calibration (docs/depth/PRODUCTION-SOURCES.md)')
+R_DIR = ('Process sourced: what a script supervisor records for the editor (coverage, set-ups, takes, pickup lists), IATSE Local 634, '
+         'primary (docs/depth/DIRECTING-RESEARCH.md); setup and take times and the issue threshold are game calibration')
+def D(control, needs, rule, cost, downstream, failure, save, research):
+    return {'control': control, 'needs': needs, 'rule': rule, 'cost': cost, 'downstream': downstream, 'failure': failure, 'save': save, 'research': research}
 S = {'VE': 'VERIFIED EXISTING', 'V': 'VERIFIED', 'IU': 'IMPLEMENTED UNVERIFIED', 'NR': 'NEEDS REPAIR', 'MI': 'MISSING', 'EB': 'EXTERNAL BLOCKER'}
 
 # parent id -> (ui_entry, engine_files, [(child requirement, status, evidence list, gap)])
@@ -117,6 +123,15 @@ C = {
   ('Runtime, scenes, cast and technique drive the estimate', 'VE', ['tests/tight-budget.test.ts::follows what the script needs'], ''),
   ('An estimate over what can be raised offers concrete ways to cut cost', 'V',
    ['tests/cost-cuts.test.ts::lists cuts with their savings', 'tests/cost-cuts.test.ts::the saving shown is what the estimate really drops by'], ''),
+  ('Same runtime, different complexity: places, interior or exterior, night, crowds and stunts change the days and people priced', 'V',
+   ['tests/estimates.test.ts::same runtime, different production complexity'], 'Checked on three world seeds; figures are calibration',
+   D('The script: scenes, places, time of day, crowds, stunts, effects', 'An approved draft', 'costBreakdown in src/engine/estimate.ts groups scenes into shoot days by the same rule the schedule uses (groupShootDays) and prices each day, role and build',
+     'None: an estimate costs nothing to make', 'The Budget page, the backers\' target, the Ways To Cost Less list', 'A part or role nobody can take is priced at the lowest rate and named as uncertain',
+     'Derived from the saved project each time; only the estimate at approval is stored', R_EST)),
+  ('Same script, different method: animation prices studio and render time instead of shoot days', 'V',
+   ['tests/estimates.test.ts::same script, different production method'], '',
+   D('Medium and technique at New Script', 'A project', 'The estimate adds studio and render time by technique and leaves out shoot days', 'None', 'The Budget page and financing target',
+     'A technique with nothing to render prices none', 'Derived; the medium is saved with the project', R_EST)),
 ]),
 '03-04': ('Projects list, Overview', 'src/engine/projects.ts', [
   ('Create, save and reopen a project by a stable ID', 'VE', ['tests/journeys.test.ts::runs from script to delivery'], ''),
@@ -238,7 +253,29 @@ C = {
 ]),
 '08-01': ('Budget', 'src/engine/estimate.ts; src/engine/budget.ts', [
   ('The estimate by category with contingency, separate from money in hand', 'VE', ['tests/finance.test.ts::a new project has an estimate and a target'], ''),
-  ('A line with no available candidate is flagged as uncertain, never free', 'V', ['tests/depth-gaps.test.ts::names a part no experienced performer can take, instead of counting it as free'], 'Repaired November 8, 2026: it was counted at nothing; the Financing card now names it'),
+  ('A line with no available candidate is flagged as uncertain, never free', 'V', ['tests/depth-gaps.test.ts::names a part no experienced performer can take and prices it at the lowest rate, never as free', 'tests/estimates.test.ts::an unavailable required role is priced at its lowest rate and named as uncertain'], 'Repaired November 8, 2026: it was counted at nothing; the Financing card now names it',
+   D('None directly; the player resolves it by finding someone or changing the script', 'A required role or part', 'requiredCrewPlan prices a role with no candidate at the cheapest candidate\'s rate and marks it noCandidate',
+     'The role\'s days at that rate', 'The Uncertain callout on What It Costs, with how to resolve it', 'Hiring someone resolves it; until then the estimate says it may move',
+     'Derived', R_EST)),
+  ('Money by certainty: spent, agreed, held, still to come and contingency, each counted once', 'V',
+   ['tests/estimates.test.ts::money is counted once: an offer out holds its money', 'e2e/live-action.spec.ts::Once everything is hired and the days are booked'], '',
+   D('Offers, hires, bookings and schedules move money between the states', 'An approved draft', 'costBreakdown reads spent, committed and reserved from ledger postings and prices only work with no posting as still to come',
+     'None', 'The backers\' target and Ways To Cost Less', 'A withdrawn offer releases its hold and the work returns to still to come', 'Postings are saved; the rest derived', R_EST)),
+  ('What makes it expensive, each line with what drives it', 'V',
+   ['e2e/live-action.spec.ts::The estimate (SLATE-08-01)'], '',
+   D('Opening Everything Still To Come on the Budget page', 'An approved draft', 'Each line carries its driver: days at a rate, a shoot day at a place, a build',
+     'None', 'Which cut the player considers', 'Nothing to come shows no list', 'Derived', R_EST)),
+  ('Reused work is not priced again', 'V', ['tests/estimates.test.ts::reused work is not priced again'], '',
+   D('Reusing a design or build across scenes', 'Finished build work', 'Finished build tasks drop out of the estimate at the design they were built to', 'None',
+     'A lower estimate to come', 'A design change after the build prices the rebuild', 'Tasks are saved', R_EST)),
+  ('The estimate made at approval set against what was spent, by area, with the reasons for the differences', 'V',
+   ['tests/estimates.test.ts::after shooting, spending is compared by area', 'e2e/live-action.spec.ts::Once everything is hired and the days are booked'],
+   'Estimates need not equal spending: lost days, extra work and counteroffers are named, not hidden',
+   D('None: it reports', 'An approved draft and some spending', 'onDraftApproved stores the estimate by area; estimateAgainstSpending compares it with postings and names lost days, extra tasks, missed capture and counteroffers',
+     'None', 'The player\'s next budget and the contingency', 'A project approved before November 8, 2026 has no snapshot and shows no table', 'The snapshot is saved; it survives a reload (tested)', R_EST)),
+  ('The contingency names the risks it is for and how many it covers', 'V', ['tests/estimates.test.ts::same runtime, different production complexity'], '',
+   D('None: it reports', 'Exterior days, puppets or capture sessions in the plan', 'costBreakdown lists each risk with the cost of one occurrence; the contingency is 10% of the total',
+     'None', 'Whether to keep exterior days or add cover', 'A lost day is paid again from the money in hand', 'Derived', R_EST)),
 ]),
 '08-02': ('Budget > Backers', 'src/engine/finance.ts', [
   ('Each backer says what it needs; send; an answer after some days', 'VE',
@@ -263,7 +300,20 @@ C = {
 '08-05': ('Budget', 'src/engine/finance.ts', [
   ('A shortfall stops spending with the exact amount; more backing resumes it', 'VE', ['e2e/careers.spec.ts::stop motion: refused for lack of money'], ''),
   ('Income repays backers in order, then shares', 'VE', ['tests/finance.test.ts::income repays backers first'], ''),
-  ('Compare cutting scope against postponing or raising more', 'V', ['tests/cost-cuts.test.ts::the saving shown is what the estimate really drops by'], ''),
+  ('Compare cutting scope against postponing or raising more', 'V', ['tests/cost-cuts.test.ts::the saving shown is what the estimate really drops by', 'tests/estimates.test.ts::a cut says what it saves in money and shoot days', 'e2e/live-action.spec.ts::The alternatives: what the estimate would save'], ''),
+  ('A scope change shows its cost and shoot-day difference before it is approved', 'V',
+   ['tests/estimates.test.ts::before commitments, approving a smaller draft lowers the estimate and the days', 'e2e/live-action.spec.ts::A bigger script, shown before it is approved (SLATE-08-05)'], '',
+   D('Approve This Draft on a changed script; Keep The Current Draft or Approve The Change', 'An approved draft and a saved new one',
+     'approvalScope approves the draft on a copy of the game and compares the two breakdowns, so the preview is what approval does', 'None until approved',
+     'The schedule, hires and estimate after approval', 'Keeping the current draft changes nothing', 'Nothing saved until approved', R_EST)),
+  ('After commitments, a smaller script names the agreements that stay and what is owed', 'V',
+   ['tests/estimates.test.ts::after, the contracts stay and are named'], 'Cancellation terms are those already modeled (mocap bookings); hires are owed as agreed',
+   D('Approving a reduction', 'Accepted hires or bookings', 'scopeChange lists accepted hires no longer needed, with the amount owed, and capture bookings', 'What is owed stays owed',
+     'The Budget page keeps them as agreed', 'None: the player sees them before approving', 'Hires and bookings are saved', R_EST)),
+  ('A change after filming keeps the usable footage and estimates only what is left to shoot', 'V',
+   ['tests/estimates.test.ts::a change after filming keeps the footage of unchanged scenes'], '',
+   D('Approving a draft after some days are shot', 'Captured scenes', 'groupShootDays leaves out scenes fully filmed for the approved draft', 'Only the changed scenes\' days',
+     'Pickups for changed scenes', 'Changed scenes are shot again', 'Captures are saved', R_EST)),
 ]),
 '09-01': ('Cast > Find Performers', 'src/engine/hiring.ts; src/engine/people.ts', [
   ('Candidates with rates, languages, playing age, availability and shared background', 'VE', ['tests/identity.test.ts::casting a Cuban woman'], ''),
@@ -299,7 +349,7 @@ C = {
 ]),
 '10-02': ('Crew > Find', 'src/engine/hiring.ts', [
   ('Compare experience, rate and availability', 'VE', ['e2e/connected.spec.ts::a connected career'], ''),
-  ('No candidate is an explicit gap', 'V', ['tests/depth-gaps.test.ts::staffing names a role no one is free for, apart from one no one affordable can take', 'tests/depth-gaps.test.ts::names a part no experienced performer can take, instead of counting it as free'], ''),
+  ('No candidate is an explicit gap', 'V', ['tests/depth-gaps.test.ts::staffing names a role no one is free for, apart from one no one affordable can take', 'tests/depth-gaps.test.ts::names a part no experienced performer can take and prices it at the lowest rate, never as free'], ''),
 ]),
 '10-03': ('Crew', 'src/engine/hiring.ts', [
   ('Offer, book and assign dates; declines release only their reservations', 'VE', ['tests/tight-budget.test.ts::staffing hires a required crew'], ''),
@@ -341,6 +391,9 @@ C = {
   ('A call sheet for each day: who, where, when', 'V',
    ['tests/callsheet.test.ts::says the call the game schedules, who is called for which scenes', 'e2e/live-action.spec.ts::Each day\'s call sheet (SLATE-11-05.03)'],
    'Derived from the day (call and wrap events, who it pays, daylight, forecast); never stored'),
+  ('The schedule plans the days the estimate counted, by one rule', 'V', ['tests/estimates.test.ts::the estimate counts the shoot days the schedule then plans'], '',
+   D('Build Schedule', 'An approved draft', 'planShootDays dates the groups groupShootDays makes: unit, place, interior or exterior, day or night, filled to the day\'s time with each scene\'s shot plan',
+     'Each day reserves its location, gear and people', 'Call sheets, the shoot', 'A scene longer than a day gets a day of its own and runs over', 'Days are saved', R_EST)),
 ]),
 '12-01': ('Production', 'src/engine/production/shoot.ts', [
   ('A day runs only with the people it needs', 'VE', ['tests/schedule.test.ts::refuses when someone needed on set is busy'], ''),
@@ -351,11 +404,44 @@ C = {
   ('Setups, coverage choices and takes per scene', 'V',
    ['tests/takes.test.ts::more coverage and more takes use more of the day', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)'],
    'Coverage and take policies per scene; time factors and spreads are game calibration; projects from before keep one result per scene'),
+  ('What a scene needs comes from its declared facts and the director\'s emphasis, never its free text', 'V',
+   ['tests/directing.test.ts::comes from its declared facts and the player', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)'], '',
+   D('Emphasis, coverage and takes for each scene on its day\'s call sheet', 'A scheduled day, before the scene is shot',
+     'requiredSetups: a master always; singles for an exchange or a performance emphasis; inserts for a stunt, an effect, a planted setup or a detail emphasis; one shot needs only the master',
+     'Each setup a reset, each take its running time (setupTime)', 'The day\'s fit, the dailies, the edit', 'A lighter plan is allowed and says what the edit will lack',
+     'The plan is saved per scene', R_DIR)),
+  ('Coverage gives the edit options, not a bonus; a restrained plan is not penalised', 'V',
+   ['tests/directing.test.ts::missing coverage costs the edit; coverage the scene needs costs nothing; surplus earns no bonus', 'tests/directing.test.ts::a restrained one-shot scene is not penalised'], '',
+   D('Coverage per scene', 'A shot plan', 'coverageEdit costs 6 for each missing setup and 3 for a continuity break, averaged; surplus adds nothing', 'Surplus costs the day\'s time',
+     'The editing score', 'Accepting a gap keeps its cost; a pickup removes it', 'Captures record setups and days', R_DIR)),
+  ('Under the same constraints, the plan changes the days and the day can run over', 'V',
+   ['tests/directing.test.ts::under the same resources, covering what each scene needs shoots in fewer days', 'e2e/careers.spec.ts::The player gives the second more than it needs'], '',
+   D('Shot plans against a booked day', 'A schedule', 'A day\'s time does not grow: a scene that does not fit runs over to another day', 'Another shoot day at its cost',
+     'The schedule and spending', 'The scene is moved to a new day; nothing is lost', 'Days and captures are saved', R_DIR)),
 ]),
 '12-03': ('Production, Edit', 'src/engine/takes.ts', [
   ('Review a take, ask for another, or move on, at a time cost', 'V',
-   ['tests/takes.test.ts::choosing another take moves the performance and the direction', 'e2e/live-action.spec.ts::the cut uses the best balanced one; use another for the dock scene'],
-   'Takes are chosen before the day (the policy) and reviewed in the edit; the shoot itself runs unattended'),
+   ['tests/takes.test.ts::choosing another take moves the performance and the direction', 'tests/directing.test.ts::a usable first take ends the usual rule', 'e2e/live-action.spec.ts::Before locking, the dailies (SLATE-12-03)'],
+   'Takes follow the rule chosen before the day and are reviewed in the edit; the shoot itself runs unattended',
+   D('The take rule per scene; Use This Take in the dailies', 'A shot plan', 'recordTakes draws takes until the rule stops: one, until one is usable (up to four), or five for the best; the best usable take goes in the cut',
+     'Each take its running time; more takes are not guaranteed better', 'The scene\'s performance and technical figures', 'No usable take leaves the best of a bad set and an issue to fix',
+     'Takes are saved on the capture', R_DIR)),
+  ('A take can show a performance, camera or sound problem, from its recorded figures', 'V',
+   ['tests/directing.test.ts::names each issue with fixes that fit it'], 'The threshold (8 below the crew and cast\'s level) is game calibration',
+   D('None: it is what the take recorded', 'A take', 'takeIssue marks the weaker side when it falls 8 below the base; sound only where sound is at risk', 'None',
+     'The dailies\' issues and fixes', 'Fixed by another take, replaced lines, a pickup, or accepted', 'Saved on the take', R_DIR)),
+  ('The dailies show what exists, what is missing, and each fix with its cost', 'V',
+   ['tests/directing.test.ts::names each issue with fixes that fit it', 'e2e/live-action.spec.ts::Before locking, the dailies (SLATE-12-03)'], '',
+   D('Use Take, Replace The Lines In Post, Shoot … On A Pickup Day, Keep It And Move On, Cut It Without …', 'A scene shot under directing 2',
+     'sceneIssues offers only the fixes that fit: another clean take, replacement lines for a sound problem with dialogue, a pickup before lock, or acceptance',
+     'A pickup shows its day\'s cost; replacement lines a sound designer\'s day', 'The edit and the schedule', 'A locked picture offers no pickup', 'Derived from saved captures', R_DIR)),
+  ('Choosing a take or accepting a gap survives a save', 'V',
+   ['tests/directing.test.ts::the choice survives a save', 'e2e/live-action.spec.ts::Save, close and reopen: the chosen take and the accepted gap'], '',
+   D('Use This Take; Keep It, Cut It Without, Accept The Mismatch', 'Dailies with a choice', 'The chosen take and the accepted list are stored on the capture', 'None',
+     'The edit\'s figures', 'None needed', 'Saved and reloaded unchanged', R_DIR)),
+  ('Projects from before keep their takes, rules and footage', 'V', ['tests/directing.test.ts::a project from before keeps its takes and its coverage bonus'], '',
+   D('None', 'A save from before November 8, 2026', 'Only projects created with directing 2 use the new rules; others keep the earlier ones', 'None',
+     'The earlier Takes card', 'None', 'No migration: nothing in the save changes', R_DIR)),
 ]),
 '12-04': ('Production', 'src/engine/production/shoot.ts', [
   ('Weather loses or compromises a day and the log says so', 'V', ['e2e/journeys.spec.ts::live action in a wet October: rain stops an exterior day', 'tests/depth-gaps-production.test.ts::rain stops an exterior day, the log says so, and the scenes move to a new day', 'tests/depth-gaps-production.test.ts::shooting in the rain anyway records the scene, compromised'], ''),
@@ -407,6 +493,9 @@ C = {
 ]),
 '15-01': ('Edit', 'src/engine/finish.ts', [
   ('Assembly only from captured material; gaps named', 'VE', ['tests/script-effects.test.ts::missing footage names the scene'], ''),
+  ('With singles the editor cuts between usable takes for the performance', 'V', ['tests/directing.test.ts::surplus coverage gives the edit options'], '',
+   D('Coverage choices before the day', 'Singles filmed', 'editPerformance takes the best performance among takes without a performance problem when singles exist; without them, the chosen take',
+     'Singles cost setup time on the day', 'The performances in the quality assessment', 'Without singles the chosen take stands', 'Derived from saved takes', R_DIR)),
 ]),
 '15-02': ('Edit', 'src/engine/finish.ts', [
   ('Cut, restore and the essential-scene warnings', 'VE', ['e2e/script-rules.spec.ts::an essential scene cut then picked up'], ''),
@@ -416,6 +505,9 @@ C = {
   ('Replacement voice or effects revisions as additional work', 'V',
    ['tests/revisions.test.ts::work the grade waits for, and counts once it is done', 'tests/revisions.test.ts::re-recorded lines are a dialogue session the sound waits for', 'e2e/live-action.spec.ts::Additional work before lock (SLATE-15-03.02)'],
    'Gains (effects +5 to the scene capture, re-recording +4 to the performance) are game calibration'),
+  ('Replace sound-damaged lines in post, from the dailies', 'V', ['tests/directing.test.ts::replacing its lines books a sound designer'], '',
+   D('Replace The Lines In Post', 'A take in the cut with a sound problem, in a scene with dialogue', 'addDialogueReplacement adds the post task once', 'A sound designer\'s day; the performers return',
+     'The sound work waits for it', 'Offered once; booked work stays', 'The task is saved', R_DIR)),
 ]),
 '15-04': ('Edit, Production', 'src/engine/production/tasks.ts', [
   ('Sound, music, effects, colour, mix and captions as dependent work', 'VE', ['tests/journeys.test.ts::runs from script to delivery'], ''),
@@ -505,6 +597,11 @@ C = {
 ]),
 '19-03': ('Every action', 'src/ui', [
   ('Preview cost and time before committing; outcome after', 'V', ['tests/action-previews.test.ts::each previews its cost or time and shows its outcome'], 'Repaired November 8, 2026: eight actions previewed nothing; each now does, and a new spending action fails the test until recorded'),
+  ('A pickup from the dailies shoots only what is missing, at a day\'s cost shown first, and is refused without the money', 'V',
+   ['tests/directing.test.ts::missing coverage is shot on a targeted pickup'], 'The browser journey takes the accept route; the pickup route is tested in the engine',
+   D('Shoot … On A Pickup Day', 'A missing setup or a flawed take, picture not locked, no pickup already booked', 'applyFix checks the uncommitted money against pickupCost, then schedulePickups books a day after the last; applyPickup adds the setup or takes',
+     'The location, gear, shoot crew and the scene\'s cast for a day', 'The edit gains the material; the schedule a day', 'Refused with the amount when the money isn\'t there; a lost day is rebooked',
+     'The pickup day and its kind are saved', R_DIR)),
   ('Disabled actions say why', 'V', ['tests/disabled-reasons.test.ts::every disabled control in the interface is recorded with where its reason is shown'], 'Repaired November 8, 2026: seven controls gave no reason; each now says, and a new disabled control fails the test until recorded'),
 ]),
 '19-04': ('Saved Games, Settings', 'src/engine/save.ts; src/engine/vault.ts', [
@@ -522,14 +619,14 @@ C = {
 '20-02': ('docs/DATA-PROVENANCE.md, rulebooks', 'src/engine/rulebooks.ts', [
   ('Festival and award rules cite their source, edition and status', 'VE', ['tests/rulebooks.test.ts::every rule names a real institution, category and source'], ''),
   ('World data sources recorded', 'VE', ['tests/world-holidays.test.ts::labels years past the last announcement as projected'], ''),
-  ('Production-process sources per feature ID', 'V', ['tests/production-sources.test.ts::names every exported calibration constant, each with a status and a source column'], 'docs/depth/PRODUCTION-SOURCES.md: every rate is recorded per feature ID as a labelled model; no primary source was consulted for any of them'),
+  ('Production-process sources per feature ID', 'V', ['tests/production-sources.test.ts::names every exported calibration constant, each with a status and a source column'], 'docs/depth/PRODUCTION-SOURCES.md: every rate is recorded per feature ID as a labelled model. Until November 8, 2026 no primary source was consulted; since then IATSE Local 634 backs what a script supervisor records (docs/depth/DIRECTING-RESEARCH.md), and every figure is still a model'),
 ]),
 '20-03': ('tests', 'tests', [
   ('Transitions, boundaries, failures, determinism and migration tested', 'VE', ['tests/processing.test.ts::processes it exactly once'], ''),
 ]),
 '20-04': ('e2e', 'e2e', [
   ('Desktop, phone and WebKit journeys for creation, funding, casting, revision, save and recovery', 'VE', ['e2e/careers.spec.ts::stop motion: refused for lack of money'], ''),
-  ('Journeys for the features this package adds', 'V', ['e2e/negotiation.spec.ts::an investor offer: when it lapses, asking for better terms, and their answer', 'e2e/auditions.spec.ts::called back with a chemistry read, then offered the part', 'e2e/season.spec.ts::a season planned and reordered', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)', 'e2e/live-action.spec.ts::Before locking, the takes (SLATE-12-03)', 'e2e/career.spec.ts::a proposal is accepted into a funded project', 'e2e/connected.spec.ts::Earnings (SLATE-16-04.02)'], 'Versions (15-05.03) and later windows (16-05) are covered by unit tests only'),
+  ('Journeys for the features this package adds', 'V', ['e2e/negotiation.spec.ts::an investor offer: when it lapses, asking for better terms, and their answer', 'e2e/auditions.spec.ts::called back with a chemistry read, then offered the part', 'e2e/season.spec.ts::a season planned and reordered', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)', 'e2e/live-action.spec.ts::Before locking, the dailies (SLATE-12-03)', 'e2e/career.spec.ts::a proposal is accepted into a funded project', 'e2e/connected.spec.ts::Earnings (SLATE-16-04.02)'], 'Versions (15-05.03) and later windows (16-05) are covered by unit tests only'),
 ]),
 '20-05': ('People', '', [
   ('Human play and real devices', 'EB', [], 'Needs the owner and real devices'),

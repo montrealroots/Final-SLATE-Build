@@ -4,13 +4,15 @@ import { showCut } from '../engine/documentary-actions';
 import { chooseTake } from '../engine/takes-actions';
 import { getPlace, placeLabel } from '../data/places';
 import {
-  ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
-  deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
-  qualityWords, requestPickups, pickupIntegration, cutPassDays, CUT_REVIEW_DAYS, depsMet, startCutPass, unlockPicture, addDaysToKey, categoryRecipients, type Category,
+  ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, dateKey, declineDistribution, deliver,
+  deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, money, planRelease, puppetStatus,
+  qualityWords, CUT_REVIEW_DAYS, depsMet, addDaysToKey, categoryRecipients, type Category,
   categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
-  approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, restoreToEdit,
-  cutScenes, entryNeeds, castPlacement, sceneLabel } from '../engine';
+  approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, cutScenes, entryNeeds, castPlacement, sceneLabel } from '../engine';
+import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupIntegration, cutPassDays, startCutPass, unlockPicture, restoreToEdit } from '../engine/edit-actions';
 import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
+import { applyFix, dailies } from '../engine/directing';
+import { isDirecting2 } from '../engine/takes';
 import { contentSummary, cutConsequences, placementExplained, watershedRule } from '../engine/script-explain';
 import type { CapturePart, GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, PageHead, SelectField, TextField, longLocal, plural } from './components';
@@ -221,6 +223,49 @@ function ApprovalsCard({ p, onError, onCut }: { p: Project; onError: (e: string 
 }
 
 /** The takes of each scene, and the one the cut uses (takes.ts, SLATE-12-03). Choosing trades performance against craft. */
+const TAKE_ISSUE_WORDS = { performance: 'performance falls short', camera: 'camera problem', sound: 'sound unusable' } as const;
+
+/**
+ * The day's material and what to do about it (directing.ts): for each shot scene, what it needs and what was filmed, its
+ * takes with any problem, and each issue with the fixes that fit it and what they cost.
+ */
+function DailiesCard({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
+  useGame();
+  const ds = dailies(p);
+  if (!ds.length) return null;
+  return (
+    <section className="card" aria-labelledby="dailies-h">
+      <h2 id="dailies-h">Dailies</h2>
+      <p className="dim">What each scene needs, what was filmed and the takes. Fix what matters to the edit: use another take, replace lines in post, shoot a pickup of just what is missing, or keep it and move on.</p>
+      <ul className="list">{ds.map((d) => (
+        <li key={d.sceneId} aria-label={`Dailies For ${d.label}`}>
+          <strong>{d.label}</strong>
+          <div className="dim small">Needs {d.needed.map((n) => n.setup).join(', ')}. Filmed {d.setups.join(', ') || 'nothing yet'}.</div>
+          <ul className="list">{d.takes.map((t) => (
+            <li key={t.n} className="row-wrap">
+              <span className="grow">Take {t.n}: performance {qualityWords(t.perf).toLowerCase()}, technical {qualityWords(t.tech).toLowerCase()}{t.issue ? ` · ${TAKE_ISSUE_WORDS[t.issue]}` : ''}{t.inCut ? ' · In the cut' : ''}</span>
+              {!t.inCut && !p.edit.pictureLocked && <button className="btn btn-sm" aria-label={`Use Take ${t.n} Of ${d.label}`} onClick={() => onError(store.act(() => chooseTake(p, d.sceneId, t.n - 1)))}>Use This Take</button>}
+            </li>
+          ))}</ul>
+          {d.issues.map((iss) => (
+            <div key={iss.text} className="callout callout-warning spaced">
+              <p>{iss.text}</p>
+              <ul className="list">{iss.fixes.map((f) => (
+                <li key={f.label} className="row-wrap">
+                  <button className="btn btn-sm" onClick={() => onError(store.act((s) => void applyFix(s, s.projects.find((x) => x.id === p.id)!, d.sceneId, f)))}>{f.label}</button>
+                  {f.detail && <span className="dim small grow">{f.detail}</span>}
+                </li>
+              ))}</ul>
+            </div>
+          ))}
+          {!d.issues.length && <p className="dim small">Nothing to fix.</p>}
+        </li>
+      ))}</ul>
+      <p className="dim small">Uncommitted money: {money(ledgerTotals(p).available)}. A pickup isn't booked without the money for its day.</p>
+    </section>
+  );
+}
+
 function TakesCard({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
   const scenes = approvedScenes(p).filter((s) => (p.captures.find((c) => c.sceneId === s.id)?.takes?.length ?? 0) > 1);
   return (
@@ -278,7 +323,7 @@ export function EditTab({ p }: { p: Project }) {
           <details className="spaced"><summary>Versions</summary><ul>{p.edit.versions.map((v) => <li key={v.number}>Version {v.number}: {v.note}, about {v.runtimeMin} minutes</li>)}</ul></details>
         )}
       </section>
-      {p.captures.some((c) => (c.takes?.length ?? 0) > 1) && <TakesCard p={p} onError={setErr} />}
+      {isDirecting2(p) ? <DailiesCard p={p} onError={setErr} /> : p.captures.some((c) => (c.takes?.length ?? 0) > 1) && <TakesCard p={p} onError={setErr} />}
       {!p.delivered && !p.edit.pictureLocked && p.tasks.length > 0 && <AdditionalWorkCard p={p} onError={setErr} />}
       {(p.edit.pictureLocked || (p.versions?.length ?? 0) > 0) && <VersionsCard p={p} onError={setErr} />}
       {p.contributors.some((c) => c.consent === 'given' && c.restrictions?.includes('approval')) && <ApprovalsCard p={p} onError={setErr} onCut={setCutting2} />}

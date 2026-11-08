@@ -8,3 +8,4 @@ export * from '../src/engine/awards-actions';
 export function getProjectZone(p: Project): string {
   return getPlace(p.axes.basePlaceId).zone;
 }
+export * from '../src/engine/edit-actions';

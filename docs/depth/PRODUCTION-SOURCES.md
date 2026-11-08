@@ -6,7 +6,7 @@ code exports from these files that this table doesn't name, and a row whose cons
 
 **None of these is a sourced fact.** Each one is a game model: chosen so that productions of each kind take a believable
 number of days and cost amounts that sit in a believable order against each other, then tuned against the balance
-runs (`npm run balance`, `docs/balance-results.json`). No primary source was consulted for any of them. Where the package says a
+runs (`npm run balance`, `docs/balance-results.json`). Until November 8, 2026 no primary source was consulted for any of them; since then one row (`TAKE_RULES` and its neighbours) cites a primary source for the process it models, never for its figures. Where the package says a
 public figure exists (union minimums, studio rate cards), those vary by country, union, year and production, and none
 is applied here: the people pool's day rates come from the world seed and experience, not from a rate card. If a
 sourced figure replaces one of these, its row gets the source ID, URL, publisher, edition, retrieval date and
@@ -20,6 +20,7 @@ applicability, and its status becomes "verified fact".
 | `RENDER_NODE_DAY_COST` | `src/engine/production/rates.ts` | $35 a node a day | 13-02, 08-01 | Modeled assumption | None |
 | `BASE_MINUTES_PER_SHOOT_DAY` | `src/engine/production/rates.ts` | 4 screen minutes | 12-02, 11-05 | Modeled assumption | None |
 | `HOLIDAY_PREMIUM` | `src/engine/production/rates.ts` | 1.5 times the day rate | 11-05, 12-01 | Modeled assumption | None |
+| `CROWD_DAY_RATE` | `src/engine/production/rates.ts` | $180 a background performer a day | 12-02, 08-01 | Modeled assumption | None |
 | `MATERIAL_COST` | `src/engine/production/rates.ts` | per build or prep task | 11-03, 13-03, 08-01 | Modeled assumption | None |
 | `LOCATION_FEE_PER_DAY` | `src/engine/production/rates.ts` | $1,200 | 11-02, 12-02 | Modeled assumption | None |
 | `EQUIPMENT_PER_DAY` | `src/engine/production/rates.ts` | $1,500 | 12-02 | Modeled assumption | None |
@@ -28,6 +29,7 @@ applicability, and its status becomes "verified fact".
 | `MOCAP_ANIMATION_FACTOR` | `src/engine/production/rates.ts` | 0.6 of keyframe work left | 13-04 | Modeled assumption | None |
 | `SITES` | `src/engine/locations.ts` | stage 1.6 times the fee, never falls through; stand-in 0.6, 15% risk; real place 5% risk | 11-02 | Modeled assumption | None |
 | `COVERAGE`, `TAKES`, `TAKE_CENTRE` | `src/engine/takes.ts` | time factors and take counts per plan | 12-02, 12-03 | Modeled assumption | None |
+| `TAKE_RULES`, `SETUP_RESET`, `TAKE_RUN`, `ISSUE_GAP` | `src/engine/takes.ts` | directing 2: takes allowed and planned per rule (1, up to 4, 5); a setup's reset 0.2 and a take's run 0.15 of a scene's standard load; a side 8 below what the crew and cast can do is an issue | 12-02, 12-03 | Modeled assumption; that set-ups and takes are what a shoot day's time goes on, and that a script supervisor records coverage and pickup shots, is from IATSE Local 634's job description (docs/depth/DIRECTING-RESEARCH.md) | IATSE Local 634, Script Department Positions And Descriptions (2025) |
 | `AUDITION_NOTICE_DAYS`, `FIRST_SPREAD`, `CALLBACK_SPREAD` | `src/engine/auditions.ts` | 3 days; ranges 22 and 8 wide | 09-02 | Modeled assumption | None |
 | `OFFER_OPEN_DAYS`, `COUNTER_DAYS` | `src/engine/negotiation.ts` | 21 and 5 days | 08-03 | Modeled assumption | None |
 | `COUNTER_OPEN_DAYS` | `src/engine/hiring.ts` | 7 days | 09-03 | Modeled assumption | None |

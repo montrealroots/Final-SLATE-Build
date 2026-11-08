@@ -1,8 +1,9 @@
 // Stage 12 of the gameplay-depth package: tests for production children built before the package that had none
 // (docs/depth/COVERAGE-LEDGER.csv rows marked IMPLEMENTED UNVERIFIED).
 import { describe, expect, it } from 'vitest';
-import { DAY, addDaysToKey, approvedScenes, bookMocap, castPlayer, estimateDays, pickupIntegration, requestPickups, ledgerTotals, mocapRecord, precipitationDuring, processUntil, weatherOn } from '../src/engine';
+import { DAY, addDaysToKey, approvedScenes, bookMocap, castPlayer, estimateDays, ledgerTotals, mocapRecord, precipitationDuring, processUntil, weatherOn } from '../src/engine';
 import { rebookMissed } from '../src/engine/mocap';
+import { pickupIntegration, requestPickups } from '../src/engine/edit-actions';
 import { getPlace } from '../src/data/places';
 import { maybePuppetDamage } from '../src/engine/production/workday';
 import { captureQuality, runShootDay } from '../src/engine/production/shoot';

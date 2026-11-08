@@ -8,7 +8,38 @@
 
 ## Commands And Results
 
-### Current: Screen Review, Identity From 1221 (November 8, 2026, after #38)
+### Current: Estimates That Follow The Work, Contextual Directing (November 8, 2026, after #44)
+
+Tested revision: the branch's commits `2f4f0fa` (estimates), `3eadff8` (directing), `b9a9766` (journeys, ledger,
+research) and `a2d6bb5` (resume notes) on top of `main` at `37123f5`. The browser suite and checks below ran on `a2d6bb5`.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 63 files, 439 tests passed (`tests/estimates.test.ts` 11, `tests/directing.test.ts` 11 new); build passed; startup JavaScript 689 kB, 218 kB gzipped (budgets 700 and 220), 0 problems. |
+| `npm run balance`, `npm run perf:engine` | 0 | 2 and 2 tests passed. Balance moved: the low-budget live-action feature now averages 74.4 days (was 82.2) and spends 48.3% of its fund (was 54.6), because the default shot plan covers what each scene needs instead of master and singles everywhere; the micro short 33.5 days (34.6). Delivered rate unchanged (1) in every family; the held-out mean overall moved 60.8 to 60.9. |
+| `SLATE_E2E_PROD=1 npx playwright test --trace retain-on-failure` | 0 | Production build, the complete suite: 192 passed, 31 skipped (all by project; listed under Why 31 Browser Tests Are Skipped), 0 failed, in 18.0 minutes. |
+| `npx playwright test e2e/live-action.spec.ts` (all four projects) and `e2e/careers.spec.ts` (desktop) | 0 | Run while writing the journeys: live-action passed on desktop, phone, iPhone 15 Plus and iPhone 15 Pro Max; the TV season passed. |
+
+Comparison tests, each on more than one seed or scenario: same runtime with different complexity (three world seeds);
+same script by different methods; an unavailable role against an available one; reused against new builds; a smaller
+draft before and after commitments, and after filming; estimate against spending, with the reasons, through a save;
+take rules over 40 seeds (a usable first take ends the usual rule; more takes cost time and are sometimes no better);
+covering what each scene needs against the most of everything under the same resources, over three tags; missing,
+needed and surplus coverage; a restrained one-shot scene; review fixes, a pickup refused for lack of money then booked;
+accepting a gap through a save; an old save keeping its rules.
+
+Defects found on the way and fixed:
+- Offers out were counted twice: as held money and as work to come.
+- An unavailable role was priced at nothing.
+- The schedule and the estimate used different day rules.
+- Capture-stage cost was missing until booked.
+- The Dailies card first dropped the Takes card's free choice of take (restored).
+- Its fix buttons were sentence case, against `docs/COPY-GUIDE.md` (now Title Case, with the cost beside each).
+- `PRODUCTION-SOURCES.md` and the ledger's 20-02 row said no source was ever used. That was true until this change and is now in the past tense.
+
+Screenshots inspected: What It Costs and the scope-change dialog (desktop), the Dailies card (desktop and WebKit iPhone 15 Pro Max).
+
+### Previous: Screen Review, Identity From 1221 (November 8, 2026, after #38)
 
 The owner's screen-by-screen review (start screen, then Identity) led to fixes to the place picker and to bringing over
 what 1221's Identity had: a legal name in parts and a preferred name, citizenship that decides public-fund
@@ -154,18 +185,18 @@ unreadable. Two things were noted and not changed. On the phone, the scrolling t
 of the edge tabs ("‹roduction"); that is the existing scroll affordance. A section scrolled into view sits partly
 under the sticky header on the iPhone; in the screenshot, the Distribution Offers heading was cut off.
 
-### Why 27 Browser Tests Are Skipped
+### Why 31 Browser Tests Are Skipped
 
 Skipped tests did not run and are not counted as passed. Each is skipped on purpose for the project named, by an
-explicit `test.skip(project…)`; no test skips itself on an outcome:
+explicit `test.skip(project…)`; no test skips itself on an outcome. The list was taken from a run on November 8, 2026
+(after #44) with a reporter that prints every skipped test:
 
 - **1 on desktop:** the phone device test runs only on the iPhone projects.
-- **26 on phone (Chromium 390×844):** the device test (iPhone projects only), and the journeys and checks that run once,
-  at desktop width: the TV and stop-motion careers (2), the reload lifecycle check (1), the first-project journey (1), the two-tab import and storage checks (2), the 11 journeys in
-  `e2e/journeys.spec.ts` (2D, hybrid, documentary and its decline, TV, web series, 3D with motion capture, stop motion,
-  unscripted and its withdrawal, festival under official rules), the two media checks (2), the performance measurement
-  (1), the mature-project script-rules journey (1), and four layout and lifecycle checks that set their own viewports or
-  tabs (4).
+- **30 on phone (Chromium 390×844):** the device test (iPhone projects only), and the journeys and checks that run once,
+  at desktop width: the 15 journeys in `e2e/journeys.spec.ts`, the TV and stop-motion careers (2), the first-project
+  journey (1), the two media journeys (2), the mature-project script-rules journey (1), the performance measurement (1),
+  the two-tab import and storage checks (2), and five layout, keyboard and lifecycle checks in `e2e/viewports.spec.ts`
+  that set their own viewports or tabs (5).
 - The WebKit iPhone projects list only the specs they run (`playwright.config.ts`): `iphone-15-plus` runs creation,
   focus, live-action and devices; `iphone-15-pro-max` the same plus the connected journey; the landscape project runs
   devices. Specs they don't list aren't counted for them at all.

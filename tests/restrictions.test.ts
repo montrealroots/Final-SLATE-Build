@@ -5,7 +5,8 @@ import { DAY, computeCredits, deliveryBlockers, processUntil, requestConsent, wi
 import { redactionComplete } from '../src/engine/unscripted';
 import { CUT_REVIEW_DAYS, ensureBlurTasks } from '../src/engine/documentary';
 import { buildTasks } from '../src/engine/production/tasks';
-import { editScenes, unlockPicture } from '../src/engine/finish';
+import { editScenes } from '../src/engine/finish';
+import { unlockPicture } from '../src/engine/edit-actions';
 import type { Project, Scene } from '../src/engine/types';
 import { approve, buildProject, startLife } from './helpers';
 

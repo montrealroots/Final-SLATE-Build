@@ -11,7 +11,8 @@ import { addLog, cancelEvents, newId, schedule } from '../state';
 import { addDaysToKey, dateKey, formatDateKey, isDateKey, localParts, localToInstant, parseYmd, weekdayOfKey } from '../time';
 import { materialCost } from './workday';
 import { buildTasks } from './tasks';
-import { BASE_MINUTES_PER_SHOOT_DAY, dayFees } from './rates';
+import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, dayFees } from './rates';
+import { planTime } from '../takes';
 
 // ---------------- Shoot day planning ----------------
 
@@ -52,9 +53,28 @@ export function nextWorkingDay(p: Project, key: string): string {
  * (November 8, 2026), a series groups by director instead of episode: scenes at one place in episodes the same person
  * directs share days, and a place used by two directors gets a day each, since one day has one director.
  */
-export function planShootDays(state: GameState, p: Project, firstDay: string): ShootDay[] {
+/**
+ * How much of a shoot day a scene needs: its minutes, slowed by what it involves (sceneComplexity), times its shot plan
+ * (takes.ts planTime). One rule for the schedule, the estimate and the shoot day itself (November 8, 2026); until then
+ * the schedule and the estimate left out the shot plan, so richer coverage made the shoot overrun days nobody planned.
+ */
+export function sceneLoad(p: Project, s: Scene, mods: Set<string> = projectModules(p)): number {
+  return (s.estMinutes / sceneComplexity(s, mods)) * planTime(p, s);
+}
+
+export interface ShootDayGroup { sceneIds: string[]; episodes: number[]; place: string; interior: boolean; night: boolean; load: number }
+
+/**
+ * The shoot days the approved live-action scenes need: grouped by episode (or director), place, interior or exterior,
+ * and day or night, then filled to a day's capacity. The schedule dates these; the estimate counts and prices them, so
+ * a script whose scenes are spread over places and times of day costs the days it really takes (November 8, 2026;
+ * the estimate pooled every minute into one total until then).
+ */
+export function groupShootDays(p: Project): ShootDayGroup[] {
   const mods = projectModules(p);
-  const scenes = approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival' && s.kind !== 'narration');
+  // Scenes already filmed in full for the approved draft are done: a rebuilt plan and the estimate leave them out alike.
+  const filmed = new Set(p.captures.filter((c) => c.captured >= 0.999 && c.version === p.approvedDraft).map((c) => c.sceneId));
+  const scenes = approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival' && s.kind !== 'narration' && !filmed.has(s.id));
   const groups = new Map<string, Scene[]>();
   const block = !!p.schedule.blockEpisodes && p.episodes.length > 1;
   const directorOf = (ep: number) => p.episodes.find((e) => e.number === ep)?.director ?? 'player';
@@ -63,9 +83,7 @@ export function planShootDays(state: GameState, p: Project, firstDay: string): S
     const key = `${unit}|${s.storyLocation || s.heading.place}|${s.heading.intExt === 'EXT' ? 'EXT' : 'INT'}|${s.heading.time === 'NIGHT' ? 'N' : 'D'}`;
     (groups.get(key) ?? groups.set(key, []).get(key)!).push(s);
   }
-  const days: ShootDay[] = [];
-  let cursor = nextWorkingDay(p, firstDay);
-  const playerChars = new Set(p.cast.filter((c) => c.performer === 'player').map((c) => c.characterId));
+  const out: ShootDayGroup[] = [];
   const sortedGroups = [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0], 'en', { numeric: true }));
   for (const [key, list] of sortedGroups) {
     const [, place, ie, dn] = key.split('|');
@@ -73,17 +91,12 @@ export function planShootDays(state: GameState, p: Project, firstDay: string): S
     let load = 0;
     const flush = () => {
       if (!bucket.length) return;
-      const eps = [...new Set(bucket.map((s) => s.episode))].sort((a, b) => a - b);
-      days.push({
-        id: newId(state, 'd'), date: cursor, episode: eps[0], ...(eps.length > 1 ? { episodes: eps } : {}), sceneIds: bucket.map((s) => s.id), locationLabel: place, interior: ie === 'INT', night: dn === 'N',
-        status: 'scheduled', playerActing: bucket.some((s) => s.participants.some((c) => playerChars.has(c))), conflicts: [],
-      });
-      cursor = nextWorkingDay(p, addDaysToKey(cursor, 1));
+      out.push({ sceneIds: bucket.map((s) => s.id), episodes: [...new Set(bucket.map((s) => s.episode))].sort((x, y) => x - y), place, interior: ie === 'INT', night: dn === 'N', load });
       bucket = [];
       load = 0;
     };
     for (const s of list) {
-      const need = s.estMinutes / sceneComplexity(s, mods);
+      const need = sceneLoad(p, s, mods);
       if (load + need <= BASE_MINUTES_PER_SHOOT_DAY) {
         bucket.push(s);
         load += need;
@@ -94,6 +107,7 @@ export function planShootDays(state: GameState, p: Project, firstDay: string): S
       let remaining = need;
       while (remaining > BASE_MINUTES_PER_SHOOT_DAY) {
         bucket = [s];
+        load = BASE_MINUTES_PER_SHOOT_DAY;
         flush();
         remaining -= BASE_MINUTES_PER_SHOOT_DAY;
       }
@@ -101,6 +115,21 @@ export function planShootDays(state: GameState, p: Project, firstDay: string): S
       load = remaining;
     }
     flush();
+  }
+  return out;
+}
+
+export function planShootDays(state: GameState, p: Project, firstDay: string): ShootDay[] {
+  const days: ShootDay[] = [];
+  let cursor = nextWorkingDay(p, firstDay);
+  const playerChars = new Set(p.cast.filter((c) => c.performer === 'player').map((c) => c.characterId));
+  const scenes = approvedScenes(p);
+  for (const g of groupShootDays(p)) {
+    days.push({
+      id: newId(state, 'd'), date: cursor, episode: g.episodes[0], ...(g.episodes.length > 1 ? { episodes: g.episodes } : {}), sceneIds: g.sceneIds, locationLabel: g.place, interior: g.interior, night: g.night,
+      status: 'scheduled', playerActing: scenes.some((s) => g.sceneIds.includes(s.id) && s.participants.some((c) => playerChars.has(c))), conflicts: [],
+    });
+    cursor = nextWorkingDay(p, addDaysToKey(cursor, 1));
   }
   // Note conflicts with the player's own appointments.
   for (const d of days) {
@@ -157,7 +186,7 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   const planned = planShootDays(state, p, shootStart).map((d) => ({ ...d, sceneIds: d.sceneIds.filter((s) => !capturedIds.has(s)) })).filter((d) => d.sceneIds.length);
   // Budget the schedule: shoot-day costs and materials are reserved now, so they can't be spent twice.
   const shootCost = planned.length * (dayFees(p).location + dayFees(p).equipment) +
-    planned.reduce((a, d) => a + approvedScenes(p).filter((sc) => d.sceneIds.includes(sc.id)).reduce((b, sc) => b + sc.crowd * 180, 0), 0);
+    planned.reduce((a, d) => a + approvedScenes(p).filter((sc) => d.sceneIds.includes(sc.id)).reduce((b, sc) => b + sc.crowd * CROWD_DAY_RATE, 0), 0);
   const matCost = p.tasks.filter((x) => x.status !== 'done').reduce((a, x) => a + materialCost(x), 0);
   const previous = p.obligations.filter((o) => (o.ref === 'plan:shoot' || o.ref === 'plan:materials') && (o.state === 'reserved' || o.state === 'committed'));
   const freed = previous.reduce((a, o) => a + Math.max(0, o.amount - o.settled), 0);
