@@ -5,7 +5,7 @@ import { DAY, addDaysToKey, approvedScenes, bookMocap, castPlayer, estimateDays,
 import { rebookMissed } from '../src/engine/mocap';
 import { getPlace } from '../src/data/places';
 import { maybePuppetDamage } from '../src/engine/production/workday';
-import { captureQuality } from '../src/engine/production/shoot';
+import { captureQuality, runShootDay } from '../src/engine/production/shoot';
 import { buildTasks } from '../src/engine/production/tasks';
 import type { GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
@@ -187,4 +187,23 @@ describe('a changed plate (SLATE-13-05)', () => {
     p.tasks = buildTasks(p);
     expect(pickupIntegration(p, [p.scenes[0].id])).toEqual([]);
   });
+});
+
+describe('a shoot day missing its people (SLATE-12-01)', () => {
+  it('with no camera crew the day is lost, the log says why and points to the crew, and its scenes move to a new day', () => {
+    const s = startLife('gaps-nocrew', 'gb-london', { startDate: '2026-06-01', startTime: '09:00' });
+    const p = buildProject(s, { title: 'No Camera', format: 'short', medium: 'live-action', scenario: 'micro', runtime: 6 }, [{ name: 'Ada', patch: { roleSize: 'lead' } }], [{ place: 'Kitchen', chars: ['Ada'] }]);
+    approve(s, p);
+    castAll(s, p);
+    staffAll(s, p);
+    for (let i = 0; i < 8; i++) { manage(s, p); processUntil(s, s.now + DAY, 'tick', 100000); }
+    startProduction(s, p, 3);
+    for (const h of p.hires) if (h.roleId === 'dop' || h.roleId === 'camera-operator') h.status = 'released'; // labelled fixture: the camera crew left
+    const d = p.schedule.days.find((x) => x.status === 'scheduled')!;
+    const result = runShootDay(s, p, d);
+    expect(result).toBe('No camera crew was hired, so nothing could be shot.');
+    expect(d.status).toBe('lost');
+    expect(s.log[0]).toMatchObject({ text: `No Camera: ${result}`, route: { tab: 'crew' } });
+    expect(p.schedule.days.some((x) => x.id !== d.id && x.status === 'scheduled' && x.date > d.date && d.sceneIds.every((id) => x.sceneIds.includes(id)))).toBe(true);
+  }, 60000);
 });

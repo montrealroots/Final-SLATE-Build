@@ -344,7 +344,7 @@ C = {
 ]),
 '12-01': ('Production', 'src/engine/production/shoot.ts', [
   ('A day runs only with the people it needs', 'VE', ['tests/schedule.test.ts::refuses when someone needed on set is busy'], ''),
-  ('Missing people or gear: switch scenes, delay or cancel, with costs', 'IU', [], 'Partly via moveShootDay; no test of a missing-resource day'),
+  ('Missing people or gear: switch scenes, delay or cancel, with costs', 'V', ['tests/depth-gaps-production.test.ts::with no camera crew the day is lost, the log says why and points to the crew', 'tests/schedule.test.ts::moves a day to the first free working day after the shoot, keeps costs', 'tests/schedule.test.ts::swaps dates with the next interior day'], 'Gear is not modeled apart from the crew who bring it'),
 ]),
 '12-02': ('Production', 'src/engine/production/shoot.ts; src/engine/takes.ts', [
   ('A shoot day captures its scenes with coverage and quality', 'VE', ['tests/journeys.test.ts::runs from script to delivery'], ''),
