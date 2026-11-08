@@ -6,6 +6,10 @@ Every number here is a game calibration value. None is a quoted real-world rate 
 | --- | --- | --- |
 | Starting time | Working default 08:00, editable at creation | `state.ts` |
 | Minimum starting age | 16 on the starting date, maximum 100 | `validateDraft` |
+| Names (from 1221, November 8, 2026) | A first and a last name are required, a middle name optional; the legal name (first, middle, last) is what credits carry. A preferred name, blank for first and last, is what Home's greeting, the rail, Profile and the Saved Games list call you. | `identity.ts` |
+| Citizenship (from 1221) | The place of birth's country, not asked; a territory gives its sovereign state's citizenship (1221's table, e.g. Puerto Rico gives the United States). With where you live (where your story began), your home countries. Travel and work permits don't read it. | `identity.ts` |
+| Public screen funds | The Screen Arts Fund Grant is the public fund of the country where the project is based, and supports its citizens and residents: a project based elsewhere can't apply. A simplification of rules such as the BFI's (UK residents) or Telefilm's (Canadian citizens and permanent residents), not any one fund's rule. | `finance.ts` `fundClosedTo` |
+| Headshot (from 1221) | Any photo a browser can decode, cropped to 4:5 and re-encoded as a 512 by 640 JPEG kept in the save (at most 400,000 characters); shown on Review, Profile and beside your credits. The game never reads what's in it. | `ui/PortraitPicker.tsx`, `identity.ts` |
 | Leap-day birthdays | Observed February 28 in common years. Age is measured in the birthplace zone, so travel never changes it. | `time.ts`, `state.ts` |
 | Month advance | Wall time kept. Month end clamps (January 31 plus one month is the last day of February). | `addLocal` |
 | Lifecycle | Time runs only while the game is open and visible. No offline catch-up. One tab runs a save at a time. | `clock.ts`, `ui/store.ts` |

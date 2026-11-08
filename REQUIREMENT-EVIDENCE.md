@@ -158,3 +158,14 @@ traces each one). `S` = `tests/script-effects.test.ts`, `R` = `e2e/script-rules.
 | On a micro budget one person takes the roles they can combine | Staff This Department | `requiredCrewPlan` ordering, `COMBINES` | Fewer hires; one task a day each | Proposals list the editor, not a colorist | `tests/tight-budget.test.ts`; `tests/production-golden.test.ts` | Tested |
 | A recording session the production can't pay for waits with the reason; time keeps running | A voice session short of money | `runWorkDay` | Task blocked | "There isn't enough money left for recording studio time. Add funding or cut scope." | `tests/tight-budget.test.ts` | Tested |
 | Micro-budget animation finishes when funded to its estimate | Balance families | The whole production engine | — | — | `npm run balance` (stop motion and 3D CG at micro: 30 of 30; asserted) | Tested |
+
+## Identity From 1221 (November 8, 2026, after #38)
+
+| Requirement | Input | Consumer | Persistent Consequence | Player Feedback | Evidence | Status |
+| --- | --- | --- | --- | --- | --- | --- |
+| A legal name in parts; credits carry it | First, middle, last name | `newGame`, `computeCredits` (`character.name`) | `character.name`, `firstName`, `middleName`, `lastName` | Review heading; Profile's Legal Name; credits | `tests/identity.test.ts`; `e2e/identity.spec.ts`; `e2e/connected.spec.ts`, `e2e/careers.spec.ts` (credits) | Tested |
+| The game calls you by your preferred name | Preferred Name | `knownAs`, `addressedAs` | `character.preferredName` | Home's greeting, the rail, Profile heading, Saved Games list | `tests/identity.test.ts`; `e2e/identity.spec.ts` | Tested |
+| Citizenship from the place of birth; a territory gives its sovereign state's | Place of birth | `citizenshipFor` | Derived, never stored | Identity's Citizenship, Review, Profile | `tests/identity.test.ts` | Tested |
+| A country's public screen fund supports its citizens and residents | Citizenship, where you live, production base | `fundClosedTo`, `backerOptions` | — | Raise Money says why the grant is closed; Approach disabled | `tests/identity.test.ts` (fails when mutated); `e2e/identity.spec.ts` (France against London) | Tested |
+| A headshot, cropped and re-encoded small enough for a save | A photo | `PortraitPicker`, `isPortrait` | `character.portrait` | Review, Profile, beside your own credits | `tests/portrait.test.ts` (22, from 1221); `e2e/identity.spec.ts`; `e2e/careers.spec.ts` | Tested |
+| Saves from before keep working | Save version 5 | `migrateV5toV6` | Name split, where you live, no headshot | — | `tests/identity.test.ts`; golden outcomes unchanged | Tested |

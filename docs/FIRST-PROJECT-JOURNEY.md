@@ -35,7 +35,7 @@ to the low-budget size, once its script is approved, and is repaid first from th
 
 ## Saves From Before Financing
 
-Save version 5 (`migrateV4toV5`) keeps every project's money. Each project's existing fund is recorded as an accepted
+Save version 5 (`migrateV4toV5`) keeps every project's money. (Save version 6, on November 8, 2026, added the name in parts, where you live and a headshot: `migrateV5toV6` in `src/engine/identity.ts`.) Each project's existing fund is recorded as an accepted
 deal, "Funding agreed before financing was added", with the approval rights its budget size carried. Nothing is removed.
 
 ## Not Modeled

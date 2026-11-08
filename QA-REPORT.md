@@ -8,7 +8,25 @@
 
 ## Commands And Results
 
-### Current: Budget-Size Wording (November 8, 2026, after #37)
+### Current: Screen Review, Identity From 1221 (November 8, 2026, after #38)
+
+The owner's screen-by-screen review (start screen, then Identity) led to fixes to the place picker and to bringing over
+what 1221's Identity had: a legal name in parts and a preferred name, citizenship that decides public-fund
+eligibility, and a headshot (save version 6).
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 34 files, 292 tests passed (`tests/identity.test.ts` 8, `tests/portrait.test.ts` 22 ported from 1221); build passed; startup JavaScript 668 kB raw (684,029 bytes), 206 kB gzipped, 0 problems. |
+| `npm run balance`, `npm run perf:engine` | 0 | 2 and 2 tests passed; balance results unchanged. |
+| `SLATE_E2E_PROD=1 npm run e2e -- --trace retain-on-failure` | 0 | Production build, the complete suite: 147 passed, 27 skipped, 0 failed, in 14.4 minutes. |
+| Old code against new | | The fund rule's test fails when the rule is removed; the picker tests failed on the old picker (country list said Featured Cities after Nairobi). |
+
+Defects found on the way: the ported headshot picker re-saved without end under a parent that passes a new callback
+each render (fixed in the picker); with a country chosen, typing "Paris" found a British place, never Paris, France
+(featured cities in other countries are now offered); New Script's two country lists shared one name for screen
+readers (each is named for its picker). Screenshots of Review and Profile (desktop and phone) were inspected.
+
+### Previous: Budget-Size Wording (November 8, 2026, after #37)
 
 The owner asked for the naming question to be decided.
 - **Kept:** the size names, since "micro-budget" is the industry's word for this scale.
