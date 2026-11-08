@@ -1,10 +1,11 @@
 // Stage 12 of the gameplay-depth package: tests for production children built before the package that had none
 // (docs/depth/COVERAGE-LEDGER.csv rows marked IMPLEMENTED UNVERIFIED).
 import { describe, expect, it } from 'vitest';
-import { DAY, addDaysToKey, bookMocap, castPlayer, ledgerTotals, mocapRecord, precipitationDuring, processUntil, weatherOn } from '../src/engine';
+import { DAY, addDaysToKey, bookMocap, castPlayer, estimateDays, ledgerTotals, mocapRecord, precipitationDuring, processUntil, weatherOn } from '../src/engine';
 import { rebookMissed } from '../src/engine/mocap';
 import { getPlace } from '../src/data/places';
 import { maybePuppetDamage } from '../src/engine/production/workday';
+import { captureQuality } from '../src/engine/production/shoot';
 import { buildTasks } from '../src/engine/production/tasks';
 import type { GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
@@ -138,5 +139,23 @@ describe('one method never fulfils another (SLATE-05-03)', () => {
     expect(anim.dependsOn.some((d) => d.startsWith('anim:mocap'))).toBe(true);
     castPlayer(s, p, golem, 'motion-capture');
     expect(p.cast.filter((c) => c.characterId === golem).map((c) => c.method).sort()).toEqual(['motion-capture', 'voice']);
+  });
+});
+
+describe('preparation (SLATE-11-04)', () => {
+  it('rehearsal lifts your own captured performance only up to a cap, while every rehearsal day keeps adding to the days a performer is booked', () => {
+    const s = startLife('gaps-rehearsal');
+    const p = buildProject(s, { title: 'Ink', format: 'short', medium: 'live-action', runtime: 10 }, [{ name: 'Ada', patch: { roleSize: 'lead' } }, { name: 'Bo', patch: { roleSize: 'supporting' } }],
+      [{ place: 'Room', chars: ['Ada'] }, { place: 'Hall', chars: ['Bo'] }]);
+    approve(s, p);
+    const ada = p.characters.find((c) => c.name === 'Ada')!.id;
+    castPlayer(s, p, ada, 'on-camera');
+    const scene = p.scenes.find((x) => x.participants.includes(ada))!;
+    const at = (days: number) => { p.schedule.rehearsalDays = days; return { q: captureQuality(s, p, scene, false, false), paid: estimateDays(p, 'actor', ada, 'on-camera') }; };
+    const [none, some, cap, beyond] = [0, 3, 7, 30].map(at);
+    expect(some.q).toBeGreaterThan(none.q);
+    expect(cap.q).toBeGreaterThan(some.q);
+    expect(beyond.q).toBe(cap.q); // the gain stops at seven days (twenty points of the player's part)
+    expect(beyond.paid).toBeGreaterThan(cap.paid); // the days still cost
   });
 });

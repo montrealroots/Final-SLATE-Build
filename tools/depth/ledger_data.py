@@ -334,7 +334,7 @@ C = {
 '11-04': ('Schedule', 'src/engine/production/tasks.ts', [
   ('Rehearsal days, stunt and choreography rehearsal, storyboards and animatic as work', 'VE',
    ['tests/media.test.ts::follows boards, animatic, voice and animation dependencies'], ''),
-  ('Preparation has a bounded effect', 'IU', [], 'Rehearsal days are capped; no test of the bound'),
+  ('Preparation has a bounded effect', 'V', ['tests/depth-gaps-production.test.ts::rehearsal lifts your own captured performance only up to a cap'], 'The cap (seven days) is game calibration'),
 ]),
 '11-05': ('Schedule', 'src/engine/production/schedule.ts; src/engine/callsheet.ts', [
   ('Plan shoot days by availability, holidays and six-day weeks', 'VE', ['tests/heritage.test.ts::its shoot days skip them'], ''),
