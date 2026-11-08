@@ -68,7 +68,7 @@ export async function createCharacter(page: Page, o: CharacterOpts, atReview?: (
     await page.getByRole('button', { name: `Add Nationality: ${n}`, exact: true }).click();
   }
   await page.getByRole('searchbox', { name: 'Which language do you use most?' }).fill(o.mainLanguage);
-  await page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button', { name: o.mainLanguage, exact: true }).click();
+  await page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button', { name: new RegExp(`^${o.mainLanguage}( From your backgrounds)?$`) }).click(); // suggested ones are marked
   for (const l of o.extraLanguages) {
     await page.getByRole('searchbox', { name: 'Add Language' }).fill(l);
     await page.getByRole('button', { name: `Add Language: ${l}` }).click();
