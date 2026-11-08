@@ -214,9 +214,10 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
       <hr className="divider" />
 
       <div className="field-row">
-        <TextField label="Year Of Birth" type="number" inputMode="numeric" value={y} min={latest ? String(Number(latest.slice(0, 4)) - 81) : undefined} max={latest?.slice(0, 4)} onChange={(v) => setBirth(v.slice(0, 4), m, day)} />
+        {/* Month, day, year: the order the game writes every date in ("May 20, 1990"), from November 8, 2026. */}
         <SelectField label="Month" value={m} options={[{ value: '', label: 'Choose A Month' }, ...MONTHS.map((name, i) => ({ value: String(i + 1).padStart(2, '0'), label: name }))]} onChange={(v) => setBirth(y, v, day)} />
         <TextField label="Day" type="number" inputMode="numeric" value={day ? String(Number(day)) : ''} onChange={(v) => setBirth(y, m, v ? v.slice(0, 2).padStart(2, '0') : '')} />
+        <TextField label="Year Of Birth" type="number" inputMode="numeric" value={y} min={latest ? String(Number(latest.slice(0, 4)) - 81) : undefined} max={latest?.slice(0, 4)} onChange={(v) => setBirth(v.slice(0, 4), m, day)} />
       </div>
       {err('birthDate') ? <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('birthDate')}</p> : <p className="xs dim">{latest ? `You must be at least ${MIN_START_AGE} on your starting date, ${longDate(d.startDate)}: born on or before ${longDate(latest)}. You can change the starting date on Starting Point.` : `You must be at least ${MIN_START_AGE} on your starting date.`}</p>}
       {age !== null && age >= 0 && (
