@@ -201,7 +201,7 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
           <p className="muted small" style={{ margin: 0 }}>Where you’re from, which isn’t always where you live now. It’s what you tell people when they ask.</p>
         </div>
       </div>
-      <PlacePicker label="Place Of Birth" value={d.birthplaceId} error={err('birthplaceId')} map onChange={(id, pl) => set({ birthplaceId: id, places: keepPlaces(d, 'birthplaceId', pl) })} />
+      <PlacePicker label="Place Of Birth" labelHidden value={d.birthplaceId} error={err('birthplaceId')} map onChange={(id, pl) => set({ birthplaceId: id, places: keepPlaces(d, 'birthplaceId', pl) })} />
 
       {age !== null && age >= 0 && (
         <div className="callout" style={{ marginTop: 'var(--s4)' }}>You’ll be <strong>{age}</strong> when you start.</div>
@@ -270,8 +270,9 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
 }
 
 /** Picks any playable place; world places come back with their record so the draft and save can keep them. */
-export function PlacePicker(props: { label: string; value: string; error?: string | null; map?: boolean; onChange: (id: string, place: Place) => void }) {
-  return <WorldPlacePicker label={props.label} value={props.value} error={props.error} map={props.map} onChoose={(pl) => props.onChange(pl.id, pl)} />;
+export function PlacePicker(props: { label: string; labelHidden?: boolean; value: string; error?: string | null; map?: boolean; onChange: (id: string, place: Place) => void }) {
+  // labelHidden: a heading right above already names the field, so the label is for screen readers only.
+  return <WorldPlacePicker label={props.label} labelHidden={props.labelHidden} value={props.value} error={props.error} map={props.map} onChoose={(pl) => props.onChange(pl.id, pl)} />;
 }
 
 /** The draft's world places, keeping only those still chosen. */

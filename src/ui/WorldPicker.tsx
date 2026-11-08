@@ -55,7 +55,7 @@ export function CountryAndRegion({ ws, featured }: { ws: WorldSearch; featured?:
   const cid = useId();
   const rid = useId();
   return (
-    <div className="inline-form">
+    <div className="inline-form" style={{ marginBottom: 'var(--s4)' }}>
       <div className="field">
         <label htmlFor={cid}>Country Or Territory</label>
         <select id={cid} value={ws.country} onChange={(e) => ws.setCountry(e.target.value)}>
@@ -63,10 +63,11 @@ export function CountryAndRegion({ ws, featured }: { ws: WorldSearch; featured?:
           {PLAYABLE_COUNTRIES.map((c) => <option key={c.code} value={c.code}>{c.name}</option>)}
         </select>
       </div>
-      {ws.country && ws.regions.length > 0 && (
+      {/* Shown, disabled, while the country loads, so it doesn't appear late and push what's below it on a phone. */}
+      {ws.country && (ws.status === 'loading' || ws.regions.length > 0) && (
         <div className="field">
           <label htmlFor={rid}>Region</label>
-          <select id={rid} value={ws.region} onChange={(e) => ws.setRegion(e.target.value)}>
+          <select id={rid} value={ws.region} disabled={ws.status !== 'ready'} onChange={(e) => ws.setRegion(e.target.value)}>
             <option value="">All Regions</option>
             {ws.regions.map((r) => <option key={r.key} value={r.key}>{r.name}</option>)}
           </select>
@@ -88,10 +89,16 @@ export function LoadProblem({ onRetry }: { onRetry: () => void }) {
 export const noMatch = (q: string) => `No places match '${q.trim()}'. Try a city, region, or country.`;
 
 /** Choose any playable place on Earth: featured cities without a country, or any GeoNames place within one. */
-export function WorldPlacePicker(props: { label: string; value: string; error?: string | null; onChoose: (place: Place) => void; map?: boolean }) {
+export function WorldPlacePicker(props: { label: string; labelHidden?: boolean; value: string; error?: string | null; onChoose: (place: Place) => void; map?: boolean }) {
   const [mapOpen, setMapOpen] = useState(true);
   const chosen = findPlace(props.value);
-  const ws = useWorldSearch();
+  // The country list and the map follow the chosen place (November 8, 2026). Until then they kept saying "Featured
+  // Cities" and showing the whole world after Nairobi, Kenya was chosen.
+  const ws = useWorldSearch(chosen && PLAYABLE_COUNTRIES.some((c) => c.code === chosen.country) ? chosen.country : '');
+  const pick = (place: Place) => {
+    props.onChoose(place);
+    if (PLAYABLE_COUNTRIES.some((c) => c.code === place.country) && place.country !== ws.country) ws.setCountry(place.country);
+  };
   const listId = useId();
   const [busy, setBusy] = useState<string | null>(null);
   const [chooseFailed, setChooseFailed] = useState<WorldPlace | null>(null);
@@ -99,15 +106,19 @@ export function WorldPlacePicker(props: { label: string; value: string; error?: 
     setBusy(w.id);
     setChooseFailed(null);
     try {
-      props.onChoose(await toGamePlace(w));
+      pick(await toGamePlace(w));
     } catch {
       setChooseFailed(w);
     } finally {
       setBusy(null);
     }
   };
-  const featured = ws.country ? [] : searchPlaces(ws.q, 10);
   const shown = ws.matches.slice(0, SHOWN);
+  // Back on a picker whose place is chosen, with nothing typed: one line, not the country's places arriving a moment
+  // later and pushing down what's below (the click that landed elsewhere, e2e/focus.spec.ts).
+  const settled = !!chosen && ws.country === chosen.country && !ws.q.trim();
+  const elsewhere = !!ws.country && ws.status === 'ready' && !shown.length && !!ws.q.trim();
+  const featured = !ws.country || elsewhere ? searchPlaces(ws.q, 10) : [];
   return (
     <>
       {props.map && (
@@ -124,13 +135,15 @@ export function WorldPlacePicker(props: { label: string; value: string; error?: 
         </div>
       )}
       <CountryAndRegion ws={ws} featured />
-      <Field label={props.label} error={props.error} hint={chosen ? `Chosen: ${placeLabel(chosen)}` : 'Search by city, or choose a country or territory to search all of its places.'}>
+      <Field label={props.label} labelHidden={props.labelHidden} error={props.error} hint={chosen ? `Chosen: ${placeLabel(chosen)}` : 'Search by city, or choose a country or territory to search all of its places.'}>
         {(id, db) => (
           <>
             <input id={id} type="search" value={ws.q} placeholder="Search Places" aria-describedby={db} aria-controls={listId} aria-invalid={!!props.error} onChange={(e) => ws.setQ(e.target.value)} />
             <div className="picklist" id={listId} role="group" aria-label={`${props.label} Results`} aria-busy={ws.status === 'loading' || !!busy}>
-              {!ws.country && featured.map((p) => (
-                <button key={p.id} type="button" aria-pressed={p.id === props.value} onClick={() => props.onChoose(p)}>
+              {settled ? <p className="muted" style={{ padding: 12 }}>{`Type to search ${PLAYABLE_COUNTRIES.find((c) => c.code === ws.country)?.name}'s places, or choose another country.`}</p> : <>
+              {elsewhere && featured.length > 0 && <p className="muted" style={{ padding: 12 }}>{`Nothing in ${PLAYABLE_COUNTRIES.find((c) => c.code === ws.country)?.name} matches '${ws.q.trim()}'. Featured cities that do:`}</p>}
+              {featured.map((p) => (
+                <button key={p.id} type="button" aria-pressed={p.id === props.value} onClick={() => pick(p)}>
                   <span>{p.name}</span>
                   <span className="dim">{p.region !== p.name ? `${p.region}, ` : ''}{p.countryName}</span>
                 </button>
@@ -143,9 +156,10 @@ export function WorldPlacePicker(props: { label: string; value: string; error?: 
                   <span className="dim">{[ws.regionNames.get(w.region), PLAYABLE_COUNTRIES.find((c) => c.code === w.country)?.name].filter(Boolean).join(', ')}</span>
                 </button>
               ))}
-              {((!ws.country && !featured.length) || (ws.status === 'ready' && !shown.length)) && <p className="muted" style={{ padding: 12 }}>{noMatch(ws.q)}</p>}
+              {((!ws.country && !featured.length) || (ws.status === 'ready' && !shown.length && !featured.length)) && <p className="muted" style={{ padding: 12 }}>{noMatch(ws.q)}</p>}
+              </>}
             </div>
-            {ws.status === 'ready' && ws.matches.length > SHOWN && <p className="dim">Showing {SHOWN} of {ws.matches.length.toLocaleString('en')} places. Type more of the name to narrow the list.</p>}
+            {!settled && ws.status === 'ready' && ws.matches.length > SHOWN && <p className="dim">Showing {SHOWN} of {ws.matches.length.toLocaleString('en')} places. Type more of the name to narrow the list.</p>}
           </>
         )}
       </Field>

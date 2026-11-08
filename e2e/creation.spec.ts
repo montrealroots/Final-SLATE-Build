@@ -240,3 +240,28 @@ test('backgrounds drive the game: their holidays are offered first and kept, the
   const saved = await page.evaluate(() => JSON.parse(localStorage.getItem('slate.v1.creationDraft') ?? 'null'));
   expect(saved).toBeNull(); // the draft became the game
 });
+
+// Found in the screen-by-screen review on November 8, 2026: after Nairobi was chosen, the country list still said
+// Featured Cities and the map still showed the whole world.
+test('the country list and the map follow the place chosen; another country is still a search away', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await page.getByRole('button', { name: 'New Game' }).first().click();
+  const country = page.getByLabel('Country Or Territory');
+  await expect(country.locator('option:checked')).toHaveText('Featured Cities');
+  await pickPlace(page, 'Place Of Birth', 'Nairobi');
+  await expect(country.locator('option:checked')).toHaveText('Kenya');
+  await expect(page.getByRole('group', { name: 'Map of Kenya. Each listed place is a marker you can choose.' })).toBeVisible();
+  // The field keeps its name for screen readers; the heading above names it on screen, once.
+  await expect(page.getByRole('searchbox', { name: 'Place Of Birth' })).toBeVisible();
+  await expect(page.locator('label', { hasText: /^Place Of Birth$/ })).toHaveClass('sr-only');
+  await expect(page.getByRole('heading', { name: 'Place Of Birth', level: 3 })).toBeVisible();
+  // Changing your mind: nothing in Kenya is called Toronto, so the featured cities that are come up.
+  await page.getByRole('searchbox', { name: 'Place Of Birth' }).fill('Toronto');
+  const results = page.getByRole('group', { name: 'Place Of Birth Results' });
+  await expect(results).toContainText("Nothing in Kenya matches 'Toronto'. Featured cities that do:");
+  await results.getByRole('button', { name: /Toronto/ }).first().click();
+  await expect(page.getByText('Chosen: Toronto', { exact: false })).toBeVisible();
+  await expect(country.locator('option:checked')).toHaveText('Canada');
+});
