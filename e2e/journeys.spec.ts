@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, creditsTable, nav, produceToDelivery, quickLife, readSavedState, runToDelivery, saveAndApprove, section, saveAndExit, seededLife, newProject, staffEveryDepartment } from './helpers';
+import { addScene, advance, approveDesigns, castRoles, creditsTable, nav, produceToDelivery, quickLife, readSavedState, runToDelivery, saveAndApprove, section, saveAndExit, seededLife, newProject, staffEveryDepartment } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
@@ -298,6 +298,62 @@ test('3D animation to delivery, with a motion-capture performance', async ({ pag
   const credits = await creditsTable(page);
   expect(credits).toMatch(/Performance Capture[\s\S]*as The Golem/);
   expect(credits).toMatch(/Voice Cast[\s\S]*as Wren/);
+});
+
+test('motion capture: a session the performer can\'t attend is missed and rebooked', async ({ page }) => {
+  await quickLife(page, 'ca-vancouver', '2026-01-05');
+  await newProject(page, { title: 'Iron Orchard', format: 'Short Film', medium: 'Animation', technique: '3D CG', finish: 'Limited Animation', runtime: '2' });
+  await addCharacters(page, ['Wren', 'The Golem']);
+  await section(page, 'Characters');
+  const golem = page.getByRole('article', { name: 'The Golem' });
+  await golem.getByRole('button', { name: 'Edit Character' }).click();
+  await golem.getByLabel('Entity').selectOption({ label: 'Monster' });
+  await golem.getByRole('checkbox', { name: 'Motion Capture' }).check();
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Orchard', chars: ['Wren', 'The Golem'], minutes: '0.5' });
+  await saveAndApprove(page);
+  await castRoles(page, ['Wren']);
+  await staffEveryDepartment(page);
+  await advance(page, 'next-day');
+  await section(page, 'Schedule');
+  await page.getByRole('button', { name: /Build Schedule|Rebuild Schedule/ }).click();
+  // Book the capture stage once a capture performer has accepted.
+  const booked = async () => Object.values((await readSavedState(page)).projects[0].mocap ?? {}).some((r: any) => r.status === 'booked'); // eslint-disable-line @typescript-eslint/no-explicit-any
+  for (let i = 0; i < 12 && !(await booked()); i++) {
+    await advance(page, 'week');
+    await castRoles(page);
+    await staffEveryDepartment(page);
+    await approveDesigns(page);
+    const book = page.getByRole('button', { name: /^Book Capture Stage/ });
+    if (await book.first().isVisible()) await book.first().click();
+  }
+  await expect.poll(booked).toBe(true);
+  // Day by day until the calibration is ready and only waits for its session date (an earlier session whose work wasn't
+  // ready just moves, with nothing missed).
+  const waiting = async () => ((await readSavedState(page)).projects[0].tasks as { kind: string; blockedReason?: string }[]).some((t) => t.kind === 'anim:mocap-calib' && /^Next calibration session: /.test(t.blockedReason ?? ''));
+  for (let i = 0; i < 60 && !(await waiting()); i++) await advance(page, 'next-day');
+  expect(await waiting()).toBe(true);
+  // Labelled fixture: the capture performer is also cast in another production, shooting on that session's date.
+  let first = '';
+  let performer = '';
+  await editSaveAndReopen(page, (st) => {
+    const p = st.projects[0];
+    const [cid, rec] = Object.entries(p.mocap).find(([, r]: any) => r.status === 'booked') as [string, any]; // eslint-disable-line @typescript-eslint/no-explicit-any
+    first = rec.sessions.find((x: { status: string; kind: string }) => x.status === 'booked' && x.kind === 'calibration').date; // the session the work waits for
+    performer = p.cast.find((c: { characterId: string; method: string }) => c.characterId === cid && c.method === 'motion-capture').performer;
+    const other = JSON.parse(JSON.stringify(p));
+    Object.assign(other, { id: 'p-fixture-other', title: 'Other Picture', mocap: {}, tasks: [], obligations: [], hires: [], delivered: null, cast: [{ characterId: cid, performer, method: 'on-camera', note: '' }] });
+    other.schedule.days = [{ id: 'd-fixture-other', date: first, episode: 1, sceneIds: [p.scenes[0].id], locationLabel: 'Orchard', interior: false, night: false, status: 'scheduled', playerActing: false, conflicts: [] }];
+    st.projects.push(other);
+  });
+  // SLATE-13-04: on the day, the session can't run; it is marked missed with the reason and rebooked on a free date.
+  const missed = () => readSavedState(page).then((st) => st.log.map((l: { text: string }) => l.text).find((t: string) => t.startsWith('The capture session for The Golem on ')));
+  for (let i = 0; i < 12 && !(await missed()); i++) await advance(page, 'week');
+  expect(await missed()).toMatch(/^The capture session for The Golem on .+ couldn't run \(.+ was shooting Other Picture\)\. It is rebooked for .+\.$/);
+  const rec = Object.values((await readSavedState(page)).projects[0].mocap).find((r: any) => r.sessions?.some((x: { status: string }) => x.status === 'missed')) as any; // eslint-disable-line @typescript-eslint/no-explicit-any
+  const miss = rec.sessions.find((x: { status: string }) => x.status === 'missed');
+  expect(miss.date).toBe(first);
+  expect(rec.sessions.some((x: { status: string; date: string; kind: string }) => x.date > first && x.kind === miss.kind)).toBe(true);
 });
 
 test('stop motion to delivery: puppets, sets and stages', async ({ page }) => {
