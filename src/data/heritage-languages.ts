@@ -11,7 +11,7 @@ export const HERITAGE_LANGUAGES: Record<string, string[]> = {
   'Aboriginal Australian': ['en'], Acadian: ['fr'], Afghan: ['prs', 'ps'], 'Afro-Brazilian': ['pt'], 'Afro-Caribbean': ['en'], 'Afro-Latino': ['es'],
   Akan: ['tw'], Albanian: ['sq'], Algerian: ['ar', 'fr'], Amazigh: ['ar'], Arab: ['ar'], Argentine: ['es'], Armenian: ['hy'],
   'Ashkenazi Jewish': ['yi', 'he'], Austrian: ['de'], Azerbaijani: ['az'], Bangladeshi: ['bn'], Basque: ['eu', 'es'], Belarusian: ['be', 'ru'],
-  Belgian: ['nl', 'fr'], Bengali: ['bn'], Bosnian: ['bs'], Brazilian: ['pt'], Bulgarian: ['bg'], Burmese: ['my'], Cambodian: ['km'],
+  Belgian: ['nl', 'fr'], Bengali: ['bn'], 'Beta Israel': ['he', 'am'], Bosnian: ['bs'], Brazilian: ['pt'], Bulgarian: ['bg'], Burmese: ['my'], Cambodian: ['km'],
   Cameroonian: ['fr', 'en'], 'Cape Verdean': ['pt'], Catalan: ['ca', 'es'], Chechen: ['ru'], Cherokee: ['chr'], Chilean: ['es'],
   Chinese: ['zh', 'yue'], Colombian: ['es'], Congolese: ['fr', 'ln'], Croatian: ['hr'], Cuban: ['es'], Czech: ['cs'], Danish: ['da'],
   Dominican: ['es'], Dutch: ['nl'], Ecuadorian: ['es'], Egyptian: ['ar'], Emirati: ['ar'], Eritrean: ['ti'], Estonian: ['et'],

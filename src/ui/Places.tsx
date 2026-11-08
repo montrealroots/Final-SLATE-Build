@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { languageName, PRONOUNS } from '../data/identity';
 import { getPlace, placeLabel, searchPlaces, type Place } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
-import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, knownAs, addPlan, cancelPlan, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, honors, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDate, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
+import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, knownAs, addPlan, cancelPlan, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, honors, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDates, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
 import type { GameState } from '../engine/types';
 import { Check, Modal, NumberField, PageHead, Professions, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
@@ -37,8 +37,7 @@ function calendarItems(g: GameState, year: number, month: number): Map<string, C
     for (const h of placeHolidays(place, year)) if (h.date >= first && h.date <= last) push(h.date, { label: `${h.name}${h.estimated ? ' (Expected)' : h.projected ? ' (Projected)' : ''}`, kind: 'Holidays' });
     // The holidays you keep from your backgrounds, wherever you are.
     for (const id of g.character.observances ?? []) {
-      const k = observanceDate(id, year);
-      if (k && k >= first && k <= last) push(k, { label: `${observance(id)!.name} (You Keep It)`, kind: 'Holidays' });
+      for (const k of observanceDates(id, year)) if (k >= first && k <= last) push(k, { label: `${observance(id)!.name} (You Keep It)`, kind: 'Holidays' });
     }
   }
   for (const ed of g.editions) {
@@ -366,7 +365,7 @@ export function Profile() {
             <dt>Lives In</dt><dd>{placeLabel(getPlace(c.livesIn))}</dd>
             <dt>Home Countries</dt><dd>{homeCountries(g).map((h) => `${h.name} (${[h.citizen && 'citizen', h.resident && 'you live there'].filter(Boolean).join(', ')})`).join(', ')}<span className="dim"> · their public screen funds support you</span></dd>
             <dt>Backgrounds</dt><dd>{c.heritages.map((x) => x.label).join(', ')}</dd>
-            <dt>Holidays You Keep</dt><dd>{(c.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you are'}{c.observances?.length ? <span className="dim"> · new projects don’t shoot on them</span> : null}</dd>
+            <dt>Holidays You Keep</dt><dd>{(c.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you are'}{c.observances?.length ? <span className="dim"> · your projects don’t work on them</span> : null}</dd>
             <dt>Languages</dt><dd>{languageName(c.mainLanguage)} (main){c.languages.map((l) => `, ${languageName(l.code)} (${l.proficiency.toLowerCase()})`).join('')}</dd>
             <dt>Now In</dt><dd>{placeLabel(currentPlace(g))}</dd>
           </dl>

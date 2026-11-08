@@ -1,7 +1,7 @@
 import { beforeAll, describe, expect, it } from 'vitest';
 import { HERITAGES, LANGUAGES } from '../src/data/identity';
 import { HERITAGE_LANGUAGES, heritageLanguages } from '../src/data/heritage-languages';
-import { OBSERVANCES, assessQuality, candidates, createProject, isWorkingDay, observanceDate, observancesOn, personById, sharedHeritages, suggestedObservances } from '../src/engine';
+import { OBSERVANCES, assessQuality, candidates, createProject, isWorkingDay, observanceDate, observanceDates, observancesOn, personById, sharedHeritages, suggestedObservances } from '../src/engine';
 import { loadWorldHolidays } from '../src/world/holidays/holidays';
 import type { GameState, Project } from '../src/engine/types';
 import { buildProject, startLife } from './helpers';
@@ -27,6 +27,30 @@ describe('backgrounds suggest holidays you keep, dated by the holiday rules', ()
     expect(observanceDate('rosh-hashanah', 2026)).toBe('2026-09-12');
     expect(observanceDate('orthodox-easter', 2026)).toBe('2026-04-12');
     expect(observanceDate('easter', 2026)).toBe('2026-04-05');
+  });
+
+  it('the Jewish holidays keep every day of no work, as kept outside Israel (November 8, 2026)', () => {
+    // Published 2026 dates: Pesach begins the evening of April 1, Shavuot of May 21, Rosh Hashanah of September 11.
+    expect(observanceDates('pesach', 2026)).toEqual(['2026-04-02', '2026-04-03', '2026-04-08', '2026-04-09']);
+    expect(observanceDates('shavuot', 2026)).toEqual(['2026-05-22', '2026-05-23']);
+    expect(observanceDates('rosh-hashanah', 2026)).toEqual(['2026-09-12', '2026-09-13']);
+    expect(observanceDates('yom-kippur', 2026)).toEqual(['2026-09-21']);
+    expect(observanceDates('sukkot', 2026)).toEqual(['2026-09-26', '2026-09-27']);
+    expect(observanceDates('rosh-hashanah', 2027)).toEqual(['2027-10-02', '2027-10-03']);
+    // One-day holidays are their one day; an undated year has none.
+    expect(observanceDates('diwali', 2026)).toEqual(['2026-11-08']);
+    expect(observanceDates('diwali', 2100)).toEqual([]);
+    // Every day counts: Rosh Hashanah's second day and Pesach's last stop a project's work, the day between doesn't.
+    const s = startLife('obs-jewish', 'gb-london', { observances: ['rosh-hashanah', 'pesach'] });
+    const p = createProject(s, { title: 'Lights', scenarioId: 'micro', axes: { format: 'short', medium: 'live-action', targetRuntimeMin: 10 } });
+    expect(observancesOn(p.schedule.observances, '2026-09-14').length).toBe(0);
+    expect(observancesOn(p.schedule.observances, '2026-04-09').map((o) => o.id)).toEqual(['pesach']);
+    expect(isWorkingDay(p, '2026-04-09')).toBe(false); // a Thursday, Pesach's last day
+    expect(isWorkingDay(p, '2026-04-07')).toBe(true); // a Tuesday between
+    // Beta Israel suggests the same holidays as every Jewish background, in the year's order.
+    const jewish = ['pesach', 'shavuot', 'rosh-hashanah', 'yom-kippur', 'sukkot'];
+    expect(suggestedObservances(['Beta Israel']).map((o) => o.id)).toEqual(jewish);
+    expect(suggestedObservances(['Ashkenazi Jewish']).map((o) => o.id)).toEqual(jewish);
   });
 
   it('every background named in the tables is a real background, and every suggested language a real language', () => {

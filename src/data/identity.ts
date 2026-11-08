@@ -5,7 +5,7 @@
 export const HERITAGES: string[] = [
   'Aboriginal Australian', 'Acadian', 'Afghan', 'African American', 'Afro-Brazilian', 'Afro-Caribbean', 'Afro-Latino', 'Akan', 'Albanian',
   'Algerian', 'Amazigh', 'American', 'Arab', 'Argentine', 'Armenian', 'Ashkenazi Jewish', 'Assyrian', 'Australian', 'Austrian', 'Azerbaijani',
-  'Bangladeshi', 'Basque', 'Belarusian', 'Belgian', 'Bengali', 'Bosnian', 'Brazilian', 'British', 'Bulgarian', 'Burmese', 'Cambodian',
+  'Bangladeshi', 'Basque', 'Belarusian', 'Belgian', 'Bengali', 'Beta Israel', 'Bosnian', 'Brazilian', 'British', 'Bulgarian', 'Burmese', 'Cambodian',
   'Cameroonian', 'Canadian', 'Cape Verdean', 'Catalan', 'Chamorro', 'Chechen', 'Cherokee', 'Chilean', 'Chinese', 'Colombian', 'Congolese',
   'Cornish', 'Croatian', 'Cuban', 'Czech', 'Danish', 'Dominican', 'Dutch', 'Ecuadorian', 'Egyptian', 'Emirati', 'English', 'Eritrean',
   'Estonian', 'Ethiopian', 'Fijian', 'Filipino', 'Finnish', 'First Nations', 'French', 'French Canadian', 'Fulani', 'Garifuna', 'Georgian',
