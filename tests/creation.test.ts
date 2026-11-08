@@ -18,6 +18,19 @@ describe('character creation steps', () => {
     expect(CREATION_STEPS.map((s) => s.title)).toEqual(['Identity', 'Background & Languages', 'Starting Point', 'Review']);
   });
 
+  it('a draft from before nationality was asked: its nationality words become countries, else the citizenship (November 8, 2026)', () => {
+    const { nationalities: _n, ...old } = draft({ heritages: [{ id: 'Mestizo', label: 'Mestizo', custom: false }, { id: 'Mexican', label: 'Mexican', custom: false }] });
+    const d = normalizeDraft(old)!;
+    expect(d.heritages.map((h) => h.label)).toEqual(['Mestizo']);
+    expect(d.nationalities).toEqual(['MX']);
+    expect(validateDraft(d)).toEqual([]);
+    const { nationalities: _m, ...ethnicOnly } = draft(); // born in Lagos
+    expect(normalizeDraft(ethnicOnly)!.nationalities).toEqual(['NG']);
+    // A draft made since keeps exactly what was chosen, and an unknown code is dropped.
+    expect(normalizeDraft({ ...draft(), nationalities: [] })!.nationalities).toEqual([]);
+    expect(normalizeDraft({ ...draft(), nationalities: ['JM', 'ZZ', 'JM'] })!.nationalities).toEqual(['JM']);
+  });
+
   it('a draft saved by the eight-step creation reopens on the step that now holds the same fields', () => {
     const old = { ...draft(), step: 4 } as unknown; // the old Birthday screen, by number
     expect(normalizeDraft(old)!.step).toBe('identity');

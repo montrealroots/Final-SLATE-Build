@@ -11,7 +11,7 @@ async function draftAtReview(page: Page, patch: Record<string, unknown> = {}): P
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
       step: 7, name: 'Itzel Ramírez-Okafor', pronouns: 'they', actingTitle: 'Actor', birthDate: '1992-09-14', birthplaceId: 'mx-mexico-city',
-      heritages: [{ id: 'Mexican', label: 'Mexican', custom: false }], heritageCustomText: '', mainLanguage: 'es',
+      heritages: [{ id: 'Mestizo', label: 'Mestizo', custom: false }, { id: 'Mexican', label: 'Mexican', custom: false }], heritageCustomText: '', mainLanguage: 'es',
       languages: [{ code: 'en', proficiency: 'Fluent' }], startPlaceId: 'gb-london', startDate: '2026-04-06', startTime: '09:30', updatedAt: 1, ...p,
     }));
   }, patch);
@@ -137,8 +137,8 @@ test('typing straight after Next is kept, even when the field is chosen within a
   await page.getByRole('button', { name: 'New Game' }).first().click();
   await fillIdentity(page, 'Ama Boateng', 'She/Her');
   await page.getByRole('button', { name: 'Next: Background & Languages' }).click();
-  await page.getByRole('searchbox', { name: 'Search Backgrounds' }).fill('Ghanaian');
-  await expect(page.getByRole('button', { name: 'Add A Background: Ghanaian' })).toBeVisible();
+  await page.getByRole('searchbox', { name: 'Search Ethnicities' }).fill('Yoruba');
+  await expect(page.getByRole('button', { name: 'Add Ethnicity: Yoruba' })).toBeVisible();
   // The exact timing that lost text before (WebKit): the field is focused, one animation frame passes, then the
   // text arrives. Focus used to move to the heading in that frame, and the text went nowhere.
   await page.getByRole('button', { name: 'Back To Identity' }).click();
@@ -153,7 +153,7 @@ test('typing straight after Next is kept, even when the field is chosen within a
     return { value: input.value, focused: document.activeElement === input };
   });
   expect(kept).toEqual({ value: 'Akan', focused: true });
-  await expect(page.getByRole('button', { name: 'Add A Background: Akan' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Add Ethnicity: Akan' })).toBeVisible();
 });
 
 test('keyboard only: Next moves focus to the new heading, Tab reaches its field, and rapid Back and Next lose nothing', async ({ page }) => {
@@ -172,7 +172,7 @@ test('keyboard only: Next moves focus to the new heading, Tab reaches its field,
   await expect(heading(page)).toHaveText('Background');
   await expect(heading(page)).toBeFocused();
   await page.keyboard.press('Tab');
-  await expect(page.getByRole('searchbox', { name: 'Search Backgrounds' })).toBeFocused();
+  await expect(page.getByRole('searchbox', { name: 'Search Ethnicities' })).toBeFocused();
   // Rapid navigation: several Back and Next presses in a row.
   for (let i = 0; i < 3; i++) {
     await page.getByRole('button', { name: 'Back To Identity' }).click();
@@ -193,14 +193,48 @@ test('a reload in the middle of creation reopens the same step with everything e
   await page.getByRole('button', { name: 'New Game' }).first().click();
   await fillIdentity(page, 'Leilani Kahale', 'They/Them');
   await page.getByRole('button', { name: 'Next: Background & Languages' }).click();
-  await page.getByRole('textbox', { name: 'Describe Your Background' }).fill('Native Hawaiian, raised on O');
+  await page.getByRole('textbox', { name: 'Describe Your Ethnicity' }).fill('Native Hawaiian, raised on O');
   await page.reload();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
   await expect(heading(page)).toHaveText('Background');
-  await expect(page.getByRole('textbox', { name: 'Describe Your Background' })).toHaveValue('Native Hawaiian, raised on O');
+  await expect(page.getByRole('textbox', { name: 'Describe Your Ethnicity' })).toHaveValue('Native Hawaiian, raised on O');
   expect(await page.evaluate(() => JSON.parse(localStorage.getItem('slate.v1.creationDraft')!).step)).toBe('background');
   await page.getByRole('button', { name: 'Back To Identity' }).click();
   await expect(page.getByLabel('Pronouns')).toHaveValue('they');
+});
+
+test('ethnicity and nationality are both asked: Next says which is missing, and your citizenship is offered first', async ({ page }) => {
+  await page.goto('/');
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+  await page.getByRole('button', { name: 'New Game' }).first().click();
+  await fillIdentity(page, 'Chidi Okeke', 'He/Him'); // born in Lagos
+  await page.getByRole('button', { name: 'Next: Background & Languages' }).click();
+  // A word that's only a nationality isn't an ethnicity.
+  await page.getByRole('searchbox', { name: 'Search Ethnicities' }).fill('Nigerian');
+  await expect(page.getByText('Nothing matches. You can describe your ethnicity below.')).toBeVisible();
+  await page.getByRole('searchbox', { name: 'Search Ethnicities' }).fill('Igbo');
+  await page.getByRole('button', { name: 'Add Ethnicity: Igbo' }).click();
+  await page.getByRole('searchbox', { name: 'Which language do you use most?' }).fill('English');
+  await page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button', { name: 'English', exact: true }).click();
+  await page.getByRole('button', { name: 'Next: Starting Point' }).click();
+  await expect(page.getByText('Add at least one nationality.')).toBeVisible();
+  await expect(heading(page)).toHaveText('Background');
+  const first = page.getByRole('group', { name: 'Nationality Results' }).getByRole('button').first();
+  await expect(first).toHaveAccessibleName('Add Nationality: Nigeria');
+  await expect(first).toContainText('Your citizenship');
+  await first.click();
+  await expect(page.getByText('Add at least one nationality.')).toHaveCount(0);
+  await page.getByRole('button', { name: 'Remove Igbo' }).click();
+  await page.getByRole('button', { name: 'Next: Starting Point' }).click();
+  await expect(page.getByText('Add at least one ethnicity, or describe your own.')).toBeVisible();
+  await page.getByRole('textbox', { name: 'Describe Your Ethnicity' }).fill('Igbo and Scottish');
+  await page.getByRole('button', { name: 'Add Your Ethnicity' }).click();
+  await page.getByRole('button', { name: 'Next: Starting Point' }).click();
+  await pickPlace(page, 'Where You Live', 'Toronto');
+  await page.getByRole('button', { name: 'Next: Review' }).click();
+  await expect(card(page, 'Background & Languages')).toContainText('Igbo and Scottish');
+  await expect(card(page, 'Background & Languages')).toContainText('Nigeria');
 });
 
 test('a Jewish background keeps every day of no work, in the order they fall, and Home says so on the second day', async ({ page }) => {
@@ -210,10 +244,10 @@ test('a Jewish background keeps every day of no work, in the order they fall, an
   await page.getByRole('button', { name: 'New Game' }).first().click();
   await fillIdentity(page, 'Tsega Mekonnen', 'She/Her');
   await page.getByRole('button', { name: 'Next: Background & Languages' }).click();
-  await page.getByRole('searchbox', { name: 'Search Backgrounds' }).fill('Beta Israel');
-  await page.getByRole('button', { name: 'Add A Background: Beta Israel' }).click();
+  await page.getByRole('searchbox', { name: 'Search Ethnicities' }).fill('Beta Israel');
+  await page.getByRole('button', { name: 'Add Ethnicity: Beta Israel' }).click();
   // Adding a background empties its search (November 8, 2026: the chosen name stayed, over "Nothing matches").
-  await expect(page.getByRole('searchbox', { name: 'Search Backgrounds' })).toHaveValue('');
+  await expect(page.getByRole('searchbox', { name: 'Search Ethnicities' })).toHaveValue('');
   const suggested = page.getByRole('group', { name: 'From Your Backgrounds' });
   const order = ['Pesach (Passover)', 'Shavuot', 'Rosh Hashanah', 'Yom Kippur', 'Sukkot'];
   await expect(suggested.getByRole('checkbox')).toHaveCount(order.length);
@@ -221,6 +255,9 @@ test('a Jewish background keeps every day of no work, in the order they fall, an
   await expect(suggested.getByText('In 2026: April 2 and 3, April 8 and 9.')).toBeVisible();
   await expect(suggested.getByText('In 2026: September 12 and 13.')).toBeVisible();
   await suggested.getByRole('checkbox', { name: 'Rosh Hashanah' }).check();
+  await page.getByRole('searchbox', { name: 'Search Nationalities' }).fill('Israel');
+  await page.getByRole('button', { name: 'Add Nationality: Israel', exact: true }).click();
+  await expect(suggested.getByRole('checkbox')).toHaveCount(order.length); // Israel suggests the same five
   await page.getByRole('searchbox', { name: 'Which language do you use most?' }).fill('Hebrew');
   await page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button', { name: /^Hebrew/ }).click(); // marked as from your backgrounds
   await page.getByRole('button', { name: 'Next: Starting Point' }).click();
@@ -249,11 +286,15 @@ test('backgrounds drive the game: their holidays are offered first and kept, the
   await page.getByRole('button', { name: 'New Game' }).first().click();
   await fillIdentity(page, 'Min-jun Park', 'He/Him');
   await page.getByRole('button', { name: 'Next: Background & Languages' }).click();
-  await expect(page.getByText('Add your backgrounds above and the holidays they keep come first here.')).toBeVisible();
-  await page.getByRole('searchbox', { name: 'Search Backgrounds' }).fill('Korean');
-  await page.getByRole('button', { name: 'Add A Background: Korean' }).click();
+  await expect(page.getByText('Add your ethnicity and nationality above and the holidays they keep come first here.')).toBeVisible();
+  // A nationality alone brings its holidays (November 8, 2026: ethnicity and nationality are asked apart).
+  await page.getByRole('searchbox', { name: 'Search Nationalities' }).fill('South Korea');
+  await page.getByRole('button', { name: 'Add Nationality: South Korea', exact: true }).click();
   const suggested = page.getByRole('group', { name: 'From Your Backgrounds' });
   await expect(suggested.getByRole('checkbox')).toHaveCount(2); // Seollal and Chuseok
+  await page.getByRole('searchbox', { name: 'Search Ethnicities' }).fill('Korean');
+  await page.getByRole('button', { name: 'Add Ethnicity: Korean' }).click();
+  await expect(suggested.getByRole('checkbox')).toHaveCount(2);
   await suggested.getByRole('checkbox', { name: 'Seollal' }).check();
   await expect(suggested.getByText('In 2026: February 17.')).toBeVisible();
   // Every other holiday stays open to anyone.

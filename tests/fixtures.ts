@@ -11,6 +11,7 @@ export function draft(over: Partial<CreationDraft> = {}): CreationDraft {
     birthDate: '1996-02-29',
     birthplaceId: 'ng-lagos',
     heritages: [{ id: 'Yoruba', label: 'Yoruba', custom: false }, { id: 'Swedish', label: 'Swedish', custom: false }],
+    nationalities: ['NG', 'SE'],
     mainLanguage: 'en',
     languages: [{ code: 'yo', proficiency: 'Conversational' }, { code: 'sv', proficiency: 'Basic' }],
     startPlaceId: 'gb-london',

@@ -62,7 +62,7 @@ export function validateGameState(raw: unknown): asserts raw is GameState {
   const b = ch.birth as Obj;
   need(isObj(b) && isValidDate(b.year as number, b.month as number, b.day as number), 'the character', 'has an impossible birth date');
   need(isId(ch.birthplaceId), 'the character', 'has no birthplace');
-  need(Array.isArray(ch.heritages) && Array.isArray(ch.languages) && isStr(ch.mainLanguage), 'the character', 'has malformed backgrounds or languages');
+  need(Array.isArray(ch.heritages) && Array.isArray(ch.nationalities) && (ch.nationalities as unknown[]).every((c) => typeof c === 'string') && Array.isArray(ch.languages) && isStr(ch.mainLanguage), 'the character', 'has malformed backgrounds or languages');
   need(ch.observances === undefined || (Array.isArray(ch.observances) && (ch.observances as unknown[]).every(isStr)), 'the character', 'has malformed holidays');
 
   need(isId(s.locationId), 'where you are', 'is missing');

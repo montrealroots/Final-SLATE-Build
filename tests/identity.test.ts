@@ -6,6 +6,9 @@ import {
 } from './engine-api';
 import { migrate } from '../src/engine/save';
 import { registerPlace, getPlace } from '../src/data/places';
+import { BROAD_ETHNICITIES, ETHNICITIES, HERITAGES, NATIONAL_LABEL, NATIONALITY_ONLY, searchEthnicities } from '../src/data/identity';
+import { heritageLanguages } from '../src/data/heritage-languages';
+import { NATIONALITIES, addCharacter, backgroundLabels, createProject, sharedHeritages, suggestedObservances, updateCharacter } from './engine-api';
 import { SAVE_VERSION } from '../src/engine/types';
 import { draft } from './fixtures';
 import { approve, buildProject, startLife } from './helpers';
@@ -91,5 +94,57 @@ describe('saves from before', () => {
     expect(isPortrait('data:image/png;base64,iVBORw0KGgo=')).toBe(false);
     expect(isPortrait(`data:image/jpeg;base64,${'A'.repeat(400_000)}`)).toBe(false);
     expect(isPortrait('data:image/jpeg;base64,<script>')).toBe(false);
+  });
+});
+
+describe('ethnicity and nationality, asked apart (November 8, 2026)', () => {
+  it('Ethnicity offers peoples and the broad groups, never a word that is only a nationality', () => {
+    for (const h of NATIONALITY_ONLY) expect(ETHNICITIES, h).not.toContain(h);
+    expect(ETHNICITIES.slice(0, BROAD_ETHNICITIES.length)).toEqual(BROAD_ETHNICITIES);
+    for (const h of ['Yoruba', 'Ashkenazi Jewish', 'Han Chinese', 'Korean', 'Irish', 'Beta Israel', 'Māori']) expect(ETHNICITIES).toContain(h);
+    expect(searchEthnicities('Nigerian')).toEqual([]);
+    expect(searchEthnicities('Black')).toEqual(['Black Or African']);
+  });
+
+  it('every nationality word has a country, so nothing a background brought is lost', () => {
+    const codes = new Set(NATIONALITIES.map((n) => n.code));
+    const words = new Set(Object.values(NATIONAL_LABEL));
+    for (const h of NATIONALITY_ONLY) expect(words.has(h), h).toBe(true);
+    for (const [code, label] of Object.entries(NATIONAL_LABEL)) {
+      expect(codes.has(code), code).toBe(true);
+      expect(HERITAGES, label).toContain(label);
+    }
+    // No one's nationality: uninhabited places and countries that no longer exist.
+    for (const gone of ['AQ', 'BV', 'AN', 'CS']) expect(codes.has(gone), gone).toBe(false);
+  });
+
+  it('a nationality suggests what its word did: holidays, languages and a shared background in casting', () => {
+    const korean = backgroundLabels([], ['KR']);
+    expect(korean).toEqual(['Korean']);
+    expect(suggestedObservances(korean).map((o) => o.id)).toEqual(['seollal', 'chuseok']);
+    expect(heritageLanguages(backgroundLabels([], ['KR']))).toEqual(['ko']);
+    // A country with no word of its own suggests nothing, and still counts as a nationality.
+    expect(backgroundLabels([{ id: 'Yoruba', label: 'Yoruba', custom: false }], ['BF'])).toEqual(['Yoruba']);
+    // Casting: a part written as Nigerian is shared with a player whose nationality is Nigeria.
+    const s = startLife('nation-share', 'gb-london', { heritages: [{ id: 'Yoruba', label: 'Yoruba', custom: false }], nationalities: ['NG'] });
+    const p = createProject(s, { title: 'Harbour', scenarioId: 'micro', axes: { format: 'short', medium: 'live-action', targetRuntimeMin: 10 } });
+    const ch = addCharacter(s, p, 'Ines');
+    updateCharacter(p, ch.id, { heritages: ['Nigerian', 'Igbo'] });
+    expect(sharedHeritages(s, p, ch.id, 'player')).toEqual(['Nigerian']);
+  });
+
+  it('a version 6 save: nationality words become countries; with none, the nationality is the citizenship', () => {
+    const s = startLife('migrate-nation');
+    const old = JSON.parse(JSON.stringify(s)) as Record<string, unknown>;
+    const c = old.character as Record<string, unknown>;
+    delete c.nationalities;
+    c.heritages = [{ id: 'Mexican', label: 'Mexican', custom: false }, { id: 'Igbo', label: 'Igbo', custom: false }, { id: 'x', label: 'Mexican', custom: true }];
+    old.version = 6;
+    const moved = migrate(JSON.parse(JSON.stringify(old)));
+    expect(moved.character.nationalities).toEqual(['MX']);
+    // A word written in your own words is kept as you wrote it.
+    expect(moved.character.heritages.map((h) => h.label)).toEqual(['Igbo', 'Mexican']);
+    c.heritages = [{ id: 'Japanese', label: 'Japanese', custom: false }];
+    expect(migrate(JSON.parse(JSON.stringify(old))).character.nationalities).toEqual(['JP']); // born in Tokyo
   });
 });

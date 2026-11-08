@@ -22,6 +22,61 @@ export const HERITAGES: string[] = [
   'Vietnamese', 'Welsh', 'Wolof', 'Xhosa', 'Yemeni', 'Yoruba', 'Zimbabwean', 'Zulu',
 ];
 
+/**
+ * Ethnicity and nationality, asked apart (November 8, 2026). Until then one list mixed peoples (Yoruba, Han Chinese,
+ * Ashkenazi Jewish) with nationalities (Nigerian, American, Mexican). HERITAGES stays the whole vocabulary: performers
+ * and script characters are written with it, and holidays and languages are keyed by it.
+ *
+ * A nationality is a country. Where HERITAGES has that country's word, the nationality brings everything the word
+ * brought: its holidays, its languages and a shared background in casting.
+ */
+export const NATIONAL_LABEL: Readonly<Record<string, string>> = {
+  AF: 'Afghan', AL: 'Albanian', DZ: 'Algerian', US: 'American', AR: 'Argentine', AM: 'Armenian', AU: 'Australian', AT: 'Austrian',
+  AZ: 'Azerbaijani', BD: 'Bangladeshi', BY: 'Belarusian', BE: 'Belgian', BA: 'Bosnian', BR: 'Brazilian', GB: 'British', BG: 'Bulgarian',
+  MM: 'Burmese', KH: 'Cambodian', CM: 'Cameroonian', CA: 'Canadian', CV: 'Cape Verdean', CL: 'Chilean', CN: 'Chinese', CO: 'Colombian',
+  CD: 'Congolese', CG: 'Congolese', HR: 'Croatian', CU: 'Cuban', CZ: 'Czech', DK: 'Danish', DO: 'Dominican', NL: 'Dutch', EC: 'Ecuadorian',
+  EG: 'Egyptian', AE: 'Emirati', ER: 'Eritrean', EE: 'Estonian', ET: 'Ethiopian', FJ: 'Fijian', PH: 'Filipino', FI: 'Finnish', FR: 'French',
+  GE: 'Georgian', DE: 'German', GH: 'Ghanaian', GR: 'Greek', GT: 'Guatemalan', HT: 'Haitian', HN: 'Honduran', HK: 'Hong Konger',
+  HU: 'Hungarian', IS: 'Icelandic', IN: 'Indian', ID: 'Indonesian', IR: 'Iranian', IQ: 'Iraqi', IE: 'Irish', IL: 'Israeli', IT: 'Italian',
+  JM: 'Jamaican', JP: 'Japanese', JO: 'Jordanian', KZ: 'Kazakh', KE: 'Kenyan', KR: 'Korean', KP: 'Korean', LA: 'Lao', LV: 'Latvian',
+  LB: 'Lebanese', LR: 'Liberian', LT: 'Lithuanian', MG: 'Malagasy', MT: 'Maltese', MX: 'Mexican', MN: 'Mongolian', MA: 'Moroccan',
+  NP: 'Nepali', NZ: 'New Zealander', NI: 'Nicaraguan', NG: 'Nigerian', NO: 'Norwegian', PK: 'Pakistani', PS: 'Palestinian',
+  PA: 'Panamanian', PE: 'Peruvian', PL: 'Polish', PT: 'Portuguese', PR: 'Puerto Rican', RO: 'Romanian', RU: 'Russian', RW: 'Rwandan',
+  SV: 'Salvadoran', WS: 'Samoan', SA: 'Saudi', SN: 'Senegalese', RS: 'Serbian', SG: 'Singaporean', SK: 'Slovak', SI: 'Slovenian',
+  SO: 'Somali', ZA: 'South African', ES: 'Spanish', LK: 'Sri Lankan', SD: 'Sudanese', SE: 'Swedish', CH: 'Swiss', SY: 'Syrian',
+  TW: 'Taiwanese', TH: 'Thai', TO: 'Tongan', TT: 'Trinidadian', TN: 'Tunisian', TR: 'Turkish', UG: 'Ugandan', UA: 'Ukrainian',
+  VE: 'Venezuelan', VN: 'Vietnamese', YE: 'Yemeni', ZW: 'Zimbabwean',
+};
+
+/**
+ * Words in HERITAGES that name a nationality and no people of their own: countries of many peoples, whose peoples the
+ * list names (Nigerian: Yoruba, Igbo, Hausa, Fulani), or whose people are named by a broad ethnicity (American, Mexican).
+ * They're asked as nationalities. Words that name a people as well as a country (Korean, Irish, Greek) are both.
+ */
+export const NATIONALITY_ONLY: ReadonlySet<string> = new Set([
+  'Afghan', 'Algerian', 'American', 'Argentine', 'Australian', 'Bangladeshi', 'Belgian', 'Brazilian', 'British', 'Cameroonian', 'Canadian',
+  'Chilean', 'Colombian', 'Congolese', 'Cuban', 'Dominican', 'Ecuadorian', 'Egyptian', 'Emirati', 'Ghanaian', 'Guatemalan', 'Haitian',
+  'Honduran', 'Hong Konger', 'Indian', 'Iranian', 'Iraqi', 'Israeli', 'Jamaican', 'Jordanian', 'Kenyan', 'Lebanese', 'Liberian', 'Mexican',
+  'Moroccan', 'New Zealander', 'Nicaraguan', 'Nigerian', 'Pakistani', 'Panamanian', 'Peruvian', 'Puerto Rican', 'Rwandan', 'Salvadoran',
+  'Saudi', 'Senegalese', 'Singaporean', 'South African', 'Sudanese', 'Swiss', 'Syrian', 'Trinidadian', 'Tunisian', 'Ugandan',
+  'Venezuelan', 'Yemeni', 'Zimbabwean',
+]);
+
+/** The broad groups, from 1221's Race Or Ethnicity list: an answer for anyone the peoples below don't name. */
+export const BROAD_ETHNICITIES: readonly string[] = [
+  'American Indian Or Alaska Native', 'Asian', 'Black Or African', 'Hispanic Or Latino', 'Middle Eastern Or North African',
+  'Native Hawaiian Or Pacific Islander', 'White',
+];
+
+/** What Ethnicity offers: the broad groups first, then the peoples, in alphabetical order. */
+export const ETHNICITIES: readonly string[] = [...BROAD_ETHNICITIES, ...HERITAGES.filter((h) => !NATIONALITY_ONLY.has(h))];
+
+export function searchEthnicities(q: string, limit = 14): string[] {
+  const f = fold(q.trim());
+  if (!f) return ETHNICITIES.slice(0, limit);
+  return ETHNICITIES.filter((h) => fold(h).includes(f)).sort((a, b) => Number(!fold(a).startsWith(f)) - Number(!fold(b).startsWith(f))).slice(0, limit);
+}
+
 export interface LanguageInfo {
   code: string;
   name: string;

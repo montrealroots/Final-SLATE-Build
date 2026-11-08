@@ -10,7 +10,7 @@ import { SaveValidationError, validateGameState } from './validate';
 import { adoptPublishedRules, migrateV2toV3, migrateV3toV4 } from './awards';
 import { normalizeDraft } from './state';
 import { migrateV4toV5 } from './finance';
-import { knownAs, migrateV5toV6 } from './identity';
+import { knownAs, migrateV5toV6, migrateV6toV7 } from './identity';
 
 export interface KeyValueStore {
   getItem(key: string): string | null;
@@ -144,6 +144,8 @@ export const MIGRATIONS: Record<number, Migration> = {
   4: migrateV4toV5,
   // v5 -> v6: a legal name in parts, a preferred name, where you live and room for a headshot (identity.ts).
   5: migrateV5toV6,
+  // v6 -> v7: backgrounds asked as ethnicity and nationality; nationality words become countries (identity.ts).
+  6: migrateV6toV7,
 };
 
 export function migrate(raw: unknown): GameState {

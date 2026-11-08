@@ -96,6 +96,13 @@ Starting Point, is next.
   - New Script's two country lists have distinct screen-reader names;
   - the ported headshot picker re-saved without end under a parent that passes a new callback each render.
 - **Results:** `npm run check` (292 unit tests, startup 668 kB, within budget), balance and perf, and the complete production-build browser suite (147 passed, 27 skipped by design, 0 failed).
+- **Ethnicity and nationality (the owner's ask, after #40):**
+  - Backgrounds mixed peoples (Yoruba, Ashkenazi Jewish) with nationalities (Nigerian, American). They're now asked apart, and you need at least one of each.
+  - Ethnicity: peoples, plus 1221's broad groups listed first, or your own words. Words that are only a nationality left this list (`NATIONALITY_ONLY`).
+  - Nationality: any inhabited country or territory, with your citizenship offered first. It isn't your citizenship and changes nothing legal.
+  - Through `NATIONAL_LABEL`, a nationality brings what its word did: suggested holidays and languages, and a shared background in casting.
+  - Save version 7. `migrateV6toV7` and old drafts turn nationality words into countries; with none, the nationality is the citizenship.
+  - Not changed: performers and script characters keep the single backgrounds list.
 - **Next:** screen 4 of the review, then the big gameplay update, then the input audit (the owner's order).
 
 ### Earlier Request (November 8, 2026, after #37): decide the budget-size naming

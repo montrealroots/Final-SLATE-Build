@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 6;
+export const SAVE_VERSION = 7;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -37,7 +37,10 @@ export interface CharacterIdentity {
   actingTitle: ActingTitle;
   birth: { year: number; month: number; day: number };
   birthplaceId: string;
+  /** Your ethnicities (save version 7; until then backgrounds mixed ethnicities and nationalities). */
   heritages: Heritage[];
+  /** Your nationalities, as country codes (identity.ts): where you and your family come from. Not your citizenship. */
+  nationalities: string[];
   mainLanguage: string;
   languages: LanguageSkill[]; // additional languages
   /** Holidays kept from your backgrounds (observance ids, observances.ts); saves from before have none. */
@@ -64,8 +67,11 @@ export interface CreationDraft {
   actingTitle: ActingTitle | '';
   birthDate: string; // YYYY-MM-DD
   birthplaceId: string;
+  /** Your ethnicities. */
   heritages: Heritage[];
   heritageCustomText: string;
+  /** Your nationalities (country codes). A draft from before they were asked takes them from its backgrounds. */
+  nationalities: string[];
   mainLanguage: string;
   languages: LanguageSkill[];
   /** Holidays you keep (observance ids). */

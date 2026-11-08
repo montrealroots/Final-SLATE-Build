@@ -10,7 +10,7 @@ import type { CreationDraft, Format, GameState, Medium, PerformanceMethod, Proje
 export function startLife(seedTag: string, placeId = 'gb-london', over: Partial<CreationDraft> = {}): GameState {
   const d: CreationDraft = {
     ...emptyDraft(), name: 'Rin Sato-Moreau', pronouns: 'they', actingTitle: 'Actor', birthDate: '1990-06-15', birthplaceId: 'jp-tokyo',
-    heritages: [{ id: 'Japanese', label: 'Japanese', custom: false }, { id: 'French', label: 'French', custom: false }], mainLanguage: 'en',
+    heritages: [{ id: 'Japanese', label: 'Japanese', custom: false }, { id: 'French', label: 'French', custom: false }], nationalities: ['JP', 'FR'], mainLanguage: 'en',
     languages: [{ code: 'ja', proficiency: 'Fluent' }, { code: 'fr', proficiency: 'Conversational' }], startPlaceId: placeId, startDate: '2026-01-05', startTime: '08:00', ...over,
   };
   return newGame(d, 0, `save-${seedTag}`);

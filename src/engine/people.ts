@@ -4,6 +4,7 @@
 
 import { HERITAGES } from '../data/identity';
 import { getPlace } from '../data/places';
+import { backgroundLabels } from './identity';
 import { gaussian, intBetween, pick, stream } from './rng';
 import { addDaysToKey, dayNumber } from './time';
 import type { GameState, Project } from './types';
@@ -257,6 +258,7 @@ export function isAvailable(state: GameState, p: Person, from: string, to: strin
 export function sharedHeritages(state: GameState, p: Project, characterId: string, performer: 'player' | string): string[] {
   const wanted = p.characters.find((c) => c.id === characterId)?.heritages ?? [];
   if (!wanted.length) return [];
-  const theirs = performer === 'player' ? state.character.heritages.map((h) => h.label) : personById(state, performer).heritages;
+  // Yours are your ethnicities and the words for your nationalities (identity.ts backgroundLabels).
+  const theirs = performer === 'player' ? backgroundLabels(state.character.heritages, state.character.nationalities) : personById(state, performer).heritages;
   return wanted.filter((h) => theirs.includes(h));
 }
