@@ -1,7 +1,7 @@
 // Stage 12 of the gameplay-depth package: tests for production children built before the package that had none
 // (docs/depth/COVERAGE-LEDGER.csv rows marked IMPLEMENTED UNVERIFIED).
 import { describe, expect, it } from 'vitest';
-import { DAY, addDaysToKey, bookMocap, ledgerTotals, mocapRecord, precipitationDuring, processUntil, weatherOn } from '../src/engine';
+import { DAY, addDaysToKey, bookMocap, castPlayer, ledgerTotals, mocapRecord, precipitationDuring, processUntil, weatherOn } from '../src/engine';
 import { rebookMissed } from '../src/engine/mocap';
 import { getPlace } from '../src/data/places';
 import { maybePuppetDamage } from '../src/engine/production/workday';
@@ -120,4 +120,23 @@ describe('a missed capture session (SLATE-13-04)', () => {
     expect(s.log[0].text).toMatch(/^The capture session for Golem on .+ couldn't run \(Ines was shooting Night Ferry\)\. It is rebooked for .+\.$/);
     expect(ledgerTotals(p).available).toBe(available);
   }, 60000);
+});
+
+describe('one method never fulfils another (SLATE-05-03)', () => {
+  it('a voice performer is not a capture performer: the stage refuses, and the animation waits for both pieces of work', () => {
+    const s = startLife('gaps-methods');
+    const p = buildProject(s, { title: 'Golem', format: 'short', medium: 'animation', technique: '3d-cg', runtime: 3, quality: 'limited' },
+      [{ name: 'Golem', patch: { roleSize: 'lead', entity: 'monster', methods: ['voice', 'motion-capture'] } }], [{ place: 'Quarry', chars: ['Golem'], minutes: 1 }]);
+    approve(s, p);
+    const golem = p.characters.find((c) => c.name === 'Golem')!.id;
+    castPlayer(s, p, golem, 'voice');
+    p.tasks = buildTasks(p); // as production start builds them
+    expect(() => bookMocap(s, p, golem, ['body'])).toThrow('Cast a capture performer for this character first.');
+    const voice = p.tasks.find((t) => t.id === `anim:voice:${golem}`)!;
+    const anim = p.tasks.find((t) => t.kind === 'anim:animation')!;
+    expect(anim.dependsOn).toContain(voice.id);
+    expect(anim.dependsOn.some((d) => d.startsWith('anim:mocap'))).toBe(true);
+    castPlayer(s, p, golem, 'motion-capture');
+    expect(p.cast.filter((c) => c.characterId === golem).map((c) => c.method).sort()).toEqual(['motion-capture', 'voice']);
+  });
 });

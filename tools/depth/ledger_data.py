@@ -169,7 +169,7 @@ C = {
 '05-03': ('Character editor', 'src/engine/production/tasks.ts; src/engine/mocap.ts', [
   ('Being type and performance methods drive the work (voice, capture, puppet, creature)', 'VE',
    ['tests/media.test.ts::cannot animate before rigs exist', 'tests/lunar-mocap.test.ts::capture sessions feed animation'], ''),
-  ('One method never fulfils another (a voice session is not capture)', 'IU', [], 'Separate tasks exist; no test asserts it'),
+  ('One method never fulfils another (a voice session is not capture)', 'V', ['tests/depth-gaps-production.test.ts::a voice performer is not a capture performer'], ''),
 ]),
 '05-04': ('Script > Relationships', 'src/engine/projects.ts', [
   ('Wants and fears per character; directed relationships between characters', 'IU', [], 'Fields and editor exist; no test'),

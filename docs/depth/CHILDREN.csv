@@ -75,7 +75,7 @@ SLATE-05-01.03,SLATE-05-01,Renaming keeps every link by ID and the history,VERIF
 SLATE-05-02.01,SLATE-05-02,"Size, several functions and award placement chosen separately",VERIFIED EXISTING,tests/script-effects.test.ts::a supporting antagonist stays supporting,
 SLATE-05-02.02,SLATE-05-02,"Award entries follow placement and organizer rules, never the story function",VERIFIED EXISTING,tests/script-effects.test.ts::in a real entry: the antagonist is offered for supporting,
 SLATE-05-03.01,SLATE-05-03,"Being type and performance methods drive the work (voice, capture, puppet, creature)",VERIFIED EXISTING,tests/media.test.ts::cannot animate before rigs exist | tests/lunar-mocap.test.ts::capture sessions feed animation,
-SLATE-05-03.02,SLATE-05-03,One method never fulfils another (a voice session is not capture),IMPLEMENTED UNVERIFIED,,Separate tasks exist; no test asserts it
+SLATE-05-03.02,SLATE-05-03,One method never fulfils another (a voice session is not capture),VERIFIED,tests/depth-gaps-production.test.ts::a voice performer is not a capture performer,
 SLATE-05-04.01,SLATE-05-04,Wants and fears per character; directed relationships between characters,IMPLEMENTED UNVERIFIED,,Fields and editor exist; no test
 SLATE-05-04.02,SLATE-05-04,Arc beats tied to scenes,VERIFIED,tests/structure.test.ts::a beat goes only in a scene the character is in,
 SLATE-05-04.03,SLATE-05-04,Removing a character previews dependent scenes and relationships first,VERIFIED,tests/scenes.test.ts::removing a character lists the scenes that use them,
