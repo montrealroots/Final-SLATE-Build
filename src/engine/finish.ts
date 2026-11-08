@@ -30,14 +30,16 @@ export function assemblyComplete(p: Project): boolean {
   return asm.length > 0 && asm.every((t) => t.status === 'done');
 }
 
+/** Editor days a cut pass takes: a day for every 12 minutes of approved scenes, at least two. */
+export const cutPassDays = (p: Project): number => Math.max(2, Math.round(approvedScenes(p).reduce((a, s) => a + s.estMinutes, 0) / 12));
+
 export function startCutPass(state: GameState, p: Project): Task {
   if (!assemblyComplete(p)) throw new Error('The assembly edit isn\'t finished yet.');
   if (p.edit.pictureLocked) throw new Error('The picture is locked. Unlock it before cutting again.');
   if (p.tasks.some((t) => t.kind === 'post:cutpass' && t.status !== 'done')) throw new Error('A cut pass is already in progress.');
   const n = p.edit.cutPasses + 1;
-  const minutes = approvedScenes(p).reduce((a, s) => a + s.estMinutes, 0);
   const task: Task = {
-    id: `post:cutpass:${n}`, kind: 'post:cutpass', label: `Cut Pass ${n}`, dept: 'Post Production', roleId: 'editor', units: Math.max(2, Math.round(minutes / 12)),
+    id: `post:cutpass:${n}`, kind: 'post:cutpass', label: `Cut Pass ${n}`, dept: 'Post Production', roleId: 'editor', units: cutPassDays(p),
     unitLabel: 'days', done: 0, dependsOn: [], status: 'waiting', episode: 1, sceneIds: [], workedDays: 0,
   };
   p.tasks.push(task);

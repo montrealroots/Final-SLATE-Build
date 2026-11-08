@@ -504,7 +504,7 @@ C = {
   ('Jumping to a section is not hidden under the sticky header', 'V', ['e2e/viewports.spec.ts::a destination scrolled to or focused is never hidden under the top bar'], ''),
 ]),
 '19-03': ('Every action', 'src/ui', [
-  ('Preview cost and time before committing; outcome after', 'IU', [], 'Many actions preview; no audit'),
+  ('Preview cost and time before committing; outcome after', 'V', ['tests/action-previews.test.ts::each previews its cost or time and shows its outcome'], 'Repaired November 8, 2026: eight actions previewed nothing; each now does, and a new spending action fails the test until recorded'),
   ('Disabled actions say why', 'V', ['tests/disabled-reasons.test.ts::every disabled control in the interface is recorded with where its reason is shown'], 'Repaired November 8, 2026: seven controls gave no reason; each now says, and a new disabled control fails the test until recorded'),
 ]),
 '19-04': ('Saved Games, Settings', 'src/engine/save.ts; src/engine/vault.ts', [

@@ -688,6 +688,7 @@ function Facts({ p }: { p: Project }) {
       </div>
       <button className="btn" disabled={!claim.trim()} onClick={() => { edit(p, () => p.evidence.push({ id: newId(store.state!, 'ev'), claim: claim.trim(), status, sourceNote: source.trim(), verified: false })); setClaim(''); setSource(''); }}>Add Fact</button>
       <h3 className="spaced">Contributors</h3>
+      {p.contributors.some((c) => c.consent === 'not-asked') && <p className="dim">Someone asked for consent answers within two to six days.</p>}
       <ul className="list">
         {p.contributors.map((c) => (
           <li key={c.id} className="row-wrap">
