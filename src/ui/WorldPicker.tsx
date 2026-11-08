@@ -142,7 +142,7 @@ export function WorldPlacePicker(props: { label: string; headed?: boolean; value
           </div>
           {mapOpen && (
             <Suspense fallback={<><div role="status" className="worldmap worldmap-loading muted">Loading the map…</div><p className="dim xs">{MAP_CREDIT}</p></>}>
-              <WorldMap country={ws.country} places={ws.status === 'ready' ? shown : []} onCountry={ws.setCountry} onPlace={(w) => void choose(w)} verb="Choose" />
+              <WorldMap country={ws.country} chosen={chosen && chosen.country === ws.country ? chosen : undefined} places={ws.status === 'ready' ? shown : []} onCountry={ws.setCountry} onPlace={(w) => void choose(w)} verb="Choose" />
             </Suspense>
           )}
         </div>

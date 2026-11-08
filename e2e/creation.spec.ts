@@ -288,6 +288,10 @@ test('Starting Point: featured cities A to Z, a choice settles the list, and the
   await page.getByLabel('Starting Date').fill('2027-03-15');
   await page.getByLabel('Starting Time').fill('19:45');
   await expect(page.getByText('Your story starts on Monday, March 15, 2027, at 7:45 PM EDT in Toronto.')).toBeVisible();
+  // The chosen place is marked on the map, and the date and time boxes sit level (their notes are one line each).
+  await expect(page.getByRole('img', { name: 'Chosen: Toronto' })).toBeVisible();
+  const [date, time] = [await page.getByLabel('Starting Date').boundingBox(), await page.getByLabel('Starting Time').boundingBox()];
+  if (date!.x !== time!.x) expect(Math.abs(date!.y - time!.y)).toBeLessThan(2); // side by side; a phone stacks them
   await expect(page.getByText('Any date in 2026.')).toHaveCount(0);
 });
 

@@ -84,7 +84,7 @@ function apart(places: WorldPlace[], data: WorldMapData, r: number): { w: WorldP
   return out;
 }
 
-export function WorldMap(props: { country: string; here?: { lat: number; lon: number; name: string }; places: WorldPlace[]; onCountry: (c: string) => void; onPlace: (w: WorldPlace) => void; verb?: string }) {
+export function WorldMap(props: { country: string; here?: { lat: number; lon: number; name: string }; chosen?: { lat: number; lon: number; name: string }; places: WorldPlace[]; onCountry: (c: string) => void; onPlace: (w: WorldPlace) => void; verb?: string }) {
   const [data, setData] = useState<WorldMapData | null>(null);
   const [failed, setFailed] = useState(false);
   const [attempt, setAttempt] = useState(0);
@@ -116,6 +116,8 @@ export function WorldMap(props: { country: string; here?: { lat: number; lon: nu
   if (!data || !view) return <><div role="status" className="worldmap worldmap-loading muted">Loading the map…</div><p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}</p></>;
   const r = markerRadiusAt(view, data);
   const me = props.here ? projectPoint(props.here.lat, props.here.lon, data) : null;
+  // A picker rings the place already chosen, so it stands out from the other markers (November 8, 2026).
+  const mine = props.chosen ? projectPoint(props.chosen.lat, props.chosen.lon, data) : null;
   return (
     <>
       {/* The outlines are a pointer shortcut for the country list; each marker is a real button for keyboards and screen readers. */}
@@ -137,9 +139,10 @@ export function WorldMap(props: { country: string; here?: { lat: number; lon: nu
             </circle>
           );
         })}
+        {mine && props.chosen && <circle className="worldmap-chosen" cx={mine.x} cy={mine.y} r={r * 1.4} role="img" aria-label={`Chosen: ${props.chosen.name}`}><title>Chosen: {props.chosen.name}</title></circle>}
         {me && props.here && <circle className="worldmap-here" cx={me.x} cy={me.y} r={r * 1.4} role="img" aria-label={`You're in ${props.here.name}`}><title>You're in {props.here.name}</title></circle>}
       </svg>
-      <p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}</p>
+      <p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}{props.chosen ? ' The place you chose is ringed.' : ''}</p>
     </>
   );
 }

@@ -304,11 +304,12 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
       <section className="card">
         <div className="panel-head"><div><h2>When It Begins</h2><p className="muted small" style={{ margin: 0 }}>The date and the local time where you live when your story starts.</p></div></div>
         <div className="field-row">
-          <TextField label="Starting Date" type="date" value={d.startDate} min={`${FIRST_START_YEAR}-01-01`} max={`${LAST_START_YEAR}-12-31`} error={err('startDate')} hint={`Any day from ${FIRST_START_YEAR}, the default, to ${LAST_START_YEAR}. You must be at least ${MIN_START_AGE} on it.`} onChange={(v) => set({ startDate: v })} />
-          <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you start." onChange={(v) => set({ startTime: v })} />
+          <TextField label="Starting Date" type="date" value={d.startDate} min={`${FIRST_START_YEAR}-01-01`} max={`${LAST_START_YEAR}-12-31`} error={err('startDate')} hint={`Any day from ${FIRST_START_YEAR} to ${LAST_START_YEAR}.`} onChange={(v) => set({ startDate: v })} />
+          <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you live." onChange={(v) => set({ startTime: v })} />
         </div>
         {/* The date and time as the game writes them, not the browser's 01/05/2026 (November 8, 2026). */}
-        {startsAt && <p className="small" style={{ marginTop: 'var(--s3)' }}>Your story starts on {startsAt}.</p>}
+        {/* Each box's note is one short line, so the two boxes sit level; the rest is said here (November 8, 2026). */}
+        <p className="small" style={{ marginTop: 'var(--s3)' }}>{startsAt ? `Your story starts on ${startsAt}. ` : ''}{FIRST_START_YEAR} is the default year. You must be at least {MIN_START_AGE} on the day.</p>
       </section>
     </div>
   );
