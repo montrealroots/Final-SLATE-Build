@@ -109,6 +109,8 @@ Starting Point, is next.
     - Script characters are written with an ethnicity and a nationality ("a Cuban woman": Afro-Latino, Cuba).
     - Performers carry both, split from the same draws, so no performer changed. Casting matches ethnicity to ethnicity and nationality to nationality.
     - `migrateV6toV7` converts script characters' nationality words too.
+  - The language you use most empties its search once chosen, as every picker on the page does.
+- **Results (ethnicity and nationality):** `npm run check` (303 unit tests, startup 678 kB, within budget) and the complete production-build browser suite (155 passed, 27 skipped by design, 0 failed).
 - **Next:** screen 4 of the review, then the big gameplay update, then the input audit (the owner's order).
 
 ### Earlier Request (November 8, 2026, after #37): decide the budget-size naming
