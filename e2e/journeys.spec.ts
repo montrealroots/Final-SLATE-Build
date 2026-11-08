@@ -114,6 +114,7 @@ test('hybrid: a live-action scene and a 3D scene share one production', async ({
 // seed 3 the documentary's third contributor declines. Each answer is drawn from the seed, the project and the person.
 const ALL_AGREE = 2;
 const RAIN_SEED = 2;
+const PUPPET_SEED = 2;
 const ONE_DECLINES = 3;
 
 async function lockKeepers(page: Page, seed: number): Promise<void> {
@@ -311,6 +312,22 @@ test('stop motion to delivery: puppets, sets and stages', async ({ page }) => {
   await section(page, 'Production');
   for (const t of ['Armature: Pip', 'Puppet Fabrication: Pip', 'Puppet Costume Fitting: Pip', 'Miniature Sets', 'Stage Camera And Lighting Setup']) await expect(page.getByText(t, { exact: true })).toBeVisible();
   await expect(page.getByText('Ready for the stage.')).toBeVisible();
+});
+
+test('stop motion: a puppet damaged on set holds its shots until it is repaired', async ({ page }) => {
+  // Labelled fixture: the pinned world seed, chosen so a puppet is damaged during the stage weeks (about one chance in
+  // twenty-five each stage day); the damage and the repair are the engine's.
+  await seededLife(page, 'gb-london', '2026-01-05', PUPPET_SEED);
+  await newProject(page, { title: 'Button Moon', format: 'Short Film', medium: 'Animation', technique: 'Stop Motion', finish: 'Limited Animation', runtime: '3' });
+  await addCharacters(page, ['Pip']);
+  await addScene(page, { index: 0, place: 'Drawer', chars: ['Pip'], minutes: '3' });
+  await saveAndApprove(page);
+  await produceToDelivery(page, { yourself: ['Pip'], step: 'month', weeks: 40 });
+  // SLATE-11-03, 13-03: the damage is logged, the maker's repair was worked, and the film was delivered after it.
+  const logs = (await readSavedState(page)).log.map((l: { text: string }) => l.text);
+  expect(logs).toContain("Pip's puppet was damaged on set. Shots with Pip wait for a repair unless a duplicate is available.");
+  await section(page, 'Production');
+  await expect(page.locator('li', { hasText: 'Repair Puppet: Pip' }).first()).toContainText('Done');
 });
 
 async function bakeOrBreak(page: Page): Promise<void> {
