@@ -236,8 +236,8 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       and resubmission (the fee paid once), and an exclusive offer ending a competing one (`connected.spec.ts`).
   - Ledger: 149 verified existing, 78 verified, 2 external blockers; nothing unverified or missing.
 - **Next:** nothing from the package is left but the owner's acceptance and real-device checks (`19-05.03`, `20-05`).
-  Still unit-tested only: versions entered at festivals (`15-05.03`), later distribution windows (`16-05`), plate
-  integration restarted by a pickup (`13-05`).
+  Versions entered at festivals (`15-05.03`), later distribution windows (`16-05`) and plate integration restarted by a
+  pickup (`13-05`) were unit-tested only until after #45; each now has a browser journey (below).
 
 ### Newest Request (November 8, 2026, after #44): estimates that follow the work, contextual directing
 
@@ -266,9 +266,25 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
   alternatives, a scope preview kept back, spending against the estimate, a lighter plan, the dailies, and a save
   and reopen. In `e2e/careers.spec.ts` the player's own heavier plan now makes the day overrun.
 - **Limits:**
-  - The browser journey takes the accept route in the dailies; the pickup route is tested in the engine.
+  - The browser journey took only the accept route in the dailies until after #45; it now books a pickup too (below).
   - No primary source was found for the estimating process.
   - Rest between shoot days is not modeled.
+
+### Newest Request (November 8, 2026, after #45): browser journeys for the last unit-only behaviours
+
+- **Versions** (`15-05.03`): Your Entries now names the cut entered, and the live-action journey enters the Festival Cut.
+- **Later windows** (`16-05`):
+  - Later-window offers were indistinguishable from first offers. They are now marked (`DistributionOffer.laterWindow`)
+    and say so on the Release page.
+  - When earlier deals' rights leave nothing to offer, the log now says so. Before, it read "No distributors have made an
+    offer yet", as though no one was interested.
+  - The connected journey waits for it weekly, because offers stay open three weeks.
+- **Plate integration** (`13-05`): a new hybrid journey in `e2e/journeys.spec.ts`. A live scene changed after
+  integration is picked up; the restart is said first, logged, and done again before delivery.
+- **Dailies pickup** (`12-05`): the live-action journey books the dock's inserts on a pickup day and accepts the
+  wheelhouse's gap. All of it survives a save and reopen.
+- **Next:** nothing from the package is left but the owner's acceptance and real-device checks (`19-05.03`, `20-05`).
+  The research items below (rulebooks, holiday names) and the manual items remain.
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 

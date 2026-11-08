@@ -620,6 +620,8 @@ export interface DistributionOffer {
   broadcastEdit?: boolean;
   /** Exclusive rights in its territories (distribution.ts terms): accepting it ends overlapping offers on any route. */
   exclusive?: boolean;
+  /** Offered for a later window, some months after the first release (distribution.ts LATER_WINDOW_DAYS). */
+  laterWindow?: true;
   /** Once accepted: the day its exclusivity ends (a dateKey), after which later windows can open there. */
   exclusiveUntil?: string;
   /** What the distributor has reported since release (distribution.ts): gross, after its fee, and overage paid. */

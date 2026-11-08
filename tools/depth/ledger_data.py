@@ -436,7 +436,7 @@ C = {
      'sceneIssues offers only the fixes that fit: another clean take, replacement lines for a sound problem with dialogue, a pickup before lock, or acceptance',
      'A pickup shows its day\'s cost; replacement lines a sound designer\'s day', 'The edit and the schedule', 'A locked picture offers no pickup', 'Derived from saved captures', R_DIR)),
   ('Choosing a take or accepting a gap survives a save', 'V',
-   ['tests/directing.test.ts::the choice survives a save', 'e2e/live-action.spec.ts::Save, close and reopen: the chosen take and the accepted gap'], '',
+   ['tests/directing.test.ts::the choice survives a save', 'e2e/live-action.spec.ts::Save, close and reopen: the chosen take, the pickup'], '',
    D('Use This Take; Keep It, Cut It Without, Accept The Mismatch', 'Dailies with a choice', 'The chosen take and the accepted list are stored on the capture', 'None',
      'The edit\'s figures', 'None needed', 'Saved and reloaded unchanged', R_DIR)),
   ('Projects from before keep their takes, rules and footage', 'V', ['tests/directing.test.ts::a project from before keeps its takes and its coverage bonus'], '',
@@ -469,7 +469,7 @@ C = {
 ]),
 '13-05': ('Production', 'src/engine/production/tasks.ts', [
   ('Plates and digital scenes in one production; plate integration', 'VE', ['tests/media.test.ts::shoots live scenes and animates the rest'], ''),
-  ('A changed plate flags its integration task and cost', 'V', ['tests/depth-gaps-production.test.ts::a pickup of a live scene in a hybrid project restarts the plate integration begun in its episode, and says so'], 'Repaired November 8, 2026: a pickup left finished integration on the old plate; it now restarts it, and the Edit page previews the compositor days'),
+  ('A changed plate flags its integration task and cost', 'V', ['tests/depth-gaps-production.test.ts::a pickup of a live scene in a hybrid project restarts the plate integration begun in its episode, and says so', 'e2e/journeys.spec.ts::a live scene changed after its plate was integrated is picked up'], 'Repaired November 8, 2026: a pickup left finished integration on the old plate; it now restarts it, and the Edit page previews the compositor days'),
 ]),
 '14-01': ('Script (documentary)', 'src/engine/documentary.ts', [
   ('Research and access planning; contributors and archives', 'VE', ['e2e/media.spec.ts::documentary through the UI'], ''),
@@ -520,7 +520,7 @@ C = {
   ('Delivery checks name what is missing', 'VE', ['tests/script-effects.test.ts::a shoot day left empty by a cut is cancelled'], ''),
   ('A broadcast edit as a separate deliverable', 'VE', ['e2e/script-rules.spec.ts::what the broadcaster offers'], ''),
   ('Festival and distribution versions with their own runtime and credits', 'V',
-   ['tests/versions.test.ts::a version is conformed from the locked cut as a day of editing, with its own runtime and credits', 'tests/versions.test.ts::a festival\'s runtime rules read the version entered', 'e2e/live-action.spec.ts::A Festival Cut without the wheelhouse scene (SLATE-15-05.03)'],
+   ['tests/versions.test.ts::a version is conformed from the locked cut as a day of editing, with its own runtime and credits', 'tests/versions.test.ts::a festival\'s runtime rules read the version entered', 'e2e/live-action.spec.ts::A Festival Cut without the wheelhouse scene (SLATE-15-05.03)', 'e2e/live-action.spec.ts::Enter the Festival Cut (SLATE-15-05.03)'],
    'Versions leave scenes out of the locked cut; credits drop people whose scenes are left out'),
 ]),
 '16-01': ('Release', 'src/engine/finish.ts', [
@@ -543,7 +543,7 @@ C = {
 ]),
 '16-05': ('Release', 'src/engine/distribution.ts', [
   ('Later windows and territories after the first release', 'V',
-   ['tests/territories.test.ts::A later window offers only what isn\'t held', 'tests/territories.test.ts::the later window is scheduled on a wave of its own'],
+   ['tests/territories.test.ts::A later window offers only what isn\'t held', 'tests/territories.test.ts::the later window is scheduled on a wave of its own', 'tests/territories.test.ts::marked as a later window', 'e2e/connected.spec.ts::Later windows (SLATE-16-05)'],
    'Later windows come 120 days after a release (game calibration)'),
 ]),
 '17-01': ('Festivals And Awards', 'src/engine/awards.ts', [
@@ -598,7 +598,7 @@ C = {
 '19-03': ('Every action', 'src/ui', [
   ('Preview cost and time before committing; outcome after', 'V', ['tests/action-previews.test.ts::each previews its cost or time and shows its outcome'], 'Repaired November 8, 2026: eight actions previewed nothing; each now does, and a new spending action fails the test until recorded'),
   ('A pickup from the dailies shoots only what is missing, at a day\'s cost shown first, and is refused without the money', 'V',
-   ['tests/directing.test.ts::missing coverage is shot on a targeted pickup'], 'The browser journey takes the accept route; the pickup route is tested in the engine',
+   ['tests/directing.test.ts::missing coverage is shot on a targeted pickup', 'e2e/live-action.spec.ts::A pickup of just the inserts (SLATE-12-05)'], '',
    D('Shoot … On A Pickup Day', 'A missing setup or a flawed take, picture not locked, no pickup already booked', 'applyFix checks the uncommitted money against pickupCost, then schedulePickups books a day after the last; applyPickup adds the setup or takes',
      'The location, gear, shoot crew and the scene\'s cast for a day', 'The edit gains the material; the schedule a day', 'Refused with the amount when the money isn\'t there; a lost day is rebooked',
      'The pickup day and its kind are saved', R_DIR)),
@@ -626,7 +626,7 @@ C = {
 ]),
 '20-04': ('e2e', 'e2e', [
   ('Desktop, phone and WebKit journeys for creation, funding, casting, revision, save and recovery', 'VE', ['e2e/careers.spec.ts::stop motion: refused for lack of money'], ''),
-  ('Journeys for the features this package adds', 'V', ['e2e/negotiation.spec.ts::an investor offer: when it lapses, asking for better terms, and their answer', 'e2e/auditions.spec.ts::called back with a chemistry read, then offered the part', 'e2e/season.spec.ts::a season planned and reordered', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)', 'e2e/live-action.spec.ts::Before locking, the dailies (SLATE-12-03)', 'e2e/career.spec.ts::a proposal is accepted into a funded project', 'e2e/connected.spec.ts::Earnings (SLATE-16-04.02)'], 'Versions (15-05.03) and later windows (16-05) are covered by unit tests only'),
+  ('Journeys for the features this package adds', 'V', ['e2e/negotiation.spec.ts::an investor offer: when it lapses, asking for better terms, and their answer', 'e2e/auditions.spec.ts::called back with a chemistry read, then offered the part', 'e2e/season.spec.ts::a season planned and reordered', 'e2e/live-action.spec.ts::The shot plan (SLATE-12-02.02)', 'e2e/live-action.spec.ts::Before locking, the dailies (SLATE-12-03)', 'e2e/career.spec.ts::a proposal is accepted into a funded project', 'e2e/connected.spec.ts::Earnings (SLATE-16-04.02)', 'e2e/live-action.spec.ts::Enter the Festival Cut (SLATE-15-05.03)', 'e2e/connected.spec.ts::Later windows (SLATE-16-05)'], ''),
 ]),
 '20-05': ('People', '', [
   ('Human play and real devices', 'EB', [], 'Needs the owner and real devices'),

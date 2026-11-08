@@ -436,6 +436,7 @@ export function ReleaseTab({ p }: { p: Project }) {
                   {o.slot === 'late' && <p className="dim">You declared strong content. {watershedRule(o.territories[0])} The late slot pays {money(o.minimumGuarantee)}. A broadcast edit, cut for an earlier slot, costs about {money(BROADCAST_EDIT_COST)} more in delivery materials and earns the full {money(o.editedGuarantee ?? o.minimumGuarantee)}.</p>}
                   {needs && <p className="dim" style={{ color: 'var(--warning)' }}>{needs}</p>}
                   {(() => { const ends = offerConflicts(p, o); return ends.length ? <p className="dim">Accepting it ends {ends.map((x) => `${x.distributor}'s ${ROUTE_LABELS[x.route].toLowerCase()} offer`).join(' and ')}{o.exclusive ? ': its rights are exclusive there' : ': they cover the same territories'}.</p> : null; })()}
+                  {o.laterWindow && <p className="dim">A later window: it covers only territories and routes your earlier deals don't hold.</p>}
                   {o.exclusive && <p className="dim">Exclusive for {EXCLUSIVE_DAYS} days from its release: no other deal in its territories until then.</p>}
                 </li>
               );
@@ -507,7 +508,7 @@ export function FestivalsTab({ p }: { p: Project }) {
               const cat = institution(e.institutionId).categories.find((c) => c.id === x.categoryId)!;
               return (
                 <li key={x.id} className="row-wrap">
-                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button>: {cat.name} <span className="chip">{entryStatus(x.status)}</span>{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
+                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button>: {cat.name}{entryVersion(p, x.versionId)} <span className="chip">{entryStatus(x.status)}</span>{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
                 </li>
               );
             })}
@@ -618,7 +619,7 @@ export function EventDetail() {
                 const cat = inst.categories.find((c) => c.id === x.categoryId);
                 return (
                   <li key={x.id} className="row-wrap">
-                    <span className="grow">{p?.title}: {cat?.name} <span className="chip">{entryStatus(x.status)}</span>{x.reason ? <div className="dim">{x.reason}</div> : null}</span>
+                    <span className="grow">{p?.title}: {cat?.name}{p ? entryVersion(p, x.versionId) : ''} <span className="chip">{entryStatus(x.status)}</span>{x.reason ? <div className="dim">{x.reason}</div> : null}</span>
                     {['submitted', 'accepted'].includes(x.status) && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => withdrawEntry(s, ed.id, x.id)))}>Withdraw Entry</button>}
                   </li>
                 );
@@ -638,6 +639,9 @@ export function EventDetail() {
     </>
   );
 }
+
+/** Which cut an entry is, when it isn't the main one. */
+const entryVersion = (p: Project, versionId?: string) => { const v = versionId && p.versions?.find((x) => x.id === versionId); return v ? `, ${v.label}` : ''; };
 
 function SubmissionDialog({ editionId, cat, onClose, onError }: { editionId: string; cat: Category; onClose: () => void; onError: (e: string | null) => void }) {
   const g = useGame();

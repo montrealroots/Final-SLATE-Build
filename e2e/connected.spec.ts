@@ -178,6 +178,16 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   const earnings = page.locator('section.card', { has: page.getByRole('heading', { name: 'Earnings' }) });
   await expect(earnings).toContainText('What each distributor reports is not what you receive.');
   await expect(earnings).toContainText(/Received By You\s*\$[\d,]+/);
+  // Later windows (SLATE-16-05): some months after the broadcast, distributors look at a later window. Kestrel's exclusive
+  // rights still hold what they would offer, and Home says so rather than reading as no interest.
+  const laterNotice = page.getByText(/later window of Hard Water/);
+  for (let i = 0; i < 30 && !(await laterNotice.count()); i++) {
+    await advance(page, 'week');
+    await nav(page, 'Home');
+  }
+  await expect(laterNotice.first()).toHaveText('Distributors looked at a later window of Hard Water, but your earlier deals still hold the rights they wanted, so there is nothing to accept.');
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Hard Water' }).click();
 
   // Saved and reloaded at the end: the deal and the delivered project are kept.
   await saveAndReload(page);
