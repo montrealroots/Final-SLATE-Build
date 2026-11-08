@@ -134,7 +134,9 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
       const use = takes.getByRole('button', { name: /^Use Take \d Of Scene 1 \(Ferry Dock\)$/ }).first();
       const n = (await use.getAttribute('aria-label'))!.match(/Take (\d)/)![1];
       await use.click();
-      await expect(takes.locator('li', { hasText: new RegExp(`^Take ${n}: .* · In the cut$`) })).toHaveCount(1);
+      const dockTakes = takes.locator('li', { has: page.locator('strong', { hasText: 'Scene 1 (Ferry Dock)' }) });
+      await expect(dockTakes.locator('li', { hasText: new RegExp(`^Take ${n}: .* · In the cut$`) })).toHaveCount(1);
+      await expect(dockTakes.locator('li', { hasText: / · In the cut$/ })).toHaveCount(1);
       await lock.click();
       continue;
     }
