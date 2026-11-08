@@ -333,6 +333,7 @@ registerHandler('distribution-offer', (state, ev) => {
   const count = appeal >= 80 ? 3 : appeal >= 65 ? 2 : appeal >= 50 ? 1 : 0;
   const runtimeFactor = Math.min(1, (p.delivered.runtimeMin) / 90);
   const made: DistributionOffer[] = [];
+  let held = 0; // later-window offers with nothing left once earlier deals' rights are taken out
   for (let i = 0; i < count; i++) {
     const route = pick(r, ['streaming', 'theatrical', 'digital', 'broadcast'] as const);
     const mg = Math.round(((appeal - 40) * 6000 * runtimeFactor * (0.6 + r() * 0.8) * (route === 'theatrical' ? 1.4 : 1)) / 1000) * 1000;
@@ -346,22 +347,27 @@ registerHandler('distribution-offer', (state, ev) => {
     // A later window offers only what no exclusive deal holds and this route hasn't already released (distribution.ts).
     if (wave.startsWith('window:')) {
       terms.territories = laterWindowTerritories(p, route, terms.territories, dateKey(state.now, getPlace(p.axes.basePlaceId).zone));
-      if (!terms.territories.length) continue;
+      if (!terms.territories.length) { held += 1; continue; }
       terms.factor = Math.min(2.5, 1 + 0.25 * (terms.territories.length - 1));
     }
     const scaled = Math.round((mg * terms.factor) / 1000) * 1000;
     const offer: DistributionOffer = {
       id: newId(state, 'do'), distributor: pick(r, DISTRIBUTORS), route, minimumGuarantee: late ? Math.round((scaled * LATE_SLOT_SHARE) / 1000) * 1000 : scaled, territories: terms.territories,
-      ...(terms.exclusive ? { exclusive: true } : {}),
+      ...(terms.exclusive ? { exclusive: true } : {}), ...(wave.startsWith('window:') ? { laterWindow: true as const } : {}),
       releaseWindowDays: 60 + Math.floor(r() * 90), expiresAt: state.now + 21 * DAY, status: 'open',
       ...(route === 'broadcast' ? { slot: late ? 'late' as const : 'any' as const } : {}), ...(late ? { editedGuarantee: scaled } : {}),
     };
     p.offers.push(offer);
     made.push(offer);
   }
+  // A later window says so, and says when earlier deals' rights left nothing to offer (until November 8, 2026 it read as
+  // the first offers did, so a window that came and went looked like no interest at all).
+  const later = wave.startsWith('window:');
   const text = made.length
-    ? `${made.length === 1 ? `${made[0].distributor} made an offer` : `${made.length} distributors made offers`} for ${p.title}. Offers stay open for three weeks.`
-    : `No distributors have made an offer for ${p.title} yet. You can still release it yourself.`;
+    ? `${made.length === 1 ? `${made[0].distributor} made an offer` : `${made.length} distributors made offers`} for ${later ? `a later window of ${p.title}` : p.title}. Offers stay open for three weeks.`
+    : !later ? `No distributors have made an offer for ${p.title} yet. You can still release it yourself.`
+      : held ? `Distributors looked at a later window of ${p.title}, but your earlier deals still hold the rights they wanted, so there is nothing to accept.`
+        : `No distributor made an offer for a later window of ${p.title}.`;
   addLog(state, text, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
   return { message: text };
 });

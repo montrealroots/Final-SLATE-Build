@@ -1,6 +1,6 @@
 // SLATE-16-01.02, 16-04.02, 16-05: territories and exclusivity, reported earnings apart from money received, later windows.
 import { describe, expect, it } from 'vitest';
-import { DAY, DISTRIBUTOR_FEE, REPORT_MONTHS, acceptDistribution, exclusiveHolder, laterWindowTerritories, offerConflicts, offerScope, processUntil, reportedGross } from './engine-api';
+import { DAY, DISTRIBUTOR_FEE, LATER_WINDOW_DAYS, REPORT_MONTHS, acceptDistribution, exclusiveHolder, laterWindowTerritories, offerConflicts, offerScope, processUntil, reportedGross } from './engine-api';
 import type { DistributionOffer, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
 
@@ -75,5 +75,22 @@ describe('reported earnings and money received', () => {
     expect(o.reported!.overagePaid).toBe(Math.max(0, o.reported!.net - 1000));
     expect(o.reported!.net).toBeLessThanOrEqual(Math.round(gross * (1 - DISTRIBUTOR_FEE)) + REPORT_MONTHS);
     expect(p.revenue - before).toBe(1000 + o.reported!.overagePaid);
+    // Its later window found nothing GB's exclusive deal doesn't hold, and says so rather than reading as no interest.
+    expect(p.offers.filter((x) => x.laterWindow)).toEqual([]);
+    expect(s.log.map((l) => l.text)).toContain('Distributors looked at a later window of Tidewater, but your earlier deals still hold the rights they wanted, so there is nothing to accept.');
+  }, 60000);
+});
+
+describe('later windows', () => {
+  it('come some months after a release, marked as a later window, and never offer what the first release already covers', () => {
+    const { s, p } = delivered('terr-window');
+    const o = offer(p, 'w', 'digital', ['GB'], false, s.now);
+    p.quality = { ...(p.quality ?? {}), reception: 80 } as Record<string, number>; // labelled fixture: a film distributors want
+    acceptDistribution(s, p, o.id);
+    processUntil(s, s.now + (o.releaseWindowDays + LATER_WINDOW_DAYS + 3) * DAY, 'tick', 200000);
+    const later = p.offers.filter((x) => x.laterWindow);
+    expect(later.length).toBeGreaterThan(0);
+    for (const x of later) expect(x.route === 'digital' && x.territories.includes('GB')).toBe(false);
+    expect(s.log.some((l) => /made (an offer|offers) for a later window of Tidewater\. Offers stay open for three weeks\.$/.test(l.text))).toBe(true);
   }, 60000);
 });

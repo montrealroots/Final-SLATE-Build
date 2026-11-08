@@ -110,6 +110,66 @@ test('hybrid: a live-action scene and a 3D scene share one production', async ({
   expect(credits).toMatch(/Voice Cast[\s\S]*as Sprite/);
 });
 
+test('hybrid: a live scene changed after its plate was integrated is picked up, and the integration starts again', async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-04-06');
+  await newProject(page, { title: 'Hedgerow', format: 'Short Film', medium: 'Hybrid', technique: '3D CG', finish: 'Limited Animation', runtime: '4' });
+  await addCharacters(page, ['Mara', 'Sprite']);
+  await section(page, 'Characters');
+  const sprite = page.getByRole('article', { name: 'Sprite' });
+  await sprite.getByRole('button', { name: 'Edit Character' }).click();
+  await sprite.getByLabel('Entity').selectOption({ label: 'Supernatural' });
+  await sprite.getByLabel('Realized As').selectOption({ label: 'Computer Generated' });
+  await sprite.getByRole('checkbox', { name: 'On Camera' }).uncheck();
+  await sprite.getByRole('checkbox', { name: 'Voice' }).check();
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Kitchen', chars: ['Mara'], minutes: '1' });
+  await addScene(page, { index: 1, place: 'Burrow', chars: ['Sprite'], minutes: '0.5', technique: '3D CG' });
+  await saveAndApprove(page);
+  await castRoles(page, ['Mara']);
+  await staffEveryDepartment(page);
+  await advance(page, 'next-day');
+  await section(page, 'Schedule');
+  await page.getByRole('button', { name: /Build Schedule|Rebuild Schedule/ }).click();
+  // Run until the picture could be locked: the kitchen plate is shot and the burrow's integration is done.
+  const lock = page.getByRole('button', { name: 'Lock Picture', exact: true });
+  for (let i = 0; i < 40; i++) {
+    await advance(page, 'week');
+    await staffEveryDepartment(page);
+    await castRoles(page);
+    await approveDesigns(page);
+    await section(page, 'Edit');
+    if (await lock.isVisible() && await lock.isEnabled()) break;
+    const cut = page.getByRole('button', { name: 'Start Cut Pass' });
+    if (await cut.isEnabled()) await cut.click();
+  }
+  await expect(lock).toBeEnabled();
+  // The kitchen scene changes in the script after filming (SLATE-13-05).
+  await section(page, 'Script');
+  const kitchen = page.locator('article.scene-card').first();
+  await kitchen.getByRole('button', { name: 'Edit Scene' }).click();
+  await kitchen.getByLabel('Estimated Minutes').fill('1.5');
+  await kitchen.getByRole('button', { name: 'Close Scene' }).click();
+  await page.getByRole('button', { name: 'Save Draft' }).click();
+  await page.getByRole('button', { name: 'Approve This Draft' }).first().click();
+  const approve = page.getByRole('dialog', { name: 'Approve This Draft?' });
+  await approve.getByRole('button', { name: /^Approve/ }).click();
+  await expect(approve).toHaveCount(0);
+  // The pickup of the new kitchen plate says, before it is requested, that the burrow's integration is worked again.
+  await section(page, 'Edit');
+  const coverage = page.locator('section.card', { has: page.getByRole('heading', { name: 'Coverage' }) });
+  await coverage.getByRole('checkbox', { name: /^Scene 1 \(Kitchen\): / }).check();
+  await expect(coverage).toContainText(/New plates restart Plate Integration: Scene 2 \(Burrow\): about \d+ compositor days? worked again\./);
+  await coverage.getByRole('button', { name: 'Request Pickups' }).click();
+  await nav(page, 'Home');
+  await expect(page.getByText("New plates for Hedgerow restart Plate Integration: Scene 2 (Burrow): the compositor's days are worked again.")).toBeVisible();
+  // And it is done again before delivery.
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Hedgerow' }).click();
+  await runToDelivery(page);
+  await section(page, 'Production');
+  await expect(page.getByText('Plate Integration: Scene 2 (Burrow)', { exact: true })).toBeVisible();
+});
+
 // World seeds for the consent journeys (labelled fixtures, see seededLife): with seed 2 everyone asked agrees; with
 // seed 3 the documentary's third contributor declines. Each answer is drawn from the seed, the project and the person.
 const ALL_AGREE = 2;
