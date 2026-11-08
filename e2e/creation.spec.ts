@@ -36,9 +36,12 @@ async function fillIdentity(page: Page, name: string, pronouns: string): Promise
 test('each Review edit goes to the step it names, and Save And Return To Review comes back with everything kept', async ({ page }) => {
   await draftAtReview(page);
   await expect(heading(page)).toHaveText(NAME);
+  // The cards follow the steps' order, and the start reads as Starting Point says it (November 8, 2026).
+  await expect(page.locator('section.card h2.eyebrow')).toHaveText(['Identity', 'Background & Languages', 'Starting Point']);
+  await expect(card(page, 'Starting Point')).toContainText('Monday, April 6, 2026, at 9:30 AM GMT+1');
   const cases: [string, string][] = [
     ['Edit Identity', 'Identity'],
-    ['Edit Background And Languages', 'Background'],
+    ['Edit Background & Languages', 'Background'],
     ['Edit Starting Point', 'Where You Live'],
   ];
   const before = await page.locator('.creation').innerText();
@@ -75,7 +78,7 @@ test('editing from Review: a change is kept, an invalid change stops you on that
   await page.getByRole('button', { name: 'Edit Starting Point' }).click();
   await page.getByLabel('Starting Time').fill('14:15');
   await page.getByRole('button', { name: 'Next: Review' }).click();
-  await expect(card(page, 'Starting Point')).toContainText('April 6, 2026 at 14:15');
+  await expect(card(page, 'Starting Point')).toContainText('Monday, April 6, 2026, at 2:15 PM');
 });
 
 test('Start My Story with something missing goes to that step, and back to Review once it is fixed', async ({ page }) => {

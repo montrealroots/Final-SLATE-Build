@@ -249,6 +249,16 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
 }
 
 /** Starting Point, as 1221's: where you live (where you were born, or somewhere else), what that place is, and when it begins. */
+/** When the story starts, as the game writes it: "Monday, January 5, 2026, at 8:00 AM GMT" (Starting Point and Review). */
+function startWords(d: CreationDraft): string | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(d.startDate) || !/^([01]\d|2[0-3]):[0-5]\d$/.test(d.startTime)) return null;
+  const [hh, mm] = d.startTime.split(':').map(Number);
+  const city = findPlace(d.startPlaceId);
+  const { year, month, day } = parseYmd(d.startDate);
+  const zone = city ? ` ${formatZoneAbbrev(Date.UTC(year, month - 1, day, 12), city.zone)}` : '';
+  return `${weekdayName(weekdayOfKey(d.startDate))}, ${longDate(d.startDate)}, at ${formatClock(hh, mm)}${zone}`;
+}
+
 function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: (f: string) => string | null; head: ReactNode }) {
   const birthplace = findPlace(d.birthplaceId);
   const city = findPlace(d.startPlaceId);
@@ -258,11 +268,7 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
     const { year, month, day } = parseYmd(d.startDate);
     return formatZoneAbbrev(Date.UTC(year, month - 1, day, 12), city.zone);
   })();
-  const startsAt = (() => {
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(d.startDate) || !/^([01]\d|2[0-3]):[0-5]\d$/.test(d.startTime)) return null;
-    const [hh, mm] = d.startTime.split(':').map(Number);
-    return `${weekdayName(weekdayOfKey(d.startDate))}, ${longDate(d.startDate)}, at ${formatClock(hh, mm)}${zoneAt ? ` ${zoneAt}` : ''}${city ? ` in ${city.name}` : ''}`;
-  })();
+  const startsAt = startWords(d) && `${startWords(d)}${city ? ` in ${city.name}` : ''}`;
   return (
     <div className="col gap-5">
       <section className="card">
@@ -530,7 +536,8 @@ function Review({ d, edit, heading }: { d: CreationDraft; edit: (id: CreationSte
   const start = findPlace(d.startPlaceId);
   const age = ageAtStart(d);
   const born = /^\d{4}-\d{2}-\d{2}$/.test(d.birthDate) ? (() => { const b = parseYmd(d.birthDate); return `${MONTHS[b.month - 1]} ${b.day}, ${b.year}`; })() : 'Not chosen';
-  const starts = /^\d{4}-\d{2}-\d{2}$/.test(d.startDate) ? (() => { const b = parseYmd(d.startDate); return `${MONTHS[b.month - 1]} ${b.day}, ${b.year} at ${d.startTime}`; })() : 'Not chosen';
+  // As Starting Point says it (it read "January 5, 2026 at 08:00" until November 8, 2026).
+  const starts = startWords(d) ?? 'Not chosen';
   return (
     <div className="col gap-5">
       <section className="card">
@@ -542,6 +549,7 @@ function Review({ d, edit, heading }: { d: CreationDraft; edit: (id: CreationSte
           <div className="row" style={{ justifyContent: 'center' }}><Professions actingTitle={d.actingTitle} /></div>
         </div>
       </section>
+      {/* In the steps' order: Identity, Background & Languages, then Starting Point (it came before Background until November 8, 2026). */}
       <div className="grid grid-2">
         <ReviewCard title="Identity" edit="Edit Identity" onEdit={() => edit('identity')}>
           <Line label="Headshot" value={d.portrait ? 'Added' : 'None'} />
@@ -553,18 +561,18 @@ function Review({ d, edit, heading }: { d: CreationDraft; edit: (id: CreationSte
           <Line label="Place Of Birth" value={birth ? placeLabel(birth) : 'Not chosen'} />
           <Line label="Citizenship" value={citizenshipFor(d.birthplaceId) ? countryName(citizenshipFor(d.birthplaceId)!) : 'Not decided'} />
         </ReviewCard>
-        <ReviewCard title="Starting Point" edit="Edit Starting Point" onEdit={() => edit('starting-point')}>
-          <Line label="Where You Live" value={start ? placeLabel(start) : 'Not chosen'} />
-          <Line label="Starts On" value={starts} />
-          {age !== null && <Line label="Age At The Start" value={String(age)} />}
+        <ReviewCard title="Background & Languages" edit="Edit Background & Languages" onEdit={() => edit('background')}>
+          <Line label="Ethnicity" value={d.heritages.map((h) => h.label).join(', ') || 'None added'} />
+          <Line label="Nationality" value={d.nationalities.map(countryName).join(', ') || 'None added'} />
+          <Line label="Main Language" value={d.mainLanguage ? languageName(d.mainLanguage) : 'Not chosen'} />
+          <Line label="Other Languages" value={d.languages.map((l) => `${languageName(l.code)} (${l.proficiency.toLowerCase()})`).join(', ') || 'None'} />
+          <Line label="Holidays You Keep" value={(d.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you live'} />
         </ReviewCard>
       </div>
-      <ReviewCard title="Background & Languages" edit="Edit Background And Languages" onEdit={() => edit('background')}>
-        <Line label="Ethnicity" value={d.heritages.map((h) => h.label).join(', ') || 'None added'} />
-        <Line label="Nationality" value={d.nationalities.map(countryName).join(', ') || 'None added'} />
-        <Line label="Main Language" value={d.mainLanguage ? languageName(d.mainLanguage) : 'Not chosen'} />
-        <Line label="Other Languages" value={d.languages.map((l) => `${languageName(l.code)} (${l.proficiency.toLowerCase()})`).join(', ') || 'None'} />
-        <Line label="Holidays You Keep" value={(d.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you live'} />
+      <ReviewCard title="Starting Point" edit="Edit Starting Point" onEdit={() => edit('starting-point')}>
+        <Line label="Where You Live" value={start ? placeLabel(start) : 'Not chosen'} />
+        <Line label="Starts On" value={starts} />
+        {age !== null && <Line label="Age At The Start" value={String(age)} />}
       </ReviewCard>
       <div className="callout callout-accent">
         Once you start, the clock runs while you play. Sleep and Advance move it on faster, and Advance stops early if something needs you.

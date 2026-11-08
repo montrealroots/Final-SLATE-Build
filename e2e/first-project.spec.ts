@@ -32,7 +32,7 @@ async function createFromReview(page: Page) {
   await page.getByRole('button', { name: 'Edit Starting Point' }).click();
   await page.getByLabel('Starting Time').fill('09:15');
   await page.getByRole('button', { name: 'Save And Return To Review' }).click();
-  await expect(page.locator('section.card', { hasText: 'Starts On' })).toContainText('March 2, 2026 at 09:15');
+  await expect(page.locator('section.card', { hasText: 'Starts On' })).toContainText('Monday, March 2, 2026, at 9:15 AM');
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 }
