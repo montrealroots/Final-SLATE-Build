@@ -84,6 +84,25 @@ export function adoptPlace(state: GameState, place: Place): void {
   if (!isCatalogPlace(place.id)) state.places[place.id] = place;
 }
 
+/**
+ * When a story can begin, and how old you must be (the owner's rules, November 8, 2026). 2026 is the default year and any
+ * later one up to 2050 can be chosen, so a 50-year career stays within the dated holiday rules (to 2100). You must be at
+ * least 19 on the starting date; it was 16 before.
+ */
+export const FIRST_START_YEAR = 2026;
+export const LAST_START_YEAR = 2050;
+export const MIN_START_AGE = 19;
+
+/** The latest birth date that makes you MIN_START_AGE on this starting date (29 February becomes 28 February). */
+export function latestBirthDate(startDate: string): string | null {
+  if (!isDateKey(startDate)) return null;
+  const { year, month, day } = parseYmd(startDate);
+  const y = year - MIN_START_AGE;
+  const leap = (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0;
+  const dd = month === 2 && day === 29 && !leap ? 28 : day;
+  return `${y}-${String(month).padStart(2, '0')}-${String(dd).padStart(2, '0')}`;
+}
+
 export function validateDraft(d: CreationDraft): DraftProblem[] {
   for (const pl of Object.values(d.places ?? {})) registerPlace(pl);
   const out: DraftProblem[] = [];
@@ -105,9 +124,8 @@ export function validateDraft(d: CreationDraft): DraftProblem[] {
     const age = ageOn(birth, start);
     if (Date.UTC(birth.year, birth.month - 1, birth.day) > Date.UTC(start.year, start.month - 1, start.day)) {
       out.push({ field: 'birthDate', step: 'identity', message: 'Your birth date must be before your starting date.' });
-    } else if (age < 16) {
-      // Working default: a configurable minimum so working-age rules can be added later.
-      out.push({ field: 'birthDate', step: 'identity', message: 'Your character must be at least 16 on the starting date.' });
+    } else if (age < MIN_START_AGE) {
+      out.push({ field: 'birthDate', step: 'identity', message: `Your character must be at least ${MIN_START_AGE} on the starting date.` });
     } else if (age > 100) {
       out.push({ field: 'birthDate', step: 'identity', message: 'Choose a birth date within the last 100 years.' });
     }
@@ -116,8 +134,8 @@ export function validateDraft(d: CreationDraft): DraftProblem[] {
   if (d.heritages.length === 0) out.push({ field: 'heritages', step: 'background', message: 'Add at least one background, or describe your own.' });
   if (!d.mainLanguage) out.push({ field: 'mainLanguage', step: 'background', message: 'Choose your main language.' });
   if (!findPlace(d.startPlaceId)) out.push({ field: 'startPlaceId', step: 'starting-point', message: 'Choose where your story begins.' });
-  if (!start || start.year !== 2026) {
-    out.push({ field: 'startDate', step: 'starting-point', message: 'Choose a date in 2026.' });
+  if (!start || start.year < FIRST_START_YEAR || start.year > LAST_START_YEAR) {
+    out.push({ field: 'startDate', step: 'starting-point', message: `Choose a date from ${FIRST_START_YEAR} to ${LAST_START_YEAR}.` });
   }
   if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(d.startTime)) out.push({ field: 'startTime', step: 'starting-point', message: 'Enter a time such as 08:00.' });
   return out;

@@ -2,13 +2,16 @@ import { useLayoutEffect, useRef, useState, type ReactNode, type RefObject } fro
 import { heritageLanguages } from '../data/heritage-languages';
 import { LANGUAGES, PRONOUNS, languageName, searchHeritages, searchLanguages, settledTitle, type LanguageInfo } from '../data/identity';
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
-import { CREATION_STEPS, OBSERVANCES, ageOn, citizenshipFor, draftNames, creationStepIndex, formatZoneAbbrev, monthName, observance, observanceDate, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
+import { CREATION_STEPS, FIRST_START_YEAR, LAST_START_YEAR, MIN_START_AGE, OBSERVANCES, ageOn, citizenshipFor, draftNames, latestBirthDate, creationStepIndex, formatZoneAbbrev, monthName, observance, observanceDate, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
 import type { CreationDraft, CreationStepId, Proficiency } from '../engine/types';
 import { Check, Field, Professions, SelectField, TextField } from './components';
 import { store, useStore } from './store';
 import { WorldPlacePicker } from './WorldPicker';
 import { PortraitPicker } from './PortraitPicker';
 import { countryName } from '../world/gazetteer/gazetteer';
+
+/** A date key as words: "January 5, 2026". */
+const longDate = (key: string): string => { const b = parseYmd(key); return `${MONTHS[b.month - 1]} ${b.day}, ${b.year}`; };
 
 /** The draft's legal name, first, middle and last. */
 const legalName = (d: CreationDraft): string => { const n = draftNames(d); return [n.firstName, n.middleName, n.lastName].filter(Boolean).join(' '); };
@@ -153,20 +156,26 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
   const billedError = err('actingTitle');
   const settled = settledTitle(d.pronouns);
   const citizen = citizenshipFor(d.birthplaceId);
+  const latest = latestBirthDate(d.startDate);
   return (
     <section className="card">
       {head}
       <div className="identity-top">
         <PortraitPicker portrait={d.portrait} name={legalName(d)} onChange={(portrait) => set({ portrait })} />
         <div className="identity-fields">
-      <div className="field-row">
+      <div className="field-row field-row-names">
         <TextField label="First Name" value={d.firstName} maxLength={40} error={err('firstName')} onChange={(v) => set({ firstName: v })} />
         <TextField label="Middle Name (Optional)" value={d.middleName} maxLength={40} onChange={(v) => set({ middleName: v })} />
         <TextField label="Last Name" value={d.lastName} maxLength={40} error={err('lastName')} onChange={(v) => set({ lastName: v })} />
       </div>
       <div className="field-row">
-        <Field label="Preferred Name" error={err('preferredName')} hint="What people actually call you day to day: Home greets you by it, and it's the name on your Profile and saved games. Leave it blank for your first and last name.">
-          {(id, db) => <input id={id} type="text" value={d.preferredName} maxLength={40} autoComplete="off" placeholder={[d.firstName, d.lastName].filter(Boolean).join(' ')} aria-describedby={db} onChange={(e) => set({ preferredName: e.target.value })} />}
+        <Field label="Preferred Name" error={err('preferredName')}>
+          {(id, db) => (
+            <>
+              <input id={id} type="text" value={d.preferredName} maxLength={40} autoComplete="off" placeholder={[d.firstName, d.lastName].filter(Boolean).join(' ')} aria-describedby={[db, 'preferred-note'].filter(Boolean).join(' ')} onChange={(e) => set({ preferredName: e.target.value })} />
+              <p id="preferred-note" className="xs dim" style={{ marginTop: 4 }}>What people call you day to day. Blank means your first and last name.</p>
+            </>
+          )}
         </Field>
         <SelectField label="Pronouns" value={d.pronouns} error={err('pronouns')}
           options={[{ value: '', label: 'Choose Pronouns' }, ...(['she', 'he', 'they'] as const).map((k) => ({ value: k, label: PRONOUNS[k].label }))]}
@@ -205,11 +214,11 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
       <hr className="divider" />
 
       <div className="field-row">
-        <TextField label="Year Of Birth" type="number" inputMode="numeric" value={y} onChange={(v) => setBirth(v.slice(0, 4), m, day)} />
+        <TextField label="Year Of Birth" type="number" inputMode="numeric" value={y} min={latest ? String(Number(latest.slice(0, 4)) - 81) : undefined} max={latest?.slice(0, 4)} onChange={(v) => setBirth(v.slice(0, 4), m, day)} />
         <SelectField label="Month" value={m} options={[{ value: '', label: 'Choose A Month' }, ...MONTHS.map((name, i) => ({ value: String(i + 1).padStart(2, '0'), label: name }))]} onChange={(v) => setBirth(y, v, day)} />
         <TextField label="Day" type="number" inputMode="numeric" value={day ? String(Number(day)) : ''} onChange={(v) => setBirth(y, m, v ? v.slice(0, 2).padStart(2, '0') : '')} />
       </div>
-      {err('birthDate') ? <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('birthDate')}</p> : <p className="xs dim">You must be at least 16 on your starting date.</p>}
+      {err('birthDate') ? <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('birthDate')}</p> : <p className="xs dim">{latest ? `You must be at least ${MIN_START_AGE} on your starting date, ${longDate(d.startDate)}: born on or before ${longDate(latest)}. You can change the starting date on Starting Point.` : `You must be at least ${MIN_START_AGE} on your starting date.`}</p>}
 
       <hr className="divider" />
 
@@ -289,7 +298,7 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
       <section className="card">
         <div className="panel-head"><div><h2>When It Begins</h2><p className="muted small" style={{ margin: 0 }}>The date and the local time where you live when your story starts. Any date in 2026.</p></div></div>
         <div className="field-row">
-          <TextField label="Starting Date" type="date" value={d.startDate} error={err('startDate')} onChange={(v) => set({ startDate: v })} />
+          <TextField label="Starting Date" type="date" value={d.startDate} min={`${FIRST_START_YEAR}-01-01`} max={`${LAST_START_YEAR}-12-31`} error={err('startDate')} hint={`Any day from ${FIRST_START_YEAR}, the default, to ${LAST_START_YEAR}. You must be at least ${MIN_START_AGE} on it.`} onChange={(v) => set({ startDate: v })} />
           <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you start." onChange={(v) => set({ startTime: v })} />
         </div>
       </section>

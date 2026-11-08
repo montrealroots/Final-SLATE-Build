@@ -123,8 +123,11 @@ test('a step with something missing says what; He/Him and She/Her settle the bil
   await expect(billedAs.locator('output')).toHaveText('Actor');
   await page.getByLabel('Pronouns').selectOption({ label: 'They/Them' });
   await expect(tiles.getByRole('button', { name: 'Actress', exact: true })).toHaveAttribute('aria-pressed', 'false');
-  await fillBirthDate(page, '2015-01-01');
-  await expect(page.getByText('Your character must be at least 16 on the starting date.')).toBeVisible();
+  // At least 19 on the starting date (January 5, 2026 by default): the screen says the latest birth date that allows.
+  await fillBirthDate(page, '1990-01-01');
+  await expect(page.getByText('You must be at least 19 on your starting date, January 5, 2026: born on or before January 5, 2007.', { exact: false })).toBeVisible();
+  await fillBirthDate(page, '2007-06-01');
+  await expect(page.getByText('Your character must be at least 19 on the starting date.')).toBeVisible();
 });
 
 test('typing straight after Next is kept, even when the field is chosen within a frame of the new step appearing', async ({ page }) => {
