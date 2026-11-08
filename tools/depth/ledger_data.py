@@ -207,13 +207,17 @@ C = {
    ['tests/writing.test.ts::re-approving after filming keeps unchanged scenes', 'e2e/careers.spec.ts::an approved scene changed after filming'], ''),
   ('Repeated revision earns nothing', 'VE', ['tests/screenwriting.test.ts::your own notes and repeated revision passes add nothing'], ''),
 ]),
-'07-01': ('Script (series)', 'src/engine/projects.ts', [
-  ('World rules and relationships shared across episodes', 'IU', [], 'worldRules and relationships exist; no series-bible test'),
-  ('Changing a shared fact previews the episodes it touches', 'MI', [], 'No preview'),
+'07-01': ('Script (series)', 'src/engine/season.ts', [
+  ('World rules and relationships shared across episodes', 'V',
+   ['tests/episodes.test.ts::a relationship touches every scene its two characters share', 'e2e/season.spec.ts::A relationship touches every scene its two characters share'], ''),
+  ('Changing a shared fact previews the episodes it touches', 'V',
+   ['tests/episodes.test.ts::a rule lists the scenes that rely on it, by episode, and which are recorded', 'e2e/season.spec.ts::changing a shared fact says which episodes it touches first'], ''),
 ]),
 '07-02': ('Script, Schedule', 'src/engine/production/tasks.ts', [
   ('Episodes with titles and scenes; work and credits per episode', 'VE', ['tests/media.test.ts::produces episodes with episode-specific credits'], ''),
-  ('A season arc and episode order', 'MI', [], 'Episodes are numbered; no season arc or reordering'),
+  ('A season arc and episode order', 'V',
+   ['tests/episodes.test.ts::an episode moves with its scenes, in every draft, and its writer', 'e2e/season.spec.ts::a season planned and reordered'],
+   'The arc is the writer\'s plan: advice notes only, carried into the next season; it scores nothing'),
   ('The estimate covers every episode, not one', 'IU', [], 'scriptEstimate sums scenes across episodes; no test'),
 ]),
 '07-03': ('Cast', 'src/engine/hiring.ts', [
@@ -222,12 +226,16 @@ C = {
   ('Episode credits follow appearances and work', 'VE', ['e2e/journeys.spec.ts::TV limited series: episodes, a guest role and episode-level credits'], ''),
 ]),
 '07-04': ('Script > Episodes', 'src/engine/types.ts', [
-  ('Each episode names its writer and director', 'IU', [], 'Stored; no test or handover'),
-  ('Block scheduling of episodes sharing sets and locations', 'MI', [], 'Days are planned per episode in order'),
+  ('Each episode names its writer and director', 'V',
+   ['tests/handover.test.ts::a writer replaced after their draft was approved', 'tests/episodes.test.ts::episodes with different directors never share a day'], ''),
+  ('Block scheduling of episodes sharing sets and locations', 'V',
+   ['tests/episodes.test.ts::in blocks, one director shoots both on one day', 'e2e/journeys.spec.ts::Shoot Episodes In Blocks'], ''),
 ]),
 '07-05': ('Edit, Release', 'src/engine/finish.ts', [
   ('Deliver the season with per-episode credits', 'VE', ['e2e/careers.spec.ts::per-episode credits'], ''),
-  ('A commissioner renews or cancels; a renewal starts a new season with returning cast and new contracts', 'MI', [], 'No renewal or next season'),
+  ('A commissioner renews or cancels; a renewal starts a new season with returning cast and new contracts', 'V',
+   ['tests/episodes.test.ts::a commissioner renews a season that turned out well', 'e2e/journeys.spec.ts::Start The Next Season'],
+   'Renewal reads the assessment made at delivery (overall 60 or more): game calibration, not industry data'),
 ]),
 '08-01': ('Budget', 'src/engine/estimate.ts; src/engine/budget.ts', [
   ('The estimate by category with contingency, separate from money in hand', 'VE', ['tests/finance.test.ts::a new project has an estimate and a target'], ''),
@@ -439,9 +447,11 @@ C = {
 '18-03': ('Home', '', [
   ('Proposals tied to your past work, with terms, accepted or declined', 'MI', [], 'No opportunities'),
 ]),
-'18-04': ('Projects', '', [
-  ('A sequel or new season carries story continuity and eligible assets', 'MI', [], 'No sequels or seasons'),
-  ('Returning people are asked again and paid again', 'MI', [], 'No sequels or seasons'),
+'18-04': ('Projects', 'src/engine/continuation.ts', [
+  ('A sequel or new season carries story continuity and eligible assets', 'V',
+   ['tests/episodes.test.ts::carries the same characters, world and open threads', 'tests/episodes.test.ts::a sequel reuses the finished puppets'], ''),
+  ('Returning people are asked again and paid again', 'V',
+   ['tests/episodes.test.ts::the cast are listed to ask back at their rate, not hired', 'e2e/journeys.spec.ts::is asked back at their last rate, an offer like any other'], ''),
 ]),
 '18-05': ('Projects, Budget', 'src/engine/people.ts; src/engine/finance.ts', [
   ('Bookings across projects never overlap for one person', 'VE', ['tests/schedule.test.ts::refuses when someone needed on set is busy'], ''),

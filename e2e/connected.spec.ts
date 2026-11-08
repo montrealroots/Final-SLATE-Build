@@ -105,7 +105,7 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   await section(page, 'Budget');
   await page.getByRole('button', { name: 'Approach Screen Arts Fund Grant' }).click();
   const backers = page.locator('section.card', { has: page.getByRole('heading', { name: 'Backers' }) });
-  await expect(backers.locator('li', { hasText: 'Screen Arts Fund Grant' })).toContainText('Sent with the approved script: Pitch, Treatment, Statement Of Intent.');
+  await expect(backers.locator('li', { hasText: 'Screen Arts Fund Grant' })).toContainText('Sent with the approved script (draft 1): Pitch, Treatment, Statement Of Intent.');
   await secureStartingBacking(page);
 
   // Casting, crew, the schedule.
@@ -138,7 +138,7 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   await section(page, 'Script');
   await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Content' }) })).toContainText('Declared: Strong violence, moderate language.');
   await section(page, 'Budget');
-  await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Backers' }) })).toContainText('Sent with the approved script: Pitch, Treatment, Statement Of Intent.');
+  await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Backers' }) })).toContainText('Sent with the approved script (draft 1): Pitch, Treatment, Statement Of Intent.');
   await section(page, 'Edit');
   await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Coverage' }) })).toContainText('Not shot yet: scheduled for');
 

@@ -8,6 +8,7 @@ import {
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, type ModuleId,
   requirementRemovalImpact, addAct, addBeat, addResearch, addThread, removeBeat, removeAct, removeResearch, updateResearch, removeThread, resolutionLabel, setSceneAct, updateThread,
+  moveEpisode, removeRelationship, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule, type SharedFact,
   approvalImpact, combineScenes, combineScenesImpact, duplicateScene, splitScene, splitSceneImpact, FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, type UnscriptedFamily,
 } from '../engine';
 import { CONTENT_ISSUES, audienceContentNote, characterPronouns, contentSuggestions, contentSummary, placementExplained, spokenMinutes } from '../engine/script-explain';
@@ -124,6 +125,7 @@ export function ScriptTab({ p }: { p: Project }) {
       )}
 
       {p.axes.format === 'unscripted-series' && <ShowFormat p={p} />}
+      {isEpisodic(p.axes.format) && p.episodes.length > 1 && <Season p={p} />}
       {(mods.has('world-rules') || p.axes.format === 'unscripted-series') && <WorldRules p={p} title={p.axes.format === 'unscripted-series' ? 'Format Rules' : 'Story World Rules'} />}
       {/* Every scripted story can declare its setups and payoffs: the edit plan reads them (finish.ts cutConsequences). */}
       {!nonfiction && <Structure p={p} />}
@@ -396,20 +398,108 @@ function Dialogue({ p, s, up, onSplit }: { p: Project; s: Scene; up: (patch: Par
   );
 }
 
+/** What changing or removing a shared fact touches, listed before it is done (season.ts). */
+function FactPreview({ p, fact }: { p: Project; fact: SharedFact }) {
+  return (
+    <div>
+      <p><strong>What This Touches</strong></p>
+      <ul className="list">{sharedFactPreview(p, fact).map((l) => <li key={l}>{l}</li>)}</ul>
+    </div>
+  );
+}
+
 function WorldRules({ p, title }: { p: Project; title: string }) {
   const [rule, setRule] = useState('');
   const [limit, setLimit] = useState('');
+  const [err, setErr] = useState<string | null>(null);
+  const [changing, setChanging] = useState<{ id: string; rule: string; limit: string } | null>(null);
+  const [removing, setRemoving] = useState<string | null>(null);
+  const sceneOpts = p.scenes.map((s) => ({ value: s.id, label: sceneLabel(p, s) }));
   return (
     <section className="card">
       <h2>{title}</h2>
-      <p className="dim">SLATE records these rules and checks that some are written down. It can't tell whether a scene breaks one: that is yours to keep track of.</p>
-      <ul className="list">{p.worldRules.map((r) => <li key={r.id} className="row-wrap"><span className="grow"><strong>{r.rule}</strong>{r.limit ? <span className="muted"> Limit or cost: {r.limit}</span> : null}</span><button className="btn btn-sm" onClick={() => edit(p, () => (p.worldRules = p.worldRules.filter((x) => x.id !== r.id)))}>Remove</button></li>)}</ul>
+      <p className="dim">SLATE records these rules and checks that some are written down. It can't tell whether a scene breaks one: that is yours to keep track of. Mark the scenes that rely on a rule, and changing it lists them first.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      <ul className="list">{p.worldRules.map((r) => (
+        <li key={r.id}>
+          <div className="row-wrap">
+            <span className="grow"><strong>{r.rule}</strong>{r.limit ? <span className="muted"> Limit or cost: {r.limit}</span> : null}</span>
+            <button className="btn btn-sm" aria-label={`Change The Rule ${r.rule}`} onClick={() => setChanging({ id: r.id, rule: r.rule, limit: r.limit })}>Change</button>
+            <button className="btn btn-sm" aria-label={`Remove The Rule ${r.rule}`} onClick={() => (sharedFactImpact(p, { kind: 'rule', id: r.id }).length ? setRemoving(r.id) : setErr(edit(p, () => removeWorldRule(p, r.id))))}>Remove</button>
+          </div>
+          {sceneOpts.length > 0 && (
+            <fieldset style={{ border: 0, padding: 0 }}>
+              <legend className="small">Scenes That Rely On It</legend>
+              <div className="chip-row">{sceneOpts.map((o) => <Check key={o.value} label={o.label} checked={(r.sceneIds ?? []).includes(o.value)} onChange={(v) => setErr(edit(p, () => { updateWorldRule(p, r.id, { sceneIds: v ? [...(r.sceneIds ?? []), o.value] : (r.sceneIds ?? []).filter((x) => x !== o.value) }); }))} />)}</div>
+            </fieldset>
+          )}
+        </li>
+      ))}</ul>
       <div className="inline-form">
         <TextField label="Rule" value={rule} onChange={setRule} />
         <TextField label="Limit Or Cost" value={limit} onChange={setLimit} />
         <button className="btn" disabled={!rule.trim()} onClick={() => { edit(p, () => p.worldRules.push({ id: newId(store.state!, 'wr'), rule: rule.trim(), limit: limit.trim() })); setRule(''); setLimit(''); }}>Add Rule</button>
       </div>
+      {changing && (
+        <Modal title="Change The Rule" onClose={() => setChanging(null)} footer={<>
+          <button className="btn" onClick={() => setChanging(null)}>Keep It As It Is</button>
+          <button className="btn btn-primary" disabled={!changing.rule.trim()} onClick={() => { const e = edit(p, () => { updateWorldRule(p, changing.id, { rule: changing.rule, limit: changing.limit }); }); setErr(e); if (!e) setChanging(null); }}>Save The Change</button>
+        </>}>
+          <TextField label="Rule" value={changing.rule} onChange={(v) => setChanging({ ...changing, rule: v })} />
+          <TextField label="Limit Or Cost" value={changing.limit} onChange={(v) => setChanging({ ...changing, limit: v })} />
+          <FactPreview p={p} fact={{ kind: 'rule', id: changing.id }} />
+        </Modal>
+      )}
+      {removing && (
+        <Modal title="Remove The Rule" onClose={() => setRemoving(null)} footer={<>
+          <button className="btn" onClick={() => setRemoving(null)}>Keep It</button>
+          <button className="btn btn-danger" onClick={() => { setErr(edit(p, () => removeWorldRule(p, removing))); setRemoving(null); }}>Remove The Rule</button>
+        </>}>
+          <FactPreview p={p} fact={{ kind: 'rule', id: removing }} />
+        </Modal>
+      )}
     </section>
+  );
+}
+
+/** The season's arc, each episode's title and part in it, and their order (season.ts). The writer's plan; never scored.
+ * A reorder renumbers every draft's scenes, which Undo's snapshot of the working copy can't follow, so it clears Undo. */
+function Season({ p }: { p: Project }) {
+  const [err, setErr] = useState<string | null>(null);
+  const refusal = reorderRefusal(p);
+  return (
+    <section className="card" aria-labelledby="season-h">
+      <h2 id="season-h">Season</h2>
+      <p className="dim">The season's arc and what each episode moves in it. Your plan: SLATE doesn't score it, and a next season starts from it.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      {p.continues?.previousArc && <p className="muted">Last season: {p.continues.previousArc}</p>}
+      <TextField label="Season Arc" multiline maxLength={2000} value={p.seasonArc ?? ''} onChange={(v) => setErr(edit(p, () => setSeasonArc(p, v)))} />
+      <ol className="list">{p.episodes.map((e, i) => (
+        <EpisodePlan key={`${e.number}-${e.title}`} p={p} n={e.number} first={i === 0} last={i === p.episodes.length - 1} refusal={refusal} onError={setErr} />
+      ))}</ol>
+      {refusal && <p className="muted">{refusal}</p>}
+    </section>
+  );
+}
+
+function EpisodePlan({ p, n, first, last, refusal, onError }: { p: Project; n: number; first: boolean; last: boolean; refusal: string | null; onError: (e: string | null) => void }) {
+  const e = p.episodes.find((x) => x.number === n)!;
+  const [title, setTitle] = useState(e.title);
+  const scenes = p.scenes.filter((s) => s.episode === n);
+  return (
+    <li>
+      <div className="row-wrap">
+        <strong className="grow">Episode {n}: {e.title}</strong>
+        <span className="dim">{plural(scenes.length, 'scene')}, about {Math.round(scenes.reduce((a, s) => a + s.estMinutes, 0))} minutes</span>
+        <button className="btn btn-sm" aria-label={`Move ${e.title} Earlier`} disabled={first || !!refusal} onClick={() => { const r = store.act(() => moveEpisode(p, n, -1)); if (!r) undoStack.delete(p.id); onError(r); }}>Move Earlier</button>
+        <button className="btn btn-sm" aria-label={`Move ${e.title} Later`} disabled={last || !!refusal} onClick={() => { const r = store.act(() => moveEpisode(p, n, 1)); if (!r) undoStack.delete(p.id); onError(r); }}>Move Later</button>
+      </div>
+      <div className="inline-form">
+        <TextField label={`Title Of Episode ${n}`} value={title} maxLength={120} onChange={setTitle} />
+        <button className="btn btn-sm" disabled={!title.trim() || title.trim() === e.title} onClick={() => onError(edit(p, () => setEpisodeTitle(p, n, title)))}>Rename</button>
+      </div>
+      <TextField label={`What Episode ${n} Moves`} maxLength={400} value={e.arc ?? ''} onChange={(v) => onError(edit(p, () => setEpisodeArc(p, n, v)))} />
+    </li>
   );
 }
 
@@ -522,11 +612,19 @@ function Relationships({ p }: { p: Project }) {
   const [kind, setKind] = useState('');
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
+  const [err, setErr] = useState<string | null>(null);
+  const [changing, setChanging] = useState<{ id: string; kind: string; start: string; end: string } | null>(null);
+  const [removing, setRemoving] = useState<string | null>(null);
   const opts = [{ value: '', label: 'Choose A Character' }, ...p.characters.map((c) => ({ value: c.id, label: c.name }))];
+  const pair = (r: { a: string; b: string }) => `${p.characters.find((c) => c.id === r.a)?.name} and ${p.characters.find((c) => c.id === r.b)?.name}`;
   return (
     <section className="card">
       <h2>Relationships</h2>
-      <ul className="list">{p.relationships.map((r) => <li key={r.id} className="row-wrap"><span className="grow">{p.characters.find((c) => c.id === r.a)?.name} and {p.characters.find((c) => c.id === r.b)?.name}: {r.kind}. {r.start ? `Starts: ${r.start}. ` : ''}{r.end ? `Ends: ${r.end}.` : ''}</span><button className="btn btn-sm" onClick={() => edit(p, () => (p.relationships = p.relationships.filter((x) => x.id !== r.id)))}>Remove</button></li>)}</ul>
+      <p className="dim">A relationship touches every scene its two characters share. Changing or removing one lists those scenes first.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      <ul className="list">{p.relationships.map((r) => <li key={r.id} className="row-wrap"><span className="grow">{pair(r)}: {r.kind}. {r.start ? `Starts: ${r.start}. ` : ''}{r.end ? `Ends: ${r.end}.` : ''}</span>
+        <button className="btn btn-sm" aria-label={`Change The Relationship Of ${pair(r)}`} onClick={() => setChanging({ id: r.id, kind: r.kind, start: r.start, end: r.end })}>Change</button>
+        <button className="btn btn-sm" aria-label={`Remove The Relationship Of ${pair(r)}`} onClick={() => (sharedFactImpact(p, { kind: 'relationship', id: r.id }).length ? setRemoving(r.id) : setErr(edit(p, () => removeRelationship(p, r.id))))}>Remove</button></li>)}</ul>
       <div className="grid grid-3 form">
         <SelectField label="First Character" value={a} options={opts} onChange={setA} />
         <SelectField label="Second Character" value={b} options={opts} onChange={setB} />
@@ -535,6 +633,25 @@ function Relationships({ p }: { p: Project }) {
         <TextField label="Where It Ends" value={end} onChange={setEnd} />
       </div>
       <button className="btn" disabled={!a || !b || a === b || !kind.trim()} onClick={() => { edit(p, () => p.relationships.push({ id: newId(store.state!, 'rel'), a, b, kind: kind.trim(), start, end })); setKind(''); setStart(''); setEnd(''); }}>Add Relationship</button>
+      {changing && (
+        <Modal title="Change The Relationship" onClose={() => setChanging(null)} footer={<>
+          <button className="btn" onClick={() => setChanging(null)}>Keep It As It Is</button>
+          <button className="btn btn-primary" disabled={!changing.kind.trim()} onClick={() => { const e = edit(p, () => { updateRelationship(p, changing.id, { kind: changing.kind, start: changing.start, end: changing.end }); }); setErr(e); if (!e) setChanging(null); }}>Save The Change</button>
+        </>}>
+          <TextField label="Relationship" value={changing.kind} onChange={(v) => setChanging({ ...changing, kind: v })} />
+          <TextField label="Where It Starts" value={changing.start} onChange={(v) => setChanging({ ...changing, start: v })} />
+          <TextField label="Where It Ends" value={changing.end} onChange={(v) => setChanging({ ...changing, end: v })} />
+          <FactPreview p={p} fact={{ kind: 'relationship', id: changing.id }} />
+        </Modal>
+      )}
+      {removing && (
+        <Modal title="Remove The Relationship" onClose={() => setRemoving(null)} footer={<>
+          <button className="btn" onClick={() => setRemoving(null)}>Keep It</button>
+          <button className="btn btn-danger" onClick={() => { setErr(edit(p, () => removeRelationship(p, removing))); setRemoving(null); }}>Remove The Relationship</button>
+        </>}>
+          <FactPreview p={p} fact={{ kind: 'relationship', id: removing }} />
+        </Modal>
+      )}
     </section>
   );
 }

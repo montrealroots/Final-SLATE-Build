@@ -47,13 +47,20 @@ export function nextWorkingDay(p: Project, key: string): string {
   return k;
 }
 
-/** Group live scenes into shoot days by episode block, location and interior/exterior, not script order. */
+/**
+ * Group live scenes into shoot days by episode, location and interior/exterior, not script order. With block scheduling
+ * (November 8, 2026), a series groups by director instead of episode: scenes at one place in episodes the same person
+ * directs share days, and a place used by two directors gets a day each, since one day has one director.
+ */
 export function planShootDays(state: GameState, p: Project, firstDay: string): ShootDay[] {
   const mods = projectModules(p);
   const scenes = approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival' && s.kind !== 'narration');
   const groups = new Map<string, Scene[]>();
+  const block = !!p.schedule.blockEpisodes && p.episodes.length > 1;
+  const directorOf = (ep: number) => p.episodes.find((e) => e.number === ep)?.director ?? 'player';
   for (const s of scenes) {
-    const key = `${s.episode}|${s.storyLocation || s.heading.place}|${s.heading.intExt === 'EXT' ? 'EXT' : 'INT'}|${s.heading.time === 'NIGHT' ? 'N' : 'D'}`;
+    const unit = block ? `D:${directorOf(s.episode)}` : String(s.episode);
+    const key = `${unit}|${s.storyLocation || s.heading.place}|${s.heading.intExt === 'EXT' ? 'EXT' : 'INT'}|${s.heading.time === 'NIGHT' ? 'N' : 'D'}`;
     (groups.get(key) ?? groups.set(key, []).get(key)!).push(s);
   }
   const days: ShootDay[] = [];
@@ -61,13 +68,14 @@ export function planShootDays(state: GameState, p: Project, firstDay: string): S
   const playerChars = new Set(p.cast.filter((c) => c.performer === 'player').map((c) => c.characterId));
   const sortedGroups = [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0], 'en', { numeric: true }));
   for (const [key, list] of sortedGroups) {
-    const [ep, place, ie, dn] = key.split('|');
+    const [, place, ie, dn] = key.split('|');
     let bucket: Scene[] = [];
     let load = 0;
     const flush = () => {
       if (!bucket.length) return;
+      const eps = [...new Set(bucket.map((s) => s.episode))].sort((a, b) => a - b);
       days.push({
-        id: newId(state, 'd'), date: cursor, episode: Number(ep), sceneIds: bucket.map((s) => s.id), locationLabel: place, interior: ie === 'INT', night: dn === 'N',
+        id: newId(state, 'd'), date: cursor, episode: eps[0], ...(eps.length > 1 ? { episodes: eps } : {}), sceneIds: bucket.map((s) => s.id), locationLabel: place, interior: ie === 'INT', night: dn === 'N',
         status: 'scheduled', playerActing: bucket.some((s) => s.participants.some((c) => playerChars.has(c))), conflicts: [],
       });
       cursor = nextWorkingDay(p, addDaysToKey(cursor, 1));

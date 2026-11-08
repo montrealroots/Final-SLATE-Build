@@ -45,7 +45,11 @@ export function projectedCost(state: GameState, p: Project): CostProjection {
       if (cheapest) cast += cheapest.dayRate * estimateDays(p, castRoleFor(m), c.id, m);
     }
   }
-  const tasks = (p.tasks.length ? p.tasks : buildTasks(p)).filter((x) => x.status !== 'done');
+  // Planned: the plan's tasks. Not yet planned: the work the script needs, less anything finished already (a sequel's
+  // carried-over builds, at the design they were built to).
+  const finished = new Map(p.tasks.filter((x) => x.status === 'done').map((x) => [x.id, x]));
+  const tasks = (p.schedule.startDate ? p.tasks : buildTasks(p).filter((x) => !(finished.has(x.id) && (finished.get(x.id)!.needsVersion ?? 0) >= (x.needsVersion ?? 0))))
+    .filter((x) => x.status !== 'done');
   const planned = p.obligations.some((o) => o.ref === 'plan:shoot' || o.ref === 'plan:materials');
   const fees = dayFees(p);
   const production = planned ? 0 : estimatedShootDays(p) * (fees.location + fees.equipment) +

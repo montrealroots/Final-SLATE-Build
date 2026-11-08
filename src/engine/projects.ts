@@ -5,6 +5,7 @@ import { addLog, adoptPlace, newId, registerHandler, schedule } from './state';
 import { unscriptedIssues } from './unscripted';
 import { remapThreads, structureNotes } from './structure';
 import { researchNotes } from './research';
+import { seasonNotes } from './season';
 import { personById, roleLabel } from './people';
 import type {
   Draft, Format, GameState, Medium, Project, ProjectAxes, Requirement, RevisionNote, Scene, StoryCharacter, Technique,
@@ -237,7 +238,7 @@ export function assignEpisodeRole(p: Project, episode: number, role: 'writer' | 
   if (current === who) return;
   const contributed = role === 'writer'
     ? p.approvedDraft !== null && approvedScenes(p).some((s) => s.episode === episode)
-    : p.schedule.days.some((d) => d.episode === episode && (d.status === 'shot' || d.status === 'partial'));
+    : p.schedule.days.some((d) => (d.episode === episode || d.episodes?.includes(episode)) && (d.status === 'shot' || d.status === 'partial'));
   const key = role === 'writer' ? 'formerWriters' : 'formerDirectors';
   const former = (e[key] ?? []).filter((x) => x !== who);
   if (contributed && !former.includes(current)) former.push(current);
@@ -597,6 +598,7 @@ export function scriptIssues(p: Project): Issue[] {
   }
   // Acts and threads: advice by scene, never a block and never a score (structure.ts).
   for (const n of researchNotes(p)) out.push({ severity: 'note', area: 'continuity', text: n.text, sceneId: n.sceneId, advisory: true });
+  for (const n of seasonNotes(p)) out.push({ severity: 'note', area: 'structure', text: n.text, advisory: true });
   for (const n of structureNotes(p)) out.push({ severity: 'note', area: 'structure', text: n.text, ...(n.sceneId ? { sceneId: n.sceneId } : {}), advisory: true });
   return out;
 }

@@ -162,14 +162,37 @@ test('TV limited series: episodes, a guest role and episode-level credits', asyn
   await addScene(page, { index: 0, place: 'Emergency Room', chars: ['Dr. Ines Park'], minutes: '2', episodeButton: 'Add Scene To Episode 1' });
   await addScene(page, { index: 1, place: 'Emergency Room', chars: ['Dr. Ines Park', 'Marcus'], minutes: '2', episodeButton: 'Add Scene To Episode 1' });
   await addScene(page, { index: 2, place: 'Rooftop', chars: ['Dr. Ines Park'], minutes: '2', episodeButton: 'Add Scene To Episode 2' });
+  const season = page.locator('section.card', { has: page.getByRole('heading', { name: 'Season', exact: true }) });
+  await season.getByLabel('Season Arc').fill('One winter on the night ward.');
+  await season.getByLabel('Title Of Episode 2').fill('The Rooftop');
+  await season.getByRole('button', { name: 'Rename' }).nth(1).click();
   await saveAndApprove(page);
   await section(page, 'Crew');
   await expect(page.getByRole('heading', { name: 'Episode Writers And Directors' })).toBeVisible();
+  // Block scheduling is a choice made before the schedule is built (SLATE-07-04.02).
+  await section(page, 'Schedule');
+  await page.getByRole('checkbox', { name: 'Shoot Episodes In Blocks' }).check();
   await produceToDelivery(page, { yourself: ['Dr. Ines Park'] });
   const credits = await creditsTable(page);
   expect(credits).toContain('Executive Producer And Showrunner');
   expect(credits).toMatch(/as Marcus, Episodes 1\b/);
   expect(credits).toMatch(/as Dr\. Ines Park, Episodes 1, 2/);
+
+  // The next season (SLATE-07-05.02, 18-04): the characters carry over, the last arc is there to build on, and whoever
+  // played Marcus is asked back at their last rate, an offer like any other.
+  await section(page, 'Overview');
+  await page.getByRole('button', { name: 'Start The Next Season' }).click();
+  await expect(page.getByRole('heading', { name: 'Night Ward: Season 2', level: 1 })).toBeVisible();
+  await section(page, 'Script');
+  await expect(page.getByText('Last season: One winter on the night ward.')).toBeVisible();
+  await addScene(page, { index: 0, place: 'Emergency Room', chars: ['Marcus'], minutes: '2', episodeButton: 'Add Scene To Episode 1' });
+  await addScene(page, { index: 1, place: 'Rooftop', chars: ['Dr. Ines Park'], minutes: '2', episodeButton: 'Add Scene To Episode 2' });
+  await saveAndApprove(page);
+  await section(page, 'Cast');
+  const back = page.locator('section.card', { has: page.getByRole('heading', { name: 'Ask Them Back' }) });
+  await expect(back).toContainText('as Marcus');
+  await back.getByRole('button', { name: /^Ask .+ Back$/ }).click();
+  await expect(back.getByText('Offer Sent')).toBeVisible();
 });
 
 test('web series: short-form episodes deliver with per-episode work', async ({ page }) => {

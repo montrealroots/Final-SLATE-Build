@@ -304,6 +304,8 @@ export interface WorldRule {
   id: string;
   rule: string;
   limit: string;
+  /** Scenes that rely on the rule: changing it previews them, by episode (season.ts). */
+  sceneIds?: string[];
 }
 
 export interface Relationship {
@@ -452,6 +454,8 @@ export interface ShootDay {
   id: string;
   date: string;
   episode: number;
+  /** A block day's episodes, when it serves more than one (schedule.ts block scheduling); `episode` is the first. */
+  episodes?: number[];
   sceneIds: string[];
   locationLabel: string;
   interior: boolean;
@@ -601,7 +605,9 @@ export interface Project {
    * Who writes and directs each episode. Someone replaced after contributing (an approved draft of the episode, a day of it
    * shot) is kept in formerWriters or formerDirectors and stays credited (projects.ts assignEpisodeRole, SLATE-01-04.05).
    */
-  episodes: { number: number; title: string; writer: 'player' | string; director: 'player' | string; formerWriters?: string[]; formerDirectors?: string[] }[];
+  episodes: { number: number; title: string; writer: 'player' | string; director: 'player' | string; formerWriters?: string[]; formerDirectors?: string[]; /** What this episode moves in the season arc (season.ts). */ arc?: string }[];
+  /** The season's arc, in the writer's words (season.ts). Scores nothing; a continuation starts from it. */
+  seasonArc?: string;
   setups: SetupPayoff[];
   /** Acts or sequences, and story threads (structure.ts). Absent in older saves. */
   acts?: { id: string; name: string }[];
@@ -626,6 +632,8 @@ export interface Project {
     startDate: string | null;
     rehearsalDays: number;
     sixDayWeeks: boolean;
+    /** Series: scenes at one place across episodes with the same director share days (SLATE-07-04.02). */
+    blockEpisodes?: boolean;
     workHolidays: boolean;
     /** Holidays the producer keeps (copied from the character when the project is made): shoot days skip them too. */
     observances?: string[];
@@ -653,6 +661,11 @@ export interface Project {
   workEventScheduled: boolean;
   /** Shelved, with its commitments settled (shelve.ts); taken up again by removing it. */
   shelved?: { at: number };
+  /** A next season or sequel of another project (continuation.ts), and the people to ask back. */
+  continues?: { from: string; number: number; previousArc?: string; returning: { characterId: string; personId: string; method: PerformanceMethod; rate: number }[] };
+  continuedBy?: string;
+  /** A commissioner's decision on another season (continuation.ts). */
+  renewal?: { decidedAt: number; outcome: 'renewed' | 'cancelled'; reason: string };
   noticeKeys: string[];
 }
 

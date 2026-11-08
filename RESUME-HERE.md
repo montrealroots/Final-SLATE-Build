@@ -92,13 +92,27 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
     - the requirement removal preview (`06-03.02`);
     - duplicating, splitting and combining scenes (`06-04.02`).
   - Browser test: `e2e/structure.spec.ts` (desktop and phone).
-- **Next:** stage 4, episodes.
-  - The shared-fact preview (`07-01.02`).
-  - Season arc and episode order (`07-02.02`).
-  - Block scheduling (`07-04.02`).
-  - Renewal and next season (`07-05.02`).
-  - Then stage 5 (finance negotiation `08-03.03`, auditions `09-02`) and the rest of `docs/depth/README.md`, Build Order.
-  - Also still open: the IMPLEMENTED UNVERIFIED children (28) that need only a test.
+  - Stage 4, episodes, everything below now VERIFIED:
+    - the series bible (`07-01.01`, `.02`, `season.ts`): a world rule names the scenes that rely on it; changing or
+      removing a rule or a relationship lists the episodes and scenes it touches first, and recorded scenes stay as shot;
+    - the season plan (`07-02.02`): a season arc, episode titles and a line on what each moves (advice notes only), and
+      episodes reordered with their scenes in every draft until anything is planned, hired or recorded;
+    - episode writers and directors (`07-04.01`), and block scheduling by director (`07-04.02`, `schedule.blockEpisodes`);
+    - renewal and the next season or a sequel (`07-05.02`, `18-04.01`, `.02`, `continuation.ts`): the commissioner
+      decides 30 days after delivery on the delivery assessment (60 or more renews, game calibration); continuity and
+      finished builds carry over; the previous cast are asked back at their last rate as ordinary offers; no money
+      carries over, and a renewal is an offer to accept.
+  - Browser tests: `e2e/season.spec.ts` (desktop, phone, WebKit iPhone 15 Plus); the TV journey in
+    `e2e/journeys.spec.ts` now plans the season, shoots in blocks, starts season 2 and asks the previous Marcus back.
+  - Ledger after stage 4: parents 54 VERIFIED EXISTING, 4 VERIFIED, 22 IMPLEMENTED UNVERIFIED, 13 NEEDS REPAIR,
+    5 MISSING, 2 EXTERNAL BLOCKER; children 148 / 32 / 26 / 0 / 21 MISSING / 2.
+- **Next:** stage 5 (finance negotiation `08-03.03`, auditions `09-02`), then the rest of `docs/depth/README.md`,
+  Build Order (stage 6: location options `11-02.02`, design approval `11-03.02`, call sheets `11-05.03`; stage 7:
+  live-action setups and takes `12-02.02`, `12-03`; stage 8: contributor use restrictions `14-02.02`; stage 9:
+  replacement voice and effects `15-03.02`, ADR and Foley `15-04.02`, versions `15-05.03`; stage 10: territories
+  `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11: relationships `18-02`, opportunities
+  `18-03`).
+  - Also still open: the IMPLEMENTED UNVERIFIED children (26) that need only a test.
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 

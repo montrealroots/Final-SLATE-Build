@@ -61,12 +61,12 @@ The groups that are wholly missing:
 The package's order (`package/04-BUILD-ORDER-AND-CONNECTIONS.md`). Each stage brings engine, UI, failure and recovery,
 migration and tests, and moves its children to VERIFIED.
 
-1. Ledger and checker (this commit), areas 19 and 20.
-2. Identity, time and responsive interface:
+1. Ledger and checker, areas 19 and 20 (done).
+2. Identity, time and responsive interface (done):
    - handing over writing or directing (`01-04.05`);
    - previewing what Advance will pass (`02-02.04`);
    - the sticky-header check (`19-02.03`).
-3. Project, story and scenes:
+3. Project, story and scenes (done):
    - shelving or cancelling a project (`03-04.02`);
    - ways to cut cost (`03-03.02`);
    - acts and threads (`04-02.02`, `.03`);
@@ -76,7 +76,7 @@ migration and tests, and moves its children to VERIFIED.
    - arc beats (`05-04.02`);
    - previewing a removed requirement (`06-03.02`);
    - duplicating, splitting and combining scenes (`06-04.02`).
-4. Episodes:
+4. Episodes (done; also 18-04, sequels and returning seasons):
    - the shared-fact preview (`07-01.02`);
    - season arc and order (`07-02.02`);
    - block scheduling (`07-04.02`);

@@ -94,17 +94,17 @@ SLATE-06-04.03,SLATE-06-04,Cut from the edit and restore,VERIFIED EXISTING,tests
 SLATE-06-05.01,SLATE-06-05,"Save a draft, compare, restore; the working copy stays separate",VERIFIED EXISTING,"tests/writing.test.ts::compares drafts, restores an earlier one",
 SLATE-06-05.02,SLATE-06-05,Re-approving after filming keeps unchanged scenes and redoes only changed ones,VERIFIED EXISTING,tests/writing.test.ts::re-approving after filming keeps unchanged scenes | e2e/careers.spec.ts::an approved scene changed after filming,
 SLATE-06-05.03,SLATE-06-05,Repeated revision earns nothing,VERIFIED EXISTING,tests/screenwriting.test.ts::your own notes and repeated revision passes add nothing,
-SLATE-07-01.01,SLATE-07-01,World rules and relationships shared across episodes,IMPLEMENTED UNVERIFIED,,worldRules and relationships exist; no series-bible test
-SLATE-07-01.02,SLATE-07-01,Changing a shared fact previews the episodes it touches,MISSING,,No preview
+SLATE-07-01.01,SLATE-07-01,World rules and relationships shared across episodes,VERIFIED,tests/episodes.test.ts::a relationship touches every scene its two characters share | e2e/season.spec.ts::A relationship touches every scene its two characters share,
+SLATE-07-01.02,SLATE-07-01,Changing a shared fact previews the episodes it touches,VERIFIED,"tests/episodes.test.ts::a rule lists the scenes that rely on it, by episode, and which are recorded | e2e/season.spec.ts::changing a shared fact says which episodes it touches first",
 SLATE-07-02.01,SLATE-07-02,Episodes with titles and scenes; work and credits per episode,VERIFIED EXISTING,tests/media.test.ts::produces episodes with episode-specific credits,
-SLATE-07-02.02,SLATE-07-02,A season arc and episode order,MISSING,,Episodes are numbered; no season arc or reordering
+SLATE-07-02.02,SLATE-07-02,A season arc and episode order,VERIFIED,"tests/episodes.test.ts::an episode moves with its scenes, in every draft, and its writer | e2e/season.spec.ts::a season planned and reordered","The arc is the writer's plan: advice notes only, carried into the next season; it scores nothing"
 SLATE-07-02.03,SLATE-07-02,"The estimate covers every episode, not one",IMPLEMENTED UNVERIFIED,,scriptEstimate sums scenes across episodes; no test
 SLATE-07-03.01,SLATE-07-03,"Regulars, recurring parts and guests booked for the episodes they appear in",VERIFIED EXISTING,tests/script-effects.test.ts::series regulars are booked for every episode | e2e/careers.spec.ts::a TV season: a regular and a guest,
 SLATE-07-03.02,SLATE-07-03,Episode credits follow appearances and work,VERIFIED EXISTING,"e2e/journeys.spec.ts::TV limited series: episodes, a guest role and episode-level credits",
-SLATE-07-04.01,SLATE-07-04,Each episode names its writer and director,IMPLEMENTED UNVERIFIED,,Stored; no test or handover
-SLATE-07-04.02,SLATE-07-04,Block scheduling of episodes sharing sets and locations,MISSING,,Days are planned per episode in order
+SLATE-07-04.01,SLATE-07-04,Each episode names its writer and director,VERIFIED,tests/handover.test.ts::a writer replaced after their draft was approved | tests/episodes.test.ts::episodes with different directors never share a day,
+SLATE-07-04.02,SLATE-07-04,Block scheduling of episodes sharing sets and locations,VERIFIED,"tests/episodes.test.ts::in blocks, one director shoots both on one day | e2e/journeys.spec.ts::Shoot Episodes In Blocks",
 SLATE-07-05.01,SLATE-07-05,Deliver the season with per-episode credits,VERIFIED EXISTING,e2e/careers.spec.ts::per-episode credits,
-SLATE-07-05.02,SLATE-07-05,A commissioner renews or cancels; a renewal starts a new season with returning cast and new contracts,MISSING,,No renewal or next season
+SLATE-07-05.02,SLATE-07-05,A commissioner renews or cancels; a renewal starts a new season with returning cast and new contracts,VERIFIED,tests/episodes.test.ts::a commissioner renews a season that turned out well | e2e/journeys.spec.ts::Start The Next Season,"Renewal reads the assessment made at delivery (overall 60 or more): game calibration, not industry data"
 SLATE-08-01.01,SLATE-08-01,"The estimate by category with contingency, separate from money in hand",VERIFIED EXISTING,tests/finance.test.ts::a new project has an estimate and a target,
 SLATE-08-01.02,SLATE-08-01,"A line with no available candidate is flagged as uncertain, never free",IMPLEMENTED UNVERIFIED,,projectedCost prices roles by rate; no test for a role with no candidate
 SLATE-08-02.01,SLATE-08-02,Each backer says what it needs; send; an answer after some days,VERIFIED EXISTING,tests/finance.test.ts::each backer says what it needs | tests/finance.test.ts::a grant and an investor answer after some days,
@@ -204,8 +204,8 @@ SLATE-18-01.01,SLATE-18-01,Credits across projects on Profile,IMPLEMENTED UNVERI
 SLATE-18-02.01,SLATE-18-02,Collaboration history with people you have worked with,MISSING,,No relationship history
 SLATE-18-02.02,SLATE-18-02,History changes their willingness for related work only,MISSING,,Depends on history
 SLATE-18-03.01,SLATE-18-03,"Proposals tied to your past work, with terms, accepted or declined",MISSING,,No opportunities
-SLATE-18-04.01,SLATE-18-04,A sequel or new season carries story continuity and eligible assets,MISSING,,No sequels or seasons
-SLATE-18-04.02,SLATE-18-04,Returning people are asked again and paid again,MISSING,,No sequels or seasons
+SLATE-18-04.01,SLATE-18-04,A sequel or new season carries story continuity and eligible assets,VERIFIED,"tests/episodes.test.ts::carries the same characters, world and open threads | tests/episodes.test.ts::a sequel reuses the finished puppets",
+SLATE-18-04.02,SLATE-18-04,Returning people are asked again and paid again,VERIFIED,"tests/episodes.test.ts::the cast are listed to ask back at their rate, not hired | e2e/journeys.spec.ts::is asked back at their last rate, an offer like any other",
 SLATE-18-05.01,SLATE-18-05,Bookings across projects never overlap for one person,VERIFIED EXISTING,tests/schedule.test.ts::refuses when someone needed on set is busy,
 SLATE-18-05.02,SLATE-18-05,Debts and duties of one project survive starting another,VERIFIED EXISTING,e2e/first-project.spec.ts::a second project,
 SLATE-18-05.03,SLATE-18-05,Cancel or hand over a project explicitly,VERIFIED,tests/shelve.test.ts::a backer | tests/handover.test.ts::a writer replaced after their draft was approved,

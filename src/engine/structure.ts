@@ -69,12 +69,13 @@ export function removeThread(p: Project, id: string): void {
   p.threads = (p.threads ?? []).filter((x) => x.id !== id);
 }
 
-/** Keep threads and arc beats pointing at real scenes when a scene goes (deleted) or is folded into another (combined). */
+/** Keep threads, world rules and arc beats pointing at real scenes when a scene goes (deleted) or is folded into another (combined). */
 export function remapThreads(p: Project, goneId: string, intoId: string | null): void {
   for (const t of p.threads ?? []) {
     t.sceneIds = [...new Set(t.sceneIds.map((x) => (x === goneId ? intoId : x)).filter((x): x is string => !!x))];
     if (t.resolvedIn === goneId) t.resolvedIn = intoId;
   }
+  for (const r of p.worldRules) if (r.sceneIds) r.sceneIds = [...new Set(r.sceneIds.map((x) => (x === goneId ? intoId : x)).filter((x): x is string => !!x))];
   for (const c of p.characters) {
     if (!c.beats) continue;
     c.beats = c.beats.flatMap((b) => (b.sceneId !== goneId ? [b] : intoId ? [{ ...b, sceneId: intoId }] : []));

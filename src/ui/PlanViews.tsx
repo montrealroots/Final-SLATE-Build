@@ -132,6 +132,23 @@ export function CastTab({ p }: { p: Project }) {
     <>
       {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
       {coaching.length > 0 && <div className="callout callout-warning"><p>{coaching.join(' and ')} {coaching.length === 1 ? 'needs' : 'need'} coaching in a dialogue language. Hire a dialect and language coach in Crew.</p></div>}
+      {(p.continues?.returning ?? []).filter((r) => chars.some((c) => c.id === r.characterId) && !p.cast.some((a) => a.characterId === r.characterId && a.method === r.method)).length > 0 && (
+        <section className="card" aria-labelledby="back-h">
+          <h2 id="back-h">Ask Them Back</h2>
+          <p className="dim">Who played these parts last time, at the rate they were paid then. Asking is an offer like any other: they may be booked elsewhere, may ask for more, and are paid again.</p>
+          <ul className="list">{p.continues!.returning.filter((r) => chars.some((c) => c.id === r.characterId) && !p.cast.some((a) => a.characterId === r.characterId && a.method === r.method)).map((r) => {
+            const c = chars.find((x) => x.id === r.characterId)!;
+            const who = personById(g, r.personId);
+            const pending = p.hires.some((h) => h.personId === r.personId && h.characterId === r.characterId && (h.status === 'offered' || h.status === 'countered'));
+            return (
+              <li key={`${r.characterId}-${r.method}`} className="row-wrap">
+                <span className="grow">{who.name} as {c.name} <span className="dim">· {money(r.rate)} a day last time</span></span>
+                {pending ? <span className="chip">Offer Sent</span> : <button className="btn btn-sm" onClick={() => setErr(store.act((s) => { makeOffer(s, p, { personId: r.personId, roleId: castRoleFor(r.method), dayRate: r.rate, characterId: r.characterId, method: r.method }); }))}>Ask {who.name} Back</button>}
+              </li>
+            );
+          })}</ul>
+        </section>
+      )}
       <section className="card">
         <h2>Roles</h2>
         <p className="muted">You can cast yourself in any role, or stay behind the camera. Writing a character doesn't earn an acting credit.</p>
@@ -336,6 +353,7 @@ export function ScheduleTab({ p }: { p: Project }) {
           {has3d && <NumberField label="Render Nodes" value={p.schedule.renderNodes} min={1} max={500} hint="Finite render capacity, paid per node day." onChange={(v) => set(() => (p.schedule.renderNodes = Math.max(1, Math.min(500, Math.round(v || 1)))))} />}
         </div>
         <Check label="Six-Day Weeks" checked={p.schedule.sixDayWeeks} onChange={(v) => set(() => (p.schedule.sixDayWeeks = v))} />
+        {p.episodes.length > 1 && <Check label="Shoot Episodes In Blocks" hint="Scenes at the same place in episodes with the same director share days, so fewer days are paid for. Episodes with different directors keep their own days. Takes effect when the schedule is built." checked={!!p.schedule.blockEpisodes} onChange={(v) => set(() => { if (v) p.schedule.blockEpisodes = true; else delete p.schedule.blockEpisodes; })} />}
         <Check label="Work On Public Holidays" hint={`Holiday work is paid at 1.5 times the day rate in this game. Holidays follow ${place.countryName}${p.schedule.observances?.length ? `, and the holidays you keep (${p.schedule.observances.map((id) => observance(id)?.name).filter(Boolean).join(', ')}) are kept free too` : ''}.`} checked={p.schedule.workHolidays} onChange={(v) => set(() => (p.schedule.workHolidays = v))} />
         {animChars.length > 0 && (
           <>

@@ -4,7 +4,7 @@ import { getPlace, placeLabel } from '../data/places';
 import {
   FORMAT_LABELS, FUNDING_SCENARIOS, dateKey, deals, financeSummary, formatDateKey, GENRES, MEDIUM_LABELS, MODULE_LABELS, TECHNIQUE_LABELS, approvalRights, composeGenres, createProject, genre,
   genreCategory, hasTrackRecord, isEpisodic, isNonfiction, ledgerTotals, money, projectGenreLabel, projectModules, qualityWords, scriptIssues,
-  resumeProject, searchGenres, shelveImpact, shelveProject, type ModuleId,
+  canContinue, continueProject, resumeProject, searchGenres, shelveImpact, shelveProject, type ModuleId,
 } from '../engine';
 import type { Format, Medium, Project, Technique } from '../engine/types';
 import { Check, Field, Modal, NumberField, PageHead, SectionNav, SelectField, TextField, longLocal, plural } from './components';
@@ -306,6 +306,20 @@ function Overview({ p }: { p: Project }) {
         {!p.delivered && <p style={{ marginTop: 'var(--s3)' }}><button className="btn btn-sm" onClick={() => setShelving(true)}>Shelve The Project</button></p>}
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       </section>
+      )}
+      {p.delivered && (
+        <section className="card" aria-labelledby="continue-h">
+          <h2 id="continue-h">{p.episodes.length > 1 ? 'Another Season' : 'A Sequel'}</h2>
+          {p.renewal && <p>{p.renewal.reason}</p>}
+          {p.continuedBy ? (
+            <p>Continued in <button className="btn btn-ghost" style={{ padding: 0 }} onClick={() => store.go({ view: 'project', projectId: p.continuedBy!, tab: 'overview' })}>{g.projects.find((x) => x.id === p.continuedBy)?.title ?? 'its continuation'}</button>.</p>
+          ) : (
+            <>
+              <p className="dim">The characters, their designs, the world and any threads left open carry over, with finished puppets, models and rigs. Nobody returns automatically: you ask people back and pay them again, and raise the money again{p.renewal?.outcome === 'renewed' ? ', starting with the commissioner\'s offer' : ''}.</p>
+              <button className="btn btn-primary" disabled={!!canContinue(p)} onClick={() => setErr(store.act((s) => { const next = continueProject(s, p); store.go({ view: 'project', projectId: next.id, tab: 'overview' }); }))}>{p.episodes.length > 1 ? 'Start The Next Season' : 'Start A Sequel'}</button>
+            </>
+          )}
+        </section>
       )}
       <section className="card">
         <h2>Project</h2>

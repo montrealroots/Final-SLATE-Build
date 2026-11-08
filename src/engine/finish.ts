@@ -1,5 +1,6 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
+import { scheduleRenewal } from './continuation';
 import { approvedTake, captureCredit } from './mocap';
 import { BROADCAST_EDIT_COST, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
 import { financeCredits, onProjectDelivered, receiveIncome } from './finance';
@@ -175,6 +176,7 @@ export function deliver(state: GameState, p: Project): void {
   const runtime = Math.round(editScenes(p).reduce((a, s) => a + s.estMinutes, 0));
   p.delivered = { at: state.now, runtimeMin: runtime };
   onProjectDelivered(state, p);
+  scheduleRenewal(state, p);
   p.phase = 'delivered';
   p.quality = assessQuality(state, p);
   p.credits = computeCredits(state, p);

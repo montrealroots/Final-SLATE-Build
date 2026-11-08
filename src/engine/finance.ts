@@ -127,7 +127,9 @@ export function backerOptions(state: GameState, p: Project): { kind: Exclude<Fin
   out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : fundClosedTo(state, p) ?? docs('grant')) });
   out.push({ kind: 'investor', ready: false, needs: why('investor', !scriptApproved(p) ? 'Approve a script first.' : docs('investor')) });
   out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : docs('co-producer')) });
-  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : !scriptApproved(p) ? 'Approve a script first.' : docs('commissioner')) });
+  // A commissioner who didn't renew the series won't fund its next season (continuation.ts).
+  const notRenewed = p.continues && state.projects.find((x) => x.id === p.continues!.from)?.renewal?.outcome === 'cancelled' ? "The commissioner didn't renew the series." : null;
+  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : notRenewed ?? (!scriptApproved(p) ? 'Approve a script first.' : docs('commissioner'))) });
   for (const o of out) o.ready = o.needs === '';
   return out;
 }
