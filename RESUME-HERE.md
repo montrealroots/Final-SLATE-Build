@@ -201,13 +201,26 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       names and starts a project funded by a commissioner deal (85% income share, picture approval, 20% on delivery,
       deliver within 540 days, enforced by the existing finance deadline); declining closes it. Calibration is game
       calibration.
-  - Stage 12, under way (`tests/depth-gaps.test.ts`): `03-01`, `06-02`, `07-02`, `10-01`, `15-04` now have tests of the
-    rule. `08-01` was NEEDS REPAIR in practice: a role or part no available person could take was priced at nothing.
-    `projectedCost(...).uncertain` now names them and the Financing card says the estimate can't price them.
-- **Next:** the remaining IMPLEMENTED UNVERIFIED children (19: `03-04`, `03-05`, `05-03`, `05-04`, `05-05`, `09-03`,
-  `10-02`, `10-04`, `10-05`, `11-03`/`13-03` puppet repair, `11-04`, `12-01`, `12-04`, `13-04`, `13-05`, `18-01`,
-  `19-03` x2), then the package's playthroughs (`docs/depth/package/05-PLAYTHROUGHS-AND-ACCEPTANCE.md`). Missing:
-  `20-02` (a per-feature source register for production rates) and `20-04` (journeys, added per stage).
+  - Stage 12, under way. Every IMPLEMENTED UNVERIFIED child but the two `19-03` audits now has a test of its rule
+    (`tests/depth-gaps.test.ts`, `tests/depth-gaps-production.test.ts`, `tests/relationships.test.ts`,
+    `tests/stages.test.ts`, `e2e/career.spec.ts`, `e2e/connected.spec.ts`). Seven were repairs, not only tests:
+    - `08-01`: a role or part no one available could take was priced at nothing. `projectedCost(...).uncertain` names
+      them, and the Financing card says the estimate can't price them.
+    - `09-03`: an unanswered counteroffer held the part and its money for good. It now lapses after 7 days
+      (`hiring.ts COUNTER_OPEN_DAYS`, `counter-lapse`); letting it lapse isn't recorded as turning them down.
+    - `13-05`: a pickup in a hybrid project left finished plate integration on the old plate. It now restarts the
+      episode's integration (`finish.ts pickupIntegration`), and the Coverage card previews the compositor days.
+    - `03-05`: nothing explained a project's stages before it began. The New Script form lists them
+      (`src/engine/stages.ts`).
+    - `03-04`: same-title projects looked identical in the lists. They now show when each was started, and which of
+      that title it is when two share a day.
+    - `10-02`: staffing said "no available candidate fits the remaining budget" when no one was free at all. It now
+      tells the two apart.
+- **Next:**
+  - The two `19-03` audits (every preview of cost and time; every disabled action says why). Planned as a ratchet test
+    listing each disabled control in `src/ui` and where its reason shows.
+  - Then the package's playthroughs (`docs/depth/package/05-PLAYTHROUGHS-AND-ACCEPTANCE.md`).
+  - Missing: `20-02` (a per-feature source register for production rates) and `20-04` (journeys, added per stage).
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 
