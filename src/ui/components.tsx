@@ -45,14 +45,14 @@ export function Field(props: { label: string; error?: string | null; hint?: stri
   );
 }
 
-export function TextField(props: { label: string; value: string; onChange: (v: string) => void; error?: string | null; hint?: string; type?: string; multiline?: boolean; maxLength?: number; autoComplete?: string; inputMode?: 'numeric' | 'text' | 'decimal' }) {
+export function TextField(props: { label: string; value: string; onChange: (v: string) => void; error?: string | null; hint?: string; type?: string; multiline?: boolean; maxLength?: number; autoComplete?: string; inputMode?: 'numeric' | 'text' | 'decimal'; min?: string; max?: string }) {
   return (
     <Field label={props.label} error={props.error} hint={props.hint}>
       {(id, db) =>
         props.multiline ? (
           <textarea id={id} value={props.value} aria-invalid={!!props.error} aria-describedby={db} maxLength={props.maxLength} onChange={(e) => props.onChange(e.target.value)} />
         ) : (
-          <input id={id} type={props.type ?? 'text'} value={props.value} aria-invalid={!!props.error} aria-describedby={db} maxLength={props.maxLength} autoComplete={props.autoComplete ?? 'off'} inputMode={props.inputMode} onChange={(e) => props.onChange(e.target.value)} />
+          <input id={id} type={props.type ?? 'text'} value={props.value} aria-invalid={!!props.error} aria-describedby={db} maxLength={props.maxLength} min={props.min} max={props.max} autoComplete={props.autoComplete ?? 'off'} inputMode={props.inputMode} onChange={(e) => props.onChange(e.target.value)} />
         )
       }
     </Field>

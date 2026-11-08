@@ -2,11 +2,19 @@ import { useLayoutEffect, useRef, useState, type ReactNode, type RefObject } fro
 import { heritageLanguages } from '../data/heritage-languages';
 import { LANGUAGES, PRONOUNS, languageName, searchHeritages, searchLanguages, settledTitle, type LanguageInfo } from '../data/identity';
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
-import { CREATION_STEPS, OBSERVANCES, ageOn, creationStepIndex, formatZoneAbbrev, monthName, observance, observanceDate, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
+import { CREATION_STEPS, FIRST_START_YEAR, LAST_START_YEAR, MIN_START_AGE, OBSERVANCES, ageOn, citizenshipFor, draftNames, latestBirthDate, creationStepIndex, formatZoneAbbrev, monthName, observance, observanceDate, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
 import type { CreationDraft, CreationStepId, Proficiency } from '../engine/types';
 import { Check, Field, Professions, SelectField, TextField } from './components';
 import { store, useStore } from './store';
 import { WorldPlacePicker } from './WorldPicker';
+import { PortraitPicker } from './PortraitPicker';
+import { countryName } from '../world/gazetteer/gazetteer';
+
+/** A date key as words: "January 5, 2026". */
+const longDate = (key: string): string => { const b = parseYmd(key); return `${MONTHS[b.month - 1]} ${b.day}, ${b.year}`; };
+
+/** The draft's legal name, first, middle and last. */
+const legalName = (d: CreationDraft): string => { const n = draftNames(d); return [n.firstName, n.middleName, n.lastName].filter(Boolean).join(' '); };
 
 const PROFICIENCIES: Proficiency[] = ['Native', 'Fluent', 'Conversational', 'Basic'];
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -90,7 +98,7 @@ export function Creation() {
           ))}
         </div>
 
-        {step === 'identity' && <IdentityStep d={d} set={set} err={err} head={h1('Identity', 'Your name is the one your credits carry. Your pronouns decide how you’re billed: He/Him as Actor, She/Her as Actress, and with They/Them you choose.')} />}
+        {step === 'identity' && <IdentityStep d={d} set={set} err={err} head={h1('Identity', 'Your legal name is the one on your documents and your credits. What people call you can be different. Your pronouns decide how you’re billed: He/Him as Actor, She/Her as Actress, and with They/Them you choose.')} />}
         {step === 'background' && (
           <div className="col gap-5">
             <section className="card">
@@ -147,11 +155,28 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
   const age = ageAtStart(d);
   const billedError = err('actingTitle');
   const settled = settledTitle(d.pronouns);
+  const citizen = citizenshipFor(d.birthplaceId);
+  const latest = latestBirthDate(d.startDate);
   return (
     <section className="card">
       {head}
+      <div className="identity-top">
+        <PortraitPicker portrait={d.portrait} name={legalName(d)} onChange={(portrait) => set({ portrait })} />
+        <div className="identity-fields">
+      <div className="field-row field-row-names">
+        <TextField label="First Name" value={d.firstName} maxLength={40} error={err('firstName')} onChange={(v) => set({ firstName: v })} />
+        <TextField label="Middle Name (Optional)" value={d.middleName} maxLength={40} onChange={(v) => set({ middleName: v })} />
+        <TextField label="Last Name" value={d.lastName} maxLength={40} error={err('lastName')} onChange={(v) => set({ lastName: v })} />
+      </div>
       <div className="field-row">
-        <TextField label="Name" value={d.name} maxLength={80} autoComplete="off" error={err('name')} hint="The name people know you by, and the one your credits carry." onChange={(v) => set({ name: v })} />
+        <Field label="Preferred Name" error={err('preferredName')}>
+          {(id, db) => (
+            <>
+              <input id={id} type="text" value={d.preferredName} maxLength={40} autoComplete="off" placeholder={[d.firstName, d.lastName].filter(Boolean).join(' ')} aria-describedby={[db, 'preferred-note'].filter(Boolean).join(' ')} onChange={(e) => set({ preferredName: e.target.value })} />
+              <p id="preferred-note" className="xs dim" style={{ marginTop: 4 }}>What people call you day to day. Blank means your first and last name.</p>
+            </>
+          )}
+        </Field>
         <SelectField label="Pronouns" value={d.pronouns} error={err('pronouns')}
           options={[{ value: '', label: 'Choose Pronouns' }, ...(['she', 'he', 'they'] as const).map((k) => ({ value: k, label: PRONOUNS[k].label }))]}
           // The title moves with the pronouns: settled where they settle it, and cleared where they don't, so a pick made
@@ -183,25 +208,37 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
           </>
         )}
       </div>
+        </div>
+      </div>
 
       <hr className="divider" />
 
       <div className="field-row">
-        <TextField label="Year Of Birth" type="number" inputMode="numeric" value={y} onChange={(v) => setBirth(v.slice(0, 4), m, day)} />
+        <TextField label="Year Of Birth" type="number" inputMode="numeric" value={y} min={latest ? String(Number(latest.slice(0, 4)) - 81) : undefined} max={latest?.slice(0, 4)} onChange={(v) => setBirth(v.slice(0, 4), m, day)} />
         <SelectField label="Month" value={m} options={[{ value: '', label: 'Choose A Month' }, ...MONTHS.map((name, i) => ({ value: String(i + 1).padStart(2, '0'), label: name }))]} onChange={(v) => setBirth(y, v, day)} />
         <TextField label="Day" type="number" inputMode="numeric" value={day ? String(Number(day)) : ''} onChange={(v) => setBirth(y, m, v ? v.slice(0, 2).padStart(2, '0') : '')} />
       </div>
-      {err('birthDate') ? <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('birthDate')}</p> : <p className="xs dim">You must be at least 16 on your starting date.</p>}
+      {err('birthDate') ? <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('birthDate')}</p> : <p className="xs dim">{latest ? `You must be at least ${MIN_START_AGE} on your starting date, ${longDate(d.startDate)}: born on or before ${longDate(latest)}. You can change the starting date on Starting Point.` : `You must be at least ${MIN_START_AGE} on your starting date.`}</p>}
 
       <hr className="divider" />
 
       <div className="panel-head">
         <div>
           <h3>Place Of Birth</h3>
-          <p className="muted small" style={{ margin: 0 }}>Where you’re from, which isn’t always where you live now. It’s what you tell people when they ask.</p>
+          <p className="muted small" style={{ margin: 0 }}>Where you’re from, which isn’t always where you live now. It’s what you tell people when they ask, and it decides your citizenship.</p>
         </div>
       </div>
-      <PlacePicker label="Place Of Birth" value={d.birthplaceId} error={err('birthplaceId')} map onChange={(id, pl) => set({ birthplaceId: id, places: keepPlaces(d, 'birthplaceId', pl) })} />
+      <PlacePicker label="Place Of Birth" headed value={d.birthplaceId} error={err('birthplaceId')} map onChange={(id, pl) => set({ birthplaceId: id, places: keepPlaces(d, 'birthplaceId', pl) })} />
+
+      {/* Not asked: the place of birth decides it, so it sits under the picker that does the deciding (as 1221's). */}
+      <div className="field" style={{ marginTop: 'var(--s4)' }}>
+        <span className="label" id="citizenship">Citizenship</span>
+        <output className="settled-title" aria-labelledby="citizenship">{citizen ? countryName(citizen) : '—'}</output>
+        <p className="xs dim" style={{ marginTop: 4 }}>
+          You’re a citizen of the country you were born in, so there’s nothing to pick. Change your place of birth and this changes with it.
+          A country’s public screen fund supports its citizens and the people who live there.
+        </p>
+      </div>
 
       {age !== null && age >= 0 && (
         <div className="callout" style={{ marginTop: 'var(--s4)' }}>You’ll be <strong>{age}</strong> when you start.</div>
@@ -261,7 +298,7 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
       <section className="card">
         <div className="panel-head"><div><h2>When It Begins</h2><p className="muted small" style={{ margin: 0 }}>The date and the local time where you live when your story starts. Any date in 2026.</p></div></div>
         <div className="field-row">
-          <TextField label="Starting Date" type="date" value={d.startDate} error={err('startDate')} onChange={(v) => set({ startDate: v })} />
+          <TextField label="Starting Date" type="date" value={d.startDate} min={`${FIRST_START_YEAR}-01-01`} max={`${LAST_START_YEAR}-12-31`} error={err('startDate')} hint={`Any day from ${FIRST_START_YEAR}, the default, to ${LAST_START_YEAR}. You must be at least ${MIN_START_AGE} on it.`} onChange={(v) => set({ startDate: v })} />
           <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you start." onChange={(v) => set({ startTime: v })} />
         </div>
       </section>
@@ -270,8 +307,9 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
 }
 
 /** Picks any playable place; world places come back with their record so the draft and save can keep them. */
-export function PlacePicker(props: { label: string; value: string; error?: string | null; map?: boolean; onChange: (id: string, place: Place) => void }) {
-  return <WorldPlacePicker label={props.label} value={props.value} error={props.error} map={props.map} onChoose={(pl) => props.onChange(pl.id, pl)} />;
+export function PlacePicker(props: { label: string; headed?: boolean; value: string; error?: string | null; map?: boolean; onChange: (id: string, place: Place) => void }) {
+  // headed: a heading right above names what the place is for, so the search field is labelled Town Or City.
+  return <WorldPlacePicker label={props.label} headed={props.headed} value={props.value} error={props.error} map={props.map} onChoose={(pl) => props.onChange(pl.id, pl)} />;
 }
 
 /** The draft's world places, keeping only those still chosen. */
@@ -436,18 +474,22 @@ function Review({ d, edit, heading }: { d: CreationDraft; edit: (id: CreationSte
       <section className="card">
         <div className="center" style={{ padding: 'var(--s4) 0' }}>
           <div className="eyebrow">Ready To Begin</div>
-          <h1 id="creation-h" ref={heading} tabIndex={-1} style={{ fontSize: 'var(--size-2xl)', margin: 'var(--s2) 0' }}>{d.name || 'Unnamed'}</h1>
+          {d.portrait && <img className="headshot headshot-lg" src={d.portrait} alt={`Headshot for ${legalName(d) || 'your character'}`} style={{ margin: '0 auto var(--s3)' }} />}
+          <h1 id="creation-h" ref={heading} tabIndex={-1} style={{ fontSize: 'var(--size-2xl)', margin: 'var(--s2) 0' }}>{legalName(d) || 'Unnamed'}</h1>
           <p className="muted">{[age !== null ? String(age) : '', d.actingTitle, start?.name].filter(Boolean).join(' · ')}</p>
           <div className="row" style={{ justifyContent: 'center' }}><Professions actingTitle={d.actingTitle} /></div>
         </div>
       </section>
       <div className="grid grid-2">
         <ReviewCard title="Identity" edit="Edit Identity" onEdit={() => edit('identity')}>
-          <Line label="Name" value={d.name || 'Not chosen'} />
+          <Line label="Legal Name" value={legalName(d) || 'Not chosen'} />
+          <Line label="Preferred Name" value={d.preferredName.trim() || 'Your first and last name'} />
+          <Line label="Headshot" value={d.portrait ? 'Added' : 'None'} />
           <Line label="Pronouns" value={d.pronouns ? PRONOUNS[d.pronouns].label : 'Not chosen'} />
           <Line label="Billed As" value={d.actingTitle || 'Not chosen'} />
           <Line label="Born" value={born} />
           <Line label="Place Of Birth" value={birth ? placeLabel(birth) : 'Not chosen'} />
+          <Line label="Citizenship" value={citizenshipFor(d.birthplaceId) ? countryName(citizenshipFor(d.birthplaceId)!) : 'Not decided'} />
         </ReviewCard>
         <ReviewCard title="Starting Point" edit="Edit Starting Point" onEdit={() => edit('starting-point')}>
           <Line label="Where You Live" value={start ? placeLabel(start) : 'Not chosen'} />

@@ -1,4 +1,4 @@
-import { DAY, addLocal, currentPlace, currentZone, dateKey, daylight, formatZoneAbbrev, placeHolidaysOn, localParts, localToInstant, upcomingCommitments, weatherOn, temperatureAt, weekdayName, observancesOn } from '../engine';
+import { DAY, addLocal, addressedAs, currentPlace, currentZone, dateKey, daylight, formatZoneAbbrev, placeHolidaysOn, localParts, localToInstant, upcomingCommitments, weatherOn, temperatureAt, weekdayName, observancesOn } from '../engine';
 import type { Condition } from '../engine/weather';
 import { placeLabel } from '../data/places';
 import type { Edition } from '../engine/types';
@@ -66,7 +66,7 @@ export function Home() {
   const daylightWords = dl.polar === 'night' ? "The sun won't rise today" : dl.polar === 'day' ? "The sun won't set today"
     : `Daylight ${longLocal(dl.sunrise!, zone).time} to ${longLocal(dl.sunset!, zone).time}, ${(() => { const m = Math.round((dl.sunset! - dl.sunrise!) / 60_000); return `${Math.floor(m / 60)}h ${m % 60}m`; })()}`;
   const projects = g.projects.filter((x) => x.phase !== 'released').slice(0, 5);
-  const firstName = g.character.name.trim().split(/\s+/)[0] || g.character.name;
+  const firstName = addressedAs(g.character);
   return (
     <>
       <div className="page-head today">

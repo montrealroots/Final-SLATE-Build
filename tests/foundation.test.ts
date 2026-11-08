@@ -148,7 +148,9 @@ describe('creation and events', () => {
     expect(validateDraft(draft())).toEqual([]);
     expect(validateDraft(draft({ birthDate: '2026-05-01' })).map((p) => p.field)).toContain('birthDate');
     expect(validateDraft(draft({ birthDate: '2012-01-01' })).map((p) => p.field)).toContain('birthDate');
-    expect(validateDraft(draft({ startDate: '2027-01-01' })).map((p) => p.field)).toContain('startDate');
+    // Any start from 2026 to 2050 (November 8, 2026: it was 2026 only).
+    expect(validateDraft(draft({ startDate: '2027-01-01' })).map((p) => p.field)).not.toContain('startDate');
+    expect(validateDraft(draft({ startDate: '2051-01-01' })).map((p) => p.field)).toContain('startDate');
     expect(validateDraft(draft({ heritages: [] })).map((p) => p.field)).toContain('heritages');
   });
   it('starts the life at the chosen local time in the chosen zone', () => {

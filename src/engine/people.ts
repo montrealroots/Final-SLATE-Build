@@ -207,7 +207,8 @@ function person(state: GameState, roleId: string, country: string, i: number): P
   const busy: { from: string; to: string }[] = [];
   const blocks = intBetween(r, 0, 3);
   for (let b = 0; b < blocks; b++) {
-    const from = addDaysToKey('2026-01-01', intBetween(r, 0, 900));
+    // Within about two and a half years of the January your story began (a 2026 start reads as it always did).
+    const from = addDaysToKey(`${new Date(state.startedAt).getUTCFullYear()}-01-01`, intBetween(r, 0, 900));
     busy.push({ from, to: addDaysToKey(from, intBetween(r, 10, 70)) });
   }
   const credits = Math.max(1, experience * 2 + intBetween(r, -1, 3));

@@ -2,6 +2,7 @@
 // be truncated, edited, or written by a buggy older build. Each check names what is wrong in plain words, so the
 // player can be told which part is damaged and the game can fall back to a good copy instead of crashing later.
 
+import { isPortrait } from './identity';
 import { isValidDate } from './time';
 import type { GameState } from './types';
 
@@ -52,6 +53,10 @@ export function validateGameState(raw: unknown): asserts raw is GameState {
   need(isObj(c), 'the character', 'is missing');
   const ch = c as Obj;
   need(isStr(ch.name) && (ch.name as string).trim().length > 0 && (ch.name as string).length <= 200, 'the character', 'has no name');
+  // Name parts, a preferred name, where you live and a headshot arrived in save version 6 (identity.ts).
+  need(isStr(ch.firstName) && isStr(ch.lastName) && (ch.middleName === undefined || isStr(ch.middleName)) && (ch.preferredName === undefined || isStr(ch.preferredName)), 'the character', 'has a malformed name');
+  need(isId(ch.livesIn), 'the character', 'has no home');
+  need(ch.portrait === undefined || isPortrait(ch.portrait), 'the character', 'has a damaged headshot');
   need(['he', 'she', 'they'].includes(ch.pronouns as string), 'the character', 'has unknown pronouns');
   need(['Actor', 'Actress'].includes(ch.actingTitle as string), 'the character', 'has an unknown acting title');
   const b = ch.birth as Obj;

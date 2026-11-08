@@ -32,8 +32,10 @@ describe('character creation steps', () => {
   });
 
   it('a partial or damaged draft keeps what it has and fills the rest, instead of breaking the screen', () => {
-    const d = normalizeDraft({ name: 'Ines', step: 'background', heritages: 'oops', languages: null })!;
-    expect(d.name).toBe('Ines');
+    // A draft from before names had parts: its one name becomes the first and last names (November 8, 2026).
+    const d = normalizeDraft({ name: 'Ines Okafor-Reyes', step: 'background', heritages: 'oops', languages: null })!;
+    expect([d.firstName, d.middleName, d.lastName, d.preferredName]).toEqual(['Ines', '', 'Okafor-Reyes', '']);
+    expect(d.name).toBeUndefined();
     expect(d.step).toBe('background');
     expect(d.heritages).toEqual([]);
     expect(d.languages).toEqual([]);

@@ -4,7 +4,8 @@ import type { CreationDraft } from '../src/engine/types';
 export function draft(over: Partial<CreationDraft> = {}): CreationDraft {
   return {
     ...emptyDraft(),
-    name: 'Ada Okafor-Lindqvist',
+    firstName: 'Ada',
+    lastName: 'Okafor-Lindqvist',
     pronouns: 'she',
     actingTitle: 'Actress',
     birthDate: '1996-02-29',

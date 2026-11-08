@@ -1938,3 +1938,78 @@ input[type='time'] { width: 100%; min-height: var(--control); padding: var(--s2)
 :root[data-theme='light'] input[type='time'] { color-scheme: light; }
 /* A list of checkboxes (creation's holidays): the hint under each, not a field's gap. */
 .col.gap-1 > .field { margin-bottom: var(--s1); }
+
+/* --------------------------------------------------------------------------
+   Headshot, from 1221 (November 8, 2026): the picker on Identity, and the picture on Profile and beside your credits.
+   -------------------------------------------------------------------------- */
+
+
+.identity-top { display: flex; gap: var(--s5); align-items: flex-start; }
+.identity-fields { flex: 1; min-width: 0; }
+@media (max-width: 860px) {
+  .identity-top { flex-direction: column; }
+  .identity-fields { width: 100%; }
+}
+
+.portrait-picker { display: flex; flex-direction: column; gap: var(--s3); flex: none; width: 208px; }
+
+/* Four by five, because that is the shape a headshot has always been. */
+.portrait-frame {
+  position: relative; width: 208px; aspect-ratio: 4 / 5;
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: var(--surface-2); overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  touch-action: none;
+}
+.portrait-frame[data-empty] { border-style: dashed; }
+.portrait-frame[data-dragging="true"] { border-color: var(--accent); background: var(--accent-dim); }
+/* [hidden] is display:none in the UA sheet, and any author display rule beats
+   it. The canvas exists before a photo does, so without this the empty frame
+   is a blank canvas with the invitation to choose a photo squeezed into a
+   one-character sliver beside it. */
+.portrait-frame canvas[hidden] { display: none; }
+.portrait-frame canvas,
+.portrait-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.portrait-frame canvas:not([hidden]) { cursor: grab; }
+.portrait-frame canvas:not([hidden]):active { cursor: grabbing; }
+
+/* The empty frame is the upload control, not a caption beside one: the whole
+   thing is the button, so tapping anywhere in it opens the file picker. */
+.portrait-empty {
+  display: flex; flex-direction: column; align-items: center;
+  justify-content: center; gap: var(--s2);
+  width: 100%; height: 100%; padding: var(--s3); text-align: center;
+  background: none; border: 0; color: var(--text-muted);
+  font: inherit; cursor: pointer;
+  /* A flex item is min-width:auto, so without this the invitation to drop a
+     photo is wider than the frame and gets clipped rather than wrapping. */
+  max-width: 100%; min-width: 0;
+}
+.portrait-empty:hover { background: var(--surface-3); }
+.portrait-empty:hover .portrait-glyph,
+.portrait-empty:focus-visible .portrait-glyph { color: var(--accent); }
+.portrait-empty-title {
+  font-size: var(--size-sm); font-weight: 650; color: var(--text);
+}
+.portrait-empty-note { font-size: var(--size-xs); color: var(--text-dim); }
+
+/* The picture-and-arrow. Stroked in currentColor so it follows the frame. */
+.portrait-glyph {
+  width: 54px; height: 54px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 2.2;
+  stroke-linecap: round; stroke-linejoin: round;
+  color: var(--text-dim); transition: color 90ms linear;
+}
+.portrait-frame[data-dragging="true"] .portrait-glyph { color: var(--accent); }
+
+.portrait-controls { display: flex; flex-wrap: wrap; gap: var(--s2); align-items: center; }
+.portrait-controls .hint { flex-basis: 100%; margin: 0; }
+.portrait-zoom { flex-basis: 100%; margin: 0; }
+.portrait-zoom label { font-size: var(--size-xs); }
+.headshot { display: block; aspect-ratio: 4 / 5; object-fit: cover; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface-2); }
+.headshot-lg { width: 120px; flex: none; }
+.headshot-sm { width: 28px; border-radius: var(--radius-sm); display: inline-block; vertical-align: middle; margin-right: var(--s2); }
+.profile-head { display: flex; gap: var(--s4); align-items: flex-end; }
+/* First, middle and last name on one row beside the headshot; one under another on a phone (November 8, 2026). */
+.field-row.field-row-names { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 560px) { .field-row.field-row-names { grid-template-columns: 1fr; } }

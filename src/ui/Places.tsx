@@ -2,7 +2,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { languageName, PRONOUNS } from '../data/identity';
 import { getPlace, placeLabel, searchPlaces, type Place } from '../data/places';
-import { FORECAST_HORIZON_DAYS, addDaysToKey, addPlan, cancelPlan, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, honors, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDate, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
+import { countryName } from '../world/gazetteer/gazetteer';
+import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, knownAs, addPlan, cancelPlan, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, honors, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDate, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
 import type { GameState } from '../engine/types';
 import { Check, Modal, NumberField, PageHead, Professions, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
@@ -347,15 +348,23 @@ export function Profile() {
   const h = honors(g);
   return (
     <>
-      <PageHead eyebrow="Player Profile" title={c.name}><Professions actingTitle={c.actingTitle} /></PageHead>
+      <div className="profile-head">
+        {c.portrait && <img className="headshot headshot-lg" src={c.portrait} alt={`Headshot for ${knownAs(c)}`} />}
+        <div className="grow"><PageHead eyebrow="Player Profile" title={knownAs(c)}><Professions actingTitle={c.actingTitle} /></PageHead></div>
+      </div>
       <div className="card-grid">
         <section className="card">
           <h2>About</h2>
           <dl className="kv">
+            <dt>Legal Name</dt><dd>{c.name}<span className="dim"> · on your credits</span></dd>
+            {c.preferredName && <><dt>Preferred Name</dt><dd>{c.preferredName}</dd></>}
             <dt>Pronouns</dt><dd>{PRONOUNS[c.pronouns].label}</dd>
             <dt>Age</dt><dd>{age}</dd>
             <dt>Birthday</dt><dd>{monthName(c.birth.month)} {c.birth.day}. Next: {longLocal(next.at, g.ageZone).weekday}, {longLocal(next.at, g.ageZone).date} ({next.age}).</dd>
             <dt>Birthplace</dt><dd>{placeLabel(getPlace(c.birthplaceId))}</dd>
+            <dt>Citizenship</dt><dd>{citizenshipOf(c) ? countryName(citizenshipOf(c)!) : '—'}</dd>
+            <dt>Lives In</dt><dd>{placeLabel(getPlace(c.livesIn))}</dd>
+            <dt>Home Countries</dt><dd>{homeCountries(g).map((h) => `${h.name} (${[h.citizen && 'citizen', h.resident && 'you live there'].filter(Boolean).join(', ')})`).join(', ')}<span className="dim"> · their public screen funds support you</span></dd>
             <dt>Backgrounds</dt><dd>{c.heritages.map((x) => x.label).join(', ')}</dd>
             <dt>Holidays You Keep</dt><dd>{(c.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you are'}{c.observances?.length ? <span className="dim"> · new projects don’t shoot on them</span> : null}</dd>
             <dt>Languages</dt><dd>{languageName(c.mainLanguage)} (main){c.languages.map((l) => `, ${languageName(l.code)} (${l.proficiency.toLowerCase()})`).join('')}</dd>
