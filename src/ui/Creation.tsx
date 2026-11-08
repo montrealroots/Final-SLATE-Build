@@ -523,7 +523,8 @@ function ReviewCard({ title, edit, onEdit, children }: { title: string; edit: st
     <section className="card">
       <div className="row-between wrap" style={{ marginBottom: 'var(--s3)' }}>
         <h2 className="eyebrow" style={{ margin: 0 }}>{title}</h2>
-        <button className="btn btn-sm" onClick={onEdit}>{edit}</button>
+        {/* "Edit" on each card, so the button sits beside its title in a half-width card; its name keeps the step. */}
+        <button className="btn btn-sm" aria-label={edit} onClick={onEdit}>Edit</button>
       </div>
       {children}
     </section>
