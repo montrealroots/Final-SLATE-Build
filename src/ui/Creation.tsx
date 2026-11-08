@@ -219,6 +219,9 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
         <TextField label="Day" type="number" inputMode="numeric" value={day ? String(Number(day)) : ''} onChange={(v) => setBirth(y, m, v ? v.slice(0, 2).padStart(2, '0') : '')} />
       </div>
       {err('birthDate') ? <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('birthDate')}</p> : <p className="xs dim">{latest ? `You must be at least ${MIN_START_AGE} on your starting date, ${longDate(d.startDate)}: born on or before ${longDate(latest)}. You can change the starting date on Starting Point.` : `You must be at least ${MIN_START_AGE} on your starting date.`}</p>}
+      {age !== null && age >= 0 && (
+        <div className="callout" style={{ marginTop: 'var(--s3)' }}>You’ll be <strong>{age}</strong> when you start.</div>
+      )}
 
       <hr className="divider" />
 
@@ -239,10 +242,6 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
           A country’s public screen fund supports its citizens and the people who live there.
         </p>
       </div>
-
-      {age !== null && age >= 0 && (
-        <div className="callout" style={{ marginTop: 'var(--s4)' }}>You’ll be <strong>{age}</strong> when you start.</div>
-      )}
     </section>
   );
 }
@@ -482,9 +481,9 @@ function Review({ d, edit, heading }: { d: CreationDraft; edit: (id: CreationSte
       </section>
       <div className="grid grid-2">
         <ReviewCard title="Identity" edit="Edit Identity" onEdit={() => edit('identity')}>
+          <Line label="Headshot" value={d.portrait ? 'Added' : 'None'} />
           <Line label="Legal Name" value={legalName(d) || 'Not chosen'} />
           <Line label="Preferred Name" value={d.preferredName.trim() || 'Your first and last name'} />
-          <Line label="Headshot" value={d.portrait ? 'Added' : 'None'} />
           <Line label="Pronouns" value={d.pronouns ? PRONOUNS[d.pronouns].label : 'Not chosen'} />
           <Line label="Billed As" value={d.actingTitle || 'Not chosen'} />
           <Line label="Born" value={born} />
