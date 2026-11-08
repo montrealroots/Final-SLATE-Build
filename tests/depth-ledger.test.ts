@@ -62,6 +62,13 @@ describe('the gameplay-depth coverage ledger', () => {
     expect(new Set(children.map((c) => c.child_id)).size).toBe(children.length);
   });
 
+  it('a child with a detail record fills every part of it', () => {
+    const parts = ['player_control', 'prerequisites', 'engine_rule', 'resource_time_cost', 'downstream_effects', 'failure_recovery', 'save_behaviour', 'research_classification'];
+    const detailed = children.filter((c) => parts.some((k) => c[k]));
+    expect(detailed.length).toBeGreaterThan(0);
+    for (const c of detailed) for (const k of parts) expect(c[k], `${c.child_id} ${k}`).not.toBe('');
+  });
+
   it('a verified child cites evidence that exists; anything short of verified names its gap', () => {
     for (const c of children) {
       expect(STATUSES, c.child_id).toContain(c.status);

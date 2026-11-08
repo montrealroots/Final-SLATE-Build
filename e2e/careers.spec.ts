@@ -79,9 +79,16 @@ test('a TV season: a regular and a guest, an approved scene changed after filmin
   await section(page, 'Schedule');
   await page.getByRole('button', { name: /Build Schedule|Rebuild Schedule/ }).click();
 
-  // Film until the first scene is in, then change it in the script: the approved script changes after filming.
+  // Both Emergency Room scenes fit one day as planned. The player gives the second more than it needs (every setup,
+  // five takes a setup); the day's time doesn't grow, so it runs over.
   const days = page.locator('section.card', { has: page.getByRole('heading', { name: 'Shoot Days' }) });
   const firstDay = days.locator('li', { hasText: 'Episode 1, Scene 1 (Emergency Room)' }).first();
+  await expect(firstDay).toContainText('Episode 1, Scene 2 (Emergency Room)');
+  await firstDay.getByText('Call Sheet', { exact: true }).click();
+  await firstDay.getByLabel('Coverage For Episode 1, Scene 2 (Emergency Room)').selectOption({ label: 'Full Coverage With Inserts' });
+  await firstDay.getByLabel('Takes For Episode 1, Scene 2 (Emergency Room)').selectOption({ label: 'Keep Going For The Best (Five)' });
+  await expect(firstDay).toContainText('More than it needs (singles, inserts): options in the edit, at the cost of the day\'s time.');
+  // Film until the first scene is in, then change it in the script: the approved script changes after filming.
   for (let i = 0; i < 40 && !(await firstDay.filter({ hasText: /Shot \d+ of \d+ scenes?\./ }).count()); i++) {
     await advance(page, 'next-day');
     await section(page, 'Schedule');

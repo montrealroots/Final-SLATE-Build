@@ -144,6 +144,12 @@ describe('reviewing the day\'s material', () => {
     expect(c.chosenTake).toBe(0);
     expect(sceneIssues(p, talk, c)).toEqual([]);
     expect(dailies(p).find((d) => d.sceneId === talk.id)!.takes.map((t) => t.inCut)).toEqual([true, false]); // the other take stays available
+    // Back to the noisy take (it has the better performance): replacing its lines books a sound designer's day in post.
+    c.chosenTake = 1;
+    const adr = sceneIssues(p, talk, c)[0].fixes.find((f) => f.action === 'adr')!;
+    applyFix(s, p, talk.id, adr);
+    expect(p.tasks.some((t) => t.id === `post:adr:${talk.id}`)).toBe(true);
+    expect(sceneIssues(p, talk, c)[0].fixes.map((f) => f.action)).toEqual(['use-take', 'pickup', 'accept']); // booked once
   }, 60000);
 
   it('missing coverage is shot on a targeted pickup, at a day\'s cost shown first, and then the edit has it', () => {
@@ -155,7 +161,7 @@ describe('reviewing the day\'s material', () => {
     expect(coverageEdit(p, [talk.id])).toBe(-6);
     const issue = sceneIssues(p, talk, c).find((i) => i.text.startsWith('No singles'))!;
     const pick = issue.fixes.find((f) => f.action === 'pickup')!;
-    expect(pick.label).toContain(`about $${pickupCost(p, talk.id).cost.toLocaleString('en-US')}`);
+    expect(pick.detail).toContain(`About $${pickupCost(p, talk.id).cost.toLocaleString('en-US')}`);
     const spentBefore = p.obligations.reduce((a, o) => a + o.settled, 0);
     p.funding.fund -= 1_000_000; // labelled fixture: nothing uncommitted
     expect(() => applyFix(s, p, talk.id, pick)).toThrow(/^A pickup day costs about \$[\d,]+, and -?\$[\d,]+ is uncommitted\. Add funding first\.$/);

@@ -6,7 +6,7 @@ code exports from these files that this table doesn't name, and a row whose cons
 
 **None of these is a sourced fact.** Each one is a game model: chosen so that productions of each kind take a believable
 number of days and cost amounts that sit in a believable order against each other, then tuned against the balance
-runs (`npm run balance`, `docs/balance-results.json`). No primary source was consulted for any of them. Where the package says a
+runs (`npm run balance`, `docs/balance-results.json`). Until November 8, 2026 no primary source was consulted for any of them; since then one row (`TAKE_RULES` and its neighbours) cites a primary source for the process it models, never for its figures. Where the package says a
 public figure exists (union minimums, studio rate cards), those vary by country, union, year and production, and none
 is applied here: the people pool's day rates come from the world seed and experience, not from a rate card. If a
 sourced figure replaces one of these, its row gets the source ID, URL, publisher, edition, retrieval date and

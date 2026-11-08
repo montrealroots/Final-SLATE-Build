@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { buildTasks, costBreakdown, generatePlan, groupShootDays, ledgerTotals, makeOffer, roleCandidates, scriptEstimate, CROWD_DAY_RATE, addDaysToKey, dateKey } from './engine-api';
 import { approvalScope, costCuts, estimateAgainstSpending, scopeChange } from '../src/engine/cost-cuts';
 import { setShotPlan } from '../src/engine/takes-actions';
+import { deserialize, serialize } from '../src/engine/save';
 import type { GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
 
@@ -156,7 +157,7 @@ describe('changing scope', () => {
 });
 
 describe('estimate against spending', () => {
-  it('after shooting, spending is compared by area with the estimate made at approval, and the differences explained', () => {
+  it('after shooting, spending is compared by area with the estimate made at approval, the differences explained, and it survives a save', () => {
     const s = startLife('vs-actual', 'gb-london', { startDate: '2026-10-05', startTime: '09:00' });
     const p = buildProject(s, { title: 'Wet Streets', format: 'short', medium: 'live-action', scenario: 'micro', runtime: 6 }, [{ name: 'Ada', patch: { roleSize: 'lead' } }],
       [1, 2, 3].map((i) => ({ place: `Street ${i}`, intExt: 'EXT' as const, time: 'DAY' as const, chars: ['Ada'], minutes: 2 })));
@@ -178,5 +179,11 @@ describe('estimate against spending', () => {
     // Builds were reserved exactly as estimated: same rule, same figure.
     const builds = vs.rows.find((r) => r.area === 'builds')!;
     expect(builds.actual).toBe(builds.estimated);
+    // Saved and reopened, the estimate at approval and the comparison are the same: the snapshot is stored, the rest derived.
+    const back = deserialize(serialize(s));
+    const pb = back.projects.find((x) => x.id === p.id)!;
+    expect(pb.finance!.estimateAtApproval).toEqual(snap);
+    expect(estimateAgainstSpending(pb)).toEqual(vs);
+    expect(costBreakdown(back, pb)).toEqual(costBreakdown(s, p));
   }, 60000);
 });

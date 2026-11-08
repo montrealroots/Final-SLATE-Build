@@ -244,14 +244,18 @@ function DailiesCard({ p, onError }: { p: Project; onError: (e: string | null) =
           <ul className="list">{d.takes.map((t) => (
             <li key={t.n} className="row-wrap">
               <span className="grow">Take {t.n}: performance {qualityWords(t.perf).toLowerCase()}, technical {qualityWords(t.tech).toLowerCase()}{t.issue ? ` · ${TAKE_ISSUE_WORDS[t.issue]}` : ''}{t.inCut ? ' · In the cut' : ''}</span>
+              {!t.inCut && !p.edit.pictureLocked && <button className="btn btn-sm" aria-label={`Use Take ${t.n} Of ${d.label}`} onClick={() => onError(store.act(() => chooseTake(p, d.sceneId, t.n - 1)))}>Use This Take</button>}
             </li>
           ))}</ul>
           {d.issues.map((iss) => (
             <div key={iss.text} className="callout callout-warning spaced">
               <p>{iss.text}</p>
-              <div className="row gap-2 wrap">{iss.fixes.map((f) => (
-                <button key={f.label} className="btn btn-sm" onClick={() => onError(store.act((s) => void applyFix(s, s.projects.find((x) => x.id === p.id)!, d.sceneId, f)))}>{f.label}</button>
-              ))}</div>
+              <ul className="list">{iss.fixes.map((f) => (
+                <li key={f.label} className="row-wrap">
+                  <button className="btn btn-sm" onClick={() => onError(store.act((s) => void applyFix(s, s.projects.find((x) => x.id === p.id)!, d.sceneId, f)))}>{f.label}</button>
+                  {f.detail && <span className="dim small grow">{f.detail}</span>}
+                </li>
+              ))}</ul>
             </div>
           ))}
           {!d.issues.length && <p className="dim small">Nothing to fix.</p>}

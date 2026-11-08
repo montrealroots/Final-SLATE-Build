@@ -1,5 +1,5 @@
 import { expect, test } from './test';
-import { advance, createCharacter, freshStart, nav, readSavedState, section, staffEveryDepartment, secureStartingBacking, pressSaveAndExit, writePitch } from './helpers';
+import { addScene, advance, createCharacter, freshStart, nav, readSavedState, section, staffEveryDepartment, secureStartingBacking, pressSaveAndExit, writePitch } from './helpers';
 
 test('live-action short: create, write, cast yourself, staff, shoot, cut, deliver, credits', async ({ page }, info) => {
   await freshStart(page);
@@ -77,6 +77,21 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await expect(page.getByText('Approved', { exact: true })).toBeVisible();
   await secureStartingBacking(page);
 
+  // The estimate (SLATE-08-01): built from the work the approved script needs, split by how certain each part is, with
+  // what makes it expensive. Nothing is hired yet, so it is all still to come.
+  await section(page, 'Budget');
+  const estimate = page.locator('section.card', { has: page.getByRole('heading', { name: 'What It Costs' }) });
+  for (const t of ['Spent', 'Agreed, Not Yet Paid', 'Held For Plans And Offers', 'Still To Come, Estimated']) await expect(estimate.locator('dt', { hasText: new RegExp(`^${t}$`) })).toBeVisible();
+  await expect(estimate.getByRole('heading', { name: 'What Makes It Expensive' })).toBeVisible();
+  await expect(estimate.locator('dt', { hasText: /^Still To Come, Estimated$/ }).locator('xpath=following-sibling::dd[1]')).not.toHaveText('$0');
+  await estimate.getByText(/^Everything Still To Come \(\d+ lines\)$/).click();
+  await expect(estimate.getByRole('heading', { name: /^Crew: \$[\d,]+$/ })).toBeVisible();
+  await page.screenshot({ path: `test-results/${info.project.name}-what-it-costs.png`, fullPage: true });
+  // The alternatives: what the estimate would save without each choice, and the shoot days it changes.
+  const cuts = page.locator('section.card', { has: page.getByRole('heading', { name: 'Ways To Cost Less' }) });
+  await cuts.getByRole('button', { name: 'Work Out Savings' }).click();
+  await expect(cuts.getByRole('listitem').first()).toContainText(/: saves about \$[\d,]+/);
+
   // Cast: Odile is the player; the Ferryman goes to a performer.
   await section(page, 'Cast');
   const roles = page.locator('section.card', { hasText: 'Roles' }).first();
@@ -101,9 +116,42 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await expect(dock).toContainText('Ferry Dock, exterior');
   await expect(dock).toContainText('You as Odile');
   await expect(dock).toContainText(/Sunrise \d+:\d\d AM, sunset \d+:\d\d PM\./);
-  // The shot plan (SLATE-12-02.02): more takes for the dock scene take more of the day.
-  await dock.getByLabel('Takes For Scene 1 (Ferry Dock)').selectOption({ label: 'Keep Going Until It Is Right' });
-  await expect(dock).toContainText('About 130% of the standard plan\'s time.');
+  // The shot plan (SLATE-12-02.02): what the scene needs comes from its facts (the letter is planted here, so inserts).
+  // More takes take more of the day; a lighter plan than the scene needs is allowed and says what the edit will lack.
+  await expect(dock).toContainText('Needs inserts');
+  const share = async () => Number((await dock.getByText(/^About \d+% of the standard plan's time/).first().textContent())!.match(/About (\d+)%/)![1]);
+  const before = await share();
+  await dock.getByLabel('Takes For Scene 1 (Ferry Dock)').selectOption({ label: 'Keep Going For The Best (Five)' });
+  await expect(dock).toContainText('planning 5 takes a setup');
+  expect(await share()).toBeGreaterThan(before);
+  await dock.getByLabel('Coverage For Scene 1 (Ferry Dock)').selectOption({ label: 'A Master Only' });
+  await expect(dock).toContainText('This plan has no inserts: the edit will lack them unless a pickup shoots them.');
+  // Once everything is hired and the days are booked, nothing is left only estimated: the money is agreed or held, and
+  // the estimate made at approval is set against it.
+  await section(page, 'Budget');
+  const costs = page.locator('section.card', { has: page.getByRole('heading', { name: 'What It Costs' }) });
+  await expect(costs.getByRole('heading', { name: 'Estimate Against Spending' })).toBeVisible();
+  // Phones label each cell (Area Crew, Estimated At Approval $…), so the row is matched either way.
+  await expect(costs.getByRole('row', { name: /^(Area )?Crew (Estimated At Approval )?\$[\d,]+ (Spent Or Agreed )?\$[\d,]+$/ })).toBeVisible();
+  const daysNow = Number(await costs.locator('dt', { hasText: 'Shoot Days Still To Come' }).locator('xpath=following-sibling::dd[1]').textContent());
+  expect(daysNow).toBeGreaterThan(0);
+  // A bigger script, shown before it is approved (SLATE-08-05): a third scene at a new place adds a shoot day. The player
+  // keeps the current draft and goes back to it.
+  await section(page, 'Script');
+  await addScene(page, { index: 2, place: 'Lighthouse', chars: ['Odile'], minutes: '3', exterior: true });
+  await page.getByRole('button', { name: 'Save Draft' }).click();
+  await page.getByRole('button', { name: 'Approve This Draft' }).first().click();
+  const approve = page.getByRole('dialog', { name: 'Approve This Draft?' });
+  const change = approve.getByLabel('What The Change Does');
+  await expect(change).toContainText(/Budget estimate: \$[\d,]+ now, \$[\d,]+ after/);
+  await expect(change).toContainText(`Shoot days still to come: ${daysNow} now, ${daysNow + 1} after (1 more).`);
+  await page.screenshot({ path: `test-results/${info.project.name}-scope-change.png`, fullPage: true });
+  await approve.getByRole('button', { name: 'Keep The Current Draft' }).click();
+  await expect(approve).toHaveCount(0);
+  await page.getByRole('button', { name: 'Restore This Draft' }).last().click();
+  await expect(page.locator('article.scene-card')).toHaveCount(2);
+  await section(page, 'Schedule');
+
   // Once scouting is done, each place offers three sites; a cheaper stand-in with the real place as the backup
   // (SLATE-11-02.02). If the stand-in falls through on the day, the shoot goes to the backup.
   const sites = page.locator('section.card', { has: page.getByRole('heading', { name: 'Locations' }) });
@@ -142,15 +190,30 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
       continue;
     }
     if (await lock.isEnabled()) {
-      // Before locking, the takes (SLATE-12-03): the cut uses the best balanced one; use another for the dock scene.
-      const takes = page.locator('section.card', { has: page.getByRole('heading', { name: 'Takes' }) });
-      await expect(takes).toContainText('In the cut');
-      const use = takes.getByRole('button', { name: /^Use Take \d Of Scene 1 \(Ferry Dock\)$/ }).first();
+      // Before locking, the dailies (SLATE-12-03): what the dock scene needed, what was filmed, its takes and the gap the
+      // lighter plan left. Use another take; keep the cut without inserts rather than pay for a pickup day.
+      const dailies = page.getByRole('listitem', { name: 'Dailies For Scene 1 (Ferry Dock)' });
+      await expect(dailies).toContainText('Filmed master.');
+      await expect(dailies).toContainText('In the cut');
+      await expect(dailies).toContainText(/No inserts: /);
+      await expect(dailies.getByRole('button', { name: 'Shoot Inserts On A Pickup Day' })).toBeVisible();
+      await expect(dailies).toContainText(/About \$[\d,]+: the location, gear, crew and cast for a day\./);
+      const use = dailies.getByRole('button', { name: /^Use Take \d Of Scene 1 \(Ferry Dock\)$/ }).first();
       const n = (await use.getAttribute('aria-label'))!.match(/Take (\d)/)![1];
       await use.click();
-      const dockTakes = takes.locator('li', { has: page.locator('strong', { hasText: 'Scene 1 (Ferry Dock)' }) });
-      await expect(dockTakes.locator('li', { hasText: new RegExp(`^Take ${n}: .* · In the cut$`) })).toHaveCount(1);
-      await expect(dockTakes.locator('li', { hasText: / · In the cut$/ })).toHaveCount(1);
+      await expect(dailies.locator('li', { hasText: new RegExp(`^Take ${n}: .* · In the cut`) })).toHaveCount(1);
+      await expect(dailies.locator('li', { hasText: / · In the cut/ })).toHaveCount(1);
+      await dailies.getByRole('button', { name: 'Cut It Without Inserts' }).click();
+      await expect(dailies).not.toContainText('No inserts: ');
+      await page.screenshot({ path: `test-results/${info.project.name}-dailies.png`, fullPage: true });
+      // Save, close and reopen: the chosen take and the accepted gap are still there.
+      await pressSaveAndExit(page);
+      await page.getByRole('button', { name: 'Continue', exact: true }).click();
+      await nav(page, 'Projects');
+      await page.getByRole('button', { name: 'The Last Ferry To Wolfe Island' }).click();
+      await section(page, 'Edit');
+      await expect(dailies.locator('li', { hasText: new RegExp(`^Take ${n}: .* · In the cut`) })).toHaveCount(1);
+      await expect(dailies).not.toContainText('No inserts: ');
       await lock.click();
       // A Festival Cut without the wheelhouse scene (SLATE-15-05.03): its own runtime, a day of editing before delivery.
       const versions = page.locator('section.card', { has: page.getByRole('heading', { name: 'Versions', exact: true }) });

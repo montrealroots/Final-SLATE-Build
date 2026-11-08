@@ -15,11 +15,12 @@ import { isDirecting2, missingMaterial, requiredSetups, type Setup, type TakeIss
 import { addDaysToKey } from './time';
 import type { GameState, Project, Scene, SceneCapture } from './types';
 
-export type Fix =
-  | { action: 'use-take'; take: number; label: string }
-  | { action: 'adr'; label: string }
-  | { action: 'pickup'; kind: 'take' | 'singles' | 'inserts'; label: string }
-  | { action: 'accept'; what: Setup | 'continuity' | 'take'; label: string };
+/** label is the button (Title Case); detail says what it costs or does (sentence case). */
+export type Fix = { label: string; detail?: string } & (
+  | { action: 'use-take'; take: number }
+  | { action: 'adr' }
+  | { action: 'pickup'; kind: 'take' | 'singles' | 'inserts' }
+  | { action: 'accept'; what: Setup | 'continuity' | 'take' });
 
 export interface SceneIssue { text: string; fixes: Fix[] }
 
@@ -34,6 +35,7 @@ export interface Dailies {
 
 const ISSUE_WORDS: Record<TakeIssue, string> = { performance: 'the performance falls short', camera: 'a camera problem (focus or framing)', sound: 'the sound is unusable' };
 const SETUP_WORDS: Record<Setup, string> = { master: 'master', singles: 'singles', inserts: 'inserts' };
+const SETUP_TITLE: Record<Setup, string> = { master: 'A Master', singles: 'Singles', inserts: 'Inserts' };
 
 /** What a pickup day costs and when it would be (the location and gear for a day, the shoot crew's day, the cast in it). */
 export function pickupCost(p: Project, sceneId: string): { cost: number; date: string } {
@@ -45,10 +47,7 @@ export function pickupCost(p: Project, sceneId: string): { cost: number; date: s
   return { cost: fees.location + fees.equipment + crew + cast, date: last ? nextWorkingDay(p, addDaysToKey(last, 1)) : '' };
 }
 
-const pickupLabel = (p: Project, s: Scene, what: string) => {
-  const { cost } = pickupCost(p, s.id);
-  return `Shoot ${what} on a pickup day (about ${money(cost)}: the location, gear, crew and cast for a day)`;
-};
+const pickupDetail = (p: Project, s: Scene) => `About ${money(pickupCost(p, s.id).cost)}: the location, gear, crew and cast for a day.`;
 
 /** The day's material for each shot scene that has it, with its issues and their fixes (directing 2 projects only). */
 export function dailies(p: Project): Dailies[] {
@@ -70,17 +69,16 @@ export function sceneIssues(p: Project, s: Scene, c: SceneCapture): SceneIssue[]
   if (chosen?.issue && !(c.accepted ?? []).includes('take')) {
     const clean = (c.takes ?? []).map((t, i) => ({ t, i })).filter((x) => !x.t.issue).sort((a, b) => b.t.perf + b.t.tech - (a.t.perf + a.t.tech))[0];
     const fixes: Fix[] = [];
-    if (clean) fixes.push({ action: 'use-take', take: clean.i, label: `Use take ${clean.i + 1}, which has no such problem` });
-    if (chosen.issue === 'sound' && s.dialogue.length && !p.tasks.some((x) => x.id === `post:adr:${s.id}`)) fixes.push({ action: 'adr', label: 'Replace the lines in post (a sound designer\'s day; the performers come back to record them)' });
-    if (!pickingUp && !locked) fixes.push({ action: 'pickup', kind: 'take', label: pickupLabel(p, s, 'another take') });
-    fixes.push({ action: 'accept', what: 'take', label: 'Keep it and move on' });
+    if (clean) fixes.push({ action: 'use-take', take: clean.i, label: `Use Take ${clean.i + 1}`, detail: 'It has no such problem.' });
+    if (chosen.issue === 'sound' && s.dialogue.length && !p.tasks.some((x) => x.id === `post:adr:${s.id}`)) fixes.push({ action: 'adr', label: 'Replace The Lines In Post', detail: 'A sound designer\'s day; the performers come back to record them.' });
+    if (!pickingUp && !locked) fixes.push({ action: 'pickup', kind: 'take', label: 'Shoot Another Take On A Pickup Day', detail: pickupDetail(p, s) });
+    fixes.push({ action: 'accept', what: 'take', label: 'Keep It And Move On' });
     out.push({ text: `The take in the cut (take ${c.chosenTake! + 1}): ${ISSUE_WORDS[chosen.issue]}.`, fixes });
   }
   for (const m of missingMaterial(p, s, c)) {
-    const what = m.continuity ? 'inserts to cut around it' : SETUP_WORDS[m.setup!];
     const fixes: Fix[] = [];
-    if (!pickingUp && !locked) fixes.push({ action: 'pickup', kind: m.continuity ? 'inserts' : (m.setup as 'singles' | 'inserts'), label: pickupLabel(p, s, what) });
-    fixes.push({ action: 'accept', what: m.continuity ? 'continuity' : m.setup!, label: m.continuity ? 'Accept the mismatch' : `Cut it without ${SETUP_WORDS[m.setup!]}` });
+    if (!pickingUp && !locked) fixes.push({ action: 'pickup', kind: m.continuity ? 'inserts' : (m.setup as 'singles' | 'inserts'), label: m.continuity ? 'Shoot Inserts To Cut Around It' : `Shoot ${SETUP_TITLE[m.setup!]} On A Pickup Day`, detail: pickupDetail(p, s) });
+    fixes.push({ action: 'accept', what: m.continuity ? 'continuity' : m.setup!, label: m.continuity ? 'Accept The Mismatch' : `Cut It Without ${SETUP_TITLE[m.setup!]}` });
     out.push({ text: m.continuity ? `Continuity: ${m.reason}` : `No ${SETUP_WORDS[m.setup!]}: ${m.reason}`, fixes });
   }
   return out;

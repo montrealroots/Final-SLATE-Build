@@ -1,6 +1,10 @@
 import csv, sys, os, shutil
 sys.path.insert(0, os.path.dirname(__file__))
 from ledger_data import C, S
+# A child's detail record (from November 8, 2026): what the player controls, what it needs, the engine rule, what it costs,
+# what follows from it, how it fails and recovers, how it saves, and how its facts are sourced.
+DETAIL = {'control': 'player_control', 'needs': 'prerequisites', 'rule': 'engine_rule', 'cost': 'resource_time_cost', 'downstream': 'downstream_effects',
+          'failure': 'failure_recovery', 'save': 'save_behaviour', 'research': 'research_classification'}
 REPO = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 PKG = os.path.join(REPO, 'docs/depth/package')
 OUT = os.path.join(REPO, 'docs/depth')
@@ -21,10 +25,14 @@ for r in rows:
     key = r['id'][len('SLATE-'):]
     ui, eng, kids = C[key]
     ids = []
-    for i, (req, st, ev, gap) in enumerate(kids, 1):
+    for i, k in enumerate(kids, 1):
+        req, st, ev, gap = k[:4]
+        d = k[4] if len(k) > 4 else {}
+        assert set(d) <= set(DETAIL), (r['id'], set(d) - set(DETAIL))
         cid = f"{r['id']}.{i:02d}"
         ids.append(cid)
-        children.append({'child_id': cid, 'parent_id': r['id'], 'requirement': req, 'status': S[st], 'evidence': ' | '.join(ev), 'remaining_gap': gap})
+        children.append({'child_id': cid, 'parent_id': r['id'], 'requirement': req, 'status': S[st], 'evidence': ' | '.join(ev), 'remaining_gap': gap,
+                         **{DETAIL[x]: d.get(x, '') for x in DETAIL}})
     r['status'] = parent_status(kids)
     r['child_ids'] = ' '.join(ids)
     r['ui_entry'] = ui
