@@ -142,7 +142,7 @@ export function WorldMap(props: { country: string; here?: { lat: number; lon: nu
         {mine && props.chosen && <circle className="worldmap-chosen" cx={mine.x} cy={mine.y} r={r * 1.4} role="img" aria-label={`${props.chosen.name}, your choice`}><title>{props.chosen.name}, your choice</title></circle>}
         {me && props.here && <circle className="worldmap-here" cx={me.x} cy={me.y} r={r * 1.4} role="img" aria-label={`You're in ${props.here.name}`}><title>You're in {props.here.name}</title></circle>}
       </svg>
-      <p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}{props.chosen ? ' The place you chose is ringed.' : ''}</p>
+      <p className="dim xs">{MAP_CREDIT}{props.here ? ' Your location is ringed.' : ''}{props.chosen ? ' The place you chose is the solid dot.' : ''}</p>
     </>
   );
 }

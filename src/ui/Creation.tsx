@@ -281,12 +281,8 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
         )}
         {!elsewhere && err('startPlaceId') && <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('startPlaceId')}</p>}
         {city && (
-          <div className="grid grid-3" style={{ marginTop: 'var(--s4)' }}>
-            <div className="stat">
-              <span className="stat-label">Place</span>
-              <span className="stat-value" style={{ fontSize: 'var(--size-md)' }}>{city.name}</span>
-              <span className="stat-note">{[city.region !== city.name ? city.region : '', city.countryName].filter(Boolean).join(', ')}</span>
-            </div>
+          // The place itself is named once, in the picker's "Chosen:" note; this says what that note doesn't (November 8, 2026).
+          <div className="grid grid-2" style={{ marginTop: 'var(--s4)' }}>
             {typeof city.population === 'number' && city.population > 0 && (
               <div className="stat">
                 <span className="stat-label">Population</span>
