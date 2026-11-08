@@ -116,27 +116,33 @@ export function decideCompetition(state: GameState, p: Project, recorded: (episo
 
 /**
  * A contributor withdraws their release before delivery. Their recorded segments must be redacted: an editor's task per
- * episode, which assembly then waits for. After delivery the picture is final and can't be changed here.
+ * episode, which assembly then waits for. After delivery the picture is final and can't be changed here. Until November
+ * 8, 2026 only unscripted shows could record this (SLATE-14-02); a documentary contributor could not withdraw once
+ * filmed. Now a documentary's scenes with them that have footage are redacted the same way.
  */
 export function withdrawRelease(state: GameState, p: Project, contributorId: string): Task[] {
-  if (p.delivered) throw new Error('This show is delivered; its footage is final.');
+  const unscripted = p.axes.format === 'unscripted-series';
+  if (p.delivered) throw new Error(`This ${unscripted ? 'show' : 'project'} is delivered; its footage is final.`);
   const c = p.contributors.find((x) => x.id === contributorId);
-  if (!c) throw new Error('That participant is no longer in the show.');
+  if (!c) throw new Error(`That ${unscripted ? 'participant is no longer in the show' : 'contributor is no longer in the project'}.`);
   if (c.consent === 'withdrawn') throw new Error(`${c.name} has already withdrawn.`);
   const affected = approvedScenes(p).filter((s) => s.contributorIds.includes(contributorId));
-  // Only episodes whose footage is being logged hold recordings to take out; before the shoot there is nothing to redact.
-  const recorded = [...new Set(affected.map((s) => s.episode))].filter((e) => p.tasks.some((t) => t.id === `unscripted:logging:${e}`));
-  // Checked before anything changes: a refused withdrawal leaves the show as it was.
-  if (recorded.length && p.edit.pictureLocked) throw new Error(`Unlock the picture first; ${c.name}'s footage has to be taken out of Episode ${recorded[0]}.`);
+  // Only footage that exists can be taken out: an unscripted episode being logged, or a documentary scene already shot.
+  const filmed = (e: number) => unscripted
+    ? p.tasks.some((t) => t.id === `unscripted:logging:${e}`)
+    : affected.some((s) => s.episode === e && (p.captures.find((x) => x.sceneId === s.id)?.captured ?? 0) > 0);
+  const recorded = [...new Set(affected.map((s) => s.episode))].filter(filmed);
+  // Checked before anything changes: a refused withdrawal leaves the project as it was.
+  if (recorded.length && p.edit.pictureLocked) throw new Error(`Unlock the picture first; ${c.name}'s footage has to be taken out of ${p.episodes.length > 1 ? `Episode ${recorded[0]}` : 'the cut'}.`);
   c.consent = 'withdrawn';
-  const u = unscriptedOf(p);
   const made: Task[] = [];
   for (const e of recorded) {
-    const sceneIds = affected.filter((s) => s.episode === e).map((s) => s.id);
-    const id = `unscripted:redact:${contributorId}:${e}`;
+    const sceneIds = affected.filter((s) => s.episode === e && (unscripted || (p.captures.find((x) => x.sceneId === s.id)?.captured ?? 0) > 0)).map((s) => s.id);
+    const kind = unscripted ? 'unscripted:redact' : 'doc:redact';
+    const id = `${kind}:${contributorId}:${e}`;
     const task: Task = {
-      id, kind: 'unscripted:redact', label: `Redact ${c.name}: Episode ${e}`, dept: 'Post Production', roleId: 'editor', units: Math.max(1, sceneIds.length),
-      unitLabel: 'days', done: 0, dependsOn: [`unscripted:logging:${e}`], status: 'waiting', episode: e, sceneIds, workedDays: 0,
+      id, kind, label: `Redact ${c.name}${p.episodes.length > 1 ? `: Episode ${e}` : ''}`, dept: 'Post Production', roleId: 'editor', units: Math.max(1, sceneIds.length),
+      unitLabel: 'days', done: 0, dependsOn: unscripted ? [`unscripted:logging:${e}`] : [], status: 'waiting', episode: e, sceneIds, workedDays: 0,
     };
     p.tasks.push(task);
     const assembly = p.tasks.find((t) => t.id === `post:assembly:${e}`);
@@ -144,15 +150,17 @@ export function withdrawRelease(state: GameState, p: Project, contributorId: str
       assembly.dependsOn.push(id);
       if (assembly.status === 'done') { assembly.status = 'waiting'; assembly.done = Math.max(0, assembly.units - 1); }
     }
-    u.redactions.push({ contributorId, episode: e, sceneIds, taskId: id });
+    if (unscripted) unscriptedOf(p).redactions.push({ contributorId, episode: e, sceneIds, taskId: id });
     made.push(task);
   }
-  addLog(state, `${c.name} withdrew from ${p.title}. ${made.length ? `Their footage is being redacted from ${made.length === 1 ? 'one episode' : `${made.length} episodes`}.` : 'They were not recorded.'}`, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'script' } });
+  const where = p.episodes.length > 1 ? (made.length === 1 ? 'one episode' : `${made.length} episodes`) : 'the film';
+  addLog(state, `${c.name} withdrew from ${p.title}. ${made.length ? `Their footage is being redacted from ${where}.` : 'They were not recorded.'}`, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'script' } });
   return made;
 }
 
 /** A withdrawn contributor no longer blocks delivery once every redaction of their footage is done. */
 export function redactionComplete(p: Project, contributorId: string): boolean {
   const reds = (p.unscripted?.redactions ?? []).filter((r) => r.contributorId === contributorId);
-  return reds.every((r) => p.tasks.find((t) => t.id === r.taskId)?.status === 'done');
+  const docs = p.tasks.filter((t) => t.kind === 'doc:redact' && t.id.startsWith(`doc:redact:${contributorId}:`));
+  return reds.every((r) => p.tasks.find((t) => t.id === r.taskId)?.status === 'done') && docs.every((t) => t.status === 'done');
 }

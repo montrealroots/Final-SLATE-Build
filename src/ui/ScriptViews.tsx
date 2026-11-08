@@ -6,7 +6,7 @@ import {
   MODULE_LABELS, TECHNIQUE_LABELS, addCharacter, addNote, addScene, noteFromIssue, applyDesignChange, approveDraft, composeGenres, deleteScene, describeImpact,
   designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter,
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
-  startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, type ModuleId,
+  startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, approvedScenes, type ModuleId,
   requirementRemovalImpact, addResearch, removeResearch, updateResearch, resolutionLabel,
   approvalImpact, combineScenes, combineScenesImpact, duplicateScene, splitScene, splitSceneImpact, FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, type UnscriptedFamily,
 } from '../engine';
@@ -694,7 +694,7 @@ function Facts({ p }: { p: Project }) {
             <span className="grow">{c.name}{c.role ? `, ${c.role}` : ''} <span className={`chip ${c.consent === 'given' ? 'chip-positive' : c.consent === 'declined' || c.consent === 'withdrawn' ? 'chip-negative' : 'chip-warning'}`}>{{ 'not-asked': 'Consent Not Requested', requested: 'Consent Requested', given: 'Consent Given', declined: 'Consent Declined', withdrawn: 'Withdrew' }[c.consent]}</span>{c.restrictions?.length ? <span className="dim"> On condition: {c.restrictions.map((k) => RESTRICTION_WORDS[k]).join('; ')}.</span> : null}</span>
             <div className="row gap-2 wrap">
               {c.consent === 'not-asked' && <button className="btn btn-sm" onClick={() => store.act((s) => requestConsent(s, p, c.id))}>Request Consent</button>}
-              {p.axes.format === 'unscripted-series' && c.consent === 'given' && !p.delivered && <WithdrawButton p={p} contributorId={c.id} name={c.name} />}
+              {c.consent === 'given' && !p.delivered && <WithdrawButton p={p} contributorId={c.id} name={c.name} />}
               <button className="btn btn-sm" onClick={() => edit(p, () => (p.contributors = p.contributors.filter((x) => x.id !== c.id)))}>Remove</button>
             </div>
           </li>
@@ -942,12 +942,12 @@ function WithdrawButton({ p, contributorId, name }: { p: Project; contributorId:
       {open && (
         <Modal title={`${name} Withdraws?`} onClose={() => setOpen(false)} footer={
           <>
-            <button className="btn" onClick={() => setOpen(false)}>Keep Them In The Show</button>
+            <button className="btn" onClick={() => setOpen(false)}>{p.axes.format === 'unscripted-series' ? 'Keep Them In The Show' : 'Keep Them In The Film'}</button>
             <button className="btn btn-danger" onClick={() => { const e = store.act((s) => { withdrawRelease(s, s.projects.find((x) => x.id === p.id)!, contributorId); }); setError(e); if (!e) setOpen(false); }}>Record Withdrawal</button>
           </>
         }>
-          <p>{name} no longer agrees to appear. {p.tasks.some((t) => t.id.startsWith('unscripted:logging:'))
-            ? 'Footage already recorded with them will be redacted by your editor before those episodes can be delivered.'
+          <p>{name} no longer agrees to appear. {p.tasks.some((t) => t.id.startsWith('unscripted:logging:')) || approvedScenes(p).some((s) => s.contributorIds.includes(contributorId) && (p.captures.find((x) => x.sceneId === s.id)?.captured ?? 0) > 0)
+            ? `Footage already recorded with them will be redacted by your editor before ${p.episodes.length > 1 ? 'those episodes' : 'the film'} can be delivered.`
             : "Nothing has been filmed with them yet. Scenes with them can't be filmed now, so take them out of those scenes or find someone else."}</p>
           {error && <p role="alert" className="error">{error}</p>}
         </Modal>

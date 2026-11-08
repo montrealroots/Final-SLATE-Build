@@ -394,7 +394,7 @@ C = {
   ('Restrictions on use (no face, no name, approval of use) carried into the edit', 'V',
    ['tests/restrictions.test.ts::a hidden face adds blurring after lock that delivery waits for', 'tests/restrictions.test.ts::a refusal holds delivery until their scenes are cut', 'e2e/journeys.spec.ts::Joost agrees on condition his face isn\'t shown'],
    'Shares of each condition are simulation assumptions; cut approval reads the locked cut and resets on unlock'),
-  ('Withdrawal before filming adds no redaction; after filming, redaction work', 'VE', ['tests/unscripted.test.ts::before the shoot there is nothing to redact'], ''),
+  ('Withdrawal before filming adds no redaction; after filming, redaction work', 'VE', ['tests/unscripted.test.ts::before the shoot there is nothing to redact', 'tests/restrictions.test.ts::after filming: the scenes with their footage are redacted by the editor, and delivery waits for it'], 'Documentaries gained it November 8, 2026; it was unscripted shows only'),
 ]),
 '14-03': ('Production (documentary)', 'src/engine/production/tasks.ts', [
   ('Interviews and actuality captured; claims checked', 'VE', ['e2e/journeys.spec.ts::documentary: consent and fact checks gate delivery'], ''),
