@@ -55,7 +55,7 @@ SLATE-03-03.02,SLATE-03-03,An estimate over what can be raised offers concrete w
 SLATE-03-04.01,SLATE-03-04,"Create, save and reopen a project by a stable ID",VERIFIED EXISTING,tests/journeys.test.ts::runs from script to delivery,
 SLATE-03-04.02,SLATE-03-04,Shelving or cancelling a project settles its commitments and keeps its history,VERIFIED,tests/shelve.test.ts::says what it will do; then releases people | tests/shelve.test.ts::refuses changes and hiring until it is taken up again | e2e/structure.spec.ts::a project shelved and taken up again,
 SLATE-03-04.03,SLATE-03-04,Projects with the same title stay distinguishable,IMPLEMENTED UNVERIFIED,,IDs differ; the list shows only titles
-SLATE-03-05.01,SLATE-03-05,"The stages a project will go through, and what each needs, are shown before development",IMPLEMENTED UNVERIFIED,,projectModules drives the tabs; no test of the explanation
+SLATE-03-05.01,SLATE-03-05,"The stages a project will go through, and what each needs, are shown before development",VERIFIED,"tests/stages.test.ts::changes with the medium, technique and format, as the work built for them does","Repaired November 8, 2026: nothing explained them; the New Script form now lists them (src/engine/stages.ts)"
 SLATE-03-05.02,SLATE-03-05,No inert control appears as implemented,VERIFIED EXISTING,"e2e/viewports.spec.ts::no tutorial, no excluded systems",
 SLATE-04-01.01,SLATE-04-01,"Premise, logline, question, stakes, theme and intended experience, revised freely",VERIFIED EXISTING,tests/screenwriting.test.ts::filling every text field with anything moves the score only a little,
 SLATE-04-01.02,SLATE-04-01,Completeness is checked; prose is never judged,VERIFIED EXISTING,tests/screenwriting.test.ts::nothing is guessed from prose,

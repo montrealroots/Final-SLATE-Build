@@ -2,7 +2,7 @@ import { DAY, OPPORTUNITY_DELIVER_DAYS, FORMAT_LABELS, acceptOpportunity, declin
 import type { Condition } from '../engine/weather';
 import { placeLabel } from '../data/places';
 import type { Edition } from '../engine/types';
-import { Panel, TextField, longLocal } from './components';
+import { Panel, TextField, longLocal, startedNote } from './components';
 import { useState } from 'react';
 import { store, useClock, useGame } from './store';
 
@@ -111,7 +111,7 @@ export function Home() {
             <div className="col gap-2">
               {projects.map((pr) => (
                 <div key={pr.id} className="row-between">
-                  <button className="btn btn-ghost btn-sm" style={{ marginLeft: 'calc(-1 * var(--s3))' }} onClick={() => store.go({ view: 'project', projectId: pr.id, tab: 'overview' })}>{pr.title}</button>
+                  <button className="btn btn-ghost btn-sm" style={{ marginLeft: 'calc(-1 * var(--s3))' }} onClick={() => store.go({ view: 'project', projectId: pr.id, tab: 'overview' })}>{pr.title}{startedNote(g.projects, pr, zone) ? <span className="dim">{`, ${startedNote(g.projects, pr, zone)}`}</span> : null}</button>
                   <span className="xs dim nowrap">{PHASE_LABEL[pr.phase]}</span>
                 </div>
               ))}

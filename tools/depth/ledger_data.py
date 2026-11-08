@@ -125,8 +125,7 @@ C = {
   ('Projects with the same title stay distinguishable', 'IU', [], 'IDs differ; the list shows only titles'),
 ]),
 '03-05': ('Overview', 'src/engine/projects.ts', [
-  ('The stages a project will go through, and what each needs, are shown before development', 'IU', [],
-   'projectModules drives the tabs; no test of the explanation'),
+  ('The stages a project will go through, and what each needs, are shown before development', 'V', ['tests/stages.test.ts::changes with the medium, technique and format, as the work built for them does'], 'Repaired November 8, 2026: nothing explained them; the New Script form now lists them (src/engine/stages.ts)'),
   ('No inert control appears as implemented', 'VE', ['e2e/viewports.spec.ts::no tutorial, no excluded systems'], ''),
 ]),
 '04-01': ('Script > Story', 'src/engine/script-effects.ts', [

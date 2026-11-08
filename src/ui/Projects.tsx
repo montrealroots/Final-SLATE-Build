@@ -4,12 +4,13 @@ import { getPlace, placeLabel } from '../data/places';
 import {
   FORMAT_LABELS, FUNDING_SCENARIOS, dateKey, deals, financeSummary, formatDateKey, GENRES, MEDIUM_LABELS, MODULE_LABELS, TECHNIQUE_LABELS, approvalRights, composeGenres, createProject, genre,
   genreCategory, hasTrackRecord, isEpisodic, isNonfiction, ledgerTotals, money, projectGenreLabel, projectModules, qualityWords, scriptIssues,
-  canContinue, searchGenres, type ModuleId,
+  canContinue, currentZone, searchGenres, type ModuleId,
 } from '../engine';
 import { continueProject } from '../engine/sequel';
+import { projectStages } from '../engine/stages';
 import { resumeProject, shelveImpact, shelveProject } from '../engine/shelve';
 import type { Format, Medium, Project, Technique } from '../engine/types';
-import { Check, Field, Modal, NumberField, PageHead, SectionNav, SelectField, TextField, longLocal, plural } from './components';
+import { Check, Field, Modal, NumberField, PageHead, SectionNav, SelectField, TextField, longLocal, plural, startedNote } from './components';
 import { PlacePicker } from './Creation';
 import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
@@ -30,14 +31,14 @@ export function ProjectsList() {
       <div>
         {g.projects.length ? (
           <div className="card-grid">
-            {g.projects.map((p) => (
+            {g.projects.map((p) => { const started = startedNote(g.projects, p, currentZone(g)); return (
               <section key={p.id} className="card">
-                <h2><button className="btn btn-ghost" style={{ fontSize: 'inherit', padding: 0 }} onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'overview' })}>{p.title}</button></h2>
-                <p className="muted">{FORMAT_LABELS[p.axes.format]} · {MEDIUM_LABELS[p.axes.medium]}{p.axes.technique !== 'none' ? ` · ${TECHNIQUE_LABELS[p.axes.technique]}` : ''}</p>
+                <h2><button className="btn btn-ghost" style={{ fontSize: 'inherit', padding: 0 }} aria-label={started ? `${p.title}, ${started}` : undefined} onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'overview' })}>{p.title}</button></h2>
+                <p className="muted">{FORMAT_LABELS[p.axes.format]} · {MEDIUM_LABELS[p.axes.medium]}{p.axes.technique !== 'none' ? ` · ${TECHNIQUE_LABELS[p.axes.technique]}` : ''}{started ? ` · ${started}` : ''}</p>
                 <p><span className="chip">{PHASES[p.phase]}</span>{p.shelved ? <> <span className="chip">Shelved</span></> : null}</p>
                 {p.axes.genres.length > 0 && <p className="dim">{projectGenreLabel(p)}</p>}
               </section>
-            ))}
+            ); })}
           </div>
         ) : (
           <div className="card"><p>You haven't started a project yet.</p><button className="btn btn-primary" onClick={() => store.go({ view: 'new-project' })}>New Script</button></div>
@@ -105,6 +106,12 @@ export function NewProject() {
           {episodic && <NumberField label="Episodes" value={episodes} min={2} max={13} onChange={setEpisodes} />}
           <NumberField label={episodic ? 'Target Minutes Per Episode' : 'Target Runtime In Minutes'} value={runtime} min={1} max={600} onChange={setRuntime} error={error && /runtime|minutes/i.test(error) ? error : null} />
         </div>
+      </section>
+      <section className="card" aria-labelledby="stages-h">
+        <h2 id="stages-h">What This Project Goes Through</h2>
+        <ol className="list">
+          {projectStages({ format, medium, technique, episodes }).map((st) => <li key={st.name}><strong>{st.name}</strong>: {st.needs}</li>)}
+        </ol>
       </section>
       <section className="card">
         <h2>Genres And Labels</h2>
