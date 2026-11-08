@@ -1,7 +1,8 @@
 // SLATE-18-02: a person's own history with you changes how they answer your offers; nothing else does.
 import { describe, expect, it } from 'vitest';
-import { COUNTER_OPEN_DAYS, DAY, buildTasks, computeCredits, declineCounter, teamFor, historyWith, ledgerTotals, makeOffer, processUntil, recordHistory, releaseHire, resolveOffer, roleCandidates, willingness } from './engine-api';
+import { COUNTER_OPEN_DAYS, DAY, addDaysToKey, dateKey, isWorkingDay, buildTasks, computeCredits, declineCounter, teamFor, historyWith, ledgerTotals, makeOffer, processUntil, recordHistory, releaseHire, resolveOffer, roleCandidates, willingness } from './engine-api';
 import type { Project } from '../src/engine/types';
+import { runWorkDay } from '../src/engine/production/workday';
 import { approve, buildProject, startLife } from './helpers';
 
 function project(tag: string) {
@@ -96,5 +97,32 @@ describe('a handover mid-task', () => {
     expect(task.done).toBe(2);
     const editors = computeCredits(s, p).filter((c) => c.roleId === 'editor').map((c) => c.person);
     expect(editors).toContain(first.id);
+  });
+});
+
+// SLATE-10-04: someone covering two roles works one task a day, not both.
+describe('a combined role', () => {
+  it('an editor who also covers the grade works one of the two tasks each day, paid once', () => {
+    const { s, p } = project('rel-combined');
+    const ed = roleCandidates(s, p, 'editor').filter((x) => x.experience >= 2)[0];
+    const h = answer(s, p, ed.id, 1.2);
+    expect(h.status).toBe('accepted');
+    const all = buildTasks(p);
+    // Labelled fixture: the assembly and the grade both ready to work at once.
+    p.tasks = ['editor', 'colorist'].map((r) => ({ ...all.find((t) => t.roleId === r)!, dependsOn: [], status: 'waiting' as const, done: 0, units: 5 }));
+    expect(teamFor(p, 'colorist', 1)).toEqual([ed.id]); // the editor covers the grade
+    const day = (n: number) => { let d = addDaysToKey(dateKey(s.now, 'Europe/London'), n); while (!isWorkingDay(p, d)) d = addDaysToKey(d, 1); return d; };
+    runWorkDay(s, p, day(1));
+    expect(p.tasks.reduce((a, t) => a + t.done, 0)).toBe(1);
+    expect(h.daysWorked).toBe(1);
+    runWorkDay(s, p, day(3));
+    expect(p.tasks.reduce((a, t) => a + t.done, 0)).toBe(2);
+    expect(h.daysWorked).toBe(2);
+    // With the assembly finished, the same person works the grade: it was only ever waiting for them.
+    const [cut, grade] = p.tasks;
+    cut.done = cut.units; cut.status = 'done';
+    const before = grade.done;
+    runWorkDay(s, p, day(5));
+    expect(grade.done).toBe(before + 1);
   });
 });

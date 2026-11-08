@@ -136,7 +136,7 @@ SLATE-10-02.01,SLATE-10-02,"Compare experience, rate and availability",VERIFIED 
 SLATE-10-02.02,SLATE-10-02,No candidate is an explicit gap,IMPLEMENTED UNVERIFIED,,Shown; no test
 SLATE-10-03.01,SLATE-10-03,"Offer, book and assign dates; declines release only their reservations",VERIFIED EXISTING,tests/tight-budget.test.ts::staffing hires a required crew,
 SLATE-10-04.01,SLATE-10-04,Combine compatible roles on small productions,VERIFIED EXISTING,"tests/tight-budget.test.ts::on a micro budget, one person takes the roles they can combine",
-SLATE-10-04.02,SLATE-10-04,A combined role works one task at a time,IMPLEMENTED UNVERIFIED,,teamFor assigns one task per worker per day; no test
+SLATE-10-04.02,SLATE-10-04,A combined role works one task at a time,VERIFIED,"tests/relationships.test.ts::an editor who also covers the grade works one of the two tasks each day, paid once",
 SLATE-10-05.01,SLATE-10-05,"Releasing someone keeps done work, pay owed and credit",VERIFIED EXISTING,tests/mocap-calendar.test.ts::still credited for the work that stays,
 SLATE-10-05.02,SLATE-10-05,A handover to a replacement mid-task,VERIFIED,tests/relationships.test.ts::releasing someone keeps the work they did and their credit; the replacement carries on from there,
 SLATE-11-01.01,SLATE-11-01,Approved scenes become a breakdown of requirements,VERIFIED EXISTING,"tests/genres.test.ts::requirements come from scenes, not labels",

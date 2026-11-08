@@ -306,7 +306,7 @@ C = {
 ]),
 '10-04': ('Crew', 'src/engine/people.ts', [
   ('Combine compatible roles on small productions', 'VE', ['tests/tight-budget.test.ts::on a micro budget, one person takes the roles they can combine'], ''),
-  ('A combined role works one task at a time', 'IU', [], 'teamFor assigns one task per worker per day; no test'),
+  ('A combined role works one task at a time', 'V', ['tests/relationships.test.ts::an editor who also covers the grade works one of the two tasks each day, paid once'], ''),
 ]),
 '10-05': ('Crew', 'src/engine/hiring.ts', [
   ('Releasing someone keeps done work, pay owed and credit', 'VE', ['tests/mocap-calendar.test.ts::still credited for the work that stays'], ''),
