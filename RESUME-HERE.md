@@ -103,7 +103,8 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       finished builds carry over; the previous cast are asked back at their last rate as ordinary offers; no money
       carries over, and a renewal is an offer to accept.
   - Browser tests: `e2e/season.spec.ts` (desktop, phone, WebKit iPhone 15 Plus); the TV journey in
-    `e2e/journeys.spec.ts` now plans the season, shoots in blocks, starts season 2 and asks the previous Marcus back.
+    `e2e/journeys.spec.ts` now plans the season, shoots in blocks, starts season 2 and asks back whoever played Marcus, which is refused with
+    the exact shortfall until season 2 raises its own money.
   - Ledger after stage 4: parents 54 VERIFIED EXISTING, 4 VERIFIED, 22 IMPLEMENTED UNVERIFIED, 13 NEEDS REPAIR,
     5 MISSING, 2 EXTERNAL BLOCKER; children 148 / 32 / 26 / 0 / 21 MISSING / 2.
 - **Next:** stage 5 (finance negotiation `08-03.03`, auditions `09-02`), then the rest of `docs/depth/README.md`,

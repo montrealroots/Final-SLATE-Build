@@ -187,12 +187,17 @@ test('TV limited series: episodes, a guest role and episode-level credits', asyn
   await expect(page.getByText('Last season: One winter on the night ward.')).toBeVisible();
   await addScene(page, { index: 0, place: 'Emergency Room', chars: ['Marcus'], minutes: '2', episodeButton: 'Add Scene To Episode 1' });
   await addScene(page, { index: 1, place: 'Rooftop', chars: ['Dr. Ines Park'], minutes: '2', episodeButton: 'Add Scene To Episode 2' });
-  await saveAndApprove(page);
+  // The story carried over, so the pitch is written; the starting backing was for a first project only.
+  await page.getByRole('button', { name: 'Save Draft' }).click();
+  await page.getByRole('button', { name: 'Approve This Draft' }).first().click();
+  await expect(page.getByText('Approved', { exact: true })).toBeVisible();
   await section(page, 'Cast');
   const back = page.locator('section.card', { has: page.getByRole('heading', { name: 'Ask Them Back' }) });
   await expect(back).toContainText('as Marcus');
+  // No money carried over: the offer, at their last rate, waits on this season's own backing.
   await back.getByRole('button', { name: /^Ask .+ Back$/ }).click();
-  await expect(back.getByText('Offer Sent')).toBeVisible();
+  await expect(page.getByRole('alert').filter({ hasText: /^This needs \$[\d,]+, but only \$0 is uncommitted\./ })).toBeVisible();
+  await expect(back.getByRole('button', { name: /^Ask .+ Back$/ })).toBeVisible();
 });
 
 test('web series: short-form episodes deliver with per-episode work', async ({ page }) => {
