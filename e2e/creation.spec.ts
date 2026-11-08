@@ -309,6 +309,9 @@ test('backgrounds drive the game: their holidays are offered first and kept, the
   await expect(main).toContainText('Korean');
   await expect(main).toContainText('From your backgrounds');
   await main.click();
+  // Choosing empties its search too, as every picker here does (November 8, 2026): the list returns, Korean shown chosen.
+  await expect(page.getByRole('searchbox', { name: 'Which language do you use most?' })).toHaveValue('');
+  await expect(page.getByRole('group', { name: 'Language You Use Most Results' }).getByRole('button', { name: /^Korean/ })).toHaveAttribute('aria-pressed', 'true');
   // Adding a language empties its search, so the next suggestions show (November 8, 2026: the typed word stayed).
   await page.getByRole('searchbox', { name: 'Add Language' }).fill('English');
   await page.getByRole('button', { name: 'Add Language: English' }).click();

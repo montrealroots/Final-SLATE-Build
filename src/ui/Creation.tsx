@@ -462,7 +462,7 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
             <input id={id} type="search" value={mq} aria-describedby={db} aria-invalid={!!error} onChange={(e) => setMq(e.target.value)} />
             <div className="picklist" role="group" aria-label="Language You Use Most Results">
               {mainResults.map((l) => (
-                <button key={l.code} type="button" aria-pressed={l.code === d.mainLanguage} onClick={() => set({ mainLanguage: l.code, languages: d.languages.filter((x) => x.code !== l.code) })}>
+                <button key={l.code} type="button" aria-pressed={l.code === d.mainLanguage} onClick={() => { set({ mainLanguage: l.code, languages: d.languages.filter((x) => x.code !== l.code) }); setMq(''); }}>
                   <span>{l.name}</span>{suggested.has(l.code) && <span className="dim">From your backgrounds</span>}
                 </button>
               ))}
