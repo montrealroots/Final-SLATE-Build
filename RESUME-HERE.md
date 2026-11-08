@@ -216,11 +216,24 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       that title it is when two share a day.
     - `10-02`: staffing said "no available candidate fits the remaining budget" when no one was free at all. It now
       tells the two apart.
+    - `19-03` (disabled actions): seven controls gave no reason; each now says, and `tests/disabled-reasons.test.ts`
+      lists every disabled control with where its reason shows, failing a new one until recorded.
+    - `20-02`: `docs/depth/PRODUCTION-SOURCES.md` records every production, money and career calibration per feature
+      as a labelled model (no primary source was used for any), ratcheted by `tests/production-sources.test.ts`.
+    - `20-04`: the package's features have browser journeys (negotiation, auditions, season, shot plan and takes,
+      proposals, earnings); versions, territories and later windows are unit-tested only.
+    - Playthrough families: `docs/depth/PLAYTHROUGHS.md` maps the package's fifteen to the journeys that run them and
+      names what none runs. Mapping it found that a documentary contributor couldn't withdraw after filming; that is
+      now modeled (`unscripted.ts withdrawRelease`, `doc:redact`), unit-tested in `tests/restrictions.test.ts`.
+  - Ledger now: 149 verified existing, 77 verified, 1 implemented unverified, 2 external blockers, 0 missing.
 - **Next:**
-  - The two `19-03` audits (every preview of cost and time; every disabled action says why). Planned as a ratchet test
-    listing each disabled control in `src/ui` and where its reason shows.
-  - Then the package's playthroughs (`docs/depth/package/05-PLAYTHROUGHS-AND-ACCEPTANCE.md`).
-  - Missing: `20-02` (a per-feature source register for production rates) and `20-04` (journeys, added per stage).
+  - `19-03` previews: every action that spends money or time shows both first, and its outcome after. Many do; no
+    audit lists them all yet. Plan: a ratchet like `tests/disabled-reasons.test.ts` over the actions that call
+    `reserve`, `commit` or schedule work.
+  - The browser-only gaps named in `docs/depth/PLAYTHROUGHS.md` (weather loss on a chosen day, puppet repair, a
+    missed capture session, documentary withdrawal after filming, festival withdrawal and resubmission, territory
+    conflicts), each as a journey step.
+  - Human acceptance and real-device checks (`19-05.03`, `20-05`) stay with the owner.
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 
