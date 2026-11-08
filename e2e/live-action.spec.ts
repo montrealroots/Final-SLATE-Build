@@ -126,7 +126,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
       await deliver.click();
       break;
     }
-    const lock = page.getByRole('button', { name: 'Lock Picture' });
+    const lock = page.getByRole('button', { name: 'Lock Picture', exact: true });
     if (await lock.isEnabled()) {
       // Before locking, the takes (SLATE-12-03): the cut uses the best balanced one; use another for the dock scene.
       const takes = page.locator('section.card', { has: page.getByRole('heading', { name: 'Takes' }) });

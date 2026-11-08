@@ -60,11 +60,17 @@ describe("contributors' conditions on use", () => {
     processUntil(s, s.now + (CUT_REVIEW_DAYS + 1) * DAY, 'tick', 100000);
     const answer = c1(p).cutApproval!.status;
     expect(['approved', 'refused']).toContain(answer);
-    // Unlocking changes the cut they saw: they are shown again.
+    // Unlocking changes the cut they saw: an approval or a review in progress is shown again; a refusal stays, since
+    // unlocking is how their scenes get cut.
+    c1(p).cutApproval = { status: 'approved', answerAt: s.now };
     unlockPicture(s, p);
     expect(c1(p).cutApproval).toBeUndefined();
-    // A refusal: their scenes leave the edit, and the blocker with them.
+    p.edit.pictureLocked = true;
     c1(p).cutApproval = { status: 'refused', answerAt: s.now };
+    unlockPicture(s, p);
+    expect(c1(p).cutApproval?.status).toBe('refused');
+    void answer;
+    // A refusal: their scenes leave the edit, and the blocker with them.
     expect(deliveryBlockers(p)).toContain("Nomvula Dube didn't approve how they appear. Cut their scenes to deliver.");
     p.edit.cutSceneIds = ['a1', 'a2'];
     expect(editScenes(p)).toHaveLength(0);

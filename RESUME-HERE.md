@@ -123,8 +123,12 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
   - Ledger after stage 5: parents 55 VERIFIED EXISTING, 5 VERIFIED, 22 IMPLEMENTED UNVERIFIED, 12 NEEDS REPAIR,
     4 MISSING, 2 EXTERNAL BLOCKER; children 148 / 37 / 25 / 0 / 17 MISSING / 2.
   - Startup JavaScript budget: page-only engine code now loads with its page (`season.ts`, `sequel.ts`, `shelve.ts`,
-    `structure-edit.ts`, `casting-calls.ts`), so startup is 697 kB of 700. New page-only code goes in such modules;
-    `awards.ts` (60 kB at startup) is the largest remaining candidate.
+    `structure-edit.ts`, `casting-calls.ts`, `cost-cuts.ts`, `negotiation-actions.ts`, `awards-actions.ts`,
+    `callsheet.ts`, `takes-actions.ts`, `designs-actions.ts`, `locations-actions.ts`, `documentary-actions.ts`).
+    After stage 8 startup is 698.1 kB of 700, so stage 9 needs room first. The large remaining item is `awards.ts`
+    (about 60 kB at startup, mostly the institutions table its handlers read). Measure what each source adds with a
+    sourcemap build (`npx vite build --outDir <dir> --sourcemap`, then sum each source's mapped bytes in the store
+    chunk with `source-map-js`).
   - Stage 6, preparation, everything below now VERIFIED:
     - call sheets (`11-05.03`, `callsheet.ts`), VERIFIED: each scheduled shoot day has one, derived from what the day runs
       on (call 7 AM or 5 PM for night, wrap, who is paid on set, uncast parts, crew, crowd, holiday premium, daylight for

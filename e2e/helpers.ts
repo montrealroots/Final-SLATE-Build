@@ -380,7 +380,7 @@ export async function runToDelivery(page: Page, opts: { weeks?: number; step?: '
       await expect(page.getByText(/Delivered at \d+ minutes/)).toBeVisible();
       return;
     }
-    const lock = page.getByRole('button', { name: 'Lock Picture' });
+    const lock = page.getByRole('button', { name: 'Lock Picture', exact: true });
     if (await lock.isVisible() && await lock.isEnabled()) { await lock.click(); continue; }
     const cut = page.getByRole('button', { name: 'Start Cut Pass' });
     if (await cut.isEnabled()) await cut.click();

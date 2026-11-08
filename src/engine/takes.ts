@@ -30,6 +30,8 @@ export const TAKE_CENTRE = 4;
 
 export function shotPlan(p: Project, sceneId: string): { coverage: Coverage; takes: TakePolicy } | null {
   if (!p.takesModel) return null;
+  // Scripted scenes only: interviews, actuality and unscripted segments aren't shot in takes.
+  if (p.scenes.find((s) => s.id === sceneId)?.kind !== 'scripted') return null;
   return { coverage: 'standard', takes: 'few', ...(p.shotPlans?.[sceneId] ?? {}) };
 }
 
@@ -59,6 +61,6 @@ export function takeFigures(t: { perf: number; tech: number }): Pick<SceneCaptur
 /** The editor's options from coverage, for the editing score: the average over captured scenes. 0 without shot plans. */
 export function coverageEdit(p: Project, sceneIds: string[]): number {
   if (!p.takesModel) return 0;
-  const xs = sceneIds.filter((id) => p.captures.some((c) => c.sceneId === id && c.captured > 0)).map((id) => COVERAGE[shotPlan(p, id)!.coverage].edit);
+  const xs = sceneIds.filter((id) => p.captures.some((c) => c.sceneId === id && c.captured > 0)).flatMap((id) => { const plan = shotPlan(p, id); return plan ? [COVERAGE[plan.coverage].edit] : []; });
   return xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 0;
 }
