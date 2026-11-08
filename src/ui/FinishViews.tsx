@@ -18,6 +18,8 @@ import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
 import { editScenes } from '../engine/finish';
+import { reviseEffects, rerecordLines } from '../engine/revisions';
+import { personById } from '../engine/people';
 import { VERSION_LABELS, addVersion, removeVersion, versionCredits, versionRuntime } from '../engine/versions';
 import { designStatus, designsToReview, type DesignStatus } from '../engine/designs';
 
@@ -125,6 +127,32 @@ export function ProductionTab({ p }: { p: Project }) {
 }
 
 // ---------------- Edit and delivery ----------------
+
+/** Effects revisions and re-recorded lines, before picture lock (revisions.ts, SLATE-15-03.02). */
+function AdditionalWorkCard({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
+  const g = useGame();
+  const vfxScenes = editScenes(p).filter((s) => s.vfx.length && p.tasks.some((x) => x.id === `post:vfx:${s.episode}`));
+  const parts = p.cast.filter((a, i) => p.cast.findIndex((b) => b.characterId === a.characterId) === i && editScenes(p).some((s) => s.participants.includes(a.characterId) && s.dialogue.length));
+  const state = (id: string) => p.tasks.find((x) => x.id === id)?.status;
+  if (!vfxScenes.length && !parts.length) return null;
+  return (
+    <section className="card" aria-labelledby="additional-h">
+      <h2 id="additional-h">Additional Work</h2>
+      <p className="dim">Before picture is locked you can send a scene's effects back for a revision, or bring a performer back to re-record a part's lines. Each is paid work that takes days: the effects artist's time, or a dialogue session at the performer's day rate. Once it is done, that scene or performance is a little stronger.</p>
+      <ul className="list">
+        {vfxScenes.map((s) => {
+          const st = state(`post:vfx-rev:${s.id}`);
+          return <li key={s.id} className="row-wrap"><span className="grow">{sceneLabel(p, s)} <span className="dim">· effects{st ? ` revision ${st === 'done' ? 'done' : 'underway'}` : ''}</span></span>{!st && <button className="btn btn-sm" aria-label={`Revise The Effects In ${sceneLabel(p, s)}`} onClick={() => onError(store.act(() => reviseEffects(p, s.id)))}>Revise Effects</button>}</li>;
+        })}
+        {parts.map((a) => {
+          const c = p.characters.find((x) => x.id === a.characterId)!;
+          const st = state(`post:revoice:${c.id}`);
+          return <li key={c.id} className="row-wrap"><span className="grow">{c.name} <span className="dim">· {a.performer === 'player' ? 'you' : personById(g, a.performer).name}{st ? `, re-recording ${st === 'done' ? 'done' : 'booked'}` : ''}</span></span>{!st && <button className="btn btn-sm" aria-label={`Re-Record ${c.name}'s Lines`} onClick={() => onError(store.act((s) => rerecordLines(s, s.projects.find((x) => x.id === p.id)!, c.id)))}>Re-Record Lines</button>}</li>;
+        })}
+      </ul>
+    </section>
+  );
+}
 
 /** Festival and distribution versions conformed from the locked cut (versions.ts, SLATE-15-05.03). */
 function VersionsCard({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
@@ -246,6 +274,7 @@ export function EditTab({ p }: { p: Project }) {
         )}
       </section>
       {p.captures.some((c) => (c.takes?.length ?? 0) > 1) && <TakesCard p={p} onError={setErr} />}
+      {!p.delivered && !p.edit.pictureLocked && p.tasks.length > 0 && <AdditionalWorkCard p={p} onError={setErr} />}
       {(p.edit.pictureLocked || (p.versions?.length ?? 0) > 0) && <VersionsCard p={p} onError={setErr} />}
       {p.contributors.some((c) => c.consent === 'given' && c.restrictions?.includes('approval')) && <ApprovalsCard p={p} onError={setErr} onCut={setCutting2} />}
       <section className="card">

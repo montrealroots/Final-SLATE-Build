@@ -414,7 +414,9 @@ C = {
 ]),
 '15-03': ('Edit', 'src/engine/production/shoot.ts', [
   ('Pickups with cost and dates', 'VE', ['tests/script-effects.test.ts::is booked after the last scheduled shoot day'], ''),
-  ('Replacement voice or effects revisions as additional work', 'MI', [], 'Only pickups'),
+  ('Replacement voice or effects revisions as additional work', 'V',
+   ['tests/revisions.test.ts::an effects revision is the effects artist\'s work the grade waits for', 'tests/revisions.test.ts::re-recorded lines are a dialogue session the sound waits for', 'e2e/live-action.spec.ts::Additional work before lock (SLATE-15-03.02)'],
+   'Gains (effects +5 to the scene capture, re-recording +4 to the performance) are game calibration'),
 ]),
 '15-04': ('Edit, Production', 'src/engine/production/tasks.ts', [
   ('Sound, music, effects, colour, mix and captions as dependent work', 'VE', ['tests/journeys.test.ts::runs from script to delivery'], ''),

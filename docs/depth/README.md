@@ -91,7 +91,7 @@ migration and tests, and moves its children to VERIFIED.
    - call sheets (`11-05.03`).
 7. Live action (done): setups and takes (`12-02.02`, `12-03`).
 8. Animation and documentary (done): use restrictions (`14-02.02`).
-9. Post:
+9. Post (done):
    - replacement voice and effects work (`15-03.02`);
    - ADR and Foley (`15-04.02`);
    - festival and distribution versions (`15-05.03`).

@@ -2,6 +2,7 @@
 
 import { pairChemistry } from './auditions';
 import { coverageEdit } from './takes';
+import { EFFECTS_REVISION_GAIN, REVOICE_GAIN } from './revisions';
 import { scheduleRenewal } from './continuation';
 import { approvedTake, captureCredit } from './mocap';
 import { BROADCAST_EDIT_COST, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
@@ -302,7 +303,9 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   // readiness notes resolved by revision, skilled writing help, and open structural notes.
   const script = clamp(42 + setups * 10 + Math.min(10, addressed * 2) - Math.min(20, notes * 1.5) + (writerHelp.length ? (avg(writerHelp) - 50) / 3 : 0));
   const caps = p.captures.filter((c) => scenes.some((s) => s.id === c.sceneId));
-  const captureQ = avg(caps.map((c) => c.quality), 60);
+  // A finished effects revision counts once toward its scene's capture (revisions.ts).
+  const revised = (sceneId: string) => p.tasks.some((x) => x.id === `post:vfx-rev:${sceneId}` && x.status === 'done') ? EFFECTS_REVISION_GAIN : 0;
+  const captureQ = avg(caps.map((c) => Math.min(100, c.quality + revised(c.sceneId))), 60);
   const lostDays = p.schedule.days.filter((d) => d.status === 'lost').length;
   const totalDays = Math.max(1, p.schedule.days.length);
   const crewCap = (r: string) => {
@@ -332,7 +335,9 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
       const others = p.cast.filter((b) => b.performer !== a.performer && b.characterId !== a.characterId && s.participants.includes(b.characterId));
       return avg(others.map((b) => pairChemistry(state, a.performer, b.performer)), 0);
     });
-    out[`performance:${a.characterId}:${a.performer}`] = clamp(base * 0.6 + avg(sc, 60) * 0.4 + avg(chem, 0) * 0.5);
+    // Re-recorded lines, once the session is done, count once toward the part's performance (revisions.ts).
+    const revoiced = p.tasks.some((x) => x.id === `post:revoice:${a.characterId}` && x.status === 'done') ? REVOICE_GAIN : 0;
+    out[`performance:${a.characterId}:${a.performer}`] = clamp(base * 0.6 + avg(sc, 60) * 0.4 + avg(chem, 0) * 0.5 + revoiced);
   }
   const perf = avg(Object.entries(out).filter(([k]) => k.startsWith('performance:')).map(([, v]) => v), 55);
   // Rounded to the nearest whole value; never derived from genre labels, budget size or identity.

@@ -165,7 +165,7 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
     "Featuring"); approval means showing them the locked cut (3 days), and a refusal holds delivery until their scenes
     are cut; unlocking picture means showing them again. Test helpers (`manage`, `contributorApprovals`) do what a
     producer would.
-  - Stage 9, post, in progress:
+  - Stage 9, post, everything below now VERIFIED:
     - ADR and Foley (`15-04.02`), VERIFIED: new projects edit dialogue, record Foley and cut effects as three tasks
       (the units of the old single sound pass; a day or two longer for short works); the mix waits for all three.
       Dialogue is replaced (ADR) when there was no sound mixer or, on new projects, when weather spoiled a scene
@@ -174,8 +174,10 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       leaves chosen scenes out; it is a day of the editor's work that delivery waits for, has its own runtime (festival
       runtime rules read the version entered; the submission dialog offers it) and its own credits (people whose scenes
       it leaves out aren't credited on it).
-    - still to do: replacement voice and effects revisions `15-03.02`.
-- **Next:** finish stage 9; stage 10:
+    - additional work (`15-03.02`, `revisions.ts`): before lock, Revise Effects (the effects artist's days, the grade
+      waits) or Re-Record Lines (a sound designer's day plus the performer's day rate, paid when booked; the sound waits).
+      Once done, the assessment counts the scene's capture +5 or the performance +4, once (game calibration).
+- **Next:** stage 10:
   territories `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11: relationships `18-02`,
   opportunities `18-03`.
   - Also still open: the IMPLEMENTED UNVERIFIED children (25) that need only a test.
