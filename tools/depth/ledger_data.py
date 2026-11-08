@@ -418,7 +418,9 @@ C = {
 ]),
 '15-04': ('Edit, Production', 'src/engine/production/tasks.ts', [
   ('Sound, music, effects, colour, mix and captions as dependent work', 'VE', ['tests/journeys.test.ts::runs from script to delivery'], ''),
-  ('Dialogue edit with ADR and Foley as their own work', 'MI', [], 'post:sound covers them as one task'),
+  ('Dialogue edit with ADR and Foley as their own work', 'V',
+   ['tests/post-sound.test.ts::a new project edits dialogue, records Foley and cuts effects as separate work', 'tests/post-sound.test.ts::when the weather spoiled the sound', 'e2e/media.spec.ts::Sound finishing as its own work (SLATE-15-04.02)'],
+   'New projects only; the sound designer does all three, so short works take a day or two longer'),
   ('Unlocking the picture reopens the finishing work it affects', 'IU', [], 'unlockPicture exists; no test'),
 ]),
 '15-05': ('Edit, Release', 'src/engine/finish.ts', [

@@ -165,7 +165,13 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
     "Featuring"); approval means showing them the locked cut (3 days), and a refusal holds delivery until their scenes
     are cut; unlocking picture means showing them again. Test helpers (`manage`, `contributorApprovals`) do what a
     producer would.
-- **Next:** stage 9: replacement voice and effects `15-03.02`, ADR and Foley `15-04.02`, versions `15-05.03`; stage 10:
+  - Stage 9, post, in progress:
+    - ADR and Foley (`15-04.02`), VERIFIED: new projects edit dialogue, record Foley and cut effects as three tasks
+      (the units of the old single sound pass; a day or two longer for short works); the mix waits for all three.
+      Dialogue is replaced (ADR) when there was no sound mixer or, on new projects, when weather spoiled a scene
+      (`needsDialogueReplacement`); the dialogue edit waits for it. Production golden regenerated (days +1 to +3).
+    - still to do: replacement voice and effects revisions `15-03.02`, festival and distribution versions `15-05.03`.
+- **Next:** finish stage 9; stage 10:
   territories `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11: relationships `18-02`,
   opportunities `18-03`.
   - Also still open: the IMPLEMENTED UNVERIFIED children (25) that need only a test.

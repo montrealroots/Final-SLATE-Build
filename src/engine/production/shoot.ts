@@ -124,6 +124,11 @@ export function moveShootDay(state: GameState, p: Project, dayId: string): strin
   return k;
 }
 
+/** A scene's dialogue is re-recorded in post when there was no sound mixer, or (new projects) the weather spoiled it. */
+export function needsDialogueReplacement(p: Project, s: Scene, compromised: boolean): boolean {
+  return s.dialogue.length > 0 && (!hasCrew(p, 'sound-mixer') || (!!p.takesModel && compromised));
+}
+
 export function hasCrew(p: Project, roleId: string): boolean {
   return p.hires.some((h) => covers(h.roleId, roleId) && h.status === 'accepted');
 }
@@ -260,9 +265,15 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const recorded = shotPlan(p, s.id) ? recordTakes(state.seed, p, s, d.date, quality) : null;
     markCaptured(p, s.id, already + (1 - already) * fraction, recorded ? takeFigures(recorded.takes[recorded.chosen]).quality : quality, compromised);
     if (recorded) Object.assign(p.captures.find((c) => c.sceneId === s.id)!, { takes: recorded.takes, chosenTake: recorded.chosen, perf: recorded.takes[recorded.chosen].perf });
-    if (!hasCrew(p, 'sound-mixer') && s.dialogue.length) {
+    // Dialogue replacement: recorded without a sound mixer, or, on projects from November 8, 2026, in weather that spoiled
+    // the sound (SLATE-15-04.02). The episode's dialogue edit waits for it.
+    if (needsDialogueReplacement(p, s, compromised)) {
       const id = `post:adr:${s.id}`;
-      if (!p.tasks.some((x) => x.id === id)) p.tasks.push(t('post:adr', s.id, `Dialogue Replacement: ${label}`, 'Post Production', 'sound-designer', 1, 'days', [`milestone:lock:${s.episode}`], { sceneIds: [s.id], episode: s.episode }));
+      if (!p.tasks.some((x) => x.id === id)) {
+        p.tasks.push(t('post:adr', s.id, `Dialogue Replacement: ${label}`, 'Post Production', 'sound-designer', 1, 'days', [`milestone:lock:${s.episode}`], { sceneIds: [s.id], episode: s.episode }));
+        const edit = p.tasks.find((x) => x.id === `post:dialogue:${s.episode}`);
+        if (edit && !edit.dependsOn.includes(id)) edit.dependsOn.push(id);
+      }
     }
     if (already + (1 - already) * fraction < 0.999) {
       pending.push(s.id);

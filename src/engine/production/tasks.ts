@@ -186,11 +186,19 @@ export function buildTasks(p: Project): Task[] {
     tasks.push(t('post:assembly', String(e), `Assembly Edit${isEpisodic(p.axes.format) ? `, Episode ${e}` : ''}`, 'Post Production', 'editor', Math.max(1, minutes / 6), 'days', capDeps, { episode: e }));
     const lock = `milestone:lock:${e}`;
     const hasVfx = eScenes.some((s) => s.vfx.length && sceneTechnique(p, s) === 'live');
-    tasks.push(t('post:sound', String(e), `Sound Editing${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 5), 'days', [lock], { episode: e }));
+    // Projects from November 8, 2026 edit dialogue, record Foley and cut effects as their own work (SLATE-15-04.02). The
+    // units add up to the single sound pass they replace, but each is at least a day and one sound designer works one task
+    // a day, so a short work's sound takes a day or two longer (the production golden moved by 1 to 3 days). The dialogue
+    // edit waits for any dialogue replacement.
+    if (p.takesModel) {
+      tasks.push(t('post:dialogue', String(e), `Dialogue Edit${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 12), 'days', [lock, ...p.tasks.filter((x) => x.kind === 'post:adr' && x.episode === e).map((x) => x.id)], { episode: e }));
+      tasks.push(t('post:foley', String(e), `Foley${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 15), 'days', [lock], { episode: e }));
+      tasks.push(t('post:sound', String(e), `Sound Effects Editing${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 20), 'days', [lock], { episode: e }));
+    } else tasks.push(t('post:sound', String(e), `Sound Editing${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 5), 'days', [lock], { episode: e }));
     tasks.push(t('post:music', String(e), `Score${epSuffix(p, e)}`, 'Music', 'composer', Math.max(1, minutes / 4), 'days', [lock], { episode: e }));
     if (hasVfx) tasks.push(t('post:vfx', String(e), `Visual Effects${epSuffix(p, e)}`, 'Post Production', 'vfx-artist', eScenes.reduce((a, s) => a + s.vfx.length * 4, 0), 'days', [lock], { episode: e }));
     tasks.push(t('post:color', String(e), `Color Grade${epSuffix(p, e)}`, 'Post Production', 'colorist', Math.max(1, minutes / 20), 'days', [lock, ...(hasVfx ? [`post:vfx:${e}`] : [])], { episode: e }));
-    tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, minutes / 30), 'days', [`post:sound:${e}`, `post:music:${e}`, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
+    tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, minutes / 30), 'days', [`post:sound:${e}`, ...(p.takesModel ? [`post:dialogue:${e}`, `post:foley:${e}`] : []), `post:music:${e}`, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
     tasks.push(t('post:captions', String(e), `Captions And Subtitles${epSuffix(p, e)}`, 'Post Production', 'subtitler', Math.max(1, (minutes / 30) * p.axes.dialogueLanguages.length), 'days', [`post:mix:${e}`], { episode: e }));
     tasks.push(t('post:qc', String(e), `Delivery Quality Control${epSuffix(p, e)}`, 'Post Production', 'qc-technician', 1, 'days', [`post:color:${e}`, `post:mix:${e}`, `post:captions:${e}`], { episode: e }));
   }
