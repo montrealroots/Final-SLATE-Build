@@ -383,6 +383,8 @@ export interface Hire {
   estDays: number;
   status: 'offered' | 'accepted' | 'declined' | 'released' | 'countered';
   counterRate?: number;
+  /** When an unanswered counteroffer lapses (hiring.ts COUNTER_OPEN_DAYS); absent on counters from before November 8, 2026. */
+  counterUntil?: number;
   offeredAt: number;
   responseAt: number;
   obligationId: string | null;

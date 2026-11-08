@@ -49,7 +49,7 @@ function HireRow({ p, h }: { p: Project; h: Hire }) {
       <td data-label="Status">
         <span className={`chip ${h.status === 'accepted' ? 'chip-positive' : h.status === 'declined' ? 'chip-negative' : h.status === 'countered' ? 'chip-warning' : ''}`}>{STATUS_LABEL[h.status]}</span>
         {h.status === 'offered' && <div className="dim">Answer by about {formatDateKey(dateKey(h.responseAt, zone))}</div>}
-        {h.status === 'countered' && <div className="dim">Asks {money(h.counterRate ?? 0)} a day</div>}
+        {h.status === 'countered' && <div className="dim">Asks {money(h.counterRate ?? 0)} a day{h.counterUntil ? `, until ${formatDateKey(dateKey(h.counterUntil, zone))}` : ''}</div>}
         {h.daysWorked > 0 && <div className="dim">{plural(h.daysWorked, 'day')} worked</div>}
         {err && <div role="alert" style={{ color: 'var(--negative)' }}>{err}</div>}
       </td>

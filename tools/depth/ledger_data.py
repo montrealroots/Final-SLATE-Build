@@ -282,7 +282,7 @@ C = {
 '09-03': ('Cast', 'src/engine/hiring.ts', [
   ('Offer, then acceptance, refusal or counteroffer', 'VE', ['e2e/careers.spec.ts::an offer to a performer booked elsewhere is turned down'], ''),
   ('A booking reserves the dates and the money together; no double booking', 'VE', ['tests/schedule.test.ts::refuses when someone needed on set is busy'], ''),
-  ('An unanswered offer lapses and releases what it held', 'IU', [], 'Offers resolve by responseAt; no test of a lapse'),
+  ('An unanswered offer lapses and releases what it held', 'V', ['tests/relationships.test.ts::waits its open days, then lapses, releasing the money it held and the part'], 'Repaired November 8, 2026: an unanswered counteroffer held the part for good; it now lapses after 7 days (game calibration)'),
 ]),
 '09-04': ('Cast', 'src/engine/hiring.ts; src/engine/mocap.ts', [
   ('Cast yourself or not, per part', 'VE', ['e2e/live-action.spec.ts::cast yourself'], ''),

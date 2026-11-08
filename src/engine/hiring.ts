@@ -225,7 +225,11 @@ export function resolveOffer(state: GameState, p: Project, h: Hire): string {
     } else if (ratio >= 0.7) {
       h.status = 'countered';
       h.counterRate = Math.round(person.dayRate * Math.max(1, w.minRatio ?? 1));
-      text = `${person.name} would take ${roleWord} at ${money(h.counterRate)} a day instead of ${money(h.dayRate)}.${(w.minRatio ?? 1) > 1 && w.reason ? ` ${w.reason}` : ''}`;
+      // A counteroffer waits COUNTER_OPEN_DAYS for an answer, then lapses and frees the part (SLATE-09-03, November 8,
+      // 2026). Until then an unanswered counter held the role and its reserved money for good.
+      h.counterUntil = state.now + COUNTER_OPEN_DAYS * DAY;
+      schedule(state, h.counterUntil, 'counter-lapse', { projectId: p.id, hireId: h.id }, { attention: 'notify', priority: 55 });
+      text = `${person.name} would take ${roleWord} at ${money(h.counterRate)} a day instead of ${money(h.dayRate)}. They'll wait ${COUNTER_OPEN_DAYS} days for your answer.${(w.minRatio ?? 1) > 1 && w.reason ? ` ${w.reason}` : ''}`;
     } else {
       decline(state, p, h);
       text = `${person.name} turned down ${roleWord}. The rate was too low.`;
@@ -276,6 +280,18 @@ function accept(state: GameState, p: Project, h: Hire, rate: number): void {
     p.cast.push({ characterId: h.characterId, performer: h.personId, method: h.method ?? 'on-camera', note: '', hireId: h.id });
   }
 }
+
+export const COUNTER_OPEN_DAYS = 7;
+
+registerHandler('counter-lapse', (state, ev) => {
+  const p = state.projects.find((x) => x.id === ev.payload.projectId);
+  const h = p?.hires.find((x) => x.id === ev.payload.hireId);
+  if (!p || !h || h.status !== 'countered') return { suppressInterrupt: true };
+  decline(state, p, h);
+  const text = `${personById(state, h.personId).name}'s counteroffer for ${roleLabel(h.roleId).toLowerCase()} on ${p.title} lapsed unanswered. The part is open again.`;
+  addLog(state, text, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: h.kind === 'cast' ? 'cast' : 'crew' } });
+  return { message: text };
+});
 
 function decline(state: GameState, p: Project, h: Hire): void {
   h.status = 'declined';

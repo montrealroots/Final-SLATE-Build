@@ -124,7 +124,7 @@ SLATE-09-02.02,SLATE-09-02,Callbacks and chemistry reads,VERIFIED,"tests/auditio
 SLATE-09-02.03,SLATE-09-02,A missed or declined audition leaves the others; background casting skips auditions,VERIFIED,"tests/auditions.test.ts::someone booked on the session day declines, saying so, and the others still read | tests/auditions.test.ts::background parts, cast parts and repeat invitations are refused with a reason",
 SLATE-09-03.01,SLATE-09-03,"Offer, then acceptance, refusal or counteroffer",VERIFIED EXISTING,e2e/careers.spec.ts::an offer to a performer booked elsewhere is turned down,
 SLATE-09-03.02,SLATE-09-03,A booking reserves the dates and the money together; no double booking,VERIFIED EXISTING,tests/schedule.test.ts::refuses when someone needed on set is busy,
-SLATE-09-03.03,SLATE-09-03,An unanswered offer lapses and releases what it held,IMPLEMENTED UNVERIFIED,,Offers resolve by responseAt; no test of a lapse
+SLATE-09-03.03,SLATE-09-03,An unanswered offer lapses and releases what it held,VERIFIED,"tests/relationships.test.ts::waits its open days, then lapses, releasing the money it held and the part","Repaired November 8, 2026: an unanswered counteroffer held the part for good; it now lapses after 7 days (game calibration)"
 SLATE-09-04.01,SLATE-09-04,"Cast yourself or not, per part",VERIFIED EXISTING,e2e/live-action.spec.ts::cast yourself,
 SLATE-09-04.02,SLATE-09-04,A replaced performer keeps pay and credit for work that stays,VERIFIED EXISTING,tests/mocap-calendar.test.ts::keeps what they were paid,
 SLATE-09-05.01,SLATE-09-05,"Credits by part, method and episode",VERIFIED EXISTING,e2e/journeys.spec.ts::episode-level credits,
