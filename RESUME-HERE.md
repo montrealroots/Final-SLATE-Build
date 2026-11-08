@@ -107,13 +107,40 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
     the exact shortfall until season 2 raises its own money.
   - Ledger after stage 4: parents 54 VERIFIED EXISTING, 4 VERIFIED, 22 IMPLEMENTED UNVERIFIED, 13 NEEDS REPAIR,
     5 MISSING, 2 EXTERNAL BLOCKER; children 148 / 32 / 26 / 0 / 21 MISSING / 2.
-- **Next:** stage 5 (finance negotiation `08-03.03`, auditions `09-02`), then the rest of `docs/depth/README.md`,
-  Build Order (stage 6: location options `11-02.02`, design approval `11-03.02`, call sheets `11-05.03`; stage 7:
-  live-action setups and takes `12-02.02`, `12-03`; stage 8: contributor use restrictions `14-02.02`; stage 9:
-  replacement voice and effects `15-03.02`, ADR and Foley `15-04.02`, versions `15-05.03`; stage 10: territories
-  `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11: relationships `18-02`, opportunities
-  `18-03`).
-  - Also still open: the IMPLEMENTED UNVERIFIED children (26) that need only a test.
+  - Stage 5, money and people, everything below now VERIFIED:
+    - offers lapse (`08-03.02`, `negotiation.ts`): a backer's offer is open 21 days, then lapses and that backer isn't
+      asked again for the project; offers from older saves have no lapse date and stay open;
+    - asking for better terms (`08-03.03`): once per offer, one term the backer has (a smaller income share, less to
+      repay first, more on signing, no casting approval). They answer in 5 days; leverage (open script notes, delivered
+      work, another open offer) sets the odds and the world seed settles it: agree, keep their terms, or take it back.
+      Grants and the starting backing aren't negotiable;
+    - auditions (`09-02`, `auditions.ts`, `casting-calls.ts`): invite performers to read (3 days' notice, on the
+      calendar); a booked performer declines saying so, some miss it; a read shows their real capability as a range in
+      words; a callback narrows it and can be a chemistry read with someone cast or seen in the same scenes. Chemistry
+      is a modeled pair property that now moves shared-scene performances by half its value (finish.ts), read or not.
+      The comparison sits side by side, never one score; background parts aren't auditioned.
+  - Browser tests: `e2e/negotiation.spec.ts`, `e2e/auditions.spec.ts` (desktop, phone; world seed 11).
+  - Ledger after stage 5: parents 55 VERIFIED EXISTING, 5 VERIFIED, 22 IMPLEMENTED UNVERIFIED, 12 NEEDS REPAIR,
+    4 MISSING, 2 EXTERNAL BLOCKER; children 148 / 37 / 25 / 0 / 17 MISSING / 2.
+  - Startup JavaScript budget: page-only engine code now loads with its page (`season.ts`, `sequel.ts`, `shelve.ts`,
+    `structure-edit.ts`, `casting-calls.ts`), so startup is 697 kB of 700. New page-only code goes in such modules;
+    `awards.ts` (60 kB at startup) is the largest remaining candidate.
+  - Stage 6, preparation, in progress:
+    - call sheets (`11-05.03`, `callsheet.ts`), VERIFIED: each scheduled shoot day has one, derived from what the day runs
+      on (call 7 AM or 5 PM for night, wrap, who is paid on set, uncast parts, crew, crowd, holiday premium, daylight for
+      an exterior, the forecast once there is one); browser check in `e2e/live-action.spec.ts`;
+    - design approval (`11-03.02`, `designs.ts`), VERIFIED: once visual development is done, each character's design
+      waits for the producer; Approve lets its builds start, Ask For Changes adds a day of visual development that every
+      build waits for; a later design change needs approving again. Projects started before keep building without it
+      (`designReview` unset). The test helpers (`tests/helpers.ts manage`, `e2e/helpers.ts runToDelivery`) approve finished
+      designs as a producer would; the production golden's payment hashes were regenerated for that one-day wait (days,
+      quality and credits unchanged);
+    - still to do: location options and a backup (`11-02.02`).
+- **Next:** finish stage 6 (`11-02.02`), then stage 7: live-action setups and takes `12-02.02`, `12-03`; stage 8:
+  contributor use restrictions `14-02.02`; stage 9: replacement voice and effects `15-03.02`, ADR and Foley `15-04.02`,
+  versions `15-05.03`; stage 10: territories `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11:
+  relationships `18-02`, opportunities `18-03`.
+  - Also still open: the IMPLEMENTED UNVERIFIED children (25) that need only a test.
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 

@@ -10,6 +10,7 @@ import { getPlace } from '../data/places';
 import { TERRITORY_CITIZENSHIP, countryInSentence, homeCountries } from './identity';
 import { DOCUMENTS, documentNames, documentsNeeded, type DocumentId } from './script-effects';
 import { isNonfiction, scriptIssues } from './projects';
+import { OFFER_OPEN_DAYS, openOffer } from './negotiation';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY } from './time';
@@ -72,7 +73,15 @@ export function financeSummary(p: Project) {
   return { estimate, target, promised, received, stillToRaise: Math.max(0, target - promised), owedOnDelivery: promised - received };
 }
 
-const delivered = (state: GameState) => state.projects.filter((x) => x.delivered !== null).length;
+export const delivered = (state: GameState) => state.projects.filter((x) => x.delivered !== null).length;
+
+/**
+ * Backers' modeled read of the script, 20 to 90: open readiness notes on it lower it (scriptIssues: structure, causality...).
+ * Advisory prompts (a text field left empty, a fit suggestion) aren't faults and don't count (projects.ts Issue).
+ */
+export function scriptScore(p: Project): number {
+  return Math.max(20, 90 - scriptIssues(p).filter((i) => i.severity !== 'blocking' && !i.advisory).length * 8);
+}
 const usedStarting = (state: GameState) => state.projects.some((x) => deals(x).some((d) => d.kind === 'starting' && d.status !== 'declined' && d.status !== 'refused'));
 const scriptApproved = (p: Project) => p.approvedDraft !== null && p.approvedDraft !== undefined;
 
@@ -165,10 +174,8 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
   const { stillToRaise, promised, target } = financeSummary(p);
   const roll = stream(state.seed, 'finance', p.id, deal.id)();
   const proven = delivered(state);
-  // The backers' modeled read of the script: open readiness notes on it lower it (scriptIssues: structure, causality...).
-  // Advisory prompts (a text field left empty, a fit suggestion) aren't faults and don't count (projects.ts Issue).
   const notes = scriptIssues(p).filter((i) => i.severity !== 'blocking' && !i.advisory).length;
-  const scriptScore = Math.max(20, 90 - notes * 8);
+  const script = scriptScore(p);
   const t = deal.terms;
   let offer = 0;
   let refusal = '';
@@ -180,7 +187,7 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
       deal.reason = 'Agreed when your story began. They are repaid from the project\'s income first.';
       break;
     case 'grant': {
-      const chance = 0.1 + scriptScore / 300 + Math.min(0.2, proven * 0.1); // competitive: at best about 4 in 10 for new work
+      const chance = 0.1 + script / 300 + Math.min(0.2, proven * 0.1); // competitive: at best about 4 in 10 for new work
       if (roll < chance) {
         offer = Math.min(stillToRaise, GRANT_CAP);
         t.credit = 'Supported By';
@@ -191,7 +198,7 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
     }
     case 'investor': {
       const cap = proven ? INVESTOR_CAP_PROVEN : INVESTOR_CAP_FIRST;
-      const chance = 0.45 + scriptScore / 300 + Math.min(0.25, proven * 0.1);
+      const chance = 0.45 + script / 300 + Math.min(0.25, proven * 0.1);
       if (roll < chance) {
         offer = Math.min(stillToRaise, cap);
         t.recoup = Math.round(offer * 1.2);
@@ -230,7 +237,9 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
   }
   deal.amount = offer;
   deal.status = 'offered';
-  addLog(state, `The ${deal.backer.toLowerCase()} offered ${money(offer)} for ${p.title}. Read the terms before you accept.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+  // The agreed starting backing stays open; any other offer lapses if it isn't answered (negotiation.ts).
+  if (deal.kind !== 'starting') openOffer(state, p, deal);
+  addLog(state, `The ${deal.backer.toLowerCase()} offered ${money(offer)} for ${p.title}.${deal.expiresAt ? ` It is open for ${OFFER_OPEN_DAYS} days.` : ''} Read the terms before you accept.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
 }
 
 registerHandler('finance-decision', (state, ev) => {
@@ -258,7 +267,8 @@ export function dealTerms(d: FinanceDeal): string[] {
 /** Accept an offer: its signing money arrives now and its terms apply from now on. */
 export function acceptDeal(state: GameState, p: Project, dealId: string): void {
   const d = deals(p).find((x) => x.id === dealId);
-  if (!d || d.status !== 'offered') throw new Error('That offer is no longer open.');
+  if (!d || d.status !== 'offered' || (d.expiresAt !== undefined && state.now >= d.expiresAt)) throw new Error('That offer is no longer open.');
+  if (d.counter && !d.counter.outcome) throw new Error('They are considering the better terms you asked for. Wait for their answer.');
   if (p.delivered && d.terms.onDelivery) throw new Error('This project is already delivered.');
   d.status = 'accepted';
   const now = d.amount - d.terms.onDelivery;

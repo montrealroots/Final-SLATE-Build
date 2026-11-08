@@ -318,12 +318,22 @@ export async function produceToDelivery(page: Page, opts: { yourself?: string[];
   await runToDelivery(page, opts);
 }
 
+/** Approve every finished design waiting on the Production page (designs.ts): nothing is built until it is approved. */
+export async function approveDesigns(page: Page): Promise<number> {
+  await section(page, 'Production');
+  const buttons = page.getByRole('button', { name: /^Approve .+'s Design$/ });
+  let n = 0;
+  for (; n < 20 && (await buttons.count()); n++) await buttons.first().click();
+  return n;
+}
+
 /** From a built schedule, keep the production moving (staff, cast, cut passes, lock) until it is delivered. */
 export async function runToDelivery(page: Page, opts: { weeks?: number; step?: 'week' | 'month'; mocap?: boolean } = {}): Promise<void> {
   for (let i = 0; i < (opts.weeks ?? 60); i++) {
     await advance(page, opts.step ?? 'week');
     await staffEveryDepartment(page);
     await castRoles(page);
+    await approveDesigns(page);
     // Motion capture: book the stage, then approve a take once one exists.
     if (opts.mocap) {
       await section(page, 'Production');

@@ -143,7 +143,7 @@ function zoneOk(zone: string): boolean {
   }
 }
 
-const FINANCE_STATUSES = ['considering', 'offered', 'declined', 'refused', 'accepted', 'breached'];
+const FINANCE_STATUSES = ['considering', 'offered', 'declined', 'refused', 'accepted', 'breached', 'lapsed', 'withdrawn'];
 const FINANCE_KINDS = ['agreed', 'starting', 'grant', 'investor', 'co-producer', 'commissioner'];
 
 function validateProject(raw: unknown, i: number, seen: Set<string>): void {

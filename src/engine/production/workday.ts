@@ -14,6 +14,7 @@ import { addLog, registerHandler, schedule } from '../state';
 import { addDaysToKey, formatDateKey, localToInstant, parseYmd } from '../time';
 import { HOLIDAY_PREMIUM, MATERIAL_COST, RENDER_HOURS_PER_FRAME, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO } from './rates';
 import { SHOOT_CREW, markCaptured } from './shoot';
+import { designGate } from '../designs';
 import { t } from './tasks';
 import { isWorkingDay, nextWorkingDay } from './schedule';
 
@@ -57,6 +58,8 @@ export function depsMet(p: Project, task: Task): { ok: boolean; reason?: string 
     const d = p.tasks.find((x) => x.id === dep);
     if (d && d.status !== 'done') return { ok: false, reason: `Waiting for ${d.label}.` };
   }
+  const design = designGate(p, task);
+  if (design) return { ok: false, reason: design };
   if (task.kind === 'anim:voice' && task.assetRef) {
     const cast = p.cast.find((c) => c.characterId === task.assetRef && c.method === 'voice');
     if (!cast) return { ok: false, reason: 'This character has no voice performer yet.' };

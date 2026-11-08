@@ -1,5 +1,6 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
+import { pairChemistry } from './auditions';
 import { scheduleRenewal } from './continuation';
 import { approvedTake, captureCredit } from './mocap';
 import { BROADCAST_EDIT_COST, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
@@ -308,7 +309,13 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
     const base = a.performer === 'player' ? 58 + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability;
     // A shared background never scores a performance: ability isn't inferred from ethnicity. It added 6 until the review
     // of November 7, 2026; casting still shows who shares one, as information.
-    out[`performance:${a.characterId}:${a.performer}`] = clamp(base * 0.6 + avg(sc, 60) * 0.4);
+    // How they play with the others in each of their scenes (auditions.ts pairChemistry, -8 to +8), at half weight; a
+    // chemistry read only reveals it. From November 8, 2026: before, performances ignored who they played against.
+    const chem = scenes.filter((s) => s.participants.includes(a.characterId)).map((s) => {
+      const others = p.cast.filter((b) => b.performer !== a.performer && b.characterId !== a.characterId && s.participants.includes(b.characterId));
+      return avg(others.map((b) => pairChemistry(state, a.performer, b.performer)), 0);
+    });
+    out[`performance:${a.characterId}:${a.performer}`] = clamp(base * 0.6 + avg(sc, 60) * 0.4 + avg(chem, 0) * 0.5);
   }
   const perf = avg(Object.entries(out).filter(([k]) => k.startsWith('performance:')).map(([, v]) => v), 55);
   // Rounded to the nearest whole value; never derived from genre labels, budget size or identity.

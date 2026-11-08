@@ -6,6 +6,7 @@ import {
 } from './engine-api';
 import { fundingScenario } from '../src/engine/projects';
 import type { CreationDraft, Format, GameState, Medium, PerformanceMethod, Project, Technique } from '../src/engine/types';
+import { approveDesign, designStatus, designsToReview } from '../src/engine/designs';
 
 export function startLife(seedTag: string, placeId = 'gb-london', over: Partial<CreationDraft> = {}): GameState {
   const d: CreationDraft = {
@@ -142,6 +143,8 @@ export function manage(state: GameState, p: Project): string[] {
   if (!p.delivered) {
     staffAll(state, p);
     castAll(state, p);
+    // Designs: approve each one as it is finished, as a producer would (designs.ts).
+    for (const cid of designsToReview(p)) if (designStatus(p, cid) === 'awaiting') { approveDesign(p, cid); did.push('design-approved'); }
     // Motion capture: book the stage once the schedule exists, then approve the best take when capture is done.
     for (const t of p.tasks.filter((x) => x.kind === 'anim:mocap' && x.assetRef)) {
       const rec = mocapRecord(p, t.assetRef!);

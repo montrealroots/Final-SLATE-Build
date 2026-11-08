@@ -89,6 +89,13 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await page.getByRole('button', { name: 'Build Schedule' }).click();
   await expect(page.getByRole('heading', { name: 'Shoot Days' })).toBeVisible();
   await expect(page.locator('li', { hasText: 'Ferry Dock' }).first()).toBeVisible();
+  // Each day's call sheet (SLATE-11-05.03): the call, where, who is called for which scenes, daylight for an exterior.
+  const dock = page.locator('section.card', { has: page.getByRole('heading', { name: 'Shoot Days' }) }).locator('li', { hasText: 'Ferry Dock' }).first();
+  await dock.getByText('Call Sheet', { exact: true }).click();
+  await expect(dock).toContainText('7:00 AM');
+  await expect(dock).toContainText('Ferry Dock, exterior');
+  await expect(dock).toContainText('You as Odile');
+  await expect(dock).toContainText(/Sunrise \d+:\d\d AM, sunset \d+:\d\d PM\./);
 
   // Let production run; keep staffing and move the edit along.
   for (let i = 0; i < 24; i++) {

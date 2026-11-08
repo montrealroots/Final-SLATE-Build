@@ -3,18 +3,48 @@ import { getPlace, placeLabel } from '../data/places';
 import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
-  qualityWords, requestPickups, depsMet, startCutPass, submitEntry, unlockPicture, withdrawEntry, addDaysToKey, categoryRecipients, type Category,
-  categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, rsvpScreening, screeningConflicts, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
+  qualityWords, requestPickups, depsMet, startCutPass, unlockPicture, addDaysToKey, categoryRecipients, type Category,
+  categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
   approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, restoreToEdit,
   cutScenes, entryNeeds, castPlacement, sceneLabel } from '../engine';
+import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
 import { contentSummary, cutConsequences, placementExplained, watershedRule } from '../engine/script-explain';
 import type { CapturePart, GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, PageHead, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
+import { approveDesign, askForDesignChanges, designStatus, designsToReview, type DesignStatus } from '../engine/designs';
 
 // ---------------- Production ----------------
+
+/** Each character's design waits for the producer before it is built (designs.ts, SLATE-11-03.02). */
+function DesignsPanel({ p }: { p: Project }) {
+  const [err, setErr] = useState<string | null>(null);
+  const words: Record<DesignStatus, string> = { designing: 'Being designed', awaiting: 'Ready for your approval', approved: 'Approved: building can start', changes: 'Changes asked for: being redrawn' };
+  return (
+    <section className="card" aria-labelledby="designs-h">
+      <h2 id="designs-h">Designs</h2>
+      <p className="dim">Nothing is built until you approve its design. Asking for changes adds a day of visual development that every build waits for, so it costs time and money before anything is made rather than after.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      <ul className="list">{designsToReview(p).map((cid) => {
+        const c = p.characters.find((x) => x.id === cid)!;
+        const st = designStatus(p, cid);
+        return (
+          <li key={cid} className="row-wrap">
+            <span className="grow"><strong>{c.name}</strong> <span className="dim">· {words[st]}</span></span>
+            {st === 'awaiting' && !p.delivered && (
+              <div className="row gap-2 wrap">
+                <button className="btn btn-sm btn-primary" aria-label={`Approve ${c.name}'s Design`} onClick={() => setErr(store.act(() => approveDesign(p, cid)))}>Approve Design</button>
+                <button className="btn btn-sm" aria-label={`Ask For Changes To ${c.name}'s Design`} onClick={() => setErr(store.act(() => askForDesignChanges(p, cid)))}>Ask For Changes</button>
+              </div>
+            )}
+          </li>
+        );
+      })}</ul>
+    </section>
+  );
+}
 
 export function ProductionTab({ p }: { p: Project }) {
   const g = useGame();
@@ -54,6 +84,7 @@ export function ProductionTab({ p }: { p: Project }) {
         )}
         <p className="dim">Work happens on working days at the production base. Advance or let time pass to see it move.</p>
       </section>
+      {designsToReview(p).length > 0 && <DesignsPanel p={p} />}
       {p.tasks.some((t) => t.kind === 'anim:mocap') && <MocapPanel p={p} />}
       {puppets.length > 0 && (
         <section className="card">

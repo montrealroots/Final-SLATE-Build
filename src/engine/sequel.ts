@@ -1,6 +1,7 @@
 // Starting a continuation (continuation.ts says what carries over and why). Kept apart from the renewal decision so it
 // loads with the Projects page, not at startup: the startup JavaScript budget is 700 kB.
 import { canContinue } from './continuation';
+import { openOffer } from './negotiation';
 import { approvedCharacters, createProject } from './projects';
 import { addLog, newId } from './state';
 import type { FinanceDeal, GameState, Project } from './types';
@@ -42,7 +43,9 @@ export function continueProject(state: GameState, p: Project, title?: string): P
     const deal: FinanceDeal = { ...JSON.parse(JSON.stringify(old)), id: newId(state, 'fd'), status: 'offered', askedAt: state.now, received: 0, repaid: 0, reason: 'They renewed the series and offer to fund this season on the same terms.' };
     delete deal.sent;
     delete deal.sentCopy;
+    delete deal.counter;
     next.finance = { estimate: next.finance?.estimate ?? 0, target: next.finance?.target ?? 0, deals: [deal] };
+    openOffer(state, next, deal);
   }
   next.history.push({ at: state.now, text: `Continues ${p.title}.` });
   addLog(state, `You started ${next.title}, continuing ${p.title}. Its characters and world carry over; ask back the people you want.`, 'project', { projectId: next.id, route: { view: 'project', projectId: next.id, tab: 'overview' } });
