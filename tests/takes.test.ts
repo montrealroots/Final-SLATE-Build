@@ -1,4 +1,5 @@
-// SLATE-12-02.02 and 12-03: setups and takes use the day, and the edit chooses among recorded takes.
+// SLATE-12-02.02 and 12-03: setups and takes use the day, and the edit chooses among recorded takes. These are the rules
+// earlier saves keep (directing absent); new projects use contextual directing (tests/directing.test.ts).
 import { chooseTake, setShotPlan } from '../src/engine/takes-actions';
 import { describe, expect, it } from 'vitest';
 import { DAY, assessQuality, processUntil } from './engine-api';
@@ -11,6 +12,9 @@ function shot(tag: string, plan?: { coverage: 'master' | 'standard' | 'full'; ta
     [{ name: 'Ada', patch: { roleSize: 'lead' } }],
     [{ place: 'Kitchen', chars: ['Ada'], minutes: 3 }, { place: 'Kitchen', chars: ['Ada'], minutes: 3 }]);
   approve(s, p);
+  // Labelled fixture: a project from before November 8, 2026 keeps the earlier take rules (directing absent); the
+  // contextual rules that replaced them for new projects are in tests/directing.test.ts.
+  delete p.directing;
   if (plan) for (const sc of p.scenes) setShotPlan(p, sc.id, plan);
   castAll(s, p);
   staffAll(s, p);

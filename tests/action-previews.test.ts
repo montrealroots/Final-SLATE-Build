@@ -19,6 +19,7 @@ const ACTIONS: Record<string, { preview: string; outcome: string }> = {
   addPlan: { preview: 'You choose the date, time and length.', outcome: 'The plan appears on the calendar and in Up Next.' },
   addVersion: { preview: 'The runtime it would run and the editor day to conform it.', outcome: 'The version is listed on the Versions card with its runtime.' },
   applyDesignChange: { preview: 'The impact callout counts the shots and assets the change rebuilds.', outcome: 'The rebuilt work appears on the Production page.' },
+  applyFix: { preview: 'Each fix in Dailies says what it does; a pickup names the cost of its day, and is refused when the money for it isn\'t there.', outcome: 'The Dailies card shows the take in the cut or the issue gone; a pickup day is logged and appears on the Schedule.' },
   approachBacker: { preview: 'The backer row says what they need and how many days they take to answer.', outcome: LOG },
   askForBetterTerms: { preview: 'What changes, that you can ask once, and the days they take to answer.', outcome: LOG },
   bookMocap: { preview: 'The button shows the booking cost.', outcome: 'The booked dates, and any passed over with why, are listed.' },

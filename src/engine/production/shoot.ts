@@ -9,14 +9,14 @@ import { approvedCharacters, approvedScenes, isNonfiction, projectModules, scene
 import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
 import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees } from './rates';
-import { ensureWorkEvent, isWorkingDay, nextWorkingDay, sceneLoad, scheduleShootDay } from './schedule';
+import { ensureWorkEvent, isWorkingDay, nextWorkingDay, sceneComplexity, sceneLoad, scheduleShootDay } from './schedule';
 import { addLogOnce, payPlanned, plannedRemaining } from './workday';
 import { t } from './tasks';
 import { personLanguagesFit } from './language';
 import type { GameState, Project, Scene, SceneCapture, ShootDay } from '../types';
 import { forecast, precipitationDuring, weatherOn, daylightWindowLocal } from '../weather';
 import { siteFactor, siteOnTheDay } from '../locations';
-import { recordTakes, shotPlan, takeFigures } from '../takes';
+import { SETUPS_OF, TAKE_RULES, applyPickup, isDirecting2, pickupLoad, recordTakes, setupTime, shotPlan, takeFigures } from '../takes';
 
 // ---------------- Shoot days ----------------
 
@@ -125,6 +125,15 @@ export function moveShootDay(state: GameState, p: Project, dayId: string): strin
 }
 
 /** A scene's dialogue is re-recorded in post when there was no sound mixer, or (new projects) the weather spoiled it. */
+/** The sound designer's day replacing a scene's dialogue in post; the episode's dialogue edit waits for it. */
+export function addDialogueReplacement(p: Project, s: Scene): void {
+  const id = `post:adr:${s.id}`;
+  if (p.tasks.some((x) => x.id === id)) return;
+  p.tasks.push(t('post:adr', s.id, `Dialogue Replacement: ${sceneLabel(p, s)}`, 'Post Production', 'sound-designer', 1, 'days', [`milestone:lock:${s.episode}`], { sceneIds: [s.id], episode: s.episode }));
+  const edit = p.tasks.find((x) => x.id === `post:dialogue:${s.episode}`);
+  if (edit && !edit.dependsOn.includes(id)) edit.dependsOn.push(id);
+}
+
 export function needsDialogueReplacement(p: Project, s: Scene, compromised: boolean): boolean {
   return s.dialogue.length > 0 && (!hasCrew(p, 'sound-mixer') || (!!p.takesModel && compromised));
 }
@@ -254,27 +263,43 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
         continue;
       }
     }
-    const need2 = sceneLoad(p, s, mods);
     const cap = p.captures.find((c) => c.sceneId === s.id);
+    const quality = captureQuality(state, p, s, compromised, f.late);
+    const soundAtRisk = s.dialogue.length > 0 && (!hasCrew(p, 'sound-mixer') || compromised);
+    // Directing 2: a pickup shoots only what was asked for (a take, singles or inserts), in part of the day (directing.ts).
+    const pickup = isDirecting2(p) ? d.pickups?.[s.id] : undefined;
+    if (pickup && cap && cap.version === p.approvedDraft) {
+      const share = pickupLoad(s, sceneComplexity(s, mods));
+      if (capacity < share) {
+        reasons.push(`${label}'s pickup ran out of time and needs another day.`);
+        pending.push(s.id);
+        continue;
+      }
+      capacity -= share;
+      reasons.push(applyPickup(state.seed, p, s, cap, pickup, d.date, quality, soundAtRisk));
+      shot.push(label);
+      continue;
+    }
     const already = cap && cap.version === p.approvedDraft ? cap.captured : 0;
+    // With a shot plan, the takes are recorded and the best balanced one is used (takes.ts). Directing 2 records them on
+    // the scene's first day, until its rule stops, and the time the scene needs follows the takes actually shot.
+    const keepTakes = isDirecting2(p) && !!cap?.takes?.length && cap.version === p.approvedDraft;
+    const recorded = shotPlan(p, s.id) && !keepTakes ? recordTakes(state.seed, p, s, d.date, quality, soundAtRisk) : null;
+    const plan = shotPlan(p, s.id);
+    const need2 = isDirecting2(p) && plan
+      ? (s.estMinutes / sceneComplexity(s, mods)) * setupTime(SETUPS_OF[plan.coverage].length, (recorded?.takes ?? cap?.takes ?? []).length || TAKE_RULES[plan.takes].planned)
+      : sceneLoad(p, s, mods);
     const remainingNeed = need2 * (1 - already);
     const fraction = Math.min(1, capacity / Math.max(0.01, remainingNeed));
     capacity -= Math.min(capacity, remainingNeed);
-    const quality = captureQuality(state, p, s, compromised, f.late);
-    // With a shot plan, the takes are recorded and the best balanced one is used (takes.ts).
-    const recorded = shotPlan(p, s.id) ? recordTakes(state.seed, p, s, d.date, quality) : null;
-    markCaptured(p, s.id, already + (1 - already) * fraction, recorded ? takeFigures(recorded.takes[recorded.chosen]).quality : quality, compromised);
-    if (recorded) Object.assign(p.captures.find((c) => c.sceneId === s.id)!, { takes: recorded.takes, chosenTake: recorded.chosen, perf: recorded.takes[recorded.chosen].perf });
+    const kept = keepTakes ? cap!.takes![cap!.chosenTake ?? 0] : null;
+    markCaptured(p, s.id, already + (1 - already) * fraction, recorded ? takeFigures(recorded.takes[recorded.chosen]).quality : kept ? takeFigures(kept).quality : quality, compromised);
+    const capNow = p.captures.find((c) => c.sceneId === s.id)!;
+    if (recorded) Object.assign(capNow, { takes: recorded.takes, chosenTake: recorded.chosen, perf: recorded.takes[recorded.chosen].perf });
+    if (isDirecting2(p) && plan) Object.assign(capNow, { setups: SETUPS_OF[plan.coverage], days: (keepTakes ? capNow.days ?? 1 : 0) + 1 });
     // Dialogue replacement: recorded without a sound mixer, or, on projects from November 8, 2026, in weather that spoiled
     // the sound (SLATE-15-04.02). The episode's dialogue edit waits for it.
-    if (needsDialogueReplacement(p, s, compromised)) {
-      const id = `post:adr:${s.id}`;
-      if (!p.tasks.some((x) => x.id === id)) {
-        p.tasks.push(t('post:adr', s.id, `Dialogue Replacement: ${label}`, 'Post Production', 'sound-designer', 1, 'days', [`milestone:lock:${s.episode}`], { sceneIds: [s.id], episode: s.episode }));
-        const edit = p.tasks.find((x) => x.id === `post:dialogue:${s.episode}`);
-        if (edit && !edit.dependsOn.includes(id)) edit.dependsOn.push(id);
-      }
-    }
+    if (needsDialogueReplacement(p, s, compromised)) addDialogueReplacement(p, s);
     if (already + (1 - already) * fraction < 0.999) {
       pending.push(s.id);
       reasons.push(`${label} ran out of time and needs another day.`);
@@ -317,13 +342,16 @@ export function rescheduleScenes(state: GameState, p: Project, sceneIds: string[
     id: newId(state, 'd'), date, episode: after.episode, sceneIds: [...sceneIds], locationLabel: after.locationLabel, interior: after.interior, night: after.night,
     status: 'scheduled', playerActing: after.playerActing, conflicts: [],
   };
+  // A pickup that didn't fit keeps what it was for: the moved day shoots the same pickup, not the whole scene again.
+  const pickups = Object.fromEntries(Object.entries(after.pickups ?? {}).filter(([id]) => sceneIds.includes(id)));
+  if (Object.keys(pickups).length) nd.pickups = pickups;
   p.schedule.days.push(nd);
   scheduleShootDay(state, p, nd);
   ensureWorkEvent(state, p);
 }
 
 /** Pickup days for scenes that need more coverage; grouped by location like the main schedule. */
-export function schedulePickups(state: GameState, p: Project, sceneIds: string[]): number {
+export function schedulePickups(state: GameState, p: Project, sceneIds: string[], pickups?: Record<string, 'take' | 'singles' | 'inserts'>): number {
   const scenes = approvedScenes(p).filter((s) => sceneIds.includes(s.id));
   const groups = new Map<string, Scene[]>();
   for (const s of scenes) {
@@ -342,6 +370,7 @@ export function schedulePickups(state: GameState, p: Project, sceneIds: string[]
     const d: ShootDay = {
       id: newId(state, 'd'), date, episode: Number(ep), sceneIds: list.map((s) => s.id), locationLabel: place, interior: ie === 'I', night: dn === 'N', status: 'scheduled',
       playerActing: list.some((s) => s.participants.some((c) => p.cast.some((a) => a.characterId === c && a.performer === 'player'))), conflicts: [],
+      ...(pickups && list.some((s) => pickups[s.id]) ? { pickups: Object.fromEntries(list.filter((s) => pickups[s.id]).map((s) => [s.id, pickups[s.id]])) } : {}),
     };
     p.schedule.days.push(d);
     scheduleShootDay(state, p, d);

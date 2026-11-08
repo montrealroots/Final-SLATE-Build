@@ -20,7 +20,7 @@ import { CONTINGENCY, costBreakdown, type CostArea } from '../engine/estimate';
 import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, scoutedPlaces, site } from '../engine/locations';
 import { dayFees, estimatedShootDays, willingness } from '../engine';
-import { COVERAGE, TAKES, planTime, shotPlan, type Coverage, type TakePolicy } from '../engine/takes';
+import { COVERAGE, EMPHASIS, SETUPS_OF, TAKES, TAKE_RULES, isDirecting2, planTime, requiredSetups, shotPlan, type Coverage, type Emphasis, type TakePolicy } from '../engine/takes';
 import type { Audition, FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
 import { store, useGame } from './store';
@@ -506,7 +506,9 @@ function ShotPlans({ p, sceneIds }: { p: Project; sceneIds: string[] }) {
   return (
     <>
       <h4>Shot Plan</h4>
-      <p className="dim small">More coverage gives the editor more to cut with; more takes give more to choose from, with diminishing returns. Both use more of the day, so fewer scenes fit and the shoot can run longer.</p>
+      <p className="dim small">{isDirecting2(p)
+        ? 'Each setup costs a reset and each take its running time, so more of either fits fewer scenes in the day. Coverage the scene needs is what the edit cuts with; more than it needs earns options, not a better film; less leaves a gap a pickup can fill later. A usable take is enough: more can still disappoint.'
+        : 'More coverage gives the editor more to cut with; more takes give more to choose from, with diminishing returns. Both use more of the day, so fewer scenes fit and the shoot can run longer.'}</p>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       {sceneIds.map((id) => {
         const s = approvedScenes(p).find((x) => x.id === id);
@@ -514,9 +516,21 @@ function ShotPlans({ p, sceneIds }: { p: Project; sceneIds: string[] }) {
         if (!s || !plan) return null;
         return (
           <div key={id} className="grid grid-3 form">
+            {isDirecting2(p) && <SelectField label={`Emphasis For ${sceneLabel(p, s)}`} value={plan.emphasis} options={(Object.keys(EMPHASIS) as Emphasis[]).map((k) => ({ value: k, label: EMPHASIS[k] }))} onChange={(v) => setErr(store.act(() => setShotPlan(p, id, { emphasis: v })))} />}
             <SelectField label={`Coverage For ${sceneLabel(p, s)}`} value={plan.coverage} options={(Object.keys(COVERAGE) as Coverage[]).map((k) => ({ value: k, label: COVERAGE[k].label }))} onChange={(v) => setErr(store.act(() => setShotPlan(p, id, { coverage: v })))} />
-            <SelectField label={`Takes For ${sceneLabel(p, s)}`} value={plan.takes} options={(Object.keys(TAKES) as TakePolicy[]).map((k) => ({ value: k, label: TAKES[k].label }))} onChange={(v) => setErr(store.act(() => setShotPlan(p, id, { takes: v })))} />
-            <p className="dim small">About {Math.round(planTime(p, s) * 100)}% of the standard plan's time.</p>
+            <SelectField label={`Takes For ${sceneLabel(p, s)}`} value={plan.takes} options={(Object.keys(TAKES) as TakePolicy[]).map((k) => ({ value: k, label: isDirecting2(p) ? TAKE_RULES[k].label : TAKES[k].label }))} onChange={(v) => setErr(store.act(() => setShotPlan(p, id, { takes: v })))} />
+            {isDirecting2(p) && (() => {
+              const need = requiredSetups(p, s);
+              const has = SETUPS_OF[plan.coverage];
+              const missing = need.filter((x) => !has.includes(x.setup));
+              const extra = has.filter((x) => !need.some((n) => n.setup === x));
+              return <ul className="dim small">
+                {need.map((n) => <li key={n.setup}>Needs {n.setup}: {n.reason}</li>)}
+                {missing.map((n) => <li key={'m' + n.setup} style={{ color: 'var(--warning)' }}>This plan has no {n.setup}: the edit will lack them unless a pickup shoots them.</li>)}
+                {extra.length > 0 && <li>More than it needs ({extra.join(', ')}): options in the edit, at the cost of the day's time.</li>}
+              </ul>;
+            })()}
+            <p className="dim small">About {Math.round(planTime(p, s) * 100)}% of the standard plan's time{isDirecting2(p) ? `, planning ${TAKE_RULES[plan.takes].planned} ${TAKE_RULES[plan.takes].planned === 1 ? 'take' : 'takes'} a setup` : ''}.</p>
           </div>
         );
       })}

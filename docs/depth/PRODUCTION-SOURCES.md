@@ -29,6 +29,7 @@ applicability, and its status becomes "verified fact".
 | `MOCAP_ANIMATION_FACTOR` | `src/engine/production/rates.ts` | 0.6 of keyframe work left | 13-04 | Modeled assumption | None |
 | `SITES` | `src/engine/locations.ts` | stage 1.6 times the fee, never falls through; stand-in 0.6, 15% risk; real place 5% risk | 11-02 | Modeled assumption | None |
 | `COVERAGE`, `TAKES`, `TAKE_CENTRE` | `src/engine/takes.ts` | time factors and take counts per plan | 12-02, 12-03 | Modeled assumption | None |
+| `TAKE_RULES`, `SETUP_RESET`, `TAKE_RUN`, `ISSUE_GAP` | `src/engine/takes.ts` | directing 2: takes allowed and planned per rule (1, up to 4, 5); a setup's reset 0.2 and a take's run 0.15 of a scene's standard load; a side 8 below what the crew and cast can do is an issue | 12-02, 12-03 | Modeled assumption; that set-ups and takes are what a shoot day's time goes on, and that a script supervisor records coverage and pickup shots, is from IATSE Local 634's job description (docs/depth/DIRECTING-RESEARCH.md) | IATSE Local 634, Script Department Positions And Descriptions (2025) |
 | `AUDITION_NOTICE_DAYS`, `FIRST_SPREAD`, `CALLBACK_SPREAD` | `src/engine/auditions.ts` | 3 days; ranges 22 and 8 wide | 09-02 | Modeled assumption | None |
 | `OFFER_OPEN_DAYS`, `COUNTER_DAYS` | `src/engine/negotiation.ts` | 21 and 5 days | 08-03 | Modeled assumption | None |
 | `COUNTER_OPEN_DAYS` | `src/engine/hiring.ts` | 7 days | 09-03 | Modeled assumption | None |

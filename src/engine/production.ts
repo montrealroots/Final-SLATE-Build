@@ -14,7 +14,7 @@ export { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, DAY_COST_SCALE, EQUIPMENT_P
 export { buildTasks } from './production/tasks';
 export { ensureWorkEvent, generatePlan, groupShootDays, isWorkingDay, nextWorkingDay, planShootDays, sceneComplexity, sceneLoad, type ShootDayGroup } from './production/schedule';
 export { depsMet, materialCost, playerDoes, puppetStatus, runWorkDay, teamFor } from './production/workday';
-export { keepWeatherPlan, moveShootDay, runShootDay, schedulePickups, swapWithInteriorDay } from './production/shoot';
+export { addDialogueReplacement, keepWeatherPlan, moveShootDay, runShootDay, schedulePickups, swapWithInteriorDay } from './production/shoot';
 export type { PlanResult } from './production/schedule';
 export { coachingNeeded, personLanguagesFit } from './production/language';
 

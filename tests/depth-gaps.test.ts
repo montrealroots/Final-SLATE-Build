@@ -1,7 +1,8 @@
 // Stage 12 of the gameplay-depth package: tests for children that were built before the package and had none
 // (docs/depth/COVERAGE-LEDGER.csv rows marked IMPLEMENTED UNVERIFIED). Each asserts the rule, not only the sentence.
 import { describe, expect, it } from 'vitest';
-import { computeCredits, costBreakdown, estimateDays, neededRoles, projectedCost, proposeStaffing, roleCandidates, scriptIssues, unlockPicture, validateAxes } from '../src/engine';
+import { computeCredits, costBreakdown, estimateDays, neededRoles, projectedCost, proposeStaffing, roleCandidates, scriptIssues, validateAxes } from '../src/engine';
+import { unlockPicture } from '../src/engine/edit-actions';
 import { buildTasks } from '../src/engine/production/tasks';
 import { breakdownComplete } from '../src/engine/script-explain';
 import type { ProjectAxes } from '../src/engine/types';

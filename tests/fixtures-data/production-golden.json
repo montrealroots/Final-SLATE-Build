@@ -9,7 +9,7 @@
     "credits": "Cast:Thandiwe Kim:Lead; Composer:Zara Tran; Costume Designer:Chloé Wójcik; Directed By:Rin Sato-Moreau; Director Of Photography:Yusuf Gallagher; Editor:Yara Dubois; Produced By:Rin Sato-Moreau; Production Designer:Gabriel Chowdhury; Sound Designer:Jae-won Hosseini; Written By:Rin Sato-Moreau",
     "quality": {
       "script": 48,
-      "direction": 70,
+      "direction": 69,
       "craft": 61,
       "editing": 74,
       "music": 64,
@@ -28,13 +28,13 @@
     "credits": "Cast:Pilar Ibrahim:Lead; Composer:Willa Ibrahim; Costume Designer:Xiomara Fitzgerald; Directed By:Rin Sato-Moreau; Director Of Photography:Beatriz Hosseini; Editor:Esi Yamamoto; Produced By:Rin Sato-Moreau; Production Designer:Elif Santos; Sound Designer:Dev Achebe; Written By:Rin Sato-Moreau",
     "quality": {
       "script": 48,
-      "direction": 70,
+      "direction": 69,
       "craft": 60,
       "editing": 64,
       "music": 66,
-      "performance:c3:np_actor_GB_3": 73,
-      "overall": 62,
-      "reception": 57
+      "performance:c3:np_actor_GB_3": 71,
+      "overall": 61,
+      "reception": 56
     }
   },
   "2D short / g1": {
@@ -169,13 +169,13 @@
     "credits": "Cast:Lorenzo Walker:Detective; Colorist:Lucas Reyes; Composer:Bruno Tran; Costume Designer:Jae-won Yilmaz; Delivery Quality Control:Sakura Bergström; Directed By:Rin Sato-Moreau; Director Of Photography:Mei Bergström; Editor:Gabriel Varga; Executive Producer And Showrunner:Rin Sato-Moreau; Production Designer:Alejandro O'Neill; Re-Recording Mixer:Farah Tanaka; Sound Designer:Camila Tanaka; Written By:Rin Sato-Moreau",
     "quality": {
       "script": 47,
-      "direction": 71,
+      "direction": 72,
       "craft": 59,
       "editing": 47,
       "music": 75,
-      "performance:c3:np_actor_GB_5": 72,
-      "overall": 62,
-      "reception": 67
+      "performance:c3:np_actor_GB_5": 75,
+      "overall": 63,
+      "reception": 68
     }
   },
   "TV limited series / g2": {
@@ -188,13 +188,13 @@
     "credits": "Cast:Ximena Okafor:Detective; Colorist:Yusuf Usman; Composer:Leila Brennan; Costume Designer:Yara Dlamini; Delivery Quality Control:Freya García; Directed By:Rin Sato-Moreau; Director Of Photography:Pilar Gallagher; Editor:Paloma O'Neill; Executive Producer And Showrunner:Rin Sato-Moreau; Production Designer:Chiara Dlamini; Re-Recording Mixer:Wanjiru Yilmaz; Sound Designer:Hana Xu; Written By:Rin Sato-Moreau",
     "quality": {
       "script": 47,
-      "direction": 60,
+      "direction": 61,
       "craft": 56,
       "editing": 58,
       "music": 48,
-      "performance:c3:np_actor_GB_30": 63,
-      "overall": 56,
-      "reception": 49
+      "performance:c3:np_actor_GB_30": 65,
+      "overall": 57,
+      "reception": 50
     }
   }
 }

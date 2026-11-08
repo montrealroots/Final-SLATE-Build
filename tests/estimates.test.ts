@@ -31,7 +31,9 @@ describe('the estimate follows the work', () => {
       const b = make(s, 'Spread Out', spread);
       const ba = costBreakdown(s, a);
       const bb = costBreakdown(s, b);
-      expect(ba.shootDays).toBe(3); // twelve minutes in one place: three days at four minutes a day
+      // Twelve minutes in one place, no exchange of dialogue: a master each, two takes planned, half the standard time,
+      // so two days at four minutes of standard work a day (production/schedule.ts, takes.ts setupTime).
+      expect(ba.shootDays).toBe(2);
       expect(bb.shootDays).toBeGreaterThan(ba.shootDays); // a day-or-night and inside-or-out split each needs its own day; the stunt and the crowd are slower
       expect(bb.total).toBeGreaterThan(ba.total);
       expect(bb.toCome.map((x) => x.label)).toEqual(expect.arrayContaining(['Pier, exterior, night', 'Roof, exterior', 'Stunt Coordinator', 'Background performers: Pier, exterior, night']));
@@ -147,8 +149,9 @@ describe('changing scope', () => {
     const p = make(s, 'One Room', oneRoom);
     p.captures.push({ sceneId: p.scenes[0].id, captured: 1, quality: 60, version: p.approvedDraft!, weatherCompromised: false }); // labelled fixture: scene 1 filmed
     const c = scopeChange(s, p, () => {});
-    expect(c.before.shootDays).toBe(2);
-    expect(c.after.shootDays).toBe(2);
+    expect(costBreakdown(s, { ...p, captures: [] }).shootDays).toBe(2); // all three scenes
+    expect(c.before.shootDays).toBe(1); // the two left: filmed footage isn't shot again
+    expect(c.after.shootDays).toBe(1);
   });
 });
 

@@ -494,6 +494,8 @@ export interface ShootDay {
   conflicts: string[];
   late?: boolean;
   weatherAnyway?: boolean;
+  /** Directing 2: on a pickup day, what each scene's pickup shoots (directing.ts). */
+  pickups?: Record<string, 'take' | 'singles' | 'inserts'>;
 }
 
 export type UnscriptedFamily = 'talk' | 'observational' | 'competition' | 'factual' | 'studio-variety';
@@ -552,9 +554,13 @@ export interface SceneCapture {
   /** Who performed in it (person ids or 'player'), so a replaced performer whose work remains is still credited. */
   performers?: string[];
   /** Its takes and the one used, with that take's performance side (takes.ts); absent for projects without shot plans. */
-  takes?: { perf: number; tech: number }[];
+  takes?: { perf: number; tech: number; issue?: 'performance' | 'camera' | 'sound' }[];
   chosenTake?: number;
   perf?: number;
+  /** Directing 2: the setups filmed, the shoot days the scene took, and what the player accepted missing. */
+  setups?: ('master' | 'singles' | 'inserts')[];
+  days?: number;
+  accepted?: ('master' | 'singles' | 'inserts' | 'continuity' | 'take')[];
 }
 
 /** A festival or distribution version: the delivered cut less the scenes it leaves out (versions.ts). */
@@ -654,7 +660,9 @@ export interface Project {
   designApprovals?: Record<string, { version: number; status: 'approved' | 'changes' }>;
   /** Live-action scenes are shot to a plan of coverage and takes (takes.ts); unset on projects started before. */
   takesModel?: boolean;
-  shotPlans?: Record<string, { coverage: 'master' | 'standard' | 'full'; takes: 'one' | 'few' | 'many' }>;
+  shotPlans?: Record<string, { coverage?: 'master' | 'standard' | 'full'; takes?: 'one' | 'few' | 'many'; emphasis?: 'scene' | 'performances' | 'detail' | 'one-shot' }>;
+  /** 2: contextual directing (takes.ts, directing.ts), projects from November 8, 2026; absent keeps the earlier take rules. */
+  directing?: 2;
   /** Versions conformed from the locked cut besides the main one (versions.ts). */
   versions?: ProjectVersion[];
   /** Sites chosen for each place after scouting, the backup, and those that fell through (locations.ts). */
