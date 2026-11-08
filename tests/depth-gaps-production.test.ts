@@ -1,7 +1,7 @@
 // Stage 12 of the gameplay-depth package: tests for production children built before the package that had none
 // (docs/depth/COVERAGE-LEDGER.csv rows marked IMPLEMENTED UNVERIFIED).
 import { describe, expect, it } from 'vitest';
-import { DAY, addDaysToKey, bookMocap, castPlayer, estimateDays, ledgerTotals, mocapRecord, precipitationDuring, processUntil, weatherOn } from '../src/engine';
+import { DAY, addDaysToKey, approvedScenes, bookMocap, castPlayer, estimateDays, pickupIntegration, requestPickups, ledgerTotals, mocapRecord, precipitationDuring, processUntil, weatherOn } from '../src/engine';
 import { rebookMissed } from '../src/engine/mocap';
 import { getPlace } from '../src/data/places';
 import { maybePuppetDamage } from '../src/engine/production/workday';
@@ -157,5 +157,34 @@ describe('preparation (SLATE-11-04)', () => {
     expect(cap.q).toBeGreaterThan(some.q);
     expect(beyond.q).toBe(cap.q); // the gain stops at seven days (twenty points of the player's part)
     expect(beyond.paid).toBeGreaterThan(cap.paid); // the days still cost
+  });
+});
+
+describe('a changed plate (SLATE-13-05)', () => {
+  it('a pickup of a live scene in a hybrid project restarts the plate integration begun in its episode, and says so', () => {
+    const s = startLife('gaps-plate');
+    const p = buildProject(s, { title: 'Bramble', format: 'short', medium: 'hybrid', technique: '3d-cg', runtime: 8, quality: 'limited' },
+      [{ name: 'June', patch: { roleSize: 'lead' } }, { name: 'Bramble', patch: { roleSize: 'co-lead', entity: 'supernatural', realization: 'cg', methods: ['voice', 'motion-capture'] } }],
+      [{ place: 'Garden', intExt: 'EXT', chars: ['June'], minutes: 2 }, { place: 'Hedge World', chars: ['Bramble'], minutes: 1, extra: { technique: '3d-cg' } }]);
+    approve(s, p);
+    p.tasks = buildTasks(p); // as production start builds them
+    const [garden, hedge] = approvedScenes(p);
+    const integrate = p.tasks.find((t) => t.kind === 'hy:integrate')!;
+    expect(pickupIntegration(p, [garden.id])).toEqual([]); // nothing integrated yet, nothing to restart
+    integrate.done = 1; integrate.status = 'active'; // labelled fixture: integration under way
+    p.captures.push({ sceneId: garden.id, captured: 1, quality: 60, version: p.approvedDraft!, weatherCompromised: false });
+    expect(pickupIntegration(p, [hedge.id])).toEqual([]); // an animated scene has no plate to reshoot
+    expect(pickupIntegration(p, [garden.id])).toEqual([integrate]);
+    requestPickups(s, p, [garden.id]);
+    expect([integrate.done, integrate.status]).toEqual([0, 'waiting']);
+    expect(s.log.some((l) => l.text === `New plates for Bramble restart ${integrate.label}: the compositor's days are worked again.`)).toBe(true);
+  });
+
+  it('outside a hybrid project a pickup restarts no integration', () => {
+    const s = startLife('gaps-plate-live');
+    const p = buildProject(s, { title: 'Garden', format: 'short', medium: 'live-action', runtime: 8 }, [{ name: 'June' }], [{ place: 'Garden', chars: ['June'] }]);
+    approve(s, p);
+    p.tasks = buildTasks(p);
+    expect(pickupIntegration(p, [p.scenes[0].id])).toEqual([]);
   });
 });

@@ -6,7 +6,7 @@ import { getPlace, placeLabel } from '../data/places';
 import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, coverageGaps, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, lockBlockers, lockPicture, money, planRelease, puppetStatus,
-  qualityWords, requestPickups, depsMet, startCutPass, unlockPicture, addDaysToKey, categoryRecipients, type Category,
+  qualityWords, requestPickups, pickupIntegration, depsMet, startCutPass, unlockPicture, addDaysToKey, categoryRecipients, type Category,
   categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
   approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, restoreToEdit,
   cutScenes, entryNeeds, castPlacement, sceneLabel } from '../engine';
@@ -291,6 +291,7 @@ export function EditTab({ p }: { p: Project }) {
                 {!p.edit.pictureLocked && <button className="btn btn-sm" onClick={() => setCutting2(g.sceneId)} aria-label={`Cut ${g.label} From The Edit`}>Cut It From The Edit</button>}
               </li>
             ))}</ul>
+            {(() => { const redo = pickupIntegration(p, pick); return redo.length ? <p className="callout callout-warning">New plates restart {redo.map((t) => t.label).join(', ')}: about {plural(Math.ceil(redo.reduce((a, t) => a + t.units, 0)), 'compositor day')} worked again.</p> : null; })()}
             <button className="btn" disabled={!pick.length || p.edit.pictureLocked} onClick={() => { setErr(store.act((s) => void requestPickups(s, p, pick))); setPick([]); }}>Request Pickups</button>
           </>
         ) : <p className="muted">No coverage gaps found.</p>}

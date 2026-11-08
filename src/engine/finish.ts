@@ -102,6 +102,16 @@ export function coverageGaps(p: Project): { sceneId: string; label: string; reas
   return out;
 }
 
+/**
+ * In a hybrid project, the plate integration already started in the episodes of these scenes, which a reshot plate
+ * restarts (SLATE-13-05, November 8, 2026). Until then a pickup left finished integration standing on the old plate.
+ */
+export function pickupIntegration(p: Project, sceneIds: string[]): Task[] {
+  if (p.axes.medium !== 'hybrid') return [];
+  const eps = new Set(editScenes(p).filter((s) => sceneIds.includes(s.id) && sceneTechnique(p, s) === 'live').map((s) => s.episode));
+  return p.tasks.filter((t) => t.kind === 'hy:integrate' && t.done > 0 && eps.has(t.episode ?? 1));
+}
+
 export function requestPickups(state: GameState, p: Project, sceneIds: string[]): number {
   if (p.edit.pictureLocked) throw new Error('The picture is locked. Unlock it to add pickups.');
   const live = sceneIds.filter((id) => {
@@ -117,6 +127,9 @@ export function requestPickups(state: GameState, p: Project, sceneIds: string[])
     }
   }
   p.edit.pickupsNeeded = [...new Set([...p.edit.pickupsNeeded, ...live])];
+  const redo = pickupIntegration(p, live);
+  for (const t of redo) { t.done = 0; t.status = 'waiting'; }
+  if (redo.length) addLog(state, `New plates for ${p.title} restart ${redo.length === 1 ? redo[0].label : `${redo.length} plate integrations`}: the compositor's days are worked again.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'production' } });
   return schedulePickups(state, p, live);
 }
 

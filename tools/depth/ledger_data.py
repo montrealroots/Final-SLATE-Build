@@ -383,7 +383,7 @@ C = {
 ]),
 '13-05': ('Production', 'src/engine/production/tasks.ts', [
   ('Plates and digital scenes in one production; plate integration', 'VE', ['tests/media.test.ts::shoots live scenes and animates the rest'], ''),
-  ('A changed plate flags its integration task and cost', 'IU', [], 'Change orders exist; no test for plates'),
+  ('A changed plate flags its integration task and cost', 'V', ['tests/depth-gaps-production.test.ts::a pickup of a live scene in a hybrid project restarts the plate integration begun in its episode, and says so'], 'Repaired November 8, 2026: a pickup left finished integration on the old plate; it now restarts it, and the Edit page previews the compositor days'),
 ]),
 '14-01': ('Script (documentary)', 'src/engine/documentary.ts', [
   ('Research and access planning; contributors and archives', 'VE', ['e2e/media.spec.ts::documentary through the UI'], ''),

@@ -169,7 +169,7 @@ SLATE-13-04.01,SLATE-13-04,"Book sessions, record, retake, approve, clean up and
 SLATE-13-04.02,SLATE-13-04,"A session the studio cannot be paid for waits, with the reason",VERIFIED EXISTING,tests/tight-budget.test.ts::a voice session it can no longer pay,
 SLATE-13-04.03,SLATE-13-04,A missed session is rebooked,VERIFIED,tests/depth-gaps-production.test.ts::is marked missed with the reason and rebooked on the next free date,
 SLATE-13-05.01,SLATE-13-05,Plates and digital scenes in one production; plate integration,VERIFIED EXISTING,tests/media.test.ts::shoots live scenes and animates the rest,
-SLATE-13-05.02,SLATE-13-05,A changed plate flags its integration task and cost,IMPLEMENTED UNVERIFIED,,Change orders exist; no test for plates
+SLATE-13-05.02,SLATE-13-05,A changed plate flags its integration task and cost,VERIFIED,"tests/depth-gaps-production.test.ts::a pickup of a live scene in a hybrid project restarts the plate integration begun in its episode, and says so","Repaired November 8, 2026: a pickup left finished integration on the old plate; it now restarts it, and the Edit page previews the compositor days"
 SLATE-14-01.01,SLATE-14-01,Research and access planning; contributors and archives,VERIFIED EXISTING,e2e/media.spec.ts::documentary through the UI,
 SLATE-14-01.02,SLATE-14-01,A refusal says what it affects and offers alternatives,VERIFIED EXISTING,e2e/journeys.spec.ts::a contributor who declines is told apart,
 SLATE-14-02.01,SLATE-14-02,"Ask for consent; given, declined or withdrawn",VERIFIED EXISTING,"tests/media.test.ts::uses contributors, consent and fact checks",
