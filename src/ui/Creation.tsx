@@ -3,7 +3,7 @@ import { heritageLanguages } from '../data/heritage-languages';
 import { countryLanguages } from '../data/country-languages';
 import { LANGUAGES, PRONOUNS, languageName, searchEthnicities, searchLanguages, settledTitle, type LanguageInfo } from '../data/identity';
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
-import { CREATION_STEPS, FIRST_START_YEAR, LAST_START_YEAR, MIN_START_AGE, NATIONALITIES, OBSERVANCES, ageOn, backgroundLabels, citizenshipFor, draftNames, latestBirthDate, creationStepIndex, formatZoneAbbrev, monthName, observance, observanceDates, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
+import { CREATION_STEPS, FIRST_START_YEAR, LAST_START_YEAR, MIN_START_AGE, NATIONALITIES, OBSERVANCES, ageOn, backgroundLabels, citizenshipFor, draftNames, latestBirthDate, creationStepIndex, formatClock, formatZoneAbbrev, monthName, weekdayName, weekdayOfKey, observance, observanceDates, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
 import type { CreationDraft, CreationStepId, Heritage, Proficiency } from '../engine/types';
 import { Check, Field, Professions, SelectField, TextField } from './components';
 import { store, useStore } from './store';
@@ -258,6 +258,11 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
     const { year, month, day } = parseYmd(d.startDate);
     return formatZoneAbbrev(Date.UTC(year, month - 1, day, 12), city.zone);
   })();
+  const startsAt = (() => {
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(d.startDate) || !/^([01]\d|2[0-3]):[0-5]\d$/.test(d.startTime)) return null;
+    const [hh, mm] = d.startTime.split(':').map(Number);
+    return `${weekdayName(weekdayOfKey(d.startDate))}, ${longDate(d.startDate)}, at ${formatClock(hh, mm)}${zoneAt ? ` ${zoneAt}` : ''}${city ? ` in ${city.name}` : ''}`;
+  })();
   return (
     <div className="col gap-5">
       <section className="card">
@@ -272,7 +277,7 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
           </label>
         )}
         {(elsewhere || !birthplace) && (
-          <PlacePicker label="Where You Live" value={d.startPlaceId} error={err('startPlaceId')} map onChange={(id, pl) => set({ startPlaceId: id, places: keepPlaces(d, 'startPlaceId', pl) })} />
+          <PlacePicker label="Where You Live" headed value={d.startPlaceId} error={err('startPlaceId')} map onChange={(id, pl) => set({ startPlaceId: id, places: keepPlaces(d, 'startPlaceId', pl) })} />
         )}
         {!elsewhere && err('startPlaceId') && <p className="error" role="alert" style={{ color: 'var(--negative)' }}>{err('startPlaceId')}</p>}
         {city && (
@@ -297,11 +302,13 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
         )}
       </section>
       <section className="card">
-        <div className="panel-head"><div><h2>When It Begins</h2><p className="muted small" style={{ margin: 0 }}>The date and the local time where you live when your story starts. Any date in 2026.</p></div></div>
+        <div className="panel-head"><div><h2>When It Begins</h2><p className="muted small" style={{ margin: 0 }}>The date and the local time where you live when your story starts.</p></div></div>
         <div className="field-row">
           <TextField label="Starting Date" type="date" value={d.startDate} min={`${FIRST_START_YEAR}-01-01`} max={`${LAST_START_YEAR}-12-31`} error={err('startDate')} hint={`Any day from ${FIRST_START_YEAR}, the default, to ${LAST_START_YEAR}. You must be at least ${MIN_START_AGE} on it.`} onChange={(v) => set({ startDate: v })} />
           <TextField label="Starting Time" type="time" value={d.startTime} error={err('startTime')} hint="Local time where you start." onChange={(v) => set({ startTime: v })} />
         </div>
+        {/* The date and time as the game writes them, not the browser's 01/05/2026 (November 8, 2026). */}
+        {startsAt && <p className="small" style={{ marginTop: 'var(--s3)' }}>Your story starts on {startsAt}.</p>}
       </section>
     </div>
   );

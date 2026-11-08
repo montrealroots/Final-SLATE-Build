@@ -272,6 +272,25 @@ test('a Jewish background keeps every day of no work, in the order they fall, an
   await expect(page.getByText('Today is Rosh Hashanah, which you keep.')).toBeVisible();
 });
 
+test('Starting Point: featured cities A to Z, a choice settles the list, and the start is said in words', async ({ page }) => {
+  await draftAtReview(page);
+  await page.getByRole('button', { name: 'Edit Starting Point' }).click();
+  // The field under the Where You Live heading is the town or city (the words were said twice until November 8, 2026).
+  await expect(page.getByRole('searchbox', { name: 'Where You Live, Town Or City' })).toBeVisible();
+  await page.getByRole('combobox', { name: 'Where You Live, Country Or Territory' }).selectOption({ label: 'Featured Cities' });
+  const names = await page.getByRole('group', { name: 'Where You Live Results' }).getByRole('button').locator('span:first-child').allInnerTexts();
+  expect(names.length).toBeGreaterThan(20);
+  expect(names).toEqual([...names].sort((a, b) => a.normalize('NFD').replace(/[\u0300-\u036f]/g, '').localeCompare(b.normalize('NFD').replace(/[\u0300-\u036f]/g, ''), 'en')));
+  await page.getByRole('searchbox', { name: 'Where You Live, Town Or City' }).fill('Toronto');
+  await page.getByRole('group', { name: 'Where You Live Results' }).getByRole('button').first().click();
+  await expect(page.getByRole('searchbox', { name: 'Where You Live, Town Or City' })).toHaveValue('');
+  await expect(page.getByText("Type to search Canada's places, or choose another country.")).toBeVisible();
+  await page.getByLabel('Starting Date').fill('2027-03-15');
+  await page.getByLabel('Starting Time').fill('19:45');
+  await expect(page.getByText('Your story starts on Monday, March 15, 2027, at 7:45 PM EDT in Toronto.')).toBeVisible();
+  await expect(page.getByText('Any date in 2026.')).toHaveCount(0);
+});
+
 test('Starting Point: where you were born, or somewhere else', async ({ page }) => {
   await draftAtReview(page);
   await page.getByRole('button', { name: 'Edit Starting Point' }).click();

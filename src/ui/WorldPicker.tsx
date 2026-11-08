@@ -98,6 +98,8 @@ export function WorldPlacePicker(props: { label: string; headed?: boolean; value
   const ws = useWorldSearch(chosen && PLAYABLE_COUNTRIES.some((c) => c.code === chosen.country) ? chosen.country : '');
   const pick = (place: Place) => {
     props.onChoose(place);
+    // A choice empties the search, so the list settles to one line instead of keeping its results open (November 8, 2026).
+    ws.setQ('');
     if (PLAYABLE_COUNTRIES.some((c) => c.code === place.country) && place.country !== ws.country) ws.setCountry(place.country);
   };
   const listId = useId();
@@ -118,7 +120,8 @@ export function WorldPlacePicker(props: { label: string; headed?: boolean; value
   // Back on a picker whose place is chosen, with nothing typed: one line, not the country's places arriving a moment
   // later and pushing down what's below (the click that landed elsewhere, e2e/focus.spec.ts).
   const settled = !!chosen && ws.country === chosen.country && !ws.q.trim();
-  const featured = !ws.country ? searchPlaces(ws.q, 10) : [];
+  // With nothing typed, every featured city, A to Z (the list scrolls); typing narrows to the ten best matches.
+  const featured = !ws.country ? searchPlaces(ws.q, ws.q.trim() ? 10 : Number.MAX_SAFE_INTEGER) : [];
   // Typing with a country chosen still offers the featured cities elsewhere that match, after the country's own places:
   // with the United Kingdom chosen, 'Paris' found a British place and not Paris, France (November 8, 2026).
   const others = ws.country && ws.status === 'ready' && ws.q.trim() ? searchPlaces(ws.q, 10).filter((p) => p.country !== ws.country) : [];

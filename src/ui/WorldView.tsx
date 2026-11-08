@@ -71,6 +71,19 @@ export function WorldView() {
 }
 
 /** The outline map. Also shown under creation's place pickers, as 1221's are, with `verb` naming what a marker does there. */
+/**
+ * The places whose markers don't sit on one already drawn, largest first as listed: London's City and West End were
+ * drawn over London itself (November 8, 2026). The hidden ones are still in the list beside the map.
+ */
+function apart(places: WorldPlace[], data: WorldMapData, r: number): { w: WorldPlace; p: { x: number; y: number } }[] {
+  const out: { w: WorldPlace; p: { x: number; y: number } }[] = [];
+  for (const w of places) {
+    const p = projectPoint(w.lat, w.lon, data);
+    if (out.every((o) => Math.hypot(o.p.x - p.x, o.p.y - p.y) >= r * 2.2)) out.push({ w, p });
+  }
+  return out;
+}
+
 export function WorldMap(props: { country: string; here?: { lat: number; lon: number; name: string }; places: WorldPlace[]; onCountry: (c: string) => void; onPlace: (w: WorldPlace) => void; verb?: string }) {
   const [data, setData] = useState<WorldMapData | null>(null);
   const [failed, setFailed] = useState(false);
@@ -115,8 +128,7 @@ export function WorldMap(props: { country: string; here?: { lat: number; lon: nu
             </path>
           ))}
         </g>
-        {props.places.map((w) => {
-          const p = projectPoint(w.lat, w.lon, data);
+        {apart(props.places, data, r).map(({ w, p }) => {
           const choose = () => props.onPlace(w);
           return (
             <circle key={w.id} className="worldmap-marker" cx={p.x} cy={p.y} r={r} role="button" tabIndex={0} aria-label={`${props.verb ?? 'Open'} ${w.name}`} onClick={choose}
