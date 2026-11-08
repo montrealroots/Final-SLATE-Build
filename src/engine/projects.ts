@@ -47,13 +47,16 @@ export function isNonfiction(f: Format): boolean {
 }
 
 /**
- * Budget sizes: each gives a budget estimate and a financing target (fund) and scales day costs. None puts money in a
+ * Budget sizes: the scale of a production. Each sets the least a budget estimate can be (fund), scales day costs and,
+ * on a micro budget, has one person combine roles. An approved script's estimate is what it needs at that scale
+ * (estimate.ts), so a size names a way of working, not a sum: on November 8, 2026 the picker's "about $40,000" became
+ * "from $40,000", and the names were kept because "micro-budget" is the industry's word for this scale. None puts money in a
  * project; backers do (finance.ts). Amounts are game calibration inputs, not industry prices. `rights` are the approval
  * rights saves from before financing existed carried for this size (migrateV4toV5).
  */
 export const FUNDING_SCENARIOS = [
-  { id: 'micro', label: 'Micro Budget', fund: 40_000, description: 'A small production with a tiny crew.', needsTrackRecord: false, rights: [] as string[] },
-  { id: 'low', label: 'Low Budget', fund: 400_000, description: 'An independent production.', needsTrackRecord: false, rights: [] as string[] },
+  { id: 'micro', label: 'Micro Budget', fund: 40_000, description: 'A tiny crew where people cover more than one job, with borrowed gear and free locations. A live-action short often fits the minimum; animation usually needs more.', needsTrackRecord: false, rights: [] as string[] },
+  { id: 'low', label: 'Low Budget', fund: 400_000, description: 'An independent production with a full crew.', needsTrackRecord: false, rights: [] as string[] },
   { id: 'mid', label: 'Mid Budget', fund: 4_000_000, description: 'Usually needs several backers, such as a co-production partner.', needsTrackRecord: false, rights: ['Casting Approval'] },
   {
     id: 'commissioned', label: 'Commissioned', fund: 15_000_000,

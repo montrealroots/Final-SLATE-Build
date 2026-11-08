@@ -91,4 +91,4 @@ These are diagnostics, not targets: they show the combined systems finish and ke
 - Animation timelines barely vary between seeds, because nothing like weather affects them. Should they carry more risk, such as staff illness or retakes?
 - A 4- to 5-minute animated short takes about five to eight months with one artist per role. Hiring more artists shortens that. Does it feel right in play?
 - Animation shorts spend only 17 to 29% of a $400,000 fund. Should the scenarios be cheaper, or should animation cost more?
-- A micro-budget animated short's estimate can be about twice the size's $40,000 (the script decides). Is a "Micro Budget" label still the right word for that, or should the sizes describe crew scale rather than money?
+- Decided on November 8, 2026: the names stay. "Micro-budget" is the industry's word for this scale, and it routinely covers films that cost well over $40,000. The picker now says "from $40,000" instead of "about", and describes the way of working (a tiny crew where people cover more than one job, borrowed gear, free locations). It adds that animation usually needs more than the minimum.

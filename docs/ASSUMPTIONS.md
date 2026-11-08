@@ -11,7 +11,7 @@ Every number here is a game calibration value. None is a quoted real-world rate 
 | Lifecycle | Time runs only while the game is open and visible. No offline catch-up. One tab runs a save at a time. | `clock.ts`, `ui/store.ts` |
 | Weather | Seasonal curve from warm and cold highs; smoothed temperature anomalies; wet-day persistence 0.45; snow below a 1 °C daily mean; forecast certainty falls by about 13% per day of lead time, with a floor | `weather.ts` |
 | Travel | Under 300 km: 80 km/h. Otherwise 800 km/h plus 3 hours. No travel cost. | `state.ts` |
-| Funding scenarios | Micro $40,000; Low $400,000; Mid $4,000,000 (co-production, casting approval); Commissioned $15,000,000 (needs a delivered project; casting and picture approval) | `projects.ts` |
+| Funding scenarios (budget sizes) | The least each estimate can be: Micro $40,000; Low $400,000; Mid $4,000,000 (co-production, casting approval); Commissioned $15,000,000 (needs a delivered project; casting and picture approval) | `projects.ts` |
 | Budget estimate | Before a script is approved, the budget size's amount. After, what that script needs at its size: required crew and cast at the lowest experienced rates (combining roles on a micro budget), materials, shoot days, studio and render time, money already spent or held, plus a tenth for contingency; never below the size's amount. The financing target follows it unless the player set their own (November 7, 2026). | `estimate.ts` |
 | Co-production | Adds 50% of the fund once, with lead-casting approval and a partner credit | `budget.ts` |
 | Day rates | Base rates per role; candidates ask 0.62 + 0.2 × experience times the base, plus or minus 10% | `people.ts` |

@@ -8,7 +8,23 @@
 
 ## Commands And Results
 
-### Current: Micro-Budget Tuning (November 7, 2026, after #36)
+### Current: Budget-Size Wording (November 8, 2026, after #37)
+
+The owner asked for the naming question to be decided.
+- **Kept:** the size names, since "micro-budget" is the industry's word for this scale.
+- **Changed:** the New Script picker. It now says "from $40,000" instead of "about $40,000", because the size's amount is
+  the least an estimate can be. Each size describes how it works. The intro says the approved script sets the estimate.
+  `docs/ASSUMPTIONS.md` matches.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | 32 files, 262 tests passed; startup JavaScript 664 kB raw (679,537 bytes), 206 kB gzipped, 0 problems. |
+| `SLATE_E2E_PROD=1 npx playwright test e2e/first-project.spec.ts e2e/live-action.spec.ts e2e/careers.spec.ts` (desktop, phone) | 0 | 9 passed, 3 skipped by design. |
+| `SLATE_E2E_PROD=1 npm run e2e -- --trace retain-on-failure` | 0 | Production build, the complete suite: 141 passed, 27 skipped, 0 failed, in 14.0 minutes. |
+
+The picker was screenshotted at phone width and reads without clipping.
+
+### Previous: Micro-Budget Tuning (November 7, 2026, after #36)
 
 Local Linux container, branch `claude/clever-archimedes-x0r26v` from `main` at `5e142f4` (#36). The commands ran on the
 branch's final source; the commit after the runs changes only these reports. See the PR for CI.
@@ -228,8 +244,9 @@ explicit `test.skip(project…)`; no test skips itself on an outcome:
 - No code fault is open from this pass. Physical devices, a person's screen-reader pass and human playtesting remain
   outside what was tested.
 - The micro-budget balance question recorded at #36 was worked through after it (see Current and `BALANCE-REPORT.md`).
-  Still for the owner: a micro animated short's estimate can be about twice the size's $40,000. Is "Micro Budget" still
-  the right label? And the balance runs are an autopilot, not human play.
+  The naming question it left was decided on November 8, 2026: the names stay ("micro-budget" is the industry's word
+  for the scale), and the picker says "from $40,000" with what the size means in practice. The balance runs are an
+  autopilot, not human play.
 - On the iPhone, a section scrolled into view can sit partly under the sticky header (see Acceptance Journeys).
 
 ## Acceptance Status

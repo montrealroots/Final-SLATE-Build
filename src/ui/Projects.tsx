@@ -135,13 +135,13 @@ export function NewProject() {
         <PlacePicker label="Production Base" value={base} onChange={setBase} />
         <fieldset style={{ border: 0, padding: 0 }}>
           <legend style={{ fontWeight: 600, marginBottom: 8 }}>Budget Size</legend>
-          <p className="dim">This sets your budget estimate and how much you aim to raise. It doesn't put money in the project: backers do, once your script is approved (Budget). Amounts are game calibration, not real industry prices.</p>
+          <p className="dim">This sets the scale you work at and the least your budget estimate can be. Once your script is approved, the estimate becomes what that script needs at this scale, and that's what you aim to raise (Budget). It doesn't put money in the project: backers do. Amounts are game calibration, not real industry prices.</p>
           {FUNDING_SCENARIOS.map((f) => {
             const locked = f.needsTrackRecord && !hasTrackRecord(g);
             return (
               <label key={f.id} className="check" style={{ alignItems: 'flex-start', marginBottom: 8 }}>
                 <input type="radio" name="funding" value={f.id} checked={scenario === f.id} disabled={locked} onChange={() => setScenario(f.id)} />
-                <span><strong>{f.label}: about {money(f.fund)}</strong><br /><span className="muted">{f.description}{locked ? ' Available after you deliver a project.' : ''}</span></span>
+                <span><strong>{f.label}: from {money(f.fund)}</strong><br /><span className="muted">{f.description}{locked ? ' Available after you deliver a project.' : ''}</span></span>
               </label>
             );
           })}
