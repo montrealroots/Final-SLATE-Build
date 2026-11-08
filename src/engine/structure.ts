@@ -4,7 +4,7 @@
 // never score anything (a thread left open is as valid as one resolved); what they do is make links visible, so that a
 // cut, a combined scene or a deleted one says which thread it leaves without its resolution, by scene.
 import { newId } from './state';
-import { assertEditable, sceneLabel } from './projects';
+import { assertEditable, isEpisodic, sceneLabel } from './projects';
 import type { GameState, Project, StoryThread } from './types';
 
 const trimmed = (name: string, what: string) => {
@@ -142,3 +142,10 @@ export const resolutionLabel = (p: Project, t: StoryThread): string => {
   const s = p.scenes.find((x) => x.id === t.resolvedIn);
   return s ? `Resolves in ${sceneLabel(p, s)}` : 'No resolving scene yet';
 };
+
+// The season plan's advice (season.ts), here so the readiness notes don't load the season's editing code at startup.
+/** Advice on the season plan, for the structure notes. Never blocks or scores. */
+export function seasonNotes(p: Project): { text: string }[] {
+  if (!isEpisodic(p.axes.format) || p.episodes.length < 2 || !p.seasonArc?.trim()) return [];
+  return p.episodes.filter((e) => !e.arc?.trim()).map((e) => ({ text: `${e.title} has no line on what it moves in the season arc.` }));
+}

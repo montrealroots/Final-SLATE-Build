@@ -3,9 +3,8 @@ import { composeGenres, genreName, type ModuleId } from './genres';
 import { findPlace } from '../data/places';
 import { addLog, adoptPlace, newId, registerHandler, schedule } from './state';
 import { unscriptedIssues } from './unscripted';
-import { remapThreads, structureNotes } from './structure';
+import { remapThreads, seasonNotes, structureNotes } from './structure';
 import { researchNotes } from './research';
-import { seasonNotes } from './season';
 import { personById, roleLabel } from './people';
 import type {
   Draft, Format, GameState, Medium, Project, ProjectAxes, Requirement, RevisionNote, Scene, StoryCharacter, Technique,

@@ -133,9 +133,3 @@ export function moveEpisode(p: Project, n: number, by: -1 | 1): void {
   b.number = n;
   p.episodes.sort((x, y) => x.number - y.number);
 }
-
-/** Advice on the season plan, for the structure notes. Never blocks or scores. */
-export function seasonNotes(p: Project): { text: string }[] {
-  if (!isEpisodic(p.axes.format) || p.episodes.length < 2 || !p.seasonArc?.trim()) return [];
-  return p.episodes.filter((e) => !e.arc?.trim()).map((e) => ({ text: `${e.title} has no line on what it moves in the season arc.` }));
-}

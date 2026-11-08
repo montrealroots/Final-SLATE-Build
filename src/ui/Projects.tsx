@@ -4,8 +4,9 @@ import { getPlace, placeLabel } from '../data/places';
 import {
   FORMAT_LABELS, FUNDING_SCENARIOS, dateKey, deals, financeSummary, formatDateKey, GENRES, MEDIUM_LABELS, MODULE_LABELS, TECHNIQUE_LABELS, approvalRights, composeGenres, createProject, genre,
   genreCategory, hasTrackRecord, isEpisodic, isNonfiction, ledgerTotals, money, projectGenreLabel, projectModules, qualityWords, scriptIssues,
-  canContinue, continueProject, resumeProject, searchGenres, shelveImpact, shelveProject, type ModuleId,
+  canContinue, resumeProject, searchGenres, shelveImpact, shelveProject, type ModuleId,
 } from '../engine';
+import { continueProject } from '../engine/sequel';
 import type { Format, Medium, Project, Technique } from '../engine/types';
 import { Check, Field, Modal, NumberField, PageHead, SectionNav, SelectField, TextField, longLocal, plural } from './components';
 import { PlacePicker } from './Creation';

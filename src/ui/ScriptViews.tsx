@@ -8,9 +8,10 @@ import {
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, type ModuleId,
   requirementRemovalImpact, addAct, addBeat, addResearch, addThread, removeBeat, removeAct, removeResearch, updateResearch, removeThread, resolutionLabel, setSceneAct, updateThread,
-  moveEpisode, removeRelationship, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule, type SharedFact,
   approvalImpact, combineScenes, combineScenesImpact, duplicateScene, splitScene, splitSceneImpact, FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, type UnscriptedFamily,
 } from '../engine';
+// Loaded with this page, not at startup (the startup budget): the engine index leaves season.ts out.
+import { moveEpisode, removeRelationship, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule, type SharedFact } from '../engine/season';
 import { CONTENT_ISSUES, audienceContentNote, characterPronouns, contentSuggestions, contentSummary, placementExplained, spokenMinutes } from '../engine/script-explain';
 import type { ContentIssue, ContentLevel, Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';

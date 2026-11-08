@@ -27,4 +27,3 @@ export * from './shelve';
 export * from './structure';
 export * from './research';
 export * from './continuation';
-export * from './season';
