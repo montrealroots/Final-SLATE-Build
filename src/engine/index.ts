@@ -29,3 +29,5 @@ export * from './continuation';
 export * from './negotiation';
 export * from './auditions';
 export * from './distribution';
+export * from './relationships';
+export * from './opportunities';

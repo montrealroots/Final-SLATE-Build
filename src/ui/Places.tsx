@@ -4,6 +4,7 @@ import { languageName, PRONOUNS } from '../data/identity';
 import { getPlace, placeLabel, searchPlaces, type Place } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, knownAs, addPlan, cancelPlan, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDates, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
+import { personById } from '../engine/people';
 import { honors } from '../engine/awards-actions';
 import type { GameState } from '../engine/types';
 import { Check, Modal, NumberField, PageHead, Professions, SelectField, TextField, longLocal, plural } from './components';
@@ -390,6 +391,15 @@ export function Profile() {
           {h.length ? (
             <ul className="list">{h.map((x, i) => <li key={i}><strong>{x.result}</strong>: {x.category}, {x.editionLabel} ({x.projectTitle}){x.personal ? '' : <span className="dim"> · credited to others on your project</span>}</li>)}</ul>
           ) : <p className="muted">Selections, nominations and wins appear here.</p>}
+        </section>
+        <section className="card" aria-labelledby="worked-h">
+          <h2 id="worked-h">People You've Worked With</h2>
+          {(() => {
+            const people = Object.entries(g.people).filter(([, ps]) => ps.history?.length);
+            if (!people.length) return <p className="muted">Who saw a project through with you, who you let go and whose counteroffer you turned down is kept here. It changes how each of them answers your offers, and no one else's.</p>;
+            const word = { completed: 'worked through to delivery', 'let-go': 'let go', 'counter-declined': 'counteroffer turned down' } as const;
+            return <ul className="list">{people.map(([id, ps]) => <li key={id}><strong>{personById(g, id).name}</strong>: {ps.history!.map((x) => `${x.title} (${x.role.toLowerCase()}, ${word[x.kind]})`).join('; ')}</li>)}</ul>;
+          })()}
         </section>
         <section className="card">
           <h2>History</h2>

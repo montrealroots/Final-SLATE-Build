@@ -18,7 +18,7 @@ import { callSheet } from '../engine/callsheet';
 import { costCuts, type CostCut } from '../engine/cost-cuts';
 import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, scoutedPlaces, site } from '../engine/locations';
-import { dayFees } from '../engine';
+import { dayFees, willingness } from '../engine';
 import { COVERAGE, TAKES, planTime, shotPlan, type Coverage, type TakePolicy } from '../engine/takes';
 import type { Audition, FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
@@ -109,6 +109,7 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
                   <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{c.playingAge ? ` Plays ages ${c.playingAge[0]} to ${c.playingAge[1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>
                   {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip">Shares A Background: {sharedHeritages(g, p, characterId, c.id).join(', ')}</span></div>}
                   {!av.ok && <div className="dim" style={{ color: 'var(--warning)' }}>{av.reason}</div>}
+                  {willingness(g, c.id).reason && <div className="dim">{willingness(g, c.id).reason}</div>}
                   {notes.map((n) => <div key={n} className="dim" style={{ color: 'var(--warning)' }}>{n}</div>)}
                 </div>
                 <div className="inline-form" style={{ maxWidth: 320 }}>

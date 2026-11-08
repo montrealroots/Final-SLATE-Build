@@ -1,8 +1,9 @@
-import { DAY, addLocal, addressedAs, currentPlace, currentZone, dateKey, daylight, formatZoneAbbrev, placeHolidaysOn, localParts, localToInstant, upcomingCommitments, weatherOn, temperatureAt, weekdayName, observancesOn } from '../engine';
+import { DAY, OPPORTUNITY_DELIVER_DAYS, FORMAT_LABELS, acceptOpportunity, declineOpportunity, money, addLocal, addressedAs, currentPlace, currentZone, dateKey, daylight, formatZoneAbbrev, placeHolidaysOn, localParts, localToInstant, upcomingCommitments, weatherOn, temperatureAt, weekdayName, observancesOn } from '../engine';
 import type { Condition } from '../engine/weather';
 import { placeLabel } from '../data/places';
 import type { Edition } from '../engine/types';
-import { Panel, longLocal } from './components';
+import { Panel, TextField, longLocal } from './components';
+import { useState } from 'react';
 import { store, useClock, useGame } from './store';
 
 const PHASE_LABEL: Record<string, string> = {
@@ -143,6 +144,8 @@ export function Home() {
           )}
         </Panel>
 
+        <Proposals />
+
         <Panel title="Recent Updates" subtitle={g.log.length ? 'The newest first.' : undefined} flush>
           {g.log.length ? (
             <div className="list">
@@ -160,6 +163,42 @@ export function Home() {
         </Panel>
       </div>
     </>
+  );
+}
+
+/** Proposals a well received delivery brought: open for a month, each with why it came and what it offers. */
+function Proposals() {
+  const g = useGame();
+  const [titles, setTitles] = useState<Record<string, string>>({});
+  const [err, setErr] = useState<string | null>(null);
+  const open = (g.opportunities ?? []).filter((o) => o.status === 'open' && o.expiresAt > g.now);
+  if (!open.length) return null;
+  const zone = currentZone(g);
+  return (
+    <Panel title="Proposals" subtitle="Offers to fund your next project, from people who saw your work.">
+      <div className="col gap-3">
+        {open.map((o) => {
+          const title = titles[o.id] ?? '';
+          return (
+            <div key={o.id} className="col gap-2">
+              <p className="small" style={{ margin: 0 }}>{o.reason}</p>
+              <p className="xs dim" style={{ margin: 0 }}>{money(o.amount)} for a new {FORMAT_LABELS[o.format].toLowerCase()}, delivered within {Math.round(OPPORTUNITY_DELIVER_DAYS / 30)} months of accepting. They take most of the income and approve the picture. Open until {longLocal(o.expiresAt, zone).date}.</p>
+              <TextField label="Title For The New Project" value={title} maxLength={80} onChange={(v) => setTitles({ ...titles, [o.id]: v })} />
+              <div className="row gap-2">
+                <button className="btn btn-sm btn-primary" disabled={!title.trim()} onClick={() => {
+                  let id = '';
+                  const e = store.act((s) => { id = acceptOpportunity(s, o.id, title.trim()).id; });
+                  setErr(e);
+                  if (!e) store.go({ view: 'project', projectId: id, tab: 'overview' });
+                }}>Accept Proposal</button>
+                <button className="btn btn-sm" onClick={() => setErr(store.act((s) => declineOpportunity(s, o.id)))}>Decline</button>
+              </div>
+            </div>
+          );
+        })}
+        {err && <p role="alert" className="error">{err}</p>}
+      </div>
+    </Panel>
   );
 }
 

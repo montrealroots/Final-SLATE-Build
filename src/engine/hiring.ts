@@ -8,6 +8,7 @@ import { genre } from './genres';
 import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
 import { buildTasks, coachingNeeded, estimatedShootDays, planShootDays } from './production';
 import { approvalRights, approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneTechnique } from './projects';
+import { recordHistory, willingness } from './relationships';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY, HOUR, addDaysToKey, dateKey, formatDateKey, weekdayName, weekdayOfKey } from './time';
@@ -205,9 +206,15 @@ export function resolveOffer(state: GameState, p: Project, h: Hire): string {
   } else if (lead && approvalRights(p).includes('Casting Approval') && person.experience < 3) {
     decline(state, p, h);
     text = `Your ${p.funding.scenarioId === 'commissioned' || p.finance?.deals.some((d) => d.kind === 'commissioner' && d.status === 'accepted') ? 'commissioner' : 'co-production partner'} didn't approve ${person.name} for ${roleWord}. They want a more experienced lead.`;
+  } else if (willingness(state, h.personId).refuses) {
+    decline(state, p, h);
+    text = `${person.name} turned down ${roleWord}. ${willingness(state, h.personId).reason}`;
   } else {
     const ratio = h.dayRate / person.dayRate;
-    if (ratio >= 1 || (ratio >= 0.9 && r < 0.6)) {
+    // Their history with you (relationships.ts): someone you saw through a project takes a fair offer without haggling;
+    // someone you let go asks for more. Without history, as before.
+    const w = willingness(state, h.personId);
+    if (w.minRatio !== null ? ratio >= w.minRatio : (ratio >= 1 || (ratio >= 0.9 && r < 0.6))) {
       try {
         accept(state, p, h, h.dayRate);
         text = acceptedText(state, p, h, person.name, person.pronouns);
@@ -217,8 +224,8 @@ export function resolveOffer(state: GameState, p: Project, h: Hire): string {
       }
     } else if (ratio >= 0.7) {
       h.status = 'countered';
-      h.counterRate = person.dayRate;
-      text = `${person.name} would take ${roleWord} at ${money(person.dayRate)} a day instead of ${money(h.dayRate)}.`;
+      h.counterRate = Math.round(person.dayRate * Math.max(1, w.minRatio ?? 1));
+      text = `${person.name} would take ${roleWord} at ${money(h.counterRate)} a day instead of ${money(h.dayRate)}.${(w.minRatio ?? 1) > 1 && w.reason ? ` ${w.reason}` : ''}`;
     } else {
       decline(state, p, h);
       text = `${person.name} turned down ${roleWord}. The rate was too low.`;
@@ -292,6 +299,7 @@ export function declineCounter(state: GameState, p: Project, hireId: string): vo
   const h = p.hires.find((x) => x.id === hireId);
   if (!h || h.status !== 'countered') throw new Error('There is no counteroffer to decline.');
   decline(state, p, h);
+  recordHistory(state, h.personId, p, roleLabel(h.roleId), 'counter-declined');
 }
 
 export function withdrawOffer(state: GameState, p: Project, hireId: string): void {
@@ -307,6 +315,7 @@ export function releaseHire(state: GameState, p: Project, hireId: string): void 
   if (!h || h.status !== 'accepted') throw new Error('Only someone who has accepted can be released.');
   h.status = 'released';
   if (h.obligationId) cancel(state, p, h.obligationId);
+  if (!p.delivered) recordHistory(state, h.personId, p, roleLabel(h.roleId), 'let-go');
   p.cast = p.cast.filter((c) => c.hireId !== h.id);
   const ps = state.people[h.personId];
   if (ps) ps.bookings = ps.bookings.filter((b) => b.projectId !== p.id);

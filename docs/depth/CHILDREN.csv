@@ -201,9 +201,9 @@ SLATE-17-03.01,SLATE-17-03,Submit with a fee; withdraw and enter again without p
 SLATE-17-04.01,SLATE-17-04,"Selection, invitation, travel and attendance",VERIFIED EXISTING,e2e/screenings.spec.ts::a screening invitation,
 SLATE-17-05.01,SLATE-17-05,Results kept per edition; later rule changes never rewrite them,VERIFIED EXISTING,"tests/rulebooks.test.ts::keeps every nominee, winner and entry after results",
 SLATE-18-01.01,SLATE-18-01,Credits across projects on Profile,IMPLEMENTED UNVERIFIED,,Profile lists credits; no test
-SLATE-18-02.01,SLATE-18-02,Collaboration history with people you have worked with,MISSING,,No relationship history
-SLATE-18-02.02,SLATE-18-02,History changes their willingness for related work only,MISSING,,Depends on history
-SLATE-18-03.01,SLATE-18-03,"Proposals tied to your past work, with terms, accepted or declined",MISSING,,No opportunities
+SLATE-18-02.01,SLATE-18-02,Collaboration history with people you have worked with,VERIFIED,tests/relationships.test.ts::someone who saw a project through with you takes a fair offer,Shown on Profile (People You've Worked With); not driven in a browser test
+SLATE-18-02.02,SLATE-18-02,History changes their willingness for related work only,VERIFIED,"tests/relationships.test.ts::letting someone go makes them ask for more, and twice makes them refuse | tests/relationships.test.ts::means they won",
+SLATE-18-03.01,SLATE-18-03,"Proposals tied to your past work, with terms, accepted or declined",VERIFIED,"tests/opportunities.test.ts::comes only for well received work, decided by reception and the world seed, and at most once | tests/opportunities.test.ts::starts a project funded by the commission with its delivery deadline | tests/opportunities.test.ts::declined, is closed and starts nothing",Home Proposals panel not driven in a browser test; reception threshold and amounts are game calibration
 SLATE-18-04.01,SLATE-18-04,A sequel or new season carries story continuity and eligible assets,VERIFIED,"tests/episodes.test.ts::carries the same characters, world and open threads | tests/episodes.test.ts::a sequel reuses the finished puppets",
 SLATE-18-04.02,SLATE-18-04,Returning people are asked again and paid again,VERIFIED,"tests/episodes.test.ts::the cast are listed to ask back at their rate, not hired | e2e/journeys.spec.ts::is asked back at their last rate, an offer like any other",
 SLATE-18-05.01,SLATE-18-05,Bookings across projects never overlap for one person,VERIFIED EXISTING,tests/schedule.test.ts::refuses when someone needed on set is busy,

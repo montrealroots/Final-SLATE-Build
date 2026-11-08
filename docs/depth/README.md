@@ -99,7 +99,7 @@ migration and tests, and moves its children to VERIFIED.
     - territories and exclusivity (`16-01.02`);
     - reported against received income (`16-04.02`);
     - later windows (`16-05`).
-11. Career:
+11. Career (done):
     - relationships (`18-02`);
     - opportunities (`18-03`);
     - sequels and seasons (`18-04`).

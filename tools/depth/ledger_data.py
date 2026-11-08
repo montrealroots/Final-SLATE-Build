@@ -473,12 +473,17 @@ C = {
 '18-01': ('Profile', 'src/ui/Places.tsx', [
   ('Credits across projects on Profile', 'IU', [], 'Profile lists credits; no test'),
 ]),
-'18-02': ('Profile, Cast, Crew', '', [
-  ('Collaboration history with people you have worked with', 'MI', [], 'No relationship history'),
-  ('History changes their willingness for related work only', 'MI', [], 'Depends on history'),
+'18-02': ('Profile, Cast, Crew', 'src/engine/relationships.ts; src/engine/hiring.ts', [
+  ('Collaboration history with people you have worked with', 'V',
+   ['tests/relationships.test.ts::someone who saw a project through with you takes a fair offer'], 'Shown on Profile (People You' + "'" + 've Worked With); not driven in a browser test'),
+  ('History changes their willingness for related work only', 'V',
+   ['tests/relationships.test.ts::letting someone go makes them ask for more, and twice makes them refuse', 'tests/relationships.test.ts::means they won'], ''),
 ]),
-'18-03': ('Home', '', [
-  ('Proposals tied to your past work, with terms, accepted or declined', 'MI', [], 'No opportunities'),
+'18-03': ('Home', 'src/engine/opportunities.ts', [
+  ('Proposals tied to your past work, with terms, accepted or declined', 'V',
+   ['tests/opportunities.test.ts::comes only for well received work, decided by reception and the world seed, and at most once',
+    'tests/opportunities.test.ts::starts a project funded by the commission with its delivery deadline', 'tests/opportunities.test.ts::declined, is closed and starts nothing'],
+   'Home Proposals panel not driven in a browser test; reception threshold and amounts are game calibration'),
 ]),
 '18-04': ('Projects', 'src/engine/continuation.ts', [
   ('A sequel or new season carries story continuity and eligible assets', 'V',

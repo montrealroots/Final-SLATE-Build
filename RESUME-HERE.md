@@ -188,9 +188,21 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       recouped and received apart;
     - later windows (`16-05`): 120 days after a release, a new wave of offers for territories no exclusive deal holds
       and this route hasn't released.
-- **Next:** stage 11: relationships `18-02`, opportunities `18-03`. Then the IMPLEMENTED UNVERIFIED children that need
-  only a test, and the package's playthroughs (`docs/depth/package/05-PLAYTHROUGHS-AND-ACCEPTANCE.md`).
-  - Also still open: the IMPLEMENTED UNVERIFIED children (25) that need only a test.
+  - Stage 11, career, VERIFIED by unit tests (browser coverage of the two new screens is still to add):
+    - relationships (`18-02`, `relationships.ts`): each person keeps a history with you (completed a project, let go,
+      turned down their counteroffer). Someone who saw a project through takes 90% of their rate without haggling;
+      someone let go once asks 115%, twice refuses; someone whose counter you declined won't go below their rate. No
+      history keeps the old acceptance rule, so saves from before play as they did. Profile lists People You've Worked
+      With; the hiring list says why someone will or won't.
+    - opportunities (`18-03`, `opportunities.ts`): 45 days after a delivery received at 60 or more, a commissioner may
+      propose to fund a new project of the same kind (half the time at 65, nearly always at 85; seed-decided; at most one
+      per project; never from a project that itself came from a proposal). Open 30 days on Home (Proposals); accepting
+      names and starts a project funded by a commissioner deal (85% income share, picture approval, 20% on delivery,
+      deliver within 540 days, enforced by the existing finance deadline); declining closes it. Calibration is game
+      calibration.
+- **Next:** browser checks for the Proposals panel and the People You've Worked With list; then the IMPLEMENTED
+  UNVERIFIED children (25) that need only a test, and the package's playthroughs
+  (`docs/depth/package/05-PLAYTHROUGHS-AND-ACCEPTANCE.md`).
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 

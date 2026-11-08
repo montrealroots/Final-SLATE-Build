@@ -655,6 +655,8 @@ export interface Project {
   versions?: ProjectVersion[];
   /** Sites chosen for each place after scouting, the backup, and those that fell through (locations.ts). */
   locationChoices?: Record<string, { main?: 'real' | 'stage' | 'standin'; backup?: 'real' | 'stage' | 'standin'; lost?: ('real' | 'stage' | 'standin')[] }>;
+  /** The proposal this project came from (opportunities.ts). */
+  fromOpportunity?: string;
   /** Auditions and callbacks for its parts (auditions.ts). */
   auditions?: Audition[];
   setups: SetupPayoff[];
@@ -722,6 +724,8 @@ export interface Project {
 
 export interface PersonState {
   bookings: { from: string; to: string; projectId: string }[];
+  /** What happened when they worked with you (relationships.ts). */
+  history?: { projectId: string; title: string; role: string; kind: 'completed' | 'let-go' | 'counter-declined'; at: number }[];
 }
 
 export interface EditionEntry {
@@ -803,6 +807,21 @@ export interface Settings {
   wakeForObligations: boolean;
 }
 
+/** A proposal tied to past work (opportunities.ts, SLATE-18-03). */
+export interface Opportunity {
+  id: string;
+  fromProjectId: string;
+  commissioner: string;
+  amount: number;
+  format: Format;
+  medium: Medium;
+  technique: Technique;
+  expiresAt: number;
+  status: 'open' | 'accepted' | 'declined' | 'lapsed';
+  reason: string;
+  projectId?: string;
+}
+
 export interface GameState {
   version: number;
   saveId: string;
@@ -824,6 +843,8 @@ export interface GameState {
   travel?: { to: string; from: string; arriveAt: number } | null;
   projects: Project[];
   people: Record<string, PersonState>;
+  /** Proposals tied to past work (opportunities.ts). */
+  opportunities?: Opportunity[];
   editions: Edition[];
   /** Competing works of the simulated seasons, by key (see Rival.film). */
   rivalFilms: Record<string, RivalFilm>;

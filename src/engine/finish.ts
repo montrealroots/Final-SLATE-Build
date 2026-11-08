@@ -2,6 +2,8 @@
 
 import { pairChemistry } from './auditions';
 import { coverageEdit } from './takes';
+import { recordHistory } from './relationships';
+import { scheduleOpportunity } from './opportunities';
 import { laterWindowTerritories, onDealReleased } from './distribution';
 import { EFFECTS_REVISION_GAIN, REVOICE_GAIN } from './revisions';
 import { scheduleRenewal } from './continuation';
@@ -189,9 +191,12 @@ export function deliver(state: GameState, p: Project): void {
   p.delivered = { at: state.now, runtimeMin: runtime };
   onProjectDelivered(state, p);
   scheduleRenewal(state, p);
+  scheduleOpportunity(state, p);
   p.phase = 'delivered';
   p.quality = assessQuality(state, p);
   p.credits = computeCredits(state, p);
+  // Everyone who worked on it through to delivery has that on record with you (relationships.ts).
+  for (const h of p.hires.filter((x) => x.status === 'accepted' && x.daysWorked > 0)) recordHistory(state, h.personId, p, roleLabel(h.roleId), 'completed');
   // Remaining agreed days that were never worked are released, not paid.
   for (const h of p.hires.filter((x) => x.status === 'accepted')) {
     if (h.obligationId) cancel(state, p, h.obligationId);
