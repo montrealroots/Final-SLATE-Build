@@ -15,6 +15,7 @@ import { t } from './tasks';
 import { personLanguagesFit } from './language';
 import type { GameState, Project, Scene, SceneCapture, ShootDay } from '../types';
 import { forecast, precipitationDuring, weatherOn, daylightWindowLocal } from '../weather';
+import { siteFactor, siteOnTheDay } from '../locations';
 
 // ---------------- Shoot days ----------------
 
@@ -144,6 +145,17 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     addLog(state, `${p.title}: ${d.result}`, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'crew' } });
     return d.result;
   }
+  // The chosen site can fall through this morning (locations.ts): to the backup if there is one, else the day is lost.
+  const where = siteOnTheDay(state.seed, p, d.locationLabel, d.date);
+  if (where.lost) {
+    d.status = 'lost';
+    d.result = where.text!;
+    rescheduleScenes(state, p, d.sceneIds, d);
+    addLog(state, `${p.title}: ${d.result}`, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
+    return d.result;
+  }
+  if (where.text) addLog(state, `${p.title}: ${where.text}`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
+  const locationFee = Math.round(dayFees(p).location * siteFactor(p, d.locationLabel));
   // Money first: a day whose cost exceeds agreed amounts and uncommitted funds doesn't run.
   const holidayToday = placeHolidaysOn(place, d.date).length > 0;
   const onSetHires = p.hires.filter((h) => h.status === 'accepted' && h.obligationId &&
@@ -152,7 +164,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const o = p.obligations.find((x) => x.id === h.obligationId)!;
     const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
     return a + Math.max(0, o.settled + pay - Math.max(o.amount, o.settled));
-  }, 0) + Math.max(0, dayFees(p).location + dayFees(p).equipment + scenes.reduce((a, s) => a + s.crowd, 0) * 180 - plannedRemaining(p, 'plan:shoot'));
+  }, 0) + Math.max(0, locationFee + dayFees(p).equipment + scenes.reduce((a, s) => a + s.crowd, 0) * 180 - plannedRemaining(p, 'plan:shoot'));
   if (overrun > ledgerTotals(p).available) {
     d.status = 'lost';
     d.result = `There wasn't enough money for this shoot day (${money(overrun)} needed beyond what's already agreed). Add funding or cut scope, then rebuild the schedule.`;
@@ -263,7 +275,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     if (settle(state, p, h.obligationId!, h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1), `${h.id}:${d.date}`)) h.daysWorked += 1;
   }
   try {
-    payPlanned(state, p, 'plan:shoot', `Location Fee (${d.date})`, 'locations', dayFees(p).location, `loc:${d.id}`);
+    payPlanned(state, p, 'plan:shoot', `Location Fee (${d.date})`, 'locations', locationFee, `loc:${d.id}`);
     payPlanned(state, p, 'plan:shoot', `Equipment Package (${d.date})`, 'equipment', dayFees(p).equipment, `eq:${d.id}`);
     const crowd = scenes.reduce((a, s) => a + s.crowd, 0);
     if (crowd) payPlanned(state, p, 'plan:shoot', `Background Performers (${d.date})`, 'cast', crowd * 180, `crowd:${d.id}`);

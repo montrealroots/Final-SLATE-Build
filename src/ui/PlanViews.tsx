@@ -13,6 +13,8 @@ import { breakdownComplete, characterPronouns, pronounsMatch } from '../engine/s
 import { AUDITION_NOTICE_DAYS, auditionsFor, callBack, chemistryPartners, inviteRefusal, inviteToAudition, setShortlisted } from '../engine/casting-calls';
 import { chemistryWords, qualityWords } from '../engine';
 import { callSheet } from '../engine/callsheet';
+import { SITES, chooseSite, scoutedPlaces, site } from '../engine/locations';
+import { dayFees } from '../engine';
 import type { Audition, FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
 import { store, useGame } from './store';
@@ -432,6 +434,7 @@ export function ScheduleTab({ p }: { p: Project }) {
         <button className="btn btn-primary" disabled={!!p.delivered} onClick={() => setErr(store.act((s) => void generatePlan(s, p, start)))}>{p.schedule.startDate ? 'Rebuild Schedule' : 'Build Schedule'}</button>
         {p.schedule.startDate && <p className="dim">Rebuilding keeps finished work and moves only what hasn't happened yet.</p>}
       </section>
+      {scoutedPlaces(p).length > 0 && <LocationsCard p={p} />}
       <section className="card">
         <h2>Shoot Days</h2>
         {!days.length && <p className="muted">{p.schedule.startDate ? 'This project has no live-action shoot days.' : 'Build a schedule to see shoot days.'}</p>}
@@ -482,6 +485,34 @@ export function ScheduleTab({ p }: { p: Project }) {
         </ul>
       </section>
     </>
+  );
+}
+
+/** The sites scouting found for each place, the one chosen and a backup (locations.ts, SLATE-11-02.02). */
+function LocationsCard({ p }: { p: Project }) {
+  const [err, setErr] = useState<string | null>(null);
+  const fee = dayFees(p).location;
+  return (
+    <section className="card" aria-labelledby="locations-h">
+      <h2 id="locations-h">Locations</h2>
+      <p className="dim">Scouting found three sites for each place. A site can fall through on the morning of a shoot: with a backup the day goes ahead there, without one the day is lost and its scenes move later. Until you choose, each place is the real one at {money(fee)} a day.</p>
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      <ul className="list">{scoutedPlaces(p).map((place) => {
+        const rec = p.locationChoices?.[place] ?? {};
+        const opts = (exclude?: string) => SITES.filter((o) => !rec.lost?.includes(o.id) && o.id !== exclude).map((o) => ({ value: o.id, label: `${o.name}: ${money(Math.round(fee * o.factor))} a day` }));
+        return (
+          <li key={place}>
+            <strong>{place}</strong>
+            {!!rec.lost?.length && <div className="dim" style={{ color: 'var(--warning)' }}>Fell through: {rec.lost.map((x) => site(x)!.name).join(', ')}.</div>}
+            <div className="grid grid-3 form">
+              <SelectField label={`Site For ${place}`} value={rec.main ?? ''} options={[{ value: '', label: rec.lost?.length ? 'Choose A Site' : 'The Real Place (Not Chosen Yet)' }, ...opts(rec.backup)]} onChange={(v) => setErr(store.act(() => chooseSite(p, place, 'main', (v || null) as never)))} />
+              <SelectField label={`Backup For ${place}`} value={rec.backup ?? ''} options={[{ value: '', label: 'No Backup' }, ...opts(rec.main)]} onChange={(v) => setErr(store.act(() => chooseSite(p, place, 'backup', (v || null) as never)))} />
+            </div>
+            {rec.main && <p className="dim small">{site(rec.main)!.note}</p>}
+          </li>
+        );
+      })}</ul>
+    </section>
   );
 }
 

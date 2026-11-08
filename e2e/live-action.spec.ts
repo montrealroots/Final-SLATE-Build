@@ -96,6 +96,15 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await expect(dock).toContainText('Ferry Dock, exterior');
   await expect(dock).toContainText('You as Odile');
   await expect(dock).toContainText(/Sunrise \d+:\d\d AM, sunset \d+:\d\d PM\./);
+  // Once scouting is done, each place offers three sites; a cheaper stand-in with the real place as the backup
+  // (SLATE-11-02.02). If the stand-in falls through on the day, the shoot goes to the backup.
+  const sites = page.locator('section.card', { has: page.getByRole('heading', { name: 'Locations' }) });
+  for (let i = 0; i < 6 && !(await sites.count()); i++) { await advance(page, 'week'); await section(page, 'Schedule'); }
+  await expect(sites).toContainText('Scouting found three sites for each place.');
+  await expect(sites.getByLabel('Site For Wheelhouse').locator('option')).toContainText([/^The Real Place \(Not Chosen Yet\)$/, /^The Real Place: \$[\d,]+ a day$/, /^A Stage Set Built To Match: \$[\d,]+ a day$/, /^A Cheaper Stand-In: \$[\d,]+ a day$/]);
+  await sites.getByLabel('Site For Wheelhouse').selectOption('standin');
+  await sites.getByLabel('Backup For Wheelhouse').selectOption('real');
+  await expect(sites).toContainText('Costs less; arrangements like this fall through more often.');
 
   // Let production run; keep staffing and move the edit along.
   for (let i = 0; i < 24; i++) {

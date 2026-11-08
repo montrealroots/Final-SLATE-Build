@@ -125,7 +125,7 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
   - Startup JavaScript budget: page-only engine code now loads with its page (`season.ts`, `sequel.ts`, `shelve.ts`,
     `structure-edit.ts`, `casting-calls.ts`), so startup is 697 kB of 700. New page-only code goes in such modules;
     `awards.ts` (60 kB at startup) is the largest remaining candidate.
-  - Stage 6, preparation, in progress:
+  - Stage 6, preparation, everything below now VERIFIED:
     - call sheets (`11-05.03`, `callsheet.ts`), VERIFIED: each scheduled shoot day has one, derived from what the day runs
       on (call 7 AM or 5 PM for night, wrap, who is paid on set, uncast parts, crew, crowd, holiday premium, daylight for
       an exterior, the forecast once there is one); browser check in `e2e/live-action.spec.ts`;
@@ -135,8 +135,13 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       (`designReview` unset). The test helpers (`tests/helpers.ts manage`, `e2e/helpers.ts runToDelivery`) approve finished
       designs as a producer would; the production golden's payment hashes were regenerated for that one-day wait (days,
       quality and credits unchanged);
-    - still to do: location options and a backup (`11-02.02`).
-- **Next:** finish stage 6 (`11-02.02`), then stage 7: live-action setups and takes `12-02.02`, `12-03`; stage 8:
+    - location sites (`11-02.02`, `locations.ts`): once scouting is done each place offers the real place, a stage set
+      (1.6 times the day fee, never falls through) and a cheaper stand-in (0.6 times, falls through more often). A
+      chosen site can fall through on the shoot morning: to the backup if there is one, else the day is lost, its
+      scenes move later and the place needs a new choice. No choice keeps the old behaviour (real place, old fee, no
+      risk). Browser check in `e2e/live-action.spec.ts`. Limitation: the Budget Estimate still prices days at the
+      base fee, whatever site is chosen.
+- **Next:** stage 7: live-action setups and takes `12-02.02`, `12-03`; stage 8:
   contributor use restrictions `14-02.02`; stage 9: replacement voice and effects `15-03.02`, ADR and Foley `15-04.02`,
   versions `15-05.03`; stage 10: territories `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11:
   relationships `18-02`, opportunities `18-03`.

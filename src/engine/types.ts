@@ -631,6 +631,8 @@ export interface Project {
   /** Designs wait for the producer's approval before they are built (designs.ts); unset on projects started before. */
   designReview?: boolean;
   designApprovals?: Record<string, { version: number; status: 'approved' | 'changes' }>;
+  /** Sites chosen for each place after scouting, the backup, and those that fell through (locations.ts). */
+  locationChoices?: Record<string, { main?: 'real' | 'stage' | 'standin'; backup?: 'real' | 'stage' | 'standin'; lost?: ('real' | 'stage' | 'standin')[] }>;
   /** Auditions and callbacks for its parts (auditions.ts). */
   auditions?: Audition[];
   setups: SetupPayoff[];

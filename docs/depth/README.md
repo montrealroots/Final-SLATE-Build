@@ -85,7 +85,7 @@ migration and tests, and moves its children to VERIFIED.
    - negotiating finance terms (`08-03.03`);
    - comparing scope cuts (`08-05.03`);
    - auditions (`09-02`).
-6. Preparation:
+6. Preparation (done):
    - location options and a backup (`11-02.02`);
    - design approval (`11-03.02`);
    - call sheets (`11-05.03`).

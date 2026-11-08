@@ -317,9 +317,11 @@ C = {
   ('Approved scenes become a breakdown of requirements', 'VE', ['tests/genres.test.ts::requirements come from scenes, not labels'], ''),
   ('Readiness links each unresolved item', 'VE', ['tests/genres.test.ts::its questions appear in readiness'], ''),
 ]),
-'11-02': ('Production', 'src/engine/production/tasks.ts', [
+'11-02': ('Production', 'src/engine/production/tasks.ts; src/engine/locations.ts', [
   ('Location scouting and permits as work with a cost', 'VE', ['tests/production-golden.test.ts::fixed-seed production outcomes are unchanged'], ''),
-  ('Choose among scouted locations, keep a backup, lose one and fall back', 'MI', [], 'One location per scene heading; no options or backup'),
+  ('Choose among scouted locations, keep a backup, lose one and fall back', 'V',
+   ['tests/locations.test.ts::a site that falls through goes to the backup', 'tests/locations.test.ts::a place with no site after a loss loses its day', 'e2e/live-action.spec.ts::a cheaper stand-in with the real place as the backup'],
+   'Three site kinds per place (real, stage set, stand-in); fees and risks are game calibration; no choice keeps the old behaviour'),
 ]),
 '11-03': ('Production', 'src/engine/production.ts; src/engine/designs.ts', [
   ('Assets with versions and readiness; a design change rebuilds only what depends on it', 'VE',
