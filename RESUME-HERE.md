@@ -226,14 +226,18 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       names what none runs. Mapping it found that a documentary contributor couldn't withdraw after filming; that is
       now modeled (`unscripted.ts withdrawRelease`, `doc:redact`), unit-tested in `tests/restrictions.test.ts`.
   - Ledger now: 149 verified existing, 77 verified, 1 implemented unverified, 2 external blockers, 0 missing.
-- **Next:**
-  - `19-03` previews: every action that spends money or time shows both first, and its outcome after. Many do; no
-    audit lists them all yet. Plan: a ratchet like `tests/disabled-reasons.test.ts` over the actions that call
-    `reserve`, `commit` or schedule work.
-  - The browser-only gaps named in `docs/depth/PLAYTHROUGHS.md` (weather loss on a chosen day, puppet repair, a
-    missed capture session, documentary withdrawal after filming, festival withdrawal and resubmission, territory
-    conflicts), each as a journey step.
-  - Human acceptance and real-device checks (`19-05.03`, `20-05`) stay with the owner.
+  - After #43 (November 8, 2026):
+    - `19-03` previews: an audit of every engine action the interface calls (read with the TypeScript parser, so
+      helpers count) found eight that spent money or time with no preview; each now has one, and
+      `tests/action-previews.test.ts` records every spending action with where its preview and outcome show.
+    - The six behaviours that only unit tests covered now run in the browser: rain stopping an exterior day
+      (`journeys.spec.ts`, pinned seed 2), a damaged puppet repaired (seed 2), a capture session missed and rebooked
+      (the clash is a labelled save fixture), a documentary contributor withdrawing after filming, festival withdrawal
+      and resubmission (the fee paid once), and an exclusive offer ending a competing one (`connected.spec.ts`).
+  - Ledger: 149 verified existing, 78 verified, 2 external blockers; nothing unverified or missing.
+- **Next:** nothing from the package is left but the owner's acceptance and real-device checks (`19-05.03`, `20-05`).
+  Still unit-tested only: versions entered at festivals (`15-05.03`), later distribution windows (`16-05`), plate
+  integration restarted by a pickup (`13-05`).
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221
 
