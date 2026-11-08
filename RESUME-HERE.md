@@ -153,10 +153,16 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
       (`takesModel` unset). The production golden was regenerated: live-action and TV quality figures moved by a few
       points, with days unchanged;
     - browser checks in `e2e/live-action.spec.ts` (desktop, phone, WebKit iPhone).
-- **Next:** stage 8:
-  contributor use restrictions `14-02.02`; stage 9: replacement voice and effects `15-03.02`, ADR and Foley `15-04.02`,
-  versions `15-05.03`; stage 10: territories `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11:
-  relationships `18-02`, opportunities `18-03`.
+  - Stage 8, documentary, VERIFIED: contributors' conditions on use (`14-02.02`, `documentary.ts`). An agreement can come
+    with conditions drawn from the world seed (face not shown 25%, name not used 20%, approval of how they appear 20%;
+    simulation assumptions), recorded and shown with the consent. A hidden face adds blurring work after lock that
+    delivery waits for (`post:blur`); a withheld name is credited as such (documentary contributors are now credited
+    "Featuring"); approval means showing them the locked cut (3 days), and a refusal holds delivery until their scenes
+    are cut; unlocking picture means showing them again. Test helpers (`manage`, `contributorApprovals`) do what a
+    producer would.
+- **Next:** stage 9: replacement voice and effects `15-03.02`, ADR and Foley `15-04.02`, versions `15-05.03`; stage 10:
+  territories `16-01.02`, reported vs received `16-04.02`, later windows `16-05`; stage 11: relationships `18-02`,
+  opportunities `18-03`.
   - Also still open: the IMPLEMENTED UNVERIFIED children (25) that need only a test.
 
 ### Newest Request (November 8, 2026, after #38): screen-by-screen review, then Identity from 1221

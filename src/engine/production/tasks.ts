@@ -200,6 +200,11 @@ export function buildTasks(p: Project): Task[] {
     tasks.push(t('post:narration', c.id, `Record ${c.name}'s Narration`, 'Post Production', 'sound-designer', 1, 'sessions', ['milestone:lock:1']));
     for (const mix of tasks.filter((x) => x.kind === 'post:mix')) mix.dependsOn.push(id);
   }
+  // A contributor who agreed on condition their face is hidden: blurring work after lock (documentary.ts).
+  for (const c of p.contributors.filter((x) => x.consent === 'given' && x.restrictions?.includes('face'))) {
+    const with_ = scenes.filter((s) => s.contributorIds.includes(c.id));
+    if (with_.length) tasks.push(t('post:blur', c.id, `Hide ${c.name}'s Face`, 'Post Production', 'editor', Math.max(1, with_.length * 0.5), 'days', ['milestone:lock:1'], { sceneIds: with_.map((s) => s.id) }));
+  }
   // Prep must finish before live capture.
   for (const task of tasks) if (task.kind === 'prep:rehearsal') task.dependsOn.push(...prepIds.filter((x) => x !== 'prep:rehearsal:all' && x !== 'doc:research:all'));
   return tasks;

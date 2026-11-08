@@ -7,6 +7,8 @@ import {
 import { fundingScenario } from '../src/engine/projects';
 import type { CreationDraft, Format, GameState, Medium, PerformanceMethod, Project, Technique } from '../src/engine/types';
 import { approveDesign, designStatus, designsToReview } from '../src/engine/designs';
+import { showCut } from '../src/engine/documentary';
+import { cutFromEdit, editScenes, unlockPicture } from '../src/engine/finish';
 
 export function startLife(seedTag: string, placeId = 'gb-london', over: Partial<CreationDraft> = {}): GameState {
   const d: CreationDraft = {
@@ -186,6 +188,15 @@ export function manage(state: GameState, p: Project): string[] {
       } catch {
         /* ignore */
       }
+    }
+  }
+  // Contributors who approve how they appear: show them the locked cut; after a refusal, unlock and cut their scenes.
+  for (const c of p.contributors.filter((x) => x.consent === 'given' && x.restrictions?.includes('approval') && editScenes(p).some((s) => s.contributorIds.includes(x.id)))) {
+    if (p.edit.pictureLocked && !c.cutApproval) { showCut(state, p, c.id); did.push('cut-shown'); }
+    else if (c.cutApproval?.status === 'refused') {
+      if (p.edit.pictureLocked) unlockPicture(state, p);
+      for (const sc of editScenes(p).filter((x) => x.contributorIds.includes(c.id))) cutFromEdit(state, p, sc.id);
+      did.push('contributor-cut');
     }
   }
   if (p.edit.pictureLocked && !p.delivered && deliveryBlockers(p).length === 0) {

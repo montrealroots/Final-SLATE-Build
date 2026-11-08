@@ -318,6 +318,26 @@ export async function produceToDelivery(page: Page, opts: { yourself?: string[];
   await runToDelivery(page, opts);
 }
 
+/**
+ * Contributors who approve how they appear (documentary.ts): show them the locked cut; if one refuses, unlock picture and
+ * cut their scenes, as a producer would. Call it on the Edit page.
+ */
+export async function contributorApprovals(page: Page): Promise<void> {
+  const card = page.locator('section.card', { has: page.getByRole('heading', { name: "Contributors' Approval" }) });
+  if (!(await card.count())) return;
+  for (const b of await card.getByRole('button', { name: /^Show .+ The Cut$/ }).all()) await b.click();
+  if (await card.getByText(/Didn't approve the cut/).count()) {
+    const unlock = page.getByRole('button', { name: 'Unlock Picture' });
+    if (await unlock.isVisible()) await unlock.click();
+    for (let i = 0; i < 10; i++) {
+      const cut = card.getByRole('button', { name: /^Cut .+ From The Edit$/ }).first();
+      if (!(await cut.count())) break;
+      await cut.click();
+      await page.getByRole('dialog', { name: 'Cut This Scene From The Edit?' }).getByRole('button', { name: 'Cut It' }).click();
+    }
+  }
+}
+
 /** Approve every finished design waiting on the Production page (designs.ts): nothing is built until it is approved. */
 export async function approveDesigns(page: Page): Promise<number> {
   await section(page, 'Production');
@@ -353,6 +373,7 @@ export async function runToDelivery(page: Page, opts: { weeks?: number; step?: '
       await b.click();
     }
     await section(page, 'Edit');
+    await contributorApprovals(page);
     const deliver = page.getByRole('button', { name: 'Deliver Project' });
     if (await deliver.isVisible() && await deliver.isEnabled()) {
       await deliver.click();

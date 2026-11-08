@@ -144,6 +144,8 @@ export function unlockPicture(state: GameState, p: Project): string[] {
   if (!p.edit.pictureLocked) throw new Error('The picture isn\'t locked.');
   if (p.delivered) throw new Error('A delivered project can\'t be unlocked.');
   p.edit.pictureLocked = false;
+  // A contributor's approval was of the locked cut; a changed cut needs showing again (documentary.ts).
+  for (const c of p.contributors) delete c.cutApproval;
   const reset: string[] = [];
   for (const t of p.tasks) {
     if (t.dependsOn.some((d) => d.startsWith('milestone:lock')) && t.done > 0) {
@@ -168,6 +170,11 @@ export function deliveryBlockers(p: Project): string[] {
   if (noConsent.length) out.push(`${noConsent[0].name} hasn't given consent to appear.`);
   const unredacted = p.contributors.filter((c) => c.consent === 'withdrawn' && contributorsUsed.has(c.id) && !redactionComplete(p, c.id));
   if (unredacted.length) out.push(`${unredacted[0].name} withdrew; their footage still has to be redacted.`);
+  // Approval of how they appear (documentary.ts): only for contributors still in the cut.
+  const inEdit = new Set(editScenes(p).flatMap((s) => s.contributorIds));
+  for (const c of p.contributors.filter((x) => x.consent === 'given' && x.restrictions?.includes('approval') && inEdit.has(x.id) && x.cutApproval?.status !== 'approved')) {
+    out.push(c.cutApproval?.status === 'refused' ? `${c.name} didn't approve how they appear. Cut their scenes to deliver.` : c.cutApproval?.status === 'shown' ? `${c.name} is reviewing the cut.` : `${c.name} approves how they appear: show them the locked cut.`);
+  }
   if (isNonfiction(p.axes.format) && p.evidence.some((e) => e.status !== 'dramatized' && !e.verified)) out.push('Some claims haven\'t been verified.');
   return out;
 }
@@ -248,6 +255,13 @@ export function computeCredits(state: GameState, p: Project): Credit[] {
     if (!inCapture && !inTake) continue;
     const eps = [...new Set(scenesOf.map((s) => s.episode))];
     add({ person: h.personId, personName: personById(state, h.personId).name, contribution: h.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: 'actor', characterName: c.name, episodes: episodic ? eps : 'all' });
+  }
+  // Documentary contributors in the cut, under the name they agreed to (documentary.ts): withheld when they asked.
+  if (nonfiction) {
+    const inCut = new Set(editScenes(p).flatMap((s) => s.contributorIds));
+    for (const c of p.contributors.filter((x) => x.consent === 'given' && inCut.has(x.id))) {
+      add({ person: `contributor:${c.id}`, personName: c.restrictions?.includes('name') ? 'Name withheld at their request' : c.name, contribution: 'Featuring', roleId: 'contributor', episodes: 'all' });
+    }
   }
   for (const h of p.hires.filter((x) => x.kind === 'crew' && x.daysWorked > 0 && x.roleId !== 'co-writer' && x.roleId !== 'episode-writer' && x.roleId !== 'episode-director')) {
     add({ person: h.personId, personName: personById(state, h.personId).name, contribution: roleLabel(h.roleId), roleId: h.roleId, episodes: h.episodes });

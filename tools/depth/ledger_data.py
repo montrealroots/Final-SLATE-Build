@@ -392,7 +392,9 @@ C = {
 ]),
 '14-02': ('Contributors', 'src/engine/documentary.ts; src/engine/unscripted.ts', [
   ('Ask for consent; given, declined or withdrawn', 'VE', ['tests/media.test.ts::uses contributors, consent and fact checks'], ''),
-  ('Restrictions on use (no face, no name, approval of use) carried into the edit', 'MI', [], 'Consent is all-or-nothing'),
+  ('Restrictions on use (no face, no name, approval of use) carried into the edit', 'V',
+   ['tests/restrictions.test.ts::a hidden face adds blurring after lock that delivery waits for', 'tests/restrictions.test.ts::a refusal holds delivery until their scenes are cut', 'e2e/journeys.spec.ts::Joost agrees on condition his face isn\'t shown'],
+   'Shares of each condition are simulation assumptions; cut approval reads the locked cut and resets on unlock'),
   ('Withdrawal before filming adds no redaction; after filming, redaction work', 'VE', ['tests/unscripted.test.ts::before the shoot there is nothing to redact'], ''),
 ]),
 '14-03': ('Production (documentary)', 'src/engine/production/tasks.ts', [

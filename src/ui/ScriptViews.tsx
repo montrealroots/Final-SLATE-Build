@@ -13,6 +13,7 @@ import {
 import { addAct, addBeat, addThread, removeAct, removeBeat, removeThread, setSceneAct, updateThread } from '../engine/structure-edit';
 // Loaded with this page, not at startup (the startup budget): the engine index leaves season.ts out.
 import { moveEpisode, removeRelationship, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule, type SharedFact } from '../engine/season';
+import { RESTRICTION_WORDS } from '../engine/documentary';
 import { CONTENT_ISSUES, audienceContentNote, characterPronouns, contentSuggestions, contentSummary, placementExplained, spokenMinutes } from '../engine/script-explain';
 import type { ContentIssue, ContentLevel, Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
@@ -689,7 +690,7 @@ function Facts({ p }: { p: Project }) {
       <ul className="list">
         {p.contributors.map((c) => (
           <li key={c.id} className="row-wrap">
-            <span className="grow">{c.name}{c.role ? `, ${c.role}` : ''} <span className={`chip ${c.consent === 'given' ? 'chip-positive' : c.consent === 'declined' || c.consent === 'withdrawn' ? 'chip-negative' : 'chip-warning'}`}>{{ 'not-asked': 'Consent Not Requested', requested: 'Consent Requested', given: 'Consent Given', declined: 'Consent Declined', withdrawn: 'Withdrew' }[c.consent]}</span></span>
+            <span className="grow">{c.name}{c.role ? `, ${c.role}` : ''} <span className={`chip ${c.consent === 'given' ? 'chip-positive' : c.consent === 'declined' || c.consent === 'withdrawn' ? 'chip-negative' : 'chip-warning'}`}>{{ 'not-asked': 'Consent Not Requested', requested: 'Consent Requested', given: 'Consent Given', declined: 'Consent Declined', withdrawn: 'Withdrew' }[c.consent]}</span>{c.restrictions?.length ? <span className="dim"> On condition: {c.restrictions.map((k) => RESTRICTION_WORDS[k]).join('; ')}.</span> : null}</span>
             <div className="row gap-2 wrap">
               {c.consent === 'not-asked' && <button className="btn btn-sm" onClick={() => store.act((s) => requestConsent(s, p, c.id))}>Request Consent</button>}
               {p.axes.format === 'unscripted-series' && c.consent === 'given' && !p.delivered && <WithdrawButton p={p} contributorId={c.id} name={c.name} />}

@@ -314,6 +314,10 @@ export interface Contributor {
   name: string;
   role: string;
   consent: 'not-asked' | 'requested' | 'given' | 'declined' | 'withdrawn';
+  /** What they agreed to on condition of (documentary.ts): their face hidden, their name withheld, approval of the cut. */
+  restrictions?: ('face' | 'name' | 'approval')[];
+  /** For approval of the cut: shown to them, and their answer. */
+  cutApproval?: { status: 'shown' | 'approved' | 'refused'; answerAt: number };
 }
 
 export interface WorldRule {

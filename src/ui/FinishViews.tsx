@@ -15,6 +15,8 @@ import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
 import { chooseTake } from '../engine/takes';
+import { showCut } from '../engine/documentary';
+import { editScenes } from '../engine/finish';
 import { approveDesign, askForDesignChanges, designStatus, designsToReview, type DesignStatus } from '../engine/designs';
 
 // ---------------- Production ----------------
@@ -122,6 +124,36 @@ export function ProductionTab({ p }: { p: Project }) {
 
 // ---------------- Edit and delivery ----------------
 
+/** Contributors who approve how they appear (documentary.ts, SLATE-14-02.02): show them the locked cut, or cut them. */
+function ApprovalsCard({ p, onError, onCut }: { p: Project; onError: (e: string | null) => void; onCut: (sceneId: string) => void }) {
+  useGame();
+  const inCut = editScenes(p);
+  const zone = getPlace(p.axes.basePlaceId).zone;
+  return (
+    <section className="card" aria-labelledby="approvals-h">
+      <h2 id="approvals-h">Contributors' Approval</h2>
+      <p className="dim">These contributors agreed on condition they approve how they appear. They see the locked cut; unlocking it later means showing them again. If one doesn't approve, cut their scenes to deliver.</p>
+      <ul className="list">{p.contributors.filter((c) => c.consent === 'given' && c.restrictions?.includes('approval')).map((c) => {
+        const theirs = inCut.filter((s) => s.contributorIds.includes(c.id));
+        const st = c.cutApproval?.status;
+        return (
+          <li key={c.id}>
+            <div className="row-wrap">
+              <span className="grow"><strong>{c.name}</strong> <span className="dim">· {!theirs.length ? 'Not in the cut' : st === 'approved' ? 'Approved the cut' : st === 'refused' ? "Didn't approve the cut" : st === 'shown' ? `Reviewing the cut; answer due ${formatDateKey(dateKey(c.cutApproval!.answerAt, zone))}` : 'Not shown the cut yet'}</span></span>
+              {theirs.length > 0 && !st && p.edit.pictureLocked && !p.delivered && <button className="btn btn-sm" aria-label={`Show ${c.name} The Cut`} onClick={() => onError(store.act((s) => showCut(s, s.projects.find((x) => x.id === p.id)!, c.id)))}>Show Them The Cut</button>}
+            </div>
+            {st === 'refused' && theirs.length > 0 && (
+              p.edit.pictureLocked
+                ? <p className="dim">Unlock picture to cut their scenes.</p>
+                : <ul className="list">{theirs.map((sc) => <li key={sc.id} className="row-wrap"><span className="grow">{sceneLabel(p, sc)}</span><button className="btn btn-sm" aria-label={`Cut ${sceneLabel(p, sc)} From The Edit`} onClick={() => onCut(sc.id)}>Cut It From The Edit</button></li>)}</ul>
+            )}
+          </li>
+        );
+      })}</ul>
+    </section>
+  );
+}
+
 /** The takes of each scene, and the one the cut uses (takes.ts, SLATE-12-03). Choosing trades performance against craft. */
 function TakesCard({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
   const scenes = approvedScenes(p).filter((s) => (p.captures.find((c) => c.sceneId === s.id)?.takes?.length ?? 0) > 1);
@@ -179,6 +211,7 @@ export function EditTab({ p }: { p: Project }) {
         )}
       </section>
       {p.captures.some((c) => (c.takes?.length ?? 0) > 1) && <TakesCard p={p} onError={setErr} />}
+      {p.contributors.some((c) => c.consent === 'given' && c.restrictions?.includes('approval')) && <ApprovalsCard p={p} onError={setErr} onCut={setCutting2} />}
       <section className="card">
         <h2>Coverage</h2>
         {gaps.length ? (
