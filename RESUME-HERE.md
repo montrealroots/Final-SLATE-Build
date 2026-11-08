@@ -77,6 +77,7 @@ Starting Point, is next.
   - The code is `spans` and `observanceDates` in `src/engine/observances.ts`. Every day reaches the calendar, Home and a project's working days.
   - Beta Israel is a new background. It suggests these holidays, and Hebrew and Amharic.
   - Shemini Atzeret was left out by decision: nothing beyond what was asked.
+- **Results (screen 3):** `npm run check` (295 unit tests, startup 669 kB, within budget) and the complete production-build browser suite (151 passed, 27 skipped by design, 0 failed).
 
 - **Identity fixes from the review:**
   - the place picker follows the chosen place (country list, map zoom and highlight);
