@@ -246,6 +246,16 @@ Source: [84th Annual Golden Globes Eligibility and Consideration Rules, updated 
 Not applied: the drama-or-comedy classification by tone (SLATE separates them by genre, simulated), the Non-English and
 low-budget independent provisions, campaign rules.
 
+**Version 2 (`golden-globes-2027@2`, read November 9, 2026):** the other 19 entered categories read their part of the
+rules. Film acting, Original Score, Original Song and Cinematic and Box Office Achievement take the motion picture rules
+(A.1: 70 minutes, released in 2026 in one of seven US metro areas, on the voters' platform by December 2). Non-English
+Language takes A.3.c: first released in its country of origin for seven consecutive days in 2026 (vi), no US release
+needed (viii), submitted once (vii), given to its directors and PGA-accredited producers (A.3.i.ii). The television
+limited series and every television acting category take the television rules (C.1). Not modeled: A.1.c (a film must
+also be submitted for Best Motion Picture to be eligible for the individual awards, except non-English and low-budget
+independent films); A.3.d's exclusion of voice-only and cameo performances; B.1.b's $150 million box-office threshold (the
+catalog's requirement reads a theatrical release, a gap recorded for the recipients and work-specific audit).
+
 ## Primetime Emmy Awards, 78th (2026, verified) and 79th (2027, projected)
 
 Source: Television Academy, 78th Emmy Awards 2025-2026 Rules and Procedures, version 4 (updated April 7, 2026), from

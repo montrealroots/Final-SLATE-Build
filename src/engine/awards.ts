@@ -9,6 +9,7 @@ import { versionRuntime } from './versions';
 import { castPlacement, documentsNeeded } from './script-effects';
 import { genre } from './genres';
 import { personById } from './people';
+import { countryName } from '../world/gazetteer/gazetteer';
 import { isNonfiction } from './projects';
 import { travelHours } from './state';
 import { gaussian, intBetween, pick, stream, unit } from './rng';
@@ -341,7 +342,8 @@ function releaseFits(p: Project, inst: Institution, ed: Edition): { ok: boolean;
 }
 
 export function countryWords(c: string): string {
-  return c === 'US' ? 'the United States' : c === 'GB' ? 'the United Kingdom' : c === 'FR' ? 'France' : c;
+  // Named from the gazetteer: until November 9, 2026 every country but three showed as its code ("a release in ES").
+  return c === 'US' ? 'the United States' : c === 'GB' ? 'the United Kingdom' : countryName(c);
 }
 
 type ReleaseFit = { ok: boolean; provisional: boolean; reason?: string; via?: 'release' | 'festival' | 'category'; note?: string };
@@ -358,7 +360,9 @@ function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: Cate
   const { routes, countries, outside, exempt, festivalAwards, viaCategory } = rules.release!.value;
   if (exempt?.includes(p.axes.format)) return { ok: true, provisional: false };
   const win = rules.qualifying?.value ?? ed.eligibility;
-  const where = (t: string) => (outside ? !outside.includes(t) : countries.includes(t));
+  const home = getPlace(p.axes.basePlaceId).country;
+  // 'origin' stands for the production country (the Golden Globes' Non-English Language award, A.3.c.vi).
+  const where = (t: string) => (outside ? !outside.includes(t) : countries.includes(t) || (countries.includes('origin') && t === home));
   const fits = (r: Project['releases'][number]) => (routes as string[]).includes(r.route) && r.territories.some(where) && r.date >= win.from && r.date <= win.to;
   if (p.releases.some((r) => r.status === 'released' && fits(r))) return { ok: true, provisional: false, via: 'release' };
   if (list && qualifyingWin(state, p, list)) return { ok: true, provisional: false, via: 'festival' };
@@ -369,7 +373,7 @@ function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: Cate
   if (p.releases.some((r) => r.status === 'planned' && fits(r))) return { ok: true, provisional: true, via: 'release' };
   if (via?.status === 'submitted') return { ok: true, provisional: true, via: 'category', note: `Entered provisionally. It qualifies through its ${viaName} entry, which must be accepted.` };
   const how = routes.length === 1 ? `a ${routes[0]} release` : 'a release';
-  const place = outside ? `outside ${outside.map(countryWords).join(' and ')}` : `in ${countries.map(countryWords).join(' or ')}`;
+  const place = outside ? `outside ${outside.map(countryWords).join(' and ')}` : `in ${countries.map((c) => (c === 'origin' ? countryWords(home) : countryWords(c))).join(' or ')}`;
   const orFest = list ? `, or a win of an award on the ${institution(ed.institutionId).short} qualifying-festival list between ${formatDateKey(list.window.from)} and ${formatDateKey(list.window.to)}` : festivalAwards ? ', or a top award at one of its qualifying festivals in that time' : '';
   const orVia = viaCategory ? `, or an accepted ${viaName} entry` : '';
   return { ok: false, provisional: false, reason: `It needs ${how} ${place} between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}${orFest}${orVia}.` };

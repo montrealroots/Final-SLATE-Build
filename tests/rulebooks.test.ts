@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('177 categories follow verified rules for at least one edition, 11 only projected ones; the other 614 are simulated', () => {
+  it('196 categories follow verified rules for at least one edition, 11 only projected ones; the other 595 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -433,8 +433,8 @@ describe('audit counts', () => {
     // 2 projected until the Berlinale's five other sections were read (berlinale-2027@2), 7 until Cannes' four feature
     // sections were (cannes-2027@2). 165 verified until Annecy's Contrechamp, Off-Limits, Perspectives and TV (annecy-2026@2),
     // 169 until Venice's Out of Competition and Spotlight (venice-2026@2), 171 until San Sebastián's other six sections
-    // (san-sebastian-2026@2).
-    expect(n).toEqual({ verified: 177, projected: 11, simulated: 614 });
+    // (san-sebastian-2026@2), 177 until the Golden Globes' other 19 entered categories (golden-globes-2027@2).
+    expect(n).toEqual({ verified: 196, projected: 11, simulated: 595 });
   });
 });
 
@@ -545,7 +545,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, film('FR'), e, 'panorama')).toBe(''); // shown at home only
     expect(r(s, film('US'), e, 'panorama')).not.toMatch(/premiere|Germany/); // outside Europe
     expect(r(s, film('IT'), e, 'panorama')).toMatch(/at least a European premiere/);
-    expect(r(s, film('DE'), e, 'panorama')).toMatch(/shown publicly in DE|shown publicly in Germany/);
+    expect(r(s, film('DE'), e, 'panorama')).toMatch(/shown publicly in Germany/);
     const old = work(s, { format: 'feature', runtime: 95, completed: '2026-01-15', base: 'fr-paris' });
     expect(r(s, old, e, 'forum')).toMatch(/completed on January 15, 2026/);
     const short = (runtime: number) => work(s, { format: 'short', runtime, completed: '2026-06-01', base: 'fr-paris' });
@@ -616,6 +616,26 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     release(streamed, 'streaming', '2026-03-01', ['AR']);
     expect(r(s, streamed, e, 'velodrome')).toMatch(/released online/);
     expect(categoryDeadline(e, cat(e, 'new-directors'))).toBe(at('Europe/Madrid', '2026-06-16', 23, 59) + 59_000);
+  });
+
+  it('Golden Globes 2027, version 2: Non-English Language needs a run in its country of origin, not in the US; TV acting reads the television rules', () => {
+    const s = startLife('gg2');
+    const e = ed(s, 'golden-globes-2027');
+    expect(e.rulesId).toBe('golden-globes-2027@2');
+    s.now = at('America/Los_Angeles', '2026-11-01', 9);
+    const film = (where: string) => {
+      const p = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'es-madrid' });
+      p.axes.dialogueLanguages = ['es'];
+      release(p, 'theatrical', '2026-03-01', [where]);
+      return p;
+    };
+    expect(r(s, film('ES'), e, 'non-english')).toBe('');
+    expect(r(s, film('US'), e, 'non-english')).toMatch(/theatrical release in Spain between January 1, 2026 and December 31, 2026/);
+    expect(checkEligibility(s, film('ES'), e, cat(e, 'non-english')).recipients.map((c) => c.contribution).sort()).toEqual(['Directed By', 'Produced By', 'Produced By']);
+    expect(r(s, film('ES'), e, 'actress-drama')).toMatch(/release in the United States/); // the film rules: a US run
+    const show = work(s, { format: 'series', runtime: 45, completed: '2026-01-10', base: 'gb-london' });
+    release(show, 'streaming', '2026-02-01', ['US']);
+    expect(r(s, show, e, 'tv-actor-drama')).toMatch(/for work made in the United States/);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

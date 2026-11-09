@@ -440,6 +440,33 @@ const GOLDEN_GLOBES_2027: RuleBook = {
   },
 };
 
+/**
+ * Version 2 (November 9, 2026): every entered category reads its part of the rules. Film acting, score and song take the
+ * motion picture rules (A.1); Non-English Language takes A.3.c (first released in its country of origin for seven days
+ * in 2026, no US release needed, submitted once); Cinematic and Box Office Achievement takes the film rules (B; the $150
+ * million threshold is the catalog's box-office requirement, which reads a theatrical release, recorded as a gap); the
+ * television limited series and acting categories take the television rules (C). Not modeled: A.1.c, that a film must
+ * also be submitted for Best Motion Picture to be eligible for the individual awards (except non-English and low-budget
+ * independent films), and the acting rules that exclude voice-only and cameo performances (A.3.d).
+ */
+const { recipients: _ggProducers, ...GG_TV_INDIVIDUAL } = GG_TV;
+void _ggProducers;
+const GOLDEN_GLOBES_2027_2: RuleBook = {
+  ...GOLDEN_GLOBES_2027, id: 'golden-globes-2027@2', version: 2, checked: '2026-11-09',
+  categories: {
+    ...GOLDEN_GLOBES_2027.categories,
+    ...Object.fromEntries(['actress-drama', 'actor-drama', 'actress-comedy', 'actor-comedy', 'supporting-actress', 'supporting-actor', 'score', 'song', 'box-office'].map((id) => [id, GG_FILM])),
+    'non-english': {
+      ...GG_FILM,
+      release: v({ routes: ['theatrical'], countries: ['origin'] }, 'gg84-rules', 'First released in its country of origin for at least seven consecutive days in 2026 (A.3.c.vi); no US release is needed (viii). SLATE uses the production base as the country of origin and a theatrical release there as the run.'),
+      noReentry: v(true, 'gg84-rules', 'Submitted only once (A.3.c.vii).'),
+      recipients: v({ credit: 'director-and-producer' }, 'gg84-rules', 'Given to the directors and the individual producers accredited by the Producers Guild (A.3.i.ii).'),
+    },
+    'tv-limited': GG_TV,
+    ...Object.fromEntries(['tv-actress-drama', 'tv-actor-drama', 'tv-actress-comedy', 'tv-actor-comedy', 'tv-actress-limited', 'tv-actor-limited', 'tv-supporting-actress', 'tv-supporting-actor'].map((id) => [id, GG_TV_INDIVIDUAL])),
+  },
+};
+
 // ---------------- Primetime Emmys: 78th (2026, verified) and 79th (2027, projected) ----------------
 
 const EMMY_SOURCE: RuleSource = { id: 'em78-rules', publisher: 'Television Academy', title: '78th Emmy Awards 2025-2026 Rules and Procedures (version 4, April 7, 2026)', url: 'https://www.televisionacademy.com/rules', edition: '78th Primetime Emmy Awards (2026)', retrieved: CHECKED };
@@ -524,5 +551,5 @@ const EMMYS_2027_2: RuleBook = { ...EMMYS_2027, id: 'emmys-2027@2', version: 2, 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2,
 ];
