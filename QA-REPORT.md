@@ -14,8 +14,8 @@ Tested revision: the working branch at the commit that updates this report.
 
 | Command | Exit | Result |
 | --- | --- | --- |
-| `npm run check` | 0 | 72 files, 552 tests passed; startup JavaScript 681 kB, 218 kB gzipped (budgets 700 and 220), 0 problems. |
-| `npx playwright test e2e/awards.spec.ts e2e/screenwriting.spec.ts e2e/script-rules.spec.ts --project=desktop --project=iphone-15-plus --trace off` | E2E_EXIT | E2E_RESULT |
+| `npm run check` | 0 | 72 files, 552 tests passed (553 with the old-song test added after it); startup JavaScript 681 kB, 218 kB gzipped (budgets 700 and 220), 0 problems. |
+| `npx playwright test e2e/awards.spec.ts e2e/screenwriting.spec.ts e2e/script-rules.spec.ts --project=desktop --project=iphone-15-plus --trace off` | 0 | 28 passed in 4.5 minutes (WebKit is the `iphone-15-plus` project): the three new journeys and every existing awards, screenwriting and script-rules journey. The Songs and Screen Time cards were inspected from their screenshots on both. |
 | GitHub Actions CI for #54 (`bdf1b67`, run 129) and on `main` after #53 (`a0dcc3b`, run 128) | success | #54 was merged as `b798655`. |
 
 Implemented and tested, engine and browser:
@@ -34,6 +34,9 @@ Implemented and tested, engine and browser:
   the score only; writing, recording before the performed scene's shoot, one clearance per licensed song; a version
   drops or swaps a song while the main cut keeps it; the Oscars' three-writer limit; v7 to v8 migration keeps titles and
   uses and leaves origin, writers and minutes unknown.
+- **Mutation-tested**: recorded time alone meets the rule, heard-only doesn't count, a part must be in the scene, crew
+  count only for their episodes, an old song's origin decides however its writers were named later, an entry's snapshot
+  score is what is judged, and writers read music first: each mutant fails a test.
 - **Fixed**: the Oscar for Original Song went to the score composer of any project with a song not marked licensed;
   the Emmys' 5% rule read the approved script (every listed scene counted whole) against the target episode length.
 
