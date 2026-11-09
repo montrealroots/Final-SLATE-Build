@@ -516,3 +516,27 @@ test('SXSW: a music video enters the Music Video Competition; a short film can\'
   await expect(row(page, 'Grand Jury Award: Music Video')).toBeVisible();
   await submit(page, 'Music Video Competition', /goes to the credited producers\./, 'Nia Halvorsen-Mbeki');
 });
+
+test('Golden Globes: Non-English Language counts the script\'s dialogue, not the declared language', async ({ page }) => {
+  await quickLife(page, 'fr-paris', '2026-10-01');
+  await newProject(page, { title: 'Le Quai', format: 'Feature Film', runtime: '100' });
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'La Rive', format: 'Feature Film', runtime: '100' });
+  // Labelled fixture: both declared French first; the approved scripts' lines are 60% and 10% French.
+  await editSave(page, (s) => {
+    const words = (n: number, w: string) => Array(n).fill(w).join(' ');
+    for (const [title, fr] of [['Le Quai', 60], ['La Rive', 10]] as const) {
+      const p = deliver(s, title, { format: 'feature', runtime: 100, at: '2026-02-01T12:00:00Z', base: 'fr-paris',
+        releases: [{ id: 'r1', route: 'theatrical', date: '2026-04-01', territories: ['FR'], distributor: 'Rive Gauche', note: '', status: 'released' }] });
+      p.axes.dialogueLanguages = ['fr', 'en'];
+      p.drafts = [{ number: 1, characters: [], scenes: [{ id: 's1', kind: 'scripted', songs: [], dialogue: [
+        { id: 'l1', characterId: 'c', text: words(fr, 'mot'), language: 'fr' }, { id: 'l2', characterId: 'c', text: words(100 - fr, 'word'), language: 'en' }] }] }];
+      p.approvedDraft = 1;
+    }
+  });
+  await openEvent(page, 'Le Quai', '84th Golden Globe Awards');
+  await filterTo(page, 'Le Quai', 'Every Category');
+  await expect(row(page, 'Best Motion Picture – Non-English Language').locator('.chip', { hasText: 'Open To Le Quai' })).toBeVisible();
+  await filterTo(page, 'La Rive', 'Every Category');
+  await expect(row(page, 'Best Motion Picture – Non-English Language').getByText('10% of its written dialogue is in a language other than English; this category needs more than 50%.')).toBeVisible();
+});
