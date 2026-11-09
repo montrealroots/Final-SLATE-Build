@@ -572,6 +572,16 @@ streaming platform, by September 28; documentaries of 60 minutes or more complet
 Shared categories (hair and makeup, song, soundtrack, visual effects) and online series stay on SLATE's rules; the entry
 pages answered after a 503 earlier the same day.
 
+## Japan Academy Film Prize, 50th (2027)
+
+Source (read November 9, 2026): the [selection criteria](https://www.japan-academy-prize.jp/films/japanese) (選考基準),
+linked from the About page. Theatrical fiction and animated films of 40 minutes or more, first shown for paid admission in
+the Tokyo area from January 1 to December 31, 2026, new works made for cinemas; documentaries, festival-only and event
+screenings and re-releases excluded; a film streamed or televised first, the same day included, isn't new. Applied to all
+17 entered categories (`japan-academy-2027@1`). Not modeled: three showings a day and two weeks at one Tokyo cinema, the
+same-day streaming exclusion, films re-edited from television, the Academy's own Japanese-or-foreign judgement. No entry
+deadline is published.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two

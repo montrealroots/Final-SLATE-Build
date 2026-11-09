@@ -47,10 +47,10 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Canadian Screen Awards (`canadian-screen`) | 119 | 114 / 5 / 0 | 115 / 0 / 4 | 0 | 0 | 115 | 8 | 0 | 40 |
 | AACTA Awards (`aacta`) | 36 | 35 / 1 / 0 | 31 / 0 / 5 | 0 | 0 | 31 | 6 | 0 | 6 |
 | Africa Movie Academy Awards (`amaa`) | 4 | 0 / 0 / 4 | 0 / 0 / 4 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 2 |
+| Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 0 | 0 | 6 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 4 | 0 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 503 / 11 / 292 | 28 | 338 | 493 | 217 | 35 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 520 / 11 / 275 | 28 | 338 | 493 | 223 | 35 | 123 |
 
 ## Research queue
 
@@ -72,6 +72,5 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 14. `pga` (9): `drama`, `comedy`, `limited`, `tv-movie`, `nonfiction`, `live-variety`, `game-competition`, `childrens`, `short-form`
 15. `aacta` (5): `hair-makeup`, `song`, `soundtrack`, `online-series`, `vfx-animation`
 16. `amaa` (4): `film`, `director`, `documentary`, `short`
-17. `japan-academy` (17): `picture`, `animation`, `actor`, `actress`, `supporting-actor`, `supporting-actress`, `director`, `screenplay`, `music`, `cinematography`, `lighting`, `art-direction`, `sound`, `editing`, `foreign`, `vfx`, `newcomer`
-18. `blue-dragon` (3): `film`, `director`, `screenplay`
-19. `european-film-awards` (16): `film`, `director`, `animated`, `documentary`, `short`, `coproduction`, `actor`, `screenwriter`, `casting`, `cinematographer`, `composer`, `costume`, `editor`, `makeup`, `production-designer`, `sound`
+17. `blue-dragon` (3): `film`, `director`, `screenplay`
+18. `european-film-awards` (16): `film`, `director`, `animated`, `documentary`, `short`, `coproduction`, `actor`, `screenwriter`, `casting`, `cinematographer`, `composer`, `costume`, `editor`, `makeup`, `production-designer`, `sound`

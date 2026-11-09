@@ -1297,8 +1297,32 @@ const iemmyBook = (year: number, mk: typeof v): RuleBook => ({
 const INTERNATIONAL_EMMYS_2026 = iemmyBook(2026, v);
 const INTERNATIONAL_EMMYS_2027 = iemmyBook(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 competition.')) as typeof v);
 
+// ---------------- Japan Academy Film Prize, 50th (2027) ----------------
+
+/**
+ * Read November 9, 2026: the selection criteria page (選考基準, japan-academy-prize.jp/films/japanese), linked from the
+ * About page; the press release read earlier said the same. Theatrical fiction and animated films of 40 minutes or more,
+ * first shown for paid admission in the Tokyo area from January 1 to December 31, 2026 (SLATE: a Japanese theatrical
+ * release), new works made for cinemas; documentaries, festival-only and event screenings and re-releases excluded; a film
+ * streamed or televised first, "same day included", isn't new. Not modeled: three showings a day in the first week and two
+ * weeks running at one Tokyo cinema; the same-day streaming exclusion (SLATE's theatrical-first rule allows the same day);
+ * films re-edited from television; the Academy's own Japanese-or-foreign judgement (the catalog uses the production base).
+ * No entry deadline is published: the Academy selects from the year's releases.
+ */
+const JAPAN_ACADEMY_2027: RuleBook = {
+  id: 'japan-academy-2027@1', institutionId: 'japan-academy', year: 2027, version: 1, checked: '2026-11-09',
+  sources: [{ id: 'jap50-criteria', publisher: 'Japan Academy Film Prize Association', title: '選考基準 (selection criteria), 50th Japan Academy Film Prize', url: 'https://www.japan-academy-prize.jp/films/japanese', edition: '50th Japan Academy Film Prize (2027)', retrieved: '2026-11-09' }],
+  categories: Object.fromEntries(['picture', 'animation', 'actor', 'actress', 'supporting-actor', 'supporting-actress', 'director', 'screenplay', 'music', 'cinematography', 'lighting', 'art-direction', 'sound', 'editing', 'foreign', 'vfx', 'newcomer'].map((id) => [id, {
+    runtime: v({ atLeast: 40 }, 'jap50-criteria', '40 minutes or more.'),
+    formats: v(['feature'] as ('feature')[], 'jap50-criteria', 'Theatrical fiction and animated films; documentaries are excluded.'),
+    qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'jap50-criteria', 'First shown for paid admission from January 1 to December 31, 2026.'),
+    release: v({ routes: ['theatrical'], countries: ['JP'] }, 'jap50-criteria', 'In the Tokyo area for paid admission, three showings a day in the first week and two weeks running at one cinema; SLATE treats a Japanese theatrical release as that.'),
+    theatricalFirst: v({ countries: ['*'] }, 'jap50-criteria', 'Streamed or televised first (the same day included) isn\u2019t a new work; SLATE allows the same day.'),
+  } satisfies CategoryRules])),
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2, AACTA_2027, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2, AACTA_2027, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
 ];

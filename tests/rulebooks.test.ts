@@ -423,7 +423,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('503 categories follow verified rules for at least one edition, 11 only projected ones; the other 292 are simulated', () => {
+  it('520 categories follow verified rules for at least one edition, 11 only projected ones; the other 275 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -450,8 +450,9 @@ describe('audit counts', () => {
     // 457 until Venice's Critics' Week read its own regulations (venice-2026@4), 458 until the Goyas' European,
     // Ibero-American and short film awards read their specific Bases (goya-2027@2), 463 until the PGA's documentary award
     // (pga-2027@2), 464 until the WGA's Documentary Screenplay (wga-2027@2), 465 until the DGA's seven television awards
-    // (dga-2027@2), 472 until the AACTA's 31 film, television, documentary and short categories (aacta-2027@1).
-    expect(n).toEqual({ verified: 503, projected: 11, simulated: 292 });
+    // (dga-2027@2), 472 until the AACTA's 31 film, television, documentary and short categories (aacta-2027@1), 503 until the
+    // Japan Academy's 17 (japan-academy-2027@1).
+    expect(n).toEqual({ verified: 520, projected: 11, simulated: 275 });
   });
 });
 
@@ -879,6 +880,27 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(e.rulesId).toBe('international-emmys-2027@1');
     expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/New_York', '2027-01-31', 12));
     expect(categoryRuleStatus(rulebook('international-emmys-2026@1'), 'drama')).toBe('simulated');
+  });
+
+  it('Japan Academy 2027: a film of 40 minutes or more first released in Japanese cinemas in 2026; no documentaries; nothing streamed first', () => {
+    const s = startLife('jap');
+    const e = ed(s, 'japan-academy-2027');
+    expect(e.rulesId).toBe('japan-academy-2027@1');
+    s.now = at('Asia/Tokyo', '2026-10-01', 9);
+    const film = (format: Project['axes']['format'] = 'feature', runtime = 110, base = 'jp-tokyo') => work(s, { format, runtime, completed: '2026-01-10', base });
+    const jp = film();
+    release(jp, 'theatrical', '2026-04-01', ['JP']);
+    expect(r(s, jp, e, 'picture')).toBe('');
+    const doc = film('documentary-feature');
+    release(doc, 'theatrical', '2026-04-01', ['JP']);
+    expect(r(s, doc, e, 'picture')).toMatch(/doesn't accept documentary/);
+    const streamedFirst = film();
+    release(streamedFirst, 'streaming', '2026-03-01', ['JP']);
+    release(streamedFirst, 'theatrical', '2026-04-01', ['JP']);
+    expect(r(s, streamedFirst, e, 'picture')).toMatch(/outside cinemas/);
+    const us = film('feature', 110, 'us-los-angeles');
+    release(us, 'theatrical', '2026-04-01', ['JP']);
+    expect(r(s, us, e, 'foreign')).toBe(''); // a foreign film, released in Japanese cinemas
   });
 
   it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {
