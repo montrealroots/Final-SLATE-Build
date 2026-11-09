@@ -71,7 +71,7 @@ export function validateGameState(raw: unknown): asserts raw is GameState {
   need(isObj(s.settings), 'settings', 'are missing');
   const st = s.settings as Obj;
   need(['dark', 'light'].includes(st.theme as string), 'settings', 'have an unknown theme');
-  for (const k of ['reducedMotion', 'largeText', 'wakeForObligations']) need(typeof st[k] === 'boolean', 'settings', `${k} is not on or off`);
+  need(typeof st.wakeForObligations === 'boolean', 'settings', 'wakeForObligations is not on or off');
 
   const sl = s.sleep as Obj;
   need(isObj(sl) && typeof sl.asleep === 'boolean' && typeof sl.alarm === 'boolean', 'sleep', 'is malformed');

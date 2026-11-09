@@ -23,7 +23,8 @@ export function recordFor(p: Project, sceneId: string, characterId: string): { r
   const rec = p.edit.screenTime?.find((x) => x.sceneId === sceneId && x.characterId === characterId);
   if (!rec) return null;
   const scene = editScenes(p).find((s) => s.id === sceneId);
-  return { rec, stale: !scene || rec.onScreen + rec.heardOnly > scene.estMinutes + 1e-9 };
+  // Stale when the scene's length changed since it was recorded: a longer scene can hold more of them, a shorter one less.
+  return { rec, stale: !scene || Math.abs(rec.sceneMinutes - scene.estMinutes) > 1e-9 };
 }
 
 /**

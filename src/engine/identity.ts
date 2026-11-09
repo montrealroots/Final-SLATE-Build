@@ -49,7 +49,7 @@ export function isPortrait(v: unknown): v is string {
 }
 
 /** First, middle and last, as written: the legal name credits carry. */
-export function legalName(n: { firstName: string; middleName?: string; lastName: string }): string {
+export function legalName(n: Pick<CharacterIdentity, 'firstName' | 'lastName'> & Partial<Pick<CharacterIdentity, 'middleName'>>): string {
   return [n.firstName, n.middleName, n.lastName].map((x) => (x ?? '').trim()).filter(Boolean).join(' ');
 }
 

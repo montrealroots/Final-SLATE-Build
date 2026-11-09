@@ -685,7 +685,7 @@ test('Emmys directing: each episode is entered with its own director and judged 
   await expect(dialog).toBeHidden();
   const directing = entry(page, 'Outstanding Directing For A Drama Series, Episode 2');
   await directing.getByText('As Entered').click();
-  await expect(directing.getByText(/Judged on episode 2's own work.*Credited: Ada Ruiz\./)).toBeVisible();
+  await expect(directing.getByText(/Judged on episode 2's own work.*Credited: Ada Ruiz, [^;]+\./)).toBeVisible();
   // A project delivered before episodes were assessed on their own: judged on the season, and the dialog says so.
   await openEvent(page, 'Day Ward', 'Primetime Emmy Awards 2027');
   await filterTo(page, 'Day Ward', 'Open To Day Ward');
@@ -699,7 +699,7 @@ test('Emmys directing: each episode is entered with its own director and judged 
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await openEvent(page, 'Night Ward', 'Primetime Emmy Awards 2027');
   await entry(page, 'Outstanding Directing For A Drama Series, Episode 2').getByText('As Entered').click();
-  await expect(entry(page, 'Outstanding Directing For A Drama Series, Episode 2').getByText(/Credited: Ada Ruiz\./)).toBeVisible();
+  await expect(entry(page, 'Outstanding Directing For A Drama Series, Episode 2').getByText(/Credited: Ada Ruiz, [^;]+\./)).toBeVisible();
 });
 
 test('Songs: made in the Production tab with separate writers, one licensed; a version swaps one; the Oscar for Original Song goes to one song\'s own writers, never the licensed song\'s', async ({ page }) => {
@@ -808,7 +808,7 @@ test('Songs: made in the Production tab with separate writers, one licensed; a v
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await openEvent(page, 'Night Ferry', '99th Academy Awards');
   await entry(page, 'Music (Original Song), "Salt Water"').getByText('As Entered').click();
-  await expect(entry(page, 'Music (Original Song), "Salt Water"').getByText(/Credited: Teo Holt, Mina Okoro\. Song: "Salt Water"\./)).toBeVisible();
+  await expect(entry(page, 'Music (Original Song), "Salt Water"').getByText('Credited: Teo Holt, Song Music By ("Salt Water"); Mina Okoro, Song Lyrics By ("Salt Water"). Song: "Salt Water", by Teo Holt and Mina Okoro.', { exact: false })).toBeVisible();
   await page.screenshot({ path: `test-results/awards-songs-${test.info().project.name}.png`, fullPage: true });
 });
 

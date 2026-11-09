@@ -49,7 +49,6 @@ export function shelveProject(state: GameState, p: Project): void {
   for (const d of p.schedule.days.filter((x) => x.status === 'scheduled')) d.status = 'cancelled';
   for (const o of p.obligations.filter((x) => x.state === 'reserved')) cancel(state, p, o.id);
   cancelEvents(state, (e) => e.payload.projectId === p.id && WORK_EVENTS.has(e.kind));
-  p.workEventScheduled = false;
   p.revision = null;
   p.shelved = { at: state.now };
   p.history.push({ at: state.now, text: 'Shelved.' });

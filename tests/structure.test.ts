@@ -77,6 +77,19 @@ describe('threads', () => {
 });
 
 // SLATE-04-04.02: research questions are the writer's record; an open or uncertain one is noted on its scenes, never scored.
+describe('a thread\'s characters', () => {
+  it('are read: a character the thread follows must be in one of its scenes', () => {
+    const { s, p } = script('thread-cast');
+    const t = addThread(s, p, 'The missing boat');
+    const ines = p.characters.find((c) => c.name === 'Ines')!.id;
+    const boathouse = p.scenes[1].id; // Tomas alone
+    updateThread(p, t.id, { sceneIds: [boathouse], resolution: 'open', characterIds: [ines] });
+    expect(notes(p)).toEqual([['note', 'The thread "The missing boat" follows Ines, who isn\'t in any of its scenes.']]);
+    updateThread(p, t.id, { sceneIds: [boathouse, p.scenes[2].id] });
+    expect(notes(p)).toEqual([]);
+  });
+});
+
 describe('research notes', () => {
   it('note open and uncertain questions on their scenes until reviewed against a reference; nothing scores', () => {
     const { s, p } = script('research');

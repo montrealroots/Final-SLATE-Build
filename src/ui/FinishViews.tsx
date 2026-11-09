@@ -8,7 +8,7 @@ import {
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, money, planRelease, puppetStatus,
   qualityWords, CUT_REVIEW_DAYS, depsMet, addDaysToKey, categoryRecipients, type Category,
   categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rulebook, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
-  approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, cutScenes, entryNeeds, castPlacement, sceneLabel } from '../engine';
+  approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, cutScenes, entryNeeds, castPlacement, sceneLabel, addPlan } from '../engine';
 import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupIntegration, cutPassDays, startCutPass, unlockPicture, restoreToEdit } from '../engine/edit-actions';
 import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
 import { publicResult } from '../engine/awards-results';
@@ -112,6 +112,14 @@ export function ProductionTab({ p }: { p: Project }) {
         <p className="dim">Work happens on working days at the production base. Advance or let time pass to see it move.</p>
       </section>
       {designsToReview(p).length > 0 && <DesignsPanel p={p} />}
+      {p.changeOrders.length > 0 && (
+        <section className="card" aria-labelledby="changes-h">
+          <h2 id="changes-h">Design Changes</h2>
+          <ul className="list">{[...p.changeOrders].reverse().map((c) => (
+            <li key={c.id}>{c.summary} <span className="dim">{longLocal(c.at, getPlace(p.axes.basePlaceId).zone).date}. {c.affectedTasks.length ? `${plural(c.affectedTasks.length, 'task')} sent back: ${c.affectedTasks.map((id) => p.tasks.find((t) => t.id === id)?.label ?? 'work since removed').slice(0, 4).join(', ')}${c.affectedTasks.length > 4 ? ', and more' : ''}.` : 'No work had started on it.'}{c.decision === 'kept-old' ? ' Finished shots kept the old design.' : ''}</span></li>
+          ))}</ul>
+        </section>
+      )}
       {songs}
       {p.tasks.some((t) => t.kind === 'anim:mocap') && <MocapPanel p={p} />}
       {puppets.length > 0 && (
@@ -327,7 +335,7 @@ export function EditTab({ p }: { p: Project }) {
         <dl className="kv">
           <dt>Assembly</dt><dd>{assemblyComplete(p) ? 'Finished' : 'Not finished yet. It starts when the material for each episode is in.'}</dd>
           <dt>Cut Passes</dt><dd>{p.edit.cutPasses}{cutting ? ` (pass ${p.edit.cutPasses + 1} underway, ${Math.round((cutting.done / cutting.units) * 100)}%)` : ''}</dd>
-          <dt>Picture</dt><dd>{p.edit.pictureLocked ? 'Locked' : 'Not locked'}</dd>
+          <dt>Picture</dt><dd>{p.edit.pictureLocked ? `Locked${p.edit.lockedAt ? ` on ${longLocal(p.edit.lockedAt, getPlace(p.axes.basePlaceId).zone).date}` : ''}` : 'Not locked'}</dd>
         </dl>
         <div className="row gap-2 wrap spaced">
           <button className="btn" disabled={!assemblyComplete(p) || p.edit.pictureLocked || !!cutting} onClick={() => setErr(store.act((s) => void startCutPass(s, p)))}>Start Cut Pass</button>
@@ -339,7 +347,7 @@ export function EditTab({ p }: { p: Project }) {
         {!p.edit.pictureLocked && assemblyComplete(p) && <p className="dim">A cut pass takes the editor about {plural(cutPassDays(p), 'day')}. Locking the picture starts the finishing work that waits for it{(() => { const n = p.tasks.filter((t) => t.status !== 'done' && t.dependsOn.some((d) => d.startsWith('milestone:lock'))).length; return n ? ` (${plural(n, 'task')})` : ''; })()}.</p>}
         {!p.edit.pictureLocked && lb.length > 0 && <p className="dim">Before you lock: {lb.join(' ')}</p>}
         {p.edit.versions.length > 0 && (
-          <details className="spaced"><summary>Versions</summary><ul>{p.edit.versions.map((v) => <li key={v.number}>Version {v.number}: {v.note}, about {v.runtimeMin} minutes</li>)}</ul></details>
+          <details className="spaced"><summary>Versions</summary><ul>{p.edit.versions.map((v) => <li key={v.number}>Version {v.number}: {v.note}, about {v.runtimeMin} minutes <span className="dim">({longLocal(v.at, getPlace(p.axes.basePlaceId).zone).date})</span></li>)}</ul></details>
         )}
       </section>
       {(assemblyComplete(p) || !!p.delivered) && <ScreenTimeCard p={p} onError={setErr} />}
@@ -494,7 +502,7 @@ export function ReleaseTab({ p }: { p: Project }) {
       <section className="card">
         <h2>Release History</h2>
         {p.premiere && <p>Premiered {formatDateKey(p.premiere.date)} at {p.premiere.venue}.</p>}
-        {p.releases.length ? <ul className="list">{p.releases.map((r) => <li key={r.id} className="row-wrap"><span className="grow">{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && <button className="btn btn-sm btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</li>)}</ul> : <p className="muted">No releases yet.</p>}
+        {p.releases.length ? <ul className="list">{p.releases.map((r) => <li key={r.id} className="row-wrap"><span className="grow">{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''}{r.note ? <span className="dim"> {r.note}</span> : null} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && <button className="btn btn-sm btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</li>)}</ul> : <p className="muted">No releases yet.</p>}
         {p.quality && <p className="dim">Reception in this game: {qualityWords(p.quality.reception)}.</p>}
       </section>
       {cancelling && (
@@ -609,6 +617,7 @@ function ResultLine({ g, ed, c }: { g: GameState; ed: Edition; c: Category }) {
       {res.honoree === 'player' ? 'Honorary: you, for your body of work. ' : res.honoree ? `Given to ${res.honoree}. ` : ''}
       {res.winners.length === 1 ? `Winner: ${res.winners[0]}. ` : res.winners.length > 1 ? `Winners: ${res.winners.join(' and ')}. ` : res.none ? 'No award was given this year. ' : ''}
       {res.field.length > 0 && `${festival ? 'Selected' : 'Nominees'}: ${list(res.field)}.`}
+      {res.about.length > 0 && <details className="small"><summary>About The Other Works</summary><ul>{res.about.map((a) => <li key={a}>{a}.</li>)}</ul></details>}
     </div>
   );
 }
@@ -656,7 +665,7 @@ export function EventDetail() {
                 const cat = inst.categories.find((c) => c.id === x.categoryId);
                 return (
                   <li key={x.id} className="row-wrap">
-                    <span className="grow">{p?.title}: {cat?.name}{p ? entryVersion(p, x.versionId) + entryEpisode(p, x.episode) + entrySong(p, x) : ''} <span className="chip">{entryStatus(x, ed)}</span>{x.via === 'selection' ? <div className="dim">Considered from its selection; no entry or fee.</div> : null}{x.reason ? <div className="dim">{x.reason}</div> : null}{x.revises ? <div className="dim">Entered again after the earlier entry was withdrawn; that one stays withdrawn.</div> : null}{x.snapshot ? <EntryAsEntered x={x} /> : null}</span>
+                    <span className="grow">{p?.title}: {cat?.name}{p ? entryVersion(p, x.versionId) + entryEpisode(p, x.episode) + entrySong(p, x) : ''} <span className="chip">{entryStatus(x, ed)}</span>{x.via === 'selection' ? <div className="dim">Considered from its selection; no entry or fee.</div> : null}{x.reason ? <div className="dim">{x.reason}</div> : null}{x.revises ? <div className="dim">Entered again after the earlier entry was withdrawn; that one stays withdrawn.</div> : null}{x.snapshot && p ? <EntryAsEntered x={x} p={p} /> : null}</span>
                     {['submitted', 'accepted'].includes(x.status) && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => withdrawEntry(s, ed.id, x.id)))}>Withdraw Entry</button>}
                   </li>
                 );
@@ -666,7 +675,9 @@ export function EventDetail() {
           {(ed.entries.some((x) => x.status === 'selected' || x.status === 'nominated')) && ed.start > g.now && (
             <button className="btn spaced" onClick={() => setErr(store.act((s) => {
               if (s.plans.some((pl) => pl.title === `Attend ${ed.label}` && pl.status === 'upcoming')) throw new Error("You've already planned to attend.");
-              s.plans.push({ id: `p-${ed.id}`, title: `Attend ${ed.label}`, start: ed.start, durationMin: 180, remindMin: 1440, placeId: inst.placeId, kind: 'project', status: 'upcoming' });
+              // Until November 9, 2026 this plan was pushed by hand: its day-before reminder was never scheduled.
+              const projectId = ed.entries.find((x) => x.status === 'selected' || x.status === 'nominated')!.projectId;
+              addPlan(s, { title: `Attend ${ed.label}`, start: ed.start, durationMin: 180, remindMin: 1440, placeId: inst.placeId, projectId });
             }))}>Plan To Attend</button>
           )}
           <p className="dim">Attending is optional. Results don't depend on it.</p>
@@ -773,13 +784,16 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
 
 /** Which episode an entry is for, when the category takes one episode (the Emmys' directing and writing). */
 const entryEpisode = (p: Project, n?: number) => (n ? `, ${p.episodes[n - 1]?.title ?? `Episode ${n}`}` : '');
-/** What an entry was entered with, kept from submission (awards-actions.ts entrySnapshot). */
-function EntryAsEntered({ x }: { x: EditionEntry }) {
+/** What an entry was entered with, kept from submission (awards-actions.ts entrySnapshot), against the project now. */
+function EntryAsEntered({ x, p }: { x: EditionEntry; p: Project }) {
   const n = x.snapshot!;
+  const gone = n.recipients.filter((r) => !p.credits.some((c) => c.id === r.id));
   return (
     <details className="small">
       <summary>As Entered</summary>
-      <p className="dim">{n.assessed} The cut entered ran {n.runtimeMin} minutes. Credited: {n.recipients.map((r) => `${r.name}${r.characterName ? ` as ${r.characterName}` : ''}`).join(', ') || 'no one'}.{n.song ? ` Song: "${n.song.title}".` : ''}</p>
+      <p className="dim">Entered {longLocal(x.submittedAt, getPlace(p.axes.basePlaceId).zone).date}{x.fee ? `, with a fee of ${money(x.fee)}` : ', with no fee'}. {n.assessed} The cut entered ran {n.runtimeMin} minutes. Credited: {n.recipients.map((r) => `${r.name}, ${r.contribution}${r.characterName ? `, as ${r.characterName}` : ''}`).join('; ') || 'no one'}.{n.song ? ` Song: "${n.song.title}", by ${n.song.writers.join(' and ') || 'writers not recorded'}.` : ''}</p>
+      {gone.length > 0 && <p className="dim">No longer in the credits: {gone.map((r) => r.name).join(', ')}. The entry stands as entered.</p>}
+      {n.song && !p.songs?.some((s) => s.id === n.song!.id) && <p className="dim">"{n.song.title}" has since been removed from the project. The entry stands as entered.</p>}
       {n.screen?.length ? <ul>{n.screen.map((t) => <li key={t.creditId} className="dim">{t.text}</li>)}</ul> : null}
     </details>
   );

@@ -326,7 +326,7 @@ function SaveLine({ summary }: { summary: ReturnType<typeof store.saves>[number]
     <div>
       <div style={{ fontWeight: 700 }}>{summary.saveName}{summary.saveName !== summary.characterName ? ` (${summary.characterName})` : ''}</div>
       {place && when && <div className="muted">{placeLabel(place)} · {when.weekday}, {when.date}, {when.time}</div>}
-      <div className="dim">Saved {realTimestamp(summary.savedAtReal)}</div>
+      <div className="dim">Saved {realTimestamp(summary.savedAtReal)}{summary.startedAtReal ? ` · Begun ${realTimestamp(summary.startedAtReal)}` : ''}</div>
     </div>
   );
 }

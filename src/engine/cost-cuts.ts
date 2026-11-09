@@ -105,7 +105,7 @@ export function costCuts(state: GameState, p: Project, limit = 5): CostCut[] {
 export interface EstimateComparison { area: CostArea; label: string; estimated: number; actual: number }
 const AREA_LABEL: Record<CostArea, string> = { crew: 'Crew', cast: 'Cast', shoot: 'Shoot Days', builds: 'Builds And Materials', facilities: 'Studio, Render And Capture' };
 
-export function estimateAgainstSpending(p: Project): { rows: EstimateComparison[]; reasons: string[] } | null {
+export function estimateAgainstSpending(p: Project): { rows: EstimateComparison[]; reasons: string[]; at: number; total: number } | null {
   const snap = p.finance?.estimateAtApproval;
   if (!snap || snap.draft !== p.approvedDraft) return null;
   const actual: Record<string, number> = {};
@@ -128,5 +128,5 @@ export function estimateAgainstSpending(p: Project): { rows: EstimateComparison[
   if (missed) reasons.push(`${missed} capture ${missed === 1 ? 'session was' : 'sessions were'} missed and rebooked.`);
   const above = p.hires.filter((h) => h.status === 'accepted' && h.counterRate && h.dayRate >= h.counterRate).length;
   if (above) reasons.push(`${above} ${above === 1 ? 'person was' : 'people were'} hired at a counteroffer above the rate the estimate assumed.`);
-  return { rows, reasons };
+  return { rows, reasons, at: snap.at, total: Math.round(snap.total) };
 }

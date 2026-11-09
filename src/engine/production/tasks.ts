@@ -35,15 +35,19 @@ export function buildTasks(p: Project): Task[] {
     tasks.push(t('prep:research', 'period', 'Period Research', 'Documentary', 'researcher', 5, 'days'));
     prepIds.push('prep:research:period');
   }
+  if (count('setting-research')) {
+    tasks.push(t('prep:research', 'setting', 'Setting Research', 'Documentary', 'researcher', 3, 'days'));
+    prepIds.push('prep:research:setting');
+  }
+  const research = [...(count('period-research') ? ['prep:research:period'] : []), ...(count('setting-research') ? ['prep:research:setting'] : [])];
   if (liveScenes.length && !nonfiction) {
     const locs = count('location');
     tasks.push(t('prep:locations', 'all', 'Location Scouting And Permits', 'Locations', 'location-manager', Math.max(1, locs), 'locations'));
     // A story set somewhere else added a scouting trip there until the review of November 7, 2026: where a story is set
-    // isn't where it is shot, so the setting place is now a creative and research reference only.
-    tasks.push(t('prep:design', 'all', 'Production Design And Props', 'Art', 'production-designer', Math.max(1, count('prop') + count('clue-prop') + Math.ceil(locs / 2)), 'items',
-      count('period-research') ? ['prep:research:period'] : []));
-    tasks.push(t('prep:costume', 'all', 'Costumes', 'Costume And Makeup', 'costume-designer', Math.max(1, chars.filter((c) => c.roleSize !== 'background').length * periodFactor), 'costumes',
-      count('period-research') ? ['prep:research:period'] : []));
+    // isn't where it is shot, so the setting place is a creative and research reference. From November 9, 2026 a setting
+    // in another country than the base is researched before design and costumes start, as a period is.
+    tasks.push(t('prep:design', 'all', 'Production Design And Props', 'Art', 'production-designer', Math.max(1, count('prop') + count('clue-prop') + Math.ceil(locs / 2)), 'items', research));
+    tasks.push(t('prep:costume', 'all', 'Costumes', 'Costume And Makeup', 'costume-designer', Math.max(1, chars.filter((c) => c.roleSize !== 'background').length * periodFactor), 'costumes', research));
     prepIds.push('prep:locations:all', 'prep:design:all', 'prep:costume:all');
     if (count('creature')) {
       tasks.push(t('prep:creature', 'all', 'Creature And Prosthetic Builds', 'Creature And Effects', 'prosthetics', count('creature') * 3, 'build days'));

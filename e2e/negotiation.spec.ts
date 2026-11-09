@@ -31,12 +31,12 @@ test('an investor offer: when it lapses, asking for better terms, and their answ
   await investor.getByLabel('Ask The Private Investor For').selectOption({ label: 'Less To Repay First' });
   await expect(investor).toContainText(/They are repaid \$[\d,]+, what they put in, instead of \$[\d,]+\./);
   await investor.getByRole('button', { name: 'Ask For Better Terms' }).click();
-  await expect(investor).toContainText(/You asked for less to repay first\. Their answer is due .+; until then the offer can't be accepted\./);
+  await expect(investor).toContainText(/On .+ you asked for less to repay first\. Their answer is due .+; until then the offer can't be accepted\./);
   await expect(investor.getByRole('button', { name: 'Accept Offer' })).toBeDisabled();
   await advance(page, 'week');
   await section(page, 'Budget');
   // Seed 11: the investor keeps their terms; the offer is open again as it was.
-  await expect(investor).toContainText('You asked for less to repay first. They kept their terms; the offer is open as it was.');
+  await expect(investor).toContainText(/On .+ you asked for less to repay first\. They kept their terms; the offer is open as it was\./);
   await expect(investor).toContainText("They are repaid $180,000 from the project's income before the project keeps any.");
   await expect(investor.getByRole('button', { name: 'Accept Offer' })).toBeEnabled();
   await expect(investor.getByRole('button', { name: 'Ask For Better Terms' })).toHaveCount(0);

@@ -35,6 +35,11 @@ export function structureNotes(p: Project): { text: string; sceneId?: string }[]
     if (!t.sceneIds.length) out.push({ text: `The thread "${t.name}" isn't in any scene yet.` });
     for (const id of t.sceneIds.filter((x) => !present.has(x))) out.push({ text: `The thread "${t.name}" lists a scene that is no longer in the script.`, sceneId: id });
     if (t.resolution === 'resolves' && !t.resolvedIn) out.push({ text: `The thread "${t.name}" has no resolving scene yet. Choose one, or mark it left open on purpose.` });
+    // A thread follows its characters: each one it names should be in at least one of its scenes.
+    const inThread = p.scenes.filter((s) => t.sceneIds.includes(s.id));
+    for (const c of p.characters.filter((x) => t.characterIds.includes(x.id))) {
+      if (inThread.length && !inThread.some((s) => s.participants.includes(c.id))) out.push({ text: `The thread "${t.name}" follows ${c.name}, who isn't in any of its scenes.` });
+    }
   }
   for (const a of p.acts ?? []) if (!p.scenes.some((s) => s.act === a.id)) out.push({ text: `${a.name} has no scenes yet.` });
   return out;

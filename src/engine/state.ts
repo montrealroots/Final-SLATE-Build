@@ -4,10 +4,10 @@ import { observance } from './observances';
 import { copyPlain } from './copy';
 import { hashString } from './rng';
 import {
-  DAY, MINUTE, addLocal, ageOn, formatClock, localParts, localToInstant, observedBirthday, parseYmd, isDateKey,
+  DAY, MINUTE, addLocal, ageOn, dateKey, formatClock, formatDateKey, localParts, localToInstant, observedBirthday, parseYmd, isDateKey,
 } from './time';
 import type {
-  Attention, CharacterIdentity, CreationDraft, CreationStepId, GameState, LogEntry, Route, ScheduledEvent,
+  Attention, CharacterIdentity, CreationDraft, CreationStepId, GameState, LogEntry, Plan, Route, ScheduledEvent,
 } from './types';
 import { SAVE_VERSION } from './types';
 import { citizenshipFor, draftNames, isNationality, isPortrait, legalName, splitBackgrounds } from './identity';
@@ -195,7 +195,7 @@ export function newGame(d: CreationDraft, realNow: number, saveId: string): Game
     rivalFilms: {},
     followed: [],
     calendarFilters: ['Birthdays', 'Holidays', 'Festivals', 'Awards', 'Deadlines', 'My Schedule'],
-    settings: { theme: 'dark', reducedMotion: false, largeText: false, wakeForObligations: true },
+    settings: { theme: 'dark', wakeForObligations: true },
     places: {},
   };
   for (const id of [d.birthplaceId, d.startPlaceId]) {
@@ -215,7 +215,7 @@ export function onNewGame(fn: (s: GameState) => void): void {
 
 // ---------------- Log ----------------
 
-export function addLog(state: GameState, text: string, kind: LogEntry['kind'], extra: { projectId?: string; route?: Route } = {}): LogEntry {
+export function addLog(state: GameState, text: string, kind: LogEntry['kind'], extra: Pick<LogEntry, 'projectId' | 'route'> = {}): LogEntry {
   const entry: LogEntry = { id: newId(state, 'l'), at: state.now, text, kind, ...extra };
   state.log.unshift(entry);
   if (state.log.length > 400) state.log.length = 400;
@@ -380,13 +380,26 @@ registerHandler('birthday', (state, ev) => {
 
 // ---------------- Plans, reminders and sleep ----------------
 
+/** How long before a plan its reminder comes, in words. */
+export function reminderWords(min: number | null): string {
+  if (min === null) return 'No reminder';
+  if (min % 1440 === 0) return min === 1440 ? 'A day before' : `${min / 1440} days before`;
+  if (min % 60 === 0) return min === 60 ? 'An hour before' : `${min / 60} hours before`;
+  return `${min} minutes before`;
+}
+
+/** Where a plan leads: a project's plan to its festivals, anything else to the calendar. */
+const planRoute = (plan: Plan): Route => (plan.kind === 'project' && plan.projectId ? { view: 'project', projectId: plan.projectId, tab: 'festivals' } : { view: 'calendar' });
+
 registerHandler('plan-reminder', (state, ev) => {
   const plan = state.plans.find((p) => p.id === ev.payload.planId);
   if (!plan || plan.status !== 'upcoming') return { suppressInterrupt: true };
   const zone = getPlace(plan.placeId).zone;
   const p = localParts(plan.start, zone);
-  const text = `${plan.title} starts at ${formatClock(p.hour, p.minute)}.`;
-  addLog(state, text, 'personal', { route: { view: 'calendar' } });
+  // The reminder says how far off the plan is, as it was asked for: a day ahead names the day.
+  const when = plan.remindMin !== null && plan.remindMin >= 1440 ? `on ${formatDateKey(dateKey(plan.start, zone))} at` : 'at';
+  const text = `${plan.title} starts ${when} ${formatClock(p.hour, p.minute)}.`;
+  addLog(state, text, 'personal', { route: planRoute(plan), ...(plan.projectId ? { projectId: plan.projectId } : {}) });
   return { message: text };
 });
 
@@ -395,24 +408,25 @@ registerHandler('plan-start', (state, ev) => {
   if (!plan || plan.status !== 'upcoming') return { suppressInterrupt: true };
   if (state.sleep.asleep) {
     plan.status = 'missed';
-    addLog(state, `You slept through ${plan.title}.`, 'warning', { route: { view: 'calendar' } });
+    addLog(state, `You slept through ${plan.title}.`, 'warning', { route: planRoute(plan) });
     return { message: `You slept through ${plan.title}.` };
   }
   plan.status = 'done';
-  addLog(state, `${plan.title} has started.`, 'personal', { route: { view: 'calendar' } });
+  addLog(state, `${plan.title} has started.`, 'personal', { route: planRoute(plan) });
   return { message: `${plan.title} has started.` };
 });
 
 export function addPlan(
   state: GameState,
-  input: { title: string; start: number; durationMin: number; remindMin: number | null; placeId?: string },
+  input: { title: string; start: number; durationMin: number; remindMin: number | null; placeId?: string; projectId?: string },
 ): string {
   const title = input.title.trim();
   if (!title) throw new Error('Give the plan a title.');
   if (input.start <= state.now) throw new Error('Choose a time later than now.');
   if (!(input.durationMin > 0)) throw new Error('Choose a length.');
   const id = newId(state, 'p');
-  state.plans.push({ id, title, start: input.start, durationMin: input.durationMin, remindMin: input.remindMin, placeId: input.placeId ?? state.locationId, kind: 'personal', status: 'upcoming' });
+  // A plan made for a project (attending its festival) is the project's: it leads there and says so on the calendar.
+  state.plans.push({ id, title, start: input.start, durationMin: input.durationMin, remindMin: input.remindMin, placeId: input.placeId ?? state.locationId, kind: input.projectId ? 'project' : 'personal', ...(input.projectId ? { projectId: input.projectId } : {}), status: 'upcoming' });
   if (input.remindMin !== null) {
     const at = Math.max(state.now + MINUTE, input.start - input.remindMin * MINUTE);
     schedule(state, at, 'plan-reminder', { planId: id }, { attention: 'interrupt', priority: 20 });
@@ -429,11 +443,19 @@ export function cancelPlan(state: GameState, planId: string): void {
 }
 
 registerHandler('wake', (state) => {
+  const slept = state.sleep.since !== undefined ? state.now - state.sleep.since : null;
   state.sleep = { asleep: false, alarm: state.sleep.alarm };
-  const message = wakeMessage(state);
+  const message = `${slept !== null ? `${sleptWords(slept)} ` : ''}${wakeMessage(state)}`;
   addLog(state, message, 'personal');
   return { message };
 });
+
+/** How long a night was, as the wake message says it: to the half hour, or in minutes under an hour. */
+export function sleptWords(ms: number): string {
+  if (ms < 60 * MINUTE) return `You slept ${Math.max(1, Math.round(ms / MINUTE))} minutes.`;
+  const h = Math.round(ms / (30 * MINUTE)) / 2;
+  return `You slept ${Number.isInteger(h) ? h : `${Math.floor(h)} and a half`} ${h === 1 ? 'hour' : 'hours'}.`;
+}
 
 export function wakeMessage(state: GameState): string {
   const zone = currentZone(state);
@@ -466,7 +488,7 @@ export function registerCommitmentSource(fn: (state: GameState, from: number, to
 export function upcomingCommitments(state: GameState, from: number, to: number): Commitment[] {
   const out: Commitment[] = state.plans
     .filter((p) => p.status === 'upcoming' && p.start >= from && p.start <= to)
-    .map((p) => ({ at: p.start, label: p.title, route: { view: 'calendar' }, kind: 'plan' as const }));
+    .map((p) => ({ at: p.start, label: p.title, route: planRoute(p), kind: 'plan' as const }));
   for (const fn of commitmentSources) out.push(...fn(state, from, to));
   return out.sort((a, b) => a.at - b.at);
 }

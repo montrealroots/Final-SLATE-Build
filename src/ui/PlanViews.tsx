@@ -21,8 +21,8 @@ import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, scoutedPlaces, site } from '../engine/locations';
 import { dayFees, estimatedShootDays, willingness } from '../engine';
 import { COVERAGE, EMPHASIS, SETUPS_OF, TAKES, TAKE_RULES, isDirecting2, planTime, requiredSetups, shotPlan, type Coverage, type Emphasis, type TakePolicy } from '../engine/takes';
-import type { Audition, FinanceDeal, GameState, Hire, PerformanceMethod, Project } from '../engine/types';
-import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
+import type { Audition, FinanceDeal, GameState, Hire, Obligation, PerformanceMethod, Project } from '../engine/types';
+import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
 import { store, useGame } from './store';
 
 function NeedsApproval({ p, what }: { p: Project; what: string }) {
@@ -49,7 +49,7 @@ function HireRow({ p, h }: { p: Project; h: Hire }) {
       <td data-label="Rate">{money(h.dayRate)} a day, about {plural(h.estDays, 'day')}</td>
       <td data-label="Status">
         <span className={`chip ${h.status === 'accepted' ? 'chip-positive' : h.status === 'declined' ? 'chip-negative' : h.status === 'countered' ? 'chip-warning' : ''}`}>{STATUS_LABEL[h.status]}</span>
-        {h.status === 'offered' && <div className="dim">Answer by about {formatDateKey(dateKey(h.responseAt, zone))}</div>}
+        {h.status === 'offered' && <div className="dim">Offered {formatDateKey(dateKey(h.offeredAt, zone))}; answer by about {formatDateKey(dateKey(h.responseAt, zone))}</div>}
         {h.status === 'countered' && <div className="dim">Asks {money(h.counterRate ?? 0)} a day{h.counterUntil ? `, until ${formatDateKey(dateKey(h.counterUntil, zone))}` : ''}</div>}
         {h.daysWorked > 0 && <div className="dim">{plural(h.daysWorked, 'day')} worked</div>}
         {err && <div role="alert" style={{ color: 'var(--negative)' }}>{err}</div>}
@@ -191,7 +191,7 @@ export function CastTab({ p }: { p: Project }) {
                   const pending = p.hires.find((h) => h.characterId === c.id && h.method === m && (h.status === 'offered' || h.status === 'countered'));
                   return (
                     <div key={m} className="row-wrap spaced">
-                      <span className="grow">{m === 'voice' ? 'Voice' : m === 'motion-capture' ? 'Performance Capture' : 'On Camera'}: {a ? (a.performer === 'player' ? <strong>You</strong> : <strong>{personById(g, a.performer).name}</strong>) : pending ? <span className="muted">Offer out to {personById(g, pending.personId).name}</span> : <span className="muted">Not cast</span>}{a && sharedHeritages(g, p, c.id, a.performer).length > 0 && <> <span className="chip">Shares A Background</span></>}</span>
+                      <span className="grow">{m === 'voice' ? 'Voice' : m === 'motion-capture' ? 'Performance Capture' : 'On Camera'}: {a ? (a.performer === 'player' ? <strong>You</strong> : <strong>{personById(g, a.performer).name}</strong>) : pending ? <span className="muted">Offer out to {personById(g, pending.personId).name}</span> : <span className="muted">Not cast</span>}{a && sharedHeritages(g, p, c.id, a.performer).length > 0 && <> <span className="chip">Shares A Background</span></>}{a?.note && <div className="dim small">{a.note}</div>}</span>
                       <div className="row gap-2 wrap">
                         {!a && !pending && <button className="btn btn-sm" onClick={() => setSearching({ characterId: c.id, method: m })}>Find Performers</button>}
                         {!a && !pending && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void castPlayer(s, p, c.id, m)))}>Cast Yourself</button>}
@@ -234,6 +234,7 @@ function AuditionList({ p, characterId, method, cast, pending, onError }: { p: P
   const open = !cast && !pending && !p.delivered;
   return (
     <div className="table-wrap" style={{ flexBasis: '100%' }}>
+      {open && list.some((a) => a.status === 'seen' && !a.callback) && <p className="dim small">Shortlist the ones you want to see again: callbacks are for the shortlist.</p>}
       <table className="data">
         <caption className="sr-only">Auditions For {part.name}</caption>
         <thead><tr><th>Person</th><th>When</th><th>Their Read</th><th>Asks</th><th>Notes</th><th><span className="sr-only">Actions</span></th></tr></thead>
@@ -252,10 +253,10 @@ function AuditionList({ p, characterId, method, cast, pending, onError }: { p: P
               <td>{open && (
                 <div className="row gap-2 wrap">
                   {a.status === 'seen' && <button className="btn btn-sm" onClick={() => onError(store.act(() => setShortlisted(p, a.id, !a.shortlisted)))}>{a.shortlisted ? 'Take Off Shortlist' : 'Shortlist'}</button>}
-                  {a.status === 'seen' && !a.callback && partners.length > 0 && (
+                  {a.status === 'seen' && a.shortlisted && !a.callback && partners.length > 0 && (
                     <SelectField label={`Read ${who.name} With`} value={partner[a.id] ?? ''} options={[{ value: '', label: 'Nobody' }, ...partners.map((x) => ({ value: x.personId, label: x.label }))]} onChange={(v) => setPartner({ ...partner, [a.id]: v })} />
                   )}
-                  {a.status === 'seen' && !a.callback && <button className="btn btn-sm" aria-label={`Call Back ${who.name}`} onClick={() => onError(store.act((s) => void callBack(s, p, a.id, partner[a.id] || undefined)))}>Call Back</button>}
+                  {a.status === 'seen' && a.shortlisted && !a.callback && <button className="btn btn-sm" aria-label={`Call Back ${who.name}`} onClick={() => onError(store.act((s) => void callBack(s, p, a.id, partner[a.id] || undefined)))}>Call Back</button>}
                   {a.status === 'seen' && <button className="btn btn-sm btn-primary" aria-label={`Offer ${part.name} To ${who.name}`} onClick={() => onError(store.act((s) => void makeOffer(s, p, { personId: a.personId, roleId: castRoleFor(method), dayRate: who.dayRate, characterId, method })))}>Make Offer</button>}
                   {a.status === 'missed' && <button className="btn btn-sm" aria-label={`Ask ${who.name} To Read Again`} onClick={() => onError(store.act((s) => void inviteToAudition(s, p, characterId, method, a.personId)))}>Ask Again</button>}
                 </div>
@@ -610,6 +611,7 @@ function WhatItCostsCard({ p }: { p: Project }) {
       </>}
       {vs && vs.rows.some((r) => r.actual) && <>
         <h3>Estimate Against Spending</h3>
+        <p className="dim">Estimated at {money(vs.total)} in all when draft {p.approvedDraft} was approved, on {longLocal(vs.at, getPlace(p.axes.basePlaceId).zone).date}.</p>
         <div className="table-wrap"><table className="data">
           <thead><tr><th>Area</th><th>Estimated At Approval</th><th>Spent Or Agreed</th></tr></thead>
           <tbody>{vs.rows.map((r) => <tr key={r.area}><td data-label="Area">{r.label}</td><td data-label="Estimated At Approval">{money(r.estimated)}</td><td data-label="Spent Or Agreed">{money(r.actual)}</td></tr>)}</tbody>
@@ -634,6 +636,8 @@ function CostCutsCard({ p }: { p: Project }) {
     </section>
   );
 }
+
+const POSTING_WORDS: Record<Obligation['postings'][number]['kind'], string> = { reserve: 'Held', commit: 'Agreed at', settle: 'Paid', cancel: 'Released' };
 
 export function BudgetTab({ p }: { p: Project }) {
   useGame();
@@ -673,7 +677,10 @@ export function BudgetTab({ p }: { p: Project }) {
           <summary>{plural(p.obligations.length, 'line')}</summary>
           <ul className="list">
             {[...p.obligations].reverse().slice(0, 120).map((o) => (
-              <li key={o.id} className="row-wrap"><span className="grow">{o.label}</span><span>{money(o.settled)} of {money(o.amount)} <span className="chip">{{ reserved: 'Held', committed: 'Agreed', settled: 'Paid', cancelled: 'Cancelled' }[o.state]}</span></span></li>
+              <li key={o.id} className="row-wrap"><span className="grow">{o.label}
+                {/* The line's own postings: every amount held, agreed, paid or released, with its date (budget.ts). */}
+                <details className="small"><summary>How It Moved</summary><ul className="dim">{o.postings.map((x) => <li key={x.key}>{POSTING_WORDS[x.kind]} {money(x.amount)} on {longLocal(x.at, getPlace(p.axes.basePlaceId).zone).date}</li>)}</ul></details>
+              </span><span>{money(o.settled)} of {money(o.amount)} <span className="chip">{{ reserved: 'Held', committed: 'Agreed', settled: 'Paid', cancelled: 'Cancelled' }[o.state]}</span></span></li>
             ))}
           </ul>
         </details>
@@ -728,7 +735,7 @@ function FinancingPanel({ p }: { p: Project }) {
             {deals(p).map((d) => (
               <li key={d.id}>
                 <div className="row-wrap">
-                  <span className="grow"><strong>{d.backer}</strong>{d.amount ? `: ${money(d.amount)}` : ''}</span>
+                  <span className="grow"><strong>{d.backer}</strong>{d.amount ? `: ${money(d.amount)}` : ''} <span className="dim small">Approached {formatDateKey(dateKey(d.askedAt, zone))}</span></span>
                   <span className={`chip ${d.status === 'accepted' ? 'chip-positive' : d.status === 'declined' || d.status === 'breached' || d.status === 'withdrawn' || d.status === 'lapsed' ? 'chip-negative' : d.status === 'offered' ? 'chip-accent' : ''}`}>{status[d.status]}</span>
                 </div>
                 {d.sent?.length ? <p className="dim">Sent with the approved script{d.sentCopy?.draft ? ` (draft ${d.sentCopy.draft})` : ''}: {d.sent.join(', ')}. They read it; SLATE doesn't judge it.</p> : null}
@@ -752,8 +759,9 @@ function FinancingPanel({ p }: { p: Project }) {
                 {d.counter && (
                   <p className="muted">{(() => {
                     const what = { share: 'a smaller share of income', recoup: 'less to repay first', signing: 'more on signing', approval: 'no casting approval' }[d.counter.term];
-                    if (!d.counter.outcome) return `You asked for ${what}. Their answer is due ${formatDateKey(dateKey(d.counter.answerAt, zone))}; until then the offer can't be accepted.`;
-                    return { agreed: `You asked for ${what}, and they agreed: the terms above include it.`, held: `You asked for ${what}. They kept their terms; the offer is open as it was.`, withdrawn: `You asked for ${what}, and they took the offer back.` }[d.counter.outcome];
+                    const asked = `On ${formatDateKey(dateKey(d.counter.askedAt, zone))} you asked for ${what}`;
+                    if (!d.counter.outcome) return `${asked}. Their answer is due ${formatDateKey(dateKey(d.counter.answerAt, zone))}; until then the offer can't be accepted.`;
+                    return { agreed: `${asked}, and they agreed: the terms above include it.`, held: `${asked}. They kept their terms; the offer is open as it was.`, withdrawn: `${asked}, and they took the offer back.` }[d.counter.outcome];
                   })()}</p>
                 )}
                 {d.status === 'offered' && (

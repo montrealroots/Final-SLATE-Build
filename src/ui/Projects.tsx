@@ -128,14 +128,14 @@ export function NewProject() {
         <div className="grid grid-2 form">
           <SelectField label="Intended Audience" value={audience} options={AUDIENCES.map((a) => ({ value: a, label: a }))} onChange={setAudience} />
           <TextField label="Tone" value={tone} maxLength={80} hint="For example: dry and tense, warm and absurd. Your own words, kept with the script; you can change it in the Story panel." onChange={setTone} />
-          <SelectField label="Competes As" value={register} hint="Where awards that split drama from comedy enter it. You can change it in the Story panel." options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]} onChange={setRegister} />
+          <SelectField label="Competes As" value={register} hint="Where awards that split drama from comedy enter it. By its genres, a primary comedy or musical genre makes it a comedy. You can change it in the Story panel." options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]} onChange={setRegister} />
           <TextField label="Story Era" value={era} maxLength={60} hint="When the story takes place. Period settings add research and wardrobe work." onChange={setEra} />
           <TextField label="Story Setting" value={setting} maxLength={120} hint="Where the story takes place, in your words, separate from where you shoot." onChange={setSetting} />
         </div>
         <LanguagePicker value={langs} onChange={setLangs} />
         <details className="section-fold">
           <summary>Where The Story Is Set (Optional)</summary>
-          <p className="dim">A reference for you and your designers, kept with the project. You shoot at your production base; choosing a setting doesn't add travel or work.</p>
+          <p className="dim">You shoot at your production base. A setting in another country than your base is researched by your designers before design and costumes start; you can change it in the Story panel.</p>
           <PlacePicker label="Story Setting Place" value={settingPlace} onChange={setSettingPlace} />
         </details>
       </section>
@@ -319,7 +319,7 @@ function Overview({ p }: { p: Project }) {
       {p.delivered && (
         <section className="card" aria-labelledby="continue-h">
           <h2 id="continue-h">{p.episodes.length > 1 ? 'Another Season' : 'A Sequel'}</h2>
-          {p.renewal && <p>{p.renewal.reason}</p>}
+          {p.renewal && <p>{p.renewal.reason} <span className="dim">Decided {longLocal(p.renewal.decidedAt, getPlace(g.locationId).zone).date}.</span></p>}
           {p.continuedBy ? (
             <p>Continued in <button className="btn btn-ghost" style={{ padding: 0 }} onClick={() => store.go({ view: 'project', projectId: p.continuedBy!, tab: 'overview' })}>{g.projects.find((x) => x.id === p.continuedBy)?.title ?? 'its continuation'}</button>.</p>
           ) : (
@@ -334,11 +334,18 @@ function Overview({ p }: { p: Project }) {
       <section className="card">
         <h2>Project</h2>
         <dl className="kv">
+          <dt>Started</dt><dd>{longLocal(p.createdAt, getPlace(g.locationId).zone).date}</dd>
+          {(() => {
+            // A project made from a proposal says whose, and which earlier work earned it (opportunities.ts).
+            const o = (g.opportunities ?? []).find((x) => x.projectId === p.id);
+            return o ? <><dt>Proposed By</dt><dd>{o.commissioner}, after {g.projects.find((x) => x.id === o.fromProjectId)?.title ?? 'your earlier work'}</dd></> : null;
+          })()}
           <dt>Genres</dt><dd>{projectGenreLabel(p) || 'None chosen'}</dd>
           <dt>Audience</dt><dd>{p.axes.audience}</dd>
           <dt>Story Era</dt><dd>{p.axes.storyEra}</dd>
           <dt>Dialogue</dt><dd>{p.axes.dialogueLanguages.map(languageName).join(', ')}</dd>
           <dt>Based In</dt><dd>{placeLabel(getPlace(p.axes.basePlaceId))}</dd>
+          {p.axes.settingPlaceId && <><dt>Set In</dt><dd>{placeLabel(getPlace(p.axes.settingPlaceId))}</dd></>}
           <dt>Approvals</dt><dd>{approvalRights(p).length ? approvalRights(p).join(', ') : 'You have full creative approval.'}</dd>
         </dl>
       </section>
@@ -355,7 +362,7 @@ function Overview({ p }: { p: Project }) {
       </section>
       <section className="card">
         <h2>Script</h2>
-        <p>{plural(p.scenes.length, 'scene')}, {plural(p.characters.length, 'character')}, {plural(p.drafts.length, 'saved draft')}.{p.approvedDraft ? ` Draft ${p.approvedDraft} is approved.` : ''}</p>
+        <p>{plural(p.scenes.length, 'scene')}, {plural(p.characters.length, 'character')}, {plural(p.drafts.length, 'saved draft')}.{p.approvedDraft ? ` Draft ${p.approvedDraft} is approved.` : ''}{p.revisionPasses ? ` ${plural(p.revisionPasses, 'revision pass', 'revision passes')} finished.` : ''}</p>
         <p className="muted">{issues.filter((i) => i.severity === 'blocking').length ? `${plural(issues.filter((i) => i.severity === 'blocking').length, 'issue')} must be fixed before approval.` : 'Nothing blocks approval.'} {plural(issues.filter((i) => i.severity === 'note').length, 'note')} to consider.</p>
         {mods.length > 0 && <p className="chip-row">{mods.map((m) => <span key={m} className="chip chip-accent">{MODULE_LABELS[m]}</span>)}</p>}
       </section>
@@ -370,6 +377,12 @@ function Overview({ p }: { p: Project }) {
         <h2>History</h2>
         <ul className="list">{[...p.history].reverse().slice(0, 8).map((h, i) => <li key={i}>{h.text} <span className="dim">{longLocal(h.at, getPlace(g.locationId).zone).date}</span></li>)}</ul>
       </section>
+      {g.log.some((l) => l.projectId === p.id) && (
+        <section className="card">
+          <h2>Recent Updates</h2>
+          <ul className="list">{g.log.filter((l) => l.projectId === p.id).slice(0, 6).map((l) => <li key={l.id}>{l.text} <span className="dim">{longLocal(l.at, getPlace(g.locationId).zone).date}</span></li>)}</ul>
+        </section>
+      )}
       {isNonfiction(p.axes.format) && <p className="dim">Documentary projects use research, contributors and facts instead of scripted dialogue.</p>}
       {g.projects.length > 1 && <p className="dim">Other projects can conflict with this one's shoot days.</p>}
     </div>

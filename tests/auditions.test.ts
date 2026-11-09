@@ -1,6 +1,6 @@
 // Stage 5 of the gameplay-depth package: auditions, callbacks and chemistry reads (SLATE-09-02).
 import { describe, expect, it } from 'vitest';
-import { CALLBACK_SPREAD, DAY, FIRST_SPREAD, castPlayer, assessQuality, pairChemistry, personById, processUntil, roleCandidates, upcomingCommitments } from '../src/engine';
+import { CALLBACK_SPREAD, DAY, FIRST_SPREAD, castPlayer, makeOffer, acceptCounter, assessQuality, pairChemistry, personById, processUntil, roleCandidates, upcomingCommitments } from '../src/engine';
 import { AUDITION_NOTICE_DAYS, callBack, chemistryPartners, inviteRefusal, inviteToAudition, setShortlisted } from '../src/engine/casting-calls';
 import { deserialize, serialize } from '../src/engine/save';
 import type { GameState, Project } from '../src/engine/types';
@@ -34,6 +34,8 @@ describe('inviting performers to read', () => {
       expect(cap).toBeLessThanOrEqual(a.read![1]);
     }
     const a = seen[0];
+    expect(() => callBack(s, p, a.id)).toThrow('Shortlist them first: callbacks are for the shortlist.');
+    setShortlisted(p, a.id, true);
     callBack(s, p, a.id);
     expect(() => callBack(s, p, a.id)).toThrow('They have been called back already.');
     wait(s, AUDITION_NOTICE_DAYS + 4);
@@ -80,6 +82,23 @@ describe('inviting performers to read', () => {
   });
 });
 
+describe('how each part was cast', () => {
+  it('the cast list says it: you, an offer alone, or after an audition', () => {
+    const { s, p } = twoParts('aud-note');
+    expect(castPlayer(s, p, marco(p), 'on-camera').note).toBe('You play the part yourself.');
+    // Each reads (labelled fixture) and is offered the part in turn until one takes it, as a producer would go down a list.
+    for (const who of roleCandidates(s, p, 'actor').slice(0, 8)) {
+      const a = inviteToAudition(s, p, ines(p), 'on-camera', who.id);
+      a.status = 'seen'; a.read = [50, 72];
+      const h = makeOffer(s, p, { personId: who.id, roleId: 'actor', dayRate: who.dayRate, characterId: ines(p), method: 'on-camera' });
+      processUntil(s, h.responseAt + DAY, 'tick');
+      if (h.status === 'countered') acceptCounter(s, p, h.id);
+      if (p.cast.some((x) => x.characterId === ines(p))) break;
+    }
+    expect(p.cast.find((x) => x.characterId === ines(p))!.note).toBe('Cast after an audition.');
+  });
+});
+
 describe('chemistry', () => {
   it('a chemistry read reveals the pair\'s modeled chemistry, which moves their performances in shared scenes', () => {
     const { s, p } = twoParts('aud-chem');
@@ -87,6 +106,7 @@ describe('chemistry', () => {
     const a = inviteToAudition(s, p, ines(p), 'on-camera', roleCandidates(s, p, 'actor')[0].id);
     a.status = 'seen'; a.read = [40, 62]; // labelled fixture: they read
     expect(chemistryPartners(s, p, a)).toEqual([{ personId: 'player', label: 'You (cast as Marco)' }]);
+    setShortlisted(p, a.id, true);
     callBack(s, p, a.id, 'player');
     wait(s, AUDITION_NOTICE_DAYS + 4);
     if (a.callback!.status === 'seen') expect(a.callback!.chemistry).toBe(pairChemistry(s, a.personId, 'player'));

@@ -8,7 +8,34 @@
 
 ## Commands And Results
 
-### Current: The Owner's Recovered Awards Sources (November 9, 2026, after #55)
+### Current: Every Saved Field Is Read (November 9, 2026, after #55)
+
+The input audit and its follow-up ("everything that doesn't read needs to read perfectly"). `docs/INPUT-AUDIT.md` says
+field by field what each one became. `tests/model-readers.test.ts` holds it: it fails on any field of the saved game
+that nothing reads, by a rule or a screen.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npx vitest run tests/model-readers.test.ts` before the work | 1 | 61 fields with no reader. |
+| `npm run check` | 0 | 75 files, 585 tests passed, including the reader guard with no unread field. Startup JavaScript 685 kB, 219 kB gzipped (budgets 700 and 220 kB); 0 problems. |
+| `npx playwright test e2e/auditions.spec.ts e2e/negotiation.spec.ts e2e/awards.spec.ts --project=desktop --project=iphone-15-plus` | 1, then 0 | 30 passed, 4 failed on the journeys' own expected text: As Entered's new credit wording, and the screen-time line's date. The wording was changed to read better ("Name, credit; Name, credit"); the screen-time line keeps "Recorded:" first. Run again: 6 of 6 passed. |
+| `SLATE_E2E_PROD=1 npx playwright test --trace off` (every project, production build) at `27c8999` | 1, then 0 | 238 passed, 32 skipped by project, 3 failed: the connected journey on desktop, phone and `iphone-15-pro-max` expected a working-relationship entry to end at "worked through to delivery)", and it now ends with its date. The expectation now requires the date: `e2e/connected.spec.ts` alone passed 3 of 3 on the production build. |
+
+- **Implemented and tested (engine):**
+  - the primary genre decides comedy or drama;
+  - Setting Research for a setting abroad;
+  - callbacks come from the shortlist;
+  - a thread's characters are checked against its scenes;
+  - project plans and their reminders;
+  - how each part was cast;
+  - change orders list the work they sent back;
+  - screen time goes stale when a scene changes length either way;
+  - the wake message says how long you slept.
+- **Defect fixed:** "Plan To Attend" never scheduled its day-before reminder, because it pushed its plan by hand.
+- **Shown on screen, not covered by a browser journey:** the dated records (drafts, offers, approaches, budget-line postings, versions, picture lock, songs, saved games), Recent Updates, rival descriptions, Proposed By, people's dated history.
+- **Removed:** nine stored copies and dead fields (`docs/INPUT-AUDIT.md`, Removed). Old saves keep the keys and nothing reads them.
+
+### The Owner's Recovered Awards Sources (November 9, 2026, merged as #55)
 
 | Command | Exit | Result |
 | --- | --- | --- |
@@ -594,6 +621,15 @@ explicit `test.skip(project…)`; no test skips itself on an outcome. The list w
   Not reproduced: 25 of 25 passes locally on the production build with four CPU-bound processes running. The same test
   passed in runs 132 to 137. Candidates still open: focus taken from the field between Playwright's focus and its text
   insertion (Shell's focus on `<main>` is the only focus mover on this path), or a remount of the form.
+  **Investigation (November 9, 2026, while CI ran on `78e3fde`):** an instrumented probe (focus, input and DOM events,
+  every `focus()` call with its caller, the field's value each frame) ran New Script's fill on `iphone-15-plus` against
+  the production build about 420 times: from London and from Los Angeles, with and without a pause before New Script
+  (CI's run clicked it 60 ms after Home appeared), on 4 to 6 workers, and on 2 CPUs. The title landed every time. The
+  only focus move on the path was the shell's, to `<main>`, about 90 to 230 ms before the form appeared; nothing removed
+  or replaced the field. Ruled out by reading the code: a route reset, a suspension inside the form (its one lazy child,
+  the map, has its own boundary), and the shell moving its children. Still open: focus taken between Playwright's focus
+  and its text insertion, or React not seeing the input event, neither seen here. Next: the browser fixture records these
+  events on the WebKit projects, so the next occurrence in CI carries its own evidence.
 - No other code fault is open from this pass. Physical devices, a person's screen-reader pass and human playtesting remain
   outside what was tested.
 - The micro-budget balance question recorded at #36 was worked through after it (see Current and `BALANCE-REPORT.md`).

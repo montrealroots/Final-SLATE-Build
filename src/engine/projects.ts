@@ -8,7 +8,7 @@ import { remapThreads, seasonNotes, structureNotes } from './structure';
 import { researchNotes } from './research';
 import { personById, roleLabel } from './people';
 import type {
-  Draft, Format, GameState, Medium, Project, ProjectAxes, Requirement, RevisionNote, Scene, StoryCharacter, Technique,
+  Draft, Format, GameState, GenrePick, Medium, Project, ProjectAxes, Requirement, RevisionNote, Scene, StoryCharacter, Technique,
 } from './types';
 
 // ---------------- Catalog labels ----------------
@@ -111,7 +111,6 @@ export function createProject(state: GameState, input: NewProjectInput): Project
   const episodic = isEpisodic(input.axes.format);
   const axes: ProjectAxes = {
     technique: input.axes.medium === 'live-action' ? 'none' : '3d-cg',
-    basis: isNonfiction(input.axes.format) ? 'nonfiction' : 'fiction',
     genres: [],
     tone: '',
     audience: 'General',
@@ -120,8 +119,6 @@ export function createProject(state: GameState, input: NewProjectInput): Project
     dialogueLanguages: [state.character.mainLanguage],
     targetRuntimeMin: input.axes.format === 'short' || input.axes.format === 'documentary-short' ? 12 : episodic ? 30 : 95,
     episodeCount: episodic ? 4 : 1,
-    distributionIntent: 'Festival Then Distribution',
-    productionModel: scenario.id === 'mid' ? 'co-production' : scenario.id === 'commissioned' ? 'commissioned' : 'self',
     animationQuality: 'tv',
     basePlaceId: state.locationId,
     ...input.axes,
@@ -161,9 +158,7 @@ export function createProject(state: GameState, input: NewProjectInput): Project
     revision: null,
     revisionPasses: 0,
     requirements: [],
-    requirementsVersion: null,
     changeOrders: [],
-    playerActing: false,
     cast: [],
     hires: [],
     obligations: [],
@@ -180,7 +175,6 @@ export function createProject(state: GameState, input: NewProjectInput): Project
     revenue: 0,
     quality: null,
     history: [{ at: state.now, text: 'Project started.' }],
-    workEventScheduled: false,
     noticeKeys: [],
   };
   state.projects.push(p);
@@ -201,7 +195,7 @@ export function projectModules(p: Project): Set<ModuleId> {
   return modules;
 }
 
-export function setGenres(p: Project, picks: { id: string; emphasis: 'primary' | 'secondary' }[]): void {
+export function setGenres(p: Project, picks: GenrePick[]): void {
   const seen = new Set<string>();
   const clean = picks.filter((g) => (seen.has(g.id) ? false : (seen.add(g.id), true)));
   if (clean.length && !clean.some((g) => g.emphasis === 'primary')) clean[0] = { ...clean[0], emphasis: 'primary' };
@@ -303,7 +297,7 @@ export function blankScene(state: GameState, p: Project, episode = 1): Scene {
   return {
     id: newId(state, 's'), episode, heading: { intExt: 'INT', place: '', time: 'DAY' }, storyLocation: '', participants: [], objective: '', action: '',
     dialogue: [], turningPoint: '', estMinutes: 2, props: [], animals: [], vehicles: [], stunts: '', crowd: 0, intimacy: false, water: false, vfx: [],
-    songs: [], dance: false, kind: p.axes.format === 'unscripted-series' ? 'segment' : nonfiction ? 'interview' : 'scripted', basis: nonfiction ? 'sourced' : 'invented', contributorIds: [], evidenceIds: [],
+    dance: false, kind: p.axes.format === 'unscripted-series' ? 'segment' : nonfiction ? 'interview' : 'scripted', basis: nonfiction ? 'sourced' : 'invented', contributorIds: [], evidenceIds: [],
     intentionalDiscontinuity: false,
   };
 }
@@ -446,7 +440,6 @@ export function combineScenes(p: Project, keepId: string, mergeId: string): void
   keep.animals = union(keep.animals, merge.animals);
   keep.vehicles = union(keep.vehicles, merge.vehicles);
   keep.vfx = union(keep.vfx, merge.vfx);
-  keep.songs = [...keep.songs, ...merge.songs.filter((x) => !keep.songs.some((y) => y.title === x.title))];
   // The songs heard in the merged scene are heard in the one kept (songs.ts).
   for (const song of p.songs ?? []) {
     for (const u of song.uses) if (u.sceneId === merge.id) u.sceneId = keep.id;
@@ -804,6 +797,9 @@ export function deriveRequirements(p: Project, scenes: Scene[], characters: Stor
   for (const c of p.contributors) add('consent', c.name, null);
   for (const e of p.evidence) if (e.status !== 'dramatized') add('fact-check', e.claim.slice(0, 60), null);
   if (mods.has('period') && !/contemporary|present/i.test(p.axes.storyEra)) add('period-research', p.axes.storyEra || 'Period', null);
+  // A story set in another country than the production base: the designers research it, as they do a period.
+  const setting = p.axes.settingPlaceId ? findPlace(p.axes.settingPlaceId) : undefined;
+  if (setting && setting.country !== findPlace(p.axes.basePlaceId)?.country) add('setting-research', `${setting.name}, ${setting.countryName}`, null);
   if (mods.has('clues')) {
     for (const sp of p.setups.filter((x) => x.kind === 'clue')) add('clue-prop', sp.label, sp.plantedIn);
   }
@@ -858,7 +854,6 @@ export function approveDraft(state: GameState, p: Project, number: number): { re
   p.drafts.forEach((x) => (x.approved = x.number === number));
   p.approvedDraft = number;
   p.requirements = next;
-  p.requirementsVersion = number;
   if (p.phase === 'development') p.phase = 'pre-production';
   const changes: string[] = [];
   const beforeKeys = new Set(before.map((r) => r.key));
@@ -891,7 +886,7 @@ export const REQUIREMENT_LABELS: Record<Requirement['kind'], string> = {
   'character-design': 'Character Design', performer: 'Performer', location: 'Location', set: 'Set', prop: 'Prop', costume: 'Costume',
   animal: 'Animal', vehicle: 'Vehicle', stunt: 'Stunt', crowd: 'Crowd', intimacy: 'Intimacy Coordination', water: 'Water Work', vfx: 'Visual Effect',
   song: 'Song', choreography: 'Choreography', creature: 'Creature Effect', archival: 'Archive Material', interview: 'Interview',
-  'language-coach': 'Language Coaching', 'period-research': 'Period Research', 'clue-prop': 'Hero Prop', puppet: 'Puppet', model: '3D Model',
+  'language-coach': 'Language Coaching', 'period-research': 'Period Research', 'setting-research': 'Setting Research', 'clue-prop': 'Hero Prop', puppet: 'Puppet', model: '3D Model',
   rig: 'Rig', 'background-art': 'Background Art', consent: 'Contributor Consent', 'fact-check': 'Fact Check',
 };
 

@@ -117,13 +117,12 @@ describe('recipients come from credits for the contribution the award concerns',
 
   it('an original song goes to the song\'s own writers, never to the score composer for being the composer', () => {
     // Until November 9, 2026 a song not marked licensed sent the award to the composer. Songs are works now, with their
-    // writers (tests/songs.test.ts); a title in a scene's old song list proves nothing.
+    // writers (tests/songs.test.ts), and a scene has no song list of its own any more.
     const s = startLife('song');
     s.now = at('America/Los_Angeles', '2026-09-01', 9);
     const osc = ed(s, 'oscars-2027');
     const p = work(s);
     p.credits.push(credit('cm', 'Music By', 'composer'));
-    p.scenes[0].songs.push({ title: 'Original', licensed: false } as Project['scenes'][number]['songs'][number]);
     const el = checkEligibility(s, p, osc, cat(osc, 'song'));
     expect(el.recipients).toEqual([]);
     expect(el.reasons).toContain('No song is heard in the cut entered.');

@@ -54,12 +54,16 @@ export function chemistryPartners(state: GameState, p: Project, a: Audition): { 
   return [...out].map(([personId, label]) => ({ personId, label }));
 }
 
-/** Ask someone who read well back, optionally to read with a partner. Once per audition. */
+/**
+ * Ask someone on the shortlist back, optionally to read with a partner. Once per audition. Callbacks come from the
+ * shortlist, as in casting; until November 9, 2026 the shortlist only ordered the table and anyone seen could be called back.
+ */
 export function callBack(state: GameState, p: Project, auditionId: string, partnerId?: string): Audition {
   assertEditable(p);
   const a = p.auditions?.find((x) => x.id === auditionId);
   if (!a || a.status !== 'seen') throw new Error('Only someone who has read can be called back.');
   if (a.callback) throw new Error('They have been called back already.');
+  if (!a.shortlisted) throw new Error('Shortlist them first: callbacks are for the shortlist.');
   if (p.cast.some((x) => x.characterId === a.characterId && x.method === a.method)) throw new Error('That part is cast already.');
   if (partnerId && !chemistryPartners(state, p, a).some((x) => x.personId === partnerId)) throw new Error('They can only read with someone cast or seen for a part in the same scenes.');
   const day = sessionDay(state, p);

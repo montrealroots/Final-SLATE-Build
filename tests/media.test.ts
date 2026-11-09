@@ -116,6 +116,13 @@ describe('stop motion', () => {
     // Recorded voice work does not depend on the visual design and stays finished.
     expect(p.tasks.find((t) => t.id === `anim:voice:${moth.id}`)?.status).toBe('done');
     expect(p.tasks.filter((t) => lampTasks.includes(t.id)).every((t) => t.status === 'done')).toBe(true);
+    // The change order names exactly the work it sent back, and none it didn't.
+    const order = p.changeOrders[p.changeOrders.length - 1];
+    for (const t of p.tasks.filter((x) => x.assetRef === moth.id && x.needsVersion !== undefined)) expect(order.affectedTasks).toContain(t.id);
+    expect(order.affectedTasks).not.toContain(`anim:voice:${moth.id}`);
+    expect(order.affectedTasks.some((id) => lampTasks.includes(id))).toBe(false);
+    expect(order.affectedTasks.every((id) => p.tasks.find((t) => t.id === id)?.status !== 'done')).toBe(true);
+    expect(order.decision).toBe('kept-old');
   });
 });
 

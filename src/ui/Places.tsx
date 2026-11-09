@@ -1,9 +1,9 @@
 // Calendar, place and profile screens: loaded on first use (App.tsx), so they stay out of the startup files.
-import { useEffect, useMemo, useState } from 'react';
+import { Fragment, useEffect, useMemo, useState } from 'react';
 import { languageName, PRONOUNS } from '../data/identity';
 import { getPlace, placeLabel, searchPlaces, type Place } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
-import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, knownAs, addPlan, cancelPlan, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDates, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
+import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, knownAs, addPlan, cancelPlan, reminderWords, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDates, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
 import { personById } from '../engine/people';
 import { honors } from '../engine/awards-actions';
 import type { GameState } from '../engine/types';
@@ -152,7 +152,7 @@ export function CalendarView() {
             <ul className="list">
               {plansToday.map((pl) => (
                 <li key={pl.id} className="row-wrap">
-                  <span className="grow">{longLocal(pl.start, zone).time}: {pl.title}</span>
+                  <span className="grow">{longLocal(pl.start, zone).time}: {pl.title}{pl.projectId && <span className="dim"> (for {g.projects.find((x) => x.id === pl.projectId)?.title ?? 'a project'})</span>}<div className="dim small">Reminder: {reminderWords(pl.remindMin)}.</div></span>
                   <button className="btn btn-sm btn-danger" onClick={() => store.act((s) => cancelPlan(s, pl.id))}>Cancel Plan</button>
                 </li>
               ))}
@@ -398,7 +398,12 @@ export function Profile() {
             const people = Object.entries(g.people).filter(([, ps]) => ps.history?.length);
             if (!people.length) return <p className="muted">Who saw a project through with you, who you let go and whose counteroffer you turned down is kept here. It changes how each of them answers your offers, and no one else's.</p>;
             const word = { completed: 'worked through to delivery', 'let-go': 'let go', 'counter-declined': 'counteroffer turned down' } as const;
-            return <ul className="list">{people.map(([id, ps]) => <li key={id}><strong>{personById(g, id).name}</strong>: {ps.history!.map((x) => `${x.title} (${x.role.toLowerCase()}, ${word[x.kind]})`).join('; ')}</li>)}</ul>;
+            // Each entry names its project (opened from here while it exists) and when it happened.
+            return <ul className="list">{people.map(([id, ps]) => <li key={id}><strong>{personById(g, id).name}</strong>: {ps.history!.map((x, i) => (
+              <Fragment key={i}>{i > 0 && '; '}{g.projects.some((q) => q.id === x.projectId)
+                ? <button className="btn btn-ghost" style={{ padding: 0 }} onClick={() => store.go({ view: 'project', projectId: x.projectId, tab: 'overview' })}>{x.title}</button>
+                : x.title} ({x.role.toLowerCase()}, {word[x.kind]}, {longLocal(x.at, zone).date})</Fragment>
+            ))}</li>)}</ul>;
           })()}
         </section>
         <section className="card">

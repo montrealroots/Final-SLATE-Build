@@ -4,10 +4,10 @@
 // from you: someone you saw through a project takes your offer at a fair rate without haggling; someone whose
 // counteroffer you turned down won't take less than their asking rate; someone you let go asks for more, and after
 // twice won't work with you. Nothing anyone else saw counts, so there is no global reputation.
-import type { GameState, Project } from './types';
+import type { GameState, PersonState, Project } from './types';
 
-export type HistoryKind = 'completed' | 'let-go' | 'counter-declined';
-export interface HistoryEntry { projectId: string; title: string; role: string; kind: HistoryKind; at: number }
+export type HistoryEntry = NonNullable<PersonState['history']>[number];
+export type HistoryKind = HistoryEntry['kind'];
 
 export function recordHistory(state: GameState, personId: string, p: Project, role: string, kind: HistoryKind): void {
   const ps = (state.people[personId] ??= { bookings: [] });
