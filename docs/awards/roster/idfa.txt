@@ -11,7 +11,7 @@ envision-award | IDFA Award For Best Film (Envision Competition) | P:envision | 
 shorts | Short Documentary Competition | S | project | documentary-short | earlier game catalog | UNVERIFIED: not named in the 2026 announcement read
 # Cross-Section Awards
 first-feature | IDFA Award For Best First Feature | P:features+envision+luminous+frontlight | director | documentary-feature:debut | idfa26-selection | Drawn from several program sections
-fipresci | FIPRESCI Award | X:first-feature | director | documentary-feature:debut | idfa26-selection | Chosen by critics among the films nominated for Best First Feature
+fipresci | FIPRESCI Award | X:features+envision+luminous+frontlight | director | documentary-feature:debut | idfa26-selection | Chosen by critics among the films nominated for Best First Feature
 dutch-film | IDFA Award For Best Dutch Film | P:features+envision+luminous+frontlight | director | documentary-feature:nl | idfa26-selection | €5,000 to the winning filmmaker
 reframe | Beeld & Geluid IDFA ReFrame Award For Best Creative Use Of Archive | X:features+envision+luminous+frontlight | director | documentary-feature:archival | idfa26-selection | Selected from across the program; the game reads archival use from archival scenes
 luminous | Luminous | S | project | documentary-feature | idfa26-selection | UNVERIFIED: a program section named among those eligible for cross-section awards

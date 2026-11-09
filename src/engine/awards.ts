@@ -272,7 +272,7 @@ function deadlineInstant(d: DeadlineRule): number {
  * entered): its opening date, and per-category deadlines. The edition's own deadline becomes the latest of them, so
  * the edition stays open for every category; categories without a rule deadline keep the edition's general deadline.
  */
-export function applyRulebook(ed: Pick<Edition, 'institutionId' | 'year' | 'deadline' | 'submissionOpens' | 'deadlinePlanned' | 'rulesId' | 'defaultDeadline'>, book: RuleBook): void {
+export function applyRulebook(ed: Pick<Edition, 'institutionId' | 'year' | 'deadline' | 'submissionOpens' | 'deadlinePlanned' | 'rulesId' | 'defaultDeadline' | 'announce' | 'start'>, book: RuleBook): void {
   ed.rulesId = book.id;
   ed.defaultDeadline ??= ed.deadline;
   const inst = institution(ed.institutionId);
@@ -281,6 +281,10 @@ export function applyRulebook(ed: Pick<Edition, 'institutionId' | 'year' | 'dead
   const everyCategoryRuled = held.filter(enterable).every((c) => book.categories[c.id]?.deadlines);
   ed.deadline = Math.max(everyCategoryRuled ? -Infinity : ed.defaultDeadline, ...all);
   if (everyCategoryRuled) ed.deadlinePlanned = undefined;
+  // A deadline the organizer set later than the game's announcement moves the announcement after it, so entries are
+  // judged. Until November 9, 2026 the Golden Globes' December 3 deadline fell after their simulated November 26
+  // nominations, and entries made in between were never judged.
+  if (ed.announce <= ed.deadline) ed.announce = Math.min(ed.start - DAY, ed.deadline + 7 * DAY);
   if (book.opens) {
     const { year, month, day } = parseYmd(book.opens.value);
     ed.submissionOpens = localToInstant(getPlace(inst.placeId).zone, year, month, day, 9).instant;
@@ -736,6 +740,7 @@ export function adoptRulebook(ed: Edition, events: GameState['events']): boolean
     if (ev.id === `${ed.id}:deadline`) ev.at = ed.deadline;
     if (ev.id === `${ed.id}:soon`) ev.at = ed.deadline - DAY;
     if (ev.id === `${ed.id}:open`) ev.at = ed.submissionOpens;
+    if (ev.id === `${ed.id}:announce`) ev.at = ed.announce;
   }
   return true;
 }

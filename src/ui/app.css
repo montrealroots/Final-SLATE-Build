@@ -1835,6 +1835,8 @@ section.card[tabindex="-1"]:focus { outline: none; }
 .card-grid { display: grid; gap: var(--s4); grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); align-items: start; margin-bottom: var(--s5); }
 .card-grid > .card { margin: 0; }
 .card-grid > .card + .card { margin-top: 0; }
+.card-grid > .card-wide { grid-column: 1 / -1; }
+.card-wide .grid-2.form { grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); }
 
 /* Lists of things in a card: one row each, under a hairline. */
 ul.list { list-style: none; margin: 0; padding: 0; }

@@ -169,9 +169,9 @@ export function CalendarView() {
 function FollowedEvents() {
   const g = useGame();
   const zone = currentZone(g);
-  const upcoming = g.editions.filter((e) => e.end > g.now).slice(0, 40);
   const [q, setQ] = useState('');
-  const shown = upcoming.filter((e) => e.label.toLowerCase().includes(q.toLowerCase())).slice(0, 12);
+  // Searched across every edition still to come (only the next 40 were, until November 9, 2026).
+  const shown = g.editions.filter((e) => e.end > g.now && e.label.toLowerCase().includes(q.toLowerCase())).slice(0, 12);
   return (
     <section className="card" aria-labelledby="ev-h">
       <h2 id="ev-h">Festivals And Awards</h2>
@@ -389,7 +389,7 @@ export function Profile() {
         <section className="card">
           <h2>Festivals And Awards</h2>
           {h.length ? (
-            <ul className="list">{h.map((x, i) => <li key={i}><strong>{x.result}</strong>: {x.category}, {x.editionLabel} ({x.projectTitle}){x.personal ? '' : <span className="dim"> · credited to others on your project</span>}</li>)}</ul>
+            <ul className="list">{h.map((x, i) => <li key={i}><strong>{x.result}</strong>: {x.category}, {x.editionLabel}{x.projectTitle ? ` (${x.projectTitle})` : ', for your body of work'}{x.personal ? '' : <span className="dim"> · credited to others on your project</span>}</li>)}</ul>
           ) : <p className="muted">Selections, nominations and wins appear here.</p>}
         </section>
         <section className="card" aria-labelledby="worked-h">

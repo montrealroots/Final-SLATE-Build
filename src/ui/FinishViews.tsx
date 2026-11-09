@@ -7,14 +7,18 @@ import {
   ROUTE_LABELS, acceptDistribution, approvedCharacters, assemblyComplete, checkEligibility, dateKey, declineDistribution, deliver,
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, money, planRelease, puppetStatus,
   qualityWords, CUT_REVIEW_DAYS, depsMet, addDaysToKey, categoryRecipients, type Category,
-  categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rivalTitle, rulebook, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
+  categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rulebook, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
   approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, cutScenes, entryNeeds, castPlacement, sceneLabel } from '../engine';
 import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupIntegration, cutPassDays, startCutPass, unlockPicture, restoreToEdit } from '../engine/edit-actions';
 import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
+import { publicResult } from '../engine/awards-results';
+import { enterable } from '../engine/awards';
+import { FORMAT_LABELS } from '../engine/projects';
+import { roleLabel } from '../engine/people';
 import { applyFix, dailies } from '../engine/directing';
 import { isDirecting2 } from '../engine/takes';
 import { contentSummary, cutConsequences, placementExplained, watershedRule } from '../engine/script-explain';
-import type { CapturePart, GameState, Project, ReleaseRecord } from '../engine/types';
+import type { CapturePart, Edition, EditionEntry, Format, GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, PageHead, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
@@ -498,6 +502,7 @@ export function FestivalsTab({ p }: { p: Project }) {
   const zone = getPlace(g.locationId).zone;
   const relevant = g.editions.filter((e) => e.deadline > g.now && e.submissionOpens < g.now + 400 * 86400000).slice(0, 60);
   const entries = g.editions.flatMap((e) => e.entries.filter((x) => x.projectId === p.id).map((x) => ({ e, x })));
+  const [show, setShow] = useState<'all' | 'open' | 'festival' | 'award'>('all');
   return (
     <>
       <section className="card">
@@ -508,7 +513,7 @@ export function FestivalsTab({ p }: { p: Project }) {
               const cat = institution(e.institutionId).categories.find((c) => c.id === x.categoryId)!;
               return (
                 <li key={x.id} className="row-wrap">
-                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button>: {cat.name}{entryVersion(p, x.versionId)} <span className="chip">{entryStatus(x.status)}</span>{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
+                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button>: {cat.name}{entryVersion(p, x.versionId)} <span className="chip">{entryStatus(x, e)}</span>{x.via === 'selection' ? <span className="dim"> Considered from its selection; no entry or fee.</span> : null}{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
                 </li>
               );
             })}
@@ -518,13 +523,19 @@ export function FestivalsTab({ p }: { p: Project }) {
       <section className="card">
         <h2>Open And Upcoming</h2>
         {!p.delivered && <p className="muted">Deliver the project to enter it. You can still see what it could qualify for.</p>}
+        <div className="grid grid-2 form">
+          <SelectField label="Show" value={show} options={[{ value: 'all', label: 'Every Event' }, { value: 'open', label: 'Open To This Project' }, { value: 'festival', label: 'Festivals' }, { value: 'award', label: 'Awards' }]} onChange={setShow} />
+        </div>
         <ul className="list">
           {relevant.map((e) => {
             const inst = institution(e.institutionId);
-            const fits = categoriesFor(inst, e.year).filter((c) => c.formats.includes(p.axes.format));
+            if ((show === 'festival' || show === 'award') && inst.kind !== show) return null;
+            // Prizes and honorary awards aren't entered: a festival's prizes come with selection for a section.
+            const fits = categoriesFor(inst, e.year).filter((c) => enterable(c) && c.formats.includes(p.axes.format));
             if (!fits.length) return null;
             const elig = fits.map((c) => ({ c, r: checkEligibility(g, p, e, c) }));
             const ok = elig.filter((x) => x.r.eligible);
+            if (show === 'open' && !ok.length) return null;
             return (
               <li key={e.id}>
                 <div className="row-wrap">
@@ -541,8 +552,49 @@ export function FestivalsTab({ p }: { p: Project }) {
   );
 }
 
-function entryStatus(s: string): string {
-  return ({ submitted: 'Submitted', 'needs-correction': 'Needs Correction', rejected: 'Not Accepted', withdrawn: 'Withdrawn', accepted: 'Accepted For Consideration', selected: 'Selected', 'not-selected': 'Not Selected', nominated: 'Nominated', 'not-nominated': 'Not Nominated', won: 'Won', lost: 'Did Not Win' } as Record<string, string>)[s] ?? s;
+/**
+ * An entry's status in the player's words. A selection for a section whose prizes are still to be decided is In
+ * Competition; once results are in it stays Selected, and each prize says Winner, Special Mention or Did Not Win.
+ */
+function entryStatus(x: EditionEntry, ed: Edition): string {
+  if (x.status === 'selected') {
+    const prizes = institution(ed.institutionId).categories.some((c) => c.parents?.includes(x.categoryId));
+    return prizes && ed.status !== 'complete' ? 'In Competition' : 'Selected';
+  }
+  return ({ submitted: 'Submitted', 'needs-correction': 'Needs Correction', rejected: 'Not Accepted', withdrawn: 'Withdrawn', disqualified: 'Disqualified', accepted: 'Accepted For Consideration', 'not-selected': 'Not Selected', nominated: 'Nominated', 'not-nominated': 'Not Nominated', won: 'Winner', lost: 'Did Not Win', mention: 'Special Mention' } as Record<string, string>)[x.status] ?? x.status;
+}
+
+const KIND_WORDS: Partial<Record<NonNullable<Category['kind']>, string>> = { section: 'Section', prize: 'Prize', audience: 'Audience Award', partner: 'Partner Award', honorary: 'Honorary', juried: 'Juried Award', area: 'Area Award' };
+
+const RECIPIENT_WORDS: Record<Category['recipient'], string> = {
+  project: 'the credited producers', producer: 'the credited producers', director: 'the credited director', writer: 'the credited writers',
+  lead: 'a credited leading performance', supporting: 'a credited supporting performance', guest: 'a credited guest performance', performer: 'a credited leading or supporting performance',
+  voice: 'a credited voice performance', ensemble: 'the credited cast', host: 'the credited host', craft: '', song: 'the composer of an original song in the work',
+  national: "the director, once the production country's committee puts the film forward", career: 'a career, chosen by the organizer',
+};
+
+/** Who receives an award, in the player's words: only people credited for that contribution. */
+export function recipientWords(c: Category): string {
+  const one = (r: Category['recipient']) => (r === 'craft' ? `the credited ${(c.crafts ?? []).map((x) => roleLabel(x).toLowerCase()).join(' or ')}` : RECIPIENT_WORDS[r]);
+  const who = [c.recipient, ...(c.with ?? [])].map(one).join(' and ');
+  const billed = c.actingTitle ? `, billed as ${c.actingTitle.toLowerCase()}` : '';
+  const first = c.need?.includes('breakthrough') ? ' in a first credited role' : '';
+  return `${who}${billed}${first}`;
+}
+
+/** What an edition shows for a category: its selection or nominees, and the winners or honoree once known. */
+function ResultLine({ g, ed, c }: { g: GameState; ed: Edition; c: Category }) {
+  const res = publicResult(g, ed, c);
+  if (!res) return null;
+  const festival = institution(ed.institutionId).kind === 'festival' || c.kind === 'section';
+  const list = (xs: string[]) => `${xs.slice(0, 8).join(', ')}${xs.length > 8 ? ', and others' : ''}`;
+  return (
+    <div className="dim">
+      {res.honoree === 'player' ? 'Honorary: you, for your body of work. ' : res.honoree ? `Given to ${res.honoree}. ` : ''}
+      {res.winners.length === 1 ? `Winner: ${res.winners[0]}. ` : res.winners.length > 1 ? `Winners: ${res.winners.join(' and ')}. ` : res.none ? 'No award was given this year. ' : ''}
+      {res.field.length > 0 && `${festival ? 'Selected' : 'Nominees'}: ${list(res.field)}.`}
+    </div>
+  );
 }
 
 // ---------------- Event detail ----------------
@@ -555,7 +607,6 @@ export function EventDetail() {
   const myZone = getPlace(g.locationId).zone;
   const [preparing, setPreparing] = useState<{ projectId: string; cat: Category } | null>(null);
   const [err, setErr] = useState<string | null>(null);
-  const delivered = g.projects.filter((p) => p.delivered);
   const startL = longLocal(ed.start, place.zone);
   const endL = longLocal(ed.end, place.zone);
   const dlOrg = longLocal(ed.deadline, place.zone);
@@ -579,37 +630,7 @@ export function EventDetail() {
           <p className="dim">{ed.provenance === 'official' ? `These dates were announced by the organizer.${ed.deadlinePlanned ? ' The entry deadline is a planning date.' : ''}` : "Dates haven't been announced. Planning dates are shown."} {rulebook(ed.rulesId) ? `${inst.kind === 'festival' ? 'Sections' : 'Categories'} marked Official Rules follow the organizer's rules for this edition; Projected Rules carry last year's forward until this year's are published. Everything else is simulated.` : 'Rules in this game are simulated.'}</p>
         </section>
         {(ed.screenings ?? []).length > 0 && <ScreeningsPanel editionId={ed.id} />}
-        <section className="card">
-          <h2>{inst.kind === 'festival' ? 'Sections' : 'Categories'}</h2>
-          <ul className="list">
-            {categoriesFor(inst, ed.year).map((c) => {
-              const res = ed.results[c.id];
-              return (
-                <li key={c.id}>
-                  <div className="row-wrap">
-                    <span className="grow"><strong>{c.name}</strong>{!c.competitive ? <span className="chip"> Not Competitive</span> : null}{(() => {
-                      const st = categoryRuleStatus(rulebook(ed.rulesId), c.id);
-                      return st === 'simulated' ? null : <span className="chip">{st === 'verified' ? 'Official Rules' : 'Projected Rules'}</span>;
-                    })()}<div className="dim">{c.judging === 'audience' ? 'Decided by audiences.' : c.judging === 'jury' ? 'Decided by a jury.' : c.judging === 'members' ? 'Voted by members.' : 'Chosen by programmers.'}{c.fee ? ` Entry fee ${money(c.fee)}.` : ''}{c.premiere === 'world' ? ' World premieres only.' : c.premiere === 'international' ? ' International premieres only.' : ''}{c.actingTitle ? ` For performers credited as ${c.actingTitle.toLowerCase()}.` : ''}{(() => {
-                      const dl = categoryDeadline(ed, c);
-                      if (dl === ed.deadline) return '';
-                      const t = longLocal(dl, place.zone);
-                      return ` Entries close ${t.date}, ${t.time} local time.`;
-                    })()}</div>
-                    <RuleNotes ed={ed} categoryId={c.id} /></span>
-                    {delivered.length > 0 && categoryDeadline(ed, c) > g.now && <button className="btn btn-sm" onClick={() => setPreparing({ projectId: delivered[0].id, cat: c })}>Prepare Submission</button>}
-                  </div>
-                  {res?.revealed && (
-                    <div className="dim">
-                      {res.winner ? `Winner: ${g.projects.find((x) => x.id === res.winner)?.title ?? rivalTitle(g, ed, res.winner)}. ` : ''}
-                      {inst.kind === 'festival' ? 'Selected' : 'Nominees'}: {[...res.projectIds.map((id) => g.projects.find((x) => x.id === id)?.title), ...res.rivalIds.slice(0, 8).map((id) => rivalTitle(g, ed, id))].filter(Boolean).join(', ')}{res.rivalIds.length > 8 ? ', and others' : ''}.
-                    </div>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </section>
+        <CategoryBrowser ed={ed} onPrepare={(projectId, cat) => setPreparing({ projectId, cat })} />
         <section className="card">
           <h2>Your Entries</h2>
           {ed.entries.length ? (
@@ -619,7 +640,7 @@ export function EventDetail() {
                 const cat = inst.categories.find((c) => c.id === x.categoryId);
                 return (
                   <li key={x.id} className="row-wrap">
-                    <span className="grow">{p?.title}: {cat?.name}{p ? entryVersion(p, x.versionId) : ''} <span className="chip">{entryStatus(x.status)}</span>{x.reason ? <div className="dim">{x.reason}</div> : null}</span>
+                    <span className="grow">{p?.title}: {cat?.name}{p ? entryVersion(p, x.versionId) : ''} <span className="chip">{entryStatus(x, ed)}</span>{x.via === 'selection' ? <div className="dim">Considered from its selection; no entry or fee.</div> : null}{x.reason ? <div className="dim">{x.reason}</div> : null}</span>
                     {['submitted', 'accepted'].includes(x.status) && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => withdrawEntry(s, ed.id, x.id)))}>Withdraw Entry</button>}
                   </li>
                 );
@@ -635,19 +656,110 @@ export function EventDetail() {
           <p className="dim">Attending is optional. Results don't depend on it.</p>
         </section>
       </div>
-      {preparing && <SubmissionDialog editionId={ed.id} cat={preparing.cat} onClose={() => setPreparing(null)} onError={setErr} />}
+      {preparing && <SubmissionDialog editionId={ed.id} cat={preparing.cat} initialProject={preparing.projectId} onClose={() => setPreparing(null)} onError={setErr} />}
     </>
+  );
+}
+
+type Show = 'all' | 'taking' | 'open' | 'entered' | 'decided';
+
+/**
+ * An edition's sections or categories, grouped under the organizer's headings, with filters for the large rosters (the
+ * Emmys hold over a hundred): by project, format, eligibility, deadline and what you entered. Prizes and honorary awards
+ * are shown, but only categories that take entries can be entered.
+ */
+function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId: string, cat: Category) => void }) {
+  const g = useGame();
+  const inst = institution(ed.institutionId);
+  const place = getPlace(inst.placeId);
+  const delivered = g.projects.filter((p) => p.delivered);
+  const [projectId, setProjectId] = useState('');
+  const [format, setFormat] = useState('');
+  const [show, setShow] = useState<Show>('all');
+  const [query, setQuery] = useState('');
+  const p = delivered.find((x) => x.id === projectId);
+  const all = categoriesFor(inst, ed.year);
+  const formats = [...new Set(all.flatMap((c) => c.formats))];
+  const word = inst.kind === 'festival' ? 'Sections' : 'Categories';
+  // Only while a category still takes entries: after its deadline, "it's too late" would be all it says.
+  const elig = (c: Category) => (p && enterable(c) && categoryDeadline(ed, c, p) > g.now ? checkEligibility(g, p, ed, c) : null);
+  const hasPrizes = (c: Category) => inst.categories.some((x) => x.parents?.includes(c.id));
+  const shown = all.filter((c) => {
+    if (format && !c.formats.includes(format as Format)) return false;
+    if (query && !c.name.toLowerCase().includes(query.trim().toLowerCase())) return false;
+    if (show === 'taking') return enterable(c) && categoryDeadline(ed, c) > g.now;
+    if (show === 'open') return !!elig(c)?.eligible;
+    if (show === 'entered') return ed.entries.some((x) => x.categoryId === c.id) || !!ed.results[c.id]?.honoree;
+    if (show === 'decided') return !enterable(c);
+    return true;
+  });
+  const groups = [...new Set(shown.map((c) => c.section ?? word))];
+  const filtering = !!(format || query || show !== 'all' || projectId);
+  return (
+    <section className="card card-wide" aria-labelledby="categories-h">
+      <h2 id="categories-h">{word}</h2>
+      <p className="dim">{all.length} {all.length === 1 ? (inst.kind === 'festival' ? 'section or award' : 'category') : (inst.kind === 'festival' ? 'sections and awards' : 'categories')} this edition. {inst.kind === 'festival' ? 'Sections select work; selection is not a win. Prizes are decided among the films selected for their sections, and honorary awards are chosen by the organizer: neither takes an entry.' : 'Honorary awards are chosen by the organizer and take no entries.'}</p>
+      <div className="grid grid-2 form">
+        <SelectField label="Project" value={projectId} options={[{ value: '', label: 'Any Project' }, ...delivered.map((x) => ({ value: x.id, label: x.title }))]} onChange={setProjectId} hint={delivered.length ? 'Shows what keeps the project out of each category.' : 'Deliver a project to check it against these.'} />
+        <SelectField label="Show" value={show} onChange={setShow} options={[
+          { value: 'all', label: `Every ${inst.kind === 'festival' ? 'Section And Award' : 'Category'}` }, { value: 'taking', label: 'Still Taking Entries' },
+          ...(p ? [{ value: 'open' as const, label: `Open To ${p.title}` }] : []), { value: 'entered', label: 'Yours' }, { value: 'decided', label: 'Prizes And Honorary Awards' }]} />
+        <SelectField label="Format" value={format} options={[{ value: '', label: 'Any Format' }, ...formats.map((f) => ({ value: f, label: FORMAT_LABELS[f] }))]} onChange={setFormat} />
+        <TextField label={`Find ${inst.kind === 'festival' ? 'A Section Or Award' : 'A Category'}`} value={query} onChange={setQuery} />
+      </div>
+      {!shown.length && <p className="muted">Nothing here matches these filters.</p>}
+      {groups.map((group) => {
+        const cats = shown.filter((c) => (c.section ?? word) === group);
+        return (
+          <details key={group} className="spaced" open={filtering || groups.length <= 3}>
+            <summary><strong>{group}</strong> <span className="dim">({cats.length})</span></summary>
+            <ul className="list">
+              {cats.map((c) => {
+                const el = elig(c);
+                const dl = categoryDeadline(ed, c);
+                const parents = c.parents?.map((id) => inst.categories.find((x) => x.id === id)?.name).filter(Boolean) ?? [];
+                const st = categoryRuleStatus(rulebook(ed.rulesId), c.id);
+                return (
+                  <li key={c.id}>
+                    <div className="row-wrap">
+                      <span className="grow"><strong>{c.name}</strong>
+                        {c.kind && KIND_WORDS[c.kind] ? <span className="chip">{KIND_WORDS[c.kind]}</span> : null}
+                        {!c.competitive && c.kind !== 'honorary' && !hasPrizes(c) ? <span className="chip">Not Competitive</span> : null}
+                        {st === 'simulated' ? null : <span className="chip">{st === 'verified' ? 'Official Rules' : 'Projected Rules'}</span>}
+                        {c.verified === false ? <span className="chip">Rules Not Read</span> : null}
+                        {el ? <span className={`chip ${el.eligible ? 'chip-positive' : ''}`}>{el.eligible ? `Open To ${p!.title}` : 'Not Eligible'}</span> : null}
+                        <div className="dim">
+                          {c.kind === 'honorary' ? 'Chosen by the organizer from a body of work. It takes no entries and no fee. '
+                            : !enterable(c) ? `Decided among the work selected for ${parents.length ? parents.join(', ') : 'the festival'}${c.kind === 'audience' ? ', by audiences' : c.kind === 'partner' ? ', by a partner jury' : ''}. It takes no entries and no fee. `
+                            : `${c.judging === 'audience' ? 'Decided by audiences.' : c.judging === 'jury' ? 'Decided by a jury.' : c.judging === 'members' ? 'Voted by members.' : 'Chosen by programmers.'}${c.kind === 'area' || c.kind === 'juried' ? ' It can give one award, several or none.' : ''}${c.fee ? ` Entry fee ${money(c.fee)}.` : ''}${c.premiere === 'world' ? ' World premieres only.' : c.premiere === 'international' ? ' International premieres only.' : ''}${dl === ed.deadline ? '' : (() => { const t = longLocal(dl, place.zone); return ` Entries close ${t.date}, ${t.time} local time.`; })()} `}
+                          Goes to {recipientWords(c)}.
+                          {c.verified === false ? " The organizer's rules for it weren't read; the game's rules apply." : ''}
+                        </div>
+                        {el && !el.eligible && <div className="dim">{el.reasons[0]}</div>}
+                        <RuleNotes ed={ed} categoryId={c.id} />
+                      </span>
+                      {delivered.length > 0 && enterable(c) && dl > g.now && <button className="btn btn-sm" onClick={() => onPrepare(p?.id ?? delivered[0].id, c)}>Prepare Submission</button>}
+                    </div>
+                    <ResultLine g={g} ed={ed} c={c} />
+                  </li>
+                );
+              })}
+            </ul>
+          </details>
+        );
+      })}
+    </section>
   );
 }
 
 /** Which cut an entry is, when it isn't the main one. */
 const entryVersion = (p: Project, versionId?: string) => { const v = versionId && p.versions?.find((x) => x.id === versionId); return v ? `, ${v.label}` : ''; };
 
-function SubmissionDialog({ editionId, cat, onClose, onError }: { editionId: string; cat: Category; onClose: () => void; onError: (e: string | null) => void }) {
+function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: { editionId: string; cat: Category; initialProject?: string; onClose: () => void; onError: (e: string | null) => void }) {
   const g = useGame();
   const ed = edition(g, editionId);
   const delivered = g.projects.filter((p) => p.delivered);
-  const [projectId, setProjectId] = useState(delivered[0]?.id ?? '');
+  const [projectId, setProjectId] = useState(initialProject && delivered.some((x) => x.id === initialProject) ? initialProject : delivered[0]?.id ?? '');
   const p = delivered.find((x) => x.id === projectId);
   const [recipients, setRecipients] = useState<string[]>([]);
   const [versionId, setVersionId] = useState('');
@@ -689,8 +801,10 @@ function SubmissionDialog({ editionId, cat, onClose, onError }: { editionId: str
       ) : (
         <div className="callout callout-warning"><p>This entry can't be submitted yet:</p><ul>{el.reasons.map((r, i) => <li key={i}>{r}</li>)}</ul></div>
       )}
-      {cat.fee > 0 && <p>Entry fee: {money(cat.fee)}, paid from the project's budget.</p>}
-      <p>Credited for this category: {el.recipients.map((r) => r.personName).join(', ') || 'No one yet'}.</p>
+      {cat.fee > 0 ? <p>Entry fee: {money(cat.fee)}, paid from the project's budget when you submit. Withdrawing doesn't refund it; entering again in this category doesn't charge it twice.</p> : <p>This category has no entry fee.</p>}
+      <p>This award goes to {recipientWords(cat)}. Credited for this entry: {el.recipients.map((r) => r.personName).join(', ') || 'No one yet'}.</p>
+      {cat.kind === 'section' && <p className="dim">Selection is not a win. {institution(ed.institutionId).categories.some((c) => c.parents?.includes(cat.id)) ? "If it's selected, its prizes are decided among the films selected for this section, with no further entry." : 'This section has no prizes of its own.'}</p>}
+      {cat.recipient === 'national' && <p className="dim">The production country's selection committee chooses one film at the entry deadline; a festival prize in the past year qualifies it without the committee.</p>}
       <p className="dim">Eligibility is necessary but doesn't guarantee selection or a win.</p>
     </Modal>
   );

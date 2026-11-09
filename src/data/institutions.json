@@ -1672,7 +1672,7 @@
      "fee": 120,
      "premiere": "world",
      "kind": "section",
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Venezia 83",
      "verified": true
     },
     {
@@ -1686,7 +1686,7 @@
      "parents": [
       "competition"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Venezia 83",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1704,7 +1704,7 @@
      "parents": [
       "competition"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Venezia 83",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1722,7 +1722,7 @@
      "parents": [
       "competition"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Venezia 83",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1741,7 +1741,7 @@
      "parents": [
       "competition"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Venezia 83",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1760,7 +1760,7 @@
      "parents": [
       "competition"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Venezia 83",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1778,7 +1778,7 @@
      "parents": [
       "competition"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Venezia 83",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1796,7 +1796,7 @@
      "parents": [
       "competition"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Venezia 83",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1817,7 +1817,7 @@
      "parents": [
       "competition"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Venezia 83",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1837,7 +1837,7 @@
       "limited-series"
      ],
      "kind": "section",
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Out Of Competition",
      "verified": true,
      "judging": "programmers",
      "slots": 12,
@@ -1858,7 +1858,7 @@
      "fee": 100,
      "premiere": "world",
      "kind": "section",
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Orizzonti",
      "verified": true
     },
     {
@@ -1872,7 +1872,7 @@
       "max-20"
      ],
      "kind": "section",
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Orizzonti",
      "verified": true,
      "judging": "programmers",
      "slots": 12,
@@ -1890,7 +1890,7 @@
      "parents": [
       "orizzonti"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Orizzonti",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1908,7 +1908,7 @@
      "parents": [
       "orizzonti"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Orizzonti",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1926,7 +1926,7 @@
      "parents": [
       "orizzonti"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Orizzonti",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1945,7 +1945,7 @@
      "parents": [
       "orizzonti"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Orizzonti",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1964,7 +1964,7 @@
      "parents": [
       "orizzonti"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Orizzonti",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -1982,7 +1982,7 @@
      "parents": [
       "orizzonti"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Orizzonti",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -2000,7 +2000,7 @@
      "parents": [
       "orizzonti-corti"
      ],
-     "section": "Venezia 83 (Article 3.1): up to 21 feature films, world premieres",
+     "section": "Orizzonti",
      "verified": true,
      "judging": "jury",
      "slots": 1,
@@ -2018,7 +2018,7 @@
       "over-60"
      ],
      "kind": "section",
-     "section": "Venice Spotlight (Article 3.4): up to 8 works over 60 minutes",
+     "section": "Venice Spotlight",
      "verified": true,
      "judging": "programmers",
      "slots": 12,
@@ -2036,7 +2036,7 @@
      "parents": [
       "spotlight"
      ],
-     "section": "Venice Spotlight (Article 3.4): up to 8 works over 60 minutes",
+     "section": "Venice Spotlight",
      "verified": true,
      "judging": "audience",
      "slots": 1,
@@ -2098,7 +2098,7 @@
       "debut"
      ],
      "kind": "section",
-     "section": "Lifetime Achievement",
+     "section": "Independent And Parallel Sections",
      "verified": false,
      "judging": "programmers",
      "slots": 12,
@@ -2113,7 +2113,7 @@
       "feature"
      ],
      "kind": "section",
-     "section": "Lifetime Achievement",
+     "section": "Independent And Parallel Sections",
      "verified": false,
      "judging": "programmers",
      "slots": 12,
@@ -3701,7 +3701,10 @@
      ],
      "kind": "partner",
      "parents": [
-      "first-feature"
+      "features",
+      "envision",
+      "luminous",
+      "frontlight"
      ],
      "section": "Cross-Section Awards",
      "verified": true,
@@ -7903,7 +7906,7 @@
      "name": "Outstanding Title Design",
      "recipient": "craft",
      "crafts": [
-      "title-designer"
+      "compositor"
      ],
      "formats": [
       "series",
@@ -7927,7 +7930,7 @@
      "name": "Outstanding Motion Design",
      "recipient": "craft",
      "crafts": [
-      "title-designer"
+      "compositor"
      ],
      "formats": [
       "series",
@@ -9042,7 +9045,11 @@
      "judging": "members",
      "slots": 5,
      "fee": 0,
-     "competitive": true
+     "competitive": true,
+     "years": [
+      2027,
+      9999
+     ]
     },
     {
      "id": "tv-children",
@@ -9070,7 +9077,11 @@
      "judging": "members",
      "slots": 5,
      "fee": 0,
-     "competitive": true
+     "competitive": true,
+     "years": [
+      2027,
+      9999
+     ]
     },
     {
      "id": "tv-mature",
@@ -9098,7 +9109,11 @@
      "judging": "members",
      "slots": 5,
      "fee": 0,
-     "competitive": true
+     "competitive": true,
+     "years": [
+      2027,
+      9999
+     ]
     },
     {
      "id": "tv-limited",
@@ -9118,7 +9133,11 @@
      "judging": "members",
      "slots": 5,
      "fee": 0,
-     "competitive": true
+     "competitive": true,
+     "years": [
+      2027,
+      9999
+     ]
     },
     {
      "id": "tv",

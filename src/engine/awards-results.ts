@@ -192,6 +192,13 @@ export function decidePrizes(state: GameState, ed: Edition, messages: string[]):
       }
     }
   }
+  // One line for a work that was considered and received nothing, rather than one per prize.
+  for (const p of state.projects) {
+    const mine = ed.entries.filter((x) => x.projectId === p.id && x.via === 'selection');
+    if (!mine.length || mine.some((x) => x.status !== 'lost')) continue;
+    const name = cats.find((c) => c.id === mine[0].categoryId)?.name;
+    messages.push(`${p.title} didn't win ${mine.length === 1 ? name : `any of the ${mine.length} prizes it was considered for`} at the ${ed.label}.`);
+  }
 }
 
 /** What an edition shows for a category: the selected or nominated works, the winners, and an honorary recipient. */

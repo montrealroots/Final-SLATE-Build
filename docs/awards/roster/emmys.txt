@@ -110,8 +110,8 @@ makeup-prosthetic | Outstanding Prosthetic Makeup | A | craft:prosthetics | tele
 # Lighting, Titles And Technical Direction
 lighting-series | Outstanding Lighting Design/Lighting Direction For A Series | A | craft:gaffer | variety+competition | Area 43 |
 lighting-special | Outstanding Lighting Design/Lighting Direction For A Special | A | craft:gaffer | variety-special | Area 44 |
-title-design | Outstanding Title Design | C | craft:title-designer | television | Category 45 | Needs a title designer, a role added November 9, 2026
-motion-design | Outstanding Motion Design | J | craft:title-designer | television | Juried 46 |
+title-design | Outstanding Title Design | C | craft:compositor | television | Category 45 | The game has no title-design crew role: titles are the compositor's work, so the compositor is credited
+motion-design | Outstanding Motion Design | J | craft:compositor | television | Juried 46 | The game has no motion-design crew role: the compositor is credited
 technical-direction-series | Outstanding Technical Direction And Camerawork For A Series | A | craft:camera-operator | variety+competition | Area 111 |
 technical-direction-special | Outstanding Technical Direction And Camerawork For A Special | A | craft:camera-operator | variety-special | Area 112 |
 # Music

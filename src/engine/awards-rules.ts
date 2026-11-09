@@ -14,8 +14,8 @@ const ASIA_PACIFIC = ['AF', 'AU', 'BD', 'BT', 'BN', 'KH', 'CN', 'FJ', 'HK', 'IN'
 const FANTASY = ['fantasy', 'science-fiction', 'dark-fantasy', 'space-opera', 'sword-and-sorcery', 'science-fantasy', 'cyberpunk', 'time-travel', 'superhero', 'fairy-tale'];
 const SUBJECTS: Record<string, string> = { environment: 'climate or the environment', 'civil-rights': 'civil rights', 'social-issues': 'social issues', 'current-events': 'current events', arts: 'the arts', food: 'food' };
 
-/** Subjects a player can declare for a project, with the words shown for each. */
-export const PROJECT_SUBJECTS = Object.entries(SUBJECTS).map(([id, words]) => ({ id, words }));
+/** Subjects a player can declare for a project, with the label shown for each. */
+export const PROJECT_SUBJECTS = Object.keys(SUBJECTS).map((id) => ({ id, label: ({ environment: 'Climate Or The Environment', 'civil-rights': 'Civil Rights', 'social-issues': 'Social Issues', 'current-events': 'Current Events', arts: 'The Arts', food: 'Food' } as Record<string, string>)[id] }));
 
 const origin = (p: Project) => getPlace(p.axes.basePlaceId).country;
 const runtime = (p: Project) => p.delivered?.runtimeMin ?? p.axes.targetRuntimeMin;

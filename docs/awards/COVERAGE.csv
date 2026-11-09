@@ -86,33 +86,33 @@ annecy,,Midnight Shorts And WTF,,Short Films,,unverified-not-playable,an26-short
 annecy,tv,Official Selection - TV Films,section,Television And Commissioned Films,project,unverified,Annecy 2026 TV terms (not read),The game's existing entry; UNVERIFIED: the TV terms weren't read
 annecy,tv-cristal,Cristal For A Television Production,prize,Television And Commissioned Films,producer,unverified,UNVERIFIED,UNVERIFIED: prize name assumed from the feature and short Cristals; the TV terms weren't read
 annecy,,Commissioned Films,,Television And Commissioned Films,,not-playable,Annecy commissioned films terms,Commissioned and branded work isn't made in the game
-venice,competition,Venezia 83 (Competition),section,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",project,verified,Article 3.1,The game's existing entry; selection is not a prize
-venice,golden-lion,Golden Lion For Best Film,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",producer,verified,Article 6.1,
-venice,grand-jury,Silver Lion - Grand Jury Prize,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",producer,verified,Article 6.1,
-venice,silver-lion-director,Silver Lion - Award For Best Director,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",director,verified,Article 6.1,
-venice,volpi-actress,Coppa Volpi For Best Actress,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",performer:Actress,verified,Article 6.1,
-venice,volpi-actor,Coppa Volpi For Best Actor,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",performer:Actor,verified,Article 6.1,
-venice,special-jury,Special Jury Prize,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",producer,verified,Article 6.1,
-venice,screenplay,Award For Best Screenplay,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",writer,verified,Article 6.1,
-venice,mastroianni,Marcello Mastroianni Award For Best New Young Actor Or Actress,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",performer:breakthrough,verified,Article 6.1,"No joint winners; a film may receive only one award, with one exception for an acting award"
-venice,out-of-competition,Open - Out Of Competition,section,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",project,verified,Article 3.2,"Not competitive: a screening, never an award"
-venice,orizzonti,Orizzonti,section,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",project,verified,Article 3.3,"The game's existing entry; it took shorts too until November 9, 2026"
-venice,orizzonti-corti,Orizzonti Corti,section,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",project,verified,Article 3.3,Shorts of 20 minutes or less
-venice,orizzonti-film,Orizzonti Award For Best Film,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",producer,verified,Article 6.2,
-venice,orizzonti-director,Orizzonti Award For Best Director,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",director,verified,Article 6.2,
-venice,orizzonti-special,Special Orizzonti Jury Prize,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",producer,verified,Article 6.2,
-venice,orizzonti-actress,Orizzonti Award For Best Actress,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",performer:Actress,verified,Article 6.2,
-venice,orizzonti-actor,Orizzonti Award For Best Actor,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",performer:Actor,verified,Article 6.2,
-venice,orizzonti-screenplay,Orizzonti Award For Best Screenplay,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",writer,verified,Article 6.2,
-venice,orizzonti-short,Orizzonti Award For Best Short Film,prize,"Venezia 83 (Article 3.1): up to 21 feature films, world premieres",director,verified,Article 6.2,
-venice,spotlight,Venice Spotlight,section,Venice Spotlight (Article 3.4): up to 8 works over 60 minutes,project,verified,Article 3.4,
-venice,spotlight-audience,Armani Beauty Audience Award,audience,Venice Spotlight (Article 3.4): up to 8 works over 60 minutes,project,verified,Article 6.3,The audience at each official screening votes
+venice,competition,Venezia 83 (Competition),section,Venezia 83,project,verified,Article 3.1,"The game's existing entry; selection is not a prize. Up to 21 feature films, world premieres"
+venice,golden-lion,Golden Lion For Best Film,prize,Venezia 83,producer,verified,Article 6.1,
+venice,grand-jury,Silver Lion - Grand Jury Prize,prize,Venezia 83,producer,verified,Article 6.1,
+venice,silver-lion-director,Silver Lion - Award For Best Director,prize,Venezia 83,director,verified,Article 6.1,
+venice,volpi-actress,Coppa Volpi For Best Actress,prize,Venezia 83,performer:Actress,verified,Article 6.1,
+venice,volpi-actor,Coppa Volpi For Best Actor,prize,Venezia 83,performer:Actor,verified,Article 6.1,
+venice,special-jury,Special Jury Prize,prize,Venezia 83,producer,verified,Article 6.1,
+venice,screenplay,Award For Best Screenplay,prize,Venezia 83,writer,verified,Article 6.1,
+venice,mastroianni,Marcello Mastroianni Award For Best New Young Actor Or Actress,prize,Venezia 83,performer:breakthrough,verified,Article 6.1,"No joint winners; a film may receive only one award, with one exception for an acting award"
+venice,out-of-competition,Open - Out Of Competition,section,Out Of Competition,project,verified,Article 3.2,"Not competitive: a screening, never an award. Up to 30 titles"
+venice,orizzonti,Orizzonti,section,Orizzonti,project,verified,Article 3.3,"The game's existing entry; it took shorts too until November 9, 2026"
+venice,orizzonti-corti,Orizzonti Corti,section,Orizzonti,project,verified,Article 3.3,Shorts of 20 minutes or less
+venice,orizzonti-film,Orizzonti Award For Best Film,prize,Orizzonti,producer,verified,Article 6.2,
+venice,orizzonti-director,Orizzonti Award For Best Director,prize,Orizzonti,director,verified,Article 6.2,
+venice,orizzonti-special,Special Orizzonti Jury Prize,prize,Orizzonti,producer,verified,Article 6.2,
+venice,orizzonti-actress,Orizzonti Award For Best Actress,prize,Orizzonti,performer:Actress,verified,Article 6.2,
+venice,orizzonti-actor,Orizzonti Award For Best Actor,prize,Orizzonti,performer:Actor,verified,Article 6.2,
+venice,orizzonti-screenplay,Orizzonti Award For Best Screenplay,prize,Orizzonti,writer,verified,Article 6.2,
+venice,orizzonti-short,Orizzonti Award For Best Short Film,prize,Orizzonti,director,verified,Article 6.2,
+venice,spotlight,Venice Spotlight,section,Venice Spotlight,project,verified,Article 3.4,Up to 8 works over 60 minutes
+venice,spotlight-audience,Armani Beauty Audience Award,audience,Venice Spotlight,project,verified,Article 6.3,The audience at each official screening votes
 venice,lion-of-the-future,"Lion Of The Future – ""Luigi De Laurentiis"" Venice Award For A Debut Film",prize,Debut Award,director+producer,verified,Article 6.5,"Debut fiction features in every competitive section, including the independent ones; the prize money is shared by the director and producer"
 venice,lifetime,Golden Lion For Lifetime Achievement,honorary,Lifetime Achievement,career-film,verified,Article 6.7,"At most two a year, on the Festival Director's recommendation"
-venice,sic,Settimana Internazionale Della Critica,section,Lifetime Achievement,project,unverified,Article 5.1,"UNVERIFIED: run by the National Syndicate of Italian Film Critics under its own regulations, not read; debut features in the game"
-venice,giornate,Giornate Degli Autori,section,Lifetime Achievement,project,unverified,Article 5.2,"UNVERIFIED: its own regulations, not read"
-venice,,Venice Classics And Venice Classics Award For Best Restored Film,,Lifetime Achievement,,not-playable,"Articles 3.5, 6.4",Restorations of older films aren't work the game makes
-venice,,Venice Immersive And Its Prizes,,Lifetime Achievement,,not-playable,"Articles 3.6, 6.6",Immersive works aren't made in the game
+venice,sic,Settimana Internazionale Della Critica,section,Independent And Parallel Sections,project,unverified,Article 5.1,"UNVERIFIED: run by the National Syndicate of Italian Film Critics under its own regulations, not read; debut features in the game"
+venice,giornate,Giornate Degli Autori,section,Independent And Parallel Sections,project,unverified,Article 5.2,"UNVERIFIED: its own regulations, not read"
+venice,,Venice Classics And Venice Classics Award For Best Restored Film,,Independent And Parallel Sections,,not-playable,"Articles 3.5, 6.4",Restorations of older films aren't work the game makes
+venice,,Venice Immersive And Its Prizes,,Independent And Parallel Sections,,not-playable,"Articles 3.6, 6.6",Immersive works aren't made in the game
 tiff,official,Official Selection,section,,project,verified,tiff26-awards,Selection is not a prize
 tiff,peoples-choice,People's Choice Award,audience,,project,verified,tiff26-awards,The game's existing entry
 tiff,peoples-choice-documentary,People's Choice Documentary Award,audience,,project,verified,tiff26-awards,
@@ -417,8 +417,8 @@ emmys,makeup-variety,"Outstanding Makeup For A Variety, Nonfiction Or Reality Pr
 emmys,makeup-prosthetic,Outstanding Prosthetic Makeup,area,Hairstyling And Makeup,craft:prosthetics,verified,Area 50,
 emmys,lighting-series,Outstanding Lighting Design/Lighting Direction For A Series,area,"Lighting, Titles And Technical Direction",craft:gaffer,verified,Area 43,
 emmys,lighting-special,Outstanding Lighting Design/Lighting Direction For A Special,area,"Lighting, Titles And Technical Direction",craft:gaffer,verified,Area 44,
-emmys,title-design,Outstanding Title Design,award,"Lighting, Titles And Technical Direction",craft:title-designer,verified,Category 45,"Needs a title designer, a role added November 9, 2026"
-emmys,motion-design,Outstanding Motion Design,juried,"Lighting, Titles And Technical Direction",craft:title-designer,verified,Juried 46,
+emmys,title-design,Outstanding Title Design,award,"Lighting, Titles And Technical Direction",craft:compositor,verified,Category 45,"The game has no title-design crew role: titles are the compositor's work, so the compositor is credited"
+emmys,motion-design,Outstanding Motion Design,juried,"Lighting, Titles And Technical Direction",craft:compositor,verified,Juried 46,The game has no motion-design crew role: the compositor is credited
 emmys,technical-direction-series,Outstanding Technical Direction And Camerawork For A Series,area,"Lighting, Titles And Technical Direction",craft:camera-operator,verified,Area 111,
 emmys,technical-direction-special,Outstanding Technical Direction And Camerawork For A Special,area,"Lighting, Titles And Technical Direction",craft:camera-operator,verified,Area 112,
 emmys,music-series,Outstanding Music Composition For A Series (Original Dramatic Score),award,Music,craft:composer,verified,Category 51,
@@ -474,11 +474,11 @@ annie,feature-independent,Best Feature - Independent,award,Production Categories
 annie,special,Best Special Production,award,Production Categories,producer,verified,annie54-categories 3,
 annie,short,Best Short Subject,award,Production Categories,producer,verified,annie54-categories 4,
 annie,,Best Sponsored,,Production Categories,,not-playable,annie54-categories 5,Sponsored and branded work isn't made in the game
-annie,tv-preschool,Best TV/Media - Preschool,award,Production Categories,producer,verified,annie54-categories 6,
-annie,tv-children,Best TV/Media - Children,award,Production Categories,producer,verified,annie54-categories 7,
-annie,tv-mature,Best TV/Media - Mature,award,Production Categories,producer,verified,annie54-categories 8,
+annie,tv-preschool,Best TV/Media - Preschool,award,Production Categories,producer,verified,annie54-categories 6,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
+annie,tv-children,Best TV/Media - Children,award,Production Categories,producer,verified,annie54-categories 7,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
+annie,tv-mature,Best TV/Media - Mature,award,Production Categories,producer,verified,annie54-categories 8,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
 annie,,Best TV/Media - International Anime Production,,Production Categories,,not-playable,annie54-categories 9,Anime production as a national industry style isn't distinguished in the game
-annie,tv-limited,Best TV/Media – Limited Series,award,Production Categories,producer,verified,annie54-categories 10,
+annie,tv-limited,Best TV/Media – Limited Series,award,Production Categories,producer,verified,annie54-categories 10,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
 annie,tv,Best TV Or Media Production,award,Production Categories,producer,verified,53rd Annie Awards,years 1900-2026; split into the age and limited-series categories above for the 54th; kept for older entries
 annie,,Best Student Film,,Production Categories,,not-playable,annie54-categories 11,"The player is a working filmmaker, not a student"
 annie,fx-tv,Best FX - TV/Media,award,Achievement Categories,craft:fx-artist,verified,annie54-categories 12,

@@ -9,11 +9,11 @@ feature-independent | Best Feature - Independent | C | producer | feature:animat
 special | Best Special Production | C | producer | special:animated | annie54-categories 3 |
 short | Best Short Subject | C | producer | short:animated | annie54-categories 4 |
 - Best Sponsored | Sponsored and branded work isn't made in the game | annie54-categories 5
-tv-preschool | Best TV/Media - Preschool | C | producer | television:animated:preschool | annie54-categories 6 |
-tv-children | Best TV/Media - Children | C | producer | television:animated:children | annie54-categories 7 |
-tv-mature | Best TV/Media - Mature | C | producer | television:animated:mature | annie54-categories 8 |
+tv-preschool | Best TV/Media - Preschool | C | producer | television:animated:preschool | annie54-categories 6 | First held at the 54th, replacing Best TV Or Media Production; years 2027-9999
+tv-children | Best TV/Media - Children | C | producer | television:animated:children | annie54-categories 7 | First held at the 54th, replacing Best TV Or Media Production; years 2027-9999
+tv-mature | Best TV/Media - Mature | C | producer | television:animated:mature | annie54-categories 8 | First held at the 54th, replacing Best TV Or Media Production; years 2027-9999
 - Best TV/Media - International Anime Production | Anime production as a national industry style isn't distinguished in the game | annie54-categories 9
-tv-limited | Best TV/Media – Limited Series | C | producer | limited-series:animated | annie54-categories 10 |
+tv-limited | Best TV/Media – Limited Series | C | producer | limited-series:animated | annie54-categories 10 | First held at the 54th, replacing Best TV Or Media Production; years 2027-9999
 tv | Best TV Or Media Production | C | producer | television:animated | 53rd Annie Awards | years 1900-2026; split into the age and limited-series categories above for the 54th; kept for older entries
 - Best Student Film | The player is a working filmmaker, not a student | annie54-categories 11
 # Achievement Categories

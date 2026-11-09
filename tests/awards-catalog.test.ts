@@ -308,3 +308,14 @@ describe('renamed and retired categories across editions', () => {
     expect(annie.categories.find((c) => c.id === 'tv')).toBeDefined();
   });
 });
+
+describe('an organizer\'s deadline never leaves the announcement before it', () => {
+  it('every edition announces after its last entry deadline and before it starts (the Golden Globes 2027 did not)', () => {
+    const s = startLife('order', 'us-los-angeles');
+    for (const e of s.editions) {
+      expect(e.announce > e.deadline, e.id).toBe(true);
+      expect(e.announce < e.start, e.id).toBe(true);
+    }
+    expect(ed(s, 'golden-globes-2027').announce).toBe(ed(s, 'golden-globes-2027').deadline + 7 * DAY);
+  });
+});

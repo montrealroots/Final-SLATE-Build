@@ -3,8 +3,8 @@
 @source ve83-reg | Regulations - 83rd Venice International Film Festival | https://static.labiennale.org/files/cinema/2026/Documenti/regulations-83.pdf | retrieved 2026-11-09
 # Official Selection (Article 3); independent sections (Article 5); juries and awards (Article 6). Submissions open
 # February 9; feature deadlines vary; short films by May 28 (Article 7.1).
-# Venezia 83 (Article 3.1): up to 21 feature films, world premieres
-competition | Venezia 83 (Competition) | S | project | feature | Article 3.1 | The game's existing entry; selection is not a prize
+# Venezia 83
+competition | Venezia 83 (Competition) | S | project | feature | Article 3.1 | The game's existing entry; selection is not a prize. Up to 21 feature films, world premieres
 golden-lion | Golden Lion For Best Film | P:competition | producer | feature | Article 6.1 |
 grand-jury | Silver Lion - Grand Jury Prize | P:competition | producer | feature | Article 6.1 |
 silver-lion-director | Silver Lion - Award For Best Director | P:competition | director | feature | Article 6.1 |
@@ -13,9 +13,9 @@ volpi-actor | Coppa Volpi For Best Actor | P:competition | performer:Actor | fea
 special-jury | Special Jury Prize | P:competition | producer | feature | Article 6.1 |
 screenplay | Award For Best Screenplay | P:competition | writer | feature | Article 6.1 |
 mastroianni | Marcello Mastroianni Award For Best New Young Actor Or Actress | P:competition | performer:breakthrough | feature | Article 6.1 | No joint winners; a film may receive only one award, with one exception for an acting award
-# Open - Out Of Competition (Article 3.2): up to 30 titles, non-competing
-out-of-competition | Open - Out Of Competition | S | project | feature+documentary-feature+series+limited-series | Article 3.2 | Not competitive: a screening, never an award
-# Orizzonti (Article 3.3): up to 19 films, plus Orizzonti Corti (shorts up to 20 minutes)
+# Out Of Competition
+out-of-competition | Open - Out Of Competition | S | project | feature+documentary-feature+series+limited-series | Article 3.2 | Not competitive: a screening, never an award. Up to 30 titles
+# Orizzonti
 orizzonti | Orizzonti | S | project | feature+documentary-feature | Article 3.3 | The game's existing entry; it took shorts too until November 9, 2026
 orizzonti-corti | Orizzonti Corti | S | project | short:max-20 | Article 3.3 | Shorts of 20 minutes or less
 orizzonti-film | Orizzonti Award For Best Film | P:orizzonti | producer | feature | Article 6.2 |
@@ -25,14 +25,14 @@ orizzonti-actress | Orizzonti Award For Best Actress | P:orizzonti | performer:A
 orizzonti-actor | Orizzonti Award For Best Actor | P:orizzonti | performer:Actor | feature | Article 6.2 |
 orizzonti-screenplay | Orizzonti Award For Best Screenplay | P:orizzonti | writer | feature | Article 6.2 |
 orizzonti-short | Orizzonti Award For Best Short Film | P:orizzonti-corti | director | short | Article 6.2 |
-# Venice Spotlight (Article 3.4): up to 8 works over 60 minutes
-spotlight | Venice Spotlight | S | project | feature:over-60 | Article 3.4 |
+# Venice Spotlight
+spotlight | Venice Spotlight | S | project | feature:over-60 | Article 3.4 | Up to 8 works over 60 minutes
 spotlight-audience | Armani Beauty Audience Award | U:spotlight | project | feature | Article 6.3 | The audience at each official screening votes
-# Debut Award (Article 6.5)
+# Debut Award
 lion-of-the-future | Lion Of The Future – "Luigi De Laurentiis" Venice Award For A Debut Film | P:competition+orizzonti+spotlight+sic+giornate | director+producer | feature:debut | Article 6.5 | Debut fiction features in every competitive section, including the independent ones; the prize money is shared by the director and producer
-# Lifetime Achievement (Article 6.7)
+# Lifetime Achievement
 lifetime | Golden Lion For Lifetime Achievement | H | career-film | feature | Article 6.7 | At most two a year, on the Festival Director's recommendation
-# Independent And Parallel Sections (Article 5): their own regulations, not read
+# Independent And Parallel Sections
 sic | Settimana Internazionale Della Critica | S | project | feature:debut | Article 5.1 | UNVERIFIED: run by the National Syndicate of Italian Film Critics under its own regulations, not read; debut features in the game
 giornate | Giornate Degli Autori | S | project | feature | Article 5.2 | UNVERIFIED: its own regulations, not read
 - Venice Classics And Venice Classics Award For Best Restored Film | Restorations of older films aren't work the game makes | Articles 3.5, 6.4

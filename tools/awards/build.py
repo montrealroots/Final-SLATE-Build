@@ -235,9 +235,12 @@ def build():
             seen.add(e['id'])
             cats.append(category(inst['kind'], e, old.get(e['id'])))
         ids = {c['id'] for c in cats}
+        taking = {c['id'] for c in cats if c['kind'] in ('award', 'area', 'juried', 'section')}
         for c in cats:
             for p in c.get('parents', []):
                 assert p in ids, f"{inst['id']}:{c['id']} names section {p}, which the roster doesn't list"
+                # A prize is decided among works entered somewhere; another prize takes no entries of its own.
+                assert p in taking, f"{inst['id']}:{c['id']} is decided among {p}, which takes no entries"
         # Existing categories the roster dropped stay, closed, so old entries and results keep their category.
         for cid, c in old.items():
             if cid not in ids:

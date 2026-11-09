@@ -286,7 +286,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await page.getByRole('button', { name: 'The Last Ferry To Wolfe Island' }).click();
   await section(page, 'Festivals And Awards');
   const status = await page.locator('section', { hasText: 'Your Entries' }).locator('.chip').first().innerText();
-  expect(['Selected', 'Not Selected', 'Won', 'Did Not Win', 'Accepted For Consideration', 'Not Accepted']).toContain(status);
+  expect(['Selected', 'In Competition', 'Not Selected', 'Winner', 'Did Not Win', 'Nominated', 'Not Nominated', 'Accepted For Consideration', 'Not Accepted']).toContain(status);
   await page.screenshot({ path: `test-results/${info.project.name}-festival.png`, fullPage: true });
 
   // Saved state matches and survives reload.
