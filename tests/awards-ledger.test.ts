@@ -81,6 +81,7 @@ function recipientStatus(inst: Institution, c: Category): string {
 
 function submission(c: Category): string {
   if (c.retired) return 'none (retired)';
+  if (c.years && c.years[1] < 2026) return `none (held until ${c.years[1]})`;
   if (c.kind === 'honorary') return 'none: chosen by the organizer';
   if (c.recipient === 'national') return "entry, then the country's committee";
   if (c.kind === 'section') return 'entry, then selection';

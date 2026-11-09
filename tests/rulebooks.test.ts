@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('67 categories follow verified rules for at least one edition, 2 only projected ones; the other 733 are simulated', () => {
+  it('165 categories follow verified rules for at least one edition, 2 only projected ones; the other 635 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -428,8 +428,9 @@ describe('audit counts', () => {
     for (const inst of INSTITUTIONS) for (const c of inst.categories) n[best(inst.id, c.id)] += 1;
     // 48 and 92 until November 9, 2026, when the rosters added 660 categories and the read rules were extended to the
     // Oscars' craft and adapted-screenplay categories, Sundance's World Cinema competitions, Orizzonti Corti and the
-    // Annies' four TV categories (rulebooks.ts). 66 and 734 until International Feature Film's rules were read the same day.
-    expect(n).toEqual({ verified: 67, projected: 2, simulated: 733 });
+    // Annies' four TV categories (rulebooks.ts). 66 and 734 until International Feature Film's rules were read the same day,
+    // and 67 and 733 until the Emmys' general eligibility was applied to their other 98 entered categories (emmys-2026@2).
+    expect(n).toEqual({ verified: 165, projected: 2, simulated: 635 });
   });
 });
 
@@ -523,6 +524,33 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const series = work(s, { format: 'series', runtime: 30, completed: '2026-01-10', base: 'gb-london' });
     release(series, 'streaming', '2026-03-01', ['US']);
     expect(r(s, series, e, 'tv-drama')).toMatch(/for work made in the United States/);
+  });
+
+  it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {
+    const s = startLife('em2');
+    s.now = at('America/Los_Angeles', '2026-04-01', 9);
+    const e = ed(s, 'emmys-2026');
+    expect(e.rulesId).toBe('emmys-2026@2');
+    for (const id of ['guest-actor', 'animated-program', 'reality-competition', 'title-design', 'hosted-nonfiction']) expect(categoryRuleStatus(rulebook(e.rulesId), id), id).toBe('verified');
+    expect(categoryRuleStatus(rulebook('emmys-2026@1'), 'guest-actor')).toBe('simulated'); // version 1 read 13 categories
+    const show = (format: Project['axes']['format'], eps: number, territory = 'US') => {
+      const p = work(s, { format, runtime: 30, completed: '2025-12-01' });
+      p.axes.episodeCount = eps;
+      release(p, 'streaming', '2026-02-01', [territory]);
+      return p;
+    };
+    // Eligibility 11c: six episodes for a reality series, three for hosted nonfiction; an animated program can be a special.
+    expect(r(s, show('unscripted-series', 5), e, 'reality-competition')).toMatch(/needs at least 6/);
+    expect(r(s, show('unscripted-series', 3), e, 'hosted-nonfiction')).not.toMatch(/needs at least/);
+    expect(r(s, show('unscripted-series', 2), e, 'hosted-nonfiction')).toMatch(/needs at least 3/);
+    expect(r(s, show('tv-film', 1), e, 'animated-program')).not.toMatch(/needs at least/);
+    // The general rules: a US platform in the June-to-May year, by May 7.
+    expect(r(s, show('series', 8, 'GB'), e, 'title-design')).toMatch(/release in the United States/);
+    expect(categoryDeadline(e, cat(e, 'title-design'))).toBe(at('America/Los_Angeles', '2026-05-07', 23, 59) + 59_000);
+    // Short form: at most six producers are named (Category 86).
+    const sf = show('web-series', 6);
+    sf.credits = Array.from({ length: 8 }, (_, i) => credit(`pr${i + 1}`, 'Produced By', 'producer', 10 + i));
+    expect(checkEligibility(s, sf, e, cat(e, 'short-form-series')).recipients).toHaveLength(6);
   });
 
   it('Emmys 2026: six episodes for series, the June-to-May window, and no US cinema run before airing', () => {

@@ -224,6 +224,25 @@ are not published; 2027 carries these forward, labelled projected.
 | Outstanding Movie (category 82, renamed from Outstanding Television Movie): one part of at least 75 minutes | Outstanding Movie, held from 2026 |
 | Program awards go to producers whose credits and functions support it | Program categories |
 
+**Version 2 (`emmys-2026@2`, `emmys-2027@2`, read November 9, 2026).** The general rules above are the "Eligibility"
+section's rules 1 to 17, which apply to every category of the competition, so version 2 applies them to all 111 entered
+categories held from 2026 (the 13 above keep their rules unchanged; the two Governors and Special Awards take no entries).
+Category-level provisions applied:
+
+| Rule (2025-2026) | Where | Applied to |
+| --- | --- | --- |
+| Six episodes premiered by May 31 for series in animation, comedy, drama, variety, short form and reality categories; three for documentary and hosted nonfiction series | Eligibility 11c | Every category that takes series only: the 34 in `EMMY_SIX` (rulebook-data.ts) at six, Hosted Nonfiction Series Or Special at three. Categories that also take specials, movies or limited series (Animated Program, the variety specials' crafts, the nonfiction crafts, Title Design and others) have no minimum: the rule is per program and SLATE can't tell from the category which one is entered. |
+| Short Form Comedy, Drama Or Variety Series: at most six entrants; "petitions to exceed the cap will not be considered" | Category 86 | At most six credited producers named |
+| Program awards to producers whose screen credit and functions support it | Each program category's text | Every program category: credited producers |
+
+Read but not modeled (each needs a fact SLATE doesn't record): guest performers must appear in fewer than half of the
+eligible episodes, and a performer nominated before as lead or supporting can't enter as a guest (categories 70-73);
+Character Voice-Over is for programming for audiences 13 and over (category 75); short form episodes average 2 to 20
+minutes (Eligibility 17); an animated program needs 65 percent new animation (category 2); music categories need 35
+percent of the episode's music (Music); producers must be credited on half of a series' episodes, and the producer caps
+other than short form's are guidelines; the variety categories also honour the principal host; the limited release of up
+to 70 theater-days and the Oscar-nomination bar (Eligibility 8a-8d).
+
 ## San Sebastián, 74th Edition (2026, Verified) And 75th (2027, Projected)
 
 Source: "Rules and Regulations - 74th San Sebastian International Film Festival" (sansebastianfestival.com, read November 6,
