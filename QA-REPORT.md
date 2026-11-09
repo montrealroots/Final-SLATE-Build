@@ -19,6 +19,7 @@ that nothing reads, by a rule or a screen.
 | `npx vitest run tests/model-readers.test.ts` before the work | 1 | 61 fields with no reader. |
 | `npm run check` | 0 | 75 files, 585 tests passed, including the reader guard with no unread field. Startup JavaScript 685 kB, 219 kB gzipped (budgets 700 and 220 kB); 0 problems. |
 | `npx playwright test e2e/auditions.spec.ts e2e/negotiation.spec.ts e2e/awards.spec.ts --project=desktop --project=iphone-15-plus` | 1, then 0 | 30 passed, 4 failed on the journeys' own expected text: As Entered's new credit wording, and the screen-time line's date. The wording was changed to read better ("Name, credit; Name, credit"); the screen-time line keeps "Recorded:" first. Run again: 6 of 6 passed. |
+| `SLATE_E2E_PROD=1 npx playwright test --trace off` (every project, production build) at `27c8999` | 1, then 0 | 238 passed, 32 skipped by project, 3 failed: the connected journey on desktop, phone and `iphone-15-pro-max` expected a working-relationship entry to end at "worked through to delivery)", and it now ends with its date. The expectation now requires the date: `e2e/connected.spec.ts` alone passed 3 of 3 on the production build. |
 
 - **Implemented and tested (engine):**
   - the primary genre decides comedy or drama;
