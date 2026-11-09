@@ -458,3 +458,49 @@ test('an honorary award comes from a long career, at an announcement, with no en
   expect(s.projects.flatMap((p: State) => p.obligations.flatMap((o: State) => o.postings)).filter((x: State) => x.key?.startsWith('fee:')).length).toBe(feesBefore);
   await page.screenshot({ path: `test-results/awards-honorary-${test.info().project.name}.png`, fullPage: true });
 });
+
+test('Emmys: a documentary narrator enters Outstanding Narrator; a narrator and a guest in half the season are kept out of the performer categories, and told why', async ({ page }) => {
+  await quickLife(page, 'us-los-angeles', '2027-02-01');
+  await newProject(page, { title: 'Salt Roads', format: 'Documentary Short', runtime: '15' });
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Night Ward', format: 'Series', episodes: '2', runtime: '50' });
+  const air = [{ id: 'r1', route: 'broadcast', date: '2026-10-01', territories: ['US'], distributor: 'Channel Nine', note: '', status: 'released' }];
+  // Labelled fixture: the parts, their story functions and the narration sequence are set in the save, as the other
+  // journeys set delivery; the Characters and Script tabs that set them are covered in screenwriting.spec.ts.
+  await editSave(page, (s) => {
+    const part = (name: string, extra: State) => ({ id: `ch-${name}`, name, roleSize: 'supporting', functions: [], seriesInvolvement: 'regular', languages: ['en'], methods: ['on-camera'], ...extra });
+    const doc = deliver(s, 'Salt Roads', { format: 'documentary-short', runtime: 15, at: '2026-08-01T20:00:00Z', releases: air,
+      credits: [credit('cr8', 'x-narr', 'Odile Brandt', 'Cast', 'actor', { characterName: 'The Narrator' })] });
+    doc.drafts = [{ number: 1, characters: [part('The Narrator', { functions: ['narrator'] })], scenes: [{ id: 'n1', kind: 'narration', dialogue: [], songs: [] }] }];
+    doc.approvedDraft = 1;
+    const series = deliver(s, 'Night Ward', { format: 'series', runtime: 300, at: '2026-08-01T20:00:00Z', releases: air });
+    series.axes.register = 'drama';
+    series.axes.episodeCount = 6;
+    series.drafts = [{ number: 1, characters: [part('Mara', { roleSize: 'lead' }), part('Marcus', { seriesInvolvement: 'guest', awardPlacement: 'none' }), part('The Voice', { functions: ['narrator'] })], scenes: [] }];
+    series.approvedDraft = 1;
+    const me = s.character.name;
+    series.credits.push(credit('cr8', 'player', me, 'Cast', 'actor', { characterName: 'Mara' }), credit('cr9', 'player', me, 'Cast', 'actor', { characterName: 'Marcus', episodes: [1, 2, 3] }),
+      credit('cr10', 'player', me, 'Cast', 'actor', { characterName: 'The Voice' }));
+  });
+  await openEvent(page, 'Salt Roads', 'Primetime Emmy Awards 2027');
+  await filterTo(page, 'Salt Roads', 'Open To Salt Roads');
+  await submit(page, 'Outstanding Narrator', /goes to the credited narrator\./, 'Odile Brandt');
+  await openEvent(page, 'Night Ward', 'Primetime Emmy Awards 2027');
+  await filterTo(page, 'Night Ward', 'Every Category');
+  await expect(row(page, 'Outstanding Lead Actress In A Drama Series').locator('.chip', { hasText: 'Open To Night Ward' })).toBeVisible();
+  await expect(row(page, 'Outstanding Supporting Actress In A Drama Series').getByText('A narrator can\'t be entered in this performer category; the narration can be entered for a narrator award.')).toBeVisible();
+  await expect(row(page, 'Outstanding Guest Actress In A Drama Series').getByText('This category takes performers in fewer than half of the episodes; Marcus is in 3 of 6.')).toBeVisible();
+  await expect(row(page, 'Outstanding Narrator').getByText(/doesn't accept series projects/)).toBeVisible();
+  await page.screenshot({ path: `test-results/awards-narrator-${test.info().project.name}.png`, fullPage: true });
+});
+
+test('SXSW: a music video enters the Music Video Competition; a short film can\'t', async ({ page }) => {
+  await quickLife(page, 'us-los-angeles', '2026-09-01');
+  await newProject(page, { title: 'Night Bus', format: 'Music Video', runtime: '4' });
+  await editSave(page, (s) => { deliver(s, 'Night Bus', { format: 'music-video', runtime: 4, at: '2026-08-01T20:00:00Z' }); });
+  await openEvent(page, 'Night Bus', 'SXSW Film & TV Festival 2027');
+  await filterTo(page, 'Night Bus', 'Every Section And Award');
+  await expect(row(page, 'Short Film Competition').getByText(/doesn't accept music video projects/)).toBeVisible();
+  await expect(row(page, 'Grand Jury Award: Music Video')).toBeVisible();
+  await submit(page, 'Music Video Competition', /goes to the credited producers\./, 'Nia Halvorsen-Mbeki');
+});

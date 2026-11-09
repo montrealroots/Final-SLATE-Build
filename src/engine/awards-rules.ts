@@ -103,7 +103,8 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
       case 'guest': return cast.filter((c) => chars(p).find((x) => x.name === c.characterName)?.seriesInvolvement === 'guest');
       case 'performer': return cast.filter((c) => placed(c.characterName) === 'lead' || placed(c.characterName) === 'supporting');
       // Emmy Category 76: a traditional narration, read as a narrator, not a character; the part's declared function says which.
-      case 'narrator': return p.scenes.some((s) => s.kind === 'narration') ? p.credits.filter((c) => (c.contribution === 'Cast' || c.contribution === 'Voice Cast') && chars(p).find((x) => x.name === c.characterName)?.functions.includes('narrator')) : [];
+      // Both the part and the narration sequence come from the approved script, the one delivered.
+      case 'narrator': return (p.drafts.find((d) => d.number === p.approvedDraft)?.scenes ?? []).some((s) => s.kind === 'narration') ? p.credits.filter((c) => (c.contribution === 'Cast' || c.contribution === 'Voice Cast') && chars(p).find((x) => x.name === c.characterName)?.functions.includes('narrator')) : [];
       case 'host': return p.credits.filter((c) => c.roleId === 'contributor' && /\bhost/i.test(p.contributors.find((x) => `contributor:${x.id}` === c.person)?.role ?? ''));
       case 'song': return p.scenes.some((s) => s.songs.some((x) => !x.licensed)) ? p.credits.filter((c) => c.roleId === 'composer') : [];
       case 'national': return p.credits.filter((c) => c.contribution === 'Directed By');
