@@ -1,0 +1,18 @@
+@institution sxsw
+@edition SXSW Film & TV Festival 2027 (deadlines August 25, September 15, October 1, 2026, 11:59 p.m. PT)
+@source sxsw27-submit | Film & TV submissions (categories, deadlines and fees; awards eligibility) | https://sxsw.com/film-submissions/ | retrieved 2026-11-09
+# Submission types (sxsw27-submit): features, shorts (narrative, documentary, animated), episodic pilots or first
+# seasons, music videos, XR. The festival says its shorts qualify for the Oscars, BAFTA and the Spirit Awards. The
+# competitions' jury and audience award names weren't on the pages read (UNVERIFIED); the game keeps its existing
+# competitions as sections with a jury prize and an audience award each.
+narrative | Narrative Feature Competition | S | project | feature | sxsw27-submit; earlier game catalog | The game's existing entry; feature fee $95 (second deadline) or $125 (final)
+narrative-jury | Grand Jury Award: Narrative Feature | P:narrative | director | feature | UNVERIFIED | UNVERIFIED: award name not read
+narrative-audience | Audience Award: Narrative Feature | U:narrative | director | feature | UNVERIFIED | UNVERIFIED: award name not read
+documentary | Documentary Feature Competition | S | project | documentary-feature | sxsw27-submit; earlier game catalog | The game's existing entry
+documentary-jury | Grand Jury Award: Documentary Feature | P:documentary | director | documentary-feature | UNVERIFIED | UNVERIFIED: award name not read
+documentary-audience | Audience Award: Documentary Feature | U:documentary | director | documentary-feature | UNVERIFIED | UNVERIFIED: award name not read
+episodic | Episodic Pilot Competition | S | project | series+limited-series+anthology-series+web-series+docseries+reality | sxsw27-submit | The game's existing entry; pilots or first seasons, $70 or $90
+episodic-jury | Grand Jury Award: Episodic Pilot | P:episodic | producer | series | UNVERIFIED | UNVERIFIED: award name not read
+shorts | Short Film Competition | S | project | short+documentary-short | sxsw27-submit | The game's existing entry; $70 or $90
+shorts-jury | Grand Jury Award: Short Film | P:shorts | director | short+documentary-short | UNVERIFIED | UNVERIFIED: award name not read; the qualifying route for the Oscars shorts depends on it
+- Music Videos And XR | Music videos and immersive works aren't made in the game | sxsw27-submit

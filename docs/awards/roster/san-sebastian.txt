@@ -1,0 +1,35 @@
+@institution san-sebastian
+@edition 74th San Sebastian International Film Festival (2026); the 75th (2027) carried forward as a projection
+@source ss74-rules | Rules and Regulations - 74th San Sebastian International Film Festival (with the site's Sections and Awards menus) | https://www.sansebastianfestival.com/2026/film_registration/rules_and_regulations/1/23002/in | retrieved 2026-11-09
+# Sections and award groups are named in the site's menus on the rules page (ss74-rules); the awards' own pages
+# weren't read, so prize names inside "Official Awards - FIAPF" are UNVERIFIED.
+# Official Selection
+official | Official Selection | S | project | feature | ss74-rules Sections | The game's existing entry; selection is not a prize
+golden-shell | Golden Shell For Best Film | P:official | producer | feature | ss74-rules Awards: Official Awards, Golden Shells | UNVERIFIED: the official award page wasn't read
+jury-prize | Special Jury Prize | P:official | producer | feature | ss74-rules Awards: Official Awards | UNVERIFIED: the official award page wasn't read
+silver-shell-director | Silver Shell For Best Director | P:official | director | feature | ss74-rules Awards: Official Awards | UNVERIFIED: the official award page wasn't read
+silver-shell-leading | Silver Shell For Best Leading Performance | P:official | lead | feature | ss74-rules Awards: Official Awards | UNVERIFIED: the official award page wasn't read
+silver-shell-supporting | Silver Shell For Best Supporting Performance | P:official | supporting | feature | ss74-rules Awards: Official Awards | UNVERIFIED: the official award page wasn't read
+screenplay | Jury Prize For Best Screenplay | P:official | writer | feature | ss74-rules Awards: Official Awards | UNVERIFIED: the official award page wasn't read
+cinematography | Jury Prize For Best Cinematography | P:official | craft:dop | feature | ss74-rules Awards: Official Awards | UNVERIFIED: the official award page wasn't read
+# Other Sections And Their Awards (names as the menus give them)
+new-directors | New Directors | S | project | feature:debut | ss74-rules Sections |
+new-directors-award | Kutxabank-New Directors Award | P:new-directors | director | feature | ss74-rules Awards |
+horizontes | Horizontes Latinos | S | project | feature:latin-america | ss74-rules Sections |
+horizontes-award | Make & Mark Horizontes Award | P:horizontes | producer+director | feature | ss74-rules Awards |
+zabaltegi | Zabaltegi-Tabakalera | S | project | feature+short+documentary-feature | ss74-rules Sections |
+zabaltegi-award | Zabaltegi-Tabakalera Award | P:zabaltegi | director | feature+short+documentary-feature | ss74-rules Awards |
+perlak | Perlak | S | project | feature | ss74-rules Sections | Films already shown at other festivals
+culinary | Culinary Zinema | S | project | feature+documentary-feature:food | ss74-rules Sections | UNVERIFIED: the game reads its theme from a nonfiction project's subject
+culinary-award | Culinary Zinema Award | P:culinary | director | feature+documentary-feature | ss74-rules Awards |
+velodrome | Velodrome | S | project | feature | ss74-rules Sections | Not competitive: a large public screening
+music-award | SGAE Best Original Music Award | P:official+new-directors+horizontes+zabaltegi | craft:composer | feature | ss74-rules Awards | UNVERIFIED: which sections it covers wasn't read
+basque-award | Irizar Basque Film Award | P:official+new-directors+zabaltegi+perlak | producer | feature:basque | ss74-rules Awards | UNVERIFIED: the game doesn't record Basque production or language yet
+audience-award | City Of Donostia / San Sebastian Audience Award | U:perlak | project | feature | ss74-rules Awards | UNVERIFIED: which section it covers wasn't read
+youth-award | Dama Youth Award | U:new-directors | project | feature | ss74-rules Awards | UNVERIFIED: voted by young people; which section it covers wasn't read
+- Nest And Nest Awards | Film school work; the player is a working filmmaker | ss74-rules Sections; Awards
+- Industry Awards (WIP Latam, WIP Europa, Co-Production Forum, Ikusmira Berriak, Startup Challenge) | Awards for projects in development and industry programs, not finished films | ss74-rules Awards
+- Other Awards (RTVE-Otra Mirada, Spanish Cooperation, Euskadi 2030 Agenda, Eusko Label, Loterías) | UNVERIFIED: partner awards whose criteria weren't read | ss74-rules Awards: Other Awards
+# Honorary Awards
+donostia | Donostia Award | H | career-film | feature | ss74-rules Awards: Honorary Awards; https://www.sansebastianfestival.com/donostia_awards/2/in |
+- Zinemira Award | UNVERIFIED: honors Basque film figures; criteria not read | ss74-rules Awards: Honorary Awards

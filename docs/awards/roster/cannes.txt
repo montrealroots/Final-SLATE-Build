@@ -1,0 +1,31 @@
+@institution cannes
+@edition 79th Festival de Cannes (2026); the 80th (2027) carried forward as a projection until its regulations are published
+@source fdc26-features | Regulations 2026: Feature Films in Official Selection | https://cdn.festival-cannes.com/media/uploads/2025/11/reglement_longs-metrages_2026_en.pdf | retrieved 2026-11-09
+@source fdc26-shorts | 2026 Regulations: Short Films in Competition | https://cdn.festival-cannes.com/media/uploads/2025/11/reglement_courts-metrages_2026-en.pdf | retrieved 2026-11-09
+@source fdc26-winners | The 79th Festival de Cannes winners' list | https://www.festival-cannes.com/en/press/press-releases/the-79th-festival-de-cannes-winners-list/ | retrieved 2026-11-09
+# Official Selection (Article 3): In Competition, Un Certain Regard, Cannes Première, Special Screenings, opening and
+# closing films. Films made in the previous twelve months, not shown outside their home country, not at another
+# international festival, not online (Article 4). In Competition films must be released in French cinemas.
+# In Competition
+competition | In Competition | S | project | feature | fdc26-features Articles 3-4 | The game's existing entry; selection is not a prize
+palme | Palme d'Or | P:competition | producer+director | feature | fdc26-features Article 8 | One film; no tie
+grand-prix | Grand Prix | P:competition | producer+director | feature | fdc26-features Article 8 |
+director | Award For Best Director | P:competition | director | feature | fdc26-features Article 8 | One tie allowed (2026 had a joint award)
+jury-prize | Jury Prize | P:competition | producer+director | feature | fdc26-features Article 8 |
+screenplay | Award For Best Screenplay | P:competition | writer | feature | fdc26-features Article 8 |
+actress | Award For Best Actress | P:competition | performer:Actress | feature | fdc26-features Article 8 |
+actor | Award For Best Actor | P:competition | performer:Actor | feature | fdc26-features Article 8 | A film receives only one award; screenplay or jury prize may be paired with an acting award by dispensation
+# Un Certain Regard
+un-certain-regard | Un Certain Regard | S | project | feature | fdc26-features Article 3 |
+ucr-prize | Un Certain Regard Prize | P:un-certain-regard | producer+director | feature | fdc26-winners |
+ucr-jury | Un Certain Regard Jury Prize | P:un-certain-regard | producer+director | feature | fdc26-winners |
+ucr-special | Un Certain Regard Special Jury Prize | P:un-certain-regard | producer+director | feature | fdc26-winners | UNVERIFIED: the section's prizes aren't in the regulations; these are the 2026 awards, and its performance prizes vary by year
+# Other Official Selection Sections (not competitive)
+cannes-premiere | Cannes Première | S | project | feature | fdc26-features Article 3 | Not competitive: a screening, never an award
+special | Special Screenings | S | project | feature+documentary-feature | fdc26-features Article 3 | The game's existing entry; not competitive
+# First Film
+camera-dor | Caméra d'Or | P:competition+un-certain-regard+cannes-premiere+special | director | feature:debut | fdc26-winners | UNVERIFIED: its own rules weren't read; the game counts debut features in the Official Selection sections it has
+# Short Films
+shorts | Short Film Competition | S | project | short | fdc26-shorts | The game's existing entry
+short-palme | Short Film Palme d'Or | P:shorts | director | short | fdc26-shorts; fdc26-winners |
+- La Cinef (film school films) And Its Prizes | Film school work; the player is a working filmmaker | fdc26-features Article 14; fdc26-winners

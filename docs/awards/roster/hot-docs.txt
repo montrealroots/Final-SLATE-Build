@@ -1,0 +1,8 @@
+@institution hot-docs
+@edition Hot Docs 2027 (April 23 to May 2, 2027; regular submission deadline December 10)
+@source hd27-submit | Submit to Hot Docs (festival dates and deadline) | https://hotdocs.ca/industry/submit | retrieved 2026-11-09
+# The submission page gives dates and the deadline; the festival's awards and section rules weren't found from this
+# environment, so the existing categories stay and are marked UNVERIFIED.
+festival | Hot Docs Festival Program | S | project | documentary-feature+documentary-short | hd27-submit | Selection for the festival program; not a prize
+audience | Audience Award | U:festival | project | documentary-feature+documentary-short | earlier game catalog | UNVERIFIED: the game's existing entry; the award's rules weren't read
+- Hot Docs Forum And Deal Maker | Pitching programs for projects in development, not finished films | hd27-submit

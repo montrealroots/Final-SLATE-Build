@@ -1,0 +1,27 @@
+@institution tiff
+@edition TIFF 2026 (51st Toronto International Film Festival, September 2026); 2027 carried forward as a projection
+@source tiff26-awards | Awards (2026 award list with winners and juries) | https://tiff.net/awards | retrieved 2026-11-09
+@source tiff26-platform | New this year: TIFF expands 2026 Platform lineup and jury as Platform Award offers winning film direct path to International Feature Film Oscar consideration | https://tiff.net/press/news/new-this-year-tiff-expands-2026-platform-lineup-and-jury-as-platform-award-offers-winning-film-direct-path-to-international-feature-film-oscar-consideration | retrieved 2026-11-09 (via search result summary and title; the page itself returned HTTP 202 with no body to a plain request)
+# The awards page renders in a browser; plain requests to tiff.net return HTTP 202 with no content.
+# Official Selection And Audience Awards (every feature and series in the Official Selection is eligible)
+official | Official Selection | S | project | feature+documentary-feature+series+limited-series | tiff26-awards | Selection is not a prize
+peoples-choice | People's Choice Award | U:official | project | feature+documentary-feature | tiff26-awards | The game's existing entry
+peoples-choice-documentary | People's Choice Documentary Award | U:official | project | documentary-feature | tiff26-awards |
+peoples-choice-midnight | People's Choice Midnight Madness Award | U:midnight-madness | project | feature | tiff26-awards |
+international-peoples-choice | International People's Choice Award | U:official | project | feature:non-english | tiff26-awards | UNVERIFIED: introduced in 2025; its scope wasn't read beyond the name
+midnight-madness | Midnight Madness | S | project | feature | tiff26-awards (named by its audience award) | UNVERIFIED: section rules not read
+# Platform (a competitive programme of 12 films in 2026)
+platform | Platform | S | project | feature | tiff26-platform |
+platform-award | Platform Award | P:platform | director | feature | tiff26-awards; tiff26-platform | $20,000 CAD from an international jury; from 2026 a non-English-language winner qualifies for the Oscar International Feature Film route
+# Canadian Awards
+canadian-feature | Best Canadian Feature Film Award | P:official | director | feature:ca | tiff26-awards |
+canadian-discovery | Best Canadian Discovery Award | P:official | director | feature:ca:debut | tiff26-awards |
+# Short Cuts
+shorts | Short Cuts | S | project | short+documentary-short | tiff26-awards | The game's existing entry
+short-cuts-international | Short Cuts Award For Best International Short Film | P:shorts | director | short+documentary-short:non-ca | tiff26-awards |
+short-cuts-canadian | Short Cuts Award For Best Canadian Short Film | P:shorts | director | short:ca+documentary-short:ca | tiff26-awards |
+short-cuts-animated | Short Cuts Award For Best Animated Short Film | P:shorts | director | short:animated | tiff26-awards |
+# Independent Juries
+fipresci | FIPRESCI Prize | X:official | director | feature | tiff26-awards | Critics' jury
+netpac | NETPAC Award | X:official | director | feature:asia-pacific | tiff26-awards | UNVERIFIED: the Asian and Pacific film scope comes from the jury's name; criteria not read
+- Amplify Voices Awards Presented By Canada Goose | UNVERIFIED: sponsor awards whose criteria weren't read | tiff26-awards

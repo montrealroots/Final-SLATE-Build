@@ -1,0 +1,24 @@
+@institution series-mania
+@edition Series Mania 2026 awards; Series Mania 2027 (submissions until December 15, 2026)
+@source sm27-call | Call for Series - Festival 2027 (sections and deadline) | https://seriesmania.com/en/festival/call-for-series-festival-2027/ | retrieved 2026-11-09
+@source sm26-awards | 2026 Awards (winners by section) | https://seriesmania.com/en/festival/edition/2026/ | retrieved 2026-11-09
+# Sections (sm27-call): International Competition, French Competition, International Panorama, Short Forms Competition,
+# Special Screenings. Prize names as given for 2026 (sm26-awards); which prizes each section gives can vary by year.
+international | International Competition | S | project | series+limited-series+anthology-series+docseries | sm27-call | The game's existing entry; selection is not a prize
+grand-prix | Grand Prix (International Competition) | P:international | producer | series+limited-series | sm26-awards |
+intl-writing | Best Writing (International Competition) | P:international | writer | series+limited-series | sm26-awards |
+intl-actress | Best Actress (International Competition) | P:international | performer:Actress | series+limited-series | sm26-awards |
+intl-actor | Best Actor (International Competition) | P:international | performer:Actor | series+limited-series | sm26-awards |
+french | French Competition | S | project | series:fr+limited-series:fr | sm27-call |
+french-series | Best Series (French Competition) | P:french | producer | series+limited-series | sm26-awards |
+french-actress | Best Actress (French Competition) | P:french | performer:Actress | series+limited-series | sm26-awards |
+french-actor | Best Actor (French Competition) | P:french | performer:Actor | series+limited-series | sm26-awards |
+french-score | Best Musical Score (French Competition) | P:french | craft:composer | series+limited-series | sm26-awards |
+panorama | International Panorama | S | project | series+limited-series+anthology-series | sm27-call |
+panorama-series | Best Series (International Panorama) | P:panorama | producer | series+limited-series | sm26-awards |
+panorama-directing | Best Directing (International Panorama) | P:panorama | director | series+limited-series | sm26-awards |
+short-forms | Short Forms Competition | S | project | shortform | sm27-call |
+short-forms-best | Best Series (Short Forms Competition) | P:short-forms | producer | shortform | sm26-awards | UNVERIFIED: the section's prize name wasn't separated on the page read
+special-screenings | Special Screenings | S | project | series+limited-series | sm27-call | Not competitive: a screening, never an award
+audience | Audience Award | U:international+french+panorama | project | series+limited-series | sm26-awards |
+- High School Students Of The Hauts-De-France Region Award And Students Award | UNVERIFIED: student juries whose section scope wasn't read | sm26-awards

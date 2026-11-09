@@ -1,0 +1,18 @@
+@institution idfa
+@edition IDFA 2026 (awards ceremony November 19, 2026)
+@source idfa26-selection | Main competition selections now revealed (International Competition, Envision Competition, cross-section awards) | https://festival.idfa.nl/en/news/main-competition-selections-now-revealed/ | retrieved 2026-11-09
+# Section names and cross-section awards as the announcement gives them; the competitions' own prize lists and the
+# festival regulations weren't found from this environment (UNVERIFIED for prizes inside each competition).
+# Competitions
+features | International Competition | S | project | documentary-feature+docseries | idfa26-selection | The game's existing entry was named Feature Documentary Competition; selection is not a prize
+international-award | IDFA Award For Best Film (International Competition) | P:features | director | documentary-feature | UNVERIFIED | UNVERIFIED: the competition's prize names weren't read
+envision | Envision Competition | S | project | documentary-feature | idfa26-selection |
+envision-award | IDFA Award For Best Film (Envision Competition) | P:envision | director | documentary-feature | UNVERIFIED | UNVERIFIED: the competition's prize names weren't read
+shorts | Short Documentary Competition | S | project | documentary-short | earlier game catalog | UNVERIFIED: not named in the 2026 announcement read
+# Cross-Section Awards
+first-feature | IDFA Award For Best First Feature | P:features+envision+luminous+frontlight | director | documentary-feature:debut | idfa26-selection | Drawn from several program sections
+fipresci | FIPRESCI Award | X:first-feature | director | documentary-feature:debut | idfa26-selection | Chosen by critics among the films nominated for Best First Feature
+dutch-film | IDFA Award For Best Dutch Film | P:features+envision+luminous+frontlight | director | documentary-feature:nl | idfa26-selection | €5,000 to the winning filmmaker
+reframe | Beeld & Geluid IDFA ReFrame Award For Best Creative Use Of Archive | X:features+envision+luminous+frontlight | director | documentary-feature:archival | idfa26-selection | Selected from across the program; the game reads archival use from archival scenes
+luminous | Luminous | S | project | documentary-feature | idfa26-selection | UNVERIFIED: a program section named among those eligible for cross-section awards
+frontlight | Frontlight | S | project | documentary-feature | idfa26-selection | UNVERIFIED: a program section named among those eligible for cross-section awards

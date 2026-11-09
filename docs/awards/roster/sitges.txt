@@ -1,0 +1,39 @@
+@institution sitges
+@edition Sitges 2026 (59th Sitges Film Festival, October 2026); 2027 carried forward as a projection
+@source sitges-awards | Awards (festival page listing every award by section) | https://sitgesfilmfestival.com/en/festival/awards | retrieved 2026-11-09
+# Genre rule kept from the game's existing entry (fantastic, horror and science fiction genres).
+# Official Fantastic Competition Selection (SOFC)
+fantastic | Official Fantastic In-Competition Selection | S | project | feature+short | sitges-awards | The game's existing entry; selection is not a prize
+best-film | SOFC Best Feature Film Award | P:fantastic | producer+director | feature | sitges-awards |
+director | Best Director Award | P:fantastic | director | feature | sitges-awards |
+special-jury | Special Jury Prize | P:fantastic | producer+director | feature | sitges-awards |
+female-performance | Best Female Performance Award | P:fantastic | performer:Actress | feature | sitges-awards |
+male-performance | Best Male Performance Award | P:fantastic | performer:Actor | feature | sitges-awards |
+screenplay | Best Screenplay Award | P:fantastic | writer | feature | sitges-awards |
+photography | Best Photography Award | P:fantastic | craft:dop | feature | sitges-awards |
+effects | Best Special Effects Award | P:fantastic | craft:vfx-artist+compositor+prosthetics | feature | sitges-awards |
+music | Best Music Award | P:fantastic | craft:composer | feature | sitges-awards |
+first-feature | Citizen Kane Award For Best First Feature | P:fantastic | director | feature:debut | sitges-awards |
+short | SOFC Best Short Film Award | P:fantastic | director | short | sitges-awards | On the Academy Awards shortlist route
+critics | José Luis Guarner Award For Best Film | X:fantastic | director | feature | sitges-awards | Awarded by the Catalan Association of Cinematographic Critics and Writers
+melies-feature | Méliès d'Argent: Award For Best European Production Feature Film | X:fantastic | producer | feature:europe | sitges-awards |
+melies-short | Méliès d'Argent: Award For Best European Production Short Film | X:fantastic | director | short:europe | sitges-awards |
+# Other Sections
+noves-visions | Noves Visions | S | project | feature+short | sitges-awards |
+noves-visions-film | Noves Visions Best Film Award | P:noves-visions | director | feature | sitges-awards | UNVERIFIED: the page lists Best Direction, Best Original Screenplay and Best Original Music awards without naming every section; assigned to Noves Visions here
+noves-visions-short | Best Short Noves Visions Petit Format Award | P:noves-visions | director | short | sitges-awards |
+animat | Anima't | S | project | feature:animated+short:animated | sitges-awards |
+animat-feature | Award For Best Animated Feature Film | P:animat | producer+director | feature:animated | sitges-awards |
+animat-short | Award For Best Animated Short Film | P:animat | director | short:animated | sitges-awards | On the Academy Awards shortlist route
+panorama | Panorama | S | project | feature | sitges-awards |
+panorama-best | Best Panorama Movie | P:panorama | director | feature | sitges-awards |
+midnight | Midnight X-Treme | S | project | feature | sitges-awards |
+midnight-best | Best Midnight X-Treme Movie | P:midnight | director | feature | sitges-awards |
+documenta | Sitges Documenta | S | project | documentary-feature | sitges-awards |
+documenta-best | Sitges Documenta Best Film Award | P:documenta | director | documentary-feature | sitges-awards |
+- Sitges Collection, Brigadoon, Best Thriller, Ibero-American Production, Carnet Jove, SGAE Nova Autoria And Audience Awards | UNVERIFIED: listed on the awards page without the section rules that would place a film in them | sitges-awards
+# Honorary
+grand-honorary | Grand Honorary Prize | H | career-film | feature | sitges-awards |
+maria | Honorary Maria Award | H | career-film | feature | sitges-awards |
+time-machine | Time Machine Award | H | career-film | feature | sitges-awards |
+- Nosferatu Award | UNVERIFIED: "Retrospective honorary distinction, awarded to national and European cinematographic personalities" and "a career in a technical field" are listed without saying which award each is | sitges-awards
