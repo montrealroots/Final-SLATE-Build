@@ -331,3 +331,15 @@ describe('a festival screening is not a release outside cinemas', () => {
     expect(checkEligibility(s, make('streaming'), e, film).reasons.join(' ')).toMatch(/released on March 1, 2026 outside cinemas, before any theatrical run/);
   });
 });
+
+describe('categories for work from abroad are not held to the event\'s own countries', () => {
+  it('a US film can be entered for the César for Best Foreign Film; it still can\'t enter Best Film', () => {
+    const s: GameState = startLife('foreign', 'us-los-angeles');
+    const p = buildProject(s, { title: 'Desert Road', format: 'feature', medium: 'live-action', runtime: 100 }, [{ name: 'A', patch: { roleSize: 'lead' } }], [{ place: 'R', chars: ['A'], minutes: 3 }]);
+    approve(s, p);
+    const e = s.editions.find((x) => x.institutionId === 'cesar' && x.year === 2027)!;
+    const why = (id: string) => checkEligibility(s, p, e, institution('cesar').categories.find((c) => c.id === id)!).reasons.join(' ');
+    expect(why('foreign')).not.toMatch(/production base country isn't eligible/);
+    expect(why('film')).toMatch(/production base country isn't eligible/);
+  });
+});

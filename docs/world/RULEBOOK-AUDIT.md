@@ -446,6 +446,21 @@ not separated in SLATE). Applied to the 23 feature categories. Best European Fil
 short film awards follow their own specific Bases (section 2), not read. Not modeled: seven consecutive days in one cinema
 (three for documentaries); the ICAA rating before release.
 
+**Version 2 (`goya-2027@2`, read November 9, 2026):** the specific Bases are in the same document. Best European Film and
+Best Ibero-American Film (3.1-3.5): released in the country of origin from November 1, 2025 to December 31, 2026 (SLATE: a
+theatrical release there), at least 60 minutes, not online before that release except at festivals, never in an earlier
+edition, materials by 14:00 on September 10. Not modeled: selection by the country's academy or a national jury, one film
+per country. The three short film awards: Spanish shorts of at most 59 minutes, a nationality certificate dated October 1,
+2024 to September 30, 2026 (SLATE: the completion date), never in an earlier edition, materials by 14:00 on September 4,
+and a festival route: a qualifying prize or selections at Annex V festivals (fiction 7, documentary 3, animation 1, or one
+at a festival in bold). SLATE takes a selection at any of the 11 Annex V festivals in its catalog; the bold type doesn't
+survive in the text read, so which festivals count alone is SLATE's reading.
+
+Two bugs the reading found: the Goyas' European and Ibero-American categories (and the Césars' and the Japan Academy's
+foreign films) took nothing at all, because the event's own countries were applied to categories for work from
+elsewhere; and a festival premiere counted as a release outside cinemas, ruling films out of every rule that asks for
+the theatrical run first.
+
 ## César, 2027 ceremony
 
 Source: [Règlement 2026-2027](https://www.academie-cinema.org/wp-content/uploads/2026/10/reglement-aatc-2026-2027.pdf),

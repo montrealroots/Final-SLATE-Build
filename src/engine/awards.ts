@@ -377,6 +377,8 @@ function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: Cate
   if (via && DEEMED_ELIGIBLE.includes(via.status)) return { ok: true, provisional: false, via: 'category' };
   if (p.releases.some((r) => r.status === 'planned' && fits(r))) return { ok: true, provisional: true, via: 'release' };
   if (via?.status === 'submitted') return { ok: true, provisional: true, via: 'category', note: `Entered provisionally. It qualifies through its ${viaName} entry, which must be accepted.` };
+  // A festival-only route (the Goyas' shorts): no release qualifies, only a selection.
+  if (!routes.length && festivalSelection) return { ok: false, provisional: false, reason: `It needs a selection at ${festivalSelection.map((i) => institution(i).short).join(', ')} between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}.` };
   const how = routes.length === 1 ? `a ${routes[0]} release` : 'a release';
   const place = outside ? `outside ${outside.map(countryWords).join(' and ')}` : `in ${countries.map((c) => (c === 'origin' ? countryWords(home) : countryWords(c))).join(' or ')}`;
   const orFest = list ? `, or a win of an award on the ${institution(ed.institutionId).short} qualifying-festival list between ${formatDateKey(list.window.from)} and ${formatDateKey(list.window.to)}` : festivalAwards ? ', or a top award at one of its qualifying festivals in that time' : '';
@@ -506,7 +508,11 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   // reference check against the genre list did this until November 9, 2026, and never matched the JSON catalog.
   if (cat.genres && !p.axes.genres.some((g) => cat.genres!.includes(g.id))) reasons.push(`This category needs one of its genres, such as ${genre(cat.genres[0]).name}.`);
   if (cat.excludeGenres && p.axes.genres.some((g) => cat.excludeGenres!.includes(g.id))) reasons.push('Its genres compete in a separate category.');
-  if (inst.origin && !inst.origin.includes(origin)) reasons.push('Your production base country isn\'t eligible for this event.');
+  // A category for work from elsewhere (a "non-" requirement: the Goyas' European and Ibero-American films, the Césars' and
+  // the Japan Academy's foreign films) isn't held to the event's own countries. Until November 9, 2026 it was, so those
+  // four categories took nothing at all.
+  const foreignCategory = cat.need?.some((n) => n.startsWith('non-') || n.includes('-non-'));
+  if (inst.origin && !foreignCategory && !inst.origin.includes(origin)) reasons.push('Your production base country isn\'t eligible for this event.');
   if (rules?.origin?.value.only && !rules.origin.value.only.includes(origin)) reasons.push(`This section is for work made in ${rules.origin.value.only.map(countryWords).join(' or ')}.`);
   if (rules?.origin?.value.not?.includes(origin)) reasons.push(`Work made mainly in ${countryWords(origin)} enters the festival's national competition instead.`);
   if (inst.id === 'international-emmys' && origin === 'US') reasons.push('This event is for productions made outside the United States.');
@@ -555,12 +561,13 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     provisionalNote = rel.note;
     const tf = rules?.theatricalFirst?.value;
     if (tf && !(tf.unlessFestival && rel.via === 'festival')) {
-      const inC = (r: Project['releases'][number]) => r.status !== 'cancelled' && r.territories.some((t) => tf.countries.includes('*') || tf.countries.includes(t));
+      const home = getPlace(p.axes.basePlaceId).country; // 'origin': the production country (the Goyas' European and Ibero-American awards)
+      const inC = (r: Project['releases'][number]) => r.status !== 'cancelled' && r.territories.some((t) => tf.countries.includes('*') || tf.countries.includes(t) || (tf.countries.includes('origin') && t === home));
       const theatrical = p.releases.filter((r) => inC(r) && r.route === 'theatrical').map((r) => r.date).sort()[0];
       // A festival screening isn't a release outside cinemas; until November 9, 2026 it counted as one, and ruled out of the
       // Goyas, the Oscars' documentary and the guild awards a film that premiered at a festival before its theatrical run.
       const other = p.releases.filter((r) => inC(r) && r.route !== 'theatrical' && r.route !== 'festival-premiere').map((r) => r.date).sort()[0];
-      const there = tf.countries.includes('*') ? '' : ` in ${tf.countries.map(countryWords).join(' or ')}`;
+      const there = tf.countries.includes('*') ? '' : ` in ${tf.countries.map((c) => countryWords(c === 'origin' ? home : c)).join(' or ')}`;
       if (other && (!theatrical || other < theatrical)) reasons.push(`It was released on ${formatDateKey(other)} outside cinemas${there}, before any theatrical run${there ? ' there' : ''}, which rules it out.`);
     }
     const tv = rules?.tvFirst?.value;
