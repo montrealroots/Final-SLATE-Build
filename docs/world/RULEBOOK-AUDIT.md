@@ -3,6 +3,9 @@
 Checked November 6, 2026 (two passes the same day). The catalog was recounted from the engine before the second pass
 (`tests/rulebooks.test.ts` asserts it): **37 institutions and 142 categories**. The count was 141 until the 78th Emmys
 renamed Outstanding Television Movie to Outstanding Movie; both are kept, by year, so older saves keep their entries.
+On November 9, 2026 the rosters (`docs/awards/roster/`, `docs/awards/INVENTORY.md`) took the catalog to **802
+categories**, and the rules already read were applied to the categories they cover that the catalog had lacked; the
+coverage table below was recounted then.
 
 This audit records rules read in each organizer's own document for a named edition. A rule is listed only if it was
 read; dates or category names being right does not make an institution's rules verified. Rules not listed here are
@@ -16,10 +19,10 @@ A category counts once, at the best status any of its editions has.
 
 | | Institutions | Categories |
 | --- | --- | --- |
-| In the catalog | 37 | 142 |
-| Organizer rules read for an edition (verified) | 9 (Academy Awards, Sundance, Clermont-Ferrand, Annie Awards, Annecy, Venice, Golden Globes, Primetime Emmys, San Sebastián) | 48 (12 + 4 + 1 + 6 + 2 + 2 + 7 + 13 + 1) |
+| In the catalog | 37 | 802 (142 until November 9, 2026) |
+| Organizer rules read for an edition (verified) | 9 (Academy Awards, Sundance, Clermont-Ferrand, Annie Awards, Annecy, Venice, Golden Globes, Primetime Emmys, San Sebastián) | 66 (24 + 6 + 1 + 9 + 2 + 3 + 7 + 13 + 1); 48 before: the Academy's Rule Two and general deadline were applied to its 12 craft and adapted-screenplay categories, Sundance's to its 2 World Cinema competitions, Venice's shorts rules to Orizzonti Corti, and the Annies' call to the 4 TV categories that replaced Best TV Or Media Production (which kept its 2026 rules) |
 | Only rules carried forward or from an undated page (projected) | 2 (Cannes short films, Berlinale Competition) | 2 |
-| Rules still simulated | 26 fully, plus the remaining categories of Cannes, Annecy, Berlinale and the Emmys | 92 |
+| Rules still simulated | 26 fully, plus the remaining categories of the 11 above | 734 (92 before) |
 
 Editions per institution with rules: Annecy 2026 (verified) and 2027 (projected from 2026); Venice 2026 (verified) and
 2027 (projected); Emmys 2026 (verified) and 2027 (projected); Golden Globes 2027, Academy Awards 2027, Sundance 2027,
