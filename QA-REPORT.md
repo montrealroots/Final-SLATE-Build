@@ -8,7 +8,22 @@
 
 ## Commands And Results
 
-### Current: Qualifying Routes And Rule Research (November 9, 2026, after #47 and #48)
+### Current: Rule Research, Continued (November 9, 2026, after #49)
+
+Tested revision: the working branch at the commit that updates this report.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 67 files, 496 tests passed (a rulebook test for each organizer read: Giornate degli Autori, IDFA, Hot Docs, the Canadian Screen Awards, the Goyas, the Césars); startup JavaScript 669 kB, 214 kB gzipped, 0 problems. |
+| `python3 tools/awards/build.py --check` | 0 | Catalog current (Hot Docs' 2027 dates added). |
+| `npx playwright test e2e/awards.spec.ts e2e/live-action.spec.ts` (desktop, `iphone-15-plus`) | 0 | 16 passed in 3.2 minutes. |
+
+Counts (from `docs/awards/STATUS.md`): organizer's eligibility rules for an edition 394 of 802, projected only 11, SLATE's
+397. New rules SLATE checks: `unreleased` (no release of any kind before a festival). Reason text names countries with a
+lowercase "the" in mid-sentence. The 149-genre consumer test now has a 30-second timeout: it takes about 4.7 seconds alone
+and timed out at the 5-second default in one full run; its assertions are unchanged.
+
+### Previous: Qualifying Routes And Rule Research (November 9, 2026, after #47 and #48)
 
 Tested revision `db911e8` (the working branch with `main` at `507096c` merged in).
 
