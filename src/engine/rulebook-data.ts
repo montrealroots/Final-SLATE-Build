@@ -920,8 +920,27 @@ const WGA_2027: RuleBook = {
   },
 };
 
+// ---------------- Gotham Awards, 2026 ----------------
+
+/**
+ * Read November 9, 2026: Criteria for the 2026 Gotham Awards. Applied to every entered category. Not modeled: the six
+ * qualifying US metro areas (SLATE: a US theatrical release); "U.S. citizens or permanently U.S.-based" key roles (the
+ * catalog's US or non-US requirement reads the production base).
+ */
+const GOTHAM26: RuleSource = { id: 'gotham26-criteria', publisher: 'The Gotham Film & Media Institute', title: 'Criteria for the 2026 Gotham Awards', url: 'https://awards.thegotham.org/criteria/', edition: '2026 Gotham Awards', retrieved: '2026-11-09' };
+const GOTHAM_FILM: CategoryRules = {
+  runtime: v({ over: 70 }, 'gotham26-criteria', 'Feature-length: over 70 minutes.'),
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'gotham26-criteria', 'Theatrical release January 1 to December 31, 2026.'),
+  release: v({ routes: ['theatrical'], countries: ['US'] }, 'gotham26-criteria', 'A paid run of at least seven consecutive days in one of six qualifying US metro areas; SLATE treats a US theatrical release as that.'),
+  deadlines: v([{ date: '2026-09-17', time: '23:59', zone: 'America/New_York', timeAssumed: true }], 'gotham26-criteria', 'Submissions closed September 17, 2026. The time of day is not given; SLATE uses the end of the day in New York.'),
+};
+const GOTHAM_2026: RuleBook = {
+  id: 'gotham-2026@1', institutionId: 'gotham', year: 2026, version: 1, checked: '2026-11-09', sources: [GOTHAM26],
+  categories: Object.fromEntries(['feature', 'documentary', 'international', 'director', 'breakthrough-director', 'original-screenplay', 'adapted-screenplay', 'lead', 'supporting', 'breakthrough-performer'].map((id) => [id, GOTHAM_FILM])),
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026,
 ];

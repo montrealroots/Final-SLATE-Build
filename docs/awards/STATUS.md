@@ -37,7 +37,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | International Emmy Awards (`international-emmys`) | 14 | 14 / 0 / 0 | 0 / 0 / 14 | 0 | 14 | 0 | 3 | 0 | 6 |
 | Annie Awards (`annie`) | 32 | 30 / 2 / 0 | 29 / 0 / 3 | 0 | 32 | 29 | 11 | 0 | 6 |
 | Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 20 / 0 / 1 | 0 | 21 | 20 | 7 | 0 | 4 |
-| Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 0 / 0 / 12 | 0 | 12 | 0 | 1 | 0 | 1 |
+| Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 10 / 0 / 2 | 0 | 12 | 10 | 6 | 0 | 1 |
 | Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 1 / 0 / 9 | 0 | 10 | 1 | 4 | 0 | 3 |
 | Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 16 / 0 / 2 | 0 | 0 | 16 | 5 | 0 | 11 |
 | Producers Guild Awards (`pga`) | 15 | 14 / 1 / 0 | 0 / 0 / 15 | 0 | 15 | 0 | 0 | 0 | 4 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 0 | 0 | 0 |
-| **All 37** | 802 | 705 / 69 / 28 | 444 / 11 / 347 | 28 | 335 | 416 | 174 | 32 | 125 |
+| **All 37** | 802 | 705 / 69 / 28 | 454 / 11 / 337 | 28 | 335 | 426 | 179 | 32 | 125 |
 
 ## Research queue
 
@@ -68,13 +68,12 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 10. `international-emmys` (12): `arts`, `actress`, `actor`, `comedy`, `documentary`, `drama`, `kids-animation`, `kids-factual`, `kids-live-action`, `non-scripted`, `short-form`, `tv-movie`
 11. `annie` (1): `tv`
 12. `spirit` (1): `redford`
-13. `gotham` (10): `feature`, `documentary`, `international`, `director`, `breakthrough-director`, `original-screenplay`, `adapted-screenplay`, `lead`, `supporting`, `breakthrough-performer`
-14. `dga` (9): `first-feature`, `documentary`, `drama`, `comedy`, `limited`, `movie`, `documentary-series`, `variety`, `reality`
-15. `wga` (2): `documentary-screenplay`, `selvin`
-16. `pga` (12): `theatrical`, `animated`, `documentary`, `drama`, `comedy`, `limited`, `tv-movie`, `nonfiction`, `live-variety`, `game-competition`, `childrens`, `short-form`
-17. `goya` (5): `european`, `iberoamerican`, `short-fiction`, `short-documentary`, `short-animation`
-18. `aacta` (36): `film`, `indie-film`, `direction`, `lead-actor`, `lead-actress`, `supporting-actor`, `supporting-actress`, `original-screenplay`, `adapted-screenplay`, `cinematography`, `editing`, `sound`, `score`, `production-design`, `costume`, `hair-makeup`, `casting`, `song`, `soundtrack`, `childrens`, `competition-reality`, `documentary-factual`, `drama`, `entertainment`, `factual-entertainment`, `miniseries`, `comedy`, `casting-tv`, `documentary`, `documentary-cinematography`, `documentary-editing`, `documentary-sound`, `documentary-score`, `short`, `online-series`, `vfx-animation`
-19. `amaa` (4): `film`, `director`, `documentary`, `short`
-20. `japan-academy` (17): `picture`, `animation`, `actor`, `actress`, `supporting-actor`, `supporting-actress`, `director`, `screenplay`, `music`, `cinematography`, `lighting`, `art-direction`, `sound`, `editing`, `foreign`, `vfx`, `newcomer`
-21. `blue-dragon` (3): `film`, `director`, `screenplay`
-22. `european-film-awards` (16): `film`, `director`, `animated`, `documentary`, `short`, `coproduction`, `actor`, `screenwriter`, `casting`, `cinematographer`, `composer`, `costume`, `editor`, `makeup`, `production-designer`, `sound`
+13. `dga` (9): `first-feature`, `documentary`, `drama`, `comedy`, `limited`, `movie`, `documentary-series`, `variety`, `reality`
+14. `wga` (2): `documentary-screenplay`, `selvin`
+15. `pga` (12): `theatrical`, `animated`, `documentary`, `drama`, `comedy`, `limited`, `tv-movie`, `nonfiction`, `live-variety`, `game-competition`, `childrens`, `short-form`
+16. `goya` (5): `european`, `iberoamerican`, `short-fiction`, `short-documentary`, `short-animation`
+17. `aacta` (36): `film`, `indie-film`, `direction`, `lead-actor`, `lead-actress`, `supporting-actor`, `supporting-actress`, `original-screenplay`, `adapted-screenplay`, `cinematography`, `editing`, `sound`, `score`, `production-design`, `costume`, `hair-makeup`, `casting`, `song`, `soundtrack`, `childrens`, `competition-reality`, `documentary-factual`, `drama`, `entertainment`, `factual-entertainment`, `miniseries`, `comedy`, `casting-tv`, `documentary`, `documentary-cinematography`, `documentary-editing`, `documentary-sound`, `documentary-score`, `short`, `online-series`, `vfx-animation`
+18. `amaa` (4): `film`, `director`, `documentary`, `short`
+19. `japan-academy` (17): `picture`, `animation`, `actor`, `actress`, `supporting-actor`, `supporting-actress`, `director`, `screenplay`, `music`, `cinematography`, `lighting`, `art-direction`, `sound`, `editing`, `foreign`, `vfx`, `newcomer`
+20. `blue-dragon` (3): `film`, `director`, `screenplay`
+21. `european-film-awards` (16): `film`, `director`, `animated`, `documentary`, `short`, `coproduction`, `actor`, `screenwriter`, `casting`, `cinematographer`, `composer`, `costume`, `editor`, `makeup`, `production-designer`, `sound`

@@ -464,6 +464,14 @@ November 1, 2025 to October 31, 2026. Every category: 5:00 p.m. PST on November 
 collective bargaining agreement; the TV movie's bar on an earlier theatrical exhibition. The Documentary Screenplay and Paul
 Selvin pages weren't read; those stay on SLATE's rules.
 
+## Gotham Awards, 2026
+
+Source: [Criteria for the 2026 Gotham Awards](https://awards.thegotham.org/criteria/) (read November 9, 2026): over 70
+minutes; a theatrical release January 1 to December 31, 2026, with a paid run of at least seven consecutive days in one of
+six qualifying US metro areas (SLATE: a US theatrical release); submissions closed September 17, 2026. Applied to the ten
+film categories; Breakthrough Series and the tributes stay on SLATE's rules. The key roles' citizenship or US base is the
+catalog's own US/non-US requirement, read from the production base.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two

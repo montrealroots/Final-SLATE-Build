@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('444 categories follow verified rules for at least one edition, 11 only projected ones; the other 347 are simulated', () => {
+  it('454 categories follow verified rules for at least one edition, 11 only projected ones; the other 337 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -440,8 +440,8 @@ describe('audit counts', () => {
     // Canadian Screen Awards' 115 entered categories (canadian-screen-2026@1), 346 until the Goyas' 23 feature categories (goya-2027@1),
     // 369 until the Césars' 25 (cesar-2027@1), 394 until the Spirit Awards' 20 (spirit-2027@1),
     // 414 until the Actor Awards' 13 (actor-awards-2027@1), 427 until the DGA's feature award (dga-2027@1),
-    // 428 until the WGA's 16 (wga-2027@1).
-    expect(n).toEqual({ verified: 444, projected: 11, simulated: 347 });
+    // 428 until the WGA's 16 (wga-2027@1), 444 until the Gothams' 10 film categories (gotham-2026@1).
+    expect(n).toEqual({ verified: 454, projected: 11, simulated: 337 });
   });
 });
 
@@ -878,6 +878,20 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, show('series', '2025-12-01'), e, 'drama-series')).toMatch(/between January 1, 2026 and December 31, 2026/);
     expect(r(s, show('unscripted-series', '2025-12-01'), e, 'talk-series')).not.toMatch(/release/);
     expect(categoryDeadline(e, cat(e, 'talk-series'))).toBe(at('America/Los_Angeles', '2026-11-20', 17));
+  });
+
+  it('Gotham Awards 2026: over 70 minutes, a US theatrical run in 2026, entered by September 17', () => {
+    const s = startLife('gotham');
+    const e = ed(s, 'gotham-2026');
+    expect(e.rulesId).toBe('gotham-2026@1');
+    s.now = at('America/New_York', '2026-08-01', 9);
+    const film = (runtime: number) => { const p = work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'us-new-york' }); release(p, 'theatrical', '2026-05-01', ['US']); return p; };
+    expect(r(s, film(90), e, 'feature')).not.toMatch(/release|minutes/);
+    expect(r(s, film(70), e, 'feature')).toMatch(/more than 70/);
+    const streamed = work(s, { format: 'feature', runtime: 90, completed: '2026-01-10', base: 'us-new-york' });
+    release(streamed, 'streaming', '2026-05-01', ['US']);
+    expect(r(s, streamed, e, 'director')).toMatch(/theatrical release in the United States/);
+    expect(categoryDeadline(e, cat(e, 'lead'))).toBe(at('America/New_York', '2026-09-17', 23, 59) + 59_000);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {
