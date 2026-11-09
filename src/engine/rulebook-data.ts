@@ -3,6 +3,7 @@
 // startup the rules took the startup JavaScript to its 220 kB gzipped budget (November 9, 2026) before most categories
 // had their organizer's rules, and the research continues category by category.
 import type { CategoryRules, RuleBook, RuleSource, Ruled, RuntimeRule } from './rulebooks';
+import type { Format } from './types';
 
 const CHECKED = '2026-11-06';
 const PT = 'America/Los_Angeles';
@@ -882,6 +883,41 @@ function idfa(year: number, mk: typeof v): Record<string, CategoryRules> {
 const IDFA_2026: RuleBook = { id: 'idfa-2026@1', institutionId: 'idfa', year: 2026, version: 1, checked: '2026-11-09', sources: [IDFA_SOURCE], categories: idfa(2026, v) };
 const IDFA_2027: RuleBook = { id: 'idfa-2027@1', institutionId: 'idfa', year: 2027, version: 1, checked: '2026-11-09', sources: [IDFA_SOURCE], categories: idfa(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) };
 
+// ---------------- Series Mania 2027 ----------------
+
+/**
+ * Read November 9, 2026: the Entry Rules and Regulations for Series Mania 2027 (Lille, March 19 to 26, 2027), linked from
+ * the call for series. First seasons of new scripted series produced in 2026 or finishing in 2027, not released before
+ * September 1, 2026, fiction only in the competitive sections; nothing shown at a French festival or on any channel or
+ * platform available in France before March 26, 2027; drama and comedy episodes of at least 20 minutes, short forms under 20;
+ * submissions October 6 to December 15, 2026 at 6:00 p.m. (UTC+1), free. By section: International Competition, a world
+ * premiere for a French production and otherwise an international one (a release after September 1 only in its own country
+ * is the stated exception); French Competition, French productions in world premiere; International Panorama and Short
+ * Forms, anything not yet in France (Short Forms also takes French productions only in world premiere: not modeled, SLATE's
+ * notShownIn covers their French showings only). Not modeled: first seasons only (SLATE has no seasons), pilots, earlier
+ * submissions, the combined runtimes of the episodes screened, the section the programmers choose (SLATE enters a section
+ * directly), and Special Screenings, which take no submissions apart from young audience series and stay on SLATE's rules.
+ */
+const SM27: RuleSource = { id: 'sm27-rules', publisher: 'Series Mania', title: 'Entry Rules and Regulations: Series Mania 2027', url: 'https://seriesmania.com/wp-content/uploads/2026/10/rules-regulations-series-mania-2027-enfr-1.pdf', edition: 'Series Mania 2027', retrieved: '2026-11-09' };
+const SM_COMMON: CategoryRules = {
+  completedFrom: v('2026-01-01', 'sm27-rules', 'New series produced in 2026 or on track for completion in 2027 (Eligibility).'),
+  notShownBefore: v({ date: '2026-09-01' }, 'sm27-rules', 'Not released before September 1, 2026 (Eligibility).'),
+  notShownIn: v({ countries: ['FR'] }, 'sm27-rules', 'Not exhibited at any French festival or released on any channel, platform or app available in France before March 26, 2027 (Eligibility 5).'),
+  deadlines: v([{ date: '2026-12-15', time: '18:00', zone: 'Europe/Paris' }], 'sm27-rules', 'Submissions close December 15, 2026 at 6:00 p.m. (UTC+1).'),
+};
+const SM_SCRIPTED = v<Format[]>(['series', 'limited-series', 'anthology-series', 'web-series'], 'sm27-rules', 'Scripted series and mini-series; works in the competitive sections must be fictional.');
+const SM_EPISODES = v({ atLeast: 20 }, 'sm27-rules', 'Drama and comedy episodes intended to be at least 20 minutes long (Required Number of Episodes).');
+const SERIES_MANIA_2027: RuleBook = {
+  id: 'series-mania-2027@1', institutionId: 'series-mania', year: 2027, version: 1, checked: '2026-11-09', sources: [SM27],
+  opens: v('2026-10-06', 'sm27-rules', 'Call for submissions opens October 6, 2026.'),
+  categories: {
+    international: { ...SM_COMMON, formats: SM_SCRIPTED, episodeRuntime: SM_EPISODES, premiere: v('world-if-domestic', 'sm27-rules', 'World or international premiere; French productions (50% or more French financing) must be world premieres. SLATE takes the production base as the country.') },
+    french: { ...SM_COMMON, formats: SM_SCRIPTED, episodeRuntime: SM_EPISODES, origin: v({ only: ['FR'] }, 'sm27-rules', 'Only French productions.'), premiere: v('world', 'sm27-rules', 'World premieres only: not broadcast, released or shown at any festival before March 26, 2027.') },
+    panorama: { ...SM_COMMON, formats: SM_SCRIPTED, episodeRuntime: SM_EPISODES },
+    'short-forms': { ...SM_COMMON, formats: SM_SCRIPTED, episodeRuntime: v({ under: 20 }, 'sm27-rules', 'Episodes intended to be under 20 minutes, produced to be aired online.') },
+  },
+};
+
 // ---------------- Hot Docs 2027 ----------------
 
 /**
@@ -1620,5 +1656,5 @@ const JAPAN_ACADEMY_2027: RuleBook = {
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, OSCARS_2027_4, OSCARS_2027_5, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, EMMYS_2026_5, EMMYS_2027_5, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, GOLDEN_GLOBES_2027_5, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, CANADIAN_SCREEN_2026_2, CANADIAN_SCREEN_2027_2, GOYA_2027, GOYA_2027_2, GOYA_2027_3, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, DGA_2027_3, WGA_2027, WGA_2027_2, WGA_2027_3, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, SPIRIT_2027_3, ACTOR_AWARDS_2027_2, AACTA_2027, AACTA_2027_2, AACTA_2027_3, AACTA_2027_4, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, EMMYS_2026_5, EMMYS_2027_5, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, GOLDEN_GLOBES_2027_5, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, SERIES_MANIA_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, CANADIAN_SCREEN_2026_2, CANADIAN_SCREEN_2027_2, GOYA_2027, GOYA_2027_2, GOYA_2027_3, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, DGA_2027_3, WGA_2027, WGA_2027_2, WGA_2027_3, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, SPIRIT_2027_3, ACTOR_AWARDS_2027_2, AACTA_2027, AACTA_2027_2, AACTA_2027_3, AACTA_2027_4, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
 ];

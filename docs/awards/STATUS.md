@@ -28,7 +28,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Hot Docs Canadian International Documentary Festival (`hot-docs`) | 2 | 1 / 1 / 0 | 1 / 0 / 1 | 0 | 2 | 1 | 1 | 0 | 1 |
 | Clermont-Ferrand International Short Film Festival (`clermont`) | 6 | 4 / 2 / 0 | 3 / 0 / 3 | 3 | 6 | 3 | 4 | 0 | 2 |
 | SXSW Film & TV Festival (`sxsw`) | 12 | 5 / 7 / 0 | 0 / 0 / 12 | 0 | 12 | 5 | 5 | 0 | 1 |
-| Series Mania (`series-mania`) | 17 | 16 / 1 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 1 |
+| Series Mania (`series-mania`) | 17 | 16 / 1 / 0 | 4 / 0 / 13 | 0 | 0 | 4 | 6 | 0 | 1 |
 | Locarno Film Festival (`locarno`) | 2 | 0 / 0 / 2 | 0 / 0 / 2 | 0 | 0 | 0 | 0 | 0 | 0 |
 | FESPACO (`fespaco`) | 5 | 0 / 0 / 5 | 0 / 0 / 5 | 0 | 5 | 0 | 0 | 0 | 0 |
 | BAFTA Film Awards (`bafta-film`) | 7 | 0 / 0 / 7 | 0 / 0 / 7 | 0 | 0 | 0 | 0 | 0 | 0 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 0 | 0 | 6 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 4 | 0 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 537 / 11 / 258 | 28 | 338 | 505 | 252 | 36 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 541 / 11 / 254 | 28 | 338 | 509 | 258 | 36 | 123 |
 
 ## Research queue
 
@@ -59,7 +59,7 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 1. `tiff` (4): `official`, `midnight-madness`, `platform`, `shorts`
 2. `busan` (2): `competition`, `shorts`
 3. `sxsw` (5): `narrative`, `documentary`, `episodic`, `shorts`, `music-videos`
-4. `series-mania` (5): `international`, `french`, `panorama`, `short-forms`, `special-screenings`
+4. `series-mania` (1): `special-screenings`
 5. `locarno` (1): `concorso`
 6. `fespaco` (4): `fiction`, `documentary`, `shorts`, `series`
 7. `bafta-film` (7): `film`, `director`, `screenplay`, `leading-actor`, `leading-actress`, `animated`, `documentary`

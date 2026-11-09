@@ -664,6 +664,20 @@ screenings and re-releases excluded; a film streamed or televised first, the sam
 same-day streaming exclusion, films re-edited from television, the Academy's own Japanese-or-foreign judgement. No entry
 deadline is published.
 
+## Series Mania 2027
+
+Source (read November 9, 2026): the [Entry Rules and Regulations](https://seriesmania.com/wp-content/uploads/2026/10/rules-regulations-series-mania-2027-enfr-1.pdf),
+linked from the [call for series](https://seriesmania.com/en/festival/call-for-series-festival-2027/) (the 2021 rules were the
+latest found before). Lille, March 19 to 26, 2027. First seasons of new scripted series produced in 2026 or finishing in 2027,
+not released before September 1, 2026; fiction only in the competitive sections; nothing at a French festival or on a channel
+or platform available in France before March 26, 2027; drama and comedy episodes of at least 20 minutes, short forms under
+20; submissions October 6 to December 15, 2026 at 6:00 p.m. (UTC+1), free. International Competition: a world premiere for a
+French production, an international one otherwise (a release after September 1 only at home is allowed); French Competition:
+French productions in world premiere; International Panorama and Short Forms: anything not yet shown in France
+(`series-mania-2027@1`, 4 sections). Not modeled: first seasons only, pilots, re-submissions, the combined runtime of the
+episodes screened, the programmers choosing the section, Short Forms' world premiere for French productions shown abroad
+first. Special Screenings take no submissions except young audience series and stay on SLATE's rules.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two
@@ -680,10 +694,11 @@ deadline is published.
   on November 9, 2026 but name no dates or deadline, and the page mixes 2026 and 2027 headings. Their tests (16 of 21
   European-elements points; a major-festival selection or a seven-day release in three countries) aren't anything SLATE
   records yet, so the categories stay on SLATE's rules rather than take a partial rule.
-- **Series Mania and the International Emmys:** no current competition rules were found (Series Mania's latest festival
-  rules found are 2021's; the International Emmys' rules page returned HTTP 404). The International Emmys' Entry FAQ gives
-  the deadline (January 31 at noon Eastern), that a non-US organization enters and one category per program;
-  `international-emmys-2026@1` and `-2027@1` (projected) hold the deadline only, so eligibility stays SLATE's.
+- **The International Emmys:** no current competition rules were found (the rules page returned HTTP 404; on November 9,
+  2026 the Categories & Key Dates page gave the 2026 competition's window, December 8, 2025 to January 31, 2026, and its 16
+  categories, but no eligibility period). The Entry FAQ gives the deadline (January 31 at noon Eastern), that a non-US
+  organization enters and one category per program; `international-emmys-2026@1` and `-2027@1` (projected) hold the
+  deadline only, so eligibility stays SLATE's. Series Mania was listed here too until its 2027 rules were found (below).
 - **BAFTA Film Awards 2027:** bafta.org (the rules page and the press release "2027 EE BAFTA Film Awards opens for
   entries") refused this environment (HTTP 403), on both passes. Search summaries give a longlist on January 7, nominations
   on January 19 and the ceremony on February 21, 2027, but not the eligibility period; **not used**: BAFTA stays
@@ -700,7 +715,7 @@ when it premieres elsewhere first.
 
 ## Still To Read (rules simulated until then)
 
-TIFF, Busan, Sitges, IDFA, Hot Docs, SXSW, Series Mania, Locarno, FESPACO, BAFTA Film and Television,
+TIFF, Busan, Sitges, IDFA, Hot Docs, SXSW, Locarno, FESPACO, BAFTA Film and Television,
 International Emmys, Spirit, Gotham, DGA, WGA, PGA, Actor Awards, César, Goya, Canadian Screen, AACTA, AMAA, Japan
 Academy, Blue Dragon and European Film Awards; and the remaining sections of Cannes (Competition, Special Screenings),
 Berlinale (Panorama, Shorts), Annecy (Television) and the Emmys' pre-2026 Outstanding Television Movie. Each needs its

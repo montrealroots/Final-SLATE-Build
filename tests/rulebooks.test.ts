@@ -425,7 +425,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('537 categories follow verified rules for at least one edition, 11 only projected ones; the other 258 are simulated', () => {
+  it('541 categories follow verified rules for at least one edition, 11 only projected ones; the other 254 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -456,8 +456,9 @@ describe('audit counts', () => {
     // Japan Academy's 17 (japan-academy-2027@1), 520 until the PGA's nine television awards (pga-2027@3), 529 until the
     // WGA's Paul Selvin, the Spirit Awards' Redford and the AACTA's song award took rules by format (byFormat), 532 until the
     // AACTA's soundtrack, hair and makeup, and visual effects or animation did (aacta-2027@3), 535 until the DGA's
-    // first-time feature (dga-2027@3), 536 until the AACTA's online series (aacta-2027@4).
-    expect(n).toEqual({ verified: 537, projected: 11, simulated: 258 });
+    // first-time feature (dga-2027@3), 536 until the AACTA's online series (aacta-2027@4), 537 until Series Mania's four
+    // competitive sections (series-mania-2027@1).
+    expect(n).toEqual({ verified: 541, projected: 11, simulated: 254 });
   });
 });
 
@@ -948,6 +949,52 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     release(online, 'streaming', '2026-06-01', ['CA']);
     expect(r(s, online, e, 'festival')).toMatch(/released online/);
     expect(categoryDeadline(e, cat(e, 'festival'))).toBe(at('America/Toronto', '2027-01-04', 23, 59) + 59_000);
+  });
+
+  it('Series Mania 2027: new series from September 2026, nothing in France before the festival, by December 15 at 6 p.m. in Paris', () => {
+    const s = startLife('sm');
+    const e = ed(s, 'series-mania-2027');
+    expect(e.rulesId).toBe('series-mania-2027@1');
+    expect(e.submissionOpens).toBe(at('Europe/Paris', '2026-10-06', 9));
+    s.now = at('Europe/Paris', '2026-11-01', 9);
+    const show = (base = 'gb-london', format: Project['axes']['format'] = 'series', minutes = 50) => {
+      const p = work(s, { format, runtime: minutes * 6, completed: '2026-05-01', base });
+      p.axes.episodeCount = 6;
+      return p;
+    };
+    const fresh = show();
+    for (const c of ['international', 'panorama']) expect(r(s, fresh, e, c)).toBe('');
+    // Released at home after September 1: an international premiere still; abroad, only the Panorama; in France, nowhere.
+    const home = show();
+    release(home, 'streaming', '2026-10-01', ['GB']);
+    expect(r(s, home, e, 'international')).toBe('');
+    const abroad = show();
+    release(abroad, 'streaming', '2026-10-01', ['US']);
+    expect(r(s, abroad, e, 'international')).toMatch(/international premiere/);
+    expect(r(s, abroad, e, 'panorama')).toBe('');
+    const early = show();
+    release(early, 'streaming', '2026-08-01', ['GB']);
+    expect(r(s, early, e, 'panorama')).toMatch(/shown publicly before September 1, 2026/);
+    const inFrance = show();
+    release(inFrance, 'broadcast', '2026-10-01', ['FR']);
+    expect(r(s, inFrance, e, 'panorama')).toMatch(/shown publicly in France/);
+    // French productions: a world premiere, in the French Competition or the International one.
+    const french = show('fr-paris');
+    expect(r(s, french, e, 'french')).toBe('');
+    expect(r(s, show(), e, 'french')).toMatch(/This section is for work made in France/);
+    release(french, 'streaming', '2026-10-01', ['BE']);
+    expect(r(s, french, e, 'french')).toMatch(/world premiere/);
+    expect(r(s, french, e, 'international')).toMatch(/world premiere/);
+    // Fiction only; drama and comedy episodes of 20 minutes or more, short forms under 20; work from 2026 on.
+    expect(r(s, show('gb-london', 'documentary-series'), e, 'international')).toMatch(/doesn't accept documentary series/);
+    const brief = show('gb-london', 'web-series', 10);
+    expect(r(s, brief, e, 'international')).toMatch(/20/);
+    expect(r(s, brief, e, 'short-forms')).toBe('');
+    expect(r(s, show(), e, 'short-forms')).toMatch(/20/);
+    const old = work(s, { format: 'series', runtime: 300, completed: '2025-12-31', base: 'gb-london' });
+    expect(r(s, old, e, 'panorama')).toMatch(/completed on December 31, 2025/);
+    expect(categoryDeadline(e, cat(e, 'international'))).toBe(at('Europe/Paris', '2026-12-15', 18));
+    expect(categoryRuleStatus(rulebook('series-mania-2027@1'), 'special-screenings')).toBe('simulated'); // by invitation
   });
 
   it('Canadian Screen Awards: the 2026 edition closed November 3, 2025; 2027 projects the rules a year on, film and television apart', () => {
