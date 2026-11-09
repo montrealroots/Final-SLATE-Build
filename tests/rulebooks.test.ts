@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('196 categories follow verified rules for at least one edition, 11 only projected ones; the other 595 are simulated', () => {
+  it('216 categories follow verified rules for at least one edition, 11 only projected ones; the other 575 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -433,8 +433,9 @@ describe('audit counts', () => {
     // 2 projected until the Berlinale's five other sections were read (berlinale-2027@2), 7 until Cannes' four feature
     // sections were (cannes-2027@2). 165 verified until Annecy's Contrechamp, Off-Limits, Perspectives and TV (annecy-2026@2),
     // 169 until Venice's Out of Competition and Spotlight (venice-2026@2), 171 until San Sebastián's other six sections
-    // (san-sebastian-2026@2), 177 until the Golden Globes' other 19 entered categories (golden-globes-2027@2).
-    expect(n).toEqual({ verified: 196, projected: 11, simulated: 595 });
+    // (san-sebastian-2026@2), 177 until the Golden Globes' other 19 entered categories (golden-globes-2027@2), 196
+    // until the Annies' other 20 categories held in 2027 (annie-2027@2).
+    expect(n).toEqual({ verified: 216, projected: 11, simulated: 575 });
   });
 });
 
@@ -636,6 +637,21 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const show = work(s, { format: 'series', runtime: 45, completed: '2026-01-10', base: 'gb-london' });
     release(show, 'streaming', '2026-02-01', ['US']);
     expect(r(s, show, e, 'tv-actor-drama')).toMatch(/for work made in the United States/);
+  });
+
+  it('Annies 2027, version 2: every 2027 category reads the call for submissions: a US release in 2026, shorts exempt, by November 30', () => {
+    const s = startLife('an54');
+    const e = ed(s, 'annie-2027');
+    expect(e.rulesId).toBe('annie-2027@2');
+    s.now = at('America/Los_Angeles', '2026-10-01', 9);
+    const series = (where: string) => {
+      const p = work(s, { format: 'series', medium: 'animation', runtime: 22, completed: '2026-01-10', base: 'gb-london' });
+      release(p, 'streaming', '2026-03-01', [where]);
+      return p;
+    };
+    expect(r(s, series('GB'), e, 'fx-tv')).toMatch(/release in the United States between January 1, 2026 and December 31, 2026/);
+    expect(r(s, series('US'), e, 'fx-tv')).not.toMatch(/release/);
+    expect(categoryDeadline(e, cat(e, 'editorial-feature'))).toBe(at('America/Los_Angeles', '2026-11-30', 23, 59) + 59_000);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

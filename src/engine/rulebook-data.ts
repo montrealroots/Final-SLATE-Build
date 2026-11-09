@@ -183,6 +183,17 @@ const ANNIE_2027: RuleBook = {
   } satisfies CategoryRules])),
 };
 
+/**
+ * Version 2 (November 9, 2026): the call for submissions sets eligibility for the competition as a whole ("animated
+ * productions released in the United States in 2026", with its exceptions, and the August 3 to November 30 window), so
+ * every entered category held for the 54th reads it, not only the nine named first. Category definitions and individual
+ * achievement rules are in the rules page, which didn't load from here (docs/world/RULEBOOK-AUDIT.md); they stay unread.
+ */
+const ANNIE_2027_2: RuleBook = {
+  ...ANNIE_2027, id: 'annie-2027@2', version: 2, checked: '2026-11-09',
+  categories: { ...ANNIE_2027.categories, ...Object.fromEntries(['feature-independent', 'special', 'fx-tv', 'fx-feature', 'character-animation-tv', 'character-animation-feature', 'character-animation-live', 'character-design-tv', 'character-design-feature', 'directing-tv', 'music-tv', 'music-feature', 'production-design-tv', 'production-design-feature', 'storyboarding-tv', 'storyboarding-feature', 'voice-tv', 'writing-tv', 'editorial-tv', 'editorial-feature'].map((id) => [id, ANNIE_2027.categories.feature])) },
+};
+
 // ---------------- Cannes Film Festival 2027: short films, projected from 2026 ----------------
 
 const CANNES_2027: RuleBook = {
@@ -551,5 +562,5 @@ const EMMYS_2027_2: RuleBook = { ...EMMYS_2027, id: 'emmys-2027@2', version: 2, 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2,
 ];

@@ -134,6 +134,11 @@ own text. It is an accessible alternative, not the full rulebook.
 
 Not verified: running-time thresholds, category definitions, individual achievement eligibility.
 
+**Version 2 (`annie-2027@2`, November 9, 2026):** the call's eligibility, exceptions and window are the competition's,
+so the other 20 entered categories held for the 54th (effects, character animation and design, directing, music,
+production design, storyboarding, voice acting, writing and editorial for TV and features, Independent Feature, Special
+Production) read them too. Their own definitions are in the rules page, which still didn't load; they stay unverified.
+
 ## Cannes Film Festival, 80th (2027): Short Film Competition, projected
 
 Source: [2026 Regulations - Short Films In Competition](https://cdn.festival-cannes.com/media/uploads/2025/11/reglement_courts-metrages_2026-en.pdf)
