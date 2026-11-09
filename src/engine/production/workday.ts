@@ -1,11 +1,12 @@
 // Daily work: who works on which task, readiness, payments and finished-task effects.
 // Part of the production engine; src/engine/production.ts is its public interface.
 
+import { onSongTaskDone } from '../songs';
 import type { GameState, Obligation, Project, Task } from '../types';
 import { getPlace } from '../../data/places';
 import { ledgerTotals, money, settle, spend, FundsError } from '../budget';
 import { placeHolidaysOn } from '../holidays';
-import { covers, roleLabel } from '../people';
+import { covers, personById, roleLabel } from '../people';
 import { approvedCharacters, approvedScenes, sceneTechnique } from '../projects';
 import { approvedTake, payStageSession, performerOnSet, rebookMissed, rebookPassed, recordTake, sessionToday, stageBlock } from '../mocap';
 import { stream } from '../rng';
@@ -209,6 +210,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
         }
         spend(state, p, `Recording Studio (${date})`, 'post', VOICE_SESSION_STUDIO, `studio:${task.id}:${date}`);
       }
+      if (task.id.startsWith('song:')) task.workers = [...new Set([...(task.workers ?? []), 'player'])];
       task.done += 1;
       task.status = 'active';
       task.workedDays += 1;
@@ -257,6 +259,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
         addLogOnce(state, p, `payroll:${date}`, `${p.title} can't cover today's wages. Work has paused until you add funding or cut scope.`);
         continue;
       }
+      if (task.id.startsWith('song:')) task.workers = [...new Set([...(task.workers ?? []), ...assigned])];
       task.done += assigned.length;
       task.status = 'active';
       task.workedDays += 1;
@@ -321,6 +324,8 @@ export function onTaskDone(state: GameState, p: Project, task: Task, date: strin
       if (e instanceof FundsError) addLogOnce(state, p, `mat:${task.id}`, `${task.label} is done, but its materials (${money(materialCost(task))}) are unpaid. Add funding to settle it.`);
     }
   }
+  // A song's writers are whoever wrote it (songs.ts).
+  if (task.kind === 'song:music' || task.kind === 'song:lyrics') onSongTaskDone(p, task, (who) => (who === 'player' ? state.character.name : personById(state, who).name));
   const asset = task.assetRef ? p.assets.find((a) => a.characterId === task.assetRef && (task.kind.startsWith('sm:') ? a.kind === 'puppet' : task.kind === 'anim:rig' ? a.kind === 'rig' : task.kind === 'anim:model' ? a.kind === 'model' : a.kind === 'design')) : undefined;
   if (asset) {
     if (task.kind === 'sm:armature') asset.stage = 'Armature Ready';

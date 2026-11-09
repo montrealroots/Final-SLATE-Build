@@ -56,6 +56,7 @@ export const ROLES: RoleDef[] = [
   R('vfx-artist', 'Visual Effects Artist', 'Post Production', 550), R('colorist', 'Colorist', 'Post Production', 650),
   R('subtitler', 'Subtitler And Captioner', 'Post Production', 300), R('qc-technician', 'Delivery Quality Control', 'Post Production', 400),
   R('composer', 'Composer', 'Music', 600), R('music-supervisor', 'Music Supervisor', 'Music', 450),
+  R('songwriter', 'Songwriter', 'Music', 500), R('lyricist', 'Lyricist', 'Music', 400), R('music-producer', 'Music Producer', 'Music', 500),
   R('researcher', 'Researcher', 'Documentary', 350), R('archive-producer', 'Archive Producer', 'Documentary', 450), R('fact-checker', 'Fact Checker', 'Documentary', 350),
 ];
 

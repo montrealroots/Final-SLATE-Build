@@ -4,7 +4,14 @@ import { describe, expect, it } from 'vitest';
 import { DAY, RULEBOOKS, acceptDeal, approachBacker, categoryRecipients, checkEligibility, categoryRules, entryEpisodes, institution, processUntil, submitEntry } from './engine-api';
 import { nonEnglishShare, requirementProblems } from '../src/engine/awards-rules';
 import { approve, buildProject, startLife } from './helpers';
-import type { Credit, GameState } from '../src/engine/types';
+import { recordScreenTime } from '../src/engine/screen-time';
+import type { Credit, GameState, Project } from '../src/engine/types';
+
+/** Labelled fixture: the part's screen time recorded from the cut, the whole of every scene it is in. */
+function seen(s: GameState, p: Project, name: string) {
+  const id = p.drafts.find((d) => d.number === p.approvedDraft)!.characters.find((c) => c.name === name)!.id;
+  for (const sc of p.drafts.find((d) => d.number === p.approvedDraft)!.scenes.filter((x) => x.participants.includes(id))) recordScreenTime(s, p, sc.id, id, sc.estMinutes);
+}
 
 const credit = (id: string, characterName: string, person = 'player'): Credit => ({ id, person, personName: 'You', contribution: 'Cast', roleId: 'actor', characterName, episodes: 'all', billing: 5 });
 
@@ -62,6 +69,7 @@ describe('Emmys, Performer Awards: a guest is in fewer than half the episodes, a
     approve(s, p);
     Object.assign(p.axes, { format: 'series', episodeCount: 6, targetRuntimeMin: 50 });
     p.credits = [credit('c1', 'Ines', 'p-ines'), { ...credit('c2', 'Marcus'), episodes }];
+    seen(s, p, 'Marcus'); // the 5% screen-time rule is tested in tests/screen-time.test.ts
     return { s, p, e: s.editions.find((x) => x.id === 'emmys-2027')!, cat: institution('emmys').categories.find((c) => c.id === 'guest-actor')! };
   }
 
@@ -225,6 +233,7 @@ describe('Emmys, Guest Performer Eligibility: nominated as supporting, never a g
       approve(s, p);
       Object.assign(p.axes, { format: 'series', episodeCount: 6, targetRuntimeMin: 50, register: 'drama' });
       p.credits = [{ ...credit('m1', 'Marcus'), episodes: [2] }];
+      seen(s, p, 'Marcus');
       return p;
     };
     const one = make('Harbor Lights');
@@ -246,44 +255,8 @@ describe('Emmys, Guest Performer Eligibility: nominated as supporting, never a g
   });
 });
 
-describe('Emmys: at least 5% of the running time on screen, from the approved script (guests per episode; limited supporting overall)', () => {
-  /** A six-episode drama with a guest whose one scene runs `minutes` of a 50-minute episode (labelled fixture). */
-  function onScreen(tag: string, minutes: number) {
-    const s: GameState = startLife(tag, 'us-los-angeles');
-    s.character.actingTitle = 'Actor';
-    const p = buildProject(s, { title: 'Harbor Lights', format: 'short', medium: 'live-action', runtime: 20 },
-      [{ name: 'Ines', patch: { roleSize: 'lead' } }, { name: 'Marcus', patch: { roleSize: 'small', seriesInvolvement: 'guest', awardPlacement: 'none' } }],
-      [{ place: 'Harbor', chars: ['Ines'], minutes: 20 }, { place: 'Dock', chars: ['Marcus'], minutes }]);
-    approve(s, p);
-    Object.assign(p.axes, { format: 'series', episodeCount: 6, targetRuntimeMin: 50, register: 'drama' });
-    p.credits = [{ ...credit('m1', 'Marcus'), episodes: [1] }];
-    return { s, p, e: s.editions.find((x) => x.id === 'emmys-2027')!, cat: institution('emmys').categories.find((c) => c.id === 'guest-actor')! };
-  }
-
-  it('2 minutes of a 50-minute episode is 4%, too little; 2.5 minutes is 5%, enough', () => {
-    const a = onScreen('ss-2', 2);
-    const el = checkEligibility(a.s, a.p, a.e, a.cat);
-    expect(el.recipients).toEqual([]);
-    expect(el.reasons).toContain('Marcus is on screen for 4% of their biggest episode in the approved script; this category needs at least 5%.');
-    const b = onScreen('ss-25', 2.5);
-    expect(checkEligibility(b.s, b.p, b.e, b.cat).recipients.map((c) => c.characterName)).toEqual(['Marcus']);
-    // Version 3 didn't measure screen time.
-    a.e.rulesId = 'emmys-2027@3';
-    expect(checkEligibility(a.s, a.p, a.e, a.cat).recipients.map((c) => c.characterName)).toEqual(['Marcus']);
-  });
-
-  it('a supporting part in a limited series is measured against the whole running time', () => {
-    const { s, p, e } = onScreen('ss-lim', 6);
-    Object.assign(p.axes, { format: 'limited-series', episodeCount: 4 });
-    p.delivered = { at: 0, runtimeMin: 200 };
-    p.drafts.find((d) => d.number === p.approvedDraft)!.characters.find((c) => c.name === 'Marcus')!.awardPlacement = 'supporting';
-    p.credits = [credit('m1', 'Marcus')];
-    const cat = institution('emmys').categories.find((c) => c.id === 'supporting-actor-limited')!;
-    expect(checkEligibility(s, p, e, cat).reasons).toContain('Marcus is on screen for 3% of the running time in the approved script; this category needs at least 5%.');
-    p.delivered = { at: 0, runtimeMin: 100 };
-    expect(checkEligibility(s, p, e, cat).recipients.map((c) => c.characterName)).toEqual(['Marcus']);
-  });
-});
+// The 5% screen-time rule (emmys-2026@4 screenShare) read the approved script until November 9, 2026; it now reads the cut,
+// and its tests are in tests/screen-time.test.ts.
 
 describe('Golden Globes, Cinematic and Box Office Achievement: $150 million worldwide, $100 million of it in the US (B.1.b)', () => {
   it('reads what distributors reported for 2026 theatrical releases; a release in several countries counts only worldwide', () => {

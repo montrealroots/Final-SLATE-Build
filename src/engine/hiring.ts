@@ -2,6 +2,7 @@
 // Responses are deterministic per offer, arrive after a delay on the shared clock, and depend on
 // availability for the production window and the offered rate. Offers reserve (not spend) funds.
 
+import { songUses } from './songs';
 import { getPlace } from '../data/places';
 import { cancel, commit, ledgerTotals, money, reserve, FundsError } from './budget';
 import { genre } from './genres';
@@ -368,7 +369,8 @@ export function fitNotes(state: GameState, p: Project, person: Person | 'player'
   const c = approvedCharacters(p).find((x) => x.id === characterId);
   if (!c) return out;
   const scenes = approvedScenes(p).filter((s) => s.participants.includes(characterId));
-  const needsSinging = scenes.some((s) => s.songs.length);
+  // A song performed in their scenes, by them or by nobody named yet (songs.ts).
+  const needsSinging = songUses(p, scenes).some((x) => x.use.placement === 'performed' && (!x.song.performers.length || x.song.performers.some((c) => c.characterId === characterId)));
   const needsDance = scenes.some((s) => s.dance);
   const langs = c.languages.length ? c.languages : [p.axes.dialogueLanguages[0]];
   if (person === 'player') {

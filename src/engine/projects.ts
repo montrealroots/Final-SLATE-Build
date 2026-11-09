@@ -1,3 +1,4 @@
+import { songStatus, songUses } from './songs';
 import { financeRights } from './finance';
 import { composeGenres, genreName, type ModuleId } from './genres';
 import { findPlace } from '../data/places';
@@ -388,7 +389,7 @@ export function splitSceneImpact(p: Project, id: string, atLine: number): string
   if (!s) return ['That scene no longer exists.'];
   const out = [`Lines ${atLine + 1} onward move to a new scene right after this one, ${s.dialogue.length - atLine} of ${s.dialogue.length}.`];
   out.push('Both scenes keep everyone in this scene; take out whoever is not in each part.');
-  if (s.props.length || s.animals.length || s.vehicles.length || s.stunts || s.crowd || s.vfx.length || s.songs.length) out.push('The production needs (props, stunts, crowd and the rest) stay with the first part. Move any the second part needs.');
+  if (s.props.length || s.animals.length || s.vehicles.length || s.stunts || s.crowd || s.vfx.length || (p.songs ?? []).some((x) => x.uses.some((u) => u.sceneId === id))) out.push('The production needs (props, stunts, crowd and the rest) stay with the first part. Move any the second part needs.');
   const links = p.setups.filter((x) => x.plantedIn === id || x.paidIn === id);
   if (links.length) out.push(`${links.map((x) => x.label || 'A setup').join(', ')} stay${links.length === 1 ? 's' : ''} linked to the first part. Relink any that happen in the second.`);
   if (s.essential) out.push('The first part stays essential; mark the second part too if the story needs it.');
@@ -446,6 +447,11 @@ export function combineScenes(p: Project, keepId: string, mergeId: string): void
   keep.vehicles = union(keep.vehicles, merge.vehicles);
   keep.vfx = union(keep.vfx, merge.vfx);
   keep.songs = [...keep.songs, ...merge.songs.filter((x) => !keep.songs.some((y) => y.title === x.title))];
+  // The songs heard in the merged scene are heard in the one kept (songs.ts).
+  for (const song of p.songs ?? []) {
+    for (const u of song.uses) if (u.sceneId === merge.id) u.sceneId = keep.id;
+    song.uses = song.uses.filter((u, i) => song.uses.findIndex((x) => x.sceneId === u.sceneId && x.placement === u.placement) === i);
+  }
   keep.stunts = [keep.stunts, merge.stunts].filter((x) => x.trim()).join('; ');
   keep.crowd = Math.max(keep.crowd, merge.crowd);
   keep.intimacy ||= merge.intimacy;
@@ -565,7 +571,7 @@ export function scriptIssues(p: Project): Issue[] {
   if (mods.has('journey') && new Set(p.scenes.map((s) => s.storyLocation || s.heading.place)).size < 2) {
     out.push({ severity: 'note', area: 'structure', text: 'A journey story needs more than one place.', module: 'journey' });
   }
-  if (mods.has('music') && !p.scenes.some((s) => s.songs.length || s.dance)) out.push({ severity: 'note', area: 'structure', text: 'No scene has a song or dance yet.', module: 'music' });
+  if (mods.has('music') && !p.scenes.some((s) => s.dance || (p.songs ?? []).some((x) => x.uses.some((u) => u.sceneId === s.id)))) out.push({ severity: 'note', area: 'structure', text: 'No scene has a song or dance yet.', module: 'music' });
   if (mods.has('factual') && p.evidence.some((e) => !e.verified && e.status !== 'dramatized')) {
     out.push({ severity: 'note', area: 'continuity', text: 'Some claims haven\'t been checked yet.', module: 'factual' });
   }
@@ -789,7 +795,7 @@ export function deriveRequirements(p: Project, scenes: Scene[], characters: Stor
       if (s.water) add('water', place || 'Water Work', s.id);
     } else if (s.crowd > 0) add('crowd', place || 'Crowd', s.id, s.crowd, 'Animated crowd');
     s.vfx.forEach((x) => add('vfx', x, s.id));
-    s.songs.forEach((song) => add('song', song.title, s.id, 1, song.licensed ? 'Licensed' : 'Original'));
+    for (const { song } of songUses(p, [s])) add('song', song.title, s.id, 1, songStatus(song));
     if (s.dance) add('choreography', place || 'Dance', s.id);
     if (s.kind === 'archival') add('archival', place || 'Archive Material', s.id);
     if (s.kind === 'interview') s.contributorIds.forEach((cid) => add('interview', p.contributors.find((c) => c.id === cid)?.name ?? 'Contributor', s.id));

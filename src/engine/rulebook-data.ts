@@ -107,6 +107,28 @@ const OSCARS_2027_3: RuleBook = {
   },
 };
 
+/**
+ * Version 4 (November 9, 2026): Rule Nineteen, Special Rules for the Music Awards, read for Original Song. I.B: words and
+ * music, both original and written specifically for the film, heard in its body or as the first new cue of the end
+ * credits (SLATE: written or commissioned for the project, with a lyrics credit, used in the cut entered; the order of
+ * end-credit cues isn't modeled). II.D: created and recorded for the film before any other use (SLATE: its recording is a
+ * task of this production). II.E: only the principal songwriters, never performers, producers or music supervisors
+ * (SLATE: the song's writing credits). II.J: two statuettes normally, a third for three essentially equal writers, a fourth
+ * rarely (SLATE: up to three of the song's writers, in credit order; equality and the fourth are the Committee's call).
+ * III.C: no more than three songs from one film. III.F: song submissions by 5 p.m. PT on October 14, 2026.
+ */
+const OSCARS_2027_4: RuleBook = {
+  ...OSCARS_2027_3, id: 'oscars-2027@4', version: 4,
+  categories: {
+    ...OSCARS_2027_3.categories,
+    song: {
+      ...OSCARS_2027_3.categories.song,
+      song: v({ maxWriters: 3, maxSongs: 3 }, 'aa99-rules', 'Up to three songs from one film (III.C); up to three essentially equal writers receive it (II.J), performers and producers never (II.E).'),
+      deadlines: v([{ date: '2026-10-14', time: '17:00', zone: PT }], 'aa99-rules', 'Song submissions are due by 5 p.m. PT on Wednesday, October 14, 2026 (Rule Nineteen III.F).'),
+    },
+  },
+};
+
 // ---------------- SXSW Film & TV Festival 2027 ----------------
 
 /**
@@ -1393,6 +1415,6 @@ const JAPAN_ACADEMY_2027: RuleBook = {
 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
-  OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
+  OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, OSCARS_2027_4, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
   ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, ACTOR_AWARDS_2027_2, AACTA_2027, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
 ];

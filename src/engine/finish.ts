@@ -20,6 +20,7 @@ import { ensureWorkEvent } from './production';
 import { gaussian, pick, stream } from './rng';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
 import { redactionComplete } from './unscripted';
+import { songCredits, songUses } from './songs';
 import { DAY, addDaysToKey, dateKey, formatDateKey, isDateKey, localToInstant, parseYmd } from './time';
 import type { Credit, DistributionOffer, GameState, Project, ReleaseRecord, Scene } from './types';
 
@@ -92,6 +93,7 @@ export function deliver(state: GameState, p: Project): void {
   scheduleOpportunity(state, p);
   p.phase = 'delivered';
   p.quality = assessQuality(state, p);
+  if (isEpisodic(p.axes.format)) p.episodeQuality = assessEpisodes(state, p, p.quality);
   p.credits = computeCredits(state, p);
   // Everyone who worked on it through to delivery has that on record with you (relationships.ts).
   for (const h of p.hires.filter((x) => x.status === 'accepted' && x.daysWorked > 0)) recordHistory(state, h.personId, p, roleLabel(h.roleId), 'completed');
@@ -169,9 +171,16 @@ export function computeCredits(state: GameState, p: Project): Credit[] {
       add({ person: `contributor:${c.id}`, personName: c.restrictions?.includes('name') ? 'Name withheld at their request' : c.name, contribution: 'Featuring', roleId: 'contributor', episodes: 'all' });
     }
   }
-  for (const h of p.hires.filter((x) => x.kind === 'crew' && x.daysWorked > 0 && x.roleId !== 'co-writer' && x.roleId !== 'episode-writer' && x.roleId !== 'episode-director')) {
+  // Songwriters and lyricists are credited for the songs they wrote, not as crew (songs.ts).
+  for (const h of p.hires.filter((x) => x.kind === 'crew' && x.daysWorked > 0 && !['co-writer', 'episode-writer', 'episode-director', 'songwriter', 'lyricist'].includes(x.roleId))) {
     add({ person: h.personId, personName: personById(state, h.personId).name, contribution: roleLabel(h.roleId), roleId: h.roleId, episodes: h.episodes });
   }
+  // Each song in the cut or a version: its writers, music and lyrics apart, and its performers. The score composer is
+  // credited for the score above, and only writes a song they were credited with.
+  songCredits(p, editScenes(p), (p.versions ?? []).map((v) => ({ v, scenes: editScenes(p).filter((sc) => !v.leaveOut.includes(sc.id)) })), add, me, (characterId) => {
+    const a = p.cast.find((x) => x.characterId === characterId);
+    return a ? { person: a.performer, name: a.performer === 'player' ? me : personById(state, a.performer).name } : null;
+  });
   return out;
 }
 
@@ -184,40 +193,66 @@ const clamp = (x: number) => Math.round(Math.max(0, Math.min(100, x)));
  * Modeled assessments used by festival programmers and award voters. These are explicit game
  * assumptions built from inspectable facts (script structure, staffing, coverage, schedule
  * outcomes, edit passes). They are not a claim that software can measure artistic merit.
+ *
+ * With `episode`, the same model reads only that episode's work (November 9, 2026): its scenes in the cut and their
+ * captures and takes, its shoot days, the setups it plants or pays off, who wrote and directed it, the crew and cast who
+ * worked on it. Work done once for every episode (cut passes, the script's open notes, crew hired for the whole season)
+ * counts for each. Nothing is drawn at random per episode: two episodes differ only where their work differs.
  */
-export function assessQuality(state: GameState, p: Project): Record<string, number> {
-  const approved = approvedScenes(p);
-  const scenes = editScenes(p); // what is in the cut
-  const issues = scriptIssues({ ...p, scenes: approved, characters: approvedCharacters(p) } as Project);
+export function assessQuality(state: GameState, p: Project, episode?: number): Record<string, number> {
+  const inEp = (n: number | undefined) => episode === undefined || n === episode;
+  const covers = (eps: number[] | 'all') => episode === undefined || eps === 'all' || eps.includes(episode);
+  const allApproved = approvedScenes(p);
+  const approved = allApproved.filter((s) => inEp(s.episode));
+  const scenes = editScenes(p).filter((s) => inEp(s.episode)); // what is in the cut
+  const issues = scriptIssues({ ...p, scenes: allApproved, characters: approvedCharacters(p) } as Project);
   // Advisory prompts only check that a text field is filled (or suggest a fit), so they neither cost nor earn anything.
   const notes = issues.filter((i) => i.severity === 'note' && !i.advisory).length;
-  // A setup counts when the scenes that plant and pay it off are both in the cut.
+  // A setup counts when the scenes that plant and pay it off are both in the cut; an episode counts those it plants or pays.
+  const cutIds = new Set(editScenes(p).map((s) => s.id));
   const inCut = new Set(scenes.map((s) => s.id));
-  const setups = p.setups.length ? p.setups.filter((x) => x.plantedIn && x.paidIn && inCut.has(x.plantedIn) && inCut.has(x.paidIn)).length / p.setups.length : 0.6;
+  const episodeOf = (id: string | null) => allApproved.find((s) => s.id === id)?.episode;
+  const mine = p.setups.filter((x) => episode === undefined || inEp(episodeOf(x.plantedIn)) || inEp(episodeOf(x.paidIn)));
+  const setups = mine.length ? mine.filter((x) => x.plantedIn && x.paidIn && cutIds.has(x.plantedIn) && cutIds.has(x.paidIn)).length / mine.length : 0.6;
   // Only notes the readiness checks raised count, once a revision pass has addressed them. Notes you write yourself are
   // for your own process, and a pass with nothing to address adds nothing: repeating passes can't manufacture quality.
   // ...and only when the check it came from is gone from the script's readiness checks, and wasn't advice.
   const open = new Set(issues.map((i) => i.text));
   const addressed = p.notes.filter((n) => n.status === 'addressed' && n.source === 'readiness' && !n.advisory && !open.has(n.text)).length;
-  const writerHelp = p.hires.filter((h) => ['co-writer', 'script-editor'].includes(h.roleId) && h.status !== 'declined').map((h) => personById(state, h.personId).capability);
+  const writerHelp = p.hires.filter((h) => ['co-writer', 'script-editor'].includes(h.roleId) && h.status !== 'declined' && covers(h.episodes)).map((h) => personById(state, h.personId).capability);
+  // Who wrote and directed each episode, from November 9, 2026: a hired episode writer or director moves that episode's
+  // script or direction by a quarter of how far their capability is from 50; your own work is the baseline, as it always
+  // was. Before, who wrote or directed an episode changed no assessment. The season weighs its episodes by running time.
+  const epMinutes = new Map<number, number>();
+  for (const sc of scenes) epMinutes.set(sc.episode, (epMinutes.get(sc.episode) ?? 0) + sc.estMinutes);
+  const byWho = (role: 'writer' | 'director') => {
+    const parts = [...epMinutes].map(([n, m]) => {
+      const e = p.episodes.find((x) => x.number === n);
+      const who = e ? [e[role], ...((role === 'writer' ? e.formerWriters : e.formerDirectors) ?? [])] : ['player'];
+      return { m, v: avg(who.map((w) => (w === 'player' ? 0 : (personById(state, w).capability - 50) / 4)), 0) };
+    });
+    const total = parts.reduce((a, x) => a + x.m, 0);
+    return total ? parts.reduce((a, x) => a + x.v * x.m, 0) / total : 0;
+  };
   // Text earns nothing: until the review of November 7, 2026 a filled objective was worth up to 6 and answered genre
   // questions up to 4, which writing anything satisfied, and every empty-field prompt cost 1.5. The base went from 40 to
   // 42, set so the balance suite's mean quality per family stays where it was (docs/balance-results.json); what moves
   // the score is structure the engine can follow (setups planted and paid off in named scenes, both in the cut),
   // readiness notes resolved by revision, skilled writing help, and open structural notes.
-  const script = clamp(42 + setups * 10 + Math.min(10, addressed * 2) - Math.min(20, notes * 1.5) + (writerHelp.length ? (avg(writerHelp) - 50) / 3 : 0));
-  const caps = p.captures.filter((c) => scenes.some((s) => s.id === c.sceneId));
+  const script = clamp(42 + setups * 10 + Math.min(10, addressed * 2) - Math.min(20, notes * 1.5) + (writerHelp.length ? (avg(writerHelp) - 50) / 3 : 0) + byWho('writer'));
+  const caps = p.captures.filter((c) => inCut.has(c.sceneId));
   // A finished effects revision counts once toward its scene's capture (revisions.ts).
   const revised = (sceneId: string) => p.tasks.some((x) => x.id === `post:vfx-rev:${sceneId}` && x.status === 'done') ? EFFECTS_REVISION_GAIN : 0;
   const captureQ = avg(caps.map((c) => Math.min(100, c.quality + revised(c.sceneId))), 60);
-  const lostDays = p.schedule.days.filter((d) => d.status === 'lost').length;
-  const totalDays = Math.max(1, p.schedule.days.length);
+  const days = p.schedule.days.filter((d) => episode === undefined || d.episode === episode || d.episodes?.includes(episode));
+  const lostDays = days.filter((d) => d.status === 'lost').length;
+  const totalDays = Math.max(1, days.length);
   const crewCap = (r: string) => {
-    const h = p.hires.find((x) => x.roleId === r && x.daysWorked > 0);
+    const h = p.hires.find((x) => x.roleId === r && x.daysWorked > 0 && covers(x.episodes));
     return h ? personById(state, h.personId).capability : null;
   };
   const cut = Math.min(10, p.edit.cutPasses * 4);
-  const direction = clamp(captureQ * 0.7 + 18 + cut - (lostDays / totalDays) * 20);
+  const direction = clamp(captureQ * 0.7 + 18 + cut - (lostDays / totalDays) * 20 + byWho('director'));
   const anim = ['animator', 'stopmo-animator', 'layout-artist', 'lighting-artist'].map(crewCap).filter((x): x is number => x !== null);
   const craftRoles = ['dop', 'production-designer', 'costume-designer', 'sound-designer', 'editor', 'composer', 'colorist', 'visdev-artist'];
   const craftCaps = craftRoles.map(crewCap).filter((x): x is number => x !== null);
@@ -228,17 +263,24 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10 - gapsLeft * ESSENTIAL_CUT_COST + coverageEdit(p, [...inCut])), music: clamp((crewCap('composer') ?? 45) * 0.9 + 5) };
   if (anim.length) out.animation = clamp(avg(anim) * 0.9 + 6);
   // Each credited craft on its own, for craft awards (docs/awards/DESIGN.md rule 3), on the same scale as `craft`.
-  for (const h of p.hires.filter((x) => x.kind === 'crew' && x.daysWorked > 0)) out[`craft:${h.roleId}`] = Math.max(out[`craft:${h.roleId}`] ?? 0, clamp(personById(state, h.personId).capability * 0.85 + 8));
+  for (const h of p.hires.filter((x) => x.kind === 'crew' && x.daysWorked > 0 && covers(x.episodes))) out[`craft:${h.roleId}`] = Math.max(out[`craft:${h.roleId}`] ?? 0, clamp(personById(state, h.personId).capability * 0.85 + 8));
+  // Each song heard in the cut, on its writing: its writers' capability on the craft scale (you count as 50). The score
+  // composer has no part in it unless they wrote it (songs.ts).
+  for (const song of new Set(songUses(p, scenes).map((x) => x.song))) {
+    if (song.writers.some((w) => w.who)) out[`song:${song.id}`] = clamp(avg(song.writers.filter((w) => w.who).map((w) => (w.who === 'player' ? 50 : personById(state, w.who!).capability))) * 0.85 + 8);
+  }
   for (const a of p.cast) {
     // A take's performance side, where takes were recorded (takes.ts); else the capture's quality, as before.
     // Directing 2: with singles, the editor cuts between takes for the best usable moments (takes.ts editPerformance).
-    const sc = scenes.filter((s) => s.participants.includes(a.characterId)).map((s) => { const c = p.captures.find((x) => x.sceneId === s.id); return (c ? editPerformance(p, c) : undefined) ?? c?.quality ?? 60; });
+    const theirs = scenes.filter((s) => s.participants.includes(a.characterId));
+    if (episode !== undefined && !theirs.length) continue; // not in this episode: nothing of theirs to assess
+    const sc = theirs.map((s) => { const c = p.captures.find((x) => x.sceneId === s.id); return (c ? editPerformance(p, c) : undefined) ?? c?.quality ?? 60; });
     const base = a.performer === 'player' ? 58 + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability;
     // A shared background never scores a performance: ability isn't inferred from ethnicity. It added 6 until the review
     // of November 7, 2026; casting still shows who shares one, as information.
     // How they play with the others in each of their scenes (auditions.ts pairChemistry, -8 to +8), at half weight; a
     // chemistry read only reveals it. From November 8, 2026: before, performances ignored who they played against.
-    const chem = scenes.filter((s) => s.participants.includes(a.characterId)).map((s) => {
+    const chem = theirs.map((s) => {
       const others = p.cast.filter((b) => b.performer !== a.performer && b.characterId !== a.characterId && s.participants.includes(b.characterId));
       return avg(others.map((b) => pairChemistry(state, a.performer, b.performer)), 0);
     });
@@ -249,8 +291,22 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   const perf = avg(Object.entries(out).filter(([k]) => k.startsWith('performance:')).map(([, v]) => v), 55);
   // Rounded to the nearest whole value; never derived from genre labels, budget size or identity.
   out.overall = clamp(script * 0.3 + direction * 0.25 + craft * 0.2 + perf * 0.25);
-  const r = stream(state.seed, 'reception', p.id);
-  out.reception = clamp(out.overall + gaussian(r, 0, 8)); // audiences and critics vary
+  if (episode === undefined) {
+    const r = stream(state.seed, 'reception', p.id);
+    out.reception = clamp(out.overall + gaussian(r, 0, 8)); // audiences and critics vary
+  }
+  return out;
+}
+
+/** Each episode's assessment, with the season's reception carried over by the same margin: no draw of its own. */
+export function assessEpisodes(state: GameState, p: Project, season: Record<string, number>): Record<string, Record<string, number>> {
+  const out: Record<string, Record<string, number>> = {};
+  for (let e = 1; e <= p.axes.episodeCount; e++) {
+    if (!editScenes(p).some((s) => s.episode === e)) continue;
+    const q = assessQuality(state, p, e);
+    q.reception = clamp(q.overall + (season.reception - season.overall));
+    out[e] = q;
+  }
   return out;
 }
 

@@ -1,3 +1,4 @@
+import { attachSong, createSong } from '../src/engine/song-actions';
 import { describe, expect, it } from 'vitest';
 import {
   addNote, assessQuality, buildTasks, estimatedShootDays, neededRoles, noteFromIssue, processUntil, scriptIssues, setNoteStatus, startRevision,
@@ -90,7 +91,13 @@ describe('structured scene choices reach staffing, tasks, the schedule and the b
       if (what !== 'intimacy') expect(v.days, what).toBeGreaterThanOrEqual(plain.days); // slower shooting
     }
     expect(oneScene('sw-stunt2', { stunts: 'Ines falls from the pier' }).tasks).toContain('prep:stunts:all'); // a rehearsal task
-    const song = oneScene('sw-song', { songs: [{ title: 'Harbour Lights', licensed: true }] });
+    // A licensed song is a work of the project's (songs.ts), used in the scene; its clearance is the music supervisor's.
+    const ls = startLife('sw-song');
+    const lp = buildProject(ls, { title: 'Harbour', format: 'short', medium: 'live-action', runtime: 10 }, [{ name: 'Ines', patch: { roleSize: 'lead' } }], [{ place: 'Harbour', chars: ['Ines'], minutes: 6, intExt: 'EXT' }]);
+    const lights = createSong(ls, lp, { title: 'Harbour Lights', source: 'licensed', holder: 'Tidewater Music', writers: [{ name: 'Ada Brook', music: true, lyrics: true }] });
+    attachSong(lp, lights.id, lp.scenes[0].id, 'background');
+    approve(ls, lp);
+    const song = { tasks: buildTasks(lp).map((t) => t.id), roles: neededRoles(lp, ls).map((r) => r.roleId) };
     expect(song.tasks).toContain('post:clearance:all'); // music clearance work for the music supervisor
     expect(song.roles).toContain('music-supervisor');
     expect(plain.tasks).not.toContain('post:clearance:all');

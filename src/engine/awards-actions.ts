@@ -7,20 +7,29 @@ import { ledgerTotals, money, spend } from './budget';
 import { approvedScenes as approvedScenesOf, isEpisodic } from './projects';
 import { addLog } from './state';
 import { dateKey } from './time';
-import type { Edition, EditionEntry, GameState, Project, Screening } from './types';
+import type { Edition, EditionEntry, EntrySnapshot, GameState, Project, Screening } from './types';
+import { assessedWords, playerScore } from './awards-results';
+import { shareCheck } from './screen-time';
+import { versionRuntime } from './versions';
 
-export function submitEntry(state: GameState, p: Project, editionId: string, categoryId: string, recipientIds?: string[], versionId?: string, episode?: number): EditionEntry {
+export function submitEntry(state: GameState, p: Project, editionId: string, categoryId: string, recipientIds?: string[], versionId?: string, episode?: number, songId?: string): EditionEntry {
   const ed = edition(state, editionId);
   const inst = institution(ed.institutionId);
   const cat = inst.categories.find((c) => c.id === categoryId);
   if (!cat) throw new Error('That category doesn\'t exist.');
   if (!categoriesFor(inst, ed.year).includes(cat)) throw new Error(`The ${ed.label} doesn't hold that category.`);
+  // One entry per work in a category: results are kept per work, so a work enters one of its songs in a song category.
   if (ed.entries.some((e) => e.projectId === p.id && e.categoryId === categoryId && e.status !== 'withdrawn')) throw new Error('This project is already entered in that category.');
-  const el = checkEligibility(state, p, ed, cat, recipientIds, versionId, episode);
-  if (!el.eligible) throw new Error(el.reasons[0]);
-  // Entered for one episode (the Emmys' directing and writing): the one chosen, or the first anyone credited worked on.
   const rules = categoryRules(ed, cat.id);
-  const ep = rules?.oneEpisode && isEpisodic(p.axes.format) ? episode ?? entryEpisodes(state, p, cat, rules)[0] : undefined;
+  // Entered for one episode (the Emmys' directing and writing): the one chosen, or the first anyone credited worked on.
+  // A performer category that measures screen time per episode is entered for one too: the one chosen, or their best.
+  const perEpisode = rules?.screenShare?.value.per === 'episode';
+  let ep = (rules?.oneEpisode || perEpisode) && isEpisodic(p.axes.format) ? episode ?? (rules?.oneEpisode ? entryEpisodes(state, p, cat, rules)[0] : undefined) : undefined;
+  const el = checkEligibility(state, p, ed, cat, recipientIds, versionId, ep, songId);
+  if (!el.eligible) throw new Error(el.reasons[0]);
+  if (perEpisode && ep === undefined && isEpisodic(p.axes.format) && el.recipients[0]) ep = shareCheck(p, el.recipients[0], rules!.screenShare!.value.atLeast, 'episode', { versionId }).episode;
+  // The song entered: the one chosen, or the one whose writers were credited.
+  const song = cat.recipient === 'song' ? songId ?? p.credits.find((c) => c.id === el.recipients[0]?.id)?.songId : undefined;
   // Entry forms ask for a logline and a synopsis (the Pitch). SLATE checks they are written, never what they say.
   const pitch = entryNeeds(p);
   if (pitch) throw new Error(pitch);
@@ -33,16 +42,40 @@ export function submitEntry(state: GameState, p: Project, editionId: string, cat
   }
   const base = `${editionId}:${categoryId}:${p.id}`;
   const tries = ed.entries.filter((e) => e.id === base || e.id.startsWith(`${base}#`)).length;
+  // Entering again after withdrawing is a new entry that says which one it revises; the withdrawn one stays as it was.
+  const previous = [...ed.entries].reverse().find((e) => e.id === base || e.id.startsWith(`${base}#`));
   const entry: EditionEntry = {
     id: tries ? `${base}#${tries + 1}` : base, projectId: p.id, categoryId, submittedAt: state.now, status: 'submitted', recipients: el.recipients.map((r) => r.id), fee: cat.fee && !alreadyPaid ? cat.fee : 0,
     reason: el.provisional ? el.provisionalNote ?? 'Entered provisionally. The planned release must happen within the eligibility period.' : undefined,
     ...(versionId ? { versionId } : {}),
     ...(ep ? { episode: ep } : {}),
+    ...(song ? { songId: song } : {}),
+    ...(previous ? { revises: previous.id } : {}),
   };
+  entry.snapshot = entrySnapshot(p, cat, entry, rules);
   ed.entries.push(entry);
   if (!state.followed.includes(inst.id)) state.followed.push(inst.id);
   addLog(state, `You entered ${p.title} for ${cat.name} at the ${ed.label}.`, inst.kind === 'festival' ? 'festival' : 'award', { projectId: p.id, route: { view: 'event', editionId } });
   return entry;
+}
+
+/**
+ * What the entry is judged on, kept from now: the cut's runtime, the score, who receives it, the screen-time calculation
+ * shown, the song and its writers. Later edits and records don't change it.
+ */
+export function entrySnapshot(p: Project, cat: Parameters<typeof playerScore>[1], e: EditionEntry, rules?: ReturnType<typeof categoryRules>): EntrySnapshot {
+  const v = e.versionId ? p.versions?.find((x) => x.id === e.versionId) : undefined;
+  const credits = e.recipients.map((id) => p.credits.find((c) => c.id === id)).filter((c): c is NonNullable<typeof c> => !!c);
+  const screen = rules?.screenShare?.value;
+  const song = e.songId ? p.songs?.find((x) => x.id === e.songId) : undefined;
+  return {
+    runtimeMin: v ? versionRuntime(p, v) : p.delivered?.runtimeMin ?? 0,
+    score: playerScore(p, cat, e.recipients, cat.judging, e),
+    assessed: assessedWords(p, cat, e),
+    recipients: credits.map((c) => ({ id: c.id, name: c.personName, contribution: c.contribution, ...(c.characterName ? { characterName: c.characterName } : {}) })),
+    ...(screen ? { screen: credits.map((c) => ({ creditId: c.id, text: shareCheck(p, c, screen.atLeast, screen.per, { episode: e.episode, versionId: e.versionId }).text })) } : {}),
+    ...(song ? { song: { id: song.id, title: song.title, writers: credits.map((c) => c.personName) } } : {}),
+  };
 }
 
 export function withdrawEntry(state: GameState, editionId: string, entryId: string): void {

@@ -459,7 +459,7 @@ function showingsBefore(p: Project, before: string, exceptEdition?: string): { d
   return out;
 }
 
-export function checkEligibility(state: GameState, p: Project, ed: Edition, cat: Category, recipientIds?: string[], versionId?: string, episode?: number): Eligibility {
+export function checkEligibility(state: GameState, p: Project, ed: Edition, cat: Category, recipientIds?: string[], versionId?: string, episode?: number, songId?: string): Eligibility {
   const inst = institution(ed.institutionId);
   const rules = categoryRules(ed, cat.id);
   const reasons: string[] = [];
@@ -591,9 +591,12 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   // reads the Academy's list (simulatedOscarRelease above).
   const single = rules?.oneEpisode && isEpisodic(p.axes.format);
   if (single && episode !== undefined && !(Number.isInteger(episode) && episode >= 1 && episode <= p.axes.episodeCount)) reasons.push(`${p.title} has ${p.axes.episodeCount} episodes; choose one of them.`);
-  const recipients = categoryRecipients(state, p, cat, recipientIds, rules, episode);
+  const recipients = categoryRecipients(state, p, cat, recipientIds, rules, episode, { versionId, songId });
   if (!recipients.length && single && categoryRecipients(state, p, cat, recipientIds).length) {
     reasons.push(`Nobody credited for this category worked on episode ${episode ?? entryEpisodes(state, p, cat, rules)[0] ?? 1}.`);
+  } else if (!recipients.length && cat.recipient === 'song') {
+    const why = catalogRules().songProblems(p, songId, versionId);
+    reasons.push(...(why.length ? why : ['No credited writer for this song.']));
   } else if (!recipients.length) {
     // Credited, but ruled out by the category's own rules: every rule that rules out the first one credited.
     const c = categoryRecipients(state, p, cat, recipientIds)[0];
@@ -609,7 +612,10 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
       if (span && ((span.under !== undefined && R.episodeShare(p, c) >= span.under) || (span.atLeast !== undefined && R.episodeShare(p, c) < span.atLeast))) {
         why.push(`This category takes performers in ${span.under !== undefined ? 'fewer than half' : 'at least half'} of the episodes; ${name} is in ${c.episodes === 'all' ? p.axes.episodeCount : c.episodes.length} of ${p.axes.episodeCount}.`);
       }
-      if (screen && R.screenShare(p, c, screen.per) < screen.atLeast) why.push(`${name} is on screen for ${Math.round(R.screenShare(p, c, screen.per) * 100)}% of ${screen.per === 'episode' ? 'their biggest episode' : 'the running time'} in the approved script; this category needs at least ${Math.round(screen.atLeast * 100)}%.`);
+      if (screen) {
+        const sc = R.shareCheck(p, c, screen.atLeast, screen.per, { episode, versionId });
+        if (sc.met !== true) why.push(sc.text);
+      }
     }
     reasons.push(...(why.length ? why : [recipientMissingReason(cat)]));
   }
@@ -626,8 +632,8 @@ function recipientMissingReason(cat: Category): string {
 }
 
 /** Credited recipients: only people with the relevant actual contribution, less any the category's rules exclude. */
-export function categoryRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules, episode?: number): Credit[] {
-  const all = ruledRecipients(state, p, cat, chosen, rules);
+export function categoryRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules, episode?: number, entered: { versionId?: string; songId?: string } = {}): Credit[] {
+  const all = ruledRecipients(state, p, cat, chosen, rules, { episode, ...entered });
   if (!rules?.oneEpisode || !isEpisodic(p.axes.format)) return all;
   // One episode: those credited on it (the first episode with anyone credited, until one is chosen), at most `max`;
   // entered whole when there is no episode to choose (`wholeWhenAll`).
@@ -647,8 +653,8 @@ export function entryEpisodes(state: GameState, p: Project, cat: Category, rules
   return Array.from({ length: p.axes.episodeCount }, (_, i) => i + 1).filter((n) => all.some((c) => c.episodes === 'all' || c.episodes.includes(n)));
 }
 
-function ruledRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
-  const all = creditedRecipients(state, p, cat, chosen, rules);
+function ruledRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules, ctx: { episode?: number; versionId?: string; songId?: string } = {}): Credit[] {
+  const all = creditedRecipients(state, p, cat, chosen, rules, ctx);
   if (!rules?.noNarrators && !rules?.episodeShare && !rules?.notAfterNomination && !rules?.screenShare) return all;
   const span = rules.episodeShare?.value;
   const before = rules.notAfterNomination?.value;
@@ -656,19 +662,19 @@ function ruledRecipients(state: GameState, p: Project, cat: Category, chosen?: s
   return all.filter((c) => !(rules.noNarrators && catalogRules().isNarrator(p, c))
     && (!span || ((span.under === undefined || catalogRules().episodeShare(p, c) < span.under) && (span.atLeast === undefined || catalogRules().episodeShare(p, c) >= span.atLeast)))
     && !(before && catalogRules().nominatedEarlier(state, p, c, before.institution, before.categories))
-    && !(screen && catalogRules().screenShare(p, c, screen.per) < screen.atLeast));
+    && !(screen && catalogRules().shareCheck(p, c, screen.atLeast, screen.per, ctx).met !== true));
 }
 
 
 
 
 
-function creditedRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
+function creditedRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules, ctx: { versionId?: string; songId?: string } = {}): Credit[] {
   const credits = p.credits;
   const chars = p.drafts.find((d) => d.number === p.approvedDraft)?.characters ?? [];
   // Leading or supporting as the producer placed the part, else by its size; story functions never decide it.
   const placed = (name?: string) => { const ch = chars.find((x) => x.name === name); return ch ? castPlacement(ch) : null; };
-  const added = catalogRules().newRecipients(state, p, cat, placed);
+  const added = catalogRules().newRecipients(state, p, cat, placed, { ...ctx, max: rules?.song?.value.maxWriters });
   if (added) return chosen?.length ? added.filter((c) => chosen.includes(c.id)) : added;
   if (cat.with?.length) {
     // Several recipient groups (producers and the director): each credited person once.

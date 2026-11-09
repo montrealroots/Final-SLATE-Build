@@ -12,7 +12,7 @@ import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { COMEDY_MUSICAL } from './script-effects';
 import { addLog, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localToInstant, parseYmd } from './time';
-import type { Edition, GameState, Project, RivalFilm, ScheduledEvent } from './types';
+import type { Edition, EditionEntry, GameState, Project, RivalFilm, ScheduledEvent } from './types';
 
 /**
  * National selection (the Academy's Rule Sixteen II.A): a win of an award on the edition's International Feature Film
@@ -295,8 +295,13 @@ function generatedRivals(state: GameState, ed: Edition, cat: Category, n: number
   return out;
 }
 
-export function playerScore(p: Project, cat: Category, recipients: string[], judging: Judging): number {
-  const q = p.quality ?? {};
+/**
+ * What a work scores in a category. With an episode named (an entry for one episode), that episode's own assessment where
+ * delivery recorded it (finish.ts assessEpisodes); a project delivered before episodes were assessed apart is judged on
+ * the season. A song is judged on its own writing.
+ */
+export function playerScore(p: Project, cat: Category, recipients: string[], judging: Judging, entered: { episode?: number; songId?: string } = {}): number {
+  const q = (entered.episode !== undefined ? p.episodeQuality?.[entered.episode] : undefined) ?? p.quality ?? {};
   const perf = (rid: string) => {
     const credit = p.credits.find((c) => c.id === rid);
     const chars = p.drafts.find((d) => d.number === p.approvedDraft)?.characters ?? [];
@@ -310,14 +315,30 @@ export function playerScore(p: Project, cat: Category, recipients: string[], jud
     case 'lead': case 'supporting': case 'voice': case 'narrator': return recipients.length ? Math.max(...recipients.map(perf)) : 50;
     case 'ensemble': case 'host': case 'national': case 'career': return q.overall ?? 50;
     case 'guest': case 'performer': return recipients.length ? Math.max(...recipients.map(perf)) : 50;
-    case 'craft': return craftScore(p, cat.crafts, false);
-    case 'song': return craftScore(p, undefined, true);
+    case 'craft': return craftScore({ ...p, quality: q }, cat.crafts, false);
+    case 'song': return craftScore(p, undefined, true, entered.songId);
     default: {
       if (judging === 'audience') return q.reception ?? q.overall ?? 50;
       if (cat.mediums?.includes('animation') && q.animation) return (q.overall + q.animation) / 2;
       return q.overall ?? 50;
     }
   }
+}
+
+/** How an entry is judged: on what it was entered with (its snapshot), else, for entries from before snapshots, as now. */
+export function entryScore(p: Project, cat: Category, e: Pick<EditionEntry, 'recipients' | 'episode' | 'songId' | 'snapshot'>): number {
+  return e.snapshot?.score ?? playerScore(p, cat, e.recipients, cat.judging, e);
+}
+
+/** Where an entry's score comes from, in the player's words. */
+export function assessedWords(p: Project, cat: Category, e: { episode?: number; songId?: string }): string {
+  const song = e.songId ? p.songs?.find((x) => x.id === e.songId) : undefined;
+  if (cat.recipient === 'song') return song ? `Judged on the writing of "${song.title}".` : 'Judged on the music.';
+  if (e.episode !== undefined) {
+    return p.episodeQuality?.[e.episode] ? `Judged on episode ${e.episode}'s own work: its scenes, takes, writer, director, cast and crew.`
+      : `Judged on the whole season: ${p.title} was delivered before episodes were assessed on their own, so episode ${e.episode}'s own work wasn't recorded.`;
+  }
+  return isEpisodic(p.axes.format) ? 'Judged on the whole season.' : 'Judged on the whole work.';
 }
 
 /** Season visibility: earlier festival selections and wins in the past year help with members' ballots. */
@@ -366,7 +387,7 @@ export function announce(state: GameState, ed: Edition): HandlerResult {
       ...entries.map((e) => {
         const p = state.projects.find((x) => x.id === e.projectId)!;
         const vis = cat.judging === 'members' ? visibility(state, p, ed.announce) : 0;
-        return { id: p.id, kind: 'project' as const, score: playerScore(p, cat, e.recipients, cat.judging) + vis };
+        return { id: p.id, kind: 'project' as const, score: entryScore(p, cat, e) + vis };
       }),
       ...rivals.map((x) => ({ id: x.id, kind: 'rival' as const, score: x.score })),
     ];
@@ -478,7 +499,7 @@ export function editionResults(state: GameState, ed: Edition): HandlerResult {
         const p = state.projects.find((x) => x.id === id)!;
         const e = ed.entries.find((x) => x.projectId === id && x.categoryId === cat.id)!;
         const vis = cat.judging === 'members' ? visibility(state, p, ed.start) : 0;
-        return { id, kind: 'project' as const, score: playerScore(p, cat, e?.recipients ?? [], cat.judging) + vis };
+        return { id, kind: 'project' as const, score: (e ? entryScore(p, cat, e) : playerScore(p, cat, [], cat.judging)) + vis };
       }).filter((x) => ed.entries.some((e) => e.projectId === x.id && e.categoryId === cat.id && e.status !== 'withdrawn' && e.status !== 'disqualified')),
       ...res.rivalIds.map((id) => ({ id, kind: 'rival' as const, score: ed.rivals.find((r) => r.id === id)?.score ?? 50 })),
     ];

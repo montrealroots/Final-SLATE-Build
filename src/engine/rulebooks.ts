@@ -152,6 +152,12 @@ export interface CategoryRules {
    */
   screenShare?: Ruled<{ atLeast: number; per: 'episode' | 'whole' }>;
   /**
+   * A song award's own limits: how many of a song's writers can receive it and how many songs one work may enter (the
+   * Oscars' Rule Nineteen II.J and III.C). That the song was written for the work is SLATE's reading of every original
+   * song category (songs.ts writtenForProject); this records only what an organizer's document adds.
+   */
+  song?: Ruled<{ maxWriters?: number; maxSongs?: number }>;
+  /**
    * Box office in the qualifying window: at least `worldwide` dollars gross from theatrical releases, `domestic` of them in
    * `country` (the Golden Globes' Cinematic and Box Office Achievement, B.1.b), from what distributors have reported.
    */

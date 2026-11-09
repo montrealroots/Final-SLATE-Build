@@ -1,10 +1,12 @@
 // What the expanded festival and award catalog asks of a project and who receives each award (docs/awards/DESIGN.md,
 // November 9, 2026). Every requirement reads something the project records or the player declares; none reads prose.
+import { songsOf, songUses, writtenForProject } from './songs';
+import { cutScenes } from './screen-time';
 import { getPlace } from '../data/places';
 import { personById } from './people';
 import { competesAs } from './script-effects';
 import { approvedScenes } from './projects';
-import type { Credit, GameState, Project } from './types';
+import type { Credit, GameState, Project, Song } from './types';
 
 export { QUALIFYING_LISTS, projectedList, qualifyingList } from './qualifying-lists';
 export { RULEBOOK_DATA } from './rulebook-data';
@@ -96,7 +98,7 @@ function breakthrough(state: GameState, p: Project, c: Credit): boolean {
  * Credited recipients for the recipient kinds the expanded catalog adds, or null for the older kinds (awards.ts keeps
  * those). Only people credited with the contribution the award concerns.
  */
-export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (name?: string) => string | null): Credit[] | null {
+export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (name?: string) => string | null, ctx: { versionId?: string; songId?: string; max?: number } = {}): Credit[] | null {
   const cast = p.credits.filter((c) => c.contribution === 'Cast' || c.contribution === 'Performance Capture');
   const pick = (r: string): Credit[] | null => {
     switch (r) {
@@ -107,7 +109,13 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
       // Both the part and the narration sequence come from the approved script, the one delivered.
       case 'narrator': return (p.drafts.find((d) => d.number === p.approvedDraft)?.scenes ?? []).some((s) => s.kind === 'narration') ? p.credits.filter((c) => (c.contribution === 'Cast' || c.contribution === 'Voice Cast') && chars(p).find((x) => x.name === c.characterName)?.functions.includes('narrator')) : [];
       case 'host': return p.credits.filter((c) => c.roleId === 'contributor' && /\bhost/i.test(p.contributors.find((x) => `contributor:${x.id}` === c.person)?.role ?? ''));
-      case 'song': return p.scenes.some((s) => s.songs.some((x) => !x.licensed)) ? p.credits.filter((c) => c.roleId === 'composer') : [];
+      // One song, written for the work, with its writers: until November 9, 2026, the score composer of any project with a
+      // song not marked licensed. Now the song entered (or the first that qualifies) and only its writing credits.
+      case 'song': {
+        const song = originalSongs(p, ctx.versionId).find((x) => !ctx.songId || x.id === ctx.songId);
+        const writers = song ? p.credits.filter((c) => c.songId === song.id && (c.roleId === 'songwriter' || c.roleId === 'lyricist')) : [];
+        return ctx.max ? writers.slice(0, ctx.max) : writers;
+      }
       case 'national': return p.credits.filter((c) => c.contribution === 'Directed By');
       default: return null;
     }
@@ -125,10 +133,35 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
   return out;
 }
 
+/** The songs heard in the cut entered that were written for the work, with words (songs.ts). */
+export function originalSongs(p: Project, versionId?: string): Song[] {
+  const v = versionId ? p.versions?.find((x) => x.id === versionId) : undefined;
+  return [...new Set(songUses(p, cutScenes(p, versionId), v).map((x) => x.song))].filter((x) => writtenForProject(p, x) && x.writers.some((w) => w.lyrics));
+}
+
+/** Why no song can be entered, or why the one chosen can't, in the player's words. */
+export function songProblems(p: Project, songId?: string, versionId?: string): string[] {
+  const v = versionId ? p.versions?.find((x) => x.id === versionId) : undefined;
+  const heard = [...new Set(songUses(p, cutScenes(p, versionId), v).map((x) => x.song))];
+  const chosen = songId ? songsOf(p).find((x) => x.id === songId) : undefined;
+  if (songId && !chosen) return ['That song is no longer part of the project.'];
+  if (chosen && !heard.includes(chosen)) return [`"${chosen.title}" isn't heard in the ${v ? v.label : 'cut'} entered.`];
+  if (!heard.length) return [`No song is heard in the ${v ? v.label : 'cut'} entered.`];
+  return (chosen ? [chosen] : heard).map((x) => {
+    if (x.rights === 'licensed') return `"${x.title}" is licensed; an original song award takes a song written for the work.`;
+    if (x.origin === 'existing') return `"${x.title}" existed before the project; an original song award takes a song written for the work.`;
+    if (x.origin === 'unrecorded') return `"${x.title}" came from a save made before songs had writers, and nothing shows it was written for this project.`;
+    if (!writtenForProject(p, x)) return `"${x.title}" isn't finished: its writing isn't done.`;
+    if (!x.writers.some((w) => w.lyrics)) return `"${x.title}" has no lyrics; an original song award takes words and music.`;
+    return '';
+  }).filter(Boolean);
+}
+
 /** The figure a craft or song is judged on: that craft's own quality where delivery recorded it, else the project's. */
-export function craftScore(p: Project, crafts: string[] | undefined, song: boolean): number {
+export function craftScore(p: Project, crafts: string[] | undefined, song: boolean, songId?: string): number {
   const q = p.quality ?? {};
-  if (song) return q.music ?? q.craft ?? 50;
+  // A song is judged on its own writing where delivery recorded it (finish.ts), else on the music as before.
+  if (song) return (songId ? q[`song:${songId}`] : undefined) ?? q.music ?? q.craft ?? 50;
   const own = (crafts ?? []).map((r) => q[`craft:${r}`]).filter((x): x is number => typeof x === 'number');
   if (own.length) return Math.max(...own);
   if (crafts?.includes('editor')) return q.editing ?? q.craft ?? 50;
@@ -178,22 +211,9 @@ export function nominatedEarlier(state: GameState, p: Project, c: Credit, instit
   return false;
 }
 
-/**
- * The share of the running time a credited part is on screen, from the approved script's scene minutes: of its biggest
- * episode, or of the whole work. The episode's running time is the target per episode; the whole is the delivered cut.
- */
-export function screenShare(p: Project, c: Credit, per: 'episode' | 'whole'): number {
-  const id = chars(p).find((x) => x.name === c.characterName)?.id;
-  if (!id) return 0;
-  const scenes = approvedScenes(p).filter((s) => s.participants.includes(id));
-  if (per === 'whole') {
-    const total = p.delivered?.runtimeMin ?? p.axes.targetRuntimeMin * Math.max(1, p.axes.episodeCount);
-    return scenes.reduce((a, s) => a + s.estMinutes, 0) / Math.max(1, total);
-  }
-  const byEp = new Map<number, number>();
-  for (const s of scenes) byEp.set(s.episode, (byEp.get(s.episode) ?? 0) + s.estMinutes);
-  return Math.max(0, ...byEp.values()) / Math.max(1, p.axes.targetRuntimeMin);
-}
+// The share of the running time a part is on screen came from the approved script here until November 9, 2026 (every
+// listed scene counted whole, an episode ran its target length). It now comes from the cut: screen-time.ts.
+export { shareCheck } from './screen-time';
 
 /**
  * Theatrical gross the distributors have reported for releases dated in the window: worldwide, and from releases only in

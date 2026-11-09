@@ -20,6 +20,7 @@ import { approvalScope, type ScopeChange } from '../engine/cost-cuts';
 import { CONTENT_ISSUES, audienceContentNote, characterPronouns, contentSuggestions, contentSummary, placementExplained, spokenMinutes } from '../engine/script-explain';
 import type { ContentIssue, ContentLevel, Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
+import { PLACEMENT_LABELS, attachSong, detachSong } from '../engine/song-actions';
 import { store, useGame } from './store';
 
 const undoStack = new Map<string, string[]>();
@@ -282,6 +283,26 @@ export function ScriptTab({ p }: { p: Project }) {
   );
 }
 
+/** The project's songs heard in this scene (songs.ts): use one here or take it out; songs are made under Production. */
+function SceneSongs({ p, sceneId }: { p: Project; sceneId: string }) {
+  const [err, setErr] = useState<string | null>(null);
+  const songs = p.songs ?? [];
+  const act = (fn: (q: Project) => void) => setErr(store.act((st) => fn(st.projects.find((x) => x.id === p.id)!)));
+  return (
+    <fieldset className="spaced" style={{ border: 0, padding: 0 }}>
+      <legend className="small">Songs In This Scene</legend>
+      {err && <p className="callout callout-negative" role="alert">{err}</p>}
+      {songs.length ? (
+        <div className="chip-row">{songs.map((x) => {
+          const use = x.uses.find((u) => u.sceneId === sceneId);
+          return <Check key={x.id} label={`"${x.title}" In This Scene`} hint={use ? PLACEMENT_LABELS[use.placement] : undefined} checked={!!use} onChange={(v) => act((q) => (v ? attachSong(q, x.id, sceneId, 'background') : detachSong(q, x.id, sceneId)))} />;
+        })}</div>
+      ) : null}
+      <p className="dim small">Make songs, credit who writes and performs them, and choose how each plays (performed on screen, in the background, over titles or credits) under Songs in the Production tab.</p>
+    </fieldset>
+  );
+}
+
 function listText(xs: string[]): string {
   return xs.join(', ');
 }
@@ -382,10 +403,9 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
             <TextField label="Stunts" hint="Describe the stunt, or leave blank." value={s.stunts} onChange={(v) => up({ stunts: v })} />
             <NumberField label="Crowd Size" value={s.crowd} min={0} max={5000} onChange={(v) => up({ crowd: Number.isFinite(v) ? Math.round(v) : 0 })} />
             <TextField label="Visual Effects" hint="Separate with commas." value={listText(s.vfx)} onChange={(v) => up({ vfx: parseList(v) })} />
-            <TextField label="Songs" hint="Separate with commas. Mark licensed songs below." value={listText(s.songs.map((x) => x.title))} onChange={(v) => up({ songs: parseList(v).map((t) => ({ title: t, licensed: s.songs.find((x) => x.title === t)?.licensed ?? false })) })} />
-          </div>
+"          </div>
+          <SceneSongs p={p} sceneId={s.id} />
           <div className="chip-row">
-            {s.songs.map((song) => <Check key={song.title} label={`${song.title} Is Licensed`} checked={song.licensed} onChange={(v) => up({ songs: s.songs.map((x) => (x.title === song.title ? { ...x, licensed: v } : x)) })} />)}
             <Check label="Dance" checked={s.dance} onChange={(v) => up({ dance: v })} />
             <Check label="Intimate Scene" checked={s.intimacy} onChange={(v) => up({ intimacy: v })} />
             <Check label="Water Work" checked={s.water} onChange={(v) => up({ water: v })} />

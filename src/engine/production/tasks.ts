@@ -5,6 +5,7 @@ import type { Project, Scene, Task } from '../types';
 import { approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneLabel, sceneTechnique } from '../projects';
 import { MOCAP_CLEANUP_PER_SESSION } from '../mocap';
 import { ANIM_RATE, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS } from './rates';
+import { recordTaskId, songTasks, songUses } from '../songs';
 
 // ---------------- Task generation ----------------
 
@@ -160,12 +161,21 @@ export function buildTasks(p: Project): Task[] {
     }
   }
 
-  // Post production, per episode. Milestones gate stages that need a locked picture.
-  const licensed = scenes.some((s) => s.songs.some((x) => x.licensed)) || scenes.some((s) => s.kind === 'archival');
-  if (licensed) {
-    const items = scenes.reduce((a, s) => a + s.songs.filter((x) => x.licensed).length, 0);
-    if (items) tasks.push(t('post:clearance', 'all', 'Music Clearances', 'Music', 'music-supervisor', items * 2, 'days'));
+  // Songs (songs.ts): writing and recording each, and clearing each licensed one the script uses. Until November 9, 2026
+  // the script's song titles counted, one clearance per scene listing; now each licensed song is cleared once.
+  const uses = songUses(p, scenes);
+  // A song a version puts in place of another is written, recorded and cleared like the cut's own.
+  const swapped = (p.versions ?? []).flatMap((v) => (v.songChanges ?? []).map((c) => c.replaceWith)).map((id) => (p.songs ?? []).find((x) => x.id === id)).filter((x): x is NonNullable<typeof x> => !!x);
+  const used = [...new Set([...uses.map((x) => x.song), ...swapped])];
+  for (const song of p.songs ?? []) tasks.push(...songTasks(song, used.includes(song)));
+  const licensedSongs = used.filter((x) => x.rights === 'licensed');
+  const licensed = licensedSongs.length > 0 || scenes.some((s) => s.kind === 'archival');
+  if (licensedSongs.length) tasks.push(t('post:clearance', 'all', 'Music Clearances', 'Music', 'music-supervisor', licensedSongs.length * 2, 'days'));
+  // A song performed on screen is recorded before an animated scene is animated, as a voice is.
+  for (const task of tasks.filter((x) => x.kind === 'anim:animation' || x.kind === 'sm:animation')) {
+    for (const { song, use } of uses) if (use.placement === 'performed' && task.sceneIds.includes(use.sceneId) && song.rights !== 'licensed') task.dependsOn.push(recordTaskId(song));
   }
+  // Post production, per episode. Milestones gate stages that need a locked picture.
   for (let e = 1; e <= p.axes.episodeCount; e++) {
     const eScenes = scenes.filter((s) => s.episode === e);
     const minutes = Math.max(1, eScenes.reduce((a, s) => a + s.estMinutes, 0));
@@ -198,7 +208,8 @@ export function buildTasks(p: Project): Task[] {
     tasks.push(t('post:music', String(e), `Score${epSuffix(p, e)}`, 'Music', 'composer', Math.max(1, minutes / 4), 'days', [lock], { episode: e }));
     if (hasVfx) tasks.push(t('post:vfx', String(e), `Visual Effects${epSuffix(p, e)}`, 'Post Production', 'vfx-artist', eScenes.reduce((a, s) => a + s.vfx.length * 4, 0), 'days', [lock], { episode: e }));
     tasks.push(t('post:color', String(e), `Color Grade${epSuffix(p, e)}`, 'Post Production', 'colorist', Math.max(1, minutes / 20), 'days', [lock, ...(hasVfx ? [`post:vfx:${e}`] : [])], { episode: e }));
-    tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, minutes / 30), 'days', [`post:sound:${e}`, ...(p.takesModel ? [`post:dialogue:${e}`, `post:foley:${e}`] : []), `post:music:${e}`, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
+    const songsHere = [...new Set(uses.filter((x) => eScenes.some((s) => s.id === x.use.sceneId) && x.song.rights !== 'licensed').map((x) => recordTaskId(x.song)))];
+    tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, minutes / 30), 'days', [`post:sound:${e}`, ...(p.takesModel ? [`post:dialogue:${e}`, `post:foley:${e}`] : []), `post:music:${e}`, ...songsHere, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
     tasks.push(t('post:captions', String(e), `Captions And Subtitles${epSuffix(p, e)}`, 'Post Production', 'subtitler', Math.max(1, (minutes / 30) * p.axes.dialogueLanguages.length), 'days', [`post:mix:${e}`], { episode: e }));
     tasks.push(t('post:qc', String(e), `Delivery Quality Control${epSuffix(p, e)}`, 'Post Production', 'qc-technician', 1, 'days', [`post:color:${e}`, `post:mix:${e}`, `post:captions:${e}`], { episode: e }));
   }
