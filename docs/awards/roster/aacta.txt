@@ -1,0 +1,53 @@
+@institution aacta
+@edition 2027 AACTA Awards presented by BINGE
+@source aacta27-entries | Entries for the 2027 AACTA Awards: Film, Television, Documentary, Short Film, Online Series and Visual Effects or Animation entry information | https://www.aacta.org/aacta-awards/entries-2027/ | retrieved 2026-11-09
+# The entry pages list each award; they point to the 2027 AACTA Awards Rule Book for full eligibility, which wasn't
+# read. The Television page lists program, casting, hair and makeup, song and soundtrack awards only (no performance,
+# direction or writing awards); recorded as listed. UNVERIFIED: the rule book may define more.
+# Film (a dramatised story of at least 60 minutes released publicly from January 1 to December 31, 2026)
+film | AACTA Award For Best Film | C | producer | feature:au | aacta27-entries Film |
+indie-film | AACTA Award For Best Indie Film | C | producer | feature:au:indie | aacta27-entries Film | UNVERIFIED: the indie definition is in the rule book, not read; the game reads it as a micro or low budget
+direction | AACTA Award For Best Direction In Film | C | director | feature:au | aacta27-entries Film |
+lead-actor | AACTA Award For Best Lead Actor In Film | C | lead:Actor | feature:au | aacta27-entries Film |
+lead-actress | AACTA Award For Best Lead Actress In Film | C | lead:Actress | feature:au | aacta27-entries Film |
+supporting-actor | AACTA Award For Best Supporting Actor In Film | C | supporting:Actor | feature:au | aacta27-entries Film |
+supporting-actress | AACTA Award For Best Supporting Actress In Film | C | supporting:Actress | feature:au | aacta27-entries Film |
+original-screenplay | AACTA Award For Best Original Screenplay In Film | C | writer-original | feature:au | aacta27-entries Film |
+adapted-screenplay | AACTA Award For Best Adapted Screenplay In Film | C | writer-adapted | feature:au | aacta27-entries Film |
+cinematography | AACTA Award For Best Cinematography In Film | C | craft:dop | feature:au | aacta27-entries Film |
+editing | AACTA Award For Best Editing In Film | C | craft:editor | feature:au | aacta27-entries Film |
+sound | AACTA Award For Best Sound In Film | C | craft:sound-designer+re-recording-mixer+sound-mixer | feature:au | aacta27-entries Film |
+score | AACTA Award For Best Original Score In Film | C | craft:composer | feature:au | aacta27-entries Film |
+production-design | AACTA Award For Best Production Design In Film | C | craft:production-designer+art-director | feature:au | aacta27-entries Film |
+costume | AACTA Award For Best Costume Design In Film | C | craft:costume-designer | feature:au | aacta27-entries Film |
+hair-makeup | AACTA Award For Best Hair And Makeup | C | craft:hair-makeup+prosthetics | feature:au+television:au | aacta27-entries Film; Television | One award across film and television
+casting | AACTA Award For Best Casting In Film | C | craft:casting-director | feature:au | aacta27-entries Film |
+song | AACTA Award For Best Original Song | C | song | feature:au+television:au+documentary-feature:au+short:au+shortform:au | aacta27-entries all pages | One award across every entry type
+soundtrack | AACTA Award For Best Soundtrack | C | craft:music-supervisor+composer | feature:au+television:au+documentary-feature:au+short:au+shortform:au | aacta27-entries all pages | One award across every entry type
+# Television
+childrens | AACTA Award For Best Children's Program | C | producer | television:au:children | aacta27-entries Television |
+competition-reality | AACTA Award For Best Competition Reality Program | C | producer | competition:au | aacta27-entries Television |
+documentary-factual | AACTA Award For Best Documentary Or Factual Program | C | producer | docseries:au+docspecial:au:under-60 | aacta27-entries Television | Stand-alone television documentaries of 60 minutes or more enter as feature documentaries
+drama | AACTA Award For Best Drama Series | C | producer | series:au:drama | aacta27-entries Television | The game's existing entry
+entertainment | AACTA Award For Best Entertainment Program | C | producer | variety:au | aacta27-entries Television |
+factual-entertainment | AACTA Award For Best Factual Entertainment Program | C | producer | reality:au | aacta27-entries Television |
+miniseries | AACTA Award For Best Miniseries | C | producer | limited-series:au | aacta27-entries Television |
+comedy | AACTA Award For Best Narrative Comedy Series | C | producer | series:au:comedy | aacta27-entries Television |
+- AACTA Award For Best Stand-Up Special | Stand-up specials aren't a program type the game makes | aacta27-entries Television
+casting-tv | AACTA Award For Best Casting In Television | C | craft:casting-director | television:au | aacta27-entries Television |
+# Documentary (completed or first shown from August 30, 2025 to August 24, 2026)
+documentary | AACTA Award For Best Documentary | C | producer | documentary-feature:au | aacta27-entries Documentary | The game's existing entry
+documentary-cinematography | AACTA Award For Best Cinematography In A Documentary | C | craft:dop | documentary-feature:au | aacta27-entries Documentary |
+documentary-editing | AACTA Award For Best Editing In A Documentary | C | craft:editor | documentary-feature:au | aacta27-entries Documentary |
+documentary-sound | AACTA Award For Best Sound In A Documentary | C | craft:sound-designer+re-recording-mixer+sound-mixer | documentary-feature:au | aacta27-entries Documentary |
+documentary-score | AACTA Award For Best Original Score In A Documentary | C | craft:composer | documentary-feature:au | aacta27-entries Documentary |
+# Short Film, Online Series And Visual Effects
+short | AACTA Award For Best Short Film | C | producer | short:au+documentary-short:au | aacta27-entries Short Film | Completed July 19, 2025 to July 18, 2026
+online-series | AACTA Award For Best Online Drama Or Comedy Series | C | producer | shortform:au | aacta27-entries Online Series | Premiered online October 18, 2025 to October 1, 2026
+vfx-animation | AACTA Award For Best Visual Effects Or Animation | C | craft:vfx-artist+compositor+animator | feature:au+television:au+documentary-feature:au+short:au | aacta27-entries Visual Effects or Animation |
+# Discretionary Awards
+- Longford Lyell Award | UNVERIFIED: discretionary; criteria page not read | https://www.aacta.org/aacta-awards/longford-lyell-award/
+- Brian Walsh Award | UNVERIFIED: discretionary; criteria page not read | https://www.aacta.org/aacta-awards/2026-aacta-brian-walsh-award/
+- Trailblazer Award | UNVERIFIED: discretionary; criteria page not read | aacta27-entries menu
+- Reg Grundy Award | UNVERIFIED: criteria page not read | https://www.aacta.org/reg-grundy/reg-grundy/reg-grundy-award-2025/
+- AACTA International Awards | A separate program for international work; not yet researched (UNVERIFIED) | https://www.aacta.org/aacta-awards/aacta-international-awards

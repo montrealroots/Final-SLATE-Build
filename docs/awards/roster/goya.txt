@@ -1,0 +1,40 @@
+@institution goya
+@edition 41st Premios Goya (2027)
+@source goya41-bases | Bases de los 41 Premios Goya | https://www.premiosgoya.com/pdfs/bases-de-los-41-premios-goya/ | retrieved 2026-11-09
+# Spanish films (the game's existing origin rule). Base 2.1 lists 23 awards; 2.2 five more with their own specific
+# rules; 2.3 the Goya de Honor; 2.4 the Goya Internacional.
+# Films
+film | Mejor Película | C | producer | feature:es | Base 2.1 a | Named Best Film in the game until November 9, 2026
+animated | Mejor Película de Animación | C | producer | feature:animated:es | Base 2.1 v |
+documentary | Mejor Película Documental | C | producer | documentary-feature:es | Base 2.1 w |
+european | Mejor Película Europea | C | producer | feature:europe-non-es | Base 2.2 | Own specific rules, not read
+iberoamerican | Mejor Película Iberoamericana | C | producer | feature:iberoamerica-non-es | Base 2.2 | Own specific rules, not read
+short-fiction | Mejor Cortometraje de Ficción | C | producer | short:live:es | Base 2.2 | Own specific rules, not read
+short-documentary | Mejor Cortometraje Documental | C | producer | documentary-short:es | Base 2.2 | Own specific rules, not read
+short-animation | Mejor Cortometraje de Animación | C | producer | short:animated:es | Base 2.2 | Own specific rules, not read
+# Direction And Writing
+director | Mejor Dirección | C | director | feature:es | Base 2.1 b | Named Best Director in the game until November 9, 2026
+new-director | Mejor Dirección Novel | C | director | feature:es:debut | Base 2.1 c |
+screenplay | Mejor Guion Original | C | writer-original | feature:es | Base 2.1 d | Named Best Original Screenplay in the game until November 9, 2026
+adapted-screenplay | Mejor Guion Adaptado | C | writer-adapted | feature:es | Base 2.1 e |
+# Performance
+actor | Mejor Actor Protagonista | C | lead:Actor | feature:es | Base 2.1 h |
+actress | Mejor Actriz Protagonista | C | lead:Actress | feature:es | Base 2.1 i |
+supporting-actor | Mejor Actor de Reparto | C | supporting:Actor | feature:es | Base 2.1 j |
+supporting-actress | Mejor Actriz de Reparto | C | supporting:Actress | feature:es | Base 2.1 k |
+new-actor | Mejor Actor Revelación | C | performer:Actor:breakthrough | feature:es | Base 2.1 l |
+new-actress | Mejor Actriz Revelación | C | performer:Actress:breakthrough | feature:es | Base 2.1 m |
+# Music And Crafts
+score | Mejor Música Original | C | craft:composer | feature:es | Base 2.1 f |
+song | Mejor Canción Original | C | song | feature:es | Base 2.1 g |
+production-management | Mejor Dirección de Producción | C | craft:line-producer+production-manager | feature:es | Base 2.1 n |
+cinematography | Mejor Dirección de Fotografía | C | craft:dop | feature:es | Base 2.1 o |
+editing | Mejor Montaje | C | craft:editor | feature:es | Base 2.1 p |
+art-direction | Mejor Dirección de Arte | C | craft:production-designer+art-director | feature:es | Base 2.1 q |
+costume | Mejor Diseño de Vestuario | C | craft:costume-designer | feature:es | Base 2.1 r |
+makeup | Mejor Maquillaje y Peluquería | C | craft:hair-makeup+prosthetics | feature:es | Base 2.1 s |
+sound | Mejor Sonido | C | craft:sound-mixer+sound-designer+re-recording-mixer | feature:es | Base 2.1 t |
+effects | Mejores Efectos Especiales | C | craft:vfx-artist+compositor | feature:es | Base 2.1 u |
+# Honorary Awards
+honor | Goya de Honor | H | career-film | feature | Base 2.3 | One a year, for a professional career as a whole, by the Academy's board
+international | Goya Internacional | H | career-film | feature | Base 2.4 | One a year, unless the board decides otherwise

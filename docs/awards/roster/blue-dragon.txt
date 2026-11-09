@@ -1,0 +1,7 @@
+@institution blue-dragon
+@edition Blue Dragon Film Awards (next edition not identified)
+@blocked blueaward.co.kr reset or timed out (HTTP 503 or no answer) on November 9, 2026 with a plain request and a headless browser. The roster is not verified.
+# Existing categories (kept; names and rules simulated until the organizer's material can be read)
+film | Best Film | C | producer | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+director | Best Director | C | director | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+screenplay | Best Screenplay | C | writer | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable

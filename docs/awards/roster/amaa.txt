@@ -1,0 +1,8 @@
+@institution amaa
+@edition Africa Movie Academy Awards (next edition not identified)
+@blocked ama-awards.com returned HTTP 403 to a plain request and the headless browser timed out on November 9, 2026. The roster is not verified.
+# Existing categories (kept; names and rules simulated until the organizer's material can be read)
+film | Best Film | C | producer | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+director | Best Director | C | director | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+documentary | Best Documentary | C | producer | documentary-feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+short | Best Short Film | C | producer | short+documentary-short | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
