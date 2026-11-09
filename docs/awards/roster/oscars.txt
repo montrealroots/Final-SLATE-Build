@@ -1,0 +1,44 @@
+@institution oscars
+@edition 99th Academy Awards (2027)
+@source aa99-rules | 99th Oscars Complete Rules | https://www.oscars.org/sites/oscars/files/2026-05/99th_oscars_complete_rules.pdf | retrieved 2026-11-09
+# Rule One lists the Awards of Merit (section 3), the Governors Awards (section 4) and the Special Awards (section 5).
+# Picture, Directing And Writing
+picture | Best Picture | C | producer | feature | Rule 1.3, Rule 20 | Up to three credited producers (Rule 20)
+director | Directing | C | director | feature | Rule 1.3, Rule 12 | Named Best Director in the game until November 9, 2026
+screenplay | Writing (Original Screenplay) | C | writer-original | feature | Rule 1.3, Rule 24 | Named Best Original Screenplay in the game until November 9, 2026
+adapted-screenplay | Writing (Adapted Screenplay) | C | writer-adapted | feature | Rule 1.3, Rule 24 |
+# Acting
+actor | Actor In A Leading Role | C | lead:Actor | feature | Rule 1.3, Rule 6 |
+actress | Actress In A Leading Role | C | lead:Actress | feature | Rule 1.3, Rule 6 |
+supporting-actor | Actor In A Supporting Role | C | supporting:Actor | feature | Rule 1.3, Rule 6 |
+supporting-actress | Actress In A Supporting Role | C | supporting:Actress | feature | Rule 1.3, Rule 6 |
+# Feature Film Awards
+animated | Animated Feature Film | C | producer | feature:animation | Rule 1.3, Rule 7 | At least 75 percent animated
+documentary | Documentary Feature Film | C | producer | documentary-feature | Rule 1.3, Rule 13 |
+international | International Feature Film | C | national | feature+documentary-feature | Rule 1.3, Rule 16 | Made outside the United States, more than half the dialogue not in English; a country's selection committee enters it, or a qualifying award at a festival on the Academy's list (new for the 99th)
+# Short Film Awards
+live-short | Live Action Short Film | C | producer | short:live-action | Rule 1.3, Rule 17 |
+animated-short | Animated Short Film | C | producer | short:animation | Rule 1.3, Rule 8 |
+doc-short | Documentary Short Film | C | producer | documentary-short | Rule 1.3, Rule 14 |
+# Crafts
+casting | Casting | C | craft:casting-director | feature | Rule 1.3, Rule 9 | First given at the 98th Awards (2026)
+cinematography | Cinematography | C | craft:dop | feature | Rule 1.3, Rule 10 |
+costume | Costume Design | C | craft:costume-designer | feature | Rule 1.3, Rule 11 |
+editing | Film Editing | C | craft:editor | feature | Rule 1.3, Rule 15 |
+makeup | Makeup And Hairstyling | C | craft:hair-makeup+prosthetics | feature | Rule 1.3, Rule 18 |
+score | Music (Original Score) | C | craft:composer | feature | Rule 1.3, Rule 19 |
+song | Music (Original Song) | C | song | feature | Rule 1.3, Rule 19 |
+musical | Music (Original Musical) | C | song | feature:musical | Rule 1.3, Rule 19 I.C | Not given every year; at least five original songs by the same writers that further the story
+production-design | Production Design | C | craft:production-designer+art-director | feature | Rule 1.3, Rule 21 |
+sound | Sound | C | craft:sound-designer+re-recording-mixer+sound-mixer | feature | Rule 1.3, Rule 22 |
+visual-effects | Visual Effects | C | craft:vfx-artist+compositor | feature | Rule 1.3, Rule 23 |
+# Governors Awards
+thalberg | Irving G. Thalberg Memorial Award | H | career-producer | feature | Rule 1.4a, Rule 25 | A creative producer whose body of work reflects consistently high quality
+- Jean Hersholt Humanitarian Award | Humanitarian efforts outside production (Rule 1.4b) aren't modeled | Rule 1.4b
+honorary | Honorary Award | H | career | feature | Rule 1.4c, Rule 25 | Lifetime achievement or exceptional contribution
+# Special Awards
+special-achievement | Special Achievement Award | H | career | feature | Rule 1.5a, Rule 26 | Not given every year
+- Scientific And Technical Awards | Recognize technology development, outside the filmmaking the game models | Rule 1.5b, Rule 27
+- Scientific And Technical Lifetime Achievement Award | Technology development isn't modeled | Rule 1.5c, Rule 28
+- Scientific And Technical Service Award | Service to the Academy's technology work isn't modeled | Rule 1.5d, Rule 28
+- Award Of Commendation | Technology development isn't modeled | Rule 1.5e, Rule 28

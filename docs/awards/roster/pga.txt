@@ -1,0 +1,25 @@
+@institution pga
+@edition 37th Annual Producers Guild Awards (2026); carried forward to the 38th (2027) as a projection until the Guild publishes it
+@source pga37 | Producers Guild Awards: the 37th Annual Producers Guild Awards, 14 annual competitive awards and honorary awards | https://producersguild.org/producers-guild-awards/ | retrieved 2026-11-09
+# Motion Pictures
+theatrical | Darryl F. Zanuck Award For Outstanding Producer Of Theatrical Motion Pictures | C | producer | feature | pga37 |
+animated | Award For Outstanding Producer Of Animated Theatrical Motion Pictures | C | producer | feature:animated | pga37 |
+documentary | Award For Outstanding Producer Of Documentary Motion Pictures | C | producer | documentary-feature | pga37 |
+# Television
+drama | Norman Felton Award For Outstanding Producer Of Episodic Television – Drama | C | producer | series:drama | pga37 |
+comedy | Danny Thomas Award For Outstanding Producer Of Episodic Television – Comedy | C | producer | series:comedy | pga37 |
+limited | David L. Wolper Award For Outstanding Producer Of Limited Or Anthology Series Television | C | producer | limited-series | pga37 |
+tv-movie | Award For Outstanding Producer Of Televised Or Streamed Motion Pictures | C | producer | movie | pga37 |
+nonfiction | Award For Outstanding Producer Of Non-Fiction Television | C | producer | docseries+docspecial | pga37 |
+live-variety | Award For Outstanding Producer Of Live Entertainment, Variety, Sketch, Standup & Talk Television | C | producer | variety+variety-special | pga37 |
+game-competition | Award For Outstanding Producer Of Game & Competition Television | C | producer | competition | pga37 |
+childrens | The Award For Outstanding Children's Program | C | producer | television:children | pga37 |
+short-form | The Award For Outstanding Short Form Program | C | producer | shortform | pga37 |
+- The Award For Outstanding Sports Program | Sports programs aren't work the game makes | pga37
+- The PGA Innovation Award | Recognizes interactive and emerging media, which the game doesn't make | pga37
+# Honorary Awards
+selznick | David O. Selznick Achievement Award In Theatrical Motion Pictures | H | career-producer | feature | pga37; https://producersguild.org/selznick-award/ |
+lear | Norman Lear Achievement Award In Television | H | career-producer | television | pga37; https://producersguild.org/norman-lear-award/ |
+- Milestone Award | UNVERIFIED: criteria page not read | https://producersguild.org/the-milestone-award/
+kramer | Stanley Kramer Award | H | career-producer | feature:social-issues | pga37; https://producersguild.org/kramer-award/ | UNVERIFIED: criteria page not read; recorded as a producer honor for work on social issues, not yet modeled beyond a body of work
+- Visionary Award | UNVERIFIED: criteria page not read | https://producersguild.org/visionary-award/

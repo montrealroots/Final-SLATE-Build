@@ -1,0 +1,21 @@
+@institution gotham
+@edition 2026 Gotham Awards (nominations October 27, 2026)
+@source gotham26-criteria | Criteria for the 2026 Gotham Awards; Additional Criteria by Category | https://awards.thegotham.org/criteria/ | retrieved 2026-11-09
+# "There will be ten competitive awards for feature films in 2026" (gotham26-criteria). Feature-length means over 70
+# minutes; a theatrical release in one of six US metro areas from January 1 to December 31, 2026.
+# Film
+feature | Best Feature | C | producer+director | feature:us:over-70 | gotham26-criteria Additional Criteria | U.S. fiction feature; at least two US-based people among director, producer and writer
+documentary | Best Documentary Feature | C | producer+director | documentary-feature:over-70 | gotham26-criteria Additional Criteria | U.S. or international
+international | Best International Feature | C | producer+director | feature:non-us:over-70 | gotham26-criteria Additional Criteria |
+director | Best Director | C | director | feature:over-70 | gotham26-criteria Additional Criteria | U.S. or international fiction
+breakthrough-director | Breakthrough Director | C | director | feature:over-70:debut | gotham26-criteria Additional Criteria | The director's first fiction film
+original-screenplay | Best Original Screenplay | C | writer-original | feature:over-70 | gotham26-criteria Additional Criteria |
+adapted-screenplay | Best Adapted Screenplay | C | writer-adapted | feature:over-70 | gotham26-criteria Additional Criteria |
+lead | Outstanding Lead Performance | C | lead | feature:over-70 | gotham26-criteria Additional Criteria | Gender-neutral; leading or co-leading role
+supporting | Outstanding Supporting Performance | C | supporting | feature:over-70 | gotham26-criteria Additional Criteria | Gender-neutral
+breakthrough-performer | Breakthrough Performer | C | performer:breakthrough | feature:over-70 | gotham26-criteria Additional Criteria | A debut or breakthrough performance
+series | Breakthrough Series | C | producer | series | Earlier Gotham Awards | years 2015-2023; kept for older entries
+# Tributes
+tribute | Gotham Tributes | H | career-film | feature | awards.thegotham.org home page (2025 Tributes: Cultural Icon, Director, Ensemble, Musical, Spotlight, Vanguard, Visionary) | UNVERIFIED: tribute criteria aren't published; treated as a career honor chosen by the organization
+# Television
+- Gotham TV Awards | UNVERIFIED: a separate program (tvawards.thegotham.org) whose pages returned nothing from this environment on November 9, 2026; its categories are not yet researched | tvawards.thegotham.org
