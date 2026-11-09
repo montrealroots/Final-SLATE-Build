@@ -423,7 +423,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('464 categories follow verified rules for at least one edition, 11 only projected ones; the other 331 are simulated', () => {
+  it('465 categories follow verified rules for at least one edition, 11 only projected ones; the other 330 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -449,8 +449,8 @@ describe('audit counts', () => {
     // terms that weren't readable from here.
     // 457 until Venice's Critics' Week read its own regulations (venice-2026@4), 458 until the Goyas' European,
     // Ibero-American and short film awards read their specific Bases (goya-2027@2), 463 until the PGA's documentary award
-    // (pga-2027@2).
-    expect(n).toEqual({ verified: 464, projected: 11, simulated: 331 });
+    // (pga-2027@2), 464 until the WGA's Documentary Screenplay (wga-2027@2).
+    expect(n).toEqual({ verified: 465, projected: 11, simulated: 330 });
   });
 });
 
@@ -807,6 +807,24 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(categoryDeadline(e, cat(e, 'documentary'))).toBe(at('America/Los_Angeles', '2026-08-28', 23, 59) + 59_000);
   });
 
+  it('WGA 2027, version 2: Documentary Screenplay needs feature length and a US run in 2026, not a television premiere', () => {
+    const s = startLife('wga-doc');
+    const e = ed(s, 'wga-2027');
+    s.now = at('America/Los_Angeles', '2026-10-01', 9);
+    const doc = (runtime = 90) => { const p = work(s, { format: 'documentary-feature', runtime, completed: '2026-01-10' }); p.credits.push(credit('w1', 'Written By', 'writer', 2)); return p; };
+    const run = doc();
+    release(run, 'theatrical', '2026-04-01', ['US']);
+    expect(r(s, run, e, 'documentary-screenplay')).toBe('');
+    const tvFirst = doc();
+    release(tvFirst, 'broadcast', '2026-03-01', ['US']);
+    release(tvFirst, 'theatrical', '2026-04-01', ['US']);
+    expect(r(s, tvFirst, e, 'documentary-screenplay')).toMatch(/outside cinemas, before any theatrical run/);
+    const short = doc(40);
+    release(short, 'theatrical', '2026-04-01', ['US']);
+    expect(r(s, short, e, 'documentary-screenplay')).toMatch(/more than 40/);
+    expect(categoryDeadline(e, cat(e, 'documentary-screenplay'))).toBe(at('America/Los_Angeles', '2026-11-20', 17));
+  });
+
   it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {
     const s = startLife('idfa');
     const e = ed(s, 'idfa-2026');
@@ -963,7 +981,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Writers Guild Awards 2027: screenplays with a US run in 2026 and no television first; series in 2026; talk and documentary November to October', () => {
     const s = startLife('wga');
     const e = ed(s, 'wga-2027');
-    expect(e.rulesId).toBe('wga-2027@1');
+    expect(e.rulesId).toBe('wga-2027@2'); // version 2 adds Documentary Screenplay; the rest keep version 1's rules
     s.now = at('America/Los_Angeles', '2026-10-01', 9);
     const film = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'us-los-angeles' });
     release(film, 'broadcast', '2026-02-01', ['US']);

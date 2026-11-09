@@ -515,7 +515,12 @@ to DVD isn't eligible. Series (drama, comedy, limited, new): aired in 2026, howe
 episodic, children's, short form): first broadcast in 2026; comedy/variety talk and specials and documentary categories:
 November 1, 2025 to October 31, 2026. Every category: 5:00 p.m. PST on November 20, 2026. Not modeled: a WGA (or affiliate)
 collective bargaining agreement; the TV movie's bar on an earlier theatrical exhibition. The Documentary Screenplay and Paul
-Selvin pages weren't read; those stay on SLATE's rules.
+Selvin pages weren't read in version 1.
+
+**Version 2 (`wga-2027@2`, read November 9, 2026):** [Documentary Screenplay](https://awards.wga.org/submissions/documentary-screenplay):
+exhibited in 2026, more than 40 minutes, a week in Los Angeles or New York cinemas (SLATE: a US theatrical release), a
+simultaneous stream allowed and a television premiere not, by 5:00 p.m. on November 20, 2026. Not modeled: the WGA
+agreement and Notice of Tentative Writing Credits. The Paul Selvin Award stays on SLATE's rules.
 
 ## Gotham Awards, 2026
 

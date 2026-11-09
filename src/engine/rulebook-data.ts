@@ -1095,6 +1095,28 @@ const WGA_2027: RuleBook = {
   },
 };
 
+/**
+ * Version 2 (November 9, 2026): the Documentary Screenplay page (awards.wga.org/submissions/documentary-screenplay),
+ * which answered once tried by name. Exhibited January 1 to December 31, 2026, feature length (more than 40 minutes), at
+ * least a week in Los Angeles or New York cinemas (SLATE: a US theatrical release), a simultaneous stream allowed and a
+ * television premiere not, by 5:00 p.m. on November 20, 2026. Not modeled: written under a WGA agreement with a Notice of
+ * Tentative Writing Credits on file, and the source-material and fee-payer exclusions.
+ */
+const WGA_2027_2: RuleBook = {
+  ...WGA_2027, id: 'wga-2027@2', version: 2,
+  sources: [...WGA27_SOURCES, { id: 'wga27-docscreenplay', publisher: 'Writers Guild of America West', title: 'Rules for Documentary Screenplay (2027 Writers Guild Awards)', url: 'https://awards.wga.org/submissions/documentary-screenplay', edition: '2027 Writers Guild Awards', retrieved: '2026-11-09' }],
+  categories: {
+    ...WGA_2027.categories,
+    'documentary-screenplay': {
+      runtime: v({ over: 40 }, 'wga27-docscreenplay', 'Feature length, more than 40 minutes.'),
+      qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'wga27-docscreenplay', 'Exhibited January 1 to December 31, 2026.'),
+      release: v({ routes: ['theatrical'], countries: ['US'] }, 'wga27-docscreenplay', 'In Los Angeles or New York cinemas for at least a week; SLATE treats a US theatrical release as that.'),
+      theatricalFirst: v({ countries: ['*'] }, 'wga27-docscreenplay', 'A film that premieres on television isn\u2019t eligible; a simultaneous theatrical and streaming release is.'),
+      deadlines: wgaDeadline('wga27-docscreenplay'),
+    },
+  },
+};
+
 // ---------------- Gotham Awards, 2026 ----------------
 
 /**
@@ -1170,5 +1192,5 @@ const PGA_2027_2: RuleBook = {
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027, PGA_2027_2,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2,
 ];
