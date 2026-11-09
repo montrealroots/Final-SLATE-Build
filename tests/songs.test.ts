@@ -302,6 +302,36 @@ describe('the organizers\' own song rules', () => {
     expect(categoryRuleStatus(rulebook('aacta-2027@2'), 'song')).toBe('verified');
     expect(categoryRuleStatus({ ...rulebook('aacta-2027@2')!, categories: { song: { song: rulebook('aacta-2027@2')!.categories.song!.song } } }, 'song')).toBe('simulated');
   });
+
+  it('the AACTA\'s soundtrack: five songs apart from the score, each heard five seconds; to the music supervisor', () => {
+    const { s, p, ids, ed } = deliveredSongs('sr-soundtrack');
+    const aacta = ed('aacta-2027');
+    expect(aacta.rulesId).toBe('aacta-2027@3');
+    const st = song('aacta', 'soundtrack');
+    const check = () => checkEligibility(s, p, aacta, st);
+    const why = () => check().reasons.find((r) => r.includes('soundtrack')) ?? '';
+    // Salt Water (3 minutes) and Harbour Lights (2) count; Lantern's minutes over the credits aren't recorded.
+    expect(why()).toBe('2 songs are heard for 5 seconds or more; this award\'s soundtrack needs 5. How long 1 more plays isn\'t recorded: record its minutes under Songs.');
+    p.songs!.find((x) => x.id === ids.lantern)!.uses[0].minutes = 4 / 60; // 4 seconds: short of 5
+    expect(why()).toBe('2 songs are heard for 5 seconds or more; this award\'s soundtrack needs 5.');
+    p.songs!.find((x) => x.id === ids.lantern)!.uses[0].minutes = 5 / 60;
+    const more = ['Low Tide', 'Harbour Wind'].map((t) => createSongDelivered(s, p, t, ids.ferry));
+    expect(why()).toBe('');
+    // Every song heard counts, licensed or written for the work: one fewer is one short.
+    p.songs!.find((x) => x.id === more[0])!.uses[0].minutes = null;
+    expect(why()).toBe('4 songs are heard for 5 seconds or more; this award\'s soundtrack needs 5. How long 1 more plays isn\'t recorded: record its minutes under Songs.');
+    p.songs!.find((x) => x.id === more[0])!.uses[0].minutes = 1;
+    // Received by the music supervisor (10.4(b)), never the score composer.
+    p.credits.push({ id: 'cmp', person: 'np_composer_US_1', personName: 'Ravi Shah', contribution: 'Music By', roleId: 'composer', episodes: 'all', billing: 4 });
+    p.credits.push({ id: 'ms', person: 'np_music-supervisor_US_1', personName: 'June Park', contribution: 'Music Supervisor', roleId: 'music-supervisor', episodes: 'all', billing: 5 });
+    expect(check().recipients.map((c) => c.id)).toEqual(['ms']);
+    // The shared crafts take a work's own format's rules: a film's Australian release in 2026.
+    expect(categoryRules(aacta, 'vfx-animation', p)?.release?.value.countries).toEqual(['AU']);
+    expect(categoryRules(aacta, 'hair-makeup', p)?.runtime?.value).toEqual({ atLeast: 60 });
+    p.axes.format = 'series';
+    expect(categoryRules(aacta, 'soundtrack', p)?.release?.value.routes).toEqual(['broadcast', 'streaming']);
+    for (const id of ['hair-makeup', 'soundtrack', 'vfx-animation']) expect(categoryRuleStatus(rulebook('aacta-2027@3'), id)).toBe('verified');
+  });
 });
 
 /** Labelled fixture: one more song written for the film by another writer, used in a scene, its writing done. */

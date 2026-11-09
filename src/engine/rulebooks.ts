@@ -158,7 +158,8 @@ export interface CategoryRules {
    */
   /**
    * Rules that apply to some formats only, over the category's own: an award taking films and series alike under the film
-   * and television rules (the Spirit Awards' Redford award, the WGA's Paul Selvin award, the AACTA's song).
+   * and television rules (the Spirit Awards' Redford award, the WGA's Paul Selvin award, the AACTA's song, soundtrack, hair
+   * and makeup, and visual effects or animation).
    */
   byFormat?: { formats: Format[]; rules: Omit<CategoryRules, 'byFormat'> }[];
   song?: Ruled<{
@@ -183,6 +184,8 @@ export interface CategoryRules {
     /** The same writers enter only one song per work (CSA Category 17000, regulation 11). */
     oneEntryPerTeam?: true;
   }>;
+  /** A soundtrack's own test: at least `minSongs` songs in the cut entered, each heard `minSeconds` in all (AACTA 10.2(b)). */
+  soundtrack?: Ruled<{ minSongs: number; minSeconds: number }>;
   /**
    * Box office in the qualifying window: at least `worldwide` dollars gross from theatrical releases, `domestic` of them in
    * `country` (the Golden Globes' Cinematic and Box Office Achievement, B.1.b), from what distributors have reported.

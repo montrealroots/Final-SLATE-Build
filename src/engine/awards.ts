@@ -601,6 +601,8 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   // reads the Academy's list (simulatedOscarRelease above).
   const single = rules?.oneEpisode && isEpisodic(p.axes.format);
   if (single && episode !== undefined && !(Number.isInteger(episode) && episode >= 1 && episode <= p.axes.episodeCount)) reasons.push(`${p.title} has ${p.axes.episodeCount} episodes; choose one of them.`);
+  const soundtrack = rules?.soundtrack?.value && catalogRules().soundtrackProblem(p, versionId, rules.soundtrack.value);
+  if (soundtrack) reasons.push(soundtrack);
   const recipients = categoryRecipients(state, p, cat, recipientIds, rules, episode, { versionId, songId });
   if (!recipients.length && single && categoryRecipients(state, p, cat, recipientIds).length) {
     reasons.push(`Nobody credited for this category worked on episode ${episode ?? entryEpisodes(state, p, cat, rules)[0] ?? 1}.`);

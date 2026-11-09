@@ -631,8 +631,15 @@ platform lists, AACTA's discretion. The [Television](https://www.aacta.org/aacta
 pages and the Rule Book's sections 4-6: television's first episode broadcast in Australia in 2026 on free-to-air or a
 streaming platform, by September 28; documentaries of 60 minutes or more completed or first shown August 30, 2025 to August
 24, 2026, by August 24; shorts under 40 minutes completed July 19, 2025 to July 18, 2026, by August 3. 31 categories in all.
-Shared categories (hair and makeup, song, soundtrack, visual effects) and online series stay on SLATE's rules; the entry
-pages answered after a 503 earlier the same day.
+Shared categories (hair and makeup, song, soundtrack, visual effects) and online series stayed on SLATE's rules at first;
+the entry pages answered after a 503 earlier the same day. **Version 3 (`aacta-2027@3`, November 9, 2026):** the Rule
+Book's shared categories take each production under its own format's windows (film, television, documentary or short),
+as the song does from version 2: Visual Effects or Animation (8.2(d)); Best Soundtrack (10.3(d)), which also needs at least
+five songs other than the score, each heard clearly for five seconds (10.2(b)), and goes to the music supervisor (10.4(b);
+the roster gave it to the composer too until then); Hair and Makeup, listed under Film and Television only. Not modeled:
+visual effects wholly made in Australia by the entering Australian company, for a production that needn't be Australian
+(8.2(b), (c): SLATE keeps the catalog's Australian production); Online Drama or Comedy Series, whose window is only on the
+AACTA website (9.3), not read.
 
 ## Japan Academy Film Prize, 50th (2027)
 

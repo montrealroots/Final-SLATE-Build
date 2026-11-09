@@ -425,7 +425,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('532 categories follow verified rules for at least one edition, 11 only projected ones; the other 263 are simulated', () => {
+  it('535 categories follow verified rules for at least one edition, 11 only projected ones; the other 260 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -454,8 +454,9 @@ describe('audit counts', () => {
     // (pga-2027@2), 464 until the WGA's Documentary Screenplay (wga-2027@2), 465 until the DGA's seven television awards
     // (dga-2027@2), 472 until the AACTA's 31 film, television, documentary and short categories (aacta-2027@1), 503 until the
     // Japan Academy's 17 (japan-academy-2027@1), 520 until the PGA's nine television awards (pga-2027@3), 529 until the
-    // WGA's Paul Selvin, the Spirit Awards' Redford and the AACTA's song award took rules by format (byFormat).
-    expect(n).toEqual({ verified: 532, projected: 11, simulated: 263 });
+    // WGA's Paul Selvin, the Spirit Awards' Redford and the AACTA's song award took rules by format (byFormat), 532 until the
+    // AACTA's soundtrack, hair and makeup, and visual effects or animation did (aacta-2027@3).
+    expect(n).toEqual({ verified: 535, projected: 11, simulated: 260 });
   });
 });
 
@@ -854,7 +855,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('AACTA 2027: films and television released in Australia in 2026; documentaries and shorts by completion date; each by its own deadline', () => {
     const s = startLife('aacta');
     const e = ed(s, 'aacta-2027');
-    expect(e.rulesId).toBe('aacta-2027@2');
+    expect(e.rulesId).toBe('aacta-2027@3');
     s.now = at('Australia/Sydney', '2026-07-01', 9);
     const film = (runtime = 100) => work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'au-sydney' });
     const streamed = film();

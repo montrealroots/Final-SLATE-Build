@@ -179,6 +179,23 @@ function songRuleProblem(p: Project, song: Song, versionId: string | undefined, 
 }
 
 /**
+ * Why a work's songs don't make a soundtrack under the organizer's rule, or null (AACTA 10.2(b): at least five songs, each
+ * heard clearly for five seconds). The rule leaves out the composer's score; a SLATE score is never a song, so every song
+ * heard counts, licensed or written for the work. A use whose minutes aren't recorded counts for nothing until they are.
+ */
+export function soundtrackProblem(p: Project, versionId: string | undefined, rule: { minSongs: number; minSeconds: number }): string | null {
+  const v = versionId ? p.versions?.find((x) => x.id === versionId) : undefined;
+  const uses = songUses(p, cutScenes(p, versionId), v);
+  const songs = [...new Set(uses.map((x) => x.song))];
+  const short = songs.filter((s) => uses.filter((x) => x.song === s).reduce((a, x) => a + (x.use.minutes ?? 0) * 60, 0) + 1e-9 < rule.minSeconds);
+  const counted = songs.length - short.length;
+  if (counted >= rule.minSongs) return null;
+  const unknown = short.filter((s) => uses.some((x) => x.song === s && x.use.minutes === null)).length;
+  const text = `${counted} song${counted === 1 ? ' is' : 's are'} heard for ${rule.minSeconds} seconds or more; this award's soundtrack needs ${rule.minSongs}.`;
+  return unknown ? `${text} How long ${unknown} more ${unknown === 1 ? 'plays' : 'play'} isn't recorded: record ${unknown === 1 ? 'its' : 'their'} minutes under Songs.` : text;
+}
+
+/**
  * Who receives a song award: the song's writing credits, never its performers or producer. Where the organizer names
  * only the principal, essentially equal writers (Oscars II.E, II.J), a writer who wrote less than half as many days as the
  * main writer is a partial contributor (SLATE's measure of "essentially equal": the Committee's judgement isn't

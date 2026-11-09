@@ -45,12 +45,12 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | César Awards (`cesar`) | 27 | 27 / 0 / 0 | 25 / 0 / 2 | 0 | 27 | 3 | 10 | 0 | 0 |
 | Goya Awards (`goya`) | 30 | 30 / 0 / 0 | 28 / 0 / 2 | 0 | 30 | 28 | 13 | 0 | 0 |
 | Canadian Screen Awards (`canadian-screen`) | 119 | 114 / 5 / 0 | 115 / 0 / 4 | 0 | 0 | 115 | 8 | 0 | 40 |
-| AACTA Awards (`aacta`) | 36 | 35 / 1 / 0 | 32 / 0 / 4 | 0 | 0 | 31 | 8 | 0 | 6 |
+| AACTA Awards (`aacta`) | 36 | 35 / 1 / 0 | 35 / 0 / 1 | 0 | 0 | 31 | 11 | 0 | 6 |
 | Africa Movie Academy Awards (`amaa`) | 4 | 0 / 0 / 4 | 0 / 0 / 4 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 0 | 0 | 6 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 4 | 0 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 532 / 11 / 263 | 28 | 338 | 503 | 242 | 36 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 535 / 11 / 260 | 28 | 338 | 503 | 245 | 36 | 123 |
 
 ## Research queue
 
@@ -67,7 +67,7 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 9. `international-emmys` (13): `arts`, `actress`, `actor`, `comedy`, `documentary`, `drama`, `kids-animation`, `kids-factual`, `kids-live-action`, `non-scripted`, `short-form`, `sports-documentary`, `tv-movie`
 10. `annie` (1): `tv`
 11. `dga` (2): `first-feature`, `documentary`
-12. `aacta` (4): `hair-makeup`, `soundtrack`, `online-series`, `vfx-animation`
+12. `aacta` (1): `online-series`
 13. `amaa` (4): `film`, `director`, `documentary`, `short`
 14. `blue-dragon` (3): `film`, `director`, `screenplay`
 15. `european-film-awards` (16): `film`, `director`, `animated`, `documentary`, `short`, `coproduction`, `actor`, `screenwriter`, `casting`, `cinematographer`, `composer`, `costume`, `editor`, `makeup`, `production-designer`, `sound`

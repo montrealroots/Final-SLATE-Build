@@ -1424,7 +1424,8 @@ const ACTOR_AWARDS_2027_2: RuleBook = { ...ACTOR_AWARDS_2027, id: 'actor-awards-
  * under 40 minutes completed July 19, 2025 to July 18, 2026, by August 3 (SLATE reads the completion date for both).
  * Not modeled: the Indie Film budget (under AUD 2 million: SLATE keeps its own independent requirement), the qualifying
  * festival and platform lists, AACTA's discretion (iv). The categories shared across film and television (hair and
- * makeup, song, soundtrack, visual effects) and online series stay on SLATE's rules.
+ * makeup, song, soundtrack, visual effects) and online series stayed on SLATE's rules until versions 2 and 3 below; online
+ * series still does.
  */
 const AACTA27: RuleSource[] = [
   { id: 'aacta27-film', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Film', url: 'https://www.aacta.org/aacta-awards/entries-2027/film/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
@@ -1486,18 +1487,42 @@ const AACTA_2027: RuleBook = {
  * program's main title theme not eligible (10.3(c)). Its release windows are the production's own category's (10.3(a)): a
  * film's or telefeature's (7.3), television's, a documentary's or a short's, each by `byFormat`.
  */
+/** The AACTA's entry types, each with its own windows: shared categories take a production under its own (10.3(a), 8.2(d)). */
+const AACTA_BY_FORMAT: NonNullable<CategoryRules['byFormat']> = [
+  { formats: ['feature', 'tv-film'], rules: AACTA_FILM },
+  { formats: ['series', 'limited-series', 'anthology-series', 'web-series', 'unscripted-series'], rules: AACTA_TV },
+  { formats: ['documentary-feature', 'documentary-series'], rules: AACTA_DOC },
+  { formats: ['short'], rules: AACTA_SHORT },
+];
 const AACTA_2027_2: RuleBook = {
   ...AACTA_2027, id: 'aacta-2027@2', version: 2,
   categories: {
     ...AACTA_2027.categories,
     song: {
       song: v({ minTotalSeconds: 15, noTitleTheme: true }, 'aacta-rulebook', 'Heard on screen for at least 15 seconds; not a television main title theme (10.3(b), (c)).'),
-      byFormat: [
-        { formats: ['feature', 'tv-film'], rules: AACTA_FILM },
-        { formats: ['series', 'limited-series', 'anthology-series', 'web-series', 'unscripted-series'], rules: AACTA_TV },
-        { formats: ['documentary-feature', 'documentary-series'], rules: AACTA_DOC },
-        { formats: ['short'], rules: AACTA_SHORT },
-      ],
+      byFormat: AACTA_BY_FORMAT,
+    },
+  },
+};
+
+/**
+ * Version 3 (November 9, 2026): the Rule Book's shared categories, each taking a production under its own format's
+ * windows, as the song does. Visual Effects or Animation (8.2(d)): a short's, a film's (7.3(a)), a documentary's or
+ * television's. Best Soundtrack (10.2(b), 10.3(d)): at least five songs other than the score, each heard clearly for five
+ * seconds, from a production eligible in its own category; its candidate is the music supervisor (10.4(b)), in the roster.
+ * Hair and Makeup is listed under Film (7.1(r)) and Television (6.1(bb)) only. Not modeled: visual effects wholly made in
+ * Australia by the entering Australian company, whose production needn't be Australian (8.2(b), (c)); SLATE keeps the
+ * catalog's Australian production. Online Drama or Comedy Series (9.3) gives its window only on the website, not read.
+ */
+const AACTA_2027_3: RuleBook = {
+  ...AACTA_2027_2, id: 'aacta-2027@3', version: 3,
+  categories: {
+    ...AACTA_2027_2.categories,
+    'hair-makeup': { byFormat: AACTA_BY_FORMAT.slice(0, 2) },
+    'vfx-animation': { byFormat: AACTA_BY_FORMAT },
+    soundtrack: {
+      soundtrack: v({ minSongs: 5, minSeconds: 5 }, 'aacta-rulebook', 'At least five songs not composed as part of the score, each heard clearly for at least five seconds of screen time (10.2(b)).'),
+      byFormat: AACTA_BY_FORMAT,
     },
   },
 };
@@ -1548,5 +1573,5 @@ const JAPAN_ACADEMY_2027: RuleBook = {
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, OSCARS_2027_4, OSCARS_2027_5, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, EMMYS_2026_5, EMMYS_2027_5, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, GOLDEN_GLOBES_2027_5, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, CANADIAN_SCREEN_2026_2, CANADIAN_SCREEN_2027_2, GOYA_2027, GOYA_2027_2, GOYA_2027_3, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, WGA_2027_3, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, SPIRIT_2027_3, ACTOR_AWARDS_2027_2, AACTA_2027, AACTA_2027_2, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, EMMYS_2026_5, EMMYS_2027_5, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, GOLDEN_GLOBES_2027_5, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, CANADIAN_SCREEN_2026_2, CANADIAN_SCREEN_2027_2, GOYA_2027, GOYA_2027_2, GOYA_2027_3, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, WGA_2027_3, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, SPIRIT_2027_3, ACTOR_AWARDS_2027_2, AACTA_2027, AACTA_2027_2, AACTA_2027_3, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
 ];
