@@ -22,7 +22,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Venice International Film Festival (`venice`) | 25 | 24 / 1 / 0 | 7 / 0 / 18 | 0 | 0 | 7 | 12 | 3 | 2 |
 | Toronto International Film Festival (`tiff`) | 16 | 13 / 3 / 0 | 4 / 0 / 12 | 0 | 0 | 4 | 4 | 0 | 1 |
 | San Sebastián International Film Festival (`san-sebastian`) | 23 | 11 / 12 / 0 | 7 / 0 / 16 | 0 | 0 | 7 | 7 | 0 | 4 |
-| Busan International Film Festival (`busan`) | 2 | 0 / 0 / 2 | 2 / 0 / 0 | 0 | 0 | 2 | 2 | 0 | 0 |
+| Busan International Film Festival (`busan`) | 2 | 0 / 0 / 2 | 2 / 0 / 0 | 0 | 0 | 2 | 2 | 2 | 0 |
 | Sitges Film Festival (`sitges`) | 30 | 29 / 1 / 0 | 6 / 0 / 24 | 0 | 0 | 6 | 7 | 0 | 2 |
 | International Documentary Film Festival Amsterdam (`idfa`) | 11 | 6 / 5 / 0 | 5 / 0 / 6 | 0 | 11 | 5 | 6 | 0 | 0 |
 | Hot Docs Canadian International Documentary Festival (`hot-docs`) | 2 | 1 / 1 / 0 | 1 / 0 / 1 | 0 | 2 | 1 | 1 | 0 | 1 |
@@ -34,7 +34,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | BAFTA Film Awards (`bafta-film`) | 7 | 0 / 0 / 7 | 7 / 0 / 0 | 0 | 0 | 7 | 3 | 0 | 0 |
 | BAFTA Television Awards (`bafta-tv`) | 5 | 0 / 0 / 5 | 0 / 0 / 5 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Golden Globe Awards (`golden-globes`) | 28 | 28 / 0 / 0 | 26 / 0 / 2 | 7 | 28 | 15 | 13 | 0 | 2 |
-| International Emmy Awards (`international-emmys`) | 15 | 15 / 0 / 0 | 13 / 0 / 2 | 0 | 15 | 13 | 9 | 0 | 5 |
+| International Emmy Awards (`international-emmys`) | 15 | 15 / 0 / 0 | 13 / 0 / 2 | 0 | 15 | 13 | 9 | 2 | 5 |
 | Annie Awards (`annie`) | 32 | 30 / 2 / 0 | 29 / 0 / 3 | 0 | 32 | 29 | 11 | 0 | 6 |
 | Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 21 / 0 / 0 | 0 | 21 | 20 | 9 | 0 | 4 |
 | Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 10 / 0 / 2 | 0 | 12 | 10 | 6 | 0 | 1 |
@@ -49,8 +49,8 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Africa Movie Academy Awards (`amaa`) | 4 | 0 / 0 / 4 | 0 / 0 / 4 | 0 | 0 | 4 | 4 | 0 | 0 |
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 0 | 0 | 6 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 2 | 0 | 0 |
-| European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 15 / 0 / 5 | 0 | 20 | 14 | 8 | 0 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 338 | 541 | 279 | 36 | 123 |
+| European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 15 / 0 / 5 | 0 | 20 | 14 | 8 | 6 | 0 |
+| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 338 | 541 | 279 | 46 | 123 |
 
 ## Research queue
 
