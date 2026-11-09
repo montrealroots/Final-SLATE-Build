@@ -564,8 +564,13 @@ it links, whose file and cover say 2026, section 7.3: a seven-day run in two cap
 a qualifying festival with four paid screenings, a qualifying streaming platform or free-to-air broadcast. SLATE takes an
 Australian theatrical, streaming or broadcast release. Applied to the 16 film-only categories (`aacta-2027@1`). Not
 modeled: the Indie Film budget under AUD 2 million (the catalog keeps its own independent requirement), the festival and
-platform lists, AACTA's discretion. Television, documentary, short and shared categories stay on SLATE's rules; the entry
-page answered after a 503 earlier the same day.
+platform lists, AACTA's discretion. The [Television](https://www.aacta.org/aacta-awards/entries-2027/television/),
+[Documentary](https://www.aacta.org/aacta-awards/entries-2027/documentary/) and [Short Film](https://www.aacta.org/aacta-awards/entries-2027/short-film/)
+pages and the Rule Book's sections 4-6: television's first episode broadcast in Australia in 2026 on free-to-air or a
+streaming platform, by September 28; documentaries of 60 minutes or more completed or first shown August 30, 2025 to August
+24, 2026, by August 24; shorts under 40 minutes completed July 19, 2025 to July 18, 2026, by August 3. 31 categories in all.
+Shared categories (hair and makeup, song, soundtrack, visual effects) and online series stay on SLATE's rules; the entry
+pages answered after a 503 earlier the same day.
 
 ## Not Readable From Here
 

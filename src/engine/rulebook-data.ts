@@ -1231,12 +1231,19 @@ const PGA_2027_2: RuleBook = {
  * minutes released publicly in 2026 by a seven-day run in two Australian capital cities including Sydney or Melbourne, a
  * qualifying festival with four paid screenings, a qualifying streaming platform or free-to-air broadcast; entries close
  * 11:59 p.m. AEST on September 28, 2026. SLATE: an Australian theatrical, streaming or broadcast release in 2026. Applied to
- * the 16 film-only categories. Not modeled: the Indie Film budget (under AUD 2 million: SLATE keeps its own independent
- * requirement), the qualifying festival and platform lists, AACTA's discretion (iv). Television, documentary, short and
- * the categories shared with them stay on SLATE's rules.
+ * the 16 film-only categories. The Television, Documentary and Short Film pages and the Rule Book's sections 4-6, read the
+ * same day: television's first episode broadcast in Australia in 2026 on free-to-air or a streaming platform, by September
+ * 28; documentaries of 60 minutes or more completed or first shown August 30, 2025 to August 24, 2026, by August 24; shorts
+ * under 40 minutes completed July 19, 2025 to July 18, 2026, by August 3 (SLATE reads the completion date for both).
+ * Not modeled: the Indie Film budget (under AUD 2 million: SLATE keeps its own independent requirement), the qualifying
+ * festival and platform lists, AACTA's discretion (iv). The categories shared across film and television (hair and
+ * makeup, song, soundtrack, visual effects) and online series stay on SLATE's rules.
  */
 const AACTA27: RuleSource[] = [
   { id: 'aacta27-film', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Film', url: 'https://www.aacta.org/aacta-awards/entries-2027/film/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
+  { id: 'aacta27-tv', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Television', url: 'https://www.aacta.org/aacta-awards/entries-2027/television/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
+  { id: 'aacta27-doc', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Documentary', url: 'https://www.aacta.org/aacta-awards/entries-2027/documentary/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
+  { id: 'aacta27-short', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Short Film', url: 'https://www.aacta.org/aacta-awards/entries-2027/short-film/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
   { id: 'aacta-rulebook', publisher: 'Australian Academy of Cinema and Television Arts', title: 'AACTA Awards Rule Book (cover: 2026; linked for 2027 entries)', url: 'https://s3-ap-southeast-2.amazonaws.com/aacta-org-assets/Uploads/2026-AACTA-Awards-Rule-Book2.pdf', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
 ];
 const AACTA_FILM: CategoryRules = {
@@ -1245,9 +1252,30 @@ const AACTA_FILM: CategoryRules = {
   release: v({ routes: ['theatrical', 'streaming', 'broadcast'], countries: ['AU'] }, 'aacta-rulebook', 'Seven days in cinemas in two capital cities including Sydney or Melbourne, a qualifying festival with four paid screenings, a qualifying streaming platform, or free-to-air (7.3); SLATE takes an Australian release by any of those routes.'),
   deadlines: v([{ date: '2026-09-28', time: '23:59', zone: 'Australia/Sydney' }], 'aacta27-film', 'Entries close Monday September 28, 2026, 11:59 p.m. AEST.'),
 };
+const SYD = 'Australia/Sydney';
+const AACTA_TV: CategoryRules = {
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'aacta27-tv', 'First episode broadcast in Australia for the first time from January 1 to December 31, 2026.'),
+  release: v({ routes: ['broadcast', 'streaming'], countries: ['AU'] }, 'aacta27-tv', 'On a free-to-air network or a VOD or SVOD platform in Australia (6.3).'),
+  deadlines: v([{ date: '2026-09-28', time: '23:59', zone: SYD }], 'aacta27-tv', 'Entries close Monday September 28, 2026, 11:59 p.m. Sydney time.'),
+};
+const AACTA_DOC: CategoryRules = {
+  runtime: v({ atLeast: 60 }, 'aacta-rulebook', 'A single self-contained non-fiction film of 60 minutes or longer (5.2).'),
+  completedFrom: v('2025-08-30', 'aacta27-doc', 'Completed or first shown publicly from August 30, 2025 to August 24, 2026.'),
+  deadlines: v([{ date: '2026-08-24', time: '23:59', zone: SYD }], 'aacta27-doc', 'Entries close Monday August 24, 2026, 11:59 p.m. AEST.'),
+};
+const AACTA_SHORT: CategoryRules = {
+  runtime: v({ under: 40 }, 'aacta-rulebook', 'Less than 40 minutes (4.2).'),
+  completedFrom: v('2025-07-19', 'aacta27-short', 'Completed from July 19, 2025 to July 18, 2026.'),
+  deadlines: v([{ date: '2026-08-03', time: '23:59', zone: SYD }], 'aacta27-short', 'Entries close Monday August 3, 2026, 11:59 p.m. AEST.'),
+};
 const AACTA_2027: RuleBook = {
   id: 'aacta-2027@1', institutionId: 'aacta', year: 2027, version: 1, checked: '2026-11-09', sources: AACTA27,
-  categories: Object.fromEntries(['film', 'indie-film', 'direction', 'lead-actor', 'lead-actress', 'supporting-actor', 'supporting-actress', 'original-screenplay', 'adapted-screenplay', 'cinematography', 'editing', 'sound', 'score', 'production-design', 'costume', 'casting'].map((id) => [id, AACTA_FILM])),
+  categories: {
+    ...Object.fromEntries(['film', 'indie-film', 'direction', 'lead-actor', 'lead-actress', 'supporting-actor', 'supporting-actress', 'original-screenplay', 'adapted-screenplay', 'cinematography', 'editing', 'sound', 'score', 'production-design', 'costume', 'casting'].map((id) => [id, AACTA_FILM])),
+    ...Object.fromEntries(['childrens', 'competition-reality', 'documentary-factual', 'drama', 'entertainment', 'factual-entertainment', 'miniseries', 'comedy', 'casting-tv'].map((id) => [id, AACTA_TV])),
+    ...Object.fromEntries(['documentary', 'documentary-cinematography', 'documentary-editing', 'documentary-sound', 'documentary-score'].map((id) => [id, AACTA_DOC])),
+    short: AACTA_SHORT,
+  },
 };
 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */

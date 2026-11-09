@@ -423,7 +423,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('488 categories follow verified rules for at least one edition, 11 only projected ones; the other 307 are simulated', () => {
+  it('503 categories follow verified rules for at least one edition, 11 only projected ones; the other 292 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -450,8 +450,8 @@ describe('audit counts', () => {
     // 457 until Venice's Critics' Week read its own regulations (venice-2026@4), 458 until the Goyas' European,
     // Ibero-American and short film awards read their specific Bases (goya-2027@2), 463 until the PGA's documentary award
     // (pga-2027@2), 464 until the WGA's Documentary Screenplay (wga-2027@2), 465 until the DGA's seven television awards
-    // (dga-2027@2), 472 until the AACTA's 16 film categories (aacta-2027@1).
-    expect(n).toEqual({ verified: 488, projected: 11, simulated: 307 });
+    // (dga-2027@2), 472 until the AACTA's 31 film, television, documentary and short categories (aacta-2027@1).
+    expect(n).toEqual({ verified: 503, projected: 11, simulated: 292 });
   });
 });
 
@@ -847,7 +847,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/Los_Angeles', '2026-11-13', 17));
   });
 
-  it('AACTA 2027: Australian films of 60 minutes or more released in Australia in 2026, by September 28 in Sydney', () => {
+  it('AACTA 2027: films and television released in Australia in 2026; documentaries and shorts by completion date; each by its own deadline', () => {
     const s = startLife('aacta');
     const e = ed(s, 'aacta-2027');
     expect(e.rulesId).toBe('aacta-2027@1');
@@ -863,7 +863,14 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     release(short, 'theatrical', '2026-05-01', ['AU']);
     expect(r(s, short, e, 'film')).toMatch(/60/);
     expect(categoryDeadline(e, cat(e, 'film'))).toBe(at('Australia/Sydney', '2026-09-28', 23, 59) + 59_000);
-    expect(categoryRuleStatus(rulebook('aacta-2027@1'), 'drama')).toBe('simulated'); // television stays SLATE's
+    // Television: a first episode in Australia in 2026; documentaries and shorts by completion date and length.
+    const series = work(s, { format: 'series', runtime: 50, completed: '2026-01-10', base: 'au-sydney' });
+    release(series, 'broadcast', '2026-03-01', ['AU']);
+    expect(r(s, series, e, 'drama')).not.toMatch(/release|Australia/);
+    expect(r(s, work(s, { format: 'documentary-feature', runtime: 75, completed: '2025-08-01', base: 'au-sydney' }), e, 'documentary')).toMatch(/completed on August 1, 2025/);
+    expect(r(s, work(s, { format: 'short', runtime: 40, completed: '2026-01-10', base: 'au-sydney' }), e, 'short')).toMatch(/40/);
+    expect(categoryDeadline(e, cat(e, 'short'))).toBe(at('Australia/Sydney', '2026-08-03', 23, 59) + 59_000);
+    expect(categoryRuleStatus(rulebook('aacta-2027@1'), 'song')).toBe('simulated'); // shared with television: SLATE's
   });
 
   it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {
