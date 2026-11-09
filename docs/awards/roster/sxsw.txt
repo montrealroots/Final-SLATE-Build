@@ -11,7 +11,7 @@ narrative-audience | Audience Award: Narrative Feature | U:narrative | director 
 documentary | Documentary Feature Competition | S | project | documentary-feature | sxsw27-submit; earlier game catalog | The game's existing entry
 documentary-jury | Grand Jury Award: Documentary Feature | P:documentary | director | documentary-feature | UNVERIFIED | UNVERIFIED: award name not read
 documentary-audience | Audience Award: Documentary Feature | U:documentary | director | documentary-feature | UNVERIFIED | UNVERIFIED: award name not read
-episodic | Episodic Pilot Competition | S | project | series+limited-series+anthology-series+web-series+docseries+reality | sxsw27-submit | The game's existing entry; pilots or first seasons, $70 or $90
+episodic | Episodic Pilot Competition | S | project | series+limited-series+shortform+docseries+reality | sxsw27-submit | The game's existing entry; pilots or first seasons, $70 or $90
 episodic-jury | Grand Jury Award: Episodic Pilot | P:episodic | producer | series | UNVERIFIED | UNVERIFIED: award name not read
 shorts | Short Film Competition | S | project | short+documentary-short | sxsw27-submit | The game's existing entry; $70 or $90
 shorts-jury | Grand Jury Award: Short Film | P:shorts | director | short+documentary-short | UNVERIFIED | UNVERIFIED: award name not read; the qualifying route for the Oscars shorts depends on it

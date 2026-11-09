@@ -23,6 +23,6 @@ world-documentary-grand-jury | World Cinema Grand Jury Prize: Documentary | P:wo
 # Shorts And Episodic
 shorts | Short Film Program | S | project | short+documentary-short | sff27-submit | The game's existing entry
 shorts-grand-jury | Short Film Grand Jury Prize | P:shorts | director | short+documentary-short | UNVERIFIED | UNVERIFIED: prize names weren't on the pages read
-episodic | Episodic Program | S | project | series+limited-series+anthology-series+web-series+docseries+reality | sff27-submit | Not competitive in the game's catalog; episodes of 60 minutes or less, or over 60
+episodic | Episodic Program | S | project | series+limited-series+shortform+docseries+reality | sff27-submit | Not competitive in the game's catalog; episodes of 60 minutes or less, or over 60
 # Non-Competition
 - Spotlight | Takes no open submissions: films already shown at other international festivals, chosen by invitation | sff27-submit

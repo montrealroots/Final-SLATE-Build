@@ -159,7 +159,7 @@ tribute | Academy Board Of Directors' Tribute Award | H | career-television | te
 icon | Academy Icon Award | H | career | television:ca | csa27-tv Section XV | UNVERIFIED: criteria not read
 lifetime | Lifetime Achievement Award | H | career | television:ca | csa27-tv Section XV | UNVERIFIED: criteria not read
 - Changemaker Award | UNVERIFIED: criteria not read | csa27-tv Section XV
-audience-choice | Audience Choice Award | U:any | project | television:ca | csa27-tv Section XV | UNVERIFIED: criteria not read; a public vote
+audience-choice | Audience Choice Award | U | project | television:ca | csa27-tv Section XV | UNVERIFIED: criteria not read; a public vote
 - Earle Grey Award | UNVERIFIED: criteria not read | csa27-tv Section XV
 - Gordon Sinclair Award For Broadcast Journalism | Broadcast journalism isn't work the game makes | csa27-tv Section XV
 - Humanitarian Award | Humanitarian work outside production isn't modeled | csa27-tv Section XV

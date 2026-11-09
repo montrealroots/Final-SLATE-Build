@@ -5,5 +5,5 @@
 fiction | Feature Fiction Competition | S | project | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
 documentary | Documentary Competition | S | project | documentary-feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
 shorts | Short Film Competition | S | project | short+documentary-short | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
-series | Series Competition | S | project | series+limited-series+anthology-series+web-series | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+series | Series Competition | S | project | series+limited-series+shortform | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
 etalon | Étalon d'Or De Yennenga | P:fiction | producer+director | feature | UNVERIFIED | UNVERIFIED: the festival's top prize as earlier game records name it; not read in the organizer's material
