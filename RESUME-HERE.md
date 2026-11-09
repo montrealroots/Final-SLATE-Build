@@ -56,6 +56,32 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
+### Newest Request (November 9, 2026, after #55): the owner's recovered awards and festival sources
+
+Ten organizers' sources, recovered by the owner's research pass, read again here where this environment could reach them,
+and applied rule by rule (`src/engine/rulebook-data.ts`, the "Recovered sources" section; tests in
+`tests/recovered-rules.test.ts`; journeys in `e2e/awards.spec.ts`, the last three). `docs/awards/RULES.csv` is the
+rule-by-rule record (organizer, edition, categories, rule, status, the rule in brief, source, URL, read date, code line,
+tests), generated from the data by `tests/rule-records.test.ts`; `docs/world/RULEBOOK-AUDIT.md` "Recovered Sources" says,
+organizer by organizer, what was applied and what wasn't and why.
+
+- **International Emmys** (`@2` for 2026; 2027 projected): the 2026 Rules & Regulations PDF, which corrects "no
+  eligibility period published". Hanging episodes use SLATE's airing model (`awards-rules.ts` `episodeAirDates`: a
+  broadcast weekly, streaming all at once), as releases have one date. The 2026 edition used to open after its deadline.
+- **European Film Awards, 39th** (`european-film-awards-2026@1`): corrects "no dates". First screening window, two
+  submission periods by first screening, European directors and recipients, 13 of 21 European points (from credits and
+  base), a selection or three countries, documentary 70 and animation 60 minutes, shorts on their own scheme.
+- **BAFTA 2027, TIFF 2026, SXSW 2027 (`@2`), Busan 2026, DGA documentary (`@5`), FESPACO 2027, AMAA 2026**: see the audit.
+  Busan and SXSW now hold their organizers' dates (`RuleBook.held`).
+- **Unresolved, recorded and not applied** (`RuleBook.unresolved`, `GAPS`): FESPACO's dates and deadline (source
+  conflict); AMAA's release wording (ambiguous) and edition; Blue Dragon and Locarno (unavailable). BAFTA's and SXSW's
+  pages, the DGA documentary preview page and AMAA's FilmFreeway page refuse this environment: their rules come from
+  search excerpts of the organizers' own pages and the owner's pass, with that provenance in the source titles.
+- **UI**: category rows read the chosen project's own deadline (the EFA's second period was hidden); "Rules Not Read"
+  shows only where the game's rules apply; the "How These Rules Apply" notes are shown without the documents' section
+  numbers and with the game named as the game.
+
+
 ### Newest Request (November 9, 2026, after #54): screen time from the cut, episode assessment, songs as works
 
 All three are implemented, tested in the engine and in the browser (desktop and WebKit), and documented. What each does:

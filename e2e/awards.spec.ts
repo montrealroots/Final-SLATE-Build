@@ -811,3 +811,128 @@ test('Songs: made in the Production tab with separate writers, one licensed; a v
   await expect(entry(page, 'Music (Original Song), "Salt Water"').getByText(/Credited: Teo Holt, Mina Okoro\. Song: "Salt Water"\./)).toBeVisible();
   await page.screenshot({ path: `test-results/awards-songs-${test.info().project.name}.png`, fullPage: true });
 });
+
+// ---------------- The owner's recovered sources (November 9, 2026) ----------------
+
+/** An edition's label as the game names it (some carry an ordinal), from the save. */
+async function labelOf(page: Page, editionId: string): Promise<string> {
+  return (await readSavedState(page)).editions.find((e: State) => e.id === editionId).label;
+}
+const rel = (date: string, route: string, territories: string[]) => ({ id: `r-${route}-${territories.join('')}-${date}`, route, date, territories, distributor: 'D', note: '', status: 'released' });
+
+test('Busan 2026: the organizer\'s dates; an Asian feature selected and judged; a long short and a short documentary told why not', async ({ page }) => {
+  await seededLife(page, 'kr-seoul', '2026-05-20', 3101); // before the shorts' June 2 deadline and the features' July 8
+  for (const [title, format, runtime] of [['Harbour Lantern', 'Feature Film', '100'], ['Salt Fog', 'Short Film', '31'], ['Tide Notes', 'Documentary Short', '20']] as const) {
+    await nav(page, 'Projects');
+    await newProject(page, { title, format, runtime });
+  }
+  // Labelled fixture: finished in Seoul in February 2026.
+  await editSave(page, (s) => {
+    deliver(s, 'Harbour Lantern', { format: 'feature', runtime: 100, at: '2026-02-01T03:00:00Z', base: 'kr-seoul', quality: { overall: 99, direction: 99, script: 99, reception: 99 } });
+    deliver(s, 'Salt Fog', { format: 'short', runtime: 31, at: '2026-02-01T03:00:00Z', base: 'kr-seoul' });
+    deliver(s, 'Tide Notes', { format: 'documentary-short', runtime: 20, at: '2026-02-01T03:00:00Z', base: 'kr-seoul' });
+  });
+  const label = await labelOf(page, 'busan-2026');
+  await openEvent(page, 'Harbour Lantern', label);
+  await expect(page.getByText('October 6, 2026 to October 15, 2026')).toBeVisible();
+  await expect(page.getByText(/These dates were announced by the organizer\./)).toBeVisible();
+  await filterTo(page, 'Salt Fog', 'Every Section And Award');
+  await expect(row(page, 'Short Films').getByText('It runs 31 minutes. This category takes 30 minutes or less, credits included.')).toBeVisible();
+  await filterTo(page, 'Tide Notes', 'Every Section And Award');
+  await expect(row(page, 'Short Films').getByText('This category doesn\'t accept documentary short projects.')).toBeVisible();
+  await filterTo(page, 'Harbour Lantern');
+  await submit(page, 'Competition', /goes to the credited producers\./, 'Nia Halvorsen-Mbeki');
+
+  await advanceUntil(page, await dayAfter(page, 'busan-2026', 'announce'));
+  await openEvent(page, 'Harbour Lantern', label);
+  // Busan's Competition has no prizes of its own in the catalog, so the selection is the outcome, kept through the festival.
+  const picked = await status(entry(page, 'Competition'), ['Selected', 'Not Selected']);
+  await advanceUntil(page, await dayAfter(page, 'busan-2026', 'end'));
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await openEvent(page, 'Harbour Lantern', label);
+  await status(entry(page, 'Competition'), [picked]);
+  const s = await readSavedState(page);
+  expect(s.editions.find((e: State) => e.id === 'busan-2026').rulesId).toBe('busan-2026@1');
+});
+
+test('European Film Awards: a European director, three countries and the first screening\'s submission period; entered, judged and kept after a reload', async ({ page }) => {
+  await seededLife(page, 'fr-paris', '2026-05-20', 3102);
+  for (const title of ['Quiet Harbour', 'Late Light', 'One Room']) {
+    await nav(page, 'Projects');
+    await newProject(page, { title, format: 'Feature Film', runtime: '100' });
+  }
+  // Labelled fixture: French features, you directing, writing, scoring and leading; first shown in March (three countries),
+  // June (three countries) and March (France only).
+  const extra = (s: State) => [credit('cr4', 'player', s.character.name, 'Music By', 'composer'), credit('cr5', 'player', s.character.name, 'Cast', 'actor', { characterName: 'Lea' })];
+  await editSave(page, (s) => {
+    deliver(s, 'Quiet Harbour', { format: 'feature', runtime: 100, at: '2026-01-10T12:00:00Z', base: 'fr-paris', credits: extra(s), releases: ['FR', 'DE', 'IT'].map((c) => rel('2026-03-01', 'theatrical', [c])), quality: { overall: 99, direction: 99, script: 99, reception: 99 } });
+    deliver(s, 'Late Light', { format: 'feature', runtime: 100, at: '2026-01-10T12:00:00Z', base: 'fr-paris', credits: extra(s), releases: ['FR', 'DE', 'IT'].map((c) => rel('2026-06-10', 'theatrical', [c])) });
+    deliver(s, 'One Room', { format: 'feature', runtime: 100, at: '2026-01-10T12:00:00Z', base: 'fr-paris', credits: extra(s), releases: [rel('2026-03-01', 'theatrical', ['FR'])] });
+  });
+  const label = await labelOf(page, 'european-film-awards-2026');
+  // You were born in Nairobi: the director the award asks for is European.
+  await openEvent(page, 'Quiet Harbour', label);
+  await filterTo(page, 'Quiet Harbour', 'Every Category');
+  await expect(row(page, 'European Film').getByText('This award is for films by directors from Europe; you are from Kenya.')).toBeVisible();
+  // Labelled fixture: the same life, born in Paris.
+  await editSave(page, (s) => { s.character.birthplaceId = 'fr-paris'; });
+  await openEvent(page, 'Quiet Harbour', label);
+  await filterTo(page, 'One Room', 'Every Category');
+  await expect(row(page, 'European Film').getByText('It needs a festival selection, or a theatrical release in at least 3 countries; it has one.')).toBeVisible();
+  await filterTo(page, 'Late Light', 'Every Category');
+  await expect(row(page, 'European Film').getByText('Entries for this work open on June 15, 2026.')).toBeVisible();
+  await filterTo(page, 'Quiet Harbour');
+  await submit(page, 'European Film', /goes to the credited producers\./, 'Nia Halvorsen-Mbeki');
+
+  // From June 15 the June film's period opens; the May one has closed.
+  await advanceUntil(page, '2026-06-16');
+  await openEvent(page, 'Late Light', label);
+  await filterTo(page, 'Late Light');
+  await row(page, 'European Film').getByRole('button', { name: 'Prepare Submission' }).click();
+  await page.getByRole('dialog', { name: 'Prepare Submission' }).getByRole('button', { name: 'Submit Entry' }).click();
+  await expect(entry(page, 'Late Light: European Film').locator('.chip', { hasText: /^Submitted$/ })).toBeVisible();
+
+  await advanceUntil(page, await dayAfter(page, 'european-film-awards-2026', 'announce'));
+  await openEvent(page, 'Quiet Harbour', label);
+  const nominated = await status(entry(page, 'Quiet Harbour: European Film'), ['Nominated', 'Not Nominated']);
+  await advanceUntil(page, await dayAfter(page, 'european-film-awards-2026', 'end'));
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await openEvent(page, 'Quiet Harbour', label);
+  await status(entry(page, 'Quiet Harbour: European Film'), nominated === 'Nominated' ? ['Winner', 'Did Not Win'] : ['Not Nominated']);
+  await status(entry(page, 'Late Light: European Film'), ['Nominated', 'Not Nominated', 'Winner', 'Did Not Win']);
+});
+
+test('International Emmys: hanging episodes and a first airing outside the US decide the year; entered and kept after a reload', async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-12-10');
+  for (const title of ['North Line', 'Late Tide', 'Same Day']) {
+    await nav(page, 'Projects');
+    await newProject(page, { title, format: 'Series', episodes: '6', runtime: '50' });
+  }
+  // Labelled fixture: British dramas of six 50-minute episodes, aired weekly on British television from June 1 and
+  // December 24, 2026, and one streamed in the United States on the day it aired in Britain.
+  await editSave(page, (s) => {
+    const series = (title: string, releases: State[]) => { const p = deliver(s, title, { format: 'series', runtime: 300, at: '2026-04-01T12:00:00Z', base: 'gb-london', releases }); p.axes.episodeCount = 6; };
+    series('North Line', [rel('2026-06-01', 'broadcast', ['GB'])]);
+    series('Late Tide', [rel('2026-12-24', 'broadcast', ['GB'])]);
+    series('Same Day', [rel('2026-05-01', 'broadcast', ['GB']), rel('2026-05-01', 'streaming', ['US'])]);
+  });
+  const label = await labelOf(page, 'international-emmys-2027');
+  await openEvent(page, 'North Line', label);
+  await expect(page.getByText('January 1, 2026 to December 31, 2026')).toBeVisible(); // the eligibility period shown is the rules'
+  await filterTo(page, 'Late Tide', 'Every Category');
+  await expect(row(page, 'Drama Series').getByText('2 of its 6 episodes air between January 1, 2026 and December 31, 2026; a season counts in the year most of its episodes aired.')).toBeVisible();
+  await filterTo(page, 'Same Day', 'Every Category');
+  await expect(row(page, 'Drama Series').getByText('It aired in the United States first (on the same day as elsewhere); this competition takes work first broadcast outside the United States.')).toBeVisible();
+  await filterTo(page, 'North Line');
+  await submit(page, 'Drama Series', /goes to the credited producers\./, 'Nia Halvorsen-Mbeki');
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await openEvent(page, 'North Line', label);
+  await expect(entry(page, 'Drama Series').locator('.chip', { hasText: /^Submitted$/ })).toBeVisible();
+  const s = await readSavedState(page);
+  const e = s.editions.find((x: State) => x.id === 'international-emmys-2027');
+  expect(e.entries.map((x: State) => x.categoryId)).toEqual(['drama']);
+  expect(e.entries[0].snapshot.score).toBeGreaterThan(0); // what it was entered with is kept
+});

@@ -280,7 +280,7 @@ function deadlineInstant(d: DeadlineRule): number {
  * entered): its opening date, and per-category deadlines. The edition's own deadline becomes the latest of them, so
  * the edition stays open for every category; categories without a rule deadline keep the edition's general deadline.
  */
-export function applyRulebook(ed: Pick<Edition, 'institutionId' | 'year' | 'deadline' | 'submissionOpens' | 'deadlinePlanned' | 'rulesId' | 'defaultDeadline' | 'announce' | 'start' | 'end'>, book: RuleBook): void {
+export function applyRulebook(ed: Pick<Edition, 'institutionId' | 'year' | 'deadline' | 'submissionOpens' | 'deadlinePlanned' | 'rulesId' | 'defaultDeadline' | 'announce' | 'start' | 'end' | 'eligibility' | 'provenance'>, book: RuleBook): void {
   ed.rulesId = book.id;
   ed.defaultDeadline ??= ed.deadline;
   const inst = institution(ed.institutionId);
@@ -303,7 +303,14 @@ export function applyRulebook(ed: Pick<Edition, 'institutionId' | 'year' | 'dead
     ed.start = at(book.held.value.from, 10);
     ed.end = at(book.held.value.to, 22);
     if (ed.announce >= ed.start) ed.announce = ed.start - 7 * DAY;
+    ed.provenance = 'official';
   }
+  // The eligibility period shown for the edition: the organizer's, when every category held shares one (the
+  // International Emmys' first airings in 2025, not SLATE's October-to-September). Until November 9, 2026 the page showed
+  // SLATE's window even where every category read another.
+  const windows = held.filter(enterable).map((c) => book.categories[c.id]?.qualifying?.value ?? book.categories[c.id]?.firstShown?.value);
+  const w = windows[0];
+  if (w && windows.every((x) => x && x.from === w.from && x.to === w.to)) ed.eligibility = { from: w.from, to: w.to };
 }
 
 /** The rules an edition's category is judged by, if the organizer's were read; otherwise SLATE's simulated rules. */

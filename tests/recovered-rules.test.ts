@@ -63,6 +63,7 @@ describe('International Emmys: the 2026 Rules & Regulations (and 2027 projected 
     const e27 = ed(s, 'international-emmys-2027');
     expect(e26.rulesId).toBe('international-emmys-2026@2');
     expect(e26.submissionOpens).toBe(at('America/New_York', '2025-12-08', 9)); // it said March 18, after its own deadline
+    expect(e26.eligibility).toEqual({ from: '2025-01-01', to: '2025-12-31' }); // the page showed SLATE's October to September
     expect(categoryDeadline(e26, cat(e26, 'drama'))).toBe(at('America/New_York', '2026-01-31', 12));
     s.now = at('America/New_York', '2026-01-20', 9);
     const p = work(s, { format: 'series', runtime: 300, completed: '2025-11-01', base: 'gb-london', episodes: 6 });
@@ -314,6 +315,7 @@ describe('Busan, 31st (October 6 to 15, 2026)', () => {
     expect(e.rulesId).toBe('busan-2026@1');
     expect(e.start).toBe(at('Asia/Seoul', '2026-10-06', 10));
     expect(e.end).toBe(at('Asia/Seoul', '2026-10-15', 22));
+    expect(e.provenance).toBe('official');
     s.now = at('Asia/Seoul', '2026-05-01', 9);
     const film = (o: Partial<{ format: Project['axes']['format']; runtime: number; completed: string; base: string }> = {}) => work(s, { format: o.format ?? 'feature', runtime: o.runtime ?? 95, completed: o.completed ?? '2026-01-10', base: o.base ?? 'kr-seoul' });
     expect(why(s, film({ completed: '2025-09-01' }), e, 'competition')).toBe('');

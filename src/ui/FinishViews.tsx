@@ -705,7 +705,7 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
   const shown = all.filter((c) => {
     if (format && !c.formats.includes(format as Format)) return false;
     if (query && !c.name.toLowerCase().includes(query.trim().toLowerCase())) return false;
-    if (show === 'taking') return enterable(c) && categoryDeadline(ed, c) > g.now;
+    if (show === 'taking') return enterable(c) && categoryDeadline(ed, c, p) > g.now;
     if (show === 'open') return !!elig(c)?.eligible;
     if (show === 'entered') return ed.entries.some((x) => x.categoryId === c.id) || !!ed.results[c.id]?.honoree;
     if (show === 'decided') return !enterable(c);
@@ -734,7 +734,8 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
             <ul className="list">
               {cats.map((c) => {
                 const el = elig(c);
-                const dl = categoryDeadline(ed, c);
+                // The chosen project's own deadline where the rules give it one (the EFA's two submission periods).
+                const dl = categoryDeadline(ed, c, p);
                 const parents = c.parents?.map((id) => inst.categories.find((x) => x.id === id)?.name).filter(Boolean) ?? [];
                 const st = categoryRuleStatus(rulebook(ed.rulesId), c.id);
                 return (
@@ -744,14 +745,14 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
                         {c.kind && KIND_WORDS[c.kind] ? <span className="chip">{KIND_WORDS[c.kind]}</span> : null}
                         {!c.competitive && c.kind !== 'honorary' && !hasPrizes(c) ? <span className="chip">Not Competitive</span> : null}
                         {st === 'simulated' ? null : <span className="chip">{st === 'verified' ? 'Official Rules' : 'Projected Rules'}</span>}
-                        {c.verified === false ? <span className="chip">Rules Not Read</span> : null}
+                        {c.verified === false && st === 'simulated' ? <span className="chip">Rules Not Read</span> : null}
                         {el ? <span className={`chip ${el.eligible ? 'chip-positive' : ''}`}>{el.eligible ? `Open To ${p!.title}` : 'Not Eligible'}</span> : null}
                         <div className="dim">
                           {c.kind === 'honorary' ? 'Chosen by the organizer from a body of work. It takes no entries and no fee. '
                             : !enterable(c) ? `Decided among the work selected for ${parents.length ? parents.join(', ') : 'the festival'}${c.kind === 'audience' ? ', by audiences' : c.kind === 'partner' ? ', by a partner jury' : ''}. It takes no entries and no fee. `
                             : `${c.judging === 'audience' ? 'Decided by audiences.' : c.judging === 'jury' ? 'Decided by a jury.' : c.judging === 'members' ? 'Voted by members.' : 'Chosen by programmers.'}${c.kind === 'area' || c.kind === 'juried' ? ' It can give one award, several or none.' : ''}${c.fee ? ` Entry fee ${money(c.fee)}.` : ''}${c.premiere === 'world' ? ' World premieres only.' : c.premiere === 'international' ? ' International premieres only.' : ''}${dl === ed.deadline ? '' : (() => { const t = longLocal(dl, place.zone); return ` Entries close ${t.date}, ${t.time} local time.`; })()} `}
                           Goes to {recipientWords(c)}.
-                          {c.verified === false ? " The organizer's rules for it weren't read; the game's rules apply." : ''}
+                          {c.verified === false && st === 'simulated' ? " The organizer's rules for it weren't read; the game's rules apply." : ''}
                         </div>
                         {el && !el.eligible && <div className="dim">{el.reasons[0]}</div>}
                         <RuleNotes ed={ed} categoryId={c.id} />
@@ -1031,7 +1032,9 @@ function ScreeningsPanel({ editionId }: { editionId: string }) {
 /** How SLATE applies an organizer's rules where the game is simpler than the real process. Short, and only when there are notes. */
 function RuleNotes({ ed, categoryId }: { ed: Parameters<typeof categoryRules>[0]; categoryId: string }) {
   const rules = categoryRules(ed, categoryId);
-  const notes = rules ? [...new Set(Object.values(rules).map((r) => (r as { note?: string }).note).filter((n): n is string => !!n))] : [];
+  // In the player's words: without the documents' section numbers, and the game named as the game.
+  const plain = (n: string) => n.replace(/ \((?:[IVX]+\.|[0-9]+\.|Art\.|Eligibility|Required|II?\.)[^)]*\)/g, '').replace(/\bSLATE's\b/g, "the game's").replace(/\bSLATE\b/g, 'the game').replace(/^the game/, 'The game');
+  const notes = rules ? [...new Set(Object.values(rules).map((r) => (r as { note?: string }).note).filter((n): n is string => !!n).map(plain))] : [];
   if (!notes.length) return null;
   return (
     <details className="dim">

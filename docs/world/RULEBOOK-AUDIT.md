@@ -685,31 +685,42 @@ earlier one is refused), and Short Forms' world premiere for French productions,
 Version 1 left both out, saying SLATE has no seasons, which was wrong. Not modeled: pilots, re-submissions, the combined
 runtime of the episodes screened, the programmers choosing the section. Special Screenings take no submissions except young audience series and stay on SLATE's rules.
 
-## Not Readable From Here
+## Not Readable From Here (as it stood before the owner's recovered sources)
 
-- **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two
-  passes. Search summaries mention premiere-status rules (world, international or North American; Canadian at TIFF's
-  discretion) and May 8, 2026 as the standard deadline, but these were not read from TIFF's own terms and are **not
-  used**: `tiff-2026` stays simulated. A third pass on November 9, 2026 (tiff.net/submit and filmfreeway.com/tiff) was
-  refused the same way; the next try is an official archived copy of TIFF's terms or a TIFF press release with them.
-- **SXSW 2027:** the premiere and eligibility policies on support.sxsw.com (features, shorts, TV) refused this environment
-  (HTTP 403) on November 9, 2026; SXSW's eligibility stays on SLATE's rules. The submissions page itself answered later
-  that day: `sxsw-2027@1` applies its final deadline (October 1, 2026, 11:59 p.m. PT) and the catalog takes its
-  final-deadline fees (features $125; shorts, music videos and TV $90). A book whose only rule is a deadline counts as
-  SLATE's rules for eligibility (`categoryRuleStatus`).
-- **European Film Awards:** the [fiction regulations](https://www.europeanfilmawards.eu/regulations/feature-films/) were read
-  on November 9, 2026 but name no dates or deadline, and the page mixes 2026 and 2027 headings. Their tests (16 of 21
-  European-elements points; a major-festival selection or a seven-day release in three countries) aren't anything SLATE
-  records yet, so the categories stay on SLATE's rules rather than take a partial rule.
-- **The International Emmys:** no current competition rules were found (the rules page returned HTTP 404; on November 9,
-  2026 the Categories & Key Dates page gave the 2026 competition's window, December 8, 2025 to January 31, 2026, and its 16
-  categories, but no eligibility period). The Entry FAQ gives the deadline (January 31 at noon Eastern), that a non-US
-  organization enters and one category per program; `international-emmys-2026@1` and `-2027@1` (projected) hold the
-  deadline only, so eligibility stays SLATE's. Series Mania was listed here too until its 2027 rules were found (below).
-- **BAFTA Film Awards 2027:** bafta.org (the rules page and the press release "2027 EE BAFTA Film Awards opens for
-  entries") refused this environment (HTTP 403), on both passes. Search summaries give a longlist on January 7, nominations
-  on January 19 and the ceremony on February 21, 2027, but not the eligibility period; **not used**: BAFTA stays
-  simulated.
+Each of these was corrected on November 9, 2026, when the owner's research pass supplied the sources' addresses; see
+**Recovered Sources** below. What this section said, in the past tense:
+
+- **TIFF:** tiff.net and TIFF's FilmFreeway page refused this environment, so `tiff-2026` stayed simulated. TIFF's 2026
+  terms PDF on its content host was readable all along; it is now `tiff-2026@1`.
+- **SXSW 2027:** the support pages refused this environment and eligibility stayed SLATE's; the festival page and search
+  excerpts of the feature policy now give `sxsw-2027@2`.
+- **European Film Awards:** this said the regulations "name no dates or deadline" and that the European-elements points
+  weren't anything SLATE records. Both were wrong: the General Eligibility Criteria give the first-screening window, the
+  General Awarding Procedures the submission periods, and SLATE does record who made a film and where. Now
+  `european-film-awards-2026@1` (the 39th, held January 16, 2027).
+- **The International Emmys:** this said no eligibility period was published. The 2026 Rules & Regulations PDF gives it
+  (Section I: first broadcast outside the US in 2025). Now `international-emmys-2026@2` and `-2027@2` (projected).
+- **BAFTA Film Awards 2027:** bafta.org still refuses this environment (HTTP 403), but search excerpts of its own pages give
+  the rules the owner's research pass read; now `bafta-film-2027@1`, with that provenance recorded.
+
+## Recovered Sources (November 9, 2026)
+
+The owner's research pass recovered these sources; each was read again here where this environment could reach it. A
+readable source isn't an applied rule: `docs/awards/RULES.csv` lists each applied rule with its source, read date, code
+line and tests, then what was read and not applied, and the organizers whose rules couldn't be read.
+
+| Organizer, edition | Read here from | Applied | Not applied, and why |
+| --- | --- | --- | --- |
+| International Emmys 2026 (`@2`), 2027 (`@2`, projected) | [2026 Rules & Regulations](https://www.iemmys.tv/wp-content/uploads/2025/11/2026-International-Emmy-Awards-Rules-Regulations-.pdf) (PDF); Categories & Key Dates | First broadcast outside the US January 1 to December 31, 2025 (I.a); hanging episodes by the majority aired, an equal split entered once (II.a); first aired in the US, or the same day, refused (I.b: prior approval SLATE can't request); no cinema release first; not in another Emmy competition; 20-minute programs, short-form episodes under 20, three episodes for a drama's two non-consecutive ones; performances scripted, live action, not from children's programs, no narrators or hosts, 10% of the episode; deadline January 31, 2026 at noon ET; opening December 8, 2025 | Case-by-case review; the entrant organization; the two episodes chosen; a drama's intention to continue; cameos; extensions. Air dates per episode come from SLATE's airing model (broadcast weekly; streaming all at once), as the game records one date per release |
+| European Film Awards, 39th (`european-film-awards-2026@1`) | Eligibility (3.1-3.4); General Procedure (2.3); Fiction (4.1-4.10); Documentary (5); Animation (6); Arts & Crafts (7); Short Film (8); General Information (1.3) | First screening October 1, 2025 to September 30, 2026; submission by May 31, 2026, or June 15 to September 15 for films first shown from June 1; European directors and recipients (crafts: a group at least half European); 13 of 21 European points for fiction; a festival selection or three countries; documentary 70, animation 60 minutes; shorts produced 2025-26, 30 minutes, no submission periods | "Major festival" (SLATE counts any festival in its calendar); the Short Film Network's selection (31 festivals, unnamed: SLATE's festival screening in the window stands in); the main-producer limit; the composer's 60%; LUX, Young Audience and Eurimages (not open to submission this way); the board's exceptions |
+| BAFTA Film Awards 2027 (`bafta-film-2027@1`) | Search-engine excerpts of bafta.org's rules, film information and press release (the site refuses this environment) | 70 minutes; first UK cinema release January 1, 2026 to February 19, 2027; to March 19, 2027 for documentaries and work not in English, except Best Film; Stage One deadline October 29, 2026 (end of day, London, the time not given) | The qualifying run (screenings and days); Stage Two; the BFI Diversity Standards; British categories (not in the catalog); "first" UK release when an earlier one exists |
+| TIFF 2026 (`tiff-2026@1`) | [Terms & Conditions for Submission](https://assets.ctfassets.net/22n7d68fswlw/2uGGqKI9o8TGZYOhvgrQX/800dafd215df8bb4c5fb866d823d738d/Terms_-26_Conditions_For_Submission_of_Films_Through_FilmFreeway_-_TIFF_2026_presented_by_Rogers.pdf) (PDF) | Completed from September 4, 2025; no public screening in Canada or the US before the festival; no North American release; no DVD, Blu-ray or VOD sale; no earlier TIFF submission; features 60, shorts 40 minutes; series two episodes, 60 minutes together; May 8, 2026, 11:59 p.m. ET | Canadian and International categories (fees only); the Canadian-premiere discretion; Wavelengths by invitation; programmes chosen by TIFF (SLATE's selection stands in). Submission isn't selection, and selection isn't a prize |
+| SXSW 2027 (`sxsw-2027@2`) | [Festival page](https://sxsw.com/film-tv-festival/); search excerpts of the feature policy | March 15 to 21, 2027; completed from 2025 ("early 2027" sets no end); features: no US non-festival cinema run, nothing online, no US television, no home video before SXSW; no world-premiere requirement | The shorts, TV, music video and XR policies (unreadable): those sections keep SLATE's other rules |
+| Busan 2026 (`busan-2026@1`) | [Rules & Regulations](https://www.biff.kr/pop/file/2026_Official_Submission_and_Selection_Rules_&_Regulation_eng_final_as_of_2026-03-10.pdf?ver=1) (PDF); submission guidelines | October 6 to 15, 2026; completed from September 2025; features 60 minutes, Asian, by July 8 at 18:00 KST; Wide Angle shorts 30 minutes, Asian fiction, world or international premiere, by June 2 at 18:00 KST; no resubmission | "No later than the first week of September 2026" (no exact date given, so none set); the committee's discretion and new versions; premiere status for features is a preference |
+| DGA 79th: Documentary Film (`dga-2027@5`) | dga.org/Awards/Annual (read); search excerpts of dga.org's documentary page; the detailed rules on the public preview subdomain preview.dga.org (refuses this environment; read by the owner's pass) | More than 40 minutes; a US release in 2026 in cinemas, on streaming or US television; one entry per director; foreign documentaries; October 16, 2026, 5:00 p.m. PT; no membership required | DGA Agreement coverage for streaming and television (SLATE records no guild agreements); the directorial functions |
+| FESPACO 2027 (`fespaco-2027@1`) | Regulations; conditions; call for entries (French and English) | Features 60 minutes; shorts and animation up to 35; series as 2x52, 3x26 or 6x13; no more than two years old on December 31, 2026; never at an earlier FESPACO; no commercial release in Burkina Faso; African directors | **Dates and deadline: source conflict.** Regulations: February 27 to March 6, 2027, deadline September 20, 2026; call: March 20 to 27, 2027, deadline October 20, 2026; press reports support the call; no dated communiqué found. SLATE keeps its own calendar, unverified. Diaspora directors; the film-school category |
+| AMAA (`amaa-2026@1`) | Search excerpts of the FilmFreeway listing | Opens December 1, 2025; closes May 31, 2026 (end of day, Lagos, the time not given) | **Ambiguous:** "from July 2025 till date" and the filmmaker wording (no closing date; not shown in the excerpts read here); the edition number and ceremony date |
+| Blue Dragon, Locarno | Not readable (503; 403) | Nothing | **Unavailable:** recorded in `GAPS`; their editions keep SLATE's rules |
 
 ### Tests For These Rules (`tests/rulebooks.test.ts`)
 
@@ -722,8 +733,8 @@ when it premieres elsewhere first.
 
 ## Still To Read (rules simulated until then)
 
-TIFF, Busan, Sitges, IDFA, Hot Docs, SXSW, Locarno, FESPACO, BAFTA Film and Television,
-International Emmys, Spirit, Gotham, DGA, WGA, PGA, Actor Awards, César, Goya, Canadian Screen, AACTA, AMAA, Japan
-Academy, Blue Dragon and European Film Awards; and the remaining sections of Cannes (Competition, Special Screenings),
+Locarno, Blue Dragon, BAFTA Television, the sections of SXSW other than features, AMAA's eligibility, FESPACO's dates,
+Sitges, IDFA, Hot Docs, Spirit, Gotham, WGA, PGA, Actor Awards, César, Goya, Canadian Screen, AACTA and Japan Academy
+(each read in part above); and the remaining sections of Cannes (Competition, Special Screenings),
 Berlinale (Panorama, Shorts), Annecy (Television) and the Emmys' pre-2026 Outstanding Television Movie. Each needs its
 organizer's document for the edition in play; add a new rulebook version, never edit one an edition already uses.
