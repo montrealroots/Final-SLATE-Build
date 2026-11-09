@@ -4194,6 +4194,37 @@
      "slots": 1,
      "fee": 0,
      "competitive": true
+    },
+    {
+     "id": "music-videos",
+     "name": "Music Video Competition",
+     "recipient": "project",
+     "formats": [
+      "music-video"
+     ],
+     "kind": "section",
+     "verified": true,
+     "judging": "programmers",
+     "slots": 12,
+     "fee": 60,
+     "competitive": false
+    },
+    {
+     "id": "music-videos-jury",
+     "name": "Grand Jury Award: Music Video",
+     "recipient": "director",
+     "formats": [
+      "music-video"
+     ],
+     "kind": "prize",
+     "parents": [
+      "music-videos"
+     ],
+     "verified": false,
+     "judging": "jury",
+     "slots": 1,
+     "fee": 0,
+     "competitive": true
     }
    ],
    "rosterStatus": "read"
@@ -6738,6 +6769,27 @@
      "competitive": true
     },
     {
+     "id": "narrator",
+     "name": "Outstanding Narrator",
+     "recipient": "narrator",
+     "formats": [
+      "documentary-series",
+      "documentary-feature",
+      "documentary-short",
+      "unscripted-series"
+     ],
+     "family": [
+      "factual"
+     ],
+     "kind": "award",
+     "section": "Performer Awards",
+     "verified": true,
+     "judging": "members",
+     "slots": 5,
+     "fee": 0,
+     "competitive": true
+    },
+    {
      "id": "reality-host",
      "name": "Outstanding Host For A Reality Or Reality Competition Program",
      "recipient": "host",
@@ -8842,6 +8894,26 @@
      "recipient": "producer",
      "formats": [
       "web-series"
+     ],
+     "kind": "award",
+     "section": "Categories Presented",
+     "verified": true,
+     "judging": "members",
+     "slots": 5,
+     "fee": 0,
+     "competitive": true
+    },
+    {
+     "id": "sports-documentary",
+     "name": "Sports Documentary",
+     "recipient": "producer",
+     "formats": [
+      "documentary-series",
+      "documentary-feature",
+      "documentary-short"
+     ],
+     "need": [
+      "sports"
      ],
      "kind": "award",
      "section": "Categories Presented",

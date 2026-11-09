@@ -569,7 +569,7 @@ const KIND_WORDS: Partial<Record<NonNullable<Category['kind']>, string>> = { sec
 const RECIPIENT_WORDS: Record<Category['recipient'], string> = {
   project: 'the credited producers', producer: 'the credited producers', director: 'the credited director', writer: 'the credited writers',
   lead: 'a credited leading performance', supporting: 'a credited supporting performance', guest: 'a credited guest performance', performer: 'a credited leading or supporting performance',
-  voice: 'a credited voice performance', ensemble: 'the credited cast', host: 'the credited host', craft: '', song: 'the composer of an original song in the work',
+  voice: 'a credited voice performance', ensemble: 'the credited cast', host: 'the credited host', narrator: 'the credited narrator', craft: '', song: 'the composer of an original song in the work',
   national: "the director, once the production country's committee puts the film forward", career: 'a career, chosen by the organizer',
 };
 

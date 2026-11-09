@@ -18,7 +18,7 @@ import { DAY, addDaysToKey, dateKey, formatDateKey, localParts, localToInstant, 
 import type { Credit, Edition, Format, GameState, Medium, Project, RivalFilm, Screening } from './types';
 import { currentRulebook, registerRulebooks, rulebook, type CategoryRules, type DeadlineRule, type QualifyingAward, type QualifyingList, type RuleBook, type RuntimeRule } from './rulebooks';
 
-export type Recipient = 'project' | 'director' | 'writer' | 'lead' | 'supporting' | 'producer' | 'voice' | 'ensemble' | 'guest' | 'performer' | 'host' | 'craft' | 'song' | 'national' | 'career';
+export type Recipient = 'project' | 'director' | 'writer' | 'lead' | 'supporting' | 'producer' | 'voice' | 'ensemble' | 'guest' | 'performer' | 'host' | 'narrator' | 'craft' | 'song' | 'national' | 'career';
 /** How a category is decided (docs/awards/DESIGN.md). Categories without one are older data: entered and judged as awards. */
 export type CategoryKind = 'award' | 'area' | 'juried' | 'section' | 'prize' | 'audience' | 'partner' | 'honorary';
 export type Judging = 'programmers' | 'jury' | 'members' | 'audience';
@@ -569,6 +569,7 @@ function recipientMissingReason(cat: Category): string {
     return cat.actingTitle ? `No credited ${cat.recipient === 'lead' ? 'lead' : 'supporting'} performance can be entered as ${cat.actingTitle.toLowerCase()} in this category.` : `No credited ${cat.recipient} performance.`;
   }
   if (cat.recipient === 'voice') return 'No credited voice performance.';
+  if (cat.recipient === 'narrator') return 'No credited narrator: cast a part whose story function is Narrator, and give the program a narration sequence.';
   return 'No credited person for this category.';
 }
 
@@ -739,7 +740,7 @@ export function seasonSlate(seed: number, seasonYear: number): SlateFilm[] {
 
 /** Scores for the recipient kinds added November 9, 2026, derived without new draws so every season's slate is unchanged. */
 function withDerived(x: Record<'project' | 'producer' | 'director' | 'writer' | 'lead' | 'supporting' | 'voice' | 'ensemble', number>): Record<Recipient, number> {
-  return { ...x, guest: x.supporting, performer: Math.max(x.lead, x.supporting), host: x.lead, craft: (x.director + x.project) / 2, song: x.project, national: x.project, career: x.project };
+  return { ...x, guest: x.supporting, performer: Math.max(x.lead, x.supporting), host: x.lead, narrator: x.voice, craft: (x.director + x.project) / 2, song: x.project, national: x.project, career: x.project };
 }
 
 /** The title of a competing work in an edition, by its entry ID. */

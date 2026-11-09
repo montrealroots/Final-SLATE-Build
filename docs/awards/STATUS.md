@@ -14,7 +14,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Institution | Categories | Roster read / unverified / blocked | Eligibility official / projected / game | Recipients by rule | Dates announced | Deadlines from rules | Unit | Browser | Not playable |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Academy Awards (`oscars`) | 28 | 28 / 0 / 0 | 25 / 0 / 3 | 1 | 28 | 25 | 14 | 12 | 5 |
-| Primetime Emmy Awards (`emmys`) | 114 | 114 / 0 / 0 | 111 / 0 / 3 | 17 | 0 | 111 | 16 | 7 | 11 |
+| Primetime Emmy Awards (`emmys`) | 115 | 115 / 0 / 0 | 112 / 0 / 3 | 17 | 0 | 112 | 17 | 7 | 10 |
 | Sundance Film Festival (`sundance`) | 16 | 6 / 10 / 0 | 6 / 0 / 10 | 0 | 16 | 6 | 6 | 2 | 1 |
 | Berlin International Film Festival (`berlinale`) | 18 | 13 / 5 / 0 | 0 / 6 / 12 | 0 | 18 | 0 | 11 | 5 | 3 |
 | Cannes Film Festival (`cannes`) | 17 | 15 / 2 / 0 | 0 / 5 / 12 | 0 | 17 | 5 | 9 | 0 | 1 |
@@ -27,14 +27,14 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | International Documentary Film Festival Amsterdam (`idfa`) | 11 | 6 / 5 / 0 | 5 / 0 / 6 | 0 | 11 | 5 | 5 | 0 | 0 |
 | Hot Docs Canadian International Documentary Festival (`hot-docs`) | 2 | 1 / 1 / 0 | 1 / 0 / 1 | 0 | 2 | 1 | 1 | 0 | 1 |
 | Clermont-Ferrand International Short Film Festival (`clermont`) | 6 | 4 / 2 / 0 | 3 / 0 / 3 | 3 | 6 | 3 | 4 | 0 | 2 |
-| SXSW Film & TV Festival (`sxsw`) | 10 | 4 / 6 / 0 | 0 / 0 / 10 | 0 | 10 | 0 | 2 | 0 | 1 |
+| SXSW Film & TV Festival (`sxsw`) | 12 | 5 / 7 / 0 | 0 / 0 / 12 | 0 | 12 | 0 | 4 | 0 | 1 |
 | Series Mania (`series-mania`) | 17 | 16 / 1 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 1 |
 | Locarno Film Festival (`locarno`) | 2 | 0 / 0 / 2 | 0 / 0 / 2 | 0 | 0 | 0 | 0 | 0 | 0 |
 | FESPACO (`fespaco`) | 5 | 0 / 0 / 5 | 0 / 0 / 5 | 0 | 5 | 0 | 0 | 0 | 0 |
 | BAFTA Film Awards (`bafta-film`) | 7 | 0 / 0 / 7 | 0 / 0 / 7 | 0 | 0 | 0 | 0 | 0 | 0 |
 | BAFTA Television Awards (`bafta-tv`) | 5 | 0 / 0 / 5 | 0 / 0 / 5 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Golden Globe Awards (`golden-globes`) | 28 | 28 / 0 / 0 | 26 / 0 / 2 | 7 | 28 | 15 | 11 | 0 | 2 |
-| International Emmy Awards (`international-emmys`) | 14 | 14 / 0 / 0 | 0 / 0 / 14 | 0 | 14 | 0 | 3 | 0 | 6 |
+| International Emmy Awards (`international-emmys`) | 15 | 15 / 0 / 0 | 0 / 0 / 15 | 0 | 15 | 0 | 5 | 0 | 5 |
 | Annie Awards (`annie`) | 32 | 30 / 2 / 0 | 29 / 0 / 3 | 0 | 32 | 29 | 11 | 0 | 6 |
 | Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 20 / 0 / 1 | 0 | 21 | 20 | 7 | 0 | 4 |
 | Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 10 / 0 / 2 | 0 | 12 | 10 | 6 | 0 | 1 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 0 | 0 | 0 |
-| **All 37** | 802 | 705 / 69 / 28 | 456 / 11 / 335 | 28 | 335 | 428 | 184 | 32 | 125 |
+| **All 37** | 806 | 708 / 70 / 28 | 457 / 11 / 338 | 28 | 338 | 429 | 189 | 32 | 123 |
 
 ## Research queue
 
@@ -59,13 +59,13 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 1. `venice` (1): `sic`
 2. `tiff` (4): `official`, `midnight-madness`, `platform`, `shorts`
 3. `busan` (2): `competition`, `shorts`
-4. `sxsw` (4): `narrative`, `documentary`, `episodic`, `shorts`
+4. `sxsw` (5): `narrative`, `documentary`, `episodic`, `shorts`, `music-videos`
 5. `series-mania` (5): `international`, `french`, `panorama`, `short-forms`, `special-screenings`
 6. `locarno` (1): `concorso`
 7. `fespaco` (4): `fiction`, `documentary`, `shorts`, `series`
 8. `bafta-film` (7): `film`, `director`, `screenplay`, `leading-actor`, `leading-actress`, `animated`, `documentary`
 9. `bafta-tv` (5): `drama`, `limited`, `factual`, `leading-actor`, `leading-actress`
-10. `international-emmys` (12): `arts`, `actress`, `actor`, `comedy`, `documentary`, `drama`, `kids-animation`, `kids-factual`, `kids-live-action`, `non-scripted`, `short-form`, `tv-movie`
+10. `international-emmys` (13): `arts`, `actress`, `actor`, `comedy`, `documentary`, `drama`, `kids-animation`, `kids-factual`, `kids-live-action`, `non-scripted`, `short-form`, `sports-documentary`, `tv-movie`
 11. `annie` (1): `tv`
 12. `spirit` (1): `redford`
 13. `dga` (9): `first-feature`, `documentary`, `drama`, `comedy`, `limited`, `movie`, `documentary-series`, `variety`, `reality`

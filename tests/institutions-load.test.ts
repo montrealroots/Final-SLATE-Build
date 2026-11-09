@@ -25,7 +25,8 @@ describe('the festival and awards calendar', () => {
       const now = cats(real.institutions.find((i) => i.id === b.id)!);
       for (const c of b.categories) expect(now.has(c.id), `${b.id}/${c.id}`).toBe(true);
     }
-    expect(real.institutions.reduce((n, i) => n + cats(i).size, 0)).toBe(802);
+    // 802 until the nonplayable review of November 9, 2026 entered four (docs/awards/NONPLAYABLE-REVIEW.md).
+    expect(real.institutions.reduce((n, i) => n + cats(i).size, 0)).toBe(806);
   });
 
   it('a malformed or repeated entry publishes nothing; a failed fetch is tried again', async () => {

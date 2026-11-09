@@ -307,7 +307,7 @@ export function playerScore(p: Project, cat: Category, recipients: string[], jud
   switch (cat.recipient) {
     case 'director': return q.direction ?? 50;
     case 'writer': return q.script ?? 50;
-    case 'lead': case 'supporting': case 'voice': return recipients.length ? Math.max(...recipients.map(perf)) : 50;
+    case 'lead': case 'supporting': case 'voice': case 'narrator': return recipients.length ? Math.max(...recipients.map(perf)) : 50;
     case 'ensemble': case 'host': case 'national': case 'career': return q.overall ?? 50;
     case 'guest': case 'performer': return recipients.length ? Math.max(...recipients.map(perf)) : 50;
     case 'craft': return craftScore(p, cat.crafts, false);

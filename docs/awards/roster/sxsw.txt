@@ -15,4 +15,6 @@ episodic | Episodic Pilot Competition | S | project | series+limited-series+shor
 episodic-jury | Grand Jury Award: Episodic Pilot | P:episodic | producer | series | UNVERIFIED | UNVERIFIED: award name not read
 shorts | Short Film Competition | S | project | short+documentary-short | sxsw27-submit | The game's existing entry; $70 or $90
 shorts-jury | Grand Jury Award: Short Film | P:shorts | director | short+documentary-short | UNVERIFIED | UNVERIFIED: award name not read; the qualifying route for the Oscars shorts depends on it
-- Music Videos And XR | Music videos and immersive works aren't made in the game | sxsw27-submit
+music-videos | Music Video Competition | S | project | music-video | sxsw27-submit | Music videos are a submission type. Until November 9, 2026 this was listed with XR as "Music videos and immersive works aren't made in the game", which was false for music videos: New Project offers the Music Video format
+music-videos-jury | Grand Jury Award: Music Video | P:music-videos | director | music-video | UNVERIFIED | UNVERIFIED: award name not read
+- XR | Immersive works aren't made in the game | sxsw27-submit

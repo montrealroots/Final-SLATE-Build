@@ -41,11 +41,13 @@ function release(p: Project, route: Project['releases'][number]['route'], date: 
 }
 
 describe('rulebook data', () => {
-  it('recounts the catalog the audit covers: 37 institutions and 802 categories', () => {
+  it('recounts the catalog the audit covers: 37 institutions and 806 categories', () => {
     expect(INSTITUTIONS.length).toBe(37);
     // 141 before the 78th Emmys renamed Outstanding Television Movie to Outstanding Movie (kept as two, by year); 142 until
-    // the rosters of November 9, 2026 (docs/awards/roster).
-    expect(INSTITUTIONS.reduce((n, i) => n + i.categories.length, 0)).toBe(802);
+    // the rosters of November 9, 2026 (docs/awards/roster); 802 until the nonplayable review the same day entered the
+    // Emmys' Outstanding Narrator, SXSW's Music Video Competition with its jury award and the International Emmys' Sports
+    // Documentary.
+    expect(INSTITUTIONS.reduce((n, i) => n + i.categories.length, 0)).toBe(806);
   });
 
   it('every rule names a real institution, category and source, with real dates', () => {
@@ -420,7 +422,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('456 categories follow verified rules for at least one edition, 11 only projected ones; the other 335 are simulated', () => {
+  it('457 categories follow verified rules for at least one edition, 11 only projected ones; the other 338 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -441,8 +443,10 @@ describe('audit counts', () => {
     // 369 until the Césars' 25 (cesar-2027@1), 394 until the Spirit Awards' 20 (spirit-2027@1),
     // 414 until the Actor Awards' 13 (actor-awards-2027@1), 427 until the DGA's feature award (dga-2027@1),
     // 428 until the WGA's 16 (wga-2027@1), 444 until the Gothams' 10 film categories (gotham-2026@1),
-    // 454 until the PGA's two film awards (pga-2027@1).
-    expect(n).toEqual({ verified: 456, projected: 11, simulated: 335 });
+    // 454 until the PGA's two film awards (pga-2027@1), 456 until Outstanding Narrator (emmys-2026@3). 335 simulated until
+    // SXSW's Music Video Competition, its jury award and the International Emmys' Sports Documentary were entered, under
+    // terms that weren't readable from here.
+    expect(n).toEqual({ verified: 457, projected: 11, simulated: 338 });
   });
 });
 
@@ -914,7 +918,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const s = startLife('em2');
     s.now = at('America/Los_Angeles', '2026-04-01', 9);
     const e = ed(s, 'emmys-2026');
-    expect(e.rulesId).toBe('emmys-2026@2');
+    expect(e.rulesId).toBe('emmys-2026@3'); // version 3 only adds Outstanding Narrator (tests/nonplayable-review.test.ts)
     for (const id of ['guest-actor', 'animated-program', 'reality-competition', 'title-design', 'hosted-nonfiction']) expect(categoryRuleStatus(rulebook(e.rulesId), id), id).toBe('verified');
     expect(categoryRuleStatus(rulebook('emmys-2026@1'), 'guest-actor')).toBe('simulated'); // version 1 read 13 categories
     const show = (format: Project['axes']['format'], eps: number, territory = 'US') => {

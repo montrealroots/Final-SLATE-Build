@@ -69,6 +69,7 @@ export function requirementProblems(state: GameState, p: Project, cat: Asks): st
       case 'iberoamerica-non-es': if (!LATIN_AMERICA.includes(o) && o !== 'PT') fail('This category is for Ibero-American productions from outside Spain.'); break;
       case 'latin-america': if (!LATIN_AMERICA.includes(o)) fail('This section is for Latin American productions.'); break;
       case 'asia-pacific': if (!ASIA_PACIFIC.includes(o)) fail('This award is for Asian and Pacific productions.'); break;
+      case 'sports': if (!p.axes.genres.some((g) => g.id === 'sports')) fail('This award is for documentaries about sport; give the project the Sports genre if it is one.'); break;
       case 'basque': fail('This award is for Basque productions, which the game doesn\'t record yet.'); break;
       default: {
         const country: Record<string, string> = { fr: 'FR', es: 'ES', ca: 'CA', au: 'AU', jp: 'JP', nl: 'NL' };
@@ -99,6 +100,8 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
       case 'craft': return p.credits.filter((c) => cat.crafts?.includes(c.roleId));
       case 'guest': return cast.filter((c) => chars(p).find((x) => x.name === c.characterName)?.seriesInvolvement === 'guest');
       case 'performer': return cast.filter((c) => placed(c.characterName) === 'lead' || placed(c.characterName) === 'supporting');
+      // Emmy Category 76: a traditional narration, read as a narrator, not a character; the part's declared function says which.
+      case 'narrator': return p.scenes.some((s) => s.kind === 'narration') ? p.credits.filter((c) => (c.contribution === 'Cast' || c.contribution === 'Voice Cast') && chars(p).find((x) => x.name === c.characterName)?.functions.includes('narrator')) : [];
       case 'host': return p.credits.filter((c) => c.roleId === 'contributor' && /\bhost/i.test(p.contributors.find((x) => `contributor:${x.id}` === c.person)?.role ?? ''));
       case 'song': return p.scenes.some((s) => s.songs.some((x) => !x.licensed)) ? p.credits.filter((c) => c.roleId === 'composer') : [];
       case 'national': return p.credits.filter((c) => c.contribution === 'Directed By');
@@ -106,7 +109,7 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
     }
   };
   const groups = [cat.recipient, ...(cat.with ?? [])];
-  if (!groups.some((g) => ['craft', 'guest', 'performer', 'host', 'song', 'national'].includes(g)) && !cat.need?.includes('breakthrough')) return null;
+  if (!groups.some((g) => ['craft', 'guest', 'performer', 'host', 'narrator', 'song', 'national'].includes(g)) && !cat.need?.includes('breakthrough')) return null;
   let out: Credit[] = [];
   for (const g of groups) {
     const got = pick(g);
