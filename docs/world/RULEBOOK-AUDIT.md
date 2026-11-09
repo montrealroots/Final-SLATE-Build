@@ -445,6 +445,14 @@ US markets, no nontheatrical release before it. Television (B.1, B.2): first air
 2026 (General Timetable). Not modeled: the SAG-AFTRA contract, the six markets (SLATE: a US theatrical release), primetime
 airing, the limited series' 150 minutes and the television movie's length, AI-generated performances.
 
+## DGA Awards, 79th (2027)
+
+Source: [Theatrical Feature Film guidelines](https://www.dga.org/Awards/Entry-Forms/Theatrical-Feature-Film/ApplicationRules)
+(read November 9, 2026): more than 40 minutes; a paid-admission run of at least seven consecutive days in Los Angeles or New
+York, January 1 to December 31, 2026; animated films and documentaries excluded; entry forms by 5:00 p.m. PT on November 13,
+2026. Applied to Outstanding Directorial Achievement in Theatrical Feature Film only. The documentary and first-time feature
+guideline pages returned HTTP 404; the other categories stay on SLATE's rules.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two

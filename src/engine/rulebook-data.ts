@@ -865,8 +865,29 @@ const ACTOR_AWARDS_2027: RuleBook = {
   },
 };
 
+// ---------------- DGA Awards, 79th (2027) ----------------
+
+/**
+ * Read November 9, 2026: the 79th DGA Awards' Theatrical Feature Film guidelines. Only that category's guidelines were
+ * readable; the others' pages returned HTTP 404 and stay on SLATE's rules. Not modeled: Los Angeles or New York as the
+ * place of the run (SLATE: a US theatrical release, and the catalog's own requirement says the same), and the exclusion of
+ * animated features.
+ */
+const DGA79: RuleSource = { id: 'dga79-feature', publisher: 'Directors Guild of America', title: 'Outstanding Directorial Achievement in Theatrical Feature Film: guidelines (79th Annual DGA Awards)', url: 'https://www.dga.org/Awards/Entry-Forms/Theatrical-Feature-Film/ApplicationRules', edition: '79th Annual DGA Awards (2027)', retrieved: '2026-11-09' };
+const DGA_2027: RuleBook = {
+  id: 'dga-2027@1', institutionId: 'dga', year: 2027, version: 1, checked: '2026-11-09', sources: [DGA79],
+  categories: {
+    feature: {
+      runtime: v({ over: 40 }, 'dga79-feature', 'Feature-length: more than 40 minutes.'),
+      qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'dga79-feature', 'Released January 1 to December 31, 2026.'),
+      release: v({ routes: ['theatrical'], countries: ['US'] }, 'dga79-feature', 'In a paid-admission cinema in Los Angeles or New York for at least seven consecutive days; SLATE treats a US theatrical release as that.'),
+      deadlines: v([{ date: '2026-11-13', time: '17:00', zone: PT }], 'dga79-feature', 'Entry forms received by 5:00 p.m. PT on Friday, November 13, 2026.'),
+    },
+  },
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027,
 ];

@@ -38,7 +38,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Annie Awards (`annie`) | 32 | 30 / 2 / 0 | 29 / 0 / 3 | 0 | 32 | 29 | 11 | 0 | 6 |
 | Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 20 / 0 / 1 | 0 | 21 | 20 | 7 | 0 | 4 |
 | Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 0 / 0 / 12 | 0 | 12 | 0 | 1 | 0 | 1 |
-| Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 0 / 0 / 10 | 0 | 10 | 0 | 0 | 0 | 3 |
+| Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 1 / 0 / 9 | 0 | 10 | 1 | 4 | 0 | 3 |
 | Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 0 / 0 / 18 | 0 | 0 | 0 | 0 | 0 | 11 |
 | Producers Guild Awards (`pga`) | 15 | 14 / 1 / 0 | 0 / 0 / 15 | 0 | 15 | 0 | 0 | 0 | 4 |
 | Actor Awards (`actor-awards`) | 13 | 13 / 0 / 0 | 13 / 0 / 0 | 0 | 13 | 13 | 3 | 0 | 3 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 0 | 0 | 0 |
-| **All 37** | 802 | 705 / 69 / 28 | 427 / 11 / 364 | 28 | 335 | 399 | 165 | 32 | 125 |
+| **All 37** | 802 | 705 / 69 / 28 | 428 / 11 / 363 | 28 | 335 | 400 | 169 | 32 | 125 |
 
 ## Research queue
 
@@ -69,7 +69,7 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 11. `annie` (1): `tv`
 12. `spirit` (1): `redford`
 13. `gotham` (10): `feature`, `documentary`, `international`, `director`, `breakthrough-director`, `original-screenplay`, `adapted-screenplay`, `lead`, `supporting`, `breakthrough-performer`
-14. `dga` (10): `feature`, `first-feature`, `documentary`, `drama`, `comedy`, `limited`, `movie`, `documentary-series`, `variety`, `reality`
+14. `dga` (9): `first-feature`, `documentary`, `drama`, `comedy`, `limited`, `movie`, `documentary-series`, `variety`, `reality`
 15. `wga` (18): `original`, `adapted`, `documentary-screenplay`, `drama-series`, `comedy-series`, `limited-series`, `new-series`, `movie`, `animation`, `episodic`, `episodic-comedy`, `talk-series`, `variety-specials`, `documentary-current`, `documentary-other`, `childrens`, `short-form`, `selvin`
 16. `pga` (12): `theatrical`, `animated`, `documentary`, `drama`, `comedy`, `limited`, `tv-movie`, `nonfiction`, `live-variety`, `game-competition`, `childrens`, `short-form`
 17. `goya` (5): `european`, `iberoamerican`, `short-fiction`, `short-documentary`, `short-animation`
