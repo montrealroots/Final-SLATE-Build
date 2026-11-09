@@ -1,0 +1,9 @@
+@institution bafta-tv
+@edition 2027 BAFTA Television Awards and Television Craft Awards
+@blocked bafta.org answers every request from this environment with a bot-verification page (HTTP 403); checked November 9, 2026. The roster, including the separate Television Craft Awards, is not verified.
+# Existing categories (kept; names and rules simulated until the organizer's rulebooks can be read)
+drama | Drama Series | C | producer | series:drama | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+limited | Limited Drama | C | producer | limited-series | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+factual | Factual Series | C | producer | docseries+reality | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+leading-actor | Leading Actor | C | lead:Actor | television | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+leading-actress | Leading Actress | C | lead:Actress | television | UNVERIFIED | UNVERIFIED: existing game category; roster not readable

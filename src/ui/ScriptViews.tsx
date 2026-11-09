@@ -14,6 +14,7 @@ import { addAct, addBeat, addThread, removeAct, removeBeat, removeThread, setSce
 // Loaded with this page, not at startup (the startup budget): the engine index leaves season.ts out.
 import { moveEpisode, removeRelationship, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule, type SharedFact } from '../engine/season';
 import { RESTRICTION_WORDS } from '../engine/documentary';
+import { PROJECT_SUBJECTS } from '../engine/awards-rules';
 import { money } from '../engine/budget';
 import { approvalScope, type ScopeChange } from '../engine/cost-cuts';
 import { CONTENT_ISSUES, audienceContentNote, characterPronouns, contentSuggestions, contentSummary, placementExplained, spokenMinutes } from '../engine/script-explain';
@@ -110,7 +111,22 @@ export function ScriptTab({ p }: { p: Project }) {
           <SelectField label="Competes As" value={p.axes.register ?? ''} hint="Where awards that split drama from comedy enter it, as you declare it. Left to its genres, comedy and musical genres compete as comedy."
             options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]}
             onChange={(v) => edit(p, () => { if (v) p.axes.register = v as 'comedy' | 'drama'; else delete p.axes.register; })} />
+          {!nonfiction && <SelectField label="Source Material" value={p.source?.kind ?? 'original'} hint="Awards with separate original and adapted screenplay categories enter it by what you declare here."
+            options={[{ value: 'original', label: 'Original' }, { value: 'adapted', label: 'Adapted From Another Work' }]}
+            onChange={(v) => edit(p, () => { if (v === 'adapted') p.source = { kind: 'adapted', work: p.source?.work ?? '' }; else delete p.source; })} />}
+          {p.source?.kind === 'adapted' && <TextField label="Adapted From" maxLength={120} value={p.source.work ?? ''} hint="The novel, play, article or film it adapts." onChange={(v) => edit(p, () => (p.source = { kind: 'adapted', work: v }))} />}
+          <SelectField label="When It Is Set" value={p.storyTime ?? 'contemporary'} hint="Categories for period, fantasy or contemporary work read this."
+            options={[{ value: 'contemporary', label: 'The Present Day' }, { value: 'period', label: 'The Past' }, { value: 'future', label: 'The Future Or An Invented World' }]}
+            onChange={(v) => edit(p, () => { if (v === 'contemporary') delete p.storyTime; else p.storyTime = v as 'period' | 'future'; })} />
         </div>
+        <fieldset className="spaced" style={{ border: 0, padding: 0 }}>
+          <legend style={{ fontWeight: 600 }}>What It's About</legend>
+          <p className="dim">Some awards are for work about a subject. Declare the ones that are true of the story; nothing else reads them.</p>
+          <div className="row gap-2 wrap">{PROJECT_SUBJECTS.map((x) => (
+            <Check key={x.id} label={x.label} checked={!!p.subjects?.includes(x.id)}
+              onChange={(on) => edit(p, () => { const set = new Set(p.subjects ?? []); if (on) set.add(x.id); else set.delete(x.id); p.subjects = [...set]; if (!p.subjects.length) delete p.subjects; })} />
+          ))}</div>
+        </fieldset>
       </section>
 
       <ContentCard p={p} locked={locked} />

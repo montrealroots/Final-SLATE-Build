@@ -1,0 +1,34 @@
+@institution spirit
+@edition 2027 Film Independent Spirit Awards
+@source sa27-film | 2027 Spirit Awards Rules & Regulations: Film Submissions (August 24, 2026) | https://s3.us-east-1.amazonaws.com/SA_SubForm_etc/2027_SAsubmissions_RulesRegs_Film_082426.pdf | retrieved 2026-11-09
+@source sa27-tv | 2027 Spirit Awards Rules & Regulations: TV Submissions (September 1, 2026) | https://s3.us-east-1.amazonaws.com/SA_SubForm_etc/2027_SAsubmissions_RulesRegs_TV_090126.pdf | retrieved 2026-11-09
+@source sa27-digital | 2027 Spirit Awards Rules & Regulations: Digital Creator Submissions (August 18, 2026) | https://s3.us-east-1.amazonaws.com/SA_SubForm_etc/2027_SAsubmissions_RulesRegs_Digital_081826.pdf | retrieved 2026-11-09
+# Except Best Documentary and the international categories, only American productions are eligible (sa27-film).
+# Film
+feature | Best Feature | C | producer | feature:us | sa27-film Category Information | Producers only; co-, executive, associate and line producers are not eligible
+first-feature | Best First Feature | C | producer+director | feature:us:debut | sa27-film Category Information | The director's narrative feature debut
+director | Best Director | C | director | feature:us | sa27-film Category Information |
+screenplay | Best Screenplay | C | writer | feature:us | sa27-film Category Information |
+first-screenplay | Best First Screenplay | C | writer | feature:us:writer-debut | sa27-film Category Information | The writer's first produced feature screenplay
+cassavetes | John Cassavetes Award | C | producer+director+writer | feature:us:under-1m | sa27-film Category Information | Budget under $1,000,000; the final cost report top sheet is required
+cinematography | Best Cinematography | C | craft:dop | feature:us | sa27-film Category Information |
+editing | Best Editing | C | craft:editor | feature:us | sa27-film Category Information |
+lead | Best Lead Performance | C | lead | feature:us | sa27-film Category Information | Gender-neutral
+supporting | Best Supporting Performance | C | supporting | feature:us | sa27-film Category Information | Gender-neutral
+breakthrough | Best Breakthrough Performance | C | performer:breakthrough | feature:us | sa27-film Category Information | The game reads breakthrough as a performer's first credited lead or supporting part
+documentary | Best Documentary | C | producer+director | documentary-feature | sa27-film Category Information | American and international documentaries; not eligible in any other category
+international | Best International Feature | C | director | feature:non-us | sa27-film Category Information | International narrative films; only also eligible for Best International First Feature
+international-first | Best International First Feature | C | director | feature:non-us:debut | sa27-film Category Information |
+redford | Robert Redford Environmental Vision Award | J | producer+director+writer | feature:us:environment+series:us:environment | sa27-film Category Information; sa27-tv | Partnered with The Redford Center; one film or series; needs the story's climate or environmental theme, recorded in the game from November 9, 2026
+# Emerging Filmmaker Awards
+- Someone To Watch | Chosen by its own committee for an emerging director; the rules give no criteria beyond the committee | sa27-film Nominating Guidelines
+- Truer Than Fiction | Chosen by its own committee for an emerging documentary director; criteria not in the rules read | sa27-film Nominating Guidelines
+- Producers Award | Chosen by its own committee for an emerging producer; criteria not in the rules read | sa27-film Nominating Guidelines
+- Digital Creator Award | Digital creator work (online video) isn't work the game makes | sa27-digital Category Information
+# Television
+series | Best New Scripted Series | C | producer | series:new | sa27-tv Category Information | Including continuing, limited and anthology series
+nonscripted-series | Best New Non-Scripted Or Documentary Series | C | producer | docseries:new+reality:new | sa27-tv Category Information |
+tv-lead | Best Lead Performance In A New Scripted Series | C | lead | series:new | sa27-tv Category Information |
+tv-supporting | Best Supporting Performance In A New Scripted Series | C | supporting | series:new | sa27-tv Category Information |
+tv-breakthrough | Best Breakthrough Performance In A New Scripted Series | C | performer:breakthrough | series:new | sa27-tv Category Information |
+tv-ensemble | Best Ensemble Cast In A New Scripted Series | J | ensemble | series:new | sa27-tv Category Information | Every submitted new scripted series is considered; awarded at the committee's discretion

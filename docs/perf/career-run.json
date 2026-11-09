@@ -1,0 +1,113 @@
+{
+  "label": "run",
+  "node": "v22.23.4",
+  "date": "2026-11-09",
+  "simulatedSeconds": 6,
+  "rows": [
+    {
+      "years": 1,
+      "projects": 2,
+      "delivered": 2,
+      "editions": 109,
+      "entries": 10,
+      "rivalFilms": 78,
+      "log": 136,
+      "saveKB": 259,
+      "peakWriteKB": 519,
+      "stateHeapKB": 334,
+      "serializeMs": 2.8,
+      "loadMs": 2.9,
+      "writeSaveMs": 10.7,
+      "top": {
+        "events": 54,
+        "processedEventIds": 5,
+        "log": 27,
+        "projects": 76,
+        "people": 3,
+        "editions": 47,
+        "rivalFilms": 12
+      },
+      "projectFields": {
+        "obligations": 25,
+        "drafts": 9,
+        "scenes": 7,
+        "tasks": 6,
+        "hires": 5
+      }
+    },
+    {
+      "years": 5,
+      "projects": 10,
+      "delivered": 10,
+      "editions": 255,
+      "entries": 42,
+      "rivalFilms": 380,
+      "log": 400,
+      "saveKB": 800,
+      "peakWriteKB": 1600,
+      "stateHeapKB": 1016,
+      "serializeMs": 8.4,
+      "loadMs": 10.2,
+      "writeSaveMs": 31.5,
+      "top": {
+        "events": 54,
+        "processedEventIds": 5,
+        "log": 79,
+        "projects": 363,
+        "people": 12,
+        "editions": 121,
+        "rivalFilms": 58
+      },
+      "projectFields": {
+        "obligations": 134,
+        "tasks": 39,
+        "drafts": 35,
+        "scenes": 26,
+        "hires": 26,
+        "credits": 20,
+        "schedule": 13,
+        "captures": 13,
+        "characters": 10,
+        "requirements": 10
+      }
+    },
+    {
+      "years": 10,
+      "projects": 20,
+      "delivered": 20,
+      "editions": 438,
+      "entries": 92,
+      "rivalFilms": 1003,
+      "log": 400,
+      "saveKB": 1505,
+      "peakWriteKB": 3009,
+      "stateHeapKB": 1947,
+      "serializeMs": 15.4,
+      "loadMs": 15.4,
+      "writeSaveMs": 62.1,
+      "top": {
+        "events": 54,
+        "processedEventIds": 5,
+        "log": 79,
+        "projects": 759,
+        "people": 23,
+        "editions": 226,
+        "rivalFilms": 152
+      },
+      "projectFields": {
+        "obligations": 279,
+        "tasks": 79,
+        "drafts": 75,
+        "scenes": 60,
+        "hires": 53,
+        "credits": 40,
+        "schedule": 28,
+        "captures": 28,
+        "characters": 20,
+        "requirements": 20,
+        "history": 8,
+        "offers": 7
+      }
+    }
+  ]
+}

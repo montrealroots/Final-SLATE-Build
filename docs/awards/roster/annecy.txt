@@ -1,0 +1,40 @@
+@institution annecy
+@edition Annecy 2026 (June 21-27, 2026); Annecy 2027 carried forward as a projection
+@source an26-features | 2026 Terms and Conditions - Feature Films | https://www.annecyfestival.com/sites/default/files/2025-11/Annecy_Festival_2026_Feature_Films_Terms_and_Conditions.pdf | retrieved 2026-11-09
+@source an26-shorts | 2026 Terms and Conditions - Short Films | https://www.annecyfestival.com/sites/default/files/2025-11/Annecy_Festival_2026_Short_Films_Terms_and_Conditions.pdf | retrieved 2026-11-09
+# Animation only (the game's existing medium rule). Section 9 of each document lists the official prizes and the
+# partner prizes ("This list may be subject to change").
+# Feature Films
+features | Official Selection - Feature Films | S | project | feature | an26-features 9 | The game's existing entry; selection is not a prize
+feature-cristal | Cristal For A Feature Film | P:features | producer+director | feature | an26-features 9 |
+feature-jury | Jury Award (Feature Films) | P:features | producer+director | feature | an26-features 9 |
+paul-grimault | Paul Grimault Award | P:features | director | feature | an26-features 9 |
+contrechamp | Contrechamp | S | project | feature | an26-features 9 |
+contrechamp-grand-prix | Contrechamp Grand Prix | P:contrechamp | producer+director | feature | an26-features 9 |
+contrechamp-jury | Contrechamp Jury Award | P:contrechamp | producer+director | feature | an26-features 9 |
+feature-audience | Audience Award (Feature Films) | U:features+contrechamp | project | feature | an26-features 9 |
+feature-sacem | SACEM Award For Best Original Soundtrack In A Feature Film | X:features+contrechamp | craft:composer | feature | an26-features 9 Partner Prizes |
+feature-gan | Gan Foundation Award For Distribution | X:features+contrechamp | producer | feature | an26-features 9 Partner Prizes | UNVERIFIED: its criteria weren't read; recorded as a partner award to the producer
+# Short Films
+shorts | Official Selection - Short Films | S | project | short | an26-shorts 9 | The game's existing entry
+short-cristal | Cristal For A Short Film | P:shorts | director | short | an26-shorts 9 |
+short-jury | Jury Award (Short Films) | P:shorts | director | short | an26-shorts 9 |
+alexeieff-parker | Alexeïeff – Parker Award | P:shorts | director | short | an26-shorts 9 |
+xiberras | Jean-Luc Xiberras Award For A First Film | P:shorts | director | short:debut | an26-shorts 9 |
+off-limits | Off-Limits | S | project | short | an26-shorts Categories |
+off-limits-award | Off-Limits Award | P:off-limits | director | short | an26-shorts 9 |
+perspectives | Perspectives | S | project | short | an26-shorts Categories |
+young-audience | Young Audience Award | U:shorts | project | short:family | an26-shorts 9 |
+short-audience | Audience Award (Short Films) | U:shorts | project | short | an26-shorts 9 |
+city-of-annecy | City Of Annecy Award | X:shorts | director | short | an26-shorts 9 Partner Prizes |
+france-tv | France TV Award For A Short Film | X:shorts | director | short | an26-shorts 9 Partner Prizes |
+andre-martin | André Martin Award For A French Short Film | X:shorts | director | short:fr | an26-shorts 9 Partner Prizes | French shorts in the Official Selection are automatically eligible
+short-sacem | SACEM Award For Best Original Soundtrack In A Short Film | X:shorts | craft:composer | short | an26-shorts 9 Partner Prizes |
+canal-junior | CANAL+ Junior Jury Award | X:shorts | director | short | an26-shorts 9 Partner Prizes |
+festivals-connexion | Festivals Connexion Award | X:shorts | director | short | an26-shorts 9 Partner Prizes |
+vimeo | Vimeo Staff Pick Award For A Short Film In The Official And Off-Limits Categories | X:shorts+off-limits | director | short | an26-shorts 9 Partner Prizes |
+- Midnight Shorts And WTF | UNVERIFIED: named categories whose own prizes weren't read | an26-shorts Categories
+# Television And Commissioned Films (their own terms, not read)
+tv | Official Selection - TV Films | S | project | television | Annecy 2026 TV terms (not read) | The game's existing entry; UNVERIFIED: the TV terms weren't read
+tv-cristal | Cristal For A Television Production | P:tv | producer | television | UNVERIFIED | UNVERIFIED: prize name assumed from the feature and short Cristals; the TV terms weren't read
+- Commissioned Films | Commissioned and branded work isn't made in the game | Annecy commissioned films terms

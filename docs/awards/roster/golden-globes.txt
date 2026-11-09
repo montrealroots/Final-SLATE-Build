@@ -1,0 +1,38 @@
+@institution golden-globes
+@edition 84th Golden Globes (January 2027)
+@source gg84-rules | 84th Annual Golden Globes Eligibility and Consideration Rules (updated August 3, 2026) | https://goldenglobes.com/wp-content/uploads/2026/08/FINAL_84th-ANNUAL-GOLDEN-GLOBES-ELIGIBILITY-AND-CONSIDERATION-RULES_8_3_2026.pdf | retrieved 2026-11-09
+@source gg-demille | Cecil B. DeMille Award | https://goldenglobes.com/cecil-b-demille-award/ | retrieved 2026-11-09
+@source gg-burnett | Carol Burnett Award | https://goldenglobes.com/carol-burnett-award/ | retrieved 2026-11-09
+# Motion Pictures
+drama | Best Motion Picture – Drama | C | producer | feature:drama | gg84-rules I.A list |
+comedy | Best Motion Picture – Musical Or Comedy | C | producer | feature:comedy | gg84-rules I.A list |
+animated | Best Motion Picture – Animated | C | producer | feature:animation | gg84-rules I.A list |
+non-english | Best Motion Picture – Non-English Language | C | producer | feature:non-english | gg84-rules I.A list | At least 51 percent of the dialogue not in English
+actress-drama | Best Performance By A Female Actor In A Motion Picture – Drama | C | lead:Actress | feature:drama | gg84-rules I.A list |
+actor-drama | Best Performance By A Male Actor In A Motion Picture – Drama | C | lead:Actor | feature:drama | gg84-rules I.A list |
+actress-comedy | Best Performance By A Female Actor In A Motion Picture – Musical Or Comedy | C | lead:Actress | feature:comedy | gg84-rules I.A list |
+actor-comedy | Best Performance By A Male Actor In A Motion Picture – Musical Or Comedy | C | lead:Actor | feature:comedy | gg84-rules I.A list |
+supporting-actress | Best Performance By A Female Actor In A Supporting Role In Any Motion Picture | C | supporting:Actress | feature | gg84-rules I.A list |
+supporting-actor | Best Performance By A Male Actor In A Supporting Role In Any Motion Picture | C | supporting:Actor | feature | gg84-rules I.A list |
+director | Best Director – Motion Picture | C | director | feature | gg84-rules I.A list |
+screenplay | Best Screenplay – Motion Picture | C | writer | feature | gg84-rules I.A list |
+score | Best Original Score – Motion Picture | C | craft:composer | feature | gg84-rules I.A list |
+song | Best Original Song – Motion Picture | C | song | feature | gg84-rules I.A list |
+box-office | Best Cinematic And Box Office Achievement | C | producer | feature:box-office | gg84-rules I.B | Eligibility rests on box office or streaming audience thresholds; the game uses the film's reported theatrical earnings
+# Television
+tv-drama | Best Television Series – Drama | C | producer | series:drama | gg84-rules II list |
+tv-comedy | Best Television Series – Musical Or Comedy | C | producer | series:comedy | gg84-rules II list |
+tv-limited | Best Television Limited Series, Anthology Series, Or Motion Picture Made For Television | C | producer | limited | gg84-rules II list |
+tv-actress-drama | Best Performance By A Female Actor In A Television Series – Drama | C | lead:Actress | series:drama | gg84-rules II list |
+tv-actor-drama | Best Performance By A Male Actor In A Television Series – Drama | C | lead:Actor | series:drama | gg84-rules II list |
+tv-actress-comedy | Best Performance By A Female Actor In A Television Series – Musical Or Comedy | C | lead:Actress | series:comedy | gg84-rules II list |
+tv-actor-comedy | Best Performance By A Male Actor In A Television Series – Musical Or Comedy | C | lead:Actor | series:comedy | gg84-rules II list |
+tv-actress-limited | Best Performance By A Female Actor In A Limited Series, Anthology Series, Or A Motion Picture Made For Television | C | lead:Actress | limited | gg84-rules II list |
+tv-actor-limited | Best Performance By A Male Actor In A Limited Series, Anthology Series, Or A Motion Picture Made For Television | C | lead:Actor | limited | gg84-rules II list |
+tv-supporting-actress | Best Performance By A Female Actor In A Supporting Role On Television | C | supporting:Actress | television | gg84-rules II list |
+tv-supporting-actor | Best Performance By A Male Actor In A Supporting Role On Television | C | supporting:Actor | television | gg84-rules II list |
+- Best Performance In Stand-Up Comedy On Television | Stand-up specials aren't a program type the game makes | gg84-rules II list
+- Best Podcast | Podcasts aren't work the game makes | gg84-rules III.D
+# Honorary Awards
+demille | Cecil B. DeMille Award | H | career-film | feature | gg-demille | For outstanding contributions to the world of entertainment, chosen by the organization
+burnett | Carol Burnett Award | H | career-television | television | gg-burnett | For outstanding contributions to television, on or off screen

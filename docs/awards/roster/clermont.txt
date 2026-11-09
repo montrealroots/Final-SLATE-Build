@@ -1,0 +1,15 @@
+@institution clermont
+@edition 49th Clermont-Ferrand International Short Film Festival (2027)
+@source cf27-reg | Regulations - International Competition 2027 (with the Lab Competition and Short Film Market sections of the same document) | https://www.lecourt-clermont.org/wp-content/uploads/2026/06/EN-Reglement-international-2027.pdf | retrieved 2026-11-09
+# International Competition (Article 11); other sections (Article 12) are non-competitive. The same document says the
+# International Competition's regulations also apply to the Lab Competition, except Article 11.
+# International Competition
+international | International Competition | S | project | short+documentary-short | cf27-reg | The game's existing entry; selection is not a prize
+grand-prix | Grand Prix (International Competition) | P:international | director | short+documentary-short | cf27-reg Article 11 | The director receives €5,000 and a Vercingétorix
+special-jury | Special Jury Prize (International Competition) | P:international | director | short+documentary-short | cf27-reg Article 11 |
+audience | Audience Award (International Competition) | U:international | director | short+documentary-short | cf27-reg Article 11 | Assigned by subscriber members of the audience; "additional prizes may be awarded"
+# Other Competitions And Sections
+lab | Lab Competition | S | project | short | cf27-reg | UNVERIFIED: its own Article 11 (prizes) wasn't read in full; experimental shorts in the game
+national | National Competition | S | project | short:fr+documentary-short:fr | cf27-reg (named) | UNVERIFIED: the National Competition has its own regulations, not read
+- XR Competition And Evaveo Prize | Immersive works aren't made in the game | cf27-reg
+- Non-Competitive Sections (Young Audience, African Perspectives, Decibels !, Thrills) | Programmed from competition entries by invitation; not prizes | cf27-reg Article 12

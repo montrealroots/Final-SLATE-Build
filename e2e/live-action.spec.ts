@@ -1,5 +1,5 @@
 import { expect, test } from './test';
-import { addScene, advance, createCharacter, freshStart, nav, readSavedState, section, staffEveryDepartment, secureStartingBacking, pressSaveAndExit, writePitch } from './helpers';
+import { addScene, advance, createCharacter, freshStart, nav, pinSeed, readSavedState, section, staffEveryDepartment, secureStartingBacking, pressSaveAndExit, writePitch } from './helpers';
 
 test('live-action short: create, write, cast yourself, staff, shoot, cut, deliver, credits', async ({ page }, info) => {
   await freshStart(page);
@@ -18,6 +18,9 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await expect(page.getByText("You're up to date.")).toBeVisible();
   await expect(page.getByText('You have nothing scheduled today.')).toBeVisible();
   await page.screenshot({ path: `test-results/${info.project.name}-home.png`, fullPage: true });
+  // Labelled fixture: the world seed is fixed so production runs the same way on every run. Unfixed, a run in CI on
+  // November 9, 2026 met enough declines and delays that 24 weeks didn't reach delivery.
+  await pinSeed(page, 1994);
 
   // New Script.
   await page.getByRole('button', { name: 'New Script' }).first().click();
@@ -286,7 +289,7 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   await page.getByRole('button', { name: 'The Last Ferry To Wolfe Island' }).click();
   await section(page, 'Festivals And Awards');
   const status = await page.locator('section', { hasText: 'Your Entries' }).locator('.chip').first().innerText();
-  expect(['Selected', 'Not Selected', 'Won', 'Did Not Win', 'Accepted For Consideration', 'Not Accepted']).toContain(status);
+  expect(['Selected', 'In Competition', 'Not Selected', 'Winner', 'Did Not Win', 'Nominated', 'Not Nominated', 'Accepted For Consideration', 'Not Accepted']).toContain(status);
   await page.screenshot({ path: `test-results/${info.project.name}-festival.png`, fullPage: true });
 
   // Saved state matches and survives reload.

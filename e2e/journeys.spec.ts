@@ -70,7 +70,7 @@ test('2D animation: deliver, release digitally, enter the Annie Awards and reach
     await nav(page, 'Projects');
     await page.getByRole('button', { name: 'Paper Kite' }).click();
     await section(page, 'Festivals And Awards');
-    if (['Won', 'Did Not Win', 'Not Accepted'].includes(await entryStatus(page))) break;
+    if (['Winner', 'Did Not Win', 'Not Accepted'].includes(await entryStatus(page))) break;
     // A non-nominated entry is final, but the winner is only public after the ceremony.
     if ((await entryStatus(page)) === 'Not Nominated') {
       await advance(page, 'month');
@@ -78,7 +78,7 @@ test('2D animation: deliver, release digitally, enter the Annie Awards and reach
       break;
     }
   }
-  expect(['Won', 'Did Not Win', 'Not Nominated', 'Not Accepted']).toContain(await entryStatus(page));
+  expect(['Winner', 'Did Not Win', 'Not Nominated', 'Not Accepted']).toContain(await entryStatus(page));
   await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: '54th Annie Awards' }).click();
   await expect(page.locator('li', { hasText: 'Best Short Subject' }).getByText(/Winner: /)).toBeVisible();
   await page.screenshot({ path: 'test-results/journey-2d-awards.png', fullPage: true });
@@ -594,7 +594,8 @@ test('festival under official rules: submit, selection, screening attended, resu
   // Selection is announced about three weeks before the festival (January 21 to 31, 2027).
   await advanceUntil(page, '2027-01-02');
   await open();
-  expect(await entryStatus(page)).toBe('Selected');
+  // Its section has a prize still to be decided among the selected shorts (from November 9, 2026).
+  expect(await entryStatus(page)).toBe('In Competition');
 
   mark('selected');
   // Screening invitations arrive when the festival opens on January 21: accept one, travel to Boulder in time, attend.
@@ -611,18 +612,22 @@ test('festival under official rules: submit, selection, screening attended, resu
   // Results after the festival ends on January 31.
   await advanceUntil(page, '2027-02-03');
   await open();
-  const result = await entryStatus(page);
-  expect(['Won', 'Did Not Win']).toContain(result);
+  // Selection is not a win: the program entry stays Selected, and its prize is recorded from the selection.
+  expect(await entryStatus(page)).toBe('Selected');
+  const prize = page.locator('section', { hasText: 'Your Entries' }).first().locator('li', { hasText: 'Short Film Grand Jury Prize' });
+  const result = (await prize.locator('.chip').innerText()).trim();
+  expect(['Winner', 'Special Mention', 'Did Not Win']).toContain(result);
+  await expect(prize.getByText('Considered from its selection; no entry or fee.')).toBeVisible();
   await liveEntry(page).getByRole('button', { name: 'Sundance Film Festival 2027' }).click();
-  await expect(page.locator('li', { hasText: 'Short Film Program' }).getByText(/Winner: /)).toBeVisible();
+  await expect(page.locator('li', { hasText: 'Short Film Grand Jury Prize' }).getByText(/Winner: /)).toBeVisible();
 
   // Save, reload, and keep playing: one result message, one fee payment, the same winner.
   await saveAndExit(page);
   const before = await readSavedState(page);
-  const resultLogs = (s: any) => s.log.filter((l: any) => /(won|didn't win) Short Film Program at the Sundance Film Festival 2027/.test(l.text)).length; // eslint-disable-line @typescript-eslint/no-explicit-any
+  const resultLogs = (s: any) => s.log.filter((l: any) => /(won|didn't win|special mention for) Short Film Grand Jury Prize at the Sundance Film Festival 2027/.test(l.text)).length; // eslint-disable-line @typescript-eslint/no-explicit-any
   expect(resultLogs(before)).toBe(1);
   expect(feePostings(before)).toBe(1);
-  const winner = before.editions.find((e: { id: string }) => e.id === 'sundance-2027').results.shorts.winner;
+  const winner = before.editions.find((e: { id: string }) => e.id === 'sundance-2027').results['shorts-grand-jury'].winner;
   expect(before.editions.find((e: { id: string }) => e.id === 'sundance-2027').rulesId).toBe('sundance-2027@1');
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
@@ -631,7 +636,7 @@ test('festival under official rules: submit, selection, screening attended, resu
   const after = await readSavedState(page);
   expect(resultLogs(after)).toBe(1);
   expect(feePostings(after)).toBe(1);
-  expect(after.editions.find((e: { id: string }) => e.id === 'sundance-2027').results.shorts.winner).toBe(winner);
+  expect(after.editions.find((e: { id: string }) => e.id === 'sundance-2027').results['shorts-grand-jury'].winner).toBe(winner);
   expect(after.projects[0].history.filter((h: { text: string }) => /Sundance Film Festival 2027/.test(h.text)).length).toBe(before.projects[0].history.filter((h: { text: string }) => /Sundance Film Festival 2027/.test(h.text)).length);
   mark('done');
   console.log(JSON.stringify({ journeySeconds: marks, result }));

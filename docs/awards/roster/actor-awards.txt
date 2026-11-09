@@ -1,0 +1,26 @@
+@institution actor-awards
+@edition 33rd Annual Actor Awards presented by SAG-AFTRA (rules in force for the next edition "unless expressly amended or revoked"; ceremony February 28, 2027 per the site)
+@source aa33-rules | 33rd Annual Actor Awards Presented by SAG-AFTRA Rules & Regulations | https://www.actorawards.org/sites/default/files/33rd%20Annual%20Actor%20Awards%20Presented%20by%20SAG-AFTRA%20Rules%20%26%20Regulations.pdf | retrieved 2026-11-09
+@source aa-site | Actor Awards: Rules and Regulations page | https://www.actorawards.org/awards/rules-eligibility/rules-regulations | retrieved 2026-11-09
+# Performers must be employed under a SAG-AFTRA agreement (aa33-rules section One); union membership isn't modeled and
+# is shown to the player as a simplification.
+# Motion Pictures
+male-lead | Outstanding Performance By A Male Actor In A Leading Role | C | lead:Actor | feature | aa33-rules One |
+female-lead | Outstanding Performance By A Female Actor In A Leading Role | C | lead:Actress | feature | aa33-rules One |
+male-supporting | Outstanding Performance By A Male Actor In A Supporting Role | C | supporting:Actor | feature | aa33-rules One |
+female-supporting | Outstanding Performance By A Female Actor In A Supporting Role | C | supporting:Actress | feature | aa33-rules One |
+cast | Outstanding Performance By A Cast In A Motion Picture | C | ensemble | feature | aa33-rules One | Every actor in the cast credits, not co-stars
+# Television Programs
+tv-male-limited | Outstanding Performance By A Male Actor In A Television Movie Or Limited Series | C | performer:Actor | movie+limited-series | aa33-rules One |
+tv-female-limited | Outstanding Performance By A Female Actor In A Television Movie Or Limited Series | C | performer:Actress | movie+limited-series | aa33-rules One |
+tv-male-drama | Outstanding Performance By A Male Actor In A Drama Series | C | performer:Actor | series:drama | aa33-rules One |
+tv-female-drama | Outstanding Performance By A Female Actor In A Drama Series | C | performer:Actress | series:drama | aa33-rules One |
+tv-male-comedy | Outstanding Performance By A Male Actor In A Comedy Series | C | performer:Actor | series:comedy | aa33-rules One |
+tv-female-comedy | Outstanding Performance By A Female Actor In A Comedy Series | C | performer:Actress | series:comedy | aa33-rules One |
+ensemble-drama | Outstanding Performance By An Ensemble In A Drama Series | C | ensemble | series:drama | aa33-rules One |
+ensemble-comedy | Outstanding Performance By An Ensemble In A Comedy Series | C | ensemble | series:comedy | aa33-rules One |
+# Non-Broadcast Stunt Honors
+- Outstanding Action Performance By A Stunt Ensemble In A Motion Picture | Stunt performers aren't cast or credited separately in the game | aa33-rules One
+- Outstanding Action Performance By A Stunt Ensemble In A Television Series | Stunt performers aren't cast or credited separately in the game | aa33-rules One
+# Life Achievement
+- The SAG-AFTRA Life Achievement Award | Also requires a history of humanitarian and public service work, which the game doesn't model | aa33-rules Two, Nine

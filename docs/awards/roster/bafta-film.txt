@@ -1,0 +1,14 @@
+@institution bafta-film
+@edition 2027 EE BAFTA Film Awards (ceremony February 21, 2027 per BAFTA's press release, as summarized by a search engine)
+@blocked bafta.org answers every request from this environment with a bot-verification page (HTTP 403), including its rulebook PDFs; checked November 9, 2026 with a plain request, the fetch tool and a headless browser. The roster is not verified.
+# Secondary hints, not rules (search summaries of BAFTA's July 2026 press release and of a 2025 rulebook): 23 competitive
+# feature categories plus British Short Film and British Short Animation (2025 rules); Children's & Family Film renamed
+# Family Film for 2027; the Outstanding British Film longlist grows from 15 to 20. None of this is applied to the game.
+# Existing categories (kept; names and rules simulated until the organizer's rulebook can be read)
+film | Best Film | C | producer | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+director | Director | C | director | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+screenplay | Original Screenplay | C | writer-original | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+leading-actor | Leading Actor | C | lead:Actor | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+leading-actress | Leading Actress | C | lead:Actress | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+animated | Animated Film | C | producer | feature:animated | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+documentary | Documentary | C | producer | documentary-feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable

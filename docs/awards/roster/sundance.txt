@@ -1,0 +1,28 @@
+@institution sundance
+@edition 2027 Sundance Film Festival (January 21-31, 2027, Boulder)
+@source sff27-submit | Submit: submission categories and non-competition sections | https://www.sundance.org/festivals/sundance-film-festival/submit | retrieved 2026-11-09
+@source sff27-rules | Rules & Regulations for Submitting to the 2027 Sundance Film Festival | https://www.sundance.org/submissions-rules | retrieved 2026-11-06 (game rulebook sundance-2027@1)
+# Submission categories (sff27-submit): U.S. and international narrative and documentary features, U.S. and
+# international shorts, episodic content (60 minutes or less; over 60 minutes), World Cinema Dramatic and
+# Documentary Competitions. Spotlight takes no open submissions.
+# U.S. Competitions
+dramatic | U.S. Dramatic Competition | S | project | feature:us | sff27-submit | The game's existing entry was named Dramatic Competition
+documentary | U.S. Documentary Competition | S | project | documentary-feature:us | sff27-submit | The game's existing entry was named Documentary Competition
+dramatic-grand-jury | U.S. Grand Jury Prize: Dramatic | P:dramatic | producer+director | feature | UNVERIFIED | UNVERIFIED: prize names weren't on the pages read
+dramatic-audience | Audience Award: U.S. Dramatic | U:dramatic | producer+director | feature | UNVERIFIED | UNVERIFIED: prize names weren't on the pages read
+dramatic-directing | Directing Award: U.S. Dramatic | P:dramatic | director | feature | UNVERIFIED | UNVERIFIED: prize names weren't on the pages read
+waldo-salt | Waldo Salt Screenwriting Award: U.S. Dramatic | P:dramatic | writer | feature | UNVERIFIED | UNVERIFIED: prize names weren't on the pages read
+documentary-grand-jury | U.S. Grand Jury Prize: Documentary | P:documentary | producer+director | documentary-feature | UNVERIFIED | UNVERIFIED: prize names weren't on the pages read
+documentary-audience | Audience Award: U.S. Documentary | U:documentary | producer+director | documentary-feature | UNVERIFIED | UNVERIFIED: prize names weren't on the pages read
+documentary-directing | Directing Award: U.S. Documentary | P:documentary | director | documentary-feature | UNVERIFIED | UNVERIFIED: prize names weren't on the pages read
+# World Cinema Competitions
+world-dramatic | World Cinema Dramatic Competition | S | project | feature:non-us | sff27-submit |
+world-documentary | World Cinema Documentary Competition | S | project | documentary-feature:non-us | sff27-submit |
+world-dramatic-grand-jury | World Cinema Grand Jury Prize: Dramatic | P:world-dramatic | producer+director | feature | UNVERIFIED | UNVERIFIED: prize names weren't on the pages read
+world-documentary-grand-jury | World Cinema Grand Jury Prize: Documentary | P:world-documentary | producer+director | documentary-feature | UNVERIFIED | UNVERIFIED: prize names weren't on the pages read
+# Shorts And Episodic
+shorts | Short Film Program | S | project | short+documentary-short | sff27-submit | The game's existing entry
+shorts-grand-jury | Short Film Grand Jury Prize | P:shorts | director | short+documentary-short | UNVERIFIED | UNVERIFIED: prize names weren't on the pages read
+episodic | Episodic Program | S | project | series+limited-series+shortform+docseries+reality | sff27-submit | Not competitive in the game's catalog; episodes of 60 minutes or less, or over 60
+# Non-Competition
+- Spotlight | Takes no open submissions: films already shown at other international festivals, chosen by invitation | sff27-submit

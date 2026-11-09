@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { institution, processUntil, upcomingCommitments, DAY, seasonSlate, announceEdition, rsvpScreening, screeningTravel, travelTo } from './engine-api';
+import { categoriesFor, institution, processUntil, publicResult, upcomingCommitments, DAY, seasonSlate, announceEdition, rsvpScreening, screeningTravel, travelTo } from './engine-api';
 import { approve, buildProject, startLife } from './helpers';
 
 describe('festival screenings', () => {
@@ -89,9 +89,10 @@ describe('rival slate across a season', () => {
       const ed = s.editions.find((e) => e.id === id)!;
       announceEdition(s, ed);
     }
+    // Public results are computed when shown, not stored (docs/awards/DESIGN.md rule 4).
     const titles = (id: string) => {
       const ed = s.editions.find((e) => e.id === id)!;
-      return new Set(ed.rivals.map((r) => s.rivalFilms[r.film].title));
+      return new Set(categoriesFor(institution(ed.institutionId), ed.year).flatMap((c) => publicResult(s, ed, c)?.field ?? []));
     };
     const fest = new Set([...titles('venice-2026'), ...titles('tiff-2026')]);
     const awards = new Set([...titles('oscars-2027'), ...titles('golden-globes-2027')]);

@@ -1,0 +1,3402 @@
+{
+ "institutions": [
+  {
+   "id": "sundance",
+   "name": "Sundance Film Festival",
+   "short": "Sundance",
+   "kind": "festival",
+   "placeId": "us-boulder",
+   "window": [
+    1,
+    20,
+    27
+   ],
+   "duration": 11,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 66,
+   "official": {
+    "2027": {
+     "start": "2027-01-21",
+     "end": "2027-01-31",
+     "source": "https://www.cu.edu/node/348345",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "An independent film festival in January with dramatic, documentary, short and episodic programs.",
+   "categories": [
+    {
+     "id": "dramatic",
+     "name": "Dramatic Competition",
+     "recipient": "project",
+     "formats": [
+      "feature"
+     ],
+     "judging": "programmers",
+     "slots": 16,
+     "competitive": true,
+     "fee": 100,
+     "premiere": "world"
+    },
+    {
+     "id": "documentary",
+     "name": "Documentary Competition",
+     "recipient": "project",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "programmers",
+     "slots": 16,
+     "competitive": true,
+     "fee": 100,
+     "premiere": "world"
+    },
+    {
+     "id": "shorts",
+     "name": "Short Film Program",
+     "recipient": "project",
+     "formats": [
+      "short",
+      "documentary-short"
+     ],
+     "judging": "programmers",
+     "slots": 40,
+     "competitive": true,
+     "fee": 60,
+     "premiere": "international"
+    },
+    {
+     "id": "episodic",
+     "name": "Episodic Program",
+     "recipient": "project",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series",
+      "documentary-series",
+      "unscripted-series"
+     ],
+     "judging": "programmers",
+     "slots": 6,
+     "competitive": false,
+     "fee": 80,
+     "premiere": "world"
+    }
+   ]
+  },
+  {
+   "id": "berlinale",
+   "name": "Berlin International Film Festival",
+   "short": "Berlinale",
+   "kind": "festival",
+   "placeId": "de-berlin",
+   "window": [
+    2,
+    10,
+    16
+   ],
+   "duration": 11,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 70,
+   "official": {
+    "2027": {
+     "start": "2027-02-10",
+     "end": "2027-02-21",
+     "label": "77th Berlin International Film Festival",
+     "source": "https://www.berlinale.de/en/2027/news-press-releases/278428.html",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "A February festival with a main competition, a panorama of audience favorites and short films.",
+   "categories": [
+    {
+     "id": "competition",
+     "name": "Competition",
+     "recipient": "project",
+     "formats": [
+      "feature",
+      "documentary-feature"
+     ],
+     "judging": "jury",
+     "slots": 20,
+     "competitive": true,
+     "fee": 100,
+     "premiere": "world"
+    },
+    {
+     "id": "panorama",
+     "name": "Panorama Audience Award",
+     "recipient": "project",
+     "formats": [
+      "feature",
+      "documentary-feature"
+     ],
+     "judging": "audience",
+     "slots": 30,
+     "competitive": true,
+     "fee": 100,
+     "premiere": "international"
+    },
+    {
+     "id": "shorts",
+     "name": "Short Film Competition",
+     "recipient": "project",
+     "formats": [
+      "short",
+      "documentary-short"
+     ],
+     "judging": "jury",
+     "slots": 20,
+     "competitive": true,
+     "fee": 60,
+     "premiere": "world"
+    }
+   ]
+  },
+  {
+   "id": "cannes",
+   "name": "Cannes Film Festival",
+   "short": "Cannes",
+   "kind": "festival",
+   "placeId": "fr-cannes",
+   "window": [
+    5,
+    12,
+    19
+   ],
+   "duration": 12,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 76,
+   "official": {
+    "2027": {
+     "start": "2027-05-11",
+     "end": "2027-05-22",
+     "label": "80th Cannes Film Festival",
+     "source": "https://www.screendaily.com/news/cannes-film-festival-confirms-2027-dates-for-80th-edition/5217448.article",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "A May festival with a main competition, out-of-competition screenings and a short film competition.",
+   "categories": [
+    {
+     "id": "competition",
+     "name": "Competition",
+     "recipient": "project",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 21,
+     "competitive": true,
+     "fee": 150,
+     "premiere": "world"
+    },
+    {
+     "id": "special",
+     "name": "Special Screenings",
+     "recipient": "project",
+     "formats": [
+      "feature",
+      "documentary-feature"
+     ],
+     "judging": "programmers",
+     "slots": 12,
+     "competitive": false,
+     "fee": 150,
+     "premiere": "world"
+    },
+    {
+     "id": "shorts",
+     "name": "Short Film Competition",
+     "recipient": "project",
+     "formats": [
+      "short"
+     ],
+     "judging": "jury",
+     "slots": 10,
+     "competitive": true,
+     "fee": 60,
+     "premiere": "world"
+    }
+   ]
+  },
+  {
+   "id": "annecy",
+   "name": "Annecy International Animation Film Festival",
+   "short": "Annecy",
+   "kind": "festival",
+   "placeId": "fr-annecy",
+   "window": [
+    6,
+    8,
+    15
+   ],
+   "duration": 7,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 68,
+   "description": "A June festival dedicated to animation, with feature, short and television competitions.",
+   "categories": [
+    {
+     "id": "features",
+     "name": "Feature Film Competition",
+     "recipient": "project",
+     "formats": [
+      "feature",
+      "documentary-feature"
+     ],
+     "judging": "jury",
+     "slots": 10,
+     "competitive": true,
+     "fee": 80,
+     "mediums": [
+      "animation",
+      "hybrid"
+     ],
+     "premiere": "international"
+    },
+    {
+     "id": "shorts",
+     "name": "Short Film Competition",
+     "recipient": "project",
+     "formats": [
+      "short",
+      "documentary-short"
+     ],
+     "judging": "jury",
+     "slots": 40,
+     "competitive": true,
+     "fee": 40,
+     "mediums": [
+      "animation",
+      "hybrid"
+     ],
+     "premiere": "none"
+    },
+    {
+     "id": "tv",
+     "name": "Television Competition",
+     "recipient": "project",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series",
+      "tv-film"
+     ],
+     "judging": "jury",
+     "slots": 12,
+     "competitive": true,
+     "fee": 60,
+     "mediums": [
+      "animation",
+      "hybrid"
+     ],
+     "premiere": "none"
+    }
+   ]
+  },
+  {
+   "id": "venice",
+   "name": "Venice International Film Festival",
+   "short": "Venice",
+   "kind": "festival",
+   "placeId": "it-venice",
+   "window": [
+    8,
+    26,
+    31
+   ],
+   "duration": 11,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 74,
+   "description": "A late-summer festival with a main competition and an out-of-competition program.",
+   "categories": [
+    {
+     "id": "competition",
+     "name": "Competition",
+     "recipient": "project",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 21,
+     "competitive": true,
+     "fee": 120,
+     "premiere": "world"
+    },
+    {
+     "id": "orizzonti",
+     "name": "Horizons",
+     "recipient": "project",
+     "formats": [
+      "feature",
+      "documentary-feature",
+      "short"
+     ],
+     "judging": "jury",
+     "slots": 18,
+     "competitive": true,
+     "fee": 100,
+     "premiere": "world"
+    }
+   ]
+  },
+  {
+   "id": "tiff",
+   "name": "Toronto International Film Festival",
+   "short": "TIFF",
+   "kind": "festival",
+   "placeId": "ca-toronto",
+   "window": [
+    9,
+    3,
+    10
+   ],
+   "duration": 11,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 68,
+   "description": "A September festival whose audience award is decided by festival audiences.",
+   "categories": [
+    {
+     "id": "peoples-choice",
+     "name": "People's Choice Award",
+     "recipient": "project",
+     "formats": [
+      "feature",
+      "documentary-feature"
+     ],
+     "judging": "audience",
+     "slots": 60,
+     "competitive": true,
+     "fee": 120,
+     "premiere": "international"
+    },
+    {
+     "id": "shorts",
+     "name": "Short Cuts",
+     "recipient": "project",
+     "formats": [
+      "short",
+      "documentary-short"
+     ],
+     "judging": "programmers",
+     "slots": 40,
+     "competitive": true,
+     "fee": 60,
+     "premiere": "international"
+    }
+   ]
+  },
+  {
+   "id": "san-sebastian",
+   "name": "San Sebastián International Film Festival",
+   "short": "San Sebastián",
+   "kind": "festival",
+   "placeId": "es-san-sebastian",
+   "window": [
+    9,
+    17,
+    24
+   ],
+   "duration": 9,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 66,
+   "description": "A September festival in the Basque Country with an official competition.",
+   "categories": [
+    {
+     "id": "official",
+     "name": "Official Selection",
+     "recipient": "project",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 16,
+     "competitive": true,
+     "fee": 90,
+     "premiere": "international"
+    }
+   ]
+  },
+  {
+   "id": "busan",
+   "name": "Busan International Film Festival",
+   "short": "Busan",
+   "kind": "festival",
+   "placeId": "kr-busan",
+   "window": [
+    9,
+    29,
+    30
+   ],
+   "duration": 10,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 63,
+   "description": "An autumn festival with a competition and a large program of new work.",
+   "categories": [
+    {
+     "id": "competition",
+     "name": "Competition",
+     "recipient": "project",
+     "formats": [
+      "feature",
+      "documentary-feature"
+     ],
+     "judging": "jury",
+     "slots": 12,
+     "competitive": true,
+     "fee": 80,
+     "premiere": "international"
+    },
+    {
+     "id": "shorts",
+     "name": "Short Films",
+     "recipient": "project",
+     "formats": [
+      "short",
+      "documentary-short"
+     ],
+     "judging": "programmers",
+     "slots": 30,
+     "competitive": true,
+     "fee": 40,
+     "premiere": "none"
+    }
+   ]
+  },
+  {
+   "id": "sitges",
+   "name": "Sitges Film Festival",
+   "short": "Sitges",
+   "kind": "festival",
+   "placeId": "es-sitges",
+   "window": [
+    10,
+    2,
+    9
+   ],
+   "duration": 10,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 60,
+   "description": "An October festival of fantastic and horror cinema.",
+   "categories": [
+    {
+     "id": "fantastic",
+     "name": "Fantastic Competition",
+     "recipient": "project",
+     "formats": [
+      "feature",
+      "short"
+     ],
+     "judging": "jury",
+     "slots": 24,
+     "competitive": true,
+     "fee": 70,
+     "genres": [
+      "horror",
+      "fantasy",
+      "science-fiction",
+      "dark-fantasy",
+      "cosmic-horror",
+      "slasher",
+      "zombie",
+      "vampire",
+      "werewolf",
+      "creature-feature",
+      "monster-movie",
+      "kaiju",
+      "body-horror",
+      "folk-horror",
+      "gothic-horror",
+      "psychological-horror",
+      "supernatural",
+      "occult",
+      "splatter",
+      "cyberpunk",
+      "space-opera",
+      "time-travel",
+      "giallo",
+      "sword-and-sorcery",
+      "science-fantasy",
+      "horror-comedy",
+      "eco-horror"
+     ],
+     "premiere": "none"
+    }
+   ]
+  },
+  {
+   "id": "idfa",
+   "name": "International Documentary Film Festival Amsterdam",
+   "short": "IDFA",
+   "kind": "festival",
+   "placeId": "nl-amsterdam",
+   "window": [
+    11,
+    12,
+    19
+   ],
+   "duration": 11,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 66,
+   "official": {
+    "2026": {
+     "start": "2026-11-12",
+     "end": "2026-11-22",
+     "source": "https://festival.idfa.nl/en/idfa-2026-2/",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "A November documentary festival with feature and short competitions.",
+   "categories": [
+    {
+     "id": "features",
+     "name": "Feature Documentary Competition",
+     "recipient": "project",
+     "formats": [
+      "documentary-feature",
+      "documentary-series",
+      "unscripted-series"
+     ],
+     "judging": "jury",
+     "slots": 16,
+     "competitive": true,
+     "fee": 80,
+     "premiere": "international"
+    },
+    {
+     "id": "shorts",
+     "name": "Short Documentary Competition",
+     "recipient": "project",
+     "formats": [
+      "documentary-short"
+     ],
+     "judging": "jury",
+     "slots": 16,
+     "competitive": true,
+     "fee": 40,
+     "premiere": "international"
+    }
+   ]
+  },
+  {
+   "id": "hot-docs",
+   "name": "Hot Docs Canadian International Documentary Festival",
+   "short": "Hot Docs",
+   "kind": "festival",
+   "placeId": "ca-toronto",
+   "window": [
+    4,
+    23,
+    30
+   ],
+   "duration": 11,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 60,
+   "description": "An April documentary festival with an audience award.",
+   "categories": [
+    {
+     "id": "audience",
+     "name": "Audience Award",
+     "recipient": "project",
+     "formats": [
+      "documentary-feature",
+      "documentary-short"
+     ],
+     "judging": "audience",
+     "slots": 40,
+     "competitive": true,
+     "fee": 60,
+     "premiere": "none"
+    }
+   ]
+  },
+  {
+   "id": "clermont",
+   "name": "Clermont-Ferrand International Short Film Festival",
+   "short": "Clermont-Ferrand",
+   "kind": "festival",
+   "placeId": "fr-clermont-ferrand",
+   "window": [
+    1,
+    30,
+    31
+   ],
+   "duration": 9,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 62,
+   "official": {
+    "2027": {
+     "start": "2027-01-29",
+     "end": "2027-02-06",
+     "deadline": "2026-09-24",
+     "label": "49th Clermont-Ferrand International Short Film Festival",
+     "source": "https://www.lecourt-clermont.org/wp-content/uploads/2026/06/EN-Reglement-international-2027.pdf",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "A short film festival in late January and early February.",
+   "categories": [
+    {
+     "id": "international",
+     "name": "International Competition",
+     "recipient": "project",
+     "formats": [
+      "short",
+      "documentary-short"
+     ],
+     "judging": "jury",
+     "slots": 75,
+     "competitive": true,
+     "fee": 0,
+     "premiere": "none"
+    }
+   ]
+  },
+  {
+   "id": "sxsw",
+   "name": "SXSW Film & TV Festival",
+   "short": "SXSW",
+   "kind": "festival",
+   "placeId": "us-austin",
+   "window": [
+    3,
+    6,
+    13
+   ],
+   "duration": 9,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 60,
+   "official": {
+    "2027": {
+     "start": "2027-03-13",
+     "end": "2027-03-21",
+     "source": "https://sxsw.com/wp-content/uploads/2026/04/SXSW-Announces-2027-Dates.pdf",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "A March festival with narrative, documentary, short and episodic programs and audience awards.",
+   "categories": [
+    {
+     "id": "narrative",
+     "name": "Narrative Feature Competition",
+     "recipient": "project",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 10,
+     "competitive": true,
+     "fee": 90,
+     "premiere": "world"
+    },
+    {
+     "id": "documentary",
+     "name": "Documentary Feature Competition",
+     "recipient": "project",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "jury",
+     "slots": 10,
+     "competitive": true,
+     "fee": 90,
+     "premiere": "world"
+    },
+    {
+     "id": "episodic",
+     "name": "Episodic Pilot Competition",
+     "recipient": "project",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series",
+      "documentary-series",
+      "unscripted-series"
+     ],
+     "judging": "audience",
+     "slots": 12,
+     "competitive": true,
+     "fee": 70,
+     "premiere": "world"
+    },
+    {
+     "id": "shorts",
+     "name": "Short Film Competition",
+     "recipient": "project",
+     "formats": [
+      "short",
+      "documentary-short"
+     ],
+     "judging": "jury",
+     "slots": 40,
+     "competitive": true,
+     "fee": 50,
+     "premiere": "none"
+    }
+   ]
+  },
+  {
+   "id": "series-mania",
+   "name": "Series Mania",
+   "short": "Series Mania",
+   "kind": "festival",
+   "placeId": "fr-lille",
+   "window": [
+    3,
+    19,
+    27
+   ],
+   "duration": 8,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 62,
+   "description": "A March festival for television series.",
+   "categories": [
+    {
+     "id": "international",
+     "name": "International Competition",
+     "recipient": "project",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series",
+      "documentary-series",
+      "unscripted-series"
+     ],
+     "judging": "jury",
+     "slots": 10,
+     "competitive": true,
+     "fee": 0,
+     "premiere": "international"
+    }
+   ]
+  },
+  {
+   "id": "locarno",
+   "name": "Locarno Film Festival",
+   "short": "Locarno",
+   "kind": "festival",
+   "placeId": "ch-locarno",
+   "window": [
+    8,
+    5,
+    8
+   ],
+   "duration": 11,
+   "cadence": 1,
+   "eligibility": "premiere",
+   "prestige": 64,
+   "description": "An August festival with an international competition and a large open-air audience.",
+   "categories": [
+    {
+     "id": "concorso",
+     "name": "International Competition",
+     "recipient": "project",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 17,
+     "competitive": true,
+     "fee": 80,
+     "premiere": "world"
+    }
+   ]
+  },
+  {
+   "id": "fespaco",
+   "name": "FESPACO",
+   "short": "FESPACO",
+   "kind": "festival",
+   "placeId": "bf-ouagadougou",
+   "window": [
+    2,
+    22,
+    28
+   ],
+   "duration": 8,
+   "cadence": 2,
+   "cadenceParity": 1,
+   "eligibility": "premiere",
+   "prestige": 60,
+   "origin": [
+    "NG",
+    "BF",
+    "KE",
+    "ZA",
+    "EG",
+    "MA",
+    "GH",
+    "SN"
+   ],
+   "description": "The Pan-African film and television festival, held every two years in Ouagadougou. In this game, entries need an African production base.",
+   "categories": [
+    {
+     "id": "fiction",
+     "name": "Feature Fiction Competition",
+     "recipient": "project",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 20,
+     "competitive": true,
+     "fee": 0,
+     "premiere": "none"
+    },
+    {
+     "id": "documentary",
+     "name": "Documentary Competition",
+     "recipient": "project",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "jury",
+     "slots": 15,
+     "competitive": true,
+     "fee": 0,
+     "premiere": "none"
+    },
+    {
+     "id": "shorts",
+     "name": "Short Film Competition",
+     "recipient": "project",
+     "formats": [
+      "short",
+      "documentary-short"
+     ],
+     "judging": "jury",
+     "slots": 20,
+     "competitive": true,
+     "fee": 0,
+     "premiere": "none"
+    },
+    {
+     "id": "series",
+     "name": "Series Competition",
+     "recipient": "project",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "jury",
+     "slots": 8,
+     "competitive": true,
+     "fee": 0,
+     "premiere": "none"
+    }
+   ],
+   "official": {
+    "2027": {
+     "start": "2027-03-20",
+     "end": "2027-03-27",
+     "deadline": "2026-10-20",
+     "opens": "2026-02-24",
+     "source": "https://fespaco.bf/en/call-for-entries-fespaco-2027/"
+    }
+   }
+  },
+  {
+   "id": "oscars",
+   "name": "Academy Awards",
+   "short": "Oscars",
+   "kind": "award",
+   "placeId": "us-los-angeles",
+   "window": [
+    3,
+    1,
+    15
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 80,
+   "ordinalBase": 1928,
+   "requiresRelease": {
+    "routes": [
+     "theatrical"
+    ],
+    "countries": [
+     "US"
+    ]
+   },
+   "description": "Annual film awards voted by Academy members. In this game, features need a theatrical release in the United States during the eligibility year; shorts need a festival award or a US theatrical release.",
+   "categories": [
+    {
+     "id": "picture",
+     "name": "Best Picture",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 10,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "director",
+     "name": "Best Director",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "screenplay",
+     "name": "Best Original Screenplay",
+     "recipient": "writer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "actor",
+     "name": "Best Actor In A Leading Role",
+     "recipient": "lead",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actor"
+    },
+    {
+     "id": "actress",
+     "name": "Best Actress In A Leading Role",
+     "recipient": "lead",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actress"
+    },
+    {
+     "id": "supporting-actor",
+     "name": "Best Actor In A Supporting Role",
+     "recipient": "supporting",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actor"
+    },
+    {
+     "id": "supporting-actress",
+     "name": "Best Actress In A Supporting Role",
+     "recipient": "supporting",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actress"
+    },
+    {
+     "id": "animated",
+     "name": "Best Animated Feature Film",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation"
+     ]
+    },
+    {
+     "id": "documentary",
+     "name": "Best Documentary Feature Film",
+     "recipient": "producer",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "live-short",
+     "name": "Best Live Action Short Film",
+     "recipient": "producer",
+     "formats": [
+      "short"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "live-action",
+      "hybrid"
+     ]
+    },
+    {
+     "id": "animated-short",
+     "name": "Best Animated Short Film",
+     "recipient": "producer",
+     "formats": [
+      "short"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation"
+     ]
+    },
+    {
+     "id": "doc-short",
+     "name": "Best Documentary Short Film",
+     "recipient": "producer",
+     "formats": [
+      "documentary-short"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ],
+   "official": {
+    "2027": {
+     "start": "2027-03-14",
+     "end": "2027-03-14",
+     "deadline": "2026-11-14",
+     "label": "99th Academy Awards",
+     "source": "https://press.oscars.org/news/academy-and-abc-announce-show-dates-99th-and-100th-oscarsr"
+    },
+    "2028": {
+     "start": "2028-03-05",
+     "end": "2028-03-05",
+     "deadline": "2027-11-13",
+     "label": "100th Academy Awards",
+     "source": "https://press.oscars.org/news/academy-and-abc-announce-show-dates-99th-and-100th-oscarsr"
+    }
+   }
+  },
+  {
+   "id": "bafta-film",
+   "name": "BAFTA Film Awards",
+   "short": "BAFTA Film",
+   "kind": "award",
+   "placeId": "gb-london",
+   "window": [
+    2,
+    14,
+    23
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 76,
+   "requiresRelease": {
+    "routes": [
+     "theatrical"
+    ],
+    "countries": [
+     "GB"
+    ]
+   },
+   "description": "Annual film awards. In this game, entries need a UK theatrical release during the eligibility year.",
+   "categories": [
+    {
+     "id": "film",
+     "name": "Best Film",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "director",
+     "name": "Director",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "screenplay",
+     "name": "Original Screenplay",
+     "recipient": "writer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "leading-actor",
+     "name": "Leading Actor",
+     "recipient": "lead",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actor"
+    },
+    {
+     "id": "leading-actress",
+     "name": "Leading Actress",
+     "recipient": "lead",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actress"
+    },
+    {
+     "id": "animated",
+     "name": "Animated Film",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 4,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation"
+     ]
+    },
+    {
+     "id": "documentary",
+     "name": "Documentary",
+     "recipient": "producer",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "bafta-tv",
+   "name": "BAFTA Television Awards",
+   "short": "BAFTA TV",
+   "kind": "award",
+   "placeId": "gb-london",
+   "window": [
+    5,
+    4,
+    15
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 72,
+   "requiresRelease": {
+    "routes": [
+     "broadcast",
+     "streaming"
+    ],
+    "countries": [
+     "GB"
+    ]
+   },
+   "description": "Annual television awards. In this game, entries need a UK broadcast or streaming release during the eligibility year.",
+   "categories": [
+    {
+     "id": "drama",
+     "name": "Drama Series",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "jury",
+     "slots": 4,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "limited",
+     "name": "Limited Drama",
+     "recipient": "producer",
+     "formats": [
+      "limited-series"
+     ],
+     "judging": "jury",
+     "slots": 4,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "factual",
+     "name": "Factual Series",
+     "recipient": "producer",
+     "formats": [
+      "documentary-series",
+      "unscripted-series"
+     ],
+     "judging": "jury",
+     "slots": 4,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "leading-actor",
+     "name": "Leading Actor",
+     "recipient": "lead",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "jury",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actor"
+    },
+    {
+     "id": "leading-actress",
+     "name": "Leading Actress",
+     "recipient": "lead",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "jury",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actress"
+    }
+   ]
+  },
+  {
+   "id": "golden-globes",
+   "name": "Golden Globe Awards",
+   "short": "Golden Globes",
+   "kind": "award",
+   "placeId": "us-los-angeles",
+   "window": [
+    1,
+    4,
+    12
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 72,
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "streaming",
+     "broadcast"
+    ],
+    "countries": [
+     "US"
+    ]
+   },
+   "official": {
+    "2027": {
+     "start": "2027-01-10",
+     "end": "2027-01-10",
+     "label": "84th Golden Globe Awards",
+     "source": "https://www.paramountpressexpress.com/cbs-entertainment/shows/84th-annual-golden-globes/about/",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "Annual film and television awards. Film comedy and musical work competes separately from drama.",
+   "categories": [
+    {
+     "id": "drama",
+     "name": "Best Motion Picture, Drama",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "excludeGenres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "comedy",
+     "name": "Best Motion Picture, Musical Or Comedy",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "genres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "animated",
+     "name": "Best Motion Picture, Animated",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation"
+     ]
+    },
+    {
+     "id": "director",
+     "name": "Best Director, Motion Picture",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "screenplay",
+     "name": "Best Screenplay, Motion Picture",
+     "recipient": "writer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "tv-drama",
+     "name": "Best Television Series, Drama",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "excludeGenres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "tv-comedy",
+     "name": "Best Television Series, Musical Or Comedy",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "genres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "emmys",
+   "name": "Primetime Emmy Awards",
+   "short": "Emmys",
+   "kind": "award",
+   "placeId": "us-los-angeles",
+   "window": [
+    9,
+    13,
+    21
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "jun-may",
+   "prestige": 74,
+   "requiresRelease": {
+    "routes": [
+     "broadcast",
+     "streaming"
+    ],
+    "countries": [
+     "US"
+    ]
+   },
+   "description": "Annual US television awards. In this game, entries need a US broadcast or streaming release between June 1 and May 31.",
+   "categories": [
+    {
+     "id": "drama",
+     "name": "Outstanding Drama Series",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 7,
+     "competitive": true,
+     "fee": 0,
+     "excludeGenres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "comedy",
+     "name": "Outstanding Comedy Series",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 7,
+     "competitive": true,
+     "fee": 0,
+     "genres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "limited",
+     "name": "Outstanding Limited Or Anthology Series",
+     "recipient": "producer",
+     "formats": [
+      "limited-series",
+      "anthology-series"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "directing",
+     "name": "Outstanding Directing For A Drama Series",
+     "recipient": "director",
+     "formats": [
+      "series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "excludeGenres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "writing",
+     "name": "Outstanding Writing For A Drama Series",
+     "recipient": "writer",
+     "formats": [
+      "series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "excludeGenres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "lead-actor",
+     "name": "Outstanding Lead Actor In A Drama Series",
+     "recipient": "lead",
+     "formats": [
+      "series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actor",
+     "excludeGenres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "lead-actress",
+     "name": "Outstanding Lead Actress In A Drama Series",
+     "recipient": "lead",
+     "formats": [
+      "series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actress",
+     "excludeGenres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "directing-comedy",
+     "name": "Outstanding Directing For A Comedy Series",
+     "recipient": "director",
+     "formats": [
+      "series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "genres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "writing-comedy",
+     "name": "Outstanding Writing For A Comedy Series",
+     "recipient": "writer",
+     "formats": [
+      "series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "genres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "lead-actor-comedy",
+     "name": "Outstanding Lead Actor In A Comedy Series",
+     "recipient": "lead",
+     "formats": [
+      "series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actor",
+     "genres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "lead-actress-comedy",
+     "name": "Outstanding Lead Actress In A Comedy Series",
+     "recipient": "lead",
+     "formats": [
+      "series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actress",
+     "genres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "tv-movie",
+     "name": "Outstanding Television Movie",
+     "recipient": "producer",
+     "formats": [
+      "tv-film"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "years": [
+      1900,
+      2025
+     ]
+    },
+    {
+     "id": "movie",
+     "name": "Outstanding Movie",
+     "recipient": "producer",
+     "formats": [
+      "tv-film"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "years": [
+      2026,
+      9999
+     ]
+    },
+    {
+     "id": "documentary",
+     "name": "Outstanding Documentary Or Nonfiction Series",
+     "recipient": "producer",
+     "formats": [
+      "documentary-series",
+      "unscripted-series"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "international-emmys",
+   "name": "International Emmy Awards",
+   "short": "International Emmys",
+   "kind": "award",
+   "placeId": "us-new-york",
+   "window": [
+    11,
+    20,
+    25
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "oct-sep",
+   "prestige": 66,
+   "requiresRelease": {
+    "routes": [
+     "broadcast",
+     "streaming"
+    ]
+   },
+   "official": {
+    "2026": {
+     "start": "2026-11-23",
+     "end": "2026-11-23",
+     "label": "54th International Emmy Awards",
+     "source": "https://en.unifrance.org/news/17531/the-nominations-for-french-audiovisual-productions-at-the-54th-international-emmy-awards",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "Annual awards for television made outside the United States. In this game, entries need a production base outside the US and a broadcast or streaming release.",
+   "origin": [
+    "CA",
+    "MX",
+    "BR",
+    "AR",
+    "GB",
+    "IE",
+    "FR",
+    "MC",
+    "DE",
+    "ES",
+    "IT",
+    "NL",
+    "CH",
+    "CZ",
+    "SE",
+    "NO",
+    "DK",
+    "TR",
+    "EG",
+    "MA",
+    "NG",
+    "BF",
+    "KE",
+    "ZA",
+    "AE",
+    "SA",
+    "IN",
+    "JP",
+    "KR",
+    "CN",
+    "AU",
+    "NZ"
+   ],
+   "categories": [
+    {
+     "id": "drama",
+     "name": "Drama Series",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series"
+     ],
+     "judging": "jury",
+     "slots": 4,
+     "competitive": true,
+     "fee": 0,
+     "excludeGenres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "comedy",
+     "name": "Comedy",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "web-series"
+     ],
+     "judging": "jury",
+     "slots": 4,
+     "competitive": true,
+     "fee": 0,
+     "genres": [
+      "comedy",
+      "musical",
+      "romantic-comedy",
+      "action-comedy",
+      "buddy-comedy",
+      "screwball-comedy",
+      "slapstick",
+      "farce",
+      "parody",
+      "satire",
+      "black-comedy",
+      "stoner-comedy",
+      "horror-comedy",
+      "backstage-musical",
+      "jukebox-musical"
+     ]
+    },
+    {
+     "id": "tv-movie",
+     "name": "TV Movie Or Mini-Series",
+     "recipient": "producer",
+     "formats": [
+      "tv-film",
+      "limited-series"
+     ],
+     "judging": "jury",
+     "slots": 4,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "documentary",
+     "name": "Documentary",
+     "recipient": "producer",
+     "formats": [
+      "documentary-series",
+      "unscripted-series",
+      "documentary-feature"
+     ],
+     "judging": "jury",
+     "slots": 4,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "actor",
+     "name": "Best Performance By An Actor",
+     "recipient": "lead",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series",
+      "tv-film"
+     ],
+     "judging": "jury",
+     "slots": 4,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actor"
+    },
+    {
+     "id": "actress",
+     "name": "Best Performance By An Actress",
+     "recipient": "lead",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series",
+      "tv-film"
+     ],
+     "judging": "jury",
+     "slots": 4,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actress"
+    }
+   ]
+  },
+  {
+   "id": "annie",
+   "name": "Annie Awards",
+   "short": "Annies",
+   "kind": "award",
+   "placeId": "us-los-angeles",
+   "window": [
+    2,
+    15,
+    28
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 66,
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "streaming",
+     "broadcast",
+     "digital"
+    ]
+   },
+   "official": {
+    "2027": {
+     "start": "2027-02-20",
+     "end": "2027-02-20",
+     "label": "54th Annie Awards",
+     "source": "https://www.cartoonbrew.com/awards/annie-award-submissions-open-anime-category-265121.html",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "Annual animation awards with feature, short, television and individual achievement categories.",
+   "categories": [
+    {
+     "id": "feature",
+     "name": "Best Feature",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation",
+      "hybrid"
+     ]
+    },
+    {
+     "id": "short",
+     "name": "Best Short Subject",
+     "recipient": "producer",
+     "formats": [
+      "short",
+      "documentary-short"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation",
+      "hybrid"
+     ]
+    },
+    {
+     "id": "tv",
+     "name": "Best TV Or Media Production",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series",
+      "tv-film"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation",
+      "hybrid"
+     ]
+    },
+    {
+     "id": "directing",
+     "name": "Directing In A Feature Production",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation",
+      "hybrid"
+     ]
+    },
+    {
+     "id": "writing",
+     "name": "Writing In A Feature Production",
+     "recipient": "writer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation",
+      "hybrid"
+     ]
+    },
+    {
+     "id": "voice",
+     "name": "Voice Acting In A Feature Production",
+     "recipient": "voice",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation",
+      "hybrid"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "spirit",
+   "name": "Film Independent Spirit Awards",
+   "short": "Spirit Awards",
+   "kind": "award",
+   "placeId": "us-los-angeles",
+   "window": [
+    2,
+    21,
+    28
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 64,
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "streaming",
+     "festival-premiere",
+     "digital"
+    ]
+   },
+   "official": {
+    "2027": {
+     "start": "2027-03-06",
+     "end": "2027-03-06",
+     "deadline": "2026-12-02",
+     "label": "42nd Film Independent Spirit Awards",
+     "source": "https://www.filmindependent.org/press-releases/film-independent-spirit-awards-announces-2027-and-2028-dates/",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "Annual awards for independent film and television. Performance categories are gender-neutral. In this game, commissioned projects are not eligible.",
+   "categories": [
+    {
+     "id": "feature",
+     "name": "Best Feature",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "director",
+     "name": "Best Director",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "screenplay",
+     "name": "Best Screenplay",
+     "recipient": "writer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "lead",
+     "name": "Best Lead Performance",
+     "recipient": "lead",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 10,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "supporting",
+     "name": "Best Supporting Performance",
+     "recipient": "supporting",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 10,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "documentary",
+     "name": "Best Documentary Feature",
+     "recipient": "producer",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "series",
+     "name": "Best New Scripted Series",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "gotham",
+   "name": "Gotham Awards",
+   "short": "Gothams",
+   "kind": "award",
+   "placeId": "us-new-york",
+   "window": [
+    12,
+    1,
+    3
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "oct-sep",
+   "prestige": 62,
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "streaming",
+     "festival-premiere",
+     "digital",
+     "broadcast"
+    ]
+   },
+   "official": {
+    "2026": {
+     "start": "2026-11-30",
+     "end": "2026-11-30",
+     "label": "36th Gotham Film Awards",
+     "source": "https://thegotham.org/press/dates-set-3rd-annual-gotham-television-awards-36th-annual-gotham-film-awards/",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "Annual awards for independent film. Performance categories are gender-neutral. Series awards moved to separate television awards in 2024.",
+   "categories": [
+    {
+     "id": "feature",
+     "name": "Best Feature",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "documentary",
+     "name": "Best Documentary Feature",
+     "recipient": "producer",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "jury",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "lead",
+     "name": "Outstanding Lead Performance",
+     "recipient": "lead",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 10,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "series",
+     "name": "Breakthrough Series",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "jury",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "years": [
+      2015,
+      2023
+     ]
+    }
+   ]
+  },
+  {
+   "id": "dga",
+   "name": "Directors Guild Of America Awards",
+   "short": "DGA Awards",
+   "kind": "award",
+   "placeId": "us-los-angeles",
+   "window": [
+    2,
+    7,
+    14
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 72,
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "streaming",
+     "broadcast"
+    ]
+   },
+   "official": {
+    "2027": {
+     "start": "2027-01-30",
+     "end": "2027-01-30",
+     "label": "79th DGA Awards",
+     "source": "https://www.dga.org/News/PressReleases/2026/260416_DGA-Announces-Date-For-2027-Awards-Ceremony",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "Annual awards for directing in film, documentary and television.",
+   "categories": [
+    {
+     "id": "feature",
+     "name": "Theatrical Feature Film",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "documentary",
+     "name": "Documentary",
+     "recipient": "director",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "drama",
+     "name": "Dramatic Series",
+     "recipient": "director",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "jury",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "wga",
+   "name": "Writers Guild Awards",
+   "short": "WGA Awards",
+   "kind": "award",
+   "placeId": "us-los-angeles",
+   "window": [
+    2,
+    28,
+    28
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 70,
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "streaming",
+     "broadcast"
+    ]
+   },
+   "description": "Annual awards for screen and television writing.",
+   "categories": [
+    {
+     "id": "original",
+     "name": "Original Screenplay",
+     "recipient": "writer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "episodic",
+     "name": "Episodic Drama",
+     "recipient": "writer",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "pga",
+   "name": "Producers Guild Awards",
+   "short": "PGA Awards",
+   "kind": "award",
+   "placeId": "us-los-angeles",
+   "window": [
+    2,
+    21,
+    28
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 70,
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "streaming",
+     "broadcast"
+    ]
+   },
+   "official": {
+    "2027": {
+     "start": "2027-02-27",
+     "end": "2027-02-27",
+     "label": "38th PGA Awards",
+     "source": "https://producersguild.org/2027-2028-producers-guild-awards-key-dates/",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "Annual awards for producing in film and television.",
+   "categories": [
+    {
+     "id": "theatrical",
+     "name": "Theatrical Motion Picture",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 10,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "animated",
+     "name": "Animated Theatrical Motion Picture",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation"
+     ]
+    },
+    {
+     "id": "documentary",
+     "name": "Documentary Motion Picture",
+     "recipient": "producer",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "drama",
+     "name": "Episodic Television, Drama",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "actor-awards",
+   "name": "Actor Awards",
+   "short": "Actor Awards",
+   "kind": "award",
+   "placeId": "us-los-angeles",
+   "window": [
+    3,
+    1,
+    1
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 72,
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "streaming",
+     "broadcast"
+    ]
+   },
+   "official": {
+    "2027": {
+     "start": "2027-02-28",
+     "end": "2027-02-28",
+     "label": "33rd Actor Awards",
+     "source": "https://www.thewrap.com/creative-content/movies/actor-awards-set-2027-2028-dates-at-netflix/",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "Annual awards for screen performers, voted by performers.",
+   "categories": [
+    {
+     "id": "male-lead",
+     "name": "Male Actor In A Leading Role",
+     "recipient": "lead",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actor"
+    },
+    {
+     "id": "female-lead",
+     "name": "Female Actor In A Leading Role",
+     "recipient": "lead",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "actingTitle": "Actress"
+    },
+    {
+     "id": "cast",
+     "name": "Cast In A Motion Picture",
+     "recipient": "ensemble",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "cesar",
+   "name": "César Awards",
+   "short": "César",
+   "kind": "award",
+   "placeId": "fr-paris",
+   "window": [
+    2,
+    20,
+    28
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 68,
+   "origin": [
+    "FR",
+    "MC"
+   ],
+   "requiresRelease": {
+    "routes": [
+     "theatrical"
+    ],
+    "countries": [
+     "FR"
+    ]
+   },
+   "official": {
+    "2027": {
+     "start": "2027-02-25",
+     "end": "2027-02-25",
+     "label": "52nd César Awards",
+     "source": "https://www.parismatch.be/culture/cinema/2026/09/29/voici-le-nom-de-la-personne-qui-succede-a-benjamin-lavernhe-a-lanimation-de-la-ceremonie-des-cesar-2027-V3WASYGVRBDQZC4IUSXG2DBZ7Q/",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "Annual French film awards. In this game, entries need a French production base and a theatrical release in France.",
+   "categories": [
+    {
+     "id": "film",
+     "name": "Best Film",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "director",
+     "name": "Best Director",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "screenplay",
+     "name": "Best Original Screenplay",
+     "recipient": "writer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "animated",
+     "name": "Best Animated Film",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 3,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation"
+     ]
+    },
+    {
+     "id": "documentary",
+     "name": "Best Documentary",
+     "recipient": "producer",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "goya",
+   "name": "Goya Awards",
+   "short": "Goya",
+   "kind": "award",
+   "placeId": "es-madrid",
+   "window": [
+    2,
+    7,
+    14
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 66,
+   "origin": [
+    "ES"
+   ],
+   "requiresRelease": {
+    "routes": [
+     "theatrical"
+    ],
+    "countries": [
+     "ES"
+    ]
+   },
+   "official": {
+    "2027": {
+     "start": "2027-02-06",
+     "end": "2027-02-06",
+     "label": "41st Goya Awards",
+     "source": "https://rtvc.es/pamplona-acogera-gala-premios-goya-30-septiemmbre-2026/",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "Annual Spanish film awards. In this game, entries need a Spanish production base and a theatrical release in Spain.",
+   "categories": [
+    {
+     "id": "film",
+     "name": "Best Film",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "director",
+     "name": "Best Director",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "screenplay",
+     "name": "Best Original Screenplay",
+     "recipient": "writer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "canadian-screen",
+   "name": "Canadian Screen Awards",
+   "short": "Canadian Screen Awards",
+   "kind": "award",
+   "placeId": "ca-toronto",
+   "window": [
+    5,
+    25,
+    31
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 60,
+   "origin": [
+    "CA"
+   ],
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "streaming",
+     "broadcast",
+     "digital"
+    ],
+    "countries": [
+     "CA"
+    ]
+   },
+   "description": "Annual Canadian film and television awards. In this game, entries need a Canadian production base.",
+   "categories": [
+    {
+     "id": "film",
+     "name": "Best Motion Picture",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "drama",
+     "name": "Best Drama Series",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "documentary",
+     "name": "Best Feature Length Documentary",
+     "recipient": "producer",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "aacta",
+   "name": "AACTA Awards",
+   "short": "AACTA",
+   "kind": "award",
+   "placeId": "au-sydney",
+   "window": [
+    2,
+    5,
+    12
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 60,
+   "origin": [
+    "AU",
+    "NZ"
+   ],
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "streaming",
+     "broadcast"
+    ],
+    "countries": [
+     "AU"
+    ]
+   },
+   "description": "Annual Australian screen awards. In this game, entries need an Australian or New Zealand production base and an Australian release.",
+   "categories": [
+    {
+     "id": "film",
+     "name": "Best Film",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "drama",
+     "name": "Best Drama Series",
+     "recipient": "producer",
+     "formats": [
+      "series",
+      "limited-series",
+      "anthology-series",
+      "web-series"
+     ],
+     "judging": "members",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "documentary",
+     "name": "Best Documentary",
+     "recipient": "producer",
+     "formats": [
+      "documentary-feature",
+      "documentary-series",
+      "unscripted-series"
+     ],
+     "judging": "jury",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "amaa",
+   "name": "Africa Movie Academy Awards",
+   "short": "AMAA",
+   "kind": "award",
+   "placeId": "ng-lagos",
+   "window": [
+    10,
+    15,
+    30
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "oct-sep",
+   "prestige": 58,
+   "origin": [
+    "NG",
+    "BF",
+    "KE",
+    "ZA",
+    "EG",
+    "MA",
+    "GH",
+    "SN"
+   ],
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "streaming",
+     "broadcast",
+     "festival-premiere",
+     "digital"
+    ]
+   },
+   "description": "Annual awards for African film. In this game, entries need an African production base.",
+   "categories": [
+    {
+     "id": "film",
+     "name": "Best Film",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "director",
+     "name": "Best Director",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "documentary",
+     "name": "Best Documentary",
+     "recipient": "producer",
+     "formats": [
+      "documentary-feature"
+     ],
+     "judging": "jury",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "short",
+     "name": "Best Short Film",
+     "recipient": "producer",
+     "formats": [
+      "short",
+      "documentary-short"
+     ],
+     "judging": "jury",
+     "slots": 6,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "japan-academy",
+   "name": "Japan Academy Film Prize",
+   "short": "Japan Academy Film Prize",
+   "kind": "award",
+   "placeId": "jp-tokyo",
+   "window": [
+    3,
+    6,
+    14
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "prior-year",
+   "prestige": 62,
+   "origin": [
+    "JP"
+   ],
+   "requiresRelease": {
+    "routes": [
+     "theatrical"
+    ],
+    "countries": [
+     "JP"
+    ]
+   },
+   "description": "Annual Japanese film awards. In this game, entries need a Japanese production base and a theatrical release in Japan.",
+   "categories": [
+    {
+     "id": "picture",
+     "name": "Picture Of The Year",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "animation",
+     "name": "Animation Of The Year",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation"
+     ]
+    },
+    {
+     "id": "director",
+     "name": "Director Of The Year",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "blue-dragon",
+   "name": "Blue Dragon Film Awards",
+   "short": "Blue Dragon",
+   "kind": "award",
+   "placeId": "kr-seoul",
+   "window": [
+    11,
+    18,
+    28
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "oct-sep",
+   "prestige": 62,
+   "origin": [
+    "KR"
+   ],
+   "requiresRelease": {
+    "routes": [
+     "theatrical"
+    ],
+    "countries": [
+     "KR"
+    ]
+   },
+   "description": "Annual South Korean film awards. In this game, entries need a South Korean production base and a theatrical release in South Korea.",
+   "categories": [
+    {
+     "id": "film",
+     "name": "Best Film",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "director",
+     "name": "Best Director",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "screenplay",
+     "name": "Best Screenplay",
+     "recipient": "writer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "jury",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    }
+   ]
+  },
+  {
+   "id": "european-film-awards",
+   "name": "European Film Awards",
+   "short": "European Film Awards",
+   "kind": "award",
+   "placeId": "de-berlin",
+   "window": [
+    12,
+    6,
+    13
+   ],
+   "duration": 1,
+   "cadence": 1,
+   "eligibility": "oct-sep",
+   "prestige": 64,
+   "origin": [
+    "GB",
+    "IE",
+    "FR",
+    "DE",
+    "ES",
+    "IT",
+    "NL",
+    "CH",
+    "CZ",
+    "SE",
+    "NO",
+    "DK",
+    "MC"
+   ],
+   "requiresRelease": {
+    "routes": [
+     "theatrical",
+     "festival-premiere",
+     "streaming"
+    ]
+   },
+   "official": {
+    "2026": {
+     "start": "2027-01-16",
+     "end": "2027-01-16",
+     "label": "39th European Film Awards",
+     "source": "https://www.europeanfilmawards.eu/regulations/",
+     "checked": "2026-11-06"
+    }
+   },
+   "description": "Annual awards for European film. In this game, entries need a European production base.",
+   "categories": [
+    {
+     "id": "film",
+     "name": "European Film",
+     "recipient": "producer",
+     "formats": [
+      "feature",
+      "documentary-feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "director",
+     "name": "European Director",
+     "recipient": "director",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 5,
+     "competitive": true,
+     "fee": 0
+    },
+    {
+     "id": "animated",
+     "name": "European Animated Feature Film",
+     "recipient": "producer",
+     "formats": [
+      "feature"
+     ],
+     "judging": "members",
+     "slots": 4,
+     "competitive": true,
+     "fee": 0,
+     "mediums": [
+      "animation"
+     ]
+    }
+   ]
+  }
+ ]
+}

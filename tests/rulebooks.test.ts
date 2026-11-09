@@ -4,6 +4,7 @@ import {
   rulebook, rivalTitle, announceEdition, processUntil, schedule, DAY,
 } from '../src/engine';
 import { submitEntry, withdrawEntry } from '../src/engine/awards-actions';
+import { publicResult } from '../src/engine/awards-results';
 import { deserialize, memoryStore, openSave, serialize, writeSave } from '../src/engine/save';
 import { isValidDate, localToInstant } from '../src/engine/time';
 import type { Credit, Edition, GameState, Project } from '../src/engine/types';
@@ -40,10 +41,11 @@ function release(p: Project, route: Project['releases'][number]['route'], date: 
 }
 
 describe('rulebook data', () => {
-  it('recounts the catalog the audit covers: 37 institutions and 142 categories', () => {
+  it('recounts the catalog the audit covers: 37 institutions and 802 categories', () => {
     expect(INSTITUTIONS.length).toBe(37);
-    // 141 before the 78th Emmys renamed Outstanding Television Movie to Outstanding Movie (kept as two, by year).
-    expect(INSTITUTIONS.reduce((n, i) => n + i.categories.length, 0)).toBe(142);
+    // 141 before the 78th Emmys renamed Outstanding Television Movie to Outstanding Movie (kept as two, by year); 142 until
+    // the rosters of November 9, 2026 (docs/awards/roster).
+    expect(INSTITUTIONS.reduce((n, i) => n + i.categories.length, 0)).toBe(802);
   });
 
   it('every rule names a real institution, category and source, with real dates', () => {
@@ -172,7 +174,10 @@ describe('disqualifications, overlapping categories and premiere changes', () =>
     busan.results.shorts = { stage: 'winner', projectIds: [p.id], rivalIds: [], winner: p.id, revealed: true };
     expect(checkEligibility(s, p, e, live).eligible).toBe(false);
     const cf = ed(s, 'clermont-2026');
-    cf.results.international = { stage: 'winner', projectIds: [p.id], rivalIds: [], winner: p.id, revealed: true };
+    // Clermont's International Competition selects; its Grand Prix is the award the Academy lists (from November 9, 2026).
+    cf.results.international = { stage: 'selection', projectIds: [p.id], rivalIds: [], revealed: true };
+    expect(checkEligibility(s, p, e, live).eligible).toBe(false);
+    cf.results['grand-prix'] = { stage: 'winner', projectIds: [p.id], rivalIds: [], winner: p.id, revealed: true };
     expect(checkEligibility(s, p, e, live).eligible).toBe(true);
   });
 
@@ -198,17 +203,21 @@ describe('disqualifications, overlapping categories and premiere changes', () =>
     const s = startLife('prem');
     s.now = at('America/Denver', '2026-08-01', 9);
     const e = ed(s, 'sundance-2027');
+    // International features enter the World Cinema competition (the U.S. one is for US work, from November 9, 2026).
     const c = cat(e, 'dramatic');
+    const w = cat(e, 'world-dramatic');
     const us = work(s, { format: 'feature', runtime: 90, completed: '2026-03-01', base: 'us-los-angeles' });
     const intl = work(s, { format: 'feature', runtime: 90, completed: '2026-03-01', base: 'gb-london' });
     expect(checkEligibility(s, us, e, c).eligible).toBe(true);
-    expect(checkEligibility(s, intl, e, c).eligible).toBe(true);
+    expect(checkEligibility(s, intl, e, c).reasons.join(' ')).toMatch(/American productions/);
+    expect(checkEligibility(s, us, e, w).reasons.join(' ')).toMatch(/outside the United States/);
+    expect(checkEligibility(s, intl, e, w).eligible).toBe(true);
     us.premiere = { kind: 'world', date: '2026-07-01', country: 'US', venue: 'Other', editionId: 'sxsw-2026' };
     intl.premiere = { kind: 'world', date: '2026-07-01', country: 'GB', venue: 'Home', editionId: 'sxsw-2026' };
     expect(checkEligibility(s, us, e, c).reasons.join(' ')).toMatch(/requires a world premiere/);
-    expect(checkEligibility(s, intl, e, c).eligible).toBe(true); // shown only at home: still an international premiere
+    expect(checkEligibility(s, intl, e, w).eligible).toBe(true); // shown only at home: still an international premiere
     release(intl, 'theatrical', '2026-07-15', ['FR']);
-    expect(checkEligibility(s, intl, e, c).reasons.join(' ')).toMatch(/requires an international premiere/);
+    expect(checkEligibility(s, intl, e, w).reasons.join(' ')).toMatch(/requires an international premiere/);
   });
 
   it('Sundance shorts: shown before 2026 rules out older work, but work completed in 2026 needs no premiere', () => {
@@ -240,7 +249,10 @@ describe('deadlines at the boundary, in the organizer\'s time zone', () => {
     // Shorts and documentaries close earlier, the edition stays open until its last deadline.
     expect(categoryDeadline(e, cat(e, 'live-short'))).toBe(at('America/Los_Angeles', '2026-10-08', 17));
     expect(categoryDeadline(e, cat(e, 'documentary'))).toBe(at('America/Los_Angeles', '2026-10-15', 17));
-    expect(e.deadline).toBe(close);
+    // International Feature's own rules weren't read (from November 9, 2026): it keeps the game's deadline, and the
+    // edition stays open until its last category closes.
+    expect(categoryDeadline(e, cat(e, 'international'))).toBe(e.defaultDeadline);
+    expect(e.deadline).toBe(Math.max(close, e.defaultDeadline!));
   });
 
   it('Clermont-Ferrand closes July 9 for 2025 films and September 24 for 2026 films, at the end of the day in France', () => {
@@ -290,9 +302,12 @@ describe('entries: duplicates, withdrawals, payments and recipients', () => {
     const en = submitEntry(s, p, e.id, 'international');
     withdrawEntry(s, e.id, en.id);
     announceEdition(s, e);
-    expect(e.results.international.projectIds).not.toContain(p.id);
+    // Nothing of yours is in it, so nothing is stored; the public selection is computed when shown (from November 9, 2026).
+    expect(e.results.international).toBeUndefined();
     expect(en.status).toBe('withdrawn');
-    expect(e.results.international.rivalIds.every((id) => rivalTitle(s, e, id))).toBe(true);
+    const shown = publicResult(s, e, cat(e, 'international'))!;
+    expect(shown.field).not.toContain(p.title);
+    expect(shown.field.length).toBeGreaterThan(0);
   });
 
   it('project awards name the credited people the organizer names: three producers at most for Best Picture, the director at Clermont', () => {
@@ -333,7 +348,15 @@ describe('history and saves', () => {
 
   it('migrating keeps every past result and title, stores each film once, and is idempotent', () => {
     const s = startLife('mig');
-    for (const id of ['venice-2026', 'tiff-2026', 'oscars-2027']) announceEdition(s, ed(s, id));
+    // Results are stored only where you entered (from November 9, 2026), so this save enters every category it can.
+    const p = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10' });
+    for (const id of ['venice-2026', 'tiff-2026', 'oscars-2027']) {
+      const e = ed(s, id);
+      for (const c of categoriesFor(institution(e.institutionId), e.year).filter((x) => x.formats.includes('feature') && !x.kind?.match(/prize|audience|partner|honorary/))) {
+        e.entries.push({ id: `${e.id}:${c.id}`, projectId: p.id, categoryId: c.id, submittedAt: 0, status: 'accepted', recipients: [], fee: 0 });
+      }
+      announceEdition(s, e);
+    }
     const before = Object.fromEntries(s.editions.map((e) => [e.id, Object.fromEntries(Object.entries(e.results).map(([k, r]) => [k, r.rivalIds.map((x) => rivalTitle(s, e, x))]))]));
     const raw = asVersion2(s);
     const v3 = migrateV2toV3(JSON.parse(JSON.stringify(raw)));
@@ -355,7 +378,8 @@ describe('history and saves', () => {
     const v3 = migrateV2toV3(raw as unknown as Record<string, unknown>) as unknown as GameState;
     const o = v3.editions.find((e) => e.id === 'oscars-2027')!;
     expect(o.rulesId).toBe('oscars-2027@1');
-    expect(o.deadline).toBe(at('America/Los_Angeles', '2026-11-12', 17));
+    expect(categoryDeadline(o, cat(o, 'picture'))).toBe(at('America/Los_Angeles', '2026-11-12', 17));
+    expect(o.deadline).toBe(Math.max(at('America/Los_Angeles', '2026-11-12', 17), oldDeadline)); // International Feature keeps the game's
     expect(o.defaultDeadline).toBe(oldDeadline);
     expect(v3.events.find((x) => x.id === 'oscars-2027:deadline')?.at).toBe(o.deadline);
     expect(v3.editions.find((e) => e.id === 'sundance-2027')!.rulesId).toBe('simulated'); // someone entered: unchanged
@@ -392,13 +416,16 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('48 categories follow verified rules for at least one edition, 2 only projected ones; the other 92 are simulated', () => {
+  it('66 categories follow verified rules for at least one edition, 2 only projected ones; the other 734 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
     const n = { verified: 0, projected: 0, simulated: 0 };
     for (const inst of INSTITUTIONS) for (const c of inst.categories) n[best(inst.id, c.id)] += 1;
-    expect(n).toEqual({ verified: 48, projected: 2, simulated: 92 });
+    // 48 and 92 until November 9, 2026, when the rosters added 660 categories and the read rules were extended to the
+    // Oscars' craft and adapted-screenplay categories, Sundance's World Cinema competitions, Orizzonti Corti and the
+    // Annies' four TV categories (rulebooks.ts).
+    expect(n).toEqual({ verified: 66, projected: 2, simulated: 734 });
   });
 });
 
@@ -452,10 +479,12 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const e = ed(s, 'venice-2026');
     const short = (rt: number) => work(s, { format: 'short', runtime: rt, completed: '2026-01-10', base: 'gb-london' });
     const feat = (rt: number) => work(s, { format: 'feature', runtime: rt, completed: '2026-01-10', base: 'gb-london' });
-    expect(r(s, short(20), e, 'orizzonti')).toBe('');
-    expect(r(s, short(21), e, 'orizzonti')).toMatch(/20 minutes or less/);
+    // Shorts have their own section, Orizzonti Corti, from November 9, 2026.
+    expect(r(s, short(20), e, 'orizzonti-corti')).toBe('');
+    expect(r(s, short(21), e, 'orizzonti-corti')).toMatch(/20 minutes or less/);
+    expect(r(s, short(20), e, 'orizzonti')).toMatch(/doesn't accept short/);
     expect(r(s, feat(59), e, 'orizzonti')).toMatch(/at least 60/);
-    expect(categoryDeadline(e, cat(e, 'orizzonti'), short(10))).toBe(at('Europe/Rome', '2026-05-28', 23, 59, 59));
+    expect(categoryDeadline(e, cat(e, 'orizzonti-corti'), short(10))).toBe(at('Europe/Rome', '2026-05-28', 23, 59, 59));
     expect(categoryDeadline(e, cat(e, 'orizzonti'), feat(90))).toBe(at('Europe/Rome', '2026-06-04', 23, 59, 59));
     const streamed = feat(90);
     release(streamed, 'streaming', '2026-03-01', ['GB']);
@@ -623,14 +652,22 @@ describe('late entries, opening days and a verified edition run to its end', () 
     processUntil(s, e.end + 2 * DAY, 'tick', 100_000);
     expect(e.status).toBe('complete');
     expect(e.compact).toBe(true);
-    for (const c of categoriesFor(institution('venice'), 2026).filter((x) => x.competitive)) {
-      const res = e.results[c.id];
+    // Selection isn't a win (from November 9, 2026): the Competition entry stays selected, and the Golden Lion and the
+    // other prizes are decided among the selected films, recorded from the selection without an entry or a fee.
+    expect(entry.status).toBe('selected');
+    expect(e.results.competition.stage).toBe('selection');
+    const prizes = e.entries.filter((x) => x.via === 'selection');
+    expect(prizes.map((x) => x.categoryId)).toContain('golden-lion');
+    for (const x of prizes) {
+      const res = e.results[x.categoryId];
       expect(res.stage).toBe('winner');
-      expect([...res.projectIds, ...res.rivalIds]).toContain(res.winner);
+      expect(res.projectIds).toContain(p.id);
+      expect(x.fee).toBe(0);
+      expect(['won', 'lost', 'mention']).toContain(x.status);
+      expect(x.status === 'won').toBe(res.winner === p.id);
+      if (res.winner) expect([...res.projectIds, ...res.rivalIds]).toContain(res.winner);
     }
-    // With this seed the film is selected and loses: it premieres at Venice and screens twice.
-    expect(entry.status).toBe('lost');
-    expect(e.results.competition.winner).not.toBe(p.id);
+    // It premieres at Venice and screens twice.
     expect(p.premiere?.editionId).toBe(e.id);
     expect(e.screenings!.filter((x) => x.projectId === p.id)).toHaveLength(2);
     const final = JSON.stringify({ results: e.results, entries: e.entries, log: s.log.length });
@@ -640,7 +677,7 @@ describe('late entries, opening days and a verified edition run to its end', () 
     expect(JSON.stringify({ results: e.results, entries: e.entries, log: s.log.length })).toBe(final);
   });
 
-  it('a film selected for a world-premiere section that premieres elsewhere first is withdrawn when the festival opens, and never screens', () => {
+  it('a film selected for a world-premiere section that premieres elsewhere first is disqualified when the festival opens, and never screens', () => {
     const s = startLife('ve-wp', 'gb-london');
     const e = ed(s, 'venice-2026');
     const p = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'gb-london' });
@@ -650,7 +687,7 @@ describe('late entries, opening days and a verified edition run to its end', () 
     e.status = 'announced';
     p.premiere = { kind: 'world', date: '2026-08-20', country: 'FR', venue: 'Another festival', editionId: 'other' };
     processUntil(s, e.start + DAY, 'tick', 100_000);
-    expect(e.entries[0].status).toBe('withdrawn');
+    expect(e.entries[0].status).toBe('disqualified'); // 'withdrawn' until November 9, 2026: you hadn't withdrawn it
     expect(e.entries[0].reason).toMatch(/premiered elsewhere first/);
     expect((e.screenings ?? []).filter((x) => x.projectId === p.id)).toEqual([]);
     processUntil(s, e.end + 2 * DAY, 'tick', 100_000);

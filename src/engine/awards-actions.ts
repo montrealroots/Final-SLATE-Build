@@ -90,13 +90,19 @@ export function honors(state: GameState): Honor[] {
   for (const ed of state.editions) {
     const inst = institution(ed.institutionId);
     for (const e of ed.entries) {
-      if (!['selected', 'nominated', 'won', 'lost'].includes(e.status)) continue;
+      if (!['selected', 'nominated', 'won', 'lost', 'mention'].includes(e.status)) continue;
       const p = state.projects.find((x) => x.id === e.projectId);
       const cat = inst.categories.find((c) => c.id === e.categoryId);
       if (!p || !cat) continue;
       const personal = e.recipients.some((rid) => p.credits.find((c) => c.id === rid)?.person === 'player');
-      const result = e.status === 'won' ? 'Won' : inst.kind === 'festival' ? 'Selected' : 'Nominated';
+      // A prize you were considered for and didn't win isn't an honour; the section's selection already is.
+      if (e.via === 'selection' && e.status === 'lost') continue;
+      const result = e.status === 'won' ? 'Won' : e.status === 'mention' ? 'Special Mention' : inst.kind === 'festival' || cat.kind === 'section' ? 'Selected' : 'Nominated';
       out.push({ editionLabel: ed.label, category: cat.name, projectTitle: p.title, result, personal, at: ed.end });
+    }
+    for (const [id, r] of Object.entries(ed.results)) {
+      const cat = inst.categories.find((c) => c.id === id);
+      if (r.honoree === 'player' && cat) out.push({ editionLabel: ed.label, category: cat.name, projectTitle: '', result: 'Honorary', personal: true, at: ed.start });
     }
   }
   return out.sort((a, b) => b.at - a.at);

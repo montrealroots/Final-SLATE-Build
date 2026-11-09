@@ -1,0 +1,31 @@
+@institution european-film-awards
+@edition 39th European Film Awards (Athens, 2027)
+@source efa-general | Regulations & Submission: General Information ("The European Film Academy and European Film Academy Productions present awards in the following categories") | https://www.europeanfilmawards.eu/regulations/general-information/ | retrieved 2026-11-09
+@source efa-fiction | Regulations: Fiction Films | https://www.europeanfilmawards.eu/regulations/feature-films/ | retrieved 2026-11-09
+# European films (the game's existing origin rule). The list has one acting category, European Actor; whether it is
+# now gender-neutral wasn't confirmed in the category's own rules (UNVERIFIED), so it is treated as gender-neutral.
+# Films
+film | European Film | C | producer | feature:europe+documentary-feature:europe | efa-general | The game's existing entry
+director | European Director | C | director | feature:europe | efa-general |
+animated | European Animation Film | C | producer | feature:animated:europe | efa-general | Named European Animated Feature Film in the game until November 9, 2026
+documentary | European Documentary | C | producer+director | documentary-feature:europe | efa-general |
+short | European Short Film | C | director | short:europe+documentary-short:europe | efa-general | UNVERIFIED: shorts are nominated through partner festivals; that route isn't modeled yet
+coproduction | Eurimages International Co-Production Award | J | producer | feature:coproduction | efa-general | UNVERIFIED: criteria page not read; the game reads it as a feature with a co-production partner
+# Performance And Writing
+actor | European Actor | C | lead | feature:europe | efa-general | UNVERIFIED: see the note above
+screenwriter | European Screenwriter | C | writer | feature:europe | efa-general |
+# Crafts (decided by a jury in previous editions; the regulations page wasn't expanded)
+casting | European Casting Director | J | craft:casting-director | feature:europe | efa-general |
+cinematographer | European Cinematographer | J | craft:dop | feature:europe | efa-general |
+composer | European Composer (Original Score) | J | craft:composer | feature:europe | efa-general |
+costume | European Costume Designer | J | craft:costume-designer | feature:europe | efa-general |
+editor | European Editor | J | craft:editor | feature:europe | efa-general |
+makeup | European Make-Up & Hair Artist | J | craft:hair-makeup+prosthetics | feature:europe | efa-general |
+production-designer | European Production Designer | J | craft:production-designer+art-director | feature:europe | efa-general |
+sound | European Sound | J | craft:sound-designer+re-recording-mixer+sound-mixer | feature:europe | efa-general |
+# Audience Awards
+lux | LUX Audience Award | U:film | project | feature:europe+documentary-feature:europe | efa-general; https://www.europeanfilmawards.eu/regulations/lux-european-audience-film-award/ | UNVERIFIED: its own regulations weren't read
+young-audience | European Young Audience Award | U:film | project | feature:europe:family | efa-general | UNVERIFIED: its own regulations weren't read; voted by young audiences
+# Honorary Awards
+lifetime | European Lifetime Achievement | H | career-film | feature | efa-general |
+world-cinema | European Achievement In World Cinema | H | career-film | feature | efa-general |

@@ -1,0 +1,171 @@
+@institution canadian-screen
+@edition 2027 Canadian Screen Awards
+@source csa27-film | Official 2027 Canadian Screen Awards Rules & Regulations for Film | https://www.academy.ca/wp-content/uploads/2026/09/2027-Canadian-Screen-Awards-Film-Rules-Regulations-1.pdf | retrieved 2026-11-09
+@source csa27-tv | Official 2027 Canadian Screen Awards Rules & Regulations for Television & Digital Media (September 18, 2026) | https://www.academy.ca/wp-content/uploads/2026/09/2027-Canadian-Screen-Awards-Television-Digital-Media-Rules-Regulations-v.Sept-18-2026.pdf | retrieved 2026-11-09
+# Canadian productions (the game's existing origin rule). Entry fees by tier and production cost (csa27-film Section III).
+# Film: Theatrical Feature Film Award Categories (csa27-film Section VII)
+film | Best Motion Picture | C | producer | feature:ca | csa27-film 10000 | The game's existing entry
+art-direction | Achievement In Art Direction / Production Design | C | craft:production-designer+art-director | feature:ca | csa27-film 11000 |
+makeup | Achievement In Make-Up | C | craft:hair-makeup+prosthetics | feature:ca | csa27-film 11500 | Up to three entrants; Make-Up or Hair, not both
+costume | Achievement In Costume Design | C | craft:costume-designer | feature:ca | csa27-film 12000 |
+hair | Achievement In Hair | C | craft:hair-makeup | feature:ca | csa27-film 12500 |
+cinematography | Achievement In Cinematography | C | craft:dop | feature:ca | csa27-film 13000 | Presented by the Paul Bronfman Family Foundation
+direction | Achievement In Direction | C | director | feature:ca | csa27-film 14000 |
+editing | Achievement In Editing | C | craft:editor | feature:ca | csa27-film 15000 |
+score | Achievement In Music – Original Score | C | craft:composer | feature:ca | csa27-film 16000 |
+song | Achievement In Music – Original Song | C | song | feature:ca | csa27-film 17000 | Written for the film; not a closing-credits song; at least four eligible entries
+lead-drama | Performance In A Leading Role, Drama | C | lead | feature:ca:drama | csa27-film 18000 | Gender-neutral
+lead-comedy | Performance In A Leading Role, Comedy | C | lead | feature:ca:comedy | csa27-film 18500 |
+supporting-drama | Performance In A Supporting Role, Drama | C | supporting | feature:ca:drama | csa27-film 19000 |
+supporting-comedy | Performance In A Supporting Role, Comedy | C | supporting | feature:ca:comedy | csa27-film 19500 |
+voice-film | Best Voice Performance | C | voice | feature:ca:animated | csa27-film 9528 |
+visual-effects | Achievement In Visual Effects | C | craft:vfx-artist+compositor | feature:ca | csa27-film 30000 |
+sound-mixing | Achievement In Sound Mixing | C | craft:re-recording-mixer+sound-mixer | feature:ca | csa27-film 22000 |
+sound-editing | Achievement In Sound Editing | C | craft:sound-designer | feature:ca | csa27-film 23000 |
+original-screenplay | Original Screenplay | C | writer-original | feature:ca | csa27-film 24000 | Collapsed with Adapted into Best Screenplay when either has fewer than five entries
+adapted-screenplay | Adapted Screenplay | C | writer-adapted | feature:ca | csa27-film 25000 |
+stunts-film | Best Stunt Coordination | C | craft:stunt-coordinator | feature:ca | csa27-film 9509 |
+casting-film | Achievement In Casting | C | craft:casting-director | feature:ca | csa27-film 21500 |
+# Film: Shorts And Documentaries (csa27-film Section XI; fees Section III B)
+documentary | Best Feature Length Documentary | C | producer | documentary-feature:ca | csa27-film Section III B, XI | The game's existing entry; entered by production-cost tier (up to $250,000, or over)
+short-documentary | Best Short Documentary | C | producer | documentary-short:ca | csa27-film Section III B, XI |
+short-drama | Best Live Action Short Drama | C | producer | short:live:ca | csa27-film Section III B, XI |
+short-animated | Best Animated Short | C | producer | short:animated:ca | csa27-film Section III B, XI |
+# Film: Special Awards (csa27-film Section VIII)
+first-feature | John Dunning Best First Feature Film Award | C | producer+director | feature:ca:debut | csa27-film Section VIII | Chosen by its own committee
+golden-screen-film | Golden Screen Award For Feature Film | C | producer | feature:ca:box-office | csa27-film Section VIII | UNVERIFIED: the box office basis wasn't read in detail; recorded as the top-earning Canadian feature
+
+# Television (csa27-tv; numbers as the rules give them)
+tv-movie | Best TV Movie | C | producer | movie:ca | csa27-tv 1001 |
+drama | Best Drama Series | C | producer | series:ca:drama | csa27-tv 1003 |
+tv-comedy-series | Best Comedy Series | C | producer | series:ca:comedy | csa27-tv 1004 |
+tv-comedy-special | Best Comedy Special | C | producer | variety-special:ca | csa27-tv 1005 |
+- Best News or Information Program | News, sports and online creator work aren't made in the game | csa27-tv 1006
+tv-reality-competition-program-or-series | Best Reality/Competition Program or Series | C | producer | reality:ca+competition:ca | csa27-tv 1007 |
+tv-sketch-comedy-show-ensemble-performance | Best Sketch Comedy Show & Ensemble Performance | C | producer+ensemble | variety:ca | csa27-tv 1008 |
+- Best Lifestyle Program or Series | Lifestyle programs (cooking, home and similar) aren't a program type the game makes | csa27-tv 1009
+tv-live-entertainment-special | Best Live Entertainment Special | C | producer | variety-special:ca | csa27-tv 1010 |
+tv-donald-brittain-award-for-best-social-political- | Donald Brittain Award for Best Social/Political Documentary Program | C | producer | docspecial:ca | csa27-tv 1011 |
+tv-history-documentary-program-or-series | Best History Documentary Program or Series | C | producer | docseries:ca+docspecial:ca | csa27-tv 1012 |
+tv-talk-series | Best Talk Series | C | producer | variety:ca | csa27-tv 1013 |
+tv-rob-stewart-award-for-best-science-or-nature-doc | Rob Stewart Award for Best Science or Nature Documentary Program or Series | C | producer | docseries:ca+docspecial:ca | csa27-tv 1014 |
+tv-biography-or-arts-documentary-program-or-series | Best Biography or Arts Documentary Program or Series | C | producer | docseries:ca+docspecial:ca | csa27-tv 1015 |
+tv-documentary-program | Best Documentary Program | C | producer | docspecial:ca | csa27-tv 1016 |
+tv-childrens-or-youth-animated-program-or-series | Best Children’s or Youth Animated Program or Series | C | producer | television:ca:animated:children | csa27-tv 1017 |
+tv-pre-school-program-or-series | Best Pre-School Program or Series | C | producer | television:ca:preschool | csa27-tv 1018 |
+tv-childrens-or-youth-fiction-program-or-series | Best Children’s or Youth Fiction Program or Series | C | producer | television:ca:children | csa27-tv 1019 |
+tv-childrens-or-youth-non-fiction-program-or-series | Best Children’s or Youth Non-Fiction Program or Series | C | producer | docseries:ca:children+reality:ca:children | csa27-tv 1020 |
+- Best Live Sports Event | News, sports and online creator work aren't made in the game | csa27-tv 1022
+- Best Sports Program or Series | News, sports and online creator work aren't made in the game | csa27-tv 1023
+- Best Local Newscast | News, sports and online creator work aren't made in the game | csa27-tv 1025
+tv-factual-series | Best Factual Series | C | producer | docseries:ca+docspecial:ca | csa27-tv 1026 |
+- Best National Newscast | News, sports and online creator work aren't made in the game | csa27-tv 1027
+- Best Live News Special | News, sports and online creator work aren't made in the game | csa27-tv 1029
+tv-web-program-or-series-fiction | Best Web Program or Series, Fiction | C | producer | shortform:ca | csa27-tv 1033 |
+tv-web-program-or-series-non-fiction | Best Web Program or Series, Non-Fiction | C | producer | shortform-nonfiction:ca | csa27-tv 1034 |
+tv-lead-performance-web-program-or-series | Best Lead Performance, Web Program or Series | C | lead | shortform:ca | csa27-tv 1036 |
+tv-supporting-performance-web-program-or-series | Best Supporting Performance, Web Program or Series | C | supporting | shortform:ca | csa27-tv 1037 |
+tv-direction-web-program-or-series | Best Direction, Web Program or Series | C | director | shortform:ca | csa27-tv 1038 |
+tv-writing-web-program-or-series | Best Writing, Web Program or Series | C | writer | shortform:ca | csa27-tv 1039 |
+tv-host-web-program-or-series | Best Host, Web Program or Series | C | host | shortform:ca | csa27-tv 1040 |
+tv-picture-editing-web-program-or-series | Best Picture Editing, Web Program or Series | C | craft:editor | shortform:ca | csa27-tv 1047 |
+- Creator of the Year | News, sports and online creator work aren't made in the game | csa27-tv 1048
+tv-direction-tv-movie | Best Direction, TV Movie | C | director | movie:ca | csa27-tv 2001 |
+tv-direction-drama-series | Best Direction, Drama Series | C | director | series:ca:drama | csa27-tv 2002 |
+tv-direction-variety-or-sketch-comedy | Best Direction, Variety or Sketch Comedy | C | director | variety:ca | csa27-tv 2003 |
+tv-direction-comedy | Best Direction, Comedy | C | director | series:ca:comedy | csa27-tv 2005 |
+- Best Direction, Lifestyle or Information | Lifestyle programs (cooking, home and similar) aren't a program type the game makes | csa27-tv 2007
+tv-direction-documentary-program | Best Direction, Documentary Program | C | director | docspecial:ca | csa27-tv 2008 |
+tv-direction-documentary-series | Best Direction, Documentary Series | C | director | docseries:ca | csa27-tv 2009 |
+tv-direction-childrens-or-youth | Best Direction, Children’s or Youth | C | director | television:ca:children | csa27-tv 2010 |
+- Best Direction, Live Sports Event | News, sports and online creator work aren't made in the game | csa27-tv 2011
+tv-direction-animation | Best Direction, Animation | C | director | television:ca:animated | csa27-tv 2012 |
+tv-direction-reality-competition | Best Direction, Reality/Competition | C | director | reality:ca+competition:ca | csa27-tv 2013 |
+tv-direction-factual | Best Direction, Factual | C | director | docseries:ca+docspecial:ca | csa27-tv 2014 |
+tv-writing-tv-movie | Best Writing, TV Movie | C | writer | movie:ca | csa27-tv 3001 |
+tv-writing-drama-series | Best Writing, Drama Series | C | writer | series:ca:drama | csa27-tv 3002 |
+tv-writing-comedy | Best Writing, Comedy | C | writer | series:ca:comedy | csa27-tv 3003 |
+tv-writing-lifestyle-or-reality-competition | Best Writing, Lifestyle or Reality/Competition | C | writer | reality:ca+competition:ca | csa27-tv 3004 |
+tv-writing-documentary | Best Writing, Documentary | C | writer | docseries:ca+docspecial:ca | csa27-tv 3005 |
+tv-writing-childrens-or-youth | Best Writing, Children’s or Youth | C | writer | television:ca:children | csa27-tv 3006 |
+- Barbara Sears Award for Best Editorial Research | News and current affairs research isn't work the game makes | csa27-tv 3007
+- Barbara Sears Award for Best Visual Research | News and current affairs research isn't work the game makes | csa27-tv 3008
+tv-writing-variety-or-sketch-comedy | Best Writing, Variety or Sketch Comedy | C | writer | variety:ca | csa27-tv 3009 |
+tv-writing-childrens-or-youth-animation | Best Writing, Children’s or Youth Animation | C | writer | television:ca:animated:children | csa27-tv 3010 |
+tv-writing-factual | Best Writing, Factual | C | writer | docseries:ca+docspecial:ca | csa27-tv 3011 |
+tv-writing-pre-school | Best Writing, Pre-School | C | writer | television:ca:preschool | csa27-tv 3012 |
+tv-photography-drama | Best Photography, Drama | C | craft:dop | series:ca:drama | csa27-tv 4001 |
+tv-photography-comedy | Best Photography, Comedy | C | craft:dop | series:ca:comedy | csa27-tv 4002 |
+tv-photography-lifestyle-or-reality-competition | Best Photography, Lifestyle or Reality/Competition | C | craft:dop | reality:ca+competition:ca | csa27-tv 4004 |
+tv-photography-documentary-or-factual | Best Photography, Documentary or Factual | C | craft:dop | docseries:ca+docspecial:ca | csa27-tv 4005 |
+- Best Photography, News or Information | News, sports and online creator work aren't made in the game | csa27-tv 4006
+tv-picture-editing-drama | Best Picture Editing, Drama | C | craft:editor | series:ca:drama | csa27-tv 5001 |
+tv-picture-editing-factual | Best Picture Editing, Factual | C | craft:editor | docseries:ca+docspecial:ca | csa27-tv 5003 |
+tv-picture-editing-documentary | Best Picture Editing, Documentary | C | craft:editor | docseries:ca+docspecial:ca | csa27-tv 5004 |
+tv-picture-editing-reality-competition | Best Picture Editing, Reality/Competition | C | craft:editor | reality:ca+competition:ca | csa27-tv 5005 |
+tv-picture-editing-comedy | Best Picture Editing, Comedy | C | craft:editor | series:ca:comedy | csa27-tv 5006 |
+tv-picture-editing-childrens-or-youth | Best Picture Editing, Children's or Youth | C | craft:editor | television:ca:children | csa27-tv 5007 |
+tv-sound-fiction | Best Sound, Fiction | C | craft:sound-designer+re-recording-mixer+sound-mixer | narrative:ca | csa27-tv 6001 |
+tv-sound-animation | Best Sound, Animation | C | craft:sound-designer+re-recording-mixer+sound-mixer | television:ca:animated | csa27-tv 6003 |
+tv-sound-documentary-or-factual | Best Sound, Documentary or Factual | C | craft:sound-designer+re-recording-mixer+sound-mixer | docseries:ca+docspecial:ca | csa27-tv 6005 |
+tv-sound-lifestyle-reality-or-entertainment | Best Sound, Lifestyle, Reality, or Entertainment | C | craft:sound-designer+re-recording-mixer+sound-mixer | reality:ca+competition:ca | csa27-tv 6006 |
+tv-production-design-or-art-direction-fiction | Best Production Design or Art Direction, Fiction | C | craft:production-designer+art-director | narrative:ca | csa27-tv 7001 |
+tv-production-design-or-art-direction-non-fiction | Best Production Design or Art Direction, Non-Fiction | C | craft:production-designer+art-director | docseries:ca+reality:ca | csa27-tv 7002 |
+tv-costume-design | Best Costume Design | C | craft:costume-designer | television:ca | csa27-tv 7003 |
+tv-achievement-in-make-up | Best Achievement in Make-Up | C | craft:hair-makeup+prosthetics | television:ca | csa27-tv 7004 |
+tv-visual-effects | Best Visual Effects | C | craft:vfx-artist+compositor | television:ca | csa27-tv 7005 |
+tv-achievement-in-hair | Best Achievement in Hair | C | craft:hair-makeup | television:ca | csa27-tv 7006 |
+tv-original-music-animation | Best Original Music, Animation | C | craft:composer | television:ca:animated | csa27-tv 8004 |
+tv-original-music-drama | Best Original Music, Drama | C | craft:composer | series:ca:drama | csa27-tv 8005 |
+tv-original-music-comedy | Best Original Music, Comedy | C | craft:composer | series:ca:comedy | csa27-tv 8006 |
+tv-original-music-documentary | Best Original Music, Documentary | C | craft:composer | docseries:ca+docspecial:ca | csa27-tv 8007 |
+tv-original-music-factual-lifestyle-reality-or-ente | Best Original Music, Factual, Lifestyle, Reality, or Entertainment | C | craft:composer | reality:ca+competition:ca | csa27-tv 8008 |
+tv-original-music-original-song | Best Original Music – Original Song | C | song | television:ca | csa27-tv 8009 |
+- Best News or Information Segment | News, sports and online creator work aren't made in the game | csa27-tv 9001
+- Best Sports Feature Segment | News, sports and online creator work aren't made in the game | csa27-tv 9002
+- Best Sports Opening | News, sports and online creator work aren't made in the game | csa27-tv 9003
+tv-lead-performer-tv-movie | Best Lead Performer, TV Movie | C | lead | movie:ca | csa27-tv 9501 |
+tv-lead-performer-drama-series | Best Lead Performer, Drama Series | C | lead | series:ca:drama | csa27-tv 9503 |
+tv-guest-performance-drama-series | Best Guest Performance, Drama Series | C | guest | series:ca:drama | csa27-tv 9505 |
+tv-supporting-performer-drama | Best Supporting Performer, Drama | C | supporting | series:ca:drama | csa27-tv 9507 |
+tv-stunt-coordination | Best Stunt Coordination | C | craft:stunt-coordinator | television:ca | csa27-tv 9509 |
+tv-ensemble-performance-comedy | Best Ensemble Performance, Comedy | C | ensemble | series:ca:comedy | csa27-tv 9511 |
+tv-supporting-performer-childrens-or-youth | Best Supporting Performer, Children's or Youth | C | supporting | television:ca:children | csa27-tv 9514 |
+tv-lead-performer-childrens-or-youth | Best Lead Performer, Children's or Youth | C | lead | television:ca:children | csa27-tv 9515 |
+tv-achievement-in-casting-fiction | Best Achievement in Casting, Fiction | C | craft:casting-director | narrative:ca | csa27-tv 9516 |
+- Best News Anchor, National | News, sports and online creator work aren't made in the game | csa27-tv 9517
+- Best Local Reporter | News, sports and online creator work aren't made in the game | csa27-tv 9518
+- Best National Reporter | News, sports and online creator work aren't made in the game | csa27-tv 9519
+- Best News Anchor, Local | News, sports and online creator work aren't made in the game | csa27-tv 9521
+- Best Sports Host | News, sports and online creator work aren't made in the game | csa27-tv 9522
+- Best Sports Play-by-Play Announcer | News, sports and online creator work aren't made in the game | csa27-tv 9523
+- Best Sports Analyst | News, sports and online creator work aren't made in the game | csa27-tv 9524
+- Best Host, Lifestyle | Lifestyle programs (cooking, home and similar) aren't a program type the game makes | csa27-tv 9526
+tv-voice-performance | Best Voice Performance | C | voice | television:ca | csa27-tv 9528 |
+tv-host-or-presenter-factual-or-reality-competition | Best Host or Presenter, Factual or Reality/Competition | C | host | reality:ca+competition:ca | csa27-tv 9529 |
+- Best Host or Interviewer, News or Information | News, sports and online creator work aren't made in the game | csa27-tv 9530
+tv-lead-performer-comedy | Best Lead Performer, Comedy | C | lead | series:ca:comedy | csa27-tv 9531 |
+tv-supporting-performer-comedy | Best Supporting Performer, Comedy | C | supporting | series:ca:comedy | csa27-tv 9533 |
+tv-guest-performance-comedy | Best Guest Performance, Comedy | C | guest | series:ca:comedy | csa27-tv 9535 |
+tv-achievement-in-casting-non-fiction | Best Achievement in Casting, Non-Fiction | C | craft:casting-director | docseries:ca+reality:ca | csa27-tv 9536 |
+- Spotlight Award for Best Series, Fiction | For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification | csa27-tv 9901
+- Spotlight Award for Best Direction | For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification | csa27-tv 9902
+- Spotlight Award for Best Writing | For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification | csa27-tv 9903
+- Spotlight Award for Best Lead Performance | For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification | csa27-tv 9904
+- Spotlight Award for Best Supporting Performance | For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification | csa27-tv 9905
+- Spotlight Award for Best Series, Non-Fiction | For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification | csa27-tv 9906
+# Special Awards (csa27-tv Section XV; csa27-film Section VIII Additional Special Awards)
+tribute | Academy Board Of Directors' Tribute Award | H | career-television | television:ca | csa27-tv Section XV | UNVERIFIED: criteria at academy.ca/special-awards, not read
+icon | Academy Icon Award | H | career | television:ca | csa27-tv Section XV | UNVERIFIED: criteria not read
+lifetime | Lifetime Achievement Award | H | career | television:ca | csa27-tv Section XV | UNVERIFIED: criteria not read
+- Changemaker Award | UNVERIFIED: criteria not read | csa27-tv Section XV
+audience-choice | Audience Choice Award | U | project | television:ca | csa27-tv Section XV | UNVERIFIED: criteria not read; a public vote
+- Earle Grey Award | UNVERIFIED: criteria not read | csa27-tv Section XV
+- Gordon Sinclair Award For Broadcast Journalism | Broadcast journalism isn't work the game makes | csa27-tv Section XV
+- Humanitarian Award | Humanitarian work outside production isn't modeled | csa27-tv Section XV
+- Industry Leadership Award | UNVERIFIED: criteria not read | csa27-tv Section XV
+- Outstanding Media Innovation Award | Interactive and emerging media aren't made in the game | csa27-tv Section XV
+- Radius Award | UNVERIFIED: criteria not read | csa27-tv Section XV
+- Kids' Choice Award | UNVERIFIED: criteria not read | csa27-tv Section XV
+- Sustainable Production Award | UNVERIFIED: entered through the call for entries, but its criteria weren't read; the game doesn't record production sustainability | csa27-tv Section XV; csa27-film Section VIII
+

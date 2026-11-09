@@ -1,0 +1,31 @@
+@institution berlinale
+@edition 76th Berlin International Film Festival (2026); the 77th (2027) carried forward as a projection
+@source bl-competition | Competition Regulations ("The selected films compete for the Golden Bear as well as the Silver Bears") | https://www.berlinale.de/en/film-entry/guidelines/competition.html | retrieved 2026-11-09
+@source bl-jury | International Jury: awards given, with 2026 winners (Golden Bear for Best Film, Feb 21, 2026) | https://www.berlinale.de/en/festival/awards-and-juries/international-jury.html | retrieved 2026-11-09
+@source bl-prizes | Awards & Juries: Awards Competition, Berlinale Shorts, Generation; Best First Feature Award; Berlinale Documentary Award; Honorary Golden Bear; Berlinale Camera; Further Prizes | https://www.berlinale.de/en/festival/awards-and-juries/all-prizes-and-juries.html | retrieved 2026-11-09
+# Sections named in bl-competition's menu: Competition, Perspectives, Panorama, Forum, Generation, Berlinale Shorts.
+# Competition: fiction, documentary, animation and experimental features (bl-competition)
+competition | Competition | S | project | feature+documentary-feature | bl-competition | The game's existing entry; selection is not a prize
+golden-bear | Golden Bear For Best Film | P:competition | producer | feature+documentary-feature | bl-jury |
+grand-jury | Silver Bear Grand Jury Prize | P:competition | producer | feature+documentary-feature | bl-jury |
+jury-prize | Silver Bear Jury Prize | P:competition | producer | feature+documentary-feature | bl-jury |
+director | Silver Bear For Best Director | P:competition | director | feature+documentary-feature | bl-jury |
+leading-performance | Silver Bear For Best Leading Performance | P:competition | lead | feature | bl-jury | Gender-neutral
+screenplay | Silver Bear For Best Screenplay | P:competition | writer | feature | bl-jury |
+artistic-contribution | Silver Bear For Outstanding Artistic Contribution | P:competition | craft:dop+editor+composer+production-designer+costume-designer+sound-designer | feature+documentary-feature | bl-jury | Goes to one artistic contribution; the game picks the film's strongest craft
+- Silver Bear For Best Supporting Performance | UNVERIFIED: not among the awards the international jury page lists; not added until confirmed | bl-jury
+# Other Sections
+perspectives | Perspectives | S | project | feature:debut | bl-competition menu | UNVERIFIED: section rules not read; a competition of first features in the game
+panorama | Panorama | S | project | feature+documentary-feature | bl-competition menu | The game's existing entry was named Panorama Audience Award until November 9, 2026
+panorama-audience | Panorama Audience Award | U:panorama | project | feature+documentary-feature | earlier game catalog; bl-prizes Further Prizes | UNVERIFIED: listed under Further Prizes, not read
+forum | Forum | S | project | feature+documentary-feature | bl-competition menu | UNVERIFIED: section rules not read
+generation | Generation | S | project | feature:family+short:family | bl-competition menu; bl-prizes Awards Generation | UNVERIFIED: its Crystal Bear awards weren't read
+shorts | Berlinale Shorts | S | project | short+documentary-short | bl-competition menu | The game's existing entry was named Short Film Competition
+shorts-golden-bear | Golden Bear For Best Short Film | P:shorts | director | short+documentary-short | bl-prizes Awards Berlinale Shorts | UNVERIFIED: the Shorts awards page wasn't expanded; the name follows the section's award group
+# Prizes Across Sections
+first-feature | Best First Feature Award – Funded By GWFF | P:competition+perspectives+panorama+forum+generation | director+producer | feature:debut | bl-prizes |
+documentary-award | Berlinale Documentary Award | P:competition+perspectives+panorama+forum | director | documentary-feature | bl-prizes |
+# Honorary
+honorary-bear | Honorary Golden Bear | H | career-film | feature | bl-prizes |
+- Berlinale Camera | UNVERIFIED: criteria not read; given to people and institutions the festival honors | bl-prizes
+- Further Prizes (Independent Juries) | UNVERIFIED: the independent and partner juries weren't read | bl-prizes

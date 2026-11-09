@@ -1,0 +1,5 @@
+@institution locarno
+@edition Locarno Film Festival
+@blocked locarnofestival.ch returned HTTP 403 on November 9, 2026. The roster is not verified.
+concorso | International Competition | S | project | feature | UNVERIFIED | UNVERIFIED: existing game category; roster not readable
+pardo | Pardo d'Oro | P:concorso | producer+director | feature | UNVERIFIED | UNVERIFIED: the competition's top prize as commonly named; not read in the organizer's material

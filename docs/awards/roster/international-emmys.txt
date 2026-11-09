@@ -1,0 +1,28 @@
+@institution international-emmys
+@edition 54th International Emmy Awards (Gala November 23, 2026; competition open December 8, 2025 to January 31, 2026)
+@source iemmy54-categories | Categories & Key Dates | https://www.iemmys.tv/entries-judging/categories-key-dates/ | retrieved 2026-11-09
+@source iemmy-special | Special Awards | https://www.iemmys.tv/international-emmy-awards/special-awards/ | retrieved 2026-11-09
+# For programs produced outside the United States (the game's existing rule).
+# Categories Presented
+arts | Arts Programming | C | producer | docspecial+docseries:arts | iemmy54-categories | The game reads arts programming from a nonfiction project's subject
+actress | Best Performance By An Actress | C | performer:Actress | television | iemmy54-categories |
+actor | Best Performance By An Actor | C | performer:Actor | television | iemmy54-categories |
+comedy | Comedy | C | producer | series:comedy | iemmy54-categories |
+- Current Affairs | News and current affairs reporting isn't work the game makes | iemmy54-categories
+documentary | Documentary | C | producer | docseries+docspecial | iemmy54-categories |
+drama | Drama Series | C | producer | series:drama | iemmy54-categories |
+kids-animation | Kids: Animation | C | producer | television:animated:children+television:animated:preschool | iemmy54-categories |
+kids-factual | Kids: Factual & Entertainment | C | producer | reality:children+docseries:children | iemmy54-categories |
+kids-live-action | Kids: Live-Action | C | producer | television:live:children+television:live:preschool | iemmy54-categories |
+- News | News isn't work the game makes | iemmy54-categories
+non-scripted | Non-Scripted Entertainment | C | producer | reality+competition+variety | iemmy54-categories |
+short-form | Short-Form Series | C | producer | shortform | iemmy54-categories |
+- Sports Documentary | Sports aren't a documentary subject the game distinguishes | iemmy54-categories
+- Telenovela | Telenovelas aren't a program type the game makes | iemmy54-categories
+tv-movie | TV Movie/Mini-Series | C | producer | movie+limited-series | iemmy54-categories |
+# Special Awards
+founders | International Emmy Founders Award | H | career-television | television | iemmy-special | Two special awards a year to individuals or organizations with a global impact on television
+directorate | International Emmy Directorate Award | H | career-television | television | iemmy-special |
+# Other Awards
+- Sir Peter Ustinov Television Scriptwriting Award | Open to non-American citizens under 30 for an unproduced script; the game's scripts are produced work and the player's age isn't the point of the award | iemmy54-categories Other Awards
+- JCS International Young Creatives Award | UNVERIFIED: criteria page not read | iemmy54-categories Other Awards

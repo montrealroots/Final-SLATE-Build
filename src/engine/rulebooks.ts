@@ -127,7 +127,9 @@ const OSCAR_FEATURE: CategoryRules = {
   deadlines: v([{ date: '2026-11-12', time: '17:00', zone: PT }], 'aa99-rules', 'Final deadline for films qualifying from July to December 2026; SLATE uses it for every film.'),
 };
 /** Short Film Qualifying Festival List awards that exist in SLATE ("institution:category"). */
-const OSCAR_SHORT_FESTIVALS = ['annecy:shorts', 'berlinale:shorts', 'cannes:shorts', 'clermont:international', 'fespaco:shorts', 'hot-docs:audience', 'idfa:shorts', 'sitges:fantastic', 'sxsw:shorts', 'sundance:shorts', 'tiff:shorts', 'venice:orizzonti'];
+// From November 9, 2026 a festival's sections select and its prizes are awarded among them, so each names the section's
+// top short-film prize (FESPACO's and IDFA's prizes weren't read: their sections can't qualify a short yet).
+const OSCAR_SHORT_FESTIVALS = ['annecy:short-cristal', 'berlinale:shorts-golden-bear', 'cannes:short-palme', 'clermont:grand-prix', 'fespaco:shorts', 'hot-docs:audience', 'idfa:shorts', 'sitges:short', 'sxsw:shorts-jury', 'sundance:shorts-grand-jury', 'tiff:short-cuts-international', 'tiff:short-cuts-canadian', 'tiff:short-cuts-animated', 'venice:orizzonti-short'];
 const OSCAR_SHORT: CategoryRules = {
   runtime: v({ atMost: 40 }, 'aa99-rules'),
   qualifying: v({ from: '2025-10-01', to: '2026-09-30' }, 'aa99-rules'),
@@ -151,6 +153,8 @@ const OSCARS_2027: RuleBook = {
     'live-short': { ...OSCAR_SHORT, formats: v(['short'], 'aa99-rules', 'Documentary shorts are not accepted in the live action category.') },
     'animated-short': { ...OSCAR_SHORT, mediums: v(['animation'], 'aa99-rules', 'At least 75 percent animation; SLATE accepts animated projects and not hybrid ones.') },
     'doc-short': OSCAR_SHORT,
+    // Rule Two's eligibility and the general deadline apply to every feature category (rosters, November 9, 2026).
+    ...Object.fromEntries(['adapted-screenplay', 'casting', 'cinematography', 'costume', 'editing', 'makeup', 'score', 'song', 'musical', 'production-design', 'sound', 'visual-effects'].map((id) => [id, OSCAR_FEATURE])),
   },
 };
 
@@ -175,6 +179,19 @@ const SUNDANCE_2027: RuleBook = {
       deadlines: sundanceDeadline('2026-09-21'),
     },
     documentary: {
+      runtime: v({ atLeast: 50 }, 'sff27-faq'),
+      premiere: v('world-if-domestic', 'sff27-faq', SUNDANCE_ORIGIN_NOTE),
+      completedFrom: v('2025-01-01', 'sff27-faq'),
+      deadlines: sundanceDeadline('2026-09-21'),
+    },
+    // The World Cinema competitions take international features under the same rules (sff27-submit, November 9, 2026).
+    'world-dramatic': {
+      runtime: v({ atLeast: 50 }, 'sff27-faq'),
+      premiere: v('world-if-domestic', 'sff27-faq', SUNDANCE_ORIGIN_NOTE),
+      completedFrom: v('2025-01-01', 'sff27-faq'),
+      deadlines: sundanceDeadline('2026-09-21'),
+    },
+    'world-documentary': {
       runtime: v({ atLeast: 50 }, 'sff27-faq'),
       premiere: v('world-if-domestic', 'sff27-faq', SUNDANCE_ORIGIN_NOTE),
       completedFrom: v('2025-01-01', 'sff27-faq'),
@@ -221,7 +238,8 @@ const ANNIE_2027: RuleBook = {
   id: 'annie-2027@1', institutionId: 'annie', year: 2027, version: 1, checked: CHECKED,
   sources: [{ id: 'annie54-call', publisher: 'ASIFA-Hollywood (announcement, republished by Animation Scoop)', title: '54th Annie Awards "Call For Submissions" Begin Today', url: 'https://www.animationscoop.com/54th-annie-awards-call-for-submissions-begin-today/', edition: '54th Annie Awards (2027)', retrieved: CHECKED }],
   opens: v('2026-08-03', 'annie54-call'),
-  categories: Object.fromEntries(['feature', 'short', 'tv', 'directing', 'writing', 'voice'].map((id) => [id, {
+  // 'tv' became the age-group and limited-series categories for the 54th (roster, November 9, 2026).
+  categories: Object.fromEntries(['feature', 'short', 'tv-preschool', 'tv-children', 'tv-mature', 'tv-limited', 'directing', 'writing', 'voice'].map((id) => [id, {
     qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'annie54-call'),
     release: v({ routes: ['theatrical', 'streaming', 'broadcast', 'digital'], countries: ['US'], exempt: ['short', 'documentary-short'] }, 'annie54-call',
       'Work must be released in the United States in 2026; short subjects can enter without a US release.'),
@@ -300,12 +318,9 @@ function venice(year: number, mk: typeof v): Record<string, CategoryRules> {
   const time = { time: '23:59', zone: ROME, timeAssumed: true };
   return {
     competition: { ...common, runtime: mk({ atLeast: 60 }, 've83-reg', `At least 60 minutes, credits included.${p}`), deadlines: mk([{ date: `${year}-06-04`, ...time }], 've83-reg', `The time of day is not given; SLATE uses the end of the day in Venice.${p}`) },
-    orizzonti: {
-      ...common,
-      runtime: mk({ atLeast: 60 }, 've83-reg', `Features at least 60 minutes, credits included.${p}`),
-      runtimeShort: mk({ atMost: 20 }, 've83-reg', `Short films in competition at most 20 minutes, credits included.${p}`),
-      deadlines: mk([{ date: `${year}-05-28`, ...time, formats: ['short', 'documentary-short'] }, { date: `${year}-06-04`, ...time }], 've83-reg', `Shorts close May 28, features June 4. The time of day is not given; SLATE uses the end of the day in Venice.${p}`),
-    },
+    // Orizzonti took shorts too until November 9, 2026; Orizzonti Corti is their section (Article 3.3).
+    orizzonti: { ...common, runtime: mk({ atLeast: 60 }, 've83-reg', `Features at least 60 minutes, credits included.${p}`), deadlines: mk([{ date: `${year}-06-04`, ...time }], 've83-reg', `The time of day is not given; SLATE uses the end of the day in Venice.${p}`) },
+    'orizzonti-corti': { ...common, runtimeShort: mk({ atMost: 20 }, 've83-reg', `Short films in competition at most 20 minutes, credits included.${p}`), deadlines: mk([{ date: `${year}-05-28`, ...time }], 've83-reg', `Shorts close May 28. The time of day is not given; SLATE uses the end of the day in Venice.${p}`) },
   };
 }
 const VENICE_2026: RuleBook = { id: 'venice-2026@1', institutionId: 'venice', year: 2026, version: 1, checked: CHECKED, sources: VENICE_SOURCES, opens: v('2026-02-09', 've83-reg'), categories: venice(2026, v) };

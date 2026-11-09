@@ -13,8 +13,9 @@ describe('category audit corrections (November 6, 2026)', () => {
     const e = institution('emmys');
     const byId = new Map(e.categories.map((c) => [c.id, c]));
     expect(byId.get('directing')!.name).toBe('Outstanding Directing For A Drama Series');
-    expect(byId.get('directing')!.excludeGenres).toContain('comedy');
-    expect(byId.get('directing-comedy')!.genres).toContain('comedy');
+    // From November 9, 2026 the split is the category's class, read from where the project says it competes.
+    expect(byId.get('directing')!.class).toBe('drama');
+    expect(byId.get('directing-comedy')!.class).toBe('comedy');
     for (const id of ['writing', 'lead-actor', 'lead-actress']) {
       expect(byId.get(id)!.name).toMatch(/Drama Series$/);
       expect(byId.get(`${id}-comedy`)!.name).toMatch(/Comedy Series$/);

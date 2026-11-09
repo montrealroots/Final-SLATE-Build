@@ -1,0 +1,148 @@
+@institution emmys
+@edition 78th Emmy Awards (2025-2026 awards year; ceremonies September 2026)
+@source em78-rules | 78th Emmy Awards 2025-2026 Rules and Procedures, version 4 (April 7, 2026) | https://www.televisionacademy.com/rules | retrieved 2026-11-09
+# The rules number every category 1 to 118. "Category" = nominees and one winner; "Area" = one, more than one or no
+# winner; "Juried" = a panel decides, one, more than one or no winner (rules, Awards Definitions).
+# Program Awards
+comedy | Outstanding Comedy Series | C | producer | series:comedy | Category 79 |
+drama | Outstanding Drama Series | C | producer | series:drama | Category 80 |
+limited | Outstanding Limited Or Anthology Series | C | producer | limited-series | Category 81 |
+movie | Outstanding Movie | C | producer | movie | Category 82 | Named Outstanding Television Movie until the 2025 Emmys
+tv-movie | Outstanding Television Movie | C | producer | movie | 77th rules (2025) | years 1900-2025; kept for older entries
+animated-program | Outstanding Animated Program | C | producer | animated | Category 2 |
+variety-series | Outstanding Variety Series | A | producer | variety | Area 83 |
+variety-special-live | Outstanding Variety Special (Live) | C | producer | variety-special | Category 84 | The game treats a one-episode variety program as a special; live versus pre-recorded is not modeled, so both specials take it
+variety-special-recorded | Outstanding Variety Special (Pre-Recorded) | C | producer | variety-special | Category 85 |
+short-form-series | Outstanding Short Form Comedy, Drama, Or Variety Series | C | producer | shortform | Category 86 |
+short-form-nonfiction | Outstanding Short Form Nonfiction Or Reality Series | C | producer | shortform-nonfiction | Category 87 |
+documentary-special | Outstanding Documentary Or Nonfiction Special | A | producer | docspecial | Area 88 |
+documentary | Outstanding Documentary Or Nonfiction Series | A | producer | docseries | Area 89 | The game's existing entry; it took unscripted series too until November 9, 2026
+hosted-nonfiction | Outstanding Hosted Nonfiction Series Or Special | A | producer | factual | Area 90 |
+documentary-merit | Exceptional Merit In Documentary Filmmaking | J | producer | docspecial+docseries | Juried 91 |
+structured-reality | Outstanding Structured Reality Program | C | producer | reality-structured | Category 92 |
+unstructured-reality | Outstanding Unstructured Reality Program | C | producer | reality-unstructured | Category 93 |
+reality-competition | Outstanding Reality Competition Program | C | producer | competition | Category 94 |
+- Outstanding Game Show | Quiz and panel game shows aren't a program type the game makes; its competition programs are reality competitions | Category 95
+# Performer Awards
+lead-actor-comedy | Outstanding Lead Actor In A Comedy Series | C | lead:Actor | series:comedy | Category 58 |
+lead-actor | Outstanding Lead Actor In A Drama Series | C | lead:Actor | series:drama | Category 59 |
+lead-actor-limited | Outstanding Lead Actor In A Limited Or Anthology Series Or Movie | C | lead:Actor | limited | Category 60 |
+lead-actress-comedy | Outstanding Lead Actress In A Comedy Series | C | lead:Actress | series:comedy | Category 61 |
+lead-actress | Outstanding Lead Actress In A Drama Series | C | lead:Actress | series:drama | Category 62 |
+lead-actress-limited | Outstanding Lead Actress In A Limited Or Anthology Series Or Movie | C | lead:Actress | limited | Category 63 |
+supporting-actor-comedy | Outstanding Supporting Actor In A Comedy Series | C | supporting:Actor | series:comedy | Category 64 |
+supporting-actor | Outstanding Supporting Actor In A Drama Series | C | supporting:Actor | series:drama | Category 65 |
+supporting-actor-limited | Outstanding Supporting Actor In A Limited Or Anthology Series Or Movie | C | supporting:Actor | limited | Category 66 |
+supporting-actress-comedy | Outstanding Supporting Actress In A Comedy Series | C | supporting:Actress | series:comedy | Category 67 |
+supporting-actress | Outstanding Supporting Actress In A Drama Series | C | supporting:Actress | series:drama | Category 68 |
+supporting-actress-limited | Outstanding Supporting Actress In A Limited Or Anthology Series Or Movie | C | supporting:Actress | limited | Category 69 |
+guest-actor-comedy | Outstanding Guest Actor In A Comedy Series | C | guest:Actor | series:comedy | Category 70 |
+guest-actor | Outstanding Guest Actor In A Drama Series | C | guest:Actor | series:drama | Category 71 |
+guest-actress-comedy | Outstanding Guest Actress In A Comedy Series | C | guest:Actress | series:comedy | Category 72 |
+guest-actress | Outstanding Guest Actress In A Drama Series | C | guest:Actress | series:drama | Category 73 |
+short-form-performer | Outstanding Performer In A Short Form Comedy Or Drama Series | C | performer | shortform | Category 74 |
+voice-over | Outstanding Character Voice-Over Performance | C | voice | television | Category 75 |
+- Outstanding Narrator | Documentary narration has no credited narrator in the game yet | Category 76
+reality-host | Outstanding Host For A Reality Or Reality Competition Program | C | host | competition+reality | Category 77 |
+- Outstanding Host For A Game Show | Game shows aren't a program type the game makes | Category 78
+# Directing
+directing-comedy | Outstanding Directing For A Comedy Series | C | director | series:comedy | Category 24 |
+directing | Outstanding Directing For A Drama Series | C | director | series:drama | Category 25 |
+directing-limited | Outstanding Directing For A Limited Or Anthology Series Or Movie | C | director | limited | Category 26 |
+directing-variety | Outstanding Directing For A Variety Series | C | director | variety | Category 27 |
+directing-variety-special | Outstanding Directing For A Variety Special | C | director | variety-special | Category 28 |
+directing-nonfiction | Outstanding Directing For A Documentary/Nonfiction Program | C | director | docspecial+docseries | Category 29 |
+directing-reality | Outstanding Directing For A Reality Program | C | director | reality | Category 30 |
+# Writing
+writing-comedy | Outstanding Writing For A Comedy Series | C | writer | series:comedy | Category 113 |
+writing | Outstanding Writing For A Drama Series | C | writer | series:drama | Category 114 |
+writing-limited | Outstanding Writing For A Limited Or Anthology Series Or Movie | C | writer | limited | Category 115 |
+writing-variety | Outstanding Writing For A Variety Series | C | writer | variety | Category 116 |
+writing-variety-special | Outstanding Writing For A Variety Special | C | writer | variety-special | Category 117 |
+writing-nonfiction | Outstanding Writing For A Nonfiction Program | C | writer | docspecial+docseries | Category 118 |
+# Animation
+animation-individual | Outstanding Individual Achievement In Animation | J | craft:character-designer+background-artist+storyboard-artist+animator+visdev-artist | animated | Juried 1 |
+# Production Design
+production-design-contemporary | Outstanding Production Design For A Narrative Contemporary Program (One Hour Or More) | A | craft:production-designer+art-director | narrative:hour | Area 3 | Period or fantasy work enters Area 4; the game asks the project's story era
+production-design-period | Outstanding Production Design For A Narrative Period Or Fantasy Program (One Hour Or More) | A | craft:production-designer+art-director | narrative:hour:period | Area 4 |
+production-design-half-hour | Outstanding Production Design For A Narrative Program (Half-Hour) | A | craft:production-designer+art-director | narrative:half | Area 5 |
+production-design-variety | Outstanding Production Design For A Variety Or Reality Series | A | craft:production-designer+art-director | variety+reality+competition | Area 6 |
+production-design-variety-special | Outstanding Production Design For A Variety Special | A | craft:production-designer+art-director | variety-special | Area 7 |
+# Casting
+casting-comedy | Outstanding Casting For A Comedy Series | C | craft:casting-director | series:comedy | Category 8 |
+casting-drama | Outstanding Casting For A Drama Series | C | craft:casting-director | series:drama | Category 9 |
+casting-limited | Outstanding Casting For A Limited Or Anthology Series Or Movie | C | craft:casting-director | limited | Category 10 |
+casting-reality | Outstanding Casting For A Reality Program | C | craft:casting-director | reality+competition | Category 11 |
+# Choreography
+choreography-variety | Outstanding Choreography For Variety Or Reality Programming | A | craft:choreographer | variety+reality+competition | Area 12 |
+choreography-scripted | Outstanding Choreography For Scripted Programming | A | craft:choreographer | narrative | Area 13 |
+# Cinematography
+cinematography-half-hour | Outstanding Cinematography For A Series (Half-Hour) | C | craft:dop | series:half | Category 14 |
+cinematography-hour | Outstanding Cinematography For A Series (One Hour) | C | craft:dop | series:hour | Category 15 |
+cinematography-limited | Outstanding Cinematography For A Limited Or Anthology Series Or Movie | C | craft:dop | limited | Category 16 |
+cinematography-nonfiction | Outstanding Cinematography For A Nonfiction Program | C | craft:dop | docspecial+docseries | Category 17 |
+cinematography-reality | Outstanding Cinematography For A Reality Program | C | craft:dop | reality+competition | Category 18 |
+- Outstanding Commercial | Advertising isn't work the game makes | Category 19
+# Costume
+costumes-period | Outstanding Period Costumes | A | craft:costume-designer | narrative:period | Area 20 |
+costumes-fantasy | Outstanding Fantasy/Sci-Fi Costumes | A | craft:costume-designer | narrative:fantasy | Area 21 |
+costumes-contemporary | Outstanding Contemporary Costumes | A | craft:costume-designer | narrative:contemporary | Area 22 |
+costumes-variety | Outstanding Costumes For Variety, Nonfiction Or Reality Programming | J | craft:costume-designer | variety+reality+competition+docseries | Juried 23 |
+# Picture Editing
+editing-drama | Outstanding Picture Editing For A Drama Series | C | craft:editor | series:drama | Category 31 |
+editing-comedy | Outstanding Picture Editing For A Comedy Series | C | craft:editor | series:comedy | Category 32 |
+editing-limited | Outstanding Picture Editing For A Limited Or Anthology Series Or Movie | C | craft:editor | limited | Category 33 |
+editing-variety | Outstanding Picture Editing For Variety Programming | A | craft:editor | variety+variety-special | Area 34 |
+editing-nonfiction | Outstanding Picture Editing For A Nonfiction Program | C | craft:editor | docspecial+docseries | Category 35 |
+editing-structured-reality | Outstanding Picture Editing For A Structured Reality Or Reality Competition Program | C | craft:editor | reality-structured+competition | Category 36 |
+editing-unstructured-reality | Outstanding Picture Editing For An Unstructured Reality Program | C | craft:editor | reality-unstructured | Category 37 |
+# Emerging Media
+- Outstanding Emerging Media Program | Interactive and immersive media aren't work the game makes | Category 38
+- Outstanding Innovation In Emerging Media Programming | Interactive and immersive media aren't work the game makes | Juried 39
+# Hairstyling And Makeup
+hairstyling-contemporary | Outstanding Contemporary Hairstyling | C | craft:hair-makeup | narrative:contemporary | Category 40 |
+hairstyling-period | Outstanding Period Or Fantasy/Sci-Fi Hairstyling | A | craft:hair-makeup | narrative:period+narrative:fantasy | Area 41 |
+hairstyling-variety | Outstanding Hairstyling For A Variety, Nonfiction Or Reality Program | A | craft:hair-makeup | variety+reality+competition+docseries | Area 42 |
+makeup-contemporary | Outstanding Contemporary Makeup (Non-Prosthetic) | C | craft:hair-makeup | narrative:contemporary | Category 47 |
+makeup-period | Outstanding Period Or Fantasy/Sci-Fi Makeup (Non-Prosthetic) | A | craft:hair-makeup | narrative:period+narrative:fantasy | Area 48 |
+makeup-variety | Outstanding Makeup For A Variety, Nonfiction Or Reality Program | A | craft:hair-makeup | variety+reality+competition+docseries | Area 49 |
+makeup-prosthetic | Outstanding Prosthetic Makeup | A | craft:prosthetics | television | Area 50 |
+# Lighting, Titles And Technical Direction
+lighting-series | Outstanding Lighting Design/Lighting Direction For A Series | A | craft:gaffer | variety+competition | Area 43 |
+lighting-special | Outstanding Lighting Design/Lighting Direction For A Special | A | craft:gaffer | variety-special | Area 44 |
+title-design | Outstanding Title Design | C | craft:compositor | television | Category 45 | The game has no title-design crew role: titles are the compositor's work, so the compositor is credited
+motion-design | Outstanding Motion Design | J | craft:compositor | television | Juried 46 | The game has no motion-design crew role: the compositor is credited
+technical-direction-series | Outstanding Technical Direction And Camerawork For A Series | A | craft:camera-operator | variety+competition | Area 111 |
+technical-direction-special | Outstanding Technical Direction And Camerawork For A Special | A | craft:camera-operator | variety-special | Area 112 |
+# Music
+music-series | Outstanding Music Composition For A Series (Original Dramatic Score) | C | craft:composer | series | Category 51 |
+music-limited | Outstanding Music Composition For A Limited Or Anthology Series, Movie Or Special (Original Dramatic Score) | C | craft:composer | limited | Category 52 |
+music-nonfiction | Outstanding Music Composition For A Documentary/Nonfiction Or Reality Program (Original Dramatic Score) | C | craft:composer | docspecial+docseries+reality+competition | Category 53 |
+music-direction | Outstanding Music Direction | C | craft:composer | variety+variety-special | Category 54 |
+original-music-lyrics | Outstanding Original Music And Lyrics | C | song | television | Category 55 |
+main-title-theme | Outstanding Original Main Title Theme Music | C | craft:composer | television | Category 56 |
+music-supervision | Outstanding Music Supervision | C | craft:music-supervisor | television | Category 57 |
+# Sound
+sound-editing-hour | Outstanding Sound Editing For A Comedy Or Drama Series (One Hour) | C | craft:sound-designer | series:hour | Category 96 |
+sound-editing-half-hour | Outstanding Sound Editing For A Comedy Or Drama Series (Half-Hour) And Animation | C | craft:sound-designer | series:half+animated | Category 97 |
+sound-editing-limited | Outstanding Sound Editing For A Limited Or Anthology Series, Movie Or Special | C | craft:sound-designer | limited | Category 98 |
+sound-editing-nonfiction | Outstanding Sound Editing For A Nonfiction Or Reality Program | C | craft:sound-designer | docspecial+docseries+reality+competition | Category 99 |
+sound-mixing-hour | Outstanding Sound Mixing For A Comedy Or Drama Series (One Hour) | C | craft:re-recording-mixer+sound-mixer | series:hour | Category 100 |
+sound-mixing-limited | Outstanding Sound Mixing For A Limited Or Anthology Series Or Movie | C | craft:re-recording-mixer+sound-mixer | limited | Category 101 |
+sound-mixing-half-hour | Outstanding Sound Mixing For A Comedy Or Drama Series (Half-Hour) And Animation | A | craft:re-recording-mixer+sound-mixer | series:half+animated | Area 102 |
+sound-mixing-variety | Outstanding Sound Mixing For A Variety Series Or Special | A | craft:re-recording-mixer+sound-mixer | variety+variety-special | Area 103 |
+sound-mixing-nonfiction | Outstanding Sound Mixing For A Nonfiction Program | C | craft:re-recording-mixer+sound-mixer | docspecial+docseries | Category 104 |
+sound-mixing-reality | Outstanding Sound Mixing For A Reality Program | C | craft:re-recording-mixer+sound-mixer | reality+competition | Category 105 |
+# Visual Effects And Stunts
+vfx-season | Outstanding Special Visual Effects In A Season Or A Movie | C | craft:vfx-artist+compositor | narrative | Category 106 |
+vfx-episode | Outstanding Special Visual Effects In A Single Episode | A | craft:vfx-artist+compositor | narrative | Area 107 |
+stunt-comedy | Outstanding Stunt Coordination For Comedy Programming | C | craft:stunt-coordinator | series:comedy | Category 108 |
+stunt-drama | Outstanding Stunt Coordination For Drama Programming | C | craft:stunt-coordinator | narrative:drama | Category 109 |
+- Outstanding Stunt Performance | Stunt performers are not cast or credited separately in the game; stunts are coordinated work | Category 110
+# Governors And Special Awards
+legacy | Legacy Award | H | career-program | television | Legacy Award | At least 60 episodes across at least 5 seasons; chosen by the Special Awards Committee and the Board of Governors
+governors | The Governors Award | H | career | television | The Governors Award | Chosen by the Special Awards Committee and the Board of Governors for transformational impact, not an overall body of work
+- Syd Cassyd Founders Award | Recognizes service to the Television Academy, which the game doesn't model | Syd Cassyd Founders Award
+- Outstanding Achievement In Engineering, Science & Technology | Recognizes engineering and technology development, outside the filmmaking the game models | Engineering award
+- The Television Academy Honors | Recognizes programming that explores social and health issues; the game doesn't record what issues a program takes on | Television Academy Honors
+- Bob Hope Humanitarian Award | Recognizes humanitarian work outside production, which the game doesn't model | Bob Hope Humanitarian Award

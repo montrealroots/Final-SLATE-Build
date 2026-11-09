@@ -1,0 +1,29 @@
+@institution japan-academy
+@edition 50th Japan Academy Film Prize (ceremony March 12, 2027, Tokyo International Forum Hall A)
+@source jap50 | 第50回日本アカデミー賞 授賞式開催決定 (press release, April 22, 2026) | https://www.japan-academy-prize.jp/media/pdf/top/vol50_confirmed.pdf | retrieved 2026-11-09
+# The 50th edition adds the VFX Award and widens the Art Direction Award to set decoration: 16 main awards (jap50).
+# Eligible: theatrical fiction and animated films of 40 minutes or more first shown for paid admission in the Tokyo
+# area from January 1 to December 31, 2026, at least three times a day in the first week and two weeks running in
+# cinemas only, at one Tokyo cinema; new works made for theatrical release (jap50). Members vote the Excellence awards
+# (the nominees) and then the best of each.
+# Main Awards (正賞)
+picture | 作品賞 Picture Of The Year | C | producer | feature:jp | jap50 |
+animation | アニメーション作品賞 Animation Of The Year | C | producer | feature:animated:jp | jap50 |
+actor | 主演男優賞 Outstanding Performance By An Actor In A Leading Role | C | lead:Actor | feature:jp | jap50 |
+actress | 主演女優賞 Outstanding Performance By An Actress In A Leading Role | C | lead:Actress | feature:jp | jap50 |
+supporting-actor | 助演男優賞 Outstanding Performance By An Actor In A Supporting Role | C | supporting:Actor | feature:jp | jap50 |
+supporting-actress | 助演女優賞 Outstanding Performance By An Actress In A Supporting Role | C | supporting:Actress | feature:jp | jap50 |
+director | 監督賞 Director Of The Year | C | director | feature:jp | jap50 |
+screenplay | 脚本賞 Screenplay Of The Year | C | writer | feature:jp | jap50 |
+music | 音楽賞 Outstanding Achievement In Music | C | craft:composer | feature:jp | jap50 |
+cinematography | 撮影賞 Outstanding Achievement In Cinematography | C | craft:dop | feature:jp | jap50 |
+lighting | 照明賞 Outstanding Achievement In Lighting Direction | C | craft:gaffer | feature:jp | jap50 |
+art-direction | 美術賞 Outstanding Achievement In Art Direction | C | craft:production-designer+art-director+prop-master | feature:live:jp | jap50 | Widened to set decoration from the 50th
+sound | 録音賞 Outstanding Achievement In Sound Recording | C | craft:sound-mixer+re-recording-mixer | feature:jp | jap50 |
+editing | 編集賞 Outstanding Achievement In Film Editing | C | craft:editor | feature:jp | jap50 |
+foreign | 外国作品賞 Outstanding Foreign Language Film | C | producer | feature:non-jp | jap50 |
+vfx | VFX賞 Outstanding Achievement In VFX | C | craft:vfx-artist+compositor | feature:live:jp | jap50 | New for the 50th: the VFX supervisor of a live-action film; years 2027-9999
+# Newcomer And Special Awards
+newcomer | 新人俳優賞 Newcomer Of The Year | J | performer:breakthrough | feature:jp | jap50 | Voted with the main awards; given to several newcomers, not one winner
+- 特別賞 Special Awards | UNVERIFIED: the 49th special award announcement wasn't read | https://www.japan-academy-prize.jp/news/49-special
+- クリエイティブ貢献賞 Creative Contribution Award | UNVERIFIED: introduced at the 49th; the announcement wasn't read | https://www.japan-academy-prize.jp/news/49-newaward

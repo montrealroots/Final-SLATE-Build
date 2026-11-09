@@ -1,0 +1,38 @@
+@institution cesar
+@edition 52nd César (2027), rules for 2026-2027
+@source cesar27-reglement | Règlement de l'Académie des Arts et Techniques du Cinéma 2026-2027 | https://www.academie-cinema.org/wp-content/uploads/2026/10/reglement-aatc-2026-2027.pdf | retrieved 2026-11-09
+# Chapter on the awards, Article 1 lists 25 categories; Article 2 the honorary César and the César des Lycéens.
+# French-initiative feature films (CNC production approval, a national theatrical release in the previous year) compete
+# for Best Film and the categories that follow from it (Article 3 A).
+# Films
+film | Meilleur Film | C | producer+director | feature:fr | Article 1, Article 3 A | The statuette goes to the delegate producers and the director
+first-film | Meilleur Premier Film | C | producer+director | feature:fr:debut | Article 1, Article 3 K |
+animated | Meilleur Film d'Animation | C | producer+director | feature:animated:fr | Article 1, Article 3 M |
+documentary | Meilleur Film Documentaire | C | producer+director | documentary-feature:fr | Article 1, Article 3 L |
+foreign | Meilleur Film Étranger | C | director | feature:non-fr | Article 1, Article 3 B | Films that don't meet the French nationality conditions; the statuette goes to the director
+# Direction, Writing And Performance
+director | Meilleure Réalisation | C | director | feature:fr | Article 1 | Named Best Director in the game until November 9, 2026
+screenplay | Meilleur Scénario Original | C | writer-original | feature:fr | Article 1, Article 3 G | Named Best Original Screenplay in the game until November 9, 2026
+adaptation | Meilleure Adaptation | C | writer-adapted | feature:fr | Article 1, Article 3 G |
+actress | Meilleure Actrice | C | lead:Actress | feature:fr | Article 1 |
+actor | Meilleur Acteur | C | lead:Actor | feature:fr | Article 1 |
+supporting-actress | Meilleure Actrice dans un Second Rôle | C | supporting:Actress | feature:fr | Article 1 |
+supporting-actor | Meilleur Acteur dans un Second Rôle | C | supporting:Actor | feature:fr | Article 1 |
+newcomer-actress | Meilleur Espoir Féminin | C | performer:Actress:breakthrough | feature:fr | Article 1, Article 3 D |
+newcomer-actor | Meilleur Espoir Masculin | C | performer:Actor:breakthrough | feature:fr | Article 1, Article 3 D |
+# Crafts
+score | Meilleure Musique Originale | C | craft:composer | feature:fr | Article 1, Article 3 F |
+sound | Meilleur Son | C | craft:sound-mixer+sound-designer+re-recording-mixer | feature:fr | Article 1, Article 3 H | The whole sound team; at most four people named
+cinematography | Meilleure Photo | C | craft:dop | feature:fr | Article 1 |
+editing | Meilleur Montage | C | craft:editor | feature:fr | Article 1 |
+costumes | Meilleurs Costumes | C | craft:costume-designer | feature:fr | Article 1 |
+production-design | Meilleurs Décors | C | craft:production-designer+art-director | feature:fr | Article 1 |
+visual-effects | Meilleurs Effets Visuels | C | craft:vfx-artist+compositor | feature:fr | Article 1, Article 3 I |
+makeup | Meilleur Maquillage/Coiffure | C | craft:hair-makeup+prosthetics | feature:fr | Article 1, Article 3 J | The whole makeup and hair team
+# Short Films
+short-animation | Meilleur Film de Court Métrage d'Animation | C | producer+director | short:animated:fr | Article 1 | Chosen from a committee's selection
+short-documentary | Meilleur Film de Court Métrage Documentaire | C | producer+director | documentary-short:fr | Article 1 | Chosen from a committee's selection
+short-fiction | Meilleur Film de Court Métrage de Fiction | C | producer+director | short:live:fr | Article 1 | Chosen from a committee's selection
+# Honorary And Other Awards
+honneur | César d'Honneur | H | career-film | feature | Article 2 | On the proposal of the Academy's Bureau
+lyceens | César des Lycéens | U:film | project | feature:fr | Article 2 | Voted by a college of high-school students among the five Best Film nominees

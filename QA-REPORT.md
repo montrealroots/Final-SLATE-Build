@@ -8,7 +8,58 @@
 
 ## Commands And Results
 
-### Current: Browser Journeys For The Last Unit-Only Behaviours (November 8, 2026, after #45)
+### Current: Complete Awards And Festival Coverage (November 9, 2026, after #46)
+
+Tested revisions `015dae7` to `8a43a9c` on top of `main` at `4f4dc2d`.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 65 files, 463 tests passed (`tests/awards-catalog.test.ts` 21 and `tests/awards-ledger.test.ts` 2 new; rulebook, season, institution and golden tests updated for the expanded catalog); build passed; startup JavaScript 686 kB, 219 kB gzipped (budgets 700 and 220), 0 problems. |
+| `python3 tools/awards/build.py --check` | 0 | The catalog, inventory and coverage are what the rosters make (now a CI step). |
+| `npm run balance`, `npm run perf:engine` | 0 | 2 and 2 tests passed; the balance results files are unchanged. |
+| `npx playwright test e2e/awards.spec.ts` (desktop, phone, `iphone-15-plus`) | 1 | 17 passed, 1 failed: the desktop Venice journey, because a source file was edited during the run and the dev server reloaded the page to the start screen. It passed on phone and WebKit in that run, and on desktop in the six runs before (`--repeat-each 6`) and in the production run below. |
+| `SLATE_E2E_PROD=1 npx playwright test --trace retain-on-failure` on `9eb4a9d` | 1 | Production build, the complete suite: 207 passed, 32 skipped (by project, as before), 4 failed in 21.5 minutes: the live-action journey on all four projects, at its festival entry. Large rosters start with their headings closed, so the Venice page it arrived at from the project's "Open To You" row showed no Prepare Submission button. Fixed in `8a43a9c`: an event opened from a project's tab preselects that project, which opens every heading. CI on `0492333` failed the same way. |
+| `SLATE_E2E_PROD=1 npx playwright test e2e/live-action.spec.ts e2e/journeys.spec.ts e2e/awards.spec.ts` on `8a43a9c` | 0 | Production build: 38 passed, 16 skipped (the media journeys run at desktop width only), 0 failed, in 8.8 minutes: live-action on desktop, phone and both iPhone projects; the 16 media journeys, including the Annie and Sundance festival journeys; the six awards journeys on desktop, phone and `iphone-15-plus`. The rest of the suite passed on `9eb4a9d` above and touches no festival page. |
+| CI on `51b5266` | 1 | 210 passed, 32 skipped, 1 failed: the live-action journey on `iphone-15-pro-max` didn't reach delivery in its 24 weeks (it passed on the other three projects, and 4 of 4 times on that project locally). The journey drew a new world seed every run, so how long production took was chance. It now fixes its seed after the character is made (`pinSeed`, as the other journeys do), and passed on all four projects on the production build. |
+
+What was built, by evidence:
+- **Researched (source-verified):** 37 roster files in `docs/awards/roster/`, each naming the edition and the official
+  pages read, with retrieval dates. 802 categories are playable (660 new, 60 renamed to their official names, every
+  earlier ID kept); 125 official categories are recorded as not playable, each with its reason. 97 playable categories
+  are marked unverified (their criteria page wasn't read). Six organizers' sites were blocked here and are recorded as
+  blocked, not bypassed: BAFTA (film and television), AMAA, Blue Dragon, Busan, Locarno; FESPACO's domain no longer
+  serves the festival.
+- **Implemented and unit-tested:** category kinds (503 awards, 72 sections, 117 prizes, 22 audience and 16 partner
+  awards, 27 area and 16 juried awards, 29 honorary); requirements read from the project; recipients only from credits;
+  per-craft quality; results stored only where you're involved and computed otherwise, identical after a reload; prizes
+  among a section's selection; several winners or none; special mentions; honorary awards from a career; national
+  committees; disqualification of an entry whose planned release was cancelled; exposure after a prize; older saves
+  unchanged. Mutation checks: removing a prize's own requirement and removing the cancelled-release check each failed
+  their test.
+- **Browser-tested:** the six journeys in `e2e/awards.spec.ts` (listed under Acceptance Journeys).
+- **Modeled, not organizer figures:** the standard for area and juried awards (78), special mentions, honorary
+  selection, the national committee and its rival film, and rival works from the simulated season
+  (`docs/awards/DESIGN.md`).
+- **Loaded in the background, not at startup** (measured on the production build): the catalog
+  (`institutions.json`) is 358 kB, 26 kB gzipped (69 kB and 7 kB before), and parses in 1.1 ms in Node (best of 20);
+  the two engine files that load with it are 8.6 kB (3.3 kB gzipped) and 17.0 kB (6.0 kB gzipped). Every game already
+  waits for the catalog before opening, and a failed load is tried again (`tests/institutions-load.test.ts`).
+- **Rules:** 66 categories follow official rules for at least one edition, 2 projected rules, 734 the game's rules
+  (`tests/rulebooks.test.ts`). The Oscars' craft and adapted-screenplay categories, Sundance's World Cinema
+  competitions, Orizzonti Corti and the Annies' four TV categories joined the read rules.
+
+Defects found and fixed while doing it:
+- The comedy/drama split had silently stopped working when the catalog became JSON (November 8): a reference
+  comparison against the genre list never matched. It is now the category's class, read from where the project says it
+  competes.
+- The Golden Globes 2027 entry deadline (December 3) fell after their simulated nominations (November 26), so entries
+  made in between were never judged. An organizer's later deadline now moves the announcement after it.
+- The ledger's reachability check found IDFA's FIPRESCI award decided among another prize, and the Emmys' title and
+  motion design naming a crew role the game doesn't have; both fixed.
+- The Calendar's event search only looked at the next 40 editions, so the 54th Annie Awards couldn't be found.
+- Startup JavaScript went to 705 kB with the new rules; the rules and judging now load with the catalog (686 kB).
+
+### Previous: Browser Journeys For The Last Unit-Only Behaviours (November 8, 2026, after #45)
 
 Tested revision `543e3bf` on top of `main` at `c61c1ea`.
 
@@ -199,6 +250,11 @@ Screenwriting, motion-capture and replacement checkpoint (after montrealroots/Fi
 | First project: write, approve, a grant refused, the agreed backing, production, release, a second project with history intact | `e2e/first-project.spec.ts` | desktop; financing screens on phone |
 | Media journeys: 2D, hybrid, documentary and a decline, TV, web series, 3D with motion capture, stop motion, unscripted and a withdrawal, festivals and awards to the ceremony | `e2e/journeys.spec.ts`, `e2e/media.spec.ts` | desktop |
 | Export, import into a fresh browser, duplicates, refusals, two tabs; recovery copies, full storage, failed saves, missing data | `e2e/backup.spec.ts`, `e2e/storage.spec.ts`, `e2e/failures.spec.ts`, `e2e/reliability.spec.ts` | desktop and phone |
+| Awards: the Oscars with four categories and four sets of credited recipients, an ineligible entry corrected in the Story panel before the deadline, a withdrawal and re-entry, nominations and results unchanged after a reload | `e2e/awards.spec.ts` | desktop, phone, `iphone-15-plus` |
+| Awards: a drama series at the Emmys as a program and for lead acting, writing, directing and casting; comedy and actor categories explain why they're closed | `e2e/awards.spec.ts` | desktop, phone, `iphone-15-plus` |
+| Awards: an animated short qualifying for the Oscars through a festival prize (the Annecy win is a labelled fixture), the Annies' short subject, a documentary feature | `e2e/awards.spec.ts` | desktop, phone, `iphone-15-plus` |
+| Awards: Venice's Competition entered, withdrawn and entered again (one fee), In Competition, then Selected with the Golden Lion decided among the selection | `e2e/awards.spec.ts` | desktop, phone, `iphone-15-plus` |
+| Awards: the Annies' TV category retired after 2026 and its four successors from 2027; an honorary award from a long career (a labelled fixture), with no entry and no fee | `e2e/awards.spec.ts` | desktop, phone, `iphone-15-plus` |
 | Revisions | `tests/writing.test.ts`, `tests/screenwriting.test.ts` | engine only; not a browser journey |
 
 Screenshots of the connected journey (desktop, phone and `iphone-15-pro-max`), the three careers, the script-rules
@@ -220,7 +276,7 @@ explicit `test.skip(project…)`; no test skips itself on an outcome. The list w
   the two-tab import and storage checks (2), and five layout, keyboard and lifecycle checks in `e2e/viewports.spec.ts`
   that set their own viewports or tabs (5).
 - The WebKit iPhone projects list only the specs they run (`playwright.config.ts`): `iphone-15-plus` runs creation,
-  focus, live-action and devices; `iphone-15-pro-max` the same plus the connected journey; the landscape project runs
+  focus, live-action, devices, season, career and (from November 9, 2026) awards; `iphone-15-pro-max` the same plus the connected journey; the landscape project runs
   devices. Specs they don't list aren't counted for them at all.
 
 ### Not Automated

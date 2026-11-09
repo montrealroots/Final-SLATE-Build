@@ -1,0 +1,46 @@
+@institution annie
+@edition 54th Annie Awards (ceremony February 20, 2027)
+@source annie54-categories | 54th Annual Annie Awards Rules & Categories: Production, Achievement and Juried Award Categories | https://annieawards.org/rules-and-categories | retrieved 2026-11-09
+@source annie54-dates | 54th Annual Annie Awards Key Dates and Deadlines | https://annieawards.org/rules-and-categories/key-dates-and-deadlines | retrieved 2026-11-09
+# The organizer: "presented in 38 categories"; the pages list 33 numbered categories and the juried awards below.
+# Production Categories
+feature | Best Feature | C | producer | feature:animated | annie54-categories 1 |
+feature-independent | Best Feature - Independent | C | producer | feature:animated:independent | annie54-categories 2 | The game reads independent as made without a studio commissioner
+special | Best Special Production | C | producer | special:animated | annie54-categories 3 |
+short | Best Short Subject | C | producer | short:animated | annie54-categories 4 |
+- Best Sponsored | Sponsored and branded work isn't made in the game | annie54-categories 5
+tv-preschool | Best TV/Media - Preschool | C | producer | television:animated:preschool | annie54-categories 6 | First held at the 54th, replacing Best TV Or Media Production; years 2027-9999
+tv-children | Best TV/Media - Children | C | producer | television:animated:children | annie54-categories 7 | First held at the 54th, replacing Best TV Or Media Production; years 2027-9999
+tv-mature | Best TV/Media - Mature | C | producer | television:animated:mature | annie54-categories 8 | First held at the 54th, replacing Best TV Or Media Production; years 2027-9999
+- Best TV/Media - International Anime Production | Anime production as a national industry style isn't distinguished in the game | annie54-categories 9
+tv-limited | Best TV/Media – Limited Series | C | producer | limited-series:animated | annie54-categories 10 | First held at the 54th, replacing Best TV Or Media Production; years 2027-9999
+tv | Best TV Or Media Production | C | producer | television:animated | 53rd Annie Awards | years 1900-2026; split into the age and limited-series categories above for the 54th; kept for older entries
+- Best Student Film | The player is a working filmmaker, not a student | annie54-categories 11
+# Achievement Categories
+fx-tv | Best FX - TV/Media | C | craft:fx-artist | television:animated | annie54-categories 12 |
+fx-feature | Best FX - Feature | C | craft:fx-artist | feature:animated | annie54-categories 13 |
+character-animation-tv | Best Character Animation - TV/Media | C | craft:animator+stopmo-animator | television:animated | annie54-categories 14 |
+character-animation-feature | Best Character Animation - Feature | C | craft:animator+stopmo-animator | feature:animated | annie54-categories 15 |
+character-animation-live | Best Character Animation - Live Action | C | craft:animator | live-hybrid | annie54-categories 16 | Animated characters in live-action work: hybrid projects in the game
+- Best Character Animation - Video Game | Games aren't work the game makes | annie54-categories 17
+character-design-tv | Best Character Design - TV/Media | C | craft:character-designer | television:animated | annie54-categories 18 |
+character-design-feature | Best Character Design - Feature | C | craft:character-designer | feature:animated | annie54-categories 19 |
+directing-tv | Best Direction - TV/Media | C | director | television:animated | annie54-categories 20 |
+directing | Best Direction - Feature | C | director | feature:animated | annie54-categories 21 | Named Directing In A Feature Production in the game until November 9, 2026
+music-tv | Best Music - TV/Media | C | craft:composer | television:animated | annie54-categories 22 |
+music-feature | Best Music - Feature | C | craft:composer | feature:animated | annie54-categories 23 |
+production-design-tv | Best Production Design - TV/Media | C | craft:visdev-artist+background-artist+production-designer | television:animated | annie54-categories 24 |
+production-design-feature | Best Production Design - Feature | C | craft:visdev-artist+background-artist+production-designer | feature:animated | annie54-categories 25 |
+storyboarding-tv | Best Storyboarding - TV/Media | C | craft:storyboard-artist | television:animated | annie54-categories 26 |
+storyboarding-feature | Best Storyboarding - Feature | C | craft:storyboard-artist | feature:animated | annie54-categories 27 |
+voice-tv | Best Voice Acting - TV/Media | C | voice | television:animated | annie54-categories 28 |
+voice | Best Voice Acting - Feature | C | voice | feature:animated | annie54-categories 29 | Named Voice Acting In A Feature Production in the game until November 9, 2026
+writing-tv | Best Writing - TV/Media | C | writer | television:animated | annie54-categories 30 |
+writing | Best Writing - Feature | C | writer | feature:animated | annie54-categories 31 | Named Writing In A Feature Production in the game until November 9, 2026
+editorial-tv | Best Editorial - TV/Media | C | craft:editor | television:animated | annie54-categories 32 |
+editorial-feature | Best Editorial - Feature | C | craft:editor | feature:animated | annie54-categories 33 |
+# Juried Awards
+winsor-mccay | Winsor McCay Award | H | career-animation | animation | annie54-categories Juried | UNVERIFIED: the award's criteria page wasn't read; treated as a career honor
+- June Foray Award | UNVERIFIED: criteria page not read; believed to recognize service to the animation community, which the game doesn't model | annie54-categories Juried
+- Ub Iwerks Award | UNVERIFIED: criteria page not read; believed to recognize animation technology, outside the game | annie54-categories Juried
+special-achievement | Special Achievement In Animation | H | career-animation | animation | annie54-categories Juried | UNVERIFIED: criteria page not read; treated as discretionary

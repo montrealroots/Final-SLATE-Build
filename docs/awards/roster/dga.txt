@@ -1,0 +1,24 @@
+@institution dga
+@edition 79th Annual DGA Awards (2027; eligibility January 1 to December 31, 2026)
+@source dga79-annual | 79th Annual DGA Awards: entry forms and categories | https://www.dga.org/Awards/Annual.aspx | retrieved 2026-11-09
+@source dga79-feature | Outstanding Directorial Achievement in Theatrical Feature Film: guidelines | https://www.dga.org/Awards/Entry-Forms/Theatrical-Feature-Film/ApplicationRules | retrieved 2026-11-09
+@source dga79-variety | Outstanding Directorial Achievement in Variety: guidelines | https://www.dga.org/Awards/Entry-Forms/TV-Variety/ApplicationRules | retrieved 2026-11-09
+@source dga79-reality | Outstanding Directorial Achievement in Reality / Quiz & Game: guidelines | https://www.dga.org/Awards/Entry-Forms/TV-Reality-Quiz-Game/ApplicationRules | retrieved 2026-11-09
+# Television categories require a DGA member directing under a DGA agreement (dga79-variety, Director Eligibility).
+# The game doesn't model guild membership; the rule is recorded and shown to the player as a simplification.
+# Film
+feature | Outstanding Directorial Achievement In Theatrical Feature Film | C | director | feature:la-ny-theatrical | dga79-feature | Open to DGA and non-DGA directors; a seven-day Los Angeles or New York run in 2026; no day-and-date release
+first-feature | Michael Apted Award For Outstanding Directorial Achievement In First-Time Theatrical Feature Film | C | director | feature:la-ny-theatrical:debut | dga79-annual | Shares its entry form with Documentary Film
+documentary | Outstanding Directorial Achievement In Documentary Film | C | director | documentary-feature | dga79-annual |
+# Television
+drama | Outstanding Directorial Achievement In Dramatic Series | C | director | series:drama | dga79-annual | Member and agreement rule not modeled
+comedy | Outstanding Directorial Achievement In Comedy Series | C | director | series:comedy | dga79-annual | Member and agreement rule not modeled
+limited | Outstanding Directorial Achievement In Limited & Anthology Series | C | director | limited-series | dga79-annual | Member and agreement rule not modeled
+movie | Outstanding Directorial Achievement In Movies For Television | C | director | movie | dga79-annual | Member and agreement rule not modeled
+documentary-series | Outstanding Directorial Achievement In Documentary Series / News | C | director | docseries | dga79-annual | Member and agreement rule not modeled
+variety | Outstanding Directorial Achievement In Variety | C | director | variety+variety-special | dga79-variety | Talk series and specials enter here; no theatrical exhibition before television or streaming
+reality | Outstanding Directorial Achievement In Reality / Quiz & Game | C | director | reality+competition | dga79-reality | Any reality content places a program here
+- Outstanding Directorial Achievement In Sports | Sports broadcasts aren't work the game makes | dga79-annual
+- Outstanding Directorial Achievement In Commercials | Advertising isn't work the game makes | dga79-annual
+# Special Awards
+- DGA Special Awards | UNVERIFIED: the Guild announces special award recipients (dga79-annual news list) but no criteria page was read | dga79-annual

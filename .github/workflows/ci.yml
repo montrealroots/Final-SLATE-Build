@@ -29,6 +29,8 @@ jobs:
       - run: npm ci
       - name: World data check
         run: npm run world:check
+      - name: Awards catalog matches its rosters
+        run: python3 tools/awards/build.py --check
       - run: npm run typecheck
       - run: npm test
       - run: npm run build

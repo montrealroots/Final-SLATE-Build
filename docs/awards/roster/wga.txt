@@ -1,0 +1,42 @@
+@institution wga
+@edition 2027 Writers Guild Awards (February 13, 2027; eligibility January 1 to December 31, 2026)
+@source wga27-screenplay | Rules for Adapted and Original Screenplay | https://awards.wga.org/submissions/adapted-and-original-screenplay | retrieved 2026-11-09
+@source wga27-docscreenplay | Rules for Documentary Screenplay | https://awards.wga.org/submissions/documentary-screenplay | retrieved 2026-11-09
+@source wga27-series | Rules for WGA Series Awards | https://awards.wga.org/submissions/series | retrieved 2026-11-09
+@source wga27-tv | Rules for WGA TV-Streaming-Radio/Audio Writing Awards | https://awards.wga.org/submissions/tv-streaming-radio-audio-scripts | retrieved 2026-11-09
+@source wga27-selvin | Paul Selvin Award submissions | https://awards.wga.org/submissions/paul-selvin-award | retrieved 2026-11-09
+# Work must be written under a WGA (or affiliate guild) collective bargaining agreement with credits determined by the
+# Guild. The game doesn't model guild membership or signatory status; the rule is recorded and shown as a simplification.
+# Screenplay
+original | Original Screenplay | C | writer-original | feature:la-ny-theatrical | wga27-screenplay | Was the game's only WGA film category until November 9, 2026
+adapted | Adapted Screenplay | C | writer-adapted | feature:la-ny-theatrical | wga27-screenplay |
+documentary-screenplay | Documentary Screenplay | C | writer | documentary-feature | wga27-docscreenplay |
+# Series
+drama-series | Drama Series | C | writer | series:drama | wga27-series | Series written for a signatory company and aired January 1 to December 31, 2026
+comedy-series | Comedy Series | C | writer | series:comedy | wga27-series |
+limited-series | Limited Series | C | writer | limited-series | wga27-series |
+new-series | New Series | C | writer | series:new | wga27-series |
+# Television, Streaming And Audio Scripts
+movie | Television & Streaming Motion Pictures | C | writer | movie | wga27-tv #1 |
+animation | Animation | C | writer | television:animated | wga27-tv #2 |
+episodic | Episodic Drama | C | writer | series:drama | wga27-tv #3 | The game's existing entry
+episodic-comedy | Episodic Comedy | C | writer | series:comedy | wga27-tv #4 |
+talk-series | Comedy/Variety – Talk Series | C | writer | variety | wga27-tv #5(A) |
+variety-specials | Comedy/Variety – Music, Awards, Tributes – Specials | C | writer | variety-special | wga27-tv #5(B) |
+- Comedy/Variety – Sketch Series | Sketch comedy isn't distinguished from other variety programs in the game | wga27-tv #5(C)
+- Quiz And Audience Participation | Quiz programs aren't a program type the game makes | wga27-tv #5(D)
+documentary-current | Documentary Script – Current Events | C | writer | docseries+docspecial:current-events | wga27-tv #6(A) | The game reads current events from a nonfiction project's story era
+documentary-other | Documentary Script – Other Than Current Events | C | writer | docseries+docspecial | wga27-tv #6(B) |
+- News Script – Regularly Scheduled, Bulletin, Or Breaking Report | News isn't work the game makes | wga27-tv #7(A)
+- News Script – Analysis, Feature Or Commentary | News isn't work the game makes | wga27-tv #7(B)
+- Daytime Drama | Daytime serials aren't a program type the game makes | wga27-tv #8
+childrens | Children's Episodic, Long Form And Specials | C | writer | television:children | wga27-tv #9 |
+- Radio/Audio Documentary | Audio work isn't made in the game | wga27-tv #10
+- Radio/Audio News Script – Regularly Scheduled, Bulletin Or Breaking Report | Audio work isn't made in the game | wga27-tv #11
+- Radio/Audio News Script – Analysis, Feature Or Commentary | Audio work isn't made in the game | wga27-tv #12
+- On-Air Promotion | Promotional spots aren't made in the game | wga27-tv #13
+short-form | Short Form Streaming | C | writer | shortform | wga27-tv #15 |
+- Digital News | News isn't work the game makes | wga27-tv #16
+# Special Awards
+selvin | Paul Selvin Award | C | writer | feature+television:civil-rights | wga27-selvin | UNVERIFIED: the page's criteria weren't expanded; recorded from the award's published name only, so the theme requirement is not yet modeled
+- Laurel Awards And Special Achievement Awards | UNVERIFIED: recipient pages list honorees; no criteria were read | awards.wga.org/awards/awards-recipients/laurel-awards

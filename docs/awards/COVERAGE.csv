@@ -1,0 +1,928 @@
+institution,category,name,kind,section,recipient,roster,source,note
+sundance,dramatic,U.S. Dramatic Competition,section,U.S. Competitions,project,verified,sff27-submit,The game's existing entry was named Dramatic Competition
+sundance,documentary,U.S. Documentary Competition,section,U.S. Competitions,project,verified,sff27-submit,The game's existing entry was named Documentary Competition
+sundance,dramatic-grand-jury,U.S. Grand Jury Prize: Dramatic,prize,U.S. Competitions,producer+director,unverified,UNVERIFIED,UNVERIFIED: prize names weren't on the pages read
+sundance,dramatic-audience,Audience Award: U.S. Dramatic,audience,U.S. Competitions,producer+director,unverified,UNVERIFIED,UNVERIFIED: prize names weren't on the pages read
+sundance,dramatic-directing,Directing Award: U.S. Dramatic,prize,U.S. Competitions,director,unverified,UNVERIFIED,UNVERIFIED: prize names weren't on the pages read
+sundance,waldo-salt,Waldo Salt Screenwriting Award: U.S. Dramatic,prize,U.S. Competitions,writer,unverified,UNVERIFIED,UNVERIFIED: prize names weren't on the pages read
+sundance,documentary-grand-jury,U.S. Grand Jury Prize: Documentary,prize,U.S. Competitions,producer+director,unverified,UNVERIFIED,UNVERIFIED: prize names weren't on the pages read
+sundance,documentary-audience,Audience Award: U.S. Documentary,audience,U.S. Competitions,producer+director,unverified,UNVERIFIED,UNVERIFIED: prize names weren't on the pages read
+sundance,documentary-directing,Directing Award: U.S. Documentary,prize,U.S. Competitions,director,unverified,UNVERIFIED,UNVERIFIED: prize names weren't on the pages read
+sundance,world-dramatic,World Cinema Dramatic Competition,section,World Cinema Competitions,project,verified,sff27-submit,
+sundance,world-documentary,World Cinema Documentary Competition,section,World Cinema Competitions,project,verified,sff27-submit,
+sundance,world-dramatic-grand-jury,World Cinema Grand Jury Prize: Dramatic,prize,World Cinema Competitions,producer+director,unverified,UNVERIFIED,UNVERIFIED: prize names weren't on the pages read
+sundance,world-documentary-grand-jury,World Cinema Grand Jury Prize: Documentary,prize,World Cinema Competitions,producer+director,unverified,UNVERIFIED,UNVERIFIED: prize names weren't on the pages read
+sundance,shorts,Short Film Program,section,Shorts And Episodic,project,verified,sff27-submit,The game's existing entry
+sundance,shorts-grand-jury,Short Film Grand Jury Prize,prize,Shorts And Episodic,director,unverified,UNVERIFIED,UNVERIFIED: prize names weren't on the pages read
+sundance,episodic,Episodic Program,section,Shorts And Episodic,project,verified,sff27-submit,"Not competitive in the game's catalog; episodes of 60 minutes or less, or over 60"
+sundance,,Spotlight,,Non-Competition,,not-playable,sff27-submit,"Takes no open submissions: films already shown at other international festivals, chosen by invitation"
+berlinale,competition,Competition,section,,project,verified,bl-competition,The game's existing entry; selection is not a prize
+berlinale,golden-bear,Golden Bear For Best Film,prize,,producer,verified,bl-jury,
+berlinale,grand-jury,Silver Bear Grand Jury Prize,prize,,producer,verified,bl-jury,
+berlinale,jury-prize,Silver Bear Jury Prize,prize,,producer,verified,bl-jury,
+berlinale,director,Silver Bear For Best Director,prize,,director,verified,bl-jury,
+berlinale,leading-performance,Silver Bear For Best Leading Performance,prize,,lead,verified,bl-jury,Gender-neutral
+berlinale,screenplay,Silver Bear For Best Screenplay,prize,,writer,verified,bl-jury,
+berlinale,artistic-contribution,Silver Bear For Outstanding Artistic Contribution,prize,,craft:dop+editor+composer+production-designer+costume-designer+sound-designer,verified,bl-jury,Goes to one artistic contribution; the game picks the film's strongest craft
+berlinale,,Silver Bear For Best Supporting Performance,,,,unverified-not-playable,bl-jury,UNVERIFIED: not among the awards the international jury page lists; not added until confirmed
+berlinale,perspectives,Perspectives,section,Other Sections,project,unverified,bl-competition menu,UNVERIFIED: section rules not read; a competition of first features in the game
+berlinale,panorama,Panorama,section,Other Sections,project,verified,bl-competition menu,"The game's existing entry was named Panorama Audience Award until November 9, 2026"
+berlinale,panorama-audience,Panorama Audience Award,audience,Other Sections,project,unverified,earlier game catalog; bl-prizes Further Prizes,"UNVERIFIED: listed under Further Prizes, not read"
+berlinale,forum,Forum,section,Other Sections,project,unverified,bl-competition menu,UNVERIFIED: section rules not read
+berlinale,generation,Generation,section,Other Sections,project,unverified,bl-competition menu; bl-prizes Awards Generation,UNVERIFIED: its Crystal Bear awards weren't read
+berlinale,shorts,Berlinale Shorts,section,Other Sections,project,verified,bl-competition menu,The game's existing entry was named Short Film Competition
+berlinale,shorts-golden-bear,Golden Bear For Best Short Film,prize,Other Sections,director,unverified,bl-prizes Awards Berlinale Shorts,UNVERIFIED: the Shorts awards page wasn't expanded; the name follows the section's award group
+berlinale,first-feature,Best First Feature Award – Funded By GWFF,prize,Prizes Across Sections,director+producer,verified,bl-prizes,
+berlinale,documentary-award,Berlinale Documentary Award,prize,Prizes Across Sections,director,verified,bl-prizes,
+berlinale,honorary-bear,Honorary Golden Bear,honorary,Honorary,career-film,verified,bl-prizes,
+berlinale,,Berlinale Camera,,Honorary,,unverified-not-playable,bl-prizes,UNVERIFIED: criteria not read; given to people and institutions the festival honors
+berlinale,,Further Prizes (Independent Juries),,Honorary,,unverified-not-playable,bl-prizes,UNVERIFIED: the independent and partner juries weren't read
+cannes,competition,In Competition,section,In Competition,project,verified,fdc26-features Articles 3-4,The game's existing entry; selection is not a prize
+cannes,palme,Palme d'Or,prize,In Competition,producer+director,verified,fdc26-features Article 8,One film; no tie
+cannes,grand-prix,Grand Prix,prize,In Competition,producer+director,verified,fdc26-features Article 8,
+cannes,director,Award For Best Director,prize,In Competition,director,verified,fdc26-features Article 8,One tie allowed (2026 had a joint award)
+cannes,jury-prize,Jury Prize,prize,In Competition,producer+director,verified,fdc26-features Article 8,
+cannes,screenplay,Award For Best Screenplay,prize,In Competition,writer,verified,fdc26-features Article 8,
+cannes,actress,Award For Best Actress,prize,In Competition,performer:Actress,verified,fdc26-features Article 8,
+cannes,actor,Award For Best Actor,prize,In Competition,performer:Actor,verified,fdc26-features Article 8,A film receives only one award; screenplay or jury prize may be paired with an acting award by dispensation
+cannes,un-certain-regard,Un Certain Regard,section,Un Certain Regard,project,verified,fdc26-features Article 3,
+cannes,ucr-prize,Un Certain Regard Prize,prize,Un Certain Regard,producer+director,verified,fdc26-winners,
+cannes,ucr-jury,Un Certain Regard Jury Prize,prize,Un Certain Regard,producer+director,verified,fdc26-winners,
+cannes,ucr-special,Un Certain Regard Special Jury Prize,prize,Un Certain Regard,producer+director,unverified,fdc26-winners,"UNVERIFIED: the section's prizes aren't in the regulations; these are the 2026 awards, and its performance prizes vary by year"
+cannes,cannes-premiere,Cannes Première,section,Other Official Selection Sections,project,verified,fdc26-features Article 3,"Not competitive: a screening, never an award"
+cannes,special,Special Screenings,section,Other Official Selection Sections,project,verified,fdc26-features Article 3,The game's existing entry; not competitive
+cannes,camera-dor,Caméra d'Or,prize,First Film,director,unverified,fdc26-winners,UNVERIFIED: its own rules weren't read; the game counts debut features in the Official Selection sections it has
+cannes,shorts,Short Film Competition,section,Short Films,project,verified,fdc26-shorts,The game's existing entry
+cannes,short-palme,Short Film Palme d'Or,prize,Short Films,director,verified,fdc26-shorts; fdc26-winners,
+cannes,,La Cinef (film school films) And Its Prizes,,Short Films,,not-playable,fdc26-features Article 14; fdc26-winners,Film school work; the player is a working filmmaker
+annecy,features,Official Selection - Feature Films,section,Feature Films,project,verified,an26-features 9,The game's existing entry; selection is not a prize
+annecy,feature-cristal,Cristal For A Feature Film,prize,Feature Films,producer+director,verified,an26-features 9,
+annecy,feature-jury,Jury Award (Feature Films),prize,Feature Films,producer+director,verified,an26-features 9,
+annecy,paul-grimault,Paul Grimault Award,prize,Feature Films,director,verified,an26-features 9,
+annecy,contrechamp,Contrechamp,section,Feature Films,project,verified,an26-features 9,
+annecy,contrechamp-grand-prix,Contrechamp Grand Prix,prize,Feature Films,producer+director,verified,an26-features 9,
+annecy,contrechamp-jury,Contrechamp Jury Award,prize,Feature Films,producer+director,verified,an26-features 9,
+annecy,feature-audience,Audience Award (Feature Films),audience,Feature Films,project,verified,an26-features 9,
+annecy,feature-sacem,SACEM Award For Best Original Soundtrack In A Feature Film,partner,Feature Films,craft:composer,verified,an26-features 9 Partner Prizes,
+annecy,feature-gan,Gan Foundation Award For Distribution,partner,Feature Films,producer,unverified,an26-features 9 Partner Prizes,UNVERIFIED: its criteria weren't read; recorded as a partner award to the producer
+annecy,shorts,Official Selection - Short Films,section,Short Films,project,verified,an26-shorts 9,The game's existing entry
+annecy,short-cristal,Cristal For A Short Film,prize,Short Films,director,verified,an26-shorts 9,
+annecy,short-jury,Jury Award (Short Films),prize,Short Films,director,verified,an26-shorts 9,
+annecy,alexeieff-parker,Alexeïeff – Parker Award,prize,Short Films,director,verified,an26-shorts 9,
+annecy,xiberras,Jean-Luc Xiberras Award For A First Film,prize,Short Films,director,verified,an26-shorts 9,
+annecy,off-limits,Off-Limits,section,Short Films,project,verified,an26-shorts Categories,
+annecy,off-limits-award,Off-Limits Award,prize,Short Films,director,verified,an26-shorts 9,
+annecy,perspectives,Perspectives,section,Short Films,project,verified,an26-shorts Categories,
+annecy,young-audience,Young Audience Award,audience,Short Films,project,verified,an26-shorts 9,
+annecy,short-audience,Audience Award (Short Films),audience,Short Films,project,verified,an26-shorts 9,
+annecy,city-of-annecy,City Of Annecy Award,partner,Short Films,director,verified,an26-shorts 9 Partner Prizes,
+annecy,france-tv,France TV Award For A Short Film,partner,Short Films,director,verified,an26-shorts 9 Partner Prizes,
+annecy,andre-martin,André Martin Award For A French Short Film,partner,Short Films,director,verified,an26-shorts 9 Partner Prizes,French shorts in the Official Selection are automatically eligible
+annecy,short-sacem,SACEM Award For Best Original Soundtrack In A Short Film,partner,Short Films,craft:composer,verified,an26-shorts 9 Partner Prizes,
+annecy,canal-junior,CANAL+ Junior Jury Award,partner,Short Films,director,verified,an26-shorts 9 Partner Prizes,
+annecy,festivals-connexion,Festivals Connexion Award,partner,Short Films,director,verified,an26-shorts 9 Partner Prizes,
+annecy,vimeo,Vimeo Staff Pick Award For A Short Film In The Official And Off-Limits Categories,partner,Short Films,director,verified,an26-shorts 9 Partner Prizes,
+annecy,,Midnight Shorts And WTF,,Short Films,,unverified-not-playable,an26-shorts Categories,UNVERIFIED: named categories whose own prizes weren't read
+annecy,tv,Official Selection - TV Films,section,Television And Commissioned Films,project,unverified,Annecy 2026 TV terms (not read),The game's existing entry; UNVERIFIED: the TV terms weren't read
+annecy,tv-cristal,Cristal For A Television Production,prize,Television And Commissioned Films,producer,unverified,UNVERIFIED,UNVERIFIED: prize name assumed from the feature and short Cristals; the TV terms weren't read
+annecy,,Commissioned Films,,Television And Commissioned Films,,not-playable,Annecy commissioned films terms,Commissioned and branded work isn't made in the game
+venice,competition,Venezia 83 (Competition),section,Venezia 83,project,verified,Article 3.1,"The game's existing entry; selection is not a prize. Up to 21 feature films, world premieres"
+venice,golden-lion,Golden Lion For Best Film,prize,Venezia 83,producer,verified,Article 6.1,
+venice,grand-jury,Silver Lion - Grand Jury Prize,prize,Venezia 83,producer,verified,Article 6.1,
+venice,silver-lion-director,Silver Lion - Award For Best Director,prize,Venezia 83,director,verified,Article 6.1,
+venice,volpi-actress,Coppa Volpi For Best Actress,prize,Venezia 83,performer:Actress,verified,Article 6.1,
+venice,volpi-actor,Coppa Volpi For Best Actor,prize,Venezia 83,performer:Actor,verified,Article 6.1,
+venice,special-jury,Special Jury Prize,prize,Venezia 83,producer,verified,Article 6.1,
+venice,screenplay,Award For Best Screenplay,prize,Venezia 83,writer,verified,Article 6.1,
+venice,mastroianni,Marcello Mastroianni Award For Best New Young Actor Or Actress,prize,Venezia 83,performer:breakthrough,verified,Article 6.1,"No joint winners; a film may receive only one award, with one exception for an acting award"
+venice,out-of-competition,Open - Out Of Competition,section,Out Of Competition,project,verified,Article 3.2,"Not competitive: a screening, never an award. Up to 30 titles"
+venice,orizzonti,Orizzonti,section,Orizzonti,project,verified,Article 3.3,"The game's existing entry; it took shorts too until November 9, 2026"
+venice,orizzonti-corti,Orizzonti Corti,section,Orizzonti,project,verified,Article 3.3,Shorts of 20 minutes or less
+venice,orizzonti-film,Orizzonti Award For Best Film,prize,Orizzonti,producer,verified,Article 6.2,
+venice,orizzonti-director,Orizzonti Award For Best Director,prize,Orizzonti,director,verified,Article 6.2,
+venice,orizzonti-special,Special Orizzonti Jury Prize,prize,Orizzonti,producer,verified,Article 6.2,
+venice,orizzonti-actress,Orizzonti Award For Best Actress,prize,Orizzonti,performer:Actress,verified,Article 6.2,
+venice,orizzonti-actor,Orizzonti Award For Best Actor,prize,Orizzonti,performer:Actor,verified,Article 6.2,
+venice,orizzonti-screenplay,Orizzonti Award For Best Screenplay,prize,Orizzonti,writer,verified,Article 6.2,
+venice,orizzonti-short,Orizzonti Award For Best Short Film,prize,Orizzonti,director,verified,Article 6.2,
+venice,spotlight,Venice Spotlight,section,Venice Spotlight,project,verified,Article 3.4,Up to 8 works over 60 minutes
+venice,spotlight-audience,Armani Beauty Audience Award,audience,Venice Spotlight,project,verified,Article 6.3,The audience at each official screening votes
+venice,lion-of-the-future,"Lion Of The Future – ""Luigi De Laurentiis"" Venice Award For A Debut Film",prize,Debut Award,director+producer,verified,Article 6.5,"Debut fiction features in every competitive section, including the independent ones; the prize money is shared by the director and producer"
+venice,lifetime,Golden Lion For Lifetime Achievement,honorary,Lifetime Achievement,career-film,verified,Article 6.7,"At most two a year, on the Festival Director's recommendation"
+venice,sic,Settimana Internazionale Della Critica,section,Independent And Parallel Sections,project,unverified,Article 5.1,"UNVERIFIED: run by the National Syndicate of Italian Film Critics under its own regulations, not read; debut features in the game"
+venice,giornate,Giornate Degli Autori,section,Independent And Parallel Sections,project,unverified,Article 5.2,"UNVERIFIED: its own regulations, not read"
+venice,,Venice Classics And Venice Classics Award For Best Restored Film,,Independent And Parallel Sections,,not-playable,"Articles 3.5, 6.4",Restorations of older films aren't work the game makes
+venice,,Venice Immersive And Its Prizes,,Independent And Parallel Sections,,not-playable,"Articles 3.6, 6.6",Immersive works aren't made in the game
+tiff,official,Official Selection,section,,project,verified,tiff26-awards,Selection is not a prize
+tiff,peoples-choice,People's Choice Award,audience,,project,verified,tiff26-awards,The game's existing entry
+tiff,peoples-choice-documentary,People's Choice Documentary Award,audience,,project,verified,tiff26-awards,
+tiff,peoples-choice-midnight,People's Choice Midnight Madness Award,audience,,project,verified,tiff26-awards,
+tiff,international-peoples-choice,International People's Choice Award,audience,,project,unverified,tiff26-awards,UNVERIFIED: introduced in 2025; its scope wasn't read beyond the name
+tiff,midnight-madness,Midnight Madness,section,,project,unverified,tiff26-awards (named by its audience award),UNVERIFIED: section rules not read
+tiff,platform,Platform,section,Platform,project,verified,tiff26-platform,
+tiff,platform-award,Platform Award,prize,Platform,director,verified,tiff26-awards; tiff26-platform,"$20,000 CAD from an international jury; from 2026 a non-English-language winner qualifies for the Oscar International Feature Film route"
+tiff,canadian-feature,Best Canadian Feature Film Award,prize,Canadian Awards,director,verified,tiff26-awards,
+tiff,canadian-discovery,Best Canadian Discovery Award,prize,Canadian Awards,director,verified,tiff26-awards,
+tiff,shorts,Short Cuts,section,Short Cuts,project,verified,tiff26-awards,The game's existing entry
+tiff,short-cuts-international,Short Cuts Award For Best International Short Film,prize,Short Cuts,director,verified,tiff26-awards,
+tiff,short-cuts-canadian,Short Cuts Award For Best Canadian Short Film,prize,Short Cuts,director,verified,tiff26-awards,
+tiff,short-cuts-animated,Short Cuts Award For Best Animated Short Film,prize,Short Cuts,director,verified,tiff26-awards,
+tiff,fipresci,FIPRESCI Prize,partner,Independent Juries,director,verified,tiff26-awards,Critics' jury
+tiff,netpac,NETPAC Award,partner,Independent Juries,director,unverified,tiff26-awards,UNVERIFIED: the Asian and Pacific film scope comes from the jury's name; criteria not read
+tiff,,Amplify Voices Awards Presented By Canada Goose,,Independent Juries,,unverified-not-playable,tiff26-awards,UNVERIFIED: sponsor awards whose criteria weren't read
+san-sebastian,official,Official Selection,section,Official Selection,project,verified,ss74-rules Sections,The game's existing entry; selection is not a prize
+san-sebastian,golden-shell,Golden Shell For Best Film,prize,Official Selection,producer,unverified,"ss74-rules Awards: Official Awards, Golden Shells",UNVERIFIED: the official award page wasn't read
+san-sebastian,jury-prize,Special Jury Prize,prize,Official Selection,producer,unverified,ss74-rules Awards: Official Awards,UNVERIFIED: the official award page wasn't read
+san-sebastian,silver-shell-director,Silver Shell For Best Director,prize,Official Selection,director,unverified,ss74-rules Awards: Official Awards,UNVERIFIED: the official award page wasn't read
+san-sebastian,silver-shell-leading,Silver Shell For Best Leading Performance,prize,Official Selection,lead,unverified,ss74-rules Awards: Official Awards,UNVERIFIED: the official award page wasn't read
+san-sebastian,silver-shell-supporting,Silver Shell For Best Supporting Performance,prize,Official Selection,supporting,unverified,ss74-rules Awards: Official Awards,UNVERIFIED: the official award page wasn't read
+san-sebastian,screenplay,Jury Prize For Best Screenplay,prize,Official Selection,writer,unverified,ss74-rules Awards: Official Awards,UNVERIFIED: the official award page wasn't read
+san-sebastian,cinematography,Jury Prize For Best Cinematography,prize,Official Selection,craft:dop,unverified,ss74-rules Awards: Official Awards,UNVERIFIED: the official award page wasn't read
+san-sebastian,new-directors,New Directors,section,Other Sections And Their Awards,project,verified,ss74-rules Sections,
+san-sebastian,new-directors-award,Kutxabank-New Directors Award,prize,Other Sections And Their Awards,director,verified,ss74-rules Awards,
+san-sebastian,horizontes,Horizontes Latinos,section,Other Sections And Their Awards,project,verified,ss74-rules Sections,
+san-sebastian,horizontes-award,Make & Mark Horizontes Award,prize,Other Sections And Their Awards,producer+director,verified,ss74-rules Awards,
+san-sebastian,zabaltegi,Zabaltegi-Tabakalera,section,Other Sections And Their Awards,project,verified,ss74-rules Sections,
+san-sebastian,zabaltegi-award,Zabaltegi-Tabakalera Award,prize,Other Sections And Their Awards,director,verified,ss74-rules Awards,
+san-sebastian,perlak,Perlak,section,Other Sections And Their Awards,project,verified,ss74-rules Sections,Films already shown at other festivals
+san-sebastian,culinary,Culinary Zinema,section,Other Sections And Their Awards,project,unverified,ss74-rules Sections,UNVERIFIED: the game reads its theme from a nonfiction project's subject
+san-sebastian,culinary-award,Culinary Zinema Award,prize,Other Sections And Their Awards,director,verified,ss74-rules Awards,
+san-sebastian,velodrome,Velodrome,section,Other Sections And Their Awards,project,verified,ss74-rules Sections,Not competitive: a large public screening
+san-sebastian,music-award,SGAE Best Original Music Award,prize,Other Sections And Their Awards,craft:composer,unverified,ss74-rules Awards,UNVERIFIED: which sections it covers wasn't read
+san-sebastian,basque-award,Irizar Basque Film Award,prize,Other Sections And Their Awards,producer,unverified,ss74-rules Awards,UNVERIFIED: the game doesn't record Basque production or language yet
+san-sebastian,audience-award,City Of Donostia / San Sebastian Audience Award,audience,Other Sections And Their Awards,project,unverified,ss74-rules Awards,UNVERIFIED: which section it covers wasn't read
+san-sebastian,youth-award,Dama Youth Award,audience,Other Sections And Their Awards,project,unverified,ss74-rules Awards,UNVERIFIED: voted by young people; which section it covers wasn't read
+san-sebastian,,Nest And Nest Awards,,Other Sections And Their Awards,,not-playable,ss74-rules Sections; Awards,Film school work; the player is a working filmmaker
+san-sebastian,,"Industry Awards (WIP Latam, WIP Europa, Co-Production Forum, Ikusmira Berriak, Startup Challenge)",,Other Sections And Their Awards,,not-playable,ss74-rules Awards,"Awards for projects in development and industry programs, not finished films"
+san-sebastian,,"Other Awards (RTVE-Otra Mirada, Spanish Cooperation, Euskadi 2030 Agenda, Eusko Label, Loterías)",,Other Sections And Their Awards,,unverified-not-playable,ss74-rules Awards: Other Awards,UNVERIFIED: partner awards whose criteria weren't read
+san-sebastian,donostia,Donostia Award,honorary,Honorary Awards,career-film,verified,ss74-rules Awards: Honorary Awards; https://www.sansebastianfestival.com/donostia_awards/2/in,
+san-sebastian,,Zinemira Award,,Honorary Awards,,unverified-not-playable,ss74-rules Awards: Honorary Awards,UNVERIFIED: honors Basque film figures; criteria not read
+busan,competition,Competition,section,,project,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+busan,shorts,Short Films,section,,project,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+sitges,fantastic,Official Fantastic In-Competition Selection,section,Official Fantastic Competition Selection,project,verified,sitges-awards,The game's existing entry; selection is not a prize
+sitges,best-film,SOFC Best Feature Film Award,prize,Official Fantastic Competition Selection,producer+director,verified,sitges-awards,
+sitges,director,Best Director Award,prize,Official Fantastic Competition Selection,director,verified,sitges-awards,
+sitges,special-jury,Special Jury Prize,prize,Official Fantastic Competition Selection,producer+director,verified,sitges-awards,
+sitges,female-performance,Best Female Performance Award,prize,Official Fantastic Competition Selection,performer:Actress,verified,sitges-awards,
+sitges,male-performance,Best Male Performance Award,prize,Official Fantastic Competition Selection,performer:Actor,verified,sitges-awards,
+sitges,screenplay,Best Screenplay Award,prize,Official Fantastic Competition Selection,writer,verified,sitges-awards,
+sitges,photography,Best Photography Award,prize,Official Fantastic Competition Selection,craft:dop,verified,sitges-awards,
+sitges,effects,Best Special Effects Award,prize,Official Fantastic Competition Selection,craft:vfx-artist+compositor+prosthetics,verified,sitges-awards,
+sitges,music,Best Music Award,prize,Official Fantastic Competition Selection,craft:composer,verified,sitges-awards,
+sitges,first-feature,Citizen Kane Award For Best First Feature,prize,Official Fantastic Competition Selection,director,verified,sitges-awards,
+sitges,short,SOFC Best Short Film Award,prize,Official Fantastic Competition Selection,director,verified,sitges-awards,On the Academy Awards shortlist route
+sitges,critics,José Luis Guarner Award For Best Film,partner,Official Fantastic Competition Selection,director,verified,sitges-awards,Awarded by the Catalan Association of Cinematographic Critics and Writers
+sitges,melies-feature,Méliès d'Argent: Award For Best European Production Feature Film,partner,Official Fantastic Competition Selection,producer,verified,sitges-awards,
+sitges,melies-short,Méliès d'Argent: Award For Best European Production Short Film,partner,Official Fantastic Competition Selection,director,verified,sitges-awards,
+sitges,noves-visions,Noves Visions,section,Other Sections,project,verified,sitges-awards,
+sitges,noves-visions-film,Noves Visions Best Film Award,prize,Other Sections,director,unverified,sitges-awards,"UNVERIFIED: the page lists Best Direction, Best Original Screenplay and Best Original Music awards without naming every section; assigned to Noves Visions here"
+sitges,noves-visions-short,Best Short Noves Visions Petit Format Award,prize,Other Sections,director,verified,sitges-awards,
+sitges,animat,Anima't,section,Other Sections,project,verified,sitges-awards,
+sitges,animat-feature,Award For Best Animated Feature Film,prize,Other Sections,producer+director,verified,sitges-awards,
+sitges,animat-short,Award For Best Animated Short Film,prize,Other Sections,director,verified,sitges-awards,On the Academy Awards shortlist route
+sitges,panorama,Panorama,section,Other Sections,project,verified,sitges-awards,
+sitges,panorama-best,Best Panorama Movie,prize,Other Sections,director,verified,sitges-awards,
+sitges,midnight,Midnight X-Treme,section,Other Sections,project,verified,sitges-awards,
+sitges,midnight-best,Best Midnight X-Treme Movie,prize,Other Sections,director,verified,sitges-awards,
+sitges,documenta,Sitges Documenta,section,Other Sections,project,verified,sitges-awards,
+sitges,documenta-best,Sitges Documenta Best Film Award,prize,Other Sections,director,verified,sitges-awards,
+sitges,,"Sitges Collection, Brigadoon, Best Thriller, Ibero-American Production, Carnet Jove, SGAE Nova Autoria And Audience Awards",,Other Sections,,unverified-not-playable,sitges-awards,UNVERIFIED: listed on the awards page without the section rules that would place a film in them
+sitges,grand-honorary,Grand Honorary Prize,honorary,Honorary,career-film,verified,sitges-awards,
+sitges,maria,Honorary Maria Award,honorary,Honorary,career-film,verified,sitges-awards,
+sitges,time-machine,Time Machine Award,honorary,Honorary,career-film,verified,sitges-awards,
+sitges,,Nosferatu Award,,Honorary,,unverified-not-playable,sitges-awards,"UNVERIFIED: ""Retrospective honorary distinction, awarded to national and European cinematographic personalities"" and ""a career in a technical field"" are listed without saying which award each is"
+idfa,features,International Competition,section,Competitions,project,verified,idfa26-selection,The game's existing entry was named Feature Documentary Competition; selection is not a prize
+idfa,international-award,IDFA Award For Best Film (International Competition),prize,Competitions,director,unverified,UNVERIFIED,UNVERIFIED: the competition's prize names weren't read
+idfa,envision,Envision Competition,section,Competitions,project,verified,idfa26-selection,
+idfa,envision-award,IDFA Award For Best Film (Envision Competition),prize,Competitions,director,unverified,UNVERIFIED,UNVERIFIED: the competition's prize names weren't read
+idfa,shorts,Short Documentary Competition,section,Competitions,project,unverified,earlier game catalog,UNVERIFIED: not named in the 2026 announcement read
+idfa,first-feature,IDFA Award For Best First Feature,prize,Cross-Section Awards,director,verified,idfa26-selection,Drawn from several program sections
+idfa,fipresci,FIPRESCI Award,partner,Cross-Section Awards,director,verified,idfa26-selection,Chosen by critics among the films nominated for Best First Feature
+idfa,dutch-film,IDFA Award For Best Dutch Film,prize,Cross-Section Awards,director,verified,idfa26-selection,"€5,000 to the winning filmmaker"
+idfa,reframe,Beeld & Geluid IDFA ReFrame Award For Best Creative Use Of Archive,partner,Cross-Section Awards,director,verified,idfa26-selection,Selected from across the program; the game reads archival use from archival scenes
+idfa,luminous,Luminous,section,Cross-Section Awards,project,unverified,idfa26-selection,UNVERIFIED: a program section named among those eligible for cross-section awards
+idfa,frontlight,Frontlight,section,Cross-Section Awards,project,unverified,idfa26-selection,UNVERIFIED: a program section named among those eligible for cross-section awards
+hot-docs,festival,Hot Docs Festival Program,section,,project,verified,hd27-submit,Selection for the festival program; not a prize
+hot-docs,audience,Audience Award,audience,,project,unverified,earlier game catalog,UNVERIFIED: the game's existing entry; the award's rules weren't read
+hot-docs,,Hot Docs Forum And Deal Maker,,,,not-playable,hd27-submit,"Pitching programs for projects in development, not finished films"
+clermont,international,International Competition,section,International Competition,project,verified,cf27-reg,The game's existing entry; selection is not a prize
+clermont,grand-prix,Grand Prix (International Competition),prize,International Competition,director,verified,cf27-reg Article 11,"The director receives €5,000 and a Vercingétorix"
+clermont,special-jury,Special Jury Prize (International Competition),prize,International Competition,director,verified,cf27-reg Article 11,
+clermont,audience,Audience Award (International Competition),audience,International Competition,director,verified,cf27-reg Article 11,"Assigned by subscriber members of the audience; ""additional prizes may be awarded"""
+clermont,lab,Lab Competition,section,Other Competitions And Sections,project,unverified,cf27-reg,UNVERIFIED: its own Article 11 (prizes) wasn't read in full; experimental shorts in the game
+clermont,national,National Competition,section,Other Competitions And Sections,project,unverified,cf27-reg (named),"UNVERIFIED: the National Competition has its own regulations, not read"
+clermont,,XR Competition And Evaveo Prize,,Other Competitions And Sections,,not-playable,cf27-reg,Immersive works aren't made in the game
+clermont,,"Non-Competitive Sections (Young Audience, African Perspectives, Decibels !, Thrills)",,Other Competitions And Sections,,not-playable,cf27-reg Article 12,Programmed from competition entries by invitation; not prizes
+sxsw,narrative,Narrative Feature Competition,section,,project,verified,sxsw27-submit; earlier game catalog,The game's existing entry; feature fee $95 (second deadline) or $125 (final)
+sxsw,narrative-jury,Grand Jury Award: Narrative Feature,prize,,director,unverified,UNVERIFIED,UNVERIFIED: award name not read
+sxsw,narrative-audience,Audience Award: Narrative Feature,audience,,director,unverified,UNVERIFIED,UNVERIFIED: award name not read
+sxsw,documentary,Documentary Feature Competition,section,,project,verified,sxsw27-submit; earlier game catalog,The game's existing entry
+sxsw,documentary-jury,Grand Jury Award: Documentary Feature,prize,,director,unverified,UNVERIFIED,UNVERIFIED: award name not read
+sxsw,documentary-audience,Audience Award: Documentary Feature,audience,,director,unverified,UNVERIFIED,UNVERIFIED: award name not read
+sxsw,episodic,Episodic Pilot Competition,section,,project,verified,sxsw27-submit,"The game's existing entry; pilots or first seasons, $70 or $90"
+sxsw,episodic-jury,Grand Jury Award: Episodic Pilot,prize,,producer,unverified,UNVERIFIED,UNVERIFIED: award name not read
+sxsw,shorts,Short Film Competition,section,,project,verified,sxsw27-submit,The game's existing entry; $70 or $90
+sxsw,shorts-jury,Grand Jury Award: Short Film,prize,,director,unverified,UNVERIFIED,UNVERIFIED: award name not read; the qualifying route for the Oscars shorts depends on it
+sxsw,,Music Videos And XR,,,,not-playable,sxsw27-submit,Music videos and immersive works aren't made in the game
+series-mania,international,International Competition,section,,project,verified,sm27-call,The game's existing entry; selection is not a prize
+series-mania,grand-prix,Grand Prix (International Competition),prize,,producer,verified,sm26-awards,
+series-mania,intl-writing,Best Writing (International Competition),prize,,writer,verified,sm26-awards,
+series-mania,intl-actress,Best Actress (International Competition),prize,,performer:Actress,verified,sm26-awards,
+series-mania,intl-actor,Best Actor (International Competition),prize,,performer:Actor,verified,sm26-awards,
+series-mania,french,French Competition,section,,project,verified,sm27-call,
+series-mania,french-series,Best Series (French Competition),prize,,producer,verified,sm26-awards,
+series-mania,french-actress,Best Actress (French Competition),prize,,performer:Actress,verified,sm26-awards,
+series-mania,french-actor,Best Actor (French Competition),prize,,performer:Actor,verified,sm26-awards,
+series-mania,french-score,Best Musical Score (French Competition),prize,,craft:composer,verified,sm26-awards,
+series-mania,panorama,International Panorama,section,,project,verified,sm27-call,
+series-mania,panorama-series,Best Series (International Panorama),prize,,producer,verified,sm26-awards,
+series-mania,panorama-directing,Best Directing (International Panorama),prize,,director,verified,sm26-awards,
+series-mania,short-forms,Short Forms Competition,section,,project,verified,sm27-call,
+series-mania,short-forms-best,Best Series (Short Forms Competition),prize,,producer,unverified,sm26-awards,UNVERIFIED: the section's prize name wasn't separated on the page read
+series-mania,special-screenings,Special Screenings,section,,project,verified,sm27-call,"Not competitive: a screening, never an award"
+series-mania,audience,Audience Award,audience,,project,verified,sm26-awards,
+series-mania,,High School Students Of The Hauts-De-France Region Award And Students Award,,,,unverified-not-playable,sm26-awards,UNVERIFIED: student juries whose section scope wasn't read
+locarno,concorso,International Competition,section,,project,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+locarno,pardo,Pardo d'Oro,prize,,producer+director,blocked,UNVERIFIED,UNVERIFIED: the competition's top prize as commonly named; not read in the organizer's material
+fespaco,fiction,Feature Fiction Competition,section,,project,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+fespaco,documentary,Documentary Competition,section,,project,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+fespaco,shorts,Short Film Competition,section,,project,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+fespaco,series,Series Competition,section,,project,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+fespaco,etalon,Étalon d'Or De Yennenga,prize,,producer+director,blocked,UNVERIFIED,UNVERIFIED: the festival's top prize as earlier game records name it; not read in the organizer's material
+oscars,picture,Best Picture,award,"Picture, Directing And Writing",producer,verified,"Rule 1.3, Rule 20",Up to three credited producers (Rule 20)
+oscars,director,Directing,award,"Picture, Directing And Writing",director,verified,"Rule 1.3, Rule 12","Named Best Director in the game until November 9, 2026"
+oscars,screenplay,Writing (Original Screenplay),award,"Picture, Directing And Writing",writer-original,verified,"Rule 1.3, Rule 24","Named Best Original Screenplay in the game until November 9, 2026"
+oscars,adapted-screenplay,Writing (Adapted Screenplay),award,"Picture, Directing And Writing",writer-adapted,verified,"Rule 1.3, Rule 24",
+oscars,actor,Actor In A Leading Role,award,Acting,lead:Actor,verified,"Rule 1.3, Rule 6",
+oscars,actress,Actress In A Leading Role,award,Acting,lead:Actress,verified,"Rule 1.3, Rule 6",
+oscars,supporting-actor,Actor In A Supporting Role,award,Acting,supporting:Actor,verified,"Rule 1.3, Rule 6",
+oscars,supporting-actress,Actress In A Supporting Role,award,Acting,supporting:Actress,verified,"Rule 1.3, Rule 6",
+oscars,animated,Animated Feature Film,award,Feature Film Awards,producer,verified,"Rule 1.3, Rule 7",At least 75 percent animated
+oscars,documentary,Documentary Feature Film,award,Feature Film Awards,producer,verified,"Rule 1.3, Rule 13",
+oscars,international,International Feature Film,award,Feature Film Awards,national,verified,"Rule 1.3, Rule 16","Made outside the United States, more than half the dialogue not in English; a country's selection committee enters it, or a qualifying award at a festival on the Academy's list (new for the 99th)"
+oscars,live-short,Live Action Short Film,award,Short Film Awards,producer,verified,"Rule 1.3, Rule 17",
+oscars,animated-short,Animated Short Film,award,Short Film Awards,producer,verified,"Rule 1.3, Rule 8",
+oscars,doc-short,Documentary Short Film,award,Short Film Awards,producer,verified,"Rule 1.3, Rule 14",
+oscars,casting,Casting,award,Crafts,craft:casting-director,verified,"Rule 1.3, Rule 9",First given at the 98th Awards (2026)
+oscars,cinematography,Cinematography,award,Crafts,craft:dop,verified,"Rule 1.3, Rule 10",
+oscars,costume,Costume Design,award,Crafts,craft:costume-designer,verified,"Rule 1.3, Rule 11",
+oscars,editing,Film Editing,award,Crafts,craft:editor,verified,"Rule 1.3, Rule 15",
+oscars,makeup,Makeup And Hairstyling,award,Crafts,craft:hair-makeup+prosthetics,verified,"Rule 1.3, Rule 18",
+oscars,score,Music (Original Score),award,Crafts,craft:composer,verified,"Rule 1.3, Rule 19",
+oscars,song,Music (Original Song),award,Crafts,song,verified,"Rule 1.3, Rule 19",
+oscars,musical,Music (Original Musical),award,Crafts,song,verified,"Rule 1.3, Rule 19 I.C",Not given every year; at least five original songs by the same writers that further the story
+oscars,production-design,Production Design,award,Crafts,craft:production-designer+art-director,verified,"Rule 1.3, Rule 21",
+oscars,sound,Sound,award,Crafts,craft:sound-designer+re-recording-mixer+sound-mixer,verified,"Rule 1.3, Rule 22",
+oscars,visual-effects,Visual Effects,award,Crafts,craft:vfx-artist+compositor,verified,"Rule 1.3, Rule 23",
+oscars,thalberg,Irving G. Thalberg Memorial Award,honorary,Governors Awards,career-producer,verified,"Rule 1.4a, Rule 25",A creative producer whose body of work reflects consistently high quality
+oscars,,Jean Hersholt Humanitarian Award,,Governors Awards,,not-playable,Rule 1.4b,Humanitarian efforts outside production (Rule 1.4b) aren't modeled
+oscars,honorary,Honorary Award,honorary,Governors Awards,career,verified,"Rule 1.4c, Rule 25",Lifetime achievement or exceptional contribution
+oscars,special-achievement,Special Achievement Award,honorary,Special Awards,career,verified,"Rule 1.5a, Rule 26",Not given every year
+oscars,,Scientific And Technical Awards,,Special Awards,,not-playable,"Rule 1.5b, Rule 27","Recognize technology development, outside the filmmaking the game models"
+oscars,,Scientific And Technical Lifetime Achievement Award,,Special Awards,,not-playable,"Rule 1.5c, Rule 28",Technology development isn't modeled
+oscars,,Scientific And Technical Service Award,,Special Awards,,not-playable,"Rule 1.5d, Rule 28",Service to the Academy's technology work isn't modeled
+oscars,,Award Of Commendation,,Special Awards,,not-playable,"Rule 1.5e, Rule 28",Technology development isn't modeled
+bafta-film,film,Best Film,award,,producer,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+bafta-film,director,Director,award,,director,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+bafta-film,screenplay,Original Screenplay,award,,writer-original,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+bafta-film,leading-actor,Leading Actor,award,,lead:Actor,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+bafta-film,leading-actress,Leading Actress,award,,lead:Actress,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+bafta-film,animated,Animated Film,award,,producer,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+bafta-film,documentary,Documentary,award,,producer,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+bafta-tv,drama,Drama Series,award,,producer,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+bafta-tv,limited,Limited Drama,award,,producer,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+bafta-tv,factual,Factual Series,award,,producer,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+bafta-tv,leading-actor,Leading Actor,award,,lead:Actor,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+bafta-tv,leading-actress,Leading Actress,award,,lead:Actress,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+golden-globes,drama,Best Motion Picture – Drama,award,Motion Pictures,producer,verified,gg84-rules I.A list,
+golden-globes,comedy,Best Motion Picture – Musical Or Comedy,award,Motion Pictures,producer,verified,gg84-rules I.A list,
+golden-globes,animated,Best Motion Picture – Animated,award,Motion Pictures,producer,verified,gg84-rules I.A list,
+golden-globes,non-english,Best Motion Picture – Non-English Language,award,Motion Pictures,producer,verified,gg84-rules I.A list,At least 51 percent of the dialogue not in English
+golden-globes,actress-drama,Best Performance By A Female Actor In A Motion Picture – Drama,award,Motion Pictures,lead:Actress,verified,gg84-rules I.A list,
+golden-globes,actor-drama,Best Performance By A Male Actor In A Motion Picture – Drama,award,Motion Pictures,lead:Actor,verified,gg84-rules I.A list,
+golden-globes,actress-comedy,Best Performance By A Female Actor In A Motion Picture – Musical Or Comedy,award,Motion Pictures,lead:Actress,verified,gg84-rules I.A list,
+golden-globes,actor-comedy,Best Performance By A Male Actor In A Motion Picture – Musical Or Comedy,award,Motion Pictures,lead:Actor,verified,gg84-rules I.A list,
+golden-globes,supporting-actress,Best Performance By A Female Actor In A Supporting Role In Any Motion Picture,award,Motion Pictures,supporting:Actress,verified,gg84-rules I.A list,
+golden-globes,supporting-actor,Best Performance By A Male Actor In A Supporting Role In Any Motion Picture,award,Motion Pictures,supporting:Actor,verified,gg84-rules I.A list,
+golden-globes,director,Best Director – Motion Picture,award,Motion Pictures,director,verified,gg84-rules I.A list,
+golden-globes,screenplay,Best Screenplay – Motion Picture,award,Motion Pictures,writer,verified,gg84-rules I.A list,
+golden-globes,score,Best Original Score – Motion Picture,award,Motion Pictures,craft:composer,verified,gg84-rules I.A list,
+golden-globes,song,Best Original Song – Motion Picture,award,Motion Pictures,song,verified,gg84-rules I.A list,
+golden-globes,box-office,Best Cinematic And Box Office Achievement,award,Motion Pictures,producer,verified,gg84-rules I.B,Eligibility rests on box office or streaming audience thresholds; the game uses the film's reported theatrical earnings
+golden-globes,tv-drama,Best Television Series – Drama,award,Television,producer,verified,gg84-rules II list,
+golden-globes,tv-comedy,Best Television Series – Musical Or Comedy,award,Television,producer,verified,gg84-rules II list,
+golden-globes,tv-limited,"Best Television Limited Series, Anthology Series, Or Motion Picture Made For Television",award,Television,producer,verified,gg84-rules II list,
+golden-globes,tv-actress-drama,Best Performance By A Female Actor In A Television Series – Drama,award,Television,lead:Actress,verified,gg84-rules II list,
+golden-globes,tv-actor-drama,Best Performance By A Male Actor In A Television Series – Drama,award,Television,lead:Actor,verified,gg84-rules II list,
+golden-globes,tv-actress-comedy,Best Performance By A Female Actor In A Television Series – Musical Or Comedy,award,Television,lead:Actress,verified,gg84-rules II list,
+golden-globes,tv-actor-comedy,Best Performance By A Male Actor In A Television Series – Musical Or Comedy,award,Television,lead:Actor,verified,gg84-rules II list,
+golden-globes,tv-actress-limited,"Best Performance By A Female Actor In A Limited Series, Anthology Series, Or A Motion Picture Made For Television",award,Television,lead:Actress,verified,gg84-rules II list,
+golden-globes,tv-actor-limited,"Best Performance By A Male Actor In A Limited Series, Anthology Series, Or A Motion Picture Made For Television",award,Television,lead:Actor,verified,gg84-rules II list,
+golden-globes,tv-supporting-actress,Best Performance By A Female Actor In A Supporting Role On Television,award,Television,supporting:Actress,verified,gg84-rules II list,
+golden-globes,tv-supporting-actor,Best Performance By A Male Actor In A Supporting Role On Television,award,Television,supporting:Actor,verified,gg84-rules II list,
+golden-globes,,Best Performance In Stand-Up Comedy On Television,,Television,,not-playable,gg84-rules II list,Stand-up specials aren't a program type the game makes
+golden-globes,,Best Podcast,,Television,,not-playable,gg84-rules III.D,Podcasts aren't work the game makes
+golden-globes,demille,Cecil B. DeMille Award,honorary,Honorary Awards,career-film,verified,gg-demille,"For outstanding contributions to the world of entertainment, chosen by the organization"
+golden-globes,burnett,Carol Burnett Award,honorary,Honorary Awards,career-television,verified,gg-burnett,"For outstanding contributions to television, on or off screen"
+emmys,comedy,Outstanding Comedy Series,award,Program Awards,producer,verified,Category 79,
+emmys,drama,Outstanding Drama Series,award,Program Awards,producer,verified,Category 80,
+emmys,limited,Outstanding Limited Or Anthology Series,award,Program Awards,producer,verified,Category 81,
+emmys,movie,Outstanding Movie,award,Program Awards,producer,verified,Category 82,Named Outstanding Television Movie until the 2025 Emmys
+emmys,tv-movie,Outstanding Television Movie,award,Program Awards,producer,verified,77th rules (2025),years 1900-2025; kept for older entries
+emmys,animated-program,Outstanding Animated Program,award,Program Awards,producer,verified,Category 2,
+emmys,variety-series,Outstanding Variety Series,area,Program Awards,producer,verified,Area 83,
+emmys,variety-special-live,Outstanding Variety Special (Live),award,Program Awards,producer,verified,Category 84,"The game treats a one-episode variety program as a special; live versus pre-recorded is not modeled, so both specials take it"
+emmys,variety-special-recorded,Outstanding Variety Special (Pre-Recorded),award,Program Awards,producer,verified,Category 85,
+emmys,short-form-series,"Outstanding Short Form Comedy, Drama, Or Variety Series",award,Program Awards,producer,verified,Category 86,
+emmys,short-form-nonfiction,Outstanding Short Form Nonfiction Or Reality Series,award,Program Awards,producer,verified,Category 87,
+emmys,documentary-special,Outstanding Documentary Or Nonfiction Special,area,Program Awards,producer,verified,Area 88,
+emmys,documentary,Outstanding Documentary Or Nonfiction Series,area,Program Awards,producer,verified,Area 89,"The game's existing entry; it took unscripted series too until November 9, 2026"
+emmys,hosted-nonfiction,Outstanding Hosted Nonfiction Series Or Special,area,Program Awards,producer,verified,Area 90,
+emmys,documentary-merit,Exceptional Merit In Documentary Filmmaking,juried,Program Awards,producer,verified,Juried 91,
+emmys,structured-reality,Outstanding Structured Reality Program,award,Program Awards,producer,verified,Category 92,
+emmys,unstructured-reality,Outstanding Unstructured Reality Program,award,Program Awards,producer,verified,Category 93,
+emmys,reality-competition,Outstanding Reality Competition Program,award,Program Awards,producer,verified,Category 94,
+emmys,,Outstanding Game Show,,Program Awards,,not-playable,Category 95,Quiz and panel game shows aren't a program type the game makes; its competition programs are reality competitions
+emmys,lead-actor-comedy,Outstanding Lead Actor In A Comedy Series,award,Performer Awards,lead:Actor,verified,Category 58,
+emmys,lead-actor,Outstanding Lead Actor In A Drama Series,award,Performer Awards,lead:Actor,verified,Category 59,
+emmys,lead-actor-limited,Outstanding Lead Actor In A Limited Or Anthology Series Or Movie,award,Performer Awards,lead:Actor,verified,Category 60,
+emmys,lead-actress-comedy,Outstanding Lead Actress In A Comedy Series,award,Performer Awards,lead:Actress,verified,Category 61,
+emmys,lead-actress,Outstanding Lead Actress In A Drama Series,award,Performer Awards,lead:Actress,verified,Category 62,
+emmys,lead-actress-limited,Outstanding Lead Actress In A Limited Or Anthology Series Or Movie,award,Performer Awards,lead:Actress,verified,Category 63,
+emmys,supporting-actor-comedy,Outstanding Supporting Actor In A Comedy Series,award,Performer Awards,supporting:Actor,verified,Category 64,
+emmys,supporting-actor,Outstanding Supporting Actor In A Drama Series,award,Performer Awards,supporting:Actor,verified,Category 65,
+emmys,supporting-actor-limited,Outstanding Supporting Actor In A Limited Or Anthology Series Or Movie,award,Performer Awards,supporting:Actor,verified,Category 66,
+emmys,supporting-actress-comedy,Outstanding Supporting Actress In A Comedy Series,award,Performer Awards,supporting:Actress,verified,Category 67,
+emmys,supporting-actress,Outstanding Supporting Actress In A Drama Series,award,Performer Awards,supporting:Actress,verified,Category 68,
+emmys,supporting-actress-limited,Outstanding Supporting Actress In A Limited Or Anthology Series Or Movie,award,Performer Awards,supporting:Actress,verified,Category 69,
+emmys,guest-actor-comedy,Outstanding Guest Actor In A Comedy Series,award,Performer Awards,guest:Actor,verified,Category 70,
+emmys,guest-actor,Outstanding Guest Actor In A Drama Series,award,Performer Awards,guest:Actor,verified,Category 71,
+emmys,guest-actress-comedy,Outstanding Guest Actress In A Comedy Series,award,Performer Awards,guest:Actress,verified,Category 72,
+emmys,guest-actress,Outstanding Guest Actress In A Drama Series,award,Performer Awards,guest:Actress,verified,Category 73,
+emmys,short-form-performer,Outstanding Performer In A Short Form Comedy Or Drama Series,award,Performer Awards,performer,verified,Category 74,
+emmys,voice-over,Outstanding Character Voice-Over Performance,award,Performer Awards,voice,verified,Category 75,
+emmys,,Outstanding Narrator,,Performer Awards,,not-playable,Category 76,Documentary narration has no credited narrator in the game yet
+emmys,reality-host,Outstanding Host For A Reality Or Reality Competition Program,award,Performer Awards,host,verified,Category 77,
+emmys,,Outstanding Host For A Game Show,,Performer Awards,,not-playable,Category 78,Game shows aren't a program type the game makes
+emmys,directing-comedy,Outstanding Directing For A Comedy Series,award,Directing,director,verified,Category 24,
+emmys,directing,Outstanding Directing For A Drama Series,award,Directing,director,verified,Category 25,
+emmys,directing-limited,Outstanding Directing For A Limited Or Anthology Series Or Movie,award,Directing,director,verified,Category 26,
+emmys,directing-variety,Outstanding Directing For A Variety Series,award,Directing,director,verified,Category 27,
+emmys,directing-variety-special,Outstanding Directing For A Variety Special,award,Directing,director,verified,Category 28,
+emmys,directing-nonfiction,Outstanding Directing For A Documentary/Nonfiction Program,award,Directing,director,verified,Category 29,
+emmys,directing-reality,Outstanding Directing For A Reality Program,award,Directing,director,verified,Category 30,
+emmys,writing-comedy,Outstanding Writing For A Comedy Series,award,Writing,writer,verified,Category 113,
+emmys,writing,Outstanding Writing For A Drama Series,award,Writing,writer,verified,Category 114,
+emmys,writing-limited,Outstanding Writing For A Limited Or Anthology Series Or Movie,award,Writing,writer,verified,Category 115,
+emmys,writing-variety,Outstanding Writing For A Variety Series,award,Writing,writer,verified,Category 116,
+emmys,writing-variety-special,Outstanding Writing For A Variety Special,award,Writing,writer,verified,Category 117,
+emmys,writing-nonfiction,Outstanding Writing For A Nonfiction Program,award,Writing,writer,verified,Category 118,
+emmys,animation-individual,Outstanding Individual Achievement In Animation,juried,Animation,craft:character-designer+background-artist+storyboard-artist+animator+visdev-artist,verified,Juried 1,
+emmys,production-design-contemporary,Outstanding Production Design For A Narrative Contemporary Program (One Hour Or More),area,Production Design,craft:production-designer+art-director,verified,Area 3,Period or fantasy work enters Area 4; the game asks the project's story era
+emmys,production-design-period,Outstanding Production Design For A Narrative Period Or Fantasy Program (One Hour Or More),area,Production Design,craft:production-designer+art-director,verified,Area 4,
+emmys,production-design-half-hour,Outstanding Production Design For A Narrative Program (Half-Hour),area,Production Design,craft:production-designer+art-director,verified,Area 5,
+emmys,production-design-variety,Outstanding Production Design For A Variety Or Reality Series,area,Production Design,craft:production-designer+art-director,verified,Area 6,
+emmys,production-design-variety-special,Outstanding Production Design For A Variety Special,area,Production Design,craft:production-designer+art-director,verified,Area 7,
+emmys,casting-comedy,Outstanding Casting For A Comedy Series,award,Casting,craft:casting-director,verified,Category 8,
+emmys,casting-drama,Outstanding Casting For A Drama Series,award,Casting,craft:casting-director,verified,Category 9,
+emmys,casting-limited,Outstanding Casting For A Limited Or Anthology Series Or Movie,award,Casting,craft:casting-director,verified,Category 10,
+emmys,casting-reality,Outstanding Casting For A Reality Program,award,Casting,craft:casting-director,verified,Category 11,
+emmys,choreography-variety,Outstanding Choreography For Variety Or Reality Programming,area,Choreography,craft:choreographer,verified,Area 12,
+emmys,choreography-scripted,Outstanding Choreography For Scripted Programming,area,Choreography,craft:choreographer,verified,Area 13,
+emmys,cinematography-half-hour,Outstanding Cinematography For A Series (Half-Hour),award,Cinematography,craft:dop,verified,Category 14,
+emmys,cinematography-hour,Outstanding Cinematography For A Series (One Hour),award,Cinematography,craft:dop,verified,Category 15,
+emmys,cinematography-limited,Outstanding Cinematography For A Limited Or Anthology Series Or Movie,award,Cinematography,craft:dop,verified,Category 16,
+emmys,cinematography-nonfiction,Outstanding Cinematography For A Nonfiction Program,award,Cinematography,craft:dop,verified,Category 17,
+emmys,cinematography-reality,Outstanding Cinematography For A Reality Program,award,Cinematography,craft:dop,verified,Category 18,
+emmys,,Outstanding Commercial,,Cinematography,,not-playable,Category 19,Advertising isn't work the game makes
+emmys,costumes-period,Outstanding Period Costumes,area,Costume,craft:costume-designer,verified,Area 20,
+emmys,costumes-fantasy,Outstanding Fantasy/Sci-Fi Costumes,area,Costume,craft:costume-designer,verified,Area 21,
+emmys,costumes-contemporary,Outstanding Contemporary Costumes,area,Costume,craft:costume-designer,verified,Area 22,
+emmys,costumes-variety,"Outstanding Costumes For Variety, Nonfiction Or Reality Programming",juried,Costume,craft:costume-designer,verified,Juried 23,
+emmys,editing-drama,Outstanding Picture Editing For A Drama Series,award,Picture Editing,craft:editor,verified,Category 31,
+emmys,editing-comedy,Outstanding Picture Editing For A Comedy Series,award,Picture Editing,craft:editor,verified,Category 32,
+emmys,editing-limited,Outstanding Picture Editing For A Limited Or Anthology Series Or Movie,award,Picture Editing,craft:editor,verified,Category 33,
+emmys,editing-variety,Outstanding Picture Editing For Variety Programming,area,Picture Editing,craft:editor,verified,Area 34,
+emmys,editing-nonfiction,Outstanding Picture Editing For A Nonfiction Program,award,Picture Editing,craft:editor,verified,Category 35,
+emmys,editing-structured-reality,Outstanding Picture Editing For A Structured Reality Or Reality Competition Program,award,Picture Editing,craft:editor,verified,Category 36,
+emmys,editing-unstructured-reality,Outstanding Picture Editing For An Unstructured Reality Program,award,Picture Editing,craft:editor,verified,Category 37,
+emmys,,Outstanding Emerging Media Program,,Emerging Media,,not-playable,Category 38,Interactive and immersive media aren't work the game makes
+emmys,,Outstanding Innovation In Emerging Media Programming,,Emerging Media,,not-playable,Juried 39,Interactive and immersive media aren't work the game makes
+emmys,hairstyling-contemporary,Outstanding Contemporary Hairstyling,award,Hairstyling And Makeup,craft:hair-makeup,verified,Category 40,
+emmys,hairstyling-period,Outstanding Period Or Fantasy/Sci-Fi Hairstyling,area,Hairstyling And Makeup,craft:hair-makeup,verified,Area 41,
+emmys,hairstyling-variety,"Outstanding Hairstyling For A Variety, Nonfiction Or Reality Program",area,Hairstyling And Makeup,craft:hair-makeup,verified,Area 42,
+emmys,makeup-contemporary,Outstanding Contemporary Makeup (Non-Prosthetic),award,Hairstyling And Makeup,craft:hair-makeup,verified,Category 47,
+emmys,makeup-period,Outstanding Period Or Fantasy/Sci-Fi Makeup (Non-Prosthetic),area,Hairstyling And Makeup,craft:hair-makeup,verified,Area 48,
+emmys,makeup-variety,"Outstanding Makeup For A Variety, Nonfiction Or Reality Program",area,Hairstyling And Makeup,craft:hair-makeup,verified,Area 49,
+emmys,makeup-prosthetic,Outstanding Prosthetic Makeup,area,Hairstyling And Makeup,craft:prosthetics,verified,Area 50,
+emmys,lighting-series,Outstanding Lighting Design/Lighting Direction For A Series,area,"Lighting, Titles And Technical Direction",craft:gaffer,verified,Area 43,
+emmys,lighting-special,Outstanding Lighting Design/Lighting Direction For A Special,area,"Lighting, Titles And Technical Direction",craft:gaffer,verified,Area 44,
+emmys,title-design,Outstanding Title Design,award,"Lighting, Titles And Technical Direction",craft:compositor,verified,Category 45,"The game has no title-design crew role: titles are the compositor's work, so the compositor is credited"
+emmys,motion-design,Outstanding Motion Design,juried,"Lighting, Titles And Technical Direction",craft:compositor,verified,Juried 46,The game has no motion-design crew role: the compositor is credited
+emmys,technical-direction-series,Outstanding Technical Direction And Camerawork For A Series,area,"Lighting, Titles And Technical Direction",craft:camera-operator,verified,Area 111,
+emmys,technical-direction-special,Outstanding Technical Direction And Camerawork For A Special,area,"Lighting, Titles And Technical Direction",craft:camera-operator,verified,Area 112,
+emmys,music-series,Outstanding Music Composition For A Series (Original Dramatic Score),award,Music,craft:composer,verified,Category 51,
+emmys,music-limited,"Outstanding Music Composition For A Limited Or Anthology Series, Movie Or Special (Original Dramatic Score)",award,Music,craft:composer,verified,Category 52,
+emmys,music-nonfiction,Outstanding Music Composition For A Documentary/Nonfiction Or Reality Program (Original Dramatic Score),award,Music,craft:composer,verified,Category 53,
+emmys,music-direction,Outstanding Music Direction,award,Music,craft:composer,verified,Category 54,
+emmys,original-music-lyrics,Outstanding Original Music And Lyrics,award,Music,song,verified,Category 55,
+emmys,main-title-theme,Outstanding Original Main Title Theme Music,award,Music,craft:composer,verified,Category 56,
+emmys,music-supervision,Outstanding Music Supervision,award,Music,craft:music-supervisor,verified,Category 57,
+emmys,sound-editing-hour,Outstanding Sound Editing For A Comedy Or Drama Series (One Hour),award,Sound,craft:sound-designer,verified,Category 96,
+emmys,sound-editing-half-hour,Outstanding Sound Editing For A Comedy Or Drama Series (Half-Hour) And Animation,award,Sound,craft:sound-designer,verified,Category 97,
+emmys,sound-editing-limited,"Outstanding Sound Editing For A Limited Or Anthology Series, Movie Or Special",award,Sound,craft:sound-designer,verified,Category 98,
+emmys,sound-editing-nonfiction,Outstanding Sound Editing For A Nonfiction Or Reality Program,award,Sound,craft:sound-designer,verified,Category 99,
+emmys,sound-mixing-hour,Outstanding Sound Mixing For A Comedy Or Drama Series (One Hour),award,Sound,craft:re-recording-mixer+sound-mixer,verified,Category 100,
+emmys,sound-mixing-limited,Outstanding Sound Mixing For A Limited Or Anthology Series Or Movie,award,Sound,craft:re-recording-mixer+sound-mixer,verified,Category 101,
+emmys,sound-mixing-half-hour,Outstanding Sound Mixing For A Comedy Or Drama Series (Half-Hour) And Animation,area,Sound,craft:re-recording-mixer+sound-mixer,verified,Area 102,
+emmys,sound-mixing-variety,Outstanding Sound Mixing For A Variety Series Or Special,area,Sound,craft:re-recording-mixer+sound-mixer,verified,Area 103,
+emmys,sound-mixing-nonfiction,Outstanding Sound Mixing For A Nonfiction Program,award,Sound,craft:re-recording-mixer+sound-mixer,verified,Category 104,
+emmys,sound-mixing-reality,Outstanding Sound Mixing For A Reality Program,award,Sound,craft:re-recording-mixer+sound-mixer,verified,Category 105,
+emmys,vfx-season,Outstanding Special Visual Effects In A Season Or A Movie,award,Visual Effects And Stunts,craft:vfx-artist+compositor,verified,Category 106,
+emmys,vfx-episode,Outstanding Special Visual Effects In A Single Episode,area,Visual Effects And Stunts,craft:vfx-artist+compositor,verified,Area 107,
+emmys,stunt-comedy,Outstanding Stunt Coordination For Comedy Programming,award,Visual Effects And Stunts,craft:stunt-coordinator,verified,Category 108,
+emmys,stunt-drama,Outstanding Stunt Coordination For Drama Programming,award,Visual Effects And Stunts,craft:stunt-coordinator,verified,Category 109,
+emmys,,Outstanding Stunt Performance,,Visual Effects And Stunts,,not-playable,Category 110,Stunt performers are not cast or credited separately in the game; stunts are coordinated work
+emmys,legacy,Legacy Award,honorary,Governors And Special Awards,career-program,verified,Legacy Award,At least 60 episodes across at least 5 seasons; chosen by the Special Awards Committee and the Board of Governors
+emmys,governors,The Governors Award,honorary,Governors And Special Awards,career,verified,The Governors Award,"Chosen by the Special Awards Committee and the Board of Governors for transformational impact, not an overall body of work"
+emmys,,Syd Cassyd Founders Award,,Governors And Special Awards,,not-playable,Syd Cassyd Founders Award,"Recognizes service to the Television Academy, which the game doesn't model"
+emmys,,"Outstanding Achievement In Engineering, Science & Technology",,Governors And Special Awards,,not-playable,Engineering award,"Recognizes engineering and technology development, outside the filmmaking the game models"
+emmys,,The Television Academy Honors,,Governors And Special Awards,,not-playable,Television Academy Honors,Recognizes programming that explores social and health issues; the game doesn't record what issues a program takes on
+emmys,,Bob Hope Humanitarian Award,,Governors And Special Awards,,not-playable,Bob Hope Humanitarian Award,"Recognizes humanitarian work outside production, which the game doesn't model"
+international-emmys,arts,Arts Programming,award,Categories Presented,producer,verified,iemmy54-categories,The game reads arts programming from a nonfiction project's subject
+international-emmys,actress,Best Performance By An Actress,award,Categories Presented,performer:Actress,verified,iemmy54-categories,
+international-emmys,actor,Best Performance By An Actor,award,Categories Presented,performer:Actor,verified,iemmy54-categories,
+international-emmys,comedy,Comedy,award,Categories Presented,producer,verified,iemmy54-categories,
+international-emmys,,Current Affairs,,Categories Presented,,not-playable,iemmy54-categories,News and current affairs reporting isn't work the game makes
+international-emmys,documentary,Documentary,award,Categories Presented,producer,verified,iemmy54-categories,
+international-emmys,drama,Drama Series,award,Categories Presented,producer,verified,iemmy54-categories,
+international-emmys,kids-animation,Kids: Animation,award,Categories Presented,producer,verified,iemmy54-categories,
+international-emmys,kids-factual,Kids: Factual & Entertainment,award,Categories Presented,producer,verified,iemmy54-categories,
+international-emmys,kids-live-action,Kids: Live-Action,award,Categories Presented,producer,verified,iemmy54-categories,
+international-emmys,,News,,Categories Presented,,not-playable,iemmy54-categories,News isn't work the game makes
+international-emmys,non-scripted,Non-Scripted Entertainment,award,Categories Presented,producer,verified,iemmy54-categories,
+international-emmys,short-form,Short-Form Series,award,Categories Presented,producer,verified,iemmy54-categories,
+international-emmys,,Sports Documentary,,Categories Presented,,not-playable,iemmy54-categories,Sports aren't a documentary subject the game distinguishes
+international-emmys,,Telenovela,,Categories Presented,,not-playable,iemmy54-categories,Telenovelas aren't a program type the game makes
+international-emmys,tv-movie,TV Movie/Mini-Series,award,Categories Presented,producer,verified,iemmy54-categories,
+international-emmys,founders,International Emmy Founders Award,honorary,Special Awards,career-television,verified,iemmy-special,Two special awards a year to individuals or organizations with a global impact on television
+international-emmys,directorate,International Emmy Directorate Award,honorary,Special Awards,career-television,verified,iemmy-special,
+international-emmys,,Sir Peter Ustinov Television Scriptwriting Award,,Other Awards,,not-playable,iemmy54-categories Other Awards,Open to non-American citizens under 30 for an unproduced script; the game's scripts are produced work and the player's age isn't the point of the award
+international-emmys,,JCS International Young Creatives Award,,Other Awards,,unverified-not-playable,iemmy54-categories Other Awards,UNVERIFIED: criteria page not read
+annie,feature,Best Feature,award,Production Categories,producer,verified,annie54-categories 1,
+annie,feature-independent,Best Feature - Independent,award,Production Categories,producer,verified,annie54-categories 2,The game reads independent as made without a studio commissioner
+annie,special,Best Special Production,award,Production Categories,producer,verified,annie54-categories 3,
+annie,short,Best Short Subject,award,Production Categories,producer,verified,annie54-categories 4,
+annie,,Best Sponsored,,Production Categories,,not-playable,annie54-categories 5,Sponsored and branded work isn't made in the game
+annie,tv-preschool,Best TV/Media - Preschool,award,Production Categories,producer,verified,annie54-categories 6,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
+annie,tv-children,Best TV/Media - Children,award,Production Categories,producer,verified,annie54-categories 7,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
+annie,tv-mature,Best TV/Media - Mature,award,Production Categories,producer,verified,annie54-categories 8,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
+annie,,Best TV/Media - International Anime Production,,Production Categories,,not-playable,annie54-categories 9,Anime production as a national industry style isn't distinguished in the game
+annie,tv-limited,Best TV/Media – Limited Series,award,Production Categories,producer,verified,annie54-categories 10,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
+annie,tv,Best TV Or Media Production,award,Production Categories,producer,verified,53rd Annie Awards,years 1900-2026; split into the age and limited-series categories above for the 54th; kept for older entries
+annie,,Best Student Film,,Production Categories,,not-playable,annie54-categories 11,"The player is a working filmmaker, not a student"
+annie,fx-tv,Best FX - TV/Media,award,Achievement Categories,craft:fx-artist,verified,annie54-categories 12,
+annie,fx-feature,Best FX - Feature,award,Achievement Categories,craft:fx-artist,verified,annie54-categories 13,
+annie,character-animation-tv,Best Character Animation - TV/Media,award,Achievement Categories,craft:animator+stopmo-animator,verified,annie54-categories 14,
+annie,character-animation-feature,Best Character Animation - Feature,award,Achievement Categories,craft:animator+stopmo-animator,verified,annie54-categories 15,
+annie,character-animation-live,Best Character Animation - Live Action,award,Achievement Categories,craft:animator,verified,annie54-categories 16,Animated characters in live-action work: hybrid projects in the game
+annie,,Best Character Animation - Video Game,,Achievement Categories,,not-playable,annie54-categories 17,Games aren't work the game makes
+annie,character-design-tv,Best Character Design - TV/Media,award,Achievement Categories,craft:character-designer,verified,annie54-categories 18,
+annie,character-design-feature,Best Character Design - Feature,award,Achievement Categories,craft:character-designer,verified,annie54-categories 19,
+annie,directing-tv,Best Direction - TV/Media,award,Achievement Categories,director,verified,annie54-categories 20,
+annie,directing,Best Direction - Feature,award,Achievement Categories,director,verified,annie54-categories 21,"Named Directing In A Feature Production in the game until November 9, 2026"
+annie,music-tv,Best Music - TV/Media,award,Achievement Categories,craft:composer,verified,annie54-categories 22,
+annie,music-feature,Best Music - Feature,award,Achievement Categories,craft:composer,verified,annie54-categories 23,
+annie,production-design-tv,Best Production Design - TV/Media,award,Achievement Categories,craft:visdev-artist+background-artist+production-designer,verified,annie54-categories 24,
+annie,production-design-feature,Best Production Design - Feature,award,Achievement Categories,craft:visdev-artist+background-artist+production-designer,verified,annie54-categories 25,
+annie,storyboarding-tv,Best Storyboarding - TV/Media,award,Achievement Categories,craft:storyboard-artist,verified,annie54-categories 26,
+annie,storyboarding-feature,Best Storyboarding - Feature,award,Achievement Categories,craft:storyboard-artist,verified,annie54-categories 27,
+annie,voice-tv,Best Voice Acting - TV/Media,award,Achievement Categories,voice,verified,annie54-categories 28,
+annie,voice,Best Voice Acting - Feature,award,Achievement Categories,voice,verified,annie54-categories 29,"Named Voice Acting In A Feature Production in the game until November 9, 2026"
+annie,writing-tv,Best Writing - TV/Media,award,Achievement Categories,writer,verified,annie54-categories 30,
+annie,writing,Best Writing - Feature,award,Achievement Categories,writer,verified,annie54-categories 31,"Named Writing In A Feature Production in the game until November 9, 2026"
+annie,editorial-tv,Best Editorial - TV/Media,award,Achievement Categories,craft:editor,verified,annie54-categories 32,
+annie,editorial-feature,Best Editorial - Feature,award,Achievement Categories,craft:editor,verified,annie54-categories 33,
+annie,winsor-mccay,Winsor McCay Award,honorary,Juried Awards,career-animation,unverified,annie54-categories Juried,UNVERIFIED: the award's criteria page wasn't read; treated as a career honor
+annie,,June Foray Award,,Juried Awards,,unverified-not-playable,annie54-categories Juried,"UNVERIFIED: criteria page not read; believed to recognize service to the animation community, which the game doesn't model"
+annie,,Ub Iwerks Award,,Juried Awards,,unverified-not-playable,annie54-categories Juried,"UNVERIFIED: criteria page not read; believed to recognize animation technology, outside the game"
+annie,special-achievement,Special Achievement In Animation,honorary,Juried Awards,career-animation,unverified,annie54-categories Juried,UNVERIFIED: criteria page not read; treated as discretionary
+spirit,feature,Best Feature,award,Film,producer,verified,sa27-film Category Information,"Producers only; co-, executive, associate and line producers are not eligible"
+spirit,first-feature,Best First Feature,award,Film,producer+director,verified,sa27-film Category Information,The director's narrative feature debut
+spirit,director,Best Director,award,Film,director,verified,sa27-film Category Information,
+spirit,screenplay,Best Screenplay,award,Film,writer,verified,sa27-film Category Information,
+spirit,first-screenplay,Best First Screenplay,award,Film,writer,verified,sa27-film Category Information,The writer's first produced feature screenplay
+spirit,cassavetes,John Cassavetes Award,award,Film,producer+director+writer,verified,sa27-film Category Information,"Budget under $1,000,000; the final cost report top sheet is required"
+spirit,cinematography,Best Cinematography,award,Film,craft:dop,verified,sa27-film Category Information,
+spirit,editing,Best Editing,award,Film,craft:editor,verified,sa27-film Category Information,
+spirit,lead,Best Lead Performance,award,Film,lead,verified,sa27-film Category Information,Gender-neutral
+spirit,supporting,Best Supporting Performance,award,Film,supporting,verified,sa27-film Category Information,Gender-neutral
+spirit,breakthrough,Best Breakthrough Performance,award,Film,performer:breakthrough,verified,sa27-film Category Information,The game reads breakthrough as a performer's first credited lead or supporting part
+spirit,documentary,Best Documentary,award,Film,producer+director,verified,sa27-film Category Information,American and international documentaries; not eligible in any other category
+spirit,international,Best International Feature,award,Film,director,verified,sa27-film Category Information,International narrative films; only also eligible for Best International First Feature
+spirit,international-first,Best International First Feature,award,Film,director,verified,sa27-film Category Information,
+spirit,redford,Robert Redford Environmental Vision Award,juried,Film,producer+director+writer,verified,sa27-film Category Information; sa27-tv,"Partnered with The Redford Center; one film or series; needs the story's climate or environmental theme, recorded in the game from November 9, 2026"
+spirit,,Someone To Watch,,Emerging Filmmaker Awards,,not-playable,sa27-film Nominating Guidelines,Chosen by its own committee for an emerging director; the rules give no criteria beyond the committee
+spirit,,Truer Than Fiction,,Emerging Filmmaker Awards,,not-playable,sa27-film Nominating Guidelines,Chosen by its own committee for an emerging documentary director; criteria not in the rules read
+spirit,,Producers Award,,Emerging Filmmaker Awards,,not-playable,sa27-film Nominating Guidelines,Chosen by its own committee for an emerging producer; criteria not in the rules read
+spirit,,Digital Creator Award,,Emerging Filmmaker Awards,,not-playable,sa27-digital Category Information,Digital creator work (online video) isn't work the game makes
+spirit,series,Best New Scripted Series,award,Television,producer,verified,sa27-tv Category Information,"Including continuing, limited and anthology series"
+spirit,nonscripted-series,Best New Non-Scripted Or Documentary Series,award,Television,producer,verified,sa27-tv Category Information,
+spirit,tv-lead,Best Lead Performance In A New Scripted Series,award,Television,lead,verified,sa27-tv Category Information,
+spirit,tv-supporting,Best Supporting Performance In A New Scripted Series,award,Television,supporting,verified,sa27-tv Category Information,
+spirit,tv-breakthrough,Best Breakthrough Performance In A New Scripted Series,award,Television,performer:breakthrough,verified,sa27-tv Category Information,
+spirit,tv-ensemble,Best Ensemble Cast In A New Scripted Series,juried,Television,ensemble,verified,sa27-tv Category Information,Every submitted new scripted series is considered; awarded at the committee's discretion
+gotham,feature,Best Feature,award,Film,producer+director,verified,gotham26-criteria Additional Criteria,"U.S. fiction feature; at least two US-based people among director, producer and writer"
+gotham,documentary,Best Documentary Feature,award,Film,producer+director,verified,gotham26-criteria Additional Criteria,U.S. or international
+gotham,international,Best International Feature,award,Film,producer+director,verified,gotham26-criteria Additional Criteria,
+gotham,director,Best Director,award,Film,director,verified,gotham26-criteria Additional Criteria,U.S. or international fiction
+gotham,breakthrough-director,Breakthrough Director,award,Film,director,verified,gotham26-criteria Additional Criteria,The director's first fiction film
+gotham,original-screenplay,Best Original Screenplay,award,Film,writer-original,verified,gotham26-criteria Additional Criteria,
+gotham,adapted-screenplay,Best Adapted Screenplay,award,Film,writer-adapted,verified,gotham26-criteria Additional Criteria,
+gotham,lead,Outstanding Lead Performance,award,Film,lead,verified,gotham26-criteria Additional Criteria,Gender-neutral; leading or co-leading role
+gotham,supporting,Outstanding Supporting Performance,award,Film,supporting,verified,gotham26-criteria Additional Criteria,Gender-neutral
+gotham,breakthrough-performer,Breakthrough Performer,award,Film,performer:breakthrough,verified,gotham26-criteria Additional Criteria,A debut or breakthrough performance
+gotham,series,Breakthrough Series,award,Film,producer,verified,Earlier Gotham Awards,years 2015-2023; kept for older entries
+gotham,tribute,Gotham Tributes,honorary,Tributes,career-film,unverified,"awards.thegotham.org home page (2025 Tributes: Cultural Icon, Director, Ensemble, Musical, Spotlight, Vanguard, Visionary)",UNVERIFIED: tribute criteria aren't published; treated as a career honor chosen by the organization
+gotham,,Gotham TV Awards,,Television,,unverified-not-playable,tvawards.thegotham.org,"UNVERIFIED: a separate program (tvawards.thegotham.org) whose pages returned nothing from this environment on November 9, 2026; its categories are not yet researched"
+dga,feature,Outstanding Directorial Achievement In Theatrical Feature Film,award,Film,director,verified,dga79-feature,Open to DGA and non-DGA directors; a seven-day Los Angeles or New York run in 2026; no day-and-date release
+dga,first-feature,Michael Apted Award For Outstanding Directorial Achievement In First-Time Theatrical Feature Film,award,Film,director,verified,dga79-annual,Shares its entry form with Documentary Film
+dga,documentary,Outstanding Directorial Achievement In Documentary Film,award,Film,director,verified,dga79-annual,
+dga,drama,Outstanding Directorial Achievement In Dramatic Series,award,Television,director,verified,dga79-annual,Member and agreement rule not modeled
+dga,comedy,Outstanding Directorial Achievement In Comedy Series,award,Television,director,verified,dga79-annual,Member and agreement rule not modeled
+dga,limited,Outstanding Directorial Achievement In Limited & Anthology Series,award,Television,director,verified,dga79-annual,Member and agreement rule not modeled
+dga,movie,Outstanding Directorial Achievement In Movies For Television,award,Television,director,verified,dga79-annual,Member and agreement rule not modeled
+dga,documentary-series,Outstanding Directorial Achievement In Documentary Series / News,award,Television,director,verified,dga79-annual,Member and agreement rule not modeled
+dga,variety,Outstanding Directorial Achievement In Variety,award,Television,director,verified,dga79-variety,Talk series and specials enter here; no theatrical exhibition before television or streaming
+dga,reality,Outstanding Directorial Achievement In Reality / Quiz & Game,award,Television,director,verified,dga79-reality,Any reality content places a program here
+dga,,Outstanding Directorial Achievement In Sports,,Television,,not-playable,dga79-annual,Sports broadcasts aren't work the game makes
+dga,,Outstanding Directorial Achievement In Commercials,,Television,,not-playable,dga79-annual,Advertising isn't work the game makes
+dga,,DGA Special Awards,,Special Awards,,unverified-not-playable,dga79-annual,UNVERIFIED: the Guild announces special award recipients (dga79-annual news list) but no criteria page was read
+wga,original,Original Screenplay,award,Screenplay,writer-original,verified,wga27-screenplay,"Was the game's only WGA film category until November 9, 2026"
+wga,adapted,Adapted Screenplay,award,Screenplay,writer-adapted,verified,wga27-screenplay,
+wga,documentary-screenplay,Documentary Screenplay,award,Screenplay,writer,verified,wga27-docscreenplay,
+wga,drama-series,Drama Series,award,Series,writer,verified,wga27-series,"Series written for a signatory company and aired January 1 to December 31, 2026"
+wga,comedy-series,Comedy Series,award,Series,writer,verified,wga27-series,
+wga,limited-series,Limited Series,award,Series,writer,verified,wga27-series,
+wga,new-series,New Series,award,Series,writer,verified,wga27-series,
+wga,movie,Television & Streaming Motion Pictures,award,"Television, Streaming And Audio Scripts",writer,verified,wga27-tv #1,
+wga,animation,Animation,award,"Television, Streaming And Audio Scripts",writer,verified,wga27-tv #2,
+wga,episodic,Episodic Drama,award,"Television, Streaming And Audio Scripts",writer,verified,wga27-tv #3,The game's existing entry
+wga,episodic-comedy,Episodic Comedy,award,"Television, Streaming And Audio Scripts",writer,verified,wga27-tv #4,
+wga,talk-series,Comedy/Variety – Talk Series,award,"Television, Streaming And Audio Scripts",writer,verified,wga27-tv #5(A),
+wga,variety-specials,"Comedy/Variety – Music, Awards, Tributes – Specials",award,"Television, Streaming And Audio Scripts",writer,verified,wga27-tv #5(B),
+wga,,Comedy/Variety – Sketch Series,,"Television, Streaming And Audio Scripts",,not-playable,wga27-tv #5(C),Sketch comedy isn't distinguished from other variety programs in the game
+wga,,Quiz And Audience Participation,,"Television, Streaming And Audio Scripts",,not-playable,wga27-tv #5(D),Quiz programs aren't a program type the game makes
+wga,documentary-current,Documentary Script – Current Events,award,"Television, Streaming And Audio Scripts",writer,verified,wga27-tv #6(A),The game reads current events from a nonfiction project's story era
+wga,documentary-other,Documentary Script – Other Than Current Events,award,"Television, Streaming And Audio Scripts",writer,verified,wga27-tv #6(B),
+wga,,"News Script – Regularly Scheduled, Bulletin, Or Breaking Report",,"Television, Streaming And Audio Scripts",,not-playable,wga27-tv #7(A),News isn't work the game makes
+wga,,"News Script – Analysis, Feature Or Commentary",,"Television, Streaming And Audio Scripts",,not-playable,wga27-tv #7(B),News isn't work the game makes
+wga,,Daytime Drama,,"Television, Streaming And Audio Scripts",,not-playable,wga27-tv #8,Daytime serials aren't a program type the game makes
+wga,childrens,"Children's Episodic, Long Form And Specials",award,"Television, Streaming And Audio Scripts",writer,verified,wga27-tv #9,
+wga,,Radio/Audio Documentary,,"Television, Streaming And Audio Scripts",,not-playable,wga27-tv #10,Audio work isn't made in the game
+wga,,"Radio/Audio News Script – Regularly Scheduled, Bulletin Or Breaking Report",,"Television, Streaming And Audio Scripts",,not-playable,wga27-tv #11,Audio work isn't made in the game
+wga,,"Radio/Audio News Script – Analysis, Feature Or Commentary",,"Television, Streaming And Audio Scripts",,not-playable,wga27-tv #12,Audio work isn't made in the game
+wga,,On-Air Promotion,,"Television, Streaming And Audio Scripts",,not-playable,wga27-tv #13,Promotional spots aren't made in the game
+wga,short-form,Short Form Streaming,award,"Television, Streaming And Audio Scripts",writer,verified,wga27-tv #15,
+wga,,Digital News,,"Television, Streaming And Audio Scripts",,not-playable,wga27-tv #16,News isn't work the game makes
+wga,selvin,Paul Selvin Award,award,Special Awards,writer,unverified,wga27-selvin,"UNVERIFIED: the page's criteria weren't expanded; recorded from the award's published name only, so the theme requirement is not yet modeled"
+wga,,Laurel Awards And Special Achievement Awards,,Special Awards,,unverified-not-playable,awards.wga.org/awards/awards-recipients/laurel-awards,UNVERIFIED: recipient pages list honorees; no criteria were read
+pga,theatrical,Darryl F. Zanuck Award For Outstanding Producer Of Theatrical Motion Pictures,award,Motion Pictures,producer,verified,pga37,
+pga,animated,Award For Outstanding Producer Of Animated Theatrical Motion Pictures,award,Motion Pictures,producer,verified,pga37,
+pga,documentary,Award For Outstanding Producer Of Documentary Motion Pictures,award,Motion Pictures,producer,verified,pga37,
+pga,drama,Norman Felton Award For Outstanding Producer Of Episodic Television – Drama,award,Television,producer,verified,pga37,
+pga,comedy,Danny Thomas Award For Outstanding Producer Of Episodic Television – Comedy,award,Television,producer,verified,pga37,
+pga,limited,David L. Wolper Award For Outstanding Producer Of Limited Or Anthology Series Television,award,Television,producer,verified,pga37,
+pga,tv-movie,Award For Outstanding Producer Of Televised Or Streamed Motion Pictures,award,Television,producer,verified,pga37,
+pga,nonfiction,Award For Outstanding Producer Of Non-Fiction Television,award,Television,producer,verified,pga37,
+pga,live-variety,"Award For Outstanding Producer Of Live Entertainment, Variety, Sketch, Standup & Talk Television",award,Television,producer,verified,pga37,
+pga,game-competition,Award For Outstanding Producer Of Game & Competition Television,award,Television,producer,verified,pga37,
+pga,childrens,The Award For Outstanding Children's Program,award,Television,producer,verified,pga37,
+pga,short-form,The Award For Outstanding Short Form Program,award,Television,producer,verified,pga37,
+pga,,The Award For Outstanding Sports Program,,Television,,not-playable,pga37,Sports programs aren't work the game makes
+pga,,The PGA Innovation Award,,Television,,not-playable,pga37,"Recognizes interactive and emerging media, which the game doesn't make"
+pga,selznick,David O. Selznick Achievement Award In Theatrical Motion Pictures,honorary,Honorary Awards,career-producer,verified,pga37; https://producersguild.org/selznick-award/,
+pga,lear,Norman Lear Achievement Award In Television,honorary,Honorary Awards,career-producer,verified,pga37; https://producersguild.org/norman-lear-award/,
+pga,,Milestone Award,,Honorary Awards,,unverified-not-playable,https://producersguild.org/the-milestone-award/,UNVERIFIED: criteria page not read
+pga,kramer,Stanley Kramer Award,honorary,Honorary Awards,career-producer,unverified,pga37; https://producersguild.org/kramer-award/,"UNVERIFIED: criteria page not read; recorded as a producer honor for work on social issues, not yet modeled beyond a body of work"
+pga,,Visionary Award,,Honorary Awards,,unverified-not-playable,https://producersguild.org/visionary-award/,UNVERIFIED: criteria page not read
+actor-awards,male-lead,Outstanding Performance By A Male Actor In A Leading Role,award,Motion Pictures,lead:Actor,verified,aa33-rules One,
+actor-awards,female-lead,Outstanding Performance By A Female Actor In A Leading Role,award,Motion Pictures,lead:Actress,verified,aa33-rules One,
+actor-awards,male-supporting,Outstanding Performance By A Male Actor In A Supporting Role,award,Motion Pictures,supporting:Actor,verified,aa33-rules One,
+actor-awards,female-supporting,Outstanding Performance By A Female Actor In A Supporting Role,award,Motion Pictures,supporting:Actress,verified,aa33-rules One,
+actor-awards,cast,Outstanding Performance By A Cast In A Motion Picture,award,Motion Pictures,ensemble,verified,aa33-rules One,"Every actor in the cast credits, not co-stars"
+actor-awards,tv-male-limited,Outstanding Performance By A Male Actor In A Television Movie Or Limited Series,award,Television Programs,performer:Actor,verified,aa33-rules One,
+actor-awards,tv-female-limited,Outstanding Performance By A Female Actor In A Television Movie Or Limited Series,award,Television Programs,performer:Actress,verified,aa33-rules One,
+actor-awards,tv-male-drama,Outstanding Performance By A Male Actor In A Drama Series,award,Television Programs,performer:Actor,verified,aa33-rules One,
+actor-awards,tv-female-drama,Outstanding Performance By A Female Actor In A Drama Series,award,Television Programs,performer:Actress,verified,aa33-rules One,
+actor-awards,tv-male-comedy,Outstanding Performance By A Male Actor In A Comedy Series,award,Television Programs,performer:Actor,verified,aa33-rules One,
+actor-awards,tv-female-comedy,Outstanding Performance By A Female Actor In A Comedy Series,award,Television Programs,performer:Actress,verified,aa33-rules One,
+actor-awards,ensemble-drama,Outstanding Performance By An Ensemble In A Drama Series,award,Television Programs,ensemble,verified,aa33-rules One,
+actor-awards,ensemble-comedy,Outstanding Performance By An Ensemble In A Comedy Series,award,Television Programs,ensemble,verified,aa33-rules One,
+actor-awards,,Outstanding Action Performance By A Stunt Ensemble In A Motion Picture,,Non-Broadcast Stunt Honors,,not-playable,aa33-rules One,Stunt performers aren't cast or credited separately in the game
+actor-awards,,Outstanding Action Performance By A Stunt Ensemble In A Television Series,,Non-Broadcast Stunt Honors,,not-playable,aa33-rules One,Stunt performers aren't cast or credited separately in the game
+actor-awards,,The SAG-AFTRA Life Achievement Award,,Life Achievement,,not-playable,"aa33-rules Two, Nine","Also requires a history of humanitarian and public service work, which the game doesn't model"
+cesar,film,Meilleur Film,award,Films,producer+director,verified,"Article 1, Article 3 A",The statuette goes to the delegate producers and the director
+cesar,first-film,Meilleur Premier Film,award,Films,producer+director,verified,"Article 1, Article 3 K",
+cesar,animated,Meilleur Film d'Animation,award,Films,producer+director,verified,"Article 1, Article 3 M",
+cesar,documentary,Meilleur Film Documentaire,award,Films,producer+director,verified,"Article 1, Article 3 L",
+cesar,foreign,Meilleur Film Étranger,award,Films,director,verified,"Article 1, Article 3 B",Films that don't meet the French nationality conditions; the statuette goes to the director
+cesar,director,Meilleure Réalisation,award,"Direction, Writing And Performance",director,verified,Article 1,"Named Best Director in the game until November 9, 2026"
+cesar,screenplay,Meilleur Scénario Original,award,"Direction, Writing And Performance",writer-original,verified,"Article 1, Article 3 G","Named Best Original Screenplay in the game until November 9, 2026"
+cesar,adaptation,Meilleure Adaptation,award,"Direction, Writing And Performance",writer-adapted,verified,"Article 1, Article 3 G",
+cesar,actress,Meilleure Actrice,award,"Direction, Writing And Performance",lead:Actress,verified,Article 1,
+cesar,actor,Meilleur Acteur,award,"Direction, Writing And Performance",lead:Actor,verified,Article 1,
+cesar,supporting-actress,Meilleure Actrice dans un Second Rôle,award,"Direction, Writing And Performance",supporting:Actress,verified,Article 1,
+cesar,supporting-actor,Meilleur Acteur dans un Second Rôle,award,"Direction, Writing And Performance",supporting:Actor,verified,Article 1,
+cesar,newcomer-actress,Meilleur Espoir Féminin,award,"Direction, Writing And Performance",performer:Actress:breakthrough,verified,"Article 1, Article 3 D",
+cesar,newcomer-actor,Meilleur Espoir Masculin,award,"Direction, Writing And Performance",performer:Actor:breakthrough,verified,"Article 1, Article 3 D",
+cesar,score,Meilleure Musique Originale,award,Crafts,craft:composer,verified,"Article 1, Article 3 F",
+cesar,sound,Meilleur Son,award,Crafts,craft:sound-mixer+sound-designer+re-recording-mixer,verified,"Article 1, Article 3 H",The whole sound team; at most four people named
+cesar,cinematography,Meilleure Photo,award,Crafts,craft:dop,verified,Article 1,
+cesar,editing,Meilleur Montage,award,Crafts,craft:editor,verified,Article 1,
+cesar,costumes,Meilleurs Costumes,award,Crafts,craft:costume-designer,verified,Article 1,
+cesar,production-design,Meilleurs Décors,award,Crafts,craft:production-designer+art-director,verified,Article 1,
+cesar,visual-effects,Meilleurs Effets Visuels,award,Crafts,craft:vfx-artist+compositor,verified,"Article 1, Article 3 I",
+cesar,makeup,Meilleur Maquillage/Coiffure,award,Crafts,craft:hair-makeup+prosthetics,verified,"Article 1, Article 3 J",The whole makeup and hair team
+cesar,short-animation,Meilleur Film de Court Métrage d'Animation,award,Short Films,producer+director,verified,Article 1,Chosen from a committee's selection
+cesar,short-documentary,Meilleur Film de Court Métrage Documentaire,award,Short Films,producer+director,verified,Article 1,Chosen from a committee's selection
+cesar,short-fiction,Meilleur Film de Court Métrage de Fiction,award,Short Films,producer+director,verified,Article 1,Chosen from a committee's selection
+cesar,honneur,César d'Honneur,honorary,Honorary And Other Awards,career-film,verified,Article 2,On the proposal of the Academy's Bureau
+cesar,lyceens,César des Lycéens,audience,Honorary And Other Awards,project,verified,Article 2,Voted by a college of high-school students among the five Best Film nominees
+goya,film,Mejor Película,award,Films,producer,verified,Base 2.1 a,"Named Best Film in the game until November 9, 2026"
+goya,animated,Mejor Película de Animación,award,Films,producer,verified,Base 2.1 v,
+goya,documentary,Mejor Película Documental,award,Films,producer,verified,Base 2.1 w,
+goya,european,Mejor Película Europea,award,Films,producer,verified,Base 2.2,"Own specific rules, not read"
+goya,iberoamerican,Mejor Película Iberoamericana,award,Films,producer,verified,Base 2.2,"Own specific rules, not read"
+goya,short-fiction,Mejor Cortometraje de Ficción,award,Films,producer,verified,Base 2.2,"Own specific rules, not read"
+goya,short-documentary,Mejor Cortometraje Documental,award,Films,producer,verified,Base 2.2,"Own specific rules, not read"
+goya,short-animation,Mejor Cortometraje de Animación,award,Films,producer,verified,Base 2.2,"Own specific rules, not read"
+goya,director,Mejor Dirección,award,Direction And Writing,director,verified,Base 2.1 b,"Named Best Director in the game until November 9, 2026"
+goya,new-director,Mejor Dirección Novel,award,Direction And Writing,director,verified,Base 2.1 c,
+goya,screenplay,Mejor Guion Original,award,Direction And Writing,writer-original,verified,Base 2.1 d,"Named Best Original Screenplay in the game until November 9, 2026"
+goya,adapted-screenplay,Mejor Guion Adaptado,award,Direction And Writing,writer-adapted,verified,Base 2.1 e,
+goya,actor,Mejor Actor Protagonista,award,Performance,lead:Actor,verified,Base 2.1 h,
+goya,actress,Mejor Actriz Protagonista,award,Performance,lead:Actress,verified,Base 2.1 i,
+goya,supporting-actor,Mejor Actor de Reparto,award,Performance,supporting:Actor,verified,Base 2.1 j,
+goya,supporting-actress,Mejor Actriz de Reparto,award,Performance,supporting:Actress,verified,Base 2.1 k,
+goya,new-actor,Mejor Actor Revelación,award,Performance,performer:Actor:breakthrough,verified,Base 2.1 l,
+goya,new-actress,Mejor Actriz Revelación,award,Performance,performer:Actress:breakthrough,verified,Base 2.1 m,
+goya,score,Mejor Música Original,award,Music And Crafts,craft:composer,verified,Base 2.1 f,
+goya,song,Mejor Canción Original,award,Music And Crafts,song,verified,Base 2.1 g,
+goya,production-management,Mejor Dirección de Producción,award,Music And Crafts,craft:line-producer+production-manager,verified,Base 2.1 n,
+goya,cinematography,Mejor Dirección de Fotografía,award,Music And Crafts,craft:dop,verified,Base 2.1 o,
+goya,editing,Mejor Montaje,award,Music And Crafts,craft:editor,verified,Base 2.1 p,
+goya,art-direction,Mejor Dirección de Arte,award,Music And Crafts,craft:production-designer+art-director,verified,Base 2.1 q,
+goya,costume,Mejor Diseño de Vestuario,award,Music And Crafts,craft:costume-designer,verified,Base 2.1 r,
+goya,makeup,Mejor Maquillaje y Peluquería,award,Music And Crafts,craft:hair-makeup+prosthetics,verified,Base 2.1 s,
+goya,sound,Mejor Sonido,award,Music And Crafts,craft:sound-mixer+sound-designer+re-recording-mixer,verified,Base 2.1 t,
+goya,effects,Mejores Efectos Especiales,award,Music And Crafts,craft:vfx-artist+compositor,verified,Base 2.1 u,
+goya,honor,Goya de Honor,honorary,Honorary Awards,career-film,verified,Base 2.3,"One a year, for a professional career as a whole, by the Academy's board"
+goya,international,Goya Internacional,honorary,Honorary Awards,career-film,verified,Base 2.4,"One a year, unless the board decides otherwise"
+canadian-screen,film,Best Motion Picture,award,,producer,verified,csa27-film 10000,The game's existing entry
+canadian-screen,art-direction,Achievement In Art Direction / Production Design,award,,craft:production-designer+art-director,verified,csa27-film 11000,
+canadian-screen,makeup,Achievement In Make-Up,award,,craft:hair-makeup+prosthetics,verified,csa27-film 11500,"Up to three entrants; Make-Up or Hair, not both"
+canadian-screen,costume,Achievement In Costume Design,award,,craft:costume-designer,verified,csa27-film 12000,
+canadian-screen,hair,Achievement In Hair,award,,craft:hair-makeup,verified,csa27-film 12500,
+canadian-screen,cinematography,Achievement In Cinematography,award,,craft:dop,verified,csa27-film 13000,Presented by the Paul Bronfman Family Foundation
+canadian-screen,direction,Achievement In Direction,award,,director,verified,csa27-film 14000,
+canadian-screen,editing,Achievement In Editing,award,,craft:editor,verified,csa27-film 15000,
+canadian-screen,score,Achievement In Music – Original Score,award,,craft:composer,verified,csa27-film 16000,
+canadian-screen,song,Achievement In Music – Original Song,award,,song,verified,csa27-film 17000,Written for the film; not a closing-credits song; at least four eligible entries
+canadian-screen,lead-drama,"Performance In A Leading Role, Drama",award,,lead,verified,csa27-film 18000,Gender-neutral
+canadian-screen,lead-comedy,"Performance In A Leading Role, Comedy",award,,lead,verified,csa27-film 18500,
+canadian-screen,supporting-drama,"Performance In A Supporting Role, Drama",award,,supporting,verified,csa27-film 19000,
+canadian-screen,supporting-comedy,"Performance In A Supporting Role, Comedy",award,,supporting,verified,csa27-film 19500,
+canadian-screen,voice-film,Best Voice Performance,award,,voice,verified,csa27-film 9528,
+canadian-screen,visual-effects,Achievement In Visual Effects,award,,craft:vfx-artist+compositor,verified,csa27-film 30000,
+canadian-screen,sound-mixing,Achievement In Sound Mixing,award,,craft:re-recording-mixer+sound-mixer,verified,csa27-film 22000,
+canadian-screen,sound-editing,Achievement In Sound Editing,award,,craft:sound-designer,verified,csa27-film 23000,
+canadian-screen,original-screenplay,Original Screenplay,award,,writer-original,verified,csa27-film 24000,Collapsed with Adapted into Best Screenplay when either has fewer than five entries
+canadian-screen,adapted-screenplay,Adapted Screenplay,award,,writer-adapted,verified,csa27-film 25000,
+canadian-screen,stunts-film,Best Stunt Coordination,award,,craft:stunt-coordinator,verified,csa27-film 9509,
+canadian-screen,casting-film,Achievement In Casting,award,,craft:casting-director,verified,csa27-film 21500,
+canadian-screen,documentary,Best Feature Length Documentary,award,,producer,verified,"csa27-film Section III B, XI","The game's existing entry; entered by production-cost tier (up to $250,000, or over)"
+canadian-screen,short-documentary,Best Short Documentary,award,,producer,verified,"csa27-film Section III B, XI",
+canadian-screen,short-drama,Best Live Action Short Drama,award,,producer,verified,"csa27-film Section III B, XI",
+canadian-screen,short-animated,Best Animated Short,award,,producer,verified,"csa27-film Section III B, XI",
+canadian-screen,first-feature,John Dunning Best First Feature Film Award,award,Film: Special Awards,producer+director,verified,csa27-film Section VIII,Chosen by its own committee
+canadian-screen,golden-screen-film,Golden Screen Award For Feature Film,award,Film: Special Awards,producer,unverified,csa27-film Section VIII,UNVERIFIED: the box office basis wasn't read in detail; recorded as the top-earning Canadian feature
+canadian-screen,tv-movie,Best TV Movie,award,Television,producer,verified,csa27-tv 1001,
+canadian-screen,drama,Best Drama Series,award,Television,producer,verified,csa27-tv 1003,
+canadian-screen,tv-comedy-series,Best Comedy Series,award,Television,producer,verified,csa27-tv 1004,
+canadian-screen,tv-comedy-special,Best Comedy Special,award,Television,producer,verified,csa27-tv 1005,
+canadian-screen,,Best News or Information Program,,Television,,not-playable,csa27-tv 1006,"News, sports and online creator work aren't made in the game"
+canadian-screen,tv-reality-competition-program-or-series,Best Reality/Competition Program or Series,award,Television,producer,verified,csa27-tv 1007,
+canadian-screen,tv-sketch-comedy-show-ensemble-performance,Best Sketch Comedy Show & Ensemble Performance,award,Television,producer+ensemble,verified,csa27-tv 1008,
+canadian-screen,,Best Lifestyle Program or Series,,Television,,not-playable,csa27-tv 1009,"Lifestyle programs (cooking, home and similar) aren't a program type the game makes"
+canadian-screen,tv-live-entertainment-special,Best Live Entertainment Special,award,Television,producer,verified,csa27-tv 1010,
+canadian-screen,tv-donald-brittain-award-for-best-social-political-,Donald Brittain Award for Best Social/Political Documentary Program,award,Television,producer,verified,csa27-tv 1011,
+canadian-screen,tv-history-documentary-program-or-series,Best History Documentary Program or Series,award,Television,producer,verified,csa27-tv 1012,
+canadian-screen,tv-talk-series,Best Talk Series,award,Television,producer,verified,csa27-tv 1013,
+canadian-screen,tv-rob-stewart-award-for-best-science-or-nature-doc,Rob Stewart Award for Best Science or Nature Documentary Program or Series,award,Television,producer,verified,csa27-tv 1014,
+canadian-screen,tv-biography-or-arts-documentary-program-or-series,Best Biography or Arts Documentary Program or Series,award,Television,producer,verified,csa27-tv 1015,
+canadian-screen,tv-documentary-program,Best Documentary Program,award,Television,producer,verified,csa27-tv 1016,
+canadian-screen,tv-childrens-or-youth-animated-program-or-series,Best Children’s or Youth Animated Program or Series,award,Television,producer,verified,csa27-tv 1017,
+canadian-screen,tv-pre-school-program-or-series,Best Pre-School Program or Series,award,Television,producer,verified,csa27-tv 1018,
+canadian-screen,tv-childrens-or-youth-fiction-program-or-series,Best Children’s or Youth Fiction Program or Series,award,Television,producer,verified,csa27-tv 1019,
+canadian-screen,tv-childrens-or-youth-non-fiction-program-or-series,Best Children’s or Youth Non-Fiction Program or Series,award,Television,producer,verified,csa27-tv 1020,
+canadian-screen,,Best Live Sports Event,,Television,,not-playable,csa27-tv 1022,"News, sports and online creator work aren't made in the game"
+canadian-screen,,Best Sports Program or Series,,Television,,not-playable,csa27-tv 1023,"News, sports and online creator work aren't made in the game"
+canadian-screen,,Best Local Newscast,,Television,,not-playable,csa27-tv 1025,"News, sports and online creator work aren't made in the game"
+canadian-screen,tv-factual-series,Best Factual Series,award,Television,producer,verified,csa27-tv 1026,
+canadian-screen,,Best National Newscast,,Television,,not-playable,csa27-tv 1027,"News, sports and online creator work aren't made in the game"
+canadian-screen,,Best Live News Special,,Television,,not-playable,csa27-tv 1029,"News, sports and online creator work aren't made in the game"
+canadian-screen,tv-web-program-or-series-fiction,"Best Web Program or Series, Fiction",award,Television,producer,verified,csa27-tv 1033,
+canadian-screen,tv-web-program-or-series-non-fiction,"Best Web Program or Series, Non-Fiction",award,Television,producer,verified,csa27-tv 1034,
+canadian-screen,tv-lead-performance-web-program-or-series,"Best Lead Performance, Web Program or Series",award,Television,lead,verified,csa27-tv 1036,
+canadian-screen,tv-supporting-performance-web-program-or-series,"Best Supporting Performance, Web Program or Series",award,Television,supporting,verified,csa27-tv 1037,
+canadian-screen,tv-direction-web-program-or-series,"Best Direction, Web Program or Series",award,Television,director,verified,csa27-tv 1038,
+canadian-screen,tv-writing-web-program-or-series,"Best Writing, Web Program or Series",award,Television,writer,verified,csa27-tv 1039,
+canadian-screen,tv-host-web-program-or-series,"Best Host, Web Program or Series",award,Television,host,verified,csa27-tv 1040,
+canadian-screen,tv-picture-editing-web-program-or-series,"Best Picture Editing, Web Program or Series",award,Television,craft:editor,verified,csa27-tv 1047,
+canadian-screen,,Creator of the Year,,Television,,not-playable,csa27-tv 1048,"News, sports and online creator work aren't made in the game"
+canadian-screen,tv-direction-tv-movie,"Best Direction, TV Movie",award,Television,director,verified,csa27-tv 2001,
+canadian-screen,tv-direction-drama-series,"Best Direction, Drama Series",award,Television,director,verified,csa27-tv 2002,
+canadian-screen,tv-direction-variety-or-sketch-comedy,"Best Direction, Variety or Sketch Comedy",award,Television,director,verified,csa27-tv 2003,
+canadian-screen,tv-direction-comedy,"Best Direction, Comedy",award,Television,director,verified,csa27-tv 2005,
+canadian-screen,,"Best Direction, Lifestyle or Information",,Television,,not-playable,csa27-tv 2007,"Lifestyle programs (cooking, home and similar) aren't a program type the game makes"
+canadian-screen,tv-direction-documentary-program,"Best Direction, Documentary Program",award,Television,director,verified,csa27-tv 2008,
+canadian-screen,tv-direction-documentary-series,"Best Direction, Documentary Series",award,Television,director,verified,csa27-tv 2009,
+canadian-screen,tv-direction-childrens-or-youth,"Best Direction, Children’s or Youth",award,Television,director,verified,csa27-tv 2010,
+canadian-screen,,"Best Direction, Live Sports Event",,Television,,not-playable,csa27-tv 2011,"News, sports and online creator work aren't made in the game"
+canadian-screen,tv-direction-animation,"Best Direction, Animation",award,Television,director,verified,csa27-tv 2012,
+canadian-screen,tv-direction-reality-competition,"Best Direction, Reality/Competition",award,Television,director,verified,csa27-tv 2013,
+canadian-screen,tv-direction-factual,"Best Direction, Factual",award,Television,director,verified,csa27-tv 2014,
+canadian-screen,tv-writing-tv-movie,"Best Writing, TV Movie",award,Television,writer,verified,csa27-tv 3001,
+canadian-screen,tv-writing-drama-series,"Best Writing, Drama Series",award,Television,writer,verified,csa27-tv 3002,
+canadian-screen,tv-writing-comedy,"Best Writing, Comedy",award,Television,writer,verified,csa27-tv 3003,
+canadian-screen,tv-writing-lifestyle-or-reality-competition,"Best Writing, Lifestyle or Reality/Competition",award,Television,writer,verified,csa27-tv 3004,
+canadian-screen,tv-writing-documentary,"Best Writing, Documentary",award,Television,writer,verified,csa27-tv 3005,
+canadian-screen,tv-writing-childrens-or-youth,"Best Writing, Children’s or Youth",award,Television,writer,verified,csa27-tv 3006,
+canadian-screen,,Barbara Sears Award for Best Editorial Research,,Television,,not-playable,csa27-tv 3007,News and current affairs research isn't work the game makes
+canadian-screen,,Barbara Sears Award for Best Visual Research,,Television,,not-playable,csa27-tv 3008,News and current affairs research isn't work the game makes
+canadian-screen,tv-writing-variety-or-sketch-comedy,"Best Writing, Variety or Sketch Comedy",award,Television,writer,verified,csa27-tv 3009,
+canadian-screen,tv-writing-childrens-or-youth-animation,"Best Writing, Children’s or Youth Animation",award,Television,writer,verified,csa27-tv 3010,
+canadian-screen,tv-writing-factual,"Best Writing, Factual",award,Television,writer,verified,csa27-tv 3011,
+canadian-screen,tv-writing-pre-school,"Best Writing, Pre-School",award,Television,writer,verified,csa27-tv 3012,
+canadian-screen,tv-photography-drama,"Best Photography, Drama",award,Television,craft:dop,verified,csa27-tv 4001,
+canadian-screen,tv-photography-comedy,"Best Photography, Comedy",award,Television,craft:dop,verified,csa27-tv 4002,
+canadian-screen,tv-photography-lifestyle-or-reality-competition,"Best Photography, Lifestyle or Reality/Competition",award,Television,craft:dop,verified,csa27-tv 4004,
+canadian-screen,tv-photography-documentary-or-factual,"Best Photography, Documentary or Factual",award,Television,craft:dop,verified,csa27-tv 4005,
+canadian-screen,,"Best Photography, News or Information",,Television,,not-playable,csa27-tv 4006,"News, sports and online creator work aren't made in the game"
+canadian-screen,tv-picture-editing-drama,"Best Picture Editing, Drama",award,Television,craft:editor,verified,csa27-tv 5001,
+canadian-screen,tv-picture-editing-factual,"Best Picture Editing, Factual",award,Television,craft:editor,verified,csa27-tv 5003,
+canadian-screen,tv-picture-editing-documentary,"Best Picture Editing, Documentary",award,Television,craft:editor,verified,csa27-tv 5004,
+canadian-screen,tv-picture-editing-reality-competition,"Best Picture Editing, Reality/Competition",award,Television,craft:editor,verified,csa27-tv 5005,
+canadian-screen,tv-picture-editing-comedy,"Best Picture Editing, Comedy",award,Television,craft:editor,verified,csa27-tv 5006,
+canadian-screen,tv-picture-editing-childrens-or-youth,"Best Picture Editing, Children's or Youth",award,Television,craft:editor,verified,csa27-tv 5007,
+canadian-screen,tv-sound-fiction,"Best Sound, Fiction",award,Television,craft:sound-designer+re-recording-mixer+sound-mixer,verified,csa27-tv 6001,
+canadian-screen,tv-sound-animation,"Best Sound, Animation",award,Television,craft:sound-designer+re-recording-mixer+sound-mixer,verified,csa27-tv 6003,
+canadian-screen,tv-sound-documentary-or-factual,"Best Sound, Documentary or Factual",award,Television,craft:sound-designer+re-recording-mixer+sound-mixer,verified,csa27-tv 6005,
+canadian-screen,tv-sound-lifestyle-reality-or-entertainment,"Best Sound, Lifestyle, Reality, or Entertainment",award,Television,craft:sound-designer+re-recording-mixer+sound-mixer,verified,csa27-tv 6006,
+canadian-screen,tv-production-design-or-art-direction-fiction,"Best Production Design or Art Direction, Fiction",award,Television,craft:production-designer+art-director,verified,csa27-tv 7001,
+canadian-screen,tv-production-design-or-art-direction-non-fiction,"Best Production Design or Art Direction, Non-Fiction",award,Television,craft:production-designer+art-director,verified,csa27-tv 7002,
+canadian-screen,tv-costume-design,Best Costume Design,award,Television,craft:costume-designer,verified,csa27-tv 7003,
+canadian-screen,tv-achievement-in-make-up,Best Achievement in Make-Up,award,Television,craft:hair-makeup+prosthetics,verified,csa27-tv 7004,
+canadian-screen,tv-visual-effects,Best Visual Effects,award,Television,craft:vfx-artist+compositor,verified,csa27-tv 7005,
+canadian-screen,tv-achievement-in-hair,Best Achievement in Hair,award,Television,craft:hair-makeup,verified,csa27-tv 7006,
+canadian-screen,tv-original-music-animation,"Best Original Music, Animation",award,Television,craft:composer,verified,csa27-tv 8004,
+canadian-screen,tv-original-music-drama,"Best Original Music, Drama",award,Television,craft:composer,verified,csa27-tv 8005,
+canadian-screen,tv-original-music-comedy,"Best Original Music, Comedy",award,Television,craft:composer,verified,csa27-tv 8006,
+canadian-screen,tv-original-music-documentary,"Best Original Music, Documentary",award,Television,craft:composer,verified,csa27-tv 8007,
+canadian-screen,tv-original-music-factual-lifestyle-reality-or-ente,"Best Original Music, Factual, Lifestyle, Reality, or Entertainment",award,Television,craft:composer,verified,csa27-tv 8008,
+canadian-screen,tv-original-music-original-song,Best Original Music – Original Song,award,Television,song,verified,csa27-tv 8009,
+canadian-screen,,Best News or Information Segment,,Television,,not-playable,csa27-tv 9001,"News, sports and online creator work aren't made in the game"
+canadian-screen,,Best Sports Feature Segment,,Television,,not-playable,csa27-tv 9002,"News, sports and online creator work aren't made in the game"
+canadian-screen,,Best Sports Opening,,Television,,not-playable,csa27-tv 9003,"News, sports and online creator work aren't made in the game"
+canadian-screen,tv-lead-performer-tv-movie,"Best Lead Performer, TV Movie",award,Television,lead,verified,csa27-tv 9501,
+canadian-screen,tv-lead-performer-drama-series,"Best Lead Performer, Drama Series",award,Television,lead,verified,csa27-tv 9503,
+canadian-screen,tv-guest-performance-drama-series,"Best Guest Performance, Drama Series",award,Television,guest,verified,csa27-tv 9505,
+canadian-screen,tv-supporting-performer-drama,"Best Supporting Performer, Drama",award,Television,supporting,verified,csa27-tv 9507,
+canadian-screen,tv-stunt-coordination,Best Stunt Coordination,award,Television,craft:stunt-coordinator,verified,csa27-tv 9509,
+canadian-screen,tv-ensemble-performance-comedy,"Best Ensemble Performance, Comedy",award,Television,ensemble,verified,csa27-tv 9511,
+canadian-screen,tv-supporting-performer-childrens-or-youth,"Best Supporting Performer, Children's or Youth",award,Television,supporting,verified,csa27-tv 9514,
+canadian-screen,tv-lead-performer-childrens-or-youth,"Best Lead Performer, Children's or Youth",award,Television,lead,verified,csa27-tv 9515,
+canadian-screen,tv-achievement-in-casting-fiction,"Best Achievement in Casting, Fiction",award,Television,craft:casting-director,verified,csa27-tv 9516,
+canadian-screen,,"Best News Anchor, National",,Television,,not-playable,csa27-tv 9517,"News, sports and online creator work aren't made in the game"
+canadian-screen,,Best Local Reporter,,Television,,not-playable,csa27-tv 9518,"News, sports and online creator work aren't made in the game"
+canadian-screen,,Best National Reporter,,Television,,not-playable,csa27-tv 9519,"News, sports and online creator work aren't made in the game"
+canadian-screen,,"Best News Anchor, Local",,Television,,not-playable,csa27-tv 9521,"News, sports and online creator work aren't made in the game"
+canadian-screen,,Best Sports Host,,Television,,not-playable,csa27-tv 9522,"News, sports and online creator work aren't made in the game"
+canadian-screen,,Best Sports Play-by-Play Announcer,,Television,,not-playable,csa27-tv 9523,"News, sports and online creator work aren't made in the game"
+canadian-screen,,Best Sports Analyst,,Television,,not-playable,csa27-tv 9524,"News, sports and online creator work aren't made in the game"
+canadian-screen,,"Best Host, Lifestyle",,Television,,not-playable,csa27-tv 9526,"Lifestyle programs (cooking, home and similar) aren't a program type the game makes"
+canadian-screen,tv-voice-performance,Best Voice Performance,award,Television,voice,verified,csa27-tv 9528,
+canadian-screen,tv-host-or-presenter-factual-or-reality-competition,"Best Host or Presenter, Factual or Reality/Competition",award,Television,host,verified,csa27-tv 9529,
+canadian-screen,,"Best Host or Interviewer, News or Information",,Television,,not-playable,csa27-tv 9530,"News, sports and online creator work aren't made in the game"
+canadian-screen,tv-lead-performer-comedy,"Best Lead Performer, Comedy",award,Television,lead,verified,csa27-tv 9531,
+canadian-screen,tv-supporting-performer-comedy,"Best Supporting Performer, Comedy",award,Television,supporting,verified,csa27-tv 9533,
+canadian-screen,tv-guest-performance-comedy,"Best Guest Performance, Comedy",award,Television,guest,verified,csa27-tv 9535,
+canadian-screen,tv-achievement-in-casting-non-fiction,"Best Achievement in Casting, Non-Fiction",award,Television,craft:casting-director,verified,csa27-tv 9536,
+canadian-screen,,"Spotlight Award for Best Series, Fiction",,Television,,not-playable,csa27-tv 9901,For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification
+canadian-screen,,Spotlight Award for Best Direction,,Television,,not-playable,csa27-tv 9902,For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification
+canadian-screen,,Spotlight Award for Best Writing,,Television,,not-playable,csa27-tv 9903,For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification
+canadian-screen,,Spotlight Award for Best Lead Performance,,Television,,not-playable,csa27-tv 9904,For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification
+canadian-screen,,Spotlight Award for Best Supporting Performance,,Television,,not-playable,csa27-tv 9905,For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification
+canadian-screen,,"Spotlight Award for Best Series, Non-Fiction",,Television,,not-playable,csa27-tv 9906,For Canadians on productions not certified Canadian; the game doesn't model CRTC or CAVCO certification
+canadian-screen,tribute,Academy Board Of Directors' Tribute Award,honorary,Television,career-television,unverified,csa27-tv Section XV,"UNVERIFIED: criteria at academy.ca/special-awards, not read"
+canadian-screen,icon,Academy Icon Award,honorary,Television,career,unverified,csa27-tv Section XV,UNVERIFIED: criteria not read
+canadian-screen,lifetime,Lifetime Achievement Award,honorary,Television,career,unverified,csa27-tv Section XV,UNVERIFIED: criteria not read
+canadian-screen,,Changemaker Award,,Television,,unverified-not-playable,csa27-tv Section XV,UNVERIFIED: criteria not read
+canadian-screen,audience-choice,Audience Choice Award,audience,Television,project,unverified,csa27-tv Section XV,UNVERIFIED: criteria not read; a public vote
+canadian-screen,,Earle Grey Award,,Television,,unverified-not-playable,csa27-tv Section XV,UNVERIFIED: criteria not read
+canadian-screen,,Gordon Sinclair Award For Broadcast Journalism,,Television,,not-playable,csa27-tv Section XV,Broadcast journalism isn't work the game makes
+canadian-screen,,Humanitarian Award,,Television,,not-playable,csa27-tv Section XV,Humanitarian work outside production isn't modeled
+canadian-screen,,Industry Leadership Award,,Television,,unverified-not-playable,csa27-tv Section XV,UNVERIFIED: criteria not read
+canadian-screen,,Outstanding Media Innovation Award,,Television,,not-playable,csa27-tv Section XV,Interactive and emerging media aren't made in the game
+canadian-screen,,Radius Award,,Television,,unverified-not-playable,csa27-tv Section XV,UNVERIFIED: criteria not read
+canadian-screen,,Kids' Choice Award,,Television,,unverified-not-playable,csa27-tv Section XV,UNVERIFIED: criteria not read
+canadian-screen,,Sustainable Production Award,,Television,,unverified-not-playable,csa27-tv Section XV; csa27-film Section VIII,"UNVERIFIED: entered through the call for entries, but its criteria weren't read; the game doesn't record production sustainability"
+aacta,film,AACTA Award For Best Film,award,,producer,verified,aacta27-entries Film,
+aacta,indie-film,AACTA Award For Best Indie Film,award,,producer,unverified,aacta27-entries Film,"UNVERIFIED: the indie definition is in the rule book, not read; the game reads it as a micro or low budget"
+aacta,direction,AACTA Award For Best Direction In Film,award,,director,verified,aacta27-entries Film,
+aacta,lead-actor,AACTA Award For Best Lead Actor In Film,award,,lead:Actor,verified,aacta27-entries Film,
+aacta,lead-actress,AACTA Award For Best Lead Actress In Film,award,,lead:Actress,verified,aacta27-entries Film,
+aacta,supporting-actor,AACTA Award For Best Supporting Actor In Film,award,,supporting:Actor,verified,aacta27-entries Film,
+aacta,supporting-actress,AACTA Award For Best Supporting Actress In Film,award,,supporting:Actress,verified,aacta27-entries Film,
+aacta,original-screenplay,AACTA Award For Best Original Screenplay In Film,award,,writer-original,verified,aacta27-entries Film,
+aacta,adapted-screenplay,AACTA Award For Best Adapted Screenplay In Film,award,,writer-adapted,verified,aacta27-entries Film,
+aacta,cinematography,AACTA Award For Best Cinematography In Film,award,,craft:dop,verified,aacta27-entries Film,
+aacta,editing,AACTA Award For Best Editing In Film,award,,craft:editor,verified,aacta27-entries Film,
+aacta,sound,AACTA Award For Best Sound In Film,award,,craft:sound-designer+re-recording-mixer+sound-mixer,verified,aacta27-entries Film,
+aacta,score,AACTA Award For Best Original Score In Film,award,,craft:composer,verified,aacta27-entries Film,
+aacta,production-design,AACTA Award For Best Production Design In Film,award,,craft:production-designer+art-director,verified,aacta27-entries Film,
+aacta,costume,AACTA Award For Best Costume Design In Film,award,,craft:costume-designer,verified,aacta27-entries Film,
+aacta,hair-makeup,AACTA Award For Best Hair And Makeup,award,,craft:hair-makeup+prosthetics,verified,aacta27-entries Film; Television,One award across film and television
+aacta,casting,AACTA Award For Best Casting In Film,award,,craft:casting-director,verified,aacta27-entries Film,
+aacta,song,AACTA Award For Best Original Song,award,,song,verified,aacta27-entries all pages,One award across every entry type
+aacta,soundtrack,AACTA Award For Best Soundtrack,award,,craft:music-supervisor+composer,verified,aacta27-entries all pages,One award across every entry type
+aacta,childrens,AACTA Award For Best Children's Program,award,Television,producer,verified,aacta27-entries Television,
+aacta,competition-reality,AACTA Award For Best Competition Reality Program,award,Television,producer,verified,aacta27-entries Television,
+aacta,documentary-factual,AACTA Award For Best Documentary Or Factual Program,award,Television,producer,verified,aacta27-entries Television,Stand-alone television documentaries of 60 minutes or more enter as feature documentaries
+aacta,drama,AACTA Award For Best Drama Series,award,Television,producer,verified,aacta27-entries Television,The game's existing entry
+aacta,entertainment,AACTA Award For Best Entertainment Program,award,Television,producer,verified,aacta27-entries Television,
+aacta,factual-entertainment,AACTA Award For Best Factual Entertainment Program,award,Television,producer,verified,aacta27-entries Television,
+aacta,miniseries,AACTA Award For Best Miniseries,award,Television,producer,verified,aacta27-entries Television,
+aacta,comedy,AACTA Award For Best Narrative Comedy Series,award,Television,producer,verified,aacta27-entries Television,
+aacta,,AACTA Award For Best Stand-Up Special,,Television,,not-playable,aacta27-entries Television,Stand-up specials aren't a program type the game makes
+aacta,casting-tv,AACTA Award For Best Casting In Television,award,Television,craft:casting-director,verified,aacta27-entries Television,
+aacta,documentary,AACTA Award For Best Documentary,award,Television,producer,verified,aacta27-entries Documentary,The game's existing entry
+aacta,documentary-cinematography,AACTA Award For Best Cinematography In A Documentary,award,Television,craft:dop,verified,aacta27-entries Documentary,
+aacta,documentary-editing,AACTA Award For Best Editing In A Documentary,award,Television,craft:editor,verified,aacta27-entries Documentary,
+aacta,documentary-sound,AACTA Award For Best Sound In A Documentary,award,Television,craft:sound-designer+re-recording-mixer+sound-mixer,verified,aacta27-entries Documentary,
+aacta,documentary-score,AACTA Award For Best Original Score In A Documentary,award,Television,craft:composer,verified,aacta27-entries Documentary,
+aacta,short,AACTA Award For Best Short Film,award,"Short Film, Online Series And Visual Effects",producer,verified,aacta27-entries Short Film,"Completed July 19, 2025 to July 18, 2026"
+aacta,online-series,AACTA Award For Best Online Drama Or Comedy Series,award,"Short Film, Online Series And Visual Effects",producer,verified,aacta27-entries Online Series,"Premiered online October 18, 2025 to October 1, 2026"
+aacta,vfx-animation,AACTA Award For Best Visual Effects Or Animation,award,"Short Film, Online Series And Visual Effects",craft:vfx-artist+compositor+animator,verified,aacta27-entries Visual Effects or Animation,
+aacta,,Longford Lyell Award,,Discretionary Awards,,unverified-not-playable,https://www.aacta.org/aacta-awards/longford-lyell-award/,UNVERIFIED: discretionary; criteria page not read
+aacta,,Brian Walsh Award,,Discretionary Awards,,unverified-not-playable,https://www.aacta.org/aacta-awards/2026-aacta-brian-walsh-award/,UNVERIFIED: discretionary; criteria page not read
+aacta,,Trailblazer Award,,Discretionary Awards,,unverified-not-playable,aacta27-entries menu,UNVERIFIED: discretionary; criteria page not read
+aacta,,Reg Grundy Award,,Discretionary Awards,,unverified-not-playable,https://www.aacta.org/reg-grundy/reg-grundy/reg-grundy-award-2025/,UNVERIFIED: criteria page not read
+aacta,,AACTA International Awards,,Discretionary Awards,,unverified-not-playable,https://www.aacta.org/aacta-awards/aacta-international-awards,A separate program for international work; not yet researched (UNVERIFIED)
+amaa,film,Best Film,award,,producer,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+amaa,director,Best Director,award,,director,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+amaa,documentary,Best Documentary,award,,producer,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+amaa,short,Best Short Film,award,,producer,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+japan-academy,picture,作品賞 Picture Of The Year,award,Main Awards,producer,verified,jap50,
+japan-academy,animation,アニメーション作品賞 Animation Of The Year,award,Main Awards,producer,verified,jap50,
+japan-academy,actor,主演男優賞 Outstanding Performance By An Actor In A Leading Role,award,Main Awards,lead:Actor,verified,jap50,
+japan-academy,actress,主演女優賞 Outstanding Performance By An Actress In A Leading Role,award,Main Awards,lead:Actress,verified,jap50,
+japan-academy,supporting-actor,助演男優賞 Outstanding Performance By An Actor In A Supporting Role,award,Main Awards,supporting:Actor,verified,jap50,
+japan-academy,supporting-actress,助演女優賞 Outstanding Performance By An Actress In A Supporting Role,award,Main Awards,supporting:Actress,verified,jap50,
+japan-academy,director,監督賞 Director Of The Year,award,Main Awards,director,verified,jap50,
+japan-academy,screenplay,脚本賞 Screenplay Of The Year,award,Main Awards,writer,verified,jap50,
+japan-academy,music,音楽賞 Outstanding Achievement In Music,award,Main Awards,craft:composer,verified,jap50,
+japan-academy,cinematography,撮影賞 Outstanding Achievement In Cinematography,award,Main Awards,craft:dop,verified,jap50,
+japan-academy,lighting,照明賞 Outstanding Achievement In Lighting Direction,award,Main Awards,craft:gaffer,verified,jap50,
+japan-academy,art-direction,美術賞 Outstanding Achievement In Art Direction,award,Main Awards,craft:production-designer+art-director+prop-master,verified,jap50,Widened to set decoration from the 50th
+japan-academy,sound,録音賞 Outstanding Achievement In Sound Recording,award,Main Awards,craft:sound-mixer+re-recording-mixer,verified,jap50,
+japan-academy,editing,編集賞 Outstanding Achievement In Film Editing,award,Main Awards,craft:editor,verified,jap50,
+japan-academy,foreign,外国作品賞 Outstanding Foreign Language Film,award,Main Awards,producer,verified,jap50,
+japan-academy,vfx,VFX賞 Outstanding Achievement In VFX,award,Main Awards,craft:vfx-artist+compositor,verified,jap50,New for the 50th: the VFX supervisor of a live-action film; years 2027-9999
+japan-academy,newcomer,新人俳優賞 Newcomer Of The Year,juried,Newcomer And Special Awards,performer:breakthrough,verified,jap50,"Voted with the main awards; given to several newcomers, not one winner"
+japan-academy,,特別賞 Special Awards,,Newcomer And Special Awards,,unverified-not-playable,https://www.japan-academy-prize.jp/news/49-special,UNVERIFIED: the 49th special award announcement wasn't read
+japan-academy,,クリエイティブ貢献賞 Creative Contribution Award,,Newcomer And Special Awards,,unverified-not-playable,https://www.japan-academy-prize.jp/news/49-newaward,UNVERIFIED: introduced at the 49th; the announcement wasn't read
+blue-dragon,film,Best Film,award,,producer,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+blue-dragon,director,Best Director,award,,director,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+blue-dragon,screenplay,Best Screenplay,award,,writer,blocked,UNVERIFIED,UNVERIFIED: existing game category; roster not readable
+european-film-awards,film,European Film,award,Films,producer,verified,efa-general,The game's existing entry
+european-film-awards,director,European Director,award,Films,director,verified,efa-general,
+european-film-awards,animated,European Animation Film,award,Films,producer,verified,efa-general,"Named European Animated Feature Film in the game until November 9, 2026"
+european-film-awards,documentary,European Documentary,award,Films,producer+director,verified,efa-general,
+european-film-awards,short,European Short Film,award,Films,director,unverified,efa-general,UNVERIFIED: shorts are nominated through partner festivals; that route isn't modeled yet
+european-film-awards,coproduction,Eurimages International Co-Production Award,juried,Films,producer,unverified,efa-general,UNVERIFIED: criteria page not read; the game reads it as a feature with a co-production partner
+european-film-awards,actor,European Actor,award,Performance And Writing,lead,unverified,efa-general,UNVERIFIED: see the note above
+european-film-awards,screenwriter,European Screenwriter,award,Performance And Writing,writer,verified,efa-general,
+european-film-awards,casting,European Casting Director,juried,Performance And Writing,craft:casting-director,verified,efa-general,
+european-film-awards,cinematographer,European Cinematographer,juried,Performance And Writing,craft:dop,verified,efa-general,
+european-film-awards,composer,European Composer (Original Score),juried,Performance And Writing,craft:composer,verified,efa-general,
+european-film-awards,costume,European Costume Designer,juried,Performance And Writing,craft:costume-designer,verified,efa-general,
+european-film-awards,editor,European Editor,juried,Performance And Writing,craft:editor,verified,efa-general,
+european-film-awards,makeup,European Make-Up & Hair Artist,juried,Performance And Writing,craft:hair-makeup+prosthetics,verified,efa-general,
+european-film-awards,production-designer,European Production Designer,juried,Performance And Writing,craft:production-designer+art-director,verified,efa-general,
+european-film-awards,sound,European Sound,juried,Performance And Writing,craft:sound-designer+re-recording-mixer+sound-mixer,verified,efa-general,
+european-film-awards,lux,LUX Audience Award,audience,Audience Awards,project,unverified,efa-general; https://www.europeanfilmawards.eu/regulations/lux-european-audience-film-award/,UNVERIFIED: its own regulations weren't read
+european-film-awards,young-audience,European Young Audience Award,audience,Audience Awards,project,unverified,efa-general,UNVERIFIED: its own regulations weren't read; voted by young audiences
+european-film-awards,lifetime,European Lifetime Achievement,honorary,Honorary Awards,career-film,verified,efa-general,
+european-film-awards,world-cinema,European Achievement In World Cinema,honorary,Honorary Awards,career-film,verified,efa-general,
