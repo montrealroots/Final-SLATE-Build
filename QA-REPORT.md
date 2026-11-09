@@ -34,7 +34,7 @@ Implemented and tested:
 - **Fixed**: CI run 131's festival journey edited quality after entering, which the entry's snapshot (rightly) ignores.
 
 Modeled, not sourced: screen time is the player's record; "essentially equal" as half the main writer's days. Sourced and
-not modeled: visual effects wholly made in Australia; Series Mania's first seasons and its programmers' choice of
+not modeled at first, then added (below): visual effects wholly made in Australia; Series Mania's first seasons. Still not modeled: Series Mania's programmers' choice of
 section. Blocked: TIFF, BAFTA, SXSW (HTTP 403), the International Emmys' eligibility period, Locarno 2027, the DGA's
 Documentary Film page (HTTP 404), Busan, FESPACO, Blue Dragon, AMAA, the European Film Awards' dates.
 

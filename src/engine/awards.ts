@@ -479,8 +479,16 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   if (!enterable(cat)) reasons.push(cat.kind === 'honorary' ? 'Honorary awards take no entries: the organizer chooses from a body of work.' : 'This award is decided among the films selected for its section. Enter the section instead.');
   const formats = rules?.formats?.value ?? cat.formats;
   if (!formats.includes(p.axes.format)) reasons.push(`This category doesn't accept ${p.axes.format.replace('-', ' ')} projects.`);
-  // A rule that measures the dialogue replaces the check of the declared language.
-  reasons.push(...catalogRules().requirementProblems(state, p, rules?.nonEnglish ? { ...cat, need: cat.need?.filter((n) => n !== 'non-english') } : cat));
+  // A rule that measures the dialogue replaces the check of the declared language; one that says where a craft was made,
+  // the production's country.
+  const madeIn = rules?.craftMadeIn?.value.map((c) => c.toLowerCase()) ?? [];
+  const needs = cat.need?.filter((n) => !(rules?.nonEnglish && n === 'non-english') && !madeIn.includes(n) && !(rules?.firstFeature && n === 'debut'));
+  if (rules?.firstSeason && p.continues) reasons.push('This section takes a series\' first season; this one continues an earlier season.');
+  const first = rules?.firstFeature?.value;
+  if (first && !p.credits.some((c) => c.person === 'player' && c.contribution === 'Directed By')) reasons.push('This category is for a director\'s first feature, and you didn\'t direct this one.');
+  const earlier = first && catalogRules().earlierReleased(state, p, first.formats);
+  if (earlier) reasons.push(`You directed ${earlier.title}, released before this one; this category is for a director's first feature.`);
+  reasons.push(...catalogRules().requirementProblems(state, p, { ...cat, need: needs }));
   if (cat.recipient === 'national') {
     if (getPlace(p.axes.basePlaceId).country === 'US') reasons.push('This category is for films made outside the United States.');
     if (!rules?.nonEnglish && p.axes.dialogueLanguages[0] === 'en') reasons.push('This category is for films whose dialogue is mostly not in English.');
@@ -529,7 +537,7 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   // the Japan Academy's foreign films) isn't held to the event's own countries. Until November 9, 2026 it was, so those
   // four categories took nothing at all.
   const foreignCategory = cat.need?.some((n) => n.startsWith('non-') || n.includes('-non-'));
-  if (inst.origin && !foreignCategory && !inst.origin.includes(origin)) reasons.push('Your production base country isn\'t eligible for this event.');
+  if (inst.origin && !foreignCategory && !rules?.craftMadeIn && !inst.origin.includes(origin)) reasons.push('Your production base country isn\'t eligible for this event.');
   if (rules?.origin?.value.only && !rules.origin.value.only.includes(origin)) reasons.push(`This section is for work made in ${rules.origin.value.only.map(countryWords).join(' or ')}.`);
   if (rules?.origin?.value.not?.includes(origin)) reasons.push(`Work made mainly in ${countryWords(origin)} enters the festival's national competition instead.`);
   if (inst.id === 'international-emmys' && origin === 'US') reasons.push('This event is for productions made outside the United States.');
@@ -549,7 +557,8 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     const startKey = dateKey(ed.start, getPlace(inst.placeId).zone);
     const shown = showingsBefore(p, startKey, ed.id);
     const asked = rules?.premiere?.value ?? cat.premiere;
-    const premiere = asked === 'world-if-domestic' ? (origin === getPlace(inst.placeId).country ? 'world' : 'international') : asked;
+    const home = origin === getPlace(inst.placeId).country;
+    const premiere = asked === 'world-if-domestic' ? (home ? 'world' : 'international') : asked === 'domestic-world' ? (home ? 'world' : 'none') : asked;
     if (premiere === 'world' && shown.length) reasons.push('This section requires a world premiere, and your project has already been shown.');
     if (premiere === 'international' && shown.some((x) => x.countries.some((c) => c !== origin))) reasons.push('This section requires an international premiere, and your project has already been shown abroad.');
     if (p.premiere?.editionId && p.premiere.editionId !== ed.id && premiere === 'world') reasons.push(`It premiered at ${state.editions.find((e) => e.id === p.premiere?.editionId)?.label ?? 'another festival'}.`);
@@ -628,6 +637,9 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
         const sc = R.shareCheck(p, c, screen.atLeast, screen.per, { episode, versionId });
         if (sc.met !== true) why.push(sc.text);
       }
+      const madeIn = rules?.craftMadeIn?.value;
+      const base = R.workBase(state, c);
+      if (madeIn && !madeIn.includes(base ?? '')) why.push(`${name} works from ${base ? countryWords(base) : 'somewhere not recorded'}; this award is for work made in ${madeIn.map(countryWords).join(' or ')}.`);
     }
     reasons.push(...(why.length ? why : [recipientMissingReason(cat)]));
   }
@@ -667,14 +679,16 @@ export function entryEpisodes(state: GameState, p: Project, cat: Category, rules
 
 function ruledRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules, ctx: { episode?: number; versionId?: string; songId?: string } = {}): Credit[] {
   const all = creditedRecipients(state, p, cat, chosen, rules, ctx);
-  if (!rules?.noNarrators && !rules?.episodeShare && !rules?.notAfterNomination && !rules?.screenShare) return all;
+  if (!rules?.noNarrators && !rules?.episodeShare && !rules?.notAfterNomination && !rules?.screenShare && !rules?.craftMadeIn) return all;
+  const madeIn = rules.craftMadeIn?.value;
   const span = rules.episodeShare?.value;
   const before = rules.notAfterNomination?.value;
   const screen = rules.screenShare?.value;
   return all.filter((c) => !(rules.noNarrators && catalogRules().isNarrator(p, c))
     && (!span || ((span.under === undefined || catalogRules().episodeShare(p, c) < span.under) && (span.atLeast === undefined || catalogRules().episodeShare(p, c) >= span.atLeast)))
     && !(before && catalogRules().nominatedEarlier(state, p, c, before.institution, before.categories))
-    && !(screen && catalogRules().shareCheck(p, c, screen.atLeast, screen.per, ctx).met !== true));
+    && !(screen && catalogRules().shareCheck(p, c, screen.atLeast, screen.per, ctx).met !== true)
+    && !(madeIn && !madeIn.includes(catalogRules().workBase(state, c) ?? '')));
 }
 
 

@@ -549,8 +549,11 @@ rules](https://www.dga.org/Awards/Entry-Forms/First-Time-Theatrical-Feature-Film
 first-time director's feature of more than 40 minutes, released January 1 to December 31, 2026 for seven consecutive days in
 a paid-admission cinema in Los Angeles or New York (SLATE: a US theatrical release); nothing on free television, pay cable,
 the internet or DVD in the continental US before the theatrical release (day and date is fine); no animated films,
-documentaries or re-releases; entries by 5:00 p.m. PT on Friday, October 16, 2026. Not modeled: a prior feature released only
-abroad or straight to DVD, VOD, streaming or television, which the rules also count against a first-timer. The Documentary
+documentaries or re-releases; entries by 5:00 p.m. PT on Friday, October 16, 2026. Not modeled in version 3: a prior feature
+released only abroad or straight to DVD, VOD, streaming or television, which the rules also count against a first-timer.
+**Version 4 (`dga-2027@4`):** a first-timer is one who directed no feature or television film released before, anywhere
+and by any route but a festival; one never released doesn't count. Version 3 used SLATE's debut need, which counted every
+earlier feature or documentary feature delivered, released or not, and no television film. The Documentary
 Film page (`/Documentary-Film/ApplicationRules`, the address search engines give) returned HTTP 404 and stays on SLATE's
 rules.
 
@@ -646,9 +649,12 @@ the entry pages answered after a 503 earlier the same day. **Version 3 (`aacta-2
 Book's shared categories take each production under its own format's windows (film, television, documentary or short),
 as the song does from version 2: Visual Effects or Animation (8.2(d)); Best Soundtrack (10.3(d)), which also needs at least
 five songs other than the score, each heard clearly for five seconds (10.2(b)), and goes to the music supervisor (10.4(b);
-the roster gave it to the composer too until then); Hair and Makeup, listed under Film and Television only. Not modeled:
-visual effects wholly made in Australia by the entering Australian company, for a production that needn't be Australian
-(8.2(b), (c): SLATE keeps the catalog's Australian production); Online Drama or Comedy Series, whose window is only on the
+the roster gave it to the composer too until then); Hair and Makeup, listed under Film and Television only. Not modeled
+in version 3: visual effects wholly made in Australia by the entering Australian company, for a production that needn't
+be Australian (8.2(b), (c)); version 3 kept the catalog's Australian production. **Version 5 (`aacta-2027@5`):** the award
+goes to credited effects and animation crew based in Australia (you count where you live), and the production can come
+from anywhere; the refusal names where each was based. Not modeled: matchmoving and rotoscoping outsourced abroad, one entry
+per production per company. Online Drama or Comedy Series, whose window is only on the
 AACTA website (9.3). **Version 4 (`aacta-2027@4`):** the [Online entry page](https://www.aacta.org/aacta-awards/entries-2027/online/)
 gives it: premiered online from October 18, 2025 to October 1, 2026, entries closing Monday September 28, 2026 (no time
 given; SLATE takes the end of the day in Sydney); two episodes or more (9.2). Not modeled: AACTA extending the period, two
@@ -674,9 +680,10 @@ or platform available in France before March 26, 2027; drama and comedy episodes
 20; submissions October 6 to December 15, 2026 at 6:00 p.m. (UTC+1), free. International Competition: a world premiere for a
 French production, an international one otherwise (a release after September 1 only at home is allowed); French Competition:
 French productions in world premiere; International Panorama and Short Forms: anything not yet shown in France
-(`series-mania-2027@1`, 4 sections). Not modeled: first seasons only, pilots, re-submissions, the combined runtime of the
-episodes screened, the programmers choosing the section, Short Forms' world premiere for French productions shown abroad
-first. Special Screenings take no submissions except young audience series and stay on SLATE's rules.
+(`series-mania-2027@1`, 4 sections). **Version 2 (`series-mania-2027@2`):** first seasons only (a season that continues an
+earlier one is refused), and Short Forms' world premiere for French productions, nothing asked of others beyond France.
+Version 1 left both out, saying SLATE has no seasons, which was wrong. Not modeled: pilots, re-submissions, the combined
+runtime of the episodes screened, the programmers choosing the section. Special Screenings take no submissions except young audience series and stay on SLATE's rules.
 
 ## Not Readable From Here
 

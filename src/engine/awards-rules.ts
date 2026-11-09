@@ -2,7 +2,7 @@
 // November 9, 2026). Every requirement reads something the project records or the player declares; none reads prose.
 import { songsOf, songUses, writtenForProject } from './songs';
 import { cutScenes } from './screen-time';
-import { getPlace } from '../data/places';
+import { findPlace, getPlace } from '../data/places';
 import { personById } from './people';
 import { competesAs } from './script-effects';
 import { approvedScenes, isEpisodic } from './projects';
@@ -131,6 +131,18 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
   if (cat.need?.includes('breakthrough')) out = out.filter((c) => breakthrough(state, p, c));
   if (cat.actingTitle && (cat.recipient === 'guest' || cat.recipient === 'performer')) out = out.filter((c) => c.person === 'player' && state.character.actingTitle === cat.actingTitle);
   return out;
+}
+
+/** An earlier film of these formats you directed and released anywhere outside a festival, before this one: the first found. */
+export function earlierReleased(state: GameState, p: Project, formats: string[]): Project | undefined {
+  return state.projects.find((x) => x.id !== p.id && formats.includes(x.axes.format) && x.delivered && (x.delivered.at ?? 0) <= (p.delivered?.at ?? Infinity)
+    && x.credits.some((c) => c.person === 'player' && c.contribution === 'Directed By')
+    && x.releases.some((r) => r.status === 'released' && r.route !== 'festival-premiere'));
+}
+
+/** Where a credited person works from: hired people's home country; yours, the country you live in. */
+export function workBase(state: GameState, c: Credit): string | undefined {
+  return c.person === 'player' ? findPlace(state.character.livesIn)?.country : personById(state, c.person).homeCountry;
 }
 
 type SongRule = NonNullable<CategoryRules['song']>['value'];

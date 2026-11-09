@@ -857,7 +857,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('AACTA 2027: films and television released in Australia in 2026; documentaries and shorts by completion date; each by its own deadline', () => {
     const s = startLife('aacta');
     const e = ed(s, 'aacta-2027');
-    expect(e.rulesId).toBe('aacta-2027@4');
+    expect(e.rulesId).toBe('aacta-2027@5');
     s.now = at('Australia/Sydney', '2026-07-01', 9);
     const film = (runtime = 100) => work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'au-sydney' });
     const streamed = film();
@@ -951,10 +951,27 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(categoryDeadline(e, cat(e, 'festival'))).toBe(at('America/Toronto', '2027-01-04', 23, 59) + 59_000);
   });
 
+  it('AACTA visual effects (version 5): made in Australia by crew based there, for a production from anywhere', () => {
+    const s = startLife('aacta-vfx');
+    const e = ed(s, 'aacta-2027');
+    s.now = at('Australia/Sydney', '2026-07-01', 9);
+    const film = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'us-los-angeles' });
+    release(film, 'theatrical', '2026-05-01', ['AU']);
+    const vfx = (person: string): Credit => ({ id: `v-${person}`, person, personName: person, contribution: 'Visual Effects', roleId: 'vfx-artist', episodes: 'all', billing: 20 });
+    film.credits.push(vfx('np_vfx-artist_US_1'));
+    const check = () => checkEligibility(s, film, e, cat(e, 'vfx-animation'));
+    expect(check().reasons.join(' ')).toMatch(/np_vfx-artist_US_1 works from the United States; this award is for work made in Australia\./);
+    expect(check().reasons.join(' ')).not.toMatch(/organizer's country|production base country/); // the production may be American
+    expect(r(s, film, e, 'film')).toMatch(/organizer's country/); // the film awards still want an Australian production
+    film.credits.push(vfx('np_vfx-artist_AU_1'));
+    expect(check().reasons).toEqual([]);
+    expect(check().recipients.map((c) => c.person)).toEqual(['np_vfx-artist_AU_1']);
+  });
+
   it('Series Mania 2027: new series from September 2026, nothing in France before the festival, by December 15 at 6 p.m. in Paris', () => {
     const s = startLife('sm');
     const e = ed(s, 'series-mania-2027');
-    expect(e.rulesId).toBe('series-mania-2027@1');
+    expect(e.rulesId).toBe('series-mania-2027@2');
     expect(e.submissionOpens).toBe(at('Europe/Paris', '2026-10-06', 9));
     s.now = at('Europe/Paris', '2026-11-01', 9);
     const show = (base = 'gb-london', format: Project['axes']['format'] = 'series', minutes = 50) => {
@@ -995,6 +1012,17 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, old, e, 'panorama')).toMatch(/completed on December 31, 2025/);
     expect(categoryDeadline(e, cat(e, 'international'))).toBe(at('Europe/Paris', '2026-12-15', 18));
     expect(categoryRuleStatus(rulebook('series-mania-2027@1'), 'special-screenings')).toBe('simulated'); // by invitation
+    // Version 2: first seasons only; a French short-form series shown abroad first isn't a world premiere, anyone else's is fine.
+    const second = show();
+    second.continues = { from: fresh.id, number: 2, returning: [] };
+    expect(r(s, second, e, 'panorama')).toMatch(/first season; this one continues an earlier season/);
+    const frenchShort = show('fr-paris', 'web-series', 10);
+    expect(r(s, frenchShort, e, 'short-forms')).toBe('');
+    release(frenchShort, 'digital', '2026-10-01', ['BE']);
+    expect(r(s, frenchShort, e, 'short-forms')).toMatch(/world premiere/);
+    const britishShort = show('gb-london', 'web-series', 10);
+    release(britishShort, 'digital', '2026-10-01', ['BE']);
+    expect(r(s, britishShort, e, 'short-forms')).toBe('');
   });
 
   it('Canadian Screen Awards: the 2026 edition closed November 3, 2025; 2027 projects the rules a year on, film and television apart', () => {
@@ -1108,7 +1136,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('DGA 2027 (79th): a feature over 40 minutes with a US run in 2026, entered by November 13 at 5 p.m. PT', () => {
     const s = startLife('dga');
     const e = ed(s, 'dga-2027');
-    expect(e.rulesId).toBe('dga-2027@3'); // versions 2 and 3 add the television categories and the first-time feature; the feature keeps version 1's rules
+    expect(e.rulesId).toBe('dga-2027@4'); // versions 2 to 4 add the television categories and the first-time feature; the feature keeps version 1's rules
     s.now = at('America/Los_Angeles', '2026-10-01', 9);
     const p = work(s, { format: 'feature', runtime: 41, completed: '2026-01-10', base: 'us-los-angeles' });
     expect(r(s, p, e, 'feature')).toMatch(/theatrical release in the United States between January 1, 2026 and December 31, 2026/);
@@ -1125,6 +1153,19 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, p, e, 'feature')).not.toMatch(/before any theatrical run/); // the feature award has no such rule
     expect(categoryDeadline(e, cat(e, 'first-feature'))).toBe(at('America/Los_Angeles', '2026-10-16', 17));
     expect(categoryRuleStatus(rulebook('dga-2027@3'), 'first-feature')).toBe('verified');
+    // Version 4: a first-timer is one whose earlier films weren't released anywhere; a television film counts.
+    const mine = (q: Project) => { q.credits.find((c) => c.contribution === 'Directed By')!.person = 'player'; return q; };
+    const debut = mine(work(s, { format: 'feature', runtime: 95, completed: '2026-02-01', base: 'us-los-angeles' }));
+    release(debut, 'theatrical', '2026-06-01', ['US']);
+    expect(r(s, debut, e, 'first-feature')).toBe('');
+    expect(r(s, p, e, 'first-feature')).toMatch(/you didn't direct this one/);
+    const shelved = mine(work(s, { format: 'feature', runtime: 90, completed: '2025-03-01', base: 'us-los-angeles' }));
+    expect(r(s, debut, e, 'first-feature')).toBe(''); // never released: it doesn't count
+    release(shelved, 'festival-premiere', '2025-05-01', ['FR']);
+    expect(r(s, debut, e, 'first-feature')).toBe(''); // a festival screening isn't a release
+    const telefilm = mine(work(s, { format: 'tv-film', runtime: 88, completed: '2025-01-10', base: 'us-los-angeles' }));
+    release(telefilm, 'broadcast', '2025-04-01', ['GB']);
+    expect(r(s, debut, e, 'first-feature')).toMatch(new RegExp(`You directed ${telefilm.title}, released before this one`));
   });
 
   it('Writers Guild Awards 2027: screenplays with a US run in 2026 and no television first; series in 2026; talk and documentary November to October', () => {

@@ -893,9 +893,9 @@ const IDFA_2027: RuleBook = { id: 'idfa-2027@1', institutionId: 'idfa', year: 20
  * submissions October 6 to December 15, 2026 at 6:00 p.m. (UTC+1), free. By section: International Competition, a world
  * premiere for a French production and otherwise an international one (a release after September 1 only in its own country
  * is the stated exception); French Competition, French productions in world premiere; International Panorama and Short
- * Forms, anything not yet in France (Short Forms also takes French productions only in world premiere: not modeled, SLATE's
- * notShownIn covers their French showings only). Not modeled: first seasons only (SLATE has no seasons), pilots, earlier
- * submissions, the combined runtimes of the episodes screened, the section the programmers choose (SLATE enters a section
+ * Forms, anything not yet in France (Short Forms also takes French productions only in world premiere: not modeled here,
+ * notShownIn covering their French showings only; version 2 adds it). Not modeled here: first seasons only (this said SLATE
+ * has no seasons, which was wrong: a season continues an earlier one; version 2 adds it), pilots, earlier submissions, the combined runtimes of the episodes screened, the section the programmers choose (SLATE enters a section
  * directly), and Special Screenings, which take no submissions apart from young audience series and stay on SLATE's rules.
  */
 const SM27: RuleSource = { id: 'sm27-rules', publisher: 'Series Mania', title: 'Entry Rules and Regulations: Series Mania 2027', url: 'https://seriesmania.com/wp-content/uploads/2026/10/rules-regulations-series-mania-2027-enfr-1.pdf', edition: 'Series Mania 2027', retrieved: '2026-11-09' };
@@ -915,6 +915,23 @@ const SERIES_MANIA_2027: RuleBook = {
     french: { ...SM_COMMON, formats: SM_SCRIPTED, episodeRuntime: SM_EPISODES, origin: v({ only: ['FR'] }, 'sm27-rules', 'Only French productions.'), premiere: v('world', 'sm27-rules', 'World premieres only: not broadcast, released or shown at any festival before March 26, 2027.') },
     panorama: { ...SM_COMMON, formats: SM_SCRIPTED, episodeRuntime: SM_EPISODES },
     'short-forms': { ...SM_COMMON, formats: SM_SCRIPTED, episodeRuntime: v({ under: 20 }, 'sm27-rules', 'Episodes intended to be under 20 minutes, produced to be aired online.') },
+  },
+};
+
+/**
+ * Version 2 (November 9, 2026): what version 1 left out but SLATE records. First seasons only (Eligibility: "follow-up
+ * seasons" are refused), for all four sections; and Short Forms' world premiere for French productions, with nothing
+ * asked of the rest beyond France.
+ */
+const SM_FIRST = v<true>(true, 'sm27-rules', 'Only first seasons of new series; follow-up seasons are not accepted (Eligibility).');
+const SERIES_MANIA_2027_2: RuleBook = {
+  ...SERIES_MANIA_2027, id: 'series-mania-2027@2', version: 2,
+  categories: {
+    ...Object.fromEntries(Object.entries(SERIES_MANIA_2027.categories).map(([id, c]) => [id, { ...c, firstSeason: SM_FIRST }])),
+    'short-forms': {
+      ...SERIES_MANIA_2027.categories['short-forms'], firstSeason: SM_FIRST,
+      premiere: v('domestic-world', 'sm27-rules', 'World, international, European or French premieres; French productions must be world premieres.'),
+    },
   },
 };
 
@@ -1229,9 +1246,9 @@ const DGA_2027_2: RuleBook = {
  * paid-admission cinema in Los Angeles or New York (SLATE: a US theatrical release, as for the feature award); more than 40
  * minutes; nothing shown on free television, pay cable, the internet or DVD in the continental US before the theatrical
  * release (day and date is fine); no animated films, documentaries or re-releases; entries by 5:00 p.m. PT on Friday,
- * October 16, 2026. A first-time director: SLATE's debut requirement already refuses a director with an earlier feature.
- * Not modeled: a prior feature released only outside the US, or straight to DVD, VOD, streaming or television, which the
- * rules also count against a first-timer; the player's films are all counted. The Documentary Film guidelines' page
+ * October 16, 2026. A first-time director: SLATE's debut requirement refused a director with any earlier feature delivered.
+ * Not modeled here: a prior feature released only outside the US, or straight to DVD, VOD, streaming or television, which
+ * the rules also count against a first-timer; version 4 does. The Documentary Film guidelines' page
  * returned HTTP 404 and stays on SLATE's rules.
  */
 const DGA79_FIRST: RuleSource = { id: 'dga79-first', publisher: 'Directors Guild of America', title: 'Michael Apted Award for Outstanding Directorial Achievement in First-Time Theatrical Feature Film: application rules (79th Annual DGA Awards)', url: 'https://www.dga.org/Awards/Entry-Forms/First-Time-Theatrical-Feature-Film/ApplicationRules', edition: '79th Annual DGA Awards (2027)', retrieved: '2026-11-09' };
@@ -1246,6 +1263,24 @@ const DGA_2027_3: RuleBook = {
       release: v({ routes: ['theatrical'], countries: ['US'] }, 'dga79-first', 'Seven consecutive days in a paid-admission cinema in Los Angeles or New York; SLATE treats a US theatrical release as that.'),
       theatricalFirst: v({ countries: ['US'] }, 'dga79-first', 'Not on free television, pay cable, the internet or DVD in the continental US before its theatrical release; day and date is fine.'),
       deadlines: v([{ date: '2026-10-16', time: '17:00', zone: PT }], 'dga79-first', 'Received by 5:00 p.m. PT on Friday, October 16, 2026.'),
+    },
+  },
+};
+
+/**
+ * Version 4 (November 9, 2026): who is a first-time director under the Michael Apted award's rules. A prior feature you
+ * directed that was released, in cinemas abroad or straight to DVD, VOD, streaming or television, rules you out; version 3
+ * used SLATE's debut need, which counted every earlier feature or documentary feature delivered, released or not, and no
+ * film made for television. Features and television films count; documentaries aren't named and don't (the DGA gives them
+ * their own award). A festival screening isn't a release.
+ */
+const DGA_2027_4: RuleBook = {
+  ...DGA_2027_3, id: 'dga-2027@4', version: 4,
+  categories: {
+    ...DGA_2027_3.categories,
+    'first-feature': {
+      ...DGA_2027_3.categories['first-feature'],
+      firstFeature: v({ formats: ['feature', 'tv-film'] }, 'dga79-first', 'A Director with a prior feature film released theatrically in an international market, or that went straight to DVD, VOD, streaming or television, is not eligible.'),
     },
   },
 };
@@ -1574,9 +1609,9 @@ const AACTA_2027_2: RuleBook = {
  * windows, as the song does. Visual Effects or Animation (8.2(d)): a short's, a film's (7.3(a)), a documentary's or
  * television's. Best Soundtrack (10.2(b), 10.3(d)): at least five songs other than the score, each heard clearly for five
  * seconds, from a production eligible in its own category; its candidate is the music supervisor (10.4(b)), in the roster.
- * Hair and Makeup is listed under Film (7.1(r)) and Television (6.1(bb)) only. Not modeled: visual effects wholly made in
- * Australia by the entering Australian company, whose production needn't be Australian (8.2(b), (c)); SLATE keeps the
- * catalog's Australian production. Online Drama or Comedy Series (9.3) gives its window only on the website: version 4.
+ * Hair and Makeup is listed under Film (7.1(r)) and Television (6.1(bb)) only. Not modeled here: visual effects wholly made
+ * in Australia by the entering Australian company, whose production needn't be Australian (8.2(b), (c)); this version kept
+ * the catalog's Australian production, and version 5 replaced it. Online Drama or Comedy Series (9.3) gives its window only on the website: version 4.
  */
 const AACTA_2027_3: RuleBook = {
   ...AACTA_2027_2, id: 'aacta-2027@3', version: 3,
@@ -1606,6 +1641,24 @@ const AACTA_2027_4: RuleBook = {
       qualifying: v({ from: '2025-10-18', to: '2026-10-01' }, 'aacta27-online', 'Premiered online for public consumption between October 18, 2025 and October 1, 2026.'),
       release: v({ routes: ['streaming', 'digital'], countries: [], outside: [] }, 'aacta27-online', 'Premiered online; the page names no country.'),
       deadlines: v([{ date: '2026-09-28', time: '23:59', zone: SYD }], 'aacta27-online', 'Entries close Monday September 28, 2026; no time is given.'),
+    },
+  },
+};
+
+/**
+ * Version 5 (November 9, 2026): Visual Effects or Animation as the Rule Book has it (8.2(b), (c)): the work wholly made in
+ * Australia by the Australian company the producer contracted, for a production that needn't be Australian. SLATE gives
+ * it to credited effects and animation crew based in Australia (you count where you live), and drops the catalog's
+ * Australian production. Version 3 kept that production rule and said so. Not modeled: matchmoving and rotoscoping
+ * outsourced abroad, which the rule allows; one entry per production per company (8.2(e)).
+ */
+const AACTA_2027_5: RuleBook = {
+  ...AACTA_2027_4, id: 'aacta-2027@5', version: 5,
+  categories: {
+    ...AACTA_2027_4.categories,
+    'vfx-animation': {
+      ...AACTA_2027_4.categories['vfx-animation'],
+      craftMadeIn: v(['AU'], 'aacta-rulebook', 'Australian produced visual effects or animation, wholly created in Australia; the production itself does not have to be Australian (8.2(b), (c)).'),
     },
   },
 };
@@ -1656,5 +1709,5 @@ const JAPAN_ACADEMY_2027: RuleBook = {
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, OSCARS_2027_4, OSCARS_2027_5, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, EMMYS_2026_5, EMMYS_2027_5, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, GOLDEN_GLOBES_2027_5, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, SERIES_MANIA_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, CANADIAN_SCREEN_2026_2, CANADIAN_SCREEN_2027_2, GOYA_2027, GOYA_2027_2, GOYA_2027_3, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, DGA_2027_3, WGA_2027, WGA_2027_2, WGA_2027_3, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, SPIRIT_2027_3, ACTOR_AWARDS_2027_2, AACTA_2027, AACTA_2027_2, AACTA_2027_3, AACTA_2027_4, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, EMMYS_2026_5, EMMYS_2027_5, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, GOLDEN_GLOBES_2027_5, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, SERIES_MANIA_2027, SERIES_MANIA_2027_2, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, CANADIAN_SCREEN_2026_2, CANADIAN_SCREEN_2027_2, GOYA_2027, GOYA_2027_2, GOYA_2027_3, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, DGA_2027_3, DGA_2027_4, WGA_2027, WGA_2027_2, WGA_2027_3, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, SPIRIT_2027_3, ACTOR_AWARDS_2027_2, AACTA_2027, AACTA_2027_2, AACTA_2027_3, AACTA_2027_4, AACTA_2027_5, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
 ];

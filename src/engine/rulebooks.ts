@@ -90,8 +90,12 @@ export interface CategoryRules {
    */
   theatricalFirst?: Ruled<{ countries: string[]; unlessFestival?: boolean }>;
   /** world: never shown publicly; international: not shown outside its production country; world-if-domestic: world
-   *  premiere for work from the festival's country, international premiere for everything else; none: no requirement. */
-  premiere?: Ruled<'world' | 'international' | 'world-if-domestic' | 'none'>;
+   *  premiere for work from the festival's country, international premiere for everything else; domestic-world: world
+   *  premiere for work from the festival's country, nothing asked of the rest (Series Mania's Short Forms); none: no
+   *  requirement. */
+  premiere?: Ruled<'world' | 'international' | 'world-if-domestic' | 'domestic-world' | 'none'>;
+  /** A series' first season only: a season that continues an earlier one can't enter (Series Mania). */
+  firstSeason?: Ruled<true>;
   /** No public showing before this date, unless the work was completed after `unlessCompletedAfter`. */
   notShownBefore?: Ruled<{ date: string; unlessCompletedAfter?: string }>;
   /** Not shown at another festival, and not online, before this festival. */
@@ -184,6 +188,17 @@ export interface CategoryRules {
     /** The same writers enter only one song per work (CSA Category 17000, regulation 11). */
     oneEntryPerTeam?: true;
   }>;
+  /**
+   * Where the craft's work was made: only credited people based in these countries receive it, and the production itself
+   * can come from anywhere (the AACTA's visual effects, 8.2(b), (c)). Replaces the catalog's production-country need.
+   */
+  craftMadeIn?: Ruled<string[]>;
+  /**
+   * A first-time director's award: an earlier film of these formats you directed counts against you once it was released
+   * anywhere, in cinemas abroad or straight to television, streaming or home video; one never released doesn't (the DGA's
+   * Michael Apted award). Replaces the catalog's debut need, which counts every earlier feature delivered.
+   */
+  firstFeature?: Ruled<{ formats: Format[] }>;
   /** A soundtrack's own test: at least `minSongs` songs in the cut entered, each heard `minSeconds` in all (AACTA 10.2(b)). */
   soundtrack?: Ruled<{ minSongs: number; minSeconds: number }>;
   /**
