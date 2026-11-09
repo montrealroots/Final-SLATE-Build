@@ -1,7 +1,7 @@
 // Recipient rules read from the organizers' documents (part 5 of the awards work, November 9, 2026): who may be entered for
 // a work, beyond who is credited for it. Each test pairs the rule with the version or organizer that doesn't have it.
 import { describe, expect, it } from 'vitest';
-import { DAY, RULEBOOKS, acceptDeal, approachBacker, categoryRecipients, checkEligibility, categoryRules, institution, nonEnglishShare, processUntil } from './engine-api';
+import { DAY, RULEBOOKS, acceptDeal, approachBacker, categoryRecipients, checkEligibility, categoryRules, entryEpisodes, institution, nonEnglishShare, processUntil, submitEntry } from './engine-api';
 import { requirementProblems } from '../src/engine/awards-rules';
 import { approve, buildProject, startLife } from './helpers';
 import type { Credit, GameState } from '../src/engine/types';
@@ -25,7 +25,7 @@ describe('Emmys, Performer Categories: narrators may not enter lead, supporting 
   it('version 3 leaves the narrator out of Supporting Actor and says why; version 2 entered them', () => {
     const { s, p } = narratedDrama('rr-narr');
     const e = s.editions.find((x) => x.id === 'emmys-2027')!;
-    expect(e.rulesId).toBe('emmys-2027@3');
+    expect(e.rulesId).toBe('emmys-2027@4'); // version 4 keeps version 3's performer rules and adds one-episode entries
     const cat = institution('emmys').categories.find((c) => c.id === 'supporting-actor')!;
     expect(categoryRules(e, cat.id)?.noNarrators?.value).toBe(true);
     expect(categoryRecipients(s, p, cat, undefined, categoryRules(e, cat.id))).toEqual([]);
@@ -148,5 +148,47 @@ describe('Co-production: a partner signed through Financing counts', () => {
     acceptDeal(s, p, deal.id);
     expect(p.funding.extra).toEqual([]); // the legacy money stays empty: only the deal says it
     expect(why()).not.toMatch(/co-production/);
+  });
+});
+
+describe('Emmys, directing and writing: "for a single episode", to those credited on it (emmys-2027@4)', () => {
+  const dir = (id: string, person: string, episodes: number[], billing: number): Credit => ({ id, person, personName: person, contribution: 'Directed By', roleId: 'episode-director', episodes, billing });
+  /** A six-episode drama series: the player directed 1 to 3; three directors shared episode 5 (labelled fixture). */
+  function season(tag: string) {
+    const s: GameState = startLife(tag, 'us-los-angeles');
+    const p = buildProject(s, { title: 'Harbor Lights', format: 'short', medium: 'live-action', runtime: 20 }, [{ name: 'Ines', patch: { roleSize: 'lead' } }], [{ place: 'Harbor', chars: ['Ines'], minutes: 3 }]);
+    approve(s, p);
+    Object.assign(p.axes, { format: 'series', episodeCount: 6, targetRuntimeMin: 50, register: 'drama' });
+    p.credits = [dir('d1', 'You', [1, 2, 3], 1), dir('d2', 'Ada Ruiz', [4, 5, 6], 2), dir('d3', 'Bo Lind', [5], 3), dir('d4', 'Cy Okoro', [5], 4)];
+    const e = s.editions.find((x) => x.id === 'emmys-2027')!;
+    return { s, p, e, cat: institution('emmys').categories.find((c) => c.id === 'directing')! };
+  }
+  const names = (r: Credit[]) => r.map((c) => c.personName);
+
+  it('the episode chosen decides who receives it; with none chosen, the first episode anyone directed', () => {
+    const { s, p, e, cat } = season('ep-1');
+    expect(e.rulesId).toBe('emmys-2027@4');
+    expect(entryEpisodes(s, p, cat, categoryRules(e, cat.id))).toEqual([1, 2, 3, 4, 5, 6]);
+    expect(names(checkEligibility(s, p, e, cat).recipients)).toEqual(['You']);
+    expect(names(checkEligibility(s, p, e, cat, undefined, undefined, 4).recipients)).toEqual(['Ada Ruiz']);
+    // "An entry is limited to two directors": episode 5 had three; the first two billed are named.
+    expect(names(checkEligibility(s, p, e, cat, undefined, undefined, 5).recipients)).toEqual(['Ada Ruiz', 'Bo Lind']);
+    expect(checkEligibility(s, p, e, cat, undefined, undefined, 9).reasons).toContain('Harbor Lights has 6 episodes; choose one of them.');
+    // Version 3 entered the season, to every director credited on any episode.
+    e.rulesId = 'emmys-2027@3';
+    expect(names(checkEligibility(s, p, e, cat).recipients)).toEqual(['You', 'Ada Ruiz', 'Bo Lind', 'Cy Okoro']);
+  });
+
+  it('an entry records its episode and goes to that episode\'s director; writing has no cap', () => {
+    const { s, p, e, cat } = season('ep-2');
+    // Labelled fixture: delivered and aired in the US inside the eligibility year.
+    p.delivered = { at: Date.parse('2026-08-01T20:00:00Z'), runtimeMin: 300 };
+    p.releases.push({ id: 'r1', route: 'broadcast', date: '2026-10-01', territories: ['US'], distributor: 'Channel Nine', note: '', status: 'released' });
+    s.now = e.deadline - 30 * DAY;
+    const entry = submitEntry(s, p, e.id, cat.id, undefined, undefined, 4);
+    expect(entry.episode).toBe(4);
+    expect(entry.recipients).toEqual(['d2']);
+    expect(categoryRules(e, 'writing')?.oneEpisode?.value).toEqual({});
+    expect(categoryRules(e, 'drama')?.oneEpisode).toBeUndefined(); // the program award is the season's
   });
 });

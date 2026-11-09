@@ -316,8 +316,10 @@ tests/awards-ledger.test.ts`).
    Applied after #50: narrators out of the Emmy performer categories, the guest and short form episode shares
    (`emmys-2026@3`), the dialogue share for International Feature and the Globes' Non-English Language (`oscars-2027@3`,
    `golden-globes-2027@3`), and a fix: a co-production partner signed in Financing now counts. Tests:
-   `tests/recipient-rules.test.ts`. **Next:** the Emmys' episode-specific directing and writing entries (credits already
-   record each episode's writer and director), then the rows marked Not modeled in that file, in order.
+   `tests/recipient-rules.test.ts`. After #51: directing and writing entered for one episode (`emmys-2026@4`), with the
+   entry's episode stored (`EditionEntry.episode`, declared since the first engine commit and read by nothing until now).
+   **Next:** the rows marked Not modeled in `docs/awards/RECIPIENT-RULES.md`, in order (the limited series' part or
+   whole is first).
 6-8. Reports are updated at each checkpoint; journeys still owed: supporting/guest TV performance, episode-specific
    writing or directing, songs if implemented, honorary outside submissions (exists), a historical result across an
    edition change (exists for the Annies), all on desktop and WebKit.

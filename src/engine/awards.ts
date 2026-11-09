@@ -10,7 +10,7 @@ import { castPlacement, documentsNeeded } from './script-effects';
 import { genre } from './genres';
 import { personById } from './people';
 import { countryName } from '../world/gazetteer/gazetteer';
-import { approvedScenes, isNonfiction } from './projects';
+import { approvedScenes, isEpisodic, isNonfiction } from './projects';
 import { travelHours } from './state';
 import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { addLog, onNewGame, registerCommitmentSource, registerHandler, schedule, type HandlerResult } from './state';
@@ -455,7 +455,7 @@ function showingsBefore(p: Project, before: string, exceptEdition?: string): { d
   return out;
 }
 
-export function checkEligibility(state: GameState, p: Project, ed: Edition, cat: Category, recipientIds?: string[], versionId?: string): Eligibility {
+export function checkEligibility(state: GameState, p: Project, ed: Edition, cat: Category, recipientIds?: string[], versionId?: string, episode?: number): Eligibility {
   const inst = institution(ed.institutionId);
   const rules = categoryRules(ed, cat.id);
   const reasons: string[] = [];
@@ -565,8 +565,12 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   }
   // Until November 9, 2026, an Oscar short whose rules weren't read qualified through any festival win at all; it now
   // reads the Academy's list (simulatedOscarRelease above).
-  const recipients = categoryRecipients(state, p, cat, recipientIds, rules);
-  if (!recipients.length) {
+  const single = rules?.oneEpisode && isEpisodic(p.axes.format);
+  if (single && episode !== undefined && !(Number.isInteger(episode) && episode >= 1 && episode <= p.axes.episodeCount)) reasons.push(`${p.title} has ${p.axes.episodeCount} episodes; choose one of them.`);
+  const recipients = categoryRecipients(state, p, cat, recipientIds, rules, episode);
+  if (!recipients.length && single && categoryRecipients(state, p, cat, recipientIds).length) {
+    reasons.push(`Nobody credited for this category worked on episode ${episode ?? entryEpisodes(state, p, cat, rules)[0] ?? 1}.`);
+  } else if (!recipients.length) {
     // Credited, but ruled out by the category's own rules: say which rule.
     const credited = categoryRecipients(state, p, cat, recipientIds).filter((c) => !(rules?.noNarrators && isNarrator(p, c)));
     const span = rules?.episodeShare?.value;
@@ -589,7 +593,22 @@ function recipientMissingReason(cat: Category): string {
 }
 
 /** Credited recipients: only people with the relevant actual contribution, less any the category's rules exclude. */
-export function categoryRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
+export function categoryRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules, episode?: number): Credit[] {
+  const all = ruledRecipients(state, p, cat, chosen, rules);
+  if (!rules?.oneEpisode || !isEpisodic(p.axes.format)) return all;
+  // One episode: those credited on it (the first episode with anyone credited, until one is chosen), at most `max`.
+  const ep = episode ?? entryEpisodes(state, p, cat, rules)[0];
+  const on = all.filter((c) => c.episodes === 'all' || c.episodes.includes(ep)).sort((a, b) => a.billing - b.billing);
+  return rules.oneEpisode.value.max ? on.slice(0, rules.oneEpisode.value.max) : on;
+}
+
+/** For a category entered for one episode: the episodes someone credited for it worked on, in order. */
+export function entryEpisodes(state: GameState, p: Project, cat: Category, rules?: CategoryRules): number[] {
+  const all = ruledRecipients(state, p, cat, undefined, rules);
+  return Array.from({ length: p.axes.episodeCount }, (_, i) => i + 1).filter((n) => all.some((c) => c.episodes === 'all' || c.episodes.includes(n)));
+}
+
+function ruledRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
   const all = creditedRecipients(state, p, cat, chosen, rules);
   if (!rules?.noNarrators && !rules?.episodeShare) return all;
   const span = rules.episodeShare?.value;

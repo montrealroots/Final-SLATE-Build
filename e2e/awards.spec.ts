@@ -479,6 +479,8 @@ test('Emmys: a documentary narrator enters Outstanding Narrator; a narrator and 
     series.drafts = [{ number: 1, characters: [part('Mara', { roleSize: 'lead' }), part('Marcus', { seriesInvolvement: 'guest', awardPlacement: 'none' }), part('The Voice', { functions: ['narrator'] })], scenes: [] }];
     series.approvedDraft = 1;
     const me = s.character.name;
+    series.credits[0].episodes = [1, 2, 3]; // the player directed the first half; Ada Ruiz the rest
+    series.credits.push(credit('cr11', 'x-dir', 'Ada Ruiz', 'Directed By', 'episode-director', { episodes: [4, 5, 6] }));
     series.credits.push(credit('cr8', 'player', me, 'Cast', 'actor', { characterName: 'Mara' }), credit('cr9', 'player', me, 'Cast', 'actor', { characterName: 'Marcus', episodes: [1, 2, 3] }),
       credit('cr10', 'player', me, 'Cast', 'actor', { characterName: 'The Voice' }));
   });
@@ -491,6 +493,16 @@ test('Emmys: a documentary narrator enters Outstanding Narrator; a narrator and 
   await expect(row(page, 'Outstanding Supporting Actress In A Drama Series').getByText('A narrator can\'t be entered in this performer category; the narration can be entered for a narrator award.')).toBeVisible();
   await expect(row(page, 'Outstanding Guest Actress In A Drama Series').getByText('This category takes performers in fewer than half of the episodes; Marcus is in 3 of 6.')).toBeVisible();
   await expect(row(page, 'Outstanding Narrator').getByText(/doesn't accept series projects/)).toBeVisible();
+  // Directing is entered for a single episode, and goes to whoever directed that one.
+  await filterTo(page, 'Night Ward', 'Open To Night Ward');
+  await row(page, 'Outstanding Directing For A Drama Series').getByRole('button', { name: 'Prepare Submission' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Prepare Submission' });
+  await expect(dialog.getByText(/Credited for this entry: Nia Halvorsen-Mbeki\./)).toBeVisible();
+  await dialog.getByLabel('Episode To Enter').selectOption({ label: 'Episode 4' });
+  await expect(dialog.getByText(/Credited for this entry: Ada Ruiz\./)).toBeVisible();
+  await dialog.getByRole('button', { name: 'Submit Entry' }).click();
+  await expect(dialog).toBeHidden();
+  await expect(entry(page, 'Outstanding Directing For A Drama Series, Episode 4').locator('.chip', { hasText: /^Submitted$/ })).toBeVisible();
   await page.screenshot({ path: `test-results/awards-narrator-${test.info().project.name}.png`, fullPage: true });
 });
 

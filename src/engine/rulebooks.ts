@@ -114,6 +114,12 @@ export interface CategoryRules {
    */
   nonEnglish?: Ruled<number>;
   /**
+   * A series is entered for one episode, and the award goes to the people credited on it, at most `max` (the Emmys'
+   * directing and writing categories: "for a single episode of a comedy series", "an entry is limited to two directors").
+   * Applies to episodic work only; a special or movie is entered whole.
+   */
+  oneEpisode?: Ruled<{ max?: number }>;
+  /**
    * A performer's share of the program's episodes, from the episodes they are credited in: the Emmys' guest categories take
    * "less than 50% of the eligible episodes", Short Form Performer "50% or more" (Performer Awards, Entry Information).
    */

@@ -664,6 +664,26 @@ function emmys3(year: number, mk: typeof v): Record<string, CategoryRules> {
 const EMMYS_2026_3: RuleBook = { ...EMMYS_2026_2, id: 'emmys-2026@3', version: 3, categories: emmys3(2026, v) };
 const EMMYS_2027_3: RuleBook = { ...EMMYS_2027_2, id: 'emmys-2027@3', version: 3, categories: emmys3(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2025-2026 rules.')) as typeof v) };
 
+/**
+ * Version 4 (November 9, 2026): the directing and writing categories that read "for a single episode" of a series
+ * (Categories 24, 25, 27, 29, 30, 113, 114 and 116) are entered for one episode, and go to the people credited on it;
+ * comedy and drama directing to at most two ("An entry is limited to two directors"). Until then the whole season was
+ * entered, to everyone credited on any episode. A special or movie is still entered whole. Not modeled: the limited
+ * series' choice between one part and the whole series (Categories 26 and 115), the variety series' single entry per
+ * series chosen by the head writer, and judging by the episode (SLATE judges the season's direction and script).
+ */
+function emmys4(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const three = emmys3(year, mk);
+  const p = year === 2026 ? '' : ' From the 2025-2026 rules; the 2026-2027 rules are not published yet.';
+  const one = (max?: number, note = '') => mk(max ? { max } : {}, 'em78-rules', `For a single episode of the series${note}.${p}`);
+  const out: Record<string, CategoryRules> = { ...three };
+  for (const id of ['directing-comedy', 'directing']) out[id] = { ...three[id], oneEpisode: one(2, '; an entry is limited to two directors') };
+  for (const id of ['directing-variety', 'directing-nonfiction', 'directing-reality', 'writing-comedy', 'writing', 'writing-variety']) out[id] = { ...three[id], oneEpisode: one() };
+  return out;
+}
+const EMMYS_2026_4: RuleBook = { ...EMMYS_2026_3, id: 'emmys-2026@4', version: 4, categories: emmys4(2026, v) };
+const EMMYS_2027_4: RuleBook = { ...EMMYS_2027_3, id: 'emmys-2027@4', version: 4, categories: emmys4(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2025-2026 rules.')) as typeof v) };
+
 // ---------------- Sitges: 59th (2026, verified) and 60th (2027, projected) ----------------
 
 /**
@@ -1023,5 +1043,5 @@ const PGA_2027: RuleBook = {
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, GOLDEN_GLOBES_2027_3, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
 ];

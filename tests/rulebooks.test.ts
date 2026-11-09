@@ -919,7 +919,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const s = startLife('em2');
     s.now = at('America/Los_Angeles', '2026-04-01', 9);
     const e = ed(s, 'emmys-2026');
-    expect(e.rulesId).toBe('emmys-2026@3'); // version 3 only adds Outstanding Narrator (tests/nonplayable-review.test.ts)
+    expect(e.rulesId).toBe('emmys-2026@4'); // versions 3 and 4 add Outstanding Narrator and the performer and one-episode rules (tests/recipient-rules.test.ts)
     for (const id of ['guest-actor', 'animated-program', 'reality-competition', 'title-design', 'hosted-nonfiction']) expect(categoryRuleStatus(rulebook(e.rulesId), id), id).toBe('verified');
     expect(categoryRuleStatus(rulebook('emmys-2026@1'), 'guest-actor')).toBe('simulated'); // version 1 read 13 categories
     const show = (format: Project['axes']['format'], eps: number, territory = 'US') => {

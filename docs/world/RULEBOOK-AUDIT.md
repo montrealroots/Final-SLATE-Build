@@ -337,6 +337,11 @@ belongs in Character Voice-Over; a performer nominated as lead or supporting can
 the 5% screen-time minimums. Category 110, Outstanding Stunt Performance, stays out: SLATE credits the stunt coordinator
 but casts no stunt performers (`docs/awards/NONPLAYABLE-REVIEW.md`).
 
+**Version 4 (`emmys-2026@4`, November 9, 2026):** directing and writing "for a single episode" (Categories 24, 25, 27,
+29, 30, 113, 114, 116) are entered for one episode, to the people credited on it; comedy and drama directing name at
+most two directors. Not modeled: the limited series' choice between one part and the whole (26, 115), the variety
+series' single entry chosen by the head writer (116), judging by the episode.
+
 ## San Sebastián, 74th Edition (2026, Verified) And 75th (2027, Projected)
 
 Source: "Rules and Regulations - 74th San Sebastian International Film Festival" (sansebastianfestival.com, read November 6,

@@ -12,7 +12,7 @@ import {
 import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupIntegration, cutPassDays, startCutPass, unlockPicture, restoreToEdit } from '../engine/edit-actions';
 import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
 import { publicResult } from '../engine/awards-results';
-import { enterable, festivalListFor } from '../engine/awards';
+import { enterable, entryEpisodes, festivalListFor } from '../engine/awards';
 import { FORMAT_LABELS } from '../engine/projects';
 import { roleLabel } from '../engine/people';
 import { applyFix, dailies } from '../engine/directing';
@@ -513,7 +513,7 @@ export function FestivalsTab({ p }: { p: Project }) {
               const cat = institution(e.institutionId).categories.find((c) => c.id === x.categoryId)!;
               return (
                 <li key={x.id} className="row-wrap">
-                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id, projectId: p.id })}>{e.label}</button>: {cat.name}{entryVersion(p, x.versionId)} <span className="chip">{entryStatus(x, e)}</span>{x.via === 'selection' ? <span className="dim"> Considered from its selection; no entry or fee.</span> : null}{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
+                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id, projectId: p.id })}>{e.label}</button>: {cat.name}{entryVersion(p, x.versionId)}{entryEpisode(p, x.episode)} <span className="chip">{entryStatus(x, e)}</span>{x.via === 'selection' ? <span className="dim"> Considered from its selection; no entry or fee.</span> : null}{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
                 </li>
               );
             })}
@@ -640,7 +640,7 @@ export function EventDetail() {
                 const cat = inst.categories.find((c) => c.id === x.categoryId);
                 return (
                   <li key={x.id} className="row-wrap">
-                    <span className="grow">{p?.title}: {cat?.name}{p ? entryVersion(p, x.versionId) : ''} <span className="chip">{entryStatus(x, ed)}</span>{x.via === 'selection' ? <div className="dim">Considered from its selection; no entry or fee.</div> : null}{x.reason ? <div className="dim">{x.reason}</div> : null}</span>
+                    <span className="grow">{p?.title}: {cat?.name}{p ? entryVersion(p, x.versionId) + entryEpisode(p, x.episode) : ''} <span className="chip">{entryStatus(x, ed)}</span>{x.via === 'selection' ? <div className="dim">Considered from its selection; no entry or fee.</div> : null}{x.reason ? <div className="dim">{x.reason}</div> : null}</span>
                     {['submitted', 'accepted'].includes(x.status) && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => withdrawEntry(s, ed.id, x.id)))}>Withdraw Entry</button>}
                   </li>
                 );
@@ -754,6 +754,9 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
   );
 }
 
+/** Which episode an entry is for, when the category takes one episode (the Emmys' directing and writing). */
+const entryEpisode = (p: Project, n?: number) => (n ? `, ${p.episodes[n - 1]?.title ?? `Episode ${n}`}` : '');
+
 /** Which cut an entry is, when it isn't the main one. */
 const entryVersion = (p: Project, versionId?: string) => { const v = versionId && p.versions?.find((x) => x.id === versionId); return v ? `, ${v.label}` : ''; };
 
@@ -765,9 +768,14 @@ function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: 
   const p = delivered.find((x) => x.id === projectId);
   const [recipients, setRecipients] = useState<string[]>([]);
   const [versionId, setVersionId] = useState('');
+  const [episode, setEpisode] = useState('');
   if (!p) return null;
-  const el = checkEligibility(g, p, ed, cat, recipients.length ? recipients : undefined, versionId || undefined);
-  const pool = categoryRecipients(g, p, cat, undefined, categoryRules(ed, cat.id));
+  // Entered for one episode: the choice, else the first episode anyone credited for the category worked on.
+  const rules = categoryRules(ed, cat.id);
+  const episodes = rules?.oneEpisode && isEpisodic(p.axes.format) ? entryEpisodes(g, p, cat, rules) : [];
+  const ep = episodes.length ? Number(episode) || episodes[0] : undefined;
+  const el = checkEligibility(g, p, ed, cat, recipients.length ? recipients : undefined, versionId || undefined, ep);
+  const pool = categoryRecipients(g, p, cat, undefined, rules, ep);
   const personal = ['lead', 'supporting', 'voice'].includes(cat.recipient);
   const docs = entryNeeds(p);
   // Acting categories: where each cast part is placed, and why (script-effects.ts placementExplained).
@@ -776,10 +784,11 @@ function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: 
   return (
     <Modal title="Prepare Submission" onClose={onClose} footer={<>
       <button className="btn" onClick={onClose}>Cancel</button>
-      <button className="btn btn-primary" disabled={!el.eligible || !!docs} onClick={() => { const e = store.act((s) => void submitEntry(s, p, editionId, cat.id, recipients.length ? recipients : undefined, versionId || undefined)); onError(e); if (!e) onClose(); }}>Submit Entry</button>
+      <button className="btn btn-primary" disabled={!el.eligible || !!docs} onClick={() => { const e = store.act((s) => void submitEntry(s, p, editionId, cat.id, recipients.length ? recipients : undefined, versionId || undefined, ep)); onError(e); if (!e) onClose(); }}>Submit Entry</button>
     </>}>
       <p><strong>{cat.name}</strong>, {ed.label}</p>
-      <SelectField label="Project" value={projectId} options={delivered.map((x) => ({ value: x.id, label: x.title }))} onChange={(v) => { setProjectId(v); setRecipients([]); setVersionId(''); }} />
+      <SelectField label="Project" value={projectId} options={delivered.map((x) => ({ value: x.id, label: x.title }))} onChange={(v) => { setProjectId(v); setRecipients([]); setVersionId(''); setEpisode(''); }} />
+      {episodes.length > 0 && <SelectField label="Episode To Enter" value={String(ep)} hint="This category is entered for one episode, and goes to the people credited on it." options={episodes.map((n) => ({ value: String(n), label: p.episodes[n - 1]?.title ?? `Episode ${n}` }))} onChange={(v) => { setEpisode(v); setRecipients([]); }} />}
       {(p.versions ?? []).length > 0 && <SelectField label="Version To Enter" value={versionId} options={[{ value: '', label: `The Main Cut (${p.delivered!.runtimeMin} Minutes)` }, ...p.versions!.map((v) => ({ value: v.id, label: `${v.label} (${versionRuntime(p, v)} Minutes)` }))]} onChange={setVersionId} />}
       {personal && pool.length > 0 && (
         <fieldset style={{ border: 0, padding: 0 }}>
