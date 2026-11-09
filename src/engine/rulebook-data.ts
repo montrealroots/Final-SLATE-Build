@@ -255,6 +255,34 @@ const ANNECY_2027: RuleBook = {
   categories: annecy(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 terms.')) as typeof v),
 };
 
+/**
+ * Version 2 (November 9, 2026): the sections the 2026 terms name beyond Official. The feature terms apply "in all
+ * categories: Official, Contrechamp, Midnight Specials, Annecy Presents" (section 2); the short film terms list Off-Limits
+ * and Perspectives among their competitive categories (section 5); TV films and web series have their own regulations
+ * (French only, section 2). Not modeled: one episode per series and no pilots (SLATE enters a project, not an episode).
+ */
+const AN26_TV: RuleSource = { id: 'an26-tv', publisher: 'CITIA, Annecy International Animation Film Festival', title: 'Règlement 2026 – Films de télévision', url: 'https://www.annecyfestival.com/sites/default/files/2025-11/Annecy_Festival_2026_Reglements_Films_de_TV.pdf', edition: 'Annecy 2026', retrieved: '2026-11-09' };
+function annecy2(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const first = annecy(year, mk);
+  const projNote = year === 2026 ? '' : ' From the 2026 regulations; the 2027 regulations are not published yet.';
+  return {
+    ...first,
+    contrechamp: first.features,
+    'off-limits': first.shorts,
+    perspectives: first.shorts,
+    tv: {
+      completedFrom: mk(`${year - 1}-01-02`, 'an26-tv', `Completed after January 1, ${year - 1} (section 2).${projNote}`),
+      noReentry: mk(true, 'an26-tv', `Submitted for the first time (section 2).${projNote}`),
+      deadlines: mk([{ date: `${year}-02-14`, time: '23:59', zone: PARIS, timeAssumed: true }], 'an26-tv', `${BEFORE_DAY} Before February 15 (section 2).${projNote}`),
+    },
+  };
+}
+const ANNECY_2026_2: RuleBook = { ...ANNECY_2026, id: 'annecy-2026@2', version: 2, checked: '2026-11-09', sources: [...ANNECY_SOURCES, AN26_TV], categories: annecy2(2026, v) };
+const ANNECY_2027_2: RuleBook = {
+  ...ANNECY_2027, id: 'annecy-2027@2', version: 2, checked: '2026-11-09', sources: [...ANNECY_SOURCES, AN26_TV],
+  categories: annecy2(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 terms.')) as typeof v),
+};
+
 // ---------------- Venice: 83rd (2026, verified) and 84th (2027, projected) ----------------
 
 const VENICE_SOURCES: RuleSource[] = [
@@ -461,5 +489,5 @@ const EMMYS_2027_2: RuleBook = { ...EMMYS_2027, id: 'emmys-2027@2', version: 2, 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2,
 ];

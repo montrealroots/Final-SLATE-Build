@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('165 categories follow verified rules for at least one edition, 11 only projected ones; the other 626 are simulated', () => {
+  it('169 categories follow verified rules for at least one edition, 11 only projected ones; the other 622 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -431,8 +431,8 @@ describe('audit counts', () => {
     // Annies' four TV categories (rulebooks.ts). 66 and 734 until International Feature Film's rules were read the same day,
     // and 67 and 733 until the Emmys' general eligibility was applied to their other 98 entered categories (emmys-2026@2);
     // 2 projected until the Berlinale's five other sections were read (berlinale-2027@2), 7 until Cannes' four feature
-    // sections were (cannes-2027@2).
-    expect(n).toEqual({ verified: 165, projected: 11, simulated: 626 });
+    // sections were (cannes-2027@2). 165 verified until Annecy's Contrechamp, Off-Limits, Perspectives and TV (annecy-2026@2).
+    expect(n).toEqual({ verified: 169, projected: 11, simulated: 622 });
   });
 });
 
@@ -569,6 +569,23 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
       expect(r(s, film('2026-05-01'), e, id), id).toMatch(/completed on May 1, 2026/);
     }
     expect(categoryDeadline(e, cat(e, 'competition'))).toBe(at('Europe/Paris', '2027-03-13', 23, 59) + 59_000);
+  });
+
+  it('Annecy 2026, version 2: Contrechamp reads the feature terms, Off-Limits and Perspectives the short film terms, TV its own regulations', () => {
+    const s = startLife('an2');
+    const e = ed(s, 'annecy-2026');
+    expect(e.rulesId).toBe('annecy-2026@2');
+    s.now = at('Europe/Paris', '2026-02-01', 9);
+    const f60 = work(s, { format: 'feature', runtime: 60, completed: '2025-06-01', base: 'gb-london', medium: 'animation' });
+    expect(r(s, f60, e, 'contrechamp')).toMatch(/more than 60/);
+    const fr = work(s, { format: 'feature', runtime: 80, completed: '2025-06-01', base: 'gb-london', medium: 'animation' });
+    release(fr, 'theatrical', '2026-01-10', ['FR']);
+    expect(r(s, fr, e, 'contrechamp')).toMatch(/shown publicly in France/);
+    const old = work(s, { format: 'short', runtime: 8, completed: '2024-12-01', base: 'gb-london', medium: 'animation' });
+    for (const id of ['off-limits', 'perspectives']) expect(r(s, old, e, id), id).toMatch(/completed on December 1, 2024/);
+    const ep = work(s, { format: 'series', runtime: 22, completed: '2024-12-01', base: 'gb-london', medium: 'animation' });
+    expect(r(s, ep, e, 'tv')).toMatch(/completed on December 1, 2024/);
+    expect(categoryDeadline(e, cat(e, 'tv'))).toBe(at('Europe/Paris', '2026-02-14', 23, 59) + 59_000);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

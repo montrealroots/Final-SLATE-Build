@@ -177,6 +177,13 @@ labelled Projected Rules.
 
 Not read: the Television, commissioned and graduation film terms; the TV competition stays simulated.
 
+**Version 2 (`annecy-2026@2`, `annecy-2027@2` projected, read November 9, 2026):** the feature terms apply "in all
+categories: Official, Contrechamp, Midnight Specials, Annecy Presents" (section 2), so Contrechamp takes the feature rules;
+the short film terms list Off-Limits and Perspectives among their competitive categories (section 5), so both take the
+short film rules; TV films and web series follow the [Règlement 2026 – Films de télévision](https://www.annecyfestival.com/sites/default/files/2025-11/Annecy_Festival_2026_Reglements_Films_de_TV.pdf)
+(French only), section 2: completed after January 1, 2025; submitted for the first time; entries before February 15, 2026
+(SLATE: end of February 14 in France). Not modeled: one episode per series and no pilots (SLATE enters a project).
+
 ## Venice International Film Festival, 83rd (2026, verified) and 84th (2027, projected)
 
 Source: [Regulations - 83rd Venice International Film Festival](https://static.labiennale.org/files/cinema/2026/Documenti/regulations-83.pdf)
