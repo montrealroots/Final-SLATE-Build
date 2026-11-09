@@ -527,7 +527,10 @@ exhibitions and the television rules weren't applied; those categories stay on S
   used**: `tiff-2026` stays simulated. A third pass on November 9, 2026 (tiff.net/submit and filmfreeway.com/tiff) was
   refused the same way; the next try is an official archived copy of TIFF's terms or a TIFF press release with them.
 - **SXSW 2027:** the premiere and eligibility policies on support.sxsw.com (features, shorts, TV) refused this environment
-  (HTTP 403) on November 9, 2026; SXSW stays on SLATE's rules.
+  (HTTP 403) on November 9, 2026; SXSW's eligibility stays on SLATE's rules. The submissions page itself answered later
+  that day: `sxsw-2027@1` applies its final deadline (October 1, 2026, 11:59 p.m. PT) and the catalog takes its
+  final-deadline fees (features $125; shorts, music videos and TV $90). A book whose only rule is a deadline counts as
+  SLATE's rules for eligibility (`categoryRuleStatus`).
 - **European Film Awards:** the [fiction regulations](https://www.europeanfilmawards.eu/regulations/feature-films/) were read
   on November 9, 2026 but name no dates or deadline, and the page mixes 2026 and 2027 headings. Their tests (16 of 21
   European-elements points; a major-festival selection or a seven-day release in three countries) aren't anything SLATE

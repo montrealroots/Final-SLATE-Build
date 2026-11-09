@@ -223,6 +223,7 @@ export function rulebook(id: string | undefined): RuleBook | undefined {
 /** Whether a category's rules are the organizer's for this edition, carried forward, or SLATE's simulation. */
 export function categoryRuleStatus(book: RuleBook | undefined, categoryId: string): 'verified' | 'projected' | 'simulated' {
   const c = book?.categories[categoryId];
-  if (!c) return 'simulated';
+  // A deadline alone isn't eligibility: SXSW's page gives dates and fees, and its eligibility stays SLATE's (rulebook-data.ts).
+  if (!c || Object.keys(c).every((k) => k === 'deadlines')) return 'simulated';
   return Object.values(c).some((r) => (r as Ruled<unknown>).status === 'projected') ? 'projected' : 'verified';
 }

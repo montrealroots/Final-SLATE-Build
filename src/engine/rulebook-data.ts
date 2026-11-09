@@ -107,6 +107,21 @@ const OSCARS_2027_3: RuleBook = {
   },
 };
 
+// ---------------- SXSW Film & TV Festival 2027 ----------------
+
+/**
+ * Read November 9, 2026: the Film & TV submissions page, once it answered (HTTP 403 before). It gives the deadlines and
+ * fees only: first August 25, second September 15, final October 1, 2026, "All deadlines end at 11:59pm PT". SLATE uses the
+ * final deadline and its fee (features $125; shorts, music videos and TV $90; the catalog's fees). Eligibility (premiere,
+ * completion, running time) is in the festival's FAQ on support.sxsw.com, which returned HTTP 403, so it stays SLATE's.
+ */
+const SXSW_SOURCE: RuleSource = { id: 'sxsw27-submit', publisher: 'SXSW', title: 'Film & TV Submissions (2027)', url: 'https://sxsw.com/film-submissions/', edition: 'SXSW Film & TV Festival 2027', retrieved: '2026-11-09' };
+const sxswDeadline = v([{ date: '2026-10-01', time: '23:59', zone: PT }], 'sxsw27-submit', 'Final deadline October 1, 2026, 11:59 p.m. PT (first August 25, second September 15, at lower fees).');
+const SXSW_2027: RuleBook = {
+  id: 'sxsw-2027@1', institutionId: 'sxsw', year: 2027, version: 1, checked: '2026-11-09', sources: [SXSW_SOURCE],
+  categories: Object.fromEntries(['narrative', 'documentary', 'episodic', 'shorts', 'music-videos'].map((id) => [id, { deadlines: sxswDeadline }])),
+};
+
 // ---------------- Sundance Film Festival 2027 ----------------
 
 const SUNDANCE_SOURCES: RuleSource[] = [
@@ -1093,6 +1108,6 @@ const PGA_2027: RuleBook = {
 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
-  OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
+  OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
   ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
 ];

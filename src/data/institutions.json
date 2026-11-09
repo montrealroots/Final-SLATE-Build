@@ -4030,7 +4030,7 @@
      "judging": "jury",
      "slots": 10,
      "competitive": false,
-     "fee": 90,
+     "fee": 125,
      "premiere": "world",
      "kind": "section",
      "verified": true
@@ -4079,7 +4079,7 @@
      "judging": "jury",
      "slots": 10,
      "competitive": false,
-     "fee": 90,
+     "fee": 125,
      "premiere": "world",
      "kind": "section",
      "verified": true
@@ -4133,7 +4133,7 @@
      "judging": "audience",
      "slots": 12,
      "competitive": false,
-     "fee": 70,
+     "fee": 90,
      "premiere": "world",
      "family": [
       "observational",
@@ -4172,7 +4172,7 @@
      "judging": "jury",
      "slots": 40,
      "competitive": false,
-     "fee": 50,
+     "fee": 90,
      "premiere": "none",
      "kind": "section",
      "verified": true
@@ -4206,7 +4206,7 @@
      "verified": true,
      "judging": "programmers",
      "slots": 12,
-     "fee": 60,
+     "fee": 90,
      "competitive": false
     },
     {

@@ -744,6 +744,16 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(categoryDeadline(e, cat(e, 'sic'))).toBe(at('Europe/Rome', '2026-06-19', 23, 59) + 59_000);
   });
 
+  it('SXSW 2027: the submissions page gives the final deadline and fees, not eligibility, so eligibility stays SLATE\'s', () => {
+    const s = startLife('sxsw');
+    const e = ed(s, 'sxsw-2027');
+    expect(e.rulesId).toBe('sxsw-2027@1');
+    expect(categoryDeadline(e, cat(e, 'music-videos'))).toBe(at('America/Los_Angeles', '2026-10-01', 23, 59) + 59_000);
+    expect(cat(e, 'music-videos').fee).toBe(90);
+    expect(cat(e, 'narrative').fee).toBe(125);
+    expect(categoryRuleStatus(rulebook('sxsw-2027@1'), 'music-videos')).toBe('simulated'); // a deadline alone isn't eligibility
+  });
+
   it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {
     const s = startLife('idfa');
     const e = ed(s, 'idfa-2026');
