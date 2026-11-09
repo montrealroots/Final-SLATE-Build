@@ -248,20 +248,38 @@ test('a short qualifies for the Oscars through a festival prize; an animated sho
   });
   await openEvent(page, 'Paper Lantern', '99th Academy Awards');
   await filterTo(page, 'Paper Lantern');
-  await expect(row(page, 'Animated Short Film').getByText(/or a top award at one of its qualifying festivals in that time/)).toBeVisible();
+  await expect(row(page, 'Animated Short Film').getByText(/or a win of an award on the Oscars qualifying-festival list between October 1, 2025 and September 30, 2026/)).toBeVisible();
 
-  // Labelled fixture: Paper Lantern was selected at Annecy in June 2026 and won the Cristal for a short film, the prize
-  // the Academy lists for Annecy (the festival itself is played in the Venice journey below).
+  // Labelled fixture: Paper Lantern was selected at Annecy in June 2026 and won its Audience Award, which the Academy's
+  // list doesn't name: the selection and that award leave the short where it was.
   await editSave(page, (s) => {
     const p = s.projects.find((x: State) => x.title === 'Paper Lantern');
     const ed = s.editions.find((e: State) => e.id === 'annecy-2026');
     ed.entries.push({ id: 'an1', projectId: p.id, categoryId: 'shorts', submittedAt: 0, status: 'selected', recipients: [], fee: 0 });
+    ed.entries.push({ id: 'an0', projectId: p.id, categoryId: 'short-audience', submittedAt: 0, status: 'won', recipients: ['cr3'], fee: 0, via: 'selection' });
+    ed.results['short-audience'] = { stage: 'winner', projectIds: [p.id], rivalIds: [], winner: p.id, revealed: true };
+  });
+  await openEvent(page, 'Paper Lantern', '99th Academy Awards');
+  await filterTo(page, 'Paper Lantern');
+  await expect(row(page, 'Animated Short Film').getByText(/or a win of an award on the Oscars qualifying-festival list/)).toBeVisible();
+
+  // Labelled fixture: it also won the Cristal for a short film, the award the Academy lists for Annecy (the festival
+  // itself is played in the Venice journey below).
+  await editSave(page, (s) => {
+    const p = s.projects.find((x: State) => x.title === 'Paper Lantern');
+    const ed = s.editions.find((e: State) => e.id === 'annecy-2026');
     ed.entries.push({ id: 'an2', projectId: p.id, categoryId: 'short-cristal', submittedAt: 0, status: 'won', recipients: ['cr3'], fee: 0, via: 'selection' });
     ed.results['short-cristal'] = { stage: 'winner', projectIds: [p.id], rivalIds: [], winner: p.id, revealed: true };
   });
   await openEvent(page, 'Paper Lantern', '99th Academy Awards');
   await filterTo(page, 'Paper Lantern');
   await expect(row(page, 'Animated Short Film').locator('.chip', { hasText: 'Open To Paper Lantern' })).toBeVisible();
+  await row(page, 'Animated Short Film').getByRole('button', { name: 'Prepare Submission' }).click();
+  const list = page.getByRole('dialog', { name: 'Prepare Submission' }).locator('details', { hasText: 'Qualifying Festival Awards' });
+  await list.locator('summary').click();
+  await expect(list.getByText('Annecy: Cristal for a Short Film')).toBeVisible();
+  await expect(list.getByText(/^Won from October 1, 2025 to September 30, 2026\. Only these awards count/)).toBeVisible();
+  await page.getByRole('dialog', { name: 'Prepare Submission' }).getByRole('button', { name: 'Cancel' }).click();
   await submit(page, 'Animated Short Film', /goes to the credited producers\./, 'Nia Halvorsen-Mbeki');
 
   // Animation: the Annies' short subject.
@@ -275,6 +293,76 @@ test('a short qualifies for the Oscars through a festival prize; an animated sho
   await expect(row(page, 'Writing (Original Screenplay)')).toHaveCount(0); // no credited writer
   await submit(page, 'Documentary Feature Film', /goes to the credited producers\./, 'Nia Halvorsen-Mbeki');
   await page.screenshot({ path: `test-results/awards-shorts-docs-${test.info().project.name}.png`, fullPage: true });
+});
+
+test('International Feature Film: a prize the Academy doesn\'t list doesn\'t qualify, the Golden Lion does; a country puts forward one film', async ({ page }) => {
+  await quickLife(page, 'fr-paris', '2026-09-01');
+  for (const title of ['Le Phare', 'La Digue', 'Les Dunes']) {
+    await nav(page, 'Projects');
+    await newProject(page, { title, format: 'Feature Film', runtime: '100' });
+  }
+  // Labelled fixture: three French-language features made in Paris. Le Phare has no release and won the Berlinale's
+  // Silver Bear Grand Jury Prize in February; La Digue and Les Dunes opened in French cinemas in May.
+  const french = [{ id: 'r1', route: 'theatrical', date: '2026-05-06', territories: ['FR'], distributor: 'Rive Films', note: '', status: 'released' }];
+  await editSave(page, (s) => {
+    const phare = deliver(s, 'Le Phare', { format: 'feature', runtime: 101, at: '2026-01-10T20:00:00Z', base: 'fr-paris', lang: 'fr' });
+    deliver(s, 'La Digue', { format: 'feature', runtime: 98, at: '2026-02-10T20:00:00Z', base: 'fr-paris', lang: 'fr', releases: french, quality: { overall: 99 } });
+    deliver(s, 'Les Dunes', { format: 'feature', runtime: 96, at: '2026-02-12T20:00:00Z', base: 'fr-paris', lang: 'fr', releases: french, quality: { overall: 97 } });
+    const b = s.editions.find((e: State) => e.id === 'berlinale-2026');
+    b.entries.push({ id: 'bl1', projectId: phare.id, categoryId: 'competition', submittedAt: 0, status: 'selected', recipients: [], fee: 0 });
+    b.entries.push({ id: 'bl2', projectId: phare.id, categoryId: 'grand-jury', submittedAt: 0, status: 'won', recipients: ['cr3'], fee: 0, via: 'selection' });
+    b.results['grand-jury'] = { stage: 'winner', projectIds: [phare.id], rivalIds: [], winner: phare.id, revealed: true };
+  });
+  await openEvent(page, 'Le Phare', '99th Academy Awards');
+  await filterTo(page, 'Le Phare');
+  await expect(row(page, 'International Feature Film').getByText(/It needs a theatrical release outside the United States between October 1, 2025 and September 30, 2026, or a win of an award on the Oscars qualifying-festival list/)).toBeVisible();
+
+  // Labelled fixture: Le Phare won Venice's Golden Lion on September 12, 2026, one of the six awards the Academy lists.
+  await editSave(page, (s) => {
+    const phare = s.projects.find((x: State) => x.title === 'Le Phare');
+    const v = s.editions.find((e: State) => e.id === 'venice-2026');
+    v.entries.push({ id: 've1', projectId: phare.id, categoryId: 'competition', submittedAt: 0, status: 'selected', recipients: [], fee: 0 });
+    v.entries.push({ id: 've2', projectId: phare.id, categoryId: 'golden-lion', submittedAt: 0, status: 'won', recipients: ['cr3'], fee: 0, via: 'selection' });
+    v.results['golden-lion'] = { stage: 'winner', projectIds: [phare.id], rivalIds: [], winner: phare.id, revealed: true };
+  });
+  await openEvent(page, 'Le Phare', '99th Academy Awards');
+  await filterTo(page, 'Le Phare');
+  await expect(row(page, 'International Feature Film').locator('.chip', { hasText: 'Open To Le Phare' })).toBeVisible();
+  await row(page, 'International Feature Film').getByRole('button', { name: 'Prepare Submission' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Prepare Submission' });
+  await expect(dialog.getByText(/a country puts forward only one/)).toBeVisible();
+  await dialog.locator('summary', { hasText: 'Qualifying Festival Awards' }).click();
+  for (const a of ['Venice: Golden Lion', 'Berlin: Golden Bear for Best Film', 'Toronto: Platform Award']) await expect(dialog.getByText(a, { exact: true })).toBeVisible();
+  await expect(dialog.getByText(/Silver Bear/)).toHaveCount(0);
+  await dialog.getByRole('button', { name: 'Cancel' }).click();
+  // The edition's Your Entries lists every film's entries, each as "Title: Category".
+  const mine = (title: string) => yours(page).locator('li', { hasText: `${title}: International Feature Film` });
+  for (const title of ['Le Phare', 'Les Dunes', 'La Digue']) {
+    await openEvent(page, title, '99th Academy Awards');
+    await filterTo(page, title);
+    await row(page, 'International Feature Film').getByRole('button', { name: 'Prepare Submission' }).click();
+    await expect(dialog.getByText(/Credited for this entry: Nia Halvorsen-Mbeki\./)).toBeVisible();
+    await dialog.getByRole('button', { name: 'Submit Entry' }).click();
+    await expect(dialog).toBeHidden();
+    await expect(mine(title).locator('.chip')).toHaveText('Submitted');
+  }
+
+  // The committees decide at the Academy's entry deadline (November 12, 5 p.m. in Los Angeles).
+  await advanceUntil(page, '2026-11-14');
+  await openEvent(page, 'Le Phare', '99th Academy Awards');
+  await expect(mine('Le Phare').locator('.chip')).toHaveText('Accepted For Consideration');
+  await expect(mine('Le Phare').getByText(/^Its Golden Lion at the .+ qualifies it without the national committee\.$/)).toBeVisible();
+  await expect(mine('La Digue').locator('.chip')).toHaveText('Accepted For Consideration');
+  await expect(mine('La Digue').getByText(/France's selection committee chose it over /)).toBeVisible();
+  await expect(mine('Les Dunes').locator('.chip')).toHaveText('Not Selected');
+  await expect(mine('Les Dunes').getByText("France's selection committee put forward La Digue; a country submits one film.")).toBeVisible();
+  await yours(page).screenshot({ path: `test-results/awards-international-${test.info().project.name}.png` });
+  // The decisions survive a reload.
+  await pressSaveAndExit(page);
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await openEvent(page, 'Le Phare', '99th Academy Awards');
+  await expect(mine('Les Dunes').locator('.chip')).toHaveText('Not Selected');
+  await expect(mine('Le Phare').locator('.chip')).toHaveText('Accepted For Consideration');
 });
 
 test('Venice: selection for the Competition is not a win; its prizes are decided among the selected films; the fee is paid once', async ({ page }) => {
