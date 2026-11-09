@@ -78,3 +78,11 @@ Written before the engine work so it could resume from here, and updated as it w
   when the festival opens (it was marked withdrawn until November 9, 2026, though you hadn't withdrawn it).
 - **Oscar shorts' festival route** names each listed festival's top short-film prize; FESPACO's and IDFA's prizes weren't
   read, so their sections can't qualify a short yet.
+- **Exposure after a prize**: a prize (or a special mention) schedules one more round of distributor interest two days
+  after the festival, with exposure from the event's prestige; whether an offer comes still depends on the film's
+  reception, so nothing guarantees money.
+- **Crafts the game has no crew role for**: the Emmys' title design and motion design credit the compositor, who makes
+  titles in the game's post-production. The ledger test fails any craft award naming a role nobody can be hired for.
+- **No save version change**: every field the catalog added is optional, stored entries and results keep their category
+  IDs, and categories a roster dropped stay in the catalog marked retired, so older saves load unchanged; a test loads
+  one with the earlier build's results for every category and a Competition win.

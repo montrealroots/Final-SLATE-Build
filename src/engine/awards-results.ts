@@ -195,6 +195,10 @@ export function decidePrizes(state: GameState, ed: Edition, messages: string[]):
   // One line for a work that was considered and received nothing, rather than one per prize.
   for (const p of state.projects) {
     const mine = ed.entries.filter((x) => x.projectId === p.id && x.via === 'selection');
+    // A prize or a mention brings distributors' attention once more: exposure that raises their interest, never a
+    // promise of an offer (finish.ts distribution-offer decides from the film's reception plus this exposure).
+    const best = mine.some((x) => x.status === 'won') ? 6 : mine.some((x) => x.status === 'mention') ? 10 : 0;
+    if (best) schedule(state, ed.end + 2 * DAY, 'distribution-offer', { projectId: p.id, wave: `${ed.id}:prize`, exposure: Math.round(institution(ed.institutionId).prestige / best) }, { attention: 'notify', priority: 55 });
     if (!mine.length || mine.some((x) => x.status !== 'lost')) continue;
     const name = cats.find((c) => c.id === mine[0].categoryId)?.name;
     messages.push(`${p.title} didn't win ${mine.length === 1 ? name : `any of the ${mine.length} prizes it was considered for`} at the ${ed.label}.`);

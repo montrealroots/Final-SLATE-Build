@@ -319,3 +319,37 @@ describe('an organizer\'s deadline never leaves the announcement before it', () 
     expect(ed(s, 'golden-globes-2027').announce).toBe(ed(s, 'golden-globes-2027').deadline + 7 * DAY);
   });
 });
+
+describe('what a prize leads to, and what older saves keep', () => {
+  it('a prize brings distributors\' attention again, as exposure, never a promised offer', () => {
+    const s = startLife('exposure', 'gb-london');
+    const e = ed(s, 'venice-2026');
+    const p = work(s, { completed: '2026-01-10', base: 'gb-london' });
+    p.quality = { overall: 99, direction: 99, script: 99, reception: 99 };
+    e.entries.push({ id: 'en', projectId: p.id, categoryId: 'competition', submittedAt: 0, status: 'selected', recipients: [], fee: 120 });
+    e.results.competition = { stage: 'selection', projectIds: [p.id], rivalIds: [], revealed: true };
+    e.status = 'announced';
+    editionResults(s, e);
+    const won = e.entries.some((x) => x.via === 'selection' && (x.status === 'won' || x.status === 'mention'));
+    const offers = s.events.filter((x) => x.kind === 'distribution-offer' && x.payload.wave === `${e.id}:prize`);
+    expect(offers).toHaveLength(won ? 1 : 0);
+    if (won) expect(offers[0].payload.exposure).toBeGreaterThan(0);
+  });
+
+  it('a save from before the expanded catalog keeps every stored result, entry and honour', () => {
+    const s = startLife('older', 'gb-london');
+    const e = ed(s, 'venice-2026');
+    const p = work(s, { completed: '2026-01-10', base: 'gb-london' });
+    // As the earlier build stored it: Competition judged as a competitive category, a result for every category.
+    e.entries.push({ id: 'old', projectId: p.id, categoryId: 'competition', submittedAt: 0, status: 'won', recipients: ['cr1'], fee: 120 });
+    e.results.competition = { stage: 'winner', projectIds: [p.id], rivalIds: [], winner: p.id, revealed: true };
+    e.results.orizzonti = { stage: 'winner', projectIds: [], rivalIds: [], revealed: true };
+    e.status = 'complete';
+    const back = deserialize(serialize(s));
+    const again = ed(back, 'venice-2026');
+    expect(again.entries).toEqual(e.entries);
+    expect(again.results).toEqual(e.results);
+    expect(honors(back).find((h) => h.category === 'Venezia 83 (Competition)')?.result).toBe('Won');
+    expect(publicResult(back, again, cat(again, 'competition'))!.winners).toEqual([p.title]);
+  });
+});

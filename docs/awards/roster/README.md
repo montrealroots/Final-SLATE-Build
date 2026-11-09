@@ -30,3 +30,13 @@ id | Official Name | kind | recipient | work | source ref | note
 
 A note starting `UNVERIFIED:` marks something not read in the organizer's material (a criteria page that didn't load,
 for example). The build counts it as a research gap, and the ledger never calls that row verified.
+
+## What Is Made From These
+
+- `tools/awards/build.py` writes the game's catalog (`src/data/institutions.json`), `docs/awards/INVENTORY.md` (per
+  institution: before and after, new, renamed, not playable, unverified) and `docs/awards/COVERAGE.csv` (every roster
+  line). CI fails when they differ from what the rosters make.
+- `docs/awards/LEDGER.csv`, one row per playable category with its child requirements (roster, rules, engine,
+  recipients, UI, save, evidence, gaps), is written and checked by `tests/awards-ledger.test.ts`. That test also fails a
+  prize decided among something that takes no entries, and a craft award naming a crew role the game can't hire.
+- How each kind of category is played: `docs/awards/DESIGN.md`.

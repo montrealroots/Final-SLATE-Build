@@ -270,29 +270,42 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
   - No primary source was found for the estimating process.
   - Rest between shoot days is not modeled.
 
-### Newest Request (November 9, 2026, after #46): complete awards and festival coverage (IN PROGRESS)
+### Newest Request (November 9, 2026, after #46): complete awards and festival coverage (done)
 
 The owner asked for every institution already in the game (37: 16 festivals, 21 award bodies; 142 categories before)
-to get its complete official roster, edition rules and connected gameplay. Plan, in dependency order:
+to get its complete official roster, edition rules and connected gameplay. Done in dependency order:
 
-1. **A1-A2 research** (in progress): one roster file per institution in `docs/awards/roster/<id>.txt` (format in its
-   README: official name, kind, recipient, work, source reference, note; `-` lines are official categories the game
-   can't represent, with the reason; `UNVERIFIED:` notes are research gaps).
-   - Done (10): oscars, emmys, golden-globes, annie, spirit, gotham, dga, wga, pga, actor-awards.
-   - To do (27): bafta-film, bafta-tv (bafta.org returns 403 here; try the fetch tool or other official routes),
-     international-emmys, cesar, goya, canadian-screen, aacta, amaa (403), japan-academy, blue-dragon (times out),
-     european-film-awards, and all 16 festivals (sections, juries, audience and partner prizes; Locarno returns 403).
-   - Research tools (re-create if the scratchpad is gone): `pdftotext -layout`; a Playwright page renderer for
-     JavaScript sites (Annie, Gotham, DGA, WGA and the Actor Awards needed it); the Annie site only renders subpages
-     by clicking through from /rules-and-categories.
-2. **A3 data model** (not started): category kinds (award, area, juried, section, prize within a section, audience,
-   partner, honorary), recipients (craft roles, guest, song, host, performer, national, career), original/adapted
-   material, new-series and debut rules; `tools/awards/build.py` to turn rosters into `src/data/institutions.json`
-   (keeping every existing category id) plus the coverage ledger; save migration; per-craft quality at delivery.
-3. **A4 engine**: eligibility and recipients per kind; prizes chosen among a section's selection (a selection is never
-   a win); honorary selection from career history, never a paid submission; results stored only where the player is
-   involved (deterministic public results otherwise, to keep long-career saves small).
-4. **A5 UI**, **A6 ledger, tests, Playwright journeys, checks, PRs**.
+1. **Research** (`docs/awards/roster/<id>.txt`, format in its README): 37 roster files, each with its edition and the
+   official pages read (URL, retrieval date). Five organizers' sites were blocked here and are recorded as blocked, not
+   bypassed: BAFTA (film and television), AMAA, Blue Dragon, Busan and Locarno (and FESPACO's domain no longer serves
+   the festival). `UNVERIFIED:` notes mark what wasn't read.
+2. **Catalog** (`tools/awards/build.py` → `src/data/institutions.json`, `docs/awards/INVENTORY.md`, `COVERAGE.csv`):
+   802 playable categories (660 new, 60 renamed to their official names, every earlier ID kept), 125 official
+   categories recorded as not playable with the reason. CI runs `python3 tools/awards/build.py --check`.
+3. **Engine** (`docs/awards/DESIGN.md`): category kinds (award, area, juried, section, prize, audience, partner,
+   honorary); requirements read from the project (competes as, source, story era, subjects, origin, debut, runtime,
+   budget, release); recipients only from credits (crafts by role, songs, guests, hosts, the director for a national
+   entry); per-craft quality at delivery; results stored only where the player is involved and computed when shown
+   otherwise; prizes decided among a section's selection; one, several or no winners for area and juried awards;
+   special mentions; honorary awards from a career; national committees; disqualification. `awards-rules.ts` and
+   `awards-results.ts` load with the catalog, keeping startup JavaScript at 686 kB (219 kB gzipped).
+4. **UI**: the event page groups categories under the organizer's headings with Project, Show, Format and search
+   filters; rows say how each is decided and who receives it; statuses In Competition, Selected, Nominated, Winner,
+   Special Mention, Did Not Win, Withdrawn, Disqualified, and Honorary in the Profile; the Story panel declares Source
+   Material, When It Is Set and What It's About.
+5. **Ledger and tests**: `docs/awards/LEDGER.csv` (one row per category: roster, rules, engine, recipients, UI, save,
+   evidence, gaps) is checked by `tests/awards-ledger.test.ts`; `tests/awards-catalog.test.ts` covers the engine;
+   `e2e/awards.spec.ts` has six journeys on desktop, phone and WebKit iPhone 15 Plus.
+
+What is left (none of it blocks other work):
+- Read the blocked organizers' rules when their sites can be reached from here (BAFTA, AMAA, Blue Dragon, Busan,
+  Locarno, FESPACO), and the pages marked `UNVERIFIED:` in the rosters (97 categories in play).
+- FESPACO's and IDFA's short-film prizes weren't read, so those festivals can't qualify a short for the Oscars yet.
+- The Oscars' International Feature deadline and the Academy's full list of qualifying festival awards weren't read:
+  International Feature keeps the game's deadline and any festival prize qualifies it.
+- Basque productions aren't recorded, so San Sebastián's Irizar Basque Film Award can't be won.
+- Do not edit source files while a dev-server browser run is going: the dev server reloads the page to the start
+  screen and the journey fails (this caused the intermittent failures seen while writing `e2e/awards.spec.ts`).
 
 ### Newest Request (November 8, 2026, after #45): browser journeys for the last unit-only behaviours
 
@@ -580,4 +593,6 @@ the look against 1221 beyond the side-by-side captures.
 
 - No tutorial, taxes, housing, banking, visas or attribute progression.
 - Rules are simulated and labelled as such, except where `docs/world/RULEBOOK-AUDIT.md` lists organizer rules.
+- Festival and award judging is a game model: rival works come from a simulated season, the standard for area and
+  juried awards, special mentions, honorary selection and national committees are assumptions (`docs/awards/DESIGN.md`).
 - Saves are local to the browser (IndexedDB, or localStorage where it isn't available). Export Save is the copy outside it; Import Save brings one back (`docs/STORAGE.md`).
