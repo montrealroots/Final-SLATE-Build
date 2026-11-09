@@ -3,6 +3,7 @@
 import { getPlace } from '../data/places';
 import { personById } from './people';
 import { competesAs } from './script-effects';
+import { approvedScenes } from './projects';
 import type { Credit, GameState, Project } from './types';
 
 export { QUALIFYING_LISTS, projectedList, qualifyingList } from './qualifying-lists';
@@ -133,4 +134,46 @@ export function craftScore(p: Project, crafts: string[] | undefined, song: boole
   if (crafts?.includes('editor')) return q.editing ?? q.craft ?? 50;
   if (crafts?.includes('composer')) return q.music ?? q.craft ?? 50;
   return q.craft ?? 50;
+}
+
+// Recipient and work-specific rules (docs/awards/RECIPIENT-RULES.md). They load with the catalog, not at startup.
+
+/** The share of the approved script's dialogue, in words, in a language other than English; null with no written dialogue. */
+export function nonEnglishShare(p: Project): number | null {
+  let all = 0;
+  let other = 0;
+  for (const s of approvedScenes(p)) for (const l of s.dialogue) {
+    const words = l.text.split(/\s+/).filter(Boolean).length;
+    all += words;
+    if ((l.language || p.axes.dialogueLanguages[0]) !== 'en') other += words;
+  }
+  return all ? other / all : null;
+}
+
+/** Whether a credit is for a part whose story function is Narrator. */
+export function isNarrator(p: Project, c: Credit): boolean {
+  return !!p.drafts.find((d) => d.number === p.approvedDraft)?.characters.find((x) => x.name === c.characterName)?.functions.includes('narrator');
+}
+
+/** The share of a program's episodes a credit covers. */
+export function episodeShare(p: Project, c: Credit): number {
+  return c.episodes === 'all' ? 1 : c.episodes.length / Math.max(1, p.axes.episodeCount);
+}
+
+/**
+ * Whether this performer was nominated (or won) at the organizer, in a category whose id starts with one of `prefixes`, for
+ * playing the same part in an earlier season of the same series (the seasons `continues` links).
+ */
+export function nominatedEarlier(state: GameState, p: Project, c: Credit, institutionId: string, prefixes: string[]): boolean {
+  for (let q = state.projects.find((x) => x.id === p.continues?.from); q; q = state.projects.find((x) => x.id === q!.continues?.from)) {
+    const season = q;
+    for (const e of state.editions) {
+      if (e.institutionId !== institutionId) continue;
+      for (const x of e.entries) {
+        if (x.projectId !== season.id || !['nominated', 'won', 'lost'].includes(x.status) || !prefixes.some((pre) => x.categoryId.startsWith(pre))) continue;
+        if (x.recipients.some((id) => { const k = season.credits.find((y) => y.id === id); return k?.person === c.person && k.characterName === c.characterName; })) return true;
+      }
+    }
+  }
+  return false;
 }

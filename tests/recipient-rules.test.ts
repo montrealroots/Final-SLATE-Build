@@ -1,8 +1,8 @@
 // Recipient rules read from the organizers' documents (part 5 of the awards work, November 9, 2026): who may be entered for
 // a work, beyond who is credited for it. Each test pairs the rule with the version or organizer that doesn't have it.
 import { describe, expect, it } from 'vitest';
-import { DAY, RULEBOOKS, acceptDeal, approachBacker, categoryRecipients, checkEligibility, categoryRules, entryEpisodes, institution, nonEnglishShare, processUntil, submitEntry } from './engine-api';
-import { requirementProblems } from '../src/engine/awards-rules';
+import { DAY, RULEBOOKS, acceptDeal, approachBacker, categoryRecipients, checkEligibility, categoryRules, entryEpisodes, institution, processUntil, submitEntry } from './engine-api';
+import { nonEnglishShare, requirementProblems } from '../src/engine/awards-rules';
 import { approve, buildProject, startLife } from './helpers';
 import type { Credit, GameState } from '../src/engine/types';
 

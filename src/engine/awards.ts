@@ -10,7 +10,7 @@ import { castPlacement, documentsNeeded } from './script-effects';
 import { genre } from './genres';
 import { personById } from './people';
 import { countryName } from '../world/gazetteer/gazetteer';
-import { approvedScenes, isEpisodic, isNonfiction } from './projects';
+import { isEpisodic, isNonfiction } from './projects';
 import { travelHours } from './state';
 import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { addLog, onNewGame, registerCommitmentSource, registerHandler, schedule, type HandlerResult } from './state';
@@ -472,7 +472,7 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     if (!rules?.nonEnglish && p.axes.dialogueLanguages[0] === 'en') reasons.push('This category is for films whose dialogue is mostly not in English.');
   }
   if (rules?.nonEnglish) {
-    const share = nonEnglishShare(p);
+    const share = catalogRules().nonEnglishShare(p);
     if (share === null && p.axes.dialogueLanguages[0] === 'en') reasons.push('It has no written dialogue and its first dialogue language is English; this category needs more than half the dialogue in another language.');
     else if (share !== null && share <= rules.nonEnglish.value) reasons.push(`${Math.round(share * 100)}% of its written dialogue is in a language other than English; this category needs more than ${Math.round(rules.nonEnglish.value * 100)}%.`);
   }
@@ -572,10 +572,10 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     reasons.push(`Nobody credited for this category worked on episode ${episode ?? entryEpisodes(state, p, cat, rules)[0] ?? 1}.`);
   } else if (!recipients.length) {
     // Credited, but ruled out by the category's own rules: say which rule.
-    const credited = categoryRecipients(state, p, cat, recipientIds).filter((c) => !(rules?.noNarrators && isNarrator(p, c)));
+    const credited = categoryRecipients(state, p, cat, recipientIds).filter((c) => !(rules?.noNarrators && catalogRules().isNarrator(p, c)));
     const span = rules?.episodeShare?.value;
     const earlier = rules?.notAfterNomination?.value;
-    if (earlier && credited.length && credited.every((c) => nominatedEarlier(state, p, c, earlier.institution, earlier.categories))) reasons.push(`${credited[0].characterName ?? credited[0].personName} was nominated as a lead or supporting performance in an earlier season, so the part can't be entered as a guest.`);
+    if (earlier && credited.length && credited.every((c) => catalogRules().nominatedEarlier(state, p, c, earlier.institution, earlier.categories))) reasons.push(`${credited[0].characterName ?? credited[0].personName} was nominated as a lead or supporting performance in an earlier season, so the part can't be entered as a guest.`);
     else if (rules?.noNarrators && !credited.length && categoryRecipients(state, p, cat, recipientIds).length) reasons.push('A narrator can\'t be entered in this performer category; the narration can be entered for a narrator award.');
     else if (span && credited.length) {
       const c = credited[0];
@@ -621,50 +621,14 @@ function ruledRecipients(state: GameState, p: Project, cat: Category, chosen?: s
   if (!rules?.noNarrators && !rules?.episodeShare && !rules?.notAfterNomination) return all;
   const span = rules.episodeShare?.value;
   const before = rules.notAfterNomination?.value;
-  return all.filter((c) => !(rules.noNarrators && isNarrator(p, c))
-    && (!span || ((span.under === undefined || episodeShare(p, c) < span.under) && (span.atLeast === undefined || episodeShare(p, c) >= span.atLeast)))
-    && !(before && nominatedEarlier(state, p, c, before.institution, before.categories)));
+  return all.filter((c) => !(rules.noNarrators && catalogRules().isNarrator(p, c))
+    && (!span || ((span.under === undefined || catalogRules().episodeShare(p, c) < span.under) && (span.atLeast === undefined || catalogRules().episodeShare(p, c) >= span.atLeast)))
+    && !(before && catalogRules().nominatedEarlier(state, p, c, before.institution, before.categories)));
 }
 
-/**
- * Whether this performer was nominated (or won) at the organizer, in a category whose id starts with one of `prefixes`, for
- * playing the same part in an earlier season of the same series (the seasons `continues` links).
- */
-export function nominatedEarlier(state: GameState, p: Project, c: Credit, institutionId: string, prefixes: string[]): boolean {
-  for (let q = state.projects.find((x) => x.id === p.continues?.from); q; q = state.projects.find((x) => x.id === q!.continues?.from)) {
-    const season = q;
-    for (const e of state.editions) {
-      if (e.institutionId !== institutionId) continue;
-      for (const x of e.entries) {
-        if (x.projectId !== season.id || !['nominated', 'won', 'lost'].includes(x.status) || !prefixes.some((pre) => x.categoryId.startsWith(pre))) continue;
-        if (x.recipients.some((id) => { const k = season.credits.find((y) => y.id === id); return k?.person === c.person && k.characterName === c.characterName; })) return true;
-      }
-    }
-  }
-  return false;
-}
 
-/** The share of the approved script's dialogue, in words, in a language other than English; null with no written dialogue. */
-export function nonEnglishShare(p: Project): number | null {
-  let all = 0;
-  let other = 0;
-  for (const s of approvedScenes(p)) for (const l of s.dialogue) {
-    const words = l.text.split(/\s+/).filter(Boolean).length;
-    all += words;
-    if ((l.language || p.axes.dialogueLanguages[0]) !== 'en') other += words;
-  }
-  return all ? other / all : null;
-}
 
-/** Whether a credit is for a part whose story function is Narrator. */
-function isNarrator(p: Project, c: Credit): boolean {
-  return !!p.drafts.find((d) => d.number === p.approvedDraft)?.characters.find((x) => x.name === c.characterName)?.functions.includes('narrator');
-}
 
-/** The share of a program's episodes a credit covers. */
-function episodeShare(p: Project, c: Credit): number {
-  return c.episodes === 'all' ? 1 : c.episodes.length / Math.max(1, p.axes.episodeCount);
-}
 
 function creditedRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
   const credits = p.credits;
