@@ -33,6 +33,9 @@ test('auditions: invited, read, compared, shortlisted, called back with a chemis
   await expect(table.getByText(/^Read on January 8, 2026$/)).toHaveCount(3);
   const tariq = table.locator('tr', { hasText: 'Tariq Varga' });
   await expect(tariq).toContainText('Strong to Exceptional');
+  // Callbacks are for the shortlist (November 9, 2026): before shortlisting, there is no callback to make.
+  await expect(page.getByText('Shortlist the ones you want to see again: callbacks are for the shortlist.')).toBeVisible();
+  await expect(tariq.getByRole('button', { name: 'Call Back Tariq Varga' })).toHaveCount(0);
   await tariq.getByRole('button', { name: 'Shortlist' }).click();
   await expect(table.locator('tbody tr').first()).toContainText('Shortlisted'); // the shortlist comes first
   await tariq.getByLabel('Read Tariq Varga With').selectOption({ label: 'You (cast as Marco)' });

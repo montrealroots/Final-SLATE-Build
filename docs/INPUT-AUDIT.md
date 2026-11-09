@@ -18,6 +18,8 @@ was read again by hand before deciding.
 
 The result was 61 fields that nothing read, and 4 player inputs that changed nothing.
 
+`e2e/readers.spec.ts` shows a setting abroad, a note about a scene, a draft's date and a project's updates in the browser; `e2e/auditions.spec.ts` shows callbacks only for the shortlist.
+
 `tests/model-readers.test.ts` now runs the same measurement on every check. It fails on any field of the saved game
 that nothing reads, by a rule or a screen. Validation and migrations don't count as readers.
 
