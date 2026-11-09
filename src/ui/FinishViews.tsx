@@ -513,7 +513,7 @@ export function FestivalsTab({ p }: { p: Project }) {
               const cat = institution(e.institutionId).categories.find((c) => c.id === x.categoryId)!;
               return (
                 <li key={x.id} className="row-wrap">
-                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button>: {cat.name}{entryVersion(p, x.versionId)} <span className="chip">{entryStatus(x, e)}</span>{x.via === 'selection' ? <span className="dim"> Considered from its selection; no entry or fee.</span> : null}{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
+                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id, projectId: p.id })}>{e.label}</button>: {cat.name}{entryVersion(p, x.versionId)} <span className="chip">{entryStatus(x, e)}</span>{x.via === 'selection' ? <span className="dim"> Considered from its selection; no entry or fee.</span> : null}{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
                 </li>
               );
             })}
@@ -539,7 +539,7 @@ export function FestivalsTab({ p }: { p: Project }) {
             return (
               <li key={e.id}>
                 <div className="row-wrap">
-                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button><span className="dim"> · Entries close {formatDateKey(dateKey(e.deadline, zone))}</span></span>
+                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id, projectId: p.id })}>{e.label}</button><span className="dim"> · Entries close {formatDateKey(dateKey(e.deadline, zone))}</span></span>
                   <span className={`chip ${ok.length ? 'chip-positive' : ''}`}>{ok.length ? `${plural(ok.length, 'Category', 'Categories')} Open To You` : 'Not Eligible Now'}</span>
                 </div>
                 {!ok.length && <div className="dim">{elig[0].r.reasons[0]}</div>}
@@ -673,7 +673,9 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
   const inst = institution(ed.institutionId);
   const place = getPlace(inst.placeId);
   const delivered = g.projects.filter((p) => p.delivered);
-  const [projectId, setProjectId] = useState('');
+  // Opened from a project's Festivals And Awards tab: that project is checked against every category, and every
+  // heading is open (a large roster otherwise starts with its headings closed).
+  const [projectId, setProjectId] = useState(delivered.some((x) => x.id === store.route.projectId) ? store.route.projectId! : '');
   const [format, setFormat] = useState('');
   const [show, setShow] = useState<Show>('all');
   const [query, setQuery] = useState('');
