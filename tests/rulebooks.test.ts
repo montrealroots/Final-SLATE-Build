@@ -423,7 +423,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('463 categories follow verified rules for at least one edition, 11 only projected ones; the other 332 are simulated', () => {
+  it('464 categories follow verified rules for at least one edition, 11 only projected ones; the other 331 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -448,8 +448,9 @@ describe('audit counts', () => {
     // SXSW's Music Video Competition, its jury award and the International Emmys' Sports Documentary were entered, under
     // terms that weren't readable from here.
     // 457 until Venice's Critics' Week read its own regulations (venice-2026@4), 458 until the Goyas' European,
-    // Ibero-American and short film awards read their specific Bases (goya-2027@2).
-    expect(n).toEqual({ verified: 463, projected: 11, simulated: 332 });
+    // Ibero-American and short film awards read their specific Bases (goya-2027@2), 463 until the PGA's documentary award
+    // (pga-2027@2).
+    expect(n).toEqual({ verified: 464, projected: 11, simulated: 331 });
   });
 });
 
@@ -785,6 +786,27 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(categoryDeadline(e, cat(e, 'european'))).toBe(at('Europe/Madrid', '2026-09-10', 14));
   });
 
+  it('PGA 2027, version 2: a documentary qualifies by a US run, a US premiere on television or streaming, or a listed festival selection', () => {
+    const s = startLife('pga-doc');
+    const e = ed(s, 'pga-2027');
+    expect(e.rulesId).toBe('pga-2027@2');
+    s.now = at('America/Los_Angeles', '2026-07-01', 9);
+    const doc = () => work(s, { format: 'documentary-feature', runtime: 85, completed: '2026-01-10' });
+    const run = doc();
+    release(run, 'theatrical', '2026-03-01', ['US']);
+    expect(r(s, run, e, 'documentary')).toBe('');
+    const streamed = doc();
+    release(streamed, 'streaming', '2026-03-01', ['US']);
+    expect(r(s, streamed, e, 'documentary')).toBe('');
+    const unseen = doc();
+    expect(r(s, unseen, e, 'documentary')).toMatch(/or a selection at .*Hot Docs/);
+    const hotDocs = s.editions.find((x) => x.institutionId === 'hot-docs' && x.year === 2026)!;
+    hotDocs.entries.push({ id: 'hd', projectId: unseen.id, categoryId: 'festival', submittedAt: 0, status: 'selected', recipients: [], fee: 0 });
+    expect(r(s, unseen, e, 'documentary')).toBe('');
+    expect(r(s, work(s, { format: 'documentary-feature', runtime: 40, completed: '2026-01-10' }), e, 'documentary')).toMatch(/more than 40/);
+    expect(categoryDeadline(e, cat(e, 'documentary'))).toBe(at('America/Los_Angeles', '2026-08-28', 23, 59) + 59_000);
+  });
+
   it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {
     const s = startLife('idfa');
     const e = ed(s, 'idfa-2026');
@@ -971,7 +993,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Producers Guild Awards 2027: a US theatrical release in 2026, nothing outside cinemas first, by October 9; animated features over 40 minutes', () => {
     const s = startLife('pga');
     const e = ed(s, 'pga-2027');
-    expect(e.rulesId).toBe('pga-2027@1');
+    expect(e.rulesId).toBe('pga-2027@2'); // version 2 adds the documentary award; the film awards keep version 1's rules
     s.now = at('America/Los_Angeles', '2026-09-01', 9);
     const film = (medium: Project['axes']['medium'], runtime = 95) => { const p = work(s, { format: 'feature', medium, runtime, completed: '2026-01-10', base: 'us-los-angeles' }); release(p, 'theatrical', '2026-06-01', ['US']); return p; };
     expect(r(s, film('live-action'), e, 'theatrical')).not.toMatch(/release/);

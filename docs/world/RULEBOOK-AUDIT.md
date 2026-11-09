@@ -532,7 +532,15 @@ Sources (read November 9, 2026): [Motion Pictures](https://www.producersguildawa
 section A: a US theatrical release for paid admission between January 1 and December 31, 2026; no nontheatrical exhibition
 or distribution before it (as at the 99th Academy Awards); submitted by October 9, 2026; animated features over 40 minutes and
 at least 75 percent animation. Applied to the Theatrical and Animated awards. The documentary rules' several qualifying
-exhibitions and the television rules weren't applied; those categories stay on SLATE's rules.
+exhibitions and the television rules weren't applied in version 1.
+
+**Version 2 (`pga-2027@2`, read November 9, 2026):** [Documentary Motion Pictures](https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Documentary_Motion_Pictures.pdf)
+(July 20, 2026), A.2: an exhibition in 2026, more than 40 minutes, by a seven-day paid run in one of eleven US areas
+(SLATE: a US theatrical release), a national television premiere at 70 minutes (SLATE: a US broadcast or streaming release,
+without the 70-minute floor), an Official Selection or In Competition at a listed festival (SLATE: the eight it holds), or a
+qualifying award on the Academy's list (SLATE: the 99th list it holds, where the PGA attached the 98th); submitted by August
+28, 2026. The fee line reads "one hundred fifty dollars ($175.00)". The television awards' rules weren't found under the
+same naming (404) and stay on SLATE's rules.
 
 ## Not Readable From Here
 

@@ -1118,9 +1118,9 @@ const GOTHAM_2026: RuleBook = {
 
 /**
  * Read November 9, 2026: Rules and Procedures for 2027 Awards Eligibility, Motion Pictures (July 20, 2026) and Animated
- * Motion Pictures, section A. The documentary rules list several qualifying exhibitions (a theatrical run, a listed
- * festival award, a national television premiere) that SLATE can't all read; Best Documentary and the television awards
- * stay on SLATE's rules. Not modeled: the producer eligibility determination (only producers the PGA certifies are
+ * Motion Pictures, section A. This version left Best Documentary on SLATE's rules, because its qualifying exhibitions (a
+ * theatrical run, a listed festival award, a national television premiere) weren't all readable then; version 2 applies
+ * them. The television awards stay on SLATE's rules. Not modeled: the producer eligibility determination (only producers the PGA certifies are
  * named), the ballot fee, the crowdfunding producer-credit disqualification.
  */
 const PGA_SOURCES: RuleSource[] = [
@@ -1141,8 +1141,34 @@ const PGA_2027: RuleBook = {
   },
 };
 
+/**
+ * Version 2 (November 9, 2026): Rules and Procedures for 2027 Awards Eligibility, Documentary Motion Pictures (July 20,
+ * 2026), A.2, found under the same naming as the film rules. A qualifying exhibition in 2026, more than 40 minutes: a
+ * seven-day paid run in one of eleven US areas (SLATE: a US theatrical release); an Official Selection at the Berlinale,
+ * Cannes, Hot Docs, Telluride, Toronto, Tribeca or Venice, or In Competition at IDFA, SXSW or Sundance (SLATE: a selection
+ * at the eight it holds); a qualifying award on the Academy's list, Appendix A (SLATE: the Academy's newest documentary
+ * list it holds, the 99th, where the PGA attached the 98th); or a national television premiere at 70 minutes or more
+ * (SLATE: a US broadcast or streaming release, without the 70-minute floor). Submitted by August 28, 2026. Not modeled:
+ * US distribution for foreign films, English subtitles, the exclusions of series episodes and composite segments. The
+ * fee line reads "one hundred fifty dollars ($175.00)"; SLATE records it, not either figure.
+ */
+const PGA_DOC: RuleSource = { id: 'pga27-doc', publisher: 'Producers Guild of America', title: 'Rules and Procedures for 2027 Awards Eligibility - Documentary Motion Pictures', url: 'https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Documentary_Motion_Pictures.pdf', edition: '38th Producers Guild Awards (2027)', retrieved: '2026-11-09' };
+const PGA_2027_2: RuleBook = {
+  ...PGA_2027, id: 'pga-2027@2', version: 2, sources: [...PGA_SOURCES, PGA_DOC],
+  categories: {
+    ...PGA_2027.categories,
+    documentary: {
+      runtime: v({ over: 40 }, 'pga27-doc', 'More than 40 minutes for a theatrical or festival exhibition; 70 for a television premiere, which SLATE doesn\u2019t separate (A.2.c).'),
+      qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'pga27-doc', 'A qualifying exhibition January 1 to December 31, 2026 (A.2.c).'),
+      release: v({ routes: ['theatrical', 'broadcast', 'streaming'], countries: ['US'], festivalList: 'aa99-documentary', festivalSelection: ['berlinale', 'cannes', 'hot-docs', 'tiff', 'venice', 'idfa', 'sxsw', 'sundance'] }, 'pga27-doc',
+        'A seven-day paid run in one of eleven US areas, a national television premiere, an Official Selection or In Competition at a listed festival, or a qualifying award on the Academy\u2019s list (A.2.c).'),
+      deadlines: v([{ date: '2026-08-28', time: '23:59', zone: PT, timeAssumed: true }], 'pga27-doc', 'Submitted no later than August 28, 2026 (A.4.b). The time of day is not given; SLATE uses the end of the day in Los Angeles.'),
+    },
+  },
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027, PGA_2027_2,
 ];
