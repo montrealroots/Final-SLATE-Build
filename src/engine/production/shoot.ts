@@ -9,7 +9,7 @@ import { approvedCharacters, approvedScenes, isNonfiction, projectModules, scene
 import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
 import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees } from './rates';
-import { ensureWorkEvent, isWorkingDay, nextWorkingDay, sceneComplexity, sceneLoad, scheduleShootDay } from './schedule';
+import { ensureWorkEvent, isWorkingDay, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay } from './schedule';
 import { addLogOnce, payPlanned, plannedRemaining } from './workday';
 import { t } from './tasks';
 import { personLanguagesFit } from './language';
@@ -196,7 +196,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const label = sceneLabel(p, s);
     // Prep readiness.
     const prepMissing = p.tasks.filter((x) => x.kind.startsWith('prep:') && x.kind !== 'prep:rehearsal' && x.status !== 'done' &&
-      (x.kind !== 'prep:stunts' || s.stunts.trim()) && (x.kind !== 'prep:choreo' || s.dance) && (x.kind !== 'prep:creature' || s.participants.some((c) => approvedCharacters(p).find((ch) => ch.id === c && ch.entity !== 'human' && ch.realization !== 'performer'))));
+      (x.kind !== 'prep:stunts' || s.stunts.trim()) && (x.kind !== 'prep:choreo' || s.dance) && (x.kind !== 'prep:song' || x.sceneIds.includes(s.id)) && (x.kind !== 'prep:creature' || s.participants.some((c) => approvedCharacters(p).find((ch) => ch.id === c && ch.entity !== 'human' && ch.realization !== 'performer'))));
     if (prepMissing.length) {
       reasons.push(`${label} couldn't be shot: ${prepMissing[0].label.toLowerCase()} isn't finished.`);
       pending.push(s.id);
@@ -269,7 +269,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     // Directing 2: a pickup shoots only what was asked for (a take, singles or inserts), in part of the day (directing.ts).
     const pickup = isDirecting2(p) ? d.pickups?.[s.id] : undefined;
     if (pickup && cap && cap.version === p.approvedDraft) {
-      const share = pickupLoad(s, sceneComplexity(s, mods));
+      const share = pickupLoad(s, sceneComplexity(s, mods, performedSong(p, s)));
       if (capacity < share) {
         reasons.push(`${label}'s pickup ran out of time and needs another day.`);
         pending.push(s.id);
@@ -287,7 +287,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const recorded = shotPlan(p, s.id) && !keepTakes ? recordTakes(state.seed, p, s, d.date, quality, soundAtRisk) : null;
     const plan = shotPlan(p, s.id);
     const need2 = isDirecting2(p) && plan
-      ? (s.estMinutes / sceneComplexity(s, mods)) * setupTime(SETUPS_OF[plan.coverage].length, (recorded?.takes ?? cap?.takes ?? []).length || TAKE_RULES[plan.takes].planned)
+      ? (s.estMinutes / sceneComplexity(s, mods, performedSong(p, s))) * setupTime(SETUPS_OF[plan.coverage].length, (recorded?.takes ?? cap?.takes ?? []).length || TAKE_RULES[plan.takes].planned)
       : sceneLoad(p, s, mods);
     const remainingNeed = need2 * (1 - already);
     const fraction = Math.min(1, capacity / Math.max(0.01, remainingNeed));

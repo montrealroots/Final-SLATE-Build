@@ -1,10 +1,15 @@
 // What the expanded festival and award catalog asks of a project and who receives each award (docs/awards/DESIGN.md,
 // November 9, 2026). Every requirement reads something the project records or the player declares; none reads prose.
-import { getPlace } from '../data/places';
+import { songsOf, songUses, writtenForProject } from './songs';
+import { cutScenes } from './screen-time';
+import { findPlace, getPlace } from '../data/places';
 import { personById } from './people';
 import { competesAs } from './script-effects';
-import { approvedScenes } from './projects';
-import type { Credit, GameState, Project } from './types';
+import { approvedScenes, isEpisodic, isNonfiction } from './projects';
+import { citizenshipOf, countryInSentence } from './identity';
+import { addDaysToKey, formatDateKey } from './time';
+import type { CategoryRules, DeadlineRule } from './rulebooks';
+import type { Credit, Edition, GameState, Project, Song } from './types';
 
 export { QUALIFYING_LISTS, projectedList, qualifyingList } from './qualifying-lists';
 export { RULEBOOK_DATA } from './rulebook-data';
@@ -96,7 +101,7 @@ function breakthrough(state: GameState, p: Project, c: Credit): boolean {
  * Credited recipients for the recipient kinds the expanded catalog adds, or null for the older kinds (awards.ts keeps
  * those). Only people credited with the contribution the award concerns.
  */
-export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (name?: string) => string | null): Credit[] | null {
+export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (name?: string) => string | null, ctx: { versionId?: string; songId?: string; song?: SongRule } = {}): Credit[] | null {
   const cast = p.credits.filter((c) => c.contribution === 'Cast' || c.contribution === 'Performance Capture');
   const pick = (r: string): Credit[] | null => {
     switch (r) {
@@ -107,7 +112,12 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
       // Both the part and the narration sequence come from the approved script, the one delivered.
       case 'narrator': return (p.drafts.find((d) => d.number === p.approvedDraft)?.scenes ?? []).some((s) => s.kind === 'narration') ? p.credits.filter((c) => (c.contribution === 'Cast' || c.contribution === 'Voice Cast') && chars(p).find((x) => x.name === c.characterName)?.functions.includes('narrator')) : [];
       case 'host': return p.credits.filter((c) => c.roleId === 'contributor' && /\bhost/i.test(p.contributors.find((x) => `contributor:${x.id}` === c.person)?.role ?? ''));
-      case 'song': return p.scenes.some((s) => s.songs.some((x) => !x.licensed)) ? p.credits.filter((c) => c.roleId === 'composer') : [];
+      // One song, written for the work, with its writers: until November 9, 2026, the score composer of any project with a
+      // song not marked licensed. Now the song entered (or the first that qualifies) and only its writing credits.
+      case 'song': {
+        const song = originalSongs(p, ctx.versionId, ctx.song).find((x) => !ctx.songId || x.id === ctx.songId);
+        return song ? songRecipients(p, song, ctx.song) : [];
+      }
       case 'national': return p.credits.filter((c) => c.contribution === 'Directed By');
       default: return null;
     }
@@ -125,10 +135,124 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
   return out;
 }
 
+/** An earlier film of these formats you directed and released anywhere outside a festival, before this one: the first found. */
+export function earlierReleased(state: GameState, p: Project, formats: string[]): Project | undefined {
+  return state.projects.find((x) => x.id !== p.id && formats.includes(x.axes.format) && x.delivered && (x.delivered.at ?? 0) <= (p.delivered?.at ?? Infinity)
+    && x.credits.some((c) => c.person === 'player' && c.contribution === 'Directed By')
+    && x.releases.some((r) => r.status === 'released' && r.route !== 'festival-premiere'));
+}
+
+/** Where a credited person works from: hired people's home country; yours, the country you live in. */
+export function workBase(state: GameState, c: Credit): string | undefined {
+  if (c.person === 'player') return findPlace(state.character.livesIn)?.country;
+  try { return personById(state, c.person).homeCountry; } catch { return undefined; } // someone the pool doesn't know
+}
+
+type SongRule = NonNullable<CategoryRules['song']>['value'];
+
+/** The songs heard in the cut entered that were written for the work, with words, and meet the organizer's song rules. */
+export function originalSongs(p: Project, versionId?: string, rule?: SongRule): Song[] {
+  const v = versionId ? p.versions?.find((x) => x.id === versionId) : undefined;
+  return [...new Set(songUses(p, cutScenes(p, versionId), v).map((x) => x.song))].filter((x) => writtenForProject(p, x) && x.writers.some((w) => w.lyrics) && !songRuleProblem(p, x, versionId, rule));
+}
+
+/**
+ * A song's own organizer rules, in the cut entered (rulebooks.ts `song`): where it plays over the end credits, how long it
+ * is heard, a series' title theme. Null when it meets them.
+ */
+function songRuleProblem(p: Project, song: Song, versionId: string | undefined, rule?: SongRule): string | null {
+  if (!rule) return null;
+  const v = versionId ? p.versions?.find((x) => x.id === versionId) : undefined;
+  const cut = cutScenes(p, versionId);
+  const all = songUses(p, cut, v);
+  const mine = all.filter((x) => x.song === song);
+  const body = mine.filter((x) => x.use.placement !== 'end-credits' && !(rule.noTitleTheme && x.use.placement === 'opening-titles' && isEpisodic(p.axes.format)));
+  if (rule.noTitleTheme && !body.length && mine.some((x) => x.use.placement === 'opening-titles') && isEpisodic(p.axes.format)) return `"${song.title}" plays only as the main title theme, which this award doesn't take.`;
+  if (rule.endCredits && !body.length && mine.length) {
+    if (rule.endCredits === 'never') return `"${song.title}" plays only over the end credits, which this award doesn't take.`;
+    // The first new cue once the end credits begin, in each episode of the cut entered: the lowest cue there.
+    const episodeOf = (id: string) => cut.find((sc) => sc.id === id)?.episode ?? 1;
+    const first = mine.some(({ use }) => {
+      const credits = all.filter((x) => x.use.placement === 'end-credits' && episodeOf(x.use.sceneId) === episodeOf(use.sceneId));
+      return Math.min(...credits.map((x) => x.use.cue ?? 1)) === (use.cue ?? 1);
+    });
+    if (!first) return `"${song.title}" plays only over the end credits, and isn't their first song; this award takes a song in the body of the film or the first new song once the end credits begin.`;
+  }
+  if (rule.minSeconds || rule.minTotalSeconds) {
+    const known = mine.filter((x) => x.use.minutes !== null).map((x) => (x.use.minutes ?? 0) * 60);
+    const longest = Math.max(0, ...known);
+    const total = known.reduce((a, x) => a + x, 0);
+    const met = (rule.minSeconds !== undefined && longest + 1e-9 >= rule.minSeconds) || (rule.minTotalSeconds !== undefined && total + 1e-9 >= rule.minTotalSeconds);
+    const need = [rule.minSeconds ? `${rule.minSeconds} seconds at once` : '', rule.minTotalSeconds ? `${rule.minTotalSeconds} seconds in all` : ''].filter(Boolean).join(' or ');
+    if (!met) {
+      return known.length < mine.length
+        ? `How long "${song.title}" plays isn't recorded in every scene; this award needs it heard for ${need}. Record its minutes under Songs.`
+        : `"${song.title}" plays for ${Math.round(longest)} seconds at most at once, ${Math.round(total)} in all; this award needs ${need}.`;
+    }
+  }
+  return null;
+}
+
+/**
+ * Why a work's songs don't make a soundtrack under the organizer's rule, or null (AACTA 10.2(b): at least five songs, each
+ * heard clearly for five seconds). The rule leaves out the composer's score; a SLATE score is never a song, so every song
+ * heard counts, licensed or written for the work. A use whose minutes aren't recorded counts for nothing until they are.
+ */
+export function soundtrackProblem(p: Project, versionId: string | undefined, rule: { minSongs: number; minSeconds: number }): string | null {
+  const v = versionId ? p.versions?.find((x) => x.id === versionId) : undefined;
+  const uses = songUses(p, cutScenes(p, versionId), v);
+  const songs = [...new Set(uses.map((x) => x.song))];
+  const short = songs.filter((s) => uses.filter((x) => x.song === s).reduce((a, x) => a + (x.use.minutes ?? 0) * 60, 0) + 1e-9 < rule.minSeconds);
+  const counted = songs.length - short.length;
+  if (counted >= rule.minSongs) return null;
+  const unknown = short.filter((s) => uses.some((x) => x.song === s && x.use.minutes === null)).length;
+  const text = `${counted} song${counted === 1 ? ' is' : 's are'} heard for ${rule.minSeconds} seconds or more; this award's soundtrack needs ${rule.minSongs}.`;
+  return unknown ? `${text} How long ${unknown} more ${unknown === 1 ? 'plays' : 'play'} isn't recorded: record ${unknown === 1 ? 'its' : 'their'} minutes under Songs.` : text;
+}
+
+/**
+ * Who receives a song award: the song's writing credits, never its performers or producer. Where the organizer names
+ * only the principal, essentially equal writers (Oscars II.E, II.J), a writer who wrote less than half as many days as the
+ * main writer is a partial contributor (SLATE's measure of "essentially equal": the Committee's judgement isn't
+ * published); the rest receive it up to `maxWriters`, in credit order. Writers with no recorded days count as equal.
+ */
+export function songRecipients(p: Project, song: Song, rule?: SongRule): Credit[] {
+  let writers = p.credits.filter((c) => c.songId === song.id && (c.roleId === 'songwriter' || c.roleId === 'lyricist'));
+  const days = (c: Credit) => song.writers.find((w) => w.who === c.person)?.days;
+  if (rule?.minShare) {
+    const total = writers.reduce((a, c) => a + (days(c) ?? 0), 0);
+    writers = writers.filter((c) => days(c) === undefined || !total || (days(c) ?? 0) / total + 1e-9 >= rule.minShare!);
+  }
+  if (rule?.essentiallyEqual) {
+    const most = Math.max(0, ...writers.map((c) => days(c) ?? 0));
+    writers = writers.filter((c) => days(c) === undefined || !most || (days(c) ?? 0) * 2 >= most);
+  }
+  return rule?.maxWriters ? writers.slice(0, rule.maxWriters) : writers;
+}
+
+/** Why no song can be entered, or why the one chosen can't, in the player's words. */
+export function songProblems(p: Project, songId?: string, versionId?: string, rule?: SongRule): string[] {
+  const v = versionId ? p.versions?.find((x) => x.id === versionId) : undefined;
+  const heard = [...new Set(songUses(p, cutScenes(p, versionId), v).map((x) => x.song))];
+  const chosen = songId ? songsOf(p).find((x) => x.id === songId) : undefined;
+  if (songId && !chosen) return ['That song is no longer part of the project.'];
+  if (chosen && !heard.includes(chosen)) return [`"${chosen.title}" isn't heard in the ${v ? v.label : 'cut'} entered.`];
+  if (!heard.length) return [`No song is heard in the ${v ? v.label : 'cut'} entered.`];
+  return (chosen ? [chosen] : heard).map((x) => {
+    if (x.rights === 'licensed') return `"${x.title}" is licensed; an original song award takes a song written for the work.`;
+    if (x.origin === 'existing') return `"${x.title}" existed before the project; an original song award takes a song written for the work.`;
+    if (x.origin === 'unrecorded') return `"${x.title}" came from a save made before songs had writers, and nothing shows it was written for this project.`;
+    if (!writtenForProject(p, x)) return `"${x.title}" isn't finished: its writing isn't done.`;
+    if (!x.writers.some((w) => w.lyrics)) return `"${x.title}" has no lyrics; an original song award takes words and music.`;
+    return songRuleProblem(p, x, versionId, rule) ?? '';
+  }).filter(Boolean);
+}
+
 /** The figure a craft or song is judged on: that craft's own quality where delivery recorded it, else the project's. */
-export function craftScore(p: Project, crafts: string[] | undefined, song: boolean): number {
+export function craftScore(p: Project, crafts: string[] | undefined, song: boolean, songId?: string): number {
   const q = p.quality ?? {};
-  if (song) return q.music ?? q.craft ?? 50;
+  // A song is judged on its own writing where delivery recorded it (finish.ts), else on the music as before.
+  if (song) return (songId ? q[`song:${songId}`] : undefined) ?? q.music ?? q.craft ?? 50;
   const own = (crafts ?? []).map((r) => q[`craft:${r}`]).filter((x): x is number => typeof x === 'number');
   if (own.length) return Math.max(...own);
   if (crafts?.includes('editor')) return q.editing ?? q.craft ?? 50;
@@ -178,22 +302,9 @@ export function nominatedEarlier(state: GameState, p: Project, c: Credit, instit
   return false;
 }
 
-/**
- * The share of the running time a credited part is on screen, from the approved script's scene minutes: of its biggest
- * episode, or of the whole work. The episode's running time is the target per episode; the whole is the delivered cut.
- */
-export function screenShare(p: Project, c: Credit, per: 'episode' | 'whole'): number {
-  const id = chars(p).find((x) => x.name === c.characterName)?.id;
-  if (!id) return 0;
-  const scenes = approvedScenes(p).filter((s) => s.participants.includes(id));
-  if (per === 'whole') {
-    const total = p.delivered?.runtimeMin ?? p.axes.targetRuntimeMin * Math.max(1, p.axes.episodeCount);
-    return scenes.reduce((a, s) => a + s.estMinutes, 0) / Math.max(1, total);
-  }
-  const byEp = new Map<number, number>();
-  for (const s of scenes) byEp.set(s.episode, (byEp.get(s.episode) ?? 0) + s.estMinutes);
-  return Math.max(0, ...byEp.values()) / Math.max(1, p.axes.targetRuntimeMin);
-}
+// The share of the running time a part is on screen came from the approved script here until November 9, 2026 (every
+// listed scene counted whole, an episode ran its target length). It now comes from the cut: screen-time.ts.
+export { shareCheck } from './screen-time';
 
 /**
  * Theatrical gross the distributors have reported for releases dated in the window: worldwide, and from releases only in
@@ -205,4 +316,161 @@ export function boxOffice(p: Project, country: string, window?: { from: string; 
   // A release's earnings are what the distributor of its accepted offer has reported (distribution.ts).
   const gross = (rs: typeof theatrical) => rs.reduce((a, r) => a + (p.offers.find((o) => o.id === r.offerId)?.reported?.gross ?? 0), 0);
   return { worldwide: gross(theatrical), domestic: gross(theatrical.filter((r) => r.territories.length === 1 && r.territories[0] === country)) };
+}
+
+// ---------------- Rules read on November 9, 2026 from the owner's recovered sources ----------------
+
+const expand = (list: string[]) => list.flatMap((c) => (c === 'EUROPE' ? EUROPE : [c]));
+const placeWords = (list: string[]) => list.map((c) => (c === 'EUROPE' ? 'Europe' : countryInSentence(c))).join(' or ');
+const byDate = <T extends { date: string }>(a: T, b: T) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0);
+
+/**
+ * The countries a credited person is from: a hired person's nationalities (where they're based when none are recorded);
+ * yours, the country you were born in. SLATE reads the EFA's "born in Europe or holding a European passport" this way:
+ * hired people's passports aren't recorded apart from their nationalities.
+ */
+export function nationalitiesOf(state: GameState, person: string): string[] {
+  if (person === 'player') { const c = citizenshipOf(state.character); return c ? [c] : []; }
+  let x;
+  try { x = personById(state, person); } catch { return []; } // someone the pool doesn't know: no nationality recorded
+  return x.nationalities.length ? x.nationalities : [x.homeCountry];
+}
+
+/** A work's first public screening: its festival premiere or first theatrical release, if one is planned or done. */
+export function firstShown(p: Project): { date: string; planned: boolean } | undefined {
+  const all = p.releases.filter((r) => r.status !== 'cancelled' && (r.route === 'theatrical' || r.route === 'festival-premiere')).map((r) => ({ date: r.date, planned: r.status === 'planned' }));
+  if (p.premiere?.date) all.push({ date: p.premiere.date, planned: false });
+  return all.sort(byDate)[0];
+}
+
+/** Which of a category's deadlines a work falls under: by format, completion and first screening (DeadlineRule). */
+export function pickDeadline(list: DeadlineRule[], p: Project | undefined, completed: string | null): DeadlineRule {
+  const shown = p ? firstShown(p)?.date : undefined;
+  const fits = (d: DeadlineRule) => (!d.formats || (p ? d.formats.includes(p.axes.format) : false))
+    && (!d.ifFirstShownFrom || (shown !== undefined && shown >= d.ifFirstShownFrom))
+    && (!d.ifFirstShownBefore || shown === undefined || shown < d.ifFirstShownBefore);
+  const applies = list.filter(fits);
+  return applies.find((d) => !d.ifCompletedBefore || (completed !== null && completed < d.ifCompletedBefore)) ?? applies.filter((d) => !d.ifCompletedBefore).at(-1) ?? list.filter((d) => !d.formats).at(-1) ?? list[list.length - 1];
+}
+
+/**
+ * When a series' episodes air, by SLATE's airing model: the game records one date per release, so a broadcast airs one
+ * episode a week from its date and a streaming or digital release puts every episode out that day. Read from its first
+ * television or online release; a film or special is one airing.
+ */
+export function episodeAirDates(p: Project): { date: string; countries: string[]; planned: boolean }[] {
+  const tv = p.releases.filter((r) => r.status !== 'cancelled' && (r.route === 'broadcast' || r.route === 'streaming' || r.route === 'digital')).sort(byDate)[0];
+  if (!tv) return [];
+  const n = isEpisodic(p.axes.format) ? Math.max(1, p.axes.episodeCount) : 1;
+  return Array.from({ length: n }, (_, i) => ({ date: tv.route === 'broadcast' ? addDaysToKey(tv.date, 7 * i) : tv.date, countries: tv.territories, planned: tv.status === 'planned' }));
+}
+
+/** The EFA's European elements (Fiction Films 4.1), out of 21: who made it and where, from its credits and its base. */
+export function europeanPoints(state: GameState, p: Project, countries: string[]): number {
+  const from = expand(countries);
+  const eu = (c: Credit | undefined) => !!c && nationalitiesOf(state, c.person).some((n) => from.includes(n));
+  const one = (test: (c: Credit) => boolean) => p.credits.filter(test).sort((a, b) => a.billing - b.billing);
+  const role = (...ids: string[]) => one((c) => ids.includes(c.roleId));
+  const cast = one((c) => c.contribution === 'Cast' || c.contribution === 'Voice Cast');
+  const weights: [Credit[], number][] = [
+    [one((c) => c.contribution === 'Directed By'), 4], [one((c) => c.contribution === 'Written By'), 3], [role('composer'), 1],
+    [cast.slice(0, 1), 3], [cast.slice(1, 2), 2], [cast.slice(2, 3), 1],
+    [role('dop'), 1], [role('sound-mixer', 'sound-designer', 're-recording-mixer'), 1], [role('editor'), 1], [role('production-designer', 'costume-designer'), 1],
+  ];
+  let points = weights.reduce((a, [cs, w]) => a + (cs.some(eu) ? w : 0), 0);
+  // Studio or shooting location, visual effects and post-production: all at the production's base in SLATE.
+  if (from.includes(getPlace(p.axes.basePlaceId).country)) points += 3;
+  return points;
+}
+
+const ROUTE_WORDS: Record<string, string> = { theatrical: 'in cinemas', streaming: 'on a streaming service', broadcast: 'on television', digital: 'on home video or for download' };
+
+/**
+ * Why the rules read on November 9, 2026 refuse a work, in the player's words (awards.ts checkEligibility), and whether
+ * an entry is only provisional because what it rests on is still planned.
+ */
+export function readRuleProblems(state: GameState, p: Project, ed: Edition, catId: string, rules: CategoryRules, startKey: string, isFestival: (institutionId: string) => boolean): { reasons: string[]; provisional?: string } {
+  const out: string[] = [];
+  let provisional: string | undefined;
+  const title = (id: string) => state.projects.find((x) => x.id === id)?.title ?? 'another project';
+  const fs = rules.firstShown?.value;
+  if (fs) {
+    const f = firstShown(p);
+    if (!f) out.push(`It hasn't been shown at a festival or in cinemas yet; this award takes work first screened between ${formatDateKey(fs.from)} and ${formatDateKey(fs.to)}.`);
+    else if (f.date < fs.from || f.date > fs.to) out.push(`It was first shown on ${formatDateKey(f.date)}; this award takes work first screened between ${formatDateKey(fs.from)} and ${formatDateKey(fs.to)}.`);
+    else if (f.planned) provisional = `Entered provisionally: its first screening, on ${formatDateKey(f.date)}, is still planned.`;
+  }
+  const nat = rules.nationality?.value;
+  if (nat) {
+    const from = expand(nat.countries);
+    for (const d of p.credits.filter((c) => c.contribution === 'Directed By')) {
+      const n = nationalitiesOf(state, d.person);
+      if (!n.some((x) => from.includes(x))) out.push(`This award is for films by directors from ${nat.label ?? placeWords(nat.countries)}; ${d.person === 'player' ? 'you are' : `${d.personName} is`} from ${n.length ? placeWords(n.slice(0, 1)) : 'somewhere not recorded'}.`);
+    }
+  }
+  const pts = rules.europeanPoints?.value;
+  if (pts && nat) {
+    const got = europeanPoints(state, p, nat.countries);
+    if (got < pts.min) out.push(`It has ${got} of 21 European points; this award needs ${pts.min}, counted from its director, writer, composer, three leading parts, heads of department and where it was made.`);
+  }
+  const sel = rules.selectionOrRelease?.value;
+  if (sel) {
+    const selected = state.editions.some((e) => isFestival(e.institutionId) && e.entries.some((x) => x.projectId === p.id && ['selected', 'nominated', 'won', 'lost', 'mention'].includes(x.status)));
+    const cinemas = new Set(p.releases.filter((r) => r.route === 'theatrical' && r.status !== 'cancelled').flatMap((r) => r.territories));
+    if (!selected && cinemas.size < sel.countries) out.push(`It needs a festival selection, or a theatrical release in at least ${sel.countries} countries; it has ${cinemas.size === 0 ? 'none' : cinemas.size === 1 ? 'one' : cinemas.size}.`);
+  }
+  for (const item of rules.notReleased?.value ?? []) {
+    const hit = p.releases.filter((r) => r.status !== 'cancelled' && (item.routes as string[]).includes(r.route) && r.date < startKey && (!item.countries || r.territories.some((t) => item.countries!.includes(t)))).sort(byDate)[0];
+    if (hit) out.push(`It ${hit.status === 'planned' ? 'is to be' : 'was'} released ${ROUTE_WORDS[hit.route]}${item.countries ? ` in ${placeWords(item.countries)}` : ''} on ${formatDateKey(hit.date)}, before the festival, which rules it out.`);
+  }
+  for (const inst of rules.exclusiveWith?.value ?? []) {
+    const e = state.editions.find((x) => x.institutionId === inst && x.entries.some((y) => y.projectId === p.id && y.status !== 'withdrawn'));
+    if (e) out.push(`It is entered at the ${e.label}; work entered there can't also be entered here.`);
+  }
+  const air = rules.airing?.value;
+  if (air) {
+    const dates = episodeAirDates(p);
+    const win = rules.qualifying?.value ?? ed.eligibility;
+    const first = dates[0];
+    const tvReleases = p.releases.filter((r) => r.status !== 'cancelled' && (r.route === 'broadcast' || r.route === 'streaming' || r.route === 'digital'));
+    if (!first) out.push(`It needs to air on television or online between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}.`);
+    else {
+      const inside = dates.filter((d) => d.date >= win.from && d.date <= win.to).length;
+      const n = dates.length;
+      if (inside * 2 < n) out.push(n === 1 ? `It first aired on ${formatDateKey(first.date)}; this competition takes work first aired between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}.` : `${inside} of its ${n} episodes air between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}; a season counts in the year most of its episodes aired.`);
+      else if (inside * 2 === n) {
+        const other = state.editions.find((e) => e.institutionId === ed.institutionId && e.id !== ed.id && e.entries.some((x) => x.projectId === p.id && x.status !== 'withdrawn'));
+        if (other) out.push(`Half its episodes aired in each year, so it could enter either year's competition, but it is already entered at the ${other.label}.`);
+      }
+      if (first.planned && !out.length) provisional = `Entered provisionally: its first airing, on ${formatDateKey(first.date)}, is still planned.`;
+      const not = air.notFirstIn ?? [];
+      const firstIn = tvReleases.filter((r) => r.territories.some((t) => not.includes(t))).sort(byDate)[0];
+      const firstOut = tvReleases.filter((r) => r.territories.some((t) => !not.includes(t))).sort(byDate)[0];
+      if (firstIn && (!firstOut || firstIn.date <= firstOut.date)) out.push(`It aired in ${placeWords(not)} first${firstOut && firstIn.date === firstOut.date ? ' (on the same day as elsewhere)' : ''}; this competition takes work first broadcast outside ${placeWords(not)}.`);
+    }
+  }
+  const aud = rules.notForAudiences?.value;
+  if (aud?.includes(p.axes.audience)) out.push(`This category doesn't take work made for ${p.axes.audience.toLowerCase().replace(/ \(.*\)/, '')} audiences.`);
+  const pkg = rules.seriesPackage?.value;
+  if (pkg && isEpisodic(p.axes.format) && p.delivered) {
+    const avg = Math.round(p.delivered.runtimeMin / Math.max(1, p.axes.episodeCount));
+    const fit = [...pkg].sort((a, b) => b.minutes - a.minutes).find((x) => avg >= x.minutes);
+    if (!fit) out.push(`Its episodes average ${avg} minutes; this section takes episodes of at least ${Math.min(...pkg.map((x) => x.minutes))}.`);
+    else if (p.axes.episodeCount < fit.episodes) out.push(`Its episodes average ${avg} minutes, so it enters as ${fit.episodes} consecutive episodes; it has ${p.axes.episodeCount}.`);
+  }
+  if (rules.onePerDirector && p.credits.some((c) => c.person === 'player' && c.contribution === 'Directed By')) {
+    const other = ed.entries.find((x) => x.categoryId === catId && x.projectId !== p.id && x.status !== 'withdrawn' && state.projects.find((q) => q.id === x.projectId)?.credits.some((c) => c.person === 'player' && c.contribution === 'Directed By'));
+    if (other) out.push(`You already entered ${title(other.projectId)} in this category; a director enters one film.`);
+  }
+  return { reasons: out, provisional };
+}
+
+/** The window a release must fall in: the rule's own, extended for documentaries and work mostly not in English where the rule says so (BAFTA). */
+export function qualifyingWindow(p: Project, rules: CategoryRules, fallback: { from: string; to: string }): { from: string; to: string } {
+  const win = rules.qualifying?.value ?? fallback;
+  const ext = rules.qualifyingExtended?.value;
+  if (!ext) return win;
+  const share = nonEnglishShare(p);
+  const notEnglish = share === null ? p.axes.dialogueLanguages[0] !== 'en' : share > 0.5;
+  return (ext.for.includes('documentary') && isNonfiction(p.axes.format)) || (ext.for.includes('non-english') && notEnglish) ? { from: win.from, to: ext.to } : win;
 }

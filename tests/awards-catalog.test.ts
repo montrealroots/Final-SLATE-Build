@@ -115,15 +115,18 @@ describe('recipients come from credits for the contribution the award concerns',
     expect(craftScore(p, cine.crafts, false)).toBe(50); // delivered before per-craft quality existed
   });
 
-  it('an original song needs an original song in the film, and goes to its composer', () => {
+  it('an original song goes to the song\'s own writers, never to the score composer for being the composer', () => {
+    // Until November 9, 2026 a song not marked licensed sent the award to the composer. Songs are works now, with their
+    // writers (tests/songs.test.ts); a title in a scene's old song list proves nothing.
     const s = startLife('song');
     s.now = at('America/Los_Angeles', '2026-09-01', 9);
     const osc = ed(s, 'oscars-2027');
     const p = work(s);
     p.credits.push(credit('cm', 'Music By', 'composer'));
-    expect(checkEligibility(s, p, osc, cat(osc, 'song')).recipients).toEqual([]);
     p.scenes[0].songs.push({ title: 'Original', licensed: false } as Project['scenes'][number]['songs'][number]);
-    expect(checkEligibility(s, p, osc, cat(osc, 'song')).recipients.map((c) => c.id)).toEqual(['cm']);
+    const el = checkEligibility(s, p, osc, cat(osc, 'song'));
+    expect(el.recipients).toEqual([]);
+    expect(el.reasons).toContain('No song is heard in the cut entered.');
   });
 
   it('a national entry is the director\'s, and the country\'s committee chooses it or another film', () => {

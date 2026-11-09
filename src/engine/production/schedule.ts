@@ -13,17 +13,22 @@ import { materialCost } from './workday';
 import { buildTasks } from './tasks';
 import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, dayFees } from './rates';
 import { planTime } from '../takes';
+import { songUses } from '../songs';
+
+/** A song is performed on screen in this scene (songs.ts). */
+export const performedSong = (p: Project, s: Scene): boolean => songUses(p, [s]).some((x) => x.use.placement === 'performed');
 
 // ---------------- Shoot day planning ----------------
 
-export function sceneComplexity(s: Scene, mods: Set<string>): number {
+/** How much slower a scene shoots than a plain one. A song performed in it (`singing`, songs.ts) slows it as a dance does. */
+export function sceneComplexity(s: Scene, mods: Set<string>, singing = false): number {
   let f = 1;
   if (s.stunts.trim()) f *= mods.has('action') ? 0.55 : 0.6;
   if (s.crowd > 20) f *= 0.7;
   if (s.animals.length) f *= 0.75;
   if (s.water) f *= 0.7;
   if (s.heading.time === 'NIGHT') f *= 0.85;
-  if (s.songs.length || s.dance) f *= 0.75;
+  if (singing || s.dance) f *= 0.75;
   if (s.kind === 'interview') f *= 1.5;
   return f;
 }
@@ -59,7 +64,7 @@ export function nextWorkingDay(p: Project, key: string): string {
  * the schedule and the estimate left out the shot plan, so richer coverage made the shoot overrun days nobody planned.
  */
 export function sceneLoad(p: Project, s: Scene, mods: Set<string> = projectModules(p)): number {
-  return (s.estMinutes / sceneComplexity(s, mods)) * planTime(p, s);
+  return (s.estMinutes / sceneComplexity(s, mods, performedSong(p, s))) * planTime(p, s);
 }
 
 export interface ShootDayGroup { sceneIds: string[]; episodes: number[]; place: string; interior: boolean; night: boolean; load: number }

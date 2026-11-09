@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 7;
+export const SAVE_VERSION = 8;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -464,6 +464,10 @@ export interface Task {
   needsVersion?: number;
   workedDays: number;
   doneAt?: number;
+  /** Who worked it ('player' or person ids). Kept for song writing and recording, whose credits follow the work (songs.ts). */
+  workers?: string[];
+  /** Days each worked it, for song writing (songs.ts): how much of a song each writer wrote. */
+  workerDays?: Record<string, number>;
 }
 
 export interface Asset {
@@ -564,7 +568,63 @@ export interface SceneCapture {
 }
 
 /** A festival or distribution version: the delivered cut less the scenes it leaves out (versions.ts). */
-export interface ProjectVersion { id: string; label: string; leaveOut: string[] }
+export interface ProjectVersion {
+  id: string;
+  label: string;
+  leaveOut: string[];
+  /** Songs this version takes out of a scene, or replaces with another song, leaving the main cut as it is (songs.ts). */
+  songChanges?: { sceneId: string; songId: string; replaceWith: string | null }[];
+}
+
+/**
+ * A performer's time in one edited scene, as the player recorded it from the cut (screen-time.ts, November 9, 2026). The
+ * game has no footage to measure: a scene with no record is unknown, shown as a range from nothing to the whole scene,
+ * never as either end of it.
+ */
+export interface ScreenTime {
+  sceneId: string;
+  characterId: string;
+  /** Minutes seen on screen in the scene. */
+  onScreen: number;
+  /** Minutes heard but not seen: a voice-over, a call, narration. On-screen and heard-only time together fit in the scene. */
+  heardOnly: number;
+  /** The scene's length when this was recorded; a record longer than the scene now is stale and counts as unknown. */
+  sceneMinutes: number;
+  at: number;
+}
+
+/**
+ * A song as a work of its own (songs.ts, November 9, 2026). Until then a song was a title and a "licensed" flag on a scene,
+ * and the original song award went to the score composer of any project with an unlicensed one.
+ */
+export interface Song {
+  id: string;
+  title: string;
+  /**
+   * Why it exists: written for this project by you or by writers commissioned for it, or existing before it. 'unrecorded'
+   * marks a song carried over from a save made before songs were works, whose origin the save never held.
+   */
+  origin: 'written' | 'commissioned' | 'existing' | 'unrecorded';
+  /** Who holds the rights: the production, nobody (public domain), or a holder it is licensed from. */
+  rights: 'production' | 'public-domain' | 'licensed';
+  /** Songwriting credits: music, lyrics or both. A writer outside the game's people has `who` null and a name. */
+  writers: SongCredit[];
+  /** Recording and performance credits, kept apart from the writing. */
+  performers: SongCredit[];
+  /** Where it is heard in the cut. Minutes null: not recorded. */
+  uses: SongUse[];
+  /** A licensed song's rights holder. The fee is the music clearance's, paid when the music supervisor clears it. */
+  license?: { holder: string };
+  /** Who writes a song made for the project: you, or writers commissioned for it; lyrics with the music, apart, or none. */
+  plan?: { music: 'you' | 'commission'; lyrics: 'with-music' | 'you' | 'commission' | 'none' };
+  createdAt: number;
+}
+
+/** `days`: the working days this writer put into writing the song (songs.ts), for an organizer that asks whose contribution was essential. */
+export interface SongCredit { who: 'player' | string | null; name: string; music?: boolean; lyrics?: boolean; characterId?: string; days?: number }
+
+/** `cue`: over the end credits, its place in the order they play (1 first); lower plays earlier. */
+export interface SongUse { sceneId: string; placement: 'performed' | 'background' | 'opening-titles' | 'end-credits'; minutes: number | null; cue?: number }
 
 export interface EditState {
   assembly: boolean;
@@ -575,6 +635,8 @@ export interface EditState {
   pictureLocked: boolean;
   lockedAt?: number;
   versions: { number: number; at: number; runtimeMin: number; note: string }[];
+  /** Performers' recorded screen time per scene (screen-time.ts). */
+  screenTime?: ScreenTime[];
 }
 
 export interface Credit {
@@ -586,6 +648,8 @@ export interface Credit {
   characterName?: string;
   episodes: number[] | 'all';
   billing: number;
+  /** A songwriting or song performance credit: the song it is for (songs.ts). */
+  songId?: string;
 }
 
 export interface ReleaseRecord {
@@ -722,6 +786,13 @@ export interface Project {
   premiere: { kind: 'world' | 'international' | 'national'; date: string; country: string; venue: string; editionId?: string } | null;
   revenue: number;
   quality: Record<string, number> | null; // modeled, locked at delivery
+  /**
+   * Each episode's own assessment, locked at delivery like `quality` (finish.ts assessQuality with an episode). Projects
+   * delivered before November 9, 2026 have none: their episode entries are judged on the season, and say so.
+   */
+  episodeQuality?: Record<string, Record<string, number>>;
+  /** The project's songs (songs.ts). Absent on saves from before version 8 until migrated. */
+  songs?: Song[];
   history: { at: number; text: string }[];
   workEventScheduled: boolean;
   /** Shelved, with its commitments settled (shelve.ts); taken up again by removing it. */
@@ -765,6 +836,26 @@ export interface EditionEntry {
   via?: 'selection';
   recipients: string[]; // credit ids
   fee: number;
+  /** The song entered, for a song award (songs.ts). */
+  songId?: string;
+  /** The entry this one replaces, when a withdrawn entry was entered again: a revision, never a silent edit. */
+  revises?: string;
+  /** What was entered, as it stood when entered (awards-actions.ts); judging reads it. Entries from before have none. */
+  snapshot?: EntrySnapshot;
+}
+
+/**
+ * What an entry was judged on, kept from the moment it was submitted: later edits, recorded screen time or credit changes
+ * don't rewrite it. `assessed` says where the score came from, in the player's words.
+ */
+export interface EntrySnapshot {
+  runtimeMin: number;
+  score: number;
+  assessed: string;
+  recipients: { id: string; name: string; contribution: string; characterName?: string }[];
+  /** Screen time shown for each performer entered, as the calculation stood. */
+  screen?: { creditId: string; text: string }[];
+  song?: { id: string; title: string; writers: string[] };
 }
 
 /** A competing work from the simulated season, stored once per save and shared by every edition it appears in. */

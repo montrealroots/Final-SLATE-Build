@@ -24,13 +24,15 @@ Every number here is a game calibration value. None is a quoted real-world rate 
 | Offer responses | Accept at or above the asking rate, or at 90% or more with 60% probability; counter between 70% and 90%; decline below 70% or when busy | `hiring.ts` |
 | Role combining | For example the editor can also grade, caption and QC, and the DP can also light. One task per person per day. On a micro budget, staffing proposals offer the covering role first so one person takes both. | `people.ts`, `hiring.ts` |
 | Staffing proposals | The cheapest available people with some experience, for required roles only. They hire a crew the money can pay, or no one, and say what the crew costs against what is uncommitted. | `hiring.ts` |
-| Live-action throughput | 4 screen minutes per shoot day, reduced for stunts, crowds over 20, animals, water, night, songs and dance; interviews are faster | `production.ts` |
+| Live-action throughput | 4 screen minutes per shoot day, reduced for stunts, crowds over 20, animals, water, night, a song performed on screen and dance; interviews are faster | `production.ts` |
+| Song work | Writing the music about 4 days, the lyrics about 2 (you, or a hired songwriter and lyricist), recording a day with a music producer; a song performed on screen is recorded before its scene is shot | `songs.ts` |
+| Episode assessment | A hired episode writer or director moves that episode's script or direction by a quarter of their capability's distance from 50; your own work is the baseline. Each episode reads only its own scenes, captures, days, cast and crew; reception carries the season's margin | `finish.ts` |
 | Shoot-day fees | Location $1,200 and equipment $1,500 per day, scaled 0.3 for micro, 1 for low, 2 for mid and 3 for commissioned; background performers $180 each | `production.ts` |
 | Holiday work | Off by default; 1.5× day rate when chosen | `production.ts` |
 | Animation throughput (finished seconds per artist per day: limited / TV / feature) | Drawn 2D 6 / 2.5 / 1; rigged 2D 15 / 8 / 4; 3D 6 / 3 / 0.8; stop motion 3 / 1.5 / 0.8 | `production.ts` |
 | Render | 0.25 / 0.5 / 1.5 node-hours per frame; 24 frames per second; $35 per node day | `production.ts` |
 | Stop motion | One shot uses one stage, one animator and one copy of each puppet; about 4% chance per active stage day that a puppet needs repair | `production.ts` |
-| Materials | Per-unit costs for design, costumes, creatures, puppets, sets, archive items ($2,500) and song clearances ($8,000) | `production.ts` |
+| Materials | Per-unit costs for design, costumes, creatures, puppets, sets, archive items ($2,500) and song clearances ($8,000 per licensed song, cleared once however many scenes use it) | `production.ts` |
 | Revision passes | 2 hours per accepted note, minimum 4 hours | `projects.ts` |
 | Documentary consent | About 80% of contributors agree, after 2 to 6 days | `documentary.ts` |
 | Quality model | Weighted, inspectable facts: script structure, crew and performer capability, capture conditions, rehearsal, cut passes. Reception adds audience variance. Genre, budget size and identity never add points. | `finish.ts` |

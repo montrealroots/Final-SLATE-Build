@@ -8,7 +8,94 @@
 
 ## Commands And Results
 
-### Current: Rule Research After #51 (November 9, 2026)
+### Current: The Owner's Recovered Awards Sources (November 9, 2026, after #55)
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` at `9a93aba` | 1, then 0 | The coverage ledger hadn't been regenerated for the new journeys (2 ledger tests); regenerated in `f7c8073`, then 74 files, 580 tests passed. Startup JavaScript 683 kB, 219 kB gzipped (budgets 700 and 220 kB). |
+| `npx vitest run tests/recovered-rules.test.ts` | 0 | 15 tests: every organizer's boundaries (the day before, the day and the day after), local deadlines, the EFA's two submission periods, hanging episodes and an equal split entered once, a first airing in the US, exclusions, one entry per director, European recipients and a craft group at half, FESPACO's conflict and AMAA's ambiguity left unapplied, Blue Dragon and Locarno unavailable. |
+| Mutants of the new logic (12) | | Each fails a test; a control mutant on an untested data detail (Kids categories' running time) survives, as expected. |
+| `npx playwright test e2e/awards.spec.ts -g "Busan 2026\|European Film Awards:\|International Emmys: hanging" --project=desktop --project=iphone-15-plus` | 1, then 0 | 5 of 6 passed; Busan on WebKit failed with "Importing a module script failed" at the moment `npm run check` (a build) was started beside the dev server; run again alone: passed. The earlier desktop runs failed on test-side mistakes (a start date after the shorts' deadline; two entries with the same category name), fixed. |
+| `SLATE_E2E_PROD=1 npx playwright test --trace off` at `091cb21` (every project, production build) | 0 | 241 passed, 32 skipped by project (specs that run at one width only), 0 failed, 21.6 minutes. The code is unchanged since; only this report moved after it. |
+
+Implemented and tested (engine and browser): the International Emmys' 2026 rules and the 2027 projection; the European Film
+Awards' 39th; BAFTA 2027; TIFF 2026; SXSW 2027 features; Busan 2026 with its dates; the DGA documentary; FESPACO's format,
+age and release rules; AMAA's call dates. UI: each row reads the chosen project's own deadline; "Rules Not Read" only
+where the game's rules apply; rule notes shown in plain words; the eligibility period and dates shown are the rules'.
+
+Recorded and not applied: FESPACO's dates and deadline (source conflict); AMAA's release wording (ambiguous) and edition;
+Blue Dragon and Locarno (unavailable). Read through search excerpts or the owner's pass, not directly here: BAFTA's pages,
+SXSW's feature policy, the DGA documentary rules (a public preview subdomain), AMAA's FilmFreeway listing.
+Modeled, not sourced: episode air dates (a broadcast weekly, streaming all at once); "major festival" as any festival in
+the calendar; a European passport read from hired people's nationalities; DGA Agreement coverage assumed.
+
+### Previous: The Limits Of #55 And More Rule Research (November 9, 2026)
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` at `67cbff8` | 0 | 72 files, 561 tests passed; startup JavaScript 681 kB, 218 kB gzipped (budgets 700 and 220), 0 problems. |
+| `SLATE_E2E_PROD=1 npx playwright test --trace off` (every project, against `vite build` + `vite preview`) | 0 | 232 passed, 32 skipped, 0 failed, in 20.8 minutes. Built from `56fa0ca` (the Limits fixes and the festival journey's fix); the rule data added after it is covered by the unit suite. The 32 skips are the specs that run on one project only by design (31 on phone, 1 on desktop: `test.skip` by project name). |
+| The dev-server suite (`npx playwright test`) | stopped | Stopped after 21 passes when it was clear it would take hours at this machine's pace; CI runs it on every push. |
+| `npx playwright test e2e/journeys.spec.ts:562` (the festival journey that failed CI run 131) | 0 | 1 passed once its quality fixture was set before the entry. |
+
+Implemented and tested:
+- **Several songs per song category** (`tests/songs.test.ts`, "the organizers' own song rules", 6 tests; the Songs journey
+  enters a second song). Entries compete as `projectId~songId` with their own results; Oscars three per film, two
+  nominated at most; CSA two per film, one per team of writers.
+- **End-credit cue order, "essentially equal" and minimum shares**: the Oscars' first new cue, the CSA's none; writing
+  days per writer; under half the main writer's days is a partial contributor (SLATE's measure); the Emmys' 20%.
+- **Song length and title themes**: the Goyas' 30 seconds at once or 60 in all, the Emmys' and AACTA's 15 seconds and
+  series title theme.
+- **Rules by format**: the WGA's Paul Selvin, the Spirit Awards' Redford, the AACTA's song, soundtrack, hair and makeup,
+  and visual effects. The AACTA soundtrack's five songs heard five seconds each; its recipient is the music supervisor.
+- **Rules read**: the DGA's first-time feature (`dga-2027@3`), the AACTA's online series (`aacta-2027@4`), Series Mania
+  2027 (`series-mania-2027@1`). 541 categories verified, 11 projected, 254 simulated.
+- **Mutation-tested**: four mutants of the soundtrack check and three of the Series Mania rules each fail a test; earlier
+  in this work, the longest-versus-total length, the Emmys' share and the title theme.
+- **Fixed**: CI run 131's festival journey edited quality after entering, which the entry's snapshot (rightly) ignores.
+
+Modeled, not sourced: screen time is the player's record; "essentially equal" as half the main writer's days. Sourced and
+not modeled at first, then added (below): visual effects wholly made in Australia; Series Mania's first seasons. Still not modeled: Series Mania's programmers' choice of
+section. Blocked: TIFF, BAFTA, SXSW (HTTP 403), the International Emmys' eligibility period, Locarno 2027, the DGA's
+Documentary Film page (HTTP 404), Busan, FESPACO, Blue Dragon, AMAA, the European Film Awards' dates.
+
+### Previous: Screen Time, Episode Assessment And Songs (November 9, 2026, after #54)
+
+Tested revision: the working branch at the commit that updates this report.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | 72 files, 552 tests passed (553 with the old-song test added after it); startup JavaScript 681 kB, 218 kB gzipped (budgets 700 and 220), 0 problems. |
+| `npx playwright test e2e/awards.spec.ts e2e/screenwriting.spec.ts e2e/script-rules.spec.ts --project=desktop --project=iphone-15-plus --trace off` | 0 | 28 passed in 4.5 minutes (WebKit is the `iphone-15-plus` project): the three new journeys and every existing awards, screenwriting and script-rules journey. The Songs and Screen Time cards were inspected from their screenshots on both. |
+| GitHub Actions CI for #54 (`bdf1b67`, run 129) and on `main` after #53 (`a0dcc3b`, run 128) | success | #54 was merged as `b798655`. |
+
+Implemented and tested, engine and browser:
+- **Screen time from the cut** (`tests/screen-time.test.ts`, 7 tests; journey "Emmys guest: the 5% rule reads screen time
+  recorded from the cut"). Unknown stays a range; two parts share minutes; heard-only is apart and doesn't count; a
+  record longer than its scene is refused; a cut or a shorter version changes the share; cut scenes count for nothing; a
+  submitted entry keeps its calculation through a later record and a reload.
+- **Episode assessment** (`tests/episode-assessment.test.ts`, 6 tests; journey "Emmys directing: each episode is
+  entered with its own director"). A stronger and a weaker episode differ by their footage only (30 points of footage
+  is 21 of direction); a hired episode director or writer moves only their episode; crew hired for one episode counts
+  only there, season crew for both; a revised episode changes alone; identical inputs give identical scores; whole-season
+  categories read the season; an older delivery is judged on the season and says so.
+- **Songs as works** (`tests/songs.test.ts`, 6 tests; journey "Songs: made in the Production tab"). Played through the
+  production loop to delivery: a songwriter and a lyricist (different people) credited for music and lyrics, your own
+  song credited to you, a licensed song credited to its writers and refused for Original Song, the composer credited for
+  the score only; writing, recording before the performed scene's shoot, one clearance per licensed song; a version
+  drops or swaps a song while the main cut keeps it; the Oscars' three-writer limit; v7 to v8 migration keeps titles and
+  uses and leaves origin, writers and minutes unknown.
+- **Mutation-tested**: recorded time alone meets the rule, heard-only doesn't count, a part must be in the scene, crew
+  count only for their episodes, an old song's origin decides however its writers were named later, an entry's snapshot
+  score is what is judged, and writers read music first: each mutant fails a test.
+- **Fixed**: the Oscar for Original Song went to the score composer of any project with a song not marked licensed;
+  the Emmys' 5% rule read the approved script (every listed scene counted whole) against the target episode length.
+
+Modeled, not sourced: screen time is the player's record (no footage exists to measure); the episode assessment and the
+episode writer/director adjustment are SLATE's model; other organizers' song rules weren't read. Sourced: Oscars Rule
+Nineteen (`oscars-2027@4`).
+
+### Previous: Rule Research After #51 (November 9, 2026)
 
 Tested revision: the working branch at the commit that updates this report.
 
@@ -493,11 +580,20 @@ explicit `test.skip(project…)`; no test skips itself on an outcome. The list w
 - **Unexplained, open (November 9, 2026): a working title lost on WebKit.** CI on `main` after #48 (`507096c`, run 117):
   the Emmys journey on `iphone-15-plus` (dev server) filled the New Script title right after a new game opened; the fill
   completed, yet the field stayed empty and Create Project refused it. From its trace: the same input element (`_r_6_`)
-  before and after the fill, so the form wasn't remounted; the field focused and empty in the frame after the fill; the
+  before and after the fill (read then as proof the form wasn't remounted; see below); the field focused and empty in the frame after the fill; the
   later fields (format, episodes, minutes) kept their values. The same journey passed in #48's CI on the same code and
   8 of 8 times locally on WebKit, and 27 of 27 times with the Projects chunk delayed 0 to 800 ms and typing straight
   after the screen appeared. No cause found yet; it isn't the earlier focus fault (focus now moves in the commit that
   shows the loading placeholder). Next: a WebKit run with React's input handling logged, under CPU load.
+  **Second occurrence (November 9, 2026, PR #55, CI run 138 at `c41fbef`, production build, `iphone-15-plus`):** the SXSW
+  journey's New Script title was empty after the fill and Create Project said "Enter a working title." From its trace:
+  the field appeared 224 ms after New Script was pressed (the screen's chunk loading), the fill took 264 ms, and the
+  field's value was already empty in the snapshot taken right after the fill, before the next action: the text never
+  landed, rather than being cleared later. The earlier reading, "the same input element (`_r_6_`) before and after, so
+  the form wasn't remounted", doesn't hold: React's `useId` gives the same id to a component remounted at the same place.
+  Not reproduced: 25 of 25 passes locally on the production build with four CPU-bound processes running. The same test
+  passed in runs 132 to 137. Candidates still open: focus taken from the field between Playwright's focus and its text
+  insertion (Shell's focus on `<main>` is the only focus mover on this path), or a remount of the form.
 - No other code fault is open from this pass. Physical devices, a person's screen-reader pass and human playtesting remain
   outside what was tested.
 - The micro-budget balance question recorded at #36 was worked through after it (see Current and `BALANCE-REPORT.md`).

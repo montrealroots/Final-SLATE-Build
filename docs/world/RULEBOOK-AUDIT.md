@@ -86,6 +86,33 @@ dialogue" (Rule Sixteen II.D) is counted from the approved script, in words, by 
 the first dialogue language the producer declared. A film with no written dialogue still reads the declaration. See
 `docs/awards/RECIPIENT-RULES.md`.
 
+**Version 4 (`oscars-2027@4`, November 9, 2026):** Original Song reads Rule Nineteen (read the same day from the complete
+rules): words and music written specifically for the film, heard in its body or as the first new cue of the end credits
+(I.B); created and recorded for the film before any other use (II.D); only the principal songwriters, never performers,
+producers or music supervisors (II.E); two statuettes normally, a third for three essentially equal writers (II.J; SLATE:
+up to three of the song's writers in credit order); no more than three songs from one film (III.C; SLATE enters one per
+work, since results are kept per work); song submissions by 5 p.m. PT on October 14, 2026 (III.F). Not modeled: the
+order of end-credit cues, the Committee's judgement of equal contributions, a fourth statuette, the vocal lead sheet and
+clip. Songs as works: `src/engine/songs.ts`; the rule rows in `docs/awards/RECIPIENT-RULES.md`.
+
+**Version 5 (`oscars-2027@5`, November 9, 2026):** the rest of Rule Nineteen for Original Song: a song heard only over
+the end credits must be the first new cue there (I.B; SLATE keeps the order of end-credit songs); partial contributors
+excluded and essentially equal writers receive it (II.E, II.J; SLATE: under half the main writer's writing days is
+partial); two songs at most nominated from one film (IV.E); each song its own entry, up to three (III.C).
+
+**Song rules read the same day for five other organizers** (each a new version; the full rows are in
+`docs/awards/RECIPIENT-RULES.md`): the Golden Globes' A.3.h (`golden-globes-2027@5`: every credited songwriter, no limit
+on songs); the Emmys' Category 55 (`emmys-2026@5`, projected for 2027: 15 seconds, a series' title theme enters Main Title
+Theme, 20% the smallest contribution); the Goyas' article 18 (`goya-2027@3`: 30 seconds at once or 60 in all); the
+Canadian Screen Awards' Category 17000 (`canadian-screen-2026@2`, projected for 2027: two songs per film, not in the
+closing credits, the same writers once); the AACTA Rule Book 10 (`aacta-2027@2`: 15 seconds, no TV title theme; each
+production under its own category's dates, film, television, documentary or short, through a new per-format rule).
+
+**Mixed film and television awards (November 9, 2026):** a category's rules can now differ by the work's format
+(`byFormat`). Applied: the WGA's Paul Selvin Award (`wga-2027@3`: a film's week in US cinemas in 2026; television first
+broadcast in 2026, documentary and talk November 2025 to October 2026; November 20) and the Spirit Awards' Robert Redford
+Environmental Vision Award (`spirit-2027@3`: a film under the film rules, a series under the television rules).
+
 ## Sundance Film Festival 2027
 
 Sources (retrieved November 6, 2026): [2027 Submissions FAQ](https://www.sundance.org/submissions-faq);
@@ -515,7 +542,20 @@ episode of a series (Reality: or a special), originally aired on television or s
 November 13, 2026, to that episode's credited director. Movies for Television: not shown in US cinemas before television or
 streaming (day and date is fine). Variety: programs and specials, nothing theatrical first. Not modeled: the "approximately
 one half hour" (one hour for movies) broadcast format, local-only broadcasts, DGA membership and one entry per director. The
-index lists no documentary film or first-time feature guidelines; those stay on SLATE's rules.
+index lists no documentary film or first-time feature guidelines; those stayed on SLATE's rules.
+
+**Version 3 (`dga-2027@3`, read November 9, 2026):** the [Michael Apted Award's application
+rules](https://www.dga.org/Awards/Entry-Forms/First-Time-Theatrical-Feature-Film/ApplicationRules), found by search: a
+first-time director's feature of more than 40 minutes, released January 1 to December 31, 2026 for seven consecutive days in
+a paid-admission cinema in Los Angeles or New York (SLATE: a US theatrical release); nothing on free television, pay cable,
+the internet or DVD in the continental US before the theatrical release (day and date is fine); no animated films,
+documentaries or re-releases; entries by 5:00 p.m. PT on Friday, October 16, 2026. Not modeled in version 3: a prior feature
+released only abroad or straight to DVD, VOD, streaming or television, which the rules also count against a first-timer.
+**Version 4 (`dga-2027@4`):** a first-timer is one who directed no feature or television film released before, anywhere
+and by any route but a festival; one never released doesn't count. Version 3 used SLATE's debut need, which counted every
+earlier feature or documentary feature delivered, released or not, and no television film. The Documentary
+Film page (`/Documentary-Film/ApplicationRules`, the address search engines give) returned HTTP 404 and stays on SLATE's
+rules.
 
 ## Writers Guild Awards, 2027
 
@@ -604,8 +644,21 @@ platform lists, AACTA's discretion. The [Television](https://www.aacta.org/aacta
 pages and the Rule Book's sections 4-6: television's first episode broadcast in Australia in 2026 on free-to-air or a
 streaming platform, by September 28; documentaries of 60 minutes or more completed or first shown August 30, 2025 to August
 24, 2026, by August 24; shorts under 40 minutes completed July 19, 2025 to July 18, 2026, by August 3. 31 categories in all.
-Shared categories (hair and makeup, song, soundtrack, visual effects) and online series stay on SLATE's rules; the entry
-pages answered after a 503 earlier the same day.
+Shared categories (hair and makeup, song, soundtrack, visual effects) and online series stayed on SLATE's rules at first;
+the entry pages answered after a 503 earlier the same day. **Version 3 (`aacta-2027@3`, November 9, 2026):** the Rule
+Book's shared categories take each production under its own format's windows (film, television, documentary or short),
+as the song does from version 2: Visual Effects or Animation (8.2(d)); Best Soundtrack (10.3(d)), which also needs at least
+five songs other than the score, each heard clearly for five seconds (10.2(b)), and goes to the music supervisor (10.4(b);
+the roster gave it to the composer too until then); Hair and Makeup, listed under Film and Television only. Not modeled
+in version 3: visual effects wholly made in Australia by the entering Australian company, for a production that needn't
+be Australian (8.2(b), (c)); version 3 kept the catalog's Australian production. **Version 5 (`aacta-2027@5`):** the award
+goes to credited effects and animation crew based in Australia (you count where you live), and the production can come
+from anywhere; the refusal names where each was based. Not modeled: matchmoving and rotoscoping outsourced abroad, one entry
+per production per company. Online Drama or Comedy Series, whose window is only on the
+AACTA website (9.3). **Version 4 (`aacta-2027@4`):** the [Online entry page](https://www.aacta.org/aacta-awards/entries-2027/online/)
+gives it: premiered online from October 18, 2025 to October 1, 2026, entries closing Monday September 28, 2026 (no time
+given; SLATE takes the end of the day in Sydney); two episodes or more (9.2). Not modeled: AACTA extending the period, two
+candidates being AACTA members.
 
 ## Japan Academy Film Prize, 50th (2027)
 
@@ -617,30 +670,57 @@ screenings and re-releases excluded; a film streamed or televised first, the sam
 same-day streaming exclusion, films re-edited from television, the Academy's own Japanese-or-foreign judgement. No entry
 deadline is published.
 
-## Not Readable From Here
+## Series Mania 2027
 
-- **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two
-  passes. Search summaries mention premiere-status rules (world, international or North American; Canadian at TIFF's
-  discretion) and May 8, 2026 as the standard deadline, but these were not read from TIFF's own terms and are **not
-  used**: `tiff-2026` stays simulated. A third pass on November 9, 2026 (tiff.net/submit and filmfreeway.com/tiff) was
-  refused the same way; the next try is an official archived copy of TIFF's terms or a TIFF press release with them.
-- **SXSW 2027:** the premiere and eligibility policies on support.sxsw.com (features, shorts, TV) refused this environment
-  (HTTP 403) on November 9, 2026; SXSW's eligibility stays on SLATE's rules. The submissions page itself answered later
-  that day: `sxsw-2027@1` applies its final deadline (October 1, 2026, 11:59 p.m. PT) and the catalog takes its
-  final-deadline fees (features $125; shorts, music videos and TV $90). A book whose only rule is a deadline counts as
-  SLATE's rules for eligibility (`categoryRuleStatus`).
-- **European Film Awards:** the [fiction regulations](https://www.europeanfilmawards.eu/regulations/feature-films/) were read
-  on November 9, 2026 but name no dates or deadline, and the page mixes 2026 and 2027 headings. Their tests (16 of 21
-  European-elements points; a major-festival selection or a seven-day release in three countries) aren't anything SLATE
-  records yet, so the categories stay on SLATE's rules rather than take a partial rule.
-- **Series Mania and the International Emmys:** no current competition rules were found (Series Mania's latest festival
-  rules found are 2021's; the International Emmys' rules page returned HTTP 404). The International Emmys' Entry FAQ gives
-  the deadline (January 31 at noon Eastern), that a non-US organization enters and one category per program;
-  `international-emmys-2026@1` and `-2027@1` (projected) hold the deadline only, so eligibility stays SLATE's.
-- **BAFTA Film Awards 2027:** bafta.org (the rules page and the press release "2027 EE BAFTA Film Awards opens for
-  entries") refused this environment (HTTP 403), on both passes. Search summaries give a longlist on January 7, nominations
-  on January 19 and the ceremony on February 21, 2027, but not the eligibility period; **not used**: BAFTA stays
-  simulated.
+Source (read November 9, 2026): the [Entry Rules and Regulations](https://seriesmania.com/wp-content/uploads/2026/10/rules-regulations-series-mania-2027-enfr-1.pdf),
+linked from the [call for series](https://seriesmania.com/en/festival/call-for-series-festival-2027/) (the 2021 rules were the
+latest found before). Lille, March 19 to 26, 2027. First seasons of new scripted series produced in 2026 or finishing in 2027,
+not released before September 1, 2026; fiction only in the competitive sections; nothing at a French festival or on a channel
+or platform available in France before March 26, 2027; drama and comedy episodes of at least 20 minutes, short forms under
+20; submissions October 6 to December 15, 2026 at 6:00 p.m. (UTC+1), free. International Competition: a world premiere for a
+French production, an international one otherwise (a release after September 1 only at home is allowed); French Competition:
+French productions in world premiere; International Panorama and Short Forms: anything not yet shown in France
+(`series-mania-2027@1`, 4 sections). **Version 2 (`series-mania-2027@2`):** first seasons only (a season that continues an
+earlier one is refused), and Short Forms' world premiere for French productions, nothing asked of others beyond France.
+Version 1 left both out, saying SLATE has no seasons, which was wrong. Not modeled: pilots, re-submissions, the combined
+runtime of the episodes screened, the programmers choosing the section. Special Screenings take no submissions except young audience series and stay on SLATE's rules.
+
+## Not Readable From Here (as it stood before the owner's recovered sources)
+
+Each of these was corrected on November 9, 2026, when the owner's research pass supplied the sources' addresses; see
+**Recovered Sources** below. What this section said, in the past tense:
+
+- **TIFF:** tiff.net and TIFF's FilmFreeway page refused this environment, so `tiff-2026` stayed simulated. TIFF's 2026
+  terms PDF on its content host was readable all along; it is now `tiff-2026@1`.
+- **SXSW 2027:** the support pages refused this environment and eligibility stayed SLATE's; the festival page and search
+  excerpts of the feature policy now give `sxsw-2027@2`.
+- **European Film Awards:** this said the regulations "name no dates or deadline" and that the European-elements points
+  weren't anything SLATE records. Both were wrong: the General Eligibility Criteria give the first-screening window, the
+  General Awarding Procedures the submission periods, and SLATE does record who made a film and where. Now
+  `european-film-awards-2026@1` (the 39th, held January 16, 2027).
+- **The International Emmys:** this said no eligibility period was published. The 2026 Rules & Regulations PDF gives it
+  (Section I: first broadcast outside the US in 2025). Now `international-emmys-2026@2` and `-2027@2` (projected).
+- **BAFTA Film Awards 2027:** bafta.org still refuses this environment (HTTP 403), but search excerpts of its own pages give
+  the rules the owner's research pass read; now `bafta-film-2027@1`, with that provenance recorded.
+
+## Recovered Sources (November 9, 2026)
+
+The owner's research pass recovered these sources; each was read again here where this environment could reach it. A
+readable source isn't an applied rule: `docs/awards/RULES.csv` lists each applied rule with its source, read date, code
+line and tests, then what was read and not applied, and the organizers whose rules couldn't be read.
+
+| Organizer, edition | Read here from | Applied | Not applied, and why |
+| --- | --- | --- | --- |
+| International Emmys 2026 (`@2`), 2027 (`@2`, projected) | [2026 Rules & Regulations](https://www.iemmys.tv/wp-content/uploads/2025/11/2026-International-Emmy-Awards-Rules-Regulations-.pdf) (PDF); Categories & Key Dates | First broadcast outside the US January 1 to December 31, 2025 (I.a); hanging episodes by the majority aired, an equal split entered once (II.a); first aired in the US, or the same day, refused (I.b: prior approval SLATE can't request); no cinema release first; not in another Emmy competition; 20-minute programs, short-form episodes under 20, three episodes for a drama's two non-consecutive ones; performances scripted, live action, not from children's programs, no narrators or hosts, 10% of the episode; deadline January 31, 2026 at noon ET; opening December 8, 2025 | Case-by-case review; the entrant organization; the two episodes chosen; a drama's intention to continue; cameos; extensions. Air dates per episode come from SLATE's airing model (broadcast weekly; streaming all at once), as the game records one date per release |
+| European Film Awards, 39th (`european-film-awards-2026@1`) | Eligibility (3.1-3.4); General Procedure (2.3); Fiction (4.1-4.10); Documentary (5); Animation (6); Arts & Crafts (7); Short Film (8); General Information (1.3) | First screening October 1, 2025 to September 30, 2026; submission by May 31, 2026, or June 15 to September 15 for films first shown from June 1; European directors and recipients (crafts: a group at least half European); 13 of 21 European points for fiction; a festival selection or three countries; documentary 70, animation 60 minutes; shorts produced 2025-26, 30 minutes, no submission periods | "Major festival" (SLATE counts any festival in its calendar); the Short Film Network's selection (31 festivals, unnamed: SLATE's festival screening in the window stands in); the main-producer limit; the composer's 60%; LUX, Young Audience and Eurimages (not open to submission this way); the board's exceptions |
+| BAFTA Film Awards 2027 (`bafta-film-2027@1`) | Search-engine excerpts of bafta.org's rules, film information and press release (the site refuses this environment) | 70 minutes; first UK cinema release January 1, 2026 to February 19, 2027; to March 19, 2027 for documentaries and work not in English, except Best Film; Stage One deadline October 29, 2026 (end of day, London, the time not given) | The qualifying run (screenings and days); Stage Two; the BFI Diversity Standards; British categories (not in the catalog); "first" UK release when an earlier one exists |
+| TIFF 2026 (`tiff-2026@1`) | [Terms & Conditions for Submission](https://assets.ctfassets.net/22n7d68fswlw/2uGGqKI9o8TGZYOhvgrQX/800dafd215df8bb4c5fb866d823d738d/Terms_-26_Conditions_For_Submission_of_Films_Through_FilmFreeway_-_TIFF_2026_presented_by_Rogers.pdf) (PDF) | Completed from September 4, 2025; no public screening in Canada or the US before the festival; no North American release; no DVD, Blu-ray or VOD sale; no earlier TIFF submission; features 60, shorts 40 minutes; series two episodes, 60 minutes together; May 8, 2026, 11:59 p.m. ET | Canadian and International categories (fees only); the Canadian-premiere discretion; Wavelengths by invitation; programmes chosen by TIFF (SLATE's selection stands in). Submission isn't selection, and selection isn't a prize |
+| SXSW 2027 (`sxsw-2027@2`) | [Festival page](https://sxsw.com/film-tv-festival/); search excerpts of the feature policy | March 15 to 21, 2027; completed from 2025 ("early 2027" sets no end); features: no US non-festival cinema run, nothing online, no US television, no home video before SXSW; no world-premiere requirement | The shorts, TV, music video and XR policies (unreadable): those sections keep SLATE's other rules |
+| Busan 2026 (`busan-2026@1`) | [Rules & Regulations](https://www.biff.kr/pop/file/2026_Official_Submission_and_Selection_Rules_&_Regulation_eng_final_as_of_2026-03-10.pdf?ver=1) (PDF); submission guidelines | October 6 to 15, 2026; completed from September 2025; features 60 minutes, Asian, by July 8 at 18:00 KST; Wide Angle shorts 30 minutes, Asian fiction, world or international premiere, by June 2 at 18:00 KST; no resubmission | "No later than the first week of September 2026" (no exact date given, so none set); the committee's discretion and new versions; premiere status for features is a preference |
+| DGA 79th: Documentary Film (`dga-2027@5`) | dga.org/Awards/Annual (read); search excerpts of dga.org's documentary page; the detailed rules on the public preview subdomain preview.dga.org (refuses this environment; read by the owner's pass) | More than 40 minutes; a US release in 2026 in cinemas, on streaming or US television; one entry per director; foreign documentaries; October 16, 2026, 5:00 p.m. PT; no membership required | DGA Agreement coverage for streaming and television (SLATE records no guild agreements); the directorial functions |
+| FESPACO 2027 (`fespaco-2027@1`) | Regulations; conditions; call for entries (French and English) | Features 60 minutes; shorts and animation up to 35; series as 2x52, 3x26 or 6x13; no more than two years old on December 31, 2026; never at an earlier FESPACO; no commercial release in Burkina Faso; African directors | **Dates and deadline: source conflict.** Regulations: February 27 to March 6, 2027, deadline September 20, 2026; call: March 20 to 27, 2027, deadline October 20, 2026; press reports support the call; no dated communiqué found. SLATE keeps its own calendar, unverified. Diaspora directors; the film-school category |
+| AMAA (`amaa-2026@1`) | Search excerpts of the FilmFreeway listing | Opens December 1, 2025; closes May 31, 2026 (end of day, Lagos, the time not given) | **Ambiguous:** "from July 2025 till date" and the filmmaker wording (no closing date; not shown in the excerpts read here); the edition number and ceremony date |
+| Blue Dragon, Locarno | Not readable (503; 403) | Nothing | **Unavailable:** recorded in `GAPS`; their editions keep SLATE's rules |
 
 ### Tests For These Rules (`tests/rulebooks.test.ts`)
 
@@ -653,8 +733,8 @@ when it premieres elsewhere first.
 
 ## Still To Read (rules simulated until then)
 
-TIFF, Busan, Sitges, IDFA, Hot Docs, SXSW, Series Mania, Locarno, FESPACO, BAFTA Film and Television,
-International Emmys, Spirit, Gotham, DGA, WGA, PGA, Actor Awards, César, Goya, Canadian Screen, AACTA, AMAA, Japan
-Academy, Blue Dragon and European Film Awards; and the remaining sections of Cannes (Competition, Special Screenings),
+Locarno, Blue Dragon, BAFTA Television, the sections of SXSW other than features, AMAA's eligibility, FESPACO's dates,
+Sitges, IDFA, Hot Docs, Spirit, Gotham, WGA, PGA, Actor Awards, César, Goya, Canadian Screen, AACTA and Japan Academy
+(each read in part above); and the remaining sections of Cannes (Competition, Special Screenings),
 Berlinale (Panorama, Shorts), Annecy (Television) and the Emmys' pre-2026 Outstanding Television Movie. Each needs its
 organizer's document for the edition in play; add a new rulebook version, never edit one an edition already uses.

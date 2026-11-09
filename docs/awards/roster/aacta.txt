@@ -23,7 +23,7 @@ costume | AACTA Award For Best Costume Design In Film | C | craft:costume-design
 hair-makeup | AACTA Award For Best Hair And Makeup | C | craft:hair-makeup+prosthetics | feature:au+television:au | aacta27-entries Film; Television | One award across film and television
 casting | AACTA Award For Best Casting In Film | C | craft:casting-director | feature:au | aacta27-entries Film |
 song | AACTA Award For Best Original Song | C | song | feature:au+television:au+documentary-feature:au+short:au+shortform:au | aacta27-entries all pages | One award across every entry type
-soundtrack | AACTA Award For Best Soundtrack | C | craft:music-supervisor+composer | feature:au+television:au+documentary-feature:au+short:au+shortform:au | aacta27-entries all pages | One award across every entry type
+soundtrack | AACTA Award For Best Soundtrack | C | craft:music-supervisor | feature:au+television:au+documentary-feature:au+short:au+shortform:au | aacta27-entries all pages | One award across every entry type
 # Television
 childrens | AACTA Award For Best Children's Program | C | producer | television:au:children | aacta27-entries Television |
 competition-reality | AACTA Award For Best Competition Reality Program | C | producer | competition:au | aacta27-entries Television |

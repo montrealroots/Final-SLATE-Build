@@ -56,6 +56,93 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
+### Newest Request (November 9, 2026, after #55): the owner's recovered awards and festival sources
+
+Ten organizers' sources, recovered by the owner's research pass, read again here where this environment could reach them,
+and applied rule by rule (`src/engine/rulebook-data.ts`, the "Recovered sources" section; tests in
+`tests/recovered-rules.test.ts`; journeys in `e2e/awards.spec.ts`, the last three). `docs/awards/RULES.csv` is the
+rule-by-rule record (organizer, edition, categories, rule, status, the rule in brief, source, URL, read date, code line,
+tests), generated from the data by `tests/rule-records.test.ts`; `docs/world/RULEBOOK-AUDIT.md` "Recovered Sources" says,
+organizer by organizer, what was applied and what wasn't and why.
+
+- **International Emmys** (`@2` for 2026; 2027 projected): the 2026 Rules & Regulations PDF, which corrects "no
+  eligibility period published". Hanging episodes use SLATE's airing model (`awards-rules.ts` `episodeAirDates`: a
+  broadcast weekly, streaming all at once), as releases have one date. The 2026 edition used to open after its deadline.
+- **European Film Awards, 39th** (`european-film-awards-2026@1`): corrects "no dates". First screening window, two
+  submission periods by first screening, European directors and recipients, 13 of 21 European points (from credits and
+  base), a selection or three countries, documentary 70 and animation 60 minutes, shorts on their own scheme.
+- **BAFTA 2027, TIFF 2026, SXSW 2027 (`@2`), Busan 2026, DGA documentary (`@5`), FESPACO 2027, AMAA 2026**: see the audit.
+  Busan and SXSW now hold their organizers' dates (`RuleBook.held`).
+- **Unresolved, recorded and not applied** (`RuleBook.unresolved`, `GAPS`): FESPACO's dates and deadline (source
+  conflict); AMAA's release wording (ambiguous) and edition; Blue Dragon and Locarno (unavailable). BAFTA's and SXSW's
+  pages, the DGA documentary preview page and AMAA's FilmFreeway page refuse this environment: their rules come from
+  search excerpts of the organizers' own pages and the owner's pass, with that provenance in the source titles.
+- **UI**: category rows read the chosen project's own deadline (the EFA's second period was hidden); "Rules Not Read"
+  shows only where the game's rules apply; the "How These Rules Apply" notes are shown without the documents' section
+  numbers and with the game named as the game.
+- **Evidence**: `npm run check` at `f7c8073` (580 tests); `tests/recovered-rules.test.ts` and 12 mutants; the full
+  production-build suite at `091cb21` (241 passed, 32 skipped by project, 0 failed). CI on the PR's final head decides the
+  merge. Open: the intermittent WebKit title loss (`QA-REPORT.md`, Open).
+
+
+### Newest Request (November 9, 2026, after #54): screen time from the cut, episode assessment, songs as works
+
+All three are implemented, tested in the engine and in the browser (desktop and WebKit), and documented. What each does:
+
+1. **Screen time from the finished edit** (`src/engine/screen-time.ts`; Edit tab, Screen Time). The player records each
+   cast part's minutes on screen and heard only, per scene of the cut (the game has no footage to measure). A record is
+   at most the scene; several parts may share minutes; heard-only is kept apart and never counts toward time on screen.
+   An unrecorded scene is unknown, a range from nothing to the whole scene; a record a later script change made too long
+   counts as unknown. The Emmys' 5% rule (`emmys-2026@4` `screenShare`) now reads it: per episode (the entry's, or the
+   part's best) or for the whole cut entered, versions included; met, missed, or open with what to record. Prepare
+   Submission shows the calculation. Tests: `tests/screen-time.test.ts`.
+2. **Episode-specific assessment** (`finish.ts` `assessQuality(state, p, episode)`, `assessEpisodes`). Delivery locks
+   each episode's own assessment: its scenes, captures, shoot days, setups it plants or pays, writer, director, crew
+   hired for it, and the cast in it; season-wide work counts for every episode; no random draw (reception carries the
+   season's margin). New for season and episode alike: a hired episode writer or director moves that episode's script or
+   direction by (capability - 50) / 4; your own work is the baseline, so films and player-made seasons are unchanged
+   (balance suite unchanged). Entries naming an episode are judged on it; projects delivered earlier fall back to the
+   season and say so. Tests: `tests/episode-assessment.test.ts`.
+3. **Songs as works** (`src/engine/songs.ts`, `song-actions.ts`; Production tab, Songs; the script's Songs In This
+   Scene; the Versions card). Title, origin (written, commissioned, existing, or not recorded for old saves), rights
+   (production, public domain, licensed with its holder), writers (music and lyrics apart, credited to whoever did the
+   writing task), performers (cast parts or named artists), uses per scene with placement and minutes, and per-version
+   removal or replacement. Writing (you or a hired songwriter and lyricist), recording (a music producer; before the
+   shoot when performed on screen) and one clearance per licensed song are tasks. Credits: "Song Music By" / "Lyrics
+   By" / "Written By" and "Performed By", apart from the score composer. Original song awards take one song written for
+   the work, to its writers; Oscars Rule Nineteen applied (`oscars-2027@4`: up to three writers, October 14 deadline).
+   Save version 8 migrates old scene songs to songs with unknown origin and writers. Tests: `tests/songs.test.ts`.
+4. **Entries keep what they were entered with** (`EditionEntry.snapshot`, shown as As Entered): runtime, score, how
+   it was judged, recipients, screen-time calculation, song. Judging reads the snapshot's score. Re-entry after a
+   withdrawal records `revises`.
+
+The Limits listed when #55 was opened were then worked through ("Continue the rule research while CI runs while fixing
+the things in Limits", November 9):
+- **Several songs per song category:** entries compete as `projectId~songId` (`awards.ts` `entryKey`, `keyProject`), so each
+  song has its own selection, nomination and result; the Oscars cap three songs per film entered and two nominated
+  (`maxSongs`, `maxNominatedPerWork`); the CSA two per film and one per team of writers (`oneEntryPerTeam`). The entry
+  dialog marks songs already entered.
+- **End-credit order and "essentially equal":** end-credit uses carry a cue (`SongUse.cue`; Play It First under Songs); the
+  Oscars take only the first new cue (`endCredits: 'first-cue'`), the CSA none (`'never'`). Writing days are recorded per
+  writer on song tasks (`Task.workerDays`, `SongCredit.days`); a writer with under half the main writer's days is a
+  partial contributor (`essentiallyEqual`, SLATE's measure), and the Emmys drop writers under 20% (`minShare`).
+- **Other organizers' song rules:** the Globes (`golden-globes-2027@5`), Emmys (`emmys-2026@5`), Goyas (`goya-2027@3`: 30
+  seconds at once or 60 in all), CSA (`canadian-screen-2026@2`) and AACTA (`aacta-2027@2`: 15 seconds, no TV title theme).
+- **Rules by format** (`CategoryRules.byFormat`, `categoryRules(ed, cat, p)`): the WGA's Paul Selvin (`wga-2027@3`), the
+  Spirit Awards' Redford (`spirit-2027@3`) and the AACTA's shared categories (song; then `aacta-2027@3` soundtrack, hair and
+  makeup, visual effects, with the soundtrack's five songs heard five seconds each and the music supervisor as recipient).
+- **More rules read:** the DGA's Michael Apted first-time feature award (`dga-2027@3`), the AACTA's online series
+  (`aacta-2027@4`), Series Mania 2027's four competitive sections (`series-mania-2027@1`). Rule counts: 541 verified, 11
+  projected, 254 simulated (`tests/rulebooks.test.ts`).
+- **CI on #55 (run 131) failed** in the festival journey (`e2e/journeys.spec.ts`): it set the quality fixture after the
+  entry, and judging now reads the entry's snapshot. The fixture moved before the entry.
+
+Still not modeled: screen time is the player's record, not a measurement (the game has no footage). Blocked research,
+tried again on November 9: TIFF, BAFTA and SXSW eligibility (HTTP 403); the International Emmys (no eligibility period
+published on their pages); Locarno 2027 (not published; the festival may move to July); the DGA's Documentary Film page
+(HTTP 404); Busan, FESPACO, Blue Dragon and AMAA (not found); the European Film Awards (no dates). The queue is in
+`docs/awards/STATUS.md`.
+
 ### Newest Request (November 8, 2026): the SLATE Complete Gameplay Depth Package
 
 The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01-01` to `SLATE-20-05`). Read

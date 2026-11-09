@@ -571,6 +571,9 @@ test('festival under official rules: submit, selection, screening attended, resu
   await saveAndApprove(page);
   await produceToDelivery(page, { yourself: ['Odile'] });
   mark('delivered');
+  // Make the film strong enough to be selected (the judging is simulated), and reopen the save mid-journey. Before it is
+  // entered: an entry is judged on what it was entered with (its snapshot), so a later change wouldn't count (November 9).
+  await editSaveAndReopen(page, (s) => { s.projects[0].quality = { ...s.projects[0].quality, overall: 99, reception: 99, direction: 99, script: 99 }; });
   const open = async () => {
     await nav(page, 'Projects');
     await page.getByRole('button', { name: 'Night Ferry' }).click();
@@ -600,8 +603,6 @@ test('festival under official rules: submit, selection, screening attended, resu
   await expect(entries.locator('.chip', { hasText: /^Withdrawn$/ })).toBeVisible();
   mark('submitted');
 
-  // Make the film strong enough to be selected (the judging is simulated), and reopen the save mid-journey.
-  await editSaveAndReopen(page, (s) => { s.projects[0].quality = { ...s.projects[0].quality, overall: 99, reception: 99, direction: 99, script: 99 }; });
   const feePostings = (s: any) => s.projects[0].obligations.flatMap((o: any) => o.postings).filter((x: any) => x.kind === 'settle' && x.key === 'fee:sundance-2027:shorts').length; // eslint-disable-line @typescript-eslint/no-explicit-any
 
   // Selection is announced about three weeks before the festival (January 21 to 31, 2027).

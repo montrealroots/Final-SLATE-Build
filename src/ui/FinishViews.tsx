@@ -31,6 +31,11 @@ import { REPORT_MONTHS } from '../engine/distribution';
 import { personById } from '../engine/people';
 import { VERSION_LABELS, addVersion, removeVersion, versionCredits, versionRuntime } from '../engine/versions';
 import { designStatus, designsToReview, type DesignStatus } from '../engine/designs';
+import { ScreenTimeCard, SongsCard, VersionSongs } from './WorkViews';
+import { shareCheck } from '../engine/screen-time';
+import { originalSongs, songProblems } from '../engine/awards-rules';
+import { assessedWords } from '../engine/awards-results';
+import { songsOf } from '../engine/songs';
 
 // ---------------- Production ----------------
 
@@ -64,13 +69,19 @@ function DesignsPanel({ p }: { p: Project }) {
 
 export function ProductionTab({ p }: { p: Project }) {
   const g = useGame();
+  const [songErr, setSongErr] = useState<string | null>(null);
+  // Songs are made before production as well as during it (songs.ts).
+  const songs = <>{songErr && <div className="callout callout-negative" role="alert"><p>{songErr}</p></div>}<SongsCard p={p} onError={setSongErr} /></>;
   if (!p.tasks.length) {
     return (
-      <div className="card">
-        <h2>Nothing Scheduled Yet</h2>
-        <p>{p.approvedDraft === null ? 'Approve a draft, hire your team and build a schedule to start production.' : 'Build a schedule to turn the breakdown into production work.'}</p>
-        <button className="btn" onClick={() => { store.route = { ...store.route, tab: p.approvedDraft === null ? 'script' : 'schedule' }; store.emit(); }}>{p.approvedDraft === null ? 'Open Script' : 'Open Schedule'}</button>
-      </div>
+      <>
+        <div className="card">
+          <h2>Nothing Scheduled Yet</h2>
+          <p>{p.approvedDraft === null ? 'Approve a draft, hire your team and build a schedule to start production.' : 'Build a schedule to turn the breakdown into production work.'}</p>
+          <button className="btn" onClick={() => { store.route = { ...store.route, tab: p.approvedDraft === null ? 'script' : 'schedule' }; store.emit(); }}>{p.approvedDraft === null ? 'Open Script' : 'Open Schedule'}</button>
+        </div>
+        {songs}
+      </>
     );
   }
   const depts = [...new Set(p.tasks.map((t) => t.dept))];
@@ -101,6 +112,7 @@ export function ProductionTab({ p }: { p: Project }) {
         <p className="dim">Work happens on working days at the production base. Advance or let time pass to see it move.</p>
       </section>
       {designsToReview(p).length > 0 && <DesignsPanel p={p} />}
+      {songs}
       {p.tasks.some((t) => t.kind === 'anim:mocap') && <MocapPanel p={p} />}
       {puppets.length > 0 && (
         <section className="card">
@@ -176,9 +188,12 @@ function VersionsCard({ p, onError }: { p: Project; onError: (e: string | null) 
       <h2 id="versions-h">Versions</h2>
       <p className="dim">Besides the main cut ({main} minutes), the editor can conform a Festival Cut or a Distribution Cut that leaves scenes out: a day of their work that delivery waits for. A version has its own runtime, which festival rules read when it is the one entered, and its own credits, without anyone whose scenes it leaves out.</p>
       {(p.versions ?? []).length > 0 && <ul className="list">{p.versions!.map((v) => (
-        <li key={v.id} className="row-wrap">
-          <span className="grow"><strong>{v.label}</strong> <span className="dim">· {versionRuntime(p, v)} minutes · {plural(versionCredits(g, p, v).length, 'credit')}{p.tasks.find((x) => x.id === `post:version:${v.id}`)?.status === 'done' ? ' · Ready' : ''}</span></span>
-          {!p.delivered && <button className="btn btn-sm" aria-label={`Remove The ${v.label}`} onClick={() => onError(store.act(() => removeVersion(p, v.id)))}>Remove</button>}
+        <li key={v.id}>
+          <div className="row-wrap">
+            <span className="grow"><strong>{v.label}</strong> <span className="dim">· {versionRuntime(p, v)} minutes · {plural(versionCredits(g, p, v).length, 'credit')}{p.tasks.find((x) => x.id === `post:version:${v.id}`)?.status === 'done' ? ' · Ready' : ''}</span></span>
+            {!p.delivered && <button className="btn btn-sm" aria-label={`Remove The ${v.label}`} onClick={() => onError(store.act(() => removeVersion(p, v.id)))}>Remove</button>}
+          </div>
+          <VersionSongs p={p} v={v} onError={onError} />
         </li>
       ))}</ul>}
       {p.edit.pictureLocked && !p.delivered && (
@@ -327,6 +342,7 @@ export function EditTab({ p }: { p: Project }) {
           <details className="spaced"><summary>Versions</summary><ul>{p.edit.versions.map((v) => <li key={v.number}>Version {v.number}: {v.note}, about {v.runtimeMin} minutes</li>)}</ul></details>
         )}
       </section>
+      {(assemblyComplete(p) || !!p.delivered) && <ScreenTimeCard p={p} onError={setErr} />}
       {isDirecting2(p) ? <DailiesCard p={p} onError={setErr} /> : p.captures.some((c) => (c.takes?.length ?? 0) > 1) && <TakesCard p={p} onError={setErr} />}
       {!p.delivered && !p.edit.pictureLocked && p.tasks.length > 0 && <AdditionalWorkCard p={p} onError={setErr} />}
       {(p.edit.pictureLocked || (p.versions?.length ?? 0) > 0) && <VersionsCard p={p} onError={setErr} />}
@@ -513,7 +529,7 @@ export function FestivalsTab({ p }: { p: Project }) {
               const cat = institution(e.institutionId).categories.find((c) => c.id === x.categoryId)!;
               return (
                 <li key={x.id} className="row-wrap">
-                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id, projectId: p.id })}>{e.label}</button>: {cat.name}{entryVersion(p, x.versionId)}{entryEpisode(p, x.episode)} <span className="chip">{entryStatus(x, e)}</span>{x.via === 'selection' ? <span className="dim"> Considered from its selection; no entry or fee.</span> : null}{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
+                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id, projectId: p.id })}>{e.label}</button>: {cat.name}{entryVersion(p, x.versionId)}{entryEpisode(p, x.episode)}{entrySong(p, x)} <span className="chip">{entryStatus(x, e)}</span>{x.via === 'selection' ? <span className="dim"> Considered from its selection; no entry or fee.</span> : null}{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
                 </li>
               );
             })}
@@ -569,7 +585,7 @@ const KIND_WORDS: Partial<Record<NonNullable<Category['kind']>, string>> = { sec
 const RECIPIENT_WORDS: Record<Category['recipient'], string> = {
   project: 'the credited producers', producer: 'the credited producers', director: 'the credited director', writer: 'the credited writers',
   lead: 'a credited leading performance', supporting: 'a credited supporting performance', guest: 'a credited guest performance', performer: 'a credited leading or supporting performance',
-  voice: 'a credited voice performance', ensemble: 'the credited cast', host: 'the credited host', narrator: 'the credited narrator', craft: '', song: 'the composer of an original song in the work',
+  voice: 'a credited voice performance', ensemble: 'the credited cast', host: 'the credited host', narrator: 'the credited narrator', craft: '', song: 'the writers of one original song written for the work',
   national: "the director, once the production country's committee puts the film forward", career: 'a career, chosen by the organizer',
 };
 
@@ -640,7 +656,7 @@ export function EventDetail() {
                 const cat = inst.categories.find((c) => c.id === x.categoryId);
                 return (
                   <li key={x.id} className="row-wrap">
-                    <span className="grow">{p?.title}: {cat?.name}{p ? entryVersion(p, x.versionId) + entryEpisode(p, x.episode) : ''} <span className="chip">{entryStatus(x, ed)}</span>{x.via === 'selection' ? <div className="dim">Considered from its selection; no entry or fee.</div> : null}{x.reason ? <div className="dim">{x.reason}</div> : null}</span>
+                    <span className="grow">{p?.title}: {cat?.name}{p ? entryVersion(p, x.versionId) + entryEpisode(p, x.episode) + entrySong(p, x) : ''} <span className="chip">{entryStatus(x, ed)}</span>{x.via === 'selection' ? <div className="dim">Considered from its selection; no entry or fee.</div> : null}{x.reason ? <div className="dim">{x.reason}</div> : null}{x.revises ? <div className="dim">Entered again after the earlier entry was withdrawn; that one stays withdrawn.</div> : null}{x.snapshot ? <EntryAsEntered x={x} /> : null}</span>
                     {['submitted', 'accepted'].includes(x.status) && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => withdrawEntry(s, ed.id, x.id)))}>Withdraw Entry</button>}
                   </li>
                 );
@@ -689,7 +705,7 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
   const shown = all.filter((c) => {
     if (format && !c.formats.includes(format as Format)) return false;
     if (query && !c.name.toLowerCase().includes(query.trim().toLowerCase())) return false;
-    if (show === 'taking') return enterable(c) && categoryDeadline(ed, c) > g.now;
+    if (show === 'taking') return enterable(c) && categoryDeadline(ed, c, p) > g.now;
     if (show === 'open') return !!elig(c)?.eligible;
     if (show === 'entered') return ed.entries.some((x) => x.categoryId === c.id) || !!ed.results[c.id]?.honoree;
     if (show === 'decided') return !enterable(c);
@@ -718,7 +734,8 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
             <ul className="list">
               {cats.map((c) => {
                 const el = elig(c);
-                const dl = categoryDeadline(ed, c);
+                // The chosen project's own deadline where the rules give it one (the EFA's two submission periods).
+                const dl = categoryDeadline(ed, c, p);
                 const parents = c.parents?.map((id) => inst.categories.find((x) => x.id === id)?.name).filter(Boolean) ?? [];
                 const st = categoryRuleStatus(rulebook(ed.rulesId), c.id);
                 return (
@@ -728,14 +745,14 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
                         {c.kind && KIND_WORDS[c.kind] ? <span className="chip">{KIND_WORDS[c.kind]}</span> : null}
                         {!c.competitive && c.kind !== 'honorary' && !hasPrizes(c) ? <span className="chip">Not Competitive</span> : null}
                         {st === 'simulated' ? null : <span className="chip">{st === 'verified' ? 'Official Rules' : 'Projected Rules'}</span>}
-                        {c.verified === false ? <span className="chip">Rules Not Read</span> : null}
+                        {c.verified === false && st === 'simulated' ? <span className="chip">Rules Not Read</span> : null}
                         {el ? <span className={`chip ${el.eligible ? 'chip-positive' : ''}`}>{el.eligible ? `Open To ${p!.title}` : 'Not Eligible'}</span> : null}
                         <div className="dim">
                           {c.kind === 'honorary' ? 'Chosen by the organizer from a body of work. It takes no entries and no fee. '
                             : !enterable(c) ? `Decided among the work selected for ${parents.length ? parents.join(', ') : 'the festival'}${c.kind === 'audience' ? ', by audiences' : c.kind === 'partner' ? ', by a partner jury' : ''}. It takes no entries and no fee. `
                             : `${c.judging === 'audience' ? 'Decided by audiences.' : c.judging === 'jury' ? 'Decided by a jury.' : c.judging === 'members' ? 'Voted by members.' : 'Chosen by programmers.'}${c.kind === 'area' || c.kind === 'juried' ? ' It can give one award, several or none.' : ''}${c.fee ? ` Entry fee ${money(c.fee)}.` : ''}${c.premiere === 'world' ? ' World premieres only.' : c.premiere === 'international' ? ' International premieres only.' : ''}${dl === ed.deadline ? '' : (() => { const t = longLocal(dl, place.zone); return ` Entries close ${t.date}, ${t.time} local time.`; })()} `}
                           Goes to {recipientWords(c)}.
-                          {c.verified === false ? " The organizer's rules for it weren't read; the game's rules apply." : ''}
+                          {c.verified === false && st === 'simulated' ? " The organizer's rules for it weren't read; the game's rules apply." : ''}
                         </div>
                         {el && !el.eligible && <div className="dim">{el.reasons[0]}</div>}
                         <RuleNotes ed={ed} categoryId={c.id} />
@@ -756,6 +773,20 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
 
 /** Which episode an entry is for, when the category takes one episode (the Emmys' directing and writing). */
 const entryEpisode = (p: Project, n?: number) => (n ? `, ${p.episodes[n - 1]?.title ?? `Episode ${n}`}` : '');
+/** What an entry was entered with, kept from submission (awards-actions.ts entrySnapshot). */
+function EntryAsEntered({ x }: { x: EditionEntry }) {
+  const n = x.snapshot!;
+  return (
+    <details className="small">
+      <summary>As Entered</summary>
+      <p className="dim">{n.assessed} The cut entered ran {n.runtimeMin} minutes. Credited: {n.recipients.map((r) => `${r.name}${r.characterName ? ` as ${r.characterName}` : ''}`).join(', ') || 'no one'}.{n.song ? ` Song: "${n.song.title}".` : ''}</p>
+      {n.screen?.length ? <ul>{n.screen.map((t) => <li key={t.creditId} className="dim">{t.text}</li>)}</ul> : null}
+    </details>
+  );
+}
+
+/** Which song an entry is for (songs.ts): the title it was entered with. */
+const entrySong = (p: Project, x: EditionEntry) => (x.songId ? `, "${x.snapshot?.song?.title ?? p.songs?.find((s) => s.id === x.songId)?.title ?? 'a song'}"` : '');
 
 /** Which cut an entry is, when it isn't the main one. */
 const entryVersion = (p: Project, versionId?: string) => { const v = versionId && p.versions?.find((x) => x.id === versionId); return v ? `, ${v.label}` : ''; };
@@ -769,13 +800,24 @@ function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: 
   const [recipients, setRecipients] = useState<string[]>([]);
   const [versionId, setVersionId] = useState('');
   const [episode, setEpisode] = useState('');
+  const [songId, setSongId] = useState('');
   if (!p) return null;
-  // Entered for one episode: the choice, else the first episode anyone credited for the category worked on.
-  const rules = categoryRules(ed, cat.id);
-  const episodes = rules?.oneEpisode && isEpisodic(p.axes.format) ? entryEpisodes(g, p, cat, rules) : [];
-  const ep = episodes.length ? Number(episode) || episodes[0] : undefined;
-  const el = checkEligibility(g, p, ed, cat, recipients.length ? recipients : undefined, versionId || undefined, ep);
-  const pool = categoryRecipients(g, p, cat, undefined, rules, ep);
+  // Entered for one episode: the choice, else the first episode anyone credited for the category worked on. A performer
+  // category measuring screen time per episode is entered for one too: the choice, else the part's best.
+  const rules = categoryRules(ed, cat.id, p);
+  const screen = rules?.screenShare?.value;
+  const candidates = screen ? categoryRecipients(g, p, cat, undefined, undefined) : [];
+  const episodes = isEpisodic(p.axes.format)
+    ? rules?.oneEpisode ? entryEpisodes(g, p, cat, rules)
+      : screen?.per === 'episode' ? [...new Set(editScenes(p).filter((s) => s.participants.some((id) => approvedCharacters(p).some((c) => c.id === id && candidates.some((k) => k.characterName === c.name)))).map((s) => s.episode))].sort((a, b) => a - b) : []
+    : [];
+  const ep = episodes.length ? Number(episode) || (rules?.oneEpisode ? episodes[0] : undefined) : undefined;
+  // A song category: the song entered, by default the first written for the work.
+  const songs = cat.recipient === 'song' ? songsOf(p) : [];
+  const entered = new Set(ed.entries.filter((e) => e.projectId === p.id && e.categoryId === cat.id && e.status !== 'withdrawn').map((e) => e.songId));
+  const song = songId || originalSongs(p, versionId || undefined, rules?.song?.value).find((x) => !entered.has(x.id))?.id;
+  const el = checkEligibility(g, p, ed, cat, recipients.length ? recipients : undefined, versionId || undefined, ep, song);
+  const pool = categoryRecipients(g, p, cat, undefined, rules, ep, { versionId: versionId || undefined });
   const personal = ['lead', 'supporting', 'voice'].includes(cat.recipient);
   const docs = entryNeeds(p);
   // Acting categories: where each cast part is placed, and why (script-effects.ts placementExplained).
@@ -784,11 +826,13 @@ function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: 
   return (
     <Modal title="Prepare Submission" onClose={onClose} footer={<>
       <button className="btn" onClick={onClose}>Cancel</button>
-      <button className="btn btn-primary" disabled={!el.eligible || !!docs} onClick={() => { const e = store.act((s) => void submitEntry(s, p, editionId, cat.id, recipients.length ? recipients : undefined, versionId || undefined, ep)); onError(e); if (!e) onClose(); }}>Submit Entry</button>
+      <button className="btn btn-primary" disabled={!el.eligible || !!docs} onClick={() => { const e = store.act((s) => void submitEntry(s, p, editionId, cat.id, recipients.length ? recipients : undefined, versionId || undefined, ep, song)); onError(e); if (!e) onClose(); }}>Submit Entry</button>
     </>}>
       <p><strong>{cat.name}</strong>, {ed.label}</p>
-      <SelectField label="Project" value={projectId} options={delivered.map((x) => ({ value: x.id, label: x.title }))} onChange={(v) => { setProjectId(v); setRecipients([]); setVersionId(''); setEpisode(''); }} />
-      {episodes.length > 0 && <SelectField label="Episode To Enter" value={String(ep)} hint="This category is entered for one episode, and goes to the people credited on it." options={episodes.map((n) => ({ value: String(n), label: p.episodes[n - 1]?.title ?? `Episode ${n}` }))} onChange={(v) => { setEpisode(v); setRecipients([]); }} />}
+      <SelectField label="Project" value={projectId} options={delivered.map((x) => ({ value: x.id, label: x.title }))} onChange={(v) => { setProjectId(v); setRecipients([]); setVersionId(''); setEpisode(''); setSongId(''); }} />
+      {episodes.length > 0 && <SelectField label="Episode To Enter" value={ep === undefined ? '' : String(ep)} hint={rules?.oneEpisode ? 'This category is entered for one episode, and goes to the people credited on it.' : 'Screen time is measured against the episode entered. Unchosen, it is the performer\'s best.'} options={[...(rules?.oneEpisode ? [] : [{ value: '', label: 'Their Best Episode' }]), ...episodes.map((n) => ({ value: String(n), label: p.episodes[n - 1]?.title ?? `Episode ${n}` }))]} onChange={(v) => { setEpisode(v); setRecipients([]); }} />}
+      {songs.length > 0 && <SelectField label="Song To Enter" value={song ?? ''} hint="An original song award takes one song written for the work, and goes to its writers." options={[...(song ? [] : [{ value: '', label: 'Choose A Song' }]), ...songs.map((x) => ({ value: x.id, label: `"${x.title}"${entered.has(x.id) ? ' (Entered)' : ''}` }))]} onChange={(v) => { setSongId(v); setRecipients([]); }} />}
+      {cat.recipient === 'song' && song && songProblems(p, song, versionId || undefined, rules?.song?.value).length === 0 && <p className="dim">{assessedWords(p, cat, { songId: song })}</p>}
       {(p.versions ?? []).length > 0 && <SelectField label="Version To Enter" value={versionId} options={[{ value: '', label: `The Main Cut (${p.delivered!.runtimeMin} Minutes)` }, ...p.versions!.map((v) => ({ value: v.id, label: `${v.label} (${versionRuntime(p, v)} Minutes)` }))]} onChange={setVersionId} />}
       {personal && pool.length > 0 && (
         <fieldset style={{ border: 0, padding: 0 }}>
@@ -796,6 +840,13 @@ function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: 
           {pool.map((c) => <Check key={c.id} label={`${c.personName} as ${c.characterName}`} checked={recipients.includes(c.id)} onChange={(v) => setRecipients(v ? [c.id] : [])} />)}
         </fieldset>
       )}
+      {screen && candidates.length > 0 && (
+        <div className="spaced" aria-label="Screen Time Calculation">
+          <p><strong>Screen time.</strong> This category needs {Math.round(screen.atLeast * 100)}% of the running time on screen ({screen.per === 'episode' ? 'of the episode entered' : 'of the cut entered'}), from the screen time recorded in the Edit tab:</p>
+          <ul>{candidates.map((c) => { const r = shareCheck(p, c, screen.atLeast, screen.per, { episode: ep, versionId: versionId || undefined }); return <li key={c.id}>{r.text}</li>; })}</ul>
+        </div>
+      )}
+      {(ep !== undefined || isEpisodic(p.axes.format)) && cat.recipient !== 'song' && <p className="dim">{assessedWords(p, cat, { episode: ep })}</p>}
       {castParts.length > 0 && (
         <details className="spaced" open={!pool.length}>
           <summary>How Parts Are Placed</summary>
@@ -981,7 +1032,9 @@ function ScreeningsPanel({ editionId }: { editionId: string }) {
 /** How SLATE applies an organizer's rules where the game is simpler than the real process. Short, and only when there are notes. */
 function RuleNotes({ ed, categoryId }: { ed: Parameters<typeof categoryRules>[0]; categoryId: string }) {
   const rules = categoryRules(ed, categoryId);
-  const notes = rules ? [...new Set(Object.values(rules).map((r) => (r as { note?: string }).note).filter((n): n is string => !!n))] : [];
+  // In the player's words: without the documents' section numbers, and the game named as the game.
+  const plain = (n: string) => n.replace(/ \((?:[IVX]+\.|[0-9]+\.|Art\.|Eligibility|Required|II?\.)[^)]*\)/g, '').replace(/\bSLATE's\b/g, "the game's").replace(/\bSLATE\b/g, 'the game').replace(/^the game/, 'The game');
+  const notes = rules ? [...new Set(Object.values(rules).map((r) => (r as { note?: string }).note).filter((n): n is string => !!n).map(plain))] : [];
   if (!notes.length) return null;
   return (
     <details className="dim">

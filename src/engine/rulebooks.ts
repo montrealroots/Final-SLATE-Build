@@ -46,6 +46,14 @@ export interface DeadlineRule {
   timeAssumed?: boolean;
   /** Applies only to these formats (a section with different deadlines for shorts and features). */
   formats?: Format[];
+  /**
+   * Applies only to work first shown publicly (a festival premiere or a theatrical release) from or before these dates:
+   * the European Film Awards' two submission periods, set by the first screening (General Procedure 2.3).
+   */
+  ifFirstShownFrom?: string;
+  ifFirstShownBefore?: string;
+  /** Entries under this deadline open on this date, in the deadline's zone (the EFA's second period opens June 15). */
+  opens?: string;
 }
 
 export interface CategoryRules {
@@ -90,8 +98,12 @@ export interface CategoryRules {
    */
   theatricalFirst?: Ruled<{ countries: string[]; unlessFestival?: boolean }>;
   /** world: never shown publicly; international: not shown outside its production country; world-if-domestic: world
-   *  premiere for work from the festival's country, international premiere for everything else; none: no requirement. */
-  premiere?: Ruled<'world' | 'international' | 'world-if-domestic' | 'none'>;
+   *  premiere for work from the festival's country, international premiere for everything else; domestic-world: world
+   *  premiere for work from the festival's country, nothing asked of the rest (Series Mania's Short Forms); none: no
+   *  requirement. */
+  premiere?: Ruled<'world' | 'international' | 'world-if-domestic' | 'domestic-world' | 'none'>;
+  /** A series' first season only: a season that continues an earlier one can't enter (Series Mania). */
+  firstSeason?: Ruled<true>;
   /** No public showing before this date, unless the work was completed after `unlessCompletedAfter`. */
   notShownBefore?: Ruled<{ date: string; unlessCompletedAfter?: string }>;
   /** Not shown at another festival, and not online, before this festival. */
@@ -152,12 +164,112 @@ export interface CategoryRules {
    */
   screenShare?: Ruled<{ atLeast: number; per: 'episode' | 'whole' }>;
   /**
+   * A song award's own limits: how many of a song's writers can receive it and how many songs one work may enter (the
+   * Oscars' Rule Nineteen II.J and III.C). That the song was written for the work is SLATE's reading of every original
+   * song category (songs.ts writtenForProject); this records only what an organizer's document adds.
+   */
+  /**
+   * Rules that apply to some formats only, over the category's own: an award taking films and series alike under the film
+   * and television rules (the Spirit Awards' Redford award, the WGA's Paul Selvin award, the AACTA's song, soundtrack, hair
+   * and makeup, and visual effects or animation).
+   */
+  byFormat?: { formats: Format[]; rules: Omit<CategoryRules, 'byFormat'> }[];
+  song?: Ruled<{
+    maxWriters?: number;
+    maxSongs?: number;
+    /** Most songs from one work that can be nominated (Oscars Rule Nineteen IV.E: two). */
+    maxNominatedPerWork?: number;
+    /** A song heard only over the end credits: 'first-cue' qualifies only as their first new cue (Oscars I.B); 'never' (CSA). */
+    endCredits?: 'first-cue' | 'never';
+    /** Writers whose part is much smaller than the main writer's are partial contributors and don't receive it (Oscars II.E, II.J). */
+    essentiallyEqual?: true;
+    /** The smallest share of the writing a writer can have done and still receive it (the Emmys: 20%, Category 55). */
+    minShare?: number;
+    /**
+     * How long it must be heard in the cut: for `minSeconds` at once (one scene's use), or `minTotalSeconds` in all (the
+     * Goyas: 30 seconds at once or 60 in total, 18.2; the AACTA: 15 seconds, 10.3(b)).
+     */
+    minSeconds?: number;
+    minTotalSeconds?: number;
+    /** A television program's main title theme isn't eligible (AACTA 10.3(c)). */
+    noTitleTheme?: true;
+    /** The same writers enter only one song per work (CSA Category 17000, regulation 11). */
+    oneEntryPerTeam?: true;
+  }>;
+  /**
+   * Where the craft's work was made: only credited people based in these countries receive it, and the production itself
+   * can come from anywhere (the AACTA's visual effects, 8.2(b), (c)). Replaces the catalog's production-country need.
+   */
+  craftMadeIn?: Ruled<string[]>;
+  /**
+   * A first-time director's award: an earlier film of these formats you directed counts against you once it was released
+   * anywhere, in cinemas abroad or straight to television, streaming or home video; one never released doesn't (the DGA's
+   * Michael Apted award). Replaces the catalog's debut need, which counts every earlier feature delivered.
+   */
+  firstFeature?: Ruled<{ formats: Format[] }>;
+  /**
+   * The first public screening, at a festival or in cinemas, falls in this window (the European Film Awards, 3.1: "first
+   * official screening (be it at a festival or at a regular cinema)").
+   */
+  firstShown?: Ruled<{ from: string; to: string }>;
+  /**
+   * The director, and everyone who receives the award, holds a nationality of these countries ('EUROPE' for the EFA's
+   * geographical Europe, 3.2: born in Europe or holding a European passport). Read from people's nationalities and, for
+   * you, where you were born. With `groupShare`, a credited group (a craft) receives it whole when at least that share of
+   * it is from there, and not at all otherwise (3.2: "at least 50 % of the group"). `label` names the region in the player's
+   * words; `scope: 'director'` asks it of the director only (FESPACO: "films by African filmmakers").
+   */
+  nationality?: Ruled<{ countries: string[]; groupShare?: number; label?: string; scope?: 'director' }>;
+  /** The EFA's European elements for fiction (4.1): at least `min` of 21 points from European talent and locations. */
+  europeanPoints?: Ruled<{ min: number }>;
+  /** A festival selection, or a theatrical release (done or sold) in at least this many countries (EFA 4.2, 5.2). */
+  selectionOrRelease?: Ruled<{ countries: number }>;
+  /**
+   * Releases that rule a work out when they come before the event: each item is routes (and, if given, the countries
+   * where they count). TIFF: nothing in North America, no home video; SXSW: no US cinema run, nothing online, no US
+   * television, no home video; FESPACO: no commercial release in Burkina Faso.
+   */
+  notReleased?: Ruled<{ routes: ('theatrical' | 'streaming' | 'broadcast' | 'digital')[]; countries?: string[] }[]>;
+  /** Not entered at these institutions too (the International Emmys: not in any other Emmy competition, I.a). */
+  exclusiveWith?: Ruled<string[]>;
+  /**
+   * When a series counts: the window holds the majority of its episodes, by the airing model (awards-rules.ts
+   * `episodeAirDates`); an equal split counts for either year, entered once (the International Emmys' Hanging Episodes,
+   * II.a). `notFirstIn`: its first airing isn't in these countries, nor on the same day there (I.b).
+   */
+  airing?: Ruled<{ majority: true; notFirstIn?: string[] }>;
+  /** Not for work made for these audiences (the International Emmys' performances: not from Kids: Live-Action, II.d). */
+  notForAudiences?: Ruled<string[]>;
+  /** A series enters as one of these packages of consecutive episodes, by episode length (FESPACO Series). */
+  seriesPackage?: Ruled<{ minutes: number; episodes: number }[]>;
+  /** A director enters one work in this category (the DGA's Documentary Film). */
+  onePerDirector?: Ruled<true>;
+  /**
+   * A later end to the qualifying window for documentaries and work mostly not in English (BAFTA: to March 19, 2027, not
+   * for Best Film, which keeps the general window).
+   */
+  qualifyingExtended?: Ruled<{ to: string; for: ('documentary' | 'non-english')[] }>;
+  /** A soundtrack's own test: at least `minSongs` songs in the cut entered, each heard `minSeconds` in all (AACTA 10.2(b)). */
+  soundtrack?: Ruled<{ minSongs: number; minSeconds: number }>;
+  /**
    * Box office in the qualifying window: at least `worldwide` dollars gross from theatrical releases, `domestic` of them in
    * `country` (the Golden Globes' Cinematic and Box Office Achievement, B.1.b), from what distributors have reported.
    */
   boxOffice?: Ruled<{ worldwide: number; domestic: number; country: string }>;
   /** Who is named and receives the award for a work: credited directors, or credited producers (at most `max`). */
   recipients?: Ruled<{ credit: 'director' | 'producer' | 'director-and-producer'; max?: number }>;
+}
+
+/**
+ * What was read but isn't applied: sources that disagree, or rules that couldn't be read. Kept with the edition so the
+ * research is honest about what the game doesn't know; nothing here changes play.
+ */
+export interface Unresolved {
+  /** What it concerns: 'dates', 'deadline', 'eligibility', or a category id. */
+  subject: string;
+  status: 'source conflict' | 'unavailable' | 'ambiguous';
+  sources: string[];
+  note: string;
 }
 
 export interface RuleBook {
@@ -170,6 +282,10 @@ export interface RuleBook {
   checked: string;
   /** Entries open (when the organizer published it). */
   opens?: Ruled<string>;
+  /** When the event is held, local dates in the organizer's zone (Busan's 31st: October 6 to 15, 2026). */
+  held?: Ruled<{ from: string; to: string; zone: string }>;
+  /** Read but not applied: conflicting sources, unreadable rules, ambiguous wording. */
+  unresolved?: Unresolved[];
   sources: RuleSource[];
   categories: Record<string, CategoryRules>;
 }
@@ -238,6 +354,8 @@ export function rulebook(id: string | undefined): RuleBook | undefined {
 export function categoryRuleStatus(book: RuleBook | undefined, categoryId: string): 'verified' | 'projected' | 'simulated' {
   const c = book?.categories[categoryId];
   // A deadline alone isn't eligibility: SXSW's page gives dates and fees, and its eligibility stays SLATE's (rulebook-data.ts).
-  if (!c || Object.keys(c).every((k) => k === 'deadlines')) return 'simulated';
+  // Nor is a song award's own rule without the release rules: the AACTA's song rule was read without its windows at first,
+  // until byFormat gave them (November 9).
+  if (!c || Object.keys(c).every((k) => k === 'deadlines' || k === 'song')) return 'simulated';
   return Object.values(c).some((r) => (r as Ruled<unknown>).status === 'projected') ? 'projected' : 'verified';
 }
