@@ -49,3 +49,41 @@ describe('Emmys, Performer Categories: narrators may not enter lead, supporting 
     expect(others).toEqual([]);
   });
 });
+
+describe('Emmys, Performer Awards: a guest is in fewer than half the episodes, a short form performer in half or more', () => {
+  /** A six-episode drama series with a declared guest part the player plays, credited in the given episodes. */
+  function guested(tag: string, episodes: number[]) {
+    const s: GameState = startLife(tag, 'us-los-angeles');
+    s.character.actingTitle = 'Actor';
+    const p = buildProject(s, { title: 'Harbor Lights', format: 'short', medium: 'live-action', runtime: 20 },
+      [{ name: 'Ines', patch: { roleSize: 'lead', functions: ['protagonist'] } }, { name: 'Marcus', patch: { roleSize: 'supporting', seriesInvolvement: 'guest' } }],
+      [{ place: 'Harbor', chars: ['Ines', 'Marcus'], minutes: 3 }]);
+    approve(s, p);
+    Object.assign(p.axes, { format: 'series', episodeCount: 6, targetRuntimeMin: 50 });
+    p.credits = [credit('c1', 'Ines', 'p-ines'), { ...credit('c2', 'Marcus'), episodes }];
+    return { s, p, e: s.editions.find((x) => x.id === 'emmys-2027')!, cat: institution('emmys').categories.find((c) => c.id === 'guest-actor')! };
+  }
+
+  it('two of six episodes is a guest; three of six is not, and the reason counts them', () => {
+    const two = guested('rr-g2', [2, 5]);
+    expect(checkEligibility(two.s, two.p, two.e, two.cat).recipients.map((c) => c.characterName)).toEqual(['Marcus']);
+    const three = guested('rr-g3', [1, 2, 3]);
+    const el = checkEligibility(three.s, three.p, three.e, three.cat);
+    expect(el.recipients).toEqual([]);
+    expect(el.reasons).toContain('This category takes performers in fewer than half of the episodes; Marcus is in 3 of 6.');
+    // Version 2 took whoever was declared a guest.
+    three.e.rulesId = 'emmys-2027@2';
+    expect(checkEligibility(three.s, three.p, three.e, three.cat).recipients.map((c) => c.characterName)).toEqual(['Marcus']);
+  });
+
+  it('Short Form Performer takes half or more: three of six enters, two of six does not', () => {
+    const { s, p, e } = guested('rr-sf', [1, 2, 3]);
+    const cat = institution('emmys').categories.find((c) => c.id === 'short-form-performer')!;
+    Object.assign(p.axes, { format: 'web-series', targetRuntimeMin: 10 });
+    expect(categoryRules(e, cat.id)?.episodeShare?.value).toEqual({ atLeast: 0.5 });
+    expect(categoryRecipients(s, p, cat, undefined, categoryRules(e, cat.id)).map((c) => c.characterName)).toContain('Marcus');
+    p.credits[1] = { ...p.credits[1], episodes: [1, 2] };
+    expect(categoryRecipients(s, p, cat, undefined, categoryRules(e, cat.id)).map((c) => c.characterName)).not.toContain('Marcus');
+    expect(categoryRecipients(s, p, cat).map((c) => c.characterName)).toContain('Marcus'); // credited: only the rule removes them
+  });
+});

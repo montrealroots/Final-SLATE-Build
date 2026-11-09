@@ -107,6 +107,11 @@ export interface CategoryRules {
    * narrators may not enter in lead, support or guest performer categories" (a voice part is never in those pools anyway).
    */
   noNarrators?: Ruled<true>;
+  /**
+   * A performer's share of the program's episodes, from the episodes they are credited in: the Emmys' guest categories take
+   * "less than 50% of the eligible episodes", Short Form Performer "50% or more" (Performer Awards, Entry Information).
+   */
+  episodeShare?: Ruled<{ under?: number; atLeast?: number }>;
   /** Who is named and receives the award for a work: credited directors, or credited producers (at most `max`). */
   recipients?: Ruled<{ credit: 'director' | 'producer' | 'director-and-producer'; max?: number }>;
 }

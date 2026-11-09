@@ -560,8 +560,16 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   // Until November 9, 2026, an Oscar short whose rules weren't read qualified through any festival win at all; it now
   // reads the Academy's list (simulatedOscarRelease above).
   const recipients = categoryRecipients(state, p, cat, recipientIds, rules);
-  if (!recipients.length && rules?.noNarrators && categoryRecipients(state, p, cat, recipientIds).length) reasons.push('A narrator can\'t be entered in this performer category; the narration can be entered for a narrator award.');
-  else if (!recipients.length) reasons.push(recipientMissingReason(cat));
+  if (!recipients.length) {
+    // Credited, but ruled out by the category's own rules: say which rule.
+    const credited = categoryRecipients(state, p, cat, recipientIds).filter((c) => !(rules?.noNarrators && isNarrator(p, c)));
+    const span = rules?.episodeShare?.value;
+    if (rules?.noNarrators && !credited.length && categoryRecipients(state, p, cat, recipientIds).length) reasons.push('A narrator can\'t be entered in this performer category; the narration can be entered for a narrator award.');
+    else if (span && credited.length) {
+      const c = credited[0];
+      reasons.push(`This category takes performers in ${span.under !== undefined ? 'fewer than half' : 'at least half'} of the episodes; ${c.characterName ?? c.personName} is in ${c.episodes === 'all' ? p.axes.episodeCount : c.episodes.length} of ${p.axes.episodeCount}.`);
+    } else reasons.push(recipientMissingReason(cat));
+  }
   return { eligible: reasons.length === 0, provisional, provisionalNote, reasons, recipients };
 }
 
@@ -577,9 +585,20 @@ function recipientMissingReason(cat: Category): string {
 /** Credited recipients: only people with the relevant actual contribution, less any the category's rules exclude. */
 export function categoryRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
   const all = creditedRecipients(state, p, cat, chosen, rules);
-  if (!rules?.noNarrators) return all;
-  const chars = p.drafts.find((d) => d.number === p.approvedDraft)?.characters ?? [];
-  return all.filter((c) => !chars.find((x) => x.name === c.characterName)?.functions.includes('narrator'));
+  if (!rules?.noNarrators && !rules?.episodeShare) return all;
+  const span = rules.episodeShare?.value;
+  return all.filter((c) => !(rules.noNarrators && isNarrator(p, c))
+    && (!span || ((span.under === undefined || episodeShare(p, c) < span.under) && (span.atLeast === undefined || episodeShare(p, c) >= span.atLeast))));
+}
+
+/** Whether a credit is for a part whose story function is Narrator. */
+function isNarrator(p: Project, c: Credit): boolean {
+  return !!p.drafts.find((d) => d.number === p.approvedDraft)?.characters.find((x) => x.name === c.characterName)?.functions.includes('narrator');
+}
+
+/** The share of a program's episodes a credit covers. */
+function episodeShare(p: Project, c: Credit): number {
+  return c.episodes === 'all' ? 1 : c.episodes.length / Math.max(1, p.axes.episodeCount);
 }
 
 function creditedRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {

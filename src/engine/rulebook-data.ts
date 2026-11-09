@@ -564,7 +564,7 @@ const EMMYS_2027: RuleBook = { id: 'emmys-2027@1', institutionId: 'emmys', year:
  * minimums apply where a category takes series only: six for animation, comedy, drama, variety, short form and reality
  * series, three for documentary and hosted nonfiction series. Categories that also take specials, movies or limited series
  * have no minimum here (the rule is per program, and a category's formats can't say which one is entered). Not modeled
- * yet, and said so in docs/world/RULEBOOK-AUDIT.md: guest performers' fewer than half of the episodes, the 2 to 20 minute
+ * in this version, and said so in docs/world/RULEBOOK-AUDIT.md: guest performers' fewer than half of the episodes (version 3 reads it), the 2 to 20 minute
  * short form running time, 65 percent new animation, 35 percent of the music, voice-over's audience of 13 and over, and
  * the producer caps other than short form's six.
  */
@@ -617,7 +617,10 @@ const EMMYS_2027_2: RuleBook = { ...EMMYS_2027, id: 'emmys-2027@2', version: 2, 
  * no episode minimum ("a continuing or single narration in a documentary/nonfiction series or special"). The recipient is
  * the cast Narrator of a program with a narration sequence (awards-rules.ts). The same version reads Performer Categories:
  * "voice-over performers and narrators may not enter in lead, support or guest performer categories" (`noNarrators` on every
- * lead-, supporting- and guest- category; a voice part was never in those pools). Not modeled yet: that a part performed as
+ * lead-, supporting- and guest- category; a voice part was never in those pools), and its episode shares: a guest
+ * category takes performers credited in fewer than half the season's episodes, Short Form Performer half or more
+ * (`episodeShare`; until then the guest categories took whoever the producer declared a guest). Not modeled yet: a performer
+ * nominated as lead or supporting can't later enter the same role as a guest, and the 5% screen-time minimums. Nor: that a part performed as
  * a character rather than a narrator goes to Character Voice-Over instead (SLATE's Narrator function is the producer's
  * declaration that the part narrates).
  */
@@ -625,8 +628,11 @@ function emmys3(year: number, mk: typeof v): Record<string, CategoryRules> {
   const two = emmys2(year, mk);
   const p = year === 2026 ? '' : ' From the 2025-2026 rules; the 2026-2027 rules are not published yet.';
   const noNarrators = mk(true as const, 'em78-rules', `Performer Categories: voice-over performers and narrators may not enter the lead, supporting or guest categories.${p}`);
-  const performers = Object.fromEntries(Object.entries(two).filter(([id]) => /^(lead|supporting|guest)-/.test(id)).map(([id, r]) => [id, { ...r, noNarrators }]));
-  return { ...two, ...performers, narrator: two['voice-over'] };
+  const guest = mk({ under: 0.5 }, 'em78-rules', `Performer Awards: only performers appearing in less than 50% of the eligible episodes can submit in the guest categories.${p}`);
+  const performers = Object.fromEntries(Object.entries(two).filter(([id]) => /^(lead|supporting|guest)-/.test(id))
+    .map(([id, r]) => [id, { ...r, noNarrators, ...(id.startsWith('guest-') ? { episodeShare: guest } : {}) }]));
+  const shortForm = { ...two['short-form-performer'], episodeShare: mk({ atLeast: 0.5 }, 'em78-rules', `Performer Awards: only performers appearing in 50% or more of the eligible episodes can submit in the short form performer category.${p}`) };
+  return { ...two, ...performers, 'short-form-performer': shortForm, narrator: two['voice-over'] };
 }
 const EMMYS_2026_3: RuleBook = { ...EMMYS_2026_2, id: 'emmys-2026@3', version: 3, categories: emmys3(2026, v) };
 const EMMYS_2027_3: RuleBook = { ...EMMYS_2027_2, id: 'emmys-2027@3', version: 3, categories: emmys3(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2025-2026 rules.')) as typeof v) };
