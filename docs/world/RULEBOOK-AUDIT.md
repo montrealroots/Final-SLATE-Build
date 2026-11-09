@@ -86,6 +86,15 @@ dialogue" (Rule Sixteen II.D) is counted from the approved script, in words, by 
 the first dialogue language the producer declared. A film with no written dialogue still reads the declaration. See
 `docs/awards/RECIPIENT-RULES.md`.
 
+**Version 4 (`oscars-2027@4`, November 9, 2026):** Original Song reads Rule Nineteen (read the same day from the complete
+rules): words and music written specifically for the film, heard in its body or as the first new cue of the end credits
+(I.B); created and recorded for the film before any other use (II.D); only the principal songwriters, never performers,
+producers or music supervisors (II.E); two statuettes normally, a third for three essentially equal writers (II.J; SLATE:
+up to three of the song's writers in credit order); no more than three songs from one film (III.C; SLATE enters one per
+work, since results are kept per work); song submissions by 5 p.m. PT on October 14, 2026 (III.F). Not modeled: the
+order of end-credit cues, the Committee's judgement of equal contributions, a fourth statuette, the vocal lead sheet and
+clip. Songs as works: `src/engine/songs.ts`; the rule rows in `docs/awards/RECIPIENT-RULES.md`.
+
 ## Sundance Film Festival 2027
 
 Sources (retrieved November 6, 2026): [2027 Submissions FAQ](https://www.sundance.org/submissions-faq);

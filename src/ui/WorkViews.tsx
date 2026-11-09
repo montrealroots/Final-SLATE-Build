@@ -27,6 +27,16 @@ const LYRICS = [
 
 const names = (v: string) => v.split(',').map((x) => x.trim()).filter(Boolean);
 
+/** What a new song will take, before it is added (songs.ts songTasks; the clearance is production/rates.ts). */
+function workPreview(source: SongSource, lyrics: (typeof LYRICS)[number]['value']): string {
+  const record = 'then, once it is in a scene, a day for a music producer to record it (before the shoot if it is performed on screen)';
+  const words = lyrics === 'you' ? ', you the lyrics in about 2 days' : lyrics === 'commission' ? ', a lyricist the lyrics in about 2 days' : '';
+  if (source === 'write') return `You write ${lyrics === 'with-music' ? 'it' : 'the music'} in about 4 working days${words.replace(', you the', ' and the')}; ${record}.`;
+  if (source === 'commission') return `A songwriter you hire writes ${lyrics === 'with-music' ? 'it' : 'the music'} in about 4 working days${words}; ${record}. Hire them under Crew.`;
+  if (source === 'public-domain') return `No writing or rights to clear: ${record.replace('then, ', '')}.`;
+  return 'Once it is in a scene, the music supervisor clears it in about 2 days, and the clearance costs about $8,000. It comes with its recording.';
+}
+
 function writersWords(g: GameState, s: Song): string {
   if (!s.writers.length) return s.plan ? 'Credited to whoever writes it, once the writing is done.' : 'Writers not recorded.';
   const who = (w: Song['writers'][number]) => (w.who === 'player' ? 'You' : w.who ? personById(g, w.who).name : w.name);
@@ -70,7 +80,9 @@ export function SongsCard({ p, onError }: { p: Project; onError: (e: string | nu
             {!made && <TextField label="Lyrics By" hint="Separate names with commas; the same names if they wrote both." value={lyricsBy} onChange={setLyricsBy} />}
             {source === 'licensed' && <TextField label="Rights Holder" value={holder} onChange={setHolder} />}
           </div>
+          <p className="dim small">{workPreview(source, lyrics)}</p>
           <button className="btn" disabled={!title.trim()} onClick={create}>Add Song</button>
+          {!title.trim() && <p className="dim small">Give the song a title to add it.</p>}
         </fieldset>
       )}
     </section>
@@ -113,6 +125,8 @@ function SongRow({ p, s, onError }: { p: Project; s: Song; onError: (e: string |
           <SelectField label="How It Plays" value={placement} options={(Object.keys(PLACEMENT_LABELS) as SongUse['placement'][]).map((k) => ({ value: k, label: PLACEMENT_LABELS[k] }))} onChange={setPlacement} />
           <TextField label="Minutes It Plays" hint="Leave blank if not known." inputMode="decimal" value={minutes} onChange={setMinutes} />
           <button className="btn btn-sm" aria-label={`Use ${s.title} In This Scene`} disabled={!sceneId} onClick={() => act((q) => attachSong(q, s.id, sceneId, placement, minutes.trim() === '' ? null : Number(minutes)))}>Use In Scene</button>
+          {!sceneId && <span className="dim small">Choose a scene for it.</span>}
+          {placement === 'performed' && <span className="dim small">Performed on screen: its recording comes before the scene is shot.</span>}
         </div>
       )}
       {open && parts.length > 0 && (
@@ -200,6 +214,7 @@ function ScreenTimeRow({ p, s, c, onError }: { p: Project; s: Scene; c: Characte
       <TextField label={`${c.name} On Screen (Minutes)`} inputMode="decimal" value={on} onChange={setOn} />
       <TextField label={`${c.name} Heard Only (Minutes)`} inputMode="decimal" value={heard} onChange={setHeard} />
       <button className="btn btn-sm" disabled={on.trim() === '' && heard.trim() === ''} onClick={save}>Record</button>
+      {!r && on.trim() === '' && heard.trim() === '' && <span className="dim small">Enter the minutes to record them.</span>}
       {r && <button className="btn btn-sm" onClick={() => { onError(store.act((st) => clearScreenTime(st.projects.find((x) => x.id === p.id)!, s.id, c.id))); setOn(''); setHeard(''); }}>Clear</button>}
     </div>
   );

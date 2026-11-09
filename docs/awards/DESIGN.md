@@ -23,8 +23,9 @@ Written before the engine work so it could resume from here, and updated as it w
 
 1. **Enterable** categories are `award`, `area`, `juried` and `section` (and any category without a kind, from older
    data). Prizes, audience and partner awards and honorary awards take no entries and no fees.
-2. **Recipients** come from credits: crafts by role, guests by series involvement, songs by the composer when the
-   project has original (unlicensed) songs, hosts by the unscripted host credit, national by the director. Nobody
+2. **Recipients** come from credits: crafts by role, guests by series involvement, songs by the writing credits of the
+   one song entered, written for the work (from November 9, 2026; until then the composer of a project with any song
+   not marked licensed), hosts by the unscripted host credit, national by the director. Nobody
    receives an award for a contribution they didn't make; the player is not the default recipient.
 3. **Judging** a craft reads that craft's quality (`quality['craft:<role>']`, written at delivery from the credited
    person's work), falling back to the project's craft figure for projects delivered before it existed.

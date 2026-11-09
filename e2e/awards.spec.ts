@@ -540,3 +540,265 @@ test('Golden Globes: Non-English Language counts the script\'s dialogue, not the
   await filterTo(page, 'La Rive', 'Every Category');
   await expect(row(page, 'Best Motion Picture – Non-English Language').getByText('10% of its written dialogue is in a language other than English; this category needs more than 50%.')).toBeVisible();
 });
+
+// ---------------- Screen time, episodes and songs (November 9, 2026) ----------------
+
+/** Labelled fixture: the shoot and the assembly are done (every scene but the ones named was shot), the parts cast. */
+function shotAndAssembled(s: State, title: string, unshot: string[]): State {
+  const p = s.projects.find((x: State) => x.title === title);
+  const draft = p.drafts.find((d: State) => d.number === p.approvedDraft);
+  p.cast = draft.characters.map((c: State) => ({ characterId: c.id, performer: 'player', method: 'on-camera', note: '' }));
+  p.captures = draft.scenes.filter((sc: State) => !unshot.includes(sc.heading.place)).map((sc: State) => ({ sceneId: sc.id, captured: 1, quality: 70, version: p.approvedDraft, weatherCompromised: false }));
+  p.tasks = [...new Set(draft.scenes.map((sc: State) => sc.episode))].map((e) => ({ id: `post:assembly:${e}`, kind: 'post:assembly', label: 'Assembly Edit', dept: 'Post Production', roleId: 'editor', units: 1, unitLabel: 'days', done: 1, dependsOn: [], status: 'done', episode: e, sceneIds: [], workedDays: 1 }));
+  p.edit.assembly = true;
+  return p;
+}
+
+const screenRow = (page: Page, scene: string, part: string) => page.getByRole('group', { name: new RegExp(`^${part} In (Episode \\d+, )?Scene \\d+ \\(${scene}\\)$`) });
+
+async function recordTime(page: Page, scene: string, part: string, on: string, heard: string): Promise<void> {
+  const r = screenRow(page, scene, part);
+  await r.getByLabel(`${part} On Screen (Minutes)`).fill(on);
+  await r.getByLabel(`${part} Heard Only (Minutes)`).fill(heard);
+  await r.getByRole('button', { name: 'Record' }).click();
+  await expect(r.getByText(new RegExp(`Recorded: ${on === '0' ? '0 minutes' : on} `))).toBeVisible();
+}
+
+test('Emmys guest: the 5% rule reads screen time recorded from the cut; two share the same minutes, heard-only doesn\'t count, a shorter version changes it, and the entry keeps what it was entered with', async ({ page }) => {
+  await quickLife(page, 'us-los-angeles', '2027-02-01');
+  await newProject(page, { title: 'Harbor Lights', format: 'Series', episodes: '2', runtime: '50' });
+  await section(page, 'Characters');
+  for (const n of ['Ines', 'Marcus']) {
+    await page.getByLabel('Character Name').fill(n);
+    await page.getByRole('button', { name: 'Add Character' }).click();
+  }
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Harbor', chars: ['Ines'], minutes: '46' });
+  await addScene(page, { index: 1, place: 'Dock', chars: ['Ines', 'Marcus'], minutes: '4' });
+  await addScene(page, { index: 2, place: 'Market', chars: ['Ines'], minutes: '15' });
+  await addScene(page, { index: 3, place: 'Corridor', chars: ['Ines'], minutes: '2', episodeButton: 'Add Scene To Episode 2' });
+  await saveAndApprove(page);
+  await editSave(page, (s) => {
+    const p = shotAndAssembled(s, 'Harbor Lights', []);
+    p.edit.pictureLocked = true;
+    p.axes.register = 'drama';
+    p.axes.episodeCount = 6;
+    Object.assign(p.drafts.find((d: State) => d.number === p.approvedDraft).characters.find((c: State) => c.name === 'Marcus'), { roleSize: 'small', seriesInvolvement: 'guest', awardPlacement: 'none' });
+  });
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Harbor Lights' }).click();
+  await section(page, 'Edit');
+  const card = page.getByRole('region', { name: 'Screen Time' });
+  await card.getByText(/^Episode 1 \(/).click(); // each episode's scenes are folded until opened
+  await expect(screenRow(page, 'Dock', 'Marcus').getByText('Not recorded: unknown')).toBeVisible();
+  // Marcus is a voice on the phone for the whole scene; Ines is on screen for all of it.
+  await recordTime(page, 'Dock', 'Ines', '4', '0');
+  await recordTime(page, 'Dock', 'Marcus', '0', '4');
+  await expect(card.getByText(/Marcus: 0 minutes on screen recorded, 0% of 65 minutes; 4 minutes heard only\./)).toBeVisible();
+  await card.screenshot({ path: `test-results/screen-time-card-${test.info().project.name}.png` });
+  // More than the scene runs is refused.
+  await screenRow(page, 'Dock', 'Marcus').getByLabel('Marcus On Screen (Minutes)').fill('5');
+  await screenRow(page, 'Dock', 'Marcus').getByRole('button', { name: 'Record' }).click();
+  await expect(page.getByRole('alert').getByText('The scene runs 4 minutes; nobody is on screen longer than that.')).toBeVisible();
+  // A Festival Cut without the market: the episode runs 50 minutes there.
+  const versions = page.getByRole('region', { name: 'Versions' });
+  await versions.getByRole('checkbox', { name: /Market/ }).check();
+  await versions.getByRole('button', { name: 'Add Version' }).click();
+  await expect(versions.getByText(/Festival Cut.*52 minutes/)).toBeVisible();
+  await editSave(page, (s) => {
+    const p = deliver(s, 'Harbor Lights', { format: 'series', runtime: 67, at: '2026-08-01T20:00:00Z', quality: { overall: 70 },
+      releases: [{ id: 'r1', route: 'broadcast', date: '2026-10-01', territories: ['US'], distributor: 'Channel Nine', note: '', status: 'released' }],
+      credits: [credit('cr9', 'player', s.character.name, 'Cast', 'actor', { characterName: 'Marcus', episodes: [1] })] });
+    p.axes.episodeCount = 6;
+  });
+  await openEvent(page, 'Harbor Lights', 'Primetime Emmy Awards 2027');
+  await filterTo(page, 'Harbor Lights', 'Every Category');
+  const guest = row(page, 'Outstanding Guest Actress In A Drama Series');
+  await expect(guest.getByText("Marcus is on screen 0 minutes of episode 1 (65 minutes), 0%, as recorded from the cut, besides 4 minutes heard but not seen, which doesn't count; this category needs 5% (3.3 minutes).")).toBeVisible();
+  // Seen for 2.5 minutes: in the main cut's 65-minute episode, still short.
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Harbor Lights' }).click();
+  await section(page, 'Edit');
+  await card.getByText(/^Episode 1 \(/).click();
+  await recordTime(page, 'Dock', 'Marcus', '2.5', '0');
+  await openEvent(page, 'Harbor Lights', 'Primetime Emmy Awards 2027');
+  await filterTo(page, 'Harbor Lights', 'Every Category');
+  await expect(guest.getByText(/Marcus is on screen 2\.5 minutes of episode 1 \(65 minutes\), 3\.8%, as recorded from the cut; this category needs 5%/)).toBeVisible();
+  // Entered with the Festival Cut, where the episode runs 50 minutes, it qualifies.
+  await guest.getByRole('button', { name: 'Prepare Submission' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Prepare Submission' });
+  await expect(dialog.getByRole('button', { name: 'Submit Entry' })).toBeDisabled();
+  await dialog.getByLabel('Version To Enter').selectOption({ label: 'Festival Cut (52 Minutes)' });
+  await expect(dialog.getByLabel('Screen Time Calculation').getByText('Marcus is on screen 2.5 minutes of episode 1 (50 minutes), 5%, as recorded from the cut; this category needs 5% (2.5 minutes).')).toBeVisible();
+  await dialog.getByRole('button', { name: 'Submit Entry' }).click();
+  await expect(dialog).toBeHidden();
+  const mine = entry(page, 'Outstanding Guest Actress In A Drama Series');
+  await mine.getByText('As Entered').click();
+  await expect(mine.getByText(/Marcus is on screen 2\.5 minutes of episode 1 \(50 minutes\), 5%/)).toBeVisible();
+  // Recorded differently afterwards, the entry keeps what it was entered with, through a save and reload.
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Harbor Lights' }).click();
+  await section(page, 'Edit');
+  await card.getByText(/^Episode 1 \(/).click();
+  await recordTime(page, 'Dock', 'Marcus', '1', '0');
+  await saveAndExit(page);
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await openEvent(page, 'Harbor Lights', 'Primetime Emmy Awards 2027');
+  await entry(page, 'Outstanding Guest Actress In A Drama Series').getByText('As Entered').click();
+  await expect(entry(page, 'Outstanding Guest Actress In A Drama Series').getByText(/Marcus is on screen 2\.5 minutes of episode 1 \(50 minutes\), 5%/)).toBeVisible();
+  await page.screenshot({ path: `test-results/awards-screen-time-${test.info().project.name}.png`, fullPage: true });
+});
+
+test('Emmys directing: each episode is entered with its own director and judged on its own work; the series on the season; an older delivery says it was judged on the season', async ({ page }) => {
+  await quickLife(page, 'us-los-angeles', '2027-02-01');
+  await newProject(page, { title: 'Night Ward', format: 'Series', episodes: '2', runtime: '50' });
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Day Ward', format: 'Series', episodes: '2', runtime: '50' });
+  const air = [{ id: 'r1', route: 'broadcast', date: '2026-10-01', territories: ['US'], distributor: 'Channel Nine', note: '', status: 'released' }];
+  // Labelled fixture: delivered, with each episode's assessment as delivery locks it (computed and tested in
+  // tests/episode-assessment.test.ts): episode 1, which you directed, was the weaker; episode 2, Ada Ruiz's, the stronger.
+  await editSave(page, (s) => {
+    for (const title of ['Night Ward', 'Day Ward']) {
+      const p = deliver(s, title, { format: 'series', runtime: 100, at: '2026-08-01T20:00:00Z', releases: air, quality: { direction: 70 } });
+      p.axes.register = 'drama';
+      p.axes.episodeCount = 6;
+      p.credits[0].episodes = [1];
+      p.credits.push(credit('cr11', 'x-dir', 'Ada Ruiz', 'Directed By', 'episode-director', { episodes: [2] }));
+      if (title === 'Night Ward') p.episodeQuality = { 1: { overall: 62, direction: 58, script: 70, craft: 66, reception: 62 }, 2: { overall: 80, direction: 86, script: 70, craft: 66, reception: 80 } };
+    }
+  });
+  await openEvent(page, 'Night Ward', 'Primetime Emmy Awards 2027');
+  await filterTo(page, 'Night Ward', 'Open To Night Ward');
+  await row(page, 'Outstanding Directing For A Drama Series').getByRole('button', { name: 'Prepare Submission' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Prepare Submission' });
+  await expect(dialog.getByText("Judged on episode 1's own work: its scenes, takes, writer, director, cast and crew.")).toBeVisible();
+  await expect(dialog.getByText(/Credited for this entry: Nia Halvorsen-Mbeki\./)).toBeVisible();
+  await dialog.getByLabel('Episode To Enter').selectOption({ label: 'Episode 2' });
+  await expect(dialog.getByText("Judged on episode 2's own work: its scenes, takes, writer, director, cast and crew.")).toBeVisible();
+  await expect(dialog.getByText(/Credited for this entry: Ada Ruiz\./)).toBeVisible();
+  await dialog.getByRole('button', { name: 'Submit Entry' }).click();
+  await expect(dialog).toBeHidden();
+  await row(page, 'Outstanding Drama Series').getByRole('button', { name: 'Prepare Submission' }).click();
+  await expect(dialog.getByText('Judged on the whole season.')).toBeVisible();
+  await dialog.getByRole('button', { name: 'Submit Entry' }).click();
+  await expect(dialog).toBeHidden();
+  const directing = entry(page, 'Outstanding Directing For A Drama Series, Episode 2');
+  await directing.getByText('As Entered').click();
+  await expect(directing.getByText(/Judged on episode 2's own work.*Credited: Ada Ruiz\./)).toBeVisible();
+  // A project delivered before episodes were assessed on their own: judged on the season, and the dialog says so.
+  await openEvent(page, 'Day Ward', 'Primetime Emmy Awards 2027');
+  await filterTo(page, 'Day Ward', 'Open To Day Ward');
+  await row(page, 'Outstanding Directing For A Drama Series').getByRole('button', { name: 'Prepare Submission' }).click();
+  await dialog.getByLabel('Episode To Enter').selectOption({ label: 'Episode 2' });
+  await expect(dialog.getByText("Judged on the whole season: Day Ward was delivered before episodes were assessed on their own, so episode 2's own work wasn't recorded.")).toBeVisible();
+  await dialog.getByRole('button', { name: 'Cancel' }).click();
+  // After a reload, the entries are as they were entered.
+  await saveAndExit(page);
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await openEvent(page, 'Night Ward', 'Primetime Emmy Awards 2027');
+  await entry(page, 'Outstanding Directing For A Drama Series, Episode 2').getByText('As Entered').click();
+  await expect(entry(page, 'Outstanding Directing For A Drama Series, Episode 2').getByText(/Credited: Ada Ruiz\./)).toBeVisible();
+});
+
+test('Songs: made in the Production tab with separate writers, one licensed; a version swaps one; the Oscar for Original Song goes to one song\'s own writers, never the licensed song\'s', async ({ page }) => {
+  await quickLife(page, 'us-los-angeles', '2026-09-01');
+  await newProject(page, { title: 'Night Ferry', format: 'Feature Film', runtime: '100' });
+  await section(page, 'Characters');
+  await page.getByLabel('Character Name').fill('Lena');
+  await page.getByRole('button', { name: 'Add Character' }).click();
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Ferry', chars: ['Lena'], minutes: '50' });
+  await addScene(page, { index: 1, place: 'Pier', chars: ['Lena'], minutes: '50' });
+  // Three songs: one commissioned from a songwriter and a lyricist, one licensed, one written by you.
+  await section(page, 'Production');
+  const songs = page.getByRole('region', { name: 'Songs' });
+  const make = async (title: string, source: string, extra: (s: Locator) => Promise<void> = async () => {}) => {
+    await songs.getByLabel('Song Title').fill(title);
+    await songs.getByLabel('Where It Comes From').selectOption({ label: source });
+    await extra(songs);
+    await songs.getByRole('button', { name: 'Add Song' }).click();
+    await expect(songs.getByRole('listitem', { name: `Song: ${title}` })).toBeVisible();
+  };
+  await make('Salt Water', 'Commission It From A Songwriter', async (s) => { await s.getByLabel('Lyrics').selectOption({ label: 'Commissioned From A Lyricist' }); });
+  await make('Harbour Lights', 'An Existing Song, Licensed', async (s) => { await s.getByLabel('Music By').fill('Ada Brook'); await s.getByLabel('Lyrics By').fill('Ada Brook'); await s.getByLabel('Rights Holder').fill('Tidewater Music'); });
+  await make('Lantern', 'Write It Yourself');
+  const song = (t: string) => songs.getByRole('listitem', { name: `Song: ${t}` });
+  await expect(song('Salt Water').getByText('Original', { exact: true })).toBeVisible();
+  await expect(song('Salt Water').getByText('Credited to whoever writes it, once the writing is done.')).toBeVisible();
+  await expect(song('Harbour Lights').getByText('Licensed', { exact: true })).toBeVisible();
+  await expect(song('Harbour Lights').getByText('Written by Ada Brook.')).toBeVisible();
+  const use = async (t: string, scene: RegExp, how: string) => {
+    await song(t).getByLabel(`Scene For ${t}`).selectOption({ label: (await song(t).getByLabel(`Scene For ${t}`).locator('option').allInnerTexts()).find((o) => scene.test(o))! });
+    await song(t).getByLabel('How It Plays').selectOption({ label: how });
+    await song(t).getByRole('button', { name: `Use ${t} In This Scene` }).click();
+    await expect(song(t).locator('span.grow', { hasText: new RegExp(`${scene.source}.*${how}`) })).toBeVisible();
+  };
+  await use('Salt Water', /Ferry/, 'Performed On Screen');
+  await use('Harbour Lights', /Pier/, 'In The Background');
+  await use('Lantern', /Pier/, 'Over The End Credits');
+  await song('Salt Water').getByRole('checkbox', { name: 'Lena Performs Salt Water' }).check();
+  await expect(song('Salt Water').getByText(/Performed by Lena\./)).toBeVisible();
+  await songs.screenshot({ path: `test-results/songs-card-${test.info().project.name}.png` });
+  // The script shows each scene's songs.
+  await section(page, 'Script');
+  await page.locator('article.scene-card').nth(1).getByRole('button', { name: 'Edit Scene' }).click();
+  await expect(page.locator('article.scene-card').nth(1).getByRole('checkbox', { name: '"Harbour Lights" In This Scene' })).toBeChecked();
+  await expect(page.locator('article.scene-card').nth(1).getByRole('checkbox', { name: '"Salt Water" In This Scene' })).not.toBeChecked();
+  await page.locator('article.scene-card').nth(1).getByRole('button', { name: 'Close Scene' }).click();
+  await saveAndApprove(page);
+  // Labelled fixture: produced and locked (the songs' writing, recording and credits are played through in
+  // tests/songs.test.ts), with a Distribution Cut to conform.
+  await editSave(page, (s) => {
+    const p = shotAndAssembled(s, 'Night Ferry', []);
+    p.edit.pictureLocked = true;
+    p.versions = [{ id: 'ver-d', label: 'Distribution Cut', leaveOut: [] }];
+  });
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Night Ferry' }).click();
+  await section(page, 'Edit');
+  const versions = page.getByRole('region', { name: 'Versions' });
+  await versions.getByLabel(/Distribution Cut: .*Pier.*, In Place Of "Harbour Lights"/).selectOption({ label: '"Lantern" Instead' });
+  await expect(versions.getByLabel(/Distribution Cut: .*Pier.*, In Place Of "Harbour Lights"/)).toHaveValue(/.+/);
+  await section(page, 'Production');
+  await expect(song('Harbour Lights').locator('span.grow', { hasText: /Pier.*In The Background/ })).toBeVisible(); // the main cut keeps it
+  await editSave(page, (s) => {
+    const p = deliver(s, 'Night Ferry', { format: 'feature', runtime: 100, at: '2026-08-01T20:00:00Z',
+      releases: [{ id: 'r1', route: 'theatrical', date: '2026-08-15', territories: ['US'], distributor: 'Harbor & Vine', note: '', status: 'released' }],
+      credits: [credit('cr5', 'np_composer_US_1', 'Iris Varga', 'Composer', 'composer')] });
+    const salt = p.songs.find((x: State) => x.title === 'Salt Water');
+    salt.writers = [{ who: 'np_songwriter_US_1', name: 'Teo Holt', music: true }, { who: 'np_lyricist_US_1', name: 'Mina Okoro', lyrics: true }];
+    const lantern = p.songs.find((x: State) => x.title === 'Lantern');
+    lantern.writers = [{ who: 'player', name: s.character.name, music: true, lyrics: true }];
+    // The song work the version change put on the task list, finished (played through in tests/songs.test.ts).
+    for (const t of p.tasks.filter((x: State) => x.id.startsWith('song:'))) Object.assign(t, { status: 'done', done: t.units });
+    p.credits.push(
+      credit('cr20', 'np_songwriter_US_1', 'Teo Holt', 'Song Music By ("Salt Water")', 'songwriter', { songId: salt.id }),
+      credit('cr21', 'np_lyricist_US_1', 'Mina Okoro', 'Song Lyrics By ("Salt Water")', 'lyricist', { songId: salt.id }),
+      credit('cr22', 'player', s.character.name, 'Song Written By ("Lantern")', 'songwriter', { songId: lantern.id }),
+      credit('cr23', 'songwriter:x', 'Ada Brook', 'Song Written By ("Harbour Lights")', 'songwriter', { songId: p.songs.find((x: State) => x.title === 'Harbour Lights').id }));
+  });
+  await openEvent(page, 'Night Ferry', '99th Academy Awards');
+  await filterTo(page, 'Night Ferry', 'Open To Night Ferry');
+  await row(page, 'Music (Original Song)').getByRole('button', { name: 'Prepare Submission' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Prepare Submission' });
+  await expect(dialog.getByText(/Credited for this entry: Teo Holt, Mina Okoro\./)).toBeVisible(); // not the composer
+  await dialog.getByLabel('Song To Enter').selectOption({ label: '"Harbour Lights"' });
+  await expect(dialog.getByText('"Harbour Lights" is licensed; an original song award takes a song written for the work.')).toBeVisible();
+  await expect(dialog.getByRole('button', { name: 'Submit Entry' })).toBeDisabled();
+  await dialog.getByLabel('Song To Enter').selectOption({ label: '"Lantern"' });
+  await expect(dialog.getByText(/Credited for this entry: Nia Halvorsen-Mbeki\./)).toBeVisible();
+  await dialog.getByLabel('Song To Enter').selectOption({ label: '"Salt Water"' });
+  await expect(dialog.getByText('Judged on the writing of "Salt Water".')).toBeVisible();
+  await dialog.getByRole('button', { name: 'Submit Entry' }).click();
+  await expect(dialog).toBeHidden();
+  await expect(entry(page, 'Music (Original Song), "Salt Water"').locator('.chip', { hasText: /^Submitted$/ })).toBeVisible();
+  await saveAndExit(page);
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await openEvent(page, 'Night Ferry', '99th Academy Awards');
+  await entry(page, 'Music (Original Song), "Salt Water"').getByText('As Entered').click();
+  await expect(entry(page, 'Music (Original Song), "Salt Water"').getByText(/Credited: Teo Holt, Mina Okoro\. Song: "Salt Water"\./)).toBeVisible();
+  await page.screenshot({ path: `test-results/awards-songs-${test.info().project.name}.png`, fullPage: true });
+});
