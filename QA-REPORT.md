@@ -14,8 +14,8 @@ Tested revision: the working branch at the commit that updates this report.
 
 | Command | Exit | Result |
 | --- | --- | --- |
-| `npm run check` | 0 | 69 files, 523 tests passed; startup JavaScript 674 kB, 216 kB gzipped (215.86 kB measured after the rule helpers moved to the catalog chunk), 0 problems. |
-| `npx playwright test e2e/awards.spec.ts --project=desktop --project=iphone-15-plus --trace off` | 0 | 18 passed in 2.6 minutes; the narrator journey now also enters Directing for episode 4 and finds that episode's director named. |
+| `npm run check` | 0 | 69 files, 528 tests passed; startup JavaScript 674 kB, 216 kB gzipped (215.86 kB measured after the rule helpers moved to the catalog chunk), 0 problems. |
+| `npx playwright test e2e/awards.spec.ts --project=desktop --project=iphone-15-plus --trace off` | 0 | 18 passed in 2.7 minutes, on the commit with the Goyas' specific Bases; the narrator journey also enters Directing for episode 4 and finds that episode's director named. |
 
 Implemented and tested (engine): directing and writing entered for one episode, with the two-director cap
 (`emmys-2026@4`); a limited series entered whole or as one part; Guest Performer Eligibility after an earlier season's
@@ -24,6 +24,14 @@ Mutation-tested: the cap, the episode filter, the stored episode, the whole-seri
 statuses, the screen-time boundary and denominator, and the box office's domestic split and window each fail a test.
 Fixed while writing them: the recipient reasons named only one rule; they now list every rule that rules a part out.
 `EditionEntry.episode` had been declared since the first engine commit and read by nothing; entries now store it.
+
+Rule research, continued: Venice's Critics' Week (its site answered after a 503), SXSW's deadline and fees (its
+submissions page answered; its eligibility FAQ still returns 403, so a deadline-only book counts as SLATE's eligibility),
+and the Goyas' European, Ibero-American and short film awards (`goya-2027@2`). TIFF and BAFTA still return 403.
+Two eligibility defects the reading found, each with a test that fails without its fix: a festival premiere counted as a
+release outside cinemas (ruling festival films out of every theatrical-first rule); and categories for work from
+elsewhere (the Goyas' European and Ibero-American, the Césars' and the Japan Academy's foreign films) were held to the
+event's own countries, so they took nothing. Counts: organizer's rules 463 of 806, projected only 11, SLATE's 332.
 
 ### Previous: Nonplayable Review And Recipient Rules (November 9, 2026, after #50 was opened)
 
