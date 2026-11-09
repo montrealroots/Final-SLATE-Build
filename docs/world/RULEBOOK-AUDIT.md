@@ -419,6 +419,23 @@ July 15, 2026. Not modeled: the CNC approval and the exploitation visa (for shor
 exceptions; Best Score's original-music share; documentaries shown on television before the cinema release (3-L). The
 César des Lycéens is chosen among the Best Film nominees and takes no entries; it stays on SLATE's rules.
 
+## Film Independent Spirit Awards, 2027
+
+Sources (read November 9, 2026): [Film rules](https://s3.us-east-1.amazonaws.com/SA_SubForm_etc/2027_SAsubmissions_RulesRegs_Film_082426.pdf)
+(August 24, 2026) and [TV rules](https://s3.us-east-1.amazonaws.com/SA_SubForm_etc/2027_SAsubmissions_RulesRegs_TV_090126.pdf)
+(September 1, 2026), "Rules for eligibility".
+
+| Rule | Where | Applied to |
+| --- | --- | --- |
+| At least 70 minutes | Film 1 | The 14 film categories |
+| Completed for under $30 million (a new SLATE rule, `maxBudget`, read from the project's estimate) | Film 2 | Film categories |
+| In 2026: programmed at one of nine festivals (Hot Docs, New Directors/New Films, New York, Sundance, SXSW, Telluride, TIFF, Tribeca, Berlinale), or a week in a US cinema, or a fee-based streaming or on-demand release | Film 3 | Film categories. The festival route is a selection, not a win (a new SLATE route, `festivalSelection`); four of the festivals aren't in SLATE. |
+| Once nominated, no later entry | Film 4 | SLATE refuses any earlier Spirit entry |
+| Film final deadline September 29, 2026 | Dates | Film categories |
+| New series with all or part of its first season airing October 1, 2025 to September 30, 2026; episodes at least 18 minutes, at least two available; international series only as US co-productions; TV final deadline September 15 | TV 1-3, 5, dates | The six TV categories |
+
+The Robert Redford Environmental Vision Award takes films and series alike and stays on SLATE's rules.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two

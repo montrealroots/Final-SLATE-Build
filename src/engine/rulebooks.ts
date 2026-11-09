@@ -66,10 +66,14 @@ export interface CategoryRules {
    * - `festivalList`: a win of one of the awards on that qualifying list (QUALIFYING_LISTS), inside the list's own window;
    * - `viaCategory`: an entry in that category of the same edition that was accepted (the Academy's documentary route 3,
    *   "submitted and deemed eligible in the International Feature Film category").
+   * - `festivalSelection`: selected for a section of one of these institutions' editions closing inside `qualifying` (a
+   *   selection, not a win: the Spirit Awards' "programmed at one of nine festivals").
    * `festivalAwards` ("institution:category", any win inside `qualifying`) is version 1 of the 99th Oscars' shorts rule,
    * kept for editions created with it; it named festivals' sections the Academy doesn't list (rulebooks, November 9, 2026).
    */
-  release?: Ruled<{ routes: ('theatrical' | 'streaming' | 'broadcast' | 'digital')[]; countries: string[]; outside?: string[]; exempt?: Format[]; festivalAwards?: string[]; festivalList?: string; viaCategory?: string }>;
+  release?: Ruled<{ routes: ('theatrical' | 'streaming' | 'broadcast' | 'digital')[]; countries: string[]; outside?: string[]; exempt?: Format[]; festivalAwards?: string[]; festivalList?: string; viaCategory?: string; festivalSelection?: string[] }>;
+  /** The production's budget must be under this many dollars (the project's estimate). */
+  maxBudget?: Ruled<number>;
   /**
    * No streaming, digital or broadcast release in these countries ('*' for anywhere) before the first theatrical release
    * there. With `unlessFestival`, a work qualifying through its festival list is exempt.

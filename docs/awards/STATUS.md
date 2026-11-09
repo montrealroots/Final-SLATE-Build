@@ -36,7 +36,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Golden Globe Awards (`golden-globes`) | 28 | 28 / 0 / 0 | 26 / 0 / 2 | 7 | 28 | 15 | 11 | 0 | 2 |
 | International Emmy Awards (`international-emmys`) | 14 | 14 / 0 / 0 | 0 / 0 / 14 | 0 | 14 | 0 | 3 | 0 | 6 |
 | Annie Awards (`annie`) | 32 | 30 / 2 / 0 | 29 / 0 / 3 | 0 | 32 | 29 | 11 | 0 | 6 |
-| Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 0 / 0 / 21 | 0 | 21 | 0 | 0 | 0 | 4 |
+| Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 20 / 0 / 1 | 0 | 21 | 20 | 7 | 0 | 4 |
 | Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 0 / 0 / 12 | 0 | 12 | 0 | 1 | 0 | 1 |
 | Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 0 / 0 / 10 | 0 | 10 | 0 | 0 | 0 | 3 |
 | Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 0 / 0 / 18 | 0 | 0 | 0 | 0 | 0 | 11 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 0 | 0 | 0 |
-| **All 37** | 802 | 705 / 69 / 28 | 394 / 11 / 397 | 28 | 335 | 366 | 155 | 32 | 125 |
+| **All 37** | 802 | 705 / 69 / 28 | 414 / 11 / 377 | 28 | 335 | 386 | 162 | 32 | 125 |
 
 ## Research queue
 
@@ -67,7 +67,7 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 9. `bafta-tv` (5): `drama`, `limited`, `factual`, `leading-actor`, `leading-actress`
 10. `international-emmys` (12): `arts`, `actress`, `actor`, `comedy`, `documentary`, `drama`, `kids-animation`, `kids-factual`, `kids-live-action`, `non-scripted`, `short-form`, `tv-movie`
 11. `annie` (1): `tv`
-12. `spirit` (21): `feature`, `first-feature`, `director`, `screenplay`, `first-screenplay`, `cassavetes`, `cinematography`, `editing`, `lead`, `supporting`, `breakthrough`, `documentary`, `international`, `international-first`, `redford`, `series`, `nonscripted-series`, `tv-lead`, `tv-supporting`, `tv-breakthrough`, `tv-ensemble`
+12. `spirit` (1): `redford`
 13. `gotham` (10): `feature`, `documentary`, `international`, `director`, `breakthrough-director`, `original-screenplay`, `adapted-screenplay`, `lead`, `supporting`, `breakthrough-performer`
 14. `dga` (10): `feature`, `first-feature`, `documentary`, `drama`, `comedy`, `limited`, `movie`, `documentary-series`, `variety`, `reality`
 15. `wga` (18): `original`, `adapted`, `documentary-screenplay`, `drama-series`, `comedy-series`, `limited-series`, `new-series`, `movie`, `animation`, `episodic`, `episodic-comedy`, `talk-series`, `variety-specials`, `documentary-current`, `documentary-other`, `childrens`, `short-form`, `selvin`

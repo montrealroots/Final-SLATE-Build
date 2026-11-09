@@ -357,7 +357,7 @@ type EditionEntryStatus = Edition['entries'][number]['status'];
  * (`list`, from the rule unless given), or an accepted entry in another of the edition's categories.
  */
 function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: CategoryRules, list = rules.release?.value.festivalList ? catalogRules().qualifyingList(rules.release.value.festivalList) : undefined): ReleaseFit {
-  const { routes, countries, outside, exempt, festivalAwards, viaCategory } = rules.release!.value;
+  const { routes, countries, outside, exempt, festivalAwards, viaCategory, festivalSelection } = rules.release!.value;
   if (exempt?.includes(p.axes.format)) return { ok: true, provisional: false };
   const win = rules.qualifying?.value ?? ed.eligibility;
   const home = getPlace(p.axes.basePlaceId).country;
@@ -367,6 +367,11 @@ function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: Cate
   if (p.releases.some((r) => r.status === 'released' && fits(r))) return { ok: true, provisional: false, via: 'release' };
   if (list && qualifyingWin(state, p, list)) return { ok: true, provisional: false, via: 'festival' };
   if (festivalAwards && festivalWin(state, p, festivalAwards, win)) return { ok: true, provisional: false, via: 'festival' };
+  if (festivalSelection && state.editions.some((e) => {
+    if (!festivalSelection.includes(e.institutionId)) return false;
+    const end = dateKey(e.end, getPlace(institution(e.institutionId).placeId).zone);
+    return end >= win.from && end <= win.to && e.entries.some((x) => x.projectId === p.id && ['selected', 'nominated', 'won', 'lost', 'mention'].includes(x.status));
+  })) return { ok: true, provisional: false, via: 'festival' };
   const via = viaCategory ? ed.entries.find((x) => x.projectId === p.id && x.categoryId === viaCategory && x.status !== 'withdrawn') : undefined;
   const viaName = viaCategory ? institution(ed.institutionId).categories.find((c) => c.id === viaCategory)?.name ?? viaCategory : '';
   if (via && DEEMED_ELIGIBLE.includes(via.status)) return { ok: true, provisional: false, via: 'category' };
@@ -376,7 +381,8 @@ function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: Cate
   const place = outside ? `outside ${outside.map(countryWords).join(' and ')}` : `in ${countries.map((c) => (c === 'origin' ? countryWords(home) : countryWords(c))).join(' or ')}`;
   const orFest = list ? `, or a win of an award on the ${institution(ed.institutionId).short} qualifying-festival list between ${formatDateKey(list.window.from)} and ${formatDateKey(list.window.to)}` : festivalAwards ? ', or a top award at one of its qualifying festivals in that time' : '';
   const orVia = viaCategory ? `, or an accepted ${viaName} entry` : '';
-  return { ok: false, provisional: false, reason: `It needs ${how} ${place} between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}${orFest}${orVia}.` };
+  const orSel = festivalSelection ? `, or a selection at ${festivalSelection.map((i) => institution(i).short).join(', ')} in that time` : '';
+  return { ok: false, provisional: false, reason: `It needs ${how} ${place} between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}${orFest}${orSel}${orVia}.` };
 }
 
 /** Version 1 of the 99th Oscars' shorts rule only: any listed "institution:category" result inside the window. */
@@ -482,6 +488,7 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   }
   const mediums = rules?.mediums?.value ?? cat.mediums;
   if (mediums && !mediums.includes(p.axes.medium)) reasons.push(`This category is for ${mediums.join(' or ').replace('-', ' ')} work.`);
+  if (rules?.maxBudget && (p.finance?.estimate ?? 0) >= rules.maxBudget.value) reasons.push(`Its budget is ${(p.finance?.estimate ?? 0).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })}. This category takes films made for under ${rules.maxBudget.value.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })}.`);
   if (rules?.minEpisodes && p.axes.episodeCount < rules.minEpisodes.value) reasons.push(`It has ${p.axes.episodeCount} episode${p.axes.episodeCount === 1 ? '' : 's'}. This category needs at least ${rules.minEpisodes.value}.`);
   // Drama or comedy is the category's `class`, read by requirementProblems from where the project says it competes. A
   // reference check against the genre list did this until November 9, 2026, and never matched the JSON catalog.

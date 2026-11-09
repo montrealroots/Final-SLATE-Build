@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('394 categories follow verified rules for at least one edition, 11 only projected ones; the other 397 are simulated', () => {
+  it('414 categories follow verified rules for at least one edition, 11 only projected ones; the other 377 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -438,8 +438,8 @@ describe('audit counts', () => {
     // 218 until Sitges' six sections (sitges-2026@1), 224 until the Giornate degli Autori (venice-2026@3),
     // 225 until IDFA's five sections (idfa-2026@1), 230 until Hot Docs (hot-docs-2027@1), 231 until the
     // Canadian Screen Awards' 115 entered categories (canadian-screen-2026@1), 346 until the Goyas' 23 feature categories (goya-2027@1),
-    // 369 until the Césars' 25 (cesar-2027@1).
-    expect(n).toEqual({ verified: 394, projected: 11, simulated: 397 });
+    // 369 until the Césars' 25 (cesar-2027@1), 394 until the Spirit Awards' 20 (spirit-2027@1).
+    expect(n).toEqual({ verified: 414, projected: 11, simulated: 377 });
   });
 });
 
@@ -805,6 +805,32 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, short(59), e, 'short-fiction')).not.toMatch(/minutes/);
     expect(r(s, short(60), e, 'short-fiction')).toMatch(/under 60 minutes/);
     expect(categoryDeadline(e, cat(e, 'short-fiction'))).toBe(at('Europe/Paris', '2026-07-15', 23, 59) + 59_000);
+  });
+
+  it('Spirit Awards 2027: 70 minutes, under $30 million, a US week, streaming or a selection at a listed festival in 2026; new series with two episodes', () => {
+    const s = startLife('spirit');
+    const e = ed(s, 'spirit-2027');
+    expect(e.rulesId).toBe('spirit-2027@1');
+    s.now = at('America/Los_Angeles', '2026-09-01', 9);
+    const film = (runtime = 95) => work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'us-los-angeles' });
+    const out = film();
+    expect(r(s, out, e, 'feature')).toMatch(/release in the United States between January 1, 2026 and December 31, 2026, or a selection at Hot Docs, Sundance, SXSW, TIFF, Berlinale/);
+    // A selection, not a win, at a listed festival qualifies it; one at Venice doesn't.
+    const venice = film();
+    ed(s, 'venice-2026').entries.push({ id: 'v', projectId: venice.id, categoryId: 'competition', submittedAt: 0, status: 'selected', recipients: [], fee: 0 });
+    expect(r(s, venice, e, 'feature')).toMatch(/It needs/);
+    const sundance = film();
+    ed(s, 'sundance-2026').entries.push({ id: 's', projectId: sundance.id, categoryId: 'dramatic', submittedAt: 0, status: 'selected', recipients: [], fee: 0 });
+    expect(r(s, sundance, e, 'feature')).not.toMatch(/It needs/);
+    const rich = film();
+    release(rich, 'theatrical', '2026-05-01', ['US']);
+    (rich as Project & { finance?: { estimate?: number } }).finance = { ...(rich.finance ?? {}), estimate: 30_000_000 } as Project['finance'];
+    expect(r(s, rich, e, 'feature')).toMatch(/under \$30,000,000/);
+    expect(r(s, film(69), e, 'director')).toMatch(/at least 70/);
+    const show = (eps: number) => { const p = work(s, { format: 'series', runtime: 30, completed: '2026-01-10', base: 'us-los-angeles' }); p.axes.episodeCount = eps; release(p, 'streaming', '2026-03-01', ['US']); return p; };
+    expect(r(s, show(1), e, 'series')).toMatch(/needs at least 2/);
+    expect(r(s, show(2), e, 'series')).not.toMatch(/release|episode/);
+    expect(categoryDeadline(e, cat(e, 'series'))).toBe(at('America/Los_Angeles', '2026-09-15', 23, 59) + 59_000);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

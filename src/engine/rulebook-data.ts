@@ -792,8 +792,45 @@ const CESAR_2027: RuleBook = {
   },
 };
 
+// ---------------- Film Independent Spirit Awards, 2027 ----------------
+
+/**
+ * Read November 9, 2026: the 2027 Spirit Awards Rules & Regulations for film (August 24, 2026) and TV (September 1, 2026),
+ * "Rules for eligibility". Not modeled: the nine festivals that aren't in SLATE (New Directors/New Films, New York,
+ * Telluride, Tribeca); streaming must be fee-based (SLATE: any streaming or digital release, read in the US); "once
+ * nominated, no longer eligible" (SLATE refuses any earlier Spirit entry); the TV ensemble's credit shares. The Robert
+ * Redford award takes films and series and stays on SLATE's rules.
+ */
+const SPIRIT_SOURCES: RuleSource[] = [
+  { id: 'sa27-film', publisher: 'Film Independent', title: '2027 Spirit Awards Rules & Regulations: Film Submissions (August 24, 2026)', url: 'https://s3.us-east-1.amazonaws.com/SA_SubForm_etc/2027_SAsubmissions_RulesRegs_Film_082426.pdf', edition: '2027 Film Independent Spirit Awards', retrieved: '2026-11-09' },
+  { id: 'sa27-tv', publisher: 'Film Independent', title: '2027 Spirit Awards Rules & Regulations: TV Submissions (September 1, 2026)', url: 'https://s3.us-east-1.amazonaws.com/SA_SubForm_etc/2027_SAsubmissions_RulesRegs_TV_090126.pdf', edition: '2027 Film Independent Spirit Awards', retrieved: '2026-11-09' },
+];
+const SPIRIT_FILM: CategoryRules = {
+  runtime: v({ atLeast: 70 }, 'sa27-film', 'At least 70 minutes (Eligibility 1).'),
+  maxBudget: v(30_000_000, 'sa27-film', 'Completed for less than $30 million after tax incentives, post-production included (Eligibility 2).'),
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'sa27-film', 'In 2026 (Eligibility 3).'),
+  release: v({ routes: ['theatrical', 'streaming', 'digital'], countries: ['US'], festivalSelection: ['hot-docs', 'sundance', 'sxsw', 'tiff', 'berlinale'] }, 'sa27-film', 'A week in a US cinema, a fee-based streaming or on-demand release, or programmed at one of nine festivals in 2026 (Eligibility 3); five of them are in SLATE.'),
+  noReentry: v(true, 'sa27-film', 'Once nominated a film can\u2019t enter again (Eligibility 4); SLATE refuses any earlier Spirit entry.'),
+  deadlines: v([{ date: '2026-09-29', time: '23:59', zone: PT, timeAssumed: true }], 'sa27-film', 'Film final deadline September 29. The time of day is not given; SLATE uses the end of the day in Los Angeles.'),
+};
+const SPIRIT_TV: CategoryRules = {
+  qualifying: v({ from: '2025-10-01', to: '2026-09-30' }, 'sa27-tv', 'A new series with all or part of its first season airing October 1, 2025 to September 30, 2026 (Eligibility 1, 2).'),
+  release: v({ routes: ['broadcast', 'streaming', 'digital'], countries: ['US'] }, 'sa27-tv', 'On a US network, cable, broadband or streaming platform (Eligibility 3, 5).'),
+  runtime: v({ atLeast: 18 }, 'sa27-tv', 'Episodes at least 18 minutes (Eligibility 3).'),
+  minEpisodes: v(2, 'sa27-tv', 'At least two episodes available in the window (Eligibility 3).'),
+  origin: v({ only: ['US'] }, 'sa27-tv', 'International series only as US co-productions begun before production (Eligibility 5); SLATE uses the production base.'),
+  deadlines: v([{ date: '2026-09-15', time: '23:59', zone: PT, timeAssumed: true }], 'sa27-tv', 'TV final deadline September 15. The time of day is not given; SLATE uses the end of the day in Los Angeles.'),
+};
+const SPIRIT_2027: RuleBook = {
+  id: 'spirit-2027@1', institutionId: 'spirit', year: 2027, version: 1, checked: '2026-11-09', sources: SPIRIT_SOURCES,
+  categories: {
+    ...Object.fromEntries(['feature', 'first-feature', 'director', 'screenplay', 'first-screenplay', 'cassavetes', 'cinematography', 'editing', 'lead', 'supporting', 'breakthrough', 'documentary', 'international', 'international-first'].map((id) => [id, SPIRIT_FILM])),
+    ...Object.fromEntries(['series', 'nonscripted-series', 'tv-lead', 'tv-supporting', 'tv-breakthrough', 'tv-ensemble'].map((id) => [id, SPIRIT_TV])),
+  },
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027,
 ];
