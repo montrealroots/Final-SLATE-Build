@@ -1161,7 +1161,8 @@ const DGA_2027: RuleBook = {
  * date is fine). Variety: programs and specials, the same dates, nothing theatrical first. Not modeled: "a minimum broadcast
  * format length of approximately one half hour" (one hour for movies), which names a slot rather than a running time; that
  * local-only broadcasts don't count; DGA membership and a Deal Memorandum; one entry per director. The documentary film
- * and first-time feature guidelines aren't on the index; those stay on SLATE's rules.
+ * and first-time feature guidelines weren't on the index; those stayed on SLATE's rules (the first-time feature's were
+ * found later the same day: version 3).
  */
 const DGA79_TV: RuleSource = { id: 'dga79-tv', publisher: 'Directors Guild of America', title: 'DGA Awards Entry Forms: television application rules (79th Annual DGA Awards)', url: 'https://www.dga.org/Awards/Entry-Forms', edition: '79th Annual DGA Awards (2027)', retrieved: '2026-11-09' };
 const dgaTv = (extra: CategoryRules = {}): CategoryRules => ({
@@ -1183,6 +1184,33 @@ const DGA_2027_2: RuleBook = {
     reality: dgaTv({ oneEpisode: v({}, 'dga79-tv', 'A single episode of a series or a special.') }),
     movie: dgaTv({ tvFirst: dgaNoCinemaFirst }),
     variety: dgaTv({ tvFirst: v({ countries: ['US'] }, 'dga79-tv', 'Programs and specials; not shown theatrically before television or streaming.') }),
+  },
+};
+
+/**
+ * Version 3 (November 9, 2026): the Michael Apted Award for First-Time Theatrical Feature Film's application rules, found by
+ * search (the Entry Forms index doesn't link them): released January 1 to December 31, 2026, seven consecutive days in a
+ * paid-admission cinema in Los Angeles or New York (SLATE: a US theatrical release, as for the feature award); more than 40
+ * minutes; nothing shown on free television, pay cable, the internet or DVD in the continental US before the theatrical
+ * release (day and date is fine); no animated films, documentaries or re-releases; entries by 5:00 p.m. PT on Friday,
+ * October 16, 2026. A first-time director: SLATE's debut requirement already refuses a director with an earlier feature.
+ * Not modeled: a prior feature released only outside the US, or straight to DVD, VOD, streaming or television, which the
+ * rules also count against a first-timer; the player's films are all counted. The Documentary Film guidelines' page
+ * returned HTTP 404 and stays on SLATE's rules.
+ */
+const DGA79_FIRST: RuleSource = { id: 'dga79-first', publisher: 'Directors Guild of America', title: 'Michael Apted Award for Outstanding Directorial Achievement in First-Time Theatrical Feature Film: application rules (79th Annual DGA Awards)', url: 'https://www.dga.org/Awards/Entry-Forms/First-Time-Theatrical-Feature-Film/ApplicationRules', edition: '79th Annual DGA Awards (2027)', retrieved: '2026-11-09' };
+const DGA_2027_3: RuleBook = {
+  ...DGA_2027_2, id: 'dga-2027@3', version: 3, sources: [DGA79, DGA79_TV, DGA79_FIRST],
+  categories: {
+    ...DGA_2027_2.categories,
+    'first-feature': {
+      runtime: v({ over: 40 }, 'dga79-first', 'A feature-length film is more than 40 minutes.'),
+      mediums: v(['live-action', 'hybrid'], 'dga79-first', 'Animated films, documentaries and re-releases are not eligible; SLATE accepts live-action and hybrid projects.'),
+      qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'dga79-first', 'Released January 1 to December 31, 2026.'),
+      release: v({ routes: ['theatrical'], countries: ['US'] }, 'dga79-first', 'Seven consecutive days in a paid-admission cinema in Los Angeles or New York; SLATE treats a US theatrical release as that.'),
+      theatricalFirst: v({ countries: ['US'] }, 'dga79-first', 'Not on free television, pay cable, the internet or DVD in the continental US before its theatrical release; day and date is fine.'),
+      deadlines: v([{ date: '2026-10-16', time: '17:00', zone: PT }], 'dga79-first', 'Received by 5:00 p.m. PT on Friday, October 16, 2026.'),
+    },
   },
 };
 
@@ -1424,14 +1452,14 @@ const ACTOR_AWARDS_2027_2: RuleBook = { ...ACTOR_AWARDS_2027, id: 'actor-awards-
  * under 40 minutes completed July 19, 2025 to July 18, 2026, by August 3 (SLATE reads the completion date for both).
  * Not modeled: the Indie Film budget (under AUD 2 million: SLATE keeps its own independent requirement), the qualifying
  * festival and platform lists, AACTA's discretion (iv). The categories shared across film and television (hair and
- * makeup, song, soundtrack, visual effects) and online series stayed on SLATE's rules until versions 2 and 3 below; online
- * series still does.
+ * makeup, song, soundtrack, visual effects) and online series stayed on SLATE's rules until versions 2 to 4 below.
  */
 const AACTA27: RuleSource[] = [
   { id: 'aacta27-film', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Film', url: 'https://www.aacta.org/aacta-awards/entries-2027/film/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
   { id: 'aacta27-tv', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Television', url: 'https://www.aacta.org/aacta-awards/entries-2027/television/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
   { id: 'aacta27-doc', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Documentary', url: 'https://www.aacta.org/aacta-awards/entries-2027/documentary/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
   { id: 'aacta27-short', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Short Film', url: 'https://www.aacta.org/aacta-awards/entries-2027/short-film/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
+  { id: 'aacta27-online', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Online', url: 'https://www.aacta.org/aacta-awards/entries-2027/online/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
   { id: 'aacta-rulebook', publisher: 'Australian Academy of Cinema and Television Arts', title: 'AACTA Awards Rule Book (cover: 2026; linked for 2027 entries)', url: 'https://s3-ap-southeast-2.amazonaws.com/aacta-org-assets/Uploads/2026-AACTA-Awards-Rule-Book2.pdf', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
 ];
 const AACTA_FILM: CategoryRules = {
@@ -1512,7 +1540,7 @@ const AACTA_2027_2: RuleBook = {
  * seconds, from a production eligible in its own category; its candidate is the music supervisor (10.4(b)), in the roster.
  * Hair and Makeup is listed under Film (7.1(r)) and Television (6.1(bb)) only. Not modeled: visual effects wholly made in
  * Australia by the entering Australian company, whose production needn't be Australian (8.2(b), (c)); SLATE keeps the
- * catalog's Australian production. Online Drama or Comedy Series (9.3) gives its window only on the website, not read.
+ * catalog's Australian production. Online Drama or Comedy Series (9.3) gives its window only on the website: version 4.
  */
 const AACTA_2027_3: RuleBook = {
   ...AACTA_2027_2, id: 'aacta-2027@3', version: 3,
@@ -1523,6 +1551,25 @@ const AACTA_2027_3: RuleBook = {
     soundtrack: {
       soundtrack: v({ minSongs: 5, minSeconds: 5 }, 'aacta-rulebook', 'At least five songs not composed as part of the score, each heard clearly for at least five seconds of screen time (10.2(b)).'),
       byFormat: AACTA_BY_FORMAT,
+    },
+  },
+};
+
+/**
+ * Version 4 (November 9, 2026): Best Online Drama or Comedy Series, from the Online entry page: premiered online for public
+ * consumption from October 18, 2025 to October 1, 2026; entries close Monday September 28, 2026 (no time given: SLATE
+ * takes the end of the day in Sydney); at least two episodes (the Rule Book, 9.2). The page names no country for the
+ * premiere. Not modeled: AACTA extending the period, and two candidates being AACTA members (9.4).
+ */
+const AACTA_2027_4: RuleBook = {
+  ...AACTA_2027_3, id: 'aacta-2027@4', version: 4,
+  categories: {
+    ...AACTA_2027_3.categories,
+    'online-series': {
+      minEpisodes: v(2, 'aacta-rulebook', 'Drama, comedy or sketch comedy series of not less than two episodes (9.2).'),
+      qualifying: v({ from: '2025-10-18', to: '2026-10-01' }, 'aacta27-online', 'Premiered online for public consumption between October 18, 2025 and October 1, 2026.'),
+      release: v({ routes: ['streaming', 'digital'], countries: [], outside: [] }, 'aacta27-online', 'Premiered online; the page names no country.'),
+      deadlines: v([{ date: '2026-09-28', time: '23:59', zone: SYD }], 'aacta27-online', 'Entries close Monday September 28, 2026; no time is given.'),
     },
   },
 };
@@ -1573,5 +1620,5 @@ const JAPAN_ACADEMY_2027: RuleBook = {
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, OSCARS_2027_4, OSCARS_2027_5, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, EMMYS_2026_5, EMMYS_2027_5, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, GOLDEN_GLOBES_2027_5, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, CANADIAN_SCREEN_2026_2, CANADIAN_SCREEN_2027_2, GOYA_2027, GOYA_2027_2, GOYA_2027_3, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, WGA_2027_3, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, SPIRIT_2027_3, ACTOR_AWARDS_2027_2, AACTA_2027, AACTA_2027_2, AACTA_2027_3, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, EMMYS_2026_5, EMMYS_2027_5, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, GOLDEN_GLOBES_2027_5, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, CANADIAN_SCREEN_2026_2, CANADIAN_SCREEN_2027_2, GOYA_2027, GOYA_2027_2, GOYA_2027_3, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, DGA_2027_3, WGA_2027, WGA_2027_2, WGA_2027_3, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, SPIRIT_2027_3, ACTOR_AWARDS_2027_2, AACTA_2027, AACTA_2027_2, AACTA_2027_3, AACTA_2027_4, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
 ];

@@ -306,7 +306,7 @@ describe('the organizers\' own song rules', () => {
   it('the AACTA\'s soundtrack: five songs apart from the score, each heard five seconds; to the music supervisor', () => {
     const { s, p, ids, ed } = deliveredSongs('sr-soundtrack');
     const aacta = ed('aacta-2027');
-    expect(aacta.rulesId).toBe('aacta-2027@3');
+    expect(aacta.rulesId).toBe('aacta-2027@4'); // version 3 added the soundtrack's rules; version 4 the online series
     const st = song('aacta', 'soundtrack');
     const check = () => checkEligibility(s, p, aacta, st);
     const why = () => check().reasons.find((r) => r.includes('soundtrack')) ?? '';

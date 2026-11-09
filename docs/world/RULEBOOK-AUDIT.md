@@ -542,7 +542,17 @@ episode of a series (Reality: or a special), originally aired on television or s
 November 13, 2026, to that episode's credited director. Movies for Television: not shown in US cinemas before television or
 streaming (day and date is fine). Variety: programs and specials, nothing theatrical first. Not modeled: the "approximately
 one half hour" (one hour for movies) broadcast format, local-only broadcasts, DGA membership and one entry per director. The
-index lists no documentary film or first-time feature guidelines; those stay on SLATE's rules.
+index lists no documentary film or first-time feature guidelines; those stayed on SLATE's rules.
+
+**Version 3 (`dga-2027@3`, read November 9, 2026):** the [Michael Apted Award's application
+rules](https://www.dga.org/Awards/Entry-Forms/First-Time-Theatrical-Feature-Film/ApplicationRules), found by search: a
+first-time director's feature of more than 40 minutes, released January 1 to December 31, 2026 for seven consecutive days in
+a paid-admission cinema in Los Angeles or New York (SLATE: a US theatrical release); nothing on free television, pay cable,
+the internet or DVD in the continental US before the theatrical release (day and date is fine); no animated films,
+documentaries or re-releases; entries by 5:00 p.m. PT on Friday, October 16, 2026. Not modeled: a prior feature released only
+abroad or straight to DVD, VOD, streaming or television, which the rules also count against a first-timer. The Documentary
+Film page (`/Documentary-Film/ApplicationRules`, the address search engines give) returned HTTP 404 and stays on SLATE's
+rules.
 
 ## Writers Guild Awards, 2027
 
@@ -639,7 +649,10 @@ five songs other than the score, each heard clearly for five seconds (10.2(b)), 
 the roster gave it to the composer too until then); Hair and Makeup, listed under Film and Television only. Not modeled:
 visual effects wholly made in Australia by the entering Australian company, for a production that needn't be Australian
 (8.2(b), (c): SLATE keeps the catalog's Australian production); Online Drama or Comedy Series, whose window is only on the
-AACTA website (9.3), not read.
+AACTA website (9.3). **Version 4 (`aacta-2027@4`):** the [Online entry page](https://www.aacta.org/aacta-awards/entries-2027/online/)
+gives it: premiered online from October 18, 2025 to October 1, 2026, entries closing Monday September 28, 2026 (no time
+given; SLATE takes the end of the day in Sydney); two episodes or more (9.2). Not modeled: AACTA extending the period, two
+candidates being AACTA members.
 
 ## Japan Academy Film Prize, 50th (2027)
 

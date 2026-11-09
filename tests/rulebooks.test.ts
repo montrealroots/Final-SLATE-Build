@@ -425,7 +425,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('535 categories follow verified rules for at least one edition, 11 only projected ones; the other 260 are simulated', () => {
+  it('537 categories follow verified rules for at least one edition, 11 only projected ones; the other 258 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -455,8 +455,9 @@ describe('audit counts', () => {
     // (dga-2027@2), 472 until the AACTA's 31 film, television, documentary and short categories (aacta-2027@1), 503 until the
     // Japan Academy's 17 (japan-academy-2027@1), 520 until the PGA's nine television awards (pga-2027@3), 529 until the
     // WGA's Paul Selvin, the Spirit Awards' Redford and the AACTA's song award took rules by format (byFormat), 532 until the
-    // AACTA's soundtrack, hair and makeup, and visual effects or animation did (aacta-2027@3).
-    expect(n).toEqual({ verified: 535, projected: 11, simulated: 260 });
+    // AACTA's soundtrack, hair and makeup, and visual effects or animation did (aacta-2027@3), 535 until the DGA's
+    // first-time feature (dga-2027@3), 536 until the AACTA's online series (aacta-2027@4).
+    expect(n).toEqual({ verified: 537, projected: 11, simulated: 258 });
   });
 });
 
@@ -855,7 +856,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('AACTA 2027: films and television released in Australia in 2026; documentaries and shorts by completion date; each by its own deadline', () => {
     const s = startLife('aacta');
     const e = ed(s, 'aacta-2027');
-    expect(e.rulesId).toBe('aacta-2027@3');
+    expect(e.rulesId).toBe('aacta-2027@4');
     s.now = at('Australia/Sydney', '2026-07-01', 9);
     const film = (runtime = 100) => work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'au-sydney' });
     const streamed = film();
@@ -876,6 +877,12 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, work(s, { format: 'short', runtime: 40, completed: '2026-01-10', base: 'au-sydney' }), e, 'short')).toMatch(/40/);
     expect(categoryDeadline(e, cat(e, 'short'))).toBe(at('Australia/Sydney', '2026-08-03', 23, 59) + 59_000);
     expect(categoryRuleStatus(rulebook('aacta-2027@1'), 'song')).toBe('simulated'); // shared with television: SLATE's
+    // Online series (version 4): premiered online from October 18, 2025 to October 1, 2026, in two episodes or more.
+    const online = (date: string, episodes = 6) => { const p = work(s, { format: 'web-series', runtime: 60, completed: '2025-06-01', base: 'au-sydney' }); p.axes.episodeCount = episodes; release(p, 'digital', date, ['AU']); return p; };
+    expect(r(s, online('2025-10-18'), e, 'online-series')).not.toMatch(/release|between|episodes/);
+    expect(r(s, online('2025-10-17'), e, 'online-series')).toMatch(/between October 18, 2025 and October 1, 2026/);
+    expect(r(s, online('2026-03-01', 1), e, 'online-series')).toMatch(/It has 1 episode. This category needs/);
+    expect(categoryDeadline(e, cat(e, 'online-series'))).toBe(at('Australia/Sydney', '2026-09-28', 23, 59) + 59_000);
   });
 
   it('International Emmys: the FAQ gives the January 31 noon deadline only, so eligibility stays SLATE\'s', () => {
@@ -1054,13 +1061,23 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('DGA 2027 (79th): a feature over 40 minutes with a US run in 2026, entered by November 13 at 5 p.m. PT', () => {
     const s = startLife('dga');
     const e = ed(s, 'dga-2027');
-    expect(e.rulesId).toBe('dga-2027@2'); // version 2 adds the television categories; the feature keeps version 1's rules
+    expect(e.rulesId).toBe('dga-2027@3'); // versions 2 and 3 add the television categories and the first-time feature; the feature keeps version 1's rules
     s.now = at('America/Los_Angeles', '2026-10-01', 9);
     const p = work(s, { format: 'feature', runtime: 41, completed: '2026-01-10', base: 'us-los-angeles' });
     expect(r(s, p, e, 'feature')).toMatch(/theatrical release in the United States between January 1, 2026 and December 31, 2026/);
     release(p, 'theatrical', '2026-06-01', ['US']);
     expect(r(s, p, e, 'feature')).not.toMatch(/release|minutes/);
     expect(categoryDeadline(e, cat(e, 'feature'))).toBe(at('America/Los_Angeles', '2026-11-13', 17));
+    // The Michael Apted award (version 3): a first feature, not animated, in cinemas before anything else, by October 16.
+    expect(r(s, p, e, 'first-feature')).not.toMatch(/release|minutes|animat|cinemas/);
+    p.axes.medium = 'animation';
+    expect(r(s, p, e, 'first-feature')).toMatch(/This category is for live action or hybrid work./);
+    p.axes.medium = 'live-action';
+    release(p, 'streaming', '2026-05-01', ['US']);
+    expect(r(s, p, e, 'first-feature')).toMatch(/released on May 1, 2026 outside cinemas in the United States, before any theatrical run there/);
+    expect(r(s, p, e, 'feature')).not.toMatch(/before any theatrical run/); // the feature award has no such rule
+    expect(categoryDeadline(e, cat(e, 'first-feature'))).toBe(at('America/Los_Angeles', '2026-10-16', 17));
+    expect(categoryRuleStatus(rulebook('dga-2027@3'), 'first-feature')).toBe('verified');
   });
 
   it('Writers Guild Awards 2027: screenplays with a US run in 2026 and no television first; series in 2026; talk and documentary November to October', () => {
