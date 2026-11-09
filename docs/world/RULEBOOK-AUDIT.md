@@ -311,6 +311,14 @@ take them, with the features' June 4 deadline. The Settimana Internazionale dell
 Autori (5.2) are selected "in accordance with" their own associations' regulations, which these don't give; they stay on
 SLATE's rules until those are read.
 
+**Version 3 (`venice-2026@3`, `venice-2027@3` projected, read November 9, 2026):** the Giornate degli Autori's own
+[Regulation and Entry Form](https://www.giornatedegliautori.com/?p=381) for its 23rd edition (2026), Article 2: features
+and documentaries longer than 60 minutes; produced after September 30, 2025; European films must be world premieres; not
+at another international festival or major film event; not released in cinemas, on home video or online (a new SLATE rule,
+`unreleased`); not refused at the 2025 selection (SLATE: no earlier Venice entry); entries by June 15, 2026. The
+Settimana Internazionale della Critica's site (sicvenezia.it) returned HTTP 503 on November 9, 2026; SIC stays on SLATE's
+rules.
+
 ## San Sebastián, 74th Edition (2026, Verified) And 75th (2027, Projected)
 
 Source: "Rules and Regulations - 74th San Sebastian International Film Festival" (sansebastianfestival.com, read November 6,

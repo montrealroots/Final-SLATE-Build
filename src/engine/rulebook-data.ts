@@ -365,8 +365,31 @@ function venice2(year: number, mk: typeof v): Record<string, CategoryRules> {
     spotlight: { ...common, runtime: mk({ over: 60 }, 've83-reg', `Longer than 60 minutes (Article 3.4).${p}`) },
   };
 }
+/**
+ * Version 3 (November 9, 2026): the Giornate degli Autori's own regulations for its 23rd edition (2026), Article 2: longer
+ * than 60 minutes, produced after September 30, 2025, European films world premieres, not at another international
+ * festival, not released in cinemas, on home video or online, entries by June 15. SLATE counts any earlier festival
+ * premiere as one, which also covers the European world-premiere rule; a film refused at the 2025 selection is ineligible,
+ * for which SLATE refuses any earlier Venice entry. The Settimana Internazionale della Critica's site didn't answer (HTTP
+ * 503); it stays on SLATE's rules.
+ */
+const GDA26: RuleSource = { id: 'gda26-reg', publisher: 'Giornate degli Autori (ANAC and 100autori)', title: 'Regulation and Entry Form - 23rd Giornate degli Autori', url: 'https://www.giornatedegliautori.com/?p=381', edition: '23rd Giornate degli Autori (2026)', retrieved: '2026-11-09' };
+function giornate(year: number, mk: typeof v): CategoryRules {
+  const p = year === 2026 ? '' : ' From the 2026 regulations; the 2027 regulations are not published yet.';
+  return {
+    runtime: mk({ over: 60 }, 'gda26-reg', `Features and documentaries longer than 60 minutes (Article 2).${p}`),
+    completedFrom: mk(`${year - 1}-10-01`, 'gda26-reg', `Produced after September 30, ${year - 1} (Article 2).${p}`),
+    noOtherFestival: mk(true, 'gda26-reg', `Not at another international festival or major film event (Article 2); SLATE counts any earlier festival premiere.${p}`),
+    unreleased: mk(true, 'gda26-reg', `Not released in cinemas, on home video or online (Article 2).${p}`),
+    noReentry: mk(true, 'gda26-reg', `Not refused at the previous edition's selection (Article 2); SLATE refuses any earlier Venice entry.${p}`),
+    deadlines: mk([{ date: `${year}-06-15`, time: '23:59', zone: ROME, timeAssumed: true }], 'gda26-reg', `Entries by June 15 (Article 2). The time of day is not given; SLATE uses the end of the day in Venice.${p}`),
+  };
+}
 const VENICE_2026_2: RuleBook = { ...VENICE_2026, id: 'venice-2026@2', version: 2, checked: '2026-11-09', categories: venice2(2026, v) };
 const VENICE_2027_2: RuleBook = { ...VENICE_2027, id: 'venice-2027@2', version: 2, checked: '2026-11-09', categories: venice2(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) };
+
+const VENICE_2026_3: RuleBook = { ...VENICE_2026_2, id: 'venice-2026@3', version: 3, sources: [...VENICE_SOURCES, GDA26], categories: { ...VENICE_2026_2.categories, giornate: giornate(2026, v) } };
+const VENICE_2027_3: RuleBook = { ...VENICE_2027_2, id: 'venice-2027@3', version: 3, sources: [...VENICE_SOURCES, GDA26], categories: { ...VENICE_2027_2.categories, giornate: giornate(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) } };
 
 // ---------------- San Sebastián: 74th (2026, verified) and 75th (2027, projected) ----------------
 
@@ -627,5 +650,5 @@ const SITGES_2027: RuleBook = { id: 'sitges-2027@1', institutionId: 'sitges', ye
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3,
 ];

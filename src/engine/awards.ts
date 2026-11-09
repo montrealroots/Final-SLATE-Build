@@ -518,6 +518,7 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     if (rules?.noOtherFestival && p.premiere?.editionId && p.premiere.editionId !== ed.id && p.premiere.date < startKey) reasons.push(`It has already screened at the ${state.editions.find((e) => e.id === p.premiere?.editionId)?.label ?? 'another festival'}.`);
     if (rules?.noOnline && shown.some((x) => x.route === 'streaming' || x.route === 'digital')) reasons.push('It has been released online, and this section only takes work not yet shown online.');
     if (rules?.noTvOrOnline && shown.some((x) => x.route === 'streaming' || x.route === 'digital' || x.route === 'broadcast')) reasons.push('It has been on television or online, and this section only takes work not yet shown there.');
+    if (rules?.unreleased && shown.some((x) => x.route !== 'festival-premiere')) reasons.push('It has already been released, and this section only takes work not yet released in cinemas, on television, online or on home video.');
     if (rules?.europeanPremiere && shown.some((x) => x.countries.some((c) => c !== origin && catalogRules().EUROPE.includes(c)))) reasons.push('This section requires at least a European premiere, and your project has already been shown in Europe outside its home country.');
     const nsi = rules?.notShownIn?.value;
     if (nsi) {

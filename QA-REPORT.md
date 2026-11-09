@@ -20,6 +20,7 @@ Tested revision `db911e8` (the working branch with `main` at `507096c` merged in
 | `npm run balance` | 0 | Passed. |
 | `npx playwright test e2e/awards.spec.ts` (desktop, `iphone-15-plus`) | 0 | 14 passed in 2.6 minutes, including the new International Feature journey and the shorts journey with an unlisted prize. Screenshot inspected: `awards-international-iphone-15-plus.png` shows the Golden Lion winner accepted without the committee, La Digue chosen by France's committee, Les Dunes not selected ("a country submits one film"). |
 | `npx playwright test e2e/journeys.spec.ts -g "2D animation|festival under official rules"`, `e2e/live-action.spec.ts` (desktop) | 0 | 3 passed: the Annie, Sundance and live-action festival entries under the new rulebook versions. |
+| CI on `main` after #49 (`43af105`, run 119) | 0 | Every step, both browser-journey steps included. The WebKit title loss seen after #48 didn't recur (still open below: its cause isn't known). |
 | Mutations (`tests/qualifying-routes.test.ts`) | n/a | Each of six was caught: any entry status counts as a win; no window; no one-film-per-country; no festival exemption from theatrical-first; any award at a listed festival; no national-first ordering at the deadline (killed after a weaker mutant that only reversed the order survived). |
 
 By evidence:
