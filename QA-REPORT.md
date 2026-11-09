@@ -8,7 +8,27 @@
 
 ## Commands And Results
 
-### Current: The Limits Of #55 And More Rule Research (November 9, 2026)
+### Current: The Owner's Recovered Awards Sources (November 9, 2026, after #55)
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` at `9a93aba` | 1, then 0 | The coverage ledger hadn't been regenerated for the new journeys (2 ledger tests); regenerated in `f7c8073`, then 74 files, 580 tests passed. Startup JavaScript 683 kB, 219 kB gzipped (budgets 700 and 220 kB). |
+| `npx vitest run tests/recovered-rules.test.ts` | 0 | 15 tests: every organizer's boundaries (the day before, the day and the day after), local deadlines, the EFA's two submission periods, hanging episodes and an equal split entered once, a first airing in the US, exclusions, one entry per director, European recipients and a craft group at half, FESPACO's conflict and AMAA's ambiguity left unapplied, Blue Dragon and Locarno unavailable. |
+| Mutants of the new logic (12) | | Each fails a test; a control mutant on an untested data detail (Kids categories' running time) survives, as expected. |
+| `npx playwright test e2e/awards.spec.ts -g "Busan 2026\|European Film Awards:\|International Emmys: hanging" --project=desktop --project=iphone-15-plus` | 1, then 0 | 5 of 6 passed; Busan on WebKit failed with "Importing a module script failed" at the moment `npm run check` (a build) was started beside the dev server; run again alone: passed. The earlier desktop runs failed on test-side mistakes (a start date after the shorts' deadline; two entries with the same category name), fixed. |
+
+Implemented and tested (engine and browser): the International Emmys' 2026 rules and the 2027 projection; the European Film
+Awards' 39th; BAFTA 2027; TIFF 2026; SXSW 2027 features; Busan 2026 with its dates; the DGA documentary; FESPACO's format,
+age and release rules; AMAA's call dates. UI: each row reads the chosen project's own deadline; "Rules Not Read" only
+where the game's rules apply; rule notes shown in plain words; the eligibility period and dates shown are the rules'.
+
+Recorded and not applied: FESPACO's dates and deadline (source conflict); AMAA's release wording (ambiguous) and edition;
+Blue Dragon and Locarno (unavailable). Read through search excerpts or the owner's pass, not directly here: BAFTA's pages,
+SXSW's feature policy, the DGA documentary rules (a public preview subdomain), AMAA's FilmFreeway listing.
+Modeled, not sourced: episode air dates (a broadcast weekly, streaming all at once); "major festival" as any festival in
+the calendar; a European passport read from hired people's nationalities; DGA Agreement coverage assumed.
+
+### Previous: The Limits Of #55 And More Rule Research (November 9, 2026)
 
 | Command | Exit | Result |
 | --- | --- | --- |
