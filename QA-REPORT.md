@@ -399,7 +399,15 @@ explicit `test.skip(project…)`; no test skips itself on an outcome. The list w
 
 ## Open
 
-- No code fault is open from this pass. Physical devices, a person's screen-reader pass and human playtesting remain
+- **Unexplained, open (November 9, 2026): a working title lost on WebKit.** CI on `main` after #48 (`507096c`, run 117):
+  the Emmys journey on `iphone-15-plus` (dev server) filled the New Script title right after a new game opened; the fill
+  completed, yet the field stayed empty and Create Project refused it. From its trace: the same input element (`_r_6_`)
+  before and after the fill, so the form wasn't remounted; the field focused and empty in the frame after the fill; the
+  later fields (format, episodes, minutes) kept their values. The same journey passed in #48's CI on the same code and
+  8 of 8 times locally on WebKit, and 27 of 27 times with the Projects chunk delayed 0 to 800 ms and typing straight
+  after the screen appeared. No cause found yet; it isn't the earlier focus fault (focus now moves in the commit that
+  shows the loading placeholder). Next: a WebKit run with React's input handling logged, under CPU load.
+- No other code fault is open from this pass. Physical devices, a person's screen-reader pass and human playtesting remain
   outside what was tested.
 - The micro-budget balance question recorded at #36 was worked through after it (see Current and `BALANCE-REPORT.md`).
   The naming question it left was decided on November 8, 2026: the names stay ("micro-budget" is the industry's word
