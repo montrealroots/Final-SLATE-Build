@@ -14,7 +14,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Institution | Categories | Roster read / unverified / blocked | Eligibility official / projected / game | Recipients by rule | Dates announced | Deadlines from rules | Unit | Browser | Not playable |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Academy Awards (`oscars`) | 28 | 28 / 0 / 0 | 25 / 0 / 3 | 1 | 28 | 25 | 15 | 13 | 5 |
-| Primetime Emmy Awards (`emmys`) | 115 | 115 / 0 / 0 | 112 / 0 / 3 | 17 | 0 | 112 | 23 | 10 | 10 |
+| Primetime Emmy Awards (`emmys`) | 115 | 115 / 0 / 0 | 112 / 0 / 3 | 17 | 0 | 112 | 24 | 10 | 10 |
 | Sundance Film Festival (`sundance`) | 16 | 6 / 10 / 0 | 6 / 0 / 10 | 0 | 16 | 6 | 6 | 2 | 1 |
 | Berlin International Film Festival (`berlinale`) | 18 | 13 / 5 / 0 | 0 / 6 / 12 | 0 | 18 | 0 | 11 | 5 | 3 |
 | Cannes Film Festival (`cannes`) | 17 | 15 / 2 / 0 | 0 / 5 / 12 | 0 | 17 | 5 | 9 | 0 | 1 |
@@ -36,21 +36,21 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Golden Globe Awards (`golden-globes`) | 28 | 28 / 0 / 0 | 26 / 0 / 2 | 7 | 28 | 15 | 13 | 0 | 2 |
 | International Emmy Awards (`international-emmys`) | 15 | 15 / 0 / 0 | 0 / 0 / 15 | 0 | 15 | 13 | 8 | 0 | 5 |
 | Annie Awards (`annie`) | 32 | 30 / 2 / 0 | 29 / 0 / 3 | 0 | 32 | 29 | 11 | 0 | 6 |
-| Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 20 / 0 / 1 | 0 | 21 | 20 | 7 | 0 | 4 |
+| Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 21 / 0 / 0 | 0 | 21 | 20 | 8 | 0 | 4 |
 | Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 10 / 0 / 2 | 0 | 12 | 10 | 6 | 0 | 1 |
-| Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 8 / 0 / 2 | 0 | 10 | 8 | 6 | 0 | 3 |
-| Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 17 / 0 / 1 | 0 | 0 | 17 | 9 | 0 | 11 |
+| Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 8 / 0 / 2 | 0 | 10 | 8 | 7 | 0 | 3 |
+| Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 18 / 0 / 0 | 0 | 0 | 18 | 10 | 0 | 11 |
 | Producers Guild Awards (`pga`) | 15 | 14 / 1 / 0 | 12 / 0 / 3 | 0 | 15 | 12 | 11 | 0 | 4 |
 | Actor Awards (`actor-awards`) | 13 | 13 / 0 / 0 | 13 / 0 / 0 | 0 | 13 | 13 | 3 | 0 | 3 |
 | César Awards (`cesar`) | 27 | 27 / 0 / 0 | 25 / 0 / 2 | 0 | 27 | 3 | 10 | 0 | 0 |
 | Goya Awards (`goya`) | 30 | 30 / 0 / 0 | 28 / 0 / 2 | 0 | 30 | 28 | 13 | 0 | 0 |
 | Canadian Screen Awards (`canadian-screen`) | 119 | 114 / 5 / 0 | 115 / 0 / 4 | 0 | 0 | 115 | 8 | 0 | 40 |
-| AACTA Awards (`aacta`) | 36 | 35 / 1 / 0 | 31 / 0 / 5 | 0 | 0 | 31 | 8 | 0 | 6 |
+| AACTA Awards (`aacta`) | 36 | 35 / 1 / 0 | 32 / 0 / 4 | 0 | 0 | 31 | 8 | 0 | 6 |
 | Africa Movie Academy Awards (`amaa`) | 4 | 0 / 0 / 4 | 0 / 0 / 4 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 0 | 0 | 6 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 4 | 0 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 529 / 11 / 266 | 28 | 338 | 502 | 238 | 36 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 532 / 11 / 263 | 28 | 338 | 503 | 242 | 36 | 123 |
 
 ## Research queue
 
@@ -66,10 +66,8 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 8. `bafta-tv` (5): `drama`, `limited`, `factual`, `leading-actor`, `leading-actress`
 9. `international-emmys` (13): `arts`, `actress`, `actor`, `comedy`, `documentary`, `drama`, `kids-animation`, `kids-factual`, `kids-live-action`, `non-scripted`, `short-form`, `sports-documentary`, `tv-movie`
 10. `annie` (1): `tv`
-11. `spirit` (1): `redford`
-12. `dga` (2): `first-feature`, `documentary`
-13. `wga` (1): `selvin`
-14. `aacta` (5): `hair-makeup`, `song`, `soundtrack`, `online-series`, `vfx-animation`
-15. `amaa` (4): `film`, `director`, `documentary`, `short`
-16. `blue-dragon` (3): `film`, `director`, `screenplay`
-17. `european-film-awards` (16): `film`, `director`, `animated`, `documentary`, `short`, `coproduction`, `actor`, `screenwriter`, `casting`, `cinematographer`, `composer`, `costume`, `editor`, `makeup`, `production-designer`, `sound`
+11. `dga` (2): `first-feature`, `documentary`
+12. `aacta` (4): `hair-makeup`, `soundtrack`, `online-series`, `vfx-animation`
+13. `amaa` (4): `film`, `director`, `documentary`, `short`
+14. `blue-dragon` (3): `film`, `director`, `screenplay`
+15. `european-film-awards` (16): `film`, `director`, `animated`, `documentary`, `short`, `coproduction`, `actor`, `screenwriter`, `casting`, `cinematographer`, `composer`, `costume`, `editor`, `makeup`, `production-designer`, `sound`

@@ -131,7 +131,7 @@ describe('Oscar shorts: only a listed award, won inside the window', () => {
     // dialogue share; 4 Original Song's own rules), and the unlisted prize no longer qualifies.
     osc.entries = [];
     adoptPublishedRules(s);
-    expect(osc.rulesId).toBe('oscars-2027@4');
+    expect(osc.rulesId).toBe('oscars-2027@5');
     expect(checkEligibility(s, p, osc, cat(osc, 'live-short')).eligible).toBe(false);
   });
 });

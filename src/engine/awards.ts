@@ -15,7 +15,7 @@ import { travelHours } from './state';
 import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { addLog, onNewGame, registerCommitmentSource, registerHandler, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localParts, localToInstant, parseYmd, weekdayOfKey, ymd } from './time';
-import type { Credit, Edition, Format, GameState, Medium, Project, RivalFilm, Screening } from './types';
+import type { Credit, Edition, EditionEntry, Format, GameState, Medium, Project, RivalFilm, Screening } from './types';
 import { currentRulebook, registerRulebooks, rulebook, type CategoryRules, type DeadlineRule, type QualifyingAward, type QualifyingList, type RuleBook, type RuntimeRule } from './rulebooks';
 
 export type Recipient = 'project' | 'director' | 'writer' | 'lead' | 'supporting' | 'producer' | 'voice' | 'ensemble' | 'guest' | 'performer' | 'host' | 'narrator' | 'craft' | 'song' | 'national' | 'career';
@@ -84,6 +84,13 @@ export interface Institution {
   ordinalBase?: number;
 }
 
+
+/**
+ * What an entry competes as: its work, or, for a song award, its work and song, so several songs of one work can each be
+ * selected, nominated or win (November 9, 2026; results were kept per work). Entries from before have no song.
+ */
+export const entryKey = (e: Pick<EditionEntry, 'projectId' | 'songId'>): string => (e.songId ? `${e.projectId}~${e.songId}` : e.projectId);
+export const keyProject = (k: string): string => k.split('~')[0];
 
 /** The categories an edition actually holds. Lookups by ID use the full list, so older saves keep their entries. */
 export function categoriesFor(inst: Institution, year: number): Category[] {
@@ -292,8 +299,11 @@ export function applyRulebook(ed: Pick<Edition, 'institutionId' | 'year' | 'dead
 }
 
 /** The rules an edition's category is judged by, if the organizer's were read; otherwise SLATE's simulated rules. */
-export function categoryRules(ed: Edition, categoryId: string): CategoryRules | undefined {
-  return rulebook(ed.rulesId)?.categories[categoryId];
+export function categoryRules(ed: Edition, categoryId: string, p?: Project): CategoryRules | undefined {
+  const rules = rulebook(ed.rulesId)?.categories[categoryId];
+  // A format's own rules, for the work entered, over the category's (byFormat).
+  const own = p && rules?.byFormat?.find((x) => x.formats.includes(p.axes.format));
+  return own ? { ...rules, ...own.rules } : rules;
 }
 
 function completedKey(p: Project): string | null {
@@ -302,7 +312,7 @@ function completedKey(p: Project): string | null {
 
 /** When entries for one category close: its own rule deadline (which can depend on when the work was completed), else the edition's. */
 export function categoryDeadline(ed: Edition, cat: Category, p?: Project): number {
-  const list = categoryRules(ed, cat.id)?.deadlines?.value;
+  const list = categoryRules(ed, cat.id, p)?.deadlines?.value;
   if (!list?.length) return ed.defaultDeadline ?? ed.deadline;
   const done = p ? completedKey(p) : null;
   const applies = list.filter((d) => !d.formats || (p ? d.formats.includes(p.axes.format) : false));
@@ -391,7 +401,7 @@ function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: Cate
 function festivalWin(state: GameState, p: Project, awards: string[], win: { from: string; to: string }): boolean {
   return state.editions.some((e) => {
     const end = dateKey(e.end, getPlace(institution(e.institutionId).placeId).zone);
-    return end >= win.from && end <= win.to && Object.entries(e.results).some(([catId, r]) => r.revealed && (r.winner === p.id || !!r.winners?.includes(p.id)) && awards.includes(`${e.institutionId}:${catId}`));
+    return end >= win.from && end <= win.to && Object.entries(e.results).some(([catId, r]) => r.revealed && ((r.winner !== undefined && keyProject(r.winner) === p.id) || !!r.winners?.some((w) => keyProject(w) === p.id)) && awards.includes(`${e.institutionId}:${catId}`));
   });
 }
 
@@ -461,7 +471,7 @@ function showingsBefore(p: Project, before: string, exceptEdition?: string): { d
 
 export function checkEligibility(state: GameState, p: Project, ed: Edition, cat: Category, recipientIds?: string[], versionId?: string, episode?: number, songId?: string): Eligibility {
   const inst = institution(ed.institutionId);
-  const rules = categoryRules(ed, cat.id);
+  const rules = categoryRules(ed, cat.id, p);
   const reasons: string[] = [];
   let provisional = false;
   let provisionalNote: string | undefined;
@@ -595,7 +605,7 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   if (!recipients.length && single && categoryRecipients(state, p, cat, recipientIds).length) {
     reasons.push(`Nobody credited for this category worked on episode ${episode ?? entryEpisodes(state, p, cat, rules)[0] ?? 1}.`);
   } else if (!recipients.length && cat.recipient === 'song') {
-    const why = catalogRules().songProblems(p, songId, versionId);
+    const why = catalogRules().songProblems(p, songId, versionId, rules?.song?.value);
     reasons.push(...(why.length ? why : ['No credited writer for this song.']));
   } else if (!recipients.length) {
     // Credited, but ruled out by the category's own rules: every rule that rules out the first one credited.
@@ -674,7 +684,7 @@ function creditedRecipients(state: GameState, p: Project, cat: Category, chosen?
   const chars = p.drafts.find((d) => d.number === p.approvedDraft)?.characters ?? [];
   // Leading or supporting as the producer placed the part, else by its size; story functions never decide it.
   const placed = (name?: string) => { const ch = chars.find((x) => x.name === name); return ch ? castPlacement(ch) : null; };
-  const added = catalogRules().newRecipients(state, p, cat, placed, { ...ctx, max: rules?.song?.value.maxWriters });
+  const added = catalogRules().newRecipients(state, p, cat, placed, { ...ctx, song: rules?.song?.value });
   if (added) return chosen?.length ? added.filter((c) => chosen.includes(c.id)) : added;
   if (cat.with?.length) {
     // Several recipient groups (producers and the director): each credited person once.

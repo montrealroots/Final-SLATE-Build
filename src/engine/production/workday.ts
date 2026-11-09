@@ -210,7 +210,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
         }
         spend(state, p, `Recording Studio (${date})`, 'post', VOICE_SESSION_STUDIO, `studio:${task.id}:${date}`);
       }
-      if (task.id.startsWith('song:')) task.workers = [...new Set([...(task.workers ?? []), 'player'])];
+      if (task.id.startsWith('song:')) { task.workers = [...new Set([...(task.workers ?? []), 'player'])]; (task.workerDays ??= {}).player = (task.workerDays.player ?? 0) + 1; }
       task.done += 1;
       task.status = 'active';
       task.workedDays += 1;
@@ -259,7 +259,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
         addLogOnce(state, p, `payroll:${date}`, `${p.title} can't cover today's wages. Work has paused until you add funding or cut scope.`);
         continue;
       }
-      if (task.id.startsWith('song:')) task.workers = [...new Set([...(task.workers ?? []), ...assigned])];
+      if (task.id.startsWith('song:')) { task.workers = [...new Set([...(task.workers ?? []), ...assigned])]; for (const w of assigned) (task.workerDays ??= {})[w] = (task.workerDays[w] ?? 0) + 1; }
       task.done += assigned.length;
       task.status = 'active';
       task.workedDays += 1;

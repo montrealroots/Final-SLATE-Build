@@ -803,7 +803,7 @@ function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: 
   if (!p) return null;
   // Entered for one episode: the choice, else the first episode anyone credited for the category worked on. A performer
   // category measuring screen time per episode is entered for one too: the choice, else the part's best.
-  const rules = categoryRules(ed, cat.id);
+  const rules = categoryRules(ed, cat.id, p);
   const screen = rules?.screenShare?.value;
   const candidates = screen ? categoryRecipients(g, p, cat, undefined, undefined) : [];
   const episodes = isEpisodic(p.axes.format)
@@ -813,7 +813,8 @@ function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: 
   const ep = episodes.length ? Number(episode) || (rules?.oneEpisode ? episodes[0] : undefined) : undefined;
   // A song category: the song entered, by default the first written for the work.
   const songs = cat.recipient === 'song' ? songsOf(p) : [];
-  const song = songId || originalSongs(p, versionId || undefined)[0]?.id;
+  const entered = new Set(ed.entries.filter((e) => e.projectId === p.id && e.categoryId === cat.id && e.status !== 'withdrawn').map((e) => e.songId));
+  const song = songId || originalSongs(p, versionId || undefined, rules?.song?.value).find((x) => !entered.has(x.id))?.id;
   const el = checkEligibility(g, p, ed, cat, recipients.length ? recipients : undefined, versionId || undefined, ep, song);
   const pool = categoryRecipients(g, p, cat, undefined, rules, ep, { versionId: versionId || undefined });
   const personal = ['lead', 'supporting', 'voice'].includes(cat.recipient);
@@ -829,8 +830,8 @@ function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: 
       <p><strong>{cat.name}</strong>, {ed.label}</p>
       <SelectField label="Project" value={projectId} options={delivered.map((x) => ({ value: x.id, label: x.title }))} onChange={(v) => { setProjectId(v); setRecipients([]); setVersionId(''); setEpisode(''); setSongId(''); }} />
       {episodes.length > 0 && <SelectField label="Episode To Enter" value={ep === undefined ? '' : String(ep)} hint={rules?.oneEpisode ? 'This category is entered for one episode, and goes to the people credited on it.' : 'Screen time is measured against the episode entered. Unchosen, it is the performer\'s best.'} options={[...(rules?.oneEpisode ? [] : [{ value: '', label: 'Their Best Episode' }]), ...episodes.map((n) => ({ value: String(n), label: p.episodes[n - 1]?.title ?? `Episode ${n}` }))]} onChange={(v) => { setEpisode(v); setRecipients([]); }} />}
-      {songs.length > 0 && <SelectField label="Song To Enter" value={song ?? ''} hint="An original song award takes one song written for the work, and goes to its writers." options={[...(song ? [] : [{ value: '', label: 'Choose A Song' }]), ...songs.map((x) => ({ value: x.id, label: `"${x.title}"` }))]} onChange={(v) => { setSongId(v); setRecipients([]); }} />}
-      {cat.recipient === 'song' && song && songProblems(p, song, versionId || undefined).length === 0 && <p className="dim">{assessedWords(p, cat, { songId: song })}</p>}
+      {songs.length > 0 && <SelectField label="Song To Enter" value={song ?? ''} hint="An original song award takes one song written for the work, and goes to its writers." options={[...(song ? [] : [{ value: '', label: 'Choose A Song' }]), ...songs.map((x) => ({ value: x.id, label: `"${x.title}"${entered.has(x.id) ? ' (Entered)' : ''}` }))]} onChange={(v) => { setSongId(v); setRecipients([]); }} />}
+      {cat.recipient === 'song' && song && songProblems(p, song, versionId || undefined, rules?.song?.value).length === 0 && <p className="dim">{assessedWords(p, cat, { songId: song })}</p>}
       {(p.versions ?? []).length > 0 && <SelectField label="Version To Enter" value={versionId} options={[{ value: '', label: `The Main Cut (${p.delivered!.runtimeMin} Minutes)` }, ...p.versions!.map((v) => ({ value: v.id, label: `${v.label} (${versionRuntime(p, v)} Minutes)` }))]} onChange={setVersionId} />}
       {personal && pool.length > 0 && (
         <fieldset style={{ border: 0, padding: 0 }}>

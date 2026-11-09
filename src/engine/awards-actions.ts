@@ -18,9 +18,11 @@ export function submitEntry(state: GameState, p: Project, editionId: string, cat
   const cat = inst.categories.find((c) => c.id === categoryId);
   if (!cat) throw new Error('That category doesn\'t exist.');
   if (!categoriesFor(inst, ed.year).includes(cat)) throw new Error(`The ${ed.label} doesn't hold that category.`);
-  // One entry per work in a category: results are kept per work, so a work enters one of its songs in a song category.
-  if (ed.entries.some((e) => e.projectId === p.id && e.categoryId === categoryId && e.status !== 'withdrawn')) throw new Error('This project is already entered in that category.');
-  const rules = categoryRules(ed, cat.id);
+  const rules = categoryRules(ed, cat.id, p);
+  const live = ed.entries.filter((e) => e.projectId === p.id && e.categoryId === categoryId && e.status !== 'withdrawn');
+  // One entry per work in a category; a song award takes each song as its own entry, up to the organizer's limit
+  // (the Oscars' three, Rule Nineteen III.C; the Canadian Screen Awards' two). Until November 9, 2026, one song per work.
+  if (cat.recipient !== 'song' && live.length) throw new Error('This project is already entered in that category.');
   // Entered for one episode (the Emmys' directing and writing): the one chosen, or the first anyone credited worked on.
   // A performer category that measures screen time per episode is entered for one too: the one chosen, or their best.
   const perEpisode = rules?.screenShare?.value.per === 'episode';
@@ -30,6 +32,13 @@ export function submitEntry(state: GameState, p: Project, editionId: string, cat
   if (perEpisode && ep === undefined && isEpisodic(p.axes.format) && el.recipients[0]) ep = shareCheck(p, el.recipients[0], rules!.screenShare!.value.atLeast, 'episode', { versionId }).episode;
   // The song entered: the one chosen, or the one whose writers were credited.
   const song = cat.recipient === 'song' ? songId ?? p.credits.find((c) => c.id === el.recipients[0]?.id)?.songId : undefined;
+  if (cat.recipient === 'song') {
+    const limit = rules?.song?.value;
+    if (live.some((e) => e.songId === song)) throw new Error('This song is already entered in that category.');
+    if (limit?.maxSongs && live.length >= limit.maxSongs) throw new Error(`${inst.short} takes at most ${limit.maxSongs} songs from one work in this category.`);
+    const team = (id?: string) => (p.songs?.find((x) => x.id === id)?.writers ?? []).map((w) => w.who ?? w.name).sort().join('|');
+    if (limit?.oneEntryPerTeam && live.some((e) => team(e.songId) === team(song))) throw new Error(`The same writers can enter only one song from a work at the ${inst.short}.`);
+  }
   // Entry forms ask for a logline and a synopsis (the Pitch). SLATE checks they are written, never what they say.
   const pitch = entryNeeds(p);
   if (pitch) throw new Error(pitch);
@@ -40,7 +49,7 @@ export function submitEntry(state: GameState, p: Project, editionId: string, cat
     if (ledgerTotals(p).available < cat.fee) throw new Error(`The entry fee is ${money(cat.fee)}, and this project has ${money(ledgerTotals(p).available)} uncommitted.`);
     spend(state, p, `${inst.short} Entry Fee`, 'festival', cat.fee, feeKey);
   }
-  const base = `${editionId}:${categoryId}:${p.id}`;
+  const base = `${editionId}:${categoryId}:${song ? `${p.id}~${song}` : p.id}`;
   const tries = ed.entries.filter((e) => e.id === base || e.id.startsWith(`${base}#`)).length;
   // Entering again after withdrawing is a new entry that says which one it revises; the withdrawn one stays as it was.
   const previous = [...ed.entries].reverse().find((e) => e.id === base || e.id.startsWith(`${base}#`));

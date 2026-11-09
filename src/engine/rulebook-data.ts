@@ -129,6 +129,26 @@ const OSCARS_2027_4: RuleBook = {
   },
 };
 
+/**
+ * Version 5 (November 9, 2026): the rest of Rule Nineteen for Original Song, from the same reading. I.B: heard in the
+ * body of the film or as the first new cue once the end credits begin (SLATE: a song heard only over the end credits must
+ * be the first of them in its cut). II.E.1.a and II.J: partial contributors are excluded and the statuettes go to
+ * essentially equal writers (SLATE: a writer who wrote fewer than half the days the main writer did is a partial
+ * contributor; the Committee's own judgement isn't published). IV.E: no more than two songs from one film nominated.
+ * Version 4 entered one song per film; now each song is its own entry, up to three (III.C).
+ */
+const OSCARS_2027_5: RuleBook = {
+  ...OSCARS_2027_4, id: 'oscars-2027@5', version: 5,
+  categories: {
+    ...OSCARS_2027_4.categories,
+    song: {
+      ...OSCARS_2027_4.categories.song,
+      song: v({ maxWriters: 3, maxSongs: 3, maxNominatedPerWork: 2, endCredits: 'first-cue', essentiallyEqual: true }, 'aa99-rules',
+        'Up to three songs from one film (III.C), two at most nominated (IV.E); heard in the body or as the first new end-credits cue (I.B); its principal, essentially equal writers, up to three (II.E, II.J).'),
+    },
+  },
+};
+
 // ---------------- SXSW Film & TV Festival 2027 ----------------
 
 /**
@@ -633,6 +653,17 @@ const GOLDEN_GLOBES_2027_4: RuleBook = {
     'box-office': { ...GOLDEN_GLOBES_2027_3.categories['box-office'], boxOffice: v({ worldwide: 150_000_000, domestic: 100_000_000, country: 'US' }, 'gg84-rules', 'At least $150 million worldwide in 2026, $100 million of it from the US box office (B.1.b); SLATE reads what distributors have reported for theatrical releases.') },
   },
 };
+
+/**
+ * Version 5 (November 9, 2026): Best Original Song's own rule, A.3.h: words and music, both original and written
+ * specifically for the film (sampling only where the Eligibility Committee allows it: not modeled); submitted at the
+ * submitter's discretion, so a film may enter several; given to all accredited songwriters ("written by", "words" or
+ * "music"), four statuettes free and more for purchase. SLATE: each song its own entry; every writing credit receives it.
+ */
+const GOLDEN_GLOBES_2027_5: RuleBook = {
+  ...GOLDEN_GLOBES_2027_4, id: 'golden-globes-2027@5', version: 5,
+  categories: { ...GOLDEN_GLOBES_2027_4.categories, song: { ...GOLDEN_GLOBES_2027_4.categories.song, song: v({}, 'gg84-rules', 'Words and music written for the film; to all its accredited songwriters, however many songs the film enters (A.3.h).') } },
+};
 function emmys(year: number, mk: typeof v): Record<string, CategoryRules> {
   const p = year === 2026 ? '' : ' From the 2025-2026 rules; the 2026-2027 rules are not published yet.';
   const base: CategoryRules = {
@@ -772,6 +803,20 @@ function emmys4(year: number, mk: typeof v): Record<string, CategoryRules> {
 const EMMYS_2026_4: RuleBook = { ...EMMYS_2026_3, id: 'emmys-2026@4', version: 4, categories: emmys4(2026, v) };
 const EMMYS_2027_4: RuleBook = { ...EMMYS_2027_3, id: 'emmys-2027@4', version: 4, categories: emmys4(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2025-2026 rules.')) as typeof v) };
 
+/**
+ * Version 5 (November 9, 2026): Category 55, Outstanding Original Music And Lyrics: an original song with music and lyrics,
+ * written for the program and first performed in it, at least 15 seconds; a continuing series' main title theme enters
+ * Main Title Theme Music instead; to its credited composers and lyricists, the smallest eligible contribution 20%. SLATE:
+ * 15 seconds in one scene's use; a title theme in a series is refused; a writer with under a fifth of the writing days
+ * doesn't receive it. Not modeled: the cue sheet, re-recorded or sampled material (SLATE songs are new work).
+ */
+function emmys5(year: number, mk: typeof v, base: Record<string, CategoryRules>): Record<string, CategoryRules> {
+  const p = year === 2026 ? '' : ' From the 2025-2026 rules.';
+  return { ...base, 'original-music-lyrics': { ...base['original-music-lyrics'], song: mk({ minSeconds: 15, noTitleTheme: true, minShare: 0.2 }, 'em78-rules', `At least 15 seconds; a series' title theme enters Main Title Theme; contributions of 20% or more (Category 55).${p}`) } };
+}
+const EMMYS_2026_5: RuleBook = { ...EMMYS_2026_4, id: 'emmys-2026@5', version: 5, categories: emmys5(2026, v, EMMYS_2026_4.categories) };
+const EMMYS_2027_5: RuleBook = { ...EMMYS_2027_4, id: 'emmys-2027@5', version: 5, categories: emmys5(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2025-2026 rules.')) as typeof v, EMMYS_2027_4.categories) };
+
 // ---------------- Sitges: 59th (2026, verified) and 60th (2027, projected) ----------------
 
 /**
@@ -900,7 +945,19 @@ function canadianScreen(year: number, mk: typeof v): Record<string, CategoryRule
   };
 }
 const CANADIAN_SCREEN_2026: RuleBook = { id: 'canadian-screen-2026@1', institutionId: 'canadian-screen', year: 2026, version: 1, checked: '2026-11-09', sources: CSA_SOURCES, categories: canadianScreen(2026, v) };
+/**
+ * Version 2 (November 9, 2026): Category 17000, Achievement in Music: Original Song, and its Special Regulation: credits
+ * for composer and lyricist; at most two songs from one film (2); written for the production (3) and its first public use
+ * (7); not a song in the closing credits (8) or an instrumental (9); a composer and lyricist team enters once per film
+ * (11). Not modeled: four eligible entries for a nomination (4), the original-language version (1), the 70% score share.
+ */
+const csaSong = (book: RuleBook, mk: typeof v): RuleBook => ({
+  ...book, id: book.id.replace('@1', '@2'), version: 2,
+  categories: { ...book.categories, song: { ...book.categories.song, song: mk({ maxSongs: 2, endCredits: 'never', oneEntryPerTeam: true }, 'csa26-film', 'Two songs at most from a film, not in its closing credits, the same writers once (Category 17000, regulations 2, 8, 11).') } },
+});
 const CANADIAN_SCREEN_2027: RuleBook = { id: 'canadian-screen-2027@1', institutionId: 'canadian-screen', year: 2027, version: 1, checked: '2026-11-09', sources: CSA_SOURCES, categories: canadianScreen(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 rules.')) as typeof v) };
+const CANADIAN_SCREEN_2026_2 = csaSong(CANADIAN_SCREEN_2026, v);
+const CANADIAN_SCREEN_2027_2 = csaSong(CANADIAN_SCREEN_2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 rules.')) as typeof v);
 
 // ---------------- Goya Awards, 41st (2027) ----------------
 
@@ -960,6 +1017,18 @@ const GOYA_SHORT: CategoryRules = {
 const GOYA_2027_2: RuleBook = {
   ...GOYA_2027, id: 'goya-2027@2', version: 2,
   categories: { ...GOYA_2027.categories, european: GOYA_ABROAD, iberoamerican: GOYA_ABROAD, 'short-fiction': GOYA_SHORT, 'short-documentary': GOYA_SHORT, 'short-animation': GOYA_SHORT },
+};
+
+/**
+ * Version 3 (November 9, 2026): article 18, Best Original Song: words and music both original and written for the film
+ * (18.1); clearly audible for 30 seconds at once or 60 in all, credits included (18.2); not released before the film
+ * except to promote it (18.3); to the creators of its music and lyrics (18.4); the lead vocal recorded by people for the
+ * film (18.5). SLATE: a song written for the project, recorded by the production, with its minutes in the cut recorded.
+ * Not modeled: the form (18.6), promotional release (18.3), the ban on generated music (SLATE has none).
+ */
+const GOYA_2027_3: RuleBook = {
+  ...GOYA_2027_2, id: 'goya-2027@3', version: 3,
+  categories: { ...GOYA_2027_2.categories, song: { ...GOYA_2027_2.categories.song, song: v({ minSeconds: 30, minTotalSeconds: 60 }, 'goya41-bases', 'Heard for 30 seconds at once or 60 in all, credits included; to the creators of its music and lyrics (18.2, 18.4).') } },
 };
 
 // ---------------- César, 2027 ceremony ----------------
@@ -1173,6 +1242,32 @@ const WGA_2027_2: RuleBook = {
   },
 };
 
+/**
+ * Version 3 (November 9, 2026): the Paul Selvin Award, read the same day (its page was recorded but not applied, because
+ * one release rule couldn't hold a film to US cinemas and leave television's country open; `byFormat` now does). Films:
+ * a week in Los Angeles or New York in 2026 (SLATE: a US theatrical release; a simultaneous stream is allowed). Television:
+ * first broadcast in 2026, documentary, talk and variety November 1, 2025 to October 31, 2026; no country named. By 5:00
+ * p.m. PST on November 20, 2026. Not modeled: the committee of past winners and the Board's approval; the WGA agreement.
+ */
+const WGA_2027_3: RuleBook = {
+  ...WGA_2027_2, id: 'wga-2027@3', version: 3,
+  sources: [...WGA_2027_2.sources, { id: 'wga27-selvin', publisher: 'Writers Guild of America West', title: 'Rules for WGAW Paul Selvin Award (2027)', url: 'https://awards.wga.org/submissions/paul-selvin-award', edition: '2027 Writers Guild Awards', retrieved: '2026-11-09' }],
+  categories: {
+    ...WGA_2027_2.categories,
+    selvin: {
+      deadlines: wgaDeadline('wga27-selvin'),
+      byFormat: [
+        { formats: ['feature'], rules: {
+          qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'wga27-selvin', 'A film exhibited January 1 to December 31, 2026.'),
+          release: v({ routes: ['theatrical'], countries: ['US'] }, 'wga27-selvin', 'A week in Los Angeles or New York City cinemas; a simultaneous stream is allowed. SLATE treats a US theatrical release as the week.'),
+        } },
+        { formats: ['series', 'limited-series', 'anthology-series', 'web-series', 'tv-film'], rules: wgaTv('wga27-selvin', '2026-01-01', '2026-12-31', 'Television first broadcast or exhibited January 1 to December 31, 2026.') },
+        { formats: ['documentary-series', 'unscripted-series'], rules: wgaTv('wga27-selvin', '2025-11-01', '2026-10-31', 'Documentary, talk and variety: first broadcast November 1, 2025 to October 31, 2026.') },
+      ],
+    },
+  },
+};
+
 // ---------------- Gotham Awards, 2026 ----------------
 
 /**
@@ -1344,6 +1439,21 @@ const AACTA_FILM: CategoryRules = {
   release: v({ routes: ['theatrical', 'streaming', 'broadcast'], countries: ['AU'] }, 'aacta-rulebook', 'Seven days in cinemas in two capital cities including Sydney or Melbourne, a qualifying festival with four paid screenings, a qualifying streaming platform, or free-to-air (7.3); SLATE takes an Australian release by any of those routes.'),
   deadlines: v([{ date: '2026-09-28', time: '23:59', zone: 'Australia/Sydney' }], 'aacta27-film', 'Entries close Monday September 28, 2026, 11:59 p.m. AEST.'),
 };
+
+/**
+ * Version 3 (November 9, 2026): the Robert Redford Environmental Vision Award, read in both the Film and the TV rules:
+ * American narrative features and scripted series centred on climate or the environment (the catalog's environment and US
+ * requirements), a film under the film rules and a series under the television rules; to the film's producers, director
+ * and writers or the series' creators and executive producers; one award for a film or a series. Not modeled: priority
+ * to an entertainment-first approach (the jury's), the series' credited creators apart from its producers.
+ */
+const SPIRIT_2027_3: RuleBook = {
+  ...SPIRIT_2027_2, id: 'spirit-2027@3', version: 3,
+  categories: {
+    ...SPIRIT_2027_2.categories,
+    redford: { byFormat: [{ formats: ['feature'], rules: SPIRIT_FILM }, { formats: ['series', 'anthology-series', 'web-series'], rules: SPIRIT_2027_2.categories.series }] },
+  },
+};
 const SYD = 'Australia/Sydney';
 const AACTA_TV: CategoryRules = {
   qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'aacta27-tv', 'First episode broadcast in Australia for the first time from January 1 to December 31, 2026.'),
@@ -1367,6 +1477,28 @@ const AACTA_2027: RuleBook = {
     ...Object.fromEntries(['childrens', 'competition-reality', 'documentary-factual', 'drama', 'entertainment', 'factual-entertainment', 'miniseries', 'comedy', 'casting-tv'].map((id) => [id, AACTA_TV])),
     ...Object.fromEntries(['documentary', 'documentary-cinematography', 'documentary-editing', 'documentary-sound', 'documentary-score'].map((id) => [id, AACTA_DOC])),
     short: AACTA_SHORT,
+  },
+};
+
+/**
+ * Version 2 (November 9, 2026): the Rule Book's section 10 for Best Original Song: vocals or lyrics, written for an
+ * eligible production or not released before it (10.2(a)); heard on screen for at least 15 seconds (10.3(b)); a TV
+ * program's main title theme not eligible (10.3(c)). Its release windows are the production's own category's (10.3(a)): a
+ * film's or telefeature's (7.3), television's, a documentary's or a short's, each by `byFormat`.
+ */
+const AACTA_2027_2: RuleBook = {
+  ...AACTA_2027, id: 'aacta-2027@2', version: 2,
+  categories: {
+    ...AACTA_2027.categories,
+    song: {
+      song: v({ minTotalSeconds: 15, noTitleTheme: true }, 'aacta-rulebook', 'Heard on screen for at least 15 seconds; not a television main title theme (10.3(b), (c)).'),
+      byFormat: [
+        { formats: ['feature', 'tv-film'], rules: AACTA_FILM },
+        { formats: ['series', 'limited-series', 'anthology-series', 'web-series', 'unscripted-series'], rules: AACTA_TV },
+        { formats: ['documentary-feature', 'documentary-series'], rules: AACTA_DOC },
+        { formats: ['short'], rules: AACTA_SHORT },
+      ],
+    },
   },
 };
 
@@ -1415,6 +1547,6 @@ const JAPAN_ACADEMY_2027: RuleBook = {
 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
-  OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, OSCARS_2027_4, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, ACTOR_AWARDS_2027_2, AACTA_2027, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
+  OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, OSCARS_2027_4, OSCARS_2027_5, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, EMMYS_2026_5, EMMYS_2027_5, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, GOLDEN_GLOBES_2027_5, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, CANADIAN_SCREEN_2026_2, CANADIAN_SCREEN_2027_2, GOYA_2027, GOYA_2027_2, GOYA_2027_3, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, WGA_2027_3, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, SPIRIT_2027_3, ACTOR_AWARDS_2027_2, AACTA_2027, AACTA_2027_2, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
 ];

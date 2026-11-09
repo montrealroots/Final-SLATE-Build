@@ -5,7 +5,7 @@ import { approvedCharacters, approvedScenes, isEpisodic, sceneLabel } from '../e
 import { editScenes } from '../engine/finish';
 import { personById } from '../engine/people';
 import { clearScreenTime, minutesWords, recordFor, recordScreenTime, screenTotal } from '../engine/screen-time';
-import { PLACEMENT_LABELS, attachSong, changeVersionSong, createSong, detachSong, removeSong, restoreVersionSong, setSongPerformers, type SongSource } from '../engine/song-actions';
+import { PLACEMENT_LABELS, attachSong, changeVersionSong, createSong, detachSong, endCreditUses, playFirstOverEndCredits, removeSong, restoreVersionSong, setSongPerformers, type SongSource } from '../engine/song-actions';
 import { songStatus, songUses, songsOf } from '../engine/songs';
 import { versionScenes } from '../engine/versions';
 import type { StoryCharacter as Character, GameState, Project, ProjectVersion, Scene, Song, SongUse } from '../engine/types';
@@ -26,6 +26,13 @@ const LYRICS = [
 ];
 
 const names = (v: string) => v.split(',').map((x) => x.trim()).filter(Boolean);
+
+/** Where a song plays among the end credits' songs: some awards take only the first. */
+function creditOrder(p: Project, s: Song, sceneId: string, episode: number): string {
+  const order = endCreditUses(p, episode);
+  const n = order.findIndex((x) => x.song === s && x.sceneId === sceneId) + 1;
+  return order.length === 1 ? 'the only song over the end credits' : n === 1 ? 'the first song over the end credits' : `song ${n} of ${order.length} over the end credits`;
+}
 
 /** What a new song will take, before it is added (songs.ts songTasks; the clearance is production/rates.ts). */
 function workPreview(source: SongSource, lyrics: (typeof LYRICS)[number]['value']): string {
@@ -113,7 +120,8 @@ function SongRow({ p, s, onError }: { p: Project; s: Song; onError: (e: string |
           const sc = scenes.find((x) => x.id === u.sceneId);
           return (
             <li key={u.sceneId} className="row-wrap">
-              <span className="grow">{sc ? sceneLabel(p, sc) : 'A scene no longer in the script'} · {PLACEMENT_LABELS[u.placement]}{u.minutes !== null ? ` · plays ${minutesWords(u.minutes)}` : ''}</span>
+              <span className="grow">{sc ? sceneLabel(p, sc) : 'A scene no longer in the script'} · {PLACEMENT_LABELS[u.placement]}{u.placement === 'end-credits' && sc ? ` · ${creditOrder(p, s, u.sceneId, sc.episode)}` : ''}{u.minutes !== null ? ` · plays ${minutesWords(u.minutes)}` : ''}</span>
+              {open && !p.edit.pictureLocked && u.placement === 'end-credits' && sc && endCreditUses(p, sc.episode)[0]?.song !== s && <button className="btn btn-sm" aria-label={`Play ${s.title} First Over The End Credits`} onClick={() => act((q) => playFirstOverEndCredits(q, s.id, u.sceneId))}>Play It First</button>}
               {open && !p.edit.pictureLocked && <button className="btn btn-sm" aria-label={`Take ${s.title} Out Of ${sc ? sceneLabel(p, sc) : 'The Scene'}`} onClick={() => act((q) => detachSong(q, s.id, u.sceneId))}>Take It Out</button>}
             </li>
           );

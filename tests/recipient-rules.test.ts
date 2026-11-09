@@ -32,7 +32,7 @@ describe('Emmys, Performer Categories: narrators may not enter lead, supporting 
   it('version 3 leaves the narrator out of Supporting Actor and says why; version 2 entered them', () => {
     const { s, p } = narratedDrama('rr-narr');
     const e = s.editions.find((x) => x.id === 'emmys-2027')!;
-    expect(e.rulesId).toBe('emmys-2027@4'); // version 4 keeps version 3's performer rules and adds one-episode entries
+    expect(e.rulesId).toBe('emmys-2027@5'); // version 4 keeps version 3's performer rules and adds one-episode entries; 5 adds Original Music And Lyrics
     const cat = institution('emmys').categories.find((c) => c.id === 'supporting-actor')!;
     expect(categoryRules(e, cat.id)?.noNarrators?.value).toBe(true);
     expect(categoryRecipients(s, p, cat, undefined, categoryRules(e, cat.id))).toEqual([]);
@@ -175,7 +175,7 @@ describe('Emmys, directing and writing: "for a single episode", to those credite
 
   it('the episode chosen decides who receives it; with none chosen, the first episode anyone directed', () => {
     const { s, p, e, cat } = season('ep-1');
-    expect(e.rulesId).toBe('emmys-2027@4');
+    expect(e.rulesId).toBe('emmys-2027@5');
     expect(entryEpisodes(s, p, cat, categoryRules(e, cat.id))).toEqual([1, 2, 3, 4, 5, 6]);
     expect(names(checkEligibility(s, p, e, cat).recipients)).toEqual(['You']);
     expect(names(checkEligibility(s, p, e, cat, undefined, undefined, 4).recipients)).toEqual(['Ada Ruiz']);
@@ -272,7 +272,7 @@ describe('Golden Globes, Cinematic and Box Office Achievement: $150 million worl
     run('us', ['US'], 120_000_000);
     run('fr', ['FR'], 40_000_000);
     const e = s.editions.find((x) => x.id === 'golden-globes-2027')!;
-    expect(e.rulesId).toBe('golden-globes-2027@4');
+    expect(e.rulesId).toBe('golden-globes-2027@5');
     const cat = institution('golden-globes').categories.find((c) => c.id === 'box-office')!;
     const why = () => checkEligibility(s, p, e, cat).reasons.join(' ');
     expect(why()).not.toMatch(/reported/);

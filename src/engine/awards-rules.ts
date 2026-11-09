@@ -5,7 +5,8 @@ import { cutScenes } from './screen-time';
 import { getPlace } from '../data/places';
 import { personById } from './people';
 import { competesAs } from './script-effects';
-import { approvedScenes } from './projects';
+import { approvedScenes, isEpisodic } from './projects';
+import type { CategoryRules } from './rulebooks';
 import type { Credit, GameState, Project, Song } from './types';
 
 export { QUALIFYING_LISTS, projectedList, qualifyingList } from './qualifying-lists';
@@ -98,7 +99,7 @@ function breakthrough(state: GameState, p: Project, c: Credit): boolean {
  * Credited recipients for the recipient kinds the expanded catalog adds, or null for the older kinds (awards.ts keeps
  * those). Only people credited with the contribution the award concerns.
  */
-export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (name?: string) => string | null, ctx: { versionId?: string; songId?: string; max?: number } = {}): Credit[] | null {
+export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (name?: string) => string | null, ctx: { versionId?: string; songId?: string; song?: SongRule } = {}): Credit[] | null {
   const cast = p.credits.filter((c) => c.contribution === 'Cast' || c.contribution === 'Performance Capture');
   const pick = (r: string): Credit[] | null => {
     switch (r) {
@@ -112,9 +113,8 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
       // One song, written for the work, with its writers: until November 9, 2026, the score composer of any project with a
       // song not marked licensed. Now the song entered (or the first that qualifies) and only its writing credits.
       case 'song': {
-        const song = originalSongs(p, ctx.versionId).find((x) => !ctx.songId || x.id === ctx.songId);
-        const writers = song ? p.credits.filter((c) => c.songId === song.id && (c.roleId === 'songwriter' || c.roleId === 'lyricist')) : [];
-        return ctx.max ? writers.slice(0, ctx.max) : writers;
+        const song = originalSongs(p, ctx.versionId, ctx.song).find((x) => !ctx.songId || x.id === ctx.songId);
+        return song ? songRecipients(p, song, ctx.song) : [];
       }
       case 'national': return p.credits.filter((c) => c.contribution === 'Directed By');
       default: return null;
@@ -133,14 +133,73 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
   return out;
 }
 
-/** The songs heard in the cut entered that were written for the work, with words (songs.ts). */
-export function originalSongs(p: Project, versionId?: string): Song[] {
+type SongRule = NonNullable<CategoryRules['song']>['value'];
+
+/** The songs heard in the cut entered that were written for the work, with words, and meet the organizer's song rules. */
+export function originalSongs(p: Project, versionId?: string, rule?: SongRule): Song[] {
   const v = versionId ? p.versions?.find((x) => x.id === versionId) : undefined;
-  return [...new Set(songUses(p, cutScenes(p, versionId), v).map((x) => x.song))].filter((x) => writtenForProject(p, x) && x.writers.some((w) => w.lyrics));
+  return [...new Set(songUses(p, cutScenes(p, versionId), v).map((x) => x.song))].filter((x) => writtenForProject(p, x) && x.writers.some((w) => w.lyrics) && !songRuleProblem(p, x, versionId, rule));
+}
+
+/**
+ * A song's own organizer rules, in the cut entered (rulebooks.ts `song`): where it plays over the end credits, how long it
+ * is heard, a series' title theme. Null when it meets them.
+ */
+function songRuleProblem(p: Project, song: Song, versionId: string | undefined, rule?: SongRule): string | null {
+  if (!rule) return null;
+  const v = versionId ? p.versions?.find((x) => x.id === versionId) : undefined;
+  const cut = cutScenes(p, versionId);
+  const all = songUses(p, cut, v);
+  const mine = all.filter((x) => x.song === song);
+  const body = mine.filter((x) => x.use.placement !== 'end-credits' && !(rule.noTitleTheme && x.use.placement === 'opening-titles' && isEpisodic(p.axes.format)));
+  if (rule.noTitleTheme && !body.length && mine.some((x) => x.use.placement === 'opening-titles') && isEpisodic(p.axes.format)) return `"${song.title}" plays only as the main title theme, which this award doesn't take.`;
+  if (rule.endCredits && !body.length && mine.length) {
+    if (rule.endCredits === 'never') return `"${song.title}" plays only over the end credits, which this award doesn't take.`;
+    // The first new cue once the end credits begin, in each episode of the cut entered: the lowest cue there.
+    const episodeOf = (id: string) => cut.find((sc) => sc.id === id)?.episode ?? 1;
+    const first = mine.some(({ use }) => {
+      const credits = all.filter((x) => x.use.placement === 'end-credits' && episodeOf(x.use.sceneId) === episodeOf(use.sceneId));
+      return Math.min(...credits.map((x) => x.use.cue ?? 1)) === (use.cue ?? 1);
+    });
+    if (!first) return `"${song.title}" plays only over the end credits, and isn't their first song; this award takes a song in the body of the film or the first new song once the end credits begin.`;
+  }
+  if (rule.minSeconds || rule.minTotalSeconds) {
+    const known = mine.filter((x) => x.use.minutes !== null).map((x) => (x.use.minutes ?? 0) * 60);
+    const longest = Math.max(0, ...known);
+    const total = known.reduce((a, x) => a + x, 0);
+    const met = (rule.minSeconds !== undefined && longest + 1e-9 >= rule.minSeconds) || (rule.minTotalSeconds !== undefined && total + 1e-9 >= rule.minTotalSeconds);
+    const need = [rule.minSeconds ? `${rule.minSeconds} seconds at once` : '', rule.minTotalSeconds ? `${rule.minTotalSeconds} seconds in all` : ''].filter(Boolean).join(' or ');
+    if (!met) {
+      return known.length < mine.length
+        ? `How long "${song.title}" plays isn't recorded in every scene; this award needs it heard for ${need}. Record its minutes under Songs.`
+        : `"${song.title}" plays for ${Math.round(longest)} seconds at most at once, ${Math.round(total)} in all; this award needs ${need}.`;
+    }
+  }
+  return null;
+}
+
+/**
+ * Who receives a song award: the song's writing credits, never its performers or producer. Where the organizer names
+ * only the principal, essentially equal writers (Oscars II.E, II.J), a writer who wrote less than half as many days as the
+ * main writer is a partial contributor (SLATE's measure of "essentially equal": the Committee's judgement isn't
+ * published); the rest receive it up to `maxWriters`, in credit order. Writers with no recorded days count as equal.
+ */
+export function songRecipients(p: Project, song: Song, rule?: SongRule): Credit[] {
+  let writers = p.credits.filter((c) => c.songId === song.id && (c.roleId === 'songwriter' || c.roleId === 'lyricist'));
+  const days = (c: Credit) => song.writers.find((w) => w.who === c.person)?.days;
+  if (rule?.minShare) {
+    const total = writers.reduce((a, c) => a + (days(c) ?? 0), 0);
+    writers = writers.filter((c) => days(c) === undefined || !total || (days(c) ?? 0) / total + 1e-9 >= rule.minShare!);
+  }
+  if (rule?.essentiallyEqual) {
+    const most = Math.max(0, ...writers.map((c) => days(c) ?? 0));
+    writers = writers.filter((c) => days(c) === undefined || !most || (days(c) ?? 0) * 2 >= most);
+  }
+  return rule?.maxWriters ? writers.slice(0, rule.maxWriters) : writers;
 }
 
 /** Why no song can be entered, or why the one chosen can't, in the player's words. */
-export function songProblems(p: Project, songId?: string, versionId?: string): string[] {
+export function songProblems(p: Project, songId?: string, versionId?: string, rule?: SongRule): string[] {
   const v = versionId ? p.versions?.find((x) => x.id === versionId) : undefined;
   const heard = [...new Set(songUses(p, cutScenes(p, versionId), v).map((x) => x.song))];
   const chosen = songId ? songsOf(p).find((x) => x.id === songId) : undefined;
@@ -153,7 +212,7 @@ export function songProblems(p: Project, songId?: string, versionId?: string): s
     if (x.origin === 'unrecorded') return `"${x.title}" came from a save made before songs had writers, and nothing shows it was written for this project.`;
     if (!writtenForProject(p, x)) return `"${x.title}" isn't finished: its writing isn't done.`;
     if (!x.writers.some((w) => w.lyrics)) return `"${x.title}" has no lyrics; an original song award takes words and music.`;
-    return '';
+    return songRuleProblem(p, x, versionId, rule) ?? '';
   }).filter(Boolean);
 }
 

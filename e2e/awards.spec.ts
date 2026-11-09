@@ -738,6 +738,7 @@ test('Songs: made in the Production tab with separate writers, one licensed; a v
   await use('Salt Water', /Ferry/, 'Performed On Screen');
   await use('Harbour Lights', /Pier/, 'In The Background');
   await use('Lantern', /Pier/, 'Over The End Credits');
+  await expect(song('Lantern').getByText(/the only song over the end credits/)).toBeVisible();
   await song('Salt Water').getByRole('checkbox', { name: 'Lena Performs Salt Water' }).check();
   await expect(song('Salt Water').getByText(/Performed by Lena\./)).toBeVisible();
   await songs.screenshot({ path: `test-results/songs-card-${test.info().project.name}.png` });
@@ -794,6 +795,14 @@ test('Songs: made in the Production tab with separate writers, one licensed; a v
   await dialog.getByRole('button', { name: 'Submit Entry' }).click();
   await expect(dialog).toBeHidden();
   await expect(entry(page, 'Music (Original Song), "Salt Water"').locator('.chip', { hasText: /^Submitted$/ })).toBeVisible();
+  // A film enters each of its songs on its own (up to three at the Oscars): Lantern, the only end-credits song, too.
+  await row(page, 'Music (Original Song)').getByRole('button', { name: 'Prepare Submission' }).click();
+  await expect(dialog.getByLabel('Song To Enter')).toHaveValue(/.+/);
+  await expect(dialog.getByRole('option', { name: '"Salt Water" (Entered)' })).toHaveCount(1);
+  await expect(dialog.getByText(/Credited for this entry: Nia Halvorsen-Mbeki\./)).toBeVisible();
+  await dialog.getByRole('button', { name: 'Submit Entry' }).click();
+  await expect(dialog).toBeHidden();
+  await expect(entry(page, 'Music (Original Song), "Lantern"').locator('.chip', { hasText: /^Submitted$/ })).toBeVisible();
   await saveAndExit(page);
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();

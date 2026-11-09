@@ -466,6 +466,8 @@ export interface Task {
   doneAt?: number;
   /** Who worked it ('player' or person ids). Kept for song writing and recording, whose credits follow the work (songs.ts). */
   workers?: string[];
+  /** Days each worked it, for song writing (songs.ts): how much of a song each writer wrote. */
+  workerDays?: Record<string, number>;
 }
 
 export interface Asset {
@@ -618,9 +620,11 @@ export interface Song {
   createdAt: number;
 }
 
-export interface SongCredit { who: 'player' | string | null; name: string; music?: boolean; lyrics?: boolean; characterId?: string }
+/** `days`: the working days this writer put into writing the song (songs.ts), for an organizer that asks whose contribution was essential. */
+export interface SongCredit { who: 'player' | string | null; name: string; music?: boolean; lyrics?: boolean; characterId?: string; days?: number }
 
-export interface SongUse { sceneId: string; placement: 'performed' | 'background' | 'opening-titles' | 'end-credits'; minutes: number | null }
+/** `cue`: over the end credits, its place in the order they play (1 first); lower plays earlier. */
+export interface SongUse { sceneId: string; placement: 'performed' | 'background' | 'opening-titles' | 'end-credits'; minutes: number | null; cue?: number }
 
 export interface EditState {
   assembly: boolean;

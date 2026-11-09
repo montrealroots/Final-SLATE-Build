@@ -2,9 +2,10 @@
 // flag on a scene, and the original song award went to the score composer of any project with an unlicensed one. These
 // tests play songs through the production loop: commissioned and written, recorded, shot, credited and entered.
 import { describe, expect, it } from 'vitest';
-import { DAY, buildTasks, checkEligibility, institution, processUntil } from './engine-api';
-import { attachSong, changeVersionSong, createSong, detachSong, removeSong, setSongPerformers, setSongWriters } from '../src/engine/song-actions';
+import { DAY, announce, buildTasks, categoryRuleStatus, categoryRules, checkEligibility, institution, processUntil, rulebook, submitEntry } from './engine-api';
+import { attachSong, changeVersionSong, createSong, detachSong, playFirstOverEndCredits, removeSong, setSongPerformers, setSongWriters } from '../src/engine/song-actions';
 import { migrateV7toV8, songUses, writtenForProject } from '../src/engine/songs';
+import { songProblems, songRecipients } from '../src/engine/awards-rules';
 import { addVersion, versionScenes } from '../src/engine/versions';
 import { editScenes } from '../src/engine/finish';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
@@ -89,7 +90,7 @@ describe('songs are works with their own writers, rights and uses', () => {
   it('the Oscars\' song limits apply where they were read: three writers at most, and its own deadline', () => {
     const { s, p, ids } = songFilm('song-limits', false);
     const osc = s.editions.find((x) => x.id === 'oscars-2027')!;
-    expect(osc.rulesId).toBe('oscars-2027@4');
+    expect(osc.rulesId).toBe('oscars-2027@5'); // version 5 adds the rest of Rule Nineteen; writers with no recorded days count as equal
     // Labelled fixture: a delivered film whose song four writers wrote.
     const salt = p.songs!.find((x) => x.id === ids.salt)!;
     salt.writers = ['A', 'B', 'C', 'D'].map((n, i) => ({ who: `w${i}`, name: `Writer ${n}`, music: true, lyrics: true }));
@@ -162,3 +163,159 @@ describe('saves from before songs were works (v7 to v8)', () => {
     void s;
   });
 });
+
+/**
+ * Labelled fixture: the song film delivered, its songs written (Salt Water by a songwriter in 8 days and a lyricist in
+ * `lyricDays`; Lantern by you), credited as delivery credits them, and released in US cinemas in 2026.
+ */
+function deliveredSongs(tag: string, lyricDays = 4) {
+  const { s, p, ids } = songFilm(tag, false);
+  const salt = p.songs!.find((x) => x.id === ids.salt)!;
+  const lantern = p.songs!.find((x) => x.id === ids.lantern)!;
+  salt.writers = [{ who: 'np_songwriter_US_1', name: 'Teo Holt', music: true, days: 8 }, { who: 'np_lyricist_US_1', name: 'Mina Okoro', lyrics: true, days: lyricDays }];
+  lantern.writers = [{ who: 'player', name: 'You', music: true, lyrics: true, days: 4 }];
+  p.tasks = buildTasks(p).map((t) => ({ ...t, status: 'done' as const, done: t.units }));
+  p.axes.format = 'feature';
+  p.delivered = { at: s.now, runtimeMin: 100 };
+  p.quality = { overall: 70, script: 70, direction: 70, craft: 70, music: 70, reception: 70, [`song:${ids.salt}`]: 99, [`song:${ids.lantern}`]: 98 };
+  const w = (id: string, person: string, name: string, contribution: string, roleId: string, songId: string) => ({ id, person, personName: name, contribution, roleId, songId, episodes: 'all' as const, billing: 1 });
+  p.credits = [
+    { id: 'pr', person: 'player', personName: 'You', contribution: 'Produced By', roleId: 'producer', episodes: 'all', billing: 0 },
+    w('m', 'np_songwriter_US_1', 'Teo Holt', 'Song Music By ("Salt Water")', 'songwriter', ids.salt),
+    w('l', 'np_lyricist_US_1', 'Mina Okoro', 'Song Lyrics By ("Salt Water")', 'lyricist', ids.salt),
+    w('y', 'player', 'You', 'Song Written By ("Lantern")', 'songwriter', ids.lantern),
+  ];
+  p.releases.push({ id: 'r1', route: 'theatrical', date: '2026-08-01', territories: ['US'], distributor: 'D', note: '', status: 'released' });
+  s.now = Math.max(s.now, s.editions.find((x) => x.id === 'oscars-2027')!.submissionOpens + DAY); // the Oscars take entries
+  return { s, p, ids, ed: (id: string) => s.editions.find((x) => x.id === id)! };
+}
+const song = (inst: string, id = 'song') => institution(inst).categories.find((c) => c.id === id)!;
+
+describe('the organizers\' own song rules', () => {
+  it('the Oscars: a song only over the end credits must be their first; playing it first makes it eligible', () => {
+    const { s, p, ids, ed } = deliveredSongs('sr-credits');
+    const osc = ed('oscars-2027');
+    expect(osc.rulesId).toBe('oscars-2027@5');
+    const why = () => checkEligibility(s, p, osc, song('oscars'), undefined, undefined, undefined, ids.lantern).reasons;
+    expect(why()).toEqual([]); // the only song over the end credits: their first
+    p.delivered = null; // labelled: back before delivery to add another end-credits song
+    attachSong(p, ids.salt, ids.pier, 'end-credits');
+    playFirstOverEndCredits(p, ids.salt, ids.pier);
+    p.delivered = { at: s.now, runtimeMin: 100 };
+    expect(why()).toContain('"Lantern" plays only over the end credits, and isn\'t their first song; this award takes a song in the body of the film or the first new song once the end credits begin.');
+    // Salt Water is performed in the body too, so its place over the credits doesn't matter.
+    expect(checkEligibility(s, p, osc, song('oscars'), undefined, undefined, undefined, ids.salt).reasons).toEqual([]);
+    p.delivered = null;
+    playFirstOverEndCredits(p, ids.lantern, ids.pier);
+    p.delivered = { at: s.now, runtimeMin: 100 };
+    expect(why()).toEqual([]);
+    // The Canadian Screen Awards take no song from the closing credits at all.
+    const csa = ed('canadian-screen-2027');
+    expect(csa.rulesId).toBe('canadian-screen-2027@2');
+    expect(checkEligibility(s, p, csa, song('canadian-screen'), undefined, undefined, undefined, ids.lantern).reasons).toContain('"Lantern" plays only over the end credits, which this award doesn\'t take.');
+  });
+
+  it('who receives it follows how much each wrote: the Oscars\' essentially equal writers, the Emmys\' 20%, the Globes\' every credited writer', () => {
+    const { s, p, ids, ed } = deliveredSongs('sr-share', 3); // the lyricist wrote 3 days to the composer's 8
+    const names = (edition: string, inst: string, cat = 'song') => checkEligibility(s, p, ed(edition), song(inst, cat), undefined, undefined, undefined, ids.salt).recipients.map((c) => c.personName);
+    expect(names('oscars-2027', 'oscars')).toEqual(['Teo Holt']); // under half the main writer's days: a partial contributor
+    expect(names('golden-globes-2027', 'golden-globes')).toEqual(['Teo Holt', 'Mina Okoro']);
+    p.songs!.find((x) => x.id === ids.salt)!.writers[1].days = 4;
+    expect(names('oscars-2027', 'oscars')).toEqual(['Teo Holt', 'Mina Okoro']); // half: essentially equal
+    // The Emmys' smallest eligible contribution is 20% of the writing.
+    p.songs!.find((x) => x.id === ids.salt)!.writers[1].days = 1; // 1 of 9 days: 11%
+    expect(ed('emmys-2027').rulesId).toBe('emmys-2027@5');
+    const emmyCat = institution('emmys').categories.find((c) => c.id === 'original-music-lyrics')!;
+    const emmyRule = categoryRules(ed('emmys-2027'), emmyCat.id)?.song?.value;
+    expect(emmyRule?.minShare).toBe(0.2);
+    const salt = p.songs!.find((x) => x.id === ids.salt)!;
+    expect(songRecipients(p, salt, emmyRule).map((c) => c.personName)).toEqual(['Teo Holt']);
+    salt.writers[1].days = 2; // 2 of 10 days: 20%
+    expect(songRecipients(p, salt, emmyRule).map((c) => c.personName)).toEqual(['Teo Holt', 'Mina Okoro']);
+  });
+
+  it('a film enters several songs, each its own entry, up to the organizer\'s limit; the same writers once at the Canadian Screen Awards', () => {
+    const { s, p, ids, ed } = deliveredSongs('sr-many');
+    const third = createSongDelivered(s, p, 'Harbour Wind', ids.ferry);
+    const osc = ed('oscars-2027');
+    s.now = osc.submissionOpens + 1;
+    const a = submitEntry(s, p, osc.id, 'song', undefined, undefined, undefined, ids.salt);
+    const b = submitEntry(s, p, osc.id, 'song', undefined, undefined, undefined, ids.lantern);
+    expect([a.songId, b.songId]).toEqual([ids.salt, ids.lantern]);
+    expect(a.id).not.toBe(b.id);
+    expect(() => submitEntry(s, p, osc.id, 'song', undefined, undefined, undefined, ids.salt)).toThrow('This song is already entered in that category.');
+    submitEntry(s, p, osc.id, 'song', undefined, undefined, undefined, third);
+    expect(osc.entries.filter((e) => e.categoryId === 'song').length).toBe(3);
+    // The Canadian Screen Awards take two, and the same writers once.
+    const csa = ed('canadian-screen-2027');
+    s.now = Math.max(s.now, csa.submissionOpens + 1);
+    p.axes.basePlaceId = 'ca-toronto'; // labelled: the Canadian Screen Awards take Canadian productions
+    p.releases.push({ id: 'r2', route: 'theatrical', date: '2026-08-01', territories: ['CA'], distributor: 'D', note: '', status: 'released' });
+    submitEntry(s, p, csa.id, 'song', undefined, undefined, undefined, ids.salt);
+    const wind = p.songs!.find((x) => x.id === third)!;
+    const own = wind.writers;
+    wind.writers = p.songs!.find((x) => x.id === ids.salt)!.writers; // labelled: the same team wrote it
+    expect(() => submitEntry(s, p, csa.id, 'song', undefined, undefined, undefined, third)).toThrow('The same writers can enter only one song from a work at the Canadian Screen Awards.');
+    wind.writers = own;
+    submitEntry(s, p, csa.id, 'song', undefined, undefined, undefined, third);
+    const fourth = createSongDelivered(s, p, 'Low Tide', ids.ferry);
+    expect(() => submitEntry(s, p, csa.id, 'song', undefined, undefined, undefined, fourth)).toThrow('Canadian Screen Awards takes at most 2 songs from one work in this category.');
+  });
+
+  it('the Oscars nominate at most two songs from one film; each song keeps its own result', () => {
+    const { s, p, ids, ed } = deliveredSongs('sr-nominate');
+    const third = createSongDelivered(s, p, 'Harbour Wind', ids.ferry);
+    p.quality![`song:${third}`] = 97;
+    const osc = ed('oscars-2027');
+    s.now = osc.submissionOpens + 1;
+    for (const id of [ids.salt, ids.lantern, third]) submitEntry(s, p, osc.id, 'song', undefined, undefined, undefined, id).status = 'accepted';
+    announce(s, osc);
+    const nominated = osc.entries.filter((e) => e.categoryId === 'song' && e.status === 'nominated');
+    expect(nominated.length).toBeLessThanOrEqual(2);
+    expect(osc.results.song.projectIds.every((k) => k.startsWith(`${p.id}~`))).toBe(true);
+    expect(osc.results.song.projectIds.length).toBe(nominated.length);
+    // Each song is named in what was announced.
+    expect(s.log.some((l) => /"(Salt Water|Lantern|Harbour Wind)" from Night Ferry (was nominated|wasn't nominated)/.test(l.text))).toBe(true);
+  });
+
+  it('length and title themes: the Goyas\' 30 seconds at once or 60 in all; the Emmys\' series title theme', () => {
+    const { s, p, ids, ed } = deliveredSongs('sr-length');
+    const goya = song('goya');
+    const why = () => checkEligibility(s, p, ed('goya-2027'), goya, undefined, undefined, undefined, ids.lantern).reasons.join(' ');
+    expect(ed('goya-2027').rulesId).toBe('goya-2027@3');
+    expect(why()).toMatch(/How long "Lantern" plays isn't recorded in every scene; this award needs it heard for 30 seconds at once or 60 seconds in all/);
+    p.songs!.find((x) => x.id === ids.lantern)!.uses[0].minutes = 0.4; // 24 seconds
+    expect(why()).toMatch(/"Lantern" plays for 24 seconds at most at once, 24 in all; this award needs 30 seconds at once or 60 seconds in all\./);
+    p.songs!.find((x) => x.id === ids.lantern)!.uses[0].minutes = 0.5;
+    expect(why()).not.toMatch(/Lantern/);
+    // Two 20-second uses: 40 seconds in all, never 30 at once: short of both.
+    const lantern = p.songs!.find((x) => x.id === ids.lantern)!;
+    lantern.uses = [{ ...lantern.uses[0], minutes: 1 / 3 }, { sceneId: ids.ferry, placement: 'background', minutes: 1 / 3 }];
+    expect(why()).toMatch(/"Lantern" plays for 20 seconds at most at once, 40 in all/);
+    // A series' main title theme: the Emmys and the AACTA send it elsewhere or refuse it; a film's opening song is in its body.
+    lantern.uses = [{ sceneId: ids.pier, placement: 'opening-titles', minutes: 1 }];
+    expect(songProblems(p, ids.lantern, undefined, { noTitleTheme: true })).toEqual([]);
+    p.axes.format = 'series';
+    expect(songProblems(p, ids.lantern, undefined, { noTitleTheme: true })).toEqual(['"Lantern" plays only as the main title theme, which this award doesn\'t take.']);
+    // The AACTA's song rule was first read without its release windows, which kept the category on SLATE's rules; its
+    // windows now come per format (byFormat), so it is the organizer's. A song rule alone still isn't eligibility.
+    expect(categoryRuleStatus(rulebook('aacta-2027@2'), 'song')).toBe('verified');
+    expect(categoryRuleStatus({ ...rulebook('aacta-2027@2')!, categories: { song: { song: rulebook('aacta-2027@2')!.categories.song!.song } } }, 'song')).toBe('simulated');
+  });
+});
+
+/** Labelled fixture: one more song written for the film by another writer, used in a scene, its writing done. */
+function createSongDelivered(s: GameState, p: Project, title: string, sceneId: string): string {
+  const d = p.delivered;
+  p.delivered = null;
+  const x = createSong(s, p, { title, source: 'commission', lyrics: 'with-music' });
+  attachSong(p, x.id, sceneId, 'background', 1);
+  p.delivered = d;
+  x.writers = [{ who: 'np_songwriter_US_2', name: 'Iris Varga', music: true, lyrics: true, days: 4 }];
+  for (const t of buildTasks(p).filter((t) => t.id.endsWith(x.id))) {
+    const have = p.tasks.find((y) => y.id === t.id);
+    if (have) Object.assign(have, { status: 'done', done: have.units }); else p.tasks.push({ ...t, status: 'done', done: t.units });
+  }
+  p.credits.push({ id: `c-${x.id}`, person: 'np_songwriter_US_2', personName: 'Iris Varga', contribution: `Song Written By ("${title}")`, roleId: 'songwriter', songId: x.id, episodes: 'all', billing: 3 });
+  return x.id;
+}

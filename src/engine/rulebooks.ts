@@ -156,7 +156,33 @@ export interface CategoryRules {
    * Oscars' Rule Nineteen II.J and III.C). That the song was written for the work is SLATE's reading of every original
    * song category (songs.ts writtenForProject); this records only what an organizer's document adds.
    */
-  song?: Ruled<{ maxWriters?: number; maxSongs?: number }>;
+  /**
+   * Rules that apply to some formats only, over the category's own: an award taking films and series alike under the film
+   * and television rules (the Spirit Awards' Redford award, the WGA's Paul Selvin award, the AACTA's song).
+   */
+  byFormat?: { formats: Format[]; rules: Omit<CategoryRules, 'byFormat'> }[];
+  song?: Ruled<{
+    maxWriters?: number;
+    maxSongs?: number;
+    /** Most songs from one work that can be nominated (Oscars Rule Nineteen IV.E: two). */
+    maxNominatedPerWork?: number;
+    /** A song heard only over the end credits: 'first-cue' qualifies only as their first new cue (Oscars I.B); 'never' (CSA). */
+    endCredits?: 'first-cue' | 'never';
+    /** Writers whose part is much smaller than the main writer's are partial contributors and don't receive it (Oscars II.E, II.J). */
+    essentiallyEqual?: true;
+    /** The smallest share of the writing a writer can have done and still receive it (the Emmys: 20%, Category 55). */
+    minShare?: number;
+    /**
+     * How long it must be heard in the cut: for `minSeconds` at once (one scene's use), or `minTotalSeconds` in all (the
+     * Goyas: 30 seconds at once or 60 in total, 18.2; the AACTA: 15 seconds, 10.3(b)).
+     */
+    minSeconds?: number;
+    minTotalSeconds?: number;
+    /** A television program's main title theme isn't eligible (AACTA 10.3(c)). */
+    noTitleTheme?: true;
+    /** The same writers enter only one song per work (CSA Category 17000, regulation 11). */
+    oneEntryPerTeam?: true;
+  }>;
   /**
    * Box office in the qualifying window: at least `worldwide` dollars gross from theatrical releases, `domestic` of them in
    * `country` (the Golden Globes' Cinematic and Box Office Achievement, B.1.b), from what distributors have reported.
@@ -244,6 +270,8 @@ export function rulebook(id: string | undefined): RuleBook | undefined {
 export function categoryRuleStatus(book: RuleBook | undefined, categoryId: string): 'verified' | 'projected' | 'simulated' {
   const c = book?.categories[categoryId];
   // A deadline alone isn't eligibility: SXSW's page gives dates and fees, and its eligibility stays SLATE's (rulebook-data.ts).
-  if (!c || Object.keys(c).every((k) => k === 'deadlines')) return 'simulated';
+  // Nor is a song award's own rule without the release rules: the AACTA's song rule was read without its windows at first,
+  // until byFormat gave them (November 9).
+  if (!c || Object.keys(c).every((k) => k === 'deadlines' || k === 'song')) return 'simulated';
   return Object.values(c).some((r) => (r as Ruled<unknown>).status === 'projected') ? 'projected' : 'verified';
 }

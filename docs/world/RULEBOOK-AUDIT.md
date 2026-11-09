@@ -95,6 +95,24 @@ work, since results are kept per work); song submissions by 5 p.m. PT on October
 order of end-credit cues, the Committee's judgement of equal contributions, a fourth statuette, the vocal lead sheet and
 clip. Songs as works: `src/engine/songs.ts`; the rule rows in `docs/awards/RECIPIENT-RULES.md`.
 
+**Version 5 (`oscars-2027@5`, November 9, 2026):** the rest of Rule Nineteen for Original Song: a song heard only over
+the end credits must be the first new cue there (I.B; SLATE keeps the order of end-credit songs); partial contributors
+excluded and essentially equal writers receive it (II.E, II.J; SLATE: under half the main writer's writing days is
+partial); two songs at most nominated from one film (IV.E); each song its own entry, up to three (III.C).
+
+**Song rules read the same day for five other organizers** (each a new version; the full rows are in
+`docs/awards/RECIPIENT-RULES.md`): the Golden Globes' A.3.h (`golden-globes-2027@5`: every credited songwriter, no limit
+on songs); the Emmys' Category 55 (`emmys-2026@5`, projected for 2027: 15 seconds, a series' title theme enters Main Title
+Theme, 20% the smallest contribution); the Goyas' article 18 (`goya-2027@3`: 30 seconds at once or 60 in all); the
+Canadian Screen Awards' Category 17000 (`canadian-screen-2026@2`, projected for 2027: two songs per film, not in the
+closing credits, the same writers once); the AACTA Rule Book 10 (`aacta-2027@2`: 15 seconds, no TV title theme; each
+production under its own category's dates, film, television, documentary or short, through a new per-format rule).
+
+**Mixed film and television awards (November 9, 2026):** a category's rules can now differ by the work's format
+(`byFormat`). Applied: the WGA's Paul Selvin Award (`wga-2027@3`: a film's week in US cinemas in 2026; television first
+broadcast in 2026, documentary and talk November 2025 to October 2026; November 20) and the Spirit Awards' Robert Redford
+Environmental Vision Award (`spirit-2027@3`: a film under the film rules, a series under the television rules).
+
 ## Sundance Film Festival 2027
 
 Sources (retrieved November 6, 2026): [2027 Submissions FAQ](https://www.sundance.org/submissions-faq);

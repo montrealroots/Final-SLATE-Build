@@ -96,8 +96,28 @@ export function attachSong(p: Project, songId: string, sceneId: string, placemen
   if (s.uses.some((u) => u.sceneId === sceneId)) throw new Error(`"${s.title}" is already in that scene.`);
   if (placement === 'performed' && (p.captures.find((c) => c.sceneId === sceneId)?.captured ?? 0) > 0) throw new Error('That scene was shot without the song being performed. Use it in the background, or reshoot the scene.');
   checkMinutes(minutes, scene.estMinutes);
-  s.uses.push({ sceneId, placement, minutes });
+  // Over the end credits, it plays after those already there in that episode.
+  const cue = placement === 'end-credits' ? 1 + Math.max(0, ...endCreditUses(p, scene.episode).map((u) => u.cue ?? 1)) : undefined;
+  s.uses.push({ sceneId, placement, minutes, ...(cue ? { cue } : {}) });
   syncSongTasks(p);
+}
+
+/** The end-credit songs of an episode of the script, in the order they play. */
+export function endCreditUses(p: Project, episode: number) {
+  const scenes = new Set([...(p.approvedDraft !== null ? approvedScenes(p) : []), ...p.scenes].filter((x) => x.episode === episode).map((x) => x.id));
+  return songsOf(p).flatMap((x) => x.uses.filter((u) => u.placement === 'end-credits' && scenes.has(u.sceneId)).map((u) => ({ ...u, song: x }))).sort((a, b) => (a.cue ?? 1) - (b.cue ?? 1));
+}
+
+/** Play this song first once the end credits begin; the others follow in their order. */
+export function playFirstOverEndCredits(p: Project, songId: string, sceneId: string): void {
+  notDelivered(p);
+  if (p.edit.pictureLocked) throw new Error('The picture is locked. Unlock it to change the songs in the cut.');
+  const s = song(p, songId);
+  const u = s.uses.find((x) => x.sceneId === sceneId && x.placement === 'end-credits');
+  if (!u) throw new Error(`"${s.title}" doesn't play over the end credits there.`);
+  const order = endCreditUses(p, sceneOf(p, sceneId).episode).filter((x) => !(x.song === s && x.sceneId === sceneId));
+  u.cue = 1;
+  order.forEach((x, i) => { const real = x.song.uses.find((y) => y.sceneId === x.sceneId && y.placement === 'end-credits'); if (real) real.cue = i + 2; });
 }
 
 function checkMinutes(minutes: number | null, sceneMinutes: number): void {

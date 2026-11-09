@@ -70,6 +70,7 @@ export function onSongTaskDone(p: Project, task: Task, name: (who: string) => st
   for (const who of task.workers ?? []) {
     let c = song.writers.find((x) => x.who === who);
     if (!c) { c = { who, name: name(who) }; song.writers.push(c); }
+    c.days = (c.days ?? 0) + (task.workerDays?.[who] ?? 0);
     if (part === 'music' || both) c.music = true;
     if (part === 'lyrics' || both) c.lyrics = true;
   }

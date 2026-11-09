@@ -60,7 +60,9 @@ describe('rulebook data', () => {
       const sources = new Set(b.sources.map((x) => x.id));
       for (const [catId, rules] of Object.entries(b.categories)) {
         expect(categoriesFor(inst, b.year).some((c) => c.id === catId), `${b.id} ${catId}`).toBe(true);
-        for (const [k, r] of Object.entries(rules)) {
+        // A format's own rules (byFormat) are checked like the category's.
+        const flat = [...Object.entries(rules).filter(([k]) => k !== 'byFormat'), ...(rules.byFormat ?? []).flatMap((f) => Object.entries(f.rules).map(([k, r]) => [`${f.formats.join('/')} ${k}`, r] as const))];
+        for (const [k, r] of flat as [string, { source: string; status: string; note?: string }][]) {
           expect(sources.has(r.source), `${b.id} ${catId} ${k}`).toBe(true);
           expect(['verified', 'projected']).toContain(r.status);
           if (r.status === 'projected') expect(r.note, `${b.id} ${catId} ${k} must say why it is projected`).toBeTruthy();
@@ -79,7 +81,7 @@ describe('rulebook data', () => {
     const s = startLife('rules-ids');
     // Version 2 from November 9, 2026: qualifying-festival routes read from the Academy's lists; version 3 the same day:
     // International Feature's dialogue share; version 4 (also November 9): Original Song's own rules (Rule Nineteen).
-    expect(ed(s, 'oscars-2027').rulesId).toBe('oscars-2027@4');
+    expect(ed(s, 'oscars-2027').rulesId).toBe('oscars-2027@5');
     expect(ed(s, 'sundance-2027').rulesId).toBe('sundance-2027@1');
     expect(ed(s, 'venice-2026').rulesId).toBe('venice-2026@4');
     expect(ed(s, 'tiff-2026').rulesId).toBe('simulated');
@@ -384,7 +386,7 @@ describe('history and saves', () => {
     const oldDeadline = oscars.deadline;
     const v3 = migrateV2toV3(raw as unknown as Record<string, unknown>) as unknown as GameState;
     const o = v3.editions.find((e) => e.id === 'oscars-2027')!;
-    expect(o.rulesId).toBe('oscars-2027@4');
+    expect(o.rulesId).toBe('oscars-2027@5');
     expect(categoryDeadline(o, cat(o, 'picture'))).toBe(at('America/Los_Angeles', '2026-11-12', 17));
     expect(o.deadline).toBe(at('America/Los_Angeles', '2026-11-12', 17)); // every category has the Academy's deadline (version 2)
     expect(o.defaultDeadline).toBe(oldDeadline);
@@ -423,7 +425,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('529 categories follow verified rules for at least one edition, 11 only projected ones; the other 266 are simulated', () => {
+  it('532 categories follow verified rules for at least one edition, 11 only projected ones; the other 263 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -451,8 +453,9 @@ describe('audit counts', () => {
     // Ibero-American and short film awards read their specific Bases (goya-2027@2), 463 until the PGA's documentary award
     // (pga-2027@2), 464 until the WGA's Documentary Screenplay (wga-2027@2), 465 until the DGA's seven television awards
     // (dga-2027@2), 472 until the AACTA's 31 film, television, documentary and short categories (aacta-2027@1), 503 until the
-    // Japan Academy's 17 (japan-academy-2027@1), 520 until the PGA's nine television awards (pga-2027@3).
-    expect(n).toEqual({ verified: 529, projected: 11, simulated: 266 });
+    // Japan Academy's 17 (japan-academy-2027@1), 520 until the PGA's nine television awards (pga-2027@3), 529 until the
+    // WGA's Paul Selvin, the Spirit Awards' Redford and the AACTA's song award took rules by format (byFormat).
+    expect(n).toEqual({ verified: 532, projected: 11, simulated: 263 });
   });
 });
 
@@ -639,7 +642,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Golden Globes 2027, version 2: Non-English Language needs a run in its country of origin, not in the US; TV acting reads the television rules', () => {
     const s = startLife('gg2');
     const e = ed(s, 'golden-globes-2027');
-    expect(e.rulesId).toBe('golden-globes-2027@4'); // versions 3 and 4 add Non-English Language's dialogue share and the box-office threshold (tests/recipient-rules.test.ts)
+    expect(e.rulesId).toBe('golden-globes-2027@5'); // versions 3 and 4 add Non-English Language's dialogue share and the box-office threshold (tests/recipient-rules.test.ts); 5 Best Original Song's rule
     s.now = at('America/Los_Angeles', '2026-11-01', 9);
     const film = (where: string) => {
       const p = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'es-madrid' });
@@ -761,7 +764,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Goyas, version 2: European and Ibero-American films by their home release; Spanish shorts through a festival selection', () => {
     const s = startLife('goya2');
     const e = ed(s, 'goya-2027');
-    expect(e.rulesId).toBe('goya-2027@2');
+    expect(e.rulesId).toBe('goya-2027@3');
     s.now = at('Europe/Madrid', '2026-08-01', 9);
     const fr = work(s, { format: 'feature', runtime: 95, completed: '2026-01-10', base: 'fr-paris' });
     release(fr, 'theatrical', '2026-04-01', ['FR']);
@@ -851,7 +854,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('AACTA 2027: films and television released in Australia in 2026; documentaries and shorts by completion date; each by its own deadline', () => {
     const s = startLife('aacta');
     const e = ed(s, 'aacta-2027');
-    expect(e.rulesId).toBe('aacta-2027@1');
+    expect(e.rulesId).toBe('aacta-2027@2');
     s.now = at('Australia/Sydney', '2026-07-01', 9);
     const film = (runtime = 100) => work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'au-sydney' });
     const streamed = film();
@@ -943,7 +946,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const s = startLife('csa');
     const e26 = ed(s, 'canadian-screen-2026');
     const e = ed(s, 'canadian-screen-2027');
-    expect(e.rulesId).toBe('canadian-screen-2027@1');
+    expect(e.rulesId).toBe('canadian-screen-2027@2');
     expect(categoryDeadline(e26, cat(e26, 'film'))).toBe(at('America/Toronto', '2025-11-03', 23, 59) + 59_000); // past when a game starts
     s.now = at('America/Toronto', '2026-10-01', 9);
     const film = (format: Project['axes']['format'], runtime: number, where: string, route: Project['releases'][number]['route'] = 'theatrical') => {
@@ -964,7 +967,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Goyas 2027 (41st): Spanish features released in Spanish cinemas in 2026, at least 60 minutes (documentaries 70), never online first, by September 9', () => {
     const s = startLife('goya');
     const e = ed(s, 'goya-2027');
-    expect(e.rulesId).toBe('goya-2027@2'); // version 2 adds the specific Bases' categories; the features keep version 1's rules
+    expect(e.rulesId).toBe('goya-2027@3'); // version 2 adds the specific Bases' categories, 3 Best Original Song's article 18; the features keep version 1's rules
     s.now = at('Europe/Madrid', '2026-08-01', 9);
     const film = (format: Project['axes']['format'], runtime: number, where = 'ES') => {
       const p = work(s, { format, runtime, completed: '2026-01-10', base: 'es-madrid' });
@@ -1004,7 +1007,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Spirit Awards 2027: 70 minutes, under $30 million, a US week, streaming or a selection at a listed festival in 2026; new series with two episodes', () => {
     const s = startLife('spirit');
     const e = ed(s, 'spirit-2027');
-    expect(e.rulesId).toBe('spirit-2027@2'); // version 2 reads the 18-minute floor per episode
+    expect(e.rulesId).toBe('spirit-2027@3'); // version 2 reads the 18-minute floor per episode, 3 the Redford award by format
     s.now = at('America/Los_Angeles', '2026-09-01', 9);
     const film = (runtime = 95) => work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'us-los-angeles' });
     const out = film();
@@ -1062,7 +1065,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Writers Guild Awards 2027: screenplays with a US run in 2026 and no television first; series in 2026; talk and documentary November to October', () => {
     const s = startLife('wga');
     const e = ed(s, 'wga-2027');
-    expect(e.rulesId).toBe('wga-2027@2'); // version 2 adds Documentary Screenplay; the rest keep version 1's rules
+    expect(e.rulesId).toBe('wga-2027@3'); // versions 2 and 3 add Documentary Screenplay and the Paul Selvin Award; the rest keep version 1's rules
     s.now = at('America/Los_Angeles', '2026-10-01', 9);
     const film = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'us-los-angeles' });
     release(film, 'broadcast', '2026-02-01', ['US']);
@@ -1073,6 +1076,30 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, show('series', '2025-12-01'), e, 'drama-series')).toMatch(/between January 1, 2026 and December 31, 2026/);
     expect(r(s, show('unscripted-series', '2025-12-01'), e, 'talk-series')).not.toMatch(/release/);
     expect(categoryDeadline(e, cat(e, 'talk-series'))).toBe(at('America/Los_Angeles', '2026-11-20', 17));
+  });
+
+  it('mixed film and television awards take each work under its own rules: the WGA\'s Paul Selvin, the Spirit Awards\' Redford', () => {
+    const s = startLife('by-format');
+    s.now = at('America/Los_Angeles', '2026-09-01', 9);
+    const wga = ed(s, 'wga-2027');
+    const film = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'us-los-angeles' });
+    release(film, 'streaming', '2026-03-01', ['US']);
+    expect(r(s, film, wga, 'selvin')).toMatch(/theatrical release in the United States/); // a film needs its week in cinemas
+    const show = work(s, { format: 'series', runtime: 300, completed: '2026-01-10', base: 'gb-london' });
+    release(show, 'broadcast', '2026-03-01', ['GB']);
+    expect(r(s, show, wga, 'selvin')).not.toMatch(/release|between/); // television: first broadcast in 2026, any country
+    const doc = work(s, { format: 'documentary-series', runtime: 200, completed: '2025-06-01', base: 'us-los-angeles' });
+    release(doc, 'streaming', '2025-12-01', ['US']);
+    expect(r(s, doc, wga, 'selvin')).not.toMatch(/between/); // documentary: November 2025 to October 2026
+    expect(categoryRuleStatus(rulebook('wga-2027@3'), 'selvin')).toBe('verified');
+    expect(categoryRuleStatus(rulebook('wga-2027@2'), 'selvin')).toBe('simulated');
+    // The Redford award: a film under the film rules (70 minutes), a series under the television rules (two episodes).
+    const spirit = ed(s, 'spirit-2027');
+    expect(r(s, work(s, { format: 'feature', runtime: 60, completed: '2026-01-10', base: 'us-los-angeles' }), spirit, 'redford')).toMatch(/at least 70/);
+    const one = work(s, { format: 'series', runtime: 30, completed: '2026-01-10', base: 'us-los-angeles' });
+    one.axes.episodeCount = 1;
+    release(one, 'streaming', '2026-03-01', ['US']);
+    expect(r(s, one, spirit, 'redford')).toMatch(/needs at least 2/);
   });
 
   it('Gotham Awards 2026: over 70 minutes, a US theatrical run in 2026, entered by September 17', () => {
@@ -1153,7 +1180,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const s = startLife('em2');
     s.now = at('America/Los_Angeles', '2026-04-01', 9);
     const e = ed(s, 'emmys-2026');
-    expect(e.rulesId).toBe('emmys-2026@4'); // versions 3 and 4 add Outstanding Narrator and the performer and one-episode rules (tests/recipient-rules.test.ts)
+    expect(e.rulesId).toBe('emmys-2026@5'); // versions 3 and 4 add Outstanding Narrator and the performer and one-episode rules (tests/recipient-rules.test.ts), 5 Original Music And Lyrics (tests/songs.test.ts)
     for (const id of ['guest-actor', 'animated-program', 'reality-competition', 'title-design', 'hosted-nonfiction']) expect(categoryRuleStatus(rulebook(e.rulesId), id), id).toBe('verified');
     expect(categoryRuleStatus(rulebook('emmys-2026@1'), 'guest-actor')).toBe('simulated'); // version 1 read 13 categories
     const show = (format: Project['axes']['format'], eps: number, territory = 'US') => {
