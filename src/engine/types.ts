@@ -726,6 +726,15 @@ export interface Project {
   workEventScheduled: boolean;
   /** Shelved, with its commitments settled (shelve.ts); taken up again by removing it. */
   shelved?: { at: number };
+  /**
+   * What the screenplay is based on, as the writer declares it (awards that split original from adapted read it).
+   * Missing on projects from before November 9, 2026, which count as original. Rights in the source aren't modeled.
+   */
+  source?: { kind: 'original' | 'adapted'; work?: string };
+  /** When the story is set, as declared: costume, makeup and design awards split by it. Missing means contemporary. */
+  storyTime?: 'contemporary' | 'period' | 'future';
+  /** Subjects the story takes on, as declared (some awards and sections are for work about them); never read from prose. */
+  subjects?: string[];
   /** A next season or sequel of another project (continuation.ts), and the people to ask back. */
   continues?: { from: string; number: number; previousArc?: string; returning: { characterId: string; personId: string; method: PerformanceMethod; rate: number }[] };
   continuedBy?: string;
@@ -750,8 +759,10 @@ export interface EditionEntry {
   versionId?: string;
   episode?: number;
   submittedAt: number;
-  status: 'submitted' | 'needs-correction' | 'rejected' | 'withdrawn' | 'accepted' | 'selected' | 'not-selected' | 'nominated' | 'not-nominated' | 'won' | 'lost';
+  status: 'submitted' | 'needs-correction' | 'rejected' | 'withdrawn' | 'disqualified' | 'accepted' | 'selected' | 'not-selected' | 'nominated' | 'not-nominated' | 'won' | 'lost' | 'mention';
   reason?: string;
+  /** Prizes decided among a section's selected works: recorded from the selection, never entered or paid for. */
+  via?: 'selection';
   recipients: string[]; // credit ids
   fee: number;
 }
@@ -787,7 +798,7 @@ export interface Edition {
   provenance: 'official' | 'simulated';
   entries: EditionEntry[];
   rivals: Rival[];
-  results: Record<string, { stage: 'selection' | 'nomination' | 'winner'; projectIds: string[]; rivalIds: string[]; winner?: string; revealed: boolean }>;
+  results: Record<string, { stage: 'selection' | 'nomination' | 'winner'; projectIds: string[]; rivalIds: string[]; winner?: string; revealed: boolean; /** Area and juried awards: every winner, when more than one (or none). */ winners?: string[]; /** Honorary: given to the player for this body of work. */ honoree?: string }>;
   status: 'upcoming' | 'open' | 'closed' | 'judging' | 'announced' | 'complete';
   screenings?: Screening[];
   /** Official dates whose entry deadline wasn't confirmed: the deadline shown is a planning date. */

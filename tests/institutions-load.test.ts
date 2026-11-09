@@ -15,9 +15,17 @@ const reply = (body: unknown, status = 200) => new Response(JSON.stringify(body)
 afterEach(() => vi.restoreAllMocks());
 
 describe('the festival and awards calendar', () => {
-  it('is the 37 events and 142 categories the code held before it became data', () => {
+  it('is the 37 events the code held before it became data, keeping every one of its 142 categories by ID', () => {
+    // The rosters (docs/awards/roster) took the catalog from 142 categories to 802 on November 9, 2026.
+    const base = JSON.parse(readFileSync(new URL('../docs/awards/baseline-institutions.json', import.meta.url), 'utf8')) as { institutions: { id: string; categories: { id: string }[] }[] };
     expect(real.institutions.length).toBe(37);
-    expect(real.institutions.reduce((n, i) => n + (i as unknown as { categories: unknown[] }).categories.length, 0)).toBe(142);
+    expect(base.institutions.reduce((n, i) => n + i.categories.length, 0)).toBe(142);
+    const cats = (i: object) => new Set(((i as { categories?: { id: string }[] }).categories ?? []).map((c) => c.id));
+    for (const b of base.institutions) {
+      const now = cats(real.institutions.find((i) => i.id === b.id)!);
+      for (const c of b.categories) expect(now.has(c.id), `${b.id}/${c.id}`).toBe(true);
+    }
+    expect(real.institutions.reduce((n, i) => n + cats(i).size, 0)).toBe(802);
   });
 
   it('a malformed or repeated entry publishes nothing; a failed fetch is tried again', async () => {

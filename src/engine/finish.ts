@@ -227,6 +227,8 @@ export function assessQuality(state: GameState, p: Project): Record<string, numb
   const gapsLeft = approved.filter((s) => s.essential && !inCut.has(s.id)).length;
   const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10 - gapsLeft * ESSENTIAL_CUT_COST + coverageEdit(p, [...inCut])), music: clamp((crewCap('composer') ?? 45) * 0.9 + 5) };
   if (anim.length) out.animation = clamp(avg(anim) * 0.9 + 6);
+  // Each credited craft on its own, for craft awards (docs/awards/DESIGN.md rule 3), on the same scale as `craft`.
+  for (const h of p.hires.filter((x) => x.kind === 'crew' && x.daysWorked > 0)) out[`craft:${h.roleId}`] = Math.max(out[`craft:${h.roleId}`] ?? 0, clamp(personById(state, h.personId).capability * 0.85 + 8));
   for (const a of p.cast) {
     // A take's performance side, where takes were recorded (takes.ts); else the capture's quality, as before.
     // Directing 2: with singles, the editor cuts between takes for the best usable moments (takes.ts editPerformance).
