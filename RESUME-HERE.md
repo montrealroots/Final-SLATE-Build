@@ -287,15 +287,17 @@ tests/awards-ledger.test.ts`).
    per country). No other qualifying-prize route exists in the game (audited: Spirit, Gotham, AMAA and the European Film
    Awards count a festival premiere as a release, a screening route, not a prize).
 3. **Rule research: in progress.** Rulebook data loads with the catalog (`src/engine/rulebook-data.ts`), so startup
-   stays at 214 kB gzipped. Read on November 9: the Emmys' general eligibility for every entered category, the
-   Berlinale's five other sections (projected; a European-premiere rule added), Cannes' four feature sections
-   (projected), Annecy's Contrechamp, Off-Limits, Perspectives and TV, Venice's Out of Competition and Spotlight,
-   San Sebastián's six other sections, the Golden Globes' other 19 categories, the Annies' other 20, Clermont's Lab and
-   National, and Sitges' six sections. Organizer's rules for at least one edition: 224 of 802 categories, 11 projected
-   only, 567 on SLATE's rules. **Resume at the first id of the research queue in `docs/awards/STATUS.md`** (Venice
-   `sic` and `giornate` need their associations' regulations; TIFF is refused here, HTTP 403; then Busan, IDFA, Hot Docs,
-   SXSW, Series Mania, Locarno, FESPACO, BAFTA, International Emmys, Spirit, Gotham, the guilds, César, Goya, Canadian
-   Screen, AACTA, AMAA, Japan Academy, Blue Dragon, European Film Awards). Each read adds a new rulebook version and a
+   stays at 214 kB gzipped. Read on November 9 (after #47): the Emmys' general eligibility for every entered category,
+   the Berlinale's five other sections (projected; European-premiere rule), Cannes' four feature sections (projected),
+   Annecy's other four, Venice's Out of Competition, Spotlight and the Giornate degli Autori, San Sebastián's six other
+   sections, the Golden Globes' other 19, the Annies' other 20, Clermont's Lab and National, Sitges (6), IDFA (5), Hot Docs
+   (with its 2027 dates), the Canadian Screen Awards (115), the Goyas' 23 feature categories and the Césars' 25.
+   Organizer's rules for at least one edition: 394 of 802 categories, 11 projected only, 397 on SLATE's rules.
+   Refused or unavailable here: TIFF and SXSW (HTTP 403), Venice's Critics' Week (HTTP 503), and the rosters recorded as
+   blocked (Busan, Locarno, FESPACO, BAFTA, AMAA, Blue Dragon). **Resume at the first id of the research queue in
+   `docs/awards/STATUS.md`**; after the blocked ones the next readable are Series Mania, the International Emmys, Spirit,
+   Gotham, the guilds (DGA, WGA, PGA, Actor Awards), AACTA, the Japan Academy and the European Film Awards, then the
+   Goyas' European, Ibero-American and short categories (their own Bases). Each read adds a new rulebook version and a
    test in `tests/rulebooks.test.ts`, and the audit count there moves.
 4. **Nonplayable entries (125): not started.** Each needs what it recognizes, whether SLATE has it, what's missing and a
    scope decision (part 4 of the request).

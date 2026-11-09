@@ -311,6 +311,14 @@ take them, with the features' June 4 deadline. The Settimana Internazionale dell
 Autori (5.2) are selected "in accordance with" their own associations' regulations, which these don't give; they stay on
 SLATE's rules until those are read.
 
+**Version 3 (`venice-2026@3`, `venice-2027@3` projected, read November 9, 2026):** the Giornate degli Autori's own
+[Regulation and Entry Form](https://www.giornatedegliautori.com/?p=381) for its 23rd edition (2026), Article 2: features
+and documentaries longer than 60 minutes; produced after September 30, 2025; European films must be world premieres; not
+at another international festival or major film event; not released in cinemas, on home video or online (a new SLATE rule,
+`unreleased`); not refused at the 2025 selection (SLATE: no earlier Venice entry); entries by June 15, 2026. The
+Settimana Internazionale della Critica's site (sicvenezia.it) returned HTTP 503 on November 9, 2026; SIC stays on SLATE's
+rules.
+
 ## San Sebastián, 74th Edition (2026, Verified) And 75th (2027, Projected)
 
 Source: "Rules and Regulations - 74th San Sebastian International Film Festival" (sansebastianfestival.com, read November 6,
@@ -344,6 +352,73 @@ section I; [2026 Rules](https://sitgesfilmfestival.com/sites/default/files/2026-
 Not modeled: films produced entirely in Spain must be world premieres in the Official Selection; Panorama's "independent
 productions"; the Programming Committee's exceptions for films shown at another Spanish festival.
 
+## IDFA, 39th (2026, verified) and 40th (2027, projected)
+
+Source: [Festival Entry Regulations](https://professionals.idfa.nl/program/festival-entries/festival-entry-regulations/)
+for the 39th edition (read November 9, 2026).
+
+| Rule | Where | Applied to |
+| --- | --- | --- |
+| Completed after July 10, 2025 | 1.2 | Every section |
+| Not screened, broadcast or online in the Netherlands before the festival | 1.2 | Every section |
+| Final entry deadline July 9, 2026 (time not given; SLATE: end of day in Amsterdam) | 1.1 | Every section |
+| World, international or European premiere | 2.4 | Every section (`europeanPremiere`) |
+| Over 60 minutes | 2.4.1 | International Competition |
+| Over 40 minutes | 2.4.1, 2.4.2 | Envision Competition, Luminous, Frontlight (shorts only by invitation) |
+| Up to 40 minutes | 2.4.4 | Short Documentary Competition |
+
+Not modeled: Dutch productions in the short competition must be world premieres (2.4.4); the private-screening exception
+for premiere status.
+
+## Hot Docs 2027
+
+Source: [Submit A Film](https://hotdocs.ca/industry/submit-a-film), for the 2027 festival, April 23 to May 2 (read November
+9, 2026): completed after January 1, 2026; not available online to Ontario audiences before the festival, broadcast versions
+included (SLATE: no earlier online release); deadlines October 29, December 10, 2026 and January 4, 2027 (SLATE: the late
+one). Not modeled: the Ontario premiere for features, mid-lengths and series and the Toronto premiere for shorts (SLATE
+records releases by country), and English or English subtitles.
+
+## Canadian Screen Awards: 2026 (verified) and 2027 (projected)
+
+Sources (read November 9, 2026): [2026 Film Rules & Regulations](https://www.academy.ca/wp-content/uploads/2025/09/2026-Canadian-Screen-Awards-Film-Rules-Regulations.pdf)
+and [2026 Television & Digital Media Rules & Regulations](https://www.academy.ca/wp-content/uploads/2025/09/2026-Canadian-Screen-Awards-Television-Digital-Media-Rules-Regulations.pdf).
+The 2027 rules aren't published; 2027 carries 2026's a year on, labelled projected.
+
+| Rule (2026) | Where | Applied to |
+| --- | --- | --- |
+| Film qualifying period January 1, 2025 to March 31, 2026 | Film II, VI | The 28 film categories |
+| First commercial release in Canada: five Canadian screening dates in a commercial theatre (one in Montreal, Toronto or Vancouver), or an approved streaming service | Film V.C, VI.A | Film categories (SLATE: a Canadian theatrical or streaming release) |
+| Television eligibility September 1, 2024 to November 15, 2025, made available in Canada | TV V | The 87 television categories, television's documentary programs included |
+| Not entered at an earlier Canadian Screen Awards (or prix Gémeaux) | Film V.E | Every category |
+| Final entry deadline November 3, 2025 (no late entries) | Film II, TV II | Every category; the 2026 edition is closed when a game starts |
+| Features at least 60 minutes; feature documentaries over 45; short documentaries under 45; live-action and animated shorts at most 59 | Film XX (definitions) | The matching film categories |
+
+Not modeled: the five-date run and the city; the Academy's list of approved streaming services; first public exposure
+within 1.5 years of the period; minority co-productions only where Canadians are credited; the 2026 citizenship rule for
+nominees in certified productions. The catalog's own requirement (a Canadian production) stays.
+
+## Goya Awards, 41st (2027)
+
+Source: [Bases de los 41 Premios Goya](https://www.premiosgoya.com/pdfs/bases-de-los-41-premios-goya/) (read November 9,
+2026), sections 3.1 and 5.1: fiction and animated features at least 60 minutes, feature documentaries at least 70;
+released commercially in Spanish cinemas, in the original version, January 1 to December 31, 2026; Spanish nationality
+(the catalog's requirement); not in an earlier edition; not available online before the theatrical release, festivals
+excepted; materials before 14:00 on September 9, 2026 for films released July to December (July 28 for January to June,
+not separated in SLATE). Applied to the 23 feature categories. Best European Film, Best Ibero-American Film and the three
+short film awards follow their own specific Bases (section 2), not read. Not modeled: seven consecutive days in one cinema
+(three for documentaries); the ICAA rating before release.
+
+## César, 2027 ceremony
+
+Source: [Règlement 2026-2027](https://www.academie-cinema.org/wp-content/uploads/2026/10/reglement-aatc-2026-2027.pdf),
+chapter II, Article 3 (read November 9, 2026). Features (3-A, and through 3-C every category that follows Best Film): a
+first national commercial release in France January 1 to December 31, 2026, at least seven consecutive days in a Paris-region
+commercial cinema (SLATE: a French theatrical release in 2026); French initiative is the catalog's requirement. Best
+Foreign Film (3-B): the same release, for films that aren't French. Shorts (3-K): under an hour, registered January 15 to
+July 15, 2026. Not modeled: the CNC approval and the exploitation visa (for shorts, July 1 to June 30); the Bureau's
+exceptions; Best Score's original-music share; documentaries shown on television before the cinema release (3-L). The
+César des Lycéens is chosen among the Best Film nominees and takes no entries; it stays on SLATE's rules.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two
@@ -351,6 +426,8 @@ productions"; the Programming Committee's exceptions for films shown at another 
   discretion) and May 8, 2026 as the standard deadline, but these were not read from TIFF's own terms and are **not
   used**: `tiff-2026` stays simulated. A third pass on November 9, 2026 (tiff.net/submit and filmfreeway.com/tiff) was
   refused the same way; the next try is an official archived copy of TIFF's terms or a TIFF press release with them.
+- **SXSW 2027:** the premiere and eligibility policies on support.sxsw.com (features, shorts, TV) refused this environment
+  (HTTP 403) on November 9, 2026; SXSW stays on SLATE's rules.
 - **BAFTA Film Awards 2027:** bafta.org (the rules page and the press release "2027 EE BAFTA Film Awards opens for
   entries") refused this environment (HTTP 403), on both passes. Search summaries give a longlist on January 7, nominations
   on January 19 and the ceremony on February 21, 2027, but not the eligibility period; **not used**: BAFTA stays

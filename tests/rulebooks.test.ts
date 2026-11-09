@@ -78,7 +78,7 @@ describe('rulebook data', () => {
     // Version 2 from November 9, 2026: qualifying-festival routes read from the Academy's lists.
     expect(ed(s, 'oscars-2027').rulesId).toBe('oscars-2027@2');
     expect(ed(s, 'sundance-2027').rulesId).toBe('sundance-2027@1');
-    expect(ed(s, 'venice-2026').rulesId).toBe('venice-2026@2');
+    expect(ed(s, 'venice-2026').rulesId).toBe('venice-2026@3');
     expect(ed(s, 'tiff-2026').rulesId).toBe('simulated');
     expect(categoryRuleStatus(rulebook('cannes-2027@1'), 'shorts')).toBe('projected');
     expect(categoryRuleStatus(rulebook('cannes-2027@1'), 'competition')).toBe('simulated');
@@ -388,7 +388,7 @@ describe('history and saves', () => {
     expect(v3.events.find((x) => x.id === 'oscars-2027:deadline')?.at).toBe(o.deadline);
     expect(v3.editions.find((e) => e.id === 'sundance-2027')!.rulesId).toBe('simulated'); // someone entered: unchanged
     expect(v3.editions.find((e) => e.id === 'tiff-2026')!.rulesId).toBe('simulated'); // no published rules read
-    expect(v3.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@2'); // untouched, in the future
+    expect(v3.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@3'); // untouched, in the future
     const sorted = [...v3.events].sort((a, b) => a.at - b.at || a.priority - b.priority || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
     expect(v3.events.map((x) => x.id)).toEqual(sorted.map((x) => x.id));
   });
@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('224 categories follow verified rules for at least one edition, 11 only projected ones; the other 567 are simulated', () => {
+  it('394 categories follow verified rules for at least one edition, 11 only projected ones; the other 397 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -435,8 +435,11 @@ describe('audit counts', () => {
     // 169 until Venice's Out of Competition and Spotlight (venice-2026@2), 171 until San Sebastián's other six sections
     // (san-sebastian-2026@2), 177 until the Golden Globes' other 19 entered categories (golden-globes-2027@2), 196
     // until the Annies' other 20 categories held in 2027 (annie-2027@2), 216 until Clermont's Lab and National (clermont-2027@2),
-    // 218 until Sitges' six sections (sitges-2026@1).
-    expect(n).toEqual({ verified: 224, projected: 11, simulated: 567 });
+    // 218 until Sitges' six sections (sitges-2026@1), 224 until the Giornate degli Autori (venice-2026@3),
+    // 225 until IDFA's five sections (idfa-2026@1), 230 until Hot Docs (hot-docs-2027@1), 231 until the
+    // Canadian Screen Awards' 115 entered categories (canadian-screen-2026@1), 346 until the Goyas' 23 feature categories (goya-2027@1),
+    // 369 until the Césars' 25 (cesar-2027@1).
+    expect(n).toEqual({ verified: 394, projected: 11, simulated: 397 });
   });
 });
 
@@ -691,6 +694,119 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(categoryDeadline(e, cat(e, 'documenta'))).toBe(at('Europe/Madrid', '2026-07-16', 12));
   });
 
+  it('Venice 2026, version 3: the Giornate degli Autori take films over 60 minutes, made after September 30, 2025, not yet released, by June 15', () => {
+    const s = startLife('gda');
+    const e = ed(s, 'venice-2026');
+    expect(e.rulesId).toBe('venice-2026@3');
+    s.now = at('Europe/Rome', '2026-05-01', 9);
+    const film = (runtime: number, completed = '2026-01-10') => work(s, { format: 'feature', runtime, completed, base: 'ar-buenos-aires' });
+    expect(r(s, film(95), e, 'giornate')).toBe('');
+    expect(r(s, film(60), e, 'giornate')).toMatch(/more than 60/);
+    expect(r(s, film(95, '2025-09-30'), e, 'giornate')).toMatch(/completed on September 30, 2025/);
+    const released = film(95);
+    release(released, 'theatrical', '2026-03-01', ['AR']); // a release at home counts too
+    expect(r(s, released, e, 'giornate')).toMatch(/already been released/);
+    expect(categoryDeadline(e, cat(e, 'giornate'))).toBe(at('Europe/Rome', '2026-06-15', 23, 59) + 59_000);
+  });
+
+  it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {
+    const s = startLife('idfa');
+    const e = ed(s, 'idfa-2026');
+    expect(e.rulesId).toBe('idfa-2026@1');
+    s.now = at('Europe/Amsterdam', '2026-06-01', 9);
+    const doc = (format: Project['axes']['format'], runtime: number, shownIn?: string, completed = '2026-01-10') => {
+      const p = work(s, { format, runtime, completed, base: 'ar-buenos-aires' });
+      if (shownIn) release(p, 'theatrical', '2026-03-01', [shownIn]);
+      return p;
+    };
+    expect(r(s, doc('documentary-feature', 90), e, 'features')).toBe('');
+    expect(r(s, doc('documentary-feature', 60), e, 'features')).toMatch(/more than 60/);
+    expect(r(s, doc('documentary-feature', 41), e, 'envision')).not.toMatch(/minutes/);
+    expect(r(s, doc('documentary-short', 41), e, 'shorts')).toMatch(/40 minutes or less/);
+    expect(r(s, doc('documentary-feature', 90, 'AR'), e, 'luminous')).toBe(''); // shown at home only
+    expect(r(s, doc('documentary-feature', 90, 'US'), e, 'luminous')).toBe(''); // outside Europe: still a European premiere
+    expect(r(s, doc('documentary-feature', 90, 'BE'), e, 'frontlight')).toMatch(/at least a European premiere/);
+    expect(r(s, doc('documentary-feature', 90, 'NL'), e, 'frontlight')).toMatch(/shown publicly in the Netherlands/);
+    expect(r(s, doc('documentary-feature', 90, undefined, '2025-07-10'), e, 'features')).toMatch(/completed on July 10, 2025/);
+    expect(categoryDeadline(e, cat(e, 'shorts'))).toBe(at('Europe/Amsterdam', '2026-07-09', 23, 59) + 59_000);
+  });
+
+  it('Hot Docs 2027: documentaries completed after January 1, 2026, not online first, by January 4', () => {
+    const s = startLife('hd');
+    const e = ed(s, 'hot-docs-2027');
+    expect(e.rulesId).toBe('hot-docs-2027@1');
+    s.now = at('America/Toronto', '2026-11-20', 9);
+    const doc = (completed: string) => work(s, { format: 'documentary-feature', runtime: 80, completed, base: 'ca-toronto' });
+    expect(r(s, doc('2026-03-01'), e, 'festival')).toBe('');
+    expect(r(s, doc('2026-01-01'), e, 'festival')).toMatch(/completed on January 1, 2026/);
+    const online = doc('2026-03-01');
+    release(online, 'streaming', '2026-06-01', ['CA']);
+    expect(r(s, online, e, 'festival')).toMatch(/released online/);
+    expect(categoryDeadline(e, cat(e, 'festival'))).toBe(at('America/Toronto', '2027-01-04', 23, 59) + 59_000);
+  });
+
+  it('Canadian Screen Awards: the 2026 edition closed November 3, 2025; 2027 projects the rules a year on, film and television apart', () => {
+    const s = startLife('csa');
+    const e26 = ed(s, 'canadian-screen-2026');
+    const e = ed(s, 'canadian-screen-2027');
+    expect(e.rulesId).toBe('canadian-screen-2027@1');
+    expect(categoryDeadline(e26, cat(e26, 'film'))).toBe(at('America/Toronto', '2025-11-03', 23, 59) + 59_000); // past when a game starts
+    s.now = at('America/Toronto', '2026-10-01', 9);
+    const film = (format: Project['axes']['format'], runtime: number, where: string, route: Project['releases'][number]['route'] = 'theatrical') => {
+      const p = work(s, { format, runtime, completed: '2026-01-10', base: 'ca-toronto' });
+      release(p, route, '2026-05-01', [where]);
+      return p;
+    };
+    expect(r(s, film('feature', 95, 'CA'), e, 'cinematography')).not.toMatch(/release|minutes/);
+    expect(r(s, film('feature', 95, 'US'), e, 'cinematography')).toMatch(/release in Canada between January 1, 2026 and March 31, 2027/);
+    expect(r(s, film('feature', 59, 'CA'), e, 'film')).toMatch(/at least 60/);
+    expect(r(s, film('documentary-feature', 45, 'CA'), e, 'documentary')).toMatch(/more than 45/);
+    expect(r(s, film('documentary-short', 45, 'CA'), e, 'short-documentary')).toMatch(/under 45/);
+    const show = film('documentary-feature', 50, 'CA', 'broadcast'); // television's documentary program: the TV window, no film length
+    expect(r(s, show, e, 'tv-documentary-program')).not.toMatch(/release|minutes/);
+    expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/Toronto', '2026-11-03', 23, 59) + 59_000);
+  });
+
+  it('Goyas 2027 (41st): Spanish features released in Spanish cinemas in 2026, at least 60 minutes (documentaries 70), never online first, by September 9', () => {
+    const s = startLife('goya');
+    const e = ed(s, 'goya-2027');
+    expect(e.rulesId).toBe('goya-2027@1');
+    s.now = at('Europe/Madrid', '2026-08-01', 9);
+    const film = (format: Project['axes']['format'], runtime: number, where = 'ES') => {
+      const p = work(s, { format, runtime, completed: '2026-01-10', base: 'es-madrid' });
+      release(p, 'theatrical', '2026-04-01', [where]);
+      return p;
+    };
+    expect(r(s, film('feature', 95), e, 'cinematography')).not.toMatch(/release|minutes/);
+    expect(r(s, film('feature', 59), e, 'film')).toMatch(/at least 60/);
+    expect(r(s, film('documentary-feature', 69), e, 'documentary')).toMatch(/at least 70/);
+    expect(r(s, film('feature', 95, 'FR'), e, 'film')).toMatch(/theatrical release in Spain between January 1, 2026 and December 31, 2026/);
+    const streamed = film('feature', 95);
+    release(streamed, 'streaming', '2026-02-01', ['US']);
+    expect(r(s, streamed, e, 'film')).toMatch(/outside cinemas, before any theatrical run/);
+    expect(categoryRuleStatus(rulebook(e.rulesId), 'european')).toBe('simulated'); // its own Bases, not read
+    expect(categoryDeadline(e, cat(e, 'film'))).toBe(at('Europe/Madrid', '2026-09-09', 14));
+  });
+
+  it('César 2027: features released in French cinemas in 2026; shorts under an hour, registered by July 15', () => {
+    const s = startLife('cesar');
+    const e = ed(s, 'cesar-2027');
+    expect(e.rulesId).toBe('cesar-2027@1');
+    s.now = at('Europe/Paris', '2026-07-01', 9);
+    const film = (where: string, date = '2026-03-01') => {
+      const p = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'fr-paris' });
+      release(p, 'theatrical', date, [where]);
+      return p;
+    };
+    expect(r(s, film('FR'), e, 'cinematography')).not.toMatch(/release/);
+    expect(r(s, film('BE'), e, 'cinematography')).toMatch(/theatrical release in France between January 1, 2026 and December 31, 2026/);
+    expect(r(s, film('FR', '2025-12-20'), e, 'film')).toMatch(/theatrical release in France/);
+    const short = (runtime: number) => work(s, { format: 'short', runtime, completed: '2026-01-10', base: 'fr-paris' });
+    expect(r(s, short(59), e, 'short-fiction')).not.toMatch(/minutes/);
+    expect(r(s, short(60), e, 'short-fiction')).toMatch(/under 60 minutes/);
+    expect(categoryDeadline(e, cat(e, 'short-fiction'))).toBe(at('Europe/Paris', '2026-07-15', 23, 59) + 59_000);
+  });
+
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {
     const s = startLife('em2');
     s.now = at('America/Los_Angeles', '2026-04-01', 9);
@@ -779,7 +895,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     raw.editions.find((e: Edition) => e.id === 'emmys-2026').entries.push({ id: 'x', projectId: 'p', categoryId: 'drama', submittedAt: 0, status: 'submitted', recipients: [], fee: 0 });
     const data = JSON.stringify(raw);
     const back = deserialize(JSON.stringify({ format: 'slate-save', version: raw.version, checksum: hashString(data), data }));
-    expect(back.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@2');
+    expect(back.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@3');
     expect(back.editions.find((e) => e.id === 'emmys-2026')!.rulesId).toBe('simulated'); // someone entered it
     const v = back.editions.find((e) => e.id === 'venice-2026')!;
     expect(back.events.find((x) => x.id === 'venice-2026:deadline')?.at).toBe(v.deadline);

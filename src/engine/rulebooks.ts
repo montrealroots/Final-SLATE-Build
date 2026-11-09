@@ -87,6 +87,8 @@ export interface CategoryRules {
   noTvOrOnline?: Ruled<true>;
   /** Not shown publicly in these countries before the festival, except at these institutions' editions. */
   notShownIn?: Ruled<{ countries: string[]; exceptAt?: string[] }>;
+  /** No release of any kind (cinemas, television, online, home video) before the festival starts. */
+  unreleased?: Ruled<true>;
   /** Not shown publicly in a European country other than the production country before the festival (a European premiere). */
   europeanPremiere?: Ruled<true>;
   /** Television work must not have had a theatrical release in these countries before its first broadcast or stream there. */

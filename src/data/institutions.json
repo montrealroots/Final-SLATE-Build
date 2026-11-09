@@ -3810,6 +3810,15 @@
    "eligibility": "premiere",
    "prestige": 60,
    "description": "An April documentary festival with an audience award.",
+   "official": {
+    "2027": {
+     "start": "2027-04-23",
+     "end": "2027-05-02",
+     "deadline": "2027-01-04",
+     "source": "https://hotdocs.ca/industry/submit-a-film",
+     "checked": "2026-11-09"
+    }
+   },
    "categories": [
     {
      "id": "festival",

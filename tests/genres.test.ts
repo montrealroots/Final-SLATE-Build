@@ -49,7 +49,7 @@ describe('the 149-entry catalog', () => {
       // Genre choice never touches money or hiring directly.
       expect(p.obligations.length).toBe(0);
     }
-  });
+  }, 30_000); // 149 genres, each scripted and checked: about 4.7 s alone, over vitest's 5 s default under a full run (November 9, 2026)
 
   it('signatures differ: no two entries share both modules and questions unless the registry says they share mechanics', () => {
     const sig = new Map<string, string[]>();
