@@ -293,8 +293,9 @@ tests/awards-ledger.test.ts`).
    sections, the Golden Globes' other 19, the Annies' other 20, Clermont's Lab and National, Sitges (6), IDFA (5), Hot Docs
    (with its 2027 dates), the Canadian Screen Awards (115), the Goyas' 23 feature categories and the Césars' 25.
    After #50: the Spirit Awards (20), the Actor Awards (13), the DGA's feature award, the WGA (16), the Gothams' ten
-   film categories and the PGA's two film awards. Organizer's rules for at least one edition: 456 of 802 categories, 11
-   projected only, 335 on SLATE's rules. Refused or unavailable here: TIFF and SXSW (HTTP 403), Venice's Critics' Week and
+   film categories and the PGA's two film awards. Organizer's rules for at least one edition: 457 of 806 categories, 11
+   projected only, 338 on SLATE's rules (the four categories the nonplayable review entered: Outstanding Narrator read,
+   the other three on terms not readable from here). Refused or unavailable here: TIFF and SXSW (HTTP 403), Venice's Critics' Week and
    AACTA's entries page (HTTP 503), the International Emmys' rules page and the DGA's other guideline pages (HTTP 404), no
    current Series Mania competition rules, and the rosters recorded as blocked (Busan, Locarno, FESPACO, BAFTA, AMAA, Blue
    Dragon). The European Film Awards' regulations were read but have no dates and test things SLATE doesn't record
@@ -304,12 +305,19 @@ tests/awards-ledger.test.ts`).
    the WGA's Documentary Screenplay and Selvin pages, the PGA's documentary and television rules, and the Emmy and
    Gotham honorary-or-mixed categories. Each read adds a new rulebook version and a test in `tests/rulebooks.test.ts`,
    and the audit count there moves.
-4. **Nonplayable entries (125): not started.** Each needs what it recognizes, whether SLATE has it, what's missing and a
-   scope decision (part 4 of the request).
-5. **Recipients and work-specific rules: not started**, apart from the Golden Globes' Non-English recipients and the
-   short-form producer cap. Known shortcuts to replace or label: the six-metro US run, `la-ny-theatrical`,
-   `coproduction` read from extra funding, `non-english` read from the first dialogue language, songs credited to the
-   composer, the Golden Globes' $150 million box-office threshold, guest-performer episode shares.
+4. **Nonplayable entries: reviewed.** `docs/awards/NONPLAYABLE-REVIEW.md` (generated from the rosters; a test fails an
+   entry it doesn't list) groups all of them with what each recognizes, whether SLATE has it, what is missing and the
+   decision. Four reasons were false. Entered: the Emmys' Outstanding Narrator, SXSW's Music Video Competition and its jury
+   award, and the International Emmys' Sports Documentary (806 categories). Corrected and still out: the Television Academy
+   Honors (call for entries unread), the Ustinov award, the Annie anime category. 123 remain out, each with a reason.
+   Within reach once read: the Honors' call for entries (the Social Issues subject exists), the Ustinov terms (needs an
+   entry path for an unproduced script), the Annie anime definition.
+5. **Recipients and work-specific rules: in progress.** `docs/awards/RECIPIENT-RULES.md` lists every rule with its status.
+   Applied after #50: narrators out of the Emmy performer categories, the guest and short form episode shares
+   (`emmys-2026@3`), the dialogue share for International Feature and the Globes' Non-English Language (`oscars-2027@3`,
+   `golden-globes-2027@3`), and a fix: a co-production partner signed in Financing now counts. Tests:
+   `tests/recipient-rules.test.ts`. **Next:** the Emmys' episode-specific directing and writing entries (credits already
+   record each episode's writer and director), then the rows marked Not modeled in that file, in order.
 6-8. Reports are updated at each checkpoint; journeys still owed: supporting/guest TV performance, episode-specific
    writing or directing, songs if implemented, honorary outside submissions (exists), a historical result across an
    edition change (exists for the Annies), all on desktop and WebKit.

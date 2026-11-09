@@ -8,7 +8,28 @@
 
 ## Commands And Results
 
-### Current: Rule Research, Continued (November 9, 2026, after #49)
+### Current: Nonplayable Review And Recipient Rules (November 9, 2026, after #50 was opened)
+
+Tested revision: the working branch at the commit that updates this report.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 69 files, 516 tests passed; startup JavaScript 672 kB, 215 kB gzipped, 0 problems. |
+| `python3 tools/awards/build.py --check` | 0 | Catalog current: 806 categories. |
+| `npx playwright test e2e/awards.spec.ts --project=desktop --project=iphone-15-plus --trace off` | 0 | 14 passed in 2.2 minutes (WebKit is the `iphone-15-plus` project). |
+
+Implemented and tested (engine): the Emmys' Outstanding Narrator, from a documentary short played to delivery with a cast
+Narrator (`tests/nonplayable-review.test.ts`); SXSW's Music Video Competition, from a delivered music video; the
+International Emmys' Sports Documentary, from the Sports genre; narrators kept out of the Emmy performer categories; the
+guest and short form episode shares; the Oscars' and Globes' dialogue share counted from the script; co-production
+partners signed in Financing (`tests/recipient-rules.test.ts`). Mutation-tested: each of the narrator rule's three
+conditions, the narrator filter, both episode-share boundaries and both dialogue-share mutants fail a test. The first
+"no narration" fixture passed against a mutant, because a narrator in no scene is never cast; it was rewritten.
+Source-verified: the 78th Emmy rules (Category 76, Performer Awards, Category 110) and the 84th Golden Globes rules
+(A.3.c.i-ii), read November 9, 2026. Not browser-tested: none of the new categories has a journey yet (owed, part 7).
+Counts: organizer's rules 457 of 806, projected only 11, SLATE's 338; 123 entries remain out of play, each reviewed.
+
+### Previous: Rule Research, Continued (November 9, 2026, after #49)
 
 Tested revision: the working branch at the commit that updates this report.
 

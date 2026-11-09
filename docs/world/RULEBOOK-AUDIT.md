@@ -81,6 +81,11 @@ newest list carried forward a year at a time (`projectedList`), labelled as such
 Not verified: craft categories, writing and acting recipient
 limits, Best Picture's expanded theatrical run (Rule Twenty), inclusion standards, the shorts' student-film path.
 
+**Version 3 (`oscars-2027@3`, November 9, 2026):** International Feature Film's "more than 50 percent non-English
+dialogue" (Rule Sixteen II.D) is counted from the approved script, in words, by each line's language; until then it read
+the first dialogue language the producer declared. A film with no written dialogue still reads the declaration. See
+`docs/awards/RECIPIENT-RULES.md`.
+
 ## Sundance Film Festival 2027
 
 Sources (retrieved November 6, 2026): [2027 Submissions FAQ](https://www.sundance.org/submissions-faq);
@@ -269,6 +274,10 @@ also be submitted for Best Motion Picture to be eligible for the individual awar
 independent films); A.3.d's exclusion of voice-only and cameo performances; B.1.b's $150 million box-office threshold (the
 catalog's requirement reads a theatrical release, a gap recorded for the recipients and work-specific audit).
 
+**Version 3 (`golden-globes-2027@3`, November 9, 2026):** Non-English Language's "more than 50% of its dialogue must be
+in a language other than English" (A.3.c.i) is counted from the approved script, as the Oscars' is. Not modeled: A.3.c.ii,
+that dialects, pidgins and local usages of English count as English.
+
 ## Primetime Emmy Awards, 78th (2026, verified) and 79th (2027, projected)
 
 Source: Television Academy, 78th Emmy Awards 2025-2026 Rules and Procedures, version 4 (updated April 7, 2026), from
@@ -318,6 +327,15 @@ at another international festival or major film event; not released in cinemas, 
 `unreleased`); not refused at the 2025 selection (SLATE: no earlier Venice entry); entries by June 15, 2026. The
 Settimana Internazionale della Critica's site (sicvenezia.it) returned HTTP 503 on November 9, 2026; SIC stays on SLATE's
 rules.
+
+**Version 3 (`emmys-2026@3`, November 9, 2026):** Category 76, Outstanding Narrator ("for a continuing or single
+narration in a documentary/nonfiction series or special"), entered: the cast Narrator of a program with a narration
+sequence. Performer Awards, read the same day: narrators may not enter the lead, supporting or guest categories
+(`noNarrators`); a guest appears in fewer than half the eligible episodes and a short form performer in half or more
+(`episodeShare`, from the episodes each performer is credited in). Not modeled: a narration performed as a character
+belongs in Character Voice-Over; a performer nominated as lead or supporting can't later enter the same role as a guest;
+the 5% screen-time minimums. Category 110, Outstanding Stunt Performance, stays out: SLATE credits the stunt coordinator
+but casts no stunt performers (`docs/awards/NONPLAYABLE-REVIEW.md`).
 
 ## San Sebastián, 74th Edition (2026, Verified) And 75th (2027, Projected)
 
