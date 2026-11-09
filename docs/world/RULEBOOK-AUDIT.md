@@ -352,6 +352,24 @@ section I; [2026 Rules](https://sitgesfilmfestival.com/sites/default/files/2026-
 Not modeled: films produced entirely in Spain must be world premieres in the Official Selection; Panorama's "independent
 productions"; the Programming Committee's exceptions for films shown at another Spanish festival.
 
+## IDFA, 39th (2026, verified) and 40th (2027, projected)
+
+Source: [Festival Entry Regulations](https://professionals.idfa.nl/program/festival-entries/festival-entry-regulations/)
+for the 39th edition (read November 9, 2026).
+
+| Rule | Where | Applied to |
+| --- | --- | --- |
+| Completed after July 10, 2025 | 1.2 | Every section |
+| Not screened, broadcast or online in the Netherlands before the festival | 1.2 | Every section |
+| Final entry deadline July 9, 2026 (time not given; SLATE: end of day in Amsterdam) | 1.1 | Every section |
+| World, international or European premiere | 2.4 | Every section (`europeanPremiere`) |
+| Over 60 minutes | 2.4.1 | International Competition |
+| Over 40 minutes | 2.4.1, 2.4.2 | Envision Competition, Luminous, Frontlight (shorts only by invitation) |
+| Up to 40 minutes | 2.4.4 | Short Documentary Competition |
+
+Not modeled: Dutch productions in the short competition must be world premieres (2.4.4); the private-screening exception
+for premiere status.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two

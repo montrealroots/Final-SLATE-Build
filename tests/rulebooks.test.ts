@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('225 categories follow verified rules for at least one edition, 11 only projected ones; the other 566 are simulated', () => {
+  it('230 categories follow verified rules for at least one edition, 11 only projected ones; the other 561 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -435,8 +435,9 @@ describe('audit counts', () => {
     // 169 until Venice's Out of Competition and Spotlight (venice-2026@2), 171 until San Sebastián's other six sections
     // (san-sebastian-2026@2), 177 until the Golden Globes' other 19 entered categories (golden-globes-2027@2), 196
     // until the Annies' other 20 categories held in 2027 (annie-2027@2), 216 until Clermont's Lab and National (clermont-2027@2),
-    // 218 until Sitges' six sections (sitges-2026@1), 224 until the Giornate degli Autori (venice-2026@3).
-    expect(n).toEqual({ verified: 225, projected: 11, simulated: 566 });
+    // 218 until Sitges' six sections (sitges-2026@1), 224 until the Giornate degli Autori (venice-2026@3),
+    // 225 until IDFA's five sections (idfa-2026@1).
+    expect(n).toEqual({ verified: 230, projected: 11, simulated: 561 });
   });
 });
 
@@ -704,6 +705,28 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     release(released, 'theatrical', '2026-03-01', ['AR']); // a release at home counts too
     expect(r(s, released, e, 'giornate')).toMatch(/already been released/);
     expect(categoryDeadline(e, cat(e, 'giornate'))).toBe(at('Europe/Rome', '2026-06-15', 23, 59) + 59_000);
+  });
+
+  it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {
+    const s = startLife('idfa');
+    const e = ed(s, 'idfa-2026');
+    expect(e.rulesId).toBe('idfa-2026@1');
+    s.now = at('Europe/Amsterdam', '2026-06-01', 9);
+    const doc = (format: Project['axes']['format'], runtime: number, shownIn?: string, completed = '2026-01-10') => {
+      const p = work(s, { format, runtime, completed, base: 'ar-buenos-aires' });
+      if (shownIn) release(p, 'theatrical', '2026-03-01', [shownIn]);
+      return p;
+    };
+    expect(r(s, doc('documentary-feature', 90), e, 'features')).toBe('');
+    expect(r(s, doc('documentary-feature', 60), e, 'features')).toMatch(/more than 60/);
+    expect(r(s, doc('documentary-feature', 41), e, 'envision')).not.toMatch(/minutes/);
+    expect(r(s, doc('documentary-short', 41), e, 'shorts')).toMatch(/40 minutes or less/);
+    expect(r(s, doc('documentary-feature', 90, 'AR'), e, 'luminous')).toBe(''); // shown at home only
+    expect(r(s, doc('documentary-feature', 90, 'US'), e, 'luminous')).toBe(''); // outside Europe: still a European premiere
+    expect(r(s, doc('documentary-feature', 90, 'BE'), e, 'frontlight')).toMatch(/at least a European premiere/);
+    expect(r(s, doc('documentary-feature', 90, 'NL'), e, 'frontlight')).toMatch(/shown publicly in the Netherlands/);
+    expect(r(s, doc('documentary-feature', 90, undefined, '2025-07-10'), e, 'features')).toMatch(/completed on July 10, 2025/);
+    expect(categoryDeadline(e, cat(e, 'shorts'))).toBe(at('Europe/Amsterdam', '2026-07-09', 23, 59) + 59_000);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

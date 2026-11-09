@@ -343,7 +343,7 @@ function releaseFits(p: Project, inst: Institution, ed: Edition): { ok: boolean;
 
 export function countryWords(c: string): string {
   // Named from the gazetteer: until November 9, 2026 every country but three showed as its code ("a release in ES").
-  return c === 'US' ? 'the United States' : c === 'GB' ? 'the United Kingdom' : countryName(c);
+  return c === 'US' ? 'the United States' : c === 'GB' ? 'the United Kingdom' : countryName(c).replace(/^The /, 'the '); // mid-sentence
 }
 
 type ReleaseFit = { ok: boolean; provisional: boolean; reason?: string; via?: 'release' | 'festival' | 'category'; note?: string };

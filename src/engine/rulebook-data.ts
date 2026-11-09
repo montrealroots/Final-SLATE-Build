@@ -647,8 +647,36 @@ function sitges(year: number, mk: typeof v): Record<string, CategoryRules> {
 const SITGES_2026: RuleBook = { id: 'sitges-2026@1', institutionId: 'sitges', year: 2026, version: 1, checked: '2026-11-09', sources: SITGES_SOURCES, categories: sitges(2026, v) };
 const SITGES_2027: RuleBook = { id: 'sitges-2027@1', institutionId: 'sitges', year: 2027, version: 1, checked: '2026-11-09', sources: SITGES_SOURCES, categories: sitges(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) };
 
+// ---------------- IDFA: 39th (2026, verified) and 40th (2027, projected) ----------------
+
+/**
+ * Read November 9, 2026: the 39th edition's Festival Entry Regulations (1.1 deadlines, 1.2 eligibility, 2.4 sections).
+ * Not modeled: Dutch productions in the short competition must be world premieres (2.4.4); IDFA's private-screening
+ * exception for premiere status.
+ */
+const IDFA_SOURCE: RuleSource = { id: 'idfa39-reg', publisher: 'IDFA', title: 'Festival Entry Regulations - 39th IDFA', url: 'https://professionals.idfa.nl/program/festival-entries/festival-entry-regulations/', edition: '39th IDFA (2026)', retrieved: '2026-11-09' };
+function idfa(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const p = year === 2026 ? '' : ' From the 2026 regulations; the 2027 regulations are not published yet.';
+  const common: CategoryRules = {
+    completedFrom: mk(`${year - 1}-07-11`, 'idfa39-reg', `Completed after July 10, ${year - 1} (1.2).${p}`),
+    notShownIn: mk({ countries: ['NL'] }, 'idfa39-reg', `Not screened, broadcast or online in the Netherlands before the festival (1.2).${p}`),
+    europeanPremiere: mk(true, 'idfa39-reg', `World, international or European premiere (2.4).${p}`),
+    deadlines: mk([{ date: `${year}-07-09`, time: '23:59', zone: 'Europe/Amsterdam', timeAssumed: true }], 'idfa39-reg', `Final entry deadline July 9 (1.1). The time of day is not given; SLATE uses the end of the day in Amsterdam.${p}`),
+  };
+  const over = (n: number, where: string) => mk({ over: n }, 'idfa39-reg', `Over ${n} minutes (${where}).${p}`);
+  return {
+    features: { ...common, runtime: over(60, '2.4.1, International Competition') },
+    envision: { ...common, runtime: over(40, '2.4.1, Envision Competition') },
+    luminous: { ...common, runtime: over(40, '2.4.2; shorts only by invitation') },
+    frontlight: { ...common, runtime: over(40, '2.4.2; shorts only by invitation') },
+    shorts: { ...common, runtime: mk({ atMost: 40 }, 'idfa39-reg', `Up to 40 minutes (2.4.4).${p}`) },
+  };
+}
+const IDFA_2026: RuleBook = { id: 'idfa-2026@1', institutionId: 'idfa', year: 2026, version: 1, checked: '2026-11-09', sources: [IDFA_SOURCE], categories: idfa(2026, v) };
+const IDFA_2027: RuleBook = { id: 'idfa-2027@1', institutionId: 'idfa', year: 2027, version: 1, checked: '2026-11-09', sources: [IDFA_SOURCE], categories: idfa(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) };
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027,
 ];
