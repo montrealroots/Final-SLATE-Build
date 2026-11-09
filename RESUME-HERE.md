@@ -270,6 +270,30 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
   - No primary source was found for the estimating process.
   - Rest between shoot days is not modeled.
 
+### Newest Request (November 9, 2026, after #46): complete awards and festival coverage (IN PROGRESS)
+
+The owner asked for every institution already in the game (37: 16 festivals, 21 award bodies; 142 categories before)
+to get its complete official roster, edition rules and connected gameplay. Plan, in dependency order:
+
+1. **A1-A2 research** (in progress): one roster file per institution in `docs/awards/roster/<id>.txt` (format in its
+   README: official name, kind, recipient, work, source reference, note; `-` lines are official categories the game
+   can't represent, with the reason; `UNVERIFIED:` notes are research gaps).
+   - Done (10): oscars, emmys, golden-globes, annie, spirit, gotham, dga, wga, pga, actor-awards.
+   - To do (27): bafta-film, bafta-tv (bafta.org returns 403 here; try the fetch tool or other official routes),
+     international-emmys, cesar, goya, canadian-screen, aacta, amaa (403), japan-academy, blue-dragon (times out),
+     european-film-awards, and all 16 festivals (sections, juries, audience and partner prizes; Locarno returns 403).
+   - Research tools (re-create if the scratchpad is gone): `pdftotext -layout`; a Playwright page renderer for
+     JavaScript sites (Annie, Gotham, DGA, WGA and the Actor Awards needed it); the Annie site only renders subpages
+     by clicking through from /rules-and-categories.
+2. **A3 data model** (not started): category kinds (award, area, juried, section, prize within a section, audience,
+   partner, honorary), recipients (craft roles, guest, song, host, performer, national, career), original/adapted
+   material, new-series and debut rules; `tools/awards/build.py` to turn rosters into `src/data/institutions.json`
+   (keeping every existing category id) plus the coverage ledger; save migration; per-craft quality at delivery.
+3. **A4 engine**: eligibility and recipients per kind; prizes chosen among a section's selection (a selection is never
+   a win); honorary selection from career history, never a paid submission; results stored only where the player is
+   involved (deterministic public results otherwise, to keep long-career saves small).
+4. **A5 UI**, **A6 ledger, tests, Playwright journeys, checks, PRs**.
+
 ### Newest Request (November 8, 2026, after #45): browser journeys for the last unit-only behaviours
 
 - **Versions** (`15-05.03`): Your Entries now names the cut entered, and the live-action journey enters the Festival Cut.
