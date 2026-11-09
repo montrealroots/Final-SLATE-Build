@@ -87,10 +87,32 @@ All three are implemented, tested in the engine and in the browser (desktop and 
    it was judged, recipients, screen-time calculation, song. Judging reads the snapshot's score. Re-entry after a
    withdrawal records `revises`.
 
-Limits kept explicit: a work enters one song per song category (results are kept per work); the Oscars' end-credit cue
-order and "essentially equal" judgement aren't modeled; other organizers' song rules weren't read (SLATE's reading
-applies); screen time is the player's record, not a measurement. Next: the awards research queue in
-`docs/awards/STATUS.md` (part 3 of the November 9 request) is where work resumes.
+The Limits listed when #55 was opened were then worked through ("Continue the rule research while CI runs while fixing
+the things in Limits", November 9):
+- **Several songs per song category:** entries compete as `projectId~songId` (`awards.ts` `entryKey`, `keyProject`), so each
+  song has its own selection, nomination and result; the Oscars cap three songs per film entered and two nominated
+  (`maxSongs`, `maxNominatedPerWork`); the CSA two per film and one per team of writers (`oneEntryPerTeam`). The entry
+  dialog marks songs already entered.
+- **End-credit order and "essentially equal":** end-credit uses carry a cue (`SongUse.cue`; Play It First under Songs); the
+  Oscars take only the first new cue (`endCredits: 'first-cue'`), the CSA none (`'never'`). Writing days are recorded per
+  writer on song tasks (`Task.workerDays`, `SongCredit.days`); a writer with under half the main writer's days is a
+  partial contributor (`essentiallyEqual`, SLATE's measure), and the Emmys drop writers under 20% (`minShare`).
+- **Other organizers' song rules:** the Globes (`golden-globes-2027@5`), Emmys (`emmys-2026@5`), Goyas (`goya-2027@3`: 30
+  seconds at once or 60 in all), CSA (`canadian-screen-2026@2`) and AACTA (`aacta-2027@2`: 15 seconds, no TV title theme).
+- **Rules by format** (`CategoryRules.byFormat`, `categoryRules(ed, cat, p)`): the WGA's Paul Selvin (`wga-2027@3`), the
+  Spirit Awards' Redford (`spirit-2027@3`) and the AACTA's shared categories (song; then `aacta-2027@3` soundtrack, hair and
+  makeup, visual effects, with the soundtrack's five songs heard five seconds each and the music supervisor as recipient).
+- **More rules read:** the DGA's Michael Apted first-time feature award (`dga-2027@3`), the AACTA's online series
+  (`aacta-2027@4`), Series Mania 2027's four competitive sections (`series-mania-2027@1`). Rule counts: 541 verified, 11
+  projected, 254 simulated (`tests/rulebooks.test.ts`).
+- **CI on #55 (run 131) failed** in the festival journey (`e2e/journeys.spec.ts`): it set the quality fixture after the
+  entry, and judging now reads the entry's snapshot. The fixture moved before the entry.
+
+Still not modeled: screen time is the player's record, not a measurement (the game has no footage). Blocked research,
+tried again on November 9: TIFF, BAFTA and SXSW eligibility (HTTP 403); the International Emmys (no eligibility period
+published on their pages); Locarno 2027 (not published; the festival may move to July); the DGA's Documentary Film page
+(HTTP 404); Busan, FESPACO, Blue Dragon and AMAA (not found); the European Film Awards (no dates). The queue is in
+`docs/awards/STATUS.md`.
 
 ### Newest Request (November 8, 2026): the SLATE Complete Gameplay Depth Package
 
