@@ -1,0 +1,154 @@
+{
+  "label": "run",
+  "node": "v22.23.4",
+  "date": "2026-11-09",
+  "buildSavesMs": 684,
+  "rows": [
+    {
+      "name": "fresh",
+      "saveKB": 96,
+      "storage": {
+        "normal": {
+          "steadyKB": 191,
+          "peakKB": 191,
+          "peakOverSaveSize": 2,
+          "ok": true
+        },
+        "withRecoveryCopies": {
+          "steadyKB": 382,
+          "peakKB": 382,
+          "peakOverSaveSize": 4,
+          "ok": true
+        },
+        "browserLimitKB": 5120
+      },
+      "events": 372,
+      "projects": 0,
+      "log": 0,
+      "structuredCloneMs": 0.787,
+      "snapshotMs": 0.146,
+      "snapshotHeapKB": 96,
+      "partsKB": {
+        "events": 54,
+        "editions": 28
+      },
+      "tick": {
+        "ms": 1.306,
+        "calls": 672,
+        "events": 7,
+        "msPerCall": 0.002,
+        "resultHash": 3614328091
+      },
+      "advance30Days": {
+        "ms": 0.508,
+        "events": 22,
+        "calls": 1,
+        "resultHash": 3729204068
+      },
+      "sleep8Hours": {
+        "ms": 0.317,
+        "events": 1,
+        "calls": 2
+      }
+    },
+    {
+      "name": "medium",
+      "saveKB": 146,
+      "storage": {
+        "normal": {
+          "steadyKB": 293,
+          "peakKB": 293,
+          "peakOverSaveSize": 2,
+          "ok": true
+        },
+        "withRecoveryCopies": {
+          "steadyKB": 586,
+          "peakKB": 586,
+          "peakOverSaveSize": 4,
+          "ok": true
+        },
+        "browserLimitKB": 5120
+      },
+      "events": 375,
+      "projects": 1,
+      "log": 35,
+      "structuredCloneMs": 1.328,
+      "snapshotMs": 0.25,
+      "snapshotHeapKB": 214,
+      "partsKB": {
+        "events": 54,
+        "log": 7,
+        "projects": 35,
+        "editions": 28
+      },
+      "tick": {
+        "ms": 9.639,
+        "calls": 672,
+        "events": 25,
+        "msPerCall": 0.014,
+        "resultHash": 524733541
+      },
+      "advance30Days": {
+        "ms": 6.901,
+        "events": 67,
+        "calls": 8,
+        "resultHash": 608961412
+      },
+      "sleep8Hours": {
+        "ms": 1.146,
+        "events": 1,
+        "calls": 2
+      }
+    },
+    {
+      "name": "long",
+      "saveKB": 316,
+      "storage": {
+        "normal": {
+          "steadyKB": 631,
+          "peakKB": 631,
+          "peakOverSaveSize": 2,
+          "ok": true
+        },
+        "withRecoveryCopies": {
+          "steadyKB": 1263,
+          "peakKB": 1263,
+          "peakOverSaveSize": 4,
+          "ok": true
+        },
+        "browserLimitKB": 5120
+      },
+      "events": 243,
+      "projects": 3,
+      "log": 188,
+      "structuredCloneMs": 3.133,
+      "snapshotMs": 0.633,
+      "snapshotHeapKB": 348,
+      "partsKB": {
+        "events": 36,
+        "processedEventIds": 6,
+        "log": 35,
+        "projects": 148,
+        "editions": 43
+      },
+      "tick": {
+        "ms": 0.812,
+        "calls": 672,
+        "events": 1,
+        "msPerCall": 0.001,
+        "resultHash": 262453911
+      },
+      "advance30Days": {
+        "ms": 1.013,
+        "events": 16,
+        "calls": 1,
+        "resultHash": 1995713532
+      },
+      "sleep8Hours": {
+        "ms": 0.832,
+        "events": 1,
+        "calls": 2
+      }
+    }
+  ]
+}
