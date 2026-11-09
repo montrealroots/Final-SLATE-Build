@@ -78,7 +78,7 @@ describe('rulebook data', () => {
     // Version 2 from November 9, 2026: qualifying-festival routes read from the Academy's lists.
     expect(ed(s, 'oscars-2027').rulesId).toBe('oscars-2027@2');
     expect(ed(s, 'sundance-2027').rulesId).toBe('sundance-2027@1');
-    expect(ed(s, 'venice-2026').rulesId).toBe('venice-2026@1');
+    expect(ed(s, 'venice-2026').rulesId).toBe('venice-2026@2');
     expect(ed(s, 'tiff-2026').rulesId).toBe('simulated');
     expect(categoryRuleStatus(rulebook('cannes-2027@1'), 'shorts')).toBe('projected');
     expect(categoryRuleStatus(rulebook('cannes-2027@1'), 'competition')).toBe('simulated');
@@ -388,7 +388,7 @@ describe('history and saves', () => {
     expect(v3.events.find((x) => x.id === 'oscars-2027:deadline')?.at).toBe(o.deadline);
     expect(v3.editions.find((e) => e.id === 'sundance-2027')!.rulesId).toBe('simulated'); // someone entered: unchanged
     expect(v3.editions.find((e) => e.id === 'tiff-2026')!.rulesId).toBe('simulated'); // no published rules read
-    expect(v3.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@1'); // untouched, in the future
+    expect(v3.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@2'); // untouched, in the future
     const sorted = [...v3.events].sort((a, b) => a.at - b.at || a.priority - b.priority || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
     expect(v3.events.map((x) => x.id)).toEqual(sorted.map((x) => x.id));
   });
@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('169 categories follow verified rules for at least one edition, 11 only projected ones; the other 622 are simulated', () => {
+  it('171 categories follow verified rules for at least one edition, 11 only projected ones; the other 620 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -431,8 +431,9 @@ describe('audit counts', () => {
     // Annies' four TV categories (rulebooks.ts). 66 and 734 until International Feature Film's rules were read the same day,
     // and 67 and 733 until the Emmys' general eligibility was applied to their other 98 entered categories (emmys-2026@2);
     // 2 projected until the Berlinale's five other sections were read (berlinale-2027@2), 7 until Cannes' four feature
-    // sections were (cannes-2027@2). 165 verified until Annecy's Contrechamp, Off-Limits, Perspectives and TV (annecy-2026@2).
-    expect(n).toEqual({ verified: 169, projected: 11, simulated: 622 });
+    // sections were (cannes-2027@2). 165 verified until Annecy's Contrechamp, Off-Limits, Perspectives and TV (annecy-2026@2),
+    // 169 until Venice's Out of Competition and Spotlight (venice-2026@2).
+    expect(n).toEqual({ verified: 171, projected: 11, simulated: 620 });
   });
 });
 
@@ -588,6 +589,20 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(categoryDeadline(e, cat(e, 'tv'))).toBe(at('Europe/Paris', '2026-02-14', 23, 59) + 59_000);
   });
 
+  it('Venice 2026, version 2: Out of Competition and Spotlight take the Official Selection\'s criteria; Spotlight runs longer than 60 minutes', () => {
+    const s = startLife('ve2');
+    const e = ed(s, 'venice-2026');
+    s.now = at('Europe/Rome', '2026-04-01', 9);
+    const film = (runtime: number, completed = '2026-01-10') => work(s, { format: 'feature', runtime, completed, base: 'it-rome' });
+    expect(r(s, film(60), e, 'spotlight')).toMatch(/more than 60/);
+    expect(r(s, film(61), e, 'spotlight')).not.toMatch(/minutes|premiere|completed/);
+    expect(r(s, film(95, '2025-09-06'), e, 'out-of-competition')).toMatch(/completed on September 6, 2025/);
+    const shown = film(95);
+    release(shown, 'theatrical', '2026-03-01', ['IT']);
+    expect(r(s, shown, e, 'out-of-competition')).toMatch(/world premiere/); // not even at home
+    expect(categoryRuleStatus(rulebook(e.rulesId), 'sic')).toBe('simulated'); // its own association's regulations
+  });
+
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {
     const s = startLife('em2');
     s.now = at('America/Los_Angeles', '2026-04-01', 9);
@@ -676,7 +691,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     raw.editions.find((e: Edition) => e.id === 'emmys-2026').entries.push({ id: 'x', projectId: 'p', categoryId: 'drama', submittedAt: 0, status: 'submitted', recipients: [], fee: 0 });
     const data = JSON.stringify(raw);
     const back = deserialize(JSON.stringify({ format: 'slate-save', version: raw.version, checksum: hashString(data), data }));
-    expect(back.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@1');
+    expect(back.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@2');
     expect(back.editions.find((e) => e.id === 'emmys-2026')!.rulesId).toBe('simulated'); // someone entered it
     const v = back.editions.find((e) => e.id === 'venice-2026')!;
     expect(back.events.find((x) => x.id === 'venice-2026:deadline')?.at).toBe(v.deadline);

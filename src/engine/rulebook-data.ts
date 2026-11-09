@@ -309,6 +309,26 @@ function venice(year: number, mk: typeof v): Record<string, CategoryRules> {
 const VENICE_2026: RuleBook = { id: 'venice-2026@1', institutionId: 'venice', year: 2026, version: 1, checked: CHECKED, sources: VENICE_SOURCES, opens: v('2026-02-09', 've83-reg'), categories: venice(2026, v) };
 const VENICE_2027: RuleBook = { id: 'venice-2027@1', institutionId: 'venice', year: 2027, version: 1, checked: CHECKED, sources: VENICE_SOURCES, categories: venice(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) };
 
+/**
+ * Version 2 (November 9, 2026): Article 3's criteria are the Official Selection's, so Out of Competition (3.2) and Venice
+ * Spotlight (3.4: "provided their duration exceeds 60 minutes") take them too, with the features' June 4 deadline (7.1).
+ * The Settimana Internazionale della Critica and the Giornate degli Autori are "independent and parallel sections" chosen
+ * under their own associations' regulations (Article 5), which these regulations don't give: they stay on SLATE's rules.
+ */
+function venice2(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const first = venice(year, mk);
+  const p = year === 2026 ? '' : ' From the 2026 regulations; the 2027 regulations are not published yet.';
+  const { runtime: _features, ...common } = first.competition;
+  void _features;
+  return {
+    ...first,
+    'out-of-competition': common,
+    spotlight: { ...common, runtime: mk({ over: 60 }, 've83-reg', `Longer than 60 minutes (Article 3.4).${p}`) },
+  };
+}
+const VENICE_2026_2: RuleBook = { ...VENICE_2026, id: 'venice-2026@2', version: 2, checked: '2026-11-09', categories: venice2(2026, v) };
+const VENICE_2027_2: RuleBook = { ...VENICE_2027, id: 'venice-2027@2', version: 2, checked: '2026-11-09', categories: venice2(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) };
+
 // ---------------- San Sebastián: 74th (2026, verified) and 75th (2027, projected) ----------------
 
 const SS_SOURCE: RuleSource = { id: 'ss74-rules', publisher: 'Festival de San Sebastián', title: 'Rules and Regulations - 74th San Sebastian International Film Festival', url: 'https://www.sansebastianfestival.com/2026/film_registration/rules_and_regulations/1/23002/in', edition: '74th San Sebastian International Film Festival (2026)', retrieved: CHECKED };
@@ -489,5 +509,5 @@ const EMMYS_2027_2: RuleBook = { ...EMMYS_2027, id: 'emmys-2027@2', version: 2, 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2,
 ];

@@ -273,6 +273,13 @@ percent of the episode's music (Music); producers must be credited on half of a 
 other than short form's are guidelines; the variety categories also honour the principal host; the limited release of up
 to 70 theater-days and the Oscar-nomination bar (Eligibility 8a-8d).
 
+**Version 2 (`venice-2026@2`, `venice-2027@2` projected, read November 9, 2026):** Article 3's criteria open with "Only
+films presented as world premieres that meet the following criteria are eligible for selection" for the whole Official
+Selection, so Open – Out of Competition (3.2) and Venice Spotlight (3.4, "provided their duration exceeds 60 minutes")
+take them, with the features' June 4 deadline. The Settimana Internazionale della Critica (5.1) and the Giornate degli
+Autori (5.2) are selected "in accordance with" their own associations' regulations, which these don't give; they stay on
+SLATE's rules until those are read.
+
 ## San Sebastián, 74th Edition (2026, Verified) And 75th (2027, Projected)
 
 Source: "Rules and Regulations - 74th San Sebastian International Film Festival" (sansebastianfestival.com, read November 6,
