@@ -481,6 +481,12 @@ catalog's own US/non-US requirement, read from the production base.
   refused the same way; the next try is an official archived copy of TIFF's terms or a TIFF press release with them.
 - **SXSW 2027:** the premiere and eligibility policies on support.sxsw.com (features, shorts, TV) refused this environment
   (HTTP 403) on November 9, 2026; SXSW stays on SLATE's rules.
+- **European Film Awards:** the [fiction regulations](https://www.europeanfilmawards.eu/regulations/feature-films/) were read
+  on November 9, 2026 but name no dates or deadline, and the page mixes 2026 and 2027 headings. Their tests (16 of 21
+  European-elements points; a major-festival selection or a seven-day release in three countries) aren't anything SLATE
+  records yet, so the categories stay on SLATE's rules rather than take a partial rule.
+- **Series Mania and the International Emmys:** no current competition rules were found (Series Mania's latest festival
+  rules found are 2021's; the International Emmys' rules page returned HTTP 404).
 - **BAFTA Film Awards 2027:** bafta.org (the rules page and the press release "2027 EE BAFTA Film Awards opens for
   entries") refused this environment (HTTP 403), on both passes. Search summaries give a longlist on January 7, nominations
   on January 19 and the ceremony on February 21, 2027, but not the eligibility period; **not used**: BAFTA stays
