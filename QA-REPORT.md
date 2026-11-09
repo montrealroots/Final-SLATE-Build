@@ -16,6 +16,7 @@ Tested revision: the working branch at the commit that updates this report.
 | --- | --- | --- |
 | `npm run check` | 0 | 69 files, 534 tests passed; startup JavaScript 674 kB, 216 kB gzipped, 0 problems. |
 | `npx playwright test e2e/awards.spec.ts --project=desktop --project=iphone-15-plus --trace off` | 0 | 18 passed in 2.6 minutes (WebKit is the `iphone-15-plus` project). |
+| GitHub Actions CI on `main` after #51 (`70d7105`, run 124) | success | Every step, including the browser journeys on the development and production builds. #52 passed CI on `3c79f3f` and was merged as `28fb30f`. |
 
 Source-verified and applied, each with a test in `tests/rulebooks.test.ts`: the PGA's documentary award (`pga-2027@2`),
 the WGA's Documentary Screenplay (`wga-2027@2`), the DGA's seven television awards from the Entry Forms index
