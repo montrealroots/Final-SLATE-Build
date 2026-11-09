@@ -347,6 +347,21 @@ function sanSebastian(year: number, mk: typeof v): Record<string, CategoryRules>
 const SAN_SEBASTIAN_2026: RuleBook = { id: 'san-sebastian-2026@1', institutionId: 'san-sebastian', year: 2026, version: 1, checked: CHECKED, sources: [SS_SOURCE], opens: v('2026-01-16', 'ss74-rules'), categories: sanSebastian(2026, v) };
 const SAN_SEBASTIAN_2027: RuleBook = { id: 'san-sebastian-2027@1', institutionId: 'san-sebastian', year: 2027, version: 1, checked: CHECKED, sources: [SS_SOURCE], categories: sanSebastian(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) };
 
+/**
+ * Version 2 (November 9, 2026): the regulations' section II applies to every section, since "All films submitted will be
+ * considered for any of the Festival sections making up the programme" (II, article 3), so New Directors, Horizontes
+ * Latinos, Zabaltegi-Tabakalera, Perlak, Culinary Zinema and Velodrome read it too. The FAQ adds that there has been no open
+ * entry for short films since 2025, which the over-60-minutes rule already gives Zabaltegi's shorts. The sections' own
+ * guidelines, which article 2 mentions but the page doesn't reproduce, weren't found; the catalog keeps its own section
+ * requirements (debut, Latin America, food).
+ */
+function sanSebastian2(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const first = sanSebastian(year, mk);
+  return { ...first, ...Object.fromEntries(['new-directors', 'horizontes', 'zabaltegi', 'perlak', 'culinary', 'velodrome'].map((id) => [id, first.official])) };
+}
+const SAN_SEBASTIAN_2026_2: RuleBook = { ...SAN_SEBASTIAN_2026, id: 'san-sebastian-2026@2', version: 2, checked: '2026-11-09', categories: sanSebastian2(2026, v) };
+const SAN_SEBASTIAN_2027_2: RuleBook = { ...SAN_SEBASTIAN_2027, id: 'san-sebastian-2027@2', version: 2, checked: '2026-11-09', categories: sanSebastian2(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) };
+
 // ---------------- Berlinale 2027: Competition, projected ----------------
 
 const BERLINALE_2027: RuleBook = {
@@ -509,5 +524,5 @@ const EMMYS_2027_2: RuleBook = { ...EMMYS_2027, id: 'emmys-2027@2', version: 2, 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2,
 ];

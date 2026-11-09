@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('171 categories follow verified rules for at least one edition, 11 only projected ones; the other 620 are simulated', () => {
+  it('177 categories follow verified rules for at least one edition, 11 only projected ones; the other 614 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -432,8 +432,9 @@ describe('audit counts', () => {
     // and 67 and 733 until the Emmys' general eligibility was applied to their other 98 entered categories (emmys-2026@2);
     // 2 projected until the Berlinale's five other sections were read (berlinale-2027@2), 7 until Cannes' four feature
     // sections were (cannes-2027@2). 165 verified until Annecy's Contrechamp, Off-Limits, Perspectives and TV (annecy-2026@2),
-    // 169 until Venice's Out of Competition and Spotlight (venice-2026@2).
-    expect(n).toEqual({ verified: 171, projected: 11, simulated: 620 });
+    // 169 until Venice's Out of Competition and Spotlight (venice-2026@2), 171 until San Sebastián's other six sections
+    // (san-sebastian-2026@2).
+    expect(n).toEqual({ verified: 177, projected: 11, simulated: 614 });
   });
 });
 
@@ -603,6 +604,20 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(categoryRuleStatus(rulebook(e.rulesId), 'sic')).toBe('simulated'); // its own association's regulations
   });
 
+  it('San Sebastián 2026, version 2: every section reads section II; shorts have no open entry', () => {
+    const s = startLife('ss2');
+    const e = ed(s, 'san-sebastian-2026');
+    s.now = at('Europe/Madrid', '2026-05-01', 9);
+    const film = (format: Project['axes']['format'], runtime: number, completed = '2026-01-10') => work(s, { format, runtime, completed, base: 'ar-buenos-aires' });
+    expect(r(s, film('feature', 60), e, 'horizontes')).toMatch(/more than 60/);
+    expect(r(s, film('feature', 90, '2025-09-17'), e, 'perlak')).toMatch(/completed on September 17, 2025/);
+    expect(r(s, film('short', 15), e, 'zabaltegi')).toMatch(/more than 60/);
+    const streamed = film('feature', 90);
+    release(streamed, 'streaming', '2026-03-01', ['AR']);
+    expect(r(s, streamed, e, 'velodrome')).toMatch(/released online/);
+    expect(categoryDeadline(e, cat(e, 'new-directors'))).toBe(at('Europe/Madrid', '2026-06-16', 23, 59) + 59_000);
+  });
+
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {
     const s = startLife('em2');
     s.now = at('America/Los_Angeles', '2026-04-01', 9);
@@ -672,7 +687,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const s = startLife('ss');
     s.now = at('Europe/Madrid', '2026-05-01', 9);
     const e = ed(s, 'san-sebastian-2026');
-    expect(e.rulesId).toBe('san-sebastian-2026@1');
+    expect(e.rulesId).toBe('san-sebastian-2026@2');
     const f = (rt: number, done = '2026-02-01') => work(s, { format: 'feature', runtime: rt, completed: done, base: 'gb-london' });
     expect(r(s, f(60), e, 'official')).toMatch(/more than 60/);
     expect(r(s, f(61), e, 'official')).toBe('');

@@ -198,6 +198,14 @@ Source: [Regulations - 83rd Venice International Film Festival](https://static.l
 
 Not applied: the prize recipients (the regulations name the prizes, not who receives most of them).
 
+**Version 2 (`san-sebastian-2026@2`, `san-sebastian-2027@2` projected, read November 9, 2026):** "All films submitted will
+be considered for any of the Festival sections making up the programme" (II, article 3), so section II's rules above apply
+to New Directors, Horizontes Latinos, Zabaltegi-Tabakalera, Perlak, Culinary Zinema and Velodrome too. The FAQ on the same
+page: "as of 2025 there will not be an open entry for short films" (Zabaltegi's shorts are invited; the over-60-minutes
+rule refuses an entered short). Article 2 refers to each section's own rules or guidelines, which the page doesn't
+reproduce and which weren't found; the catalog keeps its own section requirements (a debut, Latin American production,
+a food subject).
+
 ## Berlinale 2027: Competition, projected
 
 Source: [Competition Regulations](https://www.berlinale.de/en/film-entry/guidelines/competition.html) (retrieved November
@@ -302,7 +310,8 @@ which SLATE does not check separately. The 2027 rules are the 2026 ones carried 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two
   passes. Search summaries mention premiere-status rules (world, international or North American; Canadian at TIFF's
   discretion) and May 8, 2026 as the standard deadline, but these were not read from TIFF's own terms and are **not
-  used**: `tiff-2026` stays simulated.
+  used**: `tiff-2026` stays simulated. A third pass on November 9, 2026 (tiff.net/submit and filmfreeway.com/tiff) was
+  refused the same way; the next try is an official archived copy of TIFF's terms or a TIFF press release with them.
 - **BAFTA Film Awards 2027:** bafta.org (the rules page and the press release "2027 EE BAFTA Film Awards opens for
   entries") refused this environment (HTTP 403), on both passes. Search summaries give a longlist on January 7, nominations
   on January 19 and the ceremony on February 21, 2027, but not the eligibility period; **not used**: BAFTA stays
