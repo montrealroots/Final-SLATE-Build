@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('454 categories follow verified rules for at least one edition, 11 only projected ones; the other 337 are simulated', () => {
+  it('456 categories follow verified rules for at least one edition, 11 only projected ones; the other 335 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -440,8 +440,9 @@ describe('audit counts', () => {
     // Canadian Screen Awards' 115 entered categories (canadian-screen-2026@1), 346 until the Goyas' 23 feature categories (goya-2027@1),
     // 369 until the Césars' 25 (cesar-2027@1), 394 until the Spirit Awards' 20 (spirit-2027@1),
     // 414 until the Actor Awards' 13 (actor-awards-2027@1), 427 until the DGA's feature award (dga-2027@1),
-    // 428 until the WGA's 16 (wga-2027@1), 444 until the Gothams' 10 film categories (gotham-2026@1).
-    expect(n).toEqual({ verified: 454, projected: 11, simulated: 337 });
+    // 428 until the WGA's 16 (wga-2027@1), 444 until the Gothams' 10 film categories (gotham-2026@1),
+    // 454 until the PGA's two film awards (pga-2027@1).
+    expect(n).toEqual({ verified: 456, projected: 11, simulated: 335 });
   });
 });
 
@@ -892,6 +893,21 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     release(streamed, 'streaming', '2026-05-01', ['US']);
     expect(r(s, streamed, e, 'director')).toMatch(/theatrical release in the United States/);
     expect(categoryDeadline(e, cat(e, 'lead'))).toBe(at('America/New_York', '2026-09-17', 23, 59) + 59_000);
+  });
+
+  it('Producers Guild Awards 2027: a US theatrical release in 2026, nothing outside cinemas first, by October 9; animated features over 40 minutes', () => {
+    const s = startLife('pga');
+    const e = ed(s, 'pga-2027');
+    expect(e.rulesId).toBe('pga-2027@1');
+    s.now = at('America/Los_Angeles', '2026-09-01', 9);
+    const film = (medium: Project['axes']['medium'], runtime = 95) => { const p = work(s, { format: 'feature', medium, runtime, completed: '2026-01-10', base: 'us-los-angeles' }); release(p, 'theatrical', '2026-06-01', ['US']); return p; };
+    expect(r(s, film('live-action'), e, 'theatrical')).not.toMatch(/release/);
+    const vod = film('live-action');
+    release(vod, 'digital', '2026-05-01', ['US']);
+    expect(r(s, vod, e, 'theatrical')).toMatch(/outside cinemas, before any theatrical run/);
+    expect(r(s, film('animation', 40), e, 'animated')).toMatch(/more than 40/);
+    expect(r(s, film('hybrid'), e, 'animated')).toMatch(/for animation work/);
+    expect(categoryDeadline(e, cat(e, 'animated'))).toBe(at('America/Los_Angeles', '2026-10-09', 23, 59) + 59_000);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

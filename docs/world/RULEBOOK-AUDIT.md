@@ -472,6 +472,15 @@ six qualifying US metro areas (SLATE: a US theatrical release); submissions clos
 film categories; Breakthrough Series and the tributes stay on SLATE's rules. The key roles' citizenship or US base is the
 catalog's own US/non-US requirement, read from the production base.
 
+## Producers Guild Awards, 2027
+
+Sources (read November 9, 2026): [Motion Pictures](https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Motion_Pictures.pdf)
+(July 20, 2026) and [Animated Motion Pictures](https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Animated_Motion_Pictures.pdf),
+section A: a US theatrical release for paid admission between January 1 and December 31, 2026; no nontheatrical exhibition
+or distribution before it (as at the 99th Academy Awards); submitted by October 9, 2026; animated features over 40 minutes and
+at least 75 percent animation. Applied to the Theatrical and Animated awards. The documentary rules' several qualifying
+exhibitions and the television rules weren't applied; those categories stay on SLATE's rules.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two

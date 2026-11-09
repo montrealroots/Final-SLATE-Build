@@ -939,8 +939,35 @@ const GOTHAM_2026: RuleBook = {
   categories: Object.fromEntries(['feature', 'documentary', 'international', 'director', 'breakthrough-director', 'original-screenplay', 'adapted-screenplay', 'lead', 'supporting', 'breakthrough-performer'].map((id) => [id, GOTHAM_FILM])),
 };
 
+// ---------------- Producers Guild Awards, 2027 ----------------
+
+/**
+ * Read November 9, 2026: Rules and Procedures for 2027 Awards Eligibility, Motion Pictures (July 20, 2026) and Animated
+ * Motion Pictures, section A. The documentary rules list several qualifying exhibitions (a theatrical run, a listed
+ * festival award, a national television premiere) that SLATE can't all read; Best Documentary and the television awards
+ * stay on SLATE's rules. Not modeled: the producer eligibility determination (only producers the PGA certifies are
+ * named), the ballot fee, the crowdfunding producer-credit disqualification.
+ */
+const PGA_SOURCES: RuleSource[] = [
+  { id: 'pga27-mp', publisher: 'Producers Guild of America', title: 'Rules and Procedures for 2027 Awards Eligibility - Motion Pictures', url: 'https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Motion_Pictures.pdf', edition: '2027 Producers Guild Awards', retrieved: '2026-11-09' },
+  { id: 'pga27-anim', publisher: 'Producers Guild of America', title: 'Rules and Procedures for 2027 Awards Eligibility - Animated Motion Pictures', url: 'https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Animated_Motion_Pictures.pdf', edition: '2027 Producers Guild Awards', retrieved: '2026-11-09' },
+];
+const pgaFilm = (src: string): CategoryRules => ({
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, src, 'Released January 1 to December 31, 2026 (A).'),
+  release: v({ routes: ['theatrical'], countries: ['US'] }, src, 'A theatrical release in a US commercial cinema for paid admission (A).'),
+  theatricalFirst: v({ countries: ['*'] }, src, 'No nontheatrical exhibition or distribution before the theatrical release, as at the 99th Academy Awards (A).'),
+  deadlines: v([{ date: '2026-10-09', time: '23:59', zone: PT, timeAssumed: true }], src, 'Submitted no later than October 9, 2026 (A). The time of day is not given; SLATE uses the end of the day in Los Angeles.'),
+});
+const PGA_2027: RuleBook = {
+  id: 'pga-2027@1', institutionId: 'pga', year: 2027, version: 1, checked: '2026-11-09', sources: PGA_SOURCES,
+  categories: {
+    theatrical: pgaFilm('pga27-mp'),
+    animated: { ...pgaFilm('pga27-anim'), runtime: v({ over: 40 }, 'pga27-anim', 'More than 40 minutes (A.1).'), mediums: v(['animation'], 'pga27-anim', 'Animation for at least 75 percent of the running time (A.1); SLATE accepts animated projects and not hybrid ones.') },
+  },
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
 ];
