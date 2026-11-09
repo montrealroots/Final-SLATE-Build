@@ -94,6 +94,19 @@ const OSCARS_2027_2: RuleBook = {
   },
 };
 
+/**
+ * Version 3 (November 9, 2026): International Feature Film's "more than 50 percent non-English dialogue" (Rule Sixteen
+ * II.D), which until then read the first dialogue language the producer declared. It now counts the approved script's
+ * dialogue, in words, by each line's language; a film with no written dialogue still reads the declared language.
+ */
+const OSCARS_2027_3: RuleBook = {
+  ...OSCARS_2027_2, id: 'oscars-2027@3', version: 3,
+  categories: {
+    ...OSCARS_2027_2.categories,
+    international: { ...OSCARS_2027_2.categories.international, nonEnglish: v(0.5, 'aa99-rules', 'More than 50 percent of the dialogue is not in English (Rule Sixteen II.D); SLATE counts the words of the approved script\u2019s lines.') },
+  },
+};
+
 // ---------------- Sundance Film Festival 2027 ----------------
 
 const SUNDANCE_SOURCES: RuleSource[] = [
@@ -526,6 +539,20 @@ const GOLDEN_GLOBES_2027_2: RuleBook = {
     },
     'tv-limited': GG_TV,
     ...Object.fromEntries(['tv-actress-drama', 'tv-actor-drama', 'tv-actress-comedy', 'tv-actor-comedy', 'tv-actress-limited', 'tv-actor-limited', 'tv-supporting-actress', 'tv-supporting-actor'].map((id) => [id, GG_TV_INDIVIDUAL])),
+  },
+};
+
+/**
+ * Version 3 (November 9, 2026): Non-English Language's "more than 50% of its dialogue must be in a language other than
+ * English" (A.3.c.i), which until then read the first dialogue language the producer declared. It now counts the approved
+ * script's dialogue, in words, by each line's language. Not modeled: that dialects, pidgins and local usages of English
+ * count as English (A.3.c.ii; SLATE's languages don't record them), and the committee's request for a continuity script.
+ */
+const GOLDEN_GLOBES_2027_3: RuleBook = {
+  ...GOLDEN_GLOBES_2027_2, id: 'golden-globes-2027@3', version: 3,
+  categories: {
+    ...GOLDEN_GLOBES_2027_2.categories,
+    'non-english': { ...GOLDEN_GLOBES_2027_2.categories['non-english'], nonEnglish: v(0.5, 'gg84-rules', 'More than 50% of the dialogue is in a language other than English (A.3.c.i); SLATE counts the words of the approved script\u2019s lines.') },
   },
 };
 
@@ -995,6 +1022,6 @@ const PGA_2027: RuleBook = {
 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
-  OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
+  OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, GOLDEN_GLOBES_2027_3, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
 ];

@@ -77,8 +77,9 @@ describe('rulebook data', () => {
 
   it('new editions record the rules they use; others say simulated', () => {
     const s = startLife('rules-ids');
-    // Version 2 from November 9, 2026: qualifying-festival routes read from the Academy's lists.
-    expect(ed(s, 'oscars-2027').rulesId).toBe('oscars-2027@2');
+    // Version 2 from November 9, 2026: qualifying-festival routes read from the Academy's lists; version 3 the same day:
+    // International Feature's dialogue share.
+    expect(ed(s, 'oscars-2027').rulesId).toBe('oscars-2027@3');
     expect(ed(s, 'sundance-2027').rulesId).toBe('sundance-2027@1');
     expect(ed(s, 'venice-2026').rulesId).toBe('venice-2026@3');
     expect(ed(s, 'tiff-2026').rulesId).toBe('simulated');
@@ -383,7 +384,7 @@ describe('history and saves', () => {
     const oldDeadline = oscars.deadline;
     const v3 = migrateV2toV3(raw as unknown as Record<string, unknown>) as unknown as GameState;
     const o = v3.editions.find((e) => e.id === 'oscars-2027')!;
-    expect(o.rulesId).toBe('oscars-2027@2');
+    expect(o.rulesId).toBe('oscars-2027@3');
     expect(categoryDeadline(o, cat(o, 'picture'))).toBe(at('America/Los_Angeles', '2026-11-12', 17));
     expect(o.deadline).toBe(at('America/Los_Angeles', '2026-11-12', 17)); // every category has the Academy's deadline (version 2)
     expect(o.defaultDeadline).toBe(oldDeadline);
@@ -633,7 +634,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Golden Globes 2027, version 2: Non-English Language needs a run in its country of origin, not in the US; TV acting reads the television rules', () => {
     const s = startLife('gg2');
     const e = ed(s, 'golden-globes-2027');
-    expect(e.rulesId).toBe('golden-globes-2027@2');
+    expect(e.rulesId).toBe('golden-globes-2027@3'); // version 3 only adds Non-English Language's dialogue share (tests/recipient-rules.test.ts)
     s.now = at('America/Los_Angeles', '2026-11-01', 9);
     const film = (where: string) => {
       const p = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'es-madrid' });

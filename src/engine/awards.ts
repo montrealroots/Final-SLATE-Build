@@ -10,7 +10,7 @@ import { castPlacement, documentsNeeded } from './script-effects';
 import { genre } from './genres';
 import { personById } from './people';
 import { countryName } from '../world/gazetteer/gazetteer';
-import { isNonfiction } from './projects';
+import { approvedScenes, isNonfiction } from './projects';
 import { travelHours } from './state';
 import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { addLog, onNewGame, registerCommitmentSource, registerHandler, schedule, type HandlerResult } from './state';
@@ -465,10 +465,16 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   if (!enterable(cat)) reasons.push(cat.kind === 'honorary' ? 'Honorary awards take no entries: the organizer chooses from a body of work.' : 'This award is decided among the films selected for its section. Enter the section instead.');
   const formats = rules?.formats?.value ?? cat.formats;
   if (!formats.includes(p.axes.format)) reasons.push(`This category doesn't accept ${p.axes.format.replace('-', ' ')} projects.`);
-  reasons.push(...catalogRules().requirementProblems(state, p, cat));
+  // A rule that measures the dialogue replaces the check of the declared language.
+  reasons.push(...catalogRules().requirementProblems(state, p, rules?.nonEnglish ? { ...cat, need: cat.need?.filter((n) => n !== 'non-english') } : cat));
   if (cat.recipient === 'national') {
     if (getPlace(p.axes.basePlaceId).country === 'US') reasons.push('This category is for films made outside the United States.');
-    if (p.axes.dialogueLanguages[0] === 'en') reasons.push('This category is for films whose dialogue is mostly not in English.');
+    if (!rules?.nonEnglish && p.axes.dialogueLanguages[0] === 'en') reasons.push('This category is for films whose dialogue is mostly not in English.');
+  }
+  if (rules?.nonEnglish) {
+    const share = nonEnglishShare(p);
+    if (share === null && p.axes.dialogueLanguages[0] === 'en') reasons.push('It has no written dialogue and its first dialogue language is English; this category needs more than half the dialogue in another language.');
+    else if (share !== null && share <= rules.nonEnglish.value) reasons.push(`${Math.round(share * 100)}% of its written dialogue is in a language other than English; this category needs more than ${Math.round(rules.nonEnglish.value * 100)}%.`);
   }
   // A version entered instead of the main cut is judged at its own runtime (versions.ts).
   const version = versionId ? p.versions?.find((v) => v.id === versionId) : undefined;
@@ -589,6 +595,18 @@ export function categoryRecipients(state: GameState, p: Project, cat: Category, 
   const span = rules.episodeShare?.value;
   return all.filter((c) => !(rules.noNarrators && isNarrator(p, c))
     && (!span || ((span.under === undefined || episodeShare(p, c) < span.under) && (span.atLeast === undefined || episodeShare(p, c) >= span.atLeast))));
+}
+
+/** The share of the approved script's dialogue, in words, in a language other than English; null with no written dialogue. */
+export function nonEnglishShare(p: Project): number | null {
+  let all = 0;
+  let other = 0;
+  for (const s of approvedScenes(p)) for (const l of s.dialogue) {
+    const words = l.text.split(/\s+/).filter(Boolean).length;
+    all += words;
+    if ((l.language || p.axes.dialogueLanguages[0]) !== 'en') other += words;
+  }
+  return all ? other / all : null;
 }
 
 /** Whether a credit is for a part whose story function is Narrator. */

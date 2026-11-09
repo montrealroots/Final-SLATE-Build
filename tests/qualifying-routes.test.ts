@@ -127,10 +127,11 @@ describe('Oscar shorts: only a listed award, won inside the window', () => {
     const back = deserialize(serialize(s));
     expect(ed(back, 'oscars-2027').rulesId).toBe('oscars-2027@1');
     expect(checkEligibility(back, back.projects.find((x) => x.id === p.id)!, ed(back, 'oscars-2027'), cat(osc, 'live-short')).eligible).toBe(true);
-    // The same edition, untouched, adopts version 2, and the unlisted prize no longer qualifies.
+    // The same edition, untouched, adopts the latest version (2 read the list; 3 only adds International Feature's
+    // dialogue share), and the unlisted prize no longer qualifies.
     osc.entries = [];
     adoptPublishedRules(s);
-    expect(osc.rulesId).toBe('oscars-2027@2');
+    expect(osc.rulesId).toBe('oscars-2027@3');
     expect(checkEligibility(s, p, osc, cat(osc, 'live-short')).eligible).toBe(false);
   });
 });

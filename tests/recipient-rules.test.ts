@@ -1,7 +1,7 @@
 // Recipient rules read from the organizers' documents (part 5 of the awards work, November 9, 2026): who may be entered for
 // a work, beyond who is credited for it. Each test pairs the rule with the version or organizer that doesn't have it.
 import { describe, expect, it } from 'vitest';
-import { RULEBOOKS, categoryRecipients, checkEligibility, categoryRules, institution } from './engine-api';
+import { RULEBOOKS, categoryRecipients, checkEligibility, categoryRules, institution, nonEnglishShare } from './engine-api';
 import { approve, buildProject, startLife } from './helpers';
 import type { Credit, GameState } from '../src/engine/types';
 
@@ -85,5 +85,46 @@ describe('Emmys, Performer Awards: a guest is in fewer than half the episodes, a
     p.credits[1] = { ...p.credits[1], episodes: [1, 2] };
     expect(categoryRecipients(s, p, cat, undefined, categoryRules(e, cat.id)).map((c) => c.characterName)).not.toContain('Marcus');
     expect(categoryRecipients(s, p, cat).map((c) => c.characterName)).toContain('Marcus'); // credited: only the rule removes them
+  });
+});
+
+describe('Non-English dialogue is measured from the script: Oscars Rule Sixteen II.D, Golden Globes A.3.c.i', () => {
+  /** A French-based feature whose one scene has `fr` words of French and `en` words of English (declared language: French). */
+  function spoken(tag: string, fr: number, en: number) {
+    const s: GameState = startLife(tag, 'fr-paris');
+    const p = buildProject(s, { title: 'Le Quai', format: 'feature', medium: 'live-action', runtime: 95 }, [{ name: 'Lou', patch: { roleSize: 'lead' } }], [{ place: 'Quai', chars: ['Lou'], minutes: 3 }]);
+    p.axes.dialogueLanguages = ['fr', 'en'];
+    const who = p.characters[0].id;
+    p.scenes[0].dialogue = [
+      { id: 'l1', characterId: who, text: Array(fr).fill('mot').join(' '), language: 'fr' },
+      { id: 'l2', characterId: who, text: Array(en).fill('word').join(' '), language: 'en' },
+    ].filter((l) => l.text);
+    approve(s, p);
+    return { s, p };
+  }
+  const oscars = (s: GameState) => s.editions.find((x) => x.id === 'oscars-2027')!;
+  const why = (s: GameState, p: Parameters<typeof checkEligibility>[1], id: string) => {
+    const e = id === 'international' ? oscars(s) : s.editions.find((x) => x.id === 'golden-globes-2027')!;
+    return checkEligibility(s, p, e, institution(e.institutionId).categories.find((c) => c.id === id)!).reasons.join(' ');
+  };
+
+  it('60% French qualifies; 40% does not, with the share in the reason; exactly half is not "more than 50%"', () => {
+    const a = spoken('ne-60', 60, 40);
+    expect(nonEnglishShare(a.p)).toBe(0.6);
+    expect(why(a.s, a.p, 'international')).not.toMatch(/written dialogue/);
+    expect(why(a.s, a.p, 'non-english')).not.toMatch(/written dialogue/);
+    const b = spoken('ne-40', 40, 60);
+    expect(why(b.s, b.p, 'international')).toMatch(/40% of its written dialogue is in a language other than English; this category needs more than 50%\./);
+    expect(why(b.s, b.p, 'non-english')).toMatch(/40% of its written dialogue/);
+    const c = spoken('ne-50', 50, 50);
+    expect(why(c.s, c.p, 'international')).toMatch(/50% of its written dialogue/);
+  });
+
+  it('the declared language no longer decides when the script says otherwise; version 2 read only the declaration', () => {
+    const { s, p } = spoken('ne-decl', 10, 90); // declared French first, written mostly in English
+    expect(why(s, p, 'international')).toMatch(/10% of its written dialogue/);
+    const e = oscars(s);
+    e.rulesId = 'oscars-2027@2';
+    expect(checkEligibility(s, p, e, institution('oscars').categories.find((c) => c.id === 'international')!).reasons.join(' ')).not.toMatch(/English/);
   });
 });

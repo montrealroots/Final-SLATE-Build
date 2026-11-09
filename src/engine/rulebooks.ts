@@ -108,6 +108,12 @@ export interface CategoryRules {
    */
   noNarrators?: Ruled<true>;
   /**
+   * More than this share of the dialogue is in a language other than English, counted in words over the approved script's
+   * lines (the Oscars' International Feature, Rule Sixteen II.D; the Golden Globes' Non-English Language, A.3.c.i). A work
+   * with no written dialogue is read by its first declared dialogue language.
+   */
+  nonEnglish?: Ruled<number>;
+  /**
    * A performer's share of the program's episodes, from the episodes they are credited in: the Emmys' guest categories take
    * "less than 50% of the eligible episodes", Short Form Performer "50% or more" (Performer Awards, Entry Information).
    */
