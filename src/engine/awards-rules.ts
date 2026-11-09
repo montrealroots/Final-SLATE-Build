@@ -3,6 +3,7 @@
 import { getPlace } from '../data/places';
 import { personById } from './people';
 import { competesAs } from './script-effects';
+import { approvedScenes } from './projects';
 import type { Credit, GameState, Project } from './types';
 
 export { QUALIFYING_LISTS, projectedList, qualifyingList } from './qualifying-lists';
@@ -51,7 +52,9 @@ export function requirementProblems(state: GameState, p: Project, cat: Asks): st
       case 'la-ny-theatrical': if (!p.releases.some((r) => r.route === 'theatrical' && r.status !== 'cancelled' && r.territories.includes('US'))) fail('It needs a theatrical run in Los Angeles or New York (a US theatrical release in the game).'); break;
       case 'non-english': if (lang === 'en') fail('This category is for work mainly in a language other than English.'); break;
       case 'archival': if (!p.scenes.some((s) => s.kind === 'archival')) fail('This award is for creative use of archive; the project has no archival material.'); break;
-      case 'coproduction': if (!p.funding.extra.length) fail('This award is for international co-productions; the project has no co-production partner.'); break;
+      // A partner signed through Financing, or the co-production money of a save from before financing existed. Until November 9,
+      // 2026 only the second counted, so no partner a player signed could qualify.
+      case 'coproduction': if (!p.funding.extra.length && !p.finance?.deals.some((d) => d.kind === 'co-producer' && d.status === 'accepted')) fail('This award is for international co-productions; the project has no co-production partner.'); break;
       case 'family': if (!['Family', 'Children (6 To 11)', 'Preschool'].includes(p.axes.audience)) fail('This is for work made for young audiences and families.'); break;
       case 'children': if (!['Children (6 To 11)', 'Family'].includes(p.axes.audience)) fail('This category is for children\'s programs.'); break;
       case 'preschool': if (p.axes.audience !== 'Preschool') fail('This category is for preschool programs.'); break;
@@ -69,6 +72,7 @@ export function requirementProblems(state: GameState, p: Project, cat: Asks): st
       case 'iberoamerica-non-es': if (!LATIN_AMERICA.includes(o) && o !== 'PT') fail('This category is for Ibero-American productions from outside Spain.'); break;
       case 'latin-america': if (!LATIN_AMERICA.includes(o)) fail('This section is for Latin American productions.'); break;
       case 'asia-pacific': if (!ASIA_PACIFIC.includes(o)) fail('This award is for Asian and Pacific productions.'); break;
+      case 'sports': if (!p.axes.genres.some((g) => g.id === 'sports')) fail('This award is for documentaries about sport; give the project the Sports genre if it is one.'); break;
       case 'basque': fail('This award is for Basque productions, which the game doesn\'t record yet.'); break;
       default: {
         const country: Record<string, string> = { fr: 'FR', es: 'ES', ca: 'CA', au: 'AU', jp: 'JP', nl: 'NL' };
@@ -99,6 +103,9 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
       case 'craft': return p.credits.filter((c) => cat.crafts?.includes(c.roleId));
       case 'guest': return cast.filter((c) => chars(p).find((x) => x.name === c.characterName)?.seriesInvolvement === 'guest');
       case 'performer': return cast.filter((c) => placed(c.characterName) === 'lead' || placed(c.characterName) === 'supporting');
+      // Emmy Category 76: a traditional narration, read as a narrator, not a character; the part's declared function says which.
+      // Both the part and the narration sequence come from the approved script, the one delivered.
+      case 'narrator': return (p.drafts.find((d) => d.number === p.approvedDraft)?.scenes ?? []).some((s) => s.kind === 'narration') ? p.credits.filter((c) => (c.contribution === 'Cast' || c.contribution === 'Voice Cast') && chars(p).find((x) => x.name === c.characterName)?.functions.includes('narrator')) : [];
       case 'host': return p.credits.filter((c) => c.roleId === 'contributor' && /\bhost/i.test(p.contributors.find((x) => `contributor:${x.id}` === c.person)?.role ?? ''));
       case 'song': return p.scenes.some((s) => s.songs.some((x) => !x.licensed)) ? p.credits.filter((c) => c.roleId === 'composer') : [];
       case 'national': return p.credits.filter((c) => c.contribution === 'Directed By');
@@ -106,7 +113,7 @@ export function newRecipients(state: GameState, p: Project, cat: Asks, placed: (
     }
   };
   const groups = [cat.recipient, ...(cat.with ?? [])];
-  if (!groups.some((g) => ['craft', 'guest', 'performer', 'host', 'song', 'national'].includes(g)) && !cat.need?.includes('breakthrough')) return null;
+  if (!groups.some((g) => ['craft', 'guest', 'performer', 'host', 'narrator', 'song', 'national'].includes(g)) && !cat.need?.includes('breakthrough')) return null;
   let out: Credit[] = [];
   for (const g of groups) {
     const got = pick(g);
@@ -127,4 +134,75 @@ export function craftScore(p: Project, crafts: string[] | undefined, song: boole
   if (crafts?.includes('editor')) return q.editing ?? q.craft ?? 50;
   if (crafts?.includes('composer')) return q.music ?? q.craft ?? 50;
   return q.craft ?? 50;
+}
+
+// Recipient and work-specific rules (docs/awards/RECIPIENT-RULES.md). They load with the catalog, not at startup.
+
+/** The share of the approved script's dialogue, in words, in a language other than English; null with no written dialogue. */
+export function nonEnglishShare(p: Project): number | null {
+  let all = 0;
+  let other = 0;
+  for (const s of approvedScenes(p)) for (const l of s.dialogue) {
+    const words = l.text.split(/\s+/).filter(Boolean).length;
+    all += words;
+    if ((l.language || p.axes.dialogueLanguages[0]) !== 'en') other += words;
+  }
+  return all ? other / all : null;
+}
+
+/** Whether a credit is for a part whose story function is Narrator. */
+export function isNarrator(p: Project, c: Credit): boolean {
+  return !!p.drafts.find((d) => d.number === p.approvedDraft)?.characters.find((x) => x.name === c.characterName)?.functions.includes('narrator');
+}
+
+/** The share of a program's episodes a credit covers. */
+export function episodeShare(p: Project, c: Credit): number {
+  return c.episodes === 'all' ? 1 : c.episodes.length / Math.max(1, p.axes.episodeCount);
+}
+
+/**
+ * Whether this performer was nominated (or won) at the organizer, in a category whose id starts with one of `prefixes`, for
+ * playing the same part in an earlier season of the same series (the seasons `continues` links).
+ */
+export function nominatedEarlier(state: GameState, p: Project, c: Credit, institutionId: string, prefixes: string[]): boolean {
+  for (let q = state.projects.find((x) => x.id === p.continues?.from); q; q = state.projects.find((x) => x.id === q!.continues?.from)) {
+    const season = q;
+    for (const e of state.editions) {
+      if (e.institutionId !== institutionId) continue;
+      for (const x of e.entries) {
+        if (x.projectId !== season.id || !['nominated', 'won', 'lost'].includes(x.status) || !prefixes.some((pre) => x.categoryId.startsWith(pre))) continue;
+        if (x.recipients.some((id) => { const k = season.credits.find((y) => y.id === id); return k?.person === c.person && k.characterName === c.characterName; })) return true;
+      }
+    }
+  }
+  return false;
+}
+
+/**
+ * The share of the running time a credited part is on screen, from the approved script's scene minutes: of its biggest
+ * episode, or of the whole work. The episode's running time is the target per episode; the whole is the delivered cut.
+ */
+export function screenShare(p: Project, c: Credit, per: 'episode' | 'whole'): number {
+  const id = chars(p).find((x) => x.name === c.characterName)?.id;
+  if (!id) return 0;
+  const scenes = approvedScenes(p).filter((s) => s.participants.includes(id));
+  if (per === 'whole') {
+    const total = p.delivered?.runtimeMin ?? p.axes.targetRuntimeMin * Math.max(1, p.axes.episodeCount);
+    return scenes.reduce((a, s) => a + s.estMinutes, 0) / Math.max(1, total);
+  }
+  const byEp = new Map<number, number>();
+  for (const s of scenes) byEp.set(s.episode, (byEp.get(s.episode) ?? 0) + s.estMinutes);
+  return Math.max(0, ...byEp.values()) / Math.max(1, p.axes.targetRuntimeMin);
+}
+
+/**
+ * Theatrical gross the distributors have reported for releases dated in the window: worldwide, and from releases only in
+ * `country`. A release that covers that country and others counts toward the worldwide total only, since its report
+ * isn't split by country.
+ */
+export function boxOffice(p: Project, country: string, window?: { from: string; to: string }): { worldwide: number; domestic: number } {
+  const theatrical = p.releases.filter((r) => r.route === 'theatrical' && r.status === 'released' && (!window || (r.date >= window.from && r.date <= window.to)));
+  // A release's earnings are what the distributor of its accepted offer has reported (distribution.ts).
+  const gross = (rs: typeof theatrical) => rs.reduce((a, r) => a + (p.offers.find((o) => o.id === r.offerId)?.reported?.gross ?? 0), 0);
+  return { worldwide: gross(theatrical), domestic: gross(theatrical.filter((r) => r.territories.length === 1 && r.territories[0] === country)) };
 }

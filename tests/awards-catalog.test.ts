@@ -81,7 +81,8 @@ describe('requirements are read from what the project records or declares', () =
     const osc = ed(s, 'oscars-2027');
     expect(checkEligibility(s, us, osc, cat(osc, 'international')).reasons.join(' ')).toMatch(/outside the United States/);
     const en = work(s, { base: 'fr-paris', lang: 'en' });
-    expect(checkEligibility(s, en, osc, cat(osc, 'international')).reasons.join(' ')).toMatch(/not in English/);
+    // No written dialogue: the declared language decides (oscars-2027@3 counts the script's words when there are lines).
+    expect(checkEligibility(s, en, osc, cat(osc, 'international')).reasons.join(' ')).toMatch(/no written dialogue and its first dialogue language is English/);
   });
 
   it('prizes and honorary awards take no entries and no fees', () => {

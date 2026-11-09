@@ -10,7 +10,7 @@ import { castPlacement, documentsNeeded } from './script-effects';
 import { genre } from './genres';
 import { personById } from './people';
 import { countryName } from '../world/gazetteer/gazetteer';
-import { isNonfiction } from './projects';
+import { isEpisodic, isNonfiction } from './projects';
 import { travelHours } from './state';
 import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { addLog, onNewGame, registerCommitmentSource, registerHandler, schedule, type HandlerResult } from './state';
@@ -18,7 +18,7 @@ import { DAY, addDaysToKey, dateKey, formatDateKey, localParts, localToInstant, 
 import type { Credit, Edition, Format, GameState, Medium, Project, RivalFilm, Screening } from './types';
 import { currentRulebook, registerRulebooks, rulebook, type CategoryRules, type DeadlineRule, type QualifyingAward, type QualifyingList, type RuleBook, type RuntimeRule } from './rulebooks';
 
-export type Recipient = 'project' | 'director' | 'writer' | 'lead' | 'supporting' | 'producer' | 'voice' | 'ensemble' | 'guest' | 'performer' | 'host' | 'craft' | 'song' | 'national' | 'career';
+export type Recipient = 'project' | 'director' | 'writer' | 'lead' | 'supporting' | 'producer' | 'voice' | 'ensemble' | 'guest' | 'performer' | 'host' | 'narrator' | 'craft' | 'song' | 'national' | 'career';
 /** How a category is decided (docs/awards/DESIGN.md). Categories without one are older data: entered and judged as awards. */
 export type CategoryKind = 'award' | 'area' | 'juried' | 'section' | 'prize' | 'audience' | 'partner' | 'honorary';
 export type Judging = 'programmers' | 'jury' | 'members' | 'audience';
@@ -357,7 +357,7 @@ type EditionEntryStatus = Edition['entries'][number]['status'];
  * (`list`, from the rule unless given), or an accepted entry in another of the edition's categories.
  */
 function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: CategoryRules, list = rules.release?.value.festivalList ? catalogRules().qualifyingList(rules.release.value.festivalList) : undefined): ReleaseFit {
-  const { routes, countries, outside, exempt, festivalAwards, viaCategory } = rules.release!.value;
+  const { routes, countries, outside, exempt, festivalAwards, viaCategory, festivalSelection } = rules.release!.value;
   if (exempt?.includes(p.axes.format)) return { ok: true, provisional: false };
   const win = rules.qualifying?.value ?? ed.eligibility;
   const home = getPlace(p.axes.basePlaceId).country;
@@ -367,16 +367,24 @@ function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: Cate
   if (p.releases.some((r) => r.status === 'released' && fits(r))) return { ok: true, provisional: false, via: 'release' };
   if (list && qualifyingWin(state, p, list)) return { ok: true, provisional: false, via: 'festival' };
   if (festivalAwards && festivalWin(state, p, festivalAwards, win)) return { ok: true, provisional: false, via: 'festival' };
+  if (festivalSelection && state.editions.some((e) => {
+    if (!festivalSelection.includes(e.institutionId)) return false;
+    const end = dateKey(e.end, getPlace(institution(e.institutionId).placeId).zone);
+    return end >= win.from && end <= win.to && e.entries.some((x) => x.projectId === p.id && ['selected', 'nominated', 'won', 'lost', 'mention'].includes(x.status));
+  })) return { ok: true, provisional: false, via: 'festival' };
   const via = viaCategory ? ed.entries.find((x) => x.projectId === p.id && x.categoryId === viaCategory && x.status !== 'withdrawn') : undefined;
   const viaName = viaCategory ? institution(ed.institutionId).categories.find((c) => c.id === viaCategory)?.name ?? viaCategory : '';
   if (via && DEEMED_ELIGIBLE.includes(via.status)) return { ok: true, provisional: false, via: 'category' };
   if (p.releases.some((r) => r.status === 'planned' && fits(r))) return { ok: true, provisional: true, via: 'release' };
   if (via?.status === 'submitted') return { ok: true, provisional: true, via: 'category', note: `Entered provisionally. It qualifies through its ${viaName} entry, which must be accepted.` };
+  // A festival-only route (the Goyas' shorts): no release qualifies, only a selection.
+  if (!routes.length && festivalSelection) return { ok: false, provisional: false, reason: `It needs a selection at ${festivalSelection.map((i) => institution(i).short).join(', ')} between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}.` };
   const how = routes.length === 1 ? `a ${routes[0]} release` : 'a release';
   const place = outside ? `outside ${outside.map(countryWords).join(' and ')}` : `in ${countries.map((c) => (c === 'origin' ? countryWords(home) : countryWords(c))).join(' or ')}`;
   const orFest = list ? `, or a win of an award on the ${institution(ed.institutionId).short} qualifying-festival list between ${formatDateKey(list.window.from)} and ${formatDateKey(list.window.to)}` : festivalAwards ? ', or a top award at one of its qualifying festivals in that time' : '';
   const orVia = viaCategory ? `, or an accepted ${viaName} entry` : '';
-  return { ok: false, provisional: false, reason: `It needs ${how} ${place} between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}${orFest}${orVia}.` };
+  const orSel = festivalSelection ? `, or a selection at ${festivalSelection.map((i) => institution(i).short).join(', ')} in that time` : '';
+  return { ok: false, provisional: false, reason: `It needs ${how} ${place} between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}${orFest}${orSel}${orVia}.` };
 }
 
 /** Version 1 of the 99th Oscars' shorts rule only: any listed "institution:category" result inside the window. */
@@ -449,7 +457,7 @@ function showingsBefore(p: Project, before: string, exceptEdition?: string): { d
   return out;
 }
 
-export function checkEligibility(state: GameState, p: Project, ed: Edition, cat: Category, recipientIds?: string[], versionId?: string): Eligibility {
+export function checkEligibility(state: GameState, p: Project, ed: Edition, cat: Category, recipientIds?: string[], versionId?: string, episode?: number): Eligibility {
   const inst = institution(ed.institutionId);
   const rules = categoryRules(ed, cat.id);
   const reasons: string[] = [];
@@ -459,10 +467,22 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   if (!enterable(cat)) reasons.push(cat.kind === 'honorary' ? 'Honorary awards take no entries: the organizer chooses from a body of work.' : 'This award is decided among the films selected for its section. Enter the section instead.');
   const formats = rules?.formats?.value ?? cat.formats;
   if (!formats.includes(p.axes.format)) reasons.push(`This category doesn't accept ${p.axes.format.replace('-', ' ')} projects.`);
-  reasons.push(...catalogRules().requirementProblems(state, p, cat));
+  // A rule that measures the dialogue replaces the check of the declared language.
+  reasons.push(...catalogRules().requirementProblems(state, p, rules?.nonEnglish ? { ...cat, need: cat.need?.filter((n) => n !== 'non-english') } : cat));
   if (cat.recipient === 'national') {
     if (getPlace(p.axes.basePlaceId).country === 'US') reasons.push('This category is for films made outside the United States.');
-    if (p.axes.dialogueLanguages[0] === 'en') reasons.push('This category is for films whose dialogue is mostly not in English.');
+    if (!rules?.nonEnglish && p.axes.dialogueLanguages[0] === 'en') reasons.push('This category is for films whose dialogue is mostly not in English.');
+  }
+  if (rules?.boxOffice) {
+    const want = rules.boxOffice.value;
+    const got = catalogRules().boxOffice(p, want.country, rules.qualifying?.value);
+    const usd = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+    if (got.worldwide < want.worldwide || got.domestic < want.domestic) reasons.push(`Its cinemas have reported ${usd(got.worldwide)} worldwide, ${usd(got.domestic)} of it in ${countryWords(want.country)}, in the qualifying year; this award needs ${usd(want.worldwide)}, ${usd(want.domestic)} of it in ${countryWords(want.country)}.`);
+  }
+  if (rules?.nonEnglish) {
+    const share = catalogRules().nonEnglishShare(p);
+    if (share === null && p.axes.dialogueLanguages[0] === 'en') reasons.push('It has no written dialogue and its first dialogue language is English; this category needs more than half the dialogue in another language.');
+    else if (share !== null && share <= rules.nonEnglish.value) reasons.push(`${Math.round(share * 100)}% of its written dialogue is in a language other than English; this category needs more than ${Math.round(rules.nonEnglish.value * 100)}%.`);
   }
   // A version entered instead of the main cut is judged at its own runtime (versions.ts).
   const version = versionId ? p.versions?.find((v) => v.id === versionId) : undefined;
@@ -482,12 +502,17 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   }
   const mediums = rules?.mediums?.value ?? cat.mediums;
   if (mediums && !mediums.includes(p.axes.medium)) reasons.push(`This category is for ${mediums.join(' or ').replace('-', ' ')} work.`);
+  if (rules?.maxBudget && (p.finance?.estimate ?? 0) >= rules.maxBudget.value) reasons.push(`Its budget is ${(p.finance?.estimate ?? 0).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })}. This category takes films made for under ${rules.maxBudget.value.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })}.`);
   if (rules?.minEpisodes && p.axes.episodeCount < rules.minEpisodes.value) reasons.push(`It has ${p.axes.episodeCount} episode${p.axes.episodeCount === 1 ? '' : 's'}. This category needs at least ${rules.minEpisodes.value}.`);
   // Drama or comedy is the category's `class`, read by requirementProblems from where the project says it competes. A
   // reference check against the genre list did this until November 9, 2026, and never matched the JSON catalog.
   if (cat.genres && !p.axes.genres.some((g) => cat.genres!.includes(g.id))) reasons.push(`This category needs one of its genres, such as ${genre(cat.genres[0]).name}.`);
   if (cat.excludeGenres && p.axes.genres.some((g) => cat.excludeGenres!.includes(g.id))) reasons.push('Its genres compete in a separate category.');
-  if (inst.origin && !inst.origin.includes(origin)) reasons.push('Your production base country isn\'t eligible for this event.');
+  // A category for work from elsewhere (a "non-" requirement: the Goyas' European and Ibero-American films, the Césars' and
+  // the Japan Academy's foreign films) isn't held to the event's own countries. Until November 9, 2026 it was, so those
+  // four categories took nothing at all.
+  const foreignCategory = cat.need?.some((n) => n.startsWith('non-') || n.includes('-non-'));
+  if (inst.origin && !foreignCategory && !inst.origin.includes(origin)) reasons.push('Your production base country isn\'t eligible for this event.');
   if (rules?.origin?.value.only && !rules.origin.value.only.includes(origin)) reasons.push(`This section is for work made in ${rules.origin.value.only.map(countryWords).join(' or ')}.`);
   if (rules?.origin?.value.not?.includes(origin)) reasons.push(`Work made mainly in ${countryWords(origin)} enters the festival's national competition instead.`);
   if (inst.id === 'international-emmys' && origin === 'US') reasons.push('This event is for productions made outside the United States.');
@@ -536,24 +561,49 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     provisionalNote = rel.note;
     const tf = rules?.theatricalFirst?.value;
     if (tf && !(tf.unlessFestival && rel.via === 'festival')) {
-      const inC = (r: Project['releases'][number]) => r.status !== 'cancelled' && r.territories.some((t) => tf.countries.includes('*') || tf.countries.includes(t));
+      const home = getPlace(p.axes.basePlaceId).country; // 'origin': the production country (the Goyas' European and Ibero-American awards)
+      const inC = (r: Project['releases'][number]) => r.status !== 'cancelled' && r.territories.some((t) => tf.countries.includes('*') || tf.countries.includes(t) || (tf.countries.includes('origin') && t === home));
       const theatrical = p.releases.filter((r) => inC(r) && r.route === 'theatrical').map((r) => r.date).sort()[0];
-      const other = p.releases.filter((r) => inC(r) && r.route !== 'theatrical').map((r) => r.date).sort()[0];
-      const there = tf.countries.includes('*') ? '' : ` in ${tf.countries.map(countryWords).join(' or ')}`;
+      // A festival screening isn't a release outside cinemas; until November 9, 2026 it counted as one, and ruled out of the
+      // Goyas, the Oscars' documentary and the guild awards a film that premiered at a festival before its theatrical run.
+      const other = p.releases.filter((r) => inC(r) && r.route !== 'theatrical' && r.route !== 'festival-premiere').map((r) => r.date).sort()[0];
+      const there = tf.countries.includes('*') ? '' : ` in ${tf.countries.map((c) => countryWords(c === 'origin' ? home : c)).join(' or ')}`;
       if (other && (!theatrical || other < theatrical)) reasons.push(`It was released on ${formatDateKey(other)} outside cinemas${there}, before any theatrical run${there ? ' there' : ''}, which rules it out.`);
     }
     const tv = rules?.tvFirst?.value;
     if (tv) {
       const inC = (r: Project['releases'][number]) => r.status !== 'cancelled' && r.territories.some((t) => tv.countries.includes(t));
       const cinema = p.releases.filter((r) => inC(r) && r.route === 'theatrical').map((r) => r.date).sort()[0];
-      const aired = p.releases.filter((r) => inC(r) && r.route !== 'theatrical').map((r) => r.date).sort()[0];
+      const aired = p.releases.filter((r) => inC(r) && r.route !== 'theatrical' && r.route !== 'festival-premiere').map((r) => r.date).sort()[0];
       if (cinema && (!aired || cinema < aired)) reasons.push(`It opened in cinemas in ${tv.countries.map(countryWords).join(' or ')} on ${formatDateKey(cinema)}, before airing there, which rules it out of television awards.`);
     }
   }
   // Until November 9, 2026, an Oscar short whose rules weren't read qualified through any festival win at all; it now
   // reads the Academy's list (simulatedOscarRelease above).
-  const recipients = categoryRecipients(state, p, cat, recipientIds, rules);
-  if (!recipients.length) reasons.push(recipientMissingReason(cat));
+  const single = rules?.oneEpisode && isEpisodic(p.axes.format);
+  if (single && episode !== undefined && !(Number.isInteger(episode) && episode >= 1 && episode <= p.axes.episodeCount)) reasons.push(`${p.title} has ${p.axes.episodeCount} episodes; choose one of them.`);
+  const recipients = categoryRecipients(state, p, cat, recipientIds, rules, episode);
+  if (!recipients.length && single && categoryRecipients(state, p, cat, recipientIds).length) {
+    reasons.push(`Nobody credited for this category worked on episode ${episode ?? entryEpisodes(state, p, cat, rules)[0] ?? 1}.`);
+  } else if (!recipients.length) {
+    // Credited, but ruled out by the category's own rules: every rule that rules out the first one credited.
+    const c = categoryRecipients(state, p, cat, recipientIds)[0];
+    const why: string[] = [];
+    if (c) {
+      const R = catalogRules();
+      const name = c.characterName ?? c.personName;
+      const span = rules?.episodeShare?.value;
+      const earlier = rules?.notAfterNomination?.value;
+      const screen = rules?.screenShare?.value;
+      if (rules?.noNarrators && R.isNarrator(p, c)) why.push('A narrator can\'t be entered in this performer category; the narration can be entered for a narrator award.');
+      if (earlier && R.nominatedEarlier(state, p, c, earlier.institution, earlier.categories)) why.push(`${name} was nominated as a lead or supporting performance in an earlier season, so the part can't be entered as a guest.`);
+      if (span && ((span.under !== undefined && R.episodeShare(p, c) >= span.under) || (span.atLeast !== undefined && R.episodeShare(p, c) < span.atLeast))) {
+        why.push(`This category takes performers in ${span.under !== undefined ? 'fewer than half' : 'at least half'} of the episodes; ${name} is in ${c.episodes === 'all' ? p.axes.episodeCount : c.episodes.length} of ${p.axes.episodeCount}.`);
+      }
+      if (screen && R.screenShare(p, c, screen.per) < screen.atLeast) why.push(`${name} is on screen for ${Math.round(R.screenShare(p, c, screen.per) * 100)}% of ${screen.per === 'episode' ? 'their biggest episode' : 'the running time'} in the approved script; this category needs at least ${Math.round(screen.atLeast * 100)}%.`);
+    }
+    reasons.push(...(why.length ? why : [recipientMissingReason(cat)]));
+  }
   return { eligible: reasons.length === 0, provisional, provisionalNote, reasons, recipients };
 }
 
@@ -562,11 +612,49 @@ function recipientMissingReason(cat: Category): string {
     return cat.actingTitle ? `No credited ${cat.recipient === 'lead' ? 'lead' : 'supporting'} performance can be entered as ${cat.actingTitle.toLowerCase()} in this category.` : `No credited ${cat.recipient} performance.`;
   }
   if (cat.recipient === 'voice') return 'No credited voice performance.';
+  if (cat.recipient === 'narrator') return 'No credited narrator: cast a part whose story function is Narrator, and give the program a narration sequence.';
   return 'No credited person for this category.';
 }
 
-/** Credited recipients: only people with the relevant actual contribution. */
-export function categoryRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
+/** Credited recipients: only people with the relevant actual contribution, less any the category's rules exclude. */
+export function categoryRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules, episode?: number): Credit[] {
+  const all = ruledRecipients(state, p, cat, chosen, rules);
+  if (!rules?.oneEpisode || !isEpisodic(p.axes.format)) return all;
+  // One episode: those credited on it (the first episode with anyone credited, until one is chosen), at most `max`;
+  // entered whole when there is no episode to choose (`wholeWhenAll`).
+  const ep = episode ?? entryEpisodes(state, p, cat, rules)[0];
+  if (ep === undefined) return rules.oneEpisode.value.max ? all.slice(0, rules.oneEpisode.value.max) : all;
+  const on = all.filter((c) => c.episodes === 'all' || c.episodes.includes(ep)).sort((a, b) => a.billing - b.billing);
+  return rules.oneEpisode.value.max ? on.slice(0, rules.oneEpisode.value.max) : on;
+}
+
+/**
+ * For a category entered for one episode: the episodes someone credited for it worked on, in order. None when the work
+ * is entered whole (`wholeWhenAll`, everyone credited on every part).
+ */
+export function entryEpisodes(state: GameState, p: Project, cat: Category, rules?: CategoryRules): number[] {
+  const all = ruledRecipients(state, p, cat, undefined, rules);
+  if (rules?.oneEpisode?.value.wholeWhenAll && all.every((c) => c.episodes === 'all' || c.episodes.length >= p.axes.episodeCount)) return [];
+  return Array.from({ length: p.axes.episodeCount }, (_, i) => i + 1).filter((n) => all.some((c) => c.episodes === 'all' || c.episodes.includes(n)));
+}
+
+function ruledRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
+  const all = creditedRecipients(state, p, cat, chosen, rules);
+  if (!rules?.noNarrators && !rules?.episodeShare && !rules?.notAfterNomination && !rules?.screenShare) return all;
+  const span = rules.episodeShare?.value;
+  const before = rules.notAfterNomination?.value;
+  const screen = rules.screenShare?.value;
+  return all.filter((c) => !(rules.noNarrators && catalogRules().isNarrator(p, c))
+    && (!span || ((span.under === undefined || catalogRules().episodeShare(p, c) < span.under) && (span.atLeast === undefined || catalogRules().episodeShare(p, c) >= span.atLeast)))
+    && !(before && catalogRules().nominatedEarlier(state, p, c, before.institution, before.categories))
+    && !(screen && catalogRules().screenShare(p, c, screen.per) < screen.atLeast));
+}
+
+
+
+
+
+function creditedRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
   const credits = p.credits;
   const chars = p.drafts.find((d) => d.number === p.approvedDraft)?.characters ?? [];
   // Leading or supporting as the producer placed the part, else by its size; story functions never decide it.
@@ -732,7 +820,7 @@ export function seasonSlate(seed: number, seasonYear: number): SlateFilm[] {
 
 /** Scores for the recipient kinds added November 9, 2026, derived without new draws so every season's slate is unchanged. */
 function withDerived(x: Record<'project' | 'producer' | 'director' | 'writer' | 'lead' | 'supporting' | 'voice' | 'ensemble', number>): Record<Recipient, number> {
-  return { ...x, guest: x.supporting, performer: Math.max(x.lead, x.supporting), host: x.lead, craft: (x.director + x.project) / 2, song: x.project, national: x.project, career: x.project };
+  return { ...x, guest: x.supporting, performer: Math.max(x.lead, x.supporting), host: x.lead, narrator: x.voice, craft: (x.director + x.project) / 2, song: x.project, national: x.project, career: x.project };
 }
 
 /** The title of a competing work in an edition, by its entry ID. */

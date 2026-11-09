@@ -17,12 +17,12 @@ kids-live-action | Kids: Live-Action | C | producer | television:live:children+t
 - News | News isn't work the game makes | iemmy54-categories
 non-scripted | Non-Scripted Entertainment | C | producer | reality+competition+variety | iemmy54-categories |
 short-form | Short-Form Series | C | producer | shortform | iemmy54-categories |
-- Sports Documentary | Sports aren't a documentary subject the game distinguishes | iemmy54-categories
+sports-documentary | Sports Documentary | C | producer | docseries:sports+docspecial:sports | iemmy54-categories | A documentary with the Sports genre. Until November 9, 2026 this read "Sports aren't a documentary subject the game distinguishes", which was false: Sports is one of the game's genres
 - Telenovela | Telenovelas aren't a program type the game makes | iemmy54-categories
 tv-movie | TV Movie/Mini-Series | C | producer | movie+limited-series | iemmy54-categories |
 # Special Awards
 founders | International Emmy Founders Award | H | career-television | television | iemmy-special | Two special awards a year to individuals or organizations with a global impact on television
 directorate | International Emmy Directorate Award | H | career-television | television | iemmy-special |
 # Other Awards
-- Sir Peter Ustinov Television Scriptwriting Award | Open to non-American citizens under 30 for an unproduced script; the game's scripts are produced work and the player's age isn't the point of the award | iemmy54-categories Other Awards
+- Sir Peter Ustinov Television Scriptwriting Award | Open to non-American citizens under 30 for an unproduced script. Until November 9, 2026 this said the game's scripts are produced work, which was false: a script exists from its first draft, and the player has an age and citizenship. Not entered because a script competition outside production has no entry path in the game yet and the competition's terms weren't readable from here | iemmy54-categories Other Awards
 - JCS International Young Creatives Award | UNVERIFIED: criteria page not read | iemmy54-categories Other Awards

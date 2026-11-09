@@ -2,22 +2,25 @@
 // the player does from the Festivals And Awards and Profile pages (awards.ts holds the institutions, their editions and
 // the handlers that run them). Loaded with those pages, not at startup (the startup JavaScript budget).
 import { getPlace } from '../data/places';
-import { categoriesFor, checkEligibility, edition, entryNeeds, institution, screeningTravel, type Honor } from './awards';
+import { categoriesFor, categoryRules, checkEligibility, edition, entryEpisodes, entryNeeds, institution, screeningTravel, type Honor } from './awards';
 import { ledgerTotals, money, spend } from './budget';
 import { approvedScenes as approvedScenesOf, isEpisodic } from './projects';
 import { addLog } from './state';
 import { dateKey } from './time';
 import type { Edition, EditionEntry, GameState, Project, Screening } from './types';
 
-export function submitEntry(state: GameState, p: Project, editionId: string, categoryId: string, recipientIds?: string[], versionId?: string): EditionEntry {
+export function submitEntry(state: GameState, p: Project, editionId: string, categoryId: string, recipientIds?: string[], versionId?: string, episode?: number): EditionEntry {
   const ed = edition(state, editionId);
   const inst = institution(ed.institutionId);
   const cat = inst.categories.find((c) => c.id === categoryId);
   if (!cat) throw new Error('That category doesn\'t exist.');
   if (!categoriesFor(inst, ed.year).includes(cat)) throw new Error(`The ${ed.label} doesn't hold that category.`);
   if (ed.entries.some((e) => e.projectId === p.id && e.categoryId === categoryId && e.status !== 'withdrawn')) throw new Error('This project is already entered in that category.');
-  const el = checkEligibility(state, p, ed, cat, recipientIds, versionId);
+  const el = checkEligibility(state, p, ed, cat, recipientIds, versionId, episode);
   if (!el.eligible) throw new Error(el.reasons[0]);
+  // Entered for one episode (the Emmys' directing and writing): the one chosen, or the first anyone credited worked on.
+  const rules = categoryRules(ed, cat.id);
+  const ep = rules?.oneEpisode && isEpisodic(p.axes.format) ? episode ?? entryEpisodes(state, p, cat, rules)[0] : undefined;
   // Entry forms ask for a logline and a synopsis (the Pitch). SLATE checks they are written, never what they say.
   const pitch = entryNeeds(p);
   if (pitch) throw new Error(pitch);
@@ -34,6 +37,7 @@ export function submitEntry(state: GameState, p: Project, editionId: string, cat
     id: tries ? `${base}#${tries + 1}` : base, projectId: p.id, categoryId, submittedAt: state.now, status: 'submitted', recipients: el.recipients.map((r) => r.id), fee: cat.fee && !alreadyPaid ? cat.fee : 0,
     reason: el.provisional ? el.provisionalNote ?? 'Entered provisionally. The planned release must happen within the eligibility period.' : undefined,
     ...(versionId ? { versionId } : {}),
+    ...(ep ? { episode: ep } : {}),
   };
   ed.entries.push(entry);
   if (!state.followed.includes(inst.id)) state.followed.push(inst.id);

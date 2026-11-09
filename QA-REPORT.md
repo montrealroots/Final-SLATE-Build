@@ -8,7 +8,55 @@
 
 ## Commands And Results
 
-### Current: Rule Research, Continued (November 9, 2026, after #49)
+### Current: Recipient Rules, Continued (November 9, 2026, after #51 was opened)
+
+Tested revision: the working branch at the commit that updates this report.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | 69 files, 528 tests passed; startup JavaScript 674 kB, 216 kB gzipped (215.86 kB measured after the rule helpers moved to the catalog chunk), 0 problems. |
+| `npx playwright test e2e/awards.spec.ts --project=desktop --project=iphone-15-plus --trace off` | 0 | 18 passed in 2.7 minutes, on the commit with the Goyas' specific Bases; the narrator journey also enters Directing for episode 4 and finds that episode's director named. |
+
+Implemented and tested (engine): directing and writing entered for one episode, with the two-director cap
+(`emmys-2026@4`); a limited series entered whole or as one part; Guest Performer Eligibility after an earlier season's
+nomination; the 5% screen-time minimums; the Globes' $150 million box-office threshold (`golden-globes-2027@4`).
+Mutation-tested: the cap, the episode filter, the stored episode, the whole-series rule, the nomination rule and its
+statuses, the screen-time boundary and denominator, and the box office's domestic split and window each fail a test.
+Fixed while writing them: the recipient reasons named only one rule; they now list every rule that rules a part out.
+`EditionEntry.episode` had been declared since the first engine commit and read by nothing; entries now store it.
+
+Rule research, continued: Venice's Critics' Week (its site answered after a 503), SXSW's deadline and fees (its
+submissions page answered; its eligibility FAQ still returns 403, so a deadline-only book counts as SLATE's eligibility),
+and the Goyas' European, Ibero-American and short film awards (`goya-2027@2`). TIFF and BAFTA still return 403.
+Two eligibility defects the reading found, each with a test that fails without its fix: a festival premiere counted as a
+release outside cinemas (ruling festival films out of every theatrical-first rule); and categories for work from
+elsewhere (the Goyas' European and Ibero-American, the Césars' and the Japan Academy's foreign films) were held to the
+event's own countries, so they took nothing. Counts: organizer's rules 463 of 806, projected only 11, SLATE's 332.
+
+### Previous: Nonplayable Review And Recipient Rules (November 9, 2026, after #50 was opened)
+
+Tested revision: the working branch at the commit that updates this report.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 69 files, 516 tests passed; startup JavaScript 672 kB, 215 kB gzipped, 0 problems. |
+| `python3 tools/awards/build.py --check` | 0 | Catalog current: 806 categories. |
+| `npx playwright test e2e/awards.spec.ts --project=desktop --project=iphone-15-plus --trace off` | 0 | 18 passed in 2.7 minutes (WebKit is the `iphone-15-plus` project), with two new journeys: Outstanding Narrator entered for a documentary's narrator while a series' narrator and a guest in three of six episodes are kept out of Supporting and Guest Actress with their reasons; and a music video entered at SXSW, where the Short Film Competition refuses it. |
+
+Implemented and tested (engine): the Emmys' Outstanding Narrator, from a documentary short played to delivery with a cast
+Narrator (`tests/nonplayable-review.test.ts`); SXSW's Music Video Competition, from a delivered music video; the
+International Emmys' Sports Documentary, from the Sports genre; narrators kept out of the Emmy performer categories; the
+guest and short form episode shares; the Oscars' and Globes' dialogue share counted from the script; co-production
+partners signed in Financing (`tests/recipient-rules.test.ts`). Mutation-tested: each of the narrator rule's three
+conditions, the narrator filter, both episode-share boundaries and both dialogue-share mutants fail a test. The first
+"no narration" fixture passed against a mutant, because a narrator in no scene is never cast; it was rewritten.
+Source-verified: the 78th Emmy rules (Category 76, Performer Awards, Category 110) and the 84th Golden Globes rules
+(A.3.c.i-ii), read November 9, 2026. The narrator journey found that the narration sequence was read from the working
+script while the part came from the approved one; both now come from the approved script. Not browser-tested: the Sports
+Documentary, the dialogue share and co-production (engine tests only).
+Counts: organizer's rules 457 of 806, projected only 11, SLATE's 338; 123 entries remain out of play, each reviewed.
+
+### Previous: Rule Research, Continued (November 9, 2026, after #49)
 
 Tested revision: the working branch at the commit that updates this report.
 

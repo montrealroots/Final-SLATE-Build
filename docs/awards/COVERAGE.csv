@@ -109,7 +109,7 @@ venice,spotlight,Venice Spotlight,section,Venice Spotlight,project,verified,Arti
 venice,spotlight-audience,Armani Beauty Audience Award,audience,Venice Spotlight,project,verified,Article 6.3,The audience at each official screening votes
 venice,lion-of-the-future,"Lion Of The Future – ""Luigi De Laurentiis"" Venice Award For A Debut Film",prize,Debut Award,director+producer,verified,Article 6.5,"Debut fiction features in every competitive section, including the independent ones; the prize money is shared by the director and producer"
 venice,lifetime,Golden Lion For Lifetime Achievement,honorary,Lifetime Achievement,career-film,verified,Article 6.7,"At most two a year, on the Festival Director's recommendation"
-venice,sic,Settimana Internazionale Della Critica,section,Independent And Parallel Sections,project,unverified,Article 5.1,"UNVERIFIED: run by the National Syndicate of Italian Film Critics under its own regulations, not read; debut features in the game"
+venice,sic,Settimana Internazionale Della Critica,section,Independent And Parallel Sections,project,verified,sic26-reg Art. 3,"The director's first full-length film, at least 60 minutes (Art. 3); run by the National Syndicate of Italian Film Critics under its own regulations (ve83-reg Article 5.1). Its site returned HTTP 503 until November 9, 2026"
 venice,giornate,Giornate Degli Autori,section,Independent And Parallel Sections,project,unverified,Article 5.2,"UNVERIFIED: its own regulations, not read"
 venice,,Venice Classics And Venice Classics Award For Best Restored Film,,Independent And Parallel Sections,,not-playable,"Articles 3.5, 6.4",Restorations of older films aren't work the game makes
 venice,,Venice Immersive And Its Prizes,,Independent And Parallel Sections,,not-playable,"Articles 3.6, 6.6",Immersive works aren't made in the game
@@ -223,7 +223,9 @@ sxsw,episodic,Episodic Pilot Competition,section,,project,verified,sxsw27-submit
 sxsw,episodic-jury,Grand Jury Award: Episodic Pilot,prize,,producer,unverified,UNVERIFIED,UNVERIFIED: award name not read
 sxsw,shorts,Short Film Competition,section,,project,verified,sxsw27-submit,The game's existing entry; $70 or $90
 sxsw,shorts-jury,Grand Jury Award: Short Film,prize,,director,unverified,UNVERIFIED,UNVERIFIED: award name not read; the qualifying route for the Oscars shorts depends on it
-sxsw,,Music Videos And XR,,,,not-playable,sxsw27-submit,Music videos and immersive works aren't made in the game
+sxsw,music-videos,Music Video Competition,section,,project,verified,sxsw27-submit,"Music videos are a submission type. Until November 9, 2026 this was listed with XR as ""Music videos and immersive works aren't made in the game"", which was false for music videos: New Project offers the Music Video format"
+sxsw,music-videos-jury,Grand Jury Award: Music Video,prize,,director,unverified,UNVERIFIED,UNVERIFIED: award name not read
+sxsw,,XR,,,,not-playable,sxsw27-submit,Immersive works aren't made in the game
 series-mania,international,International Competition,section,,project,verified,sm27-call,The game's existing entry; selection is not a prize
 series-mania,grand-prix,Grand Prix (International Competition),prize,,producer,verified,sm26-awards,
 series-mania,intl-writing,Best Writing (International Competition),prize,,writer,verified,sm26-awards,
@@ -361,7 +363,7 @@ emmys,guest-actress-comedy,Outstanding Guest Actress In A Comedy Series,award,Pe
 emmys,guest-actress,Outstanding Guest Actress In A Drama Series,award,Performer Awards,guest:Actress,verified,Category 73,
 emmys,short-form-performer,Outstanding Performer In A Short Form Comedy Or Drama Series,award,Performer Awards,performer,verified,Category 74,
 emmys,voice-over,Outstanding Character Voice-Over Performance,award,Performer Awards,voice,verified,Category 75,
-emmys,,Outstanding Narrator,,Performer Awards,,not-playable,Category 76,Documentary narration has no credited narrator in the game yet
+emmys,narrator,Outstanding Narrator,award,Performer Awards,narrator,verified,Category 76,"To the narrator of a documentary or nonfiction series or special: a cast part whose story function is Narrator, in a program with a narration sequence. Until November 9, 2026 this read ""Documentary narration has no credited narrator in the game yet"", which was false: a Narrator part is cast and records in post"
 emmys,reality-host,Outstanding Host For A Reality Or Reality Competition Program,award,Performer Awards,host,verified,Category 77,
 emmys,,Outstanding Host For A Game Show,,Performer Awards,,not-playable,Category 78,Game shows aren't a program type the game makes
 emmys,directing-comedy,Outstanding Directing For A Comedy Series,award,Directing,director,verified,Category 24,
@@ -447,7 +449,7 @@ emmys,legacy,Legacy Award,honorary,Governors And Special Awards,career-program,v
 emmys,governors,The Governors Award,honorary,Governors And Special Awards,career,verified,The Governors Award,"Chosen by the Special Awards Committee and the Board of Governors for transformational impact, not an overall body of work"
 emmys,,Syd Cassyd Founders Award,,Governors And Special Awards,,not-playable,Syd Cassyd Founders Award,"Recognizes service to the Television Academy, which the game doesn't model"
 emmys,,"Outstanding Achievement In Engineering, Science & Technology",,Governors And Special Awards,,not-playable,Engineering award,"Recognizes engineering and technology development, outside the filmmaking the game models"
-emmys,,The Television Academy Honors,,Governors And Special Awards,,not-playable,Television Academy Honors,Recognizes programming that explores social and health issues; the game doesn't record what issues a program takes on
+emmys,,The Television Academy Honors,,Governors And Special Awards,,not-playable,Television Academy Honors,"Recognizes programs that explore social and health issues, through a call for entries (December 16, 2025) that wasn't readable from here. Until November 9, 2026 this said the game doesn't record what issues a program takes on, which was false: a project can declare Social Issues on its Overview. In reach once the call's terms are read"
 emmys,,Bob Hope Humanitarian Award,,Governors And Special Awards,,not-playable,Bob Hope Humanitarian Award,"Recognizes humanitarian work outside production, which the game doesn't model"
 international-emmys,arts,Arts Programming,award,Categories Presented,producer,verified,iemmy54-categories,The game reads arts programming from a nonfiction project's subject
 international-emmys,actress,Best Performance By An Actress,award,Categories Presented,performer:Actress,verified,iemmy54-categories,
@@ -462,12 +464,12 @@ international-emmys,kids-live-action,Kids: Live-Action,award,Categories Presente
 international-emmys,,News,,Categories Presented,,not-playable,iemmy54-categories,News isn't work the game makes
 international-emmys,non-scripted,Non-Scripted Entertainment,award,Categories Presented,producer,verified,iemmy54-categories,
 international-emmys,short-form,Short-Form Series,award,Categories Presented,producer,verified,iemmy54-categories,
-international-emmys,,Sports Documentary,,Categories Presented,,not-playable,iemmy54-categories,Sports aren't a documentary subject the game distinguishes
+international-emmys,sports-documentary,Sports Documentary,award,Categories Presented,producer,verified,iemmy54-categories,"A documentary with the Sports genre. Until November 9, 2026 this read ""Sports aren't a documentary subject the game distinguishes"", which was false: Sports is one of the game's genres"
 international-emmys,,Telenovela,,Categories Presented,,not-playable,iemmy54-categories,Telenovelas aren't a program type the game makes
 international-emmys,tv-movie,TV Movie/Mini-Series,award,Categories Presented,producer,verified,iemmy54-categories,
 international-emmys,founders,International Emmy Founders Award,honorary,Special Awards,career-television,verified,iemmy-special,Two special awards a year to individuals or organizations with a global impact on television
 international-emmys,directorate,International Emmy Directorate Award,honorary,Special Awards,career-television,verified,iemmy-special,
-international-emmys,,Sir Peter Ustinov Television Scriptwriting Award,,Other Awards,,not-playable,iemmy54-categories Other Awards,Open to non-American citizens under 30 for an unproduced script; the game's scripts are produced work and the player's age isn't the point of the award
+international-emmys,,Sir Peter Ustinov Television Scriptwriting Award,,Other Awards,,not-playable,iemmy54-categories Other Awards,"Open to non-American citizens under 30 for an unproduced script. Until November 9, 2026 this said the game's scripts are produced work, which was false: a script exists from its first draft, and the player has an age and citizenship. Not entered because a script competition outside production has no entry path in the game yet and the competition's terms weren't readable from here"
 international-emmys,,JCS International Young Creatives Award,,Other Awards,,unverified-not-playable,iemmy54-categories Other Awards,UNVERIFIED: criteria page not read
 annie,feature,Best Feature,award,Production Categories,producer,verified,annie54-categories 1,
 annie,feature-independent,Best Feature - Independent,award,Production Categories,producer,verified,annie54-categories 2,The game reads independent as made without a studio commissioner
@@ -477,7 +479,7 @@ annie,,Best Sponsored,,Production Categories,,not-playable,annie54-categories 5,
 annie,tv-preschool,Best TV/Media - Preschool,award,Production Categories,producer,verified,annie54-categories 6,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
 annie,tv-children,Best TV/Media - Children,award,Production Categories,producer,verified,annie54-categories 7,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
 annie,tv-mature,Best TV/Media - Mature,award,Production Categories,producer,verified,annie54-categories 8,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
-annie,,Best TV/Media - International Anime Production,,Production Categories,,not-playable,annie54-categories 9,Anime production as a national industry style isn't distinguished in the game
+annie,,Best TV/Media - International Anime Production,,Production Categories,,not-playable,annie54-categories 9,"The game records the production country but not anime as a style; whether the category means Japanese production or a style wasn't recorded when it was read, and the categories page returned 404 on November 9, 2026"
 annie,tv-limited,Best TV/Media – Limited Series,award,Production Categories,producer,verified,annie54-categories 10,"First held at the 54th, replacing Best TV Or Media Production; years 2027-9999"
 annie,tv,Best TV Or Media Production,award,Production Categories,producer,verified,53rd Annie Awards,years 1900-2026; split into the age and limited-series categories above for the 54th; kept for older entries
 annie,,Best Student Film,,Production Categories,,not-playable,annie54-categories 11,"The player is a working filmmaker, not a student"

@@ -94,6 +94,34 @@ const OSCARS_2027_2: RuleBook = {
   },
 };
 
+/**
+ * Version 3 (November 9, 2026): International Feature Film's "more than 50 percent non-English dialogue" (Rule Sixteen
+ * II.D), which until then read the first dialogue language the producer declared. It now counts the approved script's
+ * dialogue, in words, by each line's language; a film with no written dialogue still reads the declared language.
+ */
+const OSCARS_2027_3: RuleBook = {
+  ...OSCARS_2027_2, id: 'oscars-2027@3', version: 3,
+  categories: {
+    ...OSCARS_2027_2.categories,
+    international: { ...OSCARS_2027_2.categories.international, nonEnglish: v(0.5, 'aa99-rules', 'More than 50 percent of the dialogue is not in English (Rule Sixteen II.D); SLATE counts the words of the approved script\u2019s lines.') },
+  },
+};
+
+// ---------------- SXSW Film & TV Festival 2027 ----------------
+
+/**
+ * Read November 9, 2026: the Film & TV submissions page, once it answered (HTTP 403 before). It gives the deadlines and
+ * fees only: first August 25, second September 15, final October 1, 2026, "All deadlines end at 11:59pm PT". SLATE uses the
+ * final deadline and its fee (features $125; shorts, music videos and TV $90; the catalog's fees). Eligibility (premiere,
+ * completion, running time) is in the festival's FAQ on support.sxsw.com, which returned HTTP 403, so it stays SLATE's.
+ */
+const SXSW_SOURCE: RuleSource = { id: 'sxsw27-submit', publisher: 'SXSW', title: 'Film & TV Submissions (2027)', url: 'https://sxsw.com/film-submissions/', edition: 'SXSW Film & TV Festival 2027', retrieved: '2026-11-09' };
+const sxswDeadline = v([{ date: '2026-10-01', time: '23:59', zone: PT }], 'sxsw27-submit', 'Final deadline October 1, 2026, 11:59 p.m. PT (first August 25, second September 15, at lower fees).');
+const SXSW_2027: RuleBook = {
+  id: 'sxsw-2027@1', institutionId: 'sxsw', year: 2027, version: 1, checked: '2026-11-09', sources: [SXSW_SOURCE],
+  categories: Object.fromEntries(['narrative', 'documentary', 'episodic', 'shorts', 'music-videos'].map((id) => [id, { deadlines: sxswDeadline }])),
+};
+
 // ---------------- Sundance Film Festival 2027 ----------------
 
 const SUNDANCE_SOURCES: RuleSource[] = [
@@ -391,6 +419,27 @@ const VENICE_2027_2: RuleBook = { ...VENICE_2027, id: 'venice-2027@2', version: 
 const VENICE_2026_3: RuleBook = { ...VENICE_2026_2, id: 'venice-2026@3', version: 3, sources: [...VENICE_SOURCES, GDA26], categories: { ...VENICE_2026_2.categories, giornate: giornate(2026, v) } };
 const VENICE_2027_3: RuleBook = { ...VENICE_2027_2, id: 'venice-2027@3', version: 3, sources: [...VENICE_SOURCES, GDA26], categories: { ...VENICE_2027_2.categories, giornate: giornate(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) } };
 
+/**
+ * Version 4 (November 9, 2026): the Settimana Internazionale della Critica read its own regulations (41st, Art. 3 and 4),
+ * once its site answered (HTTP 503 before): the director's first full-length film (the catalog's debut requirement), at
+ * least 60 minutes, completed in the 12 months before the festival, a world premiere for Italian films and for others no
+ * release or festival outside their country of origin, nothing online, entries by June 19. "Priority will be given to
+ * world premieres" is a selection preference, not modeled.
+ */
+const SIC26: RuleSource = { id: 'sic26-reg', publisher: 'Settimana Internazionale della Critica (SNCCI)', title: 'Regulations - 41st Settimana Internazionale della Critica', url: 'https://www.sicvenezia.it/en/regulations/', edition: '41st Venice International Film Critics\u2019 Week (2026)', retrieved: '2026-11-09' };
+function sic(year: number, mk: typeof v): CategoryRules {
+  const p = year === 2026 ? '' : ' From the 2026 regulations; the 2027 regulations are not published yet.';
+  return {
+    runtime: mk({ atLeast: 60 }, 'sic26-reg', `Minimum length 60 minutes (Art. 3).${p}`),
+    completedFrom: mk(`${year - 1}-09-02`, 'sic26-reg', `Produced and completed in the 12 months before the festival (Art. 3); SLATE counts from September 2, ${year - 1}.${p}`),
+    premiere: mk('world-if-domestic', 'sic26-reg', `Italian films: world premieres only; others: not released or at another festival before Venice except in their country of origin (Art. 3).${p}`),
+    noOnline: mk(true, 'sic26-reg', `Not released on the internet or made available online (Art. 3).${p}`),
+    deadlines: mk([{ date: `${year}-06-19`, time: '23:59', zone: ROME, timeAssumed: true }], 'sic26-reg', `Submitted by June 19 (Art. 4). The time of day is not given; SLATE uses the end of the day in Venice.${p}`),
+  };
+}
+const VENICE_2026_4: RuleBook = { ...VENICE_2026_3, id: 'venice-2026@4', version: 4, sources: [...VENICE_2026_3.sources, SIC26], categories: { ...VENICE_2026_3.categories, sic: sic(2026, v) } };
+const VENICE_2027_4: RuleBook = { ...VENICE_2027_3, id: 'venice-2027@4', version: 4, sources: [...VENICE_2027_3.sources, SIC26], categories: { ...VENICE_2027_3.categories, sic: sic(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) } };
+
 // ---------------- San Sebastián: 74th (2026, verified) and 75th (2027, projected) ----------------
 
 const SS_SOURCE: RuleSource = { id: 'ss74-rules', publisher: 'Festival de San Sebastián', title: 'Rules and Regulations - 74th San Sebastian International Film Festival', url: 'https://www.sansebastianfestival.com/2026/film_registration/rules_and_regulations/1/23002/in', edition: '74th San Sebastian International Film Festival (2026)', retrieved: CHECKED };
@@ -529,9 +578,39 @@ const GOLDEN_GLOBES_2027_2: RuleBook = {
   },
 };
 
+/**
+ * Version 3 (November 9, 2026): Non-English Language's "more than 50% of its dialogue must be in a language other than
+ * English" (A.3.c.i), which until then read the first dialogue language the producer declared. It now counts the approved
+ * script's dialogue, in words, by each line's language. Not modeled: that dialects, pidgins and local usages of English
+ * count as English (A.3.c.ii; SLATE's languages don't record them), and the committee's request for a continuity script.
+ */
+const GOLDEN_GLOBES_2027_3: RuleBook = {
+  ...GOLDEN_GLOBES_2027_2, id: 'golden-globes-2027@3', version: 3,
+  categories: {
+    ...GOLDEN_GLOBES_2027_2.categories,
+    'non-english': { ...GOLDEN_GLOBES_2027_2.categories['non-english'], nonEnglish: v(0.5, 'gg84-rules', 'More than 50% of the dialogue is in a language other than English (A.3.c.i); SLATE counts the words of the approved script\u2019s lines.') },
+  },
+};
+
 // ---------------- Primetime Emmys: 78th (2026, verified) and 79th (2027, projected) ----------------
 
 const EMMY_SOURCE: RuleSource = { id: 'em78-rules', publisher: 'Television Academy', title: '78th Emmy Awards 2025-2026 Rules and Procedures (version 4, April 7, 2026)', url: 'https://www.televisionacademy.com/rules', edition: '78th Primetime Emmy Awards (2026)', retrieved: CHECKED };
+
+/**
+ * Version 4 (November 9, 2026): Cinematic and Box Office Achievement's threshold, B.1.b: "a gross box office receipt total
+ * of at least $150 million worldwide during the qualifying year (of which $100 million must come from the U.S. domestic box
+ * office)". Until then the category asked only for a theatrical release. SLATE reads what distributors have reported for
+ * theatrical releases dated in 2026; a release covering the US and other countries counts toward the worldwide total only.
+ * Not modeled: "commensurate digital streaming viewership" (SLATE records no viewership) and the projections allowed for
+ * releases after November 21 (B.1.c).
+ */
+const GOLDEN_GLOBES_2027_4: RuleBook = {
+  ...GOLDEN_GLOBES_2027_3, id: 'golden-globes-2027@4', version: 4,
+  categories: {
+    ...GOLDEN_GLOBES_2027_3.categories,
+    'box-office': { ...GOLDEN_GLOBES_2027_3.categories['box-office'], boxOffice: v({ worldwide: 150_000_000, domestic: 100_000_000, country: 'US' }, 'gg84-rules', 'At least $150 million worldwide in 2026, $100 million of it from the US box office (B.1.b); SLATE reads what distributors have reported for theatrical releases.') },
+  },
+};
 function emmys(year: number, mk: typeof v): Record<string, CategoryRules> {
   const p = year === 2026 ? '' : ' From the 2025-2026 rules; the 2026-2027 rules are not published yet.';
   const base: CategoryRules = {
@@ -564,7 +643,7 @@ const EMMYS_2027: RuleBook = { id: 'emmys-2027@1', institutionId: 'emmys', year:
  * minimums apply where a category takes series only: six for animation, comedy, drama, variety, short form and reality
  * series, three for documentary and hosted nonfiction series. Categories that also take specials, movies or limited series
  * have no minimum here (the rule is per program, and a category's formats can't say which one is entered). Not modeled
- * yet, and said so in docs/world/RULEBOOK-AUDIT.md: guest performers' fewer than half of the episodes, the 2 to 20 minute
+ * in this version, and said so in docs/world/RULEBOOK-AUDIT.md: guest performers' fewer than half of the episodes (version 3 reads it), the 2 to 20 minute
  * short form running time, 65 percent new animation, 35 percent of the music, voice-over's audience of 13 and over, and
  * the producer caps other than short form's six.
  */
@@ -609,6 +688,67 @@ function emmys2(year: number, mk: typeof v): Record<string, CategoryRules> {
 }
 const EMMYS_2026_2: RuleBook = { ...EMMYS_2026, id: 'emmys-2026@2', version: 2, checked: '2026-11-09', categories: emmys2(2026, v) };
 const EMMYS_2027_2: RuleBook = { ...EMMYS_2027, id: 'emmys-2027@2', version: 2, checked: '2026-11-09', categories: emmys2(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2025-2026 rules.')) as typeof v) };
+
+/**
+ * Version 3 (November 9, 2026): Category 76, Outstanding Narrator, entered at last. Until then the roster said documentary
+ * narration had no credited narrator in the game, which was false: a part whose story function is Narrator is cast and
+ * records its narration in post (production/tasks.ts). It reads the general rules as the other individual categories do, with
+ * no episode minimum ("a continuing or single narration in a documentary/nonfiction series or special"). The recipient is
+ * the cast Narrator of a program with a narration sequence (awards-rules.ts). The same version reads Performer Categories:
+ * "voice-over performers and narrators may not enter in lead, support or guest performer categories" (`noNarrators` on every
+ * lead-, supporting- and guest- category; a voice part was never in those pools), and its episode shares: a guest
+ * category takes performers credited in fewer than half the season's episodes, Short Form Performer half or more
+ * (`episodeShare`; until then the guest categories took whoever the producer declared a guest). Not modeled yet: a performer
+ * nominated as lead or supporting can't later enter the same role as a guest, and the 5% screen-time minimums. Nor: that a part performed as
+ * a character rather than a narrator goes to Character Voice-Over instead (SLATE's Narrator function is the producer's
+ * declaration that the part narrates).
+ */
+function emmys3(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const two = emmys2(year, mk);
+  const p = year === 2026 ? '' : ' From the 2025-2026 rules; the 2026-2027 rules are not published yet.';
+  const noNarrators = mk(true as const, 'em78-rules', `Performer Categories: voice-over performers and narrators may not enter the lead, supporting or guest categories.${p}`);
+  const guest = mk({ under: 0.5 }, 'em78-rules', `Performer Awards: only performers appearing in less than 50% of the eligible episodes can submit in the guest categories.${p}`);
+  const performers = Object.fromEntries(Object.entries(two).filter(([id]) => /^(lead|supporting|guest)-/.test(id))
+    .map(([id, r]) => [id, { ...r, noNarrators, ...(id.startsWith('guest-') ? { episodeShare: guest } : {}) }]));
+  const shortForm = { ...two['short-form-performer'], episodeShare: mk({ atLeast: 0.5 }, 'em78-rules', `Performer Awards: only performers appearing in 50% or more of the eligible episodes can submit in the short form performer category.${p}`) };
+  return { ...two, ...performers, 'short-form-performer': shortForm, narrator: two['voice-over'] };
+}
+const EMMYS_2026_3: RuleBook = { ...EMMYS_2026_2, id: 'emmys-2026@3', version: 3, categories: emmys3(2026, v) };
+const EMMYS_2027_3: RuleBook = { ...EMMYS_2027_2, id: 'emmys-2027@3', version: 3, categories: emmys3(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2025-2026 rules.')) as typeof v) };
+
+/**
+ * Version 4 (November 9, 2026): the directing and writing categories that read "for a single episode" of a series
+ * (Categories 24, 25, 27, 29, 30, 113, 114 and 116) are entered for one episode, and go to the people credited on it;
+ * comedy and drama directing to at most two ("An entry is limited to two directors"). Until then the whole season was
+ * entered, to everyone credited on any episode. A special or movie is still entered whole. Guest Performer Eligibility, read
+ * the same day: nominated or a winner as lead or supporting for a part, a performer can't enter that part as a guest in a
+ * later season (`notAfterNomination`, through the seasons `continues` links); and the 5% screen-time minimums for guests (of
+ * the part's biggest episode) and for supporting performers in a limited series or movie (of the whole), from the approved
+ * script's scene minutes (`screenShare`). A limited or anthology series
+ * (Categories 26 and 115) is entered whole when everyone credited worked on every part, and as one part otherwise; SLATE
+ * decides that for the entry, not for each person, so a director of every part is also named on a part's entry. Not
+ * modeled: the variety series' single entry per series chosen by the head writer, and judging by the episode (SLATE judges
+ * the season's direction and script).
+ */
+function emmys4(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const three = emmys3(year, mk);
+  const p = year === 2026 ? '' : ' From the 2025-2026 rules; the 2026-2027 rules are not published yet.';
+  const one = (max?: number, note = '') => mk(max ? { max } : {}, 'em78-rules', `For a single episode of the series${note}.${p}`);
+  const out: Record<string, CategoryRules> = { ...three };
+  for (const id of ['directing-comedy', 'directing']) out[id] = { ...three[id], oneEpisode: one(2, '; an entry is limited to two directors') };
+  for (const id of ['directing-variety', 'directing-nonfiction', 'directing-reality', 'writing-comedy', 'writing', 'writing-variety']) out[id] = { ...three[id], oneEpisode: one() };
+  const part = (max?: number) => mk({ ...(max ? { max } : {}), wholeWhenAll: true as const }, 'em78-rules', `Credited with all the parts: the complete series; with one or more but not all: one part, which the entrant chooses${max ? '; an entry is limited to two directors' : ''}.${p}`);
+  const notAfter = mk({ institution: 'emmys', categories: ['lead-', 'supporting-'] }, 'em78-rules', `Guest Performer Eligibility: nominated or a winner as lead or supporting, a performer can't enter the same role in the same series as a guest in a later year.${p}`);
+  const guestScreen = mk({ atLeast: 0.05, per: 'episode' as const }, 'em78-rules', `Guest performers: at least 5% of the submitted episode's running time on screen; SLATE measures the part's biggest episode from the approved script's scene minutes.${p}`);
+  const limitedScreen = mk({ atLeast: 0.05, per: 'whole' as const }, 'em78-rules', `Supporting performers in a movie or limited or anthology series: at least 5% of its running time on screen, measured from the approved script's scene minutes.${p}`);
+  for (const id of Object.keys(three).filter((x) => x.startsWith('guest-'))) out[id] = { ...three[id], notAfterNomination: notAfter, screenShare: guestScreen };
+  for (const id of ['supporting-actor-limited', 'supporting-actress-limited']) out[id] = { ...three[id], screenShare: limitedScreen };
+  out['directing-limited'] = { ...three['directing-limited'], oneEpisode: part(2) };
+  out['writing-limited'] = { ...three['writing-limited'], oneEpisode: part() };
+  return out;
+}
+const EMMYS_2026_4: RuleBook = { ...EMMYS_2026_3, id: 'emmys-2026@4', version: 4, categories: emmys4(2026, v) };
+const EMMYS_2027_4: RuleBook = { ...EMMYS_2027_3, id: 'emmys-2027@4', version: 4, categories: emmys4(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2025-2026 rules.')) as typeof v) };
 
 // ---------------- Sitges: 59th (2026, verified) and 60th (2027, projected) ----------------
 
@@ -744,8 +884,8 @@ const CANADIAN_SCREEN_2027: RuleBook = { id: 'canadian-screen-2027@1', instituti
 
 /**
  * Read November 9, 2026: the Bases of the 41st Premios Goya, section 3.1 (features) and 5.1 (deadlines). Best European
- * Film, Best Ibero-American Film and the three short film awards follow their own specific Bases (section 2), not read;
- * they stay on SLATE's rules. Not modeled: the seven consecutive days in one cinema (three for documentaries), the ICAA
+ * Film, Best Ibero-American Film and the three short film awards follow their own specific Bases (section 2), which this
+ * version didn't read; version 2 does. Not modeled: the seven consecutive days in one cinema (three for documentaries), the ICAA
  * rating before release, and the earlier July 28 deadline for films released January to June (SLATE uses September 9).
  */
 const GOYA41: RuleSource = { id: 'goya41-bases', publisher: 'Academia de las Artes y las Ciencias Cinematográficas de España', title: 'Bases de los 41 Premios Goya', url: 'https://www.premiosgoya.com/pdfs/bases-de-los-41-premios-goya/', edition: '41st Goya Awards (2027)', retrieved: '2026-11-09' };
@@ -763,6 +903,41 @@ const GOYA_2027: RuleBook = {
     ...Object.fromEntries(['film', 'animated', 'director', 'new-director', 'screenplay', 'adapted-screenplay', 'actor', 'actress', 'supporting-actor', 'supporting-actress', 'new-actor', 'new-actress', 'score', 'song', 'production-management', 'cinematography', 'editing', 'art-direction', 'costume', 'makeup', 'sound', 'effects'].map((id) => [id, GOYA_FEATURE])),
     ...Object.fromEntries(['documentary'].map((id) => [id, { ...GOYA_FEATURE, runtime: v({ atLeast: 70 }, 'goya41-bases', 'Feature documentaries at least 70 minutes (3.1).') }])),
   },
+};
+
+/**
+ * Version 2 (November 9, 2026): the specific Bases inside the same document. Best European Film and Best Ibero-American
+ * Film (3.1-3.5 of each): a feature released in its country of origin from November 1, 2025 to December 31, 2026 (seven
+ * consecutive days, three for documentaries, SLATE: a theatrical release there), at least 60 minutes (70 for documentaries,
+ * which the catalog's categories don't take), not online before that release except at festivals, never in an earlier
+ * edition, materials by 14:00 on September 10. Not modeled: the selection by the country's academy or a national jury,
+ * one film per country (3.2, 3.5): the entry stands for that selection. The three short film awards (2-7 of the shorts'
+ * Bases): Spanish shorts of at most 59 minutes, a nationality certificate dated October 1, 2024 to September 30, 2026
+ * (SLATE: the completion date), never in an earlier edition, materials by 14:00 on September 4, and a festival route: a
+ * qualifying prize or selections at festivals on Annex V (fiction 7, documentary 3, animation 1; one at a festival the
+ * Annex sets in bold). SLATE takes a selection at any of the 11 Annex V festivals in its catalog (Annecy, the Berlinale,
+ * Cannes, Clermont-Ferrand, Sitges, Hot Docs, IDFA, Locarno, Sundance, TIFF, Venice): the bold type doesn't survive in the
+ * text read, so which are bold is SLATE's reading, and the Academy's scoring of the 15 shortlisted per category isn't.
+ */
+const GOYA_ABROAD: CategoryRules = {
+  runtime: v({ atLeast: 60 }, 'goya41-bases', 'At least 60 minutes (specific Bases, 3.1).'),
+  qualifying: v({ from: '2025-11-01', to: '2026-12-31' }, 'goya41-bases', 'Released in its country of origin from November 1, 2025 to December 31, 2026 (3.1).'),
+  release: v({ routes: ['theatrical'], countries: ['origin'] }, 'goya41-bases', 'Seven consecutive days in a commercial cinema in its country of origin (3.1); no Spanish release needed. SLATE treats a theatrical release there as the run.'),
+  theatricalFirst: v({ countries: ['origin'] }, 'goya41-bases', 'Not available online before its cinema release in its country of origin, festivals excepted (3.1).'),
+  noReentry: v(true, 'goya41-bases', 'Never in an earlier edition of the Goyas (3.3, 3.4).'),
+  deadlines: v([{ date: '2026-09-10', time: '14:00', zone: 'Europe/Madrid' }], 'goya41-bases', 'Materials before 14:00 on September 10, 2026 (4.1).'),
+};
+const GOYA_SHORT: CategoryRules = {
+  runtime: v({ atMost: 59 }, 'goya41-bases', 'At most 59 minutes (shorts\u2019 Bases, 2.1).'),
+  completedFrom: v('2024-10-01', 'goya41-bases', 'A Spanish nationality certificate dated October 1, 2024 to September 30, 2026 (2.1); SLATE uses the completion date.'),
+  qualifying: v({ from: '2024-10-01', to: '2026-09-30' }, 'goya41-bases', 'The festival selections that qualify, inside the certificate\u2019s window (2.1, 4-6).'),
+  release: v({ routes: [], countries: [], festivalSelection: ['annecy', 'berlinale', 'cannes', 'clermont', 'sitges', 'hot-docs', 'idfa', 'locarno', 'sundance', 'tiff', 'venice'] }, 'goya41-bases', 'A qualifying prize or selections at Annex V festivals (fiction 7, documentary 3, animation 1, or one at a festival in bold, 4-6); SLATE takes a selection at one of the 11 Annex V festivals in its catalog.'),
+  noReentry: v(true, 'goya41-bases', 'Never in an earlier edition (3.1.d).'),
+  deadlines: v([{ date: '2026-09-04', time: '14:00', zone: 'Europe/Madrid' }], 'goya41-bases', 'Materials before 14:00 on September 4, 2026 (7.1).'),
+};
+const GOYA_2027_2: RuleBook = {
+  ...GOYA_2027, id: 'goya-2027@2', version: 2,
+  categories: { ...GOYA_2027.categories, european: GOYA_ABROAD, iberoamerican: GOYA_ABROAD, 'short-fiction': GOYA_SHORT, 'short-documentary': GOYA_SHORT, 'short-animation': GOYA_SHORT },
 };
 
 // ---------------- César, 2027 ceremony ----------------
@@ -792,8 +967,182 @@ const CESAR_2027: RuleBook = {
   },
 };
 
+// ---------------- Film Independent Spirit Awards, 2027 ----------------
+
+/**
+ * Read November 9, 2026: the 2027 Spirit Awards Rules & Regulations for film (August 24, 2026) and TV (September 1, 2026),
+ * "Rules for eligibility". Not modeled: the nine festivals that aren't in SLATE (New Directors/New Films, New York,
+ * Telluride, Tribeca); streaming must be fee-based (SLATE: any streaming or digital release, read in the US); "once
+ * nominated, no longer eligible" (SLATE refuses any earlier Spirit entry); the TV ensemble's credit shares. The Robert
+ * Redford award takes films and series and stays on SLATE's rules.
+ */
+const SPIRIT_SOURCES: RuleSource[] = [
+  { id: 'sa27-film', publisher: 'Film Independent', title: '2027 Spirit Awards Rules & Regulations: Film Submissions (August 24, 2026)', url: 'https://s3.us-east-1.amazonaws.com/SA_SubForm_etc/2027_SAsubmissions_RulesRegs_Film_082426.pdf', edition: '2027 Film Independent Spirit Awards', retrieved: '2026-11-09' },
+  { id: 'sa27-tv', publisher: 'Film Independent', title: '2027 Spirit Awards Rules & Regulations: TV Submissions (September 1, 2026)', url: 'https://s3.us-east-1.amazonaws.com/SA_SubForm_etc/2027_SAsubmissions_RulesRegs_TV_090126.pdf', edition: '2027 Film Independent Spirit Awards', retrieved: '2026-11-09' },
+];
+const SPIRIT_FILM: CategoryRules = {
+  runtime: v({ atLeast: 70 }, 'sa27-film', 'At least 70 minutes (Eligibility 1).'),
+  maxBudget: v(30_000_000, 'sa27-film', 'Completed for less than $30 million after tax incentives, post-production included (Eligibility 2).'),
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'sa27-film', 'In 2026 (Eligibility 3).'),
+  release: v({ routes: ['theatrical', 'streaming', 'digital'], countries: ['US'], festivalSelection: ['hot-docs', 'sundance', 'sxsw', 'tiff', 'berlinale'] }, 'sa27-film', 'A week in a US cinema, a fee-based streaming or on-demand release, or programmed at one of nine festivals in 2026 (Eligibility 3); five of them are in SLATE.'),
+  noReentry: v(true, 'sa27-film', 'Once nominated a film can\u2019t enter again (Eligibility 4); SLATE refuses any earlier Spirit entry.'),
+  deadlines: v([{ date: '2026-09-29', time: '23:59', zone: PT, timeAssumed: true }], 'sa27-film', 'Film final deadline September 29. The time of day is not given; SLATE uses the end of the day in Los Angeles.'),
+};
+const SPIRIT_TV: CategoryRules = {
+  qualifying: v({ from: '2025-10-01', to: '2026-09-30' }, 'sa27-tv', 'A new series with all or part of its first season airing October 1, 2025 to September 30, 2026 (Eligibility 1, 2).'),
+  release: v({ routes: ['broadcast', 'streaming', 'digital'], countries: ['US'] }, 'sa27-tv', 'On a US network, cable, broadband or streaming platform (Eligibility 3, 5).'),
+  runtime: v({ atLeast: 18 }, 'sa27-tv', 'Episodes at least 18 minutes (Eligibility 3).'),
+  minEpisodes: v(2, 'sa27-tv', 'At least two episodes available in the window (Eligibility 3).'),
+  origin: v({ only: ['US'] }, 'sa27-tv', 'International series only as US co-productions begun before production (Eligibility 5); SLATE uses the production base.'),
+  deadlines: v([{ date: '2026-09-15', time: '23:59', zone: PT, timeAssumed: true }], 'sa27-tv', 'TV final deadline September 15. The time of day is not given; SLATE uses the end of the day in Los Angeles.'),
+};
+const SPIRIT_2027: RuleBook = {
+  id: 'spirit-2027@1', institutionId: 'spirit', year: 2027, version: 1, checked: '2026-11-09', sources: SPIRIT_SOURCES,
+  categories: {
+    ...Object.fromEntries(['feature', 'first-feature', 'director', 'screenplay', 'first-screenplay', 'cassavetes', 'cinematography', 'editing', 'lead', 'supporting', 'breakthrough', 'documentary', 'international', 'international-first'].map((id) => [id, SPIRIT_FILM])),
+    ...Object.fromEntries(['series', 'nonscripted-series', 'tv-lead', 'tv-supporting', 'tv-breakthrough', 'tv-ensemble'].map((id) => [id, SPIRIT_TV])),
+  },
+};
+
+// ---------------- The Actor Awards, 33rd (2027) ----------------
+
+/**
+ * Read November 9, 2026: the 33rd Annual Actor Awards Rules & Regulations, "Awards Year And Eligibility" (A motion
+ * pictures, B television) and the General Timetable. Not modeled: the SAG-AFTRA contract (A.4-6), the six markets for a
+ * film's run (SLATE: a US theatrical release), primetime airing, the limited series' 150 minutes and the television
+ * movie's length, and AI-generated performances.
+ */
+const AA33: RuleSource = { id: 'aa33-rules', publisher: 'SAG-AFTRA', title: '33rd Annual Actor Awards Presented by SAG-AFTRA Rules & Regulations', url: 'https://www.actorawards.org/sites/default/files/33rd%20Annual%20Actor%20Awards%20Presented%20by%20SAG-AFTRA%20Rules%20%26%20Regulations.pdf', edition: '33rd Actor Awards (2027)', retrieved: '2026-11-09' };
+const AA_DEADLINE = v([{ date: '2026-11-02', time: '17:00', zone: PT }], 'aa33-rules', 'Submissions close at 5 p.m. PT on November 2 (General Timetable).');
+const AA_FILM: CategoryRules = {
+  runtime: v({ over: 60 }, 'aa33-rules', 'Scripted, feature-length films over 60 minutes (A.1).'),
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'aa33-rules', 'A seven-day run beginning in 2026 (A.3).'),
+  release: v({ routes: ['theatrical'], countries: ['US'] }, 'aa33-rules', 'Seven consecutive days in a commercial cinema in Los Angeles, New York, the Bay Area, Chicago, Miami-Dade or Atlanta (A.3); SLATE treats a US theatrical release as that.'),
+  theatricalFirst: v({ countries: ['*'] }, 'aa33-rules', 'No nontheatrical exhibition or distribution before the first day of the run (A.5).'),
+  deadlines: AA_DEADLINE,
+};
+const AA_TV: CategoryRules = {
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'aa33-rules', 'First aired or streamed in the United States in 2026 (B.1).'),
+  release: v({ routes: ['broadcast', 'streaming', 'digital'], countries: ['US'] }, 'aa33-rules', 'On US television in primetime or a recognized US streaming platform (B.1).'),
+  deadlines: AA_DEADLINE,
+};
+const AA_SERIES: CategoryRules = {
+  ...AA_TV,
+  minEpisodes: v(6, 'aa33-rules', 'Comedy and drama series of at least six episodes (B.2.a).'),
+  runtime: v({ atLeast: 20 }, 'aa33-rules', 'Episodes at least 20 minutes (B.2.b).'),
+};
+const ACTOR_AWARDS_2027: RuleBook = {
+  id: 'actor-awards-2027@1', institutionId: 'actor-awards', year: 2027, version: 1, checked: '2026-11-09', sources: [AA33],
+  categories: {
+    ...Object.fromEntries(['male-lead', 'female-lead', 'male-supporting', 'female-supporting', 'cast'].map((id) => [id, AA_FILM])),
+    ...Object.fromEntries(['tv-male-limited', 'tv-female-limited'].map((id) => [id, AA_TV])),
+    ...Object.fromEntries(['tv-male-drama', 'tv-female-drama', 'tv-male-comedy', 'tv-female-comedy', 'ensemble-drama', 'ensemble-comedy'].map((id) => [id, AA_SERIES])),
+  },
+};
+
+// ---------------- DGA Awards, 79th (2027) ----------------
+
+/**
+ * Read November 9, 2026: the 79th DGA Awards' Theatrical Feature Film guidelines. Only that category's guidelines were
+ * readable; the others' pages returned HTTP 404 and stay on SLATE's rules. Not modeled: Los Angeles or New York as the
+ * place of the run (SLATE: a US theatrical release, and the catalog's own requirement says the same), and the exclusion of
+ * animated features.
+ */
+const DGA79: RuleSource = { id: 'dga79-feature', publisher: 'Directors Guild of America', title: 'Outstanding Directorial Achievement in Theatrical Feature Film: guidelines (79th Annual DGA Awards)', url: 'https://www.dga.org/Awards/Entry-Forms/Theatrical-Feature-Film/ApplicationRules', edition: '79th Annual DGA Awards (2027)', retrieved: '2026-11-09' };
+const DGA_2027: RuleBook = {
+  id: 'dga-2027@1', institutionId: 'dga', year: 2027, version: 1, checked: '2026-11-09', sources: [DGA79],
+  categories: {
+    feature: {
+      runtime: v({ over: 40 }, 'dga79-feature', 'Feature-length: more than 40 minutes.'),
+      qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'dga79-feature', 'Released January 1 to December 31, 2026.'),
+      release: v({ routes: ['theatrical'], countries: ['US'] }, 'dga79-feature', 'In a paid-admission cinema in Los Angeles or New York for at least seven consecutive days; SLATE treats a US theatrical release as that.'),
+      deadlines: v([{ date: '2026-11-13', time: '17:00', zone: PT }], 'dga79-feature', 'Entry forms received by 5:00 p.m. PT on Friday, November 13, 2026.'),
+    },
+  },
+};
+
+// ---------------- Writers Guild Awards, 2027 ----------------
+
+/**
+ * Read November 9, 2026: the 2027 Writers Guild Awards' rules for theatrical screenplays, series, and TV, streaming and
+ * radio/audio scripts. Not modeled: writing under a WGA (or affiliate guild) collective bargaining agreement; Los Angeles
+ * or New York as the place of the week's run (SLATE: a US theatrical release). The Documentary Screenplay and Paul Selvin
+ * rules are on pages not read here; those stay on SLATE's rules.
+ */
+const WGA27_SOURCES: RuleSource[] = [
+  { id: 'wga27-screenplay', publisher: 'Writers Guild of America West', title: 'Rules for Adapted and Original Screenplay (2027 Writers Guild Awards)', url: 'https://awards.wga.org/submissions/adapted-and-original-screenplay', edition: '2027 Writers Guild Awards', retrieved: '2026-11-09' },
+  { id: 'wga27-series', publisher: 'Writers Guild of America West', title: 'Rules for WGA Series Awards (2027)', url: 'https://awards.wga.org/submissions/series', edition: '2027 Writers Guild Awards', retrieved: '2026-11-09' },
+  { id: 'wga27-tv', publisher: 'Writers Guild of America West', title: 'Rules for WGA TV-Streaming-Radio/Audio Writing Awards (2027)', url: 'https://awards.wga.org/submissions/tv-streaming-radio-audio-scripts', edition: '2027 Writers Guild Awards', retrieved: '2026-11-09' },
+];
+const wgaDeadline = (src: string) => v([{ date: '2026-11-20', time: '17:00', zone: PT }], src, 'By 5:00 p.m. PST on Friday, November 20, 2026; no late submissions.');
+const wgaTv = (src: string, from: string, to: string, note: string): CategoryRules => ({
+  qualifying: v({ from, to }, src, note),
+  release: v({ routes: ['broadcast', 'streaming', 'digital'], countries: [], outside: [] }, src, 'Broadcast or exhibited; the rules name no country.'),
+  deadlines: wgaDeadline(src),
+});
+const WGA_2027: RuleBook = {
+  id: 'wga-2027@1', institutionId: 'wga', year: 2027, version: 1, checked: '2026-11-09', sources: WGA27_SOURCES,
+  categories: {
+    ...Object.fromEntries(['original', 'adapted'].map((id) => [id, {
+      qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'wga27-screenplay', 'Exhibited January 1 to December 31, 2026.'),
+      release: v({ routes: ['theatrical'], countries: ['US'] }, 'wga27-screenplay', 'In cinemas in the Los Angeles or New York City area for at least a week; SLATE treats a US theatrical release as that.'),
+      theatricalFirst: v({ countries: ['*'] }, 'wga27-screenplay', 'A film first shown on television or straight to DVD isn\u2019t eligible; a simultaneous theatrical and streaming release is.'),
+      deadlines: wgaDeadline('wga27-screenplay'),
+    } satisfies CategoryRules])),
+    ...Object.fromEntries(['drama-series', 'comedy-series', 'limited-series', 'new-series'].map((id) => [id, wgaTv('wga27-series', '2026-01-01', '2026-12-31', 'Aired or exhibited January 1 to December 31, 2026, however many episodes.')])),
+    ...Object.fromEntries(['movie', 'animation', 'episodic', 'episodic-comedy', 'childrens', 'short-form'].map((id) => [id, wgaTv('wga27-tv', '2026-01-01', '2026-12-31', 'First broadcast or exhibited January 1 to December 31, 2026.')])),
+    ...Object.fromEntries(['talk-series', 'variety-specials', 'documentary-current', 'documentary-other'].map((id) => [id, wgaTv('wga27-tv', '2025-11-01', '2026-10-31', 'Comedy/variety and documentary categories: first broadcast November 1, 2025 to October 31, 2026.')])),
+  },
+};
+
+// ---------------- Gotham Awards, 2026 ----------------
+
+/**
+ * Read November 9, 2026: Criteria for the 2026 Gotham Awards. Applied to every entered category. Not modeled: the six
+ * qualifying US metro areas (SLATE: a US theatrical release); "U.S. citizens or permanently U.S.-based" key roles (the
+ * catalog's US or non-US requirement reads the production base).
+ */
+const GOTHAM26: RuleSource = { id: 'gotham26-criteria', publisher: 'The Gotham Film & Media Institute', title: 'Criteria for the 2026 Gotham Awards', url: 'https://awards.thegotham.org/criteria/', edition: '2026 Gotham Awards', retrieved: '2026-11-09' };
+const GOTHAM_FILM: CategoryRules = {
+  runtime: v({ over: 70 }, 'gotham26-criteria', 'Feature-length: over 70 minutes.'),
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'gotham26-criteria', 'Theatrical release January 1 to December 31, 2026.'),
+  release: v({ routes: ['theatrical'], countries: ['US'] }, 'gotham26-criteria', 'A paid run of at least seven consecutive days in one of six qualifying US metro areas; SLATE treats a US theatrical release as that.'),
+  deadlines: v([{ date: '2026-09-17', time: '23:59', zone: 'America/New_York', timeAssumed: true }], 'gotham26-criteria', 'Submissions closed September 17, 2026. The time of day is not given; SLATE uses the end of the day in New York.'),
+};
+const GOTHAM_2026: RuleBook = {
+  id: 'gotham-2026@1', institutionId: 'gotham', year: 2026, version: 1, checked: '2026-11-09', sources: [GOTHAM26],
+  categories: Object.fromEntries(['feature', 'documentary', 'international', 'director', 'breakthrough-director', 'original-screenplay', 'adapted-screenplay', 'lead', 'supporting', 'breakthrough-performer'].map((id) => [id, GOTHAM_FILM])),
+};
+
+// ---------------- Producers Guild Awards, 2027 ----------------
+
+/**
+ * Read November 9, 2026: Rules and Procedures for 2027 Awards Eligibility, Motion Pictures (July 20, 2026) and Animated
+ * Motion Pictures, section A. The documentary rules list several qualifying exhibitions (a theatrical run, a listed
+ * festival award, a national television premiere) that SLATE can't all read; Best Documentary and the television awards
+ * stay on SLATE's rules. Not modeled: the producer eligibility determination (only producers the PGA certifies are
+ * named), the ballot fee, the crowdfunding producer-credit disqualification.
+ */
+const PGA_SOURCES: RuleSource[] = [
+  { id: 'pga27-mp', publisher: 'Producers Guild of America', title: 'Rules and Procedures for 2027 Awards Eligibility - Motion Pictures', url: 'https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Motion_Pictures.pdf', edition: '2027 Producers Guild Awards', retrieved: '2026-11-09' },
+  { id: 'pga27-anim', publisher: 'Producers Guild of America', title: 'Rules and Procedures for 2027 Awards Eligibility - Animated Motion Pictures', url: 'https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Animated_Motion_Pictures.pdf', edition: '2027 Producers Guild Awards', retrieved: '2026-11-09' },
+];
+const pgaFilm = (src: string): CategoryRules => ({
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, src, 'Released January 1 to December 31, 2026 (A).'),
+  release: v({ routes: ['theatrical'], countries: ['US'] }, src, 'A theatrical release in a US commercial cinema for paid admission (A).'),
+  theatricalFirst: v({ countries: ['*'] }, src, 'No nontheatrical exhibition or distribution before the theatrical release, as at the 99th Academy Awards (A).'),
+  deadlines: v([{ date: '2026-10-09', time: '23:59', zone: PT, timeAssumed: true }], src, 'Submitted no later than October 9, 2026 (A). The time of day is not given; SLATE uses the end of the day in Los Angeles.'),
+});
+const PGA_2027: RuleBook = {
+  id: 'pga-2027@1', institutionId: 'pga', year: 2027, version: 1, checked: '2026-11-09', sources: PGA_SOURCES,
+  categories: {
+    theatrical: pgaFilm('pga27-mp'),
+    animated: { ...pgaFilm('pga27-anim'), runtime: v({ over: 40 }, 'pga27-anim', 'More than 40 minutes (A.1).'), mediums: v(['animation'], 'pga27-anim', 'Animation for at least 75 percent of the running time (A.1); SLATE accepts animated projects and not hybrid ones.') },
+  },
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
-  OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027,
+  OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
 ];

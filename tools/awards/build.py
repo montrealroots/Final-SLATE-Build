@@ -38,6 +38,7 @@ BASE = {
     'reality-unstructured': {'formats': ['unscripted-series'], 'family': ['observational']},
     'factual': {'formats': ['unscripted-series', 'documentary-series'], 'family': ['factual']},
     'competition': {'formats': ['unscripted-series'], 'family': ['competition']},
+    'music-video': {'formats': ['music-video']},
     'shortform': {'formats': ['web-series']}, 'shortform-nonfiction': {'formats': ['web-series', 'documentary-series']},
 }
 # Qualifiers after a base token. Each becomes a requirement the engine checks (`need`), a class, or a medium.
@@ -46,13 +47,13 @@ MEDIUM = {'animated': ['animation', 'hybrid'], 'animation': ['animation', 'hybri
 NEEDS = {
     'debut', 'writer-debut', 'new', 'over-60', 'over-70', 'max-20', 'under-60', 'under-1m', 'box-office', 'indie',
     'independent', 'la-ny-theatrical', 'non-english', 'environment', 'civil-rights', 'social-issues', 'current-events',
-    'arts', 'archival', 'food', 'coproduction', 'family', 'children', 'preschool', 'mature', 'period', 'fantasy',
+    'arts', 'archival', 'food', 'sports', 'coproduction', 'family', 'children', 'preschool', 'mature', 'period', 'fantasy',
     'contemporary', 'half', 'hour', 'basque', 'asia-pacific', 'latin-america', 'europe', 'europe-non-es',
     'iberoamerica-non-es', 'us', 'non-us', 'fr', 'non-fr', 'es', 'ca', 'non-ca', 'au', 'jp', 'non-jp', 'nl',
 }
 KINDS = {'C': 'award', 'A': 'area', 'J': 'juried', 'S': 'section', 'P': 'prize', 'U': 'audience', 'X': 'partner', 'H': 'honorary'}
 RECIPIENTS = {'project', 'producer', 'director', 'writer', 'writer-original', 'writer-adapted', 'lead', 'supporting', 'guest',
-              'performer', 'ensemble', 'voice', 'host', 'craft', 'song', 'national', 'career', 'career-film',
+              'performer', 'ensemble', 'voice', 'host', 'narrator', 'craft', 'song', 'national', 'career', 'career-film',
               'career-television', 'career-producer', 'career-animation', 'career-program'}
 
 

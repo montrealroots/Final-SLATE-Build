@@ -42,7 +42,7 @@ guest-actress-comedy | Outstanding Guest Actress In A Comedy Series | C | guest:
 guest-actress | Outstanding Guest Actress In A Drama Series | C | guest:Actress | series:drama | Category 73 |
 short-form-performer | Outstanding Performer In A Short Form Comedy Or Drama Series | C | performer | shortform | Category 74 |
 voice-over | Outstanding Character Voice-Over Performance | C | voice | television | Category 75 |
-- Outstanding Narrator | Documentary narration has no credited narrator in the game yet | Category 76
+narrator | Outstanding Narrator | C | narrator | docseries+docspecial+factual | Category 76 | To the narrator of a documentary or nonfiction series or special: a cast part whose story function is Narrator, in a program with a narration sequence. Until November 9, 2026 this read "Documentary narration has no credited narrator in the game yet", which was false: a Narrator part is cast and records in post
 reality-host | Outstanding Host For A Reality Or Reality Competition Program | C | host | competition+reality | Category 77 |
 - Outstanding Host For A Game Show | Game shows aren't a program type the game makes | Category 78
 # Directing
@@ -144,5 +144,5 @@ legacy | Legacy Award | H | career-program | television | Legacy Award | At leas
 governors | The Governors Award | H | career | television | The Governors Award | Chosen by the Special Awards Committee and the Board of Governors for transformational impact, not an overall body of work
 - Syd Cassyd Founders Award | Recognizes service to the Television Academy, which the game doesn't model | Syd Cassyd Founders Award
 - Outstanding Achievement In Engineering, Science & Technology | Recognizes engineering and technology development, outside the filmmaking the game models | Engineering award
-- The Television Academy Honors | Recognizes programming that explores social and health issues; the game doesn't record what issues a program takes on | Television Academy Honors
+- The Television Academy Honors | Recognizes programs that explore social and health issues, through a call for entries (December 16, 2025) that wasn't readable from here. Until November 9, 2026 this said the game doesn't record what issues a program takes on, which was false: a project can declare Social Issues on its Overview. In reach once the call's terms are read | Television Academy Honors
 - Bob Hope Humanitarian Award | Recognizes humanitarian work outside production, which the game doesn't model | Bob Hope Humanitarian Award

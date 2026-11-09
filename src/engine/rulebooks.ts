@@ -66,10 +66,14 @@ export interface CategoryRules {
    * - `festivalList`: a win of one of the awards on that qualifying list (QUALIFYING_LISTS), inside the list's own window;
    * - `viaCategory`: an entry in that category of the same edition that was accepted (the Academy's documentary route 3,
    *   "submitted and deemed eligible in the International Feature Film category").
+   * - `festivalSelection`: selected for a section of one of these institutions' editions closing inside `qualifying` (a
+   *   selection, not a win: the Spirit Awards' "programmed at one of nine festivals").
    * `festivalAwards` ("institution:category", any win inside `qualifying`) is version 1 of the 99th Oscars' shorts rule,
    * kept for editions created with it; it named festivals' sections the Academy doesn't list (rulebooks, November 9, 2026).
    */
-  release?: Ruled<{ routes: ('theatrical' | 'streaming' | 'broadcast' | 'digital')[]; countries: string[]; outside?: string[]; exempt?: Format[]; festivalAwards?: string[]; festivalList?: string; viaCategory?: string }>;
+  release?: Ruled<{ routes: ('theatrical' | 'streaming' | 'broadcast' | 'digital')[]; countries: string[]; outside?: string[]; exempt?: Format[]; festivalAwards?: string[]; festivalList?: string; viaCategory?: string; festivalSelection?: string[] }>;
+  /** The production's budget must be under this many dollars (the project's estimate). */
+  maxBudget?: Ruled<number>;
   /**
    * No streaming, digital or broadcast release in these countries ('*' for anywhere) before the first theatrical release
    * there. With `unlessFestival`, a work qualifying through its festival list is exempt.
@@ -98,6 +102,46 @@ export interface CategoryRules {
   /** A work entered at an earlier edition can't be entered again. */
   noReentry?: Ruled<true>;
   deadlines?: Ruled<DeadlineRule[]>;
+  /**
+   * Parts whose story function is Narrator can't be entered: the Emmys' Performer Categories, "Voice-over performers and
+   * narrators may not enter in lead, support or guest performer categories" (a voice part is never in those pools anyway).
+   */
+  noNarrators?: Ruled<true>;
+  /**
+   * More than this share of the dialogue is in a language other than English, counted in words over the approved script's
+   * lines (the Oscars' International Feature, Rule Sixteen II.D; the Golden Globes' Non-English Language, A.3.c.i). A work
+   * with no written dialogue is read by its first declared dialogue language.
+   */
+  nonEnglish?: Ruled<number>;
+  /**
+   * A series is entered for one episode, and the award goes to the people credited on it, at most `max` (the Emmys'
+   * directing and writing categories: "for a single episode of a comedy series", "an entry is limited to two directors").
+   * Applies to episodic work only; a special or movie is entered whole. With `wholeWhenAll` (the Emmys' limited series), a
+   * work whose credited people all worked on every part is entered whole; otherwise one part.
+   */
+  oneEpisode?: Ruled<{ max?: number; wholeWhenAll?: true }>;
+  /**
+   * A performer's share of the program's episodes, from the episodes they are credited in: the Emmys' guest categories take
+   * "less than 50% of the eligible episodes", Short Form Performer "50% or more" (Performer Awards, Entry Information).
+   */
+  episodeShare?: Ruled<{ under?: number; atLeast?: number }>;
+  /**
+   * A performer nominated at this organizer, in a category starting with one of these ids, for the same part in an earlier
+   * season of the series can't be entered here: the Emmys' "Guest Performer Eligibility" (nominated or won as lead or
+   * supporting, then not as a guest "in a subsequent Emmy year for playing the same role in the same series").
+   */
+  notAfterNomination?: Ruled<{ institution: string; categories: string[] }>;
+  /**
+   * A performance fills at least this share of the running time, measured from the approved script's scene minutes the
+   * part appears in: of its best episode (`per: 'episode'`, the Emmys' guest performers) or of the whole work (`'whole'`,
+   * supporting performers in a limited series or movie). "The minimum stand-alone and contiguous-screen time ... is 5%".
+   */
+  screenShare?: Ruled<{ atLeast: number; per: 'episode' | 'whole' }>;
+  /**
+   * Box office in the qualifying window: at least `worldwide` dollars gross from theatrical releases, `domestic` of them in
+   * `country` (the Golden Globes' Cinematic and Box Office Achievement, B.1.b), from what distributors have reported.
+   */
+  boxOffice?: Ruled<{ worldwide: number; domestic: number; country: string }>;
   /** Who is named and receives the award for a work: credited directors, or credited producers (at most `max`). */
   recipients?: Ruled<{ credit: 'director' | 'producer' | 'director-and-producer'; max?: number }>;
 }
@@ -179,6 +223,7 @@ export function rulebook(id: string | undefined): RuleBook | undefined {
 /** Whether a category's rules are the organizer's for this edition, carried forward, or SLATE's simulation. */
 export function categoryRuleStatus(book: RuleBook | undefined, categoryId: string): 'verified' | 'projected' | 'simulated' {
   const c = book?.categories[categoryId];
-  if (!c) return 'simulated';
+  // A deadline alone isn't eligibility: SXSW's page gives dates and fees, and its eligibility stays SLATE's (rulebook-data.ts).
+  if (!c || Object.keys(c).every((k) => k === 'deadlines')) return 'simulated';
   return Object.values(c).some((r) => (r as Ruled<unknown>).status === 'projected') ? 'projected' : 'verified';
 }

@@ -1,6 +1,7 @@
 @institution venice
 @edition 83rd Venice International Film Festival (September 2-12, 2026); the 84th (2027) carried forward as a projection
 @source ve83-reg | Regulations - 83rd Venice International Film Festival | https://static.labiennale.org/files/cinema/2026/Documenti/regulations-83.pdf | retrieved 2026-11-09
+@source sic26-reg | Regulations - 41st Settimana Internazionale della Critica | https://www.sicvenezia.it/en/regulations/ | retrieved 2026-11-09
 # Official Selection (Article 3); independent sections (Article 5); juries and awards (Article 6). Submissions open
 # February 9; feature deadlines vary; short films by May 28 (Article 7.1).
 # Venezia 83
@@ -33,7 +34,7 @@ lion-of-the-future | Lion Of The Future – "Luigi De Laurentiis" Venice Award F
 # Lifetime Achievement
 lifetime | Golden Lion For Lifetime Achievement | H | career-film | feature | Article 6.7 | At most two a year, on the Festival Director's recommendation
 # Independent And Parallel Sections
-sic | Settimana Internazionale Della Critica | S | project | feature:debut | Article 5.1 | UNVERIFIED: run by the National Syndicate of Italian Film Critics under its own regulations, not read; debut features in the game
+sic | Settimana Internazionale Della Critica | S | project | feature:debut | sic26-reg Art. 3 | The director's first full-length film, at least 60 minutes (Art. 3); run by the National Syndicate of Italian Film Critics under its own regulations (ve83-reg Article 5.1). Its site returned HTTP 503 until November 9, 2026
 giornate | Giornate Degli Autori | S | project | feature | Article 5.2 | UNVERIFIED: its own regulations, not read
 - Venice Classics And Venice Classics Award For Best Restored Film | Restorations of older films aren't work the game makes | Articles 3.5, 6.4
 - Venice Immersive And Its Prizes | Immersive works aren't made in the game | Articles 3.6, 6.6
