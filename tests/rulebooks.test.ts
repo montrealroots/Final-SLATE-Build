@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('230 categories follow verified rules for at least one edition, 11 only projected ones; the other 561 are simulated', () => {
+  it('231 categories follow verified rules for at least one edition, 11 only projected ones; the other 560 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -436,8 +436,8 @@ describe('audit counts', () => {
     // (san-sebastian-2026@2), 177 until the Golden Globes' other 19 entered categories (golden-globes-2027@2), 196
     // until the Annies' other 20 categories held in 2027 (annie-2027@2), 216 until Clermont's Lab and National (clermont-2027@2),
     // 218 until Sitges' six sections (sitges-2026@1), 224 until the Giornate degli Autori (venice-2026@3),
-    // 225 until IDFA's five sections (idfa-2026@1).
-    expect(n).toEqual({ verified: 230, projected: 11, simulated: 561 });
+    // 225 until IDFA's five sections (idfa-2026@1), 230 until Hot Docs (hot-docs-2027@1).
+    expect(n).toEqual({ verified: 231, projected: 11, simulated: 560 });
   });
 });
 
@@ -727,6 +727,20 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, doc('documentary-feature', 90, 'NL'), e, 'frontlight')).toMatch(/shown publicly in the Netherlands/);
     expect(r(s, doc('documentary-feature', 90, undefined, '2025-07-10'), e, 'features')).toMatch(/completed on July 10, 2025/);
     expect(categoryDeadline(e, cat(e, 'shorts'))).toBe(at('Europe/Amsterdam', '2026-07-09', 23, 59) + 59_000);
+  });
+
+  it('Hot Docs 2027: documentaries completed after January 1, 2026, not online first, by January 4', () => {
+    const s = startLife('hd');
+    const e = ed(s, 'hot-docs-2027');
+    expect(e.rulesId).toBe('hot-docs-2027@1');
+    s.now = at('America/Toronto', '2026-11-20', 9);
+    const doc = (completed: string) => work(s, { format: 'documentary-feature', runtime: 80, completed, base: 'ca-toronto' });
+    expect(r(s, doc('2026-03-01'), e, 'festival')).toBe('');
+    expect(r(s, doc('2026-01-01'), e, 'festival')).toMatch(/completed on January 1, 2026/);
+    const online = doc('2026-03-01');
+    release(online, 'streaming', '2026-06-01', ['CA']);
+    expect(r(s, online, e, 'festival')).toMatch(/released online/);
+    expect(categoryDeadline(e, cat(e, 'festival'))).toBe(at('America/Toronto', '2027-01-04', 23, 59) + 59_000);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

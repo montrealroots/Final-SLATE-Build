@@ -24,7 +24,7 @@ Editions already created in a save keep their dates and results; official dates 
 | Busan International Film Festival | Festival | 2 | Planning dates | No organizer announcement found for the next edition on November 6, 2026. |
 | Sitges Film Festival | Festival | 1 | Planning dates | No organizer announcement found for the next edition on November 6, 2026. |
 | International Documentary Film Festival Amsterdam | Festival | 2 | Official dates | 2026: 2026-11-12 to 2026-11-22 ([source](https://festival.idfa.nl/en/idfa-2026-2/)); deadline is a planning date |
-| Hot Docs Canadian International Documentary Festival | Festival | 1 | Planning dates | No 2027 date found. |
+| Hot Docs Canadian International Documentary Festival | Festival | 1 | Announced (from November 9, 2026) | April 23 to May 2, 2027; late deadline January 4, 2027 ([Submit A Film](https://hotdocs.ca/industry/submit-a-film)). Planning dates until then. |
 | Clermont-Ferrand International Short Film Festival | Festival | 1 | Official dates | 2027: 2027-01-29 to 2027-02-06 ([source](https://www.lecourt-clermont.org/wp-content/uploads/2026/06/EN-Reglement-international-2027.pdf)); deadline 2026-09-24 |
 | SXSW Film & TV Festival | Festival | 4 | Official dates | 2027: 2027-03-13 to 2027-03-21 ([source](https://sxsw.com/wp-content/uploads/2026/04/SXSW-Announces-2027-Dates.pdf)); deadline is a planning date |
 | Series Mania | Festival | 1 | Planning dates | No 2027 date found. |

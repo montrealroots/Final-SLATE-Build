@@ -370,6 +370,14 @@ for the 39th edition (read November 9, 2026).
 Not modeled: Dutch productions in the short competition must be world premieres (2.4.4); the private-screening exception
 for premiere status.
 
+## Hot Docs 2027
+
+Source: [Submit A Film](https://hotdocs.ca/industry/submit-a-film), for the 2027 festival, April 23 to May 2 (read November
+9, 2026): completed after January 1, 2026; not available online to Ontario audiences before the festival, broadcast versions
+included (SLATE: no earlier online release); deadlines October 29, December 10, 2026 and January 4, 2027 (SLATE: the late
+one). Not modeled: the Ontario premiere for features, mid-lengths and series and the Toronto premiere for shorts (SLATE
+records releases by country), and English or English subtitles.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two
@@ -377,6 +385,8 @@ for premiere status.
   discretion) and May 8, 2026 as the standard deadline, but these were not read from TIFF's own terms and are **not
   used**: `tiff-2026` stays simulated. A third pass on November 9, 2026 (tiff.net/submit and filmfreeway.com/tiff) was
   refused the same way; the next try is an official archived copy of TIFF's terms or a TIFF press release with them.
+- **SXSW 2027:** the premiere and eligibility policies on support.sxsw.com (features, shorts, TV) refused this environment
+  (HTTP 403) on November 9, 2026; SXSW stays on SLATE's rules.
 - **BAFTA Film Awards 2027:** bafta.org (the rules page and the press release "2027 EE BAFTA Film Awards opens for
   entries") refused this environment (HTTP 403), on both passes. Search summaries give a longlist on January 7, nominations
   on January 19 and the ceremony on February 21, 2027, but not the eligibility period; **not used**: BAFTA stays
