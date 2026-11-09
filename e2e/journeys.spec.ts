@@ -361,7 +361,9 @@ test('3D animation to delivery, with a motion-capture performance', async ({ pag
 });
 
 test('motion capture: a session the performer can\'t attend is missed and rebooked', async ({ page }) => {
-  await quickLife(page, 'ca-vancouver', '2026-01-05');
+  // Labelled fixture: a fixed world seed, so the capture work reaches its session the same way on every run. Unfixed,
+  // main's CI on November 9, 2026 drew a world where the calibration didn't wait for its session within 60 days.
+  await seededLife(page, 'ca-vancouver', '2026-01-05', 3630);
   await newProject(page, { title: 'Iron Orchard', format: 'Short Film', medium: 'Animation', technique: '3D CG', finish: 'Limited Animation', runtime: '2' });
   await addCharacters(page, ['Wren', 'The Golem']);
   await section(page, 'Characters');
