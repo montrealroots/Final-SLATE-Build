@@ -52,9 +52,9 @@ describe('Emmys, Performer Categories: narrators may not enter lead, supporting 
     expect(checkEligibility(s, p, e, lead).recipients.map((c) => c.characterName)).toEqual(['Ines']);
     expect(categoryRules(e, 'drama')?.noNarrators).toBeUndefined();
     expect(categoryRules(e, 'narrator')?.noNarrators).toBeUndefined();
-    // No other organizer's rules read so far exclude narrators.
+    // The only other organizer's rules that exclude narrators: the International Emmys' performances (read November 9, 2026).
     const others = RULEBOOKS.filter((b) => b.institutionId !== 'emmys').flatMap((b) => Object.entries(b.categories).filter(([, r]) => r.noNarrators).map(([id]) => `${b.id}/${id}`));
-    expect(others).toEqual([]);
+    expect(others).toEqual(['international-emmys-2026@2/actor', 'international-emmys-2026@2/actress', 'international-emmys-2027@2/actor', 'international-emmys-2027@2/actress']);
   });
 });
 

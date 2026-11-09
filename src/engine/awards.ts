@@ -243,7 +243,8 @@ export function ensureEditions(state: GameState, year: number): void {
     ed.status = state.now > ed.deadline ? 'closed' : state.now >= ed.submissionOpens ? 'open' : 'upcoming';
     state.editions.push(ed);
     if (ed.deadline > state.now) {
-      if (d.submissionOpens > state.now) schedule(state, d.submissionOpens, 'edition-open', { editionId: id }, { id: `${id}:open` });
+      // The rulebook's opening date where it gives one (until November 9, 2026 the simulated one was scheduled even then).
+      if (ed.submissionOpens > state.now) schedule(state, ed.submissionOpens, 'edition-open', { editionId: id }, { id: `${id}:open` });
       schedule(state, ed.deadline - DAY, 'edition-deadline-soon', { editionId: id }, { attention: 'notify', id: `${id}:soon`, priority: 25 });
       schedule(state, ed.deadline, 'edition-deadline', { editionId: id }, { id: `${id}:deadline`, priority: 26 });
     }
@@ -279,7 +280,7 @@ function deadlineInstant(d: DeadlineRule): number {
  * entered): its opening date, and per-category deadlines. The edition's own deadline becomes the latest of them, so
  * the edition stays open for every category; categories without a rule deadline keep the edition's general deadline.
  */
-export function applyRulebook(ed: Pick<Edition, 'institutionId' | 'year' | 'deadline' | 'submissionOpens' | 'deadlinePlanned' | 'rulesId' | 'defaultDeadline' | 'announce' | 'start'>, book: RuleBook): void {
+export function applyRulebook(ed: Pick<Edition, 'institutionId' | 'year' | 'deadline' | 'submissionOpens' | 'deadlinePlanned' | 'rulesId' | 'defaultDeadline' | 'announce' | 'start' | 'end'>, book: RuleBook): void {
   ed.rulesId = book.id;
   ed.defaultDeadline ??= ed.deadline;
   const inst = institution(ed.institutionId);
@@ -295,6 +296,13 @@ export function applyRulebook(ed: Pick<Edition, 'institutionId' | 'year' | 'dead
   if (book.opens) {
     const { year, month, day } = parseYmd(book.opens.value);
     ed.submissionOpens = localToInstant(getPlace(inst.placeId).zone, year, month, day, 9).instant;
+  }
+  // The organizer's own dates for the event (Busan's 31st: October 6 to 15, 2026); the announcement stays before it.
+  if (book.held) {
+    const at = (key: string, hour: number) => { const d = parseYmd(key); return localToInstant(book.held!.value.zone, d.year, d.month, d.day, hour).instant; };
+    ed.start = at(book.held.value.from, 10);
+    ed.end = at(book.held.value.to, 22);
+    if (ed.announce >= ed.start) ed.announce = ed.start - 7 * DAY;
   }
 }
 
@@ -314,10 +322,7 @@ function completedKey(p: Project): string | null {
 export function categoryDeadline(ed: Edition, cat: Category, p?: Project): number {
   const list = categoryRules(ed, cat.id, p)?.deadlines?.value;
   if (!list?.length) return ed.defaultDeadline ?? ed.deadline;
-  const done = p ? completedKey(p) : null;
-  const applies = list.filter((d) => !d.formats || (p ? d.formats.includes(p.axes.format) : false));
-  const pick = applies.find((d) => !d.ifCompletedBefore || (done !== null && done < d.ifCompletedBefore)) ?? applies.filter((d) => !d.ifCompletedBefore).at(-1) ?? list.filter((d) => !d.formats).at(-1) ?? list[list.length - 1];
-  return deadlineInstant(pick);
+  return deadlineInstant(catalogRules().pickDeadline(list, p, p ? completedKey(p) : null));
 }
 
 export function edition(state: GameState, id: string): Edition {
@@ -369,7 +374,7 @@ type EditionEntryStatus = Edition['entries'][number]['status'];
 function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: CategoryRules, list = rules.release?.value.festivalList ? catalogRules().qualifyingList(rules.release.value.festivalList) : undefined): ReleaseFit {
   const { routes, countries, outside, exempt, festivalAwards, viaCategory, festivalSelection } = rules.release!.value;
   if (exempt?.includes(p.axes.format)) return { ok: true, provisional: false };
-  const win = rules.qualifying?.value ?? ed.eligibility;
+  const win = catalogRules().qualifyingWindow(p, rules, ed.eligibility);
   const home = getPlace(p.axes.basePlaceId).country;
   // 'origin' stands for the production country (the Golden Globes' Non-English Language award, A.3.c.vi).
   const where = (t: string) => (outside ? !outside.includes(t) : countries.includes(t) || (countries.includes('origin') && t === home));
@@ -549,6 +554,13 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   const done = completedKey(p);
   if (rules?.completedFrom && done && done < rules.completedFrom.value) reasons.push(`It was completed on ${formatDateKey(done)}. This category takes work completed from ${formatDateKey(rules.completedFrom.value)}.`);
   if (state.now > categoryDeadline(ed, cat, p)) reasons.push('The entry deadline has passed.');
+  const ruledDeadline = rules?.deadlines?.value.length ? catalogRules().pickDeadline(rules.deadlines.value, p, done) : undefined;
+  if (ruledDeadline?.opens && state.now < deadlineInstant({ ...ruledDeadline, date: ruledDeadline.opens, time: '00:00' })) reasons.push(`Entries for this work open on ${formatDateKey(ruledDeadline.opens)}.`);
+  if (rules) {
+    const read = catalogRules().readRuleProblems(state, p, ed, cat.id, rules, dateKey(ed.start, getPlace(inst.placeId).zone), (id) => institution(id).kind === 'festival');
+    reasons.push(...read.reasons);
+    if (read.provisional) { provisional = true; provisionalNote = read.provisional; }
+  }
   if (state.now < ed.submissionOpens) reasons.push(`Entries open on ${formatDateKey(dateKey(ed.submissionOpens, getPlace(inst.placeId).zone))}.`);
   if (rules?.noReentry && state.editions.some((e) => e.institutionId === ed.institutionId && e.year < ed.year && e.entries.some((x) => x.projectId === p.id))) {
     reasons.push(`It was entered at an earlier ${inst.short}, and work can't be entered again.`);
@@ -581,10 +593,12 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     }
   } else {
     const sim = simulatedOscarRelease(ed, cat.id);
-    const rel: ReleaseFit = rules?.release ? ruledReleaseFits(state, p, ed, rules) : sim ? ruledReleaseFits(state, p, ed, sim, festivalListFor(ed, cat.id)) : releaseFits(p, inst, ed);
+    // A rule on when episodes aired (the International Emmys) or when work was first shown (the EFA) takes the place of the
+    // release check.
+    const rel: ReleaseFit = rules?.airing || rules?.firstShown ? { ok: true, provisional: false } : rules?.release ? ruledReleaseFits(state, p, ed, rules) : sim ? ruledReleaseFits(state, p, ed, sim, festivalListFor(ed, cat.id)) : releaseFits(p, inst, ed);
     if (!rel.ok) reasons.push(rel.reason!);
-    provisional = rel.provisional;
-    provisionalNote = rel.note;
+    provisional ||= rel.provisional;
+    provisionalNote ??= rel.note;
     const tf = rules?.theatricalFirst?.value;
     if (tf && !(tf.unlessFestival && rel.via === 'festival')) {
       const home = getPlace(p.axes.basePlaceId).country; // 'origin': the production country (the Goyas' European and Ibero-American awards)
@@ -638,7 +652,9 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
         if (sc.met !== true) why.push(sc.text);
       }
       const madeIn = rules?.craftMadeIn?.value;
-      const base = R.workBase(state, c);
+      const base = madeIn ? R.workBase(state, c) : undefined;
+      const nat = rules?.nationality?.value;
+      if (nat && nat.scope !== 'director' && !R.nationalitiesOf(state, c.person).some((n) => nat.countries.flatMap((x) => (x === 'EUROPE' ? R.EUROPE : [x])).includes(n))) why.push(`${name} isn't from ${nat.label ?? nat.countries.map((x) => (x === 'EUROPE' ? 'Europe' : countryWords(x))).join(' or ')}, and this award goes only to people who are.`);
       if (madeIn && !madeIn.includes(base ?? '')) why.push(`${name} works from ${base ? countryWords(base) : 'somewhere not recorded'}; this award is for work made in ${madeIn.map(countryWords).join(' or ')}.`);
     }
     reasons.push(...(why.length ? why : [recipientMissingReason(cat)]));
@@ -679,7 +695,11 @@ export function entryEpisodes(state: GameState, p: Project, cat: Category, rules
 
 function ruledRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules, ctx: { episode?: number; versionId?: string; songId?: string } = {}): Credit[] {
   const all = creditedRecipients(state, p, cat, chosen, rules, ctx);
-  if (!rules?.noNarrators && !rules?.episodeShare && !rules?.notAfterNomination && !rules?.screenShare && !rules?.craftMadeIn) return all;
+  if (!rules?.noNarrators && !rules?.episodeShare && !rules?.notAfterNomination && !rules?.screenShare && !rules?.craftMadeIn && !rules?.nationality) return all;
+  const fromList = rules.nationality?.value.scope === 'director' ? undefined : rules.nationality?.value.countries.flatMap((c) => (c === 'EUROPE' ? catalogRules().EUROPE : [c]));
+  const groupShare = rules.nationality?.value.groupShare;
+  // A group (a craft) is taken whole when enough of it is from the countries named, and not at all otherwise.
+  if (fromList && groupShare !== undefined && all.length && all.filter((c) => catalogRules().nationalitiesOf(state, c.person).some((n) => fromList.includes(n))).length < groupShare * all.length) return [];
   const madeIn = rules.craftMadeIn?.value;
   const span = rules.episodeShare?.value;
   const before = rules.notAfterNomination?.value;
@@ -688,7 +708,8 @@ function ruledRecipients(state: GameState, p: Project, cat: Category, chosen?: s
     && (!span || ((span.under === undefined || catalogRules().episodeShare(p, c) < span.under) && (span.atLeast === undefined || catalogRules().episodeShare(p, c) >= span.atLeast)))
     && !(before && catalogRules().nominatedEarlier(state, p, c, before.institution, before.categories))
     && !(screen && catalogRules().shareCheck(p, c, screen.atLeast, screen.per, ctx).met !== true)
-    && !(madeIn && !madeIn.includes(catalogRules().workBase(state, c) ?? '')));
+    && !(madeIn && !madeIn.includes(catalogRules().workBase(state, c) ?? ''))
+    && !(fromList && !groupShare && !catalogRules().nationalitiesOf(state, c.person).some((n) => fromList.includes(n))));
 }
 
 
@@ -953,6 +974,8 @@ export function adoptRulebook(ed: Edition, events: GameState['events']): boolean
     if (ev.id === `${ed.id}:soon`) ev.at = ed.deadline - DAY;
     if (ev.id === `${ed.id}:open`) ev.at = ed.submissionOpens;
     if (ev.id === `${ed.id}:announce`) ev.at = ed.announce;
+    if (ev.id === `${ed.id}:start`) ev.at = ed.start;
+    if (ev.id === `${ed.id}:results`) ev.at = ed.end;
   }
   return true;
 }

@@ -84,7 +84,7 @@ describe('rulebook data', () => {
     expect(ed(s, 'oscars-2027').rulesId).toBe('oscars-2027@5');
     expect(ed(s, 'sundance-2027').rulesId).toBe('sundance-2027@1');
     expect(ed(s, 'venice-2026').rulesId).toBe('venice-2026@4');
-    expect(ed(s, 'tiff-2026').rulesId).toBe('simulated');
+    expect(ed(s, 'locarno-2026').rulesId).toBe('simulated'); // TIFF's 2026 terms were read on November 9, 2026: tiff-2026@1
     expect(categoryRuleStatus(rulebook('cannes-2027@1'), 'shorts')).toBe('projected');
     expect(categoryRuleStatus(rulebook('cannes-2027@1'), 'competition')).toBe('simulated');
     expect(categoryRuleStatus(rulebook('oscars-2027@1'), 'picture')).toBe('verified');
@@ -392,7 +392,7 @@ describe('history and saves', () => {
     expect(o.defaultDeadline).toBe(oldDeadline);
     expect(v3.events.find((x) => x.id === 'oscars-2027:deadline')?.at).toBe(o.deadline);
     expect(v3.editions.find((e) => e.id === 'sundance-2027')!.rulesId).toBe('simulated'); // someone entered: unchanged
-    expect(v3.editions.find((e) => e.id === 'tiff-2026')!.rulesId).toBe('simulated'); // no published rules read
+    expect(v3.editions.find((e) => e.id === 'locarno-2026')!.rulesId).toBe('simulated'); // no published rules read (TIFF until November 9, 2026)
     expect(v3.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@4'); // untouched, in the future
     const sorted = [...v3.events].sort((a, b) => a.at - b.at || a.priority - b.priority || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
     expect(v3.events.map((x) => x.id)).toEqual(sorted.map((x) => x.id));
@@ -425,7 +425,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('541 categories follow verified rules for at least one edition, 11 only projected ones; the other 254 are simulated', () => {
+  it('592 categories follow verified rules for at least one edition, 11 only projected ones; the other 203 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -457,8 +457,10 @@ describe('audit counts', () => {
     // WGA's Paul Selvin, the Spirit Awards' Redford and the AACTA's song award took rules by format (byFormat), 532 until the
     // AACTA's soundtrack, hair and makeup, and visual effects or animation did (aacta-2027@3), 535 until the DGA's
     // first-time feature (dga-2027@3), 536 until the AACTA's online series (aacta-2027@4), 537 until Series Mania's four
-    // competitive sections (series-mania-2027@1).
-    expect(n).toEqual({ verified: 541, projected: 11, simulated: 254 });
+    // competitive sections (series-mania-2027@1), 541 until the owner's recovered sources were read and applied
+    // (tests/recovered-rules.test.ts): the International Emmys' 13, the European Film Awards' 15, BAFTA's 7, TIFF's 4,
+    // SXSW's 5 (completion, where only a deadline was read before), Busan's 2, the DGA's documentary and FESPACO's 4.
+    expect(n).toEqual({ verified: 592, projected: 11, simulated: 203 });
   });
 });
 
@@ -757,7 +759,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('SXSW 2027: the submissions page gives the final deadline and fees, not eligibility, so eligibility stays SLATE\'s', () => {
     const s = startLife('sxsw');
     const e = ed(s, 'sxsw-2027');
-    expect(e.rulesId).toBe('sxsw-2027@1');
+    expect(e.rulesId).toBe('sxsw-2027@2'); // version 2 (November 9, 2026) adds completion, the feature release rules and the dates
     expect(categoryDeadline(e, cat(e, 'music-videos'))).toBe(at('America/Los_Angeles', '2026-10-01', 23, 59) + 59_000);
     expect(cat(e, 'music-videos').fee).toBe(90);
     expect(cat(e, 'narrative').fee).toBe(125);
@@ -889,7 +891,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('International Emmys: the FAQ gives the January 31 noon deadline only, so eligibility stays SLATE\'s', () => {
     const s = startLife('iemmy');
     const e = ed(s, 'international-emmys-2027');
-    expect(e.rulesId).toBe('international-emmys-2027@1');
+    expect(e.rulesId).toBe('international-emmys-2027@2'); // version 2 (November 9, 2026): the Rules & Regulations, read
     expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/New_York', '2027-01-31', 12));
     expect(categoryRuleStatus(rulebook('international-emmys-2026@1'), 'drama')).toBe('simulated');
   });
@@ -1136,7 +1138,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('DGA 2027 (79th): a feature over 40 minutes with a US run in 2026, entered by November 13 at 5 p.m. PT', () => {
     const s = startLife('dga');
     const e = ed(s, 'dga-2027');
-    expect(e.rulesId).toBe('dga-2027@4'); // versions 2 to 4 add the television categories and the first-time feature; the feature keeps version 1's rules
+    expect(e.rulesId).toBe('dga-2027@5'); // versions 2 to 5 add the television categories, the first-time feature and the documentary; the feature keeps version 1's rules
     s.now = at('America/Los_Angeles', '2026-10-01', 9);
     const p = work(s, { format: 'feature', runtime: 41, completed: '2026-01-10', base: 'us-los-angeles' });
     expect(r(s, p, e, 'feature')).toMatch(/theatrical release in the United States between January 1, 2026 and December 31, 2026/);

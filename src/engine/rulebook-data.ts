@@ -2,8 +2,8 @@
 // and history rules there). Loaded with the festival and awards catalog through awards-rules.ts, not at startup: at
 // startup the rules took the startup JavaScript to its 220 kB gzipped budget (November 9, 2026) before most categories
 // had their organizer's rules, and the research continues category by category.
-import type { CategoryRules, RuleBook, RuleSource, Ruled, RuntimeRule } from './rulebooks';
-import type { Format } from './types';
+import type { CategoryRules, RuleBook, RuleSource, Ruled, RuntimeRule, Unresolved } from './rulebooks';
+import type { Format, Medium } from './types';
 
 const CHECKED = '2026-11-06';
 const PT = 'America/Los_Angeles';
@@ -1707,7 +1707,372 @@ const JAPAN_ACADEMY_2027: RuleBook = {
 };
 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
+// ======================================================================================================================
+// Recovered sources (the owner's research pass, read again here on November 9, 2026). A source being readable doesn't make
+// every rule in it applied: what is applied is below, rule by rule; what couldn't be applied is in `unresolved` or GAPS.
+// ======================================================================================================================
+
+// ---------------- International Emmy Awards: 2026 (read) and 2027 (projected) ----------------
+
+/**
+ * Version 2 (November 9, 2026): the 2026 Rules & Regulations PDF, which version 1 said wasn't linked; it was found at the
+ * Academy's own uploads. Section I: originally created for television; predominantly produced by a non-US organization;
+ * initially broadcast outside the US from January 1 to December 31, 2025; not entered in any other Emmy competition; no
+ * theatrical release anywhere before the first television broadcast; a program aired first (or the same day) in the US
+ * only with the Academy's prior approval, which SLATE can't request, so it refuses; entries by January 31, 2026 at 12 noon
+ * ET, the competition opening December 8, 2025 (Categories & Key Dates). Section II.a: hanging episodes, by SLATE's airing
+ * model (awards-rules.ts `episodeAirDates`). Program categories need the 20 minutes of a half-hour slot (Short-Form Series:
+ * most episodes under 20); a drama series submits two non-consecutive episodes, so it needs at least three. Performances
+ * (II.d, I.d-e): scripted programs only, no animated characters, narration or hosts, none from Short-Form Series or Kids:
+ * Live-Action, and at least 10% of the submitted episode's running time. Not modeled: case-by-case review, an entrant other
+ * than you, extension requests, the two-episode selection itself, the intention to run more than one season, cameos.
+ */
+const IEMMY_RULES: RuleSource = { id: 'iemmy26-rules', publisher: 'International Academy of Television Arts & Sciences', title: '2026 International Emmy Awards Rules & Regulations', url: 'https://www.iemmys.tv/wp-content/uploads/2025/11/2026-International-Emmy-Awards-Rules-Regulations-.pdf', edition: '54th International Emmy Awards (2026)', retrieved: '2026-11-09' };
+const IEMMY_DATES: RuleSource = { id: 'iemmy26-dates', publisher: 'International Academy of Television Arts & Sciences', title: 'Categories & Key Dates', url: 'https://www.iemmys.tv/entries-judging/categories-key-dates/', edition: '54th International Emmy Awards (2026)', retrieved: '2026-11-09' };
+const IEMMY_PROGRAMS = ['arts', 'comedy', 'documentary', 'drama', 'kids-animation', 'kids-factual', 'kids-live-action', 'non-scripted', 'short-form', 'sports-documentary', 'tv-movie'];
+function iemmyRules(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const y = year - 1;
+  const p = year === 2026 ? '' : ' From the 2026 rules; the 2027 rules are not published yet.';
+  const common: CategoryRules = {
+    deadlines: mk([{ date: `${year}-01-31`, time: '12:00', zone: 'America/New_York' }], 'iemmy26-rules', `All submissions received by January 31 at 12 noon ET (I.d).${p}`),
+    qualifying: mk({ from: `${y}-01-01`, to: `${y}-12-31` }, 'iemmy26-rules', `Initially broadcast outside the US between January 1 and December 31, ${y} (I.a).${p}`),
+    airing: mk({ majority: true, notFirstIn: ['US'] }, 'iemmy26-rules', `Hanging episodes: the year most episodes aired; an equal split enters either year, once (II.a). First broadcast in the US, or the same day, only with prior approval, which SLATE refuses (I.b).${p}`),
+    exclusiveWith: mk(['emmys'], 'iemmy26-rules', `Not submitted in any other Emmy competition (I.a).${p}`),
+    tvFirst: mk({ countries: ['*'] }, 'iemmy26-rules', `No theatrical release, within or outside the US, before the first television broadcast (I.a).${p}`),
+  };
+  const halfHour = mk({ atLeast: 20 }, 'iemmy26-rules', `The minimum format length of a televised half-hour slot: 20+ minutes of content (II.c).${p}`);
+  const programs: Record<string, CategoryRules> = Object.fromEntries(IEMMY_PROGRAMS.map((id) => [id, { ...common, episodeRuntime: halfHour }]));
+  delete programs['kids-animation'].episodeRuntime;
+  delete programs['kids-factual'].episodeRuntime;
+  delete programs['kids-live-action'].episodeRuntime;
+  programs['short-form'].episodeRuntime = mk({ under: 20 }, 'iemmy26-rules', `Most episodes under 20 minutes; standalone shorts not eligible (II.c).${p}`);
+  programs.drama.minEpisodes = mk(3, 'iemmy26-rules', `Two complete, non-consecutive episodes are submitted, both broadcast in the eligibility year (II.c), so a season needs at least three.${p}`);
+  const performance: CategoryRules = {
+    ...common,
+    formats: mk(['series', 'limited-series', 'anthology-series', 'web-series', 'tv-film'] as Format[], 'iemmy26-rules', `A performance in a made-for-television fiction program (Movie, Mini-Series, Drama Series, Telenovela, Comedy); non-scripted programs are not eligible (II.d, I.d).${p}`),
+    mediums: mk(['live-action', 'hybrid'] as Medium[], 'iemmy26-rules', `Animated characters are not eligible (I.d).${p}`),
+    episodeRuntime: halfHour,
+    notForAudiences: mk(['Children (6 To 11)', 'Preschool'], 'iemmy26-rules', `Performances in Kids: Live-Action programs are not eligible (I.e).${p}`),
+    noNarrators: mk(true, 'iemmy26-rules', `Voice-over narration and hosts are not eligible (I.d).${p}`),
+    screenShare: mk({ atLeast: 0.1, per: 'episode' }, 'iemmy26-rules', `On screen for at least 10% of the submitted episode's total running time (II.d).${p}`),
+  };
+  return { ...programs, actor: performance, actress: performance };
+}
+const INTERNATIONAL_EMMYS_2026_2: RuleBook = {
+  id: 'international-emmys-2026@2', institutionId: 'international-emmys', year: 2026, version: 2, checked: '2026-11-09', sources: [IEMMY_SOURCE, IEMMY_RULES, IEMMY_DATES],
+  opens: v('2025-12-08', 'iemmy26-dates', 'The 2026 competition opened December 8, 2025 and closed January 31, 2026.'),
+  categories: iemmyRules(2026, v),
+};
+const INTERNATIONAL_EMMYS_2027_2: RuleBook = {
+  id: 'international-emmys-2027@2', institutionId: 'international-emmys', year: 2027, version: 2, checked: '2026-11-09', sources: [IEMMY_SOURCE, IEMMY_RULES, IEMMY_DATES],
+  opens: proj('2026-12-08', 'iemmy26-dates', 'The 2026 competition opened December 8, 2025; projected a year on.'),
+  categories: iemmyRules(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 rules.')) as typeof v),
+};
+
+// ---------------- European Film Awards: 39th (Athens, January 16, 2027; SLATE's 2026 edition) ----------------
+
+/**
+ * Read November 9, 2026: General Eligibility Criteria (3.1-3.4), General Awarding Procedures & Conditions (2.3, 2.5, 2.8,
+ * 2.13), Fiction (4.1-4.10), Documentary (5.1-5.9), Animation (6.2-6.10), Arts & Crafts (7.1-7.10), Short Film (8.1-8.6),
+ * General Information (1.3: Athens, January 16, 2027). This corrects the earlier note that the regulations give no dates.
+ * Applied: first official screening, at a festival or in cinemas, from October 1, 2025 to September 30, 2026; the
+ * submission period by that screening (until May 31, 2026; or June 15 to September 15, 2026 for films first shown from June
+ * 1); European directors and recipients (3.2); crafts to a group at least half European; no film entered for the 38th
+ * (SLATE: no earlier edition); fiction's 13 of 21 European points (4.1); a major-festival selection or a theatrical release
+ * in three countries (4.2, 5.2: SLATE counts a selection at any festival in its calendar, as "major" isn't defined);
+ * documentary 70 minutes, animation 60 minutes (5.1, 6.2); shorts produced in 2025 or 2026, 30 minutes or less (8.1).
+ * Not modeled: the board's exceptions; the Short Film Network's festival selection (31 festivals, not named on the page),
+ * so a short is entered directly; the main-producer limit; the composer's 60% of the music; the LUX and Young Audience
+ * awards and the Eurimages award, which aren't open to submission this way (they stay SLATE's).
+ */
+const EFA39: RuleSource[] = [
+  { id: 'efa39-elig', publisher: 'European Film Academy', title: 'General Eligibility Criteria (39th European Film Awards)', url: 'https://www.europeanfilmawards.eu/eligibility/', edition: '39th European Film Awards (2027)', retrieved: '2026-11-09' },
+  { id: 'efa39-procedure', publisher: 'European Film Academy', title: 'General Awarding Procedures & Conditions', url: 'https://www.europeanfilmawards.eu/general-procedure-conditions/', edition: '39th European Film Awards (2027)', retrieved: '2026-11-09' },
+  { id: 'efa39-fiction', publisher: 'European Film Academy', title: 'Regulations: Fiction Films', url: 'https://www.europeanfilmawards.eu/regulations/feature-films/', edition: '39th European Film Awards (2027)', retrieved: '2026-11-09' },
+  { id: 'efa39-doc', publisher: 'European Film Academy', title: 'Regulations: Documentary Films', url: 'https://www.europeanfilmawards.eu/regulations/european-documentary/', edition: '39th European Film Awards (2027)', retrieved: '2026-11-09' },
+  { id: 'efa39-animation', publisher: 'European Film Academy', title: 'Regulations: Animation Films', url: 'https://www.europeanfilmawards.eu/regulations/european-animated-feature-film/', edition: '39th European Film Awards (2027)', retrieved: '2026-11-09' },
+  { id: 'efa39-crafts', publisher: 'European Film Academy', title: 'Regulations: Arts & Crafts Categories', url: 'https://www.europeanfilmawards.eu/7-arts-crafts-categories/', edition: '39th European Film Awards (2027)', retrieved: '2026-11-09' },
+  { id: 'efa39-short', publisher: 'European Film Academy', title: 'Regulations: Short Films', url: 'https://www.europeanfilmawards.eu/regulations/european-short-film/', edition: '39th European Film Awards (2027)', retrieved: '2026-11-09' },
+  { id: 'efa39-general', publisher: 'European Film Academy', title: 'Regulations: General Information', url: 'https://www.europeanfilmawards.eu/regulations/general-information/', edition: '39th European Film Awards (2027)', retrieved: '2026-11-09' },
+];
+const BERLIN = 'Europe/Berlin';
+const EFA_FEATURE: CategoryRules = {
+  firstShown: v({ from: '2025-10-01', to: '2026-09-30' }, 'efa39-elig', 'First official screening, at a festival or a regular cinema, between October 1, 2025 and September 30, 2026; intended for theatrical release (3.1).'),
+  deadlines: v([
+    { date: '2026-05-31', time: '23:59', zone: BERLIN, timeAssumed: true, ifFirstShownBefore: '2026-06-01' },
+    { date: '2026-09-15', time: '23:59', zone: BERLIN, timeAssumed: true, ifFirstShownFrom: '2026-06-01', opens: '2026-06-15' },
+  ], 'efa39-procedure', 'Films first shown October 1, 2025 to May 31, 2026: until May 31, 2026; first shown June 1 to September 30, 2026: June 15 to September 15, 2026 (2.3). No time is given; SLATE uses the end of the day in Berlin, where the Academy is.'),
+  nationality: v({ countries: ['EUROPE'] }, 'efa39-elig', 'The director and everyone eligible for a nomination are European: born in Europe or holding a European passport (3.2).'),
+  noReentry: v(true, 'efa39-elig', 'Films submitted for the 38th European Film Awards can’t be submitted again (3.4).'),
+  selectionOrRelease: v({ countries: 3 }, 'efa39-fiction', 'Selected at least at one major festival, or released (or sold for release) in cinemas in at least three countries (4.2, 5.2). "Major festival" isn’t defined; SLATE counts a selection at any festival.'),
+};
+const EFA_FICTION: CategoryRules = { ...EFA_FEATURE, europeanPoints: v({ min: 13 }, 'efa39-fiction', 'At least 13 of the Council of Europe convention’s 21 points for European elements (4.1): director 4, writer 3, composer 1, first, second and third roles 3, 2 and 1, four heads of department 1 each, studio or location, effects and post-production 1 each.') };
+const efaCraft = (note: string): CategoryRules => ({ ...EFA_FICTION, nationality: v({ countries: ['EUROPE'], groupShare: 0.5 }, 'efa39-elig', `A credited group is considered if at least 50% of it, head of department included, is European (3.2). ${note}`) });
+const EFA_2026: RuleBook = {
+  id: 'european-film-awards-2026@1', institutionId: 'european-film-awards', year: 2026, version: 1, checked: '2026-11-09', sources: EFA39,
+  categories: {
+    film: EFA_FICTION,
+    director: EFA_FICTION,
+    actor: EFA_FICTION,
+    screenwriter: EFA_FICTION,
+    documentary: { ...EFA_FEATURE, runtime: v({ atLeast: 70 }, 'efa39-doc', 'Documentary films of at least 70 minutes (5.1).') },
+    animated: { ...EFA_FEATURE, runtime: v({ atLeast: 60 }, 'efa39-animation', 'Animation films of at least 60 minutes, at least half of it animated (6.2, 6.3); SLATE takes animated and hybrid projects.') },
+    casting: efaCraft('Credited "Casting Director" or "Casting" (7.3).'),
+    cinematographer: efaCraft('Credited "Cinematographer", "Cinematography" or "Director of Photography" (7.4).'),
+    composer: efaCraft('Credited "Composer", "Music by" or "Original Score by" (7.5).'),
+    costume: efaCraft('Credited "Costume Design" (7.6).'),
+    editor: efaCraft('Credited "Editor" or "Editing" (7.7).'),
+    makeup: efaCraft('Credited make-up or hair artists, as a team (7.8).'),
+    'production-designer': efaCraft('Credited "Production Design" (7.9).'),
+    sound: efaCraft('Supervising sound professionals as head of department (7.10).'),
+    short: {
+      completedFrom: v('2025-01-01', 'efa39-short', 'Produced in 2025 or 2026 (8.1).'),
+      runtime: v({ atMost: 30 }, 'efa39-short', 'Not exceeding 30 minutes, end credits starting before minute 30 (8.1).'),
+      nationality: v({ countries: ['EUROPE'] }, 'efa39-short', 'Presented to the European director(s) of a short film (8.6).'),
+    },
+  },
+};
+
+// ---------------- EE BAFTA Film Awards 2027 ----------------
+
+/**
+ * Read November 9, 2026 through search-engine excerpts of bafta.org's own pages (Film Awards rules; Film awards
+ * information; the press release "2027 EE BAFTA Film Awards opens for entries"): bafta.org refuses this environment (HTTP
+ * 403). The owner's research pass read the same pages directly. Applied: at least 70 minutes; first released in UK cinemas
+ * between January 1, 2026 and February 19, 2027; documentaries and films not in the English language to March 19, 2027,
+ * except Best Film; Stage One entries by October 29, 2026 (time not given: the end of the day in London). Recorded: longlists
+ * January 7, 2027, nominations January 19, ceremony February 21. Not modeled: the qualifying run (screenings and days),
+ * Stage Two (November 19), the BFI Diversity Standards for British categories (not in SLATE's catalog), a release before
+ * 2026 that isn't the first UK release (SLATE reads a UK release in the window as the first).
+ */
+const BAFTA27: RuleSource[] = [
+  { id: 'bafta27-rules', publisher: 'British Academy of Film and Television Arts', title: 'EE BAFTA Film Awards rules (read through search-engine excerpts; the page refuses this environment)', url: 'https://www.bafta.org/awards/film-rules/', edition: '2027 EE BAFTA Film Awards', retrieved: '2026-11-09' },
+  { id: 'bafta27-info', publisher: 'British Academy of Film and Television Arts', title: 'Film awards information: key dates (read through search-engine excerpts)', url: 'https://www.bafta.org/awards/awards-information/film/', edition: '2027 EE BAFTA Film Awards', retrieved: '2026-11-09' },
+];
+const BAFTA_BASE: CategoryRules = {
+  runtime: v({ atLeast: 70 }, 'bafta27-rules', 'All eligible feature films must have a running time of at least 70 minutes.'),
+  release: v({ routes: ['theatrical'], countries: ['GB'] }, 'bafta27-rules', 'Released theatrically to the UK public for the first time in the window; the qualifying run itself isn’t modeled.'),
+  qualifying: v({ from: '2026-01-01', to: '2027-02-19' }, 'bafta27-rules', 'First UK theatrical release between January 1, 2026 and February 19, 2027.'),
+  deadlines: v([{ date: '2026-10-29', time: '23:59', zone: 'Europe/London', timeAssumed: true }], 'bafta27-info', 'Stage One entry deadline October 29, 2026 (Stage Two, entry and payment, November 19). No time given; SLATE uses the end of the day in London.'),
+};
+const BAFTA_EXTENDED: CategoryRules = { ...BAFTA_BASE, qualifyingExtended: v({ to: '2027-03-19', for: ['documentary', 'non-english'] }, 'bafta27-rules', 'An extension to March 19, 2027 for documentaries and films not in the English language; it doesn’t apply to Best Film.') };
+const BAFTA_FILM_2027: RuleBook = {
+  id: 'bafta-film-2027@1', institutionId: 'bafta-film', year: 2027, version: 1, checked: '2026-11-09', sources: BAFTA27,
+  categories: { film: BAFTA_BASE, director: BAFTA_EXTENDED, screenplay: BAFTA_EXTENDED, 'leading-actor': BAFTA_EXTENDED, 'leading-actress': BAFTA_EXTENDED, animated: BAFTA_EXTENDED, documentary: BAFTA_EXTENDED },
+};
+
+// ---------------- TIFF 2026 ----------------
+
+/**
+ * Read November 9, 2026: Terms & Conditions for Submission of Films Through FilmFreeway, TIFF 2026 (the PDF on TIFF's
+ * content host; tiff.net refuses this environment). Applied: completed on or after September 4, 2025; at least a North
+ * American premiere, so no public screening in Canada or the US before the festival (III.4; screenings in the country of
+ * origin and elsewhere are fine); not released in North America in cinemas, on television or streaming, nor sold on
+ * DVD, Blu-ray or VOD anywhere (III.7); not submitted to an earlier TIFF; features and documentaries 60 minutes or more,
+ * shorts 40 or less, series ("Primetime") at least two episodes and 60 minutes together (III.5); standard deadline May 8,
+ * 2026, 11:59 p.m. ET (V.2; early-bird March 27). Submission isn't selection: TIFF chooses films and programmes (Midnight
+ * Madness, Platform) at its discretion (III.6), which SLATE's selection already models; the earlier "premiere: international"
+ * for shorts was SLATE's and gave way. Not modeled: Canadian versus International categories (fees and descriptions only),
+ * the Canadian-premiere discretion, Wavelengths by invitation.
+ */
+const TIFF26: RuleSource = { id: 'tiff26-terms', publisher: 'Toronto International Film Festival Inc.', title: 'Terms & Conditions for Submission of Films Through FilmFreeway: TIFF 2026', url: 'https://assets.ctfassets.net/22n7d68fswlw/2uGGqKI9o8TGZYOhvgrQX/800dafd215df8bb4c5fb866d823d738d/Terms_-26_Conditions_For_Submission_of_Films_Through_FilmFreeway_-_TIFF_2026_presented_by_Rogers.pdf', edition: 'TIFF 2026', retrieved: '2026-11-09' };
+const TIFF_COMMON: CategoryRules = {
+  completedFrom: v('2025-09-04', 'tiff26-terms', 'Completed on or after September 4, 2025 (III.5, III.7a).'),
+  premiere: v('none', 'tiff26-terms', 'World, International or North American premiere status (III.4): read as no public screening in Canada or the US before the festival.'),
+  notShownIn: v({ countries: ['CA', 'US'] }, 'tiff26-terms', 'No public screening in Canada or the United States before the festival; Mexico and the Caribbean don’t count (III.4c).'),
+  notReleased: v([{ routes: ['theatrical', 'broadcast', 'streaming', 'digital'], countries: ['CA', 'US'] }, { routes: ['digital'] }], 'tiff26-terms', 'Not released theatrically, aired or streamed in North America, nor for sale on DVD/Blu-ray/VOD (III.7c-e).'),
+  noReentry: v(true, 'tiff26-terms', 'Not previously submitted to TIFF for a prior festival (III.7b).'),
+  deadlines: v([{ date: '2026-05-08', time: '23:59', zone: 'America/Toronto' }], 'tiff26-terms', 'Standard deadline May 8, 2026, 11:59 p.m. ET (early-bird March 27) (V.2).'),
+};
+const tiffFeature = { ...TIFF_COMMON, runtime: v({ atLeast: 60 }, 'tiff26-terms', 'Features and documentary features of 60 minutes or longer, credits included; series ("Primetime") at least 60 minutes together (III.5).') };
+const TIFF_2026: RuleBook = {
+  id: 'tiff-2026@1', institutionId: 'tiff', year: 2026, version: 1, checked: '2026-11-09', sources: [TIFF26],
+  categories: {
+    official: { ...tiffFeature, minEpisodes: v(2, 'tiff26-terms', 'Serial content of at least two chronological episodes, including the premiere episode (III.5).') },
+    'midnight-madness': tiffFeature,
+    platform: tiffFeature,
+    shorts: { ...TIFF_COMMON, runtime: v({ atMost: 40 }, 'tiff26-terms', 'Short films of 40 minutes or less, credits included (III.5).') },
+  },
+};
+
+// ---------------- SXSW Film & TV Festival 2027, version 2 ----------------
+
+/**
+ * Version 2 (November 9, 2026): the festival page (sxsw.com/film-tv-festival): March 15 to 21, 2027 in Austin; every
+ * project completed in 2025 or 2026, or on track for early 2027 (SLATE: completed from January 1, 2025; "early 2027" isn't
+ * an exact cutoff, and SLATE doesn't invent one). The feature premiere and eligibility policy on support.sxsw.com refuses
+ * this environment; its terms come from search-engine excerpts of that page and the owner's research pass: before SXSW, no
+ * US non-festival theatrical screening, no public online release (streaming, VOD, SVOD), no US television broadcast, no
+ * home video. Premiere status is a preference, not a world-premiere requirement for every section, so the catalog's "world
+ * premiere" for the features gave way. The shorts, TV, music video and XR policies weren't readable: those sections keep
+ * SLATE's other rules.
+ */
+const SXSW_FEST: RuleSource = { id: 'sxsw27-festival', publisher: 'SXSW', title: 'SXSW Film & TV Festival 2027', url: 'https://sxsw.com/film-tv-festival/', edition: 'SXSW Film & TV Festival 2027', retrieved: '2026-11-09' };
+const SXSW_FEATURES: RuleSource = { id: 'sxsw27-features', publisher: 'SXSW', title: 'FEATURES: What is the SXSW premiere and eligibility policy for feature films? (read through search-engine excerpts; the page refuses this environment)', url: 'https://support.sxsw.com/hc/en-us/articles/206421265-FEATURES-What-is-the-SXSW-premiere-and-eligibility-policy-for-feature-films', edition: 'SXSW Film & TV Festival 2027', retrieved: '2026-11-09' };
+const sxswDone = v('2025-01-01', 'sxsw27-festival', 'Completed in 2025, 2026, or on track for completion in early 2027.');
+const SXSW_FEATURE: CategoryRules = {
+  deadlines: sxswDeadline, completedFrom: sxswDone,
+  premiere: v('none', 'sxsw27-features', 'Premiere status is weighed in selection; not every section requires a world premiere.'),
+  notReleased: v([{ routes: ['theatrical'], countries: ['US'] }, { routes: ['streaming', 'digital'] }, { routes: ['broadcast'], countries: ['US'] }], 'sxsw27-features', 'Before SXSW: no US non-festival theatrical screening, no public online distribution (streaming, VOD, SVOD), no US television broadcast, no home video.'),
+};
+const SXSW_2027_2: RuleBook = {
+  ...SXSW_2027, id: 'sxsw-2027@2', version: 2, sources: [SXSW_SOURCE, SXSW_FEST, SXSW_FEATURES],
+  held: v({ from: '2027-03-15', to: '2027-03-21', zone: 'America/Chicago' }, 'sxsw27-festival', 'March 15–21, 2027, Austin.'),
+  categories: {
+    narrative: SXSW_FEATURE,
+    documentary: SXSW_FEATURE,
+    episodic: { deadlines: sxswDeadline, completedFrom: sxswDone },
+    shorts: { deadlines: sxswDeadline, completedFrom: sxswDone },
+    'music-videos': { deadlines: sxswDeadline, completedFrom: sxswDone },
+  },
+};
+
+// ---------------- Busan International Film Festival, 31st (2026) ----------------
+
+/**
+ * Read November 9, 2026: the 2026 submission guidelines page and the Official Submission and Selection Rules &
+ * Regulations PDF (as of March 10, 2026). Applied: October 6 to 15, 2026 (2); completed no earlier than September 2025
+ * (5.a.1; "no later than the first week of September 2026" isn't an exact date, so SLATE sets no end); features 60 minutes
+ * or more, shorts under 60 (5.a.2); Competition for Asian films (3.a); the Wide Angle short competitions 30 minutes or
+ * less, world or international premieres only (5.a.4), with short documentaries and non-Asian short fiction not open to
+ * submission (5.a.3); nothing submitted to an earlier edition (5.a.5); deadlines June 2 (shorts) and July 8 (features),
+ * 18:00 KST (5.c). Submission isn't selection: the Selection Committee chooses and gives priority to world and
+ * international premieres (6.b), a preference SLATE's selection weighs, not a requirement, so the catalog's "international
+ * premiere" for Competition gave way. Not modeled: new versions reconsidered by the committee's decision, subtitles.
+ */
+const BIFF26: RuleSource[] = [
+  { id: 'biff26-rules', publisher: 'Busan International Film Festival', title: 'Official Submission and Selection Rules & Regulations (2026, as of March 10, 2026)', url: 'https://www.biff.kr/pop/file/2026_Official_Submission_and_Selection_Rules_&_Regulation_eng_final_as_of_2026-03-10.pdf?ver=1', edition: '31st Busan International Film Festival (2026)', retrieved: '2026-11-09' },
+  { id: 'biff26-guide', publisher: 'Busan International Film Festival', title: 'Submission Guidelines 2026', url: 'https://www.biff.kr/eng/addon/10000001/page.asp?page_num=11319', edition: '31st Busan International Film Festival (2026)', retrieved: '2026-11-09' },
+];
+const SEOUL = 'Asia/Seoul';
+const ASIA = ['AF', 'AM', 'AZ', 'BD', 'BH', 'BN', 'BT', 'CN', 'GE', 'HK', 'ID', 'IL', 'IN', 'IQ', 'IR', 'JO', 'JP', 'KG', 'KH', 'KP', 'KR', 'KW', 'KZ', 'LA', 'LB', 'LK', 'MM', 'MN', 'MO', 'MV', 'MY', 'NP', 'OM', 'PH', 'PK', 'PS', 'QA', 'SA', 'SG', 'SY', 'TH', 'TJ', 'TL', 'TM', 'TW', 'UZ', 'VN', 'YE', 'AE'];
+const BIFF_COMMON: CategoryRules = {
+  completedFrom: v('2025-09-01', 'biff26-rules', 'Completed no earlier than September 2025 (5.a.1).'),
+  noReentry: v(true, 'biff26-rules', 'Films submitted for previous editions should not be resubmitted (5.a.5).'),
+  premiere: v('none', 'biff26-rules', 'Priority to world and international premieres (6.b): a preference, not a requirement.'),
+};
+const BUSAN_2026: RuleBook = {
+  id: 'busan-2026@1', institutionId: 'busan', year: 2026, version: 1, checked: '2026-11-09', sources: BIFF26,
+  held: v({ from: '2026-10-06', to: '2026-10-15', zone: SEOUL }, 'biff26-rules', 'The 31st festival takes place from October 6 to 15, 2026 (2).'),
+  categories: {
+    competition: {
+      ...BIFF_COMMON,
+      runtime: v({ atLeast: 60 }, 'biff26-rules', 'Features: 60 minutes or longer (5.a.2).'),
+      origin: v({ only: ASIA }, 'biff26-rules', 'Competition celebrates outstanding Asian films (3.a); SLATE takes the production base as the film’s country.'),
+      deadlines: v([{ date: '2026-07-08', time: '18:00', zone: SEOUL }], 'biff26-rules', 'Feature films: July 8, 2026, 18:00 KST (5.c).'),
+    },
+    shorts: {
+      ...BIFF_COMMON,
+      formats: v(['short'] as Format[], 'biff26-rules', 'Short documentaries (Asian and non-Asian) are not open to submission (5.a.3).'),
+      origin: v({ only: ASIA }, 'biff26-rules', 'Non-Asian short fiction is not open to submission (5.a.3); the competitions are Korean and Asian.'),
+      runtime: v({ atMost: 30 }, 'biff26-rules', 'Wide Angle Korean and Asian Short Film Competitions: not more than 30 minutes (5.a.4).'),
+      premiere: v('international', 'biff26-rules', 'Only world and international premieres are considered (5.a.4).'),
+      deadlines: v([{ date: '2026-06-02', time: '18:00', zone: SEOUL }], 'biff26-rules', 'Short films: June 2, 2026, 18:00 KST (5.c).'),
+    },
+  },
+};
+
+// ---------------- DGA Awards, 79th: Documentary Film (version 5) ----------------
+
+/**
+ * Version 5 (November 9, 2026): Outstanding Directorial Achievement in Documentary Film. The detailed application rules are
+ * on a public preview subdomain of dga.org (preview.dga.org/Awards/Entry-Forms/Documentary-Film/ApplicationRules), read by
+ * the owner's research pass; it refuses this environment (HTTP 403), as the production-domain address does (404). Search
+ * excerpts of the dga.org documentary page and the main awards page (dga.org/Awards/Annual, read here) cross-check them:
+ * more than 40 minutes; one entry per director; the "Directed By" credit; a US theatrical release in 2026, or a streaming
+ * or US television route covered by a DGA Agreement; foreign documentaries eligible; deadline October 16, 2026 at 5:00 p.m.
+ * PT; nominations January 6, 2027; ceremony January 30, 2027. DGA membership isn't required. Not modeled: DGA Agreement
+ * coverage (SLATE records no guild agreements, so streaming or broadcast in the US counts), the directorial functions.
+ */
+const DGA79_DOC: RuleSource[] = [
+  { id: 'dga79-doc', publisher: 'Directors Guild of America', title: 'Documentary Film application rules (public preview subdomain; refuses this environment, read by the owner’s research pass)', url: 'https://preview.dga.org/Awards/Entry-Forms/Documentary-Film/ApplicationRules', edition: '79th Annual DGA Awards (2027)', retrieved: '2026-11-09' },
+  { id: 'dga79-annual', publisher: 'Directors Guild of America', title: '79th Annual DGA Awards: key dates', url: 'https://www.dga.org/Awards/Annual', edition: '79th Annual DGA Awards (2027)', retrieved: '2026-11-09' },
+];
+const DGA_2027_5: RuleBook = {
+  ...DGA_2027_4, id: 'dga-2027@5', version: 5, sources: [...DGA_2027_4.sources, ...DGA79_DOC],
+  categories: {
+    ...DGA_2027_4.categories,
+    documentary: {
+      runtime: v({ over: 40 }, 'dga79-doc', 'A feature-length film is more than 40 minutes.'),
+      qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'dga79-doc', 'Released January 1 to December 31, 2026.'),
+      release: v({ routes: ['theatrical', 'streaming', 'broadcast'], countries: ['US'] }, 'dga79-doc', 'A US theatrical release, or a streaming or national US television release covered under a DGA Agreement (agreements aren’t modeled); foreign documentaries are eligible.'),
+      onePerDirector: v(true, 'dga79-doc', 'A Director may only submit one entry.'),
+      deadlines: v([{ date: '2026-10-16', time: '17:00', zone: PT }], 'dga79-annual', 'Deadline for submitting Documentary Film entries: Friday, October 16, 2026 (5:00 p.m. PT in the application rules).'),
+    },
+  },
+};
+
+// ---------------- FESPACO, 30th (2027) ----------------
+
+/**
+ * Read November 9, 2026: the call for entries (French and English) and the Official Selection regulations. They agree on
+ * what a film must be: features (fiction and documentary) 60 minutes or more; shorts and animation 1 to 35 minutes; series
+ * as two consecutive 52-minute episodes, three of 26 or six of 13; no more than two years old on December 31, 2026; never
+ * shown at an earlier FESPACO; not released commercially in Burkina Faso; competition for African and diaspora filmmakers.
+ * They disagree on when: see `unresolved`. SLATE keeps its own calendar for this edition until a dated update settles it.
+ * Not modeled: diaspora filmmakers (SLATE reads the director's nationality only), the film-school category (not in the
+ * catalog), out-of-competition screenings (open to anyone), copies due January 15, 2027.
+ */
+const FESPACO27: RuleSource[] = [
+  { id: 'fespaco27-reg', publisher: 'FESPACO', title: 'Règlement de la sélection officielle de la 30e édition du FESPACO 2027', url: 'https://fespaco.bf/reglement-de-la-selection-officielle-de-la-30e-edition-du-fespaco-2027/', edition: '30th FESPACO (2027)', retrieved: '2026-11-09' },
+  { id: 'fespaco27-cond', publisher: 'FESPACO', title: 'Conditions d’inscription et de sélection officielle de la 30e édition du FESPACO 2027', url: 'https://fespaco.bf/conditions-dinscription-et-de-selection-officielle-de-la-30e-edition-du-fespaco-2027/', edition: '30th FESPACO (2027)', retrieved: '2026-11-09' },
+  { id: 'fespaco27-appel', publisher: 'FESPACO', title: 'Appel à films FESPACO 2027', url: 'https://fespaco.bf/appel-a-films-fespaco-2027/', edition: '30th FESPACO (2027)', retrieved: '2026-11-09' },
+  { id: 'fespaco27-call', publisher: 'FESPACO', title: 'Call for entries FESPACO 2027', url: 'https://fespaco.bf/en/call-for-entries-fespaco-2027/', edition: '30th FESPACO (2027)', retrieved: '2026-11-09' },
+];
+const AFRICA = ['DZ', 'AO', 'BJ', 'BW', 'BF', 'BI', 'CV', 'CM', 'CF', 'TD', 'KM', 'CG', 'CD', 'CI', 'DJ', 'EG', 'GQ', 'ER', 'SZ', 'ET', 'GA', 'GM', 'GH', 'GN', 'GW', 'KE', 'LS', 'LR', 'LY', 'MG', 'MW', 'ML', 'MR', 'MU', 'MA', 'MZ', 'NA', 'NE', 'NG', 'RW', 'ST', 'SN', 'SC', 'SL', 'SO', 'ZA', 'SS', 'SD', 'TZ', 'TG', 'TN', 'UG', 'ZM', 'ZW'];
+const FESPACO_COMMON: CategoryRules = {
+  completedFrom: v('2024-12-31', 'fespaco27-call', 'No more than two years old as of December 31, 2026.'),
+  noReentry: v(true, 'fespaco27-call', 'Not presented at a previous edition of FESPACO.'),
+  notReleased: v([{ routes: ['theatrical', 'broadcast', 'streaming', 'digital'], countries: ['BF'] }], 'fespaco27-call', 'Not commercially released in Burkina Faso.'),
+  nationality: v({ countries: AFRICA, label: 'Africa', scope: 'director' }, 'fespaco27-call', 'Competition is open to films by African filmmakers and filmmakers from the African diaspora; SLATE reads the director’s nationality, not the diaspora.'),
+};
+const FESPACO_2027: RuleBook = {
+  id: 'fespaco-2027@1', institutionId: 'fespaco', year: 2027, version: 1, checked: '2026-11-09', sources: FESPACO27,
+  unresolved: [
+    { subject: 'dates', status: 'source conflict', sources: ['fespaco27-reg', 'fespaco27-call'], note: 'The regulations (Art. 1) give February 27 to March 6, 2027; the call for entries gives March 20 to 27, 2027. Press reports of a move (Culture Custodian, citing Ramadan) support the call, but no dated official communiqué was found; a Yennenga Academy page gives a third date. SLATE keeps its own calendar (March 20 to 27, as the call) without marking it verified.' },
+    { subject: 'deadline', status: 'source conflict', sources: ['fespaco27-reg', 'fespaco27-call'], note: 'The regulations (Art. 3) give September 20, 2026 at 23:59; the call gives October 20, 2026 (submissions opened February 24, 2026). Not applied; SLATE keeps its own deadline.' },
+  ],
+  categories: {
+    fiction: { ...FESPACO_COMMON, runtime: v({ atLeast: 60 }, 'fespaco27-call', 'Feature fiction: a minimum running time of 60 minutes.') },
+    documentary: { ...FESPACO_COMMON, runtime: v({ atLeast: 60 }, 'fespaco27-call', 'Feature documentary: a minimum running time of 60 minutes.') },
+    shorts: { ...FESPACO_COMMON, runtime: v({ atMost: 35 }, 'fespaco27-call', 'FESPACO Shorts and Animation: between 1 and 35 minutes.') },
+    series: { ...FESPACO_COMMON, seriesPackage: v([{ minutes: 52, episodes: 2 }, { minutes: 26, episodes: 3 }, { minutes: 13, episodes: 6 }], 'fespaco27-call', 'Two consecutive 52-minute episodes, three of 26 minutes, or six of 13. SLATE matches the package to the average episode length.') },
+  },
+};
+
+// ---------------- Africa Movie Academy Awards (2026 call) ----------------
+
+/**
+ * Read November 9, 2026 through search-engine excerpts of the AMAA's FilmFreeway listing (filmfreeway.com refuses this
+ * environment; the official site timed out in the owner's research pass): submissions December 1, 2025 to May 31, 2026;
+ * full subtitles for anything not in English, Pidgin included; entries only through FilmFreeway by an authorized
+ * representative. SLATE files this call under its 2026 edition; the listing names no edition number or ceremony date.
+ * The release wording is ambiguous and isn't applied: see `unresolved`.
+ */
+const AMAA26: RuleSource = { id: 'amaa26-ff', publisher: 'Africa Movie Academy Awards', title: 'AMAA on FilmFreeway: submission period and rules (read through search-engine excerpts)', url: 'https://filmfreeway.com/africamovieacademyawards-882089', edition: 'AMAA call for entries, December 2025 to May 2026', retrieved: '2026-11-09' };
+const AMAA_2026: RuleBook = {
+  id: 'amaa-2026@1', institutionId: 'amaa', year: 2026, version: 1, checked: '2026-11-09', sources: [AMAA26],
+  opens: v('2025-12-01', 'amaa26-ff', 'Submission opens December 1, 2025.'),
+  unresolved: [
+    { subject: 'eligibility', status: 'ambiguous', sources: ['amaa26-ff'], note: 'The owner’s research pass read wording about African or Black filmmakers or collaborations, produced or released "from July 2025 till date", and standalone films rather than sequels. "Till date" gives no closing date and the excerpts read here don’t show the wording, so none of it is applied; the catalog’s production countries stay.' },
+    { subject: 'edition', status: 'unavailable', sources: ['amaa26-ff'], note: 'No edition number or ceremony date on the listing; SLATE’s 2026 ceremony date is its own.' },
+  ],
+  categories: Object.fromEntries(['film', 'director', 'documentary', 'short'].map((id) => [id, {
+    deadlines: v([{ date: '2026-05-31', time: '23:59', zone: 'Africa/Lagos', timeAssumed: true }], 'amaa26-ff', 'Submission closes May 31, 2026. No time given; SLATE uses the end of the day in Lagos.'),
+  } satisfies CategoryRules])),
+};
+
+/**
+ * Organizers whose rules for an edition couldn't be read. Nothing here is applied; it keeps the research honest about
+ * what the game doesn't know (docs/awards/RULES.csv lists it).
+ */
+export const GAPS: { institutionId: string; year: number; unresolved: Unresolved[] }[] = [
+  { institutionId: 'blue-dragon', year: 2026, unresolved: [{ subject: 'eligibility', status: 'unavailable', sources: ['https://www.blueaward.co.kr/'], note: 'The official site returned HTTP 503 here and timed out in the owner’s research pass. Reporting found a 2026 ceremony announcement and a short-film call, which say nothing of the feature categories; nothing is generalized from them.' }] },
+  { institutionId: 'locarno', year: 2027, unresolved: [{ subject: 'eligibility', status: 'unavailable', sources: ['https://www.locarnofestival.ch/'], note: 'The 2027 regulations weren’t found (the site returned HTTP 403 here); the festival may move to July for 2027. 2026 rules and third-party deadlines aren’t relabelled as 2027’s.' }] },
+];
+
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, OSCARS_2027_4, OSCARS_2027_5, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
   ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, EMMYS_2026_5, EMMYS_2027_5, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, GOLDEN_GLOBES_2027_5, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, SERIES_MANIA_2027, SERIES_MANIA_2027_2, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, CANADIAN_SCREEN_2026_2, CANADIAN_SCREEN_2027_2, GOYA_2027, GOYA_2027_2, GOYA_2027_3, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, DGA_2027_3, DGA_2027_4, WGA_2027, WGA_2027_2, WGA_2027_3, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, SPIRIT_2027_3, ACTOR_AWARDS_2027_2, AACTA_2027, AACTA_2027_2, AACTA_2027_3, AACTA_2027_4, AACTA_2027_5, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
+  INTERNATIONAL_EMMYS_2026_2, INTERNATIONAL_EMMYS_2027_2, EFA_2026, BAFTA_FILM_2027, TIFF_2026, SXSW_2027_2, BUSAN_2026, DGA_2027_5, FESPACO_2027, AMAA_2026,
 ];
