@@ -117,6 +117,14 @@ Source: [Regulations - International Competition 2027](https://www.lecourt-clerm
 | Fee | €13 plus a Shortfilmdepot stamp | Recorded only; SLATE's fee for this section is 0 |
 | Recipients | Prizes are paid to the director | International Competition names the credited director |
 
+**Version 2 (`clermont-2027@2`, read November 9, 2026):** "The regulations of the International Competition also apply to
+the Lab Competition except article 11" (Lab Competition page), so Lab takes the rules above. The National Competition's own
+[Règlement – compétition nationale 2027](https://www.lecourt-clermont.org/wp-content/uploads/2026/06/FR-Reglement-national-2027.pdf)
+(French), 1.1: French production completed after October 1, 2025 (the main production country holds 50 percent or more of
+the financing; SLATE uses the production base); under 60 minutes; no premiere rule; no resubmission, even in a new version.
+Section 2: July 9, 2026 for films finished from October to December 2025, October 1, 2026 for 2026 films. Prizes go to
+the directors.
+
 ## Annie Awards, 54th (2027)
 
 Source: ASIFA-Hollywood's call for submissions, as republished by

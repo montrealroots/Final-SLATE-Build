@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('216 categories follow verified rules for at least one edition, 11 only projected ones; the other 575 are simulated', () => {
+  it('218 categories follow verified rules for at least one edition, 11 only projected ones; the other 573 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -434,8 +434,8 @@ describe('audit counts', () => {
     // sections were (cannes-2027@2). 165 verified until Annecy's Contrechamp, Off-Limits, Perspectives and TV (annecy-2026@2),
     // 169 until Venice's Out of Competition and Spotlight (venice-2026@2), 171 until San Sebastián's other six sections
     // (san-sebastian-2026@2), 177 until the Golden Globes' other 19 entered categories (golden-globes-2027@2), 196
-    // until the Annies' other 20 categories held in 2027 (annie-2027@2).
-    expect(n).toEqual({ verified: 216, projected: 11, simulated: 575 });
+    // until the Annies' other 20 categories held in 2027 (annie-2027@2), 216 until Clermont's Lab and National (clermont-2027@2).
+    expect(n).toEqual({ verified: 218, projected: 11, simulated: 573 });
   });
 });
 
@@ -652,6 +652,23 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, series('GB'), e, 'fx-tv')).toMatch(/release in the United States between January 1, 2026 and December 31, 2026/);
     expect(r(s, series('US'), e, 'fx-tv')).not.toMatch(/release/);
     expect(categoryDeadline(e, cat(e, 'editorial-feature'))).toBe(at('America/Los_Angeles', '2026-11-30', 23, 59) + 59_000);
+  });
+
+  it('Clermont-Ferrand 2027, version 2: Lab reads the international rules; the National Competition takes French films under 60 minutes, until October 1', () => {
+    const s = startLife('cf2');
+    const e = ed(s, 'clermont-2027');
+    expect(e.rulesId).toBe('clermont-2027@2');
+    s.now = at('Europe/Paris', '2026-08-01', 9);
+    const short = (base: string, runtime: number, completed = '2026-03-01') => work(s, { format: 'short', runtime, completed, base });
+    expect(r(s, short('fr-paris', 59), e, 'national')).not.toMatch(/minutes|made in|completed/);
+    expect(r(s, short('fr-paris', 60), e, 'national')).toMatch(/under 60 minutes/);
+    expect(r(s, short('de-berlin', 20), e, 'national')).toMatch(/for work made in France/);
+    expect(r(s, short('fr-paris', 20), e, 'lab')).toMatch(/national competition instead/);
+    expect(r(s, short('de-berlin', 41), e, 'lab')).toMatch(/40 minutes or less/);
+    // Films finished in 2025 close July 9; 2026 films October 1.
+    expect(r(s, short('fr-paris', 20, '2025-11-01'), e, 'national')).toMatch(/deadline has passed/);
+    expect(r(s, short('fr-paris', 20), e, 'national')).not.toMatch(/deadline/);
+    expect(categoryDeadline(e, cat(e, 'national'), short('fr-paris', 20))).toBe(at('Europe/Paris', '2026-10-01', 23, 59) + 59_000);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

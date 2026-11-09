@@ -168,6 +168,34 @@ const CLERMONT_2027: RuleBook = {
   },
 };
 
+/**
+ * Version 2 (November 9, 2026): "The regulations of the International Competition also apply to the Lab Competition except
+ * article 11" (awards), so Lab reads them; the National Competition has its own regulations (French only), read the same
+ * day: French production completed after October 1, 2025, under 60 minutes, no premiere rule, no resubmission, July 9 for
+ * films finished in 2025 and October 1, 2026 for 2026 films (1.1, 2). The main production country is the one with 50
+ * percent or more of the financing; SLATE uses the production base.
+ */
+const CF27_NATIONAL: RuleSource = { id: 'cf27-national', publisher: 'Sauve Qui Peut le Court Métrage', title: 'Règlement - compétition nationale 2027', url: 'https://www.lecourt-clermont.org/wp-content/uploads/2026/06/FR-Reglement-national-2027.pdf', edition: '49th Clermont-Ferrand International Short Film Festival (2027)', retrieved: '2026-11-09' };
+const CLERMONT_2027_2: RuleBook = {
+  ...CLERMONT_2027, id: 'clermont-2027@2', version: 2, checked: '2026-11-09', sources: [...CLERMONT_2027.sources, CF27_NATIONAL],
+  categories: {
+    ...CLERMONT_2027.categories,
+    lab: CLERMONT_2027.categories.international,
+    national: {
+      runtime: v({ under: 60 }, 'cf27-national', 'Under 60 minutes (1.1).'),
+      completedFrom: v('2025-10-02', 'cf27-national', 'French production completed after October 1, 2025 (1.1).'),
+      premiere: v('none', 'cf27-national', 'No premiere rule (1.1).'),
+      origin: v({ only: ['FR'] }, 'cf27-national', 'French production: the main production country holds 50 percent or more of the financing (1.1); SLATE uses the production base.'),
+      noReentry: v(true, 'cf27-national', 'A film already submitted can\u2019t be entered again, even in a new version (1.1).'),
+      deadlines: v([
+        { date: '2026-07-09', time: '23:59', zone: 'Europe/Paris', ifCompletedBefore: '2026-01-01', timeAssumed: true },
+        { date: '2026-10-01', time: '23:59', zone: 'Europe/Paris', timeAssumed: true },
+      ], 'cf27-national', 'July 9 for films completed from October to December 2025, October 1 for films made in 2026 (2). The time of day is not given; SLATE uses the end of the day in France.'),
+      recipients: v({ credit: 'director' }, 'cf27-national', 'Prizes go to the director.'),
+    },
+  },
+};
+
 // ---------------- Annie Awards, 54th (2027) ----------------
 
 const ANNIE_2027: RuleBook = {
@@ -562,5 +590,5 @@ const EMMYS_2027_2: RuleBook = { ...EMMYS_2027, id: 'emmys-2027@2', version: 2, 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2,
 ];
