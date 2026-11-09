@@ -423,7 +423,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('520 categories follow verified rules for at least one edition, 11 only projected ones; the other 275 are simulated', () => {
+  it('529 categories follow verified rules for at least one edition, 11 only projected ones; the other 266 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -451,8 +451,8 @@ describe('audit counts', () => {
     // Ibero-American and short film awards read their specific Bases (goya-2027@2), 463 until the PGA's documentary award
     // (pga-2027@2), 464 until the WGA's Documentary Screenplay (wga-2027@2), 465 until the DGA's seven television awards
     // (dga-2027@2), 472 until the AACTA's 31 film, television, documentary and short categories (aacta-2027@1), 503 until the
-    // Japan Academy's 17 (japan-academy-2027@1).
-    expect(n).toEqual({ verified: 520, projected: 11, simulated: 275 });
+    // Japan Academy's 17 (japan-academy-2027@1), 520 until the PGA's nine television awards (pga-2027@3).
+    expect(n).toEqual({ verified: 529, projected: 11, simulated: 266 });
   });
 });
 
@@ -791,7 +791,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('PGA 2027, version 2: a documentary qualifies by a US run, a US premiere on television or streaming, or a listed festival selection', () => {
     const s = startLife('pga-doc');
     const e = ed(s, 'pga-2027');
-    expect(e.rulesId).toBe('pga-2027@2');
+    expect(e.rulesId).toBe('pga-2027@3'); // version 3 adds the television awards; the documentary keeps version 2's rules
     s.now = at('America/Los_Angeles', '2026-07-01', 9);
     const doc = () => work(s, { format: 'documentary-feature', runtime: 85, completed: '2026-01-10' });
     const run = doc();
@@ -1004,7 +1004,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Spirit Awards 2027: 70 minutes, under $30 million, a US week, streaming or a selection at a listed festival in 2026; new series with two episodes', () => {
     const s = startLife('spirit');
     const e = ed(s, 'spirit-2027');
-    expect(e.rulesId).toBe('spirit-2027@1');
+    expect(e.rulesId).toBe('spirit-2027@2'); // version 2 reads the 18-minute floor per episode
     s.now = at('America/Los_Angeles', '2026-09-01', 9);
     const film = (runtime = 95) => work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'us-los-angeles' });
     const out = film();
@@ -1021,16 +1021,18 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     (rich as Project & { finance?: { estimate?: number } }).finance = { ...(rich.finance ?? {}), estimate: 30_000_000 } as Project['finance'];
     expect(r(s, rich, e, 'feature')).toMatch(/under \$30,000,000/);
     expect(r(s, film(69), e, 'director')).toMatch(/at least 70/);
-    const show = (eps: number) => { const p = work(s, { format: 'series', runtime: 30, completed: '2026-01-10', base: 'us-los-angeles' }); p.axes.episodeCount = eps; release(p, 'streaming', '2026-03-01', ['US']); return p; };
+    const show = (eps: number, each = 30) => { const p = work(s, { format: 'series', runtime: eps * each, completed: '2026-01-10', base: 'us-los-angeles' }); p.axes.episodeCount = eps; release(p, 'streaming', '2026-03-01', ['US']); return p; };
     expect(r(s, show(1), e, 'series')).toMatch(/needs at least 2/);
     expect(r(s, show(2), e, 'series')).not.toMatch(/release|episode/);
+    // Two 12-minute episodes run 24 minutes together; version 1 read that against the 18-minute floor and let it in.
+    expect(r(s, show(2, 12), e, 'series')).toMatch(/Its episodes average 12 minutes\. This category needs episodes of at least 18\./);
     expect(categoryDeadline(e, cat(e, 'series'))).toBe(at('America/Los_Angeles', '2026-09-15', 23, 59) + 59_000);
   });
 
   it('Actor Awards 2027 (33rd): films over 60 minutes with a US run in 2026 and nothing outside cinemas first; series of six 20-minute episodes', () => {
     const s = startLife('aa33');
     const e = ed(s, 'actor-awards-2027');
-    expect(e.rulesId).toBe('actor-awards-2027@1');
+    expect(e.rulesId).toBe('actor-awards-2027@2'); // version 2 reads the 20-minute floor per episode
     s.now = at('America/Los_Angeles', '2026-10-01', 9);
     const film = (runtime = 100) => { const p = work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'us-los-angeles' }); release(p, 'theatrical', '2026-06-01', ['US']); return p; };
     expect(r(s, film(), e, 'cast')).not.toMatch(/release|minutes/);
@@ -1038,9 +1040,10 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const streamedFirst = film();
     release(streamedFirst, 'streaming', '2026-05-01', ['GB']);
     expect(r(s, streamedFirst, e, 'male-lead')).toMatch(/outside cinemas, before any theatrical run/);
-    const show = (eps: number) => { const p = work(s, { format: 'series', runtime: 30, completed: '2026-01-10', base: 'us-los-angeles' }); p.axes.episodeCount = eps; release(p, 'streaming', '2026-03-01', ['US']); return p; };
+    const show = (eps: number, each = 30) => { const p = work(s, { format: 'series', runtime: eps * each, completed: '2026-01-10', base: 'us-los-angeles' }); p.axes.episodeCount = eps; release(p, 'streaming', '2026-03-01', ['US']); return p; };
     expect(r(s, show(5), e, 'ensemble-drama')).toMatch(/needs at least 6/);
     expect(r(s, show(6), e, 'ensemble-drama')).not.toMatch(/release|episode/);
+    expect(r(s, show(6, 15), e, 'ensemble-drama')).toMatch(/Its episodes average 15 minutes\. This category needs episodes of at least 20\./);
     expect(categoryDeadline(e, cat(e, 'cast'))).toBe(at('America/Los_Angeles', '2026-11-02', 17));
   });
 
@@ -1089,7 +1092,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Producers Guild Awards 2027: a US theatrical release in 2026, nothing outside cinemas first, by October 9; animated features over 40 minutes', () => {
     const s = startLife('pga');
     const e = ed(s, 'pga-2027');
-    expect(e.rulesId).toBe('pga-2027@2'); // version 2 adds the documentary award; the film awards keep version 1's rules
+    expect(e.rulesId).toBe('pga-2027@3'); // versions 2 and 3 add the documentary and television awards; the film awards keep version 1's rules
     s.now = at('America/Los_Angeles', '2026-09-01', 9);
     const film = (medium: Project['axes']['medium'], runtime = 95) => { const p = work(s, { format: 'feature', medium, runtime, completed: '2026-01-10', base: 'us-los-angeles' }); release(p, 'theatrical', '2026-06-01', ['US']); return p; };
     expect(r(s, film('live-action'), e, 'theatrical')).not.toMatch(/release/);
@@ -1099,6 +1102,51 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, film('animation', 40), e, 'animated')).toMatch(/more than 40/);
     expect(r(s, film('hybrid'), e, 'animated')).toMatch(/for animation work/);
     expect(categoryDeadline(e, cat(e, 'animated'))).toBe(at('America/Los_Angeles', '2026-10-09', 23, 59) + 59_000);
+  });
+
+  it('PGA 2027, version 3: television in the US in 2026, by September 25; episode counts and lengths by category; a TV movie never in cinemas', () => {
+    const s = startLife('pga-tv');
+    const e = ed(s, 'pga-2027');
+    s.now = at('America/Los_Angeles', '2026-09-01', 9);
+    const show = (format: Project['axes']['format'], eps: number, each: number, date = '2026-03-01', country = 'US') => {
+      const p = work(s, { format, runtime: eps * each, completed: '2026-01-10' });
+      p.axes.episodeCount = eps;
+      release(p, 'streaming', date, [country]);
+      return p;
+    };
+    expect(r(s, show('series', 6, 30), e, 'drama')).toBe('');
+    expect(r(s, show('series', 5, 30), e, 'drama')).toMatch(/It has 5 episodes\. This category needs at least 6\./);
+    expect(r(s, show('series', 6, 20), e, 'comedy')).toMatch(/Its episodes average 20 minutes\. This category needs episodes of more than 20\./);
+    expect(r(s, show('series', 6, 30, '2025-12-01'), e, 'drama')).toMatch(/between January 1, 2026 and December 31, 2026/);
+    expect(r(s, show('series', 6, 30, '2026-03-01', 'GB'), e, 'drama')).toMatch(/United States/);
+    const game = (eps: number) => { const p = show('unscripted-series', eps, 22); p.unscripted = { ...p.unscripted, family: 'competition' } as Project['unscripted']; return p; };
+    expect(r(s, game(3), e, 'game-competition')).toBe('');
+    expect(r(s, game(2), e, 'game-competition')).toMatch(/needs at least 3/);
+    // A nonfiction special is entered whole: one 45-minute film needs no three episodes; a 15-minute one is too short.
+    const special = (runtime: number) => { const p = work(s, { format: 'documentary-feature', runtime, completed: '2026-01-10' }); release(p, 'broadcast', '2026-03-01', ['US']); return p; };
+    expect(r(s, special(45), e, 'nonfiction')).toBe('');
+    expect(r(s, special(15), e, 'nonfiction')).toMatch(/It runs 15 minutes\. This category needs more than 20\./);
+    expect(r(s, show('web-series', 3, 10), e, 'short-form')).toBe('');
+    expect(r(s, show('web-series', 3, 20), e, 'short-form')).toMatch(/takes episodes under 20 minutes/);
+    expect(r(s, show('limited-series', 1, 90), e, 'limited')).toMatch(/needs at least 2/);
+    expect(r(s, show('limited-series', 3, 50), e, 'limited')).toBe('');
+    // Children's: for children (the catalog's requirement), episodes of eight minutes or more, six for a series.
+    const kids = show('series', 6, 7);
+    kids.axes.genres = [{ id: 'children' } as Project['axes']['genres'][number]];
+    expect(r(s, kids, e, 'childrens')).toMatch(/Its episodes average 7 minutes\. This category needs episodes of at least 8\./);
+    // A TV movie with any theatrical release is out, even after it streamed, and anywhere.
+    const movie = () => { const p = work(s, { format: 'tv-film', runtime: 95, completed: '2026-01-10' }); release(p, 'streaming', '2026-03-01', ['US']); return p; };
+    expect(r(s, movie(), e, 'tv-movie')).toBe('');
+    const later = movie();
+    release(later, 'theatrical', '2026-05-01', ['FR']);
+    expect(r(s, later, e, 'tv-movie')).toMatch(/It opened in cinemas on May 1, 2026; this award is for films that are never released in cinemas\./);
+    // A season already on a PGA ballot can't enter again.
+    const again = show('series', 6, 30);
+    ed(s, 'pga-2026').entries.push({ id: 'old', projectId: again.id, categoryId: 'drama', submittedAt: 0, status: 'submitted', recipients: [], fee: 0 });
+    expect(r(s, again, e, 'drama')).toMatch(/entered at an earlier/);
+    expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/Los_Angeles', '2026-09-25', 23, 59) + 59_000);
+    expect(categoryRuleStatus(rulebook('pga-2027@3'), 'short-form')).toBe('verified');
+    expect(categoryRuleStatus(rulebook('pga-2027@2'), 'short-form')).toBe('simulated');
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

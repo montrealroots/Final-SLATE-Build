@@ -440,11 +440,13 @@ function simulatedOscarRelease(ed: Edition, categoryId: string): CategoryRules |
   return r({ routes: ['theatrical'], countries: ['US'], viaCategory: kind === 'documentary' ? 'international' : undefined });
 }
 
-function runtimeProblem(rt: number, r: RuntimeRule): string | null {
-  if (r.over !== undefined && rt <= r.over) return `It runs ${rt} minutes. This category needs more than ${r.over}.`;
-  if (r.atLeast !== undefined && rt < r.atLeast) return `It runs ${rt} minutes. This category needs at least ${r.atLeast}.`;
-  if (r.atMost !== undefined && rt > r.atMost) return `It runs ${rt} minutes. This category takes ${r.atMost} minutes or less, credits included.`;
-  if (r.under !== undefined && rt >= r.under) return `It runs ${rt} minutes. This category takes work under ${r.under} minutes, credits included.`;
+function runtimeProblem(rt: number, r: RuntimeRule, episodes = false): string | null {
+  const it = episodes ? `Its episodes average ${rt} minutes.` : `It runs ${rt} minutes.`;
+  const of = episodes ? 'episodes of ' : '';
+  if (r.over !== undefined && rt <= r.over) return `${it} This category needs ${of}more than ${r.over}.`;
+  if (r.atLeast !== undefined && rt < r.atLeast) return `${it} This category needs ${of}at least ${r.atLeast}.`;
+  if (r.atMost !== undefined && rt > r.atMost) return `${it} This category takes ${of}${r.atMost} minutes or less, credits included.`;
+  if (r.under !== undefined && rt >= r.under) return `${it} This category takes ${episodes ? 'episodes' : 'work'} under ${r.under} minutes, credits included.`;
   return null;
 }
 
@@ -503,7 +505,12 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   const mediums = rules?.mediums?.value ?? cat.mediums;
   if (mediums && !mediums.includes(p.axes.medium)) reasons.push(`This category is for ${mediums.join(' or ').replace('-', ' ')} work.`);
   if (rules?.maxBudget && (p.finance?.estimate ?? 0) >= rules.maxBudget.value) reasons.push(`Its budget is ${(p.finance?.estimate ?? 0).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })}. This category takes films made for under ${rules.maxBudget.value.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })}.`);
-  if (rules?.minEpisodes && p.axes.episodeCount < rules.minEpisodes.value) reasons.push(`It has ${p.axes.episodeCount} episode${p.axes.episodeCount === 1 ? '' : 's'}. This category needs at least ${rules.minEpisodes.value}.`);
+  if (rules?.episodeRuntime && p.delivered) {
+    const episodic = isEpisodic(p.axes.format);
+    const why = runtimeProblem(Math.round(p.delivered.runtimeMin / (episodic ? Math.max(1, p.axes.episodeCount) : 1)), rules.episodeRuntime.value, episodic);
+    if (why) reasons.push(why);
+  }
+  if (rules?.minEpisodes && isEpisodic(p.axes.format) && p.axes.episodeCount < rules.minEpisodes.value) reasons.push(`It has ${p.axes.episodeCount} episode${p.axes.episodeCount === 1 ? '' : 's'}. This category needs at least ${rules.minEpisodes.value}.`);
   // Drama or comedy is the category's `class`, read by requirementProblems from where the project says it competes. A
   // reference check against the genre list did this until November 9, 2026, and never matched the JSON catalog.
   if (cat.genres && !p.axes.genres.some((g) => cat.genres!.includes(g.id))) reasons.push(`This category needs one of its genres, such as ${genre(cat.genres[0]).name}.`);
@@ -572,10 +579,12 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     }
     const tv = rules?.tvFirst?.value;
     if (tv) {
-      const inC = (r: Project['releases'][number]) => r.status !== 'cancelled' && r.territories.some((t) => tv.countries.includes(t));
+      const inC = (r: Project['releases'][number]) => r.status !== 'cancelled' && (tv.countries.includes('*') || r.territories.some((t) => tv.countries.includes(t)));
       const cinema = p.releases.filter((r) => inC(r) && r.route === 'theatrical').map((r) => r.date).sort()[0];
       const aired = p.releases.filter((r) => inC(r) && r.route !== 'theatrical' && r.route !== 'festival-premiere').map((r) => r.date).sort()[0];
-      if (cinema && (!aired || cinema < aired)) reasons.push(`It opened in cinemas in ${tv.countries.map(countryWords).join(' or ')} on ${formatDateKey(cinema)}, before airing there, which rules it out of television awards.`);
+      const where = tv.countries.includes('*') ? '' : ` in ${tv.countries.map(countryWords).join(' or ')}`;
+      if (cinema && tv.never) reasons.push(`It opened in cinemas${where} on ${formatDateKey(cinema)}; this award is for films that are never released in cinemas.`);
+      else if (cinema && (!aired || cinema < aired)) reasons.push(`It opened in cinemas${where} on ${formatDateKey(cinema)}, before airing there, which rules it out of television awards.`);
     }
   }
   // Until November 9, 2026, an Oscar short whose rules weren't read qualified through any festival win at all; it now
