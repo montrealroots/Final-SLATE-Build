@@ -292,13 +292,18 @@ tests/awards-ledger.test.ts`).
    Annecy's other four, Venice's Out of Competition, Spotlight and the Giornate degli Autori, San Sebastián's six other
    sections, the Golden Globes' other 19, the Annies' other 20, Clermont's Lab and National, Sitges (6), IDFA (5), Hot Docs
    (with its 2027 dates), the Canadian Screen Awards (115), the Goyas' 23 feature categories and the Césars' 25.
-   Organizer's rules for at least one edition: 394 of 802 categories, 11 projected only, 397 on SLATE's rules.
-   Refused or unavailable here: TIFF and SXSW (HTTP 403), Venice's Critics' Week (HTTP 503), and the rosters recorded as
-   blocked (Busan, Locarno, FESPACO, BAFTA, AMAA, Blue Dragon). **Resume at the first id of the research queue in
-   `docs/awards/STATUS.md`**; after the blocked ones the next readable are Series Mania, the International Emmys, Spirit,
-   Gotham, the guilds (DGA, WGA, PGA, Actor Awards), AACTA, the Japan Academy and the European Film Awards, then the
-   Goyas' European, Ibero-American and short categories (their own Bases). Each read adds a new rulebook version and a
-   test in `tests/rulebooks.test.ts`, and the audit count there moves.
+   After #50: the Spirit Awards (20), the Actor Awards (13), the DGA's feature award, the WGA (16), the Gothams' ten
+   film categories and the PGA's two film awards. Organizer's rules for at least one edition: 456 of 802 categories, 11
+   projected only, 335 on SLATE's rules. Refused or unavailable here: TIFF and SXSW (HTTP 403), Venice's Critics' Week and
+   AACTA's entries page (HTTP 503), the International Emmys' rules page and the DGA's other guideline pages (HTTP 404), no
+   current Series Mania competition rules, and the rosters recorded as blocked (Busan, Locarno, FESPACO, BAFTA, AMAA, Blue
+   Dragon). The European Film Awards' regulations were read but have no dates and test things SLATE doesn't record
+   (European-elements points, release in three countries); see the audit. **Resume at the first id of the research queue
+   in `docs/awards/STATUS.md`**: what is left is mostly those blocked or undated organizers, the Japan Academy (its
+   rules weren't found; only a press release), the Goyas' European, Ibero-American and short awards (their own Bases),
+   the WGA's Documentary Screenplay and Selvin pages, the PGA's documentary and television rules, and the Emmy and
+   Gotham honorary-or-mixed categories. Each read adds a new rulebook version and a test in `tests/rulebooks.test.ts`,
+   and the audit count there moves.
 4. **Nonplayable entries (125): not started.** Each needs what it recognizes, whether SLATE has it, what's missing and a
    scope decision (part 4 of the request).
 5. **Recipients and work-specific rules: not started**, apart from the Golden Globes' Non-English recipients and the
