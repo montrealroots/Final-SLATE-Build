@@ -131,6 +131,12 @@ export interface CategoryRules {
    * supporting, then not as a guest "in a subsequent Emmy year for playing the same role in the same series").
    */
   notAfterNomination?: Ruled<{ institution: string; categories: string[] }>;
+  /**
+   * A performance fills at least this share of the running time, measured from the approved script's scene minutes the
+   * part appears in: of its best episode (`per: 'episode'`, the Emmys' guest performers) or of the whole work (`'whole'`,
+   * supporting performers in a limited series or movie). "The minimum stand-alone and contiguous-screen time ... is 5%".
+   */
+  screenShare?: Ruled<{ atLeast: number; per: 'episode' | 'whole' }>;
   /** Who is named and receives the award for a work: credited directors, or credited producers (at most `max`). */
   recipients?: Ruled<{ credit: 'director' | 'producer' | 'director-and-producer'; max?: number }>;
 }

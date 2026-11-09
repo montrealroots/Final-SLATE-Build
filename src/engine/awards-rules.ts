@@ -177,3 +177,20 @@ export function nominatedEarlier(state: GameState, p: Project, c: Credit, instit
   }
   return false;
 }
+
+/**
+ * The share of the running time a credited part is on screen, from the approved script's scene minutes: of its biggest
+ * episode, or of the whole work. The episode's running time is the target per episode; the whole is the delivered cut.
+ */
+export function screenShare(p: Project, c: Credit, per: 'episode' | 'whole'): number {
+  const id = chars(p).find((x) => x.name === c.characterName)?.id;
+  if (!id) return 0;
+  const scenes = approvedScenes(p).filter((s) => s.participants.includes(id));
+  if (per === 'whole') {
+    const total = p.delivered?.runtimeMin ?? p.axes.targetRuntimeMin * Math.max(1, p.axes.episodeCount);
+    return scenes.reduce((a, s) => a + s.estMinutes, 0) / Math.max(1, total);
+  }
+  const byEp = new Map<number, number>();
+  for (const s of scenes) byEp.set(s.episode, (byEp.get(s.episode) ?? 0) + s.estMinutes);
+  return Math.max(0, ...byEp.values()) / Math.max(1, p.axes.targetRuntimeMin);
+}

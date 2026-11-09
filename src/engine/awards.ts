@@ -571,16 +571,23 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   if (!recipients.length && single && categoryRecipients(state, p, cat, recipientIds).length) {
     reasons.push(`Nobody credited for this category worked on episode ${episode ?? entryEpisodes(state, p, cat, rules)[0] ?? 1}.`);
   } else if (!recipients.length) {
-    // Credited, but ruled out by the category's own rules: say which rule.
-    const credited = categoryRecipients(state, p, cat, recipientIds).filter((c) => !(rules?.noNarrators && catalogRules().isNarrator(p, c)));
-    const span = rules?.episodeShare?.value;
-    const earlier = rules?.notAfterNomination?.value;
-    if (earlier && credited.length && credited.every((c) => catalogRules().nominatedEarlier(state, p, c, earlier.institution, earlier.categories))) reasons.push(`${credited[0].characterName ?? credited[0].personName} was nominated as a lead or supporting performance in an earlier season, so the part can't be entered as a guest.`);
-    else if (rules?.noNarrators && !credited.length && categoryRecipients(state, p, cat, recipientIds).length) reasons.push('A narrator can\'t be entered in this performer category; the narration can be entered for a narrator award.');
-    else if (span && credited.length) {
-      const c = credited[0];
-      reasons.push(`This category takes performers in ${span.under !== undefined ? 'fewer than half' : 'at least half'} of the episodes; ${c.characterName ?? c.personName} is in ${c.episodes === 'all' ? p.axes.episodeCount : c.episodes.length} of ${p.axes.episodeCount}.`);
-    } else reasons.push(recipientMissingReason(cat));
+    // Credited, but ruled out by the category's own rules: every rule that rules out the first one credited.
+    const c = categoryRecipients(state, p, cat, recipientIds)[0];
+    const why: string[] = [];
+    if (c) {
+      const R = catalogRules();
+      const name = c.characterName ?? c.personName;
+      const span = rules?.episodeShare?.value;
+      const earlier = rules?.notAfterNomination?.value;
+      const screen = rules?.screenShare?.value;
+      if (rules?.noNarrators && R.isNarrator(p, c)) why.push('A narrator can\'t be entered in this performer category; the narration can be entered for a narrator award.');
+      if (earlier && R.nominatedEarlier(state, p, c, earlier.institution, earlier.categories)) why.push(`${name} was nominated as a lead or supporting performance in an earlier season, so the part can't be entered as a guest.`);
+      if (span && ((span.under !== undefined && R.episodeShare(p, c) >= span.under) || (span.atLeast !== undefined && R.episodeShare(p, c) < span.atLeast))) {
+        why.push(`This category takes performers in ${span.under !== undefined ? 'fewer than half' : 'at least half'} of the episodes; ${name} is in ${c.episodes === 'all' ? p.axes.episodeCount : c.episodes.length} of ${p.axes.episodeCount}.`);
+      }
+      if (screen && R.screenShare(p, c, screen.per) < screen.atLeast) why.push(`${name} is on screen for ${Math.round(R.screenShare(p, c, screen.per) * 100)}% of ${screen.per === 'episode' ? 'their biggest episode' : 'the running time'} in the approved script; this category needs at least ${Math.round(screen.atLeast * 100)}%.`);
+    }
+    reasons.push(...(why.length ? why : [recipientMissingReason(cat)]));
   }
   return { eligible: reasons.length === 0, provisional, provisionalNote, reasons, recipients };
 }
@@ -618,12 +625,14 @@ export function entryEpisodes(state: GameState, p: Project, cat: Category, rules
 
 function ruledRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
   const all = creditedRecipients(state, p, cat, chosen, rules);
-  if (!rules?.noNarrators && !rules?.episodeShare && !rules?.notAfterNomination) return all;
+  if (!rules?.noNarrators && !rules?.episodeShare && !rules?.notAfterNomination && !rules?.screenShare) return all;
   const span = rules.episodeShare?.value;
   const before = rules.notAfterNomination?.value;
+  const screen = rules.screenShare?.value;
   return all.filter((c) => !(rules.noNarrators && catalogRules().isNarrator(p, c))
     && (!span || ((span.under === undefined || catalogRules().episodeShare(p, c) < span.under) && (span.atLeast === undefined || catalogRules().episodeShare(p, c) >= span.atLeast)))
-    && !(before && catalogRules().nominatedEarlier(state, p, c, before.institution, before.categories)));
+    && !(before && catalogRules().nominatedEarlier(state, p, c, before.institution, before.categories))
+    && !(screen && catalogRules().screenShare(p, c, screen.per) < screen.atLeast));
 }
 
 

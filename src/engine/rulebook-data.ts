@@ -670,7 +670,9 @@ const EMMYS_2027_3: RuleBook = { ...EMMYS_2027_2, id: 'emmys-2027@3', version: 3
  * comedy and drama directing to at most two ("An entry is limited to two directors"). Until then the whole season was
  * entered, to everyone credited on any episode. A special or movie is still entered whole. Guest Performer Eligibility, read
  * the same day: nominated or a winner as lead or supporting for a part, a performer can't enter that part as a guest in a
- * later season (`notAfterNomination`, through the seasons `continues` links). A limited or anthology series
+ * later season (`notAfterNomination`, through the seasons `continues` links); and the 5% screen-time minimums for guests (of
+ * the part's biggest episode) and for supporting performers in a limited series or movie (of the whole), from the approved
+ * script's scene minutes (`screenShare`). A limited or anthology series
  * (Categories 26 and 115) is entered whole when everyone credited worked on every part, and as one part otherwise; SLATE
  * decides that for the entry, not for each person, so a director of every part is also named on a part's entry. Not
  * modeled: the variety series' single entry per series chosen by the head writer, and judging by the episode (SLATE judges
@@ -685,7 +687,10 @@ function emmys4(year: number, mk: typeof v): Record<string, CategoryRules> {
   for (const id of ['directing-variety', 'directing-nonfiction', 'directing-reality', 'writing-comedy', 'writing', 'writing-variety']) out[id] = { ...three[id], oneEpisode: one() };
   const part = (max?: number) => mk({ ...(max ? { max } : {}), wholeWhenAll: true as const }, 'em78-rules', `Credited with all the parts: the complete series; with one or more but not all: one part, which the entrant chooses${max ? '; an entry is limited to two directors' : ''}.${p}`);
   const notAfter = mk({ institution: 'emmys', categories: ['lead-', 'supporting-'] }, 'em78-rules', `Guest Performer Eligibility: nominated or a winner as lead or supporting, a performer can't enter the same role in the same series as a guest in a later year.${p}`);
-  for (const id of Object.keys(three).filter((x) => x.startsWith('guest-'))) out[id] = { ...three[id], notAfterNomination: notAfter };
+  const guestScreen = mk({ atLeast: 0.05, per: 'episode' as const }, 'em78-rules', `Guest performers: at least 5% of the submitted episode's running time on screen; SLATE measures the part's biggest episode from the approved script's scene minutes.${p}`);
+  const limitedScreen = mk({ atLeast: 0.05, per: 'whole' as const }, 'em78-rules', `Supporting performers in a movie or limited or anthology series: at least 5% of its running time on screen, measured from the approved script's scene minutes.${p}`);
+  for (const id of Object.keys(three).filter((x) => x.startsWith('guest-'))) out[id] = { ...three[id], notAfterNomination: notAfter, screenShare: guestScreen };
+  for (const id of ['supporting-actor-limited', 'supporting-actress-limited']) out[id] = { ...three[id], screenShare: limitedScreen };
   out['directing-limited'] = { ...three['directing-limited'], oneEpisode: part(2) };
   out['writing-limited'] = { ...three['writing-limited'], oneEpisode: part() };
   return out;
