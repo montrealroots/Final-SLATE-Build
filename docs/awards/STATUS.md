@@ -49,8 +49,8 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Africa Movie Academy Awards (`amaa`) | 4 | 0 / 0 / 4 | 0 / 0 / 4 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
-| European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 0 | 0 | 0 |
-| **All 37** | 806 | 708 / 70 / 28 | 457 / 11 / 338 | 28 | 338 | 429 | 193 | 32 | 123 |
+| European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 3 | 0 | 0 |
+| **All 37** | 806 | 708 / 70 / 28 | 457 / 11 / 338 | 28 | 338 | 429 | 196 | 32 | 123 |
 
 ## Research queue
 

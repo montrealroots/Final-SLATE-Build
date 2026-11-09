@@ -1,7 +1,8 @@
 // Recipient rules read from the organizers' documents (part 5 of the awards work, November 9, 2026): who may be entered for
 // a work, beyond who is credited for it. Each test pairs the rule with the version or organizer that doesn't have it.
 import { describe, expect, it } from 'vitest';
-import { RULEBOOKS, categoryRecipients, checkEligibility, categoryRules, institution, nonEnglishShare } from './engine-api';
+import { DAY, RULEBOOKS, acceptDeal, approachBacker, categoryRecipients, checkEligibility, categoryRules, institution, nonEnglishShare, processUntil } from './engine-api';
+import { requirementProblems } from '../src/engine/awards-rules';
 import { approve, buildProject, startLife } from './helpers';
 import type { Credit, GameState } from '../src/engine/types';
 
@@ -126,5 +127,26 @@ describe('Non-English dialogue is measured from the script: Oscars Rule Sixteen 
     const e = oscars(s);
     e.rulesId = 'oscars-2027@2';
     expect(checkEligibility(s, p, e, institution('oscars').categories.find((c) => c.id === 'international')!).reasons.join(' ')).not.toMatch(/English/);
+  });
+});
+
+describe('Co-production: a partner signed through Financing counts', () => {
+  it('the Eurimages award reads an accepted co-production deal, not only the money of saves made before financing existed', () => {
+    const s: GameState = startLife('copro', 'fr-paris');
+    const p = buildProject(s, { title: 'Les Deux Rives', format: 'feature', medium: 'live-action', runtime: 95 }, [{ name: 'Lou', patch: { roleSize: 'lead' } }], [{ place: 'Rive', chars: ['Lou'], minutes: 3 }]);
+    approve(s, p);
+    // Labelled fixture: half the target agreed, so a partner has something to match (they match half of what is promised).
+    p.finance!.deals[0].amount = Math.round(p.finance!.target / 2);
+    const cat = institution('european-film-awards').categories.find((c) => c.id === 'coproduction')!;
+    const why = () => requirementProblems(s, p, cat).join(' ');
+    expect(p.funding.extra).toEqual([]);
+    expect(why()).toMatch(/no co-production partner/);
+    const deal = approachBacker(s, p, 'co-producer');
+    processUntil(s, deal.decideAt! + DAY, 'tick', 100000);
+    expect(deal.status).toBe('offered'); // this seed's partner says yes
+    expect(why()).toMatch(/no co-production partner/); // an offer isn't a partner yet
+    acceptDeal(s, p, deal.id);
+    expect(p.funding.extra).toEqual([]); // the legacy money stays empty: only the deal says it
+    expect(why()).not.toMatch(/co-production/);
   });
 });

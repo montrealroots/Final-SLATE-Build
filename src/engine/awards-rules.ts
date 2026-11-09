@@ -51,7 +51,9 @@ export function requirementProblems(state: GameState, p: Project, cat: Asks): st
       case 'la-ny-theatrical': if (!p.releases.some((r) => r.route === 'theatrical' && r.status !== 'cancelled' && r.territories.includes('US'))) fail('It needs a theatrical run in Los Angeles or New York (a US theatrical release in the game).'); break;
       case 'non-english': if (lang === 'en') fail('This category is for work mainly in a language other than English.'); break;
       case 'archival': if (!p.scenes.some((s) => s.kind === 'archival')) fail('This award is for creative use of archive; the project has no archival material.'); break;
-      case 'coproduction': if (!p.funding.extra.length) fail('This award is for international co-productions; the project has no co-production partner.'); break;
+      // A partner signed through Financing, or the co-production money of a save from before financing existed. Until November 9,
+      // 2026 only the second counted, so no partner a player signed could qualify.
+      case 'coproduction': if (!p.funding.extra.length && !p.finance?.deals.some((d) => d.kind === 'co-producer' && d.status === 'accepted')) fail('This award is for international co-productions; the project has no co-production partner.'); break;
       case 'family': if (!['Family', 'Children (6 To 11)', 'Preschool'].includes(p.axes.audience)) fail('This is for work made for young audiences and families.'); break;
       case 'children': if (!['Children (6 To 11)', 'Family'].includes(p.axes.audience)) fail('This category is for children\'s programs.'); break;
       case 'preschool': if (p.axes.audience !== 'Preschool') fail('This category is for preschool programs.'); break;
