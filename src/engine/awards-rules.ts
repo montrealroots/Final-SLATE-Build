@@ -11,7 +11,7 @@ export { RULEBOOK_DATA } from './rulebook-data';
 /** What `Category` fields this module reads (kept structural so awards.ts and this module don't import each other). */
 interface Asks { recipient: string; formats: string[]; class?: 'comedy' | 'drama'; family?: string[]; episodes?: [number, number]; material?: 'original' | 'adapted'; need?: string[]; crafts?: string[]; with?: string[]; actingTitle?: 'Actor' | 'Actress' }
 
-const EUROPE = ['AL', 'AD', 'AM', 'AT', 'BA', 'BE', 'BG', 'BY', 'CH', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GB', 'GE', 'GR', 'HR', 'HU', 'IE', 'IS', 'IT', 'XK', 'LI', 'LT', 'LU', 'LV', 'MC', 'MD', 'ME', 'MK', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'RS', 'SE', 'SI', 'SK', 'SM', 'TR', 'UA', 'VA'];
+export const EUROPE = ['AL', 'AD', 'AM', 'AT', 'BA', 'BE', 'BG', 'BY', 'CH', 'CY', 'CZ', 'DE', 'DK', 'EE', 'ES', 'FI', 'FR', 'GB', 'GE', 'GR', 'HR', 'HU', 'IE', 'IS', 'IT', 'XK', 'LI', 'LT', 'LU', 'LV', 'MC', 'MD', 'ME', 'MK', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'RS', 'SE', 'SI', 'SK', 'SM', 'TR', 'UA', 'VA'];
 const LATIN_AMERICA = ['AR', 'BO', 'BR', 'CL', 'CO', 'CR', 'CU', 'DO', 'EC', 'GT', 'HN', 'MX', 'NI', 'PA', 'PE', 'PR', 'PY', 'SV', 'UY', 'VE'];
 const ASIA_PACIFIC = ['AF', 'AU', 'BD', 'BT', 'BN', 'KH', 'CN', 'FJ', 'HK', 'IN', 'ID', 'JP', 'KZ', 'KG', 'LA', 'MO', 'MY', 'MV', 'MN', 'MM', 'NP', 'NZ', 'KP', 'PK', 'PG', 'PH', 'SG', 'KR', 'LK', 'TW', 'TJ', 'TH', 'TL', 'TM', 'UZ', 'VN', 'IR', 'IQ', 'IL', 'JO', 'LB', 'PS', 'SA', 'SY', 'AE', 'YE'];
 const FANTASY = ['fantasy', 'science-fiction', 'dark-fantasy', 'space-opera', 'sword-and-sorcery', 'science-fantasy', 'cyberpunk', 'time-travel', 'superhero', 'fairy-tale'];

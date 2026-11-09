@@ -188,8 +188,23 @@ Not applied: the prize recipients (the regulations name the prizes, not who rece
 Source: [Competition Regulations](https://www.berlinale.de/en/film-entry/guidelines/competition.html) (retrieved November
 6, 2026). **The page names no edition year**, so these rules are shown as projected for 2027, not verified: at least 60
 minutes; world or international premieres (not presented publicly outside the country of origin); not broadcast on
-television or presented on the internet or VOD; completed within the 12 months before the festival. Panorama and Berlinale
-Shorts regulations were not read; those sections stay simulated. No 2027 deadline was found.
+television or presented on the internet or VOD; completed within the 12 months before the festival. No 2027 deadline was
+found.
+
+**Version 2 (`berlinale-2027@2`, read November 9, 2026):** the other five sections' regulation pages, also undated, so
+projected. Each page's section 1:
+
+| Section | Page | Rules applied |
+| --- | --- | --- |
+| Perspectives | [perspectives.html](https://www.berlinale.de/en/film-entry/guidelines/perspectives.html) | At least 60 minutes; world, international or European premiere (not shown in Europe outside the country of origin); not shown in Germany; no TV or internet/VOD; completed in the 12 months before the festival; never submitted before. The debut rule is the catalog's own requirement. |
+| Panorama | [panorama.html](https://www.berlinale.de/en/film-entry/guidelines/panorama.html) | The same, without the debut rule |
+| Forum | [forum.html](https://www.berlinale.de/en/film-entry/guidelines/forum.html) | The same |
+| Generation | [generation.html](https://www.berlinale.de/en/film-entry/guidelines/generation.html) | The same; shorts at most 20 minutes |
+| Berlinale Shorts | [berlinale-shorts.html](https://www.berlinale.de/en/film-entry/guidelines/berlinale-shorts.html) | At most 30 minutes; world or international premiere (not shown outside the country of origin); not shown in Germany; no TV or internet/VOD; completed in the 12 months before; never submitted before |
+
+Not modeled: "intended for theatrical release"; the country of origin is the production company's registered office,
+for which SLATE uses the production base; Generation's audience isn't a rule on its page (the catalog keeps its own
+young-audience requirement).
 
 ## Golden Globes, 84th (2027)
 

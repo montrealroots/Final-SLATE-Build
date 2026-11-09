@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('165 categories follow verified rules for at least one edition, 2 only projected ones; the other 635 are simulated', () => {
+  it('165 categories follow verified rules for at least one edition, 7 only projected ones; the other 630 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -429,8 +429,9 @@ describe('audit counts', () => {
     // 48 and 92 until November 9, 2026, when the rosters added 660 categories and the read rules were extended to the
     // Oscars' craft and adapted-screenplay categories, Sundance's World Cinema competitions, Orizzonti Corti and the
     // Annies' four TV categories (rulebooks.ts). 66 and 734 until International Feature Film's rules were read the same day,
-    // and 67 and 733 until the Emmys' general eligibility was applied to their other 98 entered categories (emmys-2026@2).
-    expect(n).toEqual({ verified: 165, projected: 2, simulated: 635 });
+    // and 67 and 733 until the Emmys' general eligibility was applied to their other 98 entered categories (emmys-2026@2);
+    // 2 projected until the Berlinale's five other sections were read (berlinale-2027@2).
+    expect(n).toEqual({ verified: 165, projected: 7, simulated: 630 });
   });
 });
 
@@ -524,6 +525,30 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const series = work(s, { format: 'series', runtime: 30, completed: '2026-01-10', base: 'gb-london' });
     release(series, 'streaming', '2026-03-01', ['US']);
     expect(r(s, series, e, 'tv-drama')).toMatch(/for work made in the United States/);
+  });
+
+  it('Berlinale 2027, version 2 (projected): Panorama takes a European premiere, not a film shown in Italy or in Germany; Shorts up to 30 minutes', () => {
+    const s = startLife('bl2');
+    const e = ed(s, 'berlinale-2027');
+    expect(e.rulesId).toBe('berlinale-2027@2');
+    s.now = e.submissionOpens + DAY;
+    const film = (shownIn?: string) => {
+      const p = work(s, { format: 'feature', runtime: 95, completed: '2026-06-01', base: 'fr-paris' });
+      if (shownIn) release(p, 'theatrical', '2026-09-01', [shownIn]);
+      return p;
+    };
+    for (const id of ['perspectives', 'panorama', 'forum', 'generation', 'shorts']) expect(categoryRuleStatus(rulebook(e.rulesId), id), id).toBe('projected');
+    expect(r(s, film(), e, 'panorama')).toBe('');
+    expect(r(s, film('FR'), e, 'panorama')).toBe(''); // shown at home only
+    expect(r(s, film('US'), e, 'panorama')).not.toMatch(/premiere|Germany/); // outside Europe
+    expect(r(s, film('IT'), e, 'panorama')).toMatch(/at least a European premiere/);
+    expect(r(s, film('DE'), e, 'panorama')).toMatch(/shown publicly in DE|shown publicly in Germany/);
+    const old = work(s, { format: 'feature', runtime: 95, completed: '2026-01-15', base: 'fr-paris' });
+    expect(r(s, old, e, 'forum')).toMatch(/completed on January 15, 2026/);
+    const short = (runtime: number) => work(s, { format: 'short', runtime, completed: '2026-06-01', base: 'fr-paris' });
+    expect(r(s, short(30), e, 'shorts')).not.toMatch(/minutes/);
+    expect(r(s, short(31), e, 'shorts')).toMatch(/30 minutes or less/);
+    expect(r(s, short(21), e, 'generation')).toMatch(/20 minutes or less/);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {
