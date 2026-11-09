@@ -270,6 +270,43 @@ The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01
   - No primary source was found for the estimating process.
   - Rest between shoot days is not modeled.
 
+### Newest Request (November 9, 2026, after #47): finish the awards expansion; resolve the motion-capture CI failure
+
+The owner's eight parts, in order. Statuses are kept apart in `docs/awards/STATUS.md` (generated with
+`docs/awards/LEDGER.csv` by `tests/awards-ledger.test.ts`; regenerate with `LEDGER_WRITE=1 npx vitest run
+tests/awards-ledger.test.ts`).
+
+1. **CI failure: done.** montrealroots/Final-SLATE-Build#48 merged (`507096c`): the journey had asserted a state half the
+   worlds never show; engine invariants hold across seeds (`tests/mocap-progress.test.ts`). The failing run's seed and
+   trace weren't available. QA-REPORT.md has the analysis.
+2. **Qualifying routes: done** (this branch). `QUALIFYING_LISTS` in `src/engine/qualifying-lists.ts`: the Academy's
+   99th shorts, documentary feature and International Feature lists, award by award, with window, source section and
+   what SLATE doesn't hold. `oscars-2027@2`; committee one film per country; documentary route 3; later years projected.
+   Tests: `tests/qualifying-routes.test.ts`; journeys in `e2e/awards.spec.ts` (an Annecy audience award that doesn't
+   qualify, then the Cristal; International Feature by a Silver Bear that doesn't and a Golden Lion that does, one film
+   per country). No other qualifying-prize route exists in the game (audited: Spirit, Gotham, AMAA and the European Film
+   Awards count a festival premiere as a release, a screening route, not a prize).
+3. **Rule research: in progress.** Rulebook data loads with the catalog (`src/engine/rulebook-data.ts`), so startup
+   stays at 214 kB gzipped. Read on November 9: the Emmys' general eligibility for every entered category, the
+   Berlinale's five other sections (projected; a European-premiere rule added), Cannes' four feature sections
+   (projected), Annecy's Contrechamp, Off-Limits, Perspectives and TV, Venice's Out of Competition and Spotlight,
+   San Sebastián's six other sections, the Golden Globes' other 19 categories, the Annies' other 20, Clermont's Lab and
+   National, and Sitges' six sections. Organizer's rules for at least one edition: 224 of 802 categories, 11 projected
+   only, 567 on SLATE's rules. **Resume at the first id of the research queue in `docs/awards/STATUS.md`** (Venice
+   `sic` and `giornate` need their associations' regulations; TIFF is refused here, HTTP 403; then Busan, IDFA, Hot Docs,
+   SXSW, Series Mania, Locarno, FESPACO, BAFTA, International Emmys, Spirit, Gotham, the guilds, César, Goya, Canadian
+   Screen, AACTA, AMAA, Japan Academy, Blue Dragon, European Film Awards). Each read adds a new rulebook version and a
+   test in `tests/rulebooks.test.ts`, and the audit count there moves.
+4. **Nonplayable entries (125): not started.** Each needs what it recognizes, whether SLATE has it, what's missing and a
+   scope decision (part 4 of the request).
+5. **Recipients and work-specific rules: not started**, apart from the Golden Globes' Non-English recipients and the
+   short-form producer cap. Known shortcuts to replace or label: the six-metro US run, `la-ny-theatrical`,
+   `coproduction` read from extra funding, `non-english` read from the first dialogue language, songs credited to the
+   composer, the Golden Globes' $150 million box-office threshold, guest-performer episode shares.
+6-8. Reports are updated at each checkpoint; journeys still owed: supporting/guest TV performance, episode-specific
+   writing or directing, songs if implemented, honorary outside submissions (exists), a historical result across an
+   edition change (exists for the Annies), all on desktop and WebKit.
+
 ### Newest Request (November 9, 2026, after #46): complete awards and festival coverage (done)
 
 The owner asked for every institution already in the game (37: 16 festivals, 21 award bodies; 142 categories before)
@@ -300,9 +337,8 @@ to get its complete official roster, edition rules and connected gameplay. Done 
 What is left (none of it blocks other work):
 - Read the blocked organizers' rules when their sites can be reached from here (BAFTA, AMAA, Blue Dragon, Busan,
   Locarno, FESPACO), and the pages marked `UNVERIFIED:` in the rosters (97 categories in play).
-- FESPACO's and IDFA's short-film prizes weren't read, so those festivals can't qualify a short for the Oscars yet.
-- The Oscars' International Feature deadline and the Academy's full list of qualifying festival awards weren't read:
-  International Feature keeps the game's deadline and any festival prize qualifies it.
+- (Done after #47:) the Academy's qualifying lists are read award by award; FESPACO's and IDFA's listed short awards
+  aren't in SLATE's rosters, so they can't qualify a short (`QUALIFYING_LISTS` names them under `notInGame`).
 - Basque productions aren't recorded, so San Sebastián's Irizar Basque Film Award can't be won.
 - Do not edit source files while a dev-server browser run is going: the dev server reloads the page to the start
   screen and the journey fails (this caused the intermittent failures seen while writing `e2e/awards.spec.ts`).
@@ -576,12 +612,12 @@ the look against 1221 beyond the side-by-side captures.
 2. **M3 follow-ups:** holiday names stay in the official language unless an official English source gives one (field `en`, so far Cyprus); 32 more countries with non-Latin names need such a source (China, Korea and Georgia were tried; see `docs/world/COUNTRY-DETAIL-AUDIT.md`). Holidays are national or first-level-regional only; local (city) holidays are not included.
 3. **M4 follow-ups:** Export Save is offered for every saved game and next to a failed save. The weather warning now uses "Rain is expected during your exterior shoot." and offers "Film an Interior Scene" only when an interior day is scheduled; "Move the Shoot" moves the day to the first free working day after the shoot, if everyone on set is free.
 4. **M5 follow-ups:** none open in code. Since #26 capture sessions are dated and on the calendar, pass over the performer's shoot days, and are rebooked when missed; body, face or both is chosen at booking; a replaced performer keeps the credit while their work stays (`tests/mocap-calendar.test.ts`).
-5. **M6 follow-ups:** none open in code. The category audit (`docs/world/CATEGORY-AUDIT.md`) marked 48 categories Rules verified and 2 Rules projected; from November 9, 2026 it is 66 and 2 of 802 (`docs/world/RULEBOOK-AUDIT.md`, `docs/awards/LEDGER.csv`).
+5. **M6 follow-ups:** none open in code. The category audit (`docs/world/CATEGORY-AUDIT.md`) marked 48 categories Rules verified and 2 Rules projected; from November 9, 2026 it was 66 and 2 of 802, and after the rule research that day 224 and 11 (`docs/world/RULEBOOK-AUDIT.md`, `docs/awards/LEDGER.csv`).
 6. **M7 follow-ups:** a manual screen-reader pass (automated checks only so far); production timings (budgets are measured on the dev server).
 
 ### Research Still To Do
 
-- Festival and award rulebooks: 734 of 802 categories use the game's rules (92 of 142 until the rosters of November 9, 2026; the blocked organizers and `UNVERIFIED:` pages are listed under that request above). TIFF and BAFTA Film need their organizers' documents read from a network that can reach tiff.net and bafta.org; then the rest listed in `docs/world/RULEBOOK-AUDIT.md`. Each needs its organizer's document for the edition in play; add a new rulebook version, never edit one an edition already uses. European Film Awards eligibility differs slightly (see the category audit). Dates: Annecy 2027, BAFTA 2027, WGA, Series Mania and Hot Docs 2027 are still planning dates.
+- Festival and award rulebooks: 567 of 802 categories use the game's rules (734 before the research after #47; 92 of 142 until the rosters of November 9, 2026; the blocked organizers and `UNVERIFIED:` pages are listed under that request above). TIFF and BAFTA Film need their organizers' documents read from a network that can reach tiff.net and bafta.org; then the rest listed in `docs/world/RULEBOOK-AUDIT.md`. Each needs its organizer's document for the edition in play; add a new rulebook version, never edit one an edition already uses. European Film Awards eligibility differs slightly (see the category audit). Dates: Annecy 2027, BAFTA 2027, WGA, Series Mania and Hot Docs 2027 are still planning dates.
 
 ### External Or Manual (never blocks other work or future years)
 
