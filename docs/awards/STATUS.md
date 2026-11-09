@@ -43,14 +43,14 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Producers Guild Awards (`pga`) | 15 | 14 / 1 / 0 | 2 / 0 / 13 | 0 | 15 | 2 | 5 | 0 | 4 |
 | Actor Awards (`actor-awards`) | 13 | 13 / 0 / 0 | 13 / 0 / 0 | 0 | 13 | 13 | 3 | 0 | 3 |
 | César Awards (`cesar`) | 27 | 27 / 0 / 0 | 25 / 0 / 2 | 0 | 27 | 3 | 8 | 0 | 0 |
-| Goya Awards (`goya`) | 30 | 30 / 0 / 0 | 23 / 0 / 7 | 0 | 30 | 23 | 10 | 0 | 0 |
+| Goya Awards (`goya`) | 30 | 30 / 0 / 0 | 23 / 0 / 7 | 0 | 30 | 23 | 11 | 0 | 0 |
 | Canadian Screen Awards (`canadian-screen`) | 119 | 114 / 5 / 0 | 115 / 0 / 4 | 0 | 0 | 115 | 7 | 0 | 40 |
 | AACTA Awards (`aacta`) | 36 | 35 / 1 / 0 | 0 / 0 / 36 | 0 | 0 | 0 | 0 | 0 | 6 |
 | Africa Movie Academy Awards (`amaa`) | 4 | 0 / 0 / 4 | 0 / 0 / 4 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
-| European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 3 | 0 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 458 / 11 / 337 | 28 | 338 | 435 | 201 | 35 | 123 |
+| European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 4 | 0 | 0 |
+| **All 37** | 806 | 709 / 69 / 28 | 458 / 11 / 337 | 28 | 338 | 435 | 203 | 35 | 123 |
 
 ## Research queue
 

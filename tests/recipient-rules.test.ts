@@ -313,3 +313,21 @@ describe('Golden Globes, Cinematic and Box Office Achievement: $150 million worl
     expect(why()).not.toMatch(/reported/);
   });
 });
+
+describe('a festival screening is not a release outside cinemas', () => {
+  it('a Goya feature premiered at a festival before its Spanish release stays eligible; one streamed first does not', () => {
+    const s: GameState = startLife('tf-fest', 'es-madrid');
+    const make = (first: 'festival-premiere' | 'streaming') => {
+      const p = buildProject(s, { title: `Rio ${first}`, format: 'feature', medium: 'live-action', runtime: 95 }, [{ name: 'A', patch: { roleSize: 'lead' } }], [{ place: 'R', chars: ['A'], minutes: 3 }]);
+      approve(s, p);
+      p.delivered = { at: Date.parse('2026-01-10T12:00:00Z'), runtimeMin: 95 };
+      p.releases.push({ id: 'f', route: first, date: '2026-03-01', territories: ['ES'], distributor: null, note: '', status: 'released' });
+      p.releases.push({ id: 't', route: 'theatrical', date: '2026-05-01', territories: ['ES'], distributor: 'D', note: '', status: 'released' });
+      return p;
+    };
+    const e = s.editions.find((x) => x.id === 'goya-2027')!;
+    const film = institution('goya').categories.find((c) => c.id === 'film')!;
+    expect(checkEligibility(s, make('festival-premiere'), e, film).reasons.join(' ')).not.toMatch(/outside cinemas/);
+    expect(checkEligibility(s, make('streaming'), e, film).reasons.join(' ')).toMatch(/released on March 1, 2026 outside cinemas, before any theatrical run/);
+  });
+});

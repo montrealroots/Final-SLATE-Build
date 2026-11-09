@@ -557,7 +557,9 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     if (tf && !(tf.unlessFestival && rel.via === 'festival')) {
       const inC = (r: Project['releases'][number]) => r.status !== 'cancelled' && r.territories.some((t) => tf.countries.includes('*') || tf.countries.includes(t));
       const theatrical = p.releases.filter((r) => inC(r) && r.route === 'theatrical').map((r) => r.date).sort()[0];
-      const other = p.releases.filter((r) => inC(r) && r.route !== 'theatrical').map((r) => r.date).sort()[0];
+      // A festival screening isn't a release outside cinemas; until November 9, 2026 it counted as one, and ruled out of the
+      // Goyas, the Oscars' documentary and the guild awards a film that premiered at a festival before its theatrical run.
+      const other = p.releases.filter((r) => inC(r) && r.route !== 'theatrical' && r.route !== 'festival-premiere').map((r) => r.date).sort()[0];
       const there = tf.countries.includes('*') ? '' : ` in ${tf.countries.map(countryWords).join(' or ')}`;
       if (other && (!theatrical || other < theatrical)) reasons.push(`It was released on ${formatDateKey(other)} outside cinemas${there}, before any theatrical run${there ? ' there' : ''}, which rules it out.`);
     }
@@ -565,7 +567,7 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     if (tv) {
       const inC = (r: Project['releases'][number]) => r.status !== 'cancelled' && r.territories.some((t) => tv.countries.includes(t));
       const cinema = p.releases.filter((r) => inC(r) && r.route === 'theatrical').map((r) => r.date).sort()[0];
-      const aired = p.releases.filter((r) => inC(r) && r.route !== 'theatrical').map((r) => r.date).sort()[0];
+      const aired = p.releases.filter((r) => inC(r) && r.route !== 'theatrical' && r.route !== 'festival-premiere').map((r) => r.date).sort()[0];
       if (cinema && (!aired || cinema < aired)) reasons.push(`It opened in cinemas in ${tv.countries.map(countryWords).join(' or ')} on ${formatDateKey(cinema)}, before airing there, which rules it out of television awards.`);
     }
   }
