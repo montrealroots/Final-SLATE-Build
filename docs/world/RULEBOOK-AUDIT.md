@@ -408,6 +408,17 @@ not separated in SLATE). Applied to the 23 feature categories. Best European Fil
 short film awards follow their own specific Bases (section 2), not read. Not modeled: seven consecutive days in one cinema
 (three for documentaries); the ICAA rating before release.
 
+## César, 2027 ceremony
+
+Source: [Règlement 2026-2027](https://www.academie-cinema.org/wp-content/uploads/2026/10/reglement-aatc-2026-2027.pdf),
+chapter II, Article 3 (read November 9, 2026). Features (3-A, and through 3-C every category that follows Best Film): a
+first national commercial release in France January 1 to December 31, 2026, at least seven consecutive days in a Paris-region
+commercial cinema (SLATE: a French theatrical release in 2026); French initiative is the catalog's requirement. Best
+Foreign Film (3-B): the same release, for films that aren't French. Shorts (3-K): under an hour, registered January 15 to
+July 15, 2026. Not modeled: the CNC approval and the exploitation visa (for shorts, July 1 to June 30); the Bureau's
+exceptions; Best Score's original-music share; documentaries shown on television before the cinema release (3-L). The
+César des Lycéens is chosen among the Best Film nominees and takes no entries; it stays on SLATE's rules.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two

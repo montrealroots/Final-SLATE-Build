@@ -765,8 +765,35 @@ const GOYA_2027: RuleBook = {
   },
 };
 
+// ---------------- César, 2027 ceremony ----------------
+
+/**
+ * Read November 9, 2026: the Académie des César's regulation for 2026-2027, chapter II, Article 3. Features (3-A, and 3-C for
+ * the categories that follow Best Film): a first national commercial release in France in the year before the ceremony,
+ * with at least a week in a Paris-region cinema; French initiative is the catalog's own requirement. Best Foreign Film
+ * (3-B): the same release, for films that aren't French. Shorts (3-K): under an hour, registered January 15 to July 15.
+ * Not modeled: the CNC production approval and the exploitation visa (SLATE: a French theatrical release; for shorts, no
+ * visa date), the Bureau's exceptions, the original-music share for Best Score, documentaries shown on television before
+ * the cinema release (3-L), and the César des Lycéens, chosen among the Best Film nominees.
+ */
+const CESAR27: RuleSource = { id: 'cesar27-reg', publisher: 'Académie des Arts et Techniques du Cinéma', title: 'Règlement 2026-2027', url: 'https://www.academie-cinema.org/wp-content/uploads/2026/10/reglement-aatc-2026-2027.pdf', edition: '52nd César (2027)', retrieved: '2026-11-09' };
+const CESAR_FEATURE: CategoryRules = {
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'cesar27-reg', 'First national commercial release in France in 2026 (Article 3-A).'),
+  release: v({ routes: ['theatrical'], countries: ['FR'] }, 'cesar27-reg', 'In at least one commercial cinema in the Paris region for at least seven consecutive days (Article 3-A); SLATE treats a French theatrical release as that.'),
+};
+const CESAR_2027: RuleBook = {
+  id: 'cesar-2027@1', institutionId: 'cesar', year: 2027, version: 1, checked: '2026-11-09', sources: [CESAR27],
+  categories: {
+    ...Object.fromEntries(['film', 'first-film', 'animated', 'documentary', 'foreign', 'director', 'screenplay', 'adaptation', 'actress', 'actor', 'supporting-actress', 'supporting-actor', 'newcomer-actress', 'newcomer-actor', 'score', 'sound', 'cinematography', 'editing', 'costumes', 'production-design', 'visual-effects', 'makeup'].map((id) => [id, CESAR_FEATURE])),
+    ...Object.fromEntries(['short-animation', 'short-documentary', 'short-fiction'].map((id) => [id, {
+      runtime: v({ under: 60 }, 'cesar27-reg', 'Shorter than an hour (Article 3-K).'),
+      deadlines: v([{ date: '2026-07-15', time: '23:59', zone: 'Europe/Paris', timeAssumed: true }], 'cesar27-reg', 'Registered with the Académie January 15 to July 15 (Article 3-K). The time of day is not given; SLATE uses the end of the day in Paris.'),
+    } satisfies CategoryRules])),
+  },
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027,
 ];

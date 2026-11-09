@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('369 categories follow verified rules for at least one edition, 11 only projected ones; the other 422 are simulated', () => {
+  it('394 categories follow verified rules for at least one edition, 11 only projected ones; the other 397 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -437,8 +437,9 @@ describe('audit counts', () => {
     // until the Annies' other 20 categories held in 2027 (annie-2027@2), 216 until Clermont's Lab and National (clermont-2027@2),
     // 218 until Sitges' six sections (sitges-2026@1), 224 until the Giornate degli Autori (venice-2026@3),
     // 225 until IDFA's five sections (idfa-2026@1), 230 until Hot Docs (hot-docs-2027@1), 231 until the
-    // Canadian Screen Awards' 115 entered categories (canadian-screen-2026@1), 346 until the Goyas' 23 feature categories (goya-2027@1).
-    expect(n).toEqual({ verified: 369, projected: 11, simulated: 422 });
+    // Canadian Screen Awards' 115 entered categories (canadian-screen-2026@1), 346 until the Goyas' 23 feature categories (goya-2027@1),
+    // 369 until the Césars' 25 (cesar-2027@1).
+    expect(n).toEqual({ verified: 394, projected: 11, simulated: 397 });
   });
 });
 
@@ -785,6 +786,25 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, streamed, e, 'film')).toMatch(/outside cinemas, before any theatrical run/);
     expect(categoryRuleStatus(rulebook(e.rulesId), 'european')).toBe('simulated'); // its own Bases, not read
     expect(categoryDeadline(e, cat(e, 'film'))).toBe(at('Europe/Madrid', '2026-09-09', 14));
+  });
+
+  it('César 2027: features released in French cinemas in 2026; shorts under an hour, registered by July 15', () => {
+    const s = startLife('cesar');
+    const e = ed(s, 'cesar-2027');
+    expect(e.rulesId).toBe('cesar-2027@1');
+    s.now = at('Europe/Paris', '2026-07-01', 9);
+    const film = (where: string, date = '2026-03-01') => {
+      const p = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'fr-paris' });
+      release(p, 'theatrical', date, [where]);
+      return p;
+    };
+    expect(r(s, film('FR'), e, 'cinematography')).not.toMatch(/release/);
+    expect(r(s, film('BE'), e, 'cinematography')).toMatch(/theatrical release in France between January 1, 2026 and December 31, 2026/);
+    expect(r(s, film('FR', '2025-12-20'), e, 'film')).toMatch(/theatrical release in France/);
+    const short = (runtime: number) => work(s, { format: 'short', runtime, completed: '2026-01-10', base: 'fr-paris' });
+    expect(r(s, short(59), e, 'short-fiction')).not.toMatch(/minutes/);
+    expect(r(s, short(60), e, 'short-fiction')).toMatch(/under 60 minutes/);
+    expect(categoryDeadline(e, cat(e, 'short-fiction'))).toBe(at('Europe/Paris', '2026-07-15', 23, 59) + 59_000);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {
