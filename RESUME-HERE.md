@@ -80,6 +80,9 @@ organizer by organizer, what was applied and what wasn't and why.
 - **UI**: category rows read the chosen project's own deadline (the EFA's second period was hidden); "Rules Not Read"
   shows only where the game's rules apply; the "How These Rules Apply" notes are shown without the documents' section
   numbers and with the game named as the game.
+- **Evidence**: `npm run check` at `f7c8073` (580 tests); `tests/recovered-rules.test.ts` and 12 mutants; the full
+  production-build suite at `091cb21` (241 passed, 32 skipped by project, 0 failed). CI on the PR's final head decides the
+  merge. Open: the intermittent WebKit title loss (`QA-REPORT.md`, Open).
 
 
 ### Newest Request (November 9, 2026, after #54): screen time from the cut, episode assessment, songs as works
