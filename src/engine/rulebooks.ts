@@ -61,13 +61,20 @@ export interface CategoryRules {
   /** Release or qualification must fall in this window (inclusive date keys). */
   qualifying?: Ruled<{ from: string; to: string }>;
   /**
-   * The release that qualifies the work: one of these routes in one of these countries, inside `qualifying`.
-   * Formats in `exempt` need no release. A win in one of `festivalAwards` ("institution:category") inside the window
-   * also qualifies.
+   * The release that qualifies the work: one of these routes in one of these countries (or, with `outside`, anywhere but
+   * those), inside `qualifying`. Formats in `exempt` need no release. Other routes that also qualify:
+   * - `festivalList`: a win of one of the awards on that qualifying list (QUALIFYING_LISTS), inside the list's own window;
+   * - `viaCategory`: an entry in that category of the same edition that was accepted (the Academy's documentary route 3,
+   *   "submitted and deemed eligible in the International Feature Film category").
+   * `festivalAwards` ("institution:category", any win inside `qualifying`) is version 1 of the 99th Oscars' shorts rule,
+   * kept for editions created with it; it named festivals' sections the Academy doesn't list (rulebooks, November 9, 2026).
    */
-  release?: Ruled<{ routes: ('theatrical' | 'streaming' | 'broadcast' | 'digital')[]; countries: string[]; exempt?: Format[]; festivalAwards?: string[] }>;
-  /** No streaming, digital or broadcast release in these countries before the first theatrical release there. */
-  theatricalFirst?: Ruled<{ countries: string[] }>;
+  release?: Ruled<{ routes: ('theatrical' | 'streaming' | 'broadcast' | 'digital')[]; countries: string[]; outside?: string[]; exempt?: Format[]; festivalAwards?: string[]; festivalList?: string; viaCategory?: string }>;
+  /**
+   * No streaming, digital or broadcast release in these countries ('*' for anywhere) before the first theatrical release
+   * there. With `unlessFestival`, a work qualifying through its festival list is exempt.
+   */
+  theatricalFirst?: Ruled<{ countries: string[]; unlessFestival?: boolean }>;
   /** world: never shown publicly; international: not shown outside its production country; world-if-domestic: world
    *  premiere for work from the festival's country, international premiere for everything else; none: no requirement. */
   premiere?: Ruled<'world' | 'international' | 'world-if-domestic' | 'none'>;
@@ -110,11 +117,47 @@ const PT = 'America/Los_Angeles';
 const v = <T>(value: T, source: string, note?: string): Ruled<T> => ({ value, status: 'verified', source, note });
 const proj = <T>(value: T, source: string, note: string): Ruled<T> => ({ value, status: 'projected', source, note });
 
+// ---------------- Qualifying-festival lists ----------------
+
+/**
+ * One award on an organizer's qualifying list and the SLATE category that is that award. `match` is 'interpreted' where
+ * the list's wording and the roster's name differ and the mapping is SLATE's reading, said in `note`.
+ */
+export interface QualifyingAward { institution: string; category: string; listed: string; match: 'exact' | 'interpreted'; note?: string }
+
+/**
+ * An organizer's list of festival awards that qualify a work for one edition. Only these awards, won inside the window,
+ * qualify: another prize at the same festival, a selection, an audience, partner or honorary award doesn't, and nor does
+ * a win before or after the window. `notInGame` names what the list holds that SLATE's rosters don't, so none of those
+ * can be won in a game. Never edited once an edition has used it: a corrected list is a new id.
+ */
+export interface QualifyingList {
+  id: string;
+  /** The awarding institution and edition year whose categories the list qualifies for. */
+  institutionId: string;
+  year: number;
+  /** The days the award must be won on (the festival's closing day, inclusive keys). */
+  window: { from: string; to: string };
+  awards: QualifyingAward[];
+  notInGame: string[];
+  source: string;
+  /** Where in the source the list or its rule is. */
+  section: string;
+  note?: string;
+  /** Set on a list carried forward to a later edition (projectedList): the list it was carried from. */
+  projectedFrom?: string;
+}
+
+// The lists themselves (QUALIFYING_LISTS, qualifyingList, projectedList) are in qualifying-lists.ts, which loads with
+// the catalog: at startup they took the startup JavaScript over its 220 kB gzipped budget (222 kB, November 9, 2026).
+
 // ---------------- Academy Awards, 99th (2027) ----------------
 
 const OSCARS_SOURCES: RuleSource[] = [
   { id: 'aa99-rules', publisher: 'Academy of Motion Picture Arts and Sciences', title: '99th Oscars Complete Rules', url: 'https://www.oscars.org/sites/oscars/files/2026-05/99th_oscars_complete_rules.pdf', edition: '99th Academy Awards (2027)', retrieved: CHECKED },
   { id: 'aa99-shorts-festivals', publisher: 'Academy of Motion Picture Arts and Sciences', title: '99th Academy Awards Short Films Qualifying Festival List', url: 'https://www.oscars.org/sites/oscars/files/2026-05/99AA_Shorts%20Qualifying%20Festivals.pdf', edition: '99th Academy Awards (2027)', retrieved: CHECKED },
+  { id: 'aa99-documentary-festivals', publisher: 'Academy of Motion Picture Arts and Sciences', title: '99th Academy Awards Documentary Feature Film Qualifying Festival List', url: 'https://www.oscars.org/sites/oscars/files/2026-04/99AA_Documentary%20Feature%20Qualifying%20Festivals.pdf', edition: '99th Academy Awards (2027)', retrieved: '2026-11-09' },
+  { id: 'aa99-international-faq', publisher: 'Academy of Motion Picture Arts and Sciences', title: 'International Feature Film FAQs', url: 'https://www.oscars.org/sites/oscars/files/2026-07/99AA_International_Feature_FAQs.pdf', edition: '99th Academy Awards (2027)', retrieved: '2026-11-09' },
   { id: 'aa99-press', publisher: 'Academy of Motion Picture Arts and Sciences', title: 'Awards Rules and Campaign Promotional Regulations Approved for 99th Oscars', url: 'https://press.oscars.org/news/awards-rules-and-campaign-promotional-regulations-approved-99th-oscarsr', edition: '99th Academy Awards (2027)', retrieved: CHECKED },
 ];
 
@@ -155,6 +198,41 @@ const OSCARS_2027: RuleBook = {
     'doc-short': OSCAR_SHORT,
     // Rule Two's eligibility and the general deadline apply to every feature category (rosters, November 9, 2026).
     ...Object.fromEntries(['adapted-screenplay', 'casting', 'cinematography', 'costume', 'editing', 'makeup', 'score', 'song', 'musical', 'production-design', 'sound', 'visual-effects'].map((id) => [id, OSCAR_FEATURE])),
+  },
+};
+
+/**
+ * Version 2 (November 9, 2026): the qualifying-festival routes read from the Academy's own lists. Version 1's shorts
+ * list named festival sections and audience awards the Academy doesn't list and admitted any win there; the documentary
+ * feature had no festival route, and International Feature Film had no rules here, so it asked for a US theatrical
+ * release. Editions created with version 1 keep it (adoptRulebook moves only untouched future editions).
+ */
+const OSCAR_SHORT_2: CategoryRules = {
+  ...OSCAR_SHORT,
+  release: v({ routes: ['theatrical'], countries: ['US'], festivalList: 'aa99-shorts' }, 'aa99-shorts-festivals',
+    `${US_THEATRICAL_NOTE} Or an award on the Academy\u2019s list, won October 1, 2025 to September 30, 2026.`),
+};
+const OSCARS_2027_2: RuleBook = {
+  ...OSCARS_2027, id: 'oscars-2027@2', version: 2, checked: '2026-11-09',
+  categories: {
+    ...OSCARS_2027.categories,
+    'live-short': { ...OSCAR_SHORT_2, formats: OSCARS_2027.categories['live-short'].formats },
+    'animated-short': { ...OSCAR_SHORT_2, mediums: OSCARS_2027.categories['animated-short'].mediums },
+    'doc-short': OSCAR_SHORT_2,
+    documentary: {
+      ...OSCARS_2027.categories.documentary,
+      release: v({ routes: ['theatrical'], countries: ['US'], festivalList: 'aa99-documentary', viaCategory: 'international' }, 'aa99-rules',
+        `${US_THEATRICAL_NOTE} Or an award on the Academy\u2019s list, won October 1, 2025 to September 30, 2026, or an accepted International Feature Film entry.`),
+      theatricalFirst: v({ countries: ['US'], unlessFestival: true }, 'aa99-rules', 'A listed award qualifies whatever was shown before.'),
+    },
+    international: {
+      runtime: v({ over: 40 }, 'aa99-rules'),
+      release: v({ routes: ['theatrical'], countries: [], outside: ['US'], festivalList: 'aa99-international' }, 'aa99-rules',
+        'SLATE treats a theatrical release by a distributor as the required seven consecutive days in one venue. Or an award on the Academy\u2019s list.'),
+      qualifying: v({ from: '2025-10-01', to: '2026-09-30' }, 'aa99-rules'),
+      theatricalFirst: v({ countries: ['*'], unlessFestival: true }, 'aa99-rules', 'Not applied to a film qualifying by a listed award, which has no qualifying theatrical release.'),
+      deadlines: v([{ date: '2026-09-30', time: '17:00', zone: PT }], 'aa99-rules'),
+    },
   },
 };
 
@@ -417,7 +495,7 @@ const EMMYS_2027: RuleBook = { id: 'emmys-2027@1', institutionId: 'emmys', year:
 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOKS: RuleBook[] = [
-  OSCARS_2027, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
+  OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
   ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027,
 ];
 

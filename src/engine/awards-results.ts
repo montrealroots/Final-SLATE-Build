@@ -4,7 +4,7 @@
 import { getPlace } from '../data/places';
 import {
   RIVAL_WORDS_A, RIVAL_WORDS_B, categoriesFor, categoryDeadline, categoryRecipients, checkEligibility, countryWords, edition, enterable, institution,
-  involved, rivalTitle, seasonSlate, compactEdition, type Category, type Judging,
+  festivalListFor, involved, qualifyingWin, rivalTitle, seasonSlate, compactEdition, type Category, type Judging,
 } from './awards';
 import { craftScore, requirementProblems } from './awards-rules';
 import { isEpisodic } from './projects';
@@ -14,25 +14,26 @@ import { addLog, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localToInstant, parseYmd } from './time';
 import type { Edition, GameState, Project, RivalFilm, ScheduledEvent } from './types';
 
-/** A festival prize the project won in the year before an instant (its entries record it). */
-export function festivalPrizeBefore(state: GameState, p: Project, before: number): boolean {
-  return state.editions.some((x) => x.end <= before && x.end > before - 400 * DAY && institution(x.institutionId).kind === 'festival' && x.entries.some((e) => e.projectId === p.id && e.status === 'won'));
-}
-
 /**
- * National selection: a festival prize in the past year qualifies the film outright; otherwise the country's committee
- * chooses between it and the country's strongest other film, whose strength is drawn once per edition and country.
+ * National selection (the Academy's Rule Sixteen II.A): a win of an award on the edition's International Feature Film
+ * qualifying-festival list qualifies the film without the committee; otherwise the country's committee chooses between
+ * it and the country's strongest other film, whose strength is drawn once per edition and country. A country puts
+ * forward one film: when `taken` names a film of yours its committee already chose, this one isn't. Until November 9,
+ * 2026 any festival entry marked won in the 400 days before the deadline qualified, at any festival and in any section.
  */
-export function committee(state: GameState, ed: Edition, p: Project): { chosen: boolean; reason: string } {
+export function committee(state: GameState, ed: Edition, p: Project, taken?: string): { chosen: boolean; reason: string; via: 'festival' | 'committee' } {
   const country = getPlace(p.axes.basePlaceId).country;
-  if (festivalPrizeBefore(state, p, ed.deadline)) return { chosen: true, reason: 'Its festival prize qualifies it without the national committee.' };
+  const list = festivalListFor(ed, 'international');
+  const won = list ? qualifyingWin(state, p, list) : undefined;
+  if (won) return { chosen: true, via: 'festival', reason: `Its ${won.award.listed.split(': ').pop()} at the ${won.label} qualifies it without the national committee.` };
+  if (taken) return { chosen: false, via: 'committee', reason: `${countryWords(country)}'s selection committee put forward ${taken}; a country submits one film.` };
   const r = stream(state.seed, 'committee', ed.id, country);
   const rival = Math.max(30, Math.min(95, gaussian(r, 66, 8)));
   const title = `${pick(r, ['The ', '', '', 'A '])}${pick(r, RIVAL_WORDS_A)} ${pick(r, RIVAL_WORDS_B)}`;
   const mine = (p.quality?.overall ?? 50) + visibility(state, p, ed.deadline);
   return mine >= rival
-    ? { chosen: true, reason: `${countryWords(country)}'s selection committee chose it over ${title}.` }
-    : { chosen: false, reason: `${countryWords(country)}'s selection committee put forward ${title} instead.` };
+    ? { chosen: true, via: 'committee', reason: `${countryWords(country)}'s selection committee chose it over ${title}.` }
+    : { chosen: false, via: 'committee', reason: `${countryWords(country)}'s selection committee put forward ${title} instead.` };
 }
 
 /**

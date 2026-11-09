@@ -32,7 +32,7 @@ export function submitEntry(state: GameState, p: Project, editionId: string, cat
   const tries = ed.entries.filter((e) => e.id === base || e.id.startsWith(`${base}#`)).length;
   const entry: EditionEntry = {
     id: tries ? `${base}#${tries + 1}` : base, projectId: p.id, categoryId, submittedAt: state.now, status: 'submitted', recipients: el.recipients.map((r) => r.id), fee: cat.fee && !alreadyPaid ? cat.fee : 0,
-    reason: el.provisional ? 'Entered provisionally. The planned release must happen within the eligibility period.' : undefined,
+    reason: el.provisional ? el.provisionalNote ?? 'Entered provisionally. The planned release must happen within the eligibility period.' : undefined,
     ...(versionId ? { versionId } : {}),
   };
   ed.entries.push(entry);

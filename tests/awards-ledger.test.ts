@@ -5,6 +5,7 @@
 // Regenerate after an intended change: LEDGER_WRITE=1 npx vitest run tests/awards-ledger.test.ts
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import { QUALIFYING_LISTS } from '../src/engine/qualifying-lists';
 import { INSTITUTIONS, RULEBOOKS, categoryRuleStatus, enterable, type Category, type Institution } from './engine-api';
 import { roleLabel } from '../src/engine/people';
 
@@ -37,8 +38,14 @@ function recipients(c: Category): string {
   return [c.recipient, ...(c.with ?? [])].map(one).join('+') + (c.actingTitle ? `:${c.actingTitle}` : '') + (c.need?.includes('breakthrough') ? ':first-role' : '');
 }
 
-function evidence(c: Category): string {
+/** Academy qualifying lists naming this award, and how (exact or SLATE's reading). */
+const listed = (inst: Institution, c: Category) => QUALIFYING_LISTS.flatMap((l) => l.awards.filter((a) => a.institution === inst.id && a.category === c.id).map((a) => ({ list: l.id, match: a.match })));
+const QUALIFIES = ['live-short', 'animated-short', 'doc-short', 'documentary', 'international'];
+
+function evidence(inst: Institution, c: Category): string {
   const out = new Set<string>();
+  if (inst.id === 'oscars' && QUALIFIES.includes(c.id)) out.add('tests/qualifying-routes.test.ts (qualifying festivals)');
+  if (listed(inst, c).length) out.add('tests/qualifying-routes.test.ts (on an Academy qualifying list)');
   if (enterable(c)) out.add('tests/awards-catalog.test.ts (requirements)').add('e2e/awards.spec.ts (Oscars, Emmys)');
   if (c.kind === 'section' || c.kind === 'prize' || c.kind === 'audience' || c.kind === 'partner') out.add('tests/awards-catalog.test.ts (festival prizes)').add('e2e/awards.spec.ts (Venice)');
   if (c.kind === 'area' || c.kind === 'juried') out.add('tests/awards-catalog.test.ts (area and juried)');
@@ -59,6 +66,7 @@ function gaps(inst: Institution, c: Category): string {
   if (c.kind === 'area' || c.kind === 'juried') out.push('the standard for an award is a game assumption');
   if (c.kind === 'honorary') out.push("the organizer's selection is modeled from career history");
   if (c.recipient === 'national') out.push("the committee and the country's other film are modeled");
+  for (const x of listed(inst, c)) if (x.match === 'interpreted') out.push(`its place on ${x.list} is SLATE's reading of the list's wording`);
   return out.join('; ');
 }
 
@@ -72,7 +80,7 @@ function ledger(): string {
       const roster = blocked(inst) ? 'blocked' : c.verified === false ? 'unverified' : 'read';
       const ui = c.retired ? 'kept for older entries; not shown' : enterable(c) ? 'event page row; Prepare Submission; status in Your Entries' : 'event page row; not enterable; result shown';
       const save = c.kind === 'honorary' ? 'stored only when given to you' : enterable(c) ? 'stored when you enter; otherwise computed when shown' : 'stored when your selected work is considered; otherwise computed when shown';
-      rows.push(csv([inst.id, edition(inst.id), c.id, c.name, c.kind ?? 'award', roster, rules(inst, c), engine(inst, c), recipients(c), ui, save, evidence(c), gaps(inst, c)]));
+      rows.push(csv([inst.id, edition(inst.id), c.id, c.name, c.kind ?? 'award', roster, rules(inst, c), engine(inst, c), recipients(c), ui, save, evidence(inst, c), gaps(inst, c)]));
     }
   }
   return `${rows.join('\n')}\n`;

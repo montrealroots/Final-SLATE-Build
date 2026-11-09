@@ -5,6 +5,8 @@ import { personById } from './people';
 import { competesAs } from './script-effects';
 import type { Credit, GameState, Project } from './types';
 
+export { QUALIFYING_LISTS, projectedList, qualifyingList } from './qualifying-lists';
+
 /** What `Category` fields this module reads (kept structural so awards.ts and this module don't import each other). */
 interface Asks { recipient: string; formats: string[]; class?: 'comedy' | 'drama'; family?: string[]; episodes?: [number, number]; material?: 'original' | 'adapted'; need?: string[]; crafts?: string[]; with?: string[]; actingTitle?: 'Actor' | 'Actress' }
 

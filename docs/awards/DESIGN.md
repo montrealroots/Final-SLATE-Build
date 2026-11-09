@@ -36,8 +36,11 @@ Written before the engine work so it could resume from here, and updated as it w
 6. **Honorary** awards are considered at the edition's announcement from the player's career history (delivered
    projects, wins, years working), deterministically from the seed. They never cost money or create an entry.
 7. **National selection** (Oscar International Feature): the entry goes to the production country's committee, which
-   chooses between the player's film and the country's strongest rival film at the deadline; a qualifying festival
-   award (for example TIFF's Platform Award for a non-English film) qualifies without the committee.
+   chooses between the player's film and the country's strongest rival film at the deadline, one film per country; a
+   win of an award on the Academy's International Feature list for that edition (for example TIFF's Platform Award),
+   inside the list's window, qualifies without the committee. Qualifying lists are explicit per edition
+   (`QUALIFYING_LISTS` in rulebooks.ts): only the named award counts, never another prize at that festival, a selection,
+   an audience or honorary award. Until November 9, 2026 any festival win in the previous 400 days did.
 
 ## Where it lives (as built, November 9, 2026)
 

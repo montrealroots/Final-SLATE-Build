@@ -75,13 +75,16 @@ describe('rulebook data', () => {
 
   it('new editions record the rules they use; others say simulated', () => {
     const s = startLife('rules-ids');
-    expect(ed(s, 'oscars-2027').rulesId).toBe('oscars-2027@1');
+    // Version 2 from November 9, 2026: qualifying-festival routes read from the Academy's lists.
+    expect(ed(s, 'oscars-2027').rulesId).toBe('oscars-2027@2');
     expect(ed(s, 'sundance-2027').rulesId).toBe('sundance-2027@1');
     expect(ed(s, 'venice-2026').rulesId).toBe('venice-2026@1');
     expect(ed(s, 'tiff-2026').rulesId).toBe('simulated');
     expect(categoryRuleStatus(rulebook('cannes-2027@1'), 'shorts')).toBe('projected');
     expect(categoryRuleStatus(rulebook('cannes-2027@1'), 'competition')).toBe('simulated');
     expect(categoryRuleStatus(rulebook('oscars-2027@1'), 'picture')).toBe('verified');
+    expect(categoryRuleStatus(rulebook('oscars-2027@1'), 'international')).toBe('simulated');
+    expect(categoryRuleStatus(rulebook('oscars-2027@2'), 'international')).toBe('verified');
   });
 });
 
@@ -162,22 +165,23 @@ describe('disqualifications, overlapping categories and premiere changes', () =>
     expect(checkEligibility(s, cancelled, e, cat(e, 'picture')).eligible).toBe(true);
   });
 
-  it('Oscar shorts qualify by a US theatrical run or a listed festival win inside October 2025 to September 2026', () => {
+  it('Oscar shorts qualify by a US theatrical run or a win of an award on the Academy\'s list inside October 2025 to September 2026', () => {
     const s = startLife('osh');
     s.now = at('America/Los_Angeles', '2026-09-20', 9);
     const e = ed(s, 'oscars-2027');
     const p = work(s, { format: 'short', runtime: 15, completed: '2026-01-10' });
     const live = cat(e, 'live-short');
-    expect(checkEligibility(s, p, e, live).reasons.join(' ')).toMatch(/top award at one of its qualifying festivals/);
-    // A win at a festival section the Academy doesn't list doesn't count.
-    const busan = ed(s, 'busan-2026');
-    busan.results.shorts = { stage: 'winner', projectIds: [p.id], rivalIds: [], winner: p.id, revealed: true };
+    expect(checkEligibility(s, p, e, live).reasons.join(' ')).toMatch(/or a win of an award on the Oscars qualifying-festival list between October 1, 2025 and September 30, 2026/);
+    const won = (x: Edition, categoryId: string, status: 'won' | 'selected' = 'won') => {
+      x.results[categoryId] = { stage: status === 'won' ? 'winner' : 'selection', projectIds: [p.id], rivalIds: [], winner: status === 'won' ? p.id : undefined, revealed: true };
+      x.entries.push({ id: `${x.id}:${categoryId}`, projectId: p.id, categoryId, submittedAt: 0, status, recipients: [], fee: 0, via: status === 'won' ? 'selection' : undefined });
+    };
+    // A win at a festival section the Academy doesn't list doesn't count, nor a selection for the section the listed prize is decided in.
+    won(ed(s, 'tiff-2026'), 'short-cuts-animated');
     expect(checkEligibility(s, p, e, live).eligible).toBe(false);
-    const cf = ed(s, 'clermont-2026');
-    // Clermont's International Competition selects; its Grand Prix is the award the Academy lists (from November 9, 2026).
-    cf.results.international = { stage: 'selection', projectIds: [p.id], rivalIds: [], revealed: true };
+    won(ed(s, 'clermont-2026'), 'international', 'selected');
     expect(checkEligibility(s, p, e, live).eligible).toBe(false);
-    cf.results['grand-prix'] = { stage: 'winner', projectIds: [p.id], rivalIds: [], winner: p.id, revealed: true };
+    won(ed(s, 'clermont-2026'), 'grand-prix');
     expect(checkEligibility(s, p, e, live).eligible).toBe(true);
   });
 
@@ -249,10 +253,10 @@ describe('deadlines at the boundary, in the organizer\'s time zone', () => {
     // Shorts and documentaries close earlier, the edition stays open until its last deadline.
     expect(categoryDeadline(e, cat(e, 'live-short'))).toBe(at('America/Los_Angeles', '2026-10-08', 17));
     expect(categoryDeadline(e, cat(e, 'documentary'))).toBe(at('America/Los_Angeles', '2026-10-15', 17));
-    // International Feature's own rules weren't read (from November 9, 2026): it keeps the game's deadline, and the
-    // edition stays open until its last category closes.
-    expect(categoryDeadline(e, cat(e, 'international'))).toBe(e.defaultDeadline);
-    expect(e.deadline).toBe(Math.max(close, e.defaultDeadline!));
+    // International Feature's own rules were read on November 9, 2026 (version 2): its materials are due September 30.
+    // Until then it kept the game's deadline. Every category now has the Academy's, so the edition closes with the last.
+    expect(categoryDeadline(e, cat(e, 'international'))).toBe(at('America/Los_Angeles', '2026-09-30', 17));
+    expect(e.deadline).toBe(close);
   });
 
   it('Clermont-Ferrand closes July 9 for 2025 films and September 24 for 2026 films, at the end of the day in France', () => {
@@ -377,9 +381,9 @@ describe('history and saves', () => {
     const oldDeadline = oscars.deadline;
     const v3 = migrateV2toV3(raw as unknown as Record<string, unknown>) as unknown as GameState;
     const o = v3.editions.find((e) => e.id === 'oscars-2027')!;
-    expect(o.rulesId).toBe('oscars-2027@1');
+    expect(o.rulesId).toBe('oscars-2027@2');
     expect(categoryDeadline(o, cat(o, 'picture'))).toBe(at('America/Los_Angeles', '2026-11-12', 17));
-    expect(o.deadline).toBe(Math.max(at('America/Los_Angeles', '2026-11-12', 17), oldDeadline)); // International Feature keeps the game's
+    expect(o.deadline).toBe(at('America/Los_Angeles', '2026-11-12', 17)); // every category has the Academy's deadline (version 2)
     expect(o.defaultDeadline).toBe(oldDeadline);
     expect(v3.events.find((x) => x.id === 'oscars-2027:deadline')?.at).toBe(o.deadline);
     expect(v3.editions.find((e) => e.id === 'sundance-2027')!.rulesId).toBe('simulated'); // someone entered: unchanged
@@ -416,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('66 categories follow verified rules for at least one edition, 2 only projected ones; the other 734 are simulated', () => {
+  it('67 categories follow verified rules for at least one edition, 2 only projected ones; the other 733 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -424,8 +428,8 @@ describe('audit counts', () => {
     for (const inst of INSTITUTIONS) for (const c of inst.categories) n[best(inst.id, c.id)] += 1;
     // 48 and 92 until November 9, 2026, when the rosters added 660 categories and the read rules were extended to the
     // Oscars' craft and adapted-screenplay categories, Sundance's World Cinema competitions, Orizzonti Corti and the
-    // Annies' four TV categories (rulebooks.ts).
-    expect(n).toEqual({ verified: 66, projected: 2, simulated: 734 });
+    // Annies' four TV categories (rulebooks.ts). 66 and 734 until International Feature Film's rules were read the same day.
+    expect(n).toEqual({ verified: 67, projected: 2, simulated: 733 });
   });
 });
 
