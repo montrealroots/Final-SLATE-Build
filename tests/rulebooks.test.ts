@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('218 categories follow verified rules for at least one edition, 11 only projected ones; the other 573 are simulated', () => {
+  it('224 categories follow verified rules for at least one edition, 11 only projected ones; the other 567 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -434,8 +434,9 @@ describe('audit counts', () => {
     // sections were (cannes-2027@2). 165 verified until Annecy's Contrechamp, Off-Limits, Perspectives and TV (annecy-2026@2),
     // 169 until Venice's Out of Competition and Spotlight (venice-2026@2), 171 until San Sebastián's other six sections
     // (san-sebastian-2026@2), 177 until the Golden Globes' other 19 entered categories (golden-globes-2027@2), 196
-    // until the Annies' other 20 categories held in 2027 (annie-2027@2), 216 until Clermont's Lab and National (clermont-2027@2).
-    expect(n).toEqual({ verified: 218, projected: 11, simulated: 573 });
+    // until the Annies' other 20 categories held in 2027 (annie-2027@2), 216 until Clermont's Lab and National (clermont-2027@2),
+    // 218 until Sitges' six sections (sitges-2026@1).
+    expect(n).toEqual({ verified: 224, projected: 11, simulated: 567 });
   });
 });
 
@@ -669,6 +670,25 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, short('fr-paris', 20, '2025-11-01'), e, 'national')).toMatch(/deadline has passed/);
     expect(r(s, short('fr-paris', 20), e, 'national')).not.toMatch(/deadline/);
     expect(categoryDeadline(e, cat(e, 'national'), short('fr-paris', 20))).toBe(at('Europe/Paris', '2026-10-01', 23, 59) + 59_000);
+  });
+
+  it('Sitges 2026: films unreleased in Spain, made in 2025 or 2026; the Official Selection\'s features at least 60 minutes and its shorts at most 30; noon on July 16', () => {
+    const s = startLife('sg');
+    const e = ed(s, 'sitges-2026');
+    expect(e.rulesId).toBe('sitges-2026@1');
+    s.now = at('Europe/Madrid', '2026-06-01', 9);
+    const film = (format: Project['axes']['format'], runtime: number, completed = '2026-01-10', shownIn?: string) => {
+      const p = work(s, { format, runtime, completed, base: 'gb-london' });
+      if (shownIn) release(p, 'theatrical', '2026-03-01', [shownIn]);
+      return p;
+    };
+    expect(r(s, film('feature', 95), e, 'fantastic')).not.toMatch(/minutes|shown|completed|online|deadline/); // its genre is the catalog's requirement
+    expect(r(s, film('feature', 59), e, 'fantastic')).toMatch(/at least 60/);
+    expect(r(s, film('short', 31), e, 'fantastic')).toMatch(/30 minutes or less/);
+    expect(r(s, film('feature', 95, '2026-01-10', 'ES'), e, 'panorama')).toMatch(/shown publicly in Spain/);
+    expect(r(s, film('feature', 95, '2026-01-10', 'FR'), e, 'panorama')).not.toMatch(/shown publicly/);
+    expect(r(s, film('feature', 95, '2024-12-01'), e, 'midnight')).toMatch(/completed on December 1, 2024/);
+    expect(categoryDeadline(e, cat(e, 'documenta'))).toBe(at('Europe/Madrid', '2026-07-16', 12));
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

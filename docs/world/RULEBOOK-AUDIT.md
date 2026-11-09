@@ -328,6 +328,22 @@ Simplifications, as written in the rules' notes: the exceptions for FIAPF non-co
 competitions in the country of production are not modeled; films produced entirely in Spain must also be world premieres,
 which SLATE does not check separately. The 2027 rules are the 2026 ones carried forward, labelled projected.
 
+## Sitges, 59th (2026, verified) and 60th (2027, projected)
+
+Sources (read November 9, 2026): [2026 Regulations](https://sitgesfilmfestival.com/sites/default/files/2026-02/SIFFFC%202026_Regulations_ENG_23F.pdf),
+section I; [2026 Rules](https://sitgesfilmfestival.com/sites/default/files/2026-02/SIFFFC%202026_Rules_ENG.pdf), section II.
+
+| Section | Rules applied | Where |
+| --- | --- | --- |
+| Official Fantàstic In-Competition Selection | Features at least 60 minutes, produced in the 12 months before the festival opens; Spanish premiere required; no streaming release in Europe (SLATE: any online release); shorts at most 30 minutes, produced 2025-2026 | I, 1.1.1 |
+| Anima't | Unreleased in Spain, produced 2025-2026; shorts at most 30 minutes, unreleased in Catalonia (SLATE: Spain) | I, 1.1.3 |
+| Noves Visions, Panorama, Sitges Documenta | Unreleased in Spain, produced 2025-2026 | I, 1.1.6, 1.1.8, 1.1.9 |
+| Midnight X-Treme | Produced 2025-2026 | I, 1.1.5 |
+| All | No films after 12:00 p.m. on July 16, 2026 ("CET" in the document; SLATE uses local time in Sitges) | Rules II |
+
+Not modeled: films produced entirely in Spain must be world premieres in the Official Selection; Panorama's "independent
+productions"; the Programming Committee's exceptions for films shown at another Spanish festival.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two

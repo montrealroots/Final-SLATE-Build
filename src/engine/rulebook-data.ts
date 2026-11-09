@@ -587,8 +587,45 @@ function emmys2(year: number, mk: typeof v): Record<string, CategoryRules> {
 const EMMYS_2026_2: RuleBook = { ...EMMYS_2026, id: 'emmys-2026@2', version: 2, checked: '2026-11-09', categories: emmys2(2026, v) };
 const EMMYS_2027_2: RuleBook = { ...EMMYS_2027, id: 'emmys-2027@2', version: 2, checked: '2026-11-09', categories: emmys2(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2025-2026 rules.')) as typeof v) };
 
+// ---------------- Sitges: 59th (2026, verified) and 60th (2027, projected) ----------------
+
+/**
+ * Read November 9, 2026: the 2026 Regulations, section I (each in-competition section's conditions), and the 2026 Rules,
+ * section II (the deadline). Not modeled: the Official Selection's rule that films produced entirely in Spain be world
+ * premieres; "not publicly screened or broadcast via streaming platforms operating in European territory" (SLATE refuses
+ * any earlier online release); Anima't shorts must be unreleased in Catalonia (SLATE checks Spain); Panorama's
+ * "independent productions"; the Programming Committee's exceptions for films shown at another Spanish festival.
+ */
+const SITGES_SOURCES: RuleSource[] = [
+  { id: 'sg26-reg', publisher: 'Fundació Sitges Festival Internacional de Cinema de Catalunya', title: 'Sitges 2026 Regulations', url: 'https://sitgesfilmfestival.com/sites/default/files/2026-02/SIFFFC%202026_Regulations_ENG_23F.pdf', edition: '59th Sitges Film Festival (2026)', retrieved: '2026-11-09' },
+  { id: 'sg26-rules', publisher: 'Fundació Sitges Festival Internacional de Cinema de Catalunya', title: 'Sitges 2026 Rules (entry fees and deadlines)', url: 'https://sitgesfilmfestival.com/sites/default/files/2026-02/SIFFFC%202026_Rules_ENG.pdf', edition: '59th Sitges Film Festival (2026)', retrieved: '2026-11-09' },
+];
+function sitges(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const p = year === 2026 ? '' : ' From the 2026 regulations; the 2027 regulations are not published yet.';
+  const deadline = mk([{ date: `${year}-07-16`, time: '12:00', zone: 'Europe/Madrid' }], 'sg26-rules', `No films after noon on July 16 (Rules II; the document says CET, SLATE uses local time in Sitges).${p}`);
+  const produced = mk(`${year - 1}-01-01`, 'sg26-reg', `Produced in ${year - 1} or ${year} (I, 1.1).${p}`);
+  const spain = mk({ countries: ['ES'] }, 'sg26-reg', `Previously unreleased in Spain (I, 1.1).${p}`);
+  const section: CategoryRules = { completedFrom: produced, notShownIn: spain, deadlines: deadline };
+  return {
+    fantastic: {
+      ...section,
+      completedFrom: mk(`${year - 1}-10-08`, 'sg26-reg', `Features produced in the 12 months before the festival opens (I, 1.1.1; applied to the ${year} dates). Shorts may be from ${year - 1}, which SLATE doesn't separate.${p}`),
+      runtime: mk({ atLeast: 60 }, 'sg26-reg', `Features at least 60 minutes (I, 1.1.1).${p}`),
+      runtimeShort: mk({ atMost: 30 }, 'sg26-reg', `Shorts at most 30 minutes (I, 1.1.1).${p}`),
+      noOnline: mk(true, 'sg26-reg', `Not screened or streamed on platforms operating in Europe before the festival (I, 1.1.1); SLATE refuses any earlier online release.${p}`),
+    },
+    animat: { ...section, runtimeShort: mk({ atMost: 30 }, 'sg26-reg', `Shorts at most 30 minutes (I, 1.1.3).${p}`) },
+    'noves-visions': section,
+    panorama: section,
+    midnight: { completedFrom: produced, deadlines: deadline },
+    documenta: section,
+  };
+}
+const SITGES_2026: RuleBook = { id: 'sitges-2026@1', institutionId: 'sitges', year: 2026, version: 1, checked: '2026-11-09', sources: SITGES_SOURCES, categories: sitges(2026, v) };
+const SITGES_2027: RuleBook = { id: 'sitges-2027@1', institutionId: 'sitges', year: 2027, version: 1, checked: '2026-11-09', sources: SITGES_SOURCES, categories: sitges(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) };
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027,
 ];
