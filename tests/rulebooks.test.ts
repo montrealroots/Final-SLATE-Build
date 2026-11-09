@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('231 categories follow verified rules for at least one edition, 11 only projected ones; the other 560 are simulated', () => {
+  it('346 categories follow verified rules for at least one edition, 11 only projected ones; the other 445 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -436,8 +436,9 @@ describe('audit counts', () => {
     // (san-sebastian-2026@2), 177 until the Golden Globes' other 19 entered categories (golden-globes-2027@2), 196
     // until the Annies' other 20 categories held in 2027 (annie-2027@2), 216 until Clermont's Lab and National (clermont-2027@2),
     // 218 until Sitges' six sections (sitges-2026@1), 224 until the Giornate degli Autori (venice-2026@3),
-    // 225 until IDFA's five sections (idfa-2026@1), 230 until Hot Docs (hot-docs-2027@1).
-    expect(n).toEqual({ verified: 231, projected: 11, simulated: 560 });
+    // 225 until IDFA's five sections (idfa-2026@1), 230 until Hot Docs (hot-docs-2027@1), 231 until the
+    // Canadian Screen Awards' 115 entered categories (canadian-screen-2026@1).
+    expect(n).toEqual({ verified: 346, projected: 11, simulated: 445 });
   });
 });
 
@@ -741,6 +742,28 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     release(online, 'streaming', '2026-06-01', ['CA']);
     expect(r(s, online, e, 'festival')).toMatch(/released online/);
     expect(categoryDeadline(e, cat(e, 'festival'))).toBe(at('America/Toronto', '2027-01-04', 23, 59) + 59_000);
+  });
+
+  it('Canadian Screen Awards: the 2026 edition closed November 3, 2025; 2027 projects the rules a year on, film and television apart', () => {
+    const s = startLife('csa');
+    const e26 = ed(s, 'canadian-screen-2026');
+    const e = ed(s, 'canadian-screen-2027');
+    expect(e.rulesId).toBe('canadian-screen-2027@1');
+    expect(categoryDeadline(e26, cat(e26, 'film'))).toBe(at('America/Toronto', '2025-11-03', 23, 59) + 59_000); // past when a game starts
+    s.now = at('America/Toronto', '2026-10-01', 9);
+    const film = (format: Project['axes']['format'], runtime: number, where: string, route: Project['releases'][number]['route'] = 'theatrical') => {
+      const p = work(s, { format, runtime, completed: '2026-01-10', base: 'ca-toronto' });
+      release(p, route, '2026-05-01', [where]);
+      return p;
+    };
+    expect(r(s, film('feature', 95, 'CA'), e, 'cinematography')).not.toMatch(/release|minutes/);
+    expect(r(s, film('feature', 95, 'US'), e, 'cinematography')).toMatch(/release in Canada between January 1, 2026 and March 31, 2027/);
+    expect(r(s, film('feature', 59, 'CA'), e, 'film')).toMatch(/at least 60/);
+    expect(r(s, film('documentary-feature', 45, 'CA'), e, 'documentary')).toMatch(/more than 45/);
+    expect(r(s, film('documentary-short', 45, 'CA'), e, 'short-documentary')).toMatch(/under 45/);
+    const show = film('documentary-feature', 50, 'CA', 'broadcast'); // television's documentary program: the TV window, no film length
+    expect(r(s, show, e, 'tv-documentary-program')).not.toMatch(/release|minutes/);
+    expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/Toronto', '2026-11-03', 23, 59) + 59_000);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

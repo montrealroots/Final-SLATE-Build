@@ -2,7 +2,7 @@
 // and history rules there). Loaded with the festival and awards catalog through awards-rules.ts, not at startup: at
 // startup the rules took the startup JavaScript to its 220 kB gzipped budget (November 9, 2026) before most categories
 // had their organizer's rules, and the research continues category by category.
-import type { CategoryRules, RuleBook, RuleSource, Ruled } from './rulebooks';
+import type { CategoryRules, RuleBook, RuleSource, Ruled, RuntimeRule } from './rulebooks';
 
 const CHECKED = '2026-11-06';
 const PT = 'America/Los_Angeles';
@@ -694,8 +694,54 @@ const HOT_DOCS_2027: RuleBook = {
   },
 };
 
+// ---------------- Canadian Screen Awards: 2026 (verified) and 2027 (projected) ----------------
+
+/**
+ * Read November 9, 2026: the 2026 Film Rules & Regulations (sections II, V, VI, XX) and Television & Digital Media Rules &
+ * Regulations (sections II, V). The 2027 rules aren't published; 2027 carries the 2026 rules a year forward, projected. The
+ * 2026 entry deadline (November 3, 2025) had passed when a game starts, so the 2026 edition is closed to new entries, as it
+ * was. Not modeled: five screening dates with one in Montreal, Toronto or Vancouver (SLATE: a Canadian theatrical
+ * release); the Academy's list of approved streaming services (SLATE: a Canadian streaming release); first public
+ * exposure within 1.5 years of the period; minority co-productions only where Canadians are credited; citizenship of
+ * nominees (since 2026, Canadian citizens or permanent residents only in certified productions).
+ */
+const CSA_SOURCES: RuleSource[] = [
+  { id: 'csa26-film', publisher: 'Academy of Canadian Cinema & Television', title: '2026 Canadian Screen Awards Film Rules & Regulations', url: 'https://www.academy.ca/wp-content/uploads/2025/09/2026-Canadian-Screen-Awards-Film-Rules-Regulations.pdf', edition: '2026 Canadian Screen Awards', retrieved: '2026-11-09' },
+  { id: 'csa26-tv', publisher: 'Academy of Canadian Cinema & Television', title: '2026 Canadian Screen Awards Television & Digital Media Rules & Regulations', url: 'https://www.academy.ca/wp-content/uploads/2025/09/2026-Canadian-Screen-Awards-Television-Digital-Media-Rules-Regulations.pdf', edition: '2026 Canadian Screen Awards', retrieved: '2026-11-09' },
+];
+const CSA_FEATURES = ['film', 'art-direction', 'makeup', 'costume', 'hair', 'cinematography', 'direction', 'editing', 'score', 'song', 'lead-drama', 'lead-comedy', 'supporting-drama', 'supporting-comedy', 'voice-film', 'visual-effects', 'sound-mixing', 'sound-editing', 'original-screenplay', 'adapted-screenplay', 'stunts-film', 'casting-film', 'first-feature', 'golden-screen-film'];
+const CSA_TV = ['tv-donald-brittain-award-for-best-social-political-', 'tv-documentary-program', 'tv-direction-documentary-program', 'tv-movie', 'drama', 'tv-comedy-series', 'tv-comedy-special', 'tv-reality-competition-program-or-series', 'tv-sketch-comedy-show-ensemble-performance', 'tv-live-entertainment-special', 'tv-history-documentary-program-or-series', 'tv-talk-series', 'tv-rob-stewart-award-for-best-science-or-nature-doc', 'tv-biography-or-arts-documentary-program-or-series', 'tv-childrens-or-youth-animated-program-or-series', 'tv-pre-school-program-or-series', 'tv-childrens-or-youth-fiction-program-or-series', 'tv-childrens-or-youth-non-fiction-program-or-series', 'tv-factual-series', 'tv-web-program-or-series-fiction', 'tv-web-program-or-series-non-fiction', 'tv-lead-performance-web-program-or-series', 'tv-supporting-performance-web-program-or-series', 'tv-direction-web-program-or-series', 'tv-writing-web-program-or-series', 'tv-host-web-program-or-series', 'tv-picture-editing-web-program-or-series', 'tv-direction-tv-movie', 'tv-direction-drama-series', 'tv-direction-variety-or-sketch-comedy', 'tv-direction-comedy', 'tv-direction-documentary-series', 'tv-direction-childrens-or-youth', 'tv-direction-animation', 'tv-direction-reality-competition', 'tv-direction-factual', 'tv-writing-tv-movie', 'tv-writing-drama-series', 'tv-writing-comedy', 'tv-writing-lifestyle-or-reality-competition', 'tv-writing-documentary', 'tv-writing-childrens-or-youth', 'tv-writing-variety-or-sketch-comedy', 'tv-writing-childrens-or-youth-animation', 'tv-writing-factual', 'tv-writing-pre-school', 'tv-photography-drama', 'tv-photography-comedy', 'tv-photography-lifestyle-or-reality-competition', 'tv-photography-documentary-or-factual', 'tv-picture-editing-drama', 'tv-picture-editing-factual', 'tv-picture-editing-documentary', 'tv-picture-editing-reality-competition', 'tv-picture-editing-comedy', 'tv-picture-editing-childrens-or-youth', 'tv-sound-fiction', 'tv-sound-animation', 'tv-sound-documentary-or-factual', 'tv-sound-lifestyle-reality-or-entertainment', 'tv-production-design-or-art-direction-fiction', 'tv-production-design-or-art-direction-non-fiction', 'tv-costume-design', 'tv-achievement-in-make-up', 'tv-visual-effects', 'tv-achievement-in-hair', 'tv-original-music-animation', 'tv-original-music-drama', 'tv-original-music-comedy', 'tv-original-music-documentary', 'tv-original-music-factual-lifestyle-reality-or-ente', 'tv-original-music-original-song', 'tv-lead-performer-tv-movie', 'tv-lead-performer-drama-series', 'tv-guest-performance-drama-series', 'tv-supporting-performer-drama', 'tv-stunt-coordination', 'tv-ensemble-performance-comedy', 'tv-supporting-performer-childrens-or-youth', 'tv-lead-performer-childrens-or-youth', 'tv-achievement-in-casting-fiction', 'tv-voice-performance', 'tv-host-or-presenter-factual-or-reality-competition', 'tv-lead-performer-comedy', 'tv-supporting-performer-comedy', 'tv-guest-performance-comedy', 'tv-achievement-in-casting-non-fiction']; // television's documentary programs included
+function canadianScreen(year: number, mk: typeof v): Record<string, CategoryRules> {
+  const p = year === 2026 ? '' : ' From the 2026 rules, a year on; the 2027 rules are not published yet.';
+  const deadline = (src: string) => mk([{ date: `${year - 1}-11-03`, time: '23:59', zone: 'America/Toronto', timeAssumed: true }], src, `Final entry deadline November 3 (section II). The time of day is not given; SLATE uses the end of the day in Toronto.${p}`);
+  const once = (src: string) => mk(true as const, src, `Not entered at an earlier Canadian Screen Awards (section V).${p}`);
+  const film: CategoryRules = {
+    qualifying: mk({ from: `${year - 1}-01-01`, to: `${year}-03-31` }, 'csa26-film', `Publicly exhibited January 1, ${year - 1} to March 31, ${year} (section VI).${p}`),
+    release: mk({ routes: ['theatrical', 'streaming'], countries: ['CA'] }, 'csa26-film', `First commercial release in Canada in cinemas or on an approved streaming service (sections V, VI). SLATE treats a Canadian theatrical or streaming release as that.${p}`),
+    noReentry: once('csa26-film'),
+    deadlines: deadline('csa26-film'),
+  };
+  const tv: CategoryRules = {
+    qualifying: mk({ from: `${year - 2}-09-01`, to: `${year - 1}-11-15` }, 'csa26-tv', `Made available in Canada September 1, ${year - 2} to November 15, ${year - 1} (section V).${p}`),
+    release: mk({ routes: ['broadcast', 'streaming', 'digital'], countries: ['CA'] }, 'csa26-tv', `Broadcast or made available in Canada (section V).${p}`),
+    noReentry: once('csa26-tv'),
+    deadlines: deadline('csa26-tv'),
+  };
+  const runtime = (r: RuntimeRule, note: string): CategoryRules => ({ ...film, runtime: mk(r, 'csa26-film', `${note} (section XX, definitions).${p}`) });
+  return {
+    ...Object.fromEntries(CSA_FEATURES.map((id) => [id, runtime({ atLeast: 60 }, 'Feature films run at least 60 minutes')])),
+    documentary: runtime({ over: 45 }, 'Feature documentaries run more than 45 minutes'),
+    'short-documentary': runtime({ under: 45 }, 'Short documentaries run less than 45 minutes'),
+    'short-drama': runtime({ atMost: 59 }, 'Live action short dramas run at most 59 minutes'),
+    'short-animated': runtime({ atMost: 59 }, 'Animated shorts run at most 59 minutes'),
+    ...Object.fromEntries(CSA_TV.map((id) => [id, tv])),
+  };
+}
+const CANADIAN_SCREEN_2026: RuleBook = { id: 'canadian-screen-2026@1', institutionId: 'canadian-screen', year: 2026, version: 1, checked: '2026-11-09', sources: CSA_SOURCES, categories: canadianScreen(2026, v) };
+const CANADIAN_SCREEN_2027: RuleBook = { id: 'canadian-screen-2027@1', institutionId: 'canadian-screen', year: 2027, version: 1, checked: '2026-11-09', sources: CSA_SOURCES, categories: canadianScreen(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 rules.')) as typeof v) };
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027,
 ];

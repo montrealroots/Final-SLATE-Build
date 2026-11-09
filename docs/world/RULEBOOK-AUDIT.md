@@ -378,6 +378,25 @@ included (SLATE: no earlier online release); deadlines October 29, December 10, 
 one). Not modeled: the Ontario premiere for features, mid-lengths and series and the Toronto premiere for shorts (SLATE
 records releases by country), and English or English subtitles.
 
+## Canadian Screen Awards: 2026 (verified) and 2027 (projected)
+
+Sources (read November 9, 2026): [2026 Film Rules & Regulations](https://www.academy.ca/wp-content/uploads/2025/09/2026-Canadian-Screen-Awards-Film-Rules-Regulations.pdf)
+and [2026 Television & Digital Media Rules & Regulations](https://www.academy.ca/wp-content/uploads/2025/09/2026-Canadian-Screen-Awards-Television-Digital-Media-Rules-Regulations.pdf).
+The 2027 rules aren't published; 2027 carries 2026's a year on, labelled projected.
+
+| Rule (2026) | Where | Applied to |
+| --- | --- | --- |
+| Film qualifying period January 1, 2025 to March 31, 2026 | Film II, VI | The 28 film categories |
+| First commercial release in Canada: five Canadian screening dates in a commercial theatre (one in Montreal, Toronto or Vancouver), or an approved streaming service | Film V.C, VI.A | Film categories (SLATE: a Canadian theatrical or streaming release) |
+| Television eligibility September 1, 2024 to November 15, 2025, made available in Canada | TV V | The 87 television categories, television's documentary programs included |
+| Not entered at an earlier Canadian Screen Awards (or prix Gémeaux) | Film V.E | Every category |
+| Final entry deadline November 3, 2025 (no late entries) | Film II, TV II | Every category; the 2026 edition is closed when a game starts |
+| Features at least 60 minutes; feature documentaries over 45; short documentaries under 45; live-action and animated shorts at most 59 | Film XX (definitions) | The matching film categories |
+
+Not modeled: the five-date run and the city; the Academy's list of approved streaming services; first public exposure
+within 1.5 years of the period; minority co-productions only where Canadians are credited; the 2026 citizenship rule for
+nominees in certified productions. The catalog's own requirement (a Canadian production) stays.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two
