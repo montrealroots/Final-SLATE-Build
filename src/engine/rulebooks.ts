@@ -52,8 +52,18 @@ export interface CategoryRules {
   runtime?: Ruled<RuntimeRule>;
   /** Running time for short formats where a section takes shorts and features under different limits. */
   runtimeShort?: Ruled<RuntimeRule>;
-  /** Series must have at least this many episodes. */
+  /**
+   * Series must have at least this many episodes. A work in a format that isn't episodic (a special, a movie) is entered
+   * whole and isn't counted: the PGA's "for series only" (Television Specialty Categories A.3-5). No category held this
+   * rule with a non-episodic format until the PGA's television rules were read on November 9, 2026, so none changed.
+   */
   minEpisodes?: Ruled<number>;
+  /**
+   * The average episode's running time: the delivered cut over its episodes (a work that isn't episodic is one episode).
+   * Until November 9, 2026 the Spirit and Actor Awards' episode floors were held in `runtime`, which reads the whole cut,
+   * so every series cleared them; their next versions use this.
+   */
+  episodeRuntime?: Ruled<RuntimeRule>;
   mediums?: Ruled<Medium[]>;
   formats?: Ruled<Format[]>;
   /** The work must be completed on or after this date. */
@@ -95,8 +105,12 @@ export interface CategoryRules {
   unreleased?: Ruled<true>;
   /** Not shown publicly in a European country other than the production country before the festival (a European premiere). */
   europeanPremiere?: Ruled<true>;
-  /** Television work must not have had a theatrical release in these countries before its first broadcast or stream there. */
-  tvFirst?: Ruled<{ countries: string[] }>;
+  /**
+   * Television work must not have had a theatrical release in these countries ('*': anywhere) before its first broadcast or
+   * stream there; with `never`, not at all (the PGA's televised or streamed motion pictures: "does not have a theatrical
+   * release").
+   */
+  tvFirst?: Ruled<{ countries: string[]; never?: true }>;
   /** Production countries (SLATE uses the production base as the country of origin). */
   origin?: Ruled<{ only?: string[]; not?: string[] }>;
   /** A work entered at an earlier edition can't be entered again. */

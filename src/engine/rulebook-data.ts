@@ -1176,7 +1176,7 @@ const GOTHAM_2026: RuleBook = {
  * Read November 9, 2026: Rules and Procedures for 2027 Awards Eligibility, Motion Pictures (July 20, 2026) and Animated
  * Motion Pictures, section A. This version left Best Documentary on SLATE's rules, because its qualifying exhibitions (a
  * theatrical run, a listed festival award, a national television premiere) weren't all readable then; version 2 applies
- * them. The television awards stay on SLATE's rules. Not modeled: the producer eligibility determination (only producers the PGA certifies are
+ * them. The television awards stayed on SLATE's rules until version 3. Not modeled: the producer eligibility determination (only producers the PGA certifies are
  * named), the ballot fee, the crowdfunding producer-credit disqualification.
  */
 const PGA_SOURCES: RuleSource[] = [
@@ -1222,6 +1222,76 @@ const PGA_2027_2: RuleBook = {
     },
   },
 };
+
+/**
+ * Version 3 (November 9, 2026): the television rules, Rules and Procedures for 2027 Awards Eligibility (all dated July 20,
+ * 2026), found under the same naming as the film rules after the guessed TV URLs returned 404. Television Series and
+ * Specials A.1: originally released in the US in 2026; comedy and drama series need six episodes in 2026, every one over 20
+ * minutes; nonfiction, live entertainment, variety and competition series three, averaging over 20; a season already on
+ * a PGA ballot can't enter again; submitted by September 25, 2026. Limited or Anthology Series A.1: two or more episodes,
+ * at least half released in 2026. Televised or Streamed Motion Pictures A.1: released in the US in 2026, and "does not
+ * have a theatrical release". Television Specialty Categories A.3 and A.5: children's programs for ages 2 to 16, episodes
+ * averaging at least 8 minutes, six for a series; short form averaging under 20, three for a series. SLATE reads an
+ * average episode as the delivered cut over its episodes, where the comedy and drama rule asks every episode to run over
+ * 20. Not modeled: the limited series' 150 minutes (the category also takes anthologies, which have no floor); a
+ * nonfiction program that qualifies as a documentary film going to Documentary instead; the producers' titles and their
+ * half (series) or all (limited) of the episodes; the specialty awards going to the program rather than its producers;
+ * the ballot fees; the Television Academy's category petitions.
+ */
+const PGA_TV_SOURCES: RuleSource[] = [
+  { id: 'pga27-series', publisher: 'Producers Guild of America', title: 'Rules and Procedures for 2027 Awards Eligibility - Television Series and Specials', url: 'https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Television_Series_and_Specials.pdf', edition: '2027 Producers Guild Awards', retrieved: '2026-11-09' },
+  { id: 'pga27-limited', publisher: 'Producers Guild of America', title: 'Rules and Procedures for 2027 Awards Eligibility - Limited or Anthology Series', url: 'https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Limited_Series.pdf', edition: '2027 Producers Guild Awards', retrieved: '2026-11-09' },
+  { id: 'pga27-tvmovie', publisher: 'Producers Guild of America', title: 'Rules and Procedures for 2027 Awards Eligibility - Televised or Streamed Motion Pictures', url: 'https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Televised_Streamed_Motion_Pictures.pdf', edition: '2027 Producers Guild Awards', retrieved: '2026-11-09' },
+  { id: 'pga27-specialty', publisher: 'Producers Guild of America', title: 'Rules and Procedures for 2027 Awards Eligibility - Television Specialty Categories', url: 'https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Television_Specialty_Categories.pdf', edition: '2027 Producers Guild Awards', retrieved: '2026-11-09' },
+];
+const pgaTv = (src: string, section: string, extra: CategoryRules = {}): CategoryRules => ({
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, src, `Originally released in the United States January 1 to December 31, 2026 (${section}).`),
+  release: v({ routes: ['broadcast', 'streaming', 'digital'], countries: ['US'] }, src, `Released in the United States (${section}).`),
+  noReentry: v(true, src, `A season or program already on a Producers Guild Awards ballot can’t be submitted again (${section}).`),
+  deadlines: v([{ date: '2026-09-25', time: '23:59', zone: PT, timeAssumed: true }], src, 'Submitted no later than September 25, 2026. The time of day is not given; SLATE uses the end of the day in Los Angeles.'),
+  ...extra,
+});
+const PGA_2027_3: RuleBook = {
+  ...PGA_2027_2, id: 'pga-2027@3', version: 3, sources: [...PGA_2027_2.sources, ...PGA_TV_SOURCES],
+  categories: {
+    ...PGA_2027_2.categories,
+    ...Object.fromEntries(['drama', 'comedy'].map((id) => [id, pgaTv('pga27-series', 'A.1', {
+      minEpisodes: v(6, 'pga27-series', 'At least six episodes originally released in 2026 (A.1.a.i).'),
+      episodeRuntime: v({ over: 20 }, 'pga27-series', 'All episodes run more than 20 minutes (A.1.a.i); SLATE reads the average episode.'),
+    })])),
+    ...Object.fromEntries(['nonfiction', 'live-variety', 'game-competition'].map((id) => [id, pgaTv('pga27-series', 'A.1', {
+      minEpisodes: v(3, 'pga27-series', 'A series needs at least three episodes released in 2026; a special is entered whole (A.1.a.ii-iii).'),
+      episodeRuntime: v({ over: 20 }, 'pga27-series', 'An average episode, or a special, of more than 20 minutes (A.1.a.ii-iii).'),
+    })])),
+    limited: pgaTv('pga27-limited', 'A.1', {
+      minEpisodes: v(2, 'pga27-limited', 'Two or more episodes, at least half of them released in 2026 (A.1.a).'),
+    }),
+    'tv-movie': {
+      ...pgaTv('pga27-tvmovie', 'A.1'),
+      tvFirst: v({ countries: ['*'], never: true }, 'pga27-tvmovie', 'A feature-length program released in one part that "does not have a theatrical release" (A.1).'),
+    },
+    childrens: pgaTv('pga27-specialty', 'A.3', {
+      minEpisodes: v(6, 'pga27-specialty', 'A series needs at least six episodes released in 2026; a special is entered whole (A.3.b.iii).'),
+      episodeRuntime: v({ atLeast: 8 }, 'pga27-specialty', 'An average episode of at least eight minutes (A.3.b.ii).'),
+    }),
+    'short-form': pgaTv('pga27-specialty', 'A.5', {
+      minEpisodes: v(3, 'pga27-specialty', 'A series needs at least three episodes released in 2026 (A.5.b.ii).'),
+      episodeRuntime: v({ under: 20 }, 'pga27-specialty', 'An average episode of less than 20 minutes (A.5.b.i).'),
+    }),
+  },
+};
+
+/**
+ * Version 2 of the Spirit Awards and the Actor Awards (November 9, 2026): no new reading. Their episode floors ("episodes
+ * at least 18 minutes", Spirit Eligibility 3; "at least 20 minutes", Actor Awards B.2.b) were held in `runtime`, which
+ * reads the whole delivered cut, so every series cleared them; they move to `episodeRuntime`, the average episode.
+ */
+const episodeFloor = (r: CategoryRules): CategoryRules => {
+  const { runtime, ...rest } = r;
+  return runtime ? { ...rest, episodeRuntime: runtime } : r;
+};
+const SPIRIT_2027_2: RuleBook = { ...SPIRIT_2027, id: 'spirit-2027@2', version: 2, categories: Object.fromEntries(Object.entries(SPIRIT_2027.categories).map(([id, r]) => [id, r === SPIRIT_TV ? episodeFloor(r) : r])) };
+const ACTOR_AWARDS_2027_2: RuleBook = { ...ACTOR_AWARDS_2027, id: 'actor-awards-2027@2', version: 2, categories: Object.fromEntries(Object.entries(ACTOR_AWARDS_2027.categories).map(([id, r]) => [id, r === AA_SERIES ? episodeFloor(r) : r])) };
 
 // ---------------- AACTA Awards 2027 ----------------
 
@@ -1324,5 +1394,5 @@ const JAPAN_ACADEMY_2027: RuleBook = {
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2, AACTA_2027, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2, PGA_2027_3, SPIRIT_2027_2, ACTOR_AWARDS_2027_2, AACTA_2027, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
 ];

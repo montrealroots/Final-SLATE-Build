@@ -325,7 +325,11 @@ tests/awards-ledger.test.ts`).
    head writer's choice, streaming viewership). Part 3 since: Critics' Week (`venice-2026@4`), SXSW's deadline
    (`sxsw-2027@1`), the Goyas' specific Bases (`goya-2027@2`): 463 of 806. After #51: the PGA's documentary award, the
    WGA's Documentary Screenplay, the DGA's television awards, the AACTA (31), the Japan Academy (17) and the International
-   Emmys' deadline: 520 of 806. **Next:** the research queue in `docs/awards/STATUS.md`; what remains is mostly refused
+   Emmys' deadline: 520 of 806. While #53's CI ran: the PGA's nine television awards (`pga-2027@3`), from the 2027
+   rules found by search after the guessed URLs had returned 404, with a new rule for the average episode's running time
+   (`episodeRuntime`); it fixed the Spirit Awards' and Actor Awards' episode floors, which version 1 of each held against
+   the whole series and so never refused one (`spirit-2027@2`, `actor-awards-2027@2`): 529 of 806. SXSW's policy pages
+   still refuse this environment (403). **Next:** the research queue in `docs/awards/STATUS.md`; what remains is mostly refused
    or unpublished (TIFF and BAFTA 403; Busan, Locarno, FESPACO, Blue Dragon, AMAA not found; the European Film Awards'
    regulations have no dates).
 6-8. Reports are updated at each checkpoint; journeys still owed: supporting/guest TV performance, episode-specific

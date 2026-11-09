@@ -485,7 +485,7 @@ Sources (read November 9, 2026): [Film rules](https://s3.us-east-1.amazonaws.com
 | In 2026: programmed at one of nine festivals (Hot Docs, New Directors/New Films, New York, Sundance, SXSW, Telluride, TIFF, Tribeca, Berlinale), or a week in a US cinema, or a fee-based streaming or on-demand release | Film 3 | Film categories. The festival route is a selection, not a win (a new SLATE route, `festivalSelection`); four of the festivals aren't in SLATE. |
 | Once nominated, no later entry | Film 4 | SLATE refuses any earlier Spirit entry |
 | Film final deadline September 29, 2026 | Dates | Film categories |
-| New series with all or part of its first season airing October 1, 2025 to September 30, 2026; episodes at least 18 minutes, at least two available; international series only as US co-productions; TV final deadline September 15 | TV 1-3, 5, dates | The six TV categories |
+| New series with all or part of its first season airing October 1, 2025 to September 30, 2026; episodes at least 18 minutes, at least two available; international series only as US co-productions; TV final deadline September 15 | TV 1-3, 5, dates | The six TV categories. **Fixed** in `spirit-2027@2` (November 9, 2026): version 1 held the 18 minutes against the whole delivered cut, so any series of two episodes cleared it; version 2 reads the average episode |
 
 The Robert Redford Environmental Vision Award takes films and series alike and stays on SLATE's rules.
 
@@ -497,6 +497,9 @@ US markets, no nontheatrical release before it. Television (B.1, B.2): first air
 2026; comedy and drama series of at least six episodes of 20 minutes or more. Submissions close at 5 p.m. PT on November 2,
 2026 (General Timetable). Not modeled: the SAG-AFTRA contract, the six markets (SLATE: a US theatrical release), primetime
 airing, the limited series' 150 minutes and the television movie's length, AI-generated performances.
+
+**Fixed in version 2 (`actor-awards-2027@2`, November 9, 2026):** no new reading. Version 1 held the 20-minute episodes against
+the whole delivered cut, so any six-episode series cleared them; version 2 reads the average episode (`episodeRuntime`).
 
 ## DGA Awards, 79th (2027)
 
@@ -530,6 +533,13 @@ exhibited in 2026, more than 40 minutes, a week in Los Angeles or New York cinem
 simultaneous stream allowed and a television premiere not, by 5:00 p.m. on November 20, 2026. Not modeled: the WGA
 agreement and Notice of Tentative Writing Credits. The Paul Selvin Award stays on SLATE's rules.
 
+**The Paul Selvin Award (read November 9, 2026, not applied):** [its page](https://awards.wga.org/submissions/paul-selvin-award)
+takes film and television scripts alike: a film exhibited for a week in Los Angeles or New York in 2026 (a simultaneous
+stream allowed), a television script first broadcast in 2026 (November 1, 2025 to October 31, 2026 for documentary, news,
+talk, variety and specials), by 5:00 p.m. PST on November 20, 2026, chosen by a committee of past winners with the Board's
+approval. SLATE's release rule names one set of countries for every route, so it can't hold a film to US cinemas while
+leaving television's country open; the award stays on SLATE's rules until it can.
+
 ## Gotham Awards, 2026
 
 Source: [Criteria for the 2026 Gotham Awards](https://awards.thegotham.org/criteria/) (read November 9, 2026): over 70
@@ -553,7 +563,32 @@ exhibitions and the television rules weren't applied in version 1.
 without the 70-minute floor), an Official Selection or In Competition at a listed festival (SLATE: the eight it holds), or a
 qualifying award on the Academy's list (SLATE: the 99th list it holds, where the PGA attached the 98th); submitted by August
 28, 2026. The fee line reads "one hundred fifty dollars ($175.00)". The television awards' rules weren't found under the
-same naming (404) and stay on SLATE's rules.
+same naming then (the guessed URLs returned 404) and stayed on SLATE's rules.
+
+**Version 3 (`pga-2027@3`, read November 9, 2026):** the television rules, all dated July 20, 2026, found later that day
+through a search: [Television Series and Specials](https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Television_Series_and_Specials.pdf),
+[Limited or Anthology Series](https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Limited_Series.pdf),
+[Televised or Streamed Motion Pictures](https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Televised_Streamed_Motion_Pictures.pdf)
+and [Television Specialty Categories](https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Television_Specialty_Categories.pdf).
+Applied to the nine television awards.
+
+| Rule | Where | Applied to |
+| --- | --- | --- |
+| Originally released in the United States, January 1 to December 31, 2026 | Series A.1, Limited A.1, T/SMP A.1, Specialty A.3-5 | All nine |
+| A season or program already on a Producers Guild Awards ballot can't be submitted again | Series A.1.a, Limited A.1.a, Specialty A.3-5 | All nine (`noReentry`) |
+| Submitted by September 25, 2026 (no time of day: SLATE uses the end of the day in Los Angeles) | Series A.1.c, Limited A.1.c, T/SMP A.1.b, Specialty A.1 | All nine |
+| Comedy and drama: six episodes in 2026, every episode over 20 minutes | Series A.1.a.i | Drama, Comedy (SLATE reads the average episode, a new rule, `episodeRuntime`) |
+| Nonfiction, live entertainment and variety, competition: three episodes for a series, averaging over 20 minutes; a special over 20 | Series A.1.a.ii-iii | Non-Fiction, Live Entertainment, Game & Competition |
+| Two or more episodes, at least half released in 2026 | Limited A.1.a | Limited or Anthology |
+| A feature-length program in one part that "does not have a theatrical release" | T/SMP A.1 | Televised or Streamed Motion Pictures (`tvFirst` with `never`: a cinema release anywhere, before or after) |
+| Children's: for ages 2 to 16, episodes averaging at least 8 minutes, six for a series | Specialty A.3.b | Children's (the age is the catalog's Children's requirement) |
+| Short form: episodes averaging under 20 minutes, three for a series | Specialty A.5.b | Short Form |
+
+An episode count applies to a series only: a special or film is entered whole (`minEpisodes` skips formats that aren't
+episodic; no category held it with such a format before). Not modeled: the limited series' 150 minutes (the same award takes
+anthologies, which have no floor); a nonfiction program that qualifies as a documentary film going to Documentary instead;
+the producers' titles and their half (series) or all (limited) of the episodes; the specialty awards going to the program
+rather than its producers; the $600 and $750 fees; the Television Academy's category petitions.
 
 ## AACTA Awards, 2027
 

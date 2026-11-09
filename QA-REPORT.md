@@ -25,7 +25,15 @@ the WGA's Documentary Screenplay (`wga-2027@2`), the DGA's seven television awar
 17 (`japan-academy-2027@1`), and the International Emmys' deadline only (`international-emmys-2026@1`, eligibility stays
 SLATE's). Counts: organizer's rules 520 of 806, projected only 11, SLATE's 275. Still refused or not found: TIFF and BAFTA
 (403), Busan, Locarno, FESPACO, Blue Dragon, AMAA, the International Emmys' Rules & Regulations, the DGA's documentary film
-and first-time feature guidelines, the PGA's television rules.
+and first-time feature guidelines, the PGA's television rules (found later the same day: see below).
+
+Since, while #53's CI ran: the PGA's nine television awards (`pga-2027@3`), read from the Television Series and Specials,
+Limited or Anthology Series, Televised or Streamed Motion Pictures and Television Specialty Categories rules (all July 20,
+2026), tested in `tests/rulebooks.test.ts`; a new rule for the average episode's running time (`episodeRuntime`), which
+**fixed** the Spirit Awards' 18-minute and the Actor Awards' 20-minute episode floors (version 1 of each read the whole
+series' running time, so no series was ever refused; `spirit-2027@2` and `actor-awards-2027@2` refuse two 12-minute or
+six 15-minute episodes). Mutation-tested: dropping the episode check, the series-only episode count, the never-in-cinemas
+check or the any-country match each fails a test. Counts: organizer's rules 529 of 806, projected only 11, SLATE's 266.
 
 ### Previous: Recipient Rules, Continued (November 9, 2026, after #51 was opened)
 
