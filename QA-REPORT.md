@@ -8,7 +8,24 @@
 
 ## Commands And Results
 
-### Current: Recipient Rules, Continued (November 9, 2026, after #51 was opened)
+### Current: Rule Research After #51 (November 9, 2026)
+
+Tested revision: the working branch at the commit that updates this report.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | 69 files, 534 tests passed; startup JavaScript 674 kB, 216 kB gzipped, 0 problems. |
+| `npx playwright test e2e/awards.spec.ts --project=desktop --project=iphone-15-plus --trace off` | 0 | 18 passed in 2.6 minutes (WebKit is the `iphone-15-plus` project). |
+
+Source-verified and applied, each with a test in `tests/rulebooks.test.ts`: the PGA's documentary award (`pga-2027@2`),
+the WGA's Documentary Screenplay (`wga-2027@2`), the DGA's seven television awards from the Entry Forms index
+(`dga-2027@2`), the AACTA's 31 film, television, documentary and short categories (`aacta-2027@1`), the Japan Academy's
+17 (`japan-academy-2027@1`), and the International Emmys' deadline only (`international-emmys-2026@1`, eligibility stays
+SLATE's). Counts: organizer's rules 520 of 806, projected only 11, SLATE's 275. Still refused or not found: TIFF and BAFTA
+(403), Busan, Locarno, FESPACO, Blue Dragon, AMAA, the International Emmys' Rules & Regulations, the DGA's documentary film
+and first-time feature guidelines, the PGA's television rules.
+
+### Previous: Recipient Rules, Continued (November 9, 2026, after #51 was opened)
 
 Tested revision: the working branch at the commit that updates this report.
 
