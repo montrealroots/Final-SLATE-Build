@@ -8,7 +8,7 @@ Do not edit by hand.
 
 | Before | Playable now | New | Renamed | Official but not playable | Unverified in play |
 | --- | --- | --- | --- | --- | --- |
-| 142 | 806 | 664 | 60 | 123 | 98 |
+| 142 | 806 | 664 | 60 | 123 | 97 |
 
 ## Sundance Film Festival (`sundance`, festival)
 
@@ -60,11 +60,12 @@ Do not edit by hand.
 
 - **Edition read:** 83rd Venice International Film Festival (September 2-12, 2026); the 84th (2027) carried forward as a projection
 - **Source:** [Regulations - 83rd Venice International Film Festival](https://static.labiennale.org/files/cinema/2026/Documenti/regulations-83.pdf), retrieved 2026-11-09
+- **Source:** [Regulations - 41st Settimana Internazionale della Critica](https://www.sicvenezia.it/en/regulations/), retrieved 2026-11-09
 - **Categories:** 2 before, 25 playable now (1 audience, 1 honorary, 16 prize, 7 section); recipients: career, director, performer, producer, project, writer
 - **New:** Golden Lion For Best Film, Silver Lion - Grand Jury Prize, Silver Lion - Award For Best Director, Coppa Volpi For Best Actress, Coppa Volpi For Best Actor, Special Jury Prize, Award For Best Screenplay, Marcello Mastroianni Award For Best New Young Actor Or Actress, Open - Out Of Competition, Orizzonti Corti, Orizzonti Award For Best Film, Orizzonti Award For Best Director, Special Orizzonti Jury Prize, Orizzonti Award For Best Actress, Orizzonti Award For Best Actor, Orizzonti Award For Best Screenplay, Orizzonti Award For Best Short Film, Venice Spotlight, Armani Beauty Audience Award, Lion Of The Future – "Luigi De Laurentiis" Venice Award For A Debut Film, Golden Lion For Lifetime Achievement, Settimana Internazionale Della Critica, Giornate Degli Autori
 - **Renamed to the official name:** Competition → Venezia 83 (Competition), Horizons → Orizzonti
 - **Official but not playable:** Venice Classics And Venice Classics Award For Best Restored Film (Restorations of older films aren't work the game makes); Venice Immersive And Its Prizes (Immersive works aren't made in the game)
-- **In play but unverified:** Settimana Internazionale Della Critica, Giornate Degli Autori
+- **In play but unverified:** Giornate Degli Autori
 
 ## Toronto International Film Festival (`tiff`, festival)
 

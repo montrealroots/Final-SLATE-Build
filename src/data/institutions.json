@@ -2099,7 +2099,7 @@
      ],
      "kind": "section",
      "section": "Independent And Parallel Sections",
-     "verified": false,
+     "verified": true,
      "judging": "programmers",
      "slots": 12,
      "fee": 60,

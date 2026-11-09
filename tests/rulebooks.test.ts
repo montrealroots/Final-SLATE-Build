@@ -81,7 +81,7 @@ describe('rulebook data', () => {
     // International Feature's dialogue share.
     expect(ed(s, 'oscars-2027').rulesId).toBe('oscars-2027@3');
     expect(ed(s, 'sundance-2027').rulesId).toBe('sundance-2027@1');
-    expect(ed(s, 'venice-2026').rulesId).toBe('venice-2026@3');
+    expect(ed(s, 'venice-2026').rulesId).toBe('venice-2026@4');
     expect(ed(s, 'tiff-2026').rulesId).toBe('simulated');
     expect(categoryRuleStatus(rulebook('cannes-2027@1'), 'shorts')).toBe('projected');
     expect(categoryRuleStatus(rulebook('cannes-2027@1'), 'competition')).toBe('simulated');
@@ -391,7 +391,7 @@ describe('history and saves', () => {
     expect(v3.events.find((x) => x.id === 'oscars-2027:deadline')?.at).toBe(o.deadline);
     expect(v3.editions.find((e) => e.id === 'sundance-2027')!.rulesId).toBe('simulated'); // someone entered: unchanged
     expect(v3.editions.find((e) => e.id === 'tiff-2026')!.rulesId).toBe('simulated'); // no published rules read
-    expect(v3.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@3'); // untouched, in the future
+    expect(v3.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@4'); // untouched, in the future
     const sorted = [...v3.events].sort((a, b) => a.at - b.at || a.priority - b.priority || (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
     expect(v3.events.map((x) => x.id)).toEqual(sorted.map((x) => x.id));
   });
@@ -423,7 +423,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('457 categories follow verified rules for at least one edition, 11 only projected ones; the other 338 are simulated', () => {
+  it('458 categories follow verified rules for at least one edition, 11 only projected ones; the other 337 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -447,7 +447,8 @@ describe('audit counts', () => {
     // 454 until the PGA's two film awards (pga-2027@1), 456 until Outstanding Narrator (emmys-2026@3). 335 simulated until
     // SXSW's Music Video Competition, its jury award and the International Emmys' Sports Documentary were entered, under
     // terms that weren't readable from here.
-    expect(n).toEqual({ verified: 457, projected: 11, simulated: 338 });
+    // 457 until Venice's Critics' Week read its own regulations (venice-2026@4).
+    expect(n).toEqual({ verified: 458, projected: 11, simulated: 337 });
   });
 });
 
@@ -614,7 +615,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const shown = film(95);
     release(shown, 'theatrical', '2026-03-01', ['IT']);
     expect(r(s, shown, e, 'out-of-competition')).toMatch(/world premiere/); // not even at home
-    expect(categoryRuleStatus(rulebook(e.rulesId), 'sic')).toBe('simulated'); // its own association's regulations
+    expect(categoryRuleStatus(rulebook('venice-2026@2'), 'sic')).toBe('simulated'); // its own association's regulations, read in version 4
   });
 
   it('San Sebastián 2026, version 2: every section reads section II; shorts have no open entry', () => {
@@ -705,7 +706,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Venice 2026, version 3: the Giornate degli Autori take films over 60 minutes, made after September 30, 2025, not yet released, by June 15', () => {
     const s = startLife('gda');
     const e = ed(s, 'venice-2026');
-    expect(e.rulesId).toBe('venice-2026@3');
+    expect(e.rulesId).toBe('venice-2026@4'); // version 4 adds Critics' Week
     s.now = at('Europe/Rome', '2026-05-01', 9);
     const film = (runtime: number, completed = '2026-01-10') => work(s, { format: 'feature', runtime, completed, base: 'ar-buenos-aires' });
     expect(r(s, film(95), e, 'giornate')).toBe('');
@@ -715,6 +716,32 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     release(released, 'theatrical', '2026-03-01', ['AR']); // a release at home counts too
     expect(r(s, released, e, 'giornate')).toMatch(/already been released/);
     expect(categoryDeadline(e, cat(e, 'giornate'))).toBe(at('Europe/Rome', '2026-06-15', 23, 59) + 59_000);
+  });
+
+  it('Venice 2026, version 4: Critics\' Week takes a director\'s first feature, 60 minutes or more, made since September 2, 2025, by June 19', () => {
+    const s = startLife('sic');
+    const e = ed(s, 'venice-2026');
+    expect(e.rulesId).toBe('venice-2026@4');
+    expect(categoryRuleStatus(rulebook('venice-2026@3'), 'sic')).toBe('simulated'); // version 3 hadn't read them
+    s.now = at('Europe/Rome', '2026-05-01', 9);
+    const film = (runtime: number, base = 'ar-buenos-aires', completed = '2026-01-10') => {
+      const p = work(s, { format: 'feature', runtime, completed, base });
+      p.credits[0] = { ...p.credits[0], person: 'player' }; // the player's own first feature (the catalog's debut requirement)
+      return p;
+    };
+    expect(r(s, film(95), e, 'sic')).toBe('');
+    expect(r(s, film(59), e, 'sic')).toMatch(/60/);
+    expect(r(s, film(95, 'ar-buenos-aires', '2025-09-01'), e, 'sic')).toMatch(/completed on September 1, 2025/);
+    const online = film(95);
+    release(online, 'streaming', '2026-03-01', ['AR']);
+    expect(r(s, online, e, 'sic')).toMatch(/online|internet/i);
+    const home = film(95);
+    release(home, 'festival-premiere', '2026-03-01', ['AR']); // shown at home: allowed for a film from Argentina
+    expect(r(s, home, e, 'sic')).not.toMatch(/premiere/);
+    const italian = film(95, 'it-rome');
+    release(italian, 'festival-premiere', '2026-03-01', ['IT']); // an Italian film must be a world premiere
+    expect(r(s, italian, e, 'sic')).toMatch(/requires a world premiere/);
+    expect(categoryDeadline(e, cat(e, 'sic'))).toBe(at('Europe/Rome', '2026-06-19', 23, 59) + 59_000);
   });
 
   it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {
@@ -1003,7 +1030,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     raw.editions.find((e: Edition) => e.id === 'emmys-2026').entries.push({ id: 'x', projectId: 'p', categoryId: 'drama', submittedAt: 0, status: 'submitted', recipients: [], fee: 0 });
     const data = JSON.stringify(raw);
     const back = deserialize(JSON.stringify({ format: 'slate-save', version: raw.version, checksum: hashString(data), data }));
-    expect(back.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@3');
+    expect(back.editions.find((e) => e.id === 'venice-2026')!.rulesId).toBe('venice-2026@4');
     expect(back.editions.find((e) => e.id === 'emmys-2026')!.rulesId).toBe('simulated'); // someone entered it
     const v = back.editions.find((e) => e.id === 'venice-2026')!;
     expect(back.events.find((x) => x.id === 'venice-2026:deadline')?.at).toBe(v.deadline);

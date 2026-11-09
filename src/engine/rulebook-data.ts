@@ -404,6 +404,27 @@ const VENICE_2027_2: RuleBook = { ...VENICE_2027, id: 'venice-2027@2', version: 
 const VENICE_2026_3: RuleBook = { ...VENICE_2026_2, id: 'venice-2026@3', version: 3, sources: [...VENICE_SOURCES, GDA26], categories: { ...VENICE_2026_2.categories, giornate: giornate(2026, v) } };
 const VENICE_2027_3: RuleBook = { ...VENICE_2027_2, id: 'venice-2027@3', version: 3, sources: [...VENICE_SOURCES, GDA26], categories: { ...VENICE_2027_2.categories, giornate: giornate(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) } };
 
+/**
+ * Version 4 (November 9, 2026): the Settimana Internazionale della Critica read its own regulations (41st, Art. 3 and 4),
+ * once its site answered (HTTP 503 before): the director's first full-length film (the catalog's debut requirement), at
+ * least 60 minutes, completed in the 12 months before the festival, a world premiere for Italian films and for others no
+ * release or festival outside their country of origin, nothing online, entries by June 19. "Priority will be given to
+ * world premieres" is a selection preference, not modeled.
+ */
+const SIC26: RuleSource = { id: 'sic26-reg', publisher: 'Settimana Internazionale della Critica (SNCCI)', title: 'Regulations - 41st Settimana Internazionale della Critica', url: 'https://www.sicvenezia.it/en/regulations/', edition: '41st Venice International Film Critics\u2019 Week (2026)', retrieved: '2026-11-09' };
+function sic(year: number, mk: typeof v): CategoryRules {
+  const p = year === 2026 ? '' : ' From the 2026 regulations; the 2027 regulations are not published yet.';
+  return {
+    runtime: mk({ atLeast: 60 }, 'sic26-reg', `Minimum length 60 minutes (Art. 3).${p}`),
+    completedFrom: mk(`${year - 1}-09-02`, 'sic26-reg', `Produced and completed in the 12 months before the festival (Art. 3); SLATE counts from September 2, ${year - 1}.${p}`),
+    premiere: mk('world-if-domestic', 'sic26-reg', `Italian films: world premieres only; others: not released or at another festival before Venice except in their country of origin (Art. 3).${p}`),
+    noOnline: mk(true, 'sic26-reg', `Not released on the internet or made available online (Art. 3).${p}`),
+    deadlines: mk([{ date: `${year}-06-19`, time: '23:59', zone: ROME, timeAssumed: true }], 'sic26-reg', `Submitted by June 19 (Art. 4). The time of day is not given; SLATE uses the end of the day in Venice.${p}`),
+  };
+}
+const VENICE_2026_4: RuleBook = { ...VENICE_2026_3, id: 'venice-2026@4', version: 4, sources: [...VENICE_2026_3.sources, SIC26], categories: { ...VENICE_2026_3.categories, sic: sic(2026, v) } };
+const VENICE_2027_4: RuleBook = { ...VENICE_2027_3, id: 'venice-2027@4', version: 4, sources: [...VENICE_2027_3.sources, SIC26], categories: { ...VENICE_2027_3.categories, sic: sic(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 regulations.')) as typeof v) } };
+
 // ---------------- San Sebastián: 74th (2026, verified) and 75th (2027, projected) ----------------
 
 const SS_SOURCE: RuleSource = { id: 'ss74-rules', publisher: 'Festival de San Sebastián', title: 'Rules and Regulations - 74th San Sebastian International Film Festival', url: 'https://www.sansebastianfestival.com/2026/film_registration/rules_and_regulations/1/23002/in', edition: '74th San Sebastian International Film Festival (2026)', retrieved: CHECKED };
@@ -1073,5 +1094,5 @@ const PGA_2027: RuleBook = {
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
 ];

@@ -295,7 +295,8 @@ tests/awards-ledger.test.ts`).
    After #50: the Spirit Awards (20), the Actor Awards (13), the DGA's feature award, the WGA (16), the Gothams' ten
    film categories and the PGA's two film awards. Organizer's rules for at least one edition: 457 of 806 categories, 11
    projected only, 338 on SLATE's rules (the four categories the nonplayable review entered: Outstanding Narrator read,
-   the other three on terms not readable from here). Refused or unavailable here: TIFF and SXSW (HTTP 403), Venice's Critics' Week and
+   the other three on terms not readable from here). Refused or unavailable here: TIFF and SXSW (HTTP 403), Venice's Critics' Week (HTTP 503 until it answered later on
+   November 9 and was read: `venice-2026@4`) and
    AACTA's entries page (HTTP 503), the International Emmys' rules page and the DGA's other guideline pages (HTTP 404), no
    current Series Mania competition rules, and the rosters recorded as blocked (Busan, Locarno, FESPACO, BAFTA, AMAA, Blue
    Dragon). The European Film Awards' regulations were read but have no dates and test things SLATE doesn't record

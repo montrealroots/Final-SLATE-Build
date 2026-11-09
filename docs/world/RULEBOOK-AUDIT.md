@@ -329,8 +329,15 @@ SLATE's rules until those are read.
 and documentaries longer than 60 minutes; produced after September 30, 2025; European films must be world premieres; not
 at another international festival or major film event; not released in cinemas, on home video or online (a new SLATE rule,
 `unreleased`); not refused at the 2025 selection (SLATE: no earlier Venice entry); entries by June 15, 2026. The
-Settimana Internazionale della Critica's site (sicvenezia.it) returned HTTP 503 on November 9, 2026; SIC stays on SLATE's
-rules.
+Settimana Internazionale della Critica's site (sicvenezia.it) returned HTTP 503 that morning, so SIC stayed on SLATE's
+rules until version 4.
+
+**Version 4 (`venice-2026@4`, `venice-2027@4` projected, read November 9, 2026, later the same day):** the
+[Regulations](https://www.sicvenezia.it/en/regulations/) of the 41st Settimana Internazionale della Critica, Articles 3 and
+4: the director's first full-length film (the catalog's debut requirement); at least 60 minutes; produced and completed in
+the 12 months before the festival (SLATE: from September 2, 2025); Italian films world premieres only, others not released
+or at another festival before Venice except in their country of origin (SLATE: `world-if-domestic`); not online;
+submitted by June 19, 2026. "Priority will be given to world premieres" is a selection preference, not modeled.
 
 **Version 3 (`emmys-2026@3`, November 9, 2026):** Category 76, Outstanding Narrator ("for a continuing or single
 narration in a documentary/nonfiction series or special"), entered: the cast Narrator of a program with a narration
