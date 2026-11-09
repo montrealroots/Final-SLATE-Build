@@ -504,7 +504,15 @@ Source: [Theatrical Feature Film guidelines](https://www.dga.org/Awards/Entry-Fo
 (read November 9, 2026): more than 40 minutes; a paid-admission run of at least seven consecutive days in Los Angeles or New
 York, January 1 to December 31, 2026; animated films and documentaries excluded; entry forms by 5:00 p.m. PT on November 13,
 2026. Applied to Outstanding Directorial Achievement in Theatrical Feature Film only. The documentary and first-time feature
-guideline pages returned HTTP 404; the other categories stay on SLATE's rules.
+guideline pages returned HTTP 404 (guessed URLs).
+
+**Version 2 (`dga-2027@2`, read November 9, 2026):** the [Entry Forms index](https://www.dga.org/Awards/Entry-Forms) links
+each category's rules. Dramatic, Comedy, Limited & Anthology, Documentary Series / News and Reality / Quiz & Game: an
+episode of a series (Reality: or a special), originally aired on television or streaming in 2026, by 5:00 p.m. PT on
+November 13, 2026, to that episode's credited director. Movies for Television: not shown in US cinemas before television or
+streaming (day and date is fine). Variety: programs and specials, nothing theatrical first. Not modeled: the "approximately
+one half hour" (one hour for movies) broadcast format, local-only broadcasts, DGA membership and one entry per director. The
+index lists no documentary film or first-time feature guidelines; those stay on SLATE's rules.
 
 ## Writers Guild Awards, 2027
 

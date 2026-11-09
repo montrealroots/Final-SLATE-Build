@@ -1061,6 +1061,40 @@ const DGA_2027: RuleBook = {
   },
 };
 
+/**
+ * Version 2 (November 9, 2026): the television guidelines, found through the Entry Forms index (the URLs tried before were
+ * guesses and returned 404). Dramatic, Comedy, Limited & Anthology, Documentary Series, Reality: "an episode of a series"
+ * (Reality: an episode or a special), originally aired on television or streaming from January 1 to December 31, 2026, by
+ * 5:00 p.m. PT on November 13, 2026, to the director credited "Directed By" on that episode (`oneEpisode`). Movies for
+ * Television: the same dates, and a film exhibited theatrically in the US before television or streaming is out (day and
+ * date is fine). Variety: programs and specials, the same dates, nothing theatrical first. Not modeled: "a minimum broadcast
+ * format length of approximately one half hour" (one hour for movies), which names a slot rather than a running time; that
+ * local-only broadcasts don't count; DGA membership and a Deal Memorandum; one entry per director. The documentary film
+ * and first-time feature guidelines aren't on the index; those stay on SLATE's rules.
+ */
+const DGA79_TV: RuleSource = { id: 'dga79-tv', publisher: 'Directors Guild of America', title: 'DGA Awards Entry Forms: television application rules (79th Annual DGA Awards)', url: 'https://www.dga.org/Awards/Entry-Forms', edition: '79th Annual DGA Awards (2027)', retrieved: '2026-11-09' };
+const dgaTv = (extra: CategoryRules = {}): CategoryRules => ({
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'dga79-tv', 'Originally aired January 1 to December 31, 2026.'),
+  release: v({ routes: ['broadcast', 'streaming', 'digital'], countries: [], outside: [] }, 'dga79-tv', 'On television or streaming; the rules name no country, and local-only broadcasts don\u2019t count (not modeled).'),
+  deadlines: v([{ date: '2026-11-13', time: '17:00', zone: PT }], 'dga79-tv', 'Entry forms received by 5:00 p.m. PT on Friday, November 13, 2026.'),
+  ...extra,
+});
+const dgaEpisode = v({}, 'dga79-tv', 'Entries must be an episode of a series; a director of the whole series chooses one.');
+const dgaNoCinemaFirst = v({ countries: ['US'] }, 'dga79-tv', 'Not exhibited theatrically in the US before television or streaming; day and date is fine.');
+const DGA_2027_2: RuleBook = {
+  ...DGA_2027, id: 'dga-2027@2', version: 2, sources: [DGA79, DGA79_TV],
+  categories: {
+    ...DGA_2027.categories,
+    drama: dgaTv({ oneEpisode: dgaEpisode }),
+    comedy: dgaTv({ oneEpisode: dgaEpisode }),
+    limited: dgaTv({ oneEpisode: dgaEpisode }),
+    'documentary-series': dgaTv({ oneEpisode: dgaEpisode }),
+    reality: dgaTv({ oneEpisode: v({}, 'dga79-tv', 'A single episode of a series or a special.') }),
+    movie: dgaTv({ tvFirst: dgaNoCinemaFirst }),
+    variety: dgaTv({ tvFirst: v({ countries: ['US'] }, 'dga79-tv', 'Programs and specials; not shown theatrically before television or streaming.') }),
+  },
+};
+
 // ---------------- Writers Guild Awards, 2027 ----------------
 
 /**
@@ -1192,5 +1226,5 @@ const PGA_2027_2: RuleBook = {
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2,
 ];

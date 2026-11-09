@@ -423,7 +423,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('465 categories follow verified rules for at least one edition, 11 only projected ones; the other 330 are simulated', () => {
+  it('472 categories follow verified rules for at least one edition, 11 only projected ones; the other 323 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -449,8 +449,9 @@ describe('audit counts', () => {
     // terms that weren't readable from here.
     // 457 until Venice's Critics' Week read its own regulations (venice-2026@4), 458 until the Goyas' European,
     // Ibero-American and short film awards read their specific Bases (goya-2027@2), 463 until the PGA's documentary award
-    // (pga-2027@2), 464 until the WGA's Documentary Screenplay (wga-2027@2).
-    expect(n).toEqual({ verified: 465, projected: 11, simulated: 330 });
+    // (pga-2027@2), 464 until the WGA's Documentary Screenplay (wga-2027@2), 465 until the DGA's seven television awards
+    // (dga-2027@2).
+    expect(n).toEqual({ verified: 472, projected: 11, simulated: 323 });
   });
 });
 
@@ -825,6 +826,27 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(categoryDeadline(e, cat(e, 'documentary-screenplay'))).toBe(at('America/Los_Angeles', '2026-11-20', 17));
   });
 
+  it('DGA 2027, version 2: television awards take one episode aired in 2026, by November 13; a TV movie shown in US cinemas first is out', () => {
+    const s = startLife('dga-tv');
+    const e = ed(s, 'dga-2027');
+    s.now = at('America/Los_Angeles', '2026-10-01', 9);
+    const show = (format: Project['axes']['format'], date: string) => {
+      const p = work(s, { format, runtime: 50, completed: '2026-01-10' });
+      p.axes.episodeCount = format === 'tv-film' ? 1 : 6;
+      p.credits = [{ ...credit('d1', 'Directed By', 'director', 1), episodes: [1, 2] }, { ...credit('d2', 'Directed By', 'episode-director', 2), episodes: [3, 4, 5, 6] }];
+      release(p, 'streaming', date, ['US']);
+      return p;
+    };
+    const drama = show('series', '2026-03-01');
+    drama.axes.register = 'drama';
+    expect(checkEligibility(s, drama, e, cat(e, 'drama'), undefined, undefined, 3).recipients.map((c) => c.id)).toEqual(['d2']);
+    expect(r(s, show('series', '2025-12-01'), e, 'drama')).toMatch(/2026/);
+    const movie = show('tv-film', '2026-05-01');
+    release(movie, 'theatrical', '2026-04-01', ['US']);
+    expect(r(s, movie, e, 'movie')).toMatch(/opened in cinemas in the United States on April 1, 2026, before airing there/);
+    expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/Los_Angeles', '2026-11-13', 17));
+  });
+
   it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {
     const s = startLife('idfa');
     const e = ed(s, 'idfa-2026');
@@ -969,7 +991,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('DGA 2027 (79th): a feature over 40 minutes with a US run in 2026, entered by November 13 at 5 p.m. PT', () => {
     const s = startLife('dga');
     const e = ed(s, 'dga-2027');
-    expect(e.rulesId).toBe('dga-2027@1');
+    expect(e.rulesId).toBe('dga-2027@2'); // version 2 adds the television categories; the feature keeps version 1's rules
     s.now = at('America/Los_Angeles', '2026-10-01', 9);
     const p = work(s, { format: 'feature', runtime: 41, completed: '2026-01-10', base: 'us-los-angeles' });
     expect(r(s, p, e, 'feature')).toMatch(/theatrical release in the United States between January 1, 2026 and December 31, 2026/);

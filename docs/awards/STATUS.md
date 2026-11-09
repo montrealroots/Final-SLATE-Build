@@ -38,7 +38,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Annie Awards (`annie`) | 32 | 30 / 2 / 0 | 29 / 0 / 3 | 0 | 32 | 29 | 11 | 0 | 6 |
 | Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 20 / 0 / 1 | 0 | 21 | 20 | 7 | 0 | 4 |
 | Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 10 / 0 / 2 | 0 | 12 | 10 | 6 | 0 | 1 |
-| Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 1 / 0 / 9 | 0 | 10 | 1 | 4 | 0 | 3 |
+| Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 8 / 0 / 2 | 0 | 10 | 8 | 4 | 0 | 3 |
 | Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 17 / 0 / 1 | 0 | 0 | 17 | 6 | 0 | 11 |
 | Producers Guild Awards (`pga`) | 15 | 14 / 1 / 0 | 3 / 0 / 12 | 0 | 15 | 3 | 5 | 0 | 4 |
 | Actor Awards (`actor-awards`) | 13 | 13 / 0 / 0 | 13 / 0 / 0 | 0 | 13 | 13 | 3 | 0 | 3 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 4 | 0 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 465 / 11 / 330 | 28 | 338 | 442 | 207 | 35 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 472 / 11 / 323 | 28 | 338 | 449 | 207 | 35 | 123 |
 
 ## Research queue
 
@@ -67,7 +67,7 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 9. `international-emmys` (13): `arts`, `actress`, `actor`, `comedy`, `documentary`, `drama`, `kids-animation`, `kids-factual`, `kids-live-action`, `non-scripted`, `short-form`, `sports-documentary`, `tv-movie`
 10. `annie` (1): `tv`
 11. `spirit` (1): `redford`
-12. `dga` (9): `first-feature`, `documentary`, `drama`, `comedy`, `limited`, `movie`, `documentary-series`, `variety`, `reality`
+12. `dga` (2): `first-feature`, `documentary`
 13. `wga` (1): `selvin`
 14. `pga` (9): `drama`, `comedy`, `limited`, `tv-movie`, `nonfiction`, `live-variety`, `game-competition`, `childrens`, `short-form`
 15. `aacta` (36): `film`, `indie-film`, `direction`, `lead-actor`, `lead-actress`, `supporting-actor`, `supporting-actress`, `original-screenplay`, `adapted-screenplay`, `cinematography`, `editing`, `sound`, `score`, `production-design`, `costume`, `hair-makeup`, `casting`, `song`, `soundtrack`, `childrens`, `competition-reality`, `documentary-factual`, `drama`, `entertainment`, `factual-entertainment`, `miniseries`, `comedy`, `casting-tv`, `documentary`, `documentary-cinematography`, `documentary-editing`, `documentary-sound`, `documentary-score`, `short`, `online-series`, `vfx-animation`
