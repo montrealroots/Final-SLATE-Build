@@ -10,7 +10,7 @@
 
 ### Current: Complete Awards And Festival Coverage (November 9, 2026, after #46)
 
-Tested revision `015dae7` on top of `main` at `4f4dc2d`.
+Tested revisions `015dae7` to `8a43a9c` on top of `main` at `4f4dc2d`.
 
 | Command | Exit | Result |
 | --- | --- | --- |
@@ -18,7 +18,8 @@ Tested revision `015dae7` on top of `main` at `4f4dc2d`.
 | `python3 tools/awards/build.py --check` | 0 | The catalog, inventory and coverage are what the rosters make (now a CI step). |
 | `npm run balance`, `npm run perf:engine` | 0 | 2 and 2 tests passed; the balance results files are unchanged. |
 | `npx playwright test e2e/awards.spec.ts` (desktop, phone, `iphone-15-plus`) | 1 | 17 passed, 1 failed: the desktop Venice journey, because a source file was edited during the run and the dev server reloaded the page to the start screen. It passed on phone and WebKit in that run, and on desktop in the six runs before (`--repeat-each 6`) and in the production run below. |
-| `SLATE_E2E_PROD=1 npx playwright test --trace retain-on-failure` | PENDING | PENDING |
+| `SLATE_E2E_PROD=1 npx playwright test --trace retain-on-failure` on `9eb4a9d` | 1 | Production build, the complete suite: 207 passed, 32 skipped (by project, as before), 4 failed in 21.5 minutes: the live-action journey on all four projects, at its festival entry. Large rosters start with their headings closed, so the Venice page it arrived at from the project's "Open To You" row showed no Prepare Submission button. Fixed in `8a43a9c`: an event opened from a project's tab preselects that project, which opens every heading. CI on `0492333` failed the same way. |
+| `SLATE_E2E_PROD=1 npx playwright test e2e/live-action.spec.ts e2e/journeys.spec.ts e2e/awards.spec.ts` on `8a43a9c` | 0 | Production build: 38 passed, 16 skipped (the media journeys run at desktop width only), 0 failed, in 8.8 minutes: live-action on desktop, phone and both iPhone projects; the 16 media journeys, including the Annie and Sundance festival journeys; the six awards journeys on desktop, phone and `iphone-15-plus`. The rest of the suite passed on `9eb4a9d` above and touches no festival page. |
 
 What was built, by evidence:
 - **Researched (source-verified):** 37 roster files in `docs/awards/roster/`, each naming the edition and the official
