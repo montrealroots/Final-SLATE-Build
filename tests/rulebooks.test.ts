@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('165 categories follow verified rules for at least one edition, 7 only projected ones; the other 630 are simulated', () => {
+  it('165 categories follow verified rules for at least one edition, 11 only projected ones; the other 626 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -430,8 +430,9 @@ describe('audit counts', () => {
     // Oscars' craft and adapted-screenplay categories, Sundance's World Cinema competitions, Orizzonti Corti and the
     // Annies' four TV categories (rulebooks.ts). 66 and 734 until International Feature Film's rules were read the same day,
     // and 67 and 733 until the Emmys' general eligibility was applied to their other 98 entered categories (emmys-2026@2);
-    // 2 projected until the Berlinale's five other sections were read (berlinale-2027@2).
-    expect(n).toEqual({ verified: 165, projected: 7, simulated: 630 });
+    // 2 projected until the Berlinale's five other sections were read (berlinale-2027@2), 7 until Cannes' four feature
+    // sections were (cannes-2027@2).
+    expect(n).toEqual({ verified: 165, projected: 11, simulated: 626 });
   });
 });
 
@@ -549,6 +550,25 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, short(30), e, 'shorts')).not.toMatch(/minutes/);
     expect(r(s, short(31), e, 'shorts')).toMatch(/30 minutes or less/);
     expect(r(s, short(21), e, 'generation')).toMatch(/20 minutes or less/);
+  });
+
+  it('Cannes 2027, version 2 (projected from 2026 Article 4): its feature sections take films shown only at home, not online, made in the year before', () => {
+    const s = startLife('fdc2');
+    const e = ed(s, 'cannes-2027');
+    expect(e.rulesId).toBe('cannes-2027@2');
+    s.now = e.submissionOpens + DAY;
+    const film = (completed = '2026-08-01') => work(s, { format: 'feature', runtime: 110, completed, base: 'fr-paris' });
+    for (const id of ['competition', 'un-certain-regard', 'cannes-premiere', 'special']) {
+      expect(r(s, film(), e, id), id).not.toMatch(/premiere|online|completed/);
+      const abroad = film();
+      release(abroad, 'theatrical', '2026-10-01', ['BE']);
+      expect(r(s, abroad, e, id), id).toMatch(/international premiere/);
+      const online = film();
+      release(online, 'streaming', '2026-10-01', ['FR']);
+      expect(r(s, online, e, id), id).toMatch(/released online/);
+      expect(r(s, film('2026-05-01'), e, id), id).toMatch(/completed on May 1, 2026/);
+    }
+    expect(categoryDeadline(e, cat(e, 'competition'))).toBe(at('Europe/Paris', '2027-03-13', 23, 59) + 59_000);
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

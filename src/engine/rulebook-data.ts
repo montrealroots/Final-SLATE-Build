@@ -201,6 +201,25 @@ const CANNES_2027: RuleBook = {
 };
 
 
+/**
+ * Version 2 (November 9, 2026): the Official Selection's feature sections, from the 2026 feature regulations (Article 4
+ * applies to every section Article 3 lists: Competition, Un Certain Regard, Cannes Première, special screenings),
+ * projected to 2027. Not modeled: Article 4's French theatrical release pledge for Competition films, and "an
+ * international selection" (SLATE counts any earlier festival premiere, as for the shorts).
+ */
+const FDC26_FEATURES = { id: 'fdc26-features', publisher: 'Festival de Cannes', title: '2026 Regulations - Official Selection Feature Films', url: 'https://cdn.festival-cannes.com/media/uploads/2025/11/reglement_longs-metrages_2026_en.pdf', edition: '79th Festival de Cannes (2026)', retrieved: '2026-11-09' };
+const CANNES_FEATURE: CategoryRules = {
+  completedFrom: proj('2026-05-11', 'fdc26-features', 'Produced in the twelve months before the festival (2026 Article 4, applied to the 2027 dates).'),
+  premiere: proj('international', 'fdc26-features', 'Not screened elsewhere than its home country (2026 Article 4).'),
+  noOtherFestival: proj(true, 'fdc26-features', 'Not in another festival\u2019s international selection (2026 Article 4); SLATE treats any earlier festival premiere as one.'),
+  noOnline: proj(true, 'fdc26-features', 'Not screened on the internet (2026 Article 4).'),
+  deadlines: proj([{ date: '2027-03-13', time: '23:59', zone: 'Europe/Paris', timeAssumed: true }], 'fdc26-features', 'The 2026 deadline was March 13 (Article 10); the 2027 date is not announced.'),
+};
+const CANNES_2027_2: RuleBook = {
+  ...CANNES_2027, id: 'cannes-2027@2', version: 2, checked: '2026-11-09', sources: [...CANNES_2027.sources, FDC26_FEATURES],
+  categories: { ...CANNES_2027.categories, competition: CANNES_FEATURE, 'un-certain-regard': CANNES_FEATURE, 'cannes-premiere': CANNES_FEATURE, special: CANNES_FEATURE },
+};
+
 // ---------------- Annecy 2026 (verified) and 2027 (projected) ----------------
 
 const ANNECY_SOURCES: RuleSource[] = [
@@ -442,5 +461,5 @@ const EMMYS_2027_2: RuleBook = { ...EMMYS_2027, id: 'emmys-2027@2', version: 2, 
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2,
 ];

@@ -151,6 +151,14 @@ labelled **Projected Rules** in the game.
 
 The Competition and Special Screenings sections, and every other Cannes rule, remain simulated.
 
+**Version 2 (`cannes-2027@2`, read November 9, 2026):** the [2026 Official Selection feature film regulations](https://cdn.festival-cannes.com/media/uploads/2025/11/reglement_longs-metrages_2026_en.pdf),
+projected to 2027. Article 3 lists the sections (Competition, Un Certain Regard, Cannes Première, special screenings) and
+Article 4's criteria apply to all of them: produced in the twelve months before the festival; "not have been screened
+elsewhere than their home country"; not presented in another festival's international selection (SLATE: any earlier
+festival premiere); "not have been screened on the Internet". Article 10: submissions by March 13, 2026 (2027 date not
+announced; SLATE uses March 13, end of day in Paris). Not modeled: the Competition's pledge of a French theatrical release
+(Article 4) and the Palme d'Or or Grand Prix winner's commitment not to compete elsewhere (Article 9).
+
 ## Annecy International Animation Film Festival 2026 (verified) and 2027 (projected)
 
 Sources: [2026 Terms and Conditions - Feature Films](https://www.annecyfestival.com/sites/default/files/2025-11/Annecy_Festival_2026_Feature_Films_Terms_and_Conditions.pdf)
