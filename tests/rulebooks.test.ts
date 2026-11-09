@@ -423,7 +423,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('472 categories follow verified rules for at least one edition, 11 only projected ones; the other 323 are simulated', () => {
+  it('488 categories follow verified rules for at least one edition, 11 only projected ones; the other 307 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -450,8 +450,8 @@ describe('audit counts', () => {
     // 457 until Venice's Critics' Week read its own regulations (venice-2026@4), 458 until the Goyas' European,
     // Ibero-American and short film awards read their specific Bases (goya-2027@2), 463 until the PGA's documentary award
     // (pga-2027@2), 464 until the WGA's Documentary Screenplay (wga-2027@2), 465 until the DGA's seven television awards
-    // (dga-2027@2).
-    expect(n).toEqual({ verified: 472, projected: 11, simulated: 323 });
+    // (dga-2027@2), 472 until the AACTA's 16 film categories (aacta-2027@1).
+    expect(n).toEqual({ verified: 488, projected: 11, simulated: 307 });
   });
 });
 
@@ -845,6 +845,25 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     release(movie, 'theatrical', '2026-04-01', ['US']);
     expect(r(s, movie, e, 'movie')).toMatch(/opened in cinemas in the United States on April 1, 2026, before airing there/);
     expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/Los_Angeles', '2026-11-13', 17));
+  });
+
+  it('AACTA 2027: Australian films of 60 minutes or more released in Australia in 2026, by September 28 in Sydney', () => {
+    const s = startLife('aacta');
+    const e = ed(s, 'aacta-2027');
+    expect(e.rulesId).toBe('aacta-2027@1');
+    s.now = at('Australia/Sydney', '2026-07-01', 9);
+    const film = (runtime = 100) => work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'au-sydney' });
+    const streamed = film();
+    release(streamed, 'streaming', '2026-05-01', ['AU']);
+    expect(r(s, streamed, e, 'film')).toBe('');
+    const abroad = film();
+    release(abroad, 'theatrical', '2026-05-01', ['NZ']);
+    expect(r(s, abroad, e, 'film')).toMatch(/in Australia/);
+    const short = film(59);
+    release(short, 'theatrical', '2026-05-01', ['AU']);
+    expect(r(s, short, e, 'film')).toMatch(/60/);
+    expect(categoryDeadline(e, cat(e, 'film'))).toBe(at('Australia/Sydney', '2026-09-28', 23, 59) + 59_000);
+    expect(categoryRuleStatus(rulebook('aacta-2027@1'), 'drama')).toBe('simulated'); // television stays SLATE's
   });
 
   it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {

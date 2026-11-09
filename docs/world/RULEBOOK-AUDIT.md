@@ -555,6 +555,18 @@ qualifying award on the Academy's list (SLATE: the 99th list it holds, where the
 28, 2026. The fee line reads "one hundred fifty dollars ($175.00)". The television awards' rules weren't found under the
 same naming (404) and stay on SLATE's rules.
 
+## AACTA Awards, 2027
+
+Sources (read November 9, 2026): the [2027 Film entry page](https://www.aacta.org/aacta-awards/entries-2027/film/) (a
+dramatised story of at least 60 minutes released publicly from January 1 to December 31, 2026; entries close 11:59 p.m.
+AEST on Monday September 28, 2026) and the [Rule Book](https://s3-ap-southeast-2.amazonaws.com/aacta-org-assets/Uploads/2026-AACTA-Awards-Rule-Book2.pdf)
+it links, whose file and cover say 2026, section 7.3: a seven-day run in two capital cities including Sydney or Melbourne,
+a qualifying festival with four paid screenings, a qualifying streaming platform or free-to-air broadcast. SLATE takes an
+Australian theatrical, streaming or broadcast release. Applied to the 16 film-only categories (`aacta-2027@1`). Not
+modeled: the Indie Film budget under AUD 2 million (the catalog keeps its own independent requirement), the festival and
+platform lists, AACTA's discretion. Television, documentary, short and shared categories stay on SLATE's rules; the entry
+page answered after a 503 earlier the same day.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two

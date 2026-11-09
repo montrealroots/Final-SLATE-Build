@@ -1223,8 +1223,35 @@ const PGA_2027_2: RuleBook = {
   },
 };
 
+// ---------------- AACTA Awards 2027 ----------------
+
+/**
+ * Read November 9, 2026: the 2027 Film entry page (dates, running time, deadline) and the Rule Book it links, whose file
+ * and cover say 2026 (AACTA links it for 2027 entries; recorded as such), section 7.3: a dramatised story of at least 60
+ * minutes released publicly in 2026 by a seven-day run in two Australian capital cities including Sydney or Melbourne, a
+ * qualifying festival with four paid screenings, a qualifying streaming platform or free-to-air broadcast; entries close
+ * 11:59 p.m. AEST on September 28, 2026. SLATE: an Australian theatrical, streaming or broadcast release in 2026. Applied to
+ * the 16 film-only categories. Not modeled: the Indie Film budget (under AUD 2 million: SLATE keeps its own independent
+ * requirement), the qualifying festival and platform lists, AACTA's discretion (iv). Television, documentary, short and
+ * the categories shared with them stay on SLATE's rules.
+ */
+const AACTA27: RuleSource[] = [
+  { id: 'aacta27-film', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Film', url: 'https://www.aacta.org/aacta-awards/entries-2027/film/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
+  { id: 'aacta-rulebook', publisher: 'Australian Academy of Cinema and Television Arts', title: 'AACTA Awards Rule Book (cover: 2026; linked for 2027 entries)', url: 'https://s3-ap-southeast-2.amazonaws.com/aacta-org-assets/Uploads/2026-AACTA-Awards-Rule-Book2.pdf', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
+];
+const AACTA_FILM: CategoryRules = {
+  runtime: v({ atLeast: 60 }, 'aacta27-film', 'A dramatised story of at least 60 minutes.'),
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'aacta27-film', 'Released publicly from January 1 to December 31, 2026.'),
+  release: v({ routes: ['theatrical', 'streaming', 'broadcast'], countries: ['AU'] }, 'aacta-rulebook', 'Seven days in cinemas in two capital cities including Sydney or Melbourne, a qualifying festival with four paid screenings, a qualifying streaming platform, or free-to-air (7.3); SLATE takes an Australian release by any of those routes.'),
+  deadlines: v([{ date: '2026-09-28', time: '23:59', zone: 'Australia/Sydney' }], 'aacta27-film', 'Entries close Monday September 28, 2026, 11:59 p.m. AEST.'),
+};
+const AACTA_2027: RuleBook = {
+  id: 'aacta-2027@1', institutionId: 'aacta', year: 2027, version: 1, checked: '2026-11-09', sources: AACTA27,
+  categories: Object.fromEntries(['film', 'indie-film', 'direction', 'lead-actor', 'lead-actress', 'supporting-actor', 'supporting-actress', 'original-screenplay', 'adapted-screenplay', 'cinematography', 'editing', 'sound', 'score', 'production-design', 'costume', 'casting'].map((id) => [id, AACTA_FILM])),
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2, AACTA_2027,
 ];
