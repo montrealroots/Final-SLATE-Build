@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('414 categories follow verified rules for at least one edition, 11 only projected ones; the other 377 are simulated', () => {
+  it('427 categories follow verified rules for at least one edition, 11 only projected ones; the other 364 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -438,8 +438,9 @@ describe('audit counts', () => {
     // 218 until Sitges' six sections (sitges-2026@1), 224 until the Giornate degli Autori (venice-2026@3),
     // 225 until IDFA's five sections (idfa-2026@1), 230 until Hot Docs (hot-docs-2027@1), 231 until the
     // Canadian Screen Awards' 115 entered categories (canadian-screen-2026@1), 346 until the Goyas' 23 feature categories (goya-2027@1),
-    // 369 until the Césars' 25 (cesar-2027@1), 394 until the Spirit Awards' 20 (spirit-2027@1).
-    expect(n).toEqual({ verified: 414, projected: 11, simulated: 377 });
+    // 369 until the Césars' 25 (cesar-2027@1), 394 until the Spirit Awards' 20 (spirit-2027@1),
+    // 414 until the Actor Awards' 13 (actor-awards-2027@1).
+    expect(n).toEqual({ verified: 427, projected: 11, simulated: 364 });
   });
 });
 
@@ -831,6 +832,23 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(r(s, show(1), e, 'series')).toMatch(/needs at least 2/);
     expect(r(s, show(2), e, 'series')).not.toMatch(/release|episode/);
     expect(categoryDeadline(e, cat(e, 'series'))).toBe(at('America/Los_Angeles', '2026-09-15', 23, 59) + 59_000);
+  });
+
+  it('Actor Awards 2027 (33rd): films over 60 minutes with a US run in 2026 and nothing outside cinemas first; series of six 20-minute episodes', () => {
+    const s = startLife('aa33');
+    const e = ed(s, 'actor-awards-2027');
+    expect(e.rulesId).toBe('actor-awards-2027@1');
+    s.now = at('America/Los_Angeles', '2026-10-01', 9);
+    const film = (runtime = 100) => { const p = work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'us-los-angeles' }); release(p, 'theatrical', '2026-06-01', ['US']); return p; };
+    expect(r(s, film(), e, 'cast')).not.toMatch(/release|minutes/);
+    expect(r(s, film(60), e, 'cast')).toMatch(/more than 60/);
+    const streamedFirst = film();
+    release(streamedFirst, 'streaming', '2026-05-01', ['GB']);
+    expect(r(s, streamedFirst, e, 'male-lead')).toMatch(/outside cinemas, before any theatrical run/);
+    const show = (eps: number) => { const p = work(s, { format: 'series', runtime: 30, completed: '2026-01-10', base: 'us-los-angeles' }); p.axes.episodeCount = eps; release(p, 'streaming', '2026-03-01', ['US']); return p; };
+    expect(r(s, show(5), e, 'ensemble-drama')).toMatch(/needs at least 6/);
+    expect(r(s, show(6), e, 'ensemble-drama')).not.toMatch(/release|episode/);
+    expect(categoryDeadline(e, cat(e, 'cast'))).toBe(at('America/Los_Angeles', '2026-11-02', 17));
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

@@ -436,6 +436,15 @@ Sources (read November 9, 2026): [Film rules](https://s3.us-east-1.amazonaws.com
 
 The Robert Redford Environmental Vision Award takes films and series alike and stays on SLATE's rules.
 
+## The Actor Awards, 33rd (2027)
+
+Source: [33rd Annual Actor Awards Rules & Regulations](https://www.actorawards.org/sites/default/files/33rd%20Annual%20Actor%20Awards%20Presented%20by%20SAG-AFTRA%20Rules%20%26%20Regulations.pdf)
+(read November 9, 2026). Films (A.1, A.3, A.5): scripted, over 60 minutes, a seven-day run beginning in 2026 in one of six
+US markets, no nontheatrical release before it. Television (B.1, B.2): first aired or streamed in the United States in
+2026; comedy and drama series of at least six episodes of 20 minutes or more. Submissions close at 5 p.m. PT on November 2,
+2026 (General Timetable). Not modeled: the SAG-AFTRA contract, the six markets (SLATE: a US theatrical release), primetime
+airing, the limited series' 150 minutes and the television movie's length, AI-generated performances.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two

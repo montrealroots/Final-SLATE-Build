@@ -829,8 +829,44 @@ const SPIRIT_2027: RuleBook = {
   },
 };
 
+// ---------------- The Actor Awards, 33rd (2027) ----------------
+
+/**
+ * Read November 9, 2026: the 33rd Annual Actor Awards Rules & Regulations, "Awards Year And Eligibility" (A motion
+ * pictures, B television) and the General Timetable. Not modeled: the SAG-AFTRA contract (A.4-6), the six markets for a
+ * film's run (SLATE: a US theatrical release), primetime airing, the limited series' 150 minutes and the television
+ * movie's length, and AI-generated performances.
+ */
+const AA33: RuleSource = { id: 'aa33-rules', publisher: 'SAG-AFTRA', title: '33rd Annual Actor Awards Presented by SAG-AFTRA Rules & Regulations', url: 'https://www.actorawards.org/sites/default/files/33rd%20Annual%20Actor%20Awards%20Presented%20by%20SAG-AFTRA%20Rules%20%26%20Regulations.pdf', edition: '33rd Actor Awards (2027)', retrieved: '2026-11-09' };
+const AA_DEADLINE = v([{ date: '2026-11-02', time: '17:00', zone: PT }], 'aa33-rules', 'Submissions close at 5 p.m. PT on November 2 (General Timetable).');
+const AA_FILM: CategoryRules = {
+  runtime: v({ over: 60 }, 'aa33-rules', 'Scripted, feature-length films over 60 minutes (A.1).'),
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'aa33-rules', 'A seven-day run beginning in 2026 (A.3).'),
+  release: v({ routes: ['theatrical'], countries: ['US'] }, 'aa33-rules', 'Seven consecutive days in a commercial cinema in Los Angeles, New York, the Bay Area, Chicago, Miami-Dade or Atlanta (A.3); SLATE treats a US theatrical release as that.'),
+  theatricalFirst: v({ countries: ['*'] }, 'aa33-rules', 'No nontheatrical exhibition or distribution before the first day of the run (A.5).'),
+  deadlines: AA_DEADLINE,
+};
+const AA_TV: CategoryRules = {
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'aa33-rules', 'First aired or streamed in the United States in 2026 (B.1).'),
+  release: v({ routes: ['broadcast', 'streaming', 'digital'], countries: ['US'] }, 'aa33-rules', 'On US television in primetime or a recognized US streaming platform (B.1).'),
+  deadlines: AA_DEADLINE,
+};
+const AA_SERIES: CategoryRules = {
+  ...AA_TV,
+  minEpisodes: v(6, 'aa33-rules', 'Comedy and drama series of at least six episodes (B.2.a).'),
+  runtime: v({ atLeast: 20 }, 'aa33-rules', 'Episodes at least 20 minutes (B.2.b).'),
+};
+const ACTOR_AWARDS_2027: RuleBook = {
+  id: 'actor-awards-2027@1', institutionId: 'actor-awards', year: 2027, version: 1, checked: '2026-11-09', sources: [AA33],
+  categories: {
+    ...Object.fromEntries(['male-lead', 'female-lead', 'male-supporting', 'female-supporting', 'cast'].map((id) => [id, AA_FILM])),
+    ...Object.fromEntries(['tv-male-limited', 'tv-female-limited'].map((id) => [id, AA_TV])),
+    ...Object.fromEntries(['tv-male-drama', 'tv-female-drama', 'tv-male-comedy', 'tv-female-comedy', 'ensemble-drama', 'ensemble-comedy'].map((id) => [id, AA_SERIES])),
+  },
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027,
 ];
