@@ -213,3 +213,35 @@ describe('Emmys, limited or anthology series: the complete series when credited 
     expect(categoryRules(e, 'directing-limited')?.oneEpisode?.value).toEqual({ max: 2, wholeWhenAll: true });
   });
 });
+
+describe('Emmys, Guest Performer Eligibility: nominated as supporting, never a guest in the same role later', () => {
+  it('season 2 can\'t enter Marcus as a guest after a supporting nomination for season 1; a non-nomination doesn\'t count', () => {
+    const s: GameState = startLife('gpe', 'us-los-angeles');
+    s.character.actingTitle = 'Actor';
+    const make = (title: string) => {
+      const p = buildProject(s, { title, format: 'short', medium: 'live-action', runtime: 20 },
+        [{ name: 'Ines', patch: { roleSize: 'lead' } }, { name: 'Marcus', patch: { roleSize: 'supporting', seriesInvolvement: 'guest', awardPlacement: 'none' } }],
+        [{ place: 'Harbor', chars: ['Ines', 'Marcus'], minutes: 3 }]);
+      approve(s, p);
+      Object.assign(p.axes, { format: 'series', episodeCount: 6, targetRuntimeMin: 50, register: 'drama' });
+      p.credits = [{ ...credit('m1', 'Marcus'), episodes: [2] }];
+      return p;
+    };
+    const one = make('Harbor Lights');
+    const two = make('Harbor Lights: Season 2');
+    two.continues = { from: one.id, number: 2, returning: [] };
+    // Labelled fixture: season 1's nomination as supporting actor at the 2026 Emmys.
+    const past = s.editions.find((x) => x.id === 'emmys-2026')!;
+    past.entries.push({ id: 'x', projectId: one.id, categoryId: 'supporting-actor', submittedAt: 0, status: 'nominated', recipients: ['m1'], fee: 0 });
+    const e = s.editions.find((x) => x.id === 'emmys-2027')!;
+    const guest = institution('emmys').categories.find((c) => c.id === 'guest-actor')!;
+    const el = checkEligibility(s, two, e, guest);
+    expect(el.recipients).toEqual([]);
+    expect(el.reasons).toContain('Marcus was nominated as a lead or supporting performance in an earlier season, so the part can\'t be entered as a guest.');
+    past.entries[0].status = 'not-nominated';
+    expect(checkEligibility(s, two, e, guest).recipients.map((c) => c.characterName)).toEqual(['Marcus']);
+    // The first season itself is not "a subsequent year".
+    past.entries[0].status = 'won';
+    expect(checkEligibility(s, one, e, guest).recipients.map((c) => c.characterName)).toEqual(['Marcus']);
+  });
+});

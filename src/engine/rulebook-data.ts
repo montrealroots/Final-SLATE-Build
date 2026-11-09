@@ -668,7 +668,9 @@ const EMMYS_2027_3: RuleBook = { ...EMMYS_2027_2, id: 'emmys-2027@3', version: 3
  * Version 4 (November 9, 2026): the directing and writing categories that read "for a single episode" of a series
  * (Categories 24, 25, 27, 29, 30, 113, 114 and 116) are entered for one episode, and go to the people credited on it;
  * comedy and drama directing to at most two ("An entry is limited to two directors"). Until then the whole season was
- * entered, to everyone credited on any episode. A special or movie is still entered whole. A limited or anthology series
+ * entered, to everyone credited on any episode. A special or movie is still entered whole. Guest Performer Eligibility, read
+ * the same day: nominated or a winner as lead or supporting for a part, a performer can't enter that part as a guest in a
+ * later season (`notAfterNomination`, through the seasons `continues` links). A limited or anthology series
  * (Categories 26 and 115) is entered whole when everyone credited worked on every part, and as one part otherwise; SLATE
  * decides that for the entry, not for each person, so a director of every part is also named on a part's entry. Not
  * modeled: the variety series' single entry per series chosen by the head writer, and judging by the episode (SLATE judges
@@ -682,6 +684,8 @@ function emmys4(year: number, mk: typeof v): Record<string, CategoryRules> {
   for (const id of ['directing-comedy', 'directing']) out[id] = { ...three[id], oneEpisode: one(2, '; an entry is limited to two directors') };
   for (const id of ['directing-variety', 'directing-nonfiction', 'directing-reality', 'writing-comedy', 'writing', 'writing-variety']) out[id] = { ...three[id], oneEpisode: one() };
   const part = (max?: number) => mk({ ...(max ? { max } : {}), wholeWhenAll: true as const }, 'em78-rules', `Credited with all the parts: the complete series; with one or more but not all: one part, which the entrant chooses${max ? '; an entry is limited to two directors' : ''}.${p}`);
+  const notAfter = mk({ institution: 'emmys', categories: ['lead-', 'supporting-'] }, 'em78-rules', `Guest Performer Eligibility: nominated or a winner as lead or supporting, a performer can't enter the same role in the same series as a guest in a later year.${p}`);
+  for (const id of Object.keys(three).filter((x) => x.startsWith('guest-'))) out[id] = { ...three[id], notAfterNomination: notAfter };
   out['directing-limited'] = { ...three['directing-limited'], oneEpisode: part(2) };
   out['writing-limited'] = { ...three['writing-limited'], oneEpisode: part() };
   return out;

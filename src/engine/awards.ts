@@ -574,7 +574,9 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     // Credited, but ruled out by the category's own rules: say which rule.
     const credited = categoryRecipients(state, p, cat, recipientIds).filter((c) => !(rules?.noNarrators && isNarrator(p, c)));
     const span = rules?.episodeShare?.value;
-    if (rules?.noNarrators && !credited.length && categoryRecipients(state, p, cat, recipientIds).length) reasons.push('A narrator can\'t be entered in this performer category; the narration can be entered for a narrator award.');
+    const earlier = rules?.notAfterNomination?.value;
+    if (earlier && credited.length && credited.every((c) => nominatedEarlier(state, p, c, earlier.institution, earlier.categories))) reasons.push(`${credited[0].characterName ?? credited[0].personName} was nominated as a lead or supporting performance in an earlier season, so the part can't be entered as a guest.`);
+    else if (rules?.noNarrators && !credited.length && categoryRecipients(state, p, cat, recipientIds).length) reasons.push('A narrator can\'t be entered in this performer category; the narration can be entered for a narrator award.');
     else if (span && credited.length) {
       const c = credited[0];
       reasons.push(`This category takes performers in ${span.under !== undefined ? 'fewer than half' : 'at least half'} of the episodes; ${c.characterName ?? c.personName} is in ${c.episodes === 'all' ? p.axes.episodeCount : c.episodes.length} of ${p.axes.episodeCount}.`);
@@ -616,10 +618,30 @@ export function entryEpisodes(state: GameState, p: Project, cat: Category, rules
 
 function ruledRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
   const all = creditedRecipients(state, p, cat, chosen, rules);
-  if (!rules?.noNarrators && !rules?.episodeShare) return all;
+  if (!rules?.noNarrators && !rules?.episodeShare && !rules?.notAfterNomination) return all;
   const span = rules.episodeShare?.value;
+  const before = rules.notAfterNomination?.value;
   return all.filter((c) => !(rules.noNarrators && isNarrator(p, c))
-    && (!span || ((span.under === undefined || episodeShare(p, c) < span.under) && (span.atLeast === undefined || episodeShare(p, c) >= span.atLeast))));
+    && (!span || ((span.under === undefined || episodeShare(p, c) < span.under) && (span.atLeast === undefined || episodeShare(p, c) >= span.atLeast)))
+    && !(before && nominatedEarlier(state, p, c, before.institution, before.categories)));
+}
+
+/**
+ * Whether this performer was nominated (or won) at the organizer, in a category whose id starts with one of `prefixes`, for
+ * playing the same part in an earlier season of the same series (the seasons `continues` links).
+ */
+export function nominatedEarlier(state: GameState, p: Project, c: Credit, institutionId: string, prefixes: string[]): boolean {
+  for (let q = state.projects.find((x) => x.id === p.continues?.from); q; q = state.projects.find((x) => x.id === q!.continues?.from)) {
+    const season = q;
+    for (const e of state.editions) {
+      if (e.institutionId !== institutionId) continue;
+      for (const x of e.entries) {
+        if (x.projectId !== season.id || !['nominated', 'won', 'lost'].includes(x.status) || !prefixes.some((pre) => x.categoryId.startsWith(pre))) continue;
+        if (x.recipients.some((id) => { const k = season.credits.find((y) => y.id === id); return k?.person === c.person && k.characterName === c.characterName; })) return true;
+      }
+    }
+  }
+  return false;
 }
 
 /** The share of the approved script's dialogue, in words, in a language other than English; null with no written dialogue. */

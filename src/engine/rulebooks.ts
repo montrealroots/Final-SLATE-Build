@@ -125,6 +125,12 @@ export interface CategoryRules {
    * "less than 50% of the eligible episodes", Short Form Performer "50% or more" (Performer Awards, Entry Information).
    */
   episodeShare?: Ruled<{ under?: number; atLeast?: number }>;
+  /**
+   * A performer nominated at this organizer, in a category starting with one of these ids, for the same part in an earlier
+   * season of the series can't be entered here: the Emmys' "Guest Performer Eligibility" (nominated or won as lead or
+   * supporting, then not as a guest "in a subsequent Emmy year for playing the same role in the same series").
+   */
+  notAfterNomination?: Ruled<{ institution: string; categories: string[] }>;
   /** Who is named and receives the award for a work: credited directors, or credited producers (at most `max`). */
   recipients?: Ruled<{ credit: 'director' | 'producer' | 'director-and-producer'; max?: number }>;
 }

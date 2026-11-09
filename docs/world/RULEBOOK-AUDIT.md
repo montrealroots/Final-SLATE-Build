@@ -340,7 +340,8 @@ but casts no stunt performers (`docs/awards/NONPLAYABLE-REVIEW.md`).
 **Version 4 (`emmys-2026@4`, November 9, 2026):** directing and writing "for a single episode" (Categories 24, 25, 27,
 29, 30, 113, 114, 116) are entered for one episode, to the people credited on it; comedy and drama directing name at
 most two directors. A limited or anthology series (26, 115) is entered whole when everyone credited worked on every
-part, and as one part otherwise (decided per entry, not per person). Not modeled: the variety series' single entry
+part, and as one part otherwise (decided per entry, not per person). Guest Performer Eligibility: a performer nominated
+as lead or supporting for a part can't enter the same part in a later season as a guest (`notAfterNomination`). Not modeled: the variety series' single entry
 chosen by the head writer (116), judging by the episode.
 
 ## San Sebastián, 74th Edition (2026, Verified) And 75th (2027, Projected)
