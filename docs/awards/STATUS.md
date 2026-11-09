@@ -39,7 +39,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 20 / 0 / 1 | 0 | 21 | 20 | 7 | 0 | 4 |
 | Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 0 / 0 / 12 | 0 | 12 | 0 | 1 | 0 | 1 |
 | Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 1 / 0 / 9 | 0 | 10 | 1 | 4 | 0 | 3 |
-| Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 0 / 0 / 18 | 0 | 0 | 0 | 0 | 0 | 11 |
+| Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 16 / 0 / 2 | 0 | 0 | 16 | 5 | 0 | 11 |
 | Producers Guild Awards (`pga`) | 15 | 14 / 1 / 0 | 0 / 0 / 15 | 0 | 15 | 0 | 0 | 0 | 4 |
 | Actor Awards (`actor-awards`) | 13 | 13 / 0 / 0 | 13 / 0 / 0 | 0 | 13 | 13 | 3 | 0 | 3 |
 | César Awards (`cesar`) | 27 | 27 / 0 / 0 | 25 / 0 / 2 | 0 | 27 | 3 | 8 | 0 | 0 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 0 | 0 | 0 |
-| **All 37** | 802 | 705 / 69 / 28 | 428 / 11 / 363 | 28 | 335 | 400 | 169 | 32 | 125 |
+| **All 37** | 802 | 705 / 69 / 28 | 444 / 11 / 347 | 28 | 335 | 416 | 174 | 32 | 125 |
 
 ## Research queue
 
@@ -70,7 +70,7 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 12. `spirit` (1): `redford`
 13. `gotham` (10): `feature`, `documentary`, `international`, `director`, `breakthrough-director`, `original-screenplay`, `adapted-screenplay`, `lead`, `supporting`, `breakthrough-performer`
 14. `dga` (9): `first-feature`, `documentary`, `drama`, `comedy`, `limited`, `movie`, `documentary-series`, `variety`, `reality`
-15. `wga` (18): `original`, `adapted`, `documentary-screenplay`, `drama-series`, `comedy-series`, `limited-series`, `new-series`, `movie`, `animation`, `episodic`, `episodic-comedy`, `talk-series`, `variety-specials`, `documentary-current`, `documentary-other`, `childrens`, `short-form`, `selvin`
+15. `wga` (2): `documentary-screenplay`, `selvin`
 16. `pga` (12): `theatrical`, `animated`, `documentary`, `drama`, `comedy`, `limited`, `tv-movie`, `nonfiction`, `live-variety`, `game-competition`, `childrens`, `short-form`
 17. `goya` (5): `european`, `iberoamerican`, `short-fiction`, `short-documentary`, `short-animation`
 18. `aacta` (36): `film`, `indie-film`, `direction`, `lead-actor`, `lead-actress`, `supporting-actor`, `supporting-actress`, `original-screenplay`, `adapted-screenplay`, `cinematography`, `editing`, `sound`, `score`, `production-design`, `costume`, `hair-makeup`, `casting`, `song`, `soundtrack`, `childrens`, `competition-reality`, `documentary-factual`, `drama`, `entertainment`, `factual-entertainment`, `miniseries`, `comedy`, `casting-tv`, `documentary`, `documentary-cinematography`, `documentary-editing`, `documentary-sound`, `documentary-score`, `short`, `online-series`, `vfx-animation`

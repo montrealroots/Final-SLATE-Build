@@ -886,8 +886,42 @@ const DGA_2027: RuleBook = {
   },
 };
 
+// ---------------- Writers Guild Awards, 2027 ----------------
+
+/**
+ * Read November 9, 2026: the 2027 Writers Guild Awards' rules for theatrical screenplays, series, and TV, streaming and
+ * radio/audio scripts. Not modeled: writing under a WGA (or affiliate guild) collective bargaining agreement; Los Angeles
+ * or New York as the place of the week's run (SLATE: a US theatrical release). The Documentary Screenplay and Paul Selvin
+ * rules are on pages not read here; those stay on SLATE's rules.
+ */
+const WGA27_SOURCES: RuleSource[] = [
+  { id: 'wga27-screenplay', publisher: 'Writers Guild of America West', title: 'Rules for Adapted and Original Screenplay (2027 Writers Guild Awards)', url: 'https://awards.wga.org/submissions/adapted-and-original-screenplay', edition: '2027 Writers Guild Awards', retrieved: '2026-11-09' },
+  { id: 'wga27-series', publisher: 'Writers Guild of America West', title: 'Rules for WGA Series Awards (2027)', url: 'https://awards.wga.org/submissions/series', edition: '2027 Writers Guild Awards', retrieved: '2026-11-09' },
+  { id: 'wga27-tv', publisher: 'Writers Guild of America West', title: 'Rules for WGA TV-Streaming-Radio/Audio Writing Awards (2027)', url: 'https://awards.wga.org/submissions/tv-streaming-radio-audio-scripts', edition: '2027 Writers Guild Awards', retrieved: '2026-11-09' },
+];
+const wgaDeadline = (src: string) => v([{ date: '2026-11-20', time: '17:00', zone: PT }], src, 'By 5:00 p.m. PST on Friday, November 20, 2026; no late submissions.');
+const wgaTv = (src: string, from: string, to: string, note: string): CategoryRules => ({
+  qualifying: v({ from, to }, src, note),
+  release: v({ routes: ['broadcast', 'streaming', 'digital'], countries: [], outside: [] }, src, 'Broadcast or exhibited; the rules name no country.'),
+  deadlines: wgaDeadline(src),
+});
+const WGA_2027: RuleBook = {
+  id: 'wga-2027@1', institutionId: 'wga', year: 2027, version: 1, checked: '2026-11-09', sources: WGA27_SOURCES,
+  categories: {
+    ...Object.fromEntries(['original', 'adapted'].map((id) => [id, {
+      qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'wga27-screenplay', 'Exhibited January 1 to December 31, 2026.'),
+      release: v({ routes: ['theatrical'], countries: ['US'] }, 'wga27-screenplay', 'In cinemas in the Los Angeles or New York City area for at least a week; SLATE treats a US theatrical release as that.'),
+      theatricalFirst: v({ countries: ['*'] }, 'wga27-screenplay', 'A film first shown on television or straight to DVD isn\u2019t eligible; a simultaneous theatrical and streaming release is.'),
+      deadlines: wgaDeadline('wga27-screenplay'),
+    } satisfies CategoryRules])),
+    ...Object.fromEntries(['drama-series', 'comedy-series', 'limited-series', 'new-series'].map((id) => [id, wgaTv('wga27-series', '2026-01-01', '2026-12-31', 'Aired or exhibited January 1 to December 31, 2026, however many episodes.')])),
+    ...Object.fromEntries(['movie', 'animation', 'episodic', 'episodic-comedy', 'childrens', 'short-form'].map((id) => [id, wgaTv('wga27-tv', '2026-01-01', '2026-12-31', 'First broadcast or exhibited January 1 to December 31, 2026.')])),
+    ...Object.fromEntries(['talk-series', 'variety-specials', 'documentary-current', 'documentary-other'].map((id) => [id, wgaTv('wga27-tv', '2025-11-01', '2026-10-31', 'Comedy/variety and documentary categories: first broadcast November 1, 2025 to October 31, 2026.')])),
+  },
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027,
 ];

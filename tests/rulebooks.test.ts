@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('428 categories follow verified rules for at least one edition, 11 only projected ones; the other 363 are simulated', () => {
+  it('444 categories follow verified rules for at least one edition, 11 only projected ones; the other 347 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -439,8 +439,9 @@ describe('audit counts', () => {
     // 225 until IDFA's five sections (idfa-2026@1), 230 until Hot Docs (hot-docs-2027@1), 231 until the
     // Canadian Screen Awards' 115 entered categories (canadian-screen-2026@1), 346 until the Goyas' 23 feature categories (goya-2027@1),
     // 369 until the Césars' 25 (cesar-2027@1), 394 until the Spirit Awards' 20 (spirit-2027@1),
-    // 414 until the Actor Awards' 13 (actor-awards-2027@1), 427 until the DGA's feature award (dga-2027@1).
-    expect(n).toEqual({ verified: 428, projected: 11, simulated: 363 });
+    // 414 until the Actor Awards' 13 (actor-awards-2027@1), 427 until the DGA's feature award (dga-2027@1),
+    // 428 until the WGA's 16 (wga-2027@1).
+    expect(n).toEqual({ verified: 444, projected: 11, simulated: 347 });
   });
 });
 
@@ -861,6 +862,22 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     release(p, 'theatrical', '2026-06-01', ['US']);
     expect(r(s, p, e, 'feature')).not.toMatch(/release|minutes/);
     expect(categoryDeadline(e, cat(e, 'feature'))).toBe(at('America/Los_Angeles', '2026-11-13', 17));
+  });
+
+  it('Writers Guild Awards 2027: screenplays with a US run in 2026 and no television first; series in 2026; talk and documentary November to October', () => {
+    const s = startLife('wga');
+    const e = ed(s, 'wga-2027');
+    expect(e.rulesId).toBe('wga-2027@1');
+    s.now = at('America/Los_Angeles', '2026-10-01', 9);
+    const film = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'us-los-angeles' });
+    release(film, 'broadcast', '2026-02-01', ['US']);
+    release(film, 'theatrical', '2026-03-01', ['US']);
+    expect(r(s, film, e, 'original')).toMatch(/outside cinemas, before any theatrical run/);
+    const show = (format: Project['axes']['format'], date: string) => { const p = work(s, { format, runtime: 30, completed: '2025-06-01', base: 'gb-london' }); release(p, 'streaming', date, ['GB']); return p; };
+    expect(r(s, show('series', '2026-02-01'), e, 'drama-series')).not.toMatch(/release/); // no country named
+    expect(r(s, show('series', '2025-12-01'), e, 'drama-series')).toMatch(/between January 1, 2026 and December 31, 2026/);
+    expect(r(s, show('unscripted-series', '2025-12-01'), e, 'talk-series')).not.toMatch(/release/);
+    expect(categoryDeadline(e, cat(e, 'talk-series'))).toBe(at('America/Los_Angeles', '2026-11-20', 17));
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

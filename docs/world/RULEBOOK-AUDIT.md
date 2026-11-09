@@ -453,6 +453,17 @@ York, January 1 to December 31, 2026; animated films and documentaries excluded;
 2026. Applied to Outstanding Directorial Achievement in Theatrical Feature Film only. The documentary and first-time feature
 guideline pages returned HTTP 404; the other categories stay on SLATE's rules.
 
+## Writers Guild Awards, 2027
+
+Sources (read November 9, 2026): [Adapted and Original Screenplay](https://awards.wga.org/submissions/adapted-and-original-screenplay),
+[Series](https://awards.wga.org/submissions/series), [TV-Streaming-Radio/Audio](https://awards.wga.org/submissions/tv-streaming-radio-audio-scripts).
+Screenplays: a week in Los Angeles or New York cinemas, January 1 to December 31, 2026; first shown on television or straight
+to DVD isn't eligible. Series (drama, comedy, limited, new): aired in 2026, however many episodes. TV (movie, animation,
+episodic, children's, short form): first broadcast in 2026; comedy/variety talk and specials and documentary categories:
+November 1, 2025 to October 31, 2026. Every category: 5:00 p.m. PST on November 20, 2026. Not modeled: a WGA (or affiliate)
+collective bargaining agreement; the TV movie's bar on an earlier theatrical exhibition. The Documentary Screenplay and Paul
+Selvin pages weren't read; those stay on SLATE's rules.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two
