@@ -4745,7 +4745,7 @@
      "US"
     ]
    },
-   "description": "Annual film awards voted by Academy members. In this game, features need a theatrical release in the United States during the eligibility year; shorts need a festival award or a US theatrical release.",
+   "description": "Annual film awards voted by Academy members. In this game, features need a theatrical release in the United States during the eligibility year. Shorts and documentary features can also qualify by winning an award on the Academy's qualifying-festival list, and International Feature Film takes a film made outside the United States that its country's committee chooses or that won an award on that category's list.",
    "categories": [
     {
      "id": "picture",

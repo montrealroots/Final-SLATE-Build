@@ -136,10 +136,12 @@ describe('recipients come from credits for the contribution the award concerns',
     p.quality = { overall: 1 };
     expect(committee(s, osc, p).chosen).toBe(false);
     expect(committee(s, osc, p).reason).toMatch(/France's selection committee put forward .+ instead/);
-    // A festival prize in the past year qualifies it without the committee.
+    // A win of an award on the Academy's International Feature list qualifies it without the committee
+    // (tests/qualifying-routes.test.ts has the awards that don't).
     const venice = ed(s, 'venice-2026');
     venice.entries.push({ id: 'gl', projectId: p.id, categoryId: 'golden-lion', submittedAt: 0, status: 'won', recipients: [], fee: 0, via: 'selection' });
-    expect(committee(s, osc, p)).toEqual({ chosen: true, reason: 'Its festival prize qualifies it without the national committee.' });
+    venice.results['golden-lion'] = { stage: 'winner', projectIds: [p.id], rivalIds: [], winner: p.id, revealed: true };
+    expect(committee(s, osc, p)).toEqual({ chosen: true, via: 'festival', reason: `Its Golden Lion at the ${venice.label} qualifies it without the national committee.` });
   });
 });
 

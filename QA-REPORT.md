@@ -8,7 +8,37 @@
 
 ## Commands And Results
 
-### Current: Complete Awards And Festival Coverage (November 9, 2026, after #46)
+### Current: Qualifying Routes And Rule Research (November 9, 2026, after #47 and #48)
+
+Tested revision `db911e8` (the working branch with `main` at `507096c` merged in).
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| CI on PR montrealroots/Final-SLATE-Build#48 (`8a75e64`) | 0 | Every step, including the dev-server and production-build browser journeys (the motion-capture journey among them). Merged as `507096c`. |
+| `npm run check` | 0 | World check 0 problems; typecheck clean; 67 files, 490 tests passed (new: `tests/qualifying-routes.test.ts` 12, `tests/mocap-progress.test.ts` 4 from #48, eleven rulebook tests); build passed; startup JavaScript 669 kB, 214 kB gzipped (686 and 219 before: the rulebooks and qualifying lists now load with the catalog), 0 problems. |
+| `python3 tools/awards/build.py --check` | 0 | Catalog, inventory and coverage current. |
+| `npm run balance` | 0 | Passed. |
+| `npx playwright test e2e/awards.spec.ts` (desktop, `iphone-15-plus`) | 0 | 14 passed in 2.6 minutes, including the new International Feature journey and the shorts journey with an unlisted prize. Screenshot inspected: `awards-international-iphone-15-plus.png` shows the Golden Lion winner accepted without the committee, La Digue chosen by France's committee, Les Dunes not selected ("a country submits one film"). |
+| `npx playwright test e2e/journeys.spec.ts -g "2D animation|festival under official rules"`, `e2e/live-action.spec.ts` (desktop) | 0 | 3 passed: the Annie, Sundance and live-action festival entries under the new rulebook versions. |
+| Mutations (`tests/qualifying-routes.test.ts`) | n/a | Each of six was caught: any entry status counts as a win; no window; no one-film-per-country; no festival exemption from theatrical-first; any award at a listed festival; no national-first ordering at the deadline (killed after a weaker mutant that only reversed the order survived). |
+
+By evidence:
+- **Implemented and tested:** explicit qualifying lists per Academy edition (shorts 20 awards held in SLATE, documentary
+  feature 2, International Feature 6 incl. Sundance's two World Cinema prizes as SLATE's reading); wins counted only on
+  the exact award, entry status won, result out, closing day in the window; International Feature rules (outside-US
+  release, no nontheatrical first, September 30); one film per country; documentary route 3; later years projected.
+- **Source-verified:** the Academy's three lists and Rule Sixteen; the Emmys' Eligibility rules 1-17 and 11c; the
+  Berlinale's five section pages; Cannes' 2026 feature regulations; Annecy's 2026 terms and TV regulations; Venice's
+  Article 3; San Sebastián's section II; the Golden Globes' A.1, A.3 and C; the Annies' call; Clermont's national
+  regulations; Sitges' 2026 regulations and rules. Exact sections are in `docs/world/RULEBOOK-AUDIT.md`.
+- **Modeled, not verifiable:** every judging outcome (juries, votes, committees).
+- **Unverified or blocked:** TIFF (HTTP 403, third pass), the rest of the research queue in `docs/awards/STATUS.md`.
+
+Counts at this revision (from `docs/awards/STATUS.md`): playable 802; roster read 705, unverified 69, blocked 28;
+organizer's eligibility rules for an edition 224, projected only 11, SLATE's 567; recipients by an organizer's rule 28;
+judging modeled 802; edition dates announced 333; deadlines from the rules 218; categories a unit test names 126, a browser journey 32; not playable 125 (not yet reviewed).
+
+### Previous: Complete Awards And Festival Coverage (November 9, 2026, after #46)
 
 Tested revisions `015dae7` to `8a43a9c` on top of `main` at `4f4dc2d`.
 

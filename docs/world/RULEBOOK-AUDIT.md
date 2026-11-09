@@ -47,6 +47,8 @@ below but the game's edition dates were not changed in this pass.
 Sources (retrieved November 6, 2026):
 [99th Oscars Complete Rules](https://www.oscars.org/sites/oscars/files/2026-05/99th_oscars_complete_rules.pdf);
 [99th Short Films Qualifying Festival List](https://www.oscars.org/sites/oscars/files/2026-05/99AA_Shorts%20Qualifying%20Festivals.pdf);
+retrieved November 9, 2026: [99th Documentary Feature Film Qualifying Festival List](https://www.oscars.org/sites/oscars/files/2026-04/99AA_Documentary%20Feature%20Qualifying%20Festivals.pdf) (updated April 10, 2026);
+[International Feature Film FAQs](https://www.oscars.org/sites/oscars/files/2026-07/99AA_International_Feature_FAQs.pdf);
 [press release approving the 99th rules](https://press.oscars.org/news/awards-rules-and-campaign-promotional-regulations-approved-99th-oscarsr).
 
 | Rule | Verified text (summary) | Where | Applied in SLATE to |
@@ -61,11 +63,22 @@ Sources (retrieved November 6, 2026):
 | Best Picture recipients | Three or fewer credited "producer"/"produced by" individuals; executive, co-, associate and line producers excluded | Rule Twenty | Picture: at most three credited producers are named |
 | Short definition | 40 minutes or less, including all credits | Short rules I.A | Live Action, Animated and Documentary Short |
 | Short qualifying period | October 1, 2025 to September 30, 2026 | Short rules II | Same |
-| Short qualification | Seven-day theatrical run in one of the six metro areas, **or** a qualifying award at a festival on the Academy's list | Short rules II.A | Same. Festivals on the list that exist in SLATE: Annecy, Berlinale, Cannes, Clermont-Ferrand, FESPACO, Hot Docs, IDFA, Sitges, SXSW, Sundance, TIFF, Venice (Busan's listed festival is the separate short film festival, so Busan's SLATE section doesn't count). A win counts when it is the top award of the matching SLATE section. |
+| Short qualification | Seven-day theatrical run in one of the six metro areas, **or** "won a qualifying award at a competitive film festival, as specified in the Short Films Qualifying Festival List, regardless of any prior public exhibition", the award won October 1, 2025 to September 30, 2026 | Short rules II.A.2 (Rules Eight, Fourteen, Seventeen); the list | Same. **Version 2 (`oscars-2027@2`, November 9, 2026):** only the 20 listed awards SLATE holds, each mapped to one category (`QUALIFYING_LISTS` `aa99-shorts`: Annecy Cristal and Jury Award; Berlinale Golden Bear for Best Short Film; Canadian Screen Awards' three short awards; Cannes Short Film Palme d'Or; the César's three; Clermont-Ferrand Grand Prix (International); the Goyas' three; Sitges SOFC Best Short Film and Best Animated Short; Sundance Short Film Grand Jury Prize; TIFF Best International and Best Canadian Short Film; Venice Orizzonti Best Short Film). Another prize at the same festival, a selection, a mention, an audience award, a withdrawn or disqualified entry, or a win outside the window doesn't qualify. Listed but not held in SLATE: Clermont's national Grand Prix, Sundance's four Short Film Jury Awards, SXSW's three shorts jury awards, Hot Docs' two, IDFA's short documentary award, FESPACO's Golden Foal, Locarno's two Pardini, BAFTA's two, and the Busan International *Short* Film Festival (a different festival). **Version 1** named sections and awards the list doesn't (TIFF's animated short award, Hot Docs' audience award, SXSW's, FESPACO's and IDFA's short sections) and admitted any listed result; editions entered under it keep it. |
 | Live action excludes documentaries | "Documentary short films will not be accepted in the live action category." | Live Action Short I.C | Live Action Short |
 | Shorts deadline | 5 p.m. PT, Thursday October 8, 2026 | Short rules | All three short categories |
 
-Not verified: International Feature Film (not in SLATE's catalog), craft categories, writing and acting recipient
+| Documentary feature qualification | A US theatrical run in 2026 (six metro areas, seven days, three screenings daily), **or** a qualifying award on the Documentary Feature Film Qualifying Festival List won October 1, 2025 to September 30, 2026 "regardless of any prior public exhibition or distribution by nontheatrical means", **or** "submitted and deemed eligible in the International Feature Film category" | Rule Thirteen II.A.1-3; the list | Documentary (version 2). Listed awards SLATE holds: Berlinale Documentary Award; IDFA's International Competition award, which SLATE's roster calls "Best Film" and the list "Best Feature-Length Documentary" (SLATE's reading, flagged in the ledger). Route 3: an International Feature Film entry of the same film that the committee accepted; while it is undecided the documentary entry is provisional, and the deadline decides national selections first. |
+| International Feature Film definition | Over 40 minutes, produced outside the United States and its territories, more than 50 percent non-English dialogue; animation and documentary allowed | Rule Sixteen I, II.D | International (version 2). **SLATE simplification:** the dialogue test reads the project's first dialogue language; there is no percentage in the game. |
+| International Feature Film qualification | Route 1: official selection by the country's Academy-approved committee, one film per country, with a theatrical release beginning October 1, 2025 to September 30, 2026 for seven consecutive days in one venue, outside the US. Route 2: "won a qualifying award at an international film festival" on the list | Rule Sixteen II.A, III.A.2; FAQs | International (version 2): a theatrical release outside the US in the window, or a listed award; a listed award qualifies without the committee and takes no country's place; a country's committee puts forward only one of your films, the strongest considered first. The FAQ's six awards: Berlin Golden Bear for Best Film, Busan Award – Best Film Award (not held in SLATE), Cannes Palme d'Or, Sundance World Cinema Grand Jury Prize (the list doesn't say which competition; SLATE accepts the Dramatic and the Documentary prize), TIFF Platform Award, Venice Golden Lion, won "before September 30, 2026" (no first day stated; SLATE uses October 1, 2025). |
+| International Feature Film nontheatrical release | Any nontheatrical exhibition or distribution before the qualifying theatrical release makes a film ineligible | Rule Sixteen II.C | International (version 2), anywhere; not applied to a film qualifying by its festival award, which has no qualifying theatrical release (SLATE's reading). |
+| International Feature Film materials | Due 5 p.m. PT, Wednesday September 30, 2026 | Rule Sixteen III.B | International (version 2) |
+
+Until November 9, 2026, International Feature Film had no rules here: it asked for a US theatrical release, and any
+festival entry marked won in the 400 days before the deadline, at any festival, qualified it without the committee. An
+Oscar short whose edition had no rulebook qualified through any festival win at all. Editions of later years read the
+newest list carried forward a year at a time (`projectedList`), labelled as such in Prepare Submission.
+
+Not verified: craft categories, writing and acting recipient
 limits, Best Picture's expanded theatrical run (Rule Twenty), inclusion standards, the shorts' student-film path.
 
 ## Sundance Film Festival 2027
@@ -104,6 +117,14 @@ Source: [Regulations - International Competition 2027](https://www.lecourt-clerm
 | Fee | €13 plus a Shortfilmdepot stamp | Recorded only; SLATE's fee for this section is 0 |
 | Recipients | Prizes are paid to the director | International Competition names the credited director |
 
+**Version 2 (`clermont-2027@2`, read November 9, 2026):** "The regulations of the International Competition also apply to
+the Lab Competition except article 11" (Lab Competition page), so Lab takes the rules above. The National Competition's own
+[Règlement – compétition nationale 2027](https://www.lecourt-clermont.org/wp-content/uploads/2026/06/FR-Reglement-national-2027.pdf)
+(French), 1.1: French production completed after October 1, 2025 (the main production country holds 50 percent or more of
+the financing; SLATE uses the production base); under 60 minutes; no premiere rule; no resubmission, even in a new version.
+Section 2: July 9, 2026 for films finished from October to December 2025, October 1, 2026 for 2026 films. Prizes go to
+the directors.
+
 ## Annie Awards, 54th (2027)
 
 Source: ASIFA-Hollywood's call for submissions, as republished by
@@ -121,6 +142,11 @@ own text. It is an accessible alternative, not the full rulebook.
 
 Not verified: running-time thresholds, category definitions, individual achievement eligibility.
 
+**Version 2 (`annie-2027@2`, November 9, 2026):** the call's eligibility, exceptions and window are the competition's,
+so the other 20 entered categories held for the 54th (effects, character animation and design, directing, music,
+production design, storyboarding, voice acting, writing and editorial for TV and features, Independent Feature, Special
+Production) read them too. Their own definitions are in the rules page, which still didn't load; they stay unverified.
+
 ## Cannes Film Festival, 80th (2027): Short Film Competition, projected
 
 Source: [2026 Regulations - Short Films In Competition](https://cdn.festival-cannes.com/media/uploads/2025/11/reglement_courts-metrages_2026-en.pdf)
@@ -137,6 +163,14 @@ labelled **Projected Rules** in the game.
 | Deadline March 2, 2026 | March 2, 2027, end of day in France |
 
 The Competition and Special Screenings sections, and every other Cannes rule, remain simulated.
+
+**Version 2 (`cannes-2027@2`, read November 9, 2026):** the [2026 Official Selection feature film regulations](https://cdn.festival-cannes.com/media/uploads/2025/11/reglement_longs-metrages_2026_en.pdf),
+projected to 2027. Article 3 lists the sections (Competition, Un Certain Regard, Cannes Première, special screenings) and
+Article 4's criteria apply to all of them: produced in the twelve months before the festival; "not have been screened
+elsewhere than their home country"; not presented in another festival's international selection (SLATE: any earlier
+festival premiere); "not have been screened on the Internet". Article 10: submissions by March 13, 2026 (2027 date not
+announced; SLATE uses March 13, end of day in Paris). Not modeled: the Competition's pledge of a French theatrical release
+(Article 4) and the Palme d'Or or Grand Prix winner's commitment not to compete elsewhere (Article 9).
 
 ## Annecy International Animation Film Festival 2026 (verified) and 2027 (projected)
 
@@ -156,6 +190,13 @@ labelled Projected Rules.
 
 Not read: the Television, commissioned and graduation film terms; the TV competition stays simulated.
 
+**Version 2 (`annecy-2026@2`, `annecy-2027@2` projected, read November 9, 2026):** the feature terms apply "in all
+categories: Official, Contrechamp, Midnight Specials, Annecy Presents" (section 2), so Contrechamp takes the feature rules;
+the short film terms list Off-Limits and Perspectives among their competitive categories (section 5), so both take the
+short film rules; TV films and web series follow the [Règlement 2026 – Films de télévision](https://www.annecyfestival.com/sites/default/files/2025-11/Annecy_Festival_2026_Reglements_Films_de_TV.pdf)
+(French only), section 2: completed after January 1, 2025; submitted for the first time; entries before February 15, 2026
+(SLATE: end of February 14 in France). Not modeled: one episode per series and no pilots (SLATE enters a project).
+
 ## Venice International Film Festival, 83rd (2026, verified) and 84th (2027, projected)
 
 Source: [Regulations - 83rd Venice International Film Festival](https://static.labiennale.org/files/cinema/2026/Documenti/regulations-83.pdf)
@@ -170,13 +211,36 @@ Source: [Regulations - 83rd Venice International Film Festival](https://static.l
 
 Not applied: the prize recipients (the regulations name the prizes, not who receives most of them).
 
+**Version 2 (`san-sebastian-2026@2`, `san-sebastian-2027@2` projected, read November 9, 2026):** "All films submitted will
+be considered for any of the Festival sections making up the programme" (II, article 3), so section II's rules above apply
+to New Directors, Horizontes Latinos, Zabaltegi-Tabakalera, Perlak, Culinary Zinema and Velodrome too. The FAQ on the same
+page: "as of 2025 there will not be an open entry for short films" (Zabaltegi's shorts are invited; the over-60-minutes
+rule refuses an entered short). Article 2 refers to each section's own rules or guidelines, which the page doesn't
+reproduce and which weren't found; the catalog keeps its own section requirements (a debut, Latin American production,
+a food subject).
+
 ## Berlinale 2027: Competition, projected
 
 Source: [Competition Regulations](https://www.berlinale.de/en/film-entry/guidelines/competition.html) (retrieved November
 6, 2026). **The page names no edition year**, so these rules are shown as projected for 2027, not verified: at least 60
 minutes; world or international premieres (not presented publicly outside the country of origin); not broadcast on
-television or presented on the internet or VOD; completed within the 12 months before the festival. Panorama and Berlinale
-Shorts regulations were not read; those sections stay simulated. No 2027 deadline was found.
+television or presented on the internet or VOD; completed within the 12 months before the festival. No 2027 deadline was
+found.
+
+**Version 2 (`berlinale-2027@2`, read November 9, 2026):** the other five sections' regulation pages, also undated, so
+projected. Each page's section 1:
+
+| Section | Page | Rules applied |
+| --- | --- | --- |
+| Perspectives | [perspectives.html](https://www.berlinale.de/en/film-entry/guidelines/perspectives.html) | At least 60 minutes; world, international or European premiere (not shown in Europe outside the country of origin); not shown in Germany; no TV or internet/VOD; completed in the 12 months before the festival; never submitted before. The debut rule is the catalog's own requirement. |
+| Panorama | [panorama.html](https://www.berlinale.de/en/film-entry/guidelines/panorama.html) | The same, without the debut rule |
+| Forum | [forum.html](https://www.berlinale.de/en/film-entry/guidelines/forum.html) | The same |
+| Generation | [generation.html](https://www.berlinale.de/en/film-entry/guidelines/generation.html) | The same; shorts at most 20 minutes |
+| Berlinale Shorts | [berlinale-shorts.html](https://www.berlinale.de/en/film-entry/guidelines/berlinale-shorts.html) | At most 30 minutes; world or international premiere (not shown outside the country of origin); not shown in Germany; no TV or internet/VOD; completed in the 12 months before; never submitted before |
+
+Not modeled: "intended for theatrical release"; the country of origin is the production company's registered office,
+for which SLATE uses the production base; Generation's audience isn't a rule on its page (the catalog keeps its own
+young-audience requirement).
 
 ## Golden Globes, 84th (2027)
 
@@ -195,6 +259,16 @@ Source: [84th Annual Golden Globes Eligibility and Consideration Rules, updated 
 Not applied: the drama-or-comedy classification by tone (SLATE separates them by genre, simulated), the Non-English and
 low-budget independent provisions, campaign rules.
 
+**Version 2 (`golden-globes-2027@2`, read November 9, 2026):** the other 19 entered categories read their part of the
+rules. Film acting, Original Score, Original Song and Cinematic and Box Office Achievement take the motion picture rules
+(A.1: 70 minutes, released in 2026 in one of seven US metro areas, on the voters' platform by December 2). Non-English
+Language takes A.3.c: first released in its country of origin for seven consecutive days in 2026 (vi), no US release
+needed (viii), submitted once (vii), given to its directors and PGA-accredited producers (A.3.i.ii). The television
+limited series and every television acting category take the television rules (C.1). Not modeled: A.1.c (a film must
+also be submitted for Best Motion Picture to be eligible for the individual awards, except non-English and low-budget
+independent films); A.3.d's exclusion of voice-only and cameo performances; B.1.b's $150 million box-office threshold (the
+catalog's requirement reads a theatrical release, a gap recorded for the recipients and work-specific audit).
+
 ## Primetime Emmy Awards, 78th (2026, verified) and 79th (2027, projected)
 
 Source: Television Academy, 78th Emmy Awards 2025-2026 Rules and Procedures, version 4 (updated April 7, 2026), from
@@ -210,6 +284,32 @@ are not published; 2027 carries these forward, labelled projected.
 | Foreign productions eligible only as US co-productions begun before production | All (production base as origin) |
 | Outstanding Movie (category 82, renamed from Outstanding Television Movie): one part of at least 75 minutes | Outstanding Movie, held from 2026 |
 | Program awards go to producers whose credits and functions support it | Program categories |
+
+**Version 2 (`emmys-2026@2`, `emmys-2027@2`, read November 9, 2026).** The general rules above are the "Eligibility"
+section's rules 1 to 17, which apply to every category of the competition, so version 2 applies them to all 111 entered
+categories held from 2026 (the 13 above keep their rules unchanged; the two Governors and Special Awards take no entries).
+Category-level provisions applied:
+
+| Rule (2025-2026) | Where | Applied to |
+| --- | --- | --- |
+| Six episodes premiered by May 31 for series in animation, comedy, drama, variety, short form and reality categories; three for documentary and hosted nonfiction series | Eligibility 11c | Every category that takes series only: the 34 in `EMMY_SIX` (rulebook-data.ts) at six, Hosted Nonfiction Series Or Special at three. Categories that also take specials, movies or limited series (Animated Program, the variety specials' crafts, the nonfiction crafts, Title Design and others) have no minimum: the rule is per program and SLATE can't tell from the category which one is entered. |
+| Short Form Comedy, Drama Or Variety Series: at most six entrants; "petitions to exceed the cap will not be considered" | Category 86 | At most six credited producers named |
+| Program awards to producers whose screen credit and functions support it | Each program category's text | Every program category: credited producers |
+
+Read but not modeled (each needs a fact SLATE doesn't record): guest performers must appear in fewer than half of the
+eligible episodes, and a performer nominated before as lead or supporting can't enter as a guest (categories 70-73);
+Character Voice-Over is for programming for audiences 13 and over (category 75); short form episodes average 2 to 20
+minutes (Eligibility 17); an animated program needs 65 percent new animation (category 2); music categories need 35
+percent of the episode's music (Music); producers must be credited on half of a series' episodes, and the producer caps
+other than short form's are guidelines; the variety categories also honour the principal host; the limited release of up
+to 70 theater-days and the Oscar-nomination bar (Eligibility 8a-8d).
+
+**Version 2 (`venice-2026@2`, `venice-2027@2` projected, read November 9, 2026):** Article 3's criteria open with "Only
+films presented as world premieres that meet the following criteria are eligible for selection" for the whole Official
+Selection, so Open – Out of Competition (3.2) and Venice Spotlight (3.4, "provided their duration exceeds 60 minutes")
+take them, with the features' June 4 deadline. The Settimana Internazionale della Critica (5.1) and the Giornate degli
+Autori (5.2) are selected "in accordance with" their own associations' regulations, which these don't give; they stay on
+SLATE's rules until those are read.
 
 ## San Sebastián, 74th Edition (2026, Verified) And 75th (2027, Projected)
 
@@ -228,12 +328,29 @@ Simplifications, as written in the rules' notes: the exceptions for FIAPF non-co
 competitions in the country of production are not modeled; films produced entirely in Spain must also be world premieres,
 which SLATE does not check separately. The 2027 rules are the 2026 ones carried forward, labelled projected.
 
+## Sitges, 59th (2026, verified) and 60th (2027, projected)
+
+Sources (read November 9, 2026): [2026 Regulations](https://sitgesfilmfestival.com/sites/default/files/2026-02/SIFFFC%202026_Regulations_ENG_23F.pdf),
+section I; [2026 Rules](https://sitgesfilmfestival.com/sites/default/files/2026-02/SIFFFC%202026_Rules_ENG.pdf), section II.
+
+| Section | Rules applied | Where |
+| --- | --- | --- |
+| Official Fantàstic In-Competition Selection | Features at least 60 minutes, produced in the 12 months before the festival opens; Spanish premiere required; no streaming release in Europe (SLATE: any online release); shorts at most 30 minutes, produced 2025-2026 | I, 1.1.1 |
+| Anima't | Unreleased in Spain, produced 2025-2026; shorts at most 30 minutes, unreleased in Catalonia (SLATE: Spain) | I, 1.1.3 |
+| Noves Visions, Panorama, Sitges Documenta | Unreleased in Spain, produced 2025-2026 | I, 1.1.6, 1.1.8, 1.1.9 |
+| Midnight X-Treme | Produced 2025-2026 | I, 1.1.5 |
+| All | No films after 12:00 p.m. on July 16, 2026 ("CET" in the document; SLATE uses local time in Sitges) | Rules II |
+
+Not modeled: films produced entirely in Spain must be world premieres in the Official Selection; Panorama's "independent
+productions"; the Programming Committee's exceptions for films shown at another Spanish festival.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two
   passes. Search summaries mention premiere-status rules (world, international or North American; Canadian at TIFF's
   discretion) and May 8, 2026 as the standard deadline, but these were not read from TIFF's own terms and are **not
-  used**: `tiff-2026` stays simulated.
+  used**: `tiff-2026` stays simulated. A third pass on November 9, 2026 (tiff.net/submit and filmfreeway.com/tiff) was
+  refused the same way; the next try is an official archived copy of TIFF's terms or a TIFF press release with them.
 - **BAFTA Film Awards 2027:** bafta.org (the rules page and the press release "2027 EE BAFTA Film Awards opens for
   entries") refused this environment (HTTP 403), on both passes. Search summaries give a longlist on January 7, nominations
   on January 19 and the ceremony on February 21, 2027, but not the eligibility period; **not used**: BAFTA stays

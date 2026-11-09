@@ -12,7 +12,7 @@ import {
 import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupIntegration, cutPassDays, startCutPass, unlockPicture, restoreToEdit } from '../engine/edit-actions';
 import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
 import { publicResult } from '../engine/awards-results';
-import { enterable } from '../engine/awards';
+import { enterable, festivalListFor } from '../engine/awards';
 import { FORMAT_LABELS } from '../engine/projects';
 import { roleLabel } from '../engine/people';
 import { applyFix, dailies } from '../engine/directing';
@@ -799,14 +799,25 @@ function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: 
         <div className="callout callout-positive"><p>{(() => {
           const st = categoryRuleStatus(rulebook(ed.rulesId), cat.id);
           return st === 'verified' ? "This entry meets the organizer's published rules for this category." : st === 'projected' ? "This entry meets last year's rules, carried forward until this year's are published." : "This entry meets the game's rules for this category.";
-        })()}{el.provisional ? ' It counts on a planned release that must happen within the eligibility period.' : ''}</p></div>
+        })()}{el.provisional ? ` ${el.provisionalNote?.replace(/^Entered provisionally\. /, '') ?? 'It counts on a planned release that must happen within the eligibility period.'}` : ''}</p></div>
       ) : (
         <div className="callout callout-warning"><p>This entry can't be submitted yet:</p><ul>{el.reasons.map((r, i) => <li key={i}>{r}</li>)}</ul></div>
       )}
       {cat.fee > 0 ? <p>Entry fee: {money(cat.fee)}, paid from the project's budget when you submit. Withdrawing doesn't refund it; entering again in this category doesn't charge it twice.</p> : <p>This category has no entry fee.</p>}
       <p>This award goes to {recipientWords(cat)}. Credited for this entry: {el.recipients.map((r) => r.personName).join(', ') || 'No one yet'}.</p>
       {cat.kind === 'section' && <p className="dim">Selection is not a win. {institution(ed.institutionId).categories.some((c) => c.parents?.includes(cat.id)) ? "If it's selected, its prizes are decided among the films selected for this section, with no further entry." : 'This section has no prizes of its own.'}</p>}
-      {cat.recipient === 'national' && <p className="dim">The production country's selection committee chooses one film at the entry deadline; a festival prize in the past year qualifies it without the committee.</p>}
+      {cat.recipient === 'national' && <p className="dim">The production country's selection committee chooses one film at the entry deadline, and a country puts forward only one. A win of an award on the qualifying list below qualifies a film without the committee.</p>}
+      {(() => {
+        const list = festivalListFor(ed, cat.id);
+        if (!list) return null;
+        return (
+          <details className="spaced">
+            <summary>Qualifying Festival Awards</summary>
+            <p>Won from {formatDateKey(list.window.from)} to {formatDateKey(list.window.to)}{list.projectedFrom ? ", carried forward from the newest list the organizer has published" : ''}. Only these awards count: another prize at the same festival, a selection, a mention or an audience award doesn't.</p>
+            <ul>{list.awards.map((a) => <li key={`${a.institution}:${a.category}`}>{a.listed}</li>)}</ul>
+          </details>
+        );
+      })()}
       <p className="dim">Eligibility is necessary but doesn't guarantee selection or a win.</p>
     </Modal>
   );
