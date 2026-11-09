@@ -278,6 +278,10 @@ catalog's requirement reads a theatrical release, a gap recorded for the recipie
 in a language other than English" (A.3.c.i) is counted from the approved script, as the Oscars' is. Not modeled: A.3.c.ii,
 that dialects, pidgins and local usages of English count as English.
 
+**Version 4 (`golden-globes-2027@4`, November 9, 2026):** Cinematic and Box Office Achievement's threshold (B.1.b): $150
+million worldwide in 2026, $100 million of it from the US, read from what distributors reported for theatrical releases.
+Not modeled: commensurate streaming viewership, and projections for releases after November 21 (B.1.c).
+
 ## Primetime Emmy Awards, 78th (2026, verified) and 79th (2027, projected)
 
 Source: Television Academy, 78th Emmy Awards 2025-2026 Rules and Procedures, version 4 (updated April 7, 2026), from

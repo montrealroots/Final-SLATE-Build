@@ -284,3 +284,32 @@ describe('Emmys: at least 5% of the running time on screen, from the approved sc
     expect(checkEligibility(s, p, e, cat).recipients.map((c) => c.characterName)).toEqual(['Marcus']);
   });
 });
+
+describe('Golden Globes, Cinematic and Box Office Achievement: $150 million worldwide, $100 million of it in the US (B.1.b)', () => {
+  it('reads what distributors reported for 2026 theatrical releases; a release in several countries counts only worldwide', () => {
+    const s: GameState = startLife('bo', 'us-los-angeles');
+    const p = buildProject(s, { title: 'Big Night', format: 'feature', medium: 'live-action', runtime: 110 }, [{ name: 'Lou', patch: { roleSize: 'lead' } }], [{ place: 'Hall', chars: ['Lou'], minutes: 3 }]);
+    approve(s, p);
+    p.delivered = { at: Date.parse('2026-02-01T12:00:00Z'), runtimeMin: 110 };
+    // Labelled fixture: two accepted theatrical offers and what their distributors reported.
+    const run = (id: string, territories: string[], gross: number, date = '2026-05-01') => {
+      p.offers.push({ id, distributor: `D-${id}`, route: 'theatrical', minimumGuarantee: 0, territories, releaseWindowDays: 30, expiresAt: 0, status: 'accepted', reported: { gross, net: gross / 2, overagePaid: 0 } } as never);
+      p.releases.push({ id: `r-${id}`, route: 'theatrical', date, territories, distributor: `D-${id}`, note: '', status: 'released', offerId: id });
+    };
+    run('us', ['US'], 120_000_000);
+    run('fr', ['FR'], 40_000_000);
+    const e = s.editions.find((x) => x.id === 'golden-globes-2027')!;
+    expect(e.rulesId).toBe('golden-globes-2027@4');
+    const cat = institution('golden-globes').categories.find((c) => c.id === 'box-office')!;
+    const why = () => checkEligibility(s, p, e, cat).reasons.join(' ');
+    expect(why()).not.toMatch(/reported/);
+    p.offers[0].reported!.gross = 90_000_000; // $130 million worldwide, $90 million in the US
+    expect(why()).toMatch(/Its cinemas have reported \$130,000,000 worldwide, \$90,000,000 of it in the United States, in the qualifying year; this award needs \$150,000,000, \$100,000,000 of it in the United States\./);
+    run('eu-us', ['US', 'GB'], 50_000_000); // worldwide only: its report isn't split by country
+    expect(why()).toMatch(/\$180,000,000 worldwide, \$90,000,000 of it/);
+    run('late', ['US'], 30_000_000, '2027-01-10'); // after the qualifying year
+    expect(why()).toMatch(/\$180,000,000 worldwide/);
+    e.rulesId = 'golden-globes-2027@3'; // version 3 asked only for a theatrical release
+    expect(why()).not.toMatch(/reported/);
+  });
+});

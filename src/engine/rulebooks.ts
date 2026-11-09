@@ -137,6 +137,11 @@ export interface CategoryRules {
    * supporting performers in a limited series or movie). "The minimum stand-alone and contiguous-screen time ... is 5%".
    */
   screenShare?: Ruled<{ atLeast: number; per: 'episode' | 'whole' }>;
+  /**
+   * Box office in the qualifying window: at least `worldwide` dollars gross from theatrical releases, `domestic` of them in
+   * `country` (the Golden Globes' Cinematic and Box Office Achievement, B.1.b), from what distributors have reported.
+   */
+  boxOffice?: Ruled<{ worldwide: number; domestic: number; country: string }>;
   /** Who is named and receives the award for a work: credited directors, or credited producers (at most `max`). */
   recipients?: Ruled<{ credit: 'director' | 'producer' | 'director-and-producer'; max?: number }>;
 }

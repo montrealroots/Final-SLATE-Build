@@ -194,3 +194,15 @@ export function screenShare(p: Project, c: Credit, per: 'episode' | 'whole'): nu
   for (const s of scenes) byEp.set(s.episode, (byEp.get(s.episode) ?? 0) + s.estMinutes);
   return Math.max(0, ...byEp.values()) / Math.max(1, p.axes.targetRuntimeMin);
 }
+
+/**
+ * Theatrical gross the distributors have reported for releases dated in the window: worldwide, and from releases only in
+ * `country`. A release that covers that country and others counts toward the worldwide total only, since its report
+ * isn't split by country.
+ */
+export function boxOffice(p: Project, country: string, window?: { from: string; to: string }): { worldwide: number; domestic: number } {
+  const theatrical = p.releases.filter((r) => r.route === 'theatrical' && r.status === 'released' && (!window || (r.date >= window.from && r.date <= window.to)));
+  // A release's earnings are what the distributor of its accepted offer has reported (distribution.ts).
+  const gross = (rs: typeof theatrical) => rs.reduce((a, r) => a + (p.offers.find((o) => o.id === r.offerId)?.reported?.gross ?? 0), 0);
+  return { worldwide: gross(theatrical), domestic: gross(theatrical.filter((r) => r.territories.length === 1 && r.territories[0] === country)) };
+}

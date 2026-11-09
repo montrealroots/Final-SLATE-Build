@@ -634,7 +634,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Golden Globes 2027, version 2: Non-English Language needs a run in its country of origin, not in the US; TV acting reads the television rules', () => {
     const s = startLife('gg2');
     const e = ed(s, 'golden-globes-2027');
-    expect(e.rulesId).toBe('golden-globes-2027@3'); // version 3 only adds Non-English Language's dialogue share (tests/recipient-rules.test.ts)
+    expect(e.rulesId).toBe('golden-globes-2027@4'); // versions 3 and 4 add Non-English Language's dialogue share and the box-office threshold (tests/recipient-rules.test.ts)
     s.now = at('America/Los_Angeles', '2026-11-01', 9);
     const film = (where: string) => {
       const p = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'es-madrid' });

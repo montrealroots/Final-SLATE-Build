@@ -559,6 +559,22 @@ const GOLDEN_GLOBES_2027_3: RuleBook = {
 // ---------------- Primetime Emmys: 78th (2026, verified) and 79th (2027, projected) ----------------
 
 const EMMY_SOURCE: RuleSource = { id: 'em78-rules', publisher: 'Television Academy', title: '78th Emmy Awards 2025-2026 Rules and Procedures (version 4, April 7, 2026)', url: 'https://www.televisionacademy.com/rules', edition: '78th Primetime Emmy Awards (2026)', retrieved: CHECKED };
+
+/**
+ * Version 4 (November 9, 2026): Cinematic and Box Office Achievement's threshold, B.1.b: "a gross box office receipt total
+ * of at least $150 million worldwide during the qualifying year (of which $100 million must come from the U.S. domestic box
+ * office)". Until then the category asked only for a theatrical release. SLATE reads what distributors have reported for
+ * theatrical releases dated in 2026; a release covering the US and other countries counts toward the worldwide total only.
+ * Not modeled: "commensurate digital streaming viewership" (SLATE records no viewership) and the projections allowed for
+ * releases after November 21 (B.1.c).
+ */
+const GOLDEN_GLOBES_2027_4: RuleBook = {
+  ...GOLDEN_GLOBES_2027_3, id: 'golden-globes-2027@4', version: 4,
+  categories: {
+    ...GOLDEN_GLOBES_2027_3.categories,
+    'box-office': { ...GOLDEN_GLOBES_2027_3.categories['box-office'], boxOffice: v({ worldwide: 150_000_000, domestic: 100_000_000, country: 'US' }, 'gg84-rules', 'At least $150 million worldwide in 2026, $100 million of it from the US box office (B.1.b); SLATE reads what distributors have reported for theatrical releases.') },
+  },
+};
 function emmys(year: number, mk: typeof v): Record<string, CategoryRules> {
   const p = year === 2026 ? '' : ' From the 2025-2026 rules; the 2026-2027 rules are not published yet.';
   const base: CategoryRules = {
@@ -1057,5 +1073,5 @@ const PGA_2027: RuleBook = {
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
 ];

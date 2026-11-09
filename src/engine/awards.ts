@@ -471,6 +471,12 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     if (getPlace(p.axes.basePlaceId).country === 'US') reasons.push('This category is for films made outside the United States.');
     if (!rules?.nonEnglish && p.axes.dialogueLanguages[0] === 'en') reasons.push('This category is for films whose dialogue is mostly not in English.');
   }
+  if (rules?.boxOffice) {
+    const want = rules.boxOffice.value;
+    const got = catalogRules().boxOffice(p, want.country, rules.qualifying?.value);
+    const usd = (n: number) => n.toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 });
+    if (got.worldwide < want.worldwide || got.domestic < want.domestic) reasons.push(`Its cinemas have reported ${usd(got.worldwide)} worldwide, ${usd(got.domestic)} of it in ${countryWords(want.country)}, in the qualifying year; this award needs ${usd(want.worldwide)}, ${usd(want.domestic)} of it in ${countryWords(want.country)}.`);
+  }
   if (rules?.nonEnglish) {
     const share = catalogRules().nonEnglishShare(p);
     if (share === null && p.axes.dialogueLanguages[0] === 'en') reasons.push('It has no written dialogue and its first dialogue language is English; this category needs more than half the dialogue in another language.');
