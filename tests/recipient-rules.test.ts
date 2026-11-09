@@ -192,3 +192,24 @@ describe('Emmys, directing and writing: "for a single episode", to those credite
     expect(categoryRules(e, 'drama')?.oneEpisode).toBeUndefined(); // the program award is the season's
   });
 });
+
+describe('Emmys, limited or anthology series: the complete series when credited on every part, else one part (Categories 26, 115)', () => {
+  it('a writer of all four parts enters the whole series; once another writer shares part 2, the entry is one part', () => {
+    const s: GameState = startLife('lim', 'us-los-angeles');
+    const p = buildProject(s, { title: 'The Long Winter', format: 'short', medium: 'live-action', runtime: 20 }, [{ name: 'Ines', patch: { roleSize: 'lead' } }], [{ place: 'Farm', chars: ['Ines'], minutes: 3 }]);
+    approve(s, p);
+    Object.assign(p.axes, { format: 'limited-series', episodeCount: 4, targetRuntimeMin: 50 });
+    const w = (id: string, name: string, episodes: number[] | 'all', billing: number): Credit => ({ id, person: name, personName: name, contribution: 'Written By', roleId: 'writer', episodes, billing });
+    p.credits = [w('w1', 'You', [1, 2, 3, 4], 1)];
+    const e = s.editions.find((x) => x.id === 'emmys-2027')!;
+    const cat = institution('emmys').categories.find((c) => c.id === 'writing-limited')!;
+    const rules = categoryRules(e, cat.id);
+    expect(entryEpisodes(s, p, cat, rules)).toEqual([]); // nothing to choose: the complete series
+    expect(checkEligibility(s, p, e, cat).recipients.map((c) => c.personName)).toEqual(['You']);
+    p.credits.push(w('w2', 'Mo Sato', [2], 2));
+    expect(entryEpisodes(s, p, cat, rules)).toEqual([1, 2, 3, 4]);
+    expect(checkEligibility(s, p, e, cat, undefined, undefined, 2).recipients.map((c) => c.personName)).toEqual(['You', 'Mo Sato']);
+    expect(checkEligibility(s, p, e, cat, undefined, undefined, 3).recipients.map((c) => c.personName)).toEqual(['You']);
+    expect(categoryRules(e, 'directing-limited')?.oneEpisode?.value).toEqual({ max: 2, wholeWhenAll: true });
+  });
+});

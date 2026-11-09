@@ -596,15 +596,21 @@ function recipientMissingReason(cat: Category): string {
 export function categoryRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules, episode?: number): Credit[] {
   const all = ruledRecipients(state, p, cat, chosen, rules);
   if (!rules?.oneEpisode || !isEpisodic(p.axes.format)) return all;
-  // One episode: those credited on it (the first episode with anyone credited, until one is chosen), at most `max`.
+  // One episode: those credited on it (the first episode with anyone credited, until one is chosen), at most `max`;
+  // entered whole when there is no episode to choose (`wholeWhenAll`).
   const ep = episode ?? entryEpisodes(state, p, cat, rules)[0];
+  if (ep === undefined) return rules.oneEpisode.value.max ? all.slice(0, rules.oneEpisode.value.max) : all;
   const on = all.filter((c) => c.episodes === 'all' || c.episodes.includes(ep)).sort((a, b) => a.billing - b.billing);
   return rules.oneEpisode.value.max ? on.slice(0, rules.oneEpisode.value.max) : on;
 }
 
-/** For a category entered for one episode: the episodes someone credited for it worked on, in order. */
+/**
+ * For a category entered for one episode: the episodes someone credited for it worked on, in order. None when the work
+ * is entered whole (`wholeWhenAll`, everyone credited on every part).
+ */
 export function entryEpisodes(state: GameState, p: Project, cat: Category, rules?: CategoryRules): number[] {
   const all = ruledRecipients(state, p, cat, undefined, rules);
+  if (rules?.oneEpisode?.value.wholeWhenAll && all.every((c) => c.episodes === 'all' || c.episodes.length >= p.axes.episodeCount)) return [];
   return Array.from({ length: p.axes.episodeCount }, (_, i) => i + 1).filter((n) => all.some((c) => c.episodes === 'all' || c.episodes.includes(n)));
 }
 
