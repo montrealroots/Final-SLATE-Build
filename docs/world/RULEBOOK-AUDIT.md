@@ -589,7 +589,9 @@ pages answered after a 503 earlier the same day.
   European-elements points; a major-festival selection or a seven-day release in three countries) aren't anything SLATE
   records yet, so the categories stay on SLATE's rules rather than take a partial rule.
 - **Series Mania and the International Emmys:** no current competition rules were found (Series Mania's latest festival
-  rules found are 2021's; the International Emmys' rules page returned HTTP 404).
+  rules found are 2021's; the International Emmys' rules page returned HTTP 404). The International Emmys' Entry FAQ gives
+  the deadline (January 31 at noon Eastern), that a non-US organization enters and one category per program;
+  `international-emmys-2026@1` and `-2027@1` (projected) hold the deadline only, so eligibility stays SLATE's.
 - **BAFTA Film Awards 2027:** bafta.org (the rules page and the press release "2027 EE BAFTA Film Awards opens for
   entries") refused this environment (HTTP 403), on both passes. Search summaries give a longlist on January 7, nominations
   on January 19 and the ceremony on February 21, 2027, but not the eligibility period; **not used**: BAFTA stays

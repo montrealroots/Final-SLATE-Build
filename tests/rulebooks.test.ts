@@ -873,6 +873,14 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(categoryRuleStatus(rulebook('aacta-2027@1'), 'song')).toBe('simulated'); // shared with television: SLATE's
   });
 
+  it('International Emmys: the FAQ gives the January 31 noon deadline only, so eligibility stays SLATE\'s', () => {
+    const s = startLife('iemmy');
+    const e = ed(s, 'international-emmys-2027');
+    expect(e.rulesId).toBe('international-emmys-2027@1');
+    expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/New_York', '2027-01-31', 12));
+    expect(categoryRuleStatus(rulebook('international-emmys-2026@1'), 'drama')).toBe('simulated');
+  });
+
   it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {
     const s = startLife('idfa');
     const e = ed(s, 'idfa-2026');

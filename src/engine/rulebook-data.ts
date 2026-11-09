@@ -1278,8 +1278,27 @@ const AACTA_2027: RuleBook = {
   },
 };
 
+// ---------------- International Emmy Awards ----------------
+
+/**
+ * Read November 9, 2026: the Entry FAQ (iemmys.tv/entries-judging/faq/), which gives the 2026 competition's deadline,
+ * "January 31, 2026 at 12 noon E.S.T.", that a non-US organization or individual enters, and that a program goes into one
+ * category only. The Rules & Regulations document it refers to isn't linked from the entry pages; its eligibility dates
+ * and running times stay SLATE's, so these books hold a deadline only (`categoryRuleStatus` counts them as SLATE's rules).
+ * 2027 carries the date a year on, projected.
+ */
+const IEMMY_SOURCE: RuleSource = { id: 'iemmy-faq', publisher: 'International Academy of Television Arts & Sciences', title: 'International Emmy Awards: Entry FAQ', url: 'https://www.iemmys.tv/entries-judging/faq/', edition: '54th International Emmy Awards (2026)', retrieved: '2026-11-09' };
+const iemmyBook = (year: number, mk: typeof v): RuleBook => ({
+  id: `international-emmys-${year}@1`, institutionId: 'international-emmys', year, version: 1, checked: '2026-11-09', sources: [IEMMY_SOURCE],
+  categories: Object.fromEntries(['arts', 'actress', 'actor', 'comedy', 'documentary', 'drama', 'kids-animation', 'kids-factual', 'kids-live-action', 'non-scripted', 'short-form', 'sports-documentary', 'tv-movie'].map((id) => [id, {
+    deadlines: mk([{ date: `${year}-01-31`, time: '12:00', zone: 'America/New_York' }], 'iemmy-faq', `Entries by January 31 at 12 noon Eastern.${year === 2026 ? '' : ' From the 2026 competition; the 2027 dates are not published yet.'}`),
+  }])),
+});
+const INTERNATIONAL_EMMYS_2026 = iemmyBook(2026, v);
+const INTERNATIONAL_EMMYS_2027 = iemmyBook(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 competition.')) as typeof v);
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2, AACTA_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2, AACTA_2027, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027,
 ];
