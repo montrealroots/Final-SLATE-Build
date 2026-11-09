@@ -56,22 +56,26 @@ export function applyDesignChange(state: GameState, p: Project, characterId: str
   const approved = p.drafts.find((d) => d.number === p.approvedDraft);
   const ac = approved?.characters.find((x) => x.id === characterId);
   if (ac) Object.assign(ac, { ...c });
+  const redone: string[] = [];
   for (const task of p.tasks) {
     if (task.assetRef === characterId && task.needsVersion !== undefined && task.needsVersion < c.designVersion) {
       task.needsVersion = c.designVersion;
       task.done = 0;
       task.status = 'waiting';
       task.doneAt = undefined;
+      redone.push(task.id);
     }
     const scene = approvedScenes(p).find((s) => s.id === task.sceneIds[0]);
     if (scene?.participants.includes(characterId) && ['anim:animation', 'sm:animation'].includes(task.kind)) {
       if (task.status !== 'done' || redoFinished) {
         task.done = 0;
         task.status = 'waiting';
+        redone.push(task.id);
         // Downstream per-scene tasks restart too.
         for (const down of p.tasks.filter((x) => x.sceneIds[0] === scene.id && x.id !== task.id && /^(anim|sm|hy):/.test(x.kind))) {
           down.done = 0;
           down.status = 'waiting';
+          redone.push(down.id);
         }
       }
     }
@@ -81,7 +85,7 @@ export function applyDesignChange(state: GameState, p: Project, characterId: str
     a.ready = false;
     a.stage = 'Needs Rebuild';
   }
-  p.changeOrders.push({ id: newId(state, 'co'), at: state.now, summary: `${c.name}'s design changed.${redoFinished ? ' Finished shots will be redone.' : ' Finished shots keep the old design.'}`, costDelta: 0, affectedTasks: [], decision: redoFinished ? 'accepted' : 'kept-old' });
+  p.changeOrders.push({ id: newId(state, 'co'), at: state.now, summary: `${c.name}'s design changed.${redoFinished ? ' Finished shots will be redone.' : ' Finished shots keep the old design.'}`, affectedTasks: [...new Set(redone)], decision: redoFinished ? 'accepted' : 'kept-old' });
   ensureWorkEvent(state, p);
 }
 

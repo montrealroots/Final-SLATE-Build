@@ -10,6 +10,7 @@ import {
 } from './engine-api';
 import type { Category } from '../src/engine/awards';
 import { audienceContentNote, cutConsequences, placementExplained } from '../src/engine/script-explain';
+import { findPlace } from '../src/data/places';
 import type { DistributionOffer, GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
 
@@ -74,10 +75,14 @@ describe("award placement is the producer's, never a story function's", () => {
     expect(estimateDays(narr.p, 'actor', id(narr.p), 'on-camera')).toBe(estimateDays(plain.p, 'actor', id(plain.p), 'on-camera') + 1);
   });
 
-  it('where it competes: declared comedy or drama, else its genres', () => {
+  it('where it competes: declared comedy or drama, else its primary genres', () => {
     const { p } = film('fx-register');
     expect(competesAs(p)).toBe('drama');
     p.axes.genres = [{ id: 'satire', emphasis: 'primary' }];
+    expect(competesAs(p)).toBe('comedy');
+    p.axes.genres = [{ id: 'courtroom-drama', emphasis: 'primary' }, { id: 'satire', emphasis: 'secondary' }];
+    expect(competesAs(p)).toBe('drama'); // a comic streak in a drama
+    p.axes.genres = [{ id: 'courtroom-drama', emphasis: 'secondary' }, { id: 'satire', emphasis: 'primary' }];
     expect(competesAs(p)).toBe('comedy');
     p.axes.register = 'drama';
     expect(competesAs(p)).toBe('drama');
@@ -219,15 +224,26 @@ describe('text is a record and a document, never a score or a timer', () => {
     expect(run({})).toBe(run({ description: 'A nurse.', wants: 'To leave.', fears: 'Staying.' }));
   });
 
-  it('briefs and the story setting add no work: the same tasks with or without them', () => {
-    const { p } = film('fx-briefs');
+  it('briefs add no work; a setting place in another country than the base is researched before design and costumes', () => {
+    const { s, p } = film('fx-briefs');
     const units = () => buildTasks(p).map((t) => `${t.id}:${t.units}`);
     const with_ = units();
     p.axes.tone = '';
     p.story.intendedExperience = '';
     p.axes.storySetting = '';
-    p.axes.settingPlaceId = 'fr-paris';
     expect(units()).toEqual(with_);
+    const base = findPlace(p.axes.basePlaceId)!;
+    // Same country as the base: nothing to research.
+    p.axes.settingPlaceId = base.id;
+    approve(s, p);
+    expect(buildTasks(p).some((t) => t.id === 'prep:research:setting')).toBe(false);
+    // Abroad: Setting Research, and design and costumes wait for it.
+    p.axes.settingPlaceId = base.country === 'FR' ? 'jp-tokyo' : 'fr-paris';
+    approve(s, p);
+    expect(p.requirements.find((r) => r.kind === 'setting-research')?.label).toMatch(/^(Paris, France|Tokyo, Japan)$/);
+    const tasks = buildTasks(p);
+    expect(tasks.find((t) => t.id === 'prep:research:setting')?.units).toBe(3);
+    for (const id of ['prep:design:all', 'prep:costume:all']) expect(tasks.find((t) => t.id === id)?.dependsOn).toContain('prep:research:setting');
   });
 });
 

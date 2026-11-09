@@ -13,7 +13,7 @@ import { approve, buildProject, startLife } from './helpers';
 const blankDoc = (id: string, contributor: string): Scene => ({
   id, episode: 1, heading: { intExt: 'INT', place: 'Boathouse', time: 'DAY' }, storyLocation: 'Boathouse', participants: [], objective: 'Hear them.', action: '',
   dialogue: [], turningPoint: '', estMinutes: 3, props: [], animals: [], vehicles: [], stunts: '', crowd: 0, intimacy: false, water: false, vfx: [],
-  songs: [], dance: false, kind: 'interview', basis: 'sourced', contributorIds: [contributor], evidenceIds: [], intentionalDiscontinuity: false,
+  dance: false, kind: 'interview', basis: 'sourced', contributorIds: [contributor], evidenceIds: [], intentionalDiscontinuity: false,
 });
 
 function doc(tag: string) {

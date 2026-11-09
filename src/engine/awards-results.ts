@@ -7,7 +7,7 @@ import {
   festivalListFor, involved, qualifyingWin, rivalTitle, seasonSlate, compactEdition, entryKey, keyProject, type Category, type Judging,
 } from './awards';
 import { craftScore, requirementProblems } from './awards-rules';
-import { isEpisodic } from './projects';
+import { FORMAT_LABELS, MEDIUM_LABELS, isEpisodic } from './projects';
 import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { COMEDY_MUSICAL } from './script-effects';
 import { addLog, schedule, type HandlerResult } from './state';
@@ -207,7 +207,13 @@ export function decidePrizes(state: GameState, ed: Edition, messages: string[]):
 }
 
 /** What an edition shows for a category: the selected or nominated works, the winners, and an honorary recipient. */
-export interface ShownResult { stage: 'selection' | 'nomination' | 'winner'; field: string[]; winners: string[]; honoree?: 'player' | string; none?: boolean }
+export interface ShownResult { stage: 'selection' | 'nomination' | 'winner'; field: string[]; winners: string[]; honoree?: 'player' | string; none?: boolean; /** The competing works in the field, described. */ about: string[] }
+
+/** A competing work in words: its title, length, medium, format and people (the simulated season's slate). */
+export function rivalWords(f: RivalFilm): string {
+  const who = Object.values(f.people);
+  return `${f.title}: a ${f.runtimeMin}-minute ${MEDIUM_LABELS[f.medium].toLowerCase()} ${FORMAT_LABELS[f.format].toLowerCase()}${who.length ? `, with ${who.join(' and ')}` : ''}`;
+}
 
 const shownCache = new Map<string, ShownResult | null>();
 
@@ -222,7 +228,8 @@ export function publicResult(state: GameState, ed: Edition, cat: Category): Show
     if (!stored.revealed) return null;
     const all = [...stored.projectIds, ...stored.rivalIds].map(title).filter((x): x is string => !!x);
     const ws = (stored.winners ?? (stored.winner ? [stored.winner] : [])).map(title).filter((x): x is string => !!x);
-    return { stage: stored.stage, field: all, winners: ws, honoree: stored.honoree, none: stored.stage === 'winner' && !ws.length && !stored.honoree };
+    const about = stored.rivalIds.map((id) => state.rivalFilms[ed.rivals.find((x) => x.id === id)?.film ?? id]).filter((f): f is RivalFilm => !!f).map(rivalWords);
+    return { stage: stored.stage, field: all, winners: ws, honoree: stored.honoree, none: stored.stage === 'winner' && !ws.length && !stored.honoree, about };
   }
   if (ed.status !== 'announced' && ed.status !== 'complete') return null;
   const key = `${state.seed}|${ed.id}|${cat.id}|${ed.status}`;
@@ -232,21 +239,21 @@ export function publicResult(state: GameState, ed: Edition, cat: Category): Show
   let out: ShownResult | null;
   if (cat.kind === 'honorary') {
     const r = stream(state.seed, 'honoree', ed.id, cat.id);
-    out = { stage: 'winner', field: [], winners: [], honoree: `${pick(r, ['Iris', 'Teo', 'Marisol', 'Kwame', 'Ana', 'Lars', 'Mina', 'Rafi', 'Odile', 'Sung-min', 'Leila', 'Joaquín'])} ${pick(r, ['Varga', 'Mbeki', 'Holt', 'Ruiz', 'Okoro', 'Aalto', 'Brandt', 'Sato', 'Navarro', 'Moreau', 'Osei', 'Tanaka'])}` };
+    out = { stage: 'winner', field: [], winners: [], about: [], honoree: `${pick(r, ['Iris', 'Teo', 'Marisol', 'Kwame', 'Ana', 'Lars', 'Mina', 'Rafi', 'Odile', 'Sung-min', 'Leila', 'Joaquín'])} ${pick(r, ['Varga', 'Mbeki', 'Holt', 'Ruiz', 'Okoro', 'Aalto', 'Brandt', 'Sato', 'Navarro', 'Moreau', 'Osei', 'Tanaka'])}` };
   } else if (!enterable(cat)) {
     if (!done) out = null;
     else {
       const field = prizeField(state, ed, categoriesFor(institution(ed.institutionId), ed.year), cat);
       const ws = winnersOf(cat, judge(state, ed, cat, 'winner', field.map((x) => ({ id: x.id, kind: 'rival' as const, score: x.score }))));
       const t = ws.map((id) => field.find((x) => x.id === id)!.film.title);
-      out = { stage: 'winner', field: [], winners: t, none: !t.length };
+      out = { stage: 'winner', field: [], winners: t, none: !t.length, about: [] };
     }
   } else {
     const field = publicField(state, ed, cat);
     const titles = field.map((x) => x.film.title);
     let winners: string[] = [];
     if (done && cat.competitive) winners = winnersOf(cat, judge(state, ed, cat, 'winner', field.map((x) => ({ id: x.id, kind: 'rival' as const, score: x.score })))).map((id) => field.find((x) => x.id === id)!.film.title);
-    out = { stage: done && cat.competitive ? 'winner' : festival ? 'selection' : 'nomination', field: titles, winners, none: done && cat.competitive && !winners.length };
+    out = { stage: done && cat.competitive ? 'winner' : festival ? 'selection' : 'nomination', field: titles, winners, none: done && cat.competitive && !winners.length, about: field.map((x) => rivalWords(x.film)) };
   }
   if (shownCache.size > 2000) shownCache.clear();
   shownCache.set(key, out);

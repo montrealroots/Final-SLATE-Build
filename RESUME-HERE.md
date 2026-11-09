@@ -56,7 +56,19 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 9, 2026, after #55): the owner's recovered awards and festival sources
+### Newest Request (November 9, 2026, after #55): every saved field is read
+
+The owner asked for an input audit, then: "Everything that doesn't read needs to read perfectly."
+
+- Done: every field of the saved game has a reader, held by `tests/model-readers.test.ts`.
+  - The four inputs that changed nothing now do: primary genre, setting place, shortlist, thread characters.
+  - Records are shown where the player would look for them.
+  - Nine copies and dead fields were removed.
+  - See `docs/INPUT-AUDIT.md`.
+- Next, when adding a field to the saved game: give it a reader in the same change, or the check fails.
+- Open: the intermittent WebKit loss of a working title (`QA-REPORT.md`, Open).
+
+### Newest Request (November 9, 2026, merged as #55): the owner's recovered awards and festival sources
 
 Ten organizers' sources, recovered by the owner's research pass, read again here where this environment could reach them,
 and applied rule by rule (`src/engine/rulebook-data.ts`, the "Recovered sources" section; tests in

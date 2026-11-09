@@ -7,15 +7,20 @@
 // - What was removed in the revision, and why, is in docs/SCREENWRITING-AUDIT.md: story functions deciding award
 //   placement, a rating inferred from one checkbox, an 18+ ban on broadcast, text-presence delays and bonuses, the
 //   turning-point penalty, word-count notes and word-priced subtitles.
-import type { ContentLevel, Project, RoleSize, StoryCharacter } from './types';
+import type { ContentLevel, GenrePick, Project, RoleSize, StoryCharacter } from './types';
 
 /** Comedy and musical genres: the categories that split drama from comedy read these (awards.ts). */
 export const COMEDY_MUSICAL = ['comedy', 'musical', 'romantic-comedy', 'action-comedy', 'buddy-comedy', 'screwball-comedy', 'slapstick', 'farce', 'parody', 'satire', 'black-comedy', 'stoner-comedy', 'horror-comedy', 'backstage-musical', 'jukebox-musical'];
 
-/** Where the project competes where awards split drama from comedy: the producer's declaration, else its genres. */
+/**
+ * Where the project competes where awards split drama from comedy: the producer's declaration, else its primary genres.
+ * A secondary comedy genre is a flavour of a drama, not a comedy. Until November 9, 2026 any comedy genre made it a
+ * comedy, and which genres were primary changed nothing anywhere.
+ */
 export function competesAs(p: Project): 'comedy' | 'drama' {
   if (p.axes.register) return p.axes.register;
-  return p.axes.genres.some((g) => COMEDY_MUSICAL.includes(g.id)) ? 'comedy' : 'drama';
+  const primary: GenrePick[] = p.axes.genres.filter((g) => g.emphasis === 'primary');
+  return (primary.length ? primary : p.axes.genres).some((g) => COMEDY_MUSICAL.includes(g.id)) ? 'comedy' : 'drama';
 }
 
 // ---------------- Award placement ----------------

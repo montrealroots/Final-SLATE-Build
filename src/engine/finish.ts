@@ -507,6 +507,8 @@ export function acceptDistribution(state: GameState, p: Project, offerId: string
   addLog(state, `You accepted ${o.distributor}'s offer of ${money(o.minimumGuarantee)} for ${p.title}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
   const rec = planRelease(state, p, { route: o.route, date, territories: o.territories, distributor: o.distributor });
   if (o.exclusive) o.exclusiveUntil = addDaysToKey(date, EXCLUSIVE_DAYS);
+  // The release carries the terms the player chose, in its own words on the Release tab.
+  rec.note = o.broadcastEdit ? 'In an earlier slot, with a broadcast edit.' : o.slot === 'late' ? 'In a late slot.' : '';
   rec.offerId = o.id;
   rec.obligationId = materials.id;
   return rec;
@@ -551,6 +553,7 @@ export function cancelRelease(state: GameState, p: Project, releaseId: string): 
     }
   }
   r.status = 'cancelled';
+  r.note = offer ? `Cancelled; ${money(offer.minimumGuarantee)} went back to ${offer.distributor}.` : 'Cancelled before it happened.';
   cancelEvents(state, (e) => e.kind === 'release' && e.payload.releaseId === r.id);
   if (r.obligationId) cancel(state, p, r.obligationId);
   const o = r.offerId ? p.offers.find((x) => x.id === r.offerId) : undefined;

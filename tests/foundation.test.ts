@@ -4,7 +4,7 @@ import { ActiveClock } from '../src/engine/clock';
 import { holidaysForYear, easterSunday } from '../src/engine/holidays';
 import { memoryStore, readSave, writeSave, deserialize, serialize, listSaves, SaveFormatError, canTakeLock, takeLock } from '../src/engine/save';
 import {
-  addPlan, advanceTargetInstant, characterAge, newGame, processUntil, startSleep, validateDraft, snooze,
+  addPlan, reminderWords, sleptWords, advanceTargetInstant, characterAge, newGame, processUntil, startSleep, validateDraft, snooze,
 } from '../src/engine/state';
 import { DAY, HOUR, MINUTE, addLocal, ageOn, localParts, localToInstant, observedBirthday } from '../src/engine/time';
 import { daylight, forecast, weatherOn, wetProbability } from '../src/engine/weather';
@@ -189,6 +189,29 @@ describe('creation and events', () => {
     expect(r2.done).toBe(true);
     expect(s.plans[0].status).toBe('done');
     expect(s.log.filter((l) => l.text.includes('Table Read starts')).length).toBe(1);
+  });
+  it('a project\'s plan is the project\'s: its day-ahead reminder fires, names the day and leads to the project', () => {
+    const s = newGame(draft(), 0, 'save1');
+    const start = s.now;
+    const id = addPlan(s, { title: 'Attend A Festival', start: start + 3 * DAY, durationMin: 180, remindMin: 1440, projectId: 'pr-x' });
+    const plan = s.plans.find((x) => x.id === id)!;
+    expect([plan.kind, plan.projectId]).toEqual(['project', 'pr-x']);
+    expect(reminderWords(plan.remindMin)).toBe('A day before');
+    expect(reminderWords(null)).toBe('No reminder');
+    expect(reminderWords(30)).toBe('30 minutes before');
+    const r = processUntil(s, start + 3 * DAY - MINUTE, 'advance');
+    expect(r.interruptedBy?.event.kind).toBe('plan-reminder');
+    expect(r.interruptedBy?.message).toMatch(/^Attend A Festival starts on .+ at \d{1,2}:\d{2} [AP]M\.$/);
+    expect(s.log.find((l) => l.text.startsWith('Attend A Festival starts'))?.route).toEqual({ view: 'project', projectId: 'pr-x', tab: 'festivals' });
+    expect(s.log.find((l) => l.text.startsWith('Attend A Festival starts'))?.projectId).toBe('pr-x');
+  });
+  it('waking says how long you slept', () => {
+    const s = newGame(draft(), 0, 'save1');
+    startSleep(s, s.now + 7.5 * HOUR, true);
+    const r = processUntil(s, s.now + 7.5 * HOUR, 'sleep');
+    expect(r.interruptedBy?.message).toMatch(/^You slept 7 and a half hours\. It's /);
+    expect(sleptWords(HOUR)).toBe('You slept 1 hour.');
+    expect(sleptWords(20 * MINUTE)).toBe('You slept 20 minutes.');
   });
   it('sleep wakes for obligations by default; snoozing past one misses it', () => {
     const s = newGame(draft(), 0, 'save1');

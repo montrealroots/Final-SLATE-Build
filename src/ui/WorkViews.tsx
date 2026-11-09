@@ -9,7 +9,8 @@ import { PLACEMENT_LABELS, attachSong, changeVersionSong, createSong, detachSong
 import { songStatus, songUses, songsOf } from '../engine/songs';
 import { versionScenes } from '../engine/versions';
 import type { StoryCharacter as Character, GameState, Project, ProjectVersion, Scene, Song, SongUse } from '../engine/types';
-import { Check, SelectField, TextField } from './components';
+import { Check, SelectField, TextField, longLocal } from './components';
+import { getPlace } from '../data/places';
 import { store, useGame } from './store';
 
 const SOURCES: { value: SongSource; label: string }[] = [
@@ -110,7 +111,7 @@ function SongRow({ p, s, onError }: { p: Project; s: Song; onError: (e: string |
   return (
     <li aria-label={`Song: ${s.title}`}>
       <div className="row-wrap">
-        <span className="grow"><strong>{s.title}</strong> <span className="chip">{songStatus(s)}</span>{s.license ? <span className="dim"> · Licensed from {s.license.holder}</span> : null}</span>
+        <span className="grow"><strong>{s.title}</strong> <span className="chip">{songStatus(s)}</span>{s.license ? <span className="dim"> · Licensed from {s.license.holder}</span> : null}<span className="dim small"> · Added {longLocal(s.createdAt, getPlace(p.axes.basePlaceId).zone).date}</span></span>
         {open && !s.uses.length && <button className="btn btn-sm" aria-label={`Remove The Song ${s.title}`} onClick={() => act((q) => removeSong(q, s.id))}>Remove Song</button>}
       </div>
       <div className="dim small">{writersWords(g, s)}{s.performers.length ? ` Performed by ${s.performers.map((x) => x.name).join(', ')}.` : ''}</div>
@@ -214,7 +215,7 @@ function ScreenTimeRow({ p, s, c, onError }: { p: Project; s: Scene; c: Characte
   const r = recordFor(p, s.id, c.id);
   const [on, setOn] = useState(r ? String(r.rec.onScreen) : '');
   const [heard, setHeard] = useState(r ? String(r.rec.heardOnly) : '');
-  const status = !r ? 'Not recorded: unknown' : r.stale ? 'The scene is shorter than when this was recorded: record it again' : `Recorded: ${minutesWords(r.rec.onScreen)} on screen${r.rec.heardOnly ? `, ${minutesWords(r.rec.heardOnly)} heard only` : ''}`;
+  const status = !r ? 'Not recorded: unknown' : r.stale ? `The scene ran ${minutesWords(r.rec.sceneMinutes)} when this was recorded and runs ${minutesWords(s.estMinutes)} now: record it again` : `Recorded: ${minutesWords(r.rec.onScreen)} on screen${r.rec.heardOnly ? `, ${minutesWords(r.rec.heardOnly)} heard only` : ''}, on ${longLocal(r.rec.at, getPlace(p.axes.basePlaceId).zone).date}`;
   const save = () => onError(store.act((st) => recordScreenTime(st, st.projects.find((x) => x.id === p.id)!, s.id, c.id, Number(on || 0), Number(heard || 0))));
   return (
     <div className="row-wrap spaced" role="group" aria-label={`${c.name} In ${sceneLabel(p, s)}`}>

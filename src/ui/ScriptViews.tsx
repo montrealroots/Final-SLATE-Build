@@ -8,7 +8,7 @@ import {
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, approvedScenes, type ModuleId,
   requirementRemovalImpact, addResearch, removeResearch, updateResearch, resolutionLabel,
-  approvalImpact, combineScenes, combineScenesImpact, duplicateScene, splitScene, splitSceneImpact, FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, type UnscriptedFamily,
+  approvalImpact, combineScenes, combineScenesImpact, duplicateScene, splitScene, splitSceneImpact, FAMILIES, setFamily, setupCompetition, unscriptedOf, withdrawRelease, redactionWords, type UnscriptedFamily,
 } from '../engine';
 import { addAct, addBeat, addThread, removeAct, removeBeat, removeThread, setSceneAct, updateThread } from '../engine/structure-edit';
 // Loaded with this page, not at startup (the startup budget): the engine index leaves season.ts out.
@@ -19,9 +19,12 @@ import { money } from '../engine/budget';
 import { approvalScope, type ScopeChange } from '../engine/cost-cuts';
 import { CONTENT_ISSUES, audienceContentNote, characterPronouns, contentSuggestions, contentSummary, placementExplained, spokenMinutes } from '../engine/script-explain';
 import type { ContentIssue, ContentLevel, Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
-import { Check, Modal, NumberField, SelectField, TextField, plural } from './components';
+import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
 import { PLACEMENT_LABELS, attachSong, detachSong } from '../engine/song-actions';
 import { store, useGame } from './store';
+import { PlacePicker } from './Creation';
+import { adoptPlace } from '../engine/state';
+import { findPlace, getPlace } from '../data/places';
 
 const undoStack = new Map<string, string[]>();
 function snapshot(p: Project) {
@@ -30,6 +33,16 @@ function snapshot(p: Project) {
   if (st.length > 30) st.shift();
   undoStack.set(p.id, st);
 }
+/** Where the story is set, and what that asks of the designers (projects.ts deriveRequirements, production/tasks.ts). */
+function settingNote(p: Project): string {
+  const set = p.axes.settingPlaceId ? findPlace(p.axes.settingPlaceId) : undefined;
+  if (!set) return 'Optional. You shoot at your production base wherever the story is set.';
+  const base = findPlace(p.axes.basePlaceId);
+  return set.country === base?.country
+    ? `Set in ${set.name}. It's in the same country as your base, so your designers work from what they know.`
+    : `Set in ${set.name}, ${set.countryName}. Your designers research it before design and costumes start (Setting Research, from the next approved draft). You still shoot at your base.`;
+}
+
 function edit(p: Project, fn: () => void): string | null {
   return store.act(() => {
     snapshot(p);
@@ -109,7 +122,12 @@ export function ScriptTab({ p }: { p: Project }) {
           <TextField label="Intended Experience" multiline value={p.story.intendedExperience} onChange={(v) => edit(p, () => (p.story.intendedExperience = v))} />
           <TextField label="Tone" value={p.axes.tone} maxLength={80} onChange={(v) => edit(p, () => (p.axes.tone = v))} />
           <TextField label="Story Setting" maxLength={120} value={p.axes.storySetting} onChange={(v) => edit(p, () => (p.axes.storySetting = v))} />
-          <SelectField label="Competes As" value={p.axes.register ?? ''} hint="Where awards that split drama from comedy enter it, as you declare it. Left to its genres, comedy and musical genres compete as comedy."
+          <div className="col gap-1">
+            <PlacePicker label="Story Setting Place" value={p.axes.settingPlaceId ?? ''} onChange={(id, place) => setErr(store.act((s) => { snapshot(p); adoptPlace(s, place); p.axes.settingPlaceId = id; }))} />
+            <p className="dim small">{settingNote(p)}</p>
+            {p.axes.settingPlaceId && <button className="btn btn-sm" onClick={() => setErr(edit(p, () => { delete p.axes.settingPlaceId; }))}>No Setting Place</button>}
+          </div>
+          <SelectField label="Competes As" value={p.axes.register ?? ''} hint="Where awards that split drama from comedy enter it, as you declare it. Left to its genres, it competes as comedy when a primary genre is comedy or musical; a secondary one doesn't change it."
             options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]}
             onChange={(v) => edit(p, () => { if (v) p.axes.register = v as 'comedy' | 'drama'; else delete p.axes.register; })} />
           {!nonfiction && <SelectField label="Source Material" value={p.source?.kind ?? 'original'} hint="Awards with separate original and adapted screenplay categories enter it by what you declare here."
@@ -227,7 +245,7 @@ export function ScriptTab({ p }: { p: Project }) {
               <div className="row-wrap">
                 <div className="grow">
                   <strong>{d.label}</strong> {d.approved && <span className="chip chip-positive">Approved</span>}
-                  <div className="dim">{d.summary || 'First draft.'}</div>
+                  <div className="dim">{d.summary || 'First draft.'} Saved {longLocal(d.savedAt, getPlace(p.axes.basePlaceId).zone).date}.</div>
                 </div>
                 <div className="row gap-2 wrap">
                   <button className="btn btn-sm" onClick={() => setCompare(d.number)}>Compare With Working Copy</button>
@@ -737,7 +755,7 @@ function Facts({ p }: { p: Project }) {
       <ul className="list">
         {p.contributors.map((c) => (
           <li key={c.id} className="row-wrap">
-            <span className="grow">{c.name}{c.role ? `, ${c.role}` : ''} <span className={`chip ${c.consent === 'given' ? 'chip-positive' : c.consent === 'declined' || c.consent === 'withdrawn' ? 'chip-negative' : 'chip-warning'}`}>{{ 'not-asked': 'Consent Not Requested', requested: 'Consent Requested', given: 'Consent Given', declined: 'Consent Declined', withdrawn: 'Withdrew' }[c.consent]}</span>{c.restrictions?.length ? <span className="dim"> On condition: {c.restrictions.map((k) => RESTRICTION_WORDS[k]).join('; ')}.</span> : null}</span>
+            <span className="grow">{c.name}{c.role ? `, ${c.role}` : ''} <span className={`chip ${c.consent === 'given' ? 'chip-positive' : c.consent === 'declined' || c.consent === 'withdrawn' ? 'chip-negative' : 'chip-warning'}`}>{{ 'not-asked': 'Consent Not Requested', requested: 'Consent Requested', given: 'Consent Given', declined: 'Consent Declined', withdrawn: 'Withdrew' }[c.consent]}</span>{c.restrictions?.length ? <span className="dim"> On condition: {c.restrictions.map((k) => RESTRICTION_WORDS[k]).join('; ')}.</span> : null}{c.consent === 'withdrawn' && redactionWords(p, c.id).map((w) => <div key={w} className="dim small">{w}</div>)}</span>
             <div className="row gap-2 wrap">
               {c.consent === 'not-asked' && <button className="btn btn-sm" onClick={() => store.act((s) => requestConsent(s, p, c.id))}>Request Consent</button>}
               {c.consent === 'given' && !p.delivered && <WithdrawButton p={p} contributorId={c.id} name={c.name} />}
@@ -756,10 +774,14 @@ function Facts({ p }: { p: Project }) {
 }
 
 
+/** The scene a note is about, by its label; a scene since removed says so. */
+const noteScene = (p: Project, id: string) => { const s = p.scenes.find((x) => x.id === id); return s ? sceneLabel(p, s) : 'a scene no longer in the script'; };
+
 function Notes({ p }: { p: Project }) {
   const g = useGame();
   const [text, setText] = useState('');
   const [area, setArea] = useState<RevisionNote['area']>('dialogue');
+  const [scene, setScene] = useState('');
   const [err, setErr] = useState<string | null>(null);
   const accepted = p.notes.filter((n) => n.status === 'accepted');
   return (
@@ -771,7 +793,7 @@ function Notes({ p }: { p: Project }) {
       <ul className="list">
         {p.notes.map((n) => (
           <li key={n.id} className="row-wrap">
-            <span className="grow">{n.text} <span className="chip">{n.area.charAt(0).toUpperCase() + n.area.slice(1)}</span> <span className={`chip ${n.status === 'addressed' ? 'chip-positive' : n.status === 'rejected' ? 'chip-negative' : ''}`}>{n.status.charAt(0).toUpperCase() + n.status.slice(1)}</span></span>
+            <span className="grow">{n.text}{n.sceneId && <span className="dim"> ({noteScene(p, n.sceneId)})</span>} <span className="chip">{n.area.charAt(0).toUpperCase() + n.area.slice(1)}</span> <span className={`chip ${n.status === 'addressed' ? 'chip-positive' : n.status === 'rejected' ? 'chip-negative' : ''}`}>{n.status.charAt(0).toUpperCase() + n.status.slice(1)}</span></span>
             {n.status !== 'addressed' && (
               <div className="row gap-2 wrap">
                 {n.status !== 'accepted' && <button className="btn btn-sm" onClick={() => store.act(() => setNoteStatus(p, n.id, 'accepted'))}>Accept Note</button>}
@@ -784,7 +806,8 @@ function Notes({ p }: { p: Project }) {
       <div className="inline-form">
         <TextField label="Note" value={text} onChange={setText} />
         <SelectField label="Area" value={area} options={(['characterization', 'causality', 'structure', 'pacing', 'dialogue', 'visual', 'continuity'] as const).map((a) => ({ value: a, label: a.charAt(0).toUpperCase() + a.slice(1) }))} onChange={setArea} />
-        <button className="btn" disabled={!text.trim()} onClick={() => { setErr(store.act((s) => void addNote(s, p, text, area, null))); setText(''); }}>Add Note</button>
+        <SelectField label="About" value={scene} options={[{ value: '', label: 'The Whole Script' }, ...p.scenes.map((x) => ({ value: x.id, label: sceneLabel(p, x) }))]} onChange={setScene} />
+        <button className="btn" disabled={!text.trim()} onClick={() => { setErr(store.act((s) => void addNote(s, p, text, area, scene || null))); setText(''); }}>Add Note</button>
       </div>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       <button className="btn btn-primary spaced" disabled={!accepted.length || !!p.revision || !!p.delivered} onClick={() => setErr(store.act((s) => void startRevision(s, p)))}>
@@ -967,6 +990,7 @@ function ShowFormat({ p }: { p: Project }) {
                 {comp.results.map((r) => (
                   <li key={r.episode}>
                     Episode {r.episode}: {r.episode === p.axes.episodeCount ? `${nameOf(r.advancing[0])} wins.` : `${r.eliminated.map(nameOf).join(' and ')} ${r.eliminated.length === 1 ? 'leaves' : 'leave'}; ${r.advancing.map(nameOf).join(', ')} ${r.advancing.length === 1 ? 'advances' : 'advance'}.`}
+                    <div className="dim small">Judges' scores out of 100: {Object.entries(r.scores).sort((a, b) => b[1] - a[1]).map(([id, n]) => `${nameOf(id)} ${n}`).join(', ')}.</div>
                   </li>
                 ))}
               </ul>

@@ -103,7 +103,7 @@ export function decideCompetition(state: GameState, p: Project, recorded: (episo
     const ranked = [...inPlay].sort((a, b) => scores[b] - scores[a] || a.localeCompare(b));
     const last = e === p.axes.episodeCount;
     const eliminated = last ? ranked.slice(1) : ranked.slice(Math.max(1, ranked.length - c.eliminatePerEpisode));
-    const result = { episode: e, scores, advancing: ranked.filter((id) => !eliminated.includes(id)), eliminated };
+    const result: CompetitionResult = { episode: e, scores, advancing: ranked.filter((id) => !eliminated.includes(id)), eliminated };
     c.results.push(result);
     made.push(result);
     const nm = (id: string) => p.contributors.find((x) => x.id === id)?.name ?? 'A contestant';
@@ -156,6 +156,14 @@ export function withdrawRelease(state: GameState, p: Project, contributorId: str
   const where = p.episodes.length > 1 ? (made.length === 1 ? 'one episode' : `${made.length} episodes`) : 'the film';
   addLog(state, `${c.name} withdrew from ${p.title}. ${made.length ? `Their footage is being redacted from ${where}.` : 'They were not recorded.'}`, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'script' } });
   return made;
+}
+
+/** What is being cut of a withdrawn contributor, in words: each episode, how many of its scenes, and whether it's done. */
+export function redactionWords(p: Project, contributorId: string): string[] {
+  return (p.unscripted?.redactions ?? []).filter((r) => r.contributorId === contributorId).map((r) => {
+    const done = p.tasks.find((t) => t.id === r.taskId)?.status === 'done';
+    return `Episode ${r.episode}: ${r.sceneIds.length} ${r.sceneIds.length === 1 ? 'segment' : 'segments'} ${done ? 'redacted' : 'being redacted'}.`;
+  });
 }
 
 /** A withdrawn contributor no longer blocks delivery once every redaction of their footage is done. */

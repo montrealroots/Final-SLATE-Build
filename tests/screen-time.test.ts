@@ -81,11 +81,21 @@ describe('screen time is recorded from the cut, and unknown until it is', () => 
     expect(checkEligibility(s, p, e, guest).reasons.join(' ')).toMatch(/Marcus isn't in the cut\./);
   });
 
-  it('a record longer than its scene is now (the script changed) counts as unknown', () => {
+  it('a record made when the scene ran another length (the script changed) counts as unknown, shorter or longer', () => {
     const { s, p, id, scene } = episode('st-stale');
     recordScreenTime(s, p, scene('Dock').id, id('Marcus'), 4);
-    p.drafts.find((d) => d.number === p.approvedDraft)!.scenes.find((x) => x.heading.place === 'Dock')!.estMinutes = 3;
-    expect(screenTotal(p, id('Marcus'), p.drafts.find((d) => d.number === p.approvedDraft)!.scenes)).toMatchObject({ recorded: 0, unknown: 3 });
+    const dock = () => p.drafts.find((d) => d.number === p.approvedDraft)!.scenes.find((x) => x.heading.place === 'Dock')!;
+    const before = dock().estMinutes;
+    const total = () => screenTotal(p, id('Marcus'), p.drafts.find((d) => d.number === p.approvedDraft)!.scenes);
+    expect(total().recorded).toBe(4);
+    dock().estMinutes = 3;
+    expect(total()).toMatchObject({ recorded: 0, unknown: 3 });
+    // Longer: they may be in the added minutes, so the record no longer says how long. Until November 9, 2026 only a
+    // shorter scene made a record stale.
+    dock().estMinutes = before + 2;
+    expect(total()).toMatchObject({ recorded: 0, unknown: before + 2 });
+    dock().estMinutes = before;
+    expect(total().recorded).toBe(4);
   });
 
   it('a limited series\' supporting part is measured against the whole cut entered, and a version is its own cut', () => {

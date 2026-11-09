@@ -129,14 +129,16 @@ export function songCredits(p: Project, scenes: Scene[], versions: { v: ProjectV
  * v7 -> v8: songs become works. Each title a project's scenes listed becomes a song used in the scenes that list it. Its
  * writers and its origin weren't kept, so they stay unknown: a licensed one stays licensed, any other has its origin
  * marked not recorded. Neither can be entered for an original song award, because the save can't show it was written for
- * the project. The scenes keep their old song lists, untouched; nothing reads them now.
+ * the project. The scenes keep their old song lists, untouched; nothing reads them now. From November 9, 2026 a scene has
+ * no song list in the model and new scenes are made without one: only this migration knows the old shape (LegacyScene).
  */
+type LegacyScene = Scene & { songs?: { title: string; licensed: boolean }[] };
 export function migrateV7toV8(raw: Record<string, unknown>): Record<string, unknown> {
   const projects = Array.isArray(raw.projects) ? (raw.projects as Record<string, unknown>[]).map((p) => {
     if (Array.isArray(p.songs)) return p;
     const drafts = Array.isArray(p.drafts) ? (p.drafts as { number: number; scenes?: Scene[] }[]) : [];
     const approved = drafts.find((d) => d.number === p.approvedDraft)?.scenes;
-    const scenes = (approved ?? (Array.isArray(p.scenes) ? p.scenes as Scene[] : [])) ?? [];
+    const scenes: LegacyScene[] = (approved ?? (Array.isArray(p.scenes) ? p.scenes as Scene[] : [])) ?? [];
     const songs: Song[] = [];
     for (const sc of scenes) {
       for (const x of Array.isArray(sc.songs) ? sc.songs : []) {

@@ -131,8 +131,6 @@ export type Format =
   | 'documentary-feature' | 'documentary-short' | 'documentary-series' | 'unscripted-series' | 'web-series' | 'music-video';
 export type Medium = 'live-action' | 'animation' | 'hybrid';
 export type Technique = 'none' | '2d-drawn' | '2d-rigged' | '3d-cg' | 'stop-motion' | 'rotoscope' | 'mixed';
-export type NarrativeBasis = 'fiction' | 'nonfiction' | 'dramatized-factual' | 'hybrid';
-export type ProductionModel = 'self' | 'co-production' | 'commissioned';
 
 export interface GenrePick {
   id: string;
@@ -146,7 +144,6 @@ export interface ProjectAxes {
   format: Format;
   medium: Medium;
   technique: Technique;
-  basis: NarrativeBasis;
   genres: GenrePick[];
   tone: string;
   audience: string; // e.g. 'General', 'Adult', 'Family', 'Children (6–11)'
@@ -164,8 +161,6 @@ export interface ProjectAxes {
   dialogueLanguages: string[];
   targetRuntimeMin: number;
   episodeCount: number; // 1 for single works
-  distributionIntent: string;
-  productionModel: ProductionModel;
   animationQuality: 'limited' | 'tv' | 'feature';
   basePlaceId: string; // where production is based (crew, holidays, weather)
 }
@@ -208,7 +203,6 @@ export interface StoryCharacter {
   /** The character's nationalities as written (country codes), as the player's are; casting shows who shares one (save version 7). */
   nationalities?: string[];
   designVersion: number; // bumping invalidates downstream design-dependent work
-  groupSize?: number; // background groups
 }
 
 export type IntExt = 'INT' | 'EXT' | 'INT/EXT';
@@ -243,7 +237,6 @@ export interface Scene {
   intimacy: boolean;
   water: boolean;
   vfx: string[];
-  songs: { title: string; licensed: boolean }[];
   dance: boolean;
   // Documentary / factual
   kind: 'scripted' | 'interview' | 'actuality' | 'archival' | 'narration' | 'reconstruction' | 'segment';
@@ -363,7 +356,7 @@ export interface Requirement {
   kind:
     | 'character-design' | 'performer' | 'location' | 'set' | 'prop' | 'costume' | 'animal' | 'vehicle' | 'stunt' | 'crowd'
     | 'intimacy' | 'water' | 'vfx' | 'song' | 'choreography' | 'creature' | 'archival' | 'interview' | 'language-coach'
-    | 'period-research' | 'clue-prop' | 'puppet' | 'model' | 'rig' | 'background-art' | 'consent' | 'fact-check';
+    | 'period-research' | 'setting-research' | 'clue-prop' | 'puppet' | 'model' | 'rig' | 'background-art' | 'consent' | 'fact-check';
   label: string;
   sceneIds: string[];
   qty: number;
@@ -751,9 +744,8 @@ export interface Project {
   revision: { endsAt: number; noteIds: string[] } | null;
   revisionPasses: number;
   requirements: Requirement[];
-  requirementsVersion: number | null; // draft number the breakdown was derived from
-  changeOrders: { id: string; at: number; summary: string; costDelta: number; affectedTasks: string[]; decision: 'pending' | 'accepted' | 'deferred' | 'kept-old' }[];
-  playerActing: boolean;
+  /** Design changes made after work began (production.ts applyDesignChange): the work they sent back to be done again. */
+  changeOrders: { id: string; at: number; summary: string; affectedTasks: string[]; decision: 'accepted' | 'kept-old' }[];
   cast: CastAssignment[];
   hires: Hire[];
   obligations: Obligation[];
@@ -794,7 +786,6 @@ export interface Project {
   /** The project's songs (songs.ts). Absent on saves from before version 8 until migrated. */
   songs?: Song[];
   history: { at: number; text: string }[];
-  workEventScheduled: boolean;
   /** Shelved, with its commitments settled (shelve.ts); taken up again by removing it. */
   shelved?: { at: number };
   /**
@@ -918,8 +909,8 @@ export interface Screening {
 
 export interface Settings {
   theme: 'dark' | 'light';
-  reducedMotion: boolean;
-  largeText: boolean;
+  // Larger text and reduced motion were here until November 9, 2026, never read: they are the device's (the browser's
+  // stored Larger Text and the system's motion setting), the same for every saved game.
   wakeForObligations: boolean;
 }
 

@@ -94,6 +94,8 @@ export interface SaveSummary {
   locationId: string;
   gameNow: number;
   savedAtReal: number;
+  /** When the game was begun, in real time (0 for a damaged save). */
+  startedAtReal: number;
 }
 
 interface Envelope {
@@ -187,7 +189,7 @@ export function storedVersion(text: string): number | null {
 }
 
 function summaryOf(state: GameState, savedAtReal: number): SaveSummary {
-  return { saveId: state.saveId, saveName: state.saveName, characterName: knownAs(state.character), locationId: state.locationId, gameNow: state.now, savedAtReal };
+  return { saveId: state.saveId, saveName: state.saveName, characterName: knownAs(state.character), locationId: state.locationId, gameNow: state.now, savedAtReal, startedAtReal: state.createdAtReal };
 }
 
 /**
@@ -210,7 +212,7 @@ export function listSaves(store: KeyValueStore): SaveSummary[] {
     if (!m || known.has(m[1])) continue;
     known.add(m[1]);
     const sound = openableKeys(keys, m[1]).map((key) => readQuietly(store.getItem(key))).find((x) => x !== null);
-    list.push(sound ? summaryOf(sound, sound.updatedAtReal) : { saveId: m[1], saveName: 'Damaged save', characterName: '', locationId: '', gameNow: 0, savedAtReal: 0 });
+    list.push(sound ? summaryOf(sound, sound.updatedAtReal) : { saveId: m[1], saveName: 'Damaged save', characterName: '', locationId: '', gameNow: 0, savedAtReal: 0, startedAtReal: 0 });
   }
   return list.filter((s) => openableKeys(keys, s.saveId).length > 0).sort((a, b) => b.savedAtReal - a.savedAtReal);
 }

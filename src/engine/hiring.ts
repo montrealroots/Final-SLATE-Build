@@ -278,7 +278,10 @@ function accept(state: GameState, p: Project, h: Hire, rate: number): void {
   ps.bookings.push({ from: win.from, to: win.to, projectId: p.id });
   if (h.characterId) {
     p.cast = p.cast.filter((c) => !(c.characterId === h.characterId && c.method === h.method));
-    p.cast.push({ characterId: h.characterId, performer: h.personId, method: h.method ?? 'on-camera', note: '', hireId: h.id });
+    // How the part was cast, as the cast list says it: after a callback, after a read, or on an offer alone.
+    const read = p.auditions?.find((a) => a.personId === h.personId && a.characterId === h.characterId && a.status === 'seen');
+    const note = read?.callback?.status === 'seen' ? 'Cast after a callback.' : read ? 'Cast after an audition.' : 'Cast on an offer, without an audition.';
+    p.cast.push({ characterId: h.characterId, performer: h.personId, method: h.method ?? 'on-camera', note, hireId: h.id });
   }
 }
 
@@ -345,9 +348,8 @@ export function castPlayer(state: GameState, p: Project, characterId: string, me
   const c = approvedCharacters(p).find((x) => x.id === characterId);
   if (!c) throw new Error('That character is not in the approved draft.');
   if (p.cast.some((x) => x.characterId === characterId && x.method === method)) throw new Error('That role is already cast. Release the current performer first.');
-  const a: CastAssignment = { characterId, performer: 'player', method, note: '' };
+  const a: CastAssignment = { characterId, performer: 'player', method, note: 'You play the part yourself.' };
   p.cast.push(a);
-  p.playerActing = true;
   for (const d of p.schedule.days) {
     if (approvedScenes(p).some((s) => d.sceneIds.includes(s.id) && s.participants.includes(characterId))) d.playerActing = true;
   }
@@ -357,7 +359,6 @@ export function castPlayer(state: GameState, p: Project, characterId: string, me
 
 export function uncastPlayer(p: Project, characterId: string): void {
   p.cast = p.cast.filter((x) => !(x.characterId === characterId && x.performer === 'player'));
-  p.playerActing = p.cast.some((x) => x.performer === 'player');
   for (const d of p.schedule.days) {
     d.playerActing = approvedScenes(p).some((s) => d.sceneIds.includes(s.id) && s.participants.some((cid) => p.cast.some((x) => x.characterId === cid && x.performer === 'player')));
   }

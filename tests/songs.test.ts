@@ -148,7 +148,7 @@ describe('saves from before songs were works (v7 to v8)', () => {
       ['Radio Hit', 'existing', 'licensed', 0, ['sc2']],
     ]);
     expect(songs.every((x) => x.uses.every((u) => u.minutes === null))).toBe(true); // durations weren't kept: unknown
-    expect(out.projects[0].scenes[0].songs).toEqual(scenes[0].songs); // the scenes keep their old lists untouched
+    expect((out.projects[0].scenes[0] as unknown as { songs: unknown }).songs).toEqual(scenes[0].songs); // the old lists stay in the save, outside the model
     expect(writtenForProject({ tasks: [] } as unknown as Project, songs[0])).toBe(false);
   });
 

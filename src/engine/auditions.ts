@@ -5,7 +5,8 @@
 //   is on the calendar. Someone booked that day declines, saying so; someone can also miss it, decided from the world
 //   seed. Either way the others stand, and someone who missed can be asked again.
 // - A read shows their capability for this part as a range in words (Uneven to Solid): the truth is inside it, never
-//   shown as a number. A callback narrows it. Shortlisting orders the comparison; nothing is collapsed into one score:
+//   shown as a number. A callback narrows it. Shortlisting orders the comparison and decides who can be called back (from
+//   November 9, 2026); nothing is collapsed into one score:
 //   the read, the asking rate, the language and age fit and the dates sit side by side, and you choose.
 // - A chemistry read at a callback pairs them with someone already cast, or seen for a part that shares scenes, and shows
 //   how the two play together. Chemistry is a modeled property of the pair whether or not it is read (pairChemistry),
