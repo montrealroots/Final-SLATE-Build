@@ -16,6 +16,7 @@
 | `npx playwright test e2e/readers.spec.ts --project=phone --project=iphone-15-plus` | 0 | 2 passed. |
 | The journey with Setting Research switched off | 1 | Failed at "Researcher: $", as it should. The source was restored. |
 | After #56 merged, on its tree: `npm run check`, then `npx playwright test e2e/readers.spec.ts e2e/auditions.spec.ts --project=desktop --project=phone --project=iphone-15-plus` | 0, 0 | 75 files, 585 tests; startup JavaScript 219 kB gzipped. 5 passed: the new journey on desktop, phone and `iphone-15-plus`, and the auditions journey on desktop and phone. |
+| CI on #57 (`88d5b54`, run 42714804488) | 1 | 243 passed, 1 failed: `readers.spec.ts` on `iphone-15-plus`, production build. "Researcher: $2,050" was on the Budget tab twice, in What Makes It Expensive as well as in Everything Still To Come, because that world's rates ranked the researcher among the costliest items. The game was right; the check matched both. Reproduced locally on the production build, 1 failure in 8 runs. The check now reads inside Everything Still To Come: 18 of 18 passed on desktop, phone and `iphone-15-plus`. |
 | A throwaway WebKit test that fails on purpose after typing a title | 1 | `focus-and-input.txt` in its `test-results` folder held every focus, focus() caller, beforeinput and input event, through the typed title. |
 
 - `e2e/readers.spec.ts` (desktop, phone, `iphone-15-plus`) covers:

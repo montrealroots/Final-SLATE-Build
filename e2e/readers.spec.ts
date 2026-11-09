@@ -47,8 +47,10 @@ test('a story set abroad is researched; drafts, notes and updates keep their dat
 
   // The approved draft brings the research into the estimate: a researcher is among the crew still to come.
   await section(page, 'Budget');
-  await page.getByText(/^Everything Still To Come/).click();
-  await expect(page.getByText(/^Researcher: \$/)).toBeVisible();
+  // Read inside Everything Still To Come: the researcher can also rank among What Makes It Expensive, by the world's rates.
+  const toCome = page.locator('details', { has: page.locator('summary', { hasText: /^Everything Still To Come/ }) });
+  await toCome.locator('summary').click();
+  await expect(toCome.getByText(/^Researcher: \$/)).toBeVisible();
 
   // The project's own updates, newest first, on its Overview.
   await section(page, 'Overview');
