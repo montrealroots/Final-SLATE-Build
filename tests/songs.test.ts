@@ -3,7 +3,7 @@
 // tests play songs through the production loop: commissioned and written, recorded, shot, credited and entered.
 import { describe, expect, it } from 'vitest';
 import { DAY, buildTasks, checkEligibility, institution, processUntil } from './engine-api';
-import { attachSong, changeVersionSong, createSong, detachSong, removeSong, setSongPerformers } from '../src/engine/song-actions';
+import { attachSong, changeVersionSong, createSong, detachSong, removeSong, setSongPerformers, setSongWriters } from '../src/engine/song-actions';
 import { migrateV7toV8, songUses, writtenForProject } from '../src/engine/songs';
 import { addVersion, versionScenes } from '../src/engine/versions';
 import { editScenes } from '../src/engine/finish';
@@ -149,5 +149,16 @@ describe('saves from before songs were works (v7 to v8)', () => {
     expect(songs.every((x) => x.uses.every((u) => u.minutes === null))).toBe(true); // durations weren't kept: unknown
     expect(out.projects[0].scenes[0].songs).toEqual(scenes[0].songs); // the scenes keep their old lists untouched
     expect(writtenForProject({ tasks: [] } as unknown as Project, songs[0])).toBe(false);
+  });
+
+  it('naming the writers of an old song afterwards doesn\'t make it written for the project', () => {
+    const { s, p } = songFilm('song-old', false);
+    const raw = migrateV7toV8({ projects: [{ id: 'x', createdAt: 0, approvedDraft: 1, drafts: [{ number: 1, scenes: [{ id: p.scenes[0].id, songs: [{ title: 'Old Tune', licensed: false }] }] }] }] }) as { projects: Project[] };
+    const old = raw.projects[0].songs![0];
+    p.songs!.push({ ...old, id: 'old-tune' });
+    setSongWriters(p, 'old-tune', [{ name: 'Someone', music: true, lyrics: true }]);
+    expect(writtenForProject(p, p.songs!.find((x) => x.id === 'old-tune')!)).toBe(false);
+    expect(() => setSongWriters(p, p.songs![0].id, [{ name: 'X', music: true, lyrics: true }])).toThrow('A song written for the project is credited to whoever writes it.');
+    void s;
   });
 });

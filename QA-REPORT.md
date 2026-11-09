@@ -8,7 +8,40 @@
 
 ## Commands And Results
 
-### Current: Rule Research After #51 (November 9, 2026)
+### Current: Screen Time, Episode Assessment And Songs (November 9, 2026, after #54)
+
+Tested revision: the working branch at the commit that updates this report.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` | 0 | 72 files, 552 tests passed; startup JavaScript 681 kB, 218 kB gzipped (budgets 700 and 220), 0 problems. |
+| `npx playwright test e2e/awards.spec.ts e2e/screenwriting.spec.ts e2e/script-rules.spec.ts --project=desktop --project=iphone-15-plus --trace off` | E2E_EXIT | E2E_RESULT |
+| GitHub Actions CI for #54 (`bdf1b67`, run 129) and on `main` after #53 (`a0dcc3b`, run 128) | success | #54 was merged as `b798655`. |
+
+Implemented and tested, engine and browser:
+- **Screen time from the cut** (`tests/screen-time.test.ts`, 7 tests; journey "Emmys guest: the 5% rule reads screen time
+  recorded from the cut"). Unknown stays a range; two parts share minutes; heard-only is apart and doesn't count; a
+  record longer than its scene is refused; a cut or a shorter version changes the share; cut scenes count for nothing; a
+  submitted entry keeps its calculation through a later record and a reload.
+- **Episode assessment** (`tests/episode-assessment.test.ts`, 6 tests; journey "Emmys directing: each episode is
+  entered with its own director"). A stronger and a weaker episode differ by their footage only (30 points of footage
+  is 21 of direction); a hired episode director or writer moves only their episode; crew hired for one episode counts
+  only there, season crew for both; a revised episode changes alone; identical inputs give identical scores; whole-season
+  categories read the season; an older delivery is judged on the season and says so.
+- **Songs as works** (`tests/songs.test.ts`, 6 tests; journey "Songs: made in the Production tab"). Played through the
+  production loop to delivery: a songwriter and a lyricist (different people) credited for music and lyrics, your own
+  song credited to you, a licensed song credited to its writers and refused for Original Song, the composer credited for
+  the score only; writing, recording before the performed scene's shoot, one clearance per licensed song; a version
+  drops or swaps a song while the main cut keeps it; the Oscars' three-writer limit; v7 to v8 migration keeps titles and
+  uses and leaves origin, writers and minutes unknown.
+- **Fixed**: the Oscar for Original Song went to the score composer of any project with a song not marked licensed;
+  the Emmys' 5% rule read the approved script (every listed scene counted whole) against the target episode length.
+
+Modeled, not sourced: screen time is the player's record (no footage exists to measure); the episode assessment and the
+episode writer/director adjustment are SLATE's model; other organizers' song rules weren't read. Sourced: Oscars Rule
+Nineteen (`oscars-2027@4`).
+
+### Previous: Rule Research After #51 (November 9, 2026)
 
 Tested revision: the working branch at the commit that updates this report.
 

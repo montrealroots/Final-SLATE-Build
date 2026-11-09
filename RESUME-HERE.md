@@ -56,6 +56,42 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
+### Newest Request (November 9, 2026, after #54): screen time from the cut, episode assessment, songs as works
+
+All three are implemented, tested in the engine and in the browser (desktop and WebKit), and documented. What each does:
+
+1. **Screen time from the finished edit** (`src/engine/screen-time.ts`; Edit tab, Screen Time). The player records each
+   cast part's minutes on screen and heard only, per scene of the cut (the game has no footage to measure). A record is
+   at most the scene; several parts may share minutes; heard-only is kept apart and never counts toward time on screen.
+   An unrecorded scene is unknown, a range from nothing to the whole scene; a record a later script change made too long
+   counts as unknown. The Emmys' 5% rule (`emmys-2026@4` `screenShare`) now reads it: per episode (the entry's, or the
+   part's best) or for the whole cut entered, versions included; met, missed, or open with what to record. Prepare
+   Submission shows the calculation. Tests: `tests/screen-time.test.ts`.
+2. **Episode-specific assessment** (`finish.ts` `assessQuality(state, p, episode)`, `assessEpisodes`). Delivery locks
+   each episode's own assessment: its scenes, captures, shoot days, setups it plants or pays, writer, director, crew
+   hired for it, and the cast in it; season-wide work counts for every episode; no random draw (reception carries the
+   season's margin). New for season and episode alike: a hired episode writer or director moves that episode's script or
+   direction by (capability - 50) / 4; your own work is the baseline, so films and player-made seasons are unchanged
+   (balance suite unchanged). Entries naming an episode are judged on it; projects delivered earlier fall back to the
+   season and say so. Tests: `tests/episode-assessment.test.ts`.
+3. **Songs as works** (`src/engine/songs.ts`, `song-actions.ts`; Production tab, Songs; the script's Songs In This
+   Scene; the Versions card). Title, origin (written, commissioned, existing, or not recorded for old saves), rights
+   (production, public domain, licensed with its holder), writers (music and lyrics apart, credited to whoever did the
+   writing task), performers (cast parts or named artists), uses per scene with placement and minutes, and per-version
+   removal or replacement. Writing (you or a hired songwriter and lyricist), recording (a music producer; before the
+   shoot when performed on screen) and one clearance per licensed song are tasks. Credits: "Song Music By" / "Lyrics
+   By" / "Written By" and "Performed By", apart from the score composer. Original song awards take one song written for
+   the work, to its writers; Oscars Rule Nineteen applied (`oscars-2027@4`: up to three writers, October 14 deadline).
+   Save version 8 migrates old scene songs to songs with unknown origin and writers. Tests: `tests/songs.test.ts`.
+4. **Entries keep what they were entered with** (`EditionEntry.snapshot`, shown as As Entered): runtime, score, how
+   it was judged, recipients, screen-time calculation, song. Judging reads the snapshot's score. Re-entry after a
+   withdrawal records `revises`.
+
+Limits kept explicit: a work enters one song per song category (results are kept per work); the Oscars' end-credit cue
+order and "essentially equal" judgement aren't modeled; other organizers' song rules weren't read (SLATE's reading
+applies); screen time is the player's record, not a measurement. Next: the awards research queue in
+`docs/awards/STATUS.md` (part 3 of the November 9 request) is where work resumes.
+
 ### Newest Request (November 8, 2026): the SLATE Complete Gameplay Depth Package
 
 The owner's package is in `docs/depth/package/` (20 areas, 100 groups, `SLATE-01-01` to `SLATE-20-05`). Read
