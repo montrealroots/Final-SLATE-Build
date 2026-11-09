@@ -15,7 +15,7 @@ import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { addLog, onNewGame, registerCommitmentSource, registerHandler, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localParts, localToInstant, parseYmd, weekdayOfKey, ymd } from './time';
 import type { Credit, Edition, Format, GameState, Medium, Project, RivalFilm, Screening } from './types';
-import { currentRulebook, rulebook, type CategoryRules, type DeadlineRule, type QualifyingAward, type QualifyingList, type RuleBook, type RuntimeRule } from './rulebooks';
+import { currentRulebook, registerRulebooks, rulebook, type CategoryRules, type DeadlineRule, type QualifyingAward, type QualifyingList, type RuleBook, type RuntimeRule } from './rulebooks';
 
 export type Recipient = 'project' | 'director' | 'writer' | 'lead' | 'supporting' | 'producer' | 'voice' | 'ensemble' | 'guest' | 'performer' | 'host' | 'craft' | 'song' | 'national' | 'career';
 /** How a category is decided (docs/awards/DESIGN.md). Categories without one are older data: entered and judged as awards. */
@@ -150,7 +150,7 @@ export function loadInstitutions(): Promise<void> {
       return r.json() as Promise<unknown>;
     });
     const attempt: Promise<void> = Promise.all([data, import('./awards-rules'), import('./awards-results')])
-      .then(([raw, m, r]) => { rulesModule = m; resultsModule = r; applyInstitutions(raw); })
+      .then(([raw, m, r]) => { applyInstitutions(raw); rulesModule = m; resultsModule = r; registerRulebooks(m.RULEBOOK_DATA); })
       .finally(() => { if (institutionsLoad === attempt) institutionsLoad = null; });
     institutionsLoad = attempt;
   }
