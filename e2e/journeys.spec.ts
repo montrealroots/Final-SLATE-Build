@@ -361,7 +361,10 @@ test('3D animation to delivery, with a motion-capture performance', async ({ pag
 });
 
 test('motion capture: a session the performer can\'t attend is missed and rebooked', async ({ page }) => {
-  await quickLife(page, 'ca-vancouver', '2026-01-05');
+  // Labelled fixture: a fixed world seed, so the journey plays the same way on every run. The fixed seed isn't the fix:
+  // main's CI after #47 failed because this journey required calibration to be seen "waiting for its session", a state
+  // some worlds never show (the calibration runs the day its animatic is done); tests/mocap-progress.test.ts.
+  await seededLife(page, 'ca-vancouver', '2026-01-05', 3630);
   await newProject(page, { title: 'Iron Orchard', format: 'Short Film', medium: 'Animation', technique: '3D CG', finish: 'Limited Animation', runtime: '2' });
   await addCharacters(page, ['Wren', 'The Golem']);
   await section(page, 'Characters');
@@ -388,18 +391,27 @@ test('motion capture: a session the performer can\'t attend is missed and rebook
     if (await book.first().isVisible()) await book.first().click();
   }
   await expect.poll(booked).toBe(true);
-  // Day by day until the calibration is ready and only waits for its session date (an earlier session whose work wasn't
-  // ready just moves, with nothing missed).
-  const waiting = async () => ((await readSavedState(page)).projects[0].tasks as { kind: string; blockedReason?: string }[]).some((t) => t.kind === 'anim:mocap-calib' && /^Next calibration session: /.test(t.blockedReason ?? ''));
-  for (let i = 0; i < 60 && !(await waiting()); i++) await advance(page, 'next-day');
-  expect(await waiting()).toBe(true);
+  // Day by day until the capture work is ready and waits only for a session date: calibration's, or the capture's when
+  // calibration ran the day its animatic was done. Weekly, the player deals with what can hold the work up (casting,
+  // crew, counteroffers, designs). The bound is a deadlock guard, not a promise about how long the work takes.
+  type Task = { kind: string; status: string; blockedReason?: string };
+  const readyKind = async () => {
+    const t = ((await readSavedState(page)).projects[0].tasks as Task[]).find((x) => (x.kind === 'anim:mocap-calib' || x.kind === 'anim:mocap') && x.status !== 'done' && /^Next (calibration|capture) session: /.test(x.blockedReason ?? ''));
+    return t ? (t.kind === 'anim:mocap-calib' ? 'calibration' : 'capture') : null;
+  };
+  let kind: string | null = null;
+  for (let i = 0; i < 60 && !(kind = await readyKind()); i++) {
+    if (i % 7 === 6) { await castRoles(page); await staffEveryDepartment(page); await approveDesigns(page); }
+    await advance(page, 'next-day');
+  }
+  expect(kind, 'the capture work never became ready for a session').not.toBeNull();
   // Labelled fixture: the capture performer is also cast in another production, shooting on that session's date.
   let first = '';
   let performer = '';
   await editSaveAndReopen(page, (st) => {
     const p = st.projects[0];
     const [cid, rec] = Object.entries(p.mocap).find(([, r]: any) => r.status === 'booked') as [string, any]; // eslint-disable-line @typescript-eslint/no-explicit-any
-    first = rec.sessions.find((x: { status: string; kind: string }) => x.status === 'booked' && x.kind === 'calibration').date; // the session the work waits for
+    first = rec.sessions.filter((x: { status: string; kind: string }) => x.status === 'booked' && x.kind === kind).map((x: { date: string }) => x.date).sort()[0]; // the session the work waits for
     performer = p.cast.find((c: { characterId: string; method: string }) => c.characterId === cid && c.method === 'motion-capture').performer;
     const other = JSON.parse(JSON.stringify(p));
     Object.assign(other, { id: 'p-fixture-other', title: 'Other Picture', mocap: {}, tasks: [], obligations: [], hires: [], delivered: null, cast: [{ characterId: cid, performer, method: 'on-camera', note: '' }] });
@@ -413,7 +425,8 @@ test('motion capture: a session the performer can\'t attend is missed and rebook
   const rec = Object.values((await readSavedState(page)).projects[0].mocap).find((r: any) => r.sessions?.some((x: { status: string }) => x.status === 'missed')) as any; // eslint-disable-line @typescript-eslint/no-explicit-any
   const miss = rec.sessions.find((x: { status: string }) => x.status === 'missed');
   expect(miss.date).toBe(first);
-  expect(rec.sessions.some((x: { status: string; date: string; kind: string }) => x.date > first && x.kind === miss.kind)).toBe(true);
+  expect(miss.kind).toBe(kind);
+  expect(rec.sessions.some((x: { status: string; date: string; kind: string }) => x.date > first && x.kind === miss.kind && (x.status === 'booked' || x.status === 'done'))).toBe(true); // rebooked, and maybe run since
 });
 
 test('stop motion to delivery: puppets, sets and stages', async ({ page }) => {
