@@ -8,7 +8,37 @@
 
 ## Commands And Results
 
-### Current: Screen Time, Episode Assessment And Songs (November 9, 2026, after #54)
+### Current: The Limits Of #55 And More Rule Research (November 9, 2026)
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` at `67cbff8` | 0 | 72 files, 561 tests passed; startup JavaScript 681 kB, 218 kB gzipped (budgets 700 and 220), 0 problems. |
+| `SLATE_E2E_PROD=1 npx playwright test --trace off` (every project, against `vite build` + `vite preview`) | 0 | 232 passed, 32 skipped, 0 failed, in 20.8 minutes. Built from `56fa0ca` (the Limits fixes and the festival journey's fix); the rule data added after it is covered by the unit suite. The 32 skips are the specs that run on one project only by design (31 on phone, 1 on desktop: `test.skip` by project name). |
+| The dev-server suite (`npx playwright test`) | stopped | Stopped after 21 passes when it was clear it would take hours at this machine's pace; CI runs it on every push. |
+| `npx playwright test e2e/journeys.spec.ts:562` (the festival journey that failed CI run 131) | 0 | 1 passed once its quality fixture was set before the entry. |
+
+Implemented and tested:
+- **Several songs per song category** (`tests/songs.test.ts`, "the organizers' own song rules", 6 tests; the Songs journey
+  enters a second song). Entries compete as `projectId~songId` with their own results; Oscars three per film, two
+  nominated at most; CSA two per film, one per team of writers.
+- **End-credit cue order, "essentially equal" and minimum shares**: the Oscars' first new cue, the CSA's none; writing
+  days per writer; under half the main writer's days is a partial contributor (SLATE's measure); the Emmys' 20%.
+- **Song length and title themes**: the Goyas' 30 seconds at once or 60 in all, the Emmys' and AACTA's 15 seconds and
+  series title theme.
+- **Rules by format**: the WGA's Paul Selvin, the Spirit Awards' Redford, the AACTA's song, soundtrack, hair and makeup,
+  and visual effects. The AACTA soundtrack's five songs heard five seconds each; its recipient is the music supervisor.
+- **Rules read**: the DGA's first-time feature (`dga-2027@3`), the AACTA's online series (`aacta-2027@4`), Series Mania
+  2027 (`series-mania-2027@1`). 541 categories verified, 11 projected, 254 simulated.
+- **Mutation-tested**: four mutants of the soundtrack check and three of the Series Mania rules each fail a test; earlier
+  in this work, the longest-versus-total length, the Emmys' share and the title theme.
+- **Fixed**: CI run 131's festival journey edited quality after entering, which the entry's snapshot (rightly) ignores.
+
+Modeled, not sourced: screen time is the player's record; "essentially equal" as half the main writer's days. Sourced and
+not modeled: visual effects wholly made in Australia; Series Mania's first seasons and its programmers' choice of
+section. Blocked: TIFF, BAFTA, SXSW (HTTP 403), the International Emmys' eligibility period, Locarno 2027, the DGA's
+Documentary Film page (HTTP 404), Busan, FESPACO, Blue Dragon, AMAA, the European Film Awards' dates.
+
+### Previous: Screen Time, Episode Assessment And Songs (November 9, 2026, after #54)
 
 Tested revision: the working branch at the commit that updates this report.
 
