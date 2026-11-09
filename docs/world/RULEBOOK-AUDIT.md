@@ -504,7 +504,15 @@ Source: [Theatrical Feature Film guidelines](https://www.dga.org/Awards/Entry-Fo
 (read November 9, 2026): more than 40 minutes; a paid-admission run of at least seven consecutive days in Los Angeles or New
 York, January 1 to December 31, 2026; animated films and documentaries excluded; entry forms by 5:00 p.m. PT on November 13,
 2026. Applied to Outstanding Directorial Achievement in Theatrical Feature Film only. The documentary and first-time feature
-guideline pages returned HTTP 404; the other categories stay on SLATE's rules.
+guideline pages returned HTTP 404 (guessed URLs).
+
+**Version 2 (`dga-2027@2`, read November 9, 2026):** the [Entry Forms index](https://www.dga.org/Awards/Entry-Forms) links
+each category's rules. Dramatic, Comedy, Limited & Anthology, Documentary Series / News and Reality / Quiz & Game: an
+episode of a series (Reality: or a special), originally aired on television or streaming in 2026, by 5:00 p.m. PT on
+November 13, 2026, to that episode's credited director. Movies for Television: not shown in US cinemas before television or
+streaming (day and date is fine). Variety: programs and specials, nothing theatrical first. Not modeled: the "approximately
+one half hour" (one hour for movies) broadcast format, local-only broadcasts, DGA membership and one entry per director. The
+index lists no documentary film or first-time feature guidelines; those stay on SLATE's rules.
 
 ## Writers Guild Awards, 2027
 
@@ -515,7 +523,12 @@ to DVD isn't eligible. Series (drama, comedy, limited, new): aired in 2026, howe
 episodic, children's, short form): first broadcast in 2026; comedy/variety talk and specials and documentary categories:
 November 1, 2025 to October 31, 2026. Every category: 5:00 p.m. PST on November 20, 2026. Not modeled: a WGA (or affiliate)
 collective bargaining agreement; the TV movie's bar on an earlier theatrical exhibition. The Documentary Screenplay and Paul
-Selvin pages weren't read; those stay on SLATE's rules.
+Selvin pages weren't read in version 1.
+
+**Version 2 (`wga-2027@2`, read November 9, 2026):** [Documentary Screenplay](https://awards.wga.org/submissions/documentary-screenplay):
+exhibited in 2026, more than 40 minutes, a week in Los Angeles or New York cinemas (SLATE: a US theatrical release), a
+simultaneous stream allowed and a television premiere not, by 5:00 p.m. on November 20, 2026. Not modeled: the WGA
+agreement and Notice of Tentative Writing Credits. The Paul Selvin Award stays on SLATE's rules.
 
 ## Gotham Awards, 2026
 
@@ -532,7 +545,42 @@ Sources (read November 9, 2026): [Motion Pictures](https://www.producersguildawa
 section A: a US theatrical release for paid admission between January 1 and December 31, 2026; no nontheatrical exhibition
 or distribution before it (as at the 99th Academy Awards); submitted by October 9, 2026; animated features over 40 minutes and
 at least 75 percent animation. Applied to the Theatrical and Animated awards. The documentary rules' several qualifying
-exhibitions and the television rules weren't applied; those categories stay on SLATE's rules.
+exhibitions and the television rules weren't applied in version 1.
+
+**Version 2 (`pga-2027@2`, read November 9, 2026):** [Documentary Motion Pictures](https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Documentary_Motion_Pictures.pdf)
+(July 20, 2026), A.2: an exhibition in 2026, more than 40 minutes, by a seven-day paid run in one of eleven US areas
+(SLATE: a US theatrical release), a national television premiere at 70 minutes (SLATE: a US broadcast or streaming release,
+without the 70-minute floor), an Official Selection or In Competition at a listed festival (SLATE: the eight it holds), or a
+qualifying award on the Academy's list (SLATE: the 99th list it holds, where the PGA attached the 98th); submitted by August
+28, 2026. The fee line reads "one hundred fifty dollars ($175.00)". The television awards' rules weren't found under the
+same naming (404) and stay on SLATE's rules.
+
+## AACTA Awards, 2027
+
+Sources (read November 9, 2026): the [2027 Film entry page](https://www.aacta.org/aacta-awards/entries-2027/film/) (a
+dramatised story of at least 60 minutes released publicly from January 1 to December 31, 2026; entries close 11:59 p.m.
+AEST on Monday September 28, 2026) and the [Rule Book](https://s3-ap-southeast-2.amazonaws.com/aacta-org-assets/Uploads/2026-AACTA-Awards-Rule-Book2.pdf)
+it links, whose file and cover say 2026, section 7.3: a seven-day run in two capital cities including Sydney or Melbourne,
+a qualifying festival with four paid screenings, a qualifying streaming platform or free-to-air broadcast. SLATE takes an
+Australian theatrical, streaming or broadcast release. Applied to the 16 film-only categories (`aacta-2027@1`). Not
+modeled: the Indie Film budget under AUD 2 million (the catalog keeps its own independent requirement), the festival and
+platform lists, AACTA's discretion. The [Television](https://www.aacta.org/aacta-awards/entries-2027/television/),
+[Documentary](https://www.aacta.org/aacta-awards/entries-2027/documentary/) and [Short Film](https://www.aacta.org/aacta-awards/entries-2027/short-film/)
+pages and the Rule Book's sections 4-6: television's first episode broadcast in Australia in 2026 on free-to-air or a
+streaming platform, by September 28; documentaries of 60 minutes or more completed or first shown August 30, 2025 to August
+24, 2026, by August 24; shorts under 40 minutes completed July 19, 2025 to July 18, 2026, by August 3. 31 categories in all.
+Shared categories (hair and makeup, song, soundtrack, visual effects) and online series stay on SLATE's rules; the entry
+pages answered after a 503 earlier the same day.
+
+## Japan Academy Film Prize, 50th (2027)
+
+Source (read November 9, 2026): the [selection criteria](https://www.japan-academy-prize.jp/films/japanese) (選考基準),
+linked from the About page. Theatrical fiction and animated films of 40 minutes or more, first shown for paid admission in
+the Tokyo area from January 1 to December 31, 2026, new works made for cinemas; documentaries, festival-only and event
+screenings and re-releases excluded; a film streamed or televised first, the same day included, isn't new. Applied to all
+17 entered categories (`japan-academy-2027@1`). Not modeled: three showings a day and two weeks at one Tokyo cinema, the
+same-day streaming exclusion, films re-edited from television, the Academy's own Japanese-or-foreign judgement. No entry
+deadline is published.
 
 ## Not Readable From Here
 
@@ -551,7 +599,9 @@ exhibitions and the television rules weren't applied; those categories stay on S
   European-elements points; a major-festival selection or a seven-day release in three countries) aren't anything SLATE
   records yet, so the categories stay on SLATE's rules rather than take a partial rule.
 - **Series Mania and the International Emmys:** no current competition rules were found (Series Mania's latest festival
-  rules found are 2021's; the International Emmys' rules page returned HTTP 404).
+  rules found are 2021's; the International Emmys' rules page returned HTTP 404). The International Emmys' Entry FAQ gives
+  the deadline (January 31 at noon Eastern), that a non-US organization enters and one category per program;
+  `international-emmys-2026@1` and `-2027@1` (projected) hold the deadline only, so eligibility stays SLATE's.
 - **BAFTA Film Awards 2027:** bafta.org (the rules page and the press release "2027 EE BAFTA Film Awards opens for
   entries") refused this environment (HTTP 403), on both passes. Search summaries give a longlist on January 7, nominations
   on January 19 and the ceremony on February 21, 2027, but not the eligibility period; **not used**: BAFTA stays

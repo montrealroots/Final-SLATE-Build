@@ -323,8 +323,11 @@ tests/awards-ledger.test.ts`).
    threshold are applied too (`emmys-2026@4`, `golden-globes-2027@4`). What remains Not modeled in
    `docs/awards/RECIPIENT-RULES.md` needs something SLATE doesn't record (dialects, a co-production partner's country, a
    head writer's choice, streaming viewership). Part 3 since: Critics' Week (`venice-2026@4`), SXSW's deadline
-   (`sxsw-2027@1`), the Goyas' specific Bases (`goya-2027@2`): 463 of 806. **Next:** the research queue in
-   `docs/awards/STATUS.md` from `tiff` (still 403); BAFTA also still 403.
+   (`sxsw-2027@1`), the Goyas' specific Bases (`goya-2027@2`): 463 of 806. After #51: the PGA's documentary award, the
+   WGA's Documentary Screenplay, the DGA's television awards, the AACTA (31), the Japan Academy (17) and the International
+   Emmys' deadline: 520 of 806. **Next:** the research queue in `docs/awards/STATUS.md`; what remains is mostly refused
+   or unpublished (TIFF and BAFTA 403; Busan, Locarno, FESPACO, Blue Dragon, AMAA not found; the European Film Awards'
+   regulations have no dates).
 6-8. Reports are updated at each checkpoint; journeys still owed: supporting/guest TV performance, episode-specific
    writing or directing, songs if implemented, honorary outside submissions (exists), a historical result across an
    edition change (exists for the Annies), all on desktop and WebKit.

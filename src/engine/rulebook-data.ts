@@ -1061,6 +1061,40 @@ const DGA_2027: RuleBook = {
   },
 };
 
+/**
+ * Version 2 (November 9, 2026): the television guidelines, found through the Entry Forms index (the URLs tried before were
+ * guesses and returned 404). Dramatic, Comedy, Limited & Anthology, Documentary Series, Reality: "an episode of a series"
+ * (Reality: an episode or a special), originally aired on television or streaming from January 1 to December 31, 2026, by
+ * 5:00 p.m. PT on November 13, 2026, to the director credited "Directed By" on that episode (`oneEpisode`). Movies for
+ * Television: the same dates, and a film exhibited theatrically in the US before television or streaming is out (day and
+ * date is fine). Variety: programs and specials, the same dates, nothing theatrical first. Not modeled: "a minimum broadcast
+ * format length of approximately one half hour" (one hour for movies), which names a slot rather than a running time; that
+ * local-only broadcasts don't count; DGA membership and a Deal Memorandum; one entry per director. The documentary film
+ * and first-time feature guidelines aren't on the index; those stay on SLATE's rules.
+ */
+const DGA79_TV: RuleSource = { id: 'dga79-tv', publisher: 'Directors Guild of America', title: 'DGA Awards Entry Forms: television application rules (79th Annual DGA Awards)', url: 'https://www.dga.org/Awards/Entry-Forms', edition: '79th Annual DGA Awards (2027)', retrieved: '2026-11-09' };
+const dgaTv = (extra: CategoryRules = {}): CategoryRules => ({
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'dga79-tv', 'Originally aired January 1 to December 31, 2026.'),
+  release: v({ routes: ['broadcast', 'streaming', 'digital'], countries: [], outside: [] }, 'dga79-tv', 'On television or streaming; the rules name no country, and local-only broadcasts don\u2019t count (not modeled).'),
+  deadlines: v([{ date: '2026-11-13', time: '17:00', zone: PT }], 'dga79-tv', 'Entry forms received by 5:00 p.m. PT on Friday, November 13, 2026.'),
+  ...extra,
+});
+const dgaEpisode = v({}, 'dga79-tv', 'Entries must be an episode of a series; a director of the whole series chooses one.');
+const dgaNoCinemaFirst = v({ countries: ['US'] }, 'dga79-tv', 'Not exhibited theatrically in the US before television or streaming; day and date is fine.');
+const DGA_2027_2: RuleBook = {
+  ...DGA_2027, id: 'dga-2027@2', version: 2, sources: [DGA79, DGA79_TV],
+  categories: {
+    ...DGA_2027.categories,
+    drama: dgaTv({ oneEpisode: dgaEpisode }),
+    comedy: dgaTv({ oneEpisode: dgaEpisode }),
+    limited: dgaTv({ oneEpisode: dgaEpisode }),
+    'documentary-series': dgaTv({ oneEpisode: dgaEpisode }),
+    reality: dgaTv({ oneEpisode: v({}, 'dga79-tv', 'A single episode of a series or a special.') }),
+    movie: dgaTv({ tvFirst: dgaNoCinemaFirst }),
+    variety: dgaTv({ tvFirst: v({ countries: ['US'] }, 'dga79-tv', 'Programs and specials; not shown theatrically before television or streaming.') }),
+  },
+};
+
 // ---------------- Writers Guild Awards, 2027 ----------------
 
 /**
@@ -1095,6 +1129,28 @@ const WGA_2027: RuleBook = {
   },
 };
 
+/**
+ * Version 2 (November 9, 2026): the Documentary Screenplay page (awards.wga.org/submissions/documentary-screenplay),
+ * which answered once tried by name. Exhibited January 1 to December 31, 2026, feature length (more than 40 minutes), at
+ * least a week in Los Angeles or New York cinemas (SLATE: a US theatrical release), a simultaneous stream allowed and a
+ * television premiere not, by 5:00 p.m. on November 20, 2026. Not modeled: written under a WGA agreement with a Notice of
+ * Tentative Writing Credits on file, and the source-material and fee-payer exclusions.
+ */
+const WGA_2027_2: RuleBook = {
+  ...WGA_2027, id: 'wga-2027@2', version: 2,
+  sources: [...WGA27_SOURCES, { id: 'wga27-docscreenplay', publisher: 'Writers Guild of America West', title: 'Rules for Documentary Screenplay (2027 Writers Guild Awards)', url: 'https://awards.wga.org/submissions/documentary-screenplay', edition: '2027 Writers Guild Awards', retrieved: '2026-11-09' }],
+  categories: {
+    ...WGA_2027.categories,
+    'documentary-screenplay': {
+      runtime: v({ over: 40 }, 'wga27-docscreenplay', 'Feature length, more than 40 minutes.'),
+      qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'wga27-docscreenplay', 'Exhibited January 1 to December 31, 2026.'),
+      release: v({ routes: ['theatrical'], countries: ['US'] }, 'wga27-docscreenplay', 'In Los Angeles or New York cinemas for at least a week; SLATE treats a US theatrical release as that.'),
+      theatricalFirst: v({ countries: ['*'] }, 'wga27-docscreenplay', 'A film that premieres on television isn\u2019t eligible; a simultaneous theatrical and streaming release is.'),
+      deadlines: wgaDeadline('wga27-docscreenplay'),
+    },
+  },
+};
+
 // ---------------- Gotham Awards, 2026 ----------------
 
 /**
@@ -1118,9 +1174,9 @@ const GOTHAM_2026: RuleBook = {
 
 /**
  * Read November 9, 2026: Rules and Procedures for 2027 Awards Eligibility, Motion Pictures (July 20, 2026) and Animated
- * Motion Pictures, section A. The documentary rules list several qualifying exhibitions (a theatrical run, a listed
- * festival award, a national television premiere) that SLATE can't all read; Best Documentary and the television awards
- * stay on SLATE's rules. Not modeled: the producer eligibility determination (only producers the PGA certifies are
+ * Motion Pictures, section A. This version left Best Documentary on SLATE's rules, because its qualifying exhibitions (a
+ * theatrical run, a listed festival award, a national television premiere) weren't all readable then; version 2 applies
+ * them. The television awards stay on SLATE's rules. Not modeled: the producer eligibility determination (only producers the PGA certifies are
  * named), the ballot fee, the crowdfunding producer-credit disqualification.
  */
 const PGA_SOURCES: RuleSource[] = [
@@ -1141,8 +1197,132 @@ const PGA_2027: RuleBook = {
   },
 };
 
+/**
+ * Version 2 (November 9, 2026): Rules and Procedures for 2027 Awards Eligibility, Documentary Motion Pictures (July 20,
+ * 2026), A.2, found under the same naming as the film rules. A qualifying exhibition in 2026, more than 40 minutes: a
+ * seven-day paid run in one of eleven US areas (SLATE: a US theatrical release); an Official Selection at the Berlinale,
+ * Cannes, Hot Docs, Telluride, Toronto, Tribeca or Venice, or In Competition at IDFA, SXSW or Sundance (SLATE: a selection
+ * at the eight it holds); a qualifying award on the Academy's list, Appendix A (SLATE: the Academy's newest documentary
+ * list it holds, the 99th, where the PGA attached the 98th); or a national television premiere at 70 minutes or more
+ * (SLATE: a US broadcast or streaming release, without the 70-minute floor). Submitted by August 28, 2026. Not modeled:
+ * US distribution for foreign films, English subtitles, the exclusions of series episodes and composite segments. The
+ * fee line reads "one hundred fifty dollars ($175.00)"; SLATE records it, not either figure.
+ */
+const PGA_DOC: RuleSource = { id: 'pga27-doc', publisher: 'Producers Guild of America', title: 'Rules and Procedures for 2027 Awards Eligibility - Documentary Motion Pictures', url: 'https://www.producersguildawards.com/Content/documents/Rules_and_Procedures_Awards_Eligibility_Documentary_Motion_Pictures.pdf', edition: '38th Producers Guild Awards (2027)', retrieved: '2026-11-09' };
+const PGA_2027_2: RuleBook = {
+  ...PGA_2027, id: 'pga-2027@2', version: 2, sources: [...PGA_SOURCES, PGA_DOC],
+  categories: {
+    ...PGA_2027.categories,
+    documentary: {
+      runtime: v({ over: 40 }, 'pga27-doc', 'More than 40 minutes for a theatrical or festival exhibition; 70 for a television premiere, which SLATE doesn\u2019t separate (A.2.c).'),
+      qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'pga27-doc', 'A qualifying exhibition January 1 to December 31, 2026 (A.2.c).'),
+      release: v({ routes: ['theatrical', 'broadcast', 'streaming'], countries: ['US'], festivalList: 'aa99-documentary', festivalSelection: ['berlinale', 'cannes', 'hot-docs', 'tiff', 'venice', 'idfa', 'sxsw', 'sundance'] }, 'pga27-doc',
+        'A seven-day paid run in one of eleven US areas, a national television premiere, an Official Selection or In Competition at a listed festival, or a qualifying award on the Academy\u2019s list (A.2.c).'),
+      deadlines: v([{ date: '2026-08-28', time: '23:59', zone: PT, timeAssumed: true }], 'pga27-doc', 'Submitted no later than August 28, 2026 (A.4.b). The time of day is not given; SLATE uses the end of the day in Los Angeles.'),
+    },
+  },
+};
+
+// ---------------- AACTA Awards 2027 ----------------
+
+/**
+ * Read November 9, 2026: the 2027 Film entry page (dates, running time, deadline) and the Rule Book it links, whose file
+ * and cover say 2026 (AACTA links it for 2027 entries; recorded as such), section 7.3: a dramatised story of at least 60
+ * minutes released publicly in 2026 by a seven-day run in two Australian capital cities including Sydney or Melbourne, a
+ * qualifying festival with four paid screenings, a qualifying streaming platform or free-to-air broadcast; entries close
+ * 11:59 p.m. AEST on September 28, 2026. SLATE: an Australian theatrical, streaming or broadcast release in 2026. Applied to
+ * the 16 film-only categories. The Television, Documentary and Short Film pages and the Rule Book's sections 4-6, read the
+ * same day: television's first episode broadcast in Australia in 2026 on free-to-air or a streaming platform, by September
+ * 28; documentaries of 60 minutes or more completed or first shown August 30, 2025 to August 24, 2026, by August 24; shorts
+ * under 40 minutes completed July 19, 2025 to July 18, 2026, by August 3 (SLATE reads the completion date for both).
+ * Not modeled: the Indie Film budget (under AUD 2 million: SLATE keeps its own independent requirement), the qualifying
+ * festival and platform lists, AACTA's discretion (iv). The categories shared across film and television (hair and
+ * makeup, song, soundtrack, visual effects) and online series stay on SLATE's rules.
+ */
+const AACTA27: RuleSource[] = [
+  { id: 'aacta27-film', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Film', url: 'https://www.aacta.org/aacta-awards/entries-2027/film/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
+  { id: 'aacta27-tv', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Television', url: 'https://www.aacta.org/aacta-awards/entries-2027/television/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
+  { id: 'aacta27-doc', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Documentary', url: 'https://www.aacta.org/aacta-awards/entries-2027/documentary/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
+  { id: 'aacta27-short', publisher: 'Australian Academy of Cinema and Television Arts', title: 'Entries for the 2027 AACTA Awards: Short Film', url: 'https://www.aacta.org/aacta-awards/entries-2027/short-film/', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
+  { id: 'aacta-rulebook', publisher: 'Australian Academy of Cinema and Television Arts', title: 'AACTA Awards Rule Book (cover: 2026; linked for 2027 entries)', url: 'https://s3-ap-southeast-2.amazonaws.com/aacta-org-assets/Uploads/2026-AACTA-Awards-Rule-Book2.pdf', edition: '2027 AACTA Awards', retrieved: '2026-11-09' },
+];
+const AACTA_FILM: CategoryRules = {
+  runtime: v({ atLeast: 60 }, 'aacta27-film', 'A dramatised story of at least 60 minutes.'),
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'aacta27-film', 'Released publicly from January 1 to December 31, 2026.'),
+  release: v({ routes: ['theatrical', 'streaming', 'broadcast'], countries: ['AU'] }, 'aacta-rulebook', 'Seven days in cinemas in two capital cities including Sydney or Melbourne, a qualifying festival with four paid screenings, a qualifying streaming platform, or free-to-air (7.3); SLATE takes an Australian release by any of those routes.'),
+  deadlines: v([{ date: '2026-09-28', time: '23:59', zone: 'Australia/Sydney' }], 'aacta27-film', 'Entries close Monday September 28, 2026, 11:59 p.m. AEST.'),
+};
+const SYD = 'Australia/Sydney';
+const AACTA_TV: CategoryRules = {
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'aacta27-tv', 'First episode broadcast in Australia for the first time from January 1 to December 31, 2026.'),
+  release: v({ routes: ['broadcast', 'streaming'], countries: ['AU'] }, 'aacta27-tv', 'On a free-to-air network or a VOD or SVOD platform in Australia (6.3).'),
+  deadlines: v([{ date: '2026-09-28', time: '23:59', zone: SYD }], 'aacta27-tv', 'Entries close Monday September 28, 2026, 11:59 p.m. Sydney time.'),
+};
+const AACTA_DOC: CategoryRules = {
+  runtime: v({ atLeast: 60 }, 'aacta-rulebook', 'A single self-contained non-fiction film of 60 minutes or longer (5.2).'),
+  completedFrom: v('2025-08-30', 'aacta27-doc', 'Completed or first shown publicly from August 30, 2025 to August 24, 2026.'),
+  deadlines: v([{ date: '2026-08-24', time: '23:59', zone: SYD }], 'aacta27-doc', 'Entries close Monday August 24, 2026, 11:59 p.m. AEST.'),
+};
+const AACTA_SHORT: CategoryRules = {
+  runtime: v({ under: 40 }, 'aacta-rulebook', 'Less than 40 minutes (4.2).'),
+  completedFrom: v('2025-07-19', 'aacta27-short', 'Completed from July 19, 2025 to July 18, 2026.'),
+  deadlines: v([{ date: '2026-08-03', time: '23:59', zone: SYD }], 'aacta27-short', 'Entries close Monday August 3, 2026, 11:59 p.m. AEST.'),
+};
+const AACTA_2027: RuleBook = {
+  id: 'aacta-2027@1', institutionId: 'aacta', year: 2027, version: 1, checked: '2026-11-09', sources: AACTA27,
+  categories: {
+    ...Object.fromEntries(['film', 'indie-film', 'direction', 'lead-actor', 'lead-actress', 'supporting-actor', 'supporting-actress', 'original-screenplay', 'adapted-screenplay', 'cinematography', 'editing', 'sound', 'score', 'production-design', 'costume', 'casting'].map((id) => [id, AACTA_FILM])),
+    ...Object.fromEntries(['childrens', 'competition-reality', 'documentary-factual', 'drama', 'entertainment', 'factual-entertainment', 'miniseries', 'comedy', 'casting-tv'].map((id) => [id, AACTA_TV])),
+    ...Object.fromEntries(['documentary', 'documentary-cinematography', 'documentary-editing', 'documentary-sound', 'documentary-score'].map((id) => [id, AACTA_DOC])),
+    short: AACTA_SHORT,
+  },
+};
+
+// ---------------- International Emmy Awards ----------------
+
+/**
+ * Read November 9, 2026: the Entry FAQ (iemmys.tv/entries-judging/faq/), which gives the 2026 competition's deadline,
+ * "January 31, 2026 at 12 noon E.S.T.", that a non-US organization or individual enters, and that a program goes into one
+ * category only. The Rules & Regulations document it refers to isn't linked from the entry pages; its eligibility dates
+ * and running times stay SLATE's, so these books hold a deadline only (`categoryRuleStatus` counts them as SLATE's rules).
+ * 2027 carries the date a year on, projected.
+ */
+const IEMMY_SOURCE: RuleSource = { id: 'iemmy-faq', publisher: 'International Academy of Television Arts & Sciences', title: 'International Emmy Awards: Entry FAQ', url: 'https://www.iemmys.tv/entries-judging/faq/', edition: '54th International Emmy Awards (2026)', retrieved: '2026-11-09' };
+const iemmyBook = (year: number, mk: typeof v): RuleBook => ({
+  id: `international-emmys-${year}@1`, institutionId: 'international-emmys', year, version: 1, checked: '2026-11-09', sources: [IEMMY_SOURCE],
+  categories: Object.fromEntries(['arts', 'actress', 'actor', 'comedy', 'documentary', 'drama', 'kids-animation', 'kids-factual', 'kids-live-action', 'non-scripted', 'short-form', 'sports-documentary', 'tv-movie'].map((id) => [id, {
+    deadlines: mk([{ date: `${year}-01-31`, time: '12:00', zone: 'America/New_York' }], 'iemmy-faq', `Entries by January 31 at 12 noon Eastern.${year === 2026 ? '' : ' From the 2026 competition; the 2027 dates are not published yet.'}`),
+  }])),
+});
+const INTERNATIONAL_EMMYS_2026 = iemmyBook(2026, v);
+const INTERNATIONAL_EMMYS_2027 = iemmyBook(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 competition.')) as typeof v);
+
+// ---------------- Japan Academy Film Prize, 50th (2027) ----------------
+
+/**
+ * Read November 9, 2026: the selection criteria page (選考基準, japan-academy-prize.jp/films/japanese), linked from the
+ * About page; the press release read earlier said the same. Theatrical fiction and animated films of 40 minutes or more,
+ * first shown for paid admission in the Tokyo area from January 1 to December 31, 2026 (SLATE: a Japanese theatrical
+ * release), new works made for cinemas; documentaries, festival-only and event screenings and re-releases excluded; a film
+ * streamed or televised first, "same day included", isn't new. Not modeled: three showings a day in the first week and two
+ * weeks running at one Tokyo cinema; the same-day streaming exclusion (SLATE's theatrical-first rule allows the same day);
+ * films re-edited from television; the Academy's own Japanese-or-foreign judgement (the catalog uses the production base).
+ * No entry deadline is published: the Academy selects from the year's releases.
+ */
+const JAPAN_ACADEMY_2027: RuleBook = {
+  id: 'japan-academy-2027@1', institutionId: 'japan-academy', year: 2027, version: 1, checked: '2026-11-09',
+  sources: [{ id: 'jap50-criteria', publisher: 'Japan Academy Film Prize Association', title: '選考基準 (selection criteria), 50th Japan Academy Film Prize', url: 'https://www.japan-academy-prize.jp/films/japanese', edition: '50th Japan Academy Film Prize (2027)', retrieved: '2026-11-09' }],
+  categories: Object.fromEntries(['picture', 'animation', 'actor', 'actress', 'supporting-actor', 'supporting-actress', 'director', 'screenplay', 'music', 'cinematography', 'lighting', 'art-direction', 'sound', 'editing', 'foreign', 'vfx', 'newcomer'].map((id) => [id, {
+    runtime: v({ atLeast: 40 }, 'jap50-criteria', '40 minutes or more.'),
+    formats: v(['feature'] as ('feature')[], 'jap50-criteria', 'Theatrical fiction and animated films; documentaries are excluded.'),
+    qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'jap50-criteria', 'First shown for paid admission from January 1 to December 31, 2026.'),
+    release: v({ routes: ['theatrical'], countries: ['JP'] }, 'jap50-criteria', 'In the Tokyo area for paid admission, three showings a day in the first week and two weeks running at one cinema; SLATE treats a Japanese theatrical release as that.'),
+    theatricalFirst: v({ countries: ['*'] }, 'jap50-criteria', 'Streamed or televised first (the same day included) isn\u2019t a new work; SLATE allows the same day.'),
+  } satisfies CategoryRules])),
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, OSCARS_2027_3, SUNDANCE_2027, SXSW_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, WGA_2027, GOTHAM_2026, PGA_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, EMMYS_2026_3, EMMYS_2027_3, EMMYS_2026_4, EMMYS_2027_4, GOLDEN_GLOBES_2027_3, GOLDEN_GLOBES_2027_4, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, VENICE_2026_4, VENICE_2027_4, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027, GOYA_2027_2, CESAR_2027, SPIRIT_2027, ACTOR_AWARDS_2027, DGA_2027, DGA_2027_2, WGA_2027, WGA_2027_2, GOTHAM_2026, PGA_2027, PGA_2027_2, AACTA_2027, INTERNATIONAL_EMMYS_2026, INTERNATIONAL_EMMYS_2027, JAPAN_ACADEMY_2027,
 ];

@@ -34,23 +34,23 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | BAFTA Film Awards (`bafta-film`) | 7 | 0 / 0 / 7 | 0 / 0 / 7 | 0 | 0 | 0 | 0 | 0 | 0 |
 | BAFTA Television Awards (`bafta-tv`) | 5 | 0 / 0 / 5 | 0 / 0 / 5 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Golden Globe Awards (`golden-globes`) | 28 | 28 / 0 / 0 | 26 / 0 / 2 | 7 | 28 | 15 | 13 | 0 | 2 |
-| International Emmy Awards (`international-emmys`) | 15 | 15 / 0 / 0 | 0 / 0 / 15 | 0 | 15 | 0 | 5 | 0 | 5 |
+| International Emmy Awards (`international-emmys`) | 15 | 15 / 0 / 0 | 0 / 0 / 15 | 0 | 15 | 13 | 7 | 0 | 5 |
 | Annie Awards (`annie`) | 32 | 30 / 2 / 0 | 29 / 0 / 3 | 0 | 32 | 29 | 11 | 0 | 6 |
 | Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 20 / 0 / 1 | 0 | 21 | 20 | 7 | 0 | 4 |
 | Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 10 / 0 / 2 | 0 | 12 | 10 | 6 | 0 | 1 |
-| Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 1 / 0 / 9 | 0 | 10 | 1 | 4 | 0 | 3 |
-| Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 16 / 0 / 2 | 0 | 0 | 16 | 5 | 0 | 11 |
-| Producers Guild Awards (`pga`) | 15 | 14 / 1 / 0 | 2 / 0 / 13 | 0 | 15 | 2 | 5 | 0 | 4 |
+| Directors Guild Of America Awards (`dga`) | 10 | 10 / 0 / 0 | 8 / 0 / 2 | 0 | 10 | 8 | 4 | 0 | 3 |
+| Writers Guild Awards (`wga`) | 18 | 17 / 1 / 0 | 17 / 0 / 1 | 0 | 0 | 17 | 6 | 0 | 11 |
+| Producers Guild Awards (`pga`) | 15 | 14 / 1 / 0 | 3 / 0 / 12 | 0 | 15 | 3 | 5 | 0 | 4 |
 | Actor Awards (`actor-awards`) | 13 | 13 / 0 / 0 | 13 / 0 / 0 | 0 | 13 | 13 | 3 | 0 | 3 |
 | César Awards (`cesar`) | 27 | 27 / 0 / 0 | 25 / 0 / 2 | 0 | 27 | 3 | 10 | 0 | 0 |
-| Goya Awards (`goya`) | 30 | 30 / 0 / 0 | 28 / 0 / 2 | 0 | 30 | 28 | 12 | 0 | 0 |
-| Canadian Screen Awards (`canadian-screen`) | 119 | 114 / 5 / 0 | 115 / 0 / 4 | 0 | 0 | 115 | 7 | 0 | 40 |
-| AACTA Awards (`aacta`) | 36 | 35 / 1 / 0 | 0 / 0 / 36 | 0 | 0 | 0 | 0 | 0 | 6 |
+| Goya Awards (`goya`) | 30 | 30 / 0 / 0 | 28 / 0 / 2 | 0 | 30 | 28 | 13 | 0 | 0 |
+| Canadian Screen Awards (`canadian-screen`) | 119 | 114 / 5 / 0 | 115 / 0 / 4 | 0 | 0 | 115 | 8 | 0 | 40 |
+| AACTA Awards (`aacta`) | 36 | 35 / 1 / 0 | 31 / 0 / 5 | 0 | 0 | 31 | 6 | 0 | 6 |
 | Africa Movie Academy Awards (`amaa`) | 4 | 0 / 0 / 4 | 0 / 0 / 4 | 0 | 0 | 0 | 0 | 0 | 0 |
-| Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 2 |
+| Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 0 | 0 | 6 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 4 | 0 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 463 / 11 / 332 | 28 | 338 | 440 | 206 | 35 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 520 / 11 / 275 | 28 | 338 | 493 | 223 | 35 | 123 |
 
 ## Research queue
 
@@ -67,11 +67,10 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 9. `international-emmys` (13): `arts`, `actress`, `actor`, `comedy`, `documentary`, `drama`, `kids-animation`, `kids-factual`, `kids-live-action`, `non-scripted`, `short-form`, `sports-documentary`, `tv-movie`
 10. `annie` (1): `tv`
 11. `spirit` (1): `redford`
-12. `dga` (9): `first-feature`, `documentary`, `drama`, `comedy`, `limited`, `movie`, `documentary-series`, `variety`, `reality`
-13. `wga` (2): `documentary-screenplay`, `selvin`
-14. `pga` (10): `documentary`, `drama`, `comedy`, `limited`, `tv-movie`, `nonfiction`, `live-variety`, `game-competition`, `childrens`, `short-form`
-15. `aacta` (36): `film`, `indie-film`, `direction`, `lead-actor`, `lead-actress`, `supporting-actor`, `supporting-actress`, `original-screenplay`, `adapted-screenplay`, `cinematography`, `editing`, `sound`, `score`, `production-design`, `costume`, `hair-makeup`, `casting`, `song`, `soundtrack`, `childrens`, `competition-reality`, `documentary-factual`, `drama`, `entertainment`, `factual-entertainment`, `miniseries`, `comedy`, `casting-tv`, `documentary`, `documentary-cinematography`, `documentary-editing`, `documentary-sound`, `documentary-score`, `short`, `online-series`, `vfx-animation`
+12. `dga` (2): `first-feature`, `documentary`
+13. `wga` (1): `selvin`
+14. `pga` (9): `drama`, `comedy`, `limited`, `tv-movie`, `nonfiction`, `live-variety`, `game-competition`, `childrens`, `short-form`
+15. `aacta` (5): `hair-makeup`, `song`, `soundtrack`, `online-series`, `vfx-animation`
 16. `amaa` (4): `film`, `director`, `documentary`, `short`
-17. `japan-academy` (17): `picture`, `animation`, `actor`, `actress`, `supporting-actor`, `supporting-actress`, `director`, `screenplay`, `music`, `cinematography`, `lighting`, `art-direction`, `sound`, `editing`, `foreign`, `vfx`, `newcomer`
-18. `blue-dragon` (3): `film`, `director`, `screenplay`
-19. `european-film-awards` (16): `film`, `director`, `animated`, `documentary`, `short`, `coproduction`, `actor`, `screenwriter`, `casting`, `cinematographer`, `composer`, `costume`, `editor`, `makeup`, `production-designer`, `sound`
+17. `blue-dragon` (3): `film`, `director`, `screenplay`
+18. `european-film-awards` (16): `film`, `director`, `animated`, `documentary`, `short`, `coproduction`, `actor`, `screenwriter`, `casting`, `cinematographer`, `composer`, `costume`, `editor`, `makeup`, `production-designer`, `sound`

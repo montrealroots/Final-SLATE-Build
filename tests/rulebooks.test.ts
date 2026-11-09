@@ -423,7 +423,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('463 categories follow verified rules for at least one edition, 11 only projected ones; the other 332 are simulated', () => {
+  it('520 categories follow verified rules for at least one edition, 11 only projected ones; the other 275 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -448,8 +448,11 @@ describe('audit counts', () => {
     // SXSW's Music Video Competition, its jury award and the International Emmys' Sports Documentary were entered, under
     // terms that weren't readable from here.
     // 457 until Venice's Critics' Week read its own regulations (venice-2026@4), 458 until the Goyas' European,
-    // Ibero-American and short film awards read their specific Bases (goya-2027@2).
-    expect(n).toEqual({ verified: 463, projected: 11, simulated: 332 });
+    // Ibero-American and short film awards read their specific Bases (goya-2027@2), 463 until the PGA's documentary award
+    // (pga-2027@2), 464 until the WGA's Documentary Screenplay (wga-2027@2), 465 until the DGA's seven television awards
+    // (dga-2027@2), 472 until the AACTA's 31 film, television, documentary and short categories (aacta-2027@1), 503 until the
+    // Japan Academy's 17 (japan-academy-2027@1).
+    expect(n).toEqual({ verified: 520, projected: 11, simulated: 275 });
   });
 });
 
@@ -785,6 +788,121 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     expect(categoryDeadline(e, cat(e, 'european'))).toBe(at('Europe/Madrid', '2026-09-10', 14));
   });
 
+  it('PGA 2027, version 2: a documentary qualifies by a US run, a US premiere on television or streaming, or a listed festival selection', () => {
+    const s = startLife('pga-doc');
+    const e = ed(s, 'pga-2027');
+    expect(e.rulesId).toBe('pga-2027@2');
+    s.now = at('America/Los_Angeles', '2026-07-01', 9);
+    const doc = () => work(s, { format: 'documentary-feature', runtime: 85, completed: '2026-01-10' });
+    const run = doc();
+    release(run, 'theatrical', '2026-03-01', ['US']);
+    expect(r(s, run, e, 'documentary')).toBe('');
+    const streamed = doc();
+    release(streamed, 'streaming', '2026-03-01', ['US']);
+    expect(r(s, streamed, e, 'documentary')).toBe('');
+    const unseen = doc();
+    expect(r(s, unseen, e, 'documentary')).toMatch(/or a selection at .*Hot Docs/);
+    const hotDocs = s.editions.find((x) => x.institutionId === 'hot-docs' && x.year === 2026)!;
+    hotDocs.entries.push({ id: 'hd', projectId: unseen.id, categoryId: 'festival', submittedAt: 0, status: 'selected', recipients: [], fee: 0 });
+    expect(r(s, unseen, e, 'documentary')).toBe('');
+    expect(r(s, work(s, { format: 'documentary-feature', runtime: 40, completed: '2026-01-10' }), e, 'documentary')).toMatch(/more than 40/);
+    expect(categoryDeadline(e, cat(e, 'documentary'))).toBe(at('America/Los_Angeles', '2026-08-28', 23, 59) + 59_000);
+  });
+
+  it('WGA 2027, version 2: Documentary Screenplay needs feature length and a US run in 2026, not a television premiere', () => {
+    const s = startLife('wga-doc');
+    const e = ed(s, 'wga-2027');
+    s.now = at('America/Los_Angeles', '2026-10-01', 9);
+    const doc = (runtime = 90) => { const p = work(s, { format: 'documentary-feature', runtime, completed: '2026-01-10' }); p.credits.push(credit('w1', 'Written By', 'writer', 2)); return p; };
+    const run = doc();
+    release(run, 'theatrical', '2026-04-01', ['US']);
+    expect(r(s, run, e, 'documentary-screenplay')).toBe('');
+    const tvFirst = doc();
+    release(tvFirst, 'broadcast', '2026-03-01', ['US']);
+    release(tvFirst, 'theatrical', '2026-04-01', ['US']);
+    expect(r(s, tvFirst, e, 'documentary-screenplay')).toMatch(/outside cinemas, before any theatrical run/);
+    const short = doc(40);
+    release(short, 'theatrical', '2026-04-01', ['US']);
+    expect(r(s, short, e, 'documentary-screenplay')).toMatch(/more than 40/);
+    expect(categoryDeadline(e, cat(e, 'documentary-screenplay'))).toBe(at('America/Los_Angeles', '2026-11-20', 17));
+  });
+
+  it('DGA 2027, version 2: television awards take one episode aired in 2026, by November 13; a TV movie shown in US cinemas first is out', () => {
+    const s = startLife('dga-tv');
+    const e = ed(s, 'dga-2027');
+    s.now = at('America/Los_Angeles', '2026-10-01', 9);
+    const show = (format: Project['axes']['format'], date: string) => {
+      const p = work(s, { format, runtime: 50, completed: '2026-01-10' });
+      p.axes.episodeCount = format === 'tv-film' ? 1 : 6;
+      p.credits = [{ ...credit('d1', 'Directed By', 'director', 1), episodes: [1, 2] }, { ...credit('d2', 'Directed By', 'episode-director', 2), episodes: [3, 4, 5, 6] }];
+      release(p, 'streaming', date, ['US']);
+      return p;
+    };
+    const drama = show('series', '2026-03-01');
+    drama.axes.register = 'drama';
+    expect(checkEligibility(s, drama, e, cat(e, 'drama'), undefined, undefined, 3).recipients.map((c) => c.id)).toEqual(['d2']);
+    expect(r(s, show('series', '2025-12-01'), e, 'drama')).toMatch(/2026/);
+    const movie = show('tv-film', '2026-05-01');
+    release(movie, 'theatrical', '2026-04-01', ['US']);
+    expect(r(s, movie, e, 'movie')).toMatch(/opened in cinemas in the United States on April 1, 2026, before airing there/);
+    expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/Los_Angeles', '2026-11-13', 17));
+  });
+
+  it('AACTA 2027: films and television released in Australia in 2026; documentaries and shorts by completion date; each by its own deadline', () => {
+    const s = startLife('aacta');
+    const e = ed(s, 'aacta-2027');
+    expect(e.rulesId).toBe('aacta-2027@1');
+    s.now = at('Australia/Sydney', '2026-07-01', 9);
+    const film = (runtime = 100) => work(s, { format: 'feature', runtime, completed: '2026-01-10', base: 'au-sydney' });
+    const streamed = film();
+    release(streamed, 'streaming', '2026-05-01', ['AU']);
+    expect(r(s, streamed, e, 'film')).toBe('');
+    const abroad = film();
+    release(abroad, 'theatrical', '2026-05-01', ['NZ']);
+    expect(r(s, abroad, e, 'film')).toMatch(/in Australia/);
+    const short = film(59);
+    release(short, 'theatrical', '2026-05-01', ['AU']);
+    expect(r(s, short, e, 'film')).toMatch(/60/);
+    expect(categoryDeadline(e, cat(e, 'film'))).toBe(at('Australia/Sydney', '2026-09-28', 23, 59) + 59_000);
+    // Television: a first episode in Australia in 2026; documentaries and shorts by completion date and length.
+    const series = work(s, { format: 'series', runtime: 50, completed: '2026-01-10', base: 'au-sydney' });
+    release(series, 'broadcast', '2026-03-01', ['AU']);
+    expect(r(s, series, e, 'drama')).not.toMatch(/release|Australia/);
+    expect(r(s, work(s, { format: 'documentary-feature', runtime: 75, completed: '2025-08-01', base: 'au-sydney' }), e, 'documentary')).toMatch(/completed on August 1, 2025/);
+    expect(r(s, work(s, { format: 'short', runtime: 40, completed: '2026-01-10', base: 'au-sydney' }), e, 'short')).toMatch(/40/);
+    expect(categoryDeadline(e, cat(e, 'short'))).toBe(at('Australia/Sydney', '2026-08-03', 23, 59) + 59_000);
+    expect(categoryRuleStatus(rulebook('aacta-2027@1'), 'song')).toBe('simulated'); // shared with television: SLATE's
+  });
+
+  it('International Emmys: the FAQ gives the January 31 noon deadline only, so eligibility stays SLATE\'s', () => {
+    const s = startLife('iemmy');
+    const e = ed(s, 'international-emmys-2027');
+    expect(e.rulesId).toBe('international-emmys-2027@1');
+    expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/New_York', '2027-01-31', 12));
+    expect(categoryRuleStatus(rulebook('international-emmys-2026@1'), 'drama')).toBe('simulated');
+  });
+
+  it('Japan Academy 2027: a film of 40 minutes or more first released in Japanese cinemas in 2026; no documentaries; nothing streamed first', () => {
+    const s = startLife('jap');
+    const e = ed(s, 'japan-academy-2027');
+    expect(e.rulesId).toBe('japan-academy-2027@1');
+    s.now = at('Asia/Tokyo', '2026-10-01', 9);
+    const film = (format: Project['axes']['format'] = 'feature', runtime = 110, base = 'jp-tokyo') => work(s, { format, runtime, completed: '2026-01-10', base });
+    const jp = film();
+    release(jp, 'theatrical', '2026-04-01', ['JP']);
+    expect(r(s, jp, e, 'picture')).toBe('');
+    const doc = film('documentary-feature');
+    release(doc, 'theatrical', '2026-04-01', ['JP']);
+    expect(r(s, doc, e, 'picture')).toMatch(/doesn't accept documentary/);
+    const streamedFirst = film();
+    release(streamedFirst, 'streaming', '2026-03-01', ['JP']);
+    release(streamedFirst, 'theatrical', '2026-04-01', ['JP']);
+    expect(r(s, streamedFirst, e, 'picture')).toMatch(/outside cinemas/);
+    const us = film('feature', 110, 'us-los-angeles');
+    release(us, 'theatrical', '2026-04-01', ['JP']);
+    expect(r(s, us, e, 'foreign')).toBe(''); // a foreign film, released in Japanese cinemas
+  });
+
   it('IDFA 2026: completed after July 10, 2025, not shown in the Netherlands, a European premiere at least, by July 9; each section\'s length', () => {
     const s = startLife('idfa');
     const e = ed(s, 'idfa-2026');
@@ -929,7 +1047,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('DGA 2027 (79th): a feature over 40 minutes with a US run in 2026, entered by November 13 at 5 p.m. PT', () => {
     const s = startLife('dga');
     const e = ed(s, 'dga-2027');
-    expect(e.rulesId).toBe('dga-2027@1');
+    expect(e.rulesId).toBe('dga-2027@2'); // version 2 adds the television categories; the feature keeps version 1's rules
     s.now = at('America/Los_Angeles', '2026-10-01', 9);
     const p = work(s, { format: 'feature', runtime: 41, completed: '2026-01-10', base: 'us-los-angeles' });
     expect(r(s, p, e, 'feature')).toMatch(/theatrical release in the United States between January 1, 2026 and December 31, 2026/);
@@ -941,7 +1059,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Writers Guild Awards 2027: screenplays with a US run in 2026 and no television first; series in 2026; talk and documentary November to October', () => {
     const s = startLife('wga');
     const e = ed(s, 'wga-2027');
-    expect(e.rulesId).toBe('wga-2027@1');
+    expect(e.rulesId).toBe('wga-2027@2'); // version 2 adds Documentary Screenplay; the rest keep version 1's rules
     s.now = at('America/Los_Angeles', '2026-10-01', 9);
     const film = work(s, { format: 'feature', runtime: 100, completed: '2026-01-10', base: 'us-los-angeles' });
     release(film, 'broadcast', '2026-02-01', ['US']);
@@ -971,7 +1089,7 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
   it('Producers Guild Awards 2027: a US theatrical release in 2026, nothing outside cinemas first, by October 9; animated features over 40 minutes', () => {
     const s = startLife('pga');
     const e = ed(s, 'pga-2027');
-    expect(e.rulesId).toBe('pga-2027@1');
+    expect(e.rulesId).toBe('pga-2027@2'); // version 2 adds the documentary award; the film awards keep version 1's rules
     s.now = at('America/Los_Angeles', '2026-09-01', 9);
     const film = (medium: Project['axes']['medium'], runtime = 95) => { const p = work(s, { format: 'feature', medium, runtime, completed: '2026-01-10', base: 'us-los-angeles' }); release(p, 'theatrical', '2026-06-01', ['US']); return p; };
     expect(r(s, film('live-action'), e, 'theatrical')).not.toMatch(/release/);
