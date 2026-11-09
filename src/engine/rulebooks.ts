@@ -102,6 +102,11 @@ export interface CategoryRules {
   /** A work entered at an earlier edition can't be entered again. */
   noReentry?: Ruled<true>;
   deadlines?: Ruled<DeadlineRule[]>;
+  /**
+   * Parts whose story function is Narrator can't be entered: the Emmys' Performer Categories, "Voice-over performers and
+   * narrators may not enter in lead, support or guest performer categories" (a voice part is never in those pools anyway).
+   */
+  noNarrators?: Ruled<true>;
   /** Who is named and receives the award for a work: credited directors, or credited producers (at most `max`). */
   recipients?: Ruled<{ credit: 'director' | 'producer' | 'director-and-producer'; max?: number }>;
 }

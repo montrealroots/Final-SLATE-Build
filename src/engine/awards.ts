@@ -560,7 +560,8 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
   // Until November 9, 2026, an Oscar short whose rules weren't read qualified through any festival win at all; it now
   // reads the Academy's list (simulatedOscarRelease above).
   const recipients = categoryRecipients(state, p, cat, recipientIds, rules);
-  if (!recipients.length) reasons.push(recipientMissingReason(cat));
+  if (!recipients.length && rules?.noNarrators && categoryRecipients(state, p, cat, recipientIds).length) reasons.push('A narrator can\'t be entered in this performer category; the narration can be entered for a narrator award.');
+  else if (!recipients.length) reasons.push(recipientMissingReason(cat));
   return { eligible: reasons.length === 0, provisional, provisionalNote, reasons, recipients };
 }
 
@@ -573,8 +574,15 @@ function recipientMissingReason(cat: Category): string {
   return 'No credited person for this category.';
 }
 
-/** Credited recipients: only people with the relevant actual contribution. */
+/** Credited recipients: only people with the relevant actual contribution, less any the category's rules exclude. */
 export function categoryRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
+  const all = creditedRecipients(state, p, cat, chosen, rules);
+  if (!rules?.noNarrators) return all;
+  const chars = p.drafts.find((d) => d.number === p.approvedDraft)?.characters ?? [];
+  return all.filter((c) => !chars.find((x) => x.name === c.characterName)?.functions.includes('narrator'));
+}
+
+function creditedRecipients(state: GameState, p: Project, cat: Category, chosen?: string[], rules?: CategoryRules): Credit[] {
   const credits = p.credits;
   const chars = p.drafts.find((d) => d.number === p.approvedDraft)?.characters ?? [];
   // Leading or supporting as the producer placed the part, else by its size; story functions never decide it.

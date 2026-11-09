@@ -767,7 +767,7 @@ function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: 
   const [versionId, setVersionId] = useState('');
   if (!p) return null;
   const el = checkEligibility(g, p, ed, cat, recipients.length ? recipients : undefined, versionId || undefined);
-  const pool = categoryRecipients(g, p, cat);
+  const pool = categoryRecipients(g, p, cat, undefined, categoryRules(ed, cat.id));
   const personal = ['lead', 'supporting', 'voice'].includes(cat.recipient);
   const docs = entryNeeds(p);
   // Acting categories: where each cast part is placed, and why (script-effects.ts placementExplained).

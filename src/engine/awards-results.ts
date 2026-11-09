@@ -3,7 +3,7 @@
 // loadInstitutions): the handlers that call it run only in a game, which waits for the catalog before opening.
 import { getPlace } from '../data/places';
 import {
-  RIVAL_WORDS_A, RIVAL_WORDS_B, categoriesFor, categoryDeadline, categoryRecipients, checkEligibility, countryWords, edition, enterable, institution,
+  RIVAL_WORDS_A, RIVAL_WORDS_B, categoriesFor, categoryDeadline, categoryRecipients, categoryRules, checkEligibility, countryWords, edition, enterable, institution,
   festivalListFor, involved, qualifyingWin, rivalTitle, seasonSlate, compactEdition, type Category, type Judging,
 } from './awards';
 import { craftScore, requirementProblems } from './awards-rules';
@@ -148,7 +148,7 @@ export function prizeContenders(state: GameState, ed: Edition, cats: Category[],
     if (!parents.has(e.categoryId) || !['selected', 'nominated', 'won', 'lost', 'mention'].includes(e.status) || out.some((x) => x.p.id === e.projectId)) continue;
     const p = state.projects.find((x) => x.id === e.projectId);
     if (!p || !cat.formats.includes(p.axes.format) || (cat.mediums && !cat.mediums.includes(p.axes.medium)) || requirementProblems(state, p, cat).length) continue;
-    const recipients = categoryRecipients(state, p, cat).map((c) => c.id);
+    const recipients = categoryRecipients(state, p, cat, undefined, categoryRules(ed, cat.id)).map((c) => c.id);
     if (recipients.length) out.push({ p, recipients });
   }
   return out;

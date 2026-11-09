@@ -615,13 +615,18 @@ const EMMYS_2027_2: RuleBook = { ...EMMYS_2027, id: 'emmys-2027@2', version: 2, 
  * narration had no credited narrator in the game, which was false: a part whose story function is Narrator is cast and
  * records its narration in post (production/tasks.ts). It reads the general rules as the other individual categories do, with
  * no episode minimum ("a continuing or single narration in a documentary/nonfiction series or special"). The recipient is
- * the cast Narrator of a program with a narration sequence (awards-rules.ts). Not modeled yet: that a part performed as a
- * character goes to Character Voice-Over instead, and that voice-over performers and narrators may not enter the lead,
- * supporting or guest categories (Performer Categories).
+ * the cast Narrator of a program with a narration sequence (awards-rules.ts). The same version reads Performer Categories:
+ * "voice-over performers and narrators may not enter in lead, support or guest performer categories" (`noNarrators` on every
+ * lead-, supporting- and guest- category; a voice part was never in those pools). Not modeled yet: that a part performed as
+ * a character rather than a narrator goes to Character Voice-Over instead (SLATE's Narrator function is the producer's
+ * declaration that the part narrates).
  */
 function emmys3(year: number, mk: typeof v): Record<string, CategoryRules> {
   const two = emmys2(year, mk);
-  return { ...two, narrator: two['voice-over'] };
+  const p = year === 2026 ? '' : ' From the 2025-2026 rules; the 2026-2027 rules are not published yet.';
+  const noNarrators = mk(true as const, 'em78-rules', `Performer Categories: voice-over performers and narrators may not enter the lead, supporting or guest categories.${p}`);
+  const performers = Object.fromEntries(Object.entries(two).filter(([id]) => /^(lead|supporting|guest)-/.test(id)).map(([id, r]) => [id, { ...r, noNarrators }]));
+  return { ...two, ...performers, narrator: two['voice-over'] };
 }
 const EMMYS_2026_3: RuleBook = { ...EMMYS_2026_2, id: 'emmys-2026@3', version: 3, categories: emmys3(2026, v) };
 const EMMYS_2027_3: RuleBook = { ...EMMYS_2027_2, id: 'emmys-2027@3', version: 3, categories: emmys3(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2025-2026 rules.')) as typeof v) };
