@@ -420,7 +420,7 @@ describe('history and saves', () => {
 });
 
 describe('audit counts', () => {
-  it('346 categories follow verified rules for at least one edition, 11 only projected ones; the other 445 are simulated', () => {
+  it('369 categories follow verified rules for at least one edition, 11 only projected ones; the other 422 are simulated', () => {
     const rank = { simulated: 0, projected: 1, verified: 2 } as const;
     const best = (instId: string, catId: string) => RULEBOOKS.filter((b) => b.institutionId === instId)
       .map((b) => categoryRuleStatus(b, catId)).reduce<keyof typeof rank>((a, x) => (rank[x] > rank[a] ? x : a), 'simulated');
@@ -437,8 +437,8 @@ describe('audit counts', () => {
     // until the Annies' other 20 categories held in 2027 (annie-2027@2), 216 until Clermont's Lab and National (clermont-2027@2),
     // 218 until Sitges' six sections (sitges-2026@1), 224 until the Giornate degli Autori (venice-2026@3),
     // 225 until IDFA's five sections (idfa-2026@1), 230 until Hot Docs (hot-docs-2027@1), 231 until the
-    // Canadian Screen Awards' 115 entered categories (canadian-screen-2026@1).
-    expect(n).toEqual({ verified: 346, projected: 11, simulated: 445 });
+    // Canadian Screen Awards' 115 entered categories (canadian-screen-2026@1), 346 until the Goyas' 23 feature categories (goya-2027@1).
+    expect(n).toEqual({ verified: 369, projected: 11, simulated: 422 });
   });
 });
 
@@ -764,6 +764,27 @@ describe('rules read on November 6, 2026: Annecy, Venice, Berlinale, Golden Glob
     const show = film('documentary-feature', 50, 'CA', 'broadcast'); // television's documentary program: the TV window, no film length
     expect(r(s, show, e, 'tv-documentary-program')).not.toMatch(/release|minutes/);
     expect(categoryDeadline(e, cat(e, 'drama'))).toBe(at('America/Toronto', '2026-11-03', 23, 59) + 59_000);
+  });
+
+  it('Goyas 2027 (41st): Spanish features released in Spanish cinemas in 2026, at least 60 minutes (documentaries 70), never online first, by September 9', () => {
+    const s = startLife('goya');
+    const e = ed(s, 'goya-2027');
+    expect(e.rulesId).toBe('goya-2027@1');
+    s.now = at('Europe/Madrid', '2026-08-01', 9);
+    const film = (format: Project['axes']['format'], runtime: number, where = 'ES') => {
+      const p = work(s, { format, runtime, completed: '2026-01-10', base: 'es-madrid' });
+      release(p, 'theatrical', '2026-04-01', [where]);
+      return p;
+    };
+    expect(r(s, film('feature', 95), e, 'cinematography')).not.toMatch(/release|minutes/);
+    expect(r(s, film('feature', 59), e, 'film')).toMatch(/at least 60/);
+    expect(r(s, film('documentary-feature', 69), e, 'documentary')).toMatch(/at least 70/);
+    expect(r(s, film('feature', 95, 'FR'), e, 'film')).toMatch(/theatrical release in Spain between January 1, 2026 and December 31, 2026/);
+    const streamed = film('feature', 95);
+    release(streamed, 'streaming', '2026-02-01', ['US']);
+    expect(r(s, streamed, e, 'film')).toMatch(/outside cinemas, before any theatrical run/);
+    expect(categoryRuleStatus(rulebook(e.rulesId), 'european')).toBe('simulated'); // its own Bases, not read
+    expect(categoryDeadline(e, cat(e, 'film'))).toBe(at('Europe/Madrid', '2026-09-09', 14));
   });
 
   it('Emmys 2026, version 2: every entered category reads the general rules; series-only ones need their episodes, mixed ones don\'t', () => {

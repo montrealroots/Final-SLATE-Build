@@ -43,14 +43,14 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Producers Guild Awards (`pga`) | 15 | 14 / 1 / 0 | 0 / 0 / 15 | 0 | 15 | 0 | 0 | 0 | 4 |
 | Actor Awards (`actor-awards`) | 13 | 13 / 0 / 0 | 0 / 0 / 13 | 0 | 13 | 0 | 0 | 0 | 3 |
 | César Awards (`cesar`) | 27 | 27 / 0 / 0 | 0 / 0 / 27 | 0 | 27 | 0 | 0 | 0 | 0 |
-| Goya Awards (`goya`) | 30 | 30 / 0 / 0 | 0 / 0 / 30 | 0 | 30 | 0 | 4 | 0 | 0 |
+| Goya Awards (`goya`) | 30 | 30 / 0 / 0 | 23 / 0 / 7 | 0 | 30 | 23 | 10 | 0 | 0 |
 | Canadian Screen Awards (`canadian-screen`) | 119 | 114 / 5 / 0 | 115 / 0 / 4 | 0 | 0 | 115 | 7 | 0 | 40 |
 | AACTA Awards (`aacta`) | 36 | 35 / 1 / 0 | 0 / 0 / 36 | 0 | 0 | 0 | 0 | 0 | 6 |
 | Africa Movie Academy Awards (`amaa`) | 4 | 0 / 0 / 4 | 0 / 0 / 4 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 0 / 0 / 17 | 0 | 0 | 0 | 0 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 0 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 0 / 0 / 20 | 0 | 20 | 0 | 0 | 0 | 0 |
-| **All 37** | 802 | 705 / 69 / 28 | 346 / 11 / 445 | 28 | 335 | 340 | 141 | 32 | 125 |
+| **All 37** | 802 | 705 / 69 / 28 | 369 / 11 / 422 | 28 | 335 | 363 | 147 | 32 | 125 |
 
 ## Research queue
 
@@ -74,7 +74,7 @@ Entered categories still judged by SLATE's rules, in the order the eligibility r
 16. `pga` (12): `theatrical`, `animated`, `documentary`, `drama`, `comedy`, `limited`, `tv-movie`, `nonfiction`, `live-variety`, `game-competition`, `childrens`, `short-form`
 17. `actor-awards` (13): `male-lead`, `female-lead`, `male-supporting`, `female-supporting`, `cast`, `tv-male-limited`, `tv-female-limited`, `tv-male-drama`, `tv-female-drama`, `tv-male-comedy`, `tv-female-comedy`, `ensemble-drama`, `ensemble-comedy`
 18. `cesar` (25): `film`, `first-film`, `animated`, `documentary`, `foreign`, `director`, `screenplay`, `adaptation`, `actress`, `actor`, `supporting-actress`, `supporting-actor`, `newcomer-actress`, `newcomer-actor`, `score`, `sound`, `cinematography`, `editing`, `costumes`, `production-design`, `visual-effects`, `makeup`, `short-animation`, `short-documentary`, `short-fiction`
-19. `goya` (28): `film`, `animated`, `documentary`, `european`, `iberoamerican`, `short-fiction`, `short-documentary`, `short-animation`, `director`, `new-director`, `screenplay`, `adapted-screenplay`, `actor`, `actress`, `supporting-actor`, `supporting-actress`, `new-actor`, `new-actress`, `score`, `song`, `production-management`, `cinematography`, `editing`, `art-direction`, `costume`, `makeup`, `sound`, `effects`
+19. `goya` (5): `european`, `iberoamerican`, `short-fiction`, `short-documentary`, `short-animation`
 20. `aacta` (36): `film`, `indie-film`, `direction`, `lead-actor`, `lead-actress`, `supporting-actor`, `supporting-actress`, `original-screenplay`, `adapted-screenplay`, `cinematography`, `editing`, `sound`, `score`, `production-design`, `costume`, `hair-makeup`, `casting`, `song`, `soundtrack`, `childrens`, `competition-reality`, `documentary-factual`, `drama`, `entertainment`, `factual-entertainment`, `miniseries`, `comedy`, `casting-tv`, `documentary`, `documentary-cinematography`, `documentary-editing`, `documentary-sound`, `documentary-score`, `short`, `online-series`, `vfx-animation`
 21. `amaa` (4): `film`, `director`, `documentary`, `short`
 22. `japan-academy` (17): `picture`, `animation`, `actor`, `actress`, `supporting-actor`, `supporting-actress`, `director`, `screenplay`, `music`, `cinematography`, `lighting`, `art-direction`, `sound`, `editing`, `foreign`, `vfx`, `newcomer`

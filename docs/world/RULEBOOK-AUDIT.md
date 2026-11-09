@@ -397,6 +397,17 @@ Not modeled: the five-date run and the city; the Academy's list of approved stre
 within 1.5 years of the period; minority co-productions only where Canadians are credited; the 2026 citizenship rule for
 nominees in certified productions. The catalog's own requirement (a Canadian production) stays.
 
+## Goya Awards, 41st (2027)
+
+Source: [Bases de los 41 Premios Goya](https://www.premiosgoya.com/pdfs/bases-de-los-41-premios-goya/) (read November 9,
+2026), sections 3.1 and 5.1: fiction and animated features at least 60 minutes, feature documentaries at least 70;
+released commercially in Spanish cinemas, in the original version, January 1 to December 31, 2026; Spanish nationality
+(the catalog's requirement); not in an earlier edition; not available online before the theatrical release, festivals
+excepted; materials before 14:00 on September 9, 2026 for films released July to December (July 28 for January to June,
+not separated in SLATE). Applied to the 23 feature categories. Best European Film, Best Ibero-American Film and the three
+short film awards follow their own specific Bases (section 2), not read. Not modeled: seven consecutive days in one cinema
+(three for documentaries); the ICAA rating before release.
+
 ## Not Readable From Here
 
 - **TIFF (Toronto):** tiff.net/submissions and TIFF's FilmFreeway page refused this environment (HTTP 403), on two

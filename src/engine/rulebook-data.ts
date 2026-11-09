@@ -740,8 +740,33 @@ function canadianScreen(year: number, mk: typeof v): Record<string, CategoryRule
 const CANADIAN_SCREEN_2026: RuleBook = { id: 'canadian-screen-2026@1', institutionId: 'canadian-screen', year: 2026, version: 1, checked: '2026-11-09', sources: CSA_SOURCES, categories: canadianScreen(2026, v) };
 const CANADIAN_SCREEN_2027: RuleBook = { id: 'canadian-screen-2027@1', institutionId: 'canadian-screen', year: 2027, version: 1, checked: '2026-11-09', sources: CSA_SOURCES, categories: canadianScreen(2027, ((value: unknown, source: string, note?: string) => proj(value, source, note ?? 'From the 2026 rules.')) as typeof v) };
 
+// ---------------- Goya Awards, 41st (2027) ----------------
+
+/**
+ * Read November 9, 2026: the Bases of the 41st Premios Goya, section 3.1 (features) and 5.1 (deadlines). Best European
+ * Film, Best Ibero-American Film and the three short film awards follow their own specific Bases (section 2), not read;
+ * they stay on SLATE's rules. Not modeled: the seven consecutive days in one cinema (three for documentaries), the ICAA
+ * rating before release, and the earlier July 28 deadline for films released January to June (SLATE uses September 9).
+ */
+const GOYA41: RuleSource = { id: 'goya41-bases', publisher: 'Academia de las Artes y las Ciencias Cinematográficas de España', title: 'Bases de los 41 Premios Goya', url: 'https://www.premiosgoya.com/pdfs/bases-de-los-41-premios-goya/', edition: '41st Goya Awards (2027)', retrieved: '2026-11-09' };
+const GOYA_FEATURE: CategoryRules = {
+  runtime: v({ atLeast: 60 }, 'goya41-bases', 'Fiction and animated features at least 60 minutes (3.1).'),
+  qualifying: v({ from: '2026-01-01', to: '2026-12-31' }, 'goya41-bases', 'Released commercially in Spain in 2026 (3.1).'),
+  release: v({ routes: ['theatrical'], countries: ['ES'] }, 'goya41-bases', 'In Spanish cinemas, in the original version, with tickets on sale (3.1); SLATE treats a Spanish theatrical release as the run.'),
+  theatricalFirst: v({ countries: ['*'] }, 'goya41-bases', 'Not available online before its release in cinemas, unless as part of a festival (3.1.e).'),
+  noReentry: v(true, 'goya41-bases', 'Not in an earlier edition of the Goyas (3.1.b).'),
+  deadlines: v([{ date: '2026-09-09', time: '14:00', zone: 'Europe/Madrid' }], 'goya41-bases', 'Materials before 14:00 on September 9 for films released July to December (5.1); films released January to June were due July 28, which SLATE doesn\u2019t separate.'),
+};
+const GOYA_2027: RuleBook = {
+  id: 'goya-2027@1', institutionId: 'goya', year: 2027, version: 1, checked: '2026-11-09', sources: [GOYA41],
+  categories: {
+    ...Object.fromEntries(['film', 'animated', 'director', 'new-director', 'screenplay', 'adapted-screenplay', 'actor', 'actress', 'supporting-actor', 'supporting-actress', 'new-actor', 'new-actress', 'score', 'song', 'production-management', 'cinematography', 'editing', 'art-direction', 'costume', 'makeup', 'sound', 'effects'].map((id) => [id, GOYA_FEATURE])),
+    ...Object.fromEntries(['documentary'].map((id) => [id, { ...GOYA_FEATURE, runtime: v({ atLeast: 70 }, 'goya41-bases', 'Feature documentaries at least 70 minutes (3.1).') }])),
+  },
+};
+
 /** Every rulebook ever shipped. Append only: an edition may refer to any of these ids for good. */
 export const RULEBOOK_DATA: RuleBook[] = [
   OSCARS_2027, OSCARS_2027_2, SUNDANCE_2027, CLERMONT_2027, ANNIE_2027, CANNES_2027,
-  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027,
+  ANNECY_2026, ANNECY_2027, VENICE_2026, VENICE_2027, BERLINALE_2027, GOLDEN_GLOBES_2027, EMMYS_2026, EMMYS_2027, SAN_SEBASTIAN_2026, SAN_SEBASTIAN_2027, EMMYS_2026_2, EMMYS_2027_2, BERLINALE_2027_2, CANNES_2027_2, ANNECY_2026_2, ANNECY_2027_2, VENICE_2026_2, VENICE_2027_2, SAN_SEBASTIAN_2026_2, SAN_SEBASTIAN_2027_2, GOLDEN_GLOBES_2027_2, ANNIE_2027_2, CLERMONT_2027_2, SITGES_2026, SITGES_2027, VENICE_2026_3, VENICE_2027_3, IDFA_2026, IDFA_2027, HOT_DOCS_2027, CANADIAN_SCREEN_2026, CANADIAN_SCREEN_2027, GOYA_2027,
 ];
