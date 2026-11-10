@@ -87,7 +87,7 @@ holds across reloads and is the same for a seed. No decision is dated before the
 | Cable (FX, FXX and others) | 30 to 90 days after the finale | 12 to 16 months after the last premiere |
 | Streaming (Hulu, Disney+ and others) | 30 to 120 days after the finale | 14 to 25 months after the last premiere |
 | Kids' channels (Disney Junior, Disney Channel and others) | 30 to 150 days after the finale | 11 to 16 months after the last premiere |
-| Daily programmes | Each year rolls into the next, a month before the year is up | On the same date the next year |
+| Daily programmes | Each year rolls into the next, a month before the year is up | Near the same date the next year, on the same weekday |
 
 **The odds of renewal.** They come from how many seasons the series has run and its outlet. They never come from TMDB
 ratings or popularity:
@@ -96,7 +96,9 @@ ratings or popularity:
 - **Long runners mostly continue.** A long-running broadcast animated comedy is renewed 93% of the time.
 - **Final seasons.** A series in its later years may be renewed for a final season, announced with the renewal. That
   is 15% for broadcast, 30% elsewhere, and 3% for a long-running broadcast animation.
-- **Limited series** conclude after their season.
+- **Limited series** conclude after their season. They and final seasons end on their finale's date, not at a later
+  decision.
+- **A daily programme that isn't renewed** is cancelled while its last year still airs.
 - **Pilots** are ordered to series or passed on.
 - **Series announced with no aired season** are given a premiere date.
 
@@ -106,22 +108,38 @@ These are game calibration from how renewals usually go, not industry statistics
 been renewed, so its next season is given a date rather than decided again. A broadcast show past the fall slot goes
 to midseason.
 
-**What a new season copies.** It takes its episode count and release pattern (weekly, daily or all at once) from the
-last complete season. A season still airing when the records end lists only the episodes known so far, so it isn't
-used.
+**What a new season copies.** It takes these from the last complete season:
+- its episode count;
+- its release pattern (weekly, daily or all at once);
+- its spacing, where every episode is dated: each episode keeps its day in the season, so the season's breaks come
+  with it, such as a broadcast comedy's holiday weeks or a talk show's summer;
+- its night: a new season opens on the weekday the season it copies opened on.
+
+A season still airing when the records end lists only the episodes known so far, so it isn't used.
 
 **Who returns.** The recorded regulars return in a simulated season, and nobody else is cast (the owner's rule).
 
 ### What Running It On The Real Series Changed
 
-Five simulated years on the real series turned up three problems:
+Five simulated years on the real series turned up these problems:
 - **Partial episode counts.** New seasons had copied the partial count of a season still airing: 9 episodes for
   *Abbott Elementary* and 1 for *Only Murders in the Building*. They now copy the last complete season, which gives 22
   and 10.
 - **Final seasons too often.** Final seasons came too often for evergreen animation: *The Simpsons* was given a final
   season in 2027. Long-running broadcast animation now gets a final season 3% of the time.
-- **Calendar drift.** A daily programme's year drifted by a day across leap years. It now starts on the same calendar
-  date each year.
+- **Calendar drift.** A daily programme's year drifted by a day across leap years.
+- **No breaks.** A season copied only its usual gap between episodes, so *Abbott Elementary*'s 22 episodes ran straight
+  from October to March. Its real seasons pause over the holidays and run into April.
+- **Wrong night.** A season could open on any day of the week, so Abbott opened on a Thursday. It now opens on a
+  Wednesday, like its recorded seasons.
+- **Endings dated late.** Final seasons were told as ending at the next May upfronts, two months after their finale.
+- **Weekend episodes.** Daily programmes aired every calendar day, weekends included. Copying the recorded spacing
+  fixed that, but only once a programme's year is anchored to the same recorded season its spacing comes from.
+  Anchoring to the newer season had put *General Hospital* on Saturdays.
+
+After the fixes, five years of two seeds had no weekend episodes for the daily programmes, and every ending fell on its
+finale. *Abbott Elementary* opens on Wednesdays in late September or October and ends in April; *The Simpsons* opens on
+Sundays.
 
 ### What The Player Sees
 
@@ -154,6 +172,7 @@ Five simulated years on the real series turned up three problems:
   - limited series conclude;
   - pilots are decided;
   - renewed seasons follow their pattern;
+  - a season keeps its night and its recorded breaks, and a final season ends at its finale;
   - every series runs until it ends;
   - it is the same for a seed and survives a reload;
   - it waits without the catalog;

@@ -14,10 +14,12 @@ The rules are in `docs/WORLD.md`, under Phase 2.
 
 | Command | Exit | Result |
 | --- | --- | --- |
-| `npm run screen-catalog:build` | 0 | `world.json` is now 404 kB. It holds the same 2,134 events plus profiles of the 143 series still running when the records end. |
+| `npm run screen-catalog:build` | 0 | `world.json` is now 419 kB. It holds the same 2,134 events plus profiles of the 143 series still running when the records end. 78 of them carry each fully dated season's episode spacing. |
 | Five simulated years on the real profiles (a probe script, not kept) | 0 | Three problems found and fixed: partial episode counts copied from a season still airing, too many final seasons for evergreen animation, and a daily programme's year drifting across leap years. After the fixes: *Abbott Elementary* gets 22 episodes a season, premiering in late September or early October. *Only Murders in the Building* gets 10. Broadcast decisions cluster in May. About 31 of the 143 series are still running after five years. |
-| `npm run check` | 0 | 85 files, 672 tests, including the new `tests/industry.test.ts` (7). Startup is 685 kB, 219 kB gzipped (budgets 700 and 220), up from 679 and 217 because the engine loads with the game. The budget was not raised. |
+| A second probe, made after looking at the In Your Story card | 0 | Four more problems found and fixed. Seasons had no breaks: Abbott ran straight from October to March. Seasons opened on any weekday. Final seasons were said to end at the next upfronts, after their finale. Daily programmes aired on weekends. With two seeds over five years, the daily programmes had no weekend episodes and every ending fell on its finale. Abbott opens on Wednesdays and ends in April, and *The Simpsons* opens on Sundays. |
+| `npm run check` | 0 | 85 files, 673 tests, including the new `tests/industry.test.ts` (8). Putting back any of the four fixes fails a test in it. Startup is 685 kB, 219 kB gzipped (budgets 700 and 220), up from 679 and 217 because the engine loads with the game. The budget was not raised. |
 | `catalog`, `living-world`, `world`, `accessibility`, `viewports`, `focus`, `readers`, `devices`, `first-project`, `journey-a`, `catalog-live` on desktop and phone | 0 | 53 passed, 9 skipped by design. The new `living-world` test plays a save past the records' end and checks the decision, the In Your Story card, the returning regulars, and that all of it survives a reload. |
+| `catalog`, `living-world`, `catalog-live`, `world` on desktop and phone, after the second probe | 0 | 28 passed. |
 
 ### Previous: The Living World, Phase 1: The World's Clock (November 10, 2026, after #63)
 

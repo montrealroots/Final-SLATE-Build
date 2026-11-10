@@ -22,6 +22,8 @@ const WORLD: IndustryWorld = {
     prof('tv:5', { t: 'New Pilot', status: 'Pilot', aired: 0, seasons: [] }),
     prof('tv:6', { t: 'Morning Desk', net: ['Syndication'], daily: 1, genres: ['Talk'], aired: 30, seasons: [{ n: 30, eps: 180, dated: 60, d0: '2026-09-08', d1: '2026-11-13', gap: 1, drop: 0 }] }),
     prof('tv:7', { t: 'Little Explorers', net: ['Disney Junior'], genres: ['Animation', 'Kids'], aired: 2, seasons: [{ n: 2, eps: 20, dated: 20, d0: '2026-10-01', d1: '2026-12-10', gap: 3, drop: 0 }] }),
+    // A Wednesday comedy whose recorded season took a three-week break after its third episode.
+    prof('tv:8', { t: 'Wednesday Comedy', aired: 5, seasons: [{ n: 5, eps: 6, dated: 6, d0: '2025-10-01', d1: '2025-11-19', gap: 7, drop: 0, offs: [0, 7, 14, 35, 42, 49] }] }),
   ],
 };
 afterAll(() => setIndustryWorld(null));
@@ -88,9 +90,35 @@ describe('the living world\'s engine', () => {
       else expect(s.events.some((e) => e.kind === 'industry-decision' && e.payload.r === r), r).toBe(true);
       for (const [i, season] of sim.seasons.entries()) if (i) expect(season.premiere > sim.seasons[i - 1].premiere).toBe(true);
     }
-    // The daily programme rolls into a new year each September.
+    // The daily programme rolls into a new year each September, on the Tuesday nearest its recorded date (September 8):
+    // the weekday holds and the date doesn't drift.
     const daily = s.industry!.series['tv:6'];
-    for (const season of daily.seasons) expect(season.premiere.slice(5)).toBe('09-08');
+    expect(daily.seasons.length).toBeGreaterThan(3);
+    for (const season of daily.seasons) {
+      expect(new Date(`${season.premiere}T12:00:00Z`).getUTCDay()).toBe(2);
+      expect(season.premiere.slice(5) >= '09-05' && season.premiere.slice(5) <= '09-11').toBe(true);
+    }
+  });
+
+  it('keeps a series\' own rhythm: its usual night, its recorded breaks, and an ending dated at its finale', () => {
+    const s = run('ind-rhythm', '2027-06-30');
+    const next = s.industry!.series['tv:8'].seasons[0];
+    expect(next.n).toBe(6);
+    expect(new Date(`${next.premiere}T12:00:00Z`).getUTCDay()).toBe(3); // a Wednesday, like its recorded premiere
+    const days = episodeDates(next).map((d) => Date.parse(d) / DAY);
+    expect(days.slice(1).map((d, i) => d - days[i])).toEqual([7, 7, 21, 7, 7]); // the three-week break comes with it
+    // A final season ends with its finale, not at the next upfronts.
+    let finals = 0;
+    for (let i = 0; i < 30; i++) {
+      const t = run(`ind-final-${i}`, '2034-12-31');
+      for (const sim of Object.values(t.industry!.series)) for (const o of sim.outcomes) {
+        const season = sim.seasons.find((x) => x.n === o.n);
+        if (o.kind !== 'concluded' || !season) continue;
+        finals++;
+        expect(o.at).toBe(episodeDates(season).at(-1));
+      }
+    }
+    expect(finals).toBeGreaterThan(0);
   });
 
   it('is the same for a seed and different across seeds, and survives a reload', () => {

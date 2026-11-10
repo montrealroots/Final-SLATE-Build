@@ -14,7 +14,7 @@ import { registerHandler, schedule } from './state';
 import { DAY, addDaysToKey } from './time';
 import type { GameState } from './types';
 
-export interface SeasonFact { n: number; eps: number; dated: number; d0: string; d1: string | null; gap: number; drop: 0 | 1 }
+export interface SeasonFact { n: number; eps: number; dated: number; d0: string; d1: string | null; gap: number; drop: 0 | 1; offs?: number[] }
 export interface SeriesProfile {
   r: string;
   t: string;
@@ -30,8 +30,11 @@ export interface SeriesProfile {
 }
 export interface IndustryWorld { horizon: string; builtAt: string; series: SeriesProfile[] }
 
-/** A season the save's world made: its premiere, how it is released, and whether it was announced as the last. */
-export interface SimSeason { n: number; eps: number; premiere: string; gap: number; drop: boolean; final: boolean }
+/**
+ * A season the save's world made: its premiere, how it is released, and whether it was announced as the last. `offs` is
+ * each episode's day in the season, copied from the series' last complete one, so its breaks come with it.
+ */
+export interface SimSeason { n: number; eps: number; premiere: string; gap: number; drop: boolean; final: boolean; offs?: number[] }
 export interface SimOutcome { at: string; kind: 'renewed' | 'cancelled' | 'concluded' | 'ordered' | 'passed' | 'dated'; n: number; final?: boolean }
 export interface SimSeries { seasons: SimSeason[]; outcomes: SimOutcome[]; closed: boolean }
 export interface IndustryState {
@@ -67,18 +70,19 @@ export function outletOf(p: SeriesProfile): Outlet {
 const instant = (key: string) => Date.parse(`${key}T16:00:00Z`);
 const keyOf = (at: number) => new Date(at).toISOString().slice(0, 10);
 const later = (a: string, b: string) => (a > b ? a : b);
-/** The same date a year on (February 29 becomes the 28th): a daily programme's year starts on its usual date. */
-const nextYear = (key: string) => `${Number(key.slice(0, 4)) + 1}${key.slice(4) === '-02-29' ? '-02-28' : key.slice(4)}`;
+const weekday = (key: string) => new Date(`${key}T12:00:00Z`).getUTCDay();
+/** The day nearest `key`, within three days either way, that falls on the weekday of `like`. */
+const nearestWeekday = (key: string, like: string) => { const d = (weekday(like) - weekday(key) + 7) % 7; return addDaysToKey(key, d > 3 ? d - 7 : d); };
 
 /** A season as the engine reads it, recorded or simulated: when it opened, how many episodes, how they are released. */
-interface Run { n: number; eps: number; d0: string; gap: number; drop: boolean; final: boolean; end: string }
+interface Run { n: number; eps: number; d0: string; gap: number; drop: boolean; final: boolean; end: string; offs?: number[] }
 function recordedRun(f: SeasonFact): Run {
   // Episodes the record lists without dates are counted on at the season's usual gap.
   const listed = f.d1 ?? f.d0;
   const end = f.drop ? f.d0 : addDaysToKey(listed, Math.max(0, f.eps - Math.max(1, f.dated)) * f.gap);
-  return { n: f.n, eps: f.eps, d0: f.d0, gap: f.gap, drop: !!f.drop, final: false, end };
+  return { n: f.n, eps: f.eps, d0: f.d0, gap: f.gap, drop: !!f.drop, final: false, end, offs: f.offs?.length === f.eps ? f.offs : undefined };
 }
-const simRun = (s: SimSeason): Run => ({ n: s.n, eps: s.eps, d0: s.premiere, gap: s.gap, drop: s.drop, final: s.final, end: s.drop ? s.premiere : addDaysToKey(s.premiere, s.gap * (s.eps - 1)) });
+const simRun = (s: SimSeason): Run => ({ n: s.n, eps: s.eps, d0: s.premiere, gap: s.gap, drop: s.drop, final: s.final, offs: s.offs, end: episodeDates(s).at(-1)! });
 /**
  * The season a new one is modelled on: the last simulated one, or the last recorded season that is complete. A season
  * still airing when the records end lists only the episodes known so far, so its count and spacing aren't the
@@ -97,9 +101,18 @@ function lastRun(p: SeriesProfile, sim: SimSeries): Run | null {
   const f = p.seasons.at(-1);
   return f ? recordedRun(f) : null;
 }
-/** Episode dates of a simulated season. */
+/**
+ * Episode dates of a simulated season. Its breaks are the series' own when the record has them: a 22-episode broadcast
+ * season copied at its median gap alone ran straight from October to March, where the real ones pause over the holidays
+ * and run into April (found on the real catalog, November 10, 2026).
+ */
 export function episodeDates(s: SimSeason): string[] {
+  if (s.offs?.length === s.eps) return s.offs.map((o) => addDaysToKey(s.premiere, o));
   return Array.from({ length: s.eps }, (_, i) => (s.drop ? s.premiere : addDaysToKey(s.premiere, s.gap * i)));
+}
+/** The first date on or after `key` that falls on the weekday of `like`: a series premieres on its usual night. */
+function onWeekday(key: string, like: string): string {
+  return addDaysToKey(key, (weekday(like) - weekday(key) + 7) % 7);
 }
 
 /**
@@ -112,6 +125,9 @@ function decisionDate(p: SeriesProfile, run: Run, r: () => number): string {
   const end = run.end;
   const m = Number(end.slice(5, 7));
   if (o === 'daily') return addDaysToKey(run.d0, 335);
+  // A final season or a limited series ends with its finale; there is nothing left to decide. Dating it at the next
+  // upfronts had told a final season's ending in May, two months after it aired.
+  if (run.final || p.type === 'Miniseries') return end;
   if (o === 'broadcast') {
     const inSeason = m >= 9 || end.slice(5) <= '05-20';
     if (inSeason) return later(`${m >= 9 ? Number(end.slice(0, 4)) + 1 : end.slice(0, 4)}-05-${String(10 + Math.floor(r() * 10)).padStart(2, '0')}`, addDaysToKey(end, 7));
@@ -134,10 +150,20 @@ export function renewalOdds(p: SeriesProfile, seasonsRun: number): number {
 }
 
 /** When a renewed series' next season opens, and never sooner than production allows after the decision. */
-function nextPremiere(p: SeriesProfile, prev: Run | null, decided: string, r: () => number): string {
+function nextPremiere(p: SeriesProfile, prev: Run | null, decided: string, r: () => number, anchor?: string): string {
   const o = outletOf(p);
   const base = prev?.d0 ?? decided;
-  if (o === 'daily') { let d = nextYear(base); while (d <= decided) d = nextYear(d); return d; }
+  if (o === 'daily') {
+    // A daily programme's year opens near the date of the season it is modelled on, on the same weekday, so the weekdays it
+    // copies from that season stay weekdays. Pinning the calendar date had moved the weekday each year, stepping from each
+    // simulated year drifted the date, and anchoring to a newer season than the model put General Hospital on Saturdays
+    // (all found on the real catalog, November 10, 2026). February 29 becomes the 28th.
+    const a = anchor ?? base;
+    for (let y = Number(decided.slice(0, 4)); ; y++) {
+      const d = nearestWeekday(`${y}${a.slice(4) === '-02-29' ? '-02-28' : a.slice(4)}`, a);
+      if (d > decided) return d;
+    }
+  }
   if (o === 'broadcast') {
     const fall = !prev || Number(prev.d0.slice(5, 7)) >= 8;
     const y = Number(decided.slice(0, 4)) + (decided.slice(5) > '08-31' ? 1 : 0);
@@ -178,7 +204,11 @@ function decide(state: GameState, p: SeriesProfile, sim: SimSeries, today: strin
   const o = outletOf(p);
   const seasonsRun = p.aired + sim.seasons.length;
   const add = (kind: SimOutcome['kind'], n: number, final?: boolean) => sim.outcomes.push({ at: today, kind, n, ...(final ? { final } : {}) });
-  const open = (n: number, premiere: string, eps: number, gap: number, drop: boolean, final: boolean) => sim.seasons.push({ n, eps, premiere, gap, drop, final });
+  const open = (n: number, premiere: string, eps: number, gap: number, drop: boolean, final: boolean, offs?: number[]) => sim.seasons.push({ n, eps, premiere, gap, drop, final, ...(offs ? { offs } : {}) });
+  // A new season copies the model season: its count, its pattern and its breaks, on the night it usually airs.
+  const like = (m: Run, premiere: string) => (o === 'daily' ? premiere : onWeekday(premiere, m.d0));
+  // The recorded season every simulated one descends from: its date anchors a daily programme's year.
+  const anchor = model(p, { seasons: [], outcomes: [], closed: false }, state.industry!.horizon)?.d0;
   if (!run) {
     // Not yet aired. A pilot is ordered to series or passed on; a series announced without a date is given one.
     const eps = { broadcast: 13, cable: 10, streaming: 8, kids: 20, daily: 150 }[o];
@@ -194,19 +224,20 @@ function decide(state: GameState, p: SeriesProfile, sim: SimSeries, today: strin
     // past the fall slot goes to midseason.
     const premiere = o === 'broadcast' && today.slice(5) >= '09-01'
       ? addDaysToKey(`${Number(today.slice(0, 4)) + 1}-01-10`, Math.floor(r() * 60))
-      : later(nextPremiere(p, run, today, r), addDaysToKey(today, 60));
+      : later(nextPremiere(p, run, today, r, anchor), addDaysToKey(today, 60));
     const m = model(p, sim, state.industry!.horizon)!;
     add('dated', run.n + 1);
-    open(run.n + 1, premiere, m.eps, m.gap, m.drop, false);
+    open(run.n + 1, like(m, premiere), m.eps, m.gap, m.drop, false, m.offs);
     return;
   }
-  if (r() >= renewalOdds(p, seasonsRun)) { add(o === 'daily' ? 'concluded' : 'cancelled', run.n); sim.closed = true; return; }
+  // Not renewed is cancelled, a daily programme's included: its year is announced as its last while it still airs.
+  if (r() >= renewalOdds(p, seasonsRun)) { add('cancelled', run.n); sim.closed = true; return; }
   // A final season is announced for a series in its later years, rarely for a long-running broadcast animation.
   const evergreen = o === 'broadcast' && seasonsRun >= 6 && p.genres.includes('Animation');
   const final = o !== 'daily' && seasonsRun >= (o === 'broadcast' ? 5 : 3) && r() < (evergreen ? 0.03 : o === 'broadcast' ? 0.15 : 0.3);
   const m = model(p, sim, state.industry!.horizon)!;
   add('renewed', run.n + 1, final);
-  open(run.n + 1, nextPremiere(p, run, today, r), m.eps, m.gap, m.drop, final);
+  open(run.n + 1, like(m, nextPremiere(p, run, today, r, anchor)), m.eps, m.gap, m.drop, final, m.offs);
 }
 
 registerHandler('industry-decision', (state, ev) => {

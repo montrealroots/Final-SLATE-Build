@@ -105,6 +105,9 @@ for (const t of manifest.titles) {
         const complete = !daily && !drop && (rec.status === 'Ended' || rec.status === 'Canceled' || (d.seasons ?? []).some((x) => x.season_number > s.season_number));
         const gaps = dated.slice(1).map((e, i) => (Date.parse(e.date) - Date.parse(dated[i].date)) / 86_400_000).sort((a, b) => a - b);
         seasonFacts.push({ n: s.season_number, eps: eps.length, dated: dated.length, d0: opens, d1: last?.date ?? null, gap: gaps.length ? gaps[gaps.length >> 1] : 7, drop: drop ? 1 : 0,
+          // Each episode's day in its season, breaks included, for a season fully dated: a new season keeps the series' own rhythm
+          // (a daily programme's weekdays and its summer weeks off among them).
+          offs: !drop && dated.length === eps.length && dated.length > 1 ? dated.map((e) => Math.round((Date.parse(e.date) - Date.parse(opens)) / 86_400_000)) : undefined,
           cast: (sb.credits?.cast ?? []).filter((c) => c.order < 8).map((c) => ({ p: c.id, name: c.name, ch: c.character || null })) });
         if (opens && opens >= WORLD_FROM) world.push({ d: opens, k: 'season', r: sref, t: title, s: s.season_number, eps: eps.length, net: rec.networks, ci: studiosOf(rec), first: s.season_number === 1, daily: daily ? 1 : undefined, drop: drop ? 1 : undefined });
         for (const e of dated) if (e.date >= WORLD_FROM) world.push({ d: e.date, k: 'episode', r: `${sref}:e:${e.number}`, t: title, s: s.season_number, e: e.number, n: e.name, net: rec.networks, daily: daily ? 1 : undefined, f: e === last && complete && dated.length === eps.length && dated.length > 1 ? 1 : undefined });

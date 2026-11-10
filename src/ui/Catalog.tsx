@@ -400,10 +400,11 @@ function InYourStory({ refId, today }: { refId: string; today: string }) {
       {seasons.map((x) => {
         const dates = episodeDates(x);
         const aired = dates.filter((d) => d <= today).length;
+        const breaks = dates.some((d, i) => i > 0 && Date.parse(d) - Date.parse(dates[i - 1]) > 1.5 * x.gap * 86_400_000);
         return (
           <section key={x.n}>
             <h3>Season {x.n}</h3>
-            <p className="muted">{x.drop ? `All ${x.eps} episodes ${x.premiere <= today ? 'came out' : 'are due to come out'} ${formatDateKey(x.premiere)}.` : `${x.eps} episodes, ${x.gap === 7 ? 'weekly' : x.gap === 1 ? 'daily' : `every ${x.gap} days`}, from ${formatDateKey(x.premiere)} to ${formatDateKey(dates.at(-1)!)}${x.premiere <= today ? `; ${aired} aired so far` : ''}.`}</p>
+            <p className="muted">{x.drop ? `All ${x.eps} episodes ${x.premiere <= today ? 'came out' : 'are due to come out'} ${formatDateKey(x.premiere)}.` : `${x.eps} episodes, ${x.gap === 7 ? 'weekly' : x.gap === 1 ? 'daily' : `every ${x.gap} days`}${breaks ? ' with breaks' : ''}, from ${formatDateKey(x.premiere)} to ${formatDateKey(dates.at(-1)!)}${aired === x.eps ? '; all aired' : aired ? `; ${aired} aired so far` : ''}.`}</p>
             {p.regulars.length > 0 && <p className="dim">Returning: {p.regulars.map((c) => `${c.name}${c.ch ? ` (${c.ch})` : ''}`).join(', ')}. The regulars recorded for its last season return; nobody else is cast in a simulated season.</p>}
           </section>
         );
