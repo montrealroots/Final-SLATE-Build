@@ -191,3 +191,34 @@ Each row goes input → saved state → engine consumer → result → what the 
 No broken link was found in these areas: every decision listed reached a rule, and each comparison showed its
 difference. The episode air dates were an assumption, not a choice: broadcast meant weekly and streaming meant every
 episode at once, with no way to choose. They became a choice on November 10, 2026 (`docs/RELEASE-SCHEDULES.md`).
+
+## Cycles That Stopped Short (November 10, 2026, after #60)
+
+The owner asked that everything in the game have a complete cycle and downstream effects. Inputs were already traced
+above; this pass traced outcomes: each thing the game produces, and what reads it next. It ran three ways:
+
+- **Saved fields.** Every property in `types.ts` was checked for an engine read that isn't an assignment. 27 are read
+  only by the screens. All are records or identity by design: timestamps, names, your own story text, reasons shown back.
+  The few that sound like play reach play another way. Puppet copies drive build time through `schedule.puppetCopies`,
+  and revision passes count notes marked addressed, which the script's score reads.
+- **Scheduled events.** Every handler (37) was checked for a change of state beyond its log line. One wasn't: the
+  festival screening.
+- **The career loop.** Each step from delivery to the next project was traced by hand.
+
+Four cycles stopped short. Each is closed now, with a test that compares the same world with one input changed
+(`tests/cycles.test.ts`):
+
+| What happened | What read it next, before | Now |
+|---|---|---|
+| How delivered work was received, and the awards it won | Nothing in funding: backers counted delivered projects only, so a flop and a prize-winner opened the same doors. Proposals read reception, not wins. | `finance.ts` `trackRecord`: the grant panel, investors and commissioners weigh average reception (up to ten points either way) and wins (five each, up to ten), and say so in their answer. A proposal counts a project's wins. |
+| The money a finished project kept: what was left of its budget and its share of income | Nothing. It stayed in that project's budget for good. | A backer of your own, Your Earnings: it puts what your delivered projects kept into a new one, moved through both ledgers as a payment, with no repayment, share or approval rights. If less is kept by the time you accept, it is refused and nothing moves. |
+| Attending your festival screening | A line in the log. | A wave of distributors' attention two days later, a third as strong as a win's (`awards-results.ts` `screeningHappens`). |
+| Your own credited, delivered work | Nothing in your craft: your writing and directing were the baseline on every film, your acting 58 before rehearsal. | `finish.ts` `playerExperience`: each earlier delivered project with your credit in the role adds a step. That is a point as writer or director, up to 5 (a hire moves it -12 to +12), and two as a performer, up to 12. |
+
+Browser evidence for the earnings cycle: `e2e/decisions.spec.ts` "what a finished film kept goes into the next", on
+desktop, phone and iPhone 15 Pro Max. It labels one fixture: the earlier film is marked delivered with money left in its
+budget. The other three closures have engine tests only. Their consequences show after a delivery, an award or a
+festival run, which the existing playthroughs reach but don't assert on.
+
+Not changed, on purpose: personal money outside projects, housing and taxes (`docs/FIRST-PROJECT-JOURNEY.md`, Not
+Modeled). Your earnings stay with your projects and move between them.

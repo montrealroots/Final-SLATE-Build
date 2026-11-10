@@ -392,7 +392,7 @@ export interface CastAssignment {
   hireId?: string;
 }
 
-export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner';
+export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings';
 
 /** A backer approached for a project, and what was agreed (finance.ts). */
 export interface FinanceDeal {

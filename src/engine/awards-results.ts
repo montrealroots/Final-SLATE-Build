@@ -483,7 +483,11 @@ export function screeningHappens(state: GameState, ev: ScheduledEvent): HandlerR
   if (sc.rsvp === 'pending') sc.rsvp = 'expired';
   const reception = p?.quality?.reception ?? 50;
   const response = reception >= 75 ? 'warm' : reception >= 55 ? 'mixed but attentive' : 'cool';
-  const presence = sc.attended ? ' You were there and answered questions afterward.' : sc.rsvp === 'accepted' ? " You'd said you would attend, but you weren't there." : '';
+  const presence = sc.attended ? ' You were there and answered questions afterward, and buyers in the audience took note.' : sc.rsvp === 'accepted' ? " You'd said you would attend, but you weren't there." : '';
+  // Being there puts the film in front of buyers (November 10, 2026: until then attending changed nothing but this line).
+  // A wave of distributors' attention, as a prize brings but a third as strong as a win's; it raises their interest and
+  // never promises an offer (finish.ts distribution-offer). Game calibration.
+  if (sc.attended && p?.delivered) schedule(state, state.now + 2 * DAY, 'distribution-offer', { projectId: p.id, wave: `${ed.id}:screening:${sc.at}`, exposure: Math.round(inst.prestige / 18) }, { attention: 'notify', priority: 55 });
   const text = `${p?.title ?? 'Your film'} screened at the ${ed.label}. The audience response was ${response}.${presence}`;
   p?.history.push({ at: state.now, text });
   addLog(state, text, 'festival', { projectId: p?.id, route: { view: 'event', editionId: ed.id } });

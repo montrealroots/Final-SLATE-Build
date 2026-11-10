@@ -5,7 +5,7 @@
 import type { Locator, Page } from '@playwright/test';
 import { expect, test } from './test';
 import { hashString } from '../src/engine/rng';
-import { addScene, advance, nav, newProject, pinSeed, quickLife, readSavedState, saveAndApprove, saveAndExit, section } from './helpers';
+import { addScene, advance, nav, newProject, pinSeed, quickLife, readSavedState, saveAndApprove, saveAndExit, section, writePitch } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
 test.use({ actionTimeout: 20_000 });
@@ -234,4 +234,44 @@ test('genre emphasis and dialogue languages: which Golden Globe a feature enters
   const cold = project(s, 'Cold Ward'), gas = project(s, 'Laughing Gas');
   expect([cold.axes.genres.find((g: { emphasis: string }) => g.emphasis === 'primary').id, gas.axes.genres.find((g: { emphasis: string }) => g.emphasis === 'primary').id]).toEqual(['drama', 'comedy']);
   expect([cold.axes.dialogueLanguages, cold.axes.register]).toEqual([['en', 'fr'], 'comedy']);
+});
+
+test('what a finished film kept goes into the next: Your Earnings, refused with nothing kept, accepted and moved between budgets', async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-09-01');
+  // Two projects: the first will be the finished one. A new one written and approved through the screens.
+  await newProject(page, { title: 'Old Reel', format: 'Short Film', runtime: '5' });
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'New Reel', format: 'Short Film', runtime: '5' });
+  await section(page, 'Characters');
+  await page.getByLabel('Character Name').fill('Ada');
+  await page.getByRole('button', { name: 'Add Character' }).click();
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Pier', chars: ['Ada'], minutes: '5' });
+  await writePitch(page);
+  await page.getByRole('button', { name: 'Save Draft' }).click();
+  await page.getByRole('button', { name: 'Approve This Draft' }).first().click();
+  // Nothing finished yet: Your Earnings says why it can't be used.
+  await section(page, 'Budget');
+  const raise = card(page, 'Raise Money');
+  const earnings = raise.getByRole('listitem').filter({ hasText: 'Your Earnings' });
+  await expect(earnings.getByRole('button', { name: 'Put In Your Earnings' })).toBeDisabled();
+  await expect(earnings).toContainText('Your delivered projects have kept no money yet.');
+  // Labelled fixture: Old Reel is finished and kept $50,000 (making a film to delivery is the journeys' work).
+  await editSave(page, (s) => { const p = project(s, 'Old Reel'); p.delivered = { at: s.now - 86_400_000, runtimeMin: 5 }; p.phase = 'delivered'; p.quality = { overall: 70, reception: 70, script: 70, direction: 70, craft: 70 }; p.funding.fund = 50_000; });
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'New Reel' }).click();
+  await section(page, 'Budget');
+  await expect(earnings).toContainText('Your delivered projects keep $50,000.');
+  await earnings.getByRole('button', { name: 'Put In Your Earnings' }).click();
+  await page.getByRole('button', { name: 'Accept Offer' }).first().click();
+  const terms = page.getByRole('dialog', { name: 'Accept These Terms?' });
+  await expect(terms).toContainText('Your Earnings'.toLowerCase());
+  await terms.getByRole('button', { name: 'Accept $50,000' }).click();
+  await expect(card(page, 'Financing').locator('dt', { hasText: /^Received$/ }).locator('xpath=following-sibling::dd[1]')).toHaveText('$50,000');
+  await shot(page, '06-earnings');
+  // Saved and opened again: the money left Old Reel's budget as a payment into New Reel.
+  await reopen(page, 'New Reel', 'Budget');
+  await expect(card(page, 'Financing').locator('dt', { hasText: /^Received$/ }).locator('xpath=following-sibling::dd[1]')).toHaveText('$50,000');
+  const old = project(await readSavedState(page), 'Old Reel');
+  expect(old.obligations.filter((o: { label: string }) => o.label === 'Put Into New Reel').map((o: { settled: number }) => o.settled)).toEqual([50_000]);
 });
