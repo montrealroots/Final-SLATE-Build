@@ -118,9 +118,22 @@ describe('planned and released', () => {
     const p = series(s, 'gb-london', 3);
     planRelease(s, p, { route: 'broadcast', date: '2026-12-01', territories: ['GB'], distributor: 'Channel', pattern: 'premiere-weekly', onPremiere: 2 });
     const cal = () => upcomingCommitments(s, at('Europe/London', '2026-11-30'), at('Europe/London', '2026-12-31')).filter((c) => c.label.startsWith('Tidal Ward')).map((c) => c.label);
-    expect(cal()).toEqual(['Tidal Ward: Episodes 1 to 2 on television', 'Tidal Ward: Episode 3 on television']);
+    expect(cal()).toEqual(['Tidal Ward: Episodes 1 to 2 on television in GB', 'Tidal Ward: Episode 3 on television in GB']);
     processUntil(s, at('Europe/London', '2026-12-02'), 'tick', 100_000);
-    expect(cal()).toEqual(['Tidal Ward: Episodes 1 to 2 on television (Out)', 'Tidal Ward: Episode 3 on television']);
+    expect(cal()).toEqual(['Tidal Ward: Episodes 1 to 2 on television in GB (Out)', 'Tidal Ward: Episode 3 on television in GB']);
+  });
+});
+
+describe('the calendar with releases in several countries on one day', () => {
+  it('each is its own entry, named by where it opens (CI run 151 found two the same, so the list repeated a key)', () => {
+    const s = startLife('er-two-countries');
+    s.now = at('Europe/London', '2026-11-20');
+    const p = series(s);
+    p.axes.format = 'feature';
+    p.axes.episodeCount = 1;
+    for (const t of ['FR', 'DE']) p.releases.push({ id: `r-${t}`, route: 'theatrical', date: '2026-12-02', territories: [t], distributor: 'D', note: '', status: 'planned' });
+    const labels = upcomingCommitments(s, at('Europe/London', '2026-12-01'), at('Europe/London', '2026-12-03')).filter((c) => c.label.startsWith('Tidal Ward')).map((c) => c.label);
+    expect(labels).toEqual(['Tidal Ward: Release in cinemas in FR', 'Tidal Ward: Release in cinemas in DE']);
   });
 });
 

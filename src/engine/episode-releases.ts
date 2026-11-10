@@ -157,7 +157,8 @@ registerCommitmentSource((state, from, to) => state.projects.flatMap((p) => p.re
   const days = r.episodes?.length ? [...new Set(r.episodes.map((e) => e.date))].map((d) => ({ d, eps: r.episodes!.filter((e) => e.date === d) })) : [{ d: r.date, eps: [] as EpisodeRelease[] }];
   return days.map(({ d, eps }) => {
     const out = eps.length ? eps.every((e) => e.status === 'released') : r.status === 'released';
-    const what = eps.length ? `${which(eps)} ${ON[r.route]}` : `Release ${ON[r.route] ?? 'in cinemas'}`;
+    // Where, too: a film opening in several countries on one day is several releases, and each is its own entry.
+    const what = `${eps.length ? `${which(eps)} ${ON[r.route]}` : `Release ${ON[r.route] ?? 'in cinemas'}`} in ${r.territories.join(', ')}`;
     return { at: nineAm(p, d), label: `${p.title}: ${what}${out ? ' (Out)' : ''}${eps.some((e) => e.assumed) ? ' (Assumed Date)' : ''}`, route: { view: 'project' as const, projectId: p.id, tab: 'release' }, kind: 'project' as const };
   }).filter((c) => c.at >= from && c.at <= to);
 })));
