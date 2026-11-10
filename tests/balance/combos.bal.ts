@@ -5,7 +5,7 @@
 import { writeFileSync } from 'fs';
 import { expect, it } from 'vitest';
 import { DAY, adoptPlace, ledgerTotals, processUntil, setFamily, setupCompetition, withdrawRelease } from '../engine-api';
-import { placesOf, search, toGamePlace } from '../../src/world/gazetteer/gazetteer';
+import { placesOf, search, toGamePlace } from '../../src/world/gazetteer/search';
 import { loadWorldHolidays } from '../../src/world/holidays/holidays';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from '../helpers';
 import type { GameState, Project } from '../../src/engine/types';
