@@ -3,7 +3,10 @@ import type { Condition } from '../engine/weather';
 import { placeLabel } from '../data/places';
 import type { Edition } from '../engine/types';
 import { Panel, TextField, longLocal, startedNote } from './components';
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
+
+// The industry card lives with the catalog's pages and loads with them, keeping startup small.
+const IndustryCard = lazy(() => import('./Catalog').then((m) => ({ default: m.IndustryCard })));
 import { store, useClock, useGame } from './store';
 
 const PHASE_LABEL: Record<string, string> = {
@@ -143,6 +146,8 @@ export function Home() {
             </>
           )}
         </Panel>
+
+        <Suspense fallback={null}><IndustryCard /></Suspense>
 
         <Proposals />
 

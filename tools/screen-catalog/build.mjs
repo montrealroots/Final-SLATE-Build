@@ -30,6 +30,11 @@ const people = new Map(); // id -> { id, name, credits: [] }
 const person = (id, name) => { if (!people.has(id)) people.set(id, { id, name, credits: [] }); return people.get(id); };
 const companies = new Map(DISCOVERED.map((c) => [c.tmdb.id, []]));
 const search = [];
+// The world file (src/catalog/world.ts): every dated event from WORLD_FROM on, which the game plays on its real date.
+const WORLD_FROM = '2025-10-01';
+const world = [];
+const byTmdb = new Map(DISCOVERED.map((c) => [c.tmdb.id, c]));
+const studiosOf = (rec) => rec.companies.map((c) => byTmdb.get(c.tmdbId)).filter(Boolean).map((c) => c.id);
 const counts = { movies: 0, series: 0, seasons: 0, episodes: 0, castCredits: 0, crewCredits: 0, episodeCredits: 0, missingTitles: 0, missingSeasons: 0 };
 
 for (const t of manifest.titles) {
@@ -83,6 +88,21 @@ for (const t of manifest.titles) {
         guests: (e.guest_stars ?? []).map((c) => ({ person: c.id, name: c.name, character: c.character || null, order: c.order })),
       }));
       counts.episodes += eps.length;
+      if (s.season_number > 0) {
+        // Talk shows, soaps, news and other daily programmes run continuously: TMDB's seasons there are years, not seasons anyone
+        // premieres or ends. A season of 100 or more episodes is a daily schedule too (syndicated game and court shows aren't tagged Talk).
+        const daily = rec.genres.some((g) => g === 'Talk' || g === 'Soap' || g === 'News') || (d.seasons ?? []).some((x) => x.episode_count >= 100);
+        const dated = eps.filter((e) => e.date).sort((a, b) => a.date.localeCompare(b.date) || a.number - b.number);
+        const opens = dated[0]?.date ?? date(sb.air_date);
+        const last = dated.at(-1);
+        // A season released all at once (every episode on one day) is one event, not a premiere and a finale.
+        const drop = dated.length > 1 && dated.length === eps.length && dated[0].date === last.date;
+        // A running season lists only the episodes known so far, so its last one listed isn't a finale. A season is known to
+        // be finished once a later one exists or the series has ended.
+        const complete = !daily && !drop && (rec.status === 'Ended' || rec.status === 'Canceled' || (d.seasons ?? []).some((x) => x.season_number > s.season_number));
+        if (opens && opens >= WORLD_FROM) world.push({ d: opens, k: 'season', r: sref, t: title, s: s.season_number, eps: eps.length, net: rec.networks, ci: studiosOf(rec), first: s.season_number === 1, daily: daily ? 1 : undefined, drop: drop ? 1 : undefined });
+        for (const e of dated) if (e.date >= WORLD_FROM) world.push({ d: e.date, k: 'episode', r: `${sref}:e:${e.number}`, t: title, s: s.season_number, e: e.number, n: e.name, net: rec.networks, daily: daily ? 1 : undefined, f: e === last && complete && dated.length === eps.length && dated.length > 1 ? 1 : undefined });
+      }
       for (const e of eps) {
         for (const c of e.crew) { person(c.person, c.name).credits.push({ ref: `${sref}:e:${e.number}`, title: `${title}: ${e.name}`, date: e.date, kind: 'episode-crew', role: c.job, department: c.department }); counts.episodeCredits++; }
         for (const c of e.guests) { person(c.person, c.name).credits.push({ ref: `${sref}:e:${e.number}`, title: `${title}: ${e.name}`, date: e.date, kind: 'episode-guest', role: c.character }); counts.episodeCredits++; }
@@ -92,6 +112,9 @@ for (const t of manifest.titles) {
     }
   }
   counts[type === 'movie' ? 'movies' : 'series']++;
+  if (type === 'movie' && when && when >= WORLD_FROM) world.push({ d: when, k: 'film', r: ref, t: title, ci: studiosOf(rec) });
+  // How a series stood when the records were taken. When it was announced isn't recorded, so it is told at the records' end.
+  if (type === 'tv' && (rec.status === 'Ended' || rec.status === 'Canceled') && rec.lastAirDate && rec.lastAirDate >= WORLD_FROM) world.push({ d: null, k: 'end', r: ref, t: title, st: rec.status, la: rec.lastAirDate, net: rec.networks, ci: studiosOf(rec) });
   const castList = type === 'tv' ? rec.seriesCast : rec.cast;
   for (const c of castList) { person(c.person, c.name).credits.push({ ref, title, date: when, kind: type === 'tv' ? 'series-cast' : 'cast', role: type === 'tv' ? c.roles.map((x) => x.character).filter(Boolean).join(', ') || null : c.character, episodes: c.episodes }); counts.castCredits++; }
   for (const c of type === 'tv' ? rec.seriesCrew : rec.crew) { person(c.person, c.name).credits.push({ ref, title, date: when, kind: type === 'tv' ? 'series-crew' : 'crew', role: type === 'tv' ? c.jobs.map((x) => x.job).join(', ') : c.job, department: c.department, episodes: c.episodes }); counts.crewCredits++; }
@@ -125,6 +148,10 @@ write('search/titles.json', search);
 for (const [id, entries] of companies) write(`companies/${id}.json`, { tmdbId: id, entries });
 
 times.sort();
+const horizon = (times.at(-1) ?? new Date().toISOString()).slice(0, 10);
+for (const ev of world) if (ev.d === null) ev.d = horizon;
+world.sort((a, b) => a.d.localeCompare(b.d) || a.t.localeCompare(b.t) || (a.s ?? 0) - (b.s ?? 0) || (a.e ?? 0) - (b.e ?? 0));
+write('world.json', { version: 1, builtAt: new Date().toISOString(), horizon, from: WORLD_FROM, events: world });
 const discovery = manifest.queries.map((q) => ({ company: q.companyId, type: q.type, reported: q.total, found: q.found, pages: q.pages, split: q.split, failedPages: q.failedPages }));
 write('index.json', {
   version: 1, builtAt: new Date().toISOString(), registryChecked: REGISTRY_CHECKED,

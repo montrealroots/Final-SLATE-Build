@@ -238,6 +238,9 @@ describe('the build', () => {
     expect(read('companies/25.json').entries).toEqual([{ ref: 'movie:900001', title: 'The Lantern Keeper', date: '1997-06-01', credited: '20th Century Fox', genres: ['Drama'], status: 'Released' }]);
     expect(read('companies/2.json').entries.map((e: FilmographyEntry) => e.ref)).toEqual(['movie:900001']);
     expect(read('index.json').counts).toMatchObject({ movies: 1, series: 1, seasons: 1, episodes: 2, people: 4, peopleWithDetails: 2 });
+    // The world file holds dated events from 2025-10-01 on; these made-up titles are all older, so it has none.
+    expect(read('world.json')).toMatchObject({ version: 1, from: '2025-10-01', events: [] });
+    expect(read('world.json').horizon).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 
   it('writes figures TMDB has as 0 or without votes as unknown', () => {

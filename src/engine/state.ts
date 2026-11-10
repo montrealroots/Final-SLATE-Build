@@ -194,7 +194,7 @@ export function newGame(d: CreationDraft, realNow: number, saveId: string): Game
     editions: [],
     rivalFilms: {},
     followed: [],
-    calendarFilters: ['Birthdays', 'Holidays', 'Festivals', 'Awards', 'Deadlines', 'My Schedule'],
+    calendarFilters: ['Birthdays', 'Holidays', 'Festivals', 'Awards', 'Deadlines', 'My Schedule', 'Film And Television'],
     settings: { theme: 'dark', wakeForObligations: true },
     places: {},
   };

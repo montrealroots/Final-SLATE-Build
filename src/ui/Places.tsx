@@ -6,7 +6,8 @@ import { countryName } from '../world/gazetteer/gazetteer';
 import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, knownAs, addPlan, cancelPlan, reminderWords, characterAge, currentPlace, currentZone, dateKey, daylight, daysInMonth, forecast, formatClock, formatDateKey, placeHolidayCoverage, placeHolidays, institution, localParts, localToInstant, monthName, nextBirthdayInstant, observance, observanceDates, observedBirthday, parseYmd, upcomingCommitments, weatherOn, weekdayOfKey, ymd, temperatureAt, travelTo, travelHours } from '../engine';
 import { personById } from '../engine/people';
 import { honors } from '../engine/awards-actions';
-import type { GameState } from '../engine/types';
+import type { GameState, Route } from '../engine/types';
+import { eventsBetween, inStory, onCalendar, useWorld, type WorldSeed } from '../catalog/world';
 import { Check, Modal, NumberField, PageHead, Professions, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { store, useClock, useGame } from './store';
@@ -14,17 +15,17 @@ import { loadWorldHolidays } from '../world/holidays/holidays';
 import { climateNote } from '../world/climate';
 
 
-const FILTERS = ['Birthdays', 'Holidays', 'Festivals', 'Awards', 'Deadlines', 'My Schedule'];
+const FILTERS = ['Birthdays', 'Holidays', 'Festivals', 'Awards', 'Deadlines', 'My Schedule', 'Film And Television'];
 
 interface CalItem {
   label: string;
   kind: string;
   time?: string;
   editionId?: string;
-  route?: { view: string; projectId?: string; tab?: string; editionId?: string };
+  route?: Route;
 }
 
-function calendarItems(g: GameState, year: number, month: number): Map<string, CalItem[]> {
+function calendarItems(g: GameState, year: number, month: number, world: WorldSeed | null): Map<string, CalItem[]> {
   const zone = currentZone(g);
   const place = currentPlace(g);
   const out = new Map<string, CalItem[]>();
@@ -58,6 +59,15 @@ function calendarItems(g: GameState, year: number, month: number): Map<string, C
       if (k >= first && k <= last) push(k, { label: `${ed.label}: Entries Close`, kind: 'Deadlines', time: longLocal(ed.deadline, zone).time, route: { view: 'event', editionId: ed.id } });
     }
   }
+  // The industry's recorded dates (catalog/world.ts): releases, premieres, episodes and finales, where the catalog is installed.
+  if (world && g.calendarFilters.includes('Film And Television')) {
+    const start = dateKey(g.startedAt, zone);
+    for (const e of eventsBetween(world, first, last)) {
+      if (!onCalendar(e) || !inStory(e, start)) continue;
+      const label = e.k === 'film' ? `${e.t} Comes Out` : e.k === 'season' ? (e.first ? `${e.t} Premieres` : `${e.t}: Season ${e.s} Begins`) : `${e.t}: S${e.s} E${e.e}${e.f ? ' (Finale)' : ''}`;
+      push(e.d, { label, kind: 'Film And Television', route: { view: e.k === 'film' ? 'title' : e.k === 'season' ? 'season' : 'episode', ref: e.r } });
+    }
+  }
   if (g.calendarFilters.includes('My Schedule')) {
     const from = localToInstant(zone, year, month, 1).instant;
     const to = localToInstant(zone, year, month, daysInMonth(year, month), 23, 59).instant;
@@ -80,7 +90,9 @@ export function CalendarView() {
   const [cursor, setCursor] = useState(() => { const p = parseYmd(today); return { year: p.year, month: p.month }; });
   const [selected, setSelected] = useState(today);
   const [adding, setAdding] = useState(false);
-  const items = useMemo(() => calendarItems(g, cursor.year, cursor.month), [g, cursor, store.version]); // eslint-disable-line react-hooks/exhaustive-deps
+  const w = useWorld();
+  const world = w.status === 'ready' ? w.data : null;
+  const items = useMemo(() => calendarItems(g, cursor.year, cursor.month, world), [g, cursor, store.version, world]); // eslint-disable-line react-hooks/exhaustive-deps
   const firstWd = weekdayOfKey(ymd(cursor.year, cursor.month, 1));
   const days = daysInMonth(cursor.year, cursor.month);
   const cells: (string | null)[] = [...Array(firstWd).fill(null), ...Array.from({ length: days }, (_, i) => ymd(cursor.year, cursor.month, i + 1))];
@@ -93,7 +105,7 @@ export function CalendarView() {
   };
   const selItems = items.get(selected) ?? (() => {
     const p = parseYmd(selected);
-    return p.year === cursor.year && p.month === cursor.month ? [] : calendarItems(g, p.year, p.month).get(selected) ?? [];
+    return p.year === cursor.year && p.month === cursor.month ? [] : calendarItems(g, p.year, p.month, world).get(selected) ?? [];
   })();
   const plansToday = g.plans.filter((pl) => pl.status === 'upcoming' && dateKey(pl.start, zone) === selected);
   return (
@@ -101,7 +113,7 @@ export function CalendarView() {
       <div className="page-head">
         <button type="button" className="btn btn-ghost btn-sm back-home" onClick={() => store.go({ view: 'home' })}>Back To Home</button>
         <h1>Calendar</h1>
-        <p className="muted">Your schedule, birthdays, festivals, awards and their deadlines, and the public holidays where you are.</p>
+        <p className="muted">Your schedule, birthdays, festivals, awards and their deadlines, the public holidays where you are, and, where the film catalog is installed, the industry's releases, premieres and episodes.</p>
       </div>
       <fieldset className="card" style={{ border: '1px solid var(--line)' }}>
         <legend className="sr-only">Show On Calendar</legend>

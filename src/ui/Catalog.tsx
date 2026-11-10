@@ -10,6 +10,8 @@ import {
   type CatalogIndex, type CompanyFilmography, type PersonCredit, type PersonRecord, type SeasonRecord, type SortKey, type TitleRecord,
 } from '../catalog/model';
 import { retryCatalog, useCatalogFile, type Loaded } from '../catalog/load';
+import { describe as describeWorld, eventsBetween, inStory, isNews, useWorld } from '../catalog/world';
+import { addDaysToKey } from '../engine';
 import logo from '../catalog/tmdb-logo.svg';
 import { Check, Empty, PageHead, Panel, SelectField, TextField } from './components';
 import { Breadcrumbs } from './Shell';
@@ -536,6 +538,35 @@ export function ExecutivePage({ id }: { id: string }) {
         <p className="dim small">A position here says nothing about whether they would work with you or on what terms.</p>
       </Panel>
     </>
+  );
+}
+
+/**
+ * Home's view of the industry: what happened in the last two weeks and what is due in the next, from the catalog's
+ * records at the save's date. Shown only where the catalog is installed.
+ */
+export function IndustryCard() {
+  const g = useGame();
+  const today = useToday();
+  const w = useWorld();
+  if (w.status !== 'ready') return null;
+  const start = dateKey(g.startedAt, currentZone(g));
+  const pick = (from: string, to: string) => eventsBetween(w.data, from, to).filter((e) => isNews(e) && inStory(e, start));
+  const recent = pick(addDaysToKey(today, -14), today).reverse().slice(0, 8);
+  const soon = pick(addDaysToKey(today, 1), addDaysToKey(today, 14)).slice(0, 6);
+  const row = (e: (typeof recent)[number]) => (
+    <li key={`${e.r}-${e.k}-${e.d}`} className="list-item">
+      <span className="grow"><Link to={{ view: e.k === 'episode' ? 'episode' : e.k === 'season' ? 'season' : 'title', ref: e.r } as Route}>{describeWorld(e, today)}</Link></span>
+      <span className="dim small nowrap">{formatDateKey(e.d)}</span>
+    </li>
+  );
+  return (
+    <Panel title="In The Industry" subtitle="Releases, premieres and endings at the companies you can look up in Companies, on the dates TMDB records."
+      actions={<button className="btn btn-sm" onClick={() => store.go({ view: 'companies' } as Route)}>Open Companies</button>}>
+      {recent.length ? <ul className="list">{recent.map(row)}</ul> : <p className="muted small">Nothing in the last two weeks.</p>}
+      {soon.length > 0 && <><h3>Coming Up</h3><ul className="list">{soon.map(row)}</ul></>}
+      {soon.length > 0 && <p className="dim small">Dates still to come were the schedule when the records were taken, on {formatDateKey(w.data.horizon)}, and may change.</p>}
+    </Panel>
   );
 }
 

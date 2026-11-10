@@ -188,3 +188,34 @@ test('browsing the catalog leaves the save as it was, and it reloads on the same
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 });
+
+test('the industry on Home and the calendar: recorded releases, premieres and episodes at the save\'s date', async ({ page }, info) => {
+  const { tmdbRequests } = await serveCatalog(page);
+  await nav(page, 'Home');
+  const industry = card(page, 'In The Industry');
+  // December 30 is in the last two weeks; the January 5 episode is the calendar's, not news; the ending is told in November.
+  await expect(industry.getByRole('button', { name: 'Paper Lanterns (Fixture), from Walt Disney Pictures, came out.' })).toBeVisible();
+  await expect(industry.getByRole('heading', { name: 'Coming Up' })).toBeVisible();
+  await expect(industry).toContainText('The Season 1 finale of Tidewater Station (Fixture), "Low Tide", is due to air on ABC.');
+  await expect(industry).toContainText('Harbour Lights (Fixture), from Walt Disney Pictures, is due to come out.');
+  await expect(industry).not.toContainText('Pilot');
+  await expect(industry).not.toContainText('cancelled');
+  await expect(industry).toContainText('Dates still to come were the schedule when the records were taken, on November 10, 2026, and may change.');
+  await shot(page, info.project.name, '05-home-industry');
+  await industry.getByRole('button', { name: 'Paper Lanterns (Fixture), from Walt Disney Pictures, came out.' }).click();
+  await expect(page.getByRole('heading', { name: 'Paper Lanterns (Fixture)', level: 1 })).toBeVisible();
+
+  await nav(page, 'Calendar');
+  await expect(page.getByRole('checkbox', { name: 'Film And Television' })).toBeChecked();
+  await page.getByRole('button', { name: /^Monday, January 12, 2026/ }).click();
+  const day = page.locator('.card', { hasText: 'S1 E2 (Finale)' }).last();
+  await expect(day).toContainText('Tidewater Station (Fixture): S1 E2 (Finale)');
+  await shot(page, info.project.name, '06-calendar-industry');
+  await page.getByRole('checkbox', { name: 'Film And Television' }).uncheck();
+  await expect(page.getByText('Tidewater Station (Fixture): S1 E2 (Finale)')).toHaveCount(0);
+  await page.getByRole('checkbox', { name: 'Film And Television' }).check();
+  await day.getByRole('button', { name: 'View Details' }).first().click();
+  await expect(page.getByRole('heading', { name: 'Low Tide', level: 1 })).toBeVisible();
+  expect(await noSidewaysScroll(page)).toBe(true);
+  expect(tmdbRequests).toEqual([]);
+});

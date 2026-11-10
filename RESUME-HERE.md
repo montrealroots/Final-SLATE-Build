@@ -56,7 +56,29 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 10, 2026, after #62): the Disney company and screen-credit catalog
+### Newest Request (November 10, 2026, after #63): the living world, Phase 1
+
+The owner wants the catalog to be the world behind the game. Shows will be renewed or cancelled, and studios will
+release new films and series, with downstream effects everywhere. Realism comes first.
+
+The owner's answers:
+- Real history plays first, and simulation takes over where the records end.
+- Only a renewed show's recorded regulars return in simulated seasons; new titles credit invented people.
+- Every area should reach the player: news and calendar, then competition, then career.
+
+The plan and rules are in `docs/WORLD.md`. **Phase 1 (this checkpoint)** is the world's clock:
+- the build writes `world.json`, with 2,134 dated events from October 1, 2025;
+- Home's In The Industry card shows the last and next two weeks;
+- the calendar's Film And Television filter shows releases, premieres and episodes.
+
+Nothing is stored in saves: real events follow from the catalog and the save's date.
+
+**Next, Phase 2:**
+- renewal and cancellation decisions as scheduled engine events, stored in the save;
+- simulated seasons with returning regulars;
+- the odds come from each series' own record, never from TMDB ratings, with their calibration documented.
+
+### Earlier Request (November 10, 2026, after #62): the Disney company and screen-credit catalog
 
 Companies is a new destination under Industry (`docs/CATALOG.md`). It has:
 

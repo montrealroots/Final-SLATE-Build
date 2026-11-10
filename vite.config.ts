@@ -13,7 +13,7 @@ function serveCatalog(): Plugin {
     if (!m) return next();
     const file = normalize(join(CATALOG, m[1]));
     // No catalog installed: say so in the index, a normal answer, rather than as a failed request.
-    if (m[1] === 'index.json' && !existsSync(file)) { res.setHeader('content-type', 'application/json'); res.end('{"installed":false}'); return; }
+    if ((m[1] === 'index.json' || m[1] === 'world.json') && !existsSync(file)) { res.setHeader('content-type', 'application/json'); res.end('{"installed":false}'); return; }
     if (!file.startsWith(CATALOG + '/') || !existsSync(file) || !statSync(file).isFile()) { res.statusCode = 404; res.end(); return; }
     res.setHeader('content-type', 'application/json');
     createReadStream(file).pipe(res);

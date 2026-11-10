@@ -54,6 +54,18 @@ export const CATALOG_FIXTURE: Record<string, unknown> = {
   'titles/movie-900003.json': later,
   'titles/tv-900101.json': tidewater,
   'seasons/900101-1.json': season,
+  'titles/movie-900004.json': { ...harbour, ref: 'movie:900004', title: 'Paper Lanterns (Fixture)', originalTitle: 'Paper Lanterns (Fixture)', date: '2025-12-30', overview: 'A made-up film released just before the test save begins.', rating: null, budget: null },
+  // The industry's dated records around the test save (January 5, 2026), as tools/screen-catalog/build.mjs writes them.
+  'world.json': {
+    version: 1, builtAt: RETRIEVED, horizon: '2026-11-10', from: '2025-10-01',
+    events: [
+      { d: '2025-12-30', k: 'film', r: 'movie:900004', t: 'Paper Lanterns (Fixture)', ci: ['company:walt-disney-pictures'] },
+      { d: '2026-01-05', k: 'episode', r: 'tv:900101:s:1:e:1', t: 'Tidewater Station (Fixture)', s: 1, e: 1, n: 'Pilot', net: ['ABC'] },
+      { d: '2026-01-12', k: 'episode', r: 'tv:900101:s:1:e:2', t: 'Tidewater Station (Fixture)', s: 1, e: 2, n: 'Low Tide', f: 1, net: ['ABC'] },
+      { d: '2026-01-14', k: 'film', r: 'movie:900002', t: 'Harbour Lights (Fixture)', ci: ['company:walt-disney-pictures'] },
+      { d: '2026-11-10', k: 'end', r: 'tv:900101', t: 'Tidewater Station (Fixture)', st: 'Canceled', la: '2026-01-12', net: ['ABC'] },
+    ],
+  },
   'search/titles.json': [['movie:900001', 'The Lantern Keeper (Fixture)', '2019'], ['movie:900002', 'Harbour Lights (Fixture)', '2023'], ['movie:900003', 'Night Ferry (Fixture)', '2030'], ['tv:900101', 'Tidewater Station (Fixture)', '2021']],
   'search/people-A.json': [[800001, 'Ada Quill', 4]],
   'people/1.json': person(800001, 'Ada Quill', [

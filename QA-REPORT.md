@@ -8,7 +8,18 @@
 
 ## Commands And Results
 
-### Current: The Disney Screen Catalog And Company Leadership (November 10, 2026, after #62)
+### Current: The Living World, Phase 1: The World's Clock (November 10, 2026, after #63)
+
+The rules are in `docs/WORLD.md`.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run screen-catalog:build` | 0 | `world.json` written: 2,134 events, 306 kB. That is 77 films; 103 seasons, 29 released all at once; 1,932 episodes with 35 finales; and 22 endings. 758 events belong to 7 continuous programmes. Two rules came from reading the real Home: finales only for seasons known to be finished, and continuous programmes kept out of the news. |
+| `npm run check` | 0 | 84 files, 665 tests, including the new `tests/world.test.ts` (5) and the world file check in `tests/catalog.test.ts`. Startup is unchanged at 679 kB, 217 kB gzipped. |
+| `e2e/catalog.spec.ts` and `e2e/catalog-live.spec.ts` on desktop and phone | 0 | 16 passed, including the new Home and calendar test. |
+| `accessibility`, `viewports`, `focus`, `readers`, `devices`, `first-project`, `journey-a`, `screenings`, `catalog-live` on desktop and phone | 0 | 33 passed, 9 skipped by design. Run before the finale and continuous-programme rules, which change only the catalog's own build. |
+
+### Previous: The Disney Screen Catalog And Company Leadership (November 10, 2026, after #62)
 
 The catalog's rules are in `docs/CATALOG.md`, and the counts from the gathering run are in `docs/CATALOG-COVERAGE.md`.
 
