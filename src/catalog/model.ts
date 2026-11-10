@@ -3,6 +3,7 @@
 // Nothing in it is part of a save, and nothing in the simulation reads it. A credit isn't availability, employment,
 // skill or a relationship, and TMDB's ratings, budgets and revenue are shown as TMDB's figures, never used as game values.
 import { COMPANIES, LEADERSHIP, type LeadershipRole } from './registry';
+import { ageOn as engineAgeOn } from '../engine/time';
 
 export interface Rating { average: number; count: number }
 export interface CastCredit { person: number; name: string; character: string | null; order: number }
@@ -108,6 +109,26 @@ export function titleStanding(t: { date: string | null; status: string | null },
 /** A person's dates as known at the save's date: a death after it hasn't happened yet. */
 export function lifeAt(d: { birthday: string | null; deathday: string | null }, today: string): { born: string | null; died: string | null } {
   return { born: happenedBy(d.birthday, today) ? d.birthday : null, died: happenedBy(d.deathday, today) ? d.deathday : null };
+}
+
+/**
+ * Whole years from a birth date to a date (both YYYY-MM-DD), by the game's own rule (src/engine/time.ts): the age turns
+ * on the birthday, and a February 29 birthday is observed on February 28 in other years. The season page's first version
+ * had counted it on March 1, out of step with the player's own age.
+ */
+export function ageOn(born: string, on: string): number {
+  const parts = (k: string) => ({ year: Number(k.slice(0, 4)), month: Number(k.slice(5, 7)), day: Number(k.slice(8, 10)) });
+  return engineAgeOn(parts(born), parts(on));
+}
+
+/**
+ * A person's age at the save's date, or the age they died at if they had died by then. It is null without a full
+ * recorded birth date, or before they are born.
+ */
+export function ageAt(d: { birthday: string | null; deathday: string | null }, today: string): { years: number; atDeath: boolean } | null {
+  const life = lifeAt(d, today);
+  if (!life.born || life.born.length !== 10) return null;
+  return life.died ? { years: ageOn(life.born, life.died), atDeath: true } : { years: ageOn(life.born, today), atDeath: false };
 }
 
 export type LeadershipStanding = 'current' | 'former' | 'incoming' | 'listed';

@@ -207,7 +207,9 @@ of every episode. Each episode's page has its own credits.
   ones. A later title is labelled "Not released by …: due …, as announced", and its rating, budget and revenue aren't
   shown.
 - **Episodes.** An episode after the save's date is "not aired yet".
-- **People.** A death after the save's date isn't shown.
+- **People.** A death after the save's date isn't shown. A person's page gives their age on the save's date, or the
+  age they died at once their death has happened. Ages turn on the birthday by the game's own rule: a February 29
+  birthday is observed on February 28 in other years, as the player's own age is.
 - **Ownership.** A company acquired after the save's date says it isn't part of The Walt Disney Company yet.
 
 ### Missing And Failed Records

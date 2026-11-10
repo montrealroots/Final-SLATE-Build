@@ -6,7 +6,7 @@ import { currentZone, dateKey, formatDateKey } from '../engine';
 import type { Route } from '../engine/types';
 import { COMPANIES, LEADERSHIP_GAPS, REGISTRY_CHECKED, company as registryCompany, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
 import {
-  executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeUnderDisney, moneyOrUnknown, parseRef, registryFor, titleStanding,
+  ageAt, executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeUnderDisney, moneyOrUnknown, parseRef, registryFor, titleStanding,
   type CatalogIndex, type CompanyFilmography, type PersonCredit, type PersonRecord, type SeasonRecord, type SortKey, type TitleRecord,
 } from '../catalog/model';
 import { retryCatalog, useCatalogFile, type Loaded } from '../catalog/load';
@@ -652,6 +652,7 @@ export function PersonPage({ refId }: { refId: string }) {
     const p = b[String(r!.id)];
     if (!p) return <Empty title="This Person Isn't In The Catalog"><p className="muted">They aren't credited on any title the catalog covers.</p></Empty>;
     const life = p.details ? lifeAt(p.details, today) : null;
+    const age = p.details ? ageAt(p.details, today) : null;
     return (
       <>
         <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: p.name }]} />
@@ -661,7 +662,8 @@ export function PersonPage({ refId }: { refId: string }) {
             <>
               <dl className="kv">
                 <dt>Born</dt><dd>{life?.born ? day(life.born) : 'Not recorded'}{p.details.placeOfBirth ? `, ${p.details.placeOfBirth}` : ''}</dd>
-                {life?.died && <><dt>Died</dt><dd>{day(life.died)}</dd></>}
+                {age && !age.atDeath && <><dt>Age</dt><dd>{age.years} <span className="dim small">(on {formatDateKey(today)}, your story's date)</span></dd></>}
+                {life?.died && <><dt>Died</dt><dd>{day(life.died)}{age?.atDeath ? `, aged ${age.years}` : ''}</dd></>}
                 {p.details.alsoKnownAs.length > 0 && <><dt>Also Known As</dt><dd>{p.details.alsoKnownAs.join(', ')}</dd></>}
               </dl>
               {p.details.biography && <p className="muted">{p.details.biography}</p>}

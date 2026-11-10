@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { COMPANIES, DISCOVERED, LEADERSHIP, REGISTRY_CHECKED, company } from '../src/catalog/registry';
-import { fileFor, filmographyView, leadershipAt, lifeAt, madeUnderDisney, moneyOrUnknown, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
+import { ageAt, fileFor, filmographyView, leadershipAt, lifeAt, madeUnderDisney, moneyOrUnknown, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
 
 const CACHE = mkdtempSync(join(tmpdir(), 'slate-catalog-cache-'));
 process.env.SCREEN_CATALOG_CACHE = CACHE;
@@ -98,6 +98,12 @@ describe('records at the save\'s date', () => {
     expect(titleStanding({ date: '2027-05-01', status: 'Released' }, '2026-01-05')).toBe('upcoming');
     expect(titleStanding({ date: null, status: 'Rumored' }, '2026-01-05')).toBe('undated');
     expect(lifeAt({ birthday: '1950-01-01', deathday: '2030-06-01' }, '2026-01-05')).toEqual({ born: '1950-01-01', died: null });
+    // The age turns on the birthday; once a death has happened by the save's date, the page gives the age at death instead.
+    expect(ageAt({ birthday: '1950-06-02', deathday: '2030-06-01' }, '2026-06-01')).toEqual({ years: 75, atDeath: false });
+    expect(ageAt({ birthday: '1950-06-02', deathday: '2030-06-01' }, '2026-06-02')).toEqual({ years: 76, atDeath: false });
+    expect(ageAt({ birthday: '1950-06-02', deathday: '2030-06-01' }, '2031-01-01')).toEqual({ years: 79, atDeath: true });
+    expect(ageAt({ birthday: null, deathday: null }, '2026-01-05')).toBeNull();
+    expect(ageAt({ birthday: '2027-03-03', deathday: null }, '2026-01-05')).toBeNull(); // not born yet at the save's date
   });
 
   it('a title credited to an acquired company was made under Disney only from the acquisition on', () => {

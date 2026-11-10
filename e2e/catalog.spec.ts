@@ -63,6 +63,7 @@ test('company to film to cast member to another credit, and back', async ({ page
   const about = card(page, 'About');
   await expect(about).toContainText('April 2, 1980, Bristol, England (Fixture)');
   await expect(about).not.toContainText('Died'); // a death after the save's date hasn't happened
+  await expect(about).toContainText('45 (on January 5, 2026, your story\'s date)'); // born April 2, 1980: 46 only from April 2
   const credits = card(page, 'Credits In The Catalog');
   await expect(credits).toContainText('A credit is a record of past work, not who they work for or whether they could work for you.');
   await expect(credits.locator('li', { hasText: 'Tidewater Station (Fixture)' })).toContainText('(2 episodes)');
