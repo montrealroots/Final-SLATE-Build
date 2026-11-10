@@ -56,7 +56,27 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 10, 2026, after #60): screens lined up; every cycle followed through
+### Newest Request (November 10, 2026, after #61): Your Earnings is only your money
+
+#61 let a delivered project's leftover production funding move to the next project as Your Earnings. It no longer can.
+`docs/EARNINGS.md` has the exact rules:
+
+- A project's money is read in parts: production funding, your own money, and income kept after backers' repayments and
+  shares.
+- Costs, including held bills, are charged to production funding first.
+- Only your earnings and your unspent money can move, and only once a project is delivered.
+- Each deal records whether its unspent money stays or is yours. A missing term means it stays.
+- A move is one transfer, `tr-<deal id>`, checked again on acceptance and refused with nothing changed if it is short or
+  already made.
+- Old saves load unchanged: a move under the old rule stays, and blocks further moves from its project.
+
+Tests: `tests/earnings.test.ts` and `e2e/earnings.spec.ts` (desktop and phone).
+
+Not done:
+- An arrangement where a backer takes back unspent money.
+- Personal money outside projects.
+
+### Earlier Request (November 10, 2026, after #60): screens lined up; every cycle followed through
 
 - **Screens.** The owner found the screens sloppy. List names were padded buttons sitting off the text under them, a
   checkbox sat below its label, text was crammed after buttons, chips touched, the forecast was clipped, the tab arrow
@@ -64,7 +84,7 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 - **Cycles.** Outcomes traced for what reads them next (`docs/INPUT-AUDIT.md`, Cycles That Stopped Short). Four were
   closed, tested in `tests/cycles.test.ts`:
   - backers weigh reception and awards;
-  - Your Earnings puts what finished projects kept into the next;
+  - Your Earnings puts what finished projects kept into the next (narrowed after #61 to income and your own money);
   - attending a screening draws distributors;
   - your craft grows with delivered credits.
 

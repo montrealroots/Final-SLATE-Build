@@ -144,7 +144,7 @@ function zoneOk(zone: string): boolean {
 }
 
 const FINANCE_STATUSES = ['considering', 'offered', 'declined', 'refused', 'accepted', 'breached', 'lapsed', 'withdrawn'];
-const FINANCE_KINDS = ['agreed', 'starting', 'grant', 'investor', 'co-producer', 'commissioner', 'earnings'];
+const FINANCE_KINDS = ['agreed', 'starting', 'grant', 'investor', 'co-producer', 'commissioner', 'earnings', 'capital'];
 
 function validateProject(raw: unknown, i: number, seen: Set<string>): void {
   const where = `project ${i + 1}`;
@@ -170,6 +170,10 @@ function validateProject(raw: unknown, i: number, seen: Set<string>): void {
       dealIds.add(x.id as string);
       need(isNum(x.amount) && isNum(x.received) && isNum(x.repaid) && (x.received as number) <= (x.amount as number) + 0.5 && (x.received as number) >= 0 && (x.repaid as number) >= 0, `the ${x.backer} deal of ${name}`, 'has invalid amounts');
       need(isObj(x.terms) && Array.isArray((x.terms as Obj).approvalRights), `the ${x.backer} deal of ${name}`, 'has malformed terms');
+      const unspent = (x.terms as Obj).unspent;
+      need(unspent === undefined || unspent === 'stays' || unspent === 'yours', `the ${x.backer} deal of ${name}`, 'has malformed terms');
+      const tr = x.transfer as Obj | undefined;
+      need(tr === undefined || (isObj(tr) && isId(tr.id) && Array.isArray(tr.sources) && (tr.sources as unknown[]).every((y) => isObj(y) && isId(y.projectId) && isNum(y.amount) && (y.amount as number) > 0)), `the ${x.backer} deal of ${name}`, 'has a malformed transfer');
     }
   }
 

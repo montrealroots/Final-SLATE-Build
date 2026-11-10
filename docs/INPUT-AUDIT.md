@@ -211,14 +211,15 @@ Four cycles stopped short. Each is closed now, with a test that compares the sam
 | What happened | What read it next, before | Now |
 |---|---|---|
 | How delivered work was received, and the awards it won | Nothing in funding: backers counted delivered projects only, so a flop and a prize-winner opened the same doors. Proposals read reception, not wins. | `finance.ts` `trackRecord`: the grant panel, investors and commissioners weigh average reception (up to ten points either way) and wins (five each, up to ten), and say so in their answer. A proposal counts a project's wins. |
-| The money a finished project kept: what was left of its budget and its share of income | Nothing. It stayed in that project's budget for good. | A backer of your own, Your Earnings: it puts what your delivered projects kept into a new one, moved through both ledgers as a payment, with no repayment, share or approval rights. If less is kept by the time you accept, it is refused and nothing moves. |
+| The money a finished project kept: what was left of its budget and its share of income | Nothing. It stayed in that project's budget for good. | A backer of your own, Your Earnings: it puts the income your delivered projects kept, after their backers' repayments and shares, into a new one, as one linked transfer with no repayment, share or approval rights. Until later the same day it offered everything they had left, unspent grant and investor money included. That money now stays with the project it was raised for (`docs/EARNINGS.md`). |
 | Attending your festival screening | A line in the log. | A wave of distributors' attention two days later, a third as strong as a win's (`awards-results.ts` `screeningHappens`). |
 | Your own credited, delivered work | Nothing in your craft: your writing and directing were the baseline on every film, your acting 58 before rehearsal. | `finish.ts` `playerExperience`: each earlier delivered project with your credit in the role adds a step. That is a point as writer or director, up to 5 (a hire moves it -12 to +12), and two as a performer, up to 12. |
 
-Browser evidence for the earnings cycle: `e2e/decisions.spec.ts` "what a finished film kept goes into the next", on
-desktop, phone and iPhone 15 Pro Max. It labels one fixture: the earlier film is marked delivered with money left in its
-budget. The other three closures have engine tests only. Their consequences show after a delivery, an award or a
+Browser evidence for the earnings cycle: `e2e/earnings.spec.ts`, on desktop and phone. A grant-funded short is made and
+delivered, and a distributor's guarantee is accepted. That income goes into the next project, and the grant money it
+didn't spend is refused. The only fixture is the pinned world seed. Until the fix of November 10, 2026, the evidence was
+a `decisions.spec.ts` test that wrote $50,000 into a save; it was removed. The other three closures have engine tests only. Their consequences show after a delivery, an award or a
 festival run, which the existing playthroughs reach but don't assert on.
 
 Not changed, on purpose: personal money outside projects, housing and taxes (`docs/FIRST-PROJECT-JOURNEY.md`, Not
-Modeled). Your earnings stay with your projects and move between them.
+Modeled). Your money stays with your projects and moves between them.

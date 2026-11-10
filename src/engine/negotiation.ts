@@ -24,7 +24,7 @@ export const COUNTER_DAYS = 5;
 
 export type BetterTerm = 'share' | 'recoup' | 'signing' | 'approval';
 
-export const NOT_NEGOTIABLE = new Set(['starting', 'grant', 'agreed']);
+export const NOT_NEGOTIABLE = new Set(['starting', 'grant', 'agreed', 'earnings', 'capital']);
 
 /** The better terms you could ask this backer for, each with what it would change. */
 export function betterTerms(d: FinanceDeal): { term: BetterTerm; label: string; change: string }[] {
