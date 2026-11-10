@@ -8,7 +8,7 @@ import { getPlace } from '../data/places';
 import { splitBackgrounds } from './identity';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { gaussian, intBetween, pick, stream } from './rng';
-import { addDaysToKey, dayNumber } from './time';
+import { addDaysToKey, ageOn, dateKey, dayNumber } from './time';
 import type { GameState, Project } from './types';
 
 export interface RoleDef {
@@ -118,7 +118,14 @@ export interface Person {
   heritages: string[];
   /** Their nationalities (country codes): from a nationality word drawn with their background, else where they're based. */
   nationalities: string[];
+  /**
+   * The ages a performer played when your story began. They move with the performer's own age: see playingAgeAt, which
+   * is what the game reads. Until November 10, 2026 this range never changed, so a performer cast at 25 to 35 in your
+   * first year was still 25 to 35 twenty years on.
+   */
   playingAge?: [number, number];
+  /** Their date of birth (YYYY-MM-DD). Their age turns on their birthday, by the same rule as yours (time.ts). */
+  born: string;
   skills: Skill[];
   samples: string;
   busy: { from: string; to: string }[];
@@ -226,7 +233,7 @@ function person(state: GameState, roleId: string, country: string, i: number): P
     id, name: `${pick(r, GIVEN)} ${pick(r, FAMILY)}`, pronouns, roleId, experience, capability, dayRate: rate, languages, homeCountry: country,
     heritages: [],
     nationalities: [],
-    playingAge: ageLow !== undefined ? [ageLow, ageLow + intBetween(r, 6, 14)] : undefined, skills, samples, busy,
+    playingAge: ageLow !== undefined ? [ageLow, ageLow + intBetween(r, 6, 14)] : undefined, born: '', skills, samples, busy,
   };
   // Drawn after everything else, so adding backgrounds left every earlier field of every person as it was.
   const local = COUNTRY_HERITAGES[country];
@@ -236,8 +243,41 @@ function person(state: GameState, roleId: string, country: string, i: number): P
   const split = splitBackgrounds(p.heritages.map((h) => ({ id: h, label: h, custom: false })), country);
   p.heritages = split.heritages.map((h) => h.label);
   p.nationalities = split.nationalities;
+  // A date of birth (November 10, 2026), drawn after everything else, so nobody's earlier fields changed. A performer's
+  // age when your story began sits inside the range they played then, a little above its middle. Anyone else's follows
+  // their experience: someone new to the role is in their twenties, someone leading in it in their late forties or older.
+  const start = dateKey(state.startedAt, 'UTC');
+  const ageThen = p.playingAge
+    ? p.playingAge[0] + Math.round((p.playingAge[1] - p.playingAge[0]) * 0.6) // where playingAgeAt puts their age
+    : Math.round(Math.min(72, Math.max(19, 18 + experience * 6 + gaussian(r, 0, 5))));
+  const born = addDaysToKey(`${Number(start.slice(0, 4)) - ageThen}${start.slice(4)}`, -intBetween(r, 1, 365));
+  p.born = born;
   personCache.set(cacheKey, p);
   return p;
+}
+
+const parts = (k: string) => ({ year: Number(k.slice(0, 4)), month: Number(k.slice(5, 7)), day: Number(k.slice(8, 10)) });
+/** A person's age on a local date (YYYY-MM-DD), turning on their birthday. */
+export function personAge(p: Person, on: string): number {
+  return ageOn(parts(p.born), parts(on));
+}
+
+/**
+ * The ages a performer plays on a date, following their own age:
+ * - A child plays within two years of their age either way.
+ * - An adult plays a range as wide as the one they had when your story began. It sits around their age as that one did:
+ *   a little more of it below their age than above. For an adult that is exactly the range they had then, so nothing
+ *   shown at the start moved.
+ * - An adult doesn't play under 16. Moving the starting range by the years since had kept a child who grew up playing
+ *   children.
+ */
+export function playingAgeAt(p: Person, on: string): [number, number] | undefined {
+  if (!p.playingAge) return undefined;
+  const age = personAge(p, on);
+  if (age < 18) return [Math.max(1, age - 2), age + 2];
+  const width = p.playingAge[1] - p.playingAge[0];
+  const below = Math.round(width * 0.6);
+  return [Math.max(16, age - below), age + width - below];
 }
 
 export function skillLabel(s: Skill): string {

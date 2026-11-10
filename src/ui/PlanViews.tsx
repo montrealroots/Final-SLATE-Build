@@ -19,7 +19,7 @@ import { costCuts, estimateAgainstSpending, type CostCut } from '../engine/cost-
 import { CONTINGENCY, costBreakdown, type CostArea } from '../engine/estimate';
 import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, scoutedPlaces, site } from '../engine/locations';
-import { dayFees, estimatedShootDays, willingness } from '../engine';
+import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
 import { COVERAGE, EMPHASIS, SETUPS_OF, TAKES, TAKE_RULES, isDirecting2, planTime, requiredSetups, shotPlan, type Coverage, type Emphasis, type TakePolicy } from '../engine/takes';
 import type { Audition, FinanceDeal, GameState, Hire, Obligation, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
@@ -86,6 +86,9 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
   const [pronounsFirst, setPronounsFirst] = useState(false);
   const part = characterId ? approvedCharacters(p).find((x) => x.id === characterId) : undefined;
   const fits = (c: Person) => !part || pronounsMatch(part, c.pronouns);
+  // Ages on today's date, so they move on each person's birthday (people.ts).
+  const today = dateKey(g.now, currentZone(g));
+  const plays = (c: Person) => playingAgeAt(c, today);
   // Matching the part's written pronouns is marked, and listing matches first is the producer's choice: it is a casting
   // preference, never a measure of ability, and nobody is filtered out (until the review of November 7, 2026 it always sorted).
   const list = roleCandidates(g, p, roleId).map((c) => ({ c, av: isAvailable(g, c, win.from, win.to, p.id) })).filter((x) => !onlyFree || x.av.ok)
@@ -107,7 +110,7 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
               <div className="row-wrap">
                 <div className="grow">
                   <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
-                  <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{c.playingAge ? ` Plays ages ${c.playingAge[0]} to ${c.playingAge[1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>
+                  <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{` Age ${personAge(c, today)}.`}{plays(c) ? ` Plays ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>
                   {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip">Shares A Background: {sharedHeritages(g, p, characterId, c.id).join(', ')}</span></div>}
                   {!av.ok && <div className="dim" style={{ color: 'var(--warning)' }}>{av.reason}</div>}
                   {willingness(g, c.id).reason && <div className="dim">{willingness(g, c.id).reason}</div>}

@@ -266,6 +266,8 @@ test('writing, producing and directing without acting: an offer to a performer b
   const busy = dialog.locator('li', { hasText: 'is booked on another production from' }).first();
   await expect(busy).toBeVisible();
   const busyName = (await busy.locator('strong').first().innerText()).trim();
+  // Each performer gives their age today and the ages they play, which follow it (people.ts).
+  await expect(busy).toContainText(/ Age \d{1,2}\. Plays ages \d{1,2} to \d{1,2}\./);
   await shot(page, p, '01-busy-performer');
   await busy.getByRole('button', { name: 'Make Offer' }).click();
   await page.keyboard.press('Escape');

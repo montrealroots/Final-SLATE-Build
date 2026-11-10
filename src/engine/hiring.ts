@@ -6,12 +6,12 @@ import { songUses } from './songs';
 import { getPlace } from '../data/places';
 import { cancel, commit, ledgerTotals, money, reserve, FundsError } from './budget';
 import { genre } from './genres';
-import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
+import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, playingAgeAt, role, roleLabel, type Person } from './people';
 import { buildTasks, coachingNeeded, estimatedShootDays, planShootDays } from './production';
 import { approvalRights, approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneTechnique } from './projects';
 import { recordHistory, willingness } from './relationships';
 import { stream } from './rng';
-import { addLog, newId, registerHandler, schedule } from './state';
+import { addLog, currentZone, newId, registerHandler, schedule } from './state';
 import { DAY, HOUR, addDaysToKey, dateKey, formatDateKey, weekdayName, weekdayOfKey } from './time';
 import type { CastAssignment, GameState, Hire, PerformanceMethod, Project } from './types';
 import { PRONOUNS } from '../data/identity';
@@ -381,8 +381,11 @@ export function fitNotes(state: GameState, p: Project, person: Person | 'player'
     return out;
   }
   const age = Number.parseInt(c.ageInStory, 10);
-  if (person.playingAge && Number.isFinite(age) && (age < person.playingAge[0] || age > person.playingAge[1])) {
-    out.push(`Usually plays ages ${person.playingAge[0]} to ${person.playingAge[1]}.`);
+  // The ages they play today, which move as they age (people.ts); the range fixed at your story's start was read until
+  // November 10, 2026.
+  const plays = playingAgeAt(person, dateKey(state.now, currentZone(state)));
+  if (plays && Number.isFinite(age) && (age < plays[0] || age > plays[1])) {
+    out.push(`Usually plays ages ${plays[0]} to ${plays[1]}.`);
   }
   if (needsSinging && !person.skills.includes('singing')) out.push('Not trained in singing, which this role needs.');
   if (needsDance && !person.skills.includes('dance')) out.push('Not trained in dance, which this role needs.');
