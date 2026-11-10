@@ -26,7 +26,8 @@ export interface SeriesProfile {
   daily: 0 | 1;
   aired: number;
   seasons: SeasonFact[];
-  regulars: { p: number; name: string; ch: string | null }[];
+  /** The last season's top-billed cast, with their recorded birth and death dates where TMDB has them. */
+  regulars: { p: number; name: string; ch: string | null; born?: string; died?: string }[];
 }
 export interface IndustryWorld { horizon: string; builtAt: string; series: SeriesProfile[] }
 
@@ -88,10 +89,12 @@ const simRun = (s: SimSeason): Run => ({ n: s.n, eps: s.eps, d0: s.premiere, gap
  * still airing when the records end lists only the episodes known so far, so its count and spacing aren't the
  * series' own (found on the real catalog, where it gave a broadcast comedy 9 episodes and a drama 1).
  */
+/** The recorded season every simulated one descends from: the last complete one, else the last there is. */
+export const recordedModel = (p: SeriesProfile, horizon: string): SeasonFact | undefined =>
+  p.seasons.filter((f) => f.dated === f.eps && (f.d1 ?? f.d0) < horizon).at(-1) ?? p.seasons.at(-1);
 function model(p: SeriesProfile, sim: SimSeries, horizon: string): Run | null {
   if (sim.seasons.length) return simRun(sim.seasons.at(-1)!);
-  const done = p.seasons.filter((f) => f.dated === f.eps && (f.d1 ?? f.d0) < horizon);
-  const f = done.at(-1) ?? p.seasons.at(-1);
+  const f = recordedModel(p, horizon);
   if (!f) return null;
   const r = recordedRun(f);
   return { ...r, gap: r.drop ? 0 : Math.max(1, r.gap) };

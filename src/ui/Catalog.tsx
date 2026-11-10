@@ -10,8 +10,9 @@ import {
   type CatalogIndex, type CompanyFilmography, type PersonCredit, type PersonRecord, type SeasonRecord, type SortKey, type TitleRecord,
 } from '../catalog/model';
 import { retryCatalog, useCatalogFile, type Loaded } from '../catalog/load';
-import { describe as describeWorld, inStory, isNews, useWorld, worldEventsBetween } from '../catalog/world';
-import { episodeDates, seriesProfile } from '../engine/industry';
+import { describe as describeWorld, inStory, isNews, simRoute, useWorld, worldEventsBetween } from '../catalog/world';
+import { episodeDates, outletOf, recordedModel, seriesProfile, type SimSeason } from '../engine/industry';
+import { ageOn, announcedSeason, breakLength, breaksOf, castFor, decisionsFor, nightsOf, usualDecision } from '../catalog/simseason';
 import { addDaysToKey } from '../engine';
 import logo from '../catalog/tmdb-logo.svg';
 import { Check, Empty, PageHead, Panel, SelectField, TextField } from './components';
@@ -34,6 +35,9 @@ function Link({ to, children, label }: { to: Route; children: ReactNode; label?:
 }
 const titleRoute = (ref: string): Route => ({ view: 'title', ref } as Route);
 const personRoute = (id: number): Route => ({ view: 'person', ref: `person:${id}` } as Route);
+const seasonRoute = (series: string, n: number): Route => ({ view: 'season', ref: `${series}:s:${n}` } as Route);
+/** A date with its weekday: "Wednesday, September 20, 2028". */
+const long = (key: string) => `${new Date(`${key}T12:00:00Z`).toLocaleDateString('en-US', { weekday: 'long', timeZone: 'UTC' })}, ${formatDateKey(key)}`;
 
 function GoBack() {
   return <button type="button" className="btn btn-sm" onClick={() => store.back()}>Go Back</button>;
@@ -376,6 +380,17 @@ function SeriesCredits({ t }: { t: TitleRecord }) {
   );
 }
 
+/** One line on a simulated season at the save's date: its size, pattern and run, and how much has aired. */
+function seasonSummary(x: SimSeason, today: string): string {
+  const dates = episodeDates(x);
+  const aired = dates.filter((d) => d <= today).length;
+  if (x.drop) return `All ${x.eps} episodes ${x.premiere <= today ? 'came out' : 'are due to come out'} ${formatDateKey(x.premiere)}.`;
+  const pattern = x.gap === 7 ? 'weekly' : x.gap === 1 ? 'daily' : `every ${x.gap} days`;
+  return `${x.eps} episodes, ${pattern}${breaksOf(dates, x.gap).length ? ' with breaks' : ''}, from ${formatDateKey(x.premiere)} to ${formatDateKey(dates.at(-1)!)}${aired === x.eps ? '; all aired' : aired ? `; ${aired} aired so far` : ''}.`;
+}
+
+const DECIDED: Record<string, string> = { renewed: 'Renewed', cancelled: 'Cancelled', concluded: 'Ended', ordered: 'Ordered To Series', passed: 'Passed On', dated: 'Given A Date' };
+
 /** What this save's world has made of a series since the records ended (src/engine/industry.ts), at the save's date. */
 function InYourStory({ refId, today }: { refId: string; today: string }) {
   const g = useGame();
@@ -383,46 +398,58 @@ function InYourStory({ refId, today }: { refId: string; today: string }) {
   const p = seriesProfile(refId);
   if (!sim || !p) return null;
   const outcomes = sim.outcomes.filter((o) => o.at <= today);
-  const seasons = sim.seasons.filter((x) => sim.outcomes.some((o) => o.n === x.n && o.at <= today));
-  const word: Record<string, string> = { renewed: 'Renewed', cancelled: 'Cancelled', concluded: 'Ended', ordered: 'Ordered To Series', passed: 'Passed On', dated: 'Given A Date' };
+  const seasons = sim.seasons.filter((x) => announcedSeason(sim, x.n, today));
+  // The cast is the same recorded regulars for every simulated season, so it is told once, for the latest.
+  const cast = seasons.length ? castFor(p, seasons.at(-1)!.premiere) : null;
   return (
     <Panel title="In Your Story" subtitle={`Simulated for this save after the records end on ${formatDateKey(g.industry!.horizon)}. The recorded history above doesn't change.`}>
       {outcomes.length ? (
         <ul className="list">
           {outcomes.map((o, i) => (
             <li key={i} className="list-item">
-              <span className="grow">{word[o.kind]}{o.kind === 'renewed' || o.kind === 'dated' || o.kind === 'ordered' ? `: Season ${o.n}${o.final ? ', its final season' : ''}` : ` after Season ${o.n}`}</span>
+              <span className="grow">{DECIDED[o.kind]}{o.kind === 'renewed' || o.kind === 'dated' || o.kind === 'ordered' ? `: Season ${o.n}${o.final ? ', its final season' : ''}` : ` after Season ${o.n}`}</span>
               <span className="dim small">{formatDateKey(o.at)} <span className="chip">Simulated</span></span>
             </li>
           ))}
         </ul>
       ) : <p className="muted">Nothing has been decided yet.{sim.closed ? '' : ' Its network decides after its current season.'}</p>}
-      {seasons.map((x) => {
-        const dates = episodeDates(x);
-        const aired = dates.filter((d) => d <= today).length;
-        const breaks = dates.some((d, i) => i > 0 && Date.parse(d) - Date.parse(dates[i - 1]) > 1.5 * x.gap * 86_400_000);
-        return (
-          <section key={x.n}>
-            <h3>Season {x.n}</h3>
-            <p className="muted">{x.drop ? `All ${x.eps} episodes ${x.premiere <= today ? 'came out' : 'are due to come out'} ${formatDateKey(x.premiere)}.` : `${x.eps} episodes, ${x.gap === 7 ? 'weekly' : x.gap === 1 ? 'daily' : `every ${x.gap} days`}${breaks ? ' with breaks' : ''}, from ${formatDateKey(x.premiere)} to ${formatDateKey(dates.at(-1)!)}${aired === x.eps ? '; all aired' : aired ? `; ${aired} aired so far` : ''}.`}</p>
-            {p.regulars.length > 0 && <p className="dim">Returning: {p.regulars.map((c) => `${c.name}${c.ch ? ` (${c.ch})` : ''}`).join(', ')}. The regulars recorded for its last season return; nobody else is cast in a simulated season.</p>}
-          </section>
-        );
-      })}
+      {seasons.length > 0 && <>
+        <h3 className="spaced">Simulated Seasons</h3>
+        <ul className="list">
+          {seasons.map((x) => (
+            <li key={x.n} className="list-item">
+              <span className="grow"><Link to={seasonRoute(refId, x.n)}>Season {x.n}</Link></span>
+              <span className="dim small">{seasonSummary(x, today)}</span>
+            </li>
+          ))}
+        </ul>
+      </>}
+      {cast && cast.back.length > 0 && <p className="dim spaced">Returning: {cast.back.map((c) => `${c.name}${c.ch ? ` (${c.ch})` : ''}`).join(', ')}. The regulars recorded for its last season return; nobody else is cast in a simulated season.</p>}
+      {cast && cast.gone.length > 0 && <p className="dim">Not returning: {cast.gone.map((c) => `${c.name}, who died ${formatDateKey(c.died!)}`).join('; ')}.</p>}
     </Panel>
   );
 }
 
 function SeasonsCard({ t, today }: { t: TitleRecord; today: string }) {
-  const seasons = t.seasons ?? [];
+  const g = useGame();
+  const sim = g.industry?.series[t.ref];
+  const simulated = sim ? sim.seasons.filter((x) => announcedSeason(sim, x.n, today)) : [];
+  // A season TMDB listed without dates that the save's world has since dated is shown once, as the simulated one.
+  const seasons = (t.seasons ?? []).filter((s) => !simulated.some((x) => x.n === s.number));
   return (
-    <Panel title="Seasons">
-      {seasons.length ? (
+    <Panel title="Seasons" subtitle={simulated.length ? 'Seasons marked Simulated were made by this save\'s world after the records end.' : undefined}>
+      {seasons.length || simulated.length ? (
         <ul className="list">
           {seasons.map((s) => (
             <li key={s.ref} className="list-item">
               <span className="grow">{s.available ? <Link to={{ view: 'season', ref: s.ref } as Route}>{s.name}</Link> : <>{s.name} <span className="dim small">(its episodes couldn't be gathered)</span></>}</span>
               <span className="dim small">{plural(s.episodes, 'episode')}, {happenedBy(s.date, today) ? yearOf(s.date) : s.date ? `due ${day(s.date)}` : 'undated'}</span>
+            </li>
+          ))}
+          {simulated.map((x) => (
+            <li key={`sim-${x.n}`} className="list-item">
+              <span className="grow"><Link to={seasonRoute(t.ref, x.n)}>Season {x.n}</Link> <span className="chip">Simulated</span></span>
+              <span className="dim small">{plural(x.eps, 'episode')}, {x.premiere <= today ? yearOf(x.premiere) : `due ${day(x.premiere)}`}</span>
             </li>
           ))}
         </ul>
@@ -435,8 +462,12 @@ function SeasonsCard({ t, today }: { t: TitleRecord; today: string }) {
 
 export function SeasonPage({ refId }: { refId: string }) {
   const today = useToday();
+  const g = useGame();
   const r = parseRef(refId);
-  const s = useCatalogFile<SeasonRecord>(r?.kind === 'season' ? fileFor(refId) : null);
+  const series = r ? `tv:${r.id}` : '';
+  const simulated = r?.kind === 'season' ? announcedSeason(g.industry?.series[series], r.season!, today) : undefined;
+  const s = useCatalogFile<SeasonRecord>(r?.kind === 'season' && !simulated ? fileFor(refId) : null);
+  if (simulated) return <SimSeasonPage series={series} x={simulated} today={today} />;
   return <Status loaded={s} what="this season">{(d) => (
     <>
       <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: d.seriesTitle, route: titleRoute(d.series) }, { label: d.name }]} />
@@ -460,6 +491,115 @@ export function SeasonPage({ refId }: { refId: string }) {
       </Panel>
     </>
   )}</Status>;
+}
+
+/**
+ * A season this save's world made (src/engine/industry.ts, docs/WORLD.md). Everything on it follows from the save's
+ * world and the records: when it was announced, its dates and breaks, who returns and how old they are at the premiere,
+ * and what was decided after it. An episode's title and story aren't recorded or simulated, so none is given.
+ */
+function SimSeasonPage({ series, x, today }: { series: string; x: SimSeason; today: string }) {
+  const g = useGame();
+  const p = seriesProfile(series);
+  const sim = g.industry!.series[series];
+  if (!p) return <Empty title="This Season Can't Be Shown"><p className="muted">The catalog's world file isn't loaded, so this simulated season can't be shown.</p></Empty>;
+  const dates = episodeDates(x);
+  const aired = dates.filter((d) => d <= today).length;
+  const breaks = x.drop ? [] : breaksOf(dates, x.gap);
+  const { announced, after } = decisionsFor(sim, x.n, today);
+  const model = recordedModel(p, g.industry!.horizon);
+  const cast = castFor(p, x.premiere);
+  const finale = dates.at(-1)!;
+  const daily = outletOf(p) === 'daily';
+  const weeks = Math.round((Date.parse(finale) - Date.parse(x.premiere)) / (7 * 86_400_000));
+  const next = announcedSeason(sim, x.n + 1, today);
+  const prevSimulated = sim.seasons.some((s) => s.n === x.n - 1);
+  const status = aired === 0 ? `Due to premiere ${long(x.premiere)}` : aired < x.eps ? `Airing: ${aired} of ${x.eps} episodes have aired` : `Finished: its last episode aired ${long(finale)}`;
+  const afterText = after
+    ? after.kind === 'cancelled' ? `Cancelled ${formatDateKey(after.at)}. There won't be a Season ${x.n + 1}.`
+      : after.kind === 'concluded' ? `The series ended with this season's finale on ${formatDateKey(after.at)}${x.final ? ', as announced' : ''}.`
+        : `${after.kind === 'renewed' ? 'Renewed' : 'Given a date'} for Season ${after.n} on ${formatDateKey(after.at)}${after.final ? ', announced as its final season' : ''}.`
+    : x.final ? `Announced as its final season: the series ends with its finale${finale > today ? `, due ${long(finale)}` : ''}.`
+      : `Not decided yet. ${usualDecision(p)}`;
+  const markers = (i: number) => {
+    const m: string[] = [];
+    if (i === 0) m.push(x.n === 1 ? 'Series premiere' : 'Season premiere');
+    if (!x.drop && i > 0 && dates[i] === dates[i - 1]) m.push(`Same night as Episode ${i}`);
+    const back = breaks.find((b) => b.after === i);
+    if (back) m.push(`Back after ${breakLength(back.days)}`);
+    if (!x.drop && !daily && i === x.eps - 1 && x.eps > 1) m.push(x.final ? 'Series finale' : 'Season finale');
+    return m;
+  };
+  return (
+    <>
+      <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: p.t, route: titleRoute(series) }, { label: `Season ${x.n}` }]} />
+      <PageHead eyebrow={p.t} title={`Season ${x.n}`} lede={x.premiere <= today ? `Premiered ${long(x.premiere)}` : `Due to premiere ${long(x.premiere)}`} />
+      <p className="callout"><span className="chip">Simulated</span> This season was made by this save's world after the records end on {formatDateKey(g.industry!.horizon)}. Its dates follow the season it is patterned on. Its episodes' titles and stories aren't known, so none are given, and nobody is cast who wasn't a regular.</p>
+      <Panel title="About This Season">
+        <dl className="kv">
+          <dt>Status</dt><dd>{status}</dd>
+          <dt>Network</dt><dd>{p.net.join(', ') || 'Not recorded'}</dd>
+          <dt>Announced</dt><dd>{announced ? `${DECIDED[announced.kind]} ${formatDateKey(announced.at)}${x.final ? ', as its final season' : ''}` : 'Not recorded'}</dd>
+          <dt>{x.drop ? 'Released' : 'Premiere'}</dt><dd>{long(x.premiere)}</dd>
+          {!x.drop && <><dt>Finale</dt><dd>{long(finale)}</dd></>}
+          <dt>Episodes</dt><dd>{x.eps}{aired > 0 && aired < x.eps ? `, ${aired} aired so far` : aired === x.eps ? ', all aired' : ', none aired yet'}</dd>
+          <dt>Release</dt><dd>{x.drop ? 'All at once' : `${daily ? 'Daily' : x.gap === 7 ? 'Weekly' : `Every ${x.gap} days`}, on ${nightsOf(dates)}`}{breaks.length ? `, with ${plural(breaks.length, 'break')}` : ''}</dd>
+          {!x.drop && <><dt>Run</dt><dd>{plural(weeks, 'week')} from premiere to finale</dd></>}
+          {model && <><dt>Patterned On</dt><dd>Season {model.n} as TMDB recorded it: {plural(model.eps, 'episode')}, {day(model.d0)} to {day(model.d1 ?? model.d0)}. Every simulated season copies its count, its spacing and its night.</dd></>}
+          <dt>After This Season</dt><dd>{afterText}</dd>
+        </dl>
+      </Panel>
+      <Panel title="Episodes" subtitle="Each episode's date in this save's world. Titles and stories aren't known, so they aren't given.">
+        <Expandable items={dates} label="Episodes" render={(d, i) => (
+          <li key={i} className="list-item">
+            <span className="grow">Episode {i + 1}{markers(i).length ? <span className="dim small"> ({markers(i).join('; ')})</span> : null}</span>
+            <span className="dim small">{d <= today ? long(d) : `Due ${long(d)}`}</span>
+          </li>
+        )} />
+      </Panel>
+      {breaks.length > 0 && (
+        <Panel title="Breaks" subtitle={`Stretches with no new episode, as in Season ${model?.n ?? x.n - 1}.`}>
+          <ul className="list">
+            {breaks.map((b) => (
+              <li key={b.after} className="list-item">
+                <span className="grow">After Episode {b.after}, no new episode until Episode {b.after + 1}</span>
+                <span className="dim small">{formatDateKey(b.from)} to {formatDateKey(b.to)}: {breakLength(b.days)}</span>
+              </li>
+            ))}
+          </ul>
+        </Panel>
+      )}
+      <Panel title="Returning Cast" subtitle="The regulars recorded for its last recorded season, with their age at the premiere where TMDB records a birth date. Nobody else is cast in a simulated season.">
+        {cast.back.length ? (
+          <ul className="list">
+            {cast.back.map((c) => (
+              <li key={c.p} className="list-item">
+                <span className="grow"><Link to={personRoute(c.p)}>{c.name}</Link> <span className="dim small">{c.ch ?? 'Role not recorded'}</span></span>
+                <span className="dim small">{c.born ? `${ageOn(c.born, x.premiere)} at the premiere` : 'Birth date not recorded'}</span>
+              </li>
+            ))}
+          </ul>
+        ) : <p className="muted">No recorded regulars return for this season.</p>}
+        {cast.gone.length > 0 && <>
+          <h3 className="spaced">Not Returning</h3>
+          <ul className="list">
+            {cast.gone.map((c) => (
+              <li key={c.p} className="list-item">
+                <span className="grow"><Link to={personRoute(c.p)}>{c.name}</Link> <span className="dim small">{c.ch ?? 'Role not recorded'}</span></span>
+                <span className="dim small">Died {formatDateKey(c.died!)}, before the premiere</span>
+              </li>
+            ))}
+          </ul>
+        </>}
+      </Panel>
+      <Panel title="Other Seasons">
+        <ul className="list">
+          {x.n > 1 && <li className="list-item"><span className="grow">Before: <Link to={seasonRoute(series, x.n - 1)}>Season {x.n - 1}</Link>{prevSimulated ? <> <span className="chip">Simulated</span></> : null}</span><span className="dim small">{prevSimulated ? 'Made by this save\'s world' : 'As TMDB recorded it'}</span></li>}
+          <li className="list-item"><span className="grow">After: {next ? <Link to={seasonRoute(series, x.n + 1)}>Season {x.n + 1}</Link> : after?.kind === 'cancelled' || after?.kind === 'concluded' ? 'None: the series has ended' : 'Not announced yet'}</span>{next ? <span className="dim small"><span className="chip">Simulated</span></span> : null}</li>
+        </ul>
+      </Panel>
+    </>
+  );
 }
 
 export function EpisodePage({ refId }: { refId: string }) {
@@ -595,7 +735,7 @@ export function IndustryCard() {
   const soon = pick(addDaysToKey(today, 1), addDaysToKey(today, 14)).slice(0, 6);
   const row = (e: (typeof recent)[number]) => (
     <li key={`${e.r}-${e.k}-${e.d}`} className="list-item">
-      <span className="grow"><Link to={{ view: e.sim ? 'title' : e.k === 'episode' ? 'episode' : e.k === 'season' ? 'season' : 'title', ref: e.r } as Route}>{describeWorld(e, today)}</Link>{e.sim ? <> <span className="chip">Simulated</span></> : null}</span>
+      <span className="grow"><Link to={e.sim ? simRoute(e) : { view: e.k === 'episode' ? 'episode' : e.k === 'season' ? 'season' : 'title', ref: e.r } as Route}>{describeWorld(e, today)}</Link>{e.sim ? <> <span className="chip">Simulated</span></> : null}</span>
       <span className="dim small nowrap">{formatDateKey(e.d)}</span>
     </li>
   );

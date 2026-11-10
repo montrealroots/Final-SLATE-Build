@@ -170,6 +170,14 @@ times.sort();
 const horizon = (times.at(-1) ?? new Date().toISOString()).slice(0, 10);
 for (const ev of world) if (ev.d === null) ev.d = horizon;
 world.sort((a, b) => a.d.localeCompare(b.d) || a.t.localeCompare(b.t) || (a.s ?? 0) - (b.s ?? 0) || (a.e ?? 0) - (b.e ?? 0));
+// A regular's recorded life, where TMDB has it: a simulated season can't bring back someone who died before it, and its
+// page gives each regular's age at the premiere.
+const detailed = new Set(manifest.people);
+for (const pr of profiles) for (const c of pr.regulars) {
+  const d = detailed.has(c.p) ? body(`person/${c.p}`)?.body : null;
+  if (d?.birthday) c.born = date(d.birthday);
+  if (d?.deathday) c.died = date(d.deathday);
+}
 write('world.json', { version: 1, builtAt: new Date().toISOString(), horizon, from: WORLD_FROM, events: world, series: profiles });
 const discovery = manifest.queries.map((q) => ({ company: q.companyId, type: q.type, reported: q.total, found: q.found, pages: q.pages, split: q.split, failedPages: q.failedPages }));
 write('index.json', {

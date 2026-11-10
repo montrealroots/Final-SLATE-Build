@@ -69,7 +69,10 @@ export const CATALOG_FIXTURE: Record<string, unknown> = {
     ],
     // A series still running when the records end, which the living world's engine continues (src/engine/industry.ts).
     series: [{ r: 'tv:900201', t: 'Coastline (Fixture)', status: 'Returning Series', type: 'Scripted', net: ['Disney+'], ci: ['company:walt-disney-pictures'], genres: ['Drama'], daily: 0, aired: 1,
-      seasons: [{ n: 1, eps: 8, dated: 8, d0: '2026-04-01', d1: '2026-05-20', gap: 7, drop: 0 }], regulars: [{ p: 800001, name: 'Ada Quill', ch: 'Juno Marsh' }] }],
+      // Its recorded season took two weeks off after its third episode and ended with two episodes on one night.
+      seasons: [{ n: 1, eps: 8, dated: 8, d0: '2026-04-01', d1: '2026-05-20', gap: 7, drop: 0, offs: [0, 7, 14, 28, 35, 42, 49, 49] }],
+      // One regular the records say died before the simulated season, who doesn't return.
+      regulars: [{ p: 800001, name: 'Ada Quill', ch: 'Juno Marsh', born: '1980-04-02' }, { p: 800002, name: 'Wren Calder', ch: 'Old Tom', born: '1931-02-02', died: '2026-06-01' }] }],
   },
   'search/titles.json': [['movie:900001', 'The Lantern Keeper (Fixture)', '2019'], ['movie:900002', 'Harbour Lights (Fixture)', '2023'], ['movie:900003', 'Night Ferry (Fixture)', '2030'], ['tv:900101', 'Tidewater Station (Fixture)', '2021'], ['tv:900201', 'Coastline (Fixture)', '2026']],
   'search/people-A.json': [[800001, 'Ada Quill', 4]],

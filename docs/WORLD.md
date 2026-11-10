@@ -146,8 +146,33 @@ Sundays.
 - **Simulated news.** Decisions and simulated premieres and finales appear in Home's In The Industry, marked
   Simulated. A daily programme's yearly renewal isn't news.
 - **Simulated calendar entries.** Simulated premieres and episodes appear on the calendar, marked (Simulated).
-- **In Your Story.** A series' page has this card. It shows what the save's world has decided, each simulated season's
-  dates and pattern, and who returns. It is labelled as simulated, and the recorded history above it doesn't change.
+- **In Your Story.** A series' page has this card. It shows what the save's world has decided, a line for each
+  simulated season that opens its page, and who returns, told once. It is labelled as simulated, and the recorded
+  history above it doesn't change. The series' Seasons list carries the simulated seasons after the recorded ones,
+  marked Simulated. A season TMDB listed without dates that the save's world has since dated is listed once, as the
+  simulated one.
+- **A simulated season's page.** It opens from the card, the Seasons list, Home and the calendar, and has:
+  - **About This Season:**
+    - its status at the save's date and its network;
+    - when it was announced, and whether as the final season;
+    - its premiere and finale, with weekdays;
+    - its episode count and how many have aired;
+    - its release pattern and nights, and how many breaks it has;
+    - its run in weeks;
+    - the recorded season it is patterned on;
+    - what came after it: renewal, cancellation or the series ending. If nothing has been decided, it says when the
+      outlet usually decides, never the date the save has scheduled.
+  - **Episodes:** every episode's date and weekday, with the premiere, the finale, a return from a break and two episodes
+    on one night marked.
+  - **Breaks:** each stretch without a new episode, and its length.
+  - **Returning Cast:** the recorded regulars, each with their age at the premiere where TMDB records a birth date. A
+    regular the records say died before the premiere is listed as not returning, and nobody is cast in their place. The
+    real catalog has seven, among them *General Hospital*'s Tyler Christopher and Michelle Trachtenberg, whose recorded
+    seasons still listed them.
+  - **Other Seasons:** the seasons before and after it, recorded or simulated.
+
+  Episode titles and stories aren't recorded or simulated, so the page gives none. Nothing here is stored beyond the
+  decisions the save already keeps.
 - **Without the catalog.** If the catalog isn't installed, nothing starts. If it goes missing later, the engine waits
   rather than deciding blind.
 
@@ -173,9 +198,19 @@ Sundays.
   - pilots are decided;
   - renewed seasons follow their pattern;
   - a season keeps its night and its recorded breaks, and a final season ends at its finale;
+- `tests/simseason.test.ts` covers the simulated season's page:
+  - nights and breaks;
+  - ages;
+  - regulars who died before the premiere;
+  - decisions known only once the save reaches them;
+  - the outlet's usual timing;
+  - where each simulated item opens.
   - every series runs until it ends;
   - it is the same for a seed and survives a reload;
   - it waits without the catalog;
   - it doesn't read ratings.
-- `e2e/living-world.spec.ts` checks a save that passes the records' end: the decision is kept in the save, shown on the
-  series' page as simulated with its returning regulars, and kept after a reload.
+- `e2e/living-world.spec.ts` checks a save that passes the records' end:
+  - the decision is kept in the save, and kept after a reload;
+  - the series' page shows it as simulated, with its returning regulars;
+  - the season's own page shows its dates, breaks and nights, who returns and who doesn't, and the seasons around it;
+  - the series' Seasons list carries it.

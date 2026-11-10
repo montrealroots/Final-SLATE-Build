@@ -5,7 +5,7 @@
 // once there are any (later phases), are kept in the save and labelled as simulated.
 import { formatDateKey } from '../engine/time';
 import { episodeDates, outletOf, seriesProfile } from '../engine/industry';
-import type { GameState } from '../engine/types';
+import type { GameState, Route } from '../engine/types';
 import { company } from './registry';
 import { useCatalogFile, type Loaded } from './load';
 
@@ -138,6 +138,15 @@ export function simulatedEvents(state: GameState, from: string, to: string): Wor
     }
   }
   return out.sort((a, b) => a.d.localeCompare(b.d) || a.t.localeCompare(b.t));
+}
+
+/**
+ * Where a simulated event opens: its season's page for a premiere, an episode or a decision that brings a season, and the
+ * series' page for an ending or a pilot passed on.
+ */
+export function simRoute(e: WorldEvent): Route {
+  const season = e.k === 'season' || e.k === 'episode' || (e.k === 'decision' && (e.outcome === 'renewed' || e.outcome === 'dated' || e.outcome === 'ordered'));
+  return (season ? { view: 'season', ref: `${e.r}:s:${e.s}` } : { view: 'title', ref: e.r }) as Route;
 }
 
 /** Recorded and simulated events together, in date order. */

@@ -7,7 +7,7 @@ import { FORECAST_HORIZON_DAYS, addDaysToKey, citizenshipOf, homeCountries, know
 import { personById } from '../engine/people';
 import { honors } from '../engine/awards-actions';
 import type { GameState, Route } from '../engine/types';
-import { inStory, onCalendar, useWorld, worldEventsBetween, type WorldSeed } from '../catalog/world';
+import { inStory, onCalendar, simRoute, useWorld, worldEventsBetween, type WorldSeed } from '../catalog/world';
 import { Check, Modal, NumberField, PageHead, Professions, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { store, useClock, useGame } from './store';
@@ -65,7 +65,7 @@ function calendarItems(g: GameState, year: number, month: number, world: WorldSe
     for (const e of worldEventsBetween(world, g, first, last)) {
       if (!onCalendar(e) || !inStory(e, start)) continue;
       const label = (e.k === 'film' ? `${e.t} Comes Out` : e.k === 'season' ? (e.first ? `${e.t} Premieres` : `${e.t}: Season ${e.s} Begins`) : `${e.t}: S${e.s} E${e.e}${e.f ? ' (Finale)' : ''}`) + (e.sim ? ' (Simulated)' : '');
-      push(e.d, { label, kind: 'Film And Television', route: { view: e.sim || e.k === 'film' ? 'title' : e.k === 'season' ? 'season' : 'episode', ref: e.r } });
+      push(e.d, { label, kind: 'Film And Television', route: e.sim ? simRoute(e) : { view: e.k === 'film' ? 'title' : e.k === 'season' ? 'season' : 'episode', ref: e.r } });
     }
   }
   if (g.calendarFilters.includes('My Schedule')) {
