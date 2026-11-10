@@ -27,7 +27,7 @@ export default defineConfig({
     { name: 'phone', use: { ...devices['Desktop Chrome'], viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } },
     // WebKit emulation of the user's target phones. Emulation only: not physical-device or real Safari verification.
     { name: 'iphone-15-plus', testMatch: /(live-action|devices|creation|focus|season|career|awards|readers|title-input)\.spec\.ts/, use: { ...devices['iPhone 15 Plus'], ...webkitLaunch } },
-    { name: 'iphone-15-pro-max', testMatch: /(live-action|devices|creation|focus|connected|title-input|journey-e)\.spec\.ts/, use: { ...devices['iPhone 15 Pro Max'], ...webkitLaunch } },
+    { name: 'iphone-15-pro-max', testMatch: /(live-action|devices|creation|focus|connected|title-input|journey-e|decisions)\.spec\.ts/, use: { ...devices['iPhone 15 Pro Max'], ...webkitLaunch } },
     { name: 'iphone-15-pro-max-landscape', testMatch: /devices\.spec\.ts/, use: { ...devices['iPhone 15 Pro Max landscape'], ...webkitLaunch } },
   ],
 });

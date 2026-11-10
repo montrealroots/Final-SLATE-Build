@@ -388,7 +388,7 @@ function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: Cate
   // Entered for one episode, a series qualifies by when that episode came out (or is to); until November 10, 2026, by
   // its release's first day, so an episode still to come counted as shown.
   const ep = (r: Project['releases'][number]) => (episode !== undefined ? r.episodes?.find((e) => e.number === episode) : undefined);
-  const fits = (r: Project['releases'][number]) => { const d = ep(r)?.date ?? r.date; return (routes as string[]).includes(r.route) && r.territories.some(where) && d >= win.from && d <= win.to; };
+  const fits = (r: Project['releases'][number]) => { const d = ep(r)?.date ?? r.date; if (ep(r)?.held) return false; return (routes as string[]).includes(r.route) && r.territories.some(where) && d >= win.from && d <= win.to; };
   const out = (r: Project['releases'][number]) => r.status === 'released' && (ep(r)?.status ?? 'released') === 'released';
   if (p.releases.some((r) => out(r) && fits(r))) return { ok: true, provisional: false, via: 'release' };
   if (list && qualifyingWin(state, p, list)) return { ok: true, provisional: false, via: 'festival' };

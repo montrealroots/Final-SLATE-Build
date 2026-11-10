@@ -56,7 +56,40 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 10, 2026, after #58): gameplay connectivity, release schedules, WebKit title, startup, journeys
+### Newest Request (November 10, 2026, after #59): the Original Song loop, episode release edges, rolling delivery, UI evidence
+
+What was done:
+
+1. **Original Song, played through.** `e2e/journey-c.spec.ts` (seed 8) plays the whole loop with no award state written:
+   - songs written, commissioned, licensed and placed, with a Distribution Cut swapping one song;
+   - delivered, then a real US theatrical offer accepted and released;
+   - entered once entries open: the licensed song is refused, three songs are entered and a fourth is refused by the
+     limit of three;
+   - the score's composer is never credited for a song;
+   - at most two nominations, then the results;
+   - snapshots identical after Save And Exit and Continue.
+2. **Episode release edges.** `tests/episode-release-edges.test.ts` covers airings that no longer depend on record
+   order, calendar ids, the 9 AM rule, repeated edits, provisional to judged, v8 saves, and territory codes. See
+   `docs/RELEASE-SCHEDULES.md` (Changed After #59).
+3. **Rolling episode delivery.** `src/engine/episode-delivery.ts`, and the Edit tab's "Delivering Episode By Episode"
+   card. An undelivered episode on its day is held back, says so, and waits for a new date. The season is still
+   delivered whole with Deliver Project. Evidence: `tests/episode-delivery.test.ts` and `e2e/rolling-delivery.spec.ts`
+   (desktop, phone).
+4. **UI evidence.** 55 to 73 of 132 decisions have a browser journey (`e2e/decisions.spec.ts`; `docs/INPUT-AUDIT.md`).
+   `CONTROLS.csv` now says whether each is targeted or a playthrough, and what it proves.
+5. **WebKit:** no new failure since #59, so no new evidence. Still open; the diagnostics stay on.
+6. **Performance:** startup 671 / 214 kB; Continue 390 ms, New Game 1,113 ms (`QA-REPORT.md`).
+
+Next:
+- 59 decisions are still engine-only, listed in `docs/INPUT-AUDIT.md`. The largest groups are script detail fields (36)
+  and production capacity, whose consequences need weeks of production to show.
+- Rolling delivery: credits and the assessment are still settled at season delivery, not per episode. An episode's
+  award entry before the season is delivered uses the episode's airing, but credits come from the season.
+- Journey C checks the song snapshots across a reload, not after an edit, because a delivered film's songs can't be
+  edited. `tests/songs.test.ts` "an entry keeps the song as it was entered" covers both: the edits are refused, and a
+  record changed directly doesn't reach the snapshot. It was mutation-checked: storing the song itself fails it.
+
+### Earlier Request (November 10, 2026, after #58): gameplay connectivity, release schedules, WebKit title, startup, journeys
 
 The owner asked for six things in order. What was done:
 

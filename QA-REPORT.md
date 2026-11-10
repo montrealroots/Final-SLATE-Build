@@ -8,7 +8,41 @@
 
 ## Commands And Results
 
-### Current: Gameplay Connectivity, Episode Release Schedules, Startup Headroom, Journeys A To E (November 10, 2026, after #58)
+### Current: The Original Song Loop, Episode Release Edges, Rolling Episode Delivery, Decisions In The Browser (November 10, 2026, after #59)
+
+Commits `68844cd` (release edges), `1a6fee5` (journey C), `4beae57` (rolling delivery), `e202b2c` (decisions, territory
+codes) and the commit that updates this report. CI on the pull request is the full-suite run for the final revision;
+its result is recorded in the pull request, not here, because it runs after this commit.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npx vitest run` at `e202b2c` | 0 | 80 files, 620 tests. New: `tests/episode-release-edges.test.ts` (9), `tests/episode-delivery.test.ts` (3). Each defect's test failed on the old code first. |
+| `npx vitest run` with the song snapshot test | 0 | 80 files, 621 tests. The new test failed when the snapshot was made to hold the song itself (a mutation check), then passed with the copy restored. |
+| `npm run check` at `e202b2c` | 0 | World check, typecheck, vitest, build, budget. Startup 671 kB, 214 kB gzipped (budgets 700 and 220; 667 and 213 after #59). |
+| `node scripts/perf-first-use.mjs` on this branch, the medium save, median of 5 | 0 | Start 293 ms; Continue 390 ms, 829 kB of JavaScript (257 gzipped); New Game 1,113 ms, 894 kB (280). After #59: Continue 396 ms, 826 kB; New Game 1,038 ms, 890 kB. The time difference is within this machine's run-to-run spread. |
+| `SONG_SEED=n npx playwright test e2e/journey-c.spec.ts --project=desktop`, seeds 5 to 8 | Seeds 5 to 7 stopped; seed 8: 0 | Seeds 5 to 7 brought no theatrical offer, so there was no qualifying release and the journey couldn't go on. Seed 8 passes: a US theatrical offer accepted, released, entered, nominated, judged and reloaded. Seed 8 is the default. The search only chose the world seed; the release, entries and results are the game's own. |
+| `npx playwright test e2e/rolling-delivery.spec.ts`, desktop and phone (dev) | 0 | Passed (1.4 and 1.8 minutes). On phone, no sideways scroll and each episode row fits. A resized desktop page was tried first; its screenshot showed the desktop navigation over the card, so it was dropped for the real phone profile. |
+| `npx playwright test e2e/decisions.spec.ts`, desktop, phone and `iphone-15-pro-max` (dev) | 1, 1, then 0 | Failures, test-side: the saved state lags the screen until Save And Exit, and the shoot starts after about nine working days of preparation, so the dates were wrong. Then 9 passed. |
+| `npx playwright test e2e/journeys.spec.ts -g "TV limited series" --project=desktop` | 1, then 0 | The credits were read from the save before it was written; now read from the screen. Then passed. |
+| `npx playwright test e2e/journey-e.spec.ts e2e/release-schedule.spec.ts e2e/season.spec.ts`, desktop and phone (dev) | 0 | Passed. Journey E's step that expected story order to be refused now checks for the advice, and for an episode dated before the release day being refused. |
+| `SLATE_E2E_PROD=1 npx playwright test decisions rolling-delivery journey-e release-schedule journey-c`, desktop, phone, `iphone-15-pro-max` | 0 | 16 passed, 2 skipped (journey C and journey B run at desktop only), 5.4 minutes. |
+| CI run 153 on `main` at `a062923` (#59) | 0 | Success: checks, balance, browser journeys on the dev server and on the production build. No WebKit failure, so no new evidence on the title loss. |
+
+**Defects found and fixed in this pass**, each with a test that failed on the old code:
+
+- `airings()` took the first record for a day: its countries alone, and its status. A planned release listed before a
+  released one made an aired episode read as still to come, and the entry provisional. It now takes every release's
+  countries and the earliest live day, in any order.
+- Two identical streaming releases gave two calendar entries the same key. Entries now carry ids.
+- A release or episode dated today could be planned after 9 in the morning had passed, and its event fell in the past.
+  It is now refused with a reason; before 9 it is accepted.
+- A release could name a territory that is no country (blank, "G", "XX"). It is now refused, naming the code.
+- Story order was enforced where broadcasters don't enforce it. It is advice now. Journey E's old refusal step changed
+  with it.
+- A series couldn't release a finished episode until every episode was finished. See `docs/RELEASE-SCHEDULES.md` and
+  `src/engine/episode-delivery.ts`.
+
+### Previous: Gameplay Connectivity, Episode Release Schedules, Startup Headroom, Journeys A To E (November 10, 2026, after #58)
 
 | Command | Exit | Result |
 | --- | --- | --- |

@@ -284,11 +284,33 @@ test('TV limited series: episodes, a guest role and episode-level credits', asyn
   await saveAndApprove(page);
   await section(page, 'Crew');
   await expect(page.getByRole('heading', { name: 'Episode Writers And Directors' })).toBeVisible();
+  // Episode assignments (November 10, 2026): an episode writer is hired and given episode 2; you keep episode 1. The
+  // first free writer who takes the offer at their asking rate is the one assigned.
+  let writer = '';
+  for (let i = 0; i < 4 && !writer; i++) {
+    await page.getByRole('button', { name: 'Hire An Episode Writer' }).click();
+    const d = page.getByRole('dialog');
+    const who = d.getByRole('listitem').nth(i);
+    const name = (await who.locator('strong').first().textContent())!;
+    await who.getByRole('button', { name: 'Make Offer' }).click();
+    const row = page.getByRole('row', { name: new RegExp(name) });
+    for (let k = 0; k < 4 && await row.getByText('Offer Sent').count(); k++) { await advance(page, 'next-day'); await section(page, 'Crew'); }
+    if (await row.getByText('Accepted').count()) writer = name;
+  }
+  expect(writer).not.toBe('');
+  await expect(page.getByLabel('Writer For Episode 2').locator('option')).toHaveText(['You', writer]);
+  await page.getByLabel('Writer For Episode 2').selectOption({ label: writer });
   // Block scheduling is a choice made before the schedule is built (SLATE-07-04.02).
   await section(page, 'Schedule');
   await page.getByRole('checkbox', { name: 'Shoot Episodes In Blocks' }).check();
   await produceToDelivery(page, { yourself: ['Dr. Ines Park'] });
   const credits = await creditsTable(page);
+  // The writer is credited for episode 2. Episode 2's scenes were approved before the change, so you, who wrote them,
+  // keep that credit as well (projects.ts assignEpisodeRole, former writers).
+  // Phones label each cell (Credit, Name, Details), so the row is matched either way.
+  const cell = (label: string, text: string) => `(${label} )?${text.replace(/[.()]/g, '\\$&')}`;
+  await expect(page.getByRole('row', { name: new RegExp(`^${cell('Credit', 'Written By')} ${cell('Name', writer)} ${cell('Details', 'Episodes 2')}$`) })).toBeVisible();
+  await expect(page.getByRole('row', { name: new RegExp(`^${cell('Credit', 'Written By')} ${cell('Name', 'Nia Halvorsen-Mbeki')} ${cell('Details', 'Episodes 1, 2')}$`) })).toBeVisible();
   expect(credits).toContain('Executive Producer And Showrunner');
   expect(credits).toMatch(/as Marcus, Episodes 1\b/);
   expect(credits).toMatch(/as Dr\. Ines Park, Episodes 1, 2/);

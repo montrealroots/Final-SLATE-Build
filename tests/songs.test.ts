@@ -262,6 +262,24 @@ describe('the organizers\' own song rules', () => {
     expect(() => submitEntry(s, p, csa.id, 'song', undefined, undefined, undefined, fourth)).toThrow('Canadian Screen Awards takes at most 2 songs from one work in this category.');
   });
 
+  it('an entry keeps the song as it was entered: later edits are refused, and a changed record doesn\'t reach the snapshot', () => {
+    // Added November 10, 2026 (after #59), for the owner's "later edits do not silently alter submission snapshots".
+    const { s, p, ids, ed } = deliveredSongs('sr-snapshot');
+    const osc = ed('oscars-2027');
+    s.now = osc.submissionOpens + 1;
+    const entry = submitEntry(s, p, osc.id, 'song', undefined, undefined, undefined, ids.salt);
+    const asEntered = JSON.parse(JSON.stringify(entry.snapshot));
+    expect(asEntered.song.title).toBe('Salt Water');
+    // The game's own edits are refused once the film is delivered.
+    expect(() => setSongWriters(p, ids.lights, [{ name: 'Someone Else', music: true, lyrics: true }])).toThrow('This project is delivered; its songs are final.');
+    expect(() => changeVersionSong(p, 'v-none', ids.ferry, ids.salt, null)).toThrow('This project is delivered; its songs are final.');
+    // Labelled: the record changed directly, standing for any path that might reach it later; the snapshot is a copy.
+    const salt = p.songs!.find((x) => x.id === ids.salt)!;
+    salt.title = 'Salt Water (Remix)';
+    salt.writers = salt.writers.slice(0, 1);
+    expect(entry.snapshot).toEqual(asEntered);
+  });
+
   it('the Oscars nominate at most two songs from one film; each song keeps its own result', () => {
     const { s, p, ids, ed } = deliveredSongs('sr-nominate');
     const third = createSongDelivered(s, p, 'Harbour Wind', ids.ferry);

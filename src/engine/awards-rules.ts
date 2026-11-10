@@ -363,8 +363,8 @@ export function pickDeadline(list: DeadlineRule[], p: Project | undefined, compl
  * When each episode first came out, or is to (episode-releases.ts `airings`). Until November 10, 2026 this was assumed
  * from the first release: weekly on television, every episode at once online. Each release now keeps its own dates.
  */
-export function episodeAirDates(p: Project): { date: string; countries: string[]; planned: boolean }[] {
-  return airings(p).map(({ date, countries, planned }) => ({ date, countries, planned }));
+export function episodeAirDates(p: Project): { date: string; countries: string[]; planned: boolean; held?: true }[] {
+  return airings(p).map(({ date, countries, planned, held }) => ({ date, countries, planned, ...(held ? { held } : {}) }));
 }
 
 /** The EFA's European elements (Fiction Films 4.1), out of 21: who made it and where, from its credits and its base. */
@@ -437,7 +437,8 @@ export function readRuleProblems(state: GameState, p: Project, ed: Edition, catI
     const tvReleases = p.releases.filter((r) => r.status !== 'cancelled' && (r.route === 'broadcast' || r.route === 'streaming' || r.route === 'digital'));
     if (!first) out.push(`It needs to air on television or online between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}.`);
     else {
-      const inside = dates.filter((d) => d.date >= win.from && d.date <= win.to).length;
+      // An episode held back for want of delivery has no airing date until it is given a new one.
+      const inside = dates.filter((d) => !d.held && d.date >= win.from && d.date <= win.to).length;
       const n = dates.length;
       if (inside * 2 < n) out.push(n === 1 ? `It first aired on ${formatDateKey(first.date)}; this competition takes work first aired between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}.` : `${inside} of its ${n} episodes air between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}; a season counts in the year most of its episodes aired.`);
       else if (inside * 2 === n) {
@@ -448,7 +449,7 @@ export function readRuleProblems(state: GameState, p: Project, ed: Edition, catI
       // provisional, and checked again before judging (awards-results.ts disqualifyCancelled). Until November 10, 2026
       // only a planned first airing made it provisional, so a season whose later episodes were still to come counted
       // them as aired.
-      const aired = dates.filter((d) => !d.planned && d.date >= win.from && d.date <= win.to).length;
+      const aired = dates.filter((d) => !d.planned && !d.held && d.date >= win.from && d.date <= win.to).length;
       if (!out.length && aired * 2 < n) provisional = n === 1 ? `Entered provisionally: its first airing, on ${formatDateKey(first.date)}, is still planned.` : `Entered provisionally: ${inside - aired} of the ${inside} episodes it counts between ${formatDateKey(win.from)} and ${formatDateKey(win.to)} are still to come out.`;
       const not = air.notFirstIn ?? [];
       const firstIn = tvReleases.filter((r) => r.territories.some((t) => not.includes(t))).sort(byDate)[0];

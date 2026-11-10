@@ -9,9 +9,11 @@ import {
   qualityWords, CUT_REVIEW_DAYS, depsMet, addDaysToKey, categoryRecipients, type Category,
   categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rulebook, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
   approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, cutScenes, entryNeeds, castPlacement, sceneLabel, addPlan,
-  EPISODE_ROUTES, PATTERN_LABELS, presetDates, setEpisodeDates } from '../engine';
+  EPISODE_ROUTES, PATTERN_LABELS, orderNotes, presetDates, setEpisodeDates } from '../engine';
 // What a schedule change affects: only the Release tab asks (November 10, 2026).
 import { scheduleChangeEffects } from '../engine/release-schedule';
+// A series delivered an episode at a time: only the Edit and Release tabs ask (November 10, 2026, after #59).
+import { deliverEpisode, episodeDeliveryBlockers, episodeLockBlockers, episodeLocked, lockEpisode, startEpisodeCutPass } from '../engine/episode-delivery';
 import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupIntegration, cutPassDays, startCutPass, unlockPicture, restoreToEdit } from '../engine/edit-actions';
 import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
 import { publicResult } from '../engine/awards-results';
@@ -398,6 +400,7 @@ export function EditTab({ p }: { p: Project }) {
           </Modal>
         );
       })()}
+      {isEpisodic(p.axes.format) && !p.delivered && p.approvedDraft !== null && <EpisodeDelivery p={p} onError={setErr} />}
       <section className="card">
         <h2>Delivery</h2>
         {p.delivered ? <p>Delivered at {p.delivered.runtimeMin} minutes. Spent {money(ledgerTotals(p).settled)}.</p> : (
@@ -409,6 +412,43 @@ export function EditTab({ p }: { p: Project }) {
         )}
       </section>
     </>
+  );
+}
+
+/**
+ * A series cut, locked and delivered an episode at a time (episode-delivery.ts): what each episode has done, what is
+ * holding it back, and the next step for it. The season is still delivered whole below.
+ */
+function EpisodeDelivery({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
+  const zone = getPlace(p.axes.basePlaceId).zone;
+  return (
+    <section className="card" aria-labelledby="by-episode-h">
+      <h2 id="by-episode-h">Delivering Episode By Episode</h2>
+      <p className="dim">A finished episode can be delivered and come out while later ones are still being made. It needs its own assembly, a cut pass, a locked picture, then its sound, music, color and any songs it uses. Work the whole season shares holds back only the episodes that use it.</p>
+      <ul className="list">
+        {p.episodes.map((e) => {
+          const n = e.number;
+          const done = p.episodeDeliveries?.[n];
+          const locked = episodeLocked(p, n);
+          const lockWhy = episodeLockBlockers(p, n);
+          const why = episodeDeliveryBlockers(p, n);
+          const assembled = p.tasks.find((t) => t.id === `post:assembly:${n}`)?.status === 'done';
+          const cutting = p.tasks.some((t) => t.kind.startsWith('post:cutpass') && t.status !== 'done' && (t.kind === 'post:cutpass' || t.episode === n));
+          return (
+            <li key={n} aria-label={`Episode ${n}`}>
+              <div className="row-wrap">
+                <span className="grow"><strong>{e.title === `Episode ${n}` ? e.title : `Episode ${n}. ${e.title}`}</strong> <span className="chip">{done ? 'Delivered' : !why.length ? 'Ready To Deliver' : locked ? 'Picture Locked' : 'In Production'}</span></span>
+                {!done && !locked && assembled && <button className="btn btn-sm" disabled={cutting} onClick={() => onError(store.act((s) => void startEpisodeCutPass(s, s.projects.find((x) => x.id === p.id)!, n)))}>Cut Pass On Episode {n}</button>}
+                {!done && !locked && <button className="btn btn-sm" disabled={lockWhy.length > 0} onClick={() => onError(store.act((s) => lockEpisode(s, s.projects.find((x) => x.id === p.id)!, n)))}>Lock Episode {n}</button>}
+                {!done && <button className="btn btn-sm btn-primary" disabled={why.length > 0} onClick={() => onError(store.act((s) => deliverEpisode(s, s.projects.find((x) => x.id === p.id)!, n)))}>Deliver Episode {n}</button>}
+              </div>
+              {done ? <p className="dim">Delivered {longLocal(done.at, zone).date}, at {done.runtimeMin} minutes. Its script and picture are final.</p>
+                : <p className="dim">{locked ? 'Held back by: ' : 'Before it can be locked: '}{(locked ? why : lockWhy).join(' ') || 'nothing.'}</p>}
+            </li>
+          );
+        })}
+      </ul>
+    </section>
   );
 }
 
@@ -429,7 +469,8 @@ export function ReleaseTab({ p }: { p: Project }) {
   const [own, setOwn] = useState<string[] | null>(null);
   const [editing, setEditing] = useState<{ id: string; dates: string[] } | null>(null);
   const [effects, setEffects] = useState<string[] | null>(null);
-  if (!p.delivered) return <div className="card"><h2>Not Delivered Yet</h2><p>Credits and release plans become available once the project is delivered.</p></div>;
+  const someEpisodes = Object.keys(p.episodeDeliveries ?? {}).length > 0;
+  if (!p.delivered && !someEpisodes) return <div className="card"><h2>Not Delivered Yet</h2><p>{isEpisodic(p.axes.format) ? 'Release plans become available once an episode is delivered (on the Edit tab), and credits once the whole season is.' : 'Credits and release plans become available once the project is delivered.'}</p></div>;
   const episodic = isEpisodic(p.axes.format);
   const scheduled = episodic && EPISODE_ROUTES.includes(route);
   const count = Math.max(1, p.axes.episodeCount);
@@ -439,7 +480,7 @@ export function ReleaseTab({ p }: { p: Project }) {
   return (
     <>
       {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
-      <section className="card">
+      {p.delivered ? <section className="card">
         <h2>Credits</h2>
         <div className="table-wrap">
           <table className="data">
@@ -455,7 +496,7 @@ export function ReleaseTab({ p }: { p: Project }) {
             </tbody>
           </table>
         </div>
-      </section>
+      </section> : <p className="callout">Episodes {Object.keys(p.episodeDeliveries ?? {}).join(', ')} {Object.keys(p.episodeDeliveries ?? {}).length === 1 ? 'is' : 'are'} delivered. Credits are settled when the whole season is delivered, on the Edit tab.</p>}
       <section className="card">
         <h2>Distribution Offers</h2>
         <p className="muted">Declared content: {contentSummary(p)}. This is your declaration, not a rating: before release a classification body rates the film where the territory requires one.</p>
@@ -467,7 +508,7 @@ export function ReleaseTab({ p }: { p: Project }) {
               return (
                 <li key={o.id}>
                   <div className="row-wrap">
-                    <span className="grow"><strong>{o.distributor}</strong>{o.exclusive ? <> <span className="chip">Exclusive</span></> : null}: {ROUTE_LABELS[o.route]} release in {o.territories.length > 6 ? `${o.territories.length} territories (${o.territories.slice(0, 3).map(countryName).join(', ')} and others)` : o.territories.map(countryName).join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}{o.slot === 'late' ? ' in a late-evening slot' : ''}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(offerMaterials(p, o))}{subs ? `, including ${money(subs)} of subtitles for languages the dialogue isn't in` : ''}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
+                    <span className="grow"><strong>{o.distributor}</strong>{o.exclusive ? <> <span className="chip">Exclusive</span></> : null}: {o.route === 'digital' ? 'Digital' : ROUTE_LABELS[o.route]} release in {o.territories.length > 6 ? `${o.territories.length} territories (${o.territories.slice(0, 3).map(countryName).join(', ')} and others)` : o.territories.map(countryName).join(', ')} for a minimum guarantee of {money(o.minimumGuarantee)}{o.slot === 'late' ? ' in a late-evening slot' : ''}, releasing about {o.releaseWindowDays} days after you accept. The contract requires delivery materials, about {money(offerMaterials(p, o))}{subs ? `, including ${money(subs)} of subtitles for languages the dialogue isn't in` : ''}, held from your budget until release.<span className="dim"> Distributors in this game are fictional.</span></span>
                     <div className="row gap-2 wrap">
                       <button className="btn btn-sm btn-primary" disabled={!!needs} onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id)))}>{o.slot === 'late' ? 'Accept The Late Slot' : 'Accept Offer'}</button>
                       {o.slot === 'late' && <button className="btn btn-sm" disabled={!!needs} onClick={() => setErr(store.act((s) => void acceptDistribution(s, p, o.id, { broadcastEdit: true })))}>Accept With A Broadcast Edit</button>}
@@ -520,6 +561,8 @@ export function ReleaseTab({ p }: { p: Project }) {
             <div className="grid grid-3 form">
               {planned.slice(1).map((d, i) => <TextField key={i} label={`Episode ${i + 2}`} type="date" value={d} onChange={(v) => { const next = [...planned]; next[i + 1] = v; setOwn(next); }} />)}
             </div>
+            {orderNotes(planned).map((n) => <p key={n} className="dim">{n}</p>)}
+            {!p.delivered && <p className="dim">Episodes not delivered by their day are held back, and you choose a new day for them. Delivered so far: {Object.keys(p.episodeDeliveries ?? {}).map((k) => `episode ${k}`).join(', ')}.</p>}
           </fieldset>
         )}
         <p className="dim">Theatrical and broadcast releases need a distributor or broadcaster. Release choices affect premiere status for festivals.</p>
@@ -535,7 +578,8 @@ export function ReleaseTab({ p }: { p: Project }) {
               <details className="small">
                 <summary>Episode Dates: {r.pattern === 'assumed' ? 'Assumed From An Older Save' : r.pattern ? PATTERN_LABELS[r.pattern] : 'Dates Of My Own'}</summary>
                 {r.pattern === 'assumed' && <p className="dim">This save was made before episode dates were kept. These are the dates the game assumed then ({r.route === 'broadcast' ? 'weekly on television' : 'all at once online'}), not dates recorded at the time.</p>}
-                <ul>{r.episodes.map((e) => <li key={e.id} className="dim">Episode {e.number}: {formatDateKey(e.date)}, {r.status === 'cancelled' ? 'cancelled' : e.status === 'released' ? 'out' : 'to come'}{e.assumed ? ' (assumed date)' : ''}</li>)}</ul>
+                <ul>{r.episodes.map((e) => <li key={e.id} className="dim">Episode {e.number}: {formatDateKey(e.date)}, {r.status === 'cancelled' ? 'cancelled' : e.status === 'released' ? 'out' : e.held ? 'held back: it wasn\'t delivered in time. Choose a new day for it' : 'to come'}{e.assumed ? ' (assumed date)' : ''}</li>)}</ul>
+                {orderNotes(r.episodes.map((e) => e.date)).map((n) => <p key={n} className="dim">{n.replace(' would come out ', ' comes out ')}</p>)}
                 {r.status !== 'cancelled' && r.episodes.some((e) => e.status === 'planned') && editing?.id !== r.id && <button className="btn btn-sm" onClick={() => { setEditing({ id: r.id, dates: r.episodes!.map((e) => e.date) }); setEffects(null); }}>Change Episode Dates</button>}
                 {editing?.id === r.id && (
                   <div className="form">
@@ -855,7 +899,7 @@ function EntryAsEntered({ x, p }: { x: EditionEntry; p: Project }) {
       {gone.length > 0 && <p className="dim">No longer in the credits: {gone.map((r) => r.name).join(', ')}. The entry stands as entered.</p>}
       {n.song && !p.songs?.some((s) => s.id === n.song!.id) && <p className="dim">"{n.song.title}" has since been removed from the project. The entry stands as entered.</p>}
       {n.screen?.length ? <ul>{n.screen.map((t) => <li key={t.creditId} className="dim">{t.text}</li>)}</ul> : null}
-      {n.airing?.length ? <p className="dim">Episode dates when entered: {n.airing.map((a) => `${a.number}, ${formatDateKey(a.date)} (${a.status === 'released' ? 'out' : 'to come'}${a.assumed ? ', assumed' : ''})`).join('; ')}.</p> : null}
+      {n.airing?.length ? <p className="dim">Episode dates when entered: {n.airing.map((a) => `${a.number}, ${formatDateKey(a.date)} (${a.status === 'released' ? 'out' : a.held ? 'held back, not delivered' : 'to come'}${a.assumed ? ', assumed' : ''})`).join('; ')}.</p> : null}
     </details>
   );
 }

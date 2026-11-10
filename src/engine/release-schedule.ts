@@ -2,7 +2,7 @@
 // what happens to the calendar and to a distributor's exclusive window, and each award entry whose qualification would
 // change. Kept apart from episode-releases.ts so the release engine doesn't import the award engine.
 import { checkEligibility, institution } from './awards';
-import { episodeDateProblem, setEpisodeDates } from './episode-releases';
+import { episodeDateProblem, orderNotes, setEpisodeDates } from './episode-releases';
 import { formatDateKey } from './time';
 import type { GameState, Project } from './types';
 
@@ -37,6 +37,9 @@ export function scheduleChangeEffects(state: GameState, p: Project, releaseId: s
   const out = r.episodes!.filter((e) => e.status === 'released');
   if (out.length) lines.push(`${out.length === 1 ? 'Episode 1 has' : `${out.length} episodes have`} already come out; ${out.length === 1 ? 'it stays' : 'they stay'} as ${out.length === 1 ? 'it was' : 'they were'}.`);
   lines.push('Your calendar shows the new days, and each episode comes out on its own day.');
+  lines.push(...orderNotes(dates));
+  const notReady = moved.filter((e) => !p.delivered && !p.episodeDeliveries?.[e.number]);
+  if (notReady.length) lines.push(`${notReady.map((e) => `Episode ${e.number}`).join(', ')} ${notReady.length === 1 ? "isn't" : "aren't"} delivered yet: if still not delivered by ${notReady.length === 1 ? 'its' : 'their'} new day, ${notReady.length === 1 ? 'it is' : 'they are'} held back again.`);
   if (r.status === 'planned' && dates[0] !== r.date) {
     const o = r.offerId ? p.offers.find((x) => x.id === r.offerId) : undefined;
     lines.push(`The release starts on ${formatDateKey(dates[0])} instead of ${formatDateKey(r.date)}${o?.exclusiveUntil ? `, and ${o.distributor}'s exclusive window moves with it` : ''}.`);

@@ -32,7 +32,15 @@ The presets only produce dates to start from. The player edits each one before p
 and can change any date still to come later (`episode-releases.ts` `setEpisodeDates`).
 
 Each release keeps its own schedule. A season can come out weekly on British television and all at once on an American
-streaming service. The rules read the earliest date for each episode (`airings`).
+streaming service. The rules read each episode across every release (`airings`):
+
+- its earliest day not held back;
+- every country it comes out in on any release;
+- out once any release has put it out.
+
+Until November 10, 2026 (after #59) the first record for a day won: its countries alone, and its status. A planned
+record listed before a released one made an aired episode read as still to come. The result now doesn't depend on the
+order of the records (`tests/episode-release-edges.test.ts`).
 
 ## What It Is Connected To
 
@@ -41,13 +49,30 @@ streaming service. The rules read the earliest date for each episode (`airings`)
 | Events | `syncReleaseEvents`: the release's first day, then one event for each later day an episode comes out. Every change rebuilds them from the dates, so a moved date replaces its event and none is doubled. Cancelling a release removes them all. | `tests/episode-releases.test.ts` "one event per day, replaced when dates move, never doubled"; "cancelling removes every event" |
 | Episodes coming out | The release handler (`finish.ts`) marks the first day's episodes out. `episode-release` events mark the rest, each with a log line and a history entry. | Same test; journey B |
 | Distribution | Moving a premiere that is still to come moves the release's date, and an exclusive window counts from the new day. A distributor's earnings still start when the release comes out (`onDealReleased`). | "a premiere still to come moves the release day and an exclusive window with it" |
-| Delivery | A release is planned only after delivery, as before. A delay is a change to dates still to come. | `planRelease` |
-| Calendar | Each day episodes come out is on the calendar under My Schedule, marked Out once it has happened and Assumed Date where it was rebuilt. | "the calendar shows each day episodes come out, and which have" |
+| Delivery | A season delivered whole, or any episode delivered on its own (`episode-delivery.ts`), can be released. An episode whose day comes before it is delivered is held back (see below). | `tests/episode-delivery.test.ts`; `e2e/rolling-delivery.spec.ts` |
+| Calendar | Each day episodes come out is on the calendar under My Schedule. It is marked Out once it has happened, Assumed Date where it was rebuilt, and Held Back: Not Delivered where it was held. Each entry has a stable id, `<release id>@<date>`; until November 10, 2026 two identical releases gave two entries the same key. | "the calendar shows each day episodes come out, and which have"; edges: "calendar ids" |
 | Award windows | The International Emmys' majority and hanging-episode rule reads the stored dates. An entry for one episode (the Emmys' directing and writing) qualifies by that episode's own date. Until November 10, 2026 it used the release's first day. | "a split season across the year end"; "an episode entered on its own qualifies by its own date" |
 | Planned is not proof | An entry that counts episodes still to come is provisional, and names how many are still to come. Until November 10, 2026 only a planned first airing made it provisional. Entries are checked again when reviewed and before judging. The re-check now includes the entry's episode and song; until then an episode's entry was checked as the season. | "a delay before entries are reviewed gets the entry turned down"; "is disqualified before judging when they move out of the window" |
 | Snapshots | An entry keeps each episode's date and status as it stood (`EntrySnapshot.airing`), shown under As Entered. | "a split season across the year end" |
 | Before you confirm | `release-schedule.ts` `scheduleChangeEffects` tries the change on a copy of the game. It lists each episode that moves, what has already come out, whether the release day and an exclusive window move, and every unjudged entry whose qualification would change. | "a split season across the year end"; journey B |
 | Save and reload | Save version 9 (`migrateV8toV9`). | "a version 8 save gets the dates the rules assumed" |
+
+## Changed After #59 (November 10, 2026)
+
+- **The release hour.** Releases go out at 9 in the morning. A release or an episode dated today is refused once that
+  hour has passed: "Releases go out at 9 in the morning, and that has passed today. Choose tomorrow or later." Before
+  9 it is accepted. No event is ever scheduled in the past, and the clock never moves back.
+- **Story order is advice.** An episode dated before the one before it used to be refused. Broadcasters do air
+  episodes out of order, so the plan and the preview now say "Episode N would come out before episode N-1: viewers
+  meet them out of story order…". The production's episode numbers stay as they are. The release date must still be
+  the earliest episode's day.
+- **Held back.** On an episode's day, an episode not yet delivered doesn't come out. It is marked held
+  (`EpisodeRelease.held`), and the log gives a warning naming the Release tab. It has no event, and no award airing
+  rule counts it. A held episode keeps its old date until the player chooses a new one; that date can't be confirmed
+  again unchanged, because the change tool says it wasn't delivered in time. Distribution terms are unchanged, so no
+  penalty was invented.
+- **Territories are countries.** A release names its countries by two-letter code. Until November 10, 2026 any code
+  was taken, a blank one too.
 
 ## Older Saves
 
@@ -63,6 +88,16 @@ A release written without episode dates by a test fixture is read by the same as
 
 ## Evidence
 
+- `tests/episode-release-edges.test.ts`: 9 tests. They cover the same day in two releases in either order, different
+  first days by country, today before and after the release hour, calendar ids, repeated edits with a reload, advancing
+  and cancellation, and an entry made before anything airs (provisional, established, reviewed and judged). They also
+  cover a version 8 save keeping its entries and results, and refused territory codes. Each defect's test failed on
+  the old code.
+- `tests/episode-delivery.test.ts`: 3 tests. Episode 1 is delivered while episode 2 is being shot; episode 2 is held
+  back, rescheduled and released; then the season is delivered.
+- `e2e/rolling-delivery.spec.ts`, desktop and phone, made in the browser with nothing written into the save.
+- `e2e/decisions.spec.ts` "release settings", desktop, phone and iPhone 15 Pro Max (WebKit).
+
 - `tests/episode-releases.test.ts`: 11 tests.
 - `e2e/release-schedule.spec.ts` (journey B), desktop. It plays a series made, staffed and shot in the browser:
   - a hired director on episode 2;
@@ -74,6 +109,6 @@ A release written without episode dates by a test fixture is read by the same as
 
 ## Not Modeled
 
-- Episodes are numbered in the order they air. An episode can't air before the one before it.
+- Out-of-order airing is advised against, never refused, and nothing measures what it does to an audience.
 - One territory's release can't hold back another's, and nothing stops a later release from airing an episode first.
 - The International Emmys' advance approval for a US-first airing is still refused, as before.

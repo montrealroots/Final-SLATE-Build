@@ -11,6 +11,7 @@ import { approvedTake, captureCredit } from './mocap';
 import { BROADCAST_EDIT_COST, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
 import { financeCredits, onProjectDelivered, receiveIncome } from './finance';
 import { getPlace } from '../data/places';
+import { countryName } from '../world/gazetteer/gazetteer';
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { countryLanguage, personById, roleLabel } from './people';
 import {
@@ -21,7 +22,7 @@ import { gaussian, pick, stream } from './rng';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
 import { redactionComplete } from './unscripted';
 import { songCredits, songUses } from './songs';
-import { assumedDates, episodeDateProblem, episodesFor, hasEpisodes, onReleaseDay, presetDates, syncReleaseEvents } from './episode-releases';
+import { assumedDates, episodeDateProblem, episodesFor, hasEpisodes, holdUndelivered, onReleaseDay, presetDates, releaseHourPassed, syncReleaseEvents } from './episode-releases';
 import { DAY, addDaysToKey, dateKey, formatDateKey, isDateKey, localToInstant, parseYmd } from './time';
 import type { Credit, DistributionOffer, GameState, Project, ReleasePattern, ReleaseRecord, Scene } from './types';
 
@@ -52,6 +53,7 @@ export function cutFromEdit(state: GameState, p: Project, sceneId: string): void
   if (p.delivered) throw new Error('This project is delivered.');
   const s = approvedScenes(p).find((x) => x.id === sceneId);
   if (!s) throw new Error('That scene isn\'t in the approved script.');
+  if (p.edit.lockedEpisodes?.includes(s.episode)) throw new Error(`Episode ${s.episode}'s picture is locked.`);
   p.edit.cutSceneIds = [...cutScenes(p), sceneId];
   p.edit.pickupsNeeded = p.edit.pickupsNeeded.filter((x) => x !== sceneId);
   for (const d of p.schedule.days.filter((x) => x.status === 'scheduled' && x.sceneIds.includes(sceneId))) {
@@ -67,7 +69,9 @@ export function cutFromEdit(state: GameState, p: Project, sceneId: string): void
 
 export function deliveryBlockers(p: Project): string[] {
   const out: string[] = [];
-  if (!p.edit.pictureLocked) out.push('Lock picture first.');
+  // A series locked episode by episode needs no second, whole lock (episode-delivery.ts).
+  const allLocked = isEpisodic(p.axes.format) && Array.from({ length: p.axes.episodeCount }, (_, i) => i + 1).every((n) => p.edit.lockedEpisodes?.includes(n));
+  if (!p.edit.pictureLocked && !allLocked) out.push('Lock picture first.');
   const open = p.tasks.filter((t) => t.status !== 'done');
   if (open.length) out.push(`${open.length} production ${open.length === 1 ? 'task is' : 'tasks are'} unfinished, including ${open[0].label}.`);
   const contributorsUsed = new Set(approvedScenes(p).flatMap((s) => s.contributorIds));
@@ -331,13 +335,20 @@ export const ROUTE_LABELS: Record<ReleaseRecord['route'], string> = {
  * Without either it comes out as it did before November 10, 2026: weekly on television, all at once online.
  */
 export function planRelease(state: GameState, p: Project, input: { route: ReleaseRecord['route']; date: string; territories: string[]; distributor?: string | null; pattern?: Exclude<ReleasePattern, 'assumed'>; onPremiere?: number; episodeDates?: string[] }): ReleaseRecord {
-  if (!p.delivered) throw new Error('Deliver the project before planning a release.');
+  // A series can come out as it is delivered, an episode at a time (episode-delivery.ts), on television or online.
+  if (!p.delivered && !(hasEpisodes(p, input.route) && Object.keys(p.episodeDeliveries ?? {}).length)) {
+    throw new Error(isEpisodic(p.axes.format) ? 'Deliver the season, or at least one episode, before planning a release.' : 'Deliver the project before planning a release.');
+  }
   if (input.route === 'festival-premiere') throw new Error('Festival premieres come from festival selection.');
   if (!input.territories.length) throw new Error('Choose at least one territory.');
+  // Until November 10, 2026 any code was taken, a blank one too, and award territory rules read it as a country.
+  const unknown = input.territories.find((t) => countryName(t) === t);
+  if (unknown !== undefined) throw new Error(`Choose a country by its two-letter code, such as GB or US.${unknown ? ` ${unknown} isn't one.` : ''}`);
   const zone = getPlace(p.axes.basePlaceId).zone;
   const today = dateKey(state.now, zone);
   if (!isDateKey(input.date)) throw new Error('Choose a real release date.');
   if (input.date < today) throw new Error('Choose a release date from today onward.');
+  if (releaseHourPassed(state, p, input.date)) throw new Error('Releases go out at 9 in the morning, and that has passed today. Choose tomorrow or later.');
   if ((input.route === 'theatrical' || input.route === 'broadcast') && !input.distributor) {
     throw new Error(input.route === 'theatrical' ? 'A theatrical release needs a distributor. Accept a distribution offer first.' : 'A broadcast needs a broadcaster. Accept an offer first.');
   }
@@ -347,7 +358,7 @@ export function planRelease(state: GameState, p: Project, input: { route: Releas
     const n = Math.max(1, p.axes.episodeCount);
     const pattern = input.episodeDates ? 'custom' : input.pattern ?? (input.route === 'broadcast' ? 'weekly' : 'all');
     const dates = input.episodeDates ?? (pattern === 'custom' ? assumedDates(rec, n) : presetDates(pattern, input.date, n, input.onPremiere));
-    if (dates[0] !== input.date) throw new Error('The first episode comes out on the release date.');
+    if ([...dates].sort()[0] !== input.date) throw new Error('The release date is the day its earliest episode comes out.');
     rec.episodes = episodesFor(rec.id, dates);
     rec.pattern = pattern;
   }
@@ -367,8 +378,11 @@ registerHandler('release', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
   const r = p?.releases.find((x) => x.id === ev.payload.releaseId);
   if (!p || !r || r.status !== 'planned') return { suppressInterrupt: true };
+  // A series' first day: only episodes that are delivered come out. If none is, the release waits for a new date.
+  const held = holdUndelivered(state, p, r, r.date);
+  if (r.episodes?.length && r.episodes.every((e) => e.status !== 'released' && (e.held || e.date > r.date))) return held ? { message: held } : { suppressInterrupt: true };
   r.status = 'released';
-  p.phase = 'released';
+  p.phase = p.delivered ? 'released' : p.phase;
   onReleaseDay(r);
   // The contract's delivery materials are paid now, once.
   if (r.obligationId) {

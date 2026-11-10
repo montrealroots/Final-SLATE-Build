@@ -850,6 +850,10 @@ export function approveDraft(state: GameState, p: Project, number: number): { re
   if (blocking.length) throw new Error(`This draft can't be approved yet. ${blocking[0].text}`);
   const before = p.requirements;
   const prevApproved = p.drafts.find((x) => x.number === p.approvedDraft) ?? null;
+  // A delivered episode's script is final (episode-delivery.ts): a draft may change only the episodes still being made.
+  const done = p.delivered ? [] : Object.keys(p.episodeDeliveries ?? {}).map(Number);
+  const changed = done.find((n) => JSON.stringify((prevApproved?.scenes ?? []).filter((s) => s.episode === n)) !== JSON.stringify(d.scenes.filter((s) => s.episode === n)));
+  if (changed) throw new Error(`Episode ${changed} is delivered, so its scenes can't change. Change only episodes still being made.`);
   const next = deriveRequirements(p, d.scenes, d.characters);
   p.drafts.forEach((x) => (x.approved = x.number === number));
   p.approvedDraft = number;
