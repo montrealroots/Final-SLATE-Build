@@ -46,7 +46,7 @@ test('a preferred name, a headshot and a citizenship, and what each one changes'
   await expect(page.getByRole('heading', { name: 'Wanjiru', level: 1 })).toBeVisible();
   await expect(page.getByRole('img', { name: 'Headshot for Wanjiru' })).toBeVisible();
   const about = page.locator('section.card', { has: page.getByRole('heading', { name: 'About' }) });
-  await expect(about).toContainText('Nia Wanjiru Halvorsen · on your credits');
+  await expect(about).toContainText(/Nia Wanjiru Halvorsen\s*The name on your credits\./);
   await expect(about).toContainText('Citizenship');
   await expect(about).toContainText('Kenya (citizen), United Kingdom (you live there)');
   await page.screenshot({ path: `test-results/identity-${info.project.name}-profile.png`, fullPage: true });

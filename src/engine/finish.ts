@@ -234,7 +234,7 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
     const parts = [...epMinutes].map(([n, m]) => {
       const e = p.episodes.find((x) => x.number === n);
       const who = e ? [e[role], ...((role === 'writer' ? e.formerWriters : e.formerDirectors) ?? [])] : ['player'];
-      return { m, v: avg(who.map((w) => (w === 'player' ? 0 : (personById(state, w).capability - 50) / 4)), 0) };
+      return { m, v: avg(who.map((w) => (w === 'player' ? playerExperience(state, p, role) : (personById(state, w).capability - 50) / 4)), 0) };
     });
     const total = parts.reduce((a, x) => a + x.m, 0);
     return total ? parts.reduce((a, x) => a + x.v * x.m, 0) / total : 0;
@@ -280,7 +280,7 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
     const theirs = scenes.filter((s) => s.participants.includes(a.characterId));
     if (episode !== undefined && !theirs.length) continue; // not in this episode: nothing of theirs to assess
     const sc = theirs.map((s) => { const c = p.captures.find((x) => x.sceneId === s.id); return (c ? editPerformance(p, c) : undefined) ?? c?.quality ?? 60; });
-    const base = a.performer === 'player' ? 58 + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability;
+    const base = a.performer === 'player' ? 58 + playerExperience(state, p, 'performer') + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability;
     // A shared background never scores a performance: ability isn't inferred from ethnicity. It added 6 until the review
     // of November 7, 2026; casting still shows who shares one, as information.
     // How they play with the others in each of their scenes (auditions.ts pairChemistry, -8 to +8), at half weight; a
@@ -411,6 +411,18 @@ export function publicShowingsBefore(p: Project, date: string): { date: string; 
 // ---------------- Distribution offers (simulated distributors) ----------------
 
 const DISTRIBUTORS = ['Northlight Pictures', 'Meridian Releasing', 'Harbor & Vine', 'Blue Hour Films', 'Kestrel Media', 'Lanternfish Distribution', 'Cobalt Screen', 'Open Field Releasing'];
+
+/**
+ * Your own craft, from your credited, delivered work in the role (November 10, 2026). Until then it was the same on the
+ * twentieth film as on the first: your writing and directing the baseline, your acting 58 before rehearsal. Each earlier
+ * delivered project with your credit in the role adds a step, up to a cap. Game calibration: a point a project as writer
+ * or director, up to 5 (a hired writer or director moves it -12 to +12), and two as a performer, up to 12.
+ */
+export function playerExperience(state: GameState, p: Project, role: 'writer' | 'director' | 'performer'): number {
+  const credit = (c: Credit) => c.person === 'player' && (role === 'writer' ? c.contribution === 'Written By' : role === 'director' ? c.contribution === 'Directed By' : c.roleId === 'actor' || c.roleId === 'voice-actor');
+  const n = state.projects.filter((x) => x.id !== p.id && x.delivered && x.credits.some(credit)).length;
+  return role === 'performer' ? Math.min(12, n * 2) : Math.min(5, n);
+}
 
 registerHandler('distribution-offer', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);

@@ -8,7 +8,23 @@
 
 ## Commands And Results
 
-### Current: The Original Song Loop, Episode Release Edges, Rolling Episode Delivery, Decisions In The Browser (November 10, 2026, after #59)
+### Current: Screens Lined Up, And Every Cycle Followed Through (November 10, 2026, after #60)
+
+Commits `44e2a77` (alignment and capitals across the screens) and the commit that adds this section (cycles).
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| Every screen after creation captured at desktop and phone width, and scanned for text starting lowercase | 0 | Before: 75 captures with misaligned list names, a checkbox below its label, crammed text after buttons, touching chips, a clipped forecast, a tab arrow over its tab and lowercase labels. After: re-captured and re-scanned; the two left are deliberate (credits' "as Odile", sentence-case calendar labels). |
+| `npx vitest run` | 0 | 81 files, 627 tests; new `tests/cycles.test.ts` (6). The track-record comparison failed when the new bonus was set to 0 (a mutation check), then passed restored. |
+| `npm run balance` | 0 | 2 files passed; `docs/balance-results.json` unchanged. |
+| `npm run check` | 0 | Startup 673 kB, 215 kB gzipped (budgets 700 and 220). |
+| Ten specs, desktop and phone (after the alignment fixes) | 0 | 77 passed, 5 skipped by design. |
+| `decisions`, `first-project`, `career`, `careers`, `connected`, `journey-a`, `screenings` on desktop, phone and `iphone-15-pro-max` (after the cycle fixes) | 0 | 31 passed, 4 skipped by design. |
+| CI run 155 on `main` at `5a020aa` (#60) | See the pull request | Checked when it finishes. |
+
+The cycle audit and what it closed are in `docs/INPUT-AUDIT.md` (Cycles That Stopped Short).
+
+### Previous: The Original Song Loop, Episode Release Edges, Rolling Episode Delivery, Decisions In The Browser (November 10, 2026, after #59)
 
 Commits `68844cd` (release edges), `1a6fee5` (journey C), `4beae57` (rolling delivery), `e202b2c` (decisions, territory
 codes) and the commit that updates this report. CI on the pull request is the full-suite run for the final revision;

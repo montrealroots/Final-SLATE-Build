@@ -182,7 +182,7 @@ function FollowedEvents() {
           return (
             <li key={e.id} className="row-wrap">
               <div className="grow">
-                <button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button>
+                <strong><button className="link" onClick={() => store.go({ view: 'event', editionId: e.id })}>{e.label}</button></strong>
                 <div className="dim">{inst.kind === 'festival' ? 'Festival' : 'Awards'} · {formatDateKey(dateKey(e.start, zone))} · Entries {e.deadline > g.now ? `close ${formatDateKey(dateKey(e.deadline, zone))}` : 'closed'}</div>
               </div>
               <FollowButton id={inst.id} />
@@ -268,27 +268,7 @@ export function PlaceView() {
               {travelError && <p role="alert" style={{ color: 'var(--negative)' }}>{travelError}</p>}
             </>
           )}
-          {here && <p className="chip chip-accent">You're here</p>}
-        </section>
-        <section className="card" aria-labelledby="pl-fc">
-          <h2 id="pl-fc">Forecast</h2>
-          <div className="table-wrap">
-            <table className="data">
-              <thead><tr><th>Day</th><th>Outlook</th><th>High</th><th>Low</th><th>Chance Of Rain Or Snow</th></tr></thead>
-              <tbody>
-                {fc.map((f) => (
-                  <tr key={f.date}>
-                    <td data-label="Day">{formatDateKey(f.date, true).split(',')[0]} {Number(f.date.slice(8))}</td>
-                    <td data-label="Outlook">{f.summary}</td>
-                    <td data-label="High">{Math.round(f.high)}°C</td>
-                    <td data-label="Low">{Math.round(f.low)}°C</td>
-                    <td data-label="Chance Of Rain Or Snow">{f.chanceOfPrecip}%</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="dim">Forecasts get less certain the further ahead they look.</p>
+          {here && <p className="chip chip-accent">You're Here</p>}
         </section>
         <section className="card" aria-labelledby="pl-hol">
           <h2 id="pl-hol">Upcoming Public Holidays</h2>
@@ -300,10 +280,30 @@ export function PlaceView() {
           <TextField label="Search Places" type="search" value={q} onChange={setQ} />
           <ul className="list">
             {searchPlaces(q, 8).map((pl: Place) => (
-              <li key={pl.id}><button className="btn btn-ghost" onClick={() => store.go({ view: 'place', placeId: pl.id })}>{placeLabel(pl)}</button> <span className="dim">{longLocal(now, pl.zone).time}</span></li>
+              <li key={pl.id}><button className="link" onClick={() => store.go({ view: 'place', placeId: pl.id })}>{placeLabel(pl)}</button><div className="dim">{longLocal(now, pl.zone).time} there</div></li>
             ))}
           </ul>
           <button className="btn" onClick={() => store.go({ view: 'world' })}>Browse The World</button>
+        </section>
+        {/* Full width since November 10, 2026: in a third of the row its last column was cut off and the days wrapped. */}
+        <section className="card card-wide" aria-labelledby="pl-fc">
+          <h2 id="pl-fc">Forecast</h2>
+          <div className="table-wrap">
+            <table className="data">
+              <thead><tr><th>Day</th><th>Outlook</th><th>High / Low</th><th>Rain Or Snow</th></tr></thead>
+              <tbody>
+                {fc.map((f) => (
+                  <tr key={f.date}>
+                    <td data-label="Day" style={{ whiteSpace: 'nowrap' }}>{formatDateKey(f.date, true).slice(0, 3)} {Number(f.date.slice(8))}</td>
+                    <td data-label="Outlook">{f.summary}</td>
+                    <td data-label="High / Low">{Math.round(f.high)}° / {Math.round(f.low)}°C</td>
+                    <td data-label="Rain Or Snow">{f.chanceOfPrecip}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="dim">Forecasts get less certain the further ahead they look.</p>
         </section>
       </div>
     </>
@@ -357,7 +357,7 @@ export function Profile() {
         <section className="card">
           <h2>About</h2>
           <dl className="kv">
-            <dt>Legal Name</dt><dd>{c.name}<span className="dim"> · on your credits</span></dd>
+            <dt>Legal Name</dt><dd>{c.name}<div className="dim">The name on your credits.</div></dd>
             {c.preferredName && <><dt>Preferred Name</dt><dd>{c.preferredName}</dd></>}
             <dt>Pronouns</dt><dd>{PRONOUNS[c.pronouns].label}</dd>
             <dt>Age</dt><dd>{age}</dd>
@@ -365,10 +365,10 @@ export function Profile() {
             <dt>Birthplace</dt><dd>{placeLabel(getPlace(c.birthplaceId))}</dd>
             <dt>Citizenship</dt><dd>{citizenshipOf(c) ? countryName(citizenshipOf(c)!) : '—'}</dd>
             <dt>Lives In</dt><dd>{placeLabel(getPlace(c.livesIn))}</dd>
-            <dt>Home Countries</dt><dd>{homeCountries(g).map((h) => `${h.name} (${[h.citizen && 'citizen', h.resident && 'you live there'].filter(Boolean).join(', ')})`).join(', ')}<span className="dim"> · their public screen funds support you</span></dd>
+            <dt>Home Countries</dt><dd>{homeCountries(g).map((h) => `${h.name} (${[h.citizen && 'citizen', h.resident && 'you live there'].filter(Boolean).join(', ')})`).join(', ')}<div className="dim">Their public screen funds support you.</div></dd>
             <dt>Ethnicity</dt><dd>{c.heritages.map((x) => x.label).join(', ') || '—'}</dd>
             <dt>Nationality</dt><dd>{c.nationalities.map(countryName).join(', ') || '—'}</dd>
-            <dt>Holidays You Keep</dt><dd>{(c.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you are'}{c.observances?.length ? <span className="dim"> · your projects don’t work on them</span> : null}</dd>
+            <dt>Holidays You Keep</dt><dd>{(c.observances ?? []).map((id) => observance(id)?.name).filter(Boolean).join(', ') || 'None beyond where you are'}{c.observances?.length ? <div className="dim">Your projects don’t work on them.</div> : null}</dd>
             <dt>Languages</dt><dd>{languageName(c.mainLanguage)} (main){c.languages.map((l) => `, ${languageName(l.code)} (${l.proficiency.toLowerCase()})`).join('')}</dd>
             <dt>Now In</dt><dd>{placeLabel(currentPlace(g))}</dd>
           </dl>
@@ -379,7 +379,7 @@ export function Profile() {
             <ul className="list">
               {credits.map(({ p, x }) => (
                 <li key={p.id + x.id}>
-                  <button className="btn btn-ghost" onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'release' })}>{p.title}</button>
+                  <strong><button className="link" onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'release' })}>{p.title}</button></strong>
                   <div className="dim">{x.contribution}{x.characterName ? ` (${x.characterName})` : ''}{x.episodes !== 'all' ? `, ${plural(x.episodes.length, 'episode')}` : ''}</div>
                 </li>
               ))}

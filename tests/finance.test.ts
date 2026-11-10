@@ -42,7 +42,7 @@ describe('a budget size is an estimate, not money', () => {
     const needs = Object.fromEntries(backerOptions(s, p).map((o) => [o.kind, o.needs]));
     expect(needs).toEqual({
       starting: 'Approve a script first.', grant: 'Approve a script first.', investor: 'Approve a script first.',
-      'co-producer': 'Get some funding promised first; they only match other backers.', commissioner: 'Deliver a project first.',
+      'co-producer': 'Get some funding promised first; they only match other backers.', earnings: 'Your delivered projects have kept no money yet.', commissioner: 'Deliver a project first.',
     });
     expect(() => approachBacker(s, p, 'grant')).toThrow('Approve a script first.');
   });

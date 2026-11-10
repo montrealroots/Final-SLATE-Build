@@ -5,7 +5,7 @@
 // Every term the game shows is one it enforces: repayment from income, a share of income, approval rights, a credit,
 // and a delivery deadline. Amounts and decisions are game calibration, not industry figures.
 
-import { money } from './budget';
+import { ledgerTotals, money, spend } from './budget';
 import { getPlace } from '../data/places';
 import { TERRITORY_CITIZENSHIP, countryInSentence, homeCountries } from './identity';
 import { DOCUMENTS, documentNames, documentsNeeded, type DocumentId } from './script-effects';
@@ -27,13 +27,13 @@ export const BACKERS: Record<Exclude<FinanceDealKind, 'agreed'>, { name: string;
   grant: {
     name: 'Screen Arts Fund Grant',
     who: 'A public arts fund that supports new screen work by the citizens and residents of the country where the project is based.',
-    why: 'Its panel reads approved scripts and funds the ones it rates highest each round; a finished project of yours helps.',
+    why: 'Its panel reads approved scripts and funds the ones it rates highest each round; a finished project of yours helps, more so one that was well received or won awards.',
     decideDays: 21,
   },
   investor: {
     name: 'Private Investor',
     who: 'A private investor looking for a return.',
-    why: 'They invest when the amount fits your track record: modest sums for a first project, more after you deliver.',
+    why: 'They invest when the amount fits your track record: modest sums for a first project, more after you deliver, and more readily when your work was well received or won awards.',
     decideDays: 14,
   },
   'co-producer': {
@@ -42,10 +42,16 @@ export const BACKERS: Record<Exclude<FinanceDealKind, 'agreed'>, { name: string;
     why: 'They match half of what is already promised, so they only join a project that has backing.',
     decideDays: 10,
   },
+  earnings: {
+    name: 'Your Earnings',
+    who: 'The money your delivered projects have kept: what was left of their budgets and their share of what they earned.',
+    why: 'Yours to put into a new project. Nobody is repaid from it, nobody takes a share and nobody holds approval rights.',
+    decideDays: 0,
+  },
   commissioner: {
     name: 'Commissioner',
     who: 'A broadcaster or streamer that orders the project and owns it.',
-    why: 'They commission producers who have delivered before, and pay the full target.',
+    why: 'They commission producers who have delivered before, more readily after well-received or award-winning work, and pay the full target.',
     decideDays: 28,
   },
 };
@@ -76,6 +82,50 @@ export function financeSummary(p: Project) {
 export const delivered = (state: GameState) => state.projects.filter((x) => x.delivered !== null).length;
 
 /**
+ * How the player's delivered work went, as backers weigh it (November 10, 2026). Until then they counted delivered projects
+ * and nothing else, so a film nobody liked and one that won prizes opened the same doors. Reception is the average over
+ * delivered, assessed work; wins are the awards and prizes that work won. The bonus to a backer's chance is game
+ * calibration: up to ten points either way for reception (none at 55), and five a win up to ten.
+ */
+export function trackRecord(state: GameState): { works: number; reception: number | null; wins: number; bonus: number; note: string } {
+  const works = state.projects.filter((x) => x.delivered && x.quality);
+  const reception = works.length ? Math.round(works.reduce((s, x) => s + x.quality!.reception, 0) / works.length) : null;
+  const ids = new Set(works.map((x) => x.id));
+  const wins = state.editions.reduce((n, e) => n + e.entries.filter((x) => ids.has(x.projectId) && x.status === 'won').length, 0);
+  const bonus = (reception === null ? 0 : Math.max(-0.1, Math.min(0.1, (reception - 55) / 200))) + Math.min(0.1, wins * 0.05);
+  const note = wins ? `The ${wins === 1 ? 'award' : `${wins} awards`} your work has won counted for you.`
+    : reception === null ? '' : reception >= 70 ? 'How well your delivered work was received counted for you.'
+    : reception < 50 ? 'How coolly your delivered work was received counted against you.' : '';
+  return { works: works.length, reception, wins, bonus, note };
+}
+const withNote = (text: string, note: string) => (note ? `${text} ${note}` : text);
+
+/** Projects whose budgets still hold money once they are delivered, most first: what the player's earnings are. */
+function keepers(state: GameState, except?: string): { p: Project; kept: number }[] {
+  return state.projects.filter((x) => x.delivered && x.id !== except).map((x) => ({ p: x, kept: Math.floor(ledgerTotals(x).available) })).filter((x) => x.kept > 0).sort((a, b) => b.kept - a.kept);
+}
+/** The money your delivered projects have kept, which a new project can take as Your Earnings. */
+export function earningsKept(state: GameState, except?: string): number {
+  return keepers(state, except).reduce((s, x) => s + x.kept, 0);
+}
+/**
+ * Moves the money from the delivered projects that kept it into this one, as a payment out of each budget, so each
+ * ledger is still the sum of its postings. Refused, and nothing moves, if less is kept now than was offered.
+ */
+function drawEarnings(state: GameState, p: Project, d: FinanceDeal): void {
+  const kept = earningsKept(state, p.id);
+  if (kept < d.amount) throw new Error(`Your delivered projects keep ${money(kept)} now, less than the ${money(d.amount)} offered. Ask again for what they keep.`);
+  let left = d.amount;
+  for (const k of keepers(state, p.id)) {
+    if (left <= 0) break;
+    const take = Math.min(left, k.kept);
+    spend(state, k.p, `Put Into ${p.title}`, 'finance', take, `earnings:${d.id}`);
+    k.p.history.push({ at: state.now, text: `${money(take)} of what it kept was put into ${p.title}.` });
+    left -= take;
+  }
+}
+
+/**
  * Backers' modeled read of the script, 20 to 90: open readiness notes on it lower it (scriptIssues: structure, causality...).
  * Advisory prompts (a text field left empty, a fit suggestion) aren't faults and don't count (projects.ts Issue).
  */
@@ -92,10 +142,10 @@ const scriptApproved = (p: Project) => p.approvedDraft !== null && p.approvedDra
  * backer answer a week later instead; it now simply has to be written before the application that includes it is sent.
  */
 export const BACKER_DOCUMENTS: Record<Exclude<FinanceDealKind, 'agreed'>, DocumentId[]> = {
-  starting: [], investor: ['pitch'], 'co-producer': ['pitch'], commissioner: ['pitch', 'treatment'], grant: ['pitch', 'treatment', 'statement'],
+  starting: [], earnings: [], investor: ['pitch'], 'co-producer': ['pitch'], commissioner: ['pitch', 'treatment'], grant: ['pitch', 'treatment', 'statement'],
 };
 const SUBMISSION: Record<Exclude<FinanceDealKind, 'agreed'>, string> = {
-  starting: 'The starting backing', investor: 'An approach to an investor', 'co-producer': 'An approach to a co-production partner',
+  starting: 'The starting backing', earnings: 'Your earnings', investor: 'An approach to an investor', 'co-producer': 'An approach to a co-production partner',
   commissioner: 'A pitch to a commissioner', grant: 'A grant application',
 };
 
@@ -133,6 +183,9 @@ export function backerOptions(state: GameState, p: Project): { kind: Exclude<Fin
   }
   // The documents a submission includes must be written before it is sent (BACKER_DOCUMENTS).
   const docs = (k: Exclude<FinanceDealKind, 'agreed'>) => documentsNeeded(p, BACKER_DOCUMENTS[k], isNonfiction(p.axes.format), SUBMISSION[k]);
+  // What your delivered projects kept, put into this one (November 10, 2026: until then it stayed in their budgets for good).
+  const kept = earningsKept(state, p.id);
+  out.push({ kind: 'earnings', ready: false, needs: has('earnings') ? closed || 'Already put in for this project.' : why('earnings', kept <= 0 ? 'Your delivered projects have kept no money yet.' : !scriptApproved(p) ? 'Approve a script first.' : null) });
   out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : fundClosedTo(state, p) ?? docs('grant')) });
   out.push({ kind: 'investor', ready: false, needs: why('investor', !scriptApproved(p) ? 'Approve a script first.' : docs('investor')) });
   out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : docs('co-producer')) });
@@ -174,6 +227,7 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
   const { stillToRaise, promised, target } = financeSummary(p);
   const roll = stream(state.seed, 'finance', p.id, deal.id)();
   const proven = delivered(state);
+  const record = trackRecord(state);
   const notes = scriptIssues(p).filter((i) => i.severity !== 'blocking' && !i.advisory).length;
   const script = scriptScore(p);
   const t = deal.terms;
@@ -187,27 +241,32 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
       deal.reason = 'Agreed when your story began. They are repaid from the project\'s income first.';
       break;
     case 'grant': {
-      const chance = 0.1 + script / 300 + Math.min(0.2, proven * 0.1); // competitive: at best about 4 in 10 for new work
+      const chance = 0.1 + script / 300 + Math.min(0.2, proven * 0.1) + record.bonus; // competitive: at best about 4 in 10 for new work
       if (roll < chance) {
         offer = Math.min(stillToRaise, GRANT_CAP);
         t.credit = 'Supported By';
         t.deliverBy = state.now + GRANT_DELIVERY_DAYS * DAY;
-        deal.reason = notes ? `The panel backed the script despite ${notes === 1 ? 'one open note' : `${notes} open notes`} on it.` : 'The panel backed the script; it had no open notes.';
-      } else refusal = `The fund's panel chose other projects this round${notes ? ` (the script had ${notes === 1 ? 'one open note' : `${notes} open notes`})` : ''}.`;
+        deal.reason = withNote(notes ? `The panel backed the script despite ${notes === 1 ? 'one open note' : `${notes} open notes`} on it.` : 'The panel backed the script; it had no open notes.', record.bonus > 0 ? record.note : '');
+      } else refusal = withNote(`The fund's panel chose other projects this round${notes ? ` (the script had ${notes === 1 ? 'one open note' : `${notes} open notes`})` : ''}.`, record.bonus < 0 ? record.note : '');
       break;
     }
     case 'investor': {
       const cap = proven ? INVESTOR_CAP_PROVEN : INVESTOR_CAP_FIRST;
-      const chance = 0.45 + script / 300 + Math.min(0.25, proven * 0.1);
+      const chance = 0.45 + script / 300 + Math.min(0.25, proven * 0.1) + record.bonus;
       if (roll < chance) {
         offer = Math.min(stillToRaise, cap);
         t.recoup = Math.round(offer * 1.2);
         t.incomeShare = 0.3;
         t.credit = 'Executive Producer';
-        deal.reason = proven ? 'Your delivered work convinced them.' : `A modest first stake: they invest up to ${money(cap)} before you have delivered a project.`;
-      } else refusal = proven ? 'They passed on this one.' : 'They want to see a finished project from you first.';
+        deal.reason = proven ? withNote('Your delivered work convinced them.', record.bonus > 0 ? record.note : '') : `A modest first stake: they invest up to ${money(cap)} before you have delivered a project.`;
+      } else refusal = proven ? withNote('They passed on this one.', record.bonus < 0 ? record.note : '') : 'They want to see a finished project from you first.';
       break;
     }
+    case 'earnings':
+      offer = Math.min(stillToRaise, earningsKept(state, p.id));
+      deal.reason = 'Money your delivered projects kept. Nobody is repaid from it and nobody takes a share.';
+      if (offer <= 0) refusal = 'Your delivered projects have kept no money.';
+      break;
     case 'co-producer':
       if (roll < 0.75) {
         offer = Math.min(stillToRaise, Math.round(promised * 0.5));
@@ -218,14 +277,14 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
       } else refusal = 'Their slate is full this year.';
       break;
     case 'commissioner':
-      if (roll < 0.35 + Math.min(0.4, proven * 0.15)) {
+      if (roll < 0.35 + Math.min(0.4, proven * 0.15) + record.bonus) {
         offer = stillToRaise;
         t.onDelivery = Math.round(offer * 0.2);
         t.incomeShare = 0.85;
         t.approvalRights = ['Casting Approval', 'Picture Approval'];
         t.credit = 'Commissioned By';
-        deal.reason = 'Your delivered work earned a commission.';
-      } else refusal = 'They have no slot for this project.';
+        deal.reason = withNote('Your delivered work earned a commission.', record.bonus > 0 ? record.note : '');
+      } else refusal = withNote('They have no slot for this project.', record.bonus < 0 ? record.note : '');
       break;
   }
   void target;
@@ -238,7 +297,7 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
   deal.amount = offer;
   deal.status = 'offered';
   // The agreed starting backing stays open; any other offer lapses if it isn't answered (negotiation.ts).
-  if (deal.kind !== 'starting') openOffer(state, p, deal);
+  if (deal.kind !== 'starting' && deal.kind !== 'earnings') openOffer(state, p, deal); // your own money doesn't lapse
   addLog(state, `The ${deal.backer.toLowerCase()} offered ${money(offer)} for ${p.title}.${deal.expiresAt ? ` It is open for ${OFFER_OPEN_DAYS} days.` : ''} Read the terms before you accept.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
 }
 
@@ -270,6 +329,7 @@ export function acceptDeal(state: GameState, p: Project, dealId: string): void {
   if (!d || d.status !== 'offered' || (d.expiresAt !== undefined && state.now >= d.expiresAt)) throw new Error('That offer is no longer open.');
   if (d.counter && !d.counter.outcome) throw new Error('They are considering the better terms you asked for. Wait for their answer.');
   if (p.delivered && d.terms.onDelivery) throw new Error('This project is already delivered.');
+  if (d.kind === 'earnings') drawEarnings(state, p, d);
   d.status = 'accepted';
   const now = d.amount - d.terms.onDelivery;
   d.received = now;

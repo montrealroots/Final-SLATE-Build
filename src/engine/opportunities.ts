@@ -26,7 +26,10 @@ export function scheduleOpportunity(state: GameState, p: Project): void {
 registerHandler('opportunity', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
   if (!p?.delivered || !p.quality || (state.opportunities ?? []).some((o) => o.fromProjectId === p.id)) return { suppressInterrupt: true };
-  const reception = p.quality.reception;
+  // Prizes it won count as well as its reception, five points each up to fifteen (November 10, 2026: until then a win
+  // changed nothing here). Game calibration.
+  const wins = state.editions.reduce((n, e) => n + e.entries.filter((x) => x.projectId === p.id && x.status === 'won').length, 0);
+  const reception = p.quality.reception + Math.min(15, wins * 5);
   const r = stream(state.seed, 'opportunity', p.id);
   // Only work that was well received draws one, and not always: half the time at 65, nearly always at 85.
   if (reception < 60 || r() > (reception - 55) / 32) return { suppressInterrupt: true };
@@ -35,7 +38,7 @@ registerHandler('opportunity', (state, ev) => {
   const o: Opportunity = {
     id: newId(state, 'op'), fromProjectId: p.id, commissioner, amount, format: p.axes.format, medium: p.axes.medium, technique: p.axes.technique,
     expiresAt: state.now + OPPORTUNITY_OPEN_DAYS * DAY, status: 'open',
-    reason: `${commissioner} saw ${p.title} and liked how it was received. They propose to fund your next project of the same kind.`,
+    reason: `${commissioner} saw ${p.title} and liked how it was received${wins ? ` and what it won` : ''}. They propose to fund your next project of the same kind.`,
   };
   (state.opportunities ??= []).push(o);
   schedule(state, o.expiresAt, 'opportunity-expire', { id: o.id }, { attention: 'silent', priority: 60 });

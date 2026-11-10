@@ -217,7 +217,7 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   addLog(state, `${p.title} is scheduled to start on ${formatDateKey(startDate, true)}${planned.length ? ` with ${planned.length} shoot ${planned.length === 1 ? 'day' : 'days'}` : ''}.`, 'project', {
     projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' },
   });
-  p.history.push({ at: state.now, text: `Production scheduled from ${startDate}.` });
+  p.history.push({ at: state.now, text: `Production scheduled from ${formatDateKey(startDate)}.` }); // until November 10, 2026 the raw 2026-03-17
   return { tasks: p.tasks.length, shootDays: planned.length, firstDay: startDate, lastShootDay: planned[planned.length - 1]?.date ?? null };
 }
 

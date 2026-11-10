@@ -641,7 +641,7 @@ export function FestivalsTab({ p }: { p: Project }) {
               const cat = institution(e.institutionId).categories.find((c) => c.id === x.categoryId)!;
               return (
                 <li key={x.id} className="row-wrap">
-                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id, projectId: p.id })}>{e.label}</button>: {cat.name}{entryVersion(p, x.versionId)}{entryEpisode(p, x.episode)}{entrySong(p, x)} <span className="chip">{entryStatus(x, e)}</span>{x.via === 'selection' ? <span className="dim"> Considered from its selection; no entry or fee.</span> : null}{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
+                  <span className="grow"><strong><button className="link" onClick={() => store.go({ view: 'event', editionId: e.id, projectId: p.id })}>{e.label}</button></strong>: {cat.name}{entryVersion(p, x.versionId)}{entryEpisode(p, x.episode)}{entrySong(p, x)} <span className="chip">{entryStatus(x, e)}</span>{x.via === 'selection' ? <span className="dim"> Considered from its selection; no entry or fee.</span> : null}{x.reason ? <span className="dim"> {x.reason}</span> : null}</span>
                 </li>
               );
             })}
@@ -667,7 +667,7 @@ export function FestivalsTab({ p }: { p: Project }) {
             return (
               <li key={e.id}>
                 <div className="row-wrap">
-                  <span className="grow"><button className="btn btn-ghost" onClick={() => store.go({ view: 'event', editionId: e.id, projectId: p.id })}>{e.label}</button><span className="dim"> · Entries close {formatDateKey(dateKey(e.deadline, zone))}</span></span>
+                  <span className="grow"><strong><button className="link" onClick={() => store.go({ view: 'event', editionId: e.id, projectId: p.id })}>{e.label}</button></strong><span className="dim"> · Entries close {formatDateKey(dateKey(e.deadline, zone))}</span></span>
                   <span className={`chip ${ok.length ? 'chip-positive' : ''}`}>{ok.length ? `${plural(ok.length, 'Category', 'Categories')} Open To You` : 'Not Eligible Now'}</span>
                 </div>
                 {!ok.length && <div className="dim">{elig[0].r.reasons[0]}</div>}
@@ -754,7 +754,7 @@ export function EventDetail() {
             <dt>{inst.kind === 'festival' ? 'Dates' : 'Ceremony'}</dt><dd>{inst.kind === 'festival' ? `${startL.date} to ${endL.date}` : `${startL.weekday}, ${startL.date}, ${startL.time} local time`}</dd>
             <dt>Entries Close</dt><dd>{dlOrg.date}, {dlOrg.time} local time ({dlMine.weekday} {dlMine.time} your time)</dd>
             {inst.kind === 'award' && <><dt>Eligibility Period</dt><dd>{formatDateKey(ed.eligibility.from)} to {formatDateKey(ed.eligibility.to)}</dd></>}
-            <dt>Status</dt><dd>{{ upcoming: 'Entries not open yet', open: 'Open for entries', closed: 'Entries closed', judging: 'Judging', announced: inst.kind === 'festival' ? 'Selection announced' : 'Nominations announced', complete: 'Finished' }[ed.status]}</dd>
+            <dt>Status</dt><dd>{{ upcoming: 'Entries Not Open Yet', open: 'Open For Entries', closed: 'Entries Closed', judging: 'Judging', announced: inst.kind === 'festival' ? 'Selection Announced' : 'Nominations Announced', complete: 'Finished' }[ed.status]}</dd>
           </dl>
           <p className="dim">{ed.provenance === 'official' ? `These dates were announced by the organizer.${ed.deadlinePlanned ? ' The entry deadline is a planning date.' : ''}` : "Dates haven't been announced. Planning dates are shown."} {rulebook(ed.rulesId) ? `${inst.kind === 'festival' ? 'Sections' : 'Categories'} marked Official Rules follow the organizer's rules for this edition; Projected Rules carry last year's forward until this year's are published. Everything else is simulated.` : 'Rules in this game are simulated.'}</p>
         </section>
@@ -856,12 +856,14 @@ function CategoryBrowser({ ed, onPrepare }: { ed: Edition; onPrepare: (projectId
                 return (
                   <li key={c.id}>
                     <div className="row-wrap">
-                      <span className="grow"><strong>{c.name}</strong>
+                      <span className="grow"><strong>{c.name}</strong>{' '}
+                        <span className="chips-after">
                         {c.kind && KIND_WORDS[c.kind] ? <span className="chip">{KIND_WORDS[c.kind]}</span> : null}
                         {!c.competitive && c.kind !== 'honorary' && !hasPrizes(c) ? <span className="chip">Not Competitive</span> : null}
                         {st === 'simulated' ? null : <span className="chip">{st === 'verified' ? 'Official Rules' : 'Projected Rules'}</span>}
                         {c.verified === false && st === 'simulated' ? <span className="chip">Rules Not Read</span> : null}
                         {el ? <span className={`chip ${el.eligible ? 'chip-positive' : ''}`}>{el.eligible ? `Open To ${p!.title}` : 'Not Eligible'}</span> : null}
+                        </span>
                         <div className="dim">
                           {c.kind === 'honorary' ? 'Chosen by the organizer from a body of work. It takes no entries and no fee. '
                             : !enterable(c) ? `Decided among the work selected for ${parents.length ? parents.join(', ') : 'the festival'}${c.kind === 'audience' ? ', by audiences' : c.kind === 'partner' ? ', by a partner jury' : ''}. It takes no entries and no fee. `

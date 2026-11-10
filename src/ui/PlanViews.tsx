@@ -5,7 +5,7 @@ import { languageName } from '../data/identity';
 import { getPlace } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
 import {
-  BACKERS, EXPERIENCE, betterTerms, COUNTER_DAYS, type BetterTerm, assignEpisodeRole, backerDocuments, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
+  BACKERS, EXPERIENCE, betterTerms, COUNTER_DAYS, type BetterTerm, assignEpisodeRole, backerDocuments, earningsKept, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
@@ -180,7 +180,7 @@ export function CastTab({ p }: { p: Project }) {
               <li key={c.id}>
                 <div className="row-wrap">
                   <div className="grow">
-                    <strong>{c.name}</strong> <span className="dim">{c.roleSize} · {plural(approvedScenes(p).filter((s) => s.participants.includes(c.id)).length, 'scene')}</span>
+                    <strong>{c.name}</strong> <span className="dim">{c.roleSize.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')} · {plural(approvedScenes(p).filter((s) => s.participants.includes(c.id)).length, 'scene')}</span>
                     {c.roleSize === 'background' && <div className="dim">Background performers are booked per shoot day.</div>}
                     {!!c.aliases?.length && <div className="dim">Also called {c.aliases.join(', ')}.</div>}
                     {!!(c.heritages?.length || c.nationalities?.length) && <div className="dim">Written as {[...(c.heritages ?? []), ...(c.nationalities ?? []).map(countryName)].join(', ')}.{sharedHeritages(g, p, c.id, 'player').length ? ' You share a background with this part.' : ''}</div>}
@@ -735,7 +735,7 @@ function FinancingPanel({ p }: { p: Project }) {
             {deals(p).map((d) => (
               <li key={d.id}>
                 <div className="row-wrap">
-                  <span className="grow"><strong>{d.backer}</strong>{d.amount ? `: ${money(d.amount)}` : ''} <span className="dim small">Approached {formatDateKey(dateKey(d.askedAt, zone))}</span></span>
+                  <span className="grow"><strong>{d.backer}</strong>{d.amount ? `: ${money(d.amount)}` : ''} <span className="dim small">{d.kind === 'earnings' ? 'Put In' : 'Approached'} {formatDateKey(dateKey(d.askedAt, zone))}</span></span>
                   <span className={`chip ${d.status === 'accepted' ? 'chip-positive' : d.status === 'declined' || d.status === 'breached' || d.status === 'withdrawn' || d.status === 'lapsed' ? 'chip-negative' : d.status === 'offered' ? 'chip-accent' : ''}`}>{status[d.status]}</span>
                 </div>
                 {d.sent?.length ? <p className="dim">Sent with the approved script{d.sentCopy?.draft ? ` (draft ${d.sentCopy.draft})` : ''}: {d.sent.join(', ')}. They read it; the game doesn't judge it.</p> : null}
@@ -797,10 +797,10 @@ function FinancingPanel({ p }: { p: Project }) {
             <li key={o.kind} className="row-wrap">
               <div className="grow">
                 <strong>{BACKERS[o.kind].name}</strong>{o.kind === 'starting' ? <> <span className="chip">Agreed Starting Scenario</span></> : null}
-                <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why}{o.needs.includes('Still to write') ? '' : ` ${backerDocuments(o.kind)}`} They answer within {plural(BACKERS[o.kind].decideDays, 'day')}.</p>
+                <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why}{o.needs.includes('Still to write') ? '' : ` ${backerDocuments(o.kind)}`}{o.kind === 'earnings' ? ` Your delivered projects keep ${money(earningsKept(g, p.id))}.` : BACKERS[o.kind].decideDays ? ` They answer within ${plural(BACKERS[o.kind].decideDays, 'day')}.` : ''}</p>
                 {!o.ready && <p className="dim">{o.needs}</p>}
               </div>
-              <button className="btn btn-sm" disabled={!o.ready} onClick={() => setErr(store.act((s) => void approachBacker(s, live(s), o.kind)))} aria-label={`Approach ${BACKERS[o.kind].name}`}>{o.kind === 'starting' ? 'Ask For The Agreed Backing' : 'Approach'}</button>
+              <button className="btn btn-sm" disabled={!o.ready} onClick={() => setErr(store.act((s) => void approachBacker(s, live(s), o.kind)))} aria-label={o.kind === 'earnings' ? 'Put In Your Earnings' : `Approach ${BACKERS[o.kind].name}`}>{o.kind === 'starting' ? 'Ask For The Agreed Backing' : o.kind === 'earnings' ? 'Put In Your Earnings' : 'Approach'}</button>
             </li>
           ))}
         </ul>

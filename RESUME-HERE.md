@@ -56,7 +56,22 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 10, 2026, after #59): the Original Song loop, episode release edges, rolling delivery, UI evidence
+### Newest Request (November 10, 2026, after #60): screens lined up; every cycle followed through
+
+- **Screens.** The owner found the screens sloppy. List names were padded buttons sitting off the text under them, a
+  checkbox sat below its label, text was crammed after buttons, chips touched, the forecast was clipped, the tab arrow
+  sat over a tab, and labels started lowercase. All were fixed at the shared styles or the string (`44e2a77`).
+- **Cycles.** Outcomes traced for what reads them next (`docs/INPUT-AUDIT.md`, Cycles That Stopped Short). Four were
+  closed, tested in `tests/cycles.test.ts`:
+  - backers weigh reception and awards;
+  - Your Earnings puts what finished projects kept into the next;
+  - attending a screening draws distributors;
+  - your craft grows with delivered credits.
+
+Next: browser assertions for the screening, track-record and experience effects, which the existing playthroughs pass
+through without checking.
+
+### Earlier Request (November 10, 2026, after #59): the Original Song loop, episode release edges, rolling delivery, UI evidence
 
 What was done:
 
