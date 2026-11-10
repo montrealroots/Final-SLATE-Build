@@ -93,7 +93,7 @@ effect or no test, or when a cited test no longer exists.
 
 | Class | Controls | What it means | Evidence |
 |---|---|---|---|
-| Decision | 132 | Changes a rule, an action, work, the schedule, a cost, eligibility, an assessment or an outcome | Every one cites a unit test (132); 54 also cite a browser journey that makes the choice in the UI |
+| Decision | 132 | Changes a rule, an action, work, the schedule, a cost, eligibility, an assessment or an outcome | Every one cites a unit test (132); 55 also cite a browser journey that makes the choice in the UI |
 | Identity or creative expression | 57 | What you chose, kept and used where it belongs: names, descriptions, pronouns, backgrounds | Shown where it belongs. 24 cite a unit test where it is used (credits carry the legal name, casting shows a shared background) |
 | Historical record | 16 | A name or a note about something that happened, shown back as written | Shown. Nothing scores it |
 | View | 15 | Search, filter or sort on a screen; not game state | None needed |
@@ -110,7 +110,7 @@ expression with one consistency check: a structure note, advisory, so it weighs 
 
 "Displayed" is the reader guard above (`tests/model-readers.test.ts`). "Affects gameplay" is a decision with a unit
 test that shows the difference. "Verified through a full journey" is a browser journey that makes the choice and sees
-its effect in the UI. Of the 132 decisions, all affect gameplay by a unit test; 54 are also on a journey. The other 78
+its effect in the UI. Of the 132 decisions, all affect gameplay by a unit test; 55 are also on a journey. The other 77
 are verified in the engine only. Most are production settings (stages, render nodes, puppet copies, blocks) and
 script detail fields whose journeys stop short of them. A journey counts only when it makes the choice in the UI. Nine
 citations were dropped on November 10, 2026 because their journey never did: it set the value with a labelled fixture

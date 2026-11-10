@@ -8,7 +8,64 @@
 
 ## Commands And Results
 
-### Current: The Last New Screens In Journeys; The Game, Not "SLATE", When It Describes Itself (November 9, 2026, after #57)
+### Current: Gameplay Connectivity, Episode Release Schedules, Startup Headroom, Journeys A To E (November 10, 2026, after #58)
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run check` at `db2318e` (control audit and comparisons) | 0 | 77 files, 596 tests; startup 685 kB, 219 kB gzipped. |
+| Mutation checks on the new comparisons | 1 each, as intended | Each rule the new comparisons rely on was broken once, and each break failed its test: render hours for feature quality, the period category, proficiency, and the part's language. |
+| `npx playwright test e2e/release-schedule.spec.ts --project=desktop` (dev) | 1, 1, 1, 1, then 0 | Failures, all test-side: the hire dialog closes itself after an offer; offers are answered in two or three days, not one; the credits are on the Release tab; Short-Form Series doesn't take the Series format. Then passed (47 s). |
+| `npm run check` at `54a7923` | 0 | 78 files, 607 tests; startup 667 kB, 213 kB gzipped (was 694 / 222 with the schedules, over budget). |
+| `SLATE_E2E_PROD=1 npx playwright test failures creation world release-schedule --project=desktop` | 0 | 31 passed. |
+| `node scripts/perf-first-use.mjs` on `main` (`bc0f070`) and on this branch, a medium save, median of 5 | 0 | See `docs/PERFORMANCE.md`. Start and Continue: 844 kB of JavaScript to 826 (263 to 256 gzipped). New Game: 882 to 890. |
+| CI run 151 on #59 (`54a7923`) | 1 | 242 passed, 33 skipped, 3 failed. The European Film Awards journey (desktop, phone, `iphone-15-plus`) logged duplicate React keys. Two cinema releases of one film on the same day got the same calendar entry, because entries didn't say where. **A defect of this change, fixed:** entries now name their territories, with a unit test for the case. |
+| `SLATE_E2E_PROD=1 npx playwright test` the four new journeys with `release-schedule`, `title-input`, `awards`, `readers`, `connected`, `failures`, `creation`, `world`, `auditions` on desktop, phone, `iphone-15-plus` and `iphone-15-pro-max` | 0 | 157 passed, 4 skipped (the projects each spec doesn't run on), 14.5 minutes. React's production build doesn't warn about duplicate keys, so this run couldn't show run 151's failure. |
+| `npx playwright test e2e/awards.spec.ts -g "European Film Awards" --project=desktop --project=phone --project=iphone-15-plus` (dev server), after the calendar fix | 0 | 3 passed: the journey CI run 151 failed. |
+| `e2e/title-input.spec.ts` on desktop and both iPhones; then 20 repeats on each iPhone profile, on dev, on production, and on production under CPU load | 0 each | 123 passed. The working-title loss was not reproduced (see Open). |
+| `e2e/journey-a.spec.ts`, desktop (dev) | 1, 1, 1, 1, then 0 | Failures, all test-side: the institution's id is `clermont`; entries open April 27, so the journey now waits for that date; "Accepted For Consideration" and "In Competition" are the statuses before the result. Then passed. |
+| `e2e/journey-c.spec.ts`, desktop (dev) | 1, 1, 1, then 0 | Failures, all test-side: the shoot was never scheduled; delivery waits for the version's conform day; the Add Song form keeps the last lyrics choice, so "Lantern" had a hired lyricist. The game was right each time. Then passed. |
+| `e2e/journey-d.spec.ts`, desktop (dev) | 1, 1, then 0 | Failures, test-side: the estimate needs an approved script; the second game needs a browser context of its own. Then passed. |
+| `e2e/journey-e.spec.ts`, desktop, phone and `iphone-15-pro-max` (dev) | 1, then 0 | The refusal is the page's alert, not inside the Songs card. Then 3 passed. |
+
+**Journeys added**, all through visible controls. Fixtures are labelled in each file.
+
+- **A**, `journey-a.spec.ts`, desktop. Pinned seed 11. The steps:
+  - a script with named characters, approved and backed;
+  - three performers read for a part; one is shortlisted, called back to read with you, offered the part and accepts;
+  - production, the edit, delivery and a digital release;
+  - entered at Clermont-Ferrand, selected for the International Competition and carried through the festival;
+  - Save And Exit, then Continue: the result, the cast and the release are kept.
+- **B**, `release-schedule.spec.ts`, desktop. A series made, staffed (a hired director on episode 2) and shot, then:
+  - released across the International Emmys' year end, which refuses it with the count;
+  - episode 2 moved after a preview;
+  - entered provisionally, then reloaded;
+  - episodes come out on their own days.
+- **C**, `journey-c.spec.ts`, desktop. Three songs (commissioned, licensed, your own), written, recorded and cleared as
+  production work, then:
+  - a Distribution Cut swaps the licensed song after picture lock;
+  - on the Oscars' Original Song entry: the commissioned song goes to its hired songwriter and lyricist; yours to you;
+    the licensed one is refused.
+  - Not covered: the entry itself. The film has no theatrical run (no distributor offered), and this journey doesn't
+    claim one.
+- **D**, `journey-d.spec.ts`, desktop. The same life, seed and film twice, set at home or in Paris. The estimate's
+  lines are identical except one researcher line.
+- **E**, `journey-e.spec.ts`, desktop, phone and `iphone-15-pro-max`. Each refused with its reason, then recovered:
+  - a licensed song without a rights holder;
+  - Lock Picture before the work is done;
+  - a release date in the past, and an episode before the one it follows;
+  - a date change into the past, refused at review.
+
+  The recovered dates are kept after a reload.
+- **Title**, `title-input.spec.ts`, desktop and both iPhones. A working title typed, edited, cleared, pasted and
+  submitted while the game runs.
+
+**Screenshots inspected:**
+- Journey B (desktop): the planned schedule and the change preview.
+- Journey E: the review dialog on the iPhone 15 Pro Max and the reloaded Release tab on the phone. They fit, nothing is
+  clipped, and focus stays in the dialog.
+- The episode-dates fieldset showed the browser's white border at first. It now uses the app's borderless fieldset.
+
+### The Last New Screens In Journeys; The Game, Not "SLATE", When It Describes Itself (November 9, 2026, after #57)
 
 | Command | Exit | Result |
 | --- | --- | --- |

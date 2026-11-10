@@ -40,7 +40,7 @@ c(f, '{`${languageName(l.code)} Proficiency`}', D, 'character.languages', 'produ
 
 # ---------------- New Script and the project ----------------
 f = 'Projects.tsx'
-c(f, '"Working Title"', R, 'project.title', 'everywhere a project is named', 'The project\'s name', '', E('career', 'New Script says what the project goes through'))
+c(f, '"Working Title"', R, 'project.title', 'everywhere a project is named', 'The project\'s name', '', E('title-input', 'a title typed, edited, cleared, pasted and submitted'))
 c(f, '"Format"', D, 'axes.format', 'projects.ts, production/tasks.ts, awards.ts', 'Episodes, runtime, work, and which awards it can enter', U('genres', 'module consumers change the right downstream state and nothing else'), E('awards', 'SXSW'))
 c(f, '"Medium"', D, 'axes.medium', 'production/tasks.ts buildTasks', 'Live action shoots; animation has no shoot days but studio and render time', U('estimates', 'same script, different production method'), E('journeys', '2D animation'))
 c(f, "{medium === 'hybrid' ? 'Animation Technique For Animated Scenes' : 'Animation Technique'}", D, 'axes.technique', 'production/tasks.ts buildTasks', 'Which animation pipeline does the work', U('estimates', 'same script, different production method'), E('journeys', 'stop motion to delivery'))
@@ -54,7 +54,7 @@ c(f, '"Tone"', I, 'axes.tone', 'shown in the Story panel', 'Your words for the t
 c(f, '"Competes As"', D, 'axes.register', 'script-effects.ts competesAs', 'Drama or comedy where awards split them', U('script-effects', 'where it competes: declared comedy or drama, else its primary genres'))
 c(f, '"Story Era"', D, 'axes.storyEra', 'projects.ts deriveRequirements (period research); production/tasks.ts costumes', 'A period story adds research, and costumes take longer', U('genres', 'module consumers change the right downstream state'))
 c(f, '"Story Setting"', I, 'axes.storySetting', 'shown in the Story panel', 'Your words for where it happens')
-c(f, '"Story Setting Place"', D, 'axes.settingPlaceId', 'projects.ts deriveRequirements; production/tasks.ts', 'A setting abroad adds Setting Research, which design and costumes wait for', U('decision-effects', 'a setting abroad adds research before design and costumes'), E('readers', 'a story set abroad is researched'))
+c(f, '"Story Setting Place"', D, 'axes.settingPlaceId', 'projects.ts deriveRequirements; production/tasks.ts', 'A setting abroad adds Setting Research, which design and costumes wait for', U('decision-effects', 'a setting abroad adds research before design and costumes'), E('journey-d', 'the same film set at home or abroad'))
 c(f, '"Production Base"', D, 'axes.basePlaceId', 'production/schedule.ts isWorkingDay; weather.ts', 'Holidays, weather and time zone of the shoot', U('depth-gaps-production', 'rain stops an exterior day'), E('journeys', 'live action in a wet October'))
 c(f, '"Search Genres"', V)
 
@@ -234,11 +234,11 @@ f = 'World.tsx'
 c(f, '"Title For The New Project"', R, 'project.title', 'opportunities.ts acceptOpportunity', 'The new project\'s name', U('opportunities', 'accepted, starts a project funded by the commission'), E('career', 'a proposal is accepted into a funded project'))
 f = 'WorkViews.tsx'
 c(f, '"Song Title"', R, 'song.title', 'everywhere a song is named', 'The song\'s title')
-c(f, '"Where It Comes From"', D, 'song.origin, rights', 'songs.ts songTasks; awards-rules.ts songProblems', 'Written for the work, commissioned, licensed or public domain: the work, the clearance and song awards', U('songs', 'a commissioned song is written by a songwriter and a lyricist'), E('awards', 'Songs'))
-c(f, '"Lyrics"', D, 'song.plan.lyrics', 'songs.ts songTasks', 'Whether lyrics are written, and by whom', U('songs', 'a commissioned song is written by a songwriter and a lyricist'))
+c(f, '"Where It Comes From"', D, 'song.origin, rights', 'songs.ts songTasks; awards-rules.ts songProblems', 'Written for the work, commissioned, licensed or public domain: the work, the clearance and song awards', U('songs', 'a commissioned song is written by a songwriter and a lyricist'), E('journey-c', 'songs written, recorded and cleared in production'))
+c(f, '"Lyrics"', D, 'song.plan.lyrics', 'songs.ts songTasks', 'Whether lyrics are written, and by whom', U('songs', 'a commissioned song is written by a songwriter and a lyricist'), E('journey-c', 'songs written, recorded and cleared in production'))
 c(f, '"Music By"', D, 'song.writers', 'songs.ts songCredits; awards recipients', 'Who is credited and who a song award goes to', U('awards-catalog', 'an original song goes to the song'), E('awards', 'Songs'))
 c(f, '"Lyrics By"', D, 'song.writers', 'songs.ts songCredits; awards recipients', 'As above', U('awards-catalog', 'an original song goes to the song'), E('awards', 'Songs'))
-c(f, '"Rights Holder"', R, 'song.license.holder', 'shown with the song', 'Who a licensed song is cleared with')
+c(f, '"Rights Holder"', R, 'song.license.holder', 'shown with the song', 'Who a licensed song is cleared with', '', E('journey-e', 'refused with a reason, then recovered'))
 c(f, '{`Scene For ${s.title}`}', D, 'song.uses', 'songs.ts songUses', 'Where the song plays: the clearance, the recording and song rules', U('songs', 'a commissioned song is written by a songwriter and a lyricist'), E('awards', 'Songs'))
 c(f, '"How It Plays"', D, 'songUse.placement', 'awards-rules.ts songRuleProblem', 'Performed, background or end credits: what song categories accept', U('songs', 'a commissioned song is written by a songwriter and a lyricist'), E('awards', 'Songs'))
 c(f, '"Minutes It Plays"', D, 'songUse.minutes', 'awards-rules.ts songRuleProblem', 'Minimum-length song rules', U('songs', 'a commissioned song is written by a songwriter and a lyricist'))

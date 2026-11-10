@@ -511,7 +511,7 @@ export function ReleaseTab({ p }: { p: Project }) {
         </div>
         {scheduled && (
           <fieldset className="form" style={{ border: 0, padding: 0, margin: 0 }}>
-            <legend className="small">Episode Dates</legend>
+            <legend className="small" style={{ padding: 0 }}>Episode Dates</legend>
             <div className="grid grid-3 form">
               <SelectField label="Episode Schedule" value={pattern} options={(['all', 'weekly', 'premiere-weekly'] as const).map((x) => ({ value: x, label: PATTERN_LABELS[x] }))} onChange={(v) => { setPattern(v); setOwn(null); }} />
               {pattern === 'premiere-weekly' && <NumberField label="Episodes On The Premiere" value={onPremiere} min={1} max={count} onChange={(v) => { setOnPremiere(v); setOwn(null); }} />}
