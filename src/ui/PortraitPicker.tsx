@@ -224,7 +224,7 @@ export function PortraitPicker({
               ? 'Drag the photo to move it in the frame, and use Zoom to size it.'
               : storedBytes > 0
                 ? `Saved at ${PORTRAIT_WIDTH}×${PORTRAIT_HEIGHT}, ${Math.round(storedBytes / 1024)}KB.`
-                : 'Any size or shape works. SLATE crops it to a headshot and keeps a small copy in the save. It’s shown on your Profile and beside your credits; the game never looks at what’s in it.'}
+                : 'Any size or shape works. The game crops it to a headshot and keeps a small copy in the save. It’s shown on your Profile and beside your credits; the game never looks at what’s in it.'}
         </p>
       </div>
     </div>

@@ -181,6 +181,9 @@ test('Oscars: one film in several categories, each to its own credited people; a
   await categories(page).getByLabel('Find A Category').fill('Costume');
   await expect(row(page, 'Costume Design').getByText(/^Winner: .+\. Nominees: /)).toBeVisible();
   const shown = await row(page, 'Costume Design').innerText();
+  // The other works (opened after the row's text is kept, which the reload compares closed) are described: length, medium, format and who made them (November 9, 2026).
+  await row(page, 'Costume Design').getByText('About The Other Works').click();
+  await expect(row(page, 'Costume Design').getByText(/^.+: a \d+-minute (live action|animation|hybrid) .+\.$/).first()).toBeVisible();
   await pressSaveAndExit(page);
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await openEvent(page, 'Harbor Lights', '99th Academy Awards');
@@ -726,6 +729,7 @@ test('Songs: made in the Production tab with separate writers, one licensed; a v
   await make('Lantern', 'Write It Yourself');
   const song = (t: string) => songs.getByRole('listitem', { name: `Song: ${t}` });
   await expect(song('Salt Water').getByText('Original', { exact: true })).toBeVisible();
+  await expect(song('Salt Water').getByText(/· Added [A-Z][a-z]+ \d{1,2}, \d{4}/)).toBeVisible();
   await expect(song('Salt Water').getByText('Credited to whoever writes it, once the writing is done.')).toBeVisible();
   await expect(song('Harbour Lights').getByText('Licensed', { exact: true })).toBeVisible();
   await expect(song('Harbour Lights').getByText('Written by Ada Brook.')).toBeVisible();

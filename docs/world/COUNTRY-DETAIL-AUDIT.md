@@ -67,8 +67,8 @@ holidays are not included.
 ## Weather Audit
 
 The playable entries with no station of their own, checked at each one's most populous place
-(`tests/climate-audit.test.ts`). The place screen now says where the climate comes from, after "Weather in SLATE is
-simulated from typical local climate, not live observations.":
+(`tests/climate-audit.test.ts`). The place screen now says where the climate comes from, after "Weather in the game is
+simulated from typical local climate, not live observations." (it said "Weather in SLATE" until November 9, 2026):
 
 | Entry | Place | Source of its typical climate |
 | --- | --- | --- |
