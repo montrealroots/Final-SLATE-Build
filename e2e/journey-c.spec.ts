@@ -1,32 +1,35 @@
-// Journey C of the gameplay-connectivity pass (November 10, 2026), through visible controls only:
+// Journey C of the gameplay-connectivity pass (November 10, 2026), extended after #59 through the whole Original Song
+// loop, through visible controls only:
 //
-// - three songs made in the Production tab, each put in a scene:
+// - songs made in the Production tab, each put in a scene:
 //   - one commissioned from a songwriter and a lyricist, performed on screen;
 //   - one licensed, in the background;
-//   - one you write, over the end credits;
+//   - three you write: over the end credits and in the background;
 // - the film produced, so each song's writing, recording and clearance is done as production work;
 // - after picture lock, a Distribution Cut that plays another song in place of the licensed one;
-// - delivered, then read on the Oscars' page:
-//   - which song an Original Song entry can be;
-//   - who is credited for each song;
-//   - why the licensed song can't be entered.
+// - delivered; a distributor's theatrical offer accepted, and the film released in cinemas on the contract's day;
+// - the Oscars' Original Song:
+//   - each song written for the film entered on its own, to its own writers, never the score's composer;
+//   - the licensed song refused; a fourth song refused by the Academy's limit of three from one film;
+//   - judged: at most two songs from one film nominated;
+// - Save And Exit and Continue: the entries, their results and what each was entered with, as they were.
 //
-// The songs' writers are whoever the production hired and you. Nothing is written into the save. The world seed is
-// pinned (helpers.ts pinSeed), chosen once.
+// Nothing is written into the save. The world seed is pinned (helpers.ts pinSeed), chosen once so that a distributor
+// offers a theatrical release; a different seed can bring no theatrical offer, and the journey says so if it does.
 import type { Locator } from '@playwright/test';
 import { expect, test, type Page } from './test';
 import {
-  addScene, advance, approveDesigns, castRoles, nav, newProject, pinSeed, quickLife, readSavedState, saveAndApprove, section, staffEveryDepartment,
+  addScene, advance, approveDesigns, castRoles, nav, newProject, pinSeed, pressSaveAndExit, quickLife, readSavedState, saveAndApprove, section, staffEveryDepartment,
 } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 const shot = (page: Page, name: string) => page.screenshot({ path: `test-results/journey-c-${name}.png`, fullPage: true });
 
-test('journey C: songs written, recorded and cleared in production, placed in scenes and a version; their eligibility and credited writers', async ({ page }, info) => {
+test('journey C: songs written, recorded and cleared in production, placed in scenes and a version, released in cinemas, entered, judged and kept after a reload', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'One full production, at desktop width.');
   test.setTimeout(1_200_000);
   await quickLife(page, 'us-los-angeles', '2026-01-05');
-  await pinSeed(page, 5);
+  await pinSeed(page, Number(process.env.SONG_SEED ?? 8)); // seeds 5 to 7 brought no theatrical offer for this film
   await newProject(page, { title: 'Night Ferry', format: 'Feature Film', runtime: '90' });
   await section(page, 'Characters');
   await page.getByLabel('Character Name').fill('Lena');
@@ -49,6 +52,8 @@ test('journey C: songs written, recorded and cleared in production, placed in sc
   await make('Harbour Lights', 'An Existing Song, Licensed', async (s) => { await s.getByLabel('Music By').fill('Ada Brook'); await s.getByLabel('Lyrics By').fill('Ada Brook'); await s.getByLabel('Rights Holder').fill('Tidewater Music'); });
   // The form keeps the last lyrics choice; the work it describes says who writes the words before the song is added.
   await make('Lantern', 'Write It Yourself', async (s) => { await s.getByLabel('Lyrics').selectOption({ label: 'With The Music, By The Same Writer' }); });
+  await make('Ember', 'Write It Yourself');
+  await make('Tidewater', 'Write It Yourself');
   const use = async (t: string, scene: RegExp, how: string) => {
     await song(t).getByLabel(`Scene For ${t}`).selectOption({ label: (await song(t).getByLabel(`Scene For ${t}`).locator('option').allInnerTexts()).find((o) => scene.test(o))! });
     await song(t).getByLabel('How It Plays').selectOption({ label: how });
@@ -57,6 +62,8 @@ test('journey C: songs written, recorded and cleared in production, placed in sc
   await use('Salt Water', /Ferry/, 'Performed On Screen');
   await use('Harbour Lights', /Pier/, 'In The Background');
   await use('Lantern', /Pier/, 'Over The End Credits');
+  await use('Ember', /Ferry/, 'In The Background');
+  await use('Tidewater', /Pier/, 'In The Background');
   await song('Salt Water').getByRole('checkbox', { name: 'Lena Performs Salt Water' }).check();
   await saveAndApprove(page);
 
@@ -112,24 +119,97 @@ test('journey C: songs written, recorded and cleared in production, placed in sc
   const lyricist = await credits.locator('tr', { hasText: 'Song Lyrics By ("Salt Water")' }).locator('td').nth(1).innerText();
   await shot(page, '01-credits');
 
+  const composer = (await credits.locator('tr', { hasText: /^Composer/ }).first().locator('td').nth(1).innerText()).trim();
+
+  // A distributor's theatrical offer, accepted; the film opens in cinemas on the contract's day.
+  for (let i = 0; i < 3 && !(await page.getByRole('button', { name: 'Accept Offer' }).count()); i++) { await advance(page, 'week'); await nav(page, 'Projects'); await page.getByRole('button', { name: 'Night Ferry' }).click(); await section(page, 'Release'); }
+  const offers = page.locator('section.card', { has: page.getByRole('heading', { name: 'Distribution Offers' }) }).locator('li');
+  const theatrical = offers.filter({ hasText: /Theatrical release in .*United States/ });
+  expect(await theatrical.count(), `offers for this seed: ${(await offers.allInnerTexts()).join(' | ')}`).toBeGreaterThan(0);
+  await theatrical.first().getByRole('button', { name: 'Accept Offer' }).click();
+  const history = page.locator('section.card', { has: page.getByRole('heading', { name: 'Release History' }) });
+  await expect(history).toContainText('Theatrical in US');
+  for (let i = 0; i < 8 && !(await history.getByText('Released', { exact: true }).count()); i++) { await advance(page, 'month'); await nav(page, 'Projects'); await page.getByRole('button', { name: 'Night Ferry' }).click(); await section(page, 'Release'); }
+  await expect(history.getByText('Released', { exact: true })).toBeVisible();
+
   // The Oscars' Original Song: one entry per song written for the film, each to its own writers; never the licensed one.
-  const label = (await readSavedState(page)).editions.find((e: { id: string }) => e.id === 'oscars-2027').label as string;
+  const s0 = await readSavedState(page);
+  const oscars = s0.editions.find((e: { id: string }) => e.id === 'oscars-2027');
+  for (let i = 0; i < 12 && (await readSavedState(page)).now < oscars.submissionOpens; i++) await advance(page, 'month');
   await nav(page, 'Projects');
   await page.getByRole('button', { name: 'Night Ferry' }).click();
   await section(page, 'Festivals And Awards');
-  await page.getByRole('button', { name: label, exact: true }).first().click();
+  await page.getByRole('button', { name: oscars.label, exact: true }).first().click();
   const categories = page.getByRole('region', { name: /^(Categories|Sections)$/ });
   await categories.getByLabel('Project').selectOption({ label: 'Night Ferry' });
   await categories.getByLabel('Show').selectOption({ label: 'Every Category' });
   const row = categories.locator('li').filter({ has: page.locator('strong', { hasText: /^Music \(Original Song\)$/ }) });
-  await row.getByRole('button', { name: 'Prepare Submission' }).click();
   const dialog = page.getByRole('dialog', { name: 'Prepare Submission' });
-  await dialog.getByLabel('Song To Enter').selectOption({ label: '"Salt Water"' });
-  await expect(dialog.getByText(`Credited for this entry: ${writers.trim()}, ${lyricist.trim()}.`)).toBeVisible();
-  await dialog.getByLabel('Song To Enter').selectOption({ label: '"Lantern"' });
-  await expect(dialog.getByText(/Credited for this entry: Nia Halvorsen-Mbeki\./)).toBeVisible();
+  const enter = async (title: string, credited: string) => {
+    await row.getByRole('button', { name: 'Prepare Submission' }).click();
+    await dialog.getByLabel('Song To Enter').selectOption({ label: `"${title}"` });
+    await expect(dialog.getByText(`Credited for this entry: ${credited}.`)).toBeVisible();
+    await expect(dialog).not.toContainText(composer); // the score's composer is never credited for a song
+    await dialog.getByRole('button', { name: 'Submit Entry' }).click();
+    await expect(dialog).toBeHidden();
+  };
+  // The licensed song is refused before anything is entered.
+  await row.getByRole('button', { name: 'Prepare Submission' }).click();
   await dialog.getByLabel('Song To Enter').selectOption({ label: '"Harbour Lights"' });
   await expect(dialog.getByText('"Harbour Lights" is licensed; an original song award takes a song written for the work.')).toBeVisible();
   await expect(dialog.getByRole('button', { name: 'Submit Entry' })).toBeDisabled();
-  await shot(page, '02-song-entry');
+  await dialog.getByRole('button', { name: 'Cancel' }).click();
+  await enter('Salt Water', `${writers.trim()}, ${lyricist.trim()}`);
+  await enter('Lantern', 'Nia Halvorsen-Mbeki');
+  await enter('Ember', 'Nia Halvorsen-Mbeki');
+  // A fourth song from the same film: refused by the Academy's limit of three.
+  await row.getByRole('button', { name: 'Prepare Submission' }).click();
+  await dialog.getByLabel('Song To Enter').selectOption({ label: '"Tidewater"' });
+  await dialog.getByRole('button', { name: 'Submit Entry' }).click();
+  await expect(page.getByRole('alert').filter({ hasText: /takes at most 3 songs from one work in this category/ }).first()).toBeVisible();
+  await dialog.getByRole('button', { name: 'Cancel' }).click();
+  const yours = () => page.locator('section', { hasText: 'Your Entries' }).last().locator('li', { hasText: 'Music (Original Song)' });
+  await expect(yours()).toHaveCount(3);
+  await shot(page, '02-song-entries');
+
+  // Judged: each song's own result; at most two from one film nominated.
+  const statuses = async () => (await yours().locator('.chip').allInnerTexts()).map((t) => t.trim());
+  for (let i = 0; i < 6 && (await statuses()).some((t) => ['Submitted', 'Accepted For Consideration'].includes(t)); i++) {
+    await advance(page, 'month');
+    await nav(page, 'Projects');
+    await page.getByRole('button', { name: 'Night Ferry' }).click();
+    await section(page, 'Festivals And Awards');
+    await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: oscars.label }).first().click();
+  }
+  const nominations = await statuses();
+  expect(nominations.every((t) => ['Nominated', 'Not Nominated'].includes(t)), nominations.join(', ')).toBe(true);
+  expect(nominations.filter((t) => t === 'Nominated').length).toBeLessThanOrEqual(2);
+  // A nominated song waits for the ceremony; each then has its own result.
+  for (let i = 0; i < 3 && (await statuses()).includes('Nominated'); i++) {
+    await advance(page, 'month');
+    await nav(page, 'Projects');
+    await page.getByRole('button', { name: 'Night Ferry' }).click();
+    await section(page, 'Festivals And Awards');
+    await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: oscars.label }).first().click();
+  }
+  const judged = await statuses();
+  expect(judged.every((t) => ['Not Nominated', 'Winner', 'Did Not Win'].includes(t)), judged.join(', ')).toBe(true);
+  expect(judged.filter((t) => t !== 'Not Nominated').length).toBe(nominations.filter((t) => t === 'Nominated').length);
+  expect(judged.filter((t) => t === 'Winner').length).toBeLessThanOrEqual(1);
+  const entered = (await readSavedState(page)).editions.find((e: { id: string }) => e.id === 'oscars-2027').entries.filter((e: { categoryId: string }) => e.categoryId === 'song');
+  expect(entered.map((e: { snapshot: { song: { title: string; writers: string[] } } }) => `${e.snapshot.song.title}:${e.snapshot.song.writers.join('+')}`).sort()).toEqual([
+    'Ember:Nia Halvorsen-Mbeki', 'Lantern:Nia Halvorsen-Mbeki', `Salt Water:${writers.trim()}+${lyricist.trim()}`,
+  ]);
+  await shot(page, '03-song-results');
+
+  // Saved, left and continued: the results and what each was entered with are kept.
+  await pressSaveAndExit(page);
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Night Ferry' }).click();
+  await section(page, 'Festivals And Awards');
+  await page.locator('section', { hasText: 'Your Entries' }).getByRole('button', { name: oscars.label }).first().click();
+  expect(await statuses()).toEqual(judged);
+  const after = (await readSavedState(page)).editions.find((e: { id: string }) => e.id === 'oscars-2027').entries.filter((e: { categoryId: string }) => e.categoryId === 'song');
+  expect(after.map((e: { snapshot: unknown }) => e.snapshot)).toEqual(entered.map((e: { snapshot: unknown }) => e.snapshot));
 });
