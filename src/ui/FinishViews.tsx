@@ -8,7 +8,10 @@ import {
   deliveryBlockers, edition, formatDateKey, institution, isEpisodic, ledgerTotals, money, planRelease, puppetStatus,
   qualityWords, CUT_REVIEW_DAYS, depsMet, addDaysToKey, categoryRecipients, type Category,
   categoriesFor, categoryDeadline, categoryRuleStatus, categoryRules, rulebook, screeningTravel, travelTo, cancelRelease, releaseCancelTerms, FACIAL_RIG_PER_SESSION, approveTake, bookMocap, captureCredit, sessionCost, bookingCost, cancelMocapBooking, cancellationTerms, requestRetake, takeChangeImpact,
-  approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, cutScenes, entryNeeds, castPlacement, sceneLabel, addPlan } from '../engine';
+  approvedScenes, subtitlingCost, offerNeeds, offerMaterials, BROADCAST_EDIT_COST, cutFromEdit, cutScenes, entryNeeds, castPlacement, sceneLabel, addPlan,
+  EPISODE_ROUTES, PATTERN_LABELS, presetDates, setEpisodeDates } from '../engine';
+// What a schedule change affects: only the Release tab asks (November 10, 2026).
+import { scheduleChangeEffects } from '../engine/release-schedule';
 import { coverageGaps, lockBlockers, lockPicture, requestPickups, pickupIntegration, cutPassDays, startCutPass, unlockPicture, restoreToEdit } from '../engine/edit-actions';
 import { rsvpScreening, screeningConflicts, submitEntry, withdrawEntry } from '../engine/awards-actions';
 import { publicResult } from '../engine/awards-results';
@@ -19,7 +22,7 @@ import { applyFix, dailies } from '../engine/directing';
 import { isDirecting2 } from '../engine/takes';
 import { contentSummary, cutConsequences, placementExplained, watershedRule } from '../engine/script-explain';
 import type { CapturePart, Edition, EditionEntry, Format, GameState, Project, ReleaseRecord } from '../engine/types';
-import { Check, Modal, PageHead, SelectField, TextField, longLocal, plural } from './components';
+import { Check, Modal, NumberField, PageHead, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
@@ -420,8 +423,18 @@ export function ReleaseTab({ p }: { p: Project }) {
   const [terr, setTerr] = useState(place.country);
   const [err, setErr] = useState<string | null>(null);
   const [cancelling, setCancelling] = useState<string | null>(null);
+  // A series' episode dates: a preset until you change one, then your own (episode-releases.ts).
+  const [pattern, setPattern] = useState<'all' | 'weekly' | 'premiere-weekly'>('weekly');
+  const [onPremiere, setOnPremiere] = useState(2);
+  const [own, setOwn] = useState<string[] | null>(null);
+  const [editing, setEditing] = useState<{ id: string; dates: string[] } | null>(null);
+  const [effects, setEffects] = useState<string[] | null>(null);
   if (!p.delivered) return <div className="card"><h2>Not Delivered Yet</h2><p>Credits and release plans become available once the project is delivered.</p></div>;
   const episodic = isEpisodic(p.axes.format);
+  const scheduled = episodic && EPISODE_ROUTES.includes(route);
+  const count = Math.max(1, p.axes.episodeCount);
+  const planned = own ? [date, ...own.slice(1)] : presetDates(pattern, date, count, onPremiere);
+  const review = () => { try { setEffects(scheduleChangeEffects(g, p, editing!.id, editing!.dates)); setErr(null); } catch (e) { setErr((e as Error).message); } };
   const open = p.offers.filter((o) => o.status === 'open' && o.expiresAt > g.now);
   return (
     <>
@@ -493,18 +506,65 @@ export function ReleaseTab({ p }: { p: Project }) {
         <h2>Plan A Release</h2>
         <div className="grid grid-3 form">
           <SelectField label="Route" value={route} options={(['digital', 'streaming', 'theatrical', 'broadcast'] as const).map((r) => ({ value: r, label: ROUTE_LABELS[r] }))} onChange={setRoute} />
-          <TextField label="Release Date" type="date" value={date} onChange={setDate} />
+          <TextField label="Release Date" type="date" value={date} onChange={(v) => { setDate(v); setOwn(null); }} />
           <TextField label="Territory Code" value={terr} maxLength={2} hint="Two-letter country code, such as US or GB." onChange={(v) => setTerr(v.toUpperCase())} />
         </div>
+        {scheduled && (
+          <fieldset className="form" style={{ border: 0, padding: 0, margin: 0 }}>
+            <legend className="small">Episode Dates</legend>
+            <div className="grid grid-3 form">
+              <SelectField label="Episode Schedule" value={pattern} options={(['all', 'weekly', 'premiere-weekly'] as const).map((x) => ({ value: x, label: PATTERN_LABELS[x] }))} onChange={(v) => { setPattern(v); setOwn(null); }} />
+              {pattern === 'premiere-weekly' && <NumberField label="Episodes On The Premiere" value={onPremiere} min={1} max={count} onChange={(v) => { setOnPremiere(v); setOwn(null); }} />}
+            </div>
+            <p className="dim">Episode 1 comes out on the release date. Change any other date for a break or a split season{own ? '; these are now dates of your own' : ''}. Award rules read when each episode comes out.</p>
+            <div className="grid grid-3 form">
+              {planned.slice(1).map((d, i) => <TextField key={i} label={`Episode ${i + 2}`} type="date" value={d} onChange={(v) => { const next = [...planned]; next[i + 1] = v; setOwn(next); }} />)}
+            </div>
+          </fieldset>
+        )}
         <p className="dim">Theatrical and broadcast releases need a distributor or broadcaster. Release choices affect premiere status for festivals.</p>
-        <button className="btn btn-primary" onClick={() => setErr(store.act((s) => void planRelease(s, p, { route, date, territories: [terr] })))}>Plan Release</button>
+        <button className="btn btn-primary" onClick={() => setErr(store.act((s) => void planRelease(s, p, { route, date, territories: [terr], ...(scheduled ? (own ? { episodeDates: planned } : { pattern, onPremiere }) : {}) })))}>Plan Release</button>
       </section>
       <section className="card">
         <h2>Release History</h2>
         {p.premiere && <p>Premiered {formatDateKey(p.premiere.date)} at {p.premiere.venue}.</p>}
-        {p.releases.length ? <ul className="list">{p.releases.map((r) => <li key={r.id} className="row-wrap"><span className="grow">{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''}{r.note ? <span className="dim"> {r.note}</span> : null} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && <button className="btn btn-sm btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</li>)}</ul> : <p className="muted">No releases yet.</p>}
+        {p.releases.length ? <ul className="list">{p.releases.map((r) => (
+          <li key={r.id}>
+            <div className="row-wrap"><span className="grow">{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''}{r.note ? <span className="dim"> {r.note}</span> : null} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && <button className="btn btn-sm btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</div>
+            {r.episodes?.length ? (
+              <details className="small">
+                <summary>Episode Dates: {r.pattern === 'assumed' ? 'Assumed From An Older Save' : r.pattern ? PATTERN_LABELS[r.pattern] : 'Dates Of My Own'}</summary>
+                {r.pattern === 'assumed' && <p className="dim">This save was made before episode dates were kept. These are the dates the game assumed then ({r.route === 'broadcast' ? 'weekly on television' : 'all at once online'}), not dates recorded at the time.</p>}
+                <ul>{r.episodes.map((e) => <li key={e.id} className="dim">Episode {e.number}: {formatDateKey(e.date)}, {r.status === 'cancelled' ? 'cancelled' : e.status === 'released' ? 'out' : 'to come'}{e.assumed ? ' (assumed date)' : ''}</li>)}</ul>
+                {r.status !== 'cancelled' && r.episodes.some((e) => e.status === 'planned') && editing?.id !== r.id && <button className="btn btn-sm" onClick={() => { setEditing({ id: r.id, dates: r.episodes!.map((e) => e.date) }); setEffects(null); }}>Change Episode Dates</button>}
+                {editing?.id === r.id && (
+                  <div className="form">
+                    <p className="dim">Episodes already out keep their dates. Moving one changes the calendar, and may change which year's awards it counts for: you'll see what changes before anything does.</p>
+                    <div className="grid grid-3 form">
+                      {r.episodes.map((e, i) => e.status === 'released' ? null : <TextField key={e.id} label={`New Date For Episode ${e.number}`} type="date" value={editing.dates[i]} onChange={(v) => setEditing({ id: r.id, dates: editing.dates.map((x, j) => (j === i ? v : x)) })} />)}
+                    </div>
+                    <div className="row gap-2 wrap">
+                      <button className="btn btn-sm btn-primary" onClick={review}>Review The Change</button>
+                      <button className="btn btn-sm" onClick={() => { setEditing(null); setEffects(null); }}>Keep The Dates</button>
+                    </div>
+                  </div>
+                )}
+              </details>
+            ) : null}
+          </li>
+        ))}</ul> : <p className="muted">No releases yet.</p>}
         {p.quality && <p className="dim">Reception in this game: {qualityWords(p.quality.reception)}.</p>}
       </section>
+      {editing && effects && (
+        <Modal title="Change These Episode Dates?" onClose={() => setEffects(null)} footer={
+          <>
+            <button className="btn" onClick={() => setEffects(null)}>Go Back</button>
+            <button className="btn btn-primary" onClick={() => { const e = store.act((s) => void setEpisodeDates(s, s.projects.find((x) => x.id === p.id)!, editing.id, editing.dates)); setErr(e); setEffects(null); if (!e) setEditing(null); }}>Confirm The New Dates</button>
+          </>
+        }>
+          <ul>{effects.map((l) => <li key={l}>{l}</li>)}</ul>
+        </Modal>
+      )}
       {cancelling && (
         <Modal title="Cancel This Release?" onClose={() => setCancelling(null)} footer={
           <>
@@ -795,6 +855,7 @@ function EntryAsEntered({ x, p }: { x: EditionEntry; p: Project }) {
       {gone.length > 0 && <p className="dim">No longer in the credits: {gone.map((r) => r.name).join(', ')}. The entry stands as entered.</p>}
       {n.song && !p.songs?.some((s) => s.id === n.song!.id) && <p className="dim">"{n.song.title}" has since been removed from the project. The entry stands as entered.</p>}
       {n.screen?.length ? <ul>{n.screen.map((t) => <li key={t.creditId} className="dim">{t.text}</li>)}</ul> : null}
+      {n.airing?.length ? <p className="dim">Episode dates when entered: {n.airing.map((a) => `${a.number}, ${formatDateKey(a.date)} (${a.status === 'released' ? 'out' : 'to come'}${a.assumed ? ', assumed' : ''})`).join('; ')}.</p> : null}
     </details>
   );
 }

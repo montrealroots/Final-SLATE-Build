@@ -378,15 +378,19 @@ type EditionEntryStatus = Edition['entries'][number]['status'];
  * A qualifying release under an organizer's rule, or another route it allows: a win on its qualifying-festival list
  * (`list`, from the rule unless given), or an accepted entry in another of the edition's categories.
  */
-function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: CategoryRules, list = rules.release?.value.festivalList ? catalogRules().qualifyingList(rules.release.value.festivalList) : undefined): ReleaseFit {
+function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: CategoryRules, list = rules.release?.value.festivalList ? catalogRules().qualifyingList(rules.release.value.festivalList) : undefined, episode?: number): ReleaseFit {
   const { routes, countries, outside, exempt, festivalAwards, viaCategory, festivalSelection } = rules.release!.value;
   if (exempt?.includes(p.axes.format)) return { ok: true, provisional: false };
   const win = catalogRules().qualifyingWindow(p, rules, ed.eligibility);
   const home = getPlace(p.axes.basePlaceId).country;
   // 'origin' stands for the production country (the Golden Globes' Non-English Language award, A.3.c.vi).
   const where = (t: string) => (outside ? !outside.includes(t) : countries.includes(t) || (countries.includes('origin') && t === home));
-  const fits = (r: Project['releases'][number]) => (routes as string[]).includes(r.route) && r.territories.some(where) && r.date >= win.from && r.date <= win.to;
-  if (p.releases.some((r) => r.status === 'released' && fits(r))) return { ok: true, provisional: false, via: 'release' };
+  // Entered for one episode, a series qualifies by when that episode came out (or is to); until November 10, 2026, by
+  // its release's first day, so an episode still to come counted as shown.
+  const ep = (r: Project['releases'][number]) => (episode !== undefined ? r.episodes?.find((e) => e.number === episode) : undefined);
+  const fits = (r: Project['releases'][number]) => { const d = ep(r)?.date ?? r.date; return (routes as string[]).includes(r.route) && r.territories.some(where) && d >= win.from && d <= win.to; };
+  const out = (r: Project['releases'][number]) => r.status === 'released' && (ep(r)?.status ?? 'released') === 'released';
+  if (p.releases.some((r) => out(r) && fits(r))) return { ok: true, provisional: false, via: 'release' };
   if (list && qualifyingWin(state, p, list)) return { ok: true, provisional: false, via: 'festival' };
   if (festivalAwards && festivalWin(state, p, festivalAwards, win)) return { ok: true, provisional: false, via: 'festival' };
   if (festivalSelection && state.editions.some((e) => {
@@ -397,7 +401,7 @@ function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: Cate
   const via = viaCategory ? ed.entries.find((x) => x.projectId === p.id && x.categoryId === viaCategory && x.status !== 'withdrawn') : undefined;
   const viaName = viaCategory ? institution(ed.institutionId).categories.find((c) => c.id === viaCategory)?.name ?? viaCategory : '';
   if (via && DEEMED_ELIGIBLE.includes(via.status)) return { ok: true, provisional: false, via: 'category' };
-  if (p.releases.some((r) => r.status === 'planned' && fits(r))) return { ok: true, provisional: true, via: 'release' };
+  if (p.releases.some((r) => r.status !== 'cancelled' && !out(r) && fits(r))) return { ok: true, provisional: true, via: 'release' };
   if (via?.status === 'submitted') return { ok: true, provisional: true, via: 'category', note: `Entered provisionally. It qualifies through its ${viaName} entry, which must be accepted.` };
   // A festival-only route (the Goyas' shorts): no release qualifies, only a selection.
   if (!routes.length && festivalSelection) return { ok: false, provisional: false, reason: `It needs a selection at ${festivalSelection.map((i) => institution(i).short).join(', ')} between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}.` };
@@ -406,6 +410,8 @@ function ruledReleaseFits(state: GameState, p: Project, ed: Edition, rules: Cate
   const orFest = list ? `, or a win of an award on the ${institution(ed.institutionId).short} qualifying-festival list between ${formatDateKey(list.window.from)} and ${formatDateKey(list.window.to)}` : festivalAwards ? ', or a top award at one of its qualifying festivals in that time' : '';
   const orVia = viaCategory ? `, or an accepted ${viaName} entry` : '';
   const orSel = festivalSelection ? `, or a selection at ${festivalSelection.map((i) => institution(i).short).join(', ')} in that time` : '';
+  const epDate = p.releases.filter((r) => r.status !== 'cancelled' && (routes as string[]).includes(r.route) && r.territories.some(where)).map((r) => ep(r)?.date).filter((d): d is string => !!d).sort()[0];
+  if (epDate) return { ok: false, provisional: false, reason: `Episode ${episode} comes out ${place} on ${formatDateKey(epDate)}; it needs to come out between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}${orFest}${orSel}${orVia}.` };
   return { ok: false, provisional: false, reason: `It needs ${how} ${place} between ${formatDateKey(win.from)} and ${formatDateKey(win.to)}${orFest}${orSel}${orVia}.` };
 }
 
@@ -602,7 +608,7 @@ export function checkEligibility(state: GameState, p: Project, ed: Edition, cat:
     const sim = simulatedOscarRelease(ed, cat.id);
     // A rule on when episodes aired (the International Emmys) or when work was first shown (the EFA) takes the place of the
     // release check.
-    const rel: ReleaseFit = rules?.airing || rules?.firstShown ? { ok: true, provisional: false } : rules?.release ? ruledReleaseFits(state, p, ed, rules) : sim ? ruledReleaseFits(state, p, ed, sim, festivalListFor(ed, cat.id)) : releaseFits(p, inst, ed);
+    const rel: ReleaseFit = rules?.airing || rules?.firstShown ? { ok: true, provisional: false } : rules?.release ? ruledReleaseFits(state, p, ed, rules, undefined, episode) : sim ? ruledReleaseFits(state, p, ed, sim, festivalListFor(ed, cat.id), episode) : releaseFits(p, inst, ed);
     if (!rel.ok) reasons.push(rel.reason!);
     provisional ||= rel.provisional;
     provisionalNote ??= rel.note;
@@ -811,7 +817,7 @@ registerHandler('edition-deadline', (state, ev) => {
     if (!p || !cat) continue;
     const saved = state.now;
     state.now = Math.min(ed.deadline, categoryDeadline(ed, cat, p)) - 1;
-    const el = checkEligibility(state, p, ed, cat, e.recipients, e.versionId);
+    const el = checkEligibility(state, p, ed, cat, e.recipients, e.versionId, e.episode, e.songId);
     state.now = saved;
     if (el.eligible && cat.recipient === 'national') {
       // The production country's committee puts forward one film (docs/awards/DESIGN.md rule 7).

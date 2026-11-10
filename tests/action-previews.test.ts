@@ -39,7 +39,8 @@ const ACTIONS: Record<string, { preview: string; outcome: string }> = {
   lockPicture: { preview: 'What locking still needs, and the finishing work it starts.', outcome: LOG },
   makeOffer: { preview: 'The day rate field and the paid days for the production window.', outcome: 'The hire row shows Offer Out; the answer is logged.' },
   moveShootDay: { preview: 'Where Move the Shoot puts the day, and that agreed costs stay.', outcome: LOG },
-  planRelease: { preview: 'You choose the route, date and territory; what each route needs is stated.', outcome: LOG },
+  planRelease: { preview: 'You choose the route, date and territory; what each route needs is stated. A series shows every episode\'s date before you plan it.', outcome: `${LOG} Each day episodes come out is on the calendar.` },
+  setEpisodeDates: { preview: 'Change These Episode Dates? lists each episode that moves, the release day and any exclusive window that move with it, and every entry whose qualification would change.', outcome: `${LOG} The release lists each episode's date and whether it is out.` },
   requestConsent: { preview: 'They answer within two to six days.', outcome: 'The contributor shows Consent Requested; the answer is logged.' },
   requestPickups: { preview: 'A pickup is a paid shoot day after the main shoot; restarted plate integration is shown.', outcome: LOG },
   rerecordLines: { preview: 'The Additional Work card says who is paid and for how long.', outcome: 'The part shows re-recording booked, then done.' },
@@ -56,7 +57,7 @@ const ACTIONS: Record<string, { preview: string; outcome: string }> = {
   withdrawRelease: { preview: 'The withdrawal dialog says whether footage will be redacted.', outcome: LOG },
 };
 // Names the parser matches in the interface that aren't player actions spending anything.
-const NOT_ACTIONS = new Set(['commit', 'newGame']); // a portrait picker's own commit(); starting a life
+const NOT_ACTIONS = new Set(['commit', 'newGame', 'scheduleChangeEffects']); // a portrait picker's own commit(); starting a life; a preview tried on a copy of the game
 
 function spendingActions(): string[] {
   const files: string[] = [];

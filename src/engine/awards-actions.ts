@@ -11,6 +11,7 @@ import type { Edition, EditionEntry, EntrySnapshot, GameState, Project, Screenin
 import { assessedWords, playerScore } from './awards-results';
 import { shareCheck } from './screen-time';
 import { versionRuntime } from './versions';
+import { airings } from './episode-releases';
 
 export function submitEntry(state: GameState, p: Project, editionId: string, categoryId: string, recipientIds?: string[], versionId?: string, episode?: number, songId?: string): EditionEntry {
   const ed = edition(state, editionId);
@@ -84,6 +85,8 @@ export function entrySnapshot(p: Project, cat: Parameters<typeof playerScore>[1]
     recipients: credits.map((c) => ({ id: c.id, name: c.personName, contribution: c.contribution, ...(c.characterName ? { characterName: c.characterName } : {}) })),
     ...(screen ? { screen: credits.map((c) => ({ creditId: c.id, text: shareCheck(p, c, screen.atLeast, screen.per, { episode: e.episode, versionId: e.versionId }).text })) } : {}),
     ...(song ? { song: { id: song.id, title: song.title, writers: credits.map((c) => c.personName) } } : {}),
+    // A series: each episode's date as it stood, planned or out, so a later change to the schedule shows against it.
+    ...(isEpisodic(p.axes.format) && p.releases.some((r) => r.episodes) ? { airing: airings(p).map((a) => ({ number: a.number, date: a.date, status: a.planned ? 'planned' as const : 'released' as const, ...(a.assumed ? { assumed: true as const } : {}) })) } : {}),
   };
 }
 

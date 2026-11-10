@@ -3,7 +3,7 @@
 
 import type { Place } from '../data/places';
 
-export const SAVE_VERSION = 8;
+export const SAVE_VERSION = 9;
 
 export type PronounSet = 'he' | 'she' | 'they';
 export type ActingTitle = 'Actor' | 'Actress';
@@ -656,6 +656,23 @@ export interface ReleaseRecord {
   /** The accepted offer this release fulfils, and its delivery-materials budget line. */
   offerId?: string;
   obligationId?: string;
+  /** A series: each episode's own date in this release (episode-releases.ts). The release's date is its first. */
+  episodes?: EpisodeRelease[];
+  /** How the dates were chosen; 'assumed' when an older save's dates were reconstructed (episode-releases.ts). */
+  pattern?: ReleasePattern;
+}
+
+export type ReleasePattern = 'all' | 'weekly' | 'premiere-weekly' | 'custom' | 'assumed';
+
+/** One episode in one release: planned until its day comes, then released, and never moved after that. */
+export interface EpisodeRelease {
+  /** Stable: the release's id and the episode's number. */
+  id: string;
+  number: number;
+  date: string;
+  status: 'planned' | 'released';
+  /** Reconstructed from an older save's release by the rule it was judged by then, not a date anyone set. */
+  assumed?: true;
 }
 
 export interface DistributionOffer {
@@ -847,6 +864,8 @@ export interface EntrySnapshot {
   /** Screen time shown for each performer entered, as the calculation stood. */
   screen?: { creditId: string; text: string }[];
   song?: { id: string; title: string; writers: string[] };
+  /** A series: when each episode first came out, or was to, as it stood when entered (episode-releases.ts airings). */
+  airing?: { number: number; date: string; status: 'planned' | 'released'; assumed?: true }[];
 }
 
 /** A competing work from the simulated season, stored once per save and shared by every edition it appears in. */
