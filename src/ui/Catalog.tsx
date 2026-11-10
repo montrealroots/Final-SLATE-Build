@@ -648,6 +648,7 @@ export function PersonPage({ refId }: { refId: string }) {
   const today = useToday();
   const r = parseRef(refId);
   const bucket = useCatalogFile<Record<string, PersonRecord>>(r?.kind === 'person' ? fileFor(refId) : null);
+  const index = useCatalogFile<CatalogIndex>('index.json');
   return <Status loaded={bucket} what="this person">{(b) => {
     const p = b[String(r!.id)];
     if (!p) return <Empty title="This Person Isn't In The Catalog"><p className="muted">They aren't credited on any title the catalog covers.</p></Empty>;
@@ -669,7 +670,9 @@ export function PersonPage({ refId }: { refId: string }) {
               {p.details.biography && <p className="muted">{p.details.biography}</p>}
               <p className="dim small">From TMDB, {formatDateKey(p.details.retrievedAt.slice(0, 10))}.</p>
             </>
-          ) : <p className="muted">Only this person's credits were gathered, not their details: details are gathered for each title's top-billed cast and its directors, writers, producers, composers, cinematographers and editors.</p>}
+          ) : <p className="muted">{index.status === 'ready' && index.data.peopleRule.all
+            ? 'TMDB has no details for this person, only their credits, so their birth date and age aren\'t known.'
+            : 'Only this person\'s credits were gathered, not their details: details are gathered for each title\'s top-billed cast and its directors, writers, producers, composers, cinematographers and editors.'}</p>}
         </Panel>
         <Panel title="Credits In The Catalog" subtitle="Their credits on the titles this catalog covers, from TMDB. Their other work isn't gathered. A credit is a record of past work, not who they work for or whether they could work for you.">
           {CREDIT_GROUPS.map((g) => {

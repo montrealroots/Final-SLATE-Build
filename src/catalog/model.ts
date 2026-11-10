@@ -15,7 +15,8 @@ export interface CatalogIndex {
   registryChecked: string;
   retrieved: { from: string | null; to: string | null; maxAgeDays: number };
   counts: Record<string, number>;
-  peopleRule: { cast: number; jobs: string[] };
+  /** Whose details were fetched: top-billed cast and key crew, or (`all`, from November 10, 2026) everyone credited. */
+  peopleRule: { cast: number; jobs: string[]; all?: boolean };
   discovery: { company: number; type: 'movie' | 'tv'; reported: number | null; found: number; pages: number; split: boolean; failedPages: (number | string)[] }[];
   failures: number;
   stale: number;
