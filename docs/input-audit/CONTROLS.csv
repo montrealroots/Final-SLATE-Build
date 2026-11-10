@@ -1,4 +1,9 @@
 screen,label,occurrence,class,state,consumer,effect,unit_test,journey,journey_kind,journey_proves
+Catalog.tsx,"""Title Or Person""",1,view,,,,,,,
+Catalog.tsx,"""Search Titles""",1,view,,,,,,,
+Catalog.tsx,"""Show""",1,view,,,,,,,
+Catalog.tsx,"""Order""",1,view,,,,,,,
+Catalog.tsx,{`Include titles not released by ${formatDateKey(today)}`},1,view,,,,,,,
 Creation.tsx,"""First Name""",1,identity,character.firstName,identity.ts legalName,The legal name on credits,tests/identity.test.ts::credits carry the legal name,e2e/creation.spec.ts::editing from Review,targeted,
 Creation.tsx,"""Middle Name (Optional)""",1,identity,character.middleName,identity.ts legalName,Part of the legal name on credits,tests/identity.test.ts::credits carry the legal name,,,
 Creation.tsx,"""Last Name""",1,identity,character.lastName,identity.ts legalName,The legal name on credits,tests/identity.test.ts::credits carry the legal name,,,

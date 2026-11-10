@@ -12,3 +12,7 @@ coverage/
 artifacts/screenshots-local/
 .impeccable/hook.cache.json
 __pycache__/
+
+# Screen catalog: TMDB responses and the built catalog stay out of git (TMDB terms: cached at most six months, no redistribution; docs/CATALOG.md).
+.screen-catalog-cache/
+.screen-catalog/

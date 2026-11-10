@@ -49,6 +49,8 @@ const REASONS: Record<string, string> = {
   'FinishViews.tsx | cutting': 'The episode row says a cut pass is under way; it is listed among what holds it back.',
   'FinishViews.tsx | lockWhy.length > 0': 'The episode row lists what must happen before it can be locked.',
   'FinishViews.tsx | why.length > 0': 'The episode row says what is holding it back.',
+  'Catalog.tsx | at === 0': 'The line above the list says which page of how many is shown.',
+  'Catalog.tsx | at >= pages - 1': 'The line above the list says which page of how many is shown.',
   'components.tsx | props.disabled': 'Passed through from the caller, which is listed here in its own right.',
 };
 for (const f of ['!act.trim()', '!change.trim()', '!changing.kind.trim()', '!changing.rule.trim()', '!claim.trim()', '!label.trim()', '!name.trim()', '!q.trim()', '!rule.trim()', '!thread.trim()', '!text.trim()']) REASONS[`ScriptViews.tsx | ${f}`] = FIELD;

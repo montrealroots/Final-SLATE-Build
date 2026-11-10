@@ -31,6 +31,8 @@ This repository is the continuing base for the game. It is a working, tested bas
   - Fictional distribution offers and release planning.
   - 16 festivals and 21 award events with their official rosters (802 sections, categories, prizes and honorary awards; `docs/awards/INVENTORY.md`): eligibility read from the project, recipients from credits, submission, selection or nomination, prizes decided among a section's selection, honorary awards from a career, screenings, results, and honors that go to the credited people. Rival work comes from a consistent slate each season.
 
+- **Screen catalog (reference):** Companies lists The Walt Disney Company's studios and labels with their sourced leadership at your save's date, and, where the catalog has been gathered on this machine, the films and series TMDB credits to them, with cast, crew, seasons, episodes and people (`docs/CATALOG.md`). It changes nothing in the simulation. TMDB's terms keep its data out of the repository and out of builds.
+
 ## Current Limitations
 
 - Festival and award rules: 66 of 802 categories (Academy Awards 99th, Sundance 2027, Clermont-Ferrand 2027, Annie Awards 54th, Annecy 2026, Venice 2026, Golden Globes 84th, Emmys 78th) follow the organizers' published rules, and Cannes short films and the Berlinale competition use projected rules; the rest are **simulated** and labelled so in the game (`docs/world/RULEBOOK-AUDIT.md`). Dates are organizer-announced for 19 of 37 institutions and planning dates otherwise (`docs/world/INSTITUTION-AUDIT.md`).
@@ -83,6 +85,7 @@ npm run build
 - `npm run catalog` regenerates the runtime genre catalog from the full registry.
 - `npm run balance` runs the 30-seed balance experiments and the held-out combinations, writing `docs/balance-results.json` and `docs/balance-heldout.json` (about 100 seconds).
 - `npm run budget` checks build sizes after `npm run build`.
+- `npm run screen-catalog:import` then `npm run screen-catalog:build` gather the screen catalog from TMDB into git-ignored folders (`docs/CATALOG.md`). They need a session whose proxy holds the TMDB network secret; neither reads or stores a key.
 - `npm run check` runs the world data check, typecheck, unit tests, build and size budgets together. CI also runs balance and the browser journeys.
 
 ## Saves
@@ -108,6 +111,6 @@ npm run build
 
 ## Build Policy
 
-This base was built by one primary coding agent, with no sub-agents, parallel agents or delegation. The development environment's documentation lookup (Context7) runs anonymously, and the code-graph tool runs without a model backend. No API keys are used by the game or its build.
+This base was built by one primary coding agent, with no sub-agents, parallel agents or delegation. The development environment's documentation lookup (Context7) runs anonymously, and the code-graph tool runs without a model backend. No API keys are used by the game or its build. The screen catalog's importer relies on the cloud session's proxy to authenticate with TMDB and never handles a key itself.
 
 No license has been chosen for this repository yet. Inherited genre references and data sources are listed in `docs/DATA-PROVENANCE.md`.

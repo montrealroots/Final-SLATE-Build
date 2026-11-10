@@ -17,6 +17,8 @@
     "balance": "vitest run --config vitest.balance.config.ts",
     "check": "npm run world:check && npm run typecheck && npm run test && npm run build && npm run budget",
     "catalog": "node scripts/trim-genre-registry.mjs",
+    "screen-catalog:import": "NODE_USE_ENV_PROXY=1 node --no-warnings tools/screen-catalog/import.mjs",
+    "screen-catalog:build": "node --no-warnings tools/screen-catalog/build.mjs",
     "world:check": "node scripts/world-import.mjs",
     "world:legacy": "node scripts/legacy-places.mjs",
     "budget": "node scripts/perf-budget.mjs",
