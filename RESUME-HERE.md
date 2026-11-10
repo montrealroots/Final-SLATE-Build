@@ -56,6 +56,38 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
+### Newest Request (November 10, 2026, after #58): gameplay connectivity, release schedules, WebKit title, startup, journeys
+
+The owner asked for six things in order. What was done:
+
+1. **Every control classed, and each decision compared.**
+   - `docs/input-audit/CONTROLS.csv` holds 221 controls, guarded by `tests/input-audit.test.ts`.
+   - `tests/decision-effects.test.ts` changes one choice at a time.
+   - `docs/INPUT-AUDIT.md` has a trace for each area the owner listed. No broken link was found.
+2. **Episode release schedules.**
+   - Presets you edit, a schedule for each release, planned against released, and events with no duplicates.
+   - They reach the calendar, exclusive windows, the airing rule and each episode entry's window.
+   - Entries keep the dates they were entered with, and a change is previewed before it is made.
+   - Save version 9 marks the dates of older saves as assumed. See `docs/RELEASE-SCHEDULES.md`.
+3. **WebKit title loss: still open.** No cause found and nothing in the app changed for it. `e2e/title-input.spec.ts`
+   passed 123 times this session. The attempts are in `QA-REPORT.md` (Open). The WebKit focus-and-input log stays on.
+4. **Startup.**
+   - 694 kB / 222 kB gzipped down to 667 / 213: the place search now loads with the screens that search for a place.
+   - `main` was at 685 / 219; the budget is unchanged.
+   - What a browser fetches before first use is in `docs/PERFORMANCE.md` (`scripts/perf-first-use.mjs`).
+5. **Journeys.**
+   - A: `journey-a.spec.ts`, from the script to a festival result and a reload.
+   - B: `release-schedule.spec.ts`.
+   - C: `journey-c.spec.ts`, songs played through production.
+   - D: `journey-d.spec.ts`, one choice compared through the UI.
+   - E: `journey-e.spec.ts` with `careers.spec.ts` and `failures.spec.ts`, refusals and their recovery.
+
+Next:
+- 77 of the 132 decision controls have unit evidence only. Their rows in `CONTROLS.csv` have no journey. Add journeys
+  where a player would notice the choice.
+- The release schedule doesn't model a territory holding another back, or episodes airing out of order.
+- When the next CI run fails on WebKit with an empty title, read its `focus-and-input.txt` first.
+
 ### Newest Request (November 9, 2026, after #55): every saved field is read
 
 The owner asked for an input audit, then: "Everything that doesn't read needs to read perfectly."

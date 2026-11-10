@@ -6,8 +6,9 @@ import { findPlace, getPlace } from '../data/places';
 import { personById } from './people';
 import { competesAs } from './script-effects';
 import { approvedScenes, isEpisodic, isNonfiction } from './projects';
+import { airings } from './episode-releases';
 import { citizenshipOf, countryInSentence } from './identity';
-import { addDaysToKey, formatDateKey } from './time';
+import { formatDateKey } from './time';
 import type { CategoryRules, DeadlineRule } from './rulebooks';
 import type { Credit, Edition, GameState, Project, Song } from './types';
 
@@ -358,11 +359,12 @@ export function pickDeadline(list: DeadlineRule[], p: Project | undefined, compl
  * episode a week from its date and a streaming or digital release puts every episode out that day. Read from its first
  * television or online release; a film or special is one airing.
  */
+/**
+ * When each episode first came out, or is to (episode-releases.ts `airings`). Until November 10, 2026 this was assumed
+ * from the first release: weekly on television, every episode at once online. Each release now keeps its own dates.
+ */
 export function episodeAirDates(p: Project): { date: string; countries: string[]; planned: boolean }[] {
-  const tv = p.releases.filter((r) => r.status !== 'cancelled' && (r.route === 'broadcast' || r.route === 'streaming' || r.route === 'digital')).sort(byDate)[0];
-  if (!tv) return [];
-  const n = isEpisodic(p.axes.format) ? Math.max(1, p.axes.episodeCount) : 1;
-  return Array.from({ length: n }, (_, i) => ({ date: tv.route === 'broadcast' ? addDaysToKey(tv.date, 7 * i) : tv.date, countries: tv.territories, planned: tv.status === 'planned' }));
+  return airings(p).map(({ date, countries, planned }) => ({ date, countries, planned }));
 }
 
 /** The EFA's European elements (Fiction Films 4.1), out of 21: who made it and where, from its credits and its base. */
@@ -442,7 +444,12 @@ export function readRuleProblems(state: GameState, p: Project, ed: Edition, catI
         const other = state.editions.find((e) => e.institutionId === ed.institutionId && e.id !== ed.id && e.entries.some((x) => x.projectId === p.id && x.status !== 'withdrawn'));
         if (other) out.push(`Half its episodes aired in each year, so it could enter either year's competition, but it is already entered at the ${other.label}.`);
       }
-      if (first.planned && !out.length) provisional = `Entered provisionally: its first airing, on ${formatDateKey(first.date)}, is still planned.`;
+      // A planned date isn't proof: while the episodes that make the majority haven't all come out, the entry is
+      // provisional, and checked again before judging (awards-results.ts disqualifyCancelled). Until November 10, 2026
+      // only a planned first airing made it provisional, so a season whose later episodes were still to come counted
+      // them as aired.
+      const aired = dates.filter((d) => !d.planned && d.date >= win.from && d.date <= win.to).length;
+      if (!out.length && aired * 2 < n) provisional = n === 1 ? `Entered provisionally: its first airing, on ${formatDateKey(first.date)}, is still planned.` : `Entered provisionally: ${inside - aired} of the ${inside} episodes it counts between ${formatDateKey(win.from)} and ${formatDateKey(win.to)} are still to come out.`;
       const not = air.notFirstIn ?? [];
       const firstIn = tvReleases.filter((r) => r.territories.some((t) => not.includes(t))).sort(byDate)[0];
       const firstOut = tvReleases.filter((r) => r.territories.some((t) => !not.includes(t))).sort(byDate)[0];

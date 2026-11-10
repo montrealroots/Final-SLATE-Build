@@ -12,6 +12,7 @@ import { normalizeDraft } from './state';
 import { migrateV4toV5 } from './finance';
 import { knownAs, migrateV5toV6, migrateV6toV7 } from './identity';
 import { migrateV7toV8 } from './songs';
+import { migrateV8toV9 } from './episode-releases';
 
 export interface KeyValueStore {
   getItem(key: string): string | null;
@@ -151,6 +152,8 @@ export const MIGRATIONS: Record<number, Migration> = {
   6: migrateV6toV7,
   // v7 -> v8: songs become works with writers, rights and uses; what old saves didn't record stays unknown (songs.ts).
   7: migrateV7toV8,
+  // v8 -> v9: a series' releases keep each episode's date; older ones get the dates the rules assumed, marked assumed (episode-releases.ts).
+  8: migrateV8toV9,
 };
 
 export function migrate(raw: unknown): GameState {

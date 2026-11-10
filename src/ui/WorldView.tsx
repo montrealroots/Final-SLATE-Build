@@ -1,7 +1,8 @@
 import { useEffect, useId, useMemo, useState } from 'react';
 import { getPlace, placeLabel } from '../data/places';
 import { travelHours } from '../engine';
-import { countryName, toGamePlace, type WorldPlace } from '../world/gazetteer/gazetteer';
+import { countryName, type WorldPlace } from '../world/gazetteer/gazetteer';
+import { toGamePlace } from '../world/gazetteer/search';
 import { CHOSEN_NOTE, MAP_CREDIT, boxAround, frameBox, loadMap, markerRadiusAt, projectPoint, strokeAt, viewBoxOf, type WorldMapData } from '../world/map/map';
 import { formatDuration } from '../engine';
 import { PageHead } from './components';

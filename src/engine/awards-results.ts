@@ -37,8 +37,8 @@ export function committee(state: GameState, ed: Edition, p: Project, taken?: str
 }
 
 /**
- * An entry accepted on a planned release that was then cancelled no longer qualifies: it is disqualified before judging,
- * and its fee isn't refunded. Entries that qualified on a completed release keep their place.
+ * An entry accepted on a planned release that was then cancelled, or moved out of the window, no longer qualifies: it is
+ * disqualified before judging, and its fee isn't refunded. Entries that qualified on a completed release keep their place.
  */
 export function disqualifyCancelled(state: GameState, ed: Edition, messages: string[]): void {
   const inst = institution(ed.institutionId);
@@ -48,7 +48,8 @@ export function disqualifyCancelled(state: GameState, ed: Edition, messages: str
     if (!p || !cat) continue;
     const saved = state.now;
     state.now = Math.min(ed.deadline, categoryDeadline(ed, cat, p)) - 1;
-    const el = checkEligibility(state, p, ed, cat, e.recipients, e.versionId);
+    // The entry as entered: its episode and song too (until November 10, 2026 an episode's entry was checked as the season).
+    const el = checkEligibility(state, p, ed, cat, e.recipients, e.versionId, e.episode, e.songId);
     state.now = saved;
     if (el.eligible) continue;
     e.status = 'disqualified';

@@ -9,6 +9,7 @@ export * from './people';
 export * from './production';
 export * from './hiring';
 export * from './finish';
+export * from './episode-releases';
 export * from './awards';
 export * from './rulebooks';
 export * from './weather';

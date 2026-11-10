@@ -1,7 +1,8 @@
 import { lazy, Suspense, useEffect, useId, useMemo, useState } from 'react';
 import { CHOSEN_NOTE, MAP_CREDIT } from '../world/map/map';
 import { findPlace, placeLabel, searchPlaces, type Place } from '../data/places';
-import { PLAYABLE_COUNTRIES, placesOf, regionsOf, search, toGamePlace, type WorldPlace } from '../world/gazetteer/gazetteer';
+import { PLAYABLE_COUNTRIES, type WorldPlace } from '../world/gazetteer/gazetteer';
+import { placesOf, regionsOf, search, toGamePlace } from '../world/gazetteer/search';
 import { Field } from './components';
 
 const SHOWN = 20;

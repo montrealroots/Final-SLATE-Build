@@ -66,6 +66,63 @@ import failed. The budget is unchanged. What remains is React (218,747 bytes), t
 and shell. The next candidates, each needing the same wait-before-a-game treatment, are the 66 legacy places' climate
 (28.6 kB) and the award and festival rules (`awards.ts` and `rulebooks.ts`, the largest engine modules).
 
+## Startup Headroom, November 10, 2026
+
+Measured before changing anything:
+
+- `main` at `bc0f070`: 685 kB, 219 kB gzipped (`npm run budget`).
+- With the episode release schedules (`docs/RELEASE-SCHEDULES.md`), 694 kB, 222 kB gzipped. That was over the 220 kB budget.
+
+Source maps of the startup files (`vite build --sourcemap`, bytes attributed to each source module) showed two kinds of
+code that no part of opening a game needs:
+
+- **The place search**, in the entry file and the engine file:
+  - the URL of each of the 246 country place files;
+  - the region and station loaders;
+  - the search ranking;
+  - the place picker (`WorldPicker.tsx`) and the map credits.
+
+  The start screen needs a place search only to repair a save that names a place the game can't find. The engine
+  needs only country names. `src/world/gazetteer/gazetteer.ts` now holds the country index, and `search.ts` the rest.
+  The start screen loads the picker when the repair screen is shown, as the app's routes already did, with a loading line.
+- **The schedule change preview** (`release-schedule.ts`), which only the Release tab asks for. It left the engine's
+  index and is imported by `FinishViews.tsx`, which already loads with a project.
+
+Nothing moved into a file fetched right after startup, and the engine is unchanged. The budget is unchanged.
+
+| Measure (production build) | `main` (`bc0f070`) | Before (this branch) | After |
+| --- | --- | --- | --- |
+| Startup JavaScript (`npm run budget`) | 685 kB, 219 kB gzipped | 694 kB, 222 kB gzipped | 667 kB, 213 kB gzipped |
+
+What a browser fetches before each first use is measured by `scripts/perf-first-use.mjs`:
+
+- Each path starts from a fresh page with nothing cached, until the screen is usable and the network is idle.
+- Bytes are as served, with gzip -9 of each body as the estimate of what a compressing server sends.
+- Times are the median of 5 runs on this machine, without CPU slowdown.
+
+| Path | `main` JS | `main` data | `main` time | After JS | After data | After time |
+| --- | --- | --- | --- | --- | --- | --- |
+| Start screen | 844 kB (263 gz) | 1,158 kB (128 gz) | 287 ms | 826 kB (256 gz) | 1,158 kB (128 gz) | 280 ms |
+| Continue into a medium save until the game is open | 844 kB (263 gz) | 1,158 kB (128 gz) | 389 ms | 826 kB (256 gz) | 1,158 kB (128 gz) | 396 ms |
+| New Game until creation's first field takes typing | 882 kB (276 gz) | 1,291 kB (178 gz) | 1,122 ms | 890 kB (279 gz) | 1,291 kB (178 gz) | 1,038 ms |
+
+The start screen and Continue fetch 18 kB less JavaScript (7 kB gzipped) than `main`, though the release schedules
+added about 9 kB to the engine. The new-game path fetches 8 kB more:
+
+- creation needs the place search anyway, so it gains nothing there;
+- it pays for the schedule engine;
+- the picker is now its own file.
+
+The times differ by less than their run-to-run spread. They show no regression, and no gain either.
+
+The background JavaScript (the award and festival rules, `awards-rules` and `awards-results`, about 160 kB) and the
+data are fetched before a game opens because the engine reads them while time passes. They are unchanged.
+
+Headroom under the budget is now 33 kB raw and 7 kB gzipped.
+
+The next candidates are in the engine file (314 kB). Every engine module is imported by another engine module, so
+moving any of them out would change the engine's structure, not only its loading. They are left as they are.
+
 ## What A Browser Downloads, November 7, 2026
 
 Moving data out of the startup JavaScript didn't remove its download: the files are still fetched, only later and beside

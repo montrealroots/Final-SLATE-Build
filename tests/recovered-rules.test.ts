@@ -106,11 +106,12 @@ describe('International Emmys: the 2026 Rules & Regulations (and 2027 projected 
     expect(why(s, short, e, 'short-form')).toBe('Its episodes average 20 minutes. This category takes episodes under 20 minutes, credits included.');
     short.delivered!.runtimeMin = 6 * 19;
     expect(why(s, short, e, 'short-form')).toBe('');
-    // A planned first airing in the window enters provisionally.
+    // Planned airings in the window enter provisionally. The note named only the first airing until November 10, 2026;
+    // it now counts the episodes the majority rests on that haven't come out (episode-releases.ts).
     const planned = show();
     release(planned, 'broadcast', '2026-12-01', ['GB'], 'planned'); // six weekly airings, December 1 to January 5: five in 2026
     const pl = checkEligibility(s, planned, e, cat(e, 'drama'));
-    expect([pl.eligible, pl.provisional, pl.provisionalNote]).toEqual([true, true, 'Entered provisionally: its first airing, on December 1, 2026, is still planned.']);
+    expect([pl.eligible, pl.provisional, pl.provisionalNote]).toEqual([true, true, 'Entered provisionally: 5 of the 5 episodes it counts between January 1, 2026 and December 31, 2026 are still to come out.']);
   });
 
   it('performances: scripted, live-action programs not made for children, 20-minute episodes, no narrators', () => {

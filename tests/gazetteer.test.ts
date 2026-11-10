@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { COUNTRIES, PLAYABLE_COUNTRIES, cached, fold, hasPlaces, placesOf, regionsOf, search, summaryClimate, toGamePlace } from '../src/world/gazetteer/gazetteer';
+import { COUNTRIES, PLAYABLE_COUNTRIES } from '../src/world/gazetteer/gazetteer';
+import { cached, fold, hasPlaces, placesOf, regionsOf, search, summaryClimate, toGamePlace } from '../src/world/gazetteer/search';
 import { createProject, deserialize, newGame, serialize, travelTo } from '../src/engine';
 import { findPlace } from '../src/data/places';
 import { draft } from './fixtures';

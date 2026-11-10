@@ -21,8 +21,9 @@ import { gaussian, pick, stream } from './rng';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
 import { redactionComplete } from './unscripted';
 import { songCredits, songUses } from './songs';
+import { assumedDates, episodeDateProblem, episodesFor, hasEpisodes, onReleaseDay, presetDates, syncReleaseEvents } from './episode-releases';
 import { DAY, addDaysToKey, dateKey, formatDateKey, isDateKey, localToInstant, parseYmd } from './time';
-import type { Credit, DistributionOffer, GameState, Project, ReleaseRecord, Scene } from './types';
+import type { Credit, DistributionOffer, GameState, Project, ReleasePattern, ReleaseRecord, Scene } from './types';
 
 // ---------------- Editing ----------------
 
@@ -324,7 +325,12 @@ export const ROUTE_LABELS: Record<ReleaseRecord['route'], string> = {
   'festival-premiere': 'Festival Premiere', theatrical: 'Theatrical', streaming: 'Streaming', broadcast: 'Broadcast', digital: 'Digital Self-Release',
 };
 
-export function planRelease(state: GameState, p: Project, input: { route: ReleaseRecord['route']; date: string; territories: string[]; distributor?: string | null }): ReleaseRecord {
+/**
+ * A series on television or online also takes its episodes' dates: a preset (all at once, weekly, or several on the
+ * premiere and then weekly) or dates of your own (`episodeDates`, one per episode, the first being the release date).
+ * Without either it comes out as it did before November 10, 2026: weekly on television, all at once online.
+ */
+export function planRelease(state: GameState, p: Project, input: { route: ReleaseRecord['route']; date: string; territories: string[]; distributor?: string | null; pattern?: Exclude<ReleasePattern, 'assumed'>; onPremiere?: number; episodeDates?: string[] }): ReleaseRecord {
   if (!p.delivered) throw new Error('Deliver the project before planning a release.');
   if (input.route === 'festival-premiere') throw new Error('Festival premieres come from festival selection.');
   if (!input.territories.length) throw new Error('Choose at least one territory.');
@@ -336,9 +342,23 @@ export function planRelease(state: GameState, p: Project, input: { route: Releas
     throw new Error(input.route === 'theatrical' ? 'A theatrical release needs a distributor. Accept a distribution offer first.' : 'A broadcast needs a broadcaster. Accept an offer first.');
   }
   const rec: ReleaseRecord = { id: newId(state, 'r'), route: input.route, date: input.date, territories: input.territories, distributor: input.distributor ?? null, note: '', status: 'planned' };
+  const episodic = hasEpisodes(p, input.route);
+  if (episodic) {
+    const n = Math.max(1, p.axes.episodeCount);
+    const pattern = input.episodeDates ? 'custom' : input.pattern ?? (input.route === 'broadcast' ? 'weekly' : 'all');
+    const dates = input.episodeDates ?? (pattern === 'custom' ? assumedDates(rec, n) : presetDates(pattern, input.date, n, input.onPremiere));
+    if (dates[0] !== input.date) throw new Error('The first episode comes out on the release date.');
+    rec.episodes = episodesFor(rec.id, dates);
+    rec.pattern = pattern;
+  }
   p.releases.push(rec);
+  if (episodic) {
+    const why = episodeDateProblem(state, p, rec.id, rec.episodes!.map((e) => e.date));
+    if (why) { p.releases.pop(); throw new Error(why); }
+  }
   const { year, month, day } = parseYmd(input.date);
   schedule(state, localToInstant(zone, year, month, day, 9).instant, 'release', { projectId: p.id, releaseId: rec.id }, { attention: 'notify', priority: 30 });
+  if (episodic) syncReleaseEvents(state, p, rec);
   addLog(state, `${p.title} will be released (${ROUTE_LABELS[rec.route].toLowerCase()}) on ${formatDateKey(input.date)}.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
   return rec;
 }
@@ -349,6 +369,7 @@ registerHandler('release', (state, ev) => {
   if (!p || !r || r.status !== 'planned') return { suppressInterrupt: true };
   r.status = 'released';
   p.phase = 'released';
+  onReleaseDay(r);
   // The contract's delivery materials are paid now, once.
   if (r.obligationId) {
     const ob = p.obligations.find((x) => x.id === r.obligationId);
@@ -554,7 +575,7 @@ export function cancelRelease(state: GameState, p: Project, releaseId: string): 
   }
   r.status = 'cancelled';
   r.note = offer ? `Cancelled; ${money(offer.minimumGuarantee)} went back to ${offer.distributor}.` : 'Cancelled before it happened.';
-  cancelEvents(state, (e) => e.kind === 'release' && e.payload.releaseId === r.id);
+  cancelEvents(state, (e) => (e.kind === 'release' || e.kind === 'episode-release') && e.payload.releaseId === r.id);
   if (r.obligationId) cancel(state, p, r.obligationId);
   const o = r.offerId ? p.offers.find((x) => x.id === r.offerId) : undefined;
   if (o) {

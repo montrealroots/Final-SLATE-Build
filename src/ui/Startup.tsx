@@ -1,6 +1,8 @@
-import { useRef, useState } from 'react';
+import { lazy, Suspense, useRef, useState } from 'react';
 import { findPlace, placeLabel, type Place } from '../data/places';
-import { WorldPlacePicker } from './WorldPicker';
+// Only a save that names a place the game can't find needs a place search, so it loads with that screen (November 10,
+// 2026); until then the start screen carried it.
+const WorldPlacePicker = lazy(() => import('./WorldPicker').then((m) => ({ default: m.WorldPlacePicker })));
 import { Check, Modal, TextField, Wordmark, longLocal, realTimestamp } from './components';
 import { store, useStore } from './store';
 
@@ -383,7 +385,7 @@ function RepairPlaces() {
         {r.ids.map((id, i) => (
           <section key={id} className="card spaced" aria-labelledby={`miss-${i}`}>
             <h2 id={`miss-${i}`}>{(r.uses[id] ?? ['A place in this save']).join(', ')}</h2>
-            <WorldPlacePicker label={`Replacement Place ${i + 1}`} value={chosen[id]?.id ?? ''} onChoose={(pl) => setChosen({ ...chosen, [id]: pl })} />
+            <Suspense fallback={<p role="status">Loading the place search…</p>}><WorldPlacePicker label={`Replacement Place ${i + 1}`} value={chosen[id]?.id ?? ''} onChoose={(pl) => setChosen({ ...chosen, [id]: pl })} /></Suspense>
           </section>
         ))}
         {error && <p role="alert" className="error">{error}</p>}
