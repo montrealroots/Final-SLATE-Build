@@ -42,7 +42,7 @@ describe('a budget size is an estimate, not money', () => {
     const needs = Object.fromEntries(backerOptions(s, p).map((o) => [o.kind, o.needs]));
     expect(needs).toEqual({
       starting: 'Approve a script first.', grant: 'Approve a script first.', investor: 'Approve a script first.',
-      'co-producer': 'Get some funding promised first; they only match other backers.', earnings: 'Your delivered projects have kept no money yet.', commissioner: 'Deliver a project first.',
+      'co-producer': 'Get some funding promised first; they only match other backers.', earnings: "Your delivered projects haven't kept any income yet: what they earn counts once their backers are repaid and paid their shares.", commissioner: 'Deliver a project first.',
     });
     expect(() => approachBacker(s, p, 'grant')).toThrow('Approve a script first.');
   });
@@ -56,7 +56,7 @@ describe('the starting backing: the agreed starting scenario', () => {
     expect(d.status).toBe('offered'); // agreed when the story began: no waiting, no refusal
     expect(d.amount).toBe(400_000); // capped at the low-budget size, though the target is 4,000,000
     expect(BACKERS.starting.why).toMatch(/Agreed when your story began/);
-    expect(dealTerms(d)).toEqual(['$400,000 when you sign.', "They are repaid $400,000 from the project's income before the project keeps any.", 'They are credited: "With Thanks To Starting Backing".']);
+    expect(dealTerms(d)).toEqual(['$400,000 when you sign.', "They are repaid $400,000 from the project's income before the project keeps any.", 'They are credited: "With Thanks To Starting Backing".', "What the project doesn't spend of it stays with the project."]);
     expect(p.funding.fund).toBe(0); // nothing until accepted
     acceptDeal(s, p, d.id);
     expect(p.funding.fund).toBe(400_000);

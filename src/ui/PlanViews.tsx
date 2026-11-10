@@ -5,7 +5,7 @@ import { languageName } from '../data/identity';
 import { getPlace } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
 import {
-  BACKERS, EXPERIENCE, betterTerms, COUNTER_DAYS, type BetterTerm, assignEpisodeRole, backerDocuments, earningsKept, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
+  BACKERS, EXPERIENCE, betterTerms, COUNTER_DAYS, type BetterTerm, assignEpisodeRole, backerDocuments, moneyKept, ownMoney, ownMoneyNotes, OWN_MONEY, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
@@ -639,10 +639,32 @@ function CostCutsCard({ p }: { p: Project }) {
 
 const POSTING_WORDS: Record<Obligation['postings'][number]['kind'], string> = { reserve: 'Held', commit: 'Agreed at', settle: 'Paid', cancel: 'Released' };
 
+/** A delivered project's uncommitted money, by whose it is and what it may do (finance.ts moneyKept). */
+function MoneyKeptCard({ p }: { p: Project }) {
+  const m = moneyKept(p);
+  return (
+    <section className="card" aria-labelledby="kept-h">
+      <h2 id="kept-h">What This Project Has Left</h2>
+      <dl className="kv">
+        <dt>Production Funding Left</dt><dd>{money(m.restricted)}</dd>
+        <dt>Held For Bills To Pay</dt><dd>{money(m.held)}</dd>
+        <dt>Your Earnings</dt><dd>{money(m.earnings)}</dd>
+        {(m.capital > 0 || m.moved.capital > 0) && <><dt>Your Unspent Money</dt><dd>{money(m.capital)}</dd></>}
+        {m.moved.earnings > 0 && <><dt>Earnings Put Into Other Projects</dt><dd>{money(m.moved.earnings)}</dd></>}
+        {m.moved.capital > 0 && <><dt>Unspent Money Put Into Other Projects</dt><dd>{money(m.moved.capital)}</dd></>}
+      </dl>
+      <p className="dim">Production funding stays with this project: its backers paid it in to make it. Your earnings are the income it kept after its backers were repaid and paid their shares, and they can go into a new project{m.capital > 0 ? ', as can money you put in that it didn\'t spend' : ''}. What it spends comes out of production funding first.</p>
+      {m.oldMove && <p className="callout callout-warning">{money(m.oldMove.settled)} was moved out of this project under the earlier rule, which didn't tell its income from its production funding. That move stands, and no more money can move out of it.</p>}
+    </section>
+  );
+}
+
 export function BudgetTab({ p }: { p: Project }) {
   useGame();
   const t = ledgerTotals(p);
   const cats = categoryTotals(p);
+  const kept = moneyKept(p);
+  const movedOut = kept.moved.earnings + kept.moved.capital;
   return (
     <>
       <section className="card">
@@ -651,14 +673,16 @@ export function BudgetTab({ p }: { p: Project }) {
           <dt>Received From Backers</dt><dd>{money(p.funding.fund)}</dd>
           {p.funding.extra.map((e) => <Fragment key={e.label}><dt>{e.label}</dt><dd>{money(e.amount)}</dd></Fragment>)}
           {p.revenue > 0 && <><dt>Distribution Income</dt><dd>{money(p.revenue)}</dd></>}
-          <dt>Spent</dt><dd>{money(t.settled)}</dd>
+          <dt>Spent</dt><dd>{money(t.settled - movedOut)}</dd>
+          {movedOut > 0 && <><dt>Put Into Other Projects</dt><dd>{money(movedOut)}</dd></>}
           <dt>Agreed But Unpaid</dt><dd>{money(t.committedOutstanding)}</dd>
           <dt>Held For Open Offers</dt><dd>{money(t.reserved)}</dd>
           <dt>Uncommitted</dt><dd><strong>{money(t.available)}</strong></dd>
         </dl>
-        <div className="meter spaced" role="img" aria-label={`${Math.round((t.settled / Math.max(1, t.fund)) * 100)} percent spent`}><span style={{ width: `${Math.min(100, (t.settled / Math.max(1, t.fund)) * 100)}%` }} /></div>
+        <div className="meter spaced" role="img" aria-label={`${Math.round(((t.settled - movedOut) / Math.max(1, t.fund)) * 100)} percent spent`}><span style={{ width: `${Math.min(100, ((t.settled - movedOut) / Math.max(1, t.fund)) * 100)}%` }} /></div>
         <p className="dim">Rates and fees are game assumptions, not quoted industry prices.</p>
       </section>
+      {p.delivered && <MoneyKeptCard p={p} />}
       {p.approvedDraft !== null && !p.delivered && <WhatItCostsCard p={p} />}
       {p.approvedDraft !== null && !p.delivered && <CostCutsCard p={p} />}
       <section className="card">
@@ -686,6 +710,20 @@ export function BudgetTab({ p }: { p: Project }) {
         </details>
       </section>
       <FinancingPanel p={p} />
+    </>
+  );
+}
+
+/** How much of your own money is there, where it is, and (under Your Earnings) why the rest of your projects' money isn't. */
+function OwnMoneyLines({ p, kind }: { p: Project; kind: 'earnings' | 'capital' }) {
+  const g = useGame();
+  const from = ownMoney(g, p.id)[kind];
+  const total = from.reduce((s, x) => s + x.amount, 0);
+  const notes = kind === 'earnings' ? ownMoneyNotes(g, p) : [];
+  return (
+    <>
+      <p className="muted">{total ? `${money(total)} can go in: ${from.map((x) => `${money(x.amount)} from ${x.p.title}`).join(', ')}.` : 'Nothing can go in yet.'}</p>
+      {notes.length > 0 && <ul className="dim">{notes.map((n) => <li key={n}>{n}</li>)}</ul>}
     </>
   );
 }
@@ -735,7 +773,7 @@ function FinancingPanel({ p }: { p: Project }) {
             {deals(p).map((d) => (
               <li key={d.id}>
                 <div className="row-wrap">
-                  <span className="grow"><strong>{d.backer}</strong>{d.amount ? `: ${money(d.amount)}` : ''} <span className="dim small">{d.kind === 'earnings' ? 'Put In' : 'Approached'} {formatDateKey(dateKey(d.askedAt, zone))}</span></span>
+                  <span className="grow"><strong>{d.backer}</strong>{d.amount ? `: ${money(d.amount)}` : ''} <span className="dim small">{OWN_MONEY.has(d.kind) ? 'Put In' : 'Approached'} {formatDateKey(dateKey(d.askedAt, zone))}</span></span>
                   <span className={`chip ${d.status === 'accepted' ? 'chip-positive' : d.status === 'declined' || d.status === 'breached' || d.status === 'withdrawn' || d.status === 'lapsed' ? 'chip-negative' : d.status === 'offered' ? 'chip-accent' : ''}`}>{status[d.status]}</span>
                 </div>
                 {d.sent?.length ? <p className="dim">Sent with the approved script{d.sentCopy?.draft ? ` (draft ${d.sentCopy.draft})` : ''}: {d.sent.join(', ')}. They read it; the game doesn't judge it.</p> : null}
@@ -753,6 +791,7 @@ function FinancingPanel({ p }: { p: Project }) {
                 )}
                 {d.status === 'considering' && <p className="muted">Their answer is due {formatDateKey(dateKey(d.decideAt ?? g.now, getPlace(p.axes.basePlaceId).zone))}.</p>}
                 {d.reason && <p className="muted">{d.reason}</p>}
+                {d.transfer && <p className="dim">Moved from {d.transfer.sources.map((x) => `${g.projects.find((y) => y.id === x.projectId)?.title ?? 'a project'} (${money(x.amount)})`).join(', ')}.</p>}
                 {(d.status === 'offered' || d.status === 'accepted' || d.status === 'breached') && <ul className="dim">{dealTerms(d).map((t) => <li key={t}>{t}</li>)}</ul>}
                 {(d.status === 'accepted' || d.status === 'breached') && d.terms.recoup > 0 && <p className="dim">Repaid so far: {money(d.repaid)} of {money(d.terms.recoup)}.</p>}
                 {d.status === 'offered' && d.expiresAt !== undefined && <p className="muted">Open until {formatDateKey(dateKey(d.expiresAt, zone))}. After that it lapses, and they aren't asked again for this project.</p>}
@@ -797,10 +836,11 @@ function FinancingPanel({ p }: { p: Project }) {
             <li key={o.kind} className="row-wrap">
               <div className="grow">
                 <strong>{BACKERS[o.kind].name}</strong>{o.kind === 'starting' ? <> <span className="chip">Agreed Starting Scenario</span></> : null}
-                <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why}{o.needs.includes('Still to write') ? '' : ` ${backerDocuments(o.kind)}`}{o.kind === 'earnings' ? ` Your delivered projects keep ${money(earningsKept(g, p.id))}.` : BACKERS[o.kind].decideDays ? ` They answer within ${plural(BACKERS[o.kind].decideDays, 'day')}.` : ''}</p>
+                <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why}{o.needs.includes('Still to write') ? '' : ` ${backerDocuments(o.kind)}`}{OWN_MONEY.has(o.kind) ? '' : BACKERS[o.kind].decideDays ? ` They answer within ${plural(BACKERS[o.kind].decideDays, 'day')}.` : ''}</p>
+                {o.kind === 'earnings' || o.kind === 'capital' ? <OwnMoneyLines p={p} kind={o.kind} /> : null}
                 {!o.ready && <p className="dim">{o.needs}</p>}
               </div>
-              <button className="btn btn-sm" disabled={!o.ready} onClick={() => setErr(store.act((s) => void approachBacker(s, live(s), o.kind)))} aria-label={o.kind === 'earnings' ? 'Put In Your Earnings' : `Approach ${BACKERS[o.kind].name}`}>{o.kind === 'starting' ? 'Ask For The Agreed Backing' : o.kind === 'earnings' ? 'Put In Your Earnings' : 'Approach'}</button>
+              <button className="btn btn-sm" disabled={!o.ready} onClick={() => setErr(store.act((s) => void approachBacker(s, live(s), o.kind)))} aria-label={OWN_MONEY.has(o.kind) ? `Put In ${BACKERS[o.kind].name}` : `Approach ${BACKERS[o.kind].name}`}>{o.kind === 'starting' ? 'Ask For The Agreed Backing' : OWN_MONEY.has(o.kind) ? `Put In ${BACKERS[o.kind].name}` : 'Approach'}</button>
             </li>
           ))}
         </ul>

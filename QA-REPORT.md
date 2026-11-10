@@ -8,7 +8,23 @@
 
 ## Commands And Results
 
-### Current: Screens Lined Up, And Every Cycle Followed Through (November 10, 2026, after #60)
+### Current: Your Earnings Is Only Your Money (November 10, 2026, after #61)
+
+The cycle fix in #61 offered a delivered project's whole uncommitted balance as Your Earnings, unspent grant and investor
+money included. That was replaced by the rules in `docs/EARNINGS.md`.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npx vitest run` (inside `npm run check`) | 0 | 82 files, 639 tests. New `tests/earnings.test.ts` has 13 tests. `tests/cycles.test.ts` and `tests/finance.test.ts` were changed to the new rule and terms. Seven hand mutations of `finance.ts` were tried. Six failed tests at once. The seventh, dropping the cap at uncommitted money, failed only after the test of income taken back was added. |
+| `npm run balance` | 0 | 2 files passed. |
+| `npm run check` | 0 | Startup 678 kB, 216 kB gzipped (budgets 700 and 220). |
+| `earnings`, `decisions`, `negotiation`, `first-project`, `careers` on desktop and phone | 0 | 17 passed, 3 skipped by design. `earnings` was run again after its capture changed: 2 passed. |
+| `decisions`, `connected` on `iphone-15-pro-max` (WebKit) | 0 | 4 passed. |
+
+The injected test in `e2e/decisions.spec.ts` was removed. It wrote $50,000 into a save. `e2e/earnings.spec.ts` replaces it,
+with no fixture but the pinned world seed (3).
+
+### Previous: Screens Lined Up, And Every Cycle Followed Through (November 10, 2026, after #60)
 
 Commits `44e2a77` (alignment and capitals across the screens) and the commit that adds this section (cycles).
 

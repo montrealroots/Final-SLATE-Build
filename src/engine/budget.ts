@@ -119,7 +119,8 @@ export function spend(state: GameState, p: Project, label: string, category: Obl
 export function categoryTotals(p: Project): Record<string, { planned: number; settled: number }> {
   const out: Record<string, { planned: number; settled: number }> = {};
   for (const o of p.obligations) {
-    if (o.state === 'cancelled') continue;
+    // Your money moved to another project isn't spending on this one (finance.ts moveOwnMoney).
+    if (o.state === 'cancelled' || o.ref?.startsWith('transfer:')) continue;
     const c = (out[o.category] ??= { planned: 0, settled: 0 });
     c.planned += o.amount;
     c.settled += o.settled;

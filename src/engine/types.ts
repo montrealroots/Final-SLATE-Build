@@ -392,7 +392,7 @@ export interface CastAssignment {
   hireId?: string;
 }
 
-export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings';
+export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital';
 
 /** A backer approached for a project, and what was agreed (finance.ts). */
 export interface FinanceDeal {
@@ -410,7 +410,17 @@ export interface FinanceDeal {
   reason: string; // why they agreed, or why not
   received: number; // paid into the project so far
   repaid: number; // paid back to them from income so far
-  terms: { recoup: number; incomeShare: number; approvalRights: string[]; credit: string | null; onDelivery: number; deliverBy: number | null };
+  /**
+   * unspent: who has what the deal paid in and the project didn't spend (finance.ts moneyKept). 'stays': it stays with the
+   * project it was raised for; 'yours': it is the player's again once the project is delivered. Deals made before
+   * November 10, 2026 have none, and are read as 'stays': a missing term never lets money move.
+   */
+  terms: { recoup: number; incomeShare: number; approvalRights: string[]; credit: string | null; onDelivery: number; deliverBy: number | null; unspent?: 'stays' | 'yours' };
+  /**
+   * Your own money moved in from delivered projects (finance.ts moveOwnMoney): one transfer, its id on every budget line it
+   * paid out of (ref transfer:<id>:<kind>, settle key transfer:<id>). Deals accepted before November 10, 2026 have none.
+   */
+  transfer?: { id: string; sources: { projectId: string; amount: number }[] };
   /** The documents sent with the approach (names, as listed when it was made). */
   sent?: string[];
   /**

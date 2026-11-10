@@ -1,11 +1,12 @@
 // Cycles closed on November 10, 2026, after an audit of every outcome the game produces for what reads it next. Four
-// stopped short: backers counted delivered projects but not how they did; the money a finished project kept went nowhere;
+// stopped short: backers counted delivered projects but not how they did; the money a finished project kept went nowhere
+// (its income now can fund the next project, tests/earnings.test.ts);
 // attending a festival screening changed nothing; and the player's own craft never grew. Each test compares the same
 // world with the one input changed. Labelled fixtures: earlier work is set delivered and assessed directly, as other
 // engine tests do, because making it is the work of the journeys.
 import { describe, expect, it } from 'vitest';
-import { DAY, acceptDeal, approachBacker, backerOptions, createProject, deals, financeSummary, institution, ledgerTotals, processUntil, spend } from '../src/engine';
-import { earningsKept, trackRecord } from '../src/engine/finance';
+import { DAY, acceptDeal, approachBacker, backerOptions, createProject, deals, institution, ledgerTotals, processUntil, receiveIncome } from '../src/engine';
+import { trackRecord } from '../src/engine/finance';
 import { assessQuality, playerExperience } from '../src/engine/finish';
 import { screeningHappens } from '../src/engine/awards-results';
 import { deserialize, serialize } from '../src/engine/save';
@@ -68,40 +69,26 @@ describe('a track record counts with backers, not only a count of delivered work
 });
 
 describe('what a finished project kept can fund the next one', () => {
-  it('offers it as Your Earnings, moves it through both ledgers on acceptance, and survives a reload', () => {
-    // Before November 10, 2026 the money a delivered project kept stayed in its budget for good: nothing read it.
+  it('its income can; its unspent production funding stays with it', () => {
+    // Before November 10, 2026 the money a delivered project kept stayed in its budget for good: nothing read it. That day
+    // it was first offered to the next project as Your Earnings, all of it, unspent backers' money included; later that
+    // day only the income it kept after its backers' repayments and shares could move (tests/earnings.test.ts).
     const s = startLife('cyc-earn');
     const old = earlier(s, 70);
-    const kept = ledgerTotals(old).available;
-    expect(kept).toBeGreaterThan(0);
+    const raised = ledgerTotals(old).available;
+    expect(raised).toBeGreaterThan(0);
     const p = next(s);
-    expect(earningsKept(s, p.id)).toBe(kept);
-    expect(backerOptions(s, p).find((o) => o.kind === 'earnings')).toMatchObject({ ready: true, needs: '' });
+    expect(backerOptions(s, p).find((o) => o.kind === 'earnings')?.ready).toBe(false);
+    old.revenue += receiveIncome(s, old, 12_000, 'A distributor');
     const d = approachBacker(s, p, 'earnings');
-    expect(d.status).toBe('offered');
-    const amount = Math.min(kept, financeSummary(p).stillToRaise);
-    expect(d.amount).toBe(amount);
-    expect(d.terms).toMatchObject({ recoup: 0, incomeShare: 0, approvalRights: [], credit: null });
+    expect(d.amount).toBe(12_000);
     acceptDeal(s, p, d.id);
-    expect(ledgerTotals(p).available).toBe(amount);
-    expect(ledgerTotals(old).available).toBe(kept - amount);
+    expect(ledgerTotals(p).available).toBe(12_000);
+    expect(ledgerTotals(old).available).toBe(raised);
     const out = old.obligations.find((o) => o.label === 'Put Into Next One')!;
     expect(out.postings.map((x) => x.kind)).toEqual(['reserve', 'settle']);
     const back = deserialize(serialize(s));
-    expect(ledgerTotals(back.projects.find((x) => x.id === old.id)!).available).toBe(kept - amount);
-  });
-
-  it('with nothing kept it is not offered; if what was kept is spent before acceptance, nothing moves', () => {
-    const s = startLife('cyc-earn-none');
-    const p0 = next(s);
-    expect(backerOptions(s, p0).find((o) => o.kind === 'earnings')).toMatchObject({ ready: false, needs: 'Your delivered projects have kept no money yet.' });
-    const old = earlier(s, 70);
-    const p = next(s);
-    const d = approachBacker(s, p, 'earnings');
-    spend(s, old, 'Something else', 'materials', ledgerTotals(old).available - 1, 'cyc-spent');
-    expect(() => acceptDeal(s, p, d.id)).toThrow(/Your delivered projects keep \$1 now, less than the/);
-    expect(d.status).toBe('offered');
-    expect(ledgerTotals(p).available).toBe(0);
+    expect(ledgerTotals(back.projects.find((x) => x.id === old.id)!).available).toBe(raised);
   });
 });
 

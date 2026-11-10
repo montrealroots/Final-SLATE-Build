@@ -5,7 +5,7 @@
 // Every term the game shows is one it enforces: repayment from income, a share of income, approval rights, a credit,
 // and a delivery deadline. Amounts and decisions are game calibration, not industry figures.
 
-import { ledgerTotals, money, spend } from './budget';
+import { closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { getPlace } from '../data/places';
 import { TERRITORY_CITIZENSHIP, countryInSentence, homeCountries } from './identity';
 import { DOCUMENTS, documentNames, documentsNeeded, type DocumentId } from './script-effects';
@@ -14,7 +14,7 @@ import { OFFER_OPEN_DAYS, openOffer } from './negotiation';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY } from './time';
-import type { FinanceDeal, FinanceDealKind, GameState, Project } from './types';
+import type { FinanceDeal, FinanceDealKind, GameState, Obligation, Project } from './types';
 
 /** What each kind of backer is, said once, the same everywhere. */
 export const BACKERS: Record<Exclude<FinanceDealKind, 'agreed'>, { name: string; who: string; why: string; decideDays: number }> = {
@@ -44,8 +44,14 @@ export const BACKERS: Record<Exclude<FinanceDealKind, 'agreed'>, { name: string;
   },
   earnings: {
     name: 'Your Earnings',
-    who: 'The money your delivered projects have kept: what was left of their budgets and their share of what they earned.',
+    who: 'The income your delivered projects kept once their backers were repaid and paid their shares.',
     why: 'Yours to put into a new project. Nobody is repaid from it, nobody takes a share and nobody holds approval rights.',
+    decideDays: 0,
+  },
+  capital: {
+    name: 'Your Unspent Money',
+    who: 'Money you put into your delivered projects that they didn\'t spend.',
+    why: 'It was yours before and is yours again. It isn\'t income: it is money you already had, back to put into a new project.',
     decideDays: 0,
   },
   commissioner: {
@@ -100,29 +106,142 @@ export function trackRecord(state: GameState): { works: number; reception: numbe
 }
 const withNote = (text: string, note: string) => (note ? `${text} ${note}` : text);
 
-/** Projects whose budgets still hold money once they are delivered, most first: what the player's earnings are. */
-function keepers(state: GameState, except?: string): { p: Project; kept: number }[] {
-  return state.projects.filter((x) => x.delivered && x.id !== except).map((x) => ({ p: x, kept: Math.floor(ledgerTotals(x).available) })).filter((x) => x.kept > 0).sort((a, b) => b.kept - a.kept);
+// What a project's money is, and whose (November 10, 2026). Until then any money a delivered project had left was offered
+// to the next one as Your Earnings, so an unspent grant or an investor's money could be moved out of the project it was
+// raised for and called income. A project's money now comes in three parts, each from what was recorded:
+//   - production funding: what backers paid in (deals, and partners recorded before deals existed) under terms that keep
+//     what is unspent with the project ('stays'), or under no such term at all, which is read the same way;
+//   - your own money: what you put in from earlier projects, whose deals say what is unspent is yours again ('yours');
+//   - income the project kept: p.revenue, which receiveIncome has already paid backers' repayments and shares out of.
+// What the project spent, and every bill agreed or held but not yet paid, is charged to production funding first, then
+// to your own money, then to income. That order is a simulation assumption: money raised to make a project pays for
+// making it. Moving money out of a project is a budget line whose ref names the transfer and the kind of money it moved.
+
+/** Your own money, as a new project can take it: income a delivered project kept, or money you put in that it didn't spend. */
+export type OwnMoneyKind = 'earnings' | 'capital';
+export const OWN_MONEY: ReadonlySet<FinanceDealKind> = new Set<FinanceDealKind>(['earnings', 'capital']);
+
+/** How much a budget line takes from the project: paid, plus agreed or held and not yet paid. */
+const used = (o: Obligation) => o.settled + (o.state === 'reserved' || o.state === 'committed' ? Math.max(0, o.amount - o.settled) : 0);
+/** The kind of your money a line moved to another project, or null if it isn't a transfer. */
+const transferKind = (o: Obligation): OwnMoneyKind | null => {
+  const k = o.ref?.startsWith('transfer:') ? o.ref.split(':')[2] : null;
+  return k === 'earnings' || k === 'capital' ? k : null;
+};
+/** Money moved out under the rule before November 10, 2026: a finance payment keyed earnings:<deal>, which recorded no kind. */
+const movedUnderOldRule = (o: Obligation) => o.category === 'finance' && !o.ref && o.postings.some((x) => x.key.startsWith('earnings:'));
+
+export interface MoneyKept {
+  /** Production funding the project still has, which stays with it. */
+  restricted: number;
+  /** Bills agreed or held and not yet paid: part of what the project has used. */
+  held: number;
+  /** Income the project kept, unspent and not yet moved. */
+  earnings: number;
+  /** Money you put in that the project hasn't spent or moved. */
+  capital: number;
+  moved: Record<OwnMoneyKind, number>;
+  /** The budget line that moved money out under the old rule, if any: no more can move out of this project. */
+  oldMove: Obligation | null;
 }
-/** The money your delivered projects have kept, which a new project can take as Your Earnings. */
-export function earningsKept(state: GameState, except?: string): number {
-  return keepers(state, except).reduce((s, x) => s + x.kept, 0);
+
+/** The parts of a project's money, from its deals, income and budget lines. They add up to what the ledger has uncommitted. */
+export function moneyKept(p: Project): MoneyKept {
+  let cost = Math.max(0, -p.revenue); // income taken back (a cancelled release) is a cost like any other
+  let held = 0;
+  let oldMove: Obligation | null = null;
+  const moved: Record<OwnMoneyKind, number> = { earnings: 0, capital: 0 };
+  for (const o of p.obligations) {
+    const k = transferKind(o);
+    if (k) { moved[k] += used(o); continue; }
+    if (movedUnderOldRule(o)) oldMove = o;
+    cost += used(o);
+    held += used(o) - o.settled;
+  }
+  const yours = accepted(p).filter((d) => d.terms.unspent === 'yours').reduce((s, d) => s + d.received, 0);
+  const raised = p.funding.fund + p.funding.extra.reduce((s, e) => s + e.amount, 0);
+  const charge = (pool: number) => { const t = Math.max(0, Math.min(pool, cost)); cost -= t; return pool - t; };
+  const restricted = charge(raised - yours);
+  const capital = charge(yours - moved.capital);
+  const earnings = Math.max(0, p.revenue) - moved.earnings - cost;
+  return { restricted: Math.max(0, restricted), held, earnings: Math.max(0, earnings), capital: Math.max(0, capital), moved, oldMove };
 }
+
+/** What a delivered project can give a new one of each kind of your money: never more than its ledger has uncommitted. */
+function movable(p: Project, k: OwnMoneyKind): number {
+  if (!p.delivered) return 0;
+  const m = moneyKept(p);
+  return m.oldMove ? 0 : Math.max(0, Math.floor(Math.min(m[k], ledgerTotals(p).available)));
+}
+
+/** Your money in your other projects, by kind, most first, and where the rest of their money is. */
+export function ownMoney(state: GameState, except?: string) {
+  const others = state.projects.filter((x) => x.id !== except);
+  const from = (k: OwnMoneyKind) => others.map((p) => ({ p, amount: movable(p, k) })).filter((x) => x.amount > 0).sort((a, b) => b.amount - a.amount || a.p.id.localeCompare(b.p.id));
+  const done = others.filter((x) => x.delivered).map((p) => ({ p, m: moneyKept(p) }));
+  return {
+    earnings: from('earnings'),
+    capital: from('capital'),
+    restricted: done.filter((x) => x.m.restricted >= 1).map((x) => ({ p: x.p, amount: Math.floor(x.m.restricted) })),
+    held: done.reduce((s, x) => s + x.m.held, 0),
+    oldRule: done.filter((x) => x.m.oldMove).map((x) => ({ p: x.p, line: x.m.oldMove! })),
+    inProduction: others.filter((x) => !x.delivered && ledgerTotals(x).available >= 1).length,
+    everPutIn: state.projects.some((x) => accepted(x).some((d) => d.terms.unspent === 'yours')),
+  };
+}
+export const ownMoneyTotal = (state: GameState, k: OwnMoneyKind, except?: string) => ownMoney(state, except)[k].reduce((s, x) => s + x.amount, 0);
+
+const titles = (xs: { p: Project; amount: number }[]) => xs.map((x) => `${x.p.title} (${money(x.amount)})`).join(', ');
+
+/** Why your other money can't go into this project, in sentences for the Raise Money card. */
+export function ownMoneyNotes(state: GameState, p: Project): string[] {
+  const o = ownMoney(state, p.id);
+  const out: string[] = [];
+  if (o.restricted.length) out.push(`Production funding still in your delivered projects stays with them: it was raised to make them. ${titles(o.restricted)}.`);
+  if (o.held >= 1) out.push(`${money(o.held)} in your delivered projects is held for bills they still have to pay.`);
+  if (o.inProduction) out.push(`Money in ${o.inProduction === 1 ? 'a project' : 'projects'} you haven't delivered is in use until ${o.inProduction === 1 ? 'it is' : 'they are'} delivered.`);
+  for (const x of o.oldRule) out.push(`${money(x.line.settled)} was moved out of ${x.p.title} under the earlier rule, which didn't tell its income from its production funding. That move stands, and no more money can move out of ${x.p.title}.`);
+  return out;
+}
+
 /**
- * Moves the money from the delivered projects that kept it into this one, as a payment out of each budget, so each
- * ledger is still the sum of its postings. Refused, and nothing moves, if less is kept now than was offered.
+ * Moves your money from delivered projects into this one as one transfer, at the moment the offer is accepted: each source
+ * pays a budget line out, the deal records where it came from, and acceptDeal credits this project once. Checked again
+ * now, and refused with nothing changed if less is there than was offered or the money was moved already.
  */
-function drawEarnings(state: GameState, p: Project, d: FinanceDeal): void {
-  const kept = earningsKept(state, p.id);
-  if (kept < d.amount) throw new Error(`Your delivered projects keep ${money(kept)} now, less than the ${money(d.amount)} offered. Ask again for what they keep.`);
+function moveOwnMoney(state: GameState, p: Project, d: FinanceDeal): void {
+  const kind = d.kind as OwnMoneyKind;
+  const id = `tr-${d.id}`;
+  // Either side of the transfer already recorded means it happened: a retry, a reload or a second acceptance moves nothing.
+  if (state.projects.some((x) => deals(x).some((y) => y.transfer?.id === id) || x.obligations.some((o) => o.ref?.startsWith(`transfer:${id}:`)))) throw new Error('This money has already been moved.');
+  const sources = ownMoney(state, p.id)[kind];
+  const there = sources.reduce((s, x) => s + x.amount, 0);
+  if (there < d.amount) throw new Error(`${BACKERS[kind].name} ${there ? `comes to ${money(there)} now` : 'has nothing in it now'}, less than the ${money(d.amount)} offered, so nothing was moved. Turn this offer down and put in what there is.`);
+  const plan: { p: Project; amount: number }[] = [];
   let left = d.amount;
-  for (const k of keepers(state, p.id)) {
+  for (const x of sources) {
     if (left <= 0) break;
-    const take = Math.min(left, k.kept);
-    spend(state, k.p, `Put Into ${p.title}`, 'finance', take, `earnings:${d.id}`);
-    k.p.history.push({ at: state.now, text: `${money(take)} of what it kept was put into ${p.title}.` });
+    const take = Math.min(left, x.amount);
+    plan.push({ p: x.p, amount: take });
     left -= take;
   }
+  const counter = state.idCounter;
+  const added: { p: Project; id: string }[] = [];
+  try {
+    for (const x of plan) {
+      const o = reserve(state, x.p, `Put Into ${p.title}`, 'finance', x.amount, `transfer:${id}:${kind}`);
+      added.push({ p: x.p, id: o.id });
+      settle(state, x.p, o.id, x.amount, `transfer:${id}`);
+      closeSettled(x.p, o.id);
+    }
+  } catch (e) {
+    for (const a of added) a.p.obligations = a.p.obligations.filter((o) => o.id !== a.id);
+    state.idCounter = counter;
+    throw e;
+  }
+  d.transfer = { id, sources: plan.map((x) => ({ projectId: x.p.id, amount: x.amount })) };
+  const what = kind === 'earnings' ? 'income it kept' : 'money you put in that it didn\'t spend';
+  for (const x of plan) x.p.history.push({ at: state.now, text: `${money(x.amount)} of the ${what} was put into ${p.title}.` });
 }
 
 /**
@@ -142,10 +261,10 @@ const scriptApproved = (p: Project) => p.approvedDraft !== null && p.approvedDra
  * backer answer a week later instead; it now simply has to be written before the application that includes it is sent.
  */
 export const BACKER_DOCUMENTS: Record<Exclude<FinanceDealKind, 'agreed'>, DocumentId[]> = {
-  starting: [], earnings: [], investor: ['pitch'], 'co-producer': ['pitch'], commissioner: ['pitch', 'treatment'], grant: ['pitch', 'treatment', 'statement'],
+  starting: [], earnings: [], capital: [], investor: ['pitch'], 'co-producer': ['pitch'], commissioner: ['pitch', 'treatment'], grant: ['pitch', 'treatment', 'statement'],
 };
 const SUBMISSION: Record<Exclude<FinanceDealKind, 'agreed'>, string> = {
-  starting: 'The starting backing', earnings: 'Your earnings', investor: 'An approach to an investor', 'co-producer': 'An approach to a co-production partner',
+  starting: 'The starting backing', earnings: 'Your earnings', capital: 'Your unspent money', investor: 'An approach to an investor', 'co-producer': 'An approach to a co-production partner',
   commissioner: 'A pitch to a commissioner', grant: 'A grant application',
 };
 
@@ -183,9 +302,10 @@ export function backerOptions(state: GameState, p: Project): { kind: Exclude<Fin
   }
   // The documents a submission includes must be written before it is sent (BACKER_DOCUMENTS).
   const docs = (k: Exclude<FinanceDealKind, 'agreed'>) => documentsNeeded(p, BACKER_DOCUMENTS[k], isNonfiction(p.axes.format), SUBMISSION[k]);
-  // What your delivered projects kept, put into this one (November 10, 2026: until then it stayed in their budgets for good).
-  const kept = earningsKept(state, p.id);
-  out.push({ kind: 'earnings', ready: false, needs: has('earnings') ? closed || 'Already put in for this project.' : why('earnings', kept <= 0 ? 'Your delivered projects have kept no money yet.' : !scriptApproved(p) ? 'Approve a script first.' : null) });
+  // Your own money from delivered projects (moneyKept). It can be put in more than once, as more of it comes in.
+  const own = ownMoney(state, p.id);
+  out.push({ kind: 'earnings', ready: false, needs: closed || (!own.earnings.length ? 'Your delivered projects haven\'t kept any income yet: what they earn counts once their backers are repaid and paid their shares.' : !scriptApproved(p) ? 'Approve a script first.' : '') });
+  if (own.everPutIn) out.push({ kind: 'capital', ready: false, needs: closed || (!own.capital.length ? 'None of the money you put into your delivered projects is left unspent.' : !scriptApproved(p) ? 'Approve a script first.' : '') });
   out.push({ kind: 'grant', ready: false, needs: why('grant', !scriptApproved(p) ? 'Approve a script first.' : fundClosedTo(state, p) ?? docs('grant')) });
   out.push({ kind: 'investor', ready: false, needs: why('investor', !scriptApproved(p) ? 'Approve a script first.' : docs('investor')) });
   out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : docs('co-producer')) });
@@ -202,6 +322,8 @@ export function approachBacker(state: GameState, p: Project, kind: Exclude<Finan
   if (!opt) throw new Error('That backer is not available for this project.');
   if (!opt.ready) throw new Error(opt.needs);
   p.finance ??= { estimate: p.funding.fund, target: p.funding.fund, deals: [] };
+  // Asking again for your own money replaces an offer of it still unanswered, so two offers never count the same money.
+  if (OWN_MONEY.has(kind)) for (const d of p.finance.deals) if (d.kind === kind && d.status === 'offered') d.status = 'withdrawn';
   const b = BACKERS[kind];
   const days = b.decideDays;
   const sent = BACKER_DOCUMENTS[kind].map((d) => DOCUMENTS[d].name);
@@ -210,7 +332,7 @@ export function approachBacker(state: GameState, p: Project, kind: Exclude<Finan
   const documents = BACKER_DOCUMENTS[kind].map((d) => ({ name: DOCUMENTS[d].name, fields: DOCUMENTS[d].fields(nf).map(([k, label]) => ({ label, text: String(p.story[k] ?? '') })) }));
   const deal: FinanceDeal = {
     id: newId(state, 'fd'), kind, backer: b.name, amount: 0, status: 'considering', askedAt: state.now, decideAt: state.now + days * DAY,
-    reason: '', received: 0, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null },
+    reason: '', received: 0, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null, unspent: OWN_MONEY.has(kind) ? 'yours' : 'stays' },
     ...(sent.length ? { sent, sentCopy: { draft: p.approvedDraft, documents } } : {}),
   };
   p.finance.deals.push(deal);
@@ -263,10 +385,13 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
       break;
     }
     case 'earnings':
-      offer = Math.min(stillToRaise, earningsKept(state, p.id));
-      deal.reason = 'Money your delivered projects kept. Nobody is repaid from it and nobody takes a share.';
-      if (offer <= 0) refusal = 'Your delivered projects have kept no money.';
+    case 'capital': {
+      const from = ownMoney(state, p.id)[deal.kind];
+      offer = Math.min(stillToRaise, from.reduce((s, x) => s + x.amount, 0));
+      deal.reason = `${deal.kind === 'earnings' ? 'Income kept by' : 'Money you put in and left unspent in'} ${titles(from)}. Nobody is repaid from it and nobody takes a share.`;
+      if (offer <= 0) refusal = deal.kind === 'earnings' ? 'Your delivered projects haven\'t kept any income.' : 'None of the money you put in is left unspent.';
       break;
+    }
     case 'co-producer':
       if (roll < 0.75) {
         offer = Math.min(stillToRaise, Math.round(promised * 0.5));
@@ -297,7 +422,7 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
   deal.amount = offer;
   deal.status = 'offered';
   // The agreed starting backing stays open; any other offer lapses if it isn't answered (negotiation.ts).
-  if (deal.kind !== 'starting' && deal.kind !== 'earnings') openOffer(state, p, deal); // your own money doesn't lapse
+  if (deal.kind !== 'starting' && !OWN_MONEY.has(deal.kind)) openOffer(state, p, deal); // your own money doesn't lapse
   addLog(state, `The ${deal.backer.toLowerCase()} offered ${money(offer)} for ${p.title}.${deal.expiresAt ? ` It is open for ${OFFER_OPEN_DAYS} days.` : ''} Read the terms before you accept.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
 }
 
@@ -320,6 +445,9 @@ export function dealTerms(d: FinanceDeal): string[] {
   for (const r of t.approvalRights) out.push(r === 'Casting Approval' ? 'They approve who plays the leads, which adds a couple of days to lead casting offers.' : 'They approve the final cut before you can lock picture.');
   if (t.deliverBy) out.push(`Deliver by ${new Date(t.deliverBy).toISOString().slice(0, 10)}, or the grant must be repaid.`);
   if (t.credit) out.push(`They are credited: "${t.credit} ${d.backer}".`);
+  if (t.unspent === 'yours') out.push('What the project doesn\'t spend of it is yours again once the project is delivered.');
+  else if (t.unspent === 'stays') out.push('What the project doesn\'t spend of it stays with the project.');
+  else if (OWN_MONEY.has(d.kind)) out.push('Put in under the earlier rule, which didn\'t record whose money it was: what the project doesn\'t spend of it stays with the project.');
   return out;
 }
 
@@ -329,7 +457,7 @@ export function acceptDeal(state: GameState, p: Project, dealId: string): void {
   if (!d || d.status !== 'offered' || (d.expiresAt !== undefined && state.now >= d.expiresAt)) throw new Error('That offer is no longer open.');
   if (d.counter && !d.counter.outcome) throw new Error('They are considering the better terms you asked for. Wait for their answer.');
   if (p.delivered && d.terms.onDelivery) throw new Error('This project is already delivered.');
-  if (d.kind === 'earnings') drawEarnings(state, p, d);
+  if (OWN_MONEY.has(d.kind)) moveOwnMoney(state, p, d);
   d.status = 'accepted';
   const now = d.amount - d.terms.onDelivery;
   d.received = now;
