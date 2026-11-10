@@ -1,8 +1,11 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
+import { ensureIndustry, setIndustryWorld } from '../engine/industry';
+import { loadFile } from '../catalog/load';
+import type { WorldSeed } from '../catalog/world';
 import { PageHead } from './components';
 import { Shell } from './Shell';
 import { Startup } from './Startup';
-import { useStore } from './store';
+import { store, useStore } from './store';
 import { Home } from './World';
 
 const CATALOG_VIEWS = ['companies', 'company', 'title', 'season', 'episode', 'person', 'executive'];
@@ -22,8 +25,26 @@ const CatalogView = lazy(() => import('./Catalog').then((m) => ({ default: m.Cat
 const TmdbCredit = lazy(() => import('./Catalog').then((m) => ({ default: m.TmdbCredit })));
 const EventDetail = lazy(() => import('./FinishViews').then((m) => ({ default: m.EventDetail })));
 
+/**
+ * Starts the living world for the open save when the catalog's world file is installed (docs/WORLD.md): the engine
+ * gets the series it continues, and the save's world begins once. Without the catalog nothing changes.
+ */
+function useLivingWorld(saveKey: string | null): void {
+  useEffect(() => {
+    if (!saveKey) return;
+    let live = true;
+    void loadFile<WorldSeed>('world.json').then((w) => {
+      if (!live || w.status !== 'ready' || !w.data.series) return;
+      setIndustryWorld({ horizon: w.data.horizon, builtAt: w.data.builtAt, series: w.data.series });
+      if (!store.state?.industry) store.act((g) => void ensureIndustry(g));
+    });
+    return () => { live = false; };
+  }, [saveKey]);
+}
+
 export function App() {
   const s = useStore();
+  useLivingWorld(s.screen === 'game' && s.state ? `${s.state.createdAtReal}` : null);
   if (s.screen === 'creation' && s.draft) return <Suspense fallback={<p role="status">Loading…</p>}><Creation /></Suspense>;
   if (s.screen !== 'game' || !s.state) return <Startup />;
   const v = s.route.view;

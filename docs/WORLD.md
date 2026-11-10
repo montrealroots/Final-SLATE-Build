@@ -61,21 +61,102 @@ Nothing in Phase 1 is stored in a save. Real events follow from the catalog and 
 when shown (`src/catalog/world.ts`), and they never fill the game's log. The log keeps 400 entries for the player's own
 history.
 
+## Phase 2: Series Continue Or End (November 10, 2026)
+
+`src/engine/industry.ts` continues every series that was still running when the records ended: 143 in the current
+build. A series counts as running if TMDB lists it as Returning, In Production, Planned or Pilot.
+
+The build writes a profile of each one into `world.json`:
+- its network;
+- its TMDB type, such as Miniseries;
+- its genres;
+- whether it is a daily programme;
+- its last three recorded seasons;
+- its recorded regulars, the last season's top-billed cast.
+
+### What Decides
+
+Each decision is a scheduled engine event, stored in the save with its date. It is decided by the save's seed, so it
+holds across reloads and is the same for a seed. No decision is dated before the records end.
+
+**The outlet.** It sets the timing:
+
+| Outlet | When the decision comes | When a new season opens |
+| --- | --- | --- |
+| Broadcast (ABC, FOX, CBS, NBC, The CW) | At the May upfronts, for a season that ran September to May. A summer series hears 30 to 75 days after its finale. | A fall show returns in late September or early October. A midseason show returns around its usual month. |
+| Cable (FX, FXX and others) | 30 to 90 days after the finale | 12 to 16 months after the last premiere |
+| Streaming (Hulu, Disney+ and others) | 30 to 120 days after the finale | 14 to 25 months after the last premiere |
+| Kids' channels (Disney Junior, Disney Channel and others) | 30 to 150 days after the finale | 11 to 16 months after the last premiere |
+| Daily programmes | Each year rolls into the next, a month before the year is up | On the same date the next year |
+
+**The odds of renewal.** They come from how many seasons the series has run and its outlet. They never come from TMDB
+ratings or popularity:
+- **New series are riskiest.** A first season is renewed 45% of the time on broadcast, 55% on cable, 50% on streaming
+  and 75% on kids' channels.
+- **Long runners mostly continue.** A long-running broadcast animated comedy is renewed 93% of the time.
+- **Final seasons.** A series in its later years may be renewed for a final season, announced with the renewal. That
+  is 15% for broadcast, 30% elsewhere, and 3% for a long-running broadcast animation.
+- **Limited series** conclude after their season.
+- **Pilots** are ordered to series or passed on.
+- **Series announced with no aired season** are given a premiere date.
+
+These are game calibration from how renewals usually go, not industry statistics.
+
+**Already renewed.** A series still listed as running whose last season had ended before the records' end has already
+been renewed, so its next season is given a date rather than decided again. A broadcast show past the fall slot goes
+to midseason.
+
+**What a new season copies.** It takes its episode count and release pattern (weekly, daily or all at once) from the
+last complete season. A season still airing when the records end lists only the episodes known so far, so it isn't
+used.
+
+**Who returns.** The recorded regulars return in a simulated season, and nobody else is cast (the owner's rule).
+
+### What Running It On The Real Series Changed
+
+Five simulated years on the real series turned up three problems:
+- **Partial episode counts.** New seasons had copied the partial count of a season still airing: 9 episodes for
+  *Abbott Elementary* and 1 for *Only Murders in the Building*. They now copy the last complete season, which gives 22
+  and 10.
+- **Final seasons too often.** Final seasons came too often for evergreen animation: *The Simpsons* was given a final
+  season in 2027. Long-running broadcast animation now gets a final season 3% of the time.
+- **Calendar drift.** A daily programme's year drifted by a day across leap years. It now starts on the same calendar
+  date each year.
+
+### What The Player Sees
+
+- **Simulated news.** Decisions and simulated premieres and finales appear in Home's In The Industry, marked
+  Simulated. A daily programme's yearly renewal isn't news.
+- **Simulated calendar entries.** Simulated premieres and episodes appear on the calendar, marked (Simulated).
+- **In Your Story.** A series' page has this card. It shows what the save's world has decided, each simulated season's
+  dates and pattern, and who returns. It is labelled as simulated, and the recorded history above it doesn't change.
+- **Without the catalog.** If the catalog isn't installed, nothing starts. If it goes missing later, the engine waits
+  rather than deciding blind.
+
 ## Next Phases
 
-1. **Series continue or end.** When a season's finale has aired, its network decides on renewal at a set point
-   afterwards. A renewed series gets a dated new season, and its recorded regulars return. The odds come from the
-   series' own record, not from TMDB ratings or popularity.
-2. **Studios keep releasing.** New titles follow each studio's recorded pace and genres, with invented titles and
+1. **Studios keep releasing.** New titles follow each studio's recorded pace and genres, with invented titles and
    invented people.
-3. **Competition.** Studios' titles enter festivals, awards, distribution and commissions alongside the player's.
-4. **Careers.** The studios commission, distribute and hire the player through the game's existing systems.
+2. **Competition.** Studios' titles enter festivals, awards, distribution and commissions alongside the player's.
+3. **Careers.** The studios commission, distribute and hire the player through the game's existing systems.
 
-From Phase 2 on, decisions are scheduled engine events stored in the save, so they hold across reloads and stay the
-same for a seed.
 
 ## Tests
 
 - `tests/world.test.ts` covers spans, what counts as news, endings inside the story, and tense at the save's date.
 - `tests/catalog.test.ts` checks that the build writes the world file.
 - `e2e/catalog.spec.ts`, "the industry on Home and the calendar", runs on desktop and phone with a made-up world.
+- `tests/industry.test.ts` covers the engine:
+  - it starts only with the catalog;
+  - nothing is dated before the records end;
+  - timing follows each outlet;
+  - already-renewed series are dated;
+  - limited series conclude;
+  - pilots are decided;
+  - renewed seasons follow their pattern;
+  - every series runs until it ends;
+  - it is the same for a seed and survives a reload;
+  - it waits without the catalog;
+  - it doesn't read ratings.
+- `e2e/living-world.spec.ts` checks a save that passes the records' end: the decision is kept in the save, shown on the
+  series' page as simulated with its returning regulars, and kept after a reload.

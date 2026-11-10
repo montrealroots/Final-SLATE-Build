@@ -32,3 +32,4 @@ export * from './auditions';
 export * from './distribution';
 export * from './relationships';
 export * from './opportunities';
+export * from './industry';

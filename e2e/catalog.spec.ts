@@ -12,6 +12,8 @@ const shot = (page: Page, project: string, name: string) => page.screenshot({ pa
 
 test.beforeEach(async ({ page }, info) => {
   test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  // Served before the game starts: the app loads the world file as soon as a game is open.
+  await serveCatalog(page);
   await quickLife(page, 'gb-london', '2026-01-05');
 });
 
@@ -219,3 +221,4 @@ test('the industry on Home and the calendar: recorded releases, premieres and ep
   expect(await noSidewaysScroll(page)).toBe(true);
   expect(tmdbRequests).toEqual([]);
 });
+

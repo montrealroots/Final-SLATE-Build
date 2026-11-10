@@ -26,6 +26,7 @@ const ACTIONS: Record<string, { preview: string; outcome: string }> = {
   detachSong: { preview: 'Take It Out names the scene.', outcome: 'The scene leaves the song row; work not started that it needed goes.' },
   removeSong: { preview: 'Remove Song shows only once the song is in no scene.', outcome: 'The song leaves the list.' },
   restoreVersionSong: { preview: 'The version\'s song choice shows the cut\'s song.', outcome: 'The version plays the cut\'s song again.' },
+  ensureIndustry: { preview: 'Not a choice the player makes: the living world starts when a game opens with the film catalog installed (docs/WORLD.md). Home\'s In The Industry says that after the records end the save\'s world decides.', outcome: 'Each decision appears in In The Industry on Home and in the series\' In Your Story, marked Simulated.' },
   approachBacker: { preview: 'The backer row says what they need and how many days they take to answer.', outcome: LOG },
   askForBetterTerms: { preview: 'What changes, that you can ask once, and the days they take to answer.', outcome: LOG },
   bookMocap: { preview: 'The button shows the booking cost.', outcome: 'The booked dates, and any passed over with why, are listed.' },

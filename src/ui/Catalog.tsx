@@ -10,7 +10,8 @@ import {
   type CatalogIndex, type CompanyFilmography, type PersonCredit, type PersonRecord, type SeasonRecord, type SortKey, type TitleRecord,
 } from '../catalog/model';
 import { retryCatalog, useCatalogFile, type Loaded } from '../catalog/load';
-import { describe as describeWorld, eventsBetween, inStory, isNews, useWorld } from '../catalog/world';
+import { describe as describeWorld, inStory, isNews, useWorld, worldEventsBetween } from '../catalog/world';
+import { episodeDates, seriesProfile } from '../engine/industry';
 import { addDaysToKey } from '../engine';
 import logo from '../catalog/tmdb-logo.svg';
 import { Check, Empty, PageHead, Panel, SelectField, TextField } from './components';
@@ -301,6 +302,7 @@ function TitleView({ t, today }: { t: TitleRecord; today: string }) {
         <p className="dim small">TMDB's figures are TMDB users' ratings and the amounts TMDB's contributors entered, recorded later than your story's date. They aren't IMDb ratings, and nothing in your game is based on them.</p>
       </Panel>
       <CreditedCompanies t={t} />
+      {t.type === 'tv' && <InYourStory refId={t.ref} today={today} />}
       {t.type === 'tv' && <SeasonsCard t={t} today={today} />}
       {t.type === 'tv' && t.createdBy?.length ? <Panel title="Created By"><ul className="list">{t.createdBy.map((c) => <li key={c.person} className="list-item"><Link to={personRoute(c.person)}>{c.name}</Link></li>)}</ul></Panel> : null}
       {t.type === 'tv' ? <SeriesCredits t={t} /> : <MovieCredits t={t} />}
@@ -371,6 +373,42 @@ function SeriesCredits({ t }: { t: TitleRecord }) {
           : <p className="muted">TMDB lists no crew for this series.</p>}
       </Panel>
     </>
+  );
+}
+
+/** What this save's world has made of a series since the records ended (src/engine/industry.ts), at the save's date. */
+function InYourStory({ refId, today }: { refId: string; today: string }) {
+  const g = useGame();
+  const sim = g.industry?.series[refId];
+  const p = seriesProfile(refId);
+  if (!sim || !p) return null;
+  const outcomes = sim.outcomes.filter((o) => o.at <= today);
+  const seasons = sim.seasons.filter((x) => sim.outcomes.some((o) => o.n === x.n && o.at <= today));
+  const word: Record<string, string> = { renewed: 'Renewed', cancelled: 'Cancelled', concluded: 'Ended', ordered: 'Ordered To Series', passed: 'Passed On', dated: 'Given A Date' };
+  return (
+    <Panel title="In Your Story" subtitle={`Simulated for this save after the records end on ${formatDateKey(g.industry!.horizon)}. The recorded history above doesn't change.`}>
+      {outcomes.length ? (
+        <ul className="list">
+          {outcomes.map((o, i) => (
+            <li key={i} className="list-item">
+              <span className="grow">{word[o.kind]}{o.kind === 'renewed' || o.kind === 'dated' || o.kind === 'ordered' ? `: Season ${o.n}${o.final ? ', its final season' : ''}` : ` after Season ${o.n}`}</span>
+              <span className="dim small">{formatDateKey(o.at)} <span className="chip">Simulated</span></span>
+            </li>
+          ))}
+        </ul>
+      ) : <p className="muted">Nothing has been decided yet.{sim.closed ? '' : ' Its network decides after its current season.'}</p>}
+      {seasons.map((x) => {
+        const dates = episodeDates(x);
+        const aired = dates.filter((d) => d <= today).length;
+        return (
+          <section key={x.n}>
+            <h3>Season {x.n}</h3>
+            <p className="muted">{x.drop ? `All ${x.eps} episodes ${x.premiere <= today ? 'came out' : 'are due to come out'} ${formatDateKey(x.premiere)}.` : `${x.eps} episodes, ${x.gap === 7 ? 'weekly' : x.gap === 1 ? 'daily' : `every ${x.gap} days`}, from ${formatDateKey(x.premiere)} to ${formatDateKey(dates.at(-1)!)}${x.premiere <= today ? `; ${aired} aired so far` : ''}.`}</p>
+            {p.regulars.length > 0 && <p className="dim">Returning: {p.regulars.map((c) => `${c.name}${c.ch ? ` (${c.ch})` : ''}`).join(', ')}. The regulars recorded for its last season return; nobody else is cast in a simulated season.</p>}
+          </section>
+        );
+      })}
+    </Panel>
   );
 }
 
@@ -551,17 +589,17 @@ export function IndustryCard() {
   const w = useWorld();
   if (w.status !== 'ready') return null;
   const start = dateKey(g.startedAt, currentZone(g));
-  const pick = (from: string, to: string) => eventsBetween(w.data, from, to).filter((e) => isNews(e) && inStory(e, start));
+  const pick = (from: string, to: string) => worldEventsBetween(w.data, g, from, to).filter((e) => isNews(e) && inStory(e, start));
   const recent = pick(addDaysToKey(today, -14), today).reverse().slice(0, 8);
   const soon = pick(addDaysToKey(today, 1), addDaysToKey(today, 14)).slice(0, 6);
   const row = (e: (typeof recent)[number]) => (
     <li key={`${e.r}-${e.k}-${e.d}`} className="list-item">
-      <span className="grow"><Link to={{ view: e.k === 'episode' ? 'episode' : e.k === 'season' ? 'season' : 'title', ref: e.r } as Route}>{describeWorld(e, today)}</Link></span>
+      <span className="grow"><Link to={{ view: e.sim ? 'title' : e.k === 'episode' ? 'episode' : e.k === 'season' ? 'season' : 'title', ref: e.r } as Route}>{describeWorld(e, today)}</Link>{e.sim ? <> <span className="chip">Simulated</span></> : null}</span>
       <span className="dim small nowrap">{formatDateKey(e.d)}</span>
     </li>
   );
   return (
-    <Panel title="In The Industry" subtitle="Releases, premieres and endings at the companies you can look up in Companies, on the dates TMDB records."
+    <Panel title="In The Industry" subtitle={`Releases, premieres and endings at the companies you can look up in Companies. Until ${formatDateKey(w.data.horizon)} they are TMDB's records; after that, this save's world decides, and those are marked Simulated.`}
       actions={<button className="btn btn-sm" onClick={() => store.go({ view: 'companies' } as Route)}>Open Companies</button>}>
       {recent.length ? <ul className="list">{recent.map(row)}</ul> : <p className="muted small">Nothing in the last two weeks.</p>}
       {soon.length > 0 && <><h3>Coming Up</h3><ul className="list">{soon.map(row)}</ul></>}

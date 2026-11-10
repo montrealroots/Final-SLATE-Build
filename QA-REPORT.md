@@ -8,7 +8,18 @@
 
 ## Commands And Results
 
-### Current: The Living World, Phase 1: The World's Clock (November 10, 2026, after #63)
+### Current: The Living World, Phase 2: Series Continue Or End (November 10, 2026, after #64)
+
+The rules are in `docs/WORLD.md`, under Phase 2.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run screen-catalog:build` | 0 | `world.json` is now 404 kB. It holds the same 2,134 events plus profiles of the 143 series still running when the records end. |
+| Five simulated years on the real profiles (a probe script, not kept) | 0 | Three problems found and fixed: partial episode counts copied from a season still airing, too many final seasons for evergreen animation, and a daily programme's year drifting across leap years. After the fixes: *Abbott Elementary* gets 22 episodes a season, premiering in late September or early October. *Only Murders in the Building* gets 10. Broadcast decisions cluster in May. About 31 of the 143 series are still running after five years. |
+| `npm run check` | 0 | 85 files, 672 tests, including the new `tests/industry.test.ts` (7). Startup is 685 kB, 219 kB gzipped (budgets 700 and 220), up from 679 and 217 because the engine loads with the game. The budget was not raised. |
+| `catalog`, `living-world`, `world`, `accessibility`, `viewports`, `focus`, `readers`, `devices`, `first-project`, `journey-a`, `catalog-live` on desktop and phone | 0 | 53 passed, 9 skipped by design. The new `living-world` test plays a save past the records' end and checks the decision, the In Your Story card, the returning regulars, and that all of it survives a reload. |
+
+### Previous: The Living World, Phase 1: The World's Clock (November 10, 2026, after #63)
 
 The rules are in `docs/WORLD.md`.
 

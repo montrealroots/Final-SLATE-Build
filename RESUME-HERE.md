@@ -73,10 +73,22 @@ The plan and rules are in `docs/WORLD.md`. **Phase 1 (this checkpoint)** is the 
 
 Nothing is stored in saves: real events follow from the catalog and the save's date.
 
-**Next, Phase 2:**
-- renewal and cancellation decisions as scheduled engine events, stored in the save;
-- simulated seasons with returning regulars;
-- the odds come from each series' own record, never from TMDB ratings, with their calibration documented.
+**Phase 2 (built after Phase 1, on the same branch):** `src/engine/industry.ts` continues the 143 series still running
+when the records end.
+- **What gets decided:** renewal, a final season, cancellation, a limited series concluding, a pilot ordered or passed
+  on, or a date for an already-renewed series.
+- **How it is stored:** each decision is a scheduled event kept in the save as `state.industry` and decided by the save's
+  seed.
+- **Timing:** follows the outlet, such as the May upfronts for broadcast.
+- **What a new season copies:** the last complete season's episode count and release pattern.
+- **Cast:** only the recorded regulars return.
+- **Where it shows:** Home, the calendar and a series' In Your Story card, all marked Simulated.
+
+Running five simulated years on the real series fixed partial episode counts, too-frequent evergreen final seasons and
+leap-year drift. Startup is now 685 kB, 219 of 220 kB gzipped, because the engine loads with the game: keep the next
+phases out of the startup bundle.
+
+**Next, Phase 3:** studios keep releasing, with invented titles at each studio's recorded pace and genres.
 
 ### Earlier Request (November 10, 2026, after #62): the Disney company and screen-credit catalog
 

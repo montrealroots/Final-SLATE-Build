@@ -90,6 +90,10 @@ export function validateGameState(raw: unknown): asserts raw is GameState {
     last = (e as Obj).at as number;
   }
   need(Array.isArray(s.processedEventIds) && (s.processedEventIds as unknown[]).every(isStr), 'processed events', 'are malformed');
+  if (s.industry !== undefined) {
+    const ind = s.industry as Obj;
+    need(isObj(ind) && isStr(ind.horizon) && isStr(ind.builtAt) && isObj(ind.series) && Object.values(ind.series as Obj).every((x) => isObj(x) && Array.isArray((x as Obj).seasons) && Array.isArray((x as Obj).outcomes) && typeof (x as Obj).closed === 'boolean'), 'the save', 'has a malformed industry record');
+  }
   need(Array.isArray(s.log) && Array.isArray(s.plans) && Array.isArray(s.followed) && Array.isArray(s.calendarFilters), 'the save', 'is missing lists it needs');
 
   need(isObj(s.places), 'places', 'are missing');

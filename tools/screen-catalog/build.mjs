@@ -33,11 +33,14 @@ const search = [];
 // The world file (src/catalog/world.ts): every dated event from WORLD_FROM on, which the game plays on its real date.
 const WORLD_FROM = '2025-10-01';
 const world = [];
+// Series still running when the records end: what the living world's engine continues (src/engine/industry.ts).
+const profiles = [];
 const byTmdb = new Map(DISCOVERED.map((c) => [c.tmdb.id, c]));
 const studiosOf = (rec) => rec.companies.map((c) => byTmdb.get(c.tmdbId)).filter(Boolean).map((c) => c.id);
 const counts = { movies: 0, series: 0, seasons: 0, episodes: 0, castCredits: 0, crewCredits: 0, episodeCredits: 0, missingTitles: 0, missingSeasons: 0 };
 
 for (const t of manifest.titles) {
+  const seasonFacts = [];
   const [type, id] = t.key.split(':');
   const r = body(type === 'movie' ? `movie/${id}?append_to_response=credits,external_ids,release_dates` : `tv/${id}?append_to_response=aggregate_credits,credits,external_ids,content_ratings`);
   if (!r) { counts.missingTitles++; continue; }
@@ -100,6 +103,9 @@ for (const t of manifest.titles) {
         // A running season lists only the episodes known so far, so its last one listed isn't a finale. A season is known to
         // be finished once a later one exists or the series has ended.
         const complete = !daily && !drop && (rec.status === 'Ended' || rec.status === 'Canceled' || (d.seasons ?? []).some((x) => x.season_number > s.season_number));
+        const gaps = dated.slice(1).map((e, i) => (Date.parse(e.date) - Date.parse(dated[i].date)) / 86_400_000).sort((a, b) => a - b);
+        seasonFacts.push({ n: s.season_number, eps: eps.length, dated: dated.length, d0: opens, d1: last?.date ?? null, gap: gaps.length ? gaps[gaps.length >> 1] : 7, drop: drop ? 1 : 0,
+          cast: (sb.credits?.cast ?? []).filter((c) => c.order < 8).map((c) => ({ p: c.id, name: c.name, ch: c.character || null })) });
         if (opens && opens >= WORLD_FROM) world.push({ d: opens, k: 'season', r: sref, t: title, s: s.season_number, eps: eps.length, net: rec.networks, ci: studiosOf(rec), first: s.season_number === 1, daily: daily ? 1 : undefined, drop: drop ? 1 : undefined });
         for (const e of dated) if (e.date >= WORLD_FROM) world.push({ d: e.date, k: 'episode', r: `${sref}:e:${e.number}`, t: title, s: s.season_number, e: e.number, n: e.name, net: rec.networks, daily: daily ? 1 : undefined, f: e === last && complete && dated.length === eps.length && dated.length > 1 ? 1 : undefined });
       }
@@ -112,6 +118,16 @@ for (const t of manifest.titles) {
     }
   }
   counts[type === 'movie' ? 'movies' : 'series']++;
+  if (type === 'tv' && ['Returning Series', 'In Production', 'Planned', 'Pilot'].includes(rec.status)) {
+    const seasons = seasonFacts.filter((x) => x.n > 0 && x.d0);
+    const lastCast = seasons.at(-1)?.cast ?? [];
+    profiles.push({ r: ref, t: title, status: rec.status, type: d.type ?? null, net: rec.networks, ci: studiosOf(rec), genres: rec.genres,
+      daily: rec.genres.some((g) => g === 'Talk' || g === 'Soap' || g === 'News') || (d.seasons ?? []).some((x) => x.episode_count >= 100) ? 1 : 0,
+      // The last three seasons are what the engine reads (its record of release pattern and run); `aired` counts them all.
+      aired: seasons.length, seasons: seasons.slice(-3).map(({ cast, ...x }) => x),
+      // The recorded regulars who return in a simulated season (the owner's rule): the last season's top-billed cast.
+      regulars: lastCast.length ? lastCast : (rec.seriesCast ?? []).slice(0, 8).map((c) => ({ p: c.person, name: c.name, ch: c.roles[0]?.character ?? null })) });
+  }
   if (type === 'movie' && when && when >= WORLD_FROM) world.push({ d: when, k: 'film', r: ref, t: title, ci: studiosOf(rec) });
   // How a series stood when the records were taken. When it was announced isn't recorded, so it is told at the records' end.
   if (type === 'tv' && (rec.status === 'Ended' || rec.status === 'Canceled') && rec.lastAirDate && rec.lastAirDate >= WORLD_FROM) world.push({ d: null, k: 'end', r: ref, t: title, st: rec.status, la: rec.lastAirDate, net: rec.networks, ci: studiosOf(rec) });
@@ -151,7 +167,7 @@ times.sort();
 const horizon = (times.at(-1) ?? new Date().toISOString()).slice(0, 10);
 for (const ev of world) if (ev.d === null) ev.d = horizon;
 world.sort((a, b) => a.d.localeCompare(b.d) || a.t.localeCompare(b.t) || (a.s ?? 0) - (b.s ?? 0) || (a.e ?? 0) - (b.e ?? 0));
-write('world.json', { version: 1, builtAt: new Date().toISOString(), horizon, from: WORLD_FROM, events: world });
+write('world.json', { version: 1, builtAt: new Date().toISOString(), horizon, from: WORLD_FROM, events: world, series: profiles });
 const discovery = manifest.queries.map((q) => ({ company: q.companyId, type: q.type, reported: q.total, found: q.found, pages: q.pages, split: q.split, failedPages: q.failedPages }));
 write('index.json', {
   version: 1, builtAt: new Date().toISOString(), registryChecked: REGISTRY_CHECKED,

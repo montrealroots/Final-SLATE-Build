@@ -985,6 +985,8 @@ export interface GameState {
   processedEventIds: string[]; // ring of recent ids (exact-once guard)
   log: LogEntry[];
   plans: Plan[];
+  /** The living world's simulated decisions and seasons (industry.ts), from when the catalog was first present; absent before. */
+  industry?: import('./industry').IndustryState;
   sleep: { asleep: boolean; since?: number; wakeAt?: number; alarm: boolean };
   travel?: { to: string; from: string; arriveAt: number } | null;
   projects: Project[];

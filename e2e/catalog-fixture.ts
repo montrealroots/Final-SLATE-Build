@@ -54,6 +54,8 @@ export const CATALOG_FIXTURE: Record<string, unknown> = {
   'titles/movie-900003.json': later,
   'titles/tv-900101.json': tidewater,
   'seasons/900101-1.json': season,
+  'titles/tv-900201.json': { ...tidewater, ref: 'tv:900201', title: 'Coastline (Fixture)', originalTitle: 'Coastline (Fixture)', status: 'Returning Series', date: '2026-04-01', lastAirDate: '2026-05-20', networks: ['Disney+'],
+    seasons: [{ ref: 'tv:900201:s:1', number: 1, name: 'Season 1', date: '2026-04-01', episodes: 8, available: false }] },
   'titles/movie-900004.json': { ...harbour, ref: 'movie:900004', title: 'Paper Lanterns (Fixture)', originalTitle: 'Paper Lanterns (Fixture)', date: '2025-12-30', overview: 'A made-up film released just before the test save begins.', rating: null, budget: null },
   // The industry's dated records around the test save (January 5, 2026), as tools/screen-catalog/build.mjs writes them.
   'world.json': {
@@ -65,8 +67,11 @@ export const CATALOG_FIXTURE: Record<string, unknown> = {
       { d: '2026-01-14', k: 'film', r: 'movie:900002', t: 'Harbour Lights (Fixture)', ci: ['company:walt-disney-pictures'] },
       { d: '2026-11-10', k: 'end', r: 'tv:900101', t: 'Tidewater Station (Fixture)', st: 'Canceled', la: '2026-01-12', net: ['ABC'] },
     ],
+    // A series still running when the records end, which the living world's engine continues (src/engine/industry.ts).
+    series: [{ r: 'tv:900201', t: 'Coastline (Fixture)', status: 'Returning Series', type: 'Scripted', net: ['Disney+'], ci: ['company:walt-disney-pictures'], genres: ['Drama'], daily: 0, aired: 1,
+      seasons: [{ n: 1, eps: 8, dated: 8, d0: '2026-04-01', d1: '2026-05-20', gap: 7, drop: 0 }], regulars: [{ p: 800001, name: 'Ada Quill', ch: 'Juno Marsh' }] }],
   },
-  'search/titles.json': [['movie:900001', 'The Lantern Keeper (Fixture)', '2019'], ['movie:900002', 'Harbour Lights (Fixture)', '2023'], ['movie:900003', 'Night Ferry (Fixture)', '2030'], ['tv:900101', 'Tidewater Station (Fixture)', '2021']],
+  'search/titles.json': [['movie:900001', 'The Lantern Keeper (Fixture)', '2019'], ['movie:900002', 'Harbour Lights (Fixture)', '2023'], ['movie:900003', 'Night Ferry (Fixture)', '2030'], ['tv:900101', 'Tidewater Station (Fixture)', '2021'], ['tv:900201', 'Coastline (Fixture)', '2026']],
   'search/people-A.json': [[800001, 'Ada Quill', 4]],
   'people/1.json': person(800001, 'Ada Quill', [
     { ref: 'movie:900002', title: 'Harbour Lights (Fixture)', date: '2023-03-03', kind: 'cast', role: 'Juno' },
@@ -97,8 +102,8 @@ export async function serveCatalog(page: Page, override: Record<string, number> 
     const path = new URL(r.request().url()).pathname.replace(/^.*\/screen-catalog\//, '');
     const status = override[path];
     if (status) return r.fulfill({ status, contentType: 'application/json', body: '{}' });
-    // Every company the registry follows has a filmography in a real build; the fixture's others are empty.
-    const body = CATALOG_FIXTURE[path] ?? (/^companies\/\d+\.json$/.test(path) ? { tmdbId: Number(path.match(/\d+/)![0]), entries: [] } : undefined);
+    // Every company the registry follows has a filmography in a real build, and every letter a people index; the fixture's others are empty.
+    const body = CATALOG_FIXTURE[path] ?? (/^companies\/\d+\.json$/.test(path) ? { tmdbId: Number(path.match(/\d+/)![0]), entries: [] } : /^search\/people-.\.json$/.test(path) ? [] : undefined);
     return body === undefined ? r.fulfill({ status: 404, body: '' }) : r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(body) });
   });
   return { tmdbRequests };
