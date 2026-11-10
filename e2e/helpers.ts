@@ -132,7 +132,7 @@ export async function openMenuIfNeeded(page: Page): Promise<void> {
 }
 
 /** Through the rail. The calendar is Home's, as 1221's is: its way in is Up Next's Open Calendar. */
-export async function nav(page: Page, label: 'Home' | 'Calendar' | 'World' | 'Projects' | 'Profile' | 'Saved Games' | 'Settings'): Promise<void> {
+export async function nav(page: Page, label: 'Home' | 'Calendar' | 'World' | 'Projects' | 'Profile' | 'Saved Games' | 'Settings' | 'Companies'): Promise<void> {
   if (label === 'Calendar') {
     await nav(page, 'Home');
     await page.getByRole('button', { name: 'Open Calendar' }).click();

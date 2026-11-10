@@ -4,6 +4,7 @@ import {
 import { Check, Modal, SelectField, TextField, longLocal } from './components';
 import { HOME, RAIL_DESTINATIONS, destinationOf, type Destination } from './routes';
 import { store, useClock, useGame, useStore } from './store';
+import type { Route } from '../engine/types';
 
 
 export const DRAWER_QUERY = '(max-width: 56.25em), (max-height: 500px)';
@@ -325,7 +326,7 @@ function NoticeBanner() {
   );
 }
 
-export function Breadcrumbs({ items }: { items: { label: string; route?: { view: string; projectId?: string; tab?: string } }[] }) {
+export function Breadcrumbs({ items }: { items: { label: string; route?: Route }[] }) {
   return (
     <nav className="breadcrumbs" aria-label="Breadcrumb">
       {items.map((it, i) => (

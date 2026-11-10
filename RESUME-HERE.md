@@ -56,7 +56,44 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 10, 2026, after #61): Your Earnings is only your money
+### Newest Request (November 10, 2026, after #62): the Disney company and screen-credit catalog
+
+Companies is a new destination under Industry (`docs/CATALOG.md`). It has:
+
+- **A sourced registry** of 38 companies, with each TMDB ID verified, ownership dated from official releases, and
+  networks kept apart from production.
+- **Leadership** from official pages, shown at the save's date as current, listed, incoming or former, and hidden
+  before an announcement.
+- **Filmographies, titles, credited companies, cast, crew, series, seasons, episodes, episode credits and people**,
+  from a catalog gathered from TMDB.
+
+TMDB's terms (cached at most six months, no redistribution, no commercial use without an agreement) keep the gathered
+data out of git and out of builds:
+
+- `.screen-catalog-cache/` holds the responses and `.screen-catalog/` the built catalog. Both are git-ignored.
+- They are served by the dev and preview servers only.
+- A clone has no catalog until someone runs these in a session whose proxy holds the TMDB network secret:
+
+  ```bash
+  npm run screen-catalog:import
+  ```
+
+  ```bash
+  npm run screen-catalog:build
+  ```
+
+- The cache must be refreshed or purged within 180 days of November 10, 2026.
+
+**Open for the owner:**
+- Whether the catalog may be deployed for players, and whether SLATE's use is commercial (which would need a TMDB
+  agreement).
+- Leadership for 20th Century Studios, Searchlight and Walt Disney Pictures.
+- Whether to record Pixar's reported next president once there is an official source.
+
+**Not done:** no simulation system reads the catalog. Its stable references (`Route.ref`) are ready for later company,
+casting and career systems.
+
+### Earlier Request (November 10, 2026, after #61): Your Earnings is only your money
 
 #61 let a delivered project's leftover production funding move to the next project as Your Earnings. It no longer can.
 `docs/EARNINGS.md` has the exact rules:

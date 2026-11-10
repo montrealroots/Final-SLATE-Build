@@ -5,6 +5,8 @@ import { Startup } from './Startup';
 import { useStore } from './store';
 import { Home } from './World';
 
+const CATALOG_VIEWS = ['companies', 'company', 'title', 'season', 'episode', 'person', 'executive'];
+
 // Creation, project and event screens load on first use to keep startup small.
 const Creation = lazy(() => import('./Creation').then((m) => ({ default: m.Creation })));
 const ProjectsList = lazy(() => import('./Projects').then((m) => ({ default: m.ProjectsList })));
@@ -16,6 +18,8 @@ const SettingsPage = lazy(() => import('./Startup').then((m) => ({ default: () =
 const CalendarView = lazy(() => import('./Places').then((m) => ({ default: m.CalendarView })));
 const PlaceView = lazy(() => import('./Places').then((m) => ({ default: m.PlaceView })));
 const Profile = lazy(() => import('./Places').then((m) => ({ default: m.Profile })));
+const CatalogView = lazy(() => import('./Catalog').then((m) => ({ default: m.CatalogView })));
+const TmdbCredit = lazy(() => import('./Catalog').then((m) => ({ default: m.TmdbCredit })));
 const EventDetail = lazy(() => import('./FinishViews').then((m) => ({ default: m.EventDetail })));
 
 export function App() {
@@ -36,7 +40,8 @@ export function App() {
       {v === 'project' && <ProjectWorkspace />}
       {v === 'event' && <EventDetail />}
       {v === 'saves' && <SavedGamesPage />}
-      {v === 'settings' && <SettingsPage />}
+      {v === 'settings' && <><SettingsPage /><TmdbCredit /></>}
+      {CATALOG_VIEWS.includes(v) && <CatalogView route={s.route} />}
       </Suspense>
     </Shell>
   );

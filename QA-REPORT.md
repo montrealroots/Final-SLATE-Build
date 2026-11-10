@@ -8,7 +8,27 @@
 
 ## Commands And Results
 
-### Current: Your Earnings Is Only Your Money (November 10, 2026, after #61)
+### Current: The Disney Screen Catalog And Company Leadership (November 10, 2026, after #62)
+
+The catalog's rules are in `docs/CATALOG.md`, and the counts from the gathering run are in `docs/CATALOG-COVERAGE.md`.
+
+**Gathering run:**
+- **The run:** 42,436 TMDB requests through the session proxy, with no retries, rate limits, failures or missing
+  records.
+- **Gathered:** 4,781 films, 1,064 series, 2,996 seasons, 65,780 episodes, and 190,751 people, 33,036 of them with
+  details.
+- **Where it is:** none of it is in the repository or in builds (TMDB's terms).
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `curl` of `api.themoviedb.org/3/movie/550` through the proxy | 0 | HTTP 200, "Fight Club". |
+| `npm run check` | 0 | 83 files, 660 tests, including the new `tests/catalog.test.ts` (21). Startup 679 kB, 217 kB gzipped (budgets 700 and 220). The build has no catalog data and no credential. |
+| `catalog`, `catalog-live` on desktop and phone (dev server) | 0 | 10 fixture tests passed, then 4 live tests on the real catalog. |
+| `catalog`, `catalog-live` on desktop and phone (`SLATE_E2E_PROD=1`) | 0 | 14 passed. |
+| `accessibility`, `viewports`, `focus`, `readers`, `devices`, `first-project`, `decisions`, `earnings` on desktop and phone | 0 | 32 passed, 8 skipped by design. |
+| CI on the pull request | See the pull request | The full browser suite and the production-build suite. Without a catalog installed, `catalog-live` skips there. |
+
+### Previous: Your Earnings Is Only Your Money (November 10, 2026, after #61)
 
 The cycle fix in #61 offered a delivered project's whole uncommitted balance as Your Earnings, unspent grant and investor
 money included. That was replaced by the rules in `docs/EARNINGS.md`.

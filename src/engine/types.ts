@@ -110,6 +110,8 @@ export interface Route {
   tab?: string;
   editionId?: string;
   placeId?: string;
+  /** A screen catalog record: company:<slug>, movie:<tmdb>, tv:<tmdb>[:s:<n>[:e:<n>]], person:<tmdb> or exec:<slug> (catalog/model.ts). */
+  ref?: string;
 }
 
 export interface Plan {
