@@ -52,8 +52,8 @@ export function WorldView() {
                   const hours = travelHours(here, { ...here, lat: w.lat, lon: w.lon });
                   return (
                     <li key={w.id}>
-                      <button className="btn btn-ghost" disabled={!!opening} onClick={() => void open(w)}>{w.name}</button>{' '}
-                      <span className="dim">{[ws.regionNames.get(w.region), countryName(w.country)].filter(Boolean).join(', ')} · about {formatDuration(hours * 3600_000)} away</span>
+                      <strong><button className="link" disabled={!!opening} onClick={() => void open(w)}>{w.name}</button></strong>
+                      <div className="dim">{[ws.regionNames.get(w.region), countryName(w.country)].filter(Boolean).join(', ')} · About {formatDuration(hours * 3600_000)} away</div>
                     </li>
                   );
                 })}

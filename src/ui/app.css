@@ -1593,14 +1593,17 @@ td, th { overflow-wrap: break-word; }
 /* A tab bar wider than its page scrolls sideways, and fades on the side that has more, with a button there that scrolls
    it on (from 2026-10-23, brief 23): until then a phone's bar cut "Opportunities" in half at its right edge. */
 .tabs-wrap { position: relative; margin-bottom: var(--s5); }
-.tabs-wrap > .tabs { margin-bottom: 0; flex-wrap: nowrap; scrollbar-width: none; overscroll-behavior-x: contain; }
+.tabs-wrap > .tabs { margin-bottom: 0; flex-wrap: nowrap; scrollbar-width: none; overscroll-behavior-x: contain; scroll-padding-inline: 40px; }
+/* The arrows sat over the faded tab under them, so a phone read "‹haracters" (November 10, 2026): they are opaque now,
+   and a tab scrolled into view stops clear of them. */
 .tabs-wrap > .tabs::-webkit-scrollbar { display: none; }
 .tabs-wrap[data-overflow="end"] > .tabs { mask-image: linear-gradient(to right, #000 calc(100% - 56px), transparent); }
 .tabs-wrap[data-overflow="start"] > .tabs { mask-image: linear-gradient(to left, #000 calc(100% - 56px), transparent); }
 .tabs-wrap[data-overflow="both"] > .tabs { mask-image: linear-gradient(to right, transparent, #000 56px, #000 calc(100% - 56px), transparent); }
 .tabs-more {
   position: absolute; top: 0; bottom: 1px; display: none; align-items: center; justify-content: center;
-  width: 36px; border: 0; background: transparent; color: var(--accent-strong); cursor: pointer; font-size: var(--size-md);
+  width: 36px; border: 0; background: var(--bg); color: var(--accent-strong); cursor: pointer; font-size: var(--size-md);
+  z-index: 1; /* the tab strip's fade mask makes it a layer of its own, painted over an arrow before it in the page */
 }
 .tabs-more[data-side="end"] { right: 0; }
 .tabs-more[data-side="start"] { left: 0; }
@@ -1865,7 +1868,9 @@ ul.list > li:last-child { border-bottom: 0; }
 .inline-form .field { margin-bottom: 0; flex: 1 1 200px; }
 .grid-2.form, .grid-3.form { gap: 0 var(--s4); }
 .check { display: flex; gap: var(--s2); align-items: center; min-height: var(--control); }
-.check input { width: 18px; height: 18px; accent-color: var(--accent); }
+.check input { width: 18px; height: 18px; accent-color: var(--accent); margin: 0; flex: none; }
+/* The earlier rule's 2px nudge lifted the box for a first line set flush to the top; with the row centred it pushed the
+   box below its label (seen on the Schedule tab, November 10, 2026), so the box sits on the label's centre line. */
 
 /* Tables that become labelled cards on phones. */
 table.data { width: 100%; border-collapse: collapse; font-size: var(--size-sm); }
@@ -2017,3 +2022,15 @@ input[type='time'] { width: 100%; min-height: var(--control); padding: var(--s2)
 /* First, middle and last name on one row beside the headshot; one under another on a phone (November 8, 2026). */
 .field-row.field-row-names { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 @media (max-width: 560px) { .field-row.field-row-names { grid-template-columns: 1fr; } }
+
+/* Text after a row of buttons, a button or a list of facts starts a step below it. Until November 10, 2026 it sat against
+   them: "Rebuild Schedule" with its note, the Cut card's buttons, a festival's Status line and its dates note. */
+.row + p, .btn + p, .kv + p { margin-top: var(--s3); }
+/* Chips after a name, on its line: a step from the name and from each other. On the event page they touched both until
+   November 10, 2026 ("Golden Lion For Best FilmPrize"). */
+.chips-after { display: inline-flex; flex-wrap: wrap; gap: var(--s1); vertical-align: middle; } /* the space before it collapses when the chips wrap under the name, so they start at its edge */
+.chips-after:empty { display: none; }
+/* A browser indents a fieldset and its legend by a few pixels, so a form inside a card (New Song) started 2 to 4 pixels
+   right of the card's own text (November 10, 2026). */
+fieldset { margin: 0; min-inline-size: 0; }
+legend { padding: 0; }

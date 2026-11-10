@@ -180,7 +180,7 @@ export function CastTab({ p }: { p: Project }) {
               <li key={c.id}>
                 <div className="row-wrap">
                   <div className="grow">
-                    <strong>{c.name}</strong> <span className="dim">{c.roleSize} · {plural(approvedScenes(p).filter((s) => s.participants.includes(c.id)).length, 'scene')}</span>
+                    <strong>{c.name}</strong> <span className="dim">{c.roleSize.split('-').map((w) => w.charAt(0).toUpperCase() + w.slice(1)).join(' ')} · {plural(approvedScenes(p).filter((s) => s.participants.includes(c.id)).length, 'scene')}</span>
                     {c.roleSize === 'background' && <div className="dim">Background performers are booked per shoot day.</div>}
                     {!!c.aliases?.length && <div className="dim">Also called {c.aliases.join(', ')}.</div>}
                     {!!(c.heritages?.length || c.nationalities?.length) && <div className="dim">Written as {[...(c.heritages ?? []), ...(c.nationalities ?? []).map(countryName)].join(', ')}.{sharedHeritages(g, p, c.id, 'player').length ? ' You share a background with this part.' : ''}</div>}
