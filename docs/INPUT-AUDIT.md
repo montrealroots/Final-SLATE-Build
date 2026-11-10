@@ -93,7 +93,7 @@ effect or no test, or when a cited test no longer exists.
 
 | Class | Controls | What it means | Evidence |
 |---|---|---|---|
-| Decision | 132 | Changes a rule, an action, work, the schedule, a cost, eligibility, an assessment or an outcome | Every one cites a unit test (132); 55 also cite a browser journey that makes the choice in the UI |
+| Decision | 132 | Changes a rule, an action, work, the schedule, a cost, eligibility, an assessment or an outcome | Every one cites a unit test (132); 73 also cite a browser journey that makes the choice in the UI (55 until the pass after #59) |
 | Identity or creative expression | 57 | What you chose, kept and used where it belongs: names, descriptions, pronouns, backgrounds | Shown where it belongs. 24 cite a unit test where it is used (credits carry the legal name, casting shows a shared background) |
 | Historical record | 16 | A name or a note about something that happened, shown back as written | Shown. Nothing scores it |
 | View | 15 | Search, filter or sort on a screen; not game state | None needed |
@@ -110,13 +110,48 @@ expression with one consistency check: a structure note, advisory, so it weighs 
 
 "Displayed" is the reader guard above (`tests/model-readers.test.ts`). "Affects gameplay" is a decision with a unit
 test that shows the difference. "Verified through a full journey" is a browser journey that makes the choice and sees
-its effect in the UI. Of the 132 decisions, all affect gameplay by a unit test; 55 are also on a journey. The other 77
-are verified in the engine only. Most are production settings (stages, render nodes, puppet copies, blocks) and
-script detail fields whose journeys stop short of them. A journey counts only when it makes the choice in the UI. Nine
+its effect in the UI. Of the 132 decisions, all affect gameplay by a unit test; 73 are also on a journey (55 until the
+pass after #59, November 10, 2026). The other 59 are verified in the engine only. A journey counts only when it makes the choice in the UI. Nine
 citations were dropped on November 10, 2026 because their journey never did: it set the value with a labelled fixture
 (each episode's writer and director, the genres, the dialogue languages) or never reached the control (proficiency, a
 release date, what to capture, a day rate, stop-motion stages). Two were moved to the journey that does make the choice
 (Route, Change Financing Target).
+
+#### The pass after #59 (November 10, 2026)
+
+The counts above were recalculated from the table, not carried over: 132 decisions, 55 with a journey, 77 without.
+Eighteen were then given browser evidence. Each citation in `CONTROLS.csv` now has `journey_kind` and `journey_proves`:
+
+- `journey_kind` is `targeted` or `playthrough`. A targeted interaction journey stops once the decision has done what
+  it does. A full playthrough makes the project in the browser through production.
+- `journey_proves` says what the test shows: the consequence on the screen, the refusal or limit met, and whether the
+  choice was read back after Save And Exit and Continue.
+
+Rows cited before this pass take their kind from their spec file and have no `journey_proves`; their effect column says
+what they show. Of the 73, 50 are targeted and 23 come from playthroughs.
+
+| Journey | Decisions | Profiles |
+|---|---|---|
+| `e2e/decisions.spec.ts` "work schedule and staffing rates" | Rehearsal Days, Six-Day Weeks, Work On Public Holidays, a performer's Day Rate | Desktop, phone, iPhone 15 Pro Max (WebKit) |
+| `e2e/decisions.spec.ts` "release settings" | Episodes On The Premiere, Territory Code | Desktop, phone, iPhone 15 Pro Max |
+| `e2e/decisions.spec.ts` "genre emphasis and dialogue languages" | Genres and which is primary, dialogue languages, Competes As (Story panel), Speaks | Desktop, phone, iPhone 15 Pro Max |
+| `e2e/journeys.spec.ts` "TV limited series" (playthrough) | Writer For Episode | Desktop |
+| Existing journeys whose consequences were already asserted, now cited | Emphasis, Coverage and Takes For a scene, Site For a place, Awards Placement, Essential To The Story, Source Material | As each runs |
+
+The release settings journey labels one fixture: the series is marked delivered in the save. Making one is the work of
+`rolling-delivery.spec.ts` and journey B. Every choice it tests is made in the browser. The other new journeys set
+nothing in the save but the pinned world seed.
+
+Still engine-only (59):
+
+- Script detail on the Script and Characters pages (36): scene heading, minutes, needs, setups, claims, character
+  entity, realization, age, involvement, functions and methods, competition rules and content. Several are used by
+  journeys (Estimated Minutes, Role Size, Planted In) whose assertions don't read that control's own consequence, so
+  they are not cited.
+- Clock and sleep (Shell, Startup and Places, 9). Production capacity (stop-motion stages, render nodes, puppet copies,
+  blocks) and a backup site (5): their consequences show only after weeks of production. Creation's start time and
+  proficiency (2). A pickup's scenes, and what to capture (2). Animation Finish, Intended Audience, Competes As on New
+  Script, and Story Era (4). Minutes a song plays (1).
 
 ### Controlled comparisons
 
@@ -141,16 +176,16 @@ Each row goes input → saved state → engine consumer → result → what the 
 | Area | Input → state | Consumer → result | The player sees | Unit evidence | Journey | Reload |
 |---|---|---|---|---|---|---|
 | Screenwriting | Scenes, places, interior or exterior, characters → `scenes`, `characters` | `projects.ts` `deriveRequirements`, `production/tasks.ts` `buildTasks` → work and its order | The breakdown and the estimate | `estimates.test.ts` "a cut says what it saves" | `journeys.spec.ts` | `script-effects.test.ts` "survive save and load" |
-| Genres | Genres and which is primary → `axes.genres[].emphasis` | `script-effects.ts` `competesAs`; genre modules → checks and work | Overview: competes as | `decision-effects.test.ts` | None that changes the emphasis in the UI yet | Saved with the project |
+| Genres | Genres and which is primary → `axes.genres[].emphasis` | `script-effects.ts` `competesAs`; genre modules → checks and work | The Golden Globes drama category turns a comedy-led feature away, and says why | `decision-effects.test.ts` | `decisions.spec.ts` "genre emphasis and dialogue languages" | Read back after Save And Exit |
 | Setting and research | Where it is set → `axes.settingPlaceId` | `projects.ts`, `production/tasks.ts` → Setting Research | Story panel, Overview, the work list | `decision-effects.test.ts` | `readers.spec.ts` "a setting abroad" | Saved with the project |
 | Characters and threads | A thread's characters → `threads[].characterIds` | `structure.ts` → advisory note | Script notes | `decision-effects.test.ts` | `structure.spec.ts` keeps a thread, not its characters | Saved with the project |
 | Casting and callbacks | Shortlist → `auditions[].shortlisted`; Call Back | `casting-calls.ts` `callBack` refuses anyone not shortlisted; a callback narrows the read | The audition table, the refusal | `auditions.test.ts` "a callback narrows it" | `auditions.spec.ts` | `auditions.test.ts` "a shortlist and a pending callback survive a save" |
-| Episode assignments | Each episode's writer and director → `episodes[].writer`, `.director` | `production/schedule.ts` (directors never share a day; blocks); `episode-assessment.ts` | Schedule, credits, each episode's result | `episodes.test.ts`, `episode-assessment.test.ts` | `release-schedule.spec.ts` (a hired director on episode 2, credited on it alone) | Saved with the project |
-| Production choices | Six-day weeks, holidays, blocks, stages, render nodes → `schedule.*` | `production/schedule.ts` `isWorkingDay`, `workday.ts` | The schedule and the costs | `decision-effects.test.ts`, `media.test.ts`, `heritage.test.ts` | `journeys.spec.ts` "stop motion to delivery" | Saved with the project |
+| Episode assignments | Each episode's writer and director → `episodes[].writer`, `.director` | `production/schedule.ts` (directors never share a day; blocks); `episode-assessment.ts` | Schedule, credits, each episode's result | `episodes.test.ts`, `episode-assessment.test.ts` | `release-schedule.spec.ts` (a hired director on episode 2, credited on it alone); `journeys.spec.ts` "TV limited series" (a hired writer on episode 2) | Saved with the project |
+| Production choices | Six-day weeks, holidays, blocks, stages, render nodes → `schedule.*` | `production/schedule.ts` `isWorkingDay`, `workday.ts` | The schedule and the costs | `decision-effects.test.ts`, `media.test.ts`, `heritage.test.ts` | `decisions.spec.ts` "work schedule and staffing rates" (six-day weeks, holidays, rehearsal); stages, render nodes, puppet copies and blocks have none | Read back after Save And Exit |
 | Edits | Cut a scene, accept a gap, lock picture, a version's scenes | `cost-cuts.ts`, `edit.ts`, `versions.ts` → savings, cancelled days, the version's runtime | Each cut's saving before it is made | `cost-cuts.test.ts`, `script-effects.test.ts`, `versions.test.ts` | `awards.spec.ts` "Emmys guest" (a shorter version) | `directing.test.ts` "the choice survives a save" |
 | Songs | Origin, lyrics, performers, scenes, a version's song | `songs.ts` `songTasks`, `songCredits`; `awards-rules.ts` `songProblems` | Songs card; As Entered names the song | `songs.test.ts` | `awards.spec.ts` "Songs" | Migrated from v7 (`songs.ts` `migrateV7toV8`) |
 | Financing | Target, backer approaches, offers | `finance.ts` `financeSummary`, `decide` | Still to raise; the offer and its terms | `decision-effects.test.ts`, `finance.test.ts` | `careers.spec.ts` "stop motion: refused for lack of money" | `connected.spec.ts` reloads |
-| Releases | Route, territories, date, each episode's date → `releases[]`, `releases[].episodes` | `awards-rules.ts` qualifying routes, airing, `firstShown`; `episode-releases.ts` | The release, its episode dates, eligibility reasons, a preview before a change | `qualifying-routes.test.ts`, `recipient-rules.test.ts`, `episode-releases.test.ts` | `journeys.spec.ts` "2D animation: deliver, release digitally" | Saved with the project |
+| Releases | Route, territories, date, each episode's date → `releases[]`, `releases[].episodes` | `awards-rules.ts` qualifying routes, airing, `firstShown`; `episode-releases.ts` | The release, its episode dates, eligibility reasons, a preview before a change | `qualifying-routes.test.ts`, `recipient-rules.test.ts`, `episode-releases.test.ts` | `journeys.spec.ts` "2D animation: deliver, release digitally"; `decisions.spec.ts` "release settings"; `rolling-delivery.spec.ts` | Read back after Save And Exit |
 | Award submissions | Category, version, recipients → `entries[]` with a snapshot | `awards-rules.ts` `requirementProblems`, judging | Eligible or why not; As Entered | `awards-catalog.test.ts` | `awards.spec.ts` | `awards-catalog.test.ts` "survive a save and reload unchanged" |
 
 No broken link was found in these areas: every decision listed reached a rule, and each comparison showed its

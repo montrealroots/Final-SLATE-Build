@@ -106,6 +106,11 @@ What a browser fetches before each first use is measured by `scripts/perf-first-
 | Continue into a medium save until the game is open | 844 kB (263 gz) | 1,158 kB (128 gz) | 389 ms | 826 kB (256 gz) | 1,158 kB (128 gz) | 396 ms |
 | New Game until creation's first field takes typing | 882 kB (276 gz) | 1,291 kB (178 gz) | 1,122 ms | 890 kB (279 gz) | 1,291 kB (178 gz) | 1,038 ms |
 
+After #59 (November 10, 2026), with rolling episode delivery, the medium save, median of 5: start 293 ms; Continue
+390 ms, 829 kB of JavaScript (257 gzipped), 1,158 kB of data (128); New Game 1,113 ms, 894 kB (280), 1,291 kB of data
+(178). `npm run budget`: startup 671 kB, 214 kB gzipped. `episode-delivery.ts` is imported only by the Edit and Release
+screens' lazy chunk, so it isn't in startup.
+
 The start screen and Continue fetch 18 kB less JavaScript (7 kB gzipped) than `main`, though the release schedules
 added about 9 kB to the engine. The new-game path fetches 8 kB more:
 
