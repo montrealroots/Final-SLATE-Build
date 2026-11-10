@@ -39,6 +39,8 @@ export function episodesFor(releaseId: string, dates: string[], assumed = false)
 }
 
 const nineAm = (p: Project, d: string) => { const { year, month, day } = parseYmd(d); return localToInstant(getPlace(p.axes.basePlaceId).zone, year, month, day, 9).instant; };
+/** Whether a day's release hour has gone: an event for it would be in the past, so the day is too late to choose. */
+export const releaseHourPassed = (state: GameState, p: Project, d: string): boolean => nineAm(p, d) <= state.now;
 
 /**
  * The release's events, rebuilt from its dates: its first day while it is planned, and one for each later day an
@@ -92,6 +94,7 @@ export function episodeDateProblem(state: GameState, p: Project, releaseId: stri
     }
     if (!isDateKey(d)) return `Choose a real date for episode ${e.number}.`;
     if (d < today) return `Episode ${e.number} can't come out before today.`;
+    if (d !== e.date && releaseHourPassed(state, p, d)) return `Episode ${e.number} can't come out today: releases go out at 9 in the morning, and that has passed. Choose tomorrow or later.`;
     if (i > 0 && d < dates[i - 1]) return `Episode ${e.number} can't come out before episode ${e.number - 1}.`;
   }
   return null;
@@ -140,14 +143,16 @@ export function airings(p: Project): Airing[] {
   const rel = p.releases.filter((r) => r.status !== 'cancelled' && EPISODE_ROUTES.includes(r.route));
   const out: Airing[] = [];
   for (let i = 1; i <= n; i++) {
-    let best: Airing | undefined;
-    for (const r of rel) {
+    const all = rel.map((r) => {
       const ep = r.episodes?.find((e) => e.number === i);
-      const date = ep ? ep.date : n > 1 ? assumedDates(r, n)[i - 1] : r.date;
-      const a: Airing = { number: i, date, countries: r.territories, planned: ep ? ep.status === 'planned' : r.status === 'planned', assumed: ep ? !!ep.assumed : n > 1 };
-      if (!best || a.date < best.date) best = a;
-    }
-    if (best) out.push(best);
+      return { date: ep ? ep.date : n > 1 ? assumedDates(r, n)[i - 1] : r.date, countries: r.territories, planned: ep ? ep.status === 'planned' : r.status === 'planned', assumed: ep ? !!ep.assumed : n > 1 };
+    });
+    if (!all.length) continue;
+    // Every release on the earliest day counts, in any order. Until November 10, 2026 the first record listed won, so
+    // its countries alone were read, and a planned record listed first made an episode already out read as to come.
+    const date = all.reduce((m, a) => (a.date < m ? a.date : m), all[0].date);
+    const first = all.filter((a) => a.date === date);
+    out.push({ number: i, date, countries: [...new Set(first.flatMap((a) => a.countries))].sort(), planned: first.every((a) => a.planned), assumed: first.every((a) => a.assumed) });
   }
   return out;
 }
@@ -159,7 +164,7 @@ registerCommitmentSource((state, from, to) => state.projects.flatMap((p) => p.re
     const out = eps.length ? eps.every((e) => e.status === 'released') : r.status === 'released';
     // Where, too: a film opening in several countries on one day is several releases, and each is its own entry.
     const what = `${eps.length ? `${which(eps)} ${ON[r.route]}` : `Release ${ON[r.route] ?? 'in cinemas'}`} in ${r.territories.join(', ')}`;
-    return { at: nineAm(p, d), label: `${p.title}: ${what}${out ? ' (Out)' : ''}${eps.some((e) => e.assumed) ? ' (Assumed Date)' : ''}`, route: { view: 'project' as const, projectId: p.id, tab: 'release' }, kind: 'project' as const };
+    return { id: `${r.id}@${d}`, at: nineAm(p, d), label: `${p.title}: ${what}${out ? ' (Out)' : ''}${eps.some((e) => e.assumed) ? ' (Assumed Date)' : ''}`, route: { view: 'project' as const, projectId: p.id, tab: 'release' }, kind: 'project' as const };
   }).filter((c) => c.at >= from && c.at <= to);
 })));
 

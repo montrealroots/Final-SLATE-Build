@@ -21,7 +21,7 @@ import { gaussian, pick, stream } from './rng';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
 import { redactionComplete } from './unscripted';
 import { songCredits, songUses } from './songs';
-import { assumedDates, episodeDateProblem, episodesFor, hasEpisodes, onReleaseDay, presetDates, syncReleaseEvents } from './episode-releases';
+import { assumedDates, episodeDateProblem, episodesFor, hasEpisodes, onReleaseDay, presetDates, releaseHourPassed, syncReleaseEvents } from './episode-releases';
 import { DAY, addDaysToKey, dateKey, formatDateKey, isDateKey, localToInstant, parseYmd } from './time';
 import type { Credit, DistributionOffer, GameState, Project, ReleasePattern, ReleaseRecord, Scene } from './types';
 
@@ -338,6 +338,7 @@ export function planRelease(state: GameState, p: Project, input: { route: Releas
   const today = dateKey(state.now, zone);
   if (!isDateKey(input.date)) throw new Error('Choose a real release date.');
   if (input.date < today) throw new Error('Choose a release date from today onward.');
+  if (releaseHourPassed(state, p, input.date)) throw new Error('Releases go out at 9 in the morning, and that has passed today. Choose tomorrow or later.');
   if ((input.route === 'theatrical' || input.route === 'broadcast') && !input.distributor) {
     throw new Error(input.route === 'theatrical' ? 'A theatrical release needs a distributor. Accept a distribution offer first.' : 'A broadcast needs a broadcaster. Accept an offer first.');
   }

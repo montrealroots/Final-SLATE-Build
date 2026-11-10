@@ -473,6 +473,8 @@ export function wakeMessage(state: GameState): string {
 }
 
 export interface Commitment {
+  /** Stable, where entries can read alike (two releases in one country on one day); the list keys by it. */
+  id?: string;
   at: number;
   label: string;
   route: Route;
