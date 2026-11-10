@@ -75,3 +75,84 @@ reader:
 - `Settings.reducedMotion` and `largeText`, which are the device's: Larger Text is stored in the browser and motion follows the system setting, the same for every saved game.
 
 Old saves keep these keys, and nothing reads them.
+
+## Does Each Choice Change Play? (November 10, 2026)
+
+A field that has a reader doesn't prove that a choice has consequences: a screen that shows it is a reader too. So on
+November 10, 2026 the owner asked for every player input to be classed by what it does, and for each gameplay decision
+to be followed from the control to its effect, and then compared: the same world from the same seed, one choice
+changed, the intended difference seen and the unrelated outcomes left exactly as they were.
+
+### Every labelled control, classed
+
+`docs/input-audit/CONTROLS.csv` lists all 217 labelled controls in `src/ui` (text, select, number, check, place,
+language and genre fields), each with its class, the saved state it writes, the code that reads it, the effect, a unit
+test and, where there is one, a browser journey. `tools/input-audit/controls.py` writes it and holds the classification.
+`tests/input-audit.test.ts` fails when a control is added or removed without a row, when a decision has no reader, no
+effect or no test, or when a cited test no longer exists.
+
+| Class | Controls | What it means | Evidence |
+|---|---|---|---|
+| Decision | 128 | Changes a rule, an action, work, the schedule, a cost, eligibility, an assessment or an outcome | Every one cites a unit test (128); 49 also cite a browser journey that makes the choice in the UI |
+| Identity or creative expression | 57 | What you chose, kept and used where it belongs: names, descriptions, pronouns, backgrounds | Shown where it belongs. 24 cite a unit test where it is used (credits carry the legal name, casting shows a shared background) |
+| Historical record | 16 | A name or a note about something that happened, shown back as written | Shown. Nothing scores it |
+| View | 15 | Search, filter or sort on a screen; not game state | None needed |
+| Component | 1 | A shared component's own definition | None needed |
+
+Buttons that act (Call Back, Cast, Approach, Submit, Release) aren't labelled fields. Each is a command with a preview and
+a refusal, checked by `tests/action-previews.test.ts`; the trace below follows the ones in the owner's list.
+
+Names, identity, descriptions and dates were not given scores. A character's thread list, for example, is creative
+expression with one consistency check: a structure note, advisory, so it weighs on nothing (`projects.ts` marks it, and
+`finance.ts` `scriptScore` skips advisory notes).
+
+### Displayed, affects play, verified on a journey
+
+"Displayed" is the reader guard above (`tests/model-readers.test.ts`). "Affects gameplay" is a decision with a unit
+test that shows the difference. "Verified through a full journey" is a browser journey that makes the choice and sees
+its effect in the UI. Of the 128 decisions, all affect gameplay by a unit test; 49 are also on a journey. The other 79
+are verified in the engine only. Most are production settings (stages, render nodes, puppet copies, blocks) and
+script detail fields whose journeys stop short of them. A journey counts only when it makes the choice in the UI. Nine
+citations were dropped on November 10, 2026 because their journey never did: it set the value with a labelled fixture
+(each episode's writer and director, the genres, the dialogue languages) or never reached the control (proficiency, a
+release date, what to capture, a day rate, stop-motion stages). Two were moved to the journey that does make the choice
+(Route, Change Financing Target).
+
+### Controlled comparisons
+
+`tests/decision-effects.test.ts` changes one decision in an otherwise identical world. Each comparison was checked by
+breaking the rule it relies on; each break failed it.
+
+| Decision | What changes | What stays the same | Rule broken to check it |
+|---|---|---|---|
+| Which genre is primary | Comedy or drama in the awards that split them | Work, checks | `competesAs` reading emphasis |
+| Where the story is set, abroad | Setting Research, 3 days, before design and costumes | Shoot, edit, delivery, cast, checks | The setting-research task |
+| A thread's characters | An advisory structure note | Work; backers don't read it | The structure note |
+| When the story is set (`storyTime`) | Period and present-day categories accept or refuse it | Work, checks. Period research follows the era written (`axes.storyEra`), not this | `awards-rules.ts` `period` case |
+| Animation finish | Render time is three times as long; animation work grows | Frames, other work, every cost not for animation or rendering | `RENDER_HOURS_PER_FRAME.feature` |
+| Your language proficiency, and the language a part speaks | A part in a language you speak only at Basic needs a dialect coach | The rest of the crew, the work | `language.ts` proficiency and part language |
+| Six-day weeks | The same days end sooner, with Saturdays worked | The days, their scenes, their count | `isWorkingDay` on Saturdays |
+| Financing target | What is still to raise; whether a backer can be asked | The estimate, the work | `financeSummary` reading the target |
+
+### The owner's list, traced
+
+Each row goes input → saved state → engine consumer → result → what the player is told → after a reload.
+
+| Area | Input → state | Consumer → result | The player sees | Unit evidence | Journey | Reload |
+|---|---|---|---|---|---|---|
+| Screenwriting | Scenes, places, interior or exterior, characters → `scenes`, `characters` | `projects.ts` `deriveRequirements`, `production/tasks.ts` `buildTasks` → work and its order | The breakdown and the estimate | `estimates.test.ts` "a cut says what it saves" | `journeys.spec.ts` | `script-effects.test.ts` "survive save and load" |
+| Genres | Genres and which is primary → `axes.genres[].emphasis` | `script-effects.ts` `competesAs`; genre modules → checks and work | Overview: competes as | `decision-effects.test.ts` | None that changes the emphasis in the UI yet | Saved with the project |
+| Setting and research | Where it is set → `axes.settingPlaceId` | `projects.ts`, `production/tasks.ts` → Setting Research | Story panel, Overview, the work list | `decision-effects.test.ts` | `readers.spec.ts` "a setting abroad" | Saved with the project |
+| Characters and threads | A thread's characters → `threads[].characterIds` | `structure.ts` → advisory note | Script notes | `decision-effects.test.ts` | `structure.spec.ts` keeps a thread, not its characters | Saved with the project |
+| Casting and callbacks | Shortlist → `auditions[].shortlisted`; Call Back | `casting-calls.ts` `callBack` refuses anyone not shortlisted; a callback narrows the read | The audition table, the refusal | `auditions.test.ts` "a callback narrows it" | `auditions.spec.ts` | `auditions.test.ts` "a shortlist and a pending callback survive a save" |
+| Episode assignments | Each episode's writer and director → `episodes[].writer`, `.director` | `production/schedule.ts` (directors never share a day; blocks); `episode-assessment.ts` | Schedule, credits, each episode's result | `episodes.test.ts`, `episode-assessment.test.ts` | None that chooses them in the UI yet | Saved with the project |
+| Production choices | Six-day weeks, holidays, blocks, stages, render nodes → `schedule.*` | `production/schedule.ts` `isWorkingDay`, `workday.ts` | The schedule and the costs | `decision-effects.test.ts`, `media.test.ts`, `heritage.test.ts` | `journeys.spec.ts` "stop motion to delivery" | Saved with the project |
+| Edits | Cut a scene, accept a gap, lock picture, a version's scenes | `cost-cuts.ts`, `edit.ts`, `versions.ts` → savings, cancelled days, the version's runtime | Each cut's saving before it is made | `cost-cuts.test.ts`, `script-effects.test.ts`, `versions.test.ts` | `awards.spec.ts` "Emmys guest" (a shorter version) | `directing.test.ts` "the choice survives a save" |
+| Songs | Origin, lyrics, performers, scenes, a version's song | `songs.ts` `songTasks`, `songCredits`; `awards-rules.ts` `songProblems` | Songs card; As Entered names the song | `songs.test.ts` | `awards.spec.ts` "Songs" | Migrated from v7 (`songs.ts` `migrateV7toV8`) |
+| Financing | Target, backer approaches, offers | `finance.ts` `financeSummary`, `decide` | Still to raise; the offer and its terms | `decision-effects.test.ts`, `finance.test.ts` | `careers.spec.ts` "stop motion: refused for lack of money" | `connected.spec.ts` reloads |
+| Releases | Route, territories, date → `releases[]` | `awards-rules.ts` qualifying routes, `firstShown` | The release, eligibility reasons | `qualifying-routes.test.ts`, `recipient-rules.test.ts` | `journeys.spec.ts` "2D animation: deliver, release digitally" | Saved with the project |
+| Award submissions | Category, version, recipients → `entries[]` with a snapshot | `awards-rules.ts` `requirementProblems`, judging | Eligible or why not; As Entered | `awards-catalog.test.ts` | `awards.spec.ts` | `awards-catalog.test.ts` "survive a save and reload unchanged" |
+
+No broken link was found in these areas: every decision listed reached a rule, and each comparison showed its
+difference. The episode air dates were an assumption, not a choice. Before November 10, 2026, broadcast meant weekly
+and streaming meant every episode at once, with no way to choose. That is the next item in `RESUME-HERE.md`.
