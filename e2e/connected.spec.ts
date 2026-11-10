@@ -106,6 +106,7 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   await page.getByRole('button', { name: 'Approach Screen Arts Fund Grant' }).click();
   const backers = page.locator('section.card', { has: page.getByRole('heading', { name: 'Backers' }) });
   await expect(backers.locator('li', { hasText: 'Screen Arts Fund Grant' })).toContainText('Sent with the approved script (draft 1): Pitch, Treatment, Statement Of Intent.');
+  await expect(backers.locator('li', { hasText: 'Screen Arts Fund Grant' })).toContainText(/Approached [A-Z][a-z]+ \d{1,2}, \d{4}/);
   await secureStartingBacking(page);
 
   // Casting, crew, the schedule.
@@ -195,5 +196,16 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Release History' }) })).toContainText('Broadcast in GB');
   await section(page, 'Edit');
   await expect(page.getByText(/Delivered at \d+ minutes/)).toBeVisible();
+  // The cut keeps its dates: the picture lock, and each version of the edit (November 9, 2026).
+  const cutCard = page.locator('section.card', { has: page.getByRole('heading', { name: 'Cut', exact: true }) });
+  await expect(cutCard).toContainText(/Picture\s*Locked on [A-Z][a-z]+ \d{1,2}, \d{4}/);
+  await cutCard.getByText('Versions', { exact: true }).click();
+  await expect(cutCard.getByText(/^Version 1: Assembly, about \d+ minutes \([A-Z][a-z]+ \d{1,2}, \d{4}\)$/)).toBeVisible();
+  // Each budget line shows how its money moved.
+  await section(page, 'Budget');
+  const lines = page.locator('section.card', { has: page.getByRole('heading', { name: 'Budget Lines' }) });
+  await lines.getByText(/^\d+ lines?$/).click();
+  await lines.getByText('How It Moved').first().click();
+  await expect(lines.getByText(/^(Held|Agreed at|Paid|Released) \$[\d,]+ on [A-Z][a-z]+ \d{1,2}, \d{4}$/).first()).toBeVisible();
   await shot(page, p, '07-after-reload');
 });

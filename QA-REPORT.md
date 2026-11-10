@@ -8,7 +8,22 @@
 
 ## Commands And Results
 
-### Current: Browser Evidence For The New Readers, And WebKit Input Logging (November 9, 2026, after #56)
+### Current: The Last New Screens In Journeys; The Game, Not "SLATE", When It Describes Itself (November 9, 2026, after #57)
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npx playwright test e2e/career.spec.ts e2e/careers.spec.ts e2e/connected.spec.ts e2e/awards.spec.ts e2e/script-rules.spec.ts --project=desktop` | 1, then 0 | 22 passed, 2 failed. Both failures were mistakes in the new checks themselves. The awards journey opened About The Other Works before keeping the row's text, which its reload then compares; the check moved after that. The proposal fixture's earlier work (`p-earlier`) isn't a project in its save, so the Overview says "after your earlier work"; the check now expects that. Then 2 of 2 passed. |
+| The same proposal, Oscars and Songs journeys on `iphone-15-plus` | 0 | 3 passed. |
+| After #57 merged, on its tree: `npm run check`; `career`, `careers`, `connected`, `awards`, `script-rules` on desktop; `career` and `awards` on `iphone-15-plus` | 0, 0, 0 | 75 files, 585 tests, startup JavaScript 219 kB gzipped; 24 passed on desktop; 18 passed on `iphone-15-plus`. |
+
+- **Now covered by journeys:**
+  - Proposed By (`career.spec.ts`);
+  - an offer's date (`careers.spec.ts`);
+  - a backer's approach date, the picture lock date, each cut version's date and a budget line's postings (`connected.spec.ts`);
+  - rival works described in a result, and a song's date (`awards.spec.ts`).
+- **Text:** where the game says what it reads, scores, records or simulates, it says "the game", not "SLATE". That covers the Script, Characters, Structure, Season and Research panels, the content declaration, the place's weather note, the portrait picker and the backers' sent documents. `docs/COPY-GUIDE.md` has the rule. "SLATE" stays the product's name: the wordmark, saved files, browser storage, versions.
+
+### Browser Evidence For The New Readers, And WebKit Input Logging (November 9, 2026, #57)
 
 | Command | Exit | Result |
 | --- | --- | --- |
@@ -51,7 +66,7 @@ that nothing reads, by a rule or a screen.
   - screen time goes stale when a scene changes length either way;
   - the wake message says how long you slept.
 - **Defect fixed:** "Plan To Attend" never scheduled its day-before reminder, because it pushed its plan by hand.
-- **Shown on screen, not covered by a browser journey at #56:** the dated records (drafts, offers, approaches, budget-line postings, versions, picture lock, songs, saved games), Recent Updates, rival descriptions, Proposed By, people's dated history. After #56, `e2e/readers.spec.ts` covered drafts' dates and Recent Updates; the rest are still unit-tested and typechecked only.
+- **Shown on screen, not covered by a browser journey at #56:** the dated records (drafts, offers, approaches, budget-line postings, versions, picture lock, songs, saved games), Recent Updates, rival descriptions, Proposed By, people's dated history. After #56, `e2e/readers.spec.ts` covered drafts' dates and Recent Updates; after #57, the journeys covered the rest except the saved games' Begun date, the people history's project links and the judges' scores.
 - **Removed:** nine stored copies and dead fields (`docs/INPUT-AUDIT.md`, Removed). Old saves keep the keys and nothing reads them.
 
 ### The Owner's Recovered Awards Sources (November 9, 2026, merged as #55)

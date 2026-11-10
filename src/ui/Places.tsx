@@ -260,7 +260,7 @@ export function PlaceView() {
           <p>It's {lt.time} on {lt.weekday}, {lt.date} here.</p>
           <p>{w.condition}, {Math.round(temperatureAt(w, localParts(now, place.zone).hour))}°C now. High {Math.round(w.high)}°C, low {Math.round(w.low)}°C.{w.precipHours ? ` ${w.snow ? 'Snow' : 'Rain'} from about ${formatClock(w.precipHours[0], 0)} to ${formatClock(w.precipHours[1] % 24, 0)}.` : ''}</p>
           <p>{dl.polar === 'day' ? 'The sun stays up all day.' : dl.polar === 'night' ? "The sun doesn't rise today." : `Sunrise ${longLocal(dl.sunrise!, place.zone).time}, sunset ${longLocal(dl.sunset!, place.zone).time} (${dl.dayLengthHours.toFixed(1)} hours of daylight).`}</p>
-          <p className="dim">Weather in SLATE is simulated from typical local climate, not live observations.{climateNote(place.climate.source) ? ` ${climateNote(place.climate.source)}` : ''}</p>
+          <p className="dim">Weather in the game is simulated from typical local climate, not live observations.{climateNote(place.climate.source) ? ` ${climateNote(place.climate.source)}` : ''}</p>
           {!here && (
             <>
               <button className="btn btn-primary" disabled={!!g.travel} onClick={() => { let at = 0; const err = store.act((s) => { at = travelTo(s, place.id); }); setTravelError(err); if (!err) void store.advance({ at }); }}>Travel Here</button>

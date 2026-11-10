@@ -82,7 +82,7 @@ test('a supporting antagonist, an incomplete pitch and a revised treatment: what
   const backers = page.locator('section.card', { has: page.getByRole('heading', { name: 'Backers' }) });
   const grant = backers.locator('li', { hasText: 'Screen Arts Fund Grant' });
   await expect(grant).toContainText('Considering');
-  await expect(grant).toContainText("Sent with the approved script (draft 1): Pitch, Treatment, Statement Of Intent. They read it; SLATE doesn't judge it.");
+  await expect(grant).toContainText("Sent with the approved script (draft 1): Pitch, Treatment, Statement Of Intent. They read it; the game doesn't judge it.");
   await expect(grant).toContainText('Their answer is due');
   await grant.scrollIntoViewIfNeeded();
   await page.screenshot({ path: `test-results/rules-${info.project.name}-treatment-sent.png`, fullPage: true });

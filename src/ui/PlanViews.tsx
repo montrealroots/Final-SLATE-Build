@@ -738,7 +738,7 @@ function FinancingPanel({ p }: { p: Project }) {
                   <span className="grow"><strong>{d.backer}</strong>{d.amount ? `: ${money(d.amount)}` : ''} <span className="dim small">Approached {formatDateKey(dateKey(d.askedAt, zone))}</span></span>
                   <span className={`chip ${d.status === 'accepted' ? 'chip-positive' : d.status === 'declined' || d.status === 'breached' || d.status === 'withdrawn' || d.status === 'lapsed' ? 'chip-negative' : d.status === 'offered' ? 'chip-accent' : ''}`}>{status[d.status]}</span>
                 </div>
-                {d.sent?.length ? <p className="dim">Sent with the approved script{d.sentCopy?.draft ? ` (draft ${d.sentCopy.draft})` : ''}: {d.sent.join(', ')}. They read it; SLATE doesn't judge it.</p> : null}
+                {d.sent?.length ? <p className="dim">Sent with the approved script{d.sentCopy?.draft ? ` (draft ${d.sentCopy.draft})` : ''}: {d.sent.join(', ')}. They read it; the game doesn't judge it.</p> : null}
                 {d.sentCopy && (
                   <details className="section-fold">
                     <summary>What You Sent</summary>

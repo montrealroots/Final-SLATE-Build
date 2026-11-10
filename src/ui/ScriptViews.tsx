@@ -109,7 +109,7 @@ export function ScriptTab({ p }: { p: Project }) {
       </div>
       <section className="card">
         <h2>{nonfiction ? 'Subject And Approach' : 'Story'}</h2>
-        <p className="dim">Your own words for the project. SLATE never reads them for meaning, and they never change the script's quality or how fast anyone answers. They are also the documents some people ask for by name, and an approach that includes one can't be sent until its fields are written: the Pitch (logline and premise) for backers, festival entry forms and distribution contracts; the Treatment (central conflict, point of view and intended ending) for a commissioner or a grant; the Statement Of Intent (theme and stakes{nonfiction ? ', and the central question' : ''}) for a grant. What they decide doesn't depend on what you wrote.</p>
+        <p className="dim">Your own words for the project. The game never reads them for meaning, and they never change the script's quality or how fast anyone answers. They are also the documents some people ask for by name, and an approach that includes one can't be sent until its fields are written: the Pitch (logline and premise) for backers, festival entry forms and distribution contracts; the Treatment (central conflict, point of view and intended ending) for a commissioner or a grant; the Statement Of Intent (theme and stakes{nonfiction ? ', and the central question' : ''}) for a grant. What they decide doesn't depend on what you wrote.</p>
         <div className="grid grid-2 form">
           {nonfiction && <TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} />}
           <TextField label="Logline" multiline value={p.story.logline} maxLength={300} onChange={(v) => edit(p, () => (p.story.logline = v))} />
@@ -404,7 +404,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
           <div className="grid grid-2 form">
             <TextField label="Objective" multiline value={s.objective} onChange={(v) => up({ objective: v })} />
             <TextField label={nonfiction ? 'What Happens' : 'Action'} multiline value={s.action} onChange={(v) => up({ action: v })} />
-            <TextField label="Turning Point" multiline value={s.turningPoint} hint="Your note on what turns here. Kept with the script; SLATE doesn't read it." onChange={(v) => up({ turningPoint: v })} />
+            <TextField label="Turning Point" multiline value={s.turningPoint} hint="Your note on what turns here. Kept with the script; the game doesn't read it." onChange={(v) => up({ turningPoint: v })} />
           </div>
           <Check label="Essential To The Story" checked={!!s.essential} hint="The story doesn't work without this scene. If it isn't shot, the edit offers a pickup or cutting around it, and cutting an essential scene leaves a gap." onChange={(v) => up({ essential: v || undefined })} />
           {!nonfiction && <Dialogue p={p} s={s} up={up} onSplit={(at) => setConfirm({ title: 'Split The Scene', lines: splitSceneImpact(p, s.id, at), act: () => { splitScene(store.state!, p, s.id, at); } })} />}
@@ -484,7 +484,7 @@ function WorldRules({ p, title }: { p: Project; title: string }) {
   return (
     <section className="card">
       <h2>{title}</h2>
-      <p className="dim">SLATE records these rules and checks that some are written down. It can't tell whether a scene breaks one: that is yours to keep track of. Mark the scenes that rely on a rule, and changing it lists them first.</p>
+      <p className="dim">The game records these rules and checks that some are written down. It can't tell whether a scene breaks one: that is yours to keep track of. Mark the scenes that rely on a rule, and changing it lists them first.</p>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       <ul className="list">{p.worldRules.map((r) => (
         <li key={r.id}>
@@ -536,7 +536,7 @@ function Season({ p }: { p: Project }) {
   return (
     <section className="card" aria-labelledby="season-h">
       <h2 id="season-h">Season</h2>
-      <p className="dim">The season's arc and what each episode moves in it. Your plan: SLATE doesn't score it, and a next season starts from it.</p>
+      <p className="dim">The season's arc and what each episode moves in it. Your plan: the game doesn't score it, and a next season starts from it.</p>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       {p.continues?.previousArc && <p className="muted">Last season: {p.continues.previousArc}</p>}
       <TextField label="Season Arc" multiline maxLength={2000} value={p.seasonArc ?? ''} onChange={(v) => setErr(edit(p, () => setSeasonArc(p, v)))} />
@@ -578,7 +578,7 @@ function Structure({ p }: { p: Project }) {
   return (
     <section className="card" aria-labelledby="structure-h">
       <h2 id="structure-h">Acts And Threads</h2>
-      <p className="dim">Your structure. Acts group scenes; a thread follows a story line to the scene that resolves it, or is left open on purpose. Cuts and changes say which thread they touch. SLATE doesn't score either.</p>
+      <p className="dim">Your structure. Acts group scenes; a thread follows a story line to the scene that resolves it, or is left open on purpose. Cuts and changes say which thread they touch. The game doesn't score either.</p>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       <h3>Acts</h3>
       {(p.acts ?? []).length ? (
@@ -625,7 +625,7 @@ function Research({ p }: { p: Project }) {
   return (
     <section className="card" aria-labelledby="research-h">
       <h2 id="research-h">Research</h2>
-      <p className="dim">Questions your story rests on, what you checked them against, and the scenes they inform. SLATE doesn't verify them; an open or uncertain one is noted on its scenes until you mark it reviewed.</p>
+      <p className="dim">Questions your story rests on, what you checked them against, and the scenes they inform. The game doesn't verify them; an open or uncertain one is noted on its scenes until you mark it reviewed.</p>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       <ul className="list">{(p.research ?? []).map((n) => (
         <li key={n.id}>
@@ -942,7 +942,7 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
           <CharacterBackgrounds name={c.name} ethnicities={c.heritages ?? []} nationalities={c.nationalities ?? []} onChange={(patch) => up(patch)} />
           <ArcBeats p={p} c={c} />
           <div className="grid grid-2 form">
-            {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Your description for design and casting. Kept with the script; SLATE doesn't read it." onChange={(v) => up({ entityNote: v })} />}
+            {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Your description for design and casting. Kept with the script; the game doesn't read it." onChange={(v) => up({ entityNote: v })} />}
             <TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown sent with offers. It doesn't change who accepts or how fast." onChange={(v) => up({ description: v })} />
             <TextField label="Wants" multiline value={c.wants} onChange={(v) => up({ wants: v })} />
             <TextField label="Fears" multiline value={c.fears} onChange={(v) => up({ fears: v })} />
@@ -1088,7 +1088,7 @@ function ContentCard({ p, locked }: { p: Project; locked: boolean }) {
   return (
     <section className="card" aria-labelledby="content-h">
       <h2 id="content-h">Content</h2>
-      <p className="dim">Declare what the finished work shows, as you would describe it to a classification body. Only a classification body gives a rating; SLATE uses your declaration for what outlets ask of the release, such as a broadcast slot, and for streaming's content advisories. It is fixed once the project is delivered.</p>
+      <p className="dim">Declare what the finished work shows, as you would describe it to a classification body. Only a classification body gives a rating; the game uses your declaration for what outlets ask of the release, such as a broadcast slot, and for streaming's content advisories. It is fixed once the project is delivered.</p>
       <p><strong>Declared:</strong> {contentSummary(p)}.</p>
       <div className="grid grid-3 form">
         {CONTENT_ISSUES.map((i) => (

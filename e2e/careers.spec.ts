@@ -273,6 +273,7 @@ test('writing, producing and directing without acting: an offer to a performer b
   await section(page, 'Cast');
   const offerRow = page.locator('tr', { hasText: busyName });
   await expect(offerRow).toContainText('Offer Sent');
+  await expect(offerRow).toContainText(/Offered [A-Z][a-z]+ \d{1,2}, \d{4}; answer by about /);
   for (let i = 0; i < 10 && !(await offerRow.getByText('Declined', { exact: true }).count()); i++) {
     await advance(page, 'next-day');
     await section(page, 'Cast');

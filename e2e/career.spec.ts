@@ -34,6 +34,9 @@ test('a proposal is accepted into a funded project, another is declined, and bot
   await panel.getByLabel('Title For The New Project').fill('Second Crossing');
   await panel.getByRole('button', { name: 'Accept Proposal' }).click();
   await expect(page.getByRole('heading', { name: 'Second Crossing', level: 1 })).toBeVisible();
+  // The project says whose proposal it came from, and after which work (November 9, 2026). The fixture's earlier work
+  // ('p-earlier') isn't a project in this save, so the game says so in general words.
+  await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Project', exact: true }) })).toContainText(/Proposed By\s*Northgate Broadcasting, after your earlier work/);
   await section(page, 'Budget');
   await expect(page.locator('section.card', { has: page.getByRole('heading', { name: 'Backers' }) })).toContainText('Northgate Broadcasting');
 
