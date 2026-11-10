@@ -35,7 +35,8 @@ export function playerDoes(roleId: string): boolean {
 
 export function milestoneDone(p: Project, dep: string): boolean {
   const m = /^milestone:lock:(\d+)$/.exec(dep);
-  if (m) return p.edit.pictureLocked;
+  // An episode locked on its own (episode-delivery.ts) lets its sound, music and color go on before the season is locked.
+  if (m) return p.edit.pictureLocked || !!p.edit.lockedEpisodes?.includes(Number(m[1]));
   if (dep === 'capture:all') return p.schedule.days.every((d) => d.status !== 'scheduled');
   const c = /^capture:(\d+)$/.exec(dep);
   if (c) {
@@ -353,7 +354,9 @@ export function onTaskDone(state: GameState, p: Project, task: Task, date: strin
     p.edit.versions.push({ number: p.edit.versions.length + 1, at: state.now, runtimeMin: Math.round(approvedScenes(p).filter((s) => s.episode === task.episode).reduce((a, s) => a + s.estMinutes, 0)), note: 'Assembly' });
     if (p.phase === 'production') p.phase = 'post-production';
   }
-  if (task.kind.startsWith('post:cutpass')) {
+  if (task.kind === 'post:cutpass-ep') {
+    p.edit.episodeCutPasses = { ...(p.edit.episodeCutPasses ?? {}), [task.episode]: (p.edit.episodeCutPasses?.[task.episode] ?? 0) + 1 };
+  } else if (task.kind.startsWith('post:cutpass')) {
     p.edit.cutPasses += 1;
     p.edit.versions.push({ number: p.edit.versions.length + 1, at: state.now, runtimeMin: p.edit.versions[p.edit.versions.length - 1]?.runtimeMin ?? 0, note: `Cut Pass ${p.edit.cutPasses}` });
   }

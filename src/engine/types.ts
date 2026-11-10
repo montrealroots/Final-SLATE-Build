@@ -630,6 +630,10 @@ export interface EditState {
   versions: { number: number; at: number; runtimeMin: number; note: string }[];
   /** Performers' recorded screen time per scene (screen-time.ts). */
   screenTime?: ScreenTime[];
+  /** A series locked an episode at a time (episode-delivery.ts): their numbers. The whole picture lock covers them all. */
+  lockedEpisodes?: number[];
+  /** Cut passes made on one episode alone, by episode number (episode-delivery.ts). Season passes count for each. */
+  episodeCutPasses?: Record<number, number>;
 }
 
 export interface Credit {
@@ -673,6 +677,8 @@ export interface EpisodeRelease {
   status: 'planned' | 'released';
   /** Reconstructed from an older save's release by the rule it was judged by then, not a date anyone set. */
   assumed?: true;
+  /** Its day came before it was delivered, so it didn't come out; it waits for a new date (episode-delivery.ts). */
+  held?: true;
 }
 
 export interface DistributionOffer {
@@ -789,6 +795,8 @@ export interface Project {
   unscripted?: UnscriptedSetup;
   edit: EditState;
   delivered: { at: number; runtimeMin: number } | null;
+  /** A series delivered an episode at a time, before the whole season (episode-delivery.ts), by episode number. */
+  episodeDeliveries?: Record<number, { at: number; runtimeMin: number }>;
   credits: Credit[];
   releases: ReleaseRecord[];
   offers: DistributionOffer[];
@@ -865,7 +873,7 @@ export interface EntrySnapshot {
   screen?: { creditId: string; text: string }[];
   song?: { id: string; title: string; writers: string[] };
   /** A series: when each episode first came out, or was to, as it stood when entered (episode-releases.ts airings). */
-  airing?: { number: number; date: string; status: 'planned' | 'released'; assumed?: true }[];
+  airing?: { number: number; date: string; status: 'planned' | 'released'; assumed?: true; held?: true }[];
 }
 
 /** A competing work from the simulated season, stored once per save and shared by every edition it appears in. */

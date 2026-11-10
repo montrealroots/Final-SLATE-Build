@@ -86,7 +86,7 @@ export function entrySnapshot(p: Project, cat: Parameters<typeof playerScore>[1]
     ...(screen ? { screen: credits.map((c) => ({ creditId: c.id, text: shareCheck(p, c, screen.atLeast, screen.per, { episode: e.episode, versionId: e.versionId }).text })) } : {}),
     ...(song ? { song: { id: song.id, title: song.title, writers: credits.map((c) => c.personName) } } : {}),
     // A series: each episode's date as it stood, planned or out, so a later change to the schedule shows against it.
-    ...(isEpisodic(p.axes.format) && p.releases.some((r) => r.episodes) ? { airing: airings(p).map((a) => ({ number: a.number, date: a.date, status: a.planned ? 'planned' as const : 'released' as const, ...(a.assumed ? { assumed: true as const } : {}) })) } : {}),
+    ...(isEpisodic(p.axes.format) && p.releases.some((r) => r.episodes) ? { airing: airings(p).map((a) => ({ number: a.number, date: a.date, status: a.planned ? 'planned' as const : 'released' as const, ...(a.assumed ? { assumed: true as const } : {}), ...(a.held ? { held: true as const } : {}) })) } : {}),
   };
 }
 

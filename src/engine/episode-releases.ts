@@ -49,8 +49,9 @@ export const releaseHourPassed = (state: GameState, p: Project, d: string): bool
 export function syncReleaseEvents(state: GameState, p: Project, r: ReleaseRecord): void {
   cancelEvents(state, (e) => (e.kind === 'release' || e.kind === 'episode-release') && e.payload.releaseId === r.id);
   if (r.status === 'cancelled') return;
-  if (r.status === 'planned') schedule(state, nineAm(p, r.date), 'release', { projectId: p.id, releaseId: r.id }, { attention: 'notify', priority: 30, id: `${r.id}-out` });
-  const later = new Set((r.episodes ?? []).filter((e) => e.status === 'planned' && !(r.status === 'planned' && e.date === r.date)).map((e) => e.date));
+  // Never an event before now: a day whose release hour has passed, or an episode held back, waits for a new date.
+  if (r.status === 'planned' && !releaseHourPassed(state, p, r.date)) schedule(state, nineAm(p, r.date), 'release', { projectId: p.id, releaseId: r.id }, { attention: 'notify', priority: 30, id: `${r.id}-out` });
+  const later = new Set((r.episodes ?? []).filter((e) => e.status === 'planned' && !e.held && !(r.status === 'planned' && e.date === r.date) && !releaseHourPassed(state, p, e.date)).map((e) => e.date));
   for (const d of later) schedule(state, nineAm(p, d), 'episode-release', { projectId: p.id, releaseId: r.id, date: d }, { attention: 'notify', priority: 31, id: `${r.id}-air-${d}` });
 }
 
@@ -63,16 +64,40 @@ const which = (eps: EpisodeRelease[]) => {
 
 /** The release's first day: the episodes dated that day come out with it (finish.ts, the release handler). */
 export function onReleaseDay(r: ReleaseRecord): void {
-  for (const e of r.episodes ?? []) if (e.status === 'planned' && e.date <= r.date) e.status = 'released';
+  for (const e of r.episodes ?? []) if (e.status === 'planned' && !e.held && e.date <= r.date) e.status = 'released';
+}
+
+const deliveredYet = (p: Project, n: number) => !!p.delivered || !!p.episodeDeliveries?.[n];
+
+/**
+ * An episode whose day has come before it is delivered doesn't come out: it is held back, the player is told, and it
+ * waits for a new date on the Release tab. Returns what the player is told, or null if every episode due was ready.
+ * Nothing else changes: a release contract only exists for a delivered season, so no contract term applies.
+ */
+export function holdUndelivered(state: GameState, p: Project, r: ReleaseRecord, date: string): string | null {
+  const due = (r.episodes ?? []).filter((e) => e.status === 'planned' && !e.held && e.date === date && !deliveredYet(p, e.number));
+  if (!due.length) return null;
+  for (const e of due) e.held = true;
+  const one = due.length === 1;
+  const text = `${which(due)} of ${p.title} ${one ? "isn't" : "aren't"} delivered, so ${one ? 'it' : 'they'} didn't come out today ${ON[r.route]}. Choose a new day on the Release tab.`;
+  addLog(state, text, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
+  p.history.push({ at: state.now, text: `Held back: ${which(due)}, not delivered by ${date}.` });
+  return text;
 }
 
 registerHandler('episode-release', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
   const r = p?.releases.find((x) => x.id === ev.payload.releaseId);
   if (!p || !r || r.status === 'cancelled') return { suppressInterrupt: true };
-  const due = (r.episodes ?? []).filter((e) => e.status === 'planned' && e.date === ev.payload.date);
-  if (!due.length) return { suppressInterrupt: true };
+  const held = holdUndelivered(state, p, r, String(ev.payload.date));
+  const due = (r.episodes ?? []).filter((e) => e.status === 'planned' && !e.held && e.date === ev.payload.date);
+  if (!due.length) return held ? { message: held } : { suppressInterrupt: true };
   for (const e of due) e.status = 'released';
+  // A release whose first day was held back starts with the first episode that does come out.
+  if (r.status === 'planned') {
+    r.status = 'released';
+    if (!p.premiere) p.premiere = { kind: 'world', date: String(ev.payload.date), country: r.territories[0], venue: { broadcast: 'Broadcast', streaming: 'Streaming', digital: 'Digital Self-Release' }[r.route as 'broadcast'] ?? r.route };
+  }
   const text = `${which(due)} of ${p.title} ${due.length === 1 ? 'is' : 'are'} out today ${ON[r.route]}.`;
   addLog(state, text, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
   p.history.push({ at: state.now, text: `Released: ${which(due)}, ${ON[r.route]} on ${String(ev.payload.date)}.` });
@@ -88,16 +113,25 @@ export function episodeDateProblem(state: GameState, p: Project, releaseId: stri
   const today = dateKey(state.now, getPlace(p.axes.basePlaceId).zone);
   for (const [i, e] of r.episodes.entries()) {
     const d = dates[i];
+    void i;
     if (e.status === 'released') {
       if (d !== e.date) return `Episode ${e.number} came out on ${formatDateKey(e.date)}. A release that has happened stays as it was.`;
       continue;
     }
+    if (e.held && d === e.date) return `Episode ${e.number} wasn't delivered in time for ${formatDateKey(e.date)}. Choose a new day for it.`;
     if (!isDateKey(d)) return `Choose a real date for episode ${e.number}.`;
     if (d < today) return `Episode ${e.number} can't come out before today.`;
     if (d !== e.date && releaseHourPassed(state, p, d)) return `Episode ${e.number} can't come out today: releases go out at 9 in the morning, and that has passed. Choose tomorrow or later.`;
-    if (i > 0 && d < dates[i - 1]) return `Episode ${e.number} can't come out before episode ${e.number - 1}.`;
+    // Story order is advice, not a rule: episodes that stand alone can come out in another order (orderNotes says so).
   }
   return null;
+}
+
+/** Where these dates put episodes out of story order: advice for the player, never a refusal. */
+export function orderNotes(dates: string[]): string[] {
+  const out: string[] = [];
+  for (let i = 1; i < dates.length; i++) if (dates[i] < dates[i - 1]) out.push(`Episode ${i + 1} would come out before episode ${i}: viewers meet them out of story order. That suits episodes that stand alone; a serial story may confuse.`);
+  return out;
 }
 
 const daysBetween = (a: string, b: string) => Math.round((Date.parse(`${b}T00:00:00Z`) - Date.parse(`${a}T00:00:00Z`)) / 86_400_000);
@@ -115,14 +149,17 @@ export function setEpisodeDates(state: GameState, p: Project, releaseId: string,
     if (e.status === 'released' || e.date === dates[i]) continue;
     e.date = dates[i];
     delete e.assumed;
+    delete e.held;
     moved.push(e);
   }
   if (!moved.length) return [];
   r.pattern = 'custom';
-  if (r.status === 'planned' && r.date !== dates[0]) {
+  // A release still to start starts with its earliest episode, whatever its number.
+  const first = [...dates].sort()[0];
+  if (r.status === 'planned' && r.date !== first) {
     const o = r.offerId ? p.offers.find((x) => x.id === r.offerId) : undefined;
-    if (o?.exclusiveUntil) o.exclusiveUntil = addDaysToKey(o.exclusiveUntil, daysBetween(r.date, dates[0]));
-    r.date = dates[0];
+    if (o?.exclusiveUntil) o.exclusiveUntil = addDaysToKey(o.exclusiveUntil, daysBetween(r.date, first));
+    r.date = first;
   }
   syncReleaseEvents(state, p, r);
   const text = `You moved ${which(moved).replace(/^E/, 'e')} of ${p.title}: ${moved.map((e) => `${e.number} on ${formatDateKey(e.date)}`).join(', ')}.`;
@@ -131,7 +168,7 @@ export function setEpisodeDates(state: GameState, p: Project, releaseId: string,
   return moved.map((e) => e.id);
 }
 
-export interface Airing { number: number; date: string; countries: string[]; planned: boolean; assumed: boolean }
+export interface Airing { number: number; date: string; countries: string[]; planned: boolean; assumed: boolean; held?: true }
 
 /**
  * When each episode first comes out, across every release on television or online that isn't cancelled: the earliest
@@ -145,14 +182,19 @@ export function airings(p: Project): Airing[] {
   for (let i = 1; i <= n; i++) {
     const all = rel.map((r) => {
       const ep = r.episodes?.find((e) => e.number === i);
-      return { date: ep ? ep.date : n > 1 ? assumedDates(r, n)[i - 1] : r.date, countries: r.territories, planned: ep ? ep.status === 'planned' : r.status === 'planned', assumed: ep ? !!ep.assumed : n > 1 };
+      return { date: ep ? ep.date : n > 1 ? assumedDates(r, n)[i - 1] : r.date, countries: r.territories, planned: ep ? ep.status === 'planned' : r.status === 'planned', assumed: ep ? !!ep.assumed : n > 1, held: !!ep?.held };
     });
     if (!all.length) continue;
     // Every release on the earliest day counts, in any order. Until November 10, 2026 the first record listed won, so
     // its countries alone were read, and a planned record listed first made an episode already out read as to come.
     const date = all.reduce((m, a) => (a.date < m ? a.date : m), all[0].date);
     const first = all.filter((a) => a.date === date);
-    out.push({ number: i, date, countries: [...new Set(first.flatMap((a) => a.countries))].sort(), planned: first.every((a) => a.planned), assumed: first.every((a) => a.assumed) });
+    // A day an episode was held back on is no airing: it counts once it has a new date (episode-delivery.ts).
+    const live = all.filter((a) => !a.held);
+    if (!live.length) { out.push({ number: i, date: first[0].date, countries: [], planned: true, assumed: false, held: true }); continue; }
+    const day = live.reduce((m, a) => (a.date < m ? a.date : m), live[0].date);
+    const on = live.filter((a) => a.date === day);
+    out.push({ number: i, date: day, countries: [...new Set(on.flatMap((a) => a.countries))].sort(), planned: on.every((a) => a.planned), assumed: on.every((a) => a.assumed) });
   }
   return out;
 }
@@ -164,7 +206,7 @@ registerCommitmentSource((state, from, to) => state.projects.flatMap((p) => p.re
     const out = eps.length ? eps.every((e) => e.status === 'released') : r.status === 'released';
     // Where, too: a film opening in several countries on one day is several releases, and each is its own entry.
     const what = `${eps.length ? `${which(eps)} ${ON[r.route]}` : `Release ${ON[r.route] ?? 'in cinemas'}`} in ${r.territories.join(', ')}`;
-    return { id: `${r.id}@${d}`, at: nineAm(p, d), label: `${p.title}: ${what}${out ? ' (Out)' : ''}${eps.some((e) => e.assumed) ? ' (Assumed Date)' : ''}`, route: { view: 'project' as const, projectId: p.id, tab: 'release' }, kind: 'project' as const };
+    return { id: `${r.id}@${d}`, at: nineAm(p, d), label: `${p.title}: ${what}${out ? ' (Out)' : ''}${eps.some((e) => e.held) ? ' (Held Back: Not Delivered)' : ''}${eps.some((e) => e.assumed) ? ' (Assumed Date)' : ''}`, route: { view: 'project' as const, projectId: p.id, tab: 'release' }, kind: 'project' as const };
   }).filter((c) => c.at >= from && c.at <= to);
 })));
 

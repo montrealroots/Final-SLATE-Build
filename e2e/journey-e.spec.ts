@@ -83,11 +83,14 @@ test('journey E: refused with a reason, then recovered: a song without its right
   await page.getByLabel('Release Date').fill('2026-08-01');
   await page.getByRole('button', { name: 'Plan Release' }).click();
   await expect(alert(page)).toContainText('Choose a release date from today onward.');
-  // An episode before the one it follows.
+  // An episode before the one it follows is advice, not a refusal (November 10, 2026: broadcasters air out of story order).
   await page.getByLabel('Release Date').fill('2026-10-01');
   await page.getByLabel('Episode 3', { exact: true }).fill('2026-10-02');
+  await expect(page.getByText(/Episode 3 would come out before episode 2: viewers meet them out of story order/)).toBeVisible();
+  // An episode before the release date itself is refused: the release date is the first episode's day.
+  await page.getByLabel('Episode 3', { exact: true }).fill('2026-09-30');
   await page.getByRole('button', { name: 'Plan Release' }).click();
-  await expect(alert(page)).toContainText("Episode 3 can't come out before episode 2.");
+  await expect(alert(page)).toContainText('The release date is the day its earliest episode comes out.');
   expect((await readSavedState(page)).projects.find((x: State) => x.title === 'Grey Water').releases).toEqual([]); // nothing was planned
   // Corrected: planned.
   await page.getByLabel('Episode 3', { exact: true }).fill('2026-10-22');

@@ -5,7 +5,7 @@ import { describe, expect, it } from 'vitest';
 import {
   DAY, announceEdition, checkEligibility, institution, planRelease, processUntil, upcomingCommitments,
 } from '../src/engine';
-import { airings, episodeDateProblem, presetDates, setEpisodeDates } from '../src/engine/episode-releases';
+import { airings, episodeDateProblem, orderNotes, presetDates, setEpisodeDates } from '../src/engine/episode-releases';
 import { scheduleChangeEffects } from '../src/engine/release-schedule';
 import { submitEntry } from '../src/engine/awards-actions';
 import { episodeAirDates } from '../src/engine/awards-rules';
@@ -53,15 +53,17 @@ describe('presets make dates you can edit', () => {
     expect([tv.pattern, tv.episodes![5].date]).toEqual(['weekly', '2027-01-06']);
   });
 
-  it('custom dates with a break make a split season; dates are refused out of order, in the past, or not on the release date', () => {
+  it('custom dates with a break make a split season; dates in the past or not on the release date are refused, and story order is advised', () => {
     const s = startLife('er-custom');
     s.now = at('Europe/London', '2026-11-20');
     const p = series(s);
     const split = ['2026-12-01', '2026-12-08', '2026-12-15', '2027-03-02', '2027-03-09', '2027-03-16'];
     const r = planRelease(s, p, { route: 'streaming', date: '2026-12-01', territories: ['GB'], episodeDates: split });
     expect([r.pattern, dates(p)]).toEqual(['custom', split]);
-    expect(() => planRelease(s, series(s), { route: 'streaming', date: '2026-12-01', territories: ['GB'], episodeDates: ['2026-12-02', ...split.slice(1)] })).toThrow('The first episode comes out on the release date.');
-    expect(episodeDateProblem(s, p, r.id, ['2026-12-01', '2026-12-08', '2026-12-01', ...split.slice(3)])).toBe("Episode 3 can't come out before episode 2.");
+    expect(() => planRelease(s, series(s), { route: 'streaming', date: '2026-12-01', territories: ['GB'], episodeDates: ['2026-12-02', ...split.slice(1)] })).toThrow('The release date is the day its earliest episode comes out.');
+    // Story order is advice since November 10, 2026 (after #59): episode 3 before episode 2 is allowed, and said.
+    expect(episodeDateProblem(s, p, r.id, ['2026-12-01', '2026-12-08', '2026-12-01', ...split.slice(3)])).toBeNull();
+    expect(orderNotes(['2026-12-01', '2026-12-08', '2026-12-01'])).toEqual(['Episode 3 would come out before episode 2: viewers meet them out of story order. That suits episodes that stand alone; a serial story may confuse.']);
     expect(episodeDateProblem(s, p, r.id, ['2026-11-01', ...split.slice(1)])).toBe("Episode 1 can't come out before today.");
     expect(episodeDateProblem(s, p, r.id, ['2026-12-01', '2026-02-30', ...split.slice(2)])).toBe('Choose a real date for episode 2.');
     expect(episodeDateProblem(s, p, r.id, split.slice(1))).toBe('Give a date for each of the 6 episodes.');

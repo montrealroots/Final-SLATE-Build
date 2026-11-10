@@ -40,6 +40,8 @@ const ACTIONS: Record<string, { preview: string; outcome: string }> = {
   makeOffer: { preview: 'The day rate field and the paid days for the production window.', outcome: 'The hire row shows Offer Out; the answer is logged.' },
   moveShootDay: { preview: 'Where Move the Shoot puts the day, and that agreed costs stay.', outcome: LOG },
   planRelease: { preview: 'You choose the route, date and territory; what each route needs is stated. A series shows every episode\'s date before you plan it.', outcome: `${LOG} Each day episodes come out is on the calendar.` },
+  startEpisodeCutPass: { preview: 'The episode row on Delivering Episode By Episode says what a cut pass needs; the editor days show on the Production page once it starts.', outcome: `${LOG} The episode row shows the pass under way.` },
+  lockEpisode: { preview: 'Lock Episode N lists, under the episode, what must happen first; once locked, its sound, music and color go on.', outcome: `${LOG} The episode row says its picture is locked.` },
   setEpisodeDates: { preview: 'Change These Episode Dates? lists each episode that moves, the release day and any exclusive window that move with it, and every entry whose qualification would change.', outcome: `${LOG} The release lists each episode's date and whether it is out.` },
   requestConsent: { preview: 'They answer within two to six days.', outcome: 'The contributor shows Consent Requested; the answer is logged.' },
   requestPickups: { preview: 'A pickup is a paid shoot day after the main shoot; restarted plate integration is shown.', outcome: LOG },

@@ -109,7 +109,10 @@ export function lockPicture(state: GameState, p: Project): void {
 export function unlockPicture(state: GameState, p: Project): string[] {
   if (!p.edit.pictureLocked) throw new Error('The picture isn\'t locked.');
   if (p.delivered) throw new Error('A delivered project can\'t be unlocked.');
+  const out = Object.keys(p.episodeDeliveries ?? {});
+  if (out.length) throw new Error(`Episode ${out[0]} is delivered, so the picture can't be unlocked.`);
   p.edit.pictureLocked = false;
+  delete p.edit.lockedEpisodes;
   // A contributor's approval was of the locked cut; a changed cut needs showing again (documentary.ts). A refusal stays:
   // unlocking is how their scenes get cut.
   for (const c of p.contributors) if (c.cutApproval && c.cutApproval.status !== 'refused') delete c.cutApproval;
