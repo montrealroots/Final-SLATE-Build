@@ -1,3 +1,4 @@
+import { writeFileSync } from 'node:fs';
 import { test as base, expect } from '@playwright/test';
 
 /**
@@ -5,8 +6,25 @@ import { test as base, expect } from '@playwright/test';
  * fails on any. A test that injects failures on purpose says so with expectErrors(), and its errors are only attached.
  */
 export const test = base.extend<{ diagnostics: void }>({
-  diagnostics: [async ({ page }, use, info) => {
+  diagnostics: [async ({ page, browserName }, use, info) => {
     const seen: string[] = [];
+    // WebKit only: a working title has twice been lost in CI and never here (QA-REPORT.md, Open). The page keeps a
+    // bounded log of focus and input events, with who called focus(), and a failing test attaches it.
+    if (browserName === 'webkit') await page.addInitScript(() => {
+      const w = window as unknown as { __inputLog: string[] };
+      w.__inputLog = [];
+      const t0 = performance.now();
+      const log = (x: string) => { w.__inputLog.push(`${(performance.now() - t0).toFixed(0)}ms ${x}`); if (w.__inputLog.length > 400) w.__inputLog.shift(); };
+      const name = (e: EventTarget | null) => { const el = e as HTMLElement | null; return el?.tagName ? `${el.tagName.toLowerCase()}${el.id ? `#${el.id}` : ''}` : String(e); };
+      for (const k of ['focusin', 'focusout', 'beforeinput', 'input']) {
+        document.addEventListener(k, (e) => log(`${k} ${name(e.target)} value=${JSON.stringify((e.target as HTMLInputElement).value ?? null)} active=${name(document.activeElement)}`), true);
+      }
+      const focus = HTMLElement.prototype.focus;
+      HTMLElement.prototype.focus = function (this: HTMLElement, o?: FocusOptions) {
+        log(`focus() on ${name(this)} from ${(new Error().stack ?? '').split('\n').slice(1, 3).join(' | ')}`);
+        return focus.call(this, o);
+      };
+    });
     page.on('pageerror', (e) => seen.push(`page error: ${e.message}`));
     page.on('console', (m) => { if (m.type() === 'error') seen.push(`console error: ${m.text()}`); });
     page.on('requestfailed', (r) => {
@@ -18,6 +36,13 @@ export const test = base.extend<{ diagnostics: void }>({
     });
     await use();
     if (seen.length) await info.attach('diagnostics', { body: seen.join('\n'), contentType: 'text/plain' });
+    if (browserName === 'webkit' && info.status !== info.expectedStatus) {
+      const events = await page.evaluate(() => (window as unknown as { __inputLog?: string[] }).__inputLog ?? []).catch(() => ['(the page was gone)']);
+      // A file, not a body: the list reporter prints only the start of a long text attachment.
+      const path = info.outputPath('focus-and-input.txt');
+      writeFileSync(path, events.join('\n'));
+      await info.attach('focus-and-input', { path, contentType: 'text/plain' });
+    }
     const expected = info.annotations.some((a) => a.type === 'expected-errors');
     if (!expected && info.status === 'passed') expect(seen, 'console errors, page errors or failed requests').toEqual([]);
   }, { auto: true }],

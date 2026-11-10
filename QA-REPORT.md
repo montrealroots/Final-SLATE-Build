@@ -8,7 +8,26 @@
 
 ## Commands And Results
 
-### Current: Every Saved Field Is Read (November 9, 2026, after #55)
+### Current: Browser Evidence For The New Readers, And WebKit Input Logging (November 9, 2026, after #56)
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npx playwright test e2e/readers.spec.ts e2e/auditions.spec.ts --project=desktop` | 1, 1, then 0 | Two test-side mistakes fixed: two place pickers on New Script, so the helper's "Chosen:" check matched both; and a new project opens on its Script tab, not its Overview. Then both passed. |
+| `npx playwright test e2e/readers.spec.ts --project=phone --project=iphone-15-plus` | 0 | 2 passed. |
+| The journey with Setting Research switched off | 1 | Failed at "Researcher: $", as it should. The source was restored. |
+| After #56 merged, on its tree: `npm run check`, then `npx playwright test e2e/readers.spec.ts e2e/auditions.spec.ts --project=desktop --project=phone --project=iphone-15-plus` | 0, 0 | 75 files, 585 tests; startup JavaScript 219 kB gzipped. 5 passed: the new journey on desktop, phone and `iphone-15-plus`, and the auditions journey on desktop and phone. |
+| CI on #57 (`88d5b54`, run 42714804488) | 1 | 243 passed, 1 failed: `readers.spec.ts` on `iphone-15-plus`, production build. "Researcher: $2,050" was on the Budget tab twice, in What Makes It Expensive as well as in Everything Still To Come, because that world's rates ranked the researcher among the costliest items. The game was right; the check matched both. Reproduced locally on the production build, 1 failure in 8 runs. The check now reads inside Everything Still To Come: 18 of 18 passed on desktop, phone and `iphone-15-plus`. |
+| A throwaway WebKit test that fails on purpose after typing a title | 1 | `focus-and-input.txt` in its `test-results` folder held every focus, focus() caller, beforeinput and input event, through the typed title. |
+
+- `e2e/readers.spec.ts` (desktop, phone, `iphone-15-plus`) covers:
+  - a setting abroad, shown on the Overview and explained in the Story panel, then researched (a Researcher appears in the estimate);
+  - a revision note about a scene;
+  - a draft's saved date;
+  - the project's own Recent Updates.
+- `e2e/auditions.spec.ts` shows the rule "callbacks are for the shortlist": there's no Call Back before shortlisting.
+- `e2e/test.ts`: on WebKit, every journey keeps a bounded log of focus and input events, with who called `focus()`. A failing test writes it to `focus-and-input.txt`, which CI uploads with `test-results/`. The next time a working title is lost, the evidence comes with it.
+
+### Every Saved Field Is Read (November 9, 2026, #56)
 
 The input audit and its follow-up ("everything that doesn't read needs to read perfectly"). `docs/INPUT-AUDIT.md` says
 field by field what each one became. `tests/model-readers.test.ts` holds it: it fails on any field of the saved game
@@ -32,7 +51,7 @@ that nothing reads, by a rule or a screen.
   - screen time goes stale when a scene changes length either way;
   - the wake message says how long you slept.
 - **Defect fixed:** "Plan To Attend" never scheduled its day-before reminder, because it pushed its plan by hand.
-- **Shown on screen, not covered by a browser journey:** the dated records (drafts, offers, approaches, budget-line postings, versions, picture lock, songs, saved games), Recent Updates, rival descriptions, Proposed By, people's dated history.
+- **Shown on screen, not covered by a browser journey at #56:** the dated records (drafts, offers, approaches, budget-line postings, versions, picture lock, songs, saved games), Recent Updates, rival descriptions, Proposed By, people's dated history. After #56, `e2e/readers.spec.ts` covered drafts' dates and Recent Updates; the rest are still unit-tested and typechecked only.
 - **Removed:** nine stored copies and dead fields (`docs/INPUT-AUDIT.md`, Removed). Old saves keep the keys and nothing reads them.
 
 ### The Owner's Recovered Awards Sources (November 9, 2026, merged as #55)

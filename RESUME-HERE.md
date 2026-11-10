@@ -66,7 +66,9 @@ The owner asked for an input audit, then: "Everything that doesn't read needs to
   - Nine copies and dead fields were removed.
   - See `docs/INPUT-AUDIT.md`.
 - Next, when adding a field to the saved game: give it a reader in the same change, or the check fails.
-- Open: the intermittent WebKit loss of a working title (`QA-REPORT.md`, Open).
+- Open: the intermittent WebKit loss of a working title (`QA-REPORT.md`, Open). From after #56, a failing WebKit journey
+  attaches `focus-and-input.txt` (focus, `focus()` callers and input events): read it from CI's `playwright-results`
+  artifact the next time it happens.
 
 ### Newest Request (November 9, 2026, merged as #55): the owner's recovered awards and festival sources
 
