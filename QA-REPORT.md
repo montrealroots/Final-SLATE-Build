@@ -664,6 +664,39 @@ explicit `test.skip(project…)`; no test skips itself on an outcome. The list w
   the map, has its own boundary), and the shell moving its children. Still open: focus taken between Playwright's focus
   and its text insertion, or React not seeing the input event, neither seen here. Next: the browser fixture records these
   events on the WebKit projects, so the next occurrence in CI carries its own evidence.
+  **Still open (November 10, 2026).** There has been no occurrence in CI since the fixture began logging (runs 139 to 151;
+  run 146 failed on the known Researcher match). So there is no new trace to read.
+
+  The input's path was read again:
+  - **Remounts:** nothing above the form changes shape or key while a game is open. The only resets are entering a game
+    and leaving it.
+  - **Focus:** the only focus movers on the path are the shell's move to `<main>`, in the commit that shows the screen,
+    and the modals the player opens. No modal opens by itself.
+  - **The form:** it keeps its own state, and nothing in it suspends.
+  - **Updates while typing:** a new game schedules no event in its first hour. The updates a player meets while
+    typing are the clock (every 250 ms) and the first save (which marks the save state "Saving", then "Saved").
+
+  `e2e/title-input.spec.ts` was added to recreate that moment. A new game has just opened and its first save is being
+  written while the title is:
+  - filled;
+  - typed key by key over many clock ticks;
+  - shortened by deleting backwards;
+  - cleared;
+  - inserted at once, as a paste is;
+  - submitted.
+
+  Each step reads the field back, and the project is checked under that name. It runs on desktop and both WebKit
+  iPhone profiles. Attempts, all passed:
+  - once on each of the three profiles;
+  - 40 on the development server and 40 on the production build (both iPhone profiles, 20 each, 4 workers);
+  - 40 on the production build with four CPU-bound processes running and 6 workers.
+
+  That is 123 passes this session, beside about 420 before. Passing repetitions don't prove a cause is gone, and none was
+  found, so nothing in the app was changed for it. Both explanations remain open and unobserved:
+  - focus was taken between Playwright's focus and its text insertion;
+  - the input event was never delivered to React.
+
+  The fixture's focus-and-input log stays on the WebKit projects, and CI uploads it with `test-results/`.
 - No other code fault is open from this pass. Physical devices, a person's screen-reader pass and human playtesting remain
   outside what was tested.
 - The micro-budget balance question recorded at #36 was worked through after it (see Current and `BALANCE-REPORT.md`).
