@@ -8,7 +8,7 @@
 
 ## Commands And Results
 
-### Current: The Living World, Phase 2: Series Continue Or End (November 10, 2026, after #64)
+### Current: The Living World, Phase 2: Series Continue Or End (November 10, 2026, in #64 with Phase 1)
 
 The rules are in `docs/WORLD.md`, under Phase 2.
 
