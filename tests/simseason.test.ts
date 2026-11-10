@@ -39,6 +39,11 @@ describe('a simulated season\'s page', () => {
   it('gives an age at the premiere, turning on the birthday', () => {
     expect(ageOn('1980-04-02', '2027-04-01')).toBe(46);
     expect(ageOn('1980-04-02', '2027-04-02')).toBe(47);
+    // A February 29 birthday is observed on February 28 in other years, as the player's own age is.
+    expect(ageOn('1988-02-29', '2027-02-27')).toBe(38);
+    expect(ageOn('1988-02-29', '2027-02-28')).toBe(39);
+    expect(ageOn('1988-02-29', '2028-02-28')).toBe(39);
+    expect(ageOn('1988-02-29', '2028-02-29')).toBe(40);
   });
 
   it('brings back the regulars, less anyone the records say died before the premiere', () => {

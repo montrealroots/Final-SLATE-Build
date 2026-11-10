@@ -3,6 +3,7 @@
 // episode's title or story isn't recorded or simulated, so nothing here makes one up. Loaded with the catalog's pages,
 // never at startup.
 import { DAY } from '../engine';
+import { ageOn as engineAgeOn } from '../engine/time';
 import { outletOf, type SeriesProfile, type SimOutcome, type SimSeason, type SimSeries } from '../engine/industry';
 
 const WEEKDAYS = ['Sundays', 'Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays'];
@@ -30,9 +31,14 @@ export function breaksOf(dates: string[], gap: number): Break[] {
 /** How long a break was, in plain words: "4 weeks", "10 days". */
 export const breakLength = (days: number) => (days % 7 === 0 ? `${days / 7} weeks` : `${days} days`);
 
-/** Whole years from a birth date to a date (both YYYY-MM-DD). */
+/**
+ * Whole years from a birth date to a date (both YYYY-MM-DD), by the game's own rule (src/engine/time.ts): the age turns
+ * on the birthday, and a February 29 birthday is observed on February 28 in other years. A version of this written
+ * for this page had counted it on March 1, out of step with the player's own age.
+ */
 export function ageOn(born: string, on: string): number {
-  return Number(on.slice(0, 4)) - Number(born.slice(0, 4)) - (on.slice(5) < born.slice(5) ? 1 : 0);
+  const parts = (k: string) => ({ year: Number(k.slice(0, 4)), month: Number(k.slice(5, 7)), day: Number(k.slice(8, 10)) });
+  return engineAgeOn(parts(born), parts(on));
 }
 
 /**
