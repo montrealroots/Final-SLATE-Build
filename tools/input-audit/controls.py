@@ -247,6 +247,44 @@ c(f, '{`${v.label}: ${sceneLabel(p, sc)}, In Place Of "${song.title}"`}', D, 've
 c(f, '{`${c.name} On Screen (Minutes)`}', D, 'edit.screenTime', 'screen-time.ts shareCheck', 'The 5% guest rule reads recorded screen time', U('screen-time', 'a record made when the scene ran another length'), E('awards', 'Emmys guest'))
 c(f, '{`${c.name} Heard Only (Minutes)`}', D, 'edit.screenTime', 'screen-time.ts screenTotal', 'Heard-only time never counts as on screen', U('screen-time', 'a record made when the scene ran another length'), E('awards', 'Emmys guest'))
 
+# ---------------- Browser evidence added November 10, 2026 (after #59) ----------------
+# Each citation below names the test and what it proves in the browser: the control used, the consequence read on the
+# screen, a refusal or limit met where the control has one, and the choice read back after the game is reopened where
+# that was checked. `kind` says whether the test is a targeted interaction journey (it stops once the decision has done
+# what it does) or a full playthrough (the project is made in the browser through production). Rows cited before this
+# pass keep their journey and take their kind from the spec file (PLAYTHROUGHS); their effect column says what they show.
+PLAYTHROUGHS = {'journeys', 'careers', 'connected', 'journey-a', 'journey-c', 'release-schedule', 'rolling-delivery', 'live-action', 'first-project', 'media'}
+J = {}
+def cite(file, label, ref, kind, proves, n=1):
+    v = C[(file, label, n)]
+    C[(file, label, n)] = (*v[:5], ref)
+    J[(file, label, n)] = (kind, proves)
+T, P = 'targeted', 'playthrough'
+dec = lambda t: E('decisions', t)
+WS, RS, GL = 'work schedule and staffing rates', 'release settings', 'genre emphasis and dialogue languages'
+f = 'PlanViews.tsx'
+cite(f, '"Rehearsal Days"', dec(WS), T, 'From 3 to 11 rehearsal days the casting window quotes 4 more paid days for the part; 25 stops at 20; 11 is read back after Save And Exit and Continue')
+cite(f, '"Six-Day Weeks"', dec(WS), T, 'Without it the built shoot has no Saturday; with it a Saturday is a shoot day; still ticked and saved after reopening')
+cite(f, '"Work On Public Holidays"', dec(WS), T, 'Without it the shoot skips the August 31 bank holiday though it runs either side; with it that day is a shoot day; kept after reopening')
+cite(f, '{`Day Rate For ${c.name}`}', dec(WS), T, 'Half the asking rate is declined ("The rate was too low", logged); 80% brings a counteroffer at the ask, accepted at that rate; four times is refused at once, corrected and accepted')
+cite(f, '{`Writer For Episode ${e.number}`}', E('journeys', 'TV limited series'), P, 'A hired episode writer is given episode 2: the credits list them for episode 2, and you for 1 and 2 (you wrote its approved scenes)')
+cite(f, '{`Emphasis For ${sceneLabel(p, s)}`}', E('live-action', 'live-action short'), P, 'A detail emphasis makes the call sheet say the scene needs inserts')
+cite(f, '{`Coverage For ${sceneLabel(p, s)}`}', E('live-action', 'live-action short'), P, 'A master only says the edit will lack inserts unless a pickup shoots them')
+cite(f, '{`Takes For ${sceneLabel(p, s)}`}', E('live-action', 'live-action short'), P, 'Five takes a setup raises the share of the standard plan\'s time the call sheet quotes')
+cite(f, '{`Site For ${place}`}', E('live-action', 'live-action short'), P, 'A cheaper stand-in is chosen from three priced sites, and the card says it costs less and falls through more often')
+f = 'FinishViews.tsx'
+cite(f, '"Episodes On The Premiere"', dec(RS), T, 'Three on the premiere puts episodes 2 and 3 on the release date and episode 4 a week later; the saved dates match after reopening')
+cite(f, '"Territory Code"', dec(RS), T, 'XX is refused with a reason and nothing is planned; GB, then IE, are planned as two releases of the season; both kept after reopening')
+f = 'Projects.tsx'
+cite(f, '?', dec(GL), T, 'Comedy primary: the Golden Globes drama category turns the feature away as comedy; the same genres with Drama made primary: it doesn\'t; the emphasis is saved')
+cite(f, '?', dec(GL), T, 'French added to the dialogue languages: a part can speak French, and you, who speak none, need coaching to play it; the English part doesn\'t; kept after reopening', n=2)
+f = 'ScriptViews.tsx'
+cite(f, '"Competes As"', dec(GL), T, 'Declared Comedy Or Musical, a drama-led feature is turned away from the Golden Globes drama category; saved as declared')
+cite(f, '"Speaks"', dec(GL), T, 'Offers only the dialogue languages; French for Maya puts her, not Ben, in the coaching notice on Cast, still there after reopening')
+cite(f, '"Awards Placement"', E('script-rules', 'a supporting antagonist'), T, 'Leading says the part is entered in the leading categories as placed; By Role Size returns it to supporting')
+cite(f, '"Essential To The Story"', E('script-rules', 'a mature project'), T, 'Cutting the essential scene is previewed with the gap it leaves (editing 8 points lower), then carried as a gap in the edit')
+cite(f, '"Source Material"', E('awards', 'Oscars: one film in several categories'), T, 'Declared adapted, the Adapted Screenplay category opens to the film and Original Screenplay says it is declared adapted')
+
 # ---------------- Build and check ----------------
 rx = re.compile(r'<(TextField|SelectField|NumberField|Check|PlacePicker|LanguagePicker|GenrePicker|WorldPlacePicker)\b([^>]*?)(/>|>)', re.S)
 found = []
@@ -270,6 +308,11 @@ if missing or stale or bad:
     print('missing', missing, '\nstale', stale, '\nbad', bad); sys.exit(1)
 with open('docs/input-audit/CONTROLS.csv', 'w', newline='') as out:
     w = csv.writer(out)
-    w.writerow(['screen', 'label', 'occurrence', 'class', 'state', 'consumer', 'effect', 'unit_test', 'journey'])
-    for k in found: w.writerow([k[0], k[1], k[2], *C[k]])
+    w.writerow(['screen', 'label', 'occurrence', 'class', 'state', 'consumer', 'effect', 'unit_test', 'journey', 'journey_kind', 'journey_proves'])
+    for k in found:
+        ref = C[k][5]
+        kind, proves = J.get(k, ((P if ref.split('::')[0][4:-8] in PLAYTHROUGHS else T) if ref else '', ''))
+        w.writerow([k[0], k[1], k[2], *C[k], kind, proves])
+dj = [k for k in found if C[k][0] == D]
+print('decisions with browser evidence:', sum(1 for k in dj if C[k][5]), 'of', len(dj), '; added in this pass:', len(J))
 print(len(found), 'controls;', {cl: sum(1 for k in found if C[k][0] == cl) for cl in ('decision', 'identity', 'record', 'view', 'component')})

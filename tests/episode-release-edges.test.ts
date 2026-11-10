@@ -172,3 +172,16 @@ describe('a version 8 save', () => {
     expect(after.results).toEqual(e26.results);
   });
 });
+
+describe('a release names the countries it comes out in', () => {
+  it('refuses a code that is no country, and plans one that is', () => {
+    // Before November 10, 2026 the Territory Code field took anything two letters long or shorter: a blank, "G" or "XX"
+    // was planned and saved as a territory, and award territory rules read it as one.
+    const s = startLife('edge-territory');
+    s.now = at('2026-12-09', 8);
+    const p = series(s, 2);
+    for (const t of ['', 'G', 'XX', 'gb']) expect(() => planRelease(s, p, { route: 'streaming', date: '2026-12-10', territories: [t] })).toThrow(/^Choose a country by its two-letter code, such as GB or US\./);
+    expect(p.releases).toEqual([]);
+    expect(planRelease(s, p, { route: 'streaming', date: '2026-12-10', territories: ['IE'] }).territories).toEqual(['IE']);
+  });
+});

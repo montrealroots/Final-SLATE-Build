@@ -11,6 +11,7 @@ import { approvedTake, captureCredit } from './mocap';
 import { BROADCAST_EDIT_COST, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
 import { financeCredits, onProjectDelivered, receiveIncome } from './finance';
 import { getPlace } from '../data/places';
+import { countryName } from '../world/gazetteer/gazetteer';
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { countryLanguage, personById, roleLabel } from './people';
 import {
@@ -340,6 +341,9 @@ export function planRelease(state: GameState, p: Project, input: { route: Releas
   }
   if (input.route === 'festival-premiere') throw new Error('Festival premieres come from festival selection.');
   if (!input.territories.length) throw new Error('Choose at least one territory.');
+  // Until November 10, 2026 any code was taken, a blank one too, and award territory rules read it as a country.
+  const unknown = input.territories.find((t) => countryName(t) === t);
+  if (unknown !== undefined) throw new Error(`Choose a country by its two-letter code, such as GB or US.${unknown ? ` ${unknown} isn't one.` : ''}`);
   const zone = getPlace(p.axes.basePlaceId).zone;
   const today = dateKey(state.now, zone);
   if (!isDateKey(input.date)) throw new Error('Choose a real release date.');
