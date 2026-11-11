@@ -819,7 +819,7 @@ export interface Project {
   /** Versions conformed from the locked cut besides the main one (versions.ts). */
   versions?: ProjectVersion[];
   /** Sites chosen for each place after scouting, the backup, and those that fell through (locations.ts). */
-  locationChoices?: Record<string, { main?: 'real' | 'stage' | 'standin'; backup?: 'real' | 'stage' | 'standin'; lost?: ('real' | 'stage' | 'standin')[] }>;
+  locationChoices?: Record<string, { main?: 'real' | 'stage' | 'standin'; backup?: 'real' | 'stage' | 'standin'; lost?: ('real' | 'stage' | 'standin')[]; /** Where this place in the script is filmed (destinations.ts): a real place in the world registry and a kind of site. The base when unset. */ at?: { placeId: string; kind: string } }>;
   /** The proposal this project came from (opportunities.ts). */
   fromOpportunity?: string;
   /** Auditions and callbacks for its parts (auditions.ts). */
