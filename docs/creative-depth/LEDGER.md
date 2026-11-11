@@ -27,10 +27,10 @@ Nothing is called complete because a control exists or a field saves.
 | --- | --- | --- | --- |
 | A | Baseline audit, owner-data access, frozen world profiles | Built and tested; see below | With the first checkpoint of this package |
 | B | Shared picker, option records, starter libraries, field inventory, the zombie example | Built and tested; see below | With the second checkpoint |
-| C | Every creative input expanded; medium pipelines; controlled comparisons | Under way: see "Milestone C, So Far" below | |
+| C | Every creative input expanded; medium pipelines; controlled comparisons | Built and tested, with the limits below | |
 | D | Real people: identity, availability, auditions, hiring, contracts, pay, credits | Built and tested, with the limits below. Done before C: see `DECISIONS.md` | With the third checkpoint |
-| E | Real destinations, scouting, geography-aware production | Under way: see "Milestone E, So Far" below | |
-| F | Studio strategy, Warner Bros., Sony and Paramount, territorial releases, competition | Not started | |
+| E | Real destinations, scouting, geography-aware production | Built and tested, with the limits below | |
+| F | Studio strategy, Warner Bros., Sony and Paramount, territorial releases, competition | Under way: see "Milestone F, So Far" below | |
 | G | Optional portraits and posters, pack refresh and storage controls | Not started | |
 | H | Connected playthroughs, performance, accessibility, migration, final coverage | Not started | |
 
@@ -277,6 +277,34 @@ Not implemented in E, each a limit a player can meet:
   shown beside the picker.
 - J07 ran from one base (London) to one place abroad (Bergen, October) and one soundstage in the base's own city.
   Other seasons and regions are covered in the engine tests (Tromsø in January), not in a browser.
+
+## Milestone F, So Far
+
+Being built on the branch `f-work`, after milestone E. Not yet a checkpoint.
+
+| Piece | Where | Status | Evidence |
+| --- | --- | --- | --- |
+| Skydance (Paramount and Warner Bros.) and Sony in the company registry: 50 more companies with titles gathered, 12 networks and services, 18 leadership roles, each ownership date from an official source or left out | `src/catalog/registry.ts`; `docs/CATALOG.md` | Implemented, engine verified | `tests/catalog.test.ts`, 28 tests: acquisition dates, groups, leaders hidden before October 6, 2026 |
+| Their films, series, seasons, episodes and people gathered from TMDB into the owner's local catalog | `tools/screen-catalog/import.mjs` | Under way: the gathering run was started on November 11, 2026 and takes hours; its counts go in `docs/CATALOG-COVERAGE.md` when it ends | Not yet reported |
+| A studio's strategy from the pace its save froze: genres, animation and documentary shares, release month, slate, reach (modeled and said so) | `src/engine/strategy.ts` `strategyOf`, `slateRoom`, `strategyWords` | Implemented, browser verified | `tests/strategy.test.ts`; J08 reads "What Night Shift Pictures Makes" |
+| A pitch is read by fit, room, script and record, with no chance in it; two studios answer one film differently and say why | `strategy.ts` `pitchRead`; `finance.ts` `studioOption`, `pitchToStudio` | Implemented, browser verified | `tests/strategy.test.ts`, 10 tests, 6 mutations caught; `e2e/studio-pitch.spec.ts` (J08) on desktop and WebKit |
+| An offer for a proven filmmaker, an option for a first film, notes read again only with a newer draft, a pass that is final | `finance.ts` (kind `studio`) | Implemented, engine verified; the option is browser verified | `tests/strategy.test.ts`; J08 |
+| Which followed studio makes a distribution or commission offer is decided by fit, not by films a year | `studios.ts` `careerStudio`; `strategy.ts` `fitWeight` | Implemented, engine verified | `tests/competition.test.ts`: the busiest studio makes none of the offers for a film it wouldn't make |
+| On delivery the studio opens the film at home, then four territories every two weeks, each a release of its own | `finish.ts` `'studio-release'`, `windowDate` | Implemented, browser verified | J08: US, then GB, FR, DE and ES fourteen days later |
+| Reports count only territories the film has opened in; one set of reports for the deal | `distribution.ts` `territoriesReached`; `finish.ts` release handler | Implemented, browser verified | `tests/strategy.test.ts`; J08: the studio is repaid from what it reports |
+| Subtitled at the distributor's cost or dubbed at yours, with the cost and the effect stated first | `finish.ts` `setReleaseVersion`, `dubbingCost`; the Release page | Implemented, browser verified | J08: $37,800 set aside and paid on the day it opens abroad |
+| Backers named properly in sentences ("Night Shift Pictures offered", not "the night shift pictures offered") | `src/engine/backer-words.ts` | Implemented, browser verified | J08 checks the log; this also fixes commissions from a named studio, which read wrongly before |
+
+Not implemented in F so far, each a limit a player can meet:
+
+- A studio is pitched feature films only. Television labels have no slate of their own to pitch a series to.
+- A distributor's own offer for several territories still opens them all on one day; only a studio's release is
+  staggered. The player's own releases can already be planned territory by territory with their own dates.
+- The films opening the same week are shown on the Release page for information. They change no figure.
+- Local holidays in a territory, marketing spend, and screens booked are not part of an opening.
+- Budget bands, franchises and who at a studio decides are not modeled. No real executive is given a preference.
+- Sony's ownership dates are not recorded: its own pages refuse automated readers.
+- International and independent groups beyond these four are not covered. Four Hollywood groups are not the whole world.
 
 ## The Audit Artifacts
 

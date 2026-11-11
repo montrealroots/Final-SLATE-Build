@@ -9,6 +9,8 @@ import { acceptDeal } from './finance';
 import { createProject } from './projects';
 import { stream } from './rng';
 import { careerStudio } from './studios';
+import { projectFamilies } from './finance';
+import { fitWeight } from './strategy';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY } from './time';
 import type { FinanceDeal, GameState, Opportunity, Project } from './types';
@@ -36,7 +38,7 @@ registerHandler('opportunity', (state, ev) => {
   if (reception < 60 || r() > (reception - 55) / 32) return { suppressInterrupt: true };
   // A followed studio may be the commissioner (docs/WORLD.md, "Careers"), drawn apart from `r` so the rest is as before.
   const drawn = COMMISSIONERS[Math.floor(r() * COMMISSIONERS.length)];
-  const commissioner = careerStudio(state, `opportunity:${p.id}`) ?? drawn;
+  const commissioner = careerStudio(state, `opportunity:${p.id}`, (x) => fitWeight(x, projectFamilies(p), p.axes.medium)) ?? drawn;
   const amount = Math.round((40_000 + (reception - 60) * 6000) / 1000) * 1000;
   const o: Opportunity = {
     id: newId(state, 'op'), fromProjectId: p.id, commissioner, amount, format: p.axes.format, medium: p.axes.medium, technique: p.axes.technique,

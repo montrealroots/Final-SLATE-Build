@@ -5,19 +5,26 @@
 // Every term the game shows is one it enforces: repayment from income, a share of income, approval rights, a credit,
 // and a delivery deadline. Amounts and decisions are game calibration, not industry figures.
 
+import { theBacker } from './backer-words';
 import { closeSettled, ledgerTotals, money, reserve, settle } from './budget';
 import { getPlace } from '../data/places';
 import { TERRITORY_CITIZENSHIP, countryInSentence, homeCountries } from './identity';
 import { DOCUMENTS, documentNames, documentsNeeded, type DocumentId } from './script-effects';
 import { isNonfiction, scriptIssues } from './projects';
 import { OFFER_OPEN_DAYS, openOffer } from './negotiation';
+import { genre } from './genres';
 import { stream } from './rng';
+import { FORMAT_LABELS } from './projects';
+import { ANIMATION_HOUSE, MONTHS, familyKey, pitchRead, reachTerritories, slateRoom, strategyOf, type PitchRead, type StudioStrategy } from './strategy';
 import { addLog, newId, registerHandler, schedule } from './state';
-import { DAY } from './time';
+import { DAY, dateKey } from './time';
 import type { FinanceDeal, FinanceDealKind, GameState, Obligation, Project } from './types';
 
+/** The kinds of backer that are approached as a kind. A followed studio is approached by name (pitchToStudio). */
+export type BackerKind = Exclude<FinanceDealKind, 'agreed' | 'studio'>;
+
 /** What each kind of backer is, said once, the same everywhere. */
-export const BACKERS: Record<Exclude<FinanceDealKind, 'agreed'>, { name: string; who: string; why: string; decideDays: number }> = {
+export const BACKERS: Record<BackerKind, { name: string; who: string; why: string; decideDays: number }> = {
   starting: {
     name: 'Starting Backing',
     who: 'The backer who agreed, as part of your starting situation, to fund your first project.',
@@ -260,16 +267,16 @@ const scriptApproved = (p: Project) => p.approvedDraft !== null && p.approvedDra
  * backer asks for which is a simulation assumption. Until the review of November 7, 2026 a missing treatment made every
  * backer answer a week later instead; it now simply has to be written before the application that includes it is sent.
  */
-export const BACKER_DOCUMENTS: Record<Exclude<FinanceDealKind, 'agreed'>, DocumentId[]> = {
+export const BACKER_DOCUMENTS: Record<BackerKind, DocumentId[]> = {
   starting: [], earnings: [], capital: [], investor: ['pitch'], 'co-producer': ['pitch'], commissioner: ['pitch', 'treatment'], grant: ['pitch', 'treatment', 'statement'],
 };
-const SUBMISSION: Record<Exclude<FinanceDealKind, 'agreed'>, string> = {
+const SUBMISSION: Record<BackerKind, string> = {
   starting: 'The starting backing', earnings: 'Your earnings', capital: 'Your unspent money', investor: 'An approach to an investor', 'co-producer': 'An approach to a co-production partner',
   commissioner: 'A pitch to a commissioner', grant: 'A grant application',
 };
 
 /** What a backer's submission includes, in words, for the approach button and its record. */
-export function backerDocuments(kind: Exclude<FinanceDealKind, 'agreed'>): string {
+export function backerDocuments(kind: BackerKind): string {
   const d = BACKER_DOCUMENTS[kind];
   return d.length ? `${SUBMISSION[kind]} includes the approved script and ${documentNames(d)}.` : '';
 }
@@ -290,18 +297,18 @@ export function fundClosedTo(state: GameState, p: Project): string | null {
 }
 
 /** Each backer the player could approach for this project, with what it needs and whether that is met. */
-export function backerOptions(state: GameState, p: Project): { kind: Exclude<FinanceDealKind, 'agreed'>; ready: boolean; needs: string }[] {
+export function backerOptions(state: GameState, p: Project): { kind: BackerKind; ready: boolean; needs: string }[] {
   // One approach per backer per project: a backer who said no, or was turned down, isn't asked again for it.
   const has = (k: FinanceDealKind) => deals(p).some((d) => d.kind === k);
   const { promised, stillToRaise } = financeSummary(p);
-  const out: { kind: Exclude<FinanceDealKind, 'agreed'>; ready: boolean; needs: string }[] = [];
+  const out: { kind: BackerKind; ready: boolean; needs: string }[] = [];
   const closed = p.delivered ? 'This project is delivered.' : stillToRaise <= 0 ? 'Your target is fully promised.' : '';
   const why = (k: FinanceDealKind, extra: string | null) => closed || (has(k) ? 'Already approached for this project.' : extra ?? '');
   if (!usedStarting(state) || has('starting')) {
     out.push({ kind: 'starting', ready: false, needs: why('starting', state.projects.some((x) => x.id !== p.id && x.delivered) ? 'Only for your first project.' : !scriptApproved(p) ? 'Approve a script first.' : null) });
   }
   // The documents a submission includes must be written before it is sent (BACKER_DOCUMENTS).
-  const docs = (k: Exclude<FinanceDealKind, 'agreed'>) => documentsNeeded(p, BACKER_DOCUMENTS[k], isNonfiction(p.axes.format), SUBMISSION[k]);
+  const docs = (k: BackerKind) => documentsNeeded(p, BACKER_DOCUMENTS[k], isNonfiction(p.axes.format), SUBMISSION[k]);
   // Your own money from delivered projects (moneyKept). It can be put in more than once, as more of it comes in.
   const own = ownMoney(state, p.id);
   out.push({ kind: 'earnings', ready: false, needs: closed || (!own.earnings.length ? 'Your delivered projects haven\'t kept any income yet: what they earn counts once their backers are repaid and paid their shares.' : !scriptApproved(p) ? 'Approve a script first.' : '') });
@@ -317,7 +324,7 @@ export function backerOptions(state: GameState, p: Project): { kind: Exclude<Fin
 }
 
 /** Ask a backer to fund this project. Most take some days to decide; the starting backing is already agreed. */
-export function approachBacker(state: GameState, p: Project, kind: Exclude<FinanceDealKind, 'agreed'>): FinanceDeal {
+export function approachBacker(state: GameState, p: Project, kind: BackerKind): FinanceDeal {
   const opt = backerOptions(state, p).find((o) => o.kind === kind);
   if (!opt) throw new Error('That backer is not available for this project.');
   if (!opt.ready) throw new Error(opt.needs);
@@ -401,6 +408,26 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
         deal.reason = 'They match half of what is already promised.';
       } else refusal = 'Their slate is full this year.';
       break;
+    case 'studio': {
+      // A followed studio's answer has no chance in it: the read made when the pitch was sent, by today's facts.
+      const opt = studioOption(state, p, deal.studio!.company);
+      const read = opt?.read;
+      if (!opt || !read) { refusal = 'It is no longer one of the studios your story follows.'; break; }
+      deal.studio = { ...deal.studio!, verdict: read.verdict, for: read.for, against: read.against, next: read.next, year: opt.year };
+      if (read.verdict === 'offer' || read.verdict === 'option') {
+        const full = read.verdict === 'offer';
+        offer = full ? stillToRaise : Math.min(stillToRaise, Math.max(STUDIO_OPTION_FLOOR, Math.round((target * STUDIO_OPTION_SHARE) / 1000) * 1000));
+        t.recoup = offer;
+        t.incomeShare = full ? 0.6 : 0.25;
+        t.approvalRights = full ? ['Casting Approval', 'Picture Approval'] : ['Picture Approval'];
+        t.credit = full ? 'Presented By' : 'In Association With';
+        t.deliverBy = state.now + STUDIO_DELIVERY_DAYS * DAY;
+        deal.studio.territories = reachTerritories(opt.strategy, getPlace(p.axes.basePlaceId).country);
+        deal.studio.window = opt.strategy.window;
+        deal.reason = `${full ? 'It will finance the film.' : 'An option: development money and a release, not the whole budget.'} ${read.for.join(' ')}${read.next ? ` ${read.next}` : ''}`;
+      } else refusal = `${read.verdict === 'notes' ? 'Not yet.' : 'It passed.'} ${read.against.join(' ')} ${read.next}`.trim();
+      break;
+    }
     case 'commissioner':
       if (roll < 0.35 + Math.min(0.4, proven * 0.15) + record.bonus) {
         offer = stillToRaise;
@@ -416,14 +443,14 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
   if (offer <= 0) {
     deal.status = 'declined';
     deal.reason = refusal || 'Nothing is left to raise.';
-    addLog(state, `The ${deal.backer.toLowerCase()} won't back ${p.title}. ${deal.reason}`, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+    addLog(state, `${theBacker(deal, true)} won't back ${p.title}. ${deal.reason}`, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
     return;
   }
   deal.amount = offer;
   deal.status = 'offered';
   // The agreed starting backing stays open; any other offer lapses if it isn't answered (negotiation.ts).
   if (deal.kind !== 'starting' && !OWN_MONEY.has(deal.kind)) openOffer(state, p, deal); // your own money doesn't lapse
-  addLog(state, `The ${deal.backer.toLowerCase()} offered ${money(offer)} for ${p.title}.${deal.expiresAt ? ` It is open for ${OFFER_OPEN_DAYS} days.` : ''} Read the terms before you accept.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+  addLog(state, `${theBacker(deal, true)} offered ${money(offer)} for ${p.title}.${deal.expiresAt ? ` It is open for ${OFFER_OPEN_DAYS} days.` : ''} Read the terms before you accept.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
 }
 
 registerHandler('finance-decision', (state, ev) => {
@@ -431,8 +458,102 @@ registerHandler('finance-decision', (state, ev) => {
   const deal = p && deals(p).find((d) => d.id === ev.payload.dealId);
   if (!p || !deal || deal.status !== 'considering') return { suppressInterrupt: true };
   decide(state, p, deal);
-  return { message: (deal.status as FinanceDeal['status']) === 'offered' ? `The ${deal.backer.toLowerCase()} made an offer for ${p.title}.` : `The ${deal.backer.toLowerCase()} won't back ${p.title}.` };
+  return { message: (deal.status as FinanceDeal['status']) === 'offered' ? `${theBacker(deal, true)} made an offer for ${p.title}.` : `${theBacker(deal, true)} won't back ${p.title}.` };
 });
+
+// ---------------- A followed studio as a backer (strategy.ts; the Creative Depth package, milestone F) ----------------
+
+/** What a first film's option pays: a share of the target, with a floor. Game calibration. */
+export const STUDIO_OPTION_SHARE = 0.15;
+export const STUDIO_OPTION_FLOOR = 10_000;
+/** How long a studio takes to answer, and how long it gives to deliver. */
+export const STUDIO_DECIDE_DAYS = 14;
+export const STUDIO_DELIVERY_DAYS = 720;
+/** What a pitch to a studio includes, besides the approved script. */
+export const STUDIO_DOCUMENTS: DocumentId[] = ['pitch', 'treatment'];
+
+export interface StudioOption { company: string; name: string; strategy: StudioStrategy; year: number; read: PitchRead; needs: string }
+
+/** The year a film pitched now would come out: next year, by the base's calendar. */
+const pitchYear = (state: GameState, p: Project) => Number(dateKey(state.now, getPlace(p.axes.basePlaceId).zone).slice(0, 4)) + 1;
+
+/** A project's genre families, primary first, as strategy.ts names them. */
+export function projectFamilies(p: Project): string[] {
+  const picks = [...p.axes.genres].sort((a, b) => (a.emphasis === 'primary' ? 0 : 1) - (b.emphasis === 'primary' ? 0 : 1));
+  const out: string[] = [];
+  for (const g of picks) { let parent = ''; try { parent = genre(g.id).parent; } catch { parent = ''; } const k = familyKey(parent); if (k && !out.includes(k)) out.push(k); }
+  if (isNonfiction(p.axes.format) && !out.includes('documentary')) out.unshift('documentary');
+  if (p.axes.medium === 'animation' && !out.includes('animation')) out.push('animation');
+  return out;
+}
+
+/**
+ * One followed studio's read of this project today, and why it can't be pitched to if it can't. The read is shown
+ * before the pitch is sent: it is the studio's strategy against the project, with nothing hidden and no chance in it.
+ */
+export function studioOption(state: GameState, p: Project, company: string): StudioOption | null {
+  const ind = state.industry;
+  const profile = ind?.studios?.find((x) => x.c === company);
+  if (!ind || !profile) return null;
+  const strategy = strategyOf(profile);
+  const year = pitchYear(state, p);
+  const mine = (d: FinanceDeal) => d.kind === 'studio' && d.studio?.company === company;
+  const held = state.projects.filter((x) => x.id !== p.id && deals(x).some((d) => mine(d) && d.status === 'accepted' && d.studio!.year === year)).length;
+  const theirs = state.projects.flatMap((x) => deals(x).filter(mine).map((d) => ({ x, d })));
+  const record = trackRecord(state);
+  const animated = p.axes.medium === 'animation';
+  const better = (ind.studios ?? []).filter((x) => x.c !== company && x.name).map(strategyOf).sort((a, b) => (animated ? b.animation - a.animation : a.animation - b.animation))[0];
+  const read = pitchRead(strategy, {
+    title: p.title, format: p.axes.format, formatLabel: FORMAT_LABELS[p.axes.format], medium: p.axes.medium, families: projectFamilies(p), script: scriptScore(p),
+    works: record.works, reception: record.reception, wins: record.wins,
+    deliveredForThem: theirs.filter(({ x, d }) => d.status === 'accepted' && x.delivered).length, brokenWithThem: theirs.filter(({ d }) => d.status === 'breached').length,
+    year, room: slateRoom(state.seed, ind.horizon, profile, year, held),
+    ...(better && (animated ? better.animation >= 0.15 : better.animation < ANIMATION_HOUSE) ? { betterFit: better.name } : {}),
+  });
+  const { stillToRaise } = financeSummary(p);
+  const before = deals(p).filter(mine);
+  const last = before[before.length - 1];
+  const needs = p.delivered ? 'This project is delivered.' : stillToRaise <= 0 ? 'Your target is fully promised.'
+    : !scriptApproved(p) ? 'Approve a script first.'
+    : last && (last.status === 'considering' || last.status === 'offered') ? 'It has this project in front of it now.'
+    : last && last.status === 'accepted' ? 'It already backs this project.'
+    : last && last.status === 'refused' ? 'You turned its offer down.'
+    : last && last.sentCopy?.draft === p.approvedDraft ? 'It has read this draft. It reads a project again only with a newer approved draft.'
+    : last && last.studio?.verdict === 'pass' ? 'It passed on this project.'
+    : documentsNeeded(p, STUDIO_DOCUMENTS, isNonfiction(p.axes.format), 'A pitch to a studio') ?? '';
+  return { company, name: strategy.name, strategy, year, read, needs };
+}
+
+/** Every studio this save's world follows by name, each with its read of the project. */
+export function studioOptions(state: GameState, p: Project): StudioOption[] {
+  return (state.industry?.studios ?? []).filter((x) => x.name).map((x) => studioOption(state, p, x.c)!).sort((a, b) => b.read.score - a.read.score || a.name.localeCompare(b.name));
+}
+
+/** Send the pitch. The studio answers in two weeks, by the facts as they are then. */
+export function pitchToStudio(state: GameState, p: Project, company: string): FinanceDeal {
+  const opt = studioOption(state, p, company);
+  if (!opt) throw new Error('That studio isn\'t one your story follows.');
+  if (opt.needs) throw new Error(opt.needs);
+  const nf = isNonfiction(p.axes.format);
+  const documents = STUDIO_DOCUMENTS.map((d) => ({ name: DOCUMENTS[d].name, fields: DOCUMENTS[d].fields(nf).map(([k, label]) => ({ label, text: String(p.story[k] ?? '') })) }));
+  const deal: FinanceDeal = {
+    id: newId(state, 'fd'), kind: 'studio', backer: opt.name, amount: 0, status: 'considering', askedAt: state.now, decideAt: state.now + STUDIO_DECIDE_DAYS * DAY,
+    reason: '', received: 0, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null, unspent: 'stays' },
+    sent: STUDIO_DOCUMENTS.map((d) => DOCUMENTS[d].name), sentCopy: { draft: p.approvedDraft, documents },
+    studio: { company, v: opt.strategy.v, verdict: opt.read.verdict, for: [], against: [], next: '', year: opt.year, territories: [], window: null },
+  };
+  (p.finance ??= { estimate: p.funding.fund, target: p.funding.fund, deals: [] }).deals.push(deal);
+  schedule(state, deal.decideAt!, 'finance-decision', { projectId: p.id, dealId: deal.id }, { attention: 'notify', priority: 40 });
+  addLog(state, `You pitched ${p.title} to ${opt.name}, sending the approved script and your ${deal.sent!.join(' and ').toLowerCase()}. It will answer in about ${STUDIO_DECIDE_DAYS} days.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+  return deal;
+}
+
+/** Where and when a studio that backs the film releases it, as a term of its offer. */
+export function studioReleaseWords(d: FinanceDeal): string {
+  const s = d.studio!;
+  const n = s.territories.length;
+  return `They release it in cinemas in ${n === 1 ? 'your home country' : `your home country and ${n - 1} other ${n === 2 ? 'territory' : 'territories'}`}${s.window !== null ? `, opening in ${MONTHS[s.window]}` : ''}, each territory on its own date, and hold those rights for a year. They pay for the delivery materials and the subtitles.`;
+}
 
 /** Every term of an offer, in the words shown before accepting. */
 export function dealTerms(d: FinanceDeal): string[] {
@@ -442,8 +563,9 @@ export function dealTerms(d: FinanceDeal): string[] {
   out.push(t.onDelivery ? `${money(now)} when you sign, and ${money(t.onDelivery)} when you deliver the project.` : `${money(d.amount)} when you sign.`);
   if (t.recoup) out.push(`They are repaid ${money(t.recoup)} from the project's income before the project keeps any.`);
   if (t.incomeShare) out.push(`${t.recoup ? 'After that, they' : 'They'} take ${Math.round(t.incomeShare * 100)}% of the project's income${d.kind === 'commissioner' ? ' (they own the project)' : ''}.`);
+  if (d.studio?.territories.length) out.push(studioReleaseWords(d));
   for (const r of t.approvalRights) out.push(r === 'Casting Approval' ? 'They approve who plays the leads, which adds a couple of days to lead casting offers.' : 'They approve the final cut before you can lock picture.');
-  if (t.deliverBy) out.push(`Deliver by ${new Date(t.deliverBy).toISOString().slice(0, 10)}, or the grant must be repaid.`);
+  if (t.deliverBy) out.push(`Deliver by ${new Date(t.deliverBy).toISOString().slice(0, 10)}, or ${d.kind === 'studio' ? 'what they paid in' : 'the grant'} must be repaid.`);
   if (t.credit) out.push(`They are credited: "${t.credit} ${d.backer}".`);
   if (t.unspent === 'yours') out.push('What the project doesn\'t spend of it is yours again once the project is delivered.');
   else if (t.unspent === 'stays') out.push('What the project doesn\'t spend of it stays with the project.');
@@ -464,7 +586,7 @@ export function acceptDeal(state: GameState, p: Project, dealId: string): void {
   p.funding.fund += now;
   if (d.terms.deliverBy) schedule(state, d.terms.deliverBy, 'finance-deadline', { projectId: p.id, dealId: d.id }, { attention: 'interrupt', priority: 35 });
   p.history.push({ at: state.now, text: `${d.backer} backs the project with ${money(d.amount)}.` });
-  addLog(state, `You accepted ${money(d.amount)} from the ${d.backer.toLowerCase()} for ${p.title}. ${money(now)} is now in the budget.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+  addLog(state, `You accepted ${money(d.amount)} from ${theBacker(d)} for ${p.title}. ${money(now)} is now in the budget.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
 }
 
 /** Turn an offer down. A backer who was turned down isn't asked again for this project. */
@@ -472,7 +594,7 @@ export function refuseDeal(state: GameState, p: Project, dealId: string): void {
   const d = deals(p).find((x) => x.id === dealId);
   if (!d || d.status !== 'offered') throw new Error('That offer is no longer open.');
   d.status = 'refused';
-  addLog(state, `You turned down the ${d.backer.toLowerCase()}'s offer for ${p.title}.`, 'money', { projectId: p.id });
+  addLog(state, `You turned down ${theBacker(d)}'s offer for ${p.title}.`, 'money', { projectId: p.id });
 }
 
 /** Approval rights the project's backers hold. */
@@ -485,14 +607,15 @@ export function financeCredits(p: Project): { label: string; backer: string }[] 
   return accepted(p).filter((d) => d.terms.credit).map((d) => ({ label: d.terms.credit!, backer: d.backer }));
 }
 
-/** On delivery: money owed on delivery arrives. */
+/** On delivery: money owed on delivery arrives, and a studio that backed the film sets its release (finish.ts 'studio-release'). */
 export function onProjectDelivered(state: GameState, p: Project): void {
   for (const d of accepted(p)) {
+    if (d.kind === 'studio' && d.studio?.territories.length && !d.studio.releaseId) schedule(state, state.now, 'studio-release', { projectId: p.id, dealId: d.id }, { attention: 'notify', priority: 31 });
     const due = d.amount - d.received;
     if (due > 0) {
       d.received += due;
       p.funding.fund += due;
-      addLog(state, `The ${d.backer.toLowerCase()} paid ${money(due)} on delivery of ${p.title}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+      addLog(state, `${theBacker(d, true)} paid ${money(due)} on delivery of ${p.title}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
     }
   }
 }
@@ -510,7 +633,7 @@ export function receiveIncome(state: GameState, p: Project, amount: number, from
       const pay = Math.min(owed, left);
       d.repaid += pay;
       left -= pay;
-      notes.push(`${money(pay)} repaid to the ${d.backer.toLowerCase()}`);
+      notes.push(`${money(pay)} repaid to ${theBacker(d)}`);
     }
   }
   const shares = accepted(p).filter((d) => d.terms.incomeShare > 0 && d.repaid >= d.terms.recoup);
@@ -521,7 +644,7 @@ export function receiveIncome(state: GameState, p: Project, amount: number, from
     if (pay > 0) {
       d.repaid += pay;
       left -= pay;
-      notes.push(`${money(pay)} to the ${d.backer.toLowerCase()} (their share)`);
+      notes.push(`${money(pay)} to ${theBacker(d)} (their share)`);
     }
   }
   if (notes.length) addLog(state, `Of ${money(amount)} from ${from} for ${p.title}: ${notes.join('; ')}. The project keeps ${money(left)}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
@@ -535,7 +658,7 @@ registerHandler('finance-deadline', (state, ev) => {
   d.status = 'breached';
   // The repayment is owed whatever the budget holds: it is recorded as agreed, even if that leaves the budget short.
   p.obligations.push({ id: newId(state, 'o'), label: `Repay The ${d.backer}`, category: 'finance', amount: d.received, state: 'committed', settled: 0, ref: `finance:${d.id}`, postings: [{ at: state.now, kind: 'commit', amount: d.received, key: `finance:${d.id}:breach` }] });
-  const text = `${p.title} wasn't delivered by the ${d.backer.toLowerCase()}'s deadline, so its ${money(d.received)} grant must be repaid.`;
+  const text = `${p.title} wasn't delivered by ${theBacker(d)}'s deadline, so ${d.kind === 'studio' ? `the ${money(d.received)} it paid in` : `its ${money(d.received)} grant`} must be repaid.`;
   addLog(state, text, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
   return { message: text };
 });

@@ -307,8 +307,11 @@ The studios make offers through the game's existing systems:
   half the time.
 - **Distribution** (`finish.ts`): an offer for a cinema release comes from one about half the time.
 
-The studio is chosen by weight of its pace, from studios releasing at least one film a year. It is drawn from a stream of
-its own, so every other part of an offer is as before. The amounts are the game's, never anything read from TMDB.
+The studio is chosen by how near its record is to the work the offer is for: the share of its genre credits in the
+project's genre families, and nothing where its medium rules the work out (`strategy.ts` `fitWeight`). Until November
+11, 2026 it was chosen by weight of its pace, from studios releasing at least one film a year, so the busiest studio made
+most of the offers whatever the film was. It is drawn from a stream of its own, so every other part of an offer is as
+before. A studio can also be pitched to by name: see `docs/ASSUMPTIONS.md`, "How A Studio Reads A Pitch". The amounts are the game's, never anything read from TMDB.
 
 Hiring the player as a performer or crew member isn't a system the game has; careers come through commissions and
 distribution, as the brief puts it ("through the game's existing systems").

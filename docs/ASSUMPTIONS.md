@@ -264,3 +264,49 @@ Under a roof means a soundstage, or the stage set built to match that scouting o
 snow and short daylight don't stop an exterior written there, and no rain warning is sent for it. Until November 11,
 2026 the stage set cost more and never fell through, but the weather still stopped it.
 
+
+## How A Studio Reads A Pitch (November 11, 2026)
+
+Game calibration, in `src/engine/strategy.ts`, `finance.ts` and `finish.ts`. A studio's strategy is derived from the
+pace its save froze when the story's world began: films a year, genre credits, release months. Nothing reads TMDB's
+ratings, popularity, budgets or box office. What that record can't say is modeled, and the page says which.
+
+| What | Figure | Kind |
+| --- | --- | --- |
+| The slate a studio can carry | Half as many films again as its recorded pace, rounded up; never fewer than 2 | Modeled |
+| Room on the slate for a year | What it can carry, less the films it has dated or releases that year in this save's world, less films of yours it backs for that year | Modeled |
+| A thin record | Under 2 films a year, or fewer than 6 genre credits: the genre then counts neither for nor against | Modeled |
+| An animation house | Animation is its largest genre and a quarter or more of its genre credits (a film carries about three genres) | Modeled |
+| Almost no animation | Under 5% of its genre credits | Modeled |
+| Its release month | The one month it opens films in more than any other; none where no month stands out | From its record |
+| How far it releases a film | 8 or more films a year: home and twelve large markets; 3 or more: home and four; fewer: home only | Modeled; no source says where a studio releases |
+
+The read of a pitch has no chance in it. In order: a film studio takes feature films; its medium can rule the pitch
+out; its slate for the year the film would come out must have room; then points, out of 100:
+
+| Part | Points |
+| --- | --- |
+| Its genre credits in the project's families | Up to 40, in full at a 30% share |
+| The medium | 15 where it is what the studio mostly makes, 5 otherwise |
+| The script, as backers read it | Up to 20; open notes on it lower it |
+| What you have delivered | 8 for one film, 12 for more; up to 8 either way for how it was received; 5 an award, up to 10 |
+| Your history with this studio | 8 for each film it backed that you delivered, up to 10; less 15 for one not delivered in time |
+
+At 60 or more it wants the film: an offer for the whole of what is still to raise if you have delivered a film, an
+option if you haven't. From 40 it gives notes, and reads the project again only with a newer approved draft. Below
+that it passes, for good.
+
+| Deal | Terms |
+| --- | --- |
+| An offer | All that is still to raise; repaid first; 60% of income after that; casting and picture approval; "Presented By" |
+| An option | 15% of the target, at least $10,000; repaid first; 25% of income after that; picture approval; "In Association With" |
+| Both | Deliver within 720 days or repay; it releases the film in its territories and holds them for a year; it answers in 14 days |
+
+On delivery it sets the release: at home at least 60 days on, in its month if it has one, then four more territories
+every 14 days. Each opening is a release of its own. A distributor's reports count a territory only once the film has
+opened there. Where the territory's language isn't one the dialogue is in, the film is subtitled at the studio's cost,
+or dubbed at yours: $140 a finished minute for each language, and a dubbed territory counts for 1.5 in the reports
+against 1.
+
+Not modeled: budgets a studio spends, franchises, who at a studio decides, and anything said to be a real studio's
+taste. A real executive is never given a preference.

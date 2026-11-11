@@ -127,14 +127,18 @@ export function studioFilms(state: GameState, from: string, to: string): StudioF
 
 /**
  * A followed studio to make a career offer (docs/WORLD.md, "Careers"): half the time, once the save's world has studios,
- * one of those with a recorded pace, from a stream keyed on the offer. Undefined otherwise, and the offer comes from the
- * game's own invented companies as before.
+ * one of them, from a stream keyed on the offer. Undefined otherwise, and the offer comes from the game's own invented
+ * companies as before.
+ *
+ * Which studio is decided by `fit`: how near each one's record is to the work the offer is for (strategy.ts fitWeight).
+ * Until November 11, 2026 it was decided by films a year alone, so the busiest studio made most of the offers whatever
+ * the film was, and one releasing under a film a year made none. A studio whose record doesn't fit makes none now.
  */
-export function careerStudio(state: GameState, key: string): string | undefined {
-  const named = (state.industry?.studios ?? []).filter((p) => p.name && p.n >= 1);
+export function careerStudio(state: GameState, key: string, fit: (p: StudioProfile) => number): string | undefined {
+  const named = (state.industry?.studios ?? []).filter((p) => p.name).map((p) => [p.name!, fit(p)] as [string, number]).filter(([, w]) => w > 0);
   if (!named.length) return undefined;
   const r = stream(state.seed, 'career-studio', key);
-  return r() < 0.5 ? weighted(r, named.map((p) => [p.name!, p.n] as [string, number])) : undefined;
+  return r() < 0.5 ? weighted(r, named) : undefined;
 }
 
 /** One simulated film by its ID, if this save's world released it (or will). */

@@ -275,7 +275,8 @@ export function resolveOffer(state: GameState, p: Project, h: Hire): string {
     text = `${person.name} turned down ${roleWord}. ${cap} ${person.pronouns === 'they' ? "aren't" : "isn't"} free during your production.`;
   } else if (lead && approvalRights(p).includes('Casting Approval') && person.experience < 3) {
     decline(state, p, h);
-    text = `Your ${p.funding.scenarioId === 'commissioned' || p.finance?.deals.some((d) => d.kind === 'commissioner' && d.status === 'accepted') ? 'commissioner' : 'co-production partner'} didn't approve ${person.name} for ${roleWord}. They want a more experienced lead.`;
+    const studio = p.finance?.deals.find((d) => d.kind === 'studio' && d.status === 'accepted' && d.terms.approvalRights.includes('Casting Approval'))?.backer;
+    text = `${studio ?? `Your ${p.funding.scenarioId === 'commissioned' || p.finance?.deals.some((d) => d.kind === 'commissioner' && d.status === 'accepted') ? 'commissioner' : 'co-production partner'}`} didn't approve ${person.name} for ${roleWord}. They want a more experienced lead.`;
   } else if (willingness(state, h.personId).refuses) {
     decline(state, p, h);
     text = `${person.name} turned down ${roleWord}. ${willingness(state, h.personId).reason}`;

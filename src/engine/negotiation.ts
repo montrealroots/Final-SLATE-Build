@@ -11,6 +11,7 @@
 // Grants and the agreed starting backing aren't negotiable: their terms are the fund's rules. Amounts and odds are game
 // calibration, not industry figures.
 import { money } from './budget';
+import { theBacker } from './backer-words';
 import { deals, delivered, scriptScore } from './finance';
 import { stream } from './rng';
 import { addLog, registerHandler, schedule } from './state';
@@ -69,15 +70,15 @@ registerHandler('finance-counter', (state, ev) => {
   if (roll < lev) {
     apply(d, d.counter.term);
     d.counter.outcome = 'agreed';
-    text = `The ${d.backer.toLowerCase()} agreed to ${label} for ${p.title}. The offer stands with the new terms.`;
+    text = `${theBacker(d, true)} agreed to ${label} for ${p.title}. The offer stands with the new terms.`;
   } else if (roll > lev + 0.5) {
     d.counter.outcome = 'withdrawn';
     d.status = 'withdrawn';
     d.reason = `They took the offer back when you asked for ${label}.`;
-    text = `The ${d.backer.toLowerCase()} took back their offer for ${p.title} when you asked for ${label}.`;
+    text = `${theBacker(d, true)} took back their offer for ${p.title} when you asked for ${label}.`;
   } else {
     d.counter.outcome = 'held';
-    text = `The ${d.backer.toLowerCase()} kept their terms for ${p.title}. The offer is still open as it was.`;
+    text = `${theBacker(d, true)} kept their terms for ${p.title}. The offer is still open as it was.`;
   }
   addLog(state, text, d.status === 'withdrawn' ? 'warning' : 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
   return { message: text };
@@ -89,7 +90,7 @@ registerHandler('finance-offer-lapse', (state, ev) => {
   if (!p || !d || d.status !== 'offered' || (d.expiresAt ?? Infinity) > state.now) return { suppressInterrupt: true };
   d.status = 'lapsed';
   d.reason = 'The offer lapsed before you answered it.';
-  const text = `The ${d.backer.toLowerCase()}'s offer for ${p.title} lapsed unanswered.`;
+  const text = `${theBacker(d, true)}'s offer for ${p.title} lapsed unanswered.`;
   addLog(state, text, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
   return { message: text };
 });

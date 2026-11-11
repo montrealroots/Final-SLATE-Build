@@ -5,6 +5,7 @@ import { categoriesFor, ensureEditions, institution } from '../src/engine/awards
 import { rivalWords, rivalsFor } from '../src/engine/awards-results';
 import { setIndustryWorld } from '../src/engine/industry';
 import { careerStudio, studioFilms, type StudioProfile } from '../src/engine/studios';
+import { fitWeight } from '../src/engine/strategy';
 import { inCinemas, simulatedOpenings } from '../src/world/programme';
 import type { GameState } from '../src/engine/types';
 import { startLife } from './helpers';
@@ -67,15 +68,23 @@ describe('a studio\'s films compete', () => {
 });
 
 describe('a studio offers work', () => {
-  it('makes about half the offers once the save\'s world has studios, weighted to the busier, and none without', () => {
+  it('makes about half the offers once the save\'s world has studios, by how near its record is to the work and never by its size, and none without', () => {
     const s = withStudios('comp-d', [PIXAR, SMALL]);
-    const picks = Array.from({ length: 400 }, (_, i) => careerStudio(s, `k${i}`));
+    // An animated family film: the animation studio's record fits it. A live-action drama: only the small drama label's does.
+    const cartoon = (x: StudioProfile) => fitWeight(x, ['family', 'animation'], 'animation');
+    const drama = (x: StudioProfile) => fitWeight(x, ['drama'], 'live-action');
+    const picks = Array.from({ length: 400 }, (_, i) => careerStudio(s, `k${i}`, cartoon));
     const named = picks.filter(Boolean);
     expect(named.length).toBeGreaterThan(160);
     expect(named.length).toBeLessThan(240);
-    // A studio releasing under one film a year makes none.
-    expect(named.every((x) => x === 'Pixar')).toBe(true);
-    expect(careerStudio(s, 'k1')).toBe(careerStudio(s, 'k1'));
-    expect(careerStudio(withStudios('comp-e', []), 'k1')).toBeUndefined();
+    expect(new Set(named)).toEqual(new Set(['Pixar', 'Tiny Pictures'])); // a thin record counts a little for anything
+    expect(named.filter((x) => x === 'Pixar').length).toBeGreaterThan(named.length * 0.6);
+    // The busiest studio makes none of the offers for a film it wouldn't make: sixteen times the pace counts for nothing.
+    const forDrama = Array.from({ length: 400 }, (_, i) => careerStudio(s, `k${i}`, drama)).filter(Boolean);
+    expect(forDrama.length).toBeGreaterThan(160);
+    expect(forDrama.every((x) => x === 'Tiny Pictures')).toBe(true);
+    expect(careerStudio(s, 'k1', drama)).toBe(careerStudio(s, 'k1', drama));
+    expect(careerStudio(withStudios('comp-e', []), 'k1', drama)).toBeUndefined();
+    expect(careerStudio(withStudios('comp-f', [PIXAR]), 'k1', () => 0)).toBeUndefined(); // no studio whose record fits: none is named
   });
 });

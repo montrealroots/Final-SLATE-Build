@@ -175,3 +175,31 @@ The hired director of a day's episode is on set and paid with everyone else, for
 director hired and not given an episode is paid nothing. This applies to projects already under way too: the work is
 real either way, and an overrun on their agreement is recorded as any overrun is.
 
+
+## Milestone F
+
+### Two Of The Three Studio Families Are One Group
+
+The package named Warner Bros., Sony Pictures and Paramount as three families, and said to verify current ownership
+at implementation time. On November 11, 2026 the official sources say Paramount completed its purchase of Warner Bros.
+Discovery on October 6, 2026 and the company is now Skydance. The registry records that: one group, two acquisition
+dates. A game date before either date shows the label as not yet part of the group, as it does for Pixar before 2006.
+
+### A Studio's Answer Has No Dice In It
+
+Other backers in the game roll against a chance. A followed studio doesn't: the read is shown before the pitch is
+sent, and the answer two weeks later is the same read made on that day's facts. The reason is the package's rule that
+offers read fit, readiness, track record and slate capacity, and that the player gets a useful explanation. An answer
+that could differ from the explanation shown would make the explanation decoration.
+
+### A Studio's Release Is Several Releases
+
+Award rules, cinemas, the calendar and premiere status all read a release's one date and its territories. A staggered
+opening is therefore recorded as one release for each wave of territories, all under the studio's one deal, so every
+reader has each territory's own date without being changed. The deal reports once, from the first opening.
+
+### No Budget Band
+
+The package lists budget bands among a strategy's parts, "modeled unless sourced". None is modeled. The only signal the
+save keeps is a studio's pace, and a busy studio is not a rich one; deriving a band from pace would be the
+"popularity into studio cash" the owner ruled out. What a studio puts in depends on what the player has delivered.

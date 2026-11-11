@@ -189,6 +189,7 @@ c(f, '{`Ask The ${d.backer} For`}', D, 'deal.counter.term', 'negotiation.ts', 'A
 
 # ---------------- Edit, release, awards, capture ----------------
 f = 'FinishViews.tsx'
+c(f, "{`Version In ${r.territories.map(countryName).join(', ')}`}", D, 'releases[].version, releases[].dubObligationId', 'finish.ts setReleaseVersion, the release handler; distribution.ts territoriesReached, reportedGross', "A dubbed version's cost is set aside now and paid on release, and each territory it is dubbed for counts for half as much again in the distributor's reports", U('strategy', "a dubbed version is yours to pay for, counts for more where the language isn't the film's, and is refused where nothing needs translating"), E('studio-pitch', 'J08'))
 c(f, '"Version"', R, 'version.label', 'versions.ts addVersion (named and unique); shown where the version is entered', 'The version\'s name. What it leaves out is the decision, below', U('versions', 'a version is conformed from the locked cut'), E('awards', 'Emmys guest'))
 c(f, '{sceneLabel(p, s)}', D, 'version.leaveOut', 'versions.ts versionScenes', 'Scenes a version leaves out: its running time and its credits', U('screen-time', 'a version is its own cut'), E('awards', 'Emmys guest'))
 c(f, '{`${g.label}: ${g.reason}`}', D, 'pickup choice', 'edit-actions.ts requestPickups', 'Scenes picked up on a pickup day', U('directing', 'missing coverage is shot on a targeted pickup'))
