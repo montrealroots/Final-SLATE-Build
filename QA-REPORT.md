@@ -8,7 +8,109 @@
 
 ## Commands And Results
 
-### Current: The Disney Screen Catalog And Company Leadership (November 10, 2026, after #62)
+### Current: Data Packs (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 93 files, 747 tests. New: `tests/packs.test.ts` (round trip, the six-month date and its cap, five refusals). Startup 302 kB, 97 kB gzipped. |
+| `npx playwright test e2e/data-packs.spec.ts`, desktop, phone, WebKit (iPhone 15 Pro Max) | 0 after a fix | 6 passed. WebKit first refused to store the records ("The pack couldn't be stored"): it can't keep a Blob in IndexedDB in a private window, which Playwright's are. Records are stored as bytes now. |
+| `npx playwright test --workers=1` (dev server, every project, as CI runs it), at `b0ce7c0` | 0 | 317 passed, 45 skipped by design, in 39.7 minutes on this machine. CI's 45-minute step had been cut at tests 337 and 324 of 353 on two commits, none failing; CI's machine is slower than this one, so each browser step now has 60 minutes (`c41554f`). |
+| The real packs, production build with no catalog on the server | — | Film pack (69.7 MB, 9,510 files) installed in 5.8 s in Chromium (77 MB used) and 4.0 s in WebKit with iPhone emulation (71 MB). Cinemas in about 0.1 s. |
+
+### Earlier: The World Foundation (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` at `bb628e7` | 0 | 92 files, 744 tests. Startup JavaScript 302 kB, 96 kB gzipped (was 685 and 219); budgets unchanged. New:<br>- `tests/industry.test.ts`: a catalog late or gone and back decides the same; a reload partway and another save in between end the same; a refresh never rewrites decisions or adds seasons, before or after the first decision; a save from before `rec` takes it once; forty seeds over ten years stay coherent.<br>- `tests/minors.test.ts`: age bands change on the birthday, day by day for 17 years, 8 birth dates (two of them February 29) and 4 rule sets; read status matches the research log.<br>- `tests/programme.test.ts`: only a released theatrical release plays, for its run; nothing in the engine reads cinemas.<br>- `tests/catalog.test.ts`: Lucasfilm's transition is Leaving and Announced until the registry's check. |
+| Mutations | 1 or more for each | Eleven were made and each failed a test:<br>- deciding on the day a wait ended (two ways);<br>- no profile clipping, no event filter, a recorded ending kept;<br>- no `rec` at the start (this one survived until a test refreshed the catalog before the first decision);<br>- no `rec` for an older save;<br>- a premiere before its decision;<br>- a cancelled series left open;<br>- the old day-count ages;<br>- France recorded as read in full. |
+| `npx playwright test e2e/foundation.spec.ts`, desktop | 0 | 3 passed, fixture data. |
+| The catalog, child and foundation journeys, WebKit (iPhone 15 Pro Max) | 1 flake | 10 of 11 passed with two workers; the one that failed, a Continue Creation that didn't open creation, passed 3 of 3 alone (Open). |
+| `e2e/backup.spec.ts`, `e2e/storage.spec.ts`, desktop | 0 after the fix | Failed first: lazy Shell and Home kept "Loading…" up for React's 300 ms reveal delay while the clock ran, so a save read at once had moved on. They now draw from the store. Passed on the code before the change, in a temporary worktree. |
+| Startup measured, 3 runs each build | — | `docs/PERFORMANCE.md`. The first runs timed New Game until any top heading, which the start screen already had, and were discarded. |
+| `SLATE_E2E_PROD=1 npx playwright test`, all projects, at `0e00a82` | 0 | 315 passed, 38 skipped by design, in 13.5 minutes: the production build through `server/serve.mjs`, desktop, phone and the three WebKit iPhone projects, with the foundation journeys and the catalog and child journeys on WebKit. The first attempt at `bb628e7` was lost to a container restart partway, with no failures up to then. An earlier run on a build from before the fixes failed 9: two on the old acquisition wording, seven on WebKit from fetches a test's reload cut off (the helpers now let the start screen finish loading first). |
+
+### Earlier: What The Cinemas Show (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 90 files, 725 tests. New:<br>- `tests/programme.test.ts`: runs by country and date; your release only in its territories and never when cancelled; bookings at about their share and stable; a closed cinema, or one with no sign of trading, showing nothing; screens capped with yours first;<br>- `tests/cinemas.test.ts`: which cinemas show films;<br>- `tests/catalog.test.ts`: the build's `theatrical.json`, which takes a limited release over a digital one.<br>Startup is 683 kB, 219 kB gzipped. |
+| Mutations | 1 for each | Three were made, and each failed a test:<br>- digital releases counted as cinema openings;<br>- closed cinemas booking films;<br>- your film's bookings ignoring its reception. |
+| `npx playwright test e2e/cinemas.spec.ts e2e/catalog.spec.ts`, desktop and phone | 0 | 18 passed. The new journey checks, on fixture data:<br>- your theatrical release, marked released in the save, is in British cinemas beside a catalog film in its run;<br>- one whose eight weeks are over, and one that opened only in France, aren't;<br>- one opening soon is listed;<br>- a closed cinema shows nothing, and an unclosed one with no website or operator says so;<br>- your film's Release page counts the cinemas showing it. |
+| `npx playwright test e2e/awards.spec.ts`, desktop | 0 | 16 passed. Its release pages now carry the cinema bookings. The first run died with the worker restart (exit 137) when it ran together with the other specs; run alone, it passed. |
+| CI on `3c12731` | 9 failed | Every place-page journey in `world.spec.ts`, and the viewports check, failed on a 404. CI has no catalog, and the place page asked for `theatrical.json`, which the server didn't answer as "not installed" as it does the catalog index. The failure reproduced locally with `.screen-catalog` and `.cinemas` moved aside. With the fix, `world.spec.ts` and `viewports.spec.ts` passed 23, with 5 skipped by design, on desktop and phone. |
+| Real data, by eye | — | London on May 4, 2026 showed The Devil Wears Prada 2 (opened May 1) and Ready or Not: Here I Come (opened March 20, in week seven of eight). Hoppers, whose run had ended, didn't show. Jacey Leicester Square, long closed with no closure recorded, was booking films until websites were required. |
+
+### Earlier: Cinemas On Place Pages, And Georgia's Child Rules (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 89 files, 718 tests. New:<br>- `tests/cinemas.test.ts` (4): openings and closings at their recorded precision, undated closures, distance;<br>- `tests/minors.test.ts`: Georgia's hours, coordinator and studio teacher per ten, nurse, and no trust.<br>Startup is 683 kB, 219 kB gzipped. |
+| `npx playwright test e2e/cinemas.spec.ts e2e/catalog.spec.ts e2e/children.spec.ts`, desktop and phone | 0 | 18 passed. The cinema journey checks London's card on fixture data: the counts, a closing date, an undated closure, a cinema not yet open, and one too far away. |
+| `e2e/world.spec.ts`, `e2e/failures.spec.ts`, desktop and phone | 0 | 30 passed, with the card on every place page. |
+| A dev server without `.cinemas/` | — | The index answers `{"installed":false}` (no console error), and a country's file answers 404. |
+| Real data, by eye | — | London's card at November 11, 2026 lists the West End's cinemas. The first import had read year-only dates as January 1. The importer now keeps each date's precision: in Britain, 203 openings by year, 9 by month and 77 by day. |
+
+### Earlier: Networks And Streaming Services (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npx vitest run tests/catalog.test.ts tests/industry.test.ts` | 0 | New tests cover:<br>- the build's network pages, `networkIds` and outlet kinds;<br>- Wikidata's kinds, website matching and date precision;<br>- owners at a date, including year and month precision;<br>- cable networks making a series cable. |
+| Mutations | 1 for each kept | Five were made one at a time:<br>- the engine ignoring network kinds;<br>- the build dropping them;<br>- dates without their precision;<br>- year-precision ends compared as text.<br>Each failed a test. The fifth, a start compared as text, survived because plain comparison is already right for a start, so the helper was simplified to it. |
+| `npx playwright test e2e/catalog.spec.ts`, desktop and phone | 0 | 14 passed, including the new journey: Companies, then the networks list, then a network's owners at the save's date (earlier, current, undated, and a later owner not shown), its series aired and announced, a series, and back. |
+| Real catalog, by eye | — | CBS, HBO and Hulu were captured at November 11, 2026. A current owner's end date showed in the fixture ("until June 30, 2027", the story's future) and was removed. Year-precision owners had read as January 1; they now read as years. |
+
+### Earlier: Child Rules Across The Map (November 11, 2026)
+
+Six more sets of child performer rules, a coverage ledger for every playable country, and startup room made for them.
+What was read is in `docs/child-rules/RESEARCH.md`, and the set each country uses is in `docs/child-rules/COVERAGE.md`.
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 88 files, 710 tests: `tests/minors.test.ts` went from 13 to 23. Startup is 682 kB, 219 kB gzipped, under the 220 kB budget, which wasn't raised. With the new sets it measured 220.60 kB first. The saved games list, Import Save, Storage and the settings now load when they're opened (`src/ui/SavedGames.tsx`), which brought it to 218 kB before Ontario and Ireland were added. |
+| Mutations of the new rules | 1 for each | Eight were made one at a time, and each failed a test:<br>- days a week off by one;<br>- no days-a-week check;<br>- no set-aside threshold;<br>- no chaperones by age;<br>- no school-day cap;<br>- the shoot not counting earlier pay toward the threshold;<br>- Ontario's share taken only of the excess;<br>- Ontario's share counted again once already past the threshold. |
+| `SLATE_E2E_PROD=1 npx playwright test` on accessibility, backup, reliability, storage, viewports, children and live-action, desktop and phone | 0 | 39 passed, 7 skipped by design (two-tab checks run once, on desktop). The first run used the dev server. Its accessibility check failed: the Saved Games page stayed on Loading… because the server had run out of file watchers watching the catalog cache's 150,000 files. `vite.config.ts` no longer watches the catalog's or the cinemas' directories. |
+
+### Earlier: Child Performers, Character Ages And People Who Age (November 11, 2026)
+
+The rules and their sources are in `docs/ASSUMPTIONS.md`, Child Performers.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| Research | n/a | Read from the official texts:<br>**England:** SI 2014/3309, regulations 4, 13, 15, 21 to 26.<br>**California:** 8 CCR §11760 and §11755.2; Family Code §6752; the Entertainment Work Permit page.<br>**New York:** the Department of Labor's LS 559 chart (its text, from the PDF) and its pages on employer duties. |
+| `npm run check` | 0 | 88 files, 700 tests. New: `tests/minors.test.ts` (13) and `tests/people-ages.test.ts` (7). Startup is 687 kB, 219.75 kB gzipped, under the 220 kB budget, which wasn't raised. The child rules put it at 224 kB first. Three modules no longer load at startup:<br>- the living world's engine (`industry.ts`), which now loads with the world file; state.ts holds its decisions until then;<br>- the cost estimate (`estimate.ts`), which now loads with the plan pages;<br>- the casting notes (`casting-notes.ts`, moved out of hiring.ts), which now load with the casting page. |
+| Mutations of the child rules | 1 for each | Seven were put back one at a time, and each failed a test:<br>- no child cap in planning;<br>- no check for who must be on set;<br>- no trust set-aside;<br>- no rest after a night shoot;<br>- no wait for the licence;<br>- no ageing between seasons;<br>- no cap on a child's hours on the day.<br>The last survived at first, because the plan already keeps a child's day within their hours. The test now gives one day more of the child's work than they may do. |
+| Golden production outcomes (`tests/production-golden.test.ts`) | 0 | Unchanged. The test helper casts a part's age, or an adult for a part with no age, since the pool now has children. |
+| `children`, `living-world`, `catalog`, `careers`, `first-project`, `script-rules`, `accessibility`, `decisions` on desktop and phone | 0 | 34 passed, 4 skipped by design. The new `children` journey: a part's age written as numbers; England's rules on the Cast page; the chaperone and tutor required in Crew; and the performers who play the part's age listed first, each child with what casting them brings. |
+
+### Previous: The Living World, Phase 2: Series Continue Or End (November 10, 2026, in #64 with Phase 1)
+
+The rules are in `docs/WORLD.md`, under Phase 2.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run screen-catalog:build` | 0 | `world.json` is now 419 kB. It holds the same 2,134 events plus profiles of the 143 series still running when the records end. 78 of them carry each fully dated season's episode spacing. |
+| Five simulated years on the real profiles (a probe script, not kept) | 0 | Three problems found and fixed: partial episode counts copied from a season still airing, too many final seasons for evergreen animation, and a daily programme's year drifting across leap years. After the fixes: *Abbott Elementary* gets 22 episodes a season, premiering in late September or early October. *Only Murders in the Building* gets 10. Broadcast decisions cluster in May. About 31 of the 143 series are still running after five years. |
+| A second probe, made after looking at the In Your Story card | 0 | Four more problems found and fixed. Seasons had no breaks: Abbott ran straight from October to March. Seasons opened on any weekday. Final seasons were said to end at the next upfronts, after their finale. Daily programmes aired on weekends. With two seeds over five years, the daily programmes had no weekend episodes and every ending fell on its finale. Abbott opens on Wednesdays and ends in April, and *The Simpsons* opens on Sundays. |
+| `npm run check` | 0 | 85 files, 673 tests, including the new `tests/industry.test.ts` (8). Putting back any of the four fixes fails a test in it. Startup is 685 kB, 219 kB gzipped (budgets 700 and 220), up from 679 and 217 because the engine loads with the game. The budget was not raised. |
+| `catalog`, `living-world`, `world`, `accessibility`, `viewports`, `focus`, `readers`, `devices`, `first-project`, `journey-a`, `catalog-live` on desktop and phone | 0 | 53 passed, 9 skipped by design. The new `living-world` test plays a save past the records' end and checks the decision, the In Your Story card, the returning regulars, and that all of it survives a reload. |
+| `catalog`, `living-world`, `catalog-live`, `world` on desktop and phone, after the second probe | 0 | 28 passed. |
+| Simulated season pages: `npm run screen-catalog:build`, then `npm run check` | 0 | `world.json` is 432 kB. It now records the regulars' birth and death dates: 608 of 686 regulars have a birth date, and 7 died. Those include *General Hospital*'s Tyler Christopher and Michelle Trachtenberg, whom the recorded season casts still listed, and who are now shown as not returning. 86 files, 680 tests, including the new `tests/simseason.test.ts` (7). Startup is unchanged at 685 kB, 219 kB gzipped: the page loads with the catalog's pages. |
+| `catalog`, `living-world`, `catalog-live`, `world`, `accessibility`, `readers` on desktop and phone | 0 | 32 passed. `living-world` now opens the simulated season's page. It checks the dates, nights, breaks, two episodes on one night, the returning and not returning cast, the seasons around it, and the series' Seasons list. |
+| Ages: `npm run check`, then `catalog` and `living-world` on desktop and phone | 0 | 86 files, 680 tests. The season pages had their own age arithmetic, which counted a February 29 birthday on March 1. They now use the engine's rule, February 28 in other years, and `tests/simseason.test.ts` checks it. Person pages give the age at the save's date, or the age at death, with `ageAt` checked in `tests/catalog.test.ts`. 14 browser tests passed. A capture at November 1, 2026 shows Sheryl Lee Ralph as 69, and Paul Newman as died September 26, 2008, aged 83. |
+| Captures of the real *Abbott Elementary* Seasons 7 and 8, at November 1, 2028 (temporary spec, deleted) | 0 | Each season copies Season 5's three four-week breaks: early November, the holidays and February. Each opens on a Wednesday and ends in late April. The cast's ages are those at each premiere. |
+
+### Previous: The Living World, Phase 1: The World's Clock (November 10, 2026, after #63)
+
+The rules are in `docs/WORLD.md`.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| `npm run screen-catalog:build` | 0 | `world.json` written: 2,134 events, 306 kB. That is 77 films; 103 seasons, 29 released all at once; 1,932 episodes with 35 finales; and 22 endings. 758 events belong to 7 continuous programmes. Two rules came from reading the real Home: finales only for seasons known to be finished, and continuous programmes kept out of the news. |
+| `npm run check` | 0 | 84 files, 665 tests, including the new `tests/world.test.ts` (5) and the world file check in `tests/catalog.test.ts`. Startup is unchanged at 679 kB, 217 kB gzipped. |
+| `e2e/catalog.spec.ts` and `e2e/catalog-live.spec.ts` on desktop and phone | 0 | 16 passed, including the new Home and calendar test. |
+| `accessibility`, `viewports`, `focus`, `readers`, `devices`, `first-project`, `journey-a`, `screenings`, `catalog-live` on desktop and phone | 0 | 33 passed, 9 skipped by design. Run before the finale and continuous-programme rules, which change only the catalog's own build. |
+
+### Previous: The Disney Screen Catalog And Company Leadership (November 10, 2026, after #62)
 
 The catalog's rules are in `docs/CATALOG.md`, and the counts from the gathering run are in `docs/CATALOG-COVERAGE.md`.
 
@@ -708,6 +810,11 @@ explicit `test.skip(project…)`; no test skips itself on an outcome. The list w
 
 | Severity | Defect | Fix | Regression Check |
 | --- | --- | --- | --- |
+| High | (Foundation pass, November 11, 2026) A living-world decision due while the catalog wasn't loaded was decided on the day the wait ended, so a slow or missing catalog changed the save's world | The wait keeps the day it was due | `tests/industry.test.ts`, "a catalog that loads late" |
+| High | (Same) A newer catalog would have told a simulated series' seasons twice, its recorded ones beside the save's own, and contradicted them with a recorded ending | Each simulated series records the seasons its save began with | `tests/industry.test.ts`, "a later catalog corrects the records" |
+| Medium | (Same, found by `e2e/foundation.spec.ts`) Renaming the game you were playing was undone by the next save | The open game is renamed in memory and saved whole | `e2e/foundation.spec.ts`, two saves |
+| Medium | (Same) A child moved into the next age band a day before or after the birthday that made them that age | Bands count whole years from birthdays | `tests/minors.test.ts`, "moves a child into the next age band" |
+| Low | (Same) Titles were "made before" an acquisition on their release date; an announced departure made an executive former at once; TMDB's status showed before the day it was recorded; cinemas were said to "show films" on a website alone | Each says only what the records do | `tests/catalog.test.ts`, `e2e/cinemas.spec.ts`, `e2e/catalog-live.spec.ts` |
 | High | (Found measuring micro budgets, after #36) A voice session the production could no longer pay the studio for threw an error: the whole day rolled back and time paused with "Something went wrong while time passed" | The session waits with the reason, as render time and wages already did | `tests/tight-budget.test.ts` (threw on the old code) |
 | High | (After #36) Micro-budget stop motion and 3D could never finish: staffing proposals went department by department in alphabetical order and spent the money before reaching the animator or the storyboard artist | Proposals hire a required crew the money can pay, or no one, and name the shortfall | `tests/tight-budget.test.ts`, `e2e/careers.spec.ts` stop motion |
 | Medium | (After #36) Role combining rarely happened: the colorist and re-recording mixer were hired before the editor and sound designer who cover them | On a micro budget, covering roles are proposed first | `tests/tight-budget.test.ts`, `tests/production-golden.test.ts` (regenerated for this intended change) |
@@ -780,6 +887,12 @@ explicit `test.skip(project…)`; no test skips itself on an outcome. The list w
 | Low | China's computed holidays were wrong for 2026 | Official 2026 arrangement used, with make-up working days | Lunar holiday test |
 
 ## Open
+
+- **Seen once, open (November 11, 2026): Continue Creation didn't open creation on WebKit.** With two WebKit workers
+  running the catalog, child and foundation journeys, a test's setup pressed Continue Creation and the start screen stayed,
+  the button focused, for four minutes. It passed 3 of 3 alone. Continue Creation waits for the engine to load; the line
+  the start screen now shows while it waits ("Getting character creation ready…") was added after this run, so whether it
+  was still waiting isn't known. No cause found. Next: run it under CPU load with the store's engine load logged.
 
 - **Unexplained, open (November 9, 2026): a working title lost on WebKit.** CI on `main` after #48 (`507096c`, run 117):
   the Emmys journey on `iphone-15-plus` (dev server) filled the New Script title right after a new game opened; the fill

@@ -194,7 +194,7 @@ export function newGame(d: CreationDraft, realNow: number, saveId: string): Game
     editions: [],
     rivalFilms: {},
     followed: [],
-    calendarFilters: ['Birthdays', 'Holidays', 'Festivals', 'Awards', 'Deadlines', 'My Schedule'],
+    calendarFilters: ['Birthdays', 'Holidays', 'Festivals', 'Awards', 'Deadlines', 'My Schedule', 'Film And Television'],
     settings: { theme: 'dark', wakeForObligations: true },
     places: {},
   };
@@ -371,6 +371,16 @@ export function scheduleNextBirthday(state: GameState): void {
   const { at, age } = nextBirthdayInstant(state, state.now);
   schedule(state, at, 'birthday', { age, year: localParts(at, state.ageZone).year }, { priority: 10, attention: 'notify', id: `bday-${age}` });
 }
+
+// The living world's decisions (industry.ts) are handled once that module has loaded with the film catalog, which
+// replaces this handler. Until then a decision that comes due waits a day rather than being lost: an event with no
+// handler is consumed. Until November 11, 2026 industry.ts loaded at startup, which put the startup bundle over budget.
+// The decision keeps the day it was due (`due`), so how long it waited never changes it; until November 11, 2026 it was
+// decided on the day the wait ended, and a slow catalog changed the save's world.
+registerHandler('industry-decision', (state, ev) => {
+  schedule(state, ev.at + DAY, 'industry-decision', { ...ev.payload, due: ev.payload.due ?? ev.at }, { priority: 60, id: `ind:${ev.payload.r}:${ev.payload.step}:held:${Math.floor(ev.at / DAY) + 1}` });
+  return { suppressInterrupt: true };
+});
 
 registerHandler('birthday', (state, ev) => {
   const age = ev.payload.age as number;

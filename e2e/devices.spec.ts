@@ -1,10 +1,10 @@
 import { expect, test } from './test';
-import { nav, section } from './helpers';
+import { nav, openStart, section } from './helpers';
 
 // Runs on the WebKit iPhone emulation projects: layout, touch navigation and focused-field visibility.
 test('phone device: screens fit, drawer works, focused fields stay visible', async ({ page }, info) => {
   test.skip(!info.project.name.startsWith('iphone'), 'Device emulation projects only.');
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({

@@ -21,6 +21,7 @@ Every number here is a game calibration value. None is a quoted real-world rate 
 | Budget estimate | Before a script is approved, the budget size's amount. After, what that script needs at its size: required crew and cast at the lowest experienced rates (combining roles on a micro budget), materials, shoot days, studio and render time, money already spent or held, plus a tenth for contingency; never below the size's amount. The financing target follows it unless the player set their own (November 7, 2026). | `estimate.ts` |
 | Co-production | Adds 50% of the fund once, with lead-casting approval and a partner credit | `budget.ts` |
 | Day rates | Base rates per role; candidates ask 0.62 + 0.2 × experience times the base, plus or minus 10% | `people.ts` |
+| People's ages (November 10, 2026) | Everyone the game invents has a date of birth from the save's seed, drawn after their other details, so nobody else about them changed and no save needed upgrading. Their age turns on their birthday, by the player's rule (`time.ts`). A performer's age when your story begins sits a little above the middle of the range they played then. Anyone else's follows experience: about 24 when new to the role, about 48 when leading in it, never under 19 or over 72. The ages a performer plays follow their own age. A child plays within two years of it either way. An adult plays a range as wide as the one they had at the start, placed around their age as that one was, and never under 16. Until this change the range never moved, so a performer kept playing 25 to 35 for a whole career. Casting notes and the candidate list read today's range. | `people.ts`, `hiring.ts` |
 | Offer responses | Accept at or above the asking rate, or at 90% or more with 60% probability; counter between 70% and 90%; decline below 70% or when busy | `hiring.ts` |
 | Role combining | For example the editor can also grade, caption and QC, and the DP can also light. One task per person per day. On a micro budget, staffing proposals offer the covering role first so one person takes both. | `people.ts`, `hiring.ts` |
 | Staffing proposals | The cheapest available people with some experience, for required roles only. They hire a crew the money can pay, or no one, and say what the crew costs against what is uncommitted. | `hiring.ts` |
@@ -45,6 +46,85 @@ Every number here is a game calibration value. None is a quoted real-world rate 
 | Rival slate | 120 simulated works per season (features, documentaries, shorts, series); strength N(62, 11) with role offsets N(0, 6); generated fill-ins only when the slate lacks eligible work | `awards.ts` |
 | Climate station range | A station further than 400 km isn't treated as evidence for a place; that normal is modeled from latitude and height (warmest month around July in the north and January in the south) | `world/climate.ts` |
 | Weather around station normals | Daily departure spread is 0.3 × the day's normal range (1 to 4 °C), with spells correlated over about 4 days; wet days run 2 °C cooler by day and 1 °C warmer at night; sunnier months give more clear days | `engine/weather.ts` |
+
+## Child Performers (November 11, 2026)
+
+A performer is a child under the rules of the place the production is based (`minors.ts`). England's rules stop at 16,
+when compulsory school age ends; California's and New York's stop at 18. The figures come from the official texts:
+
+| | England | California | New York |
+| --- | --- | --- | --- |
+| Source | The Children (Performances and Activities) (England) Regulations 2014, regs 4, 13, 15, 21 to 26 | 8 CCR §11760, §11755.2; Family Code §6752; the Entertainment Work Permit | 12 NYCRR Part 186; the Department of Labor's chart LS 559 (09/18) |
+| Hours of work a day, school day (no school) | under 5: 2; 5 to 8: 3; 9 to 15: 5 (no more without school) | babies to 6 months: 20 minutes; to 2: 2; 2 to 5: 3; 6 to 8: 4 (6); 9 to 15: 5 (7); 16 and 17: 6 (8) | the same, but 16 and 17: 6 (9) |
+| Hours at the place of work | 5, 8, 9.5 | 2, 4, 6, 8, 9, 10 | 2, 4, 6, 8, 9, 10 |
+| Who must be with them | a licensed chaperone, up to 12 children each; a tutor on school days, 3 hours, up to 6 each | a studio teacher on every call under 16, one per 10 (20 without school); a nurse under 6 months | a responsible person under 16 (the game hires a chaperone); teaching 3 hours a school day; a nurse under 6 months |
+| Before the first day | a licence, asked for 21 days ahead (reg 4(2)) | an Entertainment Work Permit (a 10-day permit is issued at once) and a permit to employ minors | a Child Performer Permit, and the employer's notice of use 2 business days ahead |
+| Night work | the licensing authority's permission (reg 28) | the Labor Commissioner's approval, asked for 48 hours ahead | a variance |
+| Between calls | 12 hours (reg 24) | 12 hours | 12 hours |
+| Trust set-aside | none | 15% of gross pay | 15% of gross pay |
+
+Six more sets were added the same day (and Georgia's, described in the research log), when the owner asked for child performers across the whole map. What was read
+for each, and how the game reads what the texts leave to an authority, is in `docs/child-rules/RESEARCH.md`:
+
+| | British Columbia | Ontario | Ireland | Germany | France (partly read) | New South Wales |
+| --- | --- | --- | --- | --- | --- | --- |
+| Source | Employment Standards Regulation, Part 7.1, Division 2 | the Protecting Child Performers Act, 2015, as passed | the Workplace Relations Commission's film and TV licence note | Jugendarbeitsschutzgesetz §§ 2, 5, 6, 8 | the audiovisual industry's 2025 agreement on minors, restating the Code du travail | the Office of the Children's Guardian's requirements by age |
+| Covers | under 15, from 15 days old | under 18, from 15 days old | under 16 | under 18; none of 3 or under | under 16 | under 16 |
+| Hours of work a day | 8 hours from reporting under 12, 10 from 12, less the camera breaks: under 3: 3.4; 3 to 5: 5.3; 6 to 11: 6.5; 12 to 14: 8.6 | 4 under 2 and 8 from 2, less the same camera breaks: 1.7, 3.4, 5.3, 6.5, 6.9, 7.4 at 16 and 17 | under 7: 2; 7 to 12: 3; 13 to 15: 4 | over 3 to 6: 2; 6 to 15: 3; 16 and 17: 8 | England's, standing in for the hours the commission sets child by child | under 3: 4; 3 to 7: 6; 8 to 15: 8; at most 4 on a school day |
+| Days a week | 5 | 5 (48 hours free a week) | 5 | the game's own six | the game's own six | under 6 months: 1; to 3: 2; 3 to 7: 4; 8 to 15: 5 |
+| Who must be with them | a chaperone, one each under 6, one per 3 to 12, one per 5 to 15; no tutoring rule | a parent, guardian or chaperone for each child under 16 (the game hires one each); time for tutoring | a chaperone per 12; teaching if away from school more than a week (not modelled) | care and supervision (the game: one per child under 6, then one per 3) | a children's supervisor (the game: one per 5) | a supervisor (the game: one per 5), and a nurse under 3 |
+| Before the first day | consent and the hire (the game allows a day) | the same; 48 hours' notice of a call after 7 p.m. | a licence from the Minister, applied for 21 days ahead | the authority's written approval (the game allows 14 days) | the prefect's authorisation, within a month (30 days) | the Children's Guardian's authority (the game allows 7 days) |
+| Between calls | 12 hours | 12 hours | none set (England's 12 stand in) | 14 hours | 12 hours | 12 hours |
+| Trust set-aside | 25% of earnings over $2,000 on a production | 25% of all the earnings on a production once they pass $2,000 | none: the earnings go to an account in the child's name | none | none fixed: the commission sets the share child by child | none stated |
+
+What follows in the game:
+- **Shoot days.** A shoot day stands for ten hours (game calibration). A child's scenes fill no more of a day than their
+  hours of work allow, so a script with children takes more days, at more location and equipment cost. The schedule
+  plans school-day hours, the stricter case. On the day, a day without school allows more where the rules do.
+- **Who must be with them.** The chaperone, studio teacher, tutor or nurse is crew the production hires. They are paid
+  for each day a child works, on set or at a voice or capture session. A child's scenes aren't shot without them.
+- **The licence.** It is asked for when the shoot is scheduled. A child's days go after it is granted, and the days
+  without children go first.
+- **Night scenes.** A child's night scenes need night work approved. The day call after a child's night shoot moves a
+  working day on.
+- **Days a week.** Where the rules set the days a week (New South Wales, British Columbia, Ontario, Ireland), a child's scenes
+  wait once they have worked that many days, Monday to Sunday.
+- **Trust set-aside.** Where the rules require it, the share of each payment to a child is recorded as set aside in
+  trust: 15% in California and New York; in British Columbia 25% of what they earn past $2,000 on the production; in
+  Ontario 25% of all they earn on it, once it passes $2,000. It
+  is part of their pay, not a further cost.
+- **Other places.** Places whose rules aren't recorded use the nearest recorded set and say so:
+  - the rest of the United States uses California's (Georgia has its own, read from its Department of Labor's rules and
+    Schedule of Hours of Performance: `docs/child-rules/RESEARCH.md`);
+  - the rest of Canada uses British Columbia's (Ontario has its own);
+  - the rest of Australia, and New Zealand, use New South Wales's;
+  - the rest of the European Union, the EEA and Switzerland use Germany's (Ireland has its own);
+  - everywhere else uses England's, including Scotland, Wales and Northern Ireland, whose own rules are close to
+    England's but weren't read.
+
+  `docs/child-rules/COVERAGE.md` lists the set every playable country uses.
+- **School days.** A school day is a weekday that isn't a public holiday or in a typical long break:
+  - England: July 22 to September 3;
+  - the United States: June 15 to August 20;
+  - elsewhere north of the equator: July and August;
+  - south of it: December 15 to January 31;
+  - and in the north, December 22 to January 2.
+
+  It isn't a school calendar.
+- **The pool.** It has 14 child performers and 6 child voice performers per country, from a month to fifteen years old when
+  your story begins. Their experience can't run ahead of their years.
+- **Not modelled.** Not modelled:
+  - England's limit of six consecutive days, which the game's schedule already keeps, since it never works Sundays;
+  - England's rules for 16- and 17-year-olds under employment law;
+  - twins cast to share a baby's part;
+  - a parent acting as chaperone;
+  - working hours at a voice or capture session, beyond the licence and the people with them;
+  - the hours of the day a child may work (Germany's 08:00 to 17:00 under 6, New South Wales' 06:00 to 18:00 under 3),
+    as the game's shoot days are day or night, not hours on a clock;
+  - weekly limits on hours (Germany's 40 for young people, New South Wales' 50 of work and schooling) and British
+    Columbia's 48 hours free a week;
+  - a baby under 12 weeks in New South Wales needing a variation and a nurse's report.
+- **Rates.** Studio teachers, chaperones, tutors and set nurses are paid at game calibration, not union scale.
 
 ## World Places (M2)
 

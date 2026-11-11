@@ -2,8 +2,21 @@ import { expect, type Page } from '@playwright/test';
 import { hashString } from '../src/engine/rng';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
-export async function freshStart(page: Page): Promise<void> {
+/**
+ * Open the start screen and let it finish loading: since November 11, 2026 the engine and the game's data load after the
+ * start screen draws (store.engineReady marks html[data-engine]), and WebKit reports a fetch cut short by a reload as a
+ * page error. A player reloading that early
+ * loses nothing; a test that reloads must wait, as a player would, or it fails on WebKit's report.
+ */
+export async function openStart(page: Page): Promise<void> {
   await page.goto('/');
+  // Until November 11, 2026 this waited for the network to be idle, half a second at least each time; the store marks the
+  // page when the engine and its data have settled.
+  await page.locator('html[data-engine="ready"]').waitFor({ state: 'attached', timeout: 30_000 });
+}
+
+export async function freshStart(page: Page): Promise<void> {
+  await openStart(page);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
 }
@@ -194,10 +207,10 @@ export async function saveAndExit(page: Page): Promise<void> {
   await expect(page.getByRole('button', { name: 'Continue', exact: true })).toBeVisible();
 }
 
-export async function quickLife(page: Page, startPlaceId: string, startDate: string, opts: { portrait?: boolean } = {}): Promise<void> {
-  await page.goto('/');
-  await page.evaluate(({ pl, sd, withPortrait }) => {
-    localStorage.clear();
+/** The quick character's finished draft, left for Continue Creation, with nothing else in localStorage unless `keep`. */
+async function quickDraft(page: Page, startPlaceId: string, startDate: string, opts: { portrait?: boolean; keep?: boolean } = {}): Promise<void> {
+  await page.evaluate(({ pl, sd, withPortrait, keep }) => {
+    if (!keep) localStorage.clear();
     const c = document.createElement('canvas');
     c.width = 512; c.height = 640;
     const x = c.getContext('2d')!;
@@ -209,8 +222,27 @@ export async function quickLife(page: Page, startPlaceId: string, startDate: str
       languages: [{ code: 'sw', proficiency: 'Fluent' }, { code: 'no', proficiency: 'Conversational' }], startPlaceId: pl, startDate: sd, startTime: '08:00', updatedAt: 1,
       ...(portrait ? { portrait } : {}),
     }));
-  }, { pl: startPlaceId, sd: startDate, withPortrait: !!opts.portrait });
+  }, { pl: startPlaceId, sd: startDate, withPortrait: !!opts.portrait, keep: !!opts.keep });
+}
+
+export async function quickLife(page: Page, startPlaceId: string, startDate: string, opts: { portrait?: boolean } = {}): Promise<void> {
+  await openStart(page);
+  await quickDraft(page, startPlaceId, startDate, opts);
   await page.reload();
+  await page.getByRole('button', { name: 'Continue Creation' }).click();
+  await page.getByRole('button', { name: 'Start My Story' }).click();
+  await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+}
+
+/**
+ * Another life beside the saves already here, begun as a player with saves begins one: New Game, then the unfinished
+ * character it offers to continue. (quickLife assumes no saves: it presses Continue Creation before the list loads.)
+ */
+export async function anotherLife(page: Page, startPlaceId: string, startDate: string): Promise<void> {
+  await openStart(page);
+  await quickDraft(page, startPlaceId, startDate, { keep: true });
+  await page.reload();
+  await page.getByRole('button', { name: 'New Game' }).click();
   await page.getByRole('button', { name: 'Continue Creation' }).click();
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();

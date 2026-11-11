@@ -26,6 +26,7 @@ import { contentSummary, cutConsequences, placementExplained, watershedRule } fr
 import type { CapturePart, Edition, EditionEntry, Format, GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, NumberField, PageHead, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
+import { ReleaseCinemas } from './Cinemas';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
 import { editScenes } from '../engine/finish';
@@ -574,6 +575,7 @@ export function ReleaseTab({ p }: { p: Project }) {
         {p.releases.length ? <ul className="list">{p.releases.map((r) => (
           <li key={r.id}>
             <div className="row-wrap"><span className="grow">{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''}{r.note ? <span className="dim"> {r.note}</span> : null} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && <button className="btn btn-sm btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</div>
+            <ReleaseCinemas p={p} r={r} />
             {r.episodes?.length ? (
               <details className="small">
                 <summary>Episode Dates: {r.pattern === 'assumed' ? 'Assumed From An Older Save' : r.pattern ? PATTERN_LABELS[r.pattern] : 'Dates Of My Own'}</summary>

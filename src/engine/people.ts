@@ -8,7 +8,7 @@ import { getPlace } from '../data/places';
 import { splitBackgrounds } from './identity';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { gaussian, intBetween, pick, stream } from './rng';
-import { addDaysToKey, dayNumber } from './time';
+import { addDaysToKey, ageOn, dateKey, dayNumber } from './time';
 import type { GameState, Project } from './types';
 
 export interface RoleDef {
@@ -31,6 +31,9 @@ export const ROLES: RoleDef[] = [
   R('casting-director', 'Casting Director', 'Casting And Performance', 500), R('actor', 'Performer', 'Casting And Performance', 700, true),
   R('voice-actor', 'Voice Performer', 'Casting And Performance', 600, true), R('background', 'Background Performer', 'Casting And Performance', 180, true),
   R('dialect-coach', 'Dialect And Language Coach', 'Casting And Performance', 400), R('choreographer', 'Choreographer', 'Casting And Performance', 500),
+  // With child performers (minors.ts, November 11, 2026). Rates are game calibration, not union scale.
+  R('studio-teacher', 'Studio Teacher', 'Casting And Performance', 600), R('chaperone', 'Licensed Chaperone', 'Casting And Performance', 150),
+  R('tutor', 'Tutor', 'Casting And Performance', 250), R('set-nurse', 'Set Nurse', 'Casting And Performance', 500),
   R('stunt-coordinator', 'Stunt Coordinator', 'Safety And Specialists', 650), R('fight-choreographer', 'Fight Choreographer', 'Safety And Specialists', 550),
   R('intimacy-coordinator', 'Intimacy Coordinator', 'Safety And Specialists', 500), R('animal-wrangler', 'Animal Wrangler', 'Safety And Specialists', 450),
   R('vehicle-coordinator', 'Picture Vehicle Coordinator', 'Safety And Specialists', 450), R('marine-coordinator', 'Marine And Water Safety Coordinator', 'Safety And Specialists', 600),
@@ -118,7 +121,14 @@ export interface Person {
   heritages: string[];
   /** Their nationalities (country codes): from a nationality word drawn with their background, else where they're based. */
   nationalities: string[];
+  /**
+   * The ages a performer played when your story began. They move with the performer's own age: see playingAgeAt, which
+   * is what the game reads. Until November 10, 2026 this range never changed, so a performer cast at 25 to 35 in your
+   * first year was still 25 to 35 twenty years on.
+   */
   playingAge?: [number, number];
+  /** Their date of birth (YYYY-MM-DD). Their age turns on their birthday, by the same rule as yours (time.ts). */
+  born: string;
   skills: Skill[];
   samples: string;
   busy: { from: string; to: string }[];
@@ -172,12 +182,17 @@ export function countryLanguage(country: string): string {
 }
 
 const POOL_SIZE: Record<string, number> = { actor: 36, 'voice-actor': 14, background: 6, animator: 10, 'stopmo-animator': 8 };
+/**
+ * Children among the performers (November 11, 2026), listed after everyone else so nobody already in a save's pool
+ * changed. Until then the youngest performer was about twelve, so a baby's or a young child's part had no one to play it.
+ */
+const CHILD_POOL: Record<string, number> = { actor: 14, 'voice-actor': 6 };
 
 /** Deterministic pool of candidates for a role, based in the production's country. */
 export function candidates(state: GameState, roleId: string, baseCountry: string): Person[] {
   const n = POOL_SIZE[roleId] ?? 6;
   const out: Person[] = [];
-  for (let i = 0; i < n; i++) out.push(person(state, roleId, baseCountry, i));
+  for (let i = 0; i < n + (CHILD_POOL[roleId] ?? 0); i++) out.push(person(state, roleId, baseCountry, i));
   return out;
 }
 
@@ -226,7 +241,7 @@ function person(state: GameState, roleId: string, country: string, i: number): P
     id, name: `${pick(r, GIVEN)} ${pick(r, FAMILY)}`, pronouns, roleId, experience, capability, dayRate: rate, languages, homeCountry: country,
     heritages: [],
     nationalities: [],
-    playingAge: ageLow !== undefined ? [ageLow, ageLow + intBetween(r, 6, 14)] : undefined, skills, samples, busy,
+    playingAge: ageLow !== undefined ? [ageLow, ageLow + intBetween(r, 6, 14)] : undefined, born: '', skills, samples, busy,
   };
   // Drawn after everything else, so adding backgrounds left every earlier field of every person as it was.
   const local = COUNTRY_HERITAGES[country];
@@ -236,8 +251,62 @@ function person(state: GameState, roleId: string, country: string, i: number): P
   const split = splitBackgrounds(p.heritages.map((h) => ({ id: h, label: h, custom: false })), country);
   p.heritages = split.heritages.map((h) => h.label);
   p.nationalities = split.nationalities;
+  // A date of birth (November 10, 2026), drawn after everything else, so nobody's earlier fields changed. A performer's
+  // age when your story began sits inside the range they played then, a little above its middle. Anyone else's follows
+  // their experience: someone new to the role is in their twenties, someone leading in it in their late forties or older.
+  const start = dateKey(state.startedAt, 'UTC');
+  const ageThen = p.playingAge
+    ? p.playingAge[0] + Math.round((p.playingAge[1] - p.playingAge[0]) * 0.6) // where playingAgeAt puts their age
+    : Math.round(Math.min(72, Math.max(19, 18 + experience * 6 + gaussian(r, 0, 5))));
+  const born = addDaysToKey(`${Number(start.slice(0, 4)) - ageThen}${start.slice(4)}`, -intBetween(r, 1, 365));
+  p.born = born;
+  if (def.cast && i >= (POOL_SIZE[roleId] ?? 6)) child(state, p, start);
   personCache.set(cacheKey, p);
   return p;
+}
+
+/**
+ * Makes a pool performer a child: a month to fifteen years old when your story begins, from a draw of their own. Their
+ * experience can't run ahead of their years (one level for each six), and their capability, rate and record follow it.
+ * The ages they play are within two years of their own (playingAgeAt).
+ */
+function child(state: GameState, p: Person, start: string): void {
+  const r = stream(state.seed, 'child', p.id);
+  const ageDays = intBetween(r, 30, 15 * 365);
+  p.born = addDaysToKey(start, -ageDays);
+  const years = Math.floor(ageDays / 365.25);
+  p.experience = Math.min(p.experience, 1 + Math.floor(years / 6));
+  p.capability = Math.round(Math.min(98, Math.max(30, 40 + p.experience * 9 + gaussian(r, 0, 8))));
+  const def = role(p.roleId);
+  p.dayRate = Math.round((def.rate * (0.62 + p.experience * 0.2) * (0.9 + r() * 0.2)) / 10) * 10;
+  p.playingAge = [Math.max(0, years - 2), years + 2];
+  const credits = Math.max(0, p.experience * 2 + intBetween(r, -2, 1));
+  p.samples = credits ? `${credits} screen ${credits === 1 ? 'role' : 'roles'} so far.` : 'No screen roles yet.';
+  p.skills = years < 6 ? [] : p.skills;
+}
+
+const parts = (k: string) => ({ year: Number(k.slice(0, 4)), month: Number(k.slice(5, 7)), day: Number(k.slice(8, 10)) });
+/** A person's age on a local date (YYYY-MM-DD), turning on their birthday. */
+export function personAge(p: Person, on: string): number {
+  return ageOn(parts(p.born), parts(on));
+}
+
+/**
+ * The ages a performer plays on a date, following their own age:
+ * - A child plays within two years of their age either way.
+ * - An adult plays a range as wide as the one they had when your story began. It sits around their age as that one did:
+ *   a little more of it below their age than above. For an adult that is exactly the range they had then, so nothing
+ *   shown at the start moved.
+ * - An adult doesn't play under 16. Moving the starting range by the years since had kept a child who grew up playing
+ *   children.
+ */
+export function playingAgeAt(p: Person, on: string): [number, number] | undefined {
+  if (!p.playingAge) return undefined;
+  const age = personAge(p, on);
+  if (age < 18) return [Math.max(0, age - 2), age + 2];
+  const width = p.playingAge[1] - p.playingAge[0];
+  const below = Math.round(width * 0.6);
+  return [Math.max(16, age - below), age + width - below];
 }
 
 export function skillLabel(s: Skill): string {

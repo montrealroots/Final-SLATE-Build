@@ -11,7 +11,9 @@ const noSidewaysScroll = (page: Page) => page.evaluate(() => document.documentEl
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/catalog-${project}-${name}.png`, fullPage: true });
 
 test.beforeEach(async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  // Served before the game starts: the app loads the world file as soon as a game is open.
+  await serveCatalog(page);
   await quickLife(page, 'gb-london', '2026-01-05');
 });
 
@@ -61,6 +63,7 @@ test('company to film to cast member to another credit, and back', async ({ page
   const about = card(page, 'About');
   await expect(about).toContainText('April 2, 1980, Bristol, England (Fixture)');
   await expect(about).not.toContainText('Died'); // a death after the save's date hasn't happened
+  await expect(about).toContainText('45 (on January 5, 2026, your story\'s date)'); // born April 2, 1980: 46 only from April 2
   const credits = card(page, 'Credits In The Catalog');
   await expect(credits).toContainText('A credit is a record of past work, not who they work for or whether they could work for you.');
   await expect(credits.locator('li', { hasText: 'Tidewater Station (Fixture)' })).toContainText('(2 episodes)');
@@ -120,6 +123,39 @@ test('company to series, season, episode and its credits; an announced film says
   expect(await noSidewaysScroll(page)).toBe(true);
 });
 
+test('a series\' network: its owners at the save\'s date, earlier ones, undated ones, and its series aired and announced', async ({ page }, info) => {
+  await serveCatalog(page);
+  await nav(page, 'Companies');
+  await card(page, 'Where The Series Aired').getByRole('button', { name: 'Networks And Streaming Services' }).click();
+  await expect(page.getByRole('heading', { name: 'Networks And Streaming Services', level: 1 })).toBeVisible();
+  await expect(page.locator('li', { hasText: 'ABC' })).toContainText('2 series');
+  await page.getByRole('button', { name: 'ABC', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'ABC', level: 1 })).toBeVisible();
+  await expect(card(page, 'About')).toContainText('United States');
+  await expect(card(page, 'About')).toContainText('October 12, 1943');
+  // The save is dated January 5, 2026: the second owner owns it; the first is earlier; a later owner isn't known yet.
+  const owners = card(page, 'Who Owns It');
+  await expect(owners.locator('li').first()).toContainText('Second Owner (Fixture)');
+  await expect(owners.locator('li').first()).toContainText('since December 31, 2025');
+  await expect(owners).not.toContainText('2027'); // when the second owner's time ends is the story's future
+  await expect(owners.getByRole('heading', { name: 'Earlier Owners' })).toBeVisible();
+  await expect(owners).toContainText('First Owner (Fixture)');
+  await expect(owners).not.toContainText('Later Owner (Fixture)');
+  await expect(owners).toContainText('Wikidata also lists Undated Owner (Fixture) as an owner, with no dates, so when isn\'t known.');
+  await expect(owners).toContainText("Wikidata's entry has the same website as TMDB gives");
+  const series = card(page, 'Series In The Catalog');
+  await expect(series.locator('li').first()).toContainText('Tidewater Station (Fixture)');
+  await expect(series.getByRole('heading', { name: 'Announced' })).toBeVisible();
+  await expect(series).toContainText('Far Shore (Fixture)');
+  await shot(page, info.project.name, '06-network');
+  await series.getByRole('button', { name: 'Tidewater Station (Fixture)' }).click();
+  await expect(page.getByRole('heading', { name: 'Tidewater Station (Fixture)', level: 1 })).toBeVisible();
+  // And back to the network from the series' About.
+  await card(page, 'About').getByRole('button', { name: 'ABC' }).click();
+  await expect(page.getByRole('heading', { name: 'ABC', level: 1 })).toBeVisible();
+  expect(await noSidewaysScroll(page)).toBe(true);
+});
+
 test('leadership is shown at the save\'s date, kept apart from screen credits, with sources', async ({ page }) => {
   await serveCatalog(page);
   await nav(page, 'Companies');
@@ -170,7 +206,8 @@ test('a failed load says so and can be retried; a missing catalog leaves compani
   await expect(page.getByRole('heading', { name: "The Film Catalog Isn't Installed" })).toBeVisible();
   await page.getByRole('button', { name: 'Pixar', exact: true }).click();
   await expect(card(page, 'Leadership')).toContainText('Jim Morris');
-  await expect(page.getByRole('heading', { name: "This company's titles isn't in this copy of the catalog" })).toBeVisible();
+  // The whole catalog is missing, so the page says that, and asks for no company's titles (src/catalog/load.ts).
+  await expect(card(page, 'Films And Series').getByRole('heading', { name: "The Film Catalog Isn't Available" })).toBeVisible();
 });
 
 test('browsing the catalog leaves the save as it was, and it reloads on the same screen', async ({ page }) => {
@@ -188,3 +225,35 @@ test('browsing the catalog leaves the save as it was, and it reloads on the same
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
 });
+
+test('the industry on Home and the calendar: recorded releases, premieres and episodes at the save\'s date', async ({ page }, info) => {
+  const { tmdbRequests } = await serveCatalog(page);
+  await nav(page, 'Home');
+  const industry = card(page, 'In The Industry');
+  // December 30 is in the last two weeks; the January 5 episode is the calendar's, not news; the ending is told in November.
+  await expect(industry.getByRole('button', { name: 'Paper Lanterns (Fixture), from Walt Disney Pictures, came out.' })).toBeVisible();
+  await expect(industry.getByRole('heading', { name: 'Coming Up' })).toBeVisible();
+  await expect(industry).toContainText('The Season 1 finale of Tidewater Station (Fixture), "Low Tide", is due to air on ABC.');
+  await expect(industry).toContainText('Harbour Lights (Fixture), from Walt Disney Pictures, is due to come out.');
+  await expect(industry).not.toContainText('Pilot');
+  await expect(industry).not.toContainText('cancelled');
+  await expect(industry).toContainText('Dates still to come were the schedule when the records were taken, on November 10, 2026, and may change.');
+  await shot(page, info.project.name, '05-home-industry');
+  await industry.getByRole('button', { name: 'Paper Lanterns (Fixture), from Walt Disney Pictures, came out.' }).click();
+  await expect(page.getByRole('heading', { name: 'Paper Lanterns (Fixture)', level: 1 })).toBeVisible();
+
+  await nav(page, 'Calendar');
+  await expect(page.getByRole('checkbox', { name: 'Film And Television' })).toBeChecked();
+  await page.getByRole('button', { name: /^Monday, January 12, 2026/ }).click();
+  const day = page.locator('.card', { hasText: 'S1 E2 (Finale)' }).last();
+  await expect(day).toContainText('Tidewater Station (Fixture): S1 E2 (Finale)');
+  await shot(page, info.project.name, '06-calendar-industry');
+  await page.getByRole('checkbox', { name: 'Film And Television' }).uncheck();
+  await expect(page.getByText('Tidewater Station (Fixture): S1 E2 (Finale)')).toHaveCount(0);
+  await page.getByRole('checkbox', { name: 'Film And Television' }).check();
+  await day.getByRole('button', { name: 'View Details' }).first().click();
+  await expect(page.getByRole('heading', { name: 'Low Tide', level: 1 })).toBeVisible();
+  expect(await noSidewaysScroll(page)).toBe(true);
+  expect(tmdbRequests).toEqual([]);
+});
+

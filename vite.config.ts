@@ -1,29 +1,21 @@
-import { createReadStream, existsSync, statSync } from 'node:fs';
-import { join, normalize } from 'node:path';
-import { defineConfig, type Connect, type Plugin } from 'vite';
+import { join } from 'node:path';
+import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
+import { createCatalogHandler } from './server/catalog-handler.mjs';
 
-// The screen catalog (docs/CATALOG.md) is built from TMDB into .screen-catalog/, which git ignores. It is served to the
-// dev and preview servers on this machine only and never copied into a build: TMDB's terms allow caching for six months
-// and not redistribution, and whether it may be deployed hasn't been settled.
-const CATALOG = join(process.cwd(), '.screen-catalog');
+// The game's data files (the screen catalog from TMDB, the cinemas from Wikidata) are answered by the same handler the
+// production server uses (server/serve.mjs, docs/DEPLOYMENT.md), so the dev and preview servers can't drift from it.
+// Neither is ever copied into a build: the catalog stays on the machine that gathered it (TMDB's terms, docs/CATALOG.md).
 function serveCatalog(): Plugin {
-  const handler: Connect.NextHandleFunction = (req, res, next) => {
-    const m = /^\/screen-catalog\/([\w./-]+\.json)$/.exec((req.url ?? '').split('?')[0]);
-    if (!m) return next();
-    const file = normalize(join(CATALOG, m[1]));
-    // No catalog installed: say so in the index, a normal answer, rather than as a failed request.
-    if (m[1] === 'index.json' && !existsSync(file)) { res.setHeader('content-type', 'application/json'); res.end('{"installed":false}'); return; }
-    if (!file.startsWith(CATALOG + '/') || !existsSync(file) || !statSync(file).isFile()) { res.statusCode = 404; res.end(); return; }
-    res.setHeader('content-type', 'application/json');
-    createReadStream(file).pipe(res);
-  };
+  const handler = createCatalogHandler({ catalogDir: join(process.cwd(), '.screen-catalog'), cinemasDir: join(process.cwd(), '.cinemas'), packsDir: join(process.cwd(), 'packs') });
   return { name: 'slate-screen-catalog', configureServer: (s) => { s.middlewares.use(handler); }, configurePreviewServer: (s) => { s.middlewares.use(handler); } };
 }
 
 export default defineConfig({
   plugins: [react(), serveCatalog()],
-  server: { port: 5173, strictPort: true },
+  // The catalog's cache and build hold hundreds of thousands of files read on request, not source: watching them ran the
+  // machine out of file watchers (November 11, 2026), which stalled the dev server's first load of lazy pages.
+  server: { port: 5173, strictPort: true, watch: { ignored: ['**/.screen-catalog-cache/**', '**/.screen-catalog/**', '**/.screen-catalog.building/**', '**/.screen-catalog.old/**', '**/.cinemas-cache/**', '**/.cinemas/**'] } },
   build: {
     // World data is fetched when needed; never inline it into the startup bundle.
     assetsInlineLimit: (file: string) => (/\.(tsv|json)$/.test(file) ? false : undefined),

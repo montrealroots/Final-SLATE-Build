@@ -5,7 +5,7 @@
 // - Character creation: the world map drew a one-line placeholder, then grew 200-360 px a moment later, pushing Save
 //   And Return To Review down after it was drawn; a click aimed at it landed elsewhere and the screen stayed on Identity.
 import { expect, test } from './test';
-import { nav, quickLife } from './helpers';
+import { nav, openStart, quickLife } from './helpers';
 
 test('typing straight into New Script keeps every character, even when the next frame comes late', async ({ page }) => {
   await quickLife(page, 'ca-toronto', '2026-03-02');
@@ -20,7 +20,7 @@ test('typing straight into New Script keeps every character, even when the next 
 });
 
 test('Save And Return To Review stays where it was drawn while the map arrives, and goes back to Review', async ({ page }) => {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({

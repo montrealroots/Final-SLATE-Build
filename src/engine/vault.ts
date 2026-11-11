@@ -3,7 +3,10 @@
 // same save functions as before (save.ts) on them, then commits all changes in one atomic transaction: a save, its
 // backup and the index are written together or not at all. Measurements and limits: docs/STORAGE.md.
 
-import { deserialize, listSaves, recordMeta, recoveryCopyOf, sortCopies, writeSave, type KeyValueStore, type RecoveryCopy, type SaveSummary, type StorageUse, BROWSER_STORAGE_CHARS } from './save';
+// Light storage primitives only (November 11, 2026): the vault opens and lists saves on the start screen, before the
+// engine loads. Reading a save's contents needs save.ts and its migrations, imported where that happens, which is rare
+// at the start: a save the index has lost, or a write a closed tab left pending.
+import { finishList, indexedSaves, recordMeta, recoveryCopyOf, sortCopies, type KeyValueStore, type RecoveryCopy, type SaveSummary, type StorageUse, BROWSER_STORAGE_CHARS } from './save-store';
 
 export interface RecordMeta {
   /** Characters of the stored text. */
@@ -146,7 +149,14 @@ export class Vault {
   async saves(): Promise<SaveSummary[]> {
     const r = await this.serial(async () => {
       const gaps = await this.indexGaps();
-      return this.run((k) => k === 'slate.v1.index' || gaps.some((g) => saveKeys(g)(k)), (kv) => listSaves(kv));
+      const want = (k: string) => k === 'slate.v1.index' || gaps.some((g) => saveKeys(g)(k));
+      // A save the index has lost is listed from its own contents, which needs save.ts.
+      const read = gaps.length ? (await import('./save')).listSaves : null;
+      return this.run(want, (kv) => {
+        if (read) return read(kv);
+        const { list, unindexed } = indexedSaves(kv);
+        return unindexed.length ? null : finishList(kv, list);
+      }).then(async (r) => (r.value === null ? this.run(want, (await import('./save')).listSaves) : r));
     });
     return r.value ?? [];
   }
@@ -337,6 +347,7 @@ export async function applyJournal(local: KeyValueStore, vault: Vault, realNow: 
       local.removeItem(k);
       continue;
     }
+    const { writeSave, deserialize } = await import('./save');
     const r = await vault.forSave(id, (kv) => {
       try {
         return writeSave(kv, deserialize(text), realNow);

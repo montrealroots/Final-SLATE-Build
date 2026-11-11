@@ -6,20 +6,24 @@ import { getPlace } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
 import {
   BACKERS, EXPERIENCE, betterTerms, COUNTER_DAYS, type BetterTerm, assignEpisodeRole, backerDocuments, moneyKept, ownMoney, ownMoneyNotes, OWN_MONEY, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
-  coachingNeeded, dateKey, declineCounter, estimateDays, fitNotes, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
+  coachingNeeded, dateKey, declineCounter, estimateDays, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
-  type StaffingProposal, covers, fundingScenario, projectedCost,
+  type StaffingProposal, covers, fundingScenario,
 } from '../engine';
 import { breakdownComplete, characterPronouns, pronounsMatch } from '../engine/script-explain';
 import { AUDITION_NOTICE_DAYS, auditionsFor, callBack, chemistryPartners, inviteRefusal, inviteToAudition, setShortlisted } from '../engine/casting-calls';
 import { chemistryWords, qualityWords } from '../engine';
 import { callSheet } from '../engine/callsheet';
 import { costCuts, estimateAgainstSpending, type CostCut } from '../engine/cost-cuts';
-import { CONTINGENCY, costBreakdown, type CostArea } from '../engine/estimate';
+import { CONTINGENCY, costBreakdown, projectedCost, type CostArea } from '../engine/estimate';
 import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, scoutedPlaces, site } from '../engine/locations';
-import { dayFees, estimatedShootDays, willingness } from '../engine';
+import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
+import { childrenIn } from '../engine/hiring';
+import { storyAge, storyAgeWords } from '../engine/story-age';
+import { RULES_READ, licenceReady, projectRules, supervisionFor } from '../engine/minors';
+import { RULE_WORDS, ageWords, fitNotes, hoursWords } from '../engine/casting-notes';
 import { COVERAGE, EMPHASIS, SETUPS_OF, TAKES, TAKE_RULES, isDirecting2, planTime, requiredSetups, shotPlan, type Coverage, type Emphasis, type TakePolicy } from '../engine/takes';
 import type { Audition, FinanceDeal, GameState, Hire, Obligation, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
@@ -84,13 +88,20 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
   const [err, setErr] = useState<Record<string, string>>({});
   const [onlyFree, setOnlyFree] = useState(true);
   const [pronounsFirst, setPronounsFirst] = useState(false);
+  const [ageFirst, setAgeFirst] = useState(false);
   const part = characterId ? approvedCharacters(p).find((x) => x.id === characterId) : undefined;
+  const partAge = storyAge(part?.ageInStory);
   const fits = (c: Person) => !part || pronounsMatch(part, c.pronouns);
+  // Ages on today's date, so they move on each person's birthday (people.ts).
+  const today = dateKey(g.now, currentZone(g));
+  const plays = (c: Person) => playingAgeAt(c, today);
+  // Plays the part's age (story-age.ts): a preference for the list's order, as pronouns are; nobody is filtered out.
+  const playsPart = (c: Person) => { const r = plays(c); return !!partAge && !!r && partAge.max >= r[0] && partAge.min <= r[1]; };
   // Matching the part's written pronouns is marked, and listing matches first is the producer's choice: it is a casting
   // preference, never a measure of ability, and nobody is filtered out (until the review of November 7, 2026 it always sorted).
   const list = roleCandidates(g, p, roleId).map((c) => ({ c, av: isAvailable(g, c, win.from, win.to, p.id) })).filter((x) => !onlyFree || x.av.ok)
-    .sort((a, b) => (pronounsFirst ? Number(fits(b.c)) - Number(fits(a.c)) : 0) || b.c.experience - a.c.experience || a.c.dayRate - b.c.dayRate);
-  const days = estimateDays(p, roleId, characterId, method);
+    .sort((a, b) => (ageFirst ? Number(playsPart(b.c)) - Number(playsPart(a.c)) : 0) || (pronounsFirst ? Number(fits(b.c)) - Number(fits(a.c)) : 0) || b.c.experience - a.c.experience || a.c.dayRate - b.c.dayRate);
+  const days = estimateDays(p, roleId, characterId, method, g);
   return (
     <div className="spaced">
       <p className="muted">Production window: {formatDateKey(win.from)} to {formatDateKey(win.to)}. About {plural(days, 'paid day')}. Uncommitted funds: {money(ledgerTotals(p).available)}.</p>
@@ -98,6 +109,7 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
       {part && <p className="dim">{breakdownComplete(part) ? `Offers include ${part.name}'s casting breakdown (description, wants and fears).` : `Offers go with the script pages. ${part.name}'s casting breakdown isn't written yet (description, wants and fears on the Characters page); it doesn't change who accepts.`}</p>}
       <Check label="Only Show People Who Are Free" checked={onlyFree} onChange={setOnlyFree} />
       {part && characterPronouns(part) && <Check label="List Matching Pronouns First" checked={pronounsFirst} onChange={setPronounsFirst} />}
+      {partAge && <Check label="List Performers Who Play This Age First" hint={`${part!.name} is ${storyAgeWords(partAge)}.`} checked={ageFirst} onChange={setAgeFirst} />}
       <ul className="list">
         {list.map(({ c, av }) => {
           const notes = characterId ? fitNotes(g, p, c, characterId) : [];
@@ -107,7 +119,7 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
               <div className="row-wrap">
                 <div className="grow">
                   <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
-                  <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{c.playingAge ? ` Plays ages ${c.playingAge[0]} to ${c.playingAge[1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>
+                  <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{` Age ${personAge(c, today)}.`}{plays(c) ? ` Plays ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>
                   {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip">Shares A Background: {sharedHeritages(g, p, characterId, c.id).join(', ')}</span></div>}
                   {!av.ok && <div className="dim" style={{ color: 'var(--warning)' }}>{av.reason}</div>}
                   {willingness(g, c.id).reason && <div className="dim">{willingness(g, c.id).reason}</div>}
@@ -151,6 +163,7 @@ export function CastTab({ p }: { p: Project }) {
     <>
       {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
       {coaching.length > 0 && <div className="callout callout-warning"><p>{coaching.join(' and ')} {coaching.length === 1 ? 'needs' : 'need'} coaching in a dialogue language. Hire a dialect and language coach in Crew.</p></div>}
+      <ChildrenCard p={p} />
       {(p.continues?.returning ?? []).filter((r) => chars.some((c) => c.id === r.characterId) && !p.cast.some((a) => a.characterId === r.characterId && a.method === r.method)).length > 0 && (
         <section className="card" aria-labelledby="back-h">
           <h2 id="back-h">Ask Them Back</h2>
@@ -441,7 +454,7 @@ export function ScheduleTab({ p }: { p: Project }) {
         )}
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
         {p.delivered && <p className="dim">This project has been delivered; its schedule is final.</p>}
-        {!p.delivered && approvedScenes(p).some((s) => sceneTechnique(p, s) === 'live') && <p className="dim">About {plural(estimatedShootDays(p), 'shoot day')}, each about {money(dayFees(p).location + dayFees(p).equipment)} for the location and equipment, reserved when the schedule is built.</p>}
+        {!p.delivered && approvedScenes(p).some((s) => sceneTechnique(p, s) === 'live') && <p className="dim">About {plural(estimatedShootDays(p, g), 'shoot day')}, each about {money(dayFees(p).location + dayFees(p).equipment)} for the location and equipment, reserved when the schedule is built.</p>}
         <button className="btn btn-primary" disabled={!!p.delivered} onClick={() => setErr(store.act((s) => void generatePlan(s, p, start)))}>{p.schedule.startDate ? 'Rebuild Schedule' : 'Build Schedule'}</button>
         {p.schedule.startDate && <p className="dim">Rebuilding keeps finished work and moves only what hasn't happened yet.</p>}
       </section>
@@ -862,3 +875,49 @@ function FinancingPanel({ p }: { p: Project }) {
 
 export type { Person };
 export { skillLabel };
+
+/**
+ * The children in the cast, or in parts not yet cast (minors.ts): their age and hours, their licence, who must be with
+ * them, and what has been set aside from their pay. Shown with the rules it comes from.
+ */
+function ChildrenCard({ p }: { p: Project }) {
+  const g = useGame();
+  const kids = childrenIn(p, g);
+  if (!kids.length) return null;
+  const { rules, standIn } = projectRules(p);
+  const today = dateKey(g.now, currentZone(g));
+  const crew = supervisionFor(kids, true);
+  const hired = (roleId: string) => p.hires.filter((h) => h.roleId === roleId && h.status === 'accepted').length;
+  return (
+    <section className="card" aria-labelledby="children-h">
+      <h2 id="children-h">Children In The Cast</h2>
+      <p className="dim">Under {RULE_WORDS[rules.id].name}, a child's hours are limited, someone must be with them, and they need {RULE_WORDS[rules.id].licence} first. Their scenes take more shoot days for it.{standIn ? ` ${standIn}` : ''} These are the rules as read on {formatDateKey(RULES_READ)}; later changes to them aren't known to the game.</p>
+      <ul className="list">
+        {kids.map((m) => {
+          const lic = m.personId ? (p.childLicences ?? []).find((l) => l.personId === m.personId && l.characterId === m.characterId) : undefined;
+          const ready = m.personId ? licenceReady(p, m, today, false) : null;
+          const hire = m.personId ? p.hires.find((h) => h.personId === m.personId && h.characterId === m.characterId && h.status === 'accepted') : undefined;
+          const part = p.characters.find((c) => c.id === m.characterId)?.name ?? 'A part';
+          return (
+            <li key={m.characterId} className="list-item">
+              <div className="grow">
+                <strong>{part}</strong>: {m.personId ? `${m.name}, ${ageWords(m.ageDays)}` : `not cast yet; reckoned as ${ageWords(m.ageDays)} from the part's age`}. They {hoursWords(m)}.
+                {m.personId && <div className="dim">{lic ? (ready?.ok ? `Licence granted ${formatDateKey(lic.ready)}.` : `Licence applied for ${formatDateKey(lic.applied)}; granted ${formatDateKey(lic.ready)}.`) : `No licence yet: it is applied for when the shoot is scheduled, ${rules.licence.leadDays === 1 ? 'a day' : `${rules.licence.leadDays} days`} ahead.`}{lic?.night ? ' Night work asked for.' : ''}</div>}
+                {hire && rules.setAside && <div className="dim">{rules.setAside.percent}% of their pay goes to {RULE_WORDS[rules.id].setAside}: {money(hire.trustSetAside ?? 0)} so far.</div>}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+      <h3 className="spaced">Who Must Be With Them</h3>
+      <ul className="list">
+        {crew.map((w) => (
+          <li key={w.roleId} className="list-item">
+            <span className="grow">{roleLabel(w.roleId)}: {w.count} {w.why}</span>
+            <span className={hired(w.roleId) >= w.count ? 'chip chip-positive' : 'chip'}>{hired(w.roleId) >= w.count ? 'Hired' : 'Hire In Crew'}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}

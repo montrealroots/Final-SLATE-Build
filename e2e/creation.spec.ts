@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { fillBirthDate, fillName, pickPlace } from './helpers';
+import { fillBirthDate, fillName, openStart, pickPlace } from './helpers';
 import { listRecords } from './vault';
 
 // Character creation, laid out as 1221's (Identity, Background & Languages, Starting Point, Review), on desktop, phone
@@ -7,7 +7,7 @@ import { listRecords } from './vault';
 
 /** A finished draft as an earlier version stored it (numeric step 7 = the old Review), so reopening it is tested too. */
 async function draftAtReview(page: Page, patch: Record<string, unknown> = {}): Promise<void> {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate((p) => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
@@ -97,7 +97,7 @@ test('Start My Story with something missing goes to that step, and back to Revie
 });
 
 test('a step with something missing says what; He/Him and She/Her settle the billing, They/Them chooses', async ({ page }) => {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByRole('button', { name: 'New Game' }).first().click();
@@ -135,7 +135,7 @@ test('a step with something missing says what; He/Him and She/Her settle the bil
 });
 
 test('typing straight after Next is kept, even when the field is chosen within a frame of the new step appearing', async ({ page }) => {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByRole('button', { name: 'New Game' }).first().click();
@@ -161,7 +161,7 @@ test('typing straight after Next is kept, even when the field is chosen within a
 });
 
 test('keyboard only: Next moves focus to the new heading, Tab reaches its field, and rapid Back and Next lose nothing', async ({ page }) => {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByRole('button', { name: 'New Game' }).first().click();
@@ -191,7 +191,7 @@ test('keyboard only: Next moves focus to the new heading, Tab reaches its field,
 });
 
 test('a reload in the middle of creation reopens the same step with everything entered', async ({ page }) => {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByRole('button', { name: 'New Game' }).first().click();
@@ -208,7 +208,7 @@ test('a reload in the middle of creation reopens the same step with everything e
 });
 
 test('ethnicity and nationality are both asked, A to Z: Next says which is missing, and your citizenship is marked', async ({ page }) => {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByRole('button', { name: 'New Game' }).first().click();
@@ -246,7 +246,7 @@ test('ethnicity and nationality are both asked, A to Z: Next says which is missi
 });
 
 test('a Jewish background keeps every day of no work, in the order they fall, and Home says so on the second day', async ({ page }) => {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByRole('button', { name: 'New Game' }).first().click();
@@ -311,7 +311,7 @@ test('Starting Point: where you were born, or somewhere else', async ({ page }) 
 });
 
 test('backgrounds drive the game: their holidays are offered first and kept, their languages suggested first', async ({ page }) => {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByRole('button', { name: 'New Game' }).first().click();
@@ -356,7 +356,7 @@ test('backgrounds drive the game: their holidays are offered first and kept, the
 // Found in the screen-by-screen review on November 8, 2026: after Nairobi was chosen, the country list still said
 // Featured Cities and the map still showed the whole world.
 test('the country list and the map follow the place chosen; another country is still a search away', async ({ page }) => {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByRole('button', { name: 'New Game' }).first().click();
@@ -389,7 +389,7 @@ test('pressing Start My Story twice starts one life', async ({ page }) => {
 
 // SLATE-01-02.03: your own words are refused when blank or already there, and nothing else is lost.
 test('an ethnicity in your own words: blank or repeated is refused with the reason', async ({ page }) => {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
   await page.getByRole('button', { name: 'New Game' }).first().click();

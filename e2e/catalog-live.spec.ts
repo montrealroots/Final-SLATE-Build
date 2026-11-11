@@ -27,7 +27,7 @@ test('live: Pixar, Toy Story, a cast member, another of their credits', async ({
   await titles.getByRole('button', { name: 'Toy Story', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Toy Story', level: 1 })).toBeVisible();
   await expect(page.getByText('Released November 22, 1995')).toBeVisible();
-  await expect(card(page, 'Credited Companies').locator('li', { hasText: 'Pixar' })).toContainText('Made before The Walt Disney Company owned it (May 5, 2006)');
+  await expect(card(page, 'Credited Companies').locator('li', { hasText: 'Pixar' })).toContainText('Released before the acquisition (May 5, 2006)');
   await expect(card(page, 'Figures')).toContainText(/TMDB Rating\s*\d\.\d out of 10, from [\d,]+ votes/);
   await card(page, 'Cast').getByRole('button', { name: 'Tom Hanks' }).click();
   await expect(page.getByRole('heading', { name: 'Tom Hanks', level: 1 })).toBeVisible();

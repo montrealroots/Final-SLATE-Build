@@ -25,7 +25,7 @@ const later = {
 };
 const tidewater = {
   ...base, ref: 'tv:900101', type: 'tv', title: 'Tidewater Station (Fixture)', originalTitle: 'Tidewater Station (Fixture)', status: 'Ended', date: '2021-09-01', lastAirDate: '2021-09-08', genres: ['Drama'], runtime: null, episodeRuntimes: [44],
-  overview: 'A made-up series.', companies: [{ tmdbId: 2, name: 'Walt Disney Pictures', country: 'US' }], networks: ['ABC'], createdBy: [{ person: 800003, name: 'Cy Vale' }], budget: null, revenue: null, rating: { average: 7.1, count: 88 }, discoveredVia: [2],
+  overview: 'A made-up series.', companies: [{ tmdbId: 2, name: 'Walt Disney Pictures', country: 'US' }], networks: ['ABC'], networkIds: [2], createdBy: [{ person: 800003, name: 'Cy Vale' }], budget: null, revenue: null, rating: { average: 7.1, count: 88 }, discoveredVia: [2],
   cast: [], crew: [],
   seriesCast: [{ person: 800001, name: 'Ada Quill', roles: [{ character: 'Ida Marsh', episodes: 2 }], episodes: 2 }],
   seriesCrew: [{ person: 800002, name: 'Ben Rook', department: 'Directing', jobs: [{ job: 'Director', episodes: 1 }], episodes: 1 }],
@@ -45,7 +45,7 @@ const person = (id: number, name: string, credits: unknown[], details: unknown =
 export const CATALOG_FIXTURE: Record<string, unknown> = {
   'index.json': {
     version: 1, builtAt: RETRIEVED, registryChecked: '2026-11-10', retrieved: { from: RETRIEVED, to: RETRIEVED, maxAgeDays: 180 },
-    counts: { movies: 3, series: 1, seasons: 1, episodes: 2, people: 6, peopleWithDetails: 1 }, peopleRule: { cast: 10, jobs: ['Director'] }, discovery: [], failures: 0, stale: 0,
+    counts: { movies: 3, series: 1, seasons: 1, episodes: 2, people: 6, peopleWithDetails: 1, networks: 1, networksMatched: 1 }, peopleRule: { cast: 10, jobs: ['Director'] }, discovery: [], failures: 0, stale: 0,
     companies: [{ tmdbId: 2, titles: 4, movies: 3, series: 1 }],
   },
   'companies/2.json': { tmdbId: 2, entries: [entry(lantern), entry(harbour), entry(later), entry(tidewater)] },
@@ -54,7 +54,58 @@ export const CATALOG_FIXTURE: Record<string, unknown> = {
   'titles/movie-900003.json': later,
   'titles/tv-900101.json': tidewater,
   'seasons/900101-1.json': season,
-  'search/titles.json': [['movie:900001', 'The Lantern Keeper (Fixture)', '2019'], ['movie:900002', 'Harbour Lights (Fixture)', '2023'], ['movie:900003', 'Night Ferry (Fixture)', '2030'], ['tv:900101', 'Tidewater Station (Fixture)', '2021']],
+  // Where the catalog's films opened in cinemas, by country, as the build writes theatrical.json; made up.
+  'theatrical.json': { version: 1, from: '2024-10-01', openings: [
+    ['movie:900004', 'Paper Lanterns (Fixture)', 'GB', '2025-12-30', 0],
+    ['movie:900002', 'Harbour Lights (Fixture)', 'GB', '2025-10-01', 0],
+    ['movie:900001', 'The Lantern Keeper (Fixture)', 'FR', '2026-01-02', 0],
+    ['movie:900003', 'Night Ferry (Fixture)', 'GB', '2026-01-09', 0],
+  ] },
+  // Cinemas, as tools/cinemas/import.mjs writes them, served beside the catalog; every one is made up.
+  'cinemas/index.json': { source: 'Wikidata (CC0)', builtAt: RETRIEVED, countries: [{ code: 'GB', cinemas: 6 }] },
+  'cinemas/GB.json': [
+    { id: 'Qf1', name: 'Riverside Picturehouse (Fixture)', lat: 51.51, lon: -0.12, opened: '1932', closed: null, state: null, seats: 400, operator: 'Fixture Cinemas', in: 'Fixture Borough' },
+    { id: 'Qf2', name: 'Old Odeon (Fixture)', lat: 51.52, lon: -0.1, opened: '1937-05-07', closed: '1999-06-30', state: null, seats: null, operator: null, in: null },
+    { id: 'Qf3', name: 'Gaiety (Fixture)', lat: 51.45, lon: -0.2, opened: null, closed: null, state: 'permanently closed', seats: null, operator: null, in: null },
+    { id: 'Qf4', name: 'New Screen (Fixture)', lat: 51.5, lon: -0.13, opened: '2030', closed: null, state: null, seats: null, operator: null, in: null },
+    { id: 'Qf5', name: 'Northern Lights (Fixture)', lat: 53.48, lon: -2.24, opened: null, closed: null, state: null, seats: null, operator: null, in: null, site: 'https://northern.example' },
+    { id: 'Qf6', name: 'Old Electric (Fixture)', lat: 51.505, lon: -0.11, opened: '1911', closed: null, state: null, seats: null, operator: null, in: null },
+  ],
+  // A network, as tools/screen-catalog/networks.mjs and the build write it; its owners and dates are made up.
+  'networks/index.json': [[2, 'ABC', 'US', 2]],
+  'networks/2.json': {
+    id: 2, name: 'ABC', country: 'US', headquarters: 'Fixture City', homepage: 'https://network.example', series: [
+      { ref: 'tv:900101', title: 'Tidewater Station (Fixture)', date: '2021-09-01', lastAirDate: '2021-09-08', status: 'Ended' },
+      { ref: 'tv:900301', title: 'Far Shore (Fixture)', date: '2030-01-01', lastAirDate: null, status: 'Planned' },
+    ],
+    wikidata: { qid: 'Q1', label: 'Example Network (Fixture)', matchedBy: 'website', classes: [], kind: null, inception: '1943-10-12', dissolved: null, parents: [{ qid: 'Q9', name: 'Parent Group (Fixture)' }], owners: [
+      { qid: 'Q2', name: 'First Owner (Fixture)', from: '1990-01-01', to: '2025-12-31' },
+      { qid: 'Q3', name: 'Second Owner (Fixture)', from: '2025-12-31', to: '2027-06-30' },
+      { qid: 'Q4', name: 'Later Owner (Fixture)', from: '2027-06-30', to: null },
+      { qid: 'Q5', name: 'Undated Owner (Fixture)', from: null, to: null },
+    ] },
+  },
+  'titles/tv-900201.json': { ...tidewater, ref: 'tv:900201', title: 'Coastline (Fixture)', originalTitle: 'Coastline (Fixture)', status: 'Returning Series', date: '2026-04-01', lastAirDate: '2026-05-20', networks: ['Disney+'],
+    seasons: [{ ref: 'tv:900201:s:1', number: 1, name: 'Season 1', date: '2026-04-01', episodes: 8, available: false }] },
+  'titles/movie-900004.json': { ...harbour, ref: 'movie:900004', title: 'Paper Lanterns (Fixture)', originalTitle: 'Paper Lanterns (Fixture)', date: '2025-12-30', overview: 'A made-up film released just before the test save begins.', rating: null, budget: null },
+  // The industry's dated records around the test save (January 5, 2026), as tools/screen-catalog/build.mjs writes them.
+  'world.json': {
+    version: 1, builtAt: RETRIEVED, horizon: '2026-11-10', from: '2025-10-01',
+    events: [
+      { d: '2025-12-30', k: 'film', r: 'movie:900004', t: 'Paper Lanterns (Fixture)', ci: ['company:walt-disney-pictures'] },
+      { d: '2026-01-05', k: 'episode', r: 'tv:900101:s:1:e:1', t: 'Tidewater Station (Fixture)', s: 1, e: 1, n: 'Pilot', net: ['ABC'] },
+      { d: '2026-01-12', k: 'episode', r: 'tv:900101:s:1:e:2', t: 'Tidewater Station (Fixture)', s: 1, e: 2, n: 'Low Tide', f: 1, net: ['ABC'] },
+      { d: '2026-01-14', k: 'film', r: 'movie:900002', t: 'Harbour Lights (Fixture)', ci: ['company:walt-disney-pictures'] },
+      { d: '2026-11-10', k: 'end', r: 'tv:900101', t: 'Tidewater Station (Fixture)', st: 'Canceled', la: '2026-01-12', net: ['ABC'] },
+    ],
+    // A series still running when the records end, which the living world's engine continues (src/engine/industry.ts).
+    series: [{ r: 'tv:900201', t: 'Coastline (Fixture)', status: 'Returning Series', type: 'Scripted', net: ['Disney+'], ci: ['company:walt-disney-pictures'], genres: ['Drama'], daily: 0, aired: 1,
+      // Its recorded season took two weeks off after its third episode and ended with two episodes on one night.
+      seasons: [{ n: 1, eps: 8, dated: 8, d0: '2026-04-01', d1: '2026-05-20', gap: 7, drop: 0, offs: [0, 7, 14, 28, 35, 42, 49, 49] }],
+      // One regular the records say died before the simulated season, who doesn't return.
+      regulars: [{ p: 800001, name: 'Ada Quill', ch: 'Juno Marsh', born: '1980-04-02' }, { p: 800002, name: 'Wren Calder', ch: 'Old Tom', born: '1931-02-02', died: '2026-06-01' }] }],
+  },
+  'search/titles.json': [['movie:900001', 'The Lantern Keeper (Fixture)', '2019'], ['movie:900002', 'Harbour Lights (Fixture)', '2023'], ['movie:900003', 'Night Ferry (Fixture)', '2030'], ['tv:900101', 'Tidewater Station (Fixture)', '2021'], ['tv:900201', 'Coastline (Fixture)', '2026']],
   'search/people-A.json': [[800001, 'Ada Quill', 4]],
   'people/1.json': person(800001, 'Ada Quill', [
     { ref: 'movie:900002', title: 'Harbour Lights (Fixture)', date: '2023-03-03', kind: 'cast', role: 'Juno' },
@@ -85,8 +136,8 @@ export async function serveCatalog(page: Page, override: Record<string, number> 
     const path = new URL(r.request().url()).pathname.replace(/^.*\/screen-catalog\//, '');
     const status = override[path];
     if (status) return r.fulfill({ status, contentType: 'application/json', body: '{}' });
-    // Every company the registry follows has a filmography in a real build; the fixture's others are empty.
-    const body = CATALOG_FIXTURE[path] ?? (/^companies\/\d+\.json$/.test(path) ? { tmdbId: Number(path.match(/\d+/)![0]), entries: [] } : undefined);
+    // Every company the registry follows has a filmography in a real build, and every letter a people index; the fixture's others are empty.
+    const body = CATALOG_FIXTURE[path] ?? (/^companies\/\d+\.json$/.test(path) ? { tmdbId: Number(path.match(/\d+/)![0]), entries: [] } : /^search\/people-.\.json$/.test(path) ? [] : undefined);
     return body === undefined ? r.fulfill({ status: 404, body: '' }) : r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(body) });
   });
   return { tmdbRequests };

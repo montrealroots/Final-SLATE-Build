@@ -2,15 +2,19 @@
 // rerun takes fresh responses from the cache and asks only for what is missing or failed.
 //   NODE_USE_ENV_PROXY=1 node tools/screen-catalog/import.mjs
 // Steps: discover each registry company's movies and series (every page; queries over TMDB's 500-page cap are split by
-// year), fetch each title with its credits, each season with its episodes' crew and guest stars, and the details of the
-// people credited in the declared roles (PEOPLE_ROLES). Nothing is fetched recursively beyond that.
+// year), fetch each title with its credits, each season with its episodes' crew and guest stars, the networks the series
+// are on, and the details of the people credited in the catalog. Nothing is fetched recursively beyond that.
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { DISCOVERED } from '../../src/catalog/registry.ts';
 import { CACHE, failures, get, pool, saveFailures, stats } from './tmdb.mjs';
 
 const PAGE_CAP = 500;
-/** People whose own details are fetched: the top-billed ten of each title's cast, and the crew in these jobs. */
+/**
+ * People whose details were fetched until November 10, 2026: the top-billed ten of each title's cast, and the crew in
+ * these jobs. They are still fetched first. From then on, at the owner's request, everyone credited on a title, a season
+ * or an episode in the catalog is fetched too, so that every person who has a recorded birth date shows an age.
+ */
 export const PEOPLE_CAST = 10;
 export const PEOPLE_JOBS = new Set(['Director', 'Screenplay', 'Writer', 'Story', 'Producer', 'Executive Producer', 'Original Music Composer', 'Director of Photography', 'Editor', 'Creator']);
 
@@ -78,6 +82,12 @@ async function main() {
   const seasonBodies = await pool(seasons, 12, (p) => get(p));
   log(`Fetched ${seasonBodies.filter(Boolean).length} of ${seasons.length} seasons.`);
 
+  // The networks and streaming services the series are on (November 11, 2026, the owner's request): each one's details.
+  // Who owns them isn't in TMDB; tools/screen-catalog/networks.mjs takes that from Wikidata.
+  const networks = [...new Set(details.flatMap((d) => (d?.networks ?? []).map((n) => n.id)))].sort((a, b) => a - b);
+  const networkBodies = await pool(networks, 12, (id) => get(`network/${id}`));
+  log(`Fetched ${networkBodies.filter(Boolean).length} of ${networks.length} networks.`);
+
   const people = new Set();
   for (const d of details) {
     if (!d) continue;
@@ -87,6 +97,10 @@ async function main() {
     for (const c of d.credits?.crew ?? []) if (PEOPLE_JOBS.has(c.job)) people.add(c.id);
     for (const c of d.created_by ?? []) people.add(c.id);
   }
+  // Everyone else credited, after the people above: every cast and crew credit on a title, a season or an episode.
+  const add = (list) => { for (const c of list ?? []) people.add(c.id); };
+  for (const d of details) if (d) { add(d.credits?.cast); add(d.credits?.crew); add(d.aggregate_credits?.cast); add(d.aggregate_credits?.crew); }
+  for (const s of seasonBodies) if (s) { add(s.credits?.cast); add(s.credits?.crew); for (const e of s.episodes ?? []) { add(e.crew); add(e.guest_stars); } }
   const ids = [...people];
   const bodies = await pool(ids, 12, (id) => get(`person/${id}`));
   log(`Fetched ${bodies.filter(Boolean).length} of ${ids.length} people.`);
@@ -96,8 +110,8 @@ async function main() {
     finishedAt: new Date().toISOString(),
     queries: queries.map(({ ids: x, ...q }) => ({ ...q, found: x.length })),
     titles: keys.map((k) => ({ key: k, companies: [...titles.get(k)] })),
-    seasons, people: ids,
-    peopleRule: { cast: PEOPLE_CAST, jobs: [...PEOPLE_JOBS] },
+    seasons, networks, people: ids,
+    peopleRule: { cast: PEOPLE_CAST, jobs: [...PEOPLE_JOBS], all: true },
     failures: failures(), stats,
   };
   writeFileSync(join(CACHE, 'manifest.json'), JSON.stringify(manifest));

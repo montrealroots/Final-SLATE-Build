@@ -3,6 +3,7 @@
 // Nothing in it is part of a save, and nothing in the simulation reads it. A credit isn't availability, employment,
 // skill or a relationship, and TMDB's ratings, budgets and revenue are shown as TMDB's figures, never used as game values.
 import { COMPANIES, LEADERSHIP, type LeadershipRole } from './registry';
+import { ageOn as engineAgeOn } from '../engine/time';
 
 export interface Rating { average: number; count: number }
 export interface CastCredit { person: number; name: string; character: string | null; order: number }
@@ -14,7 +15,8 @@ export interface CatalogIndex {
   registryChecked: string;
   retrieved: { from: string | null; to: string | null; maxAgeDays: number };
   counts: Record<string, number>;
-  peopleRule: { cast: number; jobs: string[] };
+  /** Whose details were fetched: top-billed cast and key crew, or (`all`, from November 10, 2026) everyone credited. */
+  peopleRule: { cast: number; jobs: string[]; all?: boolean };
   discovery: { company: number; type: 'movie' | 'tv'; reported: number | null; found: number; pages: number; split: boolean; failedPages: (number | string)[] }[];
   failures: number;
   stale: number;
@@ -40,6 +42,8 @@ export interface TitleRecord {
   tagline: string | null;
   companies: { tmdbId: number; name: string; country: string | null }[];
   networks?: string[];
+  /** The networks' TMDB ids, in the same order as `networks` (from November 11, 2026; older builds lack them). */
+  networkIds?: number[];
   createdBy?: { person: number; name: string }[];
   externalIds: { imdb: string | null; wikidata: string | null };
   collection: { id: number; name: string } | null;
@@ -55,6 +59,41 @@ export interface TitleRecord {
   seriesCrew?: { person: number; name: string; department: string; jobs: { job: string; episodes: number }[]; episodes: number }[];
   seasons?: { ref: string; number: number; name: string; date: string | null; episodes: number; available: boolean }[];
 }
+/** An owner of a network as Wikidata records it, with the dates its statement gives, if any. */
+export interface NetworkOwner { qid: string; name: string; from: string | null; to: string | null }
+/** A network or streaming service (tools/screen-catalog/networks.mjs): TMDB's details, Wikidata's owners and dates. */
+export interface NetworkRecord {
+  id: number;
+  name: string;
+  country: string | null;
+  headquarters: string | null;
+  homepage: string | null;
+  wikidata: {
+    qid: string; label: string; matchedBy: 'tmdb' | 'website' | 'name'; classes: string[]; kind: 'cable' | 'streaming' | null;
+    inception: string | null; dissolved: string | null; owners: NetworkOwner[]; parents: { qid: string; name: string }[];
+  } | null;
+  series: { ref: string; title: string; date: string | null; lastAirDate: string | null; status: string | null }[];
+}
+
+/**
+ * Who owned a network on a date, as Wikidata records it. An owner whose statement has dates owned it from its start until
+ * its end; one with no dates is only known to be an owner when the record was read, so it is listed apart, never as the
+ * owner on a date it can't be placed at. Owners whose time began after the date aren't shown as known.
+ */
+export function ownersAt(owners: NetworkOwner[], today: string): { now: NetworkOwner[]; before: NetworkOwner[]; undated: NetworkOwner[] } {
+  const dated = owners.filter((o) => o.from || o.to);
+  // Dates come as recorded: a day, a month (2025-08) or a year (2025). A start counts once its day, month or year has
+  // begun, which plain comparison already gives ("2026" sorts before "2026-03-01"); an end, once its day has come or its
+  // month or year is over, which it doesn't. Within a year of change both owners are shown.
+  const begun = (from: string | null) => !from || from <= today;
+  const over = (to: string | null) => !!to && (to.length === 10 ? to <= today : today.slice(0, to.length) > to);
+  return {
+    now: dated.filter((o) => begun(o.from) && !over(o.to)),
+    before: dated.filter((o) => over(o.to)),
+    undated: owners.filter((o) => !o.from && !o.to),
+  };
+}
+
 export interface EpisodeRecord {
   number: number;
   name: string;
@@ -110,27 +149,52 @@ export function lifeAt(d: { birthday: string | null; deathday: string | null }, 
   return { born: happenedBy(d.birthday, today) ? d.birthday : null, died: happenedBy(d.deathday, today) ? d.deathday : null };
 }
 
-export type LeadershipStanding = 'current' | 'former' | 'incoming' | 'listed';
+/**
+ * Whole years from a birth date to a date (both YYYY-MM-DD), by the game's own rule (src/engine/time.ts): the age turns
+ * on the birthday, and a February 29 birthday is observed on February 28 in other years. The season page's first version
+ * had counted it on March 1, out of step with the player's own age.
+ */
+export function ageOn(born: string, on: string): number {
+  const parts = (k: string) => ({ year: Number(k.slice(0, 4)), month: Number(k.slice(5, 7)), day: Number(k.slice(8, 10)) });
+  return engineAgeOn(parts(born), parts(on));
+}
+
+/**
+ * A person's age at the save's date, or the age they died at if they had died by then. It is null without a full
+ * recorded birth date, or before they are born.
+ */
+export function ageAt(d: { birthday: string | null; deathday: string | null }, today: string): { years: number; atDeath: boolean } | null {
+  const life = lifeAt(d, today);
+  if (!life.born || life.born.length !== 10) return null;
+  return life.died ? { years: ageOn(life.born, life.died), atDeath: true } : { years: ageOn(life.born, today), atDeath: false };
+}
+
+export type LeadershipStanding = 'current' | 'leaving' | 'announced' | 'former' | 'incoming' | 'listed';
 
 /**
  * A role at the save's date. Current: begun (or with no recorded start, listed by its source) and not yet ended. Former:
- * ended, or its end was announced. Incoming: announced but not yet begun. Hidden (null): announced after the save's date.
+ * ended. Incoming: begins on a recorded date still to come. Hidden (null): announced after the save's date.
+ *
+ * An announcement with no effective date is in effect from the date the registry was checked, when its sources showed it
+ * had happened, and only "announced" before then: an appointment is Announced, a departure Leaving. Until November 11,
+ * 2026 an appointment was current from its announcement and a departure made the holder former at once, which put the
+ * change into effect on a date no source gives.
  * A role whose start isn't recorded, seen at a date before the registry was checked, is "listed": the source lists it,
  * and when it began isn't known, so the page says that rather than calling it current.
  */
 export function standingAt(r: LeadershipRole, today: string, checked: string): LeadershipStanding | null {
   if (r.announced && r.announced > today) return null;
   if (r.end && r.end <= today) return 'former';
-  if (r.endAnnounced && r.endAnnounced <= today) return 'former';
+  if (r.endAnnounced && r.endAnnounced <= today && (!r.start || r.start <= today)) return today >= checked ? 'former' : 'leaving';
   if (r.start && r.start > today) return 'incoming';
   if (r.start) return 'current';
   if (r.end) return 'current'; // ended after today, start not recorded: it was held then
-  if (r.announced) return 'current';
+  if (r.announced) return today >= checked ? 'current' : 'announced';
   return today >= checked ? 'current' : 'listed';
 }
 
 export function leadershipAt(companyId: string, today: string, checked: string): { role: LeadershipRole; standing: LeadershipStanding }[] {
-  const order: LeadershipStanding[] = ['current', 'listed', 'incoming', 'former'];
+  const order: LeadershipStanding[] = ['current', 'leaving', 'listed', 'announced', 'incoming', 'former'];
   return LEADERSHIP.filter((r) => r.companyId === companyId)
     .map((role) => ({ role, standing: standingAt(role, today, checked) }))
     .filter((x): x is { role: LeadershipRole; standing: LeadershipStanding } => x.standing !== null)
@@ -146,8 +210,10 @@ export function executive(personId: string) {
 export const registryFor = (tmdbId: number) => COMPANIES.find((c) => c.tmdb?.id === tmdbId);
 
 /**
- * Whether a title credited to a Disney-owned company was made after Disney owned it. A title made before the
- * acquisition is credited to that company, not to Disney; one with no date can't be placed.
+ * Whether a title credited to a Disney-owned company was released after Disney owned it. A title released before the
+ * acquisition is credited to that company, not to Disney; one with no date can't be placed. It reads the release date
+ * only: when a title was made or paid for isn't recorded, so until November 11, 2026's wording ("made before") it said
+ * more than the records do.
  */
 export function madeUnderDisney(tmdbId: number, date: string | null): boolean | null {
   const c = registryFor(tmdbId);

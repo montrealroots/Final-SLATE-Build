@@ -2,13 +2,16 @@
 //   node tools/screen-catalog/build.mjs [--out .screen-catalog]
 // Output is git-ignored. It keeps TMDB's values as given, except that a budget, revenue or rating TMDB reports as 0 (or
 // with no votes) is written as unknown: TMDB uses 0 for "not entered", and a missing figure is never a confirmed $0.
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { DISCOVERED, REGISTRY_CHECKED } from '../../src/catalog/registry.ts';
 import { CACHE, MAX_AGE_DAYS, cached } from './tmdb.mjs';
 
 const arg = process.argv.indexOf('--out');
-const OUT = resolve(arg > 0 ? process.argv[arg + 1] : '.screen-catalog');
+const FINAL = resolve(arg > 0 ? process.argv[arg + 1] : '.screen-catalog');
+// Built beside the live catalog and swapped in when complete (November 11, 2026): a build cut short, or one that fails,
+// leaves the catalog being served as it was, never half-written (server/catalog-handler.mjs).
+const OUT = `${FINAL}.building`;
 export const BUCKETS = 500;
 
 const manifest = JSON.parse(readFileSync(join(CACHE, 'manifest.json'), 'utf8'));
@@ -23,16 +26,31 @@ const known = (n) => (typeof n === 'number' && n > 0 ? n : null);
 const date = (d) => (d ? d : null);
 
 rmSync(OUT, { recursive: true, force: true });
-for (const d of ['companies', 'titles', 'seasons', 'people', 'search']) mkdirSync(join(OUT, d), { recursive: true });
+for (const d of ['companies', 'titles', 'seasons', 'people', 'search', 'networks']) mkdirSync(join(OUT, d), { recursive: true });
 const write = (p, v) => writeFileSync(join(OUT, p), JSON.stringify(v));
 
 const people = new Map(); // id -> { id, name, credits: [] }
 const person = (id, name) => { if (!people.has(id)) people.set(id, { id, name, credits: [] }); return people.get(id); };
 const companies = new Map(DISCOVERED.map((c) => [c.tmdb.id, []]));
 const search = [];
+// The world file (src/catalog/world.ts): every dated event from WORLD_FROM on, which the game plays on its real date.
+const WORLD_FROM = '2025-10-01';
+const world = [];
+// Theatrical openings from a year before the world file, so a save's first months have films already in their run.
+const THEATRICAL_FROM = '2024-10-01';
+const theatrical = [];
+// Series still running when the records end: what the living world's engine continues (src/engine/industry.ts).
+const profiles = [];
+const byTmdb = new Map(DISCOVERED.map((c) => [c.tmdb.id, c]));
+const studiosOf = (rec) => rec.companies.map((c) => byTmdb.get(c.tmdbId)).filter(Boolean).map((c) => c.id);
+// The networks and streaming services (tools/screen-catalog/networks.mjs): TMDB's details, Wikidata's owners and kind.
+const networkFile = join(CACHE, 'networks.json');
+const networkInfo = new Map(existsSync(networkFile) ? JSON.parse(readFileSync(networkFile, 'utf8')).networks.map((n) => [n.id, n]) : []);
+const networkSeries = new Map(); // network id -> the catalog's series on it
 const counts = { movies: 0, series: 0, seasons: 0, episodes: 0, castCredits: 0, crewCredits: 0, episodeCredits: 0, missingTitles: 0, missingSeasons: 0 };
 
 for (const t of manifest.titles) {
+  const seasonFacts = [];
   const [type, id] = t.key.split(':');
   const r = body(type === 'movie' ? `movie/${id}?append_to_response=credits,external_ids,release_dates` : `tv/${id}?append_to_response=aggregate_credits,credits,external_ids,content_ratings`);
   if (!r) { counts.missingTitles++; continue; }
@@ -50,6 +68,7 @@ for (const t of manifest.titles) {
     overview: d.overview || null, tagline: d.tagline || null,
     companies: (d.production_companies ?? []).map((c) => ({ tmdbId: c.id, name: c.name, country: c.origin_country || null })),
     networks: type === 'tv' ? (d.networks ?? []).map((n) => n.name) : undefined,
+    networkIds: type === 'tv' ? (d.networks ?? []).map((n) => n.id) : undefined,
     createdBy: type === 'tv' ? (d.created_by ?? []).map((c) => ({ person: c.id, name: c.name })) : undefined,
     externalIds: { imdb: d.external_ids?.imdb_id || null, wikidata: d.external_ids?.wikidata_id || null },
     collection: d.belongs_to_collection ? { id: d.belongs_to_collection.id, name: d.belongs_to_collection.name } : null,
@@ -83,6 +102,27 @@ for (const t of manifest.titles) {
         guests: (e.guest_stars ?? []).map((c) => ({ person: c.id, name: c.name, character: c.character || null, order: c.order })),
       }));
       counts.episodes += eps.length;
+      if (s.season_number > 0) {
+        // Talk shows, soaps, news and other daily programmes run continuously: TMDB's seasons there are years, not seasons anyone
+        // premieres or ends. A season of 100 or more episodes is a daily schedule too (syndicated game and court shows aren't tagged Talk).
+        const daily = rec.genres.some((g) => g === 'Talk' || g === 'Soap' || g === 'News') || (d.seasons ?? []).some((x) => x.episode_count >= 100);
+        const dated = eps.filter((e) => e.date).sort((a, b) => a.date.localeCompare(b.date) || a.number - b.number);
+        const opens = dated[0]?.date ?? date(sb.air_date);
+        const last = dated.at(-1);
+        // A season released all at once (every episode on one day) is one event, not a premiere and a finale.
+        const drop = dated.length > 1 && dated.length === eps.length && dated[0].date === last.date;
+        // A running season lists only the episodes known so far, so its last one listed isn't a finale. A season is known to
+        // be finished once a later one exists or the series has ended.
+        const complete = !daily && !drop && (rec.status === 'Ended' || rec.status === 'Canceled' || (d.seasons ?? []).some((x) => x.season_number > s.season_number));
+        const gaps = dated.slice(1).map((e, i) => (Date.parse(e.date) - Date.parse(dated[i].date)) / 86_400_000).sort((a, b) => a - b);
+        seasonFacts.push({ n: s.season_number, eps: eps.length, dated: dated.length, d0: opens, d1: last?.date ?? null, gap: gaps.length ? gaps[gaps.length >> 1] : 7, drop: drop ? 1 : 0,
+          // Each episode's day in its season, breaks included, for a season fully dated: a new season keeps the series' own rhythm
+          // (a daily programme's weekdays and its summer weeks off among them).
+          offs: !drop && dated.length === eps.length && dated.length > 1 ? dated.map((e) => Math.round((Date.parse(e.date) - Date.parse(opens)) / 86_400_000)) : undefined,
+          cast: (sb.credits?.cast ?? []).filter((c) => c.order < 8).map((c) => ({ p: c.id, name: c.name, ch: c.character || null })) });
+        if (opens && opens >= WORLD_FROM) world.push({ d: opens, k: 'season', r: sref, t: title, s: s.season_number, eps: eps.length, net: rec.networks, ci: studiosOf(rec), first: s.season_number === 1, daily: daily ? 1 : undefined, drop: drop ? 1 : undefined });
+        for (const e of dated) if (e.date >= WORLD_FROM) world.push({ d: e.date, k: 'episode', r: `${sref}:e:${e.number}`, t: title, s: s.season_number, e: e.number, n: e.name, net: rec.networks, daily: daily ? 1 : undefined, f: e === last && complete && dated.length === eps.length && dated.length > 1 ? 1 : undefined });
+      }
       for (const e of eps) {
         for (const c of e.crew) { person(c.person, c.name).credits.push({ ref: `${sref}:e:${e.number}`, title: `${title}: ${e.name}`, date: e.date, kind: 'episode-crew', role: c.job, department: c.department }); counts.episodeCredits++; }
         for (const c of e.guests) { person(c.person, c.name).credits.push({ ref: `${sref}:e:${e.number}`, title: `${title}: ${e.name}`, date: e.date, kind: 'episode-guest', role: c.character }); counts.episodeCredits++; }
@@ -92,10 +132,32 @@ for (const t of manifest.titles) {
     }
   }
   counts[type === 'movie' ? 'movies' : 'series']++;
+  if (type === 'tv' && ['Returning Series', 'In Production', 'Planned', 'Pilot'].includes(rec.status)) {
+    const seasons = seasonFacts.filter((x) => x.n > 0 && x.d0);
+    const lastCast = seasons.at(-1)?.cast ?? [];
+    // The kinds of outlet the series is on, where Wikidata records one (cable or streaming), for the engine's timing.
+    const nk = [...new Set(rec.networkIds.map((i) => networkInfo.get(i)?.wikidata?.kind).filter(Boolean))];
+    profiles.push({ r: ref, t: title, status: rec.status, type: d.type ?? null, net: rec.networks, nk: nk.length ? nk : undefined, ci: studiosOf(rec), genres: rec.genres,
+      daily: rec.genres.some((g) => g === 'Talk' || g === 'Soap' || g === 'News') || (d.seasons ?? []).some((x) => x.episode_count >= 100) ? 1 : 0,
+      // The last three seasons are what the engine reads (its record of release pattern and run); `aired` counts them all.
+      aired: seasons.length, seasons: seasons.slice(-3).map(({ cast, ...x }) => x),
+      // The recorded regulars who return in a simulated season (the owner's rule): the last season's top-billed cast.
+      regulars: lastCast.length ? lastCast : (rec.seriesCast ?? []).slice(0, 8).map((c) => ({ p: c.person, name: c.name, ch: c.roles[0]?.character ?? null })) });
+  }
+  if (type === 'movie' && when && when >= WORLD_FROM) world.push({ d: when, k: 'film', r: ref, t: title, ci: studiosOf(rec) });
+  // Where and when each film opened in cinemas, as TMDB records it by country: its theatrical (type 3) and limited (type 2)
+  // releases. Cinemas' programmes come from these (src/world/programme.ts).
+  if (type === 'movie') for (const c of d.release_dates?.results ?? []) {
+    const opened = c.release_dates.filter((x) => x.type === 3 || x.type === 2).sort((a, b) => a.release_date.localeCompare(b.release_date))[0];
+    if (opened && opened.release_date.slice(0, 10) >= THEATRICAL_FROM) theatrical.push([ref, title, c.iso_3166_1, opened.release_date.slice(0, 10), opened.type === 2 ? 1 : 0]);
+  }
+  // How a series stood when the records were taken. When it was announced isn't recorded, so it is told at the records' end.
+  if (type === 'tv' && (rec.status === 'Ended' || rec.status === 'Canceled') && rec.lastAirDate && rec.lastAirDate >= WORLD_FROM) world.push({ d: null, k: 'end', r: ref, t: title, st: rec.status, la: rec.lastAirDate, net: rec.networks, ci: studiosOf(rec) });
   const castList = type === 'tv' ? rec.seriesCast : rec.cast;
   for (const c of castList) { person(c.person, c.name).credits.push({ ref, title, date: when, kind: type === 'tv' ? 'series-cast' : 'cast', role: type === 'tv' ? c.roles.map((x) => x.character).filter(Boolean).join(', ') || null : c.character, episodes: c.episodes }); counts.castCredits++; }
   for (const c of type === 'tv' ? rec.seriesCrew : rec.crew) { person(c.person, c.name).credits.push({ ref, title, date: when, kind: type === 'tv' ? 'series-crew' : 'crew', role: type === 'tv' ? c.jobs.map((x) => x.job).join(', ') : c.job, department: c.department, episodes: c.episodes }); counts.crewCredits++; }
   for (const c of rec.createdBy ?? []) person(c.person, c.name).credits.push({ ref, title, date: when, kind: 'creator', role: 'Creator' });
+  for (const n of d.networks ?? []) { if (!networkSeries.has(n.id)) networkSeries.set(n.id, { name: n.name, series: [] }); networkSeries.get(n.id).series.push({ ref, title, date: when, lastAirDate: rec.lastAirDate ?? null, status: rec.status }); }
   write(`titles/${type}-${d.id}.json`, rec);
   search.push([ref, title, when ? when.slice(0, 4) : null]);
   for (const c of rec.companies) if (companies.has(c.tmdbId)) companies.get(c.tmdbId).push({ ref, title, date: when, credited: c.name, genres: rec.genres, status: rec.status });
@@ -123,16 +185,42 @@ for (const p of people.values()) { const k = /^[a-z]/i.test(p.name) ? p.name[0].
 for (const [k, v] of Object.entries(letters)) write(`search/people-${k}.json`, v.sort((a, b) => b[2] - a[2]));
 write('search/titles.json', search);
 for (const [id, entries] of companies) write(`companies/${id}.json`, { tmdbId: id, entries });
+// A page for each network: its details, who owns it as Wikidata records, and the catalog's series on it.
+const networkIndex = [];
+for (const [id, { name, series }] of networkSeries) {
+  const n = networkInfo.get(id);
+  write(`networks/${id}.json`, { id, name: n?.name ?? name, country: n?.country ?? null, headquarters: n?.headquarters ?? null, homepage: n?.homepage ?? null, wikidata: n?.wikidata ?? null, series: series.sort((a, b) => (a.date ?? '').localeCompare(b.date ?? '')) });
+  networkIndex.push([id, n?.name ?? name, n?.country ?? null, series.length]);
+}
+write('networks/index.json', networkIndex.sort((a, b) => b[3] - a[3] || a[1].localeCompare(b[1])));
 
 times.sort();
+const horizon = (times.at(-1) ?? new Date().toISOString()).slice(0, 10);
+for (const ev of world) if (ev.d === null) ev.d = horizon;
+world.sort((a, b) => a.d.localeCompare(b.d) || a.t.localeCompare(b.t) || (a.s ?? 0) - (b.s ?? 0) || (a.e ?? 0) - (b.e ?? 0));
+// A regular's recorded life, where TMDB has it: a simulated season can't bring back someone who died before it, and its
+// page gives each regular's age at the premiere.
+const detailed = new Set(manifest.people);
+for (const pr of profiles) for (const c of pr.regulars) {
+  const d = detailed.has(c.p) ? body(`person/${c.p}`)?.body : null;
+  if (d?.birthday) c.born = date(d.birthday);
+  if (d?.deathday) c.died = date(d.deathday);
+}
+write('world.json', { version: 1, builtAt: new Date().toISOString(), horizon, from: WORLD_FROM, events: world, series: profiles });
+write('theatrical.json', { version: 1, from: THEATRICAL_FROM, openings: theatrical.sort((a, b) => a[3].localeCompare(b[3]) || a[2].localeCompare(b[2])) });
 const discovery = manifest.queries.map((q) => ({ company: q.companyId, type: q.type, reported: q.total, found: q.found, pages: q.pages, split: q.split, failedPages: q.failedPages }));
 write('index.json', {
   version: 1, builtAt: new Date().toISOString(), registryChecked: REGISTRY_CHECKED,
   retrieved: { from: times[0] ?? null, to: times.at(-1) ?? null, maxAgeDays: MAX_AGE_DAYS },
-  counts: { ...counts, people: people.size, peopleWithDetails: withDetails },
+  counts: { ...counts, people: people.size, peopleWithDetails: withDetails, networks: networkSeries.size, networksMatched: [...networkSeries.keys()].filter((i) => networkInfo.get(i)?.wikidata).length },
   peopleRule: manifest.peopleRule, discovery, failures: manifest.failures.length, stale: stale.length,
   companies: [...companies].map(([id, e]) => ({ tmdbId: id, titles: e.length, movies: e.filter((x) => x.ref.startsWith('movie')).length, series: e.filter((x) => x.ref.startsWith('tv')).length })),
 });
-console.log(JSON.stringify({ out: OUT, counts: { ...counts, people: people.size, peopleWithDetails: withDetails }, failures: manifest.failures.length, stale: stale.length }, null, 1));
+// Swap the finished build in: the old catalog moves aside first, so a failure here leaves one of them in place.
+rmSync(`${FINAL}.old`, { recursive: true, force: true });
+if (existsSync(FINAL)) renameSync(FINAL, `${FINAL}.old`);
+renameSync(OUT, FINAL);
+rmSync(`${FINAL}.old`, { recursive: true, force: true });
+console.log(JSON.stringify({ out: FINAL, counts: { ...counts, people: people.size, peopleWithDetails: withDetails }, failures: manifest.failures.length, stale: stale.length }, null, 1));
 if (stale.length) console.log(`${stale.length} cached responses were missing or older than ${MAX_AGE_DAYS} days and were left out; rerun the importer.`);
-if (!existsSync(OUT)) process.exit(1);
+if (!existsSync(FINAL)) process.exit(1);

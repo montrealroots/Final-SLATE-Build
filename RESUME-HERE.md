@@ -56,7 +56,155 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
-### Newest Request (November 10, 2026, after #62): the Disney company and screen-credit catalog
+### Newest Request (November 11, 2026): finish the world foundation before another studio
+
+The owner's brief, in six parts. Universal and other studios wait until this is done. Where each part stands:
+
+1. **The catalog in the actual game: done in code, not deployed.** `server/serve.mjs` serves the built game and the
+   catalog with no Vite and no credential, withdraws a copy after TMDB's six months, and `npm run screen-catalog:purge`
+   deletes every copy. Tested on the production build (`e2e/production-data.spec.ts`). What deployment needs is in
+   `docs/DEPLOYMENT.md`: a host, and the owner's decisions on commercial use and on whether a reformatted catalog is a
+   derivative under TMDB's terms.
+2. **Headroom: done.** The engine, Shell and Home load after the start screen (`docs/PERFORMANCE.md`, "The Engine After
+   The Start Screen"). Startup is 302 kB, 96 kB gzipped (was 685 and 219). Same-conditions timings are in that section:
+   the start screen is 650 ms faster on a throttled connection, opening straight into a new game 600 ms faster, and New
+   Game pressed after the start screen settles 400 ms slower. Budgets unchanged.
+3. **The living world held steady: done.** A decision keeps its due date while the catalog is missing; each simulated
+   series records the seasons its save began with, so a newer catalog never adds or contradicts them; tested across
+   reloads, two saves and refreshes (`docs/WORLD.md`, "Each Save's World, Held Steady"). Wording fixed: "Released before
+   the acquisition"; Leaving and Announced for changes with no effective date; TMDB's status waits for the day it was
+   recorded.
+4. **Honest rules: done for what was found.**
+   - Renewal numbers are now said to be judgement, and forty seeds over ten years are checked for coherence.
+   - Cinemas are "taken to show films", the player's film plays only once released, and bookings change no money (a test
+     fails if the engine reads them).
+   - Child-rule age bands change on the birthday. Each set records whether it was read in full, and the player is told
+     when the rules were read. Every set's gaps are listed in `docs/child-rules/RESEARCH.md`.
+5. **Journeys: done, with fixture data labelled.** `e2e/foundation.spec.ts` adds three journeys:
+   - the calendar to a simulated season, and the same season after Save & Exit;
+   - two saves switched with no leakage between them;
+   - a release listed where it will open, cancelled, and a run ending.
+
+   The catalog, child and foundation journeys now run on WebKit (iPhone 15 Pro Max) as well as desktop and phone. The
+   brief's other journeys were already in `e2e/catalog.spec.ts`, `e2e/living-world.spec.ts`, `e2e/children.spec.ts`,
+   `e2e/production-data.spec.ts` and the failure specs. One gap: the child journey goes from casting to the rules and the
+   crew they require in the browser, but its schedule consequences (more shoot days, nothing shot before the licence,
+   rest after a night) are checked only in `tests/minors.test.ts`, "downstream". A browser journey through a shoot is
+   still to write.
+6. **Found on the way and fixed:** renaming the game you're playing was undone by the next save.
+
+**Data packs (the owner, after the pass): "make them like a mod you can install in the game, and after I install they
+show."** Done: Settings, Mods lists the packs the game's server offers (its `packs/` folder), each installed with one press, and
+installs a `.slatepack` from a file too (`docs/DATA-PACKS.md`). `node tools/pack.mjs` builds
+the film pack (69.7 MB) and the cinema pack (1.5 MB) into `packs/`, kept out of the repository. TMDB's six months and
+deletion are kept in the game. Giving the film pack to anyone but the owner waits on the same decisions as hosting.
+
+**Remaining, by kind:**
+- **Deployment configuration:** a host for `server/serve.mjs`, the catalog gathered or copied there, and a refresh
+  within every six months.
+- **Owner's decisions:** TMDB commercial use, and the derivatives question (`docs/DEPLOYMENT.md`); Nielsen (report only,
+  as decided).
+- **Source research:** each child-rule set's commencement date and later amendments, Ontario's consolidated text, and
+  the rules of the places that use stand-ins (Quebec, New Zealand, Spain, Italy, Japan, Korea, India, Mexico, Brazil,
+  Texas, New Mexico, Scotland and others).
+- **Human and device testing:** real Safari on an iPhone (all WebKit runs here are emulation), and a WebKit flake seen
+  once: Continue Creation pressed and creation not opening, under two parallel WebKit workers (QA-REPORT.md, Open).
+- **Code, tests:** a browser journey through a shoot with a child in the cast (above).
+- **Code, later phases:** studios releasing new titles, competition, careers (`docs/WORLD.md`, "Next Phases"), and
+  Universal, once the owner says the foundation is done.
+
+### Newest Request (November 10, 2026, after #63): the living world, Phase 1
+
+The owner wants the catalog to be the world behind the game. Shows will be renewed or cancelled, and studios will
+release new films and series, with downstream effects everywhere. Realism comes first.
+
+The owner's answers:
+- Real history plays first, and simulation takes over where the records end.
+- Only a renewed show's recorded regulars return in simulated seasons; new titles credit invented people.
+- Every area should reach the player: news and calendar, then competition, then career.
+
+The plan and rules are in `docs/WORLD.md`. **Phase 1 (this checkpoint)** is the world's clock:
+- the build writes `world.json`, with 2,134 dated events from October 1, 2025;
+- Home's In The Industry card shows the last and next two weeks;
+- the calendar's Film And Television filter shows releases, premieres and episodes.
+
+Nothing is stored in saves: real events follow from the catalog and the save's date.
+
+**Phase 2 (built after Phase 1, on the same branch):** `src/engine/industry.ts` continues the 143 series still running
+when the records end.
+- **What gets decided:** renewal, a final season, cancellation, a limited series concluding, a pilot ordered or passed
+  on, or a date for an already-renewed series.
+- **How it is stored:** each decision is a scheduled event kept in the save as `state.industry` and decided by the save's
+  seed.
+- **Timing:** follows the outlet, such as the May upfronts for broadcast.
+- **What a new season copies:** the last complete season's episode count and release pattern.
+- **Cast:** only the recorded regulars return.
+- **Where it shows:** Home, the calendar and a series' In Your Story card, all marked Simulated.
+
+Running five simulated years on the real series fixed partial episode counts, too-frequent evergreen final seasons and
+leap-year drift. Startup was then 685 kB, 219 of 220 kB gzipped (96 kB since the foundation pass below): keep the next
+phases out of the startup bundle.
+
+**Child performers (November 11, 2026):**
+- **Character ages.** A character's age is written as an age or a range (`story-age.ts`). A series' characters age by
+  the years the producer says pass between seasons.
+- **The rules.** A child in the cast works under the rules of the place the production is based (`minors.ts`):
+  England's, California's or New York's, read from their official texts.
+- **What follows from them:**
+  - more shoot days;
+  - a chaperone, studio teacher, tutor or nurse to hire;
+  - a licence with its lead time;
+  - night approval;
+  - rest after a night shoot;
+  - the trust set-aside.
+- **Who ages.** The game's own people have birth dates and age, and their playing ranges follow. The pool has children.
+- **Startup budget.** It was at 219.75 of 220 kB gzipped (96 kB since the foundation pass below). Then, the next engine feature needed room made first: something else
+  loaded with its page rather than at startup, as was done here for the industry engine, the cost estimate and the
+  casting notes.
+
+**The owner's next request (November 11, 2026):** child performers "across the whole map like everything else", Nielsen
+numbers, the networks and streaming services shows are attached to, and cinemas worldwide. In order:
+
+1. **Child rules across the map: in progress.**
+   - **Recorded sets:** Georgia, British Columbia, Ontario, Ireland, Germany, France (partly read) and New South Wales
+     joined England, California and New York. What was read is in `docs/child-rules/RESEARCH.md`.
+   - **New rule kinds:** days a week, chaperones by age, a cap on school days, no teaching rule, and a set-aside past a
+     threshold, of the excess or of all.
+   - **Coverage:** every playable country has a set (`docs/child-rules/COVERAGE.md`, checked by `tests/minors.test.ts`).
+     Most are stand-ins: the rest of the US uses California's, of Canada British Columbia's, of Australia and New Zealand
+     New South Wales's, of Europe's single market Germany's, everywhere else England's.
+   - **Next to read:** Quebec, Victoria, New Zealand, Spain, Italy, the Netherlands, the Nordic countries, Japan, South
+     Korea, India, Mexico, Brazil, South Africa, Nigeria, the US production states (New Mexico, Louisiana, Illinois,
+     Texas), Scotland, Wales and Northern Ireland.
+   - **Startup room:** making the saved games list and settings load when opened (`src/ui/SavedGames.tsx`) brought
+     startup to 219 kB gzipped with the new sets.
+2. **Cinemas: on place pages.** `node tools/cinemas/import.mjs` builds 51,331 cinemas in 152 countries from Wikidata
+   (CC0) into `.cinemas/`, which git ignores. Dates keep their recorded precision.
+   - A place page's Cinemas Nearby lists those within 25 km at the save's date. None is called open.
+   - Each shows a closure with or without its date. A cinema isn't counted before it opens.
+   - **What they show (the owner: "those theaters will hold what movies will release"):**
+     - the catalog's films, from the day TMDB records them opening in that country;
+     - the player's theatrical releases, in their territories;
+     - each cinema with a sign it still trades (a website or operator) books films by a fixed simulated draw, more for a
+       wide release and for a film received well (`src/world/programme.ts`, `docs/CINEMAS.md`).
+
+     The Release page says where the player's film plays.
+   - Not done: bookings shaping earnings (the counts are too uneven to stand for a market), and a page of a whole
+     country's cinemas.
+3. **Networks and streaming services: done.** The people import finished first: 190,751 people, 59,418 with a birth
+   date and 18,460 with a death date.
+   - **Data:** TMDB's details for all 105 networks, and owners from Wikidata (`tools/screen-catalog/networks.mjs`),
+     matched for 82 with dates at their recorded precision.
+   - **Pages:** a networks list, a page for each network, and series linked to them (`docs/CATALOG.md`, Networks And
+     Streaming Services).
+   - **Engine:** a series on a cable channel now counts as cable.
+   - **Run after the importer:** `node tools/screen-catalog/networks.mjs`, then `npm run screen-catalog:build`.
+4. **Nielsen: the owner's decision.** There is no public API. Weekly top-ten pages are public and robots.txt allows them,
+   but the terms of use render only by script and couldn't be read. No viewing figures are invented as if real.
+
+**Next, Phase 3:** studios keep releasing, with invented titles at each studio's recorded pace and genres.
+
+### Earlier Request (November 10, 2026, after #62): the Disney company and screen-credit catalog
 
 Companies is a new destination under Industry (`docs/CATALOG.md`). It has:
 
