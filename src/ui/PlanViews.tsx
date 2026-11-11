@@ -364,7 +364,7 @@ export function CrewTab({ p }: { p: Project }) {
         {!p.hires.some((h) => h.kind === 'crew') && <p className="muted">No crew offers yet.</p>}
       </section>
       {finding && (
-        <Modal title={`Hire A ${roleLabel(finding)}`} onClose={() => setFinding(null)} footer={<button className="btn" onClick={() => setFinding(null)}>Close</button>}>
+        <Modal title={`Hire ${/^[AEIOU]/.test(roleLabel(finding)) ? 'An' : 'A'} ${roleLabel(finding)}`} onClose={() => setFinding(null)} footer={<button className="btn" onClick={() => setFinding(null)}>Close</button>}>
           <CandidateList p={p} roleId={finding} onDone={() => setFinding(null)} />
         </Modal>
       )}
@@ -395,6 +395,9 @@ function EpisodeAssignments({ p }: { p: Project }) {
   const writers = p.hires.filter((h) => h.roleId === 'episode-writer' && h.status === 'accepted');
   const directors = p.hires.filter((h) => h.roleId === 'episode-director' && h.status === 'accepted');
   const series = isEpisodic(p.axes.format);
+  const you = { value: 'player', label: 'You' };
+  const directorOptions = [you, ...directors.map((h) => ({ value: h.personId, label: personById(g, h.personId).name }))];
+  const writerOptions = [you, ...writers.map((h) => ({ value: h.personId, label: personById(g, h.personId).name }))];
   return (
     <section className="card">
       <h2>{series ? 'Episode Writers And Directors' : 'Writer And Director'}</h2>
@@ -408,12 +411,14 @@ function EpisodeAssignments({ p }: { p: Project }) {
               <tr key={e.number}>
                 <td data-label={series ? 'Episode' : 'Title'}>{series ? `${e.number}. ${e.title}` : p.title}</td>
                 <td data-label="Written By">
-                  <SelectField label={series ? `Writer For Episode ${e.number}` : 'Writer'} value={e.writer} options={[{ value: 'player', label: 'You' }, ...writers.map((h) => ({ value: h.personId, label: personById(g, h.personId).name }))]}
-                    onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'writer', v)))} />
+                  {series
+                    ? <SelectField label={`Writer For Episode ${e.number}`} value={e.writer} options={writerOptions} onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'writer', v)))} />
+                    : <SelectField label="Writer" value={e.writer} options={writerOptions} onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'writer', v)))} />}
                 </td>
                 <td data-label="Directed By">
-                  <SelectField label={series ? `Director For Episode ${e.number}` : 'Director'} value={e.director} options={[{ value: 'player', label: 'You' }, ...directors.map((h) => ({ value: h.personId, label: personById(g, h.personId).name }))]}
-                    onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'director', v)))} />
+                  {series
+                    ? <SelectField label={`Director For Episode ${e.number}`} value={e.director} options={directorOptions} onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'director', v)))} />
+                    : <SelectField label="Director" value={e.director} options={directorOptions} onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'director', v)))} />}
                 </td>
               </tr>
             ))}

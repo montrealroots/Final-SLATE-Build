@@ -211,7 +211,8 @@ test('J05: a director with no recorded date of birth and a writer are hired for 
   await story.getByRole('button', { name: 'Consider Ben Rook For Your Projects' }).click();
   const jobs = story.getByRole('list', { name: 'What They Can Be Asked To Do' });
   await expect(jobs.locator('li', { hasText: /^Episode Director/ })).toContainText('2 recorded credits in this catalog, 2019 to 2021.');
-  await expect(jobs.locator('li', { hasText: /^Line Producer/ })).toContainText('1 recorded credit in this catalog, in 2023.');
+  await expect(jobs.locator('li', { hasText: /^Editor/ })).toContainText('1 recorded credit in this catalog, in 2023.');
+  await expect(jobs.locator('li', { hasText: /Producer/ })).toHaveCount(0);
   await expect(jobs.locator('li', { hasText: /^Performer/ })).toHaveCount(0); // no acting credit, so no part is offered
   // With no date of birth nothing can be offered until the player says, and saying so is the story's, not a fact.
   await story.getByLabel('Consider Them For').selectOption({ label: 'Director (a job)' });
@@ -222,9 +223,9 @@ test('J05: a director with no recorded date of birth and a writer are hired for 
   await expect(story).toContainText("Ben Rook's age isn't recorded. You marked them as an adult in this story.");
   await story.getByRole('button', { name: 'Consider For This' }).click();
   await expect(story.getByRole('status')).toContainText("Ben Rook is on Low Water's list for Director.");
-  await story.getByLabel('Consider Them For').selectOption({ label: 'Line Producer (a job)' });
+  await story.getByLabel('Consider Them For').selectOption({ label: 'Editor (a job)' });
   await story.getByRole('button', { name: 'Consider For This' }).click();
-  await expect(story.getByRole('status')).toContainText("Ben Rook is on Low Water's list for Line Producer.");
+  await expect(story.getByRole('status')).toContainText("Ben Rook is on Low Water's list for Editor.");
   expect(await noSidewaysScroll(page)).toBe(true);
   await page.screenshot({ path: `test-results/real-people-${info.project.name}-04-director.png`, fullPage: true });
 
@@ -248,21 +249,45 @@ test('J05: a director with no recorded date of birth and a writer are hired for 
   await wd.getByRole('button', { name: 'Hire A Writer' }).click();
   const wDialog = page.getByRole('dialog', { name: 'Hire A Writer' });
   await wDialog.locator('li', { hasText: 'Fen Ward' }).getByRole('button', { name: 'Make Offer' }).click();
-  // The second job for the same person is its own offer, with its own days and pay.
-  // This short's script doesn't call for a line producer, so the job is listed apart, as the player's choice.
-  await card(page, 'Jobs You Are Considering Someone For').getByRole('button', { name: 'Find Candidates For Line Producer' }).click();
-  const pDialog = page.getByRole('dialog', { name: 'Hire A Line Producer' });
-  await expect(pDialog.locator('li', { hasText: 'Ben Rook' })).toContainText('1 recorded credit in the film catalog.');
-  await pDialog.locator('li', { hasText: 'Ben Rook' }).getByRole('button', { name: 'Make Offer' }).click();
+  // A second job for the same person is its own offer, with its own days and pay: their one credit as an editor. A
+  // producer's credit is evidence for no job here, and the page says so rather than offering one that changes nothing.
+  await card(page, 'Post Production').locator('li', { hasText: /^Editor/ }).getByRole('button', { name: 'Find Candidates' }).click();
+  const eDialog = page.getByRole('dialog', { name: 'Hire An Editor' });
+  await expect(eDialog.locator('li', { hasText: 'Ben Rook' })).toContainText('1 recorded credit in the film catalog.');
+  await eDialog.locator('li', { hasText: 'Ben Rook' }).getByRole('button', { name: 'Make Offer' }).click();
   await advance(page, 'week');
   await section(page, 'Crew');
   const offers = card(page, 'Crew Offers And Contracts');
-  await expect(offers.locator('tr', { hasText: 'Ben Rook' })).toHaveText([/Director\s*\$740 a day.*Accepted/s, /Line Producer\s*\$430 a day.*Accepted/s]);
-  await expect(offers.locator('tr', { hasText: 'Fen Ward' })).toContainText('Writer');
-  await expect(offers.locator('tr', { hasText: 'Fen Ward' })).toContainText('Accepted');
-  // Hired isn't assigned: the film is theirs to write and direct once the player says so.
-  await wd.getByLabel('Writer', { exact: true }).selectOption({ label: 'Fen Ward' });
+  await expect(offers.locator('tr', { hasText: 'Ben Rook' })).toHaveText([/Director.*\$740 a day.*Accepted/s, /Editor.*a day.*Accepted/s]);
+  await expect(offers.locator('tr', { hasText: 'Fen Ward' })).toHaveText(/Writer.*\$430 a day.*Accepted/s);
+
+  // Hired isn't credited. The director is chosen now; the writer once a draft of theirs is accepted.
   await wd.getByLabel('Director', { exact: true }).selectOption({ label: 'Ben Rook' });
+  await wd.getByLabel('Writer', { exact: true }).selectOption({ label: 'Fen Ward' });
+  await expect(wd.getByRole('alert')).toContainText("They haven't delivered a draft or a rewrite of it that you accepted. Commission one from them under Writing Work.");
+  const fen = page.getByRole('region', { name: 'Writing Work For Fen Ward' });
+  await fen.getByLabel('Ask Fen Ward For').selectOption({ label: 'A Rewrite' });
+  await fen.getByLabel('Your Brief For Fen Ward (Optional)').fill('Keep the dock. Make Ines say less.');
+  await expect(fen).toContainText('2 working days at $430 a day: $860, added to what is agreed with them.');
+  await fen.getByRole('button', { name: 'Commission This Pass' }).click();
+  await expect(fen).toContainText('Fen Ward: a rewrite. Writing: day 1 of 2.');
+  await advance(page, 'week');
+  await section(page, 'Crew');
+  await expect(fen).toContainText(/Fen Ward: a rewrite\. Delivered January \d+, 2026\. It reads (weak|uneven|solid|strong|exceptional)\./);
+  await expect(fen).toContainText("It isn't a judgement of any words, yours or theirs.");
+  // Sent back once with a note in the player's own words, which is kept and never read.
+  await fen.getByLabel("What Fen Ward's Revision Should Look At").selectOption({ label: 'Dialogue' });
+  await fen.getByLabel('Your Note To Fen Ward (Optional)').fill('Ines still explains the plot on page two.');
+  await expect(fen).toContainText('A revision takes 1 working day at $430 a day: $430.');
+  await fen.getByRole('button', { name: 'Ask For A Revision' }).click();
+  await expect(fen).toContainText('Revising (Dialogue): day 1 of 1.');
+  expect(await noSidewaysScroll(page)).toBe(true);
+  await page.screenshot({ path: `test-results/real-people-${info.project.name}-05-writing.png`, fullPage: true });
+  await advance(page, 'week');
+  await section(page, 'Crew');
+  await fen.getByRole('button', { name: 'Accept This Pass' }).click();
+  await expect(fen).toContainText(/Accepted January \d+, 2026\. It reads/);
+  await expect(wd.getByLabel('Writer', { exact: true })).toHaveValue('tp_800006');
 
   await produceToDelivery(page);
   const credits = await creditsTable(page);
@@ -271,24 +296,33 @@ test('J05: a director with no recorded date of birth and a writer are hired for 
   await expect.poll(async () => !!(await readSavedState(page)).projects[0]?.delivered, { timeout: 30_000 }).toBe(true);
   const saved = await readSavedState(page);
   const film = saved.projects[0];
-  expect(film.episodes[0]).toMatchObject({ writer: 'tp_800006', director: 'tp_800002' });
-  // Each job is its own contract, paid for its own days; nobody is paid twice for a day in one job.
-  for (const [personId, roleId] of [['tp_800002', 'episode-director'], ['tp_800002', 'line-producer'], ['tp_800006', 'episode-writer']]) {
+  expect(film.episodes[0]).toMatchObject({ writer: 'tp_800006', director: 'tp_800002', formerWriters: ['player'] });
+  // Each job is its own contract, paid for the days worked in it, each day once.
+  const worked: Record<string, number> = {};
+  for (const [personId, roleId] of [['tp_800002', 'episode-director'], ['tp_800002', 'editor'], ['tp_800006', 'episode-writer']]) {
     const hire = film.hires.find((h: { personId: string; roleId: string; status: string }) => h.personId === personId && h.roleId === roleId && h.status === 'accepted');
     const line = film.obligations.find((o: { ref: string }) => o.ref === hire.id);
-    console.log(roleId, hire.daysWorked, line.settled);
-    expect(line.settled).toBe(hire.dayRate * hire.daysWorked);
-    expect(new Set(line.postings.map((x: { key: string }) => x.key)).size).toBe(line.postings.length);
+    worked[roleId] = hire.daysWorked;
+    expect(hire.daysWorked).toBeGreaterThan(0);
+    expect(line.settled).toBeGreaterThanOrEqual(hire.dayRate * hire.daysWorked);
+    const keys = line.postings.filter((x: { kind: string }) => x.kind === 'settle').map((x: { key: string }) => x.key);
+    expect(new Set(keys).size).toBe(keys.length);
   }
-  // The player is credited for what they did: producing, not the writing or the directing.
-  expect(film.credits.filter((c: { person: string }) => c.person === 'player').map((c: { contribution: string }) => c.contribution)).toEqual(['Produced By']);
+  expect(worked['episode-writer']).toBe(3); // two days of the rewrite and one of the revision
+  expect(worked['episode-director']).toBe(film.schedule.days.filter((d: { status: string }) => d.status !== 'scheduled').length);
+  // The player's own words are in the save as written, with the writer's passes.
+  expect(film.writing[0]).toMatchObject({ scope: 'rewrite', status: 'accepted', brief: 'Keep the dock. Make Ines say less.' });
+  expect(film.writing[0].passes[1]).toMatchObject({ focus: 'Dialogue', text: 'Ines still explains the plot on page two.', days: 1, done: 1 });
+  // The player wrote the approved script and produced; the directing credit is the director's alone.
+  expect(film.credits.filter((c: { person: string }) => c.person === 'player').map((c: { contribution: string }) => c.contribution)).toEqual(['Written By', 'Produced By']);
   // Unknown age stays unknown in the save: the player's mark is the story's, and no date was made up.
   expect(saved.real.tp_800002.rec.born).toBeUndefined();
   expect(saved.real.tp_800002.sim.adult).toBe(true);
 
   await openPerson(page, 'Ben Rook');
   const work = story.getByRole('list', { name: 'Their Work In Your Story' });
-  console.log(await work.innerText());
+  await expect(work.locator('li', { hasText: 'Low Water' })).toHaveText([/Director\s*Credited/, /Editor\s*Credited/]);
+  await expect(story).toContainText("The catalog also records these credits of theirs: Producer. This game has no job of that kind to offer, so they aren't approached for it");
   expect(tmdb.tmdbRequests).toEqual([]);
 });
 

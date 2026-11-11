@@ -37,7 +37,15 @@ function JobLine({ p, j }: { p: Project; j: WritingJob }) {
     : j.status === 'delivered' ? `Delivered ${formatDateKey(pass.deliveredOn!)}. It reads ${qualityWords(read!).toLowerCase()}.`
     : j.status === 'accepted' ? `Accepted ${formatDateKey(j.acceptedOn!)}. It reads ${qualityWords(read!).toLowerCase()}.`
     : `Stopped after ${plural(j.passes.reduce((a, x) => a + x.done, 0), 'paid day')}. Nothing of it is credited or counted.`;
-  return <span className="grow"><strong>{name}</strong>: {scopeWords(j)}{where}. <span className="dim">{what}</span></span>;
+  // The player's own words, shown back as written: the brief, and each note with the day it was asked.
+  const notes = j.passes.slice(1);
+  return (
+    <span className="grow">
+      <strong>{name}</strong>: {scopeWords(j)}{where}. <span className="dim">{what}</span>
+      {j.brief && <span className="dim small" style={{ display: 'block' }}>Your brief, {formatDateKey(j.passes[0].askedOn)}: “{j.brief}”</span>}
+      {notes.map((n, i) => <span key={i} className="dim small" style={{ display: 'block' }}>Revision asked {formatDateKey(n.askedOn)}, to look at {n.focus!.toLowerCase()}{n.text ? `: “${n.text}”` : '.'}</span>)}
+    </span>
+  );
 }
 
 function Writer({ p, h }: { p: Project; h: Hire }) {

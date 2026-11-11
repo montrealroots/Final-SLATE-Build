@@ -5,7 +5,7 @@
 import { useState } from 'react';
 import type { PersonRecord } from '../catalog/model';
 import { currentZone, dateKey, formatDateKey, money, roleLabel } from '../engine';
-import { asPerson, canApproach, considerFor, jobLabel, considerPerson, consideredOn, jobsOf, realId, realPerson, storyCredits, treatAsAdult, type Considered } from '../engine/guests';
+import { NO_JOB_FOR, asPerson, canApproach, considerFor, jobLabel, considerPerson, consideredOn, jobsOf, realId, realPerson, storyCredits, treatAsAdult, type Considered } from '../engine/guests';
 import { EXPERIENCE, isAvailable } from '../engine/people';
 import { productionWindow } from '../engine/hiring';
 import { approvedCharacters, approvedScenes } from '../engine/projects';
@@ -59,6 +59,8 @@ export function PersonWork({ record, gathered }: { record: PersonRecord; gathere
     );
   }
   const jobs = jobsOf(person);
+  // Recorded jobs the game has nothing to offer for (a producer's, casting), said rather than left out silently.
+  const none = [...new Set(record.credits.filter((c) => (c.kind === 'crew' || c.kind === 'episode-crew') && NO_JOB_FOR.includes(c.role ?? '')).map((c) => c.role!))];
   const p = open.find((x) => x.id === projectId) ?? open[0];
   const choices = p ? openings(p, jobs) : [];
   const chosen = choices.find((x) => x.key === opening) ?? choices[0];
@@ -91,6 +93,7 @@ export function PersonWork({ record, gathered }: { record: PersonRecord; gathere
           })}
         </ul>
       ) : <p className="muted">The catalog records no credit for {record.name} in a job this game hires for, so there is nothing to approach them for. That isn't a judgement of them.</p>}
+      {none.length > 0 && <p className="muted">The catalog also records these credits of theirs: {none.join(', ')}. This game has no job of that kind to offer, so they aren't approached for it: a job that is paid and changes nothing isn't offered.</p>}
       <p className="dim small">The level and the rate are this story's figures, drawn by the game from how many credits this catalog holds. Work it doesn't cover isn't counted. Their languages, background and nationality aren't recorded, and none is assumed.</p>
       {!person.rec.born && (
         <Check label="Treat As An Adult In This Story" checked={!!person.sim.adult} hint={`${record.name}'s date of birth isn't recorded, so the game can't tell whether the rules for children apply. Nothing can be offered until you say. This is your call for this story, not a fact about them.`}
