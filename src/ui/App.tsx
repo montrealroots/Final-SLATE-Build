@@ -32,14 +32,19 @@ function useLivingWorld(saveKey: string | null): void {
   useEffect(() => {
     if (!saveKey) return;
     let live = true;
-    // The living world's engine loads with the world file, not at startup (state.ts holds its decisions until then).
-    void Promise.all([loadFile<WorldSeed>('world.json'), import('../engine/industry')]).then(([w, { ensureIndustry, setIndustryWorld }]) => {
-      if (!live || w.status !== 'ready' || !w.data.series) return;
-      setIndustryWorld({ horizon: w.data.horizon, builtAt: w.data.builtAt, series: w.data.series });
-      if (!store.state?.industry) store.act((g) => void ensureIndustry(g));
-    });
+    startLivingWorld(() => live);
     return () => { live = false; };
   }, [saveKey]);
+}
+
+/** Load the world file and start the open game's world from it, once; also run when a film pack is installed (DataPacks.tsx). */
+export function startLivingWorld(live: () => boolean = () => true): void {
+  // The living world's engine loads with the world file, not at startup (state.ts holds its decisions until then).
+  void Promise.all([loadFile<WorldSeed>('world.json'), import('../engine/industry')]).then(([w, { ensureIndustry, setIndustryWorld }]) => {
+    if (!live() || w.status !== 'ready' || !w.data.series) return;
+    setIndustryWorld({ horizon: w.data.horizon, builtAt: w.data.builtAt, series: w.data.series });
+    if (store.state && !store.state.industry) store.act((g) => void ensureIndustry(g));
+  });
 }
 
 export function App() {

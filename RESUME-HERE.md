@@ -93,6 +93,11 @@ The owner's brief, in six parts. Universal and other studios wait until this is 
    still to write.
 6. **Found on the way and fixed:** renaming the game you're playing was undone by the next save.
 
+**Data packs (the owner, after the pass): "make them like a mod you can install in the game, and after I install they
+show."** Done: Settings, Data Packs installs a `.slatepack` file (`docs/DATA-PACKS.md`). `node tools/pack.mjs` builds
+the film pack (69.7 MB) and the cinema pack (1.5 MB) into `packs/`, kept out of the repository. TMDB's six months and
+deletion are kept in the game. Giving the film pack to anyone but the owner waits on the same decisions as hosting.
+
 **Remaining, by kind:**
 - **Deployment configuration:** a host for `server/serve.mjs`, the catalog gathered or copied there, and a refresh
   within every six months.

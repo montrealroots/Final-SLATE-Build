@@ -8,7 +8,15 @@
 
 ## Commands And Results
 
-### Current: The World Foundation (November 11, 2026)
+### Current: Data Packs (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 93 files, 747 tests. New: `tests/packs.test.ts` (round trip, the six-month date and its cap, five refusals). Startup 302 kB, 97 kB gzipped. |
+| `npx playwright test e2e/data-packs.spec.ts`, desktop, phone, WebKit (iPhone 15 Pro Max) | 0 after a fix | 6 passed. WebKit first refused to store the records ("The pack couldn't be stored"): it can't keep a Blob in IndexedDB in a private window, which Playwright's are. Records are stored as bytes now. |
+| The real packs, production build with no catalog on the server | — | Film pack (69.7 MB, 9,510 files) installed in 5.8 s in Chromium (77 MB used) and 4.0 s in WebKit with iPhone emulation (71 MB). Cinemas in about 0.1 s. |
+
+### Earlier: The World Foundation (November 11, 2026)
 
 | Command | Failures | Notes |
 | --- | --- | --- |

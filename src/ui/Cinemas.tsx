@@ -35,7 +35,7 @@ export function CinemasNearby({ place, today }: { place: Place; today: string })
   const country = countryName(place.country);
   let body;
   if (index.status === 'loading' || (recorded && file.status === 'loading')) body = <p role="status" className="muted">Loading the cinemas…</p>;
-  else if (index.status !== 'ready') body = <p className="muted">The cinema list isn't installed in this copy of SLATE. It is gathered from Wikidata separately from the game.</p>;
+  else if (index.status !== 'ready') body = <p className="muted">The cinema list isn't installed in this copy of SLATE. It is gathered from Wikidata separately from the game; if you have the Cinemas data pack, install it in Settings, under Data Packs.</p>;
   else if (!recorded) body = <p className="muted">Wikidata records no cinemas in {country}.</p>;
   else if (file.status !== 'ready') body = <p className="muted">The cinemas of {country} couldn't be loaded.</p>;
   else {

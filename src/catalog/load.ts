@@ -18,11 +18,17 @@ export function loadFile<T>(path: string, fetchImpl: typeof fetch = fetch): Prom
   // it doesn't have. The cinemas are a separate data set, from Wikidata, and don't wait on it.
   const first = path === 'index.json' || path.startsWith('cinemas/') ? null : loadFile<unknown>('index.json', fetchImpl);
   // An index that failed to load fails this file too, and like it isn't kept, so Try Again asks for both afresh.
-  const p: Promise<Loaded<T>> = (first ?? Promise.resolve(null)).then((index) => {
+  const p: Promise<Loaded<T>> = (first ?? Promise.resolve(null)).then(async (index) => {
     if (index?.status === 'failed') throw new Error(index.message);
     // No index at all (a 404) is no catalog too.
     if (index?.status === 'missing') return { status: 'missing', reason: index.reason ?? 'missing' } as Loaded<T>;
-    return index && index.status !== 'ready' ? (index as Loaded<T>) : fetchImpl(CATALOG_BASE + path)
+    if (index && index.status !== 'ready') return index as Loaded<T>;
+    // A data pack installed in Settings answers first (packs.ts); with none of this kind, the server does, as before.
+    const pack = await import('./packs').then((m) => m.packFile(path)).catch(() => undefined);
+    if (pack === 'withdrawn') return { status: 'missing', reason: 'expired' } as Loaded<T>;
+    if (pack === 'gone') return { status: 'missing' } as Loaded<T>;
+    if (pack) return { status: 'ready', data: pack.data as T } as Loaded<T>;
+    return fetchImpl(CATALOG_BASE + path)
     .then(async (r): Promise<Loaded<T>> => {
       if (r.status === 404) return { status: 'missing' };
       if (!r.ok) throw new Error(`The catalog answered ${r.status}.`);

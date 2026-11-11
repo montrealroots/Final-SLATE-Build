@@ -22,3 +22,7 @@ __pycache__/
 # Cinemas from Wikidata (CC0): gathered by tools/cinemas/import.mjs, rebuilt rather than committed (docs/CINEMAS.md).
 .cinemas-cache/
 .cinemas/
+
+# Data packs built by tools/pack.mjs: the catalog one is TMDB content (docs/DATA-PACKS.md).
+packs/
+*.slatepack

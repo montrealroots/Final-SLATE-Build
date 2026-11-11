@@ -114,6 +114,7 @@ function CatalogStatus({ index }: { index: Loaded<CatalogIndex> }) {
           : index.status === 'missing' && index.reason === 'expired' ? "This copy of the films and series is more than six months old, the longest TMDB allows it to be kept, so it has been withdrawn until it is gathered again."
             : index.status === 'missing' && index.reason === 'malformed' ? "The films and series on this server couldn't be read, so they aren't shown. Your game is unaffected."
               : "This copy of SLATE doesn't include the films and series. They are gathered from TMDB separately, and TMDB's terms don't allow them to be shipped with the game."} Companies and their leadership are still here.</p>
+        {index.status === 'missing' && index.reason !== 'malformed' && <p className="muted">If you have the Films And Series data pack, install it in Settings, under Data Packs.</p>}
       </section>
     );
   }
