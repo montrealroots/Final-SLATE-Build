@@ -4,12 +4,15 @@ import { firstSaveId, readRecord, writeRecords } from './vault';
 
 /**
  * Open the start screen and let it finish loading: since November 11, 2026 the engine and the game's data load after the
- * start screen draws, and WebKit reports a fetch cut short by a reload as a page error. A player reloading that early
+ * start screen draws (store.engineReady marks html[data-engine]), and WebKit reports a fetch cut short by a reload as a
+ * page error. A player reloading that early
  * loses nothing; a test that reloads must wait, as a player would, or it fails on WebKit's report.
  */
 export async function openStart(page: Page): Promise<void> {
   await page.goto('/');
-  await page.waitForLoadState('networkidle');
+  // Until November 11, 2026 this waited for the network to be idle, half a second at least each time; the store marks the
+  // page when the engine and its data have settled.
+  await page.locator('html[data-engine="ready"]').waitFor({ state: 'attached', timeout: 30_000 });
 }
 
 export async function freshStart(page: Page): Promise<void> {

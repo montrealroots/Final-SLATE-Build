@@ -145,8 +145,9 @@ class Store {
   private engineReady(): Promise<Engine> {
     return (this.engineLoad ??= loadEngine().then((e) => {
       this.holidays = e.loadWorldHolidays().catch(() => undefined);
-      void e.loadGenreCatalog().catch(() => undefined);
-      void e.loadInstitutions().catch(() => undefined);
+      // Settled, loaded or not, the page is marked: the browser tests wait for it before reloading, as a fetch a reload
+      // cuts short is reported as an error by WebKit (e2e/helpers.ts openStart).
+      void Promise.allSettled([this.holidays, e.loadGenreCatalog(), e.loadInstitutions()]).then(() => { document.documentElement.dataset.engine = 'ready'; });
       if (this.draftExists && !this.draft) this.draft = e.readDraft(this.kv);
       return e;
     }, (err) => { this.engineLoad = null; throw err; }));
