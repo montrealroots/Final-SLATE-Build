@@ -179,6 +179,7 @@ c(f, '"Shoot Episodes In Blocks"', D, 'schedule.blockEpisodes', 'production/sche
 c(f, '"Work On Public Holidays"', D, 'schedule.workHolidays', 'production/schedule.ts isWorkingDay', 'Holidays are worked, at a premium', U('heritage', 'kept holidays carry into every new project'))
 c(f, '{`${c.name} Puppet Copies`}', D, 'schedule.puppetCopies', 'production/schedule.ts; production/workday.ts', 'More copies let more stages shoot one character at once', U('media', 'a puppet cannot serve two stages at once without a duplicate'))
 c(f, '{`Emphasis For ${sceneLabel(p, s)}`}', D, 'shotPlan.emphasis', 'takes.ts; directing.ts', 'What the direction serves in the scene', U('directing', 'a restrained one-shot scene is not penalised'))
+c(f, '{`Camera For ${sceneLabel(p, s)}`}', D, 'shotPlans[scene].rig', 'craft.ts craftTime, craftRoles, rigDayCost, takeSpread; takes.ts planTime, recordTakes', 'How long each setup takes to reset and each take to run, how much takes vary, the grip or playback the rig needs, rented kit for the day, and rehearsal days', U('craft', 'each rig changes the time a scene takes by its own reset and running time, and nothing else about the plan'))
 c(f, '{`Coverage For ${sceneLabel(p, s)}`}', D, 'shotPlan.coverage', 'takes.ts requiredSetups; production/shoot.ts', 'Setups, time on the day, and what the edit can do', U('directing', 'missing coverage costs the edit'))
 c(f, '{`Takes For ${sceneLabel(p, s)}`}', D, 'shotPlan.takes', 'takes.ts setupTime', 'Time on the day and the chance of a usable take', U('directing', 'under the same resources, covering what each scene needs'))
 c(f, '{`Site For ${place}`}', D, 'locationChoices.main', 'locations.ts', 'The day fee and what happens if it falls through', U('locations', 'after scouting, a chosen site sets the day fee'))
@@ -211,6 +212,15 @@ c(f, '{`${c.personName} as ${c.characterName}`}', D, 'entry.recipients', 'awards
 c(f, '{`What To Capture For ${name}`}', D, 'mocap.parts', 'mocap.ts bookMocap, sessionCost', 'Body, face or both: session cost and credits', U('lunar-mocap', 'waits for a booking, which reserves the stage'), '')
 
 # ---------------- Calendar, places, settings, shell ----------------
+f = 'ScriptViews.tsx'
+c(f, '"The Light It Is Shot In"', D, 'axes.light', 'craft.ts craftTime, gafferNeeded, cameraTestDays, postFactors; takes.ts planTime; hiring.ts neededRoles; production/tasks.ts buildTasks', 'Setup time on interiors and nights, whether interiors need a gaffer, a planned take more, camera test days before the shoot, the grade, and stop-motion frames a day', U('craft', 'practical and available light: interiors reset sooner and need no gaffer, a take more is planned, after a day of tests'))
+c(f, '"The Score"', D, 'axes.score', 'craft.ts postFactors, scoreSessions; production/tasks.ts buildTasks', "The composer's days, and recording sessions that cost money and that the mix waits for", U('craft', 'a score with players is recorded in sessions that cost money and hold the mix; an electronic one is the composer alone'))
+c(f, '{SOUNDS[k].label}', D, 'axes.sound', 'craft.ts craftTime, craftRoles, postFactors, dialogueHolds; production/tasks.ts buildTasks; production/shoot.ts needsDialogueReplacement', 'Each choice moves its own work: location recording days, a boom operator and dialogue that holds, Foley, effects editing, the score, a loop group, the mix', U('craft', 'each sound choice moves its own work and no other'))
+
+f = 'FilmedAt.tsx'
+c(f, '"Film It In"', D, 'locationChoices[place].at.placeId', 'destinations.ts dayPlace, awayCosts, permitWork; production/shoot.ts runShootDay; production/schedule.ts scheduleShootDay', "The day's weather, daylight, public holidays and clock are that place's; a unit away from base is moved once and housed each day; you have to be there for the call", U('destinations', 'a place far from the base: its own place for the day, a fee by the kind of site, a move once and housing each day, and permits first'))
+c(f, '"Kind Of Site"', D, 'locationChoices[place].at.kind', 'destinations.ts kindFee, permitWork, underCover, noisyDay', "The share of the location fee a day costs, the permit days before the first day there, whether rain can stop it, and how often noise spoils dialogue", U('destinations', 'the kind of site decides whether rain can stop it and how often noise spoils dialogue, the same on every run'))
+
 f = 'PersonWork.tsx'
 J04 = E('real-people', 'J04: a performer from the film catalog is considered, reads, counters, is contracted, found booked elsewhere, works and is credited')
 J05 = E('real-people', 'J05: a director with no recorded date of birth and a writer are hired for a film by job')
@@ -333,6 +343,8 @@ c(f, '"Extend The Crowd In Post"', D, 'scene.crowdMethod', 'looks.ts physicalCro
 c(f, '"Makeup"', D, 'character.look.makeup', LK + '; production/shoot.ts runShootDay; callsheet.ts callSheet; hiring.ts neededRoles', 'Tests and builds before the shoot, chair time out of each day worked, daily materials, and who must be hired', U('looks', 'adds its own tests, builds, crew and daily materials for that character, and leaves every other task as it was'))
 c(f, '"Costume From"', D, 'character.look.wardrobe', 'looks.ts costumeCopies, wardrobeMismatch; production/tasks.ts buildTasks', "The costume's own days, materials and fittings, in the copies it needs", U('looks', 'is its own work, in the copies its states and rough scenes need, and leaves the others on the shared costume task'))
 c(f, '"Appearance States"', D, 'character.look.states', 'looks.ts statesOf, costumeCopies; production/tasks.ts buildTasks', 'A build for each state, and a costume copy for each', U('looks', 'shortens with a second chair, and each appearance state is its own build'))
+c(f, '{`Names Of ${c.name}\'s Looks`}', D, 'character.look.named', 'looks.ts statesOf, stateNames; brief.ts setLook', 'As many looks as names, each named in the scene\'s own select; the count is what builds and costume copies follow', U('states', 'names set the number of looks, are kept as written, and survive a save'))
+c(f, '{`${c.name}\'s Look In This Scene`}', D, 'scene.states', 'looks.ts stateIn, statesUsed, costumeCopies, changeMinutes, makeupShare', 'Only the looks that appear are made, and a change of look inside a shooting day takes time out of it', U('states', 'changing looks inside a shooting day takes time out of it; a day in one look loses nothing'))
 f = 'IdeaPicker.tsx'
 AP = 'brief.ts applyIdea'
 ALL = U('brief', 'every idea applies through the one command path and says first what it will do')

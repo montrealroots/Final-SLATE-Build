@@ -8,7 +8,42 @@
 
 ## Commands And Results
 
-### Current: Creative Depth Package, Milestone D (November 11, 2026)
+### Current: Creative Depth Package, Milestone E (November 11, 2026)
+
+Filming a script location in a real place somewhere else (`docs/creative-depth/LEDGER.md`, "Milestone E").
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 902 tests (894 before). Startup 306 kB, 98 kB gzipped; budgets unchanged (700 and 220 kB). World check 0 problems. |
+| `npm run balance` | 0 | 2 files. |
+| `tests/destinations.test.ts` | 0 | 8 tests: the place and kind chosen, refused and undone; near and far; each kind of site; a film made with a location abroad (the move paid once, housing for each day, the day called where it is filmed); the same film in the open, on a soundstage and on a stage set. |
+| Mutations | 1 | The stage-set half of the roof rule removed: the roof test failed. |
+| `e2e/destinations.spec.ts` | 0 | New, journey J07 and its soundstage comparison: desktop, phone and WebKit (iPhone 15 Pro Max). |
+| `npx playwright test` on seven specs, dev build | 0 | 48 passed, 23 skipped by design, in 7.8 minutes: destinations, journeys, craft, live-action, viewports, cinemas, first-project. The whole suite was not run on this branch alone; it ran on milestone C's branch, which this one is built on, and CI runs it on the pull request. |
+
+Found and fixed on the way: the call sheet and the Schedule page's forecast used the base's daylight and rain for a
+day filmed elsewhere; scouting's first site was called "The Real Place" for a candidate the game made up; and a day
+moved to the stage set built to match was still rained off.
+
+Not run locally: the production-build browser suite, which CI runs on the pull request.
+
+### Earlier: Creative Depth Package, Milestone C (November 11, 2026)
+
+Camera, light, sound and score as engines; looks by scene; 409 ideas and 68 genre routes
+(`docs/creative-depth/LEDGER.md`, "Milestone C").
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 894 tests (867 before). Startup 306 kB, 98 kB gzipped; budgets unchanged (700 and 220 kB). The idea library is its own on-demand file, 149 kB. World check 0 problems. |
+| `npm run balance` | 0 | 2 files. |
+| `tests/craft.test.ts` | 0 | 11 tests: each rig, light, sound choice and score against time, crew, rented kit, tests before the shoot and post work, one input changed at a time. |
+| `tests/states.test.ts`, `tests/scene-ideas.test.ts`, `tests/routes.test.ts` | 0 | 16 tests: named looks by scene; ideas for fifteen more fields; 68 routes, with the same work assessed the same whichever route was chosen. |
+| `e2e/craft.spec.ts` | 0 | New: desktop, phone and WebKit (iPhone 15 Pro Max). A route from the picker, the light, sound and score changed on the page, looks named and assigned, a scene on a dolly with its rent set aside, a reload, and delivery. |
+| `npx playwright test`, whole suite, dev build | 2, both under load | 332 passed, 59 skipped by design, 2 failed, in 60 minutes. Both failures were on the iPhone 15 Plus WebKit profile while a catalog import, three other browser runs and the unit suite shared the machine's four cores: `awards.spec.ts` "European Film Awards" timed out on a click, and `creation.spec.ts` "editing from Review" didn't find an element in 10 seconds. Run alone afterwards, both passed in 21.6 seconds. Nothing was changed for them. |
+
+Not run locally: the production-build browser suite, which CI runs on the pull request.
+
+### Earlier: Creative Depth Package, Milestone D (November 11, 2026)
 
 Real people from the film catalog through the game's own hiring, and the work of hired writers and directors
 (`docs/creative-depth/LEDGER.md`, "Milestone D"). Every person in these tests is a made-up fixture.

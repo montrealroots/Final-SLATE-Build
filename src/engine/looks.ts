@@ -83,7 +83,38 @@ export const wardrobe = (id: WardrobeId | undefined): WardrobeSource | undefined
 
 /** The most appearance states a character can be given: each is a look that has to be matched and, for appliances, built. */
 export const MAX_STATES = 6;
-export const statesOf = (c: StoryCharacter): number => Math.max(1, Math.min(MAX_STATES, c.look?.states ?? 1));
+export const statesOf = (c: StoryCharacter): number => Math.max(1, Math.min(MAX_STATES, c.look?.named?.length || (c.look?.states ?? 1)));
+
+/** The states' names, in order: the player's, or numbered. */
+export const stateNames = (c: StoryCharacter): string[] => Array.from({ length: statesOf(c) }, (_, i) => c.look?.named?.[i]?.trim() || `Look ${i + 1}`);
+
+/** The state a character is in for a scene: the one assigned, or the first. */
+export const stateIn = (s: Scene, c: StoryCharacter): number => Math.max(0, Math.min(statesOf(c) - 1, s.states?.[c.id] ?? 0));
+
+/** Whether any scene says which state a character is in. Until one does, every declared state is taken to be used. */
+const assigned = (c: StoryCharacter, scenes: Scene[]): boolean => scenes.some((s) => s.participants.includes(c.id) && s.states?.[c.id] !== undefined);
+
+/** The states a character goes through in these scenes, as their indexes. */
+export const statesUsed = (c: StoryCharacter, scenes: Scene[]): number[] => [...new Set(scenes.filter((s) => s.participants.includes(c.id)).map((s) => stateIn(s, c)))].sort((a, b) => a - b);
+
+/** A costume change in the middle of a day, and the share of a makeup's chair time that changing it takes. */
+export const COSTUME_CHANGE_MIN = 15;
+export const STATE_CHANGE_SHARE = 0.5;
+
+/**
+ * Minutes of a shooting day spent changing people from one state to another: for each character in more than one state
+ * among the day's scenes, a costume change for each further state, and half their makeup's chair time again where they
+ * are made up. A day that keeps each character in one state loses nothing.
+ */
+export function changeMinutes(scenes: Scene[], chars: StoryCharacter[]): number {
+  let total = 0;
+  for (const c of chars) {
+    if (c.roleSize === 'background') continue;
+    const changes = statesUsed(c, scenes).length - 1;
+    if (changes > 0) total += changes * (COSTUME_CHANGE_MIN + (makeup(c.look?.makeup)?.chairMin ?? 0) * STATE_CHANGE_SHARE);
+  }
+  return total;
+}
 
 // ---------------- Period ----------------
 
@@ -127,7 +158,9 @@ export function wardrobeMismatch(p: Project, c: StoryCharacter): string | null {
  */
 export function costumeCopies(c: StoryCharacter, scenes: Scene[]): number {
   const rough = scenes.some((s) => s.participants.includes(c.id) && (s.water || !!s.stunts.trim()));
-  return statesOf(c) * (rough ? 2 : 1);
+  // Once scenes say which state they are in, only the states that appear are made: a state nobody is seen in costs nothing.
+  const states = assigned(c, scenes) ? statesUsed(c, scenes).length : statesOf(c);
+  return Math.max(1, states) * (rough ? 2 : 1);
 }
 
 // ---------------- Crowds ----------------
@@ -185,10 +218,11 @@ export function chairMinutes(scenes: Scene[], chars: StoryCharacter[]): number {
  */
 export function makeupShare(scenes: Scene[], chars: StoryCharacter[], chairs: number): number {
   const minutes = chairMinutes(scenes, chars);
-  if (minutes <= 0) return 1;
+  if (minutes <= 0 && changeMinutes(scenes, chars) <= 0) return 1;
   const queue = minutes / Math.max(1, chairs);
   const removal = Math.max(0, ...madeUp(scenes, chars).map((x) => x.m.removeMin));
-  const lost = Math.max(0, queue - PRECALL_MIN) + Math.max(0, removal - WRAP_MIN);
+  // Changing someone from one state to another in the middle of the day comes straight out of it.
+  const lost = Math.max(0, queue - PRECALL_MIN) + Math.max(0, removal - WRAP_MIN) + changeMinutes(scenes, chars);
   return Math.max(MIN_SHARE, 1 - lost / DAY_WORK_MIN);
 }
 

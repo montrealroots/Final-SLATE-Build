@@ -4,9 +4,11 @@
 import type { Idea, IdeaField } from '../engine/brief';
 import type { Project } from '../engine/types';
 import { MORE } from './more';
+import { routes } from './routes';
+import { SCENES } from './scenes';
 import { STARTER } from './starter';
 
-export const IDEAS: Idea[] = [...STARTER, ...MORE];
+export const IDEAS: Idea[] = [...STARTER, ...MORE, ...SCENES, ...routes()];
 const byId = new Map(IDEAS.map((x) => [x.id, x]));
 export const ideaById = (id: string): Idea | undefined => byId.get(id);
 export const ideasFor = (field: IdeaField | IdeaField[]): Idea[] => { const set = new Set(Array.isArray(field) ? field : [field]); return IDEAS.filter((x) => set.has(x.field)); };

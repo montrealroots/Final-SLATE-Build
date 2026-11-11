@@ -4,7 +4,8 @@
 // game schedules, the crew and the on-camera cast it pays that day, the parts still uncast, daylight for an exterior,
 // the forecast once there is one, and a public holiday's premium. It is derived, never stored, so it can't disagree
 // with the day. Loaded with the Schedule page, not at startup.
-import { getPlace } from '../data/places';
+import { dayPlace, filmedAt, isAway } from './destinations';
+import { roofed } from './locations';
 import { placeHolidaysOn } from './holidays';
 import { personById, roleLabel } from './people';
 import { SHOOT_CREW } from './production/shoot';
@@ -30,7 +31,8 @@ export interface CallSheet {
 export function callSheet(state: GameState, p: Project, dayId: string): CallSheet {
   const d = p.schedule.days.find((x) => x.id === dayId);
   if (!d) throw new Error('That shoot day no longer exists.');
-  const place = getPlace(p.axes.basePlaceId);
+  // Where the day is filmed (destinations.ts): its daylight and its clock are that place's.
+  const place = dayPlace(p, d);
   const scenes = approvedScenes(p).filter((s) => d.sceneIds.includes(s.id));
   const chars = approvedCharacters(p);
   const cast: CallSheet['cast'] = [];
@@ -62,7 +64,8 @@ export function callSheet(state: GameState, p: Project, dayId: string): CallShee
   }
   const holiday = placeHolidaysOn(place, d.date)[0];
   if (holiday) notes.push(`${holiday.name}: a public holiday, so everyone on set is paid ${HOLIDAY_PREMIUM} times their day rate.`);
-  if (!d.interior) {
+  if (!d.interior && roofed(p, d.locationLabel)) notes.push('Filmed under a roof: the weather and the daylight do not matter today.');
+  else if (!d.interior) {
     const light = daylight(place.lat, place.lon, d.date);
     if (light.sunrise !== null && light.sunset !== null) notes.push(`Sunrise ${formatTime(light.sunrise, place.zone)}, sunset ${formatTime(light.sunset, place.zone)}.`);
     else notes.push(light.polar === 'night' ? 'No daylight: the sun stays below the horizon.' : 'Daylight all day: the sun stays up.');
@@ -76,7 +79,7 @@ export function callSheet(state: GameState, p: Project, dayId: string): CallShee
   return {
     call: formatClock(d.night ? 17 : 7, 0),
     wrap: formatClock(d.night ? 23 : 19, 0),
-    where: `${d.locationLabel}, ${d.interior ? 'interior' : 'exterior'}${d.night ? ', night' : ''}`,
+    where: `${d.locationLabel}, ${d.interior ? 'interior' : 'exterior'}${d.night ? ', night' : ''}${filmedAt(p, d.locationLabel) ? `. Filmed in ${place.name}, ${place.countryName}, on ${place.name}'s clock${isAway(p, d.locationLabel) ? ': be there for the call' : ''}` : ''}`,
     scenes: scenes.map((s) => sceneLabel(p, s)),
     cast, uncast, crew, notes: [...notes, ...d.conflicts],
   };
