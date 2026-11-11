@@ -190,3 +190,30 @@ export async function installOffered(mod: OfferedMod, progress: (phase: 'downloa
   }
   return installPack(new Blob(parts as BlobPart[]), (n, total) => progress('install', n, total));
 }
+
+// ---------- the owner's sign-in (server/catalog-handler.mjs, /owner/session; docs/DEPLOYMENT.md) ----------
+
+/** Whether this browser is being answered as the owner, and whether the game's server offers sign-in at all. */
+export interface OwnerSession { owner: boolean; signIn: boolean }
+const SESSION_URL = `${import.meta.env.BASE_URL}owner/session`;
+const NOBODY: OwnerSession = { owner: false, signIn: false };
+
+async function session(init?: RequestInit): Promise<{ status: number; body: OwnerSession }> {
+  const r = await fetch(SESSION_URL, { cache: 'no-store', credentials: 'same-origin', ...init });
+  const json = (r.headers.get('content-type') ?? '').includes('json');
+  return { status: r.status, body: json ? ({ ...NOBODY, ...((await r.json()) as Partial<OwnerSession>) }) : NOBODY };
+}
+/** Asks the game's server. A copy with no such server (a plain file host, a dev build) offers no sign-in. */
+export async function ownerSession(): Promise<OwnerSession> {
+  try { const r = await session(); return r.status === 200 ? r.body : NOBODY; } catch { return NOBODY; }
+}
+/** Presents the owner's passphrase. It is sent to the game's own server and kept nowhere in the browser. */
+export async function ownerSignIn(passphrase: string): Promise<'ok' | 'wrong' | 'locked' | 'failed'> {
+  try {
+    const r = await session({ method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ passphrase }) });
+    return r.status === 200 && r.body.owner ? 'ok' : r.status === 401 ? 'wrong' : r.status === 429 ? 'locked' : 'failed';
+  } catch { return 'failed'; }
+}
+export async function ownerSignOut(): Promise<void> {
+  await session({ method: 'DELETE' }).catch(() => undefined);
+}

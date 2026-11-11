@@ -25,7 +25,7 @@ them:
 | Development | `npm run dev` (Vite) | `.screen-catalog/` and `.cinemas/` on this machine, through the same handler as production | That the game works on the real catalog |
 | Production testing | `npm run build`, then `server/serve.mjs` (`SLATE_E2E_PROD=1` in the browser suite) | None on port 4175, as CI has none; the made-up catalog on 4176; an expired copy on 4177 | That the built game and its data path work with no Vite in the path |
 | Deployment, for other players | `npm run build`, then `npm run serve` | The cinemas only: no TMDB data, by the owner's decision | Ready to run on any host with Node 22; no host is chosen |
-| The owner's own copy | `npm run build`, then `npm run serve:owner` (`--owner`) | The catalog and the film pack, for the owner alone | Run by the owner, on a machine the owner controls |
+| The owner's own copy | `npm run build`, then `npm run serve:owner` (`--owner`) | The catalog and the film pack, for the owner alone | Answers that machine only; from elsewhere it needs the owner's passphrase ("Who Gets The Owner's Data") |
 
 ## Data Freshness And Saves
 
@@ -73,6 +73,45 @@ npm run serve
   catalog and any half-done build. TMDB's terms (1.D) require it when use ends; it is also how a catalog is withdrawn.
 - **The game without data.** With no catalog, or with the server failing, every page that reads one says so, and
   the rest of the game plays as before. Saves never hold catalog data.
+
+## Who Gets The Owner's Data
+
+Changed November 11, 2026 (the Creative Depth package, milestone A). Until then `--owner` alone decided: a server
+started with it answered anyone who could reach its port with TMDB's data. A flag says what a server holds; it doesn't
+check who is asking. Now every request is checked (`server/catalog-handler.mjs`, `createOwnerGate`).
+
+- **This machine only, by default.** `npm run serve:owner` listens on `127.0.0.1`. The owner's data is answered only
+  to a request made on that machine: a loopback connection, asked of `localhost` or a loopback address, with no
+  forwarding header. The Host check stops a page elsewhere reaching it by pointing its own name at the machine. The
+  forwarding check stops a proxy on the same machine from passing a stranger's request off as local.
+- **From elsewhere, only after signing in.** To use the owner's copy from another device, start it with a passphrase
+  file and an address:
+
+  ```bash
+  node server/serve.mjs --owner --host 0.0.0.0 --owner-secret-file /path/outside/the/repository/passphrase.txt
+  ```
+
+  The file holds a passphrase the owner chose, at least 16 characters. The game then shows Owner Passphrase in
+  Settings, Mods. A correct passphrase gives that browser a session for twelve hours, in a cookie scripts can't read
+  (`HttpOnly`, `Secure`, `SameSite=Strict`). The cookie is `Secure`, so the server must sit behind HTTPS; over plain
+  HTTP from another machine the browser won't keep it, and sign-in won't hold.
+- **It won't start unguarded.** With `--owner` and an address other than this machine's, and no passphrase file, the
+  server refuses to start and says why. A passphrase under 16 characters is refused too.
+- **What a visitor gets.** Without a session, every film route answers as a server with no catalog does: the index says
+  not installed, a record is a 404, the mods list offers the cinemas alone, and the film pack is a 404. That covers the
+  catalog's records, its index and world file, the mods list and the film pack. The cinemas (Wikidata, CC0) are
+  everyone's.
+- **Guessing is slowed.** Five wrong passphrases lock sign-in for a minute, doubling to fifteen. Sessions are kept in
+  memory and end when the server stops.
+- **Nothing shared keeps it.** The owner's records are sent `Cache-Control: private` with `Vary: Cookie`, so a cache
+  between the server and the browser can't hand one visitor's answer to another.
+- **No passphrase is built in.** None is in the source, the build or the repository, and the server reads it only from
+  the file the owner names. The game sends it to its own server and keeps it nowhere in the browser.
+- **Vite's dev and preview servers** use the same gate, so the real catalog on a development machine is answered to
+  that machine alone.
+
+What it is not: a login system for players. There is one owner and one passphrase. Choosing a host, a domain and HTTPS
+is still the owner's; none is set up from here.
 
 ## What TMDB's Terms Allow
 

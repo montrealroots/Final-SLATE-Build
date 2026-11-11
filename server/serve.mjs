@@ -1,17 +1,24 @@
 // The production server (November 11, 2026, docs/DEPLOYMENT.md): the built game (dist/) and its data files, with no
 // Vite in the path. Node 22, no dependencies.
 //   npm run build && npm run serve
-//   node server/serve.mjs [--port 8080] [--dist dist] [--catalog .screen-catalog] [--cinemas .cinemas] [--packs packs] [--owner]
-// Environment variables SLATE_PORT, SLATE_DIST, SLATE_CATALOG_DIR, SLATE_CINEMAS_DIR, SLATE_PACKS_DIR and SLATE_OWNER=1
-// do the same. --owner says this server is the owner's own: only then does it serve TMDB's film data, the catalog and
-// the film pack. The owner decided on November 11, 2026 that it goes to no other player (docs/DEPLOYMENT.md).
+//   node server/serve.mjs [--port 8080] [--dist dist] [--catalog .screen-catalog] [--cinemas .cinemas] [--packs packs]
+//                         [--owner] [--host 127.0.0.1] [--owner-secret-file <file>]
+// Environment variables SLATE_PORT, SLATE_DIST, SLATE_CATALOG_DIR, SLATE_CINEMAS_DIR, SLATE_PACKS_DIR, SLATE_OWNER=1,
+// SLATE_HOST and SLATE_OWNER_SECRET_FILE do the same. --owner says this server is the owner's own: only then does it
+// serve TMDB's film data, the catalog and the film pack. The owner decided on November 11, 2026 that it goes to no other
+// player (docs/DEPLOYMENT.md).
+//
+// The owner's server listens on this machine alone unless told otherwise, and answers the owner's data only to a
+// request made on this machine. To use it from elsewhere, name a file holding the owner's passphrase
+// (--owner-secret-file): the game then asks for it in Settings, and a request without a session gets no owner data.
+// It won't start as the owner's own on another address without one.
 // The packs directory holds the mods the game offers in Settings (docs/DATA-PACKS.md). It reads no
 // credential and calls no outside service: the catalog is gathered and built separately (docs/CATALOG.md).
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize, resolve, sep } from 'node:path';
 import { gzipSync } from 'node:zlib';
-import { createCatalogHandler } from './catalog-handler.mjs';
+import { MIN_SECRET, createCatalogHandler, isLoopback } from './catalog-handler.mjs';
 
 const TYPES = {
   '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json',
@@ -21,9 +28,9 @@ const TYPES = {
 const COMPRESSIBLE = new Set(['.html', '.js', '.css', '.json', '.svg', '.tsv', '.txt']);
 
 /** A server for the built game at `dist` and its data. Returned unstarted, for tests and for the command line. */
-export function createSlateServer({ dist, catalogDir, cinemasDir, packsDir = null, films = false, now }) {
+export function createSlateServer({ dist, catalogDir, cinemasDir, packsDir = null, films = false, ownerSecret = null, now }) {
   const root = resolve(dist);
-  const data = createCatalogHandler({ catalogDir: resolve(catalogDir), cinemasDir: resolve(cinemasDir), packsDir: packsDir && resolve(packsDir), films, now });
+  const data = createCatalogHandler({ catalogDir: resolve(catalogDir), cinemasDir: resolve(cinemasDir), packsDir: packsDir && resolve(packsDir), films, ownerSecret, now });
   // A built file's gzip, kept with the bytes it was made from. Until November 11, 2026 it was kept by name alone, so a
   // build replaced under a running server went on sending the old page, pointing at code that was gone.
   const gz = new Map();
@@ -60,12 +67,35 @@ export function createSlateServer({ dist, catalogDir, cinemasDir, packsDir = nul
   });
 }
 
+/**
+ * Where a server listens and what guards the owner's data, from how it was started. The owner's server listens on this
+ * machine alone by default; on any other address it needs the owner's passphrase, or it doesn't start. A passphrase
+ * shorter than MIN_SECRET is refused rather than trusted.
+ */
+export function ownerPlan({ films, host = null, secretFile = null }, read = (file) => readFileSync(file, 'utf8')) {
+  let secret = null;
+  if (films && secretFile) {
+    try { secret = read(secretFile).trim(); } catch { return { host: undefined, secret: null, error: `The owner's passphrase file can't be read: ${secretFile}` }; }
+    if (secret.length < MIN_SECRET) return { host: undefined, secret: null, error: `The owner's passphrase must be at least ${MIN_SECRET} characters. Nothing was started.` };
+  }
+  const local = !host || host === 'localhost' || isLoopback(host);
+  if (films && !local && !secret) {
+    return { host: undefined, secret: null, error: `The owner's server won't listen on ${host} without the owner's passphrase: anyone who reached it would get TMDB's data. Name a passphrase file with --owner-secret-file, or leave --host off to use it on this machine only.` };
+  }
+  // Other players' server listens everywhere, as before; the owner's on this machine unless told otherwise.
+  return { host: host ?? (films ? '127.0.0.1' : undefined), secret };
+}
+
 if (import.meta.url === `file://${process.argv[1]}`) {
   const arg = (name, env, fallback) => { const i = process.argv.indexOf(`--${name}`); return i > 0 ? process.argv[i + 1] : process.env[env] ?? fallback; };
   const dist = arg('dist', 'SLATE_DIST', 'dist');
   if (!existsSync(join(dist, 'index.html'))) { console.error(`No built game at ${dist}: run npm run build first.`); process.exit(1); }
   const port = Number(arg('port', 'SLATE_PORT', '8080'));
   const films = process.argv.includes('--owner') || process.env.SLATE_OWNER === '1';
-  const server = createSlateServer({ dist, catalogDir: arg('catalog', 'SLATE_CATALOG_DIR', '.screen-catalog'), cinemasDir: arg('cinemas', 'SLATE_CINEMAS_DIR', '.cinemas'), packsDir: arg('packs', 'SLATE_PACKS_DIR', 'packs'), films });
-  server.listen(port, () => console.log(`SLATE on http://localhost:${port}${films ? ', the owner\'s own: TMDB\'s film data is served' : ', without TMDB\'s film data (--owner serves it)'}`));
+  const plan = ownerPlan({ films, host: arg('host', 'SLATE_HOST', null), secretFile: arg('owner-secret-file', 'SLATE_OWNER_SECRET_FILE', null) });
+  if (plan.error) { console.error(plan.error); process.exit(1); }
+  const server = createSlateServer({ dist, catalogDir: arg('catalog', 'SLATE_CATALOG_DIR', '.screen-catalog'), cinemasDir: arg('cinemas', 'SLATE_CINEMAS_DIR', '.cinemas'), packsDir: arg('packs', 'SLATE_PACKS_DIR', 'packs'), films, ownerSecret: plan.secret });
+  const who = !films ? ', without TMDB\'s film data (--owner serves it)'
+    : `, the owner's own: TMDB's film data is served to this machine${plan.secret ? ', and elsewhere after the owner signs in' : ' only'}`;
+  server.listen(port, plan.host, () => console.log(`SLATE on http://${plan.host ?? 'localhost'}:${port}${who}`));
 }

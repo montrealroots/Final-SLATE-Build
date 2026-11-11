@@ -1,0 +1,51 @@
+Feature,Player Action,Persisted State,Downstream Consumers,Acceptance Requirement,Journey
+Script Premise,Choose and edit a coherent idea,Structured brief and prose,Breakdown and pitching,Applied scene choices produce requirements; prose alone earns no quality,J01
+Logline,Compose goal obstacle stakes and hook,Document version plus confirmed tags,Pitch materials,Custom edit preserved; no duplicate mechanical tags,J01
+Themes,Select thematic question and conflict,Theme and beat references,Outline/readiness,Suggested beats link to scenes; no automatic score,J03
+Genre Blends,Set primary secondary and subtype,Genre IDs/emphasis,Audience and award declaration,Changing emphasis affects intended consumers only,J03
+Story Structure,Choose and adapt acts or episodic arc,Beat/scene relationships,Readiness and edit,Reordering retains identities and exposes missing links,J06
+Character Design,Set function goal age body and languages,Character revision,Casting wardrobe effects,Narrative function separate from billing/eligibility,J04
+Dialogue And Voice,Select register and delivery notes,Scene/character brief,Audition and recording plan,Notes visible; language requirements explicit,J04
+Scenes,Select participants place and action,Scene breakdown,Schedule/costs,Only applied requirements reserve resources,J01
+Script Revision,Preview then approve scoped change,Revision and invalidations,Tasks/contracts,Completed unrelated work retained,J01
+Period And Aesthetic,Choose story year separately from look,Period/region/style,Wardrobe props design,Contemporary retro style does not shift world clock,J01
+Costumes,Choose source build duplicates and states,Wardrobe assets/versions,Fittings/continuity/budget,Damage state demands matching duplicates where needed,J01
+Makeup And Hair,Choose look and execution method,Appearance states/tasks,Chair capacity/call sheets,Prep/removal time and personnel actually scheduled,J01
+Creature Work,Choose rules and practical/digital method,Shot/character requirements,Performance/effects,Fictional biology does not claim real science,J02
+Production Design,Approve plans materials and scale,Set assets/versions,Construction/lighting/shoot,Revision invalidates dependent builds only,J02
+Camera And Lighting,Choose movement and coverage,Shot requirements,Rigging/rehearsal/post,No blanket better-camera quality bonus,J01
+Sound,Choose recording and design approach,Sound tasks/coverage,ADR/Foley/mix,Noise contingency creates actual work,J01
+Music,Select original score or source music route,Cues/agreements,Recording/rights/delivery,No rights fabricated by a preset,J01
+2D Animation,Choose designs and asset reuse,Boards/assets/tasks,Animation/composite,Reuse only compatible approved assets,J02
+3D Animation,Choose rig/detail/simulation needs,Models/rigs/render jobs,Capacity and delivery,Late rig change propagates correctly,J02
+Stop-Motion,Choose scale puppet faces and material,Puppet/set/repair tasks,Animation schedule,Human makeup tasks absent for puppet appearance,J02
+Hybrid Production,Choose technique per shot,Shot technique allocation,Shared interfaces/post,No double charged whole pipelines,J02
+Documentary,Select subject/access/contributor approach,Research/consent records,Field shoot/edit review,Withdrawal remains effective downstream,J12
+Unscripted,Select format/participant/rules,Format and consent state,Rounds/recording/edit,Outcomes and continuity persist,J12
+TV Seasons,Plan arcs episode scope and returning cast,Season/episode contracts,Rolling production/release,Finished episodes remain stable,J06
+Real Person Identity,Resolve IDs across catalogs,Global person identity,All jobs/projects,One person has one availability ledger,J04
+Auditions,Invite prepare read callback and compare,Dated audition state,Offers and role-fit,Identical retries do not reroll without action,J04
+Cast Offers,Offer negotiate hold sign,Versioned contract,Availability/payroll,Double booking and duplicate deposit prevented,J04
+Crew Hiring,Approach role-specific candidate,Job/deliverables contract,Production tasks,Credit does not prove all job capabilities,J05
+Multi-Role Player,Choose acting/writing/directing involvement,Player commitments,Schedule/credits,Player subject to real task conflicts,J05
+Children,Check age and applicable rules,Permit/staff/trust state,Shoot days/payroll,Birthday transitions change relevant requirements,J11
+Replacements,Release replace or reshoot,Work provenance/contract changes,Pay/credits/post,Retained work preserves applicable contribution,J04
+Relationships,React to actual simulated collaboration,Save-local events,Later willingness/opportunities,No invented real-world personality allegations,J05
+Destination Search,Browse country region city site,Sourced location reference,Scouting,No invented venue labeled real,J07
+Scouting And Permits,Assess inquire book backup,Site agreement/status,Schedule/travel,Known place does not mean access approved,J07
+Weather And Daylight,Choose plan and contingency,Dated location schedule,Shoot alternatives,Night/weather read actual selected shoot location,J07
+Financing,Pitch receive terms accept and settle,Source-aware ledger,Budget/ownership,Restricted funds never become personal earnings,J08
+Studio Strategy,Match project to mandate and capacity,Versioned strategy/read,Offers and notes,Studio behavior exceeds name-only reskin,J08
+Distribution,Choose territories windows and versions,Rights/releases,Cinema/streaming income,Only reached territory earns modeled demand,J08
+Marketing,Choose audience message timing and scale,Campaign plan/costs,Awareness/reception context,No guaranteed hit; spending settled once,J08
+Editing And Versions,Assemble test revise lock deliver,Versioned cut/task graph,Release/eligibility,Late changes trigger conform not wholesale reset,J01
+Awards And Festivals,Submit eligible version/category,Entry and qualifying history,Results/track record,Rivals and player use coherent eligibility,J08
+Revenue And Reinvestment,Collect settle allocate reinvest,Receipts/ownership/transfers,Next project,Money conserved and no double settlement,J01
+People Filmographies,Record performed work,Simulated credits separate from history,Profiles/awards/career,Imported historical records unmodified,J04
+Industry Continuity,Advance past recorded history,Frozen simulation profiles/seed,News/calendar/seasons,Refresh cannot silently change future rules,J10
+Studio Imports,Resolve paginate reconcile merge,Versioned catalog/coverage,Companies and hiring,Shared IDs across packs not duplicated,J09
+Portraits And Posters,Install optional permitted media,Image/rights/cache records,Profiles/title pages,Image has no invented ability effect,J09
+Mods And Storage,Install update remove resume,Atomic pack version,Offline catalog/save references,Quota failure preserves old pack and saves,J09
+Private Data Access,Request owner data,Auth/local binding policy,Server routes,Unauthorized direct request gets no private data,J09
+UI And Accessibility,Browse filter preview confirm cancel,Draft/view state,All feature flows,Keyboard/mobile preserve custom input and focus,J12
+Save Recovery,Save export import migrate rollback,Versioned save and backups,Entire career,No money duplication or state leakage,J10

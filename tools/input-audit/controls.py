@@ -225,11 +225,17 @@ c(f, '"Wake Up"', D, 'sleep', 'state.ts startSleep', 'How long you sleep', U('fo
 c(f, '"Set Wake Time"', D, 'sleep.wakeAt', 'state.ts startSleep', 'When you wake', U('foundation', 'waking says how long you slept'))
 c(f, '"Hours Of Sleep"', D, 'sleep.wakeAt', 'state.ts startSleep', 'When you wake', U('foundation', 'waking says how long you slept'))
 c(f, '"Set An Alarm"', D, 'sleep.alarm', 'state.ts snooze', 'An alarm lets you snooze', U('foundation', 'sleep wakes for obligations by default'))
-f = 'Startup.tsx'
+# Saved Games and Settings moved out of Startup.tsx when the start screen was slimmed (November 11, 2026).
+f = 'SavedGames.tsx'
 c(f, '"Save Name"', R, 'saveName', 'the saved games list', 'The save\'s name')
 c(f, '"Larger Text"', V, 'the browser (not the save)', 'document data-text', 'Larger text on this device')
 c(f, '"Wake Me For Obligations"', D, 'settings.wakeForObligations', 'state.ts runEvents', 'Reminders and call times wake you', U('foundation', 'sleep wakes for obligations by default'))
+f = 'Startup.tsx'
 c(f, '{`Replacement Place ${i + 1}`}', D, 'repair replacements', 'save.ts repairSave', 'Which place replaces one a save can\'t find', U('migration', 'open after a repair that keeps a backup and changes only the places'), E('failures', 'asks for a replacement, keeping a backup'))
+f = 'DataPacks.tsx'
+# Not game state: it is sent to the game's own server, which then answers this browser as the owner (docs/DEPLOYMENT.md).
+c(f, '"Owner Passphrase"', V, '', 'server/catalog-handler.mjs createOwnerGate', 'Signs the owner in where the server offers it; kept nowhere in the browser', U('catalog-server', 'answers a request from elsewhere only after the owner signs in'), E('owner-access', 'the owner signs in from elsewhere'))
+
 f = 'World.tsx'
 c(f, '"Title For The New Project"', R, 'project.title', 'opportunities.ts acceptOpportunity', 'The new project\'s name', U('opportunities', 'accepted, starts a project funded by the commission'), E('career', 'a proposal is accepted into a funded project'))
 f = 'WorkViews.tsx'
@@ -285,6 +291,22 @@ cite(f, '"Awards Placement"', E('script-rules', 'a supporting antagonist'), T, '
 cite(f, '"Essential To The Story"', E('script-rules', 'a mature project'), T, 'Cutting the essential scene is previewed with the gap it leaves (editing 8 points lower), then carried as a gap in the edit')
 cite(f, '"Source Material"', E('awards', 'Oscars: one film in several categories'), T, 'Declared adapted, the Adapted Screenplay category opens to the film and Original Screenplay says it is declared adapted')
 
+# ---------------- Rows the table gained by hand before November 11, 2026, brought back into this file ----------------
+c('Catalog.tsx', '"Title Or Person"', V, '', '', '', '', '', n=1)
+c('Catalog.tsx', '"Search Titles"', V, '', '', '', '', '', n=1)
+c('Catalog.tsx', '"Show"', V, '', '', '', '', '', n=1)
+c('Catalog.tsx', '"Order"', V, '', '', '', '', '', n=1)
+c('Catalog.tsx', '{`Include titles not released by ${formatDateKey(today)}`}', V, '', '', '', '', '', n=1)
+c('PlanViews.tsx', '"List Performers Who Play This Age First"', V, '', '', '', '', '', n=1)
+c('Projects.tsx', '"Years That Pass In The Story"', D, 'character.ageInStory (next season)', 'sequel.ts continueProject', 'Each character is that much older in the next season or sequel; a child in the cast may stop being one', "tests/minors.test.ts::ages a series' characters by the years that pass between seasons", '', n=1)
+c('ScriptViews.tsx', '"Up To"', D, 'character.ageInStory', 'story-age.ts storyAge; casting-notes.ts fitNotes', 'An age range: casting compares it with the ages each performer plays', 'tests/minors.test.ts::reads an age, a range or a decade', '', n=1)
+
+# Three rows the table had corrected by hand (fitNotes moved to casting-notes.ts; ages under 16 reach minors.ts).
+c('Creation.tsx', '{`${languageName(l.code)} Proficiency`}', D, 'character.languages', 'production/language.ts personLanguagesFit; casting-notes.ts fitNotes', 'Whether you need a language coach to play a part in that language', 'tests/decision-effects.test.ts::playing a part in a language you speak only a little', '', n=1)
+c('ScriptViews.tsx', '"Age In Story"', D, 'character.ageInStory', 'story-age.ts storyAge; casting-notes.ts fitNotes; minors.ts minorFor', "Casting notes who plays the age; a part under 16 is reckoned as a child's, with its hours, crew, licence and shoot days", "tests/minors.test.ts::a child's part takes more shoot days than the same script with an adult", '', n=1)
+c('WorkViews.tsx', '{`${c.name} Performs ${s.title}`}', D, 'song.performers', 'casting-notes.ts fitNotes; songs.ts songCredits', 'Who sings it: casting notes and performer credits', 'tests/songs.test.ts::played to delivery: writers are whoever wrote', 'e2e/awards.spec.ts::Songs', n=1)
+J[('WorkViews.tsx', '{`${c.name} Performs ${s.title}`}', 1)] = ('targeted', '')
+
 # ---------------- Build and check ----------------
 rx = re.compile(r'<(TextField|SelectField|NumberField|Check|PlacePicker|LanguagePicker|GenrePicker|WorldPlacePicker)\b([^>]*?)(/>|>)', re.S)
 found = []
@@ -302,12 +324,12 @@ for k, v in C.items():
     for ref in (v[4], v[5]):
         if ref:
             p, t = ref.split('::', 1)
-            if t not in open(p).read(): bad.append((k, ref))
+            if t not in open(p).read().replace("\\'", "'"): bad.append((k, ref))  # a title with an apostrophe is written \' in its test file
     if v[0] == D and not v[2]: bad.append((k, 'decision without a consumer'))
 if missing or stale or bad:
     print('missing', missing, '\nstale', stale, '\nbad', bad); sys.exit(1)
 with open('docs/input-audit/CONTROLS.csv', 'w', newline='') as out:
-    w = csv.writer(out)
+    w = csv.writer(out, lineterminator='\n')  # the table is kept with plain line endings
     w.writerow(['screen', 'label', 'occurrence', 'class', 'state', 'consumer', 'effect', 'unit_test', 'journey', 'journey_kind', 'journey_proves'])
     for k in found:
         ref = C[k][5]

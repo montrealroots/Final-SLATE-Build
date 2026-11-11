@@ -193,7 +193,8 @@ change what a save's world has decided. What holds it, with the test for each:
   it was due (`due`). Until November 11, 2026 it was decided on the day the wait ended, so a slow or missing catalog
   changed the save's world. Nothing is erased while it waits. Test: a catalog gone for 19 months and back decides exactly
   what one there all along does (`tests/industry.test.ts`).
-- **A refreshed catalog.** Each simulated series records the last season its save began with (`rec`). A later catalog
+- **A refreshed catalog.** (Extended the same day: see "What A Save Keeps" below, which freezes every other input too.)
+  Each simulated series records the last season its save began with (`rec`). A later catalog
   may correct what was recorded up to then. It never adds seasons the save has made its own, nor a recorded ending, to
   the series' page, its seasons and episodes, Home or the calendar. A season page for one of those says it isn't in this
   story. Decisions already made are never rewritten. A save begun before `rec` was kept takes it from the first catalog
@@ -204,6 +205,61 @@ change what a save's world has decided. What holds it, with the test for each:
 - **What it isn't.** The renewal odds and timing are judgement, not data (above), and forty seeds over ten years are
   checked for coherence, not realism: dated after the records, numbered in order, announced before they air, starting
   after the last season ends, and closed for good.
+
+## What A Save Keeps (November 11, 2026)
+
+The Creative Depth package's first milestone found that keeping `rec` wasn't enough. Every decision still read the
+installed catalog for the rest: which networks a series is on (so what kind of outlet, so when and how it is decided),
+whether it is a limited series or a pilot, its genres, how many seasons it has had, the season new ones copy, and who
+returns. A refreshed catalog that changed any of those changed what an old save decided next.
+
+Now each simulated series has a frozen profile in the save (`SimSeries.p`, `FrozenSeries` in `src/engine/industry.ts`),
+taken once when the save's world starts. Decisions read it and nothing else. It holds two kinds of thing, kept apart
+because they last differently:
+
+| Kept | What | How long |
+| --- | --- | --- |
+| The game's own classes | The rules version (`v`), the kind of outlet, limited series or pilot, animated or not, seasons aired counted to six (the rules read no finer), the number of the season it is patterned on, a daily programme's anchor date, and the returning regulars' person IDs | For the life of the save |
+| A copy of recorded facts | `last` and `model`: the last recorded season, and the one new seasons copy (episode count, spacing, dates, breaks) | Until the save makes its own first season for that series, when they are deleted; and never past TMDB's six months |
+
+- **No names.** A save holds no title, network name or person's name from the catalog: those are read from the installed
+  catalog when a page is shown. A test fails if a fixture's names appear in a save.
+- **The rules version.** `INDUSTRY_RULES` is 1. A later change to the odds or timing takes a new number, and a save
+  keeps deciding under the one it froze.
+- **TMDB's six months.** The copies of recorded seasons count from when the catalog's oldest record was gathered
+  (`IndustryState.from`, from the catalog's index). When six months have passed by the real clock, the open game deletes
+  them (`expireIndustrySources`; checked when a game opens and every hour while it stays open). Nothing the save decided
+  is touched. A series nothing had been decided for is marked, waits while no catalog is installed, and takes its
+  pattern again, up to the seasons the save began with, from the catalog installed when its decision comes due. That is
+  the one case where a later catalog's record of an old season reaches an old save, and it is the price of not keeping
+  TMDB's records past their time.
+- **Who returns.** The returning cast is the frozen IDs, less anyone the installed records say died before the
+  premiere. A death is a fact the game won't contradict, so that one reading stays live.
+- **A save begun before this.** It freezes its profiles from the first catalog that loads, limited to the seasons it
+  began with (`rec`), and keeps them.
+- **Studios.** Their pace was already kept (`IndustryState.studios`): films a year, genre and month counts. Those are
+  totals the build worked out, not TMDB's records, and stay.
+
+Tests (`tests/industry.test.ts`): a catalog changed in every field a decision used to read leaves ten years of
+decisions identical, straight through and across a reload; the profile's keys and the absence of names; the copies gone
+after the first simulated season; expiry at exactly 180 days, with decisions kept and an undecided series waiting, then
+resuming. Three mutations each fail one of them: reading the catalog again at each decision, never expiring, and
+refreshing series already decided. In the browser: `e2e/world-refresh.spec.ts`.
+
+## Taking Newer Records (November 11, 2026)
+
+A save keeps the records it began with. When the installed films and series were gathered later, Settings says so
+under Your Story's World, and the player may take them, for series nothing has been decided for yet.
+
+- **See first.** See What Would Change lists each such series and what differs (the kind of outlet, the pattern, a
+  longer record, the cast), and any series the newer records follow that the save doesn't. Looking changes nothing.
+- **A copy first.** Take The Newer Records saves the game and keeps that save as a recovery copy ("Copy from before
+  newer records were taken", in Saved Games). If either can't be done, nothing changes.
+- **What changes.** Only the listed series: each is frozen again from the newer records, and its pending decision
+  planned again, never dated before today. New series join, decided from today on.
+- **What never changes.** Any series something has been decided for, every decision and season already made, the
+  records' end (`horizon`), the build the world started from, and the studios' pace, so no film this save has seen
+  moves. Each opt-in is recorded in `IndustryState.refreshes`.
 
 ## Phase 3: Studios Keep Releasing (November 11, 2026)
 

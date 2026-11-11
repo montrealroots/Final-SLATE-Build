@@ -1,0 +1,72 @@
+{
+  "name": "SLATE Creative Depth & Living Industry Expansion",
+  "version": 2,
+  "date": "2026-11-11",
+  "baselineCommit": "8a60369f7f4cf75a229f27369182d974884f7c16",
+  "artifactType": "implementation specification and original starter content",
+  "starterOptions": 126,
+  "optionFamilies": 12,
+  "featureLoops": 50,
+  "files": [
+    {
+      "path": "00-START-HERE.md",
+      "bytes": 4137,
+      "sha256": "a2d2de5bc2156428aebda26e8631dda9fbbdafd5deae80f17a3d94f95f517dec"
+    },
+    {
+      "path": "01-MASTER-BUILD-SPEC.md",
+      "bytes": 8285,
+      "sha256": "5e1c2d60467ca35f5aa7cb4f20f1e00886cfa60e358d4c5862435d70bdace097"
+    },
+    {
+      "path": "02-CREATIVE-LIBRARIES.md",
+      "bytes": 10290,
+      "sha256": "a514638fcab78f413349aa63671c8cfd3a32291b5e11001226a93309123a4046"
+    },
+    {
+      "path": "03-PEOPLE-CASTING-AND-HIRING.md",
+      "bytes": 8132,
+      "sha256": "187da1c65ab1003edc93028bf39506289b0ffccc55e44b77c424fdfdf88b2fca"
+    },
+    {
+      "path": "04-WORLD-STUDIOS-AND-MEDIA.md",
+      "bytes": 9123,
+      "sha256": "ca16c5ac0caee3be3751a3a02381e4185a0f2ff03c142c8fe8d40deaddf6e388"
+    },
+    {
+      "path": "05-LOOPS-AND-ACCEPTANCE.csv",
+      "bytes": 7267,
+      "sha256": "3ca1426c582775b9323e691e6b9738895618fe2c0fcfc11435b15c2f958df2a5"
+    },
+    {
+      "path": "06-TESTING-AND-DELIVERY.md",
+      "bytes": 7555,
+      "sha256": "3326ff217665b655795c4db52284cdd7ac2829808e55329d714d30572a7bd856"
+    },
+    {
+      "path": "07-SOURCES-AND-RESEARCH.md",
+      "bytes": 2975,
+      "sha256": "12e71511a8329741c42f6a97659a062cd613634aa056679a6830dc223aac4743"
+    },
+    {
+      "path": "08-CLAUDE-COMMAND.txt",
+      "bytes": 3626,
+      "sha256": "794d78246d669cb063adb2fec47557342c4cee9b1b90852239ac3f7b01ca5bed"
+    },
+    {
+      "path": "example-project.json",
+      "bytes": 1751,
+      "sha256": "c80f5ed017f7fdd362b879d8d412005ddb695f8423737ca2a3e6592681475485"
+    },
+    {
+      "path": "option-contract.schema.json",
+      "bytes": 2437,
+      "sha256": "5db5ecb6f6bff02149fde6095a33b530e4b331f7337f0b873c406bf6db176911"
+    },
+    {
+      "path": "starter-options.json",
+      "bytes": 113604,
+      "sha256": "7d778b5aa94f677b2d0b377aa423a8cec1559aaac89d8d9cde3a44763846fb97"
+    }
+  ]
+}

@@ -33,18 +33,40 @@ function useLivingWorld(saveKey: string | null): void {
     if (!saveKey) return;
     let live = true;
     startLivingWorld(() => live);
-    return () => { live = false; };
+    expireSources();
+    const hourly = setInterval(expireSources, 3_600_000);
+    return () => { live = false; clearInterval(hourly); };
   }, [saveKey]);
 }
 
 /** Load the world file and start the open game's world from it, once; also run when a film pack is installed (DataPacks.tsx). */
 export function startLivingWorld(live: () => boolean = () => true): void {
   // The living world's engine loads with the world file, not at startup (state.ts holds its decisions until then).
-  void Promise.all([loadFile<WorldSeed>('world.json'), import('../engine/industry'), import('../engine/awards-results'), import('../catalog/registry')]).then(([w, { ensureIndustry, setIndustryWorld }, { setStudioNames }, { company }]) => {
+  void Promise.all([loadFile<WorldSeed>('world.json'), loadFile<{ retrieved?: { from?: string | null } }>('index.json'), import('../engine/industry'), import('../engine/awards-results'), import('../catalog/registry')]).then(([w, index, { ensureIndustry, setIndustryWorld }, { setStudioNames }, { company }]) => {
     if (!live() || w.status !== 'ready' || !w.data.series) return;
     setStudioNames((id) => company(id)?.name);
-    setIndustryWorld({ horizon: w.data.horizon, builtAt: w.data.builtAt, series: w.data.series, studios: w.data.studios });
-    if (store.state && (!store.state.industry || (!store.state.industry.studios && w.data.studios))) store.act((g) => void ensureIndustry(g));
+    // TMDB's six months count from the oldest record gathered, which the catalog's index gives.
+    const from = index.status === 'ready' ? index.data.retrieved?.from?.slice(0, 10) : undefined;
+    setIndustryWorld({ horizon: w.data.horizon, builtAt: w.data.builtAt, ...(from ? { from } : {}), series: w.data.series, studios: w.data.studios });
+    const ind = store.state?.industry;
+    // Only a game that lacks something is changed (and saved): its world, the studios' pace, or a series' frozen inputs.
+    if (store.state && (!ind || (!ind.studios && w.data.studios) || Object.values(ind.series).some((x) => !x.closed && (!x.p || x.rec === undefined)))) store.act((g) => void ensureIndustry(g));
+    store.worldVersion += 1;
+    store.emit();
+  });
+}
+
+/**
+ * A save keeps copies of a few recorded seasons until its world has made its own (industry.ts FrozenSeries). TMDB allows
+ * its data to be kept six months, so past that they are deleted from the open game: when it opens, and every hour while
+ * it stays open. Nothing the save's world decided is touched.
+ */
+function expireSources(): void {
+  const ind = store.state?.industry;
+  if (!ind) return;
+  void import('../engine/industry').then(({ expireIndustrySources, sourcesExpire }) => {
+    if (store.state?.industry !== ind || Date.now() < sourcesExpire(ind)) return;
+    if (Object.values(ind.series).some((x) => x.p?.last || x.p?.model)) store.act((g) => void expireIndustrySources(g, Date.now()));
   });
 }
 

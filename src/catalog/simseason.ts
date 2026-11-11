@@ -3,7 +3,7 @@
 // episode's title or story isn't recorded or simulated, so nothing here makes one up. Loaded with the catalog's pages,
 // never at startup.
 import { DAY } from '../engine';
-import { outletOf, type SeriesProfile, type SimOutcome, type SimSeason, type SimSeries } from '../engine/industry';
+import { outletOf, type Outlet, type SeriesProfile, type SimOutcome, type SimSeason, type SimSeries } from '../engine/industry';
 
 const WEEKDAYS = ['Sundays', 'Mondays', 'Tuesdays', 'Wednesdays', 'Thursdays', 'Fridays', 'Saturdays'];
 const dayNumber = (key: string) => Date.parse(`${key}T12:00:00Z`) / DAY;
@@ -33,13 +33,17 @@ export const breakLength = (days: number) => (days % 7 === 0 ? `${days / 7} week
 export { ageOn } from './model';
 
 /**
- * Who returns for a simulated season: the recorded regulars, less anyone the records say died before its premiere. The
- * engine casts nobody else (the owner's rule), so a regular who has died leaves the cast smaller rather than recast.
+ * Who returns for a simulated season: the regulars the save froze when its world began (`reg`, person IDs; before
+ * November 11, 2026 the installed catalog's, which a refresh could change), less anyone the records say died before
+ * its premiere. The engine casts nobody else (the owner's rule), so a regular who has died leaves the cast smaller
+ * rather than recast. A regular the installed catalog no longer lists can't be named, and is counted in `unnamed`.
  */
-export function castFor(p: SeriesProfile, premiere: string) {
+export function castFor(p: SeriesProfile, premiere: string, reg?: number[]) {
+  const mine = reg ? p.regulars.filter((c) => reg.includes(c.p)) : p.regulars;
   return {
-    back: p.regulars.filter((c) => !(c.died && c.died <= premiere)),
-    gone: p.regulars.filter((c) => c.died && c.died <= premiere),
+    back: mine.filter((c) => !(c.died && c.died <= premiere)),
+    gone: mine.filter((c) => c.died && c.died <= premiere),
+    unnamed: reg ? reg.filter((id) => !p.regulars.some((c) => c.p === id)).length : 0,
   };
 }
 
@@ -58,9 +62,9 @@ export function announcedSeason(sim: SimSeries | undefined, n: number, today: st
 }
 
 /** When the series' outlet usually decides, for a season whose future isn't known yet. It names the habit, not a date. */
-export function usualDecision(p: SeriesProfile): string {
+export function usualDecision(p: SeriesProfile, outlet: Outlet = outletOf(p)): string {
   const net = p.net[0] ?? 'Its network';
-  switch (outletOf(p)) {
+  switch (outlet) {
     case 'broadcast': return `${net} usually decides at the May upfronts, after a season that runs September to May, or within weeks of a summer finale.`;
     case 'cable': return `${net} usually decides one to three months after the finale.`;
     case 'streaming': return `${net} usually decides one to four months after the finale.`;

@@ -302,6 +302,23 @@ class Store {
     })();
   }
 
+  /**
+   * Take the installed catalog's newer records for series this game's world hasn't decided for (docs/WORLD.md, "Taking
+   * Newer Records"). The game is saved and a copy of that save kept first; if either can't be done, nothing changes.
+   * Returns an error message, or null.
+   */
+  async takeNewerRecords(today: string): Promise<string | null> {
+    if (!this.state || this.readOnly) return 'This game is open in another tab. Take over here to make changes.';
+    const id = this.state.saveId;
+    if (!(await this.saveNow())) return "Your game couldn't be saved first, so nothing was changed. Free some browser storage and try again.";
+    const r = await (await this.v()).forSave(id, (kv) => E().keepBeforeWorldRefresh(kv, id));
+    if (r.error || r.commitError) return "A copy of your game couldn't be kept first, so nothing was changed. Free some browser storage and try again.";
+    const { applyWorldRefresh } = await import('../engine/industry');
+    const error = this.act((g) => { if (!applyWorldRefresh(g, today)) throw new Error('There are no newer records to take.'); });
+    if (!error) { await this.saveNow(); void this.refresh(); }
+    return error;
+  }
+
   /** Open a save after replacing the places it couldn't resolve. The untouched save is kept as a backup first. */
   async repairAndOpen(replacements: Record<string, Place>): Promise<string | null> {
     if (!this.repair) return 'There is nothing to repair.';
@@ -513,6 +530,9 @@ class Store {
       void this.saveNow();
     }
   }
+
+  /** Counts each time the catalog's world file is given to the engine (App.tsx), so pages that compare against it look again. */
+  worldVersion = 0;
 
   // ---------- mutations ----------
   /** Run an engine action. Returns an error message for the caller to show beside the control. */

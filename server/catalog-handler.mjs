@@ -11,6 +11,7 @@
 //   short is never served half-written.
 // - The few files the game reads to learn whether a catalog is there at all are answered {"installed":false} when it
 //   isn't, a normal answer rather than a failed request; any other missing file is a 404.
+import { createHash, randomBytes, timingSafeEqual } from 'node:crypto';
 import { closeSync, createReadStream, existsSync, openSync, readFileSync, readSync, readdirSync, statSync } from 'node:fs';
 import { join, normalize, sep } from 'node:path';
 
@@ -71,21 +72,122 @@ export function offeredMods(packsDir, now = Date.now(), films = true) {
 }
 const MODS = /^\/mods\/(index\.json|[\w.-]+\.slatepack)$/;
 
+// ---------- who may have the owner's data (November 11, 2026, docs/DEPLOYMENT.md, "Who Gets The Owner's Data") ----------
+//
+// Until now `films` alone decided: a server started with --owner answered anyone who could reach its port. A flag isn't
+// a check on who is asking. Now each request is checked:
+// - a request made on this machine (a loopback connection, a loopback Host, nothing forwarded) is the owner's;
+// - any other request is the owner's only with a session, given after the owner's passphrase is presented;
+// - a server with no passphrase configured gives nobody but this machine the owner's data.
+// The passphrase is the owner's own, read from a file they name when starting the server. None is built in.
+
+const LOOPBACK_HOST = /^(localhost|127(?:\.\d{1,3}){3}|\[::1\])(?::\d+)?$/i;
+const FORWARDED = ['forwarded', 'x-forwarded-for', 'x-forwarded-host', 'x-forwarded-proto', 'x-real-ip', 'via'];
+/** Whether an address is this machine's own. */
+export const isLoopback = (address) => !!address && (address === '::1' || /^127\./.test(address) || /^::ffff:127\./i.test(address));
+/**
+ * Whether a request was made on this machine: a loopback connection, asked of a loopback name (so a page elsewhere
+ * can't reach it by pointing its own name here), and not passed on by a proxy (which connects from this machine on
+ * someone else's behalf).
+ */
+export function isLocalRequest(req) {
+  return isLoopback(req.socket?.remoteAddress) && LOOPBACK_HOST.test(req.headers.host ?? '') && !FORWARDED.some((h) => req.headers[h] !== undefined);
+}
+
+const SESSION_HOURS = 12;
+const COOKIE = 'slate_owner';
+const digest = (s) => createHash('sha256').update(s).digest();
+/** The shortest passphrase the server accepts: shorter ones are guessed too easily to guard anything. */
+export const MIN_SECRET = 16;
+
+/**
+ * The gate every owner route asks. `secret` is the owner's passphrase, or null when none is configured. Sessions are
+ * kept in memory, so they end when the server stops. Wrong passphrases are slowed: after five, sign-in is refused for
+ * a minute, doubling to fifteen.
+ */
+export function createOwnerGate({ films = false, secret = null, now = () => Date.now() } = {}) {
+  const sessions = new Map();
+  const want = secret ? digest(secret) : null;
+  let failures = 0;
+  let lockedUntil = 0;
+  const cookieOf = (req) => new RegExp(`(?:^|;\\s*)${COOKIE}=([0-9a-f]{64})(?:;|$)`).exec(req.headers.cookie ?? '')?.[1];
+  const signedIn = (req) => {
+    const id = cookieOf(req);
+    const ends = id ? sessions.get(id) : undefined;
+    if (ends === undefined) return false;
+    if (now() >= ends) { sessions.delete(id); return false; }
+    return true;
+  };
+  return {
+    /** Whether this request may have the owner's data. */
+    allows: (req) => films && (isLocalRequest(req) || signedIn(req)),
+    /** For the game's Settings: whether sign-in is offered here, and whether this request is already the owner's. */
+    status: (req) => ({ owner: films && (isLocalRequest(req) || signedIn(req)), signIn: films && !!want && !isLocalRequest(req) }),
+    /** Present the passphrase. Returns a session ID on success, or why not: 'unavailable', 'locked', 'wrong'. */
+    signIn(presented) {
+      if (!films || !want) return { ok: false, reason: 'unavailable' };
+      if (now() < lockedUntil) return { ok: false, reason: 'locked', retryAfter: Math.ceil((lockedUntil - now()) / 1000) };
+      if (typeof presented !== 'string' || !timingSafeEqual(digest(presented), want)) {
+        failures += 1;
+        if (failures >= 5) lockedUntil = now() + Math.min(15, 2 ** (failures - 5)) * 60_000;
+        return { ok: false, reason: 'wrong' };
+      }
+      failures = 0;
+      for (const [id, ends] of sessions) if (now() >= ends) sessions.delete(id);
+      const id = randomBytes(32).toString('hex');
+      sessions.set(id, now() + SESSION_HOURS * 3_600_000);
+      return { ok: true, id };
+    },
+    signOut(req) { const id = cookieOf(req); if (id) sessions.delete(id); },
+    cookie: (id) => `${COOKIE}=${id}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=${SESSION_HOURS * 3600}`,
+    expiredCookie: `${COOKIE}=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0`,
+  };
+}
+
+const SESSION = /^\/owner\/session$/;
+/** The sign-in route: GET says what is offered, POST {passphrase} signs in, DELETE signs out. Never cached. */
+function serveSession(req, res, gate) {
+  res.setHeader('cache-control', 'no-store');
+  res.setHeader('x-content-type-options', 'nosniff');
+  const json = (status, body) => { res.statusCode = status; res.setHeader('content-type', 'application/json'); res.end(req.method === 'HEAD' ? undefined : JSON.stringify(body)); };
+  if (req.method === 'GET' || req.method === 'HEAD') return json(200, gate.status(req));
+  if (req.method === 'DELETE') { gate.signOut(req); res.setHeader('set-cookie', gate.expiredCookie); return json(200, gate.status(req)); }
+  if (req.method !== 'POST') { res.setHeader('allow', 'GET, HEAD, POST, DELETE'); return json(405, {}); }
+  // Only the game's own page signs in: a form on another site can't send JSON without asking first.
+  if (!/^application\/json\b/.test(req.headers['content-type'] ?? '')) return json(415, {});
+  const parts = [];
+  let size = 0;
+  req.on('data', (c) => { size += c.length; if (size > 4096) req.destroy(); else parts.push(c); });
+  req.on('end', () => {
+    let passphrase;
+    try { passphrase = JSON.parse(Buffer.concat(parts).toString('utf8')).passphrase; } catch { return json(400, {}); }
+    const r = gate.signIn(passphrase);
+    if (r.ok) { res.setHeader('set-cookie', gate.cookie(r.id)); return json(200, { owner: true, signIn: true }); }
+    if (r.reason === 'locked') res.setHeader('retry-after', String(r.retryAfter));
+    return json(r.reason === 'locked' ? 429 : r.reason === 'unavailable' ? 404 : 401, { owner: false, reason: r.reason });
+  });
+}
+
+
 /**
  * A request handler (Node's req/res, with next() for anything that isn't a data file). Options: the catalog's and the
- * cinemas' directories, the directory of mods it offers (optional), whether it may serve TMDB's film data, and a clock
- * for tests.
+ * cinemas' directories, the directory of mods it offers (optional), whether it is the owner's own server, the owner's
+ * passphrase (optional), and a clock for tests.
  *
  * `films`: the owner decided on November 11, 2026 that TMDB's data goes to no player but the owner ("I will NOT").
- * A server serves the film catalog and offers the film pack only when it is the owner's own (`--owner` in serve.mjs);
- * otherwise it answers as if no catalog were there, and offers the cinemas alone.
+ * A server serves the film catalog and offers the film pack only when it is the owner's own (`--owner` in serve.mjs),
+ * and then only to a request the gate above allows. Any other request is answered as if no catalog were there, and is
+ * offered the cinemas alone.
  */
-export function createCatalogHandler({ catalogDir, cinemasDir, packsDir = null, films = false, now = () => Date.now() }) {
+export function createCatalogHandler({ catalogDir, cinemasDir, packsDir = null, films = false, ownerSecret = null, now = () => Date.now() }) {
   const cache = {};
+  const gate = createOwnerGate({ films, secret: ownerSecret, now });
   return function handle(req, res, next) {
-    const mod = MODS.exec((req.url ?? '').split('?')[0]);
-    if (mod) return serveMod(req, res, mod[1], packsDir, now(), films);
-    const m = PATH.exec((req.url ?? '').split('?')[0]);
+    const url = (req.url ?? '').split('?')[0];
+    if (SESSION.test(url)) return serveSession(req, res, gate);
+    const mod = MODS.exec(url);
+    if (mod) return serveMod(req, res, mod[1], packsDir, now(), gate.allows(req));
+    const m = PATH.exec(url);
     if (!m) return next();
     if (req.method !== 'GET' && req.method !== 'HEAD') { res.statusCode = 405; res.setHeader('allow', 'GET, HEAD'); res.end(); return; }
     const cinema = /^cinemas\/(.+)$/.exec(m[1]);
@@ -95,24 +197,28 @@ export function createCatalogHandler({ catalogDir, cinemasDir, packsDir = null, 
       res.setHeader('content-type', 'application/json');
       res.setHeader('x-content-type-options', 'nosniff');
       res.setHeader('cache-control', cacheControl);
+      // What a film route answers depends on who asks, so nothing between here and the browser may share it.
+      if (!cinema) res.setHeader('vary', 'cookie');
       res.end(req.method === 'HEAD' ? undefined : body);
     };
     // TMDB's content may be served only while it is within six months of being fetched; Wikidata's (CC0) has no limit.
     let expires = Infinity;
     if (!cinema) {
-      const s = films ? catalogState(root, now(), cache) : { state: 'missing' };
+      const s = gate.allows(req) ? catalogState(root, now(), cache) : { state: 'missing' };
       if (s.state !== 'ready') return ENTRY.has(m[1]) ? json(200, JSON.stringify({ installed: false, reason: s.state }), 'no-cache') : json(404, '', 'no-cache');
       expires = s.expires;
     }
     const file = normalize(join(root, cinema ? cinema[1] : m[1]));
     const present = file.startsWith(root + sep) && existsSync(file) && statSync(file).isFile();
     if (!present) return ENTRY.has(m[1]) ? json(200, JSON.stringify({ installed: false, reason: 'missing' }), 'no-cache') : json(404, '', 'no-cache');
-    // The entry files change with every build; a record may be kept an hour, and never past the catalog's expiry.
+    // The entry files change with every build; a record may be kept an hour, and never past the catalog's expiry. The
+    // owner's records are kept by the owner's browser alone ("private"), never by a cache in between.
     const seconds = Math.max(0, Math.min(3600, Math.floor((expires - now()) / 1000)));
     res.statusCode = 200;
     res.setHeader('content-type', 'application/json');
     res.setHeader('x-content-type-options', 'nosniff');
-    res.setHeader('cache-control', ENTRY.has(m[1]) ? 'no-cache' : `public, max-age=${seconds}`);
+    res.setHeader('cache-control', ENTRY.has(m[1]) ? 'no-cache' : `${cinema ? 'public' : 'private'}, max-age=${seconds}`);
+    if (!cinema) res.setHeader('vary', 'cookie');
     if (req.method === 'HEAD') { res.end(); return; }
     createReadStream(file).on('error', () => { if (!res.headersSent) res.statusCode = 500; res.end(); }).pipe(res);
   };
@@ -123,6 +229,8 @@ function serveMod(req, res, name, packsDir, now, films) {
   if (req.method !== 'GET' && req.method !== 'HEAD') { res.statusCode = 405; res.setHeader('allow', 'GET, HEAD'); res.end(); return; }
   const mods = offeredMods(packsDir, now, films);
   res.setHeader('x-content-type-options', 'nosniff');
+  // The listing and a film pack depend on who asks.
+  res.setHeader('vary', 'cookie');
   if (name === 'index.json') {
     res.statusCode = 200;
     res.setHeader('content-type', 'application/json');
@@ -137,7 +245,7 @@ function serveMod(req, res, name, packsDir, now, films) {
   res.setHeader('content-length', String(mod.bytes));
   // Kept an hour at most, and never past a film pack's six months.
   const ends = mod.retrieved ? Date.parse(mod.retrieved.from) + MAX_AGE_DAYS * DAY : Infinity;
-  res.setHeader('cache-control', `public, max-age=${Math.max(0, Math.min(3600, Math.floor((ends - now) / 1000)))}`);
+  res.setHeader('cache-control', `${mod.kind === 'catalog' ? 'private' : 'public'}, max-age=${Math.max(0, Math.min(3600, Math.floor((ends - now) / 1000)))}`);
   if (req.method === 'HEAD') { res.end(); return; }
   createReadStream(join(packsDir, mod.file)).on('error', () => { if (!res.headersSent) res.statusCode = 500; res.end(); }).pipe(res);
 }

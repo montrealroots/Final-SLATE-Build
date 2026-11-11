@@ -94,6 +94,15 @@ export function validateGameState(raw: unknown): asserts raw is GameState {
     const ind = s.industry as Obj;
     need(isObj(ind) && isStr(ind.horizon) && isStr(ind.builtAt) && isObj(ind.series) && Object.values(ind.series as Obj).every((x) => isObj(x) && Array.isArray((x as Obj).seasons) && Array.isArray((x as Obj).outcomes) && typeof (x as Obj).closed === 'boolean')
       && (ind.studios === undefined || (Array.isArray(ind.studios) && (ind.studios as Obj[]).every((p) => isObj(p) && isStr(p.c) && typeof p.n === 'number' && Array.isArray(p.g) && Array.isArray(p.m) && isObj(p.ann)))), 'the save', 'has a malformed industry record');
+    // A series' frozen inputs (industry.ts FrozenSeries): a decision reads these, so a malformed one is refused here.
+    const run = (r: unknown) => r === undefined || (isObj(r) && typeof r.n === 'number' && typeof r.eps === 'number' && isStr(r.d0) && typeof r.gap === 'number' && typeof r.drop === 'boolean' && isStr(r.end));
+    need(Object.values(ind.series as Obj).every((x) => {
+      const f = (x as Obj).p;
+      return f === undefined || (isObj(f) && typeof f.v === 'number' && ['daily', 'kids', 'broadcast', 'cable', 'streaming'].includes(f.o as string) && typeof f.mini === 'boolean' && typeof f.pilot === 'boolean'
+        && typeof f.anim === 'boolean' && typeof f.aired === 'number' && Array.isArray(f.reg) && (f.reg as unknown[]).every((id) => typeof id === 'number') && run(f.last) && run(f.model));
+    }), 'the save', 'has a malformed series profile');
+    need(ind.from === undefined || isStr(ind.from), 'the save', 'has a malformed industry record');
+    need(ind.refreshes === undefined || (Array.isArray(ind.refreshes) && (ind.refreshes as Obj[]).every((r) => isObj(r) && isStr(r.at) && isStr(r.builtAt))), 'the save', 'has a malformed industry record');
   }
   need(Array.isArray(s.log) && Array.isArray(s.plans) && Array.isArray(s.followed) && Array.isArray(s.calendarFilters), 'the save', 'is missing lists it needs');
 

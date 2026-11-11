@@ -8,7 +8,24 @@
 
 ## Commands And Results
 
-### Current: NBCUniversal After #65 (November 11, 2026)
+### Current: Creative Depth Package, Milestone A (November 11, 2026)
+
+Owner-data access and frozen world profiles (`docs/creative-depth/LEDGER.md`).
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 776 tests (766 before). Startup 304 kB, 97 kB gzipped; budgets unchanged (700 and 220 kB). World check 0 problems. |
+| `tests/catalog-server.test.ts` | 0 | 11 tests, 5 new under "who gets the owner's data": direct requests from this machine, from another name, through a proxy and with made-up cookies; sign-in, sign-out, twelve-hour expiry, lockout; a server that isn't the owner's; start-up refusals. |
+| `tests/industry.test.ts` | 0 | 19 tests, 5 new: decisions unchanged by a catalog changed in every field they used to read; the frozen profile's contents; a save begun before profiles; expiry at 180 days; opt-in refresh. |
+| Mutations | 1 or more for each | Five were made, and each failed a new test: the gate letting every request through; forwarded requests counted as local; the catalog read again at each decision (4 tests failed); source copies never expiring; a refresh rewriting decided series. |
+| `npx playwright test` on five specs, dev build | 0 | 44 passed, 6 skipped by design (the mod-server journeys, which need the production servers). `e2e/world-refresh.spec.ts` is new: 2 journeys, desktop and phone. |
+| `SLATE_E2E_PROD=1 npx playwright test` on five specs, production build | 0 | 28 passed. `e2e/owner-access.spec.ts` is new: 2 journeys on desktop and phone against the owner's server with a passphrase, reached as a visitor from elsewhere. |
+
+Not run locally: the whole of both browser suites, which CI runs on the pull request.
+
+Found and fixed on the way: the input audit's generator had fallen eleven rows behind its table.
+
+### Earlier: NBCUniversal After #65 (November 11, 2026)
 
 | Command | Failures | Notes |
 | --- | --- | --- |

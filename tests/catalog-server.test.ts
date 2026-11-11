@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { gunzipSync } from 'node:zlib';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { createSlateServer } from '../server/serve.mjs';
+import { createSlateServer, ownerPlan } from '../server/serve.mjs';
 import { MAX_AGE_DAYS } from '../server/catalog-handler.mjs';
 import { writePack } from '../tools/pack-format.mjs';
 
@@ -28,18 +28,18 @@ function catalog(name: string, index: string | null): string {
 const good = JSON.stringify({ version: 1, retrieved: { from: RETRIEVED, to: RETRIEVED, maxAgeDays: 180 } });
 
 type Reply = { status: number; headers: Record<string, string | string[] | undefined>; body: Buffer };
-async function get(port: number, path: string, o: { method?: string; gzip?: boolean } = {}): Promise<Reply> {
+async function get(port: number, path: string, o: { method?: string; gzip?: boolean; headers?: Record<string, string>; body?: string } = {}): Promise<Reply> {
   return new Promise((done, fail) => {
-    const req = request({ host: '127.0.0.1', port, path, method: o.method ?? 'GET', headers: o.gzip ? { 'accept-encoding': 'gzip' } : {} }, (res) => {
+    const req = request({ host: '127.0.0.1', port, path, method: o.method ?? 'GET', headers: { ...(o.gzip ? { 'accept-encoding': 'gzip' } : {}), ...o.headers } }, (res) => {
       const parts: Buffer[] = [];
       res.on('data', (c) => parts.push(c)).on('end', () => done({ status: res.statusCode!, headers: res.headers, body: Buffer.concat(parts) }));
     });
-    req.on('error', fail).end();
+    req.on('error', fail).end(o.body);
   });
 }
 // The owner's own server (--owner) unless `films` is false.
-async function start(catalogDir: string, now = () => Date.parse('2026-11-11T12:00:00Z'), packsDir: string | null = null, films = true): Promise<{ port: number; close: () => void }> {
-  const server = createSlateServer({ dist, catalogDir, cinemasDir: join(root, 'cinemas'), packsDir, films, now });
+async function start(catalogDir: string, now = () => Date.parse('2026-11-11T12:00:00Z'), packsDir: string | null = null, films = true, ownerSecret: string | null = null): Promise<{ port: number; close: () => void }> {
+  const server = createSlateServer({ dist, catalogDir, cinemasDir: join(root, 'cinemas'), packsDir, films, ownerSecret, now });
   await new Promise<void>((r) => server.listen(0, '127.0.0.1', r));
   return { port: (server.address() as AddressInfo).port, close: () => server.close() };
 }
@@ -80,7 +80,7 @@ describe('the catalog, served by the production server', () => {
       const index = await get(s.port, '/screen-catalog/index.json');
       expect([index.status, index.headers['cache-control'], json(index).version]).toEqual([200, 'no-cache', 1]);
       const title = await get(s.port, '/screen-catalog/titles/movie-1.json');
-      expect([title.status, title.headers['content-type'], title.headers['cache-control'], json(title).title]).toEqual([200, 'application/json', 'public, max-age=3600', 'Fixture']);
+      expect([title.status, title.headers['content-type'], title.headers['cache-control'], json(title).title]).toEqual([200, 'application/json', 'private, max-age=3600', 'Fixture']);
       expect((await get(s.port, '/screen-catalog/titles/movie-2.json')).status).toBe(404);
       expect(json(await get(s.port, '/screen-catalog/theatrical.json'))).toEqual({ installed: false, reason: 'missing' });
       // Outside the catalog's directory is never reached.
@@ -104,7 +104,7 @@ describe('the catalog, served by the production server', () => {
     // TMDB's six months, from the oldest response in the build: the day before, served with what is left of it; then withdrawn.
     const expires = Date.parse(RETRIEVED) + MAX_AGE_DAYS * DAY;
     const before = await start(catalog('ageing', good), () => expires - 1800_000);
-    try { expect((await get(before.port, '/screen-catalog/titles/movie-1.json')).headers['cache-control']).toBe('public, max-age=1800'); } finally { before.close(); }
+    try { expect((await get(before.port, '/screen-catalog/titles/movie-1.json')).headers['cache-control']).toBe('private, max-age=1800'); } finally { before.close(); }
     const after = await start(catalog('expired', good), () => expires);
     try {
       expect(json(await get(after.port, '/screen-catalog/index.json'))).toEqual({ installed: false, reason: 'expired' });
@@ -113,7 +113,7 @@ describe('the catalog, served by the production server', () => {
     } finally { after.close(); }
   });
 
-  it('holds no credential and calls no outside service', () => {
+  it('holds no TMDB credential and calls no outside service', () => {
     for (const f of ['server/serve.mjs', 'server/catalog-handler.mjs']) {
       const src = readFileSync(f, 'utf8');
       expect(src, f).not.toMatch(/api_key|Bearer\s|TMDB_|themoviedb\.org|fetch\(|https?\.request|process\.env\.[A-Z_]*(KEY|TOKEN|SECRET)/);
@@ -136,7 +136,7 @@ describe('the mods the game offers', () => {
       const list = json(await get(s.port, '/mods/index.json'));
       expect(list.mods.map((m: { file: string; kind: string; files: number }) => [m.file, m.kind, m.files])).toEqual([['cinemas.slatepack', 'cinemas', 1], ['films.slatepack', 'catalog', 2]]);
       const file = await get(s.port, '/mods/films.slatepack');
-      expect([file.status, file.headers['content-type'], file.headers['cache-control']]).toEqual([200, 'application/octet-stream', 'public, max-age=3600']);
+      expect([file.status, file.headers['content-type'], file.headers['cache-control']]).toEqual([200, 'application/octet-stream', 'private, max-age=3600']);
       expect(file.body.equals(readFileSync(join(packs, 'films.slatepack')))).toBe(true);
       for (const path of ['/mods/old-films.slatepack', '/mods/notes.slatepack', '/mods/secret.txt', '/mods/../packs/films.slatepack']) expect((await get(s.port, path)).status, path).not.toBe(200);
       expect((await get(s.port, '/mods/films.slatepack', { method: 'POST' })).status).toBe(405);
@@ -159,6 +159,124 @@ describe('the mods the game offers', () => {
   it('serves TMDB\'s data only when started as the owner\'s own (--owner or SLATE_OWNER=1), off by default', () => {
     const src = readFileSync('server/serve.mjs', 'utf8');
     expect(src).toMatch(/const films = process\.argv\.includes\('--owner'\) \|\| process\.env\.SLATE_OWNER === '1';/);
-    expect(src).toMatch(/films = false, now \}\) \{/);
+    expect(src).toMatch(/films = false, ownerSecret = null, now \}\) \{/);
+  });
+});
+
+// The owner's data is the owner's alone (November 11, 2026, the Creative Depth package, milestone A): --owner used to
+// answer anyone who reached the port. Each request below is made directly, with no game in front of it.
+describe('who gets the owner\'s data', () => {
+  const PASS = 'a passphrase the owner chose';
+  const packsDir = join(root, 'owner-packs');
+  const FILM_ROUTES = ['/screen-catalog/titles/movie-1.json', '/mods/films.slatepack'];
+  // A request from elsewhere, three ways: by another name, passed on by a proxy, and both.
+  const ELSEWHERE: Record<string, string>[] = [{ host: 'slate.example.com' }, { 'x-forwarded-for': '203.0.113.9' }, { host: 'slate.example.com', 'x-forwarded-proto': 'https', via: '1.1 proxy' }];
+  beforeAll(() => {
+    mkdirSync(packsDir, { recursive: true });
+    writeFileSync(join(packsDir, 'films.slatepack'), writePack({ kind: 'catalog', name: 'Films And Series', source: 'TMDB', builtAt: RETRIEVED, retrieved: { from: RETRIEVED, to: RETRIEVED, maxAgeDays: 180 } }, [['index.json', '{"version":1}']]));
+    writeFileSync(join(packsDir, 'cinemas.slatepack'), writePack({ kind: 'cinemas', name: 'Cinemas', source: 'Wikidata (CC0)', builtAt: RETRIEVED }, [['cinemas/index.json', '{}']]));
+  });
+  const nothingOwned = async (port: number, headers: Record<string, string>) => {
+    expect(json(await get(port, '/screen-catalog/index.json', { headers })), JSON.stringify(headers)).toEqual({ installed: false, reason: 'missing' });
+    expect(json(await get(port, '/screen-catalog/world.json', { headers }))).toEqual({ installed: false, reason: 'missing' });
+    for (const path of FILM_ROUTES) expect((await get(port, path, { headers })).status, path).toBe(404);
+    expect(json(await get(port, '/mods/index.json', { headers })).mods.map((m: { file: string }) => m.file)).toEqual(['cinemas.slatepack']);
+    // The cinemas (Wikidata, CC0) are everyone's.
+    expect((await get(port, '/screen-catalog/cinemas/GB.json', { headers })).status).toBe(200);
+  };
+
+  it('answers this machine, and nobody else, when no passphrase is configured', async () => {
+    const s = await start(catalog('owner-local', good), undefined, packsDir);
+    try {
+      expect(json(await get(s.port, '/screen-catalog/index.json')).version).toBe(1);
+      for (const path of FILM_ROUTES) expect((await get(s.port, path)).status, path).toBe(200);
+      expect(json(await get(s.port, '/owner/session'))).toEqual({ owner: true, signIn: false });
+      for (const headers of ELSEWHERE) {
+        await nothingOwned(s.port, headers);
+        expect(json(await get(s.port, '/owner/session', { headers }))).toEqual({ owner: false, signIn: false });
+        // With no passphrase configured there is nothing to sign in with.
+        expect((await get(s.port, '/owner/session', { method: 'POST', headers: { ...headers, 'content-type': 'application/json' }, body: JSON.stringify({ passphrase: PASS }) })).status).toBe(404);
+      }
+    } finally { s.close(); }
+  });
+
+  it('answers a request from elsewhere only after the owner signs in, on every film route, until sign-out or twelve hours', async () => {
+    let clock = Date.parse('2026-11-11T12:00:00Z');
+    const s = await start(catalog('owner-remote', good), () => clock, packsDir, true, PASS);
+    const far = { host: 'slate.example.com', 'x-forwarded-for': '203.0.113.9' };
+    const signIn = (passphrase: unknown, type = 'application/json') => get(s.port, '/owner/session', { method: 'POST', headers: { ...far, 'content-type': type }, body: JSON.stringify({ passphrase }) });
+    try {
+      await nothingOwned(s.port, far);
+      expect(json(await get(s.port, '/owner/session', { headers: far }))).toEqual({ owner: false, signIn: true });
+      // A made-up or malformed cookie is no session.
+      for (const cookie of ['slate_owner=' + 'a'.repeat(64), 'slate_owner=1', 'other=1']) await nothingOwned(s.port, { ...far, cookie });
+      expect((await signIn('not it')).status).toBe(401);
+      expect((await signIn(PASS, 'text/plain')).status).toBe(415);
+      expect((await signIn({ $ne: '' })).status).toBe(401);
+      const ok = await signIn(PASS);
+      expect(ok.status).toBe(200);
+      const set = String(ok.headers['set-cookie']);
+      expect(set).toMatch(/^slate_owner=[0-9a-f]{64}; HttpOnly; Secure; SameSite=Strict; Path=\/; Max-Age=43200$/);
+      const cookie = set.split(';')[0];
+      // The passphrase is never sent back, and nothing about a session is kept by a cache.
+      expect(ok.body.toString()).not.toContain(PASS);
+      expect(ok.headers['cache-control']).toBe('no-store');
+      const mine = { ...far, cookie };
+      expect(json(await get(s.port, '/screen-catalog/index.json', { headers: mine })).version).toBe(1);
+      const record = await get(s.port, FILM_ROUTES[0], { headers: mine });
+      expect([record.status, record.headers['cache-control'], record.headers.vary]).toEqual([200, 'private, max-age=3600', 'cookie']);
+      const pack = await get(s.port, FILM_ROUTES[1], { headers: mine });
+      expect([pack.status, pack.headers['cache-control'], pack.headers.vary]).toEqual([200, 'private, max-age=3600', 'cookie']);
+      expect(json(await get(s.port, '/mods/index.json', { headers: mine })).mods.map((m: { file: string }) => m.file)).toEqual(['cinemas.slatepack', 'films.slatepack']);
+      expect(json(await get(s.port, '/owner/session', { headers: mine }))).toEqual({ owner: true, signIn: true });
+      // Another visitor, without the cookie, still gets nothing while the owner is signed in.
+      await nothingOwned(s.port, far);
+      // Twelve hours on, the session has ended.
+      clock += 12 * 3_600_000;
+      await nothingOwned(s.port, mine);
+      // Signing out ends a session at once.
+      const again = String((await signIn(PASS)).headers['set-cookie']).split(';')[0];
+      expect((await get(s.port, FILM_ROUTES[0], { headers: { ...far, cookie: again } })).status).toBe(200);
+      expect((await get(s.port, '/owner/session', { method: 'DELETE', headers: { ...far, cookie: again } })).status).toBe(200);
+      await nothingOwned(s.port, { ...far, cookie: again });
+    } finally { s.close(); }
+  });
+
+  it('slows guessing: five wrong passphrases lock sign-in, even for the right one, for a minute', async () => {
+    let clock = Date.parse('2026-11-11T12:00:00Z');
+    const s = await start(catalog('owner-lock', good), () => clock, packsDir, true, PASS);
+    const signIn = (passphrase: string) => get(s.port, '/owner/session', { method: 'POST', headers: { host: 'slate.example.com', 'content-type': 'application/json' }, body: JSON.stringify({ passphrase }) });
+    try {
+      for (let i = 0; i < 5; i++) expect((await signIn(`guess ${i}`)).status).toBe(401);
+      const locked = await signIn(PASS);
+      expect([locked.status, locked.headers['retry-after']]).toEqual([429, '60']);
+      clock += 61_000;
+      expect((await signIn(PASS)).status).toBe(200);
+    } finally { s.close(); }
+  });
+
+  it('a server that isn\'t the owner\'s offers no sign-in and no film data, whatever is presented', async () => {
+    const s = await start(catalog('public', good), undefined, packsDir, false, PASS);
+    try {
+      await nothingOwned(s.port, {});
+      expect(json(await get(s.port, '/owner/session'))).toEqual({ owner: false, signIn: false });
+      expect((await get(s.port, '/owner/session', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ passphrase: PASS }) })).status).toBe(404);
+    } finally { s.close(); }
+  });
+
+  it('starts on this machine alone as the owner\'s, and refuses another address without a passphrase of some length', () => {
+    const read = (file: string) => { if (file === 'pass') return `${PASS}\n`; if (file === 'short') return 'hunter2'; throw new Error('no file'); };
+    expect(ownerPlan({ films: true }, read)).toEqual({ host: '127.0.0.1', secret: null });
+    expect(ownerPlan({ films: true, secretFile: 'pass' }, read)).toEqual({ host: '127.0.0.1', secret: PASS });
+    expect(ownerPlan({ films: true, host: '0.0.0.0', secretFile: 'pass' }, read)).toEqual({ host: '0.0.0.0', secret: PASS });
+    expect(ownerPlan({ films: true, host: '0.0.0.0' }, read).error).toMatch(/won't listen on 0\.0\.0\.0 without the owner's passphrase/);
+    expect(ownerPlan({ films: true, host: '192.168.1.20' }, read).error).toBeTruthy();
+    expect(ownerPlan({ films: true, host: '0.0.0.0', secretFile: 'short' }, read).error).toMatch(/at least 16 characters/);
+    expect(ownerPlan({ films: true, host: '0.0.0.0', secretFile: 'gone' }, read).error).toMatch(/can't be read/);
+    // Other players' server has no owner data to guard, and listens as before.
+    expect(ownerPlan({ films: false }, read)).toEqual({ host: undefined, secret: null });
+    expect(ownerPlan({ films: false, host: '0.0.0.0' }, read)).toEqual({ host: '0.0.0.0', secret: null });
+    // No passphrase is built in.
+    for (const f of ['server/serve.mjs', 'server/catalog-handler.mjs']) expect(readFileSync(f, 'utf8'), f).not.toMatch(/secret\s*[:=]\s*['"`][^'"`]+['"`]/i);
   });
 });

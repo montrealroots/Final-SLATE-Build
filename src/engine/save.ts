@@ -340,6 +340,17 @@ export function repairSave(store: KeyValueStore, saveId: string, replacements: R
   return s;
 }
 
+/**
+ * Keeps the stored save as a recovery copy before the player takes newer records for its world (industry.ts
+ * applyWorldRefresh; docs/WORLD.md, "Taking Newer Records"). One copy is kept, of the save as it was before the latest
+ * such change. Throws when there is no stored save to copy.
+ */
+export function keepBeforeWorldRefresh(store: KeyValueStore, saveId: string): void {
+  const text = store.getItem(mainKey(saveId));
+  if (text === null) throw new SaveFormatError('This save could not be found.');
+  store.setItem(`${mainKey(saveId)}.backup-world`, text);
+}
+
 // ---------------- Import ----------------
 
 /** Bigger than any save the game writes (a 50-year career is about 12 MB); larger files are refused before parsing. */

@@ -124,7 +124,9 @@ export function simulatedEvents(state: GameState, from: string, to: string): Wor
   for (const [r, sim] of Object.entries(state.industry?.series ?? {})) {
     const p = seriesProfile(r);
     if (!p) continue;
-    const base = { r, t: p.t, net: p.net, ci: p.ci, sim: 1 as const, daily: p.daily ? (1 as const) : undefined };
+    // What kind of programme it is comes from the save's frozen copy, so a later catalog can't change how it is told.
+    const daily = sim.p ? sim.p.o === 'daily' : outletOf(p) === 'daily';
+    const base = { r, t: p.t, net: p.net, ci: p.ci, sim: 1 as const, daily: daily ? (1 as const) : undefined };
     for (const o of sim.outcomes) {
       if (o.at < from || o.at > to) continue;
       const season = sim.seasons.find((x) => x.n === o.n);
@@ -134,7 +136,7 @@ export function simulatedEvents(state: GameState, from: string, to: string): Wor
       if (season.premiere >= from && season.premiere <= to) out.push({ ...base, d: season.premiere, k: 'season', s: season.n, eps: season.eps, first: season.n === 1, drop: season.drop ? 1 : undefined });
       if (season.drop) continue;
       episodeDates(season).forEach((d, i) => {
-        if (d >= from && d <= to) out.push({ ...base, d, k: 'episode', s: season.n, e: i + 1, n: `Episode ${i + 1}`, f: i === season.eps - 1 && season.eps > 1 && outletOf(p) !== 'daily' ? 1 : undefined });
+        if (d >= from && d <= to) out.push({ ...base, d, k: 'episode', s: season.n, e: i + 1, n: `Episode ${i + 1}`, f: i === season.eps - 1 && season.eps > 1 && !daily ? 1 : undefined });
       });
     }
   }
