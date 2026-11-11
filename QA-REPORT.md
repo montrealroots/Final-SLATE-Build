@@ -23,7 +23,7 @@ Real people from the film catalog through the game's own hiring, and the work of
 | Mutations | 1 or more for each | Eleven were made and each failed a test. Real people: the shared diary, death, unknown age, record expiry. Writers and directors: a day worked and not paid (4 tests failed); a delivered pass counted before acceptance; an episode handed over without accepted work (3 failed); the director unpaid; the writer counted by level instead of the pass; scope not weighing the work; revisions unlimited. |
 | `e2e/real-people.spec.ts` | 0 | New, journeys J04 and J05: 6 passed on desktop, phone and WebKit (iPhone 15 Pro Max), in 2.7 minutes. |
 | `e2e/journeys.spec.ts`, "TV limited series" | 0 | Changed for the writer rule: the hired writer can't be given the episode until a rewrite of it is commissioned, delivered and accepted. |
-| `npx playwright test`, whole suite, dev build | PENDING | PENDING |
+| `npx playwright test`, whole suite, dev build | 0 | 331 passed, 59 skipped by design, in 47 minutes. |
 
 Found and fixed on the way:
 
