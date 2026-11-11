@@ -24,8 +24,8 @@ opened where no pack is installed plays on with its world waiting (`docs/WORLD.m
 
 | Pack | Built from | Size, November 11, 2026 | Kept in the browser |
 | --- | --- | --- | --- |
-| Films And Series | `.screen-catalog/` (TMDB, with Wikidata network owners) | 110.6 MB, 15,561 files, with NBCUniversal's companies | About 77 MB before NBCUniversal joined, not measured since |
-| Cinemas | `.cinemas/` (Wikidata, CC0) | 1.5 MB, 153 files | A few MB |
+| Films And Series | `.screen-catalog/` (TMDB, with Wikidata network owners) | 110.6 MB, 15,561 files, with NBCUniversal's companies | 120.1 MB in Chromium, 110.8 MB in WebKit |
+| Cinemas | `.cinemas/` (Wikidata, CC0) | 1.5 MB, 153 files | 1.5 MB |
 
 Build them with:
 
@@ -78,7 +78,14 @@ They are written to `packs/`, which is kept out of the repository, as are all `*
   - the catalog and a place's cinemas shown from them, and kept after a reload;
   - the film pack removed, with every record gone;
   - a pack past six months, and a file that isn't one, refused.
-- **The real packs, offered as mods** (before NBCUniversal joined, when the film pack was 69.7 MB in 9,510 files): one press installed the film pack in 3.9 seconds in WebKit with iPhone emulation,
-  download included, and the cinemas in 0.2.
-- **The real packs, from files:** installed in Chromium in 5.8 seconds (77 MB used) and in WebKit with iPhone emulation in 4.0 seconds
-  (71 MB), on this machine. A phone will be slower.
+- **The real packs, with NBCUniversal (November 11, 2026):** each was installed in a fresh browser profile, from a file and
+  then by one press as a mod. The storage the browser reports (`navigator.storage.estimate()`) grew by the same amount
+  both ways:
+
+  | Browser | Film pack | Then the cinemas | Altogether |
+  | --- | --- | --- | --- |
+  | Chromium, desktop | 120.1 MB; 9.3 s from a file, 10.4 s as a mod | 1.5 MB; 0.2 s, 0.3 s | 121.7 MB |
+  | WebKit, iPhone 15 Pro Max emulation | 110.8 MB; 6.1 s, 7.2 s | 1.5 MB; 0.1 s, 0.3 s | 112.3 MB |
+
+  These times were measured on this machine, and a phone will be slower. Before NBCUniversal, the film pack was 69.7 MB
+  in 9,510 files, and both packs together used 77 MB in Chromium and 71 MB in WebKit.

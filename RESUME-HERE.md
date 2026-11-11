@@ -99,7 +99,7 @@ The owner's brief, in six parts. Universal and other studios wait until this is 
 **Data packs (the owner, after the pass): "make them like a mod you can install in the game, and after I install they
 show."** Done: Settings, Mods lists the packs the game's server offers (its `packs/` folder), each installed with one press, and
 installs a `.slatepack` from a file too (`docs/DATA-PACKS.md`). `node tools/pack.mjs` builds
-the film pack (110.6 MB with NBCUniversal; 69.7 MB before) and the cinema pack (1.5 MB) into `packs/`, kept out of the repository. TMDB's six months and
+the film pack (110.6 MB with NBCUniversal, 120.1 MB once installed in Chromium and 110.8 MB in WebKit; 69.7 MB before) and the cinema pack (1.5 MB) into `packs/`, kept out of the repository. TMDB's six months and
 deletion are kept in the game. The owner decided on November 11, 2026 that no other player gets TMDB's data: a server
 serves it only as the owner's own (`--owner`), and offers other players the cinemas alone (`docs/DEPLOYMENT.md`).
 
