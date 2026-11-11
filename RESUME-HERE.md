@@ -87,10 +87,12 @@ Where it stands:
   (`src/engine/writing-jobs.ts`, `src/ui/WritingWork.tsx`); a hired director is paid for each day they direct.
   Journeys J04 and J05 are `e2e/real-people.spec.ts`. The ledger's "Limits Of Milestone D" lists what isn't built: a
   producer's job, agents, inquiry holds, and a writer's pass changing the script itself.
-- **C, next:** ideas for the 38 creative fields that have none yet (`FIELD-INVENTORY.csv`, rows marked "Not yet");
-  engines for the camera, lighting and sound choices that are only notes today; named appearance states by scene;
-  routes for every genre; the animation, documentary, unscripted and television pipelines' own choices; a controlled
-  comparison for each new family.
+- **C, done:** the camera for each scene (handheld, a dolly, a stabiliser, a point-of-view rig), the light for the
+  film, the sound choices and the score's palette each change time, crew, rented kit, tests and post work
+  (`src/engine/craft.ts`, figures in `docs/ASSUMPTIONS.md`, "Camera, Light And Sound"); a character's looks have names
+  and each scene says which it is in; 409 ideas over 45 fields, with 68 routes through the 17 genre families
+  (`src/ideas/`); props, animals, vehicles and effects chosen from ideas make their work. Journey: `e2e/craft.spec.ts`.
+  Left: ideas for 11 structural fields, and the items under "Not implemented in C" in the ledger.
 - **E to H:** not started; the ledger's milestone table has each one's scope.
 
 Rules that came with the package: one agent; no universal quality bonus for a preset; custom text is never claimed to
