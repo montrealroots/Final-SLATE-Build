@@ -5,9 +5,10 @@ playable place has a set. A place whose own rules are recorded uses them; any ot
 the game says so wherever the rules are shown. What was read for each recorded set is in `RESEARCH.md`.
 `tests/minors.test.ts` fails when this table and the engine disagree.
 
-Begun November 11, 2026. Recorded sets: England, California, New York, Georgia, British Columbia, Ontario, Ireland, Germany,
+Begun November 11, 2026. Recorded sets: England, Scotland, Wales, Northern Ireland (all four read November 11, 2026), California, New York, Georgia, British Columbia, Ontario, Ireland, Germany,
 France (partly read: England's hours stand in for the hours its commission sets child by child), New South Wales. New
-York, Georgia and Ontario are used only in their own regions, so they count no countries below.
+York, Georgia, Ontario, Scotland, Wales and Northern Ireland are used only in their own regions, so they count no
+countries below.
 
 | Rules | Own | By region | Stand-in |
 | --- | --- | --- | --- |
@@ -24,7 +25,7 @@ Countries with places under more than one set (listed by the set used outside th
 - **United States:** New York's, California's and Georgia's own; every other state uses California's.
 - **Canada:** British Columbia's and Ontario's own; every other province and territory uses British Columbia's.
 - **Australia:** New South Wales's own; every other state and territory uses New South Wales's.
-- **United Kingdom:** England's own; Scotland, Wales and Northern Ireland use England's.
+- **United Kingdom:** England's, Scotland's, Wales's and Northern Ireland's own; a place with no region uses England's.
 
 | Code | Country | Rules | Status |
 | --- | --- | --- | --- |

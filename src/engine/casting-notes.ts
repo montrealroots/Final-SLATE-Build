@@ -15,6 +15,9 @@ const YEAR = 365.25;
 /** The rules' names and what they call things, in words for the casting and Cast pages (minors.ts has the numbers). */
 export const RULE_WORDS: Record<Minor['rules']['id'], { name: string; licence: string; night: string; setAside: string }> = {
   'GB-ENG': { name: "England's child performance regulations", licence: 'a child performance licence from the local authority', night: "the licensing authority's permission for night work", setAside: '' },
+  'GB-SCT': { name: "Scotland's child performance regulations", licence: 'a child performance licence from the local authority', night: "the licensing authority's permission for night work", setAside: '' },
+  'GB-WLS': { name: "Wales's child performance regulations", licence: 'a child performance licence from the local authority', night: "the licensing authority's permission for night work", setAside: '' },
+  'GB-NIR': { name: "Northern Ireland's child performance regulations", licence: 'a child performance licence from the Education Authority', night: "the board's permission for an outdoor scene after the latest hour", setAside: '' },
   'US-CA': { name: "California's rules for minors in entertainment", licence: 'an Entertainment Work Permit for the minor and a permit to employ minors', night: "the Labor Commissioner's approval for night work", setAside: 'a Coogan trust account (California Family Code §6752)' },
   'US-NY': { name: "New York's child performer regulations", licence: "a Child Performer Permit and the employer's notice of use", night: 'a variance for night work', setAside: 'a child performer trust account (New York Part 186)' },
   'US-GA': { name: "Georgia's rules for minors in entertainment", licence: "the Department of Labor's certification of the minor, the production and the location", night: "the Commissioner's written approval for earlier or later hours", setAside: '' },

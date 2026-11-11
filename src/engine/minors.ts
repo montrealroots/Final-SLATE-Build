@@ -39,7 +39,7 @@ export interface AgeBand {
 }
 
 export interface MinorRules {
-  id: 'GB-ENG' | 'US-CA' | 'US-NY' | 'US-GA' | 'CA-BC' | 'CA-ON' | 'IE' | 'DE' | 'FR' | 'AU-NSW';
+  id: 'GB-ENG' | 'GB-SCT' | 'GB-WLS' | 'GB-NIR' | 'US-CA' | 'US-NY' | 'US-GA' | 'CA-BC' | 'CA-ON' | 'IE' | 'DE' | 'FR' | 'AU-NSW';
   /** Where the rules are from, for messages: "England". Their full names are in casting-notes.ts RULE_WORDS. */
   place: string;
   /** The age from which these rules stop applying. */
@@ -103,6 +103,65 @@ const ENGLAND: MinorRules = {
   licence: { leadDays: 21, nightLeadDays: 21 },
   restHours: 12, // regulation 24
   setAside: null,
+  read: 'read',
+};
+
+/**
+ * Scotland: The Children (Performances and Activities) (Scotland) Regulations 2014 (SSI 2014/372), in force 20 February
+ * 2015. England's, with less performing from 9 and fewer children to a chaperone.
+ */
+const SCOTLAND: MinorRules = {
+  ...ENGLAND,
+  id: 'GB-SCT',
+  place: 'Scotland',
+  bands: [
+    // Regulations 19 to 21: hours at the place, and performing or rehearsing.
+    { fromDays: 0, toDays: days(5), label: 'under 5', atPlace: 5, work: 2, workNoSchool: 2 },
+    { fromDays: days(5), toDays: days(9), label: '5 to 8', atPlace: 8, work: 3, workNoSchool: 3 },
+    { fromDays: days(9), toDays: days(16), label: '9 to 15', atPlace: 9.5, work: 4, workNoSchool: 4 },
+  ],
+  supervisor: { roleId: 'chaperone', perGroup: 10, perGroupNoSchool: 10, underAge: 16 }, // regulation 14(2)
+  teaching: { roleId: 'tutor', hours: 3, perGroup: 6 }, // regulation 12: a teacher with at most 5 other children
+  // Regulation 4(2), 21 days; rest, regulation 22.
+};
+
+/**
+ * Wales: The Children (Performances and Activities) (Wales) Regulations 2015 (WSI 2015/1757), in force 30 October 2015.
+ * Its hours, chaperones, teaching, lead time and rest are England's figures.
+ */
+const WALES: MinorRules = {
+  ...ENGLAND,
+  id: 'GB-WLS',
+  place: 'Wales',
+  // Hours (Schedule 2), chaperone 12 (regulation 17(3)), teaching 3 hours and 6 children (regulation 15), 21 days
+  // (regulation 4(2)), 12 hours' rest (regulation 26).
+};
+
+/**
+ * Northern Ireland: The Children (Public Performances) Regulations (Northern Ireland) 1996 (SR 1996/481), Part VI for
+ * film and broadcast. legislation.gov.uk holds only the text as made, so later amendments weren't checked.
+ */
+const NORTHERN_IRELAND: MinorRules = {
+  id: 'GB-NIR',
+  place: 'Northern Ireland',
+  adultAt: 16, // compulsory school age, as in England (taken as the 16th birthday)
+  minAgeDays: 0,
+  bands: [
+    // Regulations 29 to 31: hours at the place, and performing or rehearsing; regulation 27, at most 5 days in 7.
+    { fromDays: 0, toDays: days(5), label: 'under 5', atPlace: 5, work: 2, workNoSchool: 2, days: 5 },
+    { fromDays: days(5), toDays: days(13), label: '5 to 12', atPlace: 7.5, work: 3, workNoSchool: 3, days: 5 },
+    { fromDays: days(13), toDays: days(16), label: '13 to 15', atPlace: 8, work: 3.5, workNoSchool: 3.5, days: 5 },
+  ],
+  supervisor: { roleId: 'chaperone', perGroup: 12, perGroupNoSchool: 12, underAge: 16 }, // regulation 14(3): 11 others
+  teaching: { roleId: 'tutor', hours: 3, perGroup: 6 }, // regulation 12: 3 hours a school day, 5 other children
+  nurseUnderDays: null,
+  // Regulation 3(3): the application reaches the authority 30 days before. Work after the latest hour is only for an
+  // outdoor scene, with the board's permission (regulation 32), asked for with the licence.
+  licence: { leadDays: 30, nightLeadDays: 30 },
+  // No general overnight rest is set: the hours (none after 7 p.m. or before 9 a.m.) leave 14, and 16 after late work
+  // (regulation 32(2)). The game uses 14.
+  restHours: 14,
+  setAside: null, // regulation 13: the authority may set conditions on earnings; no share is fixed
   read: 'read',
 };
 
@@ -339,7 +398,7 @@ const EUROPE = new Set('AT BE BG HR CY CZ DK EE FI GR HU IE IT LV LT LU MT NL PL
  * The rules for a production based at a place. A place whose own rules aren't recorded uses the nearest recorded set
  * and says so: the rest of the United States uses California's (New York and Georgia have their own), the rest of Canada British Columbia's (Ontario has its own), the rest of
  * Australia and New Zealand New South Wales's, the rest of Europe's single market Germany's (Ireland has its own), everywhere else England's.
- * Scotland, Wales and Northern Ireland have rules of their own, close to England's but not read for the game. The set
+ * Scotland, Wales and Northern Ireland have their own (read November 11, 2026). The set
  * every playable country uses is listed in docs/child-rules/COVERAGE.md.
  */
 export function rulesFor(place: Place): { rules: MinorRules; standIn: string | null } {
@@ -354,7 +413,11 @@ export function rulesFor(place: Place): { rules: MinorRules; standIn: string | n
     case 'IE': return own(IRELAND);
     case 'DE': return own(GERMANY);
     case 'FR': return own(FRANCE);
-    case 'GB': return place.regionCode === 'GB-ENG' || region('england') ? own(ENGLAND) : instead(ENGLAND);
+    case 'GB': return place.regionCode === 'GB-ENG' || region('england') ? own(ENGLAND)
+      : place.regionCode === 'GB-SCT' || region('scotland') ? own(SCOTLAND)
+      : place.regionCode === 'GB-WLS' || region('wales') ? own(WALES)
+      : place.regionCode === 'GB-NIR' || region('northern ireland') ? own(NORTHERN_IRELAND)
+      : instead(ENGLAND);
     default: return EUROPE.has(place.country) ? instead(GERMANY) : instead(ENGLAND);
   }
 }

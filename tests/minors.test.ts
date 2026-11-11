@@ -113,8 +113,30 @@ describe('the rules across the map', () => {
     expect(rulesFor(getPlace('nz-auckland')).rules.id).toBe('AU-NSW');
     expect(rulesFor(getPlace('es-madrid'))).toMatchObject({ rules: { id: 'DE' } });
     expect(rulesFor(getPlace('es-madrid')).standIn).toContain("so Germany's are used");
-    expect(rulesFor(getPlace('gb-edinburgh'))).toMatchObject({ rules: { id: 'GB-ENG' } });
-    expect(rulesFor(getPlace('gb-edinburgh')).standIn).toContain("so England's are used");
+    // Scotland, Wales and Northern Ireland have their own (read November 11, 2026); the gazetteer gives a region's name.
+    expect(rulesFor(getPlace('gb-edinburgh'))).toMatchObject({ rules: { id: 'GB-SCT' }, standIn: null });
+    expect(rulesFor({ ...getPlace('gb-london'), region: 'Wales', regionCode: '' })).toMatchObject({ rules: { id: 'GB-WLS' }, standIn: null });
+    expect(rulesFor({ ...getPlace('gb-london'), region: 'Northern Ireland', regionCode: '' })).toMatchObject({ rules: { id: 'GB-NIR' }, standIn: null });
+    expect(rulesFor({ ...getPlace('gb-london'), region: '', regionCode: '' }).standIn).toContain("so England's are used");
+  });
+
+  it("gives Scotland, Wales and Northern Ireland their own figures, as read", () => {
+    const sct = rulesFor(getPlace('gb-edinburgh')).rules;
+    const wls = rulesFor({ ...getPlace('gb-london'), region: 'Wales', regionCode: 'GB-WLS' }).rules;
+    const nir = rulesFor({ ...getPlace('gb-london'), region: 'Northern Ireland', regionCode: 'GB-NIR' }).rules;
+    const eng = rulesFor(getPlace('gb-london')).rules;
+    const y = (n: number) => Math.round(n * 365.25);
+    // Scotland: 4 hours performing from 9 (England 5), 10 children to a chaperone (England 12).
+    expect(bandFor(sct, y(10))).toMatchObject({ atPlace: 9.5, work: 4 });
+    expect(bandFor(eng, y(10))).toMatchObject({ atPlace: 9.5, work: 5 });
+    expect(sct.supervisor.perGroup).toBe(10);
+    // Wales: England's figures, under its own name.
+    expect({ ...wls, id: 'GB-ENG', place: 'England' }).toEqual(eng);
+    // Northern Ireland: bands 5 to 12 and 13 to 15, 5 days in 7, 30 days' notice, 14 hours between days.
+    expect(bandFor(nir, y(12) + 100)).toMatchObject({ label: '5 to 12', atPlace: 7.5, work: 3, days: 5 });
+    expect(bandFor(nir, y(13) + 1)).toMatchObject({ label: '13 to 15', atPlace: 8, work: 3.5, days: 5 });
+    expect(nir.licence.leadDays).toBe(30);
+    expect(nir.restHours).toBe(14);
   });
 
   it('gives every playable country a set, as docs/child-rules/COVERAGE.md lists it', () => {
@@ -444,14 +466,19 @@ describe('ages, dates and what was read', () => {
       const { rules } = rulesFor({ country: c.code, countryName: c.name, region: '', regionCode: '' } as Place);
       seen.add(rules.id);
     }
-    for (const id of ['US-NY', 'US-GA', 'CA-ON']) seen.add(id);
+    const regional: Record<string, Place> = {
+      'US-NY': getPlace('us-new-york'), 'US-GA': getPlace('us-atlanta'), 'CA-ON': getPlace('ca-toronto'), 'GB-SCT': getPlace('gb-edinburgh'),
+      'GB-WLS': { ...getPlace('gb-london'), region: 'Wales', regionCode: 'GB-WLS' }, 'GB-NIR': { ...getPlace('gb-london'), region: 'Northern Ireland', regionCode: 'GB-NIR' },
+    };
+    for (const id of Object.keys(regional)) seen.add(id);
     for (const id of seen) {
-      const place = { 'US-NY': 'us-new-york', 'US-GA': 'us-atlanta', 'CA-ON': 'ca-toronto' }[id];
-      const rules = place ? rulesFor(getPlace(place)).rules : [...PLAYABLE_COUNTRIES].map((c) => rulesFor({ country: c.code, countryName: c.name, region: '', regionCode: '' } as Place).rules).find((r) => r.id === id)!;
+      const place = regional[id];
+      const rules = place ? rulesFor(place).rules : [...PLAYABLE_COUNTRIES].map((c) => rulesFor({ country: c.code, countryName: c.name, region: '', regionCode: '' } as Place).rules).find((r) => r.id === id)!;
+      expect(rules.id).toBe(id);
       const heading = new RegExp(`^## .*\\(${id}\\): (read|partly read)$`, 'm').exec(log);
       expect(heading, id).not.toBeNull();
       expect(rules.read, id).toBe(heading![1] === 'read' ? 'read' : 'partly');
     }
-    expect(seen.size).toBe(10);
+    expect(seen.size).toBe(13);
   });
 });

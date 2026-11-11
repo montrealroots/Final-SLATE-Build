@@ -32,7 +32,10 @@ Gaps in each set, as found when it was read:
 
 | Set | What wasn't read, or what the game decided |
 | --- | --- |
-| England | Scotland's, Wales's and Northern Ireland's own regulations; they use England's. |
+| England | Nothing recorded. Scotland, Wales and Northern Ireland had used England's until November 11, 2026, when their own were read. |
+| Scotland | Nothing recorded. |
+| Wales | Nothing recorded. |
+| Northern Ireland | legislation.gov.uk has only the text as made in 1996, so amendments since weren't checked. No general overnight rest: the game uses the 14 hours the latest and earliest times leave. Its bands, its 5 days in 7, and its earliest and latest times are encoded only as hours and days; times of day aren't modelled for any set. |
 | California | Nothing recorded. |
 | New York | The number of children per teacher; the game uses California's ten. A parent may be the responsible person; the game hires a chaperone. |
 | Georgia | A processing time for certification; the game allows two days. A 15% blocked trust was proposed (HB 968, HB 418), not found enacted. |
@@ -58,6 +61,51 @@ Gaps in each set, as found when it was read:
   cares for the child (reg 15(2)).
 - **Tuition:** at least 3 hours each school day; at most 6 children per teacher, or 12 at a similar standard (reg 13).
 - **Licence:** may be refused if applied for less than 21 days before (reg 4(2)).
+
+## Scotland (GB-SCT): read
+
+- **Source:** The Children (Performances and Activities) (Scotland) Regulations 2014, SSI 2014/372, legislation.gov.uk.
+  In force February 20, 2015.
+- **Hours (regs 19 to 21):**
+  - under 5: 5 hours at the place, 2 performing, between 08:00 and 20:00;
+  - 5 to 8: 8 at the place, 3 performing, between 07:00 and 23:00;
+  - 9 and over: 9.5 at the place, 4 performing, between 07:00 and 23:00.
+- **Rest:** 12 hours overnight (reg 22). At most 6 consecutive days (reg 26); 14 days' break after 8 weeks (reg 27).
+- **Chaperone:** up to 10 children each, 3 if the chaperone is the private teacher (reg 14(2)).
+- **Tuition:** 3 hours each school day, or for film and broadcast 6 hours a week with at most 5 on a day; a teacher has at
+  most 5 other children, or 11 at a similar standard (reg 12).
+- **Licence:** may be refused if applied for less than 21 days before (reg 4(2)).
+- **Earnings:** the authority may set conditions (reg 13); no share is fixed.
+
+## Wales (GB-WLS): read
+
+- **Source:** The Children (Performances and Activities) (Wales) Regulations 2015, WSI 2015/1757, legislation.gov.uk. In
+  force October 30, 2015.
+- **Hours:** under 5, 5 hours at the place and 2 performing, 07:00 to 22:00; 5 to 8, 8 and 3; 9 and over, 9.5 and 5,
+  07:00 to 23:00. England's figures.
+- **Rest:** 12 hours overnight (reg 26). At most 6 consecutive days (reg 28).
+- **Chaperone:** up to 12 children each, 3 if the chaperone is the private teacher (reg 17(3)).
+- **Tuition:** 3 hours each school day, or 6 a week with at most 5 on a day; at most 6 children per teacher, 12 at a
+  similar standard (reg 15).
+- **Licence:** may be refused if applied for less than 21 days before (reg 4(2)).
+- **Earnings:** at the authority's discretion (reg 16); no share is fixed.
+
+## Northern Ireland (GB-NIR): read
+
+- **Source:** The Children (Public Performances) Regulations (Northern Ireland) 1996, SR 1996/481, legislation.gov.uk,
+  Parts II, IV and VI (film and broadcast). Only the text as made is published there.
+- **Hours (regs 29 to 31):**
+  - under 5: 5 hours at the place, 2 performing, at most 30 minutes at a time, 09:30 to 16:30;
+  - 5 to 12: 7.5 at the place, 3 performing, at most 45 minutes at a time, 09:00 to 16:30 (17:00 at 10 and over);
+  - 13 and over: 8 at the place, 3.5 performing, at most an hour at a time, 09:00 to 19:00.
+- **Days:** at most 5 in any 7 (reg 27). 14 days' break after 8 weeks at the maximum (reg 18).
+- **Late work:** only for an outdoor scene, with the board's permission; 16 hours before the next performance
+  (reg 32).
+- **Matron (chaperone):** at most 11 other children, 2 if the matron is the private teacher (reg 14).
+- **Tuition:** 3 hours each school day, or 6 a week with at most 5 on a day; a teacher has at most 5 other children, or
+  11 at a similar standard (reg 12).
+- **Licence:** the application reaches the authority 30 days before the first performance (reg 3(3)).
+- **Earnings:** the authority may require them dealt with as it approves (reg 13); no share is fixed.
 
 ## California (US-CA): read
 
