@@ -3,16 +3,17 @@
 // Remove; and a pack from a file, for one the game doesn't offer.
 import { useEffect, useRef, useState } from 'react';
 import { forgetCatalog, retryCatalog } from '../catalog/load';
-import { installOffered, installPack, installedPacks, offeredMods, ownerSession, ownerSignIn, ownerSignOut, packExpires, removePack, type InstalledPack, type OfferedMod, type OwnerSession, type PackKind, type PackMeta } from '../catalog/packs';
+import { STORAGE_MARGIN, downloadedSoFar, installOffered, installPack, installedPacks, offeredMods, ownerSession, ownerSignIn, ownerSignOut, packExpires, removePack, storageRoom, type InstalledPack, type OfferedMod, type OwnerSession, type PackKind, type PackMeta } from '../catalog/packs';
+import { picturesOn, setPicturesOn } from './Picture';
 import { expirePeople, startLivingWorld } from './App';
-import { TextField, plural } from './components';
+import { Check, TextField, plural } from './components';
 import { store, useStore } from './store';
 
 const day = (iso: string | number) => new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 const mb = (bytes: number) => `${(bytes / 1048576).toFixed(1)} MB`;
 const n = (x: number) => x.toLocaleString('en-US');
-const WHERE: Record<PackKind, string> = { catalog: 'Open Companies to see the films and series.', cinemas: 'Open a place in World to see its cinemas.' };
-const WHAT: Record<PackKind, string> = { catalog: 'Every film, series, season, episode and person the catalog covers, and the networks they air on.', cinemas: 'Cinemas worldwide, and what they show.' };
+const WHERE: Record<PackKind, string> = { catalog: 'Open Companies to see the films and series.', cinemas: 'Open a place in World to see its cinemas.', images: "Open a film, a series or a person in Companies to see its picture." };
+const WHAT: Record<PackKind, string> = { catalog: 'Every film, series, season, episode and person the catalog covers, and the networks they air on.', cinemas: 'Cinemas worldwide, and what they show.', images: "Optional: posters and profile photos for some of the films, series and people. The game works the same without it, and a picture changes nothing in your story." };
 
 /** After a mod comes or goes, every page reads the catalog afresh, and an open game's world starts or pauses. */
 async function refreshGame(kind: PackKind, installed: boolean): Promise<void> {
@@ -25,13 +26,28 @@ async function refreshGame(kind: PackKind, installed: boolean): Promise<void> {
   store.emit();
 }
 
-function About({ p, size }: { p: PackMeta; size: number }) {
+function About({ p, size, toInstall }: { p: PackMeta; size: number; toInstall: boolean }) {
   const ends = packExpires(p);
   return (
     <>
       <div className="dim small">{WHAT[p.kind]} From {p.source}, gathered {day(p.retrieved?.from ?? p.builtAt)}. {mb(size)}.{ends ? ` Withdrawn on ${day(ends)}: TMDB allows its data to be kept six months.` : ''}</div>
-      {p.kind === 'catalog' && <div className="dim small">This product uses the TMDB API but is not endorsed or certified by TMDB.</div>}
+      {toInstall && <div className="dim small">Installing it needs about {mb(size * STORAGE_MARGIN)} free in this browser.</div>}
+      {p.kind !== 'cinemas' && <div className="dim small">This product uses the TMDB API but is not endorsed or certified by TMDB.</div>}
     </>
+  );
+}
+
+/** How much room this browser reports, where it reports any, and what the installed mods take. */
+function Storage({ installed, version }: { installed: Map<PackKind, InstalledPack> | null; version: number }) {
+  const [room, setRoom] = useState<Awaited<ReturnType<typeof storageRoom>>>(null);
+  useEffect(() => { let live = true; void storageRoom().then((r) => { if (live) setRoom(r); }); return () => { live = false; }; }, [version, installed]);
+  const used = [...(installed?.values() ?? [])].reduce((a, p) => a + p.bytes, 0);
+  return (
+    <p className="dim small" aria-label="Storage In This Browser">
+      {used > 0 ? `The mods installed here hold ${mb(used)}. ` : ''}
+      {room ? `This browser reports ${mb(room.free)} free for the game, of ${mb(room.quota)}. ` : "This browser doesn't say how much room it has. "}
+      An update is stored beside the mod it replaces and takes its place only once it is whole, so for a moment both are held; if it is cut short or there isn't room, the one you have stays. Your saved games are kept apart from mods, and removing a mod never touches them.
+    </p>
   );
 }
 
@@ -147,6 +163,8 @@ export function DataPacks() {
   // Counts installs, removals and sign-ins, so the world's records are compared again after each.
   const [version, setVersion] = useState(0);
   const input = useRef<HTMLInputElement>(null);
+  const cancel = useRef<AbortController | null>(null);
+  const [showPictures, setShowPictures] = useState(picturesOn);
   const [session, setSession] = useState<OwnerSession>({ owner: false, signIn: false });
   const reload = () => void installedPacks().then(setInstalled);
   const ask = () => { void offeredMods().then(setOffered); void ownerSession().then(setSession); };
@@ -175,13 +193,15 @@ export function DataPacks() {
       setError(e instanceof Error ? e.message : String(e));
     } finally {
       setBusy(false);
+      cancel.current = null;
       if (input.current) input.current.value = '';
       reload();
     }
   };
+  const signal = () => (cancel.current = new AbortController()).signal;
   const install = (m: OfferedMod) => run(m.name, () => installOffered(m, (phase, done, total) =>
-    setStatus(phase === 'download' ? `Downloading ${m.name}: ${mb(done)} of ${mb(total)}…` : `Installing ${m.name}: ${n(done)} of ${n(total)} files…`)));
-  const fromFile = (f: File) => run('the mod', () => installPack(f, (done, total) => setStatus(`Installing: ${n(done)} of ${n(total)} files…`)));
+    setStatus(phase === 'download' ? `Downloading ${m.name}: ${mb(done)} of ${mb(total)}…` : `Installing ${m.name}: ${n(done)} of ${n(total)} files…`), signal()));
+  const fromFile = (f: File) => run('the mod', () => installPack(f, (done, total) => setStatus(`Installing: ${n(done)} of ${n(total)} files…`), signal()));
   const remove = async (p: InstalledPack) => {
     setBusy(true); setError(null);
     try {
@@ -215,7 +235,8 @@ export function DataPacks() {
               <li key={kind} className="list-item">
                 <span className="grow">
                   <strong>{p.name}</strong> {have && <span className="chip chip-positive">Installed</span>}
-                  <About p={newer ? offer! : p} size={newer ? offer!.bytes : have ? have.bytes : offer!.bytes} />
+                  <About p={newer ? offer! : p} size={newer ? offer!.bytes : have ? have.bytes : offer!.bytes} toInstall={!!offer && (!have || newer)} />
+                  {offer && (!have || newer) && downloadedSoFar(offer) > 0 && !busy && <div className="dim small">{mb(downloadedSoFar(offer))} of it is already downloaded and kept until you close the game; installing goes on from there.</div>}
                 </span>
                 {offer && (!have || newer) && <button className="btn btn-sm btn-primary" disabled={busy} onClick={() => void install(offer)} aria-label={`${newer ? 'Update' : 'Install'} ${offer.name}`}>{newer ? 'Update' : 'Install'}</button>}
                 {have && <button className="btn btn-sm" disabled={busy} onClick={() => void remove(have)} aria-label={`Remove ${have.name}`}>Remove</button>}
@@ -228,8 +249,14 @@ export function DataPacks() {
       <input ref={input} type="file" accept=".slatepack" hidden aria-label="Mod File"
         onChange={(e) => { const f = e.target.files?.[0]; if (f) void fromFile(f); }} />
       <button className="btn btn-sm" style={{ marginTop: 8 }} disabled={busy} onClick={() => input.current?.click()}>Install From A File</button>
+      {busy && cancel.current && <button className="btn btn-sm" style={{ marginTop: 8, marginLeft: 8 }} onClick={() => cancel.current?.abort()}>Cancel</button>}
       {status && <p role="status" className="muted">{status}</p>}
       {error && <p role="alert" className="error">{error}</p>}
+      <Storage installed={installed} version={version} />
+      {(installed?.has('images') || offered.some((m) => m.kind === 'images')) && (
+        <Check label="Show Pictures From The Picture Pack" checked={showPictures} onChange={(v) => { setPicturesOn(v); setShowPictures(v); }}
+          hint="On this device only. Off, every picture is a plain placeholder and none is read from storage. A device that asks its browser for less data is shown none either way." />
+      )}
     </fieldset>
     <WorldRecords version={version} />
     </>

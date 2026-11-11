@@ -6,17 +6,23 @@
 //
 // TMDB's terms travel with the film pack: one older than six months from its oldest response is refused, and one that
 // ages past that while installed is deleted the next time the game reads it (1.C). Remove deletes every record (1.D).
+//
+// From November 11, 2026 (the Creative Depth package, milestone G): a pack is installed beside the one it replaces and
+// takes its place in a single step, so an install that is cut short, or runs out of room, leaves the old pack in use;
+// the browser's free space is asked before anything is written; and a third kind of pack holds pictures (profile
+// photos and posters), which is optional, never needed by the catalog, and kept under the same six months.
 
-export type PackKind = 'catalog' | 'cinemas';
+export type PackKind = 'catalog' | 'cinemas' | 'images';
 export interface PackMeta {
   kind: PackKind;
   name: string;
   source: string;
   builtAt: string;
-  /** The film pack's TMDB retrieval window, which sets when it must go. */
+  /** The film pack's or the picture pack's TMDB retrieval window, which sets when it must go. */
   retrieved?: { from: string; to: string; maxAgeDays: number };
 }
-export interface InstalledPack extends PackMeta { files: number; bytes: number; installedAt: string }
+/** `gen` is which copy of the pack's records is in use (see installPack); a pack installed before generations has none. */
+export interface InstalledPack extends PackMeta { files: number; bytes: number; installedAt: string; gen?: number }
 
 const MAGIC = 'SLATEPACK1\n';
 const DAY = 86_400_000;
@@ -25,7 +31,7 @@ const MAX_AGE_DAYS = 180;
 
 /** When a pack must be withdrawn, or null for one with no such limit (the cinemas, from Wikidata, CC0). */
 export function packExpires(meta: PackMeta): number | null {
-  if (meta.kind !== 'catalog') return null;
+  if (meta.kind !== 'catalog' && meta.kind !== 'images') return null;
   return Date.parse(meta.retrieved!.from) + Math.min(meta.retrieved!.maxAgeDays ?? MAX_AGE_DAYS, MAX_AGE_DAYS) * DAY;
 }
 
@@ -42,11 +48,12 @@ export async function parsePack(file: Blob): Promise<{ meta: PackMeta; records: 
     throw new Error('This data pack is damaged: its contents list can\'t be read.');
   }
   if (h.format !== 1) throw new Error('This data pack was made for a newer version of SLATE.');
-  if ((h.kind !== 'catalog' && h.kind !== 'cinemas') || !Array.isArray(h.entries) || typeof h.builtAt !== 'string') throw new Error('This data pack is damaged: its contents list is incomplete.');
+  if ((h.kind !== 'catalog' && h.kind !== 'cinemas' && h.kind !== 'images') || !Array.isArray(h.entries) || typeof h.builtAt !== 'string') throw new Error('This data pack is damaged: its contents list is incomplete.');
   if (h.kind === 'catalog' && !h.retrieved?.from) throw new Error("This film pack doesn't say when its data was gathered, so TMDB's six months can't be kept. It wasn't installed.");
+  if (h.kind === 'images' && !h.retrieved?.from) throw new Error("This picture pack doesn't say when its pictures were gathered, so TMDB's six months can't be kept. It wasn't installed.");
   if (start + h.entries.reduce((n, e) => Math.max(n, e[1] + e[2]), 0) > file.size) throw new Error('This data pack is incomplete: the file was cut short.');
   // Every record belongs to the pack's own kind, so one pack can never replace the other's files.
-  if (h.entries.some(([p]) => p.startsWith('cinemas/') !== (h.kind === 'cinemas'))) throw new Error('This data pack is damaged: it holds files of another kind.');
+  if (h.entries.some(([p]) => kindOf(p) !== h.kind)) throw new Error('This data pack is damaged: it holds files of another kind.');
   const { kind, name, source, builtAt, retrieved } = h;
   return { meta: { kind, name, source, builtAt, ...(retrieved ? { retrieved } : {}) }, records: h.entries.map(([p, o, n]) => [p, file.slice(start + o, start + o + n)]) };
 }
@@ -58,8 +65,16 @@ export async function decodeRecord(blob: Blob): Promise<unknown> {
 
 // ---------- storage: IndexedDB "slate-packs", records keyed "<kind>:<path>" ----------
 
-const kindOf = (path: string): PackKind => (path.startsWith('cinemas/') ? 'cinemas' : 'catalog');
-const range = (kind: PackKind) => IDBKeyRange.bound(`${kind}:`, `${kind}:￿`);
+const kindOf = (path: string): PackKind => (path.startsWith('cinemas/') ? 'cinemas' : path.startsWith('images/') ? 'images' : 'catalog');
+/**
+ * A record's key. Each install writes its records under a generation of their own ("catalog@3:titles/..."), so the
+ * records in use are never touched while their replacement is being written. Packs installed before November 11, 2026
+ * have no generation ("catalog:titles/...").
+ */
+const key = (kind: PackKind, gen: number | undefined, path: string) => (gen ? `${kind}@${gen}:${path}` : `${kind}:${path}`);
+const range = (kind: PackKind, gen: number | undefined) => IDBKeyRange.bound(key(kind, gen, ''), key(kind, gen, '\uffff'));
+/** Every record of a kind, whatever its generation. */
+const allOf = (kind: PackKind) => [IDBKeyRange.bound(`${kind}:`, `${kind}:\uffff`), IDBKeyRange.bound(`${kind}@`, `${kind}@\uffff`)];
 const req = <T>(r: IDBRequest<T>) => new Promise<T>((ok, fail) => { r.onsuccess = () => ok(r.result); r.onerror = () => fail(r.error); });
 const done = (tx: IDBTransaction) => new Promise<void>((ok, fail) => { tx.oncomplete = () => ok(); tx.onerror = () => fail(tx.error); tx.onabort = () => fail(tx.error ?? new Error('aborted')); });
 
@@ -84,9 +99,12 @@ export function installedPacks(): Promise<Map<PackKind, InstalledPack>> {
       const ends = packExpires(p);
       if (ends !== null && Date.now() >= ends) { await deleteKind(p.kind); withdrawn.add(p.kind); } else out.set(p.kind, p);
     }
+    // Once a session: clear what an unfinished install or a replaced pack left behind.
+    if (!swept) { swept = true; for (const kind of ['catalog', 'cinemas', 'images'] as PackKind[]) await sweep(kind, out.get(kind)?.gen, out.has(kind)).catch(() => undefined); }
     return out;
   })().catch(() => { packs = null; return new Map(); }));
 }
+let swept = false;
 /** Packs deleted this session because TMDB's six months had passed, so the pages can say why the catalog went. */
 const withdrawn = new Set<PackKind>();
 export const packWithdrawn = (kind: PackKind) => withdrawn.has(kind);
@@ -94,41 +112,98 @@ export const packWithdrawn = (kind: PackKind) => withdrawn.has(kind);
 async function deleteKind(kind: PackKind): Promise<void> {
   const tx = (await db()).transaction(['packs', 'files'], 'readwrite');
   tx.objectStore('packs').delete(kind);
-  tx.objectStore('files').delete(range(kind));
+  for (const r of allOf(kind)) tx.objectStore('files').delete(r);
   await done(tx);
+  forgetImages();
 }
 
 /**
- * Install a pack, replacing one of its kind. Nothing is used until every record is stored and the pack is listed, so an
- * install cut short leaves the game as it was (its records are deleted, and the old pack is gone, as the player chose to
- * replace it).
+ * Records left by an install that never finished, or by a pack since replaced: every generation of a kind but the one
+ * in use. Run when the packs are first read, so a tab closed mid-install leaves nothing behind for long.
  */
-export async function installPack(file: Blob, progress?: (stored: number, total: number) => void): Promise<InstalledPack> {
+async function sweep(kind: PackKind, keep: number | undefined, listed: boolean): Promise<void> {
+  const d = await db();
+  const tx = d.transaction('files', 'readwrite');
+  const store = tx.objectStore('files');
+  if (!listed) { for (const r of allOf(kind)) store.delete(r); await done(tx); return; }
+  if (keep) store.delete(allOf(kind)[0]); // the unnumbered copy from before generations
+  const cursor = store.openKeyCursor(allOf(kind)[1]);
+  cursor.onsuccess = () => {
+    const c = cursor.result;
+    if (!c) return;
+    const g = Number(/^[a-z]+@(\d+):/.exec(String(c.key))?.[1]);
+    if (g === keep) c.continue(key(kind, g, '\uffff')); // skip the generation in use in one step
+    else { store.delete(range(kind, g)); c.continue(key(kind, g, '\uffff')); }
+  };
+  await done(tx);
+}
+
+/** How much room this browser says is left, or null where it doesn't say. */
+export async function storageRoom(): Promise<{ free: number; used: number; quota: number } | null> {
+  try {
+    const e = await navigator.storage?.estimate?.();
+    if (!e || typeof e.quota !== 'number' || typeof e.usage !== 'number') return null;
+    return { free: Math.max(0, e.quota - e.usage), used: e.usage, quota: e.quota };
+  } catch { return null; }
+}
+/** Room asked for beyond a pack's own size: the database's own overhead. Measured at about a tenth; a fifth is asked. */
+export const STORAGE_MARGIN = 1.2;
+
+/**
+ * Install a pack, replacing one of its kind. The new records are written beside the old ones, under a generation of
+ * their own; only when every one is stored does the pack's listing change to point at them, in one step, and only then
+ * are the old records deleted. So an install that is cut short, fails, or runs out of room leaves the pack that was
+ * installed exactly as it was, still in use. Until November 11, 2026 the old pack was deleted first.
+ *
+ * Before anything is written, the browser is asked how much room it has. If it says there isn't enough for the new
+ * pack beside the old one, nothing is written and the message says how much is needed.
+ */
+export async function installPack(file: Blob, progress?: (stored: number, total: number) => void, signal?: AbortSignal): Promise<InstalledPack> {
   const { meta, records } = await parsePack(file);
   const ends = packExpires(meta);
-  if (ends !== null && Date.now() >= ends) throw new Error(`This film pack was gathered more than six months ago (from ${meta.retrieved!.from.slice(0, 10)}), the longest TMDB allows its data to be kept, so it can't be installed. Ask for a newer one.`);
-  packs = null;
-  await deleteKind(meta.kind);
+  const what = meta.kind === 'images' ? 'picture pack' : 'film pack';
+  if (ends !== null && Date.now() >= ends) throw new Error(`This ${what} was gathered more than six months ago (from ${meta.retrieved!.from.slice(0, 10)}), the longest TMDB allows its data to be kept, so it can't be installed. A newer one is needed.`);
+  const bytes = records.reduce((n, [, b]) => n + b.size, 0);
+  const before = (await installedPacks()).get(meta.kind);
+  const room = await storageRoom();
+  if (room && room.free < bytes * STORAGE_MARGIN) {
+    const mb = (n: number) => `${(n / 1048576).toFixed(1)} MB`;
+    throw new Error(`There isn't room in this browser's storage for ${meta.name}: it needs about ${mb(bytes * STORAGE_MARGIN)} and ${mb(room.free)} is free. Nothing was changed${before ? `, and ${before.name} is still installed. Removing it first would free about ${mb(before.bytes)}` : ''}.`);
+  }
   const d = await db();
+  const gen = (before?.gen ?? 0) + 1;
+  const stop = () => { if (signal?.aborted) throw new DOMException('cancelled', 'AbortError'); };
   try {
+    // A generation number is reused after a failed install, so clear it first.
+    { const tx = d.transaction('files', 'readwrite'); tx.objectStore('files').delete(range(meta.kind, gen)); await done(tx); }
     for (let i = 0; i < records.length; i += 400) {
+      stop();
       // Bytes, not the file's slices: WebKit can't keep a Blob in IndexedDB in a private window (found November 11, 2026,
       // in Playwright's WebKit), and the bytes are read before the transaction, which would close while waiting.
       const batch = await Promise.all(records.slice(i, i + 400).map(async ([path, blob]) => [path, await blob.arrayBuffer()] as const));
       const tx = d.transaction('files', 'readwrite');
-      for (const [path, bytes] of batch) tx.objectStore('files').put(bytes, `${meta.kind}:${path}`);
+      for (const [path, buf] of batch) tx.objectStore('files').put(buf, key(meta.kind, gen, path));
       await done(tx);
       progress?.(Math.min(i + 400, records.length), records.length);
     }
-    const installed: InstalledPack = { ...meta, files: records.length, bytes: records.reduce((n, [, b]) => n + b.size, 0), installedAt: new Date().toISOString() };
+    stop();
+    const installed: InstalledPack = { ...meta, files: records.length, bytes, installedAt: new Date().toISOString(), gen };
+    // The one step that changes which pack is in use.
     const tx = d.transaction('packs', 'readwrite');
     tx.objectStore('packs').put(installed);
     await done(tx);
+    packs = null;
     withdrawn.delete(meta.kind);
+    forgetImages();
+    // The old records go last. If this is cut short they are swept the next time the packs are read.
+    await sweep(meta.kind, gen, true).catch(() => undefined);
     return installed;
   } catch (e) {
-    await deleteKind(meta.kind).catch(() => undefined);
-    throw new Error((e as DOMException)?.name === 'QuotaExceededError' ? "There isn't room in this browser's storage for this pack. Free some space and try again." : "The pack couldn't be stored in this browser.");
+    // The new, unfinished records are removed; the pack that was installed is untouched.
+    await (async () => { const tx = d.transaction('files', 'readwrite'); tx.objectStore('files').delete(range(meta.kind, gen)); await done(tx); })().catch(() => undefined);
+    const kept = before ? ` ${before.name} is still installed, as it was.` : '';
+    if ((e as DOMException)?.name === 'AbortError') throw new Error(`Installing ${meta.name} was cancelled. Nothing was changed.${kept}`);
+    throw new Error(((e as DOMException)?.name === 'QuotaExceededError' ? `There isn't room in this browser's storage for ${meta.name}. Free some space and try again.` : `${meta.name} couldn't be stored in this browser.`) + kept);
   } finally {
     packs = null;
   }
@@ -148,8 +223,81 @@ export async function removePack(kind: PackKind): Promise<void> {
 export async function packFile(path: string): Promise<{ data: unknown } | 'gone' | 'withdrawn' | undefined> {
   const kind = kindOf(path);
   if (!(await installedPacks()).has(kind)) return packWithdrawn(kind) ? 'withdrawn' : undefined;
-  const bytes = await req((await db()).transaction('files').objectStore('files').get(`${kind}:${path}`) as IDBRequest<ArrayBuffer | undefined>);
+  const gen = (await installedPacks()).get(kind)?.gen;
+  const bytes = await req((await db()).transaction('files').objectStore('files').get(key(kind, gen, path)) as IDBRequest<ArrayBuffer | undefined>);
   return bytes ? { data: await decodeRecord(new Blob([bytes])) } : 'gone';
+}
+
+// ---------- pictures (the optional picture pack) ----------
+
+/** What the picture pack says about one picture: where it came from and what is known of it. Never a claim of rights. */
+export interface PictureRecord {
+  /** TMDB's own path for the picture, its identity there. */
+  p: string;
+  w: number;
+  h: number;
+  /** The day it was fetched. */
+  at: string;
+  /** The language TMDB records for it, where it records one (posters); null where it doesn't. */
+  loc: string | null;
+}
+export interface PictureIndex {
+  version: 1;
+  provider: 'TMDB';
+  /** The size each kind of picture was fetched at, as TMDB names its sizes. */
+  sizes: { profile: string; poster: string };
+  /** What is and isn't known about rights, shown wherever a picture's details are. */
+  rights: string;
+  /** By subject: "person:31", "movie:13", "tv:1399". */
+  entries: Record<string, PictureRecord>;
+}
+
+let pictureIndex: Promise<PictureIndex | null> | null = null;
+const pictureUrls = new Map<string, string>();
+/** Drop every picture held in memory: after a pack comes, goes or is replaced, and when the picture pack expires. */
+export function forgetImages(): void {
+  pictureIndex = null;
+  for (const u of pictureUrls.values()) URL.revokeObjectURL(u);
+  pictureUrls.clear();
+  // Every picture on a page looks again: its pack has come, gone, been replaced or expired.
+  if (typeof window !== 'undefined') window.dispatchEvent(new Event('slate-packs'));
+}
+
+/**
+ * Looks again at what is installed, so a film or picture pack that has passed TMDB's six months while the game stayed
+ * open is deleted now rather than at the next visit. Returns the kinds withdrawn by this look. Run every hour (App.tsx).
+ */
+export async function expirePacks(): Promise<PackKind[]> {
+  const before = new Set(withdrawn);
+  packs = null;
+  await installedPacks();
+  const gone = [...withdrawn].filter((k) => !before.has(k));
+  if (gone.includes('images')) forgetImages();
+  return gone;
+}
+/** The installed picture pack's index, or null when none is installed (or it has been withdrawn for its age). */
+export function pictures(): Promise<PictureIndex | null> {
+  return (pictureIndex ??= (async () => {
+    const f = await packFile('images/index.json');
+    return f && typeof f === 'object' ? (f.data as PictureIndex) : null;
+  })().catch(() => null));
+}
+/**
+ * One picture as an address the page can show, or null when the pack has none for the subject. The picture's bytes are
+ * read from this browser's storage only when asked, and the address is forgotten with the pack.
+ */
+export async function pictureUrl(subject: string): Promise<string | null> {
+  const index = await pictures();
+  if (!index?.entries[subject]) return null;
+  const hit = pictureUrls.get(subject);
+  if (hit) return hit;
+  const gen = (await installedPacks()).get('images')?.gen;
+  const bytes = await req((await db()).transaction('files').objectStore('files').get(key('images', gen, `images/${subject.replace(':', '/')}`)) as IDBRequest<ArrayBuffer | undefined>);
+  if (!bytes) return null;
+  const raw = await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).blob();
+  const url = URL.createObjectURL(new Blob([raw], { type: 'image/jpeg' }));
+  pictureUrls.set(subject, url);
+  return url;
 }
 
 // ---------- mods the game offers (server/catalog-handler.mjs, /mods/) ----------
@@ -169,26 +317,46 @@ export async function offeredMods(): Promise<OfferedMod[]> {
   }
 }
 
-/** Download a mod, saying how much has come, then install it. */
-export async function installOffered(mod: OfferedMod, progress: (phase: 'download' | 'install', done: number, total: number) => void): Promise<InstalledPack> {
+/** What has come of a download that was cut off or cancelled, kept for this session so it can go on from there. */
+const partial = new Map<string, { parts: Uint8Array[]; got: number }>();
+const partKey = (mod: OfferedMod) => `${mod.file}|${mod.builtAt}|${mod.bytes}`;
+/** How much of a mod's download this session already holds. */
+export const downloadedSoFar = (mod: OfferedMod): number => partial.get(partKey(mod))?.got ?? 0;
+
+/**
+ * Download a mod, saying how much has come, then install it. A download that is cancelled or cut off keeps what came,
+ * for this session, and the next try asks the server for the rest; a server that can't send a part sends it all again.
+ */
+export async function installOffered(mod: OfferedMod, progress: (phase: 'download' | 'install', done: number, total: number) => void, signal?: AbortSignal): Promise<InstalledPack> {
+  const k = partKey(mod);
+  let have = partial.get(k) ?? { parts: [], got: 0 };
   let r: Response;
   try {
-    r = await fetch(MODS_BASE + mod.file);
-  } catch {
+    r = await fetch(MODS_BASE + mod.file, { signal, ...(have.got ? { headers: { range: `bytes=${have.got}-` } } : {}) });
+  } catch (e) {
+    if ((e as DOMException)?.name === 'AbortError') throw new Error(`The download of ${mod.name} was cancelled. Nothing was changed.`);
     throw new Error(`${mod.name} couldn't be downloaded. Check your connection and try again.`);
   }
-  if (!r.ok || !r.body) throw new Error(`${mod.name} couldn't be downloaded (the game's server answered ${r.status}). Try again.`);
+  if (r.status === 200 && have.got) have = { parts: [], got: 0 }; // the whole file again
+  else if (r.status === 416) { partial.delete(k); throw new Error(`${mod.name} changed on the game's server while it was downloading. Try again.`); }
+  if ((r.status !== 200 && r.status !== 206) || !r.body) throw new Error(`${mod.name} couldn't be downloaded (the game's server answered ${r.status}). Try again.`);
+  partial.set(k, have);
   const reader = r.body.getReader();
-  const parts: Uint8Array[] = [];
-  let got = 0;
   for (;;) {
-    const { done, value } = await reader.read().catch(() => { throw new Error(`The download of ${mod.name} was cut off. Try again.`); });
-    if (done) break;
-    parts.push(value);
-    got += value.length;
-    progress('download', got, mod.bytes);
+    let chunk: ReadableStreamReadResult<Uint8Array>;
+    try { chunk = await reader.read(); } catch (e) {
+      const kept = have.got ? ` ${(have.got / 1048576).toFixed(1)} MB of it is kept until you close the game, so trying again goes on from there.` : '';
+      throw new Error(((e as DOMException)?.name === 'AbortError' || signal?.aborted ? `The download of ${mod.name} was cancelled. Nothing was changed.` : `The download of ${mod.name} was cut off.`) + kept);
+    }
+    if (chunk.done) break;
+    have.parts.push(chunk.value);
+    have.got += chunk.value.length;
+    progress('download', have.got, mod.bytes);
   }
-  return installPack(new Blob(parts as BlobPart[]), (n, total) => progress('install', n, total));
+  const file = new Blob(have.parts as BlobPart[]);
+  const out = await installPack(file, (n, total) => progress('install', n, total), signal);
+  partial.delete(k);
+  return out;
 }
 
 // ---------- the owner's sign-in (server/catalog-handler.mjs, /owner/session; docs/DEPLOYMENT.md) ----------

@@ -31,7 +31,7 @@ Nothing is called complete because a control exists or a field saves.
 | D | Real people: identity, availability, auditions, hiring, contracts, pay, credits | Built and tested, with the limits below. Done before C: see `DECISIONS.md` | With the third checkpoint |
 | E | Real destinations, scouting, geography-aware production | Built and tested, with the limits below | |
 | F | Studio strategy, Warner Bros., Sony and Paramount, territorial releases, competition | Under way: see "Milestone F, So Far" below | |
-| G | Optional portraits and posters, pack refresh and storage controls | Not started | |
+| G | Optional portraits and posters, pack refresh and storage controls | Under way: see "Milestone G, So Far" below | |
 | H | Connected playthroughs, performance, accessibility, migration, final coverage | Not started | |
 
 Do them in this order. Each is a vertical slice: interface, engine, save, failure behaviour and proof.
@@ -305,6 +305,33 @@ Not implemented in F so far, each a limit a player can meet:
 - Budget bands, franchises and who at a studio decides are not modeled. No real executive is given a preference.
 - Sony's ownership dates are not recorded: its own pages refuse automated readers.
 - International and independent groups beyond these four are not covered. Four Hollywood groups are not the whole world.
+
+## Milestone G, So Far
+
+Being built on the branch `g-work`, after milestone F. Not yet a checkpoint.
+
+| Piece | Where | Status | Evidence |
+| --- | --- | --- | --- |
+| A pack is installed beside the one it replaces and takes its place in one step; cancelled, cut short or out of room, the installed pack stays whole and in use | `src/catalog/packs.ts` `installPack`, `sweep` | Implemented, browser verified | `e2e/data-packs.spec.ts` J09 on desktop, phone and WebKit: an update cancelled part-way leaves every record of the installed pack as it was |
+| The browser's free room is asked before anything is written, and a refusal says what is needed and what removing the installed pack would free | `packs.ts` `storageRoom`, `STORAGE_MARGIN` | Implemented, browser verified | J09, with the browser made to report almost no room (labelled fixture) |
+| Settings shows what the browser reports free and what the mods hold; Cancel stops a download or an install | `src/ui/DataPacks.tsx` | Implemented, browser verified | J09 |
+| A download cut off goes on from where it stopped | `packs.ts` `installOffered`; `server/catalog-handler.mjs` (`Range`) | Implemented, engine verified on the server side; the browser side is not exercised by a journey | `tests/catalog-server.test.ts`: a 206 with the rest of the file, a 416 past its end |
+| The optional picture pack: its format, its index of what is known about each picture, and the same six months | `packs.ts` (kind `images`, `pictures`, `pictureUrl`); `tools/pack-format.mjs`, `tools/pack.mjs` | Implemented, browser verified | `tests/packs.test.ts`; J09 installs one and reads its details |
+| Gathering it: a plan with counts and megabytes before anything is fetched, two sizes, never the original, no credential | `tools/screen-catalog/images.mjs` | Implemented, engine verified; run for real once | `tests/packs.test.ts` "the picture gatherer"; a real run for Pixar on November 11, 2026: 455 pictures, 5.8 MB |
+| Pictures on a title's page, a person's page and the cast list, in boxes of fixed shape, read only near the screen, with a plain placeholder otherwise and a switch on the device | `src/ui/Picture.tsx`, `Catalog.tsx` | Implemented, browser verified | J09: the box is the same size before and after; the picture is a decoded image; off and on again |
+| A film or picture pack that passes six months while the game stays open is deleted within the hour | `packs.ts` `expirePacks`; `src/ui/App.tsx` | Implemented, browser verified | J09 moves the page's clock an hour on |
+| The picture pack is offered and served to the owner alone | `server/catalog-handler.mjs` `offeredMods` | Implemented, engine verified | `tests/catalog-server.test.ts` |
+| Removing a pack never touches saved games; the open game goes on and opens again after a reload | `packs.ts` `removePack` | Implemented, browser verified | J09 |
+
+Not implemented in G, each a limit:
+
+- People can't be chosen one by one for the picture pack: the choice is by company, and by how many top-billed cast.
+- Backdrops, logos and episode stills are not gathered.
+- Each picture's own licence is not checked. The pack states that rights belong to each owner and claims nothing more.
+- The picture pack built here covers one studio (Pixar), as a real test of the tool. Larger ones are the owner's choice.
+- Going on with a cut-off download is tested on the server; no browser journey cuts a download off.
+- J10 (a refreshed pack changes nothing a save has decided) is `e2e/world-refresh.spec.ts`, from milestone A; it was
+  not extended here.
 
 ## The Audit Artifacts
 

@@ -260,6 +260,8 @@ c(f, '"Wake Me For Obligations"', D, 'settings.wakeForObligations', 'state.ts ru
 f = 'Startup.tsx'
 c(f, '{`Replacement Place ${i + 1}`}', D, 'repair replacements', 'save.ts repairSave', 'Which place replaces one a save can\'t find', U('migration', 'open after a repair that keeps a backup and changes only the places'), E('failures', 'asks for a replacement, keeping a backup'))
 f = 'DataPacks.tsx'
+# Not game state: a display choice kept on the device. Nothing in the engine reads a picture.
+c(f, '"Show Pictures From The Picture Pack"', V, 'this device (localStorage slate.pictures), not a saved game', 'Picture.tsx picturesOn, Picture', "Off, every picture is a plain placeholder and none is read from storage; on, a picture is read when its box comes near the screen. No engine reads a picture and no outcome changes", '', E('data-packs', 'J09'))
 # Not game state: it is sent to the game's own server, which then answers this browser as the owner (docs/DEPLOYMENT.md).
 c(f, '"Owner Passphrase"', V, '', 'server/catalog-handler.mjs createOwnerGate', 'Signs the owner in where the server offers it; kept nowhere in the browser', U('catalog-server', 'answers a request from elsewhere only after the owner signs in'), E('owner-access', 'the owner signs in from elsewhere'))
 

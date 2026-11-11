@@ -9,9 +9,10 @@ import { gzipSync } from 'node:zlib';
 export const MAGIC = 'SLATEPACK1\n';
 
 /**
- * @param {{ kind: 'catalog' | 'cinemas', name: string, source: string, builtAt: string,
+ * @param {{ kind: 'catalog' | 'cinemas' | 'images', name: string, source: string, builtAt: string,
  *   retrieved?: { from: string, to: string, maxAgeDays: number } }} meta
- * @param {Iterable<[string, string]>} files path (as the game asks for it, e.g. "titles/movie-1.json") and its JSON text
+ * @param {Iterable<[string, string | Buffer]>} files path (as the game asks for it, e.g. "titles/movie-1.json") and its JSON
+ *   text, or, in a picture pack, a picture's bytes
  * @returns {Buffer}
  */
 export function writePack(meta, files) {
@@ -19,7 +20,7 @@ export function writePack(meta, files) {
   const entries = [];
   let offset = 0;
   for (const [path, text] of files) {
-    const gz = gzipSync(Buffer.from(text, 'utf8'));
+    const gz = gzipSync(typeof text === 'string' ? Buffer.from(text, 'utf8') : text);
     entries.push([path, offset, gz.length]);
     parts.push(gz);
     offset += gz.length;

@@ -156,6 +156,34 @@ describe('the mods the game offers', () => {
     } finally { other.close(); }
   });
 
+  it('offers the picture pack to the owner alone, never past six months, and sends the rest of a download that was cut off', async () => {
+    const packs = join(root, 'picture-packs');
+    write(join(packs, 'x'), '');
+    const pictures = (from: string) => writePack({ kind: 'images', name: 'Pictures', source: 'TMDB', builtAt: from, retrieved: { from, to: from, maxAgeDays: 180 } }, [['images/index.json', '{}'], ['images/person/1', Buffer.from('a picture, as bytes')]]);
+    writeFileSync(join(packs, 'pictures.slatepack'), pictures(RETRIEVED));
+    writeFileSync(join(packs, 'old-pictures.slatepack'), pictures('2026-01-01T00:00:00.000Z'));
+    const whole = readFileSync(join(packs, 'pictures.slatepack'));
+    const owner = await start(catalog('picture-mods', null), undefined, packs);
+    try {
+      expect(json(await get(owner.port, '/mods/index.json')).mods.map((m: { file: string; kind: string }) => [m.file, m.kind])).toEqual([['pictures.slatepack', 'images']]);
+      const all = await get(owner.port, '/mods/pictures.slatepack');
+      expect([all.status, all.headers['accept-ranges'], String(all.headers['cache-control']).startsWith('private')]).toEqual([200, 'bytes', true]);
+      // The rest of a download, from where it stopped.
+      const rest = await get(owner.port, '/mods/pictures.slatepack', { headers: { range: 'bytes=20-' } });
+      expect([rest.status, rest.headers['content-range'], rest.body.equals(whole.subarray(20))]).toEqual([206, `bytes 20-${whole.length - 1}/${whole.length}`, true]);
+      expect((await get(owner.port, '/mods/pictures.slatepack', { headers: { range: `bytes=${whole.length}-` } })).status).toBe(416);
+      // Any other kind of range is answered with the whole file, never a wrong part.
+      expect((await get(owner.port, '/mods/pictures.slatepack', { headers: { range: 'bytes=0-5,9-12' } })).body.equals(whole)).toBe(true);
+      expect((await get(owner.port, '/mods/old-pictures.slatepack')).status).toBe(404);
+    } finally { owner.close(); }
+    // A server that isn't the owner's offers no pictures and serves none.
+    const other = await start(catalog('picture-mods-other', null), undefined, packs, false);
+    try {
+      expect(json(await get(other.port, '/mods/index.json')).mods).toEqual([]);
+      expect((await get(other.port, '/mods/pictures.slatepack')).status).toBe(404);
+    } finally { other.close(); }
+  });
+
   it('serves TMDB\'s data only when started as the owner\'s own (--owner or SLATE_OWNER=1), off by default', () => {
     const src = readFileSync('server/serve.mjs', 'utf8');
     expect(src).toMatch(/const films = process\.argv\.includes\('--owner'\) \|\| process\.env\.SLATE_OWNER === '1';/);
