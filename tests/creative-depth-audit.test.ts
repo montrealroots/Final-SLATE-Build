@@ -73,6 +73,24 @@ const PICKER: Record<string, string> = {
   'ScriptViews.tsx|"Extend The Crowd In Post"': 'Ideas For This Scene: Everyone On Set, Extend The Crowd In Post',
   'ScriptViews.tsx|"Stunts"': 'Ideas For This Scene: a physical gag',
   'ScriptViews.tsx|"Rule"': "Choose A Rule For Your Story's World: 8 ideas",
+  'ScriptViews.tsx|"Point Of View"': 'Choose A Point Of View: 10 ideas',
+  'ScriptViews.tsx|"Central Question"': 'Choose The Question It Asks: 10 ideas',
+  'ScriptViews.tsx|"Story Setting"': 'Choose Where It Is Set: 16 ideas',
+  'ScriptViews.tsx|"Description"': 'How They Come Across: 12 ideas',
+  'ScriptViews.tsx|"Objective"': 'Ideas For This Scene: 14 objectives',
+  "ScriptViews.tsx|{nonfiction ? 'What Happens' : 'Action'}": 'Ideas For This Scene: 10 kinds of action',
+  'ScriptViews.tsx|"Turning Point"': 'Ideas For This Scene: 12 turns',
+  'ScriptViews.tsx|"Props"': 'Ideas For This Scene: 12 sets of props, added to what is listed',
+  'ScriptViews.tsx|"Animals"': 'Ideas For This Scene: 6 ideas, each requiring a wrangler',
+  'ScriptViews.tsx|"Vehicles"': 'Ideas For This Scene: 8 ideas, each requiring a coordinator',
+  'ScriptViews.tsx|"Visual Effects"': 'Ideas For This Scene: 8 effects, each four days of work after the lock',
+  'ScriptViews.tsx|"The Light It Is Shot In"': 'Choose The Light It Is Shot In: 3 ideas; the control lists all four',
+  'ScriptViews.tsx|"The Score"': 'Choose Its Score: 3 ideas; the control lists all four',
+  'ScriptViews.tsx|{SOUNDS[k].label}': 'Sound And Music: 5 sound ideas, each ticking one of these',
+  'PlanViews.tsx|{`Camera For ${sceneLabel(p, s)}`}': 'Ideas For This Scene (Script page): camera ideas that set the rig with the coverage',
+  'Projects.tsx|"Tone"': 'Choose A Tone, on the Script page once the project exists: 11 ideas',
+  'Projects.tsx|"Story Era"': 'Choose When It Is Set, on the Script page once the project exists',
+  'Projects.tsx|"Story Setting"': 'Choose Where It Is Set, on the Script page once the project exists: 16 ideas',
   'ScriptViews.tsx|"Limit Or Cost"': "Choose A Rule For Your Story's World: written with the rule",
   'ScriptViews.tsx|"Place"': 'Add A Scene From An Idea: 12 kinds of place',
   'ScriptViews.tsx|"Interior Or Exterior"': 'Add A Scene From An Idea: set by the kind of place',
@@ -88,9 +106,23 @@ const LATER = new Set(['"Central Question"', '"Point Of View"', '"Story Setting"
   '{`What Episode ${n} Moves`}', '"New Act Or Sequence"', '"New Thread"', '"What Is Set Up"', '"Relationship"', '"Where It Starts"', '"Where It Ends"', '"Description"', '"What Kind Of Being"', '"Props"', '"Animals"', '"Vehicles"',
   '"Visual Effects"', '"What Changes"', '"New Question"', '"Reference"', '"Also Called"', '"Story Era"', '"Tone"', '"Story Setting"']);
 
+/** Text that is the player's own by its nature, so no idea is offered for it, with the reason. */
+const OWN: Record<string, string> = {
+  '"Line"': "None: a line of dialogue is the writer's own. The game counts lines and never reads them",
+  '"Note"': "None: a note to yourself, kept as written",
+  '"Reference"': 'None: your own reference, kept as written',
+  '"New Question"': "None: a question for your own research, kept as written",
+  '"What Changes"': "None: your own account of a change you made, kept as written",
+  '"Also Called"': 'None: another name for the same character, typed',
+  '"Describe Your Ethnicity"': "None: your own identity, in your own words. Nothing is suggested for it",
+  '{`Add Ethnicity For ${who}`}': "None: a search of the backgrounds list, or your own words. Nothing is suggested for a character's identity",
+  '{`Add Nationality For ${who}`}': 'None: a search of real countries',
+};
+
 function decision(screen: string, label: string, cls: string, widget: string): [string, string, string] {
   const hit = PICKER[`${screen}|${label}`];
   if (hit) return [hit, KEPT, KEPT_TEST];
+  if (OWN[label]) return [OWN[label], 'Unchanged', ''];
   if (screen === 'IdeaPicker.tsx') return ["Part of the picker itself", 'n/a', ''];
   if (cls === 'view') return ['None: a control of the screen, not of the game', 'n/a', ''];
   if (/Picker$/.test(widget)) return [widget === 'GenrePicker' ? 'None: a search of the genre catalog' : widget === 'LanguagePicker' ? 'None: a search of the languages' : 'None: the world search of real places (destinations: milestone E)', 'n/a', ''];
@@ -130,9 +162,9 @@ describe('the field inventory', () => {
     for (const r of out.slice(1)) n[kind(r[6])] = (n[kind(r[6])] ?? 0) + 1;
     expect(n).toMatchInlineSnapshot(`
       {
-        "has ideas": 30,
-        "no picker yet": 38,
-        "no picker, by design": 185,
+        "has ideas": 48,
+        "no picker yet": 15,
+        "no picker, by design": 190,
         "the picker itself": 10,
       }
     `);
@@ -145,7 +177,10 @@ const BUTTON: Record<Idea['field'], string> = {
   premise: 'Script: Choose A Starting Idea; Premise', logline: 'Script: Logline', conflict: 'Script: Central Conflict', stakes: 'Script: Stakes', theme: 'Script: Theme', ending: 'Script: Intended Ending', tone: 'Script: Tone',
   experience: 'Script: Intended Experience', 'world-rule': 'Script: Story World Rules', period: 'Script: Year It Is Set In', style: 'Script: The Look It Borrows', 'genre-blend': 'Script: Blend Genres', medium: 'Script: How It Is Made',
   'character-goal': 'Characters: Wants', 'character-fear': 'Characters: Fears', makeup: 'Characters: How They Look', wardrobe: 'Characters: How They Look', crowd: 'Script: Ideas For This Scene', camera: 'Script: Ideas For This Scene',
-  sound: 'Script: Sound And Music', light: 'Script: The Light It Is Shot In', score: 'Script: Sound And Music', location: 'Script: Add A Scene From An Idea', 'physical-comedy': 'Script: Ideas For This Scene',
+  sound: 'Script: Sound And Music', light: 'Script: The Light It Is Shot In', score: 'Script: Sound And Music',
+  viewpoint: 'Script: Point Of View', question: 'Script: Central Question', setting: 'Script: Story Setting', 'character-description': 'Characters: Description',
+  'scene-objective': 'Script: Ideas For This Scene', 'scene-action': 'Script: Ideas For This Scene', 'scene-turn': 'Script: Ideas For This Scene',
+  props: 'Script: Ideas For This Scene', animals: 'Script: Ideas For This Scene', vehicles: 'Script: Ideas For This Scene', effects: 'Script: Ideas For This Scene', location: 'Script: Add A Scene From An Idea', 'physical-comedy': 'Script: Ideas For This Scene',
 };
 const sets = (c: Command): string => {
   switch (c.op) {
@@ -162,6 +197,8 @@ const sets = (c: Command): string => {
     case 'narrator': return 'character.functions';
     case 'crowd': return [c.method ? 'scene.crowdMethod' : '', c.look !== undefined ? 'scene.crowdLook' : ''].filter(Boolean).join(', ');
     case 'stunt': return 'scene.stunts';
+    case 'scene': return `scene.${c.field}`;
+    case 'needs': return `scene.${c.kind}`;
     case 'shot': return 'shotPlans[scene]';
     case 'light': return 'axes.light';
     case 'sound': return 'axes.sound';
@@ -201,9 +238,9 @@ describe('the effect coverage', () => {
     expect(n).toMatchInlineSnapshot(`
       {
         "document/identity information: implemented+browser verified": 4,
-        "document/identity information: implemented+engine verified": 84,
+        "document/identity information: implemented+engine verified": 168,
         "mechanical decision: implemented+browser verified": 4,
-        "mechanical decision: implemented+engine verified": 82,
+        "mechanical decision: implemented+engine verified": 116,
         "visual reference: reference-only by design": 14,
       }
     `);

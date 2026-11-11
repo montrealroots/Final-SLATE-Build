@@ -215,17 +215,17 @@ export function ScriptTab({ p }: { p: Project }) {
           </div>
         )}
         <div className="grid grid-2 form">
-          {nonfiction && <TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} />}
+          {nonfiction && <IdeaField p={p} fields={['question']} title="Choose The Question It Asks"><TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} /></IdeaField>}
           <IdeaField p={p} fields={['logline']} title="Build A Logline"><TextField label="Logline" multiline value={p.story.logline} maxLength={300} onChange={(v) => edit(p, () => (p.story.logline = v))} /></IdeaField>
           <IdeaField p={p} fields={['premise']} title="Choose A Premise"><TextField label="Premise" multiline value={p.story.premise} onChange={(v) => edit(p, () => (p.story.premise = v))} /></IdeaField>
           <IdeaField p={p} fields={['stakes']} title="Choose What Is At Stake"><TextField label="Stakes" multiline value={p.story.stakes} onChange={(v) => edit(p, () => (p.story.stakes = v))} /></IdeaField>
           <IdeaField p={p} fields={['conflict']} title="Choose A Central Conflict"><TextField label="Central Conflict" multiline value={p.story.conflict} onChange={(v) => edit(p, () => (p.story.conflict = v))} /></IdeaField>
-          <TextField label="Point Of View" value={p.story.viewpoint} onChange={(v) => edit(p, () => (p.story.viewpoint = v))} />
+          <IdeaField p={p} fields={['viewpoint']} title="Choose A Point Of View"><TextField label="Point Of View" value={p.story.viewpoint} onChange={(v) => edit(p, () => (p.story.viewpoint = v))} /></IdeaField>
           <IdeaField p={p} fields={['theme']} title="Choose A Theme"><TextField label="Theme" value={p.story.theme} onChange={(v) => edit(p, () => (p.story.theme = v))} /></IdeaField>
           <IdeaField p={p} fields={['ending']} title="Choose An Ending"><TextField label="Intended Ending" multiline value={p.story.ending} onChange={(v) => edit(p, () => (p.story.ending = v))} /></IdeaField>
           <TextField label="Intended Experience" multiline value={p.story.intendedExperience} onChange={(v) => edit(p, () => (p.story.intendedExperience = v))} />
           <IdeaField p={p} fields={['tone']} title="Choose A Tone"><TextField label="Tone" value={p.axes.tone} maxLength={80} onChange={(v) => edit(p, () => (p.axes.tone = v))} /></IdeaField>
-          <TextField label="Story Setting" maxLength={120} value={p.axes.storySetting} onChange={(v) => edit(p, () => (p.axes.storySetting = v))} />
+          <IdeaField p={p} fields={['setting']} title="Choose Where It Is Set"><TextField label="Story Setting" maxLength={120} value={p.axes.storySetting} onChange={(v) => edit(p, () => (p.axes.storySetting = v))} /></IdeaField>
           <div className="col gap-1">
             <PlacePicker label="Story Setting Place" value={p.axes.settingPlaceId ?? ''} onChange={(id, place) => setErr(store.act((s) => { snapshot(p); adoptPlace(s, place); p.axes.settingPlaceId = id; }))} />
             <p className="dim small">{settingNote(p)}</p>
@@ -555,7 +555,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
             <Check label="Dance" checked={s.dance} onChange={(v) => up({ dance: v })} />
             <Check label="Intimate Scene" checked={s.intimacy} onChange={(v) => up({ intimacy: v })} />
             <Check label="Water Work" checked={s.water} onChange={(v) => up({ water: v })} />
-            <Ideas p={p} fields={['crowd', 'camera', 'physical-comedy']} title={`Ideas For ${label}`} label="Ideas For This Scene" sceneId={s.id} />
+            <Ideas p={p} fields={['scene-objective', 'scene-action', 'scene-turn', 'props', 'animals', 'vehicles', 'effects', 'crowd', 'camera', 'physical-comedy']} title={`Ideas For ${label}`} label="Ideas For This Scene" sceneId={s.id} />
             <Check label="Intentional Discontinuity" hint="Continuity checks treat breaks here as deliberate, such as a payoff shown before its setup in a nonlinear story." checked={s.intentionalDiscontinuity} onChange={(v) => up({ intentionalDiscontinuity: v })} />
           </div>
         </fieldset>
@@ -1073,7 +1073,7 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
           <ArcBeats p={p} c={c} />
           <div className="grid grid-2 form">
             {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Your description for design and casting. Kept with the script; the game doesn't read it." onChange={(v) => up({ entityNote: v })} />}
-            <TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown sent with offers. It doesn't change who accepts or how fast." onChange={(v) => up({ description: v })} />
+            <div className="col gap-1"><TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown sent with offers. It doesn't change who accepts or how fast." onChange={(v) => up({ description: v })} /><Ideas p={p} fields={['character-description']} title={`How ${c.name} Comes Across`} characterId={c.id} /></div>
             <div className="col gap-1"><TextField label="Wants" multiline value={c.wants} onChange={(v) => up({ wants: v })} /><Ideas p={p} fields={['character-goal']} title={`What ${c.name} Wants`} characterId={c.id} /></div>
             <div className="col gap-1"><TextField label="Fears" multiline value={c.fears} onChange={(v) => up({ fears: v })} /><Ideas p={p} fields={['character-fear']} title={`What ${c.name} Fears`} characterId={c.id} /></div>
           </div>

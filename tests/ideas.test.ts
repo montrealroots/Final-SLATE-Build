@@ -13,10 +13,10 @@ import { STARTER } from '../src/ideas/starter';
 
 applyGenreCatalog(JSON.parse(readFileSync('src/data/genre-catalog.json', 'utf8')));
 const genreIds = new Set(GENRES.map((g) => g.id));
-const FIELDS = ['premise', 'logline', 'conflict', 'stakes', 'theme', 'ending', 'tone', 'experience', 'world-rule', 'period', 'style', 'genre-blend', 'medium', 'character-goal', 'character-fear', 'makeup', 'wardrobe', 'crowd', 'camera', 'light', 'sound', 'score', 'location', 'physical-comedy'];
-const OPS = ['story', 'tone', 'setting', 'style', 'year', 'genre', 'medium', 'rule', 'character', 'look', 'narrator', 'crowd', 'stunt', 'shot', 'light', 'sound', 'score', 'beats', 'cast'];
+const FIELDS = ['premise', 'logline', 'conflict', 'stakes', 'theme', 'ending', 'tone', 'experience', 'world-rule', 'period', 'style', 'genre-blend', 'medium', 'character-goal', 'character-fear', 'makeup', 'wardrobe', 'crowd', 'camera', 'light', 'sound', 'score', 'location', 'physical-comedy', 'viewpoint', 'question', 'setting', 'character-description', 'scene-objective', 'scene-action', 'scene-turn', 'props', 'animals', 'vehicles', 'effects'];
+const OPS = ['story', 'tone', 'setting', 'style', 'year', 'genre', 'medium', 'rule', 'character', 'look', 'narrator', 'crowd', 'stunt', 'scene', 'needs', 'shot', 'light', 'sound', 'score', 'beats', 'cast'];
 const CHARACTER_OPS = new Set(['character', 'look', 'narrator']);
-const SCENE_OPS = new Set(['crowd', 'stunt', 'shot']);
+const SCENE_OPS = new Set(['crowd', 'stunt', 'shot', 'scene', 'needs']);
 /** Every string a patch would write, for checking its words. */
 const strings = (c: Command): string[] => {
   switch (c.op) {
@@ -180,19 +180,22 @@ describe('what the library holds, counted', () => {
     expect(IDEAS.length).toBe(count('mechanical') + count('brief') + count('reference'));
     expect({ total: IDEAS.length, mechanical: count('mechanical'), brief: count('brief'), reference: count('reference') }).toMatchInlineSnapshot(`
       {
-        "brief": 87,
-        "mechanical": 86,
+        "brief": 171,
+        "mechanical": 120,
         "reference": 14,
-        "total": 187,
+        "total": 305,
       }
     `);
     expect(byField).toMatchInlineSnapshot(`
       {
+        "animals": 6,
         "camera": 7,
+        "character-description": 12,
         "character-fear": 8,
         "character-goal": 10,
         "conflict": 10,
         "crowd": 6,
+        "effects": 8,
         "ending": 10,
         "genre-blend": 8,
         "light": 3,
@@ -202,12 +205,20 @@ describe('what the library holds, counted', () => {
         "period": 11,
         "physical-comedy": 1,
         "premise": 12,
+        "props": 12,
+        "question": 10,
+        "scene-action": 10,
+        "scene-objective": 14,
+        "scene-turn": 12,
         "score": 3,
+        "setting": 16,
         "sound": 7,
         "stakes": 8,
         "style": 11,
         "theme": 10,
         "tone": 11,
+        "vehicles": 8,
+        "viewpoint": 10,
         "wardrobe": 9,
         "world-rule": 8,
       }

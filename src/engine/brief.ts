@@ -23,6 +23,18 @@ import type { Format, GameState, IntExt, Medium, Project, Scene, StoryCharacter,
 
 export type StoryField = 'logline' | 'premise' | 'stakes' | 'conflict' | 'viewpoint' | 'theme' | 'ending' | 'intendedExperience' | 'question';
 export type CharacterField = 'wants' | 'fears' | 'description';
+/** A scene's own words: what it is for, what happens, what turns. Kept, never read for meaning. */
+export type SceneField = 'objective' | 'action' | 'turningPoint';
+export const SCENE_LABEL: Record<SceneField, string> = { objective: 'Objective', action: 'Action', turningPoint: 'Turning Point' };
+/** What a scene needs on the day, as lists the breakdown reads: each entry is work, crew or money. */
+export type NeedKind = 'props' | 'animals' | 'vehicles' | 'vfx';
+export const NEED_LABEL: Record<NeedKind, string> = { props: 'Props', animals: 'Animals', vehicles: 'Vehicles', vfx: 'Visual Effects' };
+const NEED_WORK: Record<NeedKind, string> = {
+  props: 'Each prop is found or made by the art department before the shoot.',
+  animals: 'An animal wrangler is required for every scene with an animal in it.',
+  vehicles: 'A vehicle coordinator is required for every scene with a picture vehicle in it.',
+  vfx: 'Each effect is four days of visual effects work after the picture is locked, which the colour grade waits for, and its scene needs inserts.',
+};
 
 /** A scene an idea offers. The player chooses which to add; none is added without being ticked. */
 export interface Beat {
@@ -54,6 +66,8 @@ export type Command =
   | { op: 'narrator' }
   | { op: 'crowd'; method?: 'digital' | 'practical'; look?: MakeupId | null }
   | { op: 'stunt'; text: string }
+  | { op: 'scene'; field: SceneField; text: string }
+  | { op: 'needs'; kind: NeedKind; items: string[] }
   | { op: 'shot'; coverage?: 'master' | 'standard' | 'full'; takes?: 'one' | 'few' | 'many'; emphasis?: 'scene' | 'performances' | 'detail' | 'one-shot'; rig?: Rig }
   | { op: 'light'; light: Light }
   | { op: 'sound'; add: SoundChoice }
@@ -64,7 +78,8 @@ export type Command =
 /** Where an idea is offered: the field its picker hangs on. */
 export type IdeaField =
   | 'premise' | 'logline' | 'conflict' | 'stakes' | 'theme' | 'ending' | 'tone' | 'experience' | 'world-rule' | 'period' | 'style' | 'genre-blend' | 'medium'
-  | 'character-goal' | 'character-fear' | 'makeup' | 'wardrobe' | 'crowd' | 'camera' | 'light' | 'sound' | 'score' | 'location' | 'physical-comedy';
+  | 'character-goal' | 'character-fear' | 'makeup' | 'wardrobe' | 'crowd' | 'camera' | 'light' | 'sound' | 'score' | 'location' | 'physical-comedy'
+  | 'viewpoint' | 'question' | 'setting' | 'character-description' | 'scene-objective' | 'scene-action' | 'scene-turn' | 'props' | 'animals' | 'vehicles' | 'effects';
 
 /** What an idea's choices apply to: the project, the characters the player picks, or the scenes they pick. */
 export type IdeaScope = 'project' | 'character' | 'scene';
@@ -244,6 +259,18 @@ export function previewIdea(p: Project, idea: Idea, t: Target = {}): IdeaPreview
       case 'stunt': for (const s of scenes) { out.changes.push(`${s.heading.place || 'A scene'}, Stunts: ${fill(c.text, idea, t.slots)}.`); overwrite(`scene.${s.id}.stunts`, `${s.heading.place || 'Scene'}: Stunts`, s.stunts, fill(c.text, idea, t.slots)); }
         if (scenes.length && live) out.work.push('A stunt coordinator, a rehearsal day, and a scene that shoots more slowly. A costume worn in it is made twice.');
         break;
+      case 'scene':
+        for (const s of scenes) { const next = fill(c.text, idea, t.slots); out.changes.push(`${s.heading.place || 'A scene'}, ${SCENE_LABEL[c.field]}: ${next}`); overwrite(`scene.${s.id}.${c.field}`, `${s.heading.place || 'Scene'}: ${SCENE_LABEL[c.field]}`, s[c.field], next); }
+        break;
+      case 'needs': {
+        const items = c.items.map((x) => fill(x, idea, t.slots));
+        for (const s of scenes) {
+          const fresh = items.filter((x) => !s[c.kind].some((y) => y.toLowerCase() === x.toLowerCase()));
+          out.changes.push(fresh.length ? `${s.heading.place || 'A scene'}, ${NEED_LABEL[c.kind]}: adds ${fresh.join(', ')}. What is listed already stays.` : `${s.heading.place || 'A scene'}, ${NEED_LABEL[c.kind]}: already listed.`);
+        }
+        if (scenes.length && (live || c.kind === 'vfx' || c.kind === 'props')) out.work.push(NEED_WORK[c.kind]);
+        break;
+      }
       case 'shot':
         for (const s of scenes) out.changes.push(`${s.heading.place || 'A scene'}, Shot Plan: ${[c.rig && RIGS[c.rig].label.toLowerCase(), c.coverage && `${c.coverage} coverage`, c.takes && `${c.takes === 'one' ? 'one take' : c.takes === 'few' ? 'a few takes' : 'many takes'}`, c.emphasis && `for ${c.emphasis === 'one-shot' ? 'one continuous shot' : c.emphasis}`].filter(Boolean).join(', ')}.`);
         if (scenes.length && !p.takesModel) out.warnings.push('This project was started before shot plans: the choice is kept as a note and changes no shoot day.');
@@ -355,6 +382,11 @@ export function applyIdea(state: GameState, p: Project, idea: Idea, t: Target = 
         }
         break;
       case 'stunt': for (const s of scenes) if (!keep.has(`scene.${s.id}.stunts`)) updateScene(p, s.id, { stunts: fill(c.text, idea, t.slots) }); break;
+      case 'scene': for (const s of scenes) if (!keep.has(`scene.${s.id}.${c.field}`)) updateScene(p, s.id, { [c.field]: fill(c.text, idea, t.slots) }); break;
+      case 'needs':
+        // Added to what the scene lists already, never replacing it, and never twice.
+        for (const s of scenes) updateScene(p, s.id, { [c.kind]: [...s[c.kind], ...c.items.map((x) => fill(x, idea, t.slots)).filter((x) => !s[c.kind].some((y) => y.toLowerCase() === x.toLowerCase()))] });
+        break;
       case 'shot':
         for (const s of scenes) { const cur = (p.shotPlans ??= {})[s.id] ?? {}; p.shotPlans[s.id] = { ...cur, ...(c.coverage ? { coverage: c.coverage } : {}), ...(c.takes ? { takes: c.takes } : {}), ...(c.emphasis ? { emphasis: c.emphasis } : {}), ...(c.rig ? { rig: c.rig } : {}) }; }
         break;
