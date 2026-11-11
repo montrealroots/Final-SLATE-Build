@@ -56,6 +56,57 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
+### Newest Request (November 11, 2026): finish the world foundation before another studio
+
+The owner's brief, in six parts. Universal and other studios wait until this is done. Where each part stands:
+
+1. **The catalog in the actual game: done in code, not deployed.** `server/serve.mjs` serves the built game and the
+   catalog with no Vite and no credential, withdraws a copy after TMDB's six months, and `npm run screen-catalog:purge`
+   deletes every copy. Tested on the production build (`e2e/production-data.spec.ts`). What deployment needs is in
+   `docs/DEPLOYMENT.md`: a host, and the owner's decisions on commercial use and on whether a reformatted catalog is a
+   derivative under TMDB's terms.
+2. **Headroom: done.** The engine, Shell and Home load after the start screen (`docs/PERFORMANCE.md`, "The Engine After
+   The Start Screen"). Startup is 302 kB, 96 kB gzipped (was 685 and 219). Same-conditions timings are in that section:
+   the start screen is 650 ms faster on a throttled connection, opening straight into a new game 600 ms faster, and New
+   Game pressed after the start screen settles 400 ms slower. Budgets unchanged.
+3. **The living world held steady: done.** A decision keeps its due date while the catalog is missing; each simulated
+   series records the seasons its save began with, so a newer catalog never adds or contradicts them; tested across
+   reloads, two saves and refreshes (`docs/WORLD.md`, "Each Save's World, Held Steady"). Wording fixed: "Released before
+   the acquisition"; Leaving and Announced for changes with no effective date; TMDB's status waits for the day it was
+   recorded.
+4. **Honest rules: done for what was found.**
+   - Renewal numbers are now said to be judgement, and forty seeds over ten years are checked for coherence.
+   - Cinemas are "taken to show films", the player's film plays only once released, and bookings change no money (a test
+     fails if the engine reads them).
+   - Child-rule age bands change on the birthday. Each set records whether it was read in full, and the player is told
+     when the rules were read. Every set's gaps are listed in `docs/child-rules/RESEARCH.md`.
+5. **Journeys: done, with fixture data labelled.** `e2e/foundation.spec.ts` adds three journeys:
+   - the calendar to a simulated season, and the same season after Save & Exit;
+   - two saves switched with no leakage between them;
+   - a release listed where it will open, cancelled, and a run ending.
+
+   The catalog, child and foundation journeys now run on WebKit (iPhone 15 Pro Max) as well as desktop and phone. The
+   brief's other journeys were already in `e2e/catalog.spec.ts`, `e2e/living-world.spec.ts`, `e2e/children.spec.ts`,
+   `e2e/production-data.spec.ts` and the failure specs. One gap: the child journey goes from casting to the rules and the
+   crew they require in the browser, but its schedule consequences (more shoot days, nothing shot before the licence,
+   rest after a night) are checked only in `tests/minors.test.ts`, "downstream". A browser journey through a shoot is
+   still to write.
+6. **Found on the way and fixed:** renaming the game you're playing was undone by the next save.
+
+**Remaining, by kind:**
+- **Deployment configuration:** a host for `server/serve.mjs`, the catalog gathered or copied there, and a refresh
+  within every six months.
+- **Owner's decisions:** TMDB commercial use, and the derivatives question (`docs/DEPLOYMENT.md`); Nielsen (report only,
+  as decided).
+- **Source research:** each child-rule set's commencement date and later amendments, Ontario's consolidated text, and
+  the rules of the places that use stand-ins (Quebec, New Zealand, Spain, Italy, Japan, Korea, India, Mexico, Brazil,
+  Texas, New Mexico, Scotland and others).
+- **Human and device testing:** real Safari on an iPhone (all WebKit runs here are emulation), and a WebKit flake seen
+  once: Continue Creation pressed and creation not opening, under two parallel WebKit workers (QA-REPORT.md, Open).
+- **Code, tests:** a browser journey through a shoot with a child in the cast (above).
+- **Code, later phases:** studios releasing new titles, competition, careers (`docs/WORLD.md`, "Next Phases"), and
+  Universal, once the owner says the foundation is done.
+
 ### Newest Request (November 10, 2026, after #63): the living world, Phase 1
 
 The owner wants the catalog to be the world behind the game. Shows will be renewed or cancelled, and studios will
@@ -85,7 +136,7 @@ when the records end.
 - **Where it shows:** Home, the calendar and a series' In Your Story card, all marked Simulated.
 
 Running five simulated years on the real series fixed partial episode counts, too-frequent evergreen final seasons and
-leap-year drift. Startup is now 685 kB, 219 of 220 kB gzipped, because the engine loads with the game: keep the next
+leap-year drift. Startup was then 685 kB, 219 of 220 kB gzipped (96 kB since the foundation pass below): keep the next
 phases out of the startup bundle.
 
 **Child performers (November 11, 2026):**
@@ -101,7 +152,7 @@ phases out of the startup bundle.
   - rest after a night shoot;
   - the trust set-aside.
 - **Who ages.** The game's own people have birth dates and age, and their playing ranges follow. The pool has children.
-- **Startup budget.** It is at 219.75 of 220 kB gzipped. The next engine feature needs room made first: something else
+- **Startup budget.** It was at 219.75 of 220 kB gzipped (96 kB since the foundation pass below). Then, the next engine feature needed room made first: something else
   loaded with its page rather than at startup, as was done here for the industry engine, the cost estimate and the
   casting notes.
 

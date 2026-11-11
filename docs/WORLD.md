@@ -179,6 +179,32 @@ Sundays.
 - **Without the catalog.** If the catalog isn't installed, nothing starts. If it goes missing later, the engine waits
   rather than deciding blind.
 
+## Each Save's World, Held Steady (November 11, 2026)
+
+The owner's foundation brief asked that loading late, reloading, switching saves, refreshing the data or losing it never
+change what a save's world has decided. What holds it, with the test for each:
+
+- **The source version.** A save's world starts once, from the first catalog it sees, and records that build
+  (`state.industry.builtAt`) and the records' end (`horizon`). It keeps both whatever catalog is installed later.
+- **The start.** Decisions are dated from the records' end, never earlier. A save made before a catalog was installed
+  starts its world when one arrives, and makes the decisions that fall between in date order, dated as they would have
+  been.
+- **Late or missing data.** A decision that falls due while the catalog's world file isn't loaded waits, and keeps the day
+  it was due (`due`). Until November 11, 2026 it was decided on the day the wait ended, so a slow or missing catalog
+  changed the save's world. Nothing is erased while it waits. Test: a catalog gone for 19 months and back decides exactly
+  what one there all along does (`tests/industry.test.ts`).
+- **A refreshed catalog.** Each simulated series records the last season its save began with (`rec`). A later catalog
+  may correct what was recorded up to then. It never adds seasons the save has made its own, nor a recorded ending, to
+  the series' page, its seasons and episodes, Home or the calendar. A season page for one of those says it isn't in this
+  story. Decisions already made are never rewritten. A save begun before `rec` was kept takes it from the first catalog
+  that decides for it. Tests: a refresh after and before the first decision; no season number told twice.
+- **Reloads and two saves.** The world is kept in the save and decided by its seed, so a reload partway, or another save
+  played in between, ends where one played straight through does. Tests: the unit test above, and
+  `e2e/foundation.spec.ts` in the browser (two saves, one past the records, switched with Saved Games).
+- **What it isn't.** The renewal odds and timing are judgement, not data (above), and forty seeds over ten years are
+  checked for coherence, not realism: dated after the records, numbered in order, announced before they air, starting
+  after the last season ends, and closed for good.
+
 ## Next Phases
 
 1. **Studios keep releasing.** New titles follow each studio's recorded pace and genres, with invented titles and

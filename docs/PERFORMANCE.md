@@ -49,7 +49,61 @@ the log and the event queue restores the game exactly, and that the copy is exac
 **Tradeoff:** unlike `structuredClone`, a value referenced from two places is copied twice. Saved games never share
 references (they are JSON), so this changes nothing for them.
 
-## Startup JavaScript, November 7, 2026 (current)
+## The Engine After The Start Screen, November 11, 2026 (current)
+
+The owner's foundation brief asked for headroom without raising budgets, removing anything, or slowing a first visit to
+a screen badly. Startup was 685 kB, 219 of the 220 kB gzipped budget, because the store, the save vault and the
+components pulled the whole game engine in before the start screen could draw.
+
+**What changed.**
+- `src/engine/save-store.ts` holds the light storage code, moved verbatim from `save.ts`: listing saves, drafts, locks,
+  recovery copies and storage use. The start screen uses only that. The vault imports the rest of `save.ts` only for a
+  save whose index entry is missing, and when it replays a journal.
+- The store loads the engine with `import()` (`src/ui/store-engine.ts`) once the start screen has drawn, then the game's
+  frame and Home (`store.warm`). Every way into a game awaits it.
+- New Game waits for the engine only, and fetches the creation screen beside it, while the start screen says "Getting
+  character creation ready…".
+- Shell and Home are drawn from the store, not with `React.lazy`. Lazy, a game showed "Loading…" for React's 300 ms reveal
+  delay while its clock ran (`e2e/backup.spec.ts` caught a save that had moved on when read straight after opening).
+- `components.tsx` imports the time helpers it uses, not the engine.
+
+**Startup files (`npm run budget`).** 685 kB, 219 kB gzipped, before; 302 kB, 96 kB gzipped, after. The budgets (700 and
+220 kB) weren't changed.
+
+**In the browser.** `e2e/measure.spec.ts`, on the production build through `server/serve.mjs` with the made-up catalog,
+Chromium throttled to 150 ms latency, 1.6 Mbps down, 750 kbps up and a CPU four times slower, cache off. The same
+script ran three times on each build: before is the code at `9d08d21`, after is this change. Medians, with the range; bytes
+are what crossed the network, with the JavaScript part in brackets.
+
+| Step | Before, ms | After, ms | Before, kB (JS) | After, kB (JS) |
+| --- | --- | --- | --- | --- |
+| Cold start, to the start screen ready | 1775 (1759–1787) | 1125 (1116–1247) | 234.5 (221.1) | 112.1 (98.7) |
+| Cold start straight through New Game to creation | 3145 (2761–3173) | 2534 (2523–2555) | 437.2 (289.6) | 272.8 (247.1) |
+| New Game, pressed once the start screen is ready | 1007 (956–1548) | 1410 (1400–1422) | 200.2 (66.1) | 160.6 (148.4) |
+| Continue (cache warm, as a returning player) | 223 (199–294) | 263 (247–268) | 0 | 0 |
+| Companies | 319 (302–323) | 320 (298–469) | 23.9 (23.2) | 24.4 (23.7) |
+| A film's page | 531 (495–586) | 528 (509–555) | 4.0 | 4.0 |
+| A person's page | 271 (255–276) | 262 (242–262) | 0.9 | 0.9 |
+| World | 389 (370–403) | 368 (363–382) | 12.9 | 13.0 |
+| Calendar | 955 (922–981) | 942 (935–973) | 97.9 (11.6) | 98.0 (11.7) |
+
+**What it means.**
+- **Faster:** the start screen, by 650 ms and 122 kB on this connection, and opening the page straight into a new game, by
+  600 ms.
+- **Slower:** pressing New Game after the start screen has settled, by 400 ms. Part of the engine is still arriving then,
+  where before it had come with the start screen. The start screen says it is getting ready.
+- **About the same:** Continue is 40 ms slower, inside the spread of the runs before. The other screens are unchanged:
+  each already loaded with its page.
+
+**How the first measurement was wrong.** The first runs timed New Game until
+any top heading showed. The start screen's wordmark is one, so that step measured nothing, in both builds. They also
+discarded what downloaded between steps, which hid the engine's cost. The table above waits for the creation screen's own
+heading, and adds the step that runs straight through.
+
+## Startup JavaScript, November 7, 2026 (historical)
+
+Until November 11, 2026 the files below loaded at startup with the engine; the genre catalog and the holiday rules were
+fetched from startup. Since then they are fetched once the engine has loaded (`store.engineReady`).
 
 Measured with `npm run build` then `npm run budget`, on the files `dist/index.html` loads before anything else.
 

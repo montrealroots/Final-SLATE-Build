@@ -18,6 +18,24 @@ them:
 | Films, series, seasons, episodes, people, networks, the industry's dated events (`world.json`), cinema openings (`theatrical.json`) | TMDB, plus Wikidata for network owners | `npm run screen-catalog:import`, `node tools/screen-catalog/networks.mjs`, `npm run screen-catalog:build` | `.screen-catalog/` | No: TMDB's terms (below) |
 | Cinemas | Wikidata (CC0) | `node tools/cinemas/import.mjs` | `.cinemas/` | Allowed by its licence, but kept out as a raw research export, and rebuilt instead |
 
+## Three Settings, Kept Apart
+
+| Setting | What runs | Data | What it proves |
+| --- | --- | --- | --- |
+| Development | `npm run dev` (Vite) | `.screen-catalog/` and `.cinemas/` on this machine, through the same handler as production | That the game works on the real catalog |
+| Production testing | `npm run build`, then `server/serve.mjs` (`SLATE_E2E_PROD=1` in the browser suite) | None on port 4175, as CI has none; the made-up catalog on 4176; an expired copy on 4177 | That the built game and its data path work with no Vite in the path |
+| Deployment | Nothing yet | Gathered where the server runs | Not done: it needs a host and the owner's decisions below |
+
+## Data Freshness And Saves
+
+- **A catalog's age.** A copy is served for six months from its oldest response, then withdrawn (below).
+- **What a save keeps.** A save never holds catalog records. If the catalog is installed when a game opens, its world
+  starts and records the catalog build it started from and where the records end (`docs/WORLD.md`, "Each Save's World,
+  Held Steady"). A newer catalog corrects the records but never what the save's world has decided. A withdrawn or missing
+  catalog pauses the world without erasing it, and its decisions keep their dates when it returns.
+- **Save versions.** The save format's version is unchanged by this. A save from before it loads as it was, and takes
+  the record of where its seasons began from the first catalog that decides for it.
+
 ## The Production Server
 
 `server/serve.mjs` (Node 22, no dependencies) is the production path:
@@ -83,6 +101,7 @@ six months is not barred by any explicit clause. That isn't a written permission
 | Unit (`tests/catalog-server.test.ts`) | The production server on made-up files: records on request, 404s, the page fallback, immutable compressed assets, a ready, missing, unreadable and expired catalog, path traversal, methods, and no credential or outside call | Passes |
 | Unit (`tests/catalog-load.test.ts`) | The game's loader: nothing asked for while the index says there is no catalog, the reason kept, a failed index retried with its record, cinemas read without the catalog | Passes |
 | Browser, production build through the production server (`SLATE_E2E_PROD=1`, `e2e/serve-prod.ts`) | The whole browser suite runs against `server/serve.mjs` on port 4175 with no catalog, as CI has none. `e2e/production-data.spec.ts` runs a made-up catalog through the server on 4176, with no request intercepted: company, film, cast member, series, network, a place's cinemas. It also runs an expired copy on 4177: withdrawn, the reason shown, the game going on | Passes on desktop and phone |
+| Browser, foundation journeys (`e2e/foundation.spec.ts`, fixture data) | From the calendar to a simulated season, and the same after Save & Exit; two saves switched without either's world leaking into the other; a theatrical release listed where it will open, cancelled, and a run that ends leaving the listings | Passes on desktop, phone and WebKit (iPhone 15 Pro Max) |
 | Development | The same handler inside Vite's dev and preview servers, with the real catalog on this machine | Used throughout |
 
 ## What Is Not Done, And What It Needs

@@ -82,6 +82,9 @@ recorded.
 
 ## Which Cinemas Show Films
 
+The game never calls a cinema open or working. It *takes* one to show films, and says so, on two pieces of evidence:
+no closure recorded, and a website or operator in Wikidata. Neither is a check that it trades today.
+
 Having no closure recorded isn't enough: many cinemas closed long ago and nobody recorded it. London's Jacey Leicester
 Square, for example, was booking 2026 films before this rule. So a cinema shows films only if Wikidata also records a
 sign it is trading: an official website or an operator. The importer gathers websites in a light pass of its own.
@@ -103,9 +106,14 @@ The owner: "those theaters will hold what movies will release." The rules are in
     limited (type 2) release by country. The catalog build writes these as `theatrical.json`: 1,910 openings of 79
     films from October 2024 on.
   - These are only the films Disney's companies are credited with, and the page says so.
-- **The player's films.** A theatrical release plays in each of its territories from its date. A cancelled release, or
-  another route, doesn't.
-- **How long.** TMDB records openings, not closings, so a run is game calibration: 8 weeks wide, 4 limited.
+- **The player's films.** A theatrical release plays in each of its territories once the release system marks it
+  released, from its date. A planned one isn't in cinemas yet (the Release page says where it will open); a cancelled one
+  is gone, and so is any other route. Until November 11, 2026 a release still marked planned played from its date.
+- **Theatrical, not digital.** Only TMDB's theatrical and limited releases count; digital, physical and television
+  releases don't.
+- **How long.** TMDB records openings, not closings, so a run is game calibration: 8 weeks wide, 4 limited. The release
+  system records no run length for the player's film, so it runs as a wide release does.
+- **Precision.** An opening is the day TMDB records for that country; a country with no recorded opening shows nothing.
 - **Which cinemas.** Which cinemas booked which film isn't recorded, so each cinema that shows films books each film by
   a fixed draw: the same on every visit. A wide release is booked at about 60% of them and a limited one at about 8%.
   The player's film is booked by reception, from 4% to 60%: a film received well gets more screens. A cinema shows at
@@ -117,8 +125,10 @@ The owner: "those theaters will hold what movies will release." The rules are in
     - each nearby cinema's programme.
   - A theatrical release on the player's Release page says, for each territory, how many of the country's cinemas
     that show films are showing it, or will open it, or showed it, and names a few.
-- **Money.** It doesn't touch money: a release's earnings come from its distributor's reports as before
-  (`distribution.ts`).
+- **Money.** It doesn't touch money. A release's earnings are the gross its distributor reports (`finish.ts`), which
+  reads no cinema, booking or count, so a country's thin or thick Wikidata coverage can't become a market effect and no
+  booking is counted twice. `tests/programme.test.ts` fails if anything in the engine reads the cinema files. Both the
+  place card and the Release page say so.
 
 ## Not Done Yet
 

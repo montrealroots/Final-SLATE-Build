@@ -114,9 +114,14 @@ Each role keeps:
 `catalog/model.ts` `standingAt` decides:
 
 - **Current.** The role has begun and not yet ended.
-- **Former.** The role has ended, or its end was announced.
-- **Incoming.** The role is announced but not yet begun. For example, Josh D'Amaro as chief executive between February 3
-  and March 18, 2026.
+- **Former.** The role has ended.
+- **Incoming.** The role begins on a recorded date still to come. For example, Josh D'Amaro as chief executive between
+  February 3 and March 18, 2026.
+- **Announced** and **Leaving.** An appointment or a departure announced with no effective date. Until the registry was
+  checked (November 10, 2026), when its sources showed the change made, the new holder is Announced and the old one
+  Leaving: Lucasfilm's January 15, 2026 announcement makes Dave Filoni and Lynwen Brennan Announced and Kathleen Kennedy
+  Leaving until then. Until November 11, 2026 the announcement made the new leaders current and Kennedy former at once,
+  which put the change into effect on a date no source gives.
 - **Hidden.** The role was announced after the save's date. For example, Debra OConnell's role, named March 16, 2026,
   doesn't appear in a January save.
 - **Listed.** A source checked after the save's date names someone in a role with no start date, so whether they held
@@ -244,7 +249,14 @@ of every episode. Each episode's page has its own credits.
 - **People.** A death after the save's date isn't shown. A person's page gives their age on the save's date, or the
   age they died at once their death has happened. Ages turn on the birthday by the game's own rule: a February 29
   birthday is observed on February 28 in other years, as the player's own age is.
-- **Ownership.** A company acquired after the save's date says it isn't part of The Walt Disney Company yet.
+- **Ownership.** A company acquired after the save's date says it isn't part of The Walt Disney Company yet. A title
+  credited to an acquired company is marked "Released before the acquisition" when its release date is earlier. Until
+  November 11, 2026 it said "made before", which the records can't tell: they hold release dates, not when a film was made
+  or paid for.
+- **Status.** TMDB's status for a title (Ended, Released, In Production) is what it said on the day the records were
+  taken. Before that day in the story it would tell what happens later, so the page says when it was recorded and waits.
+- **Simulated series.** A series this save continues shows only the recorded seasons it began with (`docs/WORLD.md`,
+  "Each Save's World, Held Steady").
 
 ### Missing And Failed Records
 

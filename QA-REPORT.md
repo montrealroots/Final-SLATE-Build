@@ -8,7 +8,19 @@
 
 ## Commands And Results
 
-### Current: What The Cinemas Show (November 11, 2026)
+### Current: The World Foundation (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` at `bb628e7` | 0 | 92 files, 744 tests. Startup JavaScript 302 kB, 96 kB gzipped (was 685 and 219); budgets unchanged. New:<br>- `tests/industry.test.ts`: a catalog late or gone and back decides the same; a reload partway and another save in between end the same; a refresh never rewrites decisions or adds seasons, before or after the first decision; a save from before `rec` takes it once; forty seeds over ten years stay coherent.<br>- `tests/minors.test.ts`: age bands change on the birthday, day by day for 17 years, 8 birth dates (two of them February 29) and 4 rule sets; read status matches the research log.<br>- `tests/programme.test.ts`: only a released theatrical release plays, for its run; nothing in the engine reads cinemas.<br>- `tests/catalog.test.ts`: Lucasfilm's transition is Leaving and Announced until the registry's check. |
+| Mutations | 1 or more for each | Eleven were made and each failed a test:<br>- deciding on the day a wait ended (two ways);<br>- no profile clipping, no event filter, a recorded ending kept;<br>- no `rec` at the start (this one survived until a test refreshed the catalog before the first decision);<br>- no `rec` for an older save;<br>- a premiere before its decision;<br>- a cancelled series left open;<br>- the old day-count ages;<br>- France recorded as read in full. |
+| `npx playwright test e2e/foundation.spec.ts`, desktop | 0 | 3 passed, fixture data. |
+| The catalog, child and foundation journeys, WebKit (iPhone 15 Pro Max) | 1 flake | 10 of 11 passed with two workers; the one that failed, a Continue Creation that didn't open creation, passed 3 of 3 alone (Open). |
+| `e2e/backup.spec.ts`, `e2e/storage.spec.ts`, desktop | 0 after the fix | Failed first: lazy Shell and Home kept "Loading…" up for React's 300 ms reveal delay while the clock ran, so a save read at once had moved on. They now draw from the store. Passed on the code before the change, in a temporary worktree. |
+| Startup measured, 3 runs each build | — | `docs/PERFORMANCE.md`. The first runs timed New Game until any top heading, which the start screen already had, and were discarded. |
+| `SLATE_E2E_PROD=1 npx playwright test`, all projects | PENDING | PENDING |
+
+### Earlier: What The Cinemas Show (November 11, 2026)
 
 | Command | Failures | Notes |
 | --- | --- | --- |
@@ -789,6 +801,11 @@ explicit `test.skip(project…)`; no test skips itself on an outcome. The list w
 
 | Severity | Defect | Fix | Regression Check |
 | --- | --- | --- | --- |
+| High | (Foundation pass, November 11, 2026) A living-world decision due while the catalog wasn't loaded was decided on the day the wait ended, so a slow or missing catalog changed the save's world | The wait keeps the day it was due | `tests/industry.test.ts`, "a catalog that loads late" |
+| High | (Same) A newer catalog would have told a simulated series' seasons twice, its recorded ones beside the save's own, and contradicted them with a recorded ending | Each simulated series records the seasons its save began with | `tests/industry.test.ts`, "a later catalog corrects the records" |
+| Medium | (Same, found by `e2e/foundation.spec.ts`) Renaming the game you were playing was undone by the next save | The open game is renamed in memory and saved whole | `e2e/foundation.spec.ts`, two saves |
+| Medium | (Same) A child moved into the next age band a day before or after the birthday that made them that age | Bands count whole years from birthdays | `tests/minors.test.ts`, "moves a child into the next age band" |
+| Low | (Same) Titles were "made before" an acquisition on their release date; an announced departure made an executive former at once; TMDB's status showed before the day it was recorded; cinemas were said to "show films" on a website alone | Each says only what the records do | `tests/catalog.test.ts`, `e2e/cinemas.spec.ts`, `e2e/catalog-live.spec.ts` |
 | High | (Found measuring micro budgets, after #36) A voice session the production could no longer pay the studio for threw an error: the whole day rolled back and time paused with "Something went wrong while time passed" | The session waits with the reason, as render time and wages already did | `tests/tight-budget.test.ts` (threw on the old code) |
 | High | (After #36) Micro-budget stop motion and 3D could never finish: staffing proposals went department by department in alphabetical order and spent the money before reaching the animator or the storyboard artist | Proposals hire a required crew the money can pay, or no one, and name the shortfall | `tests/tight-budget.test.ts`, `e2e/careers.spec.ts` stop motion |
 | Medium | (After #36) Role combining rarely happened: the colorist and re-recording mixer were hired before the editor and sound designer who cover them | On a micro budget, covering roles are proposed first | `tests/tight-budget.test.ts`, `tests/production-golden.test.ts` (regenerated for this intended change) |
@@ -861,6 +878,12 @@ explicit `test.skip(project…)`; no test skips itself on an outcome. The list w
 | Low | China's computed holidays were wrong for 2026 | Official 2026 arrangement used, with make-up working days | Lunar holiday test |
 
 ## Open
+
+- **Seen once, open (November 11, 2026): Continue Creation didn't open creation on WebKit.** With two WebKit workers
+  running the catalog, child and foundation journeys, a test's setup pressed Continue Creation and the start screen stayed,
+  the button focused, for four minutes. It passed 3 of 3 alone. Continue Creation waits for the engine to load; the line
+  the start screen now shows while it waits ("Getting character creation ready…") was added after this run, so whether it
+  was still waiting isn't known. No cause found. Next: run it under CPU load with the store's engine load logged.
 
 - **Unexplained, open (November 9, 2026): a working title lost on WebKit.** CI on `main` after #48 (`507096c`, run 117):
   the Emmys journey on `iphone-15-plus` (dev server) filled the New Script title right after a new game opened; the fill
