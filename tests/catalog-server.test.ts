@@ -9,6 +9,7 @@ import { gunzipSync } from 'node:zlib';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { createSlateServer } from '../server/serve.mjs';
 import { MAX_AGE_DAYS } from '../server/catalog-handler.mjs';
+import { writePack } from '../tools/pack-format.mjs';
 
 const DAY = 86_400_000;
 const RETRIEVED = '2026-11-10T12:00:00.000Z';
@@ -36,8 +37,8 @@ async function get(port: number, path: string, o: { method?: string; gzip?: bool
     req.on('error', fail).end();
   });
 }
-async function start(catalogDir: string, now = () => Date.parse('2026-11-11T12:00:00Z')): Promise<{ port: number; close: () => void }> {
-  const server = createSlateServer({ dist, catalogDir, cinemasDir: join(root, 'cinemas'), now });
+async function start(catalogDir: string, now = () => Date.parse('2026-11-11T12:00:00Z'), packsDir: string | null = null): Promise<{ port: number; close: () => void }> {
+  const server = createSlateServer({ dist, catalogDir, cinemasDir: join(root, 'cinemas'), packsDir, now });
   await new Promise<void>((r) => server.listen(0, '127.0.0.1', r));
   return { port: (server.address() as AddressInfo).port, close: () => server.close() };
 }
@@ -112,5 +113,31 @@ describe('the catalog, served by the production server', () => {
       const src = readFileSync(f, 'utf8');
       expect(src, f).not.toMatch(/api_key|Bearer\s|TMDB_|themoviedb\.org|fetch\(|https?\.request|process\.env\.[A-Z_]*(KEY|TOKEN|SECRET)/);
     }
+  });
+});
+
+describe('the mods the game offers', () => {
+  it('lists each pack from its header, serves only what it lists, and never a film pack past six months', async () => {
+    const packs = join(root, 'packs');
+    const film = (from: string) => writePack({ kind: 'catalog', name: 'Films And Series', source: 'TMDB', builtAt: from, retrieved: { from, to: from, maxAgeDays: 180 } }, [['index.json', '{"version":1}'], ['titles/movie-1.json', '{"title":"Fixture"}']]);
+    write(join(packs, 'films.slatepack'), '');
+    writeFileSync(join(packs, 'films.slatepack'), film(RETRIEVED));
+    writeFileSync(join(packs, 'old-films.slatepack'), film('2026-01-01T00:00:00.000Z'));
+    writeFileSync(join(packs, 'cinemas.slatepack'), writePack({ kind: 'cinemas', name: 'Cinemas', source: 'Wikidata (CC0)', builtAt: RETRIEVED }, [['cinemas/index.json', '{}']]));
+    writeFileSync(join(packs, 'notes.slatepack'), 'not a pack');
+    writeFileSync(join(packs, 'secret.txt'), 'kept here');
+    const s = await start(catalog('mods', null), undefined, packs);
+    try {
+      const list = json(await get(s.port, '/mods/index.json'));
+      expect(list.mods.map((m: { file: string; kind: string; files: number }) => [m.file, m.kind, m.files])).toEqual([['cinemas.slatepack', 'cinemas', 1], ['films.slatepack', 'catalog', 2]]);
+      const file = await get(s.port, '/mods/films.slatepack');
+      expect([file.status, file.headers['content-type'], file.headers['cache-control']]).toEqual([200, 'application/octet-stream', 'public, max-age=3600']);
+      expect(file.body.equals(readFileSync(join(packs, 'films.slatepack')))).toBe(true);
+      for (const path of ['/mods/old-films.slatepack', '/mods/notes.slatepack', '/mods/secret.txt', '/mods/../packs/films.slatepack']) expect((await get(s.port, path)).status, path).not.toBe(200);
+      expect((await get(s.port, '/mods/films.slatepack', { method: 'POST' })).status).toBe(405);
+    } finally { s.close(); }
+    // A server with no packs offers none.
+    const bare = await start(catalog('bare', null));
+    try { expect(json(await get(bare.port, '/mods/index.json'))).toEqual({ version: 1, mods: [] }); } finally { bare.close(); }
   });
 });

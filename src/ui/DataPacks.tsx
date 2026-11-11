@@ -1,15 +1,19 @@
-// Settings, Data Packs (November 11, 2026, docs/DATA-PACKS.md): install the film catalog or the cinemas from a pack
-// file, see what is installed, and remove it.
+// Settings, Mods (November 11, 2026, docs/DATA-PACKS.md; the owner: "put that package in game under 'Mods' and once
+// installed boom"). The mods this copy of the game offers, each installed with one press; what is installed, with
+// Remove; and a pack from a file, for one the game doesn't offer.
 import { useEffect, useRef, useState } from 'react';
 import { forgetCatalog, retryCatalog } from '../catalog/load';
-import { installPack, installedPacks, packExpires, removePack, type InstalledPack, type PackKind } from '../catalog/packs';
+import { installOffered, installPack, installedPacks, offeredMods, packExpires, removePack, type InstalledPack, type OfferedMod, type PackKind, type PackMeta } from '../catalog/packs';
 import { startLivingWorld } from './App';
 import { store, useStore } from './store';
 
 const day = (iso: string | number) => new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 const mb = (bytes: number) => `${(bytes / 1048576).toFixed(1)} MB`;
+const n = (x: number) => x.toLocaleString('en-US');
+const WHERE: Record<PackKind, string> = { catalog: 'Open Companies to see the films and series.', cinemas: 'Open a place in World to see its cinemas.' };
+const WHAT: Record<PackKind, string> = { catalog: 'Every film, series, season, episode and person the catalog covers, and the networks they air on.', cinemas: 'Cinemas worldwide, and what they show.' };
 
-/** After a pack comes or goes, every page reads the catalog afresh, and an open game's world starts or pauses. */
+/** After a mod comes or goes, every page reads the catalog afresh, and an open game's world starts or pauses. */
 async function refreshGame(kind: PackKind, installed: boolean): Promise<void> {
   forgetCatalog();
   retryCatalog();
@@ -20,22 +24,33 @@ async function refreshGame(kind: PackKind, installed: boolean): Promise<void> {
   store.emit();
 }
 
+function About({ p, size }: { p: PackMeta; size: number }) {
+  const ends = packExpires(p);
+  return (
+    <>
+      <div className="dim small">{WHAT[p.kind]} From {p.source}, gathered {day(p.retrieved?.from ?? p.builtAt)}. {mb(size)}.{ends ? ` Withdrawn on ${day(ends)}: TMDB allows its data to be kept six months.` : ''}</div>
+      {p.kind === 'catalog' && <div className="dim small">This product uses the TMDB API but is not endorsed or certified by TMDB.</div>}
+    </>
+  );
+}
+
 export function DataPacks() {
   useStore();
-  const [list, setList] = useState<InstalledPack[] | null>(null);
+  const [installed, setInstalled] = useState<Map<PackKind, InstalledPack> | null>(null);
+  const [offered, setOffered] = useState<OfferedMod[]>([]);
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const input = useRef<HTMLInputElement>(null);
-  const reload = () => void installedPacks().then((m) => setList([...m.values()]));
-  useEffect(reload, []);
+  const reload = () => void installedPacks().then(setInstalled);
+  useEffect(() => { reload(); void offeredMods().then(setOffered); }, []);
 
-  const install = async (file: File) => {
-    setBusy(true); setError(null); setStatus('Reading the pack…');
+  const run = async (name: string, work: () => Promise<InstalledPack>) => {
+    setBusy(true); setError(null); setStatus(`Getting ${name} ready…`);
     try {
-      const p = await installPack(file, (n, total) => setStatus(`Installing: ${n.toLocaleString('en-US')} of ${total.toLocaleString('en-US')} files…`));
+      const p = await work();
       await refreshGame(p.kind, true);
-      setStatus(`Installed ${p.name}. ${p.kind === 'catalog' ? 'Open Companies to see the films and series.' : 'Open a place in World to see its cinemas.'}`);
+      setStatus(`Installed ${p.name}. ${WHERE[p.kind]}`);
     } catch (e) {
       setStatus(null);
       setError(e instanceof Error ? e.message : String(e));
@@ -45,6 +60,9 @@ export function DataPacks() {
       reload();
     }
   };
+  const install = (m: OfferedMod) => run(m.name, () => installOffered(m, (phase, done, total) =>
+    setStatus(phase === 'download' ? `Downloading ${m.name}: ${mb(done)} of ${mb(total)}…` : `Installing ${m.name}: ${n(done)} of ${n(total)} files…`)));
+  const fromFile = (f: File) => run('the mod', () => installPack(f, (done, total) => setStatus(`Installing: ${n(done)} of ${n(total)} files…`)));
   const remove = async (p: InstalledPack) => {
     setBusy(true); setError(null);
     try {
@@ -59,30 +77,35 @@ export function DataPacks() {
     }
   };
 
+  // Every mod the game offers, and any installed from a file that it doesn't.
+  const kinds = [...new Set<PackKind>([...offered.map((m) => m.kind), ...(installed?.keys() ?? [])])];
   return (
     <fieldset style={{ border: 0, padding: 0, margin: '16px 0 0' }} aria-busy={busy}>
-      <legend style={{ fontWeight: 600, marginBottom: 8 }}>Data Packs</legend>
-      <p className="muted">Add the films and series, or the cinemas, by installing their data pack. A pack is kept in this browser only; your saved games never hold it.</p>
-      {list === null ? null : list.length === 0 ? <p className="dim">No data packs are installed.</p> : (
-        <ul className="list" aria-label="Installed Data Packs">
-          {list.map((p) => {
-            const ends = packExpires(p);
+      <legend style={{ fontWeight: 600, marginBottom: 8 }}>Mods</legend>
+      <p className="muted">Add the films and series, or the cinemas, to your game. A mod is kept in this browser only; your saved games never hold it.</p>
+      {installed === null ? null : kinds.length === 0 ? <p className="dim">This copy of the game offers no mods, and none is installed.</p> : (
+        <ul className="list" aria-label="Mods">
+          {kinds.map((kind) => {
+            const have = installed.get(kind);
+            const offer = offered.find((m) => m.kind === kind);
+            const newer = !!have && !!offer && offer.builtAt !== have.builtAt;
+            const p = have ?? offer!;
             return (
-              <li key={p.kind} className="list-item">
+              <li key={kind} className="list-item">
                 <span className="grow">
-                  <strong>{p.name}</strong>
-                  <div className="dim small">From {p.source}, gathered {day(p.retrieved?.from ?? p.builtAt)}. {p.files.toLocaleString('en-US')} files, {mb(p.bytes)}.{ends ? ` Withdrawn on ${day(ends)}: TMDB allows its data to be kept six months.` : ''}</div>
-                  {p.kind === 'catalog' && <div className="dim small">This product uses the TMDB API but is not endorsed or certified by TMDB.</div>}
+                  <strong>{p.name}</strong> {have && <span className="chip chip-positive">Installed</span>}
+                  <About p={newer ? offer! : p} size={newer ? offer!.bytes : have ? have.bytes : offer!.bytes} />
                 </span>
-                <button className="btn btn-sm" disabled={busy} onClick={() => void remove(p)} aria-label={`Remove ${p.name}`}>Remove</button>
+                {offer && (!have || newer) && <button className="btn btn-sm btn-primary" disabled={busy} onClick={() => void install(offer)} aria-label={`${newer ? 'Update' : 'Install'} ${offer.name}`}>{newer ? 'Update' : 'Install'}</button>}
+                {have && <button className="btn btn-sm" disabled={busy} onClick={() => void remove(have)} aria-label={`Remove ${have.name}`}>Remove</button>}
               </li>
             );
           })}
         </ul>
       )}
-      <input ref={input} type="file" accept=".slatepack" hidden aria-label="Data Pack File"
-        onChange={(e) => { const f = e.target.files?.[0]; if (f) void install(f); }} />
-      <button className="btn" disabled={busy} onClick={() => input.current?.click()}>{busy ? 'Working…' : 'Install Data Pack'}</button>
+      <input ref={input} type="file" accept=".slatepack" hidden aria-label="Mod File"
+        onChange={(e) => { const f = e.target.files?.[0]; if (f) void fromFile(f); }} />
+      <button className="btn btn-sm" style={{ marginTop: 8 }} disabled={busy} onClick={() => input.current?.click()}>Install From A File</button>
       {status && <p role="status" className="muted">{status}</p>}
       {error && <p role="alert" className="error">{error}</p>}
     </fieldset>

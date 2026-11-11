@@ -6,9 +6,13 @@ server that holds them.
 
 ## For The Player
 
-Settings, Data Packs:
-- **Install Data Pack** takes a `.slatepack` file. It shows progress, then says what was added and where to look:
-  Companies for the films and series, a place in World for its cinemas.
+Settings, **Mods** (renamed from Data Packs the same day, at the owner's request: "put that package in game under 'Mods'
+and once installed boom"):
+- **The game's own mods.** The server offers the packs in its `packs/` folder (`server/serve.mjs --packs`, default
+  `packs`; the dev server reads the same folder). Each is listed with what it adds, its source, when it was gathered
+  and its size, and **Install** downloads and installs it with one press, showing progress, then says where to look:
+  Companies for the films and series, a place in World for its cinemas. A newer pack on the server shows **Update**.
+- **Install From A File** takes a `.slatepack` the game doesn't offer.
 - **What's installed** is listed with its source, when it was gathered, its size, and for the film pack the day it is
   withdrawn, with TMDB's notice.
 - **Remove** deletes every record the pack held from this browser.
@@ -32,6 +36,9 @@ node tools/pack.mjs
 They are written to `packs/`, which is kept out of the repository, as are all `*.slatepack` files.
 
 ## How It Works
+
+- **Offered** (`server/catalog-handler.mjs`): `/mods/index.json` lists every pack in the folder from its header, and
+  `/mods/<file>` serves only a file the list offers. A film pack past six months is neither listed nor served.
 
 - **The file** (`tools/pack-format.mjs`): the bytes `SLATEPACK1`, a header listing each record's path and position, then
   each record gzipped. Reading the header is enough to slice out every record without unpacking any.
@@ -61,10 +68,16 @@ They are written to `packs/`, which is kept out of the repository, as are all `*
   - the six-month date, capped at TMDB's limit;
   - refusal of a file that isn't a pack, one cut short, one holding another kind's files, a film pack with no gathering
     date, and a newer format.
+- `tests/catalog-server.test.ts`: the mods listing from headers, only listed files served, an expired film pack, a file
+  that isn't a pack, and anything else in the folder never reachable.
 - `e2e/data-packs.spec.ts`, on desktop, phone and WebKit (iPhone 15 Pro Max), with fixture packs:
+  - on the production build, a server with no data and the two fixture mods: one press installs each, and the catalog
+    and a place's cinemas show;
   - both packs installed in Settings;
   - the catalog and a place's cinemas shown from them, and kept after a reload;
   - the film pack removed, with every record gone;
   - a pack past six months, and a file that isn't one, refused.
-- **The real packs:** installed in Chromium in 5.8 seconds (77 MB used) and in WebKit with iPhone emulation in 4.0 seconds
+- **The real packs, offered as mods:** one press installed the film pack in 3.9 seconds in WebKit with iPhone emulation,
+  download included, and the cinemas in 0.2.
+- **The real packs, from files:** installed in Chromium in 5.8 seconds (77 MB used) and in WebKit with iPhone emulation in 4.0 seconds
   (71 MB), on this machine. A phone will be slower.

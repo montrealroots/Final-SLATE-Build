@@ -19,25 +19,25 @@ function packs(ageDays = 1): { catalog: Buffer; cinemas: Buffer } {
   };
 }
 const install = (page: Page, name: string, buffer: Buffer) =>
-  page.getByLabel('Data Pack File').setInputFiles({ name, mimeType: 'application/octet-stream', buffer });
+  page.getByLabel('Mod File').setInputFiles({ name, mimeType: 'application/octet-stream', buffer });
 
 test.beforeEach(({}, info) => {
   test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
 });
 
-test('install the film and cinema packs in Settings, and the catalog and cinemas show; remove one, and its data goes', async ({ page }) => {
+test('install the film and cinema packs from files in Settings, and the catalog and cinemas show; remove one, and its data goes', async ({ page }) => {
   test.setTimeout(180_000);
   const p = packs();
   await quickLife(page, 'gb-london', '2026-01-05');
   await nav(page, 'Settings');
-  await expect(page.getByText('No data packs are installed.')).toBeVisible();
   await install(page, 'slate-catalog.slatepack', p.catalog);
   await expect(page.getByRole('status').filter({ hasText: 'Installed Films And Series.' })).toBeVisible();
   await install(page, 'slate-cinemas.slatepack', p.cinemas);
   await expect(page.getByRole('status').filter({ hasText: 'Installed Cinemas.' })).toBeVisible();
-  const list = page.getByRole('list', { name: 'Installed Data Packs' });
-  await expect(list.locator('li')).toHaveCount(2);
-  await expect(list.locator('li', { hasText: 'Films And Series' })).toContainText(/From TMDB, gathered .*\. \d+ files, [\d.]+ MB\. Withdrawn on .*: TMDB allows its data to be kept six months\./);
+  const list = page.getByRole('list', { name: 'Mods' });
+  await expect(list.locator('li', { hasText: 'Films And Series' })).toContainText('Installed');
+  await expect(list.locator('li', { hasText: 'Cinemas' })).toContainText('Installed');
+  await expect(list.locator('li', { hasText: 'Films And Series' })).toContainText(/From TMDB, gathered .*\. [\d.]+ MB\. Withdrawn on .*: TMDB allows its data to be kept six months\./);
   await expect(list.locator('li', { hasText: 'Films And Series' })).toContainText('This product uses the TMDB API but is not endorsed or certified by TMDB.');
 
   // The catalog, from the pack: a company, a film, a cast member.
@@ -63,7 +63,7 @@ test('install the film and cinema packs in Settings, and the catalog and cinemas
   await nav(page, 'Settings');
   await list.getByRole('button', { name: 'Remove Films And Series' }).click();
   await expect(page.getByRole('status').filter({ hasText: 'Removed Films And Series. Every record it held was deleted from this browser.' })).toBeVisible();
-  await expect(list.locator('li')).toHaveCount(1);
+  await expect(list.getByRole('button', { name: 'Remove Films And Series' })).toHaveCount(0);
   const left = await page.evaluate(async () => {
     const db = await new Promise<IDBDatabase>((ok) => { const r = indexedDB.open('slate-packs'); r.onsuccess = () => ok(r.result); });
     return new Promise<string[]>((ok) => { const r = db.transaction('files').objectStore('files').getAllKeys(); r.onsuccess = () => ok(r.result.map(String)); });
@@ -82,5 +82,34 @@ test('a film pack older than TMDB\'s six months is refused, and a file that isn\
   await expect(page.getByRole('alert')).toContainText("the longest TMDB allows its data to be kept, so it can't be installed");
   await install(page, 'notes.slatepack', Buffer.from('not a pack'));
   await expect(page.getByRole('alert')).toContainText("This file isn't a SLATE data pack.");
-  await expect(page.getByText('No data packs are installed.')).toBeVisible();
+  await expect(page.getByRole('list', { name: 'Mods' }).getByText('Installed', { exact: true })).toHaveCount(0);
+});
+
+// The game's own mods (the owner: "put that package in game under 'Mods' and once installed boom"), offered by the
+// production server on port 4178 (e2e/serve-prod.ts): no catalog on the server, the fixture packs in its mods folder.
+test.describe('mods the game offers', () => {
+  test.use({ baseURL: 'http://localhost:4178' });
+  test.beforeEach(() => { test.skip(process.env.SLATE_E2E_PROD !== '1', 'Needs the production servers (SLATE_E2E_PROD=1).'); });
+
+  test('one press installs each, and the films and the cinemas show', async ({ page }) => {
+    test.setTimeout(180_000);
+    await quickLife(page, 'gb-london', '2026-01-05');
+    await nav(page, 'Companies');
+    await expect(page.getByText('To add them, install the Films And Series mod in Settings, under Mods.')).toBeVisible();
+    await nav(page, 'Settings');
+    const list = page.getByRole('list', { name: 'Mods' });
+    await expect(list.locator('li', { hasText: 'Films And Series' })).toContainText('Every film, series, season, episode and person the catalog covers');
+    await list.getByRole('button', { name: 'Install Films And Series' }).click();
+    await expect(page.getByRole('status').filter({ hasText: 'Installed Films And Series. Open Companies to see the films and series.' })).toBeVisible();
+    await list.getByRole('button', { name: 'Install Cinemas' }).click();
+    await expect(page.getByRole('status').filter({ hasText: 'Installed Cinemas.' })).toBeVisible();
+    await expect(list.getByText('Installed', { exact: true })).toHaveCount(2);
+    await expect(list.getByRole('button', { name: /^Install / })).toHaveCount(0);
+    await nav(page, 'Companies');
+    await expect(card(page, 'The Catalog')).toContainText('3 films, 1 series with 1 season and 2 episodes, and 6 people');
+    await nav(page, 'World');
+    await page.getByRole('searchbox', { name: 'Search Places' }).fill('london');
+    await page.getByRole('list', { name: 'Places' }).getByRole('button', { name: 'London', exact: true }).first().click();
+    await expect(page.getByRole('region', { name: 'Cinemas Nearby' })).toContainText('Riverside Picturehouse (Fixture)');
+  });
 });

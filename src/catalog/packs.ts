@@ -151,3 +151,42 @@ export async function packFile(path: string): Promise<{ data: unknown } | 'gone'
   const bytes = await req((await db()).transaction('files').objectStore('files').get(`${kind}:${path}`) as IDBRequest<ArrayBuffer | undefined>);
   return bytes ? { data: await decodeRecord(new Blob([bytes])) } : 'gone';
 }
+
+// ---------- mods the game offers (server/catalog-handler.mjs, /mods/) ----------
+
+export interface OfferedMod extends PackMeta { file: string; files: number; bytes: number }
+const MODS_BASE = `${import.meta.env.BASE_URL}mods/`;
+
+/** The mods this copy of the game offers; none when the server offers none or can't be reached. */
+export async function offeredMods(): Promise<OfferedMod[]> {
+  try {
+    const r = await fetch(`${MODS_BASE}index.json`, { cache: 'no-cache' });
+    if (!r.ok || !(r.headers.get('content-type') ?? '').includes('json')) return [];
+    const body = (await r.json()) as { mods?: OfferedMod[] };
+    return Array.isArray(body.mods) ? body.mods : [];
+  } catch {
+    return [];
+  }
+}
+
+/** Download a mod, saying how much has come, then install it. */
+export async function installOffered(mod: OfferedMod, progress: (phase: 'download' | 'install', done: number, total: number) => void): Promise<InstalledPack> {
+  let r: Response;
+  try {
+    r = await fetch(MODS_BASE + mod.file);
+  } catch {
+    throw new Error(`${mod.name} couldn't be downloaded. Check your connection and try again.`);
+  }
+  if (!r.ok || !r.body) throw new Error(`${mod.name} couldn't be downloaded (the game's server answered ${r.status}). Try again.`);
+  const reader = r.body.getReader();
+  const parts: Uint8Array[] = [];
+  let got = 0;
+  for (;;) {
+    const { done, value } = await reader.read().catch(() => { throw new Error(`The download of ${mod.name} was cut off. Try again.`); });
+    if (done) break;
+    parts.push(value);
+    got += value.length;
+    progress('download', got, mod.bytes);
+  }
+  return installPack(new Blob(parts as BlobPart[]), (n, total) => progress('install', n, total));
+}

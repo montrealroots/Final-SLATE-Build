@@ -1,8 +1,9 @@
 // The production server (November 11, 2026, docs/DEPLOYMENT.md): the built game (dist/) and its data files, with no
 // Vite in the path. Node 22, no dependencies.
 //   npm run build && npm run serve
-//   node server/serve.mjs [--port 8080] [--dist dist] [--catalog .screen-catalog] [--cinemas .cinemas]
-// Environment variables SLATE_PORT, SLATE_DIST, SLATE_CATALOG_DIR and SLATE_CINEMAS_DIR do the same. It reads no
+//   node server/serve.mjs [--port 8080] [--dist dist] [--catalog .screen-catalog] [--cinemas .cinemas] [--packs packs]
+// Environment variables SLATE_PORT, SLATE_DIST, SLATE_CATALOG_DIR, SLATE_CINEMAS_DIR and SLATE_PACKS_DIR do the same.
+// The packs directory holds the mods the game offers in Settings (docs/DATA-PACKS.md). It reads no
 // credential and calls no outside service: the catalog is gathered and built separately (docs/CATALOG.md).
 import { existsSync, readFileSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
@@ -18,9 +19,9 @@ const TYPES = {
 const COMPRESSIBLE = new Set(['.html', '.js', '.css', '.json', '.svg', '.tsv', '.txt']);
 
 /** A server for the built game at `dist` and its data. Returned unstarted, for tests and for the command line. */
-export function createSlateServer({ dist, catalogDir, cinemasDir, now }) {
+export function createSlateServer({ dist, catalogDir, cinemasDir, packsDir = null, now }) {
   const root = resolve(dist);
-  const data = createCatalogHandler({ catalogDir: resolve(catalogDir), cinemasDir: resolve(cinemasDir), now });
+  const data = createCatalogHandler({ catalogDir: resolve(catalogDir), cinemasDir: resolve(cinemasDir), packsDir: packsDir && resolve(packsDir), now });
   const gz = new Map(); // a built file's gzip, made once: the build never changes while the server runs
   const send = (req, res, file, cacheControl) => {
     const ext = extname(file);
@@ -59,6 +60,6 @@ if (import.meta.url === `file://${process.argv[1]}`) {
   const dist = arg('dist', 'SLATE_DIST', 'dist');
   if (!existsSync(join(dist, 'index.html'))) { console.error(`No built game at ${dist}: run npm run build first.`); process.exit(1); }
   const port = Number(arg('port', 'SLATE_PORT', '8080'));
-  const server = createSlateServer({ dist, catalogDir: arg('catalog', 'SLATE_CATALOG_DIR', '.screen-catalog'), cinemasDir: arg('cinemas', 'SLATE_CINEMAS_DIR', '.cinemas') });
+  const server = createSlateServer({ dist, catalogDir: arg('catalog', 'SLATE_CATALOG_DIR', '.screen-catalog'), cinemasDir: arg('cinemas', 'SLATE_CINEMAS_DIR', '.cinemas'), packsDir: arg('packs', 'SLATE_PACKS_DIR', 'packs') });
   server.listen(port, () => console.log(`SLATE on http://localhost:${port}`));
 }

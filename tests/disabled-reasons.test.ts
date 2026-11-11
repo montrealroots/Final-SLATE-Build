@@ -42,7 +42,7 @@ const REASONS: Record<string, string> = {
   'Shell.tsx | blocked': 'The clock says Asleep; a read-only save or a processing problem shows its own banner; while busy the game is processing.',
   'Startup.tsx | !ready': 'The page asks you to choose a replacement for each missing place.',
   "SavedGames.tsx | stage.kind === 'busy'": 'The button reads Importing… while it works.',
-  'DataPacks.tsx | busy': 'Install reads Working… and a status line counts the files stored while a pack installs or is removed.',
+  'DataPacks.tsx | busy': 'A status line under the mods says what is downloading or installing, with how much is done.',
   'WorldPicker.tsx | !!busy': 'A place is being opened; the list shows it loading.',
   "WorldPicker.tsx | ws.status !== 'ready'": 'Loading places… is shown until the regions arrive.',
   'WorldView.tsx | !!opening': 'A place is being opened.',

@@ -5,11 +5,13 @@
 // - Port 4176: the labelled made-up catalog (catalog-fixture.ts), written to disk and read through the server as a real
 //   one would be: no request is intercepted (e2e/production-data.spec.ts).
 // - Port 4177: the same catalog, gathered more than six months ago: withdrawn, as TMDB's terms require.
+// - Port 4178: no data at all, and the fixture as the two mods it offers in Settings (e2e/data-packs.spec.ts).
 import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import { createSlateServer } from '../server/serve.mjs';
 import { CATALOG_FIXTURE } from './catalog-fixture.ts';
+import { writePack } from '../tools/pack-format.mjs';
 
 function fixtureDirs(retrieved: string): { catalogDir: string; cinemasDir: string } {
   const root = mkdtempSync(join(tmpdir(), 'slate-fixture-'));
@@ -25,8 +27,20 @@ function fixtureDirs(retrieved: string): { catalogDir: string; cinemasDir: strin
   return { catalogDir, cinemasDir };
 }
 
-const listen = (port: number, o: { catalogDir: string; cinemasDir: string }) => createSlateServer({ dist: 'dist', ...o }).listen(port);
+/** The fixture as the two mods a server offers, in their own folder. */
+function fixtureMods(): string {
+  const dir = mkdtempSync(join(tmpdir(), 'slate-mods-'));
+  const at = new Date(Date.now() - 86_400_000).toISOString();
+  const entries = Object.entries(CATALOG_FIXTURE).map(([p, body]) => [p, JSON.stringify(p === 'index.json' ? { ...(body as object), retrieved: { from: at, to: at, maxAgeDays: 180 } } : body)] as [string, string]);
+  writeFileSync(join(dir, 'slate-catalog.slatepack'), writePack({ kind: 'catalog', name: 'Films And Series', source: 'TMDB', builtAt: at, retrieved: { from: at, to: at, maxAgeDays: 180 } }, entries.filter(([p]) => !p.startsWith('cinemas/'))));
+  writeFileSync(join(dir, 'slate-cinemas.slatepack'), writePack({ kind: 'cinemas', name: 'Cinemas', source: 'Wikidata (CC0)', builtAt: at }, entries.filter(([p]) => p.startsWith('cinemas/'))));
+  return dir;
+}
+
+const listen = (port: number, o: { catalogDir: string; cinemasDir: string; packsDir?: string }) => createSlateServer({ dist: 'dist', ...o }).listen(port);
 listen(4175, { catalogDir: '.screen-catalog', cinemasDir: '.cinemas' });
 listen(4176, fixtureDirs(new Date(Date.now() - 86_400_000).toISOString()));
 listen(4177, fixtureDirs('2024-01-01T00:00:00.000Z'));
-console.log('SLATE production servers on 4175 (real data), 4176 (fixture), 4177 (expired fixture)');
+const nothing = mkdtempSync(join(tmpdir(), 'slate-none-'));
+listen(4178, { catalogDir: nothing, cinemasDir: nothing, packsDir: fixtureMods() });
+console.log('SLATE production servers on 4175 (real data), 4176 (fixture), 4177 (expired fixture), 4178 (no data, fixture mods)');

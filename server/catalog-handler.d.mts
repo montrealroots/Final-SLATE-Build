@@ -3,4 +3,7 @@ import type { IncomingMessage, ServerResponse } from 'node:http';
 export declare const MAX_AGE_DAYS: number;
 export type CatalogState = { state: 'missing' | 'malformed' } | { state: 'ready' | 'expired'; expires: number };
 export declare function catalogState(dir: string, now?: number, cache?: Record<string, unknown>): CatalogState;
-export declare function createCatalogHandler(o: { catalogDir: string; cinemasDir: string; now?: () => number }): (req: IncomingMessage, res: ServerResponse, next: () => void) => void;
+export type OfferedMod = { file: string; kind: 'catalog' | 'cinemas'; name: string; source: string; builtAt: string; retrieved?: { from: string; to: string; maxAgeDays: number }; files: number; bytes: number };
+export declare function readPackHeader(file: string): Record<string, unknown> | null;
+export declare function offeredMods(packsDir: string | null, now?: number): OfferedMod[];
+export declare function createCatalogHandler(o: { catalogDir: string; cinemasDir: string; packsDir?: string | null; now?: () => number }): (req: IncomingMessage, res: ServerResponse, next: () => void) => void;
