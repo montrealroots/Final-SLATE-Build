@@ -39,7 +39,7 @@ describe('the rules, from their official texts', () => {
     expect(rulesFor(getPlace('us-new-york'))).toMatchObject({ rules: { id: 'US-NY' }, standIn: null });
     expect(rulesFor(getPlace('us-austin')).rules.id).toBe('US-CA');
     expect(rulesFor(getPlace('us-austin')).standIn).toBe("Texas's own rules aren't recorded, so California's are used.");
-    expect(rulesFor(getPlace('jp-tokyo')).standIn).toContain("so England's are used");
+    expect(rulesFor(getPlace('br-sao-paulo')).standIn).toContain("so England's are used");
   });
 
   it('gives each age its hours: more on a day without school where the rules allow it', () => {
@@ -137,6 +137,30 @@ describe('the rules across the map', () => {
     expect(bandFor(nir, y(13) + 1)).toMatchObject({ label: '13 to 15', atPlace: 8, work: 3.5, days: 5 });
     expect(nir.licence.leadDays).toBe(30);
     expect(nir.restHours).toBe(14);
+  });
+
+  it('gives India, Japan and South Korea their own figures, as read', () => {
+    const y = (n: number) => Math.round(n * 365.25);
+    const india = rulesFor(getPlace('in-mumbai'));
+    expect(india.standIn).toBeNull();
+    expect(bandFor(india.rules, y(10))).toMatchObject({ atPlace: 6, work: 5, days: 6 });
+    expect(setAsideOf(india.rules, 1000)).toBe(200); // 20% in a fixed deposit
+    expect(supervisionFor([kid(india.rules, 8), kid(india.rules, 9), kid(india.rules, 10), kid(india.rules, 11), kid(india.rules, 12), kid(india.rules, 13)], true))
+      .toEqual([{ roleId: 'chaperone', count: 2, why: "India's rules require one with children under 18." }]);
+    const japan = rulesFor(getPlace('jp-tokyo')).rules;
+    // 7 hours, school counted in: 1 on a school day, 7 without; no one required with them.
+    expect(childShare(kid(japan, 10), true)).toBe(1 / ADULT_SHOOT_HOURS);
+    expect(childShare(kid(japan, 10), false)).toBe(7 / ADULT_SHOOT_HOURS);
+    expect(supervisionFor([kid(japan, 10)], true)).toEqual([]);
+    const korea = rulesFor(getPlace('kr-seoul')).rules;
+    expect(bandFor(korea, y(14))).toMatchObject({ work: 7, days: 5, noNight: true });
+    expect(bandFor(korea, y(15))).toMatchObject({ work: 8, days: 5 });
+    expect(bandFor(korea, y(15))!.noNight).toBeUndefined();
+    expect(bandFor(korea, y(19))).toBeNull();
+    // A night scene: refused under 15, allowed at 15 with the licence's night approval.
+    const lic = (m: Minor) => ({ childLicences: [{ characterId: m.characterId, personId: m.personId, applied: '2026-03-01', ready: '2026-03-02', night: true, nightApplied: '2026-03-01' }] }) as unknown as Project;
+    expect(licenceReady(lic(kid(korea, 14)), kid(korea, 14), '2026-03-10', true)).toEqual({ ok: false, reason: "Mia can't work at night: South Korea's rules don't allow it at their age." });
+    expect(licenceReady(lic(kid(korea, 15)), kid(korea, 15), '2026-03-10', true)).toEqual({ ok: true });
   });
 
   it('gives every playable country a set, as docs/child-rules/COVERAGE.md lists it', () => {
@@ -326,6 +350,15 @@ describe('downstream', () => {
     return { ...x, mia, days, hire: x.p.hires.find((h) => h.characterId === mia.id && h.status === 'accepted')! };
   }
 
+  it('in Japan never shoots a child\'s night scene, as no approval allows it, and asks for none', () => {
+    const jp = ready('min-jp', 'jp-tokyo', true);
+    expect(projectRules(jp.p).rules.id).toBe('JP');
+    expect(jp.p.childLicences!.find((l) => l.characterId === jp.mia.id)!.night).toBe(false);
+    const night = jp.days.find((d) => d.night)!;
+    const ran = runShootDay(jp.s, jp.p, night);
+    expect(ran).toContain("can't work at night: Japan's rules don't allow it at their age.");
+  });
+
   it('sets aside 15% of the child\'s pay for each day they work in Los Angeles, and none in London', () => {
     const la = ready('min-la', 'us-los-angeles');
     expect(projectRules(la.p).rules.id).toBe('US-CA');
@@ -480,7 +513,7 @@ describe('ages, dates and what was read', () => {
       expect(heading, id).not.toBeNull();
       expect(rules.read, id).toBe(heading![1] === 'read' ? 'read' : 'partly');
     }
-    expect(seen.size).toBe(13);
+    expect(seen.size).toBe(16);
     // When each took effect, and its latest change found: none in 2026 or later, so applying it from 2026 is the text in force.
     const dates = new Map([...log.matchAll(/^\| [^|]+ \(([A-Z-]+)\) \| (\d{4}(?:-\d{2}-\d{2})?) \| (\d{4}(?:-\d{2}-\d{2})?) \|/gm)].map((m) => [m[1], { from: m[2], latest: m[3] }]));
     expect([...dates.keys()].sort()).toEqual([...seen].sort());

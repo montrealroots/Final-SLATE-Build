@@ -6,13 +6,14 @@ the game says so wherever the rules are shown. What was read for each recorded s
 `tests/minors.test.ts` fails when this table and the engine disagree.
 
 Begun November 11, 2026. Recorded sets: England, Scotland, Wales, Northern Ireland (all four read November 11, 2026), California, New York, Georgia, British Columbia, Ontario, Ireland, Germany,
-France (partly read: England's hours stand in for the hours its commission sets child by child), New South Wales. New
+France (partly read: England's hours stand in for the hours its commission sets child by child), New South Wales, India,
+Japan and South Korea (read November 11, 2026). New
 York, Georgia, Ontario, Scotland, Wales and Northern Ireland are used only in their own regions, so they count no
 countries below.
 
 | Rules | Own | By region | Stand-in |
 | --- | --- | --- | --- |
-| England | 0 | 1 | 210 |
+| England | 0 | 1 | 207 |
 | California | 0 | 1 | 0 |
 | British Columbia | 0 | 1 | 0 |
 | Ontario | 0 | 0 | 0 |
@@ -20,6 +21,9 @@ countries below.
 | Germany | 1 | 0 | 28 |
 | France | 1 | 0 | 0 |
 | New South Wales | 0 | 1 | 1 |
+| India | 1 | 0 | 0 |
+| Japan | 1 | 0 | 0 |
+| South Korea | 1 | 0 | 0 |
 
 Countries with places under more than one set (listed by the set used outside the recorded regions):
 - **United States:** New York's, California's and Georgia's own; every other state uses California's.
@@ -127,7 +131,7 @@ Countries with places under more than one set (listed by the set used outside th
 | HK | Hong Kong | England | Stand-in |
 | HU | Hungary | Germany | Stand-in |
 | IS | Iceland | Germany | Stand-in |
-| IN | India | England | Stand-in |
+| IN | India | India | Own |
 | ID | Indonesia | England | Stand-in |
 | IR | Iran | England | Stand-in |
 | IQ | Iraq | England | Stand-in |
@@ -137,7 +141,7 @@ Countries with places under more than one set (listed by the set used outside th
 | IT | Italy | Germany | Stand-in |
 | CI | Ivory Coast | England | Stand-in |
 | JM | Jamaica | England | Stand-in |
-| JP | Japan | England | Stand-in |
+| JP | Japan | Japan | Own |
 | JE | Jersey | England | Stand-in |
 | JO | Jordan | England | Stand-in |
 | KZ | Kazakhstan | England | Stand-in |
@@ -233,7 +237,7 @@ Countries with places under more than one set (listed by the set used outside th
 | SO | Somalia | England | Stand-in |
 | ZA | South Africa | England | Stand-in |
 | GS | South Georgia and the South Sandwich Islands | England | Stand-in |
-| KR | South Korea | England | Stand-in |
+| KR | South Korea | South Korea | Own |
 | SS | South Sudan | England | Stand-in |
 | ES | Spain | Germany | Stand-in |
 | LK | Sri Lanka | England | Stand-in |

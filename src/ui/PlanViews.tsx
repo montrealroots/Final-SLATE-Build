@@ -891,7 +891,7 @@ function ChildrenCard({ p }: { p: Project }) {
   return (
     <section className="card" aria-labelledby="children-h">
       <h2 id="children-h">Children In The Cast</h2>
-      <p className="dim">Under {RULE_WORDS[rules.id].name}, a child's hours are limited, someone must be with them, and they need {RULE_WORDS[rules.id].licence} first. Their scenes take more shoot days for it.{standIn ? ` ${standIn}` : ''} These are the rules as read on {formatDateKey(RULES_READ)}; later changes to them aren't known to the game.</p>
+      <p className="dim">Under {RULE_WORDS[rules.id].name}, a child's hours are limited,{rules.supervisor.underAge > 0 ? ' someone must be with them,' : ''} and they need {RULE_WORDS[rules.id].licence} first. Their scenes take more shoot days for it.{standIn ? ` ${standIn}` : ''} These are the rules as read on {formatDateKey(RULES_READ)}; later changes to them aren't known to the game.</p>
       <ul className="list">
         {kids.map((m) => {
           const lic = m.personId ? (p.childLicences ?? []).find((l) => l.personId === m.personId && l.characterId === m.characterId) : undefined;

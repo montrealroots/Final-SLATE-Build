@@ -36,10 +36,12 @@ export interface AgeBand {
   days?: number;
   /** Children each supervisor may have at this age, where the rules set it by age (British Columbia). */
   perSupervisor?: number;
+  /** No work at night at this age, with no approval that allows it (Japan; South Korea under 15). */
+  noNight?: boolean;
 }
 
 export interface MinorRules {
-  id: 'GB-ENG' | 'GB-SCT' | 'GB-WLS' | 'GB-NIR' | 'US-CA' | 'US-NY' | 'US-GA' | 'CA-BC' | 'CA-ON' | 'IE' | 'DE' | 'FR' | 'AU-NSW';
+  id: 'GB-ENG' | 'GB-SCT' | 'GB-WLS' | 'GB-NIR' | 'US-CA' | 'US-NY' | 'US-GA' | 'CA-BC' | 'CA-ON' | 'IE' | 'DE' | 'FR' | 'AU-NSW' | 'IN' | 'JP' | 'KR';
   /** Where the rules are from, for messages: "England". Their full names are in casting-notes.ts RULE_WORDS. */
   place: string;
   /** The age from which these rules stop applying. */
@@ -47,7 +49,7 @@ export interface MinorRules {
   /** Youngest a performer may be, in days. */
   minAgeDays: number;
   bands: AgeBand[];
-  /** The person who must be with the children, how many each may look after, and up to what age. */
+  /** The person who must be with the children, how many each may look after, and up to what age (0: no one is required). */
   supervisor: { roleId: 'studio-teacher' | 'chaperone'; perGroup: number; perGroupNoSchool: number; underAge: number };
   /** Teaching on school days, where the rules require it: hours a day, and who gives it (a studio teacher may be both). */
   teaching: { roleId: 'studio-teacher' | 'tutor'; hours: number; perGroup: number } | null;
@@ -163,6 +165,92 @@ const NORTHERN_IRELAND: MinorRules = {
   // (regulation 32(2)). The game uses 14.
   restHours: 14,
   setAside: null, // regulation 13: the authority may set conditions on earnings; no share is fixed
+  read: 'read',
+};
+
+/**
+ * India: Rule 2C of the Child and Adolescent Labour (Prohibition and Regulation) Rules, 1988, added in 2017 (G.S.R.
+ * 543(E), June 2, 2017), as the National Commission for Protection of Child Rights' guidelines for the entertainment
+ * industry set it out, citing each rule (docs/child-rules/RESEARCH.md).
+ */
+const INDIA: MinorRules = {
+  id: 'IN',
+  place: 'India',
+  adultAt: 18, // a child is under 14, an adolescent 14 to 17
+  // An infant under 3 months only in programmes promoting breastfeeding or immunisation, so not in a production.
+  minAgeDays: days(0.25),
+  bands: [
+    // Five hours of work, no more than three without rest, within six hours at the place, waiting included; no overtime;
+    // a day off a week.
+    { fromDays: days(0.25), toDays: days(14), label: 'under 14', atPlace: 6, work: 5, workNoSchool: 5, days: 6 },
+    // An adolescent: periods of three hours with an hour's rest, within six hours.
+    { fromDays: days(14), toDays: days(18), label: '14 to 17', atPlace: 6, work: 5, workNoSchool: 5, days: 6 },
+  ],
+  supervisor: { roleId: 'chaperone', perGroup: 5, perGroupNoSchool: 5, underAge: 18 }, // a responsible person for 5 children
+  // The producer arranges for the child's education to go on; no hours are set, so no tutor is hired.
+  teaching: null,
+  nurseUnderDays: null,
+  // The District Magistrate's permission before the work; no time is set, and the game allows 7 days.
+  licence: { leadDays: 7, nightLeadDays: 7 },
+  restHours: 12, // none is set between days; the game uses 12, as most sets do
+  setAside: { percent: 20 }, // in a fixed deposit in the child's name until they are 18 (not for extras)
+  read: 'read',
+};
+
+/**
+ * Japan: the Labour Standards Act (Act No. 49 of 1947), Articles 56, 60 and 61, read from e-Gov. The same text is in
+ * force in every revision from June 1, 2025 to the one that takes effect on December 23, 2028.
+ */
+const JAPAN: MinorRules = {
+  id: 'JP',
+  place: 'Japan',
+  // Article 56: a child until the March 31 after their 15th birthday, which the game takes as their 16th birthday, the
+  // first by which every child is past it.
+  adultAt: 16,
+  minAgeDays: 0, // film production may employ a child of any age, with permission (Article 56(2))
+  bands: [
+    // Article 60(2): 7 hours a day and 40 a week, school hours counted in. The game takes a school day as 6 hours of
+    // school, leaving 1. At the place: 7 hours and a break of 45 minutes (Article 34), taken as 8.
+    // Article 61(5): no work from 8 p.m. to 5 a.m. at any age.
+    { fromDays: 0, toDays: days(16), label: 'under 16', atPlace: 8, work: 1, workNoSchool: 7, noNight: true },
+  ],
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 0 }, // the Act requires no one
+  teaching: null, // work is only outside school hours
+  nurseUnderDays: null,
+  // The Labour Standards Inspection Office's permission, with the head teacher's certificate and a parent's consent
+  // (Article 57(2)); no time is set, and the game allows 14 days.
+  licence: { leadDays: 14, nightLeadDays: 14 },
+  restHours: 9, // none is set; no work from 8 p.m. to 5 a.m. leaves 9
+  setAside: null,
+  read: 'read',
+};
+
+/**
+ * South Korea: the Popular Culture and Arts Industry Development Act (Act No. 12349, in force July 29, 2014), Articles 2,
+ * 22 and 23, as in force from September 26, 2025, read from law.go.kr. Articles 22 and 23 have no amendments marked.
+ */
+const SOUTH_KOREA: MinorRules = {
+  id: 'KR',
+  place: 'South Korea',
+  // Article 2(10): a youth is under 19, until the January 1 of the year they turn 19; the game ends it on the 19th
+  // birthday, the first by which every youth is past it.
+  adultAt: 19,
+  minAgeDays: 0,
+  bands: [
+    // Article 22: 35 hours a week, taken as 7 hours on 5 days; no work from 10 p.m. to 6 a.m. (to midnight before a
+    // school holiday, with consent, which the game doesn't model).
+    { fromDays: 0, toDays: days(15), label: 'under 15', atPlace: 7, work: 7, workNoSchool: 7, days: 5, noNight: true },
+    // Article 23: 40 hours a week, taken as 8 on 5 days (an hour a day more by agreement, not modelled); night work with
+    // the consent of the performer and a parent.
+    { fromDays: days(15), toDays: days(19), label: '15 to 18', atPlace: 8, work: 8, workNoSchool: 8, days: 5 },
+  ],
+  // A youth protection officer designated from the producer's staff (Article 21-2), not a hire, so the game adds none.
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 0 },
+  teaching: null, // the contract must protect the right to learn (Article 21); no hours are set
+  nurseUnderDays: null,
+  licence: { leadDays: 1, nightLeadDays: 1 }, // no permit: a parent's consent with the contract, and for night work
+  restHours: 8, // none is set; under 15, no work from 10 p.m. to 6 a.m. leaves 8, which the game uses at every age
+  setAside: null,
   read: 'read',
 };
 
@@ -413,6 +501,9 @@ export function rulesFor(place: Place): { rules: MinorRules; standIn: string | n
     case 'AU': return region('new south wales') ? own(NEW_SOUTH_WALES) : instead(NEW_SOUTH_WALES);
     case 'NZ': return instead(NEW_SOUTH_WALES);
     case 'IE': return own(IRELAND);
+    case 'IN': return own(INDIA);
+    case 'JP': return own(JAPAN);
+    case 'KR': return own(SOUTH_KOREA);
     case 'DE': return own(GERMANY);
     case 'FR': return own(FRANCE);
     case 'GB': return place.regionCode === 'GB-ENG' || region('england') ? own(ENGLAND)
@@ -549,6 +640,7 @@ export interface ChildLicence { characterId: string; personId: string; applied: 
 /** A cast child's licence, applying for it today if there isn't one (or for night work, if it is needed and missing). */
 export function ensureLicence(p: Project, m: Minor, today: string, night: boolean): ChildLicence | null {
   if (!m.personId) return null;
+  if (m.band.noNight) night = false; // no approval exists to ask for
   const list = (p.childLicences ??= []);
   const have = list.find((l) => l.personId === m.personId && l.characterId === m.characterId);
   if (have) {
@@ -568,6 +660,7 @@ export function licenceReady(p: Project, m: Minor, date: string, night: boolean)
   const l = (p.childLicences ?? []).find((x) => x.personId === m.personId && x.characterId === m.characterId);
   if (!l) return { ok: false, reason: `${m.name} has no licence yet; it is asked for when the shoot is scheduled.` };
   if (l.ready > date) return { ok: false, reason: `${m.name}'s licence isn't granted until ${l.ready}.` };
+  if (night && m.band.noNight) return { ok: false, reason: `${m.name} can't work at night: ${m.rules.place}'s rules don't allow it at their age.` };
   if (night && !l.night) return { ok: false, reason: `${m.name}'s night scene needs approval for night work.` };
   if (night && addDaysToKey(l.nightApplied ?? l.applied, m.rules.licence.nightLeadDays) > date) return { ok: false, reason: `${m.name}'s night work isn't approved until ${addDaysToKey(l.nightApplied ?? l.applied, m.rules.licence.nightLeadDays)}.` };
   return { ok: true };

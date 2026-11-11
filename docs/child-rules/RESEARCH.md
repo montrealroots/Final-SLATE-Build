@@ -38,6 +38,9 @@ the engine has is missing here, or its latest change is in 2026 or later.
 | Ireland (IE) | 1997 | 2005 | The Protection of Young Persons (Employment) Act 1996; the licence note's date. |
 | Germany (DE) | 1976-05-01 | 2024-10-23 | gesetze-im-internet.de: text from May 1, 1976, last amended by Art. 53 of the Act of October 23, 2024; whether that touched § 6 wasn't read. |
 | France (FR) | 2025-03-21 | 2025-03-21 | The industry agreement's signing date. |
+| India (IN) | 2017-06-02 | 2017-06-02 | G.S.R. 543(E), which added Rule 2C; the NCPCR guidelines restate it. Later amendments to Rule 2C weren't looked for. |
+| Japan (JP) | 1947 | 2025-06-01 | e-Gov's revisions: Articles 56, 60 and 61 are the same in every revision from June 1, 2025 (the earliest compared) to December 23, 2028. Articles 57 and 58 (certificates, guardians) change on that date; the game doesn't model them. |
+| South Korea (KR) | 2014-07-29 | 2025-09-26 | law.go.kr: Act No. 12349 of January 28, 2014, in force six months later; the version read is in force from September 26, 2025, and Articles 22 and 23 carry no amendment marks. |
 | New South Wales (AU-NSW) | 2022-09-01 | 2025-11-12 | The Children's Guardian (Amendment) Regulation (No 2) 2022 moved child employment into the Children's Guardian Regulation 2022; the Code of Practice page was last updated November 12, 2025. |
 - **Ages.** A child is a year older on their birthday, the same day everywhere in the game: for their age, for which age
   band applies, and for the rules' adult age. A band "over" an age (Germany's over 3) starts the day after that birthday.
@@ -64,6 +67,9 @@ Gaps in each set, as found when it was read:
 | Germany | The authority's time to approve and the time at the workplace; the game allows 14 days and twice the work hours. |
 | France | Hours: the commissions' indicative hours weren't read, so England's stand in, and the game says so. The ratio of supervisors; the game has one per 5. The share set aside is set child by child, so none is recorded. |
 | New South Wales | The authority's processing time; the game allows 7 days. A supervisor ratio from 3; the game has one per 5. |
+| India | Rule 2C itself wasn't read: its figures are from the NCPCR guidelines, which cite it rule by rule. The District Magistrate's time to permit; the game allows 7 days. No rest between days is set; the game uses 12. The 27 consecutive days and the six-month permit aren't modelled. |
+| Japan | The Inspection Office's time to permit; the game allows 14 days. A school day taken as 6 hours of school. The weekly 40 hours aren't modelled. |
+| South Korea | The weekly hours taken as 5 days; the extra hour by agreement from 15, and work to midnight before a school holiday under 15, aren't modelled. The youth protection officer (Article 21-2) is one of the producer's staff, so no one is hired. No rest between days from 15; the game uses 8 at every age. |
 | Every other place | No rules read: the nearest read set stands in, and the game says so (`docs/child-rules/COVERAGE.md`). |
 
 ## England (GB-ENG): read
@@ -125,6 +131,52 @@ Gaps in each set, as found when it was read:
   11 at a similar standard (reg 12).
 - **Licence:** the application reaches the authority 30 days before the first performance (reg 3(3)).
 - **Earnings:** the authority may require them dealt with as it approves (reg 13); no share is fixed.
+
+## India (IN): read
+
+- **Source:** the National Commission for Protection of Child Rights' "Guidelines for Child and Adolescent Participation
+  in the Entertainment Industry or any Commercial Entertainment Activity" (the copy on mib.gov.in), which cite Rule 2C
+  of the Child and Adolescent Labour (Prohibition and Regulation) Rules, 1988, added by the Amendment Rules, 2017
+  (G.S.R. 543(E), June 2, 2017), and the Act's s. 3(2)(b). Read November 11, 2026. The Ministry's letter of December
+  2021 to private satellite channels (mib.gov.in) quotes Rule 2C(b).
+- **Ages:** a child is under 14; an adolescent 14 to 17.
+- **Permission (Rule 2C(b)):** the District Magistrate's permission before the activity, with an undertaking (Form C),
+  the list of children, the parents' consent and the person responsible for their safety. Valid six months.
+- **Hours (Rule 2C):** no more than five hours a day, and no more than three without rest. An adolescent works periods of
+  at most three hours with an hour's rest. Either way, no more than six hours at the place, rest and waiting included.
+  No overtime; at least a day off a week. No more than 27 consecutive days (Rule 2C(d)).
+- **Infants:** under three months, only in programmes promoting breastfeeding or immunisation.
+- **Responsible person:** one for at most five children.
+- **Education:** the producer arranges it so the child's lessons go on; no hours are set.
+- **Earnings (Rule 2C(f)):** at least 20% of the child's income from the production in a fixed deposit in their name at
+  a nationalised bank, theirs at majority. Extras and background artists are exempt.
+
+## Japan (JP): read
+
+- **Source:** the Labour Standards Act (Act No. 49 of 1947), Articles 34, 56, 57, 60 and 61, from e-Gov's law data
+  (laws.e-gov.go.jp), read November 11, 2026 in each revision from June 1, 2025 to December 23, 2028.
+- **Who (Article 56):** a child until the March 31 after their 15th birthday. They may work only with the government
+  office's permission, outside school hours, in light work; in film production and theatre at any age.
+- **Documents (Article 57(2)):** the head teacher's certificate that school won't suffer, and a parent's or guardian's
+  consent.
+- **Hours (Article 60(2)):** 7 hours a day and 40 a week, school hours counted in.
+- **Night (Article 61(5)):** for such children, none from 8 p.m. to 5 a.m. (which the Minister may move to 9 p.m. to 6
+  a.m.). There is no permission for night work.
+- **Breaks (Article 34):** 45 minutes when a day's work passes 6 hours.
+- **Not required:** a chaperone or teacher on set, or any share of pay set aside.
+
+## South Korea (KR): read
+
+- **Source:** the Popular Culture and Arts Industry Development Act (대중문화예술산업발전법), Articles 2, 21, 21-2, 22 and
+  23, the version in force from September 26, 2025 (Act No. 20833), on law.go.kr, read November 11, 2026.
+- **Who (Article 2(10)):** a youth is under 19, until the January 1 of the year they turn 19.
+- **Under 15 (Article 22):** at most 35 hours a week. No work from 10 p.m. to 6 a.m., except until midnight when the next
+  day is a school holiday, with the consent of the performer and a parent.
+- **15 and over (Article 23):** at most 40 hours a week, and by agreement an hour a day more, up to 6 a week. Night work
+  (10 p.m. to 6 a.m.) only with the consent of the performer and a parent.
+- **Rights (Article 21):** the contract must protect health, learning, sleep and rest; no pressure to miss school.
+- **Youth protection officer (Article 21-2, added January 31, 2025):** designated from the producer's staff.
+- **Not required:** a permit, a teacher, or any share of pay set aside.
 
 ## California (US-CA): read
 

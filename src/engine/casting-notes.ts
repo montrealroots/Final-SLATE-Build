@@ -26,6 +26,9 @@ export const RULE_WORDS: Record<Minor['rules']['id'], { name: string; licence: s
   IE: { name: "Ireland's licence conditions for children in film and television", licence: "a licence from the Minister, applied for 21 days ahead", night: "the licence's leave for night work, given only where it is essential", setAside: '' },
   DE: { name: "Germany's Youth Employment Protection Act", licence: "the supervisory authority's approval, with a parent's consent and a medical certificate", night: "the supervisory authority's approval of the hours", setAside: '' },
   FR: { name: "France's rules for children in film and television (with England's hours by age, as the commission sets each child's)", licence: "the prefect's authorisation, after the children's commission", night: "the labour inspectorate's authorisation for night work", setAside: '' },
+  IN: { name: "India's rules for child artists", licence: "the District Magistrate's permission", night: "the District Magistrate's permission", setAside: "a fixed deposit in the child's name at a nationalised bank" },
+  JP: { name: "Japan's Labour Standards Act", licence: "the Labour Standards Inspection Office's permission, with the head teacher's certificate and a parent's consent", night: '', setAside: '' },
+  KR: { name: "South Korea's Popular Culture and Arts Industry Development Act", licence: "a parent's consent", night: "the consent of the performer and a parent", setAside: '' },
   'AU-NSW': { name: "New South Wales's requirements for children in entertainment", licence: "the Children's Guardian's authority to employ children", night: "the Children's Guardian's approval of the hours", setAside: '' },
 };
 
