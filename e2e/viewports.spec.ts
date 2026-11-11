@@ -5,6 +5,10 @@ import { advance, nav, openStart, pressSaveAndExit, section, secureStartingBacki
 const VIEWPORTS: [number, number][] = [[360, 800], [390, 844], [393, 852], [414, 896], [430, 932], [440, 956], [768, 1024], [1024, 768], [1280, 720], [1440, 900], [1920, 1080], [844, 390]];
 
 async function seedGame(page: Page): Promise<void> {
+  // No film catalog: a machine with the owner's catalog installed (the dev server serves it) would add the industry's
+  // releases to the calendar, and the layouts checked here must be the same on every machine.
+  // Answered as the server answers when none is installed (server/catalog-handler.mjs).
+  await page.route('**/screen-catalog/**', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ installed: false, reason: 'missing' }) }));
   await openStart(page);
   await page.evaluate(() => {
     localStorage.clear();
