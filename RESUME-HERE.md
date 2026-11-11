@@ -93,7 +93,13 @@ Where it stands:
   and each scene says which it is in; 409 ideas over 45 fields, with 68 routes through the 17 genre families
   (`src/ideas/`); props, animals, vehicles and effects chosen from ideas make their work. Journey: `e2e/craft.spec.ts`.
   Left: ideas for 11 structural fields, and the items under "Not implemented in C" in the ledger.
-- **E to H:** not started; the ledger's milestone table has each one's scope.
+- **E, done:** each place in the script can be filmed in any real place of the world registry, at a kind of site the
+  player chooses; the day has that place's weather, daylight, holidays and clock, the player has to be there, and a
+  unit away is moved once and housed each day (`src/engine/destinations.ts`, `src/ui/FilmedAt.tsx`; figures in
+  `docs/ASSUMPTIONS.md`, "Filming Somewhere Else"). A soundstage or a stage set is under a roof. Journey J07 is
+  `e2e/destinations.spec.ts`.
+- **F to H:** built on later branches and following as their own pull request; the ledger's milestone table has each
+  one's scope.
 
 Rules that came with the package: one agent; no universal quality bonus for a preset; custom text is never claimed to
 be understood; real people's recorded credits stay apart from anything the game simulates about them; no credentials,
