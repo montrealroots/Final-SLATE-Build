@@ -13,6 +13,8 @@ import { describe, expect, it } from 'vitest';
 const LOG = 'The result is written to Recent Updates on Home and the project log.';
 const ACTIONS: Record<string, { preview: string; outcome: string }> = {
   applyWorldRefresh: { preview: "Settings, Your Story's World: See What Would Change lists each series and what taking the newer records would change, before anything does.", outcome: 'A status line says it was done and where the copy of the game from before is kept.' },
+  commissionWriting: { preview: "Writing Work on the Crew page states the pass's working days, the writer's day rate and the cost before Commission This Pass.", outcome: `${LOG} The writer's panel shows the pass and the day it is on.` },
+  requestRevision: { preview: 'The delivered pass states how many working days a revision takes and what it costs before Ask For A Revision.', outcome: "The writer's panel shows the revision under way; its delivery is logged." },
   acceptCounter: { preview: 'The hire row shows the rate they asked for and until when.', outcome: LOG },
   acceptDeal: { preview: 'Accept These Terms? lists the amount and every term.', outcome: LOG },
   acceptDistribution: { preview: 'The offer states its guarantee, release window, territories, delivery materials and subtitles.', outcome: LOG },

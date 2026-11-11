@@ -56,7 +56,7 @@ registerHandler('audition', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
   const a = p?.auditions?.find((x) => x.id === ev.payload.auditionId);
   if (!p || !a) return { suppressInterrupt: true };
-  const who = personById(state, a.personId);
+  const who = personById(state, a.personId, a.method === 'voice' ? 'voice-actor' : 'actor');
   const part = p.characters.find((c) => c.id === a.characterId)?.name ?? 'the part';
   const callback = !!a.callback && a.callback.status === 'scheduled';
   if (!callback && a.status !== 'invited') return { suppressInterrupt: true };

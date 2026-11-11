@@ -2064,3 +2064,8 @@ legend { padding: 0; }
   .modal-sheet .modal-foot .btn { flex: 1 1 auto; }
   .idea-list { grid-template-columns: 1fr; }
 }
+
+/* A hired writer's work on the Crew page (WritingWork.tsx): a quieter panel inside the Writer And Director card. */
+.writing-work { background: var(--surface-2, transparent); box-shadow: none; }
+.writing-work + .writing-work { margin-top: var(--s3); }
+.writing-work > * + * { margin-top: var(--s3); }

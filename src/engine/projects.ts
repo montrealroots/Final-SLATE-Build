@@ -156,6 +156,7 @@ export function createProject(state: GameState, input: NewProjectInput): Project
     drafts: [],
     approvedDraft: null,
     notes: [],
+    writing: [],
     revision: null,
     revisionPasses: 0,
     requirements: [],
@@ -230,7 +231,11 @@ export function assignEpisodeRole(p: Project, episode: number, role: 'writer' | 
   if (!e) throw new Error('That episode no longer exists.');
   const roleId = role === 'writer' ? 'episode-writer' : 'episode-director';
   if (who !== 'player' && !p.hires.some((h) => h.personId === who && h.roleId === roleId && h.status === 'accepted')) {
-    throw new Error(`Hire them as an episode ${role} first.`);
+    throw new Error(`Hire them as ${p.episodes.length > 1 ? `an episode ${role}` : `the ${role}`} first.`);
+  }
+  // A writer earns the credit with work the player accepted (writing-jobs.ts), on projects made under that rule.
+  if (role === 'writer' && who !== 'player' && p.writing && !p.writing.some((j) => j.personId === who && j.episode === episode && j.status === 'accepted' && j.scope !== 'polish')) {
+    throw new Error("They haven't delivered a draft or a rewrite of it that you accepted. Commission one from them under Writing Work.");
   }
   const current = e[role];
   if (current === who) return;

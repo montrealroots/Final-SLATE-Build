@@ -10,6 +10,7 @@ import { countryName } from '../world/gazetteer/gazetteer';
 import { gaussian, intBetween, pick, stream } from './rng';
 import { addDaysToKey, ageOn, dateKey, dayNumber } from './time';
 import type { GameState, Project } from './types';
+import { asPerson, isReal, realPerson } from './guests';
 
 export interface RoleDef {
   id: string;
@@ -198,7 +199,9 @@ export function candidates(state: GameState, roleId: string, baseCountry: string
 
 const personCache = new Map<string, Person>();
 
-export function personById(state: GameState, id: string): Person {
+export function personById(state: GameState, id: string, roleId?: string): Person {
+  // A real person from the film catalog (guests.ts), as the job asked of them; their first recorded job otherwise.
+  if (isReal(id)) return asPerson(state, id, roleId);
   const hit = personCache.get(`${state.seed}|${id}`);
   if (hit) return hit;
   const m = /^np_(.+)_([A-Z]{2})_(\d+)$/.exec(id);
@@ -290,6 +293,11 @@ const parts = (k: string) => ({ year: Number(k.slice(0, 4)), month: Number(k.sli
 export function personAge(p: Person, on: string): number {
   return ageOn(parts(p.born), parts(on));
 }
+/**
+ * Whether a person's age is known. Everyone the game invents has a date of birth; a real person whose birth date the
+ * catalog doesn't record has none (guests.ts), and is hired only once the player has marked them an adult in this story.
+ */
+export const ageKnown = (p: Person): boolean => !!p.born;
 
 /**
  * The ages a performer plays on a date, following their own age:
@@ -321,6 +329,9 @@ export function projectCountry(placeId: string): string {
 export function isAvailable(state: GameState, p: Person, from: string, to: string, ignoreProjectId?: string): { ok: boolean; reason?: string } {
   const a = dayNumber(from);
   const b = dayNumber(to);
+  // Nobody works after a recorded death (guests.ts): from that day they are unavailable for good.
+  const died = isReal(p.id) ? realPerson(state, p.id)?.rec?.died : undefined;
+  if (died && died <= to) return { ok: false, reason: `${p.name} died on ${died}.` };
   for (const blk of p.busy) {
     if (dayNumber(blk.from) <= b && dayNumber(blk.to) >= a) return { ok: false, reason: `${p.name} is booked on another production from ${blk.from} to ${blk.to}.` };
   }

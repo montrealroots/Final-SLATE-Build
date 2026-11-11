@@ -26,6 +26,10 @@ describe('handing over an episode keeps who did the work', () => {
     const { s, p } = series('handover-write');
     approve(s, p);
     const pro = hired(s, p, 'episode-writer');
+    // From November 11, 2026 a writer is handed an episode for a draft or a rewrite the player accepted (writing-jobs.ts).
+    expect(() => assignEpisodeRole(p, 2, 'writer', pro)).toThrow("They haven't delivered a draft or a rewrite of it that you accepted.");
+    // Labelled fixture: their accepted rewrite of episode 2, as commissioning, the work and acceptance would leave it.
+    p.writing!.push({ id: 'w1', hireId: p.hires.find((h) => h.personId === pro)!.id, personId: pro, scope: 'rewrite', episode: 2, status: 'accepted', acceptedOn: '2026-02-02', passes: [{ days: 2, done: 2, askedOn: '2026-01-26', deliveredOn: '2026-01-28', read: 60 }] });
     assignEpisodeRole(p, 2, 'writer', pro);
     // You wrote the approved draft of both episodes: you stay credited on both, the new writer on episode 2.
     expect(writing(s, p)).toEqual([['player', [1, 2]], [pro, [2]]]);

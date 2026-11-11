@@ -2,6 +2,7 @@
 // (docs/CATALOG.md). Everything here is reference material, loaded on demand and kept out of saves. It is shown at the
 // save's date: later releases are announced, not history, and later results aren't shown as known.
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
+import { PersonWork } from './PersonWork';
 import { currentZone, dateKey, formatDateKey } from '../engine';
 import type { Route } from '../engine/types';
 import { COMPANIES, LEADERSHIP_GAPS, checkedFor, company as registryCompany, groupOf, joinedGroup, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
@@ -781,7 +782,8 @@ export function PersonPage({ refId }: { refId: string }) {
             ? 'TMDB has no details for this person, only their credits, so their birth date and age aren\'t known.'
             : 'Only this person\'s credits were gathered, not their details: details are gathered for each title\'s top-billed cast and its directors, writers, producers, composers, cinematographers and editors.'}</p>}
         </Panel>
-        <Panel title="Credits In The Catalog" subtitle="Their credits on the titles this catalog covers, from TMDB. Their other work isn't gathered. A credit is a record of past work, not who they work for or whether they could work for you.">
+        <PersonWork record={p} gathered={index.status === 'ready' ? index.data.retrieved.from ?? index.data.builtAt : new Date().toISOString()} />
+        <Panel title="Credits In The Catalog" subtitle="Their credits on the titles this catalog covers, from TMDB. Their other work isn't gathered. A credit is a record of past work: it doesn't say who they work for now, and what they do in your story is kept apart, above.">
           {CREDIT_GROUPS.map((g) => {
             const cs = p.credits.filter((c) => g.kinds.includes(c.kind)).sort((a, b) => (b.date ?? '').localeCompare(a.date ?? ''));
             if (!cs.length) return null;

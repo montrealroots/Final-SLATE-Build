@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect } from 'react';
 import { loadFile } from '../catalog/load';
 import type { WorldSeed } from '../catalog/world';
+import type { RecordedPerson } from '../engine/guests';
 import { PageHead } from './components';
 import { Startup } from './Startup';
 import { store, useStore } from './store';
@@ -34,7 +35,8 @@ function useLivingWorld(saveKey: string | null): void {
     let live = true;
     startLivingWorld(() => live);
     expireSources();
-    const hourly = setInterval(expireSources, 3_600_000);
+    void expirePeople();
+    const hourly = setInterval(() => { expireSources(); void expirePeople(); }, 3_600_000);
     return () => { live = false; clearInterval(hourly); };
   }, [saveKey]);
 }
@@ -68,6 +70,36 @@ function expireSources(): void {
     if (store.state?.industry !== ind || Date.now() < sourcesExpire(ind)) return;
     if (Object.values(ind.series).some((x) => x.p?.last || x.p?.model)) store.act((g) => void expireIndustrySources(g, Date.now()));
   });
+}
+
+/**
+ * The same six months for the people the player brought in from the film catalog (guests.ts): each copied record is
+ * renewed from the catalog installed now when that copy is newer, and removed otherwise, with the person's name taken out
+ * of what the game wrote. Their contracts, pay, work and credits in the story stay. Also run when a film pack is installed.
+ */
+export async function expirePeople(): Promise<void> {
+  const state = store.state;
+  if (!state?.real) return;
+  const { expireRecords, recordEnds, tmdbIdOf } = await import('../engine/guests');
+  const now = Date.now();
+  // Only the people whose copy is due, or already withdrawn (a newer catalog brings their name back), are looked up.
+  const due = Object.values(state.real).filter((p) => { const ends = recordEnds(p); return ends === null || now >= ends; });
+  if (!due.length) return;
+  const { fileFor } = await import('../catalog/model');
+  const index = await loadFile<{ builtAt?: string; retrieved?: { from?: string | null } }>('index.json');
+  const gathered = index.status === 'ready' ? index.data.retrieved?.from ?? index.data.builtAt : undefined;
+  const fresh = new Map<number, { record: RecordedPerson; gathered: string }>();
+  if (gathered) {
+    for (const p of due) {
+      const id = tmdbIdOf(p.id);
+      const bucket = await loadFile<Record<string, RecordedPerson>>(fileFor(`person:${id}`)!);
+      const record = bucket.status === 'ready' ? bucket.data[String(id)] : undefined;
+      if (record) fresh.set(id, { record, gathered });
+    }
+  }
+  // Nothing to write when every one of them is withdrawn already and no catalog has them.
+  if (store.state !== state || (!fresh.size && due.every((p) => !p.rec))) return;
+  store.act((g) => void expireRecords(g, now, (id) => fresh.get(id)));
 }
 
 export function App() {

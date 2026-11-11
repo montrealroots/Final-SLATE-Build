@@ -7,7 +7,7 @@ import { countryName } from '../world/gazetteer/gazetteer';
 import {
   BACKERS, EXPERIENCE, betterTerms, COUNTER_DAYS, type BetterTerm, assignEpisodeRole, backerDocuments, moneyKept, ownMoney, ownMoneyNotes, OWN_MONEY, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
   coachingNeeded, dateKey, declineCounter, estimateDays, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
-  ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleCandidates, roleLabel,
+  ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
   type StaffingProposal, covers, fundingScenario,
 } from '../engine';
@@ -20,7 +20,8 @@ import { CONTINGENCY, costBreakdown, projectedCost, type CostArea } from '../eng
 import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, scoutedPlaces, site } from '../engine/locations';
 import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
-import { childrenIn } from '../engine/hiring';
+import { candidatesFor, childrenIn } from '../engine/hiring';
+import { consideredOn, isReal, jobLabel, stopConsidering } from '../engine/guests';
 import { storyAge, storyAgeWords } from '../engine/story-age';
 import { RULES_READ, licenceReady, projectRules, supervisionFor } from '../engine/minors';
 import { RULE_WORDS, ageWords, fitNotes, hoursWords } from '../engine/casting-notes';
@@ -28,6 +29,7 @@ import { COVERAGE, EMPHASIS, SETUPS_OF, TAKES, TAKE_RULES, isDirecting2, planTim
 import type { Audition, FinanceDeal, GameState, Hire, Obligation, PerformanceMethod, Project } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
 import { store, useGame } from './store';
+import { WritingWork } from './WritingWork';
 
 function NeedsApproval({ p, what }: { p: Project; what: string }) {
   return (
@@ -49,7 +51,7 @@ function HireRow({ p, h }: { p: Project; h: Hire }) {
   return (
     <tr>
       <td data-label="Person">{person.name}</td>
-      <td data-label="Role">{h.characterId ? `${approvedCharacters(p).find((c) => c.id === h.characterId)?.name ?? 'Role'} (${h.method === 'voice' ? 'Voice' : 'On Camera'})` : roleLabel(h.roleId)}</td>
+      <td data-label="Role">{h.characterId ? `${approvedCharacters(p).find((c) => c.id === h.characterId)?.name ?? 'Role'} (${h.method === 'voice' ? 'Voice' : 'On Camera'})` : jobLabel(p, h.roleId)}</td>
       <td data-label="Rate">{money(h.dayRate)} a day, about {plural(h.estDays, 'day')}</td>
       <td data-label="Status">
         <span className={`chip ${h.status === 'accepted' ? 'chip-positive' : h.status === 'declined' ? 'chip-negative' : h.status === 'countered' ? 'chip-warning' : ''}`}>{STATUS_LABEL[h.status]}</span>
@@ -91,7 +93,8 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
   const [ageFirst, setAgeFirst] = useState(false);
   const part = characterId ? approvedCharacters(p).find((x) => x.id === characterId) : undefined;
   const partAge = storyAge(part?.ageInStory);
-  const fits = (c: Person) => !part || pronounsMatch(part, c.pronouns);
+  // Someone from the film catalog has no recorded pronouns, so they are never marked as matching and never sorted on it.
+  const fits = (c: Person) => !isReal(c.id) && (!part || pronounsMatch(part, c.pronouns));
   // Ages on today's date, so they move on each person's birthday (people.ts).
   const today = dateKey(g.now, currentZone(g));
   const plays = (c: Person) => playingAgeAt(c, today);
@@ -99,8 +102,10 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
   const playsPart = (c: Person) => { const r = plays(c); return !!partAge && !!r && partAge.max >= r[0] && partAge.min <= r[1]; };
   // Matching the part's written pronouns is marked, and listing matches first is the producer's choice: it is a casting
   // preference, never a measure of ability, and nobody is filtered out (until the review of November 7, 2026 it always sorted).
-  const list = roleCandidates(g, p, roleId).map((c) => ({ c, av: isAvailable(g, c, win.from, win.to, p.id) })).filter((x) => !onlyFree || x.av.ok)
-    .sort((a, b) => (ageFirst ? Number(playsPart(b.c)) - Number(playsPart(a.c)) : 0) || (pronounsFirst ? Number(fits(b.c)) - Number(fits(a.c)) : 0) || b.c.experience - a.c.experience || a.c.dayRate - b.c.dayRate);
+  // People from the film catalog the player is considering for this (guests.ts) come first and are always shown, free or
+  // not: the player put them there. The game's own follow, as before.
+  const list = candidatesFor(g, p, roleId, characterId).map((c) => ({ c, av: isAvailable(g, c, win.from, win.to, p.id) })).filter((x) => !onlyFree || x.av.ok || isReal(x.c.id))
+    .sort((a, b) => Number(isReal(b.c.id)) - Number(isReal(a.c.id)) || (ageFirst ? Number(playsPart(b.c)) - Number(playsPart(a.c)) : 0) || (pronounsFirst ? Number(fits(b.c)) - Number(fits(a.c)) : 0) || b.c.experience - a.c.experience || a.c.dayRate - b.c.dayRate);
   const days = estimateDays(p, roleId, characterId, method, g);
   return (
     <div className="spaced">
@@ -118,8 +123,10 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
             <li key={c.id}>
               <div className="row-wrap">
                 <div className="grow">
-                  <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
-                  <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{` Age ${personAge(c, today)}.`}{plays(c) ? ` Plays ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>
+                  <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{isReal(c.id) && <> <span className="chip chip-info">From The Film Catalog</span></>}{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
+                  {isReal(c.id)
+                    ? <div className="dim">{c.samples}{c.born ? ` Age ${personAge(c, today)}.` : ' Date of birth not recorded.'}{plays(c) ? ` In this story they play ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''} Languages, background and nationality aren't recorded, and none is assumed. In this story they ask {money(c.dayRate)} a day.</div>
+                    : <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{` Age ${personAge(c, today)}.`}{plays(c) ? ` Plays ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>}
                   {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip">Shares A Background: {sharedHeritages(g, p, characterId, c.id).join(', ')}</span></div>}
                   {!av.ok && <div className="dim" style={{ color: 'var(--warning)' }}>{av.reason}</div>}
                   {willingness(g, c.id).reason && <div className="dim">{willingness(g, c.id).reason}</div>}
@@ -132,6 +139,7 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
                     if (e) setErr({ ...err, [c.id]: e });
                     else onDone();
                   }}>Make Offer</button>
+                  {isReal(c.id) && <button className="btn" aria-label={`Stop Considering ${c.name}`} onClick={() => void store.act((s) => stopConsidering(s.projects.find((x) => x.id === p.id)!, { personId: c.id, roleId, characterId, method }))}>Stop Considering</button>}
                   {characterId && method && part?.roleSize !== 'background' && (() => {
                     const why = inviteRefusal(g, p, characterId, method, c.id);
                     return why === 'They have been asked to read for this part already.'
@@ -292,6 +300,9 @@ export function CrewTab({ p }: { p: Project }) {
   if (p.approvedDraft === null) return <NeedsApproval p={p} what="The crew list" />;
   const needed = neededRoles(p, g);
   const depts = [...new Set(needed.map((r) => r.dept))];
+  // Crew jobs someone from the film catalog is being considered for that the script doesn't call for (guests.ts). The
+  // writer's and the director's are hired in their own card.
+  const extra = [...new Set(consideredOn(p).filter((c) => !c.characterId && !['episode-writer', 'episode-director'].includes(c.roleId) && !needed.some((r) => r.roleId === c.roleId)).map((c) => c.roleId))];
   const status = (roleId: string) => {
     const hs = p.hires.filter((h) => h.roleId === roleId);
     if (hs.some((h) => h.status === 'accepted')) return { label: `Hired (${hs.filter((h) => h.status === 'accepted').length})`, cls: 'chip-positive' };
@@ -304,7 +315,9 @@ export function CrewTab({ p }: { p: Project }) {
     <>
       {msg && <div className="callout callout-info" role="status"><p>{msg}</p></div>}
       {p.delivered && <div className="callout callout-info"><p>This project has been delivered, so its crew can't change.</p></div>}
-      {isEpisodic(p.axes.format) && <EpisodeAssignments p={p} />}
+      {/* A single film has one writer and one director too (its one episode record). Until the Creative Depth package's
+          milestone D the table showed for series only, so nobody could be hired to direct or write a film. */}
+      {p.episodes.length > 0 && <EpisodeAssignments p={p} />}
       {depts.map((d) => (
         <section key={d} className="card">
           <div className="row-between wrap">
@@ -327,13 +340,31 @@ export function CrewTab({ p }: { p: Project }) {
           </ul>
         </section>
       ))}
+      {/* A job the script doesn't call for has no row above, so someone considered for one is offered it here. */}
+      {extra.length > 0 && (
+        <section className="card">
+          <h2>Jobs You Are Considering Someone For</h2>
+          <p className="muted">The approved script doesn't call for these jobs, so they aren't listed above. Someone from the film catalog is on this project's list for each; hiring them is your choice, and they are paid for their days like anyone.</p>
+          <ul className="list spaced">
+            {extra.map((roleId) => {
+              const st = status(roleId);
+              return (
+                <li key={roleId} className="row-wrap">
+                  <div className="grow"><strong>{roleLabel(roleId)}</strong> <span className={`chip ${st.cls}`}>{st.label}</span> <span className="chip">Optional</span></div>
+                  <button className="btn btn-sm" disabled={!!p.delivered} aria-label={`Find Candidates For ${roleLabel(roleId)}`} onClick={() => setFinding(roleId)}>Find Candidates</button>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
       <section className="card">
         <h2>Crew Offers And Contracts</h2>
         <HireTable p={p} hires={p.hires.filter((h) => h.kind === 'crew')} />
         {!p.hires.some((h) => h.kind === 'crew') && <p className="muted">No crew offers yet.</p>}
       </section>
       {finding && (
-        <Modal title={`Hire A ${roleLabel(finding)}`} onClose={() => setFinding(null)} footer={<button className="btn" onClick={() => setFinding(null)}>Close</button>}>
+        <Modal title={`Hire ${/^[AEIOU]/.test(roleLabel(finding)) ? 'An' : 'A'} ${roleLabel(finding)}`} onClose={() => setFinding(null)} footer={<button className="btn" onClick={() => setFinding(null)}>Close</button>}>
           <CandidateList p={p} roleId={finding} onDone={() => setFinding(null)} />
         </Modal>
       )}
@@ -363,25 +394,31 @@ function EpisodeAssignments({ p }: { p: Project }) {
   const [err, setErr] = useState<string | null>(null);
   const writers = p.hires.filter((h) => h.roleId === 'episode-writer' && h.status === 'accepted');
   const directors = p.hires.filter((h) => h.roleId === 'episode-director' && h.status === 'accepted');
+  const series = isEpisodic(p.axes.format);
+  const you = { value: 'player', label: 'You' };
+  const directorOptions = [you, ...directors.map((h) => ({ value: h.personId, label: personById(g, h.personId).name }))];
+  const writerOptions = [you, ...writers.map((h) => ({ value: h.personId, label: personById(g, h.personId).name }))];
   return (
     <section className="card">
-      <h2>Episode Writers And Directors</h2>
-      <p className="muted">As showrunner you can write and direct every episode, or hire episode writers and directors in Writing and Direction.</p>
+      <h2>{series ? 'Episode Writers And Directors' : 'Writer And Director'}</h2>
+      <p className="muted">{series ? 'As showrunner you can write and direct every episode, or hire episode writers and directors in Writing and Direction.' : 'You write and direct this yourself unless you hire someone to.'}{p.writing ? ' A director is chosen here once they accept and is paid for each day they direct. A writer is chosen once you accept a draft or a rewrite from them, under Writing Work.' : ' Once they accept, choose them here.'}</p>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       <div className="table-wrap">
         <table className="data">
-          <thead><tr><th>Episode</th><th>Written By</th><th>Directed By</th></tr></thead>
+          <thead><tr><th>{series ? 'Episode' : 'Title'}</th><th>Written By</th><th>Directed By</th></tr></thead>
           <tbody>
             {p.episodes.map((e) => (
               <tr key={e.number}>
-                <td data-label="Episode">{e.number}. {e.title}</td>
+                <td data-label={series ? 'Episode' : 'Title'}>{series ? `${e.number}. ${e.title}` : p.title}</td>
                 <td data-label="Written By">
-                  <SelectField label={`Writer For Episode ${e.number}`} value={e.writer} options={[{ value: 'player', label: 'You' }, ...writers.map((h) => ({ value: h.personId, label: personById(g, h.personId).name }))]}
-                    onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'writer', v)))} />
+                  {series
+                    ? <SelectField label={`Writer For Episode ${e.number}`} value={e.writer} options={writerOptions} onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'writer', v)))} />
+                    : <SelectField label="Writer" value={e.writer} options={writerOptions} onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'writer', v)))} />}
                 </td>
                 <td data-label="Directed By">
-                  <SelectField label={`Director For Episode ${e.number}`} value={e.director} options={[{ value: 'player', label: 'You' }, ...directors.map((h) => ({ value: h.personId, label: personById(g, h.personId).name }))]}
-                    onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'director', v)))} />
+                  {series
+                    ? <SelectField label={`Director For Episode ${e.number}`} value={e.director} options={directorOptions} onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'director', v)))} />
+                    : <SelectField label="Director" value={e.director} options={directorOptions} onChange={(v) => setErr(store.act(() => assignEpisodeRole(p, e.number, 'director', v)))} />}
                 </td>
               </tr>
             ))}
@@ -392,19 +429,25 @@ function EpisodeAssignments({ p }: { p: Project }) {
         <div className="row gap-2 wrap">
           <HireExtra p={p} roleId="episode-writer" />
           <HireExtra p={p} roleId="episode-director" />
+          {/* Writing help is hired here too, from November 11, 2026: until then no page offered these two jobs. */}
+          {p.writing && <HireExtra p={p} roleId="co-writer" />}
+          {p.writing && <HireExtra p={p} roleId="script-editor" />}
         </div>
       )}
+      <WritingWork p={p} />
     </section>
   );
 }
 
 function HireExtra({ p, roleId }: { p: Project; roleId: string }) {
   const [open, setOpen] = useState(false);
+  // On a single film the job is simply the writer's or the director's.
+  const label = `Hire ${/^[AEIOU]/.test(jobLabel(p, roleId)) ? 'An' : 'A'} ${jobLabel(p, roleId)}`;
   return (
     <>
-      <button className="btn btn-sm" onClick={() => setOpen(true)}>Hire An {roleLabel(roleId)}</button>
+      <button className="btn btn-sm" onClick={() => setOpen(true)}>{label}</button>
       {open && (
-        <Modal title={`Hire An ${roleLabel(roleId)}`} onClose={() => setOpen(false)} footer={<button className="btn" onClick={() => setOpen(false)}>Close</button>}>
+        <Modal title={label} onClose={() => setOpen(false)} footer={<button className="btn" onClick={() => setOpen(false)}>Close</button>}>
           <CandidateList p={p} roleId={roleId} onDone={() => setOpen(false)} />
         </Modal>
       )}

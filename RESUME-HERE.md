@@ -9,9 +9,10 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#67 (Creative Depth, milestone A: the owner's data for the owner
-  alone, and frozen world profiles), squash-merged as `562eac8` on November 11, 2026, CI green on its final commit.
-  Milestone B is the next checkpoint, on this branch.
+- **Latest merge:** montrealroots/Final-SLATE-Build#68 (Creative Depth, milestone B: the idea picker, 187 ideas, and
+  makeup, costume and crowd choices that reach the shoot), squash-merged as `fd095f1` on November 11, 2026, CI green on
+  its final commit. Before it, #67 (milestone A) as `562eac8`. Milestone D (real people castable and hireable) is the
+  next checkpoint, on this branch; C and E follow, each built and waiting its turn (see the Creative Depth section).
 - **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`), #25 (financing: money from backers, save version 5), #26 (screenwriting audit, dated motion-capture sessions, replacement credits, San Sebastián rules), #27 (the 1221 layout), #28 (1221's creation suite), #29 and #30 (pronouns settle the billing), #31 (backgrounds: kept holidays, casting information, languages), #32 (language suggestions for every background but Assyrian), #33 (script field effects), #34 (script rules review; `6e2abf0`), #35 (input loss, startup size, connected journey; `c00c261`), #36 (atomic genre catalog, careers, reload lock; `5e142f4`), #37 (micro-budget tuning; `fddd6b6`), #38 (budget-size wording; `b025147`), #39 to #41 (screen review, identity, depth stages 1 to 4), #42 (depth stages 5 to 8; `cfe7d71`), #43 and #44 (action previews audit, remaining browser journeys; `37123f5`). `main` was at `3845c2d` when the Gap Completion Package was applied.
 - **Package:** "SLATE Gap Completion Package" (predates #2 and #3). Its references are not committed; the imported data is under `src/world/` and `docs/world/`.
 - **Run first:**
@@ -77,11 +78,21 @@ Where it stands:
   extended in post and the story's year, all read by the schedule, the shoot day, the estimate and the call sheet
   (`src/engine/looks.ts`, figures in `docs/ASSUMPTIONS.md`); the package's 1986 zombie example built from ideas,
   compared three ways and delivered, in the engine and in the browser; both audit tables written from the code.
+- **D, done (built before C; `docs/creative-depth/DECISIONS.md` says why):** people from the film catalog are
+  considered on their own page, join a part's or a job's list, read, counter, are contracted, are found booked by a
+  second project, work, are paid for each day once, are credited by name, and have their work in the story listed apart
+  from their recorded credits (`src/engine/guests.ts`, `src/ui/PersonWork.tsx`). Nothing about them is guessed, an
+  unknown age blocks every offer until the player says, and nobody is approached after a recorded death. Each copied
+  record is renewed or withdrawn at TMDB's six months. A single film can hire a writer and a director. Hired writers
+  are commissioned by the pass, paid by the day, and credited and counted only for work the player accepts
+  (`src/engine/writing-jobs.ts`, `src/ui/WritingWork.tsx`); a hired director is paid for each day they direct.
+  Journeys J04 and J05 are `e2e/real-people.spec.ts`. The ledger's "Limits Of Milestone D" lists what isn't built: a
+  producer's job, agents, inquiry holds, and a writer's pass changing the script itself.
 - **C, next:** ideas for the 38 creative fields that have none yet (`FIELD-INVENTORY.csv`, rows marked "Not yet");
   engines for the camera, lighting and sound choices that are only notes today; named appearance states by scene;
   routes for every genre; the animation, documentary, unscripted and television pipelines' own choices; a controlled
   comparison for each new family.
-- **D to H:** not started; the ledger's milestone table has each one's scope.
+- **E to H:** not started; the ledger's milestone table has each one's scope.
 
 Rules that came with the package: one agent; no universal quality bonus for a preset; custom text is never claimed to
 be understood; real people's recorded credits stay apart from anything the game simulates about them; no credentials,
