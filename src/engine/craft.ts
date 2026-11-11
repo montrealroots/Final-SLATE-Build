@@ -96,7 +96,7 @@ export interface SoundDef {
 
 export const SOUNDS: Record<SoundChoice, SoundDef> = {
   texture: { label: 'Natural Location Texture', hint: 'The recordist stays to record each place by itself: a wild-track day for every three locations, and less effects editing after.', reset: 1, foley: 1, effects: 0.7, score: 1, mix: 1 },
-  clarity: { label: 'Dialogue Clarity', hint: 'A boom operator on every dialogue scene and a moment to quiet the set before each setup. Dialogue recorded this way needs replacing only when the day itself goes wrong.', role: 'boom-operator', why: 'Booms every dialogue scene, for dialogue recorded clean on set.', reset: 1.05, foley: 1, effects: 1, score: 1, mix: 1 },
+  clarity: { label: 'Dialogue Clarity', hint: 'A boom operator on every dialogue scene and a moment to quiet the set before each setup. Dialogue recorded this way holds on a day spoiled by weather or noise, where it would otherwise be replaced in post.', role: 'boom-operator', why: 'Booms every dialogue scene, for dialogue recorded clean on set.', reset: 1.05, foley: 1, effects: 1, score: 1, mix: 1 },
   sparse: { label: 'Sparse Soundscape', hint: 'Quiet, with few sounds, each exposed: more Foley and a longer mix, less score.', reset: 1, foley: 1.5, effects: 1, score: 0.6, mix: 1.2 },
   creature: { label: 'Heightened Creature Foley', hint: 'Movement and material recorded for each creature: two Foley days for every one in the script.', reset: 1, foley: 1, effects: 1, score: 1, mix: 1 },
   crowd: { label: 'Layered Crowd Sound', hint: 'A loop group records the crowd after the lock: a session for every two crowd scenes.', reset: 1, foley: 1, effects: 1, score: 1, mix: 1.1 },
