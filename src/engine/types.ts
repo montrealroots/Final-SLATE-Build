@@ -861,6 +861,8 @@ export interface Project {
   continuedBy?: string;
   /** A commissioner's decision on another season (continuation.ts). */
   renewal?: { decidedAt: number; outcome: 'renewed' | 'cancelled'; reason: string };
+  /** Ideas applied from the picker, by ID and version, and ideas marked to come back to (brief.ts). Never their text. */
+  brief?: import('./brief').Brief;
   noticeKeys: string[];
 }
 

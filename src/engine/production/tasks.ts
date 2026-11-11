@@ -72,12 +72,14 @@ export function buildTasks(p: Project): Task[] {
       const m = makeup(c.look!.makeup)!;
       const dept = m.specialist === 'prosthetics' ? 'Creature And Effects' : 'Costume And Makeup';
       const built = m.buildDays > 0;
+      // Hair of another time waits for the period's research, as costumes do; a creature or a wound doesn't.
+      const after = m.id === 'period-hair' ? research : [];
       if (built) {
-        tasks.push(t('prep:appliances', c.id, `${m.label}: ${c.name}`, dept, m.specialist, m.buildDays * statesOf(c), 'build days', research, { assetRef: c.id, material: m.buildCost * m.buildDays * statesOf(c) }));
+        tasks.push(t('prep:appliances', c.id, `${m.label}: ${c.name}`, dept, m.specialist, m.buildDays * statesOf(c), 'build days', after, { assetRef: c.id, material: m.buildCost * m.buildDays * statesOf(c) }));
         prepIds.push(`prep:appliances:${c.id}`);
       }
       if (m.testDays > 0) {
-        tasks.push(t('prep:makeup-test', c.id, `Makeup Tests: ${c.name}`, dept, m.specialist, m.testDays, 'test days', built ? [`prep:appliances:${c.id}`] : research, { assetRef: c.id }));
+        tasks.push(t('prep:makeup-test', c.id, `Makeup Tests: ${c.name}`, dept, m.specialist, m.testDays, 'test days', built ? [`prep:appliances:${c.id}`] : after, { assetRef: c.id }));
         prepIds.push(`prep:makeup-test:${c.id}`);
       }
     }

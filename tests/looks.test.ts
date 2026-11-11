@@ -53,7 +53,7 @@ const toCome = (s: GameState, p: Project, label: RegExp) => costBreakdown(s, p).
 
 describe('the methods and sources themselves', () => {
   it('are a short list with every figure in its unit, and differ in the ways the work differs', () => {
-    expect(MAKEUP.map((m) => m.id)).toEqual(['character', 'period-hair', 'aging', 'wounds', 'creature', 'body-paint', 'mask', 'digital']);
+    expect(MAKEUP.map((m) => m.id)).toEqual(['character', 'period-hair', 'aging', 'partial', 'wounds', 'creature', 'body-paint', 'mask', 'cleanup', 'digital']);
     expect(WARDROBE.map((w) => w.id)).toEqual(['stock', 'bought', 'rental', 'build']);
     for (const m of MAKEUP) {
       expect(m.label && m.summary, m.id).toBeTruthy();
