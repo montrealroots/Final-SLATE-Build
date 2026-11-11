@@ -22,7 +22,9 @@ const COMPRESSIBLE = new Set(['.html', '.js', '.css', '.json', '.svg', '.tsv', '
 export function createSlateServer({ dist, catalogDir, cinemasDir, packsDir = null, now }) {
   const root = resolve(dist);
   const data = createCatalogHandler({ catalogDir: resolve(catalogDir), cinemasDir: resolve(cinemasDir), packsDir: packsDir && resolve(packsDir), now });
-  const gz = new Map(); // a built file's gzip, made once: the build never changes while the server runs
+  // A built file's gzip, kept with the bytes it was made from. Until November 11, 2026 it was kept by name alone, so a
+  // build replaced under a running server went on sending the old page, pointing at code that was gone.
+  const gz = new Map();
   const send = (req, res, file, cacheControl) => {
     const ext = extname(file);
     let body = readFileSync(file);
@@ -30,8 +32,9 @@ export function createSlateServer({ dist, catalogDir, cinemasDir, packsDir = nul
     res.setHeader('cache-control', cacheControl);
     res.setHeader('x-content-type-options', 'nosniff');
     if (COMPRESSIBLE.has(ext) && /\bgzip\b/.test(req.headers['accept-encoding'] ?? '') && body.length > 1024) {
-      if (!gz.has(file)) gz.set(file, gzipSync(body));
-      body = gz.get(file);
+      const kept = gz.get(file);
+      if (!kept || !kept.from.equals(body)) gz.set(file, { from: body, gz: gzipSync(body) });
+      body = gz.get(file).gz;
       res.setHeader('content-encoding', 'gzip');
       res.setHeader('vary', 'accept-encoding');
     }

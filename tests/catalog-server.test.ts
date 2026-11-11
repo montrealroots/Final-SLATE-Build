@@ -64,6 +64,10 @@ describe('the built game', () => {
       expect((await get(s.port, '/assets/gone-1.js')).status).toBe(404);
       expect((await get(s.port, '/companies', { method: 'POST' })).status).toBe(405);
       expect((await get(s.port, '/../package.json')).status).not.toBe(200);
+      // A build replaced while the server runs is served as it is now, compressed or not.
+      expect(gunzipSync((await get(s.port, '/', { gzip: true })).body).toString()).not.toContain('SLATE rebuilt');
+      write(join(dist, 'index.html'), `<!doctype html><title>SLATE rebuilt</title>${'<!-- padding -->'.repeat(100)}`);
+      expect(gunzipSync((await get(s.port, '/', { gzip: true })).body).toString()).toContain('SLATE rebuilt');
     } finally { s.close(); }
   });
 });
