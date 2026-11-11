@@ -14,6 +14,7 @@
 | --- | --- | --- |
 | `npm run check` | 0 | 93 files, 747 tests. New: `tests/packs.test.ts` (round trip, the six-month date and its cap, five refusals). Startup 302 kB, 97 kB gzipped. |
 | `npx playwright test e2e/data-packs.spec.ts`, desktop, phone, WebKit (iPhone 15 Pro Max) | 0 after a fix | 6 passed. WebKit first refused to store the records ("The pack couldn't be stored"): it can't keep a Blob in IndexedDB in a private window, which Playwright's are. Records are stored as bytes now. |
+| `npx playwright test --workers=1` (dev server, every project, as CI runs it), at `b0ce7c0` | 0 | 317 passed, 45 skipped by design, in 39.7 minutes on this machine. CI's 45-minute step had been cut at tests 337 and 324 of 353 on two commits, none failing; CI's machine is slower than this one, so each browser step now has 60 minutes (`c41554f`). |
 | The real packs, production build with no catalog on the server | — | Film pack (69.7 MB, 9,510 files) installed in 5.8 s in Chromium (77 MB used) and 4.0 s in WebKit with iPhone emulation (71 MB). Cinemas in about 0.1 s. |
 
 ### Earlier: The World Foundation (November 11, 2026)
