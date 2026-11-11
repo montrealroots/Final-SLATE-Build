@@ -15,6 +15,9 @@ const YEAR = 365.25;
 /** The rules' names and what they call things, in words for the casting and Cast pages (minors.ts has the numbers). */
 export const RULE_WORDS: Record<Minor['rules']['id'], { name: string; licence: string; night: string; setAside: string }> = {
   'GB-ENG': { name: "England's child performance regulations", licence: 'a child performance licence from the local authority', night: "the licensing authority's permission for night work", setAside: '' },
+  'GB-SCT': { name: "Scotland's child performance regulations", licence: 'a child performance licence from the local authority', night: "the licensing authority's permission for night work", setAside: '' },
+  'GB-WLS': { name: "Wales's child performance regulations", licence: 'a child performance licence from the local authority', night: "the licensing authority's permission for night work", setAside: '' },
+  'GB-NIR': { name: "Northern Ireland's child performance regulations", licence: 'a child performance licence from the Education Authority', night: "the board's permission for an outdoor scene after the latest hour", setAside: '' },
   'US-CA': { name: "California's rules for minors in entertainment", licence: 'an Entertainment Work Permit for the minor and a permit to employ minors', night: "the Labor Commissioner's approval for night work", setAside: 'a Coogan trust account (California Family Code §6752)' },
   'US-NY': { name: "New York's child performer regulations", licence: "a Child Performer Permit and the employer's notice of use", night: 'a variance for night work', setAside: 'a child performer trust account (New York Part 186)' },
   'US-GA': { name: "Georgia's rules for minors in entertainment", licence: "the Department of Labor's certification of the minor, the production and the location", night: "the Commissioner's written approval for earlier or later hours", setAside: '' },
@@ -23,6 +26,18 @@ export const RULE_WORDS: Record<Minor['rules']['id'], { name: string; licence: s
   IE: { name: "Ireland's licence conditions for children in film and television", licence: "a licence from the Minister, applied for 21 days ahead", night: "the licence's leave for night work, given only where it is essential", setAside: '' },
   DE: { name: "Germany's Youth Employment Protection Act", licence: "the supervisory authority's approval, with a parent's consent and a medical certificate", night: "the supervisory authority's approval of the hours", setAside: '' },
   FR: { name: "France's rules for children in film and television (with England's hours by age, as the commission sets each child's)", licence: "the prefect's authorisation, after the children's commission", night: "the labour inspectorate's authorisation for night work", setAside: '' },
+  IN: { name: "India's rules for child artists", licence: "the District Magistrate's permission", night: "the District Magistrate's permission", setAside: "a fixed deposit in the child's name at a nationalised bank" },
+  JP: { name: "Japan's Labour Standards Act", licence: "the Labour Standards Inspection Office's permission, with the head teacher's certificate and a parent's consent", night: '', setAside: '' },
+  KR: { name: "South Korea's Popular Culture and Arts Industry Development Act", licence: "a parent's consent", night: "the consent of the performer and a parent", setAside: '' },
+  MX: { name: "Mexico's Federal Labour Law (with the hours it sets at 15 for younger children, for whom it sets none)", licence: "a written agreement with a parent's consent, or from 15 a medical certificate", night: '', setAside: '' },
+  'US-TX': { name: "Texas's rules for child actors", licence: "the Texas Workforce Commission's child actor authorization (under 14)", night: "a parent's consent (under 14)", setAside: '' },
+  'US-NM': { name: "New Mexico's rules for child performers", licence: "the Department of Workforce Solutions' pre-authorization certificate", night: "the Department's waiver", setAside: 'a trust account until they are 18 (New Mexico, on contracts of $1,000 or more)' },
+  'CA-QC': { name: "Quebec's labour standards for children", licence: "a parent's written consent on the CNESST's form", night: '', setAside: '' },
+  ES: { name: "Spain's Workers' Statute (with the hours Spain's 2026 decree sets, as the labour authority sets them case by case until it takes effect)", licence: "the labour authority's written authorisation", night: '', setAside: '' },
+  'ES-2027': { name: "Spain's Royal Decree 607/2026 on artists", licence: "the labour authority's authorisation, with a parent's and, from 12, the child's consent", night: "the labour authority's authorisation for night work", setAside: '' },
+  IT: { name: "Italy's law on the work of children and adolescents", licence: "the labour inspectorate's authorisation, with the parents' written consent", night: '', setAside: '' },
+  BR: { name: "Brazil's Child and Adolescent Statute and labour laws (with England's hours under 16, as a judge sets them case by case)", licence: "a judge's authorisation", night: '', setAside: '' },
+  NZ: { name: "New Zealand's rules for workers under 16 (with New South Wales's hours, as New Zealand sets none)", licence: "a parent's agreement", night: '', setAside: '' },
   'AU-NSW': { name: "New South Wales's requirements for children in entertainment", licence: "the Children's Guardian's authority to employ children", night: "the Children's Guardian's approval of the hours", setAside: '' },
 };
 
@@ -65,7 +80,7 @@ export function fitNotes(state: GameState, p: Project, person: Person | 'player'
     out.push(`Usually plays ages ${plays[0]} to ${plays[1]}; the part is ${storyAgeWords(want)}.`);
   }
   // A child under the shoot's rules (minors.ts): what casting them brings with it.
-  const { rules, standIn } = projectRules(p);
+  const { rules, standIn } = projectRules(p, today);
   const ageDays = ageInDays(person.born, today);
   const band = bandFor(rules, ageDays);
   if (band) {

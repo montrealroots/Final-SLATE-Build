@@ -1,12 +1,12 @@
 // The screen catalog's pages: companies, their leadership and titles, a title's credits, seasons, episodes and people
 // (docs/CATALOG.md). Everything here is reference material, loaded on demand and kept out of saves. It is shown at the
 // save's date: later releases are announced, not history, and later results aren't shown as known.
-import { useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { currentZone, dateKey, formatDateKey } from '../engine';
 import type { Route } from '../engine/types';
-import { COMPANIES, LEADERSHIP_GAPS, REGISTRY_CHECKED, company as registryCompany, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
+import { COMPANIES, LEADERSHIP_GAPS, REGISTRY_CHECKED, company as registryCompany, groupOf, joinedGroup, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
 import {
-  ageAt, executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeUnderDisney, moneyOrUnknown, ownersAt, parseRef, registryFor, titleStanding,
+  ageAt, executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, registryFor, titleStanding,
   type CatalogIndex, type CompanyFilmography, type NetworkRecord, type PersonCredit, type PersonRecord, type SeasonRecord, type SortKey, type TitleRecord,
 } from '../catalog/model';
 import { retryCatalog, useCatalogFile, type Loaded } from '../catalog/load';
@@ -14,6 +14,7 @@ import { describe as describeWorld, inStory, isNews, simRoute, useWorld, worldEv
 import { episodeDates, outletOf, profileFor, recordedModel, recordedUpTo, type SimSeason } from '../engine/industry';
 import { ageOn, announcedSeason, breakLength, breaksOf, castFor, decisionsFor, nightsOf, usualDecision } from '../catalog/simseason';
 import { addDaysToKey } from '../engine';
+import { studioFilm, studioFilms } from '../engine/studios';
 import logo from '../catalog/tmdb-logo.svg';
 import { Check, Empty, PageHead, Panel, SelectField, TextField } from './components';
 import { Breadcrumbs } from './Shell';
@@ -70,13 +71,20 @@ export function TmdbCredit() {
 // ---------- companies ----------
 
 const KIND_LABEL: Record<CompanyRecord['kind'], string> = { corporate: 'The Company', film: 'Film', television: 'Television', network: 'Networks And Streaming' };
+/** The groups the catalog follows, and companies whose films one of them releases without owning them (Illumination). */
+const GROUPS = ['company:the-walt-disney-company', 'company:comcast', 'other'] as const;
+const GROUP_LABEL: Record<(typeof GROUPS)[number], string> = { 'company:the-walt-disney-company': 'The Walt Disney Company', 'company:comcast': 'Comcast And NBCUniversal', other: 'Released By Universal Pictures' };
+const inGroup = (c: CompanyRecord, g: (typeof GROUPS)[number]) => {
+  const top = groupOf(c.id)?.id;
+  return g === 'other' ? top === c.id && c.kind !== 'corporate' : top === g;
+};
 
 export function CompaniesPage() {
   const index = useCatalogFile<CatalogIndex>('index.json');
   const counts = index.status === 'ready' ? new Map(index.data.companies.map((c) => [c.tmdbId, c])) : null;
   return (
     <>
-      <PageHead eyebrow="Industry" title="Companies" lede="The Walt Disney Company's studios and labels, their leadership, and the films and series credited to them, from TMDB." />
+      <PageHead eyebrow="Industry" title="Companies" lede="The studios and labels of The Walt Disney Company and of NBCUniversal, their leadership, and the films and series credited to them, from TMDB." />
       <CatalogStatus index={index} />
       <CatalogSearch ready={index.status === 'ready'} />
       {index.status === 'ready' && index.data.counts.networks ? (
@@ -84,10 +92,10 @@ export function CompaniesPage() {
           <p><Link to={{ view: 'networks' } as Route}>Networks And Streaming Services</Link>: the {plural(index.data.counts.networks, 'network and service', 'networks and services')} the catalog's series aired or streamed on, and who owned them.</p>
         </Panel>
       ) : null}
-      {(['corporate', 'film', 'television', 'network'] as const).map((k) => (
-        <Panel key={k} title={KIND_LABEL[k]}>
+      {GROUPS.flatMap((g) => (['corporate', 'film', 'television', 'network'] as const).filter((k) => COMPANIES.some((c) => c.kind === k && inGroup(c, g))).map((k) => (
+        <Panel key={`${g}:${k}`} title={`${GROUP_LABEL[g]}: ${KIND_LABEL[k]}`}>
           <ul className="list">
-            {COMPANIES.filter((c) => c.kind === k).map((c) => {
+            {COMPANIES.filter((c) => c.kind === k && inGroup(c, g)).map((c) => {
               const n = c.tmdb && counts?.get(c.tmdb.id);
               return (
                 <li key={c.id} className="list-item">
@@ -98,13 +106,25 @@ export function CompaniesPage() {
             })}
           </ul>
         </Panel>
-      ))}
+      )))}
       <TmdbCredit />
     </>
   );
 }
 
+/** Whether this copy of the game offers the film pack: only the owner's own server does (docs/DEPLOYMENT.md). */
+function useFilmModOffered(): boolean {
+  const [offered, setOffered] = useState(false);
+  useEffect(() => {
+    let live = true;
+    void import('../catalog/packs').then((m) => m.offeredMods()).then((mods) => { if (live) setOffered(mods.some((x) => x.kind === 'catalog')); });
+    return () => { live = false; };
+  }, []);
+  return offered;
+}
+
 function CatalogStatus({ index }: { index: Loaded<CatalogIndex> }) {
+  const filmMod = useFilmModOffered();
   if (index.status === 'loading') return <p role="status" className="muted">Loading the catalog…</p>;
   if (index.status !== 'ready') {
     return (
@@ -114,7 +134,7 @@ function CatalogStatus({ index }: { index: Loaded<CatalogIndex> }) {
           : index.status === 'missing' && index.reason === 'expired' ? "This copy of the films and series is more than six months old, the longest TMDB allows it to be kept, so it has been withdrawn until it is gathered again."
             : index.status === 'missing' && index.reason === 'malformed' ? "The films and series on this server couldn't be read, so they aren't shown. Your game is unaffected."
               : "This copy of SLATE doesn't include the films and series. They are gathered from TMDB separately, and TMDB's terms don't allow them to be shipped with the game."} Companies and their leadership are still here.</p>
-        {index.status === 'missing' && index.reason !== 'malformed' && <p className="muted">To add them, install the Films And Series mod in Settings, under Mods.</p>}
+        {index.status === 'missing' && index.reason !== 'malformed' && filmMod && <p className="muted">To add them, install the Films And Series mod in Settings, under Mods.</p>}
       </section>
     );
   }
@@ -123,7 +143,7 @@ function CatalogStatus({ index }: { index: Loaded<CatalogIndex> }) {
     <section className="card" aria-labelledby="cat-h">
       <h2 id="cat-h">The Catalog</h2>
       <p className="muted">{plural(c.movies, 'film')}, {plural(c.series, 'series', 'series')} with {plural(c.seasons, 'season')} and {plural(c.episodes, 'episode')}, and {plural(c.people, 'person', 'people')}, as TMDB listed them for these companies between {day(index.data.retrieved.from ?? '')} and {day(index.data.retrieved.to ?? '')}.</p>
-      <p className="dim small">These are the titles TMDB credits to each company, not a complete record of everything the companies ever made, and not checked against the companies' own catalogs. A title on Disney+ isn't listed here unless one of these companies is credited with it.</p>
+      <p className="dim small">These are the titles TMDB credits to each company, not a complete record of everything the companies ever made, and not checked against the companies' own catalogs. A title on Disney+ or Peacock isn't listed here unless one of these companies is credited with it.</p>
     </section>
   );
 }
@@ -159,7 +179,7 @@ export function CompanyPage({ id }: { id: string }) {
     return (
       <>
         <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: tmdbOnly ? 'Credited Company' : 'Company' }]} />
-        <Empty title="This Company Isn't One The Catalog Follows"><p className="muted">It is credited on titles in the catalog, but SLATE gathers titles only for The Walt Disney Company's studios and labels, so there is nothing more about it here.</p><GoBack /></Empty>
+        <Empty title="This Company Isn't One The Catalog Follows"><p className="muted">It is credited on titles in the catalog, but SLATE gathers titles only for the studios and labels of The Walt Disney Company and of NBCUniversal, so there is nothing more about it here.</p><GoBack /></Empty>
       </>
     );
   }
@@ -175,12 +195,13 @@ export function CompanyPage({ id }: { id: string }) {
           {c.tmdb && <><dt>On TMDB</dt><dd>{c.tmdb.name}, {c.tmdb.headquarters ? `${c.tmdb.headquarters}, ` : ''}{c.tmdb.country} (company {c.tmdb.id})</dd></>}
           {c.website && <><dt>Website</dt><dd><a href={c.website} target="_blank" rel="noreferrer noopener">{c.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></dd></>}
         </dl>
-        {c.parent?.how === 'acquired' && c.parent.from && happenedBy(c.parent.from, today) === false && <p className="callout">At this point in your story, {c.name} isn't part of The Walt Disney Company yet: the acquisition completes on {day(c.parent.from)}.</p>}
+        {(() => { const j = joinedGroup(c.id); const g = groupOf(c.id); return j && g && g.id !== c.id && happenedBy(j.from, today) === false ? <p className="callout">At this point in your story, {c.name} isn't part of {g.name} yet: the acquisition completes on {day(j.from)}.</p> : null; })()}
         {c.parent?.source && <p className="dim small">Source: <a href={c.parent.source.url} target="_blank" rel="noreferrer noopener">{c.parent.source.title}</a>.</p>}
         {c.related.map((r) => { const o = registryCompany(r.id); return o ? <p key={r.id} className="muted">{r.relation}: <Link to={{ view: 'company', ref: o.id } as Route}>{o.name}</Link>.</p> : null; })}
         {c.notes.map((n) => <p key={n} className="dim">{n}</p>)}
       </Panel>
       <LeadershipCard c={c} today={today} />
+      <SimulatedFilms companyId={c.id} today={today} />
       {c.tmdb && c.kind !== 'network' ? <Filmography tmdbId={c.tmdb.id} name={c.name} today={today} /> : (
         <Panel title="Titles"><p className="muted">{c.kind === 'network' ? 'No titles are gathered for networks and streaming services: where a title airs or streams isn\'t who made it.' : 'TMDB credits no titles to this company itself; see its studios and labels.'}</p></Panel>
       )}
@@ -273,7 +294,61 @@ function Released({ t, today }: { t: { date: string | null; status: string | nul
   return <>{s === 'released' ? `${verb} ${day(t.date!)}` : s === 'upcoming' ? `Not released by ${formatDateKey(today)}: due ${day(t.date!)}, as announced` : 'No release date recorded'}</>;
 }
 
+/** A film this save's world released after the records end (src/engine/studios.ts): invented, and labelled so. */
+function SimFilmPage({ refId }: { refId: string }) {
+  const g = useGame();
+  const today = useToday();
+  const f = studioFilm(g, refId);
+  const c = f && registryCompany(f.company);
+  if (!f) return <Empty title="This Film Isn't In Your Story"><p className="muted">It was made by another save's world.</p><GoBack /></Empty>;
+  return (
+    <>
+      <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, ...(c ? [{ label: c.name, route: { view: 'company', ref: c.id } as Route }] : []), { label: f.title }]} />
+      <PageHead eyebrow="Film" title={f.title} />
+      <Panel title="About">
+        <p><span className="chip">Simulated</span> Made by your story's world after the records end. The title and the people are invented; the studio's pace, genres and release months are its recorded ones.</p>
+        <dl className="kv">
+          <dt>Studio</dt><dd>{c ? <Link to={{ view: 'company', ref: c.id } as Route}>{c.name}</Link> : f.company}</dd>
+          <dt>{f.date <= today ? 'Released' : 'Due'}</dt><dd>{day(f.date)}</dd>
+          <dt>Genres</dt><dd>{f.genres.join(', ')}</dd>
+          <dt>Running Time</dt><dd>{f.runtimeMin} minutes</dd>
+          <dt>Director</dt><dd>{f.people.director}</dd>
+          <dt>Writer</dt><dd>{f.people.writer}</dd>
+          <dt>Lead</dt><dd>{f.people.lead}</dd>
+        </dl>
+      </Panel>
+    </>
+  );
+}
+
+/** A studio's films after the records end, released by this point in the story and announced for the next year. */
+function SimulatedFilms({ companyId, today }: { companyId: string; today: string }) {
+  const g = useGame();
+  const horizon = g.industry?.horizon;
+  const films = useMemo(() => (horizon ? studioFilms(g, horizon, addDaysToKey(today, 365)).filter((f) => f.company === companyId) : []), [g, horizon, today, companyId]);
+  if (!horizon || !g.industry?.studios?.some((p) => p.c === companyId)) return null;
+  return (
+    <Panel title="After The Records" subtitle={`Films your story's world has released since the records end on ${formatDateKey(horizon)}, and those announced for the next year. Simulated: the titles and people are invented; the pace, genres and months are the studio's recorded ones.`}>
+      {films.length ? (
+        <ul className="list">
+          {films.map((f) => (
+            <li key={f.id} className="list-item">
+              <span className="grow"><Link to={{ view: 'title', ref: f.id } as Route}>{f.title}</Link> <span className="chip">Simulated</span></span>
+              <span className="dim small">{f.date <= today ? `Released ${day(f.date)}` : `Due ${day(f.date)}`}</span>
+            </li>
+          ))}
+        </ul>
+      ) : <p className="muted">None yet.</p>}
+    </Panel>
+  );
+}
+
 export function TitlePage({ refId }: { refId: string }) {
+  if (refId.startsWith('sim-film:')) return <SimFilmPage refId={refId} />;
+  return <RecordedTitlePage refId={refId} />;
+}
+
+function RecordedTitlePage({ refId }: { refId: string }) {
   const today = useToday();
   const file = fileFor(refId);
   const t = useCatalogFile<TitleRecord>(file && /^(movie|tv):\d+$/.test(refId) ? file : null);
@@ -335,11 +410,12 @@ function CreditedCompanies({ t }: { t: TitleRecord }) {
         <ul className="list">
           {t.companies.map((c) => {
             const r = registryFor(c.tmdbId);
-            const under = madeUnderDisney(c.tmdbId, t.date);
+            const under = madeInGroup(c.tmdbId, t.date);
+            const joined = r ? joinedGroup(r.id) : null;
             return (
               <li key={c.tmdbId} className="list-item">
                 <span className="grow"><Link to={{ view: 'company', ref: r ? r.id : `tmdbco:${c.tmdbId}` } as Route}>{c.name}</Link>{c.country ? <span className="dim small"> ({c.country})</span> : null}</span>
-                {r?.parent?.how === 'acquired' && under === false && <span className="dim small">Released before the acquisition ({day(r.parent.from!)})</span>}
+                {joined && under === false && <span className="dim small">Released before the acquisition ({day(joined.from)})</span>}
               </li>
             );
           })}

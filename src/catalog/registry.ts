@@ -1,10 +1,11 @@
-// The companies the Disney catalog covers, and their leadership, researched November 10, 2026 (docs/CATALOG.md).
+// The companies the catalog covers, and their leadership: The Walt Disney Company's, researched November 10, 2026, and
+// NBCUniversal's (Comcast's), researched November 11, 2026 (docs/CATALOG.md).
 //
 // Each entry is one company record as TMDB holds it: its TMDB ID was found by search and checked against the company's
 // own TMDB details (name, country, headquarters) that day, never guessed. A credited name stays as credited: 20th Century
 // Fox and 20th Century Studios are two records, because TMDB credits titles to the name a company had at the time, and
-// a film credited to 20th Century Fox in 1997 wasn't a Disney production. Ownership is the relationship to The Walt
-// Disney Company, with a date only where an official source gives one.
+// a film credited to 20th Century Fox in 1997 wasn't a Disney production. Ownership is the relationship to the company's
+// group (The Walt Disney Company, or Comcast through NBCUniversal), with a date only where an official source gives one.
 //
 // Leadership comes from the companies' own leadership pages and announcements, never from screen credits. Dates are
 // what the sources state; where a source gives none, the field is null and the page says so.
@@ -22,7 +23,7 @@ export interface CompanyRecord {
   /** The TMDB company record, checked by search and company details; null for a company TMDB lists only as a network or not at all. */
   tmdb: { id: number; name: string; country: string; headquarters: string } | null;
   website: string | null;
-  /** Its place in The Walt Disney Company. */
+  /** Its place in its group (groupOf): The Walt Disney Company, or Comcast through NBCUniversal. */
   parent: { id: string; how: 'division' | 'acquired'; from: string | null; source: Source | null } | null;
   /** Earlier or later names held as separate records, with how they relate. */
   related: { id: string; relation: string }[];
@@ -42,6 +43,12 @@ const S = {
   pixarLeaders: { url: 'https://www.pixar.com/leaders', title: 'Pixar Animation Studios: Leaders', published: null },
   wdas: { url: 'https://thewaltdisneycompany.com/news/jared-bush-walt-disney-animation-studios/', title: 'Jared Bush Named Chief Creative Officer of Walt Disney Animation Studios', published: '2024-09-19' },
   feige: { url: 'https://thewaltdisneycompany.com/news/deadpool-and-wolverine-kevin-feige/', title: 'Marvel Studios President Kevin Feige on Deadpool & Wolverine', published: '2024-07-25' },
+  comcastTimeline: { url: 'https://corporate.comcast.com/press/timeline', title: 'Comcast Corporation: Company Timeline (NBCUniversal formed January 28, 2011; GE\'s 49% acquired March 19, 2013)', published: null },
+  dreamworks: { url: 'https://www.sec.gov/Archives/edgar/data/0001166691/000119312516747958/Financial_Report.xlsx', title: 'Comcast Corporation, Form 10-Q, quarter ended September 30, 2016 (DreamWorks Animation acquired August 22, 2016)', published: '2016-10-27' },
+  versant: { url: 'https://www.newscaststudio.com/2026/01/05/versant-ipo/', title: 'Comcast completes Versant spinoff with IPO', published: '2026-01-05' },
+  nbcuSpin: { url: 'https://www.sec.gov/Archives/edgar/data/0001166691/000095010326009591/dp249094_ex9901.htm', title: 'Comcast Corporation, Form 8-K, Exhibit 99.1: Comcast to separate NBCUniversal and Sky (announced June 29, 2026)', published: '2026-06-29' },
+  nbcuLeaders: { url: 'https://www.nbcuniversal.com/leadership', title: 'NBCUniversal: Leadership', published: null },
+  cinemacon: { url: 'https://www.nbcuniversal.com/article/christopher-nolan-steven-spielberg-and-chris-meledandri-lead-nbcuniversals-2026-cinemacon-showcase', title: "Christopher Nolan, Steven Spielberg, and Chris Meledandri Lead NBCUniversal's 2026 CinemaCon Showcase", published: '2026-04' },
 } satisfies Record<string, Source>;
 
 /** When the registry was researched: TMDB IDs checked, leadership pages read. */
@@ -52,6 +59,10 @@ const STUDIOS = 'company:the-walt-disney-studios';
 const owned = (how: 'division', id = STUDIOS) => ({ id, how, from: null, source: null });
 const bought = (source: Source, from: string) => ({ id: TWDC, how: 'acquired' as const, from, source });
 const tm = (id: number, name: string, country: string, headquarters: string) => ({ id, name, country, headquarters });
+const COMCAST = 'company:comcast';
+const NBCU = 'company:nbcuniversal';
+const nbcu = (how: 'division' = 'division') => ({ id: NBCU, how, from: null, source: null });
+const dwa = () => ({ id: NBCU, how: 'acquired' as const, from: '2016-08-22', source: S.dreamworks });
 
 export const COMPANIES: CompanyRecord[] = [
   { id: TWDC, name: 'The Walt Disney Company', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://thewaltdisneycompany.com', parent: null,
@@ -105,6 +116,32 @@ export const COMPANIES: CompanyRecord[] = [
   { id: 'company:abc', name: 'ABC', kind: 'network', roles: ['network'], tmdb: null, website: 'https://abc.com', parent: owned('division', TWDC), related: [], notes: ['A series airing on ABC does not make it a Disney production.'] },
   { id: 'company:disney-channel', name: 'Disney Channel', kind: 'network', roles: ['network'], tmdb: null, website: 'https://disneynow.com', parent: owned('division', TWDC), related: [], notes: [] },
   { id: 'company:fx', name: 'FX', kind: 'network', roles: ['network'], tmdb: null, website: 'https://www.fxnetworks.com', parent: bought(S.fox, '2019-03-20'), related: [], notes: ['FX the network is separate from FX Productions, which makes series for it and others.'] },
+
+  // NBCUniversal (November 11, 2026). TMDB IDs found by search and checked against each company's TMDB details that day.
+  { id: COMCAST, name: 'Comcast', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://corporate.comcast.com', parent: null, related: [],
+    notes: ['On June 29, 2026 Comcast announced it would separate NBCUniversal and Sky into a company of their own, expected in mid-2027; until it happens, NBCUniversal is part of Comcast.'] },
+  { id: NBCU, name: 'NBCUniversal', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://www.nbcuniversal.com', parent: { id: COMCAST, how: 'acquired', from: '2011-01-28', source: S.comcastTimeline }, related: [],
+    notes: ['Comcast took control of NBCUniversal on January 28, 2011 and bought the rest from GE on March 19, 2013. Titles released before January 28, 2011 came out before Comcast owned it.',
+      'Most of its cable networks (USA Network, Syfy, E!, CNBC, MS NOW, Oxygen, Golf Channel) left for Versant Media on January 2, 2026; NBC, Telemundo, Bravo and Peacock stayed.',
+      'TMDB has a company record for NBCUniversal (26559); titles are gathered from its studios rather than from it.'] },
+  { id: 'company:universal-pictures', name: 'Universal Pictures', kind: 'film', roles: ['production', 'distribution'], tmdb: tm(33, 'Universal Pictures', 'US', 'Universal City, California'), website: 'https://www.universalpictures.com', parent: nbcu(), related: [], notes: [] },
+  { id: 'company:focus-features', name: 'Focus Features', kind: 'film', roles: ['production', 'distribution'], tmdb: tm(10146, 'Focus Features', 'US', 'Universal City, California'), website: 'https://www.focusfeatures.com', parent: nbcu(), related: [], notes: [] },
+  { id: 'company:illumination', name: 'Illumination', kind: 'film', roles: ['production'], tmdb: tm(6704, 'Illumination', 'US', 'Santa Monica, California'), website: 'https://www.illumination.com', parent: null,
+    related: [{ id: 'company:universal-pictures', relation: 'Releases its films' }], notes: ["Its films are released by Universal Pictures; who owns it isn't recorded here, as no official source for that was found on November 11, 2026."] },
+  { id: 'company:dreamworks-animation', name: 'DreamWorks Animation', kind: 'film', roles: ['production'], tmdb: tm(521, 'DreamWorks Animation', 'US', 'Glendale, California'), website: 'https://www.dreamworks.com', parent: dwa(), related: [{ id: 'company:dreamworks-animation-television', relation: 'Its television studio' }],
+    notes: ['Titles released before August 22, 2016 came out before NBCUniversal owned DreamWorks Animation.'] },
+  { id: 'company:working-title', name: 'Working Title', kind: 'film', roles: ['production'], tmdb: tm(10163, 'Working Title', 'GB', 'London, England'), website: 'https://www.workingtitlefilms.com', parent: null,
+    related: [{ id: 'company:universal-pictures', relation: 'Releases most of its films' }], notes: ["Who owns it isn't recorded here, as no official source for that was found on November 11, 2026."] },
+  { id: 'company:universal-animation-studios', name: 'Universal Animation Studios', kind: 'film', roles: ['production'], tmdb: tm(5556, 'Universal Animation Studios', 'US', 'Glendale, California'), website: null, parent: nbcu(), related: [], notes: [] },
+  { id: 'company:universal-television', name: 'Universal Television', kind: 'television', roles: ['production'], tmdb: tm(26727, 'Universal Television', 'US', ''), website: 'https://www.nbcuniversal.com/business/universal-television', parent: nbcu(), related: [], notes: [] },
+  { id: 'company:ucp', name: 'UCP', kind: 'television', roles: ['production'], tmdb: tm(7938, 'UCP', 'US', 'Universal City, California'), website: null, parent: nbcu(), related: [], notes: [] },
+  { id: 'company:universal-international-studios', name: 'Universal International Studios', kind: 'television', roles: ['production'], tmdb: tm(87455, 'Universal International Studios', 'GB', ''), website: null, parent: nbcu(), related: [], notes: [] },
+  { id: 'company:dreamworks-animation-television', name: 'DreamWorks Animation Television', kind: 'television', roles: ['production'], tmdb: tm(42141, 'DreamWorks Animation Television', 'US', 'Glendale, California'), website: 'https://www.dreamworks.com/shows', parent: dwa(),
+    related: [{ id: 'company:dreamworks-animation', relation: 'Part of DreamWorks Animation' }], notes: ['Its series that premiered before August 22, 2016 began before NBCUniversal owned it.'] },
+  { id: 'company:nbc', name: 'NBC', kind: 'network', roles: ['network'], tmdb: null, website: 'https://www.nbc.com', parent: nbcu(), related: [], notes: ['A series airing on NBC does not make it an NBCUniversal production.'] },
+  { id: 'company:peacock', name: 'Peacock', kind: 'network', roles: ['streaming'], tmdb: null, website: 'https://www.peacocktv.com', parent: nbcu(), related: [], notes: ['A title being on Peacock does not make it an NBCUniversal production.'] },
+  { id: 'company:bravo', name: 'Bravo', kind: 'network', roles: ['network'], tmdb: null, website: 'https://www.bravotv.com', parent: nbcu(), related: [], notes: [] },
+  { id: 'company:telemundo', name: 'Telemundo', kind: 'network', roles: ['network'], tmdb: null, website: 'https://www.telemundo.com', parent: nbcu(), related: [], notes: [] },
 ];
 
 export interface LeadershipRole {
@@ -150,6 +187,14 @@ export const LEADERSHIP: LeadershipRole[] = [
   role('exec:jared-bush', 'Jared Bush', 'company:walt-disney-animation-studios', 'Chief Creative Officer (CCO) of Walt Disney Animation Studios', [S.wdas], { start: '2024-09-19' }),
   role('exec:jennifer-lee', 'Jennifer Lee', 'company:walt-disney-animation-studios', 'Chief Creative Officer', [S.wdas], { end: '2024-09-19' }),
   role('exec:kevin-feige', 'Kevin Feige', 'company:marvel-studios', 'Producer and President, Marvel Studios', [S.feige]),
+  // NBCUniversal's, from its leadership page as it stood on November 11, 2026.
+  role('exec:michael-j-cavanagh', 'Michael J. Cavanagh', COMCAST, 'Co-CEO, Comcast Corporation', [S.nbcuLeaders]),
+  role('exec:michael-j-cavanagh', 'Michael J. Cavanagh', NBCU, 'Chief Executive Officer, NBCUniversal (once it is separated from Comcast)', [S.nbcuSpin], { announced: '2026-06-29' }),
+  role('exec:donna-langley', 'Donna Langley', NBCU, 'Chairman, NBCUniversal Entertainment', [S.nbcuLeaders]),
+  role('exec:pearlena-igbokwe', 'Pearlena Igbokwe', 'company:universal-television', 'Chairman, Television Studios, NBC Entertainment & Peacock Scripted', [S.nbcuLeaders]),
+  role('exec:frances-berwick', 'Frances Berwick', 'company:peacock', 'Chairman, Bravo & Peacock Unscripted', [S.nbcuLeaders]),
+  role('exec:luis-fernandez', 'Luis Fernández', 'company:telemundo', 'Chairman, NBCUniversal Telemundo Enterprises', [S.nbcuLeaders]),
+  role('exec:chris-meledandri', 'Chris Meledandri', 'company:illumination', 'Founder and CEO', [S.cinemacon]),
 ];
 
 /** Companies whose leadership couldn't be confirmed from a current official source, and why. Shown on their pages. */
@@ -157,9 +202,34 @@ export const LEADERSHIP_GAPS: Record<string, string> = {
   'company:20th-century-studios': "Official sources found on November 10, 2026 named different people at the head of 20th Century Studios, and none was dated recently enough to settle it, so no leadership is listed.",
   'company:searchlight-pictures': 'No current official source for Searchlight Pictures\' leadership was found on November 10, 2026, so none is listed.',
   'company:walt-disney-pictures': 'No current official source for Walt Disney Pictures\' own leadership was found on November 10, 2026, so none is listed.',
+  'company:universal-pictures': "NBCUniversal's leadership page (read November 11, 2026) names no head of Universal Pictures itself, and no other current official source was found, so none is listed.",
+  'company:focus-features': 'No current official source for Focus Features\' leadership was found on November 11, 2026, so none is listed.',
+  'company:dreamworks-animation': 'No current official source for DreamWorks Animation\'s leadership was found on November 11, 2026, so none is listed.',
+  'company:working-title': 'No current official source for Working Title\'s leadership was found on November 11, 2026, so none is listed.',
 };
 
 export const company = (id: string) => COMPANIES.find((c) => c.id === id);
 export const companyByTmdb = (tmdbId: number) => COMPANIES.find((c) => c.tmdb?.id === tmdbId);
+/** The group a company belongs to: the top of its chain of parents (The Walt Disney Company, or Comcast), or itself. */
+export function groupOf(id: string): CompanyRecord | undefined {
+  let c = company(id);
+  for (let i = 0; c?.parent && i < 6; i++) c = company(c.parent.id) ?? c;
+  return c;
+}
+/**
+ * When a company came into its group: the latest acquisition along its chain of parents (Pixar, 2006; Universal
+ * Pictures, through NBCUniversal, 2011; DreamWorks Animation, 2016). Null where it was always the group's, or the date
+ * isn't recorded.
+ */
+export function joinedGroup(id: string): { from: string; source: Source | null } | null {
+  let out: { from: string; source: Source | null } | null = null;
+  let c = company(id);
+  for (let i = 0; c?.parent && i < 6; i++) {
+    if (c.parent.how === 'acquired' && c.parent.from && (!out || c.parent.from > out.from)) out = { from: c.parent.from, source: c.parent.source };
+    c = company(c.parent.id);
+  }
+  return out;
+}
+
 /** Companies whose credited titles are gathered: every record with a TMDB ID. */
 export const DISCOVERED = COMPANIES.filter((c) => c.tmdb && c.kind !== 'network');

@@ -8,7 +8,9 @@ import type { Project, ReleaseRecord } from '../engine/types';
 import type { Route } from '../engine/types';
 import { CINEMAS_READ, cinemasNear, showsFilms, type Cinema, type CinemaStanding } from '../world/cinemas';
 import { countryName } from '../world/gazetteer/gazetteer';
-import { inCinemas, openingSoon, programme, RUN_DAYS, yourShare, type Opening, type Showing } from '../world/programme';
+import { inCinemas, openingSoon, programme, RUN_DAYS, simulatedOpenings, yourShare, type Opening, type Showing } from '../world/programme';
+import { studioFilms } from '../engine/studios';
+import { addDaysToKey } from '../engine/time';
 import { store, useGame } from './store';
 
 const RADIUS_KM = 25;
@@ -42,9 +44,11 @@ export function CinemasNearby({ place, today }: { place: Place; today: string })
     const near = cinemasNear(file.data, place.lat, place.lon, RADIUS_KM, today);
     const unclosed = near.filter((x) => x.standing.kind === 'no-closure').length;
     const trading = near.filter((x) => showsFilms(x.c, today)).length;
-    const showing = inCinemas(openings, g, place.country, today);
+    // The studios' simulated films take screens alongside the recorded ones and yours (docs/WORLD.md, "Competition").
+    const sims = simulatedOpenings(studioFilms(g, addDaysToKey(today, -RUN_DAYS.wide), addDaysToKey(today, 14)), place.country);
+    const showing = inCinemas([...openings, ...sims], g, place.country, today);
     const shows = new Map(near.map((x) => [x.c.id, programme(x.c, showing, today)]));
-    const soon = openingSoon(openings, place.country, today);
+    const soon = openingSoon([...openings, ...sims], place.country, today);
     body = (
       <>
         <h3>In Cinemas In {country}</h3>
@@ -55,7 +59,7 @@ export function CinemasNearby({ place, today }: { place: Place; today: string })
               return (
                 <li key={s.ref} className="list-item">
                   <div className="grow">
-                    <FilmLink s={s} />{s.projectId ? <span className="chip chip-accent">Your Film</span> : null}
+                    <FilmLink s={s} />{s.projectId ? <span className="chip chip-accent">Your Film</span> : null}{s.ref.startsWith('sim-film:') ? <span className="chip">Simulated</span> : null}
                     <div className="dim small">Opened {when(s.opened)}{s.limited ? ' in a limited release' : ''} · showing at {count(at, 'cinema', 'cinemas')} near {place.name}</div>
                   </div>
                 </li>

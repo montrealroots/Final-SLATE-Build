@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { COMPANIES, DISCOVERED, LEADERSHIP, REGISTRY_CHECKED, company } from '../src/catalog/registry';
-import { ageAt, fileFor, filmographyView, leadershipAt, lifeAt, madeUnderDisney, moneyOrUnknown, ownersAt, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
+import { ageAt, fileFor, filmographyView, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
 
 const CACHE = mkdtempSync(join(tmpdir(), 'slate-catalog-cache-'));
 process.env.SCREEN_CATALOG_CACHE = CACHE;
@@ -44,16 +44,16 @@ describe('the company registry', () => {
 
   it('gathers titles for production companies only: networks and streaming services are where titles air, not who made them', () => {
     const networks = COMPANIES.filter((c) => c.kind === 'network');
-    expect(networks.map((c) => c.name)).toEqual(['Disney+', 'Hulu', 'ABC', 'Disney Channel', 'FX']);
+    expect(networks.map((c) => c.name)).toEqual(['Disney+', 'Hulu', 'ABC', 'Disney Channel', 'FX', 'NBC', 'Peacock', 'Bravo', 'Telemundo']);
     for (const n of networks) { expect(n.tmdb).toBeNull(); expect(DISCOVERED).not.toContain(n); }
-    expect(DISCOVERED).toHaveLength(32);
+    expect(DISCOVERED).toHaveLength(42); // 32 Disney records, and 10 NBCUniversal's from November 11, 2026
   });
 
   it('records leadership from official sources only, at companies it knows', () => {
     for (const r of LEADERSHIP) {
       expect(company(r.companyId), r.name).toBeDefined();
       expect(r.sources.length).toBeGreaterThan(0);
-      for (const s of r.sources) expect(s.url).toMatch(/^https:\/\/(thewaltdisneycompany\.com|www\.lucasfilm\.com|www\.starwars\.com|www\.pixar\.com|www\.sec\.gov)\//);
+      for (const s of r.sources) expect(s.url).toMatch(/^https:\/\/(thewaltdisneycompany\.com|www\.lucasfilm\.com|www\.starwars\.com|www\.pixar\.com|www\.sec\.gov|www\.nbcuniversal\.com)\//);
     }
   });
 });
@@ -110,11 +110,18 @@ describe('records at the save\'s date', () => {
   });
 
   it('a title credited to an acquired company was made under Disney only from the acquisition on', () => {
-    expect(madeUnderDisney(25, '1997-12-19')).toBe(false);
-    expect(madeUnderDisney(25, '2019-05-31')).toBe(true);
-    expect(madeUnderDisney(3, null)).toBeNull();
-    expect(madeUnderDisney(2, '1960-01-01')).toBe(true); // Walt Disney Pictures was never acquired
-    expect(madeUnderDisney(999_999, '2000-01-01')).toBeNull(); // not a company the catalog follows
+    expect(madeInGroup(25, '1997-12-19')).toBe(false);
+    expect(madeInGroup(25, '2019-05-31')).toBe(true);
+    expect(madeInGroup(3, null)).toBeNull();
+    expect(madeInGroup(2, '1960-01-01')).toBe(true); // Walt Disney Pictures was never acquired
+    expect(madeInGroup(999_999, '2000-01-01')).toBeNull(); // not a company the catalog follows
+    // NBCUniversal's: Universal Pictures came into Comcast's group with NBCUniversal on January 28, 2011, and DreamWorks
+    // Animation with its own acquisition on August 22, 2016, the later of the two along its chain.
+    expect(madeInGroup(33, '1993-06-11')).toBe(false);
+    expect(madeInGroup(33, '2011-01-28')).toBe(true);
+    expect(madeInGroup(521, '2014-06-13')).toBe(false);
+    expect(madeInGroup(521, '2016-08-22')).toBe(true);
+    expect(madeInGroup(6704, '2010-07-09')).toBe(true); // Illumination: its owner isn't recorded, so no date to be before
   });
 
   it('a filmography shows only what was released by the save\'s date unless later titles are asked for', () => {

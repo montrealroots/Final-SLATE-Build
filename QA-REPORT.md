@@ -8,7 +8,30 @@
 
 ## Commands And Results
 
-### Current: Data Packs (November 11, 2026)
+### Current: Every Stand-In Place, TMDB For The Owner Only, And The World's Studios (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 765 tests. New: `tests/studios.test.ts` (pace, genres, months, announced films, seeds, the save's snapshot, an older save, no catalog) and `tests/competition.test.ts` (an award's field in its window, the same field each call, cinemas, studios' offers). The awards ledger lists the new test. |
+| `npx playwright test e2e/living-world.spec.ts e2e/catalog.spec.ts e2e/foundation.spec.ts e2e/cinemas.spec.ts`, desktop and phone | 0 | 28 passed, including a studio's simulated film from its company page to its own page, kept after a reload. |
+| `SLATE_E2E_PROD=1 npx playwright test e2e/data-packs.spec.ts`, desktop, phone, WebKit | 0 | 12 passed, including port 4179, which isn't the owner's: no TMDB data, cinemas only. |
+| `npx playwright test e2e/children.spec.ts -g "a shoot with a child"`, desktop | 0 after two fixes | A Los Angeles short with a ten-year-old shot to delivery: licence granted before her days, studio teacher hired, $196 in her Coogan trust. |
+| WebKit stress, 101 runs | 0 | The Continue Creation flake didn't recur (Open, below, now closed). |
+
+### Earlier: Child Rules For The Rest Of The UK, India, Japan, South Korea And Mexico (November 11, 2026)
+
+Seven more sets of child performer rules (Scotland, Wales, Northern Ireland, India, Japan, South Korea, Mexico), each
+read from its official text; Ontario's corrected from its consolidated text; and every set's date in force and latest
+change found recorded (`docs/child-rules/RESEARCH.md`).
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` at `90714fe` | 0 | 93 files, 751 tests. Startup unchanged at 302 kB, 97 kB gzipped. New in `tests/minors.test.ts`: the UK nations' figures; India's, Japan's, South Korea's and Mexico's; a Tokyo shoot whose child's night scene isn't shot; South Korea's night work refused under 15 and allowed at 15; every set's dates present, none changed in 2026 or later. |
+| Mutations | 1 or more for each | Four were made and each failed a test: a set's latest change moved into 2026; a set's dates removed; Japan's night ban removed; the night refusal removed from the licence check. |
+| `npx playwright test e2e/children.spec.ts e2e/focus.spec.ts`, desktop | 0 | 3 passed. |
+| Ontario | — | The Act as amended in 2017 allows 8 hours at every age; the game had 4 under 2 from the 2015 text. Corrected. |
+
+### Earlier: Data Packs (November 11, 2026)
 
 | Command | Failures | Notes |
 | --- | --- | --- |
@@ -888,11 +911,17 @@ explicit `test.skip(project…)`; no test skips itself on an outcome. The list w
 
 ## Open
 
-- **Seen once, open (November 11, 2026): Continue Creation didn't open creation on WebKit.** With two WebKit workers
-  running the catalog, child and foundation journeys, a test's setup pressed Continue Creation and the start screen stayed,
-  the button focused, for four minutes. It passed 3 of 3 alone. Continue Creation waits for the engine to load; the line
-  the start screen now shows while it waits ("Getting character creation ready…") was added after this run, so whether it
-  was still waiting isn't known. No cause found. Next: run it under CPU load with the store's engine load logged.
+- **Not reproduced, closed (November 11, 2026): Continue Creation didn't open creation on WebKit.** Seen once, with two
+  WebKit workers running the catalog, child and foundation journeys: a test's setup pressed Continue Creation and the
+  start screen stayed, the button focused, for four minutes.
+
+  Run again under load, it never recurred in 101 runs of those journeys on WebKit (iPhone 15 Pro Max), none failing:
+  - 36 with three CPU cores kept busy and two workers;
+  - 65 on the production build with four cores busy, three workers and five repeats each.
+
+  A run on the dev server failed 4, all from the dev server hot-reloading files being edited during it, and it is not
+  counted. The start screen has, since the first sighting, waited for the engine before any test reloads (`openStart`)
+  and said so while it waits. No cause was found; if it is seen again, it reopens.
 
 - **Unexplained, open (November 9, 2026): a working title lost on WebKit.** CI on `main` after #48 (`507096c`, run 117):
   the Emmys journey on `iphone-15-plus` (dev server) filled the New Script title right after a new game opened; the fill

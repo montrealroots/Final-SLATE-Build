@@ -5,5 +5,5 @@ export type CatalogState = { state: 'missing' | 'malformed' } | { state: 'ready'
 export declare function catalogState(dir: string, now?: number, cache?: Record<string, unknown>): CatalogState;
 export type OfferedMod = { file: string; kind: 'catalog' | 'cinemas'; name: string; source: string; builtAt: string; retrieved?: { from: string; to: string; maxAgeDays: number }; files: number; bytes: number };
 export declare function readPackHeader(file: string): Record<string, unknown> | null;
-export declare function offeredMods(packsDir: string | null, now?: number): OfferedMod[];
-export declare function createCatalogHandler(o: { catalogDir: string; cinemasDir: string; packsDir?: string | null; now?: () => number }): (req: IncomingMessage, res: ServerResponse, next: () => void) => void;
+export declare function offeredMods(packsDir: string | null, now?: number, films?: boolean): OfferedMod[];
+export declare function createCatalogHandler(o: { catalogDir: string; cinemasDir: string; packsDir?: string | null; films?: boolean; now?: () => number }): (req: IncomingMessage, res: ServerResponse, next: () => void) => void;

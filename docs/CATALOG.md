@@ -1,9 +1,43 @@
-# The Screen Catalog: Disney's Companies, Films And Series
+# The Screen Catalog: Disney's And NBCUniversal's Companies, Films And Series
 
 Written November 10, 2026. The catalog is reference material inside SLATE. It covers The Walt Disney Company's studios
 and labels and their leadership, and the films and series TMDB credits to them, with their cast, crew, seasons, episodes
 and people. Nothing in it changes the simulation. The coverage figures from the gathering run are in
 `docs/CATALOG-COVERAGE.md`.
+
+## NBCUniversal (November 11, 2026)
+
+The owner asked for Universal once the foundation was done. The registry (`src/catalog/registry.ts`) now holds Comcast,
+NBCUniversal, ten of its studios and four of its networks.
+
+- **TMDB records.** Each company was found by TMDB's company search and checked against its TMDB details that day:
+
+  | Company | TMDB ID |
+  | --- | --- |
+  | Universal Pictures | 33 |
+  | Focus Features | 10146 |
+  | Illumination | 6704 |
+  | DreamWorks Animation | 521 |
+  | Working Title | 10163 |
+  | Universal Animation Studios | 5556 |
+  | Universal Television | 26727 |
+  | UCP | 7938 |
+  | Universal International Studios | 87455 |
+  | DreamWorks Animation Television | 42141 |
+- **Ownership.**
+  - Comcast took control of NBCUniversal on January 28, 2011, and bought GE's remaining 49% on March 19, 2013 (Comcast's
+    timeline).
+  - NBCUniversal acquired DreamWorks Animation on August 22, 2016 (Comcast's 10-Q).
+  - Most cable networks left for Versant Media on January 2, 2026.
+  - Comcast announced on June 29, 2026 that it would separate NBCUniversal, expected in mid-2027 (its 8-K).
+  - Illumination's and Working Title's ownership had no official source, so neither is placed under NBCUniversal. Each
+    is noted as released by Universal.
+- **Before the group.** A title is marked as released before the acquisition by the latest acquisition along its
+  company's chain (`registry.ts` `joinedGroup`). Universal Pictures' films before January 28, 2011 came out before Comcast
+  owned NBCUniversal.
+- **Leadership.** From NBCUniversal's own leadership page and its CinemaCon 2026 article. Universal Pictures, Focus
+  Features, DreamWorks Animation and Working Title list none: no current official source named their heads.
+- **The data.** TMDB's data, gathered as Disney's is. It is the owner's alone, as decided (`docs/DEPLOYMENT.md`).
 
 ## What TMDB's Terms Allow, And What That Decided
 

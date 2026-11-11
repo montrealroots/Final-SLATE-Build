@@ -6,7 +6,7 @@ import { getPlace, type Place } from '../src/data/places';
 import { PLAYABLE_COUNTRIES } from '../src/world/gazetteer/gazetteer';
 import { costBreakdown } from '../src/engine/estimate';
 import { childrenIn, neededRoles } from '../src/engine/hiring';
-import { ADULT_SHOOT_HOURS, RULES_READ, ageInDays, bandFor, childShare, ensureLicence, isSchoolDay, licenceReady, minorFor, projectRules, rulesFor, setAsideOf, supervisionFor, type Minor } from '../src/engine/minors';
+import { ADULT_SHOOT_HOURS, RULES_READ, type MinorRules, ageInDays, bandFor, childShare, ensureLicence, isSchoolDay, licenceReady, minorFor, projectRules, rulesFor, setAsideOf, supervisionFor, type Minor } from '../src/engine/minors';
 import { FIRST_START_YEAR } from '../src/engine/state';
 import { candidates, personAge, playingAgeAt } from '../src/engine/people';
 import { groupShootDays } from '../src/engine/production/schedule';
@@ -37,9 +37,11 @@ describe('the rules, from their official texts', () => {
     expect(rulesFor(getPlace('gb-london'))).toMatchObject({ rules: { id: 'GB-ENG' }, standIn: null });
     expect(rulesFor(getPlace('us-los-angeles'))).toMatchObject({ rules: { id: 'US-CA' }, standIn: null });
     expect(rulesFor(getPlace('us-new-york'))).toMatchObject({ rules: { id: 'US-NY' }, standIn: null });
-    expect(rulesFor(getPlace('us-austin')).rules.id).toBe('US-CA');
-    expect(rulesFor(getPlace('us-austin')).standIn).toBe("Texas's own rules aren't recorded, so California's are used.");
-    expect(rulesFor(getPlace('jp-tokyo')).standIn).toContain("so England's are used");
+    expect(rulesFor(getPlace('us-austin'))).toMatchObject({ rules: { id: 'US-TX' }, standIn: null });
+    const florida = { ...getPlace('us-austin'), region: 'Florida', regionCode: '' };
+    expect(rulesFor(florida).rules.id).toBe('US-CA');
+    expect(rulesFor(florida).standIn).toBe("Florida's own rules aren't recorded, so California's are used.");
+    expect(rulesFor({ ...getPlace('br-sao-paulo'), country: 'AR', countryName: 'Argentina', region: 'Buenos Aires', regionCode: '' }).standIn).toContain("so England's are used");
   });
 
   it('gives each age its hours: more on a day without school where the rules allow it', () => {
@@ -110,11 +112,106 @@ describe('the rules across the map', () => {
     expect(rulesFor(getPlace('ca-toronto'))).toMatchObject({ rules: { id: 'CA-ON' }, standIn: null });
     expect(rulesFor({ ...getPlace('ca-vancouver'), region: 'Alberta', regionCode: 'CA-AB' }).standIn).toBe("Alberta's own rules aren't recorded, so British Columbia's are used.");
     expect(rulesFor(getPlace('au-melbourne')).rules.id).toBe('AU-NSW');
-    expect(rulesFor(getPlace('nz-auckland')).rules.id).toBe('AU-NSW');
-    expect(rulesFor(getPlace('es-madrid'))).toMatchObject({ rules: { id: 'DE' } });
-    expect(rulesFor(getPlace('es-madrid')).standIn).toContain("so Germany's are used");
-    expect(rulesFor(getPlace('gb-edinburgh'))).toMatchObject({ rules: { id: 'GB-ENG' } });
-    expect(rulesFor(getPlace('gb-edinburgh')).standIn).toContain("so England's are used");
+    expect(rulesFor(getPlace('nz-auckland'))).toMatchObject({ rules: { id: 'NZ' }, standIn: null });
+    const lisbon = { ...getPlace('es-madrid'), country: 'PT', countryName: 'Portugal', region: 'Lisbon', regionCode: '' };
+    expect(rulesFor(lisbon)).toMatchObject({ rules: { id: 'DE' } });
+    expect(rulesFor(lisbon).standIn).toContain("so Germany's are used");
+    // Scotland, Wales and Northern Ireland have their own (read November 11, 2026); the gazetteer gives a region's name.
+    expect(rulesFor(getPlace('gb-edinburgh'))).toMatchObject({ rules: { id: 'GB-SCT' }, standIn: null });
+    expect(rulesFor({ ...getPlace('gb-london'), region: 'Wales', regionCode: '' })).toMatchObject({ rules: { id: 'GB-WLS' }, standIn: null });
+    expect(rulesFor({ ...getPlace('gb-london'), region: 'Northern Ireland', regionCode: '' })).toMatchObject({ rules: { id: 'GB-NIR' }, standIn: null });
+    expect(rulesFor({ ...getPlace('gb-london'), region: '', regionCode: '' }).standIn).toContain("so England's are used");
+  });
+
+  it("gives Scotland, Wales and Northern Ireland their own figures, as read", () => {
+    const sct = rulesFor(getPlace('gb-edinburgh')).rules;
+    const wls = rulesFor({ ...getPlace('gb-london'), region: 'Wales', regionCode: 'GB-WLS' }).rules;
+    const nir = rulesFor({ ...getPlace('gb-london'), region: 'Northern Ireland', regionCode: 'GB-NIR' }).rules;
+    const eng = rulesFor(getPlace('gb-london')).rules;
+    const y = (n: number) => Math.round(n * 365.25);
+    // Scotland: 4 hours performing from 9 (England 5), 10 children to a chaperone (England 12).
+    expect(bandFor(sct, y(10))).toMatchObject({ atPlace: 9.5, work: 4 });
+    expect(bandFor(eng, y(10))).toMatchObject({ atPlace: 9.5, work: 5 });
+    expect(sct.supervisor.perGroup).toBe(10);
+    // Wales: England's figures, under its own name.
+    expect({ ...wls, id: 'GB-ENG', place: 'England' }).toEqual(eng);
+    // Northern Ireland: bands 5 to 12 and 13 to 15, 5 days in 7, 30 days' notice, 14 hours between days.
+    expect(bandFor(nir, y(12) + 100)).toMatchObject({ label: '5 to 12', atPlace: 7.5, work: 3, days: 5 });
+    expect(bandFor(nir, y(13) + 1)).toMatchObject({ label: '13 to 15', atPlace: 8, work: 3.5, days: 5 });
+    expect(nir.licence.leadDays).toBe(30);
+    expect(nir.restHours).toBe(14);
+  });
+
+  it('gives India, Japan, South Korea and Mexico their own figures, as read', () => {
+    const y = (n: number) => Math.round(n * 365.25);
+    const india = rulesFor(getPlace('in-mumbai'));
+    expect(india.standIn).toBeNull();
+    expect(bandFor(india.rules, y(10))).toMatchObject({ atPlace: 6, work: 5, days: 6 });
+    expect(setAsideOf(india.rules, 1000)).toBe(200); // 20% in a fixed deposit
+    expect(supervisionFor([kid(india.rules, 8), kid(india.rules, 9), kid(india.rules, 10), kid(india.rules, 11), kid(india.rules, 12), kid(india.rules, 13)], true))
+      .toEqual([{ roleId: 'chaperone', count: 2, why: "India's rules require one with children under 18." }]);
+    const japan = rulesFor(getPlace('jp-tokyo')).rules;
+    // 7 hours, school counted in: 1 on a school day, 7 without; no one required with them.
+    expect(childShare(kid(japan, 10), true)).toBe(1 / ADULT_SHOOT_HOURS);
+    expect(childShare(kid(japan, 10), false)).toBe(7 / ADULT_SHOOT_HOURS);
+    expect(supervisionFor([kid(japan, 10)], true)).toEqual([]);
+    const korea = rulesFor(getPlace('kr-seoul')).rules;
+    expect(bandFor(korea, y(14))).toMatchObject({ work: 7, days: 5, noNight: true });
+    expect(bandFor(korea, y(15))).toMatchObject({ work: 8, days: 5 });
+    expect(bandFor(korea, y(15))!.noNight).toBeUndefined();
+    expect(bandFor(korea, y(19))).toBeNull();
+    // A night scene: refused under 15, allowed at 15 with the licence's night approval.
+    const lic = (m: Minor) => ({ childLicences: [{ characterId: m.characterId, personId: m.personId, applied: '2026-03-01', ready: '2026-03-02', night: true, nightApplied: '2026-03-01' }] }) as unknown as Project;
+    expect(licenceReady(lic(kid(korea, 14)), kid(korea, 14), '2026-03-10', true)).toEqual({ ok: false, reason: "Mia can't work at night: South Korea's rules don't allow it at their age." });
+    expect(licenceReady(lic(kid(korea, 15)), kid(korea, 15), '2026-03-10', true)).toEqual({ ok: true });
+    // Mexico: partly read, as its law sets no hours under 15; the 15-year-old's 6 stand in, and a parent's supervision is
+    // a chaperone for each child under 15.
+    const mexico = rulesFor(getPlace('mx-mexico-city')).rules;
+    expect(mexico.read).toBe('partly');
+    expect(bandFor(mexico, y(10))).toMatchObject({ work: 6, days: 6, noNight: true });
+    expect(bandFor(mexico, y(16))).toMatchObject({ work: 8, noNight: true });
+    expect(supervisionFor([kid(mexico, 10), kid(mexico, 12), kid(mexico, 16)], true)).toEqual([{ roleId: 'chaperone', count: 2, why: "Mexico's rules require one with children under 15." }]);
+  });
+
+  it('gives Texas, New Mexico, Quebec, Spain, Italy, Brazil and New Zealand their own rules, as read', () => {
+    const y = (n: number) => Math.round(n * 365.25);
+    const texas = rulesFor(getPlace('us-austin')).rules;
+    expect(texas.adultAt).toBe(16);
+    expect(bandFor(texas, y(10))).toMatchObject({ work: 8, days: 6 });
+    expect(bandFor(texas, y(14))!.noNight).toBe(true);
+    expect(supervisionFor([kid(texas, 10), kid(texas, 15)], true)).toEqual([{ roleId: 'chaperone', count: 1, why: "Texas's rules require one with children under 14." }]);
+    const nm = rulesFor(getPlace('us-albuquerque')).rules;
+    expect(bandFor(nm, y(10))).toMatchObject({ atPlace: 9, work: 5, workNoSchool: 7 });
+    expect(setAsideOf(nm, 999)).toBe(0); // under $1,000, no trust
+    expect(setAsideOf(nm, 1000)).toBe(150);
+    const quebec = rulesFor(getPlace('ca-montreal')).rules;
+    expect(childShare(kid(quebec, 10), true)).toBe(2 / ADULT_SHOOT_HOURS); // 10 hours from Monday to Friday
+    expect(supervisionFor([kid(quebec, 10)], true)).toEqual([]);
+    // Spain: the Workers' Statute until May 24, 2027, partly read and no night work; the 2026 decree from May 25.
+    const madrid = getPlace('es-madrid');
+    expect(rulesFor(madrid, '2027-05-24').rules).toMatchObject({ id: 'ES', read: 'partly' });
+    expect(rulesFor(madrid, '2027-05-25').rules).toMatchObject({ id: 'ES-2027', read: 'read', minAgeDays: 62 });
+    expect(bandFor(rulesFor(madrid, '2027-05-24').rules, y(13))!.noNight).toBe(true);
+    expect(bandFor(rulesFor(madrid, '2027-05-25').rules, y(13))).toMatchObject({ work: 6, days: 4 });
+    expect(bandFor(rulesFor(madrid, '2027-05-25').rules, y(13))!.noNight).toBeUndefined();
+    expect(bandFor(rulesFor(madrid, '2027-05-25').rules, y(3))!.label).toBe('1 to 3'); // on the 3rd birthday, still 1 to 3
+    expect(bandFor(rulesFor(madrid, '2027-05-25').rules, y(3) + 1)!.label).toBe('3 to 6');
+    const italy = rulesFor(getPlace('it-rome')).rules;
+    expect(bandFor(italy, y(10))).toMatchObject({ work: 7, days: 5 });
+    expect(italy.restHours).toBe(14);
+    const brazil = rulesFor(getPlace('br-sao-paulo')).rules;
+    expect(brazil.read).toBe('partly');
+    expect(bandFor(brazil, y(10))).toMatchObject({ work: 5, noNight: true }); // England's hours, no night
+    expect(brazil.restHours).toBe(11);
+    const nz = rulesFor(getPlace('nz-auckland')).rules;
+    expect(nz).toMatchObject({ read: 'partly', adultAt: 16, restHours: 8 });
+    expect(bandFor(nz, y(10))!.noNight).toBe(true);
+  });
+
+  it('applies a casting note under the rules in force on the day: a Madrid production before and after May 25, 2027', () => {
+    const p = { axes: { basePlaceId: 'es-madrid' } } as unknown as Project;
+    expect(projectRules(p, '2027-05-24').rules.id).toBe('ES');
+    expect(projectRules(p, '2027-05-25').rules.id).toBe('ES-2027');
   });
 
   it('gives every playable country a set, as docs/child-rules/COVERAGE.md lists it', () => {
@@ -176,7 +273,8 @@ describe('the rules across the map', () => {
     const two = [kid(on, 8), { ...kid(on, 9), characterId: 'c2' }];
     expect(supervisionFor(two, true)).toEqual([{ roleId: 'chaperone', count: 2, why: "Ontario's rules require one with children under 16." }]);
     expect(supervisionFor([kid(on, 16.5)], true)).toEqual([]); // a 16-year-old needs no chaperone, though the Act covers them
-    expect(childShare(kid(on, 1), false)).toBe(1.7 / ADULT_SHOOT_HOURS); // under 2: 4 hours, less camera breaks
+    // Under 3: 8 hours, less camera breaks (s. 11(1) as amended in 2017; the Act as passed allowed 4 under 2).
+    expect(childShare(kid(on, 1), false)).toBe(3.4 / ADULT_SHOOT_HOURS);
     expect(childShare(kid(on, 17), false)).toBe(7.4 / ADULT_SHOOT_HOURS);
     expect(bandFor(on, Math.round(10 * YEAR))?.days).toBe(5); // 48 hours free a week
     expect(bandFor(on, 14)).toBeNull();
@@ -289,7 +387,7 @@ describe('downstream', () => {
     // The day stops at her hours (five of the ten a day stands for), with the rest of her scenes moved to another day.
     expect(ran).toContain(`ran out of time: ${performer.name} had worked all the hours they may work today.`);
     expect(p.captures.filter((c) => allHers.includes(c.sceneId)).reduce((a, c) => a + c.captured, 0)).toBeLessThan(allHers.length);
-    expect(projectRules(p).rules.id).toBe('GB-ENG');
+    expect(projectRules(p, RULES_READ).rules.id).toBe('GB-ENG');
   });
 
   /** A script cast and crewed, the schedule built and prep done: ready to run its days. */
@@ -303,9 +401,18 @@ describe('downstream', () => {
     return { ...x, mia, days, hire: x.p.hires.find((h) => h.characterId === mia.id && h.status === 'accepted')! };
   }
 
+  it('in Japan never shoots a child\'s night scene, as no approval allows it, and asks for none', () => {
+    const jp = ready('min-jp', 'jp-tokyo', true);
+    expect(projectRules(jp.p, RULES_READ).rules.id).toBe('JP');
+    expect(jp.p.childLicences!.find((l) => l.characterId === jp.mia.id)!.night).toBe(false);
+    const night = jp.days.find((d) => d.night)!;
+    const ran = runShootDay(jp.s, jp.p, night);
+    expect(ran).toContain("can't work at night: Japan's rules don't allow it at their age.");
+  });
+
   it('sets aside 15% of the child\'s pay for each day they work in Los Angeles, and none in London', () => {
     const la = ready('min-la', 'us-los-angeles');
-    expect(projectRules(la.p).rules.id).toBe('US-CA');
+    expect(projectRules(la.p, RULES_READ).rules.id).toBe('US-CA');
     expect(la.p.hires.some((h) => h.roleId === 'studio-teacher' && h.status === 'accepted')).toBe(true);
     runShootDay(la.s, la.p, la.days[0]);
     expect(la.hire.daysWorked).toBe(1);
@@ -318,7 +425,7 @@ describe('downstream', () => {
 
   it('in British Columbia sets aside a quarter of what a child is paid past $2,000 on the production, and nothing before', () => {
     const bc = ready('min-bc', 'ca-vancouver');
-    expect(projectRules(bc.p).rules.id).toBe('CA-BC');
+    expect(projectRules(bc.p, RULES_READ).rules.id).toBe('CA-BC');
     const ob = bc.p.obligations.find((o) => o.id === bc.hire.obligationId)!;
     expect(bc.hire.dayRate).toBeLessThan(2000);
     ob.settled = 0;
@@ -437,21 +544,46 @@ describe('ages, dates and what was read', () => {
   it('applies the rules as read, says when they were read, and has no set known to start later than the game', () => {
     expect(RULES_READ).toBe('2026-11-11');
     expect(FIRST_START_YEAR).toBe(2026);
-    // The research log's status for each set is the one the engine records: France alone is partly read.
+    // The research log's status for each set is the one the engine records (France, Mexico, Spain until 2027, Brazil and
+    // New Zealand are partly read).
     const log = readFileSync('docs/child-rules/RESEARCH.md', 'utf8');
     const seen = new Set<string>();
     for (const c of PLAYABLE_COUNTRIES) {
       const { rules } = rulesFor({ country: c.code, countryName: c.name, region: '', regionCode: '' } as Place);
       seen.add(rules.id);
     }
-    for (const id of ['US-NY', 'US-GA', 'CA-ON']) seen.add(id);
+    const regional: Record<string, [Place, string?]> = {
+      'US-NY': [getPlace('us-new-york')], 'US-GA': [getPlace('us-atlanta')], 'CA-ON': [getPlace('ca-toronto')], 'GB-SCT': [getPlace('gb-edinburgh')],
+      'GB-WLS': [{ ...getPlace('gb-london'), region: 'Wales', regionCode: 'GB-WLS' }], 'GB-NIR': [{ ...getPlace('gb-london'), region: 'Northern Ireland', regionCode: 'GB-NIR' }],
+      'US-TX': [getPlace('us-austin')], 'US-NM': [getPlace('us-albuquerque')], 'CA-QC': [getPlace('ca-montreal')],
+      // A set that takes over during the game's years: Spain's from May 25, 2027.
+      'ES-2027': [getPlace('es-madrid'), '2027-05-25'],
+    };
+    for (const id of Object.keys(regional)) seen.add(id);
+    const byId = new Map<string, MinorRules>();
     for (const id of seen) {
-      const place = { 'US-NY': 'us-new-york', 'US-GA': 'us-atlanta', 'CA-ON': 'ca-toronto' }[id];
-      const rules = place ? rulesFor(getPlace(place)).rules : [...PLAYABLE_COUNTRIES].map((c) => rulesFor({ country: c.code, countryName: c.name, region: '', regionCode: '' } as Place).rules).find((r) => r.id === id)!;
+      const place = regional[id];
+      const rules = place ? rulesFor(place[0], place[1]).rules : [...PLAYABLE_COUNTRIES].map((c) => rulesFor({ country: c.code, countryName: c.name, region: '', regionCode: '' } as Place).rules).find((r) => r.id === id)!;
+      byId.set(id, rules);
+      expect(rules.id).toBe(id);
       const heading = new RegExp(`^## .*\\(${id}\\): (read|partly read)$`, 'm').exec(log);
       expect(heading, id).not.toBeNull();
       expect(rules.read, id).toBe(heading![1] === 'read' ? 'read' : 'partly');
     }
-    expect(seen.size).toBe(10);
+    expect(seen.size).toBe(25);
+    // When each took effect, and its latest change found: none in 2026 or later, so applying it from 2026 is the text in
+    // force; or, for a set that takes over during the game's years, the engine applies it from the day it takes effect.
+    const dates = new Map([...log.matchAll(/^\| [^|]+ \(([A-Z0-9-]+)\) \| (\d{4}(?:-\d{2}-\d{2})?) \| (\d{4}(?:-\d{2}-\d{2})?) \|/gm)].map((m) => [m[1], { from: m[2], latest: m[3] }]));
+    expect([...dates.keys()].sort()).toEqual([...seen].sort());
+    for (const [id, d] of dates) {
+      const from = byId.get(id)!.from;
+      if (from) {
+        expect(d.from, id).toBe(from);
+        expect(d.latest <= from, id).toBe(true);
+      } else {
+        expect(d.latest < '2026-01-01', id).toBe(true);
+        expect(d.from <= d.latest, id).toBe(true);
+      }
+    }
   });
 });

@@ -5,26 +5,37 @@ playable place has a set. A place whose own rules are recorded uses them; any ot
 the game says so wherever the rules are shown. What was read for each recorded set is in `RESEARCH.md`.
 `tests/minors.test.ts` fails when this table and the engine disagree.
 
-Begun November 11, 2026. Recorded sets: England, California, New York, Georgia, British Columbia, Ontario, Ireland, Germany,
-France (partly read: England's hours stand in for the hours its commission sets child by child), New South Wales. New
-York, Georgia and Ontario are used only in their own regions, so they count no countries below.
+Begun November 11, 2026. Recorded sets: England, Scotland, Wales, Northern Ireland (all four read November 11, 2026), California, New York, Georgia, British Columbia, Ontario, Ireland, Germany,
+France (partly read: England's hours stand in for the hours its commission sets child by child), New South Wales, India,
+Japan, South Korea and Mexico, Texas, New Mexico, Quebec, Spain, Italy, Brazil and New Zealand (read November 11,
+2026; Mexico, Brazil and New Zealand partly, as their laws set no hours for some ages, and Spain partly until May 25,
+2027, when a decree that does takes effect). New York, Georgia, Texas, New Mexico, Ontario, Quebec, Scotland, Wales
+and Northern Ireland are used only in their own regions, so they count no countries below.
 
 | Rules | Own | By region | Stand-in |
 | --- | --- | --- | --- |
-| England | 0 | 1 | 210 |
+| England | 0 | 1 | 205 |
 | California | 0 | 1 | 0 |
 | British Columbia | 0 | 1 | 0 |
 | Ontario | 0 | 0 | 0 |
 | Ireland | 1 | 0 | 0 |
-| Germany | 1 | 0 | 28 |
+| Germany | 1 | 0 | 26 |
 | France | 1 | 0 | 0 |
-| New South Wales | 0 | 1 | 1 |
+| New South Wales | 0 | 1 | 0 |
+| India | 1 | 0 | 0 |
+| Japan | 1 | 0 | 0 |
+| South Korea | 1 | 0 | 0 |
+| Mexico (partly read) | 1 | 0 | 0 |
+| Spain (partly read until May 25, 2027) | 1 | 0 | 0 |
+| Italy | 1 | 0 | 0 |
+| Brazil (partly read) | 1 | 0 | 0 |
+| New Zealand (partly read) | 1 | 0 | 0 |
 
 Countries with places under more than one set (listed by the set used outside the recorded regions):
-- **United States:** New York's, California's and Georgia's own; every other state uses California's.
-- **Canada:** British Columbia's and Ontario's own; every other province and territory uses British Columbia's.
+- **United States:** New York's, California's, Georgia's, Texas's and New Mexico's own; every other state uses California's.
+- **Canada:** British Columbia's, Ontario's and Quebec's own; every other province and territory uses British Columbia's.
 - **Australia:** New South Wales's own; every other state and territory uses New South Wales's.
-- **United Kingdom:** England's own; Scotland, Wales and Northern Ireland use England's.
+- **United Kingdom:** England's, Scotland's, Wales's and Northern Ireland's own; a place with no region uses England's.
 
 | Code | Country | Rules | Status |
 | --- | --- | --- | --- |
@@ -57,7 +68,7 @@ Countries with places under more than one set (listed by the set used outside th
 | BQ | Bonaire, Saint Eustatius and Saba  | England | Stand-in |
 | BA | Bosnia and Herzegovina | England | Stand-in |
 | BW | Botswana | England | Stand-in |
-| BR | Brazil | England | Stand-in |
+| BR | Brazil | Brazil | Own |
 | IO | British Indian Ocean Territory | England | Stand-in |
 | VG | British Virgin Islands | England | Stand-in |
 | BN | Brunei | England | Stand-in |
@@ -126,17 +137,17 @@ Countries with places under more than one set (listed by the set used outside th
 | HK | Hong Kong | England | Stand-in |
 | HU | Hungary | Germany | Stand-in |
 | IS | Iceland | Germany | Stand-in |
-| IN | India | England | Stand-in |
+| IN | India | India | Own |
 | ID | Indonesia | England | Stand-in |
 | IR | Iran | England | Stand-in |
 | IQ | Iraq | England | Stand-in |
 | IE | Ireland | Ireland | Own |
 | IM | Isle of Man | England | Stand-in |
 | IL | Israel | England | Stand-in |
-| IT | Italy | Germany | Stand-in |
+| IT | Italy | Italy | Own |
 | CI | Ivory Coast | England | Stand-in |
 | JM | Jamaica | England | Stand-in |
-| JP | Japan | England | Stand-in |
+| JP | Japan | Japan | Own |
 | JE | Jersey | England | Stand-in |
 | JO | Jordan | England | Stand-in |
 | KZ | Kazakhstan | England | Stand-in |
@@ -166,7 +177,7 @@ Countries with places under more than one set (listed by the set used outside th
 | MR | Mauritania | England | Stand-in |
 | MU | Mauritius | England | Stand-in |
 | YT | Mayotte | England | Stand-in |
-| MX | Mexico | England | Stand-in |
+| MX | Mexico | Mexico | Own |
 | FM | Micronesia | England | Stand-in |
 | MD | Moldova | England | Stand-in |
 | MC | Monaco | England | Stand-in |
@@ -180,7 +191,7 @@ Countries with places under more than one set (listed by the set used outside th
 | NR | Nauru | England | Stand-in |
 | NP | Nepal | England | Stand-in |
 | NC | New Caledonia | England | Stand-in |
-| NZ | New Zealand | New South Wales | Stand-in |
+| NZ | New Zealand | New Zealand | Own |
 | NI | Nicaragua | England | Stand-in |
 | NE | Niger | England | Stand-in |
 | NG | Nigeria | England | Stand-in |
@@ -232,9 +243,9 @@ Countries with places under more than one set (listed by the set used outside th
 | SO | Somalia | England | Stand-in |
 | ZA | South Africa | England | Stand-in |
 | GS | South Georgia and the South Sandwich Islands | England | Stand-in |
-| KR | South Korea | England | Stand-in |
+| KR | South Korea | South Korea | Own |
 | SS | South Sudan | England | Stand-in |
-| ES | Spain | Germany | Stand-in |
+| ES | Spain | Spain | Own |
 | LK | Sri Lanka | England | Stand-in |
 | SD | Sudan | England | Stand-in |
 | SR | Suriname | England | Stand-in |

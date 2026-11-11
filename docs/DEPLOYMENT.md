@@ -24,7 +24,8 @@ them:
 | --- | --- | --- | --- |
 | Development | `npm run dev` (Vite) | `.screen-catalog/` and `.cinemas/` on this machine, through the same handler as production | That the game works on the real catalog |
 | Production testing | `npm run build`, then `server/serve.mjs` (`SLATE_E2E_PROD=1` in the browser suite) | None on port 4175, as CI has none; the made-up catalog on 4176; an expired copy on 4177 | That the built game and its data path work with no Vite in the path |
-| Deployment | Nothing yet | Gathered where the server runs | Not done: it needs a host and the owner's decisions below |
+| Deployment, for other players | `npm run build`, then `npm run serve` | The cinemas only: no TMDB data, by the owner's decision | Ready to run on any host with Node 22; no host is chosen |
+| The owner's own copy | `npm run build`, then `npm run serve:owner` (`--owner`) | The catalog and the film pack, for the owner alone | Run by the owner, on a machine the owner controls |
 
 ## Data Freshness And Saves
 
@@ -111,9 +112,24 @@ Node 22, but it needs the catalog and cinema directories on that machine. Those 
 machine that gathered them, and rebuilt within every six months. A purely static host (pages without a server) would
 need the catalog copied into its files, with the same expiry and purge kept by hand. That is a hosting decision.
 
-**Permission.** Before the film catalog is published for players, the owner must decide:
-- whether SLATE is commercial: charging for it, or earning from it, needs a written agreement with TMDB (2.A);
-- whether to ask TMDB in writing about serving a reformatted catalog to players, since "derivatives" isn't defined.
+**Permission: decided.** On November 11, 2026 the owner decided that TMDB's data goes to no other player: "Will NOT be
+offering TMDB mods to other players also. I repeat I will NOT." So the questions of commercial use and of derivatives,
+which arose only from giving it to players, are closed. The server keeps the decision:
+- `server/serve.mjs` serves the catalog and offers the film pack only when started as the owner's own (`--owner`, or
+  `SLATE_OWNER=1`; `npm run serve:owner`). Without it, which is the default, it answers as if there were no catalog,
+  and its Mods list holds the cinemas alone, even with the film data in its folders (`tests/catalog-server.test.ts`).
+- The game says the films aren't installed, and points to the film mod only where the server offers it
+  (`e2e/data-packs.spec.ts`).
+- The Vite dev server is the owner's own machine, and serves both.
 
-Until then the catalog stays where it was gathered, and nothing here is a deployment. The cinemas (CC0) need no
-permission.
+The cinemas (CC0) need no permission and are served by every copy.
+
+**Deploying for other players.** `npm run build`, the cinemas built into `.cinemas/` (`node tools/cinemas/import.mjs`)
+or a cinema pack in `packs/` (`npm run packs`, which also builds the film pack, served only with `--owner`), then
+`npm run serve` on any host with Node 22. Saves stay in each player's browser. No host has been chosen or set up from
+this repository, and none will be from here: choosing and paying for one is the owner's.
+
+**The owner's own copy.** The same, with `npm run serve:owner` on a machine the owner controls, or the dev server. The
+film data is refreshed within every six months: `npm run screen-catalog:import`, `npm run screen-catalog:build` and
+`npm run packs`, on a machine with the owner's TMDB access. The server withdraws a catalog past six months by itself,
+and an installed film pack deletes itself on the device.

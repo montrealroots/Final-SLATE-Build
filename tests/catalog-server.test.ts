@@ -37,8 +37,9 @@ async function get(port: number, path: string, o: { method?: string; gzip?: bool
     req.on('error', fail).end();
   });
 }
-async function start(catalogDir: string, now = () => Date.parse('2026-11-11T12:00:00Z'), packsDir: string | null = null): Promise<{ port: number; close: () => void }> {
-  const server = createSlateServer({ dist, catalogDir, cinemasDir: join(root, 'cinemas'), packsDir, now });
+// The owner's own server (--owner) unless `films` is false.
+async function start(catalogDir: string, now = () => Date.parse('2026-11-11T12:00:00Z'), packsDir: string | null = null, films = true): Promise<{ port: number; close: () => void }> {
+  const server = createSlateServer({ dist, catalogDir, cinemasDir: join(root, 'cinemas'), packsDir, films, now });
   await new Promise<void>((r) => server.listen(0, '127.0.0.1', r));
   return { port: (server.address() as AddressInfo).port, close: () => server.close() };
 }
@@ -143,5 +144,21 @@ describe('the mods the game offers', () => {
     // A server with no packs offers none.
     const bare = await start(catalog('bare', null));
     try { expect(json(await get(bare.port, '/mods/index.json'))).toEqual({ version: 1, mods: [] }); } finally { bare.close(); }
+    // A server that isn't the owner's own (no --owner) gives no player TMDB's data: no film pack, and no catalog, even
+    // with both in its folders (the owner's decision, November 11, 2026). The cinemas (CC0) are still offered.
+    const other = await start(catalog('not-owner', good), undefined, packs, false);
+    try {
+      expect(json(await get(other.port, '/mods/index.json')).mods.map((m: { file: string }) => m.file)).toEqual(['cinemas.slatepack']);
+      expect((await get(other.port, '/mods/films.slatepack')).status).toBe(404);
+      expect(json(await get(other.port, '/screen-catalog/index.json'))).toEqual({ installed: false, reason: 'missing' });
+      expect((await get(other.port, '/screen-catalog/titles/movie-1.json')).status).toBe(404);
+      expect((await get(other.port, '/screen-catalog/cinemas/GB.json')).status).toBe(200);
+    } finally { other.close(); }
+  });
+
+  it('serves TMDB\'s data only when started as the owner\'s own (--owner or SLATE_OWNER=1), off by default', () => {
+    const src = readFileSync('server/serve.mjs', 'utf8');
+    expect(src).toMatch(/const films = process\.argv\.includes\('--owner'\) \|\| process\.env\.SLATE_OWNER === '1';/);
+    expect(src).toMatch(/films = false, now \}\) \{/);
   });
 });

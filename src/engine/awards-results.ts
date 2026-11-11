@@ -12,6 +12,7 @@ import { gaussian, intBetween, pick, stream, unit } from './rng';
 import { COMEDY_MUSICAL } from './script-effects';
 import { addLog, schedule, type HandlerResult } from './state';
 import { DAY, addDaysToKey, dateKey, formatDateKey, localToInstant, parseYmd } from './time';
+import { studioFilms, type StudioFilm } from './studios';
 import type { Edition, EditionEntry, GameState, Project, RivalFilm, ScheduledEvent } from './types';
 
 /**
@@ -213,7 +214,47 @@ export interface ShownResult { stage: 'selection' | 'nomination' | 'winner'; fie
 /** A competing work in words: its title, length, medium, format and people (the simulated season's slate). */
 export function rivalWords(f: RivalFilm): string {
   const who = Object.values(f.people);
-  return `${f.title}: a ${f.runtimeMin}-minute ${MEDIUM_LABELS[f.medium].toLowerCase()} ${FORMAT_LABELS[f.format].toLowerCase()}${who.length ? `, with ${who.join(' and ')}` : ''}`;
+  return `${f.title}: a ${f.runtimeMin}-minute ${MEDIUM_LABELS[f.medium].toLowerCase()} ${FORMAT_LABELS[f.format].toLowerCase()}${f.studio ? ` from ${studioName(f.studio)} (simulated)` : ''}${who.length ? `, with ${who.join(' and ')}` : ''}`;
+}
+
+/** A studio's name for results: the registry's, else the ID's slug in words. */
+let studioNames: ((id: string) => string | undefined) | null = null;
+export function setStudioNames(fn: (id: string) => string | undefined): void { studioNames = fn; }
+const studioName = (id: string) => studioNames?.(id) ?? id.replace(/^company:/, '').split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ');
+
+/** TMDB's genre names as the game's (awards.ts SLATE_GENRES), for a studio film's categories. */
+const GENRE = (g: string) => g.toLowerCase().replace(/ /g, '-').replace('music', 'musical');
+
+/**
+ * A followed studio's films released in an edition's eligibility window enter it alongside the player's and the season's
+ * other work (docs/WORLD.md, "Competition"). Their strength is drawn from the save's seed for each film, as the season
+ * slate's is; nothing reads TMDB ratings, budgets or box office.
+ */
+function studioCandidates(state: GameState, ed: Edition, cat: Category): Candidate[] {
+  const films = studioFilms(state, ed.eligibility.from, ed.eligibility.to);
+  const out: Candidate[] = [];
+  for (const f of films) {
+    const doc = f.genres.includes('Documentary');
+    const format = doc ? 'documentary-feature' : 'feature';
+    const medium = f.genres.includes('Animation') ? 'animation' : 'live-action';
+    const genres = f.genres.map(GENRE);
+    if (!cat.formats.includes(format) || (cat.mediums && !cat.mediums.includes(medium))) continue;
+    if (cat.genres && !genres.some((g) => cat.genres!.includes(g))) continue;
+    if (cat.excludeGenres && genres.some((g) => cat.excludeGenres!.includes(g))) continue;
+    if (cat.class && (cat.class === 'comedy') !== genres.some((g) => COMEDY_MUSICAL.includes(g))) continue;
+    out.push({ id: `${ed.id}:${cat.id}:${f.id}`, filmKey: f.id, film: studioRival(f, format, medium), score: studioScore(state.seed, f, cat.recipient) });
+  }
+  return out;
+}
+
+function studioRival(f: StudioFilm, format: RivalFilm['format'], medium: RivalFilm['medium']): RivalFilm {
+  return { title: f.title, people: f.people, format, medium, runtimeMin: f.runtimeMin, studio: f.company };
+}
+
+function studioScore(seed: number, f: StudioFilm, recipient: string): number {
+  const r = stream(seed, 'studio-score', f.id);
+  const base = Math.max(25, Math.min(96, gaussian(r, 62, 11)));
+  return Math.max(20, Math.min(97, base + gaussian(stream(seed, 'studio-score', f.id, recipient), 0, 6)));
 }
 
 const shownCache = new Map<string, ShownResult | null>();
@@ -278,9 +319,11 @@ export function rivalsFor(state: GameState, ed: Edition, cat: Category): Candida
   const fromSlate: Candidate[] = slate.map((f) => ({
     id: `${ed.id}:${cat.id}:${f.id}`, filmKey: f.id, film: { title: f.title, people: f.people, format: f.format, medium: f.medium, runtimeMin: f.runtimeMin }, score: f.scores[cat.recipient],
   }));
+  const fromStudios = studioCandidates(state, ed, cat);
+  const known = [...fromStudios, ...fromSlate];
   const needed = Math.max(cat.slots * 3, cat.slots + 6);
-  if (fromSlate.length >= needed) return fromSlate;
-  return [...fromSlate, ...generatedRivals(state, ed, cat, needed - fromSlate.length)];
+  if (known.length >= needed) return known;
+  return [...known, ...generatedRivals(state, ed, cat, needed - known.length)];
 }
 
 function generatedRivals(state: GameState, ed: Edition, cat: Category, n: number): Candidate[] {
