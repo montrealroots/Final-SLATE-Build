@@ -132,7 +132,7 @@ describe('the field inventory', () => {
       {
         "has ideas": 30,
         "no picker yet": 38,
-        "no picker, by design": 179,
+        "no picker, by design": 183,
         "the picker itself": 10,
       }
     `);
@@ -145,7 +145,7 @@ const BUTTON: Record<Idea['field'], string> = {
   premise: 'Script: Choose A Starting Idea; Premise', logline: 'Script: Logline', conflict: 'Script: Central Conflict', stakes: 'Script: Stakes', theme: 'Script: Theme', ending: 'Script: Intended Ending', tone: 'Script: Tone',
   experience: 'Script: Intended Experience', 'world-rule': 'Script: Story World Rules', period: 'Script: Year It Is Set In', style: 'Script: The Look It Borrows', 'genre-blend': 'Script: Blend Genres', medium: 'Script: How It Is Made',
   'character-goal': 'Characters: Wants', 'character-fear': 'Characters: Fears', makeup: 'Characters: How They Look', wardrobe: 'Characters: How They Look', crowd: 'Script: Ideas For This Scene', camera: 'Script: Ideas For This Scene',
-  sound: 'Script: Sound And Music', location: 'Script: Add A Scene From An Idea', 'physical-comedy': 'Script: Ideas For This Scene',
+  sound: 'Script: Sound And Music', light: 'Script: The Light It Is Shot In', score: 'Script: Sound And Music', location: 'Script: Add A Scene From An Idea', 'physical-comedy': 'Script: Ideas For This Scene',
 };
 const sets = (c: Command): string => {
   switch (c.op) {
@@ -163,6 +163,9 @@ const sets = (c: Command): string => {
     case 'crowd': return [c.method ? 'scene.crowdMethod' : '', c.look !== undefined ? 'scene.crowdLook' : ''].filter(Boolean).join(', ');
     case 'stunt': return 'scene.stunts';
     case 'shot': return 'shotPlans[scene]';
+    case 'light': return 'axes.light';
+    case 'sound': return 'axes.sound';
+    case 'score': return 'axes.score';
     case 'beats': return 'scenes (only those ticked)';
     case 'cast': return 'characters';
   }
@@ -200,8 +203,8 @@ describe('the effect coverage', () => {
         "document/identity information: implemented+browser verified": 4,
         "document/identity information: implemented+engine verified": 84,
         "mechanical decision: implemented+browser verified": 4,
-        "mechanical decision: implemented+engine verified": 70,
-        "visual reference: reference-only by design": 26,
+        "mechanical decision: implemented+engine verified": 82,
+        "visual reference: reference-only by design": 14,
       }
     `);
   });

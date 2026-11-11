@@ -143,6 +143,10 @@ export type ContentIssue = 'violence' | 'sexual-content' | 'nudity' | 'language'
 export type ContentLevel = 'mild' | 'moderate' | 'strong';
 
 export interface ProjectAxes {
+  /** The light the film is shot in, its sound choices and its score (craft.ts). Unset on a project from before November 11, 2026, which is lit, recorded and scored as it always was. */
+  light?: 'standard' | 'available' | 'contrast' | 'macro';
+  sound?: string[];
+  score?: 'unset' | 'synth' | 'chamber' | 'percussive';
   format: Format;
   medium: Medium;
   technique: Technique;
@@ -807,7 +811,7 @@ export interface Project {
   designApprovals?: Record<string, { version: number; status: 'approved' | 'changes' }>;
   /** Live-action scenes are shot to a plan of coverage and takes (takes.ts); unset on projects started before. */
   takesModel?: boolean;
-  shotPlans?: Record<string, { coverage?: 'master' | 'standard' | 'full'; takes?: 'one' | 'few' | 'many'; emphasis?: 'scene' | 'performances' | 'detail' | 'one-shot' }>;
+  shotPlans?: Record<string, { coverage?: 'master' | 'standard' | 'full'; takes?: 'one' | 'few' | 'many'; emphasis?: 'scene' | 'performances' | 'detail' | 'one-shot'; /** How the camera moves for the scene (craft.ts); a tripod when unset. */ rig?: 'sticks' | 'handheld' | 'dolly' | 'moving' | 'pov' }>;
   /** 2: contextual directing (takes.ts, directing.ts), projects from November 8, 2026; absent keeps the earlier take rules. */
   directing?: 2;
   /** Versions conformed from the locked cut besides the main one (versions.ts). */

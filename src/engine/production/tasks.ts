@@ -6,6 +6,7 @@ import { approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectMo
 import { MOCAP_CLEANUP_PER_SESSION } from '../mocap';
 import { ANIM_RATE, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS } from './rates';
 import { recordTaskId, songTasks, songUses } from '../songs';
+import { CREATURE_FOLEY_DAYS, LIGHTS, LOOP_GROUP_PER_SCENES, LOOP_GROUP_SESSION, WILD_TRACK_PER_LOCATIONS, cameraTestDays, lightOf, postFactors, rigRehearsalDays, scoreSessions, soundsOf } from '../craft';
 import { CROWD_POST_DAYS, PERIOD_WORK, costumeCopies, digitalCrowd, makeup, projectBand, statesOf, wardrobe } from '../looks';
 
 // ---------------- Task generation ----------------
@@ -46,6 +47,11 @@ export function buildTasks(p: Project): Task[] {
   if (liveScenes.length && !nonfiction) {
     const locs = count('location');
     tasks.push(t('prep:locations', 'all', 'Location Scouting And Permits', 'Locations', 'location-manager', Math.max(1, locs), 'locations'));
+    // The light chosen is tested before the shoot, and location sound is recorded place by place (craft.ts). Both are
+    // prep: a scene isn't shot until they are done.
+    const tests = cameraTestDays(p, true, false);
+    if (tests) { tasks.push(t('prep:camera-test', 'all', 'Camera And Lighting Tests', 'Camera', 'dop', tests, 'test days')); prepIds.push('prep:camera-test:all'); }
+    if (soundsOf(p).includes('texture')) { tasks.push(t('prep:wildtrack', 'all', 'Location Sound Recording', 'Sound', 'sound-mixer', Math.max(1, Math.ceil(locs / WILD_TRACK_PER_LOCATIONS)), 'days')); prepIds.push('prep:wildtrack:all'); }
     // A story set somewhere else added a scouting trip there until the review of November 7, 2026: where a story is set
     // isn't where it is shot, so the setting place is a creative and research reference. From November 9, 2026 a setting
     // in another country than the base is researched before design and costumes start, as a period is.
@@ -95,8 +101,10 @@ export function buildTasks(p: Project): Task[] {
       tasks.push(t('prep:choreo', 'all', 'Choreography Rehearsal', 'Casting And Performance', 'choreographer', count('choreography') * 2, 'rehearsal days'));
       prepIds.push('prep:choreo:all');
     }
-    if (p.schedule.rehearsalDays > 0 && p.cast.length) {
-      tasks.push(t('prep:rehearsal', 'all', 'Cast Rehearsals', 'Direction', 'director', p.schedule.rehearsalDays, 'days'));
+    // Long moving takes and scenes seen through a character's eyes are rehearsed (craft.ts), beside the days the player set.
+    const rigDays = rigRehearsalDays(p, liveScenes);
+    if ((p.schedule.rehearsalDays > 0 || rigDays > 0) && p.cast.length) {
+      tasks.push(t('prep:rehearsal', 'all', 'Cast Rehearsals', 'Direction', 'director', p.schedule.rehearsalDays + rigDays, 'days'));
       prepIds.push('prep:rehearsal:all');
     }
   }
@@ -137,10 +145,11 @@ export function buildTasks(p: Project): Task[] {
         }
         const sets = new Set(tScenes.map((s) => s.storyLocation || s.heading.place));
         tasks.push(t('sm:sets', 'all', 'Miniature Sets', 'Stop Motion', 'miniature-builder', sets.size * 8, 'build days', ['anim:visdev:all']));
-        tasks.push(t('sm:stages', 'all', 'Stage Camera And Lighting Setup', 'Stop Motion', 'stage-dp', p.schedule.stages * 2, 'stage days', ['sm:sets:all']));
+        // Macro lenses on miniatures are tested with the stage setup (craft.ts): two more stage days before animation.
+        tasks.push(t('sm:stages', 'all', 'Stage Camera And Lighting Setup', 'Stop Motion', 'stage-dp', p.schedule.stages * 2 + cameraTestDays(p, false, true), 'stage days', ['sm:sets:all']));
         for (const s of tScenes) {
           const deps = ['anim:animatic:all', 'sm:stages:all', ...s.participants.filter((c) => animChars.some((x) => x.id === c)).map((c) => `sm:costume:${c}`), ...voiceDeps(s)];
-          tasks.push(t('sm:animation', s.id, `Animate ${sceneLabel(p, s)}`, 'Stop Motion', 'stopmo-animator', (s.estMinutes * 60) / rate[q], 'animator days', deps, { sceneIds: [s.id], episode: s.episode }));
+          tasks.push(t('sm:animation', s.id, `Animate ${sceneLabel(p, s)}`, 'Stop Motion', 'stopmo-animator', (s.estMinutes * 60) / (rate[q] * LIGHTS[lightOf(p)].frames), 'animator days', deps, { sceneIds: [s.id], episode: s.episode }));
           tasks.push(t('anim:composite', s.id, `Rig Removal And Compositing: ${sceneLabel(p, s)}`, 'Animation', 'compositor', Math.max(0.5, s.estMinutes * 0.6), 'days', [`sm:animation:${s.id}`], { sceneIds: [s.id], episode: s.episode }));
         }
       } else if (tech === '3d-cg') {
@@ -233,6 +242,7 @@ export function buildTasks(p: Project): Task[] {
     }
     tasks.push(t('post:assembly', String(e), `Assembly Edit${isEpisodic(p.axes.format) ? `, Episode ${e}` : ''}`, 'Post Production', 'editor', Math.max(1, minutes / 6), 'days', capDeps, { episode: e }));
     const lock = `milestone:lock:${e}`;
+    const craft = postFactors(p);
     const hasVfx = eScenes.some((s) => s.vfx.length && sceneTechnique(p, s) === 'live');
     // Work finished in post because of how it was shot (looks.ts): a crowd extended beyond the people on set, and a look
     // made digitally. Each scene's is counted once, here, and nowhere else.
@@ -249,14 +259,22 @@ export function buildTasks(p: Project): Task[] {
     // edit waits for any dialogue replacement.
     if (p.takesModel) {
       tasks.push(t('post:dialogue', String(e), `Dialogue Edit${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 12), 'days', [lock, ...p.tasks.filter((x) => x.kind === 'post:adr' && x.episode === e).map((x) => x.id)], { episode: e }));
-      tasks.push(t('post:foley', String(e), `Foley${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 15), 'days', [lock], { episode: e }));
-      tasks.push(t('post:sound', String(e), `Sound Effects Editing${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 20), 'days', [lock], { episode: e }));
+      // The sound plan and the score change how long each takes (craft.ts): creatures add Foley days of their own.
+      const creatures = soundsOf(p).includes('creature') ? approvedCharacters(p).filter((c) => c.entity !== 'human' && eScenes.some((s) => s.participants.includes(c.id))).length : 0;
+      tasks.push(t('post:foley', String(e), `Foley${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, (minutes / 15) * craft.foley) + creatures * CREATURE_FOLEY_DAYS, 'days', [lock], { episode: e }));
+      tasks.push(t('post:sound', String(e), `Sound Effects Editing${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, (minutes / 20) * craft.effects), 'days', [lock], { episode: e }));
     } else tasks.push(t('post:sound', String(e), `Sound Editing${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 5), 'days', [lock], { episode: e }));
-    tasks.push(t('post:music', String(e), `Score${epSuffix(p, e)}`, 'Music', 'composer', Math.max(1, minutes / 4), 'days', [lock], { episode: e }));
+    tasks.push(t('post:music', String(e), `Score${epSuffix(p, e)}`, 'Music', 'composer', Math.max(1, (minutes / 4) * craft.score), 'days', [lock], { episode: e }));
+    // A score with players is recorded in sessions, paid for as the task's materials; the mix waits for them.
+    const sessions = scoreSessions(p, minutes);
+    if (sessions.sessions) tasks.push(t('post:score-session', String(e), `Score Recording${epSuffix(p, e)}`, 'Music', 'composer', sessions.sessions, 'sessions', [`post:music:${e}`], { episode: e, material: sessions.sessions * sessions.each }));
+    // A loop group records the crowd for the scenes that have one.
+    const crowdScenes2 = soundsOf(p).includes('crowd') ? eScenes.filter((s) => s.crowd > 0) : [];
+    if (crowdScenes2.length) { const n = Math.ceil(crowdScenes2.length / LOOP_GROUP_PER_SCENES); tasks.push(t('post:loop-group', String(e), `Loop Group${epSuffix(p, e)}`, 'Post Production', 'sound-designer', n, 'sessions', [lock], { episode: e, material: n * LOOP_GROUP_SESSION, sceneIds: crowdScenes2.map((s) => s.id) })); }
     if (hasVfx) tasks.push(t('post:vfx', String(e), `Visual Effects${epSuffix(p, e)}`, 'Post Production', 'vfx-artist', eScenes.reduce((a, s) => a + s.vfx.length * 4, 0), 'days', [lock], { episode: e }));
-    tasks.push(t('post:color', String(e), `Color Grade${epSuffix(p, e)}`, 'Post Production', 'colorist', Math.max(1, minutes / 20), 'days', [lock, ...(hasVfx ? [`post:vfx:${e}`] : []), ...postLooks], { episode: e }));
+    tasks.push(t('post:color', String(e), `Color Grade${epSuffix(p, e)}`, 'Post Production', 'colorist', Math.max(1, (minutes / 20) * craft.grade), 'days', [lock, ...(hasVfx ? [`post:vfx:${e}`] : []), ...postLooks], { episode: e }));
     const songsHere = [...new Set(uses.filter((x) => eScenes.some((s) => s.id === x.use.sceneId) && x.song.rights !== 'licensed').map((x) => recordTaskId(x.song)))];
-    tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, minutes / 30), 'days', [`post:sound:${e}`, ...(p.takesModel ? [`post:dialogue:${e}`, `post:foley:${e}`] : []), `post:music:${e}`, ...songsHere, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
+    tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, (minutes / 30) * craft.mix), 'days', [...(sessions.sessions ? [`post:score-session:${e}`] : []), ...(crowdScenes2.length ? [`post:loop-group:${e}`] : []), `post:sound:${e}`, ...(p.takesModel ? [`post:dialogue:${e}`, `post:foley:${e}`] : []), `post:music:${e}`, ...songsHere, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
     tasks.push(t('post:captions', String(e), `Captions And Subtitles${epSuffix(p, e)}`, 'Post Production', 'subtitler', Math.max(1, (minutes / 30) * p.axes.dialogueLanguages.length), 'days', [`post:mix:${e}`], { episode: e }));
     tasks.push(t('post:qc', String(e), `Delivery Quality Control${epSuffix(p, e)}`, 'Post Production', 'qc-technician', 1, 'days', [`post:color:${e}`, `post:mix:${e}`, `post:captions:${e}`], { episode: e }));
   }

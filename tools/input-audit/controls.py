@@ -179,6 +179,7 @@ c(f, '"Shoot Episodes In Blocks"', D, 'schedule.blockEpisodes', 'production/sche
 c(f, '"Work On Public Holidays"', D, 'schedule.workHolidays', 'production/schedule.ts isWorkingDay', 'Holidays are worked, at a premium', U('heritage', 'kept holidays carry into every new project'))
 c(f, '{`${c.name} Puppet Copies`}', D, 'schedule.puppetCopies', 'production/schedule.ts; production/workday.ts', 'More copies let more stages shoot one character at once', U('media', 'a puppet cannot serve two stages at once without a duplicate'))
 c(f, '{`Emphasis For ${sceneLabel(p, s)}`}', D, 'shotPlan.emphasis', 'takes.ts; directing.ts', 'What the direction serves in the scene', U('directing', 'a restrained one-shot scene is not penalised'))
+c(f, '{`Camera For ${sceneLabel(p, s)}`}', D, 'shotPlans[scene].rig', 'craft.ts craftTime, craftRoles, rigDayCost, takeSpread; takes.ts planTime, recordTakes', 'How long each setup takes to reset and each take to run, how much takes vary, the grip or playback the rig needs, rented kit for the day, and rehearsal days', U('craft', 'each rig changes the time a scene takes by its own reset and running time, and nothing else about the plan'))
 c(f, '{`Coverage For ${sceneLabel(p, s)}`}', D, 'shotPlan.coverage', 'takes.ts requiredSetups; production/shoot.ts', 'Setups, time on the day, and what the edit can do', U('directing', 'missing coverage costs the edit'))
 c(f, '{`Takes For ${sceneLabel(p, s)}`}', D, 'shotPlan.takes', 'takes.ts setupTime', 'Time on the day and the chance of a usable take', U('directing', 'under the same resources, covering what each scene needs'))
 c(f, '{`Site For ${place}`}', D, 'locationChoices.main', 'locations.ts', 'The day fee and what happens if it falls through', U('locations', 'after scouting, a chosen site sets the day fee'))
@@ -211,6 +212,11 @@ c(f, '{`${c.personName} as ${c.characterName}`}', D, 'entry.recipients', 'awards
 c(f, '{`What To Capture For ${name}`}', D, 'mocap.parts', 'mocap.ts bookMocap, sessionCost', 'Body, face or both: session cost and credits', U('lunar-mocap', 'waits for a booking, which reserves the stage'), '')
 
 # ---------------- Calendar, places, settings, shell ----------------
+f = 'ScriptViews.tsx'
+c(f, '"The Light It Is Shot In"', D, 'axes.light', 'craft.ts craftTime, gafferNeeded, cameraTestDays, postFactors; takes.ts planTime; hiring.ts neededRoles; production/tasks.ts buildTasks', 'Setup time on interiors and nights, whether interiors need a gaffer, a planned take more, camera test days before the shoot, the grade, and stop-motion frames a day', U('craft', 'practical and available light: interiors reset sooner and need no gaffer, a take more is planned, after a day of tests'))
+c(f, '"The Score"', D, 'axes.score', 'craft.ts postFactors, scoreSessions; production/tasks.ts buildTasks', "The composer's days, and recording sessions that cost money and that the mix waits for", U('craft', 'a score with players is recorded in sessions that cost money and hold the mix; an electronic one is the composer alone'))
+c(f, '{SOUNDS[k].label}', D, 'axes.sound', 'craft.ts craftTime, craftRoles, postFactors, dialogueHolds; production/tasks.ts buildTasks; production/shoot.ts needsDialogueReplacement', 'Each choice moves its own work: location recording days, a boom operator and dialogue that holds, Foley, effects editing, the score, a loop group, the mix', U('craft', 'each sound choice moves its own work and no other'))
+
 f = 'PersonWork.tsx'
 J04 = E('real-people', 'J04: a performer from the film catalog is considered, reads, counters, is contracted, found booked elsewhere, works and is credited')
 J05 = E('real-people', 'J05: a director with no recorded date of birth and a writer are hired for a film by job')

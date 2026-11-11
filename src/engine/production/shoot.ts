@@ -11,6 +11,7 @@ import { addDaysToKey, dateKey, formatDateKey } from '../time';
 import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees } from './rates';
 import { chairsOf, ensureWorkEvent, isWorkingDay, minorsInScenes, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay } from './schedule';
 import { childShare, ensureLicence, isSchoolDay, licenceReady, setAsideOf, supervisionFor, type Minor } from '../minors';
+import { dialogueHolds, rigDayCost } from '../craft';
 import { PLATE_FACTOR, digitalCrowd, makeup, makeupDayCost, makeupShare, needsMakeupCrew, physicalCrowd } from '../looks';
 import { addLogOnce, payPlanned, plannedRemaining } from './workday';
 import { t } from './tasks';
@@ -139,7 +140,8 @@ export function addDialogueReplacement(p: Project, s: Scene): void {
 }
 
 export function needsDialogueReplacement(p: Project, s: Scene, compromised: boolean): boolean {
-  return s.dialogue.length > 0 && (!hasCrew(p, 'sound-mixer') || (!!p.takesModel && compromised));
+  // With a boom on every dialogue scene (craft.ts, Dialogue Clarity), a compromised day's dialogue still holds.
+  return s.dialogue.length > 0 && (!hasCrew(p, 'sound-mixer') || (!!p.takesModel && compromised && !dialogueHolds(p)));
 }
 
 export function hasCrew(p: Project, roleId: string): boolean {
@@ -198,7 +200,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const o = p.obligations.find((x) => x.id === h.obligationId)!;
     const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
     return a + Math.max(0, o.settled + pay - Math.max(o.amount, o.settled));
-  }, 0) + Math.max(0, locationFee + dayFees(p).equipment + scenes.reduce((a, s) => a + physicalCrowd(s), 0) * CROWD_DAY_RATE + makeupDayCost(scenes, approvedCharacters(p)) - plannedRemaining(p, 'plan:shoot'));
+  }, 0) + Math.max(0, locationFee + dayFees(p).equipment + scenes.reduce((a, s) => a + physicalCrowd(s), 0) * CROWD_DAY_RATE + makeupDayCost(scenes, approvedCharacters(p)) + rigDayCost(p, scenes) - plannedRemaining(p, 'plan:shoot'));
   if (overrun > ledgerTotals(p).available) {
     d.status = 'lost';
     d.result = `There wasn't enough money for this shoot day (${money(overrun)} needed beyond what's already agreed). Add funding or cut scope, then rebuild the schedule.`;
@@ -402,6 +404,8 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     if (crowd) payPlanned(state, p, 'plan:shoot', `Background Performers (${d.date})`, 'cast', crowd * CROWD_DAY_RATE, `crowd:${d.id}`);
     // The day's makeup materials (looks.ts), once for the day, for the scenes that were called.
     payPlanned(state, p, 'plan:shoot', `Makeup Materials (${d.date})`, 'materials', makeupDayCost(scenes, approvedCharacters(p)), `makeup:${d.id}`);
+    // The day's rented camera rig (craft.ts): a dolly and track, or a stabiliser, once for the day.
+    payPlanned(state, p, 'plan:shoot', `Camera Rig (${d.date})`, 'equipment', rigDayCost(p, scenes), `rig:${d.id}`);
   } catch (e) {
     if (e instanceof FundsError) addLogOnce(state, p, `day:${d.id}`, `${p.title} couldn't pay for today's location and equipment. Add funding before the next shoot day.`);
   }

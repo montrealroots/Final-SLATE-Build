@@ -1,4 +1,5 @@
 import { Suspense, lazy, useState, type ReactNode } from 'react';
+import { LIGHTS, SCORES, SOUNDS, lightOf, scoreOf, soundsOf, type Light, type Score, type SoundChoice } from '../engine/craft';
 import { languageName, searchEthnicities } from '../data/identity';
 import { NATIONALITIES } from '../engine/identity';
 import { countryName } from '../world/gazetteer/gazetteer';
@@ -109,6 +110,37 @@ function Ideas({ p, fields, title, label = 'Choose Ideas', characterId, sceneId 
 }
 
 /** A story field with its Choose Ideas button under it: the field is Write My Own, as it always was. */
+/**
+ * The light the film is shot in, its score and its sound choices (craft.ts): each one asks something of the work, and
+ * says what under it. None is better than another. How the camera moves is chosen scene by scene, with the shot plan on
+ * the Schedule page.
+ */
+function CameraLightSound({ p }: { p: Project }) {
+  const light = lightOf(p);
+  const score = scoreOf(p);
+  const sounds = soundsOf(p);
+  const toggle = (x: SoundChoice, on: boolean) => edit(p, () => { p.axes.sound = on ? [...new Set([...soundsOf(p), x])] : soundsOf(p).filter((y) => y !== x); });
+  return (
+    <fieldset className="spaced" style={{ border: 0, padding: 0 }}>
+      <legend style={{ fontWeight: 600 }}>Light, Sound And Score</legend>
+      <p className="dim">Choices for the whole film. Each one changes the work: time on the day, crew, tests before the shoot, or days in post. None makes the film better by being chosen. How the camera moves is set scene by scene, with each scene's shot plan on the Schedule page.</p>
+      <div className="grid grid-2 form">
+        <IdeaField p={p} fields={['light']} title="Choose The Light It Is Shot In">
+          <SelectField label="The Light It Is Shot In" value={light} options={(Object.keys(LIGHTS) as Light[]).map((k) => ({ value: k, label: LIGHTS[k].label }))} hint={LIGHTS[light].hint}
+            onChange={(v) => edit(p, () => { p.axes.light = v as Light; })} />
+        </IdeaField>
+        <IdeaField p={p} fields={['score']} title="Choose Its Score">
+          <SelectField label="The Score" value={score} options={(Object.keys(SCORES) as Score[]).map((k) => ({ value: k, label: SCORES[k].label }))} hint={SCORES[score].hint}
+            onChange={(v) => edit(p, () => { p.axes.score = v as Score; })} />
+        </IdeaField>
+      </div>
+      <div className="col gap-1">
+        {(Object.keys(SOUNDS) as SoundChoice[]).map((k) => <Check key={k} label={SOUNDS[k].label} hint={SOUNDS[k].hint} checked={sounds.includes(k)} onChange={(on) => toggle(k, on)} />)}
+      </div>
+    </fieldset>
+  );
+}
+
 function IdeaField({ p, fields, title, children }: { p: Project; fields: IdeaField[]; title: string; children: ReactNode }) {
   return <div className="col gap-1">{children}<Ideas p={p} fields={fields} title={title} /></div>;
 }
@@ -219,6 +251,7 @@ export function ScriptTab({ p }: { p: Project }) {
               onChange={(v) => edit(p, () => { if (v.trim()) p.axes.styleEra = v; else delete p.axes.styleEra; })} />
           </IdeaField>
         </div>
+        {!nonfiction && <CameraLightSound p={p} />}
         <fieldset className="spaced" style={{ border: 0, padding: 0 }}>
           <legend style={{ fontWeight: 600 }}>What It's About</legend>
           <p className="dim">Some awards are for work about a subject. Declare the ones that are true of the story; nothing else reads them.</p>

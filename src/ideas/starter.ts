@@ -4115,16 +4115,19 @@ export const STARTER: Idea[] = [
    {
     "op": "shot",
     "coverage": "master",
-    "emphasis": "scene"
+    "emphasis": "scene",
+    "rig": "sticks"
    }
   ],
   "consumers": [
-   "takes.ts planTime, shotPlan",
+   "takes.ts planTime, shotPlan, recordTakes",
+   "craft.ts craftTime, craftRoles, rigDayCost",
    "production/schedule.ts sceneLoad",
    "finish.ts coverageEdit"
   ],
   "tests": [
-   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads"
+   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads",
+   "tests/craft.test.ts::each rig changes the time a scene takes by its own reset and running time, and nothing else about the plan"
   ],
   "fits": {
    "media": [
@@ -4138,7 +4141,7 @@ export const STARTER: Idea[] = [
   "v": 1,
   "field": "camera",
   "label": "Handheld Intimacy",
-  "text": "Plan operator movement and sound coordination.",
+  "text": "Carried by the operator: setups reset quickly, and takes vary more.",
   "kind": "mechanical",
   "scope": "scene",
   "tags": [],
@@ -4146,16 +4149,19 @@ export const STARTER: Idea[] = [
    {
     "op": "shot",
     "coverage": "standard",
-    "emphasis": "performances"
+    "emphasis": "performances",
+    "rig": "handheld"
    }
   ],
   "consumers": [
-   "takes.ts planTime, shotPlan",
+   "takes.ts planTime, shotPlan, recordTakes",
+   "craft.ts craftTime, craftRoles, rigDayCost",
    "production/schedule.ts sceneLoad",
    "finish.ts coverageEdit"
   ],
   "tests": [
-   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads"
+   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads",
+   "tests/craft.test.ts::each rig changes the time a scene takes by its own reset and running time, and nothing else about the plan"
   ],
   "fits": {
    "media": [
@@ -4169,7 +4175,7 @@ export const STARTER: Idea[] = [
   "v": 1,
   "field": "camera",
   "label": "Long Moving Takes",
-  "text": "Rehearsal, choreography and reset requirements.",
+  "text": "One rehearsed take that moves with the action, on a rented stabiliser. A take that fails starts again from the top.",
   "kind": "mechanical",
   "scope": "scene",
   "tags": [],
@@ -4178,16 +4184,19 @@ export const STARTER: Idea[] = [
     "op": "shot",
     "coverage": "master",
     "takes": "many",
-    "emphasis": "one-shot"
+    "emphasis": "one-shot",
+    "rig": "moving"
    }
   ],
   "consumers": [
-   "takes.ts planTime, shotPlan",
+   "takes.ts planTime, shotPlan, recordTakes",
+   "craft.ts craftTime, craftRoles, rigDayCost",
    "production/schedule.ts sceneLoad",
    "finish.ts coverageEdit"
   ],
   "tests": [
-   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads"
+   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads",
+   "tests/craft.test.ts::each rig changes the time a scene takes by its own reset and running time, and nothing else about the plan"
   ],
   "fits": {
    "media": [
@@ -4201,7 +4210,7 @@ export const STARTER: Idea[] = [
   "v": 1,
   "field": "camera",
   "label": "Controlled Dolly Moves",
-  "text": "Track/rig space and setup requirements.",
+  "text": "Track is laid for each setup by a key grip, on a rented dolly. Slower to set, steadier to shoot.",
   "kind": "mechanical",
   "scope": "scene",
   "tags": [],
@@ -4210,16 +4219,19 @@ export const STARTER: Idea[] = [
     "op": "shot",
     "coverage": "standard",
     "takes": "few",
-    "emphasis": "scene"
+    "emphasis": "scene",
+    "rig": "dolly"
    }
   ],
   "consumers": [
-   "takes.ts planTime, shotPlan",
+   "takes.ts planTime, shotPlan, recordTakes",
+   "craft.ts craftTime, craftRoles, rigDayCost",
    "production/schedule.ts sceneLoad",
    "finish.ts coverageEdit"
   ],
   "tests": [
-   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads"
+   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads",
+   "tests/craft.test.ts::each rig changes the time a scene takes by its own reset and running time, and nothing else about the plan"
   ],
   "fits": {
    "media": [
@@ -4245,12 +4257,14 @@ export const STARTER: Idea[] = [
    }
   ],
   "consumers": [
-   "takes.ts planTime, shotPlan",
+   "takes.ts planTime, shotPlan, recordTakes",
+   "craft.ts craftTime, craftRoles, rigDayCost",
    "production/schedule.ts sceneLoad",
    "finish.ts coverageEdit"
   ],
   "tests": [
-   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads"
+   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads",
+   "tests/craft.test.ts::each rig changes the time a scene takes by its own reset and running time, and nothing else about the plan"
   ],
   "fits": {
    "media": [
@@ -4277,12 +4291,14 @@ export const STARTER: Idea[] = [
    }
   ],
   "consumers": [
-   "takes.ts planTime, shotPlan",
+   "takes.ts planTime, shotPlan, recordTakes",
+   "craft.ts craftTime, craftRoles, rigDayCost",
    "production/schedule.ts sceneLoad",
    "finish.ts coverageEdit"
   ],
   "tests": [
-   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads"
+   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads",
+   "tests/craft.test.ts::each rig changes the time a scene takes by its own reset and running time, and nothing else about the plan"
   ],
   "fits": {
    "media": [
@@ -4294,52 +4310,106 @@ export const STARTER: Idea[] = [
  {
   "id": "camera_treatment.007",
   "v": 1,
-  "field": "camera",
+  "field": "light",
   "label": "Practical Low Light",
-  "text": "Camera tests and lighting/exposure constraints. A note for the crew: nothing in the schedule reads it yet.",
-  "kind": "reference",
+  "text": "Lamps in the room and what the day gives. Interiors need no gaffer and reset sooner; a take more is planned for each setup, after a day of camera tests.",
+  "kind": "mechanical",
   "scope": "project",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "light",
+    "light": "available"
+   }
+  ],
   "consumers": [
-   "the Creative Brief on the Script page (a note for the camera and lighting crew)"
+   "craft.ts craftTime, gafferNeeded, cameraTestDays, postFactors",
+   "takes.ts planTime",
+   "hiring.ts neededRoles",
+   "production/tasks.ts buildTasks"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
+   "tests/craft.test.ts::practical and available light: interiors reset sooner and need no gaffer, a take more is planned, after a day of tests"
+  ],
+  "fits": {
+   "media": [
+    "live-action",
+    "hybrid"
+   ]
+  },
+  "excludes": [
+   "camera_treatment.008",
+   "camera_treatment.009"
   ]
  },
  {
   "id": "camera_treatment.008",
   "v": 1,
-  "field": "camera",
+  "field": "light",
   "label": "High-Contrast Stylization",
-  "text": "Lighting plans and matching grade targets. A note for the crew: nothing in the schedule reads it yet.",
-  "kind": "reference",
+  "text": "Hard light and deep shadow, shaped setup by setup and matched in the grade: slower on the day and longer in the grade, after two days of tests.",
+  "kind": "mechanical",
   "scope": "project",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "light",
+    "light": "contrast"
+   }
+  ],
   "consumers": [
-   "the Creative Brief on the Script page (a note for the camera and lighting crew)"
+   "craft.ts craftTime, gafferNeeded, cameraTestDays, postFactors",
+   "takes.ts planTime",
+   "hiring.ts neededRoles",
+   "production/tasks.ts buildTasks"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
+   "tests/craft.test.ts::high contrast: slower on lit scenes, a longer grade, two days of tests, and no change to a day exterior"
+  ],
+  "fits": {
+   "media": [
+    "live-action",
+    "hybrid"
+   ]
+  },
+  "excludes": [
+   "camera_treatment.007",
+   "camera_treatment.009"
   ]
  },
  {
   "id": "camera_treatment.009",
   "v": 1,
-  "field": "camera",
+  "field": "light",
   "label": "Miniature Macro",
-  "text": "Scale lighting, lens and depth-of-field tests. A note for the crew: nothing in the schedule reads it yet.",
-  "kind": "reference",
+  "text": "Close lenses on small sets, for stop motion: two more stage days of lens and depth tests, and fewer frames in a day.",
+  "kind": "mechanical",
   "scope": "project",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "light",
+    "light": "macro"
+   }
+  ],
   "consumers": [
-   "the Creative Brief on the Script page (a note for the camera and lighting crew)"
+   "craft.ts craftTime, gafferNeeded, cameraTestDays, postFactors",
+   "takes.ts planTime",
+   "hiring.ts neededRoles",
+   "production/tasks.ts buildTasks"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
+   "tests/craft.test.ts::macro on miniatures is for stop motion: two more stage days and fewer frames a day; it asks nothing of a live film"
+  ],
+  "fits": {
+   "media": [
+    "animation",
+    "hybrid"
+   ]
+  },
+  "excludes": [
+   "camera_treatment.007",
+   "camera_treatment.008"
   ]
  },
  {
@@ -4347,135 +4417,217 @@ export const STARTER: Idea[] = [
   "v": 1,
   "field": "camera",
   "label": "Subjective Camera",
-  "text": "Point-of-view staging and continuity requirements. A note for the crew: nothing in the schedule reads it yet.",
-  "kind": "reference",
-  "scope": "project",
+  "text": "Seen through a character's eyes: eyelines to the lens are rehearsed and checked on playback.",
+  "kind": "mechanical",
+  "scope": "scene",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "shot",
+    "emphasis": "performances",
+    "rig": "pov"
+   }
+  ],
   "consumers": [
-   "the Creative Brief on the Script page (a note for the camera and lighting crew)"
+   "takes.ts planTime, shotPlan, recordTakes",
+   "craft.ts craftTime, craftRoles, rigDayCost",
+   "production/schedule.ts sceneLoad",
+   "finish.ts coverageEdit"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
-  ]
+   "tests/brief.test.ts::a camera idea sets the scene's shot plan, which the schedule already reads",
+   "tests/craft.test.ts::each rig changes the time a scene takes by its own reset and running time, and nothing else about the plan"
+  ],
+  "fits": {
+   "media": [
+    "live-action",
+    "hybrid"
+   ]
+  }
  },
  {
   "id": "sound_treatment.001",
   "v": 1,
   "field": "sound",
   "label": "Natural Location Texture",
-  "text": "Scout and capture useful environment sound. A note for the sound crew: nothing in the schedule reads it yet.",
-  "kind": "reference",
+  "text": "The recordist records each place by itself before the shoot: a day for every three locations, and less effects editing after.",
+  "kind": "mechanical",
   "scope": "project",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "sound",
+    "add": "texture"
+   }
+  ],
   "consumers": [
-   "the Creative Brief on the Script page (a note for the sound crew)"
+   "craft.ts craftTime, craftRoles, postFactors, dialogueHolds",
+   "production/tasks.ts buildTasks",
+   "production/shoot.ts needsDialogueReplacement",
+   "hiring.ts neededRoles"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
-  ]
+   "tests/craft.test.ts::each sound choice moves its own work and no other"
+  ],
+  "adds": true
  },
  {
   "id": "sound_treatment.002",
   "v": 1,
   "field": "sound",
   "label": "Dialogue Clarity",
-  "text": "Prioritize recording coverage and controlled noise. A note for the sound crew: nothing in the schedule reads it yet.",
-  "kind": "reference",
+  "text": "A boom operator on every dialogue scene, and a moment to quiet the set before each setup. Dialogue recorded this way needs replacing only when there is no boom operator after all.",
+  "kind": "mechanical",
   "scope": "project",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "sound",
+    "add": "clarity"
+   }
+  ],
   "consumers": [
-   "the Creative Brief on the Script page (a note for the sound crew)"
+   "craft.ts craftTime, craftRoles, postFactors, dialogueHolds",
+   "production/tasks.ts buildTasks",
+   "production/shoot.ts needsDialogueReplacement",
+   "hiring.ts neededRoles"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
-  ]
+   "tests/craft.test.ts::dialogue clarity: a boom operator is required, dialogue scenes reset a little slower, and a compromised day's dialogue holds"
+  ],
+  "adds": true
  },
  {
   "id": "sound_treatment.003",
   "v": 1,
   "field": "sound",
   "label": "Sparse Soundscape",
-  "text": "Plan deliberate quiet and selective Foley. A note for the sound crew: nothing in the schedule reads it yet.",
-  "kind": "reference",
+  "text": "Quiet, with few sounds, each one exposed: more Foley and a longer mix, and less score.",
+  "kind": "mechanical",
   "scope": "project",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "sound",
+    "add": "sparse"
+   }
+  ],
   "consumers": [
-   "the Creative Brief on the Script page (a note for the sound crew)"
+   "craft.ts craftTime, craftRoles, postFactors, dialogueHolds",
+   "production/tasks.ts buildTasks",
+   "production/shoot.ts needsDialogueReplacement",
+   "hiring.ts neededRoles"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
-  ]
+   "tests/craft.test.ts::each sound choice moves its own work and no other"
+  ],
+  "adds": true
  },
  {
   "id": "sound_treatment.004",
   "v": 1,
   "field": "sound",
   "label": "Heightened Creature Foley",
-  "text": "Creature movement/material recording tasks. A note for the sound crew: nothing in the schedule reads it yet.",
-  "kind": "reference",
+  "text": "Movement and material recorded for each creature: two Foley days for every creature in the script.",
+  "kind": "mechanical",
   "scope": "project",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "sound",
+    "add": "creature"
+   }
+  ],
   "consumers": [
-   "the Creative Brief on the Script page (a note for the sound crew)"
+   "craft.ts craftTime, craftRoles, postFactors, dialogueHolds",
+   "production/tasks.ts buildTasks",
+   "production/shoot.ts needsDialogueReplacement",
+   "hiring.ts neededRoles"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
-  ]
+   "tests/craft.test.ts::each sound choice moves its own work and no other"
+  ],
+  "adds": true
  },
  {
   "id": "sound_treatment.005",
   "v": 1,
-  "field": "sound",
+  "field": "score",
   "label": "Original Synth Score",
-  "text": "Commission an original score with electronic palette. A score is written either way; this is what you ask the composer for.",
-  "kind": "reference",
+  "text": "An electronic score, made by the composer alone: no players and no sessions.",
+  "kind": "mechanical",
   "scope": "project",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "score",
+    "score": "synth"
+   }
+  ],
   "consumers": [
-   "production/tasks.ts buildTasks (the score is commissioned either way; this is the composer's brief)"
+   "craft.ts postFactors, scoreSessions",
+   "production/tasks.ts buildTasks (the score, its recording sessions, the mix)"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
+   "tests/craft.test.ts::a score with players is recorded in sessions that cost money and hold the mix; an electronic one is the composer alone"
+  ],
+  "excludes": [
+   "sound_treatment.006",
+   "sound_treatment.007"
   ]
  },
  {
   "id": "sound_treatment.006",
   "v": 1,
-  "field": "sound",
+  "field": "score",
   "label": "Original Chamber Score",
-  "text": "Plan original small-ensemble score sessions. A score is written either way; this is what you ask the composer for.",
-  "kind": "reference",
+  "text": "A small ensemble, recorded: a session for every twenty minutes of the film, which the mix waits for.",
+  "kind": "mechanical",
   "scope": "project",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "score",
+    "score": "chamber"
+   }
+  ],
   "consumers": [
-   "production/tasks.ts buildTasks (the score is commissioned either way; this is the composer's brief)"
+   "craft.ts postFactors, scoreSessions",
+   "production/tasks.ts buildTasks (the score, its recording sessions, the mix)"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
+   "tests/craft.test.ts::a score with players is recorded in sessions that cost money and hold the mix; an electronic one is the composer alone"
+  ],
+  "excludes": [
+   "sound_treatment.005",
+   "sound_treatment.007"
   ]
  },
  {
   "id": "sound_treatment.007",
   "v": 1,
-  "field": "sound",
+  "field": "score",
   "label": "Original Percussive Score",
-  "text": "Plan rhythmic score and picture synchronization. A score is written either way; this is what you ask the composer for.",
-  "kind": "reference",
+  "text": "Percussion written tightly to the cut: longer to compose, with a session for every forty minutes.",
+  "kind": "mechanical",
   "scope": "project",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "score",
+    "score": "percussive"
+   }
+  ],
   "consumers": [
-   "production/tasks.ts buildTasks (the score is commissioned either way; this is the composer's brief)"
+   "craft.ts postFactors, scoreSessions",
+   "production/tasks.ts buildTasks (the score, its recording sessions, the mix)"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
+   "tests/craft.test.ts::a score with players is recorded in sessions that cost money and hold the mix; an electronic one is the composer alone"
+  ],
+  "excludes": [
+   "sound_treatment.005",
+   "sound_treatment.006"
   ]
  },
  {
@@ -4521,17 +4673,26 @@ export const STARTER: Idea[] = [
   "v": 1,
   "field": "sound",
   "label": "Layered Crowd Sound",
-  "text": "Crowd recordings, loop groups and mix planning. A note for the sound crew: nothing in the schedule reads it yet.",
-  "kind": "reference",
+  "text": "A loop group records the crowd after the lock: a session for every two scenes with a crowd.",
+  "kind": "mechanical",
   "scope": "project",
   "tags": [],
-  "patch": [],
+  "patch": [
+   {
+    "op": "sound",
+    "add": "crowd"
+   }
+  ],
   "consumers": [
-   "the Creative Brief on the Script page (a note for the sound crew)"
+   "craft.ts craftTime, craftRoles, postFactors, dialogueHolds",
+   "production/tasks.ts buildTasks",
+   "production/shoot.ts needsDialogueReplacement",
+   "hiring.ts neededRoles"
   ],
   "tests": [
-   "tests/brief.test.ts::every idea applies through the one command path and says first what it will do"
-  ]
+   "tests/craft.test.ts::each sound choice moves its own work and no other"
+  ],
+  "adds": true
  },
  {
   "id": "production_medium.001",

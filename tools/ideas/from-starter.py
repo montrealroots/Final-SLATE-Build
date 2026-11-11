@@ -10,12 +10,13 @@ src = json.load(open('docs/creative-depth/package/starter-options.json'))
 by = {o['id']: o for o in src['options']}
 out = []
 
-def idea(oid, field, kind, scope, patch, consumers, tests, fits=None, slots=None, text=None, tags=None, excludes=None):
+def idea(oid, field, kind, scope, patch, consumers, tests, fits=None, slots=None, text=None, tags=None, excludes=None, adds=False):
     o = by[oid]
     rec = {'id': oid, 'v': 1, 'field': field, 'label': o['label'], 'text': text or o['description'], 'kind': kind, 'scope': scope, 'tags': tags or [], 'patch': patch, 'consumers': consumers, 'tests': tests}
     if fits: rec['fits'] = fits
     if slots: rec['slots'] = slots
     if excludes: rec['excludes'] = excludes
+    if adds: rec['adds'] = True
     out.append(rec)
 
 DOC = ['script-effects.ts DOCUMENTS (the Pitch and the Treatment are made of these fields)']
@@ -237,33 +238,53 @@ for n, (place, ie, time, crowd) in LOC.items():
          slots=[S('place', "The Place's Name In Your Story", place)],
          text=f"A scene at a {low(o['label'])}{', with ' + str(crowd) + ' people in the background' if crowd else ''}. {'Exterior' if ie == 'EXT' else 'Interior'}, {'by day' if time == 'DAY' else 'at night'}: scouted, booked and scheduled like any other.")
 
-# ---------------- Camera: a shot plan where the engine has one; a note where it doesn't ----------------
-CAM = {1: dict(coverage='master', emphasis='scene'), 2: dict(coverage='standard', emphasis='performances'), 3: dict(coverage='master', takes='many', emphasis='one-shot'),
-       4: dict(coverage='standard', takes='few', emphasis='scene'), 5: dict(coverage='full', emphasis='performances'), 6: dict(coverage='master', takes='few', emphasis='scene')}
+# ---------------- Camera: how each scene is covered and what the camera is on; the light, for the whole film ----------------
+T_CRAFT = 'tests/craft.test.ts::'
+CAM = {1: dict(coverage='master', emphasis='scene', rig='sticks'), 2: dict(coverage='standard', emphasis='performances', rig='handheld'), 3: dict(coverage='master', takes='many', emphasis='one-shot', rig='moving'),
+       4: dict(coverage='standard', takes='few', emphasis='scene', rig='dolly'), 5: dict(coverage='full', emphasis='performances'), 6: dict(coverage='master', takes='few', emphasis='scene'),
+       10: dict(emphasis='performances', rig='pov')}
+CAM_TEXT = {2: 'Carried by the operator: setups reset quickly, and takes vary more.', 3: 'One rehearsed take that moves with the action, on a rented stabiliser. A take that fails starts again from the top.',
+            4: 'Track is laid for each setup by a key grip, on a rented dolly. Slower to set, steadier to shoot.', 10: "Seen through a character's eyes: eyelines to the lens are rehearsed and checked on playback."}
+LIGHT = {7: ('available', 'Lamps in the room and what the day gives. Interiors need no gaffer and reset sooner; a take more is planned for each setup, after a day of camera tests.'),
+         8: ('contrast', 'Hard light and deep shadow, shaped setup by setup and matched in the grade: slower on the day and longer in the grade, after two days of tests.'),
+         9: ('macro', 'Close lenses on small sets, for stop motion: two more stage days of lens and depth tests, and fewer frames in a day.')}
 for n in range(1, 11):
     oid = f'camera_treatment.{n:03d}'
     if n in CAM:
-        idea(oid, 'camera', 'mechanical', 'scene', [{'op': 'shot', **CAM[n]}], ['takes.ts planTime, shotPlan', 'production/schedule.ts sceneLoad', 'finish.ts coverageEdit'],
-             ['tests/brief.test.ts::a camera idea sets the scene\'s shot plan, which the schedule already reads'], fits={'media': ['live-action', 'hybrid']})
+        idea(oid, 'camera', 'mechanical', 'scene', [{'op': 'shot', **CAM[n]}], ['takes.ts planTime, shotPlan, recordTakes', 'craft.ts craftTime, craftRoles, rigDayCost', 'production/schedule.ts sceneLoad', 'finish.ts coverageEdit'],
+             ['tests/brief.test.ts::a camera idea sets the scene\'s shot plan, which the schedule already reads', T_CRAFT + 'each rig changes the time a scene takes by its own reset and running time, and nothing else about the plan'],
+             fits={'media': ['live-action', 'hybrid']}, **({'text': CAM_TEXT[n]} if n in CAM_TEXT else {}))
     else:
-        idea(oid, 'camera', 'reference', 'project', [], ['the Creative Brief on the Script page (a note for the camera and lighting crew)'], T_APPLY,
-             text=by[oid]['description'].rstrip('.') + '. A note for the crew: nothing in the schedule reads it yet.')
+        light, text = LIGHT[n]
+        idea(oid, 'light', 'mechanical', 'project', [{'op': 'light', 'light': light}], ['craft.ts craftTime, gafferNeeded, cameraTestDays, postFactors', 'takes.ts planTime', 'hiring.ts neededRoles', 'production/tasks.ts buildTasks'],
+             [T_CRAFT + {'available': 'practical and available light: interiors reset sooner and need no gaffer, a take more is planned, after a day of tests', 'contrast': 'high contrast: slower on lit scenes, a longer grade, two days of tests, and no change to a day exterior',
+                         'macro': 'macro on miniatures is for stop motion: two more stage days and fewer frames a day; it asks nothing of a live film'}[light]],
+             text=text, fits={'media': ['animation', 'hybrid']} if light == 'macro' else {'media': ['live-action', 'hybrid']}, excludes=[f'camera_treatment.{k:03d}' for k in LIGHT if k != n])
 
 # ---------------- Sound and music ----------------
+SOUND = {1: ('texture', 'The recordist records each place by itself before the shoot: a day for every three locations, and less effects editing after.'),
+         2: ('clarity', 'A boom operator on every dialogue scene, and a moment to quiet the set before each setup. Dialogue recorded this way needs replacing only when there is no boom operator after all.'),
+         3: ('sparse', 'Quiet, with few sounds, each one exposed: more Foley and a longer mix, and less score.'),
+         4: ('creature', 'Movement and material recorded for each creature: two Foley days for every creature in the script.'),
+         10: ('crowd', 'A loop group records the crowd after the lock: a session for every two scenes with a crowd.')}
+SCORE = {5: ('synth', 'An electronic score, made by the composer alone: no players and no sessions.'), 6: ('chamber', 'A small ensemble, recorded: a session for every twenty minutes of the film, which the mix waits for.'),
+         7: ('percussive', 'Percussion written tightly to the cut: longer to compose, with a session for every forty minutes.')}
 for n in range(1, 11):
     oid = f'sound_treatment.{n:03d}'
     if n == 9:
         idea(oid, 'sound', 'mechanical', 'character', [{'op': 'narrator'}], ['production/tasks.ts buildTasks (narration recording, which every mix waits for)'],
              ['tests/brief.test.ts::a narrator chosen from an idea is recorded after the lock, and the mix waits'], text='A character tells the story in voice-over: recorded once the picture is locked, before the final mix.')
-    elif n in (5, 6, 7):
-        idea(oid, 'sound', 'reference', 'project', [], ['production/tasks.ts buildTasks (the score is commissioned either way; this is the composer\'s brief)'], T_APPLY,
-             text=by[oid]['description'].rstrip('.') + ". A score is written either way; this is what you ask the composer for.")
+    elif n in SCORE:
+        score, text = SCORE[n]
+        idea(oid, 'score', 'mechanical', 'project', [{'op': 'score', 'score': score}], ['craft.ts postFactors, scoreSessions', 'production/tasks.ts buildTasks (the score, its recording sessions, the mix)'],
+             [T_CRAFT + 'a score with players is recorded in sessions that cost money and hold the mix; an electronic one is the composer alone'], text=text, excludes=[f'sound_treatment.{k:03d}' for k in SCORE if k != n])
     elif n == 8:
         idea(oid, 'sound', 'reference', 'project', [], ['songs.ts (add each song on the Songs card: licensing one there makes its clearance work and cost)'], T_APPLY,
              text='Existing songs carry the film. Choosing this licenses nothing: add each song on the Songs card, where licensing one makes its clearance work.')
     else:
-        idea(oid, 'sound', 'reference', 'project', [], ['the Creative Brief on the Script page (a note for the sound crew)'], T_APPLY,
-             text=by[oid]['description'].rstrip('.') + '. A note for the sound crew: nothing in the schedule reads it yet.')
+        sound, text = SOUND[n]
+        idea(oid, 'sound', 'mechanical', 'project', [{'op': 'sound', 'add': sound}], ['craft.ts craftTime, craftRoles, postFactors, dialogueHolds', 'production/tasks.ts buildTasks', 'production/shoot.ts needsDialogueReplacement', 'hiring.ts neededRoles'],
+             [T_CRAFT + ('dialogue clarity: a boom operator is required, dialogue scenes reset a little slower, and a compromised day\'s dialogue holds' if sound == 'clarity' else 'each sound choice moves its own work and no other')], text=text, adds=True)
 
 # ---------------- How it is made ----------------
 MED = {1: ('live-action', 'none'), 2: ('animation', '2d-drawn'), 3: ('animation', '2d-rigged'), 4: ('animation', '3d-cg'), 5: ('animation', 'stop-motion'), 6: ('animation', 'stop-motion'),

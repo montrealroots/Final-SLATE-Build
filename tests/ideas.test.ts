@@ -13,8 +13,8 @@ import { STARTER } from '../src/ideas/starter';
 
 applyGenreCatalog(JSON.parse(readFileSync('src/data/genre-catalog.json', 'utf8')));
 const genreIds = new Set(GENRES.map((g) => g.id));
-const FIELDS = ['premise', 'logline', 'conflict', 'stakes', 'theme', 'ending', 'tone', 'experience', 'world-rule', 'period', 'style', 'genre-blend', 'medium', 'character-goal', 'character-fear', 'makeup', 'wardrobe', 'crowd', 'camera', 'sound', 'location', 'physical-comedy'];
-const OPS = ['story', 'tone', 'setting', 'style', 'year', 'genre', 'medium', 'rule', 'character', 'look', 'narrator', 'crowd', 'stunt', 'shot', 'beats', 'cast'];
+const FIELDS = ['premise', 'logline', 'conflict', 'stakes', 'theme', 'ending', 'tone', 'experience', 'world-rule', 'period', 'style', 'genre-blend', 'medium', 'character-goal', 'character-fear', 'makeup', 'wardrobe', 'crowd', 'camera', 'light', 'sound', 'score', 'location', 'physical-comedy'];
+const OPS = ['story', 'tone', 'setting', 'style', 'year', 'genre', 'medium', 'rule', 'character', 'look', 'narrator', 'crowd', 'stunt', 'shot', 'light', 'sound', 'score', 'beats', 'cast'];
 const CHARACTER_OPS = new Set(['character', 'look', 'narrator']);
 const SCENE_OPS = new Set(['crowd', 'stunt', 'shot']);
 /** Every string a patch would write, for checking its words. */
@@ -181,27 +181,29 @@ describe('what the library holds, counted', () => {
     expect({ total: IDEAS.length, mechanical: count('mechanical'), brief: count('brief'), reference: count('reference') }).toMatchInlineSnapshot(`
       {
         "brief": 87,
-        "mechanical": 74,
-        "reference": 26,
+        "mechanical": 86,
+        "reference": 14,
         "total": 187,
       }
     `);
     expect(byField).toMatchInlineSnapshot(`
       {
-        "camera": 10,
+        "camera": 7,
         "character-fear": 8,
         "character-goal": 10,
         "conflict": 10,
         "crowd": 6,
         "ending": 10,
         "genre-blend": 8,
+        "light": 3,
         "location": 12,
         "makeup": 12,
         "medium": 10,
         "period": 11,
         "physical-comedy": 1,
         "premise": 12,
-        "sound": 10,
+        "score": 3,
+        "sound": 7,
         "stakes": 8,
         "style": 11,
         "theme": 10,

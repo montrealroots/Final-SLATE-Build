@@ -22,6 +22,7 @@ import { castRoleFor, estimateDays, requiredCrewPlan, roleCandidates } from './h
 import { roleLabel } from './people';
 import { buildTasks, dayFees, groupShootDays, materialCost, VOICE_SESSION_STUDIO, RENDER_NODE_DAY_COST, type ShootDayGroup } from './production';
 import { CROWD_DAY_RATE, RENDER_HOURS_PER_FRAME } from './production/rates';
+import { rigDayCost } from './craft';
 import { makeupDayCost, physicalCrowd } from './looks';
 import { sessionCost } from './mocap';
 import { approvedCharacters, approvedScenes, fundingScenario, onDraftApproved } from './projects';
@@ -103,10 +104,14 @@ export function costBreakdown(state: GameState, p: Project): CostBreakdown {
     // Makeup materials used up on each day made-up people work (looks.ts), as the schedule reserves them.
     let makeupDays = 0;
     let makeupCost = 0;
+    let rigDays = 0;
+    let rigCost = 0;
     for (const g of groups) {
       const its = scenes.filter((s) => g.sceneIds.includes(s.id));
       const m = makeupDayCost(its, approvedCharacters(p));
       if (m) { makeupDays += 1; makeupCost += m; }
+      const rig = rigDayCost(p, its);
+      if (rig) { rigDays += 1; rigCost += rig; }
       const crowd = its.reduce((a, s) => a + physicalCrowd(s), 0);
       if (!crowd) continue;
       const c = crowds.get(groupLabel(g)) ?? { people: 0, days: 0 };
@@ -114,6 +119,7 @@ export function costBreakdown(state: GameState, p: Project): CostBreakdown {
     }
     for (const [label, c] of crowds) lines.push({ area: 'shoot', label: `Background performers: ${label}`, amount: c.people * CROWD_DAY_RATE, driver: `${c.people} performer-days at ${money(CROWD_DAY_RATE)}, over ${c.days} ${c.days === 1 ? 'day' : 'days'}` });
     if (makeupCost) lines.push({ area: 'shoot', label: 'Makeup materials', amount: makeupCost, driver: `Applied fresh on ${makeupDays} shoot ${makeupDays === 1 ? 'day' : 'days'}` });
+    if (rigCost) lines.push({ area: 'shoot', label: 'Camera rig rental', amount: rigCost, driver: `A dolly and track or a stabiliser on ${rigDays} shoot ${rigDays === 1 ? 'day' : 'days'}` });
     for (const x of tasks) { const m = materialCost(x); if (m) lines.push({ area: 'builds', label: x.label, amount: m, driver: 'Materials and licences' }); }
   }
   const voice = tasks.filter((x) => x.kind === 'anim:voice').reduce((a, x) => a + (x.units - x.done), 0);

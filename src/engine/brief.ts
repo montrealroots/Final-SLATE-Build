@@ -14,6 +14,8 @@
 // A pick is recorded on the project with the idea's ID and version, never its text: `p.brief.picks`.
 //
 // The ideas themselves are in src/ideas/, loaded when the picker opens. This module is small and holds no catalog.
+import { money } from './budget';
+import { LIGHTS, RIGS, SCORES, SOUNDS, soundsOf, type Light, type Rig, type Score, type SoundChoice } from './craft';
 import { MAKEUP, WARDROBE, costumeCopies, makeup, makeupShare, physicalCrowd, statesOf, wardrobe, wardrobeMismatch, MAX_STATES, type MakeupId, type WardrobeId } from './looks';
 import { addCharacter, addScene, assertEditable, setGenres, updateCharacter, updateScene } from './projects';
 import { newId } from './state';
@@ -52,14 +54,17 @@ export type Command =
   | { op: 'narrator' }
   | { op: 'crowd'; method?: 'digital' | 'practical'; look?: MakeupId | null }
   | { op: 'stunt'; text: string }
-  | { op: 'shot'; coverage?: 'master' | 'standard' | 'full'; takes?: 'one' | 'few' | 'many'; emphasis?: 'scene' | 'performances' | 'detail' | 'one-shot' }
+  | { op: 'shot'; coverage?: 'master' | 'standard' | 'full'; takes?: 'one' | 'few' | 'many'; emphasis?: 'scene' | 'performances' | 'detail' | 'one-shot'; rig?: Rig }
+  | { op: 'light'; light: Light }
+  | { op: 'sound'; add: SoundChoice }
+  | { op: 'score'; score: Score }
   | { op: 'beats'; beats: Beat[] }
   | { op: 'cast'; parts: { slot: string; name: string; size: StoryCharacter['roleSize']; entity?: StoryCharacter['entity']; wants?: string }[] };
 
 /** Where an idea is offered: the field its picker hangs on. */
 export type IdeaField =
   | 'premise' | 'logline' | 'conflict' | 'stakes' | 'theme' | 'ending' | 'tone' | 'experience' | 'world-rule' | 'period' | 'style' | 'genre-blend' | 'medium'
-  | 'character-goal' | 'character-fear' | 'makeup' | 'wardrobe' | 'crowd' | 'camera' | 'sound' | 'location' | 'physical-comedy';
+  | 'character-goal' | 'character-fear' | 'makeup' | 'wardrobe' | 'crowd' | 'camera' | 'light' | 'sound' | 'score' | 'location' | 'physical-comedy';
 
 /** What an idea's choices apply to: the project, the characters the player picks, or the scenes they pick. */
 export type IdeaScope = 'project' | 'character' | 'scene';
@@ -86,6 +91,8 @@ export interface Idea {
   fits?: { genres?: string[]; formats?: Format[]; media?: Medium[] };
   /** Ideas that can't be held together with it on the same target. */
   excludes?: string[];
+  /** It adds to a set (a sound choice): choosing it leaves the field's other choices in place. */
+  adds?: true;
   patch: Command[];
   /** The code that reads what the patch sets: file and function, or the document it belongs to. */
   consumers: string[];
@@ -107,7 +114,7 @@ export interface Target {
   keep?: string[];
 }
 
-export interface IdeaPick { id: string; v: number; field: IdeaField; at: number; characterIds?: string[]; sceneIds?: string[] }
+export interface IdeaPick { id: string; v: number; field: IdeaField; at: number; characterIds?: string[]; sceneIds?: string[]; /** It adds to a set (a sound choice): a later pick for the same field leaves it in place. */ adds?: true }
 export interface Brief {
   picks: IdeaPick[];
   /** Ideas the player marked to come back to, by ID. */
@@ -238,10 +245,39 @@ export function previewIdea(p: Project, idea: Idea, t: Target = {}): IdeaPreview
         if (scenes.length && live) out.work.push('A stunt coordinator, a rehearsal day, and a scene that shoots more slowly. A costume worn in it is made twice.');
         break;
       case 'shot':
-        for (const s of scenes) out.changes.push(`${s.heading.place || 'A scene'}, Shot Plan: ${[c.coverage && `${c.coverage} coverage`, c.takes && `${c.takes === 'one' ? 'one take' : c.takes === 'few' ? 'a few takes' : 'many takes'}`, c.emphasis && `for ${c.emphasis === 'one-shot' ? 'one continuous shot' : c.emphasis}`].filter(Boolean).join(', ')}.`);
+        for (const s of scenes) out.changes.push(`${s.heading.place || 'A scene'}, Shot Plan: ${[c.rig && RIGS[c.rig].label.toLowerCase(), c.coverage && `${c.coverage} coverage`, c.takes && `${c.takes === 'one' ? 'one take' : c.takes === 'few' ? 'a few takes' : 'many takes'}`, c.emphasis && `for ${c.emphasis === 'one-shot' ? 'one continuous shot' : c.emphasis}`].filter(Boolean).join(', ')}.`);
         if (scenes.length && !p.takesModel) out.warnings.push('This project was started before shot plans: the choice is kept as a note and changes no shoot day.');
         else if (scenes.length) out.work.push('The time each scene takes to shoot follows its coverage and takes; the Schedule shows the days.');
+        if (scenes.length && c.rig && p.takesModel) {
+          const d = RIGS[c.rig];
+          const days = Math.ceil(scenes.length * d.rehearsal);
+          out.work.push(`${d.label}: ${d.hint}`);
+          if (d.role) out.work.push(`${d.why} Without one, every setup on it is slower than on a tripod.`);
+          if (d.dayCost) out.work.push(`Rented kit, about ${money(d.dayCost)} for each shoot day with one of these scenes.`);
+          if (days) out.work.push(`${days} rehearsal ${days === 1 ? 'day' : 'days'} with the cast before the shoot.`);
+        }
         break;
+      case 'light': {
+        const d = LIGHTS[c.light];
+        out.changes.push(`The Light It Is Shot In: ${d.label}.`);
+        if (c.light === 'macro' && p.axes.technique !== 'stop-motion' && !p.scenes.some((s) => s.technique === 'stop-motion')) out.warnings.push('Macro lenses on miniatures are for stop motion. On this project it is kept as a choice and asks nothing.');
+        else if (c.light !== 'standard') out.work.push(d.hint);
+        break;
+      }
+      case 'sound': {
+        const d = SOUNDS[c.add];
+        out.changes.push(soundsOf(p).includes(c.add) ? `Sound: ${d.label} is chosen already.` : `Sound: adds ${d.label}. Your other sound choices stay.`);
+        out.work.push(d.hint);
+        if (c.add === 'creature' && !p.characters.some((ch) => ch.entity !== 'human')) out.warnings.push('No creature is in the script yet, so there is nothing to record until one is.');
+        if (c.add === 'crowd' && !p.scenes.some((s) => s.crowd > 0)) out.warnings.push('No scene has a crowd yet, so no loop group is booked until one does.');
+        break;
+      }
+      case 'score': {
+        const d = SCORES[c.score];
+        out.changes.push(`The Score: ${d.label}.`);
+        out.work.push(d.hint);
+        break;
+      }
       case 'beats': {
         const chosen = (t.beats ?? []).map((i) => c.beats[i]).filter(Boolean);
         for (const b of chosen) out.changes.push(`New scene: ${b.intExt}. ${fill(b.place, idea, t.slots)}, ${b.time.toLowerCase()}. ${fill(b.objective, idea, t.slots)}`);
@@ -320,8 +356,11 @@ export function applyIdea(state: GameState, p: Project, idea: Idea, t: Target = 
         break;
       case 'stunt': for (const s of scenes) if (!keep.has(`scene.${s.id}.stunts`)) updateScene(p, s.id, { stunts: fill(c.text, idea, t.slots) }); break;
       case 'shot':
-        for (const s of scenes) { const cur = (p.shotPlans ??= {})[s.id] ?? {}; p.shotPlans[s.id] = { ...cur, ...(c.coverage ? { coverage: c.coverage } : {}), ...(c.takes ? { takes: c.takes } : {}), ...(c.emphasis ? { emphasis: c.emphasis } : {}) }; }
+        for (const s of scenes) { const cur = (p.shotPlans ??= {})[s.id] ?? {}; p.shotPlans[s.id] = { ...cur, ...(c.coverage ? { coverage: c.coverage } : {}), ...(c.takes ? { takes: c.takes } : {}), ...(c.emphasis ? { emphasis: c.emphasis } : {}), ...(c.rig ? { rig: c.rig } : {}) }; }
         break;
+      case 'light': p.axes.light = c.light; break;
+      case 'sound': p.axes.sound = [...new Set([...soundsOf(p), c.add])]; break;
+      case 'score': p.axes.score = c.score; break;
       case 'cast':
         for (const part of c.parts) {
           const name = fill(part.name, idea, t.slots);
@@ -350,14 +389,17 @@ export function applyIdea(state: GameState, p: Project, idea: Idea, t: Target = 
   const sameTarget = (k: IdeaPick) => k.field === idea.field && (idea.scope === 'project'
     || (idea.scope === 'character' && !!k.characterIds?.some((x) => t.characterIds?.includes(x)))
     || (idea.scope === 'scene' && !!k.sceneIds?.some((x) => t.sceneIds?.includes(x))));
-  if (idea.field !== 'world-rule' && idea.field !== 'location') {
-    for (const k of brief.picks.filter(sameTarget)) {
+  if (idea.adds) brief.picks = brief.picks.filter((k) => k.id !== idea.id);
+  else if (idea.field !== 'world-rule' && idea.field !== 'location') {
+    // A choice that replaces the field's leaves the ones that add to it (a narrator beside the sound choices).
+    const adding = new Set(brief.picks.filter((k) => k.adds).map((k) => k.id));
+    for (const k of brief.picks.filter((x) => sameTarget(x) && !adding.has(x.id))) {
       if (idea.scope === 'character') k.characterIds = k.characterIds!.filter((x) => !t.characterIds!.includes(x));
       if (idea.scope === 'scene') k.sceneIds = k.sceneIds!.filter((x) => !t.sceneIds!.includes(x));
     }
-    brief.picks = brief.picks.filter((k) => !(k.field === idea.field && (idea.scope === 'project' ? true : idea.scope === 'character' ? !k.characterIds?.length : !k.sceneIds?.length)));
+    brief.picks = brief.picks.filter((k) => adding.has(k.id) || !(k.field === idea.field && (idea.scope === 'project' ? true : idea.scope === 'character' ? !k.characterIds?.length : !k.sceneIds?.length)));
   }
-  brief.picks.push({ id: idea.id, v: idea.v, field: idea.field, at: state.now, ...(idea.scope === 'character' ? { characterIds: chars.map((c) => c.id) } : {}), ...(idea.scope === 'scene' ? { sceneIds: scenes.map((s) => s.id) } : {}) });
+  brief.picks.push({ id: idea.id, v: idea.v, field: idea.field, at: state.now, ...(idea.adds ? { adds: true as const } : {}), ...(idea.scope === 'character' ? { characterIds: chars.map((c) => c.id) } : {}), ...(idea.scope === 'scene' ? { sceneIds: scenes.map((s) => s.id) } : {}) });
   return pre.changes;
 }
 
