@@ -61,7 +61,10 @@ const PICKER: Record<string, string> = {
   'ScriptViews.tsx|"Theme"': 'Choose A Theme: 10 ideas',
   'ScriptViews.tsx|"Intended Ending"': 'Choose An Ending: 10 ideas',
   'ScriptViews.tsx|"Tone"': 'Choose A Tone: 11 ideas',
-  'ScriptViews.tsx|"Intended Experience"': 'Written by a tone idea; no picker of its own yet (milestone C)',
+  'ScriptViews.tsx|"Intended Experience"': 'Choose What It Should Feel Like: 8 ideas (a tone idea also writes it)',
+  'ScriptViews.tsx|"Tonal Intention"': 'Ideas For This Scene: 10 tones for a scene',
+  'ScriptViews.tsx|"Season Arc"': 'Choose A Season Arc: 8 ideas',
+  'ScriptViews.tsx|"What Kind Of Being"': 'What Kind Of Being: 10 ideas',
   'ScriptViews.tsx|"Year It Is Set In"': 'Choose When It Is Set: the present day and ten decades',
   'ScriptViews.tsx|"The Look It Borrows"': 'Choose A Look To Borrow: ten decades, or any words',
   'ScriptViews.tsx|"Wants"': 'What They Want: 10 ideas',
@@ -162,8 +165,8 @@ describe('the field inventory', () => {
     for (const r of out.slice(1)) n[kind(r[6])] = (n[kind(r[6])] ?? 0) + 1;
     expect(n).toMatchInlineSnapshot(`
       {
-        "has ideas": 48,
-        "no picker yet": 15,
+        "has ideas": 52,
+        "no picker yet": 11,
         "no picker, by design": 190,
         "the picker itself": 10,
       }
@@ -178,7 +181,7 @@ const BUTTON: Record<Idea['field'], string> = {
   experience: 'Script: Intended Experience', 'world-rule': 'Script: Story World Rules', period: 'Script: Year It Is Set In', style: 'Script: The Look It Borrows', 'genre-blend': 'Script: Blend Genres', medium: 'Script: How It Is Made',
   'character-goal': 'Characters: Wants', 'character-fear': 'Characters: Fears', makeup: 'Characters: How They Look', wardrobe: 'Characters: How They Look', crowd: 'Script: Ideas For This Scene', camera: 'Script: Ideas For This Scene',
   sound: 'Script: Sound And Music', light: 'Script: The Light It Is Shot In', score: 'Script: Sound And Music',
-  'genre-route': 'Script: Routes Through Its Genre', viewpoint: 'Script: Point Of View', question: 'Script: Central Question', setting: 'Script: Story Setting', 'character-description': 'Characters: Description',
+  'genre-route': 'Script: Routes Through Its Genre', 'season-arc': 'Script: Season Arc', 'scene-tone': 'Script: Ideas For This Scene', 'character-being': 'Characters: What Kind Of Being', viewpoint: 'Script: Point Of View', question: 'Script: Central Question', setting: 'Script: Story Setting', 'character-description': 'Characters: Description',
   'scene-objective': 'Script: Ideas For This Scene', 'scene-action': 'Script: Ideas For This Scene', 'scene-turn': 'Script: Ideas For This Scene',
   props: 'Script: Ideas For This Scene', animals: 'Script: Ideas For This Scene', vehicles: 'Script: Ideas For This Scene', effects: 'Script: Ideas For This Scene', location: 'Script: Add A Scene From An Idea', 'physical-comedy': 'Script: Ideas For This Scene',
 };
@@ -198,6 +201,7 @@ const sets = (c: Command): string => {
     case 'crowd': return [c.method ? 'scene.crowdMethod' : '', c.look !== undefined ? 'scene.crowdLook' : ''].filter(Boolean).join(', ');
     case 'stunt': return 'scene.stunts';
     case 'scene': return `scene.${c.field}`;
+    case 'season': return 'seasonArc';
     case 'needs': return `scene.${c.kind}`;
     case 'shot': return 'shotPlans[scene]';
     case 'light': return 'axes.light';
@@ -237,8 +241,8 @@ describe('the effect coverage', () => {
     for (const r of out.slice(1)) n[`${r[4]}: ${r[10]}`] = (n[`${r[4]}: ${r[10]}`] ?? 0) + 1;
     expect(n).toMatchInlineSnapshot(`
       {
-        "document/identity information: implemented+browser verified": 4,
-        "document/identity information: implemented+engine verified": 168,
+        "document/identity information: implemented+browser verified": 5,
+        "document/identity information: implemented+engine verified": 203,
         "mechanical decision: implemented+browser verified": 4,
         "mechanical decision: implemented+engine verified": 184,
         "visual reference: reference-only by design": 14,

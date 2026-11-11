@@ -22,10 +22,10 @@ import { newId } from './state';
 import type { Format, GameState, IntExt, Medium, Project, Scene, StoryCharacter, Technique, TimeOfDay } from './types';
 
 export type StoryField = 'logline' | 'premise' | 'stakes' | 'conflict' | 'viewpoint' | 'theme' | 'ending' | 'intendedExperience' | 'question';
-export type CharacterField = 'wants' | 'fears' | 'description';
+export type CharacterField = 'wants' | 'fears' | 'description' | 'entityNote';
 /** A scene's own words: what it is for, what happens, what turns. Kept, never read for meaning. */
-export type SceneField = 'objective' | 'action' | 'turningPoint';
-export const SCENE_LABEL: Record<SceneField, string> = { objective: 'Objective', action: 'Action', turningPoint: 'Turning Point' };
+export type SceneField = 'objective' | 'action' | 'turningPoint' | 'tone';
+export const SCENE_LABEL: Record<SceneField, string> = { objective: 'Objective', action: 'Action', turningPoint: 'Turning Point', tone: 'Tonal Intention' };
 /** What a scene needs on the day, as lists the breakdown reads: each entry is work, crew or money. */
 export type NeedKind = 'props' | 'animals' | 'vehicles' | 'vfx';
 export const NEED_LABEL: Record<NeedKind, string> = { props: 'Props', animals: 'Animals', vehicles: 'Vehicles', vfx: 'Visual Effects' };
@@ -67,6 +67,7 @@ export type Command =
   | { op: 'crowd'; method?: 'digital' | 'practical'; look?: MakeupId | null }
   | { op: 'stunt'; text: string }
   | { op: 'scene'; field: SceneField; text: string }
+  | { op: 'season'; text: string }
   | { op: 'needs'; kind: NeedKind; items: string[] }
   | { op: 'shot'; coverage?: 'master' | 'standard' | 'full'; takes?: 'one' | 'few' | 'many'; emphasis?: 'scene' | 'performances' | 'detail' | 'one-shot'; rig?: Rig }
   | { op: 'light'; light: Light }
@@ -79,7 +80,7 @@ export type Command =
 export type IdeaField =
   | 'premise' | 'logline' | 'conflict' | 'stakes' | 'theme' | 'ending' | 'tone' | 'experience' | 'world-rule' | 'period' | 'style' | 'genre-blend' | 'medium'
   | 'character-goal' | 'character-fear' | 'makeup' | 'wardrobe' | 'crowd' | 'camera' | 'light' | 'sound' | 'score' | 'location' | 'physical-comedy'
-  | 'genre-route' | 'viewpoint' | 'question' | 'setting' | 'character-description' | 'scene-objective' | 'scene-action' | 'scene-turn' | 'props' | 'animals' | 'vehicles' | 'effects';
+  | 'genre-route' | 'season-arc' | 'scene-tone' | 'character-being' | 'viewpoint' | 'question' | 'setting' | 'character-description' | 'scene-objective' | 'scene-action' | 'scene-turn' | 'props' | 'animals' | 'vehicles' | 'effects';
 
 /** What an idea's choices apply to: the project, the characters the player picks, or the scenes they pick. */
 export type IdeaScope = 'project' | 'character' | 'scene';
@@ -145,7 +146,7 @@ export function fill(text: string, idea: Pick<Idea, 'slots'>, slots: Record<stri
 }
 
 const STORY_LABEL: Record<StoryField, string> = { logline: 'Logline', premise: 'Premise', stakes: 'Stakes', conflict: 'Central Conflict', viewpoint: 'Point Of View', theme: 'Theme', ending: 'Intended Ending', intendedExperience: 'Intended Experience', question: 'Central Question' };
-const CHARACTER_LABEL: Record<CharacterField, string> = { wants: 'What They Want', fears: 'What They Fear', description: 'Description' };
+const CHARACTER_LABEL: Record<CharacterField, string> = { wants: 'What They Want', fears: 'What They Fear', description: 'Description', entityNote: 'What Kind Of Being' };
 
 const names = (xs: string[]): string => (xs.length <= 1 ? xs[0] ?? '' : `${xs.slice(0, -1).join(', ')} and ${xs.at(-1)}`);
 const hours = (min: number): string => { const h = Math.floor(min / 60); const m = Math.round(min % 60); return h ? `${h} ${h === 1 ? 'hour' : 'hours'}${m ? ` ${m} minutes` : ''}` : `${m} minutes`; };
@@ -259,8 +260,9 @@ export function previewIdea(p: Project, idea: Idea, t: Target = {}): IdeaPreview
       case 'stunt': for (const s of scenes) { out.changes.push(`${s.heading.place || 'A scene'}, Stunts: ${fill(c.text, idea, t.slots)}.`); overwrite(`scene.${s.id}.stunts`, `${s.heading.place || 'Scene'}: Stunts`, s.stunts, fill(c.text, idea, t.slots)); }
         if (scenes.length && live) out.work.push('A stunt coordinator, a rehearsal day, and a scene that shoots more slowly. A costume worn in it is made twice.');
         break;
+      case 'season': { const next = fill(c.text, idea, t.slots); out.changes.push(`Season Arc: ${next}`); overwrite('seasonArc', 'Season Arc', p.seasonArc ?? '', next); if (p.episodes.length < 2) out.warnings.push('A season arc is for a series. On a single film it is kept as words.'); break; }
       case 'scene':
-        for (const s of scenes) { const next = fill(c.text, idea, t.slots); out.changes.push(`${s.heading.place || 'A scene'}, ${SCENE_LABEL[c.field]}: ${next}`); overwrite(`scene.${s.id}.${c.field}`, `${s.heading.place || 'Scene'}: ${SCENE_LABEL[c.field]}`, s[c.field], next); }
+        for (const s of scenes) { const next = fill(c.text, idea, t.slots); out.changes.push(`${s.heading.place || 'A scene'}, ${SCENE_LABEL[c.field]}: ${next}`); overwrite(`scene.${s.id}.${c.field}`, `${s.heading.place || 'Scene'}: ${SCENE_LABEL[c.field]}`, s[c.field] ?? '', next); }
         break;
       case 'needs': {
         const items = c.items.map((x) => fill(x, idea, t.slots));
@@ -383,6 +385,7 @@ export function applyIdea(state: GameState, p: Project, idea: Idea, t: Target = 
         break;
       case 'stunt': for (const s of scenes) if (!keep.has(`scene.${s.id}.stunts`)) updateScene(p, s.id, { stunts: fill(c.text, idea, t.slots) }); break;
       case 'scene': for (const s of scenes) if (!keep.has(`scene.${s.id}.${c.field}`)) updateScene(p, s.id, { [c.field]: fill(c.text, idea, t.slots) }); break;
+      case 'season': if (!keep.has('seasonArc')) p.seasonArc = fill(c.text, idea, t.slots).slice(0, 2000); break;
       case 'needs':
         // Added to what the scene lists already, never replacing it, and never twice.
         for (const s of scenes) updateScene(p, s.id, { [c.kind]: [...s[c.kind], ...c.items.map((x) => fill(x, idea, t.slots)).filter((x) => !s[c.kind].some((y) => y.toLowerCase() === x.toLowerCase()))] });

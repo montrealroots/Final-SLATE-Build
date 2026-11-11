@@ -193,4 +193,59 @@ const effects = needs('effects', 'vfx', [
   ['Something That Isn\'t There', 'A presence the cast played to on the day is put into the shot.', ['Composited figure']],
 ]);
 
-export const SCENES: Idea[] = [...viewpoint, ...question, ...setting, ...description, ...sceneObjective, ...sceneAction, ...sceneTurn, ...props, ...animals, ...vehicles, ...effects];
+const experience = story('experience', 'intendedExperience', [
+  ['Leaning Forward', 'The audience leans forward the whole way, and breathes out only at the end.'],
+  ['Laughing, Then Not', 'They laugh freely for an hour, and are caught out by how much they care.'],
+  ['Unsettled On The Way Home', 'Nothing jumps out. They leave uneasy, and are still thinking about it on the way home.'],
+  ['Good Company', 'They spend time with people they would be glad to know, and are sorry when it ends.'],
+  ['Wrung Out', 'It is hard to watch in places, and they are glad they did.'],
+  ['Wide-Eyed', 'They see things they have not seen before, and want to see them again.'],
+  ['Arguing In The Foyer', 'They come out disagreeing about who was right, and keep at it.'],
+  ['Quietly Moved', 'Nothing is pushed. Somewhere near the end, it lands.'],
+], ['experience']);
+
+const sceneTone = scene('scene-tone', 'tone', [
+  ['Played Straight', 'Played completely straight: nobody in the scene knows it is funny.'],
+  ['Held Breath', 'Quiet and held: everyone is waiting for one person to speak.'],
+  ['Too Bright', 'Cheerful on the surface, and a little too bright to be trusted.'],
+  ['Tender', 'Unhurried and tender, with room for silences.'],
+  ['Brisk', 'Brisk and businesslike: the feeling is in what is left out.'],
+  ['Giddy', 'Giddy and fast, on the edge of going wrong.'],
+  ['Cold', 'Cold and exact: nobody raises their voice.'],
+  ['Ragged', 'Ragged and overlapping: people talk across each other.'],
+  ['Stunned', 'Stunned and slow, as if under water.'],
+  ['Wry', 'Wry: they can both see how this looks.'],
+]);
+
+const seasonArc: Idea[] = ([
+  ['A Place Changes Hands', 'Across the season the place passes from the people who built it to the people who will run it, and nobody is quite ready.'],
+  ['One Secret, Coming Out', 'A secret known to one person in the first episode is known to everyone by the last, one person at a time.'],
+  ['The Year Of The Case', 'One case runs under every episode, and what it costs the people working it is the real story.'],
+  ['Strangers Into A Crew', 'People who would not choose each other become, by the end, unable to do the job apart.'],
+  ['The Long Way Down', 'Someone decent makes one compromise an episode, and we watch where that leads.'],
+  ['Countdown', 'A date is set in the first episode, and every episode brings it closer.'],
+  ['Home, Then Away, Then Home', 'The season leaves, goes as far as it can, and comes back to find home is different.'],
+  ['Two Households', 'Two families, tied together by one event, pulling in different directions all season.'],
+] as [string, string][]).map(([label, text]): Idea => ({
+  id: `season-arc.${slug(label)}`, v: 1, field: 'season-arc', label, text, kind: 'brief', scope: 'project', tags: ['season'],
+  fits: { formats: ['series', 'limited-series', 'anthology-series', 'documentary-series', 'web-series'] },
+  patch: [{ op: 'season', text }], consumers: ['season.ts (the Season card on the Script page, where each episode says what it moves)'], tests: T_APPLY,
+}));
+
+const being: Idea[] = ([
+  ['Almost A Person', 'Human at a glance, and wrong in the joints and the stillness.'],
+  ['Made, Not Born', 'Built by someone, for a purpose it has outlived; the seams show.'],
+  ['Older Than The Town', 'Part of the place long before there were people in it, and patient.'],
+  ['Small And Many', 'Never one of them: a number, moving as one.'],
+  ['A Voice Only', 'Heard and never seen; what it wants has to be worked out from what it asks.'],
+  ['The Returned', 'Someone who died here and came back as they were on the day, a little slower.'],
+  ['An Animal That Understands', 'An ordinary animal to look at, which follows every word.'],
+  ['From Elsewhere', 'A visitor doing its best to pass, with no feel for what is ordinary.'],
+  ['A Machine With Habits', 'A working machine that has picked up preferences nobody gave it.'],
+  ['Grown From The Place', 'Made of what the place is made of: bark, salt, rust or river weed.'],
+] as [string, string][]).map(([label, text]): Idea => ({
+  id: `character-being.${slug(label)}`, v: 1, field: 'character-being', label, text, kind: 'brief', scope: 'character', tags: ['creature'],
+  patch: [{ op: 'character', field: 'entityNote', text }], consumers: ['the Characters page (What Kind Of Being, for design and casting)'], tests: T_APPLY,
+}));
+
+export const SCENES: Idea[] = [...experience, ...sceneTone, ...seasonArc, ...being, ...viewpoint, ...question, ...setting, ...description, ...sceneObjective, ...sceneAction, ...sceneTurn, ...props, ...animals, ...vehicles, ...effects];
