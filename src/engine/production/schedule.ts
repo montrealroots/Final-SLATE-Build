@@ -16,6 +16,7 @@ import { planTime } from '../takes';
 import { songUses } from '../songs';
 import { childShare, ensureLicence, minorFor, type Minor } from '../minors';
 import { rigDayCost } from '../craft';
+import { awayCosts, dayPlace } from '../destinations';
 import { PLATE_FACTOR, digitalCrowd, makeupDayCost, makeupShare, physicalCrowd } from '../looks';
 import { covers } from '../people';
 
@@ -259,7 +260,9 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   const planned = planShootDays(state, p, shootStart).map((d) => ({ ...d, sceneIds: d.sceneIds.filter((s) => !capturedIds.has(s)) })).filter((d) => d.sceneIds.length);
   // Budget the schedule: shoot-day costs and materials are reserved now, so they can't be spent twice.
   const shootCost = planned.length * (dayFees(p).location + dayFees(p).equipment) +
-    planned.reduce((a, d) => { const its = approvedScenes(p).filter((sc) => d.sceneIds.includes(sc.id)); return a + its.reduce((b, sc) => b + physicalCrowd(sc) * CROWD_DAY_RATE, 0) + makeupDayCost(its, approvedCharacters(p)) + rigDayCost(p, its); }, 0);
+    planned.reduce((a, d) => { const its = approvedScenes(p).filter((sc) => d.sceneIds.includes(sc.id)); return a + its.reduce((b, sc) => b + physicalCrowd(sc) * CROWD_DAY_RATE, 0) + makeupDayCost(its, approvedCharacters(p)) + rigDayCost(p, its); }, 0) +
+    // Days filmed away from the base: the unit's move, once for each place, and its housing each day (destinations.ts).
+    awayCosts(p, planned).reduce((a, x) => a + x.move + x.housing, 0);
   const matCost = p.tasks.filter((x) => x.status !== 'done').reduce((a, x) => a + materialCost(x), 0);
   const previous = p.obligations.filter((o) => (o.ref === 'plan:shoot' || o.ref === 'plan:materials') && (o.state === 'reserved' || o.state === 'committed'));
   const freed = previous.reduce((a, o) => a + Math.max(0, o.amount - o.settled), 0);
@@ -311,7 +314,8 @@ export function ensureAssets(p: Project): void {
 }
 
 export function scheduleShootDay(state: GameState, p: Project, d: ShootDay): void {
-  const zone = getPlace(p.axes.basePlaceId).zone;
+  // Called on the clock of the place the day is filmed in (destinations.ts).
+  const zone = dayPlace(p, d).zone;
   const { year, month, day } = parseYmd(d.date);
   const prev = parseYmd(addDaysToKey(d.date, -1));
   const callHour = d.night ? 17 : 7;

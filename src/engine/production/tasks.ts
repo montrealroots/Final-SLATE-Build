@@ -7,6 +7,7 @@ import { MOCAP_CLEANUP_PER_SESSION } from '../mocap';
 import { ANIM_RATE, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS } from './rates';
 import { recordTaskId, songTasks, songUses } from '../songs';
 import { CREATURE_FOLEY_DAYS, LIGHTS, LOOP_GROUP_PER_SCENES, LOOP_GROUP_SESSION, WILD_TRACK_PER_LOCATIONS, cameraTestDays, lightOf, postFactors, rigRehearsalDays, scoreSessions, soundsOf } from '../craft';
+import { permitWork } from '../destinations';
 import { CROWD_POST_DAYS, PERIOD_WORK, costumeCopies, digitalCrowd, makeup, projectBand, statesOf, wardrobe } from '../looks';
 
 // ---------------- Task generation ----------------
@@ -49,6 +50,12 @@ export function buildTasks(p: Project): Task[] {
     tasks.push(t('prep:locations', 'all', 'Location Scouting And Permits', 'Locations', 'location-manager', Math.max(1, locs), 'locations'));
     // The light chosen is tested before the shoot, and location sound is recorded place by place (craft.ts). Both are
     // prep: a scene isn't shot until they are done.
+    // Permits and arrangements for each place filmed somewhere chosen (destinations.ts): done before the shoot.
+    for (const w of permitWork(p, liveScenes)) {
+      const id = w.label.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      tasks.push(t('prep:permit', id, `Permits And Arrangements: ${w.label}, In ${w.where}`, 'Locations', 'location-manager', w.days, 'days'));
+      prepIds.push(`prep:permit:${id}`);
+    }
     const tests = cameraTestDays(p, true, false);
     if (tests) { tasks.push(t('prep:camera-test', 'all', 'Camera And Lighting Tests', 'Camera', 'dop', tests, 'test days')); prepIds.push('prep:camera-test:all'); }
     if (soundsOf(p).includes('texture')) { tasks.push(t('prep:wildtrack', 'all', 'Location Sound Recording', 'Sound', 'sound-mixer', Math.max(1, Math.ceil(locs / WILD_TRACK_PER_LOCATIONS)), 'days')); prepIds.push('prep:wildtrack:all'); }

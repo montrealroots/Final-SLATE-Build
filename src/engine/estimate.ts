@@ -23,6 +23,7 @@ import { roleLabel } from './people';
 import { buildTasks, dayFees, groupShootDays, materialCost, VOICE_SESSION_STUDIO, RENDER_NODE_DAY_COST, type ShootDayGroup } from './production';
 import { CROWD_DAY_RATE, RENDER_HOURS_PER_FRAME } from './production/rates';
 import { rigDayCost } from './craft';
+import { awayCosts } from './destinations';
 import { makeupDayCost, physicalCrowd } from './looks';
 import { sessionCost } from './mocap';
 import { approvedCharacters, approvedScenes, fundingScenario, onDraftApproved } from './projects';
@@ -120,6 +121,10 @@ export function costBreakdown(state: GameState, p: Project): CostBreakdown {
     for (const [label, c] of crowds) lines.push({ area: 'shoot', label: `Background performers: ${label}`, amount: c.people * CROWD_DAY_RATE, driver: `${c.people} performer-days at ${money(CROWD_DAY_RATE)}, over ${c.days} ${c.days === 1 ? 'day' : 'days'}` });
     if (makeupCost) lines.push({ area: 'shoot', label: 'Makeup materials', amount: makeupCost, driver: `Applied fresh on ${makeupDays} shoot ${makeupDays === 1 ? 'day' : 'days'}` });
     if (rigCost) lines.push({ area: 'shoot', label: 'Camera rig rental', amount: rigCost, driver: `A dolly and track or a stabiliser on ${rigDays} shoot ${rigDays === 1 ? 'day' : 'days'}` });
+    // Filming away from the base (destinations.ts): the unit's move and its housing, place by place.
+    for (const x of awayCosts(p, groups.map((g) => ({ locationLabel: g.place })))) {
+      lines.push({ area: 'shoot', label: `Filming in ${x.place}: ${x.label}`, amount: x.move + x.housing, driver: `The unit moved there and back (${money(x.move)}) and housed for ${x.days} shoot ${x.days === 1 ? 'day' : 'days'}` });
+    }
     for (const x of tasks) { const m = materialCost(x); if (m) lines.push({ area: 'builds', label: x.label, amount: m, driver: 'Materials and licences' }); }
   }
   const voice = tasks.filter((x) => x.kind === 'anim:voice').reduce((a, x) => a + (x.units - x.done), 0);

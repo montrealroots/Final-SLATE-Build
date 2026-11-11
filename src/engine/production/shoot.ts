@@ -12,6 +12,7 @@ import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees } 
 import { chairsOf, ensureWorkEvent, isWorkingDay, minorsInScenes, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay } from './schedule';
 import { childShare, ensureLicence, isSchoolDay, licenceReady, setAsideOf, supervisionFor, type Minor } from '../minors';
 import { dialogueHolds, rigDayCost } from '../craft';
+import { awayDayCost, dayPlace, kindFee, moveCost, noisyDay, underCover } from '../destinations';
 import { PLATE_FACTOR, digitalCrowd, makeup, makeupDayCost, makeupShare, needsMakeupCrew, physicalCrowd } from '../looks';
 import { addLogOnce, payPlanned, plannedRemaining } from './workday';
 import { t } from './tasks';
@@ -33,7 +34,7 @@ registerHandler('weather-check', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
   const d = p?.schedule.days.find((x) => x.id === ev.payload.dayId);
   if (!p || !d || d.status !== 'scheduled' || d.interior) return { suppressInterrupt: true };
-  const place = getPlace(p.axes.basePlaceId);
+  const place = dayPlace(p, d);
   const issued = dateKey(state.now, place.zone);
   const f = forecast(state.seed, place, d.date, issued);
   if (f.chanceOfPrecip >= 40) {
@@ -54,11 +55,13 @@ registerHandler('shoot-call', (state, ev) => {
   const directorHired = p.episodes.find((e) => e.number === d.episode)?.director !== 'player';
   const playerNeeded = !directorHired || d.playerActing;
   if (!playerNeeded) return { suppressInterrupt: true };
-  const away = state.locationId !== p.axes.basePlaceId || !!state.travel;
+  // Where the day is filmed (destinations.ts): the base, unless its place in the script is filmed somewhere else.
+  const here = dayPlace(p, d);
+  const away = state.locationId !== here.id || !!state.travel;
   if (state.sleep.asleep || away) {
     d.late = true;
     const text = away
-      ? `You weren't in ${getPlace(p.axes.basePlaceId).name} for the call on ${p.title}. The day started late without you.`
+      ? `You weren't in ${here.name} for the call on ${p.title}. The day started late without you.`
       : `You weren't on set for the call on ${p.title}. The day started late.`;
     addLog(state, text, 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
     return { message: text };
@@ -149,7 +152,9 @@ export function hasCrew(p: Project, roleId: string): boolean {
 }
 
 export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
-  const place = getPlace(p.axes.basePlaceId);
+  // The day's weather, daylight and public holidays are those of the place it is filmed in (destinations.ts).
+  const place = dayPlace(p, d);
+  const noisy = noisyDay(state.seed, p, d);
   const mods = projectModules(p);
   const scenes = approvedScenes(p).filter((s) => d.sceneIds.includes(s.id));
   const w = weatherOn(state.seed, place, d.date);
@@ -176,7 +181,11 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     return d.result;
   }
   if (where.text) addLog(state, `${p.title}: ${where.text}`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
-  const locationFee = Math.round(dayFees(p).location * siteFactor(p, d.locationLabel));
+  const locationFee = Math.round(dayFees(p).location * siteFactor(p, d.locationLabel) * kindFee(p, d.locationLabel));
+  // A unit away from its base is housed for the day, and moved there and back once for the place.
+  const housing = awayDayCost(p, d.locationLabel);
+  const moveKey = `move:${p.id}:${d.locationLabel}`;
+  const move = p.obligations.some((o) => o.postings.some((x) => x.key === moveKey)) ? 0 : moveCost(p, d.locationLabel);
   // Children on today's call (minors.ts): their licences (applied for now if they weren't), the people who must be with
   // them, and the hours they may work, which are longer on a day without school.
   const school = isSchoolDay(place, d.date);
@@ -200,7 +209,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const o = p.obligations.find((x) => x.id === h.obligationId)!;
     const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
     return a + Math.max(0, o.settled + pay - Math.max(o.amount, o.settled));
-  }, 0) + Math.max(0, locationFee + dayFees(p).equipment + scenes.reduce((a, s) => a + physicalCrowd(s), 0) * CROWD_DAY_RATE + makeupDayCost(scenes, approvedCharacters(p)) + rigDayCost(p, scenes) - plannedRemaining(p, 'plan:shoot'));
+  }, 0) + Math.max(0, locationFee + dayFees(p).equipment + scenes.reduce((a, s) => a + physicalCrowd(s), 0) * CROWD_DAY_RATE + makeupDayCost(scenes, approvedCharacters(p)) + rigDayCost(p, scenes) + housing + move - plannedRemaining(p, 'plan:shoot'));
   if (overrun > ledgerTotals(p).available) {
     d.status = 'lost';
     d.result = `There wasn't enough money for this shoot day (${money(overrun)} needed beyond what's already agreed). Add funding or cut scope, then rebuild the schedule.`;
@@ -315,7 +324,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     let compromised = false;
     if (s.heading.intExt === 'EXT') {
       const window: [number, number] = d.night ? [17, 23] : [7, 19];
-      if (precipitationDuring(w, window[0], window[1])) {
+      if (precipitationDuring(w, window[0], window[1]) && !underCover(p, d.locationLabel)) {
         if (!f.weatherAnyway) {
           reasons.push(`${w.snow ? 'Snow' : 'Rain'} stopped ${label}.`);
           pending.push(s.id);
@@ -333,6 +342,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     }
     const cap = p.captures.find((c) => c.sceneId === s.id);
     const quality = captureQuality(state, p, s, compromised, f.late);
+    if (noisy && s.dialogue.length > 0) compromised = true; // the site was noisy today (destinations.ts)
     const soundAtRisk = s.dialogue.length > 0 && (!hasCrew(p, 'sound-mixer') || compromised);
     // Directing 2: a pickup shoots only what was asked for (a take, singles or inserts), in part of the day (directing.ts).
     const pickup = isDirecting2(p) ? d.pickups?.[s.id] : undefined;
@@ -406,6 +416,8 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     payPlanned(state, p, 'plan:shoot', `Makeup Materials (${d.date})`, 'materials', makeupDayCost(scenes, approvedCharacters(p)), `makeup:${d.id}`);
     // The day's rented camera rig (craft.ts): a dolly and track, or a stabiliser, once for the day.
     payPlanned(state, p, 'plan:shoot', `Camera Rig (${d.date})`, 'equipment', rigDayCost(p, scenes), `rig:${d.id}`);
+    payPlanned(state, p, 'plan:shoot', `Unit Move To ${place.name}`, 'travel', move, moveKey);
+    payPlanned(state, p, 'plan:shoot', `Unit Housing In ${place.name} (${d.date})`, 'travel', housing, `away:${d.id}`);
   } catch (e) {
     if (e instanceof FundsError) addLogOnce(state, p, `day:${d.id}`, `${p.title} couldn't pay for today's location and equipment. Add funding before the next shoot day.`);
   }
