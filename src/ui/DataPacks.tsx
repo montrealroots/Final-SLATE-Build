@@ -3,8 +3,9 @@
 // Remove; and a pack from a file, for one the game doesn't offer.
 import { useEffect, useRef, useState } from 'react';
 import { forgetCatalog, retryCatalog } from '../catalog/load';
-import { installOffered, installPack, installedPacks, offeredMods, packExpires, removePack, type InstalledPack, type OfferedMod, type PackKind, type PackMeta } from '../catalog/packs';
+import { installOffered, installPack, installedPacks, offeredMods, ownerSession, ownerSignIn, ownerSignOut, packExpires, removePack, type InstalledPack, type OfferedMod, type OwnerSession, type PackKind, type PackMeta } from '../catalog/packs';
 import { startLivingWorld } from './App';
+import { TextField, plural } from './components';
 import { store, useStore } from './store';
 
 const day = (iso: string | number) => new Date(iso).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
@@ -34,6 +35,108 @@ function About({ p, size }: { p: PackMeta; size: number }) {
   );
 }
 
+const SIGN_IN_FAILED = {
+  wrong: "That isn't the owner's passphrase.",
+  locked: 'Too many wrong passphrases. Wait a minute, then try again.',
+  failed: "The game's server couldn't be reached. Check your connection and try again.",
+};
+
+/**
+ * The owner's sign-in (docs/DEPLOYMENT.md, "Who Gets The Owner's Data"). Shown only where the game's server offers it:
+ * the owner's own server, reached from somewhere other than the machine it runs on. Nobody else ever sees it.
+ */
+function OwnerSignIn({ session, changed }: { session: OwnerSession; changed: () => void }) {
+  const [passphrase, setPassphrase] = useState('');
+  const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  if (!session.signIn) return null;
+  if (session.owner) {
+    return (
+      <p className="muted">You're signed in as this game's owner on this browser.{' '}
+        <button className="btn btn-sm" onClick={() => void ownerSignOut().then(changed)}>Sign Out</button>
+      </p>
+    );
+  }
+  const submit = async () => {
+    if (!passphrase) { setError("Enter the owner's passphrase."); return; }
+    setBusy(true); setError(null);
+    const r = await ownerSignIn(passphrase);
+    setBusy(false);
+    if (r !== 'ok') { setError(SIGN_IN_FAILED[r]); return; }
+    setPassphrase('');
+    changed();
+  };
+  return (
+    <form onSubmit={(e) => { e.preventDefault(); void submit(); }} style={{ margin: '8px 0' }}>
+      <p className="muted">The films and series are this game's owner's alone. If that's you, sign in to see them here.</p>
+      <TextField label="Owner Passphrase" type="password" value={passphrase} onChange={setPassphrase} error={error} />
+      <button className="btn btn-sm btn-primary" type="submit" disabled={busy}>Sign In</button>
+    </form>
+  );
+}
+
+/**
+ * Newer records, only when asked (docs/WORLD.md, "Taking Newer Records"). An open game's world keeps the records it
+ * began with. When the installed films and series were gathered later, this says so, shows what taking them would
+ * change, and changes nothing until the player chooses. A copy of the game is kept first.
+ */
+function WorldRecords({ version }: { version: number }) {
+  const s = useStore();
+  const [preview, setPreview] = useState<import('../engine/industry').RefreshPreview | null>(null);
+  const [open, setOpen] = useState(false);
+  const [note, setNote] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
+  const ind = s.state?.industry;
+  useEffect(() => {
+    if (!s.state?.industry) { setPreview(null); return; }
+    let live = true;
+    void import('../engine/industry').then((m) => { if (live && store.state) setPreview(m.worldRefreshPreview(store.state)); });
+    return () => { live = false; };
+  }, [s.state?.saveId, ind?.refreshes?.length, ind?.builtAt, version, s.worldVersion]);
+  if (!ind || !s.state) return null;
+  const count = preview ? preview.changes.length + preview.added.length : 0;
+  const take = async () => {
+    setBusy(true); setError(null);
+    const { currentZone, dateKey } = await import('../engine');
+    const e = await store.takeNewerRecords(dateKey(store.state!.now, currentZone(store.state!)));
+    setBusy(false);
+    if (e) { setError(e); return; }
+    setOpen(false);
+    setNote('Done. A copy of your game from before the change is in Saved Games, under Recovery Copies.');
+  };
+  return (
+    <fieldset style={{ border: 0, padding: 0, margin: '16px 0 0' }} aria-busy={busy}>
+      <legend style={{ fontWeight: 600, marginBottom: 8 }}>Your Story's World</legend>
+      <p className="muted">This game's world began from the records gathered up to {day(`${ind.horizon}T00:00:00Z`)}, and keeps them: installing newer films and series never changes what your story has decided.</p>
+      {preview && count > 0 && (
+        <>
+          <p>The installed films and series were gathered later, on {day(preview.builtAt)}.{' '}
+            {preview.changes.length > 0 && `You can take them for ${plural(preview.changes.length, 'series', 'series')} your story hasn't decided anything for yet${preview.added.length ? `, and add ${plural(preview.added.length, 'series', 'series')} it doesn't follow yet` : ''}.`}
+            {preview.changes.length === 0 && `They follow ${plural(preview.added.length, 'series', 'series')} your story doesn't yet, which you can add.`}
+            {preview.kept > 0 && ` ${plural(preview.kept, 'series', 'series')} already decided won't change.`}</p>
+          {!open && <button className="btn btn-sm" onClick={() => setOpen(true)}>See What Would Change</button>}
+          {open && (
+            <>
+              <ul className="list" aria-label="What Would Change">
+                {preview.changes.map((c) => <li key={c.r} className="list-item"><span className="grow"><strong>{c.title}</strong><div className="dim small">{c.what.join(' ')}</div></span></li>)}
+                {preview.added.map((a) => <li key={a.r} className="list-item"><span className="grow"><strong>{a.title}</strong><div className="dim small">New to your story: its future would be decided from now on.</div></span></li>)}
+              </ul>
+              <p className="dim small">Your game is saved and a copy kept first. Nothing already decided, no film already released and no date before today changes.</p>
+              <div className="row gap-2 wrap">
+                <button className="btn btn-sm btn-primary" disabled={busy} onClick={() => void take()}>Take The Newer Records</button>
+                <button className="btn btn-sm" disabled={busy} onClick={() => setOpen(false)}>Keep My World As It Is</button>
+              </div>
+            </>
+          )}
+        </>
+      )}
+      {note && <p role="status" className="muted">{note}</p>}
+      {error && <p role="alert" className="error">{error}</p>}
+    </fieldset>
+  );
+}
+
 export function DataPacks() {
   useStore();
   const [installed, setInstalled] = useState<Map<PackKind, InstalledPack> | null>(null);
@@ -41,15 +144,30 @@ export function DataPacks() {
   const [status, setStatus] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  // Counts installs, removals and sign-ins, so the world's records are compared again after each.
+  const [version, setVersion] = useState(0);
   const input = useRef<HTMLInputElement>(null);
+  const [session, setSession] = useState<OwnerSession>({ owner: false, signIn: false });
   const reload = () => void installedPacks().then(setInstalled);
-  useEffect(() => { reload(); void offeredMods().then(setOffered); }, []);
+  const ask = () => { void offeredMods().then(setOffered); void ownerSession().then(setSession); };
+  useEffect(() => { reload(); ask(); }, []);
+  // Signing in or out changes what the server answers: the pages read the catalog afresh, and an open game's world
+  // starts or waits, as when a mod comes or goes.
+  const signedInOrOut = async () => {
+    ask(); forgetCatalog(); retryCatalog();
+    if (!store.state) return;
+    (await import('../engine/industry')).setIndustryWorld(null);
+    startLivingWorld();
+    store.emit();
+    setVersion((v) => v + 1);
+  };
 
   const run = async (name: string, work: () => Promise<InstalledPack>) => {
     setBusy(true); setError(null); setStatus(`Getting ${name} ready…`);
     try {
       const p = await work();
       await refreshGame(p.kind, true);
+      setVersion((v) => v + 1);
       setStatus(`Installed ${p.name}. ${WHERE[p.kind]}`);
     } catch (e) {
       setStatus(null);
@@ -68,6 +186,7 @@ export function DataPacks() {
     try {
       await removePack(p.kind);
       await refreshGame(p.kind, false);
+      setVersion((v) => v + 1);
       setStatus(`Removed ${p.name}. Every record it held was deleted from this browser.`);
     } catch {
       setError(`${p.name} couldn't be removed. Try again.`);
@@ -80,6 +199,7 @@ export function DataPacks() {
   // Every mod the game offers, and any installed from a file that it doesn't.
   const kinds = [...new Set<PackKind>([...offered.map((m) => m.kind), ...(installed?.keys() ?? [])])];
   return (
+    <>
     <fieldset style={{ border: 0, padding: 0, margin: '16px 0 0' }} aria-busy={busy}>
       <legend style={{ fontWeight: 600, marginBottom: 8 }}>Mods</legend>
       <p className="muted">Add the films and series, or the cinemas, to your game. A mod is kept in this browser only; your saved games never hold it.</p>
@@ -103,11 +223,14 @@ export function DataPacks() {
           })}
         </ul>
       )}
+      <OwnerSignIn session={session} changed={() => void signedInOrOut()} />
       <input ref={input} type="file" accept=".slatepack" hidden aria-label="Mod File"
         onChange={(e) => { const f = e.target.files?.[0]; if (f) void fromFile(f); }} />
       <button className="btn btn-sm" style={{ marginTop: 8 }} disabled={busy} onClick={() => input.current?.click()}>Install From A File</button>
       {status && <p role="status" className="muted">{status}</p>}
       {error && <p role="alert" className="error">{error}</p>}
     </fieldset>
+    <WorldRecords version={version} />
+    </>
   );
 }

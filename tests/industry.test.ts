@@ -2,7 +2,7 @@
 // stored in the save. Made-up series of each kind; no TMDB data is in the repository.
 import { afterAll, describe, expect, it } from 'vitest';
 import { DAY, processUntil } from '../src/engine';
-import { ensureIndustry, episodeDates, outletOf, profileFor, recordedUpTo, renewalOdds, setIndustryWorld, type IndustryWorld, type SeriesProfile } from '../src/engine/industry';
+import { applyWorldRefresh, ensureIndustry, episodeDates, expireIndustrySources, freezeSeries, outletOf, sourcesExpire, worldRefreshPreview, profileFor, recordedUpTo, renewalOdds, setIndustryWorld, type IndustryWorld, type SeriesProfile } from '../src/engine/industry';
 import { worldEventsBetween, type WorldSeed } from '../src/catalog/world';
 import { deserialize, serialize } from '../src/engine/save';
 import type { GameState } from '../src/engine/types';
@@ -29,6 +29,9 @@ const WORLD: IndustryWorld = {
   ],
 };
 afterAll(() => setIndustryWorld(null));
+const addDays = (key: string, n: number) => new Date(Date.parse(`${key}T12:00:00Z`) + n * DAY).toISOString().slice(0, 10);
+/** A series as the odds read it: its frozen profile. */
+const odds = (p: SeriesProfile) => freezeSeries(p, WORLD.horizon);
 const run = (seedTag: string, until: string): GameState => {
   setIndustryWorld(WORLD);
   const s = startLife(seedTag);
@@ -159,9 +162,9 @@ describe('the living world\'s engine', () => {
     expect(outletOf(other)).toBe('streaming');
     expect(outletOf({ ...other, net: ['Univision'] })).toBe('broadcast');
     // Cable timing: decided months after the finale, not at the May upfronts.
-    expect(renewalOdds({ ...other, nk: ['cable'] }, 1)).not.toBe(renewalOdds(other, 1));
-    expect(renewalOdds(p, 1)).toBeLessThan(renewalOdds(p, 3));
-    expect(renewalOdds({ ...p, genres: ['Animation', 'Comedy'] }, 30)).toBe(0.93);
+    expect(renewalOdds(odds({ ...other, nk: ['cable'] }), 1)).not.toBe(renewalOdds(odds(other), 1));
+    expect(renewalOdds(odds(p), 1)).toBeLessThan(renewalOdds(odds(p), 3));
+    expect(renewalOdds(odds({ ...p, genres: ['Animation', 'Comedy'] }), 30)).toBe(0.93);
     expect(Object.keys(p)).not.toContain('rating');
   });
 });
@@ -242,6 +245,145 @@ describe('the living world, held steady by the save', () => {
     until(s, '2032-12-31');
     expect(s.industry!.series['tv:1'].rec).toBe(3);
     expect(s.industry!.series['tv:2'].rec).toBe(4);
+  });
+
+  // November 11, 2026 (the Creative Depth package, milestone A): every input a decision reads is kept in the save.
+  it('decides from what the save froze, whatever a later catalog says about the series', () => {
+    const steady = run('ind-frozen', '2036-12-31');
+    const s = run('ind-frozen', '2026-11-11');
+    // The same seasons, but everything else a decision used to read has changed: the network (so the kind of outlet),
+    // the kind of series, its genres, how many seasons it has had, its pattern, its dates and its cast.
+    const changed: IndustryWorld = {
+      ...WORLD, builtAt: '2027-02-01T00:00:00Z',
+      series: WORLD.series.map((p) => ({
+        ...p, net: ['Disney+'], nk: ['streaming' as const], type: p.type === 'Miniseries' ? 'Scripted' : 'Miniseries', status: p.status === 'Pilot' ? 'Returning Series' : p.status,
+        genres: ['Animation', 'Kids'], daily: (p.daily ? 0 : 1) as 0 | 1, aired: p.aired + 7,
+        seasons: p.seasons.map((f) => ({ ...f, eps: f.eps + 5, dated: f.dated + 5, gap: 3, d0: addDays(f.d0, 40), d1: f.d1 && addDays(f.d1, 40), offs: undefined })),
+        regulars: [{ p: 99, name: 'Someone Else', ch: null }],
+      })),
+    };
+    setIndustryWorld(changed);
+    until(s, '2036-12-31');
+    expect(s.industry).toEqual(steady.industry);
+    // And the same after a save and reload under the changed catalog.
+    const reloaded = deserialize(serialize(run('ind-frozen', '2028-06-01')));
+    setIndustryWorld(changed);
+    until(reloaded, '2036-12-31');
+    expect(reloaded.industry).toEqual(steady.industry);
+  });
+
+  it('keeps the game\'s own classes and person IDs, no names, and drops the copied seasons once it has made one of its own', () => {
+    const young = run('ind-kept', '2026-11-11');
+    for (const [r, sim] of Object.entries(young.industry!.series)) {
+      const p = sim.p!;
+      expect(Object.keys(p).sort(), r).toEqual(expect.arrayContaining(['aired', 'anim', 'mini', 'o', 'pilot', 'reg', 'v']));
+      expect(Object.keys(p).filter((k) => !['v', 'o', 'mini', 'pilot', 'anim', 'aired', 'm', 'anchor', 'reg', 'last', 'model'].includes(k)), r).toEqual([]);
+      expect(p.v).toBe(1);
+      expect(p.aired).toBeLessThanOrEqual(6);
+      expect(p.reg).toEqual([1]);
+      // Nothing in a save names a series, a network or a person from the catalog.
+      expect(JSON.stringify(sim)).not.toMatch(/Ada Quill|Fall Drama|Mara|ABC|Disney/);
+    }
+    expect(young.industry!.series['tv:6'].p!.aired).toBe(6); // thirty seasons, counted as far as the rules read
+    expect(young.industry!.series['tv:5'].p!.last).toBeUndefined(); // a pilot has no season to copy
+    const old = run('ind-kept', '2036-12-31');
+    for (const [r, sim] of Object.entries(old.industry!.series)) {
+      if (sim.seasons.length) expect([sim.p!.last, sim.p!.model], r).toEqual([undefined, undefined]);
+    }
+    expect(Object.values(old.industry!.series).some((x) => x.seasons.length)).toBe(true);
+  });
+
+  it('a save begun before the profiles were kept freezes them from the first catalog that loads, up to the seasons it began with', () => {
+    const steady = run('ind-legacy-p', '2034-12-31');
+    const s = run('ind-legacy-p', '2026-11-11');
+    for (const sim of Object.values(s.industry!.series)) delete sim.p;
+    expect(ensureIndustry(s)).toBe(true);
+    expect(ensureIndustry(s)).toBe(false);
+    until(s, '2034-12-31');
+    expect(s.industry).toEqual(steady.industry);
+  });
+
+  it('deletes its copies of recorded seasons after TMDB\'s six months, and nothing the save decided', () => {
+    const s = run('ind-expire', '2027-03-01');
+    const ends = sourcesExpire(s.industry!);
+    expect(new Date(ends).toISOString().slice(0, 10)).toBe('2027-05-09'); // 180 days after the records were gathered
+    const before = structuredClone(s.industry!);
+    expect(expireIndustrySources(s, ends - 1)).toBe(false);
+    expect(s.industry).toEqual(before);
+    expect(Object.values(before.series).some((x) => x.p!.last || x.p!.model)).toBe(true);
+    expect(expireIndustrySources(s, ends)).toBe(true);
+    expect(expireIndustrySources(s, ends + DAY)).toBe(false);
+    for (const [r, sim] of Object.entries(s.industry!.series)) {
+      expect([sim.p!.last, sim.p!.model], r).toEqual([undefined, undefined]);
+      expect([sim.outcomes, sim.seasons, sim.closed, sim.rec], r).toEqual([before.series[r].outcomes, before.series[r].seasons, before.series[r].closed, before.series[r].rec]);
+    }
+    // A series decided before the copies went carries on from its own season, with no catalog needed for its pattern.
+    const decided = Object.entries(s.industry!.series).filter(([, x]) => x.seasons.length && !x.closed).map(([r]) => r);
+    expect(decided.length).toBeGreaterThan(0);
+    // One nothing was decided for is marked, waits while no catalog is loaded, and takes its pattern from the next one.
+    const waiting = Object.entries(s.industry!.series).filter(([, x]) => x.p!.expired).map(([r]) => r);
+    expect(waiting).toContain('tv:1'); // due at the May 2027 upfronts, which this save hasn't reached
+    setIndustryWorld(null);
+    until(s, '2027-12-31');
+    for (const r of waiting) expect(s.industry!.series[r].outcomes, r).toEqual([]);
+    setIndustryWorld(WORLD);
+    until(s, '2028-12-31');
+    for (const r of waiting) {
+      expect(s.industry!.series[r].outcomes.length, r).toBeGreaterThan(0);
+      expect(s.industry!.series[r].p!.expired, r).toBeUndefined();
+    }
+  });
+
+  it('takes newer records only when asked, only for series nothing was decided for, and says first what would change', () => {
+    const s = run('ind-opt-in', '2026-11-12');
+    expect(worldRefreshPreview(s)).toBeNull(); // the installed catalog is the save's own
+    const decided = 'tv:2'; // dated within a month of the records' end
+    until(s, '2027-01-15');
+    expect(s.industry!.series[decided].outcomes.length).toBe(1);
+    const newer: IndustryWorld = {
+      horizon: '2027-01-10', builtAt: '2027-01-10T20:00:00Z',
+      series: [
+        ...WORLD.series.map((p) => p.r === 'tv:1' ? { ...p, net: ['Disney+'], aired: 3, seasons: [{ n: 3, eps: 18, dated: 18, d0: '2026-09-24', d1: '2027-01-07', gap: 7, drop: 0 as const }] }
+          : p.r === decided ? { ...p, net: ['Hulu'], regulars: [] } : p),
+        prof('tv:9', { t: 'Brand New Show', net: ['FX'], aired: 1, seasons: [{ n: 1, eps: 8, dated: 8, d0: '2026-12-01', d1: '2027-01-05', gap: 5, drop: 0 }] }),
+      ],
+    };
+    setIndustryWorld(newer);
+    const preview = worldRefreshPreview(s)!;
+    expect(preview.changes.map((c) => c.r)).toEqual(['tv:1']);
+    expect(preview.changes[0].what).toEqual([
+      'It is now counted as on a streaming service, not a broadcast network, which changes when its future is decided.',
+      'A new season would have 18 episodes, not 22.',
+      'Its last recorded season ends on a different day, which moves its decision.',
+    ]);
+    expect(preview.added).toEqual([{ r: 'tv:9', title: 'Brand New Show' }]);
+    expect(preview.kept).toBeGreaterThanOrEqual(1);
+    // Looking changes nothing.
+    const untouched = structuredClone(s.industry!);
+    worldRefreshPreview(s);
+    expect(s.industry).toEqual(untouched);
+    // Without asking, the save goes on from what it froze.
+    const declined = structuredClone(s);
+    until(declined, '2030-12-31');
+    expect(declined.industry!.series['tv:1'].p?.o ?? 'broadcast').toBe('broadcast');
+    expect(declined.industry!.series['tv:9']).toBeUndefined();
+    // Asked: the undecided series takes the newer records, the new one joins, and the decided one is left alone.
+    const taken = applyWorldRefresh(s, '2027-01-15')!;
+    expect(taken).toEqual({ at: '2027-01-15', builtAt: newer.builtAt, series: 1, added: 1 });
+    expect(s.industry!.series['tv:1'].p!.o).toBe('streaming');
+    expect(s.industry!.series['tv:1'].p!.model!.eps).toBe(18);
+    expect(s.industry!.series[decided]).toEqual(untouched.series[decided]);
+    expect([s.industry!.horizon, s.industry!.builtAt, s.industry!.studios]).toEqual([untouched.horizon, untouched.builtAt, untouched.studios]);
+    expect(s.events.filter((e) => e.kind === 'industry-decision' && e.payload.r === 'tv:1')).toHaveLength(1);
+    expect(worldRefreshPreview(s)).toBeNull();
+    expect(applyWorldRefresh(s, '2027-01-16')).toBeNull();
+    until(s, '2032-12-31');
+    for (const r of ['tv:1', 'tv:9']) {
+      const sim = s.industry!.series[r];
+      expect(sim.outcomes.length, r).toBeGreaterThan(0);
+      expect(sim.outcomes.every((o) => o.at > '2027-01-15'), r).toBe(true);
+    }
+    expect(s.industry!.series[decided].outcomes[0]).toEqual(untouched.series[decided].outcomes[0]);
   });
 });
 

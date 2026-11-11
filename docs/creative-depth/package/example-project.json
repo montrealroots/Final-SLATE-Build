@@ -1,0 +1,48 @@
+{
+  "status": "acceptance fixture specification, not a game save",
+  "title": "Last Shift In Briar Hollow",
+  "productionYear": 2026,
+  "storyYear": 1986,
+  "storyRegion": "player-selected sourced region; town is fictional",
+  "medium": "Live Action",
+  "genres": [
+    {
+      "genre": "horror",
+      "emphasis": "primary"
+    },
+    {
+      "genre": "comedy",
+      "emphasis": "secondary"
+    }
+  ],
+  "logline": "When the dead return during a small town\u2019s overnight shift, a dispatcher and a stranded repair crew must restore the emergency transmitter before dawn divides the survivors for good.",
+  "choices": [
+    "premise.001",
+    "creature_rule.001",
+    "makeup_method.003",
+    "wardrobe_strategy.003",
+    "sound_treatment.005",
+    "ending_route.006"
+  ],
+  "scenesToOffer": [
+    "Dispatch office: establish the broken radio link",
+    "Workshop: conflict over the last usable battery",
+    "Street crossing: small practical creature group",
+    "Transmitter shed: repair under pressure",
+    "Dawn aftermath: consequences of the rescue"
+  ],
+  "requiredEffects": [
+    "Period wardrobe sourcing and fittings",
+    "Creature appliance tests, application capacity and continuity",
+    "Extras only in selected creature scenes",
+    "Local night/daylight and weather scheduling",
+    "Original score commissioning tasks",
+    "No universal quality bonus"
+  ],
+  "comparisons": [
+    "Same story set in 2026 removes only relevant period requirements",
+    "Digital crowd method shifts selected work toward tracking/compositing",
+    "Stop-motion changes physical production tasks while retaining voice work"
+  ],
+  "personJourney": "Select an imported person through audition and contract; a second project must see their booking"
+}

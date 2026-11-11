@@ -140,7 +140,7 @@ export function hasDraft(store: KeyValueStore): boolean {
 
 // ---------------- Recovery copies and storage use ----------------
 
-export type RecoveryKind = 'interrupted' | 'migration' | 'repair' | 'damaged' | 'conflict';
+export type RecoveryKind = 'interrupted' | 'migration' | 'repair' | 'world' | 'damaged' | 'conflict';
 
 export interface RecoveryCopy {
   key: string;
@@ -156,7 +156,7 @@ export interface RecoveryCopy {
   version: number | null;
 }
 
-const RECOVERY = /^slate\.v1\.save\.([^.]+)\.(tmp|backup-v\d+|backup-repair|damaged-(\d+)|conflict-(\d+))$/;
+const RECOVERY = /^slate\.v1\.save\.([^.]+)\.(tmp|backup-v\d+|backup-repair|backup-world|damaged-(\d+)|conflict-(\d+))$/;
 
 /**
  * Copies the game keeps so progress can be recovered: an interrupted write's copy, backups taken before a save was
@@ -188,7 +188,7 @@ export function recordMeta(text: string): { savedAtReal: number | null; version:
 export function recoveryCopyOf(key: string, chars: number, meta: { savedAtReal: number | null; version: number | null }): RecoveryCopy | null {
   const m = RECOVERY.exec(key);
   if (!m) return null;
-  const kind: RecoveryKind = m[2] === 'tmp' ? 'interrupted' : m[2] === 'backup-repair' ? 'repair' : m[2].startsWith('damaged-') ? 'damaged' : m[2].startsWith('conflict-') ? 'conflict' : 'migration';
+  const kind: RecoveryKind = m[2] === 'tmp' ? 'interrupted' : m[2] === 'backup-repair' ? 'repair' : m[2] === 'backup-world' ? 'world' : m[2].startsWith('damaged-') ? 'damaged' : m[2].startsWith('conflict-') ? 'conflict' : 'migration';
   const kept = m[3] ?? m[4];
   return { key, saveId: m[1], kind, chars, keptAtReal: kept ? Number(kept) : null, savedAtReal: meta.savedAtReal, version: meta.version };
 }

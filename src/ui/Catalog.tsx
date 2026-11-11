@@ -490,7 +490,7 @@ function InYourStory({ refId, today }: { refId: string; today: string }) {
   const outcomes = sim.outcomes.filter((o) => o.at <= today);
   const seasons = sim.seasons.filter((x) => announcedSeason(sim, x.n, today));
   // The cast is the same recorded regulars for every simulated season, so it is told once, for the latest.
-  const cast = seasons.length ? castFor(p, seasons.at(-1)!.premiere) : null;
+  const cast = seasons.length ? castFor(p, seasons.at(-1)!.premiere, sim.p?.reg) : null;
   return (
     <Panel title="In Your Story" subtitle={`Simulated for this save after the records end on ${formatDateKey(g.industry!.horizon)}. The recorded history above doesn't change.`}>
       {outcomes.length ? (
@@ -602,10 +602,13 @@ function SimSeasonPage({ series, x, today }: { series: string; x: SimSeason; tod
   const aired = dates.filter((d) => d <= today).length;
   const breaks = x.drop ? [] : breaksOf(dates, x.gap);
   const { announced, after } = decisionsFor(sim, x.n, today);
-  const model = recordedModel(p, g.industry!.horizon);
-  const cast = castFor(p, x.premiere);
+  // The season it is patterned on, who returns and what kind of outlet it is on are the save's own, frozen when its
+  // world began; the catalog gives only their names and recorded dates.
+  const model = p.seasons.find((f) => f.n === sim.p?.m) ?? recordedModel(p, g.industry!.horizon);
+  const cast = castFor(p, x.premiere, sim.p?.reg);
+  const outlet = sim.p?.o ?? outletOf(p);
   const finale = dates.at(-1)!;
-  const daily = outletOf(p) === 'daily';
+  const daily = outlet === 'daily';
   const weeks = Math.round((Date.parse(finale) - Date.parse(x.premiere)) / (7 * 86_400_000));
   const next = announcedSeason(sim, x.n + 1, today);
   const prevSimulated = sim.seasons.some((s) => s.n === x.n - 1);
@@ -615,7 +618,7 @@ function SimSeasonPage({ series, x, today }: { series: string; x: SimSeason; tod
       : after.kind === 'concluded' ? `The series ended with this season's finale on ${formatDateKey(after.at)}${x.final ? ', as announced' : ''}.`
         : `${after.kind === 'renewed' ? 'Renewed' : 'Given a date'} for Season ${after.n} on ${formatDateKey(after.at)}${after.final ? ', announced as its final season' : ''}.`
     : x.final ? `Announced as its final season: the series ends with its finale${finale > today ? `, due ${long(finale)}` : ''}.`
-      : `Not decided yet. ${usualDecision(p)}`;
+      : `Not decided yet. ${usualDecision(p, outlet)}`;
   const markers = (i: number) => {
     const m: string[] = [];
     if (i === 0) m.push(x.n === 1 ? 'Series premiere' : 'Season premiere');
@@ -686,6 +689,7 @@ function SimSeasonPage({ series, x, today }: { series: string; x: SimSeason; tod
             ))}
           </ul>
         </>}
+        {cast.unnamed > 0 && <p className="dim">{plural(cast.unnamed, 'more regular')} {cast.unnamed === 1 ? 'returns' : 'return'} whose {cast.unnamed === 1 ? 'name' : 'names'} the installed records no longer list.</p>}
       </Panel>
       <Panel title="Other Seasons">
         <ul className="list">

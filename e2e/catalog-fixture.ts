@@ -129,9 +129,10 @@ export const CATALOG_FIXTURE: Record<string, unknown> = {
 
 /**
  * Serve the fixture for every catalog request, and fail any request to TMDB itself: the game must never call it. `override`
- * answers chosen paths differently (a server error, a missing file).
+ * answers chosen paths differently (a server error, a missing file). `replace` gives chosen paths other contents, read at
+ * each request, so a journey can swap in a refreshed catalog partway.
  */
-export async function serveCatalog(page: Page, override: Record<string, number> = {}): Promise<{ tmdbRequests: string[] }> {
+export async function serveCatalog(page: Page, override: Record<string, number> = {}, replace: Record<string, unknown> = {}): Promise<{ tmdbRequests: string[] }> {
   const tmdbRequests: string[] = [];
   await page.route(/themoviedb\.org|tmdb\.org/, (r: Route) => { tmdbRequests.push(r.request().url()); return r.abort(); });
   await page.route('**/screen-catalog/**', (r: Route) => {
@@ -139,7 +140,7 @@ export async function serveCatalog(page: Page, override: Record<string, number> 
     const status = override[path];
     if (status) return r.fulfill({ status, contentType: 'application/json', body: '{}' });
     // Every company the registry follows has a filmography in a real build, and every letter a people index; the fixture's others are empty.
-    const body = CATALOG_FIXTURE[path] ?? (/^companies\/\d+\.json$/.test(path) ? { tmdbId: Number(path.match(/\d+/)![0]), entries: [] } : /^search\/people-.\.json$/.test(path) ? [] : undefined);
+    const body = replace[path] ?? CATALOG_FIXTURE[path] ?? (/^companies\/\d+\.json$/.test(path) ? { tmdbId: Number(path.match(/\d+/)![0]), entries: [] } : /^search\/people-.\.json$/.test(path) ? [] : undefined);
     return body === undefined ? r.fulfill({ status: 404, body: '' }) : r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify(body) });
   });
   return { tmdbRequests };

@@ -1,0 +1,4417 @@
+{
+  "version": 1,
+  "status": "original starter content; expand and bind to current engine before use",
+  "count": 126,
+  "options": [
+    {
+      "id": "premise.001",
+      "version": 1,
+      "field": "premise",
+      "label": "A Town That Cannot Sleep",
+      "description": "A night-shift dispatcher must keep a divided town connected when the dead return before dawn.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "premise.002",
+      "version": 1,
+      "field": "premise",
+      "label": "The Last Delivery",
+      "description": "A bicycle courier carrying vital medicine must cross a quarantined district with a former rival.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "premise.003",
+      "version": 1,
+      "field": "premise",
+      "label": "Closing Night",
+      "description": "A failing theater company discovers its final performance is the only thing keeping a dangerous visitor calm.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "premise.004",
+      "version": 1,
+      "field": "premise",
+      "label": "The Missing Minute",
+      "description": "An apprentice editor finds the same missing minute in unrelated recordings and follows the people erased from it.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "premise.005",
+      "version": 1,
+      "field": "premise",
+      "label": "The Borrowed Name",
+      "description": "A struggling performer accepts a mistaken identity and must choose between the breakthrough and the person losing credit.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "premise.006",
+      "version": 1,
+      "field": "premise",
+      "label": "The Festival Detour",
+      "description": "A filmmaker stranded with a rival crew has one night to get their only screening copy to a distant festival.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "premise.007",
+      "version": 1,
+      "field": "premise",
+      "label": "The Quiet Broadcast",
+      "description": "A local radio team receives tomorrow\u2019s emergency calls and disagrees about which to answer first.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "premise.008",
+      "version": 1,
+      "field": "premise",
+      "label": "The Family Archive",
+      "description": "Three siblings rebuilding a damaged archive uncover incompatible versions of the event that separated them.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "premise.009",
+      "version": 1,
+      "field": "premise",
+      "label": "The Unfinished Bridge",
+      "description": "A temporary engineer and a local organizer must finish an evacuation route while its sponsors demand a celebration.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "premise.010",
+      "version": 1,
+      "field": "premise",
+      "label": "The Second First Day",
+      "description": "A substitute teacher relives the opening day of a school closure and learns whose choices keep changing.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "premise.011",
+      "version": 1,
+      "field": "premise",
+      "label": "The Last Night Train",
+      "description": "Passengers on a diverted train must decide whether to stop for voices coming from an abandoned station.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.011"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.011"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "premise.012",
+      "version": 1,
+      "field": "premise",
+      "label": "The Substitute Champion",
+      "description": "A retired amateur is asked to impersonate an absent champion until the town insists on a real contest.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "premise"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "premise": "premise.012"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "premise.012"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-PREMISE-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.001",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Mistaken Identity",
+      "description": "Build escalating misunderstandings around conflicting assumptions.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.002",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Workplace Farce",
+      "description": "Set intersecting goals against one constrained working space.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.003",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Deadpan Absurdity",
+      "description": "Keep performances restrained while circumstances grow implausible.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.004",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Physical Slapstick",
+      "description": "Create selected physical gags with rehearsal and safety breakdowns.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.005",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Social Satire",
+      "description": "Expose incentives through choices and consequences rather than speech alone.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.006",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Buddy Friction",
+      "description": "Use two incompatible problem-solving methods and changing trust.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.007",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Romantic Misalignment",
+      "description": "Give leads understandable but conflicting relationship expectations.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.008",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Dark Comic Escalation",
+      "description": "Let increasingly serious consequences collide with flawed coping.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.009",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Comedy Of Manners",
+      "description": "Use social conventions, status and misunderstandings in a specific setting.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.010",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Mockumentary Ensemble",
+      "description": "Use staged interview and observed-scene grammar in a fictional narrative.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.011",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Fish Out Of Water",
+      "description": "Place a capable protagonist in unfamiliar rules without mocking identity.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.011"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.011"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "comedy_treatment.012",
+      "version": 1,
+      "field": "comedy_treatment",
+      "label": "Backstage Chaos",
+      "description": "Intersect performance deadlines, preparation and competing responsibilities.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "comedy_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "comedy_treatment": "comedy_treatment.012"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "comedy_treatment.012"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-COMEDY_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "creature_rule.001",
+      "version": 1,
+      "field": "creature_rule",
+      "label": "Slow Reanimated",
+      "description": "Slow movement and persistent pursuit; movement does not itself select makeup.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "creature_rule"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "creature_rule": "creature_rule.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "creature_rule.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CREATURE_RULE-FAMILY"
+      ]
+    },
+    {
+      "id": "creature_rule.002",
+      "version": 1,
+      "field": "creature_rule",
+      "label": "Fast Infected",
+      "description": "Fast pursuit motivates selected stunt and chase requirements.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "creature_rule"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "creature_rule": "creature_rule.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "creature_rule.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CREATURE_RULE-FAMILY"
+      ]
+    },
+    {
+      "id": "creature_rule.003",
+      "version": 1,
+      "field": "creature_rule",
+      "label": "Sound-Drawn",
+      "description": "Sound attracts threats and informs scene obstacles and sound cues.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "creature_rule"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "creature_rule": "creature_rule.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "creature_rule.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CREATURE_RULE-FAMILY"
+      ]
+    },
+    {
+      "id": "creature_rule.004",
+      "version": 1,
+      "field": "creature_rule",
+      "label": "Light-Averse",
+      "description": "Light changes creature behavior and informs selected lighting beats.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "creature_rule"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "creature_rule": "creature_rule.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "creature_rule.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CREATURE_RULE-FAMILY"
+      ]
+    },
+    {
+      "id": "creature_rule.005",
+      "version": 1,
+      "field": "creature_rule",
+      "label": "Memory Echoes",
+      "description": "Creatures repeat traces of former routines; creates character and performance notes.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "creature_rule"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "creature_rule": "creature_rule.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "creature_rule.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CREATURE_RULE-FAMILY"
+      ]
+    },
+    {
+      "id": "creature_rule.006",
+      "version": 1,
+      "field": "creature_rule",
+      "label": "Swarm Behavior",
+      "description": "Coordinated crowd action requires chosen crowd/effects methods.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "creature_rule"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "creature_rule": "creature_rule.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "creature_rule.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CREATURE_RULE-FAMILY"
+      ]
+    },
+    {
+      "id": "creature_rule.007",
+      "version": 1,
+      "field": "creature_rule",
+      "label": "Limited Outbreak",
+      "description": "Constrain the outbreak footprint and selected crowd scale.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "creature_rule"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "creature_rule": "creature_rule.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "creature_rule.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CREATURE_RULE-FAMILY"
+      ]
+    },
+    {
+      "id": "creature_rule.008",
+      "version": 1,
+      "field": "creature_rule",
+      "label": "Progressive Transformation",
+      "description": "Track appearance states and transitions per scene.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "creature_rule"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "creature_rule": "creature_rule.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "creature_rule.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CREATURE_RULE-FAMILY"
+      ]
+    },
+    {
+      "id": "creature_rule.009",
+      "version": 1,
+      "field": "creature_rule",
+      "label": "Human Disguise",
+      "description": "Maintain deliberate reveal states and costume/makeup continuity.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "creature_rule"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "creature_rule": "creature_rule.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "creature_rule.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CREATURE_RULE-FAMILY"
+      ]
+    },
+    {
+      "id": "creature_rule.010",
+      "version": 1,
+      "field": "creature_rule",
+      "label": "Environmental Dormancy",
+      "description": "Define a specific fictional environmental trigger and its scene usage.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "creature_rule"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "creature_rule": "creature_rule.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "creature_rule.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CREATURE_RULE-FAMILY"
+      ]
+    },
+    {
+      "id": "makeup_method.001",
+      "version": 1,
+      "field": "makeup_method",
+      "label": "Minimal Character Makeup",
+      "description": "Simple recurring look with continuity records.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "makeup_method"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "makeup_method": "makeup_method.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "appearance.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "makeup_method.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-MAKEUP_METHOD-FAMILY"
+      ]
+    },
+    {
+      "id": "makeup_method.002",
+      "version": 1,
+      "field": "makeup_method",
+      "label": "Aging Appliances",
+      "description": "Tests, application/removal and matched continuity states.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "makeup_method"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "makeup_method": "makeup_method.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "appearance.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "makeup_method.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-MAKEUP_METHOD-FAMILY"
+      ]
+    },
+    {
+      "id": "makeup_method.003",
+      "version": 1,
+      "field": "makeup_method",
+      "label": "Full Creature Appliances",
+      "description": "Specialist fabrication, fittings and longer preparation.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "makeup_method"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "makeup_method": "makeup_method.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "appearance.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "makeup_method.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-MAKEUP_METHOD-FAMILY"
+      ]
+    },
+    {
+      "id": "makeup_method.004",
+      "version": 1,
+      "field": "makeup_method",
+      "label": "Partial Facial Appliances",
+      "description": "Targeted facial changes with movement tests.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "makeup_method"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "makeup_method": "makeup_method.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "appearance.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "makeup_method.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-MAKEUP_METHOD-FAMILY"
+      ]
+    },
+    {
+      "id": "makeup_method.005",
+      "version": 1,
+      "field": "makeup_method",
+      "label": "Painted Creature Look",
+      "description": "Surface treatment with sweat/weather touch-up planning.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "makeup_method"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "makeup_method": "makeup_method.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "appearance.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "makeup_method.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-MAKEUP_METHOD-FAMILY"
+      ]
+    },
+    {
+      "id": "makeup_method.006",
+      "version": 1,
+      "field": "makeup_method",
+      "label": "Wearable Creature Mask",
+      "description": "Mask fitting, sightline and movement checks.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "makeup_method"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "makeup_method": "makeup_method.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "appearance.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "makeup_method.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-MAKEUP_METHOD-FAMILY"
+      ]
+    },
+    {
+      "id": "makeup_method.007",
+      "version": 1,
+      "field": "makeup_method",
+      "label": "Practical With Digital Cleanup",
+      "description": "Physical application plus selected post cleanup shots.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "makeup_method"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "makeup_method": "makeup_method.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "appearance.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "makeup_method.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-MAKEUP_METHOD-FAMILY"
+      ]
+    },
+    {
+      "id": "makeup_method.008",
+      "version": 1,
+      "field": "makeup_method",
+      "label": "Digital Creature Replacement",
+      "description": "Tracking/performance reference and post work instead of physical final appearance.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "makeup_method"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "makeup_method": "makeup_method.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "appearance.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "makeup_method.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-MAKEUP_METHOD-FAMILY"
+      ]
+    },
+    {
+      "id": "makeup_method.009",
+      "version": 1,
+      "field": "makeup_method",
+      "label": "Progressive Wound States",
+      "description": "Scene-specific injury states and reset requirements.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "makeup_method"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "makeup_method": "makeup_method.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "appearance.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "makeup_method.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-MAKEUP_METHOD-FAMILY"
+      ]
+    },
+    {
+      "id": "makeup_method.010",
+      "version": 1,
+      "field": "makeup_method",
+      "label": "Puppet Surface Finish",
+      "description": "Miniature/puppet finishing tasks instead of human makeup chairs.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "makeup_method"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "makeup_method": "makeup_method.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "appearance.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "makeup_method.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-MAKEUP_METHOD-FAMILY"
+      ]
+    },
+    {
+      "id": "wardrobe_strategy.001",
+      "version": 1,
+      "field": "wardrobe_strategy",
+      "label": "Contemporary Sourced",
+      "description": "Source garments fitting the chosen locale and role.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "wardrobe_strategy"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "wardrobe_strategy": "wardrobe_strategy.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "wardrobe.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "wardrobe_strategy.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-WARDROBE_STRATEGY-FAMILY"
+      ]
+    },
+    {
+      "id": "wardrobe_strategy.002",
+      "version": 1,
+      "field": "wardrobe_strategy",
+      "label": "Period Rental",
+      "description": "Research, availability, fittings, returns and damage terms.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "wardrobe_strategy"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "wardrobe_strategy": "wardrobe_strategy.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "wardrobe.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "wardrobe_strategy.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-WARDROBE_STRATEGY-FAMILY"
+      ]
+    },
+    {
+      "id": "wardrobe_strategy.003",
+      "version": 1,
+      "field": "wardrobe_strategy",
+      "label": "Custom Period Build",
+      "description": "Design, patterning, fabrication and fittings.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "wardrobe_strategy"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "wardrobe_strategy": "wardrobe_strategy.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "wardrobe.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "wardrobe_strategy.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-WARDROBE_STRATEGY-FAMILY"
+      ]
+    },
+    {
+      "id": "wardrobe_strategy.004",
+      "version": 1,
+      "field": "wardrobe_strategy",
+      "label": "Workwear Ensemble",
+      "description": "Occupation-specific clothing with movement and wear checks.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "wardrobe_strategy"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "wardrobe_strategy": "wardrobe_strategy.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "wardrobe.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "wardrobe_strategy.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-WARDROBE_STRATEGY-FAMILY"
+      ]
+    },
+    {
+      "id": "wardrobe_strategy.005",
+      "version": 1,
+      "field": "wardrobe_strategy",
+      "label": "Formal Occasion",
+      "description": "Event-specific wardrobe and continuity.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "wardrobe_strategy"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "wardrobe_strategy": "wardrobe_strategy.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "wardrobe.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "wardrobe_strategy.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-WARDROBE_STRATEGY-FAMILY"
+      ]
+    },
+    {
+      "id": "wardrobe_strategy.006",
+      "version": 1,
+      "field": "wardrobe_strategy",
+      "label": "Action Duplicates",
+      "description": "Matching replacements for selected stunt/damage states.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "wardrobe_strategy"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "wardrobe_strategy": "wardrobe_strategy.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "wardrobe.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "wardrobe_strategy.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-WARDROBE_STRATEGY-FAMILY"
+      ]
+    },
+    {
+      "id": "wardrobe_strategy.007",
+      "version": 1,
+      "field": "wardrobe_strategy",
+      "label": "Weathered Survival",
+      "description": "Planned wear levels and scene-order continuity.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "wardrobe_strategy"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "wardrobe_strategy": "wardrobe_strategy.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "wardrobe.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "wardrobe_strategy.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-WARDROBE_STRATEGY-FAMILY"
+      ]
+    },
+    {
+      "id": "wardrobe_strategy.008",
+      "version": 1,
+      "field": "wardrobe_strategy",
+      "label": "Creature Costume",
+      "description": "Fabrication, ventilation and performer movement tests.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "wardrobe_strategy"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "wardrobe_strategy": "wardrobe_strategy.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "wardrobe.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "wardrobe_strategy.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-WARDROBE_STRATEGY-FAMILY"
+      ]
+    },
+    {
+      "id": "wardrobe_strategy.009",
+      "version": 1,
+      "field": "wardrobe_strategy",
+      "label": "Miniature Wardrobe",
+      "description": "Scale-specific fabric and puppet articulation requirements.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "wardrobe_strategy"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "wardrobe_strategy": "wardrobe_strategy.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "wardrobe.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "wardrobe_strategy.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-WARDROBE_STRATEGY-FAMILY"
+      ]
+    },
+    {
+      "id": "wardrobe_strategy.010",
+      "version": 1,
+      "field": "wardrobe_strategy",
+      "label": "Stylized Anachronism",
+      "description": "Intentional period mismatch recorded in the creative brief.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "wardrobe_strategy"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "wardrobe_strategy": "wardrobe_strategy.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "wardrobe.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "wardrobe_strategy.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-WARDROBE_STRATEGY-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.001",
+      "version": 1,
+      "field": "location_type",
+      "label": "Market District",
+      "description": "Crowd, sound and access scouting questions.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.002",
+      "version": 1,
+      "field": "location_type",
+      "label": "Rail Station",
+      "description": "Operations and site-permission questions.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.003",
+      "version": 1,
+      "field": "location_type",
+      "label": "Coastal Settlement",
+      "description": "Weather, wind and water proximity assessment.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.004",
+      "version": 1,
+      "field": "location_type",
+      "label": "Mountain Road",
+      "description": "Access, daylight and transport assessment.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.005",
+      "version": 1,
+      "field": "location_type",
+      "label": "Forest Clearing",
+      "description": "Access, sound and environmental restrictions assessment.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.006",
+      "version": 1,
+      "field": "location_type",
+      "label": "Industrial Waterfront",
+      "description": "Site access, background activity and safety assessment.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.007",
+      "version": 1,
+      "field": "location_type",
+      "label": "Residential Interior",
+      "description": "Owner agreement, room dimensions and noise assessment.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.008",
+      "version": 1,
+      "field": "location_type",
+      "label": "Historic Street",
+      "description": "Period dressing and site restrictions assessment.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.009",
+      "version": 1,
+      "field": "location_type",
+      "label": "Soundstage",
+      "description": "Facility dates, stage dimensions, power and build requirements.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.010",
+      "version": 1,
+      "field": "location_type",
+      "label": "School Building",
+      "description": "Site access and separation from real school activity.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.011",
+      "version": 1,
+      "field": "location_type",
+      "label": "Community Hall",
+      "description": "Shared bookings, sound and dressing assessment.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.011"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.011"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "location_type.012",
+      "version": 1,
+      "field": "location_type",
+      "label": "Rural Workshop",
+      "description": "Space, equipment and travel assessment.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "location_type"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "location_type": "location_type.012"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "location_type.012"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-LOCATION_TYPE-FAMILY"
+      ]
+    },
+    {
+      "id": "camera_treatment.001",
+      "version": 1,
+      "field": "camera_treatment",
+      "label": "Locked-Off Observations",
+      "description": "Plan static coverage and staging.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "camera_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "camera_treatment": "camera_treatment.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "camera.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "camera_treatment.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-CAMERA_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "camera_treatment.002",
+      "version": 1,
+      "field": "camera_treatment",
+      "label": "Handheld Intimacy",
+      "description": "Plan operator movement and sound coordination.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "camera_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "camera_treatment": "camera_treatment.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "camera.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "camera_treatment.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-CAMERA_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "camera_treatment.003",
+      "version": 1,
+      "field": "camera_treatment",
+      "label": "Long Moving Takes",
+      "description": "Rehearsal, choreography and reset requirements.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "camera_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "camera_treatment": "camera_treatment.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "camera.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "camera_treatment.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-CAMERA_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "camera_treatment.004",
+      "version": 1,
+      "field": "camera_treatment",
+      "label": "Controlled Dolly Moves",
+      "description": "Track/rig space and setup requirements.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "camera_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "camera_treatment": "camera_treatment.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "camera.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "camera_treatment.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-CAMERA_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "camera_treatment.005",
+      "version": 1,
+      "field": "camera_treatment",
+      "label": "Close-Up Driven",
+      "description": "Performance continuity and coverage emphasis.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "camera_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "camera_treatment": "camera_treatment.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "camera.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "camera_treatment.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-CAMERA_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "camera_treatment.006",
+      "version": 1,
+      "field": "camera_treatment",
+      "label": "Wide Ensemble Blocking",
+      "description": "Space, staging and multi-performer coordination.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "camera_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "camera_treatment": "camera_treatment.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "camera.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "camera_treatment.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-CAMERA_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "camera_treatment.007",
+      "version": 1,
+      "field": "camera_treatment",
+      "label": "Practical Low Light",
+      "description": "Camera tests and lighting/exposure constraints.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "camera_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "camera_treatment": "camera_treatment.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "camera.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "camera_treatment.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-CAMERA_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "camera_treatment.008",
+      "version": 1,
+      "field": "camera_treatment",
+      "label": "High-Contrast Stylization",
+      "description": "Lighting plans and matching grade targets.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "camera_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "camera_treatment": "camera_treatment.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "camera.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "camera_treatment.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-CAMERA_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "camera_treatment.009",
+      "version": 1,
+      "field": "camera_treatment",
+      "label": "Miniature Macro",
+      "description": "Scale lighting, lens and depth-of-field tests.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "camera_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "camera_treatment": "camera_treatment.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "camera.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "camera_treatment.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-CAMERA_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "camera_treatment.010",
+      "version": 1,
+      "field": "camera_treatment",
+      "label": "Subjective Camera",
+      "description": "Point-of-view staging and continuity requirements.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "camera_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "camera_treatment": "camera_treatment.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "camera.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "camera_treatment.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-CAMERA_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "sound_treatment.001",
+      "version": 1,
+      "field": "sound_treatment",
+      "label": "Natural Location Texture",
+      "description": "Scout and capture useful environment sound.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "sound_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "sound_treatment": "sound_treatment.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "sound.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "sound_treatment.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-SOUND_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "sound_treatment.002",
+      "version": 1,
+      "field": "sound_treatment",
+      "label": "Dialogue Clarity",
+      "description": "Prioritize recording coverage and controlled noise.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "sound_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "sound_treatment": "sound_treatment.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "sound.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "sound_treatment.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-SOUND_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "sound_treatment.003",
+      "version": 1,
+      "field": "sound_treatment",
+      "label": "Sparse Soundscape",
+      "description": "Plan deliberate quiet and selective Foley.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "sound_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "sound_treatment": "sound_treatment.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "sound.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "sound_treatment.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-SOUND_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "sound_treatment.004",
+      "version": 1,
+      "field": "sound_treatment",
+      "label": "Heightened Creature Foley",
+      "description": "Creature movement/material recording tasks.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "sound_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "sound_treatment": "sound_treatment.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "sound.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "sound_treatment.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-SOUND_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "sound_treatment.005",
+      "version": 1,
+      "field": "sound_treatment",
+      "label": "Original Synth Score",
+      "description": "Commission an original score with electronic palette.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "sound_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "sound_treatment": "sound_treatment.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "sound.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "sound_treatment.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-SOUND_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "sound_treatment.006",
+      "version": 1,
+      "field": "sound_treatment",
+      "label": "Original Chamber Score",
+      "description": "Plan original small-ensemble score sessions.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "sound_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "sound_treatment": "sound_treatment.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "sound.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "sound_treatment.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-SOUND_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "sound_treatment.007",
+      "version": 1,
+      "field": "sound_treatment",
+      "label": "Original Percussive Score",
+      "description": "Plan rhythmic score and picture synchronization.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "sound_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "sound_treatment": "sound_treatment.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "sound.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "sound_treatment.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-SOUND_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "sound_treatment.008",
+      "version": 1,
+      "field": "sound_treatment",
+      "label": "Source Music Focus",
+      "description": "Plan cue sheets and simulated licensing scope.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "sound_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "sound_treatment": "sound_treatment.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "sound.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "sound_treatment.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-SOUND_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "sound_treatment.009",
+      "version": 1,
+      "field": "sound_treatment",
+      "label": "Voice-Over Narrative",
+      "description": "Casting, recording and edit integration.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "sound_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "sound_treatment": "sound_treatment.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "sound.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "sound_treatment.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-SOUND_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "sound_treatment.010",
+      "version": 1,
+      "field": "sound_treatment",
+      "label": "Layered Crowd Sound",
+      "description": "Crowd recordings, loop groups and mix planning.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "sound_treatment"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "sound_treatment": "sound_treatment.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "sound.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "sound_treatment.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-SOUND_TREATMENT-FAMILY"
+      ]
+    },
+    {
+      "id": "ending_route.001",
+      "version": 1,
+      "field": "ending_route",
+      "label": "Costly Victory",
+      "description": "The goal is achieved with a persistent consequence.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "ending_route"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "ending_route": "ending_route.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "ending_route.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-ENDING_ROUTE-FAMILY"
+      ]
+    },
+    {
+      "id": "ending_route.002",
+      "version": 1,
+      "field": "ending_route",
+      "label": "Partial Rescue",
+      "description": "Some objectives succeed while another remains unresolved.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "ending_route"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "ending_route": "ending_route.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "ending_route.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-ENDING_ROUTE-FAMILY"
+      ]
+    },
+    {
+      "id": "ending_route.003",
+      "version": 1,
+      "field": "ending_route",
+      "label": "Reconciliation",
+      "description": "Resolve a central relationship through an earned choice.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "ending_route"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "ending_route": "ending_route.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "ending_route.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-ENDING_ROUTE-FAMILY"
+      ]
+    },
+    {
+      "id": "ending_route.004",
+      "version": 1,
+      "field": "ending_route",
+      "label": "Reversal Of Perspective",
+      "description": "Earlier events acquire a supported new interpretation.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "ending_route"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "ending_route": "ending_route.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "ending_route.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-ENDING_ROUTE-FAMILY"
+      ]
+    },
+    {
+      "id": "ending_route.005",
+      "version": 1,
+      "field": "ending_route",
+      "label": "Ambiguous Escape",
+      "description": "Leave a deliberately bounded uncertainty.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "ending_route"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "ending_route": "ending_route.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "ending_route.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-ENDING_ROUTE-FAMILY"
+      ]
+    },
+    {
+      "id": "ending_route.006",
+      "version": 1,
+      "field": "ending_route",
+      "label": "Collective Solution",
+      "description": "Several established contributions resolve the obstacle.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "ending_route"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "ending_route": "ending_route.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "ending_route.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-ENDING_ROUTE-FAMILY"
+      ]
+    },
+    {
+      "id": "ending_route.007",
+      "version": 1,
+      "field": "ending_route",
+      "label": "Tragic Recognition",
+      "description": "The protagonist understands the cost too late.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "ending_route"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "ending_route": "ending_route.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "ending_route.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-ENDING_ROUTE-FAMILY"
+      ]
+    },
+    {
+      "id": "ending_route.008",
+      "version": 1,
+      "field": "ending_route",
+      "label": "New Responsibility",
+      "description": "Success creates a credible next obligation.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "ending_route"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "ending_route": "ending_route.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "ending_route.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-ENDING_ROUTE-FAMILY"
+      ]
+    },
+    {
+      "id": "ending_route.009",
+      "version": 1,
+      "field": "ending_route",
+      "label": "Cycle Broken",
+      "description": "A repeated behavior changes through a consequential decision.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "ending_route"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "ending_route": "ending_route.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "ending_route.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-ENDING_ROUTE-FAMILY"
+      ]
+    },
+    {
+      "id": "ending_route.010",
+      "version": 1,
+      "field": "ending_route",
+      "label": "False Resolution",
+      "description": "A seemingly complete solution exposes a prepared remaining problem.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "ending_route"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "ending_route": "ending_route.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "ending_route.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-ENDING_ROUTE-FAMILY"
+      ]
+    },
+    {
+      "id": "conflict.001",
+      "version": 1,
+      "field": "conflict",
+      "label": "Duty Versus Loyalty",
+      "description": "Two legitimate commitments cannot both be kept.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "conflict"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "conflict": "conflict.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "conflict.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CONFLICT-FAMILY"
+      ]
+    },
+    {
+      "id": "conflict.002",
+      "version": 1,
+      "field": "conflict",
+      "label": "Access Denied",
+      "description": "The needed place or information is controlled by another party.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "conflict"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "conflict": "conflict.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "conflict.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CONFLICT-FAMILY"
+      ]
+    },
+    {
+      "id": "conflict.003",
+      "version": 1,
+      "field": "conflict",
+      "label": "Competing Deadlines",
+      "description": "Time-sensitive goals require a genuine tradeoff.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "conflict"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "conflict": "conflict.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "conflict.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CONFLICT-FAMILY"
+      ]
+    },
+    {
+      "id": "conflict.004",
+      "version": 1,
+      "field": "conflict",
+      "label": "Scarce Resource",
+      "description": "Different groups need the same limited resource.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "conflict"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "conflict": "conflict.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "conflict.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CONFLICT-FAMILY"
+      ]
+    },
+    {
+      "id": "conflict.005",
+      "version": 1,
+      "field": "conflict",
+      "label": "Mistaken Evidence",
+      "description": "A plausible interpretation points toward the wrong choice.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "conflict"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "conflict": "conflict.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "conflict.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CONFLICT-FAMILY"
+      ]
+    },
+    {
+      "id": "conflict.006",
+      "version": 1,
+      "field": "conflict",
+      "label": "Broken Agreement",
+      "description": "A prior promise now conflicts with immediate needs.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "conflict"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "conflict": "conflict.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "conflict.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CONFLICT-FAMILY"
+      ]
+    },
+    {
+      "id": "conflict.007",
+      "version": 1,
+      "field": "conflict",
+      "label": "Unreliable Infrastructure",
+      "description": "Essential systems fail in a defined, consistent way.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "conflict"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "conflict": "conflict.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "conflict.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CONFLICT-FAMILY"
+      ]
+    },
+    {
+      "id": "conflict.008",
+      "version": 1,
+      "field": "conflict",
+      "label": "Public Versus Private Goal",
+      "description": "A visible responsibility conflicts with a hidden personal aim.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "conflict"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "conflict": "conflict.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "conflict.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CONFLICT-FAMILY"
+      ]
+    },
+    {
+      "id": "conflict.009",
+      "version": 1,
+      "field": "conflict",
+      "label": "Unequal Information",
+      "description": "Different characters act on different partial truths.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "conflict"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "conflict": "conflict.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "conflict.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CONFLICT-FAMILY"
+      ]
+    },
+    {
+      "id": "conflict.010",
+      "version": 1,
+      "field": "conflict",
+      "label": "Cost Of Truth",
+      "description": "Revealing the truth creates a concrete risk.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "conflict"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "conflict": "conflict.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "conflict.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CONFLICT-FAMILY"
+      ]
+    },
+    {
+      "id": "production_medium.001",
+      "version": 1,
+      "field": "production_medium",
+      "label": "Live Action",
+      "description": "Physical performances and selected practical/digital post methods.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "production_medium"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "production_medium": "production_medium.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "pipeline.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "production_medium.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-PRODUCTION_MEDIUM-FAMILY"
+      ]
+    },
+    {
+      "id": "production_medium.002",
+      "version": 1,
+      "field": "production_medium",
+      "label": "2D Hand-Drawn",
+      "description": "Drawing, cleanup, color and compositing workflow.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "production_medium"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "production_medium": "production_medium.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "pipeline.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "production_medium.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-PRODUCTION_MEDIUM-FAMILY"
+      ]
+    },
+    {
+      "id": "production_medium.003",
+      "version": 1,
+      "field": "production_medium",
+      "label": "2D Cutout",
+      "description": "Reusable rigs/assets and compositing workflow.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "production_medium"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "production_medium": "production_medium.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "pipeline.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "production_medium.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-PRODUCTION_MEDIUM-FAMILY"
+      ]
+    },
+    {
+      "id": "production_medium.004",
+      "version": 1,
+      "field": "production_medium",
+      "label": "3D Computer Animation",
+      "description": "Model, rig, layout, animation, lighting and render workflow.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "production_medium"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "production_medium": "production_medium.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "pipeline.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "production_medium.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-PRODUCTION_MEDIUM-FAMILY"
+      ]
+    },
+    {
+      "id": "production_medium.005",
+      "version": 1,
+      "field": "production_medium",
+      "label": "Puppet Stop-Motion",
+      "description": "Armatures, puppets, sets, frame animation and repair workflow.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "production_medium"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "production_medium": "production_medium.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "pipeline.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "production_medium.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-PRODUCTION_MEDIUM-FAMILY"
+      ]
+    },
+    {
+      "id": "production_medium.006",
+      "version": 1,
+      "field": "production_medium",
+      "label": "Clay Animation",
+      "description": "Malleable models, replacement/repair and frame animation.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "production_medium"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "production_medium": "production_medium.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "pipeline.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "production_medium.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-PRODUCTION_MEDIUM-FAMILY"
+      ]
+    },
+    {
+      "id": "production_medium.007",
+      "version": 1,
+      "field": "production_medium",
+      "label": "Object Stop-Motion",
+      "description": "Object preparation and controlled frame animation.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "production_medium"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "production_medium": "production_medium.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "pipeline.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "production_medium.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-PRODUCTION_MEDIUM-FAMILY"
+      ]
+    },
+    {
+      "id": "production_medium.008",
+      "version": 1,
+      "field": "production_medium",
+      "label": "Rotoscoped Animation",
+      "description": "Performance reference plus drawing/processing workflow.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "production_medium"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "production_medium": "production_medium.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "pipeline.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "production_medium.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-PRODUCTION_MEDIUM-FAMILY"
+      ]
+    },
+    {
+      "id": "production_medium.009",
+      "version": 1,
+      "field": "production_medium",
+      "label": "Live Action With Animation",
+      "description": "Shot-level hybrid breakdown and compositing.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "production_medium"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "production_medium": "production_medium.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "pipeline.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "production_medium.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-PRODUCTION_MEDIUM-FAMILY"
+      ]
+    },
+    {
+      "id": "production_medium.010",
+      "version": 1,
+      "field": "production_medium",
+      "label": "Mixed Animation Techniques",
+      "description": "Explicit shot/asset boundaries between chosen techniques.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "production_medium"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "production_medium": "production_medium.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "pipeline.requirements",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "production_medium.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "mechanical-proposal",
+      "testIds": [
+        "OPTION-PRODUCTION_MEDIUM-FAMILY"
+      ]
+    },
+    {
+      "id": "character_goal.001",
+      "version": 1,
+      "field": "character_goal",
+      "label": "Protect A Dependent",
+      "description": "A specific person needs protection from a defined threat.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "character_goal"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "character_goal": "character_goal.001"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "character_goal.001"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CHARACTER_GOAL-FAMILY"
+      ]
+    },
+    {
+      "id": "character_goal.002",
+      "version": 1,
+      "field": "character_goal",
+      "label": "Recover A Lost Record",
+      "description": "Find a record whose contents change an important decision.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "character_goal"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "character_goal": "character_goal.002"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "character_goal.002"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CHARACTER_GOAL-FAMILY"
+      ]
+    },
+    {
+      "id": "character_goal.003",
+      "version": 1,
+      "field": "character_goal",
+      "label": "Keep A Promise",
+      "description": "Fulfill an established commitment despite its increasing cost.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "character_goal"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "character_goal": "character_goal.003"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "character_goal.003"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CHARACTER_GOAL-FAMILY"
+      ]
+    },
+    {
+      "id": "character_goal.004",
+      "version": 1,
+      "field": "character_goal",
+      "label": "Clear A Misunderstanding",
+      "description": "Correct a specific false belief before consequences become permanent.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "character_goal"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "character_goal": "character_goal.004"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "character_goal.004"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CHARACTER_GOAL-FAMILY"
+      ]
+    },
+    {
+      "id": "character_goal.005",
+      "version": 1,
+      "field": "character_goal",
+      "label": "Complete A Journey",
+      "description": "Reach a destination with a meaningful constraint.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "character_goal"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "character_goal": "character_goal.005"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "character_goal.005"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CHARACTER_GOAL-FAMILY"
+      ]
+    },
+    {
+      "id": "character_goal.006",
+      "version": 1,
+      "field": "character_goal",
+      "label": "Build A Partnership",
+      "description": "Earn cooperation through choices rather than a single speech.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "character_goal"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "character_goal": "character_goal.006"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "character_goal.006"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CHARACTER_GOAL-FAMILY"
+      ]
+    },
+    {
+      "id": "character_goal.007",
+      "version": 1,
+      "field": "character_goal",
+      "label": "Repair A Community Resource",
+      "description": "Restore something that different people depend on.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "character_goal"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "character_goal": "character_goal.007"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "character_goal.007"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CHARACTER_GOAL-FAMILY"
+      ]
+    },
+    {
+      "id": "character_goal.008",
+      "version": 1,
+      "field": "character_goal",
+      "label": "Expose A Deception",
+      "description": "Obtain and reveal evidence at a personal cost.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "character_goal"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "character_goal": "character_goal.008"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "character_goal.008"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CHARACTER_GOAL-FAMILY"
+      ]
+    },
+    {
+      "id": "character_goal.009",
+      "version": 1,
+      "field": "character_goal",
+      "label": "Leave A Harmful Situation",
+      "description": "Secure a viable escape and support.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "character_goal"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "character_goal": "character_goal.009"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "character_goal.009"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CHARACTER_GOAL-FAMILY"
+      ]
+    },
+    {
+      "id": "character_goal.010",
+      "version": 1,
+      "field": "character_goal",
+      "label": "Win A Fair Chance",
+      "description": "Overcome a concrete barrier to participation.",
+      "provenance": {
+        "kind": "original-authored",
+        "sourceRefs": []
+      },
+      "tags": [
+        "character_goal"
+      ],
+      "requires": [],
+      "excludes": [],
+      "patch": {
+        "creativeSelections": {
+          "character_goal": "character_goal.010"
+        }
+      },
+      "bindings": [
+        {
+          "consumer": "brief.document",
+          "scope": "project",
+          "parameters": {
+            "selectionId": "character_goal.010"
+          },
+          "implementationStatus": "proposed-not-implemented"
+        }
+      ],
+      "classification": "creative-brief",
+      "testIds": [
+        "OPTION-CHARACTER_GOAL-FAMILY"
+      ]
+    }
+  ]
+}

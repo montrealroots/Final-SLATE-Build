@@ -149,6 +149,7 @@ function copyLabel(c: Copy): string {
   if (c.kind === 'damaged') return 'Damaged save';
   if (c.kind === 'migration') return 'Copy from before an update';
   if (c.kind === 'repair') return 'Copy from before places were repaired';
+  if (c.kind === 'world') return 'Copy from before newer records were taken';
   if (c.kind === 'conflict') return 'Copy saved by another tab';
   return 'Copy from an interrupted save';
 }
