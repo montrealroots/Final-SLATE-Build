@@ -3,7 +3,8 @@
 // a save made before this keeps every person exactly as it was, now with a date of birth.
 import { describe, expect, it } from 'vitest';
 import { candidates, personAge, personById, playingAgeAt } from '../src/engine/people';
-import { fitNotes, roleCandidates } from '../src/engine';
+import { roleCandidates } from '../src/engine';
+import { fitNotes } from '../src/engine/casting-notes';
 import { DAY } from '../src/engine/time';
 import { approve, buildProject } from './helpers';
 import { dateKey } from '../src/engine/time';
@@ -59,6 +60,7 @@ describe('the game\'s own people age', () => {
   it('keeps a child\'s range narrow, and an adult from playing under 16', () => {
     const child = { ...actors[0], born: '2016-03-01', playingAge: [8, 22] as [number, number] };
     expect(playingAgeAt(child, '2026-06-01')).toEqual([8, 12]);
+    expect(playingAgeAt({ ...child, born: '2026-01-01' }, '2026-06-01')).toEqual([0, 2]); // a baby plays a baby
     expect(playingAgeAt(child, '2035-06-01')).toEqual([16, 25]); // 19: a range as wide as the start's, none of it under 16
   });
 
@@ -79,6 +81,6 @@ describe('the game\'s own people age', () => {
     expect(fitNotes(t, p, actor, ines.id).filter(note)).toEqual([]);
     t.now += 3653 * DAY;
     const later = playingAgeAt(actor, dateKey(t.now, 'UTC'))!;
-    expect(fitNotes(t, p, actor, ines.id).filter(note)).toEqual([`Usually plays ages ${later[0]} to ${later[1]}.`]);
+    expect(fitNotes(t, p, actor, ines.id).filter(note)).toEqual([`Usually plays ages ${later[0]} to ${later[1]}; the part is ${then[0]}.`]);
   });
 });

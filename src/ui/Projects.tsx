@@ -6,7 +6,7 @@ import {
   genreCategory, hasTrackRecord, isEpisodic, isNonfiction, ledgerTotals, money, projectGenreLabel, projectModules, qualityWords, scriptIssues,
   canContinue, currentZone, searchGenres, type ModuleId,
 } from '../engine';
-import { continueProject } from '../engine/sequel';
+import { continueProject, defaultStoryYears } from '../engine/sequel';
 import { projectStages } from '../engine/stages';
 import { resumeProject, shelveImpact, shelveProject } from '../engine/shelve';
 import type { Format, Medium, Project, Technique } from '../engine/types';
@@ -326,7 +326,7 @@ function Overview({ p }: { p: Project }) {
             <>
               <p className="dim">The characters, their designs, the world and any threads left open carry over, with finished puppets, models and rigs. Nobody returns automatically: you ask people back and pay them again, and raise the money again{p.renewal?.outcome === 'renewed' ? ', starting with the commissioner\'s offer' : ''}.</p>
               {canContinue(p) && <p className="dim">{canContinue(p)}</p>}
-              <button className="btn btn-primary" disabled={!!canContinue(p)} onClick={() => setErr(store.act((s) => { const next = continueProject(s, p); store.go({ view: 'project', projectId: next.id, tab: 'overview' }); }))}>{p.episodes.length > 1 ? 'Start The Next Season' : 'Start A Sequel'}</button>
+              <ContinueButton p={p} onError={setErr} />
             </>
           )}
         </section>
@@ -390,3 +390,18 @@ function Overview({ p }: { p: Project }) {
 }
 
 export { Check };
+
+/**
+ * Starting the next season or a sequel, with the years that pass in the story first: each character's age moves on by
+ * them (sequel.ts), so a child in the cast is cast older, and may stop being a child.
+ */
+function ContinueButton({ p, onError }: { p: Project; onError: (e: string | null) => void }) {
+  const [years, setYears] = useState(defaultStoryYears(p));
+  return (
+    <>
+      <NumberField label="Years That Pass In The Story" min={0} max={50} value={years} onChange={setYears}
+        hint={p.axes.medium === 'animation' ? 'Animated characters often stay the age they are: 0 keeps them as they are.' : 'Each character is this much older. Written ages that give no number stay as they are.'} />
+      <button className="btn btn-primary" disabled={!!canContinue(p) || !Number.isInteger(years)} onClick={() => onError(store.act((s) => { const next = continueProject(s, p, undefined, years); store.go({ view: 'project', projectId: next.id, tab: 'overview' }); }))}>{p.episodes.length > 1 ? 'Start The Next Season' : 'Start A Sequel'}</button>
+    </>
+  );
+}

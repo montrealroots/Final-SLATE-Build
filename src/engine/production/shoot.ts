@@ -9,7 +9,8 @@ import { approvedCharacters, approvedScenes, isNonfiction, projectModules, scene
 import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
 import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees } from './rates';
-import { ensureWorkEvent, isWorkingDay, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay } from './schedule';
+import { ensureWorkEvent, isWorkingDay, minorsInScenes, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay } from './schedule';
+import { childShare, ensureLicence, isSchoolDay, licenceReady, setAsideOf, supervisionFor, type Minor } from '../minors';
 import { addLogOnce, payPlanned, plannedRemaining } from './workday';
 import { t } from './tasks';
 import { personLanguagesFit } from './language';
@@ -171,10 +172,22 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
   }
   if (where.text) addLog(state, `${p.title}: ${where.text}`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'schedule' } });
   const locationFee = Math.round(dayFees(p).location * siteFactor(p, d.locationLabel));
+  // Children on today's call (minors.ts): their licences (applied for now if they weren't), the people who must be with
+  // them, and the hours they may work, which are longer on a day without school.
+  const school = isSchoolDay(place, d.date);
+  const kidsToday = minorsInScenes(p, scenes, d.date, state);
+  const isNight = (s: Scene) => s.heading.time === 'NIGHT' || d.night;
+  for (const m of kidsToday.values()) ensureLicence(p, m, d.date, scenes.some((s) => s.participants.includes(m.characterId) && isNight(s)));
+  const welfare = supervisionFor([...kidsToday.values()], school);
+  const welfareRoles = new Set(welfare.map((w) => w.roleId));
+  const short = welfare.find((w) => p.hires.filter((h) => h.roleId === w.roleId && h.status === 'accepted').length < w.count);
+  const yesterday = p.schedule.days.find((x) => x.date === addDaysToKey(d.date, -1) && x.night && (x.status === 'shot' || x.status === 'partial'));
+  const lateLastNight = new Set(yesterday ? approvedScenes(p).filter((s) => yesterday.sceneIds.includes(s.id)).flatMap((s) => s.participants) : []);
+  const kidUsed = new Map<string, number>();
   // Money first: a day whose cost exceeds agreed amounts and uncommitted funds doesn't run.
   const holidayToday = placeHolidaysOn(place, d.date).length > 0;
   const onSetHires = p.hires.filter((h) => h.status === 'accepted' && h.obligationId &&
-    (SHOOT_CREW.has(h.roleId) || (h.kind === 'cast' && h.method !== 'voice' && scenes.some((s) => s.participants.includes(h.characterId ?? '')))));
+    (SHOOT_CREW.has(h.roleId) || (welfareRoles.has(h.roleId) && kidsToday.size > 0) || (h.kind === 'cast' && h.method !== 'voice' && scenes.some((s) => s.participants.includes(h.characterId ?? '')))));
   const overrun = onSetHires.reduce((a, h) => {
     const o = p.obligations.find((x) => x.id === h.obligationId)!;
     const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
@@ -235,6 +248,34 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
       pending.push(s.id);
       continue;
     }
+    // A child in the scene: licensed, with the people the rules require, rested after a night shoot, with hours left.
+    const kids = s.participants.map((c) => kidsToday.get(c)).filter((m): m is Minor => !!m);
+    let kidLeft = Infinity;
+    if (kids.length) {
+      const lic = kids.map((m) => licenceReady(p, m, d.date, isNight(s))).find((x) => !x.ok);
+      if (lic) {
+        reasons.push(`${label} wasn't shot: ${lic.reason}`);
+        pending.push(s.id);
+        continue;
+      }
+      if (short) {
+        reasons.push(`${label} wasn't shot: ${kids[0].name} can't work without a ${roleLabel(short.roleId).toLowerCase()} on set. ${short.why}`);
+        pending.push(s.id);
+        continue;
+      }
+      const tired = kids.find((m) => !isNight(s) && lateLastNight.has(m.characterId));
+      if (tired) {
+        reasons.push(`${label} wasn't shot: ${tired.name} needs ${tired.rules.restHours} hours' rest after last night's shoot.`);
+        pending.push(s.id);
+        continue;
+      }
+      kidLeft = Math.min(...kids.map((m) => BASE_MINUTES_PER_SHOOT_DAY * childShare(m, school) - (kidUsed.get(m.characterId) ?? 0)));
+      if (kidLeft <= 0.01) {
+        reasons.push(`${label} wasn't shot: ${kids[0].name} has worked all the hours they may work today.`);
+        pending.push(s.id);
+        continue;
+      }
+    }
     if (nonfiction && s.kind === 'interview') {
       const noConsent = s.contributorIds.find((cid) => p.contributors.find((c) => c.id === cid)?.consent !== 'given');
       if (noConsent) {
@@ -270,12 +311,13 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const pickup = isDirecting2(p) ? d.pickups?.[s.id] : undefined;
     if (pickup && cap && cap.version === p.approvedDraft) {
       const share = pickupLoad(s, sceneComplexity(s, mods, performedSong(p, s)));
-      if (capacity < share) {
+      if (capacity < share || kidLeft < share) {
         reasons.push(`${label}'s pickup ran out of time and needs another day.`);
         pending.push(s.id);
         continue;
       }
       capacity -= share;
+      for (const m of kids) kidUsed.set(m.characterId, (kidUsed.get(m.characterId) ?? 0) + share);
       reasons.push(applyPickup(state.seed, p, s, cap, pickup, d.date, quality, soundAtRisk));
       shot.push(label);
       continue;
@@ -290,8 +332,12 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
       ? (s.estMinutes / sceneComplexity(s, mods, performedSong(p, s))) * setupTime(SETUPS_OF[plan.coverage].length, (recorded?.takes ?? cap?.takes ?? []).length || TAKE_RULES[plan.takes].planned)
       : sceneLoad(p, s, mods);
     const remainingNeed = need2 * (1 - already);
-    const fraction = Math.min(1, capacity / Math.max(0.01, remainingNeed));
-    capacity -= Math.min(capacity, remainingNeed);
+    // A child's hours left today cap the scene as the day's own capacity does.
+    const avail = Math.min(capacity, kidLeft);
+    const fraction = Math.min(1, avail / Math.max(0.01, remainingNeed));
+    const used = Math.min(avail, remainingNeed);
+    capacity -= used;
+    for (const m of kids) kidUsed.set(m.characterId, (kidUsed.get(m.characterId) ?? 0) + used);
     const kept = keepTakes ? cap!.takes![cap!.chosenTake ?? 0] : null;
     markCaptured(p, s.id, already + (1 - already) * fraction, recorded ? takeFigures(recorded.takes[recorded.chosen]).quality : kept ? takeFigures(kept).quality : quality, compromised);
     const capNow = p.captures.find((c) => c.sceneId === s.id)!;
@@ -302,7 +348,8 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     if (needsDialogueReplacement(p, s, compromised)) addDialogueReplacement(p, s);
     if (already + (1 - already) * fraction < 0.999) {
       pending.push(s.id);
-      reasons.push(`${label} ran out of time and needs another day.`);
+      const limitedBy = kidLeft < capacity + used ? kids.find((m) => BASE_MINUTES_PER_SHOOT_DAY * childShare(m, school) - (kidUsed.get(m.characterId) ?? 0) <= 0.01) : undefined;
+      reasons.push(limitedBy ? `${label} ran out of time: ${limitedBy.name} had worked all the hours they may work today. It needs another day.` : `${label} ran out of time and needs another day.`);
     } else shot.push(label);
     if (capacity <= 0.01) {
       for (const rest of scenes.slice(scenes.indexOf(s) + 1)) pending.push(rest.id);
@@ -312,7 +359,13 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
   }
   // Costs: everyone on the shoot crew and the cast in today's scenes is paid once for the day.
   for (const h of onSetHires) {
-    if (settle(state, p, h.obligationId!, h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1), `${h.id}:${d.date}`)) h.daysWorked += 1;
+    const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
+    if (settle(state, p, h.obligationId!, pay, `${h.id}:${d.date}`)) {
+      h.daysWorked += 1;
+      // A child's share set aside in trust, where the rules require it (minors.ts): part of their pay, not a further cost.
+      const kid = h.kind === 'cast' ? kidsToday.get(h.characterId ?? '') : undefined;
+      if (kid && kid.personId === h.personId) h.trustSetAside = (h.trustSetAside ?? 0) + setAsideOf(kid.rules, pay);
+    }
   }
   try {
     payPlanned(state, p, 'plan:shoot', `Location Fee (${d.date})`, 'locations', locationFee, `loc:${d.id}`);

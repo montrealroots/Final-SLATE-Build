@@ -88,6 +88,23 @@ Running five simulated years on the real series fixed partial episode counts, to
 leap-year drift. Startup is now 685 kB, 219 of 220 kB gzipped, because the engine loads with the game: keep the next
 phases out of the startup bundle.
 
+**Child performers (November 11, 2026):**
+- **Character ages.** A character's age is written as an age or a range (`story-age.ts`). A series' characters age by
+  the years the producer says pass between seasons.
+- **The rules.** A child in the cast works under the rules of the place the production is based (`minors.ts`):
+  England's, California's or New York's, read from their official texts.
+- **What follows from them:**
+  - more shoot days;
+  - a chaperone, studio teacher, tutor or nurse to hire;
+  - a licence with its lead time;
+  - night approval;
+  - rest after a night shoot;
+  - the trust set-aside.
+- **Who ages.** The game's own people have birth dates and age, and their playing ranges follow. The pool has children.
+- **Startup budget.** It is at 219.75 of 220 kB gzipped. The next engine feature needs room made first: something else
+  loaded with its page rather than at startup, as was done here for the industry engine, the cost estimate and the
+  casting notes.
+
 **Next, Phase 3:** studios keep releasing, with invented titles at each studio's recorded pace and genres.
 
 ### Earlier Request (November 10, 2026, after #62): the Disney company and screen-credit catalog

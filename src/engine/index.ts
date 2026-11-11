@@ -22,7 +22,7 @@ export * from './unscripted';
 export * from './finance';
 export * from './observances';
 export * from './script-effects';
-export * from './estimate';
+// The cost estimate (estimate.ts) is imported where it's shown, with the plan pages, not at startup (November 11, 2026).
 export * from './identity';
 export * from './structure';
 export * from './research';
@@ -32,4 +32,5 @@ export * from './auditions';
 export * from './distribution';
 export * from './relationships';
 export * from './opportunities';
-export * from './industry';
+// The living world's engine (industry.ts) loads with the film catalog, not at startup: App.tsx imports it when the world
+// file arrives, and state.ts holds its decisions until then.

@@ -14,6 +14,7 @@ import { buildTasks } from './tasks';
 import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, dayFees } from './rates';
 import { planTime } from '../takes';
 import { songUses } from '../songs';
+import { childShare, ensureLicence, minorFor, type Minor } from '../minors';
 
 /** A song is performed on screen in this scene (songs.ts). */
 export const performedSong = (p: Project, s: Scene): boolean => songUses(p, [s]).some((x) => x.use.placement === 'performed');
@@ -75,7 +76,26 @@ export interface ShootDayGroup { sceneIds: string[]; episodes: number[]; place: 
  * a script whose scenes are spread over places and times of day costs the days it really takes (November 8, 2026;
  * the estimate pooled every minute into one total until then).
  */
-export function groupShootDays(p: Project): ShootDayGroup[] {
+/** The date ages are reckoned on when planning: the shoot's start, else today. */
+export function planningDate(p: Project, state?: GameState): string {
+  if (p.schedule.startDate) return p.schedule.startDate;
+  return state ? dateKey(state.now, getPlace(p.axes.basePlaceId).zone) : new Date().toISOString().slice(0, 10);
+}
+
+/**
+ * The children in a project's live scenes, by character, on a date (minors.ts): a cast child by their real age (with
+ * the game state), a part not cast by the character's age.
+ */
+export function minorsInScenes(p: Project, scenes: Scene[], on: string, state?: GameState): Map<string, Minor> {
+  const out = new Map<string, Minor>();
+  for (const cid of new Set(scenes.flatMap((s) => s.participants))) {
+    const m = minorFor(state, p, cid, on);
+    if (m) out.set(cid, m);
+  }
+  return out;
+}
+
+export function groupShootDays(p: Project, state?: GameState): ShootDayGroup[] {
   const mods = projectModules(p);
   // Scenes already filmed in full for the approved draft are done: a rebuilt plan and the estimate leave them out alike.
   const filmed = new Set(p.captures.filter((c) => c.captured >= 0.999 && c.version === p.approvedDraft).map((c) => c.sceneId));
@@ -88,36 +108,48 @@ export function groupShootDays(p: Project): ShootDayGroup[] {
     const key = `${unit}|${s.storyLocation || s.heading.place}|${s.heading.intExt === 'EXT' ? 'EXT' : 'INT'}|${s.heading.time === 'NIGHT' ? 'N' : 'D'}`;
     (groups.get(key) ?? groups.set(key, []).get(key)!).push(s);
   }
+  // A child may work only part of a day (minors.ts): their scenes in a day fill no more than their share of it. Planned
+  // as school days, the stricter case, since the dates aren't known yet. Until November 11, 2026 a child's scenes filled
+  // a day as an adult's did.
+  const kids = minorsInScenes(p, scenes, planningDate(p, state), state);
+  const kidCap = (cid: string) => BASE_MINUTES_PER_SHOOT_DAY * childShare(kids.get(cid)!, true);
+  const kidsOf = (s: Scene) => s.participants.filter((c) => kids.has(c));
   const out: ShootDayGroup[] = [];
   const sortedGroups = [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0], 'en', { numeric: true }));
   for (const [key, list] of sortedGroups) {
     const [, place, ie, dn] = key.split('|');
     let bucket: Scene[] = [];
     let load = 0;
+    let kidLoad = new Map<string, number>();
     const flush = () => {
       if (!bucket.length) return;
       out.push({ sceneIds: bucket.map((s) => s.id), episodes: [...new Set(bucket.map((s) => s.episode))].sort((x, y) => x - y), place, interior: ie === 'INT', night: dn === 'N', load });
       bucket = [];
       load = 0;
+      kidLoad = new Map();
     };
     for (const s of list) {
       const need = sceneLoad(p, s, mods);
-      if (load + need <= BASE_MINUTES_PER_SHOOT_DAY) {
+      const ks = kidsOf(s);
+      if (load + need <= BASE_MINUTES_PER_SHOOT_DAY && ks.every((k) => (kidLoad.get(k) ?? 0) + need <= kidCap(k) + 1e-9)) {
         bucket.push(s);
         load += need;
+        for (const k of ks) kidLoad.set(k, (kidLoad.get(k) ?? 0) + need);
         continue;
       }
       flush();
-      // A scene longer than one day's capacity spans several consecutive days.
+      // A scene longer than one day's capacity, or than a child in it may work in a day, spans several days.
+      const perDay = Math.min(BASE_MINUTES_PER_SHOOT_DAY, ...ks.map(kidCap));
       let remaining = need;
-      while (remaining > BASE_MINUTES_PER_SHOOT_DAY) {
+      while (remaining > perDay + 1e-9) {
         bucket = [s];
-        load = BASE_MINUTES_PER_SHOOT_DAY;
+        load = perDay;
         flush();
-        remaining -= BASE_MINUTES_PER_SHOOT_DAY;
+        remaining -= perDay;
       }
       bucket = [s];
       load = remaining;
+      for (const k of ks) kidLoad.set(k, remaining);
     }
     flush();
   }
@@ -129,11 +161,32 @@ export function planShootDays(state: GameState, p: Project, firstDay: string): S
   let cursor = nextWorkingDay(p, firstDay);
   const playerChars = new Set(p.cast.filter((c) => c.performer === 'player').map((c) => c.characterId));
   const scenes = approvedScenes(p);
-  for (const g of groupShootDays(p)) {
+  // Each cast child's licence is applied for now (minors.ts), with night work if any of their scenes is at night. A day
+  // with a child waits for their licence: days without children go first, and the child's days follow once it's granted.
+  const today = dateKey(state.now, getPlace(p.axes.basePlaceId).zone);
+  const kidsIn = (g: ShootDayGroup) => [...minorsInScenes(p, scenes.filter((s) => g.sceneIds.includes(s.id)), firstDay, state).values()];
+  const groups = groupShootDays(p, state);
+  for (const g of groups) for (const m of kidsIn(g)) ensureLicence(p, m, today, g.night);
+  const readyBy = (g: ShootDayGroup) => kidsIn(g).reduce((r, m) => {
+    const l = (p.childLicences ?? []).find((x) => x.personId === m.personId && x.characterId === m.characterId);
+    const at = l ? (g.night && l.nightApplied ? addDaysToKey(l.nightApplied, m.rules.licence.nightLeadDays) : l.ready) : r;
+    return at > r ? at : r;
+  }, '');
+  const pending = groups.map((g) => ({ g, ready: readyBy(g) }));
+  let lastNightKids = new Set<string>();
+  while (pending.length) {
+    const i = pending.findIndex((x) => x.ready <= cursor);
+    // Nothing can go yet: wait for the first licence.
+    if (i < 0) { cursor = nextWorkingDay(p, pending.reduce((m, x) => (x.ready < m ? x.ready : m), pending[0].ready)); continue; }
+    const { g } = pending.splice(i, 1)[0];
+    const kids = kidsIn(g).map((m) => m.characterId);
+    // Twelve hours between a child's dismissal and their next call: a day call after a night shoot moves a day on.
+    if (!g.night && kids.some((k) => lastNightKids.has(k))) cursor = nextWorkingDay(p, addDaysToKey(cursor, 1));
     days.push({
       id: newId(state, 'd'), date: cursor, episode: g.episodes[0], ...(g.episodes.length > 1 ? { episodes: g.episodes } : {}), sceneIds: g.sceneIds, locationLabel: g.place, interior: g.interior, night: g.night,
       status: 'scheduled', playerActing: scenes.some((s) => g.sceneIds.includes(s.id) && s.participants.some((c) => playerChars.has(c))), conflicts: [],
     });
+    lastNightKids = new Set(g.night ? kids : []);
     cursor = nextWorkingDay(p, addDaysToKey(cursor, 1));
   }
   // Note conflicts with the player's own appointments.

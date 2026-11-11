@@ -1,7 +1,8 @@
 // The living world's engine (src/engine/industry.ts): series continue past the records' end, decided by the save's seed and
 // stored in the save. Made-up series of each kind; no TMDB data is in the repository.
 import { afterAll, describe, expect, it } from 'vitest';
-import { DAY, ensureIndustry, episodeDates, outletOf, processUntil, renewalOdds, setIndustryWorld, type IndustryWorld, type SeriesProfile } from '../src/engine';
+import { DAY, processUntil } from '../src/engine';
+import { ensureIndustry, episodeDates, outletOf, renewalOdds, setIndustryWorld, type IndustryWorld, type SeriesProfile } from '../src/engine/industry';
 import { deserialize, serialize } from '../src/engine/save';
 import type { GameState } from '../src/engine/types';
 import { startLife } from './helpers';

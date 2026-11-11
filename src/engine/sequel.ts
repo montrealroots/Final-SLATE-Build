@@ -4,12 +4,23 @@ import { canContinue } from './continuation';
 import { openOffer } from './negotiation';
 import { approvedCharacters, createProject } from './projects';
 import { addLog, newId } from './state';
+import { shiftStoryAge } from './story-age';
 import type { FinanceDeal, GameState, Project } from './types';
 
 const BUILD_KINDS = new Set(['sm:armature', 'sm:puppet', 'sm:costume', 'anim:model', 'anim:rig']);
 
-/** Start the next season of a series, or a sequel. Returns the new project. */
-export function continueProject(state: GameState, p: Project, title?: string): Project {
+/**
+ * The years that pass in the story before a continuation, unless the producer says otherwise: one for live action, so
+ * a series' children grow up with their audience, and none for animation, where characters often stay the age they are.
+ */
+export const defaultStoryYears = (p: Project) => (p.axes.medium === 'animation' ? 0 : 1);
+
+/**
+ * Start the next season of a series, or a sequel. Returns the new project. The characters are as old as `storyYears`
+ * more years make them (story-age.ts); until November 11, 2026 a series' characters stayed the age they were written.
+ */
+export function continueProject(state: GameState, p: Project, title?: string, storyYears = defaultStoryYears(p)): Project {
+  if (!Number.isInteger(storyYears) || storyYears < 0 || storyYears > 50) throw new Error('Choose between 0 and 50 years.');
   const why = canContinue(p);
   if (why) throw new Error(why);
   const series = p.episodes.length > 1;
@@ -21,7 +32,10 @@ export function continueProject(state: GameState, p: Project, title?: string): P
   });
   next.axes = JSON.parse(JSON.stringify(p.axes));
   next.characters = JSON.parse(JSON.stringify(approvedCharacters(p).length ? approvedCharacters(p) : p.characters));
-  for (const c of next.characters) delete c.beats; // a new season writes its own arcs
+  for (const c of next.characters) {
+    delete c.beats; // a new season writes its own arcs
+    c.ageInStory = shiftStoryAge(c.ageInStory, storyYears);
+  }
   next.worldRules = (JSON.parse(JSON.stringify(p.worldRules)) as typeof p.worldRules).map((r) => ({ ...r, sceneIds: [] }));
   next.relationships = JSON.parse(JSON.stringify(p.relationships));
   next.threads = (p.threads ?? []).filter((t) => t.resolution === 'open' || !t.resolvedIn).map((t) => ({ ...t, sceneIds: [], resolvedIn: null }));

@@ -18,6 +18,30 @@ import { SHOOT_CREW, markCaptured } from './shoot';
 import { designGate } from '../designs';
 import { t } from './tasks';
 import { isWorkingDay, nextWorkingDay } from './schedule';
+import { ensureLicence, isSchoolDay, licenceReady, minorFor, setAsideOf, supervisionFor, type Minor } from '../minors';
+
+/**
+ * A child at a recording or capture session (minors.ts): licensed, and with whoever the rules say must be with them,
+ * who are paid for the day (once, if the child is also on a shoot that day). Returns why the session can't go ahead.
+ */
+function childSession(state: GameState, p: Project, m: Minor, date: string): string | null {
+  ensureLicence(p, m, date, false);
+  const lic = licenceReady(p, m, date, false);
+  if (!lic.ok) return lic.reason!;
+  const need = supervisionFor([m], isSchoolDay(getPlace(p.axes.basePlaceId), date));
+  const hired = (roleId: string) => p.hires.filter((h) => h.roleId === roleId && h.status === 'accepted' && h.obligationId);
+  const short = need.find((w) => hired(w.roleId).length < w.count);
+  if (short) return `${m.name} can't record without a ${roleLabel(short.roleId).toLowerCase()}. ${short.why}`;
+  for (const w of need) for (const h of hired(w.roleId).slice(0, w.count)) if (settle(state, p, h.obligationId!, h.dayRate, `${h.id}:${date}`)) h.daysWorked += 1;
+  return null;
+}
+
+/** Pays a session performer and sets aside a child's share in trust where the rules require it. */
+function paySessionPerformer(state: GameState, p: Project, h: { id: string; dayRate: number; obligationId: string | null; daysWorked: number; trustSetAside?: number }, m: Minor | null, date: string): void {
+  if (!h.obligationId || !settle(state, p, h.obligationId, h.dayRate, `${h.id}:${date}`)) return;
+  h.daysWorked += 1;
+  if (m) h.trustSetAside = (h.trustSetAside ?? 0) + setAsideOf(m.rules, h.dayRate);
+}
 
 // ---------------- Staffing helpers ----------------
 
@@ -154,6 +178,13 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
           continue;
         }
       }
+      const kid = minorFor(state, p, charId, date, 'motion-capture');
+      const kidBlock = kid ? childSession(state, p, kid, date) : null;
+      if (kidBlock) {
+        task.status = 'blocked';
+        task.blockedReason = kidBlock;
+        continue;
+      }
       if (!payStageSession(state, p, charId, `mocap:${task.id}:${date}`)) {
         task.status = 'blocked';
         task.blockedReason = 'The capture booking has no sessions left. Ask for a retake or book the stage again.';
@@ -161,7 +192,7 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
       }
       const cast = p.cast.find((c) => c.characterId === charId && c.method === 'motion-capture');
       const h = cast?.hireId ? p.hires.find((x) => x.id === cast.hireId) : undefined;
-      if (h && h.status === 'accepted' && h.obligationId && settle(state, p, h.obligationId, h.dayRate, `${h.id}:${date}`)) h.daysWorked += 1;
+      if (h && h.status === 'accepted') paySessionPerformer(state, p, h, kid, date);
       if (task.kind === 'anim:mocap') recordTake(state, p, charId, date);
       if (session) session.status = 'done';
       task.done += 1;
@@ -203,11 +234,16 @@ export function runWorkDay(state: GameState, p: Project, date: string): void {
           continue;
         }
         const cast = p.cast.find((c) => c.characterId === task.assetRef && c.method !== 'motion-capture');
+        const kid = task.assetRef ? minorFor(state, p, task.assetRef, date, 'voice') : null;
+        const kidBlock = kid ? childSession(state, p, kid, date) : null;
+        if (kidBlock) {
+          task.status = 'blocked';
+          task.blockedReason = kidBlock;
+          continue;
+        }
         if (cast?.hireId) {
           const h = p.hires.find((x) => x.id === cast.hireId);
-          if (h && h.status === 'accepted' && h.obligationId) {
-            if (settle(state, p, h.obligationId, h.dayRate, `${h.id}:${date}`)) h.daysWorked += 1;
-          }
+          if (h && h.status === 'accepted') paySessionPerformer(state, p, h, kid, date);
         }
         spend(state, p, `Recording Studio (${date})`, 'post', VOICE_SESSION_STUDIO, `studio:${task.id}:${date}`);
       }

@@ -372,6 +372,14 @@ export function scheduleNextBirthday(state: GameState): void {
   schedule(state, at, 'birthday', { age, year: localParts(at, state.ageZone).year }, { priority: 10, attention: 'notify', id: `bday-${age}` });
 }
 
+// The living world's decisions (industry.ts) are handled once that module has loaded with the film catalog, which
+// replaces this handler. Until then a decision that comes due waits a day rather than being lost: an event with no
+// handler is consumed. Until November 11, 2026 industry.ts loaded at startup, which put the startup bundle over budget.
+registerHandler('industry-decision', (state, ev) => {
+  schedule(state, ev.at + DAY, 'industry-decision', ev.payload, { priority: 60, id: `ind:${ev.payload.r}:${ev.payload.step}:held:${Math.floor(ev.at / DAY) + 1}` });
+  return { suppressInterrupt: true };
+});
+
 registerHandler('birthday', (state, ev) => {
   const age = ev.payload.age as number;
   addLog(state, `Today is your birthday. You're ${age}.`, 'personal', { route: { view: 'profile' } });

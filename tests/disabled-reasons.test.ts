@@ -26,7 +26,7 @@ const REASONS: Record<string, string> = {
   'PlanViews.tsx | !proposal.proposals.length': 'The staffing dialog lists why each role was skipped.',
   'PlanViews.tsx | !!why': 'The reason is shown beside the button (and as its title for Invite To Read).',
   'PlanViews.tsx | !!p.delivered': 'The Crew and Schedule pages say the project has been delivered.',
-  'Projects.tsx | !!canContinue(p)': 'The reason (deliver it first, or it already has one) is shown above the button.',
+  'Projects.tsx | !!canContinue(p) || !Number.isInteger(years)': 'The reason (deliver it first, or it already has one) is shown above the button; the years field beside it is empty until a whole number is entered.',
   'Projects.tsx | !add': 'Waits for a language to be chosen in the list beside it.',
   'Projects.tsx | locked': 'The budget size says it is available after you deliver a project.',
   'ScriptViews.tsx | locked': DELIVERED_SCRIPT,

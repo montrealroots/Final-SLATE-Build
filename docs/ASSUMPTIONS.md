@@ -47,6 +47,55 @@ Every number here is a game calibration value. None is a quoted real-world rate 
 | Climate station range | A station further than 400 km isn't treated as evidence for a place; that normal is modeled from latitude and height (warmest month around July in the north and January in the south) | `world/climate.ts` |
 | Weather around station normals | Daily departure spread is 0.3 × the day's normal range (1 to 4 °C), with spells correlated over about 4 days; wet days run 2 °C cooler by day and 1 °C warmer at night; sunnier months give more clear days | `engine/weather.ts` |
 
+## Child Performers (November 11, 2026)
+
+A performer is a child under the rules of the place the production is based (`minors.ts`). England's rules stop at 16,
+when compulsory school age ends; California's and New York's stop at 18. The figures come from the official texts:
+
+| | England | California | New York |
+| --- | --- | --- | --- |
+| Source | The Children (Performances and Activities) (England) Regulations 2014, regs 4, 13, 15, 21 to 26 | 8 CCR §11760, §11755.2; Family Code §6752; the Entertainment Work Permit | 12 NYCRR Part 186; the Department of Labor's chart LS 559 (09/18) |
+| Hours of work a day, school day (no school) | under 5: 2; 5 to 8: 3; 9 to 15: 5 (no more without school) | babies to 6 months: 20 minutes; to 2: 2; 2 to 5: 3; 6 to 8: 4 (6); 9 to 15: 5 (7); 16 and 17: 6 (8) | the same, but 16 and 17: 6 (9) |
+| Hours at the place of work | 5, 8, 9.5 | 2, 4, 6, 8, 9, 10 | 2, 4, 6, 8, 9, 10 |
+| Who must be with them | a licensed chaperone, up to 12 children each; a tutor on school days, 3 hours, up to 6 each | a studio teacher on every call under 16, one per 10 (20 without school); a nurse under 6 months | a responsible person under 16 (the game hires a chaperone); teaching 3 hours a school day; a nurse under 6 months |
+| Before the first day | a licence, asked for 21 days ahead (reg 4(2)) | an Entertainment Work Permit (a 10-day permit is issued at once) and a permit to employ minors | a Child Performer Permit, and the employer's notice of use 2 business days ahead |
+| Night work | the licensing authority's permission (reg 28) | the Labor Commissioner's approval, asked for 48 hours ahead | a variance |
+| Between calls | 12 hours (reg 24) | 12 hours | 12 hours |
+| Trust set-aside | none | 15% of gross pay | 15% of gross pay |
+
+What follows in the game:
+- **Shoot days.** A shoot day stands for ten hours (game calibration). A child's scenes fill no more of a day than their
+  hours of work allow, so a script with children takes more days, at more location and equipment cost. The schedule
+  plans school-day hours, the stricter case. On the day, a day without school allows more where the rules do.
+- **Who must be with them.** The chaperone, studio teacher, tutor or nurse is crew the production hires. They are paid
+  for each day a child works, on set or at a voice or capture session. A child's scenes aren't shot without them.
+- **The licence.** It is asked for when the shoot is scheduled. A child's days go after it is granted, and the days
+  without children go first.
+- **Night scenes.** A child's night scenes need night work approved. The day call after a child's night shoot moves a
+  working day on.
+- **Trust set-aside.** Where the rules require it, 15% of each payment to a child is recorded as set aside in trust. It
+  is part of their pay, not a further cost.
+- **Other places.** Places whose rules aren't recorded use the nearest recorded set and say so: the rest of the United
+  States uses California's, and everywhere else uses England's. Scotland, Wales and Northern Ireland have rules of their
+  own, close to England's, that weren't read.
+- **School days.** A school day is a weekday that isn't a public holiday or in a typical long break:
+  - England: July 22 to September 3;
+  - the United States: June 15 to August 20;
+  - elsewhere north of the equator: July and August;
+  - south of it: December 15 to January 31;
+  - and in the north, December 22 to January 2.
+
+  It isn't a school calendar.
+- **The pool.** It has 14 child performers and 6 child voice performers per country, from a month to fifteen years old when
+  your story begins. Their experience can't run ahead of their years.
+- **Not modelled.** Not modelled:
+  - England's limit of six consecutive days, which the game's schedule already keeps, since it never works Sundays;
+  - England's rules for 16- and 17-year-olds under employment law;
+  - twins cast to share a baby's part;
+  - a parent acting as chaperone;
+  - working hours at a voice or capture session, beyond the licence and the people with them.
+- **Rates.** Studio teachers, chaperones, tutors and set nurses are paid at game calibration, not union scale.
+
 ## World Places (M2)
 
 - A GeoNames place with no recorded height is treated as being at sea level for its record; its weather comes from station normals, which are corrected to the station's own height, so the effect is limited to the modeled fallback.

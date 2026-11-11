@@ -384,6 +384,8 @@ export interface Hire {
   responseAt: number;
   obligationId: string | null;
   daysWorked: number;
+  /** A child's pay set aside in trust under the shoot's rules (minors.ts), in total so far. */
+  trustSetAside?: number;
 }
 
 export interface CastAssignment {
@@ -749,6 +751,8 @@ export interface Project {
   episodes: { number: number; title: string; writer: 'player' | string; director: 'player' | string; formerWriters?: string[]; formerDirectors?: string[]; /** What this episode moves in the season arc (season.ts). */ arc?: string }[];
   /** The season's arc, in the writer's words (season.ts). Scores nothing; a continuation starts from it. */
   seasonArc?: string;
+  /** Licences and permits for the children in the cast (minors.ts), applied for when the shoot is planned. */
+  childLicences?: import('./minors').ChildLicence[];
   /** Designs wait for the producer's approval before they are built (designs.ts); unset on projects started before. */
   designReview?: boolean;
   designApprovals?: Record<string, { version: number; status: 'approved' | 'changes' }>;

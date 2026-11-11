@@ -112,8 +112,8 @@ export function shootDayStart(p: Project, d: ShootDay): number {
 }
 
 /** The shoot days the approved script needs: the schedule's own grouping (production/schedule.ts groupShootDays), counted. */
-export function estimatedShootDays(p: Project): number {
-  return groupShootDays(p).length;
+export function estimatedShootDays(p: Project, state?: GameState): number {
+  return groupShootDays(p, state).length;
 }
 
 export { dayNumber, HOUR, reserve, commit, cancel, approvalRights };

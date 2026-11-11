@@ -20,6 +20,7 @@ import { approvalScope, type ScopeChange } from '../engine/cost-cuts';
 import { CONTENT_ISSUES, audienceContentNote, characterPronouns, contentSuggestions, contentSummary, placementExplained, spokenMinutes } from '../engine/script-explain';
 import type { ContentIssue, ContentLevel, Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
+import { formatStoryAge, storyAge } from '../engine/story-age';
 import { PLACEMENT_LABELS, attachSong, detachSong } from '../engine/song-actions';
 import { store, useGame } from './store';
 import { PlacePicker } from './Creation';
@@ -921,7 +922,7 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
             <SelectField label="Role Size" value={c.roleSize} options={ROLE_SIZES.map((r) => ({ value: r, label: title(r) }))} onChange={(v) => up({ roleSize: v })} />
             <SelectField label="Entity" value={c.entity} options={ENTITIES.map((r) => ({ value: r, label: title(r) }))} onChange={(v) => up({ entity: v })} />
             <SelectField label="Realized As" value={c.realization} options={REALIZATIONS.map((r) => ({ value: r, label: REAL_LABEL[r] }))} onChange={(v) => up({ realization: v })} />
-            <TextField label="Age In Story" value={c.ageInStory} onChange={(v) => up({ ageInStory: v })} />
+            <AgeFields c={c} up={up} />
             <TextField label="Also Called" hint="Other names they go by, separated with commas. Shown with the part in casting; the character stays one character." value={(c.aliases ?? []).join(', ')} onChange={(v) => up({ aliases: parseList(v).length ? [...new Set(parseList(v))] : undefined })} />
             <SelectField label="Pronouns" value={characterPronouns(c) ?? ''} hint="Casting marks performers who match, and can list them first." options={[{ value: '', label: 'Open To Anyone' }, { value: 'he', label: 'He/Him' }, { value: 'she', label: 'She/Her' }, { value: 'they', label: 'They/Them' }]} onChange={(v) => up({ pronouns: v })} />
             <SelectField label="Speaks" value={c.languages[0] ?? p.axes.dialogueLanguages[0]} options={p.axes.dialogueLanguages.map((l) => ({ value: l, label: languageName(l) }))} onChange={(v) => up({ languages: [v] })} />
@@ -1115,5 +1116,25 @@ export function ScopeSummary({ scope }: { scope: ScopeChange }) {
       {scope.before.estimate === scope.after.estimate && scope.before.total !== scope.after.total && <p className="dim">The work changes by {money(Math.abs(scope.after.total - scope.before.total))}, but the estimate stays at the budget size's amount.</p>}
       {scope.commitments.length > 0 && <><p>These agreements stay after the change:</p><ul>{scope.commitments.map((c) => <li key={c}>{c}</li>)}</ul></>}
     </div>
+  );
+}
+
+/**
+ * A character's age: one age, or a range up to an oldest (story-age.ts). Casting compares it with the ages each performer
+ * plays, and a part under 16 is reckoned as a child's until it's cast (minors.ts). Until November 11, 2026 this was
+ * free text read only for a leading number; text written then that gives no age is shown so it can be put in numbers.
+ */
+function AgeFields({ c, up }: { c: StoryCharacter; up: (patch: Partial<StoryCharacter>) => void }) {
+  const a = storyAge(c.ageInStory);
+  const legacy = !a && c.ageInStory.trim() ? c.ageInStory.trim() : null;
+  const set = (min: number, max: number) => up({ ageInStory: Number.isFinite(min) ? formatStoryAge({ min, max: Number.isFinite(max) && max > min ? max : min }) : '' });
+  const range = a && a.max !== a.min ? a.max : Number.NaN;
+  return (
+    <>
+      <NumberField label="Age In Story" min={0} max={120} value={a?.min ?? Number.NaN}
+        hint={legacy ? `Written as "${legacy}", which gives no age. Enter one so casting and the schedule can use it.` : 'Under 16, the part is played by a child, with the rules that bring.'}
+        onChange={(v) => set(v, range)} />
+      <NumberField label="Up To" min={0} max={120} value={range} hint="Optional: the oldest the character could be, for an age range." onChange={(v) => { if (a) set(a.min, v); }} />
+    </>
   );
 }

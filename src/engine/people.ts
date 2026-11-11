@@ -31,6 +31,9 @@ export const ROLES: RoleDef[] = [
   R('casting-director', 'Casting Director', 'Casting And Performance', 500), R('actor', 'Performer', 'Casting And Performance', 700, true),
   R('voice-actor', 'Voice Performer', 'Casting And Performance', 600, true), R('background', 'Background Performer', 'Casting And Performance', 180, true),
   R('dialect-coach', 'Dialect And Language Coach', 'Casting And Performance', 400), R('choreographer', 'Choreographer', 'Casting And Performance', 500),
+  // With child performers (minors.ts, November 11, 2026). Rates are game calibration, not union scale.
+  R('studio-teacher', 'Studio Teacher', 'Casting And Performance', 600), R('chaperone', 'Licensed Chaperone', 'Casting And Performance', 150),
+  R('tutor', 'Tutor', 'Casting And Performance', 250), R('set-nurse', 'Set Nurse', 'Casting And Performance', 500),
   R('stunt-coordinator', 'Stunt Coordinator', 'Safety And Specialists', 650), R('fight-choreographer', 'Fight Choreographer', 'Safety And Specialists', 550),
   R('intimacy-coordinator', 'Intimacy Coordinator', 'Safety And Specialists', 500), R('animal-wrangler', 'Animal Wrangler', 'Safety And Specialists', 450),
   R('vehicle-coordinator', 'Picture Vehicle Coordinator', 'Safety And Specialists', 450), R('marine-coordinator', 'Marine And Water Safety Coordinator', 'Safety And Specialists', 600),
@@ -179,12 +182,17 @@ export function countryLanguage(country: string): string {
 }
 
 const POOL_SIZE: Record<string, number> = { actor: 36, 'voice-actor': 14, background: 6, animator: 10, 'stopmo-animator': 8 };
+/**
+ * Children among the performers (November 11, 2026), listed after everyone else so nobody already in a save's pool
+ * changed. Until then the youngest performer was about twelve, so a baby's or a young child's part had no one to play it.
+ */
+const CHILD_POOL: Record<string, number> = { actor: 14, 'voice-actor': 6 };
 
 /** Deterministic pool of candidates for a role, based in the production's country. */
 export function candidates(state: GameState, roleId: string, baseCountry: string): Person[] {
   const n = POOL_SIZE[roleId] ?? 6;
   const out: Person[] = [];
-  for (let i = 0; i < n; i++) out.push(person(state, roleId, baseCountry, i));
+  for (let i = 0; i < n + (CHILD_POOL[roleId] ?? 0); i++) out.push(person(state, roleId, baseCountry, i));
   return out;
 }
 
@@ -252,8 +260,29 @@ function person(state: GameState, roleId: string, country: string, i: number): P
     : Math.round(Math.min(72, Math.max(19, 18 + experience * 6 + gaussian(r, 0, 5))));
   const born = addDaysToKey(`${Number(start.slice(0, 4)) - ageThen}${start.slice(4)}`, -intBetween(r, 1, 365));
   p.born = born;
+  if (def.cast && i >= (POOL_SIZE[roleId] ?? 6)) child(state, p, start);
   personCache.set(cacheKey, p);
   return p;
+}
+
+/**
+ * Makes a pool performer a child: a month to fifteen years old when your story begins, from a draw of their own. Their
+ * experience can't run ahead of their years (one level for each six), and their capability, rate and record follow it.
+ * The ages they play are within two years of their own (playingAgeAt).
+ */
+function child(state: GameState, p: Person, start: string): void {
+  const r = stream(state.seed, 'child', p.id);
+  const ageDays = intBetween(r, 30, 15 * 365);
+  p.born = addDaysToKey(start, -ageDays);
+  const years = Math.floor(ageDays / 365.25);
+  p.experience = Math.min(p.experience, 1 + Math.floor(years / 6));
+  p.capability = Math.round(Math.min(98, Math.max(30, 40 + p.experience * 9 + gaussian(r, 0, 8))));
+  const def = role(p.roleId);
+  p.dayRate = Math.round((def.rate * (0.62 + p.experience * 0.2) * (0.9 + r() * 0.2)) / 10) * 10;
+  p.playingAge = [Math.max(0, years - 2), years + 2];
+  const credits = Math.max(0, p.experience * 2 + intBetween(r, -2, 1));
+  p.samples = credits ? `${credits} screen ${credits === 1 ? 'role' : 'roles'} so far.` : 'No screen roles yet.';
+  p.skills = years < 6 ? [] : p.skills;
 }
 
 const parts = (k: string) => ({ year: Number(k.slice(0, 4)), month: Number(k.slice(5, 7)), day: Number(k.slice(8, 10)) });
@@ -274,7 +303,7 @@ export function personAge(p: Person, on: string): number {
 export function playingAgeAt(p: Person, on: string): [number, number] | undefined {
   if (!p.playingAge) return undefined;
   const age = personAge(p, on);
-  if (age < 18) return [Math.max(1, age - 2), age + 2];
+  if (age < 18) return [Math.max(0, age - 2), age + 2];
   const width = p.playingAge[1] - p.playingAge[0];
   const below = Math.round(width * 0.6);
   return [Math.max(16, age - below), age + width - below];

@@ -81,7 +81,7 @@ export function costBreakdown(state: GameState, p: Project): CostBreakdown {
       if (p.hires.some((h) => h.characterId === c.id && h.method === m && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
       const pool = roleCandidates(state, p, castRoleFor(m)).sort((a, b) => a.dayRate - b.dayRate);
       const cheapest = pool.find((x) => x.experience >= 2);
-      const days = estimateDays(p, castRoleFor(m), c.id, m);
+      const days = estimateDays(p, castRoleFor(m), c.id, m, state);
       const rate = (cheapest ?? pool[0])?.dayRate ?? 0;
       const how = m.replace('-', ' ');
       if (rate) lines.push({ area: 'cast', label: `${c.name} (${how})`, amount: rate * days, driver: `About ${days} ${days === 1 ? 'day' : 'days'} at ${money(rate)}` });
@@ -90,7 +90,7 @@ export function costBreakdown(state: GameState, p: Project): CostBreakdown {
   }
   const tasks = toComeTasks(p);
   const planned = p.obligations.some((o) => o.ref === 'plan:shoot' || o.ref === 'plan:materials');
-  const groups = groupShootDays(p);
+  const groups = groupShootDays(p, state);
   if (!planned) {
     const fees = dayFees(p);
     const byPlace = new Map<string, number>();

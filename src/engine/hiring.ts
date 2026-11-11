@@ -2,19 +2,20 @@
 // Responses are deterministic per offer, arrive after a delay on the shared clock, and depend on
 // availability for the production window and the offered rate. Offers reserve (not spend) funds.
 
-import { songUses } from './songs';
 import { getPlace } from '../data/places';
 import { cancel, commit, ledgerTotals, money, reserve, FundsError } from './budget';
 import { genre } from './genres';
-import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, playingAgeAt, role, roleLabel, type Person } from './people';
+import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
 import { buildTasks, coachingNeeded, estimatedShootDays, planShootDays } from './production';
 import { approvalRights, approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneTechnique } from './projects';
 import { recordHistory, willingness } from './relationships';
 import { stream } from './rng';
-import { addLog, currentZone, newId, registerHandler, schedule } from './state';
+import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY, HOUR, addDaysToKey, dateKey, formatDateKey, weekdayName, weekdayOfKey } from './time';
 import type { CastAssignment, GameState, Hire, PerformanceMethod, Project } from './types';
 import { PRONOUNS } from '../data/identity';
+import { minorFor, supervisionFor, type Minor } from './minors';
+import { groupShootDays, minorsInScenes, planningDate } from './production/schedule';
 
 export interface NeededRole {
   roleId: string;
@@ -62,13 +63,46 @@ export function neededRoles(p: Project, state?: GameState): NeededRole[] {
   }
   if (p.axes.format === 'unscripted-series' && live) add('camera-operator', 'Segments are covered with more than one camera.', true);
   if (state && coachingNeeded(state, p).length) add('dialect-coach', 'Some performers need coaching in a dialogue language.', true);
+  // Children in the cast, or children's parts not yet cast (minors.ts): who the rules say must be with them, on set and
+  // at recording and capture sessions. The teacher is needed on school days.
+  for (const w of supervisionFor(childrenIn(p, state), true)) add(w.roleId, `Required with children: ${w.why}`, true);
   return [...out.values()].sort((a, b) => a.dept.localeCompare(b.dept) || roleLabel(a.roleId).localeCompare(roleLabel(b.roleId)));
 }
 
+/** The children a project's parts are played by, or will be: on set, and at voice and capture sessions. */
+export function childrenIn(p: Project, state?: GameState): Minor[] {
+  const on = planningDate(p, state);
+  const live = approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival');
+  const out = [...minorsInScenes(p, live, on, state).values()];
+  for (const c of approvedCharacters(p)) {
+    for (const m of ['voice', 'motion-capture'] as const) {
+      if (!(p.tasks.length ? p.tasks : buildTasks(p)).some((t) => t.assetRef === c.id && (m === 'voice' ? t.kind === 'anim:voice' : t.kind === 'anim:mocap'))) continue;
+      const kid = minorFor(state, p, c.id, on, m);
+      if (kid && !out.some((x) => x.characterId === kid.characterId)) out.push(kid);
+    }
+  }
+  return out;
+}
+
+/** Days with children at work: shoot days with them, and their recording and capture sessions. */
+function childDays(p: Project, state?: GameState): number {
+  const kids = childrenIn(p, state);
+  if (!kids.length) return 0;
+  const ids = new Set(kids.map((k) => k.characterId));
+  const scenes = approvedScenes(p);
+  const shoot = p.schedule.days.length
+    ? p.schedule.days.filter((d) => d.status !== 'cancelled' && d.status !== 'moved' && scenes.some((s) => d.sceneIds.includes(s.id) && s.participants.some((c) => ids.has(c)))).length
+    : groupShootDays(p, state).filter((g) => scenes.some((s) => g.sceneIds.includes(s.id) && s.participants.some((c) => ids.has(c)))).length;
+  const sessions = (p.tasks.length ? p.tasks : buildTasks(p)).filter((t) => (t.kind === 'anim:voice' || t.kind === 'anim:mocap') && ids.has(t.assetRef ?? '')).reduce((a, t) => a + Math.max(1, Math.ceil(t.units)), 0);
+  return shoot + sessions;
+}
+const WELFARE = new Set(['studio-teacher', 'chaperone', 'tutor', 'set-nurse']);
+
 /** Estimated paid days for a role, from the current plan or the approved breakdown. */
-export function estimateDays(p: Project, roleId: string, characterId?: string, method?: PerformanceMethod): number {
+export function estimateDays(p: Project, roleId: string, characterId?: string, method?: PerformanceMethod, state?: GameState): number {
+  if (WELFARE.has(roleId)) return Math.max(1, childDays(p, state));
   const tasks = p.tasks.length ? p.tasks : buildTasks(p);
-  const shootDays = p.schedule.days.length ? p.schedule.days.filter((d) => d.status === 'scheduled' || d.status === 'shot' || d.status === 'partial').length : estimatedShootDays(p);
+  const shootDays = p.schedule.days.length ? p.schedule.days.filter((d) => d.status === 'scheduled' || d.status === 'shot' || d.status === 'partial').length : estimatedShootDays(p, state);
   if (characterId) {
     if (method === 'voice') return Math.max(1, tasks.filter((t) => t.kind === 'anim:voice' && t.assetRef === characterId).length);
     if (method === 'motion-capture') {
@@ -160,7 +194,7 @@ export function makeOffer(state: GameState, p: Project, input: OfferInput): Hire
       throw new Error(`${person.name} can't play both roles. ${other?.name ?? 'Their other character'} is in the same scene.`);
     }
   }
-  const days = estimateDays(p, input.roleId, input.characterId, input.method);
+  const days = estimateDays(p, input.roleId, input.characterId, input.method, state);
   const amount = input.dayRate * days;
   const label = input.characterId
     ? `${person.name} as ${approvedCharacters(p).find((c) => c.id === input.characterId)?.name ?? 'cast'}`
@@ -364,34 +398,7 @@ export function uncastPlayer(p: Project, characterId: string): void {
   }
 }
 
-/** Casting fit notes: playing age, needed skills and dialogue language. Never identity-based. */
-export function fitNotes(state: GameState, p: Project, person: Person | 'player', characterId: string): string[] {
-  const out: string[] = [];
-  const c = approvedCharacters(p).find((x) => x.id === characterId);
-  if (!c) return out;
-  const scenes = approvedScenes(p).filter((s) => s.participants.includes(characterId));
-  // A song performed in their scenes, by them or by nobody named yet (songs.ts).
-  const needsSinging = songUses(p, scenes).some((x) => x.use.placement === 'performed' && (!x.song.performers.length || x.song.performers.some((c) => c.characterId === characterId)));
-  const needsDance = scenes.some((s) => s.dance);
-  const langs = c.languages.length ? c.languages : [p.axes.dialogueLanguages[0]];
-  if (person === 'player') {
-    const known = [state.character.mainLanguage, ...state.character.languages.filter((l) => l.proficiency !== 'Basic').map((l) => l.code)];
-    const missing = langs.filter((l) => !known.includes(l));
-    if (missing.length) out.push("You'll need language coaching for this role's dialogue.");
-    return out;
-  }
-  const age = Number.parseInt(c.ageInStory, 10);
-  // The ages they play today, which move as they age (people.ts); the range fixed at your story's start was read until
-  // November 10, 2026.
-  const plays = playingAgeAt(person, dateKey(state.now, currentZone(state)));
-  if (plays && Number.isFinite(age) && (age < plays[0] || age > plays[1])) {
-    out.push(`Usually plays ages ${plays[0]} to ${plays[1]}.`);
-  }
-  if (needsSinging && !person.skills.includes('singing')) out.push('Not trained in singing, which this role needs.');
-  if (needsDance && !person.skills.includes('dance')) out.push('Not trained in dance, which this role needs.');
-  if (langs.some((l) => !person.languages.includes(l))) out.push('Will need language coaching for this role\'s dialogue.');
-  return out;
-}
+// Casting fit notes (fitNotes) moved to casting-notes.ts, which loads with the casting page (November 11, 2026).
 
 // ---------------- Department staffing assistance ----------------
 
@@ -435,7 +442,7 @@ export function requiredCrewPlan(state: GameState, p: Project): { nr: NeededRole
     const needsOwnPerson = nr.roleId === 'camera-operator' && p.axes.format === 'unscripted-series';
     if (p.hires.some((h) => (needsOwnPerson ? h.roleId === nr.roleId : covers(h.roleId, nr.roleId)) && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
     if (!needsOwnPerson && plan.some((x) => covers(x.nr.roleId, nr.roleId))) continue;
-    const days = estimateDays(p, nr.roleId);
+    const days = estimateDays(p, nr.roleId, undefined, undefined, state);
     const cheapest = affordablePool(state, p, nr.roleId, win)[0];
     const anyone = cheapest ?? roleCandidates(state, p, nr.roleId).sort((a, b) => a.dayRate - b.dayRate)[0];
     const rate = anyone?.dayRate ?? 0;
@@ -460,7 +467,7 @@ export function proposeStaffing(state: GameState, p: Project, dept: string): { p
   }
   let budget = available;
   for (const { nr } of plan.filter((x) => x.nr.dept === dept)) {
-    const days = estimateDays(p, nr.roleId);
+    const days = estimateDays(p, nr.roleId, undefined, undefined, state);
     const pool = affordablePool(state, p, nr.roleId, win);
     const pick = pool.find((c) => c.dayRate * days <= budget);
     if (!pick) {

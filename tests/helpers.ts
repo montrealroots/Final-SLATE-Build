@@ -5,6 +5,8 @@ import {
   DAY, dateKey, addDaysToKey, getProjectZone, FundsError, bringInCoProducer, approveTake, bookMocap, mocapRecord,
 } from './engine-api';
 import { showCut } from '../src/engine/documentary-actions';
+import { personAge, playingAgeAt, type Person } from '../src/engine/people';
+import { storyAge } from '../src/engine/story-age';
 import { approveDesign } from '../src/engine/designs-actions';
 import { fundingScenario } from '../src/engine/projects';
 import type { CreationDraft, Format, GameState, Medium, PerformanceMethod, Project, Technique } from '../src/engine/types';
@@ -112,7 +114,15 @@ export function castAll(state: GameState, p: Project, playerRoles: { character: 
       if (p.hires.some((h) => h.characterId === c.id && h.method === method && ['offered', 'countered', 'accepted'].includes(h.status))) continue;
       const roleId = castRoleFor(method);
       const tried = new Set(p.hires.filter((h) => h.characterId === c.id && h.method === method).map((h) => h.personId));
-      const pool = roleCandidates(state, p, roleId).filter((x) => !tried.has(x.id) && isAvailable(state, x, win.from, win.to, p.id).ok && x.experience >= 3).sort((a, b) => a.dayRate - b.dayRate);
+      // As a producer would: someone who plays the part's age, or for a part with no age written, an adult. Until the pool
+      // had children (November 11, 2026), the cheapest experienced performer was always one.
+      const today = dateKey(state.now, 'UTC');
+      const want = storyAge(c.ageInStory);
+      const suits = (x: Person) => {
+        const plays = playingAgeAt(x, today);
+        return want ? !!plays && want.max >= plays[0] && want.min <= plays[1] : personAge(x, today) >= 18;
+      };
+      const pool = roleCandidates(state, p, roleId).filter((x) => !tried.has(x.id) && isAvailable(state, x, win.from, win.to, p.id).ok && x.experience >= (want && want.max < 16 ? 1 : 3) && suits(x)).sort((a, b) => a.dayRate - b.dayRate);
       for (const pick of pool) {
         try {
           makeOffer(state, p, { personId: pick.id, roleId, dayRate: pick.dayRate, characterId: c.id, method });

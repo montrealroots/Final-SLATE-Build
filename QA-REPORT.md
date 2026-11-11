@@ -8,7 +8,19 @@
 
 ## Commands And Results
 
-### Current: The Living World, Phase 2: Series Continue Or End (November 10, 2026, in #64 with Phase 1)
+### Current: Child Performers, Character Ages And People Who Age (November 11, 2026)
+
+The rules and their sources are in `docs/ASSUMPTIONS.md`, Child Performers.
+
+| Command | Exit | Result |
+| --- | --- | --- |
+| Research | n/a | Read from the official texts:<br>**England:** SI 2014/3309, regulations 4, 13, 15, 21 to 26.<br>**California:** 8 CCR §11760 and §11755.2; Family Code §6752; the Entertainment Work Permit page.<br>**New York:** the Department of Labor's LS 559 chart (its text, from the PDF) and its pages on employer duties. |
+| `npm run check` | 0 | 88 files, 700 tests. New: `tests/minors.test.ts` (13) and `tests/people-ages.test.ts` (7). Startup is 687 kB, 219.75 kB gzipped, under the 220 kB budget, which wasn't raised. The child rules put it at 224 kB first. Three modules no longer load at startup:<br>- the living world's engine (`industry.ts`), which now loads with the world file; state.ts holds its decisions until then;<br>- the cost estimate (`estimate.ts`), which now loads with the plan pages;<br>- the casting notes (`casting-notes.ts`, moved out of hiring.ts), which now load with the casting page. |
+| Mutations of the child rules | 1 for each | Seven were put back one at a time, and each failed a test:<br>- no child cap in planning;<br>- no check for who must be on set;<br>- no trust set-aside;<br>- no rest after a night shoot;<br>- no wait for the licence;<br>- no ageing between seasons;<br>- no cap on a child's hours on the day.<br>The last survived at first, because the plan already keeps a child's day within their hours. The test now gives one day more of the child's work than they may do. |
+| Golden production outcomes (`tests/production-golden.test.ts`) | 0 | Unchanged. The test helper casts a part's age, or an adult for a part with no age, since the pool now has children. |
+| `children`, `living-world`, `catalog`, `careers`, `first-project`, `script-rules`, `accessibility`, `decisions` on desktop and phone | 0 | 34 passed, 4 skipped by design. The new `children` journey: a part's age written as numbers; England's rules on the Cast page; the chaperone and tutor required in Crew; and the performers who play the part's age listed first, each child with what casting them brings. |
+
+### Previous: The Living World, Phase 2: Series Continue Or End (November 10, 2026, in #64 with Phase 1)
 
 The rules are in `docs/WORLD.md`, under Phase 2.
 
