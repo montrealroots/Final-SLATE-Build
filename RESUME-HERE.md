@@ -125,8 +125,15 @@ numbers, the networks and streaming services shows are attached to, and cinemas 
    (CC0) into `.cinemas/`, which git ignores. Dates keep their recorded precision.
    - A place page's Cinemas Nearby lists those within 25 km at the save's date. None is called open.
    - Each shows a closure with or without its date. A cinema isn't counted before it opens.
-   - Not done: a part in theatrical releases, since the counts are too uneven between countries to stand for a market
-     (`docs/CINEMAS.md`); and a page of a whole country's cinemas.
+   - **What they show (the owner: "those theaters will hold what movies will release"):**
+     - the catalog's films, from the day TMDB records them opening in that country;
+     - the player's theatrical releases, in their territories;
+     - each cinema with a sign it still trades (a website or operator) books films by a fixed simulated draw, more for a
+       wide release and for a film received well (`src/world/programme.ts`, `docs/CINEMAS.md`).
+
+     The Release page says where the player's film plays.
+   - Not done: bookings shaping earnings (the counts are too uneven to stand for a market), and a page of a whole
+     country's cinemas.
 3. **Networks and streaming services: done.** The people import finished first: 190,751 people, 59,418 with a birth
    date and 18,460 with a death date.
    - **Data:** TMDB's details for all 105 networks, and owners from Wikidata (`tools/screen-catalog/networks.mjs`),

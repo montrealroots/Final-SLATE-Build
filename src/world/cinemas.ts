@@ -17,6 +17,8 @@ export interface Cinema {
   seats: number | null;
   operator: string | null;
   in: string | null;
+  /** Its official website, if Wikidata records one (gathered from November 11, 2026; older files lack it). */
+  site?: string | null;
 }
 
 /** When the records were read: a closure recorded with no date is known only to have happened by then. */
@@ -52,3 +54,11 @@ export function cinemasNear(list: Cinema[], lat: number, lon: number, km: number
     .filter((x) => x.km <= km && x.standing.kind !== 'not-yet')
     .sort((a, b) => a.km - b.km);
 }
+
+/**
+ * Whether a cinema may still show films on a date: no closure recorded, and a sign it is trading, which is a website or an
+ * operator in Wikidata. Many cinemas with no closure recorded closed long ago and nobody noted it (London's Jacey
+ * Leicester Square), so having no closure isn't enough. The sign is imperfect: a former cinema that is a music venue now
+ * may have a website too.
+ */
+export const showsFilms = (c: Cinema, today: string) => cinemaOn(c, today).kind === 'no-closure' && !!(c.site || c.operator);

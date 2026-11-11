@@ -33,6 +33,9 @@ const search = [];
 // The world file (src/catalog/world.ts): every dated event from WORLD_FROM on, which the game plays on its real date.
 const WORLD_FROM = '2025-10-01';
 const world = [];
+// Theatrical openings from a year before the world file, so a save's first months have films already in their run.
+const THEATRICAL_FROM = '2024-10-01';
+const theatrical = [];
 // Series still running when the records end: what the living world's engine continues (src/engine/industry.ts).
 const profiles = [];
 const byTmdb = new Map(DISCOVERED.map((c) => [c.tmdb.id, c]));
@@ -139,6 +142,12 @@ for (const t of manifest.titles) {
       regulars: lastCast.length ? lastCast : (rec.seriesCast ?? []).slice(0, 8).map((c) => ({ p: c.person, name: c.name, ch: c.roles[0]?.character ?? null })) });
   }
   if (type === 'movie' && when && when >= WORLD_FROM) world.push({ d: when, k: 'film', r: ref, t: title, ci: studiosOf(rec) });
+  // Where and when each film opened in cinemas, as TMDB records it by country: its theatrical (type 3) and limited (type 2)
+  // releases. Cinemas' programmes come from these (src/world/programme.ts).
+  if (type === 'movie') for (const c of d.release_dates?.results ?? []) {
+    const opened = c.release_dates.filter((x) => x.type === 3 || x.type === 2).sort((a, b) => a.release_date.localeCompare(b.release_date))[0];
+    if (opened && opened.release_date.slice(0, 10) >= THEATRICAL_FROM) theatrical.push([ref, title, c.iso_3166_1, opened.release_date.slice(0, 10), opened.type === 2 ? 1 : 0]);
+  }
   // How a series stood when the records were taken. When it was announced isn't recorded, so it is told at the records' end.
   if (type === 'tv' && (rec.status === 'Ended' || rec.status === 'Canceled') && rec.lastAirDate && rec.lastAirDate >= WORLD_FROM) world.push({ d: null, k: 'end', r: ref, t: title, st: rec.status, la: rec.lastAirDate, net: rec.networks, ci: studiosOf(rec) });
   const castList = type === 'tv' ? rec.seriesCast : rec.cast;
@@ -195,6 +204,7 @@ for (const pr of profiles) for (const c of pr.regulars) {
   if (d?.deathday) c.died = date(d.deathday);
 }
 write('world.json', { version: 1, builtAt: new Date().toISOString(), horizon, from: WORLD_FROM, events: world, series: profiles });
+write('theatrical.json', { version: 1, from: THEATRICAL_FROM, openings: theatrical.sort((a, b) => a[3].localeCompare(b[3]) || a[2].localeCompare(b[2])) });
 const discovery = manifest.queries.map((q) => ({ company: q.companyId, type: q.type, reported: q.total, found: q.found, pages: q.pages, split: q.split, failedPages: q.failedPages }));
 write('index.json', {
   version: 1, builtAt: new Date().toISOString(), registryChecked: REGISTRY_CHECKED,

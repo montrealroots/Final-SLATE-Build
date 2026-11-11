@@ -1,7 +1,7 @@
 // Cinemas as Wikidata records them (src/world/cinemas.ts, docs/CINEMAS.md): how one stood on a date, never claimed open,
 // and the ones near a place.
 import { describe, expect, it } from 'vitest';
-import { cinemaOn, cinemasNear, type Cinema } from '../src/world/cinemas';
+import { cinemaOn, cinemasNear, showsFilms, type Cinema } from '../src/world/cinemas';
 
 const c = (x: Partial<Cinema>): Cinema => ({ id: 'Q1', name: 'Fixture', lat: 51.5, lon: -0.12, opened: null, closed: null, state: null, seats: null, operator: null, in: null, ...x });
 
@@ -25,6 +25,16 @@ describe('a cinema at a date', () => {
     expect(cinemaOn(c({ state: 'permanently closed' }), '2026-01-05')).toEqual({ kind: 'closed-undated' });
     expect(cinemaOn(c({ state: 'demolished or destroyed' }), '1950-01-01')).toEqual({ kind: 'closed-undated' });
     expect(cinemaOn(c({ state: 'in use' }), '2026-01-05')).toEqual({ kind: 'no-closure' });
+  });
+});
+
+describe('a cinema that shows films', () => {
+  it('needs no closure recorded and a website or operator: an old cinema nobody recorded closing shows nothing', () => {
+    expect(showsFilms(c({}), '2026-01-05')).toBe(false);
+    expect(showsFilms(c({ site: 'https://cinema.example' }), '2026-01-05')).toBe(true);
+    expect(showsFilms(c({ operator: 'Fixture Cinemas' }), '2026-01-05')).toBe(true);
+    expect(showsFilms(c({ site: 'https://cinema.example', closed: '1999' }), '2026-01-05')).toBe(false);
+    expect(showsFilms(c({ site: 'https://cinema.example', opened: '2030' }), '2026-01-05')).toBe(false);
   });
 });
 

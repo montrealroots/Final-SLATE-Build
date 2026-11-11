@@ -8,7 +8,16 @@
 
 ## Commands And Results
 
-### Current: Cinemas On Place Pages, And Georgia's Child Rules (November 11, 2026)
+### Current: What The Cinemas Show (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 90 files, 725 tests. New:<br>- `tests/programme.test.ts`: runs by country and date; your release only in its territories and never when cancelled; bookings at about their share and stable; a closed cinema, or one with no sign of trading, showing nothing; screens capped with yours first;<br>- `tests/cinemas.test.ts`: which cinemas show films;<br>- `tests/catalog.test.ts`: the build's `theatrical.json`, which takes a limited release over a digital one.<br>Startup is 683 kB, 219 kB gzipped. |
+| Mutations | 1 for each | Three were made, and each failed a test:<br>- digital releases counted as cinema openings;<br>- closed cinemas booking films;<br>- your film's bookings ignoring its reception. |
+| `npx playwright test e2e/cinemas.spec.ts e2e/catalog.spec.ts`, desktop and phone | 0 | 18 passed. The new journey checks, on fixture data:<br>- your theatrical release, marked released in the save, is in British cinemas beside a catalog film in its run;<br>- one whose eight weeks are over, and one that opened only in France, aren't;<br>- one opening soon is listed;<br>- a closed cinema shows nothing, and an unclosed one with no website or operator says so;<br>- your film's Release page counts the cinemas showing it. |
+| Real data, by eye | — | London on May 4, 2026 showed The Devil Wears Prada 2 (opened May 1) and Ready or Not: Here I Come (opened March 20, in week seven of eight). Hoppers, whose run had ended, didn't show. Jacey Leicester Square, long closed with no closure recorded, was booking films until websites were required. |
+
+### Earlier: Cinemas On Place Pages, And Georgia's Child Rules (November 11, 2026)
 
 | Command | Failures | Notes |
 | --- | --- | --- |

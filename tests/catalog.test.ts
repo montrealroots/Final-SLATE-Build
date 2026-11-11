@@ -243,7 +243,7 @@ describe('the build', () => {
       id: 900001, title: 'The Lantern Keeper', original_title: 'The Lantern Keeper', release_date: '1997-06-01', status: 'Released', spoken_languages: [{ english_name: 'English' }], production_countries: [{ name: 'United States of America' }],
       genres: [{ name: 'Drama' }], runtime: 0, budget: 0, revenue: 0, vote_count: 0, vote_average: 0, overview: '', production_companies: [{ id: 25, name: '20th Century Fox', origin_country: 'US' }, { id: 2, name: 'Walt Disney Pictures', origin_country: 'US' }],
       credits: { cast: [{ id: 800001, name: 'Ada Quill', character: 'Mara', order: 0 }], crew: [{ id: 800002, name: 'Ben Rook', department: 'Directing', job: 'Director' }] },
-      external_ids: { imdb_id: 'tt0000001' }, release_dates: { results: [{ iso_3166_1: 'US', release_dates: [{ certification: 'PG' }] }] },
+      external_ids: { imdb_id: 'tt0000001' }, release_dates: { results: [{ iso_3166_1: 'US', release_dates: [{ certification: 'PG' }] }, { iso_3166_1: 'GB', release_dates: [{ certification: '', type: 4, release_date: '2025-01-02T00:00:00.000Z' }, { certification: '', type: 2, release_date: '2025-01-10T00:00:00.000Z' }] }] },
     };
     const series = {
       id: 900001, name: 'Same Number Series', original_name: 'Same Number Series', first_air_date: '2020-01-01', status: 'Returning Series', seasons: [{ season_number: 1, name: 'Season 1', episode_count: 2, air_date: '2020-01-01' }],
@@ -292,6 +292,10 @@ describe('the build', () => {
     expect(read('networks/index.json')).toEqual([[2, 'ABC', 'US', 1]]);
     expect(read('world.json').series[0]).toMatchObject({ r: 'tv:900001', net: ['ABC'], nk: ['cable'] });
     expect(read('index.json').counts).toMatchObject({ networks: 1, networksMatched: 1 });
+  });
+
+  it('writes where each film opened in cinemas, by country: its first theatrical or limited release, not a digital one', () => {
+    expect(read('theatrical.json')).toEqual({ version: 1, from: '2024-10-01', openings: [['movie:900001', 'The Lantern Keeper', 'GB', '2025-01-10', 1]] });
   });
 
   it('writes figures TMDB has as 0 or without votes as unknown', () => {

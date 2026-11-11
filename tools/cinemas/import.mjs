@@ -88,6 +88,14 @@ async function main() {
         byId.set(id, x);
       }
     }
+    // Each cinema's official website, if Wikidata records one: the sign, with an operator, that it may still show films
+    // (src/world/programme.ts). A separate light pass, added November 11, 2026, so the cached details aren't fetched again.
+    for (let i = 0; i < ids.length; i += 200) {
+      const batch = ids.slice(i, i + 200);
+      const rows = (await query(`sites-${c.code}-${i / 200}`, `SELECT ?c ?site WHERE { VALUES ?c { ${batch.map((x) => `wd:${x}`).join(' ')} } ?c wdt:P856 ?site. }`)).rows;
+      for (const r of rows) { const x = byId.get(qid(v(r, 'c'))); if (x) x.site ??= v(r, 'site'); }
+    }
+    for (const x of byId.values()) x.site ??= null;
     // A label that is just the item's id means Wikidata has no name in English or multilingual for it.
     const list = [...byId.values()].map((x) => ({ ...x, name: x.name && x.name !== x.id ? x.name : null }));
     writeFileSync(join(OUT, `${c.code}.json`), JSON.stringify(list));
