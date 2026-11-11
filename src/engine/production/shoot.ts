@@ -189,8 +189,11 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
   const kidUsed = new Map<string, number>();
   // Money first: a day whose cost exceeds agreed amounts and uncommitted funds doesn't run.
   const holidayToday = placeHolidaysOn(place, d.date).length > 0;
+  // The hired director of the day's episodes directs it, and is paid for the day like everyone on set. Until November 11,
+  // 2026 a hired director was credited and moved the direction's assessment without a day's work or pay.
+  const directing = new Set([d.episode, ...(d.episodes ?? [])].map((n) => p.episodes.find((e) => e.number === n)?.director).filter((x) => x && x !== 'player'));
   const onSetHires = p.hires.filter((h) => h.status === 'accepted' && h.obligationId &&
-    (SHOOT_CREW.has(h.roleId) || (welfareRoles.has(h.roleId) && kidsToday.size > 0) || (h.kind === 'cast' && h.method !== 'voice' && scenes.some((s) => s.participants.includes(h.characterId ?? '')))));
+    (SHOOT_CREW.has(h.roleId) || (h.roleId === 'episode-director' && directing.has(h.personId)) || (welfareRoles.has(h.roleId) && kidsToday.size > 0) || (h.kind === 'cast' && h.method !== 'voice' && scenes.some((s) => s.participants.includes(h.characterId ?? '')))));
   const overrun = onSetHires.reduce((a, h) => {
     const o = p.obligations.find((x) => x.id === h.obligationId)!;
     const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);

@@ -7,7 +7,8 @@ const webkitPath = process.env.SLATE_WEBKIT_PATH ?? '/opt/pw-browsers/webkit-238
 const webkitLaunch = existsSync(webkitPath) ? { launchOptions: { executablePath: webkitPath } } : {};
 
 const prod = process.env.SLATE_E2E_PROD === '1';
-const port = prod ? 4175 : 5174;
+// SLATE_E2E_PORT lets a second checkout run its journeys beside another run.
+const port = Number(process.env.SLATE_E2E_PORT) || (prod ? 4175 : 5174);
 
 export default defineConfig({
   testDir: 'e2e',

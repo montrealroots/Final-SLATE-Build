@@ -4,7 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { forgetCatalog, retryCatalog } from '../catalog/load';
 import { installOffered, installPack, installedPacks, offeredMods, ownerSession, ownerSignIn, ownerSignOut, packExpires, removePack, type InstalledPack, type OfferedMod, type OwnerSession, type PackKind, type PackMeta } from '../catalog/packs';
-import { startLivingWorld } from './App';
+import { expirePeople, startLivingWorld } from './App';
 import { TextField, plural } from './components';
 import { store, useStore } from './store';
 
@@ -158,6 +158,7 @@ export function DataPacks() {
     if (!store.state) return;
     (await import('../engine/industry')).setIndustryWorld(null);
     startLivingWorld();
+    void expirePeople();
     store.emit();
     setVersion((v) => v + 1);
   };

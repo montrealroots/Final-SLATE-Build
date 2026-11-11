@@ -66,13 +66,17 @@ export const tmdbIdOf = (id: string): number => Number(id.slice(3));
 // ---------------- What the record shows ----------------
 
 /**
- * Recorded crew jobs, as TMDB names them, and the job in the game each is evidence for. A credit as Executive Producer
- * is evidence for none: it isn't the work of a producer on the floor, and the game has no such job to hire for.
+ * Recorded crew jobs, as TMDB names them, and the job in the game each is evidence for. A producer's credit, of any
+ * kind, is evidence for none: the game has no producer's job whose work it models (the player produces), and a job that
+ * is paid and changes nothing isn't offered. The same goes for Casting. Until November 11, 2026 a Producer's credit was
+ * offered the line producer's job and a Casting credit the casting director's, which nothing in the game reads.
  */
+/** Recorded jobs the game has nothing to offer for, named so a person's page can say so. */
+export const NO_JOB_FOR = ['Producer', 'Executive Producer', 'Line Producer', 'Co-Producer', 'Associate Producer', 'Casting'];
 const JOBS: Record<string, string[]> = {
   Director: ['episode-director'], Screenplay: ['episode-writer', 'co-writer'], Writer: ['episode-writer', 'co-writer'], Story: ['co-writer'], Teleplay: ['episode-writer', 'co-writer'], Creator: ['episode-writer', 'co-writer'],
-  Producer: ['line-producer'], 'Line Producer': ['line-producer'], 'Director of Photography': ['dop'], Editor: ['editor'], 'Original Music Composer': ['composer'],
-  'Production Design': ['production-designer'], 'Costume Design': ['costume-designer'], Casting: ['casting-director'],
+  'Director of Photography': ['dop'], Editor: ['editor'], 'Original Music Composer': ['composer'],
+  'Production Design': ['production-designer'], 'Costume Design': ['costume-designer'],
 };
 const ACTING = new Set(['cast', 'series-cast', 'episode-guest']);
 
@@ -123,7 +127,8 @@ export function considerPerson(state: GameState, record: RecordedPerson, gathere
   if (record.details?.birthday) rec.born = record.details.birthday;
   if (record.details?.deathday) rec.died = record.details.deathday;
   const have = real[id];
-  if (have) { have.rec = rec; return have; }
+  // A record brought back puts their name on their credits in the story again.
+  if (have) { const back = !have.rec; have.rec = rec; if (back) restoreNames(state); return have; }
   const jobs: RealPerson['sim']['jobs'] = {};
   for (const [job, e] of Object.entries(ev)) {
     const def = ROLES.find((r) => r.id === job);
@@ -281,17 +286,19 @@ export function expireRecords(state: GameState, realNow: number, renew: (tmdbId:
   let removed = 0;
   for (const p of Object.values(peek(state))) {
     const ends = recordEnds(p);
-    if (ends === null || realNow < ends) continue;
+    // A withdrawn record (no end) is looked up too: a catalog gathered since brings it back.
+    if (ends !== null && realNow < ends) continue;
     const fresh = renew(tmdbIdOf(p.id));
     // A renewal is only one gathered since: an equally old copy from an expired catalog renews nothing.
     if (fresh && Date.parse(`${(fresh.record.details?.retrievedAt ?? fresh.gathered).slice(0, 10)}T00:00:00Z`) + RECORD_DAYS * DAY > realNow) {
-      const old = p.rec!.name;
+      const old = p.rec?.name;
       considerPerson(state, fresh.record, fresh.gathered);
-      if (p.rec!.name !== old) eachGameText(state, (t) => t.split(old).join(p.rec!.name));
+      if (old && p.rec!.name !== old) eachGameText(state, (t) => t.split(old).join(p.rec!.name));
       renewed += 1;
       continue;
     }
-    const name = p.rec!.name;
+    if (!p.rec) continue;
+    const name = p.rec.name;
     delete p.rec;
     eachGameText(state, (t) => (t.includes(name) ? t.split(name).join(WITHDRAWN) : t));
     removed += 1;
@@ -309,7 +316,11 @@ export function restoreNames(state: GameState): void {
 
 // ---------------- Their work in this story ----------------
 
-export interface StoryCredit { projectId: string; title: string; as: string; status: 'offered' | 'working' | 'credited' | 'ended'; date: string | null }
+export interface StoryCredit { projectId: string; title: string; as: string; status: 'offered' | 'working' | 'credited' | 'declined' | 'ended'; date: string | null }
+
+/** A job's name on a project: on a single film the episode jobs are simply the writer's and the director's. */
+export const jobLabel = (p: Project, roleId: string): string =>
+  (p.episodes.length <= 1 ? ({ 'episode-writer': 'Writer', 'episode-director': 'Director' } as Record<string, string>)[roleId] : undefined) ?? ROLES.find((r) => r.id === roleId)?.label ?? roleId;
 
 /**
  * What a real person has done in this save, for the section of their page that is kept apart from their recorded
@@ -321,10 +332,10 @@ export function storyCredits(state: GameState, id: string): StoryCredit[] {
   for (const p of state.projects) {
     for (const h of p.hires.filter((x) => x.personId === id)) {
       const part = h.characterId ? p.characters.find((c) => c.id === h.characterId)?.name : undefined;
-      const as = part ? `${part}${h.method && h.method !== 'on-camera' ? ` (${h.method.replace('-', ' ')})` : ''}` : ROLES.find((r) => r.id === h.roleId)?.label ?? h.roleId;
+      const as = part ? `${part}${h.method && h.method !== 'on-camera' ? ` (${h.method.replace('-', ' ')})` : ''}` : jobLabel(p, h.roleId);
       // Credited when the delivered work's credits name them for it; the credits are made from the work done (finish.ts).
       const credited = !!p.delivered && p.credits.some((c) => c.person === id && (part ? c.characterName === part : c.roleId === h.roleId || !c.characterName));
-      const status: StoryCredit['status'] = credited ? 'credited' : h.status === 'accepted' ? 'working' : h.status === 'offered' || h.status === 'countered' ? 'offered' : 'ended';
+      const status: StoryCredit['status'] = credited ? 'credited' : h.status === 'accepted' ? 'working' : h.status === 'offered' || h.status === 'countered' ? 'offered' : h.status === 'declined' ? 'declined' : 'ended';
       out.push({ projectId: p.id, title: p.title, as, status, date: p.delivered ? dateKey(p.delivered.at, 'UTC') : null });
     }
   }

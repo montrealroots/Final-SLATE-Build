@@ -131,6 +131,8 @@ export function estimateDays(p: Project, roleId: string, characterId?: string, m
   const onSet = ['dop', 'sound-mixer', 'gaffer', 'first-ad', 'hair-makeup', 'camera-operator', 'video-assist', 'script-supervisor', 'boom-operator', 'key-grip', 'camera-assistant'].includes(roleId);
   const specialist = ['stunt-coordinator', 'animal-wrangler', 'vehicle-coordinator', 'marine-coordinator', 'intimacy-coordinator', 'extras-casting', 'choreographer', 'fight-choreographer', 'dialect-coach'].includes(roleId);
   let days = own;
+  // A director is on set for the shoot (production/shoot.ts pays the director of each day's episode).
+  if (roleId === 'episode-director') return Math.max(1, shootDays);
   if (onSet) days += shootDays + 1;
   if (specialist) days += Math.max(1, Math.ceil(shootDays / 3));
   return Math.max(1, Math.min(own > 0 ? own + (onSet ? shootDays : 0) + 2 : days, 400));

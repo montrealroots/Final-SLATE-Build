@@ -53,6 +53,23 @@ export function reserve(state: GameState, p: Project, label: string, category: O
   return o;
 }
 
+/**
+ * Raise an agreed line by more work asked of the same person (a writer's further pass), refusing if funds are short. The
+ * rise is a posting of its own, once per key.
+ */
+export function extend(state: GameState, p: Project, id: string, by: number, key: string): Obligation {
+  checkAmount(by);
+  const o = obligation(p, id);
+  if (o.state === 'cancelled' || o.state === 'settled') throw new Error('That agreement has ended.');
+  if (o.postings.some((x) => x.key === key)) return o;
+  const add = Math.round(by);
+  const { available } = ledgerTotals(p);
+  if (add > available) throw new FundsError(`This needs ${money(add)}, but only ${money(available)} is uncommitted. Lower the amount, release someone, cut scope, or bring in more funding.`, add - available);
+  o.amount += add;
+  o.postings.push({ at: state.now, kind: 'reserve', amount: add, key });
+  return o;
+}
+
 export function commit(state: GameState, p: Project, id: string, amount?: number): Obligation {
   const o = obligation(p, id);
   if (o.state !== 'reserved') throw new Error('Only reserved funds can be committed.');

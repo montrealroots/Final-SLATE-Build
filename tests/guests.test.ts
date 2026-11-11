@@ -212,9 +212,20 @@ describe('TMDB\'s six months', () => {
     expect(p.credits[0].personName).toBe(WITHDRAWN);
     // Installed again later: considered afresh from the new record, with the same made-up profile, and credited by name.
     const sim = structuredClone(a.sim);
-    considerPerson(s, { ...ADA, details: { ...ADA.details!, retrievedAt: '2028-01-01T00:00:00Z' } }, '2028-01-01T00:00:00Z');
-    restoreNames(s);
+    // The expiry pass itself brings it back once the installed catalog is newer; a stale one still brings nothing.
+    const later = Date.parse('2028-01-02T00:00:00Z');
+    expect(expireRecords(s, later, () => stale)).toEqual({ renewed: 0, removed: 0 });
+    expect(a.rec).toBeUndefined();
+    const again = { record: { ...ADA, details: { ...ADA.details!, retrievedAt: '2028-01-01T00:00:00Z' } }, gathered: '2028-01-01T00:00:00Z' };
+    expect(expireRecords(s, later, () => again)).toEqual({ renewed: 1, removed: 0 });
     expect(a.sim).toEqual(sim);
+    expect(a.rec!.from).toBe('2028-01-01');
+    expect(p.credits[0].personName).toBe('Ada Quill (Fixture)');
+    // Asked for by hand, the same: the record on the person's page.
+    delete a.rec;
+    p.credits[0].personName = WITHDRAWN;
+    considerPerson(s, again.record, again.gathered);
+    restoreNames(s);
     expect(p.credits[0].personName).toBe('Ada Quill (Fixture)');
   });
 });
