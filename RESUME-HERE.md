@@ -104,9 +104,12 @@ deletion are kept in the game. Giving the film pack to anyone but the owner wait
   within every six months.
 - **Owner's decisions:** TMDB commercial use, and the derivatives question (`docs/DEPLOYMENT.md`); Nielsen (report only,
   as decided).
-- **Source research:** each child-rule set's commencement date and later amendments, Ontario's consolidated text, and
-  the rules of the places that use stand-ins (Quebec, New Zealand, Spain, Italy, Japan, Korea, India, Mexico, Brazil,
-  Texas, New Mexico, Scotland and others).
+- **Source research:** the child-rule sets' dates and Ontario's consolidated text were done on November 11, 2026, and
+  Scotland, Wales, Northern Ireland, India, Japan, South Korea and Mexico (partly) were given their own sets. Next, in
+  order: Texas and New Mexico (US regions, now California's), Quebec (now British Columbia's), New Zealand (now New South
+  Wales's), Spain and Italy (now Germany's), Brazil (now England's). Each needs its set in `src/engine/minors.ts`,
+  `rulesFor`, `RULE_WORDS`, its section, gaps row and dates row in `docs/child-rules/RESEARCH.md`, its row in
+  `docs/child-rules/COVERAGE.md`, and `seen.size` and figures in `tests/minors.test.ts`.
 - **Human and device testing:** real Safari on an iPhone (all WebKit runs here are emulation), and a WebKit flake seen
   once: Continue Creation pressed and creation not opening, under two parallel WebKit workers (QA-REPORT.md, Open).
 - **Code, tests:** a browser journey through a shoot with a child in the cast (above).

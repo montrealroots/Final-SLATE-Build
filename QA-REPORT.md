@@ -8,7 +8,20 @@
 
 ## Commands And Results
 
-### Current: Data Packs (November 11, 2026)
+### Current: Child Rules For The Rest Of The UK, India, Japan, South Korea And Mexico (November 11, 2026)
+
+Seven more sets of child performer rules (Scotland, Wales, Northern Ireland, India, Japan, South Korea, Mexico), each
+read from its official text; Ontario's corrected from its consolidated text; and every set's date in force and latest
+change found recorded (`docs/child-rules/RESEARCH.md`).
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` at `90714fe` | 0 | 93 files, 751 tests. Startup unchanged at 302 kB, 97 kB gzipped. New in `tests/minors.test.ts`: the UK nations' figures; India's, Japan's, South Korea's and Mexico's; a Tokyo shoot whose child's night scene isn't shot; South Korea's night work refused under 15 and allowed at 15; every set's dates present, none changed in 2026 or later. |
+| Mutations | 1 or more for each | Four were made and each failed a test: a set's latest change moved into 2026; a set's dates removed; Japan's night ban removed; the night refusal removed from the licence check. |
+| `npx playwright test e2e/children.spec.ts e2e/focus.spec.ts`, desktop | 0 | 3 passed. |
+| Ontario | — | The Act as amended in 2017 allows 8 hours at every age; the game had 4 under 2 from the 2015 text. Corrected. |
+
+### Earlier: Data Packs (November 11, 2026)
 
 | Command | Failures | Notes |
 | --- | --- | --- |
