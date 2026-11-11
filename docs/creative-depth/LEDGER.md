@@ -228,15 +228,24 @@ Being built on the branch `c-work`, after milestone D. Not yet a checkpoint.
 | The package's camera and sound options made mechanical: 12 that were notes now set these | `tools/ideas/from-starter.py`, `src/ideas/starter.ts` | Engine verified | `tests/brief.test.ts`, `tests/ideas.test.ts`; 4 starter options remain notes (two puppet finishes, a stylized anachronism, source music) |
 | Looks with names, assigned scene by scene; only the looks that appear are made; a change inside a day costs time | `src/engine/looks.ts` `stateNames`, `stateIn`, `statesUsed`, `changeMinutes` | Engine verified | `tests/states.test.ts`, 4 tests |
 | 118 ideas for eleven more fields; props, animals, vehicles and effects chosen from ideas make their work | `src/ideas/scenes.ts`; `brief.ts` ops `scene`, `needs` | Engine verified | `tests/scene-ideas.test.ts`, 6 tests |
+| 68 routes through the genre families: four for each of 17 families, so every one of the 149 genres is offered at least four. Each is a tone, a light, sound choices, a score and three scenes offered | `src/ideas/routes.ts`; picker button Routes Through Its Genre | Engine verified | `tests/routes.test.ts`, 6 tests, including that the same work is assessed the same whichever route was chosen |
 | Controls for all of the above | `src/ui/ScriptViews.tsx` (Light, Sound And Score; looks' names; a scene's look), `PlanViews.tsx` (Camera For each scene) | Not implemented in a browser journey yet | Unit tests only; no Playwright journey has used them |
 
-Counts, from the code: 305 ideas (120 change the work, 171 are words, 14 are references); 263 labelled controls, of
-which 48 have ideas, 190 have none by design with the reason given, and 15 have none yet.
+Counts, from the code: 373 ideas written (188 change the work, 171 are words, 14 are references); 263 labelled
+controls, of which 48 have ideas, 190 have none by design with the reason given, and 15 have none yet. The 68 routes are
+written entries, not combinations: no route is counted more than once for the genres it is offered to.
 
-Still to do in C: a browser journey through the new controls; mutations for `craft.ts`; routes for every genre; the
-animation, documentary, unscripted and television pipelines' own choices; ideas for the 15 fields that have none
-(the genre questions, a scene's tonal intention, the season arc and what each episode moves, acts, threads, setups,
-relationships, arcs, and what kind of being a character is).
+Already in the engine before this package, and left as it was: animation and stop-motion work counted once for each
+character and each place (models, rigs, puppets, environments, miniature sets), so scenes that share them share the
+work; a design changed after its work began sends only the work built on it back; a stage set built to match as a site
+choice for any location; documentary, unscripted and television pipelines with their own tasks. Their tests are the
+ones they had.
+
+Still to do in C: a browser journey through the new controls (written as `e2e/craft.spec.ts`, not yet run); ideas for
+the 15 fields that have none (the genre questions, a scene's tonal intention, the season arc and what each episode
+moves, acts, threads, setups, relationships, arcs, and what kind of being a character is). Not implemented, and not
+planned as part of this pass: a puppet's face method for stop motion; painted backgrounds as their own task in 2D; a
+series bible and standing sets as records of their own.
 
 ## The Audit Artifacts
 
