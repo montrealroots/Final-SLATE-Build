@@ -17,7 +17,7 @@ function serveCatalog(): Plugin {
     const root = cinema ? CINEMAS : CATALOG;
     const file = normalize(join(root, cinema ? cinema[1] : m[1]));
     // No catalog installed: say so in the index, a normal answer, rather than as a failed request.
-    if ((m[1] === 'index.json' || m[1] === 'world.json' || m[1] === 'cinemas/index.json') && !existsSync(file)) { res.setHeader('content-type', 'application/json'); res.end('{"installed":false}'); return; }
+    if (['index.json', 'world.json', 'theatrical.json', 'cinemas/index.json'].includes(m[1]) && !existsSync(file)) { res.setHeader('content-type', 'application/json'); res.end('{"installed":false}'); return; }
     if (!file.startsWith(root + '/') || !existsSync(file) || !statSync(file).isFile()) { res.statusCode = 404; res.end(); return; }
     res.setHeader('content-type', 'application/json');
     createReadStream(file).pipe(res);
