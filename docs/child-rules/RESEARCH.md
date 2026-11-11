@@ -40,6 +40,7 @@ the engine has is missing here, or its latest change is in 2026 or later.
 | France (FR) | 2025-03-21 | 2025-03-21 | The industry agreement's signing date. |
 | India (IN) | 2017-06-02 | 2017-06-02 | G.S.R. 543(E), which added Rule 2C; the NCPCR guidelines restate it. Later amendments to Rule 2C weren't looked for. |
 | Japan (JP) | 1947 | 2025-06-01 | e-Gov's revisions: Articles 56, 60 and 61 are the same in every revision from June 1, 2025 (the earliest compared) to December 23, 2028. Articles 57 and 58 (certificates, guardians) change on that date; the game doesn't model them. |
+| Mexico (MX) | 1970-05-01 | 2015-06-12 | The Chamber of Deputies' text (last reform May 14, 2026): Articles 174, 175, 175 Bis, 178 and 180 were last reformed on June 12, 2015, and Article 177 carries no reform note. |
 | South Korea (KR) | 2014-07-29 | 2025-09-26 | law.go.kr: Act No. 12349 of January 28, 2014, in force six months later; the version read is in force from September 26, 2025, and Articles 22 and 23 carry no amendment marks. |
 | New South Wales (AU-NSW) | 2022-09-01 | 2025-11-12 | The Children's Guardian (Amendment) Regulation (No 2) 2022 moved child employment into the Children's Guardian Regulation 2022; the Code of Practice page was last updated November 12, 2025. |
 - **Ages.** A child is a year older on their birthday, the same day everywhere in the game: for their age, for which age
@@ -69,6 +70,7 @@ Gaps in each set, as found when it was read:
 | New South Wales | The authority's processing time; the game allows 7 days. A supervisor ratio from 3; the game has one per 5. |
 | India | Rule 2C itself wasn't read: its figures are from the NCPCR guidelines, which cite it rule by rule. The District Magistrate's time to permit; the game allows 7 days. No rest between days is set; the game uses 12. The 27 consecutive days and the six-month permit aren't modelled. |
 | Japan | The Inspection Office's time to permit; the game allows 14 days. A school day taken as 6 hours of school. The weekly 40 hours aren't modelled. |
+| Mexico | Under 15: no hours, night limit or day off are set, as the activity isn't work in law; the 15-year-old's stand in, and the game says so. The time to arrange the agreement or certificate; the game allows 7 days. No rest between days; the game uses 12. |
 | South Korea | The weekly hours taken as 5 days; the extra hour by agreement from 15, and work to midnight before a school holiday under 15, aren't modelled. The youth protection officer (Article 21-2) is one of the producer's staff, so no one is hired. No rest between days from 15; the game uses 8 at every age. |
 | Every other place | No rules read: the nearest read set stands in, and the game says so (`docs/child-rules/COVERAGE.md`). |
 
@@ -164,6 +166,19 @@ Gaps in each set, as found when it was read:
   a.m.). There is no permission for night work.
 - **Breaks (Article 34):** 45 minutes when a day's work passes 6 hours.
 - **Not required:** a chaperone or teacher on set, or any share of pay set aside.
+
+## Mexico (MX): partly read
+
+- **Source:** the Ley Federal del Trabajo, Articles 61, 173 to 180 and 175 Bis, the Chamber of Deputies' text
+  (diputados.gob.mx, last reform DOF May 14, 2026), read November 11, 2026.
+- **Under 15 (Article 175 Bis):** artistic performance under the supervision, care and responsibility of a parent or
+  guardian isn't work, if: a written agreement with the parent's express consent; it doesn't interfere with education,
+  rest or recreation, or risk health; and the pay is no less than a 15-to-17-year-old's wage. No hours are set.
+- **15 to 17:** a medical certificate of fitness (Article 174). Under 16, at most 6 hours a day, in periods of at most 3
+  with an hour's rest between (Article 177). No overtime, Sundays or rest days (Article 178); 18 days' paid holiday
+  (Article 179); work arranged around school (Article 180(III)).
+- **Night (Article 175(I)):** under 18, none after 10 p.m.
+- **What stands in:** under 15, the hours, night limit and day off set at 15, as the law sets none.
 
 ## South Korea (KR): read
 

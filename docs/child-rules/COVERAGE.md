@@ -7,13 +7,13 @@ the game says so wherever the rules are shown. What was read for each recorded s
 
 Begun November 11, 2026. Recorded sets: England, Scotland, Wales, Northern Ireland (all four read November 11, 2026), California, New York, Georgia, British Columbia, Ontario, Ireland, Germany,
 France (partly read: England's hours stand in for the hours its commission sets child by child), New South Wales, India,
-Japan and South Korea (read November 11, 2026). New
+Japan, South Korea and Mexico (read November 11, 2026; Mexico partly, as its law sets no hours under 15). New
 York, Georgia, Ontario, Scotland, Wales and Northern Ireland are used only in their own regions, so they count no
 countries below.
 
 | Rules | Own | By region | Stand-in |
 | --- | --- | --- | --- |
-| England | 0 | 1 | 207 |
+| England | 0 | 1 | 206 |
 | California | 0 | 1 | 0 |
 | British Columbia | 0 | 1 | 0 |
 | Ontario | 0 | 0 | 0 |
@@ -24,6 +24,7 @@ countries below.
 | India | 1 | 0 | 0 |
 | Japan | 1 | 0 | 0 |
 | South Korea | 1 | 0 | 0 |
+| Mexico (partly read) | 1 | 0 | 0 |
 
 Countries with places under more than one set (listed by the set used outside the recorded regions):
 - **United States:** New York's, California's and Georgia's own; every other state uses California's.
@@ -171,7 +172,7 @@ Countries with places under more than one set (listed by the set used outside th
 | MR | Mauritania | England | Stand-in |
 | MU | Mauritius | England | Stand-in |
 | YT | Mayotte | England | Stand-in |
-| MX | Mexico | England | Stand-in |
+| MX | Mexico | Mexico | Own |
 | FM | Micronesia | England | Stand-in |
 | MD | Moldova | England | Stand-in |
 | MC | Monaco | England | Stand-in |

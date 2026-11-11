@@ -29,6 +29,7 @@ export const RULE_WORDS: Record<Minor['rules']['id'], { name: string; licence: s
   IN: { name: "India's rules for child artists", licence: "the District Magistrate's permission", night: "the District Magistrate's permission", setAside: "a fixed deposit in the child's name at a nationalised bank" },
   JP: { name: "Japan's Labour Standards Act", licence: "the Labour Standards Inspection Office's permission, with the head teacher's certificate and a parent's consent", night: '', setAside: '' },
   KR: { name: "South Korea's Popular Culture and Arts Industry Development Act", licence: "a parent's consent", night: "the consent of the performer and a parent", setAside: '' },
+  MX: { name: "Mexico's Federal Labour Law (with the hours it sets at 15 for younger children, for whom it sets none)", licence: "a written agreement with a parent's consent, or from 15 a medical certificate", night: '', setAside: '' },
   'AU-NSW': { name: "New South Wales's requirements for children in entertainment", licence: "the Children's Guardian's authority to employ children", night: "the Children's Guardian's approval of the hours", setAside: '' },
 };
 

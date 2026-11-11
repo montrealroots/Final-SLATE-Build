@@ -139,7 +139,7 @@ describe('the rules across the map', () => {
     expect(nir.restHours).toBe(14);
   });
 
-  it('gives India, Japan and South Korea their own figures, as read', () => {
+  it('gives India, Japan, South Korea and Mexico their own figures, as read', () => {
     const y = (n: number) => Math.round(n * 365.25);
     const india = rulesFor(getPlace('in-mumbai'));
     expect(india.standIn).toBeNull();
@@ -161,6 +161,13 @@ describe('the rules across the map', () => {
     const lic = (m: Minor) => ({ childLicences: [{ characterId: m.characterId, personId: m.personId, applied: '2026-03-01', ready: '2026-03-02', night: true, nightApplied: '2026-03-01' }] }) as unknown as Project;
     expect(licenceReady(lic(kid(korea, 14)), kid(korea, 14), '2026-03-10', true)).toEqual({ ok: false, reason: "Mia can't work at night: South Korea's rules don't allow it at their age." });
     expect(licenceReady(lic(kid(korea, 15)), kid(korea, 15), '2026-03-10', true)).toEqual({ ok: true });
+    // Mexico: partly read, as its law sets no hours under 15; the 15-year-old's 6 stand in, and a parent's supervision is
+    // a chaperone for each child under 15.
+    const mexico = rulesFor(getPlace('mx-mexico-city')).rules;
+    expect(mexico.read).toBe('partly');
+    expect(bandFor(mexico, y(10))).toMatchObject({ work: 6, days: 6, noNight: true });
+    expect(bandFor(mexico, y(16))).toMatchObject({ work: 8, noNight: true });
+    expect(supervisionFor([kid(mexico, 10), kid(mexico, 12), kid(mexico, 16)], true)).toEqual([{ roleId: 'chaperone', count: 2, why: "Mexico's rules require one with children under 15." }]);
   });
 
   it('gives every playable country a set, as docs/child-rules/COVERAGE.md lists it', () => {
@@ -493,7 +500,7 @@ describe('ages, dates and what was read', () => {
   it('applies the rules as read, says when they were read, and has no set known to start later than the game', () => {
     expect(RULES_READ).toBe('2026-11-11');
     expect(FIRST_START_YEAR).toBe(2026);
-    // The research log's status for each set is the one the engine records: France alone is partly read.
+    // The research log's status for each set is the one the engine records: France and Mexico are partly read.
     const log = readFileSync('docs/child-rules/RESEARCH.md', 'utf8');
     const seen = new Set<string>();
     for (const c of PLAYABLE_COUNTRIES) {
@@ -513,7 +520,7 @@ describe('ages, dates and what was read', () => {
       expect(heading, id).not.toBeNull();
       expect(rules.read, id).toBe(heading![1] === 'read' ? 'read' : 'partly');
     }
-    expect(seen.size).toBe(16);
+    expect(seen.size).toBe(17);
     // When each took effect, and its latest change found: none in 2026 or later, so applying it from 2026 is the text in force.
     const dates = new Map([...log.matchAll(/^\| [^|]+ \(([A-Z-]+)\) \| (\d{4}(?:-\d{2}-\d{2})?) \| (\d{4}(?:-\d{2}-\d{2})?) \|/gm)].map((m) => [m[1], { from: m[2], latest: m[3] }]));
     expect([...dates.keys()].sort()).toEqual([...seen].sort());

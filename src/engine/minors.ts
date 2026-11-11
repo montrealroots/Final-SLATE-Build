@@ -41,7 +41,7 @@ export interface AgeBand {
 }
 
 export interface MinorRules {
-  id: 'GB-ENG' | 'GB-SCT' | 'GB-WLS' | 'GB-NIR' | 'US-CA' | 'US-NY' | 'US-GA' | 'CA-BC' | 'CA-ON' | 'IE' | 'DE' | 'FR' | 'AU-NSW' | 'IN' | 'JP' | 'KR';
+  id: 'GB-ENG' | 'GB-SCT' | 'GB-WLS' | 'GB-NIR' | 'US-CA' | 'US-NY' | 'US-GA' | 'CA-BC' | 'CA-ON' | 'IE' | 'DE' | 'FR' | 'AU-NSW' | 'IN' | 'JP' | 'KR' | 'MX';
   /** Where the rules are from, for messages: "England". Their full names are in casting-notes.ts RULE_WORDS. */
   place: string;
   /** The age from which these rules stop applying. */
@@ -252,6 +252,37 @@ const SOUTH_KOREA: MinorRules = {
   restHours: 8, // none is set; under 15, no work from 10 p.m. to 6 a.m. leaves 8, which the game uses at every age
   setAside: null,
   read: 'read',
+};
+
+/**
+ * Mexico: the Ley Federal del Trabajo, Articles 174 to 180 and 175 Bis (as reformed June 12, 2015), from the Chamber of
+ * Deputies' text (last reform of the law May 14, 2026). Partly read: under 15, acting under a parent's supervision isn't
+ * work in law, so the Act sets no hours; the game uses the hours it sets at 15, and says so.
+ */
+const MEXICO: MinorRules = {
+  id: 'MX',
+  place: 'Mexico',
+  adultAt: 18,
+  minAgeDays: 0,
+  bands: [
+    // Article 177's hours for under 16, standing in under 15 (Article 175 Bis sets none): 6 hours, in periods of at most
+    // 3 with an hour's rest between. Article 178: no overtime, Sundays or rest days. Article 175: none after 10 p.m.
+    { fromDays: 0, toDays: days(15), label: 'under 15', atPlace: 7, work: 6, workNoSchool: 6, days: 6, noNight: true },
+    { fromDays: days(15), toDays: days(16), label: '15', atPlace: 7, work: 6, workNoSchool: 6, days: 6, noNight: true },
+    // 16 and 17: the ordinary 8-hour day (Article 61), with Articles 175 and 178.
+    { fromDays: days(16), toDays: days(18), label: '16 and 17', atPlace: 9, work: 8, workNoSchool: 8, days: 6, noNight: true },
+  ],
+  // Under 15: under the supervision, care and responsibility of a parent or guardian (Article 175 Bis). The game hires a
+  // chaperone for each child, as it can't assume a parent is free.
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 15 },
+  teaching: null, // work arranged around school (Articles 175 Bis(b), 180(III)); no hours are set
+  nurseUnderDays: null,
+  // A written agreement with a parent's consent (under 15), or a medical certificate (15 to 17, Article 174); no time is
+  // set, and the game allows 7 days.
+  licence: { leadDays: 7, nightLeadDays: 7 },
+  restHours: 12, // none is set; the game uses 12, as most sets do
+  setAside: null, // under 15, pay no less than a 15-to-17-year-old's (Article 175 Bis(c)); nothing is set aside
+  read: 'partly',
 };
 
 /** California: 8 CCR §11760 (hours), §11755.2 (studio teachers), Family Code §6752 (the 15% set-aside). */
@@ -504,6 +535,7 @@ export function rulesFor(place: Place): { rules: MinorRules; standIn: string | n
     case 'IN': return own(INDIA);
     case 'JP': return own(JAPAN);
     case 'KR': return own(SOUTH_KOREA);
+    case 'MX': return own(MEXICO);
     case 'DE': return own(GERMANY);
     case 'FR': return own(FRANCE);
     case 'GB': return place.regionCode === 'GB-ENG' || region('england') ? own(ENGLAND)
