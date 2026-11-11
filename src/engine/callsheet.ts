@@ -12,6 +12,8 @@ import { HOLIDAY_PREMIUM } from './production/rates';
 import { approvedCharacters, approvedScenes, sceneLabel } from './projects';
 import { dateKey, formatClock, formatTime } from './time';
 import { daylight, forecast } from './weather';
+import { makeupLead, madeUp, physicalCrowd } from './looks';
+import { chairsOf } from './production/schedule';
 import type { GameState, Project } from './types';
 
 export interface CallSheet {
@@ -44,8 +46,20 @@ export function callSheet(state: GameState, p: Project, dayId: string): CallShee
     .map((h) => ({ role: roleLabel(h.roleId), who: personById(state, h.personId).name }))
     .sort((a, b) => a.role.localeCompare(b.role));
   const notes: string[] = [];
-  const crowd = scenes.reduce((a, s) => a + s.crowd, 0);
+  const crowd = scenes.reduce((a, s) => a + physicalCrowd(s), 0);
   if (crowd) notes.push(`${crowd} background ${crowd === 1 ? 'performer' : 'performers'}.`);
+  // Makeup that starts before the unit's call (looks.ts): who is in the chair, and how long before call it starts.
+  const lead = makeupLead(scenes, chars, chairsOf(p));
+  if (lead > 0) {
+    const who = madeUp(scenes, chars).map((x) => `${x.c.name} (${x.m.label.toLowerCase()})`);
+    if (scenes.some((s) => s.crowdLook && physicalCrowd(s) > 0)) who.push('the background performers');
+    const callMin = (d.night ? 17 : 7) * 60;
+    const span = `${lead >= 60 ? `${Math.floor(lead / 60)} ${lead >= 120 ? 'hours' : 'hour'}${lead % 60 ? ` ${lead % 60} minutes` : ''}` : `${lead} minutes`}`;
+    // More chair time than there is morning: it can't all be done before call with the people hired.
+    notes.push(lead > callMin
+      ? `Makeup needs ${span} with the people hired, more than there is before call: ${who.join(', ')}. Hire more makeup artists, or the day shoots less.`
+      : `Makeup starts at ${formatClock(Math.floor((callMin - lead) / 60), (callMin - lead) % 60)}, ${span} before call: ${who.join(', ')}.`);
+  }
   const holiday = placeHolidaysOn(place, d.date)[0];
   if (holiday) notes.push(`${holiday.name}: a public holiday, so everyone on set is paid ${HOLIDAY_PREMIUM} times their day rate.`);
   if (!d.interior) {

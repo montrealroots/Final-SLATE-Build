@@ -8,7 +8,24 @@
 
 ## Commands And Results
 
-### Current: Creative Depth Package, Milestone A (November 11, 2026)
+### Current: Creative Depth Package, Milestone B (November 11, 2026)
+
+The idea picker, the idea library, the looks engine and the zombie example (`docs/creative-depth/LEDGER.md`).
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 832 tests (776 before). Startup 304 kB, 97 kB gzipped; budgets unchanged (700 and 220 kB). The idea library is its own on-demand file, 102 kB. World check 0 problems. |
+| `tests/looks.test.ts` | 0 | 21 tests: each makeup method, costume source, appearance state, crowd choice and story year against the schedule, the shoot day, the estimate and the call sheet, one input changed at a time. |
+| `tests/brief.test.ts`, `tests/ideas.test.ts` | 0 | 25 tests: every one of the 187 ideas previews what it sets and applies exactly that; one pick for a field; custom text kept; the logline builder's 26,880 raw combinations and its refusals. |
+| `tests/zombie.test.ts` | 0 | 6 tests: the package's 1986 zombie example built from ideas, compared three ways (appliances, digital, masks) and delivered. |
+| `tests/creative-depth-audit.test.ts` | 0 | The field inventory (247 controls) and the effect coverage table (188 rows) are written from the code and compared with the committed files. |
+| Mutations | 1 or more for each | Two were made and each failed a new test: makeup time no longer read by the shoot day (2 tests failed); a creature look charged twice (1 failed). |
+| `npx playwright test`, whole suite, dev build | 2, both explained | 327 passed, 55 skipped by design, 2 failed. `viewports.spec.ts` "every main screen fits": this machine has the owner's film catalog installed, and the dev server put its releases on the calendar; the journey now answers catalog requests as a server with none does, and passes (9 of 9 in that file). `catalog.spec.ts` on WebKit timed out at Start My Story while a second browser run shared the machine; alone it passes in 4.7 s. |
+| `e2e/creative-ideas.spec.ts` | 0 | New, journey J01: desktop, phone and WebKit (iPhone 15 Pro Max). A film from a chosen idea through the picker, the zombie brief, makeup and costume, the shoot and delivery; the phone sheet's screenshot was looked at. |
+
+Not run locally: the production-build browser suite, which CI runs on the pull request.
+
+### Earlier: Creative Depth Package, Milestone A (November 11, 2026)
 
 Owner-data access and frozen world profiles (`docs/creative-depth/LEDGER.md`).
 

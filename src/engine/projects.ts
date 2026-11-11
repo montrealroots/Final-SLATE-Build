@@ -1,4 +1,5 @@
 import { songStatus, songUses } from './songs';
+import { costumeCopies, digitalCrowd, makeup, physicalCrowd, projectBand, statesOf, wardrobe } from './looks';
 import { financeRights } from './finance';
 import { composeGenres, genreName, type ModuleId } from './genres';
 import { findPlace } from '../data/places';
@@ -767,9 +768,14 @@ export function deriveRequirements(p: Project, scenes: Scene[], characters: Stor
           add('model', c.name, s.id);
           add('rig', c.name, s.id);
         } else add('character-design', c.name, s.id);
+      } else if (makeup(c.look?.makeup)) {
+        // A makeup method owns the character's look (looks.ts): it is tested, built and applied as that method says, and
+        // isn't also charged as a creature effect.
+        if (c.roleSize !== 'background') add('makeup', c.name, s.id, statesOf(c), makeup(c.look?.makeup)!.label);
       } else if (c.entity !== 'human' && c.realization !== 'performer') {
         add('creature', c.name, s.id, 1, c.realization);
       }
+      if (live && c.roleSize !== 'background' && wardrobe(c.look?.wardrobe)) add('costume', c.name, s.id, costumeCopies(c, scenes), wardrobe(c.look?.wardrobe)!.label);
     }
     const place = s.storyLocation || s.heading.place;
     if (place) {
@@ -783,7 +789,8 @@ export function deriveRequirements(p: Project, scenes: Scene[], characters: Stor
       s.animals.forEach((x) => add('animal', x, s.id));
       s.vehicles.forEach((x) => add('vehicle', x, s.id));
       if (s.stunts.trim()) add('stunt', s.stunts.trim(), s.id);
-      if (s.crowd > 0) add('crowd', place || 'Crowd', s.id, s.crowd);
+      if (s.crowd > 0) add('crowd', place || 'Crowd', s.id, physicalCrowd(s), digitalCrowd(s) ? `${s.crowd} on screen, the rest added in post` : '');
+      if (s.crowd > 0 && makeup(s.crowdLook)) add('makeup', `Background: ${place || 'Crowd'}`, s.id, physicalCrowd(s), makeup(s.crowdLook)!.label);
       if (s.intimacy) add('intimacy', sceneLabel(p, s), s.id);
       if (s.water) add('water', place || 'Water Work', s.id);
     } else if (s.crowd > 0) add('crowd', place || 'Crowd', s.id, s.crowd, 'Animated crowd');
@@ -796,7 +803,9 @@ export function deriveRequirements(p: Project, scenes: Scene[], characters: Stor
   }
   for (const c of p.contributors) add('consent', c.name, null);
   for (const e of p.evidence) if (e.status !== 'dramatized') add('fact-check', e.claim.slice(0, 60), null);
-  if (mods.has('period') && !/contemporary|present/i.test(p.axes.storyEra)) add('period-research', p.axes.storyEra || 'Period', null);
+  // A declared story year decides it (looks.ts periodBand), whatever the genres; without one, the older rule reads the genre.
+  const band = projectBand(p);
+  if (band ? band !== 'present' : mods.has('period') && !/contemporary|present/i.test(p.axes.storyEra)) add('period-research', band ? String(p.axes.storyYear) : p.axes.storyEra || 'Period', null);
   // A story set in another country than the production base: the designers research it, as they do a period.
   const setting = p.axes.settingPlaceId ? findPlace(p.axes.settingPlaceId) : undefined;
   if (setting && setting.country !== findPlace(p.axes.basePlaceId)?.country) add('setting-research', `${setting.name}, ${setting.countryName}`, null);
@@ -891,7 +900,7 @@ export const REQUIREMENT_LABELS: Record<Requirement['kind'], string> = {
   animal: 'Animal', vehicle: 'Vehicle', stunt: 'Stunt', crowd: 'Crowd', intimacy: 'Intimacy Coordination', water: 'Water Work', vfx: 'Visual Effect',
   song: 'Song', choreography: 'Choreography', creature: 'Creature Effect', archival: 'Archive Material', interview: 'Interview',
   'language-coach': 'Language Coaching', 'period-research': 'Period Research', 'setting-research': 'Setting Research', 'clue-prop': 'Hero Prop', puppet: 'Puppet', model: '3D Model',
-  rig: 'Rig', 'background-art': 'Background Art', consent: 'Contributor Consent', 'fact-check': 'Fact Check',
+  rig: 'Rig', 'background-art': 'Background Art', consent: 'Contributor Consent', 'fact-check': 'Fact Check', makeup: 'Makeup And Hair',
 };
 
 export function requirementKindLabel(k: Requirement['kind']): string {

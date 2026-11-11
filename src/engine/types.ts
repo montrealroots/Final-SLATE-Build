@@ -150,6 +150,13 @@ export interface ProjectAxes {
   tone: string;
   audience: string; // e.g. 'General', 'Adult', 'Family', 'Children (6–11)'
   storyEra: string;
+  /**
+   * The year the story is set in, when it is declared (looks.ts periodBand): how far it is from the year the project is
+   * made sets the costume and design work. The look it borrows (styleEra) and the year it is made are separate things.
+   */
+  storyYear?: number;
+  /** A period whose look the work borrows, whatever year it is set in: a reference for the departments, and nothing else reads it. */
+  styleEra?: string;
   storySetting: string;
   /** Where the story is set, as a place (optional). A creative and research reference: where you shoot is the base. */
   settingPlaceId?: string;
@@ -204,6 +211,11 @@ export interface StoryCharacter {
   heritages?: string[];
   /** The character's nationalities as written (country codes), as the player's are; casting shows who shares one (save version 7). */
   nationalities?: string[];
+  /**
+   * How the character looks on screen and what makes it so (looks.ts): the makeup method, where the costume comes from,
+   * and how many appearance states they go through (clean, bloodied, turned...). Unset fields keep the older rules.
+   */
+  look?: { makeup?: import('./looks').MakeupId; wardrobe?: import('./looks').WardrobeId; states?: number };
   designVersion: number; // bumping invalidates downstream design-dependent work
 }
 
@@ -236,6 +248,10 @@ export interface Scene {
   vehicles: string[];
   stunts: string; // empty = none
   crowd: number;
+  /** The crowd's makeup, when they are made up as more than themselves (looks.ts). */
+  crowdLook?: import('./looks').MakeupId;
+  /** 'digital': a share of the crowd is on set and the rest is added in post (looks.ts). Unset: everyone is there. */
+  crowdMethod?: 'digital';
   intimacy: boolean;
   water: boolean;
   vfx: string[];
@@ -358,7 +374,7 @@ export interface Requirement {
   kind:
     | 'character-design' | 'performer' | 'location' | 'set' | 'prop' | 'costume' | 'animal' | 'vehicle' | 'stunt' | 'crowd'
     | 'intimacy' | 'water' | 'vfx' | 'song' | 'choreography' | 'creature' | 'archival' | 'interview' | 'language-coach'
-    | 'period-research' | 'setting-research' | 'clue-prop' | 'puppet' | 'model' | 'rig' | 'background-art' | 'consent' | 'fact-check';
+    | 'period-research' | 'setting-research' | 'clue-prop' | 'puppet' | 'model' | 'rig' | 'background-art' | 'consent' | 'fact-check' | 'makeup';
   label: string;
   sceneIds: string[];
   qty: number;
@@ -475,6 +491,8 @@ export interface Task {
   workers?: string[];
   /** Days each worked it, for song writing (songs.ts): how much of a song each writer wrote. */
   workerDays?: Record<string, number>;
+  /** Its materials, when they aren't the flat amount for its kind (looks.ts: a costume by its source, an appliance by its method). */
+  material?: number;
 }
 
 export interface Asset {
@@ -843,6 +861,8 @@ export interface Project {
   continuedBy?: string;
   /** A commissioner's decision on another season (continuation.ts). */
   renewal?: { decidedAt: number; outcome: 'renewed' | 'cancelled'; reason: string };
+  /** Ideas applied from the picker, by ID and version, and ideas marked to come back to (brief.ts). Never their text. */
+  brief?: import('./brief').Brief;
   noticeKeys: string[];
 }
 

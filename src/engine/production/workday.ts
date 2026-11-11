@@ -327,6 +327,8 @@ export function addLogOnce(state: GameState, p: Project, key: string, text: stri
 }
 
 export function materialCost(task: Task): number {
+  // A task that carries its own materials (looks.ts: a costume by its source, an appliance by its method).
+  if (task.material !== undefined) return task.material;
   const base = MATERIAL_COST[task.kind];
   if (!base) return 0;
   let qty = task.units;
@@ -354,8 +356,7 @@ export function plannedRemaining(p: Project, ref: string): number {
 }
 
 export function onTaskDone(state: GameState, p: Project, task: Task, date: string): void {
-  const base = MATERIAL_COST[task.kind];
-  if (base) {
+  if (materialCost(task) > 0) {
     try {
       payPlanned(state, p, 'plan:materials', `${task.label} Materials`, task.kind.startsWith('post:clearance') || task.kind === 'doc:archive' ? 'licensing' : 'materials', materialCost(task), `mat:${task.id}`);
     } catch (e) {

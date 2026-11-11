@@ -3,6 +3,7 @@
 // availability for the production window and the offered rate. Offers reserve (not spend) funds.
 
 import { getPlace } from '../data/places';
+import { needsMakeupCrew, physicalCrowd } from './looks';
 import { cancel, commit, ledgerTotals, money, reserve, FundsError } from './budget';
 import { genre } from './genres';
 import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
@@ -47,6 +48,10 @@ export function neededRoles(p: Project, state?: GameState): NeededRole[] {
   const tasks = p.tasks.length ? p.tasks : buildTasks(p);
   for (const t of tasks) add(t.roleId, `Needed for ${t.label.toLowerCase()}.`, true);
   const mods = projectModules(p);
+  // A look with a makeup method needs someone to apply it on the day (looks.ts): the prosthetics designer's tasks add them
+  // where appliances are built; otherwise the hair and makeup artist is required, not just useful.
+  const liveScenes = scenes.filter((s) => sceneTechnique(p, s) === 'live');
+  if (needsMakeupCrew(liveScenes, approvedCharacters(p)) && !out.has('prosthetics')) out.set('hair-makeup', { roleId: 'hair-makeup', reason: 'Applies the makeup your characters and crowds need each shooting day. Required for this script.', required: true, dept: role('hair-makeup').dept });
   for (const s of scenes) {
     if (sceneTechnique(p, s) !== 'live') continue;
     if (s.stunts.trim()) add('stunt-coordinator', 'Required for scenes with stunts.', true);
@@ -55,7 +60,7 @@ export function neededRoles(p: Project, state?: GameState): NeededRole[] {
     if (s.vehicles.length) add('vehicle-coordinator', 'Required for scenes with picture vehicles.', true);
     if (s.water) add('marine-coordinator', 'Required for water work.', true);
     if (s.intimacy) add('intimacy-coordinator', 'Required for intimate scenes.', true);
-    if (s.crowd > 20) add('extras-casting', 'Large crowds need background casting.', true);
+    if (physicalCrowd(s) > 20) add('extras-casting', 'Large crowds need background casting.', true);
     if (s.dance) add('choreographer', 'Dance scenes need a choreographer.', true);
   }
   if (p.cast.some((c) => c.performer === 'player') && live && p.episodes.some((e) => e.director === 'player')) {

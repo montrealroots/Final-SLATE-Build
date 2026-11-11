@@ -9,8 +9,9 @@ import { approvedCharacters, approvedScenes, isNonfiction, projectModules, scene
 import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
 import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees } from './rates';
-import { ensureWorkEvent, isWorkingDay, minorsInScenes, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay } from './schedule';
+import { chairsOf, ensureWorkEvent, isWorkingDay, minorsInScenes, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay } from './schedule';
 import { childShare, ensureLicence, isSchoolDay, licenceReady, setAsideOf, supervisionFor, type Minor } from '../minors';
+import { PLATE_FACTOR, digitalCrowd, makeup, makeupDayCost, makeupShare, needsMakeupCrew, physicalCrowd } from '../looks';
 import { addLogOnce, payPlanned, plannedRemaining } from './workday';
 import { t } from './tasks';
 import { personLanguagesFit } from './language';
@@ -21,7 +22,9 @@ import { SETUPS_OF, TAKE_RULES, applyPickup, isDirecting2, pickupLoad, recordTak
 
 // ---------------- Shoot days ----------------
 
-export const SHOOT_CREW = new Set(['dop', 'camera-operator', 'camera-assistant', 'gaffer', 'key-grip', 'sound-mixer', 'boom-operator', 'first-ad', 'script-supervisor', 'hair-makeup', 'video-assist',
+/** Prep that belongs to one character's look (looks.ts, production/tasks.ts). */
+const LOOK_PREP = new Set(['prep:wardrobe', 'prep:fitting', 'prep:appliances', 'prep:makeup-test']);
+export const SHOOT_CREW = new Set(['prosthetics', 'dop', 'camera-operator', 'camera-assistant', 'gaffer', 'key-grip', 'sound-mixer', 'boom-operator', 'first-ad', 'script-supervisor', 'hair-makeup', 'video-assist',
   'stunt-coordinator', 'fight-choreographer', 'intimacy-coordinator', 'animal-wrangler', 'vehicle-coordinator', 'marine-coordinator', 'extras-casting', 'choreographer', 'dialect-coach', 'prop-master', 'costume-designer', 'location-manager']);
 
 
@@ -192,7 +195,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const o = p.obligations.find((x) => x.id === h.obligationId)!;
     const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
     return a + Math.max(0, o.settled + pay - Math.max(o.amount, o.settled));
-  }, 0) + Math.max(0, locationFee + dayFees(p).equipment + scenes.reduce((a, s) => a + s.crowd, 0) * CROWD_DAY_RATE - plannedRemaining(p, 'plan:shoot'));
+  }, 0) + Math.max(0, locationFee + dayFees(p).equipment + scenes.reduce((a, s) => a + physicalCrowd(s), 0) * CROWD_DAY_RATE + makeupDayCost(scenes, approvedCharacters(p)) - plannedRemaining(p, 'plan:shoot'));
   if (overrun > ledgerTotals(p).available) {
     d.status = 'lost';
     d.result = `There wasn't enough money for this shoot day (${money(overrun)} needed beyond what's already agreed). Add funding or cut scope, then rebuild the schedule.`;
@@ -200,6 +203,10 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     return d.result;
   }
   let capacity = BASE_MINUTES_PER_SHOOT_DAY;
+  // Makeup beyond what the pre-call holds comes out of the day (looks.ts), with the people hired to apply it.
+  const made = scenes.filter((s) => needsMakeupCrew([s], approvedCharacters(p)) && (chairsOf(p) > 0));
+  const share = makeupShare(made, approvedCharacters(p), chairsOf(p));
+  capacity *= share;
   if (f.late) capacity *= 0.7;
   if (!hasCrew(p, 'first-ad') && scenes.length > 1) capacity *= 0.85;
   const directorHired = p.episodes.find((e) => e.number === d.episode)?.director !== 'player';
@@ -209,7 +216,9 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const label = sceneLabel(p, s);
     // Prep readiness.
     const prepMissing = p.tasks.filter((x) => x.kind.startsWith('prep:') && x.kind !== 'prep:rehearsal' && x.status !== 'done' &&
-      (x.kind !== 'prep:stunts' || s.stunts.trim()) && (x.kind !== 'prep:choreo' || s.dance) && (x.kind !== 'prep:song' || x.sceneIds.includes(s.id)) && (x.kind !== 'prep:creature' || s.participants.some((c) => approvedCharacters(p).find((ch) => ch.id === c && ch.entity !== 'human' && ch.realization !== 'performer'))));
+      (x.kind !== 'prep:stunts' || s.stunts.trim()) && (x.kind !== 'prep:choreo' || s.dance) && (x.kind !== 'prep:song' || x.sceneIds.includes(s.id)) && (x.kind !== 'prep:creature' || s.participants.some((c) => approvedCharacters(p).find((ch) => ch.id === c && ch.entity !== 'human' && ch.realization !== 'performer')))
+      // A character's own costume, fittings, appliances and makeup tests (looks.ts) hold up only the scenes they are in.
+      && (!LOOK_PREP.has(x.kind) || s.participants.includes(x.assetRef ?? '')));
     if (prepMissing.length) {
       reasons.push(`${label} couldn't be shot: ${prepMissing[0].label.toLowerCase()} isn't finished.`);
       pending.push(s.id);
@@ -218,7 +227,10 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     // Specialists required for safety-related or regulated work.
     const need: [boolean, string][] = [
       [!!s.stunts.trim(), 'stunt-coordinator'], [s.animals.length > 0, 'animal-wrangler'], [s.water, 'marine-coordinator'], [s.intimacy, 'intimacy-coordinator'],
-      [s.crowd > 20, 'extras-casting'], [s.heading.time === 'NIGHT' || s.heading.intExt !== 'EXT', 'gaffer'], [s.vehicles.length > 0, 'vehicle-coordinator'],
+      [physicalCrowd(s) > 20, 'extras-casting'], [s.heading.time === 'NIGHT' || s.heading.intExt !== 'EXT', 'gaffer'], [s.vehicles.length > 0, 'vehicle-coordinator'],
+      // A look with a method needs someone to apply it (looks.ts): the prosthetics designer for appliances, else hair and makeup.
+      [approvedCharacters(p).some((c) => s.participants.includes(c.id) && c.roleSize !== 'background' && makeup(c.look?.makeup)?.specialist === 'prosthetics'), 'prosthetics'],
+      [needsMakeupCrew([s], approvedCharacters(p)) && !hasCrew(p, 'prosthetics'), 'hair-makeup'],
     ];
     if (s.kind === 'segment' && !p.hires.some((h) => h.roleId === 'camera-operator' && h.status === 'accepted')) {
       reasons.push(`${label} needs a second camera: hire a camera operator for multi-camera coverage.`);
@@ -341,7 +353,8 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const need2 = isDirecting2(p) && plan
       ? (s.estMinutes / sceneComplexity(s, mods, performedSong(p, s))) * setupTime(SETUPS_OF[plan.coverage].length, (recorded?.takes ?? cap?.takes ?? []).length || TAKE_RULES[plan.takes].planned)
       : sceneLoad(p, s, mods);
-    const remainingNeed = need2 * (1 - already);
+    // Clean plates for a crowd extended in post (looks.ts); sceneLoad already counts them.
+    const remainingNeed = need2 * (isDirecting2(p) && plan && digitalCrowd(s) ? PLATE_FACTOR : 1) * (1 - already);
     // A child's hours left today cap the scene as the day's own capacity does.
     const avail = Math.min(capacity, kidLeft);
     const fraction = Math.min(1, avail / Math.max(0.01, remainingNeed));
@@ -359,7 +372,8 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     if (already + (1 - already) * fraction < 0.999) {
       pending.push(s.id);
       const limitedBy = kidLeft < capacity + used ? kids.find((m) => BASE_MINUTES_PER_SHOOT_DAY * childShare(m, school) - (kidUsed.get(m.characterId) ?? 0) <= 0.01) : undefined;
-      reasons.push(limitedBy ? `${label} ran out of time: ${limitedBy.name} had worked all the hours they may work today. It needs another day.` : `${label} ran out of time and needs another day.`);
+      reasons.push(limitedBy ? `${label} ran out of time: ${limitedBy.name} had worked all the hours they may work today. It needs another day.`
+        : share < 0.999 ? `${label} ran out of time: makeup took ${Math.round((1 - share) * 100)}% of the day. It needs another day.` : `${label} ran out of time and needs another day.`);
     } else shot.push(label);
     if (capacity <= 0.01) {
       for (const rest of scenes.slice(scenes.indexOf(s) + 1)) pending.push(rest.id);
@@ -381,8 +395,10 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
   try {
     payPlanned(state, p, 'plan:shoot', `Location Fee (${d.date})`, 'locations', locationFee, `loc:${d.id}`);
     payPlanned(state, p, 'plan:shoot', `Equipment Package (${d.date})`, 'equipment', dayFees(p).equipment, `eq:${d.id}`);
-    const crowd = scenes.reduce((a, s) => a + s.crowd, 0);
+    const crowd = scenes.reduce((a, s) => a + physicalCrowd(s), 0);
     if (crowd) payPlanned(state, p, 'plan:shoot', `Background Performers (${d.date})`, 'cast', crowd * CROWD_DAY_RATE, `crowd:${d.id}`);
+    // The day's makeup materials (looks.ts), once for the day, for the scenes that were called.
+    payPlanned(state, p, 'plan:shoot', `Makeup Materials (${d.date})`, 'materials', makeupDayCost(scenes, approvedCharacters(p)), `makeup:${d.id}`);
   } catch (e) {
     if (e instanceof FundsError) addLogOnce(state, p, `day:${d.id}`, `${p.title} couldn't pay for today's location and equipment. Add funding before the next shoot day.`);
   }
