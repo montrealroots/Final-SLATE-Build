@@ -28,7 +28,7 @@ import { PlacePicker } from './Creation';
 import { adoptPlace } from '../engine/state';
 import { findPlace, getPlace } from '../data/places';
 import { setLook, type IdeaField } from '../engine/brief';
-import { MAKEUP, MAX_STATES, PERIOD_LABEL, WARDROBE, costumeCopies, madeIn, makeup, physicalCrowd, projectBand, statesOf, wardrobe, wardrobeMismatch, type MakeupId, type WardrobeId } from '../engine/looks';
+import { MAKEUP, MAX_STATES, PERIOD_LABEL, WARDROBE, costumeCopies, madeIn, makeup, physicalCrowd, projectBand, stateIn, stateNames, statesOf, wardrobe, wardrobeMismatch, type MakeupId, type WardrobeId } from '../engine/looks';
 
 // The idea picker and its library load the first time a picker is opened (IdeaPicker.tsx), never with the page.
 const IdeaPicker = lazy(() => import('./IdeaPicker').then((m) => ({ default: m.IdeaPicker })));
@@ -501,6 +501,12 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
                 {p.characters.map((c) => <Check key={c.id} label={c.name} checked={s.participants.includes(c.id)} onChange={(v) => up({ participants: v ? [...s.participants, c.id] : s.participants.filter((x) => x !== c.id) })} />)}
                 {!p.characters.length && <p className="muted">Add characters in the Characters section.</p>}
               </div>
+              {/* Which look each character is in here (looks.ts), for those with more than one. */}
+              {p.characters.filter((c) => s.participants.includes(c.id) && statesOf(c) > 1).map((c) => (
+                <SelectField key={c.id} label={`${c.name}'s Look In This Scene`} value={String(stateIn(s, c))} options={stateNames(c).map((n, i) => ({ value: String(i), label: n }))}
+                  hint="Scenes shot on one day with them in different looks lose time to the change."
+                  onChange={(v) => up({ states: { ...s.states, [c.id]: Number(v) } })} />
+              ))}
             </fieldset>
           ) : (
             <fieldset style={{ border: 0, padding: 0 }}>
@@ -1084,6 +1090,8 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
  */
 function HowTheyLook({ p, c, onError }: { p: Project; c: StoryCharacter; onError: (e: string | null) => void }) {
   const set = (patch: NonNullable<StoryCharacter['look']>) => onError(edit(p, () => setLook(p, c.id, { ...c.look, ...patch })));
+  // The names as typed, so a name half written (or a trailing comma) stays in the field; the save keeps the finished ones.
+  const [names, setNames] = useState((c.look?.named ?? []).join(', '));
   const m = makeup(c.look?.makeup);
   const w = wardrobe(c.look?.wardrobe);
   const animated = p.axes.medium === 'animation';
@@ -1104,8 +1112,13 @@ function HowTheyLook({ p, c, onError }: { p: Project; c: StoryCharacter; onError
           hint={w ? `${w.summary} ${plural(copies, 'copy', 'copies')}, ${plural(w.fittings, 'fitting')}.` : "One of the costume designer's shared costumes."}
           onChange={(v) => set({ wardrobe: (v || undefined) as WardrobeId | undefined })} />
         <NumberField label="Appearance States" value={statesOf(c)} min={1} max={MAX_STATES} step={1} hint="How many looks they go through: clean, then bloodied, then turned is three. Each is matched from scene to scene, and built where appliances are."
-          onChange={(v) => set({ states: Number.isFinite(v) ? v : 1 })} />
+          onChange={(v) => set({ states: Number.isFinite(v) ? v : 1, named: undefined })} />
       </div>
+      {statesOf(c) > 1 && (
+        <TextField label={`Names Of ${c.name}'s Looks`} value={names} maxLength={260}
+          hint={`In order, with a comma between them: Clean, Bloodied, Turned. As many looks as names, up to ${MAX_STATES}. Each scene then says which look they are in, on the Script page: only the looks that appear are made, and changing from one to another inside a shooting day takes time out of it.`}
+          onChange={(v) => { setNames(v); set({ named: v.split(',') }); }} />
+      )}
       {mismatch && <p className="callout callout-info">{mismatch}</p>}
       <Ideas p={p} fields={['makeup', 'wardrobe']} title={`How ${c.name} Looks`} characterId={c.id} />
     </fieldset>

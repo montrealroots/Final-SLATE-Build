@@ -219,7 +219,7 @@ export interface StoryCharacter {
    * How the character looks on screen and what makes it so (looks.ts): the makeup method, where the costume comes from,
    * and how many appearance states they go through (clean, bloodied, turned...). Unset fields keep the older rules.
    */
-  look?: { makeup?: import('./looks').MakeupId; wardrobe?: import('./looks').WardrobeId; states?: number };
+  look?: { makeup?: import('./looks').MakeupId; wardrobe?: import('./looks').WardrobeId; states?: number; /** The states' names, in order (looks.ts): when given, there are as many states as names. */ named?: string[] };
   designVersion: number; // bumping invalidates downstream design-dependent work
 }
 
@@ -254,6 +254,8 @@ export interface Scene {
   crowd: number;
   /** The crowd's makeup, when they are made up as more than themselves (looks.ts). */
   crowdLook?: import('./looks').MakeupId;
+  /** Which appearance state each character is in for this scene, by character ID (looks.ts): the first when unset. */
+  states?: Record<string, number>;
   /** 'digital': a share of the crowd is on set and the rest is added in post (looks.ts). Unset: everyone is there. */
   crowdMethod?: 'digital';
   intimacy: boolean;

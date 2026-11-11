@@ -416,6 +416,12 @@ export function setLook(p: Project, characterId: string, look: NonNullable<Story
   if (look.makeup && MAKEUP.some((m) => m.id === look.makeup)) clean.makeup = look.makeup;
   if (look.wardrobe && WARDROBE.some((w) => w.id === look.wardrobe)) clean.wardrobe = look.wardrobe;
   if (look.states && look.states > 1) clean.states = Math.max(1, Math.min(MAX_STATES, Math.round(look.states)));
+  // Names for the states, in order, in the player's own words: as many states as names, up to the most there can be.
+  const named = (look.named ?? []).map((x) => x.trim().slice(0, 40)).filter(Boolean).slice(0, MAX_STATES);
+  if (named.length > 1) { clean.named = named; clean.states = named.length; }
+  // A scene's state that no longer exists falls back to the first.
+  const count = clean.named?.length ?? clean.states ?? 1;
+  for (const s of p.scenes) if (s.states?.[characterId] !== undefined && s.states[characterId] >= count) { const rest = { ...s.states }; delete rest[characterId]; s.states = Object.keys(rest).length ? rest : undefined; }
   if (Object.keys(clean).length) c.look = clean; else delete c.look;
 }
 
