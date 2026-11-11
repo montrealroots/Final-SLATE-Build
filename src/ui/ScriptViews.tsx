@@ -209,6 +209,7 @@ export function ScriptTab({ p }: { p: Project }) {
             <div className="row gap-2 wrap" style={{ marginTop: 8 }}>
               <Ideas p={p} fields={['premise']} title="Choose A Starting Idea" label="Choose A Starting Idea" />
               <Ideas p={p} fields={['genre-blend']} title="Choose A Blend Of Genres" label="Blend Genres" />
+              <Ideas p={p} fields={['genre-route']} title="Choose A Route Through Its Genre" label="Routes Through Its Genre" />
               <Ideas p={p} fields={['medium']} title="Choose How It Is Made" label="How It Is Made" />
               <Ideas p={p} fields={['sound']} title="Choose Its Sound And Music" label="Sound And Music" />
             </div>

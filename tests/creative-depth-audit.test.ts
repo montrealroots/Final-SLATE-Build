@@ -178,7 +178,7 @@ const BUTTON: Record<Idea['field'], string> = {
   experience: 'Script: Intended Experience', 'world-rule': 'Script: Story World Rules', period: 'Script: Year It Is Set In', style: 'Script: The Look It Borrows', 'genre-blend': 'Script: Blend Genres', medium: 'Script: How It Is Made',
   'character-goal': 'Characters: Wants', 'character-fear': 'Characters: Fears', makeup: 'Characters: How They Look', wardrobe: 'Characters: How They Look', crowd: 'Script: Ideas For This Scene', camera: 'Script: Ideas For This Scene',
   sound: 'Script: Sound And Music', light: 'Script: The Light It Is Shot In', score: 'Script: Sound And Music',
-  viewpoint: 'Script: Point Of View', question: 'Script: Central Question', setting: 'Script: Story Setting', 'character-description': 'Characters: Description',
+  'genre-route': 'Script: Routes Through Its Genre', viewpoint: 'Script: Point Of View', question: 'Script: Central Question', setting: 'Script: Story Setting', 'character-description': 'Characters: Description',
   'scene-objective': 'Script: Ideas For This Scene', 'scene-action': 'Script: Ideas For This Scene', 'scene-turn': 'Script: Ideas For This Scene',
   props: 'Script: Ideas For This Scene', animals: 'Script: Ideas For This Scene', vehicles: 'Script: Ideas For This Scene', effects: 'Script: Ideas For This Scene', location: 'Script: Add A Scene From An Idea', 'physical-comedy': 'Script: Ideas For This Scene',
 };
@@ -240,7 +240,7 @@ describe('the effect coverage', () => {
         "document/identity information: implemented+browser verified": 4,
         "document/identity information: implemented+engine verified": 168,
         "mechanical decision: implemented+browser verified": 4,
-        "mechanical decision: implemented+engine verified": 116,
+        "mechanical decision: implemented+engine verified": 184,
         "visual reference: reference-only by design": 14,
       }
     `);

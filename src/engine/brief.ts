@@ -79,7 +79,7 @@ export type Command =
 export type IdeaField =
   | 'premise' | 'logline' | 'conflict' | 'stakes' | 'theme' | 'ending' | 'tone' | 'experience' | 'world-rule' | 'period' | 'style' | 'genre-blend' | 'medium'
   | 'character-goal' | 'character-fear' | 'makeup' | 'wardrobe' | 'crowd' | 'camera' | 'light' | 'sound' | 'score' | 'location' | 'physical-comedy'
-  | 'viewpoint' | 'question' | 'setting' | 'character-description' | 'scene-objective' | 'scene-action' | 'scene-turn' | 'props' | 'animals' | 'vehicles' | 'effects';
+  | 'genre-route' | 'viewpoint' | 'question' | 'setting' | 'character-description' | 'scene-objective' | 'scene-action' | 'scene-turn' | 'props' | 'animals' | 'vehicles' | 'effects';
 
 /** What an idea's choices apply to: the project, the characters the player picks, or the scenes they pick. */
 export type IdeaScope = 'project' | 'character' | 'scene';

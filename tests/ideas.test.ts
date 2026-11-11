@@ -13,7 +13,7 @@ import { STARTER } from '../src/ideas/starter';
 
 applyGenreCatalog(JSON.parse(readFileSync('src/data/genre-catalog.json', 'utf8')));
 const genreIds = new Set(GENRES.map((g) => g.id));
-const FIELDS = ['premise', 'logline', 'conflict', 'stakes', 'theme', 'ending', 'tone', 'experience', 'world-rule', 'period', 'style', 'genre-blend', 'medium', 'character-goal', 'character-fear', 'makeup', 'wardrobe', 'crowd', 'camera', 'light', 'sound', 'score', 'location', 'physical-comedy', 'viewpoint', 'question', 'setting', 'character-description', 'scene-objective', 'scene-action', 'scene-turn', 'props', 'animals', 'vehicles', 'effects'];
+const FIELDS = ['premise', 'logline', 'conflict', 'stakes', 'theme', 'ending', 'tone', 'experience', 'world-rule', 'period', 'style', 'genre-blend', 'medium', 'character-goal', 'character-fear', 'makeup', 'wardrobe', 'crowd', 'camera', 'light', 'sound', 'score', 'location', 'physical-comedy', 'genre-route', 'viewpoint', 'question', 'setting', 'character-description', 'scene-objective', 'scene-action', 'scene-turn', 'props', 'animals', 'vehicles', 'effects'];
 const OPS = ['story', 'tone', 'setting', 'style', 'year', 'genre', 'medium', 'rule', 'character', 'look', 'narrator', 'crowd', 'stunt', 'scene', 'needs', 'shot', 'light', 'sound', 'score', 'beats', 'cast'];
 const CHARACTER_OPS = new Set(['character', 'look', 'narrator']);
 const SCENE_OPS = new Set(['crowd', 'stunt', 'shot', 'scene', 'needs']);
@@ -181,9 +181,9 @@ describe('what the library holds, counted', () => {
     expect({ total: IDEAS.length, mechanical: count('mechanical'), brief: count('brief'), reference: count('reference') }).toMatchInlineSnapshot(`
       {
         "brief": 171,
-        "mechanical": 120,
+        "mechanical": 188,
         "reference": 14,
-        "total": 305,
+        "total": 373,
       }
     `);
     expect(byField).toMatchInlineSnapshot(`
@@ -198,6 +198,7 @@ describe('what the library holds, counted', () => {
         "effects": 8,
         "ending": 10,
         "genre-blend": 8,
+        "genre-route": 68,
         "light": 3,
         "location": 12,
         "makeup": 12,
