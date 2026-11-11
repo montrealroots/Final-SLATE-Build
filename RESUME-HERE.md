@@ -97,19 +97,19 @@ The owner's brief, in six parts. Universal and other studios wait until this is 
 show."** Done: Settings, Mods lists the packs the game's server offers (its `packs/` folder), each installed with one press, and
 installs a `.slatepack` from a file too (`docs/DATA-PACKS.md`). `node tools/pack.mjs` builds
 the film pack (69.7 MB) and the cinema pack (1.5 MB) into `packs/`, kept out of the repository. TMDB's six months and
-deletion are kept in the game. Giving the film pack to anyone but the owner waits on the same decisions as hosting.
+deletion are kept in the game. The owner decided on November 11, 2026 that no other player gets TMDB's data: a server
+serves it only as the owner's own (`--owner`), and offers other players the cinemas alone (`docs/DEPLOYMENT.md`).
 
 **Remaining, by kind:**
-- **Deployment configuration:** a host for `server/serve.mjs`, the catalog gathered or copied there, and a refresh
-  within every six months.
-- **Owner's decisions:** TMDB commercial use, and the derivatives question (`docs/DEPLOYMENT.md`); Nielsen (report only,
-  as decided).
-- **Source research:** the child-rule sets' dates and Ontario's consolidated text were done on November 11, 2026, and
-  Scotland, Wales, Northern Ireland, India, Japan, South Korea and Mexico (partly) were given their own sets. Next, in
-  order: Texas and New Mexico (US regions, now California's), Quebec (now British Columbia's), New Zealand (now New South
-  Wales's), Spain and Italy (now Germany's), Brazil (now England's). Each needs its set in `src/engine/minors.ts`,
-  `rulesFor`, `RULE_WORDS`, its section, gaps row and dates row in `docs/child-rules/RESEARCH.md`, its row in
-  `docs/child-rules/COVERAGE.md`, and `seen.size` and figures in `tests/minors.test.ts`.
+- **Deployment configuration: done as configuration.** `npm run serve` for other players (the game and the cinemas, no
+  TMDB data), `npm run serve:owner` for the owner's own copy, and the six-monthly refresh commands, in
+  `docs/DEPLOYMENT.md`. Choosing and paying for a host is the owner's; none is set up from here.
+- **Owner's decisions: made.** TMDB's data goes to no other player (November 11, 2026), which closes the commercial-use
+  and derivatives questions. Nielsen: report only, as decided.
+- **Source research: done (November 11, 2026).** Every set's dates; Ontario's consolidated text; and own sets for
+  Scotland, Wales, Northern Ireland, India, Japan, South Korea, Mexico, Texas, New Mexico, Quebec, Spain (dated: the
+  2026 decree from May 25, 2027), Italy, Brazil and New Zealand (`docs/child-rules/`). Countries still on a neighbour's
+  set are listed in `docs/child-rules/COVERAGE.md` as Stand-in.
 - **Human and device testing:** real Safari on an iPhone (all WebKit runs here are emulation), and a WebKit flake seen
   once: Continue Creation pressed and creation not opening, under two parallel WebKit workers (QA-REPORT.md, Open).
 - **Code, tests:** a browser journey through a shoot with a child in the cast (above).
