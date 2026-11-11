@@ -45,5 +45,8 @@ describe('cinemas near a place', () => {
     expect(near.map((x) => x.c.id)).toEqual(['here', 'near']);
     expect(near[1].km).toBeCloseTo(1.11, 1);
     expect(cinemasNear(list, 51.5, -0.12, 20, '2031-01-01').map((x) => x.c.id)).toEqual(['here', 'later', 'near']);
+    // Cinemas that show films come first, nearest first, then the rest.
+    const mixed = [c({ id: 'old-near', lat: 51.5 }), c({ id: 'working-far', lat: 51.58, site: 'https://cinema.example' }), c({ id: 'working-near', lat: 51.52, operator: 'Fixture Cinemas' })];
+    expect(cinemasNear(mixed, 51.5, -0.12, 20, '2026-01-05').map((x) => x.c.id)).toEqual(['working-near', 'working-far', 'old-near']);
   });
 });

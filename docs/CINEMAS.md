@@ -61,7 +61,9 @@ precision it was recorded (`1901`, `1932-05`, `1937-05-07`).
 ## In The Game
 
 A place page has **Cinemas Nearby** (`src/ui/Cinemas.tsx`, rules in `src/world/cinemas.ts`). It shows:
-- the cinemas recorded within 25 km, nearest first, with the fifteen nearest listed and the rest a button away;
+- the cinemas recorded within 25 km: those that show films first, then the rest, each group nearest first. The first
+  fifteen are listed and the rest are a button away. By distance alone, Dallas's list began with fifteen downtown
+  theatres closed for decades;
 - how many of those have no closure recorded;
 - the country's total.
 
@@ -89,6 +91,8 @@ Others say "no closure recorded, and no sign it still shows films", and show not
 - one that closed may still list its chain's website (Odeon West End, closed in 2015, lists odeon.co.uk).
 
 It cut Britain's cinemas with no closure recorded from 3,337 to 970 that show films.
+
+Some venues that show films now are music venues; the Kessler and Granada in Dallas are examples.
 
 ## What They Show (November 11, 2026)
 

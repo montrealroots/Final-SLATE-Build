@@ -47,12 +47,17 @@ export function cinemaOn(c: Cinema, today: string): CinemaStanding {
   return { kind: 'no-closure' };
 }
 
-/** The cinemas within a distance of a point, nearest first, leaving out those not yet opened by the date. */
+/**
+ * The cinemas within a distance of a point, leaving out those not yet opened by the date: those that show films first,
+ * then the rest, each nearest first. By distance alone, Dallas's list began with fifteen downtown theatres closed for
+ * decades, and its working cinemas were behind Show All (November 11, 2026).
+ */
 export function cinemasNear(list: Cinema[], lat: number, lon: number, km: number, today: string): { c: Cinema; km: number; standing: CinemaStanding }[] {
   return list
-    .map((c) => ({ c, km: distanceKm(lat, lon, c.lat, c.lon), standing: cinemaOn(c, today) }))
+    .map((c) => ({ c, km: distanceKm(lat, lon, c.lat, c.lon), standing: cinemaOn(c, today), working: showsFilms(c, today) }))
     .filter((x) => x.km <= km && x.standing.kind !== 'not-yet')
-    .sort((a, b) => a.km - b.km);
+    .sort((a, b) => Number(b.working) - Number(a.working) || a.km - b.km)
+    .map(({ working: _, ...x }) => x);
 }
 
 /**
