@@ -93,7 +93,24 @@ Where it stands:
   and each scene says which it is in; 409 ideas over 45 fields, with 68 routes through the 17 genre families
   (`src/ideas/`); props, animals, vehicles and effects chosen from ideas make their work. Journey: `e2e/craft.spec.ts`.
   Left: ideas for 11 structural fields, and the items under "Not implemented in C" in the ledger.
-- **E to H:** not started; the ledger's milestone table has each one's scope.
+- **E, done:** each place in the script can be filmed in any real place of the world registry, at a kind of site the
+  player chooses; the day has that place's weather, daylight, holidays and clock, the player has to be there, and a
+  unit away is moved once and housed each day (`src/engine/destinations.ts`, `src/ui/FilmedAt.tsx`; figures in
+  `docs/ASSUMPTIONS.md`, "Filming Somewhere Else"). A soundstage or a stage set is under a roof. Journey J07 is
+  `e2e/destinations.spec.ts`.
+- **F, done but for the gathering run:** Skydance (Paramount and Warner Bros.) and Sony are in the registry with
+  sourced dates (`docs/CATALOG.md`); a followed studio reads a pitch by fit, backs it on terms and releases it
+  territory by territory (`src/engine/strategy.ts`, `finance.ts`, `finish.ts`; `docs/ASSUMPTIONS.md`, "How A Studio
+  Reads A Pitch"). Journey J08 is `e2e/studio-pitch.spec.ts`. **Still to do:** when the catalog gathering run for the
+  50 new companies ends (`npm run screen-catalog:import`, resumable; then `npm run screen-catalog:build`,
+  `node tools/screen-catalog/networks.mjs`, `node tools/screen-catalog/coverage.mjs`, `node tools/pack.mjs catalog`),
+  commit the regenerated `docs/CATALOG-COVERAGE.md`. The cache and the pack stay out of the repository.
+- **G, done:** a pack replaces another in one step and the old one is kept if the new one fails; room is asked first;
+  an optional picture pack (`npm run screen-catalog:images`, `node tools/pack.mjs images`; `docs/DATA-PACKS.md`, "The
+  Picture Pack"). Journey J09 is in `e2e/data-packs.spec.ts`.
+- **H, done:** `docs/creative-depth/JOURNEYS.md` (the twelve journeys and what each does not do) and
+  `docs/creative-depth/COVERAGE.md` (the nine acceptance points, with what is open). Start from COVERAGE.md's "Not
+  Done, In One Place" for anything further.
 
 Rules that came with the package: one agent; no universal quality bonus for a preset; custom text is never claimed to
 be understood; real people's recorded credits stay apart from anything the game simulates about them; no credentials,

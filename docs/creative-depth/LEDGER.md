@@ -30,9 +30,9 @@ Nothing is called complete because a control exists or a field saves.
 | C | Every creative input expanded; medium pipelines; controlled comparisons | Built and tested, with the limits below | |
 | D | Real people: identity, availability, auditions, hiring, contracts, pay, credits | Built and tested, with the limits below. Done before C: see `DECISIONS.md` | With the third checkpoint |
 | E | Real destinations, scouting, geography-aware production | Built and tested, with the limits below | |
-| F | Studio strategy, Warner Bros., Sony and Paramount, territorial releases, competition | Under way: see "Milestone F, So Far" below | |
-| G | Optional portraits and posters, pack refresh and storage controls | Under way: see "Milestone G, So Far" below | |
-| H | Connected playthroughs, performance, accessibility, migration, final coverage | Not started | |
+| F | Studio strategy, Warner Bros., Sony and Paramount, territorial releases, competition | Built and tested, with the limits below; the catalog gathering run for the new groups is reported when it ends | |
+| G | Optional portraits and posters, pack refresh and storage controls | Built and tested, with the limits below | |
+| H | Connected playthroughs, performance, accessibility, migration, final coverage | Built and tested, with the limits below | |
 
 Do them in this order. Each is a vertical slice: interface, engine, save, failure behaviour and proof.
 
@@ -283,9 +283,9 @@ Not implemented in E, each a limit a player can meet:
 - J07 ran from one base (London) to one place abroad (Bergen, October) and one soundstage in the base's own city.
   Other seasons and regions are covered in the engine tests (Tromsø in January), not in a browser.
 
-## Milestone F, So Far
+## Milestone F
 
-Being built on the branch `f-work`, after milestone E. Not yet a checkpoint.
+Built after milestone E. Its checkpoint's checks are in `QA-REPORT.md`.
 
 | Piece | Where | Status | Evidence |
 | --- | --- | --- | --- |
@@ -294,13 +294,13 @@ Being built on the branch `f-work`, after milestone E. Not yet a checkpoint.
 | A studio's strategy from the pace its save froze: genres, animation and documentary shares, release month, slate, reach (modeled and said so) | `src/engine/strategy.ts` `strategyOf`, `slateRoom`, `strategyWords` | Implemented, browser verified | `tests/strategy.test.ts`; J08 reads "What Night Shift Pictures Makes" |
 | A pitch is read by fit, room, script and record, with no chance in it; two studios answer one film differently and say why | `strategy.ts` `pitchRead`; `finance.ts` `studioOption`, `pitchToStudio` | Implemented, browser verified | `tests/strategy.test.ts`, 10 tests, 6 mutations caught; `e2e/studio-pitch.spec.ts` (J08) on desktop and WebKit |
 | An offer for a proven filmmaker, an option for a first film, notes read again only with a newer draft, a pass that is final | `finance.ts` (kind `studio`) | Implemented, engine verified; the option is browser verified | `tests/strategy.test.ts`; J08 |
-| Which followed studio makes a distribution or commission offer is decided by fit, not by films a year | `studios.ts` `careerStudio`; `strategy.ts` `fitWeight` | Implemented, engine verified | `tests/competition.test.ts`: the busiest studio makes none of the offers for a film it wouldn't make |
+| Which followed studio makes a distribution or commission offer is decided by fit, not by films a year | `studios.ts` `careerStudio`; `strategy.ts` `fitWeight` | Implemented, engine verified | `tests/competition.test.ts`: the busiest studio makes none of the offers for a film it wouldn't make. `tests/offer-concentration.test.ts`: 100 seeds, 20,000 draws, thresholds set before the run; its first run failed and the rule for a thin record was changed |
 | On delivery the studio opens the film at home, then four territories every two weeks, each a release of its own | `finish.ts` `'studio-release'`, `windowDate` | Implemented, browser verified | J08: US, then GB, FR, DE and ES fourteen days later |
 | Reports count only territories the film has opened in; one set of reports for the deal | `distribution.ts` `territoriesReached`; `finish.ts` release handler | Implemented, browser verified | `tests/strategy.test.ts`; J08: the studio is repaid from what it reports |
 | Subtitled at the distributor's cost or dubbed at yours, with the cost and the effect stated first | `finish.ts` `setReleaseVersion`, `dubbingCost`; the Release page | Implemented, browser verified | J08: $37,800 set aside and paid on the day it opens abroad |
 | Backers named properly in sentences ("Night Shift Pictures offered", not "the night shift pictures offered") | `src/engine/backer-words.ts` | Implemented, browser verified | J08 checks the log; this also fixes commissions from a named studio, which read wrongly before |
 
-Not implemented in F so far, each a limit a player can meet:
+Not implemented in F, each a limit a player can meet:
 
 - A studio is pitched feature films only. Television labels have no slate of their own to pitch a series to.
 - A distributor's own offer for several territories still opens them all on one day; only a studio's release is
@@ -311,9 +311,9 @@ Not implemented in F so far, each a limit a player can meet:
 - Sony's ownership dates are not recorded: its own pages refuse automated readers.
 - International and independent groups beyond these four are not covered. Four Hollywood groups are not the whole world.
 
-## Milestone G, So Far
+## Milestone G
 
-Being built on the branch `g-work`, after milestone F. Not yet a checkpoint.
+Built after milestone F. Its checkpoint's checks are in `QA-REPORT.md`.
 
 | Piece | Where | Status | Evidence |
 | --- | --- | --- | --- |
@@ -337,6 +337,25 @@ Not implemented in G, each a limit:
 - Going on with a cut-off download is tested on the server; no browser journey cuts a download off.
 - J10 (a refreshed pack changes nothing a save has decided) is `e2e/world-refresh.spec.ts`, from milestone A; it was
   not extended here.
+
+## Milestone H
+
+Built after milestone G. Its checkpoint's checks are in `QA-REPORT.md`.
+
+| Piece | Where | Status | Evidence |
+| --- | --- | --- | --- |
+| Where each of the package's twelve journeys is, and what each does not do | `docs/creative-depth/JOURNEYS.md` | Written from the tests | Each row names its test and its browsers |
+| J02: the zombie premise as stop motion | `e2e/creative-ideas.spec.ts`, "J02" | Implemented, browser verified | Puppets, sets, animation and voices are made; no makeup, costume or location requirement, no shoot day, no makeup hire |
+| J03: horror with a comic streak, and what it competes as | `e2e/awards.spec.ts`, "J03" | Implemented, browser verified | A secondary comedy tag leaves it a drama; declared a comedy it changes category; each page says why |
+| Which studio makes offers, over 100 worlds, against thresholds set beforehand | `tests/offer-concentration.test.ts`; `docs/creative-depth/OFFER-CONCENTRATION.json` | Implemented, engine verified | 49.8% of offers from a studio; no studio above 25.1% of them; the first run failed and the engine was changed |
+| The package's nine acceptance points, each with its evidence and what is open | `docs/creative-depth/COVERAGE.md` | Written from the audit tables and the tests | The counts are the audit tables' own |
+
+Not done in H:
+
+- The performance timings the package lists (picker search, pack install, long-career advance) were not re-measured
+  as a before-and-after set. Startup stayed inside its unchanged budgets on every milestone's check.
+- No single career passes through all twelve journeys, and none was run on a physical device.
+- The 100-seed measure is of studio offers. The balance runs remain 30 seeds for each of eight families.
 
 ## The Audit Artifacts
 
