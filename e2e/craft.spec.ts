@@ -3,7 +3,7 @@
 // camera goes on a dolly; and each of those shows up as work, crew or cost, survives a reload, and the film is delivered.
 // The world seed is fixed (labelled fixture).
 import { expect, test, type Page } from './test';
-import { addScene, advance, newProject, produceToDelivery, readSavedState, saveAndApprove, saveAndExit, section, seededLife } from './helpers';
+import { addScene, advance, nav, newProject, produceToDelivery, readSavedState, saveAndApprove, saveAndExit, section, seededLife } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -112,7 +112,7 @@ test('a route through the genre, named looks and a dolly: chosen, shown as work,
   await check();
 
   // And the film is made with them: the tests are done before the shoot, the rig and the session are paid for.
-  await page.getByRole('button', { name: 'Projects' }).first().click();
+  await nav(page, 'Projects');
   await page.getByRole('button', { name: 'Till Morning' }).first().click();
   await produceToDelivery(page, { yourself: ['Marco'] });
   await expect.poll(async () => !!(await readSavedState(page)).projects[0]?.delivered, { timeout: 30_000 }).toBe(true);
