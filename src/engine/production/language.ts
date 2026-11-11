@@ -2,6 +2,7 @@
 // Part of the production engine; src/engine/production.ts is its public interface.
 
 import { personById } from '../people';
+import { isReal } from '../guests';
 import { approvedCharacters } from '../projects';
 import type { GameState, Project } from '../types';
 
@@ -13,6 +14,8 @@ export function personLanguagesFit(state: GameState, p: Project, a: { characterI
     const known = [state.character.mainLanguage, ...state.character.languages.filter((l) => l.proficiency !== 'Basic').map((l) => l.code)];
     return langs.every((l) => known.includes(l));
   }
+  // A real person's languages aren't recorded, and none is supposed either way (guests.ts): no coach is required for them.
+  if (isReal(a.performer)) return true;
   const person = personById(state, a.performer);
   return langs.every((l) => person.languages.includes(l));
 }

@@ -861,6 +861,8 @@ export interface Project {
   continuedBy?: string;
   /** A commissioner's decision on another season (continuation.ts). */
   renewal?: { decidedAt: number; outcome: 'renewed' | 'cancelled'; reason: string };
+  /** Real people from the film catalog the player is considering for a part or a job here (guests.ts). */
+  considered?: import('./guests').Considered[];
   /** Ideas applied from the picker, by ID and version, and ideas marked to come back to (brief.ts). Never their text. */
   brief?: import('./brief').Brief;
   noticeKeys: string[];
@@ -1012,6 +1014,8 @@ export interface GameState {
   processedEventIds: string[]; // ring of recent ids (exact-once guard)
   log: LogEntry[];
   plans: Plan[];
+  /** Real people from the film catalog brought into this story (guests.ts): a copy of their record, and what the game makes up. */
+  real?: import('./guests').RealPeople;
   /** The living world's simulated decisions and seasons (industry.ts), from when the catalog was first present; absent before. */
   industry?: import('./industry').IndustryState;
   sleep: { asleep: boolean; since?: number; wakeAt?: number; alarm: boolean };

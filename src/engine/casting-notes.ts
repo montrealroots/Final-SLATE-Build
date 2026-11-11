@@ -2,6 +2,7 @@
 // hiring.ts so it loads with that page, not at startup): the ages they play against the part's, the skills and
 // languages the part needs, and for a child, the rules of the place the production is based (minors.ts).
 import { songUses } from './songs';
+import { isReal } from './guests';
 import { ageInDays, bandFor, projectRules, supervisionFor, type Minor } from './minors';
 import { playingAgeAt, roleLabel, type Person } from './people';
 import { approvedCharacters, approvedScenes } from './projects';
@@ -79,6 +80,14 @@ export function fitNotes(state: GameState, p: Project, person: Person | 'player'
   if (plays && want && (want.max < plays[0] || want.min > plays[1])) {
     out.push(`Usually plays ages ${plays[0]} to ${plays[1]}; the part is ${storyAgeWords(want)}.`);
   }
+  // A real person from the film catalog (guests.ts): what isn't recorded is said to be unrecorded, never held against them.
+  if (isReal(person.id)) {
+    if (!person.born) out.push("Their age isn't recorded. You marked them as an adult in this story.");
+    if (needsSinging) out.push("This role sings. Whether they do isn't recorded: an audition is how you find out.");
+    if (needsDance) out.push("This role dances. Whether they do isn't recorded: an audition is how you find out.");
+    out.push("The languages they work in aren't recorded. A dialect coach is yours to hire if you want one.");
+    if (!person.born) return out;
+  }
   // A child under the shoot's rules (minors.ts): what casting them brings with it.
   const { rules, standIn } = projectRules(p, today);
   const ageDays = ageInDays(person.born, today);
@@ -90,6 +99,7 @@ export function fitNotes(state: GameState, p: Project, person: Person | 'player'
   } else if (rules.minAgeDays && ageDays < rules.minAgeDays) {
     out.push(`${person.name} is too young to work: ${RULE_WORDS[rules.id].name} allow no one under ${rules.minAgeDays} days old.`);
   }
+  if (isReal(person.id)) return out;
   if (needsSinging && !person.skills.includes('singing')) out.push('Not trained in singing, which this role needs.');
   if (needsDance && !person.skills.includes('dance')) out.push('Not trained in dance, which this role needs.');
   if (langs.some((l) => !person.languages.includes(l))) out.push('Will need language coaching for this role\'s dialogue.');

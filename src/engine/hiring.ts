@@ -3,6 +3,7 @@
 // availability for the production window and the offered rate. Offers reserve (not spend) funds.
 
 import { getPlace } from '../data/places';
+import { canApproach, consideredOn, isReal, jobsOf, realPerson } from './guests';
 import { needsMakeupCrew, physicalCrowd } from './looks';
 import { cancel, commit, ledgerTotals, money, reserve, FundsError } from './budget';
 import { genre } from './genres';
@@ -149,6 +150,22 @@ export function roleCandidates(state: GameState, p: Project, roleId: string): Pe
   return candidates(state, roleId, getPlace(p.axes.basePlaceId).country);
 }
 
+/**
+ * Everyone who can be asked about a part or a job: the real people the player is considering for it (guests.ts), first,
+ * then the game's own. The staffing proposals and the estimate still read `roleCandidates`: nobody real is chosen for
+ * the player, or priced into an estimate, without being picked.
+ */
+export function candidatesFor(state: GameState, p: Project, roleId: string, characterId?: string): Person[] {
+  const real = consideredOn(p).filter((c) => c.roleId === roleId && (!characterId || !c.characterId || c.characterId === characterId) && realPerson(state, c.personId))
+    .map((c) => personById(state, c.personId, roleId));
+  return [...new Map(real.map((x) => [x.id, x])).values(), ...roleCandidates(state, p, roleId)];
+}
+
+/** Whether a person can be asked to do a job on this project at all: one of the game's own for it, or a real person with a recorded credit in it. */
+export function isCandidate(state: GameState, p: Project, roleId: string, personId: string): boolean {
+  return isReal(personId) ? !!realPerson(state, personId) && jobsOf(realPerson(state, personId)!).includes(roleId) : roleCandidates(state, p, roleId).some((x) => x.id === personId);
+}
+
 export function castRoleFor(method: PerformanceMethod): 'actor' | 'voice-actor' {
   return method === 'voice' ? 'voice-actor' : 'actor';
 }
@@ -172,7 +189,13 @@ export function makeOffer(state: GameState, p: Project, input: OfferInput): Hire
   if (p.approvedDraft === null) throw new Error('Approve a draft before hiring.');
   if (p.delivered) throw new Error('This project has already been delivered.');
   if (p.shelved) throw new Error('This project is shelved. Take it up again to hire for it.');
-  const person = personById(state, input.personId);
+  // A real person: only for a job the record shows, never after a recorded death, and never with their age unknown
+  // unless the player marked them an adult in this story (guests.ts). The reason is said when not.
+  if (isReal(input.personId)) {
+    const a = canApproach(state, input.personId, input.roleId, dateKey(state.now, getPlace(p.axes.basePlaceId).zone));
+    if (!a.ok) throw new Error(a.reason);
+  }
+  const person = personById(state, input.personId, input.roleId);
   if (person.roleId !== input.roleId) throw new Error(`${person.name} doesn't work as ${roleLabel(input.roleId).toLowerCase()}.`);
   if (!(input.dayRate > 0) || !Number.isFinite(input.dayRate)) throw new Error('Offer a day rate above zero.');
   if (input.dayRate > person.dayRate * 3) throw new Error('That offer is far above any reasonable rate for this role.');
@@ -231,7 +254,7 @@ registerHandler('offer-response', (state, ev) => {
 });
 
 export function resolveOffer(state: GameState, p: Project, h: Hire): string {
-  const person = personById(state, h.personId);
+  const person = personById(state, h.personId, h.roleId);
   const subject = PRONOUNS[person.pronouns].subject;
   const cap = subject.charAt(0).toUpperCase() + subject.slice(1);
   const r = stream(state.seed, 'offer', h.id)();
