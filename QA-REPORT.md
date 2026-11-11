@@ -18,7 +18,7 @@
 | The catalog, child and foundation journeys, WebKit (iPhone 15 Pro Max) | 1 flake | 10 of 11 passed with two workers; the one that failed, a Continue Creation that didn't open creation, passed 3 of 3 alone (Open). |
 | `e2e/backup.spec.ts`, `e2e/storage.spec.ts`, desktop | 0 after the fix | Failed first: lazy Shell and Home kept "Loading…" up for React's 300 ms reveal delay while the clock ran, so a save read at once had moved on. They now draw from the store. Passed on the code before the change, in a temporary worktree. |
 | Startup measured, 3 runs each build | — | `docs/PERFORMANCE.md`. The first runs timed New Game until any top heading, which the start screen already had, and were discarded. |
-| `SLATE_E2E_PROD=1 npx playwright test`, all projects | PENDING | PENDING |
+| `SLATE_E2E_PROD=1 npx playwright test`, all projects, at `0e00a82` | 0 | 315 passed, 38 skipped by design, in 13.5 minutes: the production build through `server/serve.mjs`, desktop, phone and the three WebKit iPhone projects, with the foundation journeys and the catalog and child journeys on WebKit. The first attempt at `bb628e7` was lost to a container restart partway, with no failures up to then. An earlier run on a build from before the fixes failed 9: two on the old acquisition wording, seven on WebKit from fetches a test's reload cut off (the helpers now let the start screen finish loading first). |
 
 ### Earlier: What The Cinemas Show (November 11, 2026)
 
