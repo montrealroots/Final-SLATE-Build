@@ -73,8 +73,8 @@ export function TmdbCredit() {
 
 const KIND_LABEL: Record<CompanyRecord['kind'], string> = { corporate: 'The Company', film: 'Film', television: 'Television', network: 'Networks And Streaming' };
 /** The groups the catalog follows, and companies whose films one of them releases without owning them (Illumination). */
-const GROUPS = ['company:the-walt-disney-company', 'company:comcast', 'other'] as const;
-const GROUP_LABEL: Record<(typeof GROUPS)[number], string> = { 'company:the-walt-disney-company': 'The Walt Disney Company', 'company:comcast': 'Comcast And NBCUniversal', other: 'Released By Universal Pictures' };
+const GROUPS = ['company:the-walt-disney-company', 'company:comcast', 'company:skydance', 'company:sony-group', 'other'] as const;
+const GROUP_LABEL: Record<(typeof GROUPS)[number], string> = { 'company:the-walt-disney-company': 'The Walt Disney Company', 'company:comcast': 'Comcast And NBCUniversal', 'company:skydance': 'Skydance (Paramount And Warner Bros.)', 'company:sony-group': 'Sony', other: 'Released By Universal Pictures' };
 const inGroup = (c: CompanyRecord, g: (typeof GROUPS)[number]) => {
   const top = groupOf(c.id)?.id;
   return g === 'other' ? top === c.id && c.kind !== 'corporate' : top === g;
@@ -85,7 +85,7 @@ export function CompaniesPage() {
   const counts = index.status === 'ready' ? new Map(index.data.companies.map((c) => [c.tmdbId, c])) : null;
   return (
     <>
-      <PageHead eyebrow="Industry" title="Companies" lede="The studios and labels of The Walt Disney Company and of NBCUniversal, their leadership, and the films and series credited to them, from TMDB." />
+      <PageHead eyebrow="Industry" title="Companies" lede="The studios and labels of The Walt Disney Company, NBCUniversal, Skydance (Paramount and Warner Bros.) and Sony, their leadership, and the films and series credited to them, from TMDB." />
       <CatalogStatus index={index} />
       <CatalogSearch ready={index.status === 'ready'} />
       {index.status === 'ready' && index.data.counts.networks ? (
