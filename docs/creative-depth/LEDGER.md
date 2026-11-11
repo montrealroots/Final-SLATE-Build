@@ -216,9 +216,9 @@ save is listed apart from their recorded credits.
 - **Earlier projects keep their rules.** A project begun before this has no `writing` list, and its hired writers are
   credited and counted as they were. Its hired director is paid for shoot days from now on.
 
-## Milestone C, So Far
+## Milestone C
 
-Being built on the branch `c-work`, after milestone D. Not yet a checkpoint.
+Built after milestone D. Its checkpoint's checks are in `QA-REPORT.md`.
 
 | Piece | Where | Status | Evidence |
 | --- | --- | --- | --- |
@@ -229,7 +229,7 @@ Being built on the branch `c-work`, after milestone D. Not yet a checkpoint.
 | Looks with names, assigned scene by scene; only the looks that appear are made; a change inside a day costs time | `src/engine/looks.ts` `stateNames`, `stateIn`, `statesUsed`, `changeMinutes` | Engine verified | `tests/states.test.ts`, 4 tests |
 | 154 ideas for fifteen more fields; props, animals, vehicles and effects chosen from ideas make their work | `src/ideas/scenes.ts`; `brief.ts` ops `scene`, `needs`, `season` | Engine verified | `tests/scene-ideas.test.ts`, 6 tests |
 | 68 routes through the genre families: four for each of 17 families, so every one of the 149 genres is offered at least four. Each is a tone, a light, sound choices, a score and three scenes offered | `src/ideas/routes.ts`; picker button Routes Through Its Genre | Engine verified | `tests/routes.test.ts`, 6 tests, including that the same work is assessed the same whichever route was chosen |
-| Controls for all of the above | `src/ui/ScriptViews.tsx` (Light, Sound And Score; looks' names; a scene's look), `PlanViews.tsx` (Camera For each scene) | Not implemented in a browser journey yet | Unit tests only; no Playwright journey has used them |
+| Controls for all of the above | `src/ui/ScriptViews.tsx` (Light, Sound And Score; looks' names; a scene's look), `PlanViews.tsx` (Camera For each scene) | Implemented, browser verified | `e2e/craft.spec.ts` on desktop, phone and WebKit (iPhone 15 Pro Max): a route chosen from the picker, the light, sound and score changed on the page, looks named and assigned, a scene put on a dolly, the rent set aside on Rebuild Schedule, a reload, and delivery with the tests, the session, the rig and the key grip paid |
 
 Counts, from the code: 409 ideas written (188 change the work, 207 are words, 14 are references); 263 labelled
 controls, of which 52 have ideas, 190 have none by design with the reason given, and 11 have none yet. The 68 routes are
@@ -241,11 +241,16 @@ work; a design changed after its work began sends only the work built on it back
 choice for any location; documentary, unscripted and television pipelines with their own tasks. Their tests are the
 ones they had.
 
-Still to do in C: a browser journey through the new controls (written as `e2e/craft.spec.ts`, not yet run); ideas for
-the 11 fields that have none (the genre questions, what each episode moves, acts, threads, setups, relationships and
-arcs). Not implemented, and not
-planned as part of this pass: a puppet's face method for stop motion; painted backgrounds as their own task in 2D; a
-series bible and standing sets as records of their own.
+Not implemented in C, each a limit a player can meet:
+
+- Eleven fields still have no ideas: the genre questions, what each episode moves, acts, threads, setups,
+  relationships and arcs. They take custom text and their own controls as before (`FIELD-INVENTORY.csv`, "Not yet").
+- A puppet's face method for stop motion, painted backgrounds as their own task in 2D, and a series bible and standing
+  sets as records of their own.
+- Four of the package's starter options remain notes with no engine: two puppet finishes, a stylized anachronism and
+  source music.
+- The rig, the light, the sound and the score change time, crew, cost and how takes vary. None changes the assessment
+  by itself, by design: no preset is a quality bonus.
 
 ## The Audit Artifacts
 
