@@ -25,7 +25,7 @@ const later = {
 };
 const tidewater = {
   ...base, ref: 'tv:900101', type: 'tv', title: 'Tidewater Station (Fixture)', originalTitle: 'Tidewater Station (Fixture)', status: 'Ended', date: '2021-09-01', lastAirDate: '2021-09-08', genres: ['Drama'], runtime: null, episodeRuntimes: [44],
-  overview: 'A made-up series.', companies: [{ tmdbId: 2, name: 'Walt Disney Pictures', country: 'US' }], networks: ['ABC'], createdBy: [{ person: 800003, name: 'Cy Vale' }], budget: null, revenue: null, rating: { average: 7.1, count: 88 }, discoveredVia: [2],
+  overview: 'A made-up series.', companies: [{ tmdbId: 2, name: 'Walt Disney Pictures', country: 'US' }], networks: ['ABC'], networkIds: [2], createdBy: [{ person: 800003, name: 'Cy Vale' }], budget: null, revenue: null, rating: { average: 7.1, count: 88 }, discoveredVia: [2],
   cast: [], crew: [],
   seriesCast: [{ person: 800001, name: 'Ada Quill', roles: [{ character: 'Ida Marsh', episodes: 2 }], episodes: 2 }],
   seriesCrew: [{ person: 800002, name: 'Ben Rook', department: 'Directing', jobs: [{ job: 'Director', episodes: 1 }], episodes: 1 }],
@@ -45,7 +45,7 @@ const person = (id: number, name: string, credits: unknown[], details: unknown =
 export const CATALOG_FIXTURE: Record<string, unknown> = {
   'index.json': {
     version: 1, builtAt: RETRIEVED, registryChecked: '2026-11-10', retrieved: { from: RETRIEVED, to: RETRIEVED, maxAgeDays: 180 },
-    counts: { movies: 3, series: 1, seasons: 1, episodes: 2, people: 6, peopleWithDetails: 1 }, peopleRule: { cast: 10, jobs: ['Director'] }, discovery: [], failures: 0, stale: 0,
+    counts: { movies: 3, series: 1, seasons: 1, episodes: 2, people: 6, peopleWithDetails: 1, networks: 1, networksMatched: 1 }, peopleRule: { cast: 10, jobs: ['Director'] }, discovery: [], failures: 0, stale: 0,
     companies: [{ tmdbId: 2, titles: 4, movies: 3, series: 1 }],
   },
   'companies/2.json': { tmdbId: 2, entries: [entry(lantern), entry(harbour), entry(later), entry(tidewater)] },
@@ -54,6 +54,20 @@ export const CATALOG_FIXTURE: Record<string, unknown> = {
   'titles/movie-900003.json': later,
   'titles/tv-900101.json': tidewater,
   'seasons/900101-1.json': season,
+  // A network, as tools/screen-catalog/networks.mjs and the build write it; its owners and dates are made up.
+  'networks/index.json': [[2, 'ABC', 'US', 2]],
+  'networks/2.json': {
+    id: 2, name: 'ABC', country: 'US', headquarters: 'Fixture City', homepage: 'https://network.example', series: [
+      { ref: 'tv:900101', title: 'Tidewater Station (Fixture)', date: '2021-09-01', lastAirDate: '2021-09-08', status: 'Ended' },
+      { ref: 'tv:900301', title: 'Far Shore (Fixture)', date: '2030-01-01', lastAirDate: null, status: 'Planned' },
+    ],
+    wikidata: { qid: 'Q1', label: 'Example Network (Fixture)', matchedBy: 'website', classes: [], kind: null, inception: '1943-10-12', dissolved: null, parents: [{ qid: 'Q9', name: 'Parent Group (Fixture)' }], owners: [
+      { qid: 'Q2', name: 'First Owner (Fixture)', from: '1990-01-01', to: '2025-12-31' },
+      { qid: 'Q3', name: 'Second Owner (Fixture)', from: '2025-12-31', to: '2027-06-30' },
+      { qid: 'Q4', name: 'Later Owner (Fixture)', from: '2027-06-30', to: null },
+      { qid: 'Q5', name: 'Undated Owner (Fixture)', from: null, to: null },
+    ] },
+  },
   'titles/tv-900201.json': { ...tidewater, ref: 'tv:900201', title: 'Coastline (Fixture)', originalTitle: 'Coastline (Fixture)', status: 'Returning Series', date: '2026-04-01', lastAirDate: '2026-05-20', networks: ['Disney+'],
     seasons: [{ ref: 'tv:900201:s:1', number: 1, name: 'Season 1', date: '2026-04-01', episodes: 8, available: false }] },
   'titles/movie-900004.json': { ...harbour, ref: 'movie:900004', title: 'Paper Lanterns (Fixture)', originalTitle: 'Paper Lanterns (Fixture)', date: '2025-12-30', overview: 'A made-up film released just before the test save begins.', rating: null, budget: null },

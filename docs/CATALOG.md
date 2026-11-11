@@ -196,6 +196,38 @@ crew, then a person.
   paged 50 at a time.
 - **Long cast and crew lists** show their first 40 with a button to show all. Nothing is cut short.
 
+### Networks And Streaming Services (November 11, 2026)
+
+The owner asked for the networks and streaming services the catalog's series are on.
+
+- **Where they come from.** The importer fetches TMDB's details for every network a series in the catalog lists:
+  105 networks. TMDB gives a name, country, headquarters and homepage. It records no owners.
+- **Owners, from Wikidata (CC0).** `node tools/screen-catalog/networks.mjs`, run after the importer, matches each
+  network to a Wikidata entry, and records which of three ways matched it:
+  - the entry names the network's TMDB record (7);
+  - the entry's official website is TMDB's homepage (46);
+  - the entry is the only broadcaster or streaming service of that name in that country (29).
+
+  Matches were read by eye on November 11, 2026, and 23 networks aren't matched. Their pages say their owners aren't
+  recorded.
+- **Dates keep their precision.** Wikidata writes an owner from "2025" as January 1, 2025. The tool keeps a year as a
+  year and a month as a month, so a page says "since 2026", not a day nobody recorded.
+- **At the save's date** (`ownersAt` in `src/catalog/model.ts`):
+  - The page shows the owner at the save's date with when it began, never when it ends: that would be the story's
+    future.
+  - It shows earlier owners with their spans. Owners whose time hasn't begun aren't shown.
+  - Owners Wikidata gives without dates are listed apart, as owners at an unknown time.
+  - In a year in which ownership changed, at year precision, both owners are shown.
+- **The pages.** Companies links to Networks And Streaming Services, a list of every network with its number of series.
+  A network's page has About, Who Owns It, and the catalog's series on it, split into those that had premiered and those
+  announced. A series' Network row links to its networks.
+- **The engine.** A series on a network Wikidata records as a cable channel (cable, specialty, subscription or premium)
+  now counts as cable in the living world's engine, so it is decided months after its finale, as cable is. Until then
+  every series not on a named list counted as streaming: HBO's, Showtime's and USA Network's among them.
+  - Broadcast isn't taken from Wikidata. It gives NBC, CBS and FOX only "television network", which it also gives
+    premium cable channels, and it files MGM+ as a television station. The engine's own list of broadcast networks grew
+    instead.
+
 ### Series Credits
 
 Series credits are TMDB's totals across episodes, with the episode count. The page says plainly that this isn't a claim

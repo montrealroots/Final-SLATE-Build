@@ -7,7 +7,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
 import { COMPANIES, DISCOVERED, LEADERSHIP, REGISTRY_CHECKED, company } from '../src/catalog/registry';
-import { ageAt, fileFor, filmographyView, leadershipAt, lifeAt, madeUnderDisney, moneyOrUnknown, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
+import { ageAt, fileFor, filmographyView, leadershipAt, lifeAt, madeUnderDisney, moneyOrUnknown, ownersAt, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
 
 const CACHE = mkdtempSync(join(tmpdir(), 'slate-catalog-cache-'));
 process.env.SCREEN_CATALOG_CACHE = CACHE;
@@ -137,6 +137,38 @@ describe('records at the save\'s date', () => {
   });
 });
 
+describe('networks and their owners', () => {
+  it('takes a kind of outlet only from cable and streaming classes, and compares websites without scheme, www or trailing slash', async () => {
+    // Imported here, not at the top: it loads tmdb.mjs, which must see this file's cache directory first.
+    const { dated, kindOf, site } = await import('../tools/screen-catalog/networks.mjs');
+    expect([dated('+2025-01-01T00:00:00Z', 9), dated('+2025-08-01T00:00:00Z', 10), dated('+2025-08-07T00:00:00Z', 11), dated(null, 11)]).toEqual(['2025', '2025-08', '2025-08-07', null]);
+    expect(kindOf(['Q59152282', 'Q5009242'])).toBe('streaming');
+    expect(kindOf(['Q561068'])).toBe('cable');
+    expect(kindOf(['Q1762059'])).toBe('cable'); // premium television: HBO, Showtime
+    expect(kindOf(['Q1254874', 'Q1616075'])).toBeNull(); // "television network" and "station" don't say broadcast reliably
+    expect(site('https://www.NBC.com/')).toBe(site('http://nbc.com'));
+    expect(site('https://disneynow.com/all-shows/disney-xd')).not.toBe(site('https://disneynow.com'));
+  });
+
+  it('gives a network\'s owner on a date only from dated statements, and keeps undated owners apart', () => {
+    const owners = [
+      { qid: 'Q2', name: 'First Owner', from: '1990-01-01', to: '2010-06-30' },
+      { qid: 'Q3', name: 'Second Owner', from: '2010-06-30', to: null },
+      { qid: 'Q4', name: 'Undated Owner', from: null, to: null },
+    ];
+    expect(ownersAt(owners, '2000-01-01')).toMatchObject({ now: [{ name: 'First Owner' }], before: [], undated: [{ name: 'Undated Owner' }] });
+    expect(ownersAt(owners, '2010-06-30')).toMatchObject({ now: [{ name: 'Second Owner' }], before: [{ name: 'First Owner' }] });
+    expect(ownersAt(owners, '1980-01-01').now).toEqual([]); // before anyone's time, no owner is shown as known
+    // Dates recorded to the year or month: a year's start counts from the year, its end once the year is over.
+    const years = [{ qid: 'Q6', name: 'Old', from: '2025', to: '2026' }, { qid: 'Q7', name: 'New', from: '2026', to: null }];
+    expect(ownersAt(years, '2025-12-31').now.map((o) => o.name)).toEqual(['Old']);
+    expect(ownersAt(years, '2026-03-01').now.map((o) => o.name)).toEqual(['Old', 'New']); // the record doesn't say when in 2026
+    expect(ownersAt(years, '2027-01-01')).toMatchObject({ now: [{ name: 'New' }], before: [{ name: 'Old' }] });
+    expect(ownersAt([{ qid: 'Q8', name: 'Month', from: '2009-04', to: null }], '2009-03-31').now).toEqual([]);
+    expect(ownersAt([{ qid: 'Q8', name: 'Month', from: '2009-04', to: null }], '2009-04-01').now).toHaveLength(1);
+  });
+});
+
 describe('the importer', () => {
   it('waits out a rate limit, retries server errors with a limit, queues what still fails, and never retries a 404', async () => {
     const calls: string[] = [];
@@ -214,9 +246,9 @@ describe('the build', () => {
       external_ids: { imdb_id: 'tt0000001' }, release_dates: { results: [{ iso_3166_1: 'US', release_dates: [{ certification: 'PG' }] }] },
     };
     const series = {
-      id: 900001, name: 'Same Number Series', original_name: 'Same Number Series', first_air_date: '2020-01-01', status: 'Ended', seasons: [{ season_number: 1, name: 'Season 1', episode_count: 2, air_date: '2020-01-01' }],
+      id: 900001, name: 'Same Number Series', original_name: 'Same Number Series', first_air_date: '2020-01-01', status: 'Returning Series', seasons: [{ season_number: 1, name: 'Season 1', episode_count: 2, air_date: '2020-01-01' }],
       aggregate_credits: { cast: [{ id: 800001, name: 'Ada Quill', roles: [{ character: 'Ida', episode_count: 1 }], total_episode_count: 1 }], crew: [] }, credits: { cast: [], crew: [] },
-      networks: [{ name: 'ABC' }], created_by: [{ id: 800003, name: 'Cy Vale' }], production_companies: [{ id: 1556, name: '20th Century Fox Television' }], external_ids: {}, content_ratings: { results: [] }, vote_count: 3, vote_average: 7.5,
+      networks: [{ id: 2, name: 'ABC' }], created_by: [{ id: 800003, name: 'Cy Vale' }], production_companies: [{ id: 1556, name: '20th Century Fox Television' }], external_ids: {}, content_ratings: { results: [] }, vote_count: 3, vote_average: 7.5,
     };
     const season = { season_number: 1, name: 'Season 1', air_date: '2020-01-01', credits: { cast: [] }, episodes: [
       { episode_number: 1, name: 'Pilot', air_date: '2020-01-01', vote_count: 0, crew: [{ id: 800002, name: 'Ben Rook', department: 'Directing', job: 'Director' }], guest_stars: [{ id: 800004, name: 'Dee Guest', character: 'Visitor', order: 0 }] },
@@ -235,6 +267,10 @@ describe('the build', () => {
       titles: [{ key: 'movie:900001', companies: [25, 2] }, { key: 'tv:900001', companies: [1556] }], seasons: ['tv/900001/season/1?append_to_response=credits'], people: [800001, 800002],
       peopleRule: { cast: 10, jobs: ['Director'] }, queries: [], failures: [], stats: {},
     }));
+    // What tools/screen-catalog/networks.mjs writes, for a made-up network record: its owners and kind from Wikidata.
+    writeFileSync(join(CACHE, 'networks.json'), JSON.stringify({ networks: [{ id: 2, name: 'ABC', country: 'US', headquarters: null, homepage: 'https://abc.example', wikidata: {
+      qid: 'Q1', label: 'Example Network', matchedBy: 'website', classes: ['Q5009242'], kind: 'cable', inception: '1990-01-01', dissolved: null,
+      owners: [{ qid: 'Q2', name: 'First Owner', from: '1990-01-01', to: '2010-06-30' }, { qid: 'Q3', name: 'Second Owner', from: '2010-06-30', to: null }], parents: [] } }] }));
     execFileSync(process.execPath, ['--no-warnings', 'tools/screen-catalog/build.mjs', '--out', OUT], { env: { ...process.env, SCREEN_CATALOG_CACHE: CACHE } });
   });
 
@@ -247,6 +283,15 @@ describe('the build', () => {
     // The world file holds dated events from 2025-10-01 on; these made-up titles are all older, so it has none.
     expect(read('world.json')).toMatchObject({ version: 1, from: '2025-10-01', events: [] });
     expect(read('world.json').horizon).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+  });
+
+  it('writes a page for each network with its owners and series, and gives the engine the kind of outlet a series is on', () => {
+    expect(read('titles/tv-900001.json')).toMatchObject({ networks: ['ABC'], networkIds: [2] });
+    expect(read('networks/2.json')).toMatchObject({ id: 2, name: 'ABC', homepage: 'https://abc.example', wikidata: { qid: 'Q1', kind: 'cable', owners: [{ name: 'First Owner' }, { name: 'Second Owner' }] },
+      series: [{ ref: 'tv:900001', title: 'Same Number Series', date: '2020-01-01', status: 'Returning Series' }] });
+    expect(read('networks/index.json')).toEqual([[2, 'ABC', 'US', 1]]);
+    expect(read('world.json').series[0]).toMatchObject({ r: 'tv:900001', net: ['ABC'], nk: ['cable'] });
+    expect(read('index.json').counts).toMatchObject({ networks: 1, networksMatched: 1 });
   });
 
   it('writes figures TMDB has as 0 or without votes as unknown', () => {

@@ -42,6 +42,8 @@ export interface TitleRecord {
   tagline: string | null;
   companies: { tmdbId: number; name: string; country: string | null }[];
   networks?: string[];
+  /** The networks' TMDB ids, in the same order as `networks` (from November 11, 2026; older builds lack them). */
+  networkIds?: number[];
   createdBy?: { person: number; name: string }[];
   externalIds: { imdb: string | null; wikidata: string | null };
   collection: { id: number; name: string } | null;
@@ -57,6 +59,41 @@ export interface TitleRecord {
   seriesCrew?: { person: number; name: string; department: string; jobs: { job: string; episodes: number }[]; episodes: number }[];
   seasons?: { ref: string; number: number; name: string; date: string | null; episodes: number; available: boolean }[];
 }
+/** An owner of a network as Wikidata records it, with the dates its statement gives, if any. */
+export interface NetworkOwner { qid: string; name: string; from: string | null; to: string | null }
+/** A network or streaming service (tools/screen-catalog/networks.mjs): TMDB's details, Wikidata's owners and dates. */
+export interface NetworkRecord {
+  id: number;
+  name: string;
+  country: string | null;
+  headquarters: string | null;
+  homepage: string | null;
+  wikidata: {
+    qid: string; label: string; matchedBy: 'tmdb' | 'website' | 'name'; classes: string[]; kind: 'cable' | 'streaming' | null;
+    inception: string | null; dissolved: string | null; owners: NetworkOwner[]; parents: { qid: string; name: string }[];
+  } | null;
+  series: { ref: string; title: string; date: string | null; lastAirDate: string | null; status: string | null }[];
+}
+
+/**
+ * Who owned a network on a date, as Wikidata records it. An owner whose statement has dates owned it from its start until
+ * its end; one with no dates is only known to be an owner when the record was read, so it is listed apart, never as the
+ * owner on a date it can't be placed at. Owners whose time began after the date aren't shown as known.
+ */
+export function ownersAt(owners: NetworkOwner[], today: string): { now: NetworkOwner[]; before: NetworkOwner[]; undated: NetworkOwner[] } {
+  const dated = owners.filter((o) => o.from || o.to);
+  // Dates come as recorded: a day, a month (2025-08) or a year (2025). A start counts once its day, month or year has
+  // begun, which plain comparison already gives ("2026" sorts before "2026-03-01"); an end, once its day has come or its
+  // month or year is over, which it doesn't. Within a year of change both owners are shown.
+  const begun = (from: string | null) => !from || from <= today;
+  const over = (to: string | null) => !!to && (to.length === 10 ? to <= today : today.slice(0, to.length) > to);
+  return {
+    now: dated.filter((o) => begun(o.from) && !over(o.to)),
+    before: dated.filter((o) => over(o.to)),
+    undated: owners.filter((o) => !o.from && !o.to),
+  };
+}
+
 export interface EpisodeRecord {
   number: number;
   name: string;

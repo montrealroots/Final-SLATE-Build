@@ -2,8 +2,8 @@
 // rerun takes fresh responses from the cache and asks only for what is missing or failed.
 //   NODE_USE_ENV_PROXY=1 node tools/screen-catalog/import.mjs
 // Steps: discover each registry company's movies and series (every page; queries over TMDB's 500-page cap are split by
-// year), fetch each title with its credits, each season with its episodes' crew and guest stars, and the details of the
-// people credited in the catalog. Nothing is fetched recursively beyond that.
+// year), fetch each title with its credits, each season with its episodes' crew and guest stars, the networks the series
+// are on, and the details of the people credited in the catalog. Nothing is fetched recursively beyond that.
 import { writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { DISCOVERED } from '../../src/catalog/registry.ts';
@@ -82,6 +82,12 @@ async function main() {
   const seasonBodies = await pool(seasons, 12, (p) => get(p));
   log(`Fetched ${seasonBodies.filter(Boolean).length} of ${seasons.length} seasons.`);
 
+  // The networks and streaming services the series are on (November 11, 2026, the owner's request): each one's details.
+  // Who owns them isn't in TMDB; tools/screen-catalog/networks.mjs takes that from Wikidata.
+  const networks = [...new Set(details.flatMap((d) => (d?.networks ?? []).map((n) => n.id)))].sort((a, b) => a - b);
+  const networkBodies = await pool(networks, 12, (id) => get(`network/${id}`));
+  log(`Fetched ${networkBodies.filter(Boolean).length} of ${networks.length} networks.`);
+
   const people = new Set();
   for (const d of details) {
     if (!d) continue;
@@ -104,7 +110,7 @@ async function main() {
     finishedAt: new Date().toISOString(),
     queries: queries.map(({ ids: x, ...q }) => ({ ...q, found: x.length })),
     titles: keys.map((k) => ({ key: k, companies: [...titles.get(k)] })),
-    seasons, people: ids,
+    seasons, networks, people: ids,
     peopleRule: { cast: PEOPLE_CAST, jobs: [...PEOPLE_JOBS], all: true },
     failures: failures(), stats,
   };

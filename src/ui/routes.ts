@@ -30,7 +30,7 @@ export const DESTINATIONS: readonly DestinationGroup[] = [
     ],
   },
   { label: 'Your Work', items: [{ view: 'projects', label: 'Projects', detail: 'Your scripts and productions, from first draft to release', owns: ['project', 'new-project'] }] },
-  { label: 'Industry', items: [{ view: 'companies', label: 'Companies', detail: "Disney's studios, their leadership, films and series", owns: ['company', 'title', 'season', 'episode', 'person', 'executive'] }] },
+  { label: 'Industry', items: [{ view: 'companies', label: 'Companies', detail: "Disney's studios, their leadership, films and series", owns: ['company', 'title', 'season', 'episode', 'person', 'executive', 'networks', 'network'] }] },
   {
     label: 'Your Game',
     items: [

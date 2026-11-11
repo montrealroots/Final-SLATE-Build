@@ -125,9 +125,14 @@ numbers, the networks and streaming services shows are attached to, and cinemas 
    into `.cinemas/`, which git ignores. They need pages (by country and place, open or closed on the save's date) and a
    part in theatrical releases, labelled as cinemas recorded in Wikidata. The United States has 31,376 and Britain
    6,119; many countries are thin.
-3. **Networks and streaming services:** to import TMDB's network details for every network in the catalog now that the
-   people import has finished (190,751 people, 59,418 with a birth date, 18,460 with a death date), with network pages,
-   ownership, series linked to them, and the industry engine's outlet class taken from the network.
+3. **Networks and streaming services: done.** The people import finished first: 190,751 people, 59,418 with a birth
+   date and 18,460 with a death date.
+   - **Data:** TMDB's details for all 105 networks, and owners from Wikidata (`tools/screen-catalog/networks.mjs`),
+     matched for 82 with dates at their recorded precision.
+   - **Pages:** a networks list, a page for each network, and series linked to them (`docs/CATALOG.md`, Networks And
+     Streaming Services).
+   - **Engine:** a series on a cable channel now counts as cable.
+   - **Run after the importer:** `node tools/screen-catalog/networks.mjs`, then `npm run screen-catalog:build`.
 4. **Nielsen: the owner's decision.** There is no public API. Weekly top-ten pages are public and robots.txt allows them,
    but the terms of use render only by script and couldn't be read. No viewing figures are invented as if real.
 

@@ -123,6 +123,39 @@ test('company to series, season, episode and its credits; an announced film says
   expect(await noSidewaysScroll(page)).toBe(true);
 });
 
+test('a series\' network: its owners at the save\'s date, earlier ones, undated ones, and its series aired and announced', async ({ page }, info) => {
+  await serveCatalog(page);
+  await nav(page, 'Companies');
+  await card(page, 'Where The Series Aired').getByRole('button', { name: 'Networks And Streaming Services' }).click();
+  await expect(page.getByRole('heading', { name: 'Networks And Streaming Services', level: 1 })).toBeVisible();
+  await expect(page.locator('li', { hasText: 'ABC' })).toContainText('2 series');
+  await page.getByRole('button', { name: 'ABC', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'ABC', level: 1 })).toBeVisible();
+  await expect(card(page, 'About')).toContainText('United States');
+  await expect(card(page, 'About')).toContainText('October 12, 1943');
+  // The save is dated January 5, 2026: the second owner owns it; the first is earlier; a later owner isn't known yet.
+  const owners = card(page, 'Who Owns It');
+  await expect(owners.locator('li').first()).toContainText('Second Owner (Fixture)');
+  await expect(owners.locator('li').first()).toContainText('since December 31, 2025');
+  await expect(owners).not.toContainText('2027'); // when the second owner's time ends is the story's future
+  await expect(owners.getByRole('heading', { name: 'Earlier Owners' })).toBeVisible();
+  await expect(owners).toContainText('First Owner (Fixture)');
+  await expect(owners).not.toContainText('Later Owner (Fixture)');
+  await expect(owners).toContainText('Wikidata also lists Undated Owner (Fixture) as an owner, with no dates, so when isn\'t known.');
+  await expect(owners).toContainText("Wikidata's entry has the same website as TMDB gives");
+  const series = card(page, 'Series In The Catalog');
+  await expect(series.locator('li').first()).toContainText('Tidewater Station (Fixture)');
+  await expect(series.getByRole('heading', { name: 'Announced' })).toBeVisible();
+  await expect(series).toContainText('Far Shore (Fixture)');
+  await shot(page, info.project.name, '06-network');
+  await series.getByRole('button', { name: 'Tidewater Station (Fixture)' }).click();
+  await expect(page.getByRole('heading', { name: 'Tidewater Station (Fixture)', level: 1 })).toBeVisible();
+  // And back to the network from the series' About.
+  await card(page, 'About').getByRole('button', { name: 'ABC' }).click();
+  await expect(page.getByRole('heading', { name: 'ABC', level: 1 })).toBeVisible();
+  expect(await noSidewaysScroll(page)).toBe(true);
+});
+
 test('leadership is shown at the save\'s date, kept apart from screen credits, with sources', async ({ page }) => {
   await serveCatalog(page);
   await nav(page, 'Companies');

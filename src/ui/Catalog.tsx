@@ -6,8 +6,8 @@ import { currentZone, dateKey, formatDateKey } from '../engine';
 import type { Route } from '../engine/types';
 import { COMPANIES, LEADERSHIP_GAPS, REGISTRY_CHECKED, company as registryCompany, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
 import {
-  ageAt, executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeUnderDisney, moneyOrUnknown, parseRef, registryFor, titleStanding,
-  type CatalogIndex, type CompanyFilmography, type PersonCredit, type PersonRecord, type SeasonRecord, type SortKey, type TitleRecord,
+  ageAt, executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeUnderDisney, moneyOrUnknown, ownersAt, parseRef, registryFor, titleStanding,
+  type CatalogIndex, type CompanyFilmography, type NetworkRecord, type PersonCredit, type PersonRecord, type SeasonRecord, type SortKey, type TitleRecord,
 } from '../catalog/model';
 import { retryCatalog, useCatalogFile, type Loaded } from '../catalog/load';
 import { describe as describeWorld, inStory, isNews, simRoute, useWorld, worldEventsBetween } from '../catalog/world';
@@ -22,7 +22,7 @@ import { store, useGame } from './store';
 const PAGE = 50;
 /** A count in words, with thousands separated: catalog numbers run into the thousands. */
 const plural = (n: number, word: string, many = `${word}s`) => `${n.toLocaleString('en-US')} ${n === 1 ? word : many}`;
-const day = (d: string) => (d.length === 4 ? d : formatDateKey(d.slice(0, 10)));
+const day = (d: string) => (d.length === 4 ? d : d.length === 7 ? new Date(`${d}-15T12:00:00Z`).toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' }) : formatDateKey(d.slice(0, 10)));
 const yearOf = (d: string | null) => (d ? d.slice(0, 4) : 'Undated');
 
 function useToday(): string {
@@ -36,6 +36,7 @@ function Link({ to, children, label }: { to: Route; children: ReactNode; label?:
 const titleRoute = (ref: string): Route => ({ view: 'title', ref } as Route);
 const personRoute = (id: number): Route => ({ view: 'person', ref: `person:${id}` } as Route);
 const seasonRoute = (series: string, n: number): Route => ({ view: 'season', ref: `${series}:s:${n}` } as Route);
+const networkRoute = (id: number): Route => ({ view: 'network', ref: String(id) } as Route);
 /** A date with its weekday: "Wednesday, September 20, 2028". */
 const long = (key: string) => `${new Date(`${key}T12:00:00Z`).toLocaleDateString('en-US', { weekday: 'long', timeZone: 'UTC' })}, ${formatDateKey(key)}`;
 
@@ -76,6 +77,11 @@ export function CompaniesPage() {
       <PageHead eyebrow="Industry" title="Companies" lede="The Walt Disney Company's studios and labels, their leadership, and the films and series credited to them, from TMDB." />
       <CatalogStatus index={index} />
       <CatalogSearch ready={index.status === 'ready'} />
+      {index.status === 'ready' && index.data.counts.networks ? (
+        <Panel title="Where The Series Aired">
+          <p><Link to={{ view: 'networks' } as Route}>Networks And Streaming Services</Link>: the {plural(index.data.counts.networks, 'network and service', 'networks and services')} the catalog's series aired or streamed on, and who owned them.</p>
+        </Panel>
+      ) : null}
       {(['corporate', 'film', 'television', 'network'] as const).map((k) => (
         <Panel key={k} title={KIND_LABEL[k]}>
           <ul className="list">
@@ -288,7 +294,7 @@ function TitleView({ t, today }: { t: TitleRecord; today: string }) {
           <dt>{t.type === 'tv' ? 'Episode Length' : 'Runtime'}</dt><dd>{t.type === 'tv' ? (t.episodeRuntimes?.length ? t.episodeRuntimes.map((m) => `${m} minutes`).join(', ') : 'Not recorded') : t.runtime ? `${t.runtime} minutes` : 'Not recorded'}</dd>
           <dt>Languages</dt><dd>{t.languages.join(', ') || 'Not recorded'}</dd>
           <dt>Countries</dt><dd>{t.countries.join(', ') || 'Not recorded'}</dd>
-          {t.type === 'tv' && <><dt>Network</dt><dd>{t.networks?.join(', ') || 'Not recorded'} <span className="dim small">(where it aired, which isn't who made it)</span></dd></>}
+          {t.type === 'tv' && <><dt>Network</dt><dd>{t.networks?.length ? t.networks.map((n, i) => <span key={`${n}-${i}`}>{i ? ', ' : ''}{t.networkIds?.[i] !== undefined ? <Link to={networkRoute(t.networkIds[i])}>{n}</Link> : n}</span>) : 'Not recorded'} <span className="dim small">(where it aired, which isn't who made it)</span></dd></>}
           {t.type === 'tv' && t.lastAirDate && happenedBy(t.lastAirDate, today) && <><dt>Last Aired</dt><dd>{day(t.lastAirDate)}</dd></>}
           {t.collection && <><dt>Collection</dt><dd>{t.collection.name}</dd></>}
           {t.classifications.length > 0 && <><dt>Ratings Boards</dt><dd>{t.classifications.slice(0, 8).map((c) => `${c.country} ${c.rating}`).join(', ')}{t.classifications.length > 8 ? `, and ${t.classifications.length - 8} more` : ''}</dd></>}
@@ -754,6 +760,89 @@ export function IndustryCard() {
   );
 }
 
+// ---------- networks and streaming services ----------
+
+const regionName = (code: string | null) => { try { return code ? new Intl.DisplayNames(['en'], { type: 'region' }).of(code) ?? code : null; } catch { return code; } };
+const MATCHED: Record<'tmdb' | 'website' | 'name', string> = {
+  tmdb: "Wikidata's entry names this network's TMDB record",
+  website: "Wikidata's entry has the same website as TMDB gives",
+  name: "Wikidata's entry is the only broadcaster or streaming service of this name in this country",
+};
+
+/** Every network and streaming service the catalog's series aired or streamed on. */
+export function NetworksPage() {
+  const list = useCatalogFile<[number, string, string | null, number][]>('networks/index.json');
+  return (
+    <>
+      <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: 'Networks And Streaming Services' }]} />
+      <PageHead eyebrow="Industry" title="Networks And Streaming Services" lede="Where the catalog's series aired or streamed, from TMDB, and who owned each, from Wikidata." />
+      <Status loaded={list} what="the networks">{(rows) => (
+        <Panel title={plural(rows.length, 'network and service', 'networks and services')}>
+          <ul className="list">
+            {rows.map(([id, name, country, n]) => (
+              <li key={id} className="list-item">
+                <span className="grow"><Link to={networkRoute(id)}>{name}</Link>{country ? <span className="dim small"> ({regionName(country)})</span> : null}</span>
+                <span className="dim small">{plural(n, 'series', 'series')}</span>
+              </li>
+            ))}
+          </ul>
+        </Panel>
+      )}</Status>
+    </>
+  );
+}
+
+/** A network or streaming service: its details, who owned it at the save's date, and the catalog's series on it. */
+export function NetworkPage({ id }: { id: string }) {
+  const today = useToday();
+  const n = useCatalogFile<NetworkRecord>(/^\d+$/.test(id) ? `networks/${id}.json` : null);
+  return <Status loaded={n} what="this network">{(d) => <NetworkView n={d} today={today} />}</Status>;
+}
+
+function NetworkView({ n, today }: { n: NetworkRecord; today: string }) {
+  const w = n.wikidata;
+  const o = w ? ownersAt(w.owners, today) : null;
+  const launched = w?.inception && happenedBy(w.inception, today) ? w.inception : null;
+  const closed = w?.dissolved && happenedBy(w.dissolved, today) ? w.dissolved : null;
+  const aired = n.series.filter((x) => titleStanding(x, today) === 'released');
+  const coming = n.series.filter((x) => titleStanding(x, today) !== 'released');
+  // A current owner's end is in the story's future, so only its start is shown; an earlier owner's span is history.
+  const span = (x: { from: string | null; to: string | null }) => [x.from && `from ${day(x.from)}`, x.to && `until ${day(x.to)}`].filter(Boolean).join(' ');
+  return (
+    <>
+      <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: 'Networks And Streaming Services', route: { view: 'networks' } as Route }, { label: n.name }]} />
+      <PageHead eyebrow="Network Or Streaming Service" title={n.name} lede={closed ? `Closed ${day(closed)}.` : launched ? `Since ${day(launched)}.` : undefined} />
+      <Panel title="About">
+        <dl className="kv">
+          <dt>Country</dt><dd>{regionName(n.country) ?? 'Not recorded'}</dd>
+          {n.headquarters && <><dt>Headquarters</dt><dd>{n.headquarters}</dd></>}
+          {n.homepage && <><dt>Website</dt><dd>{n.homepage}</dd></>}
+          <dt>Began</dt><dd>{launched ? day(launched) : w?.inception ? 'Not yet, at this point in your story' : 'Not recorded'}</dd>
+          {closed && <><dt>Closed</dt><dd>{day(closed)}</dd></>}
+        </dl>
+      </Panel>
+      <Panel title="Who Owns It" subtitle="As Wikidata records it, at this point in your story.">
+        {!w || !o ? <p className="muted">Not recorded: no Wikidata entry could be matched to this network with confidence, so no owner is given.</p> : (
+          <>
+            {o.now.length ? <ul className="list">{o.now.map((x) => <li key={`${x.qid}-${x.from}`} className="list-item"><span className="grow">{x.name}</span><span className="dim small">{x.from ? `since ${day(x.from)}` : 'since a date not recorded'}</span></li>)}</ul>
+              : <p className="muted">No owner is recorded with dates that cover this point in your story.</p>}
+            {o.before.length > 0 && <><h3>Earlier Owners</h3><ul className="list">{o.before.map((x) => <li key={`${x.qid}-${x.from}`} className="list-item"><span className="grow">{x.name}</span><span className="dim small">{span(x)}</span></li>)}</ul></>}
+            {o.undated.length > 0 && <p className="muted">Wikidata also lists {o.undated.map((x) => x.name).join(', ')} as {o.undated.length === 1 ? 'an owner' : 'owners'}, with no dates, so when isn't known.</p>}
+            {w.parents.length > 0 && <p className="muted">Part of {w.parents.map((x) => x.name).join(', ')}, as Wikidata recorded it in November 2026.</p>}
+            <p className="dim small">Matched to Wikidata's {w.label}: {MATCHED[w.matchedBy]}.</p>
+          </>
+        )}
+      </Panel>
+      <Panel title="Series In The Catalog" subtitle="The catalog's series TMDB lists on this network. It doesn't hold everything the network ever aired.">
+        {aired.length ? <ul className="list">{aired.map((x) => <li key={x.ref} className="list-item"><span className="grow"><Link to={titleRoute(x.ref)}>{x.title}</Link></span><span className="dim small">{yearOf(x.date)}{x.lastAirDate && happenedBy(x.lastAirDate, today) && x.lastAirDate.slice(0, 4) !== yearOf(x.date) ? ` to ${x.lastAirDate.slice(0, 4)}` : ''}</span></li>)}</ul>
+          : <p className="muted">None had premiered by this point in your story.</p>}
+        {coming.length > 0 && <><h3>Announced</h3><ul className="list">{coming.map((x) => <li key={x.ref} className="list-item"><span className="grow"><Link to={titleRoute(x.ref)}>{x.title}</Link></span><span className="dim small">{x.date ? day(x.date) : 'Undated'}</span></li>)}</ul></>}
+      </Panel>
+      <p className="dim small">Details from TMDB; owners and dates from Wikidata, whose data is in the public domain.</p>
+    </>
+  );
+}
+
 /** The catalog views, by route. */
 export function CatalogView({ route }: { route: Route & { ref?: string } }) {
   const ref = route.ref ?? '';
@@ -764,5 +853,7 @@ export function CatalogView({ route }: { route: Route & { ref?: string } }) {
   if (route.view === 'episode') return <EpisodePage key={ref} refId={ref} />;
   if (route.view === 'person') return <PersonPage key={ref} refId={ref} />;
   if (route.view === 'executive') return <ExecutivePage id={ref} />;
+  if (route.view === 'networks') return <NetworksPage />;
+  if (route.view === 'network') return <NetworkPage key={ref} id={ref} />;
   return null;
 }

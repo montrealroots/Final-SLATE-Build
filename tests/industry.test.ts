@@ -149,6 +149,16 @@ describe('the living world\'s engine', () => {
     expect(outletOf(WORLD.series[2])).toBe('streaming');
     expect(outletOf(WORLD.series[5])).toBe('daily');
     expect(outletOf(WORLD.series[6])).toBe('kids');
+    // A network Wikidata records as a cable channel (HBO, Showtime, USA Network) makes a series cable, which until
+    // November 11, 2026 counted as streaming; one it records as streaming, or doesn't record, stays streaming.
+    const other = { ...WORLD.series[2], net: ['HBO'] };
+    expect(outletOf({ ...other, nk: ['cable'] })).toBe('cable');
+    expect(outletOf({ ...other, nk: ['streaming'] })).toBe('streaming');
+    expect(outletOf({ ...other, nk: ['cable', 'streaming'] })).toBe('cable');
+    expect(outletOf(other)).toBe('streaming');
+    expect(outletOf({ ...other, net: ['Univision'] })).toBe('broadcast');
+    // Cable timing: decided months after the finale, not at the May upfronts.
+    expect(renewalOdds({ ...other, nk: ['cable'] }, 1)).not.toBe(renewalOdds(other, 1));
     expect(renewalOdds(p, 1)).toBeLessThan(renewalOdds(p, 3));
     expect(renewalOdds({ ...p, genres: ['Animation', 'Comedy'] }, 30)).toBe(0.93);
     expect(Object.keys(p)).not.toContain('rating');

@@ -23,7 +23,7 @@ const known = (n) => (typeof n === 'number' && n > 0 ? n : null);
 const date = (d) => (d ? d : null);
 
 rmSync(OUT, { recursive: true, force: true });
-for (const d of ['companies', 'titles', 'seasons', 'people', 'search']) mkdirSync(join(OUT, d), { recursive: true });
+for (const d of ['companies', 'titles', 'seasons', 'people', 'search', 'networks']) mkdirSync(join(OUT, d), { recursive: true });
 const write = (p, v) => writeFileSync(join(OUT, p), JSON.stringify(v));
 
 const people = new Map(); // id -> { id, name, credits: [] }
@@ -37,6 +37,10 @@ const world = [];
 const profiles = [];
 const byTmdb = new Map(DISCOVERED.map((c) => [c.tmdb.id, c]));
 const studiosOf = (rec) => rec.companies.map((c) => byTmdb.get(c.tmdbId)).filter(Boolean).map((c) => c.id);
+// The networks and streaming services (tools/screen-catalog/networks.mjs): TMDB's details, Wikidata's owners and kind.
+const networkFile = join(CACHE, 'networks.json');
+const networkInfo = new Map(existsSync(networkFile) ? JSON.parse(readFileSync(networkFile, 'utf8')).networks.map((n) => [n.id, n]) : []);
+const networkSeries = new Map(); // network id -> the catalog's series on it
 const counts = { movies: 0, series: 0, seasons: 0, episodes: 0, castCredits: 0, crewCredits: 0, episodeCredits: 0, missingTitles: 0, missingSeasons: 0 };
 
 for (const t of manifest.titles) {
@@ -58,6 +62,7 @@ for (const t of manifest.titles) {
     overview: d.overview || null, tagline: d.tagline || null,
     companies: (d.production_companies ?? []).map((c) => ({ tmdbId: c.id, name: c.name, country: c.origin_country || null })),
     networks: type === 'tv' ? (d.networks ?? []).map((n) => n.name) : undefined,
+    networkIds: type === 'tv' ? (d.networks ?? []).map((n) => n.id) : undefined,
     createdBy: type === 'tv' ? (d.created_by ?? []).map((c) => ({ person: c.id, name: c.name })) : undefined,
     externalIds: { imdb: d.external_ids?.imdb_id || null, wikidata: d.external_ids?.wikidata_id || null },
     collection: d.belongs_to_collection ? { id: d.belongs_to_collection.id, name: d.belongs_to_collection.name } : null,
@@ -124,7 +129,9 @@ for (const t of manifest.titles) {
   if (type === 'tv' && ['Returning Series', 'In Production', 'Planned', 'Pilot'].includes(rec.status)) {
     const seasons = seasonFacts.filter((x) => x.n > 0 && x.d0);
     const lastCast = seasons.at(-1)?.cast ?? [];
-    profiles.push({ r: ref, t: title, status: rec.status, type: d.type ?? null, net: rec.networks, ci: studiosOf(rec), genres: rec.genres,
+    // The kinds of outlet the series is on, where Wikidata records one (cable or streaming), for the engine's timing.
+    const nk = [...new Set(rec.networkIds.map((i) => networkInfo.get(i)?.wikidata?.kind).filter(Boolean))];
+    profiles.push({ r: ref, t: title, status: rec.status, type: d.type ?? null, net: rec.networks, nk: nk.length ? nk : undefined, ci: studiosOf(rec), genres: rec.genres,
       daily: rec.genres.some((g) => g === 'Talk' || g === 'Soap' || g === 'News') || (d.seasons ?? []).some((x) => x.episode_count >= 100) ? 1 : 0,
       // The last three seasons are what the engine reads (its record of release pattern and run); `aired` counts them all.
       aired: seasons.length, seasons: seasons.slice(-3).map(({ cast, ...x }) => x),
@@ -138,6 +145,7 @@ for (const t of manifest.titles) {
   for (const c of castList) { person(c.person, c.name).credits.push({ ref, title, date: when, kind: type === 'tv' ? 'series-cast' : 'cast', role: type === 'tv' ? c.roles.map((x) => x.character).filter(Boolean).join(', ') || null : c.character, episodes: c.episodes }); counts.castCredits++; }
   for (const c of type === 'tv' ? rec.seriesCrew : rec.crew) { person(c.person, c.name).credits.push({ ref, title, date: when, kind: type === 'tv' ? 'series-crew' : 'crew', role: type === 'tv' ? c.jobs.map((x) => x.job).join(', ') : c.job, department: c.department, episodes: c.episodes }); counts.crewCredits++; }
   for (const c of rec.createdBy ?? []) person(c.person, c.name).credits.push({ ref, title, date: when, kind: 'creator', role: 'Creator' });
+  for (const n of d.networks ?? []) { if (!networkSeries.has(n.id)) networkSeries.set(n.id, { name: n.name, series: [] }); networkSeries.get(n.id).series.push({ ref, title, date: when, lastAirDate: rec.lastAirDate ?? null, status: rec.status }); }
   write(`titles/${type}-${d.id}.json`, rec);
   search.push([ref, title, when ? when.slice(0, 4) : null]);
   for (const c of rec.companies) if (companies.has(c.tmdbId)) companies.get(c.tmdbId).push({ ref, title, date: when, credited: c.name, genres: rec.genres, status: rec.status });
@@ -165,6 +173,14 @@ for (const p of people.values()) { const k = /^[a-z]/i.test(p.name) ? p.name[0].
 for (const [k, v] of Object.entries(letters)) write(`search/people-${k}.json`, v.sort((a, b) => b[2] - a[2]));
 write('search/titles.json', search);
 for (const [id, entries] of companies) write(`companies/${id}.json`, { tmdbId: id, entries });
+// A page for each network: its details, who owns it as Wikidata records, and the catalog's series on it.
+const networkIndex = [];
+for (const [id, { name, series }] of networkSeries) {
+  const n = networkInfo.get(id);
+  write(`networks/${id}.json`, { id, name: n?.name ?? name, country: n?.country ?? null, headquarters: n?.headquarters ?? null, homepage: n?.homepage ?? null, wikidata: n?.wikidata ?? null, series: series.sort((a, b) => (a.date ?? '').localeCompare(b.date ?? '')) });
+  networkIndex.push([id, n?.name ?? name, n?.country ?? null, series.length]);
+}
+write('networks/index.json', networkIndex.sort((a, b) => b[3] - a[3] || a[1].localeCompare(b[1])));
 
 times.sort();
 const horizon = (times.at(-1) ?? new Date().toISOString()).slice(0, 10);
@@ -183,7 +199,7 @@ const discovery = manifest.queries.map((q) => ({ company: q.companyId, type: q.t
 write('index.json', {
   version: 1, builtAt: new Date().toISOString(), registryChecked: REGISTRY_CHECKED,
   retrieved: { from: times[0] ?? null, to: times.at(-1) ?? null, maxAgeDays: MAX_AGE_DAYS },
-  counts: { ...counts, people: people.size, peopleWithDetails: withDetails },
+  counts: { ...counts, people: people.size, peopleWithDetails: withDetails, networks: networkSeries.size, networksMatched: [...networkSeries.keys()].filter((i) => networkInfo.get(i)?.wikidata).length },
   peopleRule: manifest.peopleRule, discovery, failures: manifest.failures.length, stale: stale.length,
   companies: [...companies].map(([id, e]) => ({ tmdbId: id, titles: e.length, movies: e.filter((x) => x.ref.startsWith('movie')).length, series: e.filter((x) => x.ref.startsWith('tv')).length })),
 });

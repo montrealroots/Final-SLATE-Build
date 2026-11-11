@@ -7,7 +7,7 @@ import { Startup } from './Startup';
 import { store, useStore } from './store';
 import { Home } from './World';
 
-const CATALOG_VIEWS = ['companies', 'company', 'title', 'season', 'episode', 'person', 'executive'];
+const CATALOG_VIEWS = ['companies', 'company', 'title', 'season', 'episode', 'person', 'executive', 'networks', 'network'];
 
 // Creation, project and event screens load on first use to keep startup small.
 const Creation = lazy(() => import('./Creation').then((m) => ({ default: m.Creation })));

@@ -8,7 +8,16 @@
 
 ## Commands And Results
 
-### Current: Child Rules Across The Map (November 11, 2026)
+### Current: Networks And Streaming Services (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npx vitest run tests/catalog.test.ts tests/industry.test.ts` | 0 | New tests cover:<br>- the build's network pages, `networkIds` and outlet kinds;<br>- Wikidata's kinds, website matching and date precision;<br>- owners at a date, including year and month precision;<br>- cable networks making a series cable. |
+| Mutations | 1 for each kept | Five were made one at a time:<br>- the engine ignoring network kinds;<br>- the build dropping them;<br>- dates without their precision;<br>- year-precision ends compared as text.<br>Each failed a test. The fifth, a start compared as text, survived because plain comparison is already right for a start, so the helper was simplified to it. |
+| `npx playwright test e2e/catalog.spec.ts`, desktop and phone | 0 | 14 passed, including the new journey: Companies, then the networks list, then a network's owners at the save's date (earlier, current, undated, and a later owner not shown), its series aired and announced, a series, and back. |
+| Real catalog, by eye | — | CBS, HBO and Hulu were captured at November 11, 2026. A current owner's end date showed in the fixture ("until June 30, 2027", the story's future) and was removed. Year-precision owners had read as January 1; they now read as years. |
+
+### Earlier: Child Rules Across The Map (November 11, 2026)
 
 Six more sets of child performer rules, a coverage ledger for every playable country, and startup room made for them.
 What was read is in `docs/child-rules/RESEARCH.md`, and the set each country uses is in `docs/child-rules/COVERAGE.md`.

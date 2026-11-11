@@ -21,6 +21,8 @@ export interface SeriesProfile {
   status: string;
   type: string | null;
   net: string[];
+  /** The kinds of outlet its networks are, where Wikidata records one (tools/screen-catalog/networks.mjs). */
+  nk?: ('cable' | 'streaming')[];
   ci: string[];
   genres: string[];
   daily: 0 | 1;
@@ -56,7 +58,9 @@ export function setIndustryWorld(w: IndustryWorld | null): void {
 export const seriesProfile = (r: string) => byRef.get(r);
 
 export type Outlet = 'daily' | 'kids' | 'broadcast' | 'cable' | 'streaming';
-const BROADCAST = new Set(['ABC', 'FOX', 'CBS', 'NBC', 'The CW', 'BBC One', 'PBS']);
+// Broadcast networks by name: Wikidata's classes don't tell them apart from cable (tools/screen-catalog/networks.mjs). The
+// list grew on November 11, 2026 to the catalog's other free-to-air networks.
+const BROADCAST = new Set(['ABC', 'FOX', 'CBS', 'NBC', 'The CW', 'BBC One', 'BBC Two', 'PBS', 'The WB', 'UPN', 'Univision', 'ITV1', 'ABC TV', 'Seven Network', 'Global TV', 'TF1', 'M6', 'TV Tokyo']);
 const CABLE = new Set(['FX', 'FXX', 'AMC', 'Syfy', 'TBS', 'Adult Swim', 'Nat Geo Wild', 'National Geographic', 'Freeform']);
 const KIDS = /Disney Junior|Disney Channel|Disney XD|DisneyNOW|PBS Kids|Universal Kids|Nick Jr|KiKa|StarWarsKids/;
 /** The kind of outlet, which sets when decisions come and how long a new season takes. */
@@ -65,6 +69,9 @@ export function outletOf(p: SeriesProfile): Outlet {
   if (p.genres.includes('Kids') || p.net.some((n) => KIDS.test(n))) return 'kids';
   if (p.net.some((n) => BROADCAST.has(n))) return 'broadcast';
   if (p.net.some((n) => CABLE.has(n))) return 'cable';
+  // Until November 11, 2026 every other series counted as streaming, HBO's, Showtime's and USA Network's among them.
+  // Now a network Wikidata records as a cable channel makes it cable.
+  if (p.nk?.includes('cable')) return 'cable';
   return 'streaming';
 }
 
