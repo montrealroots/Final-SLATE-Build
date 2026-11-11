@@ -2,7 +2,7 @@
 // what is known to be missing. Only counts and the registry's own names go into the repository, no TMDB records.
 //   node tools/screen-catalog/coverage.mjs
 import { readFileSync, writeFileSync } from 'node:fs';
-import { COMPANIES, DISCOVERED, LEADERSHIP, REGISTRY_CHECKED } from '../../src/catalog/registry.ts';
+import { COMPANIES, DISCOVERED, LEADERSHIP, REGISTRY_CHECKED, REGISTRY_CHECKED_NBCU } from '../../src/catalog/registry.ts';
 
 const ix = JSON.parse(readFileSync('.screen-catalog/index.json', 'utf8'));
 const n = (x) => (x ?? 0).toLocaleString('en-US');
@@ -25,14 +25,14 @@ are in \`docs/CATALOG.md\`. The catalog itself isn't in the repository.
 - **Source:** TMDB's API (api.themoviedb.org/3), through the cloud session's proxy.
 - **Retrieved:** ${ix.retrieved.from} to ${ix.retrieved.to}.
 - **Refreshing:** responses older than ${ix.retrieved.maxAgeDays} days are fetched again, under TMDB's terms.
-- **Registry:** companies and leadership researched and checked ${REGISTRY_CHECKED}.
+- **Registry:** companies and leadership researched and checked ${REGISTRY_CHECKED} (Disney's) and ${REGISTRY_CHECKED_NBCU} (NBCUniversal's).
 - **Failed requests left:** ${ix.failures}. **Stale responses left out:** ${ix.stale}.
 
 ## Counts
 
 | What | Count |
 | --- | --- |
-| Companies in the registry | ${COMPANIES.length} (${DISCOVERED.length} with titles gathered, ${COMPANIES.filter((x) => x.kind === 'network').length} networks and services, 1 parent) |
+| Companies in the registry | ${COMPANIES.length} (${DISCOVERED.length} with titles gathered, ${COMPANIES.filter((x) => x.kind === 'network').length} networks and services, ${COMPANIES.filter((x) => x.kind === 'corporate').length} parents) |
 | Leadership roles recorded | ${LEADERSHIP.length}, for ${new Set(LEADERSHIP.map((r) => r.personId)).size} people |
 | Films | ${n(c.movies)} |
 | Series | ${n(c.series)} |
@@ -71,9 +71,10 @@ ${gaps.length ? `Queries with failed pages or fewer titles found than reported: 
   - TMDB records not covered: the second Touchstone Television record (141822), the older 20th Television record (21659)
     and Fox Television Studios (6529). The reasons are in \`docs/CATALOG.md\`.
   - Adult titles and video releases: TMDB's discovery leaves these out by default, and the queries kept those defaults.
-  - Person details: gathered for ${n(c.peopleWithDetails)} people under the declared rule. The other
-    ${n(c.people - c.peopleWithDetails)} have credits only.
-  - Leadership: none is listed for 20th Century Studios, Searchlight Pictures or Walt Disney Pictures (\`docs/CATALOG.md\`).
+  - Person details: gathered for ${n(c.peopleWithDetails)} people under the declared rule. ${c.people > c.peopleWithDetails ? `The other
+    ${n(c.people - c.peopleWithDetails)} have credits only.` : 'No one credited is without them.'}
+  - Leadership: none is listed for 20th Century Studios, Searchlight Pictures or Walt Disney Pictures, nor for Universal
+    Pictures, Focus Features, DreamWorks Animation or Working Title (\`docs/CATALOG.md\`).
 - **Rights exclusions:** no posters, stills or photographs are shown, because their rights belong to their holders. No
   TMDB data is committed or put in builds.
 `;

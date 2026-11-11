@@ -4,7 +4,7 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { currentZone, dateKey, formatDateKey } from '../engine';
 import type { Route } from '../engine/types';
-import { COMPANIES, LEADERSHIP_GAPS, REGISTRY_CHECKED, company as registryCompany, groupOf, joinedGroup, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
+import { COMPANIES, LEADERSHIP_GAPS, checkedFor, company as registryCompany, groupOf, joinedGroup, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
 import {
   ageAt, executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, registryFor, titleStanding,
   type CatalogIndex, type CompanyFilmography, type NetworkRecord, type PersonCredit, type PersonRecord, type SeasonRecord, type SortKey, type TitleRecord,
@@ -223,11 +223,11 @@ function roleDates(r: LeadershipRole, standing: keyof typeof STANDING_LABEL, tod
 }
 
 function LeadershipCard({ c, today }: { c: CompanyRecord; today: string }) {
-  const roles = leadershipAt(c.id, today, REGISTRY_CHECKED);
+  const roles = leadershipAt(c.id, today, checkedFor(c.id));
   const gap = LEADERSHIP_GAPS[c.id];
   if (!roles.length && !gap) return null;
   return (
-    <Panel title="Leadership" subtitle={`As of ${formatDateKey(today)} in your story, from the company's own pages and announcements (checked ${formatDateKey(REGISTRY_CHECKED)}). Positions, not screen credits.`}>
+    <Panel title="Leadership" subtitle={`As of ${formatDateKey(today)} in your story, from the company's own pages and announcements (checked ${formatDateKey(checkedFor(c.id))}). Positions, not screen credits.`}>
       {gap && <p className="muted">{gap}</p>}
       <ul className="list">
         {roles.map(({ role: r, standing }) => (
@@ -801,12 +801,12 @@ export function ExecutivePage({ id }: { id: string }) {
   const today = useToday();
   const e = executive(id);
   if (!e) return <Empty title="This Person Isn't In The Leadership Records"><p className="muted">SLATE has no executive positions recorded for them.</p></Empty>;
-  const roles = e.roles.map((r) => ({ r, standing: leadershipAt(r.companyId, today, REGISTRY_CHECKED).find((x) => x.role === r)?.standing ?? null })).filter((x) => x.standing);
+  const roles = e.roles.map((r) => ({ r, standing: leadershipAt(r.companyId, today, checkedFor(r.companyId)).find((x) => x.role === r)?.standing ?? null })).filter((x) => x.standing);
   return (
     <>
       <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: e.name }]} />
       <PageHead eyebrow="Executive" title={e.name} />
-      <Panel title="Positions" subtitle={`As of ${formatDateKey(today)} in your story. From the companies' own leadership pages and announcements, checked ${formatDateKey(REGISTRY_CHECKED)}. These are executive positions, kept apart from screen credits.`}>
+      <Panel title="Positions" subtitle={`As of ${formatDateKey(today)} in your story. From the companies' own leadership pages and announcements, checked ${[...new Set(e.roles.map((r) => checkedFor(r.companyId)))].sort().map((d) => formatDateKey(d)).join(' and ')}. These are executive positions, kept apart from screen credits.`}>
         {roles.length ? (
           <ul className="list">
             {roles.map(({ r, standing }) => {

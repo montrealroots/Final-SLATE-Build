@@ -24,7 +24,7 @@ opened where no pack is installed plays on with its world waiting (`docs/WORLD.m
 
 | Pack | Built from | Size, November 11, 2026 | Kept in the browser |
 | --- | --- | --- | --- |
-| Films And Series | `.screen-catalog/` (TMDB, with Wikidata network owners) | 69.7 MB, 9,510 files | About 77 MB |
+| Films And Series | `.screen-catalog/` (TMDB, with Wikidata network owners) | 110.6 MB, 15,561 files, with NBCUniversal's companies | About 77 MB before NBCUniversal joined, not measured since |
 | Cinemas | `.cinemas/` (Wikidata, CC0) | 1.5 MB, 153 files | A few MB |
 
 Build them with:
@@ -78,7 +78,7 @@ They are written to `packs/`, which is kept out of the repository, as are all `*
   - the catalog and a place's cinemas shown from them, and kept after a reload;
   - the film pack removed, with every record gone;
   - a pack past six months, and a file that isn't one, refused.
-- **The real packs, offered as mods:** one press installed the film pack in 3.9 seconds in WebKit with iPhone emulation,
+- **The real packs, offered as mods** (before NBCUniversal joined, when the film pack was 69.7 MB in 9,510 files): one press installed the film pack in 3.9 seconds in WebKit with iPhone emulation,
   download included, and the cinemas in 0.2.
 - **The real packs, from files:** installed in Chromium in 5.8 seconds (77 MB used) and in WebKit with iPhone emulation in 4.0 seconds
   (71 MB), on this machine. A phone will be slower.

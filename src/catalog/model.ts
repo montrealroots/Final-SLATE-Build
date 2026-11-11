@@ -184,6 +184,7 @@ export type LeadershipStanding = 'current' | 'leaving' | 'announced' | 'former' 
  */
 export function standingAt(r: LeadershipRole, today: string, checked: string): LeadershipStanding | null {
   if (r.announced && r.announced > today) return null;
+  if (r.undated) return 'incoming'; // Cavanagh's NBCUniversal role waits on a separation with no date (checked 2026-11-11)
   if (r.end && r.end <= today) return 'former';
   if (r.endAnnounced && r.endAnnounced <= today && (!r.start || r.start <= today)) return today >= checked ? 'former' : 'leaving';
   if (r.start && r.start > today) return 'incoming';

@@ -9,6 +9,9 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
+- **Latest merge:** montrealroots/Final-SLATE-Build#65 (child rules for every stand-in place, TMDB for the owner only,
+  the child shoot journey, studios releasing and competing, NBCUniversal), squash-merged as `a192119` on November 11,
+  2026, CI green on its final commit. The branch was restarted from it.
 - **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`), #25 (financing: money from backers, save version 5), #26 (screenwriting audit, dated motion-capture sessions, replacement credits, San Sebastián rules), #27 (the 1221 layout), #28 (1221's creation suite), #29 and #30 (pronouns settle the billing), #31 (backgrounds: kept holidays, casting information, languages), #32 (language suggestions for every background but Assyrian), #33 (script field effects), #34 (script rules review; `6e2abf0`), #35 (input loss, startup size, connected journey; `c00c261`), #36 (atomic genre catalog, careers, reload lock; `5e142f4`), #37 (micro-budget tuning; `fddd6b6`), #38 (budget-size wording; `b025147`), #39 to #41 (screen review, identity, depth stages 1 to 4), #42 (depth stages 5 to 8; `cfe7d71`), #43 and #44 (action previews audit, remaining browser journeys; `37123f5`). `main` was at `3845c2d` when the Gap Completion Package was applied.
 - **Package:** "SLATE Gap Completion Package" (predates #2 and #3). Its references are not committed; the imported data is under `src/world/` and `docs/world/`.
 - **Run first:**
@@ -96,7 +99,7 @@ The owner's brief, in six parts. Universal and other studios wait until this is 
 **Data packs (the owner, after the pass): "make them like a mod you can install in the game, and after I install they
 show."** Done: Settings, Mods lists the packs the game's server offers (its `packs/` folder), each installed with one press, and
 installs a `.slatepack` from a file too (`docs/DATA-PACKS.md`). `node tools/pack.mjs` builds
-the film pack (69.7 MB) and the cinema pack (1.5 MB) into `packs/`, kept out of the repository. TMDB's six months and
+the film pack (110.6 MB with NBCUniversal; 69.7 MB before) and the cinema pack (1.5 MB) into `packs/`, kept out of the repository. TMDB's six months and
 deletion are kept in the game. The owner decided on November 11, 2026 that no other player gets TMDB's data: a server
 serves it only as the owner's own (`--owner`), and offers other players the cinemas alone (`docs/DEPLOYMENT.md`).
 
@@ -114,7 +117,14 @@ serves it only as the owner's own (`--owner`), and offers other players the cine
   didn't recur in 101 runs under load, and is closed (QA-REPORT.md).
 - **Code, tests: done.** A browser journey through a shoot with a child in the cast (`e2e/children.spec.ts`).
 - **Code, later phases: done (November 11, 2026)** for studios releasing films, competition and careers
-  (`docs/WORLD.md`, Phases 3 to 5). Next: Universal (registry, catalog import, pages).
+  (`docs/WORLD.md`, Phases 3 to 5).
+- **Universal: done (November 11, 2026).** Comcast, NBCUniversal, ten studios and four networks in the registry, with
+  their leadership and gaps (`docs/CATALOG.md`, "NBCUniversal"). The live import finished with no failures: 10,008
+  titles, 4,840 seasons and 279,842 people (`docs/CATALOG-COVERAGE.md`). The Companies page groups companies by owner,
+  and titles say whether they were released before or after the acquisition. Each company is dated by the day it was
+  read (`registry.ts` `checkedFor`). A role that waits on an undated event, such as Cavanagh's as NBCUniversal's CEO
+  after the separation, stays Announced, Not Yet Begun.
+- **What is left:** only the owner's own testing on a real iPhone, and a host if they want one.
 
 ### Newest Request (November 10, 2026, after #63): the living world, Phase 1
 
