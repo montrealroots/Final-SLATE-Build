@@ -299,7 +299,18 @@ test('TV limited series: episodes, a guest role and episode-level credits', asyn
   }
   expect(writer).not.toBe('');
   await expect(page.getByLabel('Writer For Episode 2').locator('option')).toHaveText(['You', writer]);
+  // From November 11, 2026 a writer is given an episode for a draft or rewrite of it you accepted (writing-jobs.ts):
+  // hired alone, they can't be chosen, and the page says what to do.
   await page.getByLabel('Writer For Episode 2').selectOption({ label: writer });
+  await expect(page.getByText("They haven't delivered a draft or a rewrite of it that you accepted. Commission one from them under Writing Work.")).toBeVisible();
+  const work = page.getByRole('region', { name: `Writing Work For ${writer}` });
+  await work.getByLabel(`Ask ${writer} For`).selectOption({ label: 'A Rewrite' });
+  await work.getByLabel(`Episode For ${writer}`).selectOption({ label: '2. The Rooftop' });
+  await work.getByRole('button', { name: 'Commission This Pass' }).click();
+  for (let k = 0; k < 4 && !(await work.getByRole('button', { name: 'Accept This Pass' }).count()); k++) { await advance(page, 'week'); await section(page, 'Crew'); }
+  await work.getByRole('button', { name: 'Accept This Pass' }).click();
+  await expect(page.getByLabel('Writer For Episode 2')).toHaveValue(/.+/);
+  await expect(page.getByLabel('Writer For Episode 2').locator('option:checked')).toHaveText(writer);
   // Block scheduling is a choice made before the schedule is built (SLATE-07-04.02).
   await section(page, 'Schedule');
   await page.getByRole('checkbox', { name: 'Shoot Episodes In Blocks' }).check();

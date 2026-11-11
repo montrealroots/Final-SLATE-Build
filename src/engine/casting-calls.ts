@@ -1,7 +1,8 @@
 // Inviting performers to read, calling them back and shortlisting (auditions.ts says how auditions work and why). Loaded
 // with the Cast page, not at startup.
 import { AUDITION_NOTICE_DAYS, at10, sessionDay } from './auditions';
-import { castRoleFor, roleCandidates } from './hiring';
+import { castRoleFor, isCandidate } from './hiring';
+import { canApproach, isReal } from './guests';
 import { isAvailable, personById } from './people';
 import { approvedCharacters, approvedScenes, assertEditable } from './projects';
 import { newId, schedule } from './state';
@@ -21,7 +22,8 @@ export function inviteRefusal(state: GameState, p: Project, characterId: string,
   if (!c || !approvedScenes(p).some((s) => s.participants.includes(characterId))) return 'That part is not in the approved script.';
   if (c.roleSize === 'background') return 'Background parts are covered by the crowd budget, without auditions.';
   if (p.cast.some((x) => x.characterId === characterId && x.method === method)) return `${c.name} is cast already.`;
-  if (!roleCandidates(state, p, castRoleFor(method)).some((x) => x.id === personId)) return 'They are not a performer for this kind of part.';
+  if (!isCandidate(state, p, castRoleFor(method), personId)) return 'They are not a performer for this kind of part.';
+  if (isReal(personId)) { const a = canApproach(state, personId, castRoleFor(method), sessionDay(state, p)); if (!a.ok) return a.reason!; }
   if (auditionsFor(p, characterId, method).some((a) => a.personId === personId && a.status !== 'missed')) return 'They have been asked to read for this part already.';
   return null;
 }
@@ -32,7 +34,7 @@ export function inviteToAudition(state: GameState, p: Project, characterId: stri
   const why = inviteRefusal(state, p, characterId, method, personId);
   if (why) throw new Error(why);
   const day = sessionDay(state, p);
-  const who = personById(state, personId);
+  const who = personById(state, personId, castRoleFor(method));
   const a: Audition = { id: newId(state, 'au'), characterId, method, personId, date: day, status: 'invited' };
   const av = isAvailable(state, who, day, day, p.id);
   if (!av.ok) {

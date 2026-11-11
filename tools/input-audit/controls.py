@@ -167,6 +167,8 @@ c(f, '"List Matching Pronouns First"', V)
 c(f, '{`Day Rate For ${c.name}`}', D, 'hire.dayRate', 'hiring.ts resolveOffer', 'What you offer decides whether they accept, counter or decline', U('relationships', 'someone who saw a project through with you takes a fair offer'), '')
 c(f, '{`Read ${who.name} With`}', D, 'audition.callback.partnerId', 'auditions.ts pairChemistry', 'A chemistry read reveals the pair\'s chemistry, which moves shared scenes', U('auditions', 'a chemistry read reveals the pair'), E('auditions', 'auditions'))
 c(f, '{`Writer For Episode ${e.number}`}', D, 'episode.writer', 'finish.ts assessEpisode', 'That episode\'s script assessment, and its credit', U('episode-assessment', 'crew hired for one episode count for it alone'), '')
+c(f, '"Writer"', D, 'episode.writer', 'projects.ts assignEpisodeRole; finish.ts computeCredits, assessQuality', 'Who is credited for writing the film and whose accepted pass its script is assessed by; only someone whose draft or rewrite you accepted can be chosen', U('writing-jobs', 'accepted, the episode is theirs to be credited for beside the writer of the approved script'), E('real-people', 'J05: a director with no recorded date of birth and a writer are hired for a film by job'))
+c(f, '"Director"', D, 'episode.director', 'production/shoot.ts onSetHires; finish.ts computeCredits, assessQuality', 'Who directs the film: on set and paid each shoot day, credited, and the direction assessed by their level; you are not needed on set', U('writing-jobs', 'is paid once for each day they direct'), E('real-people', 'J05: a director with no recorded date of birth and a writer are hired for a film by job'))
 c(f, '{`Director For Episode ${e.number}`}', D, 'episode.director', 'finish.ts assessEpisode; production/schedule.ts blocks', 'That episode\'s direction, and which episodes share shoot blocks', U('episode-assessment', 'crew hired for one episode count for it alone'), E('release-schedule', 'a series released across the year end'))
 c(f, '"Production Start"', D, 'schedule.startDate', 'production/schedule.ts generatePlan', 'When the shoot is planned', U('dates', 'a production start date and a release date must be real dates'), E('connected', 'a connected career'))
 c(f, '"Rehearsal Days"', D, 'schedule.rehearsalDays', 'production/shoot.ts; hiring.ts (booked days)', 'Rehearsal lifts captured performance up to a cap and books performers longer', U('depth-gaps-production', 'rehearsal lifts your own captured performance'))
@@ -209,6 +211,20 @@ c(f, '{`${c.personName} as ${c.characterName}`}', D, 'entry.recipients', 'awards
 c(f, '{`What To Capture For ${name}`}', D, 'mocap.parts', 'mocap.ts bookMocap, sessionCost', 'Body, face or both: session cost and credits', U('lunar-mocap', 'waits for a booking, which reserves the stage'), '')
 
 # ---------------- Calendar, places, settings, shell ----------------
+f = 'PersonWork.tsx'
+J04 = E('real-people', 'J04: a performer from the film catalog is considered, reads, counters, is contracted, found booked elsewhere, works and is credited')
+J05 = E('real-people', 'J05: a director with no recorded date of birth and a writer are hired for a film by job')
+c(f, '"Treat As An Adult In This Story"', D, 'real[id].sim.adult', 'guests.ts canApproach -> hiring.ts makeOffer, casting-calls.ts inviteRefusal', 'With no recorded date of birth nothing can be offered until this is ticked; it is the story\'s mark, never a date', U('guests', 'with no recorded birth date, not until the player says to treat them as an adult'), J05)
+c(f, '"Project"', V)
+c(f, '"Consider Them For"', D, 'project.considered', 'guests.ts considerFor -> hiring.ts candidatesFor', 'Puts them first on that part\'s or job\'s list on the project, where they are invited to read or offered it', U('real-hiring', 'is one person however they were found, and joins the list for a part without anything being offered'), J04)
+
+f = 'WritingWork.tsx'
+c(f, '{`Ask ${name} For`}', D, 'writing[].scope', 'writing-jobs.ts writingTerms, acceptedRead', 'The pass\'s working days and cost, whether accepting it gives a writing credit, and how much of the script their work counts for', U('writing-jobs', 'a polish counts for less than a draft from the same pass'), J05)
+c(f, '{`Episode For ${name}`}', D, 'writing[].episode', 'writing-jobs.ts writingTerms, acceptedRead', 'Which episode they work on: its length sets the days, and its assessment and credit are what the pass counts for', U('writing-jobs', 'the terms are shown before anything is agreed'), '')
+c(f, '{`Your Brief For ${name} (Optional)`}', R, 'writing[].brief', 'WritingWork.tsx JobLine', 'Kept as written and shown back with the pass; the game never reads it', U('writing-jobs', 'the brief and the notes are kept as written and change nothing'), J05)
+c(f, '{`What ${name}\'s Revision Should Look At`}', R, 'writing[].passes[].focus', 'WritingWork.tsx JobLine', 'A label on the revision, shown back; asking for the revision is what costs days and replaces the pass', U('writing-jobs', 'a revision costs their days, replaces the pass, and is limited by the contract'), J05)
+c(f, '{`Your Note To ${name} (Optional)`}', R, 'writing[].passes[].text', 'WritingWork.tsx JobLine', 'Kept as written and shown back with the revision; the game never reads it', U('writing-jobs', 'the brief and the notes are kept as written and change nothing'), J05)
+
 f = 'Places.tsx'
 c(f, '{f}', V, 'calendarFilters', 'the calendar', 'Which kinds of event the calendar shows')
 c(f, '"Search Events"', V)

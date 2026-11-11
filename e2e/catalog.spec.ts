@@ -65,7 +65,9 @@ test('company to film to cast member to another credit, and back', async ({ page
   await expect(about).not.toContainText('Died'); // a death after the save's date hasn't happened
   await expect(about).toContainText('45 (on January 5, 2026, your story\'s date)'); // born April 2, 1980: 46 only from April 2
   const credits = card(page, 'Credits In The Catalog');
-  await expect(credits).toContainText('A credit is a record of past work, not who they work for or whether they could work for you.');
+  await expect(credits).toContainText("A credit is a record of past work: it doesn't say who they work for now, and what they do in your story is kept apart, above.");
+  // Working with them is the story's, in its own panel, and offers nothing until the player considers them (guests.ts).
+  await expect(card(page, 'In Your Story')).toContainText("Ada Quill isn't in your story yet.");
   await expect(credits.locator('li', { hasText: 'Tidewater Station (Fixture)' })).toContainText('(2 episodes)');
   await shot(page, info.project.name, '03-person');
   await credits.getByRole('button', { name: 'Harbour Lights (Fixture)' }).click();

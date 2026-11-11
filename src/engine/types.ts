@@ -358,6 +358,37 @@ export interface Draft {
   approved: boolean;
 }
 
+/** What a hired writer is asked to deliver: their own draft of an episode, a rewrite of the approved one, or a polish. */
+export type WritingScope = 'draft' | 'rewrite' | 'polish';
+
+/** One delivery asked of a writer: the first pass, or a revision of it after the player's note. */
+export interface WritingPass {
+  /** What the revision was asked to look at; absent on the first pass. */
+  focus?: string;
+  /** The player's own note, kept as written. The game never reads it. */
+  text?: string;
+  days: number;
+  done: number;
+  askedOn: string;
+  deliveredOn?: string;
+  /** How the delivered pass stands on the craft scale, drawn around the writer's level when it is delivered. */
+  read?: number;
+}
+
+export interface WritingJob {
+  id: string;
+  hireId: string;
+  personId: string;
+  scope: WritingScope;
+  episode: number;
+  /** The player's brief for the work, kept as written. The game never reads it. */
+  brief?: string;
+  status: 'working' | 'delivered' | 'accepted' | 'cancelled';
+  /** The first pass, then each revision asked for, in order. The last delivered one is the work as it stands. */
+  passes: WritingPass[];
+  acceptedOn?: string;
+}
+
 export interface RevisionNote {
   id: string;
   text: string;
@@ -798,6 +829,12 @@ export interface Project {
   drafts: Draft[];
   approvedDraft: number | null;
   notes: RevisionNote[];
+  /**
+   * Work commissioned from hired writers (writing-jobs.ts). Present on projects made from November 11, 2026: there a hired
+   * writer is paid for days worked on a pass, and credited and counted only for a pass the player accepted. A project
+   * without it keeps the rules it was made under.
+   */
+  writing?: WritingJob[];
   revision: { endsAt: number; noteIds: string[] } | null;
   revisionPasses: number;
   requirements: Requirement[];
@@ -861,6 +898,8 @@ export interface Project {
   continuedBy?: string;
   /** A commissioner's decision on another season (continuation.ts). */
   renewal?: { decidedAt: number; outcome: 'renewed' | 'cancelled'; reason: string };
+  /** Real people from the film catalog the player is considering for a part or a job here (guests.ts). */
+  considered?: import('./guests').Considered[];
   /** Ideas applied from the picker, by ID and version, and ideas marked to come back to (brief.ts). Never their text. */
   brief?: import('./brief').Brief;
   noticeKeys: string[];
@@ -1012,6 +1051,8 @@ export interface GameState {
   processedEventIds: string[]; // ring of recent ids (exact-once guard)
   log: LogEntry[];
   plans: Plan[];
+  /** Real people from the film catalog brought into this story (guests.ts): a copy of their record, and what the game makes up. */
+  real?: import('./guests').RealPeople;
   /** The living world's simulated decisions and seasons (industry.ts), from when the catalog was first present; absent before. */
   industry?: import('./industry').IndustryState;
   sleep: { asleep: boolean; since?: number; wakeAt?: number; alarm: boolean };

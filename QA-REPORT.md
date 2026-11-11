@@ -8,7 +8,38 @@
 
 ## Commands And Results
 
-### Current: Creative Depth Package, Milestone B (November 11, 2026)
+### Current: Creative Depth Package, Milestone D (November 11, 2026)
+
+Real people from the film catalog through the game's own hiring, and the work of hired writers and directors
+(`docs/creative-depth/LEDGER.md`, "Milestone D"). Every person in these tests is a made-up fixture.
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 867 tests (832 before). Startup 306 kB, 98 kB gzipped; budgets unchanged (700 and 220 kB). World check 0 problems. |
+| `npm run balance` | 0 | 2 files. A hired director is now paid for shoot days; the balance runs' results held. |
+| `tests/guests.test.ts` | 0 | 11 tests: one identity; recorded and made-up kept apart; jobs only from credits; nothing guessed; unknown age; death; the list for a part; six months, renewal and a name brought back. |
+| `tests/real-hiring.test.ts` | 0 | 12 tests: considered, read once, countered, contracted, booked elsewhere and refused, shot with, paid, credited, reloaded; a director; a voice part; release and replacement; dates they can't do; death. |
+| `tests/writing-jobs.test.ts` | 0 | 12 tests: terms shown first; money refused when short; days worked and paid once each; delivery; revision and its limit; acceptance, credit and assessment; brief and notes unread; scope weight; a pass stopped; a project from before; a director paid for each day directed. |
+| Mutations | 1 or more for each | Eleven were made and each failed a test. Real people: the shared diary, death, unknown age, record expiry. Writers and directors: a day worked and not paid (4 tests failed); a delivered pass counted before acceptance; an episode handed over without accepted work (3 failed); the director unpaid; the writer counted by level instead of the pass; scope not weighing the work; revisions unlimited. |
+| `e2e/real-people.spec.ts` | 0 | New, journeys J04 and J05: 6 passed on desktop, phone and WebKit (iPhone 15 Pro Max), in 2.7 minutes. |
+| `e2e/journeys.spec.ts`, "TV limited series" | 0 | Changed for the writer rule: the hired writer can't be given the episode until a rewrite of it is commissioned, delivered and accepted. |
+| `npx playwright test`, whole suite, dev build | 0 | 331 passed, 59 skipped by design, in 47 minutes. |
+
+Found and fixed on the way:
+
+- A hired episode writer, co-writer, script editor or episode director worked no days and was paid nothing, while
+  taking a credit and moving the assessment. No page offered the co-writer's or script editor's job.
+- Nobody could be hired to write or direct a single film.
+- A person considered for a job the script doesn't call for had nowhere to be offered it.
+- A Producer or Casting credit was offered a job nothing in the game reads. It is now offered nothing, and the page
+  says why.
+- The startup budget check failed on a chunk's name with not a byte more loaded: the base registry of 66 places, which
+  the start screen has always read, became a chunk the bundler named "places". The check now allows that registry by
+  what it is and holds it to its measured size (36 kB, ceiling 40).
+
+Not run locally: the production-build browser suite, which CI runs on the pull request.
+
+### Earlier: Creative Depth Package, Milestone B (November 11, 2026)
 
 The idea picker, the idea library, the looks engine and the zombie example (`docs/creative-depth/LEDGER.md`).
 

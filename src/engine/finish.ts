@@ -1,6 +1,7 @@
 // Editing, delivery, credits, quality (a labeled game model), release and distribution.
 
 import { pairChemistry } from './auditions';
+import { acceptedRead, hasAcceptedWork } from './writing-jobs';
 import { coverageEdit, editPerformance } from './takes';
 import { recordHistory } from './relationships';
 import { scheduleOpportunity } from './opportunities';
@@ -134,7 +135,8 @@ export function computeCredits(state: GameState, p: Project): Credit[] {
   for (const who of [...new Set(p.episodes.flatMap((e) => [e.writer, ...(e.formerWriters ?? [])]))].filter((x) => x !== 'player')) {
     add({ person: who, personName: personById(state, who).name, contribution: 'Written By', roleId: 'episode-writer', episodes: wrote(who) });
   }
-  for (const h of p.hires.filter((x) => x.roleId === 'co-writer' && x.daysWorked > 0)) {
+  // A co-writer is credited for work the player accepted (writing-jobs.ts); on a project from before it, for days worked.
+  for (const h of p.hires.filter((x) => x.roleId === 'co-writer' && (p.writing ? hasAcceptedWork(p, x.id) : x.daysWorked > 0))) {
     add({ person: h.personId, personName: personById(state, h.personId).name, contribution: 'Co-Written By', roleId: 'co-writer', episodes: h.episodes });
   }
   const playerDirectedEps = directed('player');
@@ -225,7 +227,12 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
   // ...and only when the check it came from is gone from the script's readiness checks, and wasn't advice.
   const open = new Set(issues.map((i) => i.text));
   const addressed = p.notes.filter((n) => n.status === 'addressed' && n.source === 'readiness' && !n.advisory && !open.has(n.text)).length;
-  const writerHelp = p.hires.filter((h) => ['co-writer', 'script-editor'].includes(h.roleId) && h.status !== 'declined' && covers(h.episodes)).map((h) => personById(state, h.personId).capability);
+  // Writing help counts for the passes the player accepted, each as it was delivered (writing-jobs.ts). On a project
+  // from before November 11, 2026 it is anyone hired to help, at their level, as it was.
+  const writerHelp = p.writing
+    ? p.hires.filter((h) => ['co-writer', 'script-editor'].includes(h.roleId) && covers(h.episodes))
+      .flatMap((h) => p.episodes.filter((e) => inEp(e.number)).map((e) => acceptedRead(p, h.personId, e.number)).filter((x): x is number => x !== null))
+    : p.hires.filter((h) => ['co-writer', 'script-editor'].includes(h.roleId) && h.status !== 'declined' && covers(h.episodes)).map((h) => personById(state, h.personId).capability);
   // Who wrote and directed each episode, from November 9, 2026: a hired episode writer or director moves that episode's
   // script or direction by a quarter of how far their capability is from 50; your own work is the baseline, as it always
   // was. Before, who wrote or directed an episode changed no assessment. The season weighs its episodes by running time.
@@ -235,7 +242,10 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
     const parts = [...epMinutes].map(([n, m]) => {
       const e = p.episodes.find((x) => x.number === n);
       const who = e ? [e[role], ...((role === 'writer' ? e.formerWriters : e.formerDirectors) ?? [])] : ['player'];
-      return { m, v: avg(who.map((w) => (w === 'player' ? playerExperience(state, p, role) : (personById(state, w).capability - 50) / 4)), 0) };
+      // A hired writer counts by the draft or rewrite of the episode the player accepted, as delivered; a director, and a
+      // writer on a project from before writers were commissioned by the pass, by their level.
+      const level = (w: string) => (role === 'writer' && p.writing ? acceptedRead(p, w, n, ['draft', 'rewrite']) : null) ?? personById(state, w).capability;
+      return { m, v: avg(who.map((w) => (w === 'player' ? playerExperience(state, p, role) : (level(w) - 50) / 4)), 0) };
     });
     const total = parts.reduce((a, x) => a + x.m, 0);
     return total ? parts.reduce((a, x) => a + x.v * x.m, 0) / total : 0;

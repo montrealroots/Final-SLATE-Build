@@ -117,6 +117,8 @@ export const CATALOG_FIXTURE: Record<string, unknown> = {
   'people/2.json': person(800002, 'Ben Rook', [
     { ref: 'movie:900001', title: 'The Lantern Keeper (Fixture)', date: '2019-06-14', kind: 'crew', role: 'Director', department: 'Directing' },
     { ref: 'tv:900101:s:1:e:1', title: 'Tidewater Station (Fixture): Pilot', date: '2021-09-01', kind: 'episode-crew', role: 'Director', department: 'Directing' },
+    { ref: 'movie:900002', title: 'Harbour Lights (Fixture)', date: '2023-03-03', kind: 'crew', role: 'Producer', department: 'Production' },
+    { ref: 'movie:900002', title: 'Harbour Lights (Fixture)', date: '2023-03-03', kind: 'crew', role: 'Editor', department: 'Editing' },
   ]),
   'people/3.json': person(800003, 'Cy Vale', [{ ref: 'tv:900101', title: 'Tidewater Station (Fixture)', date: '2021-09-01', kind: 'creator', role: 'Creator' }]),
   'people/5.json': person(800005, 'Ezra Holt', [{ ref: 'movie:900001', title: 'The Lantern Keeper (Fixture)', date: '2019-06-14', kind: 'cast', role: 'The Keeper' }]),

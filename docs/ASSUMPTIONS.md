@@ -167,3 +167,23 @@ differs. None is an industry rate, a union rule or a quote. No choice here raise
   and tracking, and takes three days of effects work per scene after the picture is locked. Eight people or fewer are
   simply there.
 - **The look a project borrows** (`styleEra`) is a note. It changes no work and no date.
+
+## Writers' Passes (November 11, 2026)
+
+Game calibration, not industry rates or guild terms. All in `src/engine/writing-jobs.ts`.
+
+| What | Figure | Why |
+| --- | --- | --- |
+| A draft of their own | A day for each 4 minutes of the approved script, 3 days at least | The longest pass: the episode written afresh |
+| A rewrite | A day for each 8 minutes, 2 days at least | Half a draft's days |
+| A polish | A day for each 15 minutes, 1 day at least | About a quarter of a draft's days |
+| A revision | Two fifths of the first pass's days, 1 day at least | Less than the pass it revises |
+| Revisions in a contract | 2 | A third is a new commission |
+| How far a first pass stands from the writer's level | About 10 points either way (one standard deviation) | Wide enough that the delivered pass matters |
+| How far a revision stands from it | About 5 points | A revision is steadier than a first pass; it is not always better |
+| How much of the script the work counts for | Draft 1, rewrite 0.6, polish 0.3 | The assessment moves by the pass's distance from 50, times this |
+
+A real person's level for a job comes from the credits the installed catalog holds for it, and their rate from the
+game's base rate for that job at that level (`src/engine/guests.ts`). Neither is a fact about them, and each is shown as
+the story's figure.
+

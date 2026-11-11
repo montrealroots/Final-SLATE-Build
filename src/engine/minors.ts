@@ -840,6 +840,8 @@ export function minorFor(state: GameState | undefined, p: Project, characterId: 
   if (cast && cast.performer === 'player') return null; // the player is never under 19 (state.ts MIN_START_AGE)
   if (cast && state) {
     const person = personById(state, cast.performer);
+    // No recorded birth date: hired only once the player marked them an adult in this story (guests.ts canApproach).
+    if (!person.born) return null;
     const ageDays = ageInDays(person.born, on);
     if (personAge(person, on) >= rules.adultAt) return null;
     const band = bandFor(rules, ageDays);
