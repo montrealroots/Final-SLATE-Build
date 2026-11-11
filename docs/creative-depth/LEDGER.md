@@ -27,7 +27,7 @@ Nothing is called complete because a control exists or a field saves.
 | --- | --- | --- | --- |
 | A | Baseline audit, owner-data access, frozen world profiles | Built and tested; see below | With the first checkpoint of this package |
 | B | Shared picker, option records, starter libraries, field inventory, the zombie example | Built and tested; see below | With the second checkpoint |
-| C | Every creative input expanded; medium pipelines; controlled comparisons | Not started | |
+| C | Every creative input expanded; medium pipelines; controlled comparisons | Under way: see "Milestone C, So Far" below | |
 | D | Real people: identity, availability, auditions, hiring, contracts, pay, credits | Built and tested, with the limits below. Done before C: see `DECISIONS.md` | With the third checkpoint |
 | E | Real destinations, scouting, geography-aware production | Not started | |
 | F | Studio strategy, Warner Bros., Sony and Paramount, territorial releases, competition | Not started | |
@@ -215,6 +215,28 @@ save is listed apart from their recorded credits.
   is a game figure and is labelled so; it is not a measure of anyone's ability.
 - **Earlier projects keep their rules.** A project begun before this has no `writing` list, and its hired writers are
   credited and counted as they were. Its hired director is paid for shoot days from now on.
+
+## Milestone C, So Far
+
+Being built on the branch `c-work`, after milestone D. Not yet a checkpoint.
+
+| Piece | Where | Status | Evidence |
+| --- | --- | --- | --- |
+| Camera rigs scene by scene: reset and running time, how takes vary, the crew each needs, rented kit, rehearsal | `src/engine/craft.ts`; `takes.ts`, `hiring.ts`, `production/tasks.ts`, `shoot.ts`, `schedule.ts`, `estimate.ts` | Engine verified | `tests/craft.test.ts`, 5 tests under "how the camera moves" |
+| The light for the film: available, high contrast, macro on miniatures | `craft.ts` `LIGHTS` | Engine verified | `tests/craft.test.ts`, 3 tests under "the light" |
+| Sound choices held together, and the score's palette with its sessions | `craft.ts` `SOUNDS`, `SCORES` | Engine verified | `tests/craft.test.ts`, 3 tests under "the sound and the score" |
+| The package's camera and sound options made mechanical: 12 that were notes now set these | `tools/ideas/from-starter.py`, `src/ideas/starter.ts` | Engine verified | `tests/brief.test.ts`, `tests/ideas.test.ts`; 4 starter options remain notes (two puppet finishes, a stylized anachronism, source music) |
+| Looks with names, assigned scene by scene; only the looks that appear are made; a change inside a day costs time | `src/engine/looks.ts` `stateNames`, `stateIn`, `statesUsed`, `changeMinutes` | Engine verified | `tests/states.test.ts`, 4 tests |
+| 118 ideas for eleven more fields; props, animals, vehicles and effects chosen from ideas make their work | `src/ideas/scenes.ts`; `brief.ts` ops `scene`, `needs` | Engine verified | `tests/scene-ideas.test.ts`, 6 tests |
+| Controls for all of the above | `src/ui/ScriptViews.tsx` (Light, Sound And Score; looks' names; a scene's look), `PlanViews.tsx` (Camera For each scene) | Not implemented in a browser journey yet | Unit tests only; no Playwright journey has used them |
+
+Counts, from the code: 305 ideas (120 change the work, 171 are words, 14 are references); 263 labelled controls, of
+which 48 have ideas, 190 have none by design with the reason given, and 15 have none yet.
+
+Still to do in C: a browser journey through the new controls; mutations for `craft.ts`; routes for every genre; the
+animation, documentary, unscripted and television pipelines' own choices; ideas for the 15 fields that have none
+(the genre questions, a scene's tonal intention, the season arc and what each episode moves, acts, threads, setups,
+relationships, arcs, and what kind of being a character is).
 
 ## The Audit Artifacts
 

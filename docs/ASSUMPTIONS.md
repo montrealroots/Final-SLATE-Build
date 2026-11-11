@@ -187,3 +187,44 @@ A real person's level for a job comes from the credits the installed catalog hol
 game's base rate for that job at that level (`src/engine/guests.ts`). Neither is a fact about them, and each is shown as
 the story's figure.
 
+## Camera, Light And Sound (November 11, 2026)
+
+Game calibration, not rental prices, union terms or measurements. All in `src/engine/craft.ts`. No choice here is a
+quality bonus: each trades time, crew, money or work in post, and several cost something for nothing but the look.
+
+| Rig, scene by scene | Setup reset | Take runs | Takes vary | Needs | Rented, a shoot day | Rehearsal |
+| --- | --- | --- | --- | --- | --- | --- |
+| On a tripod | 1 | 1 | 1 | | | |
+| Handheld | 0.75 | 1 | 1.4 | | | |
+| On a dolly | 1.4 | 1 | 0.85 | A key grip | $600 | |
+| Long moving takes | 1.2 | 1.5 | 1.5 | | $450 | A day for every three scenes |
+| Through a character's eyes | 1.1 | 1 | 1.2 | Video assist | | A day for every four scenes |
+
+Without the crew a rig needs, every setup on it takes 1.3 times a tripod's reset (or the rig's own, if slower).
+"Takes vary" widens or narrows the technical side of each take around what the crew can do; it never moves the centre.
+
+| Light, for the film | Reset on interiors and nights | Planned takes | Gaffer for interiors | Tests before the shoot | Grade | Stop-motion frames a day |
+| --- | --- | --- | --- | --- | --- | --- |
+| Lit as usual | 1 | as the rule | Yes | | 1 | 1 |
+| Practical and available light | 0.8 | one more a setup | No (night exteriors still) | 1 day | 1 | 1 |
+| High contrast | 1.25 | as the rule | Yes | 2 days | 1.5 | 1 |
+| Macro on miniatures (stop motion) | 1 | as the rule | Yes | 2 stage days | 1 | 0.9 |
+
+| Sound choice | What it asks |
+| --- | --- |
+| Natural location texture | A recording day for every three locations before the shoot; effects editing at 0.7 |
+| Dialogue clarity | A boom operator; dialogue scenes reset at 1.05; a compromised day's dialogue still holds |
+| Sparse soundscape | Foley at 1.5, the score at 0.6, the mix at 1.2 |
+| Heightened creature Foley | Two Foley days for each creature in the script |
+| Layered crowd sound | A loop-group session for every two crowd scenes, $1,800 each; the mix at 1.1 |
+
+| Score | Composer's days | Sessions |
+| --- | --- | --- |
+| Left to the composer, or electronic | 1 | None |
+| A small ensemble | 1 | One for every 20 minutes, $4,000 each; the mix waits |
+| Percussion to picture | 1.2 | One for every 40 minutes, $2,500 each; the mix waits |
+
+Looks, scene by scene (`src/engine/looks.ts`): a change of look inside a shooting day takes 15 minutes for the costume
+and half the makeup's chair time again, out of the day. Once any scene says which look a character is in, only the
+looks that appear are made.
+
