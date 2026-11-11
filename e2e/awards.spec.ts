@@ -561,7 +561,7 @@ test('J03: a horror film with a comic streak competes as a drama; making comedy 
   await section(page, 'Script');
   await expect(page.getByLabel('Competes As')).toHaveValue('');
   await expect(page.getByText("Left to its genres, it competes as comedy when a primary genre is comedy or musical; a secondary one doesn't change it.")).toBeVisible();
-  const genres = async () => (await readSavedState(page)).projects[0].axes.genres;
+  const genres = async () => (await readSavedState(page)).projects[0]?.axes.genres; // the save follows the page by a moment
   await expect.poll(genres).toEqual([{ id: 'horror', emphasis: 'primary' }, { id: 'comedy', emphasis: 'secondary' }]);
 
   // Labelled fixture: delivered and released without being made, so the award page can be read (as the other award journeys do).
@@ -582,7 +582,7 @@ test('J03: a horror film with a comic streak competes as a drama; making comedy 
   await page.getByRole('button', { name: 'Graveyard Shift' }).click();
   await section(page, 'Script');
   await page.getByLabel('Competes As').selectOption({ label: 'Comedy Or Musical' });
-  await expect.poll(async () => (await readSavedState(page)).projects[0].axes.register).toBe('comedy');
+  await expect.poll(async () => (await readSavedState(page)).projects[0]?.axes.register).toBe('comedy');
   await openEvent(page, 'Graveyard Shift', '84th Golden Globe Awards');
   await filterTo(page, 'Graveyard Shift', 'Every Category');
   await expect(open(COMEDY)).toBeVisible();
@@ -593,7 +593,7 @@ test('J03: a horror film with a comic streak competes as a drama; making comedy 
   await page.getByRole('button', { name: 'Graveyard Shift' }).click();
   await section(page, 'Script');
   await page.getByLabel('Competes As').selectOption({ label: 'By Its Genres' });
-  await expect.poll(async () => (await readSavedState(page)).projects[0].axes.register).toBeUndefined();
+  await expect.poll(async () => { const p = (await readSavedState(page)).projects[0]; return p ? p.axes.register ?? 'unset' : 'no save yet'; }).toBe('unset');
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await openEvent(page, 'Graveyard Shift', '84th Golden Globe Awards');

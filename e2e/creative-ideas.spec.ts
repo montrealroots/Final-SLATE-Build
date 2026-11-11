@@ -276,7 +276,7 @@ test('J02: the zombie premise as stop motion: puppets, sets and voices are made,
   await saveAndApprove(page);
 
   // What it asks for is the puppet film's work: every character in the scene is a puppet with its copies to choose.
-  const names: string[] = (await readSavedState(page)).projects[0].characters.map((c: { name: string }) => c.name);
+  const names: string[] = (await savedWhen(page, (q) => q.approvedDraft !== null && q.characters.length > 0)).characters.map((c: { name: string }) => c.name);
   expect(names.length).toBeGreaterThan(0);
   await section(page, 'Schedule');
   await expect(page.getByLabel(/ Puppet Copies$/).first()).toBeVisible();
