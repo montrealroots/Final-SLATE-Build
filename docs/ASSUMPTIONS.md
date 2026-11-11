@@ -308,5 +308,17 @@ opened there. Where the territory's language isn't one the dialogue is in, the f
 or dubbed at yours: $140 a finished minute for each language, and a dubbed territory counts for 1.5 in the reports
 against 1.
 
+Which followed studio makes a distribution or commission offer (`strategy.ts` `fitWeight`): each studio is weighed by
+the share of its genre credits in the project's families, and not at all where its medium rules the work out. Size
+counts for nothing among studios releasing two or more films a year. A thin record is weighed 0.15 for anything,
+scaled down by how rarely the studio releases (a film every two years: a quarter of that). A studio with a full
+record is weighed at least 0.05 for a documentary, however few are credited to it.
+
+Measured over 100 seeds, five kinds of film and 20,000 draws (`tests/offer-concentration.test.ts`,
+`docs/creative-depth/OFFER-CONCENTRATION.json`): 49.8% of offers came from a followed studio; over all kinds no studio
+made more than 25.1% of them, and the busiest of the five, releasing twelve films a year, made 19.0%. The first run
+failed: read by its own shares, a label with two credits made 36% of all offers. The rule was changed, not the
+thresholds, which were written before that run.
+
 Not modeled: budgets a studio spends, franchises, who at a studio decides, and anything said to be a real studio's
 taste. A real executive is never given a preference.

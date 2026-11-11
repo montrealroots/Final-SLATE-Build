@@ -76,8 +76,16 @@ export function slateRoom(seed: number, horizon: string, p: StudioProfile, year:
 /**
  * How near a studio's record is to work of these families in this medium, for choosing which studio makes an offer
  * (studios.ts careerStudio): the share of its genre credits in those families, and nothing where its medium rules the
- * work out. A thin record counts a little for anything. Its pace is not read.
+ * work out. Among studios releasing two or more films a year, size counts for nothing.
+ *
+ * A thin record counts a little for anything (THIN_FIT), never its own shares, and less the more rarely the studio
+ * releases. Measured over a hundred worlds on November 11, 2026 (tests/offer-concentration.test.ts): read by its
+ * shares, a label with two drama credits scored a perfect fit for every drama and made 36% of all offers, more than
+ * any studio with a real record.
  */
+export const THIN_FIT = 0.15;
+/** The least a studio with a full record counts for a documentary, however few are credited to it. */
+export const DOCUMENTARY_FLOOR = 0.05;
 export function fitWeight(p: StudioProfile, families: string[], medium: Medium): number {
   const s = strategyOf(p);
   const animated = medium === 'animation';
@@ -85,7 +93,9 @@ export function fitWeight(p: StudioProfile, families: string[], medium: Medium):
   if (!animated && s.animation >= ANIMATION_HOUSE && s.families[0]?.genre === 'Animation') return 0;
   const names = [...new Set(families.flatMap((f) => FAMILY_AS_RECORDED[f] ?? []))];
   const share = s.families.filter((f) => names.includes(f.genre)).reduce((a, f) => a + f.share, 0);
-  return s.record === 'thin' ? Math.max(share, 0.15) : share;
+  if (s.record === 'thin') return THIN_FIT * Math.min(1, p.n / THIN_RECORD);
+  // Few documentaries are credited to any studio, which isn't the same as no interest (pitchRead says the same).
+  return families.includes('documentary') ? Math.max(share, DOCUMENTARY_FLOOR) : share;
 }
 
 /** SLATE's genre families (genres.ts GenreRecord.parent, lowercased with hyphens) as TMDB's genre names. */

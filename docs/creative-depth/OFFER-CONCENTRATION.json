@@ -1,0 +1,38 @@
+{
+ "seeds": 100,
+ "offersEachKind": 40,
+ "draws": 20000,
+ "fromAStudio": 49.8,
+ "overall": {
+  "Long Room Films (Fixture)": 25.1,
+  "Night Shift Pictures (Fixture)": 25.1,
+  "Sunday Matinee (Fixture)": 23.3,
+  "Lantern Animation (Fixture)": 19,
+  "Two Desks (Fixture)": 7.5
+ },
+ "byKind": {
+  "a horror film": {
+   "Night Shift Pictures (Fixture)": 93.3,
+   "Two Desks (Fixture)": 6.7
+  },
+  "an animated family film": {
+   "Lantern Animation (Fixture)": 95.2,
+   "Two Desks (Fixture)": 4.8
+  },
+  "a live-action comedy": {
+   "Sunday Matinee (Fixture)": 92.9,
+   "Two Desks (Fixture)": 7.1
+  },
+  "a drama": {
+   "Long Room Films (Fixture)": 84.7,
+   "Night Shift Pictures (Fixture)": 11.9,
+   "Two Desks (Fixture)": 3.4
+  },
+  "a documentary": {
+   "Long Room Films (Fixture)": 41.1,
+   "Night Shift Pictures (Fixture)": 22,
+   "Sunday Matinee (Fixture)": 21.4,
+   "Two Desks (Fixture)": 15.5
+  }
+ }
+}
