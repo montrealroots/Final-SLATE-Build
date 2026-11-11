@@ -109,22 +109,24 @@ phases out of the startup bundle.
 numbers, the networks and streaming services shows are attached to, and cinemas worldwide. In order:
 
 1. **Child rules across the map: in progress.**
-   - **Recorded sets:** British Columbia, Ontario, Ireland, Germany, France (partly read) and New South Wales joined
-     England, California and New York. What was read is in `docs/child-rules/RESEARCH.md`.
+   - **Recorded sets:** Georgia, British Columbia, Ontario, Ireland, Germany, France (partly read) and New South Wales
+     joined England, California and New York. What was read is in `docs/child-rules/RESEARCH.md`.
    - **New rule kinds:** days a week, chaperones by age, a cap on school days, no teaching rule, and a set-aside past a
      threshold, of the excess or of all.
    - **Coverage:** every playable country has a set (`docs/child-rules/COVERAGE.md`, checked by `tests/minors.test.ts`).
      Most are stand-ins: the rest of the US uses California's, of Canada British Columbia's, of Australia and New Zealand
      New South Wales's, of Europe's single market Germany's, everywhere else England's.
    - **Next to read:** Quebec, Victoria, New Zealand, Spain, Italy, the Netherlands, the Nordic countries, Japan, South
-     Korea, India, Mexico, Brazil, South Africa, Nigeria, the US production states (Georgia, New Mexico, Louisiana,
-     Illinois, Texas), Scotland, Wales and Northern Ireland.
+     Korea, India, Mexico, Brazil, South Africa, Nigeria, the US production states (New Mexico, Louisiana, Illinois,
+     Texas), Scotland, Wales and Northern Ireland.
    - **Startup room:** making the saved games list and settings load when opened (`src/ui/SavedGames.tsx`) brought
      startup to 219 kB gzipped with the new sets.
-2. **Cinemas: data gathered.** `node tools/cinemas/import.mjs` built 51,331 cinemas in 152 countries from Wikidata (CC0)
-   into `.cinemas/`, which git ignores. They need pages (by country and place, open or closed on the save's date) and a
-   part in theatrical releases, labelled as cinemas recorded in Wikidata. The United States has 31,376 and Britain
-   6,119; many countries are thin.
+2. **Cinemas: on place pages.** `node tools/cinemas/import.mjs` builds 51,331 cinemas in 152 countries from Wikidata
+   (CC0) into `.cinemas/`, which git ignores. Dates keep their recorded precision.
+   - A place page's Cinemas Nearby lists those within 25 km at the save's date. None is called open.
+   - Each shows a closure with or without its date. A cinema isn't counted before it opens.
+   - Not done: a part in theatrical releases, since the counts are too uneven between countries to stand for a market
+     (`docs/CINEMAS.md`); and a page of a whole country's cinemas.
 3. **Networks and streaming services: done.** The people import finished first: 190,751 people, 59,418 with a birth
    date and 18,460 with a death date.
    - **Data:** TMDB's details for all 105 networks, and owners from Wikidata (`tools/screen-catalog/networks.mjs`),

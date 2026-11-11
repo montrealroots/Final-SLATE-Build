@@ -39,7 +39,7 @@ export interface AgeBand {
 }
 
 export interface MinorRules {
-  id: 'GB-ENG' | 'US-CA' | 'US-NY' | 'CA-BC' | 'CA-ON' | 'IE' | 'DE' | 'FR' | 'AU-NSW';
+  id: 'GB-ENG' | 'US-CA' | 'US-NY' | 'US-GA' | 'CA-BC' | 'CA-ON' | 'IE' | 'DE' | 'FR' | 'AU-NSW';
   /** Where the rules are from, for messages: "England". Their full names are in casting-notes.ts RULE_WORDS. */
   place: string;
   /** The age from which these rules stop applying. */
@@ -144,6 +144,33 @@ const NEW_YORK: MinorRules = {
   licence: { leadDays: 2, nightLeadDays: 2 },
   restHours: 12,
   setAside: { percent: 15 }, // a child performer trust account (Part 186)
+};
+
+/** Georgia: Department of Labor Rule 300-7-1 and its Schedule of Hours of Performance (docs/child-rules/RESEARCH.md). */
+const GEORGIA: MinorRules = {
+  id: 'US-GA',
+  place: 'Georgia',
+  adultAt: 18, // rule .02(1)(o)
+  minAgeDays: 15, // rule .03(1)(e)
+  // The Schedule: at the location and at work by age. From 6, a minor whose tutoring isn't required may work two hours more.
+  bands: [
+    { fromDays: 15, toDays: 183, label: '15 days to 6 months', atPlace: 2, work: 20 / 60, workNoSchool: 20 / 60 },
+    { fromDays: 183, toDays: days(2), label: '6 months to 2 years', atPlace: 4, work: 2, workNoSchool: 2 },
+    { fromDays: days(2), toDays: days(6), label: '2 to 5', atPlace: 6, work: 3, workNoSchool: 3 },
+    { fromDays: days(6), toDays: days(9), label: '6 to 8', atPlace: 8, work: 4, workNoSchool: 6 },
+    { fromDays: days(9), toDays: days(16), label: '9 to 15', atPlace: 10, work: 5, workNoSchool: 7 },
+    { fromDays: days(16), toDays: days(18), label: '16 and 17', atPlace: 12, work: 8, workNoSchool: 10 },
+  ],
+  // Rule .04: a Child Labor Coordinator, retained by the production, one per ten minors (the game's chaperone).
+  supervisor: { roleId: 'chaperone', perGroup: 10, perGroupNoSchool: 10, underAge: 18 },
+  // Rule .09: a studio teacher, three hours of instruction a school day, one per ten minors.
+  teaching: { roleId: 'studio-teacher', hours: 3, perGroup: 10 },
+  nurseUnderDays: 183, // the Schedule (c)4-5: a nurse with infants under 6 months
+  // Certification of the production, the minor and the location; no processing time is published, so the game allows two
+  // days. Earlier or later hours: a written request 24 hours ahead (rule .03(4)).
+  licence: { leadDays: 2, nightLeadDays: 2 },
+  restHours: 12, // rule .03(5), on school days
+  setAside: null, // a 15% blocked trust (HB 418) was proposed, not found enacted
 };
 
 /** British Columbia: Employment Standards Regulation, Part 7.1, Division 2 (docs/child-rules/RESEARCH.md). */
@@ -288,7 +315,7 @@ const EUROPE = new Set('AT BE BG HR CY CZ DK EE FI GR HU IE IT LV LT LU MT NL PL
 
 /**
  * The rules for a production based at a place. A place whose own rules aren't recorded uses the nearest recorded set
- * and says so: the rest of the United States uses California's, the rest of Canada British Columbia's (Ontario has its own), the rest of
+ * and says so: the rest of the United States uses California's (New York and Georgia have their own), the rest of Canada British Columbia's (Ontario has its own), the rest of
  * Australia and New Zealand New South Wales's, the rest of Europe's single market Germany's (Ireland has its own), everywhere else England's.
  * Scotland, Wales and Northern Ireland have rules of their own, close to England's but not read for the game. The set
  * every playable country uses is listed in docs/child-rules/COVERAGE.md.
@@ -298,7 +325,7 @@ export function rulesFor(place: Place): { rules: MinorRules; standIn: string | n
   const instead = (r: MinorRules) => ({ rules: r, standIn: `${place.region || place.countryName}'s own rules aren't recorded, so ${r.place}'s are used.` });
   const region = (name: string) => new RegExp(`^${name}$`, 'i').test(place.region);
   switch (place.country) {
-    case 'US': return region('new york') ? own(NEW_YORK) : region('california') ? own(CALIFORNIA) : instead(CALIFORNIA);
+    case 'US': return region('new york') ? own(NEW_YORK) : region('california') ? own(CALIFORNIA) : region('georgia') ? own(GEORGIA) : instead(CALIFORNIA);
     case 'CA': return region('british columbia') ? own(BRITISH_COLUMBIA) : region('ontario') ? own(ONTARIO) : instead(BRITISH_COLUMBIA);
     case 'AU': return region('new south wales') ? own(NEW_SOUTH_WALES) : instead(NEW_SOUTH_WALES);
     case 'NZ': return instead(NEW_SOUTH_WALES);

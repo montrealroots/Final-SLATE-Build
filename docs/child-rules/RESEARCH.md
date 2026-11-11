@@ -60,6 +60,50 @@ Status per jurisdiction:
 - **Set-aside:** 15% to a trust account.
 - **Permit:** a Child Performer Permit, and the employer's notice of use 2 business days ahead.
 
+## Georgia (US-GA): read
+
+- **Source:** the Georgia Department of Labor's Rules, Chapter 300-7-1 (Child Labor: Minors in Entertainment), and its
+  form "Schedule of Hours of Performance" (dol.georgia.gov, PDFs), read November 11, 2026.
+- **Who (rule .02):** a minor is anyone under 18. No infant under 15 days may work (rule .03(1)(e)).
+- **Certification (rules .03, .05, .06, .08):**
+  - the production company holds a Department certification;
+  - each minor holds a minor certification, valid for the calendar year;
+  - each location is approved for 60 days.
+  - No processing time is given. Earlier or later hours need a written request 24 hours ahead (rule .03(4)).
+- **The Schedule:**
+
+  | Age | At the location | Work | Latest |
+  | --- | --- | --- | --- |
+  | 15 days to 6 months | 2 consecutive hours, in set windows | 20 minutes | 8 p.m. |
+  | 6 months to 2 | 4 | 2 | 10 p.m. |
+  | 2 to 6 | 6 | 3 | 10 p.m. |
+  | 6 to 9 | 8 | 4, or 6 when tutoring isn't required | 10 p.m. |
+  | 9 to 16 | 10 | 5, or 7 when tutoring isn't required | 10 p.m. before school, midnight otherwise |
+  | 16 to 18 | 12 | 8, or 10 when tutoring isn't required | midnight before school, 2 a.m. otherwise |
+
+- **All minors:**
+  - no start before 5 a.m.;
+  - no more than six consecutive days;
+  - the minor's representative (a parent or guardian) present at all times.
+- **Infants (Schedule (c)):** a Child Labor Coordinator, a child care provider and a nurse for every 3 infants under 6
+  weeks, and every 10 from 6 weeks to 6 months.
+- **Child Labor Coordinator (rule .04):** retained by the production, at the location whenever minors are, one per ten
+  minors.
+- **Education (rule .09):** a studio teacher from the first day when a minor works more than one school day in a school
+  week; three hours of instruction a school day from 4 to 18; one teacher per ten minors.
+- **Rest (rule .03(5)):** 12 hours between dismissal and the next call or school, from 4 to 18, when working during
+  school hours.
+- **Trust:** none enacted that was found. Bills HB 968 (2023–24) and HB 418 (2025–26) proposed a 15% blocked trust;
+  neither was found to have passed.
+- **How the game reads it:**
+  - Work hours from the Schedule, with the extra two hours on days without school.
+  - The Child Labor Coordinator is the game's chaperone, one per ten minors under 18.
+  - A studio teacher per ten on school days.
+  - A nurse under 6 months.
+  - Two days to arrange certification.
+  - No trust set-aside.
+  - Not modelled: the infant time windows, the six-day limit (the game never works Sundays), and banked instruction hours.
+
 ## British Columbia, Canada (CA-BC): read
 
 - **Source:** the BC government's page on Employment Standards Regulation, Part 7.1, Division 2 (children under 15 in

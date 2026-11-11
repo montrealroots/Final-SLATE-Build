@@ -7,14 +7,18 @@ import react from '@vitejs/plugin-react';
 // dev and preview servers on this machine only and never copied into a build: TMDB's terms allow caching for six months
 // and not redistribution, and whether it may be deployed hasn't been settled.
 const CATALOG = join(process.cwd(), '.screen-catalog');
+// Cinemas from Wikidata (docs/CINEMAS.md), built by tools/cinemas/import.mjs into .cinemas/, served beside the catalog.
+const CINEMAS = join(process.cwd(), '.cinemas');
 function serveCatalog(): Plugin {
   const handler: Connect.NextHandleFunction = (req, res, next) => {
     const m = /^\/screen-catalog\/([\w./-]+\.json)$/.exec((req.url ?? '').split('?')[0]);
     if (!m) return next();
-    const file = normalize(join(CATALOG, m[1]));
+    const cinema = /^cinemas\/(.+)$/.exec(m[1]);
+    const root = cinema ? CINEMAS : CATALOG;
+    const file = normalize(join(root, cinema ? cinema[1] : m[1]));
     // No catalog installed: say so in the index, a normal answer, rather than as a failed request.
-    if ((m[1] === 'index.json' || m[1] === 'world.json') && !existsSync(file)) { res.setHeader('content-type', 'application/json'); res.end('{"installed":false}'); return; }
-    if (!file.startsWith(CATALOG + '/') || !existsSync(file) || !statSync(file).isFile()) { res.statusCode = 404; res.end(); return; }
+    if ((m[1] === 'index.json' || m[1] === 'world.json' || m[1] === 'cinemas/index.json') && !existsSync(file)) { res.setHeader('content-type', 'application/json'); res.end('{"installed":false}'); return; }
+    if (!file.startsWith(root + '/') || !existsSync(file) || !statSync(file).isFile()) { res.statusCode = 404; res.end(); return; }
     res.setHeader('content-type', 'application/json');
     createReadStream(file).pipe(res);
   };

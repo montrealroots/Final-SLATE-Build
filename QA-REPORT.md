@@ -8,7 +8,17 @@
 
 ## Commands And Results
 
-### Current: Networks And Streaming Services (November 11, 2026)
+### Current: Cinemas On Place Pages, And Georgia's Child Rules (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 89 files, 718 tests. New:<br>- `tests/cinemas.test.ts` (4): openings and closings at their recorded precision, undated closures, distance;<br>- `tests/minors.test.ts`: Georgia's hours, coordinator and studio teacher per ten, nurse, and no trust.<br>Startup is 683 kB, 219 kB gzipped. |
+| `npx playwright test e2e/cinemas.spec.ts e2e/catalog.spec.ts e2e/children.spec.ts`, desktop and phone | 0 | 18 passed. The cinema journey checks London's card on fixture data: the counts, a closing date, an undated closure, a cinema not yet open, and one too far away. |
+| `e2e/world.spec.ts`, `e2e/failures.spec.ts`, desktop and phone | 0 | 30 passed, with the card on every place page. |
+| A dev server without `.cinemas/` | — | The index answers `{"installed":false}` (no console error), and a country's file answers 404. |
+| Real data, by eye | — | London's card at November 11, 2026 lists the West End's cinemas. The first import had read year-only dates as January 1. The importer now keeps each date's precision: in Britain, 203 openings by year, 9 by month and 77 by day. |
+
+### Earlier: Networks And Streaming Services (November 11, 2026)
 
 | Command | Failures | Notes |
 | --- | --- | --- |

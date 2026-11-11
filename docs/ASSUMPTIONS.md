@@ -63,7 +63,7 @@ when compulsory school age ends; California's and New York's stop at 18. The fig
 | Between calls | 12 hours (reg 24) | 12 hours | 12 hours |
 | Trust set-aside | none | 15% of gross pay | 15% of gross pay |
 
-Six more sets were added the same day, when the owner asked for child performers across the whole map. What was read
+Six more sets were added the same day (and Georgia's, described in the research log), when the owner asked for child performers across the whole map. What was read
 for each, and how the game reads what the texts leave to an authority, is in `docs/child-rules/RESEARCH.md`:
 
 | | British Columbia | Ontario | Ireland | Germany | France (partly read) | New South Wales |
@@ -94,7 +94,8 @@ What follows in the game:
   Ontario 25% of all they earn on it, once it passes $2,000. It
   is part of their pay, not a further cost.
 - **Other places.** Places whose rules aren't recorded use the nearest recorded set and say so:
-  - the rest of the United States uses California's;
+  - the rest of the United States uses California's (Georgia has its own, read from its Department of Labor's rules and
+    Schedule of Hours of Performance: `docs/child-rules/RESEARCH.md`);
   - the rest of Canada uses British Columbia's (Ontario has its own);
   - the rest of Australia, and New Zealand, use New South Wales's;
   - the rest of the European Union, the EEA and Switzerland use Germany's (Ireland has its own);

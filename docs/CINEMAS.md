@@ -52,8 +52,35 @@ Wikidata's coverage is uneven:
 
 The game says what is recorded and doesn't fill gaps with invented cinemas.
 
+## Dates
+
+Wikidata records a date as a day, a month or a year, and writes a year as January 1 of it. The first build read every
+date as a day, so a cinema "opened 1901-01-01" had only a year recorded. The importer now keeps each date at the
+precision it was recorded (`1901`, `1932-05`, `1937-05-07`).
+
+## In The Game
+
+A place page has **Cinemas Nearby** (`src/ui/Cinemas.tsx`, rules in `src/world/cinemas.ts`). It shows:
+- the cinemas recorded within 25 km, nearest first, with the fifteen nearest listed and the rest a button away;
+- how many of those have no closure recorded;
+- the country's total.
+
+Each listed cinema shows where it is, when it opened, how it stood on the save's date, its seats and who runs it, where
+recorded.
+
+- **Never "open".** Wikidata lists former cinemas as well as working ones, and many former cinemas are something else
+  now: London's KOKO is a music venue. A cinema is said to have "no closure recorded", never to be open.
+- **At the save's date.**
+  - A cinema whose recorded opening is later isn't counted.
+  - A closing date counts from its day, or once its month or year is over, so a part-known date never shows the future.
+  - A cinema Wikidata records as closed or demolished with no date says so: "recorded as closed; when isn't recorded". It
+    is shown that way at any date, because most such closures are decades old.
+- **Serving.** The dev and preview servers serve `.cinemas/` beside the screen catalog (`vite.config.ts`). Without it, the
+  card says the list isn't installed.
+
 ## Not Done Yet
 
-- Pages: cinemas by country and place, open or closed on the save's date.
-- A part in theatrical releases.
-- Serving `.cinemas/` to the game.
+- A part in theatrical releases. Wikidata's counts are too uneven between countries to set how many screens a release
+  gets: the United States records 31,376, mostly historic, and many countries a handful. Using them would make a
+  record's gaps look like a market's size.
+- A page listing a country's cinemas apart from a place.

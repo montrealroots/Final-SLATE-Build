@@ -54,6 +54,15 @@ export const CATALOG_FIXTURE: Record<string, unknown> = {
   'titles/movie-900003.json': later,
   'titles/tv-900101.json': tidewater,
   'seasons/900101-1.json': season,
+  // Cinemas, as tools/cinemas/import.mjs writes them, served beside the catalog; every one is made up.
+  'cinemas/index.json': { source: 'Wikidata (CC0)', builtAt: RETRIEVED, countries: [{ code: 'GB', cinemas: 5 }] },
+  'cinemas/GB.json': [
+    { id: 'Qf1', name: 'Riverside Picturehouse (Fixture)', lat: 51.51, lon: -0.12, opened: '1932', closed: null, state: null, seats: 400, operator: 'Fixture Cinemas', in: 'Fixture Borough' },
+    { id: 'Qf2', name: 'Old Odeon (Fixture)', lat: 51.52, lon: -0.1, opened: '1937-05-07', closed: '1999-06-30', state: null, seats: null, operator: null, in: null },
+    { id: 'Qf3', name: 'Gaiety (Fixture)', lat: 51.45, lon: -0.2, opened: null, closed: null, state: 'permanently closed', seats: null, operator: null, in: null },
+    { id: 'Qf4', name: 'New Screen (Fixture)', lat: 51.5, lon: -0.13, opened: '2030', closed: null, state: null, seats: null, operator: null, in: null },
+    { id: 'Qf5', name: 'Northern Lights (Fixture)', lat: 53.48, lon: -2.24, opened: null, closed: null, state: null, seats: null, operator: null, in: null },
+  ],
   // A network, as tools/screen-catalog/networks.mjs and the build write it; its owners and dates are made up.
   'networks/index.json': [[2, 'ABC', 'US', 2]],
   'networks/2.json': {

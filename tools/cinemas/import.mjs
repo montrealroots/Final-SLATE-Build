@@ -43,7 +43,14 @@ async function query(name, sparql) {
 
 const v = (b, k) => b[k]?.value ?? null;
 const qid = (uri) => uri?.replace('http://www.wikidata.org/entity/', '') ?? null;
-const day = (t) => (t ? t.slice(0, 10).replace(/^\+/, '') : null);
+// A date to the precision Wikidata recorded it at: a day, a month (1932-05) or a year (1932). Wikidata writes a year as
+// January 1 of it; read as a day, that would claim what isn't known (the first build did, until November 11, 2026).
+const day = (t, precision) => {
+  if (!t) return null;
+  const d = t.replace(/^\+/, '').slice(0, 10);
+  const p = Number(precision ?? 11);
+  return p >= 11 ? d : p === 10 ? d.slice(0, 7) : d.slice(0, 4);
+};
 
 async function main() {
   // The countries with cinemas, by their ISO code.
@@ -56,10 +63,14 @@ async function main() {
     const byId = new Map();
     for (let i = 0; i < ids.length; i += 200) {
       const batch = ids.slice(i, i + 200);
-      const rows = (await query(`details-${c.code}-${i / 200}`, `SELECT ?c ?cLabel ?coord ?opened ?inception ?closed ?dissolved ?stateLabel ?seats ?opLabel ?inLabel WHERE {
+      // Named "dated" since the precision was added: the first build's cached answers had none.
+      const rows = (await query(`dated-${c.code}-${i / 200}`, `SELECT ?c ?cLabel ?coord ?opened ?openedP ?inception ?inceptionP ?closed ?closedP ?dissolved ?dissolvedP ?stateLabel ?seats ?opLabel ?inLabel WHERE {
         VALUES ?c { ${batch.map((x) => `wd:${x}`).join(' ')} }
         ?c wdt:P625 ?coord.
-        OPTIONAL { ?c wdt:P1619 ?opened } OPTIONAL { ?c wdt:P571 ?inception } OPTIONAL { ?c wdt:P3999 ?closed } OPTIONAL { ?c wdt:P576 ?dissolved }
+        OPTIONAL { ?c p:P1619/psv:P1619 [ wikibase:timeValue ?opened; wikibase:timePrecision ?openedP ] }
+        OPTIONAL { ?c p:P571/psv:P571 [ wikibase:timeValue ?inception; wikibase:timePrecision ?inceptionP ] }
+        OPTIONAL { ?c p:P3999/psv:P3999 [ wikibase:timeValue ?closed; wikibase:timePrecision ?closedP ] }
+        OPTIONAL { ?c p:P576/psv:P576 [ wikibase:timeValue ?dissolved; wikibase:timePrecision ?dissolvedP ] }
         OPTIONAL { ?c wdt:P5817 ?state } OPTIONAL { ?c wdt:P1083 ?seats } OPTIONAL { ?c wdt:P137 ?op } OPTIONAL { ?c wdt:P131 ?in }
         SERVICE wikibase:label { bd:serviceParam wikibase:language "en,mul". }
       }`)).rows;
@@ -68,8 +79,8 @@ async function main() {
         const id = qid(v(r, 'c'));
         const m = /Point\(([-\d.]+) ([-\d.]+)\)/.exec(v(r, 'coord') ?? '');
         const x = byId.get(id) ?? { id, name: v(r, 'cLabel'), lat: m ? Number(m[2]) : null, lon: m ? Number(m[1]) : null };
-        x.opened ??= day(v(r, 'opened')) ?? day(v(r, 'inception'));
-        x.closed ??= day(v(r, 'closed')) ?? day(v(r, 'dissolved'));
+        x.opened ??= day(v(r, 'opened'), v(r, 'openedP')) ?? day(v(r, 'inception'), v(r, 'inceptionP'));
+        x.closed ??= day(v(r, 'closed'), v(r, 'closedP')) ?? day(v(r, 'dissolved'), v(r, 'dissolvedP'));
         x.state ??= v(r, 'stateLabel');
         x.seats ??= v(r, 'seats') ? Math.round(Number(v(r, 'seats'))) : null;
         x.operator ??= v(r, 'opLabel');

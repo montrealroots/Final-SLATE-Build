@@ -13,6 +13,7 @@ import { Breadcrumbs } from './Shell';
 import { store, useClock, useGame } from './store';
 import { loadWorldHolidays } from '../world/holidays/holidays';
 import { climateNote } from '../world/climate';
+import { CinemasNearby } from './Cinemas';
 
 
 const FILTERS = ['Birthdays', 'Holidays', 'Festivals', 'Awards', 'Deadlines', 'My Schedule', 'Film And Television'];
@@ -317,6 +318,7 @@ export function PlaceView() {
           </div>
           <p className="dim">Forecasts get less certain the further ahead they look.</p>
         </section>
+        <CinemasNearby place={place} today={today} />
       </div>
     </>
   );

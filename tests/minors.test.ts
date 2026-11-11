@@ -36,8 +36,8 @@ describe('the rules, from their official texts', () => {
     expect(rulesFor(getPlace('gb-london'))).toMatchObject({ rules: { id: 'GB-ENG' }, standIn: null });
     expect(rulesFor(getPlace('us-los-angeles'))).toMatchObject({ rules: { id: 'US-CA' }, standIn: null });
     expect(rulesFor(getPlace('us-new-york'))).toMatchObject({ rules: { id: 'US-NY' }, standIn: null });
-    expect(rulesFor(getPlace('us-atlanta')).rules.id).toBe('US-CA');
-    expect(rulesFor(getPlace('us-atlanta')).standIn).toBe("Georgia's own rules aren't recorded, so California's are used.");
+    expect(rulesFor(getPlace('us-austin')).rules.id).toBe('US-CA');
+    expect(rulesFor(getPlace('us-austin')).standIn).toBe("Texas's own rules aren't recorded, so California's are used.");
     expect(rulesFor(getPlace('jp-tokyo')).standIn).toContain("so England's are used");
   });
 
@@ -194,6 +194,22 @@ describe('the rules across the map', () => {
     const thirteen = Array.from({ length: 13 }, (_, i) => ({ ...kid(ie.rules, 10), characterId: `c${i}` }));
     expect(supervisionFor(thirteen, true)).toEqual([{ roleId: 'chaperone', count: 2, why: "Ireland's rules require one with children under 16." }]);
     expect(setAsideOf(ie.rules, 5000)).toBe(0);
+  });
+
+  it('in Georgia gives the Schedule\'s hours, a coordinator and a studio teacher per ten minors to 18, a nurse for infants, and no trust', () => {
+    const ga = rulesFor(getPlace('us-atlanta'));
+    expect(ga).toMatchObject({ rules: { id: 'US-GA' }, standIn: null });
+    expect(childShare(kid(ga.rules, 10), true)).toBe(5 / ADULT_SHOOT_HOURS);
+    expect(childShare(kid(ga.rules, 10), false)).toBe(7 / ADULT_SHOOT_HOURS); // two hours more without tutoring
+    expect(childShare(kid(ga.rules, 17), false)).toBe(10 / ADULT_SHOOT_HOURS);
+    expect(bandFor(ga.rules, 14)).toBeNull(); // not before 15 days
+    const eleven = Array.from({ length: 11 }, (_, i) => ({ ...kid(ga.rules, 17), characterId: `c${i}` }));
+    expect(supervisionFor(eleven, true)).toEqual([
+      { roleId: 'chaperone', count: 2, why: "Georgia's rules require one with children under 18." },
+      { roleId: 'studio-teacher', count: 2, why: "Georgia's rules require 3 hours of teaching on a school day." },
+    ]);
+    expect(supervisionFor([kid(ga.rules, 0.2)], false).map((x) => x.roleId)).toContain('set-nurse');
+    expect(setAsideOf(ga.rules, 5000)).toBe(0);
   });
 
   it('takes no child of 3 or under in Germany, gives 2 hours to 6 and 3 hours after, 14 hours\' rest, and asks 14 days for approval', () => {
