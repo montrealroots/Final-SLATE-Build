@@ -30,6 +30,14 @@ export const RULE_WORDS: Record<Minor['rules']['id'], { name: string; licence: s
   JP: { name: "Japan's Labour Standards Act", licence: "the Labour Standards Inspection Office's permission, with the head teacher's certificate and a parent's consent", night: '', setAside: '' },
   KR: { name: "South Korea's Popular Culture and Arts Industry Development Act", licence: "a parent's consent", night: "the consent of the performer and a parent", setAside: '' },
   MX: { name: "Mexico's Federal Labour Law (with the hours it sets at 15 for younger children, for whom it sets none)", licence: "a written agreement with a parent's consent, or from 15 a medical certificate", night: '', setAside: '' },
+  'US-TX': { name: "Texas's rules for child actors", licence: "the Texas Workforce Commission's child actor authorization (under 14)", night: "a parent's consent (under 14)", setAside: '' },
+  'US-NM': { name: "New Mexico's rules for child performers", licence: "the Department of Workforce Solutions' pre-authorization certificate", night: "the Department's waiver", setAside: 'a trust account until they are 18 (New Mexico, on contracts of $1,000 or more)' },
+  'CA-QC': { name: "Quebec's labour standards for children", licence: "a parent's written consent on the CNESST's form", night: '', setAside: '' },
+  ES: { name: "Spain's Workers' Statute (with the hours Spain's 2026 decree sets, as the labour authority sets them case by case until it takes effect)", licence: "the labour authority's written authorisation", night: '', setAside: '' },
+  'ES-2027': { name: "Spain's Royal Decree 607/2026 on artists", licence: "the labour authority's authorisation, with a parent's and, from 12, the child's consent", night: "the labour authority's authorisation for night work", setAside: '' },
+  IT: { name: "Italy's law on the work of children and adolescents", licence: "the labour inspectorate's authorisation, with the parents' written consent", night: '', setAside: '' },
+  BR: { name: "Brazil's Child and Adolescent Statute and labour laws (with England's hours under 16, as a judge sets them case by case)", licence: "a judge's authorisation", night: '', setAside: '' },
+  NZ: { name: "New Zealand's rules for workers under 16 (with New South Wales's hours, as New Zealand sets none)", licence: "a parent's agreement", night: '', setAside: '' },
   'AU-NSW': { name: "New South Wales's requirements for children in entertainment", licence: "the Children's Guardian's authority to employ children", night: "the Children's Guardian's approval of the hours", setAside: '' },
 };
 
@@ -72,7 +80,7 @@ export function fitNotes(state: GameState, p: Project, person: Person | 'player'
     out.push(`Usually plays ages ${plays[0]} to ${plays[1]}; the part is ${storyAgeWords(want)}.`);
   }
   // A child under the shoot's rules (minors.ts): what casting them brings with it.
-  const { rules, standIn } = projectRules(p);
+  const { rules, standIn } = projectRules(p, today);
   const ageDays = ageInDays(person.born, today);
   const band = bandFor(rules, ageDays);
   if (band) {

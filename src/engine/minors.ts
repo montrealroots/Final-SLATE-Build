@@ -41,7 +41,7 @@ export interface AgeBand {
 }
 
 export interface MinorRules {
-  id: 'GB-ENG' | 'GB-SCT' | 'GB-WLS' | 'GB-NIR' | 'US-CA' | 'US-NY' | 'US-GA' | 'CA-BC' | 'CA-ON' | 'IE' | 'DE' | 'FR' | 'AU-NSW' | 'IN' | 'JP' | 'KR' | 'MX';
+  id: 'GB-ENG' | 'GB-SCT' | 'GB-WLS' | 'GB-NIR' | 'US-CA' | 'US-NY' | 'US-GA' | 'CA-BC' | 'CA-ON' | 'IE' | 'DE' | 'FR' | 'AU-NSW' | 'IN' | 'JP' | 'KR' | 'MX' | 'US-TX' | 'US-NM' | 'CA-QC' | 'ES' | 'ES-2027' | 'IT' | 'BR' | 'NZ';
   /** Where the rules are from, for messages: "England". Their full names are in casting-notes.ts RULE_WORDS. */
   place: string;
   /** The age from which these rules stop applying. */
@@ -71,6 +71,8 @@ export interface MinorRules {
    * in from another set and said so (France's hours are England's).
    */
   read: 'read' | 'partly';
+  /** The date these rules take effect, where they replace an earlier set during the years the game covers (Spain, 2027). */
+  from?: string;
 }
 
 /**
@@ -283,6 +285,97 @@ const MEXICO: MinorRules = {
   restHours: 12, // none is set; the game uses 12, as most sets do
   setAside: null, // under 15, pay no less than a 15-to-17-year-old's (Article 175 Bis(c)); nothing is set aside
   read: 'partly',
+};
+
+/**
+ * Texas: Labor Code §§ 51.011 to 51.013 (statutes.capitol.texas.gov) and the Workforce Commission's rules, 40 TAC §§ 817.31
+ * and 817.33 (child actors under 14), read November 11, 2026. From 16 nothing limits the hours.
+ */
+const TEXAS: MinorRules = {
+  id: 'US-TX',
+  place: 'Texas',
+  adultAt: 16,
+  minAgeDays: 0,
+  bands: [
+    // § 817.33(3): a child actor under 14 works within the hours § 51.013 sets at 14 and 15: 8 a day and 48 a week (taken
+    // as 6 days of 8), and outside them only with a parent's consent and 12 hours off before returning.
+    { fromDays: 0, toDays: days(14), label: 'under 14', atPlace: 9, work: 8, workNoSchool: 8, days: 6 },
+    // § 51.013: 8 a day and 48 a week; none from 10 p.m. to 5 a.m. before a school day, or from midnight otherwise. Only a
+    // hardship exemption lifts it, which the game doesn't model, so no night work.
+    { fromDays: days(14), toDays: days(16), label: '14 and 15', atPlace: 9, work: 8, workNoSchool: 8, days: 6, noNight: true },
+  ],
+  // § 817.33(6) to (8): under 14, a parent or guardian present and within sight and sound at all times. The game hires a
+  // chaperone for each child, as it can't assume a parent is free.
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 14 },
+  // § 817.33(9): a certified tutor past two consecutive school days; the game doesn't count consecutive days, so hires none.
+  teaching: null,
+  nurseUnderDays: null,
+  // § 817.31: the Commission's authorization, applied for by a parent, valid until 14; no time is set, and the game
+  // allows 7 days. A parent's consent for earlier or later hours.
+  licence: { leadDays: 7, nightLeadDays: 7 },
+  restHours: 12, // § 817.33(3), after work outside the usual hours; the game uses it every day
+  setAside: null, // none found in Texas law
+  read: 'read',
+};
+
+/**
+ * New Mexico: 11.1.4.10 to 11.1.4.13 NMAC (child performers; in effect November 14, 2017) and NMSA § 50-6-19 (the trust),
+ * read November 11, 2026.
+ */
+const NEW_MEXICO: MinorRules = {
+  id: 'US-NM',
+  place: 'New Mexico',
+  adultAt: 18,
+  minAgeDays: 15,
+  bands: [
+    // 11.1.4.12 NMAC: at the place, and work, by age; more work when school isn't in session.
+    { fromDays: 15, toDays: 183, label: '15 days to 6 months', atPlace: 2, work: 20 / 60, workNoSchool: 20 / 60 },
+    { fromDays: 183, toDays: days(3), label: '6 months to 2 years', atPlace: 4, work: 2, workNoSchool: 2 },
+    { fromDays: days(3), toDays: days(6), label: '3 to 5', atPlace: 6, work: 3, workNoSchool: 3 },
+    { fromDays: days(6), toDays: days(9), label: '6 to 8', atPlace: 8, work: 4, workNoSchool: 6 },
+    { fromDays: days(9), toDays: days(16), label: '9 to 15', atPlace: 9, work: 5, workNoSchool: 7 },
+    { fromDays: days(16), toDays: days(18), label: '16 and 17', atPlace: 10, work: 6, workNoSchool: 8 },
+  ],
+  // 11.1.4.10(F): a parent or guardian within eyesight and earshot at all times, except while a teacher is teaching. The
+  // game hires a chaperone for each child, as it can't assume a parent is free.
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 18 },
+  // 11.1.4.12(A): a certified teacher for each 10 performers aged 6 to 17 when school is in session; 3 hours of schooling.
+  teaching: { roleId: 'tutor', hours: 3, perGroup: 10 },
+  nurseUnderDays: null, // a physician certifies an infant fit; no nurse is required
+  // 11.1.4.10: the employer's pre-authorization certificate before work starts; no time is set, and the game allows 7
+  // days. Later hours need the Department's waiver, granted before the work (11.1.4.12(I)).
+  licence: { leadDays: 7, nightLeadDays: 7 },
+  restHours: 12, // 11.1.4.12(J)
+  // 11.1.4.13: 15% of gross earnings into a trust, on a contract of $1,000 or more (taken as earnings on the production).
+  setAside: { percent: 15, over: 999, ofAll: true },
+  read: 'read',
+};
+
+/**
+ * Quebec: the Act respecting labour standards (CQLR c. N-1.1), ss. 84.2 to 84.7, current to October 15, 2026, and its
+ * regulation (c. N-1.1, r. 3), ss. 35.0.3 to 35.2, current to July 1, 2026, read on LégisQuébec November 11, 2026.
+ */
+const QUEBEC: MinorRules = {
+  id: 'CA-QC',
+  place: 'Quebec',
+  // Ss. 84.4 to 84.7 apply while a child must attend school: until the end of the school year in which they turn 16,
+  // which the game takes as their 17th birthday, the first by which every child is past it.
+  adultAt: 17,
+  minAgeDays: 0, // s. 35.0.3(1): a performer under 14 may work, with a parent's written consent on the CNESST's form
+  bands: [
+    // S. 84.4: not in class hours, and at most 17 hours a week and 10 from Monday to Friday, taken as 2 on a school day and
+    // 7 on a day without school. In a break of more than seven days the limit doesn't apply; the game keeps 7.
+    { fromDays: 0, toDays: days(17), label: 'under 17', atPlace: 7, work: 2, workNoSchool: 7 },
+  ],
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 0 }, // the Act requires no one
+  teaching: null, // work is only outside class hours (ss. 84.4, 84.5)
+  nurseUnderDays: null,
+  // A parent's written consent, stating the most hours a week and when the child is free (s. 84.3). Night work is allowed
+  // for performers (r. 3, ss. 35.1 and 35.2).
+  licence: { leadDays: 1, nightLeadDays: 1 },
+  restHours: 12, // none is set; the game uses 12, as most sets do
+  setAside: null,
+  read: 'read',
 };
 
 /** California: 8 CCR §11760 (hours), §11755.2 (studio teachers), Family Code §6752 (the 15% set-aside). */
@@ -512,25 +605,157 @@ const NEW_SOUTH_WALES: MinorRules = {
   read: 'read',
 };
 
+/**
+ * Spain from May 25, 2027: Royal Decree 607/2026 (BOE July 25, 2026, in force ten months later), Article 11, read on BOE
+ * November 11, 2026. It sets hours by age for performers under 16 for the first time.
+ */
+const after = (years: number) => days(years) + 1; // "from N years and a day"
+const SPAIN_2027: MinorRules = {
+  id: 'ES-2027',
+  place: 'Spain',
+  adultAt: 18, // Article 11(4) and the Workers' Statute: 16 and 17 work no overtime and no nights
+  minAgeDays: 62, // 11(2)(c)1.ª: no work at all up to two months
+  bands: [
+    // 11(2)(c): hours a day, preparation included, and a week (taken as days of the daily hours); a 30-minute break.
+    // 11(2)(d): no night work, except by authorisation from 12: to 11 p.m. at 12 to 14, midnight at 15.
+    { fromDays: 62, toDays: after(1), label: '2 months to 1', atPlace: 2.5, work: 2, workNoSchool: 2, days: 2, noNight: true },
+    { fromDays: after(1), toDays: after(3), label: '1 to 3', atPlace: 3.5, work: 3, workNoSchool: 3, days: 2, noNight: true },
+    { fromDays: after(3), toDays: after(6), label: '3 to 6', atPlace: 4.5, work: 4, workNoSchool: 4, days: 2, noNight: true },
+    // 15 hours a week, 25 out of term; the game keeps 15.
+    { fromDays: after(6), toDays: after(12), label: '6 to 12', atPlace: 5.5, work: 5, workNoSchool: 5, days: 3, noNight: true },
+    // 24 hours a week, 30 out of term; the game keeps 24.
+    { fromDays: after(12), toDays: days(16), label: '12 to 15', atPlace: 6.5, work: 6, workNoSchool: 6, days: 4 },
+    // 11(4): the Workers' Statute's 8 hours (Article 34.3) and 40 a week; night to midnight only by authorisation.
+    { fromDays: days(16), toDays: days(18), label: '16 and 17', atPlace: 8.5, work: 8, workNoSchool: 8, days: 5 },
+  ],
+  // 11(2)(b): a relative to the second degree, or someone the company names with the parents' agreement, present
+  // throughout. The game hires a chaperone for each child, as it can't assume a parent is free.
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 16 },
+  teaching: null, // 11(2)(a): work fits the child's schooling, mainly in holidays and at weekends; no hours are set
+  nurseUnderDays: null,
+  // 11(3): the labour authority's authorisation before work starts, for each production, with days, hours and places.
+  // The authority has 15 working days to decide an extension; none is set for the first, and the game allows 21 days.
+  licence: { leadDays: 21, nightLeadDays: 21 },
+  restHours: 16, // 11(2)(d) and 11(4)(b): 16 hours' rest after night work, at most three nights a week
+  setAside: null,
+  read: 'read',
+  from: '2027-05-25',
+};
+
+/**
+ * Spain until May 24, 2027: the Workers' Statute (Royal Legislative Decree 2/2015), Article 6, read on BOE. Partly read:
+ * a child under 16 performs only by the labour authority's written authorisation, case by case, and no hours are set
+ * in law, so the hours Spain's own decree sets from 2027 stand in, and the game says so. No night work under 18.
+ */
+const SPAIN: MinorRules = {
+  ...SPAIN_2027,
+  id: 'ES',
+  bands: SPAIN_2027.bands.map((b) => ({ ...b, noNight: true })), // Article 6.2: no night work under 18
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 0 }, // none required in law
+  restHours: 12, // none is set; the game uses 12, as most sets do
+  read: 'partly',
+  from: undefined,
+};
+
+/**
+ * Italy: Law 977 of October 17, 1967 on the work of children and adolescents, Articles 1, 4, 15, 17, 18 and 20, as in
+ * force on November 11, 2026 (Normattiva; the law last updated March 14, 2016).
+ */
+const ITALY: MinorRules = {
+  id: 'IT',
+  place: 'Italy',
+  adultAt: 18,
+  minAgeDays: 0,
+  bands: [
+    // Article 1: a child (bambino) is under 15 or still in compulsory schooling, which in Italy ends at 16. Article 18:
+    // 7 hours a day and 35 a week (taken as 5 days); Article 20: an hour's break past 4 and a half. The law sets no lower
+    // figure for a school day; the authorisation must protect attendance (Article 4(2)).
+    { fromDays: 0, toDays: days(16), label: 'under 16', atPlace: 8, work: 7, workNoSchool: 7, days: 5 },
+    { fromDays: days(16), toDays: days(18), label: '16 and 17', atPlace: 9, work: 8, workNoSchool: 8, days: 5 },
+  ],
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 0 }, // the law requires no one
+  teaching: null,
+  nurseUnderDays: null,
+  // Article 4(2): the labour inspectorate's authorisation, with the parents' written consent, under DPR 365/1994, whose
+  // time to decide wasn't read; the game allows 14 days. Article 17: performers may work to midnight under it.
+  licence: { leadDays: 14, nightLeadDays: 14 },
+  restHours: 14, // Article 17(1): 14 consecutive hours after work into the night
+  setAside: null,
+  read: 'read',
+};
+
+/**
+ * Brazil: the Child and Adolescent Statute (Law 8.069/1990), Articles 67 and 149, and the Consolidation of Labour Laws,
+ * Articles 403 to 406 and 411 to 413, read on the Chamber of Deputies' site November 11, 2026. Partly read: under 16, a
+ * judge authorises each production case by case (Article 149 §2) and the law sets no hours, so England's stand in.
+ */
+const BRAZIL: MinorRules = {
+  id: 'BR',
+  place: 'Brazil',
+  adultAt: 18,
+  minAgeDays: 0,
+  bands: [
+    // England's hours under 16, standing in. CLT 404 and ECA 67: no work from 10 p.m. to 5 a.m. under 18.
+    ...ENGLAND.bands.map((b) => ({ ...b, noNight: true })),
+    // CLT 411: the general 8-hour day, 44 a week (taken as 6 days); no overtime (413).
+    { fromDays: days(16), toDays: days(18), label: '16 and 17', atPlace: 9, work: 8, workNoSchool: 8, days: 6, noNight: true },
+  ],
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 0 }, // set by the judge, if at all
+  teaching: null, // CLT 403: work at hours that let the child attend school
+  nurseUnderDays: null,
+  // ECA 149(II): a judge's authorisation (alvará) for each production; no time is set, and the game allows 30 days.
+  licence: { leadDays: 30, nightLeadDays: 30 },
+  restHours: 11, // CLT 412
+  setAside: null,
+  read: 'partly',
+};
+
+/**
+ * New Zealand: the Education and Training Act 2020, s. 54 (version as at October 1, 2026), and the Health and Safety at
+ * Work (General Risk and Workplace Management) Regulations 2016, reg. 48, read on legislation.govt.nz November 11, 2026.
+ * Partly read: New Zealand sets no hours for child performers, so New South Wales's stand in.
+ */
+const NEW_ZEALAND: MinorRules = {
+  ...NEW_SOUTH_WALES,
+  id: 'NZ',
+  place: 'New Zealand',
+  adultAt: 16, // both rules are for under 16
+  // New South Wales's hours and days stand in; reg. 48: no work from 10 p.m. to 6 a.m. under 16. S. 54: not in school
+  // hours, which New South Wales's 4-hour cap on a school day stands for.
+  bands: NEW_SOUTH_WALES.bands.map((b) => ({ ...b, noNight: true })),
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 0 }, // the law requires no one
+  nurseUnderDays: null,
+  licence: { leadDays: 1, nightLeadDays: 1 }, // no permit: a parent's agreement
+  restHours: 8, // none is set; no work from 10 p.m. to 6 a.m. leaves 8
+  read: 'partly',
+};
+
+
 /** The countries of the European Union, the EEA and Switzerland, which use Germany's rules where their own aren't read. */
 const EUROPE = new Set('AT BE BG HR CY CZ DK EE FI GR HU IE IT LV LT LU MT NL PL PT RO SK SI ES SE IS LI NO CH'.split(' '));
 
 /**
- * The rules for a production based at a place. A place whose own rules aren't recorded uses the nearest recorded set
- * and says so: the rest of the United States uses California's (New York and Georgia have their own), the rest of Canada British Columbia's (Ontario has its own), the rest of
- * Australia and New Zealand New South Wales's, the rest of Europe's single market Germany's (Ireland has its own), everywhere else England's.
- * Scotland, Wales and Northern Ireland have their own (read November 11, 2026). The set
- * every playable country uses is listed in docs/child-rules/COVERAGE.md.
+ * The rules for a production based at a place, on a date (Spain's change on May 25, 2027). A place whose own rules
+ * aren't recorded uses the nearest recorded set and says so: the rest of the United States uses California's (New York,
+ * Georgia, Texas and New Mexico have their own), the rest of Canada British Columbia's (Ontario and Quebec have their
+ * own), the rest of Australia New South Wales's, the rest of Europe's single market Germany's (Ireland, France, Spain and
+ * Italy have their own), everywhere else England's. The set every playable country uses is listed in
+ * docs/child-rules/COVERAGE.md.
  */
-export function rulesFor(place: Place): { rules: MinorRules; standIn: string | null } {
+export function rulesFor(place: Place, on: string = RULES_READ): { rules: MinorRules; standIn: string | null } {
   const own = (r: MinorRules) => ({ rules: r, standIn: null });
   const instead = (r: MinorRules) => ({ rules: r, standIn: `${place.region || place.countryName}'s own rules aren't recorded, so ${r.place}'s are used.` });
   const region = (name: string) => new RegExp(`^${name}$`, 'i').test(place.region);
   switch (place.country) {
-    case 'US': return region('new york') ? own(NEW_YORK) : region('california') ? own(CALIFORNIA) : region('georgia') ? own(GEORGIA) : instead(CALIFORNIA);
-    case 'CA': return region('british columbia') ? own(BRITISH_COLUMBIA) : region('ontario') ? own(ONTARIO) : instead(BRITISH_COLUMBIA);
+    case 'US': return region('new york') ? own(NEW_YORK) : region('california') ? own(CALIFORNIA) : region('georgia') ? own(GEORGIA)
+      : region('texas') ? own(TEXAS) : region('new mexico') ? own(NEW_MEXICO) : instead(CALIFORNIA);
+    case 'CA': return region('british columbia') ? own(BRITISH_COLUMBIA) : region('ontario') ? own(ONTARIO)
+      : place.regionCode === 'CA-QC' || region('qu[eé]bec') ? own(QUEBEC) : instead(BRITISH_COLUMBIA);
     case 'AU': return region('new south wales') ? own(NEW_SOUTH_WALES) : instead(NEW_SOUTH_WALES);
-    case 'NZ': return instead(NEW_SOUTH_WALES);
+    case 'NZ': return own(NEW_ZEALAND);
+    case 'ES': return own(on >= SPAIN_2027.from! ? SPAIN_2027 : SPAIN);
+    case 'IT': return own(ITALY);
+    case 'BR': return own(BRAZIL);
     case 'IE': return own(IRELAND);
     case 'IN': return own(INDIA);
     case 'JP': return own(JAPAN);
@@ -547,7 +772,8 @@ export function rulesFor(place: Place): { rules: MinorRules; standIn: string | n
   }
 }
 
-export const projectRules = (p: Project) => rulesFor(getPlace(p.axes.basePlaceId));
+/** The rules of the project's base on a date: Spain's change on May 25, 2027. */
+export const projectRules = (p: Project, on: string) => rulesFor(getPlace(p.axes.basePlaceId), on);
 
 /** The age band of a child, by age in days; none once they are past the rules' age. */
 export function bandFor(rules: MinorRules, ageDays: number): AgeBand | null {
@@ -608,7 +834,7 @@ export function ageInDays(born: string, on: string): number {
  * parts are played by children; at 16 and 17, by an adult, as is common, until someone younger is cast.
  */
 export function minorFor(state: GameState | undefined, p: Project, characterId: string, on: string, method: 'on-set' | 'voice' | 'motion-capture' = 'on-set'): Minor | null {
-  const { rules } = projectRules(p);
+  const { rules } = projectRules(p, on);
   const ch = p.characters.find((c) => c.id === characterId);
   const cast = p.cast.find((c) => c.characterId === characterId && (method === 'on-set' ? c.method !== 'voice' : c.method === method));
   if (cast && cast.performer === 'player') return null; // the player is never under 19 (state.ts MIN_START_AGE)

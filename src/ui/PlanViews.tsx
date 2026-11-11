@@ -884,8 +884,8 @@ function ChildrenCard({ p }: { p: Project }) {
   const g = useGame();
   const kids = childrenIn(p, g);
   if (!kids.length) return null;
-  const { rules, standIn } = projectRules(p);
   const today = dateKey(g.now, currentZone(g));
+  const { rules, standIn } = projectRules(p, today);
   const crew = supervisionFor(kids, true);
   const hired = (roleId: string) => p.hires.filter((h) => h.roleId === roleId && h.status === 'accepted').length;
   return (

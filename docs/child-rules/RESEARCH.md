@@ -40,6 +40,14 @@ the engine has is missing here, or its latest change is in 2026 or later.
 | France (FR) | 2025-03-21 | 2025-03-21 | The industry agreement's signing date. |
 | India (IN) | 2017-06-02 | 2017-06-02 | G.S.R. 543(E), which added Rule 2C; the NCPCR guidelines restate it. Later amendments to Rule 2C weren't looked for. |
 | Japan (JP) | 1947 | 2025-06-01 | e-Gov's revisions: Articles 56, 60 and 61 are the same in every revision from June 1, 2025 (the earliest compared) to December 23, 2028. Articles 57 and 58 (certificates, guardians) change on that date; the game doesn't model them. |
+| Texas (US-TX) | 1993-09-01 | 2024-12-30 | Labor Code §§ 51.011 to 51.013 from September 1, 1993; 40 TAC § 817.33 from January 12, 1998; § 817.31 last amended effective December 30, 2024 (Cornell's copy of the Register note). |
+| New Mexico (US-NM) | 2008-06-30 | 2017-11-14 | 11.1.4 NMAC's history notes: adopted June 30, 2008; the current sections in effect November 14, 2017. |
+| Quebec (CA-QC) | 1999 | 2025 | LégisQuébec's notes: ss. 84.2 to 84.7 from 1997 and 1999, amended by L.Q. 2023, c. 11; the regulation's s. 35.0.3 last amended by Decree 577-2025. |
+| Spain (ES) | 2015-10-24 | 2015-10-24 | The Workers' Statute recast (Royal Legislative Decree 2/2015); Article 6 as consolidated on BOE. The set ends on May 24, 2027. |
+| Spain from 2027 (ES-2027) | 2027-05-25 | 2026-07-25 | Royal Decree 607/2026, published July 25, 2026 and in force ten months later (final provision 2). The engine applies it from May 25, 2027. |
+| Italy (IT) | 1967 | 2006-07-05 | Normattiva: Article 4 in force from July 5, 2006; Articles 15, 17 and 18 from October 23, 1999; the law's last update March 14, 2016. |
+| Brazil (BR) | 1990-07-13 | 2000-12-19 | ECA Articles 67 and 149 as enacted; CLT Article 403 as worded by Law 10.097 of December 19, 2000; Articles 404 to 413 from 1943 and 1967. |
+| New Zealand (NZ) | 2020-08-01 | 2024-08-10 | Education and Training Act 2020, s. 54, with no amendment noted; the Health and Safety at Work (General Risk and Workplace Management) Regulations 2016 as at August 10, 2024, reg. 48 with none noted. |
 | Mexico (MX) | 1970-05-01 | 2015-06-12 | The Chamber of Deputies' text (last reform May 14, 2026): Articles 174, 175, 175 Bis, 178 and 180 were last reformed on June 12, 2015, and Article 177 carries no reform note. |
 | South Korea (KR) | 2014-07-29 | 2025-09-26 | law.go.kr: Act No. 12349 of January 28, 2014, in force six months later; the version read is in force from September 26, 2025, and Articles 22 and 23 carry no amendment marks. |
 | New South Wales (AU-NSW) | 2022-09-01 | 2025-11-12 | The Children's Guardian (Amendment) Regulation (No 2) 2022 moved child employment into the Children's Guardian Regulation 2022; the Code of Practice page was last updated November 12, 2025. |
@@ -70,6 +78,13 @@ Gaps in each set, as found when it was read:
 | New South Wales | The authority's processing time; the game allows 7 days. A supervisor ratio from 3; the game has one per 5. |
 | India | Rule 2C itself wasn't read: its figures are from the NCPCR guidelines, which cite it rule by rule. The District Magistrate's time to permit; the game allows 7 days. No rest between days is set; the game uses 12. The 27 consecutive days and the six-month permit aren't modelled. |
 | Japan | The Inspection Office's time to permit; the game allows 14 days. A school day taken as 6 hours of school. The weekly 40 hours aren't modelled. |
+| Texas | A certified tutor is required past two consecutive school days (40 TAC § 817.33(9)); the game doesn't count consecutive days, so hires none. The Commission's processing time; the game allows 7 days, though the authorization lasts until the child is 14. The weekly 48 hours taken as 6 days. The hardship exemption at 14 and 15 isn't modelled. |
+| New Mexico | The trust's $1,000 is on the contract; the game counts earnings on the production. The time to issue the certificate; the game allows 7 days. Teaching is from 6 in the rules and from 5 in the game. |
+| Quebec | The 17 hours a week and 10 from Monday to Friday taken as 2 on a school day and 7 on a day without; the limit lifts in a break of more than seven days, which the game doesn't model. No rest between days; the game uses 12. Collective agreements (UDA, AQTIS) aren't law and weren't read. |
+| Spain | Until May 25, 2027: the hours are a case-by-case authorisation in law, so the 2026 decree's stand in. From then: weekly hours taken as days of the daily hours, and the longer weeks out of term not modelled. The authority's time for a first authorisation; the game allows 21 days. Night work at 12 to 15 ends at 11 p.m. or midnight; the game treats a night scene as one night. |
+| Italy | DPR 365/1994, which sets the authorisation's procedure, wasn't read; the game allows 14 days. Ministerial Decree 218/2006 (children under 14 in television) wasn't read. |
+| Brazil | Under 16 the judge sets the conditions case by case; England's hours stand in. The time to obtain the authorisation; the game allows 30 days. |
+| New Zealand | No hours are set for child performers; New South Wales's stand in, with its 4-hour cap on a school day standing for the ban on work in school hours. No approved code of practice for night work in screen production was found. |
 | Mexico | Under 15: no hours, night limit or day off are set, as the activity isn't work in law; the 15-year-old's stand in, and the game says so. The time to arrange the agreement or certificate; the game allows 7 days. No rest between days; the game uses 12. |
 | South Korea | The weekly hours taken as 5 days; the extra hour by agreement from 15, and work to midnight before a school holiday under 15, aren't modelled. The youth protection officer (Article 21-2) is one of the producer's staff, so no one is hired. No rest between days from 15; the game uses 8 at every age. |
 | Every other place | No rules read: the nearest read set stands in, and the game says so (`docs/child-rules/COVERAGE.md`). |
@@ -166,6 +181,114 @@ Gaps in each set, as found when it was read:
   a.m.). There is no permission for night work.
 - **Breaks (Article 34):** 45 minutes when a day's work passes 6 hours.
 - **Not required:** a chaperone or teacher on set, or any share of pay set aside.
+
+## Texas, United States (US-TX): read
+
+- **Source:** Texas Labor Code §§ 51.002, 51.011 to 51.013 (statutes.capitol.texas.gov, read in a browser) and 40 TAC
+  §§ 817.31 and 817.33 (Cornell's copy of the Texas Administrative Code), read November 11, 2026.
+- **Who:** a child is under 18 (§ 51.002), but the limits are for children under 16. Under 14, employment is unlawful
+  (§ 51.011) except as performers the Commission authorizes (§ 51.012).
+- **Authorization (§ 817.31):** a parent applies, with proof of age and a photograph; valid until the child is 14.
+- **Under 14 (§ 817.33):** within the hours § 51.013 sets at 14 and 15, or outside them with a parent's consent and 12
+  hours off before returning, never past 8 hours a day or 48 a week; a parent or guardian present, within sight and
+  sound; a certified tutor past two consecutive school days; no lost class credit.
+- **14 and 15 (§ 51.013):** 8 hours a day, 48 a week; none from 10 p.m. to 5 a.m. before a school day, or from midnight
+  to 5 a.m. otherwise; a hardship exemption may lift it.
+- **Not found:** any share of pay set aside.
+
+## New Mexico, United States (US-NM): read
+
+- **Source:** 11.1.4.10 to 11.1.4.13 NMAC (Cornell's copy of the New Mexico Administrative Code), read November 11, 2026.
+- **Certificate (11.1.4.10):** the employer obtains the Department of Workforce Solutions' pre-authorization
+  certificate for any performer under 18 before work starts. A parent or guardian signs off, and is within eyesight
+  and earshot at all times except while a teacher is teaching.
+- **Teacher (11.1.4.11, 11.1.4.12(A)):** a certified teacher for each 10 performers aged 6 to 17 when school is in session.
+- **Hours (11.1.4.12):** at the place, and work:
+  - 15 days to 6 months: 2 and 20 minutes, a physician's certificate;
+  - 7 months to 2: 4 and 2;
+  - 3 to 5: 6 and 3;
+  - 6 to 8: 8 and 4 (6 without school);
+  - 9 to 15: 9 and 5 (7 without school);
+  - 16 to 18: 10 and 6 (8 without school).
+- **Times (11.1.4.12(B)):** not before 5 a.m., or after 10 p.m. before a school day or midnight otherwise; the Department
+  may waive the limits in advance. 12 hours' rest after the workday (11.1.4.12(J)).
+- **Trust (11.1.4.13):** on a contract of $1,000 or more, at least 15% of gross earnings into a trust until 18.
+
+## Quebec, Canada (CA-QC): read
+
+- **Source:** the Act respecting labour standards (CQLR c. N-1.1), ss. 84.2 to 84.7, current to October 15, 2026, and
+  the Regulation respecting labour standards (c. N-1.1, r. 3), ss. 35.0.3 to 35.2, current to July 1, 2026, on
+  LégisQuébec, read November 11, 2026 in a browser.
+- **Under 14 (s. 84.3, r. 3 s. 35.0.3(1)):** may work as a creator or performer in film, with a parent's written consent
+  on the CNESST's form, stating the most hours a week and when the child is free.
+- **School (ss. 84.4, 84.5):** a child who must attend school works outside class hours, at most 17 hours a week and 10
+  from Monday to Friday, except in a break of more than seven days.
+- **Night (ss. 84.6, 84.7):** none from 11 p.m. to 6 a.m., and home between them; neither applies to performers (r. 3,
+  ss. 35.1 and 35.2).
+- **Not required:** a permit, a chaperone, a teacher, or any share of pay set aside.
+
+## Spain (ES): partly read
+
+- **Source:** the Workers' Statute (Royal Legislative Decree 2/2015), Article 6, consolidated on BOE (last update
+  October 21, 2026), read November 11, 2026. Royal Decree 1435/1985, which it works with, wasn't read.
+- **Under 16 (Article 6.4):** no work, except performing in public shows in exceptional cases, by the labour authority's
+  written authorisation for the specific performances, if neither health nor education suffers. No hours are set.
+- **Under 18 (Articles 6.2, 6.3):** no night work and no overtime.
+- **What stands in:** the hours Royal Decree 607/2026 sets (below), as the law sets none until it takes effect.
+
+## Spain from May 25, 2027 (ES-2027): read
+
+- **Source:** Royal Decree 607/2026 of July 22, 2026 on the special employment relationship of artists (BOE July 25,
+  2026), Article 11 and final provision 2, read on BOE November 11, 2026. It replaces Royal Decree 1435/1985 entirely.
+- **In force:** ten months after publication: May 25, 2027.
+- **Authorisation (11(3)):** the labour authority's, before work starts, for each production, with its days, hours and
+  places; asked for by the company with the parents' authorisation and, from 12, the child's consent. Extensions:
+  15 working days' notice, and 15 working days for the authority to decide.
+- **Hours (11(2)(c)), preparation included:**
+  - up to 2 months: none;
+  - to 1: 2 a day, 4 a week;
+  - to 3: 3 a day, 6 a week;
+  - to 6: 4 a day, 10 a week;
+  - to 12: 5 a day, 15 a week (25 out of term);
+  - to 16: 6 a day, 24 a week (30 out of term);
+  - a break of at least 30 minutes.
+- **Night (11(2)(d), 11(4)(b)):** none, except by authorisation: 12 to 14 until 11 p.m. (midnight out of term), 15 to 17
+  until midnight; at most three nights a week, each followed by 16 hours' rest.
+- **Present (11(2)(b)):** a relative to the second degree, or someone the company names with the parents' agreement.
+- **Content (11(2)(f)):** nothing sexually explicit under 18; no violent scenes under 7.
+
+## Italy (IT): read
+
+- **Source:** Law 977 of October 17, 1967 (protection of the work of children and adolescents), Articles 1, 4, 15, 17,
+  18 and 20, as in force November 11, 2026 on Normattiva, read in a browser.
+- **Who (Article 1):** a child (bambino) is under 15 or still in compulsory schooling; an adolescent is 15 to 17 and
+  out of it.
+- **Authorisation (Article 4(2)):** the labour inspectorate may authorise a child's work in entertainment, with the
+  parents' written consent, if safety, development and school attendance don't suffer, under DPR 365/1994.
+- **Hours (Article 18):** a child free of school obligations, 7 a day and 35 a week; an adolescent, 8 and 40.
+- **Night (Articles 15, 17):** none, but a performer may work until midnight, then 14 consecutive hours' rest.
+
+## Brazil (BR): partly read
+
+- **Source:** the Child and Adolescent Statute (Law 8.069/1990), Articles 67 and 149, and the Consolidation of Labour
+  Laws (Decree-Law 5.452/1943), Articles 403 to 406 and 411 to 413, the updated texts on the Chamber of Deputies' site
+  (camara.leg.br), read November 11, 2026. The Presidency's site refused the request.
+- **Under 16 (CLT 403; ECA 149):** no work, except taking part in public shows by a judge's authorisation (alvará),
+  case by case, with no general rules (149 §2).
+- **Under 18:** no night work, 10 p.m. to 5 a.m. (CLT 404, ECA 67); 11 hours between workdays (CLT 412); the general
+  working day, without overtime (CLT 411, 413); hours that allow school (CLT 403).
+- **What stands in:** England's hours under 16, as the judge sets them case by case.
+
+## New Zealand (NZ): partly read
+
+- **Source:** the Education and Training Act 2020, s. 54 (version as at October 1, 2026), and the Health and Safety at
+  Work (General Risk and Workplace Management) Regulations 2016, reg. 48 (as at August 10, 2024), on
+  legislation.govt.nz, read in a browser November 11, 2026. MBIE's page on hiring young people (updated May 5, 2026)
+  points to both.
+- **Under 16:** not in school hours, or in a way that interferes with school (s. 54); not from 10 p.m. to 6 a.m., unless
+  under an approved code of practice (reg. 48).
+- **Not set:** hours, a permit, a chaperone, or any share of pay set aside.
+- **What stands in:** New South Wales's hours and days a week.
 
 ## Mexico (MX): partly read
 
