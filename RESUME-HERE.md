@@ -77,11 +77,21 @@ Where it stands:
   extended in post and the story's year, all read by the schedule, the shoot day, the estimate and the call sheet
   (`src/engine/looks.ts`, figures in `docs/ASSUMPTIONS.md`); the package's 1986 zombie example built from ideas,
   compared three ways and delivered, in the engine and in the browser; both audit tables written from the code.
+- **D, done (built before C; `docs/creative-depth/DECISIONS.md` says why):** people from the film catalog are
+  considered on their own page, join a part's or a job's list, read, counter, are contracted, are found booked by a
+  second project, work, are paid for each day once, are credited by name, and have their work in the story listed apart
+  from their recorded credits (`src/engine/guests.ts`, `src/ui/PersonWork.tsx`). Nothing about them is guessed, an
+  unknown age blocks every offer until the player says, and nobody is approached after a recorded death. Each copied
+  record is renewed or withdrawn at TMDB's six months. A single film can hire a writer and a director. Hired writers
+  are commissioned by the pass, paid by the day, and credited and counted only for work the player accepts
+  (`src/engine/writing-jobs.ts`, `src/ui/WritingWork.tsx`); a hired director is paid for each day they direct.
+  Journeys J04 and J05 are `e2e/real-people.spec.ts`. The ledger's "Limits Of Milestone D" lists what isn't built: a
+  producer's job, agents, inquiry holds, and a writer's pass changing the script itself.
 - **C, next:** ideas for the 38 creative fields that have none yet (`FIELD-INVENTORY.csv`, rows marked "Not yet");
   engines for the camera, lighting and sound choices that are only notes today; named appearance states by scene;
   routes for every genre; the animation, documentary, unscripted and television pipelines' own choices; a controlled
   comparison for each new family.
-- **D to H:** not started; the ledger's milestone table has each one's scope.
+- **E to H:** not started; the ledger's milestone table has each one's scope.
 
 Rules that came with the package: one agent; no universal quality bonus for a preset; custom text is never claimed to
 be understood; real people's recorded credits stay apart from anything the game simulates about them; no credentials,
