@@ -1,11 +1,11 @@
 import { expect, test, type Page } from './test';
-import { advance, nav, section, secureStartingBacking, pressSaveAndExit } from './helpers';
+import { advance, nav, openStart, pressSaveAndExit, section, secureStartingBacking } from './helpers';
 
 // The package's required widths (360, 390, 393, 414, 430, 768, 1024, 1440, 1920), plus 440, 1280 and a phone landscape.
 const VIEWPORTS: [number, number][] = [[360, 800], [390, 844], [393, 852], [414, 896], [430, 932], [440, 956], [768, 1024], [1024, 768], [1280, 720], [1440, 900], [1920, 1080], [844, 390]];
 
 async function seedGame(page: Page): Promise<void> {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({

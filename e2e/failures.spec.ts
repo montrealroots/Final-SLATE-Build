@@ -1,7 +1,7 @@
 import { expect, expectErrors, test } from './test';
 import { readFileSync } from 'node:fs';
 import { hashString } from '../src/engine/rng';
-import { advance, nav, quickLife, saveAndExit, pressSaveAndExit } from './helpers';
+import { advance, nav, openStart, pressSaveAndExit, quickLife, saveAndExit } from './helpers';
 import { firstSaveId, listRecords, readRecord, refuseSaveWrites, writeRecords } from './vault';
 
 // Failure paths through the real UI (Gap Completion Package, M7). Desktop and phone.
@@ -164,7 +164,7 @@ test('a genre catalog that fails to load stops the game from opening with the re
   // The catalog is fetched on its own since November 7, 2026 (genre-catalog-<hash>.json in the production build). Only
   // the data fetch is refused: the dev server also serves the file's URL as a module, with a query string.
   await page.route((url) => /genre-catalog/.test(url.pathname) && !url.search, (route) => (fail ? route.abort() : route.continue()));
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
@@ -191,7 +191,7 @@ test('a festival and awards calendar that fails to load stops the game from open
   let fail = true;
   // The calendar is data fetched on its own since November 8, 2026 (institutions-<hash>.json in the production build).
   await page.route((url) => /institutions/.test(url.pathname) && !url.search, (route) => (fail ? route.abort() : route.continue()));
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
@@ -219,7 +219,7 @@ test('a damaged genre catalog publishes nothing; Try Again with a good one opens
     const half = good.records.slice(0, 70);
     await route.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ records: [...half, { ...good.records[70], id: 'not-a-genre' }] }) });
   });
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({

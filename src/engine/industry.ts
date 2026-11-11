@@ -8,7 +8,7 @@
 // decision is dated earlier. Each decision is a scheduled event stored in the save, decided by the save's seed, so it
 // holds across reloads and is the same for a seed. Nothing reads TMDB's ratings or popularity: the odds come from the
 // series' own run (how many seasons it has had) and the kind of outlet it is on. They and the timing below are game
-// calibration from how renewals usually go, not industry statistics.
+// calibration chosen by judgement, not measured or sourced renewal rates (docs/WORLD.md).
 import { stream } from './rng';
 import { registerHandler, schedule } from './state';
 import { DAY, addDaysToKey } from './time';
@@ -39,11 +39,22 @@ export interface IndustryWorld { horizon: string; builtAt: string; series: Serie
  */
 export interface SimSeason { n: number; eps: number; premiere: string; gap: number; drop: boolean; final: boolean; offs?: number[] }
 export interface SimOutcome { at: string; kind: 'renewed' | 'cancelled' | 'concluded' | 'ordered' | 'passed' | 'dated'; n: number; final?: boolean }
-export interface SimSeries { seasons: SimSeason[]; outcomes: SimOutcome[]; closed: boolean }
+export interface SimSeries {
+  seasons: SimSeason[];
+  outcomes: SimOutcome[];
+  closed: boolean;
+  /**
+   * The last season the catalog recorded when this save's world began. Seasons after it are this save's own: a later
+   * catalog that records more of the real series doesn't add them (November 11, 2026). Absent in saves begun before then,
+   * where it is taken from the first catalog that loads.
+   */
+  rec?: number;
+}
 export interface IndustryState {
   /** The records' end: no simulated decision is dated before it. */
   horizon: string;
-  /** The catalog build the world started from. */
+  /** The catalog build the world started from: the save's source-data version. A later catalog corrects what it recorded
+   * up to `horizon`, and never what the save's world has decided since. */
   builtAt: string;
   series: Record<string, SimSeries>;
 }
@@ -56,6 +67,22 @@ export function setIndustryWorld(w: IndustryWorld | null): void {
   byRef = new Map((w?.series ?? []).map((p) => [p.r, p]));
 }
 export const seriesProfile = (r: string) => byRef.get(r);
+
+/**
+ * A series as this save knows it: the catalog's profile without seasons recorded after the ones the save began with,
+ * since the save's world has made its own. Reads only; the decision handler stores `rec` for a save that lacks it.
+ */
+export function profileFor(state: GameState | null, r: string): SeriesProfile | undefined {
+  const p = byRef.get(r);
+  const rec = state?.industry?.series[r]?.rec;
+  if (!p || rec === undefined || !p.seasons.some((f) => f.n > rec)) return p;
+  return { ...p, seasons: p.seasons.filter((f) => f.n <= rec), aired: Math.min(p.aired, rec) };
+}
+/** The last recorded season a simulated series of this save may show, or undefined for one the save doesn't simulate. */
+export const recordedUpTo = (state: GameState | null, r: string): number | undefined => {
+  const sim = state?.industry?.series[r];
+  return sim ? sim.rec ?? byRef.get(r)?.seasons.at(-1)?.n : undefined;
+};
 
 export type Outlet = 'daily' | 'kids' | 'broadcast' | 'cable' | 'streaming';
 // Broadcast networks by name: Wikidata's classes don't tell them apart from cable (tools/screen-catalog/networks.mjs). The
@@ -201,7 +228,7 @@ export function ensureIndustry(state: GameState): boolean {
   if (!WORLD || state.industry) return false;
   state.industry = { horizon: WORLD.horizon, builtAt: WORLD.builtAt, series: {} };
   for (const p of WORLD.series) {
-    const sim: SimSeries = { seasons: [], outcomes: [], closed: false };
+    const sim: SimSeries = { seasons: [], outcomes: [], closed: false, rec: p.seasons.at(-1)?.n ?? 0 };
     state.industry.series[p.r] = sim;
     plan(state, p, sim);
   }
@@ -254,13 +281,17 @@ registerHandler('industry-decision', (state, ev) => {
   const ref = ev.payload.r as string;
   const sim = state.industry?.series[ref];
   if (!sim || sim.closed || ev.payload.step !== sim.outcomes.length) return { suppressInterrupt: true };
-  const p = byRef.get(ref);
+  // A save begun before `rec` was kept takes it from the first catalog that decides for it, and keeps it.
+  if (sim.rec === undefined && byRef.has(ref)) sim.rec = byRef.get(ref)!.seasons.at(-1)?.n ?? 0;
+  const p = profileFor(state, ref);
+  // The day it was due, however long it waited (state.ts's placeholder and the wait below keep it).
+  const due = (ev.payload.due as number | undefined) ?? ev.at;
   if (!p) {
-    // The catalog isn't loaded (or no longer has the series): wait rather than decide blind.
-    schedule(state, ev.at + 30 * DAY, 'industry-decision', ev.payload, { priority: 60, id: `ind:${ref}:${sim.outcomes.length}:wait:${keyOf(ev.at)}` });
+    // The catalog isn't loaded (or no longer has the series): wait rather than decide blind, and nothing is erased.
+    schedule(state, ev.at + 30 * DAY, 'industry-decision', { ...ev.payload, due }, { priority: 60, id: `ind:${ref}:${sim.outcomes.length}:wait:${keyOf(ev.at)}` });
     return { suppressInterrupt: true };
   }
-  decide(state, p, sim, keyOf(ev.at));
+  decide(state, p, sim, keyOf(due));
   plan(state, p, sim);
   return { suppressInterrupt: true };
 });

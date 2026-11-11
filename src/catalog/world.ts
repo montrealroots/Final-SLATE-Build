@@ -4,7 +4,7 @@
 // recorded. Nothing here is stored in a save: real events follow from the catalog and the save's date. Simulated events,
 // once there are any (later phases), are kept in the save and labelled as simulated.
 import { formatDateKey } from '../engine/time';
-import { episodeDates, outletOf, seriesProfile } from '../engine/industry';
+import { episodeDates, outletOf, recordedUpTo, seriesProfile } from '../engine/industry';
 import type { GameState, Route } from '../engine/types';
 import { company } from './registry';
 import { useCatalogFile, type Loaded } from './load';
@@ -149,7 +149,15 @@ export function simRoute(e: WorldEvent): Route {
   return (season ? { view: 'season', ref: `${e.r}:s:${e.s}` } : { view: 'title', ref: e.r }) as Route;
 }
 
-/** Recorded and simulated events together, in date order. */
+/**
+ * Recorded and simulated events together, in date order. A series this save's world continues keeps only the recorded
+ * seasons it began with: a later catalog's newer seasons and its ending aren't this save's (November 11, 2026), so nothing
+ * is told twice or contradicted.
+ */
 export function worldEventsBetween(w: WorldSeed, state: GameState, from: string, to: string): WorldEvent[] {
-  return [...eventsBetween(w, from, to), ...simulatedEvents(state, from, to)].sort((a, b) => a.d.localeCompare(b.d));
+  const recorded = eventsBetween(w, from, to).filter((e) => {
+    const upTo = recordedUpTo(state, e.r.replace(/:s:.*$/, ''));
+    return upTo === undefined || (e.k !== 'end' && (e.s ?? 0) <= upTo);
+  });
+  return [...recorded, ...simulatedEvents(state, from, to)].sort((a, b) => a.d.localeCompare(b.d));
 }

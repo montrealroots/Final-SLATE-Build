@@ -17,7 +17,7 @@ export function Startup() {
   const [showDraftOffer, setShowDraftOffer] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const latest = saves[0];
-  const draft = s.draft;
+  const draft = s.draftExists;
 
   if (s.screen === 'loading') {
     return (
@@ -79,6 +79,7 @@ export function Startup() {
         </div>
         {!s.storageReady && <p role="status" className="muted">Looking for your saved games…</p>}
         {s.storageNote && <p role="alert" className="muted">{s.storageNote}</p>}
+        {s.startingCreation && <p role="status" className="muted">Getting character creation ready…</p>}
 
         {latest && (
           <section className="card" aria-labelledby="resume-h">

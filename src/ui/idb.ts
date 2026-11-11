@@ -1,8 +1,8 @@
 // The browser side of the save vault (src/engine/vault.ts): IndexedDB, with each record gzip-compressed, and the
 // one-time move of saves out of localStorage under a lock shared by every tab.
 
-import { browserStore, type KeyValueStore } from '../engine';
-import { recordMeta } from '../engine/save';
+import { browserStore, type KeyValueStore } from '../engine/save-store';
+import { recordMeta } from '../engine/save-store';
 import { LocalBackend, Vault, applyJournal, migrateFromLocal, type Backend, type RecordMeta } from '../engine/vault';
 
 const DB = 'slate-saves';

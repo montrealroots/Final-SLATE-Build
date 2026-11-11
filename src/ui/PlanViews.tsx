@@ -22,7 +22,7 @@ import { SITES, scoutedPlaces, site } from '../engine/locations';
 import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
 import { childrenIn } from '../engine/hiring';
 import { storyAge, storyAgeWords } from '../engine/story-age';
-import { licenceReady, projectRules, supervisionFor } from '../engine/minors';
+import { RULES_READ, licenceReady, projectRules, supervisionFor } from '../engine/minors';
 import { RULE_WORDS, ageWords, fitNotes, hoursWords } from '../engine/casting-notes';
 import { COVERAGE, EMPHASIS, SETUPS_OF, TAKES, TAKE_RULES, isDirecting2, planTime, requiredSetups, shotPlan, type Coverage, type Emphasis, type TakePolicy } from '../engine/takes';
 import type { Audition, FinanceDeal, GameState, Hire, Obligation, PerformanceMethod, Project } from '../engine/types';
@@ -891,7 +891,7 @@ function ChildrenCard({ p }: { p: Project }) {
   return (
     <section className="card" aria-labelledby="children-h">
       <h2 id="children-h">Children In The Cast</h2>
-      <p className="dim">Under {RULE_WORDS[rules.id].name}, a child's hours are limited, someone must be with them, and they need {RULE_WORDS[rules.id].licence} first. Their scenes take more shoot days for it.{standIn ? ` ${standIn}` : ''}</p>
+      <p className="dim">Under {RULE_WORDS[rules.id].name}, a child's hours are limited, someone must be with them, and they need {RULE_WORDS[rules.id].licence} first. Their scenes take more shoot days for it.{standIn ? ` ${standIn}` : ''} These are the rules as read on {formatDateKey(RULES_READ)}; later changes to them aren't known to the game.</p>
       <ul className="list">
         {kids.map((m) => {
           const lic = m.personId ? (p.childLicences ?? []).find((l) => l.personId === m.personId && l.characterId === m.characterId) : undefined;

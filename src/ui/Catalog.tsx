@@ -11,7 +11,7 @@ import {
 } from '../catalog/model';
 import { retryCatalog, useCatalogFile, type Loaded } from '../catalog/load';
 import { describe as describeWorld, inStory, isNews, simRoute, useWorld, worldEventsBetween } from '../catalog/world';
-import { episodeDates, outletOf, recordedModel, seriesProfile, type SimSeason } from '../engine/industry';
+import { episodeDates, outletOf, profileFor, recordedModel, recordedUpTo, type SimSeason } from '../engine/industry';
 import { ageOn, announcedSeason, breakLength, breaksOf, castFor, decisionsFor, nightsOf, usualDecision } from '../catalog/simseason';
 import { addDaysToKey } from '../engine';
 import logo from '../catalog/tmdb-logo.svg';
@@ -187,7 +187,7 @@ export function CompanyPage({ id }: { id: string }) {
   );
 }
 
-const STANDING_LABEL = { current: 'Current', listed: 'Listed', incoming: 'Announced, Not Yet Begun', former: 'Former' } as const;
+const STANDING_LABEL = { current: 'Current', leaving: 'Leaving', announced: 'Announced', listed: 'Listed', incoming: 'Announced, Not Yet Begun', former: 'Former' } as const;
 
 function roleDates(r: LeadershipRole, standing: keyof typeof STANDING_LABEL, today: string): string {
   const parts: string[] = [];
@@ -304,7 +304,9 @@ function TitleView({ t, today }: { t: TitleRecord; today: string }) {
           {t.collection && <><dt>Collection</dt><dd>{t.collection.name}</dd></>}
           {t.classifications.length > 0 && <><dt>Ratings Boards</dt><dd>{t.classifications.slice(0, 8).map((c) => `${c.country} ${c.rating}`).join(', ')}{t.classifications.length > 8 ? `, and ${t.classifications.length - 8} more` : ''}</dd></>}
           {t.externalIds.imdb && <><dt>IMDb ID</dt><dd>{t.externalIds.imdb}</dd></>}
-          <dt>Status On TMDB</dt><dd>{t.status ?? 'Not recorded'} <span className="dim small">(on {retrieved})</span></dd>
+          {/* TMDB's status is what it said on the day the records were taken. Before that day in the story it would tell what
+              happens later (a series ended, a film released), so it waits until then (November 11, 2026). */}
+          <dt>Status On TMDB</dt><dd>{t.retrievedAt.slice(0, 10) <= today ? <>{t.status ?? 'Not recorded'} <span className="dim small">(on {retrieved})</span></> : <span className="muted">Recorded on {retrieved}, after this point in your story</span>}</dd>
         </dl>
       </Panel>
       <Panel title="Figures" subtitle={`As TMDB recorded them on ${retrieved}.`}>
@@ -336,7 +338,7 @@ function CreditedCompanies({ t }: { t: TitleRecord }) {
             return (
               <li key={c.tmdbId} className="list-item">
                 <span className="grow"><Link to={{ view: 'company', ref: r ? r.id : `tmdbco:${c.tmdbId}` } as Route}>{c.name}</Link>{c.country ? <span className="dim small"> ({c.country})</span> : null}</span>
-                {r?.parent?.how === 'acquired' && under === false && <span className="dim small">Made before The Walt Disney Company owned it ({day(r.parent.from!)})</span>}
+                {r?.parent?.how === 'acquired' && under === false && <span className="dim small">Released before the acquisition ({day(r.parent.from!)})</span>}
               </li>
             );
           })}
@@ -406,7 +408,7 @@ const DECIDED: Record<string, string> = { renewed: 'Renewed', cancelled: 'Cancel
 function InYourStory({ refId, today }: { refId: string; today: string }) {
   const g = useGame();
   const sim = g.industry?.series[refId];
-  const p = seriesProfile(refId);
+  const p = profileFor(g, refId);
   if (!sim || !p) return null;
   const outcomes = sim.outcomes.filter((o) => o.at <= today);
   const seasons = sim.seasons.filter((x) => announcedSeason(sim, x.n, today));
@@ -445,8 +447,11 @@ function SeasonsCard({ t, today }: { t: TitleRecord; today: string }) {
   const g = useGame();
   const sim = g.industry?.series[t.ref];
   const simulated = sim ? sim.seasons.filter((x) => announcedSeason(sim, x.n, today)) : [];
-  // A season TMDB listed without dates that the save's world has since dated is shown once, as the simulated one.
-  const seasons = (t.seasons ?? []).filter((s) => !simulated.some((x) => x.n === s.number));
+  // A season TMDB listed without dates that the save's world has since dated is shown once, as the simulated one. A season
+  // a later catalog recorded after the ones this save began with isn't this save's: its world makes its own (November 11,
+  // 2026, docs/WORLD.md).
+  const upTo = recordedUpTo(g, t.ref) ?? Infinity;
+  const seasons = (t.seasons ?? []).filter((s) => s.number <= upTo && !simulated.some((x) => x.n === s.number));
   return (
     <Panel title="Seasons" subtitle={simulated.length ? 'Seasons marked Simulated were made by this save\'s world after the records end.' : undefined}>
       {seasons.length || simulated.length ? (
@@ -477,8 +482,10 @@ export function SeasonPage({ refId }: { refId: string }) {
   const r = parseRef(refId);
   const series = r ? `tv:${r.id}` : '';
   const simulated = r?.kind === 'season' ? announcedSeason(g.industry?.series[series], r.season!, today) : undefined;
-  const s = useCatalogFile<SeasonRecord>(r?.kind === 'season' && !simulated ? fileFor(refId) : null);
+  const notOurs = r?.kind === 'season' && !simulated && r.season! > (recordedUpTo(g, series) ?? Infinity);
+  const s = useCatalogFile<SeasonRecord>(r?.kind === 'season' && !simulated && !notOurs ? fileFor(refId) : null);
   if (simulated) return <SimSeasonPage series={series} x={simulated} today={today} />;
+  if (notOurs) return <AfterYourRecords />;
   return <Status loaded={s} what="this season">{(d) => (
     <>
       <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: d.seriesTitle, route: titleRoute(d.series) }, { label: d.name }]} />
@@ -511,7 +518,7 @@ export function SeasonPage({ refId }: { refId: string }) {
  */
 function SimSeasonPage({ series, x, today }: { series: string; x: SimSeason; today: string }) {
   const g = useGame();
-  const p = seriesProfile(series);
+  const p = profileFor(g, series);
   const sim = g.industry!.series[series];
   if (!p) return <Empty title="This Season Can't Be Shown"><p className="muted">The catalog's world file isn't loaded, so this simulated season can't be shown.</p></Empty>;
   const dates = episodeDates(x);
@@ -613,10 +620,18 @@ function SimSeasonPage({ series, x, today }: { series: string; x: SimSeason; tod
   );
 }
 
+/** A recorded season this save's world doesn't have: a later catalog recorded it after the save's world began. */
+function AfterYourRecords() {
+  return <Empty title="This Season Isn't In Your Story"><p className="muted">The catalog now installed records it, but your story's world began from an earlier copy, and since then it has decided this series' seasons itself. Its own seasons are on the series' page.</p><GoBack /></Empty>;
+}
+
 export function EpisodePage({ refId }: { refId: string }) {
   const today = useToday();
+  const g = useGame();
   const r = parseRef(refId);
-  const s = useCatalogFile<SeasonRecord>(r?.kind === 'episode' ? fileFor(refId) : null);
+  const notOurs = r?.kind === 'episode' && r.season! > (recordedUpTo(g, `tv:${r.id}`) ?? Infinity);
+  const s = useCatalogFile<SeasonRecord>(r?.kind === 'episode' && !notOurs ? fileFor(refId) : null);
+  if (notOurs) return <AfterYourRecords />;
   return <Status loaded={s} what="this episode">{(d) => {
     const e = d.episodes.find((x) => x.number === r!.episode);
     if (!e) return <Empty title="This Episode Isn't In The Catalog"><p className="muted">TMDB lists no episode {r!.episode} for {d.name} of {d.seriesTitle}.</p></Empty>;

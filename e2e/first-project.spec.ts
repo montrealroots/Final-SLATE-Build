@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { addScene, advance, writePitch, creditsTable, nav, newProject, pinSeed, produceToDelivery, readSavedState, section } from './helpers';
+import { addScene, advance, creditsTable, nav, newProject, openStart, pinSeed, produceToDelivery, readSavedState, section, writePitch } from './helpers';
 
 // The first-project journey, through visible controls only, from character creation to a second project.
 // Labelled fixture: the world seed is fixed after creation (pinSeed), so backers' answers are the same every run.
@@ -18,7 +18,7 @@ async function addCharacters(page: Page, names: string[]) {
 
 /** Creation as a player finishes it: a draft at Review, the starting time changed from Review, then Start My Story. */
 async function createFromReview(page: Page) {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate(() => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({

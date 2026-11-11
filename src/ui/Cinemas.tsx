@@ -65,7 +65,7 @@ export function CinemasNearby({ place, today }: { place: Place; today: string })
         ) : <p className="muted">None of the catalog's films{g.projects.length ? ' or yours' : ''} is in its run in {country} now.</p>}
         {soon.length > 0 && <p className="muted">Opening soon: {soon.map((o) => `${o[1]} (${when(o[3])})`).join(', ')}.</p>}
         <h3>Cinemas Within {RADIUS_KM} km</h3>
-        <p>Wikidata records {count(near.length, 'cinema', 'cinemas')} within {RADIUS_KM} km of {place.name}{near.length ? `, ${count(unclosed, 'with no closure recorded', 'with no closure recorded')}, of which ${count(trading, 'shows films', 'show films')}: Wikidata gives ${trading === 1 ? 'its' : 'their'} website or operator` : ''}. It records {count(recorded.cinemas, 'cinema', 'cinemas')} in {country}.{trading > 0 && trading < near.length ? ' Those that show films are listed first.' : ''}</p>
+        <p>Wikidata records {count(near.length, 'cinema', 'cinemas')} within {RADIUS_KM} km of {place.name}{near.length ? `, ${count(unclosed, 'with no closure recorded', 'with no closure recorded')}, of which the game takes ${count(trading, 'to show films', 'to show films')}, as Wikidata gives ${trading === 1 ? 'its' : 'their'} website or operator` : ''}. It records {count(recorded.cinemas, 'cinema', 'cinemas')} in {country}.{trading > 0 && trading < near.length ? ' Those are listed first.' : ''}</p>
         {near.length > 0 && (
           <ul className="list" aria-label={`Cinemas near ${place.name}`}>
             {(all ? near : near.slice(0, SHOWN)).map(({ c, km, standing }) => (
@@ -82,7 +82,7 @@ export function CinemasNearby({ place, today }: { place: Place; today: string })
         )}
         {near.length > SHOWN && <button type="button" className="btn btn-sm" onClick={() => setAll(!all)}>{all ? `Show The First ${SHOWN}` : `Show All ${near.length.toLocaleString('en-US')}`}</button>}
         <p className="dim small">As recorded in Wikidata in {CINEMAS_READ}, which lists former cinemas as well as working ones: one with no closure recorded may be something else now. Coverage differs a great deal from country to country.</p>
-        <p className="dim small">What the cinemas show is simulated from the catalog's films, which are only those Disney's companies are credited with, and your own. A film plays from the day TMDB records it opening in {country}, for {RUN_DAYS.wide / 7} weeks, or {RUN_DAYS.limited / 7} in a limited release. Which cinemas book it isn't recorded, so each cinema's choice is drawn, the same on every visit.</p>
+        <p className="dim small">What the cinemas show is simulated from the catalog's films, which are only those Disney's companies are credited with, and your own. A film plays from the day TMDB records it opening in {country}, for {RUN_DAYS.wide / 7} weeks, or {RUN_DAYS.limited / 7} in a limited release. Which cinemas book it isn't recorded, so each cinema's choice is drawn, the same on every visit. None of this changes what a film earns: that is what its distributor reports.</p>
       </>
     );
   }
@@ -124,8 +124,8 @@ function TerritoryCinemas({ p, r, country }: { p: Project; r: ReleaseRecord; cou
   const what = today < r.date ? `Opens on ${formatDateKey(r.date)} at` : today < ends ? 'Showing at' : 'Its run ended on ' + formatDateKey(ends) + '. It showed at';
   return (
     <p className="small">
-      {name}: {what} {count(booked.length, 'cinema', 'cinemas')} of the {open.length.toLocaleString('en-US')} there that show films{named ? `, among them ${named}` : ''}.
-      <span className="dim"> Simulated: more cinemas book a film that was received well.</span>
+      {name}: {what} {count(booked.length, 'cinema', 'cinemas')} of the {open.length.toLocaleString('en-US')} there the game takes to show films{named ? `, among them ${named}` : ''}.
+      <span className="dim"> Simulated: more cinemas book a film that was received well. It doesn't change what the film earns, which is what its distributor reports.</span>
     </p>
   );
 }

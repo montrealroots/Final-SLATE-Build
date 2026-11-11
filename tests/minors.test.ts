@@ -6,7 +6,8 @@ import { getPlace, type Place } from '../src/data/places';
 import { PLAYABLE_COUNTRIES } from '../src/world/gazetteer/gazetteer';
 import { costBreakdown } from '../src/engine/estimate';
 import { childrenIn, neededRoles } from '../src/engine/hiring';
-import { ADULT_SHOOT_HOURS, bandFor, childShare, ensureLicence, isSchoolDay, licenceReady, minorFor, projectRules, rulesFor, setAsideOf, supervisionFor, type Minor } from '../src/engine/minors';
+import { ADULT_SHOOT_HOURS, RULES_READ, ageInDays, bandFor, childShare, ensureLicence, isSchoolDay, licenceReady, minorFor, projectRules, rulesFor, setAsideOf, supervisionFor, type Minor } from '../src/engine/minors';
+import { FIRST_START_YEAR } from '../src/engine/state';
 import { candidates, personAge, playingAgeAt } from '../src/engine/people';
 import { groupShootDays } from '../src/engine/production/schedule';
 import { runShootDay } from '../src/engine/production/shoot';
@@ -391,5 +392,66 @@ describe('ages in the story', () => {
     expect(next.characters.find((c) => c.name === 'Tom')!.ageInStory).toBe('43');
     expect(() => continueProject(s, { ...p, continuedBy: undefined, id: 'x' } as Project, undefined, -1)).toThrow('Choose between 0 and 50 years.');
     expect(defaultStoryYears({ ...p, axes: { ...p.axes, medium: 'animation' } } as Project)).toBe(0);
+  });
+});
+
+// November 11, 2026 (the owner's brief, item 4): the rules applied consistently, and what was read told apart from what wasn't.
+describe('ages, dates and what was read', () => {
+  it('moves a child into the next age band on the birthday that makes them that age, never a day before or after', () => {
+    const sets = ['us-los-angeles', 'gb-london', 'ca-vancouver', 'de-berlin'].map((id) => rulesFor(getPlace(id)).rules);
+    const born = ['2014-01-01', '2015-02-28', '2016-02-29', '2017-03-01', '2018-07-15', '2019-12-31', '2020-02-29', '2021-06-30'];
+    const ageAt = (b: string, on: string) => personAge({ born: b } as Parameters<typeof personAge>[0], on);
+    let changes = 0;
+    for (const rules of sets) {
+      // A band from a whole year starts on that birthday; one "over" an age (Germany's over 3) starts the day after it.
+      const yearOf = (d: number) => [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18].find((y) => Math.round(y * YEAR) === d);
+      const startsAt = new Set(rules.bands.map((x) => yearOf(x.fromDays)).filter((y) => y !== undefined));
+      const overAt = new Set(rules.bands.map((x) => yearOf(x.fromDays - 1)).filter((y) => y !== undefined));
+      for (const b of born) {
+        // Every day from the 1st birthday to the 18th: the band changes only when the age in years does.
+        let day = addDaysToKey(b, 400);
+        let prev = bandFor(rules, ageInDays(b, day));
+        for (let n = 0; n < 17 * 366; n++) {
+          const next = addDaysToKey(day, 1);
+          const band = bandFor(rules, ageInDays(b, next));
+          const turned = ageAt(b, next) !== ageAt(b, day);
+          const dayAfter = overAt.has(ageAt(b, day)) && ageAt(b, addDaysToKey(day, -1)) !== ageAt(b, day);
+          if (band !== prev) {
+            expect(turned || dayAfter, `${rules.id}, born ${b}: band changed on ${next}, not a birthday`).toBe(true);
+            changes++;
+          } else expect(dayAfter, `${rules.id}, born ${b}: no change the day after turning ${ageAt(b, day)}`).toBe(false);
+          if (turned) {
+            const age = ageAt(b, next);
+            const shouldChange = startsAt.has(age) || age === rules.adultAt;
+            expect(band !== prev, `${rules.id}, born ${b}: turned ${age} on ${next}`).toBe(shouldChange);
+          }
+          if (ageAt(b, next) >= rules.adultAt) expect(band).toBeNull();
+          prev = band;
+          day = next;
+        }
+      }
+    }
+    expect(changes).toBeGreaterThan(100);
+  });
+
+  it('applies the rules as read, says when they were read, and has no set known to start later than the game', () => {
+    expect(RULES_READ).toBe('2026-11-11');
+    expect(FIRST_START_YEAR).toBe(2026);
+    // The research log's status for each set is the one the engine records: France alone is partly read.
+    const log = readFileSync('docs/child-rules/RESEARCH.md', 'utf8');
+    const seen = new Set<string>();
+    for (const c of PLAYABLE_COUNTRIES) {
+      const { rules } = rulesFor({ country: c.code, countryName: c.name, region: '', regionCode: '' } as Place);
+      seen.add(rules.id);
+    }
+    for (const id of ['US-NY', 'US-GA', 'CA-ON']) seen.add(id);
+    for (const id of seen) {
+      const place = { 'US-NY': 'us-new-york', 'US-GA': 'us-atlanta', 'CA-ON': 'ca-toronto' }[id];
+      const rules = place ? rulesFor(getPlace(place)).rules : [...PLAYABLE_COUNTRIES].map((c) => rulesFor({ country: c.code, countryName: c.name, region: '', regionCode: '' } as Place).rules).find((r) => r.id === id)!;
+      const heading = new RegExp(`^## .*\\(${id}\\): (read|partly read)$`, 'm').exec(log);
+      expect(heading, id).not.toBeNull();
+      expect(rules.read, id).toBe(heading![1] === 'read' ? 'read' : 'partly');
+    }
+    expect(seen.size).toBe(10);
   });
 });

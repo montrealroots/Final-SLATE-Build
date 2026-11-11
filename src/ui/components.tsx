@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState, type ReactNode } from 'react';
 import { getPlace } from '../data/places';
-import { formatClock, localParts, monthName, weekdayName } from '../engine';
+import { formatClock, localParts, monthName, weekdayName } from '../engine/time';
 
 /** The start screen's mark, as 1221 draws it: the clapper, then SLATE spaced wide. */
 export function Wordmark({ as = 'div' }: { as?: 'div' | 'h1' }) {

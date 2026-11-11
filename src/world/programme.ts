@@ -1,8 +1,13 @@
 // What the cinemas are showing (November 11, 2026, the owner: "those theaters will hold what movies will release").
 // A film plays in a country's cinemas from the day it opened there, as TMDB records it by country, and the player's own
 // films from the day their theatrical release opens, in its territories. Which cinemas booked which film isn't recorded
-// anywhere the game reads, so that part is simulated and labelled: each cinema that shows films (no closure recorded, and
-// a website or operator in Wikidata) books a film by a fixed draw, more often for a wide release than a limited one, so the same cinema shows the same films on every visit.
+// anywhere the game reads, so that part is simulated and labelled: each cinema taken to show films (no closure recorded,
+// and a website or operator in Wikidata, which is a sign, not a check) books a film by a fixed draw, more often for a wide
+// release than a limited one, so the same cinema shows the same films on every visit.
+//
+// Nothing here changes money. What a film earns is the gross its distributor reports (src/engine/finish.ts), which reads
+// no cinema, booking or coverage count, so uneven cinema records between countries can't become a market effect and a
+// booking is never counted twice (tests/programme.test.ts checks the engine doesn't import this file).
 import type { GameState } from '../engine/types';
 import { showsFilms, type Cinema } from './cinemas';
 
@@ -43,7 +48,10 @@ export function inCinemas(openings: Opening[], state: Pick<GameState, 'projects'
     .map((o) => ({ ref: o[0], title: o[1], opened: o[3], limited: o[4] === 1, share: o[4] === 1 ? BOOKED.limited : BOOKED.wide }));
   for (const p of state?.projects ?? []) {
     for (const r of p.releases ?? []) {
-      if (r.route !== 'theatrical' || r.status === 'cancelled' || !r.territories.includes(country) || !playing(r.date, false, today)) continue;
+      // As the release system has it: a theatrical release that has happened, in its territories. A cancelled one is gone
+      // and a planned one isn't in cinemas yet (until November 11, 2026 a release still marked planned on its date played).
+      // The release system records no run length, so the player's film runs as a wide release does.
+      if (r.route !== 'theatrical' || r.status !== 'released' || !r.territories.includes(country) || !playing(r.date, false, today)) continue;
       out.push({ ref: `project:${p.id}`, title: p.title, opened: r.date, limited: false, share: yourShare(p.quality?.reception), projectId: p.id });
     }
   }

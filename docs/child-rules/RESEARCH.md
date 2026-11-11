@@ -9,6 +9,41 @@ Status per jurisdiction:
 - **Partly read**: some figures come from the official text, and the rest are marked as from a secondary source.
 - **Not read**: no rules are encoded. The game uses the nearest read set and says so.
 
+The engine records each set's status (`read` in `src/engine/minors.ts`), and `tests/minors.test.ts` fails if it and the
+headings below disagree.
+
+## Dates, Ages And Gaps (November 11, 2026)
+
+What every set has in common, and what isn't known.
+
+- **Which version.** Each set is the text as read on November 11, 2026 (`RULES_READ`). When each version took effect
+  isn't recorded here for any set. The game applies it to every year it can be played in, from 2026, which assumes none
+  of them changed during 2026 before they were read, and none changes after. The player is told the date they were read,
+  and that later changes aren't known.
+- **Ages.** A child is a year older on their birthday, the same day everywhere in the game: for their age, for which age
+  band applies, and for the rules' adult age. A band "over" an age (Germany's over 3) starts the day after that birthday.
+  Until November 11, 2026 the bands counted 365.25-day years, so a band could change a day before or after the birthday.
+- **Adult ages taken as a birthday.** England's regulations last until the end of compulsory school age, which ends on
+  the last Friday in June of the school year a child turns 16. The game ends them on the 16th birthday.
+- **School days.** Typical term dates by country (summer and winter breaks, weekends and public holidays), not a school
+  calendar.
+
+Gaps in each set, as found when it was read:
+
+| Set | What wasn't read, or what the game decided |
+| --- | --- |
+| England | Scotland's, Wales's and Northern Ireland's own regulations; they use England's. |
+| California | Nothing recorded. |
+| New York | The number of children per teacher; the game uses California's ten. A parent may be the responsible person; the game hires a chaperone. |
+| Georgia | A processing time for certification; the game allows two days. A 15% blocked trust was proposed (HB 968, HB 418), not found enacted. |
+| British Columbia | Nothing recorded. |
+| Ontario | Amendments since the Act was passed in 2015: the consolidated text couldn't be read, so none were checked. |
+| Ireland | The licence conditions read are a PDF dated 2005; whether a later version exists wasn't checked. |
+| Germany | The authority's time to approve and the time at the workplace; the game allows 14 days and twice the work hours. |
+| France | Hours: the commissions' indicative hours weren't read, so England's stand in, and the game says so. The ratio of supervisors; the game has one per 5. The share set aside is set child by child, so none is recorded. |
+| New South Wales | The authority's processing time; the game allows 7 days. A supervisor ratio from 3; the game has one per 5. |
+| Every other place | No rules read: the nearest read set stands in, and the game says so (`docs/child-rules/COVERAGE.md`). |
+
 ## England (GB-ENG): read
 
 - **Source:** The Children (Performances and Activities) (England) Regulations 2014, SI 2014/3309, Parts 2 to 5,

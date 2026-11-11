@@ -80,7 +80,10 @@ describe('leadership at the save\'s date', () => {
 
   it('Lucasfilm: Kennedy is president before January 15, 2026, and Filoni after; nobody is called current before the source could know', () => {
     expect(at('2026-01-05', 'company:lucasfilm')).toEqual(['Kathleen Kennedy|President|current']);
-    expect(at('2026-02-01', 'company:lucasfilm')).toEqual(['Dave Filoni|President and Chief Creative Officer|current', 'Lynwen Brennan|Co-President|current', 'Kathleen Kennedy|President|former']);
+    // The announcement gives no effective date: until the registry's check showed the change made, Kennedy is leaving and
+    // the new leaders are announced, never one side in effect without the other (November 11, 2026).
+    expect(at('2026-02-01', 'company:lucasfilm')).toEqual(['Kathleen Kennedy|President|leaving', 'Dave Filoni|President and Chief Creative Officer|announced', 'Lynwen Brennan|Co-President|announced']);
+    expect(at(REGISTRY_CHECKED, 'company:lucasfilm')).toEqual(['Dave Filoni|President and Chief Creative Officer|current', 'Lynwen Brennan|Co-President|current', 'Kathleen Kennedy|President|former']);
     // Pixar's leaders are listed on a page read November 10, 2026, with no start dates: earlier, they are only "listed".
     expect(at('2026-01-05', 'company:pixar').every((x) => x.endsWith('|listed'))).toBe(true);
     expect(at('2026-11-10', 'company:pixar').every((x) => x.endsWith('|current'))).toBe(true);

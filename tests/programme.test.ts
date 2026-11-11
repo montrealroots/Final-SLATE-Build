@@ -1,5 +1,6 @@
 // What cinemas show (src/world/programme.ts): the catalog's films in their run where they opened, the player's theatrical
 // releases in their territories, and a fixed simulated booking per cinema.
+import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import type { Cinema } from '../src/world/cinemas';
 import { BOOKED, SCREENS, draw, inCinemas, openingSoon, programme, yourShare, type Opening } from '../src/world/programme';
@@ -25,19 +26,30 @@ describe('films in their run', () => {
     expect(openingSoon(OPENINGS, 'GB', '2026-01-02').map((o) => o[1])).toEqual(['Soon (Fixture)']);
   });
 
-  it('plays the player\'s theatrical release in its territories from its date, never a cancelled one or another route', () => {
-    expect(inCinemas([], yours([release({})]), 'GB', '2026-01-04')).toEqual([]);
-    expect(inCinemas([], yours([release({})]), 'GB', '2026-01-05')).toMatchObject([{ title: 'Your Film', projectId: 'p1' }]);
-    expect(inCinemas([], yours([release({})]), 'FR', '2026-01-05')).toEqual([]);
+  it('plays the player\'s theatrical release as the release system has it: released, in its territories, for its run', () => {
+    const out = release({ status: 'released' });
+    expect(inCinemas([], yours([out]), 'GB', '2026-01-04')).toEqual([]);
+    expect(inCinemas([], yours([out]), 'GB', '2026-01-05')).toMatchObject([{ title: 'Your Film', projectId: 'p1' }]);
+    expect(inCinemas([], yours([out]), 'GB', '2026-03-01')).toMatchObject([{ title: 'Your Film' }]); // day 55 of 56
+    expect(inCinemas([], yours([out]), 'GB', '2026-03-02')).toEqual([]); // the run is over
+    expect(inCinemas([], yours([out]), 'FR', '2026-01-05')).toEqual([]);
+    // Still planned on its date (not yet released by the release system), cancelled, or not theatrical: not in cinemas.
+    expect(inCinemas([], yours([release({})]), 'GB', '2026-01-05')).toEqual([]);
     expect(inCinemas([], yours([release({ status: 'cancelled' })]), 'GB', '2026-01-05')).toEqual([]);
-    expect(inCinemas([], yours([release({ route: 'streaming' })]), 'GB', '2026-01-05')).toEqual([]);
+    expect(inCinemas([], yours([release({ status: 'released', route: 'digital' })]), 'GB', '2026-01-05')).toEqual([]);
+  });
+
+  it('changes no money: nothing in the engine reads cinemas or their bookings, so earnings are only what distributors report', () => {
+    const engine = readdirSync('src/engine', { recursive: true }).map(String).filter((f) => /\.ts$/.test(f));
+    expect(engine.length).toBeGreaterThan(50);
+    for (const f of engine) expect(readFileSync(`src/engine/${f}`, 'utf8'), f).not.toMatch(/world\/(programme|cinemas)/);
   });
 
   it('books more cinemas for a film that was received well', () => {
     expect(yourShare(30)).toBe(0.04);
     expect(yourShare(90)).toBeGreaterThan(yourShare(60));
     expect(yourShare(100)).toBeLessThanOrEqual(0.6);
-    expect(inCinemas([], yours([release({})], 90), 'GB', '2026-01-05')[0].share).toBe(yourShare(90));
+    expect(inCinemas([], yours([release({ status: 'released' })], 90), 'GB', '2026-01-05')[0].share).toBe(yourShare(90));
   });
 });
 

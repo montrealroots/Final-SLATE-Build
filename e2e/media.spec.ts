@@ -1,8 +1,8 @@
 import { expect, test, type Page } from './test';
-import { advance, section, staffEveryDepartment, secureStartingBacking } from './helpers';
+import { advance, openStart, section, secureStartingBacking, staffEveryDepartment } from './helpers';
 
 async function quickStart(page: Page, place: string): Promise<void> {
-  await page.goto('/');
+  await openStart(page);
   await page.evaluate((pl) => {
     localStorage.clear();
     localStorage.setItem('slate.v1.creationDraft', JSON.stringify({

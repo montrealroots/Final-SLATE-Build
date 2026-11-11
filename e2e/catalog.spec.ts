@@ -11,7 +11,7 @@ const noSidewaysScroll = (page: Page) => page.evaluate(() => document.documentEl
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/catalog-${project}-${name}.png`, fullPage: true });
 
 test.beforeEach(async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
   // Served before the game starts: the app loads the world file as soon as a game is open.
   await serveCatalog(page);
   await quickLife(page, 'gb-london', '2026-01-05');

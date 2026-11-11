@@ -19,7 +19,7 @@ import { getPlace, type Place } from '../data/places';
 import { placeHolidaysOn } from './holidays';
 import { personAge, personById } from './people';
 import { storyAge } from './story-age';
-import { addDaysToKey, weekdayOfKey } from './time';
+import { addDaysToKey, ageOn, observedBirthday, weekdayOfKey } from './time';
 import type { GameState, Project } from './types';
 
 export interface AgeBand {
@@ -64,7 +64,19 @@ export interface MinorRules {
    * it: of the part past it, or with `ofAll`, of all of them (Ontario: "25 per cent of those earnings").
    */
   setAside: { percent: number; over?: number; ofAll?: boolean } | null;
+  /**
+   * How much of it was read from the official text (docs/child-rules/RESEARCH.md): all of it, or part, the rest standing
+   * in from another set and said so (France's hours are England's).
+   */
+  read: 'read' | 'partly';
 }
+
+/**
+ * When the rules were read: the version in force then is the one encoded. When each took effect isn't recorded, and later
+ * changes aren't known, so the game applies that version to every year from its first, 2026, and says so (November 11,
+ * 2026; tests/minors.test.ts checks the date and that no set is known to start later than the game does).
+ */
+export const RULES_READ = '2026-11-11';
 
 const YEAR = 365.25;
 const days = (years: number) => Math.round(years * YEAR);
@@ -91,6 +103,7 @@ const ENGLAND: MinorRules = {
   licence: { leadDays: 21, nightLeadDays: 21 },
   restHours: 12, // regulation 24
   setAside: null,
+  read: 'read',
 };
 
 /** California: 8 CCR §11760 (hours), §11755.2 (studio teachers), Family Code §6752 (the 15% set-aside). */
@@ -116,6 +129,7 @@ const CALIFORNIA: MinorRules = {
   licence: { leadDays: 1, nightLeadDays: 2 },
   restHours: 12, // §11760(i)
   setAside: { percent: 15 }, // a Coogan trust account (Family Code §6752)
+  read: 'read',
 };
 
 /** New York: 12 NYCRR Part 186, and the Department of Labor's chart LS 559 (09/18). */
@@ -144,6 +158,7 @@ const NEW_YORK: MinorRules = {
   licence: { leadDays: 2, nightLeadDays: 2 },
   restHours: 12,
   setAside: { percent: 15 }, // a child performer trust account (Part 186)
+  read: 'read',
 };
 
 /** Georgia: Department of Labor Rule 300-7-1 and its Schedule of Hours of Performance (docs/child-rules/RESEARCH.md). */
@@ -171,6 +186,7 @@ const GEORGIA: MinorRules = {
   licence: { leadDays: 2, nightLeadDays: 2 },
   restHours: 12, // rule .03(5), on school days
   setAside: null, // a 15% blocked trust (HB 418) was proposed, not found enacted
+  read: 'read',
 };
 
 /** British Columbia: Employment Standards Regulation, Part 7.1, Division 2 (docs/child-rules/RESEARCH.md). */
@@ -194,6 +210,7 @@ const BRITISH_COLUMBIA: MinorRules = {
   licence: { leadDays: 1, nightLeadDays: 1 },
   restHours: 12,
   setAside: { percent: 25, over: 2000 }, // s. 45.14: 25% of earnings over $2,000 on a production
+  read: 'read',
 };
 
 /** Ontario: the Protecting Child Performers Act, 2015, as passed (Bill 17, Royal Assent; docs/child-rules/RESEARCH.md). */
@@ -225,6 +242,7 @@ const ONTARIO: MinorRules = {
   licence: { leadDays: 1, nightLeadDays: 2 },
   restHours: 12,
   setAside: { percent: 25, over: 2000, ofAll: true }, // s. 8(1)
+  read: 'read',
 };
 
 /** Ireland: the Workplace Relations Commission's note on film and TV licences under s. 3(2) of the 1996 Act (RESEARCH.md). */
@@ -249,6 +267,7 @@ const IRELAND: MinorRules = {
   licence: { leadDays: 21, nightLeadDays: 21 },
   restHours: 12, // the note sets none; England's 12 hours stand in
   setAside: null, // condition 9: earnings lodged in an account in the child's name, not held back in trust
+  read: 'read',
 };
 
 /** Germany: Jugendarbeitsschutzgesetz §§ 2, 5, 6, 8 (docs/child-rules/RESEARCH.md). */
@@ -271,6 +290,7 @@ const GERMANY: MinorRules = {
   licence: { leadDays: 14, nightLeadDays: 14 }, // the law sets no lead time: the game allows 14 days
   restHours: 14, // § 6(2)5
   setAside: null,
+  read: 'read',
 };
 
 /** France: the audiovisual industry's 2025 agreement on minors, restating the Code du travail (RESEARCH.md). */
@@ -287,6 +307,7 @@ const FRANCE: MinorRules = {
   licence: { leadDays: 30, nightLeadDays: 30 }, // the prefect has a month to decide
   restHours: 12,
   setAside: null, // the pécule's share is set by the commission child by child, so none is fixed here
+  read: 'partly',
 };
 
 /** New South Wales: the Office of the Children's Guardian's requirements by age (docs/child-rules/RESEARCH.md). */
@@ -308,6 +329,7 @@ const NEW_SOUTH_WALES: MinorRules = {
   licence: { leadDays: 7, nightLeadDays: 7 }, // no processing time is published: the game allows 7 days
   restHours: 12,
   setAside: null,
+  read: 'read',
 };
 
 /** The countries of the European Union, the EEA and Switzerland, which use Germany's rules where their own aren't read. */
@@ -375,9 +397,21 @@ export interface Minor {
   rules: MinorRules;
 }
 
-/** Age in whole days from a birth date to a date. */
+/**
+ * Age in days, as the bands read it: whole years from birthdays, plus the days since the last one. A band that starts at
+ * a year starts on that birthday, the same day `personAge` makes a child a year older and the rules' adult age is reached.
+ * Until November 11, 2026 it counted days, so with 365.25-day years a child could move bands a day before or after the
+ * birthday that made them adult or older everywhere else (tests/minors.test.ts).
+ */
 export function ageInDays(born: string, on: string): number {
-  return Math.round((Date.parse(`${on}T12:00:00Z`) - Date.parse(`${born}T12:00:00Z`)) / 86_400_000);
+  const whole = (a: string, b: string) => Math.round((Date.parse(`${b}T12:00:00Z`) - Date.parse(`${a}T12:00:00Z`)) / 86_400_000);
+  const [y, m, d] = born.split('-').map(Number);
+  const years = ageOn({ year: y, month: m, day: d }, { year: Number(on.slice(0, 4)), month: Number(on.slice(5, 7)), day: Number(on.slice(8, 10)) });
+  if (years <= 0) return whole(born, on);
+  // The last birthday, observed as ageOn observes it (February 29 on February 28 in other years).
+  const o = observedBirthday({ month: m, day: d }, y + years);
+  const last = `${y + years}-${String(o.month).padStart(2, '0')}-${String(o.day).padStart(2, '0')}`;
+  return Math.min(days(years) + whole(last, on), days(years + 1) - 1);
 }
 
 /**

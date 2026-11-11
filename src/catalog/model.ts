@@ -169,27 +169,32 @@ export function ageAt(d: { birthday: string | null; deathday: string | null }, t
   return life.died ? { years: ageOn(life.born, life.died), atDeath: true } : { years: ageOn(life.born, today), atDeath: false };
 }
 
-export type LeadershipStanding = 'current' | 'former' | 'incoming' | 'listed';
+export type LeadershipStanding = 'current' | 'leaving' | 'announced' | 'former' | 'incoming' | 'listed';
 
 /**
  * A role at the save's date. Current: begun (or with no recorded start, listed by its source) and not yet ended. Former:
- * ended, or its end was announced. Incoming: announced but not yet begun. Hidden (null): announced after the save's date.
+ * ended. Incoming: begins on a recorded date still to come. Hidden (null): announced after the save's date.
+ *
+ * An announcement with no effective date is in effect from the date the registry was checked, when its sources showed it
+ * had happened, and only "announced" before then: an appointment is Announced, a departure Leaving. Until November 11,
+ * 2026 an appointment was current from its announcement and a departure made the holder former at once, which put the
+ * change into effect on a date no source gives.
  * A role whose start isn't recorded, seen at a date before the registry was checked, is "listed": the source lists it,
  * and when it began isn't known, so the page says that rather than calling it current.
  */
 export function standingAt(r: LeadershipRole, today: string, checked: string): LeadershipStanding | null {
   if (r.announced && r.announced > today) return null;
   if (r.end && r.end <= today) return 'former';
-  if (r.endAnnounced && r.endAnnounced <= today) return 'former';
+  if (r.endAnnounced && r.endAnnounced <= today && (!r.start || r.start <= today)) return today >= checked ? 'former' : 'leaving';
   if (r.start && r.start > today) return 'incoming';
   if (r.start) return 'current';
   if (r.end) return 'current'; // ended after today, start not recorded: it was held then
-  if (r.announced) return 'current';
+  if (r.announced) return today >= checked ? 'current' : 'announced';
   return today >= checked ? 'current' : 'listed';
 }
 
 export function leadershipAt(companyId: string, today: string, checked: string): { role: LeadershipRole; standing: LeadershipStanding }[] {
-  const order: LeadershipStanding[] = ['current', 'listed', 'incoming', 'former'];
+  const order: LeadershipStanding[] = ['current', 'leaving', 'listed', 'announced', 'incoming', 'former'];
   return LEADERSHIP.filter((r) => r.companyId === companyId)
     .map((role) => ({ role, standing: standingAt(role, today, checked) }))
     .filter((x): x is { role: LeadershipRole; standing: LeadershipStanding } => x.standing !== null)
@@ -205,8 +210,10 @@ export function executive(personId: string) {
 export const registryFor = (tmdbId: number) => COMPANIES.find((c) => c.tmdb?.id === tmdbId);
 
 /**
- * Whether a title credited to a Disney-owned company was made after Disney owned it. A title made before the
- * acquisition is credited to that company, not to Disney; one with no date can't be placed.
+ * Whether a title credited to a Disney-owned company was released after Disney owned it. A title released before the
+ * acquisition is credited to that company, not to Disney; one with no date can't be placed. It reads the release date
+ * only: when a title was made or paid for isn't recorded, so until November 11, 2026's wording ("made before") it said
+ * more than the records do.
  */
 export function madeUnderDisney(tmdbId: number, date: string | null): boolean | null {
   const c = registryFor(tmdbId);

@@ -1,18 +1,29 @@
 import { useSyncExternalStore } from 'react';
-import {
-  ActiveClock, advanceTargetInstant, browserStore, canTakeLock, clearDraft, deleteSave, emptyDraft, newGame, processUntil, readDraft,
-  readLock, openSave, releaseLock, repairSave, serialize, MissingPlacesError, renameSave, startSleep, takeLock, wakeEarly, writeDraft, writeSave, type AdvanceTarget, type KeyValueStore,
-  type SaveSummary,
-} from '../engine';
+import { ActiveClock } from '../engine/clock';
+import type { AdvanceTarget, KeyValueStore, SaveSummary } from '../engine';
 export type StorageReport = StorageUse & { backend?: string; quotaKnown?: boolean };
-import { BROWSER_STORAGE_CHARS, deleteRecoveryCopy, existingSave, importSave, isQuotaError, readImport, LOCK_STALE_MS, type ImportMode, type RecoveryCopy, type SaveResult, type StorageUse } from '../engine/save';
+import type { ImportMode, SaveResult } from '../engine/save';
+import { BROWSER_STORAGE_CHARS, browserStore, canTakeLock, clearDraft, deleteRecoveryCopy, hasDraft, isQuotaError, LOCK_STALE_MS, readLock, releaseLock, takeLock, writeDraft, type RecoveryCopy, type StorageUse } from '../engine/save-store';
 import { journalKey, type Vault } from '../engine/vault';
 import { openVault } from './idb';
 import type { CreationDraft, GameState, Route } from '../engine/types';
 import type { Place } from '../data/places';
-import { loadWorldHolidays, worldHolidaysLoaded } from '../world/holidays/holidays';
-import { genreCatalogLoaded, loadGenreCatalog } from '../engine/genres';
-import { institutionsLoaded, loadInstitutions } from '../engine/awards';
+
+// The engine loads when a game is opened, begun, imported or exported, and is fetched as soon as the start screen has
+// drawn, so it is usually there before the player chooses (November 11, 2026, docs/PERFORMANCE.md). Until then the start
+// screen lists saves with the light storage modules alone. Everything that runs inside a game uses E(): the engine is
+// always loaded by then.
+type Engine = typeof import('./store-engine');
+let engine: Engine | null = null;
+let loading: Promise<Engine> | null = null;
+/** Loads the engine once; a failed load (a lost connection) is tried again the next time. */
+export function loadEngine(): Promise<Engine> {
+  return (loading ??= import('./store-engine').then((m) => (engine = m), (e) => { loading = null; throw e; }));
+}
+const E = (): Engine => {
+  if (!engine) throw new Error("The game's engine hasn't loaded yet.");
+  return engine;
+};
 
 /** Offers text as a downloaded file named after the save. */
 function download(text: string, name: string) {
@@ -93,7 +104,8 @@ class Store {
 
   constructor() {
     this.kv = browserStore();
-    this.draft = readDraft(this.kv);
+    // Whether there is a draft to offer is known at once; the draft itself is read with the engine (warm()).
+    this.draftExists = hasDraft(this.kv);
     this.ready = openVault(this.kv).then(async ({ vault, kept }) => {
       this.vault = vault;
       if (kept) this.storageNote = "Some saved games couldn't be moved to this browser's larger storage yet. They are still kept and will be moved next time.";
@@ -114,14 +126,45 @@ class Store {
       if (this.state && !this.readOnly) releaseLock(this.kv, this.state.saveId, TAB_ID);
     });
     window.addEventListener('storage', (e) => this.onStorage(e));
-    // Holiday rules for the whole world are fetched once, in the background, from the start.
-    this.holidays = loadWorldHolidays().catch(() => undefined);
-    // So are the genre catalog and the festival and awards calendar, which every game needs (a failure is retried when
-    // a game opens).
-    void loadGenreCatalog().catch(() => undefined);
-    void loadInstitutions().catch(() => undefined);
   }
-  private holidays: Promise<void>;
+  /** Whether there is an unfinished character to offer to continue: the start screen reads it before the engine loads. */
+  draftExists = false;
+  private holidays: Promise<void> = Promise.resolve();
+  private engineLoad: Promise<Engine> | null = null;
+  private warming: Promise<Engine> | null = null;
+  /** The game's frame and Home, once warm() has loaded them. */
+  frame: { Shell: typeof import('./Shell').Shell; Home: typeof import('./World').Home } | null = null;
+  /** Set while New Game waits for the engine, so the start screen can say so. */
+  startingCreation = false;
+
+  /**
+   * The engine, then what every game needs: holiday rules for the whole world, the genre catalog and the festival and
+   * awards calendar (a failure of those is retried when a game opens). Until November 11, 2026 the engine was in the
+   * startup code and these began in the constructor.
+   */
+  private engineReady(): Promise<Engine> {
+    return (this.engineLoad ??= loadEngine().then((e) => {
+      this.holidays = e.loadWorldHolidays().catch(() => undefined);
+      void e.loadGenreCatalog().catch(() => undefined);
+      void e.loadInstitutions().catch(() => undefined);
+      if (this.draftExists && !this.draft) this.draft = e.readDraft(this.kv);
+      return e;
+    }, (err) => { this.engineLoad = null; throw err; }));
+  }
+
+  /**
+   * The engine, then the game's frame and Home, which App draws from `frame` with no Suspense: every way into a game awaits
+   * this first. App.tsx starts it once the start screen has drawn. Loaded with React.lazy (November 11, 2026, briefly), a
+   * game showed "Loading…" for React's 300 ms reveal delay while its clock ran, and a save opened and read at once had
+   * already moved on (e2e/backup.spec.ts). The frame follows the engine rather than racing it, so New Game, which needs
+   * only the engine, isn't slowed by it.
+   */
+  warm(): Promise<Engine> {
+    return (this.warming ??= this.engineReady().then((e) => Promise.all([import('./Shell'), import('./World')]).then(([shell, world]) => {
+      this.frame = { Shell: shell.Shell, Home: world.Home };
+      return e;
+    })).catch((err) => { this.warming = null; throw err; }));
+  }
 
   // ---------- subscriptions ----------
   subscribe = (fn: () => void) => {
@@ -146,8 +189,9 @@ class Store {
     return this.saveList;
   }
 
+  /** The vault, once the engine has loaded too: every caller but the recovery-copy ones goes on to use the engine. */
   private async v(): Promise<Vault> {
-    await this.ready;
+    await Promise.all([this.ready, this.warm()]);
     if (!this.vault) throw new Error("Saved games aren't available in this browser.");
     return this.vault;
   }
@@ -163,12 +207,24 @@ class Store {
 
   // ---------- creation draft ----------
   startCreation(fresh: boolean) {
-    if (fresh || !this.draft) {
-      this.draft = { ...emptyDraft(), updatedAt: Date.now() };
-      writeDraft(this.kv, this.draft);
-    }
-    this.screen = 'creation';
+    // Creation needs the engine, not the game's frame; its own screen is fetched beside the engine rather than after it.
+    void import('./Creation').catch(() => undefined);
+    this.startingCreation = true;
     this.emit();
+    void this.engineReady().then((e) => {
+      this.startingCreation = false;
+      if (fresh || !this.draft) {
+        this.draft = { ...e.emptyDraft(), updatedAt: Date.now() };
+        writeDraft(this.kv, this.draft);
+      }
+      this.draftExists = true;
+      this.screen = 'creation';
+      this.emit();
+    }, () => {
+      this.startingCreation = false;
+      this.storageNote = "The game couldn't be loaded. Check your connection and try again.";
+      this.emit();
+    });
   }
   updateDraft(patch: Partial<CreationDraft>) {
     if (!this.draft) return;
@@ -179,6 +235,7 @@ class Store {
   discardDraft() {
     clearDraft(this.kv);
     this.draft = null;
+    this.draftExists = false;
     this.emit();
   }
   /** Set while Start My Story is saving: a second press waits for nothing and starts nothing (SLATE-01-05.04). */
@@ -197,7 +254,7 @@ class Store {
     const saveId = `s${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`;
     let state: GameState;
     try {
-      state = newGame(this.draft, Date.now(), saveId);
+      state = E().newGame(this.draft, Date.now(), saveId);
     } catch (e) {
       return e instanceof Error ? e.message : String(e);
     }
@@ -205,6 +262,7 @@ class Store {
     if (!res.ok) return "Your game couldn't be saved, so it hasn't started. Free some browser storage and try again.";
     clearDraft(this.kv);
     this.draft = null;
+    this.draftExists = false;
     this.enter(state);
     this.saveStatus = 'saved';
     return null;
@@ -217,7 +275,7 @@ class Store {
     void (async () => {
       try {
         const v = await this.v();
-        const r = await v.forSave(saveId, (kv) => openSave(kv, saveId));
+        const r = await v.forSave(saveId, (kv) => E().openSave(kv, saveId));
         if (r.error) throw r.error;
         // A backup or damaged copy made while opening must be stored before the game can change the save.
         if (r.commitError) throw new Error("This save needs a backup before it opens, and there isn't room in browser storage. Free some space and try again.");
@@ -230,7 +288,7 @@ class Store {
           kind: 'info',
         } : null);
       } catch (e) {
-        if (e instanceof MissingPlacesError) {
+        if (e instanceof E().MissingPlacesError) {
           this.repair = { saveId, ids: e.ids, uses: e.uses };
           this.screen = 'repair';
         } else {
@@ -247,7 +305,7 @@ class Store {
   async repairAndOpen(replacements: Record<string, Place>): Promise<string | null> {
     if (!this.repair) return 'There is nothing to repair.';
     const id = this.repair.saveId;
-    const r = await (await this.v()).forSave(id, (kv) => repairSave(kv, id, replacements, Date.now()));
+    const r = await (await this.v()).forSave(id, (kv) => E().repairSave(kv, id, replacements, Date.now()));
     if (r.error) return r.error instanceof Error ? r.error.message : String(r.error);
     if (r.commitError) return "The repaired save couldn't be stored. Free some browser storage and try again.";
     this.repair = null;
@@ -259,13 +317,13 @@ class Store {
   private enter(state: GameState, notice: Notice | null = null) {
     // Production checks holidays as time passes, so wait for the rules (or their failure, which the Place view explains),
     // and for the genre catalog, without which no project can be read: that failure stops here, with Try Again.
-    if (!worldHolidaysLoaded() || !genreCatalogLoaded() || !institutionsLoaded()) {
+    if (!E().worldHolidaysLoaded() || !E().genreCatalogLoaded() || !E().institutionsLoaded()) {
       this.screen = 'loading';
       this.emit();
-      void Promise.all([this.holidays, loadGenreCatalog(), loadInstitutions()]).then(() => this.enterNow(state, notice), () => {
+      void Promise.all([this.holidays, E().loadGenreCatalog(), E().loadInstitutions()]).then(() => this.enterNow(state, notice), () => {
         this.screen = 'load-error';
         this.loadErrorSave = state.saveId;
-        this.loadErrorMessage = !genreCatalogLoaded()
+        this.loadErrorMessage = !E().genreCatalogLoaded()
           ? "The game's genre catalog couldn't be loaded. Check your connection and try again."
           : "The festival and awards calendar couldn't be loaded. Check your connection and try again.";
         this.emit();
@@ -294,7 +352,7 @@ class Store {
     if (!this.state) return;
     // Pick up the latest saved world from the other tab before running it here.
     const id = this.state.saveId;
-    const r = await (await this.v()).forSave(id, (kv) => openSave(kv, id).state);
+    const r = await (await this.v()).forSave(id, (kv) => E().openSave(kv, id).state);
     if (r.value && !r.error && this.state?.saveId === id) this.state = r.value;
     this.readOnly = false;
     this.holdLock();
@@ -359,7 +417,7 @@ class Store {
   }
 
   async deleteSave(saveId: string) {
-    await (await this.v()).forSave(saveId, (kv) => deleteSave(kv, saveId));
+    await (await this.v()).forSave(saveId, (kv) => E().deleteSave(kv, saveId));
     await this.refresh();
   }
   recoveryCopies(): RecoveryCopy[] {
@@ -381,7 +439,18 @@ class Store {
     return null;
   }
   async renameSave(saveId: string, name: string): Promise<string | null> {
-    const r = await (await this.v()).forSave(saveId, (kv) => renameSave(kv, saveId, name));
+    // The open game is renamed where it is played and saved whole. Until November 11, 2026 only the stored copy was
+    // renamed, and the next save wrote the open game's old name back over it (found by e2e/foundation.spec.ts).
+    if (this.state?.saveId === saveId && !this.readOnly) {
+      const trimmed = name.trim();
+      if (!trimmed) return 'Enter a name.';
+      this.state.saveName = trimmed.slice(0, 80);
+      this.changed();
+      const ok = await this.saveNow();
+      await this.refresh();
+      return ok ? null : "The new name couldn't be saved.";
+    }
+    const r = await (await this.v()).forSave(saveId, (kv) => E().renameSave(kv, saveId, name));
     if (r.error) return "That save couldn't be opened to rename it.";
     await this.refresh();
     if (r.commitError) return "The new name couldn't be saved.";
@@ -412,7 +481,7 @@ class Store {
     if (!this.state || this.readOnly) return;
     try {
       this.state.updatedAtReal = Date.now();
-      this.kv.setItem(journalKey(this.state.saveId), serialize(this.state));
+      this.kv.setItem(journalKey(this.state.saveId), E().serialize(this.state));
     } catch {
       /* too large or full: the last stored save (at most about 30 seconds old) is what opens next time */
     }
@@ -428,9 +497,9 @@ class Store {
     const target = this.clock.target();
     if (target === null) return;
     const before = s.log.length > 0 ? s.log[0].id : '';
-    let res: ReturnType<typeof processUntil>;
+    let res: ReturnType<Engine['processUntil']>;
     try {
-      res = processUntil(s, target, 'tick', 200);
+      res = E().processUntil(s, target, 'tick', 200);
     } catch (e) {
       this.halt(e);
       return;
@@ -476,7 +545,7 @@ class Store {
     } catch (e) {
       return { ok: false, error: e instanceof Error ? e.message : String(e) };
     }
-    const r = await v.forWrite(state.saveId, (kv) => writeSave(kv, state, Date.now()));
+    const r = await v.forWrite(state.saveId, (kv) => E().writeSave(kv, state, Date.now()));
     if (r.commitError) {
       return isQuotaError(r.commitError) ? { ok: false, storageFull: true, error: 'The browser storage for SLATE is full.' } : { ok: false, error: r.commitError instanceof Error ? r.commitError.message : String(r.commitError) };
     }
@@ -533,7 +602,7 @@ class Store {
   > {
     let state: GameState;
     try {
-      state = readImport(text);
+      state = (await this.engineReady()).readImport(text);
     } catch (e) {
       return { ok: false, error: e instanceof Error ? e.message : String(e) };
     }
@@ -550,10 +619,10 @@ class Store {
       return { ok: false, error: e instanceof Error ? e.message : String(e) };
     }
     if (mode === 'new') {
-      const taken = await v.forImport(id, (kv) => existingSave(kv, id) ?? (kv.keys().includes(`slate.v1.save.${id}`) ? { saveId: id } as SaveSummary : null));
+      const taken = await v.forImport(id, (kv) => E().existingSave(kv, id) ?? (kv.keys().includes(`slate.v1.save.${id}`) ? { saveId: id } as SaveSummary : null));
       if (taken.value) return { ok: false, conflict: taken.value };
     }
-    const r = await v.forImport(id, (kv) => importSave(kv, state, mode, Date.now()));
+    const r = await v.forImport(id, (kv) => E().importSave(kv, state, mode, Date.now()));
     await this.refresh();
     if (r.commitError) {
       return { ok: false, error: isQuotaError(r.commitError) ? "There isn't room in this browser's storage to import it. Nothing was changed. Free up space and try again." : `It couldn't be stored, so nothing was changed. (${r.commitError instanceof Error ? r.commitError.message : String(r.commitError)})` };
@@ -569,7 +638,7 @@ class Store {
 
   /** Download a save as a file: the game being played (from memory, so it works when storage is full) or a stored one. */
   async exportSave(saveId?: string): Promise<string | null> {
-    const text = saveId && saveId !== this.state?.saveId ? await (await this.v()).readText(`slate.v1.save.${saveId}`) : this.state ? serialize(this.state) : null;
+    const text = saveId && saveId !== this.state?.saveId ? await (await this.v()).readText(`slate.v1.save.${saveId}`) : this.state ? E().serialize(this.state) : null;
     if (!text) return 'That save could not be found.';
     const name = (saveId ? this.saves().find((x) => x.saveId === saveId)?.saveName : this.state?.saveName) ?? 'SLATE save';
     download(text, name);
@@ -580,19 +649,19 @@ class Store {
   async advance(target: AdvanceTarget | { at: number }, mode: 'advance' | 'sleep' = 'advance'): Promise<void> {
     const s = this.state;
     if (!s || this.readOnly || this.busy) return;
-    const to = mode === 'sleep' ? s.sleep.wakeAt ?? s.now : advanceTargetInstant(s, target as AdvanceTarget);
+    const to = mode === 'sleep' ? s.sleep.wakeAt ?? s.now : E().advanceTargetInstant(s, target as AdvanceTarget);
     if (this.processingProblem) return;
     this.suspendClock();
     this.busy = mode === 'sleep' ? 'Sleeping' : 'Advancing';
     this.emit();
-    let result: ReturnType<typeof processUntil>;
+    let result: ReturnType<Engine['processUntil']>;
     try {
-      result = processUntil(s, to, mode, 400);
+      result = E().processUntil(s, to, mode, 400);
       while (!result.done && !result.interruptedBy) {
         this.emitClock();
         await new Promise((r) => setTimeout(r, 0));
         if (this.state !== s) return; // the game was closed meanwhile
-        result = processUntil(s, to, mode, 400);
+        result = E().processUntil(s, to, mode, 400);
       }
     } catch (e) {
       this.halt(e);
@@ -603,7 +672,7 @@ class Store {
     }
     if (result.interruptedBy) {
       const ev = result.interruptedBy.event;
-      if (mode === 'sleep' && ev.kind !== 'wake') wakeEarly(s);
+      if (mode === 'sleep' && ev.kind !== 'wake') E().wakeEarly(s);
       this.notice = {
         title: ev.kind === 'wake' ? 'Good Morning' : mode === 'sleep' ? 'You Woke Up' : 'Advance Stopped',
         text: result.interruptedBy.message || 'Something needs your attention.',
@@ -636,7 +705,7 @@ class Store {
   }
 
   sleep(wakeAt: number, alarm: boolean): string | null {
-    const err = this.act((s) => startSleep(s, wakeAt, alarm));
+    const err = this.act((s) => E().startSleep(s, wakeAt, alarm));
     if (err) return err;
     void this.advance({ at: wakeAt }, 'sleep');
     return null;

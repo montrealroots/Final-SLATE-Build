@@ -2,7 +2,8 @@
 // stored in the save. Made-up series of each kind; no TMDB data is in the repository.
 import { afterAll, describe, expect, it } from 'vitest';
 import { DAY, processUntil } from '../src/engine';
-import { ensureIndustry, episodeDates, outletOf, renewalOdds, setIndustryWorld, type IndustryWorld, type SeriesProfile } from '../src/engine/industry';
+import { ensureIndustry, episodeDates, outletOf, profileFor, recordedUpTo, renewalOdds, setIndustryWorld, type IndustryWorld, type SeriesProfile } from '../src/engine/industry';
+import { worldEventsBetween, type WorldSeed } from '../src/catalog/world';
 import { deserialize, serialize } from '../src/engine/save';
 import type { GameState } from '../src/engine/types';
 import { startLife } from './helpers';
@@ -162,5 +163,121 @@ describe('the living world\'s engine', () => {
     expect(renewalOdds(p, 1)).toBeLessThan(renewalOdds(p, 3));
     expect(renewalOdds({ ...p, genres: ['Animation', 'Comedy'] }, 30)).toBe(0.93);
     expect(Object.keys(p)).not.toContain('rating');
+  });
+});
+
+// November 11, 2026 (the owner's foundation brief, item 3): the save's world holds whatever happens to the catalog around it.
+describe('the living world, held steady by the save', () => {
+  const until = (s: GameState, key: string) => processUntil(s, Date.parse(`${key}T00:00:00Z`), 'advance', 1_000_000);
+
+  it('a catalog that loads late, or goes away and comes back, decides exactly what one there all along would have', () => {
+    const steady = run('ind-late', '2031-12-31');
+    setIndustryWorld(WORLD);
+    const late = startLife('ind-late');
+    ensureIndustry(late);
+    setIndustryWorld(null);
+    until(late, '2028-06-01');
+    setIndustryWorld(WORLD);
+    until(late, '2031-12-31');
+    expect(late.industry).toEqual(steady.industry);
+    // Something was due while it was away, or this would prove nothing.
+    expect(steady.industry!.series['tv:1'].outcomes.some((o) => o.at < '2028-06-01')).toBe(true);
+  });
+
+  it('a save reloaded partway, or played between turns of another save, ends where one played straight through does', () => {
+    const straight = run('ind-split', '2031-12-31');
+    const first = run('ind-split', '2028-03-01');
+    const reloaded = deserialize(serialize(first));
+    const other = run('ind-other', '2029-01-01');
+    until(reloaded, '2031-12-31');
+    until(other, '2031-12-31');
+    expect(reloaded.industry).toEqual(straight.industry);
+    expect(other.industry).toEqual(run('ind-other', '2031-12-31').industry);
+    expect(other.industry).not.toEqual(straight.industry);
+  });
+
+  it('a later catalog corrects the records but never rewrites what the save decided, or adds seasons the save has made', () => {
+    const before = run('ind-refresh', '2029-01-01');
+    const decided = structuredClone(before.industry!);
+    // A year later TMDB records the real Season 4 of Fall Drama, and a later end to the records.
+    const refreshed: IndustryWorld = {
+      horizon: '2027-11-10', builtAt: '2027-11-10T20:00:00Z',
+      series: WORLD.series.map((p) => p.r !== 'tv:1' ? p : { ...p, aired: 4, seasons: [...p.seasons, { n: 4, eps: 22, dated: 22, d0: '2027-09-23', d1: '2028-05-18', gap: 7, drop: 0 }] }),
+    };
+    setIndustryWorld(refreshed);
+    expect(profileFor(before, 'tv:1')!.seasons.map((f) => f.n)).toEqual([3]);
+    expect(recordedUpTo(before, 'tv:1')).toBe(3);
+    until(before, '2032-12-31');
+    // The save's own source version and start stay its own.
+    expect([before.industry!.builtAt, before.industry!.horizon]).toEqual([decided.builtAt, decided.horizon]);
+    for (const [r, sim] of Object.entries(decided.series)) {
+      const now = before.industry!.series[r];
+      expect(now.outcomes.slice(0, sim.outcomes.length)).toEqual(sim.outcomes);
+      expect(now.seasons.slice(0, sim.seasons.length)).toEqual(sim.seasons);
+    }
+    // The recorded Season 4 isn't told beside the save's own: no season number twice.
+    const seed: WorldSeed = { version: 1, builtAt: refreshed.builtAt, horizon: refreshed.horizon, from: '2025-10-01', events: [
+      { d: '2027-09-23', k: 'season', r: 'tv:1:s:4', t: 'Fall Drama', s: 4, eps: 22 },
+      { d: '2027-09-23', k: 'episode', r: 'tv:1:s:4:e:1', t: 'Fall Drama', s: 4, e: 1, n: 'Pilot Light' },
+      { d: '2027-10-01', k: 'end', r: 'tv:1', t: 'Fall Drama', st: 'Ended', la: '2027-09-30' },
+      { d: '2027-10-01', k: 'film', r: 'movie:9', t: 'Unrelated Film' },
+    ] };
+    const told = worldEventsBetween(seed, before, '2027-01-01', '2028-12-31');
+    expect(told.filter((e) => !e.sim).map((e) => e.r)).toEqual(['movie:9']);
+    const seasons = told.filter((e) => e.k === 'season' && e.r.startsWith('tv:1')).map((e) => e.s);
+    expect(new Set(seasons).size).toBe(seasons.length);
+    // A save whose world began before the refresh, with nothing decided yet, still began from Season 3.
+    setIndustryWorld(WORLD);
+    const young = startLife('ind-young');
+    ensureIndustry(young);
+    setIndustryWorld(refreshed);
+    until(young, '2026-11-11');
+    expect(young.industry!.series['tv:1'].outcomes).toEqual([]);
+    expect(recordedUpTo(young, 'tv:1')).toBe(3);
+  });
+
+  it('a save begun before the recorded seasons were kept takes them from the first catalog that decides for it, and keeps them', () => {
+    const s = run('ind-legacy', '2026-11-11');
+    for (const sim of Object.values(s.industry!.series)) delete sim.rec;
+    until(s, '2032-12-31');
+    expect(s.industry!.series['tv:1'].rec).toBe(3);
+    expect(s.industry!.series['tv:2'].rec).toBe(4);
+  });
+});
+
+// November 11, 2026 (the owner's brief, item 4): forty seeds, ten years each. The odds and timing are game calibration, not
+// measured statistics (docs/WORLD.md); what is checked is that every world they make is coherent.
+describe('the living world over ten years, across seeds', () => {
+  const worlds = Array.from({ length: 40 }, (_, i) => run(`ind-decade-${i}`, '2036-12-31'));
+
+  it('never contradicts itself: dated after the records, numbered in order, announced before it airs, and closed for good', () => {
+    for (const s of worlds) {
+      for (const p of WORLD.series) {
+        const sim = s.industry!.series[p.r];
+        const last = p.seasons.at(-1)?.n ?? 0;
+        expect(sim.outcomes.every((o) => o.at > WORLD.horizon), p.r).toBe(true);
+        expect(sim.outcomes.map((o) => o.at), p.r).toEqual([...sim.outcomes.map((o) => o.at)].sort());
+        expect(sim.seasons.map((x) => x.n), p.r).toEqual(sim.seasons.map((_, i) => last + 1 + i));
+        for (const [i, x] of sim.seasons.entries()) {
+          const announced = sim.outcomes.find((o) => o.n === x.n && ['renewed', 'dated', 'ordered'].includes(o.kind));
+          expect(announced && announced.at < x.premiere, `${p.r} season ${x.n}`).toBe(true);
+          const before = i ? episodeDates(sim.seasons[i - 1]).at(-1)! : p.seasons.at(-1)?.d1 ?? p.seasons.at(-1)?.d0 ?? '0000';
+          expect(x.premiere > before, `${p.r} season ${x.n} starts after the one before ends`).toBe(true);
+        }
+        const end = sim.outcomes.findIndex((o) => ['cancelled', 'concluded', 'passed'].includes(o.kind));
+        expect(sim.closed, p.r).toBe(end >= 0);
+        if (end >= 0) expect(end, `${p.r}: nothing decided after it closed`).toBe(sim.outcomes.length - 1);
+        const final = sim.seasons.find((x) => x.final);
+        if (final && episodeDates(final).at(-1)! < '2036-06-30') expect(sim.outcomes.at(-1)!.kind, `${p.r} ends with its final season`).toBe('concluded');
+      }
+    }
+  });
+
+  it('gives each kind of outcome somewhere across seeds, and keeps the limited series and the pilot to theirs', () => {
+    const kinds = (r: string) => new Set(worlds.flatMap((s) => s.industry!.series[r].outcomes.map((o) => o.kind)));
+    expect([...kinds('tv:1')].sort()).toEqual(expect.arrayContaining(['cancelled', 'renewed']));
+    expect([...kinds('tv:4')]).toEqual(['concluded']);
+    expect([...kinds('tv:5')].every((k) => ['ordered', 'passed', 'renewed', 'cancelled', 'concluded'].includes(k))).toBe(true);
+    expect(kinds('tv:5').has('ordered') && kinds('tv:5').has('passed')).toBe(true);
   });
 });

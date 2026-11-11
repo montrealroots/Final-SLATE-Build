@@ -102,7 +102,10 @@ ratings or popularity:
 - **Pilots** are ordered to series or passed on.
 - **Series announced with no aired season** are given a premiere date.
 
-These are game calibration from how renewals usually go, not industry statistics.
+These are game calibration, chosen by judgement so that new series are riskier than established ones and outlets keep
+their own calendars. No renewal rates were measured or sourced, and the game doesn't claim the numbers are the
+industry's. (Until November 11, 2026 this said they came "from how renewals usually go", which implied a source there
+isn't.) `tests/industry.test.ts` checks forty seeds over ten years for coherence, not for realism of the rates.
 
 **Already renewed.** A series still listed as running whose last season had ended before the records' end has already
 been renewed, so its next season is given a date rather than decided again. A broadcast show past the fall slot goes

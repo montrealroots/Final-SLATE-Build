@@ -2,14 +2,14 @@ import { lazy, Suspense, useEffect } from 'react';
 import { loadFile } from '../catalog/load';
 import type { WorldSeed } from '../catalog/world';
 import { PageHead } from './components';
-import { Shell } from './Shell';
 import { Startup } from './Startup';
 import { store, useStore } from './store';
-import { Home } from './World';
 
 const CATALOG_VIEWS = ['companies', 'company', 'title', 'season', 'episode', 'person', 'executive', 'networks', 'network'];
 
-// Creation, project and event screens load on first use to keep startup small.
+// Creation, project and event screens load on first use to keep startup small. So, from November 11, 2026, do the
+// game's frame and Home: the start screen needs neither, and both arrive with the engine (store.warm), fetched once it
+// has drawn.
 const Creation = lazy(() => import('./Creation').then((m) => ({ default: m.Creation })));
 const ProjectsList = lazy(() => import('./Projects').then((m) => ({ default: m.ProjectsList })));
 const NewProject = lazy(() => import('./Projects').then((m) => ({ default: m.NewProject })));
@@ -44,9 +44,13 @@ function useLivingWorld(saveKey: string | null): void {
 
 export function App() {
   const s = useStore();
+  // The engine and the game's frame (store.warm) load once the start screen has drawn, so Continue and New Game rarely
+  // wait for them.
+  useEffect(() => { void store.warm().catch(() => undefined); }, []);
   useLivingWorld(s.screen === 'game' && s.state ? `${s.state.createdAtReal}` : null);
   if (s.screen === 'creation' && s.draft) return <Suspense fallback={<p role="status">Loading…</p>}><Creation /></Suspense>;
-  if (s.screen !== 'game' || !s.state) return <Startup />;
+  if (s.screen !== 'game' || !s.state || !store.frame) return <Startup />;
+  const { Shell, Home } = store.frame;
   const v = s.route.view;
   return (
     <Shell>

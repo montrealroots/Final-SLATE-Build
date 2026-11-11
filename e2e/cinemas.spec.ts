@@ -36,7 +36,7 @@ test('a place lists the cinemas recorded near it at the save\'s date', async ({ 
   await page.getByRole('searchbox', { name: 'Search Places' }).fill('london');
   await page.getByRole('list', { name: 'Places' }).getByRole('button', { name: 'London', exact: true }).first().click();
   const card = page.getByRole('region', { name: 'Cinemas Nearby' });
-  await expect(card).toContainText('Wikidata records 4 cinemas within 25 km of London, 2 with no closure recorded, of which 1 shows films: Wikidata gives its website or operator. It records 6 cinemas in United Kingdom.');
+  await expect(card).toContainText('Wikidata records 4 cinemas within 25 km of London, 2 with no closure recorded, of which the game takes 1 to show films, as Wikidata gives its website or operator. It records 6 cinemas in United Kingdom.');
   const list = card.getByRole('list', { name: 'Cinemas near London' });
   await expect(list.locator('li', { hasText: 'Riverside Picturehouse (Fixture)' })).toContainText('Fixture Borough · Opened in 1932 · No closure recorded · 400 seats · Run by Fixture Cinemas');
   await expect(list.locator('li', { hasText: 'Old Odeon (Fixture)' })).toContainText('Opened on May 7, 1937 · Closed on June 30, 1999');
@@ -80,5 +80,5 @@ test('cinemas show the films in their run: the catalog\'s where they opened, and
   // The film's page: where it plays, from the release page.
   await films.getByRole('button', { name: 'Kite Season' }).click();
   await section(page, 'Release');
-  await expect(page.getByText(/United Kingdom: Showing at \d cinemas? of the 2 there that show films/)).toBeVisible();
+  await expect(page.getByText(/United Kingdom: Showing at \d cinemas? of the 2 there the game takes to show films/)).toBeVisible();
 });
