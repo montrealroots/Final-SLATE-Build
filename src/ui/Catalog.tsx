@@ -4,9 +4,9 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { currentZone, dateKey, formatDateKey } from '../engine';
 import type { Route } from '../engine/types';
-import { COMPANIES, LEADERSHIP_GAPS, REGISTRY_CHECKED, company as registryCompany, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
+import { COMPANIES, LEADERSHIP_GAPS, REGISTRY_CHECKED, company as registryCompany, groupOf, joinedGroup, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
 import {
-  ageAt, executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeUnderDisney, moneyOrUnknown, ownersAt, parseRef, registryFor, titleStanding,
+  ageAt, executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, registryFor, titleStanding,
   type CatalogIndex, type CompanyFilmography, type NetworkRecord, type PersonCredit, type PersonRecord, type SeasonRecord, type SortKey, type TitleRecord,
 } from '../catalog/model';
 import { retryCatalog, useCatalogFile, type Loaded } from '../catalog/load';
@@ -71,13 +71,20 @@ export function TmdbCredit() {
 // ---------- companies ----------
 
 const KIND_LABEL: Record<CompanyRecord['kind'], string> = { corporate: 'The Company', film: 'Film', television: 'Television', network: 'Networks And Streaming' };
+/** The groups the catalog follows, and companies whose films one of them releases without owning them (Illumination). */
+const GROUPS = ['company:the-walt-disney-company', 'company:comcast', 'other'] as const;
+const GROUP_LABEL: Record<(typeof GROUPS)[number], string> = { 'company:the-walt-disney-company': 'The Walt Disney Company', 'company:comcast': 'Comcast And NBCUniversal', other: 'Released By Universal Pictures' };
+const inGroup = (c: CompanyRecord, g: (typeof GROUPS)[number]) => {
+  const top = groupOf(c.id)?.id;
+  return g === 'other' ? top === c.id && c.kind !== 'corporate' : top === g;
+};
 
 export function CompaniesPage() {
   const index = useCatalogFile<CatalogIndex>('index.json');
   const counts = index.status === 'ready' ? new Map(index.data.companies.map((c) => [c.tmdbId, c])) : null;
   return (
     <>
-      <PageHead eyebrow="Industry" title="Companies" lede="The Walt Disney Company's studios and labels, their leadership, and the films and series credited to them, from TMDB." />
+      <PageHead eyebrow="Industry" title="Companies" lede="The studios and labels of The Walt Disney Company and of NBCUniversal, their leadership, and the films and series credited to them, from TMDB." />
       <CatalogStatus index={index} />
       <CatalogSearch ready={index.status === 'ready'} />
       {index.status === 'ready' && index.data.counts.networks ? (
@@ -85,10 +92,10 @@ export function CompaniesPage() {
           <p><Link to={{ view: 'networks' } as Route}>Networks And Streaming Services</Link>: the {plural(index.data.counts.networks, 'network and service', 'networks and services')} the catalog's series aired or streamed on, and who owned them.</p>
         </Panel>
       ) : null}
-      {(['corporate', 'film', 'television', 'network'] as const).map((k) => (
-        <Panel key={k} title={KIND_LABEL[k]}>
+      {GROUPS.flatMap((g) => (['corporate', 'film', 'television', 'network'] as const).filter((k) => COMPANIES.some((c) => c.kind === k && inGroup(c, g))).map((k) => (
+        <Panel key={`${g}:${k}`} title={`${GROUP_LABEL[g]}: ${KIND_LABEL[k]}`}>
           <ul className="list">
-            {COMPANIES.filter((c) => c.kind === k).map((c) => {
+            {COMPANIES.filter((c) => c.kind === k && inGroup(c, g)).map((c) => {
               const n = c.tmdb && counts?.get(c.tmdb.id);
               return (
                 <li key={c.id} className="list-item">
@@ -99,7 +106,7 @@ export function CompaniesPage() {
             })}
           </ul>
         </Panel>
-      ))}
+      )))}
       <TmdbCredit />
     </>
   );
@@ -136,7 +143,7 @@ function CatalogStatus({ index }: { index: Loaded<CatalogIndex> }) {
     <section className="card" aria-labelledby="cat-h">
       <h2 id="cat-h">The Catalog</h2>
       <p className="muted">{plural(c.movies, 'film')}, {plural(c.series, 'series', 'series')} with {plural(c.seasons, 'season')} and {plural(c.episodes, 'episode')}, and {plural(c.people, 'person', 'people')}, as TMDB listed them for these companies between {day(index.data.retrieved.from ?? '')} and {day(index.data.retrieved.to ?? '')}.</p>
-      <p className="dim small">These are the titles TMDB credits to each company, not a complete record of everything the companies ever made, and not checked against the companies' own catalogs. A title on Disney+ isn't listed here unless one of these companies is credited with it.</p>
+      <p className="dim small">These are the titles TMDB credits to each company, not a complete record of everything the companies ever made, and not checked against the companies' own catalogs. A title on Disney+ or Peacock isn't listed here unless one of these companies is credited with it.</p>
     </section>
   );
 }
@@ -172,7 +179,7 @@ export function CompanyPage({ id }: { id: string }) {
     return (
       <>
         <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: tmdbOnly ? 'Credited Company' : 'Company' }]} />
-        <Empty title="This Company Isn't One The Catalog Follows"><p className="muted">It is credited on titles in the catalog, but SLATE gathers titles only for The Walt Disney Company's studios and labels, so there is nothing more about it here.</p><GoBack /></Empty>
+        <Empty title="This Company Isn't One The Catalog Follows"><p className="muted">It is credited on titles in the catalog, but SLATE gathers titles only for the studios and labels of The Walt Disney Company and of NBCUniversal, so there is nothing more about it here.</p><GoBack /></Empty>
       </>
     );
   }
@@ -188,7 +195,7 @@ export function CompanyPage({ id }: { id: string }) {
           {c.tmdb && <><dt>On TMDB</dt><dd>{c.tmdb.name}, {c.tmdb.headquarters ? `${c.tmdb.headquarters}, ` : ''}{c.tmdb.country} (company {c.tmdb.id})</dd></>}
           {c.website && <><dt>Website</dt><dd><a href={c.website} target="_blank" rel="noreferrer noopener">{c.website.replace(/^https?:\/\//, '').replace(/\/$/, '')}</a></dd></>}
         </dl>
-        {c.parent?.how === 'acquired' && c.parent.from && happenedBy(c.parent.from, today) === false && <p className="callout">At this point in your story, {c.name} isn't part of The Walt Disney Company yet: the acquisition completes on {day(c.parent.from)}.</p>}
+        {(() => { const j = joinedGroup(c.id); const g = groupOf(c.id); return j && g && g.id !== c.id && happenedBy(j.from, today) === false ? <p className="callout">At this point in your story, {c.name} isn't part of {g.name} yet: the acquisition completes on {day(j.from)}.</p> : null; })()}
         {c.parent?.source && <p className="dim small">Source: <a href={c.parent.source.url} target="_blank" rel="noreferrer noopener">{c.parent.source.title}</a>.</p>}
         {c.related.map((r) => { const o = registryCompany(r.id); return o ? <p key={r.id} className="muted">{r.relation}: <Link to={{ view: 'company', ref: o.id } as Route}>{o.name}</Link>.</p> : null; })}
         {c.notes.map((n) => <p key={n} className="dim">{n}</p>)}
@@ -403,11 +410,12 @@ function CreditedCompanies({ t }: { t: TitleRecord }) {
         <ul className="list">
           {t.companies.map((c) => {
             const r = registryFor(c.tmdbId);
-            const under = madeUnderDisney(c.tmdbId, t.date);
+            const under = madeInGroup(c.tmdbId, t.date);
+            const joined = r ? joinedGroup(r.id) : null;
             return (
               <li key={c.tmdbId} className="list-item">
                 <span className="grow"><Link to={{ view: 'company', ref: r ? r.id : `tmdbco:${c.tmdbId}` } as Route}>{c.name}</Link>{c.country ? <span className="dim small"> ({c.country})</span> : null}</span>
-                {r?.parent?.how === 'acquired' && under === false && <span className="dim small">Released before the acquisition ({day(r.parent.from!)})</span>}
+                {joined && under === false && <span className="dim small">Released before the acquisition ({day(joined.from)})</span>}
               </li>
             );
           })}

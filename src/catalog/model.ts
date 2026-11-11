@@ -2,7 +2,7 @@
 // showing it at a save's date. The catalog is reference material: real titles, credits and companies as TMDB records them.
 // Nothing in it is part of a save, and nothing in the simulation reads it. A credit isn't availability, employment,
 // skill or a relationship, and TMDB's ratings, budgets and revenue are shown as TMDB's figures, never used as game values.
-import { COMPANIES, LEADERSHIP, type LeadershipRole } from './registry';
+import { COMPANIES, LEADERSHIP, type LeadershipRole, joinedGroup } from './registry';
 import { ageOn as engineAgeOn } from '../engine/time';
 
 export interface Rating { average: number; count: number }
@@ -210,16 +210,19 @@ export function executive(personId: string) {
 export const registryFor = (tmdbId: number) => COMPANIES.find((c) => c.tmdb?.id === tmdbId);
 
 /**
- * Whether a title credited to a Disney-owned company was released after Disney owned it. A title released before the
- * acquisition is credited to that company, not to Disney; one with no date can't be placed. It reads the release date
- * only: when a title was made or paid for isn't recorded, so until November 11, 2026's wording ("made before") it said
- * more than the records do.
+ * Whether a title credited to a followed company was released after its group owned it: Disney for Pixar, Comcast
+ * (through NBCUniversal) for Universal Pictures. A title released before the acquisition is credited to that company, not
+ * to the group; one with no date can't be placed. It reads the release date only: when a title was made or paid for isn't
+ * recorded. Until November 11, 2026 it was Disney's alone (`madeUnderDisney`) and read only a company's own parent, which
+ * would have counted Universal's 1990s films as Comcast's.
  */
-export function madeUnderDisney(tmdbId: number, date: string | null): boolean | null {
+export function madeInGroup(tmdbId: number, date: string | null): boolean | null {
   const c = registryFor(tmdbId);
-  if (!c?.parent || c.parent.how !== 'acquired') return c ? true : null;
-  if (!date || !c.parent.from) return null;
-  return date >= c.parent.from;
+  if (!c) return null;
+  const joined = joinedGroup(c.id);
+  if (!joined) return true;
+  if (!date) return null;
+  return date >= joined.from;
 }
 
 export type SortKey = 'newest' | 'oldest' | 'title';
