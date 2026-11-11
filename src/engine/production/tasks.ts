@@ -6,6 +6,7 @@ import { approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectMo
 import { MOCAP_CLEANUP_PER_SESSION } from '../mocap';
 import { ANIM_RATE, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS } from './rates';
 import { recordTaskId, songTasks, songUses } from '../songs';
+import { CROWD_POST_DAYS, PERIOD_WORK, costumeCopies, digitalCrowd, makeup, projectBand, statesOf, wardrobe } from '../looks';
 
 // ---------------- Task generation ----------------
 
@@ -28,7 +29,9 @@ export function buildTasks(p: Project): Task[] {
   const animScenes = scenes.filter((s) => sceneTechnique(p, s) !== 'live');
   const nonfiction = isNonfiction(p.axes.format);
   const unscripted = p.axes.format === 'unscripted-series';
-  const periodFactor = mods.has('period') && !/contemporary|present/i.test(p.axes.storyEra) ? 1.5 : 1;
+  // A declared story year sets the period's extra work (looks.ts); without one, the older rule reads the genre and the era's words.
+  const band = projectBand(p);
+  const periodFactor = band ? PERIOD_WORK[band] : mods.has('period') && !/contemporary|present/i.test(p.axes.storyEra) ? 1.5 : 1;
   const prepIds: string[] = [];
 
   if (count('period-research')) {
@@ -47,8 +50,37 @@ export function buildTasks(p: Project): Task[] {
     // isn't where it is shot, so the setting place is a creative and research reference. From November 9, 2026 a setting
     // in another country than the base is researched before design and costumes start, as a period is.
     tasks.push(t('prep:design', 'all', 'Production Design And Props', 'Art', 'production-designer', Math.max(1, count('prop') + count('clue-prop') + Math.ceil(locs / 2)), 'items', research));
-    tasks.push(t('prep:costume', 'all', 'Costumes', 'Costume And Makeup', 'costume-designer', Math.max(1, chars.filter((c) => c.roleSize !== 'background').length * periodFactor), 'costumes', research));
-    prepIds.push('prep:locations:all', 'prep:design:all', 'prep:costume:all');
+    // A costume with a declared source is its own work (looks.ts): sourced or made, in as many copies as its states and
+    // its rough scenes need, then fitted. The rest share the one costume task, as before.
+    const onSet = (c: (typeof chars)[number]) => c.roleSize !== 'background' && liveScenes.some((s) => s.participants.includes(c.id));
+    const sourced = chars.filter((c) => onSet(c) && wardrobe(c.look?.wardrobe));
+    const shared = chars.filter((c) => c.roleSize !== 'background' && !sourced.includes(c));
+    if (shared.length || !sourced.length) tasks.push(t('prep:costume', 'all', 'Costumes', 'Costume And Makeup', 'costume-designer', Math.max(1, shared.length * periodFactor), 'costumes', research));
+    prepIds.push('prep:locations:all', 'prep:design:all');
+    if (shared.length || !sourced.length) prepIds.push('prep:costume:all');
+    for (const c of sourced) {
+      const w = wardrobe(c.look!.wardrobe)!;
+      const copies = costumeCopies(c, liveScenes);
+      // Clothes not of the story's period are remade to pass: the period's extra work, on top of the source's own.
+      const work = w.anyPeriod ? 1 : periodFactor;
+      tasks.push(t('prep:wardrobe', c.id, `Costume: ${c.name}`, 'Costume And Makeup', 'costume-designer', w.days * copies * work, 'days', research, { assetRef: c.id, material: Math.round(w.cost * copies * work) }));
+      tasks.push(t('prep:fitting', c.id, `Fittings: ${c.name}`, 'Costume And Makeup', 'costume-designer', w.fittings, 'fittings', [`prep:wardrobe:${c.id}`], { assetRef: c.id }));
+      prepIds.push(`prep:wardrobe:${c.id}`, `prep:fitting:${c.id}`);
+    }
+    // Makeup with a declared method (looks.ts): camera tests, and for appliances a build for each appearance state.
+    for (const c of chars.filter((x) => onSet(x) && makeup(x.look?.makeup))) {
+      const m = makeup(c.look!.makeup)!;
+      const dept = m.specialist === 'prosthetics' ? 'Creature And Effects' : 'Costume And Makeup';
+      const built = m.buildDays > 0;
+      if (built) {
+        tasks.push(t('prep:appliances', c.id, `${m.label}: ${c.name}`, dept, m.specialist, m.buildDays * statesOf(c), 'build days', research, { assetRef: c.id, material: m.buildCost * m.buildDays * statesOf(c) }));
+        prepIds.push(`prep:appliances:${c.id}`);
+      }
+      if (m.testDays > 0) {
+        tasks.push(t('prep:makeup-test', c.id, `Makeup Tests: ${c.name}`, dept, m.specialist, m.testDays, 'test days', built ? [`prep:appliances:${c.id}`] : research, { assetRef: c.id }));
+        prepIds.push(`prep:makeup-test:${c.id}`);
+      }
+    }
     if (count('creature')) {
       tasks.push(t('prep:creature', 'all', 'Creature And Prosthetic Builds', 'Creature And Effects', 'prosthetics', count('creature') * 3, 'build days'));
       prepIds.push('prep:creature:all');
@@ -200,6 +232,15 @@ export function buildTasks(p: Project): Task[] {
     tasks.push(t('post:assembly', String(e), `Assembly Edit${isEpisodic(p.axes.format) ? `, Episode ${e}` : ''}`, 'Post Production', 'editor', Math.max(1, minutes / 6), 'days', capDeps, { episode: e }));
     const lock = `milestone:lock:${e}`;
     const hasVfx = eScenes.some((s) => s.vfx.length && sceneTechnique(p, s) === 'live');
+    // Work finished in post because of how it was shot (looks.ts): a crowd extended beyond the people on set, and a look
+    // made digitally. Each scene's is counted once, here, and nowhere else.
+    const liveHere = eScenes.filter((s) => sceneTechnique(p, s) === 'live');
+    const crowdScenes = liveHere.filter(digitalCrowd);
+    if (crowdScenes.length) tasks.push(t('post:crowd', String(e), `Crowd Extension${epSuffix(p, e)}`, 'Post Production', 'vfx-artist', crowdScenes.length * CROWD_POST_DAYS, 'days', [lock], { episode: e, sceneIds: crowdScenes.map((s) => s.id) }));
+    const digitalLooks = chars.filter((c) => c.roleSize !== 'background' && (makeup(c.look?.makeup)?.vfxDays ?? 0) > 0);
+    const lookDays = digitalLooks.reduce((a, c) => a + liveHere.filter((s) => s.participants.includes(c.id)).length * makeup(c.look!.makeup)!.vfxDays, 0);
+    if (lookDays) tasks.push(t('post:looks', String(e), `Digital Makeup${epSuffix(p, e)}`, 'Post Production', 'vfx-artist', lookDays, 'days', [lock], { episode: e }));
+    const postLooks = [...(crowdScenes.length ? [`post:crowd:${e}`] : []), ...(lookDays ? [`post:looks:${e}`] : [])];
     // Projects from November 8, 2026 edit dialogue, record Foley and cut effects as their own work (SLATE-15-04.02). The
     // units add up to the single sound pass they replace, but each is at least a day and one sound designer works one task
     // a day, so a short work's sound takes a day or two longer (the production golden moved by 1 to 3 days). The dialogue
@@ -211,7 +252,7 @@ export function buildTasks(p: Project): Task[] {
     } else tasks.push(t('post:sound', String(e), `Sound Editing${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 5), 'days', [lock], { episode: e }));
     tasks.push(t('post:music', String(e), `Score${epSuffix(p, e)}`, 'Music', 'composer', Math.max(1, minutes / 4), 'days', [lock], { episode: e }));
     if (hasVfx) tasks.push(t('post:vfx', String(e), `Visual Effects${epSuffix(p, e)}`, 'Post Production', 'vfx-artist', eScenes.reduce((a, s) => a + s.vfx.length * 4, 0), 'days', [lock], { episode: e }));
-    tasks.push(t('post:color', String(e), `Color Grade${epSuffix(p, e)}`, 'Post Production', 'colorist', Math.max(1, minutes / 20), 'days', [lock, ...(hasVfx ? [`post:vfx:${e}`] : [])], { episode: e }));
+    tasks.push(t('post:color', String(e), `Color Grade${epSuffix(p, e)}`, 'Post Production', 'colorist', Math.max(1, minutes / 20), 'days', [lock, ...(hasVfx ? [`post:vfx:${e}`] : []), ...postLooks], { episode: e }));
     const songsHere = [...new Set(uses.filter((x) => eScenes.some((s) => s.id === x.use.sceneId) && x.song.rights !== 'licensed').map((x) => recordTaskId(x.song)))];
     tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, minutes / 30), 'days', [`post:sound:${e}`, ...(p.takesModel ? [`post:dialogue:${e}`, `post:foley:${e}`] : []), `post:music:${e}`, ...songsHere, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
     tasks.push(t('post:captions', String(e), `Captions And Subtitles${epSuffix(p, e)}`, 'Post Production', 'subtitler', Math.max(1, (minutes / 30) * p.axes.dialogueLanguages.length), 'days', [`post:mix:${e}`], { episode: e }));

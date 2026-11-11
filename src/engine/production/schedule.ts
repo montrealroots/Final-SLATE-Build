@@ -15,6 +15,14 @@ import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, dayFees } from './rates';
 import { planTime } from '../takes';
 import { songUses } from '../songs';
 import { childShare, ensureLicence, minorFor, type Minor } from '../minors';
+import { PLATE_FACTOR, digitalCrowd, makeupDayCost, makeupShare, physicalCrowd } from '../looks';
+import { covers } from '../people';
+
+/**
+ * People who can apply makeup at once (looks.ts): everyone hired who does hair and makeup or prosthetics, or whose job
+ * covers one of them, as a costume designer on a small crew covers hair and makeup (people.ts COMBINES).
+ */
+export const chairsOf = (p: Project): number => p.hires.filter((h) => h.status === 'accepted' && (covers(h.roleId, 'hair-makeup') || covers(h.roleId, 'prosthetics'))).length;
 
 /** A song is performed on screen in this scene (songs.ts). */
 export const performedSong = (p: Project, s: Scene): boolean => songUses(p, [s]).some((x) => x.use.placement === 'performed');
@@ -65,7 +73,8 @@ export function nextWorkingDay(p: Project, key: string): string {
  * the schedule and the estimate left out the shot plan, so richer coverage made the shoot overrun days nobody planned.
  */
 export function sceneLoad(p: Project, s: Scene, mods: Set<string> = projectModules(p)): number {
-  return (s.estMinutes / sceneComplexity(s, mods, performedSong(p, s))) * planTime(p, s);
+  // A crowd extended in post is shot with clean plates and tracking passes as well (looks.ts).
+  return (s.estMinutes / sceneComplexity(s, mods, performedSong(p, s))) * planTime(p, s) * (digitalCrowd(s) ? PLATE_FACTOR : 1);
 }
 
 export interface ShootDayGroup { sceneIds: string[]; episodes: number[]; place: string; interior: boolean; night: boolean; load: number }
@@ -114,6 +123,11 @@ export function groupShootDays(p: Project, state?: GameState): ShootDayGroup[] {
   const kids = minorsInScenes(p, scenes, planningDate(p, state), state);
   const kidCap = (cid: string) => BASE_MINUTES_PER_SHOOT_DAY * childShare(kids.get(cid)!, true);
   const kidsOf = (s: Scene) => s.participants.filter((c) => kids.has(c));
+  // Makeup that takes longer than the pre-call allows comes out of the day (looks.ts): a day with scenes that need it
+  // holds less. Planned with the makeup crew hired so far, or one chair when none is.
+  const chars = approvedCharacters(p);
+  const chairs = chairsOf(p);
+  const dayCap = (list: Scene[]) => BASE_MINUTES_PER_SHOOT_DAY * makeupShare(list, chars, chairs);
   const out: ShootDayGroup[] = [];
   const sortedGroups = [...groups.entries()].sort((a, b) => a[0].localeCompare(b[0], 'en', { numeric: true }));
   for (const [key, list] of sortedGroups) {
@@ -131,7 +145,7 @@ export function groupShootDays(p: Project, state?: GameState): ShootDayGroup[] {
     for (const s of list) {
       const need = sceneLoad(p, s, mods);
       const ks = kidsOf(s);
-      if (load + need <= BASE_MINUTES_PER_SHOOT_DAY && ks.every((k) => (kidLoad.get(k) ?? 0) + need <= kidCap(k) + 1e-9)) {
+      if (load + need <= dayCap([...bucket, s]) + 1e-9 && ks.every((k) => (kidLoad.get(k) ?? 0) + need <= kidCap(k) + 1e-9)) {
         bucket.push(s);
         load += need;
         for (const k of ks) kidLoad.set(k, (kidLoad.get(k) ?? 0) + need);
@@ -139,7 +153,7 @@ export function groupShootDays(p: Project, state?: GameState): ShootDayGroup[] {
       }
       flush();
       // A scene longer than one day's capacity, or than a child in it may work in a day, spans several days.
-      const perDay = Math.min(BASE_MINUTES_PER_SHOOT_DAY, ...ks.map(kidCap));
+      const perDay = Math.min(dayCap([s]), ...ks.map(kidCap));
       let remaining = need;
       while (remaining > perDay + 1e-9) {
         bucket = [s];
@@ -244,7 +258,7 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   const planned = planShootDays(state, p, shootStart).map((d) => ({ ...d, sceneIds: d.sceneIds.filter((s) => !capturedIds.has(s)) })).filter((d) => d.sceneIds.length);
   // Budget the schedule: shoot-day costs and materials are reserved now, so they can't be spent twice.
   const shootCost = planned.length * (dayFees(p).location + dayFees(p).equipment) +
-    planned.reduce((a, d) => a + approvedScenes(p).filter((sc) => d.sceneIds.includes(sc.id)).reduce((b, sc) => b + sc.crowd * CROWD_DAY_RATE, 0), 0);
+    planned.reduce((a, d) => { const its = approvedScenes(p).filter((sc) => d.sceneIds.includes(sc.id)); return a + its.reduce((b, sc) => b + physicalCrowd(sc) * CROWD_DAY_RATE, 0) + makeupDayCost(its, approvedCharacters(p)); }, 0);
   const matCost = p.tasks.filter((x) => x.status !== 'done').reduce((a, x) => a + materialCost(x), 0);
   const previous = p.obligations.filter((o) => (o.ref === 'plan:shoot' || o.ref === 'plan:materials') && (o.state === 'reserved' || o.state === 'committed'));
   const freed = previous.reduce((a, o) => a + Math.max(0, o.amount - o.settled), 0);
