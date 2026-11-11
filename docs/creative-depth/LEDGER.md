@@ -29,7 +29,7 @@ Nothing is called complete because a control exists or a field saves.
 | B | Shared picker, option records, starter libraries, field inventory, the zombie example | Built and tested; see below | With the second checkpoint |
 | C | Every creative input expanded; medium pipelines; controlled comparisons | Under way: see "Milestone C, So Far" below | |
 | D | Real people: identity, availability, auditions, hiring, contracts, pay, credits | Built and tested, with the limits below. Done before C: see `DECISIONS.md` | With the third checkpoint |
-| E | Real destinations, scouting, geography-aware production | Not started | |
+| E | Real destinations, scouting, geography-aware production | Under way: see "Milestone E, So Far" below | |
 | F | Studio strategy, Warner Bros., Sony and Paramount, territorial releases, competition | Not started | |
 | G | Optional portraits and posters, pack refresh and storage controls | Not started | |
 | H | Connected playthroughs, performance, accessibility, migration, final coverage | Not started | |
@@ -246,6 +246,24 @@ the 11 fields that have none (the genre questions, what each episode moves, acts
 arcs). Not implemented, and not
 planned as part of this pass: a puppet's face method for stop motion; painted backgrounds as their own task in 2D; a
 series bible and standing sets as records of their own.
+
+## Milestone E, So Far
+
+Being built on the branch `e-work`, after milestone C. Not yet a checkpoint.
+
+| Piece | Where | Status | Evidence |
+| --- | --- | --- | --- |
+| Each place in the script can be filmed in any real place of the world registry, apart from where the story is set | `src/engine/destinations.ts` `setFilmedAt`, `filmPlace`, `dayPlace` | Engine verified | `tests/destinations.test.ts`, 7 tests |
+| The day has that place's weather, daylight, public holidays and clock, and the player has to be there | `production/shoot.ts`, `production/schedule.ts` `scheduleShootDay` | Engine verified | `tests/destinations.test.ts`, "a film with a location filmed far away, made": the log names the place the player wasn't in |
+| A unit away from base is moved once and housed each day; near the base nobody is | `destinations.ts` `awayCosts`, `moveCost`, `awayDayCost`; `estimate.ts`; `shoot.ts` | Engine verified | The same test: one move posting, a housing posting for each day there |
+| Thirteen kinds of site: fee share, permit days, noise, cover | `destinations.ts` `SITE_KINDS`; `production/tasks.ts` (`prep:permit`) | Engine verified | "the kind of site decides whether rain can stop it and how often noise spoils dialogue" |
+| The candidate site is made up and says so; no venue, address, owner, rate or permission is stated | `destinations.ts` `candidateSite`, `filmedAtPreview`; `src/ui/FilmedAt.tsx` | Engine verified | "the candidate site says it is made up, and the place it is in is real" |
+| The Schedule page's card, Where Each Place Is Filmed, with what the choice asks shown first | `src/ui/FilmedAt.tsx` | Not implemented in a browser journey yet | No Playwright journey has used it |
+
+Still to do in E: the browser journey (J07); weather on an away day checked against the away place's climate in a test
+of its own; the three sites scouting finds (real, stage, stand-in) joined to the candidate; a backup place; travel days
+on the calendar; a coverage note for countries with few registry places. Not implemented, and outside this pass: real
+venues, film-commission or tourism records, addresses, opening hours, real permit rules, taxes and visas.
 
 ## The Audit Artifacts
 

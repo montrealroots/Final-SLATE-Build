@@ -228,3 +228,35 @@ Looks, scene by scene (`src/engine/looks.ts`): a change of look inside a shootin
 and half the makeup's chair time again, out of the day. Once any scene says which look a character is in, only the
 looks that appear are made.
 
+## Filming Somewhere Else (November 11, 2026)
+
+Game calibration, not quotes, rates, permit rules or legal guidance. All in `src/engine/destinations.ts`. The place a
+location is filmed in is a real entry of the world registry: its name, country, coordinates, climate and public
+holidays are what the registry has. The site is a candidate the game makes up, of the kind chosen, and is labelled so
+wherever it is named.
+
+| Kind of site | Share of the location fee | Permit days before the first day | Dialogue spoiled by noise | Rain stops it |
+| --- | --- | --- | --- | --- |
+| A street | 100% | 3 | 25% of days | Yes |
+| A neighbourhood | 90% | 2 | 15% | Yes |
+| A coastline | 70% | 2 | 30% | Yes |
+| A forest | 60% | 2 | 5% | Yes |
+| A mountain | 60% | 3 | 10% | Yes |
+| A desert | 60% | 3 | 5% | Yes |
+| A rail station | 140% | 6 | 40% | Yes |
+| A port | 130% | 6 | 40% | Yes |
+| A historic district | 130% | 5 | 20% | Yes |
+| A civic space | 120% | 5 | 15% | Yes |
+| A market | 110% | 4 | 45% | Yes |
+| A soundstage | 160% | 1 | Never | No |
+| A backlot | 140% | 1 | 5% | Yes |
+
+| Away from the base | Figure |
+| --- | --- |
+| How far counts as away | 80 km or more from the production's base |
+| Housing the unit for a shooting day away | 60% of the budget size's day fees (location and equipment) |
+| Moving the unit there and back, once for a place | Half the equipment day fee, and as much again for each 1,000 km, up to four times it |
+
+Nothing here models taxes, visas, customs or incentives. A permit time is a modeled lead time, not a statement about
+any authority.
+
