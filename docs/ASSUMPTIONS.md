@@ -260,3 +260,7 @@ wherever it is named.
 Nothing here models taxes, visas, customs or incentives. A permit time is a modeled lead time, not a statement about
 any authority.
 
+Under a roof means a soundstage, or the stage set built to match that scouting offers (`locations.ts` `roofed`): rain,
+snow and short daylight don't stop an exterior written there, and no rain warning is sent for it. Until November 11,
+2026 the stage set cost more and never fell through, but the weather still stopped it.
+

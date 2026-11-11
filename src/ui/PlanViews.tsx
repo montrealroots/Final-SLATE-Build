@@ -19,7 +19,7 @@ import { callSheet } from '../engine/callsheet';
 import { costCuts, estimateAgainstSpending, type CostCut } from '../engine/cost-cuts';
 import { CONTINGENCY, costBreakdown, projectedCost, type CostArea } from '../engine/estimate';
 import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
-import { SITES, scoutedPlaces, site } from '../engine/locations';
+import { SITES, roofed, scoutedPlaces, siteName, siteNote } from '../engine/locations';
 import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
 import { candidatesFor, childrenIn } from '../engine/hiring';
 import { consideredOn, isReal, jobLabel, stopConsidering } from '../engine/guests';
@@ -32,6 +32,7 @@ import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } 
 import { store, useGame } from './store';
 import { WritingWork } from './WritingWork';
 import { FilmedAtCard } from './FilmedAt';
+import { dayPlace, filmedAt, kindFee } from '../engine/destinations';
 
 function NeedsApproval({ p, what }: { p: Project; what: string }) {
   return (
@@ -510,14 +511,16 @@ export function ScheduleTab({ p }: { p: Project }) {
         {!days.length && <p className="muted">{p.schedule.startDate ? 'This project has no live-action shoot days.' : 'Build a schedule to see shoot days.'}</p>}
         <ul className="list">
           {days.map((d) => {
-            const fc = d.status === 'scheduled' && d.date >= today ? forecast(g.seed, place, d.date, today) : null;
+            // The forecast is for the place the day is filmed in (destinations.ts), which is the base unless one was chosen.
+            const fc = d.status === 'scheduled' && d.date >= today && !roofed(p, d.locationLabel) ? forecast(g.seed, dayPlace(p, d), d.date, today) : null;
             return (
               <li key={d.id}>
                 <div className="row-wrap">
                   <div className="grow">
                     <strong>{formatDateKey(d.date, true)}</strong>{isEpisodic(p.axes.format) ? ` · Episode ${d.episode}` : ''} · {d.locationLabel} ({d.interior ? 'Interior' : 'Exterior'}{d.night ? ', Night' : ''}) <span className={`chip ${d.status === 'shot' ? 'chip-positive' : d.status === 'lost' ? 'chip-negative' : d.status === 'partial' ? 'chip-warning' : ''}`}>{{ scheduled: 'Scheduled', shot: 'Shot', partial: 'Partly Shot', lost: 'Lost', moved: 'Moved', cancelled: 'Cancelled' }[d.status]}</span>
                     <div className="dim">{d.sceneIds.map((id) => { const sc = approvedScenes(p).find((s) => s.id === id); return sc ? sceneLabel(p, sc) : 'Removed scene'; }).join(', ')}{d.playerActing ? ' · You act today' : ''}</div>
-                    {fc && !d.interior && fc.leadDays <= 10 && <div className="dim">Forecast: {fc.summary}, {fc.chanceOfPrecip}% chance of rain or snow.</div>}
+                    {filmedAt(p, d.locationLabel) && <div className="dim">Filmed in {dayPlace(p, d).name}, {dayPlace(p, d).countryName}.</div>}
+                    {fc && !d.interior && fc.leadDays <= 10 && <div className="dim">Forecast{filmedAt(p, d.locationLabel) ? ` for ${dayPlace(p, d).name}` : ''}: {fc.summary}, {fc.chanceOfPrecip}% chance of rain or snow.</div>}
                     {d.result && <div className="dim">{d.result}</div>}
                     {d.conflicts.map((c) => <div key={c} className="dim" style={{ color: 'var(--warning)' }}>{c}</div>)}
                     {d.status === 'scheduled' && (() => {
@@ -610,16 +613,16 @@ function LocationsCard({ p }: { p: Project }) {
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       <ul className="list">{scoutedPlaces(p).map((place) => {
         const rec = p.locationChoices?.[place] ?? {};
-        const opts = (exclude?: string) => SITES.filter((o) => !rec.lost?.includes(o.id) && o.id !== exclude).map((o) => ({ value: o.id, label: `${o.name}: ${money(Math.round(fee * o.factor))} a day` }));
+        const opts = (exclude?: string) => SITES.filter((o) => !rec.lost?.includes(o.id) && o.id !== exclude).map((o) => ({ value: o.id, label: `${siteName(p, place, o.id)}: ${money(Math.round(fee * o.factor * kindFee(p, place)))} a day` }));
         return (
           <li key={place}>
-            <strong>{place}</strong>
-            {!!rec.lost?.length && <div className="dim" style={{ color: 'var(--warning)' }}>Fell through: {rec.lost.map((x) => site(x)!.name).join(', ')}.</div>}
+            <strong>{place}</strong>{filmedAt(p, place) ? <span className="dim"> · sites in {getPlace(filmedAt(p, place)!.placeId).name}</span> : null}
+            {!!rec.lost?.length && <div className="dim" style={{ color: 'var(--warning)' }}>Fell through: {rec.lost.map((x) => siteName(p, place, x)).join(', ')}.</div>}
             <div className="grid grid-3 form">
-              <SelectField label={`Site For ${place}`} value={rec.main ?? ''} options={[{ value: '', label: rec.lost?.length ? 'Choose A Site' : 'The Real Place (Not Chosen Yet)' }, ...opts(rec.backup)]} onChange={(v) => setErr(store.act(() => chooseSite(p, place, 'main', (v || null) as never)))} />
+              <SelectField label={`Site For ${place}`} value={rec.main ?? ''} options={[{ value: '', label: rec.lost?.length ? 'Choose A Site' : `${siteName(p, place, 'real')} (Not Chosen Yet)` }, ...opts(rec.backup)]} onChange={(v) => setErr(store.act(() => chooseSite(p, place, 'main', (v || null) as never)))} />
               <SelectField label={`Backup For ${place}`} value={rec.backup ?? ''} options={[{ value: '', label: 'No Backup' }, ...opts(rec.main)]} onChange={(v) => setErr(store.act(() => chooseSite(p, place, 'backup', (v || null) as never)))} />
             </div>
-            {rec.main && <p className="dim small">{site(rec.main)!.note}</p>}
+            {rec.main && <p className="dim small">{siteNote(p, place, rec.main)}</p>}
           </li>
         );
       })}</ul>

@@ -123,3 +123,30 @@ describe('a film with a location filmed far away, made', () => {
     expect(() => setFilmedAt(p, 'Quay', null)).toThrow(/has been delivered|has been shot already/);
   }, 60_000);
 });
+
+describe('a roof over an exterior', () => {
+  // The same film three times, one seed, the Quay filmed in Tromsø from early January: in the open at a port, on a
+  // soundstage, and at a port whose chosen site is the stage set built to match. Only the roof differs.
+  const made = (roof: 'none' | 'soundstage' | 'stage-set') => {
+    const { s, p } = film('destinations-roof');
+    setFilmedAt(p, 'Quay', { placeId: 'no-tromso', kind: roof === 'soundstage' ? 'soundstage' : 'port' });
+    if (roof === 'stage-set') p.locationChoices!.Quay.main = 'stage';
+    p.tasks = buildTasks(p);
+    castAll(s, p);
+    staffAll(s, p);
+    runDays(s, p, 30);
+    startProduction(s, p);
+    runDays(s, p, 300);
+    const stopped = p.schedule.days.filter((d) => d.locationLabel === 'Quay' && /(Rain|Snow) stopped|enough daylight/.test(d.result ?? '')).length;
+    const warned = s.log.filter((e) => /is expected during your exterior shoot/.test(e.text)).length;
+    return { delivered: !!p.delivered, stopped, warned };
+  };
+  it('in the open the weather or the dark stops days there; under a soundstage roof or on a stage set none is stopped and no warning is sent', () => {
+    const open = made('none');
+    expect(open.delivered).toBe(true);
+    expect(open.stopped).toBeGreaterThan(0);
+    expect(made('soundstage')).toEqual({ delivered: true, stopped: 0, warned: 0 });
+    expect(made('stage-set')).toEqual({ delivered: true, stopped: 0, warned: 0 });
+  }, 120_000);
+});
+

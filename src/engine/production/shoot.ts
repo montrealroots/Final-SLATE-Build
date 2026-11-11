@@ -12,14 +12,14 @@ import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees } 
 import { chairsOf, ensureWorkEvent, isWorkingDay, minorsInScenes, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay } from './schedule';
 import { childShare, ensureLicence, isSchoolDay, licenceReady, setAsideOf, supervisionFor, type Minor } from '../minors';
 import { dialogueHolds, rigDayCost } from '../craft';
-import { awayDayCost, dayPlace, kindFee, moveCost, noisyDay, underCover } from '../destinations';
+import { awayDayCost, dayPlace, kindFee, moveCost, noisyDay } from '../destinations';
 import { PLATE_FACTOR, digitalCrowd, makeup, makeupDayCost, makeupShare, needsMakeupCrew, physicalCrowd } from '../looks';
 import { addLogOnce, payPlanned, plannedRemaining } from './workday';
 import { t } from './tasks';
 import { personLanguagesFit } from './language';
 import type { GameState, Project, Scene, SceneCapture, ShootDay } from '../types';
 import { forecast, precipitationDuring, weatherOn, daylightWindowLocal } from '../weather';
-import { siteFactor, siteOnTheDay } from '../locations';
+import { roofed, siteFactor, siteOnTheDay } from '../locations';
 import { SETUPS_OF, TAKE_RULES, applyPickup, isDirecting2, pickupLoad, recordTakes, setupTime, shotPlan, takeFigures } from '../takes';
 
 // ---------------- Shoot days ----------------
@@ -33,7 +33,7 @@ export const SHOOT_CREW = new Set(['prosthetics', 'dop', 'camera-operator', 'cam
 registerHandler('weather-check', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
   const d = p?.schedule.days.find((x) => x.id === ev.payload.dayId);
-  if (!p || !d || d.status !== 'scheduled' || d.interior) return { suppressInterrupt: true };
+  if (!p || !d || d.status !== 'scheduled' || d.interior || roofed(p, d.locationLabel)) return { suppressInterrupt: true };
   const place = dayPlace(p, d);
   const issued = dateKey(state.now, place.zone);
   const f = forecast(state.seed, place, d.date, issued);
@@ -322,9 +322,9 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     }
     // Weather and daylight for exteriors.
     let compromised = false;
-    if (s.heading.intExt === 'EXT') {
+    if (s.heading.intExt === 'EXT' && !roofed(p, d.locationLabel)) {
       const window: [number, number] = d.night ? [17, 23] : [7, 19];
-      if (precipitationDuring(w, window[0], window[1]) && !underCover(p, d.locationLabel)) {
+      if (precipitationDuring(w, window[0], window[1])) {
         if (!f.weatherAnyway) {
           reasons.push(`${w.snow ? 'Snow' : 'Rain'} stopped ${label}.`);
           pending.push(s.id);

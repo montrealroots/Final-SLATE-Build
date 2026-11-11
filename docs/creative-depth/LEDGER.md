@@ -247,23 +247,36 @@ arcs). Not implemented, and not
 planned as part of this pass: a puppet's face method for stop motion; painted backgrounds as their own task in 2D; a
 series bible and standing sets as records of their own.
 
-## Milestone E, So Far
+## Milestone E
 
-Being built on the branch `e-work`, after milestone C. Not yet a checkpoint.
+Built on the branch `e-work`, after milestones D and C. Engine and browser checks below were run there on November 11,
+2026; the whole-suite run for its checkpoint is recorded in `QA-REPORT.md` when it is made.
 
 | Piece | Where | Status | Evidence |
 | --- | --- | --- | --- |
-| Each place in the script can be filmed in any real place of the world registry, apart from where the story is set | `src/engine/destinations.ts` `setFilmedAt`, `filmPlace`, `dayPlace` | Engine verified | `tests/destinations.test.ts`, 7 tests |
-| The day has that place's weather, daylight, public holidays and clock, and the player has to be there | `production/shoot.ts`, `production/schedule.ts` `scheduleShootDay` | Engine verified | `tests/destinations.test.ts`, "a film with a location filmed far away, made": the log names the place the player wasn't in |
-| A unit away from base is moved once and housed each day; near the base nobody is | `destinations.ts` `awayCosts`, `moveCost`, `awayDayCost`; `estimate.ts`; `shoot.ts` | Engine verified | The same test: one move posting, a housing posting for each day there |
-| Thirteen kinds of site: fee share, permit days, noise, cover | `destinations.ts` `SITE_KINDS`; `production/tasks.ts` (`prep:permit`) | Engine verified | "the kind of site decides whether rain can stop it and how often noise spoils dialogue" |
-| The candidate site is made up and says so; no venue, address, owner, rate or permission is stated | `destinations.ts` `candidateSite`, `filmedAtPreview`; `src/ui/FilmedAt.tsx` | Engine verified | "the candidate site says it is made up, and the place it is in is real" |
-| The Schedule page's card, Where Each Place Is Filmed, with what the choice asks shown first | `src/ui/FilmedAt.tsx` | Not implemented in a browser journey yet | No Playwright journey has used it |
+| Each place in the script can be filmed in any real place of the world registry, apart from where the story is set | `src/engine/destinations.ts` `setFilmedAt`, `filmPlace`, `dayPlace`; `src/ui/FilmedAt.tsx` | Implemented, browser verified | `e2e/destinations.spec.ts` (J07) on desktop, phone and WebKit: Bergen chosen through the place picker, kept across a reload. `tests/destinations.test.ts`, 8 tests |
+| What the choice asks is shown before it is chosen: distance, whose weather and clock, fee share, permit days, noise, the move and the housing | `destinations.ts` `filmedAtPreview`; `FilmedAt.tsx` | Implemented, browser verified | J07 reads each line in the dialog before pressing Film It There |
+| The day has that place's weather, daylight, public holidays and clock, and the player has to be there | `production/shoot.ts`, `production/schedule.ts` `scheduleShootDay`, `callsheet.ts`, the Schedule page's forecast | Implemented, browser verified | J07: rain in Bergen stops the first Harbour day; the call sheet reads "Filmed in Bergen, Norway, on Bergen's clock: be there for the call"; the Kitchen day at the base starts late without the player, who is in Bergen, and no Bergen day does |
+| A unit away from base is moved once and housed each day it is called; near the base nobody is | `destinations.ts` `awayCosts`, `moveCost`, `awayDayCost`; `estimate.ts`; `shoot.ts` | Implemented, browser verified | J07: the estimate line "Filming in Bergen: Harbour"; one move posting and one housing posting for each of the two days called there. The soundstage journey: no move or housing posting in the same city |
+| Thirteen kinds of site: fee share, permit days, noise, cover | `destinations.ts` `SITE_KINDS`; `production/tasks.ts` (`prep:permit`) | Implemented, browser verified for a coastline and a soundstage; the other eleven engine verified | J07: the task "Permits And Arrangements: Harbour, In Bergen" is done before the shoot. `tests/destinations.test.ts` for the rest |
+| A site under a roof (a soundstage, or the stage set built to match) is not stopped by rain, snow or short days, and gets no rain warning | `locations.ts` `roofed`; `shoot.ts`; `callsheet.ts`; the Schedule page | Implemented, browser verified | `tests/destinations.test.ts` "a roof over an exterior": the same film and seed in Tromsø, in the open, on a soundstage and on a stage set (mutation checked). The soundstage journey against the wet-October journey in `e2e/journeys.spec.ts`: same base, month, seed and streets, no day lost to rain |
+| Scouting's three sites are found in the filmed place, the first is "The Candidate Site" and never called real, and a backup takes over when it falls through | `locations.ts` `siteName`, `siteNote`, `siteOnTheDay`; the Locations card | Implemented, browser verified | J07: the candidate site falls through, the shoot goes to the stage set, and under its roof both scenes are shot |
+| Rain expected: the interior day is filmed instead | `shoot.ts` `swapWithInteriorDay` (already there), now on the filmed place's forecast | Implemented, browser verified | J07: Film an Interior Scene swaps October 27 and 28 |
+| The candidate site is made up and says so; no venue, address, owner, rate or permission is stated | `destinations.ts` `candidateSite`, `filmedAtPreview`; `FilmedAt.tsx` | Implemented, browser verified | J07 reads the sentence on the card and the "game's figures, not quotes, rates or legal guidance" line |
 
-Still to do in E: the browser journey (J07); weather on an away day checked against the away place's climate in a test
-of its own; the three sites scouting finds (real, stage, stand-in) joined to the candidate; a backup place; travel days
-on the calendar; a coverage note for countries with few registry places. Not implemented, and outside this pass: real
-venues, film-commission or tourism records, addresses, opening hours, real permit rules, taxes and visas.
+Not implemented in E, each a limit a player can meet:
+
+- The schedule is built on the base's working days and public holidays. A day that falls on a public holiday of the
+  filmed place is still scheduled, and pays that place's holiday premium.
+- Child-performer rules follow the production's base, not the place a day is filmed in.
+- A backup place (as against a backup site in the same place), the unit's travel days on the calendar, and the crew's
+  own travel time are not modeled. The move is a cost paid once.
+- Real venues, film-commission or tourism records, addresses, opening hours, real permit rules, taxes, visas, customs
+  and incentives: reference-only by design. Nothing is imported and nothing is claimed.
+- Places come from the world registry as it is. A country with few registry places offers few; no coverage note is
+  shown beside the picker.
+- J07 ran from one base (London) to one place abroad (Bergen, October) and one soundstage in the base's own city.
+  Other seasons and regions are covered in the engine tests (Tromsø in January), not in a browser.
 
 ## The Audit Artifacts
 
