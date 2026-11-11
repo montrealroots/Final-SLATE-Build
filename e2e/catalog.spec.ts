@@ -206,7 +206,8 @@ test('a failed load says so and can be retried; a missing catalog leaves compani
   await expect(page.getByRole('heading', { name: "The Film Catalog Isn't Installed" })).toBeVisible();
   await page.getByRole('button', { name: 'Pixar', exact: true }).click();
   await expect(card(page, 'Leadership')).toContainText('Jim Morris');
-  await expect(page.getByRole('heading', { name: "This company's titles isn't in this copy of the catalog" })).toBeVisible();
+  // The whole catalog is missing, so the page says that, and asks for no company's titles (src/catalog/load.ts).
+  await expect(card(page, 'Films And Series').getByRole('heading', { name: "The Film Catalog Isn't Available" })).toBeVisible();
 });
 
 test('browsing the catalog leaves the save as it was, and it reloads on the same screen', async ({ page }) => {

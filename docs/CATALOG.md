@@ -27,10 +27,12 @@ That decided these points:
   `.screen-catalog/`. Both are ignored by git and stay on the machine that gathered them.
 - **Six-month limit.** Every cached response records when it was retrieved. One older than 180 days is fetched again,
   and the build leaves out anything that is still too old.
-- **Not in builds.** The catalog is served to the development and preview servers on that machine only
-  (`vite.config.ts`). It is never copied into a production build.
+- **Not in builds.** The catalog is never copied into a production build. Since November 11, 2026 it is served by the
+  production server (`server/serve.mjs`) as well as the development and preview servers, all through one handler that
+  answers one file at a time and withdraws a catalog past six months (`docs/DEPLOYMENT.md`).
 - **Deployment is not settled.** Whether imported data may be deployed for players to use is a question for the
-  owner, and for TMDB if the game is ever commercial. Until it is settled, nothing is published.
+  owner, and for TMDB if the game is ever commercial. Until it is settled, nothing is published. What the terms say,
+  and what remains to decide, is in `docs/DEPLOYMENT.md`.
 - **What is committed.** Only our own research: the company and leadership registry (`src/catalog/registry.ts`), the
   importer, the build, the pages, the tests and a made-up fixture.
 - **Attribution.** The TMDB logo and the notice are shown on the Companies page and in Settings, under Film And

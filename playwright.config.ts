@@ -18,9 +18,11 @@ export default defineConfig({
   reporter: [['list']],
   outputDir: 'test-results',
   use: { baseURL: `http://localhost:${port}`, trace: 'off', screenshot: 'only-on-failure' },
-  // SLATE_E2E_PROD=1 runs every journey against the production build (vite build, then vite preview) instead of the dev server.
+  // SLATE_E2E_PROD=1 runs every journey against the production build served by the production server (server/serve.mjs),
+  // with no Vite in the path; until November 11, 2026 it was vite preview, whose middleware supplied the catalog. It also
+  // serves the made-up catalog through that server on 4176, and an expired one on 4177 (e2e/serve-prod.ts).
   webServer: prod
-    ? { command: `npx vite build && npx vite preview --port ${port} --strictPort`, url: `http://localhost:${port}`, reuseExistingServer: false, timeout: 180_000 }
+    ? { command: `npx vite build && node e2e/serve-prod.ts`, url: `http://localhost:${port}`, reuseExistingServer: false, timeout: 180_000 }
     : { command: `npx vite --port ${port} --strictPort`, url: `http://localhost:${port}`, reuseExistingServer: true, timeout: 60_000 },
   projects: [
     { name: 'desktop', use: { ...devices['Desktop Chrome'], viewport: { width: 1280, height: 720 } } },

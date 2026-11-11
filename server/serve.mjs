@@ -1,0 +1,64 @@
+// The production server (November 11, 2026, docs/DEPLOYMENT.md): the built game (dist/) and its data files, with no
+// Vite in the path. Node 22, no dependencies.
+//   npm run build && npm run serve
+//   node server/serve.mjs [--port 8080] [--dist dist] [--catalog .screen-catalog] [--cinemas .cinemas]
+// Environment variables SLATE_PORT, SLATE_DIST, SLATE_CATALOG_DIR and SLATE_CINEMAS_DIR do the same. It reads no
+// credential and calls no outside service: the catalog is gathered and built separately (docs/CATALOG.md).
+import { existsSync, readFileSync, statSync } from 'node:fs';
+import { createServer } from 'node:http';
+import { extname, join, normalize, resolve, sep } from 'node:path';
+import { gzipSync } from 'node:zlib';
+import { createCatalogHandler } from './catalog-handler.mjs';
+
+const TYPES = {
+  '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.json': 'application/json',
+  '.svg': 'image/svg+xml', '.png': 'image/png', '.ico': 'image/x-icon', '.woff2': 'font/woff2', '.tsv': 'text/tab-separated-values; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8', '.webmanifest': 'application/manifest+json',
+};
+const COMPRESSIBLE = new Set(['.html', '.js', '.css', '.json', '.svg', '.tsv', '.txt']);
+
+/** A server for the built game at `dist` and its data. Returned unstarted, for tests and for the command line. */
+export function createSlateServer({ dist, catalogDir, cinemasDir, now }) {
+  const root = resolve(dist);
+  const data = createCatalogHandler({ catalogDir: resolve(catalogDir), cinemasDir: resolve(cinemasDir), now });
+  const gz = new Map(); // a built file's gzip, made once: the build never changes while the server runs
+  const send = (req, res, file, cacheControl) => {
+    const ext = extname(file);
+    let body = readFileSync(file);
+    res.setHeader('content-type', TYPES[ext] ?? 'application/octet-stream');
+    res.setHeader('cache-control', cacheControl);
+    res.setHeader('x-content-type-options', 'nosniff');
+    if (COMPRESSIBLE.has(ext) && /\bgzip\b/.test(req.headers['accept-encoding'] ?? '') && body.length > 1024) {
+      if (!gz.has(file)) gz.set(file, gzipSync(body));
+      body = gz.get(file);
+      res.setHeader('content-encoding', 'gzip');
+      res.setHeader('vary', 'accept-encoding');
+    }
+    res.setHeader('content-length', body.length);
+    res.end(req.method === 'HEAD' ? undefined : body);
+  };
+  return createServer((req, res) => {
+    data(req, res, () => {
+      if (req.method !== 'GET' && req.method !== 'HEAD') { res.statusCode = 405; res.end(); return; }
+      let path;
+      try { path = decodeURIComponent((req.url ?? '/').split('?')[0]); } catch { res.statusCode = 400; res.end(); return; }
+      const file = normalize(join(root, path));
+      if (file.startsWith(root + sep) && existsSync(file) && statSync(file).isFile()) {
+        // Vite names built assets by their content, so they never change under the same name.
+        return send(req, res, file, path.startsWith('/assets/') ? 'public, max-age=31536000, immutable' : 'no-cache');
+      }
+      // A missing asset is a 404; any other path is the game's page (it routes in the browser).
+      if (path.startsWith('/assets/') || path.startsWith('/screen-catalog/') || extname(path)) { res.statusCode = 404; res.end(); return; }
+      send(req, res, join(root, 'index.html'), 'no-cache');
+    });
+  });
+}
+
+if (import.meta.url === `file://${process.argv[1]}`) {
+  const arg = (name, env, fallback) => { const i = process.argv.indexOf(`--${name}`); return i > 0 ? process.argv[i + 1] : process.env[env] ?? fallback; };
+  const dist = arg('dist', 'SLATE_DIST', 'dist');
+  if (!existsSync(join(dist, 'index.html'))) { console.error(`No built game at ${dist}: run npm run build first.`); process.exit(1); }
+  const port = Number(arg('port', 'SLATE_PORT', '8080'));
+  const server = createSlateServer({ dist, catalogDir: arg('catalog', 'SLATE_CATALOG_DIR', '.screen-catalog'), cinemasDir: arg('cinemas', 'SLATE_CINEMAS_DIR', '.cinemas') });
+  server.listen(port, () => console.log(`SLATE on http://localhost:${port}`));
+}

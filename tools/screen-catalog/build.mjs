@@ -2,13 +2,16 @@
 //   node tools/screen-catalog/build.mjs [--out .screen-catalog]
 // Output is git-ignored. It keeps TMDB's values as given, except that a budget, revenue or rating TMDB reports as 0 (or
 // with no votes) is written as unknown: TMDB uses 0 for "not entered", and a missing figure is never a confirmed $0.
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, renameSync, rmSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { DISCOVERED, REGISTRY_CHECKED } from '../../src/catalog/registry.ts';
 import { CACHE, MAX_AGE_DAYS, cached } from './tmdb.mjs';
 
 const arg = process.argv.indexOf('--out');
-const OUT = resolve(arg > 0 ? process.argv[arg + 1] : '.screen-catalog');
+const FINAL = resolve(arg > 0 ? process.argv[arg + 1] : '.screen-catalog');
+// Built beside the live catalog and swapped in when complete (November 11, 2026): a build cut short, or one that fails,
+// leaves the catalog being served as it was, never half-written (server/catalog-handler.mjs).
+const OUT = `${FINAL}.building`;
 export const BUCKETS = 500;
 
 const manifest = JSON.parse(readFileSync(join(CACHE, 'manifest.json'), 'utf8'));
@@ -213,6 +216,11 @@ write('index.json', {
   peopleRule: manifest.peopleRule, discovery, failures: manifest.failures.length, stale: stale.length,
   companies: [...companies].map(([id, e]) => ({ tmdbId: id, titles: e.length, movies: e.filter((x) => x.ref.startsWith('movie')).length, series: e.filter((x) => x.ref.startsWith('tv')).length })),
 });
-console.log(JSON.stringify({ out: OUT, counts: { ...counts, people: people.size, peopleWithDetails: withDetails }, failures: manifest.failures.length, stale: stale.length }, null, 1));
+// Swap the finished build in: the old catalog moves aside first, so a failure here leaves one of them in place.
+rmSync(`${FINAL}.old`, { recursive: true, force: true });
+if (existsSync(FINAL)) renameSync(FINAL, `${FINAL}.old`);
+renameSync(OUT, FINAL);
+rmSync(`${FINAL}.old`, { recursive: true, force: true });
+console.log(JSON.stringify({ out: FINAL, counts: { ...counts, people: people.size, peopleWithDetails: withDetails }, failures: manifest.failures.length, stale: stale.length }, null, 1));
 if (stale.length) console.log(`${stale.length} cached responses were missing or older than ${MAX_AGE_DAYS} days and were left out; rerun the importer.`);
-if (!existsSync(OUT)) process.exit(1);
+if (!existsSync(FINAL)) process.exit(1);

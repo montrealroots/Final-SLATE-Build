@@ -47,6 +47,8 @@ function GoBack() {
 /** What a page shows while its file loads, when the catalog isn't installed, or when a record isn't in it. */
 function Status<T>({ loaded, what, children }: { loaded: Loaded<T>; what: string; children: (data: T) => ReactNode }) {
   if (loaded.status === 'loading') return <p role="status" className="muted">Loading {what}…</p>;
+  // No catalog at all (the index said so, and why) is told as such; one record missing from a catalog that is there, as that.
+  if (loaded.status === 'missing' && loaded.reason) return <Empty title="The Film Catalog Isn't Available"><p className="muted">{loaded.reason === 'expired' ? 'This copy of the films and series is more than six months old, the longest TMDB allows it to be kept, so it has been withdrawn until it is gathered again.' : loaded.reason === 'malformed' ? "The films and series on this server couldn't be read." : "This copy of SLATE doesn't include the films and series. They are gathered from TMDB separately from the game."} Your game is unaffected.</p><GoBack /></Empty>;
   if (loaded.status === 'missing') return <Empty title={`${what.charAt(0).toUpperCase()}${what.slice(1)} isn't in this copy of the catalog`}><p className="muted">This copy of SLATE doesn't have it. The catalog is gathered from TMDB separately from the game (see Companies).</p><GoBack /></Empty>;
   if (loaded.status === 'failed') return <Empty title={`${what.charAt(0).toUpperCase()}${what.slice(1)} couldn't be loaded`}><p className="muted">{loaded.message} Your game is unaffected.</p><div className="row gap-2 wrap"><button className="btn btn-sm" onClick={retryCatalog}>Try Again</button><GoBack /></div></Empty>;
   return <>{children(loaded.data)}</>;
@@ -108,7 +110,10 @@ function CatalogStatus({ index }: { index: Loaded<CatalogIndex> }) {
     return (
       <section className="card callout" aria-labelledby="cat-h">
         <h2 id="cat-h">The Film Catalog Isn't Installed</h2>
-        <p className="muted">{index.status === 'failed' ? `It couldn't be loaded: ${index.message}` : "This copy of SLATE doesn't include the films and series. They are gathered from TMDB separately, and TMDB's terms don't allow them to be shipped with the game."} Companies and their leadership are still here.</p>
+        <p className="muted">{index.status === 'failed' ? `It couldn't be loaded: ${index.message}`
+          : index.status === 'missing' && index.reason === 'expired' ? "This copy of the films and series is more than six months old, the longest TMDB allows it to be kept, so it has been withdrawn until it is gathered again."
+            : index.status === 'missing' && index.reason === 'malformed' ? "The films and series on this server couldn't be read, so they aren't shown. Your game is unaffected."
+              : "This copy of SLATE doesn't include the films and series. They are gathered from TMDB separately, and TMDB's terms don't allow them to be shipped with the game."} Companies and their leadership are still here.</p>
       </section>
     );
   }
@@ -228,7 +233,7 @@ function Filmography({ tmdbId, name, today }: { tmdbId: number; name: string; to
   const set = <T,>(fn: (v: T) => void) => (v: T) => { fn(v); setPage(0); };
   return (
     <Panel title="Films And Series" subtitle={`Titles TMDB credits to ${name}.`}>
-      <Status loaded={f} what="this company's titles">{(d) => (
+      <Status loaded={f} what="this company's list of titles">{(d) => (
         <>
           <div className="inline-form">
             <TextField label="Search Titles" value={query} onChange={set(setQuery)} />
