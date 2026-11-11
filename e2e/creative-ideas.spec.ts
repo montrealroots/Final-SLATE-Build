@@ -6,7 +6,7 @@
 // pinned world seed (helpers.ts pinSeed). Desktop and phone run in Chromium, iphone-15-pro-max in WebKit: emulation,
 // not devices. Every name is made up.
 import { expect, test, type Page } from './test';
-import { advance, castRoles, createCharacter, freshStart, nav, pinSeed, pressSaveAndExit, readSavedState, runToDelivery, section, secureStartingBacking, staffEveryDepartment } from './helpers';
+import { advance, castRoles, createCharacter, freshStart, nav, pinSeed, pressSaveAndExit, produceToDelivery, readSavedState, runToDelivery, saveAndApprove, section, secureStartingBacking, seededLife, staffEveryDepartment } from './helpers';
 
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/creative-ideas-${project}-${name}.png`, fullPage: true });
 const noSidewaysScroll = async (page: Page) => expect(await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth)).toBeLessThanOrEqual(1);
@@ -241,3 +241,60 @@ test('a logline built from four parts, and a crowd extended in post from a scene
   await page.getByRole('button', { name: 'Undo Last Change' }).click();
   await expect(scene.getByRole('checkbox', { name: 'Extend The Crowd In Post' })).not.toBeChecked();
 });
+
+// J02 of the Creative Depth package: the same zombie premise made as stop motion. The idea is chosen from the same
+// picker; what it asks for is puppets, miniature sets, animators and voices, and none of the live shoot's makeup chair,
+// costume fittings or locations. (A puppet damaged on its stage and repaired is its own journey: journeys.spec.ts,
+// "stop motion: a puppet damaged on set holds its shots until it is repaired".)
+test('J02: the zombie premise as stop motion: puppets, sets and voices are made, and no live-action makeup or location work', async ({ page }, info) => {
+  test.skip(!['desktop', 'iphone-15-pro-max'].includes(info.project.name), 'One full production, on desktop and one WebKit iPhone emulation.');
+  test.setTimeout(1_500_000);
+  await seededLife(page, 'gb-london', '2026-01-05', 7);
+  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByLabel('Working Title').fill('Briar Hollow In Clay');
+  await page.getByLabel('Format').selectOption({ label: 'Short Film' });
+  await page.getByLabel('Medium').selectOption({ label: 'Animation' });
+  await page.getByLabel(/^Animation Technique/).selectOption({ label: 'Stop Motion' });
+  await page.getByLabel('Animation Finish').selectOption({ label: 'Limited Animation' });
+  await page.getByLabel(/Target Runtime In Minutes/).fill('2');
+  await page.getByRole('button', { name: 'Create Project' }).click();
+  await expect(page.getByRole('heading', { name: 'Briar Hollow In Clay', level: 1 })).toBeVisible();
+  await section(page, 'Script');
+  await page.getByRole('button', { name: 'Choose A Starting Idea' }).click();
+  const picker = page.getByRole('dialog', { name: 'Choose A Starting Idea' });
+  await picker.getByRole('tab', { name: 'Browse All' }).click();
+  await picker.getByRole('button', { name: /^A Town That Cannot Sleep/ }).click();
+  const idea = page.getByRole('dialog', { name: 'A Town That Cannot Sleep' });
+  // One of its scenes, which a two-minute puppet film can hold.
+  await idea.getByRole('group', { name: 'Scenes It Offers' }).getByRole('checkbox').first().check();
+  await idea.getByRole('button', { name: 'Apply', exact: true }).click();
+  await expect(page.getByRole('status').filter({ hasText: 'Applied: A Town That Cannot Sleep.' })).toBeVisible();
+  await expect(page.locator('article.scene-card')).toHaveCount(1);
+  const scene = page.locator('article.scene-card').first();
+  if (!(await scene.getByLabel('Estimated Minutes').count())) await scene.getByRole('button', { name: 'Edit Scene' }).click();
+  await scene.getByLabel('Estimated Minutes').fill('0.5');
+  await saveAndApprove(page);
+
+  // What it asks for is the puppet film's work: every character in the scene is a puppet with its copies to choose.
+  const names: string[] = (await readSavedState(page)).projects[0].characters.map((c: { name: string }) => c.name);
+  expect(names.length).toBeGreaterThan(0);
+  await section(page, 'Schedule');
+  await expect(page.getByLabel(/ Puppet Copies$/).first()).toBeVisible();
+  await section(page, 'Crew');
+  await expect(page.getByText(/^Hair And Makeup/)).toHaveCount(0);
+  await expect(page.getByText(/^Prosthetics Designer/)).toHaveCount(0);
+  await produceToDelivery(page, { yourself: [names[0]], step: 'month', weeks: 40 });
+  await expect.poll(async () => !!(await readSavedState(page)).projects[0]?.delivered, { timeout: 30_000 }).toBe(true);
+  const done = (await readSavedState(page)).projects[0];
+  const kinds = new Set<string>(done.tasks.map((t: { kind: string }) => t.kind));
+  for (const k of ['sm:armature', 'sm:puppet', 'sm:sets', 'sm:animation', 'anim:voice']) expect([...kinds], k).toContain(k);
+  // Nothing of a live shoot: no makeup or costume requirement, no location, no shoot day, no makeup or prosthetics hire.
+  expect(done.requirements.filter((r: { kind: string }) => ['makeup', 'costume', 'location'].includes(r.kind))).toEqual([]);
+  expect(done.schedule.days).toEqual([]);
+  expect(done.hires.filter((h: { roleId: string }) => ['hair-makeup', 'prosthetics'].includes(h.roleId))).toEqual([]);
+  expect(done.brief.picks.map((k: { id: string }) => k.id)).toEqual(['premise.001']);
+  await section(page, 'Production');
+  await expect(page.getByText(/^Puppet Fabrication: /).first()).toBeVisible();
+  await expect(page.getByText('Ready for the stage.').first()).toBeVisible();
+});
+

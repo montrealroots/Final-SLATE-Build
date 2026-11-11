@@ -544,6 +544,64 @@ test('Golden Globes: Non-English Language counts the script\'s dialogue, not the
   await expect(row(page, 'Best Motion Picture – Non-English Language').getByText('10% of its written dialogue is in a language other than English; this category needs more than 50%.')).toBeVisible();
 });
 
+// J03 of the Creative Depth package: a mixture of horror and comedy, with which is primary and which secondary, and
+// what that means where awards split drama from comedy. One secondary comedy tag makes nothing a comedy.
+test('J03: a horror film with a comic streak competes as a drama; making comedy primary, or declaring it, moves it, and the page says why each time', async ({ page }) => {
+  await quickLife(page, 'us-los-angeles', '2026-10-01');
+  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByLabel('Working Title').fill('Graveyard Shift');
+  await page.getByLabel('Format').selectOption({ label: 'Feature Film' });
+  await page.getByLabel(/Target Runtime In Minutes/).fill('100');
+  for (const g of ['Horror', 'Comedy']) {
+    await page.getByRole('searchbox', { name: 'Search Genres' }).fill(g.toLowerCase());
+    await page.getByRole('button', { name: `Add ${g}`, exact: true }).click();
+  }
+  await page.getByRole('button', { name: 'Create Project' }).click();
+  await expect(page.getByRole('heading', { name: 'Graveyard Shift', level: 1 })).toBeVisible();
+  await section(page, 'Script');
+  await expect(page.getByLabel('Competes As')).toHaveValue('');
+  await expect(page.getByText("Left to its genres, it competes as comedy when a primary genre is comedy or musical; a secondary one doesn't change it.")).toBeVisible();
+  const genres = async () => (await readSavedState(page)).projects[0].axes.genres;
+  await expect.poll(genres).toEqual([{ id: 'horror', emphasis: 'primary' }, { id: 'comedy', emphasis: 'secondary' }]);
+
+  // Labelled fixture: delivered and released without being made, so the award page can be read (as the other award journeys do).
+  await editSave(page, (s) => deliver(s, 'Graveyard Shift', { format: 'feature', runtime: 100, at: '2026-02-01T12:00:00Z',
+    releases: [{ id: 'r1', route: 'theatrical', date: '2026-04-01', territories: ['US'], distributor: 'Coast Pictures', note: '', status: 'released' }] }));
+  const DRAMA = 'Best Motion Picture – Drama';
+  const COMEDY = 'Best Motion Picture – Musical Or Comedy';
+  const open = (name: string) => row(page, name).locator('.chip', { hasText: 'Open To Graveyard Shift' });
+  await openEvent(page, 'Graveyard Shift', '84th Golden Globe Awards');
+  await filterTo(page, 'Graveyard Shift', 'Every Category');
+  // Horror first, comedy second: a drama, and the comedy category says why it is closed.
+  await expect(open(DRAMA)).toBeVisible();
+  await expect(row(page, COMEDY).getByText('This category is for comedy and musical work; this project competes as drama.')).toBeVisible();
+  await expect(open(COMEDY)).toHaveCount(0);
+
+  // Declared a comedy by its maker: the categories change places, and the drama category says why.
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Graveyard Shift' }).click();
+  await section(page, 'Script');
+  await page.getByLabel('Competes As').selectOption({ label: 'Comedy Or Musical' });
+  await expect.poll(async () => (await readSavedState(page)).projects[0].axes.register).toBe('comedy');
+  await openEvent(page, 'Graveyard Shift', '84th Golden Globe Awards');
+  await filterTo(page, 'Graveyard Shift', 'Every Category');
+  await expect(open(COMEDY)).toBeVisible();
+  await expect(row(page, DRAMA).getByText('Comedy and musical work competes in a separate category.')).toBeVisible();
+
+  // Back to its genres, kept across a reload: a drama again, the tags unchanged.
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Graveyard Shift' }).click();
+  await section(page, 'Script');
+  await page.getByLabel('Competes As').selectOption({ label: 'By Its Genres' });
+  await expect.poll(async () => (await readSavedState(page)).projects[0].axes.register).toBeUndefined();
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await openEvent(page, 'Graveyard Shift', '84th Golden Globe Awards');
+  await filterTo(page, 'Graveyard Shift', 'Every Category');
+  await expect(open(DRAMA)).toBeVisible();
+  expect(await genres()).toEqual([{ id: 'horror', emphasis: 'primary' }, { id: 'comedy', emphasis: 'secondary' }]);
+});
+
 // ---------------- Screen time, episodes and songs (November 9, 2026) ----------------
 
 /** Labelled fixture: the shoot and the assembly are done (every scene but the ones named was shot), the parts cast. */
