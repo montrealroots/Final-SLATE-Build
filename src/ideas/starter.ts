@@ -4476,7 +4476,7 @@ export const STARTER: Idea[] = [
   "v": 1,
   "field": "sound",
   "label": "Dialogue Clarity",
-  "text": "A boom operator on every dialogue scene, and a moment to quiet the set before each setup. Dialogue recorded this way needs replacing only when there is no boom operator after all.",
+  "text": "A boom operator on every dialogue scene, and a moment to quiet the set before each setup. Dialogue recorded this way holds on a day spoiled by weather or noise, where it would otherwise be replaced in post.",
   "kind": "mechanical",
   "scope": "project",
   "tags": [],

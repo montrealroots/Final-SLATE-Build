@@ -28,12 +28,15 @@ test('a route through the genre, named looks and a dolly: chosen, shown as work,
   await expect(picker.getByRole('status')).toHaveText('68 ideas');
   await picker.getByLabel('Search Ideas').fill('siege till morning');
   await picker.getByRole('list', { name: 'Ideas' }).getByRole('button').first().click();
-  await expect(picker).toContainText('The Light It Is Shot In: High Contrast.');
-  await expect(picker).toContainText('Sound: adds Heightened Creature Foley. Your other sound choices stay.');
-  await expect(picker).toContainText('The Score: Electronic.');
+  const idea = page.getByRole('dialog', { name: 'Siege Till Morning' });
+  await expect(idea).toContainText('The Light It Is Shot In: High Contrast.');
+  await expect(idea).toContainText('Sound: adds Heightened Creature Foley. Your other sound choices stay.');
+  await expect(idea).toContainText('The Score: Electronic.');
+  await expect(idea).toContainText('3 scenes are offered. None is added unless you tick it.');
+  await expect(idea).toContainText('No creature is in the script yet, so there is nothing to record until one is.');
   await page.screenshot({ path: `test-results/craft-${info.project.name}-01-route.png`, fullPage: true });
-  await picker.getByRole('button', { name: 'Apply', exact: true }).click();
-  await expect(picker).toBeHidden();
+  await idea.getByRole('button', { name: 'Apply', exact: true }).click();
+  await expect(idea).toBeHidden();
 
   // The choices are on the page as controls, each saying what it asks, and can be changed there.
   const craft = page.getByRole('group', { name: 'Light, Sound And Score' });
@@ -48,36 +51,48 @@ test('a route through the genre, named looks and a dolly: chosen, shown as work,
 
   // Looks with names, and which one a scene is in.
   await section(page, 'Characters');
-  const ines = page.locator('article, section, li').filter({ has: page.getByRole('heading', { name: 'Ines' }) }).first();
-  await page.getByRole('button', { name: /Ines/ }).first().click().catch(() => undefined);
-  await page.getByLabel('Appearance States').first().fill('2');
-  await page.getByLabel("Names Of Ines's Looks").fill('Clean, Bloodied');
-  await expect(page.getByLabel("Names Of Ines's Looks")).toHaveValue('Clean, Bloodied');
-  void ines;
+  const ines = page.getByRole('article', { name: 'Ines' });
+  await ines.getByRole('button', { name: 'Edit Character' }).click();
+  await ines.getByLabel('Appearance States').fill('2');
+  await ines.getByLabel("Names Of Ines's Looks").fill('Clean, Bloodied');
+  await expect(ines.getByLabel("Names Of Ines's Looks")).toHaveValue('Clean, Bloodied');
   await section(page, 'Script');
   const second = page.locator('article.scene-card').nth(1);
   await second.getByRole('button', { name: 'Edit Scene' }).click();
   await second.getByLabel("Ines's Look In This Scene").selectOption({ label: 'Bloodied' });
+  // A line of dialogue in the first scene, so there is dialogue for a boom to record.
+  const first = page.locator('article.scene-card').first();
+  if (!(await first.getByLabel('Line', { exact: true }).count())) await first.getByRole('button', { name: 'Edit Scene' }).click();
+  await first.getByLabel('Line', { exact: true }).fill('Bar the door.');
+  await first.getByRole('button', { name: 'Add Line' }).click();
   await saveAndApprove(page);
 
   // The work it made: tests before the shoot, a boom operator required, and a session for the score.
   await section(page, 'Crew');
   await expect(card(page, 'Sound').locator('li', { hasText: /^Boom Operator/ })).toContainText('Required for this plan.');
+  await section(page, 'Schedule');
+  await page.getByRole('button', { name: 'Build Schedule' }).click();
   await section(page, 'Production');
   await expect(page.getByText('Camera And Lighting Tests').first()).toBeVisible();
   await expect(page.getByText('Score Recording').first()).toBeVisible();
 
   // The first scene goes on a dolly: a key grip is now required, and the rig is rented by the day.
   await section(page, 'Schedule');
-  await page.getByRole('button', { name: 'Build Schedule' }).click();
-  await page.getByLabel(/^Camera For Scene 1/).selectOption({ label: 'On A Dolly' });
-  await expect(page.getByLabel(/^Camera For Scene 1/)).toHaveValue('dolly');
+  const day = card(page, 'Shoot Days').locator('li', { hasText: 'Front Room' }).first();
+  await day.getByText('Call Sheet', { exact: true }).click();
+  await day.getByLabel(/^Camera For Scene 1/).selectOption({ label: 'On A Dolly' });
+  await expect(day.getByLabel(/^Camera For Scene 1/)).toHaveValue('dolly');
+  await expect(day).toContainText('Track is laid for each setup, by a key grip.');
+  await expect(day).toContainText('Rented kit: $600 for each shoot day with a scene on it. Rebuild the schedule to set the money aside.');
+  // Rebuilding the schedule sets the rig's rent aside with the rest of the shoot's money.
+  const planned = async () => (await readSavedState(page)).projects[0].obligations.filter((o: { ref?: string; state: string }) => o.ref === 'plan:shoot' && o.state !== 'cancelled').reduce((a: number, o: { amount: number }) => a + o.amount, 0);
+  await expect.poll(async () => (await readSavedState(page)).projects[0]?.shotPlans?.[(await readSavedState(page)).projects[0].scenes[0].id]?.rig, { timeout: 30_000 }).toBe('dolly');
+  const before = await planned();
+  await page.getByRole('button', { name: 'Rebuild Schedule' }).click();
+  await expect.poll(planned, { timeout: 30_000 }).toBe(before + 600);
   await section(page, 'Crew');
   await expect(page.locator('li', { hasText: /^Key Grip/ }).first()).toContainText('Lays the track and moves the dolly');
-  await section(page, 'Budget');
-  await page.getByRole('button', { name: /Everything Still To Come/ }).click().catch(() => undefined);
-  await expect(page.getByText('Camera rig rental').first()).toBeVisible();
-  await page.screenshot({ path: `test-results/craft-${info.project.name}-02-budget.png`, fullPage: true });
+  await page.screenshot({ path: `test-results/craft-${info.project.name}-02-crew.png`, fullPage: true });
 
   // Saved, closed and opened again: every choice is there.
   const check = async () => {
@@ -89,7 +104,6 @@ test('a route through the genre, named looks and a dolly: chosen, shown as work,
     expect(p.shotPlans[ids[0]].rig).toBe('dolly');
     expect(p.brief.picks.some((k: { id: string }) => k.id === 'route.horror-siege-till-morning')).toBe(true);
   };
-  await expect.poll(async () => (await readSavedState(page)).projects[0]?.shotPlans?.[(await readSavedState(page)).projects[0].scenes[0].id]?.rig, { timeout: 30_000 }).toBe('dolly');
   await check();
   await saveAndExit(page);
   await page.reload();

@@ -263,7 +263,7 @@ for n in range(1, 11):
 
 # ---------------- Sound and music ----------------
 SOUND = {1: ('texture', 'The recordist records each place by itself before the shoot: a day for every three locations, and less effects editing after.'),
-         2: ('clarity', 'A boom operator on every dialogue scene, and a moment to quiet the set before each setup. Dialogue recorded this way needs replacing only when there is no boom operator after all.'),
+         2: ('clarity', 'A boom operator on every dialogue scene, and a moment to quiet the set before each setup. Dialogue recorded this way holds on a day spoiled by weather or noise, where it would otherwise be replaced in post.'),
          3: ('sparse', 'Quiet, with few sounds, each one exposed: more Foley and a longer mix, and less score.'),
          4: ('creature', 'Movement and material recorded for each creature: two Foley days for every creature in the script.'),
          10: ('crowd', 'A loop group records the crowd after the lock: a session for every two scenes with a crowd.')}
