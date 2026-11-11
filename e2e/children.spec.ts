@@ -90,8 +90,9 @@ test('a shoot with a child in the cast: cast a ten-year-old, the permit before t
   // follow, as a player sees.
   const kids = card(page, 'Children In The Cast');
   const castMia = /Mia: [^,]+, (9|10|11|12)\. They may work/;
-  for (let week = 0; week < 4 && !castMia.test(await kids.innerText()); week++) {
+  for (let week = 0; week < 4; week++) {
     await section(page, 'Cast');
+    if (castMia.test(await kids.innerText())) break;
     const roles = page.locator('section.card', { hasText: 'Roles' }).first();
     const find = roles.locator('li', { hasText: 'Mia' }).getByRole('button', { name: 'Find Performers' }).first();
     if (await find.isVisible()) {
@@ -108,16 +109,21 @@ test('a shoot with a child in the cast: cast a ten-year-old, the permit before t
     await section(page, 'Cast');
     for (const b of await page.getByRole('button', { name: 'Accept Counteroffer' }).all()) await b.click();
   }
+  await section(page, 'Cast');
   await expect(kids).toContainText(castMia);
   await expect(kids).toContainText('No licence yet: it is applied for when the shoot is scheduled, a day ahead.');
   await expect(kids).toContainText("Under California's rules for minors in entertainment");
 
   // Crew: the studio teacher California requires is hired with the rest.
-  await staffEveryDepartment(page);
-  await advance(page, 'next-day');
-  await staffEveryDepartment(page);
-  await section(page, 'Cast');
-  await expect(kids.locator('li', { hasText: 'Studio Teacher' })).toContainText('Hired');
+  // Crew offers are answered over the days that follow, too.
+  const teacher = kids.locator('li', { hasText: 'Studio Teacher' });
+  for (let week = 0; week < 4; week++) {
+    await staffEveryDepartment(page);
+    await section(page, 'Cast');
+    if ((await teacher.innerText()).includes('Hired')) break;
+    await advance(page, 'week');
+  }
+  await expect(teacher).toContainText('Hired');
 
   // The schedule asks for the permit; none of Mia's days comes before it is granted.
   await section(page, 'Schedule');
