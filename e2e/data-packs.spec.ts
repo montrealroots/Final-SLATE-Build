@@ -113,3 +113,24 @@ test.describe('mods the game offers', () => {
     await expect(page.getByRole('region', { name: 'Cinemas Nearby' })).toContainText('Riverside Picturehouse (Fixture)');
   });
 });
+
+// A server that isn't the owner's own (port 4179, e2e/serve-prod.ts: the fixture catalog and both packs in its folders,
+// but no --owner) gives no player TMDB's data and never tells them to install a film mod (docs/DEPLOYMENT.md).
+test.describe('a copy that offers no film pack', () => {
+  test.use({ baseURL: 'http://localhost:4179' });
+  test.beforeEach(() => { test.skip(process.env.SLATE_E2E_PROD !== '1', 'Needs the production servers (SLATE_E2E_PROD=1).'); });
+
+  test('says the films aren\'t installed, and doesn\'t point to a mod it can\'t give', async ({ page }) => {
+    await quickLife(page, 'gb-london', '2026-01-05');
+    await nav(page, 'Companies');
+    await expect(page.getByRole('heading', { name: "The Film Catalog Isn't Installed" })).toBeVisible();
+    await expect(page.getByText('install the Films And Series mod')).toHaveCount(0);
+    // Its Mods list holds the cinemas alone, and they install and show.
+    await nav(page, 'Settings');
+    const list = page.getByRole('list', { name: 'Mods' });
+    await expect(list.getByRole('button', { name: 'Install Cinemas' })).toBeVisible();
+    await expect(list.getByText('Films And Series')).toHaveCount(0);
+    await list.getByRole('button', { name: 'Install Cinemas' }).click();
+    await expect(page.getByRole('status').filter({ hasText: 'Installed Cinemas.' })).toBeVisible();
+  });
+});

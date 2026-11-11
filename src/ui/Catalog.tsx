@@ -1,7 +1,7 @@
 // The screen catalog's pages: companies, their leadership and titles, a title's credits, seasons, episodes and people
 // (docs/CATALOG.md). Everything here is reference material, loaded on demand and kept out of saves. It is shown at the
 // save's date: later releases are announced, not history, and later results aren't shown as known.
-import { useMemo, useState, type ReactNode } from 'react';
+import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { currentZone, dateKey, formatDateKey } from '../engine';
 import type { Route } from '../engine/types';
 import { COMPANIES, LEADERSHIP_GAPS, REGISTRY_CHECKED, company as registryCompany, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
@@ -104,7 +104,19 @@ export function CompaniesPage() {
   );
 }
 
+/** Whether this copy of the game offers the film pack: only the owner's own server does (docs/DEPLOYMENT.md). */
+function useFilmModOffered(): boolean {
+  const [offered, setOffered] = useState(false);
+  useEffect(() => {
+    let live = true;
+    void import('../catalog/packs').then((m) => m.offeredMods()).then((mods) => { if (live) setOffered(mods.some((x) => x.kind === 'catalog')); });
+    return () => { live = false; };
+  }, []);
+  return offered;
+}
+
 function CatalogStatus({ index }: { index: Loaded<CatalogIndex> }) {
+  const filmMod = useFilmModOffered();
   if (index.status === 'loading') return <p role="status" className="muted">Loading the catalog…</p>;
   if (index.status !== 'ready') {
     return (
@@ -114,7 +126,7 @@ function CatalogStatus({ index }: { index: Loaded<CatalogIndex> }) {
           : index.status === 'missing' && index.reason === 'expired' ? "This copy of the films and series is more than six months old, the longest TMDB allows it to be kept, so it has been withdrawn until it is gathered again."
             : index.status === 'missing' && index.reason === 'malformed' ? "The films and series on this server couldn't be read, so they aren't shown. Your game is unaffected."
               : "This copy of SLATE doesn't include the films and series. They are gathered from TMDB separately, and TMDB's terms don't allow them to be shipped with the game."} Companies and their leadership are still here.</p>
-        {index.status === 'missing' && index.reason !== 'malformed' && <p className="muted">To add them, install the Films And Series mod in Settings, under Mods.</p>}
+        {index.status === 'missing' && index.reason !== 'malformed' && filmMod && <p className="muted">To add them, install the Films And Series mod in Settings, under Mods.</p>}
       </section>
     );
   }

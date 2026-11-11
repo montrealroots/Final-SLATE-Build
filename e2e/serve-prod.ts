@@ -6,6 +6,8 @@
 //   one would be: no request is intercepted (e2e/production-data.spec.ts).
 // - Port 4177: the same catalog, gathered more than six months ago: withdrawn, as TMDB's terms require.
 // - Port 4178: no data at all, and the fixture as the two mods it offers in Settings (e2e/data-packs.spec.ts).
+// - Port 4179: the fixture catalog and mods, on a server that isn't the owner's own (no --owner): it serves no TMDB
+//   data and offers the cinemas alone (the owner's decision, docs/DEPLOYMENT.md). Every other port is the owner's own.
 import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
@@ -37,10 +39,11 @@ function fixtureMods(): string {
   return dir;
 }
 
-const listen = (port: number, o: { catalogDir: string; cinemasDir: string; packsDir?: string }) => createSlateServer({ dist: 'dist', ...o }).listen(port);
+const listen = (port: number, o: { catalogDir: string; cinemasDir: string; packsDir?: string; films?: boolean }) => createSlateServer({ dist: 'dist', films: true, ...o }).listen(port);
 listen(4175, { catalogDir: '.screen-catalog', cinemasDir: '.cinemas' });
 listen(4176, fixtureDirs(new Date(Date.now() - 86_400_000).toISOString()));
 listen(4177, fixtureDirs('2024-01-01T00:00:00.000Z'));
 const nothing = mkdtempSync(join(tmpdir(), 'slate-none-'));
 listen(4178, { catalogDir: nothing, cinemasDir: nothing, packsDir: fixtureMods() });
-console.log('SLATE production servers on 4175 (real data), 4176 (fixture), 4177 (expired fixture), 4178 (no data, fixture mods)');
+listen(4179, { ...fixtureDirs(new Date(Date.now() - 86_400_000).toISOString()), packsDir: fixtureMods(), films: false });
+console.log('SLATE production servers on 4175 (real data), 4176 (fixture), 4177 (expired fixture), 4178 (no data, fixture mods), 4179 (not the owner\'s: no TMDB data)');

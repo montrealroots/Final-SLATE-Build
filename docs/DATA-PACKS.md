@@ -57,9 +57,10 @@ They are written to `packs/`, which is kept out of the repository, as are all `*
   passes six months while installed is deleted the next time the game reads it, and the pages say it was withdrawn.
 - **Deletion (1.D).** Remove deletes every record.
 - **Attribution (3).** TMDB's notice shows with the installed pack, and on the catalog's pages as before.
-- **Who gets a pack.** The film pack is TMDB's content. Giving one to the owner, for the owner's own game, is like the
-  owner gathering it. Giving it to other players is distribution, and waits on the same decisions as hosting it:
-  commercial use and the derivatives question (`docs/DEPLOYMENT.md`). The cinema pack is CC0 and may be shared.
+- **Who gets a pack.** The film pack is TMDB's content, and goes to the owner alone: the owner decided on November 11,
+  2026 not to offer it to any other player. A server offers it only when run as the owner's own (`--owner`,
+  `docs/DEPLOYMENT.md`); any other offers the cinemas alone, and the game doesn't point its players to a film mod. The
+  cinema pack is CC0 and may be shared.
 
 ## Tests
 

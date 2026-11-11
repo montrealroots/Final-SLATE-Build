@@ -59,11 +59,12 @@ export function readPackHeader(file) {
  * The mods this copy of the game offers (November 11, 2026, docs/DATA-PACKS.md): every data pack in `packsDir`, read
  * from its header. A film pack past TMDB's six months is neither listed nor served.
  */
-export function offeredMods(packsDir, now = Date.now()) {
+export function offeredMods(packsDir, now = Date.now(), films = true) {
   if (!packsDir || !existsSync(packsDir)) return [];
   return readdirSync(packsDir).filter((f) => f.endsWith('.slatepack')).sort().flatMap((file) => {
     const h = readPackHeader(join(packsDir, file));
     if (!h || h.format !== 1 || (h.kind !== 'catalog' && h.kind !== 'cinemas')) return [];
+    if (h.kind === 'catalog' && !films) return [];
     if (h.kind === 'catalog' && !(Date.parse(h.retrieved?.from) + MAX_AGE_DAYS * DAY > now)) return [];
     return [{ file, kind: h.kind, name: h.name, source: h.source, builtAt: h.builtAt, ...(h.retrieved ? { retrieved: h.retrieved } : {}), files: h.files, bytes: statSync(join(packsDir, file)).size }];
   });
@@ -72,13 +73,18 @@ const MODS = /^\/mods\/(index\.json|[\w.-]+\.slatepack)$/;
 
 /**
  * A request handler (Node's req/res, with next() for anything that isn't a data file). Options: the catalog's and the
- * cinemas' directories, the directory of mods it offers (optional), and a clock for tests.
+ * cinemas' directories, the directory of mods it offers (optional), whether it may serve TMDB's film data, and a clock
+ * for tests.
+ *
+ * `films`: the owner decided on November 11, 2026 that TMDB's data goes to no player but the owner ("I will NOT").
+ * A server serves the film catalog and offers the film pack only when it is the owner's own (`--owner` in serve.mjs);
+ * otherwise it answers as if no catalog were there, and offers the cinemas alone.
  */
-export function createCatalogHandler({ catalogDir, cinemasDir, packsDir = null, now = () => Date.now() }) {
+export function createCatalogHandler({ catalogDir, cinemasDir, packsDir = null, films = false, now = () => Date.now() }) {
   const cache = {};
   return function handle(req, res, next) {
     const mod = MODS.exec((req.url ?? '').split('?')[0]);
-    if (mod) return serveMod(req, res, mod[1], packsDir, now());
+    if (mod) return serveMod(req, res, mod[1], packsDir, now(), films);
     const m = PATH.exec((req.url ?? '').split('?')[0]);
     if (!m) return next();
     if (req.method !== 'GET' && req.method !== 'HEAD') { res.statusCode = 405; res.setHeader('allow', 'GET, HEAD'); res.end(); return; }
@@ -94,7 +100,7 @@ export function createCatalogHandler({ catalogDir, cinemasDir, packsDir = null, 
     // TMDB's content may be served only while it is within six months of being fetched; Wikidata's (CC0) has no limit.
     let expires = Infinity;
     if (!cinema) {
-      const s = catalogState(root, now(), cache);
+      const s = films ? catalogState(root, now(), cache) : { state: 'missing' };
       if (s.state !== 'ready') return ENTRY.has(m[1]) ? json(200, JSON.stringify({ installed: false, reason: s.state }), 'no-cache') : json(404, '', 'no-cache');
       expires = s.expires;
     }
@@ -113,9 +119,9 @@ export function createCatalogHandler({ catalogDir, cinemasDir, packsDir = null, 
 }
 
 /** The mods listing, or one mod's file: only a file the listing offers, so nothing else in the directory is reachable. */
-function serveMod(req, res, name, packsDir, now) {
+function serveMod(req, res, name, packsDir, now, films) {
   if (req.method !== 'GET' && req.method !== 'HEAD') { res.statusCode = 405; res.setHeader('allow', 'GET, HEAD'); res.end(); return; }
-  const mods = offeredMods(packsDir, now);
+  const mods = offeredMods(packsDir, now, films);
   res.setHeader('x-content-type-options', 'nosniff');
   if (name === 'index.json') {
     res.statusCode = 200;
