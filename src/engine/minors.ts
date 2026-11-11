@@ -72,9 +72,10 @@ export interface MinorRules {
 }
 
 /**
- * When the rules were read: the version in force then is the one encoded. When each took effect isn't recorded, and later
- * changes aren't known, so the game applies that version to every year from its first, 2026, and says so (November 11,
- * 2026; tests/minors.test.ts checks the date and that no set is known to start later than the game does).
+ * When the rules were read: the version in force then is the one encoded. When each took effect, and its latest known
+ * change, are in docs/child-rules/RESEARCH.md (recorded November 11, 2026; until then they weren't). Later changes aren't
+ * known, so the game applies that version to every year from its first, 2026, and says so. tests/minors.test.ts checks
+ * the date, and that no set's latest known change is in 2026 or later.
  */
 export const RULES_READ = '2026-11-11';
 
@@ -278,20 +279,21 @@ const ONTARIO: MinorRules = {
   place: 'Ontario',
   adultAt: 18, // s. 1: a child performer is under 18
   minAgeDays: 15, // s. 10
-  // s. 11(1): 4 hours of work a day under 2, 8 from 2, tutoring included and unpaid meals of up to an hour left out
-  // (ss. 11(6), 13). Work is that, less the breaks s. 12 requires before a camera, as British Columbia's: 15 minutes then
-  // 20 off under 3; 30 and 15 to 6; 45 and 10 to 12; 60 and 10 to 16; 60 and 5 from 16. s. 11(5): 12 hours free a day
-  // and 48 consecutive hours a week, which leaves at most 5 working days.
+  // s. 11(1), as amended by S.O. 2017, c. 2, Sched. 13: 8 hours of work a day at every age, tutoring included and unpaid
+  // meals of up to an hour left out (ss. 11(6), 13). (The Act as passed in 2015 allowed 4 under 2; the game had that
+  // until the consolidated text was read on November 11, 2026.) Work is that, less the breaks s. 12 requires before a
+  // camera, as British Columbia's: 15 minutes then 20 off under 3; 30 and 15 to 6; 45 and 10 to 12; 60 and 10 to 16; 60
+  // and 5 from 16. s. 11(5): 12 hours free a day and 48 consecutive hours a week, which leaves at most 5 working days.
   bands: [
-    { fromDays: 15, toDays: days(2), label: 'under 2', atPlace: 5, work: 1.7, workNoSchool: 1.7, days: 5 },
-    { fromDays: days(2), toDays: days(3), label: '2', atPlace: 9, work: 3.4, workNoSchool: 3.4, days: 5 },
+    { fromDays: 15, toDays: days(3), label: 'under 3', atPlace: 9, work: 3.4, workNoSchool: 3.4, days: 5 },
     { fromDays: days(3), toDays: days(6), label: '3 to 5', atPlace: 9, work: 5.3, workNoSchool: 5.3, days: 5 },
     { fromDays: days(6), toDays: days(12), label: '6 to 11', atPlace: 9, work: 6.5, workNoSchool: 6.5, days: 5 },
     { fromDays: days(12), toDays: days(16), label: '12 to 15', atPlace: 9, work: 6.9, workNoSchool: 6.9, days: 5 },
     { fromDays: days(16), toDays: days(18), label: '16 and 17', atPlace: 9, work: 7.4, workNoSchool: 7.4, days: 5 },
   ],
   // s. 14: a parent, guardian or authorised chaperone present and accessible at all times, under 16; one for each child
-  // of the same parent (s. 14(2)). The game has the production hire one for each child, as it can't assume a parent is free.
+  // under 3 of the same parent (s. 14(2)). The game has the production hire one for each child, as it can't assume a
+  // parent is free.
   supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 16 },
   // s. 7: time in the schedule for tutoring, under regulations that weren't read; the employer isn't required to provide
   // the tutor, so the game hires none.

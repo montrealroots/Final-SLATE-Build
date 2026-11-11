@@ -16,10 +16,29 @@ headings below disagree.
 
 What every set has in common, and what isn't known.
 
-- **Which version.** Each set is the text as read on November 11, 2026 (`RULES_READ`). When each version took effect
-  isn't recorded here for any set. The game applies it to every year it can be played in, from 2026, which assumes none
-  of them changed during 2026 before they were read, and none changes after. The player is told the date they were read,
-  and that later changes aren't known.
+- **Which version.** Each set is the text as read on November 11, 2026 (`RULES_READ`). When it took effect, and the
+  latest change found, are in the table below. The game applies it to every year it can be played in, from 2026: no set
+  is known to have changed after January 1, 2026, and none is known to change later. The player is told the date they
+  were read, and that later changes aren't known.
+
+When each set took effect, and the latest change found (read November 11, 2026). `tests/minors.test.ts` fails if a set
+the engine has is missing here, or its latest change is in 2026 or later.
+
+| Set | In force from | Latest change found | Where it was found |
+| --- | --- | --- | --- |
+| England (GB-ENG) | 2015-02-06 | 2015-02-06 | legislation.gov.uk; its changes database lists no amendment to SI 2014/3309. |
+| Scotland (GB-SCT) | 2015-02-20 | 2015-02-20 | legislation.gov.uk; no amendment listed to SSI 2014/372. |
+| Wales (GB-WLS) | 2015-10-30 | 2015-10-30 | legislation.gov.uk; no amendment listed to WSI 2015/1757. |
+| Northern Ireland (GB-NIR) | 1996-11-04 | 1996-11-04 | Regulation 1; no amendment listed to SR 1996/481, whose revised text legislation.gov.uk doesn't publish. |
+| California (US-CA) | 1986-04-03 | 2014-01-01 | 8 CCR §11760's history note (Cornell's copy): last amended, filed March 4, 1986, in effect 30 days later. Family Code §6752's 15% from Stats. 1999, ch. 940, amended in 2003 and 2013 (a secondary source; leginfo's history note sits behind a bot check and wasn't read); the 2013 change taken as in effect January 1, 2014. |
+| New York (US-NY) | 2013-04-01 | 2013-04-01 | The Department of Labor's summary. Its PDF of Part 186 is marked "08/24"; what, if anything, changed then wasn't read. |
+| Georgia (US-GA) | 2018-01-03 | 2018-01-03 | The Department of Labor's notice of the new Rule 300-7-1. |
+| British Columbia (CA-BC) | 1995-11-01 | 2024-07-16 | B.C. Reg. 396/95; the 25% set-aside added by B.C. Reg. 191/2024 (Gazette, July 16, 2024). The regulation's later amendments (to April 1, 2026) weren't read for Part 7.1. |
+| Ontario (CA-ON) | 2016-02-05 | 2021-04-19 | e-Laws' versions (above, in Ontario's section). |
+| Ireland (IE) | 1997 | 2005 | The Protection of Young Persons (Employment) Act 1996; the licence note's date. |
+| Germany (DE) | 1976-05-01 | 2024-10-23 | gesetze-im-internet.de: text from May 1, 1976, last amended by Art. 53 of the Act of October 23, 2024; whether that touched § 6 wasn't read. |
+| France (FR) | 2025-03-21 | 2025-03-21 | The industry agreement's signing date. |
+| New South Wales (AU-NSW) | 2022-09-01 | 2025-11-12 | The Children's Guardian (Amendment) Regulation (No 2) 2022 moved child employment into the Children's Guardian Regulation 2022; the Code of Practice page was last updated November 12, 2025. |
 - **Ages.** A child is a year older on their birthday, the same day everywhere in the game: for their age, for which age
   band applies, and for the rules' adult age. A band "over" an age (Germany's over 3) starts the day after that birthday.
   Until November 11, 2026 the bands counted 365.25-day years, so a band could change a day before or after the birthday.
@@ -40,7 +59,7 @@ Gaps in each set, as found when it was read:
 | New York | The number of children per teacher; the game uses California's ten. A parent may be the responsible person; the game hires a chaperone. |
 | Georgia | A processing time for certification; the game allows two days. A 15% blocked trust was proposed (HB 968, HB 418), not found enacted. |
 | British Columbia | Nothing recorded. |
-| Ontario | Amendments since the Act was passed in 2015: the consolidated text couldn't be read, so none were checked. |
+| Ontario | Nothing recorded. Until November 11, 2026 the Act was read as passed, and the game allowed 4 hours under 2; the consolidated text, read that day, has 8 at every age since 2017. |
 | Ireland | The licence conditions read are a PDF dated 2005; whether a later version exists wasn't checked. |
 | Germany | The authority's time to approve and the time at the workplace; the game allows 14 days and twice the work hours. |
 | France | Hours: the commissions' indicative hours weren't read, so England's stand in, and the game says so. The ratio of supervisors; the game has one per 5. The share set aside is set child by child, so none is recorded. |
@@ -219,12 +238,17 @@ Gaps in each set, as found when it was read:
 
 ## Ontario, Canada (CA-ON): read
 
-- **Source:** the Protecting Child Performers Act, 2015 as passed: Bill 17's Royal Assent text on the Legislative
-  Assembly's page (ola.org), read November 11, 2026. The consolidated statute on e-Laws renders only by script and
-  couldn't be read, and CanLII refused the request, so amendments since 2015, if any, weren't checked. Part II of the
-  ministry's Child Performers Guideline (ontario.ca) was read for chaperones.
+- **Source:** the Protecting Child Performers Act, 2015, S.O. 2015, c. 2, consolidated on e-Laws (ontario.ca/laws),
+  current to November 6, 2026, read November 11, 2026 in a browser, as the page renders only by script. Bill 17's Royal
+  Assent text (ola.org) had been read first that day. Part II of the ministry's Child Performers Guideline (ontario.ca)
+  was read for chaperones.
+- **Versions:** passed May 5, 2015; e-Laws versions from February 5, 2016, March 22, 2017 and April 19, 2021. Amended by
+  S.O. 2017, c. 2, Sched. 13 (hours, camera breaks, meals, parents' travel costs, chaperones for children under 3) and
+  S.O. 2021, c. 4, Sched. 11, s. 29 (wording: parent or guardian). What changed on February 5, 2016 wasn't read; it is
+  taken as the Act's coming into force.
 - **Ages:** a child performer is under 18 (s. 1). No one under 15 days in recorded entertainment (s. 10).
-- **Hours (s. 11(1)):** at most 4 hours of work a day under 2, and 8 from 2. Tutoring counts; unpaid meal breaks, of at
+- **Hours (s. 11(1), as amended in 2017):** at most 8 hours of work a day, at every age. (As passed in 2015: 4 under 2,
+  and 8 from 2.) Tutoring counts; unpaid meal breaks, of at
   most an hour each (s. 13), don't (s. 11(6)). Unionised performers of 12 to 15 may work 2 hours' overtime, and 16 and
   17 four (s. 11(2)–(3)).
 - **Late calls (s. 11(4)):** no call later than 7 p.m. without 48 hours' notice.
@@ -235,13 +259,13 @@ Gaps in each set, as found when it was read:
 - **Tutoring (s. 7):** time in the schedule for children of compulsory school age to be tutored, under regulations that
   weren't read.
 - **Chaperone (s. 14):** under 16, a parent, guardian or authorised chaperone present at the workplace and accessible at
-  all times. Children with the same parent have one each (s. 14(2)).
+  all times. Children under 3 with the same parent have one each (s. 14(2), as amended in 2017).
 - **Trust (s. 8(1)):** "if a child performer earns more than $2,000 on a production or project, the employer shall remit
   25 per cent of those earnings" to be held in trust until they are 18. A union's agreement may instead hold 25% of
   lifetime earnings over $5,000 (s. 8(2)).
 - **How the game reads it:**
-  - Work hours are the hours of work less the camera breaks, as British Columbia's: 1.7 under 2, 3.4 at 2, 5.3 from 3, 6.5
-    from 6, 6.9 from 12, 7.4 at 16 and 17.
+  - Work hours are the hours of work less the camera breaks, as British Columbia's: 3.4 under 3, 5.3 from 3, 6.5 from 6,
+    6.9 from 12, 7.4 at 16 and 17. (1.7 under 2 until November 11, 2026, from the Act as passed.)
   - The weekly 48 hours free leave at most 5 working days.
   - A chaperone hired for each child under 16, as a parent can't be assumed free.
   - No tutor is hired, as the Act asks for time, not a teacher.

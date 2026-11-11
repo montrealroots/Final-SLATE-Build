@@ -198,7 +198,8 @@ describe('the rules across the map', () => {
     const two = [kid(on, 8), { ...kid(on, 9), characterId: 'c2' }];
     expect(supervisionFor(two, true)).toEqual([{ roleId: 'chaperone', count: 2, why: "Ontario's rules require one with children under 16." }]);
     expect(supervisionFor([kid(on, 16.5)], true)).toEqual([]); // a 16-year-old needs no chaperone, though the Act covers them
-    expect(childShare(kid(on, 1), false)).toBe(1.7 / ADULT_SHOOT_HOURS); // under 2: 4 hours, less camera breaks
+    // Under 3: 8 hours, less camera breaks (s. 11(1) as amended in 2017; the Act as passed allowed 4 under 2).
+    expect(childShare(kid(on, 1), false)).toBe(3.4 / ADULT_SHOOT_HOURS);
     expect(childShare(kid(on, 17), false)).toBe(7.4 / ADULT_SHOOT_HOURS);
     expect(bandFor(on, Math.round(10 * YEAR))?.days).toBe(5); // 48 hours free a week
     expect(bandFor(on, 14)).toBeNull();
@@ -480,5 +481,12 @@ describe('ages, dates and what was read', () => {
       expect(rules.read, id).toBe(heading![1] === 'read' ? 'read' : 'partly');
     }
     expect(seen.size).toBe(13);
+    // When each took effect, and its latest change found: none in 2026 or later, so applying it from 2026 is the text in force.
+    const dates = new Map([...log.matchAll(/^\| [^|]+ \(([A-Z-]+)\) \| (\d{4}(?:-\d{2}-\d{2})?) \| (\d{4}(?:-\d{2}-\d{2})?) \|/gm)].map((m) => [m[1], { from: m[2], latest: m[3] }]));
+    expect([...dates.keys()].sort()).toEqual([...seen].sort());
+    for (const [id, d] of dates) {
+      expect(d.latest < '2026-01-01', id).toBe(true);
+      expect(d.from <= d.latest, id).toBe(true);
+    }
   });
 });
