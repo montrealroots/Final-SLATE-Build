@@ -12,6 +12,7 @@
 import { stream } from './rng';
 import { registerHandler, schedule } from './state';
 import { DAY, addDaysToKey } from './time';
+import { snapshotStudios, type StudioProfile } from './studios';
 import type { GameState } from './types';
 
 export interface SeasonFact { n: number; eps: number; dated: number; d0: string; d1: string | null; gap: number; drop: 0 | 1; offs?: number[] }
@@ -31,7 +32,7 @@ export interface SeriesProfile {
   /** The last season's top-billed cast, with their recorded birth and death dates where TMDB has them. */
   regulars: { p: number; name: string; ch: string | null; born?: string; died?: string }[];
 }
-export interface IndustryWorld { horizon: string; builtAt: string; series: SeriesProfile[] }
+export interface IndustryWorld { horizon: string; builtAt: string; series: SeriesProfile[]; studios?: StudioProfile[] }
 
 /**
  * A season the save's world made: its premiere, how it is released, and whether it was announced as the last. `offs` is
@@ -57,6 +58,12 @@ export interface IndustryState {
    * up to `horizon`, and never what the save's world has decided since. */
   builtAt: string;
   series: Record<string, SimSeries>;
+  /**
+   * Each followed studio's recorded film pace, kept when the save's world starts (studios.ts): the save's films follow
+   * from it and the seed. Absent in saves begun before November 11, 2026, where it is taken from the first catalog that
+   * has it.
+   */
+  studios?: StudioProfile[];
 }
 
 let WORLD: IndustryWorld | null = null;
@@ -225,8 +232,14 @@ function plan(state: GameState, p: SeriesProfile, sim: SimSeries): void {
 
 /** Start the save's world when the catalog is present, once. Returns whether it started now. */
 export function ensureIndustry(state: GameState): boolean {
-  if (!WORLD || state.industry) return false;
-  state.industry = { horizon: WORLD.horizon, builtAt: WORLD.builtAt, series: {} };
+  if (!WORLD) return false;
+  if (state.industry) {
+    // A save whose world began before studios kept releasing takes their pace now, once.
+    if (state.industry.studios || !WORLD.studios) return false;
+    state.industry.studios = snapshotStudios(WORLD.studios);
+    return true;
+  }
+  state.industry = { horizon: WORLD.horizon, builtAt: WORLD.builtAt, series: {}, ...(WORLD.studios ? { studios: snapshotStudios(WORLD.studios) } : {}) };
   for (const p of WORLD.series) {
     const sim: SimSeries = { seasons: [], outcomes: [], closed: false, rec: p.seasons.at(-1)?.n ?? 0 };
     state.industry.series[p.r] = sim;

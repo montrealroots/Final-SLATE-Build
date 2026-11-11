@@ -206,7 +206,25 @@ for (const pr of profiles) for (const c of pr.regulars) {
   if (d?.birthday) c.born = date(d.birthday);
   if (d?.deathday) c.died = date(d.deathday);
 }
-write('world.json', { version: 1, builtAt: new Date().toISOString(), horizon, from: WORLD_FROM, events: world, series: profiles });
+// Each followed studio's recorded film pace (docs/WORLD.md, "Studios Keep Releasing"): films a year over the five years
+// before the records end, their genres and release months, and the films already dated in each year from the records'
+// end on, which play as recorded. A save takes these once, when its world starts (src/engine/studios.ts).
+const studioProfiles = [];
+const fiveYearsBack = `${Number(horizon.slice(0, 4)) - 5}${horizon.slice(4)}`;
+for (const [tmdbId, entries] of companies) {
+  const reg = byTmdb.get(tmdbId);
+  if (!reg) continue;
+  const films = entries.filter((e) => e.ref.startsWith('movie') && e.date);
+  const past = films.filter((e) => e.date >= fiveYearsBack && e.date < horizon);
+  if (!past.length) continue;
+  const genres = new Map();
+  const months = Array(12).fill(0);
+  for (const e of past) { for (const g of e.genres ?? []) genres.set(g, (genres.get(g) ?? 0) + 1); months[Number(e.date.slice(5, 7)) - 1] += 1; }
+  const ann = {};
+  for (const e of films.filter((x) => x.date >= horizon)) ann[e.date.slice(0, 4)] = (ann[e.date.slice(0, 4)] ?? 0) + 1;
+  studioProfiles.push({ c: reg.id, name: reg.name, n: Math.round((past.length / 5) * 10) / 10, g: [...genres].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 8), m: months, ann, last: films.map((x) => x.date).sort().at(-1) });
+}
+write('world.json', { version: 1, builtAt: new Date().toISOString(), horizon, from: WORLD_FROM, events: world, series: profiles, studios: studioProfiles.sort((a, b) => a.c.localeCompare(b.c)) });
 write('theatrical.json', { version: 1, from: THEATRICAL_FROM, openings: theatrical.sort((a, b) => a[3].localeCompare(b[3]) || a[2].localeCompare(b[2])) });
 const discovery = manifest.queries.map((q) => ({ company: q.companyId, type: q.type, reported: q.total, found: q.found, pages: q.pages, split: q.split, failedPages: q.failedPages }));
 write('index.json', {

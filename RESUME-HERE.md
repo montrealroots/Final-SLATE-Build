@@ -110,11 +110,11 @@ serves it only as the owner's own (`--owner`), and offers other players the cine
   Scotland, Wales, Northern Ireland, India, Japan, South Korea, Mexico, Texas, New Mexico, Quebec, Spain (dated: the
   2026 decree from May 25, 2027), Italy, Brazil and New Zealand (`docs/child-rules/`). Countries still on a neighbour's
   set are listed in `docs/child-rules/COVERAGE.md` as Stand-in.
-- **Human and device testing:** real Safari on an iPhone (all WebKit runs here are emulation), and a WebKit flake seen
-  once: Continue Creation pressed and creation not opening, under two parallel WebKit workers (QA-REPORT.md, Open).
-- **Code, tests:** a browser journey through a shoot with a child in the cast (above).
-- **Code, later phases:** studios releasing new titles, competition, careers (`docs/WORLD.md`, "Next Phases"), and
-  Universal, once the owner says the foundation is done.
+- **Human and device testing:** real Safari on an iPhone (all WebKit runs here are emulation). The WebKit flake seen once
+  didn't recur in 101 runs under load, and is closed (QA-REPORT.md).
+- **Code, tests: done.** A browser journey through a shoot with a child in the cast (`e2e/children.spec.ts`).
+- **Code, later phases: done (November 11, 2026)** for studios releasing films, competition and careers
+  (`docs/WORLD.md`, Phases 3 to 5). Next: Universal (registry, catalog import, pages).
 
 ### Newest Request (November 10, 2026, after #63): the living world, Phase 1
 

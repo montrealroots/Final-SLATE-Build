@@ -205,12 +205,57 @@ change what a save's world has decided. What holds it, with the test for each:
   checked for coherence, not realism: dated after the records, numbered in order, announced before they air, starting
   after the last season ends, and closed for good.
 
-## Next Phases
+## Phase 3: Studios Keep Releasing (November 11, 2026)
 
-1. **Studios keep releasing.** New titles follow each studio's recorded pace and genres, with invented titles and
-   invented people.
-2. **Competition.** Studios' titles enter festivals, awards, distribution and commissions alongside the player's.
-3. **Careers.** The studios commission, distribute and hire the player through the game's existing systems.
+After the records end, each studio the catalog follows goes on releasing films (`src/engine/studios.ts`).
+
+- **The pace.** The build writes each studio's recorded pace into `world.json`:
+  - films a year over the five years before the records end;
+  - their genres and release months, by count;
+  - the films already dated in each year from the records' end on;
+  - its name.
+
+  A save keeps this snapshot when its world starts (`IndustryState.studios`), so a later catalog never changes films the
+  save has already seen. A save whose world began earlier takes it from the first catalog that has it.
+- **The films.** Each year, a count is drawn around the studio's pace, less the films the records already date in that
+  year, which play as recorded. In the records' last year, only the part after they end counts. Each film gets:
+  - a date in one of the studio's recorded months, never on or before the records' end;
+  - one or two of its recorded genres, by weight;
+  - an invented title, an invented director, writer and lead, and a running time.
+
+  The films follow from the save's seed and the snapshot, so they are the same on every reload, and are not stored.
+- **Where they show.** Each is labelled Simulated:
+  - Home's In The Industry;
+  - the calendar;
+  - the studio's page, under After The Records, with those due in the next year;
+  - its own film page.
+- **What decides nothing.** TMDB's ratings, popularity, budgets and box office are never read.
+
+Running it on the real catalog (19 studios, the records ending November 11, 2026) gives Walt Disney Pictures about 7.6
+films a year and Pixar about 3.8, less what each already has dated.
+
+## Phase 4: Competition (November 11, 2026)
+
+- **Awards and festivals.** A studio's films released in an edition's eligibility window enter it alongside the
+  player's work and the season's other films (`awards-results.ts` `rivalsFor`). They enter only where the category takes
+  their format, medium and genre. Each one's strength is drawn from the seed for that film, as the season slate's is.
+  Results name the studio and say the film is simulated.
+- **Cinemas.** They take screens alongside the recorded films and the player's: wide, on their date, in every country
+  (`src/world/programme.ts` `simulatedOpenings`). Where each would really open isn't recorded for films that don't exist;
+  that is game calibration.
+
+## Phase 5: Careers (November 11, 2026)
+
+The studios make offers through the game's existing systems:
+- **Commissions** (`opportunities.ts`): a well-received project's follow-up proposal comes from a followed studio about
+  half the time.
+- **Distribution** (`finish.ts`): an offer for a cinema release comes from one about half the time.
+
+The studio is chosen by weight of its pace, from studios releasing at least one film a year. It is drawn from a stream of
+its own, so every other part of an offer is as before. The amounts are the game's, never anything read from TMDB.
+
+Hiring the player as a performer or crew member isn't a system the game has; careers come through commissions and
+distribution, as the brief puts it ("through the game's existing systems").
 
 
 ## Tests

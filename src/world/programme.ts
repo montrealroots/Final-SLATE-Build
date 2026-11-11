@@ -58,6 +58,14 @@ export function inCinemas(openings: Opening[], state: Pick<GameState, 'projects'
   return out.sort((a, b) => b.opened.localeCompare(a.opened) || a.title.localeCompare(b.title));
 }
 
+/**
+ * A followed studio's films after the records end (src/engine/studios.ts) as openings in a country: wide, on their date,
+ * in every country, as the studios' own records don't say where each would open (game calibration, docs/WORLD.md).
+ */
+export function simulatedOpenings(films: { id: string; title: string; date: string }[], country: string): Opening[] {
+  return films.map((f) => [f.id, f.title, country, f.date, 0]);
+}
+
 /** The catalog's films opening in a country in the coming days. */
 export function openingSoon(openings: Opening[], country: string, today: string, days = 14): Opening[] {
   const until = addDays(today, days);

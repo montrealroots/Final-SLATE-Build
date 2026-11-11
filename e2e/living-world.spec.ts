@@ -62,3 +62,30 @@ test('after the records end, the save\'s world decides: a series is given its ne
   await page.getByRole('button', { name: 'Coastline (Fixture)', exact: true }).click();
   await expect(card(page, 'In Your Story').locator('li').first()).toContainText('Given A Date: Season 2');
 });
+
+test('after the records end, a studio goes on releasing films at its recorded pace: invented, simulated, each with its own page', async ({ page }, info) => {
+  await advance(page, 'month');
+  await advance(page, 'month');
+  const saved = await readSavedState(page);
+  expect(saved.industry.studios).toEqual([expect.objectContaining({ c: 'company:walt-disney-pictures', n: 8 })]);
+  await nav(page, 'Companies');
+  await page.getByRole('button', { name: 'Walt Disney Pictures', exact: true }).click();
+  const after = card(page, 'After The Records');
+  await expect(after).toContainText('Simulated: the titles and people are invented; the pace, genres and months are the studio\'s recorded ones.');
+  const first = after.locator('li').first();
+  await expect(first).toContainText(/Simulated\s*(Released|Due) /);
+  const title = (await first.getByRole('button').innerText()).trim();
+  await first.getByRole('button').click();
+  await expect(page.getByRole('heading', { name: title, level: 1 })).toBeVisible();
+  const about = card(page, 'About');
+  await expect(about).toContainText('Made by your story\'s world after the records end.');
+  await expect(about).toContainText('Walt Disney Pictures');
+  await expect(about).toContainText(/Genres(Family|Comedy|Fantasy)/);
+  await shot(page, info.project.name, '09-simulated-film');
+  // The same film after a reload: it follows from the save, not from chance.
+  await pressSaveAndExit(page);
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await nav(page, 'Companies');
+  await page.getByRole('button', { name: 'Walt Disney Pictures', exact: true }).click();
+  await expect(card(page, 'After The Records').locator('li').first()).toContainText(title);
+});

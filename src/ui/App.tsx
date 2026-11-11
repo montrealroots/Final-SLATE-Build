@@ -40,10 +40,11 @@ function useLivingWorld(saveKey: string | null): void {
 /** Load the world file and start the open game's world from it, once; also run when a film pack is installed (DataPacks.tsx). */
 export function startLivingWorld(live: () => boolean = () => true): void {
   // The living world's engine loads with the world file, not at startup (state.ts holds its decisions until then).
-  void Promise.all([loadFile<WorldSeed>('world.json'), import('../engine/industry')]).then(([w, { ensureIndustry, setIndustryWorld }]) => {
+  void Promise.all([loadFile<WorldSeed>('world.json'), import('../engine/industry'), import('../engine/awards-results'), import('../catalog/registry')]).then(([w, { ensureIndustry, setIndustryWorld }, { setStudioNames }, { company }]) => {
     if (!live() || w.status !== 'ready' || !w.data.series) return;
-    setIndustryWorld({ horizon: w.data.horizon, builtAt: w.data.builtAt, series: w.data.series });
-    if (store.state && !store.state.industry) store.act((g) => void ensureIndustry(g));
+    setStudioNames((id) => company(id)?.name);
+    setIndustryWorld({ horizon: w.data.horizon, builtAt: w.data.builtAt, series: w.data.series, studios: w.data.studios });
+    if (store.state && (!store.state.industry || (!store.state.industry.studios && w.data.studios))) store.act((g) => void ensureIndustry(g));
   });
 }
 

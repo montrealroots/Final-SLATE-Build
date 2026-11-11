@@ -899,6 +899,9 @@ export interface RivalFilm {
   format: Format;
   medium: Medium;
   runtimeMin: number;
+  /** A followed studio's film after the records end (studios.ts): its studio, so results can name it. Its key in
+   * GameState.rivalFilms is the film's own ID. */
+  studio?: string;
 }
 
 /** A competing work selected or nominated in one category of one edition: which film, and its strength there. */

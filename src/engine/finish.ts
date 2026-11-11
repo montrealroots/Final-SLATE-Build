@@ -20,6 +20,7 @@ import {
 import { ensureWorkEvent } from './production';
 import { gaussian, pick, stream } from './rng';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
+import { careerStudio } from './studios';
 import { redactionComplete } from './unscripted';
 import { songCredits, songUses } from './songs';
 import { assumedDates, episodeDateProblem, episodesFor, hasEpisodes, holdUndelivered, onReleaseDay, presetDates, releaseHourPassed, syncReleaseEvents } from './episode-releases';
@@ -456,8 +457,12 @@ registerHandler('distribution-offer', (state, ev) => {
       terms.factor = Math.min(2.5, 1 + 0.25 * (terms.territories.length - 1));
     }
     const scaled = Math.round((mg * terms.factor) / 1000) * 1000;
+    // A followed studio may make the offer for a cinema release (docs/WORLD.md, "Careers"): from a stream of its own, so
+    // every other offer a film got is as before.
+    const studio = route === 'theatrical' ? careerStudio(state, `distribution:${p.id}:${wave}:${i}`) : undefined;
+    const distributor = studio ?? pick(r, DISTRIBUTORS);
     const offer: DistributionOffer = {
-      id: newId(state, 'do'), distributor: pick(r, DISTRIBUTORS), route, minimumGuarantee: late ? Math.round((scaled * LATE_SLOT_SHARE) / 1000) * 1000 : scaled, territories: terms.territories,
+      id: newId(state, 'do'), distributor, route, minimumGuarantee: late ? Math.round((scaled * LATE_SLOT_SHARE) / 1000) * 1000 : scaled, territories: terms.territories,
       ...(terms.exclusive ? { exclusive: true } : {}), ...(wave.startsWith('window:') ? { laterWindow: true as const } : {}),
       releaseWindowDays: 60 + Math.floor(r() * 90), expiresAt: state.now + 21 * DAY, status: 'open',
       ...(route === 'broadcast' ? { slot: late ? 'late' as const : 'any' as const } : {}), ...(late ? { editedGuarantee: scaled } : {}),

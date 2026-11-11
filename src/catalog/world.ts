@@ -5,6 +5,7 @@
 // once there are any (later phases), are kept in the save and labelled as simulated.
 import { formatDateKey } from '../engine/time';
 import { episodeDates, outletOf, recordedUpTo, seriesProfile } from '../engine/industry';
+import { studioFilms } from '../engine/studios';
 import type { GameState, Route } from '../engine/types';
 import { company } from './registry';
 import { useCatalogFile, type Loaded } from './load';
@@ -43,7 +44,7 @@ export interface WorldEvent {
   /** Last episode's air date, for 'end'. */
   la?: string;
 }
-export interface WorldSeed { version: 1; builtAt: string; horizon: string; from: string; events: WorldEvent[]; series?: import('../engine/industry').SeriesProfile[] }
+export interface WorldSeed { version: 1; builtAt: string; horizon: string; from: string; events: WorldEvent[]; series?: import('../engine/industry').SeriesProfile[]; studios?: import('../engine/studios').StudioProfile[] }
 
 /** Events dated from `from` to `to`, both YYYY-MM-DD and inclusive, in date order. */
 export function eventsBetween(w: WorldSeed, from: string, to: string): WorldEvent[] {
@@ -137,6 +138,8 @@ export function simulatedEvents(state: GameState, from: string, to: string): Wor
       });
     }
   }
+  // The studios' own films after the records end (studios.ts).
+  for (const f of studioFilms(state, from, to)) out.push({ d: f.date, k: 'film', r: f.id, t: f.title, ci: [f.company], sim: 1 });
   return out.sort((a, b) => a.d.localeCompare(b.d) || a.t.localeCompare(b.t));
 }
 
@@ -145,6 +148,7 @@ export function simulatedEvents(state: GameState, from: string, to: string): Wor
  * series' page for an ending or a pilot passed on.
  */
 export function simRoute(e: WorldEvent): Route {
+  if (e.k === 'film') return { view: 'title', ref: e.r } as Route;
   const season = e.k === 'season' || e.k === 'episode' || (e.k === 'decision' && (e.outcome === 'renewed' || e.outcome === 'dated' || e.outcome === 'ordered'));
   return (season ? { view: 'season', ref: `${e.r}:s:${e.s}` } : { view: 'title', ref: e.r }) as Route;
 }

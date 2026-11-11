@@ -14,6 +14,7 @@ import { describe as describeWorld, inStory, isNews, simRoute, useWorld, worldEv
 import { episodeDates, outletOf, profileFor, recordedModel, recordedUpTo, type SimSeason } from '../engine/industry';
 import { ageOn, announcedSeason, breakLength, breaksOf, castFor, decisionsFor, nightsOf, usualDecision } from '../catalog/simseason';
 import { addDaysToKey } from '../engine';
+import { studioFilm, studioFilms } from '../engine/studios';
 import logo from '../catalog/tmdb-logo.svg';
 import { Check, Empty, PageHead, Panel, SelectField, TextField } from './components';
 import { Breadcrumbs } from './Shell';
@@ -193,6 +194,7 @@ export function CompanyPage({ id }: { id: string }) {
         {c.notes.map((n) => <p key={n} className="dim">{n}</p>)}
       </Panel>
       <LeadershipCard c={c} today={today} />
+      <SimulatedFilms companyId={c.id} today={today} />
       {c.tmdb && c.kind !== 'network' ? <Filmography tmdbId={c.tmdb.id} name={c.name} today={today} /> : (
         <Panel title="Titles"><p className="muted">{c.kind === 'network' ? 'No titles are gathered for networks and streaming services: where a title airs or streams isn\'t who made it.' : 'TMDB credits no titles to this company itself; see its studios and labels.'}</p></Panel>
       )}
@@ -285,7 +287,61 @@ function Released({ t, today }: { t: { date: string | null; status: string | nul
   return <>{s === 'released' ? `${verb} ${day(t.date!)}` : s === 'upcoming' ? `Not released by ${formatDateKey(today)}: due ${day(t.date!)}, as announced` : 'No release date recorded'}</>;
 }
 
+/** A film this save's world released after the records end (src/engine/studios.ts): invented, and labelled so. */
+function SimFilmPage({ refId }: { refId: string }) {
+  const g = useGame();
+  const today = useToday();
+  const f = studioFilm(g, refId);
+  const c = f && registryCompany(f.company);
+  if (!f) return <Empty title="This Film Isn't In Your Story"><p className="muted">It was made by another save's world.</p><GoBack /></Empty>;
+  return (
+    <>
+      <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, ...(c ? [{ label: c.name, route: { view: 'company', ref: c.id } as Route }] : []), { label: f.title }]} />
+      <PageHead eyebrow="Film" title={f.title} />
+      <Panel title="About">
+        <p><span className="chip">Simulated</span> Made by your story's world after the records end. The title and the people are invented; the studio's pace, genres and release months are its recorded ones.</p>
+        <dl className="kv">
+          <dt>Studio</dt><dd>{c ? <Link to={{ view: 'company', ref: c.id } as Route}>{c.name}</Link> : f.company}</dd>
+          <dt>{f.date <= today ? 'Released' : 'Due'}</dt><dd>{day(f.date)}</dd>
+          <dt>Genres</dt><dd>{f.genres.join(', ')}</dd>
+          <dt>Running Time</dt><dd>{f.runtimeMin} minutes</dd>
+          <dt>Director</dt><dd>{f.people.director}</dd>
+          <dt>Writer</dt><dd>{f.people.writer}</dd>
+          <dt>Lead</dt><dd>{f.people.lead}</dd>
+        </dl>
+      </Panel>
+    </>
+  );
+}
+
+/** A studio's films after the records end, released by this point in the story and announced for the next year. */
+function SimulatedFilms({ companyId, today }: { companyId: string; today: string }) {
+  const g = useGame();
+  const horizon = g.industry?.horizon;
+  const films = useMemo(() => (horizon ? studioFilms(g, horizon, addDaysToKey(today, 365)).filter((f) => f.company === companyId) : []), [g, horizon, today, companyId]);
+  if (!horizon || !g.industry?.studios?.some((p) => p.c === companyId)) return null;
+  return (
+    <Panel title="After The Records" subtitle={`Films your story's world has released since the records end on ${formatDateKey(horizon)}, and those announced for the next year. Simulated: the titles and people are invented; the pace, genres and months are the studio's recorded ones.`}>
+      {films.length ? (
+        <ul className="list">
+          {films.map((f) => (
+            <li key={f.id} className="list-item">
+              <span className="grow"><Link to={{ view: 'title', ref: f.id } as Route}>{f.title}</Link> <span className="chip">Simulated</span></span>
+              <span className="dim small">{f.date <= today ? `Released ${day(f.date)}` : `Due ${day(f.date)}`}</span>
+            </li>
+          ))}
+        </ul>
+      ) : <p className="muted">None yet.</p>}
+    </Panel>
+  );
+}
+
 export function TitlePage({ refId }: { refId: string }) {
+  if (refId.startsWith('sim-film:')) return <SimFilmPage refId={refId} />;
+  return <RecordedTitlePage refId={refId} />;
+}
+
+function RecordedTitlePage({ refId }: { refId: string }) {
   const today = useToday();
   const file = fileFor(refId);
   const t = useCatalogFile<TitleRecord>(file && /^(movie|tv):\d+$/.test(refId) ? file : null);
