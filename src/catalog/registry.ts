@@ -51,8 +51,10 @@ const S = {
   cinemacon: { url: 'https://www.nbcuniversal.com/article/christopher-nolan-steven-spielberg-and-chris-meledandri-lead-nbcuniversals-2026-cinemacon-showcase', title: "Christopher Nolan, Steven Spielberg, and Chris Meledandri Lead NBCUniversal's 2026 CinemaCon Showcase", published: '2026-04' },
 } satisfies Record<string, Source>;
 
-/** When the registry was researched: TMDB IDs checked, leadership pages read. */
+/** When the registry was researched: TMDB IDs checked, leadership pages read. Disney's companies, November 10, 2026. */
 export const REGISTRY_CHECKED = '2026-11-10';
+/** NBCUniversal's companies were researched a day later, when the owner asked for Universal. */
+export const REGISTRY_CHECKED_NBCU = '2026-11-11';
 
 const TWDC = 'company:the-walt-disney-company';
 const STUDIOS = 'company:the-walt-disney-studios';
@@ -159,11 +161,13 @@ export interface LeadershipRole {
   announced: string | null;
   /** When a departure was announced without an effective date. */
   endAnnounced: string | null;
+  /** It begins on an event its sources give no date for, so it stays announced, not begun, at any date. */
+  undated?: boolean;
   sources: Source[];
 }
 
-const role = (personId: string, name: string, companyId: string, title: string, sources: Source[], d: Partial<Pick<LeadershipRole, 'start' | 'end' | 'announced' | 'endAnnounced'>> = {}): LeadershipRole =>
-  ({ personId, name, title, companyId, start: d.start ?? null, end: d.end ?? null, announced: d.announced ?? null, endAnnounced: d.endAnnounced ?? null, sources });
+const role = (personId: string, name: string, companyId: string, title: string, sources: Source[], d: Partial<Pick<LeadershipRole, 'start' | 'end' | 'announced' | 'endAnnounced' | 'undated'>> = {}): LeadershipRole =>
+  ({ personId, name, title, companyId, start: d.start ?? null, end: d.end ?? null, announced: d.announced ?? null, endAnnounced: d.endAnnounced ?? null, ...(d.undated ? { undated: true } : {}), sources });
 
 export const LEADERSHIP: LeadershipRole[] = [
   role('exec:robert-a-iger', 'Robert A. Iger', TWDC, 'Chief Executive Officer', [S.ceo], { end: '2026-03-18' }),
@@ -189,7 +193,7 @@ export const LEADERSHIP: LeadershipRole[] = [
   role('exec:kevin-feige', 'Kevin Feige', 'company:marvel-studios', 'Producer and President, Marvel Studios', [S.feige]),
   // NBCUniversal's, from its leadership page as it stood on November 11, 2026.
   role('exec:michael-j-cavanagh', 'Michael J. Cavanagh', COMCAST, 'Co-CEO, Comcast Corporation', [S.nbcuLeaders]),
-  role('exec:michael-j-cavanagh', 'Michael J. Cavanagh', NBCU, 'Chief Executive Officer, NBCUniversal (once it is separated from Comcast)', [S.nbcuSpin], { announced: '2026-06-29' }),
+  role('exec:michael-j-cavanagh', 'Michael J. Cavanagh', NBCU, 'Chief Executive Officer, NBCUniversal (once it is separated from Comcast)', [S.nbcuSpin], { announced: '2026-06-29', undated: true }),
   role('exec:donna-langley', 'Donna Langley', NBCU, 'Chairman, NBCUniversal Entertainment', [S.nbcuLeaders]),
   role('exec:pearlena-igbokwe', 'Pearlena Igbokwe', 'company:universal-television', 'Chairman, Television Studios, NBC Entertainment & Peacock Scripted', [S.nbcuLeaders]),
   role('exec:frances-berwick', 'Frances Berwick', 'company:peacock', 'Chairman, Bravo & Peacock Unscripted', [S.nbcuLeaders]),
@@ -210,6 +214,14 @@ export const LEADERSHIP_GAPS: Record<string, string> = {
 
 export const company = (id: string) => COMPANIES.find((c) => c.id === id);
 export const companyByTmdb = (tmdbId: number) => COMPANIES.find((c) => c.tmdb?.id === tmdbId);
+/**
+ * When a company's record and leadership were read. Illumination and Working Title stand outside NBCUniversal (no official
+ * source placed them in it) but were read with it.
+ */
+export function checkedFor(id: string): string {
+  return groupOf(id)?.id === COMCAST || id === 'company:illumination' || id === 'company:working-title' ? REGISTRY_CHECKED_NBCU : REGISTRY_CHECKED;
+}
+
 /** The group a company belongs to: the top of its chain of parents (The Walt Disney Company, or Comcast), or itself. */
 export function groupOf(id: string): CompanyRecord | undefined {
   let c = company(id);

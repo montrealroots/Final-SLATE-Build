@@ -6,7 +6,7 @@ import { existsSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } fro
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
-import { COMPANIES, DISCOVERED, LEADERSHIP, REGISTRY_CHECKED, company } from '../src/catalog/registry';
+import { COMPANIES, DISCOVERED, LEADERSHIP, REGISTRY_CHECKED, REGISTRY_CHECKED_NBCU, checkedFor, company } from '../src/catalog/registry';
 import { ageAt, fileFor, filmographyView, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
 
 const CACHE = mkdtempSync(join(tmpdir(), 'slate-catalog-cache-'));
@@ -87,6 +87,20 @@ describe('leadership at the save\'s date', () => {
     // Pixar's leaders are listed on a page read November 10, 2026, with no start dates: earlier, they are only "listed".
     expect(at('2026-01-05', 'company:pixar').every((x) => x.endsWith('|listed'))).toBe(true);
     expect(at('2026-11-10', 'company:pixar').every((x) => x.endsWith('|current'))).toBe(true);
+  });
+
+  it('NBCUniversal\'s leaders count from the day they were read, and a role waiting on an undated event never begins', () => {
+    const nbcu = (today: string, id: string) => leadershipAt(id, today, checkedFor(id)).map((x) => `${x.role.name}|${x.standing}`);
+    expect(checkedFor('company:universal-pictures')).toBe(REGISTRY_CHECKED_NBCU);
+    expect(checkedFor('company:illumination')).toBe(REGISTRY_CHECKED_NBCU); // read with NBCUniversal, though not placed in it
+    expect(checkedFor('company:pixar')).toBe(REGISTRY_CHECKED);
+    // Read on November 11, 2026, with no start dates: the day before, only "listed".
+    expect(nbcu('2026-11-10', 'company:illumination')).toEqual(['Chris Meledandri|listed']);
+    expect(nbcu('2026-11-11', 'company:illumination')).toEqual(['Chris Meledandri|current']);
+    // Cavanagh leads NBCUniversal once it is separated from Comcast, which has no date: announced, not begun, years on.
+    expect(nbcu('2026-07-01', 'company:nbcuniversal')).toContain('Michael J. Cavanagh|incoming');
+    expect(nbcu('2030-01-01', 'company:nbcuniversal')).toContain('Michael J. Cavanagh|incoming');
+    expect(nbcu('2026-06-28', 'company:nbcuniversal').some((x) => x.startsWith('Michael J. Cavanagh'))).toBe(false);
   });
 
   it('a role with an announcement after the save\'s date is hidden entirely', () => {

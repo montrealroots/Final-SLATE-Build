@@ -8,7 +8,21 @@
 
 ## Commands And Results
 
-### Current: Every Stand-In Place, TMDB For The Owner Only, And The World's Studios (November 11, 2026)
+### Current: NBCUniversal After #65 (November 11, 2026)
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| CI on `d557c88`, run 43023046390 | 0 | Every CI step, including both browser suites, on #65's final commit. #65 then squash-merged as `a192119`. |
+| `npm run screen-catalog:import` (NBCUniversal added) | 0 | 10,008 titles, 4,840 seasons, 139 networks, 279,842 people; 0 retries, 0 rate-limited, 0 not found. `docs/CATALOG-COVERAGE.md` regenerated from it. |
+| `npm run check` | 0 | 766 tests. New in `tests/catalog.test.ts`: NBCUniversal's leaders count from November 11, the day they were read; Cavanagh's role, which waits on the undated separation, stays Announced, Not Yet Begun. Startup 303 kB, 97 kB gzipped, budgets unchanged. |
+| Mutations | 1 for each | Two were made and each failed the new test: the undated rule removed from `standingAt`; NBCUniversal's group taken out of `checkedFor`. |
+| The real packs with NBCUniversal, installed from a file and as a mod, Chromium and WebKit (iPhone 15 Pro Max) | 0 | Storage used: film pack 120.1 MB in Chromium and 110.8 MB in WebKit; cinemas 1.5 MB in each. The same both ways of installing. Film pack in 9.3 s and 10.4 s in Chromium, 6.1 s and 7.2 s in WebKit. |
+| Browser spot-check on the owner's server (port 8080, `--owner`) | 0 | Universal's companies, grouped by owner; Jurassic Park reads "Released before the acquisition (January 28, 2011)". |
+
+Found and fixed: before this, Cavanagh showed as NBCUniversal's current chief executive from the registry's check date
+on, though the separation he is to lead after has no date.
+
+### Earlier: Every Stand-In Place, TMDB For The Owner Only, And The World's Studios (November 11, 2026)
 
 | Command | Failures | Notes |
 | --- | --- | --- |

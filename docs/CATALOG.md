@@ -37,6 +37,12 @@ NBCUniversal, ten of its studios and four of its networks.
   owned NBCUniversal.
 - **Leadership.** From NBCUniversal's own leadership page and its CinemaCon 2026 article. Universal Pictures, Focus
   Features, DreamWorks Animation and Working Title list none: no current official source named their heads.
+  Michael J. Cavanagh is to lead NBCUniversal once it is separated from Comcast, which has no date. His role stays
+  Announced, Not Yet Begun at any date in a save (`undated` in `registry.ts`). Until November 11, 2026 he was shown as
+  its current chief executive from the registry's check date on.
+- **Checked on its own day.** NBCUniversal's companies were read on November 11, 2026, a day after Disney's.
+  `registry.ts` `checkedFor` gives each company the day it was read, so a leader with no start date is Listed before it
+  and Current from it.
 - **The data.** TMDB's data, gathered as Disney's is. It is the owner's alone, as decided (`docs/DEPLOYMENT.md`).
 
 ## What TMDB's Terms Allow, And What That Decided
