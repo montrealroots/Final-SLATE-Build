@@ -7,7 +7,7 @@ import { createCatalogHandler } from './server/catalog-handler.mjs';
 // production server uses (server/serve.mjs, docs/DEPLOYMENT.md), so the dev and preview servers can't drift from it.
 // Neither is ever copied into a build: the catalog stays on the machine that gathered it (TMDB's terms, docs/CATALOG.md).
 function serveCatalog(): Plugin {
-  const handler = createCatalogHandler({ catalogDir: join(process.cwd(), '.screen-catalog'), cinemasDir: join(process.cwd(), '.cinemas'), packsDir: join(process.cwd(), 'packs') });
+  const handler = createCatalogHandler({ catalogDir: join(process.cwd(), '.screen-catalog'), cinemasDir: join(process.cwd(), '.cinemas'), packsDir: join(process.cwd(), 'packs'), films: true }); // the dev server is the owner's own
   return { name: 'slate-screen-catalog', configureServer: (s) => { s.middlewares.use(handler); }, configurePreviewServer: (s) => { s.middlewares.use(handler); } };
 }
 
