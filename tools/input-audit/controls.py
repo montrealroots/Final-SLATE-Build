@@ -217,6 +217,10 @@ c(f, '"The Light It Is Shot In"', D, 'axes.light', 'craft.ts craftTime, gafferNe
 c(f, '"The Score"', D, 'axes.score', 'craft.ts postFactors, scoreSessions; production/tasks.ts buildTasks', "The composer's days, and recording sessions that cost money and that the mix waits for", U('craft', 'a score with players is recorded in sessions that cost money and hold the mix; an electronic one is the composer alone'))
 c(f, '{SOUNDS[k].label}', D, 'axes.sound', 'craft.ts craftTime, craftRoles, postFactors, dialogueHolds; production/tasks.ts buildTasks; production/shoot.ts needsDialogueReplacement', 'Each choice moves its own work: location recording days, a boom operator and dialogue that holds, Foley, effects editing, the score, a loop group, the mix', U('craft', 'each sound choice moves its own work and no other'))
 
+f = 'FilmedAt.tsx'
+c(f, '"Film It In"', D, 'locationChoices[place].at.placeId', 'destinations.ts dayPlace, awayCosts, permitWork; production/shoot.ts runShootDay; production/schedule.ts scheduleShootDay', "The day's weather, daylight, public holidays and clock are that place's; a unit away from base is moved once and housed each day; you have to be there for the call", U('destinations', 'a place far from the base: its own place for the day, a fee by the kind of site, a move once and housing each day, and permits first'))
+c(f, '"Kind Of Site"', D, 'locationChoices[place].at.kind', 'destinations.ts kindFee, permitWork, underCover, noisyDay', "The share of the location fee a day costs, the permit days before the first day there, whether rain can stop it, and how often noise spoils dialogue", U('destinations', 'the kind of site decides whether rain can stop it and how often noise spoils dialogue, the same on every run'))
+
 f = 'PersonWork.tsx'
 J04 = E('real-people', 'J04: a performer from the film catalog is considered, reads, counters, is contracted, found booked elsewhere, works and is credited')
 J05 = E('real-people', 'J05: a director with no recorded date of birth and a writer are hired for a film by job')

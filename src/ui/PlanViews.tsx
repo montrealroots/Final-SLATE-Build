@@ -31,6 +31,7 @@ import type { Audition, FinanceDeal, GameState, Hire, Obligation, PerformanceMet
 import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
 import { store, useGame } from './store';
 import { WritingWork } from './WritingWork';
+import { FilmedAtCard } from './FilmedAt';
 
 function NeedsApproval({ p, what }: { p: Project; what: string }) {
   return (
@@ -502,6 +503,7 @@ export function ScheduleTab({ p }: { p: Project }) {
         <button className="btn btn-primary" disabled={!!p.delivered} onClick={() => setErr(store.act((s) => void generatePlan(s, p, start)))}>{p.schedule.startDate ? 'Rebuild Schedule' : 'Build Schedule'}</button>
         {p.schedule.startDate && <p className="dim">Rebuilding keeps finished work and moves only what hasn't happened yet.</p>}
       </section>
+      <FilmedAtCard p={p} />
       {scoutedPlaces(p).length > 0 && <LocationsCard p={p} />}
       <section className="card">
         <h2>Shoot Days</h2>
