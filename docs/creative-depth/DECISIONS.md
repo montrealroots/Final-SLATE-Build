@@ -109,3 +109,69 @@ matters later. Dates are when the decision was made.
 - **Changing how a project is made converts its parts.** On-camera parts become voice parts for animation, and back.
   Otherwise an animated project would have no castable parts.
 - **Refused after approval.** People and a schedule are built on it by then.
+
+## Milestone D (November 11, 2026)
+
+### Milestone D Before C
+
+The package orders the milestones A to H. D was built third, before C. The owner's request named real people being
+castable and hireable through the whole cycle as required, and nothing in D reads anything C adds. C's scope is
+unchanged and is next.
+
+### What A Save Keeps Of A Real Person
+
+Two parts in one record, never mixed. The recorded part is a copy: name, birth and death dates where the catalog has
+them, a count of credits for each job with the first and last year, and the day it was gathered. The made-up part is
+this save's: a level for each job, a capability drawn around it, an asking rate, the days they are busy, and the
+player's mark that they are an adult. Nothing else from the catalog is copied: no biography, birthplace or picture.
+
+The level comes from how many credits the installed catalog holds, in bands, and the capability from this save's seed
+by the rule the game's own people use. TMDB's popularity, ratings, budgets and revenue are read by nothing. Two saves
+make two different versions of the same person, and each is labelled as the story's.
+
+### Nothing Guessed
+
+A real person has no recorded languages, background, nationality or pronouns here, so the game shows them as not
+recorded and uses "they". Rules that read those say so and ask nothing: a dialect coach is offered, not required; a
+shared-background note never appears; matching pronouns are never marked.
+
+With no recorded birth date nothing can be offered until the player ticks Treat As An Adult In This Story. The tick is
+saved as the story's mark. No date is written.
+
+### Six Months, Person By Person
+
+Each copied record carries the day it was gathered and is treated like the catalog itself: at 180 days it is renewed
+from the catalog installed then, if that copy is newer, and removed otherwise. Removing it takes the name out of what
+the game wrote (the log, project history, credits, shoot-day results) and leaves everything the save decided: the
+contract, the pay, the days worked, the made-up profile. The player's own writing is never touched. A newer catalog
+later brings the name back.
+
+### Jobs The Game Has Nothing For
+
+A recorded job is offered only when the game has a job whose work it models. The line producer and the casting
+director exist as names and nothing reads them, so a Producer or Casting credit is offered nothing, and the page says
+that rather than leaving it out. Offering a paid job that changes nothing would be a trap.
+
+### Writers Are Paid For Work, And Credited For Accepted Work
+
+Before this, hiring a writer moved the script's assessment and gave a credit, with no work and no pay. Now a writer is
+asked for a pass. The scope sets the days from the script's length; the days are added to their agreement; each
+working day is paid once; the pass is delivered; the player accepts it or asks for a revision, at most two.
+
+How a delivered pass stands is drawn around the writer's level when it is delivered: a first pass within about ten
+points either way, a revision within about five. So a revision usually lands nearer their level than a first pass. It
+can be worse. It is never a guaranteed gain, and no words are judged.
+
+Only an accepted pass counts, weighed by scope: a draft in full, a rewrite three fifths, a polish three tenths. A draft
+or a rewrite from the episode's writer makes the episode theirs to be credited for, beside whoever wrote the approved
+script, by the rule that already kept a replaced writer's credit.
+
+A project begun earlier has no `writing` list and keeps the rules it was made under, the way earlier feature rules are
+kept (`designReview`, `takesModel`, `directing`).
+
+### Directors Are Paid For The Days They Direct
+
+The hired director of a day's episode is on set and paid with everyone else, for days shot and days lost alike. A
+director hired and not given an episode is paid nothing. This applies to projects already under way too: the work is
+real either way, and an overrun on their agreement is recorded as any overrun is.
+

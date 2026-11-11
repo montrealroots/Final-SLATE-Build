@@ -28,7 +28,7 @@ Nothing is called complete because a control exists or a field saves.
 | A | Baseline audit, owner-data access, frozen world profiles | Built and tested; see below | With the first checkpoint of this package |
 | B | Shared picker, option records, starter libraries, field inventory, the zombie example | Built and tested; see below | With the second checkpoint |
 | C | Every creative input expanded; medium pipelines; controlled comparisons | Not started | |
-| D | Real people: identity, availability, auditions, hiring, contracts, pay, credits | Not started | |
+| D | Real people: identity, availability, auditions, hiring, contracts, pay, credits | Built and tested, with the limits below. Done before C: see `DECISIONS.md` | With the third checkpoint |
 | E | Real destinations, scouting, geography-aware production | Not started | |
 | F | Studio strategy, Warner Bros., Sony and Paramount, territorial releases, competition | Not started | |
 | G | Optional portraits and posters, pack refresh and storage controls | Not started | |
@@ -145,42 +145,83 @@ engine, the field inventory, and the 1986 zombie film proved through delivery wi
   by hand at some point. They were carried back into the generator, which now writes the table as it stood plus the new
   row.
 
-## Plan For Milestone D, Worked Out But Not Built
+## Milestone D
 
-Read from the code on November 11, 2026, so the next session can start building.
+Built before milestone C, because the owner named it as essential and nothing in it waits on C (`DECISIONS.md`,
+"Milestone D Before C").
 
-- **Identity.** TMDB's person ID is already global: the catalog keys people by it and gathers their credits across every
-  company. A real person in a save is `tp_<id>` in a new `state.real` record, made when the player first considers or
-  approaches them, never before.
-- **Two parts, kept apart.** A copy of what is recorded (name, birth and death dates, a count of credits by job, with
-  the date it was gathered), and what the game makes up for this save (experience level from the count and span of
-  credits, a capability drawn around it, an asking rate from the role's base rate, other work that keeps them busy).
-  Everything made up is labelled as this story's, never as fact.
-- **Where they plug in.** `people.ts` `personById` resolves only generated IDs today and throws otherwise;
-  `hiring.ts` `makeOffer` requires `person.roleId` to equal the job. Both need a branch for `tp_` IDs, with jobs taken
-  from credit evidence (a cast credit for acting; Director, Screenplay or Writer, Producer and the craft jobs for
-  theirs). After that the existing offer, counteroffer, booking, audition, callback, pay, credit and relationship code
-  works on them as on anyone: bookings are already kept per person across projects in `state.people`.
-- **Rules the package sets.** No approach after a recorded death. With no recorded birth date, no hiring until the
-  player marks them as an adult for this story, said to be simulated. A recorded child is under the child-performer
-  rules like anyone. No languages, background or pronouns are guessed: languages show as not recorded, and a dialect
-  coach is offered, not required.
-- **TMDB's six months.** The repository's reading is that nothing from TMDB is kept longer. So at six months from the
-  day a person's record was gathered, an installed catalog renews the copy; with none installed, the name and dates are
-  removed from the save and from the log lines and credits that carry them, and shown as withdrawn until a catalog is
-  back. What the save decided (contracts, pay, work) stays.
-- **Pages.** The catalog's person page gets Consider For A Role and Approach As…, each saying what stands in the way.
-  The Cast and Crew candidate lists show people being considered beside the generated ones. A person's page lists their
-  work in this story in its own section, apart from their recorded credits.
-- **Proof.** Journeys J04 and J05; a fixture person credited under two companies; a second project that finds them
-  booked; a counteroffer; cancellation; a missing age; expiry.
+### What Was Asked
+
+`03-PEOPLE-CASTING-AND-HIRING.md`: people from the film catalog can be considered, invited to read, offered parts and
+approached for jobs through the game's own casting and hiring, with one identity however they were found; what is
+recorded about them stays apart from what the game makes up; nobody's languages, background, health or character is
+guessed; an unknown age is never silently an adult's; nobody is approached after a recorded death; and their work in a
+save is listed apart from their recorded credits.
+
+### What Was Found
+
+- **Nobody from the catalog could be hired.** `people.ts` `personById` knew only the game's own people and threw for
+  anyone else.
+- **Nobody could be hired to write or direct a single film.** The Crew page showed its writer and director table for
+  series only, though a film keeps one episode record and the shoot reads its director.
+- **Hired writers and directors did no work and were paid nothing.** An episode writer, a co-writer, a script editor or
+  an episode director was hired, credited and counted in the assessment without a day worked or a day paid. No page
+  offered the co-writer's or the script editor's job at all.
+- **Two jobs nothing reads.** The line producer and the casting director can be named, and nothing in the engine reads
+  either. A recorded Producer or Casting credit is therefore offered no job, and the person's page says so.
+- **A job the script doesn't call for had no place to be offered.** Someone considered for one now has a row on the Crew
+  page under Jobs You Are Considering Someone For.
+
+### What Was Built
+
+| Piece | Where | Status | Evidence |
+| --- | --- | --- | --- |
+| One identity, `tp_<TMDB ID>`, made only when the player considers someone | `src/engine/guests.ts` `considerPerson`, `realId` | Browser verified | `tests/guests.test.ts` "makes one person of one ID"; journey J04 |
+| What is recorded kept apart from what the game makes up, each labelled | `guests.ts` `RealPerson` (`rec`, `sim`); `src/ui/PersonWork.tsx` | Browser verified | `tests/guests.test.ts`, 11 tests; J04 reads the save and finds only the name, two dates, the credit counts and the day gathered |
+| Jobs only from recorded credits; nothing supposed | `guests.ts` `evidenceOf`, `jobsOf`, `canApproach` | Browser verified | `tests/guests.test.ts` "for the jobs the record shows"; J05 |
+| No languages, background, nationality or pronouns guessed | `people.ts`, `casting-notes.ts`, `production/language.ts`, `PlanViews.tsx` `CandidateList` | Browser verified | `tests/guests.test.ts` "nothing guessed"; J04 |
+| Unknown age blocks every offer until the player marks them an adult in this story | `guests.ts` `canApproach`, `treatAsAdult`; `minors.ts` | Browser verified | `tests/guests.test.ts` "with no recorded birth date"; a mutation fails it; J05 |
+| Nobody approached after a recorded death; someone contracted before it is unavailable from that day | `guests.ts` `canApproach`; `people.ts` `isAvailable` | Engine verified | `tests/real-hiring.test.ts` "nobody is approached after a recorded death"; a mutation fails it |
+| Considered people on the part's or job's own list, first, marked as from the catalog | `hiring.ts` `candidatesFor`; `PlanViews.tsx` | Browser verified | `tests/real-hiring.test.ts` "is one person however they were found"; J04, J05 |
+| Audition, counteroffer, contract, one diary across projects, refusal for a clash, free after a reschedule | existing `casting-calls.ts`, `hiring.ts`, `people.ts`, now resolving real people | Browser verified | `tests/real-hiring.test.ts`, 12 tests; a mutation on the shared diary fails one; J04 |
+| Shoot, pay for each day once, credit by name, and their work in the story on their own page | existing `production/shoot.ts`, `finish.ts`; `guests.ts` `storyCredits` | Browser verified | `tests/real-hiring.test.ts` "is shot with, paid"; J04, including a reload |
+| Release, replacement, and what they ask next time | existing `hiring.ts` `releaseHire`, `relationships.ts` | Engine verified | `tests/real-hiring.test.ts` "released before the work is done" |
+| A voice part recorded in a session | existing animation pipeline | Engine verified | `tests/real-hiring.test.ts` "a voice part is a voice part" |
+| TMDB's six months for each copied record: renewed from a newer catalog, or the name withdrawn from what the game wrote | `guests.ts` `expireRecords`, `restoreNames`; `src/ui/App.tsx` `expirePeople` | Engine verified | `tests/guests.test.ts`, 3 tests; a mutation fails them. The hourly check in the open game has no browser test |
+| A writer and a director for a single film | `PlanViews.tsx` `EpisodeAssignments`; `guests.ts` `jobLabel` | Browser verified | J05 |
+| Writers commissioned by the pass: scope, days and cost shown first, paid by the day, delivered, accepted or revised | `src/engine/writing-jobs.ts`; `src/ui/WritingWork.tsx` | Browser verified | `tests/writing-jobs.test.ts`, 11 tests; seven mutations fail them; J05 and the series journey in `e2e/journeys.spec.ts` |
+| Only accepted work is credited or counted, weighed by its scope | `writing-jobs.ts` `acceptedRead`; `finish.ts` `assessQuality`, `computeCredits`; `projects.ts` `assignEpisodeRole` | Engine verified | `tests/writing-jobs.test.ts` "accepted, the episode is theirs", "a polish counts for less" |
+| The brief and the notes kept as written, shown back, never read | `WritingJob.brief`, `WritingPass.text`; `WritingWork.tsx` | Browser verified | `tests/writing-jobs.test.ts` "the brief and the notes are kept as written and change nothing"; J05 reads them from the save |
+| A hired director on set and paid for each day they direct | `production/shoot.ts`; `hiring.ts` `estimateDays` | Browser verified | `tests/writing-jobs.test.ts` "is paid once for each day they direct"; a mutation fails it; J05 |
+| Two jobs for one person on one project, each its own contract and pay | existing `hiring.ts` | Browser verified | J05 (director and editor) |
+
+### Limits Of Milestone D
+
+- **A hired writer's pass doesn't change the script.** The scenes the player wrote are what is shot. A pass changes who
+  is credited, what it costs, how long it takes, and how the script is assessed. Nothing reads the words of a brief or a
+  note.
+- **Not implemented: a producer's job, and a casting director's.** Recorded credits of those kinds are shown and
+  offered nothing. Not implemented either: agents or representatives, and an offer's scope beyond the job and its days.
+- **Not tested with a real person:** motion capture, a child from the catalog under the child-performer rules, and
+  awards naming a real person. The code paths are the game's own, which have their tests.
+- **The audition comparison, callbacks and chemistry reads** work for real people through the same code; the browser
+  journey covers the first read, the shortlist and the offer, not a callback.
+- **The hourly six-month check** in the open game is tested by rule, not in the browser.
+- **A live catalog was not used** in any test: every person in the tests and journeys is a made-up fixture. Identity
+  against TMDB's real data is not separately verified here.
+- **Availability is bookings, not holds.** A person is busy for the weeks of a contract in this save and for the other
+  work the save made up for them. An inquiry hold, with its own expiry, is not implemented.
+- **The made-up level has one recorded input:** how many credits the installed catalog holds for the job, in bands. It
+  is a game figure and is labelled so; it is not a measure of anyone's ability.
+- **Earlier projects keep their rules.** A project begun before this has no `writing` list, and its hired writers are
+  credited and counted as they were. Its hired director is paid for shoot days from now on.
 
 ## The Audit Artifacts
 
 | File | State |
 | --- | --- |
-| `docs/input-audit/CONTROLS.csv` | Exists from the November 10 connectivity pass: 230 labelled controls, each classed, with its consumer and tests. The base for the field inventory. |
-| `docs/creative-depth/FIELD-INVENTORY.csv` | Written from the code: 247 controls, each with a decision. |
+| `docs/input-audit/CONTROLS.csv` | From the November 10 connectivity pass, kept in step since: 257 labelled controls, each classed, with its consumer and tests. The base for the field inventory. |
+| `docs/creative-depth/FIELD-INVENTORY.csv` | Written from the code: 257 controls, each with a decision. |
 | `docs/creative-depth/EFFECT-COVERAGE.csv` | Written from the code: 188 rows. Grows with each milestone's options. |
 
 ## Checks Run For Each Checkpoint
