@@ -307,6 +307,28 @@ c('ScriptViews.tsx', '"Age In Story"', D, 'character.ageInStory', 'story-age.ts 
 c('WorkViews.tsx', '{`${c.name} Performs ${s.title}`}', D, 'song.performers', 'casting-notes.ts fitNotes; songs.ts songCredits', 'Who sings it: casting notes and performer credits', 'tests/songs.test.ts::played to delivery: writers are whoever wrote', 'e2e/awards.spec.ts::Songs', n=1)
 J[('WorkViews.tsx', '{`${c.name} Performs ${s.title}`}', 1)] = ('targeted', '')
 
+# ---------------- The Creative Depth package, milestone B: looks, crowds, the story's year, and the idea picker ----------------
+f = 'ScriptViews.tsx'
+LK = 'looks.ts makeupShare, makeupDayCost; production/tasks.ts buildTasks; production/schedule.ts groupShootDays'
+c(f, '"Year It Is Set In"', D, 'axes.storyYear', 'looks.ts periodBand, projectBand; projects.ts deriveRequirements; production/tasks.ts buildTasks', 'How far the story is from the year it is made: period research, and how much costume work', U('looks', '1986 made in 2026 is a period: research, and half as much costume work again; 2026 is neither; the look it borrows changes no work'))
+c(f, '"The Look It Borrows"', R, 'axes.styleEra', 'the Creative Brief card', 'A note for the departments; changes no work and no date', U('looks', '1986 made in 2026 is a period: research, and half as much costume work again; 2026 is neither; the look it borrows changes no work'))
+c(f, '"Crowd Makeup"', D, 'scene.crowdLook', 'looks.ts chairMinutes, makeupDayCost; production/shoot.ts runShootDay', 'Chair time and materials for every background performer on set that day', U('looks', "made up is made up head by head: the people on set, at a background performer's share"))
+c(f, '"Extend The Crowd In Post"', D, 'scene.crowdMethod', 'looks.ts physicalCrowd, digitalCrowd; production/tasks.ts buildTasks; production/schedule.ts sceneLoad', 'A quarter of the crowd on set, plates on the day, effects work after the lock', U('looks', 'made partly in post puts a quarter on set, shoots plates, and is finished after the picture is locked'))
+c(f, '"Makeup"', D, 'character.look.makeup', LK + '; production/shoot.ts runShootDay; callsheet.ts callSheet; hiring.ts neededRoles', 'Tests and builds before the shoot, chair time out of each day worked, daily materials, and who must be hired', U('looks', 'adds its own tests, builds, crew and daily materials for that character, and leaves every other task as it was'))
+c(f, '"Costume From"', D, 'character.look.wardrobe', 'looks.ts costumeCopies, wardrobeMismatch; production/tasks.ts buildTasks', "The costume's own days, materials and fittings, in the copies it needs", U('looks', 'is its own work, in the copies its states and rough scenes need, and leaves the others on the shared costume task'))
+c(f, '"Appearance States"', D, 'character.look.states', 'looks.ts statesOf, costumeCopies; production/tasks.ts buildTasks', 'A build for each state, and a costume copy for each', U('looks', 'shortens with a second chair, and each appearance state is its own build'))
+f = 'IdeaPicker.tsx'
+AP = 'brief.ts applyIdea'
+ALL = U('brief', 'every idea applies through the one command path and says first what it will do')
+c(f, '"Search Ideas"', V)
+c(f, '{s.label}', I, 'the words an idea writes', 'brief.ts fill', "The player's own names in the idea's words; a blank takes the suggestion", U('brief', "writes the player's names where the idea has slots, and its suggestions where they left them blank"))
+c(f, '{c.name}', D, 'which characters an idea applies to', AP, 'The idea is applied to the characters ticked, and no others', U('brief', 'one choice of a kind for a target: a second makeup method replaces the first, for that character only'))
+c(f, '{`Scene ${i + 1}', D, 'which scenes an idea applies to', AP, 'The idea is applied to the scenes ticked, and no others', U('brief', 'a physical gag on a chosen scene makes a stunt of it, with its rehearsal, coordinator and doubled costume'))
+c(f, "{`${b.intExt === 'EXT' ? 'Exterior' : 'Interior'}", D, 'which offered scenes are added', AP + '; projects.ts addScene', 'Only the scenes ticked are added to the script', U('brief', 'offered scenes are added only when ticked, and then make the work scenes make'))
+c(f, '{`Keep My ${o.label}`}', D, 'which of the player\'s words an idea leaves alone', AP, 'A kept field is not replaced', U('brief', "asks before replacing the player's own words, and leaves them alone when told to keep them"))
+for lab in ['"When It Starts"', '"Who It Happens To"', '"What They Must Do"', '"What It Costs"']:
+    c(f, lab, I, 'story.logline (once applied)', 'src/ideas/loglines.ts compose; ' + AP, 'One of the four parts of a built logline', U('ideas', "refuses parts that don't go together, and parts that aren't there"))
+
 # ---------------- Build and check ----------------
 rx = re.compile(r'<(TextField|SelectField|NumberField|Check|PlacePicker|LanguagePicker|GenrePicker|WorldPlacePicker)\b([^>]*?)(/>|>)', re.S)
 found = []

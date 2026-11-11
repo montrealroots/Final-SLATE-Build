@@ -72,10 +72,16 @@ Where it stands:
   owner's passphrase (`docs/DEPLOYMENT.md`, "Who Gets The Owner's Data"); every input a series' decisions read is frozen
   in the save, with TMDB's six months kept, and newer records are taken only when the player asks (`docs/WORLD.md`,
   "What A Save Keeps" and "Taking Newer Records").
-- **B, next:** the shared Choose Ideas picker, the option records and their build-time checks, the starter libraries
-  from `package/starter-options.json`, `FIELD-INVENTORY.csv` (start from `docs/input-audit/CONTROLS.csv`), and the 1986
-  zombie example through delivery with its three comparisons.
-- **C to H:** not started; the ledger's milestone table has each one's scope.
+- **B, done:** the Choose Ideas picker on 30 fields, with a preview before anything changes; 187 ideas and a logline
+  builder (`docs/creative-depth/IDEAS.md`); makeup methods, costume sources, appearance states, crowd makeup, crowds
+  extended in post and the story's year, all read by the schedule, the shoot day, the estimate and the call sheet
+  (`src/engine/looks.ts`, figures in `docs/ASSUMPTIONS.md`); the package's 1986 zombie example built from ideas,
+  compared three ways and delivered, in the engine and in the browser; both audit tables written from the code.
+- **C, next:** ideas for the 38 creative fields that have none yet (`FIELD-INVENTORY.csv`, rows marked "Not yet");
+  engines for the camera, lighting and sound choices that are only notes today; named appearance states by scene;
+  routes for every genre; the animation, documentary, unscripted and television pipelines' own choices; a controlled
+  comparison for each new family.
+- **D to H:** not started; the ledger's milestone table has each one's scope.
 
 Rules that came with the package: one agent; no universal quality bonus for a preset; custom text is never claimed to
 be understood; real people's recorded credits stay apart from anything the game simulates about them; no credentials,

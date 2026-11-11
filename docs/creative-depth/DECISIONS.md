@@ -55,3 +55,57 @@ matters later. Dates are when the decision was made.
 - **A recovery copy, not an export prompt.** The save is written and copied inside the same storage the game already
   manages, and listed with the other recovery copies. One copy is kept, of the save before the latest refresh.
 - **Nothing dated before today.** A refreshed series' decision is planned from the day after the refresh.
+
+## Milestone B (November 11, 2026)
+
+### Where The Numbers Live
+
+- **Small registries in the engine, a large library outside it.** Makeup methods and costume sources are short typed
+  lists in `looks.ts`, as shot plans and location sites already are. A save keeps their IDs. The idea library is a
+  separate lazy file whose ideas point at those IDs.
+  Turned down: putting each option's figures in the library and copying them into the save on Apply. A save would then
+  carry the catalog, and two saves could disagree about what "full creature appliances" takes.
+- **Apply calls the page's own functions.** An idea's patch is commands, and each command calls what the matching
+  control calls. So there is one path, Undo works, and the existing draft approval already previews cost and days for
+  a change after approval.
+  Turned down: a second "brief" state that engines read. Two sources for one fact is how double charging starts.
+
+### One Owner For Each Piece Of Work
+
+- **A makeup method owns the look.** A character with one is not also a "creature effect". Without one, the older
+  creature build stands, so earlier projects are unchanged.
+- **A sourced costume leaves the shared costume task.** The rest stay on it.
+- **A crowd's post work is counted once**, on the scene, in the episode's crowd-extension task.
+
+### What Chair Time Costs
+
+- **It comes out of the day, not the score.** A long application means a shorter shooting day unless more people apply
+  it. It never changes a quality figure. The package forbids a universal bonus for an expensive preset; the same goes
+  for a penalty.
+- **A pre-call and a wrap allowance.** Two hours before call and thirty minutes after wrap are free, so everyday makeup
+  costs no shooting time and a creature does.
+
+### Earlier Projects Are Unchanged
+
+- Every new rule applies only when its new field is set: a look, a crowd method, a story year. The production golden
+  tests pass untouched.
+
+### Words
+
+- **A premise writes a logline and stakes too, and offers a cast and scenes.** The player ticks the scenes; none is
+  added otherwise. The package asks for scene beats to be offered, not applied.
+- **Slots, with suggestions.** A premise's names are the player's. A blank takes the suggestion, so no placeholder can
+  reach a saved field.
+- **The save keeps IDs, not words.** After Apply the field is what counts, and it is the player's to rewrite.
+
+### Honest Counts
+
+- **Notes are called notes.** A starter option with no engine behind it is a reference idea that says so, rather than
+  a mechanical one with nothing reading it.
+- **Combinations are reported apart from written parts.**
+
+### The Medium Command
+
+- **Changing how a project is made converts its parts.** On-camera parts become voice parts for animation, and back.
+  Otherwise an animated project would have no castable parts.
+- **Refused after approval.** People and a schedule are built on it by then.

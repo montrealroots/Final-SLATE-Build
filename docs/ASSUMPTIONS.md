@@ -138,3 +138,32 @@ What follows in the game:
 - Each call that processes due events snapshots the game first and restores it if a handler fails, so a batch is all-or-nothing. The cost is one copy per batch with due events: about 1.7 ms for a 1.1 MB save (plain-data copy, `src/engine/copy.ts`; `structuredClone` took 6.9 ms). Balance runs that process every day of hundreds of productions take about 37 seconds (98 with `structuredClone`, about 13 with no rollback); in play it is one copy per Advance step or per clock tick with events due. See `docs/PERFORMANCE.md`.
 - A budget line that is paid in full or cancelled takes no further payments. Overruns on an open line are still recorded (the line's amount grows), never hidden.
 - Each save keeps its previous sound version as a backup, which roughly doubles the storage a save uses.
+
+## How People Look On Screen (November 11, 2026)
+
+`src/engine/looks.ts`. Every figure here is game calibration, chosen by judgement so the choices differ the way the work
+differs. None is an industry rate, a union rule or a quote. No choice here raises or lowers a quality score.
+
+- **A shooting day** has 600 working minutes. Makeup may start up to 120 minutes before the unit's call, and removal may
+  run 30 minutes after wrap, at no cost to the day. What either takes beyond that comes out of the day, down to a
+  quarter of it at the least.
+- **Chairs.** Everyone hired who does hair and makeup or prosthetics, or whose job covers one of them on a small crew,
+  applies makeup at once. The queue is the day's chair minutes divided by that number. With nobody hired the plan
+  counts one chair, and the scenes that need makeup wait for someone to be hired.
+- **Makeup methods** (ten): minutes in the chair and to remove, test days, build days and their materials, materials
+  used each day worn, and effects days per scene for a look finished in post. The table is in the file.
+- **A background performer** takes a share of a principal's chair time and materials, set per method (a quarter for full
+  appliances, six tenths for wounds).
+- **Appearance states.** Each state is its own build where appliances are built, and its own costume copy. At most six.
+- **Costume sources** (four): designer's days, materials and fittings per copy. A costume is made twice when a scene
+  its wearer is in has a stunt or water.
+- **The story's year.** Within eight years of the year the project is made: the present day. Up to thirty: the recent
+  past, a quarter more costume and design work. Up to eighty: a period, half as much again. Older: twice. More than
+  eight years ahead: the future, half as much again. A declared year decides it; without one, the older rule (a period
+  genre and the era's wording) still applies, so earlier projects are unchanged.
+- **Clothes that aren't of the period** (bought, or from stock) are altered to pass, at the period's extra work. A
+  costume house's and a built costume aren't.
+- **A crowd extended in post** puts a quarter of it on set, never fewer than eight, shoots about 15% longer for plates
+  and tracking, and takes three days of effects work per scene after the picture is locked. Eight people or fewer are
+  simply there.
+- **The look a project borrows** (`styleEra`) is a note. It changes no work and no date.

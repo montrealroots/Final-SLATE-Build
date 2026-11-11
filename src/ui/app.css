@@ -2034,3 +2034,33 @@ input[type='time'] { width: 100%; min-height: var(--control); padding: var(--s2)
    right of the card's own text (November 10, 2026). */
 fieldset { margin: 0; min-inline-size: 0; }
 legend { padding: 0; }
+
+/* ---------- The idea picker (ui/IdeaPicker.tsx) ----------
+   A dialog on a desktop and a full-width sheet on a phone: the same list, the same preview, the same buttons. On a
+   phone its actions sit above the home indicator, and the list scrolls under them. */
+.modal-sheet { width: min(760px, 100%); }
+.idea-list { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--s2); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.idea-card {
+  display: flex; flex-direction: column; gap: var(--s2); width: 100%; height: 100%; text-align: left;
+  padding: var(--s3) var(--s4); background: var(--surface-2); color: var(--text);
+  border: 1px solid var(--line); border-radius: var(--radius-sm); cursor: pointer; font: inherit;
+}
+.idea-card:hover { border-color: var(--line-strong); }
+.idea-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.idea-label { font-weight: 600; }
+.idea-text { color: var(--text-muted); font-size: var(--size-sm); }
+.idea-card .chip-row { margin: auto 0 0; }
+.idea-block { border: 0; padding: 0; margin: var(--s4) 0 0; min-width: 0; }
+.idea-block > legend, .idea-block > h3 { font-weight: 600; font-size: var(--size-base); margin: 0 0 var(--s2); padding: 0; }
+.idea-block ul { margin: 0; padding-left: var(--s5); }
+.idea-sentence { font-size: var(--size-lg); margin: 0; }
+.chip-button { cursor: pointer; font: inherit; font-size: var(--size-xs); min-height: 32px; }
+.ideas-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); margin-top: var(--s1); }
+@media (max-width: 560px) {
+  .overlay-sheet { padding: 0; align-items: stretch; }
+  .modal-sheet { width: 100%; max-height: 100dvh; height: 100dvh; border-radius: 0; border: 0; }
+  .modal-sheet .modal-head { padding-top: max(var(--s4), env(safe-area-inset-top)); }
+  .modal-sheet .modal-foot { padding-bottom: max(var(--s4), env(safe-area-inset-bottom)); justify-content: stretch; }
+  .modal-sheet .modal-foot .btn { flex: 1 1 auto; }
+  .idea-list { grid-template-columns: 1fr; }
+}
