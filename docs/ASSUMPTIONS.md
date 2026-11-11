@@ -63,6 +63,20 @@ when compulsory school age ends; California's and New York's stop at 18. The fig
 | Between calls | 12 hours (reg 24) | 12 hours | 12 hours |
 | Trust set-aside | none | 15% of gross pay | 15% of gross pay |
 
+Six more sets were added the same day, when the owner asked for child performers across the whole map. What was read
+for each, and how the game reads what the texts leave to an authority, is in `docs/child-rules/RESEARCH.md`:
+
+| | British Columbia | Ontario | Ireland | Germany | France (partly read) | New South Wales |
+| --- | --- | --- | --- | --- | --- | --- |
+| Source | Employment Standards Regulation, Part 7.1, Division 2 | the Protecting Child Performers Act, 2015, as passed | the Workplace Relations Commission's film and TV licence note | Jugendarbeitsschutzgesetz §§ 2, 5, 6, 8 | the audiovisual industry's 2025 agreement on minors, restating the Code du travail | the Office of the Children's Guardian's requirements by age |
+| Covers | under 15, from 15 days old | under 18, from 15 days old | under 16 | under 18; none of 3 or under | under 16 | under 16 |
+| Hours of work a day | 8 hours from reporting under 12, 10 from 12, less the camera breaks: under 3: 3.4; 3 to 5: 5.3; 6 to 11: 6.5; 12 to 14: 8.6 | 4 under 2 and 8 from 2, less the same camera breaks: 1.7, 3.4, 5.3, 6.5, 6.9, 7.4 at 16 and 17 | under 7: 2; 7 to 12: 3; 13 to 15: 4 | over 3 to 6: 2; 6 to 15: 3; 16 and 17: 8 | England's, standing in for the hours the commission sets child by child | under 3: 4; 3 to 7: 6; 8 to 15: 8; at most 4 on a school day |
+| Days a week | 5 | 5 (48 hours free a week) | 5 | the game's own six | the game's own six | under 6 months: 1; to 3: 2; 3 to 7: 4; 8 to 15: 5 |
+| Who must be with them | a chaperone, one each under 6, one per 3 to 12, one per 5 to 15; no tutoring rule | a parent, guardian or chaperone for each child under 16 (the game hires one each); time for tutoring | a chaperone per 12; teaching if away from school more than a week (not modelled) | care and supervision (the game: one per child under 6, then one per 3) | a children's supervisor (the game: one per 5) | a supervisor (the game: one per 5), and a nurse under 3 |
+| Before the first day | consent and the hire (the game allows a day) | the same; 48 hours' notice of a call after 7 p.m. | a licence from the Minister, applied for 21 days ahead | the authority's written approval (the game allows 14 days) | the prefect's authorisation, within a month (30 days) | the Children's Guardian's authority (the game allows 7 days) |
+| Between calls | 12 hours | 12 hours | none set (England's 12 stand in) | 14 hours | 12 hours | 12 hours |
+| Trust set-aside | 25% of earnings over $2,000 on a production | 25% of all the earnings on a production once they pass $2,000 | none: the earnings go to an account in the child's name | none | none fixed: the commission sets the share child by child | none stated |
+
 What follows in the game:
 - **Shoot days.** A shoot day stands for ten hours (game calibration). A child's scenes fill no more of a day than their
   hours of work allow, so a script with children takes more days, at more location and equipment cost. The schedule
@@ -73,11 +87,21 @@ What follows in the game:
   without children go first.
 - **Night scenes.** A child's night scenes need night work approved. The day call after a child's night shoot moves a
   working day on.
-- **Trust set-aside.** Where the rules require it, 15% of each payment to a child is recorded as set aside in trust. It
+- **Days a week.** Where the rules set the days a week (New South Wales, British Columbia, Ontario, Ireland), a child's scenes
+  wait once they have worked that many days, Monday to Sunday.
+- **Trust set-aside.** Where the rules require it, the share of each payment to a child is recorded as set aside in
+  trust: 15% in California and New York; in British Columbia 25% of what they earn past $2,000 on the production; in
+  Ontario 25% of all they earn on it, once it passes $2,000. It
   is part of their pay, not a further cost.
-- **Other places.** Places whose rules aren't recorded use the nearest recorded set and say so: the rest of the United
-  States uses California's, and everywhere else uses England's. Scotland, Wales and Northern Ireland have rules of their
-  own, close to England's, that weren't read.
+- **Other places.** Places whose rules aren't recorded use the nearest recorded set and say so:
+  - the rest of the United States uses California's;
+  - the rest of Canada uses British Columbia's (Ontario has its own);
+  - the rest of Australia, and New Zealand, use New South Wales's;
+  - the rest of the European Union, the EEA and Switzerland use Germany's (Ireland has its own);
+  - everywhere else uses England's, including Scotland, Wales and Northern Ireland, whose own rules are close to
+    England's but weren't read.
+
+  `docs/child-rules/COVERAGE.md` lists the set every playable country uses.
 - **School days.** A school day is a weekday that isn't a public holiday or in a typical long break:
   - England: July 22 to September 3;
   - the United States: June 15 to August 20;
@@ -93,7 +117,12 @@ What follows in the game:
   - England's rules for 16- and 17-year-olds under employment law;
   - twins cast to share a baby's part;
   - a parent acting as chaperone;
-  - working hours at a voice or capture session, beyond the licence and the people with them.
+  - working hours at a voice or capture session, beyond the licence and the people with them;
+  - the hours of the day a child may work (Germany's 08:00 to 17:00 under 6, New South Wales' 06:00 to 18:00 under 3),
+    as the game's shoot days are day or night, not hours on a clock;
+  - weekly limits on hours (Germany's 40 for young people, New South Wales' 50 of work and schooling) and British
+    Columbia's 48 hours free a week;
+  - a baby under 12 weeks in New South Wales needing a variation and a nurse's report.
 - **Rates.** Studio teachers, chaperones, tutors and set nurses are paid at game calibration, not union scale.
 
 ## World Places (M2)

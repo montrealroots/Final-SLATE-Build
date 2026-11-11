@@ -16,3 +16,7 @@ __pycache__/
 # Screen catalog: TMDB responses and the built catalog stay out of git (TMDB terms: cached at most six months, no redistribution; docs/CATALOG.md).
 .screen-catalog-cache/
 .screen-catalog/
+
+# Cinemas from Wikidata (CC0): gathered by tools/cinemas/import.mjs, rebuilt rather than committed (docs/CINEMAS.md).
+.cinemas-cache/
+.cinemas/

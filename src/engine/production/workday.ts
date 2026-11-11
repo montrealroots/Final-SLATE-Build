@@ -38,9 +38,10 @@ function childSession(state: GameState, p: Project, m: Minor, date: string): str
 
 /** Pays a session performer and sets aside a child's share in trust where the rules require it. */
 function paySessionPerformer(state: GameState, p: Project, h: { id: string; dayRate: number; obligationId: string | null; daysWorked: number; trustSetAside?: number }, m: Minor | null, date: string): void {
+  const paidBefore = p.obligations.find((o) => o.id === h.obligationId)?.settled ?? 0;
   if (!h.obligationId || !settle(state, p, h.obligationId, h.dayRate, `${h.id}:${date}`)) return;
   h.daysWorked += 1;
-  if (m) h.trustSetAside = (h.trustSetAside ?? 0) + setAsideOf(m.rules, h.dayRate);
+  if (m) h.trustSetAside = (h.trustSetAside ?? 0) + setAsideOf(m.rules, h.dayRate, paidBefore);
 }
 
 // ---------------- Staffing helpers ----------------

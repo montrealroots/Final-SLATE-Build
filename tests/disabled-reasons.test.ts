@@ -41,7 +41,7 @@ const REASONS: Record<string, string> = {
   "ScriptViews.tsx | !p.tasks.some((t) => t.kind === 'doc:factcheck' && t.status === 'done') && !p.tasks.some((t) => t.kind === 'doc:research' && t.status === 'done')": 'A line under Facts says a fact can be checked once research or a fact check is done.',
   'Shell.tsx | blocked': 'The clock says Asleep; a read-only save or a processing problem shows its own banner; while busy the game is processing.',
   'Startup.tsx | !ready': 'The page asks you to choose a replacement for each missing place.',
-  "Startup.tsx | stage.kind === 'busy'": 'The button reads Importing… while it works.',
+  "SavedGames.tsx | stage.kind === 'busy'": 'The button reads Importing… while it works.',
   'WorldPicker.tsx | !!busy': 'A place is being opened; the list shows it loading.',
   "WorldPicker.tsx | ws.status !== 'ready'": 'Loading places… is shown until the regions arrive.',
   'WorldView.tsx | !!opening': 'A place is being opened.',

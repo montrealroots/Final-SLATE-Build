@@ -269,6 +269,16 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
         pending.push(s.id);
         continue;
       }
+      // The days a week the rules allow a child of that age (New South Wales, British Columbia), Monday to Sunday.
+      const monday = addDaysToKey(d.date, -((new Date(`${d.date}T12:00:00Z`).getUTCDay() + 6) % 7));
+      const worked = (cid: string) => p.schedule.days.filter((x) => x.id !== d.id && x.date >= monday && x.date < d.date && (x.status === 'shot' || x.status === 'partial')
+        && approvedScenes(p).some((sc) => x.sceneIds.includes(sc.id) && sc.participants.includes(cid))).length;
+      const weekFull = kids.find((m) => m.band.days && worked(m.characterId) >= m.band.days);
+      if (weekFull) {
+        reasons.push(`${label} wasn't shot: ${weekFull.name} has worked the ${weekFull.band.days} ${weekFull.band.days === 1 ? 'day' : 'days'} a week ${weekFull.rules.place}'s rules allow at that age.`);
+        pending.push(s.id);
+        continue;
+      }
       kidLeft = Math.min(...kids.map((m) => BASE_MINUTES_PER_SHOOT_DAY * childShare(m, school) - (kidUsed.get(m.characterId) ?? 0)));
       if (kidLeft <= 0.01) {
         reasons.push(`${label} wasn't shot: ${kids[0].name} has worked all the hours they may work today.`);
@@ -360,11 +370,12 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
   // Costs: everyone on the shoot crew and the cast in today's scenes is paid once for the day.
   for (const h of onSetHires) {
     const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
+    const paidBefore = p.obligations.find((o) => o.id === h.obligationId)?.settled ?? 0;
     if (settle(state, p, h.obligationId!, pay, `${h.id}:${d.date}`)) {
       h.daysWorked += 1;
       // A child's share set aside in trust, where the rules require it (minors.ts): part of their pay, not a further cost.
       const kid = h.kind === 'cast' ? kidsToday.get(h.characterId ?? '') : undefined;
-      if (kid && kid.personId === h.personId) h.trustSetAside = (h.trustSetAside ?? 0) + setAsideOf(kid.rules, pay);
+      if (kid && kid.personId === h.personId) h.trustSetAside = (h.trustSetAside ?? 0) + setAsideOf(kid.rules, pay, paidBefore);
     }
   }
   try {

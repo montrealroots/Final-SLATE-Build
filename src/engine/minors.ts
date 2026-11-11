@@ -4,7 +4,9 @@
 // - who must be with them: a studio teacher, a licensed chaperone or a tutor, and a nurse for a baby;
 // - a licence or permit before their first day, with its lead time, and approval for night work;
 // - twelve hours between their last call and the next;
-// - in California and New York, 15% of their gross pay set aside in a trust for them.
+// - a share of their pay set aside in a trust for them: 15% in California and New York, and in British Columbia 25% of
+//   what they earn past $2,000 on a production, and in Ontario 25% of all of it once it passes $2,000;
+// - where the rules set it, the days a week they may work (New South Wales, British Columbia, Ontario).
 // The rules are those of the place the production is based, read from their official texts (listed with each set below
 // and in docs/ASSUMPTIONS.md, Child Performers). A place
 // whose rules aren't recorded uses the nearest recorded set, and says so.
@@ -30,10 +32,14 @@ export interface AgeBand {
   /** Most hours a day of work (performing and rehearsing) when school is in session, and when it isn't. */
   work: number;
   workNoSchool: number;
+  /** Most days a week, where the rules set one for the age (New South Wales, British Columbia). */
+  days?: number;
+  /** Children each supervisor may have at this age, where the rules set it by age (British Columbia). */
+  perSupervisor?: number;
 }
 
 export interface MinorRules {
-  id: 'GB-ENG' | 'US-CA' | 'US-NY';
+  id: 'GB-ENG' | 'US-CA' | 'US-NY' | 'CA-BC' | 'CA-ON' | 'IE' | 'DE' | 'FR' | 'AU-NSW';
   /** Where the rules are from, for messages: "England". Their full names are in casting-notes.ts RULE_WORDS. */
   place: string;
   /** The age from which these rules stop applying. */
@@ -43,16 +49,21 @@ export interface MinorRules {
   bands: AgeBand[];
   /** The person who must be with the children, how many each may look after, and up to what age. */
   supervisor: { roleId: 'studio-teacher' | 'chaperone'; perGroup: number; perGroupNoSchool: number; underAge: number };
-  /** Teaching on school days: hours a day, and who gives it (a studio teacher may be the supervisor as well). */
-  teaching: { roleId: 'studio-teacher' | 'tutor'; hours: number; perGroup: number };
+  /** Teaching on school days, where the rules require it: hours a day, and who gives it (a studio teacher may be both). */
+  teaching: { roleId: 'studio-teacher' | 'tutor'; hours: number; perGroup: number } | null;
+  /** Most hours of work on a day the child goes to school or is taught, where the rules cap it (New South Wales). */
+  schoolCap?: number;
   /** A nurse for babies under this many days old. */
   nurseUnderDays: number | null;
   /** Days to arrange the licence or permit before the first day, and approval for night work. */
   licence: { leadDays: number; nightLeadDays: number };
   /** Hours between dismissal and the next call. */
   restHours: number;
-  /** The share of gross pay set aside in trust, if any. */
-  setAside: { percent: number } | null;
+  /**
+   * The share of gross pay set aside in trust, if any. With `over`, only once a child's earnings on the production pass
+   * it: of the part past it, or with `ofAll`, of all of them (Ontario: "25 per cent of those earnings").
+   */
+  setAside: { percent: number; over?: number; ofAll?: boolean } | null;
 }
 
 const YEAR = 365.25;
@@ -135,19 +146,168 @@ const NEW_YORK: MinorRules = {
   setAside: { percent: 15 }, // a child performer trust account (Part 186)
 };
 
+/** British Columbia: Employment Standards Regulation, Part 7.1, Division 2 (docs/child-rules/RESEARCH.md). */
+const BRITISH_COLUMBIA: MinorRules = {
+  id: 'CA-BC',
+  place: 'British Columbia',
+  adultAt: 15,
+  minAgeDays: 15,
+  // s. 45.8: 8 hours from reporting under 12, 10 from 12. Work is that, less the breaks the camera table requires
+  // (s. 45.10): 15 minutes in front of the camera then 20 off under 3; 30 and 15 to 6; 45 and 10 to 12; 60 and 10 to 15.
+  // s. 45.12: 5 days a week; s. 45.13: a chaperone for each child under 6, each 3 to 12, each 5 to 15.
+  bands: [
+    { fromDays: 15, toDays: days(3), label: 'under 3', atPlace: 8, work: 3.4, workNoSchool: 3.4, days: 5, perSupervisor: 1 },
+    { fromDays: days(3), toDays: days(6), label: '3 to 5', atPlace: 8, work: 5.3, workNoSchool: 5.3, days: 5, perSupervisor: 1 },
+    { fromDays: days(6), toDays: days(12), label: '6 to 11', atPlace: 8, work: 6.5, workNoSchool: 6.5, days: 5, perSupervisor: 3 },
+    { fromDays: days(12), toDays: days(15), label: '12 to 14', atPlace: 10, work: 8.6, workNoSchool: 8.6, days: 5, perSupervisor: 5 },
+  ],
+  supervisor: { roleId: 'chaperone', perGroup: 5, perGroupNoSchool: 5, underAge: 15 },
+  teaching: null,
+  nurseUnderDays: null,
+  licence: { leadDays: 1, nightLeadDays: 1 },
+  restHours: 12,
+  setAside: { percent: 25, over: 2000 }, // s. 45.14: 25% of earnings over $2,000 on a production
+};
+
+/** Ontario: the Protecting Child Performers Act, 2015, as passed (Bill 17, Royal Assent; docs/child-rules/RESEARCH.md). */
+const ONTARIO: MinorRules = {
+  id: 'CA-ON',
+  place: 'Ontario',
+  adultAt: 18, // s. 1: a child performer is under 18
+  minAgeDays: 15, // s. 10
+  // s. 11(1): 4 hours of work a day under 2, 8 from 2, tutoring included and unpaid meals of up to an hour left out
+  // (ss. 11(6), 13). Work is that, less the breaks s. 12 requires before a camera, as British Columbia's: 15 minutes then
+  // 20 off under 3; 30 and 15 to 6; 45 and 10 to 12; 60 and 10 to 16; 60 and 5 from 16. s. 11(5): 12 hours free a day
+  // and 48 consecutive hours a week, which leaves at most 5 working days.
+  bands: [
+    { fromDays: 15, toDays: days(2), label: 'under 2', atPlace: 5, work: 1.7, workNoSchool: 1.7, days: 5 },
+    { fromDays: days(2), toDays: days(3), label: '2', atPlace: 9, work: 3.4, workNoSchool: 3.4, days: 5 },
+    { fromDays: days(3), toDays: days(6), label: '3 to 5', atPlace: 9, work: 5.3, workNoSchool: 5.3, days: 5 },
+    { fromDays: days(6), toDays: days(12), label: '6 to 11', atPlace: 9, work: 6.5, workNoSchool: 6.5, days: 5 },
+    { fromDays: days(12), toDays: days(16), label: '12 to 15', atPlace: 9, work: 6.9, workNoSchool: 6.9, days: 5 },
+    { fromDays: days(16), toDays: days(18), label: '16 and 17', atPlace: 9, work: 7.4, workNoSchool: 7.4, days: 5 },
+  ],
+  // s. 14: a parent, guardian or authorised chaperone present and accessible at all times, under 16; one for each child
+  // of the same parent (s. 14(2)). The game has the production hire one for each child, as it can't assume a parent is free.
+  supervisor: { roleId: 'chaperone', perGroup: 1, perGroupNoSchool: 1, underAge: 16 },
+  // s. 7: time in the schedule for tutoring, under regulations that weren't read; the employer isn't required to provide
+  // the tutor, so the game hires none.
+  teaching: null,
+  nurseUnderDays: null,
+  // No permit. s. 11(4): a call after 7 p.m. needs 48 hours' notice; the game asks two days for night work.
+  licence: { leadDays: 1, nightLeadDays: 2 },
+  restHours: 12,
+  setAside: { percent: 25, over: 2000, ofAll: true }, // s. 8(1)
+};
+
+/** Ireland: the Workplace Relations Commission's note on film and TV licences under s. 3(2) of the 1996 Act (RESEARCH.md). */
+const IRELAND: MinorRules = {
+  id: 'IE',
+  place: 'Ireland',
+  adultAt: 16, // the Minister licenses children up to 16
+  minAgeDays: 0,
+  // Conditions 1 to 3: at the place of employment 5 hours under 7, 7.5 from 7 to 13, 8 over 13; performing or rehearsing
+  // 2, 3 and 4 hours. Condition 5(2): 5 days in any 7.
+  bands: [
+    { fromDays: 0, toDays: days(7), label: 'under 7', atPlace: 5, work: 2, workNoSchool: 2, days: 5 },
+    { fromDays: days(7), toDays: days(13), label: '7 to 12', atPlace: 7.5, work: 3, workNoSchool: 3, days: 5 },
+    { fromDays: days(13), toDays: days(16), label: '13 to 15', atPlace: 8, work: 4, workNoSchool: 4, days: 5 },
+  ],
+  // Condition 6: a suitably qualified chaperone, in charge of no more than twelve children.
+  supervisor: { roleId: 'chaperone', perGroup: 12, perGroupNoSchool: 12, underAge: 16 },
+  // Condition 7: alternative teaching where work means more than a week away from school, with no hours set; not modelled.
+  teaching: null,
+  nurseUnderDays: null,
+  // The licence is applied for at least 21 days ahead, night work with it (condition 4: only where essential).
+  licence: { leadDays: 21, nightLeadDays: 21 },
+  restHours: 12, // the note sets none; England's 12 hours stand in
+  setAside: null, // condition 9: earnings lodged in an account in the child's name, not held back in trust
+};
+
+/** Germany: Jugendarbeitsschutzgesetz §§ 2, 5, 6, 8 (docs/child-rules/RESEARCH.md). */
+const GERMANY: MinorRules = {
+  id: 'DE',
+  place: 'Germany',
+  adultAt: 18,
+  // § 6(1)2: film and TV from over 3: up to 2 hours a day to 6, 3 hours over 6; § 8: 8 hours for young people (15 to 17),
+  // who are taken as children while still in compulsory schooling, so to 16 here. The authority sets the time at the
+  // workplace; the game allows twice the work.
+  minAgeDays: days(3) + 1,
+  bands: [
+    { fromDays: days(3) + 1, toDays: days(6), label: 'over 3 to 6', atPlace: 4, work: 2, workNoSchool: 2, perSupervisor: 1 },
+    { fromDays: days(6), toDays: days(16), label: '6 to 15', atPlace: 6, work: 3, workNoSchool: 3 },
+    { fromDays: days(16), toDays: days(18), label: '16 and 17', atPlace: 8.5, work: 8, workNoSchool: 8 },
+  ],
+  supervisor: { roleId: 'chaperone', perGroup: 3, perGroupNoSchool: 3, underAge: 15 },
+  teaching: null,
+  nurseUnderDays: null,
+  licence: { leadDays: 14, nightLeadDays: 14 }, // the law sets no lead time: the game allows 14 days
+  restHours: 14, // § 6(2)5
+  setAside: null,
+};
+
+/** France: the audiovisual industry's 2025 agreement on minors, restating the Code du travail (RESEARCH.md). */
+const FRANCE: MinorRules = {
+  id: 'FR',
+  place: 'France',
+  adultAt: 16,
+  minAgeDays: 0,
+  // The commission sets each child's hours; with no indicative hours read, England's hours by age stand in.
+  bands: ENGLAND.bands,
+  supervisor: { roleId: 'chaperone', perGroup: 5, perGroupNoSchool: 5, underAge: 16 }, // a responsable des enfants
+  teaching: null,
+  nurseUnderDays: null,
+  licence: { leadDays: 30, nightLeadDays: 30 }, // the prefect has a month to decide
+  restHours: 12,
+  setAside: null, // the pécule's share is set by the commission child by child, so none is fixed here
+};
+
+/** New South Wales: the Office of the Children's Guardian's requirements by age (docs/child-rules/RESEARCH.md). */
+const NEW_SOUTH_WALES: MinorRules = {
+  id: 'AU-NSW',
+  place: 'New South Wales',
+  adultAt: 16,
+  minAgeDays: 0,
+  bands: [
+    { fromDays: 0, toDays: 183, label: 'under 6 months', atPlace: 4, work: 4, workNoSchool: 4, days: 1 },
+    { fromDays: 183, toDays: days(3), label: '6 months to 2', atPlace: 4, work: 4, workNoSchool: 4, days: 2 },
+    { fromDays: days(3), toDays: days(8), label: '3 to 7', atPlace: 7, work: 6, workNoSchool: 6, days: 4 },
+    { fromDays: days(8), toDays: days(16), label: '8 to 15', atPlace: 9, work: 8, workNoSchool: 8, days: 5 },
+  ],
+  supervisor: { roleId: 'chaperone', perGroup: 5, perGroupNoSchool: 5, underAge: 16 },
+  teaching: null,
+  schoolCap: 4, // at most 4 hours on a day the child attends or receives schooling
+  nurseUnderDays: days(3),
+  licence: { leadDays: 7, nightLeadDays: 7 }, // no processing time is published: the game allows 7 days
+  restHours: 12,
+  setAside: null,
+};
+
+/** The countries of the European Union, the EEA and Switzerland, which use Germany's rules where their own aren't read. */
+const EUROPE = new Set('AT BE BG HR CY CZ DK EE FI GR HU IE IT LV LT LU MT NL PL PT RO SK SI ES SE IS LI NO CH'.split(' '));
+
 /**
  * The rules for a production based at a place. A place whose own rules aren't recorded uses the nearest recorded set
- * and says so: the rest of the United States uses California's, everywhere else England's. Scotland, Wales and
- * Northern Ireland have rules of their own, close to England's but not read for the game.
+ * and says so: the rest of the United States uses California's, the rest of Canada British Columbia's (Ontario has its own), the rest of
+ * Australia and New Zealand New South Wales's, the rest of Europe's single market Germany's (Ireland has its own), everywhere else England's.
+ * Scotland, Wales and Northern Ireland have rules of their own, close to England's but not read for the game. The set
+ * every playable country uses is listed in docs/child-rules/COVERAGE.md.
  */
 export function rulesFor(place: Place): { rules: MinorRules; standIn: string | null } {
-  if (place.country === 'US') {
-    if (/^new york$/i.test(place.region)) return { rules: NEW_YORK, standIn: null };
-    if (/^california$/i.test(place.region)) return { rules: CALIFORNIA, standIn: null };
-    return { rules: CALIFORNIA, standIn: `${place.region}'s own rules aren't recorded, so California's are used.` };
+  const own = (r: MinorRules) => ({ rules: r, standIn: null });
+  const instead = (r: MinorRules) => ({ rules: r, standIn: `${place.region || place.countryName}'s own rules aren't recorded, so ${r.place}'s are used.` });
+  const region = (name: string) => new RegExp(`^${name}$`, 'i').test(place.region);
+  switch (place.country) {
+    case 'US': return region('new york') ? own(NEW_YORK) : region('california') ? own(CALIFORNIA) : instead(CALIFORNIA);
+    case 'CA': return region('british columbia') ? own(BRITISH_COLUMBIA) : region('ontario') ? own(ONTARIO) : instead(BRITISH_COLUMBIA);
+    case 'AU': return region('new south wales') ? own(NEW_SOUTH_WALES) : instead(NEW_SOUTH_WALES);
+    case 'NZ': return instead(NEW_SOUTH_WALES);
+    case 'IE': return own(IRELAND);
+    case 'DE': return own(GERMANY);
+    case 'FR': return own(FRANCE);
+    case 'GB': return place.regionCode === 'GB-ENG' || region('england') ? own(ENGLAND) : instead(ENGLAND);
+    default: return EUROPE.has(place.country) ? instead(GERMANY) : instead(ENGLAND);
   }
-  if (place.country === 'GB' && (place.regionCode === 'GB-ENG' || /^england$/i.test(place.region))) return { rules: ENGLAND, standIn: null };
-  return { rules: ENGLAND, standIn: `${place.region || place.countryName}'s own rules aren't recorded, so England's are used.` };
 }
 
 export const projectRules = (p: Project) => rulesFor(getPlace(p.axes.basePlaceId));
@@ -219,7 +379,7 @@ export function minorFor(state: GameState | undefined, p: Project, characterId: 
 
 /** The share of a shoot day's capacity a child may work, on a school day or not. */
 export function childShare(m: Minor, school: boolean): number {
-  return Math.min(1, (school ? m.band.work : m.band.workNoSchool) / ADULT_SHOOT_HOURS);
+  return Math.min(1, (school ? Math.min(m.band.work, m.rules.schoolCap ?? 24) : m.band.workNoSchool) / ADULT_SHOOT_HOURS);
 }
 
 // ---------------- Who must be there ----------------
@@ -236,16 +396,23 @@ export function supervisionFor(minors: Minor[], school: boolean): Supervision[] 
     if (!prev || prev.count < count) out.set(roleId, { roleId, count, why });
   };
   const watched = minors.filter((m) => m.ageDays < days(rules.supervisor.underAge));
-  if (watched.length) add(rules.supervisor.roleId, Math.ceil(watched.length / (school ? rules.supervisor.perGroup : rules.supervisor.perGroupNoSchool)), `${rules.place}'s rules require one with children under ${rules.supervisor.underAge}.`);
+  // Children are counted against the supervisors their age allows (British Columbia sets it by age), else the rules' own.
+  const per = new Map<number, number>();
+  for (const m of watched) {
+    const n = m.band.perSupervisor ?? (school ? rules.supervisor.perGroup : rules.supervisor.perGroupNoSchool);
+    per.set(n, (per.get(n) ?? 0) + 1);
+  }
+  const supervisors = [...per].reduce((a, [n, kids]) => a + Math.ceil(kids / n), 0);
+  if (watched.length) add(rules.supervisor.roleId, supervisors, `${rules.place}'s rules require one with children under ${rules.supervisor.underAge}.`);
   // Teaching is for school-age children (5 and over) on school days.
   const pupils = minors.filter((m) => m.ageDays >= days(5));
-  if (school && pupils.length) {
+  if (school && pupils.length && rules.teaching) {
     const t = rules.teaching;
     const prev = out.get(t.roleId);
     const need = Math.ceil(pupils.length / t.perGroup);
     add(t.roleId, Math.max(prev?.count ?? 0, need), `${rules.place}'s rules require ${t.hours} hours of teaching on a school day.`);
   }
-  if (rules.nurseUnderDays !== null && minors.some((m) => m.ageDays < rules.nurseUnderDays!)) add('set-nurse', 1, `${rules.place}'s rules require a nurse with babies under six months.`);
+  if (rules.nurseUnderDays !== null && minors.some((m) => m.ageDays < rules.nurseUnderDays!)) add('set-nurse', 1, `${rules.place}'s rules require a nurse with children under ${rules.nurseUnderDays! < YEAR ? 'six months' : `${Math.round(rules.nurseUnderDays! / YEAR)}`}.`);
   return [...out.values()];
 }
 
@@ -281,6 +448,13 @@ export function licenceReady(p: Project, m: Minor, date: string, night: boolean)
 }
 
 /** A child's set-aside from a payment, in whole currency units, under rules that require one. */
-export function setAsideOf(rules: MinorRules, pay: number): number {
-  return rules.setAside ? Math.round((pay * rules.setAside.percent) / 100) : 0;
+export function setAsideOf(rules: MinorRules, pay: number, paidBefore = 0): number {
+  if (!rules.setAside) return 0;
+  // Over a threshold, only the part of this payment above it (British Columbia: earnings over $2,000 on a production).
+  const over = rules.setAside.over ?? 0;
+  const total = paidBefore + pay;
+  // Ontario's share is of all the earnings once they pass the threshold, so the payment that passes it carries what came before.
+  const counted = rules.setAside.ofAll ? (total > over ? (paidBefore > over ? pay : total) : 0)
+    : Math.max(0, total - over) - Math.max(0, paidBefore - over);
+  return Math.round((counted * rules.setAside.percent) / 100);
 }

@@ -105,6 +105,32 @@ phases out of the startup bundle.
   loaded with its page rather than at startup, as was done here for the industry engine, the cost estimate and the
   casting notes.
 
+**The owner's next request (November 11, 2026):** child performers "across the whole map like everything else", Nielsen
+numbers, the networks and streaming services shows are attached to, and cinemas worldwide. In order:
+
+1. **Child rules across the map: in progress.**
+   - **Recorded sets:** British Columbia, Ontario, Ireland, Germany, France (partly read) and New South Wales joined
+     England, California and New York. What was read is in `docs/child-rules/RESEARCH.md`.
+   - **New rule kinds:** days a week, chaperones by age, a cap on school days, no teaching rule, and a set-aside past a
+     threshold, of the excess or of all.
+   - **Coverage:** every playable country has a set (`docs/child-rules/COVERAGE.md`, checked by `tests/minors.test.ts`).
+     Most are stand-ins: the rest of the US uses California's, of Canada British Columbia's, of Australia and New Zealand
+     New South Wales's, of Europe's single market Germany's, everywhere else England's.
+   - **Next to read:** Quebec, Victoria, New Zealand, Spain, Italy, the Netherlands, the Nordic countries, Japan, South
+     Korea, India, Mexico, Brazil, South Africa, Nigeria, the US production states (Georgia, New Mexico, Louisiana,
+     Illinois, Texas), Scotland, Wales and Northern Ireland.
+   - **Startup room:** making the saved games list and settings load when opened (`src/ui/SavedGames.tsx`) brought
+     startup to 219 kB gzipped with the new sets.
+2. **Cinemas: data gathered.** `node tools/cinemas/import.mjs` built 51,331 cinemas in 152 countries from Wikidata (CC0)
+   into `.cinemas/`, which git ignores. They need pages (by country and place, open or closed on the save's date) and a
+   part in theatrical releases, labelled as cinemas recorded in Wikidata. The United States has 31,376 and Britain
+   6,119; many countries are thin.
+3. **Networks and streaming services:** to import TMDB's network details for every network in the catalog now that the
+   people import has finished (190,751 people, 59,418 with a birth date, 18,460 with a death date), with network pages,
+   ownership, series linked to them, and the industry engine's outlet class taken from the network.
+4. **Nielsen: the owner's decision.** There is no public API. Weekly top-ten pages are public and robots.txt allows them,
+   but the terms of use render only by script and couldn't be read. No viewing figures are invented as if real.
+
 **Next, Phase 3:** studios keep releasing, with invented titles at each studio's recorded pace and genres.
 
 ### Earlier Request (November 10, 2026, after #62): the Disney company and screen-credit catalog

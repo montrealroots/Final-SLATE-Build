@@ -8,7 +8,18 @@
 
 ## Commands And Results
 
-### Current: Child Performers, Character Ages And People Who Age (November 11, 2026)
+### Current: Child Rules Across The Map (November 11, 2026)
+
+Six more sets of child performer rules, a coverage ledger for every playable country, and startup room made for them.
+What was read is in `docs/child-rules/RESEARCH.md`, and the set each country uses is in `docs/child-rules/COVERAGE.md`.
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 88 files, 710 tests: `tests/minors.test.ts` went from 13 to 23. Startup is 682 kB, 219 kB gzipped, under the 220 kB budget, which wasn't raised. With the new sets it measured 220.60 kB first. The saved games list, Import Save, Storage and the settings now load when they're opened (`src/ui/SavedGames.tsx`), which brought it to 218 kB before Ontario and Ireland were added. |
+| Mutations of the new rules | 1 for each | Eight were made one at a time, and each failed a test:<br>- days a week off by one;<br>- no days-a-week check;<br>- no set-aside threshold;<br>- no chaperones by age;<br>- no school-day cap;<br>- the shoot not counting earlier pay toward the threshold;<br>- Ontario's share taken only of the excess;<br>- Ontario's share counted again once already past the threshold. |
+| `SLATE_E2E_PROD=1 npx playwright test` on accessibility, backup, reliability, storage, viewports, children and live-action, desktop and phone | 0 | 39 passed, 7 skipped by design (two-tab checks run once, on desktop). The first run used the dev server. Its accessibility check failed: the Saved Games page stayed on Loading… because the server had run out of file watchers watching the catalog cache's 150,000 files. `vite.config.ts` no longer watches the catalog's or the cinemas' directories. |
+
+### Earlier: Child Performers, Character Ages And People Who Age (November 11, 2026)
 
 The rules and their sources are in `docs/ASSUMPTIONS.md`, Child Performers.
 

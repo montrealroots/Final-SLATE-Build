@@ -15,8 +15,8 @@ const ProjectsList = lazy(() => import('./Projects').then((m) => ({ default: m.P
 const NewProject = lazy(() => import('./Projects').then((m) => ({ default: m.NewProject })));
 const ProjectWorkspace = lazy(() => import('./Projects').then((m) => ({ default: m.ProjectWorkspace })));
 const WorldView = lazy(() => import('./WorldView').then((m) => ({ default: m.WorldView })));
-const SavedGamesPage = lazy(() => import('./Startup').then((m) => ({ default: () => <><PageHead eyebrow="Your Game" title="Saved Games" lede="Every saved game on this device. Export one to keep a copy of it anywhere." /><m.SavedGamesList /></> })));
-const SettingsPage = lazy(() => import('./Startup').then((m) => ({ default: () => <><PageHead eyebrow="Your Game" title="Settings" /><section className="card"><m.SettingsPanel /></section></> })));
+const SavedGamesPage = lazy(() => import('./SavedGames').then((m) => ({ default: () => <><PageHead eyebrow="Your Game" title="Saved Games" lede="Every saved game on this device. Export one to keep a copy of it anywhere." /><m.SavedGamesList /></> })));
+const SettingsPage = lazy(() => import('./SavedGames').then((m) => ({ default: () => <><PageHead eyebrow="Your Game" title="Settings" /><section className="card"><m.SettingsPanel /></section></> })));
 const CalendarView = lazy(() => import('./Places').then((m) => ({ default: m.CalendarView })));
 const PlaceView = lazy(() => import('./Places').then((m) => ({ default: m.PlaceView })));
 const Profile = lazy(() => import('./Places').then((m) => ({ default: m.Profile })));
