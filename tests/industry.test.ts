@@ -110,7 +110,9 @@ describe('the living world\'s engine', () => {
     expect(days.slice(1).map((d, i) => d - days[i])).toEqual([7, 7, 21, 7, 7]); // the three-week break comes with it
     // A final season ends with its finale, not at the next upfronts.
     let finals = 0;
-    for (let i = 0; i < 30; i++) {
+    // Seeds until three endings have been checked (up to thirty): each save runs eight years, so all thirty took over
+    // five seconds on CI, past the test timeout.
+    for (let i = 0; i < 30 && finals < 3; i++) {
       const t = run(`ind-final-${i}`, '2034-12-31');
       for (const sim of Object.values(t.industry!.series)) for (const o of sim.outcomes) {
         const season = sim.seasons.find((x) => x.n === o.n);
