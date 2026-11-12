@@ -9,10 +9,22 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#71 (Creative Depth, milestones F, G and H; and screens lined up),
-  squash-merged as `1f5cb1f` on November 12, 2026, CI green on its final commit (`checks` and all six journeys runs).
-  Before it, #70 (milestones C and E, and CI's journeys as their own job) as `8d927fe`, #69 (milestone D) as
-  `e028194`, #68 (milestone B) as `fd095f1` and #67 (milestone A) as `562eac8`.
+- **Latest merge:** montrealroots/Final-SLATE-Build#75 (the source-material catalog, the option on a work, a casting
+  director and a line producer who do paid work, three stories), squash-merged as `8e48876` on November 12, 2026, CI
+  green on its final commit (`checks` and all six journeys runs). Before it that day: #74 as `5388c46`, #73 as
+  `c1cab0e`, #72 as `b1c8343` (the phone overhaul's first part, pictures for the whole catalog); and #71 (Creative
+  Depth, milestones F, G and H) as `1f5cb1f`.
+- **Open when this was written (November 12, 2026, 15:25 UTC):** montrealroots/Final-SLATE-Build#76, head `290a491`
+  (representation, a cinema run's weeks and the record book, four stories, the start screen no longer moving
+  Continue Creation). Its `checks` job was green and its six journeys runs were still going. **Merge it only when all
+  seven are green on that head** (squash), then confirm `git diff --quiet 290a491 origin/main`, merge `origin/main`
+  back with `-s ours`, and push.
+- **On the branch and not pushed, so they go in the pull request after #76** (pushing them earlier would restart
+  #76's CI): `da757ee` (the ledger's suites and thirteen owed rows in `requirements.csv`), `26deebc` (the coverage walk
+  reaches the two rule dialogs), `06c61c6` (the rest of the adaptation loop, V3-A06), `6121aa8` (four screenshot sheets;
+  an agent's needs said in words) and the commit that wrote this. Each was checked before it was committed:
+  `npm run check` passed with 1,022 tests on `06c61c6`, and `e2e/sources.spec.ts` 9 of 9 on desktop, phone and WebKit.
+  They have not been through CI.
 - **The package's eight milestones are all merged.** What it leaves undone is listed in one place:
   `docs/creative-depth/COVERAGE.md`, "Not Done, In One Place". Nothing is open on this branch.
 - **CI, from November 12, 2026:** `.github/workflows/ci.yml` has two jobs. `checks` is everything without a browser.
@@ -129,8 +141,20 @@ has a row for each requirement built or owed.
   played career: cutting a scene from the edit, cancelling a release, episode dates, a withdrawn contributor, rules,
   the approved take; and the loading, error and repair states of the start screen); the WebKit sweep folded in;
   before-and-after screenshots for the report; a real phone's keyboard, which no emulation shows.
-- **Next in order:** the rest of the phone overhaul above; ideas for the 11 structural fields; story batches; then
-  steps 4 to 7 of the ledger.
+- **Next in order:** `docs/v3/requirements.csv` lists every requirement with its status; the ones marked `not started`
+  or `partial` are the work left, and `docs/v3/LEDGER.md`'s suites table says the same by acceptance suite. In the
+  order I would take them: weekly television and streaming audiences (V3-T01, nothing built; do it as box office was
+  done in `engine/box-office.ts`: postings that add up, each metric apart, every figure labelled simulated, money
+  unchanged first); the rest of box office (V3-B03: bookings, holdovers, publicity, competition, which do change what a
+  film earns and so need the journeys' expected figures revisited); age stages, doubles and per-episode performers
+  (V3-C12); the schedule built from each filming place's calendar and child rules (V3-D01); more companies (V3-W01);
+  ideas for the script fields that have none (V3-S10: 23 controls in `docs/creative-depth/FIELD-INVENTORY.csv` marked
+  "Not yet", which need written ideas by genre family, not code); a career journey through everything the package
+  added (V3-Z01); and stories, which are the long pole (11 of 14,900, 1 mixed).
+- **Things learned today that save time:** Playwright compiles a spec file once at the start of a run, so editing a
+  spec while a run is going changes nothing in that run. Editing anything under `src/` while a dev-server run is going
+  reloads the page under the journeys and fails them. Read a saved game in a journey with `expect.poll`: the save is
+  written a moment after the screen changes. `e2e/ui-audit.ts audit` measures twice before it reports.
 
 ### Newest Request (November 11, 2026, after the package's last milestone): fix all misalignments
 
