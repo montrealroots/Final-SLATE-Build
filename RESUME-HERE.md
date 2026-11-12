@@ -81,8 +81,18 @@ has a row for each requirement built or owed.
 - **Pictures:** `node tools/screen-catalog/pictures.mjs inventory`, then `NODE_USE_ENV_PROXY=1 node
   tools/screen-catalog/pictures.mjs fetch --minutes=112` as many times as it takes (it goes on from where it stopped),
   then `report`. The pictures and their manifest are in `.screen-images/` in the container, never in the repository.
-- **Next in order:** the phone overhaul's inventory and coverage matrix (`docs/v3/UI-COVERAGE.md`, not written yet);
-  ideas for the 11 structural fields; story batches; then steps 4 to 7 of the ledger.
+- **The phone overhaul, where it stands:** `docs/v3/UI-COVERAGE.md` is the matrix, written by
+  `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json` (every screen, tab and dialog; a new one needs a
+  row), the walk (`UI_COVERAGE_WRITE=1 npx playwright test e2e/ui-coverage.spec.ts` on desktop, phone and the two
+  iPhone profiles; it fails on any defect or any difference between a phone and a desktop) and the sweep
+  (`SLATE_UI_SWEEP=<file> SLATE_E2E_PROD=1 npx playwright test --project=phone`, about two hours a profile, then
+  `node tools/v3/ui-coverage.mjs --fresh --sweep <file> ...`). The stylesheet turns at four widths, listed at its
+  head; `tests/stylesheet.test.ts` fails a fifth and a rule for a class nothing wears. **Owed:** rows the matrix says
+  were not visited (the walk reaches 34 of 78; the sweep reaches most of the rest and has not been folded in yet);
+  what the sweep finds; sticky bars over content, layout shift, text enlargement and reduced motion, which the audit
+  does not measure yet; screenshots for the report; a real phone's keyboard, which no emulation shows.
+- **Next in order:** the rest of the phone overhaul above; ideas for the 11 structural fields; story batches; then
+  steps 4 to 7 of the ledger.
 
 ### Newest Request (November 11, 2026, after the package's last milestone): fix all misalignments
 
