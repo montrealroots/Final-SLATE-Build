@@ -6,6 +6,7 @@
 // risk): with a backup the day goes ahead there, at the backup's fee; without one the day is lost, its scenes move to a
 // later day, and that place needs a new choice. Nothing chosen means the real place, as before, at the old fee and with
 // no risk, so saves and projects from before this play exactly as they did. Fees and risks are game calibration.
+import { filmedAt, underCover } from './destinations';
 import { stream } from './rng';
 import type { Project } from './types';
 
@@ -13,11 +14,27 @@ export interface SiteOption { id: 'real' | 'stage' | 'standin'; name: string; fa
 
 export const SITES: SiteOption[] = [
   { id: 'real', name: 'The Real Place', factor: 1, risk: 0.05, note: 'As written; the owner may change their mind.' },
-  { id: 'stage', name: 'A Stage Set Built To Match', factor: 1.6, risk: 0, note: 'Costs more each day and never falls through.' },
+  { id: 'stage', name: 'A Stage Set Built To Match', factor: 1.6, risk: 0, note: 'Costs more each day, never falls through, and is under a roof: rain and short days do not stop it.' },
   { id: 'standin', name: 'A Cheaper Stand-In', factor: 0.6, risk: 0.15, note: 'Costs less; arrangements like this fall through more often.' },
 ];
 
 export const site = (id: string | undefined): SiteOption | undefined => SITES.find((x) => x.id === id);
+
+/**
+ * What a site is called for this place. Where the place is filmed somewhere the player chose (destinations.ts), the
+ * first of the three is the candidate the game made up there, and is never called a real place.
+ */
+export const siteName = (p: Project, place: string, id: SiteOption['id']): string =>
+  id === 'real' && filmedAt(p, place) ? 'The Candidate Site' : site(id)!.name;
+export const siteNote = (p: Project, place: string, id: SiteOption['id']): string =>
+  id === 'real' && filmedAt(p, place) ? 'The site the game made up there; arrangements can still fall through.' : site(id)!.note;
+
+/**
+ * Whether this place is filmed under a roof: on a soundstage (destinations.ts), or on the stage set built to match. An
+ * exterior written there isn't stopped by rain or snow, doesn't wait for daylight and gets no rain warning. Until
+ * November 11, 2026 a stage set cost more and never fell through, but the weather still stopped it.
+ */
+export const roofed = (p: Project, place: string): boolean => underCover(p, place) || p.locationChoices?.[place]?.main === 'stage';
 
 /** The places in the script that need a site, once scouting has found the options. */
 export function scoutedPlaces(p: Project): string[] {
@@ -44,9 +61,9 @@ export function siteOnTheDay(seed: number, p: Project, place: string, date: stri
   if (backup && !rec.lost.includes(backup.id)) {
     rec.main = backup.id;
     delete rec.backup;
-    return { lost: false, text: `${main.name} for ${place} fell through this morning. The shoot went to your backup, ${backup.name.toLowerCase()}.` };
+    return { lost: false, text: `${siteName(p, place, main.id)} for ${place} fell through this morning. The shoot went to your backup, ${siteName(p, place, backup.id).toLowerCase()}.` };
   }
   delete rec.main;
   delete rec.backup;
-  return { lost: true, text: `${main.name} for ${place} fell through this morning and there was no backup. The day is lost; choose another site.` };
+  return { lost: true, text: `${siteName(p, place, main.id)} for ${place} fell through this morning and there was no backup. The day is lost; choose another site.` };
 }

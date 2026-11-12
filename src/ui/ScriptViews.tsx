@@ -1,4 +1,5 @@
 import { Suspense, lazy, useState, type ReactNode } from 'react';
+import { LIGHTS, SCORES, SOUNDS, lightOf, scoreOf, soundsOf, type Light, type Score, type SoundChoice } from '../engine/craft';
 import { languageName, searchEthnicities } from '../data/identity';
 import { NATIONALITIES } from '../engine/identity';
 import { countryName } from '../world/gazetteer/gazetteer';
@@ -27,7 +28,7 @@ import { PlacePicker } from './Creation';
 import { adoptPlace } from '../engine/state';
 import { findPlace, getPlace } from '../data/places';
 import { setLook, type IdeaField } from '../engine/brief';
-import { MAKEUP, MAX_STATES, PERIOD_LABEL, WARDROBE, costumeCopies, madeIn, makeup, physicalCrowd, projectBand, statesOf, wardrobe, wardrobeMismatch, type MakeupId, type WardrobeId } from '../engine/looks';
+import { MAKEUP, MAX_STATES, PERIOD_LABEL, WARDROBE, costumeCopies, madeIn, makeup, physicalCrowd, projectBand, stateIn, stateNames, statesOf, wardrobe, wardrobeMismatch, type MakeupId, type WardrobeId } from '../engine/looks';
 
 // The idea picker and its library load the first time a picker is opened (IdeaPicker.tsx), never with the page.
 const IdeaPicker = lazy(() => import('./IdeaPicker').then((m) => ({ default: m.IdeaPicker })));
@@ -109,6 +110,37 @@ function Ideas({ p, fields, title, label = 'Choose Ideas', characterId, sceneId 
 }
 
 /** A story field with its Choose Ideas button under it: the field is Write My Own, as it always was. */
+/**
+ * The light the film is shot in, its score and its sound choices (craft.ts): each one asks something of the work, and
+ * says what under it. None is better than another. How the camera moves is chosen scene by scene, with the shot plan on
+ * the Schedule page.
+ */
+function CameraLightSound({ p }: { p: Project }) {
+  const light = lightOf(p);
+  const score = scoreOf(p);
+  const sounds = soundsOf(p);
+  const toggle = (x: SoundChoice, on: boolean) => edit(p, () => { p.axes.sound = on ? [...new Set([...soundsOf(p), x])] : soundsOf(p).filter((y) => y !== x); });
+  return (
+    <fieldset className="spaced" style={{ border: 0, padding: 0 }}>
+      <legend style={{ fontWeight: 600 }}>Light, Sound And Score</legend>
+      <p className="dim">Choices for the whole film. Each one changes the work: time on the day, crew, tests before the shoot, or days in post. None makes the film better by being chosen. How the camera moves is set scene by scene, with each scene's shot plan on the Schedule page.</p>
+      <div className="grid grid-2 form">
+        <IdeaField p={p} fields={['light']} title="Choose The Light It Is Shot In">
+          <SelectField label="The Light It Is Shot In" value={light} options={(Object.keys(LIGHTS) as Light[]).map((k) => ({ value: k, label: LIGHTS[k].label }))} hint={LIGHTS[light].hint}
+            onChange={(v) => edit(p, () => { p.axes.light = v as Light; })} />
+        </IdeaField>
+        <IdeaField p={p} fields={['score']} title="Choose Its Score">
+          <SelectField label="The Score" value={score} options={(Object.keys(SCORES) as Score[]).map((k) => ({ value: k, label: SCORES[k].label }))} hint={SCORES[score].hint}
+            onChange={(v) => edit(p, () => { p.axes.score = v as Score; })} />
+        </IdeaField>
+      </div>
+      <div className="col gap-1">
+        {(Object.keys(SOUNDS) as SoundChoice[]).map((k) => <Check key={k} label={SOUNDS[k].label} hint={SOUNDS[k].hint} checked={sounds.includes(k)} onChange={(on) => toggle(k, on)} />)}
+      </div>
+    </fieldset>
+  );
+}
+
 function IdeaField({ p, fields, title, children }: { p: Project; fields: IdeaField[]; title: string; children: ReactNode }) {
   return <div className="col gap-1">{children}<Ideas p={p} fields={fields} title={title} /></div>;
 }
@@ -177,23 +209,24 @@ export function ScriptTab({ p }: { p: Project }) {
             <div className="row gap-2 wrap" style={{ marginTop: 8 }}>
               <Ideas p={p} fields={['premise']} title="Choose A Starting Idea" label="Choose A Starting Idea" />
               <Ideas p={p} fields={['genre-blend']} title="Choose A Blend Of Genres" label="Blend Genres" />
+              <Ideas p={p} fields={['genre-route']} title="Choose A Route Through Its Genre" label="Routes Through Its Genre" />
               <Ideas p={p} fields={['medium']} title="Choose How It Is Made" label="How It Is Made" />
               <Ideas p={p} fields={['sound']} title="Choose Its Sound And Music" label="Sound And Music" />
             </div>
           </div>
         )}
         <div className="grid grid-2 form">
-          {nonfiction && <TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} />}
+          {nonfiction && <IdeaField p={p} fields={['question']} title="Choose The Question It Asks"><TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} /></IdeaField>}
           <IdeaField p={p} fields={['logline']} title="Build A Logline"><TextField label="Logline" multiline value={p.story.logline} maxLength={300} onChange={(v) => edit(p, () => (p.story.logline = v))} /></IdeaField>
           <IdeaField p={p} fields={['premise']} title="Choose A Premise"><TextField label="Premise" multiline value={p.story.premise} onChange={(v) => edit(p, () => (p.story.premise = v))} /></IdeaField>
           <IdeaField p={p} fields={['stakes']} title="Choose What Is At Stake"><TextField label="Stakes" multiline value={p.story.stakes} onChange={(v) => edit(p, () => (p.story.stakes = v))} /></IdeaField>
           <IdeaField p={p} fields={['conflict']} title="Choose A Central Conflict"><TextField label="Central Conflict" multiline value={p.story.conflict} onChange={(v) => edit(p, () => (p.story.conflict = v))} /></IdeaField>
-          <TextField label="Point Of View" value={p.story.viewpoint} onChange={(v) => edit(p, () => (p.story.viewpoint = v))} />
+          <IdeaField p={p} fields={['viewpoint']} title="Choose A Point Of View"><TextField label="Point Of View" value={p.story.viewpoint} onChange={(v) => edit(p, () => (p.story.viewpoint = v))} /></IdeaField>
           <IdeaField p={p} fields={['theme']} title="Choose A Theme"><TextField label="Theme" value={p.story.theme} onChange={(v) => edit(p, () => (p.story.theme = v))} /></IdeaField>
           <IdeaField p={p} fields={['ending']} title="Choose An Ending"><TextField label="Intended Ending" multiline value={p.story.ending} onChange={(v) => edit(p, () => (p.story.ending = v))} /></IdeaField>
-          <TextField label="Intended Experience" multiline value={p.story.intendedExperience} onChange={(v) => edit(p, () => (p.story.intendedExperience = v))} />
+          <IdeaField p={p} fields={['experience']} title="Choose What It Should Feel Like"><TextField label="Intended Experience" multiline value={p.story.intendedExperience} onChange={(v) => edit(p, () => (p.story.intendedExperience = v))} /></IdeaField>
           <IdeaField p={p} fields={['tone']} title="Choose A Tone"><TextField label="Tone" value={p.axes.tone} maxLength={80} onChange={(v) => edit(p, () => (p.axes.tone = v))} /></IdeaField>
-          <TextField label="Story Setting" maxLength={120} value={p.axes.storySetting} onChange={(v) => edit(p, () => (p.axes.storySetting = v))} />
+          <IdeaField p={p} fields={['setting']} title="Choose Where It Is Set"><TextField label="Story Setting" maxLength={120} value={p.axes.storySetting} onChange={(v) => edit(p, () => (p.axes.storySetting = v))} /></IdeaField>
           <div className="col gap-1">
             <PlacePicker label="Story Setting Place" value={p.axes.settingPlaceId ?? ''} onChange={(id, place) => setErr(store.act((s) => { snapshot(p); adoptPlace(s, place); p.axes.settingPlaceId = id; }))} />
             <p className="dim small">{settingNote(p)}</p>
@@ -219,6 +252,7 @@ export function ScriptTab({ p }: { p: Project }) {
               onChange={(v) => edit(p, () => { if (v.trim()) p.axes.styleEra = v; else delete p.axes.styleEra; })} />
           </IdeaField>
         </div>
+        {!nonfiction && <CameraLightSound p={p} />}
         <fieldset className="spaced" style={{ border: 0, padding: 0 }}>
           <legend style={{ fontWeight: 600 }}>What It's About</legend>
           <p className="dim">Some awards are for work about a subject. Declare the ones that are true of the story; nothing else reads them.</p>
@@ -468,6 +502,12 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
                 {p.characters.map((c) => <Check key={c.id} label={c.name} checked={s.participants.includes(c.id)} onChange={(v) => up({ participants: v ? [...s.participants, c.id] : s.participants.filter((x) => x !== c.id) })} />)}
                 {!p.characters.length && <p className="muted">Add characters in the Characters section.</p>}
               </div>
+              {/* Which look each character is in here (looks.ts), for those with more than one. */}
+              {p.characters.filter((c) => s.participants.includes(c.id) && statesOf(c) > 1).map((c) => (
+                <SelectField key={c.id} label={`${c.name}'s Look In This Scene`} value={String(stateIn(s, c))} options={stateNames(c).map((n, i) => ({ value: String(i), label: n }))}
+                  hint="Scenes shot on one day with them in different looks lose time to the change."
+                  onChange={(v) => up({ states: { ...s.states, [c.id]: Number(v) } })} />
+              ))}
             </fieldset>
           ) : (
             <fieldset style={{ border: 0, padding: 0 }}>
@@ -516,7 +556,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
             <Check label="Dance" checked={s.dance} onChange={(v) => up({ dance: v })} />
             <Check label="Intimate Scene" checked={s.intimacy} onChange={(v) => up({ intimacy: v })} />
             <Check label="Water Work" checked={s.water} onChange={(v) => up({ water: v })} />
-            <Ideas p={p} fields={['crowd', 'camera', 'physical-comedy']} title={`Ideas For ${label}`} label="Ideas For This Scene" sceneId={s.id} />
+            <Ideas p={p} fields={['scene-objective', 'scene-action', 'scene-turn', 'scene-tone', 'props', 'animals', 'vehicles', 'effects', 'crowd', 'camera', 'physical-comedy']} title={`Ideas For ${label}`} label="Ideas For This Scene" sceneId={s.id} />
             <Check label="Intentional Discontinuity" hint="Continuity checks treat breaks here as deliberate, such as a payoff shown before its setup in a nonlinear story." checked={s.intentionalDiscontinuity} onChange={(v) => up({ intentionalDiscontinuity: v })} />
           </div>
         </fieldset>
@@ -629,7 +669,7 @@ function Season({ p }: { p: Project }) {
       <p className="dim">The season's arc and what each episode moves in it. Your plan: the game doesn't score it, and a next season starts from it.</p>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       {p.continues?.previousArc && <p className="muted">Last season: {p.continues.previousArc}</p>}
-      <TextField label="Season Arc" multiline maxLength={2000} value={p.seasonArc ?? ''} onChange={(v) => setErr(edit(p, () => setSeasonArc(p, v)))} />
+      <IdeaField p={p} fields={['season-arc']} title="Choose A Season Arc"><TextField label="Season Arc" multiline maxLength={2000} value={p.seasonArc ?? ''} onChange={(v) => setErr(edit(p, () => setSeasonArc(p, v)))} /></IdeaField>
       <ol className="list">{p.episodes.map((e, i) => (
         <EpisodePlan key={`${e.number}-${e.title}`} p={p} n={e.number} first={i === 0} last={i === p.episodes.length - 1} refusal={refusal} onError={setErr} />
       ))}</ol>
@@ -1033,8 +1073,8 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
           <HowTheyLook p={p} c={c} onError={setErr} />
           <ArcBeats p={p} c={c} />
           <div className="grid grid-2 form">
-            {c.entity !== 'human' && <TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Your description for design and casting. Kept with the script; the game doesn't read it." onChange={(v) => up({ entityNote: v })} />}
-            <TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown sent with offers. It doesn't change who accepts or how fast." onChange={(v) => up({ description: v })} />
+            {c.entity !== 'human' && <div className="col gap-1"><TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Your description for design and casting. Kept with the script; the game doesn't read it." onChange={(v) => up({ entityNote: v })} /><Ideas p={p} fields={['character-being']} title={`What Kind Of Being ${c.name} Is`} characterId={c.id} /></div>}
+            <div className="col gap-1"><TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown sent with offers. It doesn't change who accepts or how fast." onChange={(v) => up({ description: v })} /><Ideas p={p} fields={['character-description']} title={`How ${c.name} Comes Across`} characterId={c.id} /></div>
             <div className="col gap-1"><TextField label="Wants" multiline value={c.wants} onChange={(v) => up({ wants: v })} /><Ideas p={p} fields={['character-goal']} title={`What ${c.name} Wants`} characterId={c.id} /></div>
             <div className="col gap-1"><TextField label="Fears" multiline value={c.fears} onChange={(v) => up({ fears: v })} /><Ideas p={p} fields={['character-fear']} title={`What ${c.name} Fears`} characterId={c.id} /></div>
           </div>
@@ -1051,6 +1091,8 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
  */
 function HowTheyLook({ p, c, onError }: { p: Project; c: StoryCharacter; onError: (e: string | null) => void }) {
   const set = (patch: NonNullable<StoryCharacter['look']>) => onError(edit(p, () => setLook(p, c.id, { ...c.look, ...patch })));
+  // The names as typed, so a name half written (or a trailing comma) stays in the field; the save keeps the finished ones.
+  const [names, setNames] = useState((c.look?.named ?? []).join(', '));
   const m = makeup(c.look?.makeup);
   const w = wardrobe(c.look?.wardrobe);
   const animated = p.axes.medium === 'animation';
@@ -1071,8 +1113,13 @@ function HowTheyLook({ p, c, onError }: { p: Project; c: StoryCharacter; onError
           hint={w ? `${w.summary} ${plural(copies, 'copy', 'copies')}, ${plural(w.fittings, 'fitting')}.` : "One of the costume designer's shared costumes."}
           onChange={(v) => set({ wardrobe: (v || undefined) as WardrobeId | undefined })} />
         <NumberField label="Appearance States" value={statesOf(c)} min={1} max={MAX_STATES} step={1} hint="How many looks they go through: clean, then bloodied, then turned is three. Each is matched from scene to scene, and built where appliances are."
-          onChange={(v) => set({ states: Number.isFinite(v) ? v : 1 })} />
+          onChange={(v) => set({ states: Number.isFinite(v) ? v : 1, named: undefined })} />
       </div>
+      {statesOf(c) > 1 && (
+        <TextField label={`Names Of ${c.name}'s Looks`} value={names} maxLength={260}
+          hint={`In order, with a comma between them: Clean, Bloodied, Turned. As many looks as names, up to ${MAX_STATES}. Each scene then says which look they are in, on the Script page: only the looks that appear are made, and changing from one to another inside a shooting day takes time out of it.`}
+          onChange={(v) => { setNames(v); set({ named: v.split(',') }); }} />
+      )}
       {mismatch && <p className="callout callout-info">{mismatch}</p>}
       <Ideas p={p} fields={['makeup', 'wardrobe']} title={`How ${c.name} Looks`} characterId={c.id} />
     </fieldset>

@@ -188,11 +188,23 @@ describe('ideas that reach an engine', () => {
     approve(plain.s, plain.p); approve(long.s, long.p);
     expect(sceneLoad(long.p, approvedScenes(long.p)[0])).toBeGreaterThan(sceneLoad(plain.p, approvedScenes(plain.p)[0]));
     expect(sceneLoad(long.p, approvedScenes(long.p)[1])).toBe(sceneLoad(plain.p, approvedScenes(plain.p)[1]));
-    // A camera idea the engine has nothing for is a note: it changes no scene.
+    // The light is for the whole film, not a scene: it sets the light and leaves every shot plan as it was. Until
+    // November 11, 2026 it was a note that changed nothing.
+    const lit = fresh('cam');
+    applyIdea(lit.s, lit.p, idea('camera_treatment.008'));
+    expect(lit.p.shotPlans ?? {}).toEqual(plain.p.shotPlans ?? {});
+    expect(lit.p.axes.light).toBe('contrast');
+    expect(idea('camera_treatment.008')).toMatchObject({ kind: 'mechanical', field: 'light' });
+    // A rig is kept with the scene's plan, beside its coverage.
+    const moving = fresh('cam');
+    applyIdea(moving.s, moving.p, idea('camera_treatment.004'), { sceneIds: [moving.p.scenes[0].id] });
+    expect(moving.p.shotPlans![moving.p.scenes[0].id]).toEqual({ coverage: 'standard', takes: 'few', emphasis: 'scene', rig: 'dolly' });
+    // An idea the engine still has nothing for is a note: it changes nothing but the record that it was chosen.
     const note = fresh('cam');
-    applyIdea(note.s, note.p, idea('camera_treatment.008'));
-    expect(note.p.shotPlans ?? {}).toEqual(plain.p.shotPlans ?? {});
-    expect(idea('camera_treatment.008').kind).toBe('reference');
+    const before = JSON.stringify({ ...note.p, brief: undefined });
+    applyIdea(note.s, note.p, idea('sound_treatment.008'));
+    expect(JSON.stringify({ ...note.p, brief: undefined })).toBe(before);
+    expect(idea('sound_treatment.008').kind).toBe('reference');
   });
 
   it('a narrator chosen from an idea is recorded after the lock, and the mix waits', () => {
@@ -252,7 +264,8 @@ describe('ideas in any order', () => {
       expect(JSON.stringify(p), `run ${run}`).not.toMatch(/\{\w+\}/);
       for (const c of p.characters) expect(c.look?.states === undefined || (c.look.states >= 2 && c.look.states <= 6), `run ${run}: ${c.name}`).toBe(true);
       // No two picks of one kind for one target.
-      const keys = p.brief!.picks.filter((k) => !['world-rule', 'location'].includes(k.field)).flatMap((k) => (k.characterIds ?? k.sceneIds ?? ['project']).map((id) => `${k.field}|${id}`));
+      // Choices that add to a set (the sound choices) are held together, each once.
+      const keys = p.brief!.picks.filter((k) => !['world-rule', 'location'].includes(k.field)).flatMap((k) => (k.characterIds ?? k.sceneIds ?? ['project']).map((id) => `${k.field}|${id}${k.adds ? `|${k.id}` : ''}`));
       expect(new Set(keys).size, `run ${run}`).toBe(keys.length);
       // A scene offered at a kind of place arrives empty, and the game won't approve an empty scene: the player puts
       // someone in it. Here the first character is.

@@ -187,3 +187,80 @@ A real person's level for a job comes from the credits the installed catalog hol
 game's base rate for that job at that level (`src/engine/guests.ts`). Neither is a fact about them, and each is shown as
 the story's figure.
 
+## Camera, Light And Sound (November 11, 2026)
+
+Game calibration, not rental prices, union terms or measurements. All in `src/engine/craft.ts`. No choice here is a
+quality bonus: each trades time, crew, money or work in post, and several cost something for nothing but the look.
+
+| Rig, scene by scene | Setup reset | Take runs | Takes vary | Needs | Rented, a shoot day | Rehearsal |
+| --- | --- | --- | --- | --- | --- | --- |
+| On a tripod | 1 | 1 | 1 | | | |
+| Handheld | 0.75 | 1 | 1.4 | | | |
+| On a dolly | 1.4 | 1 | 0.85 | A key grip | $600 | |
+| Long moving takes | 1.2 | 1.5 | 1.5 | | $450 | A day for every three scenes |
+| Through a character's eyes | 1.1 | 1 | 1.2 | Video assist | | A day for every four scenes |
+
+Without the crew a rig needs, every setup on it takes 1.3 times a tripod's reset (or the rig's own, if slower).
+"Takes vary" widens or narrows the technical side of each take around what the crew can do; it never moves the centre.
+
+| Light, for the film | Reset on interiors and nights | Planned takes | Gaffer for interiors | Tests before the shoot | Grade | Stop-motion frames a day |
+| --- | --- | --- | --- | --- | --- | --- |
+| Lit as usual | 1 | as the rule | Yes | | 1 | 1 |
+| Practical and available light | 0.8 | one more a setup | No (night exteriors still) | 1 day | 1 | 1 |
+| High contrast | 1.25 | as the rule | Yes | 2 days | 1.5 | 1 |
+| Macro on miniatures (stop motion) | 1 | as the rule | Yes | 2 stage days | 1 | 0.9 |
+
+| Sound choice | What it asks |
+| --- | --- |
+| Natural location texture | A recording day for every three locations before the shoot; effects editing at 0.7 |
+| Dialogue clarity | A boom operator; dialogue scenes reset at 1.05; a compromised day's dialogue still holds |
+| Sparse soundscape | Foley at 1.5, the score at 0.6, the mix at 1.2 |
+| Heightened creature Foley | Two Foley days for each creature in the script |
+| Layered crowd sound | A loop-group session for every two crowd scenes, $1,800 each; the mix at 1.1 |
+
+| Score | Composer's days | Sessions |
+| --- | --- | --- |
+| Left to the composer, or electronic | 1 | None |
+| A small ensemble | 1 | One for every 20 minutes, $4,000 each; the mix waits |
+| Percussion to picture | 1.2 | One for every 40 minutes, $2,500 each; the mix waits |
+
+Looks, scene by scene (`src/engine/looks.ts`): a change of look inside a shooting day takes 15 minutes for the costume
+and half the makeup's chair time again, out of the day. Once any scene says which look a character is in, only the
+looks that appear are made.
+
+## Filming Somewhere Else (November 11, 2026)
+
+Game calibration, not quotes, rates, permit rules or legal guidance. All in `src/engine/destinations.ts`. The place a
+location is filmed in is a real entry of the world registry: its name, country, coordinates, climate and public
+holidays are what the registry has. The site is a candidate the game makes up, of the kind chosen, and is labelled so
+wherever it is named.
+
+| Kind of site | Share of the location fee | Permit days before the first day | Dialogue spoiled by noise | Rain stops it |
+| --- | --- | --- | --- | --- |
+| A street | 100% | 3 | 25% of days | Yes |
+| A neighbourhood | 90% | 2 | 15% | Yes |
+| A coastline | 70% | 2 | 30% | Yes |
+| A forest | 60% | 2 | 5% | Yes |
+| A mountain | 60% | 3 | 10% | Yes |
+| A desert | 60% | 3 | 5% | Yes |
+| A rail station | 140% | 6 | 40% | Yes |
+| A port | 130% | 6 | 40% | Yes |
+| A historic district | 130% | 5 | 20% | Yes |
+| A civic space | 120% | 5 | 15% | Yes |
+| A market | 110% | 4 | 45% | Yes |
+| A soundstage | 160% | 1 | Never | No |
+| A backlot | 140% | 1 | 5% | Yes |
+
+| Away from the base | Figure |
+| --- | --- |
+| How far counts as away | 80 km or more from the production's base |
+| Housing the unit for a shooting day away | 60% of the budget size's day fees (location and equipment) |
+| Moving the unit there and back, once for a place | Half the equipment day fee, and as much again for each 1,000 km, up to four times it |
+
+Nothing here models taxes, visas, customs or incentives. A permit time is a modeled lead time, not a statement about
+any authority.
+
+Under a roof means a soundstage, or the stage set built to match that scouting offers (`locations.ts` `roofed`): rain,
+snow and short daylight don't stop an exterior written there, and no rain warning is sent for it. Until November 11,
+2026 the stage set cost more and never fell through, but the weather still stopped it.
+

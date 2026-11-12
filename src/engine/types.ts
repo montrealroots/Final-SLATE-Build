@@ -143,6 +143,10 @@ export type ContentIssue = 'violence' | 'sexual-content' | 'nudity' | 'language'
 export type ContentLevel = 'mild' | 'moderate' | 'strong';
 
 export interface ProjectAxes {
+  /** The light the film is shot in, its sound choices and its score (craft.ts). Unset on a project from before November 11, 2026, which is lit, recorded and scored as it always was. */
+  light?: 'standard' | 'available' | 'contrast' | 'macro';
+  sound?: string[];
+  score?: 'unset' | 'synth' | 'chamber' | 'percussive';
   format: Format;
   medium: Medium;
   technique: Technique;
@@ -215,7 +219,7 @@ export interface StoryCharacter {
    * How the character looks on screen and what makes it so (looks.ts): the makeup method, where the costume comes from,
    * and how many appearance states they go through (clean, bloodied, turned...). Unset fields keep the older rules.
    */
-  look?: { makeup?: import('./looks').MakeupId; wardrobe?: import('./looks').WardrobeId; states?: number };
+  look?: { makeup?: import('./looks').MakeupId; wardrobe?: import('./looks').WardrobeId; states?: number; /** The states' names, in order (looks.ts): when given, there are as many states as names. */ named?: string[] };
   designVersion: number; // bumping invalidates downstream design-dependent work
 }
 
@@ -250,6 +254,8 @@ export interface Scene {
   crowd: number;
   /** The crowd's makeup, when they are made up as more than themselves (looks.ts). */
   crowdLook?: import('./looks').MakeupId;
+  /** Which appearance state each character is in for this scene, by character ID (looks.ts): the first when unset. */
+  states?: Record<string, number>;
   /** 'digital': a share of the crowd is on set and the rest is added in post (looks.ts). Unset: everyone is there. */
   crowdMethod?: 'digital';
   intimacy: boolean;
@@ -807,13 +813,13 @@ export interface Project {
   designApprovals?: Record<string, { version: number; status: 'approved' | 'changes' }>;
   /** Live-action scenes are shot to a plan of coverage and takes (takes.ts); unset on projects started before. */
   takesModel?: boolean;
-  shotPlans?: Record<string, { coverage?: 'master' | 'standard' | 'full'; takes?: 'one' | 'few' | 'many'; emphasis?: 'scene' | 'performances' | 'detail' | 'one-shot' }>;
+  shotPlans?: Record<string, { coverage?: 'master' | 'standard' | 'full'; takes?: 'one' | 'few' | 'many'; emphasis?: 'scene' | 'performances' | 'detail' | 'one-shot'; /** How the camera moves for the scene (craft.ts); a tripod when unset. */ rig?: 'sticks' | 'handheld' | 'dolly' | 'moving' | 'pov' }>;
   /** 2: contextual directing (takes.ts, directing.ts), projects from November 8, 2026; absent keeps the earlier take rules. */
   directing?: 2;
   /** Versions conformed from the locked cut besides the main one (versions.ts). */
   versions?: ProjectVersion[];
   /** Sites chosen for each place after scouting, the backup, and those that fell through (locations.ts). */
-  locationChoices?: Record<string, { main?: 'real' | 'stage' | 'standin'; backup?: 'real' | 'stage' | 'standin'; lost?: ('real' | 'stage' | 'standin')[] }>;
+  locationChoices?: Record<string, { main?: 'real' | 'stage' | 'standin'; backup?: 'real' | 'stage' | 'standin'; lost?: ('real' | 'stage' | 'standin')[]; /** Where this place in the script is filmed (destinations.ts): a real place in the world registry and a kind of site. The base when unset. */ at?: { placeId: string; kind: string } }>;
   /** The proposal this project came from (opportunities.ts). */
   fromOpportunity?: string;
   /** Auditions and callbacks for its parts (auditions.ts). */

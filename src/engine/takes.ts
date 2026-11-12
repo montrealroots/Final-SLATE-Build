@@ -28,6 +28,7 @@
 // - After the day, the edit sees what exists, what is missing and what each issue's fixes cost (directing.ts).
 // A script supervisor's daily notes record coverage, set-ups and pickup shots for the editor (IATSE Local 634's
 // description of the role, docs/depth/DIRECTING-RESEARCH.md); the times, spreads and thresholds are game calibration.
+import { craftTime, takeSpread } from './craft';
 import { gaussian, stream } from './rng';
 import type { Project, Scene, SceneCapture } from './types';
 
@@ -100,15 +101,17 @@ export function shotPlan(p: Project, sceneId: string): { coverage: Coverage; tak
 }
 
 /** Setups times takes, as a share of a scene's standard load (directing 2). */
-export function setupTime(setups: number, takes: number): number {
-  return setups * (SETUP_RESET + TAKE_RUN * takes);
+export function setupTime(setups: number, takes: number, reset = 1, run = 1): number {
+  return setups * (SETUP_RESET * reset + TAKE_RUN * run * takes);
 }
 
 /** How much of the day a scene's plan takes, against the standard plan. 1 for projects without shot plans. */
 export function planTime(p: Project, s: Scene): number {
   const plan = shotPlan(p, s.id);
   if (!plan) return 1;
-  if (isDirecting2(p)) return setupTime(SETUPS_OF[plan.coverage].length, TAKE_RULES[plan.takes].planned);
+  // The rig, the light and the sound plan change how long a setup takes to reset and a take to run (craft.ts).
+  const craft = craftTime(p, s);
+  if (isDirecting2(p)) return setupTime(SETUPS_OF[plan.coverage].length, TAKE_RULES[plan.takes].planned + craft.extraTakes, craft.reset, craft.run);
   return COVERAGE[plan.coverage].time * TAKES[plan.takes].time;
 }
 
@@ -130,7 +133,8 @@ export function recordTakes(seed: number, p: Project, s: Scene, date: string, ba
     // itself; the first usable one ends the usual rule's takes.
     const takes: { perf: number; tech: number; issue?: TakeIssue }[] = [];
     for (let i = 0; i < TAKE_RULES[plan.takes].max; i++) {
-      const t = { perf: clamp(gaussian(r, base, SPREAD_V2)), tech: clamp(gaussian(r, base, SPREAD_V2)) };
+      // The technical side varies with the rig: a handheld or long moving take more, a dolly's less (craft.ts).
+      const t = { perf: clamp(gaussian(r, base, SPREAD_V2)), tech: clamp(gaussian(r, base, SPREAD_V2 * takeSpread(p, s))) };
       const issue = takeIssue(t, base, soundAtRisk);
       takes.push(issue ? { ...t, issue } : t);
       if (plan.takes === 'few' && !issue) break;

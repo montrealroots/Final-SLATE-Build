@@ -9,10 +9,14 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#68 (Creative Depth, milestone B: the idea picker, 187 ideas, and
-  makeup, costume and crowd choices that reach the shoot), squash-merged as `fd095f1` on November 11, 2026, CI green on
-  its final commit. Before it, #67 (milestone A) as `562eac8`. Milestone D (real people castable and hireable) is the
-  next checkpoint, on this branch; C and E follow, each built and waiting its turn (see the Creative Depth section).
+- **Latest merge:** montrealroots/Final-SLATE-Build#69 (Creative Depth, milestone D: real people castable and
+  hireable, and writers and directors who work and are paid), squash-merged as `e028194` on November 11, 2026, CI green
+  on its final commit. Before it, #68 (milestone B) as `fd095f1` and #67 (milestone A) as `562eac8`. Milestones C and E
+  are the next checkpoint, together, on this branch; F, G and H follow as one more (see the Creative Depth section).
+- **CI, from November 12, 2026:** `.github/workflows/ci.yml` has two jobs. `checks` is everything without a browser.
+  `journeys` is the browser suite as six runs side by side: the dev server and the production build, each on desktop,
+  phone and the WebKit profiles. Until then one job ran the suite twice in a row; #70's first run was cut at its
+  60-minute limit at journey 395 of about 400 with none failed. Merge only when `checks` and all six are green.
 - **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`), #25 (financing: money from backers, save version 5), #26 (screenwriting audit, dated motion-capture sessions, replacement credits, San Sebastián rules), #27 (the 1221 layout), #28 (1221's creation suite), #29 and #30 (pronouns settle the billing), #31 (backgrounds: kept holidays, casting information, languages), #32 (language suggestions for every background but Assyrian), #33 (script field effects), #34 (script rules review; `6e2abf0`), #35 (input loss, startup size, connected journey; `c00c261`), #36 (atomic genre catalog, careers, reload lock; `5e142f4`), #37 (micro-budget tuning; `fddd6b6`), #38 (budget-size wording; `b025147`), #39 to #41 (screen review, identity, depth stages 1 to 4), #42 (depth stages 5 to 8; `cfe7d71`), #43 and #44 (action previews audit, remaining browser journeys; `37123f5`). `main` was at `3845c2d` when the Gap Completion Package was applied.
 - **Package:** "SLATE Gap Completion Package" (predates #2 and #3). Its references are not committed; the imported data is under `src/world/` and `docs/world/`.
 - **Run first:**
@@ -88,11 +92,19 @@ Where it stands:
   (`src/engine/writing-jobs.ts`, `src/ui/WritingWork.tsx`); a hired director is paid for each day they direct.
   Journeys J04 and J05 are `e2e/real-people.spec.ts`. The ledger's "Limits Of Milestone D" lists what isn't built: a
   producer's job, agents, inquiry holds, and a writer's pass changing the script itself.
-- **C, next:** ideas for the 38 creative fields that have none yet (`FIELD-INVENTORY.csv`, rows marked "Not yet");
-  engines for the camera, lighting and sound choices that are only notes today; named appearance states by scene;
-  routes for every genre; the animation, documentary, unscripted and television pipelines' own choices; a controlled
-  comparison for each new family.
-- **E to H:** not started; the ledger's milestone table has each one's scope.
+- **C, done:** the camera for each scene (handheld, a dolly, a stabiliser, a point-of-view rig), the light for the
+  film, the sound choices and the score's palette each change time, crew, rented kit, tests and post work
+  (`src/engine/craft.ts`, figures in `docs/ASSUMPTIONS.md`, "Camera, Light And Sound"); a character's looks have names
+  and each scene says which it is in; 409 ideas over 45 fields, with 68 routes through the 17 genre families
+  (`src/ideas/`); props, animals, vehicles and effects chosen from ideas make their work. Journey: `e2e/craft.spec.ts`.
+  Left: ideas for 11 structural fields, and the items under "Not implemented in C" in the ledger.
+- **E, done:** each place in the script can be filmed in any real place of the world registry, at a kind of site the
+  player chooses; the day has that place's weather, daylight, holidays and clock, the player has to be there, and a
+  unit away is moved once and housed each day (`src/engine/destinations.ts`, `src/ui/FilmedAt.tsx`; figures in
+  `docs/ASSUMPTIONS.md`, "Filming Somewhere Else"). A soundstage or a stage set is under a roof. Journey J07 is
+  `e2e/destinations.spec.ts`.
+- **F to H:** built on later branches and following as their own pull request; the ledger's milestone table has each
+  one's scope.
 
 Rules that came with the package: one agent; no universal quality bonus for a preset; custom text is never claimed to
 be understood; real people's recorded credits stay apart from anything the game simulates about them; no credentials,

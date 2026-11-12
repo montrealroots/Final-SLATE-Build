@@ -79,9 +79,11 @@ describe('Last Shift In Briar Hollow, as chosen', () => {
     // Extras only in the one scene that was given them, made up at a background performer's share.
     expect(p.requirements.filter((r) => r.kind === 'crowd').map((r) => `${r.label} x${r.qty}`)).toEqual(['Main Street x12']);
     expect(p.requirements.filter((r) => r.kind === 'makeup').map((r) => `${r.label} x${r.qty}`).sort()).toEqual(['Background: Main Street x12', 'The Returned x1']);
-    // An original score is commissioned, as for any film: the synth palette is a note for the composer, not more work.
+    // An original score is commissioned, as for any film. The electronic palette is the composer alone: it books no
+    // recording session, where an ensemble would (craft.ts; until November 11, 2026 the palette was a note).
     expect(t.get('post:music:1')).toMatchObject({ roleId: 'composer' });
-    expect(ideaById('sound_treatment.005')!.kind).toBe('reference');
+    expect(ideaById('sound_treatment.005')).toMatchObject({ kind: 'mechanical', field: 'score' });
+    expect([...t.keys()].filter((k) => k.startsWith('post:score-session'))).toEqual([]);
   });
 
   it('schedules the night scenes at night where it is based, with the creature in the chair hours before call', () => {

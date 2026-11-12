@@ -3,6 +3,7 @@
 // availability for the production window and the offered rate. Offers reserve (not spend) funds.
 
 import { getPlace } from '../data/places';
+import { craftRoles, gafferNeeded } from './craft';
 import { canApproach, consideredOn, isReal, jobsOf, realPerson } from './guests';
 import { needsMakeupCrew, physicalCrowd } from './looks';
 import { cancel, commit, ledgerTotals, money, reserve, FundsError } from './budget';
@@ -45,7 +46,11 @@ export function neededRoles(p: Project, state?: GameState): NeededRole[] {
   const scenes = approvedScenes(p);
   const live = scenes.some((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival');
   const litScenes = scenes.some((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival' && (s.heading.intExt !== 'EXT' || s.heading.time === 'NIGHT'));
-  if (live) for (const [r, why, req] of LIVE_CORE) add(r, r === 'gaffer' && litScenes ? 'Lights interiors and night scenes. Required for this script.' : why, r === 'gaffer' ? litScenes : req);
+  // Under practical and available light, interiors need no gaffer; night exteriors always do (craft.ts).
+  const gaffer = litScenes && gafferNeeded(p, scenes.filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival'));
+  if (live) for (const [r, why, req] of LIVE_CORE) add(r, r === 'gaffer' && gaffer ? 'Lights interiors and night scenes. Required for this script.' : r === 'gaffer' && litScenes ? 'Not needed for interiors shot in practical and available light. Useful if you want one.' : why, r === 'gaffer' ? gaffer : req);
+  // Crew the camera rigs and the sound plan need on the day.
+  if (live) for (const c of craftRoles(p, scenes.filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival'))) { out.delete(c.roleId); add(c.roleId, `${c.reason} Required for this plan.`, true); }
   const tasks = p.tasks.length ? p.tasks : buildTasks(p);
   for (const t of tasks) add(t.roleId, `Needed for ${t.label.toLowerCase()}.`, true);
   const mods = projectModules(p);

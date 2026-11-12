@@ -27,9 +27,9 @@ Nothing is called complete because a control exists or a field saves.
 | --- | --- | --- | --- |
 | A | Baseline audit, owner-data access, frozen world profiles | Built and tested; see below | With the first checkpoint of this package |
 | B | Shared picker, option records, starter libraries, field inventory, the zombie example | Built and tested; see below | With the second checkpoint |
-| C | Every creative input expanded; medium pipelines; controlled comparisons | Not started | |
+| C | Every creative input expanded; medium pipelines; controlled comparisons | Under way: see "Milestone C, So Far" below | |
 | D | Real people: identity, availability, auditions, hiring, contracts, pay, credits | Built and tested, with the limits below. Done before C: see `DECISIONS.md` | With the third checkpoint |
-| E | Real destinations, scouting, geography-aware production | Not started | |
+| E | Real destinations, scouting, geography-aware production | Under way: see "Milestone E, So Far" below | |
 | F | Studio strategy, Warner Bros., Sony and Paramount, territorial releases, competition | Not started | |
 | G | Optional portraits and posters, pack refresh and storage controls | Not started | |
 | H | Connected playthroughs, performance, accessibility, migration, final coverage | Not started | |
@@ -215,6 +215,73 @@ save is listed apart from their recorded credits.
   is a game figure and is labelled so; it is not a measure of anyone's ability.
 - **Earlier projects keep their rules.** A project begun before this has no `writing` list, and its hired writers are
   credited and counted as they were. Its hired director is paid for shoot days from now on.
+
+## Milestone C
+
+Built after milestone D. Its checkpoint's checks are in `QA-REPORT.md`.
+
+| Piece | Where | Status | Evidence |
+| --- | --- | --- | --- |
+| Camera rigs scene by scene: reset and running time, how takes vary, the crew each needs, rented kit, rehearsal | `src/engine/craft.ts`; `takes.ts`, `hiring.ts`, `production/tasks.ts`, `shoot.ts`, `schedule.ts`, `estimate.ts` | Engine verified | `tests/craft.test.ts`, 5 tests under "how the camera moves" |
+| The light for the film: available, high contrast, macro on miniatures | `craft.ts` `LIGHTS` | Engine verified | `tests/craft.test.ts`, 3 tests under "the light" |
+| Sound choices held together, and the score's palette with its sessions | `craft.ts` `SOUNDS`, `SCORES` | Engine verified | `tests/craft.test.ts`, 3 tests under "the sound and the score" |
+| The package's camera and sound options made mechanical: 12 that were notes now set these | `tools/ideas/from-starter.py`, `src/ideas/starter.ts` | Engine verified | `tests/brief.test.ts`, `tests/ideas.test.ts`; 4 starter options remain notes (two puppet finishes, a stylized anachronism, source music) |
+| Looks with names, assigned scene by scene; only the looks that appear are made; a change inside a day costs time | `src/engine/looks.ts` `stateNames`, `stateIn`, `statesUsed`, `changeMinutes` | Engine verified | `tests/states.test.ts`, 4 tests |
+| 154 ideas for fifteen more fields; props, animals, vehicles and effects chosen from ideas make their work | `src/ideas/scenes.ts`; `brief.ts` ops `scene`, `needs`, `season` | Engine verified | `tests/scene-ideas.test.ts`, 6 tests |
+| 68 routes through the genre families: four for each of 17 families, so every one of the 149 genres is offered at least four. Each is a tone, a light, sound choices, a score and three scenes offered | `src/ideas/routes.ts`; picker button Routes Through Its Genre | Engine verified | `tests/routes.test.ts`, 6 tests, including that the same work is assessed the same whichever route was chosen |
+| Controls for all of the above | `src/ui/ScriptViews.tsx` (Light, Sound And Score; looks' names; a scene's look), `PlanViews.tsx` (Camera For each scene) | Implemented, browser verified | `e2e/craft.spec.ts` on desktop, phone and WebKit (iPhone 15 Pro Max): a route chosen from the picker, the light, sound and score changed on the page, looks named and assigned, a scene put on a dolly, the rent set aside on Rebuild Schedule, a reload, and delivery with the tests, the session, the rig and the key grip paid |
+
+Counts, from the code: 409 ideas written (188 change the work, 207 are words, 14 are references); 263 labelled
+controls, of which 52 have ideas, 190 have none by design with the reason given, and 11 have none yet. The 68 routes are
+written entries, not combinations: no route is counted more than once for the genres it is offered to.
+
+Already in the engine before this package, and left as it was: animation and stop-motion work counted once for each
+character and each place (models, rigs, puppets, environments, miniature sets), so scenes that share them share the
+work; a design changed after its work began sends only the work built on it back; a stage set built to match as a site
+choice for any location; documentary, unscripted and television pipelines with their own tasks. Their tests are the
+ones they had.
+
+Not implemented in C, each a limit a player can meet:
+
+- Eleven fields still have no ideas: the genre questions, what each episode moves, acts, threads, setups,
+  relationships and arcs. They take custom text and their own controls as before (`FIELD-INVENTORY.csv`, "Not yet").
+- A puppet's face method for stop motion, painted backgrounds as their own task in 2D, and a series bible and standing
+  sets as records of their own.
+- Four of the package's starter options remain notes with no engine: two puppet finishes, a stylized anachronism and
+  source music.
+- The rig, the light, the sound and the score change time, crew, cost and how takes vary. None changes the assessment
+  by itself, by design: no preset is a quality bonus.
+
+## Milestone E
+
+Built on the branch `e-work`, after milestones D and C. Engine and browser checks below were run there on November 11,
+2026; the whole-suite run for its checkpoint is recorded in `QA-REPORT.md` when it is made.
+
+| Piece | Where | Status | Evidence |
+| --- | --- | --- | --- |
+| Each place in the script can be filmed in any real place of the world registry, apart from where the story is set | `src/engine/destinations.ts` `setFilmedAt`, `filmPlace`, `dayPlace`; `src/ui/FilmedAt.tsx` | Implemented, browser verified | `e2e/destinations.spec.ts` (J07) on desktop, phone and WebKit: Bergen chosen through the place picker, kept across a reload. `tests/destinations.test.ts`, 8 tests |
+| What the choice asks is shown before it is chosen: distance, whose weather and clock, fee share, permit days, noise, the move and the housing | `destinations.ts` `filmedAtPreview`; `FilmedAt.tsx` | Implemented, browser verified | J07 reads each line in the dialog before pressing Film It There |
+| The day has that place's weather, daylight, public holidays and clock, and the player has to be there | `production/shoot.ts`, `production/schedule.ts` `scheduleShootDay`, `callsheet.ts`, the Schedule page's forecast | Implemented, browser verified | J07: rain in Bergen stops the first Harbour day; the call sheet reads "Filmed in Bergen, Norway, on Bergen's clock: be there for the call"; the Kitchen day at the base starts late without the player, who is in Bergen, and no Bergen day does |
+| A unit away from base is moved once and housed each day it is called; near the base nobody is | `destinations.ts` `awayCosts`, `moveCost`, `awayDayCost`; `estimate.ts`; `shoot.ts` | Implemented, browser verified | J07: the estimate line "Filming in Bergen: Harbour"; one move posting and one housing posting for each of the two days called there. The soundstage journey: no move or housing posting in the same city |
+| Thirteen kinds of site: fee share, permit days, noise, cover | `destinations.ts` `SITE_KINDS`; `production/tasks.ts` (`prep:permit`) | Implemented, browser verified for a coastline and a soundstage; the other eleven engine verified | J07: the task "Permits And Arrangements: Harbour, In Bergen" is done before the shoot. `tests/destinations.test.ts` for the rest |
+| A site under a roof (a soundstage, or the stage set built to match) is not stopped by rain, snow or short days, and gets no rain warning | `locations.ts` `roofed`; `shoot.ts`; `callsheet.ts`; the Schedule page | Implemented, browser verified | `tests/destinations.test.ts` "a roof over an exterior": the same film and seed in Tromsø, in the open, on a soundstage and on a stage set (mutation checked). The soundstage journey against the wet-October journey in `e2e/journeys.spec.ts`: same base, month, seed and streets, no day lost to rain |
+| Scouting's three sites are found in the filmed place, the first is "The Candidate Site" and never called real, and a backup takes over when it falls through | `locations.ts` `siteName`, `siteNote`, `siteOnTheDay`; the Locations card | Implemented, browser verified | J07: the candidate site falls through, the shoot goes to the stage set, and under its roof both scenes are shot |
+| Rain expected: the interior day is filmed instead | `shoot.ts` `swapWithInteriorDay` (already there), now on the filmed place's forecast | Implemented, browser verified | J07: Film an Interior Scene swaps October 27 and 28 |
+| The candidate site is made up and says so; no venue, address, owner, rate or permission is stated | `destinations.ts` `candidateSite`, `filmedAtPreview`; `FilmedAt.tsx` | Implemented, browser verified | J07 reads the sentence on the card and the "game's figures, not quotes, rates or legal guidance" line |
+
+Not implemented in E, each a limit a player can meet:
+
+- The schedule is built on the base's working days and public holidays. A day that falls on a public holiday of the
+  filmed place is still scheduled, and pays that place's holiday premium.
+- Child-performer rules follow the production's base, not the place a day is filmed in.
+- A backup place (as against a backup site in the same place), the unit's travel days on the calendar, and the crew's
+  own travel time are not modeled. The move is a cost paid once.
+- Real venues, film-commission or tourism records, addresses, opening hours, real permit rules, taxes, visas, customs
+  and incentives: reference-only by design. Nothing is imported and nothing is claimed.
+- Places come from the world registry as it is. A country with few registry places offers few; no coverage note is
+  shown beside the picker.
+- J07 ran from one base (London) to one place abroad (Bergen, October) and one soundstage in the base's own city.
+  Other seasons and regions are covered in the engine tests (Tromsø in January), not in a browser.
 
 ## The Audit Artifacts
 
