@@ -3,6 +3,10 @@
   "film": 0,
   "tv": 1
  },
+ "coming-of-age": {
+  "film": 1,
+  "tv": 0
+ },
  "heist": {
   "film": 1,
   "tv": 0
@@ -10,6 +14,10 @@
  "horror": {
   "film": 1,
   "tv": 0
+ },
+ "legal-drama": {
+  "film": 0,
+  "tv": 1
  },
  "medical-drama": {
   "film": 0,
@@ -24,6 +32,10 @@
   "tv": 0
  },
  "science-fiction": {
+  "film": 1,
+  "tv": 0
+ },
+ "sports": {
   "film": 1,
   "tv": 0
  },
