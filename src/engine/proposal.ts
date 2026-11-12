@@ -126,6 +126,9 @@ const BEATS: { act: 0 | 1 | 2; objective: string; action: string; turn: string; 
 const BEAT_SETS: Record<number, number[]> = { 5: [0, 1, 3, 5, 6], 6: [0, 1, 2, 3, 5, 6], 8: [0, 1, 2, 3, 4, 5, 6, 7] };
 
 /** Propose a whole brief for a work. Pure: the same inputs propose the same brief. */
+/** A sentence that ranks a work by sales or standing: kept out of a proposed premise. */
+export const SALES_CLAIM = /\b(best[- ]?sell(ing|er)s?|copies sold|million copies|sold (over|more than)|of all time|most (popular|successful|widely read|translated))\b/i;
+
 export function proposeFromSource(i: ProposalInput): Proposal {
   const w = i.work;
   const tv = isEpisodic(i.format);
@@ -205,9 +208,14 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const by = w.creators.map((c) => c.name).join(' and ');
   const logline = fill(`${where}, {lead} must {goal} against {against}, and choose between {choiceA} and {choiceB}.`);
   origin['story.logline'] = 'proposed';
-  const premise = summary || fill(`An adaptation of ${w.title}${by ? ` by ${by}` : ''}${w.description ? `, ${w.description}` : ''}. {lead} sets out to {goal}.`);
-  origin['story.premise'] = summary ? 'sourced' : 'proposed';
-  why['story.premise'] = summary ? `The English Wikipedia article "${w.summary!.article}", in its own words (${w.summary!.licence}).` : `No summary is recorded for ${w.title}; this premise is the game's proposal, not the work's story.`;
+  // A premise is story. A sentence about sales or standing (best-selling, copies sold, of all time) is left out of it:
+  // the game names no list, metric, year or territory for such a claim (the v4 package; ledger V4-003.05).
+  const sentences = summary ? summary.split(/(?<=[.!?])\s+(?=[A-Z"'(])/) : [];
+  const told = sentences.filter((x) => !SALES_CLAIM.test(x));
+  const premise = told.length ? told.join(' ') : fill(`An adaptation of ${w.title}${by ? ` by ${by}` : ''}${w.description ? `, ${w.description}` : ''}. {lead} sets out to {goal}.`);
+  const dropped = sentences.length - told.length;
+  origin['story.premise'] = told.length ? 'sourced' : 'proposed';
+  why['story.premise'] = told.length ? `The English Wikipedia article "${w.summary!.article}", in its own words (${w.summary!.licence})${dropped ? `, less ${dropped === 1 ? 'a sentence' : `${dropped} sentences`} about its sales or standing, which the game can't vouch for` : ''}.` : `No summary is recorded for ${w.title}; this premise is the game's proposal, not the work's story.`;
   const synopsis = fill('{lead} lives a life that {against} is about to upend. When it arrives, {lead} decides to {goal}, first with {ally} and the obvious way, which fails. Facing {rival}, {lead} learns the real size of the problem, and the cost of each victory falls on someone close. Forced at last to choose between {choiceA} and {choiceB}, {lead} chooses. ') + fill(endingProposed);
   origin['story.synopsis'] = 'proposed';
   why['story.synopsis'] = `A shape for the adaptation, not ${w.title}'s plot: the game does not have the work's story, and writes none as if it were.`;

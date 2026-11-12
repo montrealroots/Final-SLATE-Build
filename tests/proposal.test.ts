@@ -1,9 +1,9 @@
 // A whole brief proposed from a real work (engine/proposal.ts; the v4 package, 01; ledger V4-004 and V4-002).
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import registry from '../src/data/genre-registry.json';
 import { applyBlueprint, blueprintProblems, briefFields } from '../src/engine/blueprints';
-import { createFromSource, fieldOrigin, proposeFromSource } from '../src/engine/proposal';
+import { SALES_CLAIM, createFromSource, fieldOrigin, proposeFromSource } from '../src/engine/proposal';
 import { deserialize, serialize } from '../src/engine/save';
 import type { SourceWork } from '../src/engine/sources';
 import { newGame } from '../src/engine/state';
@@ -184,5 +184,26 @@ describe('creating a project from a work', () => {
     const s = start();
     expect(() => createFromSource(s, { work: full, axes: { format: 'documentary-feature', medium: 'live-action' }, scenarioId: 'low', approach: 'faithful', genres: GENRES })).toThrow("A documentary isn't adapted from a work of fiction");
     expect(s.projects).toEqual([]);
+  });
+});
+
+describe('a claim of sales or standing', () => {
+  // The v4 package (ledger V4-003.05): best-selling is claimed only with a named list, metric, year and territory. The game
+  // names none, so it makes no such claim, and a work's premise leaves out the article's sentences that do.
+  it('is left out of a proposed premise, and the field says what was left out', () => {
+    const w = catalog.records.find((x) => x.title === 'And Then There Were None')!;
+    expect(w.summary!.text).toMatch(/best-selling/);
+    const pr = propose(w);
+    expect(pr.blueprint.premise).not.toMatch(SALES_CLAIM);
+    expect(pr.blueprint.premise).toContain('Agatha Christie');
+    expect(pr.why['story.premise']).toMatch(/less (a sentence|\d+ sentences) about its sales or standing, which the game can't vouch for\.$/);
+    // Every work's proposed premise is free of them.
+    for (const x of catalog.records) expect(propose(x).blueprint.premise).not.toMatch(SALES_CLAIM);
+  });
+
+  it('is never made in the game\'s own words', () => {
+    const files = (dir: string): string[] => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? files(`${dir}/${e.name}`) : /\.tsx?$/.test(e.name) ? [`${dir}/${e.name}`] : []));
+    const said = ['src/engine', 'src/ui'].flatMap(files).filter((f) => !f.endsWith('proposal.ts')).filter((f) => /best[- ]?sell/i.test(readFileSync(f, 'utf8')));
+    expect(said).toEqual([]);
   });
 });

@@ -5,10 +5,10 @@ A child requirement is verified only when a named unit test and a named browser 
 
 | | Children | Requested | Implemented | Verified | Retired |
 | --- | --- | --- | --- | --- | --- |
-| All | 125 | 35 | 60 | 30 | 0 |
+| All | 125 | 34 | 61 | 30 | 0 |
 | V4-001 Retire preset quotas and migrate saves | 4 | 0 | 3 | 1 | 0 |
 | V4-002 Source-first project creation | 5 | 0 | 4 | 1 | 0 |
-| V4-003 Verified source catalog and bibliography | 7 | 1 | 4 | 2 | 0 |
+| V4-003 Verified source catalog and bibliography | 7 | 0 | 5 | 2 | 0 |
 | V4-004 Full creative brief autofill | 5 | 0 | 5 | 0 | 0 |
 | V4-005 Preview locks undo and selective edits | 4 | 0 | 4 | 0 | 0 |
 | V4-006 Guide Me delegation and spending mandates | 3 | 0 | 3 | 0 | 0 |
