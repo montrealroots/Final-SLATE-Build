@@ -201,7 +201,7 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   await page.keyboard.press('Escape');
   const split = page.getByRole('button', { name: /^Split / }).and(page.locator(':enabled')).first();
   if (await split.count()) { await split.click(); await v('split-character', 'Project', 'Split A Character', 'dialog'); await page.keyboard.press('Escape'); }
-  for (const [tab, id] of [['Cast', 'cast-before'], ['Crew', 'crew-before'], ['Schedule', 'schedule-before'], ['Budget', 'budget-before'], ['Production', 'production-before'], ['Edit', 'edit-before'], ['Release', 'release-before'], ['Festivals And Awards', 'awards-before']] as const) {
+  for (const [tab, id] of [['Cast', 'cast-before'], ['Crew', 'crew-before'], ['Schedule', 'schedule-before'], ['Budget', 'budget-before'], ['Production', 'production-before'], ['Music', 'music-before'], ['Edit', 'edit-before'], ['Release', 'release-before'], ['Festivals And Awards', 'awards-before']] as const) {
     await section(page, tab);
     await v(id, 'Project', `${tab}, Before A Draft Is Approved`, 'state');
   }

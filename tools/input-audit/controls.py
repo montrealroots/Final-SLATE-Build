@@ -329,6 +329,17 @@ c(f, '"Put In From Your Own Money"', D, 'state.money postings; project finance d
 f = 'Equipment.tsx'
 c(f, '"Show"', V)
 c(f, '"Show"', V, n=2)
+f = 'MusicTab.tsx'
+c(f, '"Let The Composer\'s Themes Stand Without My Review"', D, 'music.brief.delegateReview', 'cues.ts onThemesDone, themesGate; production/workday.ts', 'Composition starts as soon as the themes are written, with no review or notes rounds', U('cues', 'handed to the composer, the themes stand as written'))
+c(f, '"Your Notes On The Themes"', D, 'music.themes.notes, rounds', 'cues.ts giveThemeNotes, themeTasks; song-actions.ts syncMusicTasks', 'A round of revision, days of the composer\'s work, before composition can start', U('cues', 'notes add a round of revision'))
+c(f, '"What Music It Has"', D, 'music.brief.approach', 'cues.ts proposeCues, scoreMinutes; production/tasks.ts (post:music, post:score-session)', 'Silence has no score work and needs no composer; songs only scores nothing; a score places cues', U('cues', 'silence has none and needs no composer'))
+c(f, '"The Score\'s Sound"', D, 'music.brief.style -> axes.score', 'craft.ts SCORES, scoreSessions; production/tasks.ts', 'Players are recorded in sessions; electronic needs none; percussion takes longer to write', U('craft', 'score'))
+c(f, '"How Much Of It Is Scored"', D, 'music.brief.density', 'cues.ts proposeCues, scoreMinutes; production/tasks.ts post:music', 'More scenes scored, more minutes for the composer', U('cues', 'the minutes scored, not the running time'))
+c(f, '{`Intensity Of ${c.code}`}', I, 'cue.intensity', 'cues.ts editCue (kept through a new proposal)', 'The cue\'s intensity, a note for the composer; it is kept when the plan is proposed again', U('cues', 'keeps the player\'s changes'))
+c(f, '{LICENCE_MEDIUM_LABELS[m]}', D, 'licence scope.media', 'music.ts holderFee, releaseLicenceRefusal', 'Each medium asked for raises the price and the chance of a no; a release in a medium not granted is refused', U('music', 'a release outside its media'))
+c(f, '"The Whole World"', D, 'licence scope.territories (worldwide)', 'music.ts holderFee, licence-answer (refusal odds, counteroffer), releaseLicenceRefusal', 'Worldwide costs three times one country, is refused more often, and may come back as an offer for the home country only', U('music', 'a worldwide request refused can come back narrower'))
+c(f, '"Countries, By Two-Letter Code"', D, 'licence scope.territories', 'music.ts holderFee, releaseLicenceRefusal', 'A release to a country not granted is refused with its code', U('music', 'a release outside its media, its territories or its years is refused'))
+c(f, '"For How Long"', D, 'licence scope.years', 'music.ts holderFee, agreeLicence (expiry), licence-expiry', 'Longer costs more; when it runs out, new releases are refused until it is renewed', U('music', 'runs out after its years'))
 f = 'SourcePicker.tsx'
 c(f, '"Search Works"', V)
 c(f, '"Medium"', V)

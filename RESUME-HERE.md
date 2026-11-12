@@ -186,6 +186,24 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       `e2e/jobs.spec.ts`.
     - G: Settings, Credits And Data Sources (`ui/Credits.tsx`).
     - Journey helper `nav` now waits for the phone drawer to close (a tap straight after landed on it).
+    - Music (the owner's "music system next", November 12, 2026): a **Music** tab.
+      - Licences (`engine/music.ts`): an existing song is asked of its composition's publisher and its recording's
+        owner apart (US Copyright Office Circular 56A: two works). Answers in 6 days from the seed: quote, refusal, or a
+        worldwide refusal countered with the home country. Agreed, paid once (`licence:<id>`), runs for its years,
+        renewed for half (`licence-renewal:<id>:<n>`), expires (`licence-expiry`). Delivery waits for a standing
+        licence; `planRelease` refuses a medium, territory or date outside it. Projects made before keep the old flat
+        clearance (`p.music` absent). Refusal routes: ask for less, replace on Production, leave the scenes silent.
+      - Brief and cue plan (`engine/cues.ts`): a brief proposed from genre, period, dialogue, pace, songs and budget,
+        with reasons; silence is a brief. Cues are shares of scenes; the composer scores the cued minutes; silence has no
+        score work and no composer; a cue under dialogue adds to the mix; a scene changed after scoring gets a conform
+        task for its cues alone.
+      - Score steps: spotting, themes, your approval or notes (revision rounds), composition, sessions, score mix and
+        stems. Composition waits for approval (`themesGate`) unless the brief hands review to the composer.
+        `syncMusicTasks` adds or drops score work when a brief or notes come after the task list exists.
+      - Not built: a dated catalog of real recordings and release dates (V4-022.01), library music, trailer/prominence
+        terms, per-version licence coverage, score evaluation by fit (V4-025.02), Guide Me for music.
+    - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
+      counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
   - Still not built: age stages and per-episode performers (V4-007.03/.04), Guide Me for cast, writing and music,
     company accounts, the music system (V4-022 to 026), F (historical boundaries, territory box office, weekly
     reports, renewal weighing, record books, reputation by role), the media-inventory work in G beyond what v3 built,

@@ -25,6 +25,7 @@ import { addLog, cancelEvents, newId, registerHandler, schedule } from './state'
 import { careerStudio } from './studios';
 import { redactionComplete } from './unscripted';
 import { songCredits, songUses } from './songs';
+import { releaseLicenceRefusal, unlicensed } from './music';
 import { assumedDates, episodeDateProblem, episodesFor, hasEpisodes, holdUndelivered, onReleaseDay, presetDates, releaseHourPassed, syncReleaseEvents } from './episode-releases';
 import { DAY, addDaysToKey, dateKey, formatDateKey, isDateKey, localToInstant, parseYmd } from './time';
 import type { Credit, DistributionOffer, GameState, Project, ReleasePattern, ReleaseRecord, Scene } from './types';
@@ -70,7 +71,9 @@ export function cutFromEdit(state: GameState, p: Project, sceneId: string): void
 
 // ---------------- Delivery ----------------
 
-export function deliveryBlockers(p: Project): string[] {
+/** `now`: the game's time, for a licence that runs out (music.ts); the game passes it. Without it, an agreed licence
+ *  stands however old (an engine test's shorthand). */
+export function deliveryBlockers(p: Project, now = 0): string[] {
   const out: string[] = [];
   // A series locked episode by episode needs no second, whole lock (episode-delivery.ts).
   const allLocked = isEpisodic(p.axes.format) && Array.from({ length: p.axes.episodeCount }, (_, i) => i + 1).every((n) => p.edit.lockedEpisodes?.includes(n));
@@ -88,11 +91,14 @@ export function deliveryBlockers(p: Project): string[] {
     out.push(c.cutApproval?.status === 'refused' ? `${c.name} didn't approve how they appear. Cut their scenes to deliver.` : c.cutApproval?.status === 'shown' ? `${c.name} is reviewing the cut.` : `${c.name} approves how they appear: show them the locked cut.`);
   }
   if (isNonfiction(p.axes.format) && p.evidence.some((e) => e.status !== 'dramatized' && !e.verified)) out.push('Some claims haven\'t been verified.');
+  // Only a licensed song with a licence standing can go out in the cut (music.ts).
+  const bare = unlicensed(p, [...new Set(songUses(p, editScenes(p)).map((x) => x.song))], now);
+  if (bare.length) out.push(`"${bare[0].title}" has no licence: ask for one on the Music page, or replace it.`);
   return out;
 }
 
 export function deliver(state: GameState, p: Project): void {
-  const b = deliveryBlockers(p);
+  const b = deliveryBlockers(p, state.now);
   if (b.length) throw new Error(b[0]);
   const runtime = Math.round(editScenes(p).reduce((a, s) => a + s.estMinutes, 0));
   p.delivered = { at: state.now, runtimeMin: runtime };
@@ -100,7 +106,9 @@ export function deliver(state: GameState, p: Project): void {
   scheduleRenewal(state, p);
   scheduleOpportunity(state, p);
   // Someone saw it: an offer of work may follow (jobs.ts decides whether).
-  schedule(state, state.now + 21 * DAY, 'job-offer', { after: p.id }, { attention: 'silent', priority: 70 });
+  // Its id is its own, not the shared counter's: other draws are keyed on ids from that counter (a later window's on its
+  // offer's), and an event added here must not move them.
+  schedule(state, state.now + 21 * DAY, 'job-offer', { after: p.id }, { attention: 'silent', priority: 70, id: `job-offer:${p.id}:${state.now}` });
   p.phase = 'delivered';
   p.quality = assessQuality(state, p);
   if (isEpisodic(p.axes.format)) p.episodeQuality = assessEpisodes(state, p, p.quality);
@@ -366,6 +374,9 @@ export function planRelease(state: GameState, p: Project, input: { route: Releas
   if ((input.route === 'theatrical' || input.route === 'broadcast') && !input.distributor) {
     throw new Error(input.route === 'theatrical' ? 'A theatrical release needs a distributor. Accept a distribution offer first.' : 'A broadcast needs a broadcaster. Accept an offer first.');
   }
+  // What its songs are licensed for (music.ts): a medium, territory or date outside the grant is refused.
+  const licence = releaseLicenceRefusal(p, [...new Set(songUses(p, editScenes(p)).map((x) => x.song))], { route: input.route, territories: input.territories, date: input.date }, state.now);
+  if (licence) throw new Error(licence);
   const rec: ReleaseRecord = { id: newId(state, 'r'), route: input.route, date: input.date, territories: input.territories, distributor: input.distributor ?? null, note: '', status: 'planned' };
   const episodic = hasEpisodes(p, input.route);
   if (episodic) {

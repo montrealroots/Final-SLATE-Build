@@ -5,7 +5,7 @@ A child requirement is verified only when a named unit test and a named browser 
 
 | | Children | Requested | Implemented | Verified | Retired |
 | --- | --- | --- | --- | --- | --- |
-| All | 125 | 34 | 61 | 30 | 0 |
+| All | 125 | 27 | 68 | 30 | 0 |
 | V4-001 Retire preset quotas and migrate saves | 4 | 0 | 3 | 1 | 0 |
 | V4-002 Source-first project creation | 5 | 0 | 4 | 1 | 0 |
 | V4-003 Verified source catalog and bibliography | 7 | 0 | 5 | 2 | 0 |
@@ -28,10 +28,10 @@ A child requirement is verified only when a named unit test and a named browser 
 | V4-020 Location calendars travel rest and child-policy handling | 4 | 0 | 2 | 2 | 0 |
 | V4-021 Source agreements approvals and revisions | 2 | 0 | 1 | 1 | 0 |
 | V4-022 Song artist and composer catalog | 2 | 2 | 0 | 0 | 0 |
-| V4-023 Project-specific music brief and cue plan | 2 | 2 | 0 | 0 | 0 |
-| V4-024 Song clearance request negotiation replacement | 2 | 2 | 0 | 0 | 0 |
-| V4-025 Original-score commission recording delivery | 2 | 2 | 0 | 0 | 0 |
-| V4-026 Music versions credits payment and expiry | 3 | 2 | 0 | 1 | 0 |
+| V4-023 Project-specific music brief and cue plan | 2 | 0 | 2 | 0 | 0 |
+| V4-024 Song clearance request negotiation replacement | 2 | 0 | 2 | 0 | 0 |
+| V4-025 Original-score commission recording delivery | 2 | 1 | 1 | 0 | 0 |
+| V4-026 Music versions credits payment and expiry | 3 | 0 | 2 | 1 | 0 |
 | V4-027 Historical evidence boundaries | 2 | 1 | 1 | 0 | 0 |
 | V4-028 Territorial release and weekly box office | 3 | 1 | 1 | 1 | 0 |
 | V4-029 Weekly audiences and renewals cancellations | 4 | 2 | 0 | 2 | 0 |

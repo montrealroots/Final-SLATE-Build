@@ -91,7 +91,8 @@ registerHandler('job-offer', (state, ev) => {
   const rep = representedBy(state);
   if (via && rep?.agent.id !== via) return { suppressInterrupt: true }; // no longer represented by them: they stop looking
   const rng = stream(state.seed, 'job-offer', ev.id);
-  if (via) schedule(state, state.now + AGENT_SEARCH_DAYS * DAY, 'job-offer', { via }, { attention: 'silent', priority: 70 });
+  // Ids here are derived, not drawn from the shared counter, so an offer of work moves no other seeded draw (finish.ts).
+  if (via) schedule(state, state.now + AGENT_SEARCH_DAYS * DAY, 'job-offer', { via }, { attention: 'silent', priority: 70, id: `job-offer:${via}:${state.now}` });
   if (rng() >= (via ? JOB_CHANCE.agent : JOB_CHANCE.delivery) * reliability(state)) return { suppressInterrupt: true };
   const roles = rolesOffered(state);
   const role = roles[Math.floor(rng() * roles.length)];
@@ -99,12 +100,12 @@ registerHandler('job-offer', (state, ev) => {
   const n = def.days[0] + Math.floor(rng() * (def.days[1] - def.days[0] + 1));
   const place = currentPlace(state);
   const job: OutsideJob = {
-    id: newId(state, 'job'), role, production: PRODUCTIONS[Math.floor(rng() * PRODUCTIONS.length)], company: COMPANIES[Math.floor(rng() * COMPANIES.length)],
+    id: `job-${ev.id}`, role, production: PRODUCTIONS[Math.floor(rng() * PRODUCTIONS.length)], company: COMPANIES[Math.floor(rng() * COMPANIES.length)],
     dayRate: jobDayRate(state, role, !!via), days: jobDays(state, place.zone, n, 14 + Math.floor(rng() * 14)), placeId: place.id, zone: place.zone,
     status: 'offered', offeredAt: state.now, answerBy: state.now + JOB_ANSWER_DAYS * DAY, ...(via ? { viaAgent: { agentId: via, rate: agentById(via).rate } } : {}), attended: [], missed: [],
   };
   jobs(state).push(job);
-  schedule(state, job.answerBy, 'job-lapse', { jobId: job.id }, { attention: 'silent', priority: 70 });
+  schedule(state, job.answerBy, 'job-lapse', { jobId: job.id }, { attention: 'silent', priority: 70, id: `job-lapse:${job.id}` });
   const text = `${via ? `${agentById(via).name} found you work: ` : 'An offer of work: '}${def.label.toLowerCase()} on ${job.production}, ${money(job.dayRate)} a day for ${n} days from ${formatDateKey(job.days[0])}. Answer by ${formatDateKey(dateKey(job.answerBy, job.zone))}.`;
   addLog(state, text, 'personal', { route: { view: 'profile' } });
   return { message: text };

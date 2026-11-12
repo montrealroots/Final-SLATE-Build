@@ -968,6 +968,9 @@ export interface Project {
   mandates?: Mandate[];
   /** Your own kit for this project's shoot days (equipment.ts); absent, it hires the rental house's package. */
   kit?: import('./equipment').ProjectKit;
+  /** Its music: licences for existing songs (music.ts). Absent on a project made before November 12, 2026, whose
+   *  licensed songs are cleared as they always were, by the music supervisor's days and one fee. */
+  music?: import('./music').MusicPlan;
   proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string> };
   /** Fields the player locked: a full story or a shuffle leaves them alone (blueprints.ts FIELD_LABELS has the keys). */
   locks?: string[];

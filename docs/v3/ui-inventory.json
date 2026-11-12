@@ -442,6 +442,16 @@
   ]
  },
  {
+  "id": "project-music",
+  "area": "Project",
+  "name": "Project: Music",
+  "kind": "tab",
+  "screen": "project:music",
+  "walk": [
+   "music-before"
+  ]
+ },
+ {
   "id": "project-edit",
   "area": "Project",
   "name": "Project: Edit",

@@ -1326,3 +1326,15 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `e2e/jobs.spec.ts`, desktop and phone | 2 journey mistakes of mine, 1 helper race | On phone a tap straight after navigating landed on the closing drawer; `nav` now waits for it. The phone calendar shows one day, so the plans are read from the save. |
 | `e2e/representation`, `earnings`, `first-project`, `career`, `sources`, `characters`, `media` (documentary), `journeys` (stop motion, unscripted), `viewports` (Settings) | 0 | Run after the changes that touch them. |
 
+## v4 Music: Licences, Brief And Cue Plan, Score Steps
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| Research | 0 | US Copyright Office Circular 56A read for composition versus recording. Industry guides (DISCO's two-licence rule) for the practice of licensing both; no fee data used: holders and prices are the game's, labelled. |
+| `tests/music.test.ts` | 2 fixture mistakes of mine | 7 tests: both holders asked apart, scope pricing, quote agreed and paid once across a save, refusal with who and what, counteroffer for the home country, release outside media, territory or years refused, expiry and renewal, an old project unchanged. |
+| `tests/cues.test.ts` | 1 calibration, 3 test mistakes of mine | 11 tests. The mix days for a cue under dialogue (0.05) vanished in the task's tenth-of-a-day rounding; 0.1 shows. A whole production stops at the themes until approved, then delivers. |
+| `tests/songs.test.ts` | expected | Its film delivers with a licensed song: it now licenses it first. |
+| `e2e/journey-c.spec.ts` | 1 real wording error, fixed | The release gate refused the seed's theatrical offer to US, GB, FR and CA with "use a version without it", but releases play the main cut, not a version; the message now says to replace the song. The journey asks for those four countries. |
+| `e2e/music.spec.ts`, desktop and phone | 2 wording problems, fixed | A refused request repeated its scope twice, and media were listed in click order; both fixed. Three journeys: refused then agreed and renewed; a brief, its cues and silence needing no composer; themes noted, revised, approved, delivered. |
+| PR #80 CI | 1 real interaction, fixed | connected.spec's later window changed outcome: its draw is keyed on an offer id from the shared counter, and the new job-offer event took an id from it. Job events take derived ids now; the journey also reads the notice from the log, since Home shows only eight. |
+

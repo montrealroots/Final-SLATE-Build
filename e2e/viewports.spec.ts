@@ -87,7 +87,7 @@ test('every main screen fits each viewport without sideways scrolling', async ({
     ['Saved Games', () => nav(page, 'Saved Games')],
     ['Settings', () => nav(page, 'Settings')],
   ];
-  const tabs = ['Overview', 'Script', 'Characters', 'Cast', 'Crew', 'Schedule', 'Budget', 'Production', 'Edit', 'Release', 'Festivals And Awards'];
+  const tabs = ['Overview', 'Script', 'Characters', 'Cast', 'Crew', 'Schedule', 'Budget', 'Production', 'Music', 'Edit', 'Release', 'Festivals And Awards'];
   for (const [w, h] of VIEWPORTS) {
     await page.setViewportSize({ width: w, height: h });
     for (const [name, go] of screens) {

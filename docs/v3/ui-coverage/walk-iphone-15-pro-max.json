@@ -1,7 +1,816 @@
 {
  "project": "iphone-15-pro-max",
- "at": "2026-11-12T21:16:59.437Z",
+ "at": "2026-11-12T23:18:17.704Z",
  "rows": [
+  {
+   "id": "start",
+   "area": "Startup",
+   "name": "Start Screen, No Saves",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "start-settings",
+   "area": "Startup",
+   "name": "Settings From The Start Screen",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "creation-identity",
+   "area": "Startup",
+   "name": "Creation: Identity",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "home-empty",
+   "area": "Home",
+   "name": "Home, Nothing Started",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "sleep",
+   "area": "Shell",
+   "name": "Sleep",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "advance",
+   "area": "Shell",
+   "name": "Advance",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "profile",
+   "area": "You",
+   "name": "Player Profile",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "agent-list",
+   "area": "You",
+   "name": "Find An Agent",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "shop",
+   "area": "You",
+   "name": "The Shop",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "calendar",
+   "area": "Your Day",
+   "name": "Calendar",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "add-plan",
+   "area": "Your Day",
+   "name": "Add Plan",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "world",
+   "area": "Your Day",
+   "name": "World",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "companies-none",
+   "area": "Industry",
+   "name": "Companies, No Catalog Installed",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "saves",
+   "area": "Your Game",
+   "name": "Saved Games",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "settings",
+   "area": "Your Game",
+   "name": "Settings",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "projects-empty",
+   "area": "Your Work",
+   "name": "Projects, None Yet",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "new-project-choose",
+   "area": "Your Work",
+   "name": "New Project",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "new-original",
+   "area": "Your Work",
+   "name": "Write An Original",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "script-empty",
+   "area": "Project",
+   "name": "Script, Nothing Written",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "new-documentary",
+   "area": "Your Work",
+   "name": "Develop A Documentary",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-list",
+   "area": "Your Work",
+   "name": "Adapt A Work, The Works",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-open",
+   "area": "Your Work",
+   "name": "Adapt A Work, A Work Open",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-shape",
+   "area": "Your Work",
+   "name": "Adapt A Work, Format And Method",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-preview",
+   "area": "Your Work",
+   "name": "Adapt A Work, The Brief",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "overview-new",
+   "area": "Project",
+   "name": "Overview, Just Created",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "script-adapted",
+   "area": "Project",
+   "name": "Script, Made From A Work",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "revise-brief",
+   "area": "Project",
+   "name": "Revise From The Work",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "idea-list",
+   "area": "Project",
+   "name": "Choose A Starting Idea",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Ideas\" in Choose A Starting Idea"
+   ],
+   "accepted": []
+  },
+  {
+   "id": "source-list",
+   "area": "Project",
+   "name": "Choose A Work To Adapt",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "source-open",
+   "area": "Project",
+   "name": "A Work To Adapt, Open",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "scene-open",
+   "area": "Project",
+   "name": "A Scene, Open For Editing",
+   "kind": "panel",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "characters",
+   "area": "Project",
+   "name": "Characters",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "character-open",
+   "area": "Project",
+   "name": "A Character, Open For Editing",
+   "kind": "panel",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "set-aside",
+   "area": "Project",
+   "name": "Take A Character Out Of The Script",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "split-character",
+   "area": "Project",
+   "name": "Split A Character",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "cast-before",
+   "area": "Project",
+   "name": "Cast, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "crew-before",
+   "area": "Project",
+   "name": "Crew, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "schedule-before",
+   "area": "Project",
+   "name": "Schedule, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "budget-before",
+   "area": "Project",
+   "name": "Budget, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "production-before",
+   "area": "Project",
+   "name": "Production, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "music-before",
+   "area": "Project",
+   "name": "Music, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "edit-before",
+   "area": "Project",
+   "name": "Edit, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "release-before",
+   "area": "Project",
+   "name": "Release, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "awards-before",
+   "area": "Project",
+   "name": "Festivals And Awards, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "script-approved",
+   "area": "Project",
+   "name": "Script, A Draft Approved",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "budget",
+   "area": "Project",
+   "name": "Budget",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "accept-terms",
+   "area": "Project",
+   "name": "Accept These Terms?",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "budget-funded",
+   "area": "Project",
+   "name": "Budget, Funded",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "cast",
+   "area": "Project",
+   "name": "Cast",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "find-performers",
+   "area": "Project",
+   "name": "Find Performers",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "cast-offer",
+   "area": "Project",
+   "name": "Cast, An Offer Out",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "crew",
+   "area": "Project",
+   "name": "Crew",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "schedule",
+   "area": "Project",
+   "name": "Schedule",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "overview",
+   "area": "Project",
+   "name": "Overview",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "home",
+   "area": "Home",
+   "name": "Home, A Project Under Way",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "projects",
+   "area": "Your Work",
+   "name": "Projects",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "profile-represented",
+   "area": "You",
+   "name": "Player Profile, Represented",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "agent-notice",
+   "area": "You",
+   "name": "Give Notice?",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "menu",
+   "area": "Shell",
+   "name": "Menu Drawer",
+   "kind": "drawer",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
   {
    "id": "home-industry",
    "area": "Home",
@@ -464,787 +1273,6 @@
    "area": "Your Game",
    "name": "Rename Save, In The Game",
    "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "start",
-   "area": "Startup",
-   "name": "Start Screen, No Saves",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "start-settings",
-   "area": "Startup",
-   "name": "Settings From The Start Screen",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "creation-identity",
-   "area": "Startup",
-   "name": "Creation: Identity",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "home-empty",
-   "area": "Home",
-   "name": "Home, Nothing Started",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "sleep",
-   "area": "Shell",
-   "name": "Sleep",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "advance",
-   "area": "Shell",
-   "name": "Advance",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "profile",
-   "area": "You",
-   "name": "Player Profile",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "agent-list",
-   "area": "You",
-   "name": "Find An Agent",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "shop",
-   "area": "You",
-   "name": "The Shop",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "calendar",
-   "area": "Your Day",
-   "name": "Calendar",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "add-plan",
-   "area": "Your Day",
-   "name": "Add Plan",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "world",
-   "area": "Your Day",
-   "name": "World",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "companies-none",
-   "area": "Industry",
-   "name": "Companies, No Catalog Installed",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "saves",
-   "area": "Your Game",
-   "name": "Saved Games",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "settings",
-   "area": "Your Game",
-   "name": "Settings",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "projects-empty",
-   "area": "Your Work",
-   "name": "Projects, None Yet",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "new-project-choose",
-   "area": "Your Work",
-   "name": "New Project",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "new-original",
-   "area": "Your Work",
-   "name": "Write An Original",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "script-empty",
-   "area": "Project",
-   "name": "Script, Nothing Written",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "new-documentary",
-   "area": "Your Work",
-   "name": "Develop A Documentary",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "adapt-list",
-   "area": "Your Work",
-   "name": "Adapt A Work, The Works",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "adapt-open",
-   "area": "Your Work",
-   "name": "Adapt A Work, A Work Open",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "adapt-shape",
-   "area": "Your Work",
-   "name": "Adapt A Work, Format And Method",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "adapt-preview",
-   "area": "Your Work",
-   "name": "Adapt A Work, The Brief",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "overview-new",
-   "area": "Project",
-   "name": "Overview, Just Created",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "script-adapted",
-   "area": "Project",
-   "name": "Script, Made From A Work",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "revise-brief",
-   "area": "Project",
-   "name": "Revise From The Work",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "idea-list",
-   "area": "Project",
-   "name": "Choose A Starting Idea",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Ideas\" in Choose A Starting Idea"
-   ],
-   "accepted": []
-  },
-  {
-   "id": "source-list",
-   "area": "Project",
-   "name": "Choose A Work To Adapt",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "source-open",
-   "area": "Project",
-   "name": "A Work To Adapt, Open",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "scene-open",
-   "area": "Project",
-   "name": "A Scene, Open For Editing",
-   "kind": "panel",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "characters",
-   "area": "Project",
-   "name": "Characters",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "character-open",
-   "area": "Project",
-   "name": "A Character, Open For Editing",
-   "kind": "panel",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "set-aside",
-   "area": "Project",
-   "name": "Take A Character Out Of The Script",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "cast-before",
-   "area": "Project",
-   "name": "Cast, Before A Draft Is Approved",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "crew-before",
-   "area": "Project",
-   "name": "Crew, Before A Draft Is Approved",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "schedule-before",
-   "area": "Project",
-   "name": "Schedule, Before A Draft Is Approved",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "budget-before",
-   "area": "Project",
-   "name": "Budget, Before A Draft Is Approved",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "production-before",
-   "area": "Project",
-   "name": "Production, Before A Draft Is Approved",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "edit-before",
-   "area": "Project",
-   "name": "Edit, Before A Draft Is Approved",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "release-before",
-   "area": "Project",
-   "name": "Release, Before A Draft Is Approved",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "awards-before",
-   "area": "Project",
-   "name": "Festivals And Awards, Before A Draft Is Approved",
-   "kind": "state",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "script-approved",
-   "area": "Project",
-   "name": "Script, A Draft Approved",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "budget",
-   "area": "Project",
-   "name": "Budget",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "accept-terms",
-   "area": "Project",
-   "name": "Accept These Terms?",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "budget-funded",
-   "area": "Project",
-   "name": "Budget, Funded",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "cast",
-   "area": "Project",
-   "name": "Cast",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "find-performers",
-   "area": "Project",
-   "name": "Find Performers",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "cast-offer",
-   "area": "Project",
-   "name": "Cast, An Offer Out",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "crew",
-   "area": "Project",
-   "name": "Crew",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "schedule",
-   "area": "Project",
-   "name": "Schedule",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "overview",
-   "area": "Project",
-   "name": "Overview",
-   "kind": "tab",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
-   "accepted": []
-  },
-  {
-   "id": "home",
-   "area": "Home",
-   "name": "Home, A Project Under Way",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "projects",
-   "area": "Your Work",
-   "name": "Projects",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "profile-represented",
-   "area": "You",
-   "name": "Player Profile, Represented",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "agent-notice",
-   "area": "You",
-   "name": "Give Notice?",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "menu",
-   "area": "Shell",
-   "name": "Menu Drawer",
-   "kind": "drawer",
    "sizes": {
     "iPhone 15 Pro Max (WebKit) (430 by 932)": {
      "defects": []

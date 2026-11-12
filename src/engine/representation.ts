@@ -205,7 +205,7 @@ export function signWith(state: GameState, agentId: string): void {
   rep(state).current = { agentId, signedAt: state.now, until, renewed: 0 };
   scheduleTerm(state, agentId, until);
   // They look for work for you every few weeks while they represent you (jobs.ts).
-  schedule(state, state.now + 21 * DAY, 'job-offer', { via: agentId }, { attention: 'silent', priority: 70 });
+  schedule(state, state.now + 21 * DAY, 'job-offer', { via: agentId }, { attention: 'silent', priority: 70, id: `job-offer:${agentId}:${state.now}` });
   addLog(state, `${agent.name} of ${agent.agency} represents you, for twelve months.`, 'personal', { route: { view: 'profile' } });
 }
 

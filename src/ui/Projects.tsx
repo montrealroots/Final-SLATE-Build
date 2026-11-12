@@ -18,6 +18,7 @@ import { store, useGame, useStore } from './store';
 import { CastTab, CrewTab, ScheduleTab, BudgetTab } from './PlanViews';
 import { ScriptTab, CharactersTab } from './ScriptViews';
 import { ProductionTab, EditTab, ReleaseTab, FestivalsTab } from './FinishViews';
+import { MusicTab } from './MusicTab';
 
 export const PHASES: Record<Project['phase'], string> = {
   development: 'In Development', 'pre-production': 'In Pre-Production', production: 'In Production', 'post-production': 'In Post-Production', delivered: 'Delivered', released: 'Released',
@@ -264,10 +265,10 @@ export function GenrePicker({ picks, onChange }: { picks: { id: string; emphasis
 
 // ---------------- Workspace ----------------
 
-type Tab = 'overview' | 'script' | 'characters' | 'cast' | 'crew' | 'schedule' | 'budget' | 'production' | 'edit' | 'release' | 'festivals';
+type Tab = 'overview' | 'script' | 'characters' | 'cast' | 'crew' | 'schedule' | 'budget' | 'production' | 'music' | 'edit' | 'release' | 'festivals';
 const TABS: { id: Tab; label: string }[] = [
   { id: 'overview', label: 'Overview' }, { id: 'script', label: 'Script' }, { id: 'characters', label: 'Characters' }, { id: 'cast', label: 'Cast' }, { id: 'crew', label: 'Crew' },
-  { id: 'schedule', label: 'Schedule' }, { id: 'budget', label: 'Budget' }, { id: 'production', label: 'Production' }, { id: 'edit', label: 'Edit' }, { id: 'release', label: 'Release' },
+  { id: 'schedule', label: 'Schedule' }, { id: 'budget', label: 'Budget' }, { id: 'production', label: 'Production' }, { id: 'music', label: 'Music' }, { id: 'edit', label: 'Edit' }, { id: 'release', label: 'Release' },
   { id: 'festivals', label: 'Festivals And Awards' },
 ];
 
@@ -292,6 +293,7 @@ export function ProjectWorkspace() {
       {tab === 'schedule' && <ScheduleTab p={p} />}
       {tab === 'budget' && <BudgetTab p={p} />}
       {tab === 'production' && <ProductionTab p={p} />}
+      {tab === 'music' && <MusicTab p={p} />}
       {tab === 'edit' && <EditTab p={p} />}
       {tab === 'release' && <ReleaseTab p={p} />}
       {tab === 'festivals' && <FestivalsTab p={p} />}

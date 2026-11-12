@@ -170,6 +170,7 @@ export function createProject(state: GameState, input: NewProjectInput): Project
     assets: [],
     captures: [],
     edit: { assembly: false, cutPasses: 0, pickupsNeeded: [], pictureLocked: false, versions: [] },
+    music: { licences: [] },
     delivered: null,
     credits: [],
     releases: [],

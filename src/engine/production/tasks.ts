@@ -5,6 +5,7 @@ import type { Project, Scene, Task } from '../types';
 import { approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneLabel, sceneTechnique } from '../projects';
 import { MOCAP_CLEANUP_PER_SESSION } from '../mocap';
 import { ANIM_RATE, FACE_METHODS, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS } from './rates';
+import { CONFORM_DAYS_PER_CUE, MIX_DAYS_UNDER_DIALOGUE, STEMS_DAYS, cuesToConform, lastThemesTask, scoreMinutes, scoreSteps, themeTasks } from '../cues';
 import { recordTaskId, songTasks, songUses } from '../songs';
 import { CREATURE_FOLEY_DAYS, LIGHTS, LOOP_GROUP_PER_SCENES, LOOP_GROUP_SESSION, WILD_TRACK_PER_LOCATIONS, cameraTestDays, lightOf, postFactors, rigRehearsalDays, scoreSessions, soundsOf } from '../craft';
 import { permitWork } from '../destinations';
@@ -230,7 +231,9 @@ export function buildTasks(p: Project): Task[] {
   for (const song of p.songs ?? []) tasks.push(...songTasks(song, used.includes(song)));
   const licensedSongs = used.filter((x) => x.rights === 'licensed');
   const licensed = licensedSongs.length > 0 || scenes.some((s) => s.kind === 'archival');
-  if (licensedSongs.length) tasks.push(t('post:clearance', 'all', 'Music Clearances', 'Music', 'music-supervisor', licensedSongs.length * 2, 'days'));
+  // With licences (music.ts) the fees are each licence's own, agreed by the player; the supervisor's days are the cue sheet
+  // and paperwork. A project from before keeps the one clearance fee it always had.
+  if (licensedSongs.length) tasks.push(t('post:clearance', 'all', p.music ? 'Music Clearances And Cue Sheet' : 'Music Clearances', 'Music', 'music-supervisor', licensedSongs.length * 2, 'days', [], p.music ? { material: 0 } : {}));
   // A song performed on screen is recorded before an animated scene is animated, as a voice is.
   for (const task of tasks.filter((x) => x.kind === 'anim:animation' || x.kind === 'sm:animation')) {
     for (const { song, use } of uses) if (use.placement === 'performed' && task.sceneIds.includes(use.sceneId) && song.rights !== 'licensed') task.dependsOn.push(recordTaskId(song));
@@ -277,17 +280,30 @@ export function buildTasks(p: Project): Task[] {
       tasks.push(t('post:foley', String(e), `Foley${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, (minutes / 15) * craft.foley) + creatures * CREATURE_FOLEY_DAYS, 'days', [lock], { episode: e }));
       tasks.push(t('post:sound', String(e), `Sound Effects Editing${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, (minutes / 20) * craft.effects), 'days', [lock], { episode: e }));
     } else tasks.push(t('post:sound', String(e), `Sound Editing${epSuffix(p, e)}`, 'Post Production', 'sound-designer', Math.max(1, minutes / 5), 'days', [lock], { episode: e }));
-    tasks.push(t('post:music', String(e), `Score${epSuffix(p, e)}`, 'Music', 'composer', Math.max(1, (minutes / 4) * craft.score), 'days', [lock], { episode: e }));
+    // The composer scores the minutes the cue plan asks for (cues.ts), or the running time with no plan; a silent brief
+    // asks for none, and has no score work. A scene whose length changed after the score was written is conformed alone.
+    const scored = scoreMinutes(p, e) ?? minutes;
+    const steps = scored > 0 && scoreSteps(p);
+    const compose = Math.max(1, (scored / 4) * craft.score);
+    if (steps) {
+      tasks.push(t('post:spotting', String(e), `Spotting Session${epSuffix(p, e)}`, 'Music', 'composer', 1, 'days', [lock], { episode: e }));
+      if (e === 1) tasks.push(...themeTasks(p, compose * Math.max(1, p.axes.episodeCount), (kind, ref, label, units, deps) => t(kind, ref, label, 'Music', 'composer', units, 'days', deps)));
+    }
+    if (scored > 0) tasks.push(t('post:music', String(e), `Score${epSuffix(p, e)}`, 'Music', 'composer', compose, 'days', [lock, ...(steps ? [`post:spotting:${e}`, lastThemesTask(p)] : [])], { episode: e }));
+    const conform = scored > 0 ? cuesToConform(p, e) : [];
+    if (conform.length) tasks.push(t('post:conform', String(e), `Conform Score To The Cut${epSuffix(p, e)}`, 'Music', 'composer', conform.length * CONFORM_DAYS_PER_CUE, 'days', [`post:music:${e}`], { episode: e, sceneIds: conform.map((c) => c.sceneId) }));
+    const underTalk = (p.music?.cues ?? []).filter((c) => c.episode === e && c.underDialogue).length;
     // A score with players is recorded in sessions, paid for as the task's materials; the mix waits for them.
-    const sessions = scoreSessions(p, minutes);
+    const sessions = scored > 0 ? scoreSessions(p, scored) : { sessions: 0, each: 0 };
     if (sessions.sessions) tasks.push(t('post:score-session', String(e), `Score Recording${epSuffix(p, e)}`, 'Music', 'composer', sessions.sessions, 'sessions', [`post:music:${e}`], { episode: e, material: sessions.sessions * sessions.each }));
+    if (steps) tasks.push(t('post:stems', String(e), `Score Mix And Stems${epSuffix(p, e)}`, 'Music', 'composer', STEMS_DAYS, 'days', [`post:music:${e}`, ...(sessions.sessions ? [`post:score-session:${e}`] : []), ...(conform.length ? [`post:conform:${e}`] : [])], { episode: e }));
     // A loop group records the crowd for the scenes that have one.
     const crowdScenes2 = soundsOf(p).includes('crowd') ? eScenes.filter((s) => s.crowd > 0) : [];
     if (crowdScenes2.length) { const n = Math.ceil(crowdScenes2.length / LOOP_GROUP_PER_SCENES); tasks.push(t('post:loop-group', String(e), `Loop Group${epSuffix(p, e)}`, 'Post Production', 'sound-designer', n, 'sessions', [lock], { episode: e, material: n * LOOP_GROUP_SESSION, sceneIds: crowdScenes2.map((s) => s.id) })); }
     if (hasVfx) tasks.push(t('post:vfx', String(e), `Visual Effects${epSuffix(p, e)}`, 'Post Production', 'vfx-artist', eScenes.reduce((a, s) => a + s.vfx.length * 4, 0), 'days', [lock], { episode: e }));
     tasks.push(t('post:color', String(e), `Color Grade${epSuffix(p, e)}`, 'Post Production', 'colorist', Math.max(1, (minutes / 20) * craft.grade), 'days', [lock, ...(hasVfx ? [`post:vfx:${e}`] : []), ...postLooks], { episode: e }));
     const songsHere = [...new Set(uses.filter((x) => eScenes.some((s) => s.id === x.use.sceneId) && x.song.rights !== 'licensed').map((x) => recordTaskId(x.song)))];
-    tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, (minutes / 30) * craft.mix), 'days', [...(sessions.sessions ? [`post:score-session:${e}`] : []), ...(crowdScenes2.length ? [`post:loop-group:${e}`] : []), `post:sound:${e}`, ...(p.takesModel ? [`post:dialogue:${e}`, `post:foley:${e}`] : []), `post:music:${e}`, ...songsHere, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
+    tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, (minutes / 30) * craft.mix + underTalk * MIX_DAYS_UNDER_DIALOGUE), 'days', [...(sessions.sessions ? [`post:score-session:${e}`] : []), ...(crowdScenes2.length ? [`post:loop-group:${e}`] : []), `post:sound:${e}`, ...(p.takesModel ? [`post:dialogue:${e}`, `post:foley:${e}`] : []), ...(scored > 0 ? [`post:music:${e}`] : []), ...(conform.length ? [`post:conform:${e}`] : []), ...(steps ? [`post:stems:${e}`] : []), ...songsHere, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
     tasks.push(t('post:captions', String(e), `Captions And Subtitles${epSuffix(p, e)}`, 'Post Production', 'subtitler', Math.max(1, (minutes / 30) * p.axes.dialogueLanguages.length), 'days', [`post:mix:${e}`], { episode: e }));
     tasks.push(t('post:qc', String(e), `Delivery Quality Control${epSuffix(p, e)}`, 'Post Production', 'qc-technician', 1, 'days', [`post:color:${e}`, `post:mix:${e}`, `post:captions:${e}`], { episode: e }));
   }
