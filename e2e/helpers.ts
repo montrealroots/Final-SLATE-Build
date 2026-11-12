@@ -461,8 +461,9 @@ export async function pinSeed(page: Page, seed: number): Promise<void> {
 /** Start a project from the Projects screen through its form. */
 export async function newProject(page: Page, o: { title: string; format: string; medium?: string; technique?: string; finish?: string; episodes?: string; runtime?: string; budget?: string; audience?: string; base?: { place: string; country?: string } }): Promise<void> {
   await page.getByRole('button', { name: 'New Project' }).first().click();
-  // A documentary has its own way in, and the original form offers only scripted formats (November 12, 2026).
-  await page.getByRole('button', { name: /^Documentary/.test(o.format) ? 'Develop A Documentary' : 'Write An Original' }).click();
+  // A documentary or unscripted show has its own way in, and the original form offers only scripted formats (November 12,
+  // 2026). Until the helper knew unscripted shows went there too, their journeys waited out their timeout on a missing option.
+  await page.getByRole('button', { name: /^(Documentary|Unscripted)/.test(o.format) ? 'Develop A Documentary' : 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill(o.title);
   await page.getByLabel('Format').selectOption({ label: o.format });
   if (o.medium) await page.getByLabel('Medium').selectOption({ label: o.medium });

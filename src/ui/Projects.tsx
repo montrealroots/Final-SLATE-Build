@@ -57,7 +57,7 @@ const AdaptWork = lazy(() => import('./AdaptWork').then((m) => ({ default: m.Ada
 const PATHS = [
   { tab: 'adapt', label: 'Adapt A Work', says: 'Start from a real novel, story, play, comic, game or online fiction. The game proposes the whole brief, its people and an outline, each field marked as the work\'s or the game\'s, for you to change.' },
   { tab: 'original', label: 'Write An Original', says: 'Start from nothing but your own idea. Ideas are offered field by field if you want them.' },
-  { tab: 'documentary', label: 'Develop A Documentary', says: 'Real people, real events and the evidence for what you show. Nobody is promised and nothing is found in advance.' },
+  { tab: 'documentary', label: 'Develop A Documentary', says: 'A documentary or an unscripted show: real people, real events and the evidence for what you show. Nobody is promised and nothing is found in advance.' },
 ];
 
 export function NewProject() {
