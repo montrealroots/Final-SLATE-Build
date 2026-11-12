@@ -11,9 +11,9 @@ whole outline and, for a series, every episode of its first season.
 
 | | Required | Written | Complete | Reviewed |
 | --- | --- | --- | --- | --- |
-| Stories with one primary genre | 14,900 | 2 | 2 | 2 |
+| Stories with one primary genre | 14,900 | 5 | 5 | 2 |
 | Genres with 50 reviewed films and 50 reviewed series | 149 | | | 0 |
-| Genres with at least one story | | | 2 | |
+| Genres with at least one story | | | 5 | |
 | Mixed-genre stories | | 0 | 0 | |
 | Pairings with 10 stories | | | 0 | |
 | Genres in 3 such pairings | 149 | | 0 | |
@@ -99,7 +99,7 @@ whole outline and, for a series, every episode of its first season.
 | Legal Drama (`legal-drama`) | 0 | 0 | 0 | 0 | 0 |
 | Magical Realism (`magical-realism`) | 0 | 0 | 0 | 0 | 0 |
 | Martial Arts (`martial-arts`) | 0 | 0 | 0 | 0 | 0 |
-| Medical Drama (`medical-drama`) | 0 | 0 | 0 | 0 | 0 |
+| Medical Drama (`medical-drama`) | 0 | 0 | 1 | 0 | 0 |
 | Melodrama (`melodrama`) | 0 | 0 | 0 | 0 | 0 |
 | Military (`military`) | 0 | 0 | 0 | 0 | 0 |
 | Mockumentary (`mockumentary`) | 0 | 0 | 0 | 0 | 0 |
@@ -128,7 +128,7 @@ whole outline and, for a series, every episode of its first season.
 | Road Movie (`road-movie`) | 0 | 0 | 0 | 0 | 0 |
 | Rockumentary (`rockumentary`) | 0 | 0 | 0 | 0 | 0 |
 | Romance (`romance`) | 0 | 0 | 0 | 0 | 0 |
-| Romantic Comedy (`romantic-comedy`) | 0 | 0 | 0 | 0 | 0 |
+| Romantic Comedy (`romantic-comedy`) | 1 | 0 | 0 | 0 | 0 |
 | Romantic Drama (`romantic-drama`) | 0 | 0 | 0 | 0 | 0 |
 | Samurai (`samurai`) | 0 | 0 | 0 | 0 | 0 |
 | Satire (`satire`) | 0 | 0 | 0 | 0 | 0 |
@@ -166,7 +166,7 @@ whole outline and, for a series, every episode of its first season.
 | Vampire (`vampire`) | 0 | 0 | 0 | 0 | 0 |
 | War (`war`) | 0 | 0 | 0 | 0 | 0 |
 | Werewolf (`werewolf`) | 0 | 0 | 0 | 0 | 0 |
-| Western (`western`) | 0 | 0 | 0 | 0 | 0 |
+| Western (`western`) | 1 | 0 | 0 | 0 | 0 |
 | Whodunit (`whodunit`) | 0 | 0 | 0 | 0 | 0 |
 | Wuxia (`wuxia`) | 0 | 0 | 0 | 0 | 0 |
 | Yakuza (`yakuza`) | 0 | 0 | 0 | 0 | 0 |

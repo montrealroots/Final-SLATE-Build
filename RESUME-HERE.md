@@ -83,14 +83,17 @@ has a row for each requirement built or owed.
   then `report`. The pictures and their manifest are in `.screen-images/` in the container, never in the repository.
 - **The phone overhaul, where it stands:** `docs/v3/UI-COVERAGE.md` is the matrix, written by
   `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json` (every screen, tab and dialog; a new one needs a
-  row), the walk (`UI_COVERAGE_WRITE=1 npx playwright test e2e/ui-coverage.spec.ts` on desktop, phone and the two
-  iPhone profiles; it fails on any defect or any difference between a phone and a desktop) and the sweep
-  (`SLATE_UI_SWEEP=<file> SLATE_E2E_PROD=1 npx playwright test --project=phone`, about two hours a profile, then
-  `node tools/v3/ui-coverage.mjs --fresh --sweep <file> ...`). The stylesheet turns at four widths, listed at its
-  head; `tests/stylesheet.test.ts` fails a fifth and a rule for a class nothing wears. **Owed:** rows the matrix says
-  were not visited (the walk reaches 34 of 78; the sweep reaches most of the rest and has not been folded in yet);
-  what the sweep finds; sticky bars over content, layout shift, text enlargement and reduced motion, which the audit
-  does not measure yet; screenshots for the report; a real phone's keyboard, which no emulation shows.
+  row or `tests/ui-inventory.test.ts` fails), the walk (`UI_COVERAGE_WRITE=1 npx playwright test
+  e2e/ui-coverage.spec.ts`: three walks on desktop, phone and the two iPhone profiles, about ten minutes; it fails on
+  any defect or any difference between a phone and a desktop) and the sweep (`SLATE_UI_SWEEP=<file>
+  SLATE_E2E_PROD=1 npx playwright test --project=phone`, about 20 minutes a profile, then `node
+  tools/v3/ui-coverage.mjs --fresh --sweep <file> --sweep <file>`). Do not run `npm run check` while a production
+  sweep runs: both build into `dist/`. The stylesheet turns at four widths, listed at its head;
+  `tests/stylesheet.test.ts` fails a fifth, a rule for a class nothing wears and an inline pixel margin. `QA-REPORT.md`
+  has every finding and fix. **Owed:** the 14 rows the matrix lists as not visited (dialogs that open only in a
+  played career: cutting a scene from the edit, cancelling a release, episode dates, a withdrawn contributor, rules,
+  the approved take; and the loading, error and repair states of the start screen); the WebKit sweep folded in;
+  before-and-after screenshots for the report; a real phone's keyboard, which no emulation shows.
 - **Next in order:** the rest of the phone overhaul above; ideas for the 11 structural fields; story batches; then
   steps 4 to 7 of the ledger.
 

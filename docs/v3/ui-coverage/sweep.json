@@ -1,0 +1,1488 @@
+{
+ "seen": {
+  "creation:Review|": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "home|": {
+   "phone": [
+    "390x844",
+    "430x932",
+    "667x375",
+    "1280x720"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568",
+    "390x844",
+    "1440x900"
+   ]
+  },
+  "calendar|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "world|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568",
+    "360x800",
+    "390x844",
+    "1024x768"
+   ]
+  },
+  "projects|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568",
+    "1024x768",
+    "360x800"
+   ]
+  },
+  "profile|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568",
+    "390x844"
+   ]
+  },
+  "saves|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "1920x1080"
+   ]
+  },
+  "settings|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568",
+    "390x844"
+   ]
+  },
+  "project:script|": {
+   "phone": [
+    "390x844",
+    "844x390",
+    "1280x720",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568",
+    "600x960",
+    "1024x768",
+    "844x390"
+   ]
+  },
+  "project:cast|": {
+   "phone": [
+    "390x844",
+    "667x375",
+    "360x740"
+   ],
+   "desktop": [
+    "1280x720",
+    "1024x768",
+    "768x1024",
+    "320x568",
+    "440x956"
+   ]
+  },
+  "project:overview|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "1024x768",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "event|": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:budget|": {
+   "phone": [
+    "390x844",
+    "844x390",
+    "667x375",
+    "1280x720",
+    "360x740"
+   ],
+   "desktop": [
+    "1280x720",
+    "1024x768",
+    "768x1024",
+    "600x960",
+    "393x852",
+    "430x932"
+   ]
+  },
+  "event|Prepare Submission": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "new-project|": {
+   "phone": [
+    "390x844",
+    "360x740",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "event|Advance": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:production|": {
+   "phone": [
+    "390x844",
+    "360x740",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "start:Saved Games|": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "start:Saved Games|This Save Is Already Here": {
+   "phone": [
+    "390x844"
+   ]
+  },
+  "project:cast|Cast Odile": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:cast|Cast The Ferryman": {
+   "phone": [
+    "390x844"
+   ]
+  },
+  "project:crew|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "1024x768",
+    "768x1024",
+    "320x568",
+    "390x844",
+    "1920x1080"
+   ]
+  },
+  "project:schedule|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "1024x768",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "project:crew|Staff Music": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Staff Locations": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Staff Post Production": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:edit|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "1024x768",
+    "768x1024",
+    "320x568",
+    "844x390"
+   ]
+  },
+  "project:crew|Staff Lighting And Grip": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Staff Camera": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:release|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "1024x768",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "person|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "episode|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "1024x768",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "title|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "companies|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "season|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "1024x768",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "project:cast|Cast Ilse Brandt": {
+   "phone": [
+    "390x844"
+   ]
+  },
+  "project:characters|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568",
+    "360x800",
+    "414x896",
+    "1440x900"
+   ]
+  },
+  "place|": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720",
+    "393x852",
+    "414x896",
+    "440x956"
+   ]
+  },
+  "creation:Background & Languages|": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720",
+    "1024x768"
+   ]
+  },
+  "project:edit|Advance": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Staff Direction": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Staff Art": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720",
+    "600x960"
+   ]
+  },
+  "project:crew|Staff Costume And Makeup": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Staff Sound": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:script|@idea-list": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "creation:Identity|": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "creation:Starting Point|": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Staff Documentary": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:cast|Cast Ben": {
+   "phone": [
+    "390x844"
+   ]
+  },
+  "project:festivals|": {
+   "phone": [
+    "390x844",
+    "430x932",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568",
+    "1920x1080"
+   ]
+  },
+  "project:schedule|Where Harbour Is Filmed": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Advance": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:schedule|Advance": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:budget|Advance": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:cast|Cast Juno": {
+   "phone": [
+    "390x844"
+   ]
+  },
+  "project:budget|Accept These Terms?": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "600x960"
+   ]
+  },
+  "project:release|Advance": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:script|@story-open": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "start:|": {
+   "phone": [
+    "844x390"
+   ],
+   "desktop": [
+    "600x960",
+    "320x568"
+   ]
+  },
+  "start:|Settings": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "home|Sleep": {
+   "phone": [
+    "390x844",
+    "430x932",
+    "844x390",
+    "1280x720"
+   ],
+   "desktop": [
+    "1024x768",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "home|Advance": {
+   "phone": [
+    "360x740",
+    "667x375",
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720",
+    "600x960"
+   ]
+  },
+  "calendar|Add Plan": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1024x768",
+    "600x960"
+   ]
+  },
+  "project:script|Choose A Full Story": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "project:characters|Take Inês Marçal Out Of The Script?": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "project:cast|Cast Inês Marçal": {
+   "phone": [
+    "390x844",
+    "844x390"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "company|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "1024x768",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "networks|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "network|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1024x768",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "executive|": {
+   "phone": [
+    "390x844",
+    "667x375"
+   ],
+   "desktop": [
+    "1024x768",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "project:cast|Cast Ines": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:cast|Cast The Crow": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Staff Stop Motion": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:cast|Advance": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:cast|Cast Tom": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:cast|Cast Mia": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Staff Casting And Performance": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:script|@idea-open": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Staff Creature And Effects": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:schedule|Where Street 2 Is Filmed": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:cast|Cast Ada": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:cast|Cast The Conductor": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:festivals|Advance": {
+   "desktop": [
+    "1280x720",
+    "360x800",
+    "414x896",
+    "768x1024"
+   ]
+  },
+  "project:crew|Staff Animation": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:overview|Advance": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:script|Advance": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:production|Advance": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:crew|Staff Producing": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:script|Approve This Draft?": {
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "600x960"
+   ]
+  },
+  "project:script|@script-confirm": {
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "start:Saved Games|Rename Save": {
+   "desktop": [
+    "1024x768"
+   ]
+  },
+  "start:Saved Games|Delete This Save?": {
+   "desktop": [
+    "1024x768"
+   ]
+  },
+  "start:|Start Over?": {
+   "desktop": [
+    "1024x768"
+   ]
+  },
+  "project:script|Change The Relationship": {
+   "desktop": [
+    "1024x768",
+    "768x1024",
+    "600x960"
+   ]
+  },
+  "project:script|Rename Draft": {
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "project:script|Compare Draft 1": {
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "project:overview|Shelve The Project": {
+   "desktop": [
+    "1280x720",
+    "600x960"
+   ]
+  },
+  "project:crew|Hire A Writer": {
+   "desktop": [
+    "1024x768",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "project:crew|Hire A Production Designer": {
+   "desktop": [
+    "1280x720",
+    "768x1024",
+    "320x568"
+   ]
+  },
+  "saves|Rename Save": {
+   "desktop": [
+    "1024x768",
+    "600x960"
+   ]
+  }
+ },
+ "defects": {},
+ "accepted": {
+  "project:script|@idea-list|Build A Logline: a chooser's long choice is cut short in its box; \"Your Logline\" beside it shows the whole": {
+   "screen": "project:script",
+   "dialog": "@idea-list",
+   "what": "Build A Logline: a chooser's long choice is cut short in its box; \"Your Logline\" beside it shows the whole",
+   "projects": [
+    "phone"
+   ]
+  },
+  "creation:Identity||Identity: the map's markers are under # pixels; the list of places beside the map opens the same places": {
+   "screen": "creation:Identity",
+   "dialog": "",
+   "what": "Identity: the map's markers are under # pixels; the list of places beside the map opens the same places",
+   "projects": [
+    "phone"
+   ]
+  },
+  "calendar||March #: span.dot keeps to one line and ends in an ellipsis; pressing it shows the whole": {
+   "screen": "calendar",
+   "dialog": "",
+   "what": "March #: span.dot keeps to one line and ends in an ellipsis; pressing it shows the whole",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "calendar||January #: span.dot keeps to one line and ends in an ellipsis; pressing it shows the whole": {
+   "screen": "calendar",
+   "dialog": "",
+   "what": "January #: span.dot keeps to one line and ends in an ellipsis; pressing it shows the whole",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "calendar||August #: span.dot keeps to one line and ends in an ellipsis; pressing it shows the whole": {
+   "screen": "calendar",
+   "dialog": "",
+   "what": "August #: span.dot keeps to one line and ends in an ellipsis; pressing it shows the whole",
+   "projects": [
+    "desktop"
+   ]
+  }
+ },
+ "scrollers": {
+  "project:cast||div.tabs \"Project Sections\" in ": {
+   "screen": "project:cast",
+   "dialog": "",
+   "what": "div.tabs \"Project Sections\" in ",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "project:overview||div.tabs \"Project Sections\" in ": {
+   "screen": "project:overview",
+   "dialog": "",
+   "what": "div.tabs \"Project Sections\" in ",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "project:script||div.tabs \"Project Sections\" in ": {
+   "screen": "project:script",
+   "dialog": "",
+   "what": "div.tabs \"Project Sections\" in ",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "project:budget||div.tabs \"Project Sections\" in ": {
+   "screen": "project:budget",
+   "dialog": "",
+   "what": "div.tabs \"Project Sections\" in ",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "project:schedule||div.tabs \"Project Sections\" in ": {
+   "screen": "project:schedule",
+   "dialog": "",
+   "what": "div.tabs \"Project Sections\" in ",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "project:edit||div.tabs \"Project Sections\" in ": {
+   "screen": "project:edit",
+   "dialog": "",
+   "what": "div.tabs \"Project Sections\" in ",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "project:production||div.tabs \"Project Sections\" in ": {
+   "screen": "project:production",
+   "dialog": "",
+   "what": "div.tabs \"Project Sections\" in ",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "project:release||div.tabs \"Project Sections\" in ": {
+   "screen": "project:release",
+   "dialog": "",
+   "what": "div.tabs \"Project Sections\" in ",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "project:crew||div.tabs \"Project Sections\" in ": {
+   "screen": "project:crew",
+   "dialog": "",
+   "what": "div.tabs \"Project Sections\" in ",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "project:script|@idea-list|div.tabs \"Ideas\" in Choose A Starting Idea": {
+   "screen": "project:script",
+   "dialog": "@idea-list",
+   "what": "div.tabs \"Ideas\" in Choose A Starting Idea",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "project:characters||div.tabs \"Project Sections\" in ": {
+   "screen": "project:characters",
+   "dialog": "",
+   "what": "div.tabs \"Project Sections\" in ",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "project:festivals||div.tabs \"Project Sections\" in ": {
+   "screen": "project:festivals",
+   "dialog": "",
+   "what": "div.tabs \"Project Sections\" in ",
+   "projects": [
+    "phone",
+    "desktop"
+   ]
+  },
+  "projects||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "projects",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "home||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "home",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "project:script||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "project:script",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "project:budget||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "project:budget",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "project:crew||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "project:crew",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "project:schedule||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "project:schedule",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "project:edit||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "project:edit",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "event||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "event",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "new-project||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "new-project",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "world||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "world",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "profile||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "profile",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "settings||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "settings",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "place||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "place",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "project:overview||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "project:overview",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "project:release||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "project:release",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "project:characters||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "project:characters",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "project:festivals||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "project:festivals",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  },
+  "saves||nav.rail \"Main Navigation\" in Main Navigation": {
+   "screen": "saves",
+   "dialog": "",
+   "what": "nav.rail \"Main Navigation\" in Main Navigation",
+   "projects": [
+    "desktop"
+   ]
+  }
+ },
+ "parity": {
+  "journeyParity": {
+   "creation-review": {
+    "both": 13,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "home": {
+    "both": 441,
+    "onlyD": 162,
+    "onlyP": 101
+   },
+   "calendar": {
+    "both": 99,
+    "onlyD": 17,
+    "onlyP": 16
+   },
+   "world": {
+    "both": 30,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "projects": {
+    "both": 41,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "profile": {
+    "both": 10,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "saves": {
+    "both": 21,
+    "onlyD": 2,
+    "onlyP": 0
+   },
+   "settings": {
+    "both": 33,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "project-script": {
+    "both": 625,
+    "onlyD": 88,
+    "onlyP": 13
+   },
+   "project-cast": {
+    "both": 58,
+    "onlyD": 0,
+    "onlyP": 1
+   },
+   "project-overview": {
+    "both": 69,
+    "onlyD": 2,
+    "onlyP": 2
+   },
+   "event": {
+    "both": 84,
+    "onlyD": 1,
+    "onlyP": 2
+   },
+   "project-budget": {
+    "both": 212,
+    "onlyD": 3,
+    "onlyP": 0
+   },
+   "dlg-submission": {
+    "both": 6,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "new-project": {
+    "both": 43,
+    "onlyD": 28,
+    "onlyP": 1
+   },
+   "dlg-advance": {
+    "both": 30,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "project-production": {
+    "both": 72,
+    "onlyD": 2,
+    "onlyP": 4
+   },
+   "start-saves": {
+    "both": 10,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "dlg-find-performers": {
+    "both": 208,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "project-crew": {
+    "both": 71,
+    "onlyD": 5,
+    "onlyP": 0
+   },
+   "project-schedule": {
+    "both": 63,
+    "onlyD": 1,
+    "onlyP": 2
+   },
+   "dlg-staff": {
+    "both": 40,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "project-edit": {
+    "both": 98,
+    "onlyD": 10,
+    "onlyP": 6
+   },
+   "project-release": {
+    "both": 48,
+    "onlyD": 3,
+    "onlyP": 4
+   },
+   "person": {
+    "both": 20,
+    "onlyD": 1,
+    "onlyP": 1
+   },
+   "episode": {
+    "both": 22,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "title": {
+    "both": 28,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "companies": {
+    "both": 147,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "season": {
+    "both": 12,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "project-characters": {
+    "both": 133,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "place": {
+    "both": 42,
+    "onlyD": 0,
+    "onlyP": 9
+   },
+   "creation-background": {
+    "both": 77,
+    "onlyD": 3,
+    "onlyP": 14
+   },
+   "dlg-idea-list": {
+    "both": 96,
+    "onlyD": 13,
+    "onlyP": 0
+   },
+   "creation-identity": {
+    "both": 87,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "project-festivals": {
+    "both": 52,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "dlg-where": {
+    "both": 9,
+    "onlyD": 0,
+    "onlyP": 19
+   },
+   "dlg-accept-terms": {
+    "both": 4,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "dlg-story-open": {
+    "both": 37,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "start": {
+    "both": 4,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "dlg-settings": {
+    "both": 9,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "dlg-sleep": {
+    "both": 7,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "dlg-add-plan": {
+    "both": 8,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "dlg-story": {
+    "both": 6,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "dlg-set-aside": {
+    "both": 6,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "company": {
+    "both": 29,
+    "onlyD": 1,
+    "onlyP": 1
+   },
+   "networks": {
+    "both": 8,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "network": {
+    "both": 14,
+    "onlyD": 0,
+    "onlyP": 0
+   },
+   "executive": {
+    "both": 9,
+    "onlyD": 0,
+    "onlyP": 0
+   }
+  },
+  "parityNotes": [
+   "| Home | desktop only | heading: Time Is Paused |",
+   "| Calendar | desktop only | heading: August # |",
+   "| Calendar | phone only | heading: June # |",
+   "| Project: Script | desktop only | heading: Night Ward |",
+   "| Project: Script | desktop only | heading: Episode #, Scene # (Ward) |",
+   "| Project: Script | desktop only | heading: Episode #, Scene # (Corridor) |",
+   "| Project: Script | desktop only | heading: Les Dunes |",
+   "| Project: Script | desktop only | heading: Episode #, Scene # |",
+   "| Project: Script | desktop only | heading: Episode #, Scene # (Harbor) |",
+   "| Project: Script | desktop only | heading: Episode #, Scene # (Dock) |",
+   "| Project: Script | desktop only | heading: Episode #, Scene # (Market) |",
+   "| Project: Script | desktop only | heading: Scene # (Ferry) |",
+   "| Project: Script | desktop only | heading: Scene # (Pier) |",
+   "| Project: Script | desktop only | heading: Tide Notes |",
+   "| Project: Script | desktop only | heading: Subject And Approach |",
+   "| Project: Script | desktop only | heading: Facts And Contributors |",
+   "| Project: Script | desktop only | heading: Facts |",
+   "| Project: Script | desktop only | heading: Contributors |",
+   "| Project: Script | desktop only | field: Claim |",
+   "| Project: Script | desktop only | field: Source Note |",
+   "| Project: Script | desktop only | field: Contributor Name |",
+   "| Project: Script | desktop only | field: Who They Are |",
+   "| Project: Script | desktop only | heading: One Room |",
+   "| Project: Script | desktop only | heading: North Line |",
+   "| Project: Script | desktop only | heading: Scene # (Stairwell) |",
+   "| Project: Script | desktop only | field: Marco |",
+   "| Project: Script | desktop only | field: Ines's Look In This Scene |",
+   "| Project: Script | desktop only | heading: Scene # (Library) |",
+   "| Project: Script | desktop only | heading: Scene # (Lido) |",
+   "| Project: Script | desktop only | heading: Scene # (Lighthouse Roof) |",
+   "| Project: Script | phone only | field: Adapted From |",
+   "| Project: Script | phone only | heading: Same Day |",
+   "| Project: Script | phone only | heading: Far Shore |",
+   "| Project: Script | phone only | field: Story Setting Place, State Or Region |",
+   "| Project: Overview | desktop only | heading: Late Light |",
+   "| Project: Overview | phone only | heading: Till Morning |",
+   "| Festival Or Awards Edition | phone only | heading: Advance Stopped |",
+   "| Project: Budget | desktop only | field: Ask The Private Investor For |",
+   "| New Script | desktop only | heading: What These Add To Your Project |",
+   "| Project: Production | phone only | field: Music By |",
+   "| Project: Production | phone only | field: Lyrics By |",
+   "| Project: Production | phone only | field: Rights Holder |",
+   "| Project: Crew | desktop only | field: What Fen Ward's Revision Should Look At |",
+   "| Project: Crew | desktop only | field: Your Note To Fen Ward (Optional) |",
+   "| Project: Schedule | phone only | field: Site For Ferry Dock |",
+   "| Project: Schedule | phone only | field: Backup For Ferry Dock |",
+   "| Project: Edit | desktop only | field: Scene # (Quay) |",
+   "| Project: Edit | desktop only | field: Scene # (Boathouse) |",
+   "| Project: Edit | desktop only | field: Scene # (Pumping Station) |",
+   "| Project: Edit | desktop only | field: Odile On Screen (Minutes) |",
+   "| Project: Edit | desktop only | field: Odile Heard Only (Minutes) |",
+   "| Project: Edit | desktop only | field: The Ferryman On Screen (Minutes) |",
+   "| Project: Edit | desktop only | field: The Ferryman Heard Only (Minutes) |",
+   "| Project: Edit | desktop only | field: Scene # (Dock) |",
+   "| Project: Edit | phone only | field: Scene # (Boathouse): Nothing has been shot for it yet. |",
+   "| Project: Edit | phone only | field: Scene # (Harbour) |",
+   "| Project: Edit | phone only | field: Scene # (Kitchen) |",
+   "| Project: Release | phone only | field: Version In United Kingdom, France, Germany, Brazil |",
+   "| Project: Release | phone only | field: New Date For Episode # |",
+   "| A Place | phone only | heading: In Cinemas In Finland |",
+   "| A Place | phone only | heading: Vatican City, Vatican |",
+   "| Creation: Background And Languages | phone only | field: Pesach (Passover) |",
+   "| Creation: Background And Languages | phone only | field: Shavuot |",
+   "| Creation: Background And Languages | phone only | field: Rosh Hashanah |",
+   "| Creation: Background And Languages | phone only | field: Yom Kippur |",
+   "| Creation: Background And Languages | phone only | field: Sukkot |"
+  ]
+ }
+}

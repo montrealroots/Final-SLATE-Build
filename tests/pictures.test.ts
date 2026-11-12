@@ -107,6 +107,15 @@ describe('fetching', () => {
     expect(existsSync(join(store, storePath('w300', '/b1.jpg')))).toBe(false);
   });
 
+  it('a connection dropped part way through a picture is tried again, and does not end the run', async () => {
+    reconcile(man, rows(), { store });
+    let dropped = 0;
+    const out = await fetchPictures(man, { store, ...quiet, workers: 1, transport: async (url) => (url.endsWith('/b1.jpg') && dropped++ < 2 ? { status: 200, ok: true, arrayBuffer: async () => { throw new TypeError('terminated'); } } : ok()) });
+    expect(dropped).toBe(3);
+    expect(man.get('movie:1', 'backdrop')).toMatchObject({ status: 'ready' });
+    expect(out.failed).toBe(0);
+  });
+
   it('stopped part way, it keeps what it has, and goes on from there without fetching those again', async () => {
     reconcile(man, rows(), { store });
     let n = 0;

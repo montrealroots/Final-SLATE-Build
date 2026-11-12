@@ -12,6 +12,10 @@ const shot = (page: Page, n: string, name: string) => page.screenshot({ path: `t
 async function openStory(page: Page, genre: RegExp, title: string) {
   await page.getByRole('button', { name: 'Choose A Full Story' }).click();
   const picker = page.getByRole('dialog', { name: 'Choose A Full Story' });
+  // The picker arrives a moment after its dialog does: wait for the genre before choosing it. (Until November 12, 2026
+  // this read the options at once; with none there yet it chose nothing, and passed only while the genre it wanted
+  // was the first in the list.)
+  await picker.getByLabel('Genre').locator('option').filter({ hasText: genre }).waitFor({ state: 'attached' });
   const label = (await picker.getByLabel('Genre').locator('option').allInnerTexts()).find((t) => genre.test(t))!;
   await picker.getByLabel('Genre').selectOption({ label });
   await picker.getByRole('button', { name: new RegExp(`^${title}`) }).click();
@@ -32,6 +36,7 @@ test('a full film story: read, renamed, a field kept, applied, undone, applied a
   // The list says, for each story, what it is before it is chosen.
   await page.getByRole('button', { name: 'Choose A Full Story' }).click();
   const picker = page.getByRole('dialog', { name: 'Choose A Full Story' });
+  await picker.getByLabel('Genre').locator('option').filter({ hasText: /^Heist \(/ }).waitFor({ state: 'attached' });
   const heist = (await picker.getByLabel('Genre').locator('option').allInnerTexts()).find((t) => /^Heist \(/.test(t))!;
   await picker.getByLabel('Genre').selectOption({ label: heist });
   const card = picker.getByRole('button', { name: /^The Quiet Floor/ });
@@ -164,4 +169,36 @@ test('a full series story: the season arrives with it, a locked field is left al
   expect(p.episodes.map((e: { title: string }) => e.title)).toEqual(['The Red Anorak', 'Grid Seven', 'The Boy Who Was Ill', 'What The Teacher Did', 'Thirteen', 'Meltwater']);
   expect(p.characters.find((c: { name: string }) => c.name === 'Liv Sandnes').seriesInvolvement).toBe('regular');
   expect(p.locks).toBeUndefined();
+});
+
+// V3-S07: shuffle changes only what the player left open. Their kept field stays ticked and stays theirs.
+test('shuffle shows another story for the fields left open, and a kept field stays the player\'s', async ({ page }, info) => {
+  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and one WebKit iPhone emulation.');
+  await quickLife(page, 'gb-london', '2026-01-05');
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Untitled Film', format: 'Feature Film', budget: 'Low Budget' });
+  await section(page, 'Script');
+  await page.getByLabel('Theme', { exact: true }).fill('Mine, and staying.');
+  const story = await openStory(page, /^Heist \(/, 'The Quiet Floor');
+  const writes = story.getByRole('region', { name: 'What It Would Write' });
+  await expect(writes.getByRole('checkbox', { name: 'Keep My Theme' })).toBeChecked();
+  await story.getByLabel('Name For Inês Marçal').fill('Marta Queirós');
+  await writes.getByRole('button', { name: 'Shuffle To Another Story' }).click();
+  // Another story is open in its place: a different title, its own people, and the same tick.
+  const other = page.getByRole('dialog').last();
+  const heading = other.getByRole('heading', { level: 2 }).first();
+  await expect(heading).not.toHaveText('The Quiet Floor');
+  const title = (await heading.innerText()).trim();
+  expect(title.length).toBeGreaterThan(3);
+  await expect(other.getByLabel('Name For Inês Marçal')).toHaveCount(0);
+  await expect(other.getByRole('region', { name: 'What It Would Write' }).getByRole('checkbox', { name: 'Keep My Theme' })).toBeChecked();
+  await expect(other.getByRole('region', { name: 'What It Would Write' })).toContainText('Yours: Mine, and staying.');
+  expect(await layoutFindings(page), 'a shuffled story, open').toEqual([]);
+  await other.getByRole('button', { name: 'Apply This Story' }).click();
+  await expect(page.getByLabel('Theme', { exact: true })).toHaveValue('Mine, and staying.');
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(title);
+  // One undo takes the whole shuffled story back.
+  await page.getByRole('button', { name: 'Undo Last Change' }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Untitled Film');
+  await expect(page.getByLabel('Theme', { exact: true })).toHaveValue('Mine, and staying.');
 });

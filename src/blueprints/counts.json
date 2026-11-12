@@ -3,8 +3,20 @@
   "film": 1,
   "tv": 0
  },
+ "medical-drama": {
+  "film": 0,
+  "tv": 1
+ },
  "nordic-noir": {
   "film": 0,
   "tv": 1
+ },
+ "romantic-comedy": {
+  "film": 1,
+  "tv": 0
+ },
+ "western": {
+  "film": 1,
+  "tv": 0
  }
 }

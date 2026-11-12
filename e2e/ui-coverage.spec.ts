@@ -150,6 +150,7 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   await page.getByRole('button', { name: 'Choose A Full Story' }).click();
   await v('story-list', 'Project', 'Choose A Full Story', 'dialog');
   const picker = page.getByRole('dialog', { name: 'Choose A Full Story' });
+  await picker.getByLabel('Genre').locator('option').filter({ hasText: /^Heist \(/ }).waitFor({ state: 'attached' });
   const heist = (await picker.getByLabel('Genre').locator('option').allInnerTexts()).find((t) => /^Heist \(/.test(t))!;
   await picker.getByLabel('Genre').selectOption({ label: heist });
   await picker.getByRole('button', { name: /^The Quiet Floor/ }).click();

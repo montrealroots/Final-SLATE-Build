@@ -1,0 +1,55 @@
+// Medical Drama: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== medical-drama.t01 | series | episodic
+title: Night Float
+genre: medical-drama + drama
+tone: Tired, funny at three in the morning, and exact about the work
+era: - | contemporary
+setting: St. Brendan's Hospital, Cork | fictional | institution
+logline: Four junior doctors cover an entire regional hospital between midnight and eight, one night a week, under a registrar who has stopped going home.
+premise: On night float there is one doctor to a floor and one senior for the building. {aoife}, {tunde}, {mei} and {dara} rotate through the four floors of St. Brendan's with pagers, a kettle and a whiteboard of jobs the day teams left. {niamh}, the medical registrar, answers every call within a minute and has slept in the on-call room for five weeks. Each episode is one night, start to handover.
+synopsis: The season follows eight nights across one winter. It begins with {aoife}'s first shift alone on the surgical floor, when she correctly calls an emergency the day team missed and incorrectly tells a family their mother is comfortable. {tunde}, the most capable of the four, is quietly applying to leave medicine. {mei} documents everything, including, in a private notebook, each time a senior's instruction contradicted the chart. {dara} is everybody's favourite and is making small mistakes because he is working a second job. Over the nights the four learn each other's floors and failings: {tunde} talks {aoife} through a chest drain by phone; {mei}'s notebook catches a prescribing error of {niamh}'s; {dara} falls asleep standing up in a lift. The spine of the season is {niamh}. She is the best doctor in the building and is living there because her marriage has ended and she has told nobody. In the sixth night a patient she knows from five admissions dies on a trolley waiting for a bed, and she walks out mid-shift, leaving four juniors with a full hospital. They run it until dawn: badly, then adequately, then well. {mei} has to decide whether her notebook goes to the clinical director. In the last night {niamh} comes back for handover, tells the day team exactly what happened, and goes home. {tunde} withdraws his resignation by not sending it. {aoife} takes a family into the quiet room and this time tells them the truth.
+question: How do you learn to be responsible for other people's lives at the hour when nobody is there to check your work?
+themes: competence as something borrowed until it is yours; what institutions ask of the people who hold them up; telling the truth kindly
+audience: Adults who like workplace ensembles and procedural detail without melodrama
+viewpoint: Ensemble; each night favours one of the four while keeping all floors in play
+stakes: Patients' lives, hour by hour; each junior's nerve and licence; {niamh}'s career and health
+conflict: Four people's inexperience against a hospital that keeps arriving, and loyalty to a senior who is coming apart against the duty to report it
+ending: {niamh} hands over honestly and goes home. The notebook goes to the director with {niamh}'s own signature on the first page. The four take the next rota without swapping.
+experience: Adrenaline in small doses, gallows laughter, and the particular light of a ward at five in the morning
+look: Corridors lit by vending machines; warm pools at each nurses' station; the same four stairwells until we know them
+sound: Pagers with four distinct tones, lift chimes, a kettle. Music only over each morning's handover.
+m: prove | system | loyalty-vs-truth | bittersweet
+@ aoife | Aoife Brennan | ensemble-lead | protagonist | human | she/her | 25 | To get through a night without hurting anyone | She was the clever one at school and has never been bad at anything | Her habit of reassuring people before she knows | Decisive with a scalpel, evasive with a relative | From comforting lies to plain truth | Bright, over-explains, apologises to equipment | Scrubs a size too big, hair in a biro
+@ tunde | Tunde Adeyemi-Walsh | ensemble-lead | deuteragonist | human | he/him | 28 | To leave before the job takes the rest of him | His father worked forty years of nights as a porter in this building | He is too good at it to be let go easily | The calmest person in any emergency and the angriest afterwards | From leaving to choosing to stay | Low, precise, teaches without seeming to | Tall, unhurried, always has a spare pen
+@ mei | Mei Lindqvist-Tan | ensemble-lead | foil | human | she/her | 26 | For the record to be right | A misfiled result once cost her a patient as a student | Writing things down makes enemies | Trusts paper over people, and is loyal to both | From keeping notes to signing them | Careful, literal, devastating when she is sure | Immaculate; a second notebook in her sock
+@ dara | Dara Kinsella | ensemble-lead | ally | human | he/him | 27 | To send money home and not be found out | His family's pub is in debt and he is driving a taxi on his days off | Exhaustion | Charms every ward, lies about being fine | From hiding it to asking for a swap | Jokes, nicknames, songs under his breath | Rumpled, grey under the eyes, chocolate in every pocket
+@ niamh | Dr. Niamh Corrigan | supporting | mentor | human | she/her | 41 | To keep the building safe until morning, every morning | It is the one place she is still good | Five weeks without going home, and one error | Superb clinician, absent from her own life | From holding it all to handing it over | Brisk, kind in half-sentences, never says "I" | Clogs, cardigan over scrubs, reading glasses pushed into grey-streaked hair
+@ brigid | Sister Brigid Fahy | featured | ally | human | she/her | 58 | To get her ward to morning with the doctors she has been given | She has trained thirty years of juniors and buried a few | She has no authority over them and all the knowledge | Sharp-tongued, endlessly patient with the frightened | Unchanged; the fixed point | Dry, economical, calls every doctor "pet" until they earn a name | Navy uniform, fob watch, a thermos nobody else may touch
+~ aoife - tunde | new junior and the one a year ahead | she is afraid of him | she talks him out of leaving by needing him
+~ mei - niamh | junior with a notebook and the senior in it | admiration with a file attached | {niamh} signs the first page herself
+~ dara - aoife | flatmates on the same rota | he covers for her nerves, she for his lateness | she tells him to ask for the swap
+~ tunde - niamh | protege and the registrar who trained him | he sees himself in fifteen years and wants out | he sees her go home and stays
+~ brigid - aoife | ward sister and the doctor on her floor | "pet" | "Dr. Brennan"
+tv: 8 x 50
+engine: One night, midnight to eight: the whiteboard of jobs fills and empties, each floor throws up one case that tests its doctor, and the handover at eight says what the night cost
+arc: From four juniors leaning on one registrar, through that registrar's collapse, to a night they carry alone and an honest handover
+ep 1 | First Night | {aoife} calls the right emergency and tells the wrong comfort; {niamh} is everywhere at once
+ep 2 | Bleep Four | {tunde} talks {aoife} through a chest drain by phone and posts nothing of the letter in his locker
+ep 3 | The Second Notebook | {mei} catches a dose ten times too high, and whose handwriting ordered it
+ep 4 | Taxi | {dara} sleeps in a lift; {brigid} covers for him once and says it is once
+ep 5 | Bed Manager | No beds anywhere; the four trade patients like favours and {niamh} sleeps through her alarm
+ep 6 | Trolley Nine | A man {niamh} has admitted five times dies waiting; she walks out at three
+ep 7 | Until Eight | The four run the hospital alone: badly, adequately, well
+ep 8 | Handover | {niamh} returns to tell the day team all of it; the notebook is signed and delivered
+changes: {aoife} learns to say what is true before what is kind; {tunde} stops leaving; {mei} puts her name to what she knows; {dara} asks for help; {niamh} goes home
+recurring: Surgical Floor Nurses' Station; Medical Floor Corridor; Emergency Department Resus Bay; On-Call Room; The Quiet Room; Stairwell B; Hospital Canteen At Dawn
+continuation: A second winter with the four a year on, each now the senior for a new first-night junior, and {niamh} back on days as their consultant
+# Midnight | INT | On-Call Room | NIGHT | aoife, tunde, mei, dara, niamh | Hand the building over | The evening team reads out the whiteboard; {niamh} assigns floors by who looks least afraid, and gives {aoife} surgery | | 4 | props=whiteboard+four pagers
+# Midnight | INT | Surgical Floor Nurses' Station | NIGHT | aoife, brigid | Meet the floor | {brigid} hands her a list of eleven jobs in order of who will die first, and a cup of tea she is not to put down on the charts | | 3 | props=job list+thermos
+# Small Hours | INT | Surgical Floor, Bay Three | NIGHT | aoife, brigid | The case the day team missed | A post-operative woman is "just tired". {aoife} looks at the drain, the pulse, the colour, and calls it | She is right, and it is hers to manage until help comes | 6 | props=surgical drain+obs chart
+# Small Hours | INT | Stairwell B | NIGHT | aoife, tunde | Borrow some nerve | Four floors apart, {tunde} talks her through the next ten minutes by phone while walking a crash trolley downstairs himself | | 3 | props=crash trolley+phone
+# Small Hours | INT | Emergency Department Resus Bay | NIGHT | niamh, mei, dara | Show the registrar at full stretch | {niamh} runs two resuscitations at once with {dara} and {mei}; she gives an order {mei} writes down and underlines | | 5 | crowd=8, props=defibrillator+monitor
+# Before Dawn | INT | The Quiet Room | NIGHT | aoife | The wrong comfort | The woman's son asks if his mother is comfortable. {aoife} says yes, she is sleeping. She is in theatre | {aoife} hears herself lie | 4
+# Handover | INT | Hospital Canteen | DAWN | aoife, tunde, mei, dara, niamh | Count the night | Toast. {niamh} reads the board back: who lived, who moved, who is owed a call. She tells {aoife} the catch was good and the comfort was not hers to give, and goes back upstairs instead of home | The four notice she does not leave | 5 | props=whiteboard+toast
+review: authored | 2026-11-12 | written whole; not yet read against the other medical dramas
