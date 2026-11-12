@@ -9,7 +9,7 @@
 // reaches is listed there as not visited; nothing is called checked that wasn't.
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { expect, test, type Page } from './test';
-import { addScene, advance, freshStart, nav, newProject, pinSeed, quickLife, saveAndApprove, section } from './helpers';
+import { addScene, advance, freshStart, nav, newProject, openStart, pinSeed, quickLife, saveAndApprove, saveAndExit, section } from './helpers';
 import { audit, coveredWhenFocused, shiftSince, watchShifts, type Defect } from './ui-audit';
 import { serveCatalog } from './catalog-fixture';
 
@@ -250,5 +250,101 @@ test('the UI audit: the catalog, from a company to a film, a person, a series, i
   await page.getByRole('button', { name: 'Robert A. Iger' }).first().click();
   await page.getByRole('heading', { name: 'Robert A. Iger', level: 1 }).waitFor(); await v('executive', 'Industry', 'An Executive');
   await nav(page, 'Calendar'); await v('calendar-industry', 'Your Day', 'Calendar, With The Industry\'s Dates');
+  finish(project);
+});
+
+test('the UI audit: the rest of creation, and the dialogs the first walk does not open', async ({ page }, info) => {
+  const project = info.project.name;
+  test.skip(!SIZES[project], 'Runs on desktop, phone and the two WebKit iPhone emulations.');
+  test.setTimeout(900_000);
+  page.setDefaultTimeout(20_000);
+  const v = (id: string, area: string, name: string, kind?: string) => visit(page, project, id, area, name, kind);
+  /** Opens a dialog if its button is there, measures it, and closes it. A button that isn't there leaves its row unvisited. */
+  const dialog = async (press: ReturnType<Page['getByRole']>, id: string, area: string, name: string) => {
+    if (!(await press.first().isVisible().catch(() => false)) || !(await press.first().isEnabled())) return;
+    await press.first().click();
+    if (!(await page.getByRole('dialog').last().waitFor({ timeout: 3_000 }).then(() => true, () => false))) return; // it acted without asking
+    await v(id, area, name, 'dialog');
+    await page.keyboard.press('Escape');
+    await page.getByRole('dialog').waitFor({ state: 'detached' });
+  };
+  await watchShifts(page);
+
+  // ---------- A character part made: the start screen offers to go on or start over; the other steps of creation ----------
+  await quickLife(page, 'gb-london', '2026-01-05');
+  await saveAndExit(page);
+  await v('start-saved', 'Startup', 'Start Screen, With A Saved Game');
+  await page.getByRole('button', { name: 'Saved Games', exact: true }).click();
+  await page.getByRole('heading', { name: 'Saved Games', level: 1 }).waitFor();
+  await v('start-saves', 'Startup', 'Saved Games From The Start Screen');
+  await dialog(page.getByRole('button', { name: /^Rename Save / }), 'rename-save', 'Your Game', 'Rename Save');
+  await dialog(page.getByRole('button', { name: /^Delete Save / }), 'delete-save', 'Your Game', 'Delete This Save?');
+  await page.getByRole('button', { name: /^Back/ }).first().click();
+  // A finished draft beside the save, as helpers.ts quickDraft leaves one: New Game then offers to go on with it.
+  await page.evaluate(() => localStorage.setItem('slate.v1.creationDraft', JSON.stringify({
+    step: 7, name: 'Odalys Brannigan-Vasquez', pronouns: 'she', actingTitle: 'Actress', birthDate: '1990-05-20', birthplaceId: 'ke-nairobi',
+    heritages: [{ id: 'Kikuyu', label: 'Kikuyu', custom: false }, { id: 'Norwegian', label: 'Norwegian', custom: false }], heritageCustomText: '', mainLanguage: 'en',
+    languages: [{ code: 'sw', proficiency: 'Fluent' }, { code: 'no', proficiency: 'Conversational' }], startPlaceId: 'gb-london', startDate: '2026-01-05', startTime: '08:00', updatedAt: 1,
+  })));
+  await page.reload();
+  await page.locator('html[data-engine="ready"]').waitFor({ state: 'attached' });
+  await page.getByRole('button', { name: 'New Game' }).click();
+  await page.getByRole('button', { name: 'Continue Creation' }).waitFor();
+  await v('start-draft', 'Startup', 'Start Screen, With An Unfinished Character');
+  await dialog(page.getByRole('button', { name: 'Start Over', exact: true }), 'start-over', 'Startup', 'Start Over?');
+  await page.getByRole('button', { name: 'Continue Creation' }).click();
+  await page.getByRole('button', { name: 'Start My Story' }).waitFor();
+  await v('creation-review', 'Startup', 'Creation: Review');
+  for (const [re, id, name] of [[/Background/, 'creation-background', 'Creation: Background And Languages'], [/Starting Point/, 'creation-starting-point', 'Creation: Starting Point']] as const) {
+    await page.getByRole('button', { name: re }).filter({ hasText: 'Edit' }).first().click();
+    await page.getByRole('button', { name: 'Save And Return To Review' }).waitFor();
+    await v(id, 'Startup', name);
+    await page.getByRole('button', { name: 'Save And Return To Review' }).click();
+    await page.getByRole('button', { name: 'Start My Story' }).waitFor();
+  }
+
+  // ---------- A script with a story in it: its dialogs ----------
+  await openStart(page);
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Dialogs', format: 'Feature Film', budget: 'Low Budget' });
+  await section(page, 'Script');
+  await page.getByRole('button', { name: 'Choose A Full Story' }).click();
+  await page.getByRole('dialog').getByRole('button', { name: /The Quiet Floor/ }).first().click();
+  await page.getByRole('dialog').last().getByRole('button', { name: 'Apply This Story' }).click();
+  await page.getByRole('dialog').waitFor({ state: 'detached' });
+  await dialog(page.getByRole('button', { name: /^Change The Relationship Of / }), 'change-relationship', 'Script', 'Change The Relationship');
+  await page.getByRole('button', { name: 'Declare None Of These' }).click().catch(() => undefined);
+  await page.getByRole('button', { name: 'Save Draft' }).click();
+  await dialog(page.getByRole('button', { name: 'Rename Draft' }), 'rename-draft', 'Script', 'Rename Draft');
+  await dialog(page.getByRole('button', { name: 'Compare With Working Copy' }), 'compare-draft', 'Script', 'Compare Draft');
+  const scene = page.locator('article.scene-card').first();
+  await scene.getByRole('button', { name: 'Edit Scene' }).click();
+  await dialog(scene.getByRole('button', { name: /^Combine / }), 'script-confirm', 'Script', 'Combine The Scenes');
+  await section(page, 'Overview');
+  await dialog(page.getByRole('button', { name: 'Shelve The Project' }), 'shelve', 'Project', 'Shelve The Project');
+
+  // ---------- Approved and backed: hiring ----------
+  await section(page, 'Script');
+  await page.getByRole('button', { name: 'Approve This Draft' }).first().click();
+  await page.getByText('Approved', { exact: true }).waitFor();
+  await section(page, 'Budget');
+  await page.getByRole('button', { name: 'Approach Starting Backing' }).click().catch(() => undefined);
+  await section(page, 'Crew');
+  await dialog(page.getByRole('button', { name: 'Hire A Writer', exact: true }), 'hire-writer', 'Crew', 'Hire A Writer');
+  await dialog(page.getByRole('button', { name: /^Find Candidates/ }), 'hire-crew', 'Crew', 'Hire A Crew Member');
+  await dialog(page.getByRole('button', { name: /^Staff /, exact: false }), 'staff', 'Crew', 'Staff A Department');
+  // Once work has begun on an approved script, taking a scene out or approving a changed draft says what it touches first.
+  await section(page, 'Script');
+  const later = page.locator('article.scene-card').nth(1);
+  await later.getByRole('button', { name: 'Edit Scene' }).click();
+  await dialog(later.getByRole('button', { name: /^Delete Scene/ }), 'delete-scene', 'Script', 'Delete This Scene?');
+  if (!(await later.getByLabel('Place', { exact: true }).isVisible())) await later.getByRole('button', { name: 'Edit Scene' }).click();
+  await later.getByLabel('Place', { exact: true }).fill('Loading Dock Behind The Bank');
+  await page.getByRole('button', { name: 'Save Draft' }).click();
+  await dialog(page.getByRole('button', { name: 'Approve This Draft' }), 'approve-draft', 'Script', 'Approve This Draft?');
+  await nav(page, 'Saved Games');
+  await page.getByRole('heading', { name: 'Saved Games', level: 1 }).waitFor();
+  await dialog(page.getByRole('button', { name: /^Rename Save/ }), 'rename-save-in-game', 'Your Game', 'Rename Save, In The Game');
   finish(project);
 });

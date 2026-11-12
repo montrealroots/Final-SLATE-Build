@@ -6,7 +6,9 @@
   "kind": "screen",
   "screen": "start:",
   "walk": [
-   "start"
+   "start",
+   "start-draft",
+   "start-saved"
   ]
  },
  {
@@ -35,7 +37,10 @@
   "area": "Startup",
   "name": "Saved Games (From The Start Screen)",
   "kind": "screen",
-  "screen": "start:Saved Games"
+  "screen": "start:Saved Games",
+  "walk": [
+   "start-saves"
+  ]
  },
  {
   "id": "creation-identity",
@@ -52,21 +57,30 @@
   "area": "Startup",
   "name": "Creation: Background And Languages",
   "kind": "screen",
-  "screen": "creation:Background & Languages"
+  "screen": "creation:Background & Languages",
+  "walk": [
+   "creation-background"
+  ]
  },
  {
   "id": "creation-starting-point",
   "area": "Startup",
   "name": "Creation: Starting Point",
   "kind": "screen",
-  "screen": "creation:Starting Point"
+  "screen": "creation:Starting Point",
+  "walk": [
+   "creation-starting-point"
+  ]
  },
  {
   "id": "creation-review",
   "area": "Startup",
   "name": "Creation: Review",
   "kind": "screen",
-  "screen": "creation:Review"
+  "screen": "creation:Review",
+  "walk": [
+   "creation-review"
+  ]
  },
  {
   "id": "menu",
@@ -429,7 +443,10 @@
   "name": "Start Over?",
   "kind": "dialog",
   "dialog": "^Start Over\\?$",
-  "source": "Startup | \"Start Over?\""
+  "source": "Startup | \"Start Over?\"",
+  "walk": [
+   "start-over"
+  ]
  },
  {
   "id": "dlg-add-plan",
@@ -448,7 +465,10 @@
   "name": "Delete This Save?",
   "kind": "dialog",
   "dialog": "^Delete This Save\\?$",
-  "source": "SavedGames | \"Delete This Save?\""
+  "source": "SavedGames | \"Delete This Save?\"",
+  "walk": [
+   "delete-save"
+  ]
  },
  {
   "id": "dlg-rename-save",
@@ -456,7 +476,11 @@
   "name": "Rename Save",
   "kind": "dialog",
   "dialog": "^Rename Save$",
-  "source": "SavedGames | \"Rename Save\""
+  "source": "SavedGames | \"Rename Save\"",
+  "walk": [
+   "rename-save",
+   "rename-save-in-game"
+  ]
  },
  {
   "id": "dlg-save-here",
@@ -488,7 +512,10 @@
   "name": "Shelve The Project",
   "kind": "dialog",
   "dialog": "^Shelve The Project$",
-  "source": "Projects | \"Shelve The Project\""
+  "source": "Projects | \"Shelve The Project\"",
+  "walk": [
+   "shelve"
+  ]
  },
  {
   "id": "dlg-story",
@@ -537,7 +564,10 @@
   "name": "Approve This Draft?",
   "kind": "dialog",
   "dialog": "^Approve This Draft\\?$",
-  "source": "ScriptViews | \"Approve This Draft?\""
+  "source": "ScriptViews | \"Approve This Draft?\"",
+  "walk": [
+   "approve-draft"
+  ]
  },
  {
   "id": "dlg-compare-draft",
@@ -545,7 +575,10 @@
   "name": "Compare Draft",
   "kind": "dialog",
   "dialog": "^Compare Draft ",
-  "source": "ScriptViews | {`Compare Draft ${compare}"
+  "source": "ScriptViews | {`Compare Draft ${compare}",
+  "walk": [
+   "compare-draft"
+  ]
  },
  {
   "id": "dlg-rename-draft",
@@ -553,7 +586,10 @@
   "name": "Rename Draft",
   "kind": "dialog",
   "dialog": "^Rename Draft$",
-  "source": "ScriptViews | \"Rename Draft\""
+  "source": "ScriptViews | \"Rename Draft\"",
+  "walk": [
+   "rename-draft"
+  ]
  },
  {
   "id": "dlg-delete-scene",
@@ -561,7 +597,10 @@
   "name": "Delete This Scene?",
   "kind": "dialog",
   "dialog": "^Delete This Scene\\?$",
-  "source": "ScriptViews | \"Delete This Scene?\""
+  "source": "ScriptViews | \"Delete This Scene?\"",
+  "walk": [
+   "delete-scene"
+  ]
  },
  {
   "id": "dlg-confirm",
@@ -570,7 +609,10 @@
   "kind": "dialog",
   "dialog": "^@script-confirm$",
   "source": "ScriptViews | {confirm.title}",
-  "note": "Split The Scene, Combine The Scenes and the like: titled with the change."
+  "note": "Split The Scene, Combine The Scenes and the like: titled with the change.",
+  "walk": [
+   "script-confirm"
+  ]
  },
  {
   "id": "dlg-change-rule",
@@ -594,7 +636,10 @@
   "name": "Change The Relationship",
   "kind": "dialog",
   "dialog": "^Change The Relationship$",
-  "source": "ScriptViews | \"Change The Relationship\""
+  "source": "ScriptViews | \"Change The Relationship\"",
+  "walk": [
+   "change-relationship"
+  ]
  },
  {
   "id": "dlg-remove-relationship",
@@ -651,7 +696,10 @@
   "name": "Hire A Crew Member",
   "kind": "dialog",
   "dialog": "^Hire An? ",
-  "source": "PlanViews | {`Hire ${/^[AEIOU]/.test(roleLabel(finding)) ? 'An' : 'A'}"
+  "source": "PlanViews | {`Hire ${/^[AEIOU]/.test(roleLabel(finding)) ? 'An' : 'A'}",
+  "walk": [
+   "hire-crew"
+  ]
  },
  {
   "id": "dlg-staff",
@@ -659,7 +707,10 @@
   "name": "Staff A Department",
   "kind": "dialog",
   "dialog": "^Staff ",
-  "source": "PlanViews | {`Staff ${proposal.dept}"
+  "source": "PlanViews | {`Staff ${proposal.dept}",
+  "walk": [
+   "staff"
+  ]
  },
  {
   "id": "dlg-hire-extra",
@@ -667,7 +718,10 @@
   "name": "Hire A Writer Or Director",
   "kind": "dialog",
   "dialog": "^Hire An? .*(Writer|Director|Editor)",
-  "source": "PlanViews | {label}"
+  "source": "PlanViews | {label}",
+  "walk": [
+   "hire-writer"
+  ]
  },
  {
   "id": "dlg-where",
