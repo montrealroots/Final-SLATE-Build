@@ -45,7 +45,7 @@ test('a song licence refused for the world, asked again for less, agreed, renewe
   await page.getByRole('button', { name: 'Harbour Lights' }).first().click();
   await section(page, 'Music');
   await expect(card).toContainText(/Refused: .* said no to festivals, cinemas, streaming, television, digital sale and rental in the whole world for 10 years\./);
-  await expect(page.getByRole('region', { name: 'Other Routes For Tidewater' })).toContainText('ask again for less below; replace it with another song or an original on the Production page; or leave its scenes without it.');
+  await expect(page.getByRole('region', { name: 'Other Routes For Tidewater' })).toContainText('ask again for less below; replace it with another song or an original on the Production page; put a library track in its place; or leave its scenes without it.');
 
   // Asked again for less: festivals and digital, here, three years.
   await card.getByRole('button', { name: 'Ask To License Tidewater' }).click();
@@ -165,4 +165,54 @@ test('the composer\'s themes wait for you: notes send them back for a round, app
   await expect.poll(async () => !!(await readSavedState(page))?.projects?.[0]?.delivered, { timeout: 30_000 }).toBe(true);
   const done = (await readSavedState(page)).projects[0];
   expect(['post:spotting:1', 'post:themes:all', 'post:themes-revision:1', 'post:music:1', 'post:stems:1'].map((id) => done.tasks.find((t: { id: string }) => t.id === id)?.status)).toEqual(['done', 'done', 'done', 'done', 'done']);
+});
+
+test('a song refused is replaced with library music: licensed on the library\'s terms, paid once, and the song leaves the cut', async ({ page }) => {
+  test.setTimeout(300_000);
+  await seededLife(page, 'gb-london', '2026-01-05', SEED);
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Harbour Lights', format: 'Short Film', runtime: '10', budget: 'Low Budget' });
+  await section(page, 'Characters');
+  await page.getByLabel('Character Name').fill('Mara');
+  await page.getByRole('button', { name: 'Add Character' }).click();
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Pier', chars: ['Mara'], minutes: '4' });
+  await section(page, 'Production');
+  const songs = page.getByRole('region', { name: 'Songs' });
+  await songs.getByLabel('Song Title').fill('Tidewater');
+  await songs.getByLabel('Where It Comes From').selectOption({ label: 'An Existing Song, Licensed' });
+  await songs.getByLabel('Music By').fill('Ada Brook');
+  await songs.getByLabel('Lyrics By').fill('Ada Brook');
+  await songs.getByLabel('Rights Holder').fill('Saltmarsh Records');
+  await songs.getByRole('button', { name: 'Add Song' }).click();
+  await songs.getByRole('listitem', { name: 'Song: Tidewater' }).getByRole('button', { name: 'Use Tidewater In This Scene' }).click();
+  await saveAndApprove(page);
+
+  // The same broad request as above, refused for this world seed.
+  await section(page, 'Music');
+  const card = page.getByRole('article', { name: 'Licence For Tidewater' });
+  await card.getByRole('button', { name: 'Ask To License Tidewater' }).click();
+  for (const m of ['Cinemas', 'Streaming', 'Television']) await card.getByRole('checkbox', { name: m, exact: true }).check();
+  await card.getByRole('checkbox', { name: 'The Whole World' }).check();
+  await card.getByLabel('For How Long').selectOption({ label: '10 Years' });
+  await card.getByRole('button', { name: 'Ask Both Holders' }).click();
+  await advance(page, 'week');
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Harbour Lights' }).first().click();
+  await section(page, 'Music');
+  await expect(card).toContainText('Refused:');
+
+  await card.getByRole('button', { name: /^Replace Tidewater With Library Music For \$[\d,]+$/ }).click();
+  const track = page.getByRole('article', { name: 'Licence For Library Track For "Tidewater"' });
+  await expect(track).toContainText(/Licensed for festivals, cinemas, streaming, television, digital sale and rental in the whole world for 10 years, until [A-Z][a-z]+ \d{1,2}, 2036\./);
+  await expect(track).toContainText('in place of "Tidewater"');
+  await expect(card).toContainText('Not in the cut; no licence is needed unless it goes back in.');
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click().catch(() => {});
+  await expect.poll(async () => {
+    const p = (await readSavedState(page))?.projects?.[0];
+    if (!p) return null;
+    const keys = p.obligations.flatMap((o: { postings: { key: string }[] }) => o.postings.map((x) => x.key)).filter((k: string) => k.startsWith('licence:'));
+    return [keys.length, p.songs.find((s: { title: string }) => s.title === 'Tidewater').uses.length, p.songs.find((s: { library?: boolean }) => s.library).uses.length];
+  }).toEqual([1, 0, 1]);
 });

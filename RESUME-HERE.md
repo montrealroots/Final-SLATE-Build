@@ -200,8 +200,27 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       - Score steps: spotting, themes, your approval or notes (revision rounds), composition, sessions, score mix and
         stems. Composition waits for approval (`themesGate`) unless the brief hands review to the composer.
         `syncMusicTasks` adds or drops score work when a brief or notes come after the task list exists.
-      - Not built: a dated catalog of real recordings and release dates (V4-022.01), library music, trailer/prominence
-        terms, per-version licence coverage, score evaluation by fit (V4-025.02), Guide Me for music.
+      - November 13, 2026 ("keep going with the rest of the music system"):
+        - Score evaluation (`cues.ts judgeScore`, read by `assessQuality`): execution is the composer's capability
+          alone, as before; with a brief, themes you gave notes on fit closer (2 a round, two rounds counted), themes
+          nobody reviewed fit less (-3), each scored cue left out of time by a changed scene -3, each high-intensity
+          cue under dialogue -2 (at most -10). Silence and songs-only have no music score. No brief: unchanged. The
+          Music page's cue plan says what it is judged on that you can still change (What The Score Is Judged On).
+        - Library music (`music.ts replaceWithLibrary`): a refused or run-out song's route. The library owns both
+          works and licenses every medium, worldwide, 10 years, at a fee per scene (simulated, labelled), paid once
+          (`licence:<id>`). The song's uses, cues and version changes move to the track; a locked picture allows it; a
+          song performed in shot footage can't be replaced. An episode whose final mix was done gets `post:relay`
+          (half a day of the re-recording mixer) that delivery waits for.
+        - Per-version coverage: a release names its cut (`ReleaseRecord.cut`, Which Cut on the release form), and
+          `planRelease` checks the licences of that cut's songs (`releaseSongs`), so a version that takes a song out
+          releases without its licence.
+        - Tests: `tests/cues.test.ts` (how the score is judged, 5), `tests/music.test.ts` (library, 3; versions, 1),
+          `e2e/music.spec.ts` (refused, replaced with library music).
+      - Not built: a dated catalog of real recordings and release dates (V4-022.01, needs research), trailer terms
+        (the game has no trailers or promotion to use one in), episode scope of a licence, Guide Me for music
+        (composer shortlist within budget), distinct music roles beyond composer, songwriter, lyricist, music
+        supervisor and mixer (V4-022.02), a composer who declines or is replaced mid-score, and a browser journey
+        that releases a version.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
   - Still not built: age stages and per-episode performers (V4-007.03/.04), Guide Me for cast, writing and music,

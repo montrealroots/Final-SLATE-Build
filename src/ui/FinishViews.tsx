@@ -465,6 +465,7 @@ export function ReleaseTab({ p }: { p: Project }) {
   const place = getPlace(p.axes.basePlaceId);
   const today = dateKey(g.now, place.zone);
   const [route, setRoute] = useState<ReleaseRecord['route']>('digital');
+  const [cut, setCut] = useState('');
   const [date, setDate] = useState(addDaysToKey(today, 30));
   const [terr, setTerr] = useState(place.country);
   const [err, setErr] = useState<string | null>(null);
@@ -557,6 +558,7 @@ export function ReleaseTab({ p }: { p: Project }) {
           <SelectField label="Route" value={route} options={(['digital', 'streaming', 'theatrical', 'broadcast'] as const).map((r) => ({ value: r, label: ROUTE_LABELS[r] }))} onChange={setRoute} />
           <TextField label="Release Date" type="date" value={date} onChange={(v) => { setDate(v); setOwn(null); }} />
           <TextField label="Territory Code" value={terr} maxLength={2} hint="Two-letter country code, such as US or GB." onChange={(v) => setTerr(v.toUpperCase())} />
+          {(p.versions ?? []).length > 0 && <SelectField label="Which Cut" hint="Each cut's songs must be licensed for this release." value={cut} options={[{ value: '', label: 'The Main Cut' }, ...(p.versions ?? []).map((v) => ({ value: v.id, label: `The ${v.label}` }))]} onChange={setCut} />}
         </div>
         {scheduled && (
           <fieldset className="form" style={{ border: 0, padding: 0, margin: 0 }}>
@@ -574,14 +576,14 @@ export function ReleaseTab({ p }: { p: Project }) {
           </fieldset>
         )}
         <p className="dim">Theatrical and broadcast releases need a distributor or broadcaster. Release choices affect premiere status for festivals.</p>
-        <button className="btn btn-primary" onClick={() => setErr(store.act((s) => void planRelease(s, p, { route, date, territories: [terr], ...(scheduled ? (own ? { episodeDates: planned } : { pattern, onPremiere }) : {}) })))}>Plan Release</button>
+        <button className="btn btn-primary" onClick={() => setErr(store.act((s) => void planRelease(s, p, { route, date, territories: [terr], ...(cut ? { cut } : {}), ...(scheduled ? (own ? { episodeDates: planned } : { pattern, onPremiere }) : {}) })))}>Plan Release</button>
       </section>
       <section className="card">
         <h2>Release History</h2>
         {p.premiere && <p>Premiered {formatDateKey(p.premiere.date)} at {p.premiere.venue}.</p>}
         {p.releases.length ? <ul className="list">{p.releases.map((r) => (
           <li key={r.id}>
-            <div className="row-wrap"><span className="grow">{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''}{r.note ? <span className="dim"> {r.note}</span> : null} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && !p.offers.find((o) => o.id === r.offerId)?.studioDeal && <button className="btn btn-sm btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</div>
+            <div className="row-wrap"><span className="grow">{ROUTE_LABELS[r.route]}{r.cut ? ` of the ${p.versions?.find((v) => v.id === r.cut)?.label ?? 'version'}` : ''} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''}{r.note ? <span className="dim"> {r.note}</span> : null} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && !p.offers.find((o) => o.id === r.offerId)?.studioDeal && <button className="btn btn-sm btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</div>
             <ReleaseVersion p={p} r={r} />
             <ReleaseCinemas p={p} r={r} />
             {r.episodes?.length ? (

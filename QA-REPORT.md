@@ -1338,3 +1338,13 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `e2e/music.spec.ts`, desktop and phone | 2 wording problems, fixed | A refused request repeated its scope twice, and media were listed in click order; both fixed. Three journeys: refused then agreed and renewed; a brief, its cues and silence needing no composer; themes noted, revised, approved, delivered. |
 | PR #80 CI | 1 real interaction, fixed | connected.spec's later window changed outcome: its draw is keyed on an offer id from the shared counter, and the new job-offer event took an id from it. Job events take derived ids now; the journey also reads the notice from the log, since Home shows only eight. |
 
+## v4 Music: Score Evaluation, Library Music, Per-Version Coverage (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/cues.test.ts` | 1 real (a -0 from an empty sum), fixed | 5 new: no brief judged as before, silence and songs-only unjudged; execution moves with capability and nothing else; a loud cue under dialogue costs and lowered costs nothing; an unconformed cue costs until conformed; notes rounds fit closer (two counted), unreviewed fits less. |
+| `tests/music.test.ts` | 0 | 4 new: library replaces a refused song, paid once across a save, terms worldwide in every medium; after a finished mix a relay task delivery waits for; a song performed in shot footage can't be replaced; a version without the song releases without its licence while the main cut is refused. |
+| Registers (`action-previews`, `disabled-reasons`, `input-audit`, `model-readers`, `creative-depth-audit`, `v4-ledger`) | 4 expected | New action, disabled reason, the Which Cut control and `Song.replaces` recorded. |
+| `e2e/music.spec.ts`, desktop and phone | see below | New journey: a refused song replaced with library music, its licence shown, paid once after a reload. |
+| Not run in a browser | — | Releasing a version (unit-tested through `planRelease`); the judged-on notes with a loud cue under dialogue (unit-tested). |
+

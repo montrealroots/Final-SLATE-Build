@@ -17,7 +17,7 @@ import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY, addLocal, dateKey } from './time';
 import { getPlace } from '../data/places';
-import { songsOf } from './songs';
+import { songUses, songsOf } from './songs';
 import type { GameState, Project, ReleaseRecord, Song } from './types';
 
 export type LicenceMedium = Exclude<ReleaseRecord['route'], 'festival-premiere'> | 'festival';
@@ -82,6 +82,7 @@ export function requestRefusal(p: Project, songId: string, scope: LicenceScope):
   if (!licensesSongs(p)) return 'This project clears its songs the way it always has.';
   const song = songsOf(p).find((x) => x.id === songId);
   if (!song) return 'That song is no longer part of the project.';
+  if (song.library) return `"${song.title}" is library music, licensed on the library's terms.`;
   if (song.rights !== 'licensed') return `"${song.title}" isn't licensed: ${song.rights === 'production' ? 'the production holds its rights' : 'it is in the public domain'}.`;
   if (!scope.media.length) return 'Choose at least one way it will be shown.';
   if (scope.territories !== 'worldwide' && !scope.territories.length) return 'Choose where, or ask for the world.';
@@ -206,4 +207,61 @@ export function releaseLicenceRefusal(p: Project, used: Song[], rel: { route: Re
     if (rel.date > dateKey(l.expires!, zone)) return `"${s.title}"'s licence runs out on ${dateKey(l.expires!, zone)}, before this release. Renew it on the Music page.`;
   }
   return null;
+}
+
+// ---------------- Library music (the v4 package, 03: a refused request's routes include "authorized library music") ----------------
+// Built November 13, 2026. A production music library owns both a track's composition and its recording and licenses
+// them together on its own terms, without being asked: here every medium, worldwide, for LIBRARY_YEARS, at a fee per
+// scene it plays in. Replacing a song with a library track moves the song's uses in the cut (and its cues) to the track;
+// what was paid for the song stays paid. It is a sound change, so a locked picture allows it, but a scene performed on
+// screen can't take another song. Where an episode's final mix is already done, the track has to be laid into it:
+// half a day of the re-recording mixer's (post:relay), which delivery waits for. The library, its terms and its fee are
+// invented by the game and labelled so.
+export const LIBRARY_HOLDER = 'A Production Music Library';
+export const LIBRARY_FEE_PER_USE = 250;
+export const LIBRARY_YEARS = 10;
+export const RELAY_DAYS = 0.5;
+
+export function libraryRefusal(p: Project, songId: string): string | null {
+  if (!licensesSongs(p)) return 'This project clears its songs the way it always has.';
+  if (p.delivered) return 'This project is delivered; its songs are final.';
+  const song = songsOf(p).find((x) => x.id === songId);
+  if (!song) return 'That song is no longer part of the project.';
+  if (song.library) return `"${song.title}" is already library music.`;
+  if (!song.uses.length) return `"${song.title}" isn't in any scene.`;
+  const shot = song.uses.find((u) => u.placement === 'performed' && (p.captures.find((c) => c.sceneId === u.sceneId)?.captured ?? 0) > 0);
+  if (shot) return `"${song.title}" is performed on screen in footage already shot: a library track can't take its place there.`;
+  return null;
+}
+
+export const libraryFee = (p: Project, song: Song): number => Math.round(LIBRARY_FEE_PER_USE * (LICENCE_SCALE[p.funding.scenarioId] ?? 1) * Math.max(1, song.uses.length) / 10) * 10;
+
+/** Put a library track where the song plays, licensed and paid once now, and lay it into any mix already finished. */
+export function replaceWithLibrary(state: GameState, p: Project, songId: string): Song {
+  const no = libraryRefusal(p, songId);
+  if (no) throw new Error(no);
+  const old = songsOf(p).find((x) => x.id === songId)!;
+  const scenes = new Map([...p.scenes, ...p.drafts.flatMap((d) => d.scenes)].map((s) => [s.id, s.episode]));
+  const remix = [...new Set(old.uses.map((u) => scenes.get(u.sceneId) ?? 1))].filter((e) => p.tasks.some((x) => x.id === `post:mix:${e}` && x.status === 'done')).sort((a, b) => a - b);
+  let title = `Library Track For "${old.title}"`;
+  for (let n = 2; songsOf(p).some((x) => x.title === title); n++) title = `Library Track ${n} For "${old.title}"`;
+  const track: Song = { id: newId(state, 'song'), title, origin: 'existing', rights: 'licensed', writers: [], performers: [], uses: old.uses.map((u) => ({ ...u })), license: { holder: LIBRARY_HOLDER }, library: true, replaces: { songId: old.id, remix }, createdAt: state.now };
+  const fee = libraryFee(p, track);
+  old.uses = [];
+  for (const v of p.versions ?? []) for (const c of v.songChanges ?? []) if (c.songId === old.id) c.songId = track.id;
+  for (const c of p.music!.cues ?? []) if (c.songId === old.id) c.songId = track.id;
+  p.songs!.push(track);
+  const half = Math.round(fee / 2);
+  const l: SongLicence = { id: newId(state, 'lic'), songId: track.id, scope: { territories: 'worldwide', media: [...LICENCE_MEDIA], years: LIBRARY_YEARS }, composition: { holder: LIBRARY_HOLDER, answer: 'yes', fee: half }, recording: { holder: LIBRARY_HOLDER, answer: 'yes', fee: fee - half }, status: 'quoted', askedAt: state.now, answerAt: state.now };
+  p.music!.licences.push(l);
+  agreeLicence(state, p, l.id);
+  addLog(state, `${p.title}: a library track replaces "${old.title}", licensed for ${scopeWords(l.scope)} for ${money(fee)}.${remix.length ? ` It has to be laid into the finished mix of ${remix.length === 1 ? 'its episode' : `${remix.length} episodes`}.` : ''}`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'music' } });
+  return track;
+}
+
+/** The songs a release plays: the main cut's, or the chosen version's (its scenes, and the songs it changes). */
+export function releaseSongs(p: Project, scenes: import('./types').Scene[], cut?: string): Song[] {
+  const v = cut ? p.versions?.find((x) => x.id === cut) : undefined;
+  if (cut && !v) throw new Error('That version no longer exists.');
+  return [...new Set(songUses(p, v ? scenes.filter((s) => !v.leaveOut.includes(s.id)) : scenes, v).map((x) => x.song))];
 }

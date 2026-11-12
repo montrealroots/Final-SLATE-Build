@@ -1,11 +1,12 @@
 // Licences for existing songs (engine/music.ts; the v4 package, 03; ledger V4-024, V4-026.01, V4-026.02).
 import { describe, expect, it } from 'vitest';
 import {
-  LICENCE_ANSWER_DAYS, RENEWAL_SHARE, agreeLicence, holderFee, licenceTotal, releaseLicenceRefusal, renewLicence, renewalFee, requestLicence, requestRefusal, standingLicence,
+  LIBRARY_HOLDER, LIBRARY_YEARS, LICENCE_ANSWER_DAYS, LICENCE_MEDIA, RENEWAL_SHARE, agreeLicence, libraryFee, libraryRefusal, releaseSongs, replaceWithLibrary, holderFee, licenceTotal, releaseLicenceRefusal, renewLicence, renewalFee, requestLicence, requestRefusal, standingLicence,
   type LicenceScope,
 } from '../src/engine/music';
-import { attachSong, createSong, detachSong } from '../src/engine/song-actions';
-import { deliveryBlockers } from '../src/engine/finish';
+import { attachSong, createSong, detachSong, syncSongTasks } from '../src/engine/song-actions';
+import { deliveryBlockers, editScenes, planRelease } from '../src/engine/finish';
+import { buildTasks } from '../src/engine/production/tasks';
 import { ledgerTotals } from '../src/engine/budget';
 import { deserialize, serialize } from '../src/engine/save';
 import { processUntil } from '../src/engine/state';
@@ -127,5 +128,64 @@ describe('a project from before licences', () => {
     expect(requestRefusal(p, song.id, US)).toBe('This project clears its songs the way it always has.');
     expect(deliveryBlockers(p, s.now).some((x) => x.includes('licence'))).toBe(false);
     expect(releaseLicenceRefusal(p, [song], { route: 'theatrical', territories: ['FR'], date: '2030-01-01' }, s.now)).toBeNull();
+  });
+});
+
+describe('library music, a refused request\'s other route', () => {
+  it('takes the song\'s place in the cut, licensed on the library\'s terms and paid once; what was paid before stays paid', () => {
+    const { s, p, song } = film('lib-replace');
+    until(s, p, song.id, { territories: ['US', 'CA'], media: ['festival', 'theatrical', 'streaming', 'broadcast', 'digital'], years: 10 }, 'refused');
+    const fee = libraryFee(p, song);
+    const before = ledgerTotals(p).settled;
+    const track = replaceWithLibrary(s, p, song.id);
+    expect(ledgerTotals(p).settled - before).toBe(fee);
+    expect(song.uses).toEqual([]);
+    expect(track.uses.map((u) => u.sceneId)).toEqual([p.scenes[0].id]);
+    const l = standingLicence(p, track.id, s.now)!;
+    expect([l.composition.holder, l.recording.holder, l.scope.territories, l.scope.media, l.scope.years]).toEqual([LIBRARY_HOLDER, LIBRARY_HOLDER, 'worldwide', LICENCE_MEDIA, LIBRARY_YEARS]);
+    expect(deliveryBlockers(p, s.now).some((x) => x.includes('licence'))).toBe(false);
+    expect(releaseLicenceRefusal(p, [track], { route: 'theatrical', territories: ['FR', 'JP'], date: '2030-01-01' }, s.now)).toBeNull();
+    expect(libraryRefusal(p, track.id)).toBe(`"${track.title}" is already library music.`);
+    expect(requestRefusal(p, track.id, US)).toBe(`"${track.title}" is library music, licensed on the library's terms.`);
+    // Saved and loaded, it is not paid again.
+    const back = deserialize(serialize(s));
+    expect(ledgerTotals(back.projects[0]).settled).toBe(ledgerTotals(p).settled);
+  });
+
+  it('after an episode\'s final mix is done, it has to be laid into that mix, which delivery waits for; before, the mix includes it', () => {
+    const { s, p, song } = film('lib-relay');
+    p.tasks = buildTasks(p);
+    const fresh = replaceWithLibrary(s, deserialize(serialize(s)).projects[0], song.id); // labelled fixture: a copy, mix not done
+    expect(fresh.replaces).toEqual({ songId: song.id, remix: [] });
+    p.tasks.find((x) => x.id === 'post:mix:1')!.status = 'done'; // labelled fixture: the mix finished
+    const track = replaceWithLibrary(s, p, song.id);
+    syncSongTasks(p);
+    const relay = p.tasks.find((x) => x.id === `post:relay:${track.id}:1`)!;
+    expect([relay.units, relay.dependsOn]).toEqual([0.5, ['post:mix:1']]);
+    expect(p.tasks.filter((x) => x.status !== 'done').map((x) => x.id)).toContain(relay.id);
+  });
+
+  it('can\'t replace a song performed on screen in footage already shot', () => {
+    const { s, p } = film('lib-performed');
+    const sung = createSong(s, p, { title: 'Wake', source: 'licensed', holder: 'Gull Records', writers: [{ name: 'Ada Brook', music: true, lyrics: false }] });
+    p.edit.pictureLocked = false;
+    sung.uses.push({ sceneId: p.scenes[0].id, placement: 'performed', minutes: 1 }); // labelled fixture: performed in the scene
+    p.captures.push({ sceneId: p.scenes[0].id, captured: 1 } as Project['captures'][number]);
+    expect(libraryRefusal(p, sung.id)).toBe('"Wake" is performed on screen in footage already shot: a library track can\'t take its place there.');
+  });
+});
+
+describe('a version plays its own songs', () => {
+  it('a release of a version that takes the song out needs no licence for it; the main cut does', () => {
+    const { s, p, song } = film('lic-version');
+    p.edit.pictureLocked = true;
+    p.versions = [{ id: 'ver-x', label: 'Distribution Cut', leaveOut: [], songChanges: [{ sceneId: p.scenes[0].id, songId: song.id, replaceWith: null }] }]; // labelled fixture
+    expect(releaseSongs(p, editScenes(p))).toEqual([song]);
+    expect(releaseSongs(p, editScenes(p), 'ver-x')).toEqual([]);
+    expect(() => releaseSongs(p, editScenes(p), 'gone')).toThrow('That version no longer exists.');
+    p.delivered = { at: s.now, runtimeMin: 6 }; // labelled fixture: delivered without a licence
+    const date = '2027-03-01';
+    expect(() => planRelease(s, p, { route: 'digital', date, territories: ['US'] })).toThrow('"Harbour Lights" has no licence standing. Renew it, or replace it, on the Music page.');
+    expect(planRelease(s, p, { route: 'digital', date, territories: ['US'], cut: 'ver-x' }).cut).toBe('ver-x');
   });
 });

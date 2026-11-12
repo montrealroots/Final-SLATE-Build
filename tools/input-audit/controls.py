@@ -207,6 +207,7 @@ c(f, '"Episodes On The Premiere"', D, 'release.episodes', 'episode-releases.ts p
 c(f, '{`Episode ${i + 2}`}', D, 'release.episodes[].date', 'episode-releases.ts episodeDateProblem; awards-rules.ts airing; awards.ts ruledReleaseFits', 'A break or a split season: which episodes count in which year', U('episode-releases', 'custom dates with a break make a split season'), E('release-schedule', 'a series released across the year end'))
 c(f, '{`New Date For Episode ${e.number}`}', D, 'release.episodes[].date', 'episode-releases.ts setEpisodeDates; release-schedule.ts scheduleChangeEffects', 'Moves what is still to come, with its events, the calendar and any entry it affects shown first', U('episode-releases', 'a split season across the year end'), E('release-schedule', 'a series released across the year end'))
 c(f, '"Territory Code"', D, 'release.territories', 'awards.ts; finish.ts', 'Where it is released: territory rules and subtitling', U('qualifying-routes', 'a theatrical release abroad in the window qualifies'))
+c(f, '"Which Cut"', D, 'release.cut', 'finish.ts planRelease; music.ts releaseSongs, releaseLicenceRefusal', "The cut released: its songs are the ones whose licences must cover it", U('music', 'a release of a version that takes the song out needs no licence for it'))
 c(f, '"Show"', V)
 c(f, '"Project"', V)
 c(f, '"Show"', V, n=2)
