@@ -165,8 +165,10 @@ function TopBar({ railOpen, onMenu, drawer, hereLabel, onExit }: { railOpen: boo
       <div className="topbar-clock" aria-live="off">
         <strong className="clockface">{t.time.replace(' ', `:${String(p.second).padStart(2, '0')} `)}</strong>
         <span className="topbar-clock-sep" aria-hidden="true">·</span>
-        <span className="topbar-clock-date">{t.weekday}, {t.date}</span>
-        <span className="topbar-clock-zone">{formatZoneAbbrev(now, zone)}</span>
+        <span className="topbar-clock-when">
+          <span className="topbar-clock-date">{t.weekday}, {t.date}</span>
+          <span className="topbar-clock-zone">{formatZoneAbbrev(now, zone)}</span>
+        </span>
         <span className="clock-state" data-running={running}>{g.sleep.asleep ? 'Asleep' : running ? 'Running' : 'Paused'}</span>
       </div>
       <div className="topbar-time row gap-2" role="group" aria-label="Time">
