@@ -32,7 +32,10 @@ import { FollowButton } from './Places';
 import { editScenes } from '../engine/finish';
 import { reviseEffects, rerecordLines } from '../engine/revisions';
 import { countryName } from '../world/gazetteer/gazetteer';
-import { EXCLUSIVE_DAYS, offerConflicts } from '../engine/finish';
+import { EXCLUSIVE_DAYS, dubbingCost, offerConflicts, setReleaseVersion, versionLanguages, versionRefusal } from '../engine/finish';
+import { DUBBED_REACH } from '../engine/script-effects';
+import { studioFilms } from '../engine/studios';
+
 import { REPORT_MONTHS } from '../engine/distribution';
 import { personById } from '../engine/people';
 import { VERSION_LABELS, addVersion, removeVersion, versionCredits, versionRuntime } from '../engine/versions';
@@ -574,7 +577,8 @@ export function ReleaseTab({ p }: { p: Project }) {
         {p.premiere && <p>Premiered {formatDateKey(p.premiere.date)} at {p.premiere.venue}.</p>}
         {p.releases.length ? <ul className="list">{p.releases.map((r) => (
           <li key={r.id}>
-            <div className="row-wrap"><span className="grow">{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''}{r.note ? <span className="dim"> {r.note}</span> : null} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && <button className="btn btn-sm btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</div>
+            <div className="row-wrap"><span className="grow">{ROUTE_LABELS[r.route]} in {r.territories.join(', ')} on {formatDateKey(r.date)}{r.distributor ? ` with ${r.distributor}` : ''}{r.note ? <span className="dim"> {r.note}</span> : null} <span className="chip">{{ released: 'Released', planned: 'Planned', cancelled: 'Cancelled' }[r.status]}</span></span>{r.status === 'planned' && !p.offers.find((o) => o.id === r.offerId)?.studioDeal && <button className="btn btn-sm btn-danger" onClick={() => setCancelling(r.id)}>Cancel Release</button>}</div>
+            <ReleaseVersion p={p} r={r} />
             <ReleaseCinemas p={p} r={r} />
             {r.episodes?.length ? (
               <details className="small">
@@ -1166,3 +1170,33 @@ function RuleNotes({ ed, categoryId }: { ed: Parameters<typeof categoryRules>[0]
     </details>
   );
 }
+
+/**
+ * The version a distributor's release opens in where the territories' language isn't the film's, and the studios' films
+ * opening the same week (finish.ts setReleaseVersion; studios.ts). The second is information: it changes no figure.
+ */
+function ReleaseVersion({ p, r }: { p: Project; r: ReleaseRecord }) {
+  const g = useGame();
+  const [err, setErr] = useState<string | null>(null);
+  const languages = versionLanguages(p, r);
+  const rivals = r.route === 'theatrical' && r.status !== 'cancelled' ? studioFilms(g, addDaysToKey(r.date, -7), addDaysToKey(r.date, 7)) : [];
+  const name = (c: string) => g.industry?.studios?.find((x) => x.c === c)?.name ?? 'a studio';
+  if (!r.offerId || (!languages.length && !rivals.length)) return null;
+  const why = versionRefusal(p, r);
+  const cost = dubbingCost(p, r);
+  return (
+    <div className="dim">
+      {languages.length > 0 && (r.status === 'planned' && !why ? (
+        <div className="inline-form">
+          <SelectField label={`Version In ${r.territories.map(countryName).join(', ')}`} value={r.version ?? 'subtitled'}
+            options={[{ value: 'subtitled', label: 'Subtitled' }, { value: 'dubbed', label: `Dubbed (${money(cost)})` }]}
+            onChange={(v) => setErr(store.act((s) => setReleaseVersion(s, s.projects.find((x) => x.id === p.id)!, r.id, v as 'subtitled' | 'dubbed')))}
+            hint={`Subtitles come with ${r.distributor}'s materials. A dubbed version is yours to pay for: ${money(cost)}, set aside now and paid on release. Where it is dubbed, a territory counts for ${DUBBED_REACH} in ${r.distributor}'s reports, against 1 subtitled.`} />
+        </div>
+      ) : <p style={{ margin: 0 }}>Shown {r.version ?? 'subtitled'} where the language isn't the film's.</p>)}
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      {rivals.length > 0 && <p style={{ margin: 0 }}>Opening within a week of it: {rivals.slice(0, 4).map((f) => `${f.title} (${name(f.company)})`).join(', ')}{rivals.length > 4 ? `, and ${rivals.length - 4} more` : ''}. For your information: it changes no figure.</p>}
+    </div>
+  );
+}
+

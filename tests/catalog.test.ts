@@ -6,7 +6,7 @@ import { existsSync, mkdtempSync, readFileSync, readdirSync, writeFileSync } fro
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { beforeAll, describe, expect, it } from 'vitest';
-import { COMPANIES, DISCOVERED, LEADERSHIP, REGISTRY_CHECKED, REGISTRY_CHECKED_NBCU, checkedFor, company } from '../src/catalog/registry';
+import { COMPANIES, DISCOVERED, LEADERSHIP, REGISTRY_CHECKED, REGISTRY_CHECKED_NBCU, checkedFor, company, groupOf, joinedGroup } from '../src/catalog/registry';
 import { ageAt, fileFor, filmographyView, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, standingAt, titleStanding, type FilmographyEntry } from '../src/catalog/model';
 
 const CACHE = mkdtempSync(join(tmpdir(), 'slate-catalog-cache-'));
@@ -44,16 +44,45 @@ describe('the company registry', () => {
 
   it('gathers titles for production companies only: networks and streaming services are where titles air, not who made them', () => {
     const networks = COMPANIES.filter((c) => c.kind === 'network');
-    expect(networks.map((c) => c.name)).toEqual(['Disney+', 'Hulu', 'ABC', 'Disney Channel', 'FX', 'NBC', 'Peacock', 'Bravo', 'Telemundo']);
+    expect(networks.map((c) => c.name)).toEqual(['Disney+', 'Hulu', 'ABC', 'Disney Channel', 'FX', 'NBC', 'Peacock', 'Bravo', 'Telemundo',
+      'Paramount+', 'Pluto TV', 'CBS', 'Nickelodeon', 'MTV', 'BET', 'Comedy Central', 'HBO Max', 'HBO (The Channel)', 'Cartoon Network', 'CNN', 'Crunchyroll']);
     for (const n of networks) { expect(n.tmdb).toBeNull(); expect(DISCOVERED).not.toContain(n); }
-    expect(DISCOVERED).toHaveLength(42); // 32 Disney records, and 10 NBCUniversal's from November 11, 2026
+    // 32 Disney records and 10 NBCUniversal's; from milestone F, 19 of Paramount's and Skydance Media's, 19 of Warner Bros.' and 12 of Sony's.
+    expect(DISCOVERED).toHaveLength(92);
+    expect(new Set(COMPANIES.map((c) => c.id)).size).toBe(COMPANIES.length);
+    expect(new Set(DISCOVERED.map((c) => c.tmdb!.id)).size).toBe(DISCOVERED.length);
+  });
+
+  it('dates each group\'s ownership from an official source, and gives no date where none was read', () => {
+    // Warner Bros.' labels came under Skydance on October 6, 2026, Paramount's on August 7, 2025: a title before that day isn't the group's.
+    expect(joinedGroup('company:warner-bros-pictures')).toMatchObject({ from: '2026-10-06' });
+    expect(joinedGroup('company:hbo')).toMatchObject({ from: '2026-10-06' });
+    expect(joinedGroup('company:paramount-pictures')).toMatchObject({ from: '2025-08-07' });
+    expect(joinedGroup('company:skydance-animation')).toMatchObject({ from: '2025-08-07' });
+    for (const id of ['company:warner-bros-pictures', 'company:paramount-pictures']) expect(joinedGroup(id)!.source!.url).toMatch(/^https:\/\/www\.(sec\.gov|skydance\.com)\//);
+    expect(groupOf('company:new-line-cinema')!.name).toBe('Skydance');
+    // Sony's pages couldn't be read, so no acquisition date is claimed for its labels.
+    expect(groupOf('company:columbia-pictures')!.name).toBe('Sony Group Corporation');
+    expect(joinedGroup('company:columbia-pictures')).toBeNull();
+    expect(company('company:columbia-pictures')!.notes.join(' ')).toContain("isn't recorded");
+    expect(checkedFor('company:tristar-pictures')).toBe('2026-11-11');
+  });
+
+  it('shows Skydance\'s leaders only from the day the company took that form, and as current only once its page was read', () => {
+    const sky = (today: string) => leadershipAt('company:skydance', today, checkedFor('company:skydance')).map((x) => `${x.role.name}|${x.standing}`);
+    expect(sky('2026-10-05')).toEqual([]);
+    expect(sky('2026-10-06')).toContain('David Ellison|announced');
+    expect(sky('2026-11-11')).toContain('David Ellison|current');
+    expect(leadershipAt('company:dc-studios', '2026-11-11', checkedFor('company:dc-studios')).map((x) => x.role.name)).toEqual(['James Gunn', 'Peter Safran']);
+    // Sony's structure names its chief executive without a start date: listed before the registry was read, current after.
+    expect(leadershipAt('company:sony-pictures-entertainment', '2026-01-05', '2026-11-11').map((x) => `${x.role.name}|${x.standing}`)).toEqual(['Ravi Ahuja|listed']);
   });
 
   it('records leadership from official sources only, at companies it knows', () => {
     for (const r of LEADERSHIP) {
       expect(company(r.companyId), r.name).toBeDefined();
       expect(r.sources.length).toBeGreaterThan(0);
-      for (const s of r.sources) expect(s.url).toMatch(/^https:\/\/(thewaltdisneycompany\.com|www\.lucasfilm\.com|www\.starwars\.com|www\.pixar\.com|www\.sec\.gov|www\.nbcuniversal\.com)\//);
+      for (const s of r.sources) expect(s.url).toMatch(/^https:\/\/(thewaltdisneycompany\.com|www\.lucasfilm\.com|www\.starwars\.com|www\.pixar\.com|www\.sec\.gov|www\.nbcuniversal\.com|www\.skydance\.com)\//);
     }
   });
 });

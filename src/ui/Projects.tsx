@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { theBacker } from '../engine/backer-words';
 import { LANGUAGES, languageName } from '../data/identity';
 import { getPlace, placeLabel } from '../data/places';
 import {
@@ -271,9 +272,9 @@ function nextStep(p: Project): { text: string; tab: Tab } {
   if (p.approvedDraft === null) return { text: 'Save a draft and approve it to start planning production. Backers read an approved script before they fund it.', tab: 'script' };
   const fin = financeSummary(p);
   const offer = deals(p).find((d) => d.status === 'offered');
-  if (offer) return { text: `The ${offer.backer.toLowerCase()} offered ${money(offer.amount)}. Read the terms before you accept.`, tab: 'budget' };
+  if (offer) return { text: `${theBacker(offer, true)} offered ${money(offer.amount)}. Read the terms before you accept.`, tab: 'budget' };
   const waiting = deals(p).find((d) => d.status === 'considering');
-  if (fin.received <= 0 && waiting) return { text: `The ${waiting.backer.toLowerCase()} is considering your project. Their answer is due ${formatDateKey(dateKey(waiting.decideAt ?? 0, getPlace(p.axes.basePlaceId).zone))}.`, tab: 'budget' };
+  if (fin.received <= 0 && waiting) return { text: `${theBacker(waiting, true)} is considering your project. Their answer is due ${formatDateKey(dateKey(waiting.decideAt ?? 0, getPlace(p.axes.basePlaceId).zone))}.`, tab: 'budget' };
   if (fin.received <= 0 && !p.delivered) return { text: `Raise money: no backer has paid in yet, and hiring needs money. Your target is ${money(fin.target)}.`, tab: 'budget' };
   const uncast = p.requirements.filter((r) => r.kind === 'performer' && r.status === 'needed').length - new Set(p.cast.map((c) => c.characterId)).size;
   if (uncast > 0) return { text: `${plural(uncast, 'role')} still ${uncast === 1 ? 'needs' : 'need'} casting.`, tab: 'cast' };

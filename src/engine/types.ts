@@ -449,7 +449,7 @@ export interface CastAssignment {
   hireId?: string;
 }
 
-export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital';
+export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio';
 
 /** A backer approached for a project, and what was agreed (finance.ts). */
 export interface FinanceDeal {
@@ -485,6 +485,12 @@ export interface FinanceDeal {
    * Story panel never change it. Approaches made before then have only the names.
    */
   sentCopy?: { draft: number | null; documents: { name: string; fields: { label: string; text: string }[] }[] };
+  /**
+   * A followed studio's read of the pitch (strategy.ts pitchRead), kept as it was given: the verdict, what counted for
+   * and against, what would change it, the year it was read for, and, for an option or an offer, where and in which
+   * month the studio releases the film. `v` is the strategy's version. Only on deals of kind 'studio'.
+   */
+  studio?: { company: string; v: number; verdict: 'pass' | 'notes' | 'option' | 'offer'; for: string[]; against: string[]; next: string; year: number; territories: string[]; window: number | null; releaseId?: string };
 }
 
 export interface ProjectFinance {
@@ -733,6 +739,14 @@ export interface ReleaseRecord {
   episodes?: EpisodeRelease[];
   /** How the dates were chosen; 'assumed' when an older save's dates were reconstructed (episode-releases.ts). */
   pattern?: ReleasePattern;
+  /**
+   * The version shown where the territories' language isn't one the dialogue is in (finish.ts setReleaseVersion):
+   * subtitled, which the distributor's materials cover, or dubbed, which you pay for and which reaches more people
+   * there. Unset on a release from before November 11, 2026, which is read as subtitled.
+   */
+  version?: 'subtitled' | 'dubbed';
+  /** The budget line a dubbed version is paid from, on release. */
+  dubObligationId?: string;
 }
 
 export type ReleasePattern = 'all' | 'weekly' | 'premiere-weekly' | 'custom' | 'assumed';
@@ -775,6 +789,8 @@ export interface DistributionOffer {
   exclusiveUntil?: string;
   /** What the distributor has reported since release (distribution.ts): gross, after its fee, and overage paid. */
   reported?: { gross: number; net: number; overagePaid: number };
+  /** A studio that backed the film releasing it as a term of its deal (finance.ts): the deal's id. No guarantee is paid. */
+  studioDeal?: string;
 }
 
 export interface Project {

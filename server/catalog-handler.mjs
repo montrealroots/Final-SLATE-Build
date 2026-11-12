@@ -64,9 +64,11 @@ export function offeredMods(packsDir, now = Date.now(), films = true) {
   if (!packsDir || !existsSync(packsDir)) return [];
   return readdirSync(packsDir).filter((f) => f.endsWith('.slatepack')).sort().flatMap((file) => {
     const h = readPackHeader(join(packsDir, file));
-    if (!h || h.format !== 1 || (h.kind !== 'catalog' && h.kind !== 'cinemas')) return [];
-    if (h.kind === 'catalog' && !films) return [];
-    if (h.kind === 'catalog' && !(Date.parse(h.retrieved?.from) + MAX_AGE_DAYS * DAY > now)) return [];
+    if (!h || h.format !== 1 || (h.kind !== 'catalog' && h.kind !== 'cinemas' && h.kind !== 'images')) return [];
+    // The pictures are TMDB's too: offered to the owner alone, and never past the same six months.
+    const tmdb = h.kind === 'catalog' || h.kind === 'images';
+    if (tmdb && !films) return [];
+    if (tmdb && !(Date.parse(h.retrieved?.from) + MAX_AGE_DAYS * DAY > now)) return [];
     return [{ file, kind: h.kind, name: h.name, source: h.source, builtAt: h.builtAt, ...(h.retrieved ? { retrieved: h.retrieved } : {}), files: h.files, bytes: statSync(join(packsDir, file)).size }];
   });
 }
@@ -240,12 +242,18 @@ function serveMod(req, res, name, packsDir, now, films) {
   }
   const mod = mods.find((m) => m.file === name);
   if (!mod) { res.statusCode = 404; res.setHeader('cache-control', 'no-cache'); res.end(); return; }
-  res.statusCode = 200;
+  // A download cut off part-way asks for the rest ("Range: bytes=N-"); nothing else about ranges is supported.
+  res.setHeader('accept-ranges', 'bytes');
+  const range = /^bytes=(\d+)-$/.exec(String(req.headers.range ?? ''));
+  const from = range ? Number(range[1]) : 0;
+  if (range && from >= mod.bytes) { res.statusCode = 416; res.setHeader('content-range', `bytes */${mod.bytes}`); res.setHeader('cache-control', 'no-cache'); res.end(); return; }
+  res.statusCode = range ? 206 : 200;
   res.setHeader('content-type', 'application/octet-stream');
-  res.setHeader('content-length', String(mod.bytes));
-  // Kept an hour at most, and never past a film pack's six months.
+  res.setHeader('content-length', String(mod.bytes - from));
+  if (range) res.setHeader('content-range', `bytes ${from}-${mod.bytes - 1}/${mod.bytes}`);
+  // Kept an hour at most, and never past a film or picture pack's six months.
   const ends = mod.retrieved ? Date.parse(mod.retrieved.from) + MAX_AGE_DAYS * DAY : Infinity;
-  res.setHeader('cache-control', `${mod.kind === 'catalog' ? 'private' : 'public'}, max-age=${Math.max(0, Math.min(3600, Math.floor((ends - now) / 1000)))}`);
+  res.setHeader('cache-control', `${mod.kind === 'cinemas' ? 'public' : 'private'}, max-age=${Math.max(0, Math.min(3600, Math.floor((ends - now) / 1000)))}`);
   if (req.method === 'HEAD') { res.end(); return; }
-  createReadStream(join(packsDir, mod.file)).on('error', () => { if (!res.headersSent) res.statusCode = 500; res.end(); }).pipe(res);
+  createReadStream(join(packsDir, mod.file), { start: from }).on('error', () => { if (!res.headersSent) res.statusCode = 500; res.end(); }).pipe(res);
 }

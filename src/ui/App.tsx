@@ -36,7 +36,7 @@ function useLivingWorld(saveKey: string | null): void {
     startLivingWorld(() => live);
     expireSources();
     void expirePeople();
-    const hourly = setInterval(() => { expireSources(); void expirePeople(); }, 3_600_000);
+    const hourly = setInterval(() => { expireSources(); void expirePeople(); void expireInstalledPacks(); }, 3_600_000);
     return () => { live = false; clearInterval(hourly); };
   }, [saveKey]);
 }
@@ -56,6 +56,21 @@ export function startLivingWorld(live: () => boolean = () => true): void {
     store.worldVersion += 1;
     store.emit();
   });
+}
+
+/**
+ * A film or picture pack that passes TMDB's six months while the game stays open is deleted within the hour, and the
+ * pages read the catalog afresh, so a long-open game never goes on showing what should be gone (packs.ts expirePacks).
+ */
+async function expireInstalledPacks(): Promise<void> {
+  const { expirePacks } = await import('../catalog/packs');
+  const gone = await expirePacks();
+  if (!gone.length) return;
+  const { forgetCatalog, retryCatalog } = await import('../catalog/load');
+  forgetCatalog();
+  retryCatalog();
+  if (gone.includes('catalog') && store.state) (await import('../engine/industry')).setIndustryWorld(null);
+  store.emit();
 }
 
 /**

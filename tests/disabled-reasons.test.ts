@@ -23,6 +23,7 @@ const REASONS: Record<string, string> = {
   'Places.tsx | !!g.travel': 'The trip line says you are travelling already.',
   'PlanViews.tsx | !!d.counter && !d.counter.outcome': 'The counter line says when their answer is due and that the offer can\'t be accepted until then.',
   'PlanViews.tsx | !o.ready': 'The backer row shows what approaching them needs.',
+  'StudioPitch.tsx | !!o.needs': "The studio's row shows what pitching to it needs.",
   'PlanViews.tsx | !proposal.proposals.length': 'The staffing dialog lists why each role was skipped.',
   'PlanViews.tsx | !!why': 'The reason is shown beside the button (and as its title for Invite To Read).',
   'PlanViews.tsx | !!p.delivered': 'The Crew and Schedule pages say the project has been delivered.',

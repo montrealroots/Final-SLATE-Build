@@ -5,6 +5,34 @@ and labels and their leadership, and the films and series TMDB credits to them, 
 and people. Nothing in it changes the simulation. The coverage figures from the gathering run are in
 `docs/CATALOG-COVERAGE.md`.
 
+## Skydance (Paramount And Warner Bros.) And Sony (November 11, 2026)
+
+The Creative Depth package asked for the Warner Bros., Sony Pictures and Paramount families, as discovery targets to be
+checked against official sources on the day. Checked that day:
+
+- **Paramount and Warner Bros. are one group now.** Paramount completed its purchase of Warner Bros. Discovery on
+  October 6, 2026, and the company took the name Skydance (its release of that day). Before that it was Paramount
+  Skydance Corporation, formed on August 7, 2025 when Paramount Global and Skydance Media were combined (its Form
+  8-K12B). So the registry has one group, Skydance, with two dates: a Paramount label's titles before August 7, 2025,
+  and a Warner Bros. label's before October 6, 2026, came out before this company owned the label. Who owned them
+  before isn't recorded.
+- **Sony.** Sony Group Corporation, and under it Sony Pictures Entertainment, whose President and CEO Sony Group's
+  management structure of April 1, 2025 names (its Form 6-K). Sony's own sites refuse automated readers and its annual
+  report was too large to read, so when Sony bought Columbia Pictures, or Crunchyroll, isn't recorded: its labels are
+  placed under Sony Pictures Entertainment with no date, and no title is marked as made before Sony owned its label.
+- **Companies.** 19 of Paramount's and Skydance Media's, 19 of Warner Bros.' and 12 of Sony's have their titles
+  gathered; 11 networks and services of Skydance's and Crunchyroll are listed without titles. Each TMDB ID was found by
+  search and checked against the company's TMDB details.
+- **Leadership.** Skydance's seventeen, from its leadership page, which gives no dates: each is hidden before October
+  6, 2026, Announced from then, and current from the day the page was read. Sony Pictures Entertainment's chief
+  executive, from the 6-K. No head of Paramount Pictures, Warner Bros. Pictures, HBO, Columbia Pictures or Sony
+  Pictures Television is listed, and each page says why.
+- **Left out, on purpose.** Discovery's unscripted channels' own productions, Turner Pictures, the studios' regional
+  arms, Miramax (a minority holding with no official source read), Left Bank Pictures and Bad Wolf (ownership not read
+  from an official source), TMDB's second records for Paramount Television Studios and Sony Pictures, and the two
+  Crunchyroll company records. None is claimed either way.
+- **The data.** TMDB's, gathered as Disney's is, and the owner's alone (`docs/DEPLOYMENT.md`).
+
 ## NBCUniversal (November 11, 2026)
 
 The owner asked for Universal once the foundation was done. The registry (`src/catalog/registry.ts`) now holds Comcast,

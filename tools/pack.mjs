@@ -1,7 +1,8 @@
 // Builds the data packs a player installs in Settings (docs/DATA-PACKS.md): the film catalog from .screen-catalog/ and
 // the cinemas from .cinemas/. They are written to packs/, which is kept out of the repository: the catalog is TMDB's
 // content, and who may be given a copy is the owner's decision (docs/DEPLOYMENT.md).
-//   node tools/pack.mjs [catalog|cinemas ...]
+//   node tools/pack.mjs [catalog|cinemas|images ...]
+// The picture pack (images) is optional and made only when asked for: tools/screen-catalog/images.mjs gathers it.
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, relative } from 'node:path';
 import { writePack } from './pack-format.mjs';
@@ -14,20 +15,27 @@ function* jsonFiles(base, prefix, dir = base) {
     else if (e.name.endsWith('.json')) yield [prefix + relative(base, p).split('\\').join('/'), readFileSync(p, 'utf8')];
   }
 }
-const DIRS = { catalog: '.screen-catalog', cinemas: '.cinemas' };
+const DIRS = { catalog: '.screen-catalog', cinemas: '.cinemas', images: '.screen-images' };
+/** A picture pack's files: its index, and each picture's bytes under the path the game asks for. */
+function* pictureFiles(dir, index) {
+  const { files, ...rest } = index;
+  yield ['images/index.json', JSON.stringify(rest)];
+  for (const [subject, file] of Object.entries(files)) yield [`images/${subject.replace(':', '/')}`, readFileSync(join(dir, file))];
+}
 const day = (iso) => iso.slice(0, 10);
 const kinds = process.argv.slice(2).length ? process.argv.slice(2) : ['catalog', 'cinemas'];
 mkdirSync('packs', { recursive: true });
 for (const kind of kinds) {
   const dir = DIRS[kind];
-  if (!dir) throw new Error(`Unknown pack "${kind}": catalog or cinemas.`);
+  if (!dir) throw new Error(`Unknown pack "${kind}": catalog, cinemas or images.`);
   if (!existsSync(join(dir, 'index.json'))) { console.log(`${kind}: nothing gathered in ${dir}, skipped`); continue; }
   const index = JSON.parse(readFileSync(join(dir, 'index.json'), 'utf8'));
   const meta = kind === 'catalog'
     ? { kind, name: 'Films And Series', source: 'TMDB', builtAt: index.builtAt, retrieved: index.retrieved }
+    : kind === 'images' ? { kind, name: index.name ?? 'Pictures', source: 'TMDB', builtAt: index.builtAt, retrieved: index.retrieved }
     : { kind, name: 'Cinemas', source: 'Wikidata (CC0)', builtAt: index.builtAt };
-  if (kind === 'catalog' && !index.retrieved?.from) throw new Error('The catalog index records no retrieval date, so its six months can\'t be kept.');
-  const files = [...jsonFiles(dir, kind === 'cinemas' ? 'cinemas/' : '')];
+  if (kind !== 'cinemas' && !index.retrieved?.from) throw new Error(`The ${kind} index records no retrieval date, so its six months can\'t be kept.`);
+  const files = kind === 'images' ? [...pictureFiles(dir, index)] : [...jsonFiles(dir, kind === 'cinemas' ? 'cinemas/' : '')];
   const out = join('packs', `slate-${kind}-${day(index.builtAt)}.slatepack`);
   const buf = writePack(meta, files);
   writeFileSync(out, buf);

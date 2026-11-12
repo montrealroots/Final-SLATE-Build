@@ -1,11 +1,14 @@
-// The companies the catalog covers, and their leadership: The Walt Disney Company's, researched November 10, 2026, and
-// NBCUniversal's (Comcast's), researched November 11, 2026 (docs/CATALOG.md).
+// The companies the catalog covers, and their leadership: The Walt Disney Company's, researched November 10, 2026;
+// NBCUniversal's (Comcast's), researched November 11, 2026; and, the same day, Skydance's (Paramount's and Warner
+// Bros.') and Sony's, for the Creative Depth package's milestone F (docs/CATALOG.md).
 //
 // Each entry is one company record as TMDB holds it: its TMDB ID was found by search and checked against the company's
 // own TMDB details (name, country, headquarters) that day, never guessed. A credited name stays as credited: 20th Century
 // Fox and 20th Century Studios are two records, because TMDB credits titles to the name a company had at the time, and
 // a film credited to 20th Century Fox in 1997 wasn't a Disney production. Ownership is the relationship to the company's
-// group (The Walt Disney Company, or Comcast through NBCUniversal), with a date only where an official source gives one.
+// group (The Walt Disney Company, Comcast through NBCUniversal, Skydance, or Sony Group through Sony Pictures
+// Entertainment), with a date only where an official source gives one. A group is who owns a company on the day the
+// registry was read, not a claim about any earlier day: each acquisition's date says when that began.
 //
 // Leadership comes from the companies' own leadership pages and announcements, never from screen credits. Dates are
 // what the sources state; where a source gives none, the field is null and the page says so.
@@ -23,7 +26,7 @@ export interface CompanyRecord {
   /** The TMDB company record, checked by search and company details; null for a company TMDB lists only as a network or not at all. */
   tmdb: { id: number; name: string; country: string; headquarters: string } | null;
   website: string | null;
-  /** Its place in its group (groupOf): The Walt Disney Company, or Comcast through NBCUniversal. */
+  /** Its place in its group (groupOf): The Walt Disney Company, Comcast through NBCUniversal, Skydance, or Sony Group. */
   parent: { id: string; how: 'division' | 'acquired'; from: string | null; source: Source | null } | null;
   /** Earlier or later names held as separate records, with how they relate. */
   related: { id: string; relation: string }[];
@@ -49,12 +52,18 @@ const S = {
   nbcuSpin: { url: 'https://www.sec.gov/Archives/edgar/data/0001166691/000095010326009591/dp249094_ex9901.htm', title: 'Comcast Corporation, Form 8-K, Exhibit 99.1: Comcast to separate NBCUniversal and Sky (announced June 29, 2026)', published: '2026-06-29' },
   nbcuLeaders: { url: 'https://www.nbcuniversal.com/leadership', title: 'NBCUniversal: Leadership', published: null },
   cinemacon: { url: 'https://www.nbcuniversal.com/article/christopher-nolan-steven-spielberg-and-chris-meledandri-lead-nbcuniversals-2026-cinemacon-showcase', title: "Christopher Nolan, Steven Spielberg, and Chris Meledandri Lead NBCUniversal's 2026 CinemaCon Showcase", published: '2026-04' },
+  skyMerger: { url: 'https://www.sec.gov/Archives/edgar/data/2041610/000119312525175046/d841914d8k12b.htm', title: 'Paramount Skydance Corporation, Form 8-K12B (the business combination completed August 7, 2025; Skydance and Paramount each became its wholly owned subsidiaries)', published: '2025-08-07' },
+  skyWbd: { url: 'https://www.skydance.com/news/press/paramount-completes-acquisition-of-warner-bros-discovery-creating-a-new-global-entertainment-leader-skydance', title: 'Paramount Completes Acquisition of Warner Bros. Discovery, Creating a New Global Entertainment Leader, Skydance', published: '2026-10-06' },
+  skyLeaders: { url: 'https://www.skydance.com/about/leadership', title: 'Skydance: Leadership', published: null },
+  sonyStructure: { url: 'https://www.sec.gov/Archives/edgar/data/313838/000110465925006885/tm254786d1_6k.htm', title: "Sony Group Corporation, Form 6-K: Sony Group's New Management Structure (as of April 1, 2025)", published: '2025-01-29' },
 } satisfies Record<string, Source>;
 
 /** When the registry was researched: TMDB IDs checked, leadership pages read. Disney's companies, November 10, 2026. */
 export const REGISTRY_CHECKED = '2026-11-10';
 /** NBCUniversal's companies were researched a day later, when the owner asked for Universal. */
 export const REGISTRY_CHECKED_NBCU = '2026-11-11';
+/** Skydance's and Sony's companies, the same day as NBCUniversal's, for the Creative Depth package. */
+export const REGISTRY_CHECKED_F = '2026-11-11';
 
 const TWDC = 'company:the-walt-disney-company';
 const STUDIOS = 'company:the-walt-disney-studios';
@@ -65,6 +74,22 @@ const COMCAST = 'company:comcast';
 const NBCU = 'company:nbcuniversal';
 const nbcu = (how: 'division' = 'division') => ({ id: NBCU, how, from: null, source: null });
 const dwa = () => ({ id: NBCU, how: 'acquired' as const, from: '2016-08-22', source: S.dreamworks });
+const SKY = 'company:skydance';
+const SONY = 'company:sony-group';
+const SPE = 'company:sony-pictures-entertainment';
+/** Paramount's and Skydance Media's companies: under the combined company from August 7, 2025. */
+const par = () => ({ id: SKY, how: 'acquired' as const, from: '2025-08-07', source: S.skyMerger });
+/** Warner Bros. Discovery's companies: under it from October 6, 2026. */
+const wbd = () => ({ id: SKY, how: 'acquired' as const, from: '2026-10-06', source: S.skyWbd });
+const sony = () => ({ id: SPE, how: 'division' as const, from: null, source: null });
+const LABEL = 'Placed here as a Warner Bros. label. No official source for when it became one was read on November 11, 2026; the date given is the day Skydance took over Warner Bros. Discovery.';
+const PLABEL = 'Placed here as a Paramount label. No official source for when it became one was read on November 11, 2026; the date given is the day the combined company was formed.';
+const SLABEL = "Placed here as a Sony Pictures label. When it became one isn't recorded: Sony's own pages refuse automated readers, and no other official source was read on November 11, 2026.";
+type Kind = CompanyRecord['kind'];
+const rec = (slug: string, name: string, kind: Kind, id: number, country: string, hq: string, parent: CompanyRecord['parent'], notes: string[] = [], related: CompanyRecord['related'] = []): CompanyRecord =>
+  ({ id: `company:${slug}`, name, kind, roles: ['production'], tmdb: tm(id, name, country, hq), website: null, parent, related, notes });
+const net = (slug: string, name: string, role: 'network' | 'streaming', website: string, parent: CompanyRecord['parent'], notes: string[] = []): CompanyRecord =>
+  ({ id: `company:${slug}`, name, kind: 'network', roles: [role], tmdb: null, website, parent, related: [], notes });
 
 export const COMPANIES: CompanyRecord[] = [
   { id: TWDC, name: 'The Walt Disney Company', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://thewaltdisneycompany.com', parent: null,
@@ -144,6 +169,81 @@ export const COMPANIES: CompanyRecord[] = [
   { id: 'company:peacock', name: 'Peacock', kind: 'network', roles: ['streaming'], tmdb: null, website: 'https://www.peacocktv.com', parent: nbcu(), related: [], notes: ['A title being on Peacock does not make it an NBCUniversal production.'] },
   { id: 'company:bravo', name: 'Bravo', kind: 'network', roles: ['network'], tmdb: null, website: 'https://www.bravotv.com', parent: nbcu(), related: [], notes: [] },
   { id: 'company:telemundo', name: 'Telemundo', kind: 'network', roles: ['network'], tmdb: null, website: 'https://www.telemundo.com', parent: nbcu(), related: [], notes: [] },
+
+  // Skydance: Paramount and Warner Bros. (November 11, 2026). TMDB IDs found by search and checked against each company's
+  // TMDB details that day.
+  { id: SKY, name: 'Skydance', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://www.skydance.com', parent: null, related: [],
+    notes: ['Named Paramount Skydance Corporation from August 7, 2025, when Paramount Global and Skydance Media were combined under it, until October 6, 2026, when it completed its purchase of Warner Bros. Discovery and took the name Skydance.',
+      'A title credited to a Paramount label before August 7, 2025, or to a Warner Bros. label before October 6, 2026, came out before this company owned that label.',
+      "Who owned Paramount's and Warner Bros.' labels before those days isn't recorded here."] },
+  { ...rec('paramount-pictures', 'Paramount Pictures', 'film', 4, 'US', 'Hollywood, California', par(), ['TMDB lists Viacom International as its parent record.']), roles: ['production', 'distribution'], website: 'https://www.paramountpictures.com' },
+  rec('paramount-animation', 'Paramount Animation', 'film', 24955, 'US', 'Los Angeles, California', par(), [PLABEL]),
+  rec('paramount-players', 'Paramount Players', 'film', 96540, 'US', 'Los Angeles, California', par(), [PLABEL]),
+  rec('paramount-vantage', 'Paramount Vantage', 'film', 838, 'US', '', par(), [PLABEL, 'TMDB lists Paramount Pictures as its parent record.']),
+  rec('paramount-classics', 'Paramount Classics', 'film', 220287, 'US', '', par(), [PLABEL]),
+  rec('nickelodeon-movies', 'Nickelodeon Movies', 'film', 2348, 'US', 'Los Angeles, California', par(), [PLABEL]),
+  rec('mtv-films', 'MTV Films', 'film', 746, 'US', '', par(), [PLABEL]),
+  rec('cbs-films', 'CBS Films', 'film', 5490, 'US', 'Los Angeles, California, USA', par(), [PLABEL]),
+  rec('skydance-media', 'Skydance Media', 'film', 82819, 'US', 'Santa Monica, California', par(), ['One of the two companies combined on August 7, 2025. Its earlier titles were made as an independent company.']),
+  rec('skydance-animation', 'Skydance Animation', 'film', 115416, 'US', 'Los Angeles, California', par(), ['Part of Skydance Media.']),
+  rec('paramount-television', 'Paramount Television', 'television', 9223, 'US', 'Hollywood, California', par(), [PLABEL], [{ id: 'company:paramount-television-studios', relation: 'A later studio of a similar name, a separate TMDB record' }]),
+  rec('paramount-television-studios', 'Paramount Television Studios', 'television', 228633, 'US', 'Hollywood, California', par(), [PLABEL, 'TMDB has a second Paramount Television Studios record (270146), with 31 series. Which studio each stands for is not settled here, so only this one is covered.']),
+  rec('cbs-studios', 'CBS Studios', 'television', 1081, 'US', 'Los Angeles, California, USA', par(), [PLABEL]),
+  rec('cbs-productions', 'CBS Productions', 'television', 2161, 'US', 'Los Angeles, California, USA', par(), [PLABEL]),
+  rec('nickelodeon-animation-studio', 'Nickelodeon Animation Studio', 'television', 4859, 'US', 'Burbank, California', par(), [PLABEL]),
+  rec('nickelodeon-productions', 'Nickelodeon Productions', 'television', 5371, 'US', 'New York City, New York', par(), [PLABEL]),
+  rec('mtv-entertainment-studios', 'MTV Entertainment Studios', 'television', 6329, 'US', 'Los Angeles, California', par(), [PLABEL]),
+  rec('showtime-networks', 'Showtime Networks', 'television', 4343, 'US', 'New York City, New York', par(), [PLABEL, 'The company credited on its films and series, not the channel they aired on.']),
+  rec('skydance-television', 'Skydance Television', 'television', 87731, 'US', 'Santa Monica, California', par(), ['Part of Skydance Media.']),
+  { ...rec('warner-bros-pictures', 'Warner Bros. Pictures', 'film', 174, 'US', 'Burbank, California', wbd(), ['TMDB lists Warner Bros. Entertainment as its parent record.']), roles: ['production', 'distribution'], website: 'https://www.warnerbros.com' },
+  rec('warner-bros-entertainment', 'Warner Bros. Entertainment', 'film', 17, 'US', 'Burbank, California', wbd(), ['The studio company itself, as TMDB credits it on some titles. TMDB lists Time Warner as its parent record, an earlier owner.']),
+  rec('new-line-cinema', 'New Line Cinema', 'film', 12, 'US', 'Burbank, California', wbd(), [LABEL]),
+  rec('fine-line-features', 'Fine Line Features', 'film', 8, 'US', '', wbd(), [LABEL, 'TMDB lists New Line Cinema as its parent record.']),
+  rec('warner-bros-pictures-animation', 'Warner Bros. Pictures Animation', 'film', 257419, 'US', 'Burbank, California', wbd(), [LABEL], [{ id: 'company:warner-animation-group', relation: 'Its earlier name, a separate TMDB record (the date is not recorded here)' }]),
+  rec('warner-animation-group', 'Warner Animation Group', 'film', 25120, 'US', 'Burbank, California', wbd(), [LABEL], [{ id: 'company:warner-bros-pictures-animation', relation: 'Its later name' }]),
+  rec('dc-studios', 'DC Studios', 'film', 184898, 'US', 'Burbank, California', wbd(), [LABEL], [{ id: 'company:dc-films', relation: 'An earlier Warner Bros. label for DC films, a separate TMDB record' }]),
+  rec('dc-films', 'DC Films', 'film', 128064, 'US', 'Burbank, California', wbd(), [LABEL]),
+  rec('dc-entertainment', 'DC Entertainment', 'film', 9993, 'US', 'Burbank, California', wbd(), [LABEL]),
+  rec('castle-rock-entertainment', 'Castle Rock Entertainment', 'film', 97, 'US', 'Beverly Hills, California', wbd(), [LABEL, 'TMDB lists Warner Bros. Entertainment as its parent record. Its earliest titles were made as an independent company.']),
+  rec('warner-independent-pictures', 'Warner Independent Pictures', 'film', 11509, 'US', 'Burbank, California', wbd(), [LABEL]),
+  rec('hbo-films', 'HBO Films', 'film', 7429, 'US', 'New York City', wbd(), [LABEL]),
+  rec('warner-bros-television', 'Warner Bros. Television', 'television', 1957, 'US', 'Burbank, California', wbd(), [LABEL]),
+  rec('warner-horizon-television', 'Warner Horizon Television', 'television', 29347, 'US', '', wbd(), [LABEL]),
+  rec('warner-bros-animation', 'Warner Bros. Animation', 'television', 2785, 'US', 'Burbank, California', wbd(), [LABEL]),
+  rec('hbo', 'HBO', 'television', 3268, 'US', 'New York City, New York', wbd(), ['The company credited on its films and series, not the channel they aired on.']),
+  rec('cartoon-network-studios', 'Cartoon Network Studios', 'television', 7899, 'US', 'Burbank, California', wbd(), [LABEL]),
+  rec('hanna-barbera', 'Hanna-Barbera Cartoons', 'television', 1353, 'US', 'Los Angeles, California', wbd(), [LABEL, 'Most of its titles were made long before, under earlier owners.']),
+  rec('williams-street', 'Williams Street', 'television', 6760, 'US', 'Atlanta, Georgia', wbd(), [LABEL]),
+  net('paramount-plus', 'Paramount+', 'streaming', 'https://www.paramountplus.com', par(), ['A title being on Paramount+ does not make it a Paramount production.']),
+  net('pluto-tv', 'Pluto TV', 'streaming', 'https://pluto.tv', par()),
+  net('cbs', 'CBS', 'network', 'https://www.cbs.com', par(), ['A series airing on CBS does not make it a Paramount production.']),
+  net('nickelodeon', 'Nickelodeon', 'network', 'https://www.nick.com', par()),
+  net('mtv', 'MTV', 'network', 'https://www.mtv.com', par()),
+  net('bet', 'BET', 'network', 'https://www.bet.com', par()),
+  net('comedy-central', 'Comedy Central', 'network', 'https://www.cc.com', par()),
+  net('hbo-max', 'HBO Max', 'streaming', 'https://www.hbomax.com', wbd(), ['A title being on HBO Max does not make it a Warner Bros. production.']),
+  net('hbo-channel', 'HBO (The Channel)', 'network', 'https://www.hbo.com', wbd(), ['The channel is separate from HBO the company credited on films and series, which has its own page.']),
+  net('cartoon-network', 'Cartoon Network', 'network', 'https://www.cartoonnetwork.com', wbd(), ['The channel is separate from Cartoon Network Studios, which makes series for it and others.']),
+  net('cnn', 'CNN', 'network', 'https://www.cnn.com', wbd()),
+
+  // Sony (November 11, 2026). Sony's own pages refuse automated readers, so its ownership dates are not recorded.
+  { id: SONY, name: 'Sony Group Corporation', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://www.sony.com', parent: null, related: [], notes: ['TMDB credits no titles to Sony Group Corporation itself; its studios and labels are credited.'] },
+  { id: SPE, name: 'Sony Pictures Entertainment', kind: 'corporate', roles: ['holding'], tmdb: null, website: 'https://www.sonypictures.com', parent: { id: SONY, how: 'division', from: null, source: S.sonyStructure }, related: [],
+    notes: ["Sony Group's management structure of April 1, 2025 names its President and CEO as the officer in charge of Sony's Pictures business.",
+      "When Sony bought Columbia Pictures isn't recorded here: Sony's own pages refuse automated readers, and its annual report couldn't be read on November 11, 2026. Until it is, no title is marked as made before Sony owned its label."] },
+  { ...rec('columbia-pictures', 'Columbia Pictures', 'film', 5, 'US', 'Culver City, California', sony(), [SLABEL, 'Many of its titles were made long before Sony owned it.']), roles: ['production', 'distribution'] },
+  rec('sony-pictures', 'Sony Pictures', 'film', 34, 'US', 'Culver City, California', sony(), ['The name TMDB credits on some titles. TMDB has a second Sony Pictures record (82346, Tokyo), which is not covered.']),
+  rec('tristar-pictures', 'TriStar Pictures', 'film', 559, 'US', 'Culver City, California', sony(), [SLABEL]),
+  rec('screen-gems', 'Screen Gems', 'film', 3287, 'US', 'Culver City, California', sony(), [SLABEL]),
+  rec('sony-pictures-classics', 'Sony Pictures Classics', 'film', 58, 'US', 'New York City, New York', sony(), [SLABEL]),
+  rec('sony-pictures-animation', 'Sony Pictures Animation', 'film', 2251, 'US', 'Culver City, California', sony(), [SLABEL, 'TMDB lists Sony Pictures as its parent record.']),
+  rec('3000-pictures', '3000 Pictures', 'film', 130405, 'US', 'Culver City, California', sony(), [SLABEL]),
+  rec('stage-6-films', 'Stage 6 Films', 'film', 11341, 'US', 'Culver City, California', sony(), [SLABEL]),
+  rec('affirm-films', 'Affirm Films', 'film', 10156, 'US', 'Culver City, California', sony(), [SLABEL]),
+  rec('sony-pictures-television', 'Sony Pictures Television', 'television', 11073, 'US', 'Culver City, California', sony(), [SLABEL], [{ id: 'company:columbia-tristar-television', relation: 'An earlier name, a separate TMDB record (the date is not recorded here)' }]),
+  rec('columbia-tristar-television', 'Columbia TriStar Television', 'television', 10471, 'US', 'Culver City, California', sony(), [SLABEL], [{ id: 'company:columbia-pictures-television', relation: 'An earlier name, a separate TMDB record (the date is not recorded here)' }]),
+  rec('columbia-pictures-television', 'Columbia Pictures Television', 'television', 3614, 'US', '', sony(), [SLABEL]),
+  net('crunchyroll', 'Crunchyroll', 'streaming', 'https://www.crunchyroll.com', sony(), ["Sony's purchase of it could not be read from an official source on November 11, 2026, so no date is given. A title being on Crunchyroll does not make it a Sony production."]),
 ];
 
 export interface LeadershipRole {
@@ -199,6 +299,30 @@ export const LEADERSHIP: LeadershipRole[] = [
   role('exec:frances-berwick', 'Frances Berwick', 'company:peacock', 'Chairman, Bravo & Peacock Unscripted', [S.nbcuLeaders]),
   role('exec:luis-fernandez', 'Luis Fernández', 'company:telemundo', 'Chairman, NBCUniversal Telemundo Enterprises', [S.nbcuLeaders]),
   role('exec:chris-meledandri', 'Chris Meledandri', 'company:illumination', 'Founder and CEO', [S.cinemacon]),
+  // Skydance's, from its leadership page as it stood on November 11, 2026. The page gives no dates, so each is recorded
+  // as announced with the company's present form on October 6, 2026: hidden before that day, Announced until the page
+  // was read, and current from then (model.ts standingAt).
+  ...([
+    ['david-ellison', 'David Ellison', SKY, 'Chairman & Chief Executive Officer'],
+    ['ynon-kreiz', 'Ynon Kreiz', SKY, 'Co-CEO'],
+    ['andy-gordon', 'Andy Gordon', SKY, 'President'],
+    ['casey-bloys', 'Casey Bloys', SKY, 'Co-Chair and Chief Content Officer, Skydance Direct-To-Consumer (DTC)'],
+    ['george-cheeks', 'George Cheeks', SKY, 'Co-Chair and Chief Content Officer, Skydance TV'],
+    ['dennis-cinelli', 'Dennis Cinelli', SKY, 'Chief Financial Officer'],
+    ['makan-delrahim', 'Makan Delrahim', SKY, 'Chief Legal Officer & President, Global Corporate Affairs'],
+    ['dane-glasgow', 'Dane Glasgow', SKY, 'Chief Product Officer'],
+    ['dana-goldberg', 'Dana Goldberg', SKY, 'Co-Chair, Skydance Motion Picture Group'],
+    ['josh-greenstein', 'Josh Greenstein', SKY, 'Co-Chair, Skydance Motion Picture Group'],
+    ['james-gunn', 'James Gunn', 'company:dc-studios', 'Co-Chairman, DC Studios'],
+    ['rebecca-mall', 'Rebecca Mall', SKY, 'Chief Marketing Officer'],
+    ['jb-perrette', 'Jean-Briac (JB) Perrette', SKY, 'Co-Chair & Chief Business Officer, Skydance TV and Skydance Direct-To-Consumer (DTC)'],
+    ['peter-safran', 'Peter Safran', 'company:dc-studios', 'Co-Chairman, DC Studios'],
+    ['mark-thompson', 'Mark Thompson', 'company:cnn', 'Chairman and Editor-in-Chief, CNN'],
+    ['bari-weiss', 'Bari Weiss', 'company:cbs', 'Editor-in-Chief, CBS News'],
+    ['melissa-zukerman', 'Melissa Zukerman', SKY, 'Chief Communications Officer'],
+  ] as [string, string, string, string][]).map(([slug, name, co, title]) => role(`exec:${slug}`, name, co, title, [S.skyLeaders, S.skyWbd], { announced: '2026-10-06' })),
+  // Sony's, from Sony Group's management structure as of April 1, 2025. When he took the title isn't given there.
+  role('exec:ravi-ahuja', 'Ravi Ahuja', SPE, 'President and CEO, Sony Pictures Entertainment Inc.', [S.sonyStructure]),
 ];
 
 /** Companies whose leadership couldn't be confirmed from a current official source, and why. Shown on their pages. */
@@ -210,6 +334,11 @@ export const LEADERSHIP_GAPS: Record<string, string> = {
   'company:focus-features': 'No current official source for Focus Features\' leadership was found on November 11, 2026, so none is listed.',
   'company:dreamworks-animation': 'No current official source for DreamWorks Animation\'s leadership was found on November 11, 2026, so none is listed.',
   'company:working-title': 'No current official source for Working Title\'s leadership was found on November 11, 2026, so none is listed.',
+  'company:paramount-pictures': "Skydance's leadership page (read November 11, 2026) names the two heads of its Motion Picture Group, not a head of Paramount Pictures itself, so none is listed here.",
+  'company:warner-bros-pictures': "Skydance's leadership page (read November 11, 2026) names the two heads of its Motion Picture Group, not a head of Warner Bros. Pictures itself, so none is listed here.",
+  'company:hbo': "Skydance's leadership page (read November 11, 2026) names a content chief for its streaming business, not a head of HBO itself, so none is listed here.",
+  'company:columbia-pictures': "Sony's own pages refuse automated readers, so no current official source for Columbia Pictures' leadership could be read on November 11, 2026, and none is listed.",
+  'company:sony-pictures-television': "Sony's own pages refuse automated readers, so no current official source for Sony Pictures Television's leadership could be read on November 11, 2026, and none is listed.",
 };
 
 export const company = (id: string) => COMPANIES.find((c) => c.id === id);
@@ -219,10 +348,12 @@ export const companyByTmdb = (tmdbId: number) => COMPANIES.find((c) => c.tmdb?.i
  * source placed them in it) but were read with it.
  */
 export function checkedFor(id: string): string {
-  return groupOf(id)?.id === COMCAST || id === 'company:illumination' || id === 'company:working-title' ? REGISTRY_CHECKED_NBCU : REGISTRY_CHECKED;
+  const g = groupOf(id)?.id;
+  if (g === SKY || g === SONY) return REGISTRY_CHECKED_F;
+  return g === COMCAST || id === 'company:illumination' || id === 'company:working-title' ? REGISTRY_CHECKED_NBCU : REGISTRY_CHECKED;
 }
 
-/** The group a company belongs to: the top of its chain of parents (The Walt Disney Company, or Comcast), or itself. */
+/** The group a company belongs to: the top of its chain of parents (The Walt Disney Company, Comcast, Skydance or Sony Group), or itself. */
 export function groupOf(id: string): CompanyRecord | undefined {
   let c = company(id);
   for (let i = 0; c?.parent && i < 6; i++) c = company(c.parent.id) ?? c;

@@ -14,7 +14,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Institution | Categories | Roster read / unverified / blocked | Eligibility official / projected / game | Recipients by rule | Dates announced | Deadlines from rules | Unit | Browser | Not playable |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | Academy Awards (`oscars`) | 28 | 28 / 0 / 0 | 25 / 0 / 3 | 1 | 28 | 25 | 15 | 13 | 5 |
-| Primetime Emmy Awards (`emmys`) | 115 | 115 / 0 / 0 | 112 / 0 / 3 | 17 | 0 | 112 | 24 | 10 | 10 |
+| Primetime Emmy Awards (`emmys`) | 115 | 115 / 0 / 0 | 112 / 0 / 3 | 17 | 0 | 112 | 24 | 11 | 10 |
 | Sundance Film Festival (`sundance`) | 16 | 6 / 10 / 0 | 6 / 0 / 10 | 0 | 16 | 6 | 6 | 2 | 1 |
 | Berlin International Film Festival (`berlinale`) | 18 | 13 / 5 / 0 | 0 / 6 / 12 | 0 | 18 | 0 | 12 | 5 | 3 |
 | Cannes Film Festival (`cannes`) | 17 | 15 / 2 / 0 | 0 / 5 / 12 | 0 | 17 | 5 | 9 | 0 | 1 |
@@ -34,7 +34,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | BAFTA Film Awards (`bafta-film`) | 7 | 0 / 0 / 7 | 7 / 0 / 0 | 0 | 0 | 7 | 3 | 0 | 0 |
 | BAFTA Television Awards (`bafta-tv`) | 5 | 0 / 0 / 5 | 0 / 0 / 5 | 0 | 0 | 0 | 0 | 0 | 0 |
 | Golden Globe Awards (`golden-globes`) | 28 | 28 / 0 / 0 | 26 / 0 / 2 | 7 | 28 | 15 | 13 | 0 | 2 |
-| International Emmy Awards (`international-emmys`) | 15 | 15 / 0 / 0 | 13 / 0 / 2 | 0 | 15 | 13 | 9 | 2 | 5 |
+| International Emmy Awards (`international-emmys`) | 15 | 15 / 0 / 0 | 13 / 0 / 2 | 0 | 15 | 13 | 9 | 3 | 5 |
 | Annie Awards (`annie`) | 32 | 30 / 2 / 0 | 29 / 0 / 3 | 0 | 32 | 29 | 11 | 0 | 6 |
 | Film Independent Spirit Awards (`spirit`) | 21 | 21 / 0 / 0 | 21 / 0 / 0 | 0 | 21 | 20 | 9 | 0 | 4 |
 | Gotham Awards (`gotham`) | 12 | 11 / 1 / 0 | 10 / 0 / 2 | 0 | 12 | 10 | 6 | 0 | 1 |
@@ -50,7 +50,7 @@ a roster that was read says nothing about the eligibility rules, the recipients,
 | Japan Academy Film Prize (`japan-academy`) | 17 | 17 / 0 / 0 | 17 / 0 / 0 | 0 | 0 | 0 | 6 | 0 | 2 |
 | Blue Dragon Film Awards (`blue-dragon`) | 3 | 0 / 0 / 3 | 0 / 0 / 3 | 0 | 0 | 0 | 2 | 0 | 0 |
 | European Film Awards (`european-film-awards`) | 20 | 15 / 5 / 0 | 15 / 0 / 5 | 0 | 20 | 14 | 8 | 6 | 0 |
-| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 338 | 541 | 279 | 47 | 123 |
+| **All 37** | 806 | 709 / 69 / 28 | 592 / 11 / 203 | 28 | 338 | 541 | 279 | 49 | 123 |
 
 ## Research queue
 

@@ -1,6 +1,7 @@
 // Asking a backer for better terms (negotiation.ts says how negotiation works and why). Loaded with the Budget page,
 // not at startup; the backer's answer is handled at startup, in negotiation.ts.
 import { COUNTER_DAYS, NOT_NEGOTIABLE, betterTerms, type BetterTerm } from './negotiation';
+import { theBacker } from './backer-words';
 import { deals } from './finance';
 import { addLog, schedule } from './state';
 import { DAY } from './time';
@@ -24,5 +25,5 @@ export function askForBetterTerms(state: GameState, p: Project, dealId: string, 
   if (!betterTerms(d).some((x) => x.term === term)) throw new Error("They don't offer that term, so there is nothing to ask.");
   d.counter = { term, askedAt: state.now, answerAt: state.now + COUNTER_DAYS * DAY };
   schedule(state, d.counter.answerAt, 'finance-counter', { projectId: p.id, dealId: d.id }, { attention: 'notify', priority: 40 });
-  addLog(state, `You asked the ${d.backer.toLowerCase()} for better terms on ${p.title}. They will answer in about ${COUNTER_DAYS} days.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+  addLog(state, `You asked ${theBacker(d)} for better terms on ${p.title}. They will answer in about ${COUNTER_DAYS} days.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
 }
