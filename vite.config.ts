@@ -15,7 +15,7 @@ export default defineConfig({
   plugins: [react(), serveCatalog()],
   // The catalog's cache and build hold hundreds of thousands of files read on request, not source: watching them ran the
   // machine out of file watchers (November 11, 2026), which stalled the dev server's first load of lazy pages.
-  server: { port: 5173, strictPort: true, watch: { ignored: ['**/.screen-catalog-cache/**', '**/.screen-catalog/**', '**/.screen-catalog.building/**', '**/.screen-catalog.old/**', '**/.cinemas-cache/**', '**/.cinemas/**'] } },
+  server: { port: 5173, strictPort: true, watch: { ignored: ['**/.screen-catalog-cache/**', '**/.screen-catalog/**', '**/.screen-catalog.building/**', '**/.screen-catalog.old/**', '**/.cinemas-cache/**', '**/.cinemas/**', '**/.screen-images/**', '**/packs/**'] } },
   build: {
     // World data is fetched when needed; never inline it into the startup bundle.
     assetsInlineLimit: (file: string) => (/\.(tsv|json)$/.test(file) ? false : undefined),

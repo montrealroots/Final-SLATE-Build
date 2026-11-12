@@ -9,6 +9,7 @@ import { remapThreads, seasonNotes, structureNotes } from './structure';
 import { researchNotes } from './research';
 import { personById, roleLabel } from './people';
 import type {
+  DialogueLine,
   Draft, Format, GameState, GenrePick, Medium, Project, ProjectAxes, Requirement, RevisionNote, Scene, StoryCharacter, Technique,
 } from './types';
 
@@ -277,23 +278,146 @@ export function updateCharacter(p: Project, id: string, patch: Partial<StoryChar
   return { designChanged };
 }
 
+/** A character's name wherever they now are: the working script, the approved draft, set aside, or an older draft. Contracts and credits outlive the script's current cast list. */
+export function characterName(p: Project, id: string): string {
+  return p.characters.find((c) => c.id === id)?.name ?? approvedCharacters(p).find((c) => c.id === id)?.name ?? p.archived?.find((a) => a.c.id === id)?.c.name
+    ?? p.drafts.flatMap((d) => d.characters).find((c) => c.id === id)?.name ?? 'a part no longer in the script';
+}
+
+/** Everything that refers to a character, so nothing is removed unseen (the v3 package, 01 section 4). */
+export function characterReferences(p: Project, id: string) {
+  const live = ['offered', 'countered', 'accepted'];
+  return {
+    scenes: p.scenes.filter((s) => s.participants.includes(id)),
+    lines: p.scenes.reduce((n, s) => n + s.dialogue.filter((d) => d.characterId === id).length, 0),
+    relationships: p.relationships.filter((r) => r.a === id || r.b === id),
+    threads: (p.threads ?? []).filter((t) => t.characterIds.includes(id)),
+    states: p.scenes.filter((s) => s.states?.[id] !== undefined).length,
+    offers: p.hires.filter((h) => h.characterId === id && (h.status === 'offered' || h.status === 'countered')),
+    contracts: p.hires.filter((h) => h.characterId === id && h.status === 'accepted'),
+    everHired: p.hires.filter((h) => h.characterId === id && !live.includes(h.status)).length,
+    cast: p.cast.filter((c) => c.characterId === id),
+    auditions: (p.auditions ?? []).filter((a) => a.characterId === id).length,
+    shot: p.schedule.days.filter((d) => (d.status === 'shot' || d.status === 'partial') && approvedScenes(p).some((s) => d.sceneIds.includes(s.id) && s.participants.includes(id))).length,
+  };
+}
+
+/** What setting a character aside or removing them touches, in sentences. Nothing here is done by reading it. */
 export function removeCharacterImpact(p: Project, id: string): string[] {
-  const scenes = p.scenes.filter((s) => s.participants.includes(id) || s.dialogue.some((d) => d.characterId === id));
-  const cast = p.cast.filter((c) => c.characterId === id);
-  const out = scenes.map((s) => `Scene ${sceneNumber(p, s.id)} (${s.heading.place || 'untitled'}) uses this character.`);
-  if (cast.length) out.push('This character has been cast. The casting will be released.');
+  const r = characterReferences(p, id);
+  const c = p.characters.find((x) => x.id === id);
+  const out: string[] = [];
+  const n = (k: number, one: string, many: string) => `${k} ${k === 1 ? one : many}`;
+  if (r.scenes.length) out.push(`They are in ${n(r.scenes.length, 'scene', 'scenes')}: ${r.scenes.slice(0, 6).map((s) => `Scene ${sceneNumber(p, s.id)} (${s.heading.place || 'untitled'})`).join(', ')}${r.scenes.length > 6 ? ' and more' : ''}.`);
+  if (r.lines) out.push(`They have ${n(r.lines, 'line', 'lines')} of dialogue.`);
+  if (r.relationships.length) out.push(`${n(r.relationships.length, 'relationship names', 'relationships name')} them.`);
+  if (r.threads.length) out.push(`${n(r.threads.length, 'story thread follows', 'story threads follow')} them.`);
+  if (c?.look || r.states) out.push(`Their look${r.states ? `, and which state they are in for ${n(r.states, 'scene', 'scenes')},` : ''} goes with them.`);
+  if (c?.beats?.length) out.push(`Their arc has ${n(c.beats.length, 'beat', 'beats')}.`);
+  if (r.auditions) out.push(`${n(r.auditions, 'audition was', 'auditions were')} held for the part. The record of them stays.`);
+  if (r.offers.length) out.push(`${n(r.offers.length, 'offer is', 'offers are')} out for the part and still open. ${r.offers.length === 1 ? 'It stays' : 'They stay'} open until answered or withdrawn in Cast.`);
+  if (r.contracts.length) out.push(`${n(r.contracts.length, 'performer is', 'performers are')} contracted for the part. The ${r.contracts.length === 1 ? 'contract stays' : 'contracts stay'} as agreed until you release ${r.contracts.length === 1 ? 'it' : 'them'} in Cast; what was paid stays paid.`);
+  if (r.cast.some((x) => x.performer === 'player')) out.push('You cast yourself in the part.');
+  if (r.shot) out.push(`${n(r.shot, 'shoot day', 'shoot days')} with them in it ${r.shot === 1 ? 'is' : 'are'} already shot. That work and its credits stay.`);
   return out;
 }
 
+/** Why a character can't be removed outright, or null. Anything with money or filmed work behind it is set aside instead, so the history stays. */
+export function removeCharacterRefusal(p: Project, id: string): string | null {
+  const r = characterReferences(p, id);
+  if (r.contracts.length || r.offers.length) return 'Someone is contracted or has an offer for this part. Set the character aside instead: that keeps the contract and everything paid, and you can release the performer in Cast.';
+  if (r.everHired || r.shot) return 'This part has contracts or filmed work in its history. Set the character aside instead, so that history stays.';
+  return null;
+}
+
+/** Take a character out of the script for good. Refused where money or filmed work is behind the part (archive it instead). */
 export function removeCharacter(p: Project, id: string): void {
   assertEditable(p);
+  const why = removeCharacterRefusal(p, id);
+  if (why) throw new Error(why);
+  detach(p, id);
   p.characters = p.characters.filter((c) => c.id !== id);
-  for (const s of p.scenes) {
-    s.participants = s.participants.filter((x) => x !== id);
-    s.dialogue = s.dialogue.filter((d) => d.characterId !== id);
-  }
   p.cast = p.cast.filter((c) => c.characterId !== id);
+}
+
+/** Take a character out of every scene, line, relationship and thread, and say what was taken. */
+function detach(p: Project, id: string): Pick<NonNullable<Project['archived']>[number], 'sceneIds' | 'lines' | 'relationships' | 'threadIds'> {
+  const out = { sceneIds: [] as string[], lines: [] as { sceneId: string; index: number; line: DialogueLine }[], relationships: p.relationships.filter((r) => r.a === id || r.b === id), threadIds: [] as string[] };
+  for (const s of p.scenes) {
+    if (s.participants.includes(id)) { out.sceneIds.push(s.id); s.participants = s.participants.filter((x) => x !== id); }
+    s.dialogue.forEach((d, index) => { if (d.characterId === id) out.lines.push({ sceneId: s.id, index, line: d }); });
+    s.dialogue = s.dialogue.filter((d) => d.characterId !== id);
+    if (s.states?.[id] !== undefined) { delete s.states[id]; if (!Object.keys(s.states).length) delete s.states; }
+  }
   p.relationships = p.relationships.filter((r) => r.a !== id && r.b !== id);
+  for (const t of p.threads ?? []) if (t.characterIds.includes(id)) { out.threadIds.push(t.id); t.characterIds = t.characterIds.filter((x) => x !== id); }
+  return out;
+}
+
+/**
+ * Set a character aside: out of the script, with everything about them kept so Restore puts them back. Their scenes,
+ * lines, relationships and threads can be given to another character at the same time. No contract, offer, payment or
+ * credit is changed: those stay in Cast until the player deals with each.
+ */
+export function archiveCharacter(state: GameState, p: Project, id: string, reassignTo?: string): void {
+  assertEditable(p);
+  const c = p.characters.find((x) => x.id === id);
+  if (!c) throw new Error('That character is no longer in the script.');
+  const to = reassignTo ? p.characters.find((x) => x.id === reassignTo && x.id !== id) : undefined;
+  if (reassignTo && !to) throw new Error('Choose another character in the script to take their scenes.');
+  const taken = detach(p, id);
+  if (to) {
+    for (const s of p.scenes) if (taken.sceneIds.includes(s.id) && !s.participants.includes(to.id)) s.participants.push(to.id);
+    for (const l of taken.lines) { const s = p.scenes.find((x) => x.id === l.sceneId); if (s) s.dialogue.splice(Math.min(l.index, s.dialogue.length), 0, { ...l.line, id: newId(state, 'd'), characterId: to.id }); }
+    for (const r of taken.relationships) {
+      const a = r.a === id ? to.id : r.a, b = r.b === id ? to.id : r.b;
+      // Never a bond with oneself, and never a second copy of one the two already have.
+      if (a !== b && !p.relationships.some((x) => (x.a === a && x.b === b) || (x.a === b && x.b === a))) p.relationships.push({ ...r, id: newId(state, 'r'), a, b });
+    }
+    for (const t of p.threads ?? []) if (taken.threadIds.includes(t.id) && !t.characterIds.includes(to.id)) t.characterIds.push(to.id);
+  }
+  p.characters = p.characters.filter((x) => x.id !== id);
+  (p.archived ??= []).push({ c: { ...c, archived: true }, at: state.now, ...taken, ...(to ? { reassignedTo: to.id } : {}) });
+}
+
+/** Bring a set-aside character back as they were. What was given to someone else stays theirs; the rest returns to the scenes that still exist. */
+export function restoreCharacter(p: Project, id: string): void {
+  assertEditable(p);
+  const i = (p.archived ?? []).findIndex((a) => a.c.id === id);
+  if (i < 0) throw new Error('That character is not set aside.');
+  const a = p.archived![i];
+  const { archived: _gone, ...c } = a.c;
+  p.characters.push(c);
+  if (!a.reassignedTo) {
+    for (const s of p.scenes) if (a.sceneIds.includes(s.id) && !s.participants.includes(id)) s.participants.push(id);
+    for (const l of a.lines) { const s = p.scenes.find((x) => x.id === l.sceneId); if (s && !s.dialogue.some((d) => d.id === l.line.id)) s.dialogue.splice(Math.min(l.index, s.dialogue.length), 0, l.line); }
+    for (const r of a.relationships) { const other = r.a === id ? r.b : r.a; if (p.characters.some((x) => x.id === other) && !p.relationships.some((x) => x.id === r.id)) p.relationships.push(r); }
+    for (const t of p.threads ?? []) if (a.threadIds.includes(t.id) && !t.characterIds.includes(id)) t.characterIds.push(id);
+  }
+  p.archived!.splice(i, 1);
+  if (!p.archived!.length) delete p.archived;
+}
+
+/** A copy to change: the same person on the page under a new name and a new ID, in no scene, with nothing between them and anyone, and nobody cast. */
+export function duplicateCharacter(state: GameState, p: Project, id: string): StoryCharacter {
+  assertEditable(p);
+  const c = p.characters.find((x) => x.id === id);
+  if (!c) throw new Error('That character is no longer in the script.');
+  let name = `${c.name} (Copy)`;
+  for (let n = 2; p.characters.some((x) => x.name === name); n++) name = `${c.name} (Copy ${n})`;
+  const { beats: _beats, awardPlacement: _placement, ...rest } = c;
+  const copy: StoryCharacter = { ...JSON.parse(JSON.stringify(rest)), id: newId(state, 'c'), name, designVersion: 1 };
+  p.characters.splice(p.characters.indexOf(c) + 1, 0, copy);
+  return copy;
+}
+
+/** Move a character up or down the list. The order is the writer's: billing is each character's own Role Size. */
+export function moveCharacter(p: Project, id: string, delta: -1 | 1): void {
+  assertEditable(p);
+  const i = p.characters.findIndex((c) => c.id === id);
+  const j = i + delta;
+  if (i < 0 || j < 0 || j >= p.characters.length) return;
+  [p.characters[i], p.characters[j]] = [p.characters[j], p.characters[i]];
 }
 
 // ---------------- Scenes ----------------
@@ -851,6 +975,12 @@ export function requirementRemovalImpact(state: GameState, p: Project, number: n
     for (const h of p.hires.filter((x) => x.status === 'accepted' && roles.includes(x.roleId))) {
       out.push(`${personById(state, h.personId).name} (${roleLabel(h.roleId)}) is still booked with nothing of that kind left to do. Release them in Crew if you don't need them; work done stays paid.`);
     }
+  }
+  // A part that left the script takes nobody's contract with it (the v3 package, 01 section 4): each is named, and stays until the player ends it.
+  const still = new Set(d.characters.map((c) => c.id));
+  for (const h of p.hires) {
+    if (!h.characterId || still.has(h.characterId) || !['accepted', 'offered', 'countered'].includes(h.status)) continue;
+    out.push(`${personById(state, h.personId).name} ${h.status === 'accepted' ? 'is contracted' : 'has an offer'} to play ${characterName(p, h.characterId)}, who is not in this draft. The ${h.status === 'accepted' ? 'contract' : 'offer'} stays as agreed until you ${h.status === 'accepted' ? 'release' : 'withdraw'} it in Cast; what was paid stays paid.`);
   }
   return out;
 }

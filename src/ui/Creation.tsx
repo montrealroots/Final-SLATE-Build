@@ -174,7 +174,7 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
           {(id, db) => (
             <>
               <input id={id} type="text" value={d.preferredName} maxLength={40} autoComplete="off" placeholder={[d.firstName, d.lastName].filter(Boolean).join(' ')} aria-describedby={[db, 'preferred-note'].filter(Boolean).join(' ')} onChange={(e) => set({ preferredName: e.target.value })} />
-              <p id="preferred-note" className="xs dim" style={{ marginTop: 4 }}>What people call you day to day. Blank means your first and last name.</p>
+              <p id="preferred-note" className="xs dim" style={{ marginTop: 'var(--s1)' }}>What people call you day to day. Blank means your first and last name.</p>
             </>
           )}
         </Field>
@@ -189,7 +189,7 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
         {settled ? (
           <>
             <output className="settled-title" aria-labelledby="billed-as">{settled}</output>
-            <p className="xs dim" style={{ marginTop: 4 }}>Your pronouns decide this, so there’s nothing to pick. Change your pronouns and it changes too.</p>
+            <p className="xs dim" style={{ marginTop: 'var(--s1)' }}>Your pronouns decide this, so there’s nothing to pick. Change your pronouns and it changes too.</p>
           </>
         ) : (
           <>
@@ -200,9 +200,9 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
                 </button>
               ))}
             </div>
-            {!d.pronouns && <p className="xs dim" style={{ marginTop: 4 }}>Choose your pronouns first.</p>}
+            {!d.pronouns && <p className="xs dim" style={{ marginTop: 'var(--s1)' }}>Choose your pronouns first.</p>}
             {billedError && <span className="error" role="alert">{billedError}</span>}
-            <p className="xs dim" style={{ marginTop: 4 }}>
+            <p className="xs dim" style={{ marginTop: 'var(--s1)' }}>
               {d.pronouns
                 ? 'With They/Them, you choose. Actor and Actress are two words for the same craft, and neither counts for more. Awards that split their acting categories consider you under the one you pick.'
                 : 'Choose your pronouns first. He/Him is billed as Actor and She/Her as Actress; with They/Them, you choose.'}
@@ -240,7 +240,7 @@ function IdentityStep({ d, set, err, head }: { d: CreationDraft; set: Set; err: 
       <div className="field" style={{ marginTop: 'var(--s4)' }}>
         <span className="label" id="citizenship">Citizenship</span>
         <output className="settled-title" aria-labelledby="citizenship">{citizen ? countryName(citizen) : '—'}</output>
-        <p className="xs dim" style={{ marginTop: 4 }}>
+        <p className="xs dim" style={{ marginTop: 'var(--s1)' }}>
           You’re a citizen of the country you were born in, so there’s nothing to pick. Change your place of birth and this changes with it.
           A country’s public screen fund supports its citizens and the people who live there.
         </p>
@@ -356,7 +356,7 @@ function HeritageStep({ d, set, err }: { d: CreationDraft; set: (p: Partial<Crea
             <span>{h}</span>
           </button>
         ))}
-        {!results.length && <p className="muted" style={{ padding: 12 }}>Nothing matches. You can describe your ethnicity below.</p>}
+        {!results.length && <p className="muted" style={{ padding: 'var(--s3)' }}>Nothing matches. You can describe your ethnicity below.</p>}
       </div>
       {/* What you've chosen sits right under where you choose it; describing your own comes last (November 8, 2026). */}
       <h3 className="spaced">Your Ethnicities</h3>
@@ -391,7 +391,7 @@ function HeritageStep({ d, set, err }: { d: CreationDraft; set: (p: Partial<Crea
             <span>{n.name}</span>{n.code === citizen && <span className="dim">Your citizenship</span>}
           </button>
         ))}
-        {!nationResults.length && <p className="muted" style={{ padding: 12 }}>No country or territory matches.</p>}
+        {!nationResults.length && <p className="muted" style={{ padding: 'var(--s3)' }}>No country or territory matches.</p>}
       </div>
       <h3 className="spaced">Your Nationalities</h3>
       {err('nationalities') && <p role="alert" style={{ color: 'var(--negative)' }}>{err('nationalities')}</p>}

@@ -387,6 +387,25 @@ test('pressing Start My Story twice starts one life', async ({ page }) => {
   await expect.poll(async () => (await listRecords(page)).filter((k) => /^slate\.v1\.save\.[^.]+$/.test(k)).length).toBe(1);
 });
 
+// The second press of a double press, landing after Home is up, must not press whatever Home has at that spot. On an
+// iPhone-sized screen that spot is Up Next's Open Calendar (found in CI on November 12, 2026, when a card's heading
+// and its button came to share a line there: the journey above ended on the Calendar).
+test('a second press that lands after the game opens presses nothing on Home', async ({ page }) => {
+  await draftAtReview(page);
+  const start = page.getByRole('button', { name: 'Start My Story' });
+  await start.scrollIntoViewIfNeeded();
+  const box = (await start.boundingBox())!;
+  const x = box.x + box.width / 2, y = box.y + box.height / 2;
+  await page.mouse.click(x, y);
+  await page.locator('main[data-view="home"]').waitFor();
+  await page.mouse.click(x, y);
+  await page.waitForTimeout(700);
+  await expect(page.locator('main')).toHaveAttribute('data-view', 'home');
+  // And Home answers a press once it has settled.
+  await page.getByRole('button', { name: 'Open Calendar' }).click();
+  await expect(page.locator('main')).toHaveAttribute('data-view', 'calendar');
+});
+
 // SLATE-01-02.03: your own words are refused when blank or already there, and nothing else is lost.
 test('an ethnicity in your own words: blank or repeated is refused with the reason', async ({ page }) => {
   await openStart(page);

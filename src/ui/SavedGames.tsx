@@ -225,8 +225,8 @@ export function SettingsPanel() {
   const large = document.documentElement.dataset.text === 'large';
   return (
     <>
-      <fieldset style={{ border: 0, padding: 0, margin: '0 0 16px' }}>
-        <legend style={{ fontWeight: 600, marginBottom: 8 }}>Theme</legend>
+      <fieldset style={{ border: 0, padding: 0, margin: '0 0 var(--s4)' }}>
+        <legend style={{ fontWeight: 600, marginBottom: 'var(--s2)' }}>Theme</legend>
         <div className="row gap-2 wrap">
           <button className={`btn ${theme === 'dark' ? 'btn-primary' : ''}`} aria-pressed={theme === 'dark'} onClick={() => store.setTheme('dark')}>Dark</button>
           <button className={`btn ${theme === 'light' ? 'btn-primary' : ''}`} aria-pressed={theme === 'light'} onClick={() => store.setTheme('light')}>Light</button>

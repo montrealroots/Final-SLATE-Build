@@ -29,6 +29,11 @@ export function Shell({ children }: { children: ReactNode }) {
   const [railOpen, setRailOpen] = useState(false);
   const [exitError, setExitError] = useState(false);
   const drawer = useMedia(DRAWER_QUERY);
+  // The game arrives because a button was pressed, and it draws itself where that button was. For a moment it takes no
+  // pointer, so the second half of a double press, or a finger still coming down, doesn't press what has just appeared
+  // (November 12, 2026: on an iPhone-sized screen a double press on Start My Story opened the Calendar). Keys still work.
+  const [arriving, setArriving] = useState(true);
+  useEffect(() => { const t = setTimeout(() => setArriving(false), 400); return () => clearTimeout(t); }, []);
   const route = s.route;
   const here = destinationOf(route.view);
   // A new screen takes focus as it is shown, in the same commit, before the player can reach any of its fields.
@@ -67,7 +72,7 @@ export function Shell({ children }: { children: ReactNode }) {
   const current = (d: Destination) => (here === d ? (route.view === d.view || !d.homeOnly ? 'page' : 'true') : d === HOME && here.homeOnly ? 'true' : undefined);
 
   return (
-    <div className="shell">
+    <div className={arriving ? 'shell shell-arriving' : 'shell'}>
       <a className="skip-link" href="#main" onClick={(e) => { e.preventDefault(); document.getElementById('main')?.focus(); }}>Skip To Content</a>
       <TopBar railOpen={railOpen} onMenu={() => setRailOpen((o) => !o)} drawer={drawer} hereLabel={here.label} onExit={exit} />
       <div className="shell-body">
@@ -103,7 +108,7 @@ export function Shell({ children }: { children: ReactNode }) {
           )}
         </nav>
         {railOpen && <button type="button" className="rail-shade" aria-label="Close Navigation" onClick={() => setRailOpen(false)} />}
-        <main className="main" id="main" tabIndex={-1} ref={main}>
+        <main className="main" id="main" tabIndex={-1} ref={main} inert={drawer && railOpen} data-view={route.view} data-tab={route.view === 'project' ? route.tab ?? 'overview' : undefined}>
           <div className="main-inner">
             {s.readOnly && (
               <div className="callout callout-negative" role="alert">
@@ -242,12 +247,12 @@ function AdvanceDialog({ onClose }: { onClose: () => void }) {
     <Modal title="Advance" onClose={onClose} footer={<><button className="btn" onClick={onClose}>Cancel</button><button className="btn btn-primary" onClick={go}>Advance</button></>}>
       <p className="muted">Everything along the way still happens. Advancing stops early if something needs you.</p>
       <SelectField label="Advance To" value={mode} onChange={(v) => { setMode(v); setError(null); }} options={[
-        ...(next ? [{ value: 'next-event' as const, label: `Next Event (${describe(next.at)})` }] : []),
-        { value: 'next-day', label: `Same Time Tomorrow (${describe(addLocal(g.now, zone, { days: 1 }))})` },
-        { value: 'week', label: `One Week (${describe(addLocal(g.now, zone, { days: 7 }))})` },
-        { value: 'month', label: `One Month (${describe(addLocal(g.now, zone, { months: 1 }))})` },
+        ...(next ? [{ value: 'next-event' as const, label: 'Next Event' }] : []),
+        { value: 'next-day', label: 'Same Time Tomorrow' },
+        { value: 'week', label: 'One Week' },
+        { value: 'month', label: 'One Month' },
         { value: 'time', label: 'A Time I Choose' },
-      ]} />
+      ]} hint={mode !== 'time' && target ? `To ${describe(target)}.` : undefined} />
       {mode === 'time' && (
         <div className="grid grid-2 form">
           <TextField label="Date" type="date" value={date} onChange={setDate} />

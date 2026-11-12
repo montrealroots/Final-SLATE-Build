@@ -56,7 +56,7 @@ export function IdeaPicker({ p, fields, title, characterId, sceneId, run, onClos
   ];
   if (open) return <OpenIdea p={p} idea={open} characterId={characterId} sceneId={sceneId} run={run} back={() => setOpen(null)} onClose={onClose} onApplied={onApplied} />;
   return (
-    <Modal title={title} onClose={onClose} sheet footer={<button className="btn" onClick={onClose}>Keep My Current Choices</button>}>
+    <Modal title={title} kind="idea-list" onClose={onClose} sheet footer={<button className="btn" onClick={onClose}>Keep My Current Choices</button>}>
       {tabs.length > 1 && <SectionNav label="Ideas" items={tabs} current={tab} onChange={(t) => { setTab(t); setTag(''); }} />}
       {tab === 'build' ? <LoglineBuilder p={p} run={run} onApplied={onApplied} /> : (
         <>
@@ -116,7 +116,7 @@ function OpenIdea({ p, idea, characterId, sceneId, run, back, onClose, onApplied
   };
   const offered = idea.patch.flatMap((c) => (c.op === 'beats' ? c.beats : []));
   return (
-    <Modal title={idea.label} onClose={onClose} sheet footer={
+    <Modal title={idea.label} kind="idea-open" onClose={onClose} sheet footer={
       <>
         <button className="btn" onClick={back}>Back To Ideas</button>
         <button className="btn" onClick={() => void store.act(() => saveIdea(p, idea.id, !saved))}>{saved ? 'Remove From Saved' : 'Save For Later'}</button>
@@ -198,7 +198,7 @@ function LoglineBuilder({ p, run, onApplied }: { p: Project; run: PickerProps['r
   return (
     <>
       <p className="dim">Choose each part and read the sentence. Apply puts it in your Logline, where you can rewrite any of it.</p>
-      <div className="grid grid-2 form">
+      <div className="grid grid-2 form" data-value-shown="Your Logline">
         <SelectField label="When It Starts" value={parts.when} options={options(WHEN)} onChange={set('when')} />
         <SelectField label="Who It Happens To" value={parts.who} options={options(WHO)} onChange={set('who')} />
         <SelectField label="What They Must Do" value={parts.must} options={options(MUST)} onChange={set('must')} />

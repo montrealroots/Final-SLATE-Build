@@ -1,0 +1,10 @@
+{
+ "heist": {
+  "film": 1,
+  "tv": 0
+ },
+ "nordic-noir": {
+  "film": 0,
+  "tv": 1
+ }
+}

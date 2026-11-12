@@ -9,11 +9,12 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#70 (Creative Depth, milestones C and E: camera, light, sound and
-  looks by scene; filming in real places elsewhere; and CI's journeys as their own job), squash-merged as `8d927fe` on
-  November 12, 2026, CI green on its final commit. Before it, #69 (milestone D) as `e028194`, #68 (milestone B) as
-  `fd095f1` and #67 (milestone A) as `562eac8`.
-- **Next checkpoint:** milestones F, G and H and the layout work below, together, on this branch.
+- **Latest merge:** montrealroots/Final-SLATE-Build#71 (Creative Depth, milestones F, G and H; and screens lined up),
+  squash-merged as `1f5cb1f` on November 12, 2026, CI green on its final commit (`checks` and all six journeys runs).
+  Before it, #70 (milestones C and E, and CI's journeys as their own job) as `8d927fe`, #69 (milestone D) as
+  `e028194`, #68 (milestone B) as `fd095f1` and #67 (milestone A) as `562eac8`.
+- **The package's eight milestones are all merged.** What it leaves undone is listed in one place:
+  `docs/creative-depth/COVERAGE.md`, "Not Done, In One Place". Nothing is open on this branch.
 - **CI, from November 12, 2026:** `.github/workflows/ci.yml` has two jobs. `checks` is everything without a browser.
   `journeys` is the browser suite as six runs side by side: the dev server and the production build, each on desktop,
   phone and the WebKit profiles. Until then one job ran the suite twice in a row; #70's first run was cut at its
@@ -65,6 +66,33 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 - **Checkpoint A of the rulebook/performance/storage request:** CI run 17 on `main` failed because the apt mirror stalled while installing browsers (infrastructure, not code); CI now caches browsers by Playwright version and retries the install twice within a bounded time. Reliability fixes verified across switching saves and reloading, with three defects fixed and covered: a paused clock from one save carried into the next save opened; a recovery message was dropped when opening waited for holiday rules to load, and didn't say which copy was opened; an older build could replace a save written by a newer version (and push it into the backup, where the next save would overwrite it). New: `e2e/reliability.spec.ts`; `tests/save-recovery.test.ts` covers a write failing at each stage three times in a row, no room to keep a damaged copy, repeated opens of a damaged save, and refusing to replace a newer save.
 
 ## Remaining Work, In Order
+
+### Newest Request (November 12, 2026): the v3 package, and a phone overhaul with a whole-game UI cleanup
+
+**Read `docs/v3/LEDGER.md` first**, then `docs/v3/package/00-START-HERE.md` and `docs/v3/UI-BRIEF.md` (the owner's
+own words for the UI work). The ledger says where each step and each acceptance suite stands; `docs/v3/requirements.csv`
+has a row for each requirement built or owed.
+
+- **The story quota is the long pole:** 14,900 fully written stories (100 for each of 149 genres, 50 films and 50
+  series) and a mixed-genre library. They are written by hand into `src/blueprints/<genre>.bp`
+  (`docs/v3/BLUEPRINT-FORMAT.md`). After writing a batch: `V3_WRITE=1 npx vitest run tests/v3-content.test.ts`, read
+  `docs/v3/SIMILAR-STORIES.md`, fix what it finds, and commit the files with the regenerated counts. Never count a
+  story that is another with the names changed.
+- **Pictures:** `node tools/screen-catalog/pictures.mjs inventory`, then `NODE_USE_ENV_PROXY=1 node
+  tools/screen-catalog/pictures.mjs fetch --minutes=112` as many times as it takes (it goes on from where it stopped),
+  then `report`. The pictures and their manifest are in `.screen-images/` in the container, never in the repository.
+- **The phone overhaul, where it stands:** `docs/v3/UI-COVERAGE.md` is the matrix, written by
+  `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json` (every screen, tab and dialog; a new one needs a
+  row), the walk (`UI_COVERAGE_WRITE=1 npx playwright test e2e/ui-coverage.spec.ts` on desktop, phone and the two
+  iPhone profiles; it fails on any defect or any difference between a phone and a desktop) and the sweep
+  (`SLATE_UI_SWEEP=<file> SLATE_E2E_PROD=1 npx playwright test --project=phone`, about two hours a profile, then
+  `node tools/v3/ui-coverage.mjs --fresh --sweep <file> ...`). The stylesheet turns at four widths, listed at its
+  head; `tests/stylesheet.test.ts` fails a fifth and a rule for a class nothing wears. **Owed:** rows the matrix says
+  were not visited (the walk reaches 34 of 78; the sweep reaches most of the rest and has not been folded in yet);
+  what the sweep finds; sticky bars over content, layout shift, text enlargement and reduced motion, which the audit
+  does not measure yet; screenshots for the report; a real phone's keyboard, which no emulation shows.
+- **Next in order:** the rest of the phone overhaul above; ideas for the 11 structural fields; story batches; then
+  steps 4 to 7 of the ledger.
 
 ### Newest Request (November 11, 2026, after the package's last milestone): fix all misalignments
 

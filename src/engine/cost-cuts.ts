@@ -7,7 +7,7 @@ import { AREA_OF_CATEGORY, costBreakdown, scriptEstimate, type CostArea } from '
 import { neededRoles } from './hiring';
 import { roleLabel } from './people';
 import { approvalImpact } from './production';
-import { approveDraft, approvedCharacters, approvedScenes, deriveRequirements, fundingScenario } from './projects';
+import { approveDraft, approvedCharacters, characterName, approvedScenes, deriveRequirements, fundingScenario } from './projects';
 import type { GameState, Project } from './types';
 
 /**
@@ -42,7 +42,7 @@ export function scopeChange(state: GameState, p: Project, change: (s: GameState,
     const o = p.obligations.find((x) => x.id === h.obligationId);
     const owed = o ? Math.max(0, o.amount - o.settled) : 0;
     const gone = h.characterId ? !parts.has(h.characterId) : !roles.has(h.roleId);
-    if (gone && owed > 0) commitments.push(`${h.characterId ? approvedCharacters(p).find((c) => c.id === h.characterId)?.name ?? 'A part' : roleLabel(h.roleId)}: ${money(owed)} still agreed. The work goes, the contract stays until you release them, which cancels what isn't paid.`);
+    if (gone && owed > 0) commitments.push(`${h.characterId ? characterName(p, h.characterId) : roleLabel(h.roleId)}: ${money(owed)} still agreed. The work goes, the contract stays until you release them, which cancels what isn't paid.`);
   }
   for (const [cid, r] of Object.entries(p.mocap ?? {})) {
     if (r.status === 'booked' && !parts.has(cid)) commitments.push(`The capture stage booked for ${approvedCharacters(p).find((c) => c.id === cid)?.name ?? 'a part'} stays booked until you cancel it, at the booking's cancellation terms.`);

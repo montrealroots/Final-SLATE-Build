@@ -1,0 +1,42 @@
+// Heist: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== heist.f01 | feature | three-act
+title: The Quiet Floor
+genre: heist + drama
+tone: Patient, dry and tender under the tension
+era: - | contemporary
+setting: Lisbon | real | city
+logline: A night cleaner who has memorised a private bank's routines for eleven years is asked by her dying brother to empty one deposit box, and learns the box belongs to the woman who pays her.
+premise: {ines} cleans the fourth floor of a private bank in Lisbon and has never taken so much as a pen. Her brother {rui} was cheated of his workshop by a client of the bank, and the proof is in a deposit box. To get it she needs a locksmith who owes her nothing and a guard who trusts her completely.
+synopsis: {ines} knows the bank by sound: which lift hums, which guard hums along. When {rui} is given months to live he asks for one thing, the ledger that proves his workshop was stolen. She recruits {tomas}, a locksmith who failed his trade exam on purpose, and rehearses the job in her own flat with tape on the floor. The plan depends on {caetano}, the night guard who shares his thermos with her. On the night, the box holds the ledger and a second document: the bank's owner, {dona}, bought {rui}'s debt to protect him and has been quietly paying it down. {ines} must choose between the proof her brother wants and the kindness he never knew about, with {caetano} at the door and nine minutes left on the lift.
+question: Can {ines} take back what was stolen without becoming the person the bank has always assumed a cleaner might be?
+themes: who is trusted and why; work nobody sees; what the dying are owed
+audience: Adults who like a plan they can follow and people they can believe
+viewpoint: Close on {ines} throughout; we know what she knows
+stakes: {rui} dies believing he was a fool, {ines} loses the only job and the only friend she has, and {tomas} goes back inside
+conflict: {ines}'s loyalty to her brother against the trust of the people she works beside every night
+ending: {ines} leaves the ledger, takes the second document, and reads it to {rui} in the hospital. {caetano} finds the tape marks in the lift and says nothing. She is at work the next night.
+experience: The held breath of a job done quietly, then the ache of finding the villain was the wrong person
+look: Sodium light on wet tram tracks; inside, long symmetrical corridors that her trolley throws off centre
+sound: The building as an instrument: lifts, ventilation, a radio two floors down. No score until the box opens.
+m: restore | institution | loyalty-vs-truth | bittersweet
+@ ines | Inês Marçal | lead | protagonist | human | she/her | 52 | The ledger that proves {rui} was robbed | He raised her, and she has never repaid it | Eleven years of being trusted by people she likes | Scrupulously honest and the best thief in the building | From keeping every rule to choosing which ones matter | Few words, exact ones; says "com licença" to empty rooms | Small, upright, grey overall, reading glasses on a cord
+@ rui | Rui Marçal | supporting | deuteragonist | human | he/him | 61 | To die knowing he was right | Pride is all the workshop left him | His own certainty about who wronged him | Generous to everyone and unforgiving of one man | From grievance to gratitude, late | Talks in measurements and proverbs | A big man made thin; sawdust still under his nails
+@ tomas | Tomás Vidal | supporting | ally | human | he/him | 29 | One job done properly, start to finish | He walks away from everything he is good at | A conviction for something he didn't finish | Careful hands, careless life | From leaving early to staying until it is done | Jokes first, then goes silent when working | Lean, tattooed forearms, a jeweller's loupe on a bootlace
+@ caetano | Caetano Reis | supporting | foil | human | he/him | 58 | A quiet shift and someone to talk to | The night is long and his wife is gone | His duty to the door | Sees everything and chooses what to notice | From guarding the bank to guarding a friend | Football scores, weather, then one true thing | Heavy, slow, immaculate uniform, a tartan thermos
+@ dona | Dona Amélia Brandão | featured | antagonist | human | she/her | 74 | To settle an old wrong without being thanked | Her late husband did the cheating | She can't admit it without ruining his name | Ruthless in business, secretly penitent | From hidden to known | Formal, clipped, never raises her voice | Silver hair, a black coat, a cane she doesn't need
+~ ines - rui | sister and the brother who raised her | she owes him everything | she gives him something better than what he asked for
+~ ines - caetano | workmates on the night shift | easy, wordless trust | he knows, and keeps it
+~ ines - tomas | reluctant partners | she doesn't trust his hands or his habits | he finishes the job and she vouches for him
+~ ines - dona | cleaner and owner | invisible to each other | each knows what the other did
+# Opening | INT | Bank, Fourth Floor Corridor | NIGHT | ines, caetano | Show the routine and the trust inside it | {ines} cleans the floor to the second; {caetano} leaves the vault corridor unlocked for her mop and pours her tea | | 4
+# Opening | INT | Hospital Ward | DAY | ines, rui | Give her the reason | {rui} asks for the ledger and tells her which box, a number he has carried for nine years | {ines} agrees before she has decided | 4 | props=hospital bed+drip stand
+# Development | INT | Locksmith's Stall, Covered Market | DAY | ines, tomas | Recruit the hands | {ines} tests {tomas} with her own front-door lock and a stopwatch; he opens it and puts it back better | | 3 | props=lock picks+stopwatch
+# Development | INT | Ines's Flat | NIGHT | ines, tomas | Rehearse | Tape on the floor marks the corridor; they walk the nine minutes again and again while a neighbour's television counts for them | {tomas} asks what happens to the guard, and she has no answer | 5 | props=masking tape+kitchen timer
+# Escalation | INT | Bank, Staff Entrance | NIGHT | ines, tomas, caetano | Get him inside | {tomas} comes in as a floor-machine repairman; {caetano} checks the docket, then offers him tea | {caetano} decides to sit with them | 4 | props=floor polisher
+# Escalation | INT | Bank, Vault Corridor | NIGHT | ines, tomas | Open the box | With the lift held and the polisher running for cover, {tomas} works the box while {ines} counts aloud | The box holds the ledger and a second file with {rui}'s name on it | 6 | props=deposit box+ledger+file
+# Climax | INT | Bank, Vault Corridor | NIGHT | ines, tomas, caetano | Force the choice | {ines} reads that {dona} bought the debt and has been paying it; {tomas} wants to take everything; the lift releases and {caetano}'s steps come down the corridor | She puts the ledger back and keeps one page | 6
+# Resolution | INT | Hospital Ward | DAWN | ines, rui | Give him the truth instead of the proof | {ines} reads the page to {rui}, who is silent a long time, then asks her to thank a woman he has hated for nine years | | 4
+# Resolution | INT | Bank, Fourth Floor Corridor | NIGHT | ines, caetano, dona | Return to the routine, changed | {caetano} peels a strip of tape off the lift floor and pockets it. {dona}, working late, holds a door for the trolley | {dona} says her name | 3
+review: reviewed | 2026-11-12 | checked for coherence, links and a complete outline
+

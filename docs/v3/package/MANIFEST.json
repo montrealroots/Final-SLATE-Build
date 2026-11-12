@@ -1,0 +1,36 @@
+{
+  "package": "SLATE v3",
+  "kind": "implementation specification; not authored 14900-story catalog",
+  "files": [
+    {
+      "name": "00-START-HERE.md",
+      "bytes": 3071,
+      "sha256": "cb34b35236bb572d07d5387507c35a30924ba985eb770ae49b364af48c199086"
+    },
+    {
+      "name": "01-STORIES-AND-CHARACTERS.md",
+      "bytes": 6748,
+      "sha256": "4f3956e06355e3e8f26a05a50f883c35340ef29dd3f089759bcc0f006bdf35f1"
+    },
+    {
+      "name": "02-PEOPLE-SOURCES-AND-AUDIENCES.md",
+      "bytes": 7479,
+      "sha256": "57b701548acfe70efe6198837ad80465037f3a9c34e2a4c4a0e12ea5b7119666"
+    },
+    {
+      "name": "03-COMPLETE-PICTURE-PACK.md",
+      "bytes": 4636,
+      "sha256": "bfa85d10828b94025ddd62430ab1ff1e8a3d70fb20efc46bce371fceab641085"
+    },
+    {
+      "name": "04-INTEGRATION-AND-ACCEPTANCE.md",
+      "bytes": 8930,
+      "sha256": "32d7f2fb9797c8fb0413c702120d5a68f69a3e7610d66c663df431bde7f55bd4"
+    },
+    {
+      "name": "05-CLAUDE-COMMAND.txt",
+      "bytes": 3711,
+      "sha256": "c662c0767c356436bb8fcc64eb6f40ccddd48bc29dbe3ac4d8751185e8c85932"
+    }
+  ]
+}

@@ -146,8 +146,15 @@ test('a failure while time passes pauses time, keeps the game as it was, and nev
   await advance(page, 'next-day');
   await expect(page.getByText(/Time is paused\. Something went wrong while time passed \(arrive\)/)).toBeVisible();
   await expect(page.getByRole('button', { name: 'Advance', exact: true }).first()).toBeDisabled();
-  // Still at the moment before the failure; the event wasn't skipped.
-  expect((await page.getByRole('banner').innerText()).split('\n').filter((l) => /AM|PM/.test(l))).toEqual(clock.split('\n').filter((l) => /AM|PM/.test(l)));
+  // Still at the moment before the failure; the event, an hour on, wasn't skipped, and no day passed. The moment is the
+  // one Advance was pressed at, a few seconds at most after the clock was read above (the game's clock runs while the
+  // dialog is opened; until November 12, 2026 this asked for the very same second, and failed when that took one).
+  const times = (text: string) => text.split('\n').filter((l) => /AM|PM/.test(l));
+  const after = times(await page.getByRole('banner').innerText());
+  expect(times(clock)).toHaveLength(1);
+  expect(times(clock)[0]).toMatch(/^8:00:0\d AM$/);
+  expect(after).toHaveLength(1);
+  expect(after[0]).toMatch(/^8:00:0\d AM$/);
   await expect(page.locator('.save-state')).toHaveText(/Saved/);
   const queued = JSON.parse(JSON.parse((await readRecord(page, `slate.v1.save.${id}`))!).data).events.some((e: { id: string }) => e.id === 'bad-arrive');
   expect(queued).toBe(true);
