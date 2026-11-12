@@ -140,6 +140,7 @@ function bookedElsewhere(state: GameState, p: Project, itemId: string, dates: Se
 
 export function kitAddRefusal(state: GameState, p: Project, add: { itemId?: string; gearId?: string }): string | null {
   if (p.delivered) return 'This project is delivered.';
+  if (p.axes.medium === 'animation') return 'An animated project has no shoot days: it needs no camera kit.';
   const g = add.itemId ? gearById(ownedItem(state, add.itemId)?.gearId ?? '') : gearById(add.gearId ?? '');
   if (!g) return 'That isn\'t equipment you can use.';
   if (add.itemId) {

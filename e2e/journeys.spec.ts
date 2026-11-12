@@ -466,13 +466,20 @@ test('stop motion to delivery: puppets, sets and stages', async ({ page }) => {
   await quickLife(page, 'gb-london', '2026-01-05');
   await newProject(page, { title: 'Button Moon', format: 'Short Film', medium: 'Animation', technique: 'Stop Motion', finish: 'Limited Animation', runtime: '2' });
   await addCharacters(page, ['Pip']);
+  // J05: the puppet's face is a choice of work (the v4 package, 02): replacement faces are a set made after the puppet.
+  await section(page, 'Characters');
+  const pip = page.getByRole('article', { name: 'Pip' });
+  await pip.getByRole('button', { name: 'Edit Character' }).click();
+  await pip.getByLabel('Puppet Face').selectOption({ label: 'Replacement Faces' });
+  await pip.getByRole('button', { name: 'Close' }).click();
+  await section(page, 'Script');
   await addScene(page, { index: 0, place: 'Drawer', chars: ['Pip'], minutes: '0.5' });
   await saveAndApprove(page);
   await section(page, 'Schedule');
   await expect(page.getByLabel('Pip Puppet Copies')).toBeVisible();
   await produceToDelivery(page, { yourself: ['Pip'], step: 'month', weeks: 30 });
   await section(page, 'Production');
-  for (const t of ['Armature: Pip', 'Puppet Fabrication: Pip', 'Puppet Costume Fitting: Pip', 'Miniature Sets', 'Stage Camera And Lighting Setup']) await expect(page.getByText(t, { exact: true })).toBeVisible();
+  for (const t of ['Armature: Pip', 'Puppet Fabrication: Pip', 'Replacement Faces: Pip', 'Puppet Costume Fitting: Pip', 'Miniature Sets', 'Stage Camera And Lighting Setup']) await expect(page.getByText(t, { exact: true })).toBeVisible();
   await expect(page.getByText('Ready for the stage.')).toBeVisible();
 });
 

@@ -246,6 +246,9 @@ export interface StoryCharacter {
   entityNote: string;
   methods: PerformanceMethod[];
   realization: Realization;
+  /** A stop-motion puppet's face (production/tasks.ts): swapped replacement faces, or a mechanical head. Unset: sculpted
+   *  and moved by hand, the work as before November 12, 2026. */
+  faceMethod?: 'replacement' | 'mechanical';
   ageInStory: string;
   /** Other names the character goes by (SLATE-05-01.02): a record for the writer, shown with the part in casting. */
   aliases?: string[];
@@ -681,6 +684,8 @@ export interface ShootDay {
   conflicts: string[];
   late?: boolean;
   weatherAnyway?: boolean;
+  /** The unit travelled the working day before, from this place (schedule.ts planShootDays). */
+  travelFrom?: string;
   /** Directing 2: on a pickup day, what each scene's pickup shoots (directing.ts). */
   pickups?: Record<string, 'take' | 'singles' | 'inserts'>;
 }

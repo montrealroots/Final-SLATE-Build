@@ -265,14 +265,14 @@ export function addCharacter(state: GameState, p: Project, name: string): StoryC
 }
 
 /** Fields whose change alters a character's physical/visual design. */
-const DESIGN_FIELDS: (keyof StoryCharacter)[] = ['entity', 'realization', 'entityNote', 'description'];
+const DESIGN_FIELDS: (keyof StoryCharacter)[] = ['entity', 'realization', 'entityNote', 'description', 'faceMethod'];
 
 export function updateCharacter(p: Project, id: string, patch: Partial<StoryCharacter>): { designChanged: boolean } {
   assertEditable(p);
   const c = p.characters.find((x) => x.id === id);
   if (!c) throw new Error('That character no longer exists.');
   if (patch.name !== undefined && !patch.name.trim()) throw new Error('A character needs a name.');
-  const designChanged = DESIGN_FIELDS.some((f) => patch[f] !== undefined && patch[f] !== c[f]);
+  const designChanged = DESIGN_FIELDS.some((f) => f in patch && patch[f] !== c[f]);
   Object.assign(c, patch);
   if (designChanged) c.designVersion += 1;
   return { designChanged };

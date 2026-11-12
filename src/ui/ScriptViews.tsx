@@ -4,7 +4,7 @@ import { languageName, searchEthnicities } from '../data/identity';
 import { NATIONALITIES } from '../engine/identity';
 import { countryName } from '../world/gazetteer/gazetteer';
 import {
-  MODULE_LABELS, TECHNIQUE_LABELS, addCharacter, addNote, addScene, noteFromIssue, applyDesignChange, approveDraft, composeGenres, deleteScene, describeImpact,
+  MODULE_LABELS, TECHNIQUE_LABELS, sceneTechnique, addCharacter, addNote, addScene, noteFromIssue, applyDesignChange, approveDraft, composeGenres, deleteScene, describeImpact,
   designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter, archiveCharacter, restoreCharacter, duplicateCharacter, splitCharacter, moveCharacter, removeCharacterRefusal,
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, approvedScenes, type ModuleId,
@@ -14,6 +14,7 @@ import {
 import { addAct, addBeat, addThread, removeAct, removeBeat, removeThread, setSceneAct, updateThread } from '../engine/structure-edit';
 // Loaded with this page, not at startup (the startup budget): the engine index leaves season.ts out.
 import { moveEpisode, addRelationship, removeRelationship, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, setSeriesPlan, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule, type SharedFact } from '../engine/season';
+import { FACE_METHODS } from '../engine/production/rates';
 import { CONSENT_PLAN, DOC_SUBJECTS, RESTRICTION_WORDS, proposeDocumentaryPlan, type DocSubjectKind } from '../engine/documentary';
 import { PROJECT_SUBJECTS } from '../engine/awards-rules';
 import { money } from '../engine/budget';
@@ -1243,6 +1244,9 @@ function SplitCharacter({ p, c, onClose }: { p: Project; c: StoryCharacter; onCl
   );
 }
 
+const FACE_HINT = `Replacement faces are a set made after the puppet, ${FACE_METHODS.replacement.faceDays} build days and half a day for each scene, and quicker to animate; a mechanical head adds ${FACE_METHODS.mechanical.armatureDays} armature days for each copy and is slower to animate. Game calibration.`;
+const usesStopMotion = (p: Project) => p.scenes.some((s) => sceneTechnique(p, s) === 'stop-motion') || p.axes.technique === 'stop-motion';
+
 function CharacterCard({ p, c, first, last, onRemove, onDesignChange }: { p: Project; c: StoryCharacter; first: boolean; last: boolean; onRemove: () => void; onDesignChange: () => void }) {
   const [open, setOpen] = useState(false);
   const [splitting, setSplitting] = useState(false);
@@ -1279,6 +1283,7 @@ function CharacterCard({ p, c, first, last, onRemove, onDesignChange }: { p: Pro
             <SelectField label="Role Size" value={c.roleSize} options={ROLE_SIZES.map((r) => ({ value: r, label: title(r) }))} onChange={(v) => up({ roleSize: v })} />
             <SelectField label="Entity" value={c.entity} options={ENTITIES.map((r) => ({ value: r, label: title(r) }))} onChange={(v) => up({ entity: v })} />
             <SelectField label="Realized As" value={c.realization} options={REALIZATIONS.map((r) => ({ value: r, label: REAL_LABEL[r] }))} onChange={(v) => up({ realization: v })} />
+            {usesStopMotion(p) && <SelectField label="Puppet Face" value={c.faceMethod ?? ''} hint={FACE_HINT} options={[{ value: '', label: 'Sculpted, Moved By Hand' }, { value: 'replacement', label: FACE_METHODS.replacement.label }, { value: 'mechanical', label: FACE_METHODS.mechanical.label }]} onChange={(v) => up({ faceMethod: (v || undefined) as StoryCharacter['faceMethod'] })} />}
             <AgeFields c={c} up={up} />
             <TextField label="Also Called" hint="Other names they go by, separated with commas. Shown with the part in casting; the character stays one character." value={(c.aliases ?? []).join(', ')} onChange={(v) => up({ aliases: parseList(v).length ? [...new Set(parseList(v))] : undefined })} />
             <SelectField label="Pronouns" value={characterPronouns(c) ?? ''} hint="Casting marks performers who match, and can list them first." options={[{ value: '', label: 'Open To Anyone' }, { value: 'he', label: 'He/Him' }, { value: 'she', label: 'She/Her' }, { value: 'they', label: 'They/Them' }]} onChange={(v) => up({ pronouns: v })} />

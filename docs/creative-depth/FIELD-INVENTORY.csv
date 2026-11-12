@@ -248,6 +248,7 @@ ScriptViews.tsx,"""Name""",1,record,TextField,everywhere a part is named,"None: 
 ScriptViews.tsx,"""Role Size""",1,decision,SelectField,script-effects.ts castPlacement; hiring.ts,None: already a short list to choose from,n/a,"tests/script-effects.test.ts::placement, essential scenes, the content declaration"
 ScriptViews.tsx,"""Entity""",1,decision,SelectField,projects.ts deriveRequirements; production/shoot.ts,None: already a short list to choose from,n/a,tests/genres.test.ts::module consumers change the right downstream state
 ScriptViews.tsx,"""Realized As""",1,decision,SelectField,projects.ts deriveRequirements; production/shoot.ts,None: already a short list to choose from,n/a,tests/genres.test.ts::module consumers change the right downstream state
+ScriptViews.tsx,"""Puppet Face""",1,decision,SelectField,"production/tasks.ts (sm:faces, sm:armature, sm:animation); rates.ts FACE_METHODS",None: already a short list to choose from,n/a,tests/media.test.ts::a puppet face is a choice of work
 ScriptViews.tsx,"""Also Called""",1,identity,TextField,shown with the part in casting,"None: another name for the same character, typed",Unchanged,
 ScriptViews.tsx,"""Pronouns""",1,identity,SelectField,script-explain.ts characterPronouns,None: already a short list to choose from,n/a,
 ScriptViews.tsx,"""Speaks""",1,decision,SelectField,production/language.ts personLanguagesFit,None: already a short list to choose from,n/a,tests/decision-effects.test.ts::the same part in English ; e2e/decisions.spec.ts::genre emphasis and dialogue languages

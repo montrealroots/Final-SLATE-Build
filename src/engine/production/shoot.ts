@@ -10,7 +10,7 @@ import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
 import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees, housePackageFee } from './rates';
 import { dayKitProblems, kitDayRate, wearKit } from '../equipment';
-import { chairsOf, ensureWorkEvent, isWorkingDay, minorsInScenes, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay } from './schedule';
+import { chairsOf, ensureWorkEvent, isWorkingDay, lastDay, minorsInScenes, relabelTravel, nextWorkingDay, performedSong, sceneComplexity, sceneLoad, scheduleShootDay, travelFrom } from './schedule';
 import { childShare, ensureLicence, isSchoolDay, licenceReady, setAsideOf, supervisionFor, type Minor } from '../minors';
 import { dialogueHolds, kitStabilizer, rigDayCost } from '../craft';
 import { awayDayCost, dayPlace, kindFee, moveCost, noisyDay } from '../destinations';
@@ -94,6 +94,7 @@ export function swapWithInteriorDay(state: GameState, p: Project, dayId: string)
   const other = p.schedule.days.find((x) => x.status === 'scheduled' && x.interior && x.date > d.date);
   if (!other) throw new Error('There is no later interior day to swap with. You can keep the plan or wait for the weather.');
   [d.date, other.date] = [other.date, d.date];
+  relabelTravel(p);
   cancelEvents(state, (e) => (e.payload.dayId === d.id || e.payload.dayId === other.id) && ['shoot-call', 'shoot-wrap', 'weather-check'].includes(e.kind));
   scheduleShootDay(state, p, d);
   scheduleShootDay(state, p, other);
@@ -126,6 +127,7 @@ export function moveShootDay(state: GameState, p: Project, dayId: string): strin
   }
   const from = d.date;
   d.date = k;
+  relabelTravel(p);
   d.weatherAnyway = undefined;
   cancelEvents(state, (e) => e.payload.dayId === d.id && ['shoot-call', 'shoot-wrap', 'weather-check'].includes(e.kind));
   scheduleShootDay(state, p, d);
@@ -442,9 +444,12 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
 }
 
 export function rescheduleScenes(state: GameState, p: Project, sceneIds: string[], after: ShootDay): void {
-  const last = p.schedule.days.reduce((m, x) => (x.date > m ? x.date : m), after.date);
-  const date = nextWorkingDay(p, addDaysToKey(last, 1));
+  const prev = lastDay(p);
+  const last = prev && prev.date > after.date ? prev.date : after.date;
+  const from = travelFrom(p, prev && prev.date > after.date ? prev.locationLabel : after.locationLabel, after.locationLabel);
+  const date = nextWorkingDay(p, addDaysToKey(from ? nextWorkingDay(p, addDaysToKey(last, 1)) : last, 1));
   const nd: ShootDay = {
+    ...(from ? { travelFrom: from } : {}),
     id: newId(state, 'd'), date, episode: after.episode, sceneIds: [...sceneIds], locationLabel: after.locationLabel, interior: after.interior, night: after.night,
     status: 'scheduled', playerActing: after.playerActing, conflicts: [],
   };
@@ -471,9 +476,14 @@ export function schedulePickups(state: GameState, p: Project, sceneIds: string[]
   const soonest = addDaysToKey(dateKey(state.now, zone), 3);
   let date = nextWorkingDay(p, lastScheduled && lastScheduled >= soonest ? addDaysToKey(lastScheduled, 1) : soonest);
   let n = 0;
+  let at = lastDay(p)?.locationLabel ?? null;
   for (const [k, list] of groups) {
     const [ep, place, ie, dn] = k.split('|');
+    const from = travelFrom(p, at, place);
+    if (from) date = nextWorkingDay(p, addDaysToKey(date, 1));
+    at = place;
     const d: ShootDay = {
+      ...(from ? { travelFrom: from } : {}),
       id: newId(state, 'd'), date, episode: Number(ep), sceneIds: list.map((s) => s.id), locationLabel: place, interior: ie === 'I', night: dn === 'N', status: 'scheduled',
       playerActing: list.some((s) => s.participants.some((c) => p.cast.some((a) => a.characterId === c && a.performer === 'player'))), conflicts: [],
       ...(pickups && list.some((s) => pickups[s.id]) ? { pickups: Object.fromEntries(list.filter((s) => pickups[s.id]).map((s) => [s.id, pickups[s.id]])) } : {}),

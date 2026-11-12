@@ -8,7 +8,7 @@ import { cancel, ledgerTotals, money, reserve, FundsError } from '../budget';
 import { isMakeUpWorkday, placeHolidaysOn } from '../holidays';
 import { observancesOn } from '../observances';
 import { approvedCharacters, approvedScenes, projectModules, sceneTechnique } from '../projects';
-import { addLog, cancelEvents, newId, schedule } from '../state';
+import { addLog, cancelEvents, distanceKm, newId, schedule } from '../state';
 import { addDaysToKey, dateKey, formatDateKey, isDateKey, localParts, localToInstant, parseYmd, weekdayOfKey } from '../time';
 import { materialCost } from './workday';
 import { buildTasks } from './tasks';
@@ -17,7 +17,7 @@ import { planTime } from '../takes';
 import { songUses } from '../songs';
 import { childShare, ensureLicence, minorFor, type Minor } from '../minors';
 import { rigDayCost } from '../craft';
-import { awayCosts, dayPlace } from '../destinations';
+import { AWAY_KM, awayCosts, dayPlace } from '../destinations';
 import { kitClash } from '../equipment';
 import { PLATE_FACTOR, digitalCrowd, makeupDayCost, makeupShare, physicalCrowd } from '../looks';
 import { covers } from '../people';
@@ -174,6 +174,33 @@ export function groupShootDays(p: Project, state?: GameState): ShootDayGroup[] {
   return out;
 }
 
+/**
+ * Where the unit travels from to shoot at `label` after a day at `prevLabel` (the base when null), when the move takes a
+ * working day: that place's name, or null. A day's travel is read by every way a shoot day is dated: the plan, a moved
+ * day and a pickup (the v4 package, 02; ledger V4-020.02). Until November 12, 2026 the move was paid but took no time.
+ */
+export function travelFrom(p: Project, prevLabel: string | null, label: string): string | null {
+  const from = prevLabel === null ? getPlace(p.axes.basePlaceId) : dayPlace(p, { locationLabel: prevLabel });
+  const to = dayPlace(p, { locationLabel: label });
+  return from.id !== to.id && distanceKm(from, to) >= AWAY_KM ? from.name : null;
+}
+
+/**
+ * After days change places (a swap, a moved day), each scheduled day says again where the unit travels from.
+ * shortcut: it relabels and does not re-date; a swap that puts two distant places on consecutive days says the unit
+ * travels without a day for it. Re-date here if swaps between distant places become common.
+ */
+export function relabelTravel(p: Project): void {
+  let at: string | null = null;
+  for (const d of [...p.schedule.days].filter((x) => x.status !== 'cancelled' && x.status !== 'moved').sort((a, b) => (a.date < b.date ? -1 : a.date > b.date ? 1 : 0))) {
+    if (d.status === 'scheduled') { const from = travelFrom(p, at, d.locationLabel); if (from) d.travelFrom = from; else delete d.travelFrom; }
+    at = d.locationLabel;
+  }
+}
+
+/** The day dated last in the schedule, of any status, or undefined: where the unit was last sent. */
+export const lastDay = (p: Project): ShootDay | undefined => p.schedule.days.reduce<ShootDay | undefined>((m, x) => (!m || x.date > m.date ? x : m), undefined);
+
 export function planShootDays(state: GameState, p: Project, firstDay: string): ShootDay[] {
   const days: ShootDay[] = [];
   let cursor = nextWorkingDay(p, firstDay);
@@ -192,6 +219,8 @@ export function planShootDays(state: GameState, p: Project, firstDay: string): S
   }, '');
   const pending = groups.map((g) => ({ g, ready: readyBy(g) }));
   let lastNightKids = new Set<string>();
+  // Where the unit is: the base until the first day away (travelFrom).
+  let at: string | null = null;
   while (pending.length) {
     const i = pending.findIndex((x) => x.ready <= cursor);
     // Nothing can go yet: wait for the first licence.
@@ -200,11 +229,15 @@ export function planShootDays(state: GameState, p: Project, firstDay: string): S
     const kids = kidsIn(g).map((m) => m.characterId);
     // Twelve hours between a child's dismissal and their next call: a day call after a night shoot moves a day on.
     if (!g.night && kids.some((k) => lastNightKids.has(k))) cursor = nextWorkingDay(p, addDaysToKey(cursor, 1));
+    const from = travelFrom(p, at, g.place);
+    if (from) cursor = nextWorkingDay(p, addDaysToKey(cursor, 1));
     days.push({
+      ...(from ? { travelFrom: from } : {}),
       id: newId(state, 'd'), date: cursor, episode: g.episodes[0], ...(g.episodes.length > 1 ? { episodes: g.episodes } : {}), sceneIds: g.sceneIds, locationLabel: g.place, interior: g.interior, night: g.night,
       status: 'scheduled', playerActing: scenes.some((s) => g.sceneIds.includes(s.id) && s.participants.some((c) => playerChars.has(c))), conflicts: [],
     });
     lastNightKids = new Set(g.night ? kids : []);
+    at = g.place;
     cursor = nextWorkingDay(p, addDaysToKey(cursor, 1));
   }
   // Note conflicts with the player's own appointments.

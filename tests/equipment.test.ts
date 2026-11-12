@@ -106,6 +106,14 @@ describe('a kit of your own', () => {
     expect(kitProblems(p)).toEqual([]);
   });
 
+  it('follows the method: an animated project shoots nothing and takes no kit; a hybrid does', () => {
+    const s = rich('method');
+    const anim = buildProject(s, { title: 'Drawn', format: 'short', medium: 'animation', technique: '2d-drawn' }, [{ name: 'Wren' }], [{ place: 'Office', chars: ['Wren'] }]);
+    expect(kitAddRefusal(s, anim, { gearId: 'bmpcc-4k' })).toBe('An animated project has no shoot days: it needs no camera kit.');
+    const hybrid = buildProject(s, { title: 'Both', format: 'short', medium: 'hybrid', technique: '3d-cg' }, [{ name: 'Wren' }], [{ place: 'Office', chars: ['Wren'] }]);
+    expect(kitAddRefusal(s, hybrid, { gearId: 'bmpcc-4k' })).toBeNull();
+  });
+
   it('a stabilizer in the kit replaces the one rented for long moving takes', () => {
     const s = rich('gimbal');
     const p = short(s);

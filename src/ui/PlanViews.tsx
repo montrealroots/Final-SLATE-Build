@@ -604,6 +604,7 @@ export function ScheduleTab({ p }: { p: Project }) {
                     {filmedAt(p, d.locationLabel) && <div className="dim">Filmed in {dayPlace(p, d).name}, {dayPlace(p, d).countryName}.</div>}
                     {fc && !d.interior && fc.leadDays <= 10 && <div className="dim">Forecast{filmedAt(p, d.locationLabel) ? ` for ${dayPlace(p, d).name}` : ''}: {fc.summary}, {fc.chanceOfPrecip}% chance of rain or snow.</div>}
                     {d.result && <div className="dim">{d.result}</div>}
+                    {d.travelFrom && <div className="dim">The unit travels from {d.travelFrom} the working day before.</div>}
                     {d.conflicts.map((c) => <div key={c} className="dim" style={{ color: 'var(--warning)' }}>{c}</div>)}
                     {d.status === 'scheduled' && (() => {
                       const cs = callSheet(g, p, d.id);

@@ -4,7 +4,7 @@
 import type { Project, Scene, Task } from '../types';
 import { approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneLabel, sceneTechnique } from '../projects';
 import { MOCAP_CLEANUP_PER_SESSION } from '../mocap';
-import { ANIM_RATE, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS } from './rates';
+import { ANIM_RATE, FACE_METHODS, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS } from './rates';
 import { recordTaskId, songTasks, songUses } from '../songs';
 import { CREATURE_FOLEY_DAYS, LIGHTS, LOOP_GROUP_PER_SCENES, LOOP_GROUP_SESSION, WILD_TRACK_PER_LOCATIONS, cameraTestDays, lightOf, postFactors, rigRehearsalDays, scoreSessions, soundsOf } from '../craft';
 import { permitWork } from '../destinations';
@@ -146,8 +146,11 @@ export function buildTasks(p: Project): Task[] {
       if (tech === 'stop-motion') {
         for (const c of animChars.filter((c) => tScenes.some((s) => s.participants.includes(c.id)))) {
           const copies = p.schedule.puppetCopies[c.id] ?? 1;
-          tasks.push(t('sm:armature', c.id, `Armature: ${c.name}`, 'Stop Motion', 'armature-fabricator', 4 * copies, 'build days', ['anim:visdev:all'], { assetRef: c.id, needsVersion: c.designVersion }));
+          const face = c.faceMethod ? FACE_METHODS[c.faceMethod] : null;
+          tasks.push(t('sm:armature', c.id, `Armature: ${c.name}`, 'Stop Motion', 'armature-fabricator', (4 + (face?.armatureDays ?? 0)) * copies, 'build days', ['anim:visdev:all'], { assetRef: c.id, needsVersion: c.designVersion }));
           tasks.push(t('sm:puppet', c.id, `Puppet Fabrication: ${c.name}`, 'Stop Motion', 'puppet-fabricator', 5 * copies, 'build days', [`sm:armature:${c.id}`], { assetRef: c.id, needsVersion: c.designVersion }));
+          // One set of replacement faces serves every copy of the puppet; a scene asks for more expressions.
+          if (face?.faceDays) tasks.push(t('sm:faces', c.id, `Replacement Faces: ${c.name}`, 'Stop Motion', 'puppet-fabricator', face.faceDays + face.perScene * tScenes.filter((s) => s.participants.includes(c.id)).length, 'build days', [`sm:puppet:${c.id}`], { assetRef: c.id, needsVersion: c.designVersion }));
           tasks.push(t('sm:costume', c.id, `Puppet Costume Fitting: ${c.name}`, 'Costume And Makeup', 'costume-designer', 1 * copies, 'fittings', [`sm:puppet:${c.id}`], { assetRef: c.id, needsVersion: c.designVersion }));
         }
         const sets = new Set(tScenes.map((s) => s.storyLocation || s.heading.place));
@@ -155,8 +158,11 @@ export function buildTasks(p: Project): Task[] {
         // Macro lenses on miniatures are tested with the stage setup (craft.ts): two more stage days before animation.
         tasks.push(t('sm:stages', 'all', 'Stage Camera And Lighting Setup', 'Stop Motion', 'stage-dp', p.schedule.stages * 2 + cameraTestDays(p, false, true), 'stage days', ['sm:sets:all']));
         for (const s of tScenes) {
-          const deps = ['anim:animatic:all', 'sm:stages:all', ...s.participants.filter((c) => animChars.some((x) => x.id === c)).map((c) => `sm:costume:${c}`), ...voiceDeps(s)];
-          tasks.push(t('sm:animation', s.id, `Animate ${sceneLabel(p, s)}`, 'Stop Motion', 'stopmo-animator', (s.estMinutes * 60) / (rate[q] * LIGHTS[lightOf(p)].frames), 'animator days', deps, { sceneIds: [s.id], episode: s.episode }));
+          const puppets = animChars.filter((c) => s.participants.includes(c.id));
+          const deps = ['anim:animatic:all', 'sm:stages:all', ...puppets.map((c) => `sm:costume:${c.id}`), ...puppets.filter((c) => c.faceMethod === 'replacement').map((c) => `sm:faces:${c.id}`), ...voiceDeps(s)];
+          // The slowest face in the scene sets its pace: a mechanical head is worked frame by frame.
+          const pace = puppets.length ? Math.max(...puppets.map((c) => (c.faceMethod ? FACE_METHODS[c.faceMethod].pace : 1))) : 1;
+          tasks.push(t('sm:animation', s.id, `Animate ${sceneLabel(p, s)}`, 'Stop Motion', 'stopmo-animator', pace * (s.estMinutes * 60) / (rate[q] * LIGHTS[lightOf(p)].frames), 'animator days', deps, { sceneIds: [s.id], episode: s.episode }));
           tasks.push(t('anim:composite', s.id, `Rig Removal And Compositing: ${sceneLabel(p, s)}`, 'Animation', 'compositor', Math.max(0.5, s.estMinutes * 0.6), 'days', [`sm:animation:${s.id}`], { sceneIds: [s.id], episode: s.episode }));
         }
       } else if (tech === '3d-cg') {
