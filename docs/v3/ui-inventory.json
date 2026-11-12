@@ -789,6 +789,17 @@
   ]
  },
  {
+  "id": "dlg-guide-me",
+  "area": "Crew",
+  "name": "Guide Me For A Department",
+  "kind": "dialog",
+  "dialog": "^@guide-me$",
+  "source": "PlanViews | {`Guide Me For ",
+  "walk": [
+   "guide-me"
+  ]
+ },
+ {
   "id": "dlg-hire-extra",
   "area": "Crew",
   "name": "Hire A Writer Or Director",

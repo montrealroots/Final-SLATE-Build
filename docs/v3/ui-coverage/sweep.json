@@ -896,25 +896,6 @@
     "1280x720"
    ]
   },
-  "project:script|@story-open": {
-   "phone": [
-    "390x844",
-    "667x375"
-   ],
-   "desktop": [
-    "1280x720",
-    "768x1024",
-    "320x568"
-   ],
-   "iphone-15-plus": [
-    "932x430",
-    "430x932"
-   ],
-   "iphone-15-pro-max": [
-    "430x739",
-    "430x932"
-   ]
-  },
   "start:|": {
    "phone": [
     "844x390"
@@ -991,24 +972,6 @@
     "600x960"
    ],
    "iphone-15-plus": [
-    "430x932"
-   ]
-  },
-  "project:script|Choose A Full Story": {
-   "phone": [
-    "390x844",
-    "667x375"
-   ],
-   "desktop": [
-    "1280x720",
-    "768x1024",
-    "320x568"
-   ],
-   "iphone-15-plus": [
-    "430x932"
-   ],
-   "iphone-15-pro-max": [
-    "430x739",
     "430x932"
    ]
   },

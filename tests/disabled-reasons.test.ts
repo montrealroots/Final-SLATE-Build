@@ -36,6 +36,7 @@ const REASONS: Record<string, string> = {
   'ScriptViews.tsx | !!p.delivered || last': 'The first character has nowhere higher to go, and the last nowhere lower; a delivered script says it is locked at the top of the page.',
   'ScriptViews.tsx | !!refusal': 'The dialog says why above the buttons: someone is contracted or has an offer for the part, or it has contracts or filmed work behind it, and Set Aside is offered instead.',
   'ReviseBrief.tsx | !!pre.refusal': 'The dialog says why above the fields: the script is delivered, or a draft is approved and work has begun on it.',
+  'PlanViews.tsx | !!no': 'The dialog says why under the ceiling field: no approved draft, a mandate already running, a ceiling of nothing, or more than the money uncommitted.',
   'AdaptWork.tsx | locked': 'The budget size says it is available after you deliver a project.',
   'ScriptViews.tsx | !accepted.length || !!p.revision || !!p.delivered': 'The button counts accepted notes; a revision under way is shown on the page; the script is locked once delivered.',
   'ScriptViews.tsx | !undoStack.get(p.id)?.length || locked': 'Nothing to undo yet; or the script is locked once delivered.',

@@ -1,6 +1,6 @@
 {
  "project": "iphone-15-plus",
- "at": "2026-11-12T15:04:38.429Z",
+ "at": "2026-11-12T20:02:04.118Z",
  "rows": [
   {
    "id": "start",
@@ -245,10 +245,124 @@
    "accepted": []
   },
   {
-   "id": "new-script",
+   "id": "new-project-choose",
    "area": "Your Work",
-   "name": "New Script",
+   "name": "New Project",
    "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "new-original",
+   "area": "Your Work",
+   "name": "Write An Original",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "script-empty",
+   "area": "Project",
+   "name": "Script, Nothing Written",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "new-documentary",
+   "area": "Your Work",
+   "name": "Develop A Documentary",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-list",
+   "area": "Your Work",
+   "name": "Adapt A Work, The Works",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-open",
+   "area": "Your Work",
+   "name": "Adapt A Work, A Work Open",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-shape",
+   "area": "Your Work",
+   "name": "Adapt A Work, Format And Method",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-preview",
+   "area": "Your Work",
+   "name": "Adapt A Work, The Brief",
+   "kind": "state",
    "sizes": {
     "iPhone 15 Plus (WebKit) (430 by 932)": {
      "defects": []
@@ -279,9 +393,9 @@
    "accepted": []
   },
   {
-   "id": "script-empty",
+   "id": "script-adapted",
    "area": "Project",
-   "name": "Script, Nothing Written",
+   "name": "Script, Made From A Work",
    "kind": "tab",
    "sizes": {
     "iPhone 15 Plus (WebKit) (430 by 932)": {
@@ -297,42 +411,10 @@
    "accepted": []
   },
   {
-   "id": "story-list",
+   "id": "revise-brief",
    "area": "Project",
-   "name": "Choose A Full Story",
+   "name": "Revise From The Work",
    "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "story-open",
-   "area": "Project",
-   "name": "A Full Story, Open",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "script-story",
-   "area": "Project",
-   "name": "Script, With A Story Applied",
-   "kind": "tab",
    "sizes": {
     "iPhone 15 Plus (WebKit) (430 by 932)": {
      "defects": []
@@ -1344,6 +1426,22 @@
    "id": "staff",
    "area": "Crew",
    "name": "Staff A Department",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "guide-me",
+   "area": "Crew",
+   "name": "Guide Me For A Department",
    "kind": "dialog",
    "sizes": {
     "iPhone 15 Plus (WebKit) (430 by 932)": {

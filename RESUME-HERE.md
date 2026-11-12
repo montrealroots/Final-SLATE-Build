@@ -130,7 +130,16 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
     as a test fixture (`tests/fixtures/stories.bp`) for the blueprint engine's tests.
   - A bug the journey caught: the preview read the title and genres as empty, so a revision replaced the player's
     working title unasked. Fixed in `blueprints.ts briefFields`.
-  - Not built yet in B: Guide Me mandates (V4-006), the character lifecycle extras (duplicate, combine, split, restore,
+  - **Guide Me, crew departments (built November 12, 2026, after #79):** `engine/mandates.ts`. On the Crew tab each
+    department with required jobs has Guide Me beside Staff This Department. Its dialog shows the plan (who, rate,
+    days, cost) and asks for a spending ceiling, refused above the money uncommitted. Approved, it sends offers at
+    asking rates at once (each ledger line ends "(Guide Me)"), looks again each day (`guide-me` event), offers the
+    job to someone else after a no and never to the same person, accepts a counteroffer only while it fits, and
+    returns anything else to the player once (`Mandate.told`). It ends itself when the department is staffed; Back To
+    Manual ends it and leaves sent offers open. What it has committed is the sum of its hires' ledger lines. Tests:
+    `tests/guide-me.test.ts` (7, all seven deliberate breaks caught), `e2e/guide-me.spec.ts`. Not built: Guide Me
+    for casting, writing and music, and a mandate that also plans the schedule.
+  - Not built yet in B: the character lifecycle extras (duplicate, combine, split, restore,
     age stages, per-episode performers: V4-007), a documentary proposal (V4-004.03), and a title-by-title Sanderson
     comparison with his official site.
 - **Worktrees** `../slate-c-work` to `../slate-h-work` and `../slate-ui-work` are older branches with nothing

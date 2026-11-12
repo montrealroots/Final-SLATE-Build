@@ -35,3 +35,4 @@ export * from './opportunities';
 export * from './representation';
 // The living world's engine (industry.ts) loads with the film catalog, not at startup: App.tsx imports it when the world
 // file arrives, and state.ts holds its decisions until then.
+export * from './mandates';

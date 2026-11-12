@@ -5,13 +5,13 @@ A child requirement is verified only when a named unit test and a named browser 
 
 | | Children | Requested | Implemented | Verified | Retired |
 | --- | --- | --- | --- | --- | --- |
-| All | 125 | 61 | 34 | 30 | 0 |
+| All | 125 | 57 | 38 | 30 | 0 |
 | V4-001 Retire preset quotas and migrate saves | 4 | 0 | 3 | 1 | 0 |
 | V4-002 Source-first project creation | 5 | 0 | 4 | 1 | 0 |
 | V4-003 Verified source catalog and bibliography | 7 | 1 | 4 | 2 | 0 |
 | V4-004 Full creative brief autofill | 5 | 1 | 4 | 0 | 0 |
 | V4-005 Preview locks undo and selective edits | 4 | 0 | 4 | 0 | 0 |
-| V4-006 Guide Me delegation and spending mandates | 3 | 3 | 0 | 0 | 0 |
+| V4-006 Guide Me delegation and spending mandates | 3 | 0 | 3 | 0 | 0 |
 | V4-007 Character lifecycle and multi-performer assignments | 4 | 3 | 0 | 1 | 0 |
 | V4-008 Original writing and era controls | 3 | 0 | 1 | 2 | 0 |
 | V4-009 Individual people and dated careers | 5 | 1 | 0 | 4 | 0 |
@@ -40,7 +40,7 @@ A child requirement is verified only when a named unit test and a named browser 
 | V4-032 International companies and networks | 1 | 0 | 1 | 0 | 0 |
 | V4-033 Complete picture inventory and resumable installs | 4 | 0 | 1 | 3 | 0 |
 | V4-034 Credits attribution and clean UI | 2 | 1 | 1 | 0 | 0 |
-| V4-035 Desktop-phone parity and full-state audit | 3 | 2 | 0 | 1 | 0 |
+| V4-035 Desktop-phone parity and full-state audit | 3 | 1 | 1 | 1 | 0 |
 | V4-036 Save migrations and accounting invariants | 2 | 0 | 1 | 1 | 0 |
 | V4-037 Performance and long-career balance | 3 | 1 | 2 | 0 | 0 |
 | V4-038 J01-J13 full journeys and exact-tree CI | 13 | 13 | 0 | 0 | 0 |

@@ -1285,3 +1285,10 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `tests/sources.test.ts` | 0 | The game-date limit; the enriched fields kept as recorded; Sanderson's works without his bibliography, series or editions. |
 | `e2e/ui-coverage.spec.ts`, rebuilt around Adapt A Work | 2 real layout defects, fixed | Home at 320 pixels wide: a project row held its title button and a phase label that could not wrap, so a long title in pre-production pushed the page 63 pixels sideways; the row now wraps and the title wraps within it. Adapt A Work: the works list was drawn before the game's genre names had loaded, and each card grew when they arrived, moving the page 25 pixels; the list now waits for them (and is not held back if they fail). |
 | `e2e/adapt.spec.ts`, desktop and phone | 1 real bug, fixed; 3 journey mistakes, fixed | The film journey found that Revise From The Work replaced the player's working title without offering to keep it (the preview read the title and genres as empty). The journey's own mistakes: a project card's name carries a started note; the save was read before the autosave; the series work had no recorded series. |
+
+## v4 Milestone B: Guide Me For Crew Departments
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/guide-me.test.ts` | 3 fixture mistakes of mine, fixed | 7 tests. Seven deliberate breaks, each caught after two tests were added for the two that first survived (asking the same person again; accepting a counteroffer past the ceiling). The plan prices each job before any offer; with others hired some jobs need fewer days, so what is committed can be less than the plan, never more. |
+| `e2e/guide-me.spec.ts`, desktop and phone | 0 | The plan read first, a ceiling above the money refused, offers held on the ledger as Guide Me, another department taken back to manual, the department staffed within the ceiling after days of answers. |

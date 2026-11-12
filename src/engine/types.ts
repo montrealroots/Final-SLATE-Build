@@ -525,6 +525,21 @@ export interface Hire {
   negotiated?: { by: string; byName: string; at: number; fee: number; from: number; to: number };
   /** A child's pay set aside in trust under the shoot's rules (minors.ts), in total so far. */
   trustSetAside?: number;
+  /** The Guide Me mandate that sent this offer (mandates.ts), by its id; absent for the player's own offers. */
+  guided?: string;
+}
+
+/** A department staffed by Guide Me inside an approved ceiling (mandates.ts). What it has committed is never stored. */
+export interface Mandate {
+  id: string;
+  dept: string;
+  ceiling: number;
+  approvedAt: number;
+  endedAt?: number;
+  /** Done when the department was staffed; manual when the player took it back, or the project was delivered or shelved. */
+  ended?: 'done' | 'manual';
+  /** What it returned to the player, each said once. */
+  told: string[];
 }
 
 export interface CastAssignment {
@@ -941,6 +956,8 @@ export interface Project {
    * field it wrote whether that was sourced, proposed or unknown, why, and the words it wrote. A field whose words now
    * differ from those is the player's own.
    */
+  /** Departments staffed by Guide Me, past and present (mandates.ts). */
+  mandates?: Mandate[];
   proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string> };
   /** Fields the player locked: a full story or a shuffle leaves them alone (blueprints.ts FIELD_LABELS has the keys). */
   locks?: string[];

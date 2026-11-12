@@ -372,6 +372,7 @@ test('the UI audit: the rest of creation, and the dialogs the first walk does no
   await dialog(page.getByRole('button', { name: 'Hire A Writer', exact: true }), 'hire-writer', 'Crew', 'Hire A Writer');
   await dialog(page.getByRole('button', { name: /^Find Candidates/ }), 'hire-crew', 'Crew', 'Hire A Crew Member');
   await dialog(page.getByRole('button', { name: /^Staff /, exact: false }), 'staff', 'Crew', 'Staff A Department');
+  await dialog(page.getByRole('button', { name: 'Guide Me' }).first(), 'guide-me', 'Crew', 'Guide Me For A Department');
   // Once work has begun on an approved script, taking a scene out or approving a changed draft says what it touches first.
   await section(page, 'Script');
   const later = page.locator('article.scene-card').nth(1);
