@@ -351,19 +351,7 @@ test('the UI audit: the rest of creation, and the dialogs the first walk does no
   await page.getByRole('dialog').last().getByRole('button', { name: 'Apply This Story' }).click();
   await page.getByRole('dialog').waitFor({ state: 'detached' });
   await dialog(page.getByRole('button', { name: /^Change The Relationship Of / }), 'change-relationship', 'Script', 'Change The Relationship');
-  // A rule of the story's world, added here and relied on by a scene: changing it has a dialog, and removing it, or a
-  // relationship between two people who share a scene, asks first and is left alone.
-  if (await page.getByRole('button', { name: 'Add Rule' }).isVisible().catch(() => false)) {
-    await page.getByLabel('Rule', { exact: true }).fill('The vault opens once a day');
-    await page.getByLabel('Limit Or Cost', { exact: true }).fill('At noon, for four minutes');
-    await page.getByRole('button', { name: 'Add Rule' }).click();
-    await dialog(page.getByRole('button', { name: /^Change The Rule / }), 'change-rule', 'Script', 'Change The Rule');
-    const relies = page.getByRole('group', { name: 'Scenes That Rely On It' }).getByRole('checkbox').first();
-    if (await relies.isVisible().catch(() => false)) {
-      await relies.check();
-      await dialog(page.getByRole('button', { name: /^Remove The Rule / }), 'remove-rule', 'Script', 'Remove The Rule');
-    }
-  }
+  // Removing a relationship between two people who share a scene asks first, and is left alone.
   await dialog(page.getByRole('button', { name: /^Remove The Relationship Of / }), 'remove-relationship', 'Script', 'Remove The Relationship');
   await page.getByRole('button', { name: 'Declare None Of These' }).click().catch(() => undefined);
   await page.getByRole('button', { name: 'Save Draft' }).click();
@@ -394,6 +382,24 @@ test('the UI audit: the rest of creation, and the dialogs the first walk does no
   await later.getByLabel('Place', { exact: true }).fill('Loading Dock Behind The Bank');
   await page.getByRole('button', { name: 'Save Draft' }).click();
   await dialog(page.getByRole('button', { name: 'Approve This Draft' }), 'approve-draft', 'Script', 'Approve This Draft?');
+  // A story whose world has rules of its own (science fiction; a heist has no such card): changing a rule has a dialog,
+  // and removing one that a scene relies on asks first and is left alone.
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Rules', format: 'Feature Film', budget: 'Low Budget' });
+  await section(page, 'Script');
+  await page.getByRole('button', { name: 'Choose A Full Story' }).click();
+  const shelf = page.getByRole('dialog', { name: 'Choose A Full Story' });
+  await shelf.getByLabel('Genre').locator('option').filter({ hasText: /^Science Fiction \(/ }).waitFor({ state: 'attached' });
+  await shelf.getByLabel('Genre').selectOption({ label: (await shelf.getByLabel('Genre').locator('option').allInnerTexts()).find((t) => /^Science Fiction \(/.test(t))! });
+  await shelf.getByRole('button', { name: /^Forty Minutes Of Light/ }).click();
+  await page.getByRole('dialog').last().getByRole('button', { name: 'Apply This Story' }).click();
+  await page.getByRole('dialog').waitFor({ state: 'detached' });
+  await dialog(page.getByRole('button', { name: /^Change The Rule / }), 'change-rule', 'Script', 'Change The Rule');
+  const relies = page.getByRole('group', { name: 'Scenes That Rely On It' }).first().getByRole('checkbox').first();
+  if (await relies.isVisible().catch(() => false)) {
+    await relies.check();
+    await dialog(page.getByRole('button', { name: /^Remove The Rule / }), 'remove-rule', 'Script', 'Remove The Rule');
+  }
   await nav(page, 'Saved Games');
   await page.getByRole('heading', { name: 'Saved Games', level: 1 }).waitFor();
   await dialog(page.getByRole('button', { name: /^Rename Save/ }), 'rename-save-in-game', 'Your Game', 'Rename Save, In The Game');

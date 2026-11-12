@@ -1,6 +1,6 @@
 {
  "project": "iphone-15-pro-max",
- "at": "2026-11-12T14:57:04.928Z",
+ "at": "2026-11-12T15:05:06.604Z",
  "rows": [
   {
    "id": "start",
@@ -1112,6 +1112,32 @@
    "id": "approve-draft",
    "area": "Script",
    "name": "Approve This Draft?",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "change-rule",
+   "area": "Script",
+   "name": "Change The Rule",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "remove-rule",
+   "area": "Script",
+   "name": "Remove The Rule",
    "kind": "dialog",
    "sizes": {
     "iPhone 15 Pro Max (WebKit) (430 by 932)": {

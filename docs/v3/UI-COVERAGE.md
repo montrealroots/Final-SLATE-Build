@@ -2,7 +2,7 @@
 
 Written by `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json`, the walk (`e2e/ui-coverage.spec.ts`, last run 2026-11-12) and the journey sweep (`SLATE_UI_SWEEP`). The owner's brief is `docs/v3/UI-BRIEF.md`.
 
-82 rows. 69 measured, 13 not visited. 0 open defects.
+82 rows. 71 measured, 11 not visited. 0 open defects.
 
 What the columns mean. **Walked**: the screen was opened on purpose and measured at that many window sizes in each browser profile. **Desktop And Phone**: the same screen in the same state at 1280 and at 390 pixels wide, compared for headings, things to press, fields and their order. **Reached In Journeys**: a full play-through reached it and the same measure ran there, at the sizes listed. **Desktop And Phone, In Journeys**: what the screen offered when the same journeys ran in each layout. Browser emulation is not a real device: nothing here measures a virtual keyboard, and that is tracked in the limits below.
 
@@ -72,8 +72,8 @@ What the columns mean. **Walked**: the screen was opened on purpose and measured
 | Script | Rename Draft | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | desktop (1280x720 768x1024 320x568), iphone-15-plus (430x932) | not compared | none found |
 | Script | Delete This Scene? | dialog | no | not compared | no | not compared | **not visited** |
 | Script | A Script Change That Touches Other Work (Split The Scene, Combine The Scenes and the like: titled with the change.) | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | desktop (1280x720 768x1024 320x568), iphone-15-plus (430x932), iphone-15-pro-max (430x932) | not compared | none found |
-| Script | Change The Rule | dialog | no | not compared | no | not compared | **not visited** |
-| Script | Remove The Rule | dialog | no | not compared | no | not compared | **not visited** |
+| Script | Change The Rule | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | no | not compared | none found |
+| Script | Remove The Rule | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | no | not compared | none found |
 | Script | Change The Relationship | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | desktop (1024x768 768x1024 600x960), iphone-15-plus (932x430) | not compared | none found |
 | Script | Remove The Relationship | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | no | not compared | none found |
 | Characters | Take A Character Out Of The Script? | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1280x720 768x1024 320x568), iphone-15-plus (932x430) | 6 things in both | none found |

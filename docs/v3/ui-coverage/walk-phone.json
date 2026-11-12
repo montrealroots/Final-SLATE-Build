@@ -1,6 +1,6 @@
 {
  "project": "phone",
- "at": "2026-11-12T14:56:06.284Z",
+ "at": "2026-11-12T15:03:49.916Z",
  "rows": [
   {
    "id": "start",
@@ -2505,6 +2505,66 @@
    "id": "approve-draft",
    "area": "Script",
    "name": "Approve This Draft?",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "change-rule",
+   "area": "Script",
+   "name": "Change The Rule",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "remove-rule",
+   "area": "Script",
+   "name": "Remove The Rule",
    "kind": "dialog",
    "sizes": {
     "phone (390 by 844)": {

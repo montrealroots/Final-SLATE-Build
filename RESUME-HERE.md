@@ -121,7 +121,7 @@ has a row for each requirement built or owed.
   tools/v3/ui-coverage.mjs --fresh --sweep <file> --sweep <file>`). Do not run `npm run check` while a production
   sweep runs: both build into `dist/`. The stylesheet turns at four widths, listed at its head;
   `tests/stylesheet.test.ts` fails a fifth, a rule for a class nothing wears and an inline pixel margin. `QA-REPORT.md`
-  has every finding and fix. **Owed:** the 13 rows the matrix lists as not visited (dialogs that open only in a
+  has every finding and fix. **Owed:** the 11 rows the matrix lists as not visited (dialogs that open only in a
   played career: cutting a scene from the edit, cancelling a release, episode dates, a withdrawn contributor, rules,
   the approved take; and the loading, error and repair states of the start screen); the WebKit sweep folded in;
   before-and-after screenshots for the report; a real phone's keyboard, which no emulation shows.

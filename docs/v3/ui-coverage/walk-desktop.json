@@ -1,6 +1,6 @@
 {
  "project": "desktop",
- "at": "2026-11-12T14:55:06.676Z",
+ "at": "2026-11-12T15:02:43.819Z",
  "rows": [
   {
    "id": "start",
@@ -2075,6 +2075,56 @@
    "id": "approve-draft",
    "area": "Script",
    "name": "Approve This Draft?",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "change-rule",
+   "area": "Script",
+   "name": "Change The Rule",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "remove-rule",
+   "area": "Script",
+   "name": "Remove The Rule",
    "kind": "dialog",
    "sizes": {
     "desktop (1280 by 720)": {
