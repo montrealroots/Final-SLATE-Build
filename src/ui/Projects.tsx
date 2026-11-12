@@ -5,7 +5,7 @@ import { getPlace, placeLabel } from '../data/places';
 import {
   FORMAT_LABELS, FUNDING_SCENARIOS, dateKey, deals, financeSummary, formatDateKey, GENRES, MEDIUM_LABELS, MODULE_LABELS, TECHNIQUE_LABELS, approvalRights, composeGenres, createProject, genre,
   genreCategory, hasTrackRecord, isEpisodic, isNonfiction, ledgerTotals, money, projectGenreLabel, projectModules, qualityWords, scriptIssues,
-  canContinue, currentZone, searchGenres, type ModuleId,
+  canContinue, renewalStanding, currentZone, searchGenres, type ModuleId,
 } from '../engine';
 import { continueProject, defaultStoryYears } from '../engine/sequel';
 import { projectStages } from '../engine/stages';
@@ -321,6 +321,7 @@ function Overview({ p }: { p: Project }) {
         <section className="card" aria-labelledby="continue-h">
           <h2 id="continue-h">{p.episodes.length > 1 ? 'Another Season' : 'A Sequel'}</h2>
           {p.renewal && <p>{p.renewal.reason} <span className="dim">Decided {longLocal(p.renewal.decidedAt, getPlace(g.locationId).zone).date}.</span></p>}
+          {renewalStanding(g, p) && <p>{renewalStanding(g, p)} <span className="dim">Audience figures are simulated.</span></p>}
           {p.continuedBy ? (
             <p>Continued in <button className="btn btn-ghost" style={{ padding: 0 }} onClick={() => store.go({ view: 'project', projectId: p.continuedBy!, tab: 'overview' })}>{g.projects.find((x) => x.id === p.continuedBy)?.title ?? 'its continuation'}</button>.</p>
           ) : (

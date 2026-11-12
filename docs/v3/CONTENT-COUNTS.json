@@ -1,11 +1,11 @@
 {
  "totals": {
   "required": 14900,
-  "written": 11,
-  "complete": 11,
+  "written": 64,
+  "complete": 64,
   "reviewed": 2,
   "genresAtQuota": 0,
-  "genresStarted": 11,
+  "genresStarted": 64,
   "mixedWritten": 1,
   "mixedComplete": 1,
   "pairsWithTen": 0,
@@ -31,13 +31,13 @@
    "tvReviewed": 0
   },
   "adventure": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "alternate-history": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -127,7 +127,7 @@
    "tvReviewed": 0
   },
   "caper": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -139,7 +139,7 @@
    "tvReviewed": 0
   },
   "chase": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -151,7 +151,7 @@
    "tvReviewed": 0
   },
   "christmas": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -175,7 +175,7 @@
    "tvReviewed": 0
   },
   "conspiracy-thriller": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -187,13 +187,13 @@
    "tvReviewed": 0
   },
   "costume-drama": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "courtroom-drama": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -205,7 +205,7 @@
    "tvReviewed": 0
   },
   "crime": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -217,7 +217,7 @@
    "tvReviewed": 0
   },
   "dance": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -229,13 +229,13 @@
    "tvReviewed": 0
   },
   "detective": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "disaster": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -283,7 +283,7 @@
    "tvReviewed": 0
   },
   "epic": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -295,7 +295,7 @@
    "tvReviewed": 0
   },
   "espionage": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -313,25 +313,25 @@
    "tvReviewed": 0
   },
   "fairy-tale": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "family": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "fantasy": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "farce": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -355,7 +355,7 @@
    "tvReviewed": 0
   },
   "gangster": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -367,7 +367,7 @@
    "tvReviewed": 0
   },
   "gothic-horror": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -391,7 +391,7 @@
    "tvReviewed": 0
   },
   "historical-drama": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -433,7 +433,7 @@
    "tvReviewed": 0
   },
   "jidaigeki": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -445,7 +445,7 @@
    "tvReviewed": 0
   },
   "kaiju": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -469,7 +469,7 @@
    "tvReviewed": 0
   },
   "martial-arts": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -481,13 +481,13 @@
    "tvReviewed": 0
   },
   "melodrama": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "military": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -511,13 +511,13 @@
    "tvReviewed": 0
   },
   "musical": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "mystery": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -535,7 +535,7 @@
    "tvReviewed": 0
   },
   "neorealism": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -565,13 +565,13 @@
    "tvReviewed": 0
   },
   "period-drama": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "picaresque": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -583,13 +583,13 @@
    "tvReviewed": 0
   },
   "political-drama": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "political-thriller": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -601,7 +601,7 @@
    "tvReviewed": 0
   },
   "prison-film": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -631,7 +631,7 @@
    "tvReviewed": 0
   },
   "road-movie": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -643,7 +643,7 @@
    "tvReviewed": 0
   },
   "romance": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -661,13 +661,13 @@
    "tvReviewed": 0
   },
   "samurai": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "satire": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -691,7 +691,7 @@
    "tvReviewed": 0
   },
   "sea-adventure": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -721,7 +721,7 @@
    "tvReviewed": 0
   },
   "social-realism": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -751,7 +751,7 @@
    "tvReviewed": 0
   },
   "spy": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -787,19 +787,19 @@
    "tvReviewed": 0
   },
   "survival": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "swashbuckler": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "sword-and-sandal": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -811,7 +811,7 @@
    "tvReviewed": 0
   },
   "techno-thriller": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -823,7 +823,7 @@
    "tvReviewed": 0
   },
   "thriller": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -841,7 +841,7 @@
    "tvReviewed": 0
   },
   "tragedy": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -859,19 +859,19 @@
    "tvReviewed": 0
   },
   "vampire": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "war": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "werewolf": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -883,13 +883,13 @@
    "tvReviewed": 0
   },
   "whodunit": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
   "wuxia": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
@@ -901,7 +901,7 @@
    "tvReviewed": 0
   },
   "zombie": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0

@@ -1,0 +1,38 @@
+// Epic: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== epic.f01 | feature | journey
+title: Star Path
+genre: epic + sea-adventure
+tone: Immense, sung and intimate by turns
+era: 1300 | period
+setting: The open Pacific, from the Society Islands to Aotearoa | real | sea
+logline: A navigator's daughter, forbidden the craft, must take over a voyaging canoe of sixty people when her father goes blind halfway across the largest ocean on earth, steering for a land known only from the flight of birds.
+premise: The island is crowded and its chiefs are at war. A double-hulled canoe is provisioned to follow the long-tailed cuckoo, which flies south-west each spring toward a land nobody has returned from. The navigator {tane} carries the star path in his head. He has taught his sons. His daughter {hina} has learned it anyway, by lying awake under the same sky.
+synopsis: The first movement is departure: breadfruit plants in baskets, dogs, the argument over who sails. {hina} is aboard as a weaver of sails. Her brother {maui_iti}, the heir, is strong and a poor listener. The second is the craft itself, shown as nothing on film has quite shown it: a navigator who does not sleep, holding the canoe's position in his mind by the rising points of stars, the angle of swells against the hull, the green on the underside of a cloud. Three weeks out, {tane}'s eyes, burned by years of sun on water, fail. The canoe's chief, {rangi}, wants the heir at the steering paddle. In a night of crossed swells {maui_iti} loses the dominant one; by dawn nobody can say where they are, and a navigator who is lost has killed everyone. {hina} lies down in the hull, as her father does, and feels for the swell with her back. She finds it. The third movement is authority: she cannot be navigator, by custom, and she is the only one aboard who can do it. {tane} settles it by sitting behind her and giving her answers as though they were his own, until one night she steers against his word and is right. Storm, thirst, a death, a birth. The fourth is landfall, and it comes sideways: a floating branch with red berries; a different kind of cloud, long and white and unmoving, lying on the horizon like something asleep. Land takes four more days to reach and is colder than anyone imagined. {rangi} names it for the cloud. {tane}, carried ashore, asks his daughter to describe the stars from here, and she tells him which ones have changed.
+question: Who holds knowledge: the one it was given to, or the one who can use it?
+themes: wayfinding as a science of attention; inheritance and merit; the courage of the one-way voyage
+audience: General; families with older children
+viewpoint: With {hina}; night skies and swells are shown as she reads them
+stakes: Sixty lives, the seedlings of a whole way of life, and a people's future on an unknown shore
+conflict: A daughter's forbidden mastery against custom, an heir's pride and three thousand miles of open water
+ending: She brings them in under the long white cloud. Her father, blind, asks her to tell him the new sky.
+experience: Vastness, the hush of expertise, terror at being lost, and a landfall that brings a lump to the throat
+look: Night seas under the whole sky; a canoe tiny from above; faces by starlight; a low white cloud that does not move
+sound: Chant, hull-song, wind in a pandanus sail. Long passages with only water.
+m: find | nature | order-vs-change | triumph
+@ hina | Hina | lead | protagonist | human | she/her | 19 | To bring the canoe to land | She has known the path since she was a child | Custom gives it to her brother | Still, observant, stubborn | From listener in the dark to the canoe's navigator | Low, brief; chants when sure | Bark cloth, a sail-needle of bone in her hair
+@ tane | Tane-nui | co-lead | mentor | human | he/him | 55 | To arrive, and to have chosen rightly | He is the last who has sailed beyond the known islands | His eyes | Proud, exacting, loving in the only way he knows | From master to her voice to her passenger | Chanted star names; rare praise | Sun-leathered, tattooed, eyes clouding
+@ maui_iti | Maui-iti | supporting | rival | human | he/him | 23 | To be what he was born to be | Everyone expects it | He does not have the gift | Brave, loud, wounded | From heir to the best paddler his sister has | Boasts, then silence, then plain speech | Shell collar, a steersman's shoulders
+@ rangi | Rangi-atea | supporting | antagonist | human | he/him | 45 | His people alive and custom kept | A chief who breaks custom at sea may find he has none on land | The wrong person is right | Grave, political, responsible | From refusing her to naming the land at her word | Formal oratory | Feather cloak, a staff
+~ hina - tane | daughter and father | she learns in secret | he asks her to describe the sky
+~ hina - maui_iti | sister and brother | the heir and the weaver | he paddles to her call
+~ hina - rangi | weaver and chief | forbidden | "where do we steer, navigator?"
+# Departure | EXT | Home Lagoon, Beach | DAY | tane, hina, maui_iti, rangi | Launch | Seedlings, dogs, sixty people and a quarrel about who is worth the room. {hina} boards with the sail-menders. A cuckoo goes over, south-west | The canoe sails | 6 | water, crowd=200, animals=dogs+pigs, vehicles=voyaging canoe
+# The Craft | EXT | Canoe, Navigator's Platform | NIGHT | tane, maui_iti, hina | Show the path | {tane} names each star as it rises and has his son repeat it. {hina}, below, says them a breath ahead | | 6 | water, vehicles=voyaging canoe, vfx=night sky and star compass
+# The Craft | EXT | Canoe, Steering Paddle | NIGHT | tane, maui_iti, rangi | Go blind | {tane} asks which star is over the bow. It is in front of him. {rangi} gives the paddle to the heir | {tane} cannot see | 5 | water, vehicles=voyaging canoe
+# Lost | EXT | Canoe, Open Sea | DAWN | maui_iti, rangi, hina | Lose the swell | Crossed seas all night. By dawn {maui_iti} cannot say where they are. Nobody speaks | The canoe is lost | 5 | water, crowd=60, vehicles=voyaging canoe, vfx=crossed swells
+# Lost | INT | Canoe, Inside The Hull | DAY | hina, tane | Find it | {hina} lies in the hull with her eyes shut. Her father, beside her, says nothing. She says: there. There is the old one, under the others | {hina} finds the path | 6 | water
+# Authority | EXT | Canoe, Navigator's Platform | NIGHT | hina, tane, rangi, maui_iti | Steer against him | {tane} says hold. She turns two houses of the compass. A storm passes where they would have been. {rangi} asks her, not him, where to steer | | 7 | water, crowd=60, vehicles=voyaging canoe, stunts=storm steering, vfx=storm at sea
+# Landfall | EXT | Canoe, Bow | DAY | hina, rangi, maui_iti | Read the cloud | A branch with red berries. A cloud that is long, white and does not move. Four days more | Land is found | 5 | water, vehicles=voyaging canoe, vfx=long white cloud on horizon
+# Landfall | EXT | Cold Shore | NIGHT | hina, tane, rangi | Tell him the sky | Fires on a strange beach. {tane} asks what the stars are doing here. She tells him which have changed | | 4 | crowd=60, vfx=southern night sky
+review: authored | 2026-11-12 | written whole; drawn from Polynesian voyaging and the settlement of Aotearoa, with invented people

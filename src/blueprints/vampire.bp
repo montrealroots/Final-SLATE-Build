@@ -1,0 +1,37 @@
+// Vampire: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== vampire.f01 | feature | three-act
+title: The Provisor's Report
+genre: vampire + folk-horror
+tone: Bureaucratic, muddy and increasingly afraid
+era: 1725 | period
+setting: A frontier village on the Danube, under Habsburg administration | fictional | village
+logline: An imperial district officer who believes in nothing but paperwork is forced by a terrified village to witness the opening of a grave, and must then write a report his superiors can file.
+premise: Nine people have died in eight days, each after saying on their deathbed that a neighbour ten weeks buried came to them in the night and lay on them. The village will abandon its fields unless the grave is opened. {frombach}, the district provisor, has no regulation covering this. He has a priest, a clerk's inkhorn, and orders to keep the frontier settled.
+synopsis: {frombach} arrives to collect a census and finds a deputation. The first act is an official's resistance: he asks for a physician, for permission from the capital, for anything that takes a fortnight. The headman {stanko} tells him plainly that in a fortnight there will be no village to count. The dead man's widow, {milica}, says her husband came back for his shoes and she gave them to him; she has moved to another village. The second act is the exhumation, which the film does not hurry. The body is undecayed. The hair and nails have grown. There is fresh blood at the mouth. {frombach} writes each observation in the third person, in German, with the date. The priest {father_jovan} has seen bodies before and says quietly what any gravedigger knows about some soils; nobody wants to hear it, including {frombach}, who has noticed the villagers' relief. They drive a stake. The body bleeds, and something like a sound comes out of it. Then they burn it. The deaths stop. The third act is the report. Alone with his paper, {frombach} must decide what he saw. If he writes superstition, he has allowed the desecration of a Christian grave; if he writes what the village believes, he has put a word into an imperial file that has never been in one. He needs a term for the thing and takes the villagers' own. He writes it, hesitates, and adds that he could not prevent the proceedings and begs that any fault be laid to the rabble's fear and not to him. He seals it. That night he hears someone try the latch. It is {milica}, come back for the census. He is aware that he checked her shadow.
+question: What does a rational man owe to a fear that works?
+themes: administration meeting belief; the birth of a word; who is calmed by a ritual
+audience: Adults who like their horror ambiguous
+viewpoint: With {frombach}, whose report is the narration, always slightly behind what he sees
+stakes: A village that will scatter, a career that cannot survive either answer, and what he will believe afterwards
+conflict: An official's need for a fileable explanation against a community's need to do something tonight
+ending: The grave is opened, staked and burned; the dying stops. He files the word. He is no longer sure of his own latch.
+experience: Dry comedy that goes cold, one long unbearable scene at a graveside, and a chill that follows you home
+look: Mud, reed roofs, grey river light; an official's blue coat among sheepskins; ink very black on the page
+sound: A goose-quill, a spade in wet clay, the river. No music until the last knock.
+m: understand | community | faith-vs-evidence | open
+@ frombach | Provisor Ernst Frombach | lead | protagonist | human | he/him | 41 | A report that will not end his career | He has spent ten years keeping the frontier quiet on paper | There is no form for this | Dry, fussy, braver than he thinks and more credulous | From refusing to witness to supplying the word | Official German; mutters in the villagers' tongue | Blue coat, tricorne, a travelling inkhorn
+@ stanko | Stanko | supporting | antagonist | human | he/him | 55 | The grave opened today | Nine are dead and the fields are unsown | The emperor's man wants a fortnight | Blunt, responsible, not a fool | From petition to ultimatum to gratitude | Slow, final | Sheepskin, a headman's staff
+@ father_jovan | Father Jovan | co-lead | foil | human | he/him | 63 | His people calm and the dead respected | He has buried all nine | He knows what he is looking at and what they need | Tired, tolerant, shrewd | From objecting to holding the lantern | Low, proverbial | Black cassock, muddy to the knee
+@ milica | Milica | supporting | none | human | she/her | 35 | To be left alone by the living and the dead | It was her husband | She believes it more than anyone | Composed, frightened, practical | From witness to a knock at the door | Flat, exact about small things | Widow's kerchief, bare feet, a pair of shoes in her hand
+~ frombach - stanko | official and headman | a petition he would like to postpone | a signature given at a graveside
+~ frombach - father_jovan | two educated men in a village | allies in doubt | one writes it down; the other lets them
+~ frombach - milica | census-taker and widow | a name to be struck off | a shadow he checks
+# The Deputation | EXT | Village Green | DAY | frombach, stanko, father_jovan | Refuse | He has come to count heads. The headman tells him how many fewer there are this week, and why | The village demands the grave be opened | 5 | crowd=60, props=census ledger
+# The Deputation | INT | Widow's House | DAY | frombach, milica | Take a statement | He came for his shoes, she says. She gave them. {frombach} writes "shoes" and then sits looking at the word | | 5 | props=shoes+inkhorn
+# The Grave | EXT | Churchyard | DAY | frombach, stanko, father_jovan | Open it | Spades in wet clay. A lid. He dictates to himself: the body entire, the hair grown, the mouth. {father_jovan} murmurs about the soil. Nobody answers him | The body is undecayed | 8 | crowd=80, vfx=preserved corpse, props=coffin+spades
+# The Grave | EXT | Churchyard | DUSK | frombach, stanko, father_jovan, milica | Stake it | A hawthorn stake. Blood, and a sound. The crowd breathes out together. {frombach} finds he has too | | 6 | crowd=80, vfx=blood from corpse
+# The Grave | EXT | River Bank | NIGHT | stanko, father_jovan, frombach | Burn it | A pyre. The priest holds the lantern for the men he could not stop | | 4 | crowd=40, vfx=pyre
+# The Report | INT | Provisor's Lodging | NIGHT | frombach | Find the word | Three drafts. He needs a noun. He writes the villagers' own, looks at it, and adds a paragraph begging pardon | The word enters the file | 6 | props=report+sealing wax
+# The Report | INT | Provisor's Lodging | NIGHT | frombach, milica | Answer the door | The latch moves. It is the widow, for the census. He looks, before he can stop himself, at the floor behind her | | 3 | props=candle
+review: authored | 2026-11-12 | written whole; drawn from an Austrian official's 1725 report from the Serbian frontier, with invented people and an invented village

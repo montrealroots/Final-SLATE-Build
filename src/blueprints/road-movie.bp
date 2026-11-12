@@ -1,0 +1,39 @@
+// Road Movie: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== road-movie.f01 | feature | journey
+title: Sixty-Five Miles Without Asking
+genre: road-movie + family
+tone: Sunlit, oily-handed and quietly rebellious
+era: 1888 | period
+setting: The cart roads of the upper Rhine, from a workshop town to a mother's house | real | road
+logline: The wife of an inventor too timid to show anyone his horseless carriage takes it out of the shed at dawn with their two teenage sons, and drives it to her mother's, a journey no machine of its kind has ever made.
+premise: The carriage has three wheels, one cylinder and no fuel tank to speak of. Its inventor, {karl}, tests it at night around the block and comes home discouraged. It was built with his wife's dowry. {bertha} has decided that what it needs is not another adjustment but to be seen. She leaves a note on the kitchen table.
+synopsis: The road is the film. Mother and sons push the machine out of earshot before starting it. {eugen}, fifteen, steers; {richard}, thirteen, is in love with the engine; {bertha} is the mechanic, because she is the one who has watched it built. Each breakdown is a small invention. The fuel is a cleaning fluid sold only by chemists, so a village apothecary, {apothecary}, becomes without knowing it the first filling station in the world, and sells them his entire stock with deep misgivings. A blocked fuel line is cleared with her hat pin. A bare ignition wire is insulated with her garter. The brake blocks burn out on a descent, and a cobbler nails leather to them, which is a thing that did not exist that morning. The machine cannot climb; the boys push on every hill while she steers, and she makes a note: it wants a lower gear. Water for cooling comes from ditches, a tavern, a mill race. People cross themselves, or laugh, or run alongside. A carter refuses to let his horses pass the thing. A telegram goes to {karl} from each town, because she does not mean to be dishonest, only to be gone before he can say no. At home he reads the first with horror and the third with something else, and remembers that the drive chains he needs for the exhibition model are on the machine she took. They arrive at her mother's after dark, black to the elbows. The return trip, by a different road, is the victory lap, with crowds. The last scene is the workshop: {karl} asks what broke, and she tells him, item by item, and he writes it down, and adds a gear.
+question: When is disobedience the truest form of faith in someone?
+themes: the user as the real engineer; a marriage as a partnership someone forgot; publicity by doing
+audience: Families; anyone who likes a journey where everything is being done for the first time
+viewpoint: With {bertha} and the boys; the inventor is seen through telegrams and at each end
+stakes: The family's last money, a husband's nerve, and whether the machine is a toy or a future
+conflict: A woman and two boys against sixty-five miles of cart road, a machine that was never meant to leave town, and the caution of the man who made it
+ending: They arrive. The return is a parade. He adds the gear she asked for.
+experience: The delight of improvisation, a constant grin, and a warm last scene over a list of defects
+look: Dust roads between orchards, a spidery three-wheeler, white dresses turning grey with oil
+sound: A single cylinder's uneven pop, church bells, hens scattering. No score for the first reel; the engine is the rhythm.
+m: prove | technology | love-vs-duty | triumph
+@ bertha | Bertha | lead | protagonist | human | she/her | 39 | The machine seen on a real road | Her dowry and her husband's spirit are in it | It has never gone further than the corner | Practical, cheerful, immovable | From investor and wife to the first motorist | Brisk, humorous, Baden dialect | Long dress, a hat with one long pin, sleeves rolled
+@ eugen | Eugen | co-lead | ally | human | he/him | 15 | To steer and not disgrace himself | His mother has trusted him with the tiller | Hills, horses and his own nerves | Serious, protective | From boy to driver | Clipped, trying to sound grown | Cap, school jacket, blistered hands
+@ richard | Richard | co-lead | foil | human | he/him | 13 | To hear the engine run right | He understands it better than he can say | He is the one who pushes | Dreamy, quick with tools | From passenger to mechanic's mate | Chatter, engine noises | Short trousers, oil to the ears
+@ karl | Karl | supporting | antagonist | human | he/him | 43 | One more test before anyone sees it | He has been laughed at before | His wife has left with the proof | Brilliant, anxious, tender | From alarm to pride to a pencil | Soft, hesitant, exact | Leather apron, a rule in his pocket
+@ apothecary | Herr Ockel | featured | none | human | he/him | 60 | To understand what the lady wants ten litres of stain remover for | He sells it by the thimble | She buys the shop out | Fussy, kind, scandalised | From refusal to waving from the door | Careful, Latinate | White coat, spectacles on a chain
+~ bertha - karl | wife and husband | a note on the kitchen table | a list of faults, and a gear added
+~ bertha - eugen | mother and elder son | he is given the tiller | he is thanked as a driver
+~ bertha - richard | mother and younger son | he is told to sit still | he is handed the hat pin
+# Dawn | EXT | Workshop Yard | DAWN | bertha, eugen, richard | Push it out | A note on the table. Three figures roll a three-wheeler down the lane before turning the flywheel. It catches. Hens scatter | The journey begins | 5 | vehicles=three-wheeled motor carriage, animals=hens
+# The Road | INT | Village Apothecary | DAY | bertha, richard, apothecary | Refuel | She asks for all he has of the cleaning spirit. He asks what stain. She points out of the window | The first filling station | 5 | props=bottles of ligroin
+# The Road | EXT | Roadside Ditch | DAY | bertha, eugen, richard | Mend it | The engine dies. A hat pin clears the fuel line. A garter wraps a bare wire. The boys look elsewhere | | 5 | vehicles=three-wheeled motor carriage, props=hat pin+garter
+# The Road | EXT | Long Hill | DAY | bertha, eugen, richard | Push | It will not climb. The boys push; she steers and says aloud, to remember: lower gear | | 4 | vehicles=three-wheeled motor carriage, stunts=pushing uphill
+# The Road | INT | Cobbler's Shop | DAY | bertha, eugen | Invent a brake lining | Wooden blocks burnt black on the descent. A cobbler nails on leather and charges for two soles | | 4 | props=brake blocks+leather
+# The Road | INT | Workshop | DAY | karl | Read telegrams | The first: horror. The third: a map, a pencil, a smile he tries to stop. He goes to the exhibition model and remembers where its chains are | {karl} begins to hope | 4 | props=telegrams+map
+# Arrival | EXT | Mother's House, Street | NIGHT | bertha, eugen, richard | Arrive | Dark, lamps, a street turned out to look. Three black-handed travellers. A last telegram: arrived, all well | They arrive | 5 | crowd=80, vehicles=three-wheeled motor carriage
+# Arrival | INT | Workshop | DAY | bertha, karl, richard | Report | What broke? She tells him, item by item. He writes it down. He draws a second, lower gear | | 4 | props=notebook
+review: authored | 2026-11-12 | written whole; drawn from the first long motor-car journey, 1888, with the family's own given names

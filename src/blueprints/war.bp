@@ -1,0 +1,37 @@
+// War: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== war.f01 | feature | three-act
+title: The Keepers Of Bread
+genre: war + historical-drama
+tone: Cold, hushed and unbearably patient
+era: 1942 | period
+setting: The Institute of Plant Industry, Leningrad | real | institution
+logline: During the siege of Leningrad, the botanists guarding the world's largest seed collection must decide, as they starve beside tonnes of rice and wheat, what the collection is for.
+premise: The city is encircled and the bread ration is a slice. In a dark building on St Isaac's Square are two hundred thousand varieties of seed, gathered from five continents to end famine. {vera}, keeper of the rice, and {lev}, keeper of the groundnuts, have orders to preserve it and no orders about themselves. Rats and neighbours can both smell the grain.
+synopsis: {vera} weighs the rice collection every morning because the weights are the only fact she trusts. The Institute's director is in prison for his science; the staff who remain move the tins away from the windows and take turns standing guard with one rifle and no bullets. {anya}, sixteen, sent by the district to sort seed because she can no longer lift shells, cannot understand them: it is food. {lev} tells her what each packet is, where it was found, who carried it down a mountain, and what it might feed in forty years. The first act is the building; the second is winter. The potatoes must be kept above freezing, so they burn the furniture, then the boxes, never the labels. A militia officer, {orlov}, arrives to requisition the stores for a field kitchen and is shown the ledger: these are not rations, they are every harvest that has not happened yet. He leaves a guard instead of taking the grain, and is ashamed of having asked. {lev} is found at his desk in January with a packet of groundnuts in his hand, unopened. {anya} steals a handful of wheat for her mother, brings it back the next day, and is fed by {vera} from her own slice without a word. {vera} grows too weak to climb to the rice room and has {anya} read her the weights. In the third act the ice road opens. The collection is planted out in the spring within range of the guns, by people who can barely hold a hoe, and it comes up. {vera} does not see the harvest. {anya}, at the scales, writes the weights in her hand.
+question: What is worth more than the lives of the people guarding it, and who gets to say so?
+themes: stewardship as a kind of love; hunger and meaning; the future as a debt
+audience: Adults; older students of history
+viewpoint: With {anya}, who starts by thinking them mad
+stakes: The lives of the staff this winter against the harvests of people not yet born
+conflict: Starving scientists against their own hunger, a starving city, and the plain sense of eating what is in front of them
+ending: The seed is planted under shellfire and grows. Several of its keepers are dead beside it. {anya} keeps the ledger.
+experience: A slow, cold awe, and grief that arrives quietly at a set of scales
+look: Blue daylight through taped glass, breath, rows of tin boxes; the only colour is the seed itself, poured
+sound: A metronome on the city's loudspeakers, scales, paper. Shelling far off. No music until the planting.
+m: protect | self | survival-vs-humanity | pyrrhic
+@ vera | Vera Malinina | lead | protagonist | human | she/her | 51 | To hand the rice on intact | She crossed half Asia to collect it | Her own body, failing by the week | Severe about seed, tender about people, and hides both | From guarding a collection to trusting a child with it | Precise, formal, runs out of breath mid-sentence | Three coats, fingerless gloves, a brass weight in her pocket
+@ lev | Lev Abramov | supporting | ally | human | he/him | 58 | To make one girl understand | He has no students left | He is hungrier than he admits | Talkative, proud, gentle | From explaining the seed to dying beside it | Lectures as he works; jokes drily | Spectacles tied with string, a scarf knitted from two others
+@ anya | Anya Sokolova | co-lead | deuteragonist | human | she/her | 16 | To feed her mother | Nobody else is left to | She has been set to guard food from people like herself | Blunt, quick, practical | From thinking them mad to keeping their book | Street Leningrad; asks the question nobody else will | Factory overalls under a man's coat
+@ orlov | Captain Pyotr Orlov | featured | antagonist | human | he/him | 34 | Grain for a field kitchen, today | His men are fainting at their guns | He is not wrong | Decent, exhausted, used to being obeyed | From requisition to posting a guard | Clipped; lowers his voice in the seed room | Greatcoat, frostbitten ear
+~ vera - anya | keeper and conscript | suspicion on both sides | the ledger passed from one hand to the other
+~ lev - anya | old teacher and reluctant pupil | she thinks him a fool | she can name what is in every tin
+~ vera - orlov | scientist and soldier | he comes to take | he leaves a sentry
+# The Collection | INT | Institute, Rice Room | DAWN | vera, anya | Weigh it | {vera} weighs the tins by candle. {anya}, new, asks why they do not simply eat it. She is given a broom | | 4 | props=scales+seed tins+candle
+# The Collection | INT | Institute, Seed Hall | DAY | lev, anya | Say what it is | {lev} pours wheat from Abyssinia through his fingers and tells her who carried it and what it is for | | 5 | props=seed packets+labels
+# Winter | INT | Institute, Potato Cellar | NIGHT | vera, lev, anya | Keep them above freezing | They burn the last chairs. {anya} offers the label cards; both of them stop her hand | Labels are not fuel | 4 | props=stove+potato crates
+# Winter | INT | Institute, Seed Hall | DAY | vera, orlov, lev | Refuse a soldier | {orlov} comes for grain. {vera} opens the ledger and reads him ten entries. He posts a guard and cannot look at her | {orlov} leaves the grain | 6 | props=ledger+rifle
+# Winter | INT | Institute, Office | DAY | anya, vera, lev | Find him | {lev} at his desk, a packet in his hand, unopened. {anya} empties her pocket of stolen wheat onto the scale | {anya} gives it back | 5 | props=seed packet
+# Spring | EXT | Trial Field, City Edge | DAY | anya, vera, orlov | Plant | The ice road has opened. People who can barely stand plant the collection within sound of the guns. {vera} is carried to see the first rows | | 5 | crowd=30, props=hoes+seed sacks, vfx=distant shellfire
+# Spring | INT | Institute, Rice Room | DAY | anya | Keep the book | {anya} alone at the scales, reading the weights aloud to nobody, writing them down in her own hand | | 2 | props=scales+ledger
+review: authored | 2026-11-12 | written whole; drawn from the seed bank kept through the siege, with invented people

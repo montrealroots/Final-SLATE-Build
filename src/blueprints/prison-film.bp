@@ -1,0 +1,40 @@
+// Prison Film: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== prison-film.f01 | feature | three-act
+title: The Queen's Birthday
+genre: prison-film + historical-drama
+tone: Sun-struck, brutal and startled by kindness
+era: 1840 | period
+setting: A penal settlement on a Pacific island | fictional | island
+logline: On an island built to be the worst place in the empire, a new commandant announces that for one day the prisoners will be let out of their irons to put on a play, and a lifer who has forgotten his own name is cast as the lead.
+premise: The island takes men the other penal colonies cannot break. Men here draw lots to murder each other so that both may leave by the gallows. The new commandant, {macrae}, has a theory that men can earn their way out by marks for work, not serve time by the lash. To prove they can be trusted he will give them a holiday: food, a play, fireworks, no guards. His officers are certain he will be dead by nightfall.
+synopsis: The first act is the island as it was. {dog}, called that for twelve years, is flogged in the opening scene for looking at a soldier, and does not make a sound. The old hands watch the new commandant land with a wife, six children and a crate of books, and bet on how long. {macrae} takes off the irons of the first gang he meets and asks their names. {dog} cannot remember his. The second act is the experiment. Marks are tallied on a board: so many for a day's work, so many off for an offence, and a man buys his own release. The overseer {bolt}, whose power is the cat, sabotages the count. The prisoners suspect a trick; the cruelest of them, {vinegar}, is certain kindness is a trap and plans to use the holiday to take the armoury. The play is a comic opera from the commandant's crate. {dog} is given the hero's part because he is tall, and learns to read in order to learn his lines, from the commandant's eldest daughter {elspeth}, who is fourteen and not afraid of him. Somewhere in act two of a farce he remembers his own name, Thomas. The third act is the day. Eighteen hundred convicts loose with rum and lemon in their cups. The officers have loaded cannon. {vinegar} moves on the armoury at the interval; it is the prisoners who stop him, quietly, because the play is not over and they want to see how it ends. The fireworks go up. At the bugle every man walks back to barracks. Not one is missing. The governor on the mainland calls it an outrage and recalls the commandant within three years. {dog}, who is Thomas, has four thousand marks on the board and a part he can still recite.
+question: Does a man become trustworthy by being trusted?
+themes: reform against retribution; a name as a possession; theatre as a rehearsal for freedom
+audience: Adults; viewers who want a prison film with hope in it
+viewpoint: With {dog}; the commandant is seen as the prisoners see him, with suspicion
+stakes: A commandant's life and theory, eighteen hundred men's only chance of leaving alive, and one man's self
+conflict: An experiment in decency against a system, and prisoners, who have every reason to think it a trick
+ending: The holiday passes without a single offence. The commandant is recalled anyway. One man has his name back.
+experience: Dread of what will go wrong, astonishment when it does not, and a hard-won lump in the throat
+look: Blinding sea light on stone barracks; men seen first as backs and chains, later as faces; a stage of sailcloth
+sound: Irons, surf, the cat. Later an out-of-tune overture, and eighteen hundred men laughing.
+m: restore | system | justice-vs-mercy | bittersweet
+@ dog | Thomas, called Dog | lead | protagonist | human | he/him | 38 | To feel nothing | It is how he has lasted twelve years | A man who asks his name | Stone-faced, watchful, not quite extinguished | From a number to a name to a part | Silent, then single words, then verse | Scarred back, shaved head, leg-iron scars
+@ macrae | Captain Alexander Macrae | co-lead | mentor | human | he/him | 53 | To prove men can earn release | He was once a prisoner of war himself | Every superior and most prisoners think him a fool | Stubborn, kindly, rash | From theorist to a man standing unarmed among eighteen hundred | Scots, warm, lectures | Naval coat, spectacles, a book under his arm
+@ vinegar | Vinegar Jack | supporting | antagonist | human | he/him | 45 | The armoury | He has been lied to by every authority he ever met | The other prisoners want to see the play | Clever, merciless, right about most things | From plotter to a man sat down by his own side | Sour, quick, mocking | One ear, a spoon ground to an edge
+@ bolt | Overseer Bolt | supporting | antagonist | human | he/him | 40 | The lash back in his hand | It is the only thing that makes him anyone | The marks board makes him a clerk | Petty, frightened, vicious | From sabotage to irrelevance | Shouts | Red coat gone pink, the cat in his belt
+@ elspeth | Elspeth Macrae | supporting | ally | human | she/her | 14 | To teach him his lines | Her father said these were men | She has no idea she should be frightened | Direct, patient, bossy | From commandant's child to a convict's teacher | Clear, Scots, corrects pronunciation | Pinafore, a primer
+~ dog - macrae | prisoner and commandant | a question he cannot answer | a hand shaken at the wharf
+~ dog - elspeth | lifer and child | she is not afraid of him | she hears his lines and his name
+~ dog - vinegar | two old hands | grim alliance | {dog} stands in the armoury path
+~ macrae - bolt | reformer and flogger | an order to put the cat away | a board the overseer cannot read
+# The Island | EXT | Barrack Yard | DAY | dog, bolt, vinegar | Show what it is | A flogging, counted aloud. {dog} makes no sound. {vinegar} takes bets on the new commandant's first week | | 5 | crowd=200, stunts=flogging, props=cat-o-nine-tails
+# The Island | EXT | Landing Place | DAY | macrae, dog, elspeth | Ask a name | A commandant with six children and a crate of books. He has a gang's irons struck off and asks each man his name. {dog} opens his mouth and has nothing | {dog} is asked who he is | 5 | water, crowd=60, props=leg irons+book crate
+# The Marks | EXT | Quarry, Marks Board | DAY | dog, macrae, bolt, vinegar | Count | Chalk tallies: work adds, offences subtract, a total buys the gate. {bolt} rubs out a row with his sleeve. {vinegar} says: I told you | | 5 | crowd=100, props=marks board
+# The Marks | INT | Storehouse, Rehearsal | NIGHT | dog, elspeth | Learn to read | She points; he sounds. A farce about a baron. Somewhere in the second act he says "Thomas," and stops | {dog} remembers his name | 6 | props=primer+playscript+candle
+# The Marks | INT | Barracks | NIGHT | vinegar, dog | Hear the plan | The holiday: no guards, an armoury with one door. {vinegar} wants him at the front. {dog} says he has lines to learn | | 4 | crowd=40
+# The Holiday | EXT | Parade Ground, Sailcloth Stage | DAY | dog, macrae, elspeth, bolt, vinegar | Play it | Eighteen hundred men loose, lemon and rum, the cannon loaded on the hill. The overture. {dog} forgets a line and the whole island prompts him | | 7 | crowd=600, props=sailcloth stage+costumes
+# The Holiday | EXT | Armoury Door | DUSK | vinegar, dog | Stop him | At the interval {vinegar} and six move. Thirty prisoners are standing in front of the door, {dog} in a baron's coat. They want to see how it ends | The rising is stopped by the prisoners | 5 | crowd=40
+# The Holiday | EXT | Barrack Yard | NIGHT | macrae, dog, bolt | Count them in | Fireworks over the sea. A bugle. Every man walks back. The roll is called. None missing. {macrae} has to sit down | Not one man offends | 5 | crowd=600, vfx=fireworks
+review: authored | 2026-11-12 | written whole; drawn from a penal reformer's holiday for convicts in 1840, with invented people and an invented island

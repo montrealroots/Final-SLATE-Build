@@ -1,0 +1,37 @@
+// Satire: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== satire.f01 | feature | three-act
+title: The Defence Of The Rats
+genre: satire + courtroom-drama
+tone: Deadpan, learned and gleefully logical
+era: 1510 | period
+setting: The church court of a small Burgundian town | fictional | court
+logline: When a town's rats are summoned to court for eating the barley, the young lawyer appointed to defend them decides, to everyone's horror, to do it properly.
+premise: The harvest is gone and somebody must answer. The bishop's court issues a summons to the rats of the diocese. Procedure requires that the accused have counsel. {barthelemy}, newly qualified and without a single client, is given the brief as a joke. He reads the law, and finds that the rats have rights.
+synopsis: {barthelemy} wants a reputation. The first act is the summons: read at every crossroads, nailed to barns. On the day, the rats do not appear. The prosecutor, {canon_morel}, moves for judgment in default. {barthelemy} rises: the summons was defective. His clients live in many villages; each parish must be cited separately. The court, which cannot be seen to cut corners, agrees. Weeks pass. The second act is escalation by perfect logic. The rats again fail to appear. Counsel pleads that the journey is long and that his clients, being small, travel slowly. Then, that they cannot come without mortal danger, on account of the cats, who belong to the plaintiffs; a party cannot be compelled to attend where his adversary lies in wait; let the townspeople give surety for their cats. The town divides. The miller's wife {perrine}, whose children are actually hungry, asks him in the street whether he knows what he is doing. He does not, quite; he is having the time of his life. The granary owner {seigneur}, who has been selling hoarded grain at famine prices, is delighted by any trial that is not about him. In the third act {barthelemy} notices who benefits. He changes his plea: his clients admit eating the barley in the fields, and call witnesses to where the stored barley went. The trial of the rats becomes, by procedure nobody can fault, an inventory of the seigneur's barns. The court finds the rats guilty and sentences them to leave the diocese, with safe conduct, and time allowed for the pregnant and the young. The granary is opened. {barthelemy} has a reputation. Leaving court, he steps carefully over something small on the threshold.
+question: If the law must be applied properly, what happens when someone actually does?
+themes: scapegoats and procedure; the powerful hiding behind the absurd; competence as mischief
+audience: Adults and sharp older children
+viewpoint: With {barthelemy}, and now and then at floor level
+stakes: A town's bread, a young man's career, and the dignity of a court trying vermin
+conflict: A lawyer's pedantry against a town's need to blame something that cannot answer back
+ending: The rats are banished with safe conduct. The hoarder is exposed by the rats' own trial. The lawyer is made.
+experience: Laughter at flawless logic applied to nonsense, then the pleasure of seeing it aimed at the right target
+look: A whitewashed court with an empty dock; solemn robes; a single rat observed from very close
+sound: Latin, quills, a crier's bell. Scratching in the wainscot at the best moments.
+m: expose | institution | justice-vs-mercy | ironic
+@ barthelemy | Barthelemy Chassagne | lead | protagonist | human | he/him | 24 | A name | He has a degree and no clients | His clients cannot instruct him and the town cannot eat a legal point | Brilliant, vain, more just than he intended to be | From showing off to doing right by accident and then on purpose | Fluent, footnoted, cannot resist a subordinate clause | New robe a size too large, ink on his lip
+@ canon_morel | Canon Hugues Morel | supporting | antagonist | human | he/him | 55 | A verdict by Michaelmas | The bishop wants the people calmed | The defence keeps being right | Dignified, weary, scrupulous | From irritation to grudging admiration | Sonorous church Latin and exasperated French | Furred robe, a handbell
+@ perrine | Perrine Lambert | co-lead | foil | human | she/her | 31 | Flour | Her children are hungry now | A trial feeds nobody | Practical, scornful, fair | From contempt for the lawyer to handing him the witness he needs | Plain, loud, unanswerable | Flour to the elbows, a child on her hip
+@ seigneur | Sieur Gauthier de Vaux | supporting | antagonist | human | he/him | 48 | The town looking anywhere but his barns | He has cornered what barley there is | The rats' counsel is thorough | Affable, grasping, amused | From enjoying the show to being its subject | Hearty, patronising | Fur collar, a ring of granary keys
+~ barthelemy - canon_morel | defence and prosecution | a joke brief | a nod across the court
+~ barthelemy - perrine | lawyer and townswoman | she thinks him a fool | she brings him the granary's tally
+~ barthelemy - seigneur | counsel and spectator | a patron's applause | a subpoena
+# The Summons | EXT | Market Cross | DAY | canon_morel, perrine, seigneur | Blame something | The crier reads a citation to the rats of the diocese. {perrine} asks who will feed her children meanwhile. {seigneur} gives the crier a coin | | 4 | crowd=80, props=summons+handbell
+# The Summons | INT | Church Court | DAY | barthelemy, canon_morel | Take the brief | An empty dock. Default is moved. {barthelemy} stands: the summons was defective, his clients being of many parishes | The case is adjourned | 5 | crowd=40
+# The Defence | INT | Church Court | DAY | barthelemy, canon_morel, seigneur | Plead the cats | Again no rats. Counsel pleads the length of the road, and then the cats: let the plaintiffs give surety for their animals | | 6 | crowd=60, animals=cats
+# The Defence | EXT | Mill Lane | DUSK | barthelemy, perrine | Be asked what he is doing | {perrine} blocks the lane with a child on her hip. Does he know people are hungry? He starts to answer cleverly and stops | {barthelemy} sees who profits | 5
+# The Inventory | INT | Church Court | DAY | barthelemy, canon_morel, perrine, seigneur | Change the plea | His clients admit the field barley. As to the stored barley, he calls the miller's wife and a tally stick | The trial turns on the granary | 7 | crowd=80, props=tally sticks
+# The Inventory | EXT | Seigneur's Granary | DAY | perrine, seigneur, canon_morel | Open it | The court, in procession, to count. Doors, keys, a hill of grain. Something small runs over {seigneur}'s shoe | | 4 | crowd=100, animals=rats, props=grain
+# The Inventory | INT | Church Court, Threshold | DAY | barthelemy | Step over | Sentence: exile, safe conduct, time for the pregnant and the young. He leaves, and lifts his hem over the doorstep with care | | 3 | animals=rats
+review: authored | 2026-11-12 | written whole; drawn from the animal trials of late medieval church courts, with invented people and an invented town

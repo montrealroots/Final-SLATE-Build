@@ -1,0 +1,39 @@
+// Sword And Sandal: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== sword-and-sandal.f01 | feature | three-act
+title: Stantes Missae
+genre: sword-and-sandal + sports
+tone: Sun-bleached, professional and fierce
+era: - | period
+setting: A gladiator school and arena in a Greek city of Roman Asia, in the second century | real | city
+logline: Two women trained as gladiators, one born free and one born a slave, are matched against each other as a novelty for a governor's games, and fight so well that the crowd demands something almost never given: that both walk out, standing.
+premise: A marble relief survives from a provincial arena: two women, heavily armed, helmets at their feet, stage names carved beneath, and one phrase meaning they were released while still on their feet. The film imagines the afternoon it records. {achillia} sold herself to the school to pay her dead father's debts. {amazon} was bought at nine and has never known anything else.
+synopsis: The first act is a trade, not a spectacle. The school's owner, {lanista}, keeps accounts in which a trained fighter is an asset with a price; he has two women because novelty fills seats, and until now they have been sent out against dwarfs and beasts as a joke. The trainer {doctore}, a retired fighter with one eye, has trained them properly anyway, out of something like spite. {achillia} is technically superb and ashamed to be here; {amazon} is stronger, has no shame at all, and despises the free woman who chose what she was never offered a choice about. The second act is preparation for the governor's games, where for the first time they are billed in earnest: against each other, same armament, to a decision. Each learns the other's habits, because that is the job, and the film makes this its love story without calling it one: nobody has ever studied either of them so closely. {achillia} is offered a private arrangement by a local magistrate, {magistrate}, who would buy out her contract if she loses prettily; {amazon} is told by {lanista} that the winner will be freed by the governor, which is likely a lie. They do not discuss it. The night before, they share the customary last meal in public, and eat with good appetite. The third act is the bout, long, in full, in daylight. They fight as {doctore} taught: no flourishes, shields working, patience. Twenty minutes in, the crowd, which came to laugh, is silent. Thirty minutes, both bleeding, neither giving ground, the referee looks to the box. Either could lose well. Neither does. The crowd begins the chant for release, for both. The governor, who knows a popular decision, raises his hand. They take off their helmets and set them at their feet. Afterwards the city pays a mason. {lanista} raises their price. {doctore} is seen, for once, smiling.
+question: What is respect worth when it comes from the one sent to kill you?
+themes: craft as dignity; choice and its absence; being truly seen by an opponent
+audience: Adults and older teenagers; fans of sports drama and the ancient world
+viewpoint: Alternating between the two women; the crowd is weather
+stakes: Both lives, a possible freedom, and whether they are a joke or fighters
+conflict: Two professionals set against each other, and each against the terms on which she is there
+ending: Both are released standing, to the crowd's roar. They are still owned. A stone is carved.
+experience: Sweat, respect, a real-time bout that grips like a final, and a quiet swell at a marble slab
+look: White sand, bronze, harsh noon; a cramped school yard; a relief being cut in the last shot
+sound: Wood on shield, breath inside a helmet, a water organ in the arena. The crowd going quiet.
+m: prove | rival | survival-vs-humanity | triumph
+@ achillia | Achillia | lead | protagonist | human | she/her | 26 | To clear the debt and keep her name out of it | Her family would rather she had died | She chose this and cannot forgive herself | Controlled, exact, proud | From shame to a fighter under her own stage name | Educated Greek, few words | Short sword, greaves, a signet ring on a cord
+@ amazon | Amazon | co-lead | rival | human | she/her | 24 | To be the best there is, since that is what there is | The school is all she remembers | She hates the one who chose it | Fierce, funny, unsentimental | From contempt to recognition | Arena slang, blunt | Heavier shoulders, old scars, a lucky strap
+@ doctore | Doctore | supporting | mentor | human | he/him | 50 | Two fighters trained right | They gave him the women as an insult | He will have to watch one of them die | Gruff, exacting, secretly proud | From drill-master to a man smiling at a verdict | Barks counts and corrections | One eye, a wooden training sword
+@ lanista | Lanista | supporting | antagonist | human | he/him | 45 | A full house and his assets intact | He has borrowed against these games | A death halves his investment | Affable, calculating | From selling a joke to owning a legend | Wheedling, numerical | Rings, a wax tablet, a fly whisk
+@ magistrate | The Magistrate | featured | antagonist | human | he/him | 55 | The free-born one, discreetly | He thinks he is being kind | She would rather bleed | Smooth, entitled | Dismissed without knowing why | Polished, low | Toga, perfumed hair
+~ achillia - amazon | free-born and slave-born | contempt both ways | helmets set down side by side
+~ achillia - doctore | pupil and trainer | she resents his drills | she fights exactly as taught
+~ amazon - lanista | property and owner | a promise of freedom | a price raised
+# The School | EXT | School Yard | DAY | achillia, amazon, doctore | Drill | Posts, wooden swords, counted strokes. The two are paired and hit harder than drill requires. {doctore} lets them | | 5 | crowd=40, stunts=weapons drill
+# The School | INT | Owner's Office | DAY | lanista, doctore, magistrate | Bill them | The governor's games. The women in earnest, against each other. {doctore} says they are not a joke. {lanista} says that is the selling point | They are matched | 4 | props=wax tablets
+# The Study | EXT | School Yard | DUSK | achillia, amazon | Learn each other | Each watches the other train. Her left shoulder drops. She overcommits on the third stroke. Nobody has ever looked this hard at either | | 5 | stunts=weapons drill
+# The Study | INT | Bath House Corridor | NIGHT | achillia, magistrate | Refuse an offer | Lose prettily and he will buy her out. She thanks him as her mother taught her and says no | {achillia} refuses to throw it | 4 |
+# The Study | EXT | Forum, Public Banquet | NIGHT | achillia, amazon, lanista | Eat the last meal | The fighters dine in public before the games. The two eat well, side by side, and do not speak. People stare | | 4 | crowd=150, props=banquet
+# The Bout | EXT | Arena | DAY | achillia, amazon, doctore, lanista | Fight | No flourishes. Shields. Patience. Twenty minutes: the laughter has stopped. Thirty: both cut, neither back a step. The referee looks at the box | The crowd goes silent | 10 | crowd=3000, stunts=gladiatorial bout, vfx=arena crowd, props=shields+short swords
+# The Bout | EXT | Arena | DAY | achillia, amazon, doctore | Stand | The chant starts in the cheap seats: release, both. The governor's hand. Two helmets on the sand | Both are released standing | 5 | crowd=3000, vfx=arena crowd
+# The Bout | EXT | Mason's Yard | DAY | doctore, lanista | Carve it | A slab, two figures, two names. {lanista} talks prices. {doctore} watches the chisel and smiles | | 3 | props=marble relief
+review: authored | 2026-11-12 | written whole; imagined from a marble relief of two women gladiators found at Halicarnassus, with their carved stage names
