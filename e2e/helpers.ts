@@ -211,7 +211,7 @@ export async function saveAndExit(page: Page): Promise<void> {
 }
 
 /** The quick character's finished draft, left for Continue Creation, with nothing else in localStorage unless `keep`. */
-async function quickDraft(page: Page, startPlaceId: string, startDate: string, opts: { portrait?: boolean; keep?: boolean } = {}): Promise<void> {
+export async function quickDraft(page: Page, startPlaceId: string, startDate: string, opts: { portrait?: boolean; keep?: boolean } = {}): Promise<void> {
   await page.evaluate(({ pl, sd, withPortrait, keep }) => {
     if (!keep) localStorage.clear();
     const c = document.createElement('canvas');
