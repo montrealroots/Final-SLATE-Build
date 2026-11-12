@@ -869,6 +869,14 @@ export interface EpisodeRelease {
  */
 export interface BoxOfficeWeek { week: number; from: string; to: string; territories: number; rental: number; status: 'provisional' | 'final'; first?: number; late?: true }
 
+/** The measures of an audience, kept apart: people at a first showing; hours streamed; a service's views (audiences.ts). */
+export type AudienceMetric = 'viewers' | 'hours' | 'views';
+/**
+ * One reported figure (audiences.ts): the week of the run and its dates, the measure, the figure, whether it is of one
+ * episode or the whole title, and how many territories it was out in. It was recorded on the week's last day, as things stood then. Simulated, every one.
+ */
+export interface AudienceObservation { week: number; from: string; to: string; metric: AudienceMetric; value: number; scope: 'title' | 'episode'; episode?: number; territories: number }
+
 export interface DistributionOffer {
   id: string;
   distributor: string;
@@ -896,6 +904,8 @@ export interface DistributionOffer {
   reported?: { gross: number; net: number; overagePaid: number };
   /** A cinema run's weeks (box-office.ts), from November 12, 2026; a run reported before then has none for those months. */
   weeks?: BoxOfficeWeek[];
+  /** What a broadcast or streaming release reported of its audience, week by week (audiences.ts), each as it was recorded. A week not recorded is unknown. */
+  audience?: AudienceObservation[];
   /** A studio that backed the film releasing it as a term of its deal (finance.ts): the deal's id. No guarantee is paid. */
   studioDeal?: string;
 }

@@ -38,6 +38,7 @@ import { studioFilms } from '../engine/studios';
 
 import { DISTRIBUTOR_FEE, REPORT_MONTHS } from '../engine/distribution';
 import { RENTAL_SHARE, TICKET_PRICE, weekMoney } from '../engine/box-office';
+import { METRICS, audienceSummary, routeMetrics } from '../engine/audiences';
 import { personById } from '../engine/people';
 import { VERSION_LABELS, addVersion, removeVersion, versionCredits, versionRuntime } from '../engine/versions';
 import { designStatus, designsToReview, type DesignStatus } from '../engine/designs';
@@ -545,6 +546,7 @@ export function ReleaseTab({ p }: { p: Project }) {
                 <dt>Received By You</dt><dd>{money(o.minimumGuarantee + (o.reported?.overagePaid ?? 0))}</dd>
               </dl>
               {o.weeks?.length ? <WeeksInCinemas o={o} /> : null}
+              {o.audience?.length ? <WeeklyAudience o={o} /> : null}
             </li>
           ))}</ul>
         </section>
@@ -1236,6 +1238,40 @@ function WeeksInCinemas({ o }: { o: Project['offers'][number] }) {
             ))}
           </tbody>
           <tfoot><tr><th scope="row">All</th><td /><td /><td>{n(total.admissions)}</td><td>{money(total.gross)}</td><td>{money(total.cinemas)}</td><td>{money(total.rental)}</td><td>{money(total.fee)}</td><td>{money(total.net)}</td><td /></tr></tfoot>
+        </table>
+      </div>
+    </details>
+  );
+}
+
+/**
+ * What a broadcast or streaming release reported of its audience, week by week (engine/audiences.ts). Each measure is
+ * said for what it is, none is turned into another, and every figure is the game's own simulation.
+ */
+function WeeklyAudience({ o }: { o: Project['offers'][number] }) {
+  const rows = o.audience ?? [];
+  const n = (x: number) => x.toLocaleString('en-US');
+  const weeks = new Set(rows.map((r) => r.week)).size;
+  return (
+    <details className="small">
+      <summary>Weekly Audience ({weeks})</summary>
+      <p className="dim">Simulated by the game: no real audience figure is shown here. {audienceSummary(o)} A figure is recorded the day its week ends and is not changed afterwards; a week with none has none, which is not the same as nobody watching. Nothing you are paid depends on these.</p>
+      <ul className="dim">{routeMetrics(o.route).map((m) => <li key={m}><strong>{METRICS[m].label}:</strong> {METRICS[m].says}</li>)}</ul>
+      <div className="table-wrap">
+        <table className="data" aria-label={`Weekly Audience, ${o.distributor}`}>
+          <thead><tr><th>Week</th><th>Dates</th><th>Of</th><th>Measure</th><th>Figure</th><th>Territories Open</th></tr></thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={`${r.week}:${r.metric}:${r.episode ?? 0}`}>
+                <td data-label="Week">{r.week}</td>
+                <td data-label="Dates">{formatDateKey(r.from)} to {formatDateKey(r.to)}</td>
+                <td data-label="Of">{r.scope === 'episode' ? `Episode ${r.episode}` : 'Everything Available'}</td>
+                <td data-label="Measure">{METRICS[r.metric].label}</td>
+                <td data-label="Figure">{n(r.value)}</td>
+                <td data-label="Territories Open">{r.territories}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </details>

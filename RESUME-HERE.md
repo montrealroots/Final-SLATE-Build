@@ -125,7 +125,14 @@ has a row for each requirement built or owed.
   report settles its four weeks to itself, and the Profile page has a record book worked out from those weeks.
   The money a film earns is unchanged: `distribution.ts reportedGross` is still the amount. **Not built:** screens,
   bookings and holdovers, publicity, competition, territory-by-territory results, adjusted currency, recorded
-  historical results, and all of the weekly television and streaming audiences.
+  historical results.
+- **Weekly audiences, first part** (`engine/audiences.ts`; requirement V3-T01, partial). A broadcast reports the
+  average audience of each first showing, in the week it aired; a streaming release reports hours viewed and views
+  each week; neither is turned into the other, a digital release reports none, and every figure is labelled
+  simulated. Each week's event asks for the next until eight weeks after the last episode. Shown as Weekly Audience
+  under Earnings. **Nothing reads an audience yet**: renewal is decided thirty days after delivery, before a season
+  airs (`continuation.ts`), so wiring an audience into renewal means moving that decision, which changes outcomes and
+  the journeys that expect them. Not built: ratings, share, demographics, completion, rankings, competition.
 - **The phone overhaul, where it stands:** `docs/v3/UI-COVERAGE.md` is the matrix, written by
   `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json` (every screen, tab and dialog; a new one needs a
   row or `tests/ui-inventory.test.ts` fails), the walk (`UI_COVERAGE_WRITE=1 npx playwright test
@@ -141,9 +148,8 @@ has a row for each requirement built or owed.
   before-and-after screenshots for the report; a real phone's keyboard, which no emulation shows.
 - **Next in order:** `docs/v3/requirements.csv` lists every requirement with its status; the ones marked `not started`
   or `partial` are the work left, and `docs/v3/LEDGER.md`'s suites table says the same by acceptance suite. In the
-  order I would take them: weekly television and streaming audiences (V3-T01, nothing built; do it as box office was
-  done in `engine/box-office.ts`: postings that add up, each metric apart, every figure labelled simulated, money
-  unchanged first); the rest of box office (V3-B03: bookings, holdovers, publicity, competition, which do change what a
+  order I would take them: something that reads an audience (V3-T01's other half: renewal or receipts by audience);
+  the rest of box office (V3-B03: bookings, holdovers, publicity, competition, which do change what a
   film earns and so need the journeys' expected figures revisited); age stages, doubles and per-episode performers
   (V3-C12); the schedule built from each filming place's calendar and child rules (V3-D01); more companies (V3-W01);
   ideas for the script fields that have none (V3-S10: 23 controls in `docs/creative-depth/FIELD-INVENTORY.csv` marked

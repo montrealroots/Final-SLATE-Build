@@ -5,8 +5,11 @@
 import type { Locator } from '@playwright/test';
 import { expect, test, type Page } from './test';
 import { addScene, advance, nav, newProject, pinSeed, pressSaveAndExit, produceToDelivery, quickLife, readSavedState, section, writePitch } from './helpers';
+import { audit } from './ui-audit';
 
 const SEED = 3;
+/** The kind of release the distributor offers Tidewater in this world: what the game drew, read once and recorded. */
+const ROUTE_PLAYED = 'theatrical';
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 const value = (c: Locator, label: string) => c.locator('dt', { hasText: new RegExp(`^${label}$`) }).locator('xpath=following-sibling::dd[1]');
 const dollars = (n: number) => `$${Math.round(n).toLocaleString('en-US')}`;
@@ -146,4 +149,46 @@ test('your earnings: grant money stays with the film it made; the income it kept
   const deal = s2.finance.deals.find((d: { kind: string }) => d.kind === 'earnings');
   expect(deal).toMatchObject({ status: 'accepted', received: income, transfer: { id: `tr-${deal.id}`, sources: [{ projectId: t2.id, amount: income }] } });
   expect(t2.obligations.filter((o: { ref?: string }) => o.ref === `transfer:tr-${deal.id}:earnings`).map((o: { settled: number }) => o.settled)).toEqual([income]);
+
+  // The release's weekly report (audiences.ts, box-office.ts), whichever kind of release the distributor made: a
+  // broadcast or a streaming release reports an audience in its own measures, a cinema run reports its weeks, a digital
+  // release reports neither. Followed for some weeks past its opening.
+  // A cinema release opens about four months after its offer is accepted.
+  const isOut = async () => (await byTitle(page, 'Tidewater')).releases.some((r: { offerId?: string; status: string }) => r.offerId && r.status === 'released');
+  for (let i = 0; i < 8 && !(await isOut()); i++) await advance(page, 'month');
+  expect(await isOut()).toBe(true);
+  for (let i = 0; i < 3; i++) await advance(page, 'week');
+  await open(page, 'Tidewater', 'Release');
+  const tw = await byTitle(page, 'Tidewater');
+  const taken = tw.offers.find((o: { status: string }) => o.status === 'accepted');
+  const earned = card(page, 'Earnings');
+  const route: string = taken.route;
+  // Seed 3, as played here: recorded so that a change in what was offered is seen, not absorbed.
+  expect(route).toBe(ROUTE_PLAYED);
+  if (route === 'broadcast' || route === 'streaming') {
+    const weeks = new Set(taken.audience.map((x: { week: number }) => x.week)).size;
+    expect(weeks).toBeGreaterThan(0);
+    expect(taken.weeks).toBeUndefined();
+    await earned.getByText(`Weekly Audience (${weeks})`).click();
+    await expect(earned).toContainText('Simulated by the game: no real audience figure is shown here.');
+    await expect(earned).toContainText('Nothing you are paid depends on these.');
+    const table = earned.getByRole('table', { name: `Weekly Audience, ${taken.distributor}` });
+    await expect(table.locator('tbody tr')).toHaveCount(taken.audience.length);
+    const measures = [...new Set(taken.audience.map((x: { metric: string }) => x.metric))].sort();
+    expect(measures).toEqual(route === 'broadcast' ? ['viewers'] : ['hours', 'views']);
+    await expect(earned).toContainText(route === 'broadcast' ? 'Average Audience: People watching' : 'Views: Hours viewed over the running time of what is available');
+    await expect(earned).not.toContainText(route === 'broadcast' ? 'Hours Viewed:' : 'Average Audience:');
+    await expect(table.locator('tbody tr').first()).toContainText(taken.audience[0].value.toLocaleString('en-US'));
+    await expect(earned.getByText(/^Weeks In Cinemas/)).toHaveCount(0);
+    if (dev !== 'desktop') expect((await audit(page)).defects, 'the weekly audience, on a phone').toEqual([]);
+    await page.screenshot({ path: `test-results/earnings-${dev}-05-weekly-audience.png`, fullPage: true });
+  } else if (route === 'theatrical') {
+    expect(taken.audience).toBeUndefined();
+    await expect(earned.getByText(/^Weeks In Cinemas \(\d+\)$/)).toBeVisible();
+    await expect(earned.getByText(/^Weekly Audience/)).toHaveCount(0);
+  } else {
+    expect(taken.audience).toBeUndefined();
+    expect(taken.weeks).toBeUndefined();
+    await expect(earned.getByText(/^Weekly Audience|^Weeks In Cinemas/)).toHaveCount(0);
+  }
 });

@@ -13,6 +13,7 @@ import { DUBBED_REACH } from './script-effects';
 import { stream } from './rng';
 import { WEEKS_PER_REPORT, monthOfWeek, recordWeek, settleMonth, weekMoney } from './box-office';
 import { money } from './budget';
+import { lastAudienceWeek, observeWeek, recordAudienceWeek, routeMetrics, showingsOf } from './audiences';
 import { addLog, registerHandler, schedule } from './state';
 import { DAY } from './time';
 import type { DistributionOffer, GameState, Project } from './types';
@@ -26,6 +27,8 @@ export const LATER_WINDOW_DAYS = 120;
 /** On release: the deal's reports begin, and later windows are offered some months on. */
 export function onDealReleased(state: GameState, p: Project, offerId: string): void {
   for (let m = 1; m <= REPORT_MONTHS; m++) schedule(state, state.now + m * 30 * DAY, 'distribution-report', { projectId: p.id, offerId, month: m }, { attention: 'silent', priority: 60 });
+  // A broadcast or streaming release reports its audience week by week (audiences.ts): each week asks for the next.
+  if (routeMetrics(p.offers.find((x) => x.id === offerId)?.route ?? 'digital').length) schedule(state, state.now + 7 * DAY, 'audience-week', { projectId: p.id, offerId, week: 1 }, { attention: 'silent', priority: 59 });
   // A cinema run is also reported week by week, each week the day it ends (box-office.ts); the monthly report settles them.
   if (p.offers.find((x) => x.id === offerId)?.route === 'theatrical') {
     for (let w = 1; w <= REPORT_MONTHS * WEEKS_PER_REPORT; w++) schedule(state, state.now + w * 7 * DAY, 'box-office-week', { projectId: p.id, offerId, week: w }, { attention: 'silent', priority: 59 });
@@ -59,6 +62,22 @@ export function reportedGross(seed: number, p: Project, o: DistributionOffer, mo
 const territoriesOpen = (p: Project, o: DistributionOffer): number => new Set(p.releases.filter((r) => r.offerId === o.id && r.status === 'released').flatMap((r) => r.territories)).size || o.territories.length;
 /** The day a deal's film first opened: its earliest release that is out. */
 const openedOn = (p: Project, o: DistributionOffer): string | null => p.releases.filter((r) => r.offerId === o.id && r.status === 'released').map((r) => r.date).sort()[0] ?? null;
+
+registerHandler('audience-week', (state, ev) => {
+  const p = state.projects.find((x) => x.id === ev.payload.projectId);
+  const o = p?.offers.find((x) => x.id === ev.payload.offerId);
+  const opened = p && o ? openedOn(p, o) : null;
+  if (!p || !o || o.status !== 'accepted' || !opened) return { suppressInterrupt: true };
+  const week = ev.payload.week as number;
+  const fresh = recordAudienceWeek(o, observeWeek(state.seed, p.id, o, week, opened, showingsOf(p, o), territoriesOpen(p, o)));
+  if (week === 1 && fresh.length) {
+    const said = fresh.map((x) => (x.metric === 'viewers' ? `an average audience of ${x.value.toLocaleString('en-US')}${x.episode ? ` for episode ${x.episode}` : ''}` : x.metric === 'hours' ? `${x.value.toLocaleString('en-US')} hours viewed` : `${x.value.toLocaleString('en-US')} views`));
+    addLog(state, `${o.distributor} reported ${p.title}'s first week: ${said.join(', ')}. Simulated.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
+  }
+  // The reports go on until some weeks after the last episode is out, and never past two years.
+  if (week < lastAudienceWeek(p, o, opened) && week < 104) schedule(state, state.now + 7 * DAY, 'audience-week', { projectId: p.id, offerId: o.id, week: week + 1 }, { attention: 'silent', priority: 59 });
+  return { suppressInterrupt: true };
+});
 
 registerHandler('box-office-week', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
