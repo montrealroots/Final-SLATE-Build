@@ -23,6 +23,7 @@ import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, roofed, scoutedPlaces, siteName, siteNote } from '../engine/locations';
 import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
 import { candidatesFor, childrenIn } from '../engine/hiring';
+import { chainOfTitle, exerciseOption, optionStanding, optionTerms, renewOption, takeOption } from '../engine/adaptation';
 import { consideredOn, isReal, jobLabel, stopConsidering, tmdbIdOf } from '../engine/guests';
 import { Picture } from './Picture';
 import { storyAge, storyAgeWords } from '../engine/story-age';
@@ -728,6 +729,57 @@ function MoneyKeptCard({ p }: { p: Project }) {
   );
 }
 
+/**
+ * The rights to the work a script adapts (engine/adaptation.ts; the v3 package, 02): where the option stands, what it
+ * costs, and the chain of title so far. Shown only for a script adapted from a work chosen in the catalog. Every
+ * figure and party here is this story's own, and the card says so.
+ */
+function AdaptationRights({ p }: { p: Project }) {
+  const g = useGame();
+  const [err, setErr] = useState<string | null>(null);
+  const ref = p.source?.ref;
+  if (!ref) return null;
+  const st = optionStanding(p, g.now);
+  const terms = p.source?.option?.terms ?? optionTerms(p);
+  const zone = getPlace(p.axes.basePlaceId).zone;
+  const act = (fn: (s: GameState) => void) => setErr(store.act(fn));
+  const SAYS: Record<typeof st, string> = {
+    'not-needed': 'No Option Asked',
+    none: 'No Option Yet',
+    held: 'Option Held',
+    expired: 'Option Ran Out',
+    exercised: 'Rights Bought',
+  };
+  return (
+    <section className="card" aria-labelledby="rights-h">
+      <h2 id="rights-h">Adaptation Rights</h2>
+      <p><span className={`chip${st === 'exercised' || st === 'not-needed' ? ' chip-positive' : st === 'expired' ? ' chip-warning' : ''}`}>{SAYS[st]}</span></p>
+      <p className="muted">Your script is adapted from {ref.title}. This is your story's own agreement with the work's rights holder, who is nobody real, on terms the game makes up from the size of your production. It grants no right to a real work, and is not advice about one.</p>
+      <ol className="list" aria-label="Chain Of Title">
+        {chainOfTitle(p, (at) => longLocal(at, zone).date).map((line) => <li key={line}>{line}</li>)}
+      </ol>
+      {st !== 'not-needed' && st !== 'exercised' && (
+        <>
+          <dl className="kv">
+            <dt>Price Of The Rights</dt><dd>{money(terms.price)}</dd>
+            <dt>Option</dt><dd>{money(terms.fee)} for {terms.months} months, counted towards the price</dd>
+            <dt>One Renewal</dt><dd>{money(terms.renewalFee)} for {terms.renewalMonths} months more, not counted towards the price</dd>
+            <dt>Covers</dt><dd>{terms.territory}, {terms.media} only, this project only</dd>
+            <dt>Credit</dt><dd>{terms.credit}</dd>
+          </dl>
+          <p className="dim small">Production can't be planned until the rights are bought. An option that runs out is gone, with what was paid for it.</p>
+          <div className="row-wrap">
+            {(st === 'none' || st === 'expired') && !p.delivered && <button className="btn btn-primary" onClick={() => act((s) => takeOption(s, p))}>Take The Option For {money(terms.fee)}</button>}
+            {st === 'held' && p.source?.option?.renewedAt === undefined && <button className="btn" onClick={() => act((s) => renewOption(s, p))}>Renew For {money(terms.renewalFee)}</button>}
+            {st === 'held' && <button className="btn btn-primary" onClick={() => act((s) => exerciseOption(s, p))}>Buy The Rights For {money(terms.price - terms.fee)}</button>}
+          </div>
+        </>
+      )}
+      {err && <p role="alert" className="error">{err}</p>}
+    </section>
+  );
+}
+
 export function BudgetTab({ p }: { p: Project }) {
   useGame();
   const t = ledgerTotals(p);
@@ -907,6 +959,7 @@ function FinancingPanel({ p }: { p: Project }) {
           </ul>
         </section>
       )}
+      <AdaptationRights p={p} />
       <section className="card" aria-labelledby="raise-h">
         <h2 id="raise-h">Raise Money</h2>
         <ul className="list">

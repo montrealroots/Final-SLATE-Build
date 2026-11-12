@@ -120,6 +120,20 @@ export interface SourceRef {
   at: number;
 }
 
+/**
+ * An option on the work a script adapts (adaptation.ts): this story's own agreement, with made-up terms. It is not an
+ * agreement with anyone real and grants no right to a real work.
+ */
+export interface SourceOption {
+  /** What was agreed: the price to buy the rights, the fee for the option (counted towards the price), and the rest. */
+  terms: { price: number; fee: number; renewalFee: number; months: number; renewalMonths: number; territory: string; media: 'film' | 'television'; credit: string };
+  takenAt: number;
+  /** When it runs out unless renewed or exercised. */
+  expires: number;
+  renewedAt?: number;
+  exercisedAt?: number;
+}
+
 export interface Route {
   view: string;
   projectId?: string;
@@ -959,7 +973,7 @@ export interface Project {
    * source-material catalog (sources.ts, from November 12, 2026), kept as it was recorded on the day it was chosen so a
    * save never depends on the catalog: its rights are what Wikidata recorded then, and nothing the game works out.
    */
-  source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef };
+  source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef; option?: SourceOption };
   /** When the story is set, as declared: costume, makeup and design awards split by it. Missing means contemporary. */
   storyTime?: 'contemporary' | 'period' | 'future';
   /** Subjects the story takes on, as declared (some awards and sections are for work about them); never read from prose. */

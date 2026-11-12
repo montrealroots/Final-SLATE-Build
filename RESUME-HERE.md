@@ -88,8 +88,9 @@ has a row for each requirement built or owed.
   rewrites it, then `V3_WRITE=1 npx vitest run tests/sources.test.ts` rewrites `docs/v3/SOURCE-COVERAGE.md`). A work's
   genre in the game comes only from `tools/sources/genre-map.mjs`; read `tools/sources/recorded-genres.tsv` after an
   import before adding to it. The Script page finds a work, shows what is recorded and declares the script adapted
-  from it (`engine/adaptation.ts`). **Owed:** the option agreement and the rest of the adaptation loop (requirements
-  V3-A05, V3-A06); the people loops; more companies.
+  from it, and the Budget page's Adaptation Rights card takes, renews and exercises the option that production waits
+  for (`engine/adaptation.ts`). **Owed:** the rest of the adaptation loop (requirement V3-A06: brief, approvals,
+  compensation beyond the price, reporting); the people loops; more companies.
 - **The phone overhaul, where it stands:** `docs/v3/UI-COVERAGE.md` is the matrix, written by
   `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json` (every screen, tab and dialog; a new one needs a
   row or `tests/ui-inventory.test.ts` fails), the walk (`UI_COVERAGE_WRITE=1 npx playwright test
