@@ -11,6 +11,10 @@
   "film": 1,
   "tv": 0
  },
+ "horror+comedy": {
+  "film": 1,
+  "tv": 0
+ },
  "horror": {
   "film": 1,
   "tv": 0

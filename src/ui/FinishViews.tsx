@@ -36,7 +36,8 @@ import { EXCLUSIVE_DAYS, dubbingCost, offerConflicts, setReleaseVersion, version
 import { DUBBED_REACH } from '../engine/script-effects';
 import { studioFilms } from '../engine/studios';
 
-import { REPORT_MONTHS } from '../engine/distribution';
+import { DISTRIBUTOR_FEE, REPORT_MONTHS } from '../engine/distribution';
+import { RENTAL_SHARE, TICKET_PRICE, weekMoney } from '../engine/box-office';
 import { personById } from '../engine/people';
 import { VERSION_LABELS, addVersion, removeVersion, versionCredits, versionRuntime } from '../engine/versions';
 import { designStatus, designsToReview, type DesignStatus } from '../engine/designs';
@@ -543,6 +544,7 @@ export function ReleaseTab({ p }: { p: Project }) {
                 <dt>Guarantee Recouped</dt><dd>{money(Math.min(o.reported?.net ?? 0, o.minimumGuarantee))} of {money(o.minimumGuarantee)}</dd>
                 <dt>Received By You</dt><dd>{money(o.minimumGuarantee + (o.reported?.overagePaid ?? 0))}</dd>
               </dl>
+              {o.weeks?.length ? <WeeksInCinemas o={o} /> : null}
             </li>
           ))}</ul>
         </section>
@@ -1200,3 +1202,42 @@ function ReleaseVersion({ p, r }: { p: Project; r: ReleaseRecord }) {
   );
 }
 
+
+/**
+ * A cinema run week by week (engine/box-office.ts): ticket sales, who keeps what of them, and what is left towards the
+ * guarantee. Every figure is the game's own simulation and says so.
+ */
+function WeeksInCinemas({ o }: { o: Project['offers'][number] }) {
+  const weeks = o.weeks ?? [];
+  const rows = weeks.map((w) => ({ w, m: weekMoney(w, DISTRIBUTOR_FEE) }));
+  const total = rows.reduce((a, { m }) => ({ gross: a.gross + m.gross, admissions: a.admissions + m.admissions, cinemas: a.cinemas + m.cinemas, rental: a.rental + m.rental, fee: a.fee + m.fee, net: a.net + m.net }), { gross: 0, admissions: 0, cinemas: 0, rental: 0, fee: 0, net: 0 });
+  const n = (x: number) => x.toLocaleString('en-US');
+  return (
+    <details className="small">
+      <summary>Weeks In Cinemas ({weeks.length})</summary>
+      <p className="dim">Simulated by the game: no real box office is shown here. Ticket sales are not what you earn. Cinemas keep {Math.round((1 - RENTAL_SHARE) * 100)}% of them; the rest is the film rental {o.distributor} receives, its fee of {Math.round(DISTRIBUTOR_FEE * 100)}% comes off that, and what is left repays the guarantee before any of it reaches you. Admissions are ticket sales at {money(TICKET_PRICE)} a ticket. A week is provisional until the month's report settles it.</p>
+      <div className="table-wrap">
+        <table className="data" aria-label={`Weeks In Cinemas, ${o.distributor}`}>
+          <thead><tr><th>Week</th><th>Dates</th><th>Territories Open</th><th>Admissions</th><th>Ticket Sales</th><th>Cinemas Keep</th><th>Film Rental</th><th>Distributor's Fee</th><th>Towards The Guarantee</th><th>Status</th></tr></thead>
+          <tbody>
+            {rows.map(({ w, m }) => (
+              <tr key={w.week}>
+                <td data-label="Week">{w.week}</td>
+                <td data-label="Dates">{formatDateKey(w.from)} to {formatDateKey(w.to)}</td>
+                <td data-label="Territories Open">{w.territories}</td>
+                <td data-label="Admissions">{n(m.admissions)}</td>
+                <td data-label="Ticket Sales">{money(m.gross)}</td>
+                <td data-label="Cinemas Keep">{money(m.cinemas)}</td>
+                <td data-label="Film Rental">{money(m.rental)}</td>
+                <td data-label="Distributor's Fee">{money(m.fee)}</td>
+                <td data-label="Towards The Guarantee">{money(m.net)}</td>
+                <td data-label="Status">{w.status === 'final' ? 'Final' : 'Provisional'}{w.first !== undefined ? `; first reported as ${money(w.first)} in rental` : ''}{w.late ? '; reported with its month' : ''}</td>
+              </tr>
+            ))}
+          </tbody>
+          <tfoot><tr><th scope="row">All</th><td /><td /><td>{n(total.admissions)}</td><td>{money(total.gross)}</td><td>{money(total.cinemas)}</td><td>{money(total.rental)}</td><td>{money(total.fee)}</td><td>{money(total.net)}</td><td /></tr></tfoot>
+        </table>
+      </div>
+    </details>
+  );
+}

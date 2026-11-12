@@ -11,6 +11,8 @@ import { receiveIncome } from './finance';
 import { countryLanguage } from './people';
 import { DUBBED_REACH } from './script-effects';
 import { stream } from './rng';
+import { WEEKS_PER_REPORT, monthOfWeek, recordWeek, settleMonth, weekMoney } from './box-office';
+import { money } from './budget';
 import { addLog, registerHandler, schedule } from './state';
 import { DAY } from './time';
 import type { DistributionOffer, GameState, Project } from './types';
@@ -24,6 +26,10 @@ export const LATER_WINDOW_DAYS = 120;
 /** On release: the deal's reports begin, and later windows are offered some months on. */
 export function onDealReleased(state: GameState, p: Project, offerId: string): void {
   for (let m = 1; m <= REPORT_MONTHS; m++) schedule(state, state.now + m * 30 * DAY, 'distribution-report', { projectId: p.id, offerId, month: m }, { attention: 'silent', priority: 60 });
+  // A cinema run is also reported week by week, each week the day it ends (box-office.ts); the monthly report settles them.
+  if (p.offers.find((x) => x.id === offerId)?.route === 'theatrical') {
+    for (let w = 1; w <= REPORT_MONTHS * WEEKS_PER_REPORT; w++) schedule(state, state.now + w * 7 * DAY, 'box-office-week', { projectId: p.id, offerId, week: w }, { attention: 'silent', priority: 59 });
+  }
   schedule(state, state.now + LATER_WINDOW_DAYS * DAY, 'distribution-offer', { projectId: p.id, wave: `window:${offerId}` }, { attention: 'notify', priority: 55 });
 }
 
@@ -49,11 +55,33 @@ export function reportedGross(seed: number, p: Project, o: DistributionOffer, mo
   return Math.round((Math.max(0, reception - 35) * 1500 * routeScale * Math.sqrt(territoriesReached(p, o)) * curve * noise) / 100) * 100;
 }
 
+/** How many territories a deal's film is out in: a count, where territoriesReached weighs a dubbed one more. */
+const territoriesOpen = (p: Project, o: DistributionOffer): number => new Set(p.releases.filter((r) => r.offerId === o.id && r.status === 'released').flatMap((r) => r.territories)).size || o.territories.length;
+/** The day a deal's film first opened: its earliest release that is out. */
+const openedOn = (p: Project, o: DistributionOffer): string | null => p.releases.filter((r) => r.offerId === o.id && r.status === 'released').map((r) => r.date).sort()[0] ?? null;
+
+registerHandler('box-office-week', (state, ev) => {
+  const p = state.projects.find((x) => x.id === ev.payload.projectId);
+  const o = p?.offers.find((x) => x.id === ev.payload.offerId);
+  const opened = p && o ? openedOn(p, o) : null;
+  if (!p || !o || o.status !== 'accepted' || !opened) return { suppressInterrupt: true };
+  const week = ev.payload.week as number;
+  const w = recordWeek(o, week, opened, territoriesOpen(p, o), reportedGross(state.seed, p, o, monthOfWeek(week)));
+  if (w && week === 1) {
+    const m = weekMoney(w, DISTRIBUTOR_FEE);
+    addLog(state, `${p.title} took ${money(m.gross)} in its first week in cinemas, from ${m.admissions.toLocaleString('en-US')} admissions. Simulated; provisional until ${o.distributor} reports the month.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
+  }
+  return { suppressInterrupt: true };
+});
+
 registerHandler('distribution-report', (state, ev) => {
   const p = state.projects.find((x) => x.id === ev.payload.projectId);
   const o = p?.offers.find((x) => x.id === ev.payload.offerId);
   if (!p || !o || o.status !== 'accepted') return { suppressInterrupt: true };
   const gross = reportedGross(state.seed, p, o, ev.payload.month as number);
+  // A cinema run's month is its four weeks, made to add up to this report (box-office.ts).
+  const opened = o.route === 'theatrical' ? openedOn(p, o) : null;
+  if (opened) settleMonth(o, ev.payload.month as number, gross, opened, territoriesOpen(p, o));
   const rep = (o.reported ??= { gross: 0, net: 0, overagePaid: 0 });
   rep.gross += gross;
   rep.net += Math.round(gross * (1 - DISTRIBUTOR_FEE));

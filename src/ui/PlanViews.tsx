@@ -38,6 +38,7 @@ import { store, useGame } from './store';
 import { WritingWork } from './WritingWork';
 import { FilmedAtCard } from './FilmedAt';
 import { StudioPitchCard } from './StudioPitch';
+import { AgentSubmit, viaLine } from './Representation';
 import { STRATEGY_VERSION } from '../engine/strategy';
 import { dayPlace, filmedAt, kindFee } from '../engine/destinations';
 
@@ -980,6 +981,7 @@ function FinancingPanel({ p }: { p: Project }) {
                     <p className="dim small">Its read for {d.studio.year}, as it was given{d.studio.v !== STRATEGY_VERSION ? ', under an earlier version of how studios read a pitch' : ''}. It doesn't change afterwards.</p>
                   </details>
                 )}
+                {viaLine(d) && <p className="dim">{viaLine(d)}</p>}
                 {d.transfer && <p className="dim">Moved from {d.transfer.sources.map((x) => `${g.projects.find((y) => y.id === x.projectId)?.title ?? 'a project'} (${money(x.amount)})`).join(', ')}.</p>}
                 {(d.status === 'offered' || d.status === 'accepted' || d.status === 'breached') && <ul className="dim">{dealTerms(d).map((t) => <li key={t}>{t}</li>)}</ul>}
                 {(d.status === 'accepted' || d.status === 'breached') && d.terms.recoup > 0 && <p className="dim">Repaid so far: {money(d.repaid)} of {money(d.terms.recoup)}.</p>}
@@ -1029,6 +1031,7 @@ function FinancingPanel({ p }: { p: Project }) {
                 <p className="muted">{BACKERS[o.kind].who} {BACKERS[o.kind].why}{o.needs.includes('Still to write') ? '' : ` ${backerDocuments(o.kind)}`}{OWN_MONEY.has(o.kind) ? '' : BACKERS[o.kind].decideDays ? ` They answer within ${plural(BACKERS[o.kind].decideDays, 'day')}.` : ''}</p>
                 {o.kind === 'earnings' || o.kind === 'capital' ? <OwnMoneyLines p={p} kind={o.kind} /> : null}
                 {!o.ready && <p className="dim">{o.needs}</p>}
+                <AgentSubmit p={p} kind={o.kind} onError={setErr} />
               </div>
               <button className="btn btn-sm" disabled={!o.ready} onClick={() => setErr(store.act((s) => void approachBacker(s, live(s), o.kind)))} aria-label={OWN_MONEY.has(o.kind) ? `Put In ${BACKERS[o.kind].name}` : `Approach ${BACKERS[o.kind].name}`}>{o.kind === 'starting' ? 'Ask For The Agreed Backing' : OWN_MONEY.has(o.kind) ? `Put In ${BACKERS[o.kind].name}` : 'Approach'}</button>
             </li>
@@ -1044,6 +1047,7 @@ function FinancingPanel({ p }: { p: Project }) {
         </>}>
           <p>{theBacker(accepting, true)} backs {p.title} with {money(accepting.amount)} on these terms:</p>
           <ul>{dealTerms(accepting).map((t) => <li key={t}>{t}</li>)}</ul>
+          {viaLine(accepting) && <p>{viaLine(accepting)}</p>}
           <p className="muted">These terms apply for the life of the project.</p>
         </Modal>
       )}

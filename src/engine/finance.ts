@@ -297,7 +297,7 @@ export function fundClosedTo(state: GameState, p: Project): string | null {
 }
 
 /** Each backer the player could approach for this project, with what it needs and whether that is met. */
-export function backerOptions(state: GameState, p: Project): { kind: BackerKind; ready: boolean; needs: string }[] {
+export function backerOptions(state: GameState, p: Project, throughAgent = false): { kind: BackerKind; ready: boolean; needs: string }[] {
   // One approach per backer per project: a backer who said no, or was turned down, isn't asked again for it.
   const has = (k: FinanceDealKind) => deals(p).some((d) => d.kind === k);
   const { promised, stillToRaise } = financeSummary(p);
@@ -318,14 +318,14 @@ export function backerOptions(state: GameState, p: Project): { kind: BackerKind;
   out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : docs('co-producer')) });
   // A commissioner who didn't renew the series won't fund its next season (continuation.ts).
   const notRenewed = p.continues && state.projects.find((x) => x.id === p.continues!.from)?.renewal?.outcome === 'cancelled' ? "The commissioner didn't renew the series." : null;
-  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 ? 'Deliver a project first.' : notRenewed ?? (!scriptApproved(p) ? 'Approve a script first.' : docs('commissioner'))) });
+  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 && !throughAgent ? 'Deliver a project first.' : notRenewed ?? (!scriptApproved(p) ? 'Approve a script first.' : docs('commissioner'))) });
   for (const o of out) o.ready = o.needs === '';
   return out;
 }
 
 /** Ask a backer to fund this project. Most take some days to decide; the starting backing is already agreed. */
-export function approachBacker(state: GameState, p: Project, kind: BackerKind): FinanceDeal {
-  const opt = backerOptions(state, p).find((o) => o.kind === kind);
+export function approachBacker(state: GameState, p: Project, kind: BackerKind, via?: FinanceDeal['via']): FinanceDeal {
+  const opt = backerOptions(state, p, !!via).find((o) => o.kind === kind);
   if (!opt) throw new Error('That backer is not available for this project.');
   if (!opt.ready) throw new Error(opt.needs);
   p.finance ??= { estimate: p.funding.fund, target: p.funding.fund, deals: [] };
@@ -341,12 +341,13 @@ export function approachBacker(state: GameState, p: Project, kind: BackerKind): 
     id: newId(state, 'fd'), kind, backer: b.name, amount: 0, status: 'considering', askedAt: state.now, decideAt: state.now + days * DAY,
     reason: '', received: 0, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null, unspent: OWN_MONEY.has(kind) ? 'yours' : 'stays' },
     ...(sent.length ? { sent, sentCopy: { draft: p.approvedDraft, documents } } : {}),
+    ...(via ? { via } : {}),
   };
   p.finance.deals.push(deal);
   if (b.decideDays === 0) decide(state, p, deal);
   else {
     schedule(state, deal.decideAt!, 'finance-decision', { projectId: p.id, dealId: deal.id }, { attention: 'notify', priority: 40 });
-    addLog(state, `You asked the ${b.name.toLowerCase()} to back ${p.title}${sent.length ? `, sending the approved script and your ${sent.join(', ').toLowerCase()}` : ''}. They will answer in about ${days} days.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+    addLog(state, `${via ? `${via.name} submitted ${p.title} to the ${b.name.toLowerCase()}` : `You asked the ${b.name.toLowerCase()} to back ${p.title}`}${sent.length ? `, sending the approved script and your ${sent.join(', ').toLowerCase()}` : ''}. They will answer in about ${days} days.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
   }
   return deal;
 }
@@ -587,6 +588,23 @@ export function acceptDeal(state: GameState, p: Project, dealId: string): void {
   if (d.terms.deliverBy) schedule(state, d.terms.deliverBy, 'finance-deadline', { projectId: p.id, dealId: d.id }, { attention: 'interrupt', priority: 35 });
   p.history.push({ at: state.now, text: `${d.backer} backs the project with ${money(d.amount)}.` });
   addLog(state, `You accepted ${money(d.amount)} from ${theBacker(d)} for ${p.title}. ${money(now)} is now in the budget.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+  payCommission(state, p, d, now);
+}
+
+/**
+ * An agent's commission on a payment from a deal they submitted (representation.ts): their rate of what just arrived,
+ * taken then, as a line of its own on this project's ledger. It is owed whatever else the project has committed, so it
+ * is posted as paid rather than asked of what is uncommitted, as a backer's repayment is.
+ */
+function payCommission(state: GameState, p: Project, d: FinanceDeal, received: number): void {
+  if (!d.via || received <= 0) return;
+  const fee = Math.round(received * d.via.rate);
+  if (fee <= 0) return;
+  p.obligations.push({
+    id: newId(state, 'o'), label: `${d.via.name}'s Commission: ${Math.round(d.via.rate * 1000) / 10}% Of ${money(received)} From The ${d.backer}`, category: 'finance', amount: fee, state: 'settled', settled: fee,
+    ref: `commission:${d.via.agentId}:${d.id}`, postings: [{ at: state.now, kind: 'settle', amount: fee, key: `commission:${d.id}:${d.received}` }],
+  });
+  addLog(state, `${d.via.name} took ${money(fee)} commission on the ${money(received)} ${theBacker(d)} paid into ${p.title}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
 }
 
 /** Turn an offer down. A backer who was turned down isn't asked again for this project. */
@@ -615,6 +633,7 @@ export function onProjectDelivered(state: GameState, p: Project): void {
     if (due > 0) {
       d.received += due;
       p.funding.fund += due;
+      payCommission(state, p, d, due);
       addLog(state, `${theBacker(d, true)} paid ${money(due)} on delivery of ${p.title}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
     }
   }

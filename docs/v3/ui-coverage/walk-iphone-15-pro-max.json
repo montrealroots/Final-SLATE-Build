@@ -1,6 +1,6 @@
 {
  "project": "iphone-15-pro-max",
- "at": "2026-11-12T13:05:20.198Z",
+ "at": "2026-11-12T14:57:04.928Z",
  "rows": [
   {
    "id": "start",
@@ -85,6 +85,19 @@
    "area": "You",
    "name": "Player Profile",
    "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "agent-list",
+   "area": "You",
+   "name": "Find An Agent",
+   "kind": "dialog",
    "sizes": {
     "iPhone 15 Pro Max (WebKit) (430 by 932)": {
      "defects": []
@@ -652,6 +665,32 @@
    "accepted": []
   },
   {
+   "id": "profile-represented",
+   "area": "You",
+   "name": "Player Profile, Represented",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "agent-notice",
+   "area": "You",
+   "name": "Give Notice?",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
    "id": "menu",
    "area": "Shell",
    "name": "Menu Drawer",
@@ -956,6 +995,19 @@
    "id": "change-relationship",
    "area": "Script",
    "name": "Change The Relationship",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "remove-relationship",
+   "area": "Script",
+   "name": "Remove The Relationship",
    "kind": "dialog",
    "sizes": {
     "iPhone 15 Pro Max (WebKit) (430 by 932)": {

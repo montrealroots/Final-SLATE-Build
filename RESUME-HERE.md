@@ -96,8 +96,22 @@ has a row for each requirement built or owed.
   a search for a part for two of their days and advises once everyone has read; the shortlist, callbacks and offers
   stay the player's. The line producer negotiates a counteroffer for one of their days and brings back a lower rate
   or the same one; accepting stays the player's. Both are paid on their own budget line
-  (`hiring.ts payDelegatedDays`) and credited for days worked. **Owed:** representation (agent search, mandate,
-  submissions, negotiation, commission, conflicts, renewal, termination): nothing of it is built.
+  (`hiring.ts payDelegatedDays`) and credited for days worked.
+- **Representation is built** (`engine/representation.ts`, `ui/Representation.tsx`; requirement V3-L03). Four
+  fictional agents on the Profile page, each needing different evidence and answering from the record with no
+  chance; a mandate read before it is signed; from the Budget page the agent submits a project to an investor, a
+  co-production partner or a commissioner (who reads an agent's submission before anything is delivered); their
+  rate of each payment such a deal makes is a line on the project's ledger (`finance.ts payCommission`), and the
+  statement is those lines added up; each agent stands aside from one kind of backer; renewal a month before the
+  twelve months end; thirty days' notice. **Not built:** an agent finding work for the player as a hired
+  writer, director or performer (the game has no such jobs for the player yet), and agents for other people.
+- **Box office, first part** (`engine/box-office.ts`; requirements V3-B01 and V3-B02, both partial). A cinema
+  release is reported week by week under Earnings on the Release page (ticket sales, admissions, what cinemas keep,
+  the rental, the distributor's fee, what goes towards the guarantee), provisional until the distributor's monthly
+  report settles its four weeks to itself, and the Profile page has a record book worked out from those weeks.
+  The money a film earns is unchanged: `distribution.ts reportedGross` is still the amount. **Not built:** screens,
+  bookings and holdovers, publicity, competition, territory-by-territory results, adjusted currency, recorded
+  historical results, and all of the weekly television and streaming audiences.
 - **The phone overhaul, where it stands:** `docs/v3/UI-COVERAGE.md` is the matrix, written by
   `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json` (every screen, tab and dialog; a new one needs a
   row or `tests/ui-inventory.test.ts` fails), the walk (`UI_COVERAGE_WRITE=1 npx playwright test
@@ -107,7 +121,7 @@ has a row for each requirement built or owed.
   tools/v3/ui-coverage.mjs --fresh --sweep <file> --sweep <file>`). Do not run `npm run check` while a production
   sweep runs: both build into `dist/`. The stylesheet turns at four widths, listed at its head;
   `tests/stylesheet.test.ts` fails a fifth, a rule for a class nothing wears and an inline pixel margin. `QA-REPORT.md`
-  has every finding and fix. **Owed:** the 14 rows the matrix lists as not visited (dialogs that open only in a
+  has every finding and fix. **Owed:** the 13 rows the matrix lists as not visited (dialogs that open only in a
   played career: cutting a scene from the edit, cancelling a release, episode dates, a withdrawn contributor, rules,
   the approved take; and the loading, error and repair states of the start screen); the WebKit sweep folded in;
   before-and-after screenshots for the report; a real phone's keyboard, which no emulation shows.

@@ -14,7 +14,7 @@ whole outline and, for a series, every episode of its first season.
 | Stories with one primary genre | 14,900 | 11 | 11 | 2 |
 | Genres with 50 reviewed films and 50 reviewed series | 149 | | | 0 |
 | Genres with at least one story | | | 11 | |
-| Mixed-genre stories | | 0 | 0 | |
+| Mixed-genre stories | | 1 | 1 | |
 | Pairings with 10 stories | | | 0 | |
 | Genres in 3 such pairings | 149 | | 0 | |
 
@@ -174,4 +174,4 @@ whole outline and, for a series, every episode of its first season.
 
 ## Pairings
 
-None written yet.
+- `horror+comedy`: 1

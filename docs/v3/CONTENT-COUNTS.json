@@ -6,8 +6,8 @@
   "reviewed": 2,
   "genresAtQuota": 0,
   "genresStarted": 11,
-  "mixedWritten": 0,
-  "mixedComplete": 0,
+  "mixedWritten": 1,
+  "mixedComplete": 1,
   "pairsWithTen": 0,
   "genresInThreePairs": 0
  },
@@ -907,5 +907,7 @@
    "tvReviewed": 0
   }
  },
- "pairs": {}
+ "pairs": {
+  "horror+comedy": 1
+ }
 }

@@ -14,6 +14,8 @@ import { store, useClock, useGame } from './store';
 import { loadWorldHolidays } from '../world/holidays/holidays';
 import { climateNote } from '../world/climate';
 import { CinemasNearby } from './Cinemas';
+import { RepresentationCard } from './Representation';
+import { RecordBookCard } from './RecordBook';
 
 
 const FILTERS = ['Birthdays', 'Holidays', 'Festivals', 'Awards', 'Deadlines', 'My Schedule', 'Film And Television'];
@@ -400,6 +402,8 @@ export function Profile() {
             </ul>
           ) : <p className="muted">Credits appear here when a project is delivered.</p>}
         </section>
+        <RepresentationCard />
+        <RecordBookCard />
         <section className="card">
           <h2>Festivals And Awards</h2>
           {h.length ? (
