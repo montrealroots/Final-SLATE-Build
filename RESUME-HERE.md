@@ -9,11 +9,12 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#70 (Creative Depth, milestones C and E: camera, light, sound and
-  looks by scene; filming in real places elsewhere; and CI's journeys as their own job), squash-merged as `8d927fe` on
-  November 12, 2026, CI green on its final commit. Before it, #69 (milestone D) as `e028194`, #68 (milestone B) as
-  `fd095f1` and #67 (milestone A) as `562eac8`.
-- **Next checkpoint:** milestones F, G and H and the layout work below, together, on this branch.
+- **Latest merge:** montrealroots/Final-SLATE-Build#71 (Creative Depth, milestones F, G and H; and screens lined up),
+  squash-merged as `1f5cb1f` on November 12, 2026, CI green on its final commit (`checks` and all six journeys runs).
+  Before it, #70 (milestones C and E, and CI's journeys as their own job) as `8d927fe`, #69 (milestone D) as
+  `e028194`, #68 (milestone B) as `fd095f1` and #67 (milestone A) as `562eac8`.
+- **The package's eight milestones are all merged.** What it leaves undone is listed in one place:
+  `docs/creative-depth/COVERAGE.md`, "Not Done, In One Place". Nothing is open on this branch.
 - **CI, from November 12, 2026:** `.github/workflows/ci.yml` has two jobs. `checks` is everything without a browser.
   `journeys` is the browser suite as six runs side by side: the dev server and the production build, each on desktop,
   phone and the WebKit profiles. Until then one job ran the suite twice in a row; #70's first run was cut at its
