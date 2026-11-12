@@ -34,18 +34,18 @@ the only place the counts are kept; this ledger does not repeat them, so they ca
 
 | Suite | State | Tests |
 | --- | --- | --- |
-| T01 Content | in progress: the checks exist and pass on 2 stories; the quota is 14,900 | `tests/v3-content.test.ts`, `tests/blueprints.test.ts` |
-| T02 Genre variety | not started: no mixed story is written | `tests/v3-content.test.ts` counts pairings |
-| T03 Blueprint editing | passes for a film and a series, except the former 11 gap fields and shuffle | `e2e/stories.spec.ts` |
-| T04 Character lifecycle | passes, except age stages, doubles and per-episode performers | `e2e/characters.spec.ts`, `tests/characters.test.ts` |
-| T05 People | not started | |
-| T06 Adaptation | not started | |
-| T07 World | not started | |
-| T08 Finance and release | not started | |
-| T09 Audiences | not started | |
-| T10 Media | in progress: fixture tests pass; the real fetch is running; nothing in the game yet | `tests/pictures.test.ts` |
-| T11 UI | in progress: `e2e/ui-coverage.spec.ts` fails on any defect or desktop-and-phone difference on the screens it walks; the sweep measures the rest in journeys without failing them | `docs/v3/UI-COVERAGE.md` |
-| T12 Career | not started | |
+| T01 Content | in progress: the checks exist and pass on every story written; `docs/v3/CONTENT-COUNTS.md` has the count against the quota of 14,900 | `tests/v3-content.test.ts`, `tests/blueprints.test.ts` |
+| T02 Genre variety | in progress: the first mixed-genre story is written; the quota is every genre in three pairings of ten | `tests/v3-content.test.ts` counts pairings |
+| T03 Blueprint editing | passes for a film and a series, with shuffle; ideas for the former 11 gap fields are not built | `e2e/stories.spec.ts` |
+| T04 Character lifecycle | passes, except age stages, doubles and per-episode performers (V3-C12) | `e2e/characters.spec.ts`, `tests/characters.test.ts` |
+| T05 People | in progress: a casting director and a line producer do paid work with observable results, and representation is built (V3-L01 to L03). Not built: contrasting profiles deciding differently beyond the agents; one person in several roles with shared commitments tested as such; hired work for the player | `tests/casting-director.test.ts`, `tests/line-producer.test.ts`, `tests/representation.test.ts` and their journeys |
+| T06 Adaptation | in progress: the catalog, a work's recorded rights, declaring an adaptation, and the option, renewal, expiry and exercise pass. Not built: the brief, approvals, compensation beyond the price, reporting (V3-A06) | `tests/sources.test.ts`, `tests/adaptation.test.ts`, `e2e/sources.spec.ts` |
+| T07 World | not started: more companies, and nothing new in the living world, were built for this package | |
+| T08 Finance and release | in progress: a cinema run's weeks, settled by its monthly report, with each share apart and the money unchanged; a record book (V3-B01, B02, both partial). Not built: screens, bookings, holdovers, publicity, competition, territory results, recorded history | `tests/box-office.test.ts`, `e2e/studio-pitch.spec.ts` |
+| T09 Audiences | not started: no weekly television or streaming audience is built | |
+| T10 Media | passes for what is built: every published picture gathered, packed and installable in the game by kind or all, with pause, retry, update and remove. One kind has been installed in a browser from the real packs; the whole 3.5 GB has not | `tests/pictures.test.ts`, `e2e/picture-library.spec.ts`, `docs/PICTURE-COVERAGE.md` |
+| T11 UI | in progress: `e2e/ui-coverage.spec.ts` fails on any defect or desktop-and-phone difference on the screens it walks (69 of 82 rows); the sweep measures the rest in journeys without failing them; no real phone | `docs/v3/UI-COVERAGE.md` |
+| T12 Career | not started as its own suite: the existing film and series career journeys pass in CI on every merge, and none was written for this package end to end | CI `journeys` |
 
 ## Decisions
 
