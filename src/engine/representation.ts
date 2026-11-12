@@ -106,11 +106,12 @@ export function recordFor(state: GameState): { scripts: number; delivered: numbe
 export function agentRead(state: GameState, agent: Agent): { takes: boolean; reason: string } {
   const r = recordFor(state);
   const n = agent.needs;
-  const count = (x: number, one: string, many: string) => (x === 0 ? 'none' : x === 1 ? `one ${one}` : `${x} ${many}`);
+  const word = (x: number) => ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine'][x] ?? String(x);
+  const count = (x: number, one: string, many: string) => (x === 0 ? 'none' : x === 1 ? `one ${one}` : `${word(x)} ${many}`);
   if (n.winsInstead && r.wins >= n.winsInstead) return { takes: true, reason: `Your work has won ${count(r.wins, 'prize', 'prizes')}, which is what they look for.` };
   if (n.scripts && r.scripts < n.scripts) return { takes: false, reason: 'They want to read an approved script first, and you have none yet.' };
   if (n.delivered && r.delivered < n.delivered) {
-    return { takes: false, reason: `They take on filmmakers with ${n.delivered === 1 ? 'a delivered project' : `${n.delivered} delivered projects`}${n.winsInstead ? ' or a prize' : ''}; you have ${count(r.delivered, 'delivered project', 'delivered projects')}${n.winsInstead ? ' and no prize' : ''}.` };
+    return { takes: false, reason: `They take on filmmakers with ${n.delivered === 1 ? 'a delivered project' : `${word(n.delivered)} delivered projects`}${n.winsInstead ? ' or a prize' : ''}; you have ${count(r.delivered, 'delivered project', 'delivered projects')}${n.winsInstead ? ' and no prize' : ''}.` };
   }
   if (n.reception && (r.best ?? 0) < n.reception) return { takes: false, reason: `They want a delivered project that was well received. Your best so far was received at ${r.best ?? 0} of 100; they look for ${n.reception}.` };
   if (n.reception) return { takes: true, reason: `Your delivered work was received at ${r.best} of 100, which is what they look for.` };

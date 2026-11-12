@@ -56,7 +56,7 @@ describe('finding an agent', () => {
       vale: { takes: true, reason: 'You have an approved script for them to read, which is what they look for.' },
       montoya: { takes: false, reason: 'They take on filmmakers with a delivered project; you have none.' },
       adeyemi: { takes: false, reason: 'They take on filmmakers with a delivered project; you have none.' },
-      brandt: { takes: false, reason: 'They take on filmmakers with 2 delivered projects or a prize; you have none and no prize.' },
+      brandt: { takes: false, reason: 'They take on filmmakers with two delivered projects or a prize; you have none and no prize.' },
     });
     deliveredWork(s, 'First', 52);
     expect(read().montoya).toEqual({ takes: true, reason: 'You have one delivered project, which is what they look for.' });
@@ -64,7 +64,7 @@ describe('finding an agent', () => {
     expect(read().brandt.takes).toBe(false);
     deliveredWork(s, 'Second', 71);
     expect(read().adeyemi).toEqual({ takes: true, reason: 'Your delivered work was received at 71 of 100, which is what they look for.' });
-    expect(read().brandt).toEqual({ takes: true, reason: 'You have 2 delivered projects, which is what they look for.' });
+    expect(read().brandt).toEqual({ takes: true, reason: 'You have two delivered projects, which is what they look for.' });
   });
 
   it('with no approved script, even the agent for newcomers says no', () => {
