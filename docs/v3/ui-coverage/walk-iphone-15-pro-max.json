@@ -1,6 +1,6 @@
 {
  "project": "iphone-15-pro-max",
- "at": "2026-11-12T10:36:05.594Z",
+ "at": "2026-11-12T12:10:39.566Z",
  "rows": [
   {
    "id": "start",
@@ -279,6 +279,32 @@
    "scrollers": [
     "div.tabs \"Ideas\" in Choose A Starting Idea"
    ],
+   "accepted": []
+  },
+  {
+   "id": "source-list",
+   "area": "Project",
+   "name": "Choose A Work To Adapt",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "source-open",
+   "area": "Project",
+   "name": "A Work To Adapt, Open",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
    "accepted": []
   },
   {

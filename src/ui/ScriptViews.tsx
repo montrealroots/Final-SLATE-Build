@@ -33,7 +33,10 @@ import { MAKEUP, MAX_STATES, PERIOD_LABEL, WARDROBE, costumeCopies, madeIn, make
 
 // The idea picker and its library load the first time a picker is opened (IdeaPicker.tsx), never with the page.
 const IdeaPicker = lazy(() => import('./IdeaPicker').then((m) => ({ default: m.IdeaPicker })));
+import { STANDING_SAYS, forgetSourceWork } from '../engine/adaptation';
+import { MEDIUM_LABELS, type SourceMedium } from '../engine/sources';
 const StoryPicker = lazy(() => import('./StoryPicker').then((m) => ({ default: m.StoryPicker })));
+const SourcePicker = lazy(() => import('./SourcePicker').then((m) => ({ default: m.SourcePicker })));
 const ideaLabel = (id: string) => import('../ideas').then((m) => m.ideaById(id)?.label ?? null);
 
 const undoStack = new Map<string, string[]>();
@@ -134,6 +137,40 @@ function FullStory({ p }: { p: Project }) {
       {applied && <span role="status" className="dim small">Applied: {applied}. Undo Last Change takes it back.</span>}
       {open && <Suspense fallback={null}><StoryPicker p={p} run={(fn) => edit(p, fn)} onClose={() => setOpen(false)} onApplied={setApplied} /></Suspense>}
     </span>
+  );
+}
+
+/** Opens the source-material catalog (SourcePicker.tsx), and says what was chosen. */
+function AdaptWork({ p }: { p: Project }) {
+  const [open, setOpen] = useState(false);
+  const [chosen, setChosen] = useState<string | null>(null);
+  if (p.delivered) return null;
+  return (
+    <span className="ideas-row">
+      <button type="button" className="btn btn-sm" onClick={() => { setChosen(null); setOpen(true); }}>Choose A Work To Adapt</button>
+      {chosen && <span role="status" className="dim small">Adapted from: {chosen}. Undo Last Change takes it back.</span>}
+      {open && <Suspense fallback={null}><SourcePicker p={p} run={(fn) => edit(p, fn)} onClose={() => setOpen(false)} onChosen={setChosen} /></Suspense>}
+    </span>
+  );
+}
+
+/** The catalog work a script is adapted from, as it was recorded the day it was chosen, with what that does and doesn't mean. */
+function TheWorkItAdapts({ p }: { p: Project }) {
+  const ref = p.source?.ref;
+  if (!ref) return null;
+  const place = getPlace(p.axes.basePlaceId);
+  return (
+    <section className="callout" style={{ gridColumn: '1 / -1' }} aria-label="The Work It Adapts">
+      <h3 style={{ marginTop: 0 }}>The Work It Adapts</h3>
+      <dl className="kv">
+        <dt>Work</dt><dd>{ref.title}{ref.creators.length ? `, by ${ref.creators.join(', ')}` : ''}</dd>
+        <dt>Medium And Year</dt><dd>{MEDIUM_LABELS[ref.medium as SourceMedium] ?? ref.medium}, {ref.year === null ? 'no year recorded' : ref.year < 0 ? `${-ref.year} BC` : ref.year}</dd>
+        <dt>Its Rights, As Recorded</dt><dd>{ref.recorded}</dd>
+        <dt>Chosen</dt><dd>{longLocal(ref.at, place.zone).date}, from the record as it stood then.</dd>
+      </dl>
+      <p className="dim small">{STANDING_SAYS[ref.standing]} Choosing it declares what your script is based on; it is not permission to use a real work, and nothing agreed in the game is one. <a href={`https://www.wikidata.org/wiki/${ref.id.slice(3)}`} target="_blank" rel="noreferrer noopener">Its Wikidata Record</a></p>
+      {!p.delivered && <button type="button" className="btn btn-sm" onClick={() => edit(p, () => forgetSourceWork(p))}>Let This Work Go</button>}
+    </section>
   );
 }
 
@@ -266,6 +303,7 @@ export function ScriptTab({ p }: { p: Project }) {
             <p style={{ margin: 0 }}>Not sure where to begin? Choose a full story, or one idea at a time, make it yours, and change anything afterwards. Or write your own in any field below: what you type is never replaced unless you say so.</p>
             <div className="row gap-2 wrap" style={{ marginTop: 'var(--s2)' }}>
               <FullStory p={p} />
+              <AdaptWork p={p} />
               <Ideas p={p} fields={['premise']} title="Choose A Starting Idea" label="Choose A Starting Idea" />
               <Ideas p={p} fields={['genre-blend']} title="Choose A Blend Of Genres" label="Blend Genres" />
               <Ideas p={p} fields={['genre-route']} title="Choose A Route Through Its Genre" label="Routes Through Its Genre" />
@@ -295,8 +333,9 @@ export function ScriptTab({ p }: { p: Project }) {
             onChange={(v) => edit(p, () => { if (v) p.axes.register = v as 'comedy' | 'drama'; else delete p.axes.register; })} />
           {!nonfiction && <SelectField label="Source Material" value={p.source?.kind ?? 'original'} hint="Awards with separate original and adapted screenplay categories enter it by what you declare here."
             options={[{ value: 'original', label: 'Original' }, { value: 'adapted', label: 'Adapted From Another Work' }]}
-            onChange={(v) => edit(p, () => { if (v === 'adapted') p.source = { kind: 'adapted', work: p.source?.work ?? '' }; else delete p.source; })} />}
-          {p.source?.kind === 'adapted' && <TextField label="Adapted From" maxLength={120} value={p.source.work ?? ''} hint="The novel, play, article or film it adapts." onChange={(v) => edit(p, () => (p.source = { kind: 'adapted', work: v }))} />}
+            onChange={(v) => edit(p, () => { if (v === 'adapted') p.source = { ...p.source, kind: 'adapted', work: p.source?.work ?? '' }; else delete p.source; })} />}
+          {p.source?.kind === 'adapted' && <TextField label="Adapted From" maxLength={120} value={p.source.work ?? ''} hint="The novel, play, article or film it adapts. Your own words; a work chosen from the catalog stays below until you let it go." onChange={(v) => edit(p, () => (p.source = { ...p.source, kind: 'adapted', work: v }))} />}
+          <TheWorkItAdapts p={p} />
           <SelectField label="When It Is Set" value={p.storyTime ?? 'contemporary'} hint="Categories for period, fantasy or contemporary work read this."
             options={[{ value: 'contemporary', label: 'The Present Day' }, { value: 'period', label: 'The Past' }, { value: 'future', label: 'The Future Or An Invented World' }]}
             onChange={(v) => edit(p, () => { if (v === 'contemporary') delete p.storyTime; else p.storyTime = v as 'period' | 'future'; })} />

@@ -1,11 +1,11 @@
 {
  "totals": {
   "required": 14900,
-  "written": 5,
-  "complete": 5,
+  "written": 6,
+  "complete": 6,
   "reviewed": 2,
   "genresAtQuota": 0,
-  "genresStarted": 5,
+  "genresStarted": 6,
   "mixedWritten": 0,
   "mixedComplete": 0,
   "pairsWithTen": 0,
@@ -679,7 +679,7 @@
    "tvReviewed": 0
   },
   "science-fiction": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0

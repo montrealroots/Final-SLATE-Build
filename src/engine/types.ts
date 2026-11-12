@@ -104,6 +104,22 @@ export interface LogEntry {
   route?: Route;
 }
 
+/** A work from the source-material catalog, as recorded when the player chose it (adaptation.ts). */
+export interface SourceRef {
+  /** Wikidata's identifier, "wd:Q480". */
+  id: string;
+  title: string;
+  medium: string;
+  year: number | null;
+  creators: string[];
+  /** What the record said about its copyright: see sources.ts rightsStanding. */
+  standing: 'public-domain-recorded' | 'copyrighted-recorded' | 'not-recorded';
+  /** The recorded statements, in words, as shown to the player then. */
+  recorded: string;
+  /** The game's time when it was chosen. */
+  at: number;
+}
+
 export interface Route {
   view: string;
   projectId?: string;
@@ -939,9 +955,11 @@ export interface Project {
   shelved?: { at: number };
   /**
    * What the screenplay is based on, as the writer declares it (awards that split original from adapted read it).
-   * Missing on projects from before November 9, 2026, which count as original. Rights in the source aren't modeled.
+   * Missing on projects from before November 9, 2026, which count as original. `ref` is the work chosen from the
+   * source-material catalog (sources.ts, from November 12, 2026), kept as it was recorded on the day it was chosen so a
+   * save never depends on the catalog: its rights are what Wikidata recorded then, and nothing the game works out.
    */
-  source?: { kind: 'original' | 'adapted'; work?: string };
+  source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef };
   /** When the story is set, as declared: costume, makeup and design awards split by it. Missing means contemporary. */
   storyTime?: 'contemporary' | 'period' | 'future';
   /** Subjects the story takes on, as declared (some awards and sections are for work about them); never read from prose. */

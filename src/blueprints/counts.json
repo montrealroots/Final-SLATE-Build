@@ -15,6 +15,10 @@
   "film": 1,
   "tv": 0
  },
+ "science-fiction": {
+  "film": 1,
+  "tv": 0
+ },
  "western": {
   "film": 1,
   "tv": 0

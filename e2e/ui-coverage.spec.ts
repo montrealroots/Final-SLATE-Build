@@ -7,7 +7,7 @@
 // What it found is written to test-results/ui-coverage-<profile>.json, and to docs/v3/ui-coverage/ when
 // UI_COVERAGE_WRITE=1, from which tools/v3/ui-coverage.mjs writes docs/v3/UI-COVERAGE.md. A screen no step here
 // reaches is listed there as not visited; nothing is called checked that wasn't.
-import { mkdirSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { expect, test, type Page } from './test';
 import { addScene, advance, freshStart, nav, newProject, openStart, pinSeed, quickLife, saveAndApprove, saveAndExit, section } from './helpers';
 import { audit, coveredWhenFocused, shiftSince, watchShifts, type Defect } from './ui-audit';
@@ -96,7 +96,14 @@ function finish(project: string): void {
   mkdirSync('test-results', { recursive: true });
   writeFileSync(`test-results/ui-coverage-${project}.json`, out);
   if (STYLES) writeFileSync(STYLES, JSON.stringify(styles));
-  if (process.env.UI_COVERAGE_WRITE) { mkdirSync('docs/v3/ui-coverage', { recursive: true }); writeFileSync(`docs/v3/ui-coverage/walk-${project}.json`, `${out}\n`); }
+  if (process.env.UI_COVERAGE_WRITE) {
+    // A run of one walk keeps the other walks' rows as they were last measured, so the file is always all of them.
+    const path = `docs/v3/ui-coverage/walk-${project}.json`;
+    mkdirSync('docs/v3/ui-coverage', { recursive: true });
+    const mine = new Set(rows.map((r) => r.id));
+    const kept: Row[] = existsSync(path) ? (JSON.parse(readFileSync(path, 'utf8')).rows as Row[]).filter((r) => !mine.has(r.id)) : [];
+    writeFileSync(path, `${JSON.stringify({ project, at: new Date().toISOString(), rows: [...kept, ...rows] }, null, 1)}\n`);
+  }
   expect(rows.flatMap((r) => Object.entries(r.sizes).flatMap(([size, v]) => v.defects.map((d) => `${r.id} at ${size}: ${d.kind}, ${d.what}, ${Math.round(d.by)} px`)))).toEqual([]);
   expect(rows.filter((r) => r.parity && (r.parity.onlyDesktop.length || r.parity.onlyPhone.length || !r.parity.sameOrder)).map((r) => `${r.id}: desktop only ${JSON.stringify(r.parity!.onlyDesktop)}, phone only ${JSON.stringify(r.parity!.onlyPhone)}`)).toEqual([]);
 }
@@ -159,6 +166,15 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   await v('script-story', 'Project', 'Script, With A Story Applied', 'tab');
   await page.getByRole('button', { name: 'Choose A Starting Idea' }).click();
   await v('idea-list', 'Project', 'Choose A Starting Idea', 'dialog');
+  await page.keyboard.press('Escape');
+  // A real work to adapt: the list, then one work open (the catalog is the repository's own).
+  await page.getByRole('button', { name: 'Choose A Work To Adapt' }).click();
+  await page.getByRole('dialog', { name: 'Choose A Work To Adapt' }).getByRole('list', { name: 'Works' }).waitFor();
+  await v('source-list', 'Project', 'Choose A Work To Adapt', 'dialog');
+  await page.getByRole('dialog', { name: 'Choose A Work To Adapt' }).getByLabel('Search Works').fill('quixote');
+  await page.getByRole('dialog', { name: 'Choose A Work To Adapt' }).getByRole('button', { name: /^Don Quixote/ }).click();
+  await page.getByRole('dialog', { name: 'Don Quixote' }).getByRole('button', { name: 'Adapt This Work' }).waitFor();
+  await v('source-open', 'Project', 'A Work To Adapt, Open', 'dialog');
   await page.keyboard.press('Escape');
   await page.getByRole('button', { name: 'Edit Scene' }).first().click();
   await v('scene-open', 'Project', 'A Scene, Open For Editing', 'panel');

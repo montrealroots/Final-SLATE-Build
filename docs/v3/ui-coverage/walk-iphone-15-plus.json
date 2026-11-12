@@ -1,6 +1,6 @@
 {
  "project": "iphone-15-plus",
- "at": "2026-11-12T10:34:33.298Z",
+ "at": "2026-11-12T12:09:29.259Z",
  "rows": [
   {
    "id": "start",
@@ -344,6 +344,38 @@
    "scrollers": [
     "div.tabs \"Ideas\" in Choose A Starting Idea"
    ],
+   "accepted": []
+  },
+  {
+   "id": "source-list",
+   "area": "Project",
+   "name": "Choose A Work To Adapt",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "source-open",
+   "area": "Project",
+   "name": "A Work To Adapt, Open",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
    "accepted": []
   },
   {

@@ -1,6 +1,6 @@
 {
  "project": "phone",
- "at": "2026-11-12T10:32:05.679Z",
+ "at": "2026-11-12T12:07:38.105Z",
  "rows": [
   {
    "id": "start",
@@ -635,6 +635,66 @@
    "scrollers": [
     "div.tabs \"Ideas\" in Choose A Starting Idea"
    ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "source-list",
+   "area": "Project",
+   "name": "Choose A Work To Adapt",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "source-open",
+   "area": "Project",
+   "name": "A Work To Adapt, Open",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
    "accepted": [],
    "parity": {
     "onlyDesktop": [],
