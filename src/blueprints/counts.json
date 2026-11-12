@@ -3,7 +3,15 @@
   "film": 1,
   "tv": 0
  },
+ "alternate-history": {
+  "film": 1,
+  "tv": 0
+ },
  "caper": {
+  "film": 1,
+  "tv": 0
+ },
+ "chase": {
   "film": 1,
   "tv": 0
  },
@@ -20,6 +28,10 @@
   "tv": 0
  },
  "conspiracy-thriller": {
+  "film": 1,
+  "tv": 0
+ },
+ "costume-drama": {
   "film": 1,
   "tv": 0
  },
@@ -111,6 +123,14 @@
   "film": 0,
   "tv": 1
  },
+ "melodrama": {
+  "film": 1,
+  "tv": 0
+ },
+ "military": {
+  "film": 1,
+  "tv": 0
+ },
  "musical": {
   "film": 1,
   "tv": 0
@@ -119,11 +139,19 @@
   "film": 1,
   "tv": 0
  },
+ "neorealism": {
+  "film": 1,
+  "tv": 0
+ },
  "nordic-noir": {
   "film": 0,
   "tv": 1
  },
  "period-drama": {
+  "film": 1,
+  "tv": 0
+ },
+ "picaresque": {
   "film": 1,
   "tv": 0
  },
@@ -164,6 +192,10 @@
   "tv": 0
  },
  "sea-adventure": {
+  "film": 1,
+  "tv": 0
+ },
+ "social-realism": {
   "film": 1,
   "tv": 0
  },

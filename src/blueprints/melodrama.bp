@@ -1,0 +1,40 @@
+// Melodrama: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== melodrama.f01 | feature | two-part
+title: The Token
+genre: melodrama + period-drama
+tone: Fog-soft, aching and unashamed of tears
+era: 1758 | period
+setting: A foundling hospital on the edge of London and the streets that feed it | real | institution
+logline: A servant girl who gives up her newborn at a hospital for abandoned children leaves half of an embroidered ribbon as the token by which she may one day reclaim him, and spends eleven years earning the right to come back with the other half.
+premise: The hospital takes infants no questions asked, and gives each a new name. A mother may leave a token: a coin, a scrap of cloth, a button, pinned to the admission paper and sealed. If she ever returns, describes it and can pay for the child's keep, he is hers again. Almost none do. {sarah} cuts a ribbon she embroidered with a bird, and keeps the half with the wing.
+synopsis: Part one is the leaving. {sarah} is nineteen, dismissed without a character by the family whose son is the father. She walks to the hospital on the day of a public reception, when women draw coloured balls from a bag to learn whether their child will be taken: white for admitted, black for refused. The film stays a long time with the bag. She draws white, and is not sure it is the luck. A clerk, {mr_collin}, kind and procedural, cuts and pins the ribbon. The boy becomes a number and a new name, and is sent to a wet nurse in the country. Part two runs on two tracks eleven years long. {sarah} works: a laundry, a cookshop, at last her own stall of pies by the river, each coin counted against a sum the hospital has never told her. She does not marry, because she would have to explain. The boy, {tom}, grows in the hospital's order and music: brown uniform, a choir trained by a great composer's bequest, a future as a ship's boy or apprentice. He is happy enough; he has a friend, {ned_f}; he believes, as all the children privately do, that his mother was a lady. A governor's wife, {lady_h}, takes a fancy to his voice and speaks of placing him in her household. The crisis is of the kind this genre exists for. {sarah} comes on a visiting Sunday, when the public pays to hear the children sing, simply to look. She knows him at once by his ear. He sings a solo, and looks straight through her. To claim him she must pay eleven years' keep, and take him from a prospect with a great family to a pie stall. {mr_collin}, grey now, tells her the sum, and then, improperly, how few have ever paid it. She goes away. She comes back in the last reel with a purse and a strip of ribbon. The packet is unsealed. Two halves of a bird. The film lets the boy be bewildered and angry before it lets him be anything else, and it ends not on an embrace but on a walk: a woman and a boy in a brown uniform crossing the fields toward the smoke of the city, three feet apart, then two.
+question: Is love the right to a child, or what you do without him?
+themes: poverty as the only sin; the thread kept; institutions that do good and cannot do this
+audience: Adults; anyone prepared to cry
+viewpoint: Hers and the boy's, braided
+stakes: A child's future, a mother's whole life's work, and whether they can be anything to each other
+conflict: A mother's eleven-year labour against the price of her own child and the better prospect he would give up
+ending: She pays, the ribbon matches, and he goes with her, unwillingly at first. They are walking home.
+experience: A lump in the throat that does not go, music used shamelessly and well, and an ending that earns its hope
+look: Brown wool uniforms in white corridors; fog and river mud; a ribbon's colours the brightest thing in the film
+sound: Boys' voices in a chapel; a pie-seller's cry; a seal being broken
+m: restore | institution | love-vs-duty | reconciled
+@ sarah | Sarah Bender | lead | protagonist | human | she/her | 19 | Her son back | She has the half with the wing | Eleven years' keep, and what she would be taking him from | Dogged, proud, tender, close-mouthed | From a girl with nothing to a woman with a purse and a doubt | Plain, country vowels, few words | Mob cap, burnt forearms, a ribbon sewn into her stays
+@ tom | Tom Field | co-lead | deuteragonist | human | he/him | 11 | A place in the world, and the solo | He has been told he is nobody's | A stranger says she is his mother | Bright, guarded, loyal to his friend | From a hospital's boy to a pie-seller's son, slowly | Careful, taught speech; sings | Brown uniform, red trim, one ear that sticks out
+@ mr_collin | Mr. Collin | supporting | mentor | human | he/him | 40 | The rules kept, kindly | He has pinned four thousand tokens | He is not supposed to hope | Meticulous, gentle, tired | From clerk to the one who breaks a small rule | Procedural, soft | Ink-stained cuffs, a billet book, sealing wax
+@ lady_h | Lady Harcourt-Vane | supporting | antagonist | human | she/her | 45 | The boy with the voice, for her household | She means it as a kindness | He has a mother | Gracious, acquisitive, not wicked | From patroness to a carriage leaving | Musical, assured | Grey silk, a quizzing glass
+@ ned_f | Ned | featured | ally | human | he/him | 11 | Not to be left behind | Tom is all the family he has | Nobody is coming for him | Cheeky, brave, hiding it | From friend to the one who says go | Whispered jokes | Brown uniform, a tooth missing
+~ sarah - tom | mother and son | a ribbon cut in two | three feet apart, then two
+~ sarah - mr_collin | petitioner and clerk | a token pinned and sealed | a sum named, and an improper kindness
+~ tom - ned_f | two foundlings | a pact that their mothers were ladies | "go on, then"
+~ tom - lady_h | chorister and patroness | a prospect | a prospect given up
+# The Leaving | EXT | Hospital Court, Reception Day | DAY | sarah, mr_collin | Draw a ball | Women in a line with infants. A bag. White: taken. Black: refused. She draws. She looks at the white ball a long time | The child is admitted | 6 | crowd=120, props=bag of coloured balls
+# The Leaving | INT | Admission Room | DAY | sarah, mr_collin | Leave a token | An embroidered ribbon, a bird. Scissors. He pins the half with the tail to a paper and seals it. She keeps the wing. The child is carried through a door | The ribbon is cut | 6 | props=ribbon+billet book+sealing wax
+# Eleven Years | EXT | River Stairs, Pie Stall | DAY | sarah | Count | A laundry, a cookshop, a stall. A tin of coins under a board. She counts it on the same date every year | | 5 | crowd=60, water, props=pie stall+coin tin
+# Eleven Years | INT | Hospital Chapel, Rehearsal | DAY | tom, ned_f, lady_h | Sing | Boys in brown. A solo given to the one with the ear. A lady with a glass asks his name. {ned_f} whispers that his mother was probably a duchess | {tom} is noticed | 5 | crowd=80
+# Eleven Years | INT | Hospital Chapel, Visiting Sunday | DAY | sarah, tom, lady_h | See him | The public pays to hear them. She knows him by his ear. He sings and looks straight through her. In the front pew a lady is nodding | She finds him | 7 | crowd=300
+# The Price | INT | Clerk's Office | DAY | sarah, mr_collin | Hear the sum | Eleven years' keep. He names it. Then, against the rules, how few have ever paid, and what the boy has been offered. She goes away without a word | She must choose for him | 6 | props=billet book
+# The Price | INT | Admission Room | DAY | sarah, tom, mr_collin, ned_f | Match it | A purse on the table. A packet unsealed. Two halves of a bird laid edge to edge. The boy is furious. At the door {ned_f} says: go on, then | The token matches | 7 | props=ribbon halves+purse
+# The Price | EXT | Fields Toward The City | DUSK | sarah, tom | Walk | A woman and a boy in a brown uniform. Three feet apart. He asks if she can sing. She says no. Two feet | | 4 |
+review: authored | 2026-11-12 | written whole; drawn from the tokens left with infants at a London foundling hospital in the eighteenth century, with invented people

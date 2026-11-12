@@ -11,9 +11,9 @@ whole outline and, for a series, every episode of its first season.
 
 | | Required | Written | Complete | Reviewed |
 | --- | --- | --- | --- | --- |
-| Stories with one primary genre | 14,900 | 56 | 56 | 2 |
+| Stories with one primary genre | 14,900 | 64 | 64 | 2 |
 | Genres with 50 reviewed films and 50 reviewed series | 149 | | | 0 |
-| Genres with at least one story | | | 56 | |
+| Genres with at least one story | | | 64 | |
 | Mixed-genre stories | | 1 | 1 | |
 | Pairings with 10 stories | | | 0 | |
 | Genres in 3 such pairings | 149 | | 0 | |
@@ -26,7 +26,7 @@ whole outline and, for a series, every episode of its first season.
 | Action (`action`) | 0 | 0 | 0 | 0 | 0 |
 | Action Comedy (`action-comedy`) | 0 | 0 | 0 | 0 | 0 |
 | Adventure (`adventure`) | 1 | 0 | 0 | 0 | 0 |
-| Alternate History (`alternate-history`) | 0 | 0 | 0 | 0 | 0 |
+| Alternate History (`alternate-history`) | 1 | 0 | 0 | 0 | 0 |
 | Animated (`animated`) | 0 | 0 | 0 | 0 | 0 |
 | Anime (`anime`) | 0 | 0 | 0 | 0 | 0 |
 | Anthology (`anthology`) | 0 | 0 | 0 | 0 | 0 |
@@ -43,7 +43,7 @@ whole outline and, for a series, every episode of its first season.
 | Buddy Cop (`buddy-cop`) | 0 | 0 | 0 | 0 | 0 |
 | Caper (`caper`) | 1 | 0 | 0 | 0 | 0 |
 | Chanbara (`chanbara`) | 0 | 0 | 0 | 0 | 0 |
-| Chase (`chase`) | 0 | 0 | 0 | 0 | 0 |
+| Chase (`chase`) | 1 | 0 | 0 | 0 | 0 |
 | Children's (`childrens`) | 0 | 0 | 0 | 0 | 0 |
 | Christmas (`christmas`) | 1 | 0 | 0 | 0 | 0 |
 | Comedy (`comedy`) | 0 | 0 | 1 | 0 | 0 |
@@ -51,7 +51,7 @@ whole outline and, for a series, every episode of its first season.
 | Concert Film (`concert-film`) | 0 | 0 | 0 | 0 | 0 |
 | Conspiracy Thriller (`conspiracy-thriller`) | 1 | 0 | 0 | 0 | 0 |
 | Cosmic Horror (`cosmic-horror`) | 0 | 0 | 0 | 0 | 0 |
-| Costume Drama (`costume-drama`) | 0 | 0 | 0 | 0 | 0 |
+| Costume Drama (`costume-drama`) | 1 | 0 | 0 | 0 | 0 |
 | Courtroom Drama (`courtroom-drama`) | 1 | 0 | 0 | 0 | 0 |
 | Creature Feature (`creature-feature`) | 0 | 0 | 0 | 0 | 0 |
 | Crime (`crime`) | 1 | 0 | 0 | 0 | 0 |
@@ -100,8 +100,8 @@ whole outline and, for a series, every episode of its first season.
 | Magical Realism (`magical-realism`) | 0 | 0 | 0 | 0 | 0 |
 | Martial Arts (`martial-arts`) | 1 | 0 | 0 | 0 | 0 |
 | Medical Drama (`medical-drama`) | 0 | 0 | 1 | 0 | 0 |
-| Melodrama (`melodrama`) | 0 | 0 | 0 | 0 | 0 |
-| Military (`military`) | 0 | 0 | 0 | 0 | 0 |
+| Melodrama (`melodrama`) | 1 | 0 | 0 | 0 | 0 |
+| Military (`military`) | 1 | 0 | 0 | 0 | 0 |
 | Mockumentary (`mockumentary`) | 0 | 0 | 0 | 0 | 0 |
 | Monster Movie (`monster-movie`) | 0 | 0 | 0 | 0 | 0 |
 | Mumblecore (`mumblecore`) | 0 | 0 | 0 | 0 | 0 |
@@ -109,13 +109,13 @@ whole outline and, for a series, every episode of its first season.
 | Mystery (`mystery`) | 1 | 0 | 0 | 0 | 0 |
 | Nature Documentary (`nature-documentary`) | 0 | 0 | 0 | 0 | 0 |
 | Neo-Noir (`neo-noir`) | 0 | 0 | 0 | 0 | 0 |
-| Neorealism (`neorealism`) | 0 | 0 | 0 | 0 | 0 |
+| Neorealism (`neorealism`) | 1 | 0 | 0 | 0 | 0 |
 | New Wave (`new-wave`) | 0 | 0 | 0 | 0 | 0 |
 | Nordic Noir (`nordic-noir`) | 0 | 0 | 1 | 1 | 0 |
 | Occult (`occult`) | 0 | 0 | 0 | 0 | 0 |
 | Parody (`parody`) | 0 | 0 | 0 | 0 | 0 |
 | Period Drama (`period-drama`) | 1 | 0 | 0 | 0 | 0 |
-| Picaresque (`picaresque`) | 0 | 0 | 0 | 0 | 0 |
+| Picaresque (`picaresque`) | 1 | 0 | 0 | 0 | 0 |
 | Police Procedural (`police-procedural`) | 0 | 0 | 0 | 0 | 0 |
 | Political Drama (`political-drama`) | 1 | 0 | 0 | 0 | 0 |
 | Political Thriller (`political-thriller`) | 1 | 0 | 0 | 0 | 0 |
@@ -140,7 +140,7 @@ whole outline and, for a series, every episode of its first season.
 | Slapstick (`slapstick`) | 0 | 0 | 0 | 0 | 0 |
 | Slasher (`slasher`) | 0 | 0 | 0 | 0 | 0 |
 | Slice Of Life (`slice-of-life`) | 0 | 0 | 0 | 0 | 0 |
-| Social Realism (`social-realism`) | 0 | 0 | 0 | 0 | 0 |
+| Social Realism (`social-realism`) | 1 | 0 | 0 | 0 | 0 |
 | Space Opera (`space-opera`) | 0 | 0 | 0 | 0 | 0 |
 | Spaghetti Western (`spaghetti-western`) | 0 | 0 | 0 | 0 | 0 |
 | Splatter (`splatter`) | 0 | 0 | 0 | 0 | 0 |
