@@ -4,7 +4,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   archiveCharacter, characterName, characterReferences, duplicateCharacter, moveCharacter, removeCharacter, removeCharacterImpact, removeCharacterRefusal,
-  restoreCharacter, saveDraft, approveDraft, updateCharacter, updateScene,
+  restoreCharacter, saveDraft, approveDraft, splitCharacter, updateCharacter, updateScene,
 } from '../src/engine/projects';
 import { deserialize, serialize } from '../src/engine/save';
 import { releaseHire } from '../src/engine/hiring';
@@ -70,6 +70,33 @@ describe('characters made by hand, with no story chosen', () => {
     expect(p.characters.map((c) => c.name)).toEqual(['Mara', 'Ilse']);
     expect(p.scenes.flatMap((sc) => sc.participants)).not.toContain(tov);
     expect(p.relationships).toEqual([]);
+  });
+});
+
+describe('splitting a character', () => {
+  it('a new character takes the chosen scenes, their lines and the beats set there; the original keeps the rest, and its contracts', () => {
+    const { s, p, id } = film('ch-split');
+    const [mara, ilse] = [id('Mara'), id('Ilse')];
+    p.scenes[0].dialogue.push({ id: 'd1', characterId: mara, text: 'You kept the key.', language: 'en' });
+    p.scenes[2].dialogue.push({ id: 'd2', characterId: mara, text: 'Look down.', language: 'en' });
+    p.characters.find((c) => c.id === mara)!.beats = [{ id: 'b1', sceneId: p.scenes[0].id, change: 'Trusts Ilse' }, { id: 'b2', sceneId: p.scenes[2].id, change: 'Stops running' }];
+    const hire = { id: 'h-fixture', personId: 'x', roleId: 'actor', kind: 'cast', characterId: mara, status: 'accepted' } as Project['hires'][number];
+    p.hires.push(hire); // labelled fixture: someone contracted for Mara
+    const young = splitCharacter(s, p, mara, [p.scenes[2].id], 'Young Mara');
+    expect(p.scenes[2].participants).toEqual(expect.arrayContaining([young.id]));
+    expect(p.scenes[2].participants).not.toContain(mara);
+    expect(p.scenes[2].dialogue.map((d) => d.characterId)).toEqual([young.id]);
+    expect(p.scenes[0].participants).toContain(mara);
+    expect(p.scenes[0].dialogue.map((d) => d.characterId)).toEqual([mara]);
+    expect(p.characters.find((c) => c.id === mara)!.beats!.map((b) => b.id)).toEqual(['b1']);
+    expect(young.beats!.map((b) => b.id)).toEqual(['b2']);
+    expect(p.hires.find((h) => h.id === 'h-fixture')!.characterId).toBe(mara); // the contract stays with the original
+    expect(p.characters.map((c) => c.name)).toEqual(['Mara', 'Young Mara', 'Ilse', 'Tov']);
+    expect(() => splitCharacter(s, p, ilse, [], 'X')).toThrow('Choose the scenes the new character takes.');
+    expect(() => splitCharacter(s, p, ilse, p.scenes.filter((sc) => sc.participants.includes(ilse)).map((sc) => sc.id), 'X')).toThrow(/^Leave Ilse at least one scene/);
+    expect(() => splitCharacter(s, p, ilse, [p.scenes[0].id], 'Tov')).toThrow('There is already a character called Tov.');
+    p.hires = p.hires.filter((h) => h.id !== 'h-fixture'); // the fixture is not a whole hire
+    expect(deserialize(serialize(s)).projects[0].characters.map((c) => c.name)).toContain('Young Mara');
   });
 });
 

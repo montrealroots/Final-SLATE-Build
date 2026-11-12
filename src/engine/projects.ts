@@ -411,6 +411,39 @@ export function duplicateCharacter(state: GameState, p: Project, id: string): St
   return copy;
 }
 
+/**
+ * Split a character in two (the v4 package, 01; ledger V4-007.02): a new character, named by the player, takes the chosen
+ * scenes, the lines spoken in them and the arc beats set in them; the original keeps the rest and everything else: relationships, threads, look,
+ * arc, cast and contracts, and so whatever was paid or shot. A scene can't go to both, and at least one stays.
+ */
+export function splitCharacter(state: GameState, p: Project, id: string, sceneIds: string[], name: string): StoryCharacter {
+  assertEditable(p);
+  const c = p.characters.find((x) => x.id === id);
+  if (!c) throw new Error('That character is no longer in the script.');
+  const theirs = p.scenes.filter((s) => s.participants.includes(id));
+  const moving = theirs.filter((s) => sceneIds.includes(s.id));
+  if (!moving.length) throw new Error('Choose the scenes the new character takes.');
+  if (moving.length === theirs.length) throw new Error(`Leave ${c.name} at least one scene, or set them aside and give their scenes to someone.`);
+  const n = name.trim();
+  if (!n) throw new Error('Name the new character.');
+  if (p.characters.some((x) => x.name === n)) throw new Error(`There is already a character called ${n}.`);
+  const copy = duplicateCharacter(state, p, id);
+  copy.name = n;
+  for (const s of moving) {
+    s.participants = s.participants.map((x) => (x === id ? copy.id : x));
+    for (const d of s.dialogue) if (d.characterId === id) d.characterId = copy.id;
+    if (s.states?.[id] !== undefined) { s.states[copy.id] = s.states[id]; delete s.states[id]; }
+  }
+  // An arc beat belongs to the scene it is in: it goes with the scene.
+  const moved = new Set(moving.map((s) => s.id));
+  const beats = c.beats ?? [];
+  if (beats.some((b) => moved.has(b.sceneId))) {
+    copy.beats = beats.filter((b) => moved.has(b.sceneId));
+    c.beats = beats.filter((b) => !moved.has(b.sceneId));
+  }
+  return copy;
+}
+
 /** Move a character up or down the list. The order is the writer's: billing is each character's own Role Size. */
 export function moveCharacter(p: Project, id: string, delta: -1 | 1): void {
   assertEditable(p);

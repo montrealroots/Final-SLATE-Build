@@ -180,3 +180,31 @@ test('characters made by hand: renamed, tied together, cast body and voice apart
   await expect.poll(async () => (await project(page)).archived).toBeUndefined();
   expect(money(await project(page))).toBe(before);
 });
+
+test('a character split in two: the new one takes the scenes ticked and their lines, and the original keeps the rest', async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-02-02');
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Two Ages', format: 'Short Film', runtime: '12', budget: 'Low Budget' });
+  await section(page, 'Characters');
+  await page.getByLabel('Character Name').fill('Mara');
+  await page.getByRole('button', { name: 'Add Character' }).click();
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Kitchen', chars: ['Mara'] });
+  await addScene(page, { index: 1, place: 'Schoolyard', chars: ['Mara'] });
+  await section(page, 'Characters');
+  await page.getByRole('button', { name: 'Split Mara' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Split Mara' });
+  await expect(dialog.getByRole('button', { name: 'Split', exact: true })).toBeDisabled();
+  await expect(dialog).toContainText('Tick the scenes the new character takes.');
+  await dialog.getByRole('checkbox', { name: /Schoolyard/ }).check();
+  await dialog.getByLabel("New Character's Name").fill('Young Mara');
+  await dialog.getByRole('button', { name: 'Split', exact: true }).click();
+  await expect(page.locator('article.card h2')).toHaveText(['Mara', 'Young Mara']);
+  await expect(page.getByRole('article', { name: 'Young Mara' })).toContainText('1 scene');
+  await expect(page.getByRole('article', { name: 'Mara', exact: true })).toContainText('1 scene');
+  await expect.poll(async () => {
+    const p = (await readSavedState(page))?.projects?.[0];
+    const young = p?.characters.find((c: { name: string }) => c.name === 'Young Mara');
+    return young ? p.scenes.find((sc: { heading: { place: string } }) => sc.heading.place === 'Schoolyard').participants.includes(young.id) : false;
+  }).toBe(true);
+});

@@ -5,7 +5,7 @@ import { NATIONALITIES } from '../engine/identity';
 import { countryName } from '../world/gazetteer/gazetteer';
 import {
   MODULE_LABELS, TECHNIQUE_LABELS, addCharacter, addNote, addScene, noteFromIssue, applyDesignChange, approveDraft, composeGenres, deleteScene, describeImpact,
-  designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter, archiveCharacter, restoreCharacter, duplicateCharacter, moveCharacter, removeCharacterRefusal,
+  designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter, archiveCharacter, restoreCharacter, duplicateCharacter, splitCharacter, moveCharacter, removeCharacterRefusal,
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, approvedScenes, type ModuleId,
   requirementRemovalImpact, addResearch, removeResearch, updateResearch, resolutionLabel,
@@ -14,7 +14,7 @@ import {
 import { addAct, addBeat, addThread, removeAct, removeBeat, removeThread, setSceneAct, updateThread } from '../engine/structure-edit';
 // Loaded with this page, not at startup (the startup budget): the engine index leaves season.ts out.
 import { moveEpisode, addRelationship, removeRelationship, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, setSeriesPlan, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule, type SharedFact } from '../engine/season';
-import { RESTRICTION_WORDS } from '../engine/documentary';
+import { CONSENT_PLAN, DOC_SUBJECTS, RESTRICTION_WORDS, proposeDocumentaryPlan, type DocSubjectKind } from '../engine/documentary';
 import { PROJECT_SUBJECTS } from '../engine/awards-rules';
 import { money } from '../engine/budget';
 import { approvalScope, type ScopeChange } from '../engine/cost-cuts';
@@ -414,7 +414,8 @@ export function ScriptTab({ p }: { p: Project }) {
       {(mods.has('world-rules') || p.axes.format === 'unscripted-series') && <WorldRules p={p} title={p.axes.format === 'unscripted-series' ? 'Format Rules' : 'Story World Rules'} />}
       {/* Every scripted story can declare its setups and payoffs: the edit plan reads them (finish.ts cutConsequences). */}
       {!nonfiction && <Structure p={p} />}
-      {!nonfiction && <Research p={p} />}
+      {/* A documentary's questions live here too, from November 12, 2026: its plan proposes them (DocPlanBlock). */}
+      {(!nonfiction || (p.research?.length ?? 0) > 0) && <Research p={p} />}
       {(!nonfiction || mods.has('clues') || mods.has('setups') || mods.has('threat') || p.setups.length > 0) && <Setups p={p} />}
       {/* Any two characters can have something between them (the v3 package): until November 12, 2026 the card appeared only for genres that asked for it. */}
       {(mods.has('relationships') || p.relationships.length > 0 || p.characters.length >= 2) && <Relationships p={p} />}
@@ -1016,6 +1017,7 @@ function Facts({ p }: { p: Project }) {
         <TextField label="Source Note" value={source} onChange={setSource} />
       </div>
       <button className="btn" disabled={!claim.trim()} onClick={() => { edit(p, () => p.evidence.push({ id: newId(store.state!, 'ev'), claim: claim.trim(), status, sourceNote: source.trim(), verified: false })); setClaim(''); setSource(''); }}>Add Fact</button>
+      <DocPlanBlock p={p} onApproach={setRole} />
       <h3 className="spaced">Contributors</h3>
       {p.contributors.some((c) => c.consent === 'not-asked') && <p className="dim">Someone asked for consent answers within two to six days.</p>}
       <ul className="list">
@@ -1039,6 +1041,41 @@ function Facts({ p }: { p: Project }) {
   );
 }
 
+
+/** A documentary's plan from its subject (documentary.ts proposeDocumentaryPlan): questions to answer and kinds of people
+ *  to approach. Nothing is found and nobody is named by it; choosing a kind of person only fills Who They Are below. */
+function DocPlanBlock({ p, onApproach }: { p: Project; onApproach: (role: string) => void }) {
+  const [subject, setSubject] = useState('');
+  const [kind, setKind] = useState<DocSubjectKind>('event');
+  const [err, setErr] = useState<string | null>(null);
+  const plan = p.docPlan;
+  return (
+    <div role="region" aria-label="The Plan">
+      <h3 className="spaced">The Plan</h3>
+      {!plan ? (
+        <>
+          <p className="dim">Say what the film is about, and the game proposes the questions to answer and the kinds of people to approach. It finds nothing and names nobody.</p>
+          <div className="inline-form">
+            <TextField label="What It Is About" value={subject} maxLength={120} onChange={setSubject} />
+            <SelectField label="Kind Of Subject" value={kind} options={(Object.keys(DOC_SUBJECTS) as DocSubjectKind[]).map((k) => ({ value: k, label: DOC_SUBJECTS[k].label }))} onChange={setKind} />
+            <button className="btn" disabled={!subject.trim() || !!p.delivered} onClick={() => setErr(edit(p, () => void proposeDocumentaryPlan(store.state!, p, subject, kind)))}>Propose A Plan</button>
+          </div>
+        </>
+      ) : (
+        <>
+          <p><strong>About:</strong> {plan.subject} ({DOC_SUBJECTS[plan.kind].label}). Its questions are in Research, open: nothing is answered until you note what you checked.</p>
+          <p className="small"><strong>Access:</strong> {DOC_SUBJECTS[plan.kind].access}</p>
+          <p className="small"><strong>Consent:</strong> {CONSENT_PLAN}</p>
+          <ul className="list" aria-label="People To Approach">
+            {plan.approach.map((r) => <li key={r} className="list-item" style={{ flexWrap: 'wrap', gap: 'var(--s2)' }}><span className="grow">{r}</span><button className="btn btn-sm" aria-label={`Approach ${r}`} onClick={() => onApproach(r)}>Approach Someone</button></li>)}
+          </ul>
+          <p className="dim small">Approach Someone fills in Who They Are below; their name is yours to add, a real person you find.</p>
+        </>
+      )}
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+    </div>
+  );
+}
 
 /** The scene a note is about, by its label; a scene since removed says so. */
 const noteScene = (p: Project, id: string) => { const s = p.scenes.find((x) => x.id === id); return s ? sceneLabel(p, s) : 'a scene no longer in the script'; };
@@ -1182,8 +1219,33 @@ function ArcBeats({ p, c }: { p: Project; c: StoryCharacter }) {
   );
 }
 
+/** Split a character in two: a new one, named here, takes the scenes ticked (projects.ts splitCharacter). */
+function SplitCharacter({ p, c, onClose }: { p: Project; c: StoryCharacter; onClose: () => void }) {
+  const theirs = p.scenes.filter((s) => s.participants.includes(c.id));
+  const [take, setTake] = useState<string[]>([]);
+  const [name, setName] = useState('');
+  const [err, setErr] = useState<string | null>(null);
+  const why = !take.length ? 'Tick the scenes the new character takes.' : take.length === theirs.length ? `Leave ${c.name} at least one scene.` : !name.trim() ? 'Name the new character.' : null;
+  return (
+    <Modal title={`Split ${c.name}`} kind="split-character" onClose={onClose} footer={<>
+      <button className="btn" onClick={onClose}>Keep As One</button>
+      <button className="btn btn-primary" disabled={!!why} onClick={() => { const e = edit(p, () => void splitCharacter(store.state!, p, c.id, take, name)); setErr(e); if (!e) onClose(); }}>Split</button>
+    </>}>
+      <p>A new character takes the scenes you tick, the lines spoken in them and the arc beats set there. {c.name} keeps the rest, and everything else: relationships, look, cast and contracts.</p>
+      <TextField label="New Character's Name" value={name} maxLength={80} onChange={setName} />
+      <fieldset style={{ border: 0, padding: 0 }}>
+        <legend style={{ fontWeight: 600 }}>Scenes The New Character Takes</legend>
+        {theirs.map((s) => <Check key={s.id} label={sceneLabel(p, s)} checked={take.includes(s.id)} onChange={(on) => setTake(on ? [...take, s.id] : take.filter((x) => x !== s.id))} />)}
+      </fieldset>
+      {why && <p className="dim small">{why}</p>}
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+    </Modal>
+  );
+}
+
 function CharacterCard({ p, c, first, last, onRemove, onDesignChange }: { p: Project; c: StoryCharacter; first: boolean; last: boolean; onRemove: () => void; onDesignChange: () => void }) {
   const [open, setOpen] = useState(false);
+  const [splitting, setSplitting] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const up = (patch: Partial<StoryCharacter>) => {
     let changed = false;
@@ -1204,10 +1266,12 @@ function CharacterCard({ p, c, first, last, onRemove, onDesignChange }: { p: Pro
           <button className="btn btn-sm" disabled={!!p.delivered || first} aria-label={`Move ${c.name} Up`} onClick={() => setErr(edit(p, () => moveCharacter(p, c.id, -1)))}>Move Up</button>
           <button className="btn btn-sm" disabled={!!p.delivered || last} aria-label={`Move ${c.name} Down`} onClick={() => setErr(edit(p, () => moveCharacter(p, c.id, 1)))}>Move Down</button>
           <button className="btn btn-sm" disabled={!!p.delivered} aria-label={`Duplicate ${c.name}`} onClick={() => setErr(edit(p, () => void duplicateCharacter(store.state!, p, c.id)))}>Duplicate</button>
+          <button className="btn btn-sm" disabled={!!p.delivered || scenes < 2} aria-label={`Split ${c.name}`} onClick={() => setSplitting(true)}>Split</button>
           <button className="btn btn-sm btn-danger" disabled={!!p.delivered} aria-label={`Set Aside Or Remove ${c.name}`} onClick={onRemove}>Set Aside Or Remove</button>
         </div>
       </div>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      {splitting && <SplitCharacter p={p} c={c} onClose={() => setSplitting(false)} />}
       {open && (
         <fieldset disabled={!!p.delivered} style={{ border: 0, padding: 0, marginTop: 'var(--s3)' }}>
           <div className="grid grid-3 form">

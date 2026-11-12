@@ -5,9 +5,10 @@
 // so), or approval of how they appear (they see the locked cut; a refusal means their scenes are cut before delivery).
 // The shares of each condition are simulation assumptions.
 
+import { isNonfiction } from './projects';
 import { t } from './production/tasks';
 import { stream } from './rng';
-import { addLog, registerHandler, schedule } from './state';
+import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY } from './time';
 import type { GameState, Project } from './types';
 
@@ -66,3 +67,55 @@ registerHandler('consent-response', (state, ev) => {
   addLog(state, text, yes ? 'project' : 'warning', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'script' } });
   return { message: text };
 });
+
+// ---------------- A plan proposed from a subject (the v4 package, 01; ledger V4-004.03; November 12, 2026) ----------------
+// A documentary starts from what the player wants to find out. The game proposes questions to answer and the kinds of
+// people to approach, and says how access and consent work here. It invents nothing found and nobody: the questions go
+// to Research as open, no fact is added to Evidence, and no contributor is created until the player names a real one.
+
+export type DocSubjectKind = 'person' | 'event' | 'place' | 'practice';
+export interface DocPlan { subject: string; kind: DocSubjectKind; approach: string[]; at: number }
+
+export const DOC_SUBJECTS: Record<DocSubjectKind, { label: string; questions: (s: string) => string[]; approach: string[]; access: string }> = {
+  person: {
+    label: 'A Person',
+    questions: (s) => [`What is on the record about ${s}, and who recorded it?`, `Where do accounts of ${s} disagree?`, `Who knew ${s} at each stage, and who will speak?`, `What did ${s} say in their own words, and where is it kept?`, `What is still unknown about ${s}?`],
+    approach: ['Someone close to them', 'Someone who worked with them', 'Someone who has written about them', 'Someone who remembers them differently'],
+    access: 'Letters, recordings and photographs are held by families, archives and publishers; each archive item used is paid for in Archive Research.',
+  },
+  event: {
+    label: 'An Event',
+    questions: (s) => [`What happened at ${s}, in order, by the record?`, `Who was there, and who has spoken about it on the record?`, `What footage, photographs or documents of ${s} exist, and who holds them?`, `Where do the accounts of ${s} contradict each other?`, `What changed because of ${s}?`],
+    approach: ['Someone who was there', 'Someone who reported on it', 'Someone who has studied it', 'Someone affected by it'],
+    access: 'News libraries and public records hold most of it; each archive item used is paid for in Archive Research.',
+  },
+  place: {
+    label: 'A Place',
+    questions: (s) => [`What is ${s} like now, and how has it changed?`, `Who lives or works in ${s}, and what do they want said?`, `What archives hold the past of ${s}?`, `What would filming in ${s} need: permission, seasons, access?`],
+    approach: ['Someone who lives there', 'Someone who works there', 'A local historian', 'Someone who left'],
+    access: 'Filming there needs the places themselves: set the place on the Script page, and its permits and weather apply to the shoot.',
+  },
+  practice: {
+    label: 'A Practice Or Issue',
+    questions: (s) => [`How does ${s} work, step by step, as the people who do it describe it?`, `Who does ${s}, who is affected by it, and who studies it?`, `What do the figures on ${s} say, and who collected them?`, `What is disputed about ${s}?`],
+    approach: ['Someone who does it', 'Someone affected by it', 'Someone who studies it', 'Someone who opposes it'],
+    access: 'Published studies and official figures are the record; each archive item used is paid for in Archive Research.',
+  },
+};
+
+/** How consent works in this game, said once with the plan: true of every documentary, whatever its subject. */
+export const CONSENT_PLAN = 'Each person is asked for consent and answers in two to six days; they may agree on condition that their face is hidden, their name withheld, or that they approve how they appear. Nobody is filmed, and the film is not delivered, without it.';
+
+/** Proposes the plan: open questions in Research, and the kinds of people to approach. Nothing found, nobody named. */
+export function proposeDocumentaryPlan(state: GameState, p: Project, subject: string, kind: DocSubjectKind): DocPlan {
+  if (!isNonfiction(p.axes.format)) throw new Error('Only a documentary or unscripted show has a documentary plan.');
+  if (p.delivered) throw new Error('This project has been delivered.');
+  const s = subject.trim().slice(0, 120);
+  if (!s) throw new Error('Say what the film is about.');
+  const def = DOC_SUBJECTS[kind];
+  if (!def) throw new Error('Choose what kind of subject it is.');
+  const have = new Set((p.research ?? []).map((n) => n.question));
+  for (const q of def.questions(s)) if (!have.has(q)) (p.research ??= []).push({ id: newId(state, 'rn'), question: q, reference: '', status: 'open', sceneIds: [] });
+  p.docPlan = { subject: s, kind, approach: [...def.approach], at: state.now };
+  return p.docPlan;
+}

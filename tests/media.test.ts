@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   DAY, approvedScenes, buildTasks, describeImpact, designChangeImpact, applyDesignChange, ledgerTotals, processUntil, requestConsent, runWorkDay,
-  updateCharacter, generatePlan, dateKey, addDaysToKey, deliveryBlockers,
+  updateCharacter, generatePlan, dateKey, addDaysToKey, deliveryBlockers, proposeDocumentaryPlan, DOC_SUBJECTS,
 } from './engine-api';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction, summary } from './helpers';
 import type { GameState, Project } from '../src/engine/types';
@@ -187,6 +187,26 @@ describe('documentary', () => {
     expect(p.delivered).toBeNull();
     expect(s.log.some((l) => /skipped: Nomvula Dube hasn't given consent/.test(l.text))).toBe(true);
   }, 60000);
+});
+
+describe('a documentary plan proposed from its subject', () => {
+  it('adds open questions and kinds of people to approach, and finds nothing and names nobody', () => {
+    const s = startLife('doc-plan', 'za-durban');
+    const p = buildProject(s, { title: 'Tide Keepers', format: 'documentary-short', medium: 'live-action', genres: ['documentary'], runtime: 15 }, [], []);
+    const plan = proposeDocumentaryPlan(s, p, 'The Durban lifeguard strike', 'event');
+    expect(plan).toMatchObject({ subject: 'The Durban lifeguard strike', kind: 'event', approach: DOC_SUBJECTS.event.approach });
+    expect(p.research!.map((n) => [n.question.includes('The Durban lifeguard strike') || n.question.startsWith('Who was there'), n.status, n.reference])).toEqual(DOC_SUBJECTS.event.questions('x').map(() => [true, 'open', '']));
+    expect(p.evidence).toEqual([]); // nothing found
+    expect(p.contributors).toEqual([]); // nobody named
+    // Proposed again, nothing is added twice; another kind changes the questions and the people.
+    proposeDocumentaryPlan(s, p, 'The Durban lifeguard strike', 'event');
+    expect(p.research!.length).toBe(DOC_SUBJECTS.event.questions('x').length);
+    proposeDocumentaryPlan(s, p, 'Durban beachfront', 'place');
+    expect(p.docPlan!.approach).toEqual(DOC_SUBJECTS.place.approach);
+    expect(() => proposeDocumentaryPlan(s, p, '  ', 'event')).toThrow('Say what the film is about.');
+    const fiction = buildProject(s, { title: 'Not A Documentary', format: 'short', medium: 'live-action' }, [], []);
+    expect(() => proposeDocumentaryPlan(s, fiction, 'Anything', 'event')).toThrow('Only a documentary or unscripted show has a documentary plan.');
+  });
 });
 
 describe('TV season', () => {

@@ -1011,6 +1011,8 @@ export interface Project {
   /** Research questions and references for a fiction script (research.ts). Absent in older saves. */
   research?: ResearchNote[];
   evidence: Evidence[];
+  /** A documentary's proposed plan (documentary.ts proposeDocumentaryPlan): its subject and the kinds of people to approach. */
+  docPlan?: import('./documentary').DocPlan;
   contributors: Contributor[];
   drafts: Draft[];
   approvedDraft: number | null;

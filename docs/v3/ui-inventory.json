@@ -618,6 +618,17 @@
   ]
  },
  {
+  "id": "dlg-split-character",
+  "area": "Your Work",
+  "name": "Split A Character",
+  "kind": "dialog",
+  "dialog": "^@split-character$",
+  "source": "ScriptViews | {`Split ",
+  "walk": [
+   "split-character"
+  ]
+ },
+ {
   "id": "dlg-idea-list",
   "area": "Script",
   "name": "Choose Ideas (A Starting Idea, Blend Genres, Build A Logline And The Rest)",

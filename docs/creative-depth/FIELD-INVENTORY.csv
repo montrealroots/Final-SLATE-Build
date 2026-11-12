@@ -233,6 +233,8 @@ ScriptViews.tsx,"""Status""",2,decision,SelectField,projects.ts deriveRequiremen
 ScriptViews.tsx,"""Source Note""",1,record,TextField,shown with the fact,"None: a name or a record, typed. Name suggestions: milestone C",Unchanged,
 ScriptViews.tsx,"""Contributor Name""",1,record,TextField,"credits, consent","None: a name or a record, typed. Name suggestions: milestone C",Unchanged,
 ScriptViews.tsx,"""Who They Are""",1,record,TextField,shown with the contributor,"None: a name or a record, typed. Name suggestions: milestone C",Unchanged,
+ScriptViews.tsx,"""What It Is About""",1,identity,TextField,documentary.ts proposeDocumentaryPlan (the questions it writes),Not yet: creative text with no ideas written for it. Milestone C,Unchanged,tests/media.test.ts::adds open questions and kinds of people to approach
+ScriptViews.tsx,"""Kind Of Subject""",1,decision,SelectField,documentary.ts proposeDocumentaryPlan,None: already a short list to choose from,n/a,tests/media.test.ts::adds open questions and kinds of people to approach
 ScriptViews.tsx,"""Note""",1,identity,TextField,projects.ts startRevision,"None: a note to yourself, kept as written",Unchanged,tests/screenwriting.test.ts::your own notes and repeated revision passes add nothing
 ScriptViews.tsx,"""Area""",1,identity,SelectField,shown with the note,None: already a short list to choose from,n/a,
 ScriptViews.tsx,"""About""",1,identity,SelectField,the notes list,None: already a short list to choose from,n/a,e2e/readers.spec.ts::a story set abroad is researched
@@ -240,6 +242,8 @@ ScriptViews.tsx,"""Character Name""",1,record,TextField,everywhere a part is nam
 ScriptViews.tsx,"""Give Their Scenes, Lines And Relationships To""",1,decision,SelectField,projects.ts archiveCharacter,None: already a short list to choose from,n/a,"tests/characters.test.ts::can give their scenes, lines and bonds to someone else, with no bond to oneself and none twice"
 ScriptViews.tsx,"""Scene""",1,identity,SelectField,structure.ts beatsIn,None: already a short list to choose from,n/a,tests/structure.test.ts::a beat goes only in a scene the character is in
 ScriptViews.tsx,"""What Changes""",1,identity,TextField,structure.ts,"None: your own account of a change you made, kept as written",Unchanged,
+ScriptViews.tsx,"""New Character's Name""",1,identity,TextField,projects.ts splitCharacter,"None: a name or a record, typed. Name suggestions: milestone C",Unchanged,tests/characters.test.ts::a new character takes the chosen scenes
+ScriptViews.tsx,"{sceneLabel(p, s)}",2,decision,Check,projects.ts splitCharacter,None: a yes or no,n/a,tests/characters.test.ts::a new character takes the chosen scenes
 ScriptViews.tsx,"""Name""",1,record,TextField,everywhere a part is named,"None: a name or a record, typed. Name suggestions: milestone C",Unchanged,tests/scenes.test.ts::renaming changes the name everywhere it is shown
 ScriptViews.tsx,"""Role Size""",1,decision,SelectField,script-effects.ts castPlacement; hiring.ts,None: already a short list to choose from,n/a,"tests/script-effects.test.ts::placement, essential scenes, the content declaration"
 ScriptViews.tsx,"""Entity""",1,decision,SelectField,projects.ts deriveRequirements; production/shoot.ts,None: already a short list to choose from,n/a,tests/genres.test.ts::module consumers change the right downstream state
