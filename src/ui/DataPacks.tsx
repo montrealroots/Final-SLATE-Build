@@ -40,13 +40,13 @@ function About({ p, size, toInstall }: { p: PackMeta; size: number; toInstall: b
 
 /** How much room this browser reports, where it reports any, and what the installed mods take. */
 function Storage({ installed, version }: { installed: Map<PackKind, InstalledPack> | null; version: number }) {
-  const [room, setRoom] = useState<Awaited<ReturnType<typeof storageRoom>>>(null);
+  const [room, setRoom] = useState<Awaited<ReturnType<typeof storageRoom>> | undefined>(undefined);
   useEffect(() => { let live = true; void storageRoom().then((r) => { if (live) setRoom(r); }); return () => { live = false; }; }, [version, installed]);
   const used = [...(installed?.values() ?? [])].reduce((a, p) => a + p.bytes, 0);
   return (
     <p className="dim small" aria-label="Storage In This Browser">
       {used > 0 ? `The mods installed here hold ${mb(used)}. ` : ''}
-      {room ? `This browser reports ${mb(room.free)} free for the game, of ${mb(room.quota)}. ` : "This browser doesn't say how much room it has. "}
+      {room ? `This browser reports ${mb(room.free)} free for the game, of ${mb(room.quota)}. ` : room === undefined ? '' : "This browser doesn't say how much room it has. "}
       An update is stored beside the mod it replaces and takes its place only once it is whole, so for a moment both are held; if it is cut short or there isn't room, the one you have stays. Your saved games are kept apart from mods, and removing a mod never touches them.
     </p>
   );
@@ -168,12 +168,17 @@ export function DataPacks() {
   const [showPictures, setShowPictures] = useState(picturesOn);
   const [session, setSession] = useState<OwnerSession>({ owner: false, signIn: false });
   const reload = () => void installedPacks().then(setInstalled);
-  const ask = () => { void offeredMods().then(setOffered); void ownerSession().then(setSession); };
-  useEffect(() => { reload(); ask(); }, []);
+  const ask = () => Promise.allSettled([offeredMods().then(setOffered), ownerSession().then(setSession)]);
+  // The list, the sign-in and the picture switch are drawn together, once each has its first answer. Until November 12,
+  // 2026 each was drawn as its answer arrived, and so was the storage line and the picture library above the switch:
+  // the switch moved down as they came, and a press aimed at it landed elsewhere (measured: 19 pixels on a phone when
+  // the storage figures took 0.7 seconds; a journey on the iPhone profile failed on it once in CI).
+  const [asked, setAsked] = useState(false);
+  useEffect(() => { reload(); void ask().then(() => setAsked(true)); }, []);
   // Signing in or out changes what the server answers: the pages read the catalog afresh, and an open game's world
   // starts or waits, as when a mod comes or goes.
   const signedInOrOut = async () => {
-    ask(); forgetCatalog(); retryCatalog();
+    void ask(); forgetCatalog(); retryCatalog();
     if (!store.state) return;
     (await import('../engine/industry')).setIndustryWorld(null);
     startLivingWorld();
@@ -227,7 +232,7 @@ export function DataPacks() {
     <fieldset style={{ border: 0, padding: 0, margin: 'var(--s4) 0 0' }} aria-busy={busy}>
       <legend style={{ fontWeight: 600, marginBottom: 'var(--s2)' }}>Mods</legend>
       <p className="muted">Add the films and series, or the cinemas, to your game. A mod is kept in this browser only; your saved games never hold it.</p>
-      {installed === null ? null : kinds.length === 0 ? <p className="dim">This copy of the game offers no mods, and none is installed.</p> : (
+      {installed === null || !asked ? <p className="dim" role="status">Reading what is installed here…</p> : kinds.length === 0 ? <p className="dim">This copy of the game offers no mods, and none is installed.</p> : (
         <ul className="list" aria-label="Mods">
           {kinds.map((kind) => {
             const have = installed.get(kind);
@@ -248,19 +253,22 @@ export function DataPacks() {
           })}
         </ul>
       )}
-      <OwnerSignIn session={session} changed={() => void signedInOrOut()} />
+      {asked && <OwnerSignIn session={session} changed={() => void signedInOrOut()} />}
       <input ref={input} type="file" accept=".slatepack" hidden aria-label="Mod File"
         onChange={(e) => { const f = e.target.files?.[0]; if (f) void fromFile(f); }} />
       <button className="btn btn-sm" style={{ marginTop: 'var(--s2)' }} disabled={busy} onClick={() => input.current?.click()}>Install From A File</button>
       {busy && cancel.current && <button className="btn btn-sm" style={{ marginTop: 'var(--s2)', marginLeft: 'var(--s2)' }} onClick={() => cancel.current?.abort()}>Cancel</button>}
+      {/* Above everything that arrives late, so nothing arriving moves it. */}
+      {asked && (installed?.has('images') || anyShard || offered.some((m) => m.kind === 'images')) && (
+        <div style={{ marginTop: 'var(--s3)' }}>
+          <Check label="Show Pictures From The Picture Pack" checked={showPictures} onChange={(v) => { setPicturesOn(v); setShowPictures(v); }}
+            hint="On this device only. Off, every picture is a plain placeholder and none is read from storage. A device that asks its browser for less data is shown none either way." />
+        </div>
+      )}
       {status && <p role="status" className="muted">{status}</p>}
       {error && <p role="alert" className="error">{error}</p>}
-      <Storage installed={installed} version={version} />
       <PictureLibrary changed={() => { reload(); setVersion((v) => v + 1); }} />
-      {(installed?.has('images') || anyShard || offered.some((m) => m.kind === 'images')) && (
-        <Check label="Show Pictures From The Picture Pack" checked={showPictures} onChange={(v) => { setPicturesOn(v); setShowPictures(v); }}
-          hint="On this device only. Off, every picture is a plain placeholder and none is read from storage. A device that asks its browser for less data is shown none either way." />
-      )}
+      <Storage installed={installed} version={version} />
     </fieldset>
     <WorldRecords version={version} />
     </>

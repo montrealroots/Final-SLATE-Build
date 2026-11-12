@@ -9,20 +9,16 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#76 (representation, a cinema run's weeks and the record book,
-  weekly audiences, the rest of the adaptation loop, four stories, the start screen no longer moving Continue
-  Creation), squash-merged as `7fcf9d2` on November 12, 2026, with `checks` and all six journeys runs green on its
-  final commit `cf5367d`. Before it that day: #75 as `8e48876` (the source-material catalog, the option on a work,
-  a casting director and a line producer who do paid work), #74 as `5388c46`, #73 as `c1cab0e`, #72 as `b1c8343`
-  and #71 as `1f5cb1f`.
-- **Open when this was written (November 12, 2026, 16:30 UTC):** montrealroots/Final-SLATE-Build#77: 53 new films, one for each
-  of 53 genres that had none, with the regenerated counts; and a commissioner's decision on another season reading the
-  season's audience (`continuation.ts`, `audiences.ts seasonAudience`, `e2e/renewal.spec.ts`). Its first head,
-  `1b00dc9`, was the first 45 stories alone, with `checks` green and its journeys still running when the rest was
-  pushed on top, which restarted CI.
-  **Merge it only when `checks` and all six journeys runs are green on its newest head** (squash, with that head as
-  the expected sha), then confirm `git diff --quiet <that head> origin/main`, merge `origin/main` back with
-  `-s ours`, and push.
+- **Latest merge:** montrealroots/Final-SLATE-Build#77 (53 stories, one for each of 53 genres that had none; a
+  commissioner's decision on another season reading the season's audience), squash-merged as `cd7472c` on November
+  12, 2026, with `checks` and all six journeys runs green on its final commit `b98f6d4`. Before it that day: #76 as
+  `7fcf9d2` (representation, a cinema run's weeks and the record book, weekly audiences, the rest of the adaptation
+  loop), #75 as `8e48876`, #74 as `5388c46`, #73 as `c1cab0e`, #72 as `b1c8343` and #71 as `1f5cb1f`.
+- **Open when this was written (November 12, 2026, 17:35 UTC):** the pull request after #77: the picture switch in
+  Settings no longer moves as it is pressed (`DataPacks.tsx`, with a check in `e2e/data-packs.spec.ts` that fails on
+  the old layout). **Merge it only when `checks` and all six journeys runs are green on its newest head** (squash,
+  with that head's full 40-character sha as the expected sha), then confirm
+  `git diff --quiet <that head> origin/main`, merge `origin/main` back with `-s ours`, and push.
 - **The package's eight milestones are all merged.** What it leaves undone is listed in one place:
   `docs/creative-depth/COVERAGE.md`, "Not Done, In One Place". Nothing is open on this branch.
 - **CI, from November 12, 2026:** `.github/workflows/ci.yml` has two jobs. `checks` is everything without a browser.
@@ -172,6 +168,12 @@ has a row for each requirement built or owed.
   ideas for the script fields that have none (V3-S10: 23 controls in `docs/creative-depth/FIELD-INVENTORY.csv` marked
   "Not yet", which need written ideas by genre family, not code); a career journey through everything the package
   added (V3-Z01); and stories, which are the long pole (64 of 14,900, 1 mixed; `docs/v3/CONTENT-COUNTS.md` is the count).
+- **A control that moves as it is pressed is a defect, not a flake.** Twice on November 12, 2026 an intermittent journey
+  failure was this: Continue Creation on the start screen, and the picture switch in Settings (`DataPacks.tsx`).
+  Both were drawn before something above them had arrived. To find one: delay the late read in the journey (an init
+  script, or a stub on a prototype), record the control's top every frame for two seconds, and expect one value. Still
+  open in Settings: the picture library arriving late pushes down the storage line and World Records, and a status
+  line after an install or removal pushes down what is under it.
 - **Things learned today that save time:** Playwright compiles a spec file once at the start of a run, so editing a
   spec while a run is going changes nothing in that run. Editing anything under `src/` while a dev-server run is going
   reloads the page under the journeys and fails them. Read a saved game in a journey with `expect.poll`: the save is
