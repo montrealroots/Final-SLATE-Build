@@ -814,7 +814,14 @@ function AdaptationRights({ p }: { p: Project }) {
   const g = useGame();
   const [err, setErr] = useState<string | null>(null);
   const ref = p.source?.ref;
-  if (!ref) return null;
+  // A work let go leaves its agreements in the record (adaptation.ts retireSource), shown here even with no work now.
+  if (!ref) return p.sourceHistory?.length ? (
+    <section className="card" aria-labelledby="rights-h">
+      <h2 id="rights-h">Adaptation Rights</h2>
+      <p className="muted">Your script no longer adapts a recorded work. What was agreed for the works it left is kept here.</p>
+      <ol className="list" aria-label="Chain Of Title">{chainOfTitle(p, (at) => longLocal(at, getPlace(p.axes.basePlaceId).zone).date).map((line) => <li key={line}>{line}</li>)}</ol>
+    </section>
+  ) : null;
   const st = optionStanding(p, g.now);
   // How closely it follows the work is chosen before the option is taken, and is what its price and its grant come from.
   const [approach, setApproach] = useState<AdaptationApproach>('faithful');

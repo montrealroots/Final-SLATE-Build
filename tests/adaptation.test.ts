@@ -57,7 +57,7 @@ describe('adapting a work from the catalog', () => {
     const { g, p } = game();
     adaptFrom(g, p, quixote);
     p.source!.work = 'Quixote, moved to a motorway service station';
-    forgetSourceWork(p);
+    forgetSourceWork(g, p);
     expect(p.source).toEqual({ kind: 'adapted', work: 'Quixote, moved to a motorway service station' });
   });
 });
@@ -66,7 +66,7 @@ import {
   APPROACHES, APPROACH_ORDER, APPROVAL_DAYS, CHANGE_ORDER, PARTICIPATION, adaptationBlocker, approvalRefusal, approvalStanding, chainOfTitle, changesOutsideGrant, exerciseOption, needsOption,
   optionStanding, optionTerms, participationPaid, renewOption, sendForApproval, setSourceChange, takeOption, widenAgreement, widenCost,
 } from '../src/engine/adaptation';
-import { ledgerTotals } from '../src/engine/budget';
+import { ledgerTotals, money } from '../src/engine/budget';
 import { receiveIncome } from '../src/engine/finance';
 import { generatePlan } from '../src/engine/production/schedule';
 import { continueProject as startContinuation } from '../src/engine/sequel';
@@ -79,6 +79,30 @@ const funded = () => { const x = game(); x.p.funding.extra.push({ label: 'A back
 
 /** The option: this story's own agreement on a work whose rights are not recorded as public domain (V3-A05). */
 describe('an option on the work a script adapts', () => {
+
+  it('stays in the record when the project changes its work: what was paid stays paid, and a draft out for approval no longer counts', () => {
+    const { g, p } = funded();
+    takeOption(g, p);
+    const fee = optionTerms(p).fee;
+    const ledger = JSON.stringify(p.obligations);
+    p.source!.approval = { draft: 1, changes: [], sentAt: g.now, answerAt: g.now + APPROVAL_DAYS * DAY }; // labelled fixture: a draft out
+    // The same work again changes nothing.
+    adaptFrom(g, p, protectedWork);
+    expect(p.source!.option).toBeDefined();
+    expect(p.sourceHistory).toBeUndefined();
+    // Another work: the first is kept, with its option and the draft that was out.
+    adaptFrom(g, p, { ...protectedWork, id: 'wd:Q999999998', title: 'Another Protected Novel' });
+    expect(p.sourceHistory).toEqual([{ ref: expect.objectContaining({ title: 'A Protected Novel' }), option: expect.objectContaining({ takenAt: expect.any(Number) }), approval: expect.objectContaining({ draft: 1 }), endedAt: g.now }]);
+    expect(p.source!.option).toBeUndefined();
+    expect(JSON.stringify(p.obligations)).toBe(ledger); // nothing paid is undone
+    const chain = chainOfTitle(p, () => 'today');
+    expect(chain.at(-1)).toBe(`Earlier: A Protected Novel. Option taken today; ${money(fee)} paid, which stays paid. Let go today: no right to it remains. Draft 1 was with its rights holder; their answer no longer applies.`);
+    // Let go too, it joins the record; the chain still reads with no work chosen.
+    forgetSourceWork(g, p);
+    expect(p.sourceHistory!.length).toBe(1); // nothing was agreed for the second, so there is nothing to keep
+    expect(chainOfTitle(p, () => 'today')).toEqual([chain.at(-1)]);
+    expect(deserialize(serialize(g)).projects[0].sourceHistory).toEqual(p.sourceHistory);
+  });
 
   it('is not asked of a work recorded as public domain, and is asked of one recorded as copyrighted or not recorded at all', () => {
     const { g, p } = game();

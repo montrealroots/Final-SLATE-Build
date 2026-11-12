@@ -1084,6 +1084,8 @@ export interface Project {
    * save never depends on the catalog: its rights are what Wikidata recorded then, and nothing the game works out.
    */
   source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef; option?: SourceOption; changes?: SourceChange[]; approval?: SourceApproval };
+  /** Works this project was adapted from and left, with what was agreed for each (adaptation.ts retireSource). Absent until one is left. */
+  sourceHistory?: { ref: SourceRef; option?: SourceOption; approval?: SourceApproval; endedAt: number }[];
   /** When the story is set, as declared: costume, makeup and design awards split by it. Missing means contemporary. */
   storyTime?: 'contemporary' | 'period' | 'future';
   /** Subjects the story takes on, as declared (some awards and sections are for work about them); never read from prose. */

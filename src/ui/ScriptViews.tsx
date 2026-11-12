@@ -176,7 +176,7 @@ function TheWorkItAdapts({ p }: { p: Project }) {
         <dt>Chosen</dt><dd>{longLocal(ref.at, place.zone).date}, from the record as it stood then.</dd>
       </dl>
       <p className="dim small">{STANDING_SAYS[ref.standing]} Choosing it declares what your script is based on; it is not permission to use a real work, and nothing agreed in the game is one. <a href={`https://www.wikidata.org/wiki/${ref.id.slice(3)}`} target="_blank" rel="noreferrer noopener">Its Wikidata Record</a></p>
-      {!p.delivered && <button type="button" className="btn btn-sm" onClick={() => edit(p, () => forgetSourceWork(p))}>Let This Work Go</button>}
+      {!p.delivered && <button type="button" className="btn btn-sm" onClick={() => edit(p, () => forgetSourceWork(store.state!, p))}>Let This Work Go</button>}
     </section>
   );
 }
