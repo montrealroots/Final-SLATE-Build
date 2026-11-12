@@ -55,6 +55,12 @@ export const BACKERS: Record<BackerKind, { name: string; who: string; why: strin
     why: 'Yours to put into a new project. Nobody is repaid from it, nobody takes a share and nobody holds approval rights.',
     decideDays: 0,
   },
+  savings: {
+    name: 'Your Own Money',
+    who: 'Money from your own account (personal.ts), put in by you.',
+    why: 'Yours: nobody is repaid from it, nobody takes a share, and what the project doesn\'t spend stays yours.',
+    decideDays: 0,
+  },
   capital: {
     name: 'Your Unspent Money',
     who: 'Money you put into your delivered projects that they didn\'t spend.',
@@ -260,6 +266,7 @@ export function scriptScore(p: Project): number {
 }
 const usedStarting = (state: GameState) => state.projects.some((x) => deals(x).some((d) => d.kind === 'starting' && d.status !== 'declined' && d.status !== 'refused'));
 const scriptApproved = (p: Project) => p.approvedDraft !== null && p.approvedDraft !== undefined;
+export const scriptApprovedFor = scriptApproved;
 
 /**
  * The documents each backer's submission includes, besides the approved script: the backer reads them, and SLATE never
@@ -268,10 +275,10 @@ const scriptApproved = (p: Project) => p.approvedDraft !== null && p.approvedDra
  * backer answer a week later instead; it now simply has to be written before the application that includes it is sent.
  */
 export const BACKER_DOCUMENTS: Record<BackerKind, DocumentId[]> = {
-  starting: [], earnings: [], capital: [], investor: ['pitch'], 'co-producer': ['pitch'], commissioner: ['pitch', 'treatment'], grant: ['pitch', 'treatment', 'statement'],
+  starting: [], earnings: [], capital: [], savings: [], investor: ['pitch'], 'co-producer': ['pitch'], commissioner: ['pitch', 'treatment'], grant: ['pitch', 'treatment', 'statement'],
 };
 const SUBMISSION: Record<BackerKind, string> = {
-  starting: 'The starting backing', earnings: 'Your earnings', capital: 'Your unspent money', investor: 'An approach to an investor', 'co-producer': 'An approach to a co-production partner',
+  starting: 'The starting backing', earnings: 'Your earnings', capital: 'Your unspent money', savings: 'Your own money', investor: 'An approach to an investor', 'co-producer': 'An approach to a co-production partner',
   commissioner: 'A pitch to a commissioner', grant: 'A grant application',
 };
 

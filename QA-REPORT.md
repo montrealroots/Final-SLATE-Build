@@ -1292,3 +1292,11 @@ November 12, 2026. Evidence for the pull request that carries them.
 | --- | --- | --- |
 | `tests/guide-me.test.ts` | 3 fixture mistakes of mine, fixed | 7 tests. Seven deliberate breaks, each caught after two tests were added for the two that first survived (asking the same person again; accepting a counteroffer past the ceiling). The plan prices each job before any offer; with others hired some jobs need fewer days, so what is committed can be less than the plan, never more. |
 | `e2e/guide-me.spec.ts`, desktop and phone | 0 | The plan read first, a ceiling above the money refused, offers held on the ledger as Guide Me, another department taken back to manual, the department staffed within the ceiling after days of answers. |
+
+## v4 Milestone C, Part 1: Your Own Money And Your Family
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/personal.test.ts` | 4 fixture mistakes of mine, fixed | 10 tests. Eight deliberate breaks caught; a ninth, a duplicate-posting guard, survived because the repayment handler already pays only what is due for the month, so the guard was removed as redundant. Circumstances change only money: the same character either way. |
+| `e2e/money.spec.ts`, desktop and phone | 3 journey mistakes of mine, fixed | Savings and a gift chosen and read on Review, the account on Profile by kind, more than the account refused, nothing put in while the project had nothing left to raise, then put in after the target rose; kept after Save And Exit. |
+| `npm run check` | 0 | 126 files, 1066 tests; startup 307 kB, budgets unchanged. |

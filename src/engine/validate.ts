@@ -81,6 +81,11 @@ export function validateGameState(raw: unknown): asserts raw is GameState {
     need(isObj(t) && isId(t.to) && isId(t.from) && isNum(t.arriveAt), 'your trip', 'is malformed');
   }
 
+  if (s.money !== undefined) {
+    const m = s.money as Obj;
+    need(isObj(m) && Array.isArray(m.postings) && (m.postings as unknown[]).every((x) => isObj(x) && isId((x as Obj).id) && isNum((x as Obj).amount) && isNum((x as Obj).at) && typeof (x as Obj).key === 'string' && typeof (x as Obj).kind === 'string'), 'your own account', 'is malformed');
+  }
+
   need(Array.isArray(s.events), 'scheduled events', 'are missing');
   let last = -Infinity;
   for (const e of s.events as unknown[]) {
@@ -158,7 +163,7 @@ function zoneOk(zone: string): boolean {
 }
 
 const FINANCE_STATUSES = ['considering', 'offered', 'declined', 'refused', 'accepted', 'breached', 'lapsed', 'withdrawn'];
-const FINANCE_KINDS = ['agreed', 'starting', 'grant', 'investor', 'co-producer', 'commissioner', 'earnings', 'capital', 'studio'];
+const FINANCE_KINDS = ['agreed', 'starting', 'grant', 'investor', 'co-producer', 'commissioner', 'earnings', 'capital', 'studio', 'savings'];
 
 function validateProject(raw: unknown, i: number, seen: Set<string>): void {
   const where = `project ${i + 1}`;

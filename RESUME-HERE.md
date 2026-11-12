@@ -139,6 +139,16 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
     Manual ends it and leaves sent offers open. What it has committed is the sum of its hires' ledger lines. Tests:
     `tests/guide-me.test.ts` (7, all seven deliberate breaks caught), `e2e/guide-me.spec.ts`. Not built: Guide Me
     for casting, writing and music, and a mandate that also plans the schedule.
+  - **Milestone C, part 1: your own money and your family (built November 12, 2026):** `engine/personal.ts`,
+    `ui/YourMoney.tsx`. Creation's Starting Point has Money And Family (your savings up to $25,000; your family's
+    circumstances, which bound only what they can offer; none, a gift, a loan repaid over 24 months, or an investment
+    taking 25% of income you take home up to 1.5 times what they put in). Review shows each line, the balance and what
+    will be owed before the story starts. `GameState.money.postings` is the account; its balance is their sum. A
+    loan repays monthly (`family-repayment` event); a month short is owed on. Money moves only on a project's Budget
+    page: Put In From Your Own Money (a 'savings' deal, nobody repaid, unspent stays yours, never more than the account
+    holds or the project still needs) and, once delivered, Take Home income kept or your own money unspent. A save
+    from before has no account and gains none. Tests: `tests/personal.test.ts` (10), `e2e/money.spec.ts`. Not built:
+    family-owned equipment, company accounts, the equipment catalog, shop, rentals and day reservations (next).
   - Not built yet in B: the character lifecycle extras (duplicate, combine, split, restore,
     age stages, per-episode performers: V4-007), a documentary proposal (V4-004.03), and a title-by-title Sanderson
     comparison with his official site.

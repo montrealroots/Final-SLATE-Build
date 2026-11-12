@@ -31,6 +31,10 @@ c(f, '"Where You Live"', D, 'state.locationId', 'state.ts newGame; projects.ts c
 c(f, '"Starting Date"', D, 'state.now', 'state.ts newGame', 'When the world starts: which award editions and rules apply', U('dates', 'creation refuses impossible birth and start dates'), E('creation', 'Starting Point'))
 c(f, '"Starting Time"', D, 'state.now', 'state.ts newGame', 'The hour the clock starts', U('dates', 'creation refuses impossible birth and start dates'))
 c(f, '{props.label}', 'component', '', '', 'PlacePicker definition, used by the place controls above')
+c(f, '"Your Savings"', D, 'draft.savings -> state.money (savings posting)', 'personal.ts openPersonalMoney, personalBalance, putInRefusal', 'What is in your own account at the start, and so what you can put into a project', U('personal', 'opens with what was chosen'))
+c(f, '"Your Family\'s Circumstances"', D, 'draft.family.circumstances', 'personal.ts familyTerms', 'The most your family could offer; it decides nothing else about you', U('personal', 'is bounded by their circumstances, and decides nothing else'))
+c(f, '"What Your Family Offers"', D, 'draft.family.support -> state.money.family', 'personal.ts familyTerms, openPersonalMoney, family-repayment, takeHome', 'A gift is yours; a loan is repaid monthly from your account; an investment takes a share of income you take home', U('personal', 'opens with what was chosen'))
+c(f, '"How Much"', D, 'draft.family.amount', 'personal.ts familyTerms, openingPreview', 'What your family puts in, and so what is owed', U('personal', 'is read on Review before the story starts'))
 c(f, '"Search Ethnicities"', V)
 c(f, '"Describe Your Ethnicity"', I, 'character.heritages (custom)', 'identity.ts splitBackgrounds', 'Your own words for your ethnicity, kept and shown', '', E('creation', 'an ethnicity in your own words'))
 c(f, '"Search Nationalities"', V)
@@ -314,6 +318,8 @@ c(f, '{`Keep My ${c.label}`}', D, "which of the player's words a revision leaves
 c(f, '{`Keep My ${c.label} And Add None`}', D, "whether a revision adds the proposal's people or outline beside the project's", 'blueprints.ts applyBlueprint', 'Kept: nothing is added; unticked: the proposal\'s are added beside, and nothing is removed', U('proposal', 'revising'))
 f = 'PlanViews.tsx'
 c(f, '"Spending Ceiling"', D, 'Project.mandates[].ceiling', 'mandates.ts guideMePlan, runMandate, guideMeRefusal', 'The most Guide Me may commit for a department: offers that do not fit are not sent, and a counteroffer past it comes back to the player', U('guide-me', 'never goes past the ceiling'))
+f = 'YourMoney.tsx'
+c(f, '"Put In From Your Own Money"', D, 'state.money postings; project finance deal (savings)', 'personal.ts putInOwnMoney, putInRefusal', 'Money leaves your account and arrives in the project as Your Own Money, nobody repaid from it', U('personal', 'puts money into a project only by your choice'))
 f = 'SourcePicker.tsx'
 c(f, '"Search Works"', V)
 c(f, '"Medium"', V)

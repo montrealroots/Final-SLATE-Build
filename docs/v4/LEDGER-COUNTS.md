@@ -5,7 +5,7 @@ A child requirement is verified only when a named unit test and a named browser 
 
 | | Children | Requested | Implemented | Verified | Retired |
 | --- | --- | --- | --- | --- | --- |
-| All | 125 | 57 | 38 | 30 | 0 |
+| All | 125 | 50 | 45 | 30 | 0 |
 | V4-001 Retire preset quotas and migrate saves | 4 | 0 | 3 | 1 | 0 |
 | V4-002 Source-first project creation | 5 | 0 | 4 | 1 | 0 |
 | V4-003 Verified source catalog and bibliography | 7 | 1 | 4 | 2 | 0 |
@@ -21,8 +21,8 @@ A child requirement is verified only when a named unit test and a named browser 
 | V4-013 3D animation production | 2 | 0 | 1 | 1 | 0 |
 | V4-014 Stop-motion production | 2 | 1 | 0 | 1 | 0 |
 | V4-015 Hybrid production | 2 | 1 | 0 | 1 | 0 |
-| V4-016 Family background and opening finance | 4 | 4 | 0 | 0 | 0 |
-| V4-017 Separate account ledger and reinvestment | 4 | 3 | 0 | 1 | 0 |
+| V4-016 Family background and opening finance | 4 | 0 | 4 | 0 | 0 |
+| V4-017 Separate account ledger and reinvestment | 4 | 0 | 3 | 1 | 0 |
 | V4-018 Equipment shop rental and inventory | 2 | 2 | 0 | 0 | 0 |
 | V4-019 Equipment compatibility and reservation | 3 | 3 | 0 | 0 | 0 |
 | V4-020 Location calendars travel rest and child-policy handling | 4 | 1 | 1 | 2 | 0 |

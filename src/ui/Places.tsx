@@ -15,6 +15,7 @@ import { loadWorldHolidays } from '../world/holidays/holidays';
 import { climateNote } from '../world/climate';
 import { CinemasNearby } from './Cinemas';
 import { RepresentationCard } from './Representation';
+import { YourMoneyCard } from './YourMoney';
 import { RecordBookCard } from './RecordBook';
 
 
@@ -402,6 +403,7 @@ export function Profile() {
             </ul>
           ) : <p className="muted">Credits appear here when a project is delivered.</p>}
         </section>
+        <YourMoneyCard />
         <RepresentationCard />
         <RecordBookCard />
         <section className="card">

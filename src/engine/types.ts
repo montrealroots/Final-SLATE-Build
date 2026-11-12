@@ -82,6 +82,9 @@ export interface CreationDraft {
   updatedAt: number;
   /** World-catalog places chosen during creation (catalog places don't need a record here). */
   places?: Record<string, Place>;
+  /** Your own savings at the start, and what your family offers (personal.ts). Absent in drafts from before November 12, 2026: none of either. */
+  savings?: number;
+  family?: { circumstances: import('./personal').FamilyCircumstances; support: import('./personal').FamilySupportKind; amount: number };
 }
 
 export type Attention = 'interrupt' | 'notify' | 'silent';
@@ -550,7 +553,7 @@ export interface CastAssignment {
   hireId?: string;
 }
 
-export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio';
+export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio' | 'savings';
 
 /** A backer approached for a project, and what was agreed (finance.ts). */
 export interface FinanceDeal {
@@ -1254,4 +1257,6 @@ export interface GameState {
   settings: Settings;
   /** Every world-catalog place this save uses, so it opens without loading the catalog. Added in save version 2. */
   places: Record<string, Place>;
+  /** Your own account and your family's terms (personal.ts). Absent in saves from before November 12, 2026: no money of your own. */
+  money?: import('./personal').PersonalMoney;
 }
