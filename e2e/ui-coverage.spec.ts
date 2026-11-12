@@ -137,6 +137,9 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   await v('advance', 'Shell', 'Advance', 'dialog');
   await page.keyboard.press('Escape');
   await nav(page, 'Profile'); await v('profile', 'You', 'Player Profile');
+  await page.getByRole('button', { name: 'Find An Agent' }).click();
+  await v('agent-list', 'You', 'Find An Agent', 'dialog');
+  await page.keyboard.press('Escape');
   await nav(page, 'Calendar'); await v('calendar', 'Your Day', 'Calendar');
   const add = page.getByRole('button', { name: 'Add Plan' });
   if (await add.count()) { await add.first().click(); await v('add-plan', 'Your Day', 'Add Plan', 'dialog'); await page.keyboard.press('Escape'); }
@@ -221,6 +224,18 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   await advance(page, 'next-day');
   await nav(page, 'Home'); await v('home', 'Home', 'Home, A Project Under Way');
   await nav(page, 'Projects'); await v('projects', 'Your Work', 'Projects');
+  // An agent, now that there is an approved script to show: asked, answered within the week, signed with, and the
+  // notice dialog opened and left.
+  await nav(page, 'Profile');
+  await page.getByRole('button', { name: 'Find An Agent' }).click();
+  await page.getByRole('dialog', { name: 'Find An Agent' }).getByRole('button', { name: 'Approach Imogen Vale' }).click();
+  await advance(page, 'week');
+  await nav(page, 'Profile');
+  await page.getByRole('button', { name: 'Sign With Imogen Vale' }).click();
+  await v('profile-represented', 'You', 'Player Profile, Represented');
+  await page.getByRole('button', { name: 'Give Notice' }).click();
+  await v('agent-notice', 'You', 'Give Notice?', 'dialog');
+  await page.keyboard.press('Escape');
   // The phone's own navigation.
   const menu = page.getByRole('button', { name: 'Menu', exact: true });
   if (await menu.isVisible()) { await menu.click(); await v('menu', 'Shell', 'Menu Drawer', 'drawer'); await page.keyboard.press('Escape'); }
@@ -327,10 +342,17 @@ test('the UI audit: the rest of creation, and the dialogs the first walk does no
   await newProject(page, { title: 'Dialogs', format: 'Feature Film', budget: 'Low Budget' });
   await section(page, 'Script');
   await page.getByRole('button', { name: 'Choose A Full Story' }).click();
-  await page.getByRole('dialog').getByRole('button', { name: /The Quiet Floor/ }).first().click();
+  // The genre is chosen, not assumed: the list opens on the first genre that has a story, which was Heist only until
+  // another genre before it in the alphabet had one (November 12, 2026, when this walk stopped here).
+  const stories = page.getByRole('dialog', { name: 'Choose A Full Story' });
+  await stories.getByLabel('Genre').locator('option').filter({ hasText: /^Heist \(/ }).waitFor({ state: 'attached' });
+  await stories.getByLabel('Genre').selectOption({ label: (await stories.getByLabel('Genre').locator('option').allInnerTexts()).find((t) => /^Heist \(/.test(t))! });
+  await stories.getByRole('button', { name: /^The Quiet Floor/ }).click();
   await page.getByRole('dialog').last().getByRole('button', { name: 'Apply This Story' }).click();
   await page.getByRole('dialog').waitFor({ state: 'detached' });
   await dialog(page.getByRole('button', { name: /^Change The Relationship Of / }), 'change-relationship', 'Script', 'Change The Relationship');
+  // Removing a relationship between two people who share a scene asks first, and is left alone.
+  await dialog(page.getByRole('button', { name: /^Remove The Relationship Of / }), 'remove-relationship', 'Script', 'Remove The Relationship');
   await page.getByRole('button', { name: 'Declare None Of These' }).click().catch(() => undefined);
   await page.getByRole('button', { name: 'Save Draft' }).click();
   await dialog(page.getByRole('button', { name: 'Rename Draft' }), 'rename-draft', 'Script', 'Rename Draft');
@@ -360,6 +382,24 @@ test('the UI audit: the rest of creation, and the dialogs the first walk does no
   await later.getByLabel('Place', { exact: true }).fill('Loading Dock Behind The Bank');
   await page.getByRole('button', { name: 'Save Draft' }).click();
   await dialog(page.getByRole('button', { name: 'Approve This Draft' }), 'approve-draft', 'Script', 'Approve This Draft?');
+  // A story whose world has rules of its own (science fiction; a heist has no such card): changing a rule has a dialog,
+  // and removing one that a scene relies on asks first and is left alone.
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Rules', format: 'Feature Film', budget: 'Low Budget' });
+  await section(page, 'Script');
+  await page.getByRole('button', { name: 'Choose A Full Story' }).click();
+  const shelf = page.getByRole('dialog', { name: 'Choose A Full Story' });
+  await shelf.getByLabel('Genre').locator('option').filter({ hasText: /^Science Fiction \(/ }).waitFor({ state: 'attached' });
+  await shelf.getByLabel('Genre').selectOption({ label: (await shelf.getByLabel('Genre').locator('option').allInnerTexts()).find((t) => /^Science Fiction \(/.test(t))! });
+  await shelf.getByRole('button', { name: /^Forty Minutes Of Light/ }).click();
+  await page.getByRole('dialog').last().getByRole('button', { name: 'Apply This Story' }).click();
+  await page.getByRole('dialog').waitFor({ state: 'detached' });
+  await dialog(page.getByRole('button', { name: /^Change The Rule / }), 'change-rule', 'Script', 'Change The Rule');
+  const relies = page.getByRole('group', { name: 'Scenes That Rely On It' }).first().getByRole('checkbox').first();
+  if (await relies.isVisible().catch(() => false)) {
+    await relies.check();
+    await dialog(page.getByRole('button', { name: /^Remove The Rule / }), 'remove-rule', 'Script', 'Remove The Rule');
+  }
   await nav(page, 'Saved Games');
   await page.getByRole('heading', { name: 'Saved Games', level: 1 }).waitFor();
   await dialog(page.getByRole('button', { name: /^Rename Save/ }), 'rename-save-in-game', 'Your Game', 'Rename Save, In The Game');

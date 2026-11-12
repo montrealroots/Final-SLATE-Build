@@ -112,7 +112,30 @@
   "kind": "screen",
   "screen": "profile",
   "walk": [
-   "profile"
+   "profile",
+   "profile-represented"
+  ]
+ },
+ {
+  "id": "dlg-agent-list",
+  "area": "You",
+  "name": "Find An Agent",
+  "kind": "dialog",
+  "dialog": "^@agent-list$",
+  "source": "Representation | \"Find An Agent\"",
+  "walk": [
+   "agent-list"
+  ]
+ },
+ {
+  "id": "dlg-agent-notice",
+  "area": "You",
+  "name": "Give Notice?",
+  "kind": "dialog",
+  "dialog": "^@agent-notice$",
+  "source": "Representation | \"Give Notice?\"",
+  "walk": [
+   "agent-notice"
   ]
  },
  {
@@ -642,7 +665,10 @@
   "name": "Change The Rule",
   "kind": "dialog",
   "dialog": "^Change The Rule$",
-  "source": "ScriptViews | \"Change The Rule\""
+  "source": "ScriptViews | \"Change The Rule\"",
+  "walk": [
+   "change-rule"
+  ]
  },
  {
   "id": "dlg-remove-rule",
@@ -650,7 +676,10 @@
   "name": "Remove The Rule",
   "kind": "dialog",
   "dialog": "^Remove The Rule$",
-  "source": "ScriptViews | \"Remove The Rule\""
+  "source": "ScriptViews | \"Remove The Rule\"",
+  "walk": [
+   "remove-rule"
+  ]
  },
  {
   "id": "dlg-change-relationship",
@@ -669,7 +698,10 @@
   "name": "Remove The Relationship",
   "kind": "dialog",
   "dialog": "^Remove The Relationship$",
-  "source": "ScriptViews | \"Remove The Relationship\""
+  "source": "ScriptViews | \"Remove The Relationship\"",
+  "walk": [
+   "remove-relationship"
+  ]
  },
  {
   "id": "dlg-set-aside",

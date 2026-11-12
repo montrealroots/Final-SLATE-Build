@@ -6,6 +6,7 @@
 import { expect, test, type Page } from './test';
 import { CATALOG_FIXTURE, serveCatalog } from './catalog-fixture';
 import { addScene, advance, castRoles, nav, pinSeed, quickLife, readSavedState, runToDelivery, saveAndExit, section, staffEveryDepartment, writePitch } from './helpers';
+import { audit } from './ui-audit';
 
 test.use({ actionTimeout: 20_000 });
 
@@ -153,4 +154,37 @@ test('J08: a horror film pitched to two studios, optioned by one for its reasons
   expect(logs.some((t) => /the night shift pictures/i.test(t))).toBe(false); // named as a company, never "the ..." in lowercase
   await section(page, 'Budget');
   await expect(card(page, 'Backers').locator('li', { hasText: NIGHT }).first()).toContainText(/Repaid so far: \$[\d,]+ of \$60,000\./);
+
+  // Its weeks in cinemas (box-office.ts): twenty-four, all settled, adding up to what the studio reported; and the weeks
+  // before it opened abroad were corrected when the first month's report came, which the table says.
+  type Week = { week: number; rental: number; status: string; territories: number; first?: number };
+  const weeks: Week[] = offer.weeks;
+  expect(weeks.map((w) => w.week)).toEqual(Array.from({ length: 24 }, (_, i) => i + 1));
+  expect(weeks.every((w) => w.status === 'final' && w.rental % 100 === 0)).toBe(true);
+  expect(weeks.reduce((n, w) => n + w.rental, 0)).toBe(offer.reported.gross);
+  expect([weeks[0].territories, weeks[1].territories, weeks[2].territories]).toEqual([1, 5, 5]); // it opens abroad the day its second week ends
+  expect(weeks.slice(0, 4).some((w) => w.first !== undefined)).toBe(true);
+  await section(page, 'Release');
+  const earnings = card(page, 'Earnings');
+  const dollars = (n: number) => `$${n.toLocaleString('en-US')}`;
+  await earnings.getByText('Weeks In Cinemas (24)').click();
+  await expect(earnings).toContainText('Simulated by the game: no real box office is shown here. Ticket sales are not what you earn. Cinemas keep 50% of them');
+  const table = earnings.getByRole('table', { name: `Weeks In Cinemas, ${NIGHT}` });
+  await expect(table.locator('tbody tr')).toHaveCount(24);
+  await expect(table.locator('tbody tr').first()).toContainText(dollars(weeks[0].rental * 2)); // ticket sales: the rental is half of them
+  await expect(table.locator('tfoot')).toContainText(dollars(offer.reported.gross * 2));
+  await expect(table.locator('tfoot')).toContainText(dollars(offer.reported.gross));
+  await expect(table.locator('tfoot')).toContainText(dollars(offer.reported.net));
+  const corrected = weeks.find((w) => w.first !== undefined)!;
+  await expect(table.locator('tbody tr').nth(corrected.week - 1)).toContainText(`first reported as ${dollars(corrected.first!)} in rental`);
+  await page.screenshot({ path: `test-results/studio-pitch-${info.project.name}-03-weeks.png`, fullPage: true });
+  if (info.project.name !== 'desktop') expect((await audit(page)).defects, 'the weeks in cinemas, on a phone').toEqual([]);
+  expect(await noSidewaysScroll(page)).toBe(true);
+  // And the record book on the profile is those weeks: its only film, first in both lists.
+  await nav(page, 'Profile');
+  const book = card(page, 'Record Book');
+  await expect(book).toContainText('Simulated by the game, and only what happened in this story: no real box office is in this book.');
+  await expect(book.getByRole('listitem').filter({ hasText: 'The Long Night' })).toContainText(`Opening week ${dollars(weeks[0].rental * 2)} (1st). Lifetime ${dollars(offer.reported.gross * 2)} (1st) from ${((offer.reported.gross * 2) / 10).toLocaleString('en-US')} admissions over`);
+  await page.screenshot({ path: `test-results/studio-pitch-${info.project.name}-04-record-book.png`, fullPage: true });
+  if (info.project.name !== 'desktop') expect((await audit(page)).defects, 'the record book, on a phone').toEqual([]);
 });

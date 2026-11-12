@@ -59,9 +59,10 @@ in the sentence under them.
 Screenshots are in `docs/v3/ui-shots/`: seven fixes before and after at 390 pixels, and fourteen screens at 1280 beside
 390. Each was looked at before it was kept.
 
-**Open:** in the local WebKit sweep three journeys stalled with the engine neither loaded nor failed after Continue
-Creation, on a machine doing three other heavy things. It did not happen in CI's WebKit runs (four, on two heads) or
-in twelve repeats alone. Not explained, not fixed.
+**Closed on November 12, 2026 (was open):** in the local WebKit sweep three journeys stalled after Continue Creation,
+on a machine doing three other heavy things, and it was written up here as the engine neither loading nor failing. It
+was neither: the press missed the button, which the start screen moved as saved games arrived. Explained and fixed in
+the section above this one's successor ("After The First Part").
 
 Not measured, and tracked as such: a real phone, so the on-screen keyboard and what it covers; the screens and dialogs
 the matrix lists as not visited; layout shift in WebKit, which reports none; anything between 621 and about 660 pixels
@@ -69,7 +70,7 @@ wide, where the bar's Sleep and Advance wrap to a second row (nothing is cut off
 beyond one capture). The journey sweep's comparison of desktop and phone is a sampling of states, not a gate: it
 lists what one run caught and the other didn't, most of which is a save's own made-up titles.
 
-### After The First Part: Adaptation Rights, The Casting Director And The Line Producer (November 12, 2026)
+### After The First Part: Adaptation Rights, The Casting Director, The Line Producer And Representation (November 12, 2026)
 
 | Check | Failures | Result |
 | --- | --- | --- |
@@ -77,6 +78,18 @@ lists what one run caught and the other didn't, most of which is a save's own ma
 | The same CI run, `journeys (production, desktop)` | 1 | 169 passed, 1 failed: `e2e/backup.spec.ts`, the imported save compared with the exported one. Every field matched but the time, 250.3 milliseconds on. An open game's clock runs and its first save is written on the first tick, a quarter of a second after it opens; the test read the stored save after opening it, and that once the save landed first. The test now reads the imported save as stored, before opening it, which is what it means to check. The early save itself is a spare write, not a fault, and is left. |
 | `tests/adaptation.test.ts`, `tests/casting-director.test.ts`, `tests/line-producer.test.ts` | 0 | 11, 5 and 7 tests. Mutations caught: the option's expiry and its fee counting towards the price (earlier); the funds check before a search or a negotiation (2 tests fail); a negotiation that always succeeds (1 test fails). |
 | `e2e/casting-director.spec.ts`, `e2e/line-producer.spec.ts` on desktop, phone and iPhone 15 Pro Max | 0 | Each hires through the Crew page's own row, asks with the cost said first, reads the saved budget line before and after, and audits the page on the phones (0 defects). |
+
+| `tests/representation.test.ts` | 0 | 15 tests. Five mutations, each caught: commission that ignores the agent's rate (3 tests fail); the commissioner's door open to everyone (1); an agent submitting where they stand aside (1); an agent who always renews (2); an agent's weight counting after they have gone (1). |
+| `e2e/representation.spec.ts` on desktop, phone and iPhone 15 Pro Max, five times each | 0 | 15 passed, after three faults of the journey's own were fixed: it waited for both backers before accepting, which left the investor's three-week offer a week's margin that a slower run used up; it read the save before the offer was written to it; and it expected a status word the page doesn't use. |
+| The UI audit, measured from a journey (`e2e/ui-audit.ts audit`) | 1 transient | Once in about ten runs on WebKit the audit measured the phone's drawer part way shut and reported its buttons as outside the screen. The wait for running animations holds in a page of its own in both browsers, so why it was passed is not known. The audit now counts a defect only if it is still there a quarter of a second later, as the journey sweep already did. Twelve and then fifteen runs after: none. |
+| `e2e/stories.spec.ts` on iPhone 15 Pro Max, in a run of 32 | 1, explained and fixed | Continue Creation was pressed and creation never opened: the same stall seen three times in the WebKit sweep and listed as open below it. The cause is the start screen's own. The card was drawn before saved games had been read; when they had, the row of buttons appeared above it and pushed it down 24 pixels on a desktop and more on a phone, so a press aimed at the button's middle landed above it and did nothing. No engine was stuck: nothing had been asked of it. The card is now drawn with the buttons, once, where it stays. `e2e/creation.spec.ts` holds saved games back a second and fails on the old order (measured: 386 then 410), and passes nine of nine on desktop, phone and WebKit with the fix. |
+| `tests/box-office.test.ts` | 0 | 9 tests. Three mutations, each caught: a settlement that leaves the weeks as first reported (2 tests fail); weeks kept for a release that is not in cinemas (1); a later run counted as the opening (1). |
+| `e2e/studio-pitch.spec.ts` on desktop and iPhone 15 Pro Max, with the weeks table and the record book | 0, after a fault of the design was fixed | The first run showed the fourth week of a month taking the whole of any change (a film that opened abroad in its third week had a fourth week larger than its first, and nothing marked as corrected). Each week is now its own share of the month as it stood, and the report's settlement spreads the difference and marks it. 24 weeks, all final, adding up to the reported earnings; the pages audited on the phone, 0 defects. |
+| `tests/adaptation.test.ts` after the rest of the adaptation loop | 0 | 18 tests. Five mutations, each caught: every declared change counted as inside the agreement (2 tests fail); an approval that never goes stale (1); the rights holder's share taken before the rights are bought (1); a sequel inheriting the agreement (1); widening for nothing (1). |
+| `e2e/sources.spec.ts` on desktop, phone and iPhone 15 Pro Max | 1, fixed | The phone audit found Send Draft touching the Widen buttons under it (0 px) on the new card. They have the standard gap; 9 of 9 then. |
+| `tests/audiences.test.ts` | 0 | 10 tests. Four mutations, each caught: a broadcast reporting every episode out instead of the week's (2 tests fail); reception not mattering (1); a recorded week overwritten (1); views reported as hours (1). |
+| `e2e/script-rules.spec.ts` (a broadcast: the audience table) and `e2e/earnings.spec.ts` (a cinema run: its weeks, and no audience), desktop and phone where each runs | 0 | The earnings journey's first wait was shorter than the four months a cinema release takes to open, which was the journey's fault and is fixed. A streaming series' table has unit tests only. |
+| The coverage walk with the new screens | 1, fixed | Give Notice touched the line above it on every size (0 px). The button row has the standard gap now, and the walk is clean: Find An Agent, Give Notice? and the represented profile are in it. |
 
 Defects found by this work and fixed in it: a casting director could be hired, by being considered from the film
 catalog, and did nothing; a line producer was in the table of jobs and no production could hire one; Staff This

@@ -1,5 +1,5 @@
 import { expect, test, type Page } from './test';
-import { fillBirthDate, fillName, openStart, pickPlace } from './helpers';
+import { fillBirthDate, fillName, openStart, pickPlace, quickDraft } from './helpers';
 import { listRecords } from './vault';
 
 // Character creation, laid out as 1221's (Identity, Background & Languages, Starting Point, Review), on desktop, phone
@@ -422,4 +422,39 @@ test('an ethnicity in your own words: blank or repeated is refused with the reas
   await page.getByRole('button', { name: 'Add Your Ethnicity' }).click();
   await expect(page.getByText("You've already added that.")).toBeVisible();
   await expect(page.getByRole('list').filter({ hasText: 'Tongan and Welsh' }).getByRole('listitem')).toHaveCount(1);
+});
+
+// Continue Creation must be where it was first drawn. Until November 12, 2026 its card was drawn before saved games had
+// been read, and when they had, the start screen's row of buttons appeared above it and pushed it down: a press aimed at
+// it could land on New Game instead, and creation never opened. (Seen three times in a WebKit sweep on a busy machine
+// and once more in a local run, each recorded as the engine neither loading nor failing.) Saved games are made slow
+// here so the order is the same every run.
+test('Continue Creation does not move once saved games have been read', async ({ page }) => {
+  await openStart(page);
+  await quickDraft(page, 'gb-london', '2026-01-05');
+  await page.addInitScript(() => {
+    const open = indexedDB.open.bind(indexedDB);
+    // The request is handed back at once and its success held for a second.
+    indexedDB.open = ((...args: Parameters<IDBFactory['open']>) => {
+      const req = open(...args);
+      const add = req.addEventListener.bind(req);
+      const hold = (fn: (e: Event) => void) => (e: Event) => setTimeout(() => fn(e), 1000);
+      req.addEventListener = ((type: string, fn: (e: Event) => void, o?: boolean) => add(type, type === 'success' ? hold(fn) : fn, o)) as typeof req.addEventListener;
+      let handler: ((e: Event) => void) | null = null;
+      Object.defineProperty(req, 'onsuccess', { get: () => handler, set: (fn: ((e: Event) => void) | null) => { handler = fn; if (fn) add('success', hold(fn)); } });
+      return req;
+    }) as IDBFactory['open'];
+  });
+  await page.reload();
+  const button = page.getByRole('button', { name: 'Continue Creation' });
+  await button.waitFor();
+  const first = (await button.boundingBox())!;
+  // Whenever it is first there, the start screen's own buttons are there with it.
+  await expect(page.getByRole('group', { name: 'Start' })).toBeVisible();
+  await expect(page.getByText('Looking for your saved games…')).toHaveCount(0);
+  await page.waitForTimeout(1500);
+  const later = (await button.boundingBox())!;
+  expect({ x: Math.round(later.x), y: Math.round(later.y) }).toEqual({ x: Math.round(first.x), y: Math.round(first.y) });
+  await button.click();
+  await expect(page.getByRole('button', { name: 'Start My Story' })).toBeVisible();
 });

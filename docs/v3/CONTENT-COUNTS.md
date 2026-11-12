@@ -11,10 +11,10 @@ whole outline and, for a series, every episode of its first season.
 
 | | Required | Written | Complete | Reviewed |
 | --- | --- | --- | --- | --- |
-| Stories with one primary genre | 14,900 | 8 | 8 | 2 |
+| Stories with one primary genre | 14,900 | 11 | 11 | 2 |
 | Genres with 50 reviewed films and 50 reviewed series | 149 | | | 0 |
-| Genres with at least one story | | | 8 | |
-| Mixed-genre stories | | 0 | 0 | |
+| Genres with at least one story | | | 11 | |
+| Mixed-genre stories | | 1 | 1 | |
 | Pairings with 10 stories | | | 0 | |
 | Genres in 3 such pairings | 149 | | 0 | |
 
@@ -47,7 +47,7 @@ whole outline and, for a series, every episode of its first season.
 | Children's (`childrens`) | 0 | 0 | 0 | 0 | 0 |
 | Christmas (`christmas`) | 0 | 0 | 0 | 0 | 0 |
 | Comedy (`comedy`) | 0 | 0 | 1 | 0 | 0 |
-| Coming Of Age (`coming-of-age`) | 0 | 0 | 0 | 0 | 0 |
+| Coming Of Age (`coming-of-age`) | 1 | 0 | 0 | 0 | 0 |
 | Concert Film (`concert-film`) | 0 | 0 | 0 | 0 | 0 |
 | Conspiracy Thriller (`conspiracy-thriller`) | 0 | 0 | 0 | 0 | 0 |
 | Cosmic Horror (`cosmic-horror`) | 0 | 0 | 0 | 0 | 0 |
@@ -96,7 +96,7 @@ whole outline and, for a series, every episode of its first season.
 | Jukebox Musical (`jukebox-musical`) | 0 | 0 | 0 | 0 | 0 |
 | Kaiju (`kaiju`) | 0 | 0 | 0 | 0 | 0 |
 | Kitchen Sink Drama (`kitchen-sink-drama`) | 0 | 0 | 0 | 0 | 0 |
-| Legal Drama (`legal-drama`) | 0 | 0 | 0 | 0 | 0 |
+| Legal Drama (`legal-drama`) | 0 | 0 | 1 | 0 | 0 |
 | Magical Realism (`magical-realism`) | 0 | 0 | 0 | 0 | 0 |
 | Martial Arts (`martial-arts`) | 0 | 0 | 0 | 0 | 0 |
 | Medical Drama (`medical-drama`) | 0 | 0 | 1 | 0 | 0 |
@@ -144,7 +144,7 @@ whole outline and, for a series, every episode of its first season.
 | Space Opera (`space-opera`) | 0 | 0 | 0 | 0 | 0 |
 | Spaghetti Western (`spaghetti-western`) | 0 | 0 | 0 | 0 | 0 |
 | Splatter (`splatter`) | 0 | 0 | 0 | 0 | 0 |
-| Sports (`sports`) | 0 | 0 | 0 | 0 | 0 |
+| Sports (`sports`) | 1 | 0 | 0 | 0 | 0 |
 | Spy (`spy`) | 0 | 0 | 0 | 0 | 0 |
 | Steampunk (`steampunk`) | 0 | 0 | 0 | 0 | 0 |
 | Stoner Comedy (`stoner-comedy`) | 0 | 0 | 0 | 0 | 0 |
@@ -174,4 +174,4 @@ whole outline and, for a series, every episode of its first season.
 
 ## Pairings
 
-None written yet.
+- `horror+comedy`: 1

@@ -3,7 +3,7 @@
 // from, which choice changes it, and what happens next. The world seed is pinned through the labelled fixture in
 // helpers.ts; nothing else is injected.
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, newProject, pinSeed, quickLife, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
+import { addScene, advance, castRoles, newProject, pinSeed, quickLife, readSavedState, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
 
 // Seed 7 was chosen because its offers include a broadcaster, so the late-slot choice is played; the seed is the only fixture.
 const SEED = Number(process.env.RULES_SEED) || 7;
@@ -178,4 +178,33 @@ test('a mature project: declared content, an essential scene cut then picked up,
   await late.getByRole('button', { name: 'Accept With A Broadcast Edit' }).click();
   const history = page.locator('section.card', { has: page.getByRole('heading', { name: 'Release History' }) });
   await expect(history).toContainText('Broadcast in GB');
+
+  // Its audience (audiences.ts): a broadcast reports the people at its first showing, in the week it aired, and nothing
+  // in a week without one; never hours or views, which are a streaming service's measures.
+  const saved = async () => (await readSavedState(page)).projects.find((x: { title: string }) => x.title === 'Hard Water');
+  for (let i = 0; i < 12; i++) {
+    const out = (await saved()).releases.some((r: { offerId?: string; status: string }) => r.offerId && r.status === 'released');
+    await advance(page, 'week');
+    if (out) break;
+  }
+  await advance(page, 'week');
+  await advance(page, 'week');
+  await section(page, 'Release');
+  let deal: { distributor: string; route: string; audience?: { week: number; metric: string; value: number; scope: string }[]; weeks?: unknown[] } | undefined;
+  await expect.poll(async () => { deal = (await saved()).offers.find((o: { status: string }) => o.status === 'accepted'); return deal?.audience?.length ?? 0; }, { timeout: 20_000 }).toBe(1);
+  expect(deal).toMatchObject({ route: 'broadcast', audience: [{ week: 1, metric: 'viewers', scope: 'title' }] });
+  expect(deal!.weeks).toBeUndefined();
+  const earnings = page.locator('section.card', { has: page.getByRole('heading', { name: 'Earnings', exact: true }) });
+  await earnings.getByText('Weekly Audience (1)').click();
+  await expect(earnings).toContainText(`Simulated by the game: no real audience figure is shown here. Its first showing drew an average audience of ${deal!.audience![0].value.toLocaleString('en-US')}.`);
+  await expect(earnings).toContainText('Average Audience: People watching a first showing, live or later the same day, in the territories it aired in. For a series, each episode has its own.');
+  await expect(earnings).toContainText('Nothing you are paid depends on these.');
+  await expect(earnings).not.toContainText('Hours Viewed');
+  const table = earnings.getByRole('table', { name: `Weekly Audience, ${deal!.distributor}` });
+  await expect(table.locator('tbody tr')).toHaveCount(1);
+  await expect(table.locator('tbody tr')).toContainText('Everything Available');
+  await expect(table.locator('tbody tr')).toContainText(deal!.audience![0].value.toLocaleString('en-US'));
+  await expect(earnings.getByText(/^Weeks In Cinemas/)).toHaveCount(0);
+  await earnings.scrollIntoViewIfNeeded();
+  await page.screenshot({ path: 'test-results/rules-desktop-weekly-audience.png', fullPage: true });
 });

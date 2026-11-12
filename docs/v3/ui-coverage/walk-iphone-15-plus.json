@@ -1,6 +1,6 @@
 {
  "project": "iphone-15-plus",
- "at": "2026-11-12T12:09:29.259Z",
+ "at": "2026-11-12T15:04:38.429Z",
  "rows": [
   {
    "id": "start",
@@ -103,6 +103,22 @@
    "area": "You",
    "name": "Player Profile",
    "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "agent-list",
+   "area": "You",
+   "name": "Find An Agent",
+   "kind": "dialog",
    "sizes": {
     "iPhone 15 Plus (WebKit) (430 by 932)": {
      "defects": []
@@ -795,6 +811,38 @@
    "accepted": []
   },
   {
+   "id": "profile-represented",
+   "area": "You",
+   "name": "Player Profile, Represented",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "agent-notice",
+   "area": "You",
+   "name": "Give Notice?",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
    "id": "menu",
    "area": "Shell",
    "name": "Menu Drawer",
@@ -1181,6 +1229,22 @@
    "accepted": []
   },
   {
+   "id": "remove-relationship",
+   "area": "Script",
+   "name": "Remove The Relationship",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
    "id": "rename-draft",
    "area": "Script",
    "name": "Rename Draft",
@@ -1296,6 +1360,38 @@
    "id": "approve-draft",
    "area": "Script",
    "name": "Approve This Draft?",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "change-rule",
+   "area": "Script",
+   "name": "Change The Rule",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "remove-rule",
+   "area": "Script",
+   "name": "Remove The Rule",
    "kind": "dialog",
    "sizes": {
     "iPhone 15 Plus (WebKit) (430 by 932)": {

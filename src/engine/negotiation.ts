@@ -13,6 +13,7 @@
 import { money } from './budget';
 import { theBacker } from './backer-words';
 import { deals, delivered, scriptScore } from './finance';
+import { agentWeight } from './representation';
 import { stream } from './rng';
 import { addLog, registerHandler, schedule } from './state';
 import { DAY } from './time';
@@ -39,10 +40,13 @@ export function betterTerms(d: FinanceDeal): { term: BetterTerm; label: string; 
   return out;
 }
 
-/** Your leverage with this backer, 0 to 1: the script's open notes, your delivered work, and a competing offer. */
+/**
+ * Your leverage with this backer, 0 to 1: the script's open notes, your delivered work, a competing offer, and, on an
+ * offer your agent brought, their weight while they represent you (representation.ts; from November 12, 2026).
+ */
 export function leverage(state: GameState, p: Project, d: FinanceDeal): number {
   const competing = deals(p).some((x) => x.id !== d.id && x.status === 'offered');
-  return Math.min(0.95, 0.15 + scriptScore(p) / 400 + Math.min(0.3, delivered(state) * 0.1) + (competing ? 0.2 : 0));
+  return Math.min(0.95, 0.15 + scriptScore(p) / 400 + Math.min(0.3, delivered(state) * 0.1) + (competing ? 0.2 : 0) + agentWeight(state, d));
 }
 
 /** Open an offer: it stays open OFFER_OPEN_DAYS, then lapses. Every offered deal goes through here. */

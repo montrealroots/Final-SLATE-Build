@@ -40,6 +40,9 @@ export function continueProject(state: GameState, p: Project, title?: string, st
   next.relationships = JSON.parse(JSON.stringify(p.relationships));
   next.threads = (p.threads ?? []).filter((t) => t.resolution === 'open' || !t.resolvedIn).map((t) => ({ ...t, sceneIds: [], resolvedIn: null }));
   next.story = { ...p.story };
+  // What it is adapted from carries over; the agreement does not. A sequel or another season needs its own option, and
+  // its own approval (adaptation.ts). Until November 12, 2026 a continuation forgot the work altogether.
+  if (p.source) next.source = { kind: p.source.kind, ...(p.source.work !== undefined ? { work: p.source.work } : {}), ...(p.source.ref ? { ref: { ...p.source.ref } } : {}) };
   // Builds already finished for these characters, at the design they were built to.
   next.tasks = p.tasks.filter((t) => BUILD_KINDS.has(t.kind) && t.status === 'done' && next.characters.some((c) => c.id === t.assetRef && c.designVersion === (t.needsVersion ?? c.designVersion)))
     .map((t) => ({ ...t, workedDays: 0 }));

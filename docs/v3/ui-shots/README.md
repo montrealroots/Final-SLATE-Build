@@ -22,4 +22,10 @@ looked at before it was kept. The made-up names and titles are the walk's own.
 `pair-full-story.jpg`, `pair-characters.jpg`, `pair-cast.jpg`, `pair-schedule.jpg`, `pair-budget.jpg`,
 `pair-company.jpg`, `pair-film.jpg`, `pair-saved-games.jpg`, `pair-dialog-compare-draft.jpg`.
 
+Added later on November 12, 2026, with the screens they show: `pair-agent-list.jpg` (Find An Agent),
+`pair-agent-notice.jpg` (Give Notice?), `pair-profile-represented.jpg` (the Profile page with an agent), and
+`pair-weeks-in-cinemas.jpg` (a cinema run's weeks under Earnings: this one from the studio-release journey, desktop
+Chromium beside the iPhone 15 Pro Max profile in WebKit). The agent list was captured before its wording was made
+consistent ("two delivered projects" in both lines).
+
 A capture is one window's worth of a screen, not the whole page, and an emulated phone, not a real one.

@@ -1,6 +1,6 @@
 {
  "project": "desktop",
- "at": "2026-11-12T12:57:04.649Z",
+ "at": "2026-11-12T15:02:43.819Z",
  "rows": [
   {
    "id": "start",
@@ -157,6 +157,31 @@
    "area": "You",
    "name": "Player Profile",
    "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "agent-list",
+   "area": "You",
+   "name": "Find An Agent",
+   "kind": "dialog",
    "sizes": {
     "desktop (1280 by 720)": {
      "defects": []
@@ -1220,6 +1245,56 @@
    "accepted": []
   },
   {
+   "id": "profile-represented",
+   "area": "You",
+   "name": "Player Profile, Represented",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "agent-notice",
+   "area": "You",
+   "name": "Give Notice?",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
    "id": "home-industry",
    "area": "Home",
    "name": "Home, With The Industry's News",
@@ -1797,6 +1872,31 @@
    "accepted": []
   },
   {
+   "id": "remove-relationship",
+   "area": "Script",
+   "name": "Remove The Relationship",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
    "id": "rename-draft",
    "area": "Script",
    "name": "Rename Draft",
@@ -1975,6 +2075,56 @@
    "id": "approve-draft",
    "area": "Script",
    "name": "Approve This Draft?",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "change-rule",
+   "area": "Script",
+   "name": "Change The Rule",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "remove-rule",
+   "area": "Script",
+   "name": "Remove The Rule",
    "kind": "dialog",
    "sizes": {
     "desktop (1280 by 720)": {

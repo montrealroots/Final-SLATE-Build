@@ -95,7 +95,9 @@ export function Startup() {
           <button className="btn" onClick={() => setSettingsOpen(true)}>Settings</button>
         </div>
 
-        {(showDraftOffer || (!latest && draft)) && draft && (
+        {/* Drawn once saved games have been read, with the buttons above it, so it never moves: until November 12, 2026
+            it was drawn first and pushed down when they arrived, and a press aimed at Continue Creation could miss it. */}
+        {s.storageReady && (showDraftOffer || (!latest && draft)) && draft && (
           <section className="card spaced" aria-labelledby="draft-h">
             <h2 id="draft-h">Continue Creating Your Character</h2>
             <p>Your choices are saved. Pick up where you left off.</p>

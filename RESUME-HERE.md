@@ -9,10 +9,20 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#71 (Creative Depth, milestones F, G and H; and screens lined up),
-  squash-merged as `1f5cb1f` on November 12, 2026, CI green on its final commit (`checks` and all six journeys runs).
-  Before it, #70 (milestones C and E, and CI's journeys as their own job) as `8d927fe`, #69 (milestone D) as
-  `e028194`, #68 (milestone B) as `fd095f1` and #67 (milestone A) as `562eac8`.
+- **Latest merge:** montrealroots/Final-SLATE-Build#75 (the source-material catalog, the option on a work, a casting
+  director and a line producer who do paid work, three stories), squash-merged as `8e48876` on November 12, 2026, CI
+  green on its final commit (`checks` and all six journeys runs). Before it that day: #74 as `5388c46`, #73 as
+  `c1cab0e`, #72 as `b1c8343` (the phone overhaul's first part, pictures for the whole catalog); and #71 (Creative
+  Depth, milestones F, G and H) as `1f5cb1f`.
+- **Open when this was written (November 12, 2026, 15:30 UTC):** montrealroots/Final-SLATE-Build#76: representation,
+  a cinema run's weeks and the record book, four stories, the start screen no longer moving Continue Creation, the
+  rest of the adaptation loop (V3-A06), the coverage walk reaching the two rule dialogs, the ledger's suites and the
+  owed rows in `requirements.csv`. Its first head, `290a491`, had `checks` green and its journeys still running when
+  the later commits were pushed on top, which restarted CI. **Merge it only when `checks` and all six journeys runs
+  are green on its newest head** (squash, with that head as the expected sha), then confirm
+  `git diff --quiet <that head> origin/main`, merge `origin/main` back with `-s ours`, and push. Locally, before the
+  push, `npm run check` passed with 1,022 tests and `e2e/sources.spec.ts` 9 of 9 on desktop, phone and WebKit; the
+  later commits had not been through CI.
 - **The package's eight milestones are all merged.** What it leaves undone is listed in one place:
   `docs/creative-depth/COVERAGE.md`, "Not Done, In One Place". Nothing is open on this branch.
 - **CI, from November 12, 2026:** `.github/workflows/ci.yml` has two jobs. `checks` is everything without a browser.
@@ -89,15 +99,40 @@ has a row for each requirement built or owed.
   genre in the game comes only from `tools/sources/genre-map.mjs`; read `tools/sources/recorded-genres.tsv` after an
   import before adding to it. The Script page finds a work, shows what is recorded and declares the script adapted
   from it, and the Budget page's Adaptation Rights card takes, renews and exercises the option that production waits
-  for (`engine/adaptation.ts`). **Owed:** the rest of the adaptation loop (requirement V3-A06: brief, approvals,
-  compensation beyond the price, reporting); more companies.
+  for (`engine/adaptation.ts`). The option is taken for one of three approaches (faithful, moved to another time or
+  place, freely adapted), each priced and each allowing the script to change more; the player declares what the
+  script changes; the rights holder reads the approved draft (seven days) and refuses a change outside the agreement,
+  which can be widened for the difference; once the rights are bought they take 2.5% of each receipt
+  (`finance.ts receiveIncome`), each a statement in the chain of title; a sequel carries the work and needs its own
+  agreement (`sequel.ts`). **Owed:** more companies; a source work for the 104 genres that have none.
 - **People loops: the casting director and the line producer are built** (`engine/casting-director.ts`,
   `engine/line-producer.ts`; requirements V3-L01 and V3-L02). Each is an optional Crew row. The casting director runs
   a search for a part for two of their days and advises once everyone has read; the shortlist, callbacks and offers
   stay the player's. The line producer negotiates a counteroffer for one of their days and brings back a lower rate
   or the same one; accepting stays the player's. Both are paid on their own budget line
-  (`hiring.ts payDelegatedDays`) and credited for days worked. **Owed:** representation (agent search, mandate,
-  submissions, negotiation, commission, conflicts, renewal, termination): nothing of it is built.
+  (`hiring.ts payDelegatedDays`) and credited for days worked.
+- **Representation is built** (`engine/representation.ts`, `ui/Representation.tsx`; requirement V3-L03). Four
+  fictional agents on the Profile page, each needing different evidence and answering from the record with no
+  chance; a mandate read before it is signed; from the Budget page the agent submits a project to an investor, a
+  co-production partner or a commissioner (who reads an agent's submission before anything is delivered); their
+  rate of each payment such a deal makes is a line on the project's ledger (`finance.ts payCommission`), and the
+  statement is those lines added up; each agent stands aside from one kind of backer; renewal a month before the
+  twelve months end; thirty days' notice. **Not built:** an agent finding work for the player as a hired
+  writer, director or performer (the game has no such jobs for the player yet), and agents for other people.
+- **Box office, first part** (`engine/box-office.ts`; requirements V3-B01 and V3-B02, both partial). A cinema
+  release is reported week by week under Earnings on the Release page (ticket sales, admissions, what cinemas keep,
+  the rental, the distributor's fee, what goes towards the guarantee), provisional until the distributor's monthly
+  report settles its four weeks to itself, and the Profile page has a record book worked out from those weeks.
+  The money a film earns is unchanged: `distribution.ts reportedGross` is still the amount. **Not built:** screens,
+  bookings and holdovers, publicity, competition, territory-by-territory results, adjusted currency, recorded
+  historical results.
+- **Weekly audiences, first part** (`engine/audiences.ts`; requirement V3-T01, partial). A broadcast reports the
+  average audience of each first showing, in the week it aired; a streaming release reports hours viewed and views
+  each week; neither is turned into the other, a digital release reports none, and every figure is labelled
+  simulated. Each week's event asks for the next until eight weeks after the last episode. Shown as Weekly Audience
+  under Earnings. **Nothing reads an audience yet**: renewal is decided thirty days after delivery, before a season
+  airs (`continuation.ts`), so wiring an audience into renewal means moving that decision, which changes outcomes and
+  the journeys that expect them. Not built: ratings, share, demographics, completion, rankings, competition.
 - **The phone overhaul, where it stands:** `docs/v3/UI-COVERAGE.md` is the matrix, written by
   `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json` (every screen, tab and dialog; a new one needs a
   row or `tests/ui-inventory.test.ts` fails), the walk (`UI_COVERAGE_WRITE=1 npx playwright test
@@ -107,12 +142,23 @@ has a row for each requirement built or owed.
   tools/v3/ui-coverage.mjs --fresh --sweep <file> --sweep <file>`). Do not run `npm run check` while a production
   sweep runs: both build into `dist/`. The stylesheet turns at four widths, listed at its head;
   `tests/stylesheet.test.ts` fails a fifth, a rule for a class nothing wears and an inline pixel margin. `QA-REPORT.md`
-  has every finding and fix. **Owed:** the 14 rows the matrix lists as not visited (dialogs that open only in a
+  has every finding and fix. **Owed:** the 11 rows the matrix lists as not visited (dialogs that open only in a
   played career: cutting a scene from the edit, cancelling a release, episode dates, a withdrawn contributor, rules,
   the approved take; and the loading, error and repair states of the start screen); the WebKit sweep folded in;
   before-and-after screenshots for the report; a real phone's keyboard, which no emulation shows.
-- **Next in order:** the rest of the phone overhaul above; ideas for the 11 structural fields; story batches; then
-  steps 4 to 7 of the ledger.
+- **Next in order:** `docs/v3/requirements.csv` lists every requirement with its status; the ones marked `not started`
+  or `partial` are the work left, and `docs/v3/LEDGER.md`'s suites table says the same by acceptance suite. In the
+  order I would take them: something that reads an audience (V3-T01's other half: renewal or receipts by audience);
+  the rest of box office (V3-B03: bookings, holdovers, publicity, competition, which do change what a
+  film earns and so need the journeys' expected figures revisited); age stages, doubles and per-episode performers
+  (V3-C12); the schedule built from each filming place's calendar and child rules (V3-D01); more companies (V3-W01);
+  ideas for the script fields that have none (V3-S10: 23 controls in `docs/creative-depth/FIELD-INVENTORY.csv` marked
+  "Not yet", which need written ideas by genre family, not code); a career journey through everything the package
+  added (V3-Z01); and stories, which are the long pole (11 of 14,900, 1 mixed).
+- **Things learned today that save time:** Playwright compiles a spec file once at the start of a run, so editing a
+  spec while a run is going changes nothing in that run. Editing anything under `src/` while a dev-server run is going
+  reloads the page under the journeys and fails them. Read a saved game in a journey with `expect.poll`: the save is
+  written a moment after the screen changes. `e2e/ui-audit.ts audit` measures twice before it reports.
 
 ### Newest Request (November 11, 2026, after the package's last milestone): fix all misalignments
 

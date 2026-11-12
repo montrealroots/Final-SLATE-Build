@@ -124,9 +124,27 @@ export interface SourceRef {
  * An option on the work a script adapts (adaptation.ts): this story's own agreement, with made-up terms. It is not an
  * agreement with anyone real and grants no right to a real work.
  */
+/** How closely an adaptation follows its work, which is what its agreement lets the script change (adaptation.ts). */
+export type AdaptationApproach = 'faithful' | 'updated' | 'free';
+/** What a script is declared to change from the work it adapts. Declared by the player; the game reads no prose. */
+export type SourceChange = 'setting' | 'period' | 'ending' | 'people';
+/**
+ * A draft sent to the rights holder, and their answer (adaptation.ts): the draft's number, what the script was declared
+ * to change on that day, and why they said no when they did.
+ */
+export interface SourceApproval { draft: number; changes: SourceChange[]; sentAt: number; answerAt: number; outcome?: 'approved' | 'refused'; reason?: string }
+
 export interface SourceOption {
-  /** What was agreed: the price to buy the rights, the fee for the option (counted towards the price), and the rest. */
-  terms: { price: number; fee: number; renewalFee: number; months: number; renewalMonths: number; territory: string; media: 'film' | 'television'; credit: string };
+  /**
+   * What was agreed: the price to buy the rights, the fee for the option (counted towards the price), and the rest.
+   * From November 12, 2026 an agreement also says how closely the script follows the work and the rights holder's share
+   * of what the project earns; one made before then has neither, asks no approval and pays no share.
+   */
+  terms: { price: number; fee: number; renewalFee: number; months: number; renewalMonths: number; territory: string; media: 'film' | 'television'; credit: string; approach?: AdaptationApproach; participation?: number };
+  /** Each time the agreement was widened to a freer approach, and what that cost (adaptation.ts widenAgreement). */
+  widened?: { at: number; to: AdaptationApproach; paid: number }[];
+  /** Each payment of the rights holder's share, as income arrived (finance.ts receiveIncome). What they have been paid is these added up. */
+  statements?: { at: number; from: string; income: number; share: number }[];
   takenAt: number;
   /** When it runs out unless renewed or exercised. */
   expires: number;
@@ -546,6 +564,8 @@ export interface FinanceDeal {
    * paid out of (ref transfer:<id>:<kind>, settle key transfer:<id>). Deals accepted before November 10, 2026 have none.
    */
   transfer?: { id: string; sources: { projectId: string; amount: number }[] };
+  /** The agent who submitted this approach, and their rate when they did: commission is due on what it pays in (representation.ts). */
+  via?: { agentId: string; name: string; rate: number };
   /** The documents sent with the approach (names, as listed when it was made). */
   sent?: string[];
   /**
@@ -559,6 +579,15 @@ export interface FinanceDeal {
    * month the studio releases the film. `v` is the strategy's version. Only on deals of kind 'studio'.
    */
   studio?: { company: string; v: number; verdict: 'pass' | 'notes' | 'option' | 'offer'; for: string[]; against: string[]; next: string; year: number; territories: string[]; window: number | null; releaseId?: string };
+}
+
+/** An approach to an agent and its answer (representation.ts). `record` is the player's record as it was read. */
+export interface AgentApproach { agentId: string; at: number; answerAt: number; status: 'asked' | 'offered' | 'declined' | 'refused' | 'signed' | 'lapsed'; reason: string; record: string; openUntil?: number }
+export interface Representation {
+  approaches: AgentApproach[];
+  /** The mandate in force: its term, how often it was renewed, notice if given, and the agent's word on renewing once given. */
+  current?: { agentId: string; signedAt: number; until: number; renewed: number; noticeUntil?: number; renewal?: { at: number; willing: boolean; reason: string } };
+  past: { agentId: string; from: number; to: number; how: 'notice' | 'lapsed' }[];
 }
 
 export interface ProjectFinance {
@@ -832,6 +861,22 @@ export interface EpisodeRelease {
   held?: true;
 }
 
+/**
+ * One week of a cinema run (box-office.ts). `rental` is what the cinemas paid the distributor, and the only money kept:
+ * ticket sales, admissions and the rest are worked out from it. Provisional the day the week ends, final once the
+ * month's report settles it; `first` is what it said before a settlement moved it; `late` marks a week first recorded
+ * by that settlement.
+ */
+export interface BoxOfficeWeek { week: number; from: string; to: string; territories: number; rental: number; status: 'provisional' | 'final'; first?: number; late?: true }
+
+/** The measures of an audience, kept apart: people at a first showing; hours streamed; a service's views (audiences.ts). */
+export type AudienceMetric = 'viewers' | 'hours' | 'views';
+/**
+ * One reported figure (audiences.ts): the week of the run and its dates, the measure, the figure, whether it is of one
+ * episode or the whole title, and how many territories it was out in. It was recorded on the week's last day, as things stood then. Simulated, every one.
+ */
+export interface AudienceObservation { week: number; from: string; to: string; metric: AudienceMetric; value: number; scope: 'title' | 'episode'; episode?: number; territories: number }
+
 export interface DistributionOffer {
   id: string;
   distributor: string;
@@ -857,6 +902,10 @@ export interface DistributionOffer {
   exclusiveUntil?: string;
   /** What the distributor has reported since release (distribution.ts): gross, after its fee, and overage paid. */
   reported?: { gross: number; net: number; overagePaid: number };
+  /** A cinema run's weeks (box-office.ts), from November 12, 2026; a run reported before then has none for those months. */
+  weeks?: BoxOfficeWeek[];
+  /** What a broadcast or streaming release reported of its audience, week by week (audiences.ts), each as it was recorded. A week not recorded is unknown. */
+  audience?: AudienceObservation[];
   /** A studio that backed the film releasing it as a term of its deal (finance.ts): the deal's id. No guarantee is paid. */
   studioDeal?: string;
 }
@@ -999,7 +1048,7 @@ export interface Project {
    * source-material catalog (sources.ts, from November 12, 2026), kept as it was recorded on the day it was chosen so a
    * save never depends on the catalog: its rights are what Wikidata recorded then, and nothing the game works out.
    */
-  source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef; option?: SourceOption };
+  source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef; option?: SourceOption; changes?: SourceChange[]; approval?: SourceApproval };
   /** When the story is set, as declared: costume, makeup and design awards split by it. Missing means contemporary. */
   storyTime?: 'contemporary' | 'period' | 'future';
   /** Subjects the story takes on, as declared (some awards and sections are for work about them); never read from prose. */
@@ -1172,6 +1221,8 @@ export interface GameState {
   people: Record<string, PersonState>;
   /** Proposals tied to past work (opportunities.ts). */
   opportunities?: Opportunity[];
+  /** The player's agent, the approaches made to agents, and the agents there have been (representation.ts). */
+  representation?: Representation;
   editions: Edition[];
   /** Competing works of the simulated seasons, by key (see Rival.film). */
   rivalFilms: Record<string, RivalFilm>;
