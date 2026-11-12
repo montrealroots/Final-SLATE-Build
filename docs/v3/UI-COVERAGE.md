@@ -2,7 +2,7 @@
 
 Written by `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json`, the walk (`e2e/ui-coverage.spec.ts`, last run 2026-11-12) and the journey sweep (`SLATE_UI_SWEEP`). The owner's brief is `docs/v3/UI-BRIEF.md`.
 
-82 rows. 71 measured, 11 not visited. 0 open defects.
+84 rows. 69 measured, 15 not visited. 0 open defects.
 
 What the columns mean. **Walked**: the screen was opened on purpose and measured at that many window sizes in each browser profile. **Desktop And Phone**: the same screen in the same state at 1280 and at 390 pixels wide, compared for headings, things to press, fields and their order. **Reached In Journeys**: a full play-through reached it and the same measure ran there, at the sizes listed. **Desktop And Phone, In Journeys**: what the screen offered when the same journeys ran in each layout. Browser emulation is not a real device: nothing here measures a virtual keyboard, and that is tracked in the limits below.
 
@@ -36,7 +36,10 @@ What the columns mean. **Walked**: the screen was opened on purpose and measured
 | Industry | A Network | screen | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1024x768 768x1024 320x568), iphone-15-plus (430x932), iphone-15-pro-max (430x739 430x932) | 14 things in both | none found |
 | Industry | An Executive | screen | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1024x768 768x1024 320x568), iphone-15-plus (430x932), iphone-15-pro-max (430x739 430x932) | 9 things in both | none found |
 | Your Work | Projects | screen | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1280x720 768x1024 320x568 1024x768 360x800), iphone-15-plus (430x739 430x932), iphone-15-pro-max (430x739 430x932) | 41 things in both | none found |
-| Your Work | New Script | screen | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 360x740 667x375), desktop (1280x720 768x1024 320x568), iphone-15-plus (430x739 430x932 932x430), iphone-15-pro-max (430x739 430x932), iphone-15-pro-max-landscape (814x380) | 43 things in both, 28 seen only on desktop, 1 only on phone (listed below) | none found |
+| Your Work | New Project | screen | no | not compared | phone (390x844 360x740 667x375), desktop (1280x720 768x1024 320x568), iphone-15-plus (430x739 430x932 932x430), iphone-15-pro-max (430x739 430x932), iphone-15-pro-max-landscape (814x380) | 43 things in both, 28 seen only on desktop, 1 only on phone (listed below) | none found |
+| Your Work | Write An Original | screen | no | not compared | no | not compared | **not visited** |
+| Your Work | Develop A Documentary | screen | no | not compared | no | not compared | **not visited** |
+| Your Work | Adapt A Work | screen | no | not compared | no | not compared | **not visited** |
 | Your Game | Saved Games | screen | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1280x720 768x1024 1920x1080), iphone-15-plus (932x430 430x932), iphone-15-pro-max (430x739 430x932) | 21 things in both, 2 seen only on desktop, 0 only on phone (listed below) | none found |
 | Your Game | Settings | screen | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1280x720 768x1024 320x568 390x844), iphone-15-plus (430x932 932x430), iphone-15-pro-max (430x739 430x932) | 33 things in both | none found |
 | Project | Project: Overview | tab | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1280x720 1024x768 768x1024 320x568), iphone-15-plus (430x739 430x932), iphone-15-pro-max (430x739 430x932) | 69 things in both, 2 seen only on desktop, 2 only on phone (listed below) | none found |
@@ -61,10 +64,9 @@ What the columns mean. **Walked**: the screen was opened on purpose and measured
 | Your Game | Replace This Save? | dialog | no | not compared | no | not compared | **not visited** |
 | Your Game | Delete This Copy? | dialog | no | not compared | no | not compared | **not visited** |
 | Project | Shelve The Project | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | desktop (1280x720 600x960), iphone-15-plus (932x430), iphone-15-pro-max (430x932) | not compared | none found |
-| Script | Choose A Full Story | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1280x720 768x1024 320x568), iphone-15-plus (430x932), iphone-15-pro-max (430x739 430x932) | 6 things in both | none found |
-| Script | A Full Story, Open | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1280x720 768x1024 320x568), iphone-15-plus (932x430 430x932), iphone-15-pro-max (430x739 430x932) | 37 things in both | none found |
 | Script | Choose A Work To Adapt | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | no | not compared | none found |
 | Script | A Work To Adapt, Open | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | no | not compared | none found |
+| Script | Revise From The Work | dialog | no | not compared | no | not compared | **not visited** |
 | Script | Choose Ideas (A Starting Idea, Blend Genres, Build A Logline And The Rest) | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1280x720 768x1024 320x568), iphone-15-plus (430x932), iphone-15-pro-max (430x739 430x932) | 96 things in both, 13 seen only on desktop, 0 only on phone (listed below) | none found |
 | Script | An Idea, Open | dialog | no | not compared | desktop (1280x720), iphone-15-pro-max (430x739) | not compared | none found |
 | Script | Approve This Draft? | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | desktop (1280x720 768x1024 600x960), iphone-15-plus (430x932), iphone-15-pro-max (430x932) | not compared | none found |
@@ -187,4 +189,5 @@ From the same journeys run on a desktop and on a phone: headings and fields one 
 
 ## Reached In Journeys But Not In The Inventory
 
-None.
+- `project:script|@story-open`
+- `project:script|Choose A Full Story`

@@ -20,7 +20,8 @@ async function quickStart(page: Page, place: string): Promise<void> {
 test('3D animation through the UI: voice cast, modeling and rigging before animation, render capacity', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'Media journeys run once at desktop width; layout is covered by the viewport test.');
   await quickStart(page, 'ca-vancouver');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('Gearheart');
   await page.getByLabel('Format').selectOption({ label: 'Short Film' });
   await page.getByLabel('Medium').selectOption({ label: 'Animation' });
@@ -81,7 +82,8 @@ test('3D animation through the UI: voice cast, modeling and rigging before anima
 test('documentary through the UI: contributors, consent, facts, no scripted dialogue', async ({ page }, info) => {
   test.skip(info.project.name !== 'desktop', 'Media journeys run once at desktop width.');
   await quickStart(page, 'nl-amsterdam');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Develop A Documentary' }).click();
   await page.getByLabel('Working Title').fill('Canal Keepers');
   await page.getByLabel('Format').selectOption({ label: 'Documentary Short' });
   await page.getByRole('button', { name: 'Create Project' }).click();

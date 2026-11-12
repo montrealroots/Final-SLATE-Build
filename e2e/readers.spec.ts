@@ -6,7 +6,8 @@ import { addScene, nav, quickLife, saveAndApprove, section } from './helpers';
 test('a story set abroad is researched; drafts, notes and updates keep their dates and scenes', async ({ page }) => {
   await quickLife(page, 'gb-london', '2026-09-01');
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('Far Shore');
   await page.getByLabel('Format').selectOption({ label: 'Short Film' });
   await page.getByText('Where The Story Is Set (Optional)').click();

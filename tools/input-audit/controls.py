@@ -301,11 +301,17 @@ for lab, st in [('"What An Episode Does"', 'series.engine'), ('"How Its People C
 for lab, st in [('"Why They Want It"', 'motivation'), ('"What Stands In The Way"', 'obstacle'), ('"What In Them Pulls Against It"', 'contradiction'), ('"How They Change"', 'arc'), ('"How They Speak"', 'voice')]:
     c(f, lab, I, f'character.{st}', 'shown with the part', 'Your words for the part; the game doesn\'t read them')
 c(f, '"Give Their Scenes, Lines And Relationships To"', D, 'who takes a set-aside character\'s scenes', 'projects.ts archiveCharacter', 'Their scenes, lines, relationships and threads go to the character chosen; with nobody chosen the scenes simply lose them', U('characters', 'can give their scenes, lines and bonds to someone else, with no bond to oneself and none twice'))
-f = 'StoryPicker.tsx'
-c(f, '"Genre"', V)
-c(f, '"Search These Stories"', V)
-c(f, '{`Name For ${c.name}`}', I, 'the names a full story writes', 'blueprints.ts named, applyBlueprint', "The player's own name for one of the story's people, used everywhere the story names them", U('blueprints', "uses the player's names everywhere the story names someone"))
-c(f, '{`Keep My ${c.label}`}', D, "which of the player's words a full story leaves alone", 'blueprints.ts applyBlueprint', 'A kept field is not replaced', U('blueprints', "keeps the player's own words where they choose to, leaves a locked field alone, and says so first"))
+f = 'AdaptWork.tsx'
+c(f, '"Working Title"', R, 'project.title', 'everywhere a project is named', "The project's name; the work's title to start with", U('proposal', 'makes one project'))
+c(f, '"Format"', D, 'axes.format', 'proposal.ts proposeFromSource; projects.ts, production/tasks.ts', 'How many of the recorded people it carries, how many scenes, a season; then the work like any project', U('proposal', 'fits the work to the format'))
+c(f, '"Medium"', D, 'axes.medium', 'production/tasks.ts buildTasks', 'Live action shoots; animation has no shoot days but studio and render time', U('estimates', 'same script, different production method'))
+c(f, "{medium === 'hybrid' ? 'Animation Technique For Animated Scenes' : 'Animation Technique'}", D, 'axes.technique', 'production/tasks.ts buildTasks', 'Which animation pipeline does the work', U('estimates', 'same script, different production method'))
+c(f, '"Episodes"', D, 'axes.episodeCount', 'proposal.ts (the season it proposes); projects.ts', 'How many episodes the season plan has', U('proposal', 'fits the work to the format'))
+c(f, "{episodic ? 'Target Minutes Per Episode' : 'Target Runtime In Minutes'}", D, 'axes.targetRuntimeMin', 'proposal.ts (cast and scene count); estimate.ts', 'A short follows one strand of a long work; a feature compresses it', U('proposal', 'fits the work to the format'))
+c(f, '{`Name For ${c.name}`}', I, 'the names the proposal writes', 'blueprints.ts named, applyBlueprint', "The player's own name for one of the work's people, used everywhere the brief names them", U('proposal', 'makes one project'))
+f = 'ReviseBrief.tsx'
+c(f, '{`Keep My ${c.label}`}', D, "which of the player's words a revision leaves alone", 'blueprints.ts applyBlueprint', 'A kept field is not replaced', U('blueprints', "keeps the player's own words where they choose to, leaves a locked field alone, and says so first"))
+c(f, '{`Keep My ${c.label} And Add None`}', D, "whether a revision adds the proposal's people or outline beside the project's", 'blueprints.ts applyBlueprint', 'Kept: nothing is added; unticked: the proposal\'s are added beside, and nothing is removed', U('proposal', 'revising'))
 f = 'SourcePicker.tsx'
 c(f, '"Search Works"', V)
 c(f, '"Medium"', V)

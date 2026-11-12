@@ -936,6 +936,12 @@ export interface Project {
   series?: { engine?: string; changes?: string; recurring?: string[]; continuation?: string };
   /** The full story this project was started from, if one was applied: its ID, version and title, and which of its characters became which of the project's. */
   blueprint?: { id: string; v: number; title: string; at: number; names: Record<string, string> };
+  /**
+   * The brief proposed from a real work (proposal.ts), from November 12, 2026: the work, the approach, when, and for each
+   * field it wrote whether that was sourced, proposed or unknown, why, and the words it wrote. A field whose words now
+   * differ from those is the player's own.
+   */
+  proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string> };
   /** Fields the player locked: a full story or a shuffle leaves them alone (blueprints.ts FIELD_LABELS has the keys). */
   locks?: string[];
   /**

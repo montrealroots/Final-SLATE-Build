@@ -1273,3 +1273,15 @@ the balance and engine performance tests, and both complete browser suites (141 
   (HTTP 403).
 
 This base is not claimed to be finished, bug-free or fully realistic.
+
+## v4 Milestones A And B (first part): The Ledger, The Quota Retired, Source-First Creation
+
+November 12, 2026. Evidence for the pull request that carries them.
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/v4-ledger.test.ts` | 1, fixed | Writing the ledger caught an overclaim: the size budget row was marked verified with no unit test. It is implemented. |
+| `tests/proposal.test.ts` | 1, fixed | 12 tests. Every one of the 643 catalog works proposes a structurally complete film and series brief. The approach test caught the composer inventing an ending for "Moved To Another Time Or Place", which keeps the work's ending by its own definition. |
+| `tests/sources.test.ts` | 0 | The game-date limit; the enriched fields kept as recorded; Sanderson's works without his bibliography, series or editions. |
+| `e2e/ui-coverage.spec.ts`, rebuilt around Adapt A Work | 2 real layout defects, fixed | Home at 320 pixels wide: a project row held its title button and a phase label that could not wrap, so a long title in pre-production pushed the page 63 pixels sideways; the row now wraps and the title wraps within it. Adapt A Work: the works list was drawn before the game's genre names had loaded, and each card grew when they arrived, moving the page 25 pixels; the list now waits for them (and is not held back if they fail). |
+| `e2e/adapt.spec.ts`, desktop and phone | 1 real bug, fixed; 3 journey mistakes, fixed | The film journey found that Revise From The Work replaced the player's working title without offering to keep it (the preview read the title and genres as empty). The journey's own mistakes: a project card's name carries a started note; the save was read before the autosave; the series work had no recorded series. |

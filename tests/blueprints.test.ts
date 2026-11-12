@@ -1,5 +1,5 @@
 // Full stories (engine/blueprints.ts; the v3 package, 01-STORIES-AND-CHARACTERS.md, suites T01 and T03).
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import registry from '../src/data/genre-registry.json';
 import { applyBlueprint, blueprintProblems, formatClass, parseBlueprints, previewBlueprint, setLock, type Blueprint } from '../src/engine/blueprints';
@@ -10,9 +10,9 @@ import { newGame } from '../src/engine/state';
 import type { Format, GameState, Project } from '../src/engine/types';
 
 const GENRES = new Set((registry as { records: { id: string }[] }).records.map((r) => r.id));
-const DIR = 'src/blueprints';
-const files = readdirSync(DIR).filter((f) => f.endsWith('.bp'));
-const all: Blueprint[] = files.flatMap((f) => parseBlueprints(readFileSync(`${DIR}/${f}`, 'utf8')).blueprints);
+// The two stories these tests apply, kept as a fixture when the story library was retired (November 12, 2026).
+const FIXTURE = readFileSync('tests/fixtures/stories.bp', 'utf8');
+const all: Blueprint[] = parseBlueprints(FIXTURE).blueprints;
 const byId = (id: string) => all.find((b) => b.id === id)!;
 
 function game(format: Format, episodes = 1): { s: GameState; p: Project } {
@@ -21,24 +21,16 @@ function game(format: Format, episodes = 1): { s: GameState; p: Project } {
   return { s, p };
 }
 
-describe('the blueprint files', () => {
-  it('every file reads cleanly, and every story in it is complete', () => {
-    for (const f of files) {
-      const { blueprints, problems } = parseBlueprints(readFileSync(`${DIR}/${f}`, 'utf8'));
-      expect(problems, f).toEqual([]);
-      for (const b of blueprints) expect(blueprintProblems(b, GENRES), b.id).toEqual([]);
-      // A genre's file holds that genre's stories; a mixed file is named for its pair.
-      for (const b of blueprints) expect(b.id.split('.')[0], b.id).toBe(f.slice(0, -3));
-    }
-  });
-
-  it('no two stories share an ID or a title', () => {
-    expect(new Set(all.map((b) => b.id)).size).toBe(all.length);
-    expect(new Set(all.map((b) => b.title.toLowerCase())).size).toBe(all.length);
+describe('the blueprint format', () => {
+  it('the fixture reads cleanly, and each story in it is complete', () => {
+    const { blueprints, problems } = parseBlueprints(FIXTURE);
+    expect(problems).toEqual([]);
+    expect(blueprints.map((b) => b.id)).toEqual(expect.arrayContaining(['heist.f01', 'nordic-noir.t01']));
+    for (const b of blueprints) expect(blueprintProblems(b, GENRES), b.id).toEqual([]);
   });
 
   it('says what is wrong with an incomplete story, and never counts it', () => {
-    const { blueprints } = parseBlueprints(readFileSync(`${DIR}/heist.bp`, 'utf8'));
+    const { blueprints } = parseBlueprints(FIXTURE);
     const good = blueprints[0];
     const broken: [string, (b: Blueprint) => void, RegExp][] = [
       ['a made-up genre', (b) => { b.genre = 'zombie-western-opera'; }, /not one of the game's genres/],
@@ -70,7 +62,8 @@ describe('applying a film', () => {
     const b = byId('heist.f01');
     const pre = previewBlueprint(p, b);
     expect(pre.refusal).toBeNull();
-    expect(pre.overwrites).toEqual([]);
+    // The working title is the player's from the moment a project exists, so it is offered to keep; nothing else is written yet.
+    expect(pre.overwrites).toEqual([{ key: 'title', label: 'Working Title', current: 'Untitled' }]);
     expect(pre.changes.map((c) => c.key)).toEqual(expect.arrayContaining(['title', 'genres', 'story.logline', 'story.synopsis', 'characters', 'relationships', 'scenes', 'suggestions']));
     applyBlueprint(s, p, b);
     expect(p.title).toBe('The Quiet Floor');
@@ -114,7 +107,7 @@ describe('applying a film', () => {
     p.axes.tone = 'Mine';
     setLock(p, 'tone', true);
     const pre = previewBlueprint(p, byId('heist.f01'));
-    expect(pre.overwrites).toEqual([{ key: 'story.logline', label: 'Logline', current: 'My own logline.' }]);
+    expect(pre.overwrites).toEqual([{ key: 'title', label: 'Working Title', current: 'Untitled' }, { key: 'story.logline', label: 'Logline', current: 'My own logline.' }]);
     expect(pre.locked).toEqual(['tone']);
     applyBlueprint(s, p, byId('heist.f01'), { keep: ['story.logline'] });
     expect(p.story.logline).toBe('My own logline.');

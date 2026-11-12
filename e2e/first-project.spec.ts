@@ -119,7 +119,8 @@ test('first project: write, approve, a refusal, the agreed backing, production, 
 
   // The next project: the first one's history stays, the starting backing is spent, and a commissioner now listens.
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('Night Shift At The Depot');
   await page.getByRole('button', { name: 'Create Project' }).click();
   await expect(page.getByRole('heading', { name: 'Night Shift At The Depot', level: 1 })).toBeVisible();

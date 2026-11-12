@@ -7,13 +7,14 @@
 import { expect, test } from './test';
 import { nav, openStart, quickLife } from './helpers';
 
-test('typing straight into New Script keeps every character, even when the next frame comes late', async ({ page }) => {
+test('typing straight into Write An Original keeps every character, even when the next frame comes late', async ({ page }) => {
   await quickLife(page, 'ca-toronto', '2026-03-02');
   await nav(page, 'Projects');
   // Timing only: every animation frame arrives 1.5 seconds late, as on a very busy device, and the title takes longer than
   // that to type, so typing always spans the moment the frame arrives. The app's code is unchanged.
   await page.evaluate(() => { const raf = window.requestAnimationFrame.bind(window); window.requestAnimationFrame = (cb) => window.setTimeout(() => raf(cb), 1500); });
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').pressSequentially('The Last Ferry To Wolfe Island', { delay: 90 });
   await expect(page.getByLabel('Working Title')).toHaveValue('The Last Ferry To Wolfe Island');
   await expect(page.getByLabel('Working Title')).toBeFocused();

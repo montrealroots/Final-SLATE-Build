@@ -29,7 +29,9 @@ test('J08: a horror film pitched to two studios, optioned by one for its reasons
   await expect.poll(async () => (await readSavedState(page)).industry?.studios?.length, { timeout: 20_000 }).toBe(2);
   await pinSeed(page, Number(process.env.PITCH_SEED ?? 3));
 
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('The Long Night');
   await page.getByLabel('Format').selectOption({ label: 'Feature Film' });
   await page.getByLabel(/Target Runtime In Minutes/).fill('90');

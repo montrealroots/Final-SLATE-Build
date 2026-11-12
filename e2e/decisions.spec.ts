@@ -169,10 +169,11 @@ test('release settings: several episodes on the premiere, one country and then a
   expect(r).toEqual([['GB', '2026-10-01,2026-10-01,2026-10-01,2026-10-08'], ['IE', '2026-10-01,2026-10-08,2026-10-15,2026-10-22']]);
 });
 
-/** Start a feature through the New Script form, with genres in the order given (the first added is primary). */
+/** Start a feature through the Write An Original form, with genres in the order given (the first added is primary). */
 async function feature(page: Page, title: string, genres: string[], primary?: string, language?: string): Promise<void> {
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill(title);
   await page.getByLabel('Format').selectOption({ label: 'Feature Film' });
   await page.getByLabel(/Target (Runtime In Minutes|Minutes Per Episode)/).fill('90');

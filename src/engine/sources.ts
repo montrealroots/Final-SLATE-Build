@@ -8,7 +8,10 @@
 //   about the law, and nothing the player agrees in the game grants a right to a real work.
 // - Genres. A work keeps the genres Wikidata records. One of the game's own genres is attached only where the reviewed
 //   table (tools/sources/genre-map.mjs) says a recorded genre is that genre, and the reason is kept with it.
-// - No synopsis is written: Wikidata has none, and one is not invented.
+// - No synopsis is written: Wikidata has none, and one is not invented. From November 12, 2026 a work can carry the
+//   English Wikipedia article's own lead summary (tools/sources/enrich.mjs), always shown as that article's words with
+//   its licence, never as the game's.
+// - A work first published after the game's year is not offered (searchSources byYear).
 import sourcesUrl from '../data/sources.json?url';
 
 export type SourceMedium = 'novel' | 'short-story' | 'play' | 'poem' | 'comic' | 'video-game' | 'online' | 'light-novel';
@@ -40,6 +43,24 @@ export interface SourceWork {
   provenance: { source: string; licence: string; retrieved: string };
   /** How many language editions of Wikipedia have an article on it: how widely it is written about, nothing more. */
   wikipedias: number;
+  // Added by tools/sources/enrich.mjs (November 12, 2026). Each is what Wikidata records; absent or empty is not recorded.
+  /** Characters (P674), most written about first, with their recorded sex or gender (P21) and kind (P31: "fictional horse"). */
+  characters?: { id: string; name: string; gender?: string; kind?: string; sitelinks?: number }[];
+  /** Where it is set (P840) and when (P2408), and what it is about (P921). */
+  places?: { id: string; name: string }[];
+  periods?: string[];
+  subjects?: string[];
+  /** The installment before and after it (P155, P156). */
+  follows?: { id: string; title: string } | null;
+  followedBy?: { id: string; title: string } | null;
+  /** Its form as recorded (P7937): novel, novella, short story, collection. */
+  forms?: string[];
+  /** Works recorded as based on it (P144), earliest first, at most twelve; and how many there are. */
+  adaptations?: { id: string; title: string; kind: string | null; year: number | null }[];
+  adaptationCount?: number;
+  /** The English Wikipedia article's own lead summary, with its licence: never the game's words. */
+  summary?: { text: string; from: string; article: string; link: string; licence: string; retrieved: string } | null;
+  enriched?: { source: string; retrieved: string };
 }
 export interface SourceCatalog { version: 1; source: string; licence: string; retrieved: string; records: SourceWork[] }
 
@@ -86,10 +107,12 @@ export function rightsLine(w: SourceWork): string {
 }
 
 /** Works a search finds: every word in the title, a creator's name, a recorded genre or the description. */
-export function searchSources(c: SourceCatalog, o: { text?: string; medium?: SourceMedium | ''; genre?: string; standing?: RightsStanding | '' }): SourceWork[] {
+export function searchSources(c: SourceCatalog, o: { text?: string; medium?: SourceMedium | ''; genre?: string; standing?: RightsStanding | ''; byYear?: number }): SourceWork[] {
   const words = (o.text ?? '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').split(/\s+/).filter(Boolean);
   const hay = (w: SourceWork) => `${w.title} ${w.creators.map((x) => x.name).join(' ')} ${w.recordedGenres.map((g) => g.label).join(' ')} ${w.description ?? ''}`.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
   return c.records
+    // A work first published after the game's year doesn't exist yet in the game (the v4 package, 01). One with no year recorded is offered.
+    .filter((w) => o.byYear === undefined || w.year === null || w.year <= o.byYear)
     .filter((w) => (!o.medium || w.medium === o.medium) && (!o.genre || w.genres.some((g) => g.genre === o.genre)) && (!o.standing || rightsStanding(w) === o.standing))
     .filter((w) => { if (!words.length) return true; const h = hay(w); return words.every((x) => h.includes(x)); })
     .sort((a, b) => b.wikipedias - a.wikipedias || a.title.localeCompare(b.title));

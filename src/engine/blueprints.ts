@@ -62,6 +62,8 @@ export interface Blueprint {
   review: { status: 'reviewed' | 'authored'; at: string; note: string };
   /** The line it starts on in its file, for a problem's message. */
   line: number;
+  /** Proposed from a real work (proposal.ts), not written for this game: applying it records the work and each field's origin. */
+  origin?: { kind: 'source'; workId: string; title: string; approach: import('./types').AdaptationApproach };
 }
 
 const split = (s: string, by = '|') => s.split(by).map((x) => x.trim());
@@ -272,10 +274,12 @@ const nameOf = (b: Blueprint, o: BlueprintOptions) => (key: string) => (o.names?
 /** Put the characters' names, as the player has them, where the story's words say {key}. */
 export const named = (text: string, b: Blueprint, o: BlueprintOptions = {}): string => text.replace(/\{(\w+)\}/g, (_m, k: string) => nameOf(b, o)(k));
 
-function current(p: Project): Record<string, string> {
+/** The words each field holds now, by FIELD_LABELS key: what a proposal would replace, and what it wrote. */
+export function briefFields(p: Project): Record<string, string> {
   const s = p.story;
   return {
-    title: '', genres: '', tone: p.axes.tone, year: p.axes.storyYear === undefined ? '' : String(p.axes.storyYear), setting: p.axes.storySetting,
+    // Until November 12, 2026 the title and genres read as empty here, so a revision replaced them without offering to keep them.
+    title: p.title, genres: p.axes.genres.map((g) => g.id).join(', '), tone: p.axes.tone, year: p.axes.storyYear === undefined ? '' : String(p.axes.storyYear), setting: p.axes.storySetting,
     'story.logline': s.logline, 'story.premise': s.premise, 'story.synopsis': s.synopsis ?? '', 'story.question': s.question, 'story.theme': s.theme, 'story.audience': s.audience ?? '',
     'story.viewpoint': s.viewpoint, 'story.stakes': s.stakes, 'story.conflict': s.conflict, 'story.ending': s.ending, 'story.intendedExperience': s.intendedExperience, 'story.structure': s.structure ?? '',
     'series.engine': p.series?.engine ?? '', 'series.arc': p.seasonArc ?? '', 'series.changes': p.series?.changes ?? '', 'series.recurring': (p.series?.recurring ?? []).join('; '), 'series.continuation': p.series?.continuation ?? '',
@@ -313,7 +317,7 @@ export function previewBlueprint(p: Project, b: Blueprint, o: BlueprintOptions =
   if (b.doc) add('documentary', `${b.doc.subjects.length} to approach, ${b.doc.asks.length} questions, ${b.doc.evidence.length} things it would have to show. Nobody has agreed to anything, and nothing has been found.`);
   add('suggestions', `Look: ${b.look} Sound: ${b.sound}`);
   const locks = new Set(p.locks ?? []);
-  const now = current(p);
+  const now = briefFields(p);
   out.locked = out.changes.filter((c) => locks.has(c.key)).map((c) => c.key);
   for (const c of out.changes) if (!locks.has(c.key) && now[c.key]?.trim() && now[c.key].trim() !== c.text.trim()) out.overwrites.push({ key: c.key, label: c.label, current: now[c.key] });
   if (p.characters.length) out.warnings.push(`This script already has ${p.characters.length === 1 ? 'a character' : `${p.characters.length} characters`}. The story's people are added beside them; nobody is removed or renamed.`);
@@ -327,7 +331,7 @@ export function previewBlueprint(p: Project, b: Blueprint, o: BlueprintOptions =
  * and for a series its season. One step; the caller snapshots the project first, so Undo takes all of it back.
  * Returns what it did, in sentences.
  */
-export function applyBlueprint(state: GameState, p: Project, b: Blueprint, o: BlueprintOptions = {}): string[] {
+export function applyBlueprint(state: GameState, p: Project, b: Blueprint, o: BlueprintOptions = {}, origin?: { origin: Record<string, import('./proposal').FieldOrigin>; why: Record<string, string> }): string[] {
   assertEditable(p);
   const pre = previewBlueprint(p, b, o);
   if (pre.refusal) throw new Error(pre.refusal);
@@ -391,7 +395,19 @@ export function applyBlueprint(state: GameState, p: Project, b: Blueprint, o: Bl
     for (const e of b.doc.evidence) p.evidence.push({ id: newId(state, 'v'), claim: e.claim, status: 'unverified', sourceNote: e.note, verified: false });
   }
   if (on('suggestions')) (p.brief ??= { picks: [] }).suggestions = { look: b.look, sound: b.sound };
-  p.blueprint = { id: b.id, v: b.v, title: b.title, at: state.now, names: ids };
+  if (b.origin) {
+    // A proposal from a real work records the work and where each field it wrote came from, and the words it wrote, so a
+    // field the player has since changed reads as theirs. It is not "an original story written for this game".
+    const wrote = briefFields(p);
+    const written = pre.changes.map((c) => c.key).filter(on);
+    const prior = p.proposal;
+    p.proposal = {
+      workId: b.origin.workId, title: b.origin.title, approach: b.origin.approach, at: state.now,
+      origin: { ...(prior?.workId === b.origin.workId ? prior.origin : {}), ...Object.fromEntries(written.map((k) => [k, origin?.origin[k] ?? 'proposed'])) },
+      why: { ...(prior?.workId === b.origin.workId ? prior.why : {}), ...Object.fromEntries(written.filter((k) => origin?.why[k]).map((k) => [k, origin!.why[k]])) },
+      applied: { ...(prior?.workId === b.origin.workId ? prior.applied : {}), ...Object.fromEntries(written.filter((k) => k in wrote).map((k) => [k, wrote[k]])) },
+    };
+  } else p.blueprint = { id: b.id, v: b.v, title: b.title, at: state.now, names: ids };
   return did;
 }
 

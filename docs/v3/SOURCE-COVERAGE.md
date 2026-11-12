@@ -2,21 +2,21 @@
 
 Written by `V3_WRITE=1 npx vitest run tests/sources.test.ts` from `src/data/sources.json`. Nothing here is typed by hand.
 
-The catalog holds **576 distinct works**, read from Wikidata (CC0) on 2026-11-12 by `tools/sources/import.mjs`. Each is a work, not an edition or a translation of one, a franchise or a series of separate books. They were chosen by how many language editions of Wikipedia have an article on them, most first, within each medium: a measure of being widely written about, and not a judgement of worth. It leans towards older, European and Japanese works for that reason, and says so here rather than claiming balance.
+The catalog holds **643 distinct works**, read from Wikidata (CC0) on 2026-11-12 by `tools/sources/import.mjs`. Each is a work, not an edition or a translation of one, a franchise or a series of separate books. They were chosen by how many language editions of Wikipedia have an article on them, most first, within each medium: a measure of being widely written about, and not a judgement of worth. It leans towards older, European and Japanese works for that reason, and says so here rather than claiming balance.
 
 ## By Medium
 
 | Medium | Works | With a creator recorded | With a year recorded | Recorded as public domain somewhere | Recorded as copyrighted | No copyright status recorded | With one of the game's genres |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Novel | 190 | 184 | 188 | 95 | 29 | 66 | 153 |
-| Short Story | 60 | 57 | 53 | 46 | 0 | 14 | 44 |
+| Novel | 251 | 245 | 241 | 95 | 29 | 127 | 198 |
+| Short Story | 66 | 63 | 59 | 46 | 0 | 20 | 47 |
 | Play | 60 | 60 | 59 | 39 | 0 | 21 | 45 |
 | Poem Or Epic | 25 | 20 | 16 | 16 | 0 | 9 | 6 |
 | Comic, Graphic Novel Or Manga | 70 | 68 | 17 | 0 | 3 | 67 | 58 |
 | Video Game | 71 | 57 | 71 | 0 | 24 | 47 | 15 |
 | Online Fiction, Webcomic Or Webtoon | 70 | 47 | 32 | 0 | 3 | 67 | 30 |
 | Light Novel | 30 | 29 | 20 | 0 | 0 | 30 | 24 |
-| **All** | 576 | 522 | 456 | 196 | 59 | 321 | 375 |
+| **All** | 643 | 589 | 515 | 196 | 59 | 388 | 423 |
 
 A copyright status is one Wikidata states, with the place it applies to. The game works none out. "Recorded as public domain somewhere" is not a statement that a work is free to use where you are.
 
@@ -26,15 +26,15 @@ A work has one of the game's genres only where the reviewed table (`tools/source
 
 | Genre | Works | Of those, recorded as public domain somewhere |
 | --- | --- | --- |
-| Fantasy | 77 | 8 |
+| Fantasy | 116 | 8 |
+| Science Fiction | 60 | 10 |
 | Adventure | 59 | 18 |
-| Science Fiction | 50 | 10 |
-| Romance | 35 | 13 |
+| Romance | 36 | 13 |
 | Comedy | 34 | 14 |
 | Crime | 34 | 23 |
+| Detective | 33 | 23 |
 | Action | 32 | 0 |
-| Detective | 32 | 23 |
-| Horror | 29 | 12 |
+| Horror | 30 | 12 |
 | Coming Of Age | 28 | 13 |
 | Historical Fiction | 24 | 16 |
 | Tragedy | 24 | 13 |
@@ -76,7 +76,7 @@ A work has one of the game's genres only where the reviewed table (`tools/source
 
 ## Recorded Genres Left Unmapped
 
-245 genres Wikidata records on these works are not one of the game's and map to nothing: how a game is played, a readership, or a mode with no one genre here. The most used: action-adventure game (21), philosophical fiction (21), young adult fiction (19), first-person shooter (17), comedy drama anime and manga (14), Gothic fiction (11), school anime and manga (10), psychological fiction (10), serialized fiction (9), political fiction (8), video game with LGBT character (8), harem (8), third-person shooter (7), role-playing video game (7), philosophical novel (7), fable (7), real-time strategy (6), massively multiplayer online game (6), social fiction (6), ecchi (6), metafiction (5), life simulation game (5), developmental novel (5), autobiography (4), family saga (4).
+247 genres Wikidata records on these works are not one of the game's and map to nothing: how a game is played, a readership, or a mode with no one genre here. The most used: young adult fiction (21), action-adventure game (21), philosophical fiction (21), first-person shooter (17), comedy drama anime and manga (14), Gothic fiction (11), school anime and manga (10), psychological fiction (10), serialized fiction (9), political fiction (8), video game with LGBT character (8), harem (8), third-person shooter (7), role-playing video game (7), philosophical novel (7), fable (7), real-time strategy (6), massively multiplayer online game (6), social fiction (6), ecchi (6), fiction (6), metafiction (5), life simulation game (5), developmental novel (5), autobiography (4).
 
 ## What Is Not Here
 

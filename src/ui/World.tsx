@@ -109,12 +109,13 @@ export function Home() {
 
       <div className="home-grid">
         <Panel title="Projects" subtitle={projects.length ? 'What you are making, and where each one stands.' : undefined}
-          actions={<button className="btn btn-sm btn-primary" onClick={() => store.go({ view: 'new-project' })}>New Script</button>}>
+          actions={<button className="btn btn-sm btn-primary" onClick={() => store.go({ view: 'new-project' })}>New Project</button>}>
           {projects.length ? (
             <div className="col gap-2">
               {projects.map((pr) => (
-                <div key={pr.id} className="row-between">
-                  <button className="btn btn-ghost btn-sm" style={{ marginLeft: 'calc(-1 * var(--s3))' }} onClick={() => store.go({ view: 'project', projectId: pr.id, tab: 'overview' })}>{pr.title}{startedNote(g.projects, pr, zone) ? <span className="dim">{`, ${startedNote(g.projects, pr, zone)}`}</span> : null}</button>
+                <div key={pr.id} className="row-between wrap">
+                  {/* A long title wraps, and the phase goes under it on a narrow screen (until November 12, 2026 neither could, and the row pushed the page sideways at 320 pixels). */}
+                  <button className="btn btn-ghost btn-sm" style={{ marginLeft: 'calc(-1 * var(--s3))', whiteSpace: 'normal', textAlign: 'left', minWidth: 0 }} onClick={() => store.go({ view: 'project', projectId: pr.id, tab: 'overview' })}>{pr.title}{startedNote(g.projects, pr, zone) ? <span className="dim">{`, ${startedNote(g.projects, pr, zone)}`}</span> : null}</button>
                   <span className="xs dim nowrap">{PHASE_LABEL[pr.phase]}</span>
                 </div>
               ))}

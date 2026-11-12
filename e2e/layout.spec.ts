@@ -11,10 +11,11 @@ test('the script page lines up: boxes level in each row, buttons under their box
   await freshStart(page);
   await quickLife(page, 'gb-london', '2026-01-05');
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
-  // The New Script form: a column of fields, a place picker and a row of budgets.
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
+  // The Write An Original form (New Script until November 12, 2026): a column of fields, a place picker and a row of budgets.
   await page.getByLabel('Working Title').fill('Last Shift In Briar Hollow');
-  expect(await layoutFindings(page), 'New Script').toEqual([]);
+  expect(await layoutFindings(page), 'Write An Original').toEqual([]);
   await page.getByLabel('Format').selectOption({ label: 'Feature Film' });
   await page.getByRole('radio', { name: /^Low Budget:/ }).check();
   await page.getByRole('button', { name: 'Create Project' }).click();

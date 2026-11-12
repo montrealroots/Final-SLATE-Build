@@ -1,4 +1,11 @@
 screen,field,occurrence,kind_of_field,control,what_reads_it,picker_or_why_not,typed_value,test
+AdaptWork.tsx,"""Working Title""",1,record,TextField,everywhere a project is named,"None: a name or a record, typed. Name suggestions: milestone C",Unchanged,tests/proposal.test.ts::makes one project
+AdaptWork.tsx,"""Format""",1,decision,SelectField,"proposal.ts proposeFromSource; projects.ts, production/tasks.ts",None: already a short list to choose from,n/a,tests/proposal.test.ts::fits the work to the format
+AdaptWork.tsx,"""Medium""",1,decision,SelectField,production/tasks.ts buildTasks,None: already a short list to choose from,n/a,"tests/estimates.test.ts::same script, different production method"
+AdaptWork.tsx,{medium === 'hybrid' ? 'Animation Technique For Animated Scenes' : 'Animation Technique'},1,decision,SelectField,production/tasks.ts buildTasks,None: already a short list to choose from,n/a,"tests/estimates.test.ts::same script, different production method"
+AdaptWork.tsx,"""Episodes""",1,decision,NumberField,proposal.ts (the season it proposes); projects.ts,"None: a quantity, entered as a number within its range",n/a,tests/proposal.test.ts::fits the work to the format
+AdaptWork.tsx,{episodic ? 'Target Minutes Per Episode' : 'Target Runtime In Minutes'},1,decision,NumberField,proposal.ts (cast and scene count); estimate.ts,"None: a quantity, entered as a number within its range",n/a,tests/proposal.test.ts::fits the work to the format
+AdaptWork.tsx,{`Name For ${c.name}`},1,identity,TextField,"blueprints.ts named, applyBlueprint","None: a name or a record, typed. Name suggestions: milestone C",Unchanged,tests/proposal.test.ts::makes one project
 Catalog.tsx,"""Title Or Person""",1,view,TextField,,"None: a control of the screen, not of the game",n/a,
 Catalog.tsx,"""Search Titles""",1,view,TextField,,"None: a control of the screen, not of the game",n/a,
 Catalog.tsx,"""Show""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,
@@ -113,6 +120,8 @@ Projects.tsx,"""Story Setting Place""",1,decision,PlacePicker,projects.ts derive
 Projects.tsx,"""Production Base""",1,decision,PlacePicker,production/schedule.ts isWorkingDay; weather.ts,None: the world search of real places (destinations: milestone E),n/a,tests/depth-gaps-production.test.ts::rain stops an exterior day ; e2e/journeys.spec.ts::live action in a wet October
 Projects.tsx,"""Search Genres""",1,view,TextField (search),,"None: a control of the screen, not of the game",n/a,
 Projects.tsx,"""Years That Pass In The Story""",1,decision,NumberField,sequel.ts continueProject,"None: a quantity, entered as a number within its range",n/a,tests/minors.test.ts::ages a series' characters by the years that pass between seasons
+ReviseBrief.tsx,{`Keep My ${c.label}`},1,decision,Check,blueprints.ts applyBlueprint,None: a yes or no,n/a,"tests/blueprints.test.ts::keeps the player's own words where they choose to, leaves a locked field alone, and says so first"
+ReviseBrief.tsx,{`Keep My ${c.label} And Add None`},1,decision,Check,blueprints.ts applyBlueprint,None: a yes or no,n/a,tests/proposal.test.ts::revising
 SavedGames.tsx,"""Save Name""",1,record,TextField,the saved games list,"None: a name or a record, typed. Name suggestions: milestone C",Unchanged,
 SavedGames.tsx,"""Larger Text""",1,view,Check,document data-text,"None: a control of the screen, not of the game",n/a,
 SavedGames.tsx,"""Wake Me For Obligations""",1,decision,Check,state.ts runEvents,None: a yes or no,n/a,tests/foundation.test.ts::sleep wakes for obligations by default
@@ -267,10 +276,6 @@ SourcePicker.tsx,"""Medium""",1,view,SelectField,,"None: a control of the screen
 SourcePicker.tsx,"""One Of The Game's Genres""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,
 SourcePicker.tsx,"""What Is Recorded About Its Rights""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,
 Startup.tsx,{`Replacement Place ${i + 1}`},1,decision,WorldPlacePicker,save.ts repairSave,None: the world search of real places (destinations: milestone E),n/a,"tests/migration.test.ts::open after a repair that keeps a backup and changes only the places ; e2e/failures.spec.ts::asks for a replacement, keeping a backup"
-StoryPicker.tsx,"""Genre""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,
-StoryPicker.tsx,"""Search These Stories""",1,view,TextField,,"None: a control of the screen, not of the game",n/a,
-StoryPicker.tsx,{`Name For ${c.name}`},1,identity,TextField,"blueprints.ts named, applyBlueprint","None: a name or a record, typed. Name suggestions: milestone C",Unchanged,tests/blueprints.test.ts::uses the player's names everywhere the story names someone
-StoryPicker.tsx,{`Keep My ${c.label}`},1,decision,Check,blueprints.ts applyBlueprint,None: a yes or no,n/a,"tests/blueprints.test.ts::keeps the player's own words where they choose to, leaves a locked field alone, and says so first"
 WorkViews.tsx,"""Song Title""",1,record,TextField,everywhere a song is named,"None: a name or a record, typed. Name suggestions: milestone C",Unchanged,
 WorkViews.tsx,"""Where It Comes From""",1,decision,SelectField,songs.ts songTasks; awards-rules.ts songProblems,None: already a short list to choose from,n/a,"tests/songs.test.ts::a commissioned song is written by a songwriter and a lyricist ; e2e/journey-c.spec.ts::songs written, recorded and cleared in production"
 WorkViews.tsx,"""Lyrics""",1,decision,SelectField,songs.ts songTasks,None: already a short list to choose from,n/a,"tests/songs.test.ts::a commissioned song is written by a songwriter and a lyricist ; e2e/journey-c.spec.ts::songs written, recorded and cleared in production"

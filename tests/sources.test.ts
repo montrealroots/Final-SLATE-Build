@@ -76,6 +76,30 @@ describe('the source-material catalog', () => {
     expect(searchSources(catalog, { text: 'zzzz no such work' })).toEqual([]);
   });
 
+  it('offers only works published by the game\'s year; one with no year recorded is offered', () => {
+    const sanderson = (y?: number) => searchSources(catalog, { text: 'sanderson', byYear: y }).map((x) => x.title);
+    expect(sanderson()).toContain('Mistborn: The Final Empire');
+    expect(sanderson(2005)).not.toContain('Mistborn: The Final Empire'); // 2006
+    expect(sanderson(2006)).toContain('Mistborn: The Final Empire');
+    expect(searchSources(catalog, { byYear: 1500 }).every((x) => x.year === null || x.year <= 1500)).toBe(true);
+    expect(searchSources(catalog, { byYear: 1500 }).some((x) => x.year === null)).toBe(works.some((x) => x.year === null));
+  });
+
+  it('keeps what enrichment added as recorded, with the summary always as its article\'s words and licence', () => {
+    for (const w of works) {
+      for (const c of w.characters ?? []) expect(c.name, w.id).not.toMatch(/^Q\d+$/);
+      if (w.summary) expect(w.summary).toMatchObject({ from: 'English Wikipedia', licence: 'CC BY-SA 4.0' });
+      expect((w.adaptations ?? []).length, w.id).toBeLessThanOrEqual(12);
+      if (w.adaptationCount) expect(w.adaptationCount, w.id).toBeGreaterThanOrEqual(w.adaptations!.length);
+    }
+    expect(works.filter((w) => w.summary).length / works.length).toBeGreaterThan(0.9);
+    // Sanderson's works as Wikidata records them, without his bibliography, series, editions or audiobooks.
+    const his = works.filter((w) => w.creators.some((c) => c.id === 'wd:Q457608'));
+    expect(his.length).toBeGreaterThan(50);
+    expect(his.some((w) => /bibliography/i.test(w.title) || /^White Sand$/.test(w.title))).toBe(false);
+    expect(his.find((w) => w.title === 'The Emperor\'s Soul')?.forms).toContain('novella');
+  });
+
   it('leaves out an edition, a translation, a franchise and a record with no English title', () => {
     const raw = (kinds: [string, string][], title = 'A Title') => ({ id: 'Q1', title, description: null, article: null, creators: new Map(), genres: new Map(), languages: new Map(), countries: new Map(), dates: [], series: null, copyright: [], kinds: new Map(kinds) });
     expect(toRecord(raw([['Q3331189', 'version, edition or translation']]), 'novel', '2026-11-12')).toEqual({ skip: 'an edition, a translation, a franchise or a series, not a work' });

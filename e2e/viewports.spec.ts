@@ -46,7 +46,8 @@ test('every main screen fits each viewport without sideways scrolling', async ({
   test.skip(info.project.name !== 'desktop', 'Viewports are set explicitly in this test.');
   await seedGame(page);
   // A project with long names, several genres and an approved draft.
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('The Extraordinarily Long Working Title Of A Midwinter Polar-Night Anthology');
   await page.getByLabel('Format').selectOption({ label: 'Anthology Series' });
   await page.getByLabel('Episodes').fill('2');

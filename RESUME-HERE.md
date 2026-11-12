@@ -108,6 +108,31 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
   summary kept with its CC BY-SA attribution as the premise. The preset picker, `src/blueprints/` and
   `e2e/stories.spec.ts` are removed in the same pull request that adds source-first creation, because the coverage
   walk reaches its relationship and rule dialogs through an applied story.
+- **Milestone B, first part: source-first creation (built November 12, 2026).**
+  - New Project offers Adapt A Work (first), Write An Original and Develop A Documentary, each its own route
+    (`view: 'new-project', tab: 'adapt' | 'original' | 'documentary'`). The old form is Write An Original; every
+    journey that said "New Script" now presses New Project, then Write An Original.
+  - Adapt A Work (`ui/AdaptWork.tsx`): the works published by the game's year (`searchSources byYear`), a work's
+    recorded facts (`SourcePicker.tsx WorkFacts`), format, method, approach and budget size, then the whole brief
+    proposed (`engine/proposal.ts proposeFromSource`), each field marked From The Work, Proposed or Not Recorded with
+    why, names editable; Create Project calls `createFromSource`, which removes the project again if any step fails.
+  - The proposal is a `Blueprint`, applied by `applyBlueprint` with its origin: `Project.proposal` keeps the work, the
+    approach, each field's origin and the words written, so `fieldOrigin` reads a changed field as Your Words. The
+    Script page's Creative Brief says where each field came from. Revise From The Work (`ui/ReviseBrief.tsx`) proposes
+    again and keeps the player's words, the people and the outline unless they untick them; Undo takes it back.
+  - Honesty rules built in: the premise is the Wikipedia article's own words with its licence, or a proposal that says
+    it is not the work's story; a faithful or updated adaptation's ending is the work's, which is not recorded, so it
+    says so; characters are the recorded ones, the most written about first, each what its record says it is (a horse
+    is an animal); "followed by" is read as a next installment only within a recorded series.
+  - The source catalog is enriched by `node tools/sources/enrich.mjs` (run after `import.mjs`; about 8 minutes):
+    643 works, 67 of them Brandon Sanderson's as Wikidata records them. `docs/v4/SOURCE-COVERAGE.md` measures each field.
+  - The story presets are gone: `src/blueprints/`, `ui/StoryPicker.tsx`, `e2e/stories.spec.ts`. Two stories are kept
+    as a test fixture (`tests/fixtures/stories.bp`) for the blueprint engine's tests.
+  - A bug the journey caught: the preview read the title and genres as empty, so a revision replaced the player's
+    working title unasked. Fixed in `blueprints.ts briefFields`.
+  - Not built yet in B: Guide Me mandates (V4-006), the character lifecycle extras (duplicate, combine, split, restore,
+    age stages, per-episode performers: V4-007), a documentary proposal (V4-004.03), and a title-by-title Sanderson
+    comparison with his official site.
 - **Worktrees** `../slate-c-work` to `../slate-h-work` and `../slate-ui-work` are older branches with nothing
   uncommitted; their commits are not ancestors of `main` (squash merges). They are left alone.
 
