@@ -61,6 +61,11 @@ describe('the picture gatherer', () => {
     const { dimensions, plan, TIERS, ABOUT_BYTES } = await import('../tools/screen-catalog/images.mjs');
     expect(dimensions(Buffer.from([0xff, 0xd8, 0xff, 0xe0, 0x00, 0x04, 0x00, 0x00, 0xff, 0xc0, 0x00, 0x11, 0x08, 0x00, 0xe7, 0x00, 0x9a, 1, 2, 3]))).toEqual({ w: 154, h: 231 });
     expect(dimensions(Buffer.from('not a picture'))).toBeNull();
+    // A WebP, as the image host sends for a few .jpg paths: the lossy kind's size is in its frame header.
+    const webp = Buffer.alloc(40); webp.write('RIFF', 0, 'latin1'); webp.write('WEBP', 8, 'latin1'); webp.write('VP8 ', 12, 'latin1');
+    webp[23] = 0x9d; webp[24] = 0x01; webp[25] = 0x2a; webp.writeUInt16LE(185, 26); webp.writeUInt16LE(278, 28);
+    expect(dimensions(webp)).toEqual({ w: 185, h: 278 });
+    webp[23] = 0; expect(dimensions(webp)).toBeNull();
     // Made-up cache: one film credited to a followed company with a poster and three people, one with no photo.
     const cache: Record<string, unknown> = {
       'movie/1?append_to_response=credits,external_ids,release_dates': { poster_path: '/poster.jpg', credits: { cast: [{ id: 10, order: 0 }, { id: 11, order: 1 }, { id: 12, order: 9 }], crew: [{ id: 13, job: 'Director' }, { id: 14, job: 'Gaffer' }] } },

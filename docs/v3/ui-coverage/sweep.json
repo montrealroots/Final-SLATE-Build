@@ -6,6 +6,17 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max-landscape": [
+    "814x380"
    ]
   },
   "home|": {
@@ -21,6 +32,18 @@
     "320x568",
     "390x844",
     "1440x900"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932",
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max-landscape": [
+    "814x380"
    ]
   },
   "calendar|": {
@@ -32,6 +55,14 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "932x430",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "world|": {
@@ -46,6 +77,13 @@
     "360x800",
     "390x844",
     "1024x768"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "projects|": {
@@ -59,6 +97,14 @@
     "320x568",
     "1024x768",
     "360x800"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "profile|": {
@@ -71,6 +117,14 @@
     "768x1024",
     "320x568",
     "390x844"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "saves|": {
@@ -82,6 +136,14 @@
     "1280x720",
     "768x1024",
     "1920x1080"
+   ],
+   "iphone-15-plus": [
+    "932x430",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "settings|": {
@@ -94,6 +156,14 @@
     "768x1024",
     "320x568",
     "390x844"
+   ],
+   "iphone-15-plus": [
+    "430x932",
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "project:script|": {
@@ -110,6 +180,17 @@
     "600x960",
     "1024x768",
     "844x390"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max-landscape": [
+    "814x380"
    ]
   },
   "project:cast|": {
@@ -124,6 +205,14 @@
     "768x1024",
     "320x568",
     "440x956"
+   ],
+   "iphone-15-plus": [
+    "430x932",
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "project:overview|": {
@@ -136,6 +225,14 @@
     "1024x768",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "event|": {
@@ -144,6 +241,12 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-plus": [
+    "430x739"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:budget|": {
@@ -161,6 +264,18 @@
     "600x960",
     "393x852",
     "430x932"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932",
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max-landscape": [
+    "814x380"
    ]
   },
   "event|Prepare Submission": {
@@ -169,6 +284,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-plus": [
+    "430x739"
    ]
   },
   "new-project|": {
@@ -181,6 +299,18 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932",
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max-landscape": [
+    "814x380"
    ]
   },
   "event|Advance": {
@@ -189,6 +319,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-plus": [
+    "430x739"
    ]
   },
   "project:production|": {
@@ -201,6 +334,13 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "start:Saved Games|": {
@@ -209,6 +349,13 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-plus": [
+    "430x932",
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x932"
    ]
   },
   "start:Saved Games|This Save Is Already Here": {
@@ -241,6 +388,14 @@
     "320x568",
     "390x844",
     "1920x1080"
+   ],
+   "iphone-15-plus": [
+    "430x932",
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "project:schedule|": {
@@ -253,6 +408,14 @@
     "1024x768",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "project:crew|Staff Music": {
@@ -261,6 +424,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:crew|Staff Locations": {
@@ -269,6 +435,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:crew|Staff Post Production": {
@@ -277,6 +446,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:edit|": {
@@ -290,6 +462,14 @@
     "768x1024",
     "320x568",
     "844x390"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "project:crew|Staff Lighting And Grip": {
@@ -298,6 +478,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:crew|Staff Camera": {
@@ -306,6 +489,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:release|": {
@@ -318,6 +504,13 @@
     "1024x768",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "person|": {
@@ -329,6 +522,13 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "episode|": {
@@ -341,6 +541,13 @@
     "1024x768",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "title|": {
@@ -352,6 +559,14 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932",
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "companies|": {
@@ -363,6 +578,14 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932",
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "season|": {
@@ -375,6 +598,12 @@
     "1024x768",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:cast|Cast Ilse Brandt": {
@@ -394,6 +623,14 @@
     "360x800",
     "414x896",
     "1440x900"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "place|": {
@@ -405,6 +642,9 @@
     "393x852",
     "414x896",
     "440x956"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "creation:Background & Languages|": {
@@ -414,6 +654,14 @@
    "desktop": [
     "1280x720",
     "1024x768"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "project:edit|Advance": {
@@ -422,6 +670,12 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-plus": [
+    "430x739"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:crew|Staff Direction": {
@@ -430,6 +684,12 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-plus": [
+    "430x739"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:crew|Staff Art": {
@@ -439,6 +699,13 @@
    "desktop": [
     "1280x720",
     "600x960"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "project:crew|Staff Costume And Makeup": {
@@ -447,6 +714,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:crew|Staff Sound": {
@@ -455,6 +725,12 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-plus": [
+    "430x739"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:script|@idea-list": {
@@ -466,6 +742,13 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "creation:Identity|": {
@@ -474,6 +757,14 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "creation:Starting Point|": {
@@ -482,6 +773,14 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "project:crew|Staff Documentary": {
@@ -490,6 +789,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:cast|Cast Ben": {
@@ -508,6 +810,17 @@
     "768x1024",
     "320x568",
     "1920x1080"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max-landscape": [
+    "814x380"
    ]
   },
   "project:schedule|Where Harbour Is Filmed": {
@@ -524,6 +837,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:schedule|Advance": {
@@ -532,6 +848,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:budget|Advance": {
@@ -540,6 +859,9 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:cast|Cast Juno": {
@@ -556,6 +878,14 @@
     "1280x720",
     "768x1024",
     "600x960"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "project:release|Advance": {
@@ -575,6 +905,14 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "932x430",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "start:|": {
@@ -584,6 +922,13 @@
    "desktop": [
     "600x960",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x739",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "start:|Settings": {
@@ -592,6 +937,12 @@
    ],
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x932"
    ]
   },
   "home|Sleep": {
@@ -605,6 +956,12 @@
     "1024x768",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x932"
    ]
   },
   "home|Advance": {
@@ -616,6 +973,12 @@
    "desktop": [
     "1280x720",
     "600x960"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "calendar|Add Plan": {
@@ -626,6 +989,9 @@
    "desktop": [
     "1024x768",
     "600x960"
+   ],
+   "iphone-15-plus": [
+    "430x932"
    ]
   },
   "project:script|Choose A Full Story": {
@@ -637,6 +1003,13 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "project:characters|Take Inês Marçal Out Of The Script?": {
@@ -648,6 +1021,9 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "932x430"
    ]
   },
   "project:cast|Cast Inês Marçal": {
@@ -659,6 +1035,12 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x932"
    ]
   },
   "company|": {
@@ -671,6 +1053,13 @@
     "1024x768",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "932x430",
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x932"
    ]
   },
   "networks|": {
@@ -682,6 +1071,13 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "network|": {
@@ -693,6 +1089,13 @@
     "1024x768",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "executive|": {
@@ -704,11 +1107,21 @@
     "1024x768",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x739",
+    "430x932"
    ]
   },
   "project:cast|Cast Ines": {
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:cast|Cast The Crow": {
@@ -719,11 +1132,17 @@
   "project:crew|Staff Stop Motion": {
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:cast|Advance": {
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:cast|Cast Tom": {
@@ -734,6 +1153,9 @@
   "project:cast|Cast Mia": {
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:crew|Staff Casting And Performance": {
@@ -744,16 +1166,25 @@
   "project:script|@idea-open": {
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:crew|Staff Creature And Effects": {
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:schedule|Where Street 2 Is Filmed": {
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:cast|Cast Ada": {
@@ -777,6 +1208,9 @@
   "project:crew|Staff Animation": {
    "desktop": [
     "1280x720"
+   ],
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   },
   "project:overview|Advance": {
@@ -804,6 +1238,12 @@
     "1280x720",
     "768x1024",
     "600x960"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x932"
    ]
   },
   "project:script|@script-confirm": {
@@ -811,21 +1251,36 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x932"
    ]
   },
   "start:Saved Games|Rename Save": {
    "desktop": [
     "1024x768"
+   ],
+   "iphone-15-plus": [
+    "932x430"
    ]
   },
   "start:Saved Games|Delete This Save?": {
    "desktop": [
     "1024x768"
+   ],
+   "iphone-15-plus": [
+    "430x932"
    ]
   },
   "start:|Start Over?": {
    "desktop": [
     "1024x768"
+   ],
+   "iphone-15-plus": [
+    "932x430"
    ]
   },
   "project:script|Change The Relationship": {
@@ -833,6 +1288,9 @@
     "1024x768",
     "768x1024",
     "600x960"
+   ],
+   "iphone-15-plus": [
+    "932x430"
    ]
   },
   "project:script|Rename Draft": {
@@ -840,6 +1298,9 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
    ]
   },
   "project:script|Compare Draft 1": {
@@ -847,12 +1308,24 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x932"
    ]
   },
   "project:overview|Shelve The Project": {
    "desktop": [
     "1280x720",
     "600x960"
+   ],
+   "iphone-15-plus": [
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x932"
    ]
   },
   "project:crew|Hire A Writer": {
@@ -860,6 +1333,12 @@
     "1024x768",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ],
+   "iphone-15-pro-max": [
+    "430x932"
    ]
   },
   "project:crew|Hire A Production Designer": {
@@ -867,12 +1346,37 @@
     "1280x720",
     "768x1024",
     "320x568"
+   ],
+   "iphone-15-plus": [
+    "430x932",
+    "932x430"
+   ],
+   "iphone-15-pro-max": [
+    "430x932"
    ]
   },
   "saves|Rename Save": {
    "desktop": [
     "1024x768",
     "600x960"
+   ],
+   "iphone-15-plus": [
+    "430x932"
+   ]
+  },
+  "project:cast|Cast The House": {
+   "iphone-15-pro-max": [
+    "430x739"
+   ]
+  },
+  "project:characters|@idea-list": {
+   "iphone-15-pro-max": [
+    "430x739"
+   ]
+  },
+  "project:schedule|Where Street 3 Is Filmed": {
+   "iphone-15-pro-max": [
+    "430x739"
    ]
   }
  },
@@ -891,7 +1395,9 @@
    "dialog": "",
    "what": "Identity: the map's markers are under # pixels; the list of places beside the map opens the same places",
    "projects": [
-    "phone"
+    "phone",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "calendar||March #: span.dot keeps to one line and ends in an ellipsis; pressing it shows the whole": {
@@ -917,6 +1423,15 @@
    "projects": [
     "desktop"
    ]
+  },
+  "creation:Starting Point||Where You Live: the map's markers are under # pixels; the list of places beside the map opens the same places": {
+   "screen": "creation:Starting Point",
+   "dialog": "",
+   "what": "Where You Live: the map's markers are under # pixels; the list of places beside the map opens the same places",
+   "projects": [
+    "iphone-15-plus",
+    "iphone-15-pro-max"
+   ]
   }
  },
  "scrollers": {
@@ -926,7 +1441,9 @@
    "what": "div.tabs \"Project Sections\" in ",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "project:overview||div.tabs \"Project Sections\" in ": {
@@ -935,7 +1452,9 @@
    "what": "div.tabs \"Project Sections\" in ",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "project:script||div.tabs \"Project Sections\" in ": {
@@ -944,7 +1463,10 @@
    "what": "div.tabs \"Project Sections\" in ",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max",
+    "iphone-15-pro-max-landscape"
    ]
   },
   "project:budget||div.tabs \"Project Sections\" in ": {
@@ -953,7 +1475,10 @@
    "what": "div.tabs \"Project Sections\" in ",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max",
+    "iphone-15-pro-max-landscape"
    ]
   },
   "project:schedule||div.tabs \"Project Sections\" in ": {
@@ -962,7 +1487,9 @@
    "what": "div.tabs \"Project Sections\" in ",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "project:edit||div.tabs \"Project Sections\" in ": {
@@ -971,7 +1498,9 @@
    "what": "div.tabs \"Project Sections\" in ",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "project:production||div.tabs \"Project Sections\" in ": {
@@ -980,7 +1509,9 @@
    "what": "div.tabs \"Project Sections\" in ",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "project:release||div.tabs \"Project Sections\" in ": {
@@ -989,7 +1520,9 @@
    "what": "div.tabs \"Project Sections\" in ",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "project:crew||div.tabs \"Project Sections\" in ": {
@@ -998,7 +1531,9 @@
    "what": "div.tabs \"Project Sections\" in ",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "project:script|@idea-list|div.tabs \"Ideas\" in Choose A Starting Idea": {
@@ -1007,7 +1542,9 @@
    "what": "div.tabs \"Ideas\" in Choose A Starting Idea",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "project:characters||div.tabs \"Project Sections\" in ": {
@@ -1016,7 +1553,9 @@
    "what": "div.tabs \"Project Sections\" in ",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "project:festivals||div.tabs \"Project Sections\" in ": {
@@ -1025,7 +1564,10 @@
    "what": "div.tabs \"Project Sections\" in ",
    "projects": [
     "phone",
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max",
+    "iphone-15-pro-max-landscape"
    ]
   },
   "projects||nav.rail \"Main Navigation\" in Main Navigation": {
@@ -1041,7 +1583,9 @@
    "dialog": "",
    "what": "nav.rail \"Main Navigation\" in Main Navigation",
    "projects": [
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "project:script||nav.rail \"Main Navigation\" in Main Navigation": {
@@ -1081,7 +1625,9 @@
    "dialog": "",
    "what": "nav.rail \"Main Navigation\" in Main Navigation",
    "projects": [
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "event||nav.rail \"Main Navigation\" in Main Navigation": {
@@ -1089,7 +1635,8 @@
    "dialog": "",
    "what": "nav.rail \"Main Navigation\" in Main Navigation",
    "projects": [
-    "desktop"
+    "desktop",
+    "iphone-15-plus"
    ]
   },
   "new-project||nav.rail \"Main Navigation\" in Main Navigation": {
@@ -1161,7 +1708,9 @@
    "dialog": "",
    "what": "nav.rail \"Main Navigation\" in Main Navigation",
    "projects": [
-    "desktop"
+    "desktop",
+    "iphone-15-plus",
+    "iphone-15-pro-max"
    ]
   },
   "saves||nav.rail \"Main Navigation\" in Main Navigation": {
@@ -1170,6 +1719,14 @@
    "what": "nav.rail \"Main Navigation\" in Main Navigation",
    "projects": [
     "desktop"
+   ]
+  },
+  "project:characters|@idea-list|div.tabs \"Ideas\" in How The Returned Looks": {
+   "screen": "project:characters",
+   "dialog": "@idea-list",
+   "what": "div.tabs \"Ideas\" in How The Returned Looks",
+   "projects": [
+    "iphone-15-pro-max"
    ]
   }
  },

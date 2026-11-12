@@ -8,13 +8,13 @@ size (profile w185, poster w185, backdrop w300, season-poster w185, still w185, 
 
 | Kind | Eligible | Checked | A picture is published | Downloaded | Of those, shared with another record | None published | Failed, to retry | Refused | Excluded | Not attempted yet | MB kept |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| People's portraits | 458,686 | 458,686 | 127,767 | 127,758 | 5 | 329,886 | 9 | 0 | 1,033 | 0 | 1673.0 |
-| Film and series posters | 25,322 | 25,321 | 23,293 | 23,276 | 108 | 2,028 | 17 | 0 | 0 | 1 | 426.2 |
-| Film and series backdrops | 25,322 | 25,321 | 19,418 | 19,417 | 14 | 5,903 | 1 | 0 | 0 | 1 | 309.0 |
+| People's portraits | 458,686 | 458,686 | 127,767 | 127,767 | 5 | 329,886 | 0 | 0 | 1,033 | 0 | 1673.0 |
+| Film and series posters | 25,322 | 25,321 | 23,293 | 23,293 | 108 | 2,028 | 0 | 0 | 0 | 1 | 426.4 |
+| Film and series backdrops | 25,322 | 25,321 | 19,418 | 19,418 | 14 | 5,903 | 0 | 0 | 0 | 1 | 309.0 |
 | Season posters | 11,268 | 11,268 | 8,748 | 8,748 | 1,014 | 2,520 | 0 | 0 | 0 | 0 | 147.7 |
-| Episode stills | 257,986 | 252,403 | 134,101 | 128,518 | 385 | 123,885 | 0 | 0 | 0 | 5,583 | 975.8 |
-| Company and network logos | 352 | 8 | 344 | 0 | 0 | 8 | 0 | 0 | 0 | 344 | 0.0 |
-| **All** | 778,936 | 773,007 | 313,671 | 307,717 | 1,526 | 464,230 | 27 | 0 | 1,033 | 5,929 | 3531.7 |
+| Episode stills | 257,986 | 257,986 | 134,101 | 134,101 | 401 | 123,885 | 0 | 0 | 0 | 0 | 1018.4 |
+| Company and network logos | 352 | 352 | 344 | 344 | 9 | 8 | 0 | 0 | 0 | 0 | 2.5 |
+| **All** | 778,936 | 778,934 | 313,671 | 313,671 | 1,551 | 464,230 | 0 | 0 | 1,033 | 2 | 3577.0 |
 
 - **Eligible:** every imported record of that kind. **Checked:** its picture was fetched, or found not to exist, or it
   was excluded. **None published:** TMDB has no picture for it; the game shows its placeholder.

@@ -92,6 +92,32 @@ outcome.
 Not built: choosing people one by one, a progress bar for the gathering tool beyond its log lines, backdrops and
 logos, and a check of each picture's own licence. The pack must not be shared.
 
+## Pictures For The Whole Catalog
+
+The v3 package asks for every picture the imported catalog names, not a sample. `tools/screen-catalog/pictures.mjs`
+gathers them in the owner's own build container. Nothing it fetches is in this repository, and no player but the owner
+is given any of it (the owner's decision of November 11, 2026).
+
+- **Scope:** the catalog the game imported, not TMDB as a whole: each film and series' poster and backdrop, each
+  season's poster, each episode's still, each credited person's portrait, and each company's and network's logo. One
+  primary picture each, at a small size (`RENDITION` in the tool). Larger and alternate pictures are not gathered.
+- **`inventory`** reads the catalog's cache and writes a row for every record into a manifest in shards
+  (`.screen-images/manifest/<kind>/<bucket>.json`). **`fetch`** downloads what the manifest owes into one shared
+  store (`.screen-images/store/<size>/<ab>/<file>`), so a picture two records share is fetched once. It stops itself
+  after `--minutes`, and goes on from where it stopped. **`report`** writes `docs/PICTURE-COVERAGE.md`.
+- **Each row has one status:** `ready`; `no-image-published` (TMDB has none, or lists a path it does not serve);
+  `temporarily-failed` (a later run retries it); `permission-limited` (the host refused it); `stale` (older than 180
+  days, TMDB's limit on keeping its data); `intentionally-excluded`, with the reason (records TMDB marks adult); and
+  `not-attempted`.
+- **What it found on November 12, 2026:** 778,936 records, of which 313,671 have a published picture. All 313,671 are
+  downloaded: 3,577 MB. 464,230 records have none published (most are people with no portrait). 1,033 are excluded.
+  2 could not be attempted because one title's details are not in the catalog's cache. The fetch ran at 20 requests a
+  second and took about four hours over four runs; one run ended on a dropped connection, since handled, and 27
+  pictures came back as WebP under a `.jpg` name, since read.
+- **Not built yet:** putting these in the game. The picture pack below still holds one company's pictures at a time;
+  scoped packs for the whole store, Download All, pause, resume, retry and a storage check are the next step
+  (`docs/v3/LEDGER.md`, step 6).
+
 ## TMDB's Terms, Kept In The Game
 
 - **Six months (1.C).** A film pack gathered more than six months ago (from its oldest response) is refused. One that
