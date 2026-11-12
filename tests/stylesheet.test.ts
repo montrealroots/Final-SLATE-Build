@@ -34,3 +34,17 @@ describe('the stylesheet', () => {
     expect(viewport).not.toMatch(/user-scalable\s*=\s*(no|0)|maximum-scale/);
   });
 });
+
+describe('inline styles', () => {
+  it('take their spacing from the tokens, not from pixel numbers of their own', () => {
+    // 2, 3 and 6 pixels are hairline nudges with no token; everything a token covers uses it (from 2026-11-12).
+    const found: string[] = [];
+    for (const p of walk('src/ui')) for (const m of readFileSync(p, 'utf8').matchAll(/style=\{\{[^{}]*\}\}/g)) {
+      for (const n of m[0].matchAll(/(?:margin\w*|padding\w*|gap|rowGap|columnGap): (?:(\d+)(?=[ ,}])|'([^']*)')/g)) {
+        const values = n[1] ? [Number(n[1])] : [...(n[2] ?? '').matchAll(/(?<![\w-])(\d+)px/g)].map((x) => Number(x[1]));
+        if (values.some((v) => [4, 8, 12, 16, 24, 32, 48].includes(v))) found.push(`${p}: ${n[0]}`);
+      }
+    }
+    expect(found).toEqual([]);
+  });
+});

@@ -83,7 +83,7 @@ function OwnerSignIn({ session, changed }: { session: OwnerSession; changed: () 
     changed();
   };
   return (
-    <form onSubmit={(e) => { e.preventDefault(); void submit(); }} style={{ margin: '8px 0' }}>
+    <form onSubmit={(e) => { e.preventDefault(); void submit(); }} style={{ margin: 'var(--s2) 0' }}>
       <p className="muted">The films and series are this game's owner's alone. If that's you, sign in to see them here.</p>
       <TextField label="Owner Passphrase" type="password" value={passphrase} onChange={setPassphrase} error={error} />
       <button className="btn btn-sm btn-primary" type="submit" disabled={busy}>Sign In</button>
@@ -122,8 +122,8 @@ function WorldRecords({ version }: { version: number }) {
     setNote('Done. A copy of your game from before the change is in Saved Games, under Recovery Copies.');
   };
   return (
-    <fieldset style={{ border: 0, padding: 0, margin: '16px 0 0' }} aria-busy={busy}>
-      <legend style={{ fontWeight: 600, marginBottom: 8 }}>Your Story's World</legend>
+    <fieldset style={{ border: 0, padding: 0, margin: 'var(--s4) 0 0' }} aria-busy={busy}>
+      <legend style={{ fontWeight: 600, marginBottom: 'var(--s2)' }}>Your Story's World</legend>
       <p className="muted">This game's world began from the records gathered up to {day(`${ind.horizon}T00:00:00Z`)}, and keeps them: installing newer films and series never changes what your story has decided.</p>
       {preview && count > 0 && (
         <>
@@ -221,8 +221,8 @@ export function DataPacks() {
   const kinds = [...new Set<PackKind>([...offered.map((m) => m.kind), ...(installed?.keys() ?? [])])];
   return (
     <>
-    <fieldset style={{ border: 0, padding: 0, margin: '16px 0 0' }} aria-busy={busy}>
-      <legend style={{ fontWeight: 600, marginBottom: 8 }}>Mods</legend>
+    <fieldset style={{ border: 0, padding: 0, margin: 'var(--s4) 0 0' }} aria-busy={busy}>
+      <legend style={{ fontWeight: 600, marginBottom: 'var(--s2)' }}>Mods</legend>
       <p className="muted">Add the films and series, or the cinemas, to your game. A mod is kept in this browser only; your saved games never hold it.</p>
       {installed === null ? null : kinds.length === 0 ? <p className="dim">This copy of the game offers no mods, and none is installed.</p> : (
         <ul className="list" aria-label="Mods">
@@ -248,8 +248,8 @@ export function DataPacks() {
       <OwnerSignIn session={session} changed={() => void signedInOrOut()} />
       <input ref={input} type="file" accept=".slatepack" hidden aria-label="Mod File"
         onChange={(e) => { const f = e.target.files?.[0]; if (f) void fromFile(f); }} />
-      <button className="btn btn-sm" style={{ marginTop: 8 }} disabled={busy} onClick={() => input.current?.click()}>Install From A File</button>
-      {busy && cancel.current && <button className="btn btn-sm" style={{ marginTop: 8, marginLeft: 8 }} onClick={() => cancel.current?.abort()}>Cancel</button>}
+      <button className="btn btn-sm" style={{ marginTop: 'var(--s2)' }} disabled={busy} onClick={() => input.current?.click()}>Install From A File</button>
+      {busy && cancel.current && <button className="btn btn-sm" style={{ marginTop: 'var(--s2)', marginLeft: 'var(--s2)' }} onClick={() => cancel.current?.abort()}>Cancel</button>}
       {status && <p role="status" className="muted">{status}</p>}
       {error && <p role="alert" className="error">{error}</p>}
       <Storage installed={installed} version={version} />

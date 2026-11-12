@@ -249,7 +249,7 @@ export function ScriptTab({ p }: { p: Project }) {
     <>
       {locked && <div className="callout callout-info"><p>This project has been delivered. The script is locked.</p></div>}
       {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
-      <div className="row gap-2 wrap" style={{ marginBottom: 16 }}>
+      <div className="row gap-2 wrap" style={{ marginBottom: 'var(--s4)' }}>
         <button className="btn" disabled={!undoStack.get(p.id)?.length || locked} onClick={undo}>Undo Last Change</button>
       </div>
       <section className="card">
@@ -258,13 +258,13 @@ export function ScriptTab({ p }: { p: Project }) {
         {nonfiction && (
           <div className="callout">
             <p style={{ margin: 0 }}>Not sure where to begin? A full story is a whole plan to develop: who to approach, what to ask and what it would have to show. Or write your own in any field below.</p>
-            <div className="row gap-2 wrap" style={{ marginTop: 8 }}><FullStory p={p} /></div>
+            <div className="row gap-2 wrap" style={{ marginTop: 'var(--s2)' }}><FullStory p={p} /></div>
           </div>
         )}
         {!nonfiction && (
           <div className="callout">
             <p style={{ margin: 0 }}>Not sure where to begin? Choose a full story, or one idea at a time, make it yours, and change anything afterwards. Or write your own in any field below: what you type is never replaced unless you say so.</p>
-            <div className="row gap-2 wrap" style={{ marginTop: 8 }}>
+            <div className="row gap-2 wrap" style={{ marginTop: 'var(--s2)' }}>
               <FullStory p={p} />
               <Ideas p={p} fields={['premise']} title="Choose A Starting Idea" label="Choose A Starting Idea" />
               <Ideas p={p} fields={['genre-blend']} title="Choose A Blend Of Genres" label="Blend Genres" />
@@ -545,7 +545,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
       </div>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       {open && (
-        <fieldset disabled={locked} style={{ border: 0, padding: 0, margin: '12px 0 0' }}>
+        <fieldset disabled={locked} style={{ border: 0, padding: 0, margin: 'var(--s3) 0 0' }}>
           <div className="grid grid-3 form">
             <SelectField label="Interior Or Exterior" value={s.heading.intExt} options={[{ value: 'INT', label: 'Interior' }, { value: 'EXT', label: 'Exterior' }, { value: 'INT/EXT', label: 'Interior And Exterior' }]} onChange={(v) => up({ heading: { ...s.heading, intExt: v } })} />
             <TextField label="Place" value={s.heading.place} maxLength={80} onChange={(v) => up({ heading: { ...s.heading, place: v }, storyLocation: s.storyLocation && s.storyLocation !== s.heading.place ? s.storyLocation : v })} />
@@ -1131,7 +1131,7 @@ function CharacterCard({ p, c, first, last, onRemove, onDesignChange }: { p: Pro
     <article className="card" aria-label={c.name}>
       <div className="row-wrap">
         <div className="grow">
-          <h2 style={{ marginBottom: 4 }}>{c.name}</h2>
+          <h2 style={{ marginBottom: 'var(--s1)' }}>{c.name}</h2>
           <p className="dim" style={{ margin: 0 }}>{title(c.roleSize)}{c.functions.length ? ` · ${c.functions.map(title).join(', ')}` : ''} · {title(c.entity)} · {c.methods.map(title).join(', ')} · {plural(scenes, 'scene')}</p>
         </div>
         <div className="row gap-2 wrap">
@@ -1144,7 +1144,7 @@ function CharacterCard({ p, c, first, last, onRemove, onDesignChange }: { p: Pro
       </div>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       {open && (
-        <fieldset disabled={!!p.delivered} style={{ border: 0, padding: 0, marginTop: 12 }}>
+        <fieldset disabled={!!p.delivered} style={{ border: 0, padding: 0, marginTop: 'var(--s3)' }}>
           <div className="grid grid-3 form">
             <TextField label="Name" value={c.name} onChange={(v) => up({ name: v })} />
             <SelectField label="Role Size" value={c.roleSize} options={ROLE_SIZES.map((r) => ({ value: r, label: title(r) }))} onChange={(v) => up({ roleSize: v })} />
@@ -1248,7 +1248,7 @@ function ShowFormat({ p }: { p: Project }) {
       {u.family === 'competition' && (
         <>
           <fieldset style={{ border: 0, padding: 0 }} disabled={locked}>
-            <legend style={{ fontWeight: 600, marginBottom: 8 }}>Contestants</legend>
+            <legend style={{ fontWeight: 600, marginBottom: 'var(--s2)' }}>Contestants</legend>
             {p.contributors.length === 0 && <p className="muted">Add participants below, then choose who competes.</p>}
             {p.contributors.map((c) => (
               <Check key={c.id} label={c.name} checked={!!comp?.contestants.includes(c.id)} onChange={(on) => setError(edit(p, () => {

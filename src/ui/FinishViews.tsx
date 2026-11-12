@@ -750,7 +750,7 @@ export function EventDetail() {
     <>
       <Breadcrumbs items={[{ label: 'Calendar', route: { view: 'calendar' } }, { label: ed.label }]} />
       <PageHead eyebrow="Your Day" title={ed.label} lede={inst.description} />
-      <div className="row gap-2 wrap" style={{ marginBottom: 16 }}><FollowButton id={inst.id} /></div>
+      <div className="row gap-2 wrap" style={{ marginBottom: 'var(--s4)' }}><FollowButton id={inst.id} /></div>
       {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
       <div className="card-grid">
         <section className="card">

@@ -367,7 +367,7 @@ function TitleView({ t, today }: { t: TitleRecord; today: string }) {
     <>
       <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, ...(firstDisney ? [{ label: firstDisney.name, route: { view: 'company', ref: firstDisney.id } as Route }] : []), { label: t.title }]} />
       <PageHead eyebrow={t.type === 'tv' ? 'Series' : 'Film'} title={t.title} lede={<Released t={t} today={today} />} />
-      <div className="row gap-2" style={{ alignItems: 'flex-start', marginBottom: 12 }}><Picture subject={t.ref} name={t.title} size="page" /><PictureDetails subject={t.ref} /></div>
+      <div className="row gap-2" style={{ alignItems: 'flex-start', marginBottom: 'var(--s3)' }}><Picture subject={t.ref} name={t.title} size="page" /><PictureDetails subject={t.ref} /></div>
       {standing !== 'released' && <p className="callout">At this point in your story this title hasn't come out. What's below is what TMDB listed on {retrieved}, and may change.</p>}
       <Panel title="About">
         {t.tagline && <p><em>{t.tagline}</em></p>}
@@ -768,7 +768,7 @@ export function PersonPage({ refId }: { refId: string }) {
       <>
         <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: p.name }]} />
         <PageHead eyebrow="Person" title={p.name} lede={p.details?.knownFor ? `Known for ${p.details.knownFor.toLowerCase()}, as TMDB lists it` : undefined} />
-        <div className="row gap-2" style={{ alignItems: 'flex-start', marginBottom: 12 }}><Picture subject={`person:${p.id}`} name={p.name} size="page" /><PictureDetails subject={`person:${p.id}`} /></div>
+        <div className="row gap-2" style={{ alignItems: 'flex-start', marginBottom: 'var(--s3)' }}><Picture subject={`person:${p.id}`} name={p.name} size="page" /><PictureDetails subject={`person:${p.id}`} /></div>
         <Panel title="About">
           {p.details ? (
             <>
