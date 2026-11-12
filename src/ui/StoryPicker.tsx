@@ -42,6 +42,7 @@ export function StoryPicker({ p, run, onClose, onApplied }: StoryPickerProps) {
   const [failed, setFailed] = useState(false);
   const [query, setQuery] = useState('');
   const [open, setOpen] = useState<Blueprint | null>(null);
+  const [noOther, setNoOther] = useState(false);
   const [, setNames] = useState(0);
   useEffect(() => { if (!genreCatalogLoaded()) void loadGenreCatalog().then(() => setNames((n) => n + 1)).catch(() => {}); }, []);
   useEffect(() => {
@@ -51,7 +52,19 @@ export function StoryPicker({ p, run, onClose, onApplied }: StoryPickerProps) {
     loadStories(file).then((xs) => { if (live) setStories(xs.filter((b) => formatClass(b.format) === want && isNonfiction(b.format) === nonfiction)); }).catch(() => { if (live) setFailed(true); });
     return () => { live = false; };
   }, [file, want, nonfiction]);
-  if (open) return <OpenStory p={p} b={open} run={run} back={() => setOpen(null)} onClose={onClose} onApplied={onApplied} />;
+  // Shuffle: another story this script could take, from any genre's file, in place of the open one. What the player
+  // has ticked to keep and what is locked stay as they are, so only the fields they left open change (the v3
+  // package, 01: "shuffle only selected unlocked fields"). It is a choice of what to look at, shown before anything
+  // is written, so it draws from the browser and not from the game's own numbers.
+  const shuffle = async () => {
+    const order = files.map((f) => ({ f, r: Math.random() })).sort((a, b) => a.r - b.r).map((x) => x.f);
+    for (const f of order) {
+      const xs = (await loadStories(f).catch(() => [] as Blueprint[])).filter((b) => formatClass(b.format) === want && isNonfiction(b.format) === nonfiction && b.id !== open?.id);
+      if (xs.length) { setOpen(xs[Math.floor(Math.random() * xs.length)]); setNoOther(false); return; }
+    }
+    setNoOther(true);
+  };
+  if (open) return <OpenStory p={p} b={open} run={run} back={() => { setOpen(null); setNoOther(false); }} onClose={onClose} onApplied={onApplied} shuffle={() => void shuffle()} noOther={noOther} />;
   const q = norm(query.trim());
   const shown = (stories ?? []).filter((b) => !q || norm(`${b.title} ${b.logline} ${b.premise} ${b.tone} ${b.setting.name} ${b.themes.join(' ')}`).includes(q));
   return (
@@ -93,10 +106,12 @@ export function StoryPicker({ p, run, onClose, onApplied }: StoryPickerProps) {
   );
 }
 
-function OpenStory({ p, b, run, back, onClose, onApplied }: { p: Project; b: Blueprint; run: StoryPickerProps['run']; back: () => void; onClose: () => void; onApplied: (title: string) => void }) {
+function OpenStory({ p, b, run, back, onClose, onApplied, shuffle, noOther }: { p: Project; b: Blueprint; run: StoryPickerProps['run']; back: () => void; onClose: () => void; onApplied: (title: string) => void; shuffle: () => void; noOther: boolean }) {
   const [names, setNames] = useState<Record<string, string>>({});
   const [keep, setKeep] = useState<string[] | null>(null);
   const [err, setErr] = useState<string | null>(null);
+  // Another story's people are other people: the names typed for this one's don't carry over. The ticks do.
+  useEffect(() => { setNames({}); setErr(null); }, [b.id]);
   const o = { names, keep: keep ?? [] };
   const pre = previewBlueprint(p, b, o);
   // The player's own words are kept unless they say otherwise: every field with something in it starts ticked.
@@ -198,6 +213,11 @@ function OpenStory({ p, b, run, back, onClose, onApplied }: { p: Project; b: Blu
 
       <fieldset className="idea-block" role="region" aria-label="What It Would Write">
         <legend>What It Would Write</legend>
+        <div className="row-wrap">
+          <button type="button" className="btn btn-sm" onClick={shuffle}>Shuffle To Another Story</button>
+          <span className="dim small grow">Shows another story's words for every field below that you haven't kept or locked. Nothing is written until you apply.</span>
+        </div>
+        {noOther && <p role="status" className="muted">There is no other story this script could take yet.</p>}
         {pre.overwrites.length > 0 && <p className="dim small">Some fields already have your words. Each is kept unless you untick it.</p>}
         <ul className="list">
           {pre.changes.map((c) => {
