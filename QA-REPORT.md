@@ -8,7 +8,59 @@
 
 ## Commands And Results
 
-### Current: Screens Lined Up (November 11, 2026)
+### Current: The Phone Overhaul And Whole-Game UI Cleanup, First Part (November 12, 2026)
+
+The owner's brief is `docs/v3/UI-BRIEF.md`. The matrix is `docs/v3/UI-COVERAGE.md`; it is written by a tool from what was
+measured, and lists the rows nothing has visited. This section is what was run and what it found. Numbers that depend
+on the sweep are filled in from the run named beside them.
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 959 tests in 116 files at `9da6a89`. Startup 306 kB, 98 kB gzipped; budgets unchanged (700 and 220 kB). |
+| The stylesheet clean-up, before and after | 0 differences | Every element's computed style (78 properties, with `::before` and `::after`) on 46 screens at 390 and 1280 pixels, recorded with the old sheet and the new: the only differences were an animation's phase and a hover. The same check was made again for the inline-style tokens. |
+| `tests/stylesheet.test.ts` | 0 | Four tests: only the listed widths; no rule for a class no source file names; the viewport never stops zooming; no inline margin, padding or gap written as a token's pixel value. Mutations: a rule for an unworn class and a fifth width each failed it. |
+| `tests/ui-inventory.test.ts` | 0 | Three tests. Mutation: four rows removed from the inventory (a dialog, a screen, a tab, a second dialog) failed two of them. |
+| `e2e/ui-coverage.spec.ts`, three walks | 0 | 12 runs: desktop, phone, iPhone 15 Plus and iPhone 15 Pro Max (WebKit). 78 screens, tabs, dialogs and states, at 5 window sizes on desktop (1280, 1024, 768, 600 and 320 wide), 5 on phone (390, 360, 430 wide, and 844 and 667 on its side), 2 on the Plus, 1 on the Pro Max. It fails on any defect at any size and on any heading, action or field a phone has and a desktop lacks, or the other way. |
+| Journey sweep, phone, `SLATE_UI_SWEEP`, production build, at `1862f04` | 1 journey | 125 passed, 1 failed, 18.8 minutes. The failure was `failures.spec.ts` reading the clock a second apart (fixed in `9da6a89`, below). 0 defects left by the audit after its findings were fixed. |
+| Journey sweep, desktop, same | 0 | 166 passed, 27.3 minutes. 0 defects. |
+| CI on pull request 72 at `9da6a89` | see the pull request | `checks` and the six `journeys` runs. |
+
+What the audit measures on a screen (`e2e/ui-audit.ts`): the page or its pane scrolling sideways, and what pushes it;
+anything past the left or right edge; anything wider than the card, row or button it is in; words cut off by their box,
+and a chooser too narrow for its chosen value; on touch, anything to tap under 44 pixels either way; a dialog or its
+buttons not wholly on screen; form rows out of line (`e2e/layout.ts`); a field or button that focus leaves under a bar;
+and the page moving by itself after it is drawn (Chromium's layout-shift score).
+
+Found and fixed, each with the measure that found it:
+
+| Found | Where | Fix |
+| --- | --- | --- |
+| 305 rules for 165 classes nothing wears; `.cal-day` styled twice | the stylesheet | removed, with 106 overridden declarations: 120 kB to 81 kB |
+| Twelve breakpoint widths | the stylesheet | four, listed at its head |
+| Idea tags 32 px tall; names that open a place, festival, title, network or episode 19 to 42 px | phone walk, catalog walk | a control's height and width on touch; a link in a sentence keeps its line |
+| Calendar days 38.6 px wide at 360 | phone walk | the month runs to its card's edge; cards have a phone's margin |
+| The month bar wrapped as Previous, month, then Next alone | screenshots | month above, the two buttons sharing a row |
+| A card's heading stacked where its neighbour's didn't | screenshots | the heading gives way at 8rem, not 12 |
+| Three-column forms kept two columns and cut choosers short | screenshots, then the audit's new check | one to a row on a phone |
+| Advance To cut its date off at every phone width | the audit's chooser check | short choices; the date is said under the chooser |
+| A passphrase box 24 px tall on touch | phone sweep | every kind of box is a control's height |
+| A breadcrumb's "Home" 40 px wide | phone sweep | 44 |
+| The page behind the open drawer still took focus | the focus check | it is inert while the drawer is open |
+| The date and time zone dropped from the bar under 1024 px | listing everything hidden by window size | a line under the time |
+| A double press on Start My Story opened the Calendar on an iPhone-sized screen | CI, WebKit | the game takes no pointer for its first 400 ms; `creation.spec.ts` presses the spot again |
+
+Accepted, with the reason, and said in the matrix each time: a map's markers are under 44 pixels because the list of
+places beside the map opens the same places; a calendar day's entries are one line each, ending in an ellipsis, and
+pressing the day lists them whole; the logline builder's long choices are cut short in their choosers and shown whole
+in the sentence under them.
+
+Not measured, and tracked as such: a real phone, so the on-screen keyboard and what it covers; the screens and dialogs
+the matrix lists as not visited; layout shift in WebKit, which reports none; anything between 621 and about 660 pixels
+wide, where the bar's Sleep and Advance wrap to a second row (nothing is cut off; it has not been looked at by eye
+beyond one capture). The journey sweep's comparison of desktop and phone is a sampling of states, not a gate: it
+lists what one run caught and the other didn't, most of which is a save's own made-up titles.
+
+### Earlier: Screens Lined Up (November 11, 2026)
 
 The owner's request after seeing a capture of the Script page: "Fix all misalignments UI wise."
 

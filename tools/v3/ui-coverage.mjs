@@ -28,7 +28,6 @@ for (const { n, x } of lines) {
   else if (x.t === 'defect') { const k = `${key}|${x.project}|${x.kind}|${norm(x.what)}|${x.where && norm(x.where)}`; const d = (sweep.defects[k] ??= { screen: x.screen, dialog: x.dialog, project: x.project, kind: x.kind, what: norm(x.what), where: norm(x.where ?? ''), by: x.by, sizes: [], specs: [] }); if (!d.sizes.includes(x.size)) d.sizes.push(x.size); if (!d.specs.includes(x.spec) && d.specs.length < 3) d.specs.push(x.spec); }
   else { const bag = x.t === 'accepted' ? sweep.accepted : sweep.scrollers; const k = `${key}|${norm(x.what)}`; (bag[k] ??= { screen: x.screen, dialog: x.dialog, what: norm(x.what), projects: [] }); if (!bag[k].projects.includes(x.project)) bag[k].projects.push(x.project); }
 }
-if (files.length) writeFileSync(sweepPath, `${JSON.stringify(sweep, null, 1)}\n`);
 
 // ---- the walk
 const walks = Object.fromEntries(readdirSync(DIR).filter((f) => /^walk-.*\.json$/.test(f)).map((f) => [f.slice(5, -5), JSON.parse(readFileSync(`${DIR}/${f}`, 'utf8'))]));
@@ -48,7 +47,7 @@ for (const [key, at] of Object.entries(sweep.seen)) { const id = owner(key); if 
 // A journey is sampled as it goes, so a thing on screen for under half a second can be in one run and not the other;
 // every difference is listed to be looked at, and none is called a defect until someone has.
 const NAV = /^press: (Menu|Close Menu|Close Navigation|SLATE, Go To Home|Home|Player Profile|World|Projects|Companies|Saved Games|Settings|Save & Exit|Skip To Content|Calendar|Sleep|Advance|Running|Paused|.*, Open Your Player Profile)$/;
-const journeyParity = {}; const parityNotes = [];
+let journeyParity = {}; let parityNotes = [];
 for (const [key, by] of Object.entries(sweep.sig ?? {})) {
   const id = owner(key); if (!id || !by.desktop || !by.phone) continue;
   const specs = Object.keys(by.desktop).filter((sp) => by.phone[sp]);
@@ -56,9 +55,14 @@ for (const [key, by] of Object.entries(sweep.sig ?? {})) {
   const D = new Set(specs.flatMap((sp) => by.desktop[sp])), P = new Set(specs.flatMap((sp) => by.phone[sp]));
   const onlyD = [...D].filter((x) => !P.has(x) && !NAV.test(x)), onlyP = [...P].filter((x) => !D.has(x) && !NAV.test(x));
   const at = (journeyParity[id] ??= { both: 0, onlyD: 0, onlyP: 0 }); at.both += [...D].filter((x) => P.has(x)).length; at.onlyD += onlyD.length; at.onlyP += onlyP.length;
-  for (const x of onlyD) parityNotes.push(`| ${inventory.find((r) => r.id === id).name} | desktop only | ${x.replace(/\|/g, '/')} |`);
-  for (const x of onlyP) parityNotes.push(`| ${inventory.find((r) => r.id === id).name} | phone only | ${x.replace(/\|/g, '/')} |`);
+  // Headings and fields are listed. Things to press are counted and not listed: most are a save's own made-up titles and people.
+  for (const x of onlyD) if (!x.startsWith('press: ')) parityNotes.push(`| ${inventory.find((r) => r.id === id).name} | desktop only | ${x.replace(/\|/g, '/')} |`);
+  for (const x of onlyP) if (!x.startsWith('press: ')) parityNotes.push(`| ${inventory.find((r) => r.id === id).name} | phone only | ${x.replace(/\|/g, '/')} |`);
 }
+// What each run offered is large and is not kept: the file holds the comparison made from it, which a run without
+// sweep files reads back.
+if (files.length) { const { sig, ...rest } = sweep; void sig; writeFileSync(sweepPath, `${JSON.stringify({ ...rest, parity: { journeyParity, parityNotes } }, null, 1)}\n`); }
+else if (sweep.parity) ({ journeyParity, parityNotes } = sweep.parity);
 const out = []; const open = []; let unvisited = 0;
 out.push('| Area | Screen | Kind | Walked: sizes measured | Desktop And Phone, Walked | Reached In Journeys | Desktop And Phone, In Journeys | Open Defects |', '|---|---|---|---|---|---|---|---|');
 for (const row of inventory) {
@@ -83,7 +87,7 @@ const md = [
   'What the columns mean. **Walked**: the screen was opened on purpose and measured at that many window sizes in each browser profile. **Desktop And Phone**: the same screen in the same state at 1280 and at 390 pixels wide, compared for headings, things to press, fields and their order. **Reached In Journeys**: a full play-through reached it and the same measure ran there, at the sizes listed. **Desktop And Phone, In Journeys**: what the screen offered when the same journeys ran in each layout. Browser emulation is not a real device: nothing here measures a virtual keyboard, and that is tracked in the limits below.', '',
   ...out, '',
   '## Open Defects', '', ...(open.length ? ['| Screen | Measured By | Kind | What | Pixels |', '|---|---|---|---|---|', ...[...new Set(open)]] : ['None found by the measures above.']), '',
-  '## Seen In One Layout\'s Journeys And Not The Other\'s', '', 'From the same journeys run on a desktop and on a phone. A journey is sampled as it plays, so something on screen for under half a second can be caught in one run and missed in the other; these are to be looked at, not counted as defects.', '', ...(parityNotes.length ? ['| Screen | Seen | What |', '|---|---|---|', ...[...new Set(parityNotes)].sort()] : ['None.']), '',
+  '## Seen In One Layout\'s Journeys And Not The Other\'s', '', 'From the same journeys run on a desktop and on a phone: headings and fields one run caught and the other did not. A journey is sampled as it plays, so something on screen for under half a second can be caught in one run and missed in the other, and each run makes its own save with its own made-up names. This is a list to read, not a count of defects; the comparison that fails a build is the walk\'s. Everything the stylesheet hides by window size is listed in QA-REPORT.md.', '', ...(parityNotes.length ? ['| Screen | Seen | What |', '|---|---|---|', ...[...new Set(parityNotes)].sort()] : ['None.']), '',
   '## Accepted, With The Reason', '',
   ...[...new Set([...Object.values(walks).flatMap((w) => w.rows.flatMap((r) => r.accepted ?? [])), ...Object.values(sweep.accepted).map((a) => a.what)].map(norm))].sort().map((x) => `- ${x}`), '',
   '## Panes That Scroll Sideways On Purpose', '',
