@@ -73,27 +73,113 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
+### Newest Request (November 12, 2026, 18:00 UTC): the v4 package, "Source To Screen, Living Careers"
+
+- **Where it is:** `docs/v4/package/` (00 to 06 and the 38-row `requirements.csv`). It supersedes conflicting earlier
+  directions, above all the generated-story quotas, and keeps compatible v2 and v3 work and existing saves. One agent.
+- **The authoritative ledger:** `docs/v4/requirements.csv`, the 38 rows expanded into child requirements with the
+  columns the package's 05 asks for. `docs/v4/LEDGER-COUNTS.md` is its count, written by
+  `V4_WRITE=1 npx vitest run tests/v4-ledger.test.ts`, which also fails a verified row whose cited test or journey
+  does not exist. Change a row's state in the same commit as the work, and regenerate the counts. The ledger was
+  written from an audit of `cd7472c`; edit the CSV directly.
+- **Milestones, in order** (the package's 05): A reconcile and retire the quotas; B source-first creation, the whole
+  brief, characters and Guide Me; C family funds, separate accounts, equipment; D method-specific production; E source
+  agreements, outside work, music; F historical boundaries, box office, audiences, renewals, outreach; G media, UI,
+  credits, performance; H final audits and J01 to J13.
+- **What the audit found (November 12, 2026):**
+  - The source catalog (576 Wikidata works) has title, creator, medium, year, genres, series and a one-line
+    description; no premise, characters, setting or adaptations, and no Sanderson works. Wikidata
+    (`query.wikidata.org`) and Wikipedia's page summaries (`en.wikipedia.org/api/rest_v1/page/summary/`) are both
+    reachable from this container. Sources are not yet limited to works published by the game date.
+  - The player has no money of their own: no personal account, no family support. Projects have ledgers.
+  - Equipment is a flat day fee (`production/rates.ts dayFees`); there is no catalog, ownership or reservation.
+  - There is no paid outside work; an agent only submits the player's projects to backers.
+  - Music: songs as works with writers and credits (`songs.ts`), a composer credit for score. No cue plan, licensing
+    scope, territory or expiry.
+  - Method-specific work graphs exist for live action, 2D, 3D, stop motion and hybrid (`production/tasks.ts`); D is a
+    gap-close (face method, travel and rest, revisions reopening only dependents), not a build.
+  - An applied preset's content was always written into the project; `Project.blueprint` keeps only its id, version,
+    title and names for the Script page's "Which Story It Is From". Old saves need no migration to lose the files.
+- **Plan for B:** the blueprint engine (`engine/blueprints.ts` previewBlueprint, applyBlueprint, locks, keep, rename,
+  undo) is the machinery a source proposal is applied through. A proposal composer builds a `Blueprint` from a source
+  record, the format, the method and the approach; every field carries whether it is sourced, a proposed adaptation
+  choice, user-edited or unknown. The importer is extended for recorded characters (P674), narrative location (P840),
+  period (P2408), installments (P155, P156, P179) and adaptations (works whose P144 is this one), plus a Wikipedia
+  summary kept with its CC BY-SA attribution as the premise. The preset picker, `src/blueprints/` and
+  `e2e/stories.spec.ts` are removed in the same pull request that adds source-first creation, because the coverage
+  walk reaches its relationship and rule dialogs through an applied story.
+- **Milestone B, first part: source-first creation (built November 12, 2026).**
+  - New Project offers Adapt A Work (first), Write An Original and Develop A Documentary, each its own route
+    (`view: 'new-project', tab: 'adapt' | 'original' | 'documentary'`). The old form is Write An Original; every
+    journey that said "New Script" now presses New Project, then Write An Original.
+  - Adapt A Work (`ui/AdaptWork.tsx`): the works published by the game's year (`searchSources byYear`), a work's
+    recorded facts (`SourcePicker.tsx WorkFacts`), format, method, approach and budget size, then the whole brief
+    proposed (`engine/proposal.ts proposeFromSource`), each field marked From The Work, Proposed or Not Recorded with
+    why, names editable; Create Project calls `createFromSource`, which removes the project again if any step fails.
+  - The proposal is a `Blueprint`, applied by `applyBlueprint` with its origin: `Project.proposal` keeps the work, the
+    approach, each field's origin and the words written, so `fieldOrigin` reads a changed field as Your Words. The
+    Script page's Creative Brief says where each field came from. Revise From The Work (`ui/ReviseBrief.tsx`) proposes
+    again and keeps the player's words, the people and the outline unless they untick them; Undo takes it back.
+  - Honesty rules built in: the premise is the Wikipedia article's own words with its licence, or a proposal that says
+    it is not the work's story; a faithful or updated adaptation's ending is the work's, which is not recorded, so it
+    says so; characters are the recorded ones, the most written about first, each what its record says it is (a horse
+    is an animal); "followed by" is read as a next installment only within a recorded series.
+  - The source catalog is enriched by `node tools/sources/enrich.mjs` (run after `import.mjs`; about 8 minutes):
+    643 works, 67 of them Brandon Sanderson's as Wikidata records them. `docs/v4/SOURCE-COVERAGE.md` measures each field.
+  - The story presets are gone: `src/blueprints/`, `ui/StoryPicker.tsx`, `e2e/stories.spec.ts`. Two stories are kept
+    as a test fixture (`tests/fixtures/stories.bp`) for the blueprint engine's tests.
+  - A bug the journey caught: the preview read the title and genres as empty, so a revision replaced the player's
+    working title unasked. Fixed in `blueprints.ts briefFields`.
+  - **Guide Me, crew departments (built November 12, 2026, after #79):** `engine/mandates.ts`. On the Crew tab each
+    department with required jobs has Guide Me beside Staff This Department. Its dialog shows the plan (who, rate,
+    days, cost) and asks for a spending ceiling, refused above the money uncommitted. Approved, it sends offers at
+    asking rates at once (each ledger line ends "(Guide Me)"), looks again each day (`guide-me` event), offers the
+    job to someone else after a no and never to the same person, accepts a counteroffer only while it fits, and
+    returns anything else to the player once (`Mandate.told`). It ends itself when the department is staffed; Back To
+    Manual ends it and leaves sent offers open. What it has committed is the sum of its hires' ledger lines. Tests:
+    `tests/guide-me.test.ts` (7, all seven deliberate breaks caught), `e2e/guide-me.spec.ts`. Not built: Guide Me
+    for casting, writing and music, and a mandate that also plans the schedule.
+  - **Milestone C, part 1: your own money and your family (built November 12, 2026):** `engine/personal.ts`,
+    `ui/YourMoney.tsx`. Creation's Starting Point has Money And Family (your savings up to $25,000; your family's
+    circumstances, which bound only what they can offer; none, a gift, a loan repaid over 24 months, or an investment
+    taking 25% of income you take home up to 1.5 times what they put in). Review shows each line, the balance and what
+    will be owed before the story starts. `GameState.money.postings` is the account; its balance is their sum. A
+    loan repays monthly (`family-repayment` event); a month short is owed on. Money moves only on a project's Budget
+    page: Put In From Your Own Money (a 'savings' deal, nobody repaid, unspent stays yours, never more than the account
+    holds or the project still needs) and, once delivered, Take Home income kept or your own money unspent. A save
+    from before has no account and gains none. Tests: `tests/personal.test.ts` (10), `e2e/money.spec.ts`.
+  - **Milestone C, part 2: equipment (built November 12, 2026):** `engine/gear-catalog.ts`, `engine/equipment.ts`,
+    `ui/Equipment.tsx`, data `src/data/equipment.json` from `node tools/equipment/catalog.mjs` (22 items; specs from
+    Blackmagic's and Sennheiser's spec pages and product names; prices from one US retailer's public listings, dated).
+    Profile has Your Equipment and The Shop (buy from your own account; service; sell at half price less wear). A
+    family can lend items from the list at creation, bounded by its circumstances, not sellable. A project's Budget
+    page has Equipment: with nothing in it the project hires the house package as before; with a kit it pays only its
+    rentals' day rates. Kit checks: lens mount, card type, battery (PYXIS ships without one), lights for scenes lit as
+    usual and a stand each, a microphone for dialogue and inputs for each, shotgun and boom for Dialogue Clarity, a
+    tripod for tripod scenes; an owned stabilizer replaces the rented one. A day the kit can't serve (missing gear,
+    an item booked on another shoot that date, worn below 50%, away being serviced) hires the house package for that
+    day and logs why. A schedule that puts an owned item on two shoots at once is refused. Tests:
+    `tests/equipment.test.ts` (13; sixteen deliberate breaks, all caught), `e2e/equipment.spec.ts`. Not built:
+    damage, accessories beyond those listed, method-specific gear for animation and capture (milestone D), company
+    accounts, a family company. The LP-E6P battery is left out: not documented for a Blackmagic body.
+  - PR #79's first CI run timed out on desktop: the unscripted-series journeys waited 15 minutes each for a format the
+    original form no longer offers. The helper now uses Develop A Documentary for them. Its second run failed on
+    `e2e/creation.spec.ts`, which counted Review's cards before the Money card existed; I had not run it after C1.
+  - Not built yet in B: the character lifecycle extras (duplicate, combine, split, restore,
+    age stages, per-episode performers: V4-007), a documentary proposal (V4-004.03), and a title-by-title Sanderson
+    comparison with his official site.
+- **Worktrees** `../slate-c-work` to `../slate-h-work` and `../slate-ui-work` are older branches with nothing
+  uncommitted; their commits are not ancestors of `main` (squash merges). They are left alone.
+
 ### Newest Request (November 12, 2026): the v3 package, and a phone overhaul with a whole-game UI cleanup
 
 **Read `docs/v3/LEDGER.md` first**, then `docs/v3/package/00-START-HERE.md` and `docs/v3/UI-BRIEF.md` (the owner's
 own words for the UI work). The ledger says where each step and each acceptance suite stands; `docs/v3/requirements.csv`
 has a row for each requirement built or owed.
 
-- **The story quota is the long pole:** 14,900 fully written stories (100 for each of 149 genres, 50 films and 50
-  series) and a mixed-genre library. They are written by hand into `src/blueprints/<genre>.bp`
-  (`docs/v3/BLUEPRINT-FORMAT.md`). After writing a batch: `V3_WRITE=1 npx vitest run tests/v3-content.test.ts`, read
-  `docs/v3/SIMILAR-STORIES.md`, fix what it finds, and commit the files with the regenerated counts. Never count a
-  story that is another with the names changed.
-  **The owner's instruction of November 12, 2026: keep the target at 14,900, and draw on the whole of history.** Each
-  story since then starts from a different piece of the record (an event, a trial, a voyage, a legend in the public
-  domain) and is an original story about it: never a retelling of a protected work, never a plot from the film
-  catalog. Its review line says what it was drawn from. People are given invented names unless what the story shows
-  them doing is what the record says they did. A time before the year 1000 is written `era: - | period` with the
-  century in the setting line, because a story's year must be 1000 to 2200. Write first for the genres that have no
-  story: `docs/v3/CONTENT-COUNTS.md` lists every genre with its count. As of this writing 64 genres have one story
-  (60 a film; Comedy, Legal Drama, Medical Drama and Nordic Noir a series) and 85 have none; the nonfiction formats among those 85 (documentary, nature documentary, docudrama, rockumentary, concert
-  film, mockumentary, true crime) need the documentary fields or a real case told as the record has it, so read
-  `docs/v3/BLUEPRINT-FORMAT.md` before starting one.
+- **The story quota was retired on November 12, 2026** by the v4 package (below). 64 stories with one primary genre and
+  1 mixed-genre story had been written into `src/blueprints/`; the files leave with the picker when source-first
+  creation replaces it (v4 milestone B). Do not write more.
 - **Pictures: gathered, packed and installable.** All 313,671 published pictures are in `.screen-images/` in the
   build container and packed in `packs/pictures/` (`pictures.mjs pack`), neither in the repository. A new container
   has neither: `inventory`, then `NODE_USE_ENV_PROXY=1 node tools/screen-catalog/pictures.mjs fetch --minutes=112`

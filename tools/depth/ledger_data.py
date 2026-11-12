@@ -108,18 +108,18 @@ C = {
   ('Birthdays, kept holidays and project days share the calendar', 'VE',
    ['tests/foundation.test.ts::a whole simulated year fires each birthday', 'e2e/creation.spec.ts::Home says so on the second day'], ''),
 ]),
-'03-01': ('Projects > New Script', 'src/engine/projects.ts', [
+'03-01': ('Projects > New Project', 'src/engine/projects.ts', [
   ('Format, basis, medium and technique chosen separately', 'VE', ['tests/media.test.ts::follows boards, animatic, voice and animation dependencies'], ''),
   ('Each combination routes to its own production', 'VE',
    ['e2e/journeys.spec.ts::hybrid: a live-action scene and a 3D scene share one production', 'e2e/journeys.spec.ts::stop motion to delivery'], ''),
   ('An unsupported combination says why and is not converted', 'V', ['tests/depth-gaps.test.ts::an unsupported combination is refused with the reason, and the axes are left as they were'], ''),
 ]),
-'03-02': ('New Script, Overview', 'src/engine/genres.ts; src/engine/script-effects.ts', [
+'03-02': ('New Project, Overview', 'src/engine/genres.ts; src/engine/script-effects.ts', [
   ('Title, several genres, tone, setting, audience and dialogue languages', 'VE', ['tests/genres.test.ts::composes shared mechanics once'], ''),
   ('Genres raise their questions and requirements', 'VE', ['tests/genres.test.ts::every entry reaches a consumer'], ''),
   ('A genre never grants prestige or quality by itself', 'VE', ['tests/genres.test.ts::genres route to award and festival categories by rule, not prestige'], ''),
 ]),
-'03-03': ('New Script, Budget', 'src/engine/estimate.ts', [
+'03-03': ('New Project, Budget', 'src/engine/estimate.ts', [
   ('Runtime, scenes, cast and technique drive the estimate', 'VE', ['tests/tight-budget.test.ts::follows what the script needs'], ''),
   ('An estimate over what can be raised offers concrete ways to cut cost', 'V',
    ['tests/cost-cuts.test.ts::lists cuts with their savings', 'tests/cost-cuts.test.ts::the saving shown is what the estimate really drops by'], ''),
@@ -130,7 +130,7 @@ C = {
      'Derived from the saved project each time; only the estimate at approval is stored', R_EST)),
   ('Same script, different method: animation prices studio and render time instead of shoot days', 'V',
    ['tests/estimates.test.ts::same script, different production method'], '',
-   D('Medium and technique at New Script', 'A project', 'The estimate adds studio and render time by technique and leaves out shoot days', 'None', 'The Budget page and financing target',
+   D('Medium and technique at New Project', 'A project', 'The estimate adds studio and render time by technique and leaves out shoot days', 'None', 'The Budget page and financing target',
      'A technique with nothing to render prices none', 'Derived; the medium is saved with the project', R_EST)),
 ]),
 '03-04': ('Projects list, Overview', 'src/engine/projects.ts', [
@@ -140,7 +140,7 @@ C = {
   ('Projects with the same title stay distinguishable', 'V', ['e2e/career.spec.ts::two projects with one title are told apart'], 'Repaired November 8, 2026: the lists showed only titles; same-title projects now show when each was started'),
 ]),
 '03-05': ('Overview', 'src/engine/projects.ts', [
-  ('The stages a project will go through, and what each needs, are shown before development', 'V', ['tests/stages.test.ts::changes with the medium, technique and format, as the work built for them does', 'e2e/career.spec.ts::New Script says what the project goes through'], 'Repaired November 8, 2026: nothing explained them; the New Script form now lists them (src/engine/stages.ts)'),
+  ('The stages a project will go through, and what each needs, are shown before development', 'V', ['tests/stages.test.ts::changes with the medium, technique and format, as the work built for them does', 'e2e/career.spec.ts::Write An Original says what the project goes through'], 'Repaired November 8, 2026: nothing explained them; the New Script form now lists them (src/engine/stages.ts)'),
   ('No inert control appears as implemented', 'VE', ['e2e/viewports.spec.ts::no tutorial, no excluded systems'], ''),
 ]),
 '04-01': ('Script > Story', 'src/engine/script-effects.ts', [
@@ -592,7 +592,7 @@ C = {
 ]),
 '19-02': ('Every screen', 'src/ui/app.css', [
   ('Desktop, phone and iPhone emulation fit without sideways scrolling', 'VE', ['e2e/viewports.spec.ts::every main screen fits each viewport'], ''),
-  ('Focus and input kept through rerenders', 'VE', ['e2e/focus.spec.ts::typing straight into New Script keeps every character'], ''),
+  ('Focus and input kept through rerenders', 'VE', ['e2e/focus.spec.ts::typing straight into Write An Original keeps every character'], ''),
   ('Jumping to a section is not hidden under the sticky header', 'V', ['e2e/viewports.spec.ts::a destination scrolled to or focused is never hidden under the top bar'], ''),
 ]),
 '19-03': ('Every action', 'src/ui', [

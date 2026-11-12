@@ -187,9 +187,10 @@ test('a genre catalog that fails to load stops the game from opening with the re
   fail = false;
   await page.getByRole('button', { name: 'Try Again' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
-  // The whole catalog arrived: New Script offers all 149 entries.
+  // The whole catalog arrived: Write An Original offers all 149 entries.
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await expect(page.getByText('All 149 catalog entries are searchable.')).toBeVisible();
 });
 
@@ -243,7 +244,8 @@ test('a damaged genre catalog publishes nothing; Try Again with a good one opens
   await page.getByRole('button', { name: 'Try Again' }).click();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await expect(page.getByText('All 149 catalog entries are searchable.')).toBeVisible();
   await page.getByRole('searchbox', { name: 'Search Genres' }).fill('zombie');
   await expect(page.getByRole('button', { name: 'Add Zombie' })).toBeVisible();

@@ -1273,3 +1273,42 @@ the balance and engine performance tests, and both complete browser suites (141 
   (HTTP 403).
 
 This base is not claimed to be finished, bug-free or fully realistic.
+
+## v4 Milestones A And B (first part): The Ledger, The Quota Retired, Source-First Creation
+
+November 12, 2026. Evidence for the pull request that carries them.
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/v4-ledger.test.ts` | 1, fixed | Writing the ledger caught an overclaim: the size budget row was marked verified with no unit test. It is implemented. |
+| `tests/proposal.test.ts` | 1, fixed | 12 tests. Every one of the 643 catalog works proposes a structurally complete film and series brief. The approach test caught the composer inventing an ending for "Moved To Another Time Or Place", which keeps the work's ending by its own definition. |
+| `tests/sources.test.ts` | 0 | The game-date limit; the enriched fields kept as recorded; Sanderson's works without his bibliography, series or editions. |
+| `e2e/ui-coverage.spec.ts`, rebuilt around Adapt A Work | 2 real layout defects, fixed | Home at 320 pixels wide: a project row held its title button and a phase label that could not wrap, so a long title in pre-production pushed the page 63 pixels sideways; the row now wraps and the title wraps within it. Adapt A Work: the works list was drawn before the game's genre names had loaded, and each card grew when they arrived, moving the page 25 pixels; the list now waits for them (and is not held back if they fail). |
+| `e2e/adapt.spec.ts`, desktop and phone | 1 real bug, fixed; 3 journey mistakes, fixed | The film journey found that Revise From The Work replaced the player's working title without offering to keep it (the preview read the title and genres as empty). The journey's own mistakes: a project card's name carries a started note; the save was read before the autosave; the series work had no recorded series. |
+
+## v4 Milestone B: Guide Me For Crew Departments
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/guide-me.test.ts` | 3 fixture mistakes of mine, fixed | 7 tests. Seven deliberate breaks, each caught after two tests were added for the two that first survived (asking the same person again; accepting a counteroffer past the ceiling). The plan prices each job before any offer; with others hired some jobs need fewer days, so what is committed can be less than the plan, never more. |
+| `e2e/guide-me.spec.ts`, desktop and phone | 0 | The plan read first, a ceiling above the money refused, offers held on the ledger as Guide Me, another department taken back to manual, the department staffed within the ceiling after days of answers. |
+
+## v4 Milestone C, Part 1: Your Own Money And Your Family
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/personal.test.ts` | 4 fixture mistakes of mine, fixed | 10 tests. Eight deliberate breaks caught; a ninth, a duplicate-posting guard, survived because the repayment handler already pays only what is due for the month, so the guard was removed as redundant. Circumstances change only money: the same character either way. |
+| `e2e/money.spec.ts`, desktop and phone | 3 journey mistakes of mine, fixed | Savings and a gift chosen and read on Review, the account on Profile by kind, more than the account refused, nothing put in while the project had nothing left to raise, then put in after the target rose; kept after Save And Exit. |
+| `npm run check` | 0 | 126 files, 1066 tests; startup 307 kB, budgets unchanged. |
+| PR #79 CI, two runs | 2 failures of mine, fixed | Desktop timed out: the unscripted journeys' helper chose a form that no longer offers their format and waited 15 minutes each. Phone and WebKit: `e2e/creation.spec.ts` counted Review's cards, and Money is a new one; I had not run that spec after adding it. |
+
+## v4 Milestone C, Part 2: Equipment
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| Research | 2 claims withheld | The LP-E6P battery was left out: Canon documents it for Canon bodies, not a Blackmagic one. A wireless microphone was left out: its maker's page could not be read for its connectors. The MKE 600's XLR-3 output is from Sennheiser's specification sheet. |
+| `tests/equipment.test.ts` | 1 real gap found | 13 tests, sixteen deliberate breaks, all caught after one test was added (a real schedule refused for a clash). The gap: the account statement listed only the kinds it knew, so equipment would have been in the balance but missing from Profile; it now lists every kind. |
+| `e2e/equipment.spec.ts`, desktop and phone | 2 journey mistakes of mine, fixed | A family-lent camera, a kit bought to fit, the check filled until it covers the script, a rental in and out, and the short shot to delivery: no equipment day fee, and the camera at 100 less its shoot days. |
+| `e2e/ui-coverage.spec.ts`, four sizes | 2 real layout defects, fixed | The kit card's two dropdown rows touched each other, and at 320 pixels the rental list's long names were cut off. Both are now wrapping lists with a button per item. |
+| `e2e/creation.spec.ts`, `money.spec.ts`, `equipment.spec.ts` on desktop, phone and iPhone 15 Plus | 0 | 55 passed. |
+| `npm run check` | 0 | 127 files, 1079 tests; startup 307 kB, budgets unchanged. |

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Suspense, lazy, useState } from 'react';
 import { theBacker } from '../engine/backer-words';
 import { LANGUAGES, languageName } from '../data/identity';
 import { getPlace, placeLabel } from '../data/places';
@@ -14,7 +14,7 @@ import type { Format, Medium, Project, Technique } from '../engine/types';
 import { Check, Field, Modal, NumberField, PageHead, SectionNav, SelectField, TextField, longLocal, plural, startedNote } from './components';
 import { PlacePicker } from './Creation';
 import { Breadcrumbs } from './Shell';
-import { store, useGame } from './store';
+import { store, useGame, useStore } from './store';
 import { CastTab, CrewTab, ScheduleTab, BudgetTab } from './PlanViews';
 import { ScriptTab, CharactersTab } from './ScriptViews';
 import { ProductionTab, EditTab, ReleaseTab, FestivalsTab } from './FinishViews';
@@ -28,7 +28,7 @@ export function ProjectsList() {
   return (
     <>
       <PageHead eyebrow="Your Work" title="Projects" lede="Your scripts and productions, from the first draft to release."
-        actions={<button className="btn btn-primary" onClick={() => store.go({ view: 'new-project' })}>New Script</button>} />
+        actions={<button className="btn btn-primary" onClick={() => store.go({ view: 'new-project' })}>New Project</button>} />
       <div>
         {g.projects.length ? (
           <div className="card-grid">
@@ -42,7 +42,7 @@ export function ProjectsList() {
             ); })}
           </div>
         ) : (
-          <div className="card"><p>You haven't started a project yet.</p><button className="btn btn-primary" onClick={() => store.go({ view: 'new-project' })}>New Script</button></div>
+          <div className="card"><p>You haven't started a project yet.</p><button className="btn btn-primary" onClick={() => store.go({ view: 'new-project' })}>New Project</button></div>
         )}
       </div>
     </>
@@ -51,11 +51,43 @@ export function ProjectsList() {
 
 const FORMATS = Object.entries(FORMAT_LABELS).map(([value, label]) => ({ value: value as Format, label }));
 const AUDIENCES = ['General', 'Adult', 'Young Adult', 'Family', 'Children (6 To 11)', 'Preschool'];
+const AdaptWork = lazy(() => import('./AdaptWork').then((m) => ({ default: m.AdaptWork })));
+
+/** The three ways to start a project (the v4 package, 01): adapt a real work, write an original, or develop a documentary. */
+const PATHS = [
+  { tab: 'adapt', label: 'Adapt A Work', says: 'Start from a real novel, story, play, comic, game or online fiction. The game proposes the whole brief, its people and an outline, each field marked as the work\'s or the game\'s, for you to change.' },
+  { tab: 'original', label: 'Write An Original', says: 'Start from nothing but your own idea. Ideas are offered field by field if you want them.' },
+  { tab: 'documentary', label: 'Develop A Documentary', says: 'A documentary or an unscripted show: real people, real events and the evidence for what you show. Nobody is promised and nothing is found in advance.' },
+];
 
 export function NewProject() {
+  const s = useStore();
+  const path = s.route.tab;
+  if (path === 'adapt') return <Suspense fallback={<p role="status" className="muted">Loading…</p>}><AdaptWork /></Suspense>;
+  if (path === 'original' || path === 'documentary') return <ProjectForm documentary={path === 'documentary'} />;
+  return (
+    <>
+      <Breadcrumbs items={[{ label: 'Projects', route: { view: 'projects' } }, { label: 'New Project' }]} />
+      <PageHead eyebrow="Your Work" title="New Project" lede="How do you want to start? Nothing is made until you create the project." />
+      <ul className="idea-list" aria-label="Ways To Start">
+        {PATHS.map((x) => (
+          <li key={x.tab}>
+            <button type="button" className="idea-card" onClick={() => store.go({ view: 'new-project', tab: x.tab })}>
+              <span className="idea-label">{x.label}</span>
+              <span className="idea-text">{x.says}</span>
+            </button>
+          </li>
+        ))}
+      </ul>
+      <div className="row gap-2 wrap spaced"><button className="btn" onClick={() => store.back()}>Cancel</button></div>
+    </>
+  );
+}
+
+function ProjectForm({ documentary }: { documentary: boolean }) {
   const g = useGame();
   const [title, setTitle] = useState('');
-  const [format, setFormat] = useState<Format>('feature');
+  const [format, setFormat] = useState<Format>(documentary ? 'documentary-feature' : 'feature');
   const [medium, setMedium] = useState<Medium>('live-action');
   const [technique, setTechnique] = useState<Technique>('none');
   const [episodes, setEpisodes] = useState(4);
@@ -89,13 +121,13 @@ export function NewProject() {
   };
   return (
     <>
-      <Breadcrumbs items={[{ label: 'Projects', route: { view: 'projects' } }, { label: 'New Script' }]} />
-      <PageHead eyebrow="Your Work" title="New Script" lede="Set up the project. You can change most of this later." />
+      <Breadcrumbs items={[{ label: 'Projects', route: { view: 'projects' } }, { label: 'New Project', route: { view: 'new-project' } }, { label: documentary ? 'Develop A Documentary' : 'Write An Original' }]} />
+      <PageHead eyebrow="New Project" title={documentary ? 'Develop A Documentary' : 'Write An Original'} lede="Set up the project. You can change most of this later." />
       <section className="card">
         <h2>Basics</h2>
         <TextField label="Working Title" value={title} maxLength={120} onChange={setTitle} error={error && /title/i.test(error) ? error : null} />
         <div className="grid grid-2 form">
-          <SelectField label="Format" value={format} options={FORMATS} onChange={(v) => { setFormat(v); if (v === 'short' || v === 'documentary-short') setRuntime(12); else if (isEpisodic(v)) setRuntime(30); else setRuntime(95); }} />
+          <SelectField label="Format" value={format} options={FORMATS.filter((f) => isNonfiction(f.value) === documentary)} onChange={(v) => { setFormat(v); if (v === 'short' || v === 'documentary-short') setRuntime(12); else if (isEpisodic(v)) setRuntime(30); else setRuntime(95); }} />
           <SelectField label="Medium" value={medium} options={(Object.keys(MEDIUM_LABELS) as Medium[]).map((m) => ({ value: m, label: MEDIUM_LABELS[m] }))} onChange={(v) => { setMedium(v); if (v !== 'live-action' && technique === 'none') setTechnique('3d-cg'); if (v === 'live-action') setTechnique('none'); }} />
           {medium !== 'live-action' && (
             <SelectField label={medium === 'hybrid' ? 'Animation Technique For Animated Scenes' : 'Animation Technique'} value={technique === 'none' ? '3d-cg' : technique}

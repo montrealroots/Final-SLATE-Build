@@ -4,6 +4,7 @@
 // time on the day, crew, a test before the shoot, rented kit, or work in post. None is a quality bonus. A handheld
 // camera is not better or worse than a dolly; it resets faster and its takes vary more. The figures are game
 // calibration (docs/ASSUMPTIONS.md, "Camera, Light And Sound"), not rental prices or union terms.
+import { gearById } from './gear-catalog';
 import type { Project, Scene } from './types';
 
 // ---------------- How the camera moves, scene by scene ----------------
@@ -163,9 +164,13 @@ export function gafferNeeded(p: Project, live: Scene[]): boolean {
   return live.some((s) => (s.heading.time === 'NIGHT' && s.heading.intExt === 'EXT') || (lit(s) && LIGHTS[lightOf(p)].gafferForInteriors));
 }
 
-/** Rented kit for a shoot day: the dearest rig among its scenes, once. */
-export function rigDayCost(p: Project, scenes: Scene[]): number {
-  return scenes.reduce((a, s) => Math.max(a, RIGS[rigOf(p, s.id)].dayCost), 0);
+/** A stabilizer in the project's own kit (equipment.ts), which long moving takes use instead of a rented one. */
+export const kitStabilizer = (p: Project): boolean => !!p.kit?.items.some((k) => gearById(k.gearId)?.kind === 'gimbal');
+
+/** Rented kit for a shoot day: the dearest rig among its scenes, once. A stabilizer of your own isn't rented; pass
+ *  `ownStabilizer` false for a day your kit doesn't serve. */
+export function rigDayCost(p: Project, scenes: Scene[], ownStabilizer = kitStabilizer(p)): number {
+  return scenes.reduce((a, s) => Math.max(a, rigOf(p, s.id) === 'moving' && ownStabilizer ? 0 : RIGS[rigOf(p, s.id)].dayCost), 0);
 }
 
 /** Rehearsal days the rigs add, across the scenes on them. */

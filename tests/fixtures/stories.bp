@@ -1,0 +1,98 @@
+// Two stories from the retired library (src/blueprints/, removed on November 12, 2026), kept as fixtures for the blueprint engine's tests.
+
+== heist.f01 | feature | three-act
+title: The Quiet Floor
+genre: heist + drama
+tone: Patient, dry and tender under the tension
+era: - | contemporary
+setting: Lisbon | real | city
+logline: A night cleaner who has memorised a private bank's routines for eleven years is asked by her dying brother to empty one deposit box, and learns the box belongs to the woman who pays her.
+premise: {ines} cleans the fourth floor of a private bank in Lisbon and has never taken so much as a pen. Her brother {rui} was cheated of his workshop by a client of the bank, and the proof is in a deposit box. To get it she needs a locksmith who owes her nothing and a guard who trusts her completely.
+synopsis: {ines} knows the bank by sound: which lift hums, which guard hums along. When {rui} is given months to live he asks for one thing, the ledger that proves his workshop was stolen. She recruits {tomas}, a locksmith who failed his trade exam on purpose, and rehearses the job in her own flat with tape on the floor. The plan depends on {caetano}, the night guard who shares his thermos with her. On the night, the box holds the ledger and a second document: the bank's owner, {dona}, bought {rui}'s debt to protect him and has been quietly paying it down. {ines} must choose between the proof her brother wants and the kindness he never knew about, with {caetano} at the door and nine minutes left on the lift.
+question: Can {ines} take back what was stolen without becoming the person the bank has always assumed a cleaner might be?
+themes: who is trusted and why; work nobody sees; what the dying are owed
+audience: Adults who like a plan they can follow and people they can believe
+viewpoint: Close on {ines} throughout; we know what she knows
+stakes: {rui} dies believing he was a fool, {ines} loses the only job and the only friend she has, and {tomas} goes back inside
+conflict: {ines}'s loyalty to her brother against the trust of the people she works beside every night
+ending: {ines} leaves the ledger, takes the second document, and reads it to {rui} in the hospital. {caetano} finds the tape marks in the lift and says nothing. She is at work the next night.
+experience: The held breath of a job done quietly, then the ache of finding the villain was the wrong person
+look: Sodium light on wet tram tracks; inside, long symmetrical corridors that her trolley throws off centre
+sound: The building as an instrument: lifts, ventilation, a radio two floors down. No score until the box opens.
+m: restore | institution | loyalty-vs-truth | bittersweet
+@ ines | Inês Marçal | lead | protagonist | human | she/her | 52 | The ledger that proves {rui} was robbed | He raised her, and she has never repaid it | Eleven years of being trusted by people she likes | Scrupulously honest and the best thief in the building | From keeping every rule to choosing which ones matter | Few words, exact ones; says "com licença" to empty rooms | Small, upright, grey overall, reading glasses on a cord
+@ rui | Rui Marçal | supporting | deuteragonist | human | he/him | 61 | To die knowing he was right | Pride is all the workshop left him | His own certainty about who wronged him | Generous to everyone and unforgiving of one man | From grievance to gratitude, late | Talks in measurements and proverbs | A big man made thin; sawdust still under his nails
+@ tomas | Tomás Vidal | supporting | ally | human | he/him | 29 | One job done properly, start to finish | He walks away from everything he is good at | A conviction for something he didn't finish | Careful hands, careless life | From leaving early to staying until it is done | Jokes first, then goes silent when working | Lean, tattooed forearms, a jeweller's loupe on a bootlace
+@ caetano | Caetano Reis | supporting | foil | human | he/him | 58 | A quiet shift and someone to talk to | The night is long and his wife is gone | His duty to the door | Sees everything and chooses what to notice | From guarding the bank to guarding a friend | Football scores, weather, then one true thing | Heavy, slow, immaculate uniform, a tartan thermos
+@ dona | Dona Amélia Brandão | featured | antagonist | human | she/her | 74 | To settle an old wrong without being thanked | Her late husband did the cheating | She can't admit it without ruining his name | Ruthless in business, secretly penitent | From hidden to known | Formal, clipped, never raises her voice | Silver hair, a black coat, a cane she doesn't need
+~ ines - rui | sister and the brother who raised her | she owes him everything | she gives him something better than what he asked for
+~ ines - caetano | workmates on the night shift | easy, wordless trust | he knows, and keeps it
+~ ines - tomas | reluctant partners | she doesn't trust his hands or his habits | he finishes the job and she vouches for him
+~ ines - dona | cleaner and owner | invisible to each other | each knows what the other did
+# Opening | INT | Bank, Fourth Floor Corridor | NIGHT | ines, caetano | Show the routine and the trust inside it | {ines} cleans the floor to the second; {caetano} leaves the vault corridor unlocked for her mop and pours her tea | | 4
+# Opening | INT | Hospital Ward | DAY | ines, rui | Give her the reason | {rui} asks for the ledger and tells her which box, a number he has carried for nine years | {ines} agrees before she has decided | 4 | props=hospital bed+drip stand
+# Development | INT | Locksmith's Stall, Covered Market | DAY | ines, tomas | Recruit the hands | {ines} tests {tomas} with her own front-door lock and a stopwatch; he opens it and puts it back better | | 3 | props=lock picks+stopwatch
+# Development | INT | Ines's Flat | NIGHT | ines, tomas | Rehearse | Tape on the floor marks the corridor; they walk the nine minutes again and again while a neighbour's television counts for them | {tomas} asks what happens to the guard, and she has no answer | 5 | props=masking tape+kitchen timer
+# Escalation | INT | Bank, Staff Entrance | NIGHT | ines, tomas, caetano | Get him inside | {tomas} comes in as a floor-machine repairman; {caetano} checks the docket, then offers him tea | {caetano} decides to sit with them | 4 | props=floor polisher
+# Escalation | INT | Bank, Vault Corridor | NIGHT | ines, tomas | Open the box | With the lift held and the polisher running for cover, {tomas} works the box while {ines} counts aloud | The box holds the ledger and a second file with {rui}'s name on it | 6 | props=deposit box+ledger+file
+# Climax | INT | Bank, Vault Corridor | NIGHT | ines, tomas, caetano | Force the choice | {ines} reads that {dona} bought the debt and has been paying it; {tomas} wants to take everything; the lift releases and {caetano}'s steps come down the corridor | She puts the ledger back and keeps one page | 6
+# Resolution | INT | Hospital Ward | DAWN | ines, rui | Give him the truth instead of the proof | {ines} reads the page to {rui}, who is silent a long time, then asks her to thank a woman he has hated for nine years | | 4
+# Resolution | INT | Bank, Fourth Floor Corridor | NIGHT | ines, caetano, dona | Return to the routine, changed | {caetano} peels a strip of tape off the lift floor and pockets it. {dona}, working late, holds a door for the trolley | {dona} says her name | 3
+review: reviewed | 2026-11-12 | checked for coherence, links and a complete outline
+
+
+
+== nordic-noir.t01 | limited-series | chapters
+title: Meltwater
+genre: nordic-noir + mystery
+tone: Cold, humane and unhurried
+era: - | contemporary
+setting: Skardvik, a fjord town in northern Norway | fictional | town
+logline: When a glacier gives up a body dressed for 1987, a detective sent home in disgrace must reopen the disappearance that made her father the town's hero.
+premise: {liv} was suspended in Oslo and takes the only post that will have her, in the town she left at eighteen. The body in the meltwater is {ane}, a schoolteacher everyone agreed had run away. The search for her in 1987 was led by {liv}'s father {arne}, and the town has lived on the story of that search ever since.
+synopsis: Over six chapters {liv} works one case in a town where everyone is a witness and a neighbour. Each episode takes one of the people who searched in 1987 and tests their account against what the ice kept. With {jonas}, a young officer who believes in the town, she finds the search was steered away from the glacier. {arne}, now ill and still revered, helps her and blocks her by turns. The truth is not a murder but a rescue that was abandoned to protect a boy, {henrik}, who is now the mayor, and the lie has shaped thirty-nine years of who was thanked and who was shunned. {liv} must decide whether to close the case in a way the town can survive.
+question: What does a town owe the truth when its best story about itself turns out to be a kindness and a lie?
+themes: inherited reputation; what a community agrees to forget; the cost of being the one who asks
+audience: Adults who want a mystery that takes its time and treats grief seriously
+viewpoint: With {liv}; each chapter opens on a 1987 memory that the episode then corrects
+stakes: {arne}'s name, {henrik}'s office, {jonas}'s faith in the place, and whether {ane}'s sister {marit} is ever told what happened
+conflict: {liv}'s need to know against a town, and a father, built on not knowing
+ending: {liv} files the truth and gives {marit} the report first. {arne} stands up at the memorial and says it himself. The town does not thank her, and she stays.
+experience: Slow dread giving way to sorrow, then an unexpected steadiness
+look: Blue hour for most of the day; red emergency jackets as the only saturated colour; the glacier always somewhere in frame
+sound: Wind, meltwater and radio static; a single cello line that arrives late in each chapter
+rule: Every chapter opens in 1987 as someone remembers it | The memory is shown as they tell it, even when it is wrong
+m: expose | community | loyalty-vs-truth | bittersweet
+@ liv | Liv Sandnes | lead | protagonist | human | she/her | 41 | To do one case properly and leave | She broke a rule in Oslo for the right reason and it cost her | The town's love for her father | Trusts evidence and nobody, including herself | From wanting out to choosing to stay | Dry, brief, asks the same question twice | Tall, tired, an Oslo coat that is wrong for the weather
+@ arne | Arne Sandnes | co-lead | antagonist, mentor | human | he/him | 74 | To be remembered as he is now | He made one decision in 1987 and has paid for it in silence | His daughter | A good man who told a lie for a child | From guarding the story to ending it | Warm, slow, deflects with weather | Broad, shrinking, a rescue-service fleece worn thin
+@ jonas | Jonas Eira | supporting | ally, foil | human | he/him | 27 | To prove the town is what he was raised to think it is | It took him in when his family fell apart | Each thing {liv} finds | Idealist with a policeman's patience | From defending the town to seeing it | Earnest, apologises for other people | Slight, neat, Sami silver at the collar
+@ henrik | Henrik Dahl | supporting | rival | human | he/him | 52 | For 1987 to stay closed | He was thirteen and has built a life on being forgiven | His own memory | Ambitious and frightened in equal parts | From managing the case to confessing | Smooth, quotable, calls everyone by first name | Fit, expensive fleece, a politician's handshake
+@ marit | Marit Lunde | supporting | ally | human | she/her | 63 | To know where her sister went | She was told for decades that {ane} left her | A town that needed {ane} to be the one at fault | Patient and unforgiving | From being managed to being told | Says little, and it lands | Small, weathered, runs the ferry kiosk
+@ ane | Ane Lunde | featured | none | human | she/her | 24 | To get one frightened boy off the ice | She was his teacher | The weather and the dark | Remembered as flighty; was the bravest person there | Seen only in other people's memories, which get truer | Laughing in early memories, steady in the last | Red anorak, school keys on a lanyard
+~ liv - arne | daughter and father | she left; he never asked why | he tells the truth because she made it possible
+~ liv - jonas | superior and junior | he thinks she despises the town | she trusts him with the file
+~ arne - henrik | rescuer and the boy he protected | a debt neither mentions | released from it, both diminished and freer
+~ liv - marit | detective and next of kin | {marit} expects to be handled | {liv} tells her first
+~ henrik - marit | mayor and kiosk owner | he has been kind to her for years out of guilt | she lets him say it and does not absolve him
+# Opening | EXT | Glacier Tongue | DAY | jonas | Find the body | Hikers lead {jonas} to a red sleeve in blue ice; he knows the anorak from the school photograph in the station | | 3 | stunts=an officer roped on a glacier slope
+# Opening | INT | Ferry, Car Deck | DUSK | liv | Bring her home unwilling | {liv} sits in her car for the whole crossing rather than go up to the lounge where she'd be recognised | | 2 | vehicles=car ferry
+# Development | INT | Skardvik Police Station | DAY | liv, jonas | Set the terms | {jonas} lays out the 1987 search file, proud of it; {liv} asks why the map has no grid over the glacier | {jonas} has never noticed the gap | 5 | props=search map+case file
+# Development | INT | Sandnes House, Kitchen | NIGHT | liv, arne | Meet the father and the story | {arne} cooks for her and tells the search as the town tells it, word for word | He stops at the same sentence he always stops at | 5
+# Escalation | INT | Ferry Kiosk | DAY | liv, marit | Tell the family | {liv} tells {marit} her sister never left the valley; {marit} keeps serving a customer before she can speak | {marit} says who told her that {ane} ran | 4
+# Escalation | EXT | School Yard, 1987 | DAY | ane, henrik | Open the first memory | As {jonas}'s mother remembers it: {ane} laughing, late, careless with the children | | 3 | crowd=30
+# Climax | EXT | Glacier Tongue | DUSK | liv, jonas | Find what the search missed | Below the body they find a second rope, cut, and a child's mitten | {liv} realises someone was with {ane} and came down alive | 5 | stunts=two officers roped on a glacier slope, props=cut rope+mitten
+# Resolution | INT | Sandnes House, Hallway | NIGHT | liv, arne | End the chapter on the father | {liv} asks {arne} whose mitten it is; he closes the door to the cold and does not answer | | 3
+tv: 6 x 55
+engine: Each chapter takes one searcher's memory of 1987, shows it as they tell it, then tests it against one thing the ice kept
+arc: From a body that proves {ane} never left, through a search that was steered, to a rescue abandoned to save a boy, and a town deciding what to do with the truth
+ep 1 | The Red Anorak | The body is found; the search map has a hole in it
+ep 2 | Grid Seven | {jonas} learns the glacier was struck off the search by {arne} himself
+ep 3 | The Boy Who Was Ill | {henrik}'s alibi is a sickbed nobody visited
+ep 4 | What The Teacher Did | The memories of {ane} turn: she went up after a child
+ep 5 | Thirteen | {arne} tells {liv} what he found on the ice and what he chose
+ep 6 | Meltwater | {liv} files the report, tells {marit} first, and {arne} speaks at the memorial
+changes: {liv} goes from passing through to staying; {arne} from guarding the story to ending it; {jonas} from believing in the town to loving it with his eyes open; {henrik} from managing the truth to owning it
+recurring: Skardvik Police Station; Sandnes House; Ferry Kiosk; Glacier Tongue; Town Hall
+continuation: It ends. The case is closed in the sixth chapter and nothing is held back for another season.
+review: reviewed | 2026-11-12 | checked for coherence, links, a complete pilot and all six episodes
+

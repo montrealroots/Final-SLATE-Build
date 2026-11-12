@@ -82,6 +82,9 @@ export interface CreationDraft {
   updatedAt: number;
   /** World-catalog places chosen during creation (catalog places don't need a record here). */
   places?: Record<string, Place>;
+  /** Your own savings at the start, and what your family offers (personal.ts). Absent in drafts from before November 12, 2026: none of either. */
+  savings?: number;
+  family?: { circumstances: import('./personal').FamilyCircumstances; support: import('./personal').FamilySupportKind; amount: number; gear?: string[] };
 }
 
 export type Attention = 'interrupt' | 'notify' | 'silent';
@@ -525,6 +528,21 @@ export interface Hire {
   negotiated?: { by: string; byName: string; at: number; fee: number; from: number; to: number };
   /** A child's pay set aside in trust under the shoot's rules (minors.ts), in total so far. */
   trustSetAside?: number;
+  /** The Guide Me mandate that sent this offer (mandates.ts), by its id; absent for the player's own offers. */
+  guided?: string;
+}
+
+/** A department staffed by Guide Me inside an approved ceiling (mandates.ts). What it has committed is never stored. */
+export interface Mandate {
+  id: string;
+  dept: string;
+  ceiling: number;
+  approvedAt: number;
+  endedAt?: number;
+  /** Done when the department was staffed; manual when the player took it back, or the project was delivered or shelved. */
+  ended?: 'done' | 'manual';
+  /** What it returned to the player, each said once. */
+  told: string[];
 }
 
 export interface CastAssignment {
@@ -535,7 +553,7 @@ export interface CastAssignment {
   hireId?: string;
 }
 
-export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio';
+export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio' | 'savings';
 
 /** A backer approached for a project, and what was agreed (finance.ts). */
 export interface FinanceDeal {
@@ -936,6 +954,16 @@ export interface Project {
   series?: { engine?: string; changes?: string; recurring?: string[]; continuation?: string };
   /** The full story this project was started from, if one was applied: its ID, version and title, and which of its characters became which of the project's. */
   blueprint?: { id: string; v: number; title: string; at: number; names: Record<string, string> };
+  /**
+   * The brief proposed from a real work (proposal.ts), from November 12, 2026: the work, the approach, when, and for each
+   * field it wrote whether that was sourced, proposed or unknown, why, and the words it wrote. A field whose words now
+   * differ from those is the player's own.
+   */
+  /** Departments staffed by Guide Me, past and present (mandates.ts). */
+  mandates?: Mandate[];
+  /** Your own kit for this project's shoot days (equipment.ts); absent, it hires the rental house's package. */
+  kit?: import('./equipment').ProjectKit;
+  proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string> };
   /** Fields the player locked: a full story or a shuffle leaves them alone (blueprints.ts FIELD_LABELS has the keys). */
   locks?: string[];
   /**
@@ -1231,4 +1259,8 @@ export interface GameState {
   settings: Settings;
   /** Every world-catalog place this save uses, so it opens without loading the catalog. Added in save version 2. */
   places: Record<string, Place>;
+  /** Your own account and your family's terms (personal.ts). Absent in saves from before November 12, 2026: no money of your own. */
+  money?: import('./personal').PersonalMoney;
+  /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */
+  gear?: import('./equipment').GearInventory;
 }

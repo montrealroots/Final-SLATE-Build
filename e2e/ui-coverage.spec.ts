@@ -9,7 +9,7 @@
 // reaches is listed there as not visited; nothing is called checked that wasn't.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { expect, test, type Page } from './test';
-import { addScene, advance, freshStart, nav, newProject, openStart, pinSeed, quickLife, saveAndApprove, saveAndExit, section } from './helpers';
+import { adaptWork, addScene, advance, freshStart, nav, openStart, pinSeed, quickLife, saveAndApprove, saveAndExit, section } from './helpers';
 import { audit, coveredWhenFocused, shiftSince, watchShifts, type Defect } from './ui-audit';
 import { serveCatalog } from './catalog-fixture';
 
@@ -140,6 +140,9 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   await page.getByRole('button', { name: 'Find An Agent' }).click();
   await v('agent-list', 'You', 'Find An Agent', 'dialog');
   await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: 'Open The Shop' }).click();
+  await v('shop', 'You', 'The Shop', 'dialog');
+  await page.keyboard.press('Escape');
   await nav(page, 'Calendar'); await v('calendar', 'Your Day', 'Calendar');
   const add = page.getByRole('button', { name: 'Add Plan' });
   if (await add.count()) { await add.first().click(); await v('add-plan', 'Your Day', 'Add Plan', 'dialog'); await page.keyboard.press('Escape'); }
@@ -148,25 +151,32 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   await nav(page, 'Saved Games'); await v('saves', 'Your Game', 'Saved Games');
   await nav(page, 'Settings'); await v('settings', 'Your Game', 'Settings');
   await nav(page, 'Projects'); await v('projects-empty', 'Your Work', 'Projects, None Yet', 'state');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
-  await v('new-script', 'Your Work', 'New Script');
-  await nav(page, 'Projects');
-
-  // ---------- A project in development ----------
-  await newProject(page, { title: 'A Title Long Enough To Wrap On A Narrow Phone, And Then Some More Of It', format: 'Feature Film', budget: 'Low Budget' });
-  await v('overview-new', 'Project', 'Overview, Just Created', 'tab');
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await v('new-project-choose', 'Your Work', 'New Project');
+  await page.getByRole('button', { name: 'Write An Original' }).click();
+  await v('new-original', 'Your Work', 'Write An Original');
+  // An original with nothing written yet: its empty script.
+  await page.getByLabel('Working Title').fill('Blank Page');
+  await page.getByRole('button', { name: 'Create Project' }).click();
   await section(page, 'Script');
   await v('script-empty', 'Project', 'Script, Nothing Written', 'tab');
-  await page.getByRole('button', { name: 'Choose A Full Story' }).click();
-  await v('story-list', 'Project', 'Choose A Full Story', 'dialog');
-  const picker = page.getByRole('dialog', { name: 'Choose A Full Story' });
-  await picker.getByLabel('Genre').locator('option').filter({ hasText: /^Heist \(/ }).waitFor({ state: 'attached' });
-  const heist = (await picker.getByLabel('Genre').locator('option').allInnerTexts()).find((t) => /^Heist \(/.test(t))!;
-  await picker.getByLabel('Genre').selectOption({ label: heist });
-  await picker.getByRole('button', { name: /^The Quiet Floor/ }).click();
-  await v('story-open', 'Project', 'A Full Story, Open', 'dialog');
-  await page.getByRole('dialog', { name: 'The Quiet Floor' }).getByRole('button', { name: 'Apply This Story' }).click();
-  await v('script-story', 'Project', 'Script, With A Story Applied', 'tab');
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Develop A Documentary' }).click();
+  await v('new-documentary', 'Your Work', 'Develop A Documentary');
+  await nav(page, 'Projects');
+
+  // ---------- A project in development, made from a real work (the v4 package's main way in) ----------
+  const STEP = { list: 'The Works', open: 'A Work Open', shape: 'Format And Method', preview: 'The Brief' };
+  await adaptWork(page, { query: 'quixote', work: /^Don Quixote/, title: 'A Title Long Enough To Wrap On A Narrow Phone, And Then Some More Of It', budget: 'Low Budget', onStep: (step) => v(`adapt-${step}`, 'Your Work', `Adapt A Work, ${STEP[step]}`, 'state') });
+  await section(page, 'Overview');
+  await v('overview-new', 'Project', 'Overview, Just Created', 'tab');
+  await section(page, 'Script');
+  await v('script-adapted', 'Project', 'Script, Made From A Work', 'tab');
+  await page.getByRole('button', { name: 'Revise From The Work' }).click();
+  await page.getByRole('dialog', { name: 'Revise From The Work' }).getByRole('list', { name: 'What It Would Write' }).waitFor();
+  await v('revise-brief', 'Project', 'Revise From The Work', 'dialog');
+  await page.keyboard.press('Escape');
   await page.getByRole('button', { name: 'Choose A Starting Idea' }).click();
   await v('idea-list', 'Project', 'Choose A Starting Idea', 'dialog');
   await page.keyboard.press('Escape');
@@ -184,9 +194,9 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   await page.getByRole('button', { name: 'Close Scene' }).first().click();
   await section(page, 'Characters');
   await v('characters', 'Project', 'Characters', 'tab');
-  await page.getByRole('article', { name: 'Inês Marçal' }).getByRole('button', { name: 'Edit Character' }).click();
+  await page.getByRole('article').filter({ has: page.getByRole('button', { name: 'Edit Character' }) }).first().getByRole('button', { name: 'Edit Character' }).click();
   await v('character-open', 'Project', 'A Character, Open For Editing', 'panel');
-  await page.getByRole('button', { name: 'Set Aside Or Remove Inês Marçal' }).click();
+  await page.getByRole('button', { name: /^Set Aside Or Remove / }).first().click();
   await v('set-aside', 'Project', 'Take A Character Out Of The Script', 'dialog');
   await page.keyboard.press('Escape');
   for (const [tab, id] of [['Cast', 'cast-before'], ['Crew', 'crew-before'], ['Schedule', 'schedule-before'], ['Budget', 'budget-before'], ['Production', 'production-before'], ['Edit', 'edit-before'], ['Release', 'release-before'], ['Festivals And Awards', 'awards-before']] as const) {
@@ -335,21 +345,13 @@ test('the UI audit: the rest of creation, and the dialogs the first walk does no
     await page.getByRole('button', { name: 'Start My Story' }).waitFor();
   }
 
-  // ---------- A script with a story in it: its dialogs ----------
+  // ---------- A script with people and an outline in it: its dialogs ----------
   await openStart(page);
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await nav(page, 'Projects');
-  await newProject(page, { title: 'Dialogs', format: 'Feature Film', budget: 'Low Budget' });
-  await section(page, 'Script');
-  await page.getByRole('button', { name: 'Choose A Full Story' }).click();
-  // The genre is chosen, not assumed: the list opens on the first genre that has a story, which was Heist only until
-  // another genre before it in the alphabet had one (November 12, 2026, when this walk stopped here).
-  const stories = page.getByRole('dialog', { name: 'Choose A Full Story' });
-  await stories.getByLabel('Genre').locator('option').filter({ hasText: /^Heist \(/ }).waitFor({ state: 'attached' });
-  await stories.getByLabel('Genre').selectOption({ label: (await stories.getByLabel('Genre').locator('option').allInnerTexts()).find((t) => /^Heist \(/.test(t))! });
-  await stories.getByRole('button', { name: /^The Quiet Floor/ }).click();
-  await page.getByRole('dialog').last().getByRole('button', { name: 'Apply This Story' }).click();
-  await page.getByRole('dialog').waitFor({ state: 'detached' });
+  // Its people, what is between them and an outline come from a work (until November 12, 2026, from a story written for
+  // the game, which the owner retired).
+  await adaptWork(page, { query: 'quixote', work: /^Don Quixote/, title: 'Dialogs', budget: 'Low Budget' });
   await dialog(page.getByRole('button', { name: /^Change The Relationship Of / }), 'change-relationship', 'Script', 'Change The Relationship');
   // Removing a relationship between two people who share a scene asks first, and is left alone.
   await dialog(page.getByRole('button', { name: /^Remove The Relationship Of / }), 'remove-relationship', 'Script', 'Remove The Relationship');
@@ -373,6 +375,7 @@ test('the UI audit: the rest of creation, and the dialogs the first walk does no
   await dialog(page.getByRole('button', { name: 'Hire A Writer', exact: true }), 'hire-writer', 'Crew', 'Hire A Writer');
   await dialog(page.getByRole('button', { name: /^Find Candidates/ }), 'hire-crew', 'Crew', 'Hire A Crew Member');
   await dialog(page.getByRole('button', { name: /^Staff /, exact: false }), 'staff', 'Crew', 'Staff A Department');
+  await dialog(page.getByRole('button', { name: 'Guide Me' }).first(), 'guide-me', 'Crew', 'Guide Me For A Department');
   // Once work has begun on an approved script, taking a scene out or approving a changed draft says what it touches first.
   await section(page, 'Script');
   const later = page.locator('article.scene-card').nth(1);
@@ -382,18 +385,11 @@ test('the UI audit: the rest of creation, and the dialogs the first walk does no
   await later.getByLabel('Place', { exact: true }).fill('Loading Dock Behind The Bank');
   await page.getByRole('button', { name: 'Save Draft' }).click();
   await dialog(page.getByRole('button', { name: 'Approve This Draft' }), 'approve-draft', 'Script', 'Approve This Draft?');
-  // A story whose world has rules of its own (science fiction; a heist has no such card): changing a rule has a dialog,
-  // and removing one that a scene relies on asks first and is left alone.
-  await nav(page, 'Projects');
-  await newProject(page, { title: 'Rules', format: 'Feature Film', budget: 'Low Budget' });
-  await section(page, 'Script');
-  await page.getByRole('button', { name: 'Choose A Full Story' }).click();
-  const shelf = page.getByRole('dialog', { name: 'Choose A Full Story' });
-  await shelf.getByLabel('Genre').locator('option').filter({ hasText: /^Science Fiction \(/ }).waitFor({ state: 'attached' });
-  await shelf.getByLabel('Genre').selectOption({ label: (await shelf.getByLabel('Genre').locator('option').allInnerTexts()).find((t) => /^Science Fiction \(/.test(t))! });
-  await shelf.getByRole('button', { name: /^Forty Minutes Of Light/ }).click();
-  await page.getByRole('dialog').last().getByRole('button', { name: 'Apply This Story' }).click();
-  await page.getByRole('dialog').waitFor({ state: 'detached' });
+  // A story whose world has rules of its own (science fiction has the card): changing a rule has a dialog, and removing
+  // one that a scene relies on asks first and is left alone. The rule is the player's: a proposal invents none.
+  await adaptWork(page, { query: 'twenty thousand leagues', work: /^Twenty Thousand Leagues/, title: 'Rules', budget: 'Low Budget' });
+  await page.getByLabel('Rule', { exact: true }).fill('The ship never surfaces by day');
+  await page.getByRole('button', { name: 'Add Rule' }).click();
   await dialog(page.getByRole('button', { name: /^Change The Rule / }), 'change-rule', 'Script', 'Change The Rule');
   const relies = page.getByRole('group', { name: 'Scenes That Rely On It' }).first().getByRole('checkbox').first();
   if (await relies.isVisible().catch(() => false)) {

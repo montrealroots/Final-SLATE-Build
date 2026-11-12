@@ -43,7 +43,8 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
 
   // A project, its characters named, a supporting antagonist among them.
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('Hard Water');
   await page.getByLabel('Format').selectOption({ label: 'Short Film' });
   await page.getByLabel(/Target (Runtime In Minutes|Minutes Per Episode)/).fill('6');

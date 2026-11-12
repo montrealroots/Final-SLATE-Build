@@ -22,8 +22,9 @@ test('live-action short: create, write, cast yourself, staff, shoot, cut, delive
   // November 9, 2026 met enough declines and delays that 24 weeks didn't reach delivery.
   await pinSeed(page, 1994);
 
-  // New Script.
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  // New Project, Write An Original.
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('The Last Ferry To Wolfe Island');
   await page.getByLabel('Format').selectOption({ label: 'Short Film' });
   await page.getByRole('searchbox', { name: 'Search Genres' }).fill('drama');

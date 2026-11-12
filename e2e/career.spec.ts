@@ -48,10 +48,11 @@ test('a proposal is accepted into a funded project, another is declined, and bot
   await expect(page.getByRole('button', { name: 'Second Crossing' })).toBeVisible();
 });
 
-test('New Script says what the project goes through, and two projects with one title are told apart', async ({ page }) => {
+test('Write An Original says what the project goes through, and two projects with one title are told apart', async ({ page }) => {
   await quickLife(page, 'gb-london', '2026-05-04');
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   // SLATE-03-05: the stages follow the medium and technique chosen.
   const stages = page.locator('section.card', { has: page.getByRole('heading', { name: 'What This Project Goes Through' }) });
   await expect(stages).toContainText('Production: Shoot days on location');
@@ -66,7 +67,8 @@ test('New Script says what the project goes through, and two projects with one t
   await expect(page.getByRole('heading', { name: 'Twin', level: 1 })).toBeVisible();
   // SLATE-03-04: a second project with the same title.
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('Twin');
   await page.getByLabel('Format').selectOption({ label: 'Short Film' });
   await page.getByRole('button', { name: 'Create Project' }).click();

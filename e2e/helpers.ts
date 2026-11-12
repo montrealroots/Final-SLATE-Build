@@ -460,7 +460,10 @@ export async function pinSeed(page: Page, seed: number): Promise<void> {
 
 /** Start a project from the Projects screen through its form. */
 export async function newProject(page: Page, o: { title: string; format: string; medium?: string; technique?: string; finish?: string; episodes?: string; runtime?: string; budget?: string; audience?: string; base?: { place: string; country?: string } }): Promise<void> {
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  // A documentary or unscripted show has its own way in, and the original form offers only scripted formats (November 12,
+  // 2026). Until the helper knew unscripted shows went there too, their journeys waited out their timeout on a missing option.
+  await page.getByRole('button', { name: /^(Documentary|Unscripted)/.test(o.format) ? 'Develop A Documentary' : 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill(o.title);
   await page.getByLabel('Format').selectOption({ label: o.format });
   if (o.medium) await page.getByLabel('Medium').selectOption({ label: o.medium });
@@ -473,4 +476,39 @@ export async function newProject(page: Page, o: { title: string; format: string;
   if (o.base) await pickPlace(page, 'Production Base', o.base.place, o.base.country);
   await page.getByRole('button', { name: 'Create Project' }).click();
   await expect(page.getByRole('heading', { name: o.title, level: 1 })).toBeVisible();
+}
+
+/**
+ * Adapt A Work through the interface (the v4 package, 01): find the work, open it, adapt it, choose its shape, read the
+ * proposed brief and create the project. `onStep` is called at each step, for a walk that measures them. Ends on the
+ * new project's Script tab.
+ */
+export async function adaptWork(page: Page, o: { query: string; work: RegExp; title?: string; format?: string; medium?: string; technique?: string; episodes?: string; runtime?: string; approach?: string; budget?: string; names?: Record<string, string>; onStep?: (step: 'list' | 'open' | 'shape' | 'preview') => Promise<void> }): Promise<void> {
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Adapt A Work' }).click();
+  await page.getByRole('list', { name: 'Works' }).waitFor();
+  await o.onStep?.('list');
+  // Typed key by key, as a person does: the list narrowing under keystrokes is input, not the page moving by itself
+  // (fill() sends no keystrokes, so the UI audit counted it as a layout shift; November 12, 2026).
+  await page.getByLabel('Search Works').pressSequentially(o.query);
+  await page.getByRole('list', { name: 'Works' }).getByRole('button', { name: o.work }).first().click();
+  await page.getByRole('region', { name: 'What Is Recorded' }).waitFor();
+  await o.onStep?.('open');
+  await page.getByRole('button', { name: 'Adapt This Work' }).click();
+  if (o.title) await page.getByLabel('Working Title').fill(o.title);
+  if (o.format) await page.getByLabel('Format').selectOption({ label: o.format });
+  if (o.medium) await page.getByLabel('Medium').selectOption({ label: o.medium });
+  if (o.technique) await page.getByLabel(/^Animation Technique/).selectOption({ label: o.technique });
+  if (o.episodes) await page.getByLabel('Episodes').fill(o.episodes);
+  if (o.runtime) await page.getByLabel(/Target (Runtime In Minutes|Minutes Per Episode)/).fill(o.runtime);
+  if (o.approach) await page.getByRole('radio', { name: new RegExp(`^${o.approach}`) }).check();
+  if (o.budget) await page.getByRole('radio', { name: new RegExp(`^${o.budget}:`) }).check();
+  await o.onStep?.('shape');
+  await page.getByRole('button', { name: 'Preview The Brief' }).click();
+  await page.getByRole('list', { name: 'Brief Fields' }).waitFor();
+  for (const [from, to] of Object.entries(o.names ?? {})) await page.getByLabel(`Name For ${from}`).fill(to);
+  await o.onStep?.('preview');
+  await page.getByRole('button', { name: 'Create Project' }).click();
+  await page.getByRole('button', { name: 'Save Draft' }).waitFor();
 }

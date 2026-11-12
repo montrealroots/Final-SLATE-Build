@@ -1,0 +1,220 @@
+{
+ "source": "Glazer's Camera, a US retailer's public product listings",
+ "currency": "USD",
+ "retrieved": "2026-11-12",
+ "items": [
+  {
+   "id": "bmpcc-4k",
+   "kind": "camera",
+   "name": "Blackmagic Pocket Cinema Camera 4K",
+   "mount": "mft",
+   "media": [
+    "cfast",
+    "sd"
+   ],
+   "battery": "lp-e6",
+   "batteryIncluded": true,
+   "xlr": 1,
+   "mini": 1,
+   "specFrom": "https://www.blackmagicdesign.com/products/blackmagicpocketcinemacamera/techspecs/W-CIN-12",
+   "price": 1139,
+   "priceFrom": "https://www.glazerscamera.com/products/blackmagic-pocket-cinema-4k"
+  },
+  {
+   "id": "bmpcc-6k-g2",
+   "kind": "camera",
+   "name": "Blackmagic Pocket Cinema Camera 6K G2",
+   "mount": "ef",
+   "media": [
+    "cfast",
+    "sd"
+   ],
+   "battery": "np-f",
+   "batteryIncluded": true,
+   "xlr": 2,
+   "mini": 1,
+   "specFrom": "https://www.blackmagicdesign.com/products/blackmagicpocketcinemacamera/techspecs/W-CIN-12",
+   "price": 2269,
+   "priceFrom": "https://www.glazerscamera.com/products/blackmagic-pocket-cine-6k-g2"
+  },
+  {
+   "id": "pyxis-6k-ef",
+   "kind": "camera",
+   "name": "Blackmagic PYXIS 6K (EF Mount)",
+   "mount": "ef",
+   "media": [
+    "cfexpress-b"
+   ],
+   "battery": "bp-u",
+   "xlr": 1,
+   "mini": 1,
+   "specFrom": "https://www.blackmagicdesign.com/products/blackmagicpyxis/techspecs",
+   "price": 2245,
+   "priceFrom": "https://www.glazerscamera.com/products/bmd-pyxis-6k-cine-box-cam-ef"
+  },
+  {
+   "id": "pyxis-12k-l",
+   "kind": "camera",
+   "name": "Blackmagic PYXIS 12K (L-Mount)",
+   "mount": "l",
+   "media": [
+    "cfexpress-b"
+   ],
+   "battery": "bp-u",
+   "xlr": 1,
+   "mini": 1,
+   "specFrom": "https://www.blackmagicdesign.com/products/blackmagicpyxis/techspecs",
+   "price": 5829,
+   "priceFrom": "https://www.glazerscamera.com/products/bmd-pyxis-12k-cine-box-cam-lmt"
+  },
+  {
+   "id": "canon-ef-50-18",
+   "kind": "lens",
+   "name": "Canon EF 50mm f/1.8 STM",
+   "mount": "ef",
+   "specFrom": "the product name",
+   "price": 169.99,
+   "priceFrom": "https://www.glazerscamera.com/products/lens-ef-50-f1-8-stm"
+  },
+  {
+   "id": "lumix-12-35",
+   "kind": "lens",
+   "name": "Lumix G 12-35mm f/2.8 Leica DG Vario-Elmarit (Micro Four Thirds)",
+   "mount": "mft",
+   "specFrom": "the product name",
+   "price": 999.99,
+   "priceFrom": "https://www.glazerscamera.com/products/lumix-s-12-35mm-f2-8-leica-dg"
+  },
+  {
+   "id": "sigma-24-70-l",
+   "kind": "lens",
+   "name": "Sigma 24-70mm f/2.8 DG DN II Art (L-Mount)",
+   "mount": "l",
+   "specFrom": "the product name",
+   "price": 1219,
+   "priceFrom": "https://www.glazerscamera.com/products/sigma-24-70mm-f2-8-ii-art-l-mt"
+  },
+  {
+   "id": "sd-uhs2-256",
+   "kind": "media",
+   "name": "SanDisk 256GB Extreme PRO UHS-II SDXC",
+   "media": "sd",
+   "specFrom": "the product name",
+   "price": 360,
+   "priceFrom": "https://www.glazerscamera.com/products/extreme-pro-256gb-sdxc-uhs-ii"
+  },
+  {
+   "id": "cfast-256",
+   "kind": "media",
+   "name": "SanDisk 256GB Extreme PRO CFast 2.0",
+   "media": "cfast",
+   "specFrom": "the product name",
+   "price": 370,
+   "priceFrom": "https://www.glazerscamera.com/products/extreme-pro-256gb-cfast-2-0"
+  },
+  {
+   "id": "cfx-b-256",
+   "kind": "media",
+   "name": "SanDisk 256GB Extreme PRO CFexpress 4.0 Type B",
+   "media": "cfexpress-b",
+   "specFrom": "the product name",
+   "price": 320,
+   "priceFrom": "https://www.glazerscamera.com/products/extreme-pro-256gb-cfx-b-4-0"
+  },
+  {
+   "id": "np-f970",
+   "kind": "battery",
+   "name": "Tilta NP-F970 Battery",
+   "battery": "np-f",
+   "specFrom": "the product name",
+   "price": 39,
+   "priceFrom": "https://www.glazerscamera.com/products/np-f970-batt-10500mah"
+  },
+  {
+   "id": "bp-u35",
+   "kind": "battery",
+   "name": "Sony BP-U35 Battery",
+   "battery": "bp-u",
+   "specFrom": "the product name",
+   "price": 179.99,
+   "priceFrom": "https://www.glazerscamera.com/products/sony-bp-u30-battery"
+  },
+  {
+   "id": "zoom-f3",
+   "kind": "recorder",
+   "name": "Zoom F3 Field Recorder (2 XLR Inputs)",
+   "xlr": 2,
+   "specFrom": "the product name",
+   "price": 329.99,
+   "priceFrom": "https://www.glazerscamera.com/products/zoom-f3-multitrack-rec-32bit"
+  },
+  {
+   "id": "mke-600",
+   "kind": "microphone",
+   "name": "Sennheiser MKE 600 Shotgun Microphone",
+   "connector": "xlr",
+   "pickup": "shotgun",
+   "specFrom": "https://www.sennheiser.com/globalassets/digizuite/41788-en-sp_1302_v1.0_mke_600_product_specification_en.pdf",
+   "price": 349,
+   "priceFrom": "https://www.glazerscamera.com/products/mke600-microphone"
+  },
+  {
+   "id": "videomic-ntg",
+   "kind": "microphone",
+   "name": "Rode VideoMic NTG On-Camera Microphone",
+   "connector": "mini",
+   "pickup": "on-camera",
+   "specFrom": "https://rode.com/en-us/microphones/on-camera/videomic-ntg",
+   "price": 259,
+   "priceFrom": "https://www.glazerscamera.com/products/rode-videomic-ntg"
+  },
+  {
+   "id": "boompole",
+   "kind": "boom",
+   "name": "Rode Boompole",
+   "specFrom": "the product name",
+   "price": 159,
+   "priceFrom": "https://www.glazerscamera.com/products/rode-boom-pole"
+  },
+  {
+   "id": "halo-200x",
+   "kind": "light",
+   "name": "Amaran Halo 200x Bi-Color Light (200W)",
+   "specFrom": "the product name",
+   "price": 249,
+   "priceFrom": "https://www.glazerscamera.com/products/amaran-halo-200x"
+  },
+  {
+   "id": "halo-100x",
+   "kind": "light",
+   "name": "Amaran Halo 100x Bi-Color Light (100W)",
+   "specFrom": "the product name",
+   "price": 169,
+   "priceFrom": "https://www.glazerscamera.com/products/amaran-halo-100x"
+  },
+  {
+   "id": "stand-300f",
+   "kind": "stand",
+   "name": "Godox 300F Light Stand",
+   "specFrom": "the product name",
+   "price": 42.99,
+   "priceFrom": "https://www.glazerscamera.com/products/godox-300f-12-5-hd-lt-stand"
+  },
+  {
+   "id": "befree-video",
+   "kind": "tripod",
+   "name": "Manfrotto Befree Live Video Tripod Kit",
+   "specFrom": "the product name",
+   "price": 299.95,
+   "priceFrom": "https://www.glazerscamera.com/products/befree-advanced-live-video-kit"
+  },
+  {
+   "id": "rs4-pro",
+   "kind": "gimbal",
+   "name": "DJI RS 4 Pro Gimbal Stabilizer",
+   "specFrom": "the product name",
+   "price": 869,
+   "priceFrom": "https://www.glazerscamera.com/products/dji-rs-4-pro"
+  }
+ ]
+}

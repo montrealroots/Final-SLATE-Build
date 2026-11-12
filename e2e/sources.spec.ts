@@ -29,7 +29,7 @@ test('a real work found, read with its recorded rights, chosen, undone, chosen a
 
   // The list: every work, the most written about first, forty drawn at a time.
   const list = await openPicker(page);
-  await expect(list.getByRole('status')).toContainText(/^\d+ works, the most written about first\. The first 40 are shown/);
+  await expect(list.getByRole('status')).toContainText(/^\d+ works published by \d{4}, the most written about first\. The first 40 are shown/);
   expect(await list.getByRole('list', { name: 'Works' }).locator('li').count()).toBe(40);
   await expect(list).toContainText('It is not permission to use the work, and nothing agreed in the game is.');
   if (phone) expect((await audit(page)).defects, 'the list of works, on a phone').toEqual([]);
@@ -40,7 +40,7 @@ test('a real work found, read with its recorded rights, chosen, undone, chosen a
   await list.getByLabel('What Is Recorded About Its Rights').selectOption({ label: 'Anything' });
   await list.getByLabel('Medium').selectOption({ label: 'Every Medium' });
   await list.getByLabel('Search Works').fill('quixote');
-  await expect(list.getByRole('status')).toContainText(/^1 of \d+ works\./);
+  await expect(list.getByRole('status')).toContainText(/^1 of \d+ works published by \d{4}\./);
   await list.getByRole('button', { name: /^Don Quixote/ }).click();
 
   // One work, as recorded.
@@ -48,7 +48,7 @@ test('a real work found, read with its recorded rights, chosen, undone, chosen a
   await expect(work.getByRole('region', { name: 'What Is Recorded' })).toContainText('Miguel de Cervantes (author, died 1616)');
   await expect(work.getByRole('region', { name: 'What Is Recorded' })).toContainText('1605');
   await expect(work.getByRole('region', { name: 'Its Rights' })).toContainText('The game works nothing out from a date or a death, gives no advice about the law, and grants no right to a real work.');
-  await expect(work.getByRole('region', { name: 'Where This Comes From' })).toContainText('No synopsis is recorded there and none is written here.');
+  await expect(work.getByRole('region', { name: 'Where This Comes From' })).toContainText("The summary above is Wikipedia's.");
   await expect(work.getByRole('link', { name: 'Its Wikidata Record' })).toHaveAttribute('href', 'https://www.wikidata.org/wiki/Q480');
   const changes = work.getByRole('region', { name: 'What Choosing It Changes' });
   await expect(changes).toContainText('Source Material becomes Adapted From Another Work.');
@@ -113,7 +113,7 @@ test('a work recorded as copyrighted says so and is still only a declaration; a 
   await section(page, 'Script');
   const list = await openPicker(page);
   await list.getByLabel('What Is Recorded About Its Rights').selectOption({ label: 'Recorded As Copyrighted' });
-  await expect(list.getByRole('status')).toContainText(/^\d+ of \d+ works\./);
+  await expect(list.getByRole('status')).toContainText(/^\d+ of \d+ works published by \d{4}\./);
   const first = list.getByRole('list', { name: 'Works' }).locator('li').first();
   await expect(first).toContainText('Recorded As Copyrighted');
   const title = (await first.locator('.idea-label').innerText()).trim();
@@ -127,7 +127,6 @@ test('a work recorded as copyrighted says so and is still only a declaration; a 
   await nav(page, 'Projects');
   await newProject(page, { title: 'A Documentary', format: 'Documentary Feature', budget: 'Low Budget' });
   await section(page, 'Script');
-  await expect(page.getByRole('button', { name: 'Choose A Full Story' })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Choose A Work To Adapt' })).toHaveCount(0);
 });
 

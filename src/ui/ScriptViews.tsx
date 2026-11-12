@@ -33,9 +33,10 @@ import { MAKEUP, MAX_STATES, PERIOD_LABEL, WARDROBE, costumeCopies, madeIn, make
 
 // The idea picker and its library load the first time a picker is opened (IdeaPicker.tsx), never with the page.
 const IdeaPicker = lazy(() => import('./IdeaPicker').then((m) => ({ default: m.IdeaPicker })));
-import { STANDING_SAYS, forgetSourceWork } from '../engine/adaptation';
+import { APPROACHES, STANDING_SAYS, forgetSourceWork } from '../engine/adaptation';
+import { ORIGIN_LABELS, fieldOrigin } from '../engine/proposal';
 import { MEDIUM_LABELS, type SourceMedium } from '../engine/sources';
-const StoryPicker = lazy(() => import('./StoryPicker').then((m) => ({ default: m.StoryPicker })));
+const ReviseBrief = lazy(() => import('./ReviseBrief').then((m) => ({ default: m.ReviseBrief })));
 const SourcePicker = lazy(() => import('./SourcePicker').then((m) => ({ default: m.SourcePicker })));
 const ideaLabel = (id: string) => import('../ideas').then((m) => m.ideaById(id)?.label ?? null);
 
@@ -127,15 +128,20 @@ function Ideas({ p, fields, title, label = 'Choose Ideas', characterId, sceneId 
   );
 }
 
-/** Opens the full-story picker (StoryPicker.tsx), and says what was applied, so the change is seen. */
-function FullStory({ p }: { p: Project }) {
+/**
+ * For a project made from a real work: propose its brief again and take only the fields chosen (ReviseBrief.tsx). Until
+ * November 12, 2026 this place held Choose A Full Story, the library of stories written for this game, which the owner
+ * retired with its quota.
+ */
+function ReviseFromWork({ p }: { p: Project }) {
   const [open, setOpen] = useState(false);
   const [applied, setApplied] = useState<string | null>(null);
+  if (!p.proposal) return null;
   return (
     <span className="ideas-row">
-      <button type="button" className="btn btn-sm btn-primary" disabled={!!p.delivered} onClick={() => { setApplied(null); setOpen(true); }}>Choose A Full Story</button>
-      {applied && <span role="status" className="dim small">Applied: {applied}. Undo Last Change takes it back.</span>}
-      {open && <Suspense fallback={null}><StoryPicker p={p} run={(fn) => edit(p, fn)} onClose={() => setOpen(false)} onApplied={setApplied} /></Suspense>}
+      <button type="button" className="btn btn-sm" disabled={!!p.delivered} onClick={() => { setApplied(null); setOpen(true); }}>Revise From The Work</button>
+      {applied && <span role="status" className="dim small">Revised from {applied}. Undo Last Change takes it back.</span>}
+      {open && <Suspense fallback={null}><ReviseBrief p={p} run={(fn) => edit(p, fn)} onClose={() => setOpen(false)} onApplied={setApplied} /></Suspense>}
     </span>
   );
 }
@@ -214,6 +220,25 @@ function IdeaField({ p, fields, title, children }: { p: Project; fields: IdeaFie
  * What was chosen from the picker, in one place (brief.ts `p.brief.picks`): each idea by name, who or what it was for,
  * and whether it changes the work or is words or a note. This is where a note with no other effect is kept and read.
  */
+/** Where each field of a brief proposed from a real work came from, as it stands now: a field changed since reads as the player's. */
+function ProposalOrigins({ p }: { p: Project }) {
+  const pr = p.proposal!;
+  const keys = Object.keys(pr.origin).filter((k) => FIELD_LABELS[k]);
+  const now = keys.map((k) => [k, fieldOrigin(p, k)] as const);
+  const count = (o: string) => now.filter(([, x]) => x === o).length;
+  return (
+    <div>
+      <p><strong>Adapted From:</strong> {pr.title}, proposed {longLocal(pr.at, 'UTC').date} in the game, {APPROACHES[pr.approach].label.toLowerCase()}. {count('sourced')} {count('sourced') === 1 ? 'field is' : 'fields are'} from the work, {count('proposed')} proposed by the game, {count('unknown')} not recorded, and {count('edited')} now your own words.</p>
+      <details>
+        <summary>Where Each Field Came From</summary>
+        <ul className="list small" aria-label="Where Each Field Came From">
+          {now.map(([k, o]) => <li key={k} className="list-item"><span className="grow"><strong>{FIELD_LABELS[k]}</strong>: {ORIGIN_LABELS[o ?? 'proposed']}{o !== 'edited' && pr.why[k] ? `. ${pr.why[k]}` : ''}</span></li>)}
+        </ul>
+      </details>
+    </div>
+  );
+}
+
 function CreativeBrief({ p }: { p: Project }) {
   const picks = p.brief?.picks ?? [];
   const [labels, setLabels] = useState<Record<string, string>>({});
@@ -221,7 +246,7 @@ function CreativeBrief({ p }: { p: Project }) {
   if (missing) void Promise.all(missing.split(',').map(async (id) => [id, (await ideaLabel(id)) ?? (id.startsWith('logline.') ? 'A Built Logline' : 'An Idea No Longer In The Library')] as const)).then((xs) => setLabels((old) => ({ ...old, ...Object.fromEntries(xs) })));
   const locks = p.locks ?? [];
   const sug = p.brief?.suggestions;
-  if (!picks.length && !p.axes.styleEra && !p.blueprint && !locks.length && !sug) return null;
+  if (!picks.length && !p.axes.styleEra && !p.blueprint && !p.proposal && !locks.length && !sug) return null;
   const who = (k: (typeof picks)[number]) => {
     const names = [...(k.characterIds ?? []).map((id) => p.characters.find((c) => c.id === id)?.name), ...(k.sceneIds ?? []).map((id) => { const sc = p.scenes.find((x) => x.id === id); return sc ? sceneLabel(p, sc) : undefined; })].filter(Boolean);
     return names.length ? ` For ${names.join(', ')}.` : '';
@@ -230,6 +255,7 @@ function CreativeBrief({ p }: { p: Project }) {
     <section className="card" aria-label="Creative Brief">
       <h2>Creative Brief</h2>
       <p className="dim">What you chose from the idea pickers. Each set the fields it said it would; from then on the fields are what count, and you can change any of them. A note is kept here for the departments and changes nothing else.</p>
+      {p.proposal && <ProposalOrigins p={p} />}
       {p.blueprint && (
         <>
           <p><strong>Which Story It Is From:</strong> {p.blueprint.title}, an original story written for this game.</p>
@@ -295,14 +321,14 @@ export function ScriptTab({ p }: { p: Project }) {
         {nonfiction && (
           <div className="callout">
             <p style={{ margin: 0 }}>Not sure where to begin? A full story is a whole plan to develop: who to approach, what to ask and what it would have to show. Or write your own in any field below.</p>
-            <div className="row gap-2 wrap" style={{ marginTop: 'var(--s2)' }}><FullStory p={p} /></div>
+            <div className="row gap-2 wrap" style={{ marginTop: 'var(--s2)' }}><ReviseFromWork p={p} /></div>
           </div>
         )}
         {!nonfiction && (
           <div className="callout">
             <p style={{ margin: 0 }}>Not sure where to begin? Choose a full story, or one idea at a time, make it yours, and change anything afterwards. Or write your own in any field below: what you type is never replaced unless you say so.</p>
             <div className="row gap-2 wrap" style={{ marginTop: 'var(--s2)' }}>
-              <FullStory p={p} />
+              <ReviseFromWork p={p} />
               <AdaptWork p={p} />
               <Ideas p={p} fields={['premise']} title="Choose A Starting Idea" label="Choose A Starting Idea" />
               <Ideas p={p} fields={['genre-blend']} title="Choose A Blend Of Genres" label="Blend Genres" />

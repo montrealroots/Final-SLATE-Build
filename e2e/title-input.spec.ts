@@ -12,7 +12,8 @@ import { nav, quickLife } from './helpers';
 test('a title typed, edited, cleared, pasted and submitted while the game runs keeps every character', async ({ page }) => {
   await quickLife(page, 'us-los-angeles', '2026-03-02');
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   const title = page.getByLabel('Working Title');
 
   // At once, as the CI journeys did, while the first save and the clock run.

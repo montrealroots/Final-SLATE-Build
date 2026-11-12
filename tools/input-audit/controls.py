@@ -31,6 +31,11 @@ c(f, '"Where You Live"', D, 'state.locationId', 'state.ts newGame; projects.ts c
 c(f, '"Starting Date"', D, 'state.now', 'state.ts newGame', 'When the world starts: which award editions and rules apply', U('dates', 'creation refuses impossible birth and start dates'), E('creation', 'Starting Point'))
 c(f, '"Starting Time"', D, 'state.now', 'state.ts newGame', 'The hour the clock starts', U('dates', 'creation refuses impossible birth and start dates'))
 c(f, '{props.label}', 'component', '', '', 'PlacePicker definition, used by the place controls above')
+c(f, '"Your Savings"', D, 'draft.savings -> state.money (savings posting)', 'personal.ts openPersonalMoney, personalBalance, putInRefusal', 'What is in your own account at the start, and so what you can put into a project', U('personal', 'opens with what was chosen'))
+c(f, '"Your Family\'s Circumstances"', D, 'draft.family.circumstances', 'personal.ts familyTerms', 'The most your family could offer; it decides nothing else about you', U('personal', 'is bounded by their circumstances, and decides nothing else'))
+c(f, '"What Your Family Offers"', D, 'draft.family.support -> state.money.family', 'personal.ts familyTerms, openPersonalMoney, family-repayment, takeHome', 'A gift is yours; a loan is repaid monthly from your account; an investment takes a share of income you take home', U('personal', 'opens with what was chosen'))
+c(f, '{`${g.name}, ${money(g.price!)}`}', D, 'draft.family.gear -> state.gear (owner family)', 'equipment.ts onNewGame, lentValue; personal.ts familyTerms', 'What your family lends goes on your shelf, free to use, not yours to sell, and bounded by their circumstances', U('equipment', 'is bounded by their circumstances'))
+c(f, '"How Much"', D, 'draft.family.amount', 'personal.ts familyTerms, openingPreview', 'What your family puts in, and so what is owed', U('personal', 'is read on Review before the story starts'))
 c(f, '"Search Ethnicities"', V)
 c(f, '"Describe Your Ethnicity"', I, 'character.heritages (custom)', 'identity.ts splitBackgrounds', 'Your own words for your ethnicity, kept and shown', '', E('creation', 'an ethnicity in your own words'))
 c(f, '"Search Nationalities"', V)
@@ -301,11 +306,24 @@ for lab, st in [('"What An Episode Does"', 'series.engine'), ('"How Its People C
 for lab, st in [('"Why They Want It"', 'motivation'), ('"What Stands In The Way"', 'obstacle'), ('"What In Them Pulls Against It"', 'contradiction'), ('"How They Change"', 'arc'), ('"How They Speak"', 'voice')]:
     c(f, lab, I, f'character.{st}', 'shown with the part', 'Your words for the part; the game doesn\'t read them')
 c(f, '"Give Their Scenes, Lines And Relationships To"', D, 'who takes a set-aside character\'s scenes', 'projects.ts archiveCharacter', 'Their scenes, lines, relationships and threads go to the character chosen; with nobody chosen the scenes simply lose them', U('characters', 'can give their scenes, lines and bonds to someone else, with no bond to oneself and none twice'))
-f = 'StoryPicker.tsx'
-c(f, '"Genre"', V)
-c(f, '"Search These Stories"', V)
-c(f, '{`Name For ${c.name}`}', I, 'the names a full story writes', 'blueprints.ts named, applyBlueprint', "The player's own name for one of the story's people, used everywhere the story names them", U('blueprints', "uses the player's names everywhere the story names someone"))
-c(f, '{`Keep My ${c.label}`}', D, "which of the player's words a full story leaves alone", 'blueprints.ts applyBlueprint', 'A kept field is not replaced', U('blueprints', "keeps the player's own words where they choose to, leaves a locked field alone, and says so first"))
+f = 'AdaptWork.tsx'
+c(f, '"Working Title"', R, 'project.title', 'everywhere a project is named', "The project's name; the work's title to start with", U('proposal', 'makes one project'))
+c(f, '"Format"', D, 'axes.format', 'proposal.ts proposeFromSource; projects.ts, production/tasks.ts', 'How many of the recorded people it carries, how many scenes, a season; then the work like any project', U('proposal', 'fits the work to the format'))
+c(f, '"Medium"', D, 'axes.medium', 'production/tasks.ts buildTasks', 'Live action shoots; animation has no shoot days but studio and render time', U('estimates', 'same script, different production method'))
+c(f, "{medium === 'hybrid' ? 'Animation Technique For Animated Scenes' : 'Animation Technique'}", D, 'axes.technique', 'production/tasks.ts buildTasks', 'Which animation pipeline does the work', U('estimates', 'same script, different production method'))
+c(f, '"Episodes"', D, 'axes.episodeCount', 'proposal.ts (the season it proposes); projects.ts', 'How many episodes the season plan has', U('proposal', 'fits the work to the format'))
+c(f, "{episodic ? 'Target Minutes Per Episode' : 'Target Runtime In Minutes'}", D, 'axes.targetRuntimeMin', 'proposal.ts (cast and scene count); estimate.ts', 'A short follows one strand of a long work; a feature compresses it', U('proposal', 'fits the work to the format'))
+c(f, '{`Name For ${c.name}`}', I, 'the names the proposal writes', 'blueprints.ts named, applyBlueprint', "The player's own name for one of the work's people, used everywhere the brief names them", U('proposal', 'makes one project'))
+f = 'ReviseBrief.tsx'
+c(f, '{`Keep My ${c.label}`}', D, "which of the player's words a revision leaves alone", 'blueprints.ts applyBlueprint', 'A kept field is not replaced', U('blueprints', "keeps the player's own words where they choose to, leaves a locked field alone, and says so first"))
+c(f, '{`Keep My ${c.label} And Add None`}', D, "whether a revision adds the proposal's people or outline beside the project's", 'blueprints.ts applyBlueprint', 'Kept: nothing is added; unticked: the proposal\'s are added beside, and nothing is removed', U('proposal', 'revising'))
+f = 'PlanViews.tsx'
+c(f, '"Spending Ceiling"', D, 'Project.mandates[].ceiling', 'mandates.ts guideMePlan, runMandate, guideMeRefusal', 'The most Guide Me may commit for a department: offers that do not fit are not sent, and a counteroffer past it comes back to the player', U('guide-me', 'never goes past the ceiling'))
+f = 'YourMoney.tsx'
+c(f, '"Put In From Your Own Money"', D, 'state.money postings; project finance deal (savings)', 'personal.ts putInOwnMoney, putInRefusal', 'Money leaves your account and arrives in the project as Your Own Money, nobody repaid from it', U('personal', 'puts money into a project only by your choice'))
+f = 'Equipment.tsx'
+c(f, '"Show"', V)
+c(f, '"Show"', V, n=2)
 f = 'SourcePicker.tsx'
 c(f, '"Search Works"', V)
 c(f, '"Medium"', V)

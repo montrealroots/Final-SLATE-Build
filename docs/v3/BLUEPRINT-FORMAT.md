@@ -1,3 +1,7 @@
+> **Retired as a story library on November 12, 2026** (the v4 package, precedence 1). The story files and the quota
+> that counted them are gone. The format is kept as the shape a whole brief is applied in (`engine/blueprints.ts`), and
+> the tests still write fixtures in it.
+
 # The Story File Format
 
 Full stories are in `src/blueprints/`, one text file for each genre (`heist.bp`) and one for each supported pair of

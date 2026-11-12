@@ -128,6 +128,17 @@
   ]
  },
  {
+  "id": "dlg-shop",
+  "area": "You",
+  "name": "The Shop",
+  "kind": "dialog",
+  "dialog": "^@shop$",
+  "source": "Equipment | \"The Shop\"",
+  "walk": [
+   "shop"
+  ]
+ },
+ {
   "id": "dlg-agent-notice",
   "area": "You",
   "name": "Give Notice?",
@@ -280,11 +291,44 @@
  {
   "id": "new-project",
   "area": "Your Work",
-  "name": "New Script",
+  "name": "New Project",
   "kind": "screen",
   "screen": "new-project",
   "walk": [
-   "new-script"
+   "new-project-choose"
+  ]
+ },
+ {
+  "id": "new-original",
+  "area": "Your Work",
+  "name": "Write An Original",
+  "kind": "screen",
+  "screen": "new-project:original",
+  "walk": [
+   "new-original"
+  ]
+ },
+ {
+  "id": "new-documentary",
+  "area": "Your Work",
+  "name": "Develop A Documentary",
+  "kind": "screen",
+  "screen": "new-project:documentary",
+  "walk": [
+   "new-documentary"
+  ]
+ },
+ {
+  "id": "new-adapt",
+  "area": "Your Work",
+  "name": "Adapt A Work",
+  "kind": "screen",
+  "screen": "new-project:adapt",
+  "walk": [
+   "adapt-list",
+   "adapt-open",
+   "adapt-shape",
+   "adapt-preview"
   ]
  },
  {
@@ -326,7 +370,7 @@
   "screen": "project:script",
   "walk": [
    "script-empty",
-   "script-story",
+   "script-adapted",
    "script-approved"
   ]
  },
@@ -541,28 +585,6 @@
   ]
  },
  {
-  "id": "dlg-story",
-  "area": "Script",
-  "name": "Choose A Full Story",
-  "kind": "dialog",
-  "dialog": "^Choose A Full Story$",
-  "source": "StoryPicker | \"Choose A Full Story\"",
-  "walk": [
-   "story-list"
-  ]
- },
- {
-  "id": "dlg-story-open",
-  "area": "Script",
-  "name": "A Full Story, Open",
-  "kind": "dialog",
-  "dialog": "^@story-open$",
-  "source": "StoryPicker | {b.title}",
-  "walk": [
-   "story-open"
-  ]
- },
- {
   "id": "dlg-source-list",
   "area": "Script",
   "name": "Choose A Work To Adapt",
@@ -582,6 +604,17 @@
   "source": "SourcePicker | {w.title}",
   "walk": [
    "source-open"
+  ]
+ },
+ {
+  "id": "dlg-revise-brief",
+  "area": "Script",
+  "name": "Revise From The Work",
+  "kind": "dialog",
+  "dialog": "^@revise-brief$",
+  "source": "ReviseBrief | \"Revise From The Work\"",
+  "walk": [
+   "revise-brief"
   ]
  },
  {
@@ -764,6 +797,17 @@
   "source": "PlanViews | {`Staff ${proposal.dept}",
   "walk": [
    "staff"
+  ]
+ },
+ {
+  "id": "dlg-guide-me",
+  "area": "Crew",
+  "name": "Guide Me For A Department",
+  "kind": "dialog",
+  "dialog": "^@guide-me$",
+  "source": "PlanViews | {`Guide Me For ",
+  "walk": [
+   "guide-me"
   ]
  },
  {

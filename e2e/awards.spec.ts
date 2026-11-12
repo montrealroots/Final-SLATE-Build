@@ -548,7 +548,8 @@ test('Golden Globes: Non-English Language counts the script\'s dialogue, not the
 // what that means where awards split drama from comedy. One secondary comedy tag makes nothing a comedy.
 test('J03: a horror film with a comic streak competes as a drama; making comedy primary, or declaring it, moves it, and the page says why each time', async ({ page }) => {
   await quickLife(page, 'us-los-angeles', '2026-10-01');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('Graveyard Shift');
   await page.getByLabel('Format').selectOption({ label: 'Feature Film' });
   await page.getByLabel(/Target Runtime In Minutes/).fill('100');

@@ -25,7 +25,8 @@ test('from a chosen idea to a delivered film: the picker, the 1986 zombie brief,
   await createCharacter(page, { name: 'Rin Okafor', pronouns: 'They/Them', birthDate: '1990-06-15', birthplace: 'Lagos', heritages: ['Yoruba'], nationalities: ['Nigeria'], mainLanguage: 'English', extraLanguages: [], start: 'London', startDate: '2026-01-05', startTime: '08:00' });
   await pinSeed(page, 7);
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('Last Shift In Briar Hollow');
   await page.getByLabel('Format').selectOption({ label: 'Feature Film' });
   await page.getByRole('radio', { name: /^Low Budget:/ }).check();
@@ -195,7 +196,8 @@ test('a logline built from four parts, and a crowd extended in post from a scene
   await freshStart(page);
   await createCharacter(page, { name: 'Rin Okafor', pronouns: 'They/Them', birthDate: '1990-06-15', birthplace: 'Lagos', heritages: ['Yoruba'], nationalities: ['Nigeria'], mainLanguage: 'English', extraLanguages: [], start: 'London', startDate: '2026-01-05', startTime: '08:00' });
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('Built From Parts');
   await page.getByRole('button', { name: 'Create Project' }).click();
   await section(page, 'Script');
@@ -250,7 +252,8 @@ test('J02: the zombie premise as stop motion: puppets, sets and voices are made,
   test.skip(!['desktop', 'iphone-15-pro-max'].includes(info.project.name), 'One full production, on desktop and one WebKit iPhone emulation.');
   test.setTimeout(1_500_000);
   await seededLife(page, 'gb-london', '2026-01-05', 7);
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('Briar Hollow In Clay');
   await page.getByLabel('Format').selectOption({ label: 'Short Film' });
   await page.getByLabel('Medium').selectOption({ label: 'Animation' });

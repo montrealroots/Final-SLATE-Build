@@ -14,7 +14,8 @@ async function makeAndRead(page: Page, abroad: boolean): Promise<string[]> {
   await quickLife(page, 'gb-london', '2026-09-01');
   await pinSeed(page, 3);
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().click();
+  await page.getByRole('button', { name: 'New Project' }).first().click();
+  await page.getByRole('button', { name: 'Write An Original' }).click();
   await page.getByLabel('Working Title').fill('Far Shore');
   await page.getByLabel('Format').selectOption({ label: 'Short Film' });
   await page.getByText('Where The Story Is Set (Optional)').click();

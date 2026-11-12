@@ -23,7 +23,8 @@ test('phone device: screens fit, drawer works, focused fields stay visible', asy
     expect(await overflow(), v).toBeLessThanOrEqual(1);
   }
   await nav(page, 'Projects');
-  await page.getByRole('button', { name: 'New Script' }).first().tap();
+  await page.getByRole('button', { name: 'New Project' }).first().tap();
+  await page.getByRole('button', { name: 'Write An Original' }).tap();
   // A field low on the form stays visible once focused (the keyboard itself can't be emulated here).
   const runtime = page.getByLabel('Target Runtime In Minutes');
   await runtime.focus();

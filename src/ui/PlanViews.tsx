@@ -23,6 +23,9 @@ import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, roofed, scoutedPlaces, siteName, siteNote } from '../engine/locations';
 import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
 import { candidatesFor, childrenIn } from '../engine/hiring';
+import { OwnAccountCard } from './YourMoney';
+import { ProjectKitCard } from './Equipment';
+import { activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted } from '../engine/mandates';
 import { searchAdvice, searchLine, searchPreview, searchRefusal, searchStatus, searchesFor, shortlistAdvice, startSearch } from '../engine/casting-director';
 import { negotiate, negotiationLine, negotiationPreview, negotiationRefusal, producerAccountLine } from '../engine/line-producer';
 import {
@@ -369,6 +372,7 @@ export function CrewTab({ p }: { p: Project }) {
   const g = useGame();
   const [finding, setFinding] = useState<string | null>(null);
   const [proposal, setProposal] = useState<{ dept: string; proposals: StaffingProposal[]; skipped: string[] } | null>(null);
+  const [guiding, setGuiding] = useState<string | null>(null);
   const [msg, setMsg] = useState<string | null>(null);
   if (p.approvedDraft === null) return <NeedsApproval p={p} what="The crew list" />;
   const needed = neededRoles(p, g);
@@ -396,8 +400,14 @@ export function CrewTab({ p }: { p: Project }) {
           <div className="row-between wrap">
             <h2 style={{ margin: 0 }}>{d}</h2>
             {/* It hires the required crew, so a department with only optional jobs has no such button (there was no such department until November 12, 2026). */}
-            {needed.some((r) => r.dept === d && r.required) && <button className="btn btn-sm" disabled={!!p.delivered} onClick={() => setProposal({ dept: d, ...proposeStaffing(g, p, d) })}>Staff This Department</button>}
+            {needed.some((r) => r.dept === d && r.required) && (
+              <span className="row gap-2 wrap">
+                {!activeMandate(p, d) && <button className="btn btn-sm" disabled={!!p.delivered} onClick={() => setGuiding(d)}>Guide Me</button>}
+                <button className="btn btn-sm" disabled={!!p.delivered} onClick={() => setProposal({ dept: d, ...proposeStaffing(g, p, d) })}>Staff This Department</button>
+              </span>
+            )}
           </div>
+          <GuideMeStanding p={p} dept={d} />
           <ul className="list spaced">
             {needed.filter((r) => r.dept === d).map((r) => {
               const st = status(r.roleId);
@@ -437,6 +447,7 @@ export function CrewTab({ p }: { p: Project }) {
         <HireTable p={p} hires={p.hires.filter((h) => h.kind === 'crew')} />
         {!p.hires.some((h) => h.kind === 'crew') && <p className="muted">No crew offers yet.</p>}
       </section>
+      {guiding && <GuideMeDialog p={p} dept={guiding} onClose={() => setGuiding(null)} />}
       {finding && (
         <Modal title={`Hire ${/^[AEIOU]/.test(roleLabel(finding)) ? 'An' : 'A'} ${roleLabel(finding)}`} onClose={() => setFinding(null)} footer={<button className="btn" onClick={() => setFinding(null)}>Close</button>}>
           <CandidateList p={p} roleId={finding} onDone={() => setFinding(null)} />
@@ -1068,6 +1079,8 @@ function FinancingPanel({ p }: { p: Project }) {
         </section>
       )}
       <AdaptationRights p={p} />
+      <OwnAccountCard p={p} />
+      <ProjectKitCard p={p} />
       <section className="card" aria-labelledby="raise-h">
         <h2 id="raise-h">Raise Money</h2>
         <ul className="list">
@@ -1148,5 +1161,48 @@ function ChildrenCard({ p }: { p: Project }) {
         ))}
       </ul>
     </section>
+  );
+}
+
+/**
+ * Guide Me for a crew department (mandates.ts): the plan, the ceiling the player approves, and what it may and may not do,
+ * read before anything is sent.
+ */
+function GuideMeDialog({ p, dept, onClose }: { p: Project; dept: string; onClose: () => void }) {
+  const g = useGame();
+  const plan = guideMePlan(g, p, dept);
+  const [ceiling, setCeiling] = useState(plan.total);
+  const [err, setErr] = useState<string | null>(null);
+  const no = guideMeRefusal(p, dept, ceiling);
+  const approve = () => { const e = store.act((s) => { approveGuideMe(s, s.projects.find((x) => x.id === p.id)!, dept, ceiling); }); if (e) setErr(e); else onClose(); };
+  return (
+    <Modal title={`Guide Me For ${dept}`} kind="guide-me" onClose={onClose} footer={<><button className="btn" onClick={onClose}>Keep It Manual</button><button className="btn btn-primary" disabled={!!no} onClick={approve}>Approve Guide Me</button></>}>
+      <p className="dim">The game staffs this department for you within the ceiling you set: it offers these people at their asking rates, tries someone else when one says no, and accepts a counteroffer only while it still fits. Each offer takes days to be answered, and the work still has to be done. Anything over the ceiling comes back to you.</p>
+      {plan.picks.length > 0 ? (
+        <ul className="list" aria-label="The Plan">
+          {plan.picks.map((x) => <li key={x.roleId} className="list-item"><span className="grow"><strong>{roleLabel(x.roleId)}</strong>: {x.name}, {money(x.dayRate)} a day for {plural(x.days, 'day')}</span><span>{money(x.total)}</span></li>)}
+        </ul>
+      ) : <p className="muted">Nobody free can be offered a job here now.</p>}
+      {plan.gaps.map((x) => <p key={x} className="callout small">{x}</p>)}
+      <p><strong>The Plan Costs:</strong> {money(plan.total)}. {money(ledgerTotals(p).available)} is uncommitted on this project.</p>
+      <NumberField label="Spending Ceiling" value={ceiling} min={0} max={100_000_000} onChange={setCeiling} hint="The most Guide Me may commit for this department's hires. It never goes past it." />
+      {no && <p className="small">{no}</p>}
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+    </Modal>
+  );
+}
+
+/** Where Guide Me stands on a department: what it has committed against its ceiling, and what it has returned to you. */
+function GuideMeStanding({ p, dept }: { p: Project; dept: string }) {
+  const m = activeMandate(p, dept) ?? [...(p.mandates ?? [])].reverse().find((x) => x.dept === dept);
+  if (!m) return null;
+  const out = p.hires.filter((h) => h.guided === m.id && (h.status === 'offered' || h.status === 'countered')).length;
+  const done = m.endedAt !== undefined;
+  return (
+    <div className="callout small spaced" role="region" aria-label={`Guide Me, ${dept}`}>
+      <p>{done ? (m.ended === 'done' ? `Guide Me staffed ${dept}` : `Guide Me stopped`) : 'Guide Me is staffing this department'}: {money(mandateCommitted(p, m))} of the {money(m.ceiling)} ceiling committed{out ? `, ${plural(out, 'offer')} out` : ''}. Approved {longLocal(m.approvedAt, getPlace(p.axes.basePlaceId).zone).date}{done ? `; ended ${longLocal(m.endedAt!, getPlace(p.axes.basePlaceId).zone).date}` : ''}.</p>
+      {m.told.length > 0 && <><p><strong>Returned to you:</strong></p><ul>{m.told.map((t) => <li key={t}>{t}</li>)}</ul></>}
+      {!done && <button className="btn btn-sm" onClick={() => void store.act((s) => endGuideMe(s, s.projects.find((x) => x.id === p.id)!, dept))}>Back To Manual</button>}
+    </div>
   );
 }

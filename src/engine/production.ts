@@ -10,7 +10,7 @@ import { HOUR, dayNumber, localToInstant, parseYmd } from './time';
 import type { GameState, Project, ShootDay } from './types';
 import { ensureWorkEvent, groupShootDays } from './production/schedule';
 
-export { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, DAY_COST_SCALE, EQUIPMENT_PER_DAY, HOLIDAY_PREMIUM, LOCATION_FEE_PER_DAY, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO, dayFees } from './production/rates';
+export { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, DAY_COST_SCALE, EQUIPMENT_PER_DAY, HOLIDAY_PREMIUM, LOCATION_FEE_PER_DAY, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO, dayFees, housePackageFee } from './production/rates';
 export { buildTasks } from './production/tasks';
 export { ensureWorkEvent, generatePlan, groupShootDays, isWorkingDay, nextWorkingDay, planShootDays, sceneComplexity, sceneLoad, type ShootDayGroup } from './production/schedule';
 export { depsMet, materialCost, playerDoes, puppetStatus, runWorkDay, teamFor } from './production/workday';

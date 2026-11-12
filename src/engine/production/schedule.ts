@@ -18,6 +18,7 @@ import { songUses } from '../songs';
 import { childShare, ensureLicence, minorFor, type Minor } from '../minors';
 import { rigDayCost } from '../craft';
 import { awayCosts, dayPlace } from '../destinations';
+import { kitClash } from '../equipment';
 import { PLATE_FACTOR, digitalCrowd, makeupDayCost, makeupShare, physicalCrowd } from '../looks';
 import { covers } from '../people';
 
@@ -261,6 +262,14 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   const kept = p.schedule.days.filter((d) => d.status !== 'scheduled');
   const capturedIds = new Set(p.captures.filter((c) => c.captured >= 0.999 && c.version === p.approvedDraft).map((c) => c.sceneId));
   const planned = planShootDays(state, p, shootStart).map((d) => ({ ...d, sceneIds: d.sceneIds.filter((s) => !capturedIds.has(s)) })).filter((d) => d.sceneIds.length);
+  // One owned item can't be on two shoots on the same date (equipment.ts).
+  const clash = kitClash(state, p, planned.map((d) => d.date));
+  if (clash) {
+    p.tasks = backup.tasks;
+    p.assets = backup.assets;
+    p.schedule.startDate = backup.startDate;
+    throw new Error(clash);
+  }
   // Budget the schedule: shoot-day costs and materials are reserved now, so they can't be spent twice.
   const shootCost = planned.length * (dayFees(p).location + dayFees(p).equipment) +
     planned.reduce((a, d) => { const its = approvedScenes(p).filter((sc) => d.sceneIds.includes(sc.id)); return a + its.reduce((b, sc) => b + physicalCrowd(sc) * CROWD_DAY_RATE, 0) + makeupDayCost(its, approvedCharacters(p)) + rigDayCost(p, its); }, 0) +

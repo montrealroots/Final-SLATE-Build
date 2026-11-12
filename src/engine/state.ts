@@ -142,7 +142,14 @@ export function validateDraft(d: CreationDraft): DraftProblem[] {
     out.push({ field: 'startDate', step: 'starting-point', message: `Choose a date from ${FIRST_START_YEAR} to ${LAST_START_YEAR}.` });
   }
   if (!/^([01]\d|2[0-3]):[0-5]\d$/.test(d.startTime)) out.push({ field: 'startTime', step: 'starting-point', message: 'Enter a time such as 08:00.' });
+  for (const fn of draftChecks) out.push(...fn(d));
   return out;
+}
+
+/** Modules that add to creation (personal.ts: your savings and your family's offer) check their part of a draft here. */
+const draftChecks: ((d: CreationDraft) => DraftProblem[])[] = [];
+export function onDraftCheck(fn: (d: CreationDraft) => DraftProblem[]): void {
+  draftChecks.push(fn);
 }
 
 export function newGame(d: CreationDraft, realNow: number, saveId: string): GameState {
@@ -203,13 +210,13 @@ export function newGame(d: CreationDraft, realNow: number, saveId: string): Game
     if (pl) adoptPlace(state, pl);
   }
   scheduleNextBirthday(state);
-  for (const fn of initHooks) fn(state);
+  for (const fn of initHooks) fn(state, d);
   return state;
 }
 
 /** Modules (awards, industry) register world setup that runs once when a life begins. */
-const initHooks: ((s: GameState) => void)[] = [];
-export function onNewGame(fn: (s: GameState) => void): void {
+const initHooks: ((s: GameState, d: CreationDraft) => void)[] = [];
+export function onNewGame(fn: (s: GameState, d: CreationDraft) => void): void {
   initHooks.push(fn);
 }
 

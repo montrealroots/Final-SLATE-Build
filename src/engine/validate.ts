@@ -81,6 +81,16 @@ export function validateGameState(raw: unknown): asserts raw is GameState {
     need(isObj(t) && isId(t.to) && isId(t.from) && isNum(t.arriveAt), 'your trip', 'is malformed');
   }
 
+  if (s.money !== undefined) {
+    const m = s.money as Obj;
+    need(isObj(m) && Array.isArray(m.postings) && (m.postings as unknown[]).every((x) => isObj(x) && isId((x as Obj).id) && isNum((x as Obj).amount) && isNum((x as Obj).at) && typeof (x as Obj).key === 'string' && typeof (x as Obj).kind === 'string'), 'your own account', 'is malformed');
+  }
+
+  if (s.gear !== undefined) {
+    const g = s.gear as Obj;
+    need(isObj(g) && Array.isArray(g.items) && (g.items as unknown[]).every((x) => isObj(x) && isId((x as Obj).id) && isStr((x as Obj).gearId) && ((x as Obj).owner === 'you' || (x as Obj).owner === 'family') && isNum((x as Obj).condition) && isNum((x as Obj).paid)), 'your equipment', 'is malformed');
+  }
+
   need(Array.isArray(s.events), 'scheduled events', 'are missing');
   let last = -Infinity;
   for (const e of s.events as unknown[]) {
@@ -158,7 +168,7 @@ function zoneOk(zone: string): boolean {
 }
 
 const FINANCE_STATUSES = ['considering', 'offered', 'declined', 'refused', 'accepted', 'breached', 'lapsed', 'withdrawn'];
-const FINANCE_KINDS = ['agreed', 'starting', 'grant', 'investor', 'co-producer', 'commissioner', 'earnings', 'capital', 'studio'];
+const FINANCE_KINDS = ['agreed', 'starting', 'grant', 'investor', 'co-producer', 'commissioner', 'earnings', 'capital', 'studio', 'savings'];
 
 function validateProject(raw: unknown, i: number, seen: Set<string>): void {
   const where = `project ${i + 1}`;
@@ -192,6 +202,7 @@ function validateProject(raw: unknown, i: number, seen: Set<string>): void {
   }
 
   need(Array.isArray(p.obligations), name, 'has no budget lines');
+  if (p.kit !== undefined) need(isObj(p.kit) && Array.isArray((p.kit as Obj).items) && ((p.kit as Obj).items as unknown[]).every((k) => isObj(k) && isId((k as Obj).id) && isStr((k as Obj).gearId) && ((k as Obj).how === 'owned' || (k as Obj).how === 'rented') && isNum((k as Obj).dayRate)), name, 'has a malformed equipment kit');
   const obligationIds = new Set<string>();
   for (const o of p.obligations as unknown[]) {
     need(isObj(o) && isId(o.id) && OBLIGATION_STATES.includes(o.state as string), `a budget line of ${name}`, 'is malformed');

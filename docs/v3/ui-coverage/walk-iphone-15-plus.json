@@ -1,7 +1,585 @@
 {
  "project": "iphone-15-plus",
- "at": "2026-11-12T15:04:38.429Z",
+ "at": "2026-11-12T21:16:14.241Z",
  "rows": [
+  {
+   "id": "home-industry",
+   "area": "Home",
+   "name": "Home, With The Industry's News",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "companies",
+   "area": "Industry",
+   "name": "Companies, With The Catalog",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "company",
+   "area": "Industry",
+   "name": "A Company",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "title-film",
+   "area": "Industry",
+   "name": "A Film",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "person",
+   "area": "Industry",
+   "name": "A Person",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "title-series",
+   "area": "Industry",
+   "name": "A Series",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "season",
+   "area": "Industry",
+   "name": "A Season",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "episode",
+   "area": "Industry",
+   "name": "An Episode",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "networks",
+   "area": "Industry",
+   "name": "Networks And Streaming Services",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "network",
+   "area": "Industry",
+   "name": "A Network",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "company-group",
+   "area": "Industry",
+   "name": "A Company With Leadership",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "executive",
+   "area": "Industry",
+   "name": "An Executive",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "calendar-industry",
+   "area": "Your Day",
+   "name": "Calendar, With The Industry's Dates",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "start-saved",
+   "area": "Startup",
+   "name": "Start Screen, With A Saved Game",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "start-saves",
+   "area": "Startup",
+   "name": "Saved Games From The Start Screen",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "rename-save",
+   "area": "Your Game",
+   "name": "Rename Save",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "delete-save",
+   "area": "Your Game",
+   "name": "Delete This Save?",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "start-draft",
+   "area": "Startup",
+   "name": "Start Screen, With An Unfinished Character",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "start-over",
+   "area": "Startup",
+   "name": "Start Over?",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "creation-review",
+   "area": "Startup",
+   "name": "Creation: Review",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "creation-background",
+   "area": "Startup",
+   "name": "Creation: Background And Languages",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "creation-starting-point",
+   "area": "Startup",
+   "name": "Creation: Starting Point",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [
+    "Where You Live: the map's markers are under 44 pixels; the list of places beside the map opens the same places"
+   ]
+  },
+  {
+   "id": "change-relationship",
+   "area": "Script",
+   "name": "Change The Relationship",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "remove-relationship",
+   "area": "Script",
+   "name": "Remove The Relationship",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "rename-draft",
+   "area": "Script",
+   "name": "Rename Draft",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "compare-draft",
+   "area": "Script",
+   "name": "Compare Draft",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "script-confirm",
+   "area": "Script",
+   "name": "Combine The Scenes",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "shelve",
+   "area": "Project",
+   "name": "Shelve The Project",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "hire-writer",
+   "area": "Crew",
+   "name": "Hire A Writer",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "hire-crew",
+   "area": "Crew",
+   "name": "Hire A Crew Member",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "staff",
+   "area": "Crew",
+   "name": "Staff A Department",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "guide-me",
+   "area": "Crew",
+   "name": "Guide Me For A Department",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "approve-draft",
+   "area": "Script",
+   "name": "Approve This Draft?",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "change-rule",
+   "area": "Script",
+   "name": "Change The Rule",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "remove-rule",
+   "area": "Script",
+   "name": "Remove The Rule",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "rename-save-in-game",
+   "area": "Your Game",
+   "name": "Rename Save, In The Game",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
   {
    "id": "start",
    "area": "Startup",
@@ -131,6 +709,22 @@
    "accepted": []
   },
   {
+   "id": "shop",
+   "area": "You",
+   "name": "The Shop",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
    "id": "calendar",
    "area": "Your Day",
    "name": "Calendar",
@@ -245,10 +839,124 @@
    "accepted": []
   },
   {
-   "id": "new-script",
+   "id": "new-project-choose",
    "area": "Your Work",
-   "name": "New Script",
+   "name": "New Project",
    "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "new-original",
+   "area": "Your Work",
+   "name": "Write An Original",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "script-empty",
+   "area": "Project",
+   "name": "Script, Nothing Written",
+   "kind": "tab",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "new-documentary",
+   "area": "Your Work",
+   "name": "Develop A Documentary",
+   "kind": "screen",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-list",
+   "area": "Your Work",
+   "name": "Adapt A Work, The Works",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-open",
+   "area": "Your Work",
+   "name": "Adapt A Work, A Work Open",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-shape",
+   "area": "Your Work",
+   "name": "Adapt A Work, Format And Method",
+   "kind": "state",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "adapt-preview",
+   "area": "Your Work",
+   "name": "Adapt A Work, The Brief",
+   "kind": "state",
    "sizes": {
     "iPhone 15 Plus (WebKit) (430 by 932)": {
      "defects": []
@@ -279,9 +987,9 @@
    "accepted": []
   },
   {
-   "id": "script-empty",
+   "id": "script-adapted",
    "area": "Project",
-   "name": "Script, Nothing Written",
+   "name": "Script, Made From A Work",
    "kind": "tab",
    "sizes": {
     "iPhone 15 Plus (WebKit) (430 by 932)": {
@@ -297,42 +1005,10 @@
    "accepted": []
   },
   {
-   "id": "story-list",
+   "id": "revise-brief",
    "area": "Project",
-   "name": "Choose A Full Story",
+   "name": "Revise From The Work",
    "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "story-open",
-   "area": "Project",
-   "name": "A Full Story, Open",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "script-story",
-   "area": "Project",
-   "name": "Script, With A Story Applied",
-   "kind": "tab",
    "sizes": {
     "iPhone 15 Plus (WebKit) (430 by 932)": {
      "defects": []
@@ -847,568 +1523,6 @@
    "area": "Shell",
    "name": "Menu Drawer",
    "kind": "drawer",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "home-industry",
-   "area": "Home",
-   "name": "Home, With The Industry's News",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "companies",
-   "area": "Industry",
-   "name": "Companies, With The Catalog",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "company",
-   "area": "Industry",
-   "name": "A Company",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "title-film",
-   "area": "Industry",
-   "name": "A Film",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "person",
-   "area": "Industry",
-   "name": "A Person",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "title-series",
-   "area": "Industry",
-   "name": "A Series",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "season",
-   "area": "Industry",
-   "name": "A Season",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "episode",
-   "area": "Industry",
-   "name": "An Episode",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "networks",
-   "area": "Industry",
-   "name": "Networks And Streaming Services",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "network",
-   "area": "Industry",
-   "name": "A Network",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "company-group",
-   "area": "Industry",
-   "name": "A Company With Leadership",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "executive",
-   "area": "Industry",
-   "name": "An Executive",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "calendar-industry",
-   "area": "Your Day",
-   "name": "Calendar, With The Industry's Dates",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "start-saved",
-   "area": "Startup",
-   "name": "Start Screen, With A Saved Game",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "start-saves",
-   "area": "Startup",
-   "name": "Saved Games From The Start Screen",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "rename-save",
-   "area": "Your Game",
-   "name": "Rename Save",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "delete-save",
-   "area": "Your Game",
-   "name": "Delete This Save?",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "start-draft",
-   "area": "Startup",
-   "name": "Start Screen, With An Unfinished Character",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "start-over",
-   "area": "Startup",
-   "name": "Start Over?",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "creation-review",
-   "area": "Startup",
-   "name": "Creation: Review",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "creation-background",
-   "area": "Startup",
-   "name": "Creation: Background And Languages",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "creation-starting-point",
-   "area": "Startup",
-   "name": "Creation: Starting Point",
-   "kind": "screen",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": [
-    "Where You Live: the map's markers are under 44 pixels; the list of places beside the map opens the same places"
-   ]
-  },
-  {
-   "id": "change-relationship",
-   "area": "Script",
-   "name": "Change The Relationship",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "remove-relationship",
-   "area": "Script",
-   "name": "Remove The Relationship",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "rename-draft",
-   "area": "Script",
-   "name": "Rename Draft",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "compare-draft",
-   "area": "Script",
-   "name": "Compare Draft",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "script-confirm",
-   "area": "Script",
-   "name": "Combine The Scenes",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "shelve",
-   "area": "Project",
-   "name": "Shelve The Project",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "hire-writer",
-   "area": "Crew",
-   "name": "Hire A Writer",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "hire-crew",
-   "area": "Crew",
-   "name": "Hire A Crew Member",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "staff",
-   "area": "Crew",
-   "name": "Staff A Department",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "approve-draft",
-   "area": "Script",
-   "name": "Approve This Draft?",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "change-rule",
-   "area": "Script",
-   "name": "Change The Rule",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "remove-rule",
-   "area": "Script",
-   "name": "Remove The Rule",
-   "kind": "dialog",
-   "sizes": {
-    "iPhone 15 Plus (WebKit) (430 by 932)": {
-     "defects": []
-    },
-    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
-     "defects": []
-    }
-   },
-   "scrollers": [],
-   "accepted": []
-  },
-  {
-   "id": "rename-save-in-game",
-   "area": "Your Game",
-   "name": "Rename Save, In The Game",
-   "kind": "dialog",
    "sizes": {
     "iPhone 15 Plus (WebKit) (430 by 932)": {
      "defects": []
