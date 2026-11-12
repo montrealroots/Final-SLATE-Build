@@ -6,7 +6,7 @@ import { getPlace } from '../data/places';
 import { craftRoles, gafferNeeded } from './craft';
 import { canApproach, consideredOn, isReal, jobsOf, realPerson } from './guests';
 import { needsMakeupCrew, physicalCrowd } from './looks';
-import { cancel, commit, ledgerTotals, money, reserve, FundsError } from './budget';
+import { cancel, commit, ledgerTotals, money, obligation, reserve, settle, FundsError } from './budget';
 import { genre } from './genres';
 import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
 import { buildTasks, coachingNeeded, estimatedShootDays, planShootDays } from './production';
@@ -53,6 +53,12 @@ export function neededRoles(p: Project, state?: GameState): NeededRole[] {
   if (live) for (const c of craftRoles(p, scenes.filter((s) => sceneTechnique(p, s) === 'live' && s.kind !== 'archival'))) { out.delete(c.roleId); add(c.roleId, `${c.reason} Required for this plan.`, true); }
   const tasks = p.tasks.length ? p.tasks : buildTasks(p);
   for (const t of tasks) add(t.roleId, `Needed for ${t.label.toLowerCase()}.`, true);
+  // Optional, wherever there is a part to cast (from November 12, 2026: until then the role existed and no production
+  // could ask for one). What they do is in casting-director.ts; it is never required, and Staff This Department,
+  // which hires the required crew, doesn't hire one.
+  // Optional on every production, from the same day: line-producer.ts.
+  add('line-producer', 'Negotiates a counteroffer when you ask, for one of their days: they bring back a lower rate or the same one, and accepting it stays yours.', false);
+  if (approvedCharacters(p).some((c) => c.roleSize !== 'background')) add('casting-director', 'Runs a search for a part when you ask: chooses who to bring and arranges the readings, for two of their days. The shortlist, the callbacks and every offer stay yours.', false);
   const mods = projectModules(p);
   // A look with a makeup method needs someone to apply it on the day (looks.ts): the prosthetics designer's tasks add them
   // where appliances are built; otherwise the hair and makeup artist is required, not just useful.
@@ -110,8 +116,30 @@ function childDays(p: Project, state?: GameState): number {
 const WELFARE = new Set(['studio-teacher', 'chaperone', 'tutor', 'set-nurse']);
 
 /** Estimated paid days for a role, from the current plan or the approved breakdown. */
+/**
+ * Pay someone for days of work the player asked of them, on their own line of the budget: their agreement reserved some
+ * days, and work beyond those adds to it. Refused, with nothing changed, when the production can't pay for it. The days
+ * count as days worked, which is what credits them (finish.ts computeCredits). Returns what was paid.
+ */
+export function payDelegatedDays(state: GameState, p: Project, h: Hire, days: number, key: string, what: string): number {
+  const name = personById(state, h.personId, h.roleId).name;
+  const fee = h.dayRate * days;
+  const line = obligation(p, h.obligationId!);
+  const more = Math.max(0, fee - Math.max(0, line.amount - line.settled));
+  const { available } = ledgerTotals(p);
+  if (more > available) throw new FundsError(`This ${what} needs ${money(more)} more than ${name}'s agreement holds, but only ${money(available)} is uncommitted. Release someone, cut scope, or bring in more funding.`, more - available);
+  if (!settle(state, p, line.id, fee, key)) throw new Error(`${name} has already been paid for this ${what}.`);
+  h.daysWorked += days;
+  return fee;
+}
+
+/** A casting search is two of the casting director's days: one to prepare the list, one for the session. */
+export const CASTING_SEARCH_DAYS = 2;
+
 export function estimateDays(p: Project, roleId: string, characterId?: string, method?: PerformanceMethod, state?: GameState): number {
   if (WELFARE.has(roleId)) return Math.max(1, childDays(p, state));
+  // A casting director's agreement covers one search; each further search adds its days (casting-director.ts).
+  if (roleId === 'casting-director') return CASTING_SEARCH_DAYS;
   const tasks = p.tasks.length ? p.tasks : buildTasks(p);
   const shootDays = p.schedule.days.length ? p.schedule.days.filter((d) => d.status === 'scheduled' || d.status === 'shot' || d.status === 'partial').length : estimatedShootDays(p, state);
   if (characterId) {

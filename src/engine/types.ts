@@ -104,6 +104,36 @@ export interface LogEntry {
   route?: Route;
 }
 
+/** A work from the source-material catalog, as recorded when the player chose it (adaptation.ts). */
+export interface SourceRef {
+  /** Wikidata's identifier, "wd:Q480". */
+  id: string;
+  title: string;
+  medium: string;
+  year: number | null;
+  creators: string[];
+  /** What the record said about its copyright: see sources.ts rightsStanding. */
+  standing: 'public-domain-recorded' | 'copyrighted-recorded' | 'not-recorded';
+  /** The recorded statements, in words, as shown to the player then. */
+  recorded: string;
+  /** The game's time when it was chosen. */
+  at: number;
+}
+
+/**
+ * An option on the work a script adapts (adaptation.ts): this story's own agreement, with made-up terms. It is not an
+ * agreement with anyone real and grants no right to a real work.
+ */
+export interface SourceOption {
+  /** What was agreed: the price to buy the rights, the fee for the option (counted towards the price), and the rest. */
+  terms: { price: number; fee: number; renewalFee: number; months: number; renewalMonths: number; territory: string; media: 'film' | 'television'; credit: string };
+  takenAt: number;
+  /** When it runs out unless renewed or exercised. */
+  expires: number;
+  renewedAt?: number;
+  exercisedAt?: number;
+}
+
 export interface Route {
   view: string;
   projectId?: string;
@@ -290,6 +320,28 @@ export interface Scene {
 }
 
 /** An invitation to read for a part, and what came of it (auditions.ts, SLATE-09-02). */
+/**
+ * One search for one part, run by the production's casting director on the producer's say (casting-director.ts). The
+ * people they brought are ordinary auditions; this is the record of the mandate: who ran it, when, what it cost and
+ * which readings it covers. What they advise is worked out from those readings, and is advice: the shortlist, the
+ * callbacks and every offer stay the player's.
+ */
+export interface CastingSearch {
+  id: string;
+  characterId: string;
+  method: PerformanceMethod;
+  /** The casting director, by person and name as credited then. */
+  by: string;
+  byName: string;
+  at: number;
+  /** What the search cost: their days of preparation and the session, at their rate. */
+  fee: number;
+  /** The auditions this search arranged. */
+  auditionIds: string[];
+  /** Performers they considered and did not bring, each with why, so the search can be questioned. */
+  passed: { name: string; why: string }[];
+}
+
 export interface Audition {
   id: string;
   characterId: string;
@@ -451,6 +503,8 @@ export interface Hire {
   responseAt: number;
   obligationId: string | null;
   daysWorked: number;
+  /** A line producer's negotiation of this person's counteroffer (line-producer.ts): who, when, what it cost, and the rate asked before and after. */
+  negotiated?: { by: string; byName: string; at: number; fee: number; from: number; to: number };
   /** A child's pay set aside in trust under the shoot's rules (minors.ts), in total so far. */
   trustSetAside?: number;
 }
@@ -871,6 +925,8 @@ export interface Project {
   fromOpportunity?: string;
   /** Auditions and callbacks for its parts (auditions.ts). */
   auditions?: Audition[];
+  /** Searches a hired casting director ran (casting-director.ts): who they brought to read for a part, and what they then advised. */
+  castingSearches?: CastingSearch[];
   setups: SetupPayoff[];
   /** Acts or sequences, and story threads (structure.ts). Absent in older saves. */
   acts?: { id: string; name: string }[];
@@ -939,9 +995,11 @@ export interface Project {
   shelved?: { at: number };
   /**
    * What the screenplay is based on, as the writer declares it (awards that split original from adapted read it).
-   * Missing on projects from before November 9, 2026, which count as original. Rights in the source aren't modeled.
+   * Missing on projects from before November 9, 2026, which count as original. `ref` is the work chosen from the
+   * source-material catalog (sources.ts, from November 12, 2026), kept as it was recorded on the day it was chosen so a
+   * save never depends on the catalog: its rights are what Wikidata recorded then, and nothing the game works out.
    */
-  source?: { kind: 'original' | 'adapted'; work?: string };
+  source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef; option?: SourceOption };
   /** When the story is set, as declared: costume, makeup and design awards split by it. Missing means contemporary. */
   storyTime?: 'contemporary' | 'period' | 'future';
   /** Subjects the story takes on, as declared (some awards and sections are for work about them); never read from prose. */

@@ -304,6 +304,11 @@ c(f, '"Genre"', V)
 c(f, '"Search These Stories"', V)
 c(f, '{`Name For ${c.name}`}', I, 'the names a full story writes', 'blueprints.ts named, applyBlueprint', "The player's own name for one of the story's people, used everywhere the story names them", U('blueprints', "uses the player's names everywhere the story names someone"))
 c(f, '{`Keep My ${c.label}`}', D, "which of the player's words a full story leaves alone", 'blueprints.ts applyBlueprint', 'A kept field is not replaced', U('blueprints', "keeps the player's own words where they choose to, leaves a locked field alone, and says so first"))
+f = 'SourcePicker.tsx'
+c(f, '"Search Works"', V)
+c(f, '"Medium"', V)
+c(f, '"One Of The Game\'s Genres"', V)
+c(f, '"What Is Recorded About Its Rights"', V)
 
 PLAYTHROUGHS = {'journeys', 'careers', 'connected', 'journey-a', 'journey-c', 'release-schedule', 'rolling-delivery', 'live-action', 'first-project', 'media'}
 J = {}

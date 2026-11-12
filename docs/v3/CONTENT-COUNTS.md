@@ -11,9 +11,9 @@ whole outline and, for a series, every episode of its first season.
 
 | | Required | Written | Complete | Reviewed |
 | --- | --- | --- | --- | --- |
-| Stories with one primary genre | 14,900 | 5 | 5 | 2 |
+| Stories with one primary genre | 14,900 | 8 | 8 | 2 |
 | Genres with 50 reviewed films and 50 reviewed series | 149 | | | 0 |
-| Genres with at least one story | | | 5 | |
+| Genres with at least one story | | | 8 | |
 | Mixed-genre stories | | 0 | 0 | |
 | Pairings with 10 stories | | | 0 | |
 | Genres in 3 such pairings | 149 | | 0 | |
@@ -46,7 +46,7 @@ whole outline and, for a series, every episode of its first season.
 | Chase (`chase`) | 0 | 0 | 0 | 0 | 0 |
 | Children's (`childrens`) | 0 | 0 | 0 | 0 | 0 |
 | Christmas (`christmas`) | 0 | 0 | 0 | 0 | 0 |
-| Comedy (`comedy`) | 0 | 0 | 0 | 0 | 0 |
+| Comedy (`comedy`) | 0 | 0 | 1 | 0 | 0 |
 | Coming Of Age (`coming-of-age`) | 0 | 0 | 0 | 0 | 0 |
 | Concert Film (`concert-film`) | 0 | 0 | 0 | 0 | 0 |
 | Conspiracy Thriller (`conspiracy-thriller`) | 0 | 0 | 0 | 0 | 0 |
@@ -89,7 +89,7 @@ whole outline and, for a series, every episode of its first season.
 | Historical Fiction (`historical-fiction`) | 0 | 0 | 0 | 0 | 0 |
 | Holiday (`holiday`) | 0 | 0 | 0 | 0 | 0 |
 | Hood Film (`hood-film`) | 0 | 0 | 0 | 0 | 0 |
-| Horror (`horror`) | 0 | 0 | 0 | 0 | 0 |
+| Horror (`horror`) | 1 | 0 | 0 | 0 | 0 |
 | Horror Comedy (`horror-comedy`) | 0 | 0 | 0 | 0 | 0 |
 | Isekai (`isekai`) | 0 | 0 | 0 | 0 | 0 |
 | Jidaigeki (`jidaigeki`) | 0 | 0 | 0 | 0 | 0 |
@@ -133,7 +133,7 @@ whole outline and, for a series, every episode of its first season.
 | Samurai (`samurai`) | 0 | 0 | 0 | 0 | 0 |
 | Satire (`satire`) | 0 | 0 | 0 | 0 | 0 |
 | Science Fantasy (`science-fantasy`) | 0 | 0 | 0 | 0 | 0 |
-| Science Fiction (`science-fiction`) | 0 | 0 | 0 | 0 | 0 |
+| Science Fiction (`science-fiction`) | 1 | 0 | 0 | 0 | 0 |
 | Screwball Comedy (`screwball-comedy`) | 0 | 0 | 0 | 0 | 0 |
 | Sea Adventure (`sea-adventure`) | 0 | 0 | 0 | 0 | 0 |
 | Silent Film (`silent-film`) | 0 | 0 | 0 | 0 | 0 |

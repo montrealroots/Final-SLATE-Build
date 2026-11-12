@@ -197,7 +197,10 @@ test('paused part way and gone on with; a damaged part refused and tried again; 
   // No room: said before anything is fetched, and nothing is.
   await s.getByRole('button', { name: 'Remove All Pictures' }).click();
   await expect(s.getByRole('status')).toContainText('Removed every picture');
-  await page.evaluate(() => { Object.defineProperty(navigator.storage, 'estimate', { configurable: true, value: async () => ({ quota: 5000, usage: 4990 }) }); });
+  // On the prototype, not on navigator.storage itself: WebKit collects that object when nothing holds it, and a property
+  // set on it goes too (measured November 12, 2026: gone after the fourth round of garbage, where Chromium kept it).
+  // That is how this step once read the browser's real room and found plenty.
+  await page.evaluate(() => { Object.defineProperty(Object.getPrototypeOf(navigator.storage), 'estimate', { configurable: true, value: async () => ({ quota: 5000, usage: 4990 }) }); });
   const count = served.asked.length;
   await s.getByRole('button', { name: 'Download All Available' }).click();
   const before = s.getByRole('group', { name: 'Before You Download' });

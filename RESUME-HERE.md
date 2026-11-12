@@ -78,9 +78,26 @@ has a row for each requirement built or owed.
   (`docs/v3/BLUEPRINT-FORMAT.md`). After writing a batch: `V3_WRITE=1 npx vitest run tests/v3-content.test.ts`, read
   `docs/v3/SIMILAR-STORIES.md`, fix what it finds, and commit the files with the regenerated counts. Never count a
   story that is another with the names changed.
-- **Pictures:** `node tools/screen-catalog/pictures.mjs inventory`, then `NODE_USE_ENV_PROXY=1 node
-  tools/screen-catalog/pictures.mjs fetch --minutes=112` as many times as it takes (it goes on from where it stopped),
-  then `report`. The pictures and their manifest are in `.screen-images/` in the container, never in the repository.
+- **Pictures: gathered, packed and installable.** All 313,671 published pictures are in `.screen-images/` in the
+  build container and packed in `packs/pictures/` (`pictures.mjs pack`), neither in the repository. A new container
+  has neither: `inventory`, then `NODE_USE_ENV_PROXY=1 node tools/screen-catalog/pictures.mjs fetch --minutes=112`
+  until it owes nothing (about four hours), then `report` and `pack`. The game installs them from Settings
+  (`docs/DATA-PACKS.md`, "Pictures For The Whole Catalog"). Owed: larger and alternate pictures; a full 3.5 GB install
+  run in a browser (one kind has been).
+- **Source material: 576 real works** in `src/data/sources.json` (Wikidata, CC0; `node tools/sources/import.mjs`
+  rewrites it, then `V3_WRITE=1 npx vitest run tests/sources.test.ts` rewrites `docs/v3/SOURCE-COVERAGE.md`). A work's
+  genre in the game comes only from `tools/sources/genre-map.mjs`; read `tools/sources/recorded-genres.tsv` after an
+  import before adding to it. The Script page finds a work, shows what is recorded and declares the script adapted
+  from it, and the Budget page's Adaptation Rights card takes, renews and exercises the option that production waits
+  for (`engine/adaptation.ts`). **Owed:** the rest of the adaptation loop (requirement V3-A06: brief, approvals,
+  compensation beyond the price, reporting); more companies.
+- **People loops: the casting director and the line producer are built** (`engine/casting-director.ts`,
+  `engine/line-producer.ts`; requirements V3-L01 and V3-L02). Each is an optional Crew row. The casting director runs
+  a search for a part for two of their days and advises once everyone has read; the shortlist, callbacks and offers
+  stay the player's. The line producer negotiates a counteroffer for one of their days and brings back a lower rate
+  or the same one; accepting stays the player's. Both are paid on their own budget line
+  (`hiring.ts payDelegatedDays`) and credited for days worked. **Owed:** representation (agent search, mandate,
+  submissions, negotiation, commission, conflicts, renewal, termination): nothing of it is built.
 - **The phone overhaul, where it stands:** `docs/v3/UI-COVERAGE.md` is the matrix, written by
   `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json` (every screen, tab and dialog; a new one needs a
   row or `tests/ui-inventory.test.ts` fails), the walk (`UI_COVERAGE_WRITE=1 npx playwright test

@@ -260,6 +260,10 @@ Shell.tsx,"""Wake Up""",1,decision,SelectField,state.ts startSleep,None: already
 Shell.tsx,"""Set Wake Time""",1,decision,TextField (time),state.ts startSleep,"None: a date or time, entered as one",n/a,tests/foundation.test.ts::waking says how long you slept
 Shell.tsx,"""Hours Of Sleep""",1,decision,TextField,state.ts startSleep,None: entered as text,Unchanged,tests/foundation.test.ts::waking says how long you slept
 Shell.tsx,"""Set An Alarm""",1,decision,Check,state.ts snooze,None: a yes or no,n/a,tests/foundation.test.ts::sleep wakes for obligations by default
+SourcePicker.tsx,"""Search Works""",1,view,TextField,,"None: a control of the screen, not of the game",n/a,
+SourcePicker.tsx,"""Medium""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,
+SourcePicker.tsx,"""One Of The Game's Genres""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,
+SourcePicker.tsx,"""What Is Recorded About Its Rights""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,
 Startup.tsx,{`Replacement Place ${i + 1}`},1,decision,WorldPlacePicker,save.ts repairSave,None: the world search of real places (destinations: milestone E),n/a,"tests/migration.test.ts::open after a repair that keeps a backup and changes only the places ; e2e/failures.spec.ts::asks for a replacement, keeping a backup"
 StoryPicker.tsx,"""Genre""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,
 StoryPicker.tsx,"""Search These Stories""",1,view,TextField,,"None: a control of the screen, not of the game",n/a,

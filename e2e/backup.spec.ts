@@ -50,11 +50,14 @@ test('export, then import into a fresh browser: it opens, plays on, saves and re
   await expect(other.getByText('No saved games yet.', { exact: false })).toBeVisible();
   await importFile(other, file);
   await expect(other.getByRole('status')).toContainText(`Imported ${name}. It's in your saved games.`);
-  await other.getByRole('button', { name: 'Open Imported Save' }).click();
-  await expect(other.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
+  // Read as stored, before it is opened. An open game's clock runs and its first save comes a quarter of a second in,
+  // so reading after opening raced that save: CI lost the race once (November 12, 2026), with every field the same but
+  // the time, 250 milliseconds on.
   const imported = await readSavedState(other);
   expect(essentials(imported)).toBe(essentials(state));
   expect(imported.projects[0].title).toBe('Harbour Lights');
+  await other.getByRole('button', { name: 'Open Imported Save' }).click();
+  await expect(other.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   // Play on, save, reload: still there, a day later.
   await advance(other, 'next-day');
   await expect(other.locator('.save-state')).toHaveText(/Saved/);

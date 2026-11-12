@@ -33,6 +33,9 @@ applicability, and its status becomes "verified fact".
 | `AUDITION_NOTICE_DAYS`, `FIRST_SPREAD`, `CALLBACK_SPREAD` | `src/engine/auditions.ts` | 3 days; ranges 22 and 8 wide | 09-02 | Modeled assumption | None |
 | `OFFER_OPEN_DAYS`, `COUNTER_DAYS` | `src/engine/negotiation.ts` | 21 and 5 days | 08-03 | Modeled assumption | None |
 | `COUNTER_OPEN_DAYS` | `src/engine/hiring.ts` | 7 days | 09-03 | Modeled assumption | None |
+| `CASTING_SEARCH_DAYS` | `src/engine/hiring.ts` | 2 days: one to prepare the list, one for the session | V3-L01 | Modeled assumption | None |
+| `SEARCH_DAYS` | `src/engine/casting-director.ts` | the same 2 days, under the name its own file uses; a search brings 3 to 6 performers (`searchSize`: 2 and the casting director's experience) and advises up to 3 | V3-L01 | Modeled assumption | None |
+| `NEGOTIATION_DAYS` | `src/engine/line-producer.ts` | 1 day; the other side moves 45% to 85% of the time (`movesChance`: 35% and 10 points for each level of the line producer's experience) and then gives up 15% to 60% of the gap between offer and ask (`gapClosed`: 15 points a level) | V3-L02 | Modeled assumption | None |
 | `CONSENT_RATE`, `RESTRICTION_RATE`, `CUT_REVIEW_DAYS` | `src/engine/documentary.ts` | 0.8 of contributors agree; the share who set a condition; 3 days to review the cut | 14-02 | Modeled assumption | None |
 | `EFFECTS_REVISION_GAIN`, `REVOICE_GAIN` | `src/engine/revisions.ts` | +5 capture, +4 performance | 15-03 | Modeled assumption | None |
 | `EXCLUSIVE_DAYS` | `src/engine/finish.ts` | 365 days | 16-01 | Modeled assumption | None |

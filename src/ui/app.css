@@ -1499,3 +1499,6 @@ fieldset > legend { margin-bottom: var(--s2); }
 
 /* A page's own picture, with what is known about it beside or under it. */
 .picture-row { align-items: flex-start; margin-bottom: var(--s3); }
+
+/* A casting director's searches for a part: under the part's row, above its readings. */
+.casting-search > * + * { margin-top: var(--s2); }

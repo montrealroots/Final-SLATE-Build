@@ -540,6 +540,28 @@
   ]
  },
  {
+  "id": "dlg-source-list",
+  "area": "Script",
+  "name": "Choose A Work To Adapt",
+  "kind": "dialog",
+  "dialog": "^@source-list$",
+  "source": "SourcePicker | \"Choose A Work To Adapt\"",
+  "walk": [
+   "source-list"
+  ]
+ },
+ {
+  "id": "dlg-source-open",
+  "area": "Script",
+  "name": "A Work To Adapt, Open",
+  "kind": "dialog",
+  "dialog": "^@source-open$",
+  "source": "SourcePicker | {w.title}",
+  "walk": [
+   "source-open"
+  ]
+ },
+ {
   "id": "dlg-idea-list",
   "area": "Script",
   "name": "Choose Ideas (A Starting Idea, Blend Genres, Build A Logline And The Rest)",
