@@ -3,8 +3,9 @@
 // Remove; and a pack from a file, for one the game doesn't offer.
 import { useEffect, useRef, useState } from 'react';
 import { forgetCatalog, retryCatalog } from '../catalog/load';
-import { STORAGE_MARGIN, downloadedSoFar, installOffered, installPack, installedPacks, offeredMods, ownerSession, ownerSignIn, ownerSignOut, packExpires, removePack, storageRoom, type InstalledPack, type OfferedMod, type OwnerSession, type PackKind, type PackMeta } from '../catalog/packs';
+import { STORAGE_MARGIN, isShard, downloadedSoFar, installOffered, installPack, installedPacks, offeredMods, ownerSession, ownerSignIn, ownerSignOut, packExpires, removePack, storageRoom, type InstalledPack, type OfferedMod, type OwnerSession, type PackKind, type PackMeta } from '../catalog/packs';
 import { picturesOn, setPicturesOn } from './Picture';
+import { PictureLibrary } from './PictureLibrary';
 import { expirePeople, startLivingWorld } from './App';
 import { Check, TextField, plural } from './components';
 import { store, useStore } from './store';
@@ -218,7 +219,9 @@ export function DataPacks() {
   };
 
   // Every mod the game offers, and any installed from a file that it doesn't.
-  const kinds = [...new Set<PackKind>([...offered.map((m) => m.kind), ...(installed?.keys() ?? [])])];
+  // The whole catalog's pictures come in hundreds of parts and have their own list below (PictureLibrary).
+  const kinds = [...new Set<PackKind>([...offered.map((m) => m.kind), ...(installed?.keys() ?? [])])].filter((k) => !isShard(k));
+  const anyShard = [...(installed?.keys() ?? [])].some(isShard);
   return (
     <>
     <fieldset style={{ border: 0, padding: 0, margin: 'var(--s4) 0 0' }} aria-busy={busy}>
@@ -253,7 +256,8 @@ export function DataPacks() {
       {status && <p role="status" className="muted">{status}</p>}
       {error && <p role="alert" className="error">{error}</p>}
       <Storage installed={installed} version={version} />
-      {(installed?.has('images') || offered.some((m) => m.kind === 'images')) && (
+      <PictureLibrary changed={() => { reload(); setVersion((v) => v + 1); }} />
+      {(installed?.has('images') || anyShard || offered.some((m) => m.kind === 'images')) && (
         <Check label="Show Pictures From The Picture Pack" checked={showPictures} onChange={(v) => { setPicturesOn(v); setShowPictures(v); }}
           hint="On this device only. Off, every picture is a plain placeholder and none is read from storage. A device that asks its browser for less data is shown none either way." />
       )}

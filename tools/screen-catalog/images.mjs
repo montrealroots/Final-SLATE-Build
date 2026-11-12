@@ -24,9 +24,19 @@ const OUT = process.env.SCREEN_IMAGES ?? join(process.cwd(), '.screen-images');
 const DAY = 86_400_000;
 const log = (...a) => console.log(new Date().toISOString().slice(11, 19), ...a);
 
-/** Width and height from a JPEG's or a PNG's own header; null when neither can be read. */
+/**
+ * Width and height from a JPEG's, a PNG's or a WebP's own header; null when none can be read. The image host answers
+ * a few `.jpg` paths with a WebP (27 of 313,671 on November 12, 2026), which a browser shows all the same.
+ */
 export function dimensions(buf) {
   if (buf.length > 24 && buf.readUInt32BE(0) === 0x89504e47) return { w: buf.readUInt32BE(16), h: buf.readUInt32BE(20) };
+  if (buf.length > 30 && buf.toString('latin1', 0, 4) === 'RIFF' && buf.toString('latin1', 8, 12) === 'WEBP') {
+    const kind = buf.toString('latin1', 12, 16);
+    if (kind === 'VP8 ' && buf[23] === 0x9d && buf[24] === 0x01 && buf[25] === 0x2a) return { w: buf.readUInt16LE(26) & 0x3fff, h: buf.readUInt16LE(28) & 0x3fff };
+    if (kind === 'VP8L' && buf[20] === 0x2f) { const b = buf.readUInt32LE(21); return { w: (b & 0x3fff) + 1, h: ((b >> 14) & 0x3fff) + 1 }; }
+    if (kind === 'VP8X') return { w: buf.readUIntLE(24, 3) + 1, h: buf.readUIntLE(27, 3) + 1 };
+    return null;
+  }
   if (buf.length < 4 || buf[0] !== 0xff || buf[1] !== 0xd8) return null;
   let i = 2;
   while (i + 9 < buf.length) {

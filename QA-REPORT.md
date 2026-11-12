@@ -23,7 +23,9 @@ on the sweep are filled in from the run named beside them.
 | `e2e/ui-coverage.spec.ts`, three walks | 0 | 12 runs: desktop, phone, iPhone 15 Plus and iPhone 15 Pro Max (WebKit). 78 screens, tabs, dialogs and states, at 5 window sizes on desktop (1280, 1024, 768, 600 and 320 wide), 5 on phone (390, 360, 430 wide, and 844 and 667 on its side), 2 on the Plus, 1 on the Pro Max. It fails on any defect at any size and on any heading, action or field a phone has and a desktop lacks, or the other way. |
 | Journey sweep, phone, `SLATE_UI_SWEEP`, production build, at `1862f04` | 1 journey | 125 passed, 1 failed, 18.8 minutes. The failure was `failures.spec.ts` reading the clock a second apart (fixed in `9da6a89`, below). 0 defects left by the audit after its findings were fixed. |
 | Journey sweep, desktop, same | 0 | 166 passed, 27.3 minutes. 0 defects. |
-| CI on pull request 72 at `9da6a89` | see the pull request | `checks` and the six `journeys` runs. |
+| Journey sweep, iPhone 15 Pro Max, Plus and Pro Max on its side (WebKit), same | 3 journeys | 102 passed, 3 failed, 30.9 minutes, run while two other browser runs and the picture fetch shared the machine's four cores. All three stopped at the same place: Continue Creation pressed on the start screen, and the game's engine neither loaded nor failed (no error shown, no failed request). One of them repeated 12 times alone on the production build with the audit on: 12 passed. Unexplained; under Open below. 0 defects from the audit. |
+| The walk run against the commit before the overhaul (`16b8eae`) | 47 defects | The same walk, phone profile: 39 touch targets, 6 clipped, 2 left under a bar by focus, on 7 of 46 screens. It fails there and passes now. |
+| CI on pull request 72 at `9da6a89` | 0 | `checks` and all six `journeys` runs green; merged as `b1c8343`. Two earlier heads were red: see the three causes in the table below and in #72. |
 
 What the audit measures on a screen (`e2e/ui-audit.ts`): the page or its pane scrolling sideways, and what pushes it;
 anything past the left or right edge; anything wider than the card, row or button it is in; words cut off by their box,
@@ -53,6 +55,13 @@ Accepted, with the reason, and said in the matrix each time: a map's markers are
 places beside the map opens the same places; a calendar day's entries are one line each, ending in an ellipsis, and
 pressing the day lists them whole; the logline builder's long choices are cut short in their choosers and shown whole
 in the sentence under them.
+
+Screenshots are in `docs/v3/ui-shots/`: seven fixes before and after at 390 pixels, and fourteen screens at 1280 beside
+390. Each was looked at before it was kept.
+
+**Open:** in the local WebKit sweep three journeys stalled with the engine neither loaded nor failed after Continue
+Creation, on a machine doing three other heavy things. It did not happen in CI's WebKit runs (four, on two heads) or
+in twelve repeats alone. Not explained, not fixed.
 
 Not measured, and tracked as such: a real phone, so the on-screen keyboard and what it covers; the screens and dialogs
 the matrix lists as not visited; layout shift in WebKit, which reports none; anything between 621 and about 660 pixels

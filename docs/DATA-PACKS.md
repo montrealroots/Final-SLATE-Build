@@ -92,6 +92,65 @@ outcome.
 Not built: choosing people one by one, a progress bar for the gathering tool beyond its log lines, backdrops and
 logos, and a check of each picture's own licence. The pack must not be shared.
 
+## Pictures For The Whole Catalog
+
+The v3 package asks for every picture the imported catalog names, not a sample. `tools/screen-catalog/pictures.mjs`
+gathers them in the owner's own build container. Nothing it fetches is in this repository, and no player but the owner
+is given any of it (the owner's decision of November 11, 2026).
+
+- **Scope:** the catalog the game imported, not TMDB as a whole: each film and series' poster and backdrop, each
+  season's poster, each episode's still, each credited person's portrait, and each company's and network's logo. One
+  primary picture each, at a small size (`RENDITION` in the tool). Larger and alternate pictures are not gathered.
+- **`inventory`** reads the catalog's cache and writes a row for every record into a manifest in shards
+  (`.screen-images/manifest/<kind>/<bucket>.json`). **`fetch`** downloads what the manifest owes into one shared
+  store (`.screen-images/store/<size>/<ab>/<file>`), so a picture two records share is fetched once. It stops itself
+  after `--minutes`, and goes on from where it stopped. **`report`** writes `docs/PICTURE-COVERAGE.md`.
+- **Each row has one status:** `ready`; `no-image-published` (TMDB has none, or lists a path it does not serve);
+  `temporarily-failed` (a later run retries it); `permission-limited` (the host refused it); `stale` (older than 180
+  days, TMDB's limit on keeping its data); `intentionally-excluded`, with the reason (records TMDB marks adult); and
+  `not-attempted`.
+- **What it found on November 12, 2026:** 778,936 records, of which 313,671 have a published picture. All 313,671 are
+  downloaded: 3,577 MB. 464,230 records have none published (most are people with no portrait). 1,033 are excluded.
+  2 could not be attempted because one title's details are not in the catalog's cache. The fetch ran at 20 requests a
+  second and took about four hours over four runs; one run ended on a dropped connection, since handled, and 27
+  pictures came back as WebP under a `.jpg` name, since read.
+- **`pack`** writes the store as packs the game can install, into `packs/pictures/`: one for each shard of each kind
+  (383 on November 12, 2026: 3,487 MB; the largest is 42 MB, a size a phone can take) and `index.json`, which lists
+  each with its size and SHA-256. A record is in exactly one shard, by its own identity, so a person credited at five
+  studios is downloaded once. 1,551 pictures are shared by two records (a season using its series' poster) and are in
+  both records' shards: half a percent, not removed.
+
+### In The Game
+
+Settings, under Mods, "Pictures For The Whole Catalog" (`src/ui/PictureLibrary.tsx`, `src/catalog/picture-library.ts`).
+The section is there only when the game's server offers the pictures, which it does to the owner alone
+(`/mods/pictures/index.json`; a stranger, a server that isn't the owner's, and any server after six months are
+answered with an empty listing and 404s).
+
+- **A kind at a time, or all.** People's Portraits, Film And Series Posters, Film And Series Backdrops, Season
+  Posters, Episode Stills, Company And Network Logos, each with Download and Remove; and Download All Available.
+- **Said first.** Pressing Download fetches nothing. It shows how many pictures and megabytes it is, how much room it
+  needs, and what the browser reports free, and waits for Download N Pictures or Not Now. With too little room it says
+  so and offers no download.
+- **A part at a time.** Each part is downloaded, checked against the listing's SHA-256, and installed whole or not at
+  all (`packs.ts installPack`: the records are written beside any older copy and take its place in one step). A part
+  that fails is named with the reason and the rest go on; Try The Failed Parts Again asks for those alone.
+- **Pause, and going on.** Pause abandons the part in hand and touches nothing installed; what had come of that part
+  is kept for the session, so Go On Downloading asks the server for the rest of it and then for what is left. After a
+  reload, Download The Rest does the same from what the browser holds. Cancel And Remove All deletes every picture.
+- **Update.** A part installed from an earlier gathering is listed as such and is downloaded again by the same buttons.
+- **Remove.** A kind, or all. Pictures only: no save is read or written.
+- **Where they show** (`src/ui/Picture.tsx`): a person's photo on their page, in a title's cast and in the lists of
+  people to cast or hire; a film's or series' poster and backdrop on its page; a season's poster; an episode's still;
+  a company's or network's logo. A picture is read from storage when its box nears the screen, never for a whole
+  list, and its box keeps its shape with or without it. "About This Picture" gives its TMDB path, size, the day it
+  was fetched, the rights statement and the day it will be deleted.
+- **Six months.** Each part expires by itself, 180 days from the day its pictures were fetched, and is deleted within
+  the hour of that passing while the game is open.
+- **Not built:** larger or alternate pictures; a low-data mode beyond the existing switch and the browser's own
+  save-data setting, both of which show plain boxes; resuming a half-downloaded part after the game is closed (a
+  finished part is kept; an unfinished one starts again).
+
 ## TMDB's Terms, Kept In The Game
 
 - **Six months (1.C).** A film pack gathered more than six months ago (from its oldest response) is refused. One that

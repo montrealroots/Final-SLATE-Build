@@ -1,6 +1,7 @@
 // Data packs installed in Settings (November 11, 2026, docs/DATA-PACKS.md), with the player's own controls. Fixture data:
 // the made-up catalog and cinemas in catalog-fixture.ts, written into pack files here, as tools/pack.mjs writes real ones.
-// No request is intercepted: the game reads the installed packs instead of the server.
+// The game reads the installed packs instead of the server; the only requests answered here are the two listings of
+// what the server offers, as a server that offers nothing.
 import { expect, test, type Page } from './test';
 import { writePack } from '../tools/pack-format.mjs';
 import { CATALOG_FIXTURE } from './catalog-fixture';
@@ -21,8 +22,12 @@ function packs(ageDays = 1): { catalog: Buffer; cinemas: Buffer } {
 const install = (page: Page, name: string, buffer: Buffer) =>
   page.getByLabel('Mod File').setInputFiles({ name, mimeType: 'application/octet-stream', buffer });
 
-test.beforeEach(({}, info) => {
+test.beforeEach(async ({ page }, info) => {
   test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Runs on desktop, phone and WebKit (iPhone 15 Pro Max).');
+  // Answered as a server that offers no mods and no pictures: a machine with the owner's own packs beside the game (the
+  // dev server offers them) would add rows to the lists read here, and these journeys must be the same on every machine.
+  await page.route('**/mods/index.json', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ version: 1, mods: [] }) }));
+  await page.route('**/mods/pictures/index.json', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: JSON.stringify({ version: 1, kinds: {} }) }));
 });
 
 test('install the film and cinema packs from files in Settings, and the catalog and cinemas show; remove one, and its data goes', async ({ page }) => {
@@ -215,7 +220,11 @@ test('J09: films and optional pictures installed and shown; pictures switched of
 // production server on port 4178 (e2e/serve-prod.ts): no catalog on the server, the fixture packs in its mods folder.
 test.describe('mods the game offers', () => {
   test.use({ baseURL: 'http://localhost:4178' });
-  test.beforeEach(() => { test.skip(process.env.SLATE_E2E_PROD !== '1', 'Needs the production servers (SLATE_E2E_PROD=1).'); });
+  test.beforeEach(async ({ page }) => {
+    test.skip(process.env.SLATE_E2E_PROD !== '1', 'Needs the production servers (SLATE_E2E_PROD=1).');
+    // These journeys are about what this server offers, so its own listing is read, not the empty one above.
+    await page.unroute('**/mods/index.json');
+  });
 
   test('one press installs each, and the films and the cinemas show', async ({ page }) => {
     test.setTimeout(180_000);
@@ -244,7 +253,11 @@ test.describe('mods the game offers', () => {
 // but no --owner) gives no player TMDB's data and never tells them to install a film mod (docs/DEPLOYMENT.md).
 test.describe('a copy that offers no film pack', () => {
   test.use({ baseURL: 'http://localhost:4179' });
-  test.beforeEach(() => { test.skip(process.env.SLATE_E2E_PROD !== '1', 'Needs the production servers (SLATE_E2E_PROD=1).'); });
+  test.beforeEach(async ({ page }) => {
+    test.skip(process.env.SLATE_E2E_PROD !== '1', 'Needs the production servers (SLATE_E2E_PROD=1).');
+    // These journeys are about what this server offers, so its own listing is read, not the empty one above.
+    await page.unroute('**/mods/index.json');
+  });
 
   test('says the films aren\'t installed, and doesn\'t point to a mod it can\'t give', async ({ page }) => {
     await quickLife(page, 'gb-london', '2026-01-05');

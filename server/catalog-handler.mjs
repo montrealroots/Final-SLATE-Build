@@ -74,6 +74,22 @@ export function offeredMods(packsDir, now = Date.now(), films = true) {
 }
 const MODS = /^\/mods\/(index\.json|[\w.-]+\.slatepack)$/;
 
+/**
+ * The whole catalog's pictures (November 12, 2026, docs/DATA-PACKS.md): `packsDir/pictures/index.json`, written by
+ * `tools/screen-catalog/pictures.mjs pack`, lists a pack for each shard with its size and SHA-256. They are TMDB's:
+ * offered to the owner alone, and not at all once six months have passed since the earliest picture was fetched.
+ * Null when there is nothing to offer this request, whatever the reason, so a stranger learns nothing from the answer.
+ */
+export function offeredPictures(packsDir, now = Date.now(), films = true) {
+  const f = packsDir ? join(packsDir, 'pictures', 'index.json') : null;
+  if (!films || !f || !existsSync(f)) return null;
+  let index;
+  try { index = JSON.parse(readFileSync(f, 'utf8')); } catch { return null; }
+  if (index?.version !== 1 || !index.kinds || !(Date.parse(index.retrieved?.from) + MAX_AGE_DAYS * DAY > now)) return null;
+  return index;
+}
+const PICTURES = /^\/mods\/pictures\/(index\.json|[\w-]+\.slatepack)$/;
+
 // ---------- who may have the owner's data (November 11, 2026, docs/DEPLOYMENT.md, "Who Gets The Owner's Data") ----------
 //
 // Until now `films` alone decided: a server started with --owner answered anyone who could reach its port. A flag isn't
@@ -187,6 +203,8 @@ export function createCatalogHandler({ catalogDir, cinemasDir, packsDir = null, 
   return function handle(req, res, next) {
     const url = (req.url ?? '').split('?')[0];
     if (SESSION.test(url)) return serveSession(req, res, gate);
+    const pic = PICTURES.exec(url);
+    if (pic) return servePictures(req, res, pic[1], packsDir, now(), gate.allows(req));
     const mod = MODS.exec(url);
     if (mod) return serveMod(req, res, mod[1], packsDir, now(), gate.allows(req));
     const m = PATH.exec(url);
@@ -242,6 +260,30 @@ function serveMod(req, res, name, packsDir, now, films) {
   }
   const mod = mods.find((m) => m.file === name);
   if (!mod) { res.statusCode = 404; res.setHeader('cache-control', 'no-cache'); res.end(); return; }
+  sendPack(req, res, join(packsDir, mod.file), mod, now);
+}
+
+/** The pictures' listing, or one of its packs: only a file the listing names. With nothing to offer, an empty listing. */
+function servePictures(req, res, name, packsDir, now, films) {
+  if (req.method !== 'GET' && req.method !== 'HEAD') { res.statusCode = 405; res.setHeader('allow', 'GET, HEAD'); res.end(); return; }
+  const index = offeredPictures(packsDir, now, films);
+  res.setHeader('x-content-type-options', 'nosniff');
+  res.setHeader('vary', 'cookie');
+  if (name === 'index.json') {
+    res.statusCode = 200;
+    res.setHeader('content-type', 'application/json');
+    res.setHeader('cache-control', 'no-cache');
+    res.end(req.method === 'HEAD' ? undefined : JSON.stringify(index ?? { version: 1, kinds: {} }));
+    return;
+  }
+  const shard = index && Object.values(index.kinds).flatMap((k) => k.shards).find((x) => x.file === name);
+  const path = shard ? join(packsDir, 'pictures', shard.file) : null;
+  if (!path || !existsSync(path)) { res.statusCode = 404; res.setHeader('cache-control', 'no-cache'); res.end(); return; }
+  sendPack(req, res, path, { kind: 'pictures', bytes: statSync(path).size, retrieved: index.retrieved }, now);
+}
+
+/** A pack's bytes, whole or from where a download stopped. */
+function sendPack(req, res, path, mod, now) {
   // A download cut off part-way asks for the rest ("Range: bytes=N-"); nothing else about ranges is supported.
   res.setHeader('accept-ranges', 'bytes');
   const range = /^bytes=(\d+)-$/.exec(String(req.headers.range ?? ''));
@@ -255,5 +297,5 @@ function serveMod(req, res, name, packsDir, now, films) {
   const ends = mod.retrieved ? Date.parse(mod.retrieved.from) + MAX_AGE_DAYS * DAY : Infinity;
   res.setHeader('cache-control', `${mod.kind === 'cinemas' ? 'public' : 'private'}, max-age=${Math.max(0, Math.min(3600, Math.floor((ends - now) / 1000)))}`);
   if (req.method === 'HEAD') { res.end(); return; }
-  createReadStream(join(packsDir, mod.file), { start: from }).on('error', () => { if (!res.headersSent) res.statusCode = 500; res.end(); }).pipe(res);
+  createReadStream(path, { start: from }).on('error', () => { if (!res.headersSent) res.statusCode = 500; res.end(); }).pipe(res);
 }

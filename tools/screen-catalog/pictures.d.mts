@@ -12,3 +12,8 @@ export function reconcile(man: Manifest, rows: Iterable<InventoryRow>, o: { stor
 export function fetchPictures(man: Manifest, o: { store: string; kinds?: string[]; limit?: number; rate?: number; workers?: number; transport?: (url: string) => Promise<any>; sleep?: (ms: number) => Promise<void>; now?: () => number; stop?: () => boolean; log?: (s: string) => void; flushEvery?: number }): Promise<{ wanted: number; fetched: number; reused: number; failed: number; bytes: number; stopped: boolean }>;
 export function coverage(man: Manifest): Record<string, Record<string, number>>;
 export function coverageMarkdown(by: Record<string, Record<string, number>>, o: { at: string; catalog: string }): string;
+export const KIND_NAMES: Record<string, string>;
+export function bucketOf(entity: string): string;
+export interface PictureShard { part: string; file: string; pictures: number; bytes: number; sha256: string }
+export interface PictureListing { version: 1; provider: 'TMDB'; builtAt: string; retrieved: { from: string; to: string; maxAgeDays: number }; rights: string; kinds: Record<string, { name: string; size: string; pictures: number; bytes: number; shards: PictureShard[] }> }
+export function packShards(man: Manifest, o: { store: string; out: string; now?: () => number; log?: (line: string) => void }): { index: PictureListing; missing: number };

@@ -12,7 +12,10 @@
 // the browser's free space is asked before anything is written; and a third kind of pack holds pictures (profile
 // photos and posters), which is optional, never needed by the catalog, and kept under the same six months.
 
-export type PackKind = 'catalog' | 'cinemas' | 'images';
+/** A shard of the whole catalog's pictures is a kind of its own, `pictures.profile-07`, so each installs, replaces and expires by itself. */
+export type PictureShardKind = `pictures.${string}`;
+export type PackKind = 'catalog' | 'cinemas' | 'images' | PictureShardKind;
+export const isShard = (kind: string): kind is PictureShardKind => kind.startsWith('pictures.');
 export interface PackMeta {
   kind: PackKind;
   name: string;
@@ -31,7 +34,7 @@ const MAX_AGE_DAYS = 180;
 
 /** When a pack must be withdrawn, or null for one with no such limit (the cinemas, from Wikidata, CC0). */
 export function packExpires(meta: PackMeta): number | null {
-  if (meta.kind !== 'catalog' && meta.kind !== 'images') return null;
+  if (meta.kind !== 'catalog' && meta.kind !== 'images' && !isShard(meta.kind)) return null;
   return Date.parse(meta.retrieved!.from) + Math.min(meta.retrieved!.maxAgeDays ?? MAX_AGE_DAYS, MAX_AGE_DAYS) * DAY;
 }
 
@@ -41,20 +44,22 @@ export async function parsePack(file: Blob): Promise<{ meta: PackMeta; records: 
   if (new TextDecoder().decode(head.slice(0, MAGIC.length)) !== MAGIC) throw new Error("This file isn't a SLATE data pack.");
   const len = new DataView(head.buffer).getUint32(MAGIC.length, true);
   const start = MAGIC.length + 4 + len;
-  let h: PackMeta & { format: number; entries: [string, number, number][] };
+  let h: Omit<PackMeta, 'kind'> & { kind: string; part?: string; format: number; entries: [string, number, number][] };
   try {
     h = JSON.parse(await file.slice(MAGIC.length + 4, start).text());
   } catch {
     throw new Error('This data pack is damaged: its contents list can\'t be read.');
   }
   if (h.format !== 1) throw new Error('This data pack was made for a newer version of SLATE.');
-  if ((h.kind !== 'catalog' && h.kind !== 'cinemas' && h.kind !== 'images') || !Array.isArray(h.entries) || typeof h.builtAt !== 'string') throw new Error('This data pack is damaged: its contents list is incomplete.');
+  if ((h.kind !== 'catalog' && h.kind !== 'cinemas' && h.kind !== 'images' && h.kind !== 'pictures') || !Array.isArray(h.entries) || typeof h.builtAt !== 'string') throw new Error('This data pack is damaged: its contents list is incomplete.');
+  if (h.kind === 'pictures' && (!/^[a-z-]+-\d\d$/.test(h.part ?? '') || !h.retrieved?.from)) throw new Error("This picture pack doesn't say which part it is or when its pictures were gathered. It wasn't installed.");
   if (h.kind === 'catalog' && !h.retrieved?.from) throw new Error("This film pack doesn't say when its data was gathered, so TMDB's six months can't be kept. It wasn't installed.");
   if (h.kind === 'images' && !h.retrieved?.from) throw new Error("This picture pack doesn't say when its pictures were gathered, so TMDB's six months can't be kept. It wasn't installed.");
   if (start + h.entries.reduce((n, e) => Math.max(n, e[1] + e[2]), 0) > file.size) throw new Error('This data pack is incomplete: the file was cut short.');
   // Every record belongs to the pack's own kind, so one pack can never replace the other's files.
-  if (h.entries.some(([p]) => kindOf(p) !== h.kind)) throw new Error('This data pack is damaged: it holds files of another kind.');
-  const { kind, name, source, builtAt, retrieved } = h;
+  const kind: PackKind = h.kind === 'pictures' ? `pictures.${h.part}` : (h.kind as PackKind);
+  if (h.entries.some(([p]) => kindOf(p) !== kind)) throw new Error('This data pack is damaged: it holds files of another kind.');
+  const { name, source, builtAt, retrieved } = h;
   return { meta: { kind, name, source, builtAt, ...(retrieved ? { retrieved } : {}) }, records: h.entries.map(([p, o, n]) => [p, file.slice(start + o, start + o + n)]) };
 }
 
@@ -65,7 +70,7 @@ export async function decodeRecord(blob: Blob): Promise<unknown> {
 
 // ---------- storage: IndexedDB "slate-packs", records keyed "<kind>:<path>" ----------
 
-const kindOf = (path: string): PackKind => (path.startsWith('cinemas/') ? 'cinemas' : path.startsWith('images/') ? 'images' : 'catalog');
+const kindOf = (path: string): PackKind => (path.startsWith('cinemas/') ? 'cinemas' : path.startsWith('images/') ? 'images' : path.startsWith('pictures/') ? `pictures.${path.split('/')[1]}` : 'catalog');
 /**
  * A record's key. Each install writes its records under a generation of their own ("catalog@3:titles/..."), so the
  * records in use are never touched while their replacement is being written. Packs installed before November 11, 2026
@@ -100,7 +105,7 @@ export function installedPacks(): Promise<Map<PackKind, InstalledPack>> {
       if (ends !== null && Date.now() >= ends) { await deleteKind(p.kind); withdrawn.add(p.kind); } else out.set(p.kind, p);
     }
     // Once a session: clear what an unfinished install or a replaced pack left behind.
-    if (!swept) { swept = true; for (const kind of ['catalog', 'cinemas', 'images'] as PackKind[]) await sweep(kind, out.get(kind)?.gen, out.has(kind)).catch(() => undefined); }
+    if (!swept) { swept = true; for (const kind of new Set<PackKind>(['catalog', 'cinemas', 'images', ...out.keys()])) await sweep(kind, out.get(kind)?.gen, out.has(kind)).catch(() => undefined); }
     return out;
   })().catch(() => { packs = null; return new Map(); }));
 }
@@ -131,7 +136,9 @@ async function sweep(kind: PackKind, keep: number | undefined, listed: boolean):
   cursor.onsuccess = () => {
     const c = cursor.result;
     if (!c) return;
-    const g = Number(/^[a-z]+@(\d+):/.exec(String(c.key))?.[1]);
+    // The generation follows the kind's own name, which for a shard of pictures has a dot, a dash and digits in it.
+    const g = Number(/^@(\d+):/.exec(String(c.key).slice(kind.length))?.[1]);
+    if (!Number.isFinite(g)) { c.continue(); return; }
     if (g === keep) c.continue(key(kind, g, '\uffff')); // skip the generation in use in one step
     else { store.delete(range(kind, g)); c.continue(key(kind, g, '\uffff')); }
   };
@@ -161,7 +168,7 @@ export const STORAGE_MARGIN = 1.2;
 export async function installPack(file: Blob, progress?: (stored: number, total: number) => void, signal?: AbortSignal): Promise<InstalledPack> {
   const { meta, records } = await parsePack(file);
   const ends = packExpires(meta);
-  const what = meta.kind === 'images' ? 'picture pack' : 'film pack';
+  const what = meta.kind === 'images' || isShard(meta.kind) ? 'picture pack' : 'film pack';
   if (ends !== null && Date.now() >= ends) throw new Error(`This ${what} was gathered more than six months ago (from ${meta.retrieved!.from.slice(0, 10)}), the longest TMDB allows its data to be kept, so it can't be installed. A newer one is needed.`);
   const bytes = records.reduce((n, [, b]) => n + b.size, 0);
   const before = (await installedPacks()).get(meta.kind);
@@ -257,6 +264,7 @@ const pictureUrls = new Map<string, string>();
 /** Drop every picture held in memory: after a pack comes, goes or is replaced, and when the picture pack expires. */
 export function forgetImages(): void {
   pictureIndex = null;
+  shardIndexes.clear();
   for (const u of pictureUrls.values()) URL.revokeObjectURL(u);
   pictureUrls.clear();
   // Every picture on a page looks again: its pack has come, gone, been replaced or expired.
@@ -272,7 +280,7 @@ export async function expirePacks(): Promise<PackKind[]> {
   packs = null;
   await installedPacks();
   const gone = [...withdrawn].filter((k) => !before.has(k));
-  if (gone.includes('images')) forgetImages();
+  if (gone.some((k) => k === 'images' || isShard(k))) forgetImages();
   return gone;
 }
 /** The installed picture pack's index, or null when none is installed (or it has been withdrawn for its age). */
@@ -282,11 +290,60 @@ export function pictures(): Promise<PictureIndex | null> {
     return f && typeof f === 'object' ? (f.data as PictureIndex) : null;
   })().catch(() => null));
 }
+// ---------- the whole catalog's pictures, in shards (tools/screen-catalog/pictures.mjs pack) ----------
+
+export type PictureKind = 'profile' | 'poster' | 'backdrop' | 'season-poster' | 'still' | 'logo';
+/** Which of a kind's 64 shards a record is in: the gathering tool's own sum (`bucketOf`), so the game needs no map of them. */
+export const shardOf = (kind: PictureKind, entity: string): string => {
+  let h = 0;
+  for (const c of entity) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+  return `${kind}-${String(h % 64).padStart(2, '0')}`;
+};
+/** A page's name for a record as the picture manifest names it: a season is `season:<series>:<n>`, an episode `episode:<series>:<s>:<e>`. */
+export const pictureEntity = (ref: string): string => {
+  const ep = /^tv:(\d+):s:(\d+):e:(\d+)$/.exec(ref);
+  if (ep) return `episode:${ep[1]}:${ep[2]}:${ep[3]}`;
+  const season = /^tv:(\d+):s:(\d+)$/.exec(ref);
+  return season ? `season:${season[1]}:${season[2]}` : ref;
+};
+interface ShardIndex { version: 1; kind: PictureKind; size: string; rights: string; entries: Record<string, { p: string; w: number; h: number; at: string }> }
+const shardIndexes = new Map<string, Promise<ShardIndex | null>>();
+const shardIndex = (part: string): Promise<ShardIndex | null> => {
+  let hit = shardIndexes.get(part);
+  if (!hit) {
+    hit = (async () => { const f = await packFile(`pictures/${part}/index.json`); return f && typeof f === 'object' ? (f.data as ShardIndex) : null; })().catch(() => null);
+    shardIndexes.set(part, hit);
+  }
+  return hit;
+};
+/** What an installed shard records about one picture, with the pack's statement about rights; null when it has none. */
+export async function shardPicture(kind: PictureKind, ref: string): Promise<{ part: string; entity: string; record: PictureRecord; rights: string; size: string } | null> {
+  const entity = pictureEntity(ref);
+  const part = shardOf(kind, entity);
+  if (!(await installedPacks()).has(`pictures.${part}`)) return null;
+  const index = await shardIndex(part);
+  const e = index?.entries[entity];
+  return e && index ? { part, entity, record: { ...e, loc: null }, rights: index.rights, size: index.size } : null;
+}
+const gunzipUrl = async (bytes: ArrayBuffer): Promise<string> => URL.createObjectURL(await new Response(new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'))).blob());
+
 /**
- * One picture as an address the page can show, or null when the pack has none for the subject. The picture's bytes are
- * read from this browser's storage only when asked, and the address is forgotten with the pack.
+ * One picture as an address the page can show, or null when nothing installed has one for the subject. A shard of the
+ * whole catalog's pictures is looked in first, then the older single picture pack. The picture's bytes are read from
+ * this browser's storage only when asked, and the address is forgotten with the pack.
  */
-export async function pictureUrl(subject: string): Promise<string | null> {
+export async function pictureUrl(subject: string, kind?: PictureKind): Promise<string | null> {
+  const want: PictureKind = kind ?? (subject.startsWith('person:') ? 'profile' : 'poster');
+  const cacheKey = `${want}|${subject}`;
+  const held = pictureUrls.get(cacheKey);
+  if (held) return held;
+  const shard = await shardPicture(want, subject);
+  if (shard) {
+    const k: PackKind = `pictures.${shard.part}`;
+    const bytes = await req((await db()).transaction('files').objectStore('files').get(key(k, (await installedPacks()).get(k)?.gen, `pictures/${shard.part}/${shard.entity}`)) as IDBRequest<ArrayBuffer | undefined>);
+    if (bytes) { const url = await gunzipUrl(bytes); pictureUrls.set(cacheKey, url); return url; }
+  }
+  if (kind && kind !== 'profile' && kind !== 'poster') return null;
   const index = await pictures();
   if (!index?.entries[subject]) return null;
   const hit = pictureUrls.get(subject);
@@ -302,7 +359,7 @@ export async function pictureUrl(subject: string): Promise<string | null> {
 
 // ---------- mods the game offers (server/catalog-handler.mjs, /mods/) ----------
 
-export interface OfferedMod extends PackMeta { file: string; files: number; bytes: number }
+export interface OfferedMod extends PackMeta { file: string; files: number; bytes: number; /** The file's SHA-256, where the listing gives one: checked before anything is installed. */ sha256?: string }
 const MODS_BASE = `${import.meta.env.BASE_URL}mods/`;
 
 /** The mods this copy of the game offers; none when the server offers none or can't be reached. */
@@ -354,6 +411,12 @@ export async function installOffered(mod: OfferedMod, progress: (phase: 'downloa
     progress('download', have.got, mod.bytes);
   }
   const file = new Blob(have.parts as BlobPart[]);
+  // What arrived is what the listing promised, or nothing is installed and nothing kept (where the browser can check:
+  // it can on the owner's own machine and over HTTPS).
+  if (mod.sha256 && globalThis.crypto?.subtle) {
+    const digest = [...new Uint8Array(await crypto.subtle.digest('SHA-256', await file.arrayBuffer()))].map((b) => b.toString(16).padStart(2, '0')).join('');
+    if (digest !== mod.sha256) { partial.delete(k); throw new Error(`${mod.name} arrived damaged: it isn't the file the game's server listed. Nothing was changed. Try again.`); }
+  }
   const out = await installPack(file, (n, total) => progress('install', n, total), signal);
   partial.delete(k);
   return out;
