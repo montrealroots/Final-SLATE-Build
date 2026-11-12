@@ -14,17 +14,15 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
   green on its final commit (`checks` and all six journeys runs). Before it that day: #74 as `5388c46`, #73 as
   `c1cab0e`, #72 as `b1c8343` (the phone overhaul's first part, pictures for the whole catalog); and #71 (Creative
   Depth, milestones F, G and H) as `1f5cb1f`.
-- **Open when this was written (November 12, 2026, 15:25 UTC):** montrealroots/Final-SLATE-Build#76, head `290a491`
-  (representation, a cinema run's weeks and the record book, four stories, the start screen no longer moving
-  Continue Creation). Its `checks` job was green and its six journeys runs were still going. **Merge it only when all
-  seven are green on that head** (squash), then confirm `git diff --quiet 290a491 origin/main`, merge `origin/main`
-  back with `-s ours`, and push.
-- **On the branch and not pushed, so they go in the pull request after #76** (pushing them earlier would restart
-  #76's CI): `da757ee` (the ledger's suites and thirteen owed rows in `requirements.csv`), `26deebc` (the coverage walk
-  reaches the two rule dialogs), `06c61c6` (the rest of the adaptation loop, V3-A06), `6121aa8` (four screenshot sheets;
-  an agent's needs said in words) and the commit that wrote this. Each was checked before it was committed:
-  `npm run check` passed with 1,022 tests on `06c61c6`, and `e2e/sources.spec.ts` 9 of 9 on desktop, phone and WebKit.
-  They have not been through CI.
+- **Open when this was written (November 12, 2026, 15:30 UTC):** montrealroots/Final-SLATE-Build#76: representation,
+  a cinema run's weeks and the record book, four stories, the start screen no longer moving Continue Creation, the
+  rest of the adaptation loop (V3-A06), the coverage walk reaching the two rule dialogs, the ledger's suites and the
+  owed rows in `requirements.csv`. Its first head, `290a491`, had `checks` green and its journeys still running when
+  the later commits were pushed on top, which restarted CI. **Merge it only when `checks` and all six journeys runs
+  are green on its newest head** (squash, with that head as the expected sha), then confirm
+  `git diff --quiet <that head> origin/main`, merge `origin/main` back with `-s ours`, and push. Locally, before the
+  push, `npm run check` passed with 1,022 tests and `e2e/sources.spec.ts` 9 of 9 on desktop, phone and WebKit; the
+  later commits had not been through CI.
 - **The package's eight milestones are all merged.** What it leaves undone is listed in one place:
   `docs/creative-depth/COVERAGE.md`, "Not Done, In One Place". Nothing is open on this branch.
 - **CI, from November 12, 2026:** `.github/workflows/ci.yml` has two jobs. `checks` is everything without a browser.
