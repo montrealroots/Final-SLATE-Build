@@ -27,15 +27,17 @@ Counts are what a command printed, never an estimate, and say which command.
 
 ## Content Counts
 
-`docs/v3/CONTENT-COUNTS.md`, written by `V3_WRITE=1 npx vitest run tests/v3-content.test.ts` from the story files. It is
-the only place the counts are kept; this ledger does not repeat them, so they cannot drift apart.
+Until November 12, 2026 `docs/v3/CONTENT-COUNTS.md` counted the story files against a quota of 14,900, written by
+`tests/v3-content.test.ts`. The owner's v4 package retired the generated story presets and both quotas that day; the
+count, the similarity report and the test were removed (`docs/v4/requirements.csv`, V4-001). 64 stories with one
+primary genre and 1 mixed-genre story had been written.
 
 ## Acceptance Suites
 
 | Suite | State | Tests |
 | --- | --- | --- |
-| T01 Content | in progress: the checks exist and pass on every story written; `docs/v3/CONTENT-COUNTS.md` has the count against the quota of 14,900 | `tests/v3-content.test.ts`, `tests/blueprints.test.ts` |
-| T02 Genre variety | in progress: the first mixed-genre story is written; the quota is every genre in three pairings of ten | `tests/v3-content.test.ts` counts pairings |
+| T01 Content | retired by the v4 package on November 12, 2026, at 64 of 14,900 | |
+| T02 Genre variety | retired by the v4 package on November 12, 2026, at 1 mixed-genre story | |
 | T03 Blueprint editing | passes for a film and a series, with shuffle; ideas for the former 11 gap fields are not built | `e2e/stories.spec.ts` |
 | T04 Character lifecycle | passes, except age stages, doubles and per-episode performers (V3-C12) | `e2e/characters.spec.ts`, `tests/characters.test.ts` |
 | T05 People | in progress: a casting director and a line producer do paid work with observable results, and representation is built (V3-L01 to L03). Not built: contrasting profiles deciding differently beyond the agents; one person in several roles with shared commitments tested as such; hired work for the player | `tests/casting-director.test.ts`, `tests/line-producer.test.ts`, `tests/representation.test.ts` and their journeys |

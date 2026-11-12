@@ -1,0 +1,47 @@
+{
+  "package": "SLATE v4",
+  "type": "implementation specification, not completed content or code",
+  "requirements": 38,
+  "files": [
+    {
+      "name": "00-START-HERE.md",
+      "sha256": "d13271103e463811858094dedd1b413dd10c285571742066f4bc81723e0ef8ce",
+      "bytes": 2783
+    },
+    {
+      "name": "01-CREATION-AND-PEOPLE.md",
+      "sha256": "4845c842df0844a8d51393faa86775c365b6e8f379578eb8319f35eb8ba287dd",
+      "bytes": 5856
+    },
+    {
+      "name": "02-PRODUCTION-FUNDING-EQUIPMENT.md",
+      "sha256": "c32db3909668092c0bf3377bbf138b550051bd2eacb9931dc4880526dc3d6f5e",
+      "bytes": 5749
+    },
+    {
+      "name": "03-MUSIC-AND-SCORE.md",
+      "sha256": "00834ef8e1b0974f5e1f6f1158ca9a50ca5e457291e138b2d8d2803dcf0014c5",
+      "bytes": 5510
+    },
+    {
+      "name": "04-LIVING-WORLD-UI-AND-DATA.md",
+      "sha256": "f98011cdc75eef58231952304fc6dffc5e6cc7eb72ae47e7d8c9436f40d3b5be",
+      "bytes": 7464
+    },
+    {
+      "name": "05-IMPLEMENTATION-AND-VERIFICATION.md",
+      "sha256": "8f18cacd24976f49683003839ef60cbefa04a28e66c5030a5afdc1535c2b9597",
+      "bytes": 7680
+    },
+    {
+      "name": "06-CLAUDE-COMMAND.txt",
+      "sha256": "3732bc75fa00c811cf77f5b0393762321f6f9502513dfeee6ecfe05a57d6f4be",
+      "bytes": 2737
+    },
+    {
+      "name": "requirements.csv",
+      "sha256": "ead85d48351f14a29b376d98e6df3f321584587e137c73709c4010aea9afd4aa",
+      "bytes": 3031
+    }
+  ]
+}

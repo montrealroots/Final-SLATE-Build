@@ -73,27 +73,53 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
+### Newest Request (November 12, 2026, 18:00 UTC): the v4 package, "Source To Screen, Living Careers"
+
+- **Where it is:** `docs/v4/package/` (00 to 06 and the 38-row `requirements.csv`). It supersedes conflicting earlier
+  directions, above all the generated-story quotas, and keeps compatible v2 and v3 work and existing saves. One agent.
+- **The authoritative ledger:** `docs/v4/requirements.csv`, the 38 rows expanded into child requirements with the
+  columns the package's 05 asks for. `docs/v4/LEDGER-COUNTS.md` is its count, written by
+  `V4_WRITE=1 npx vitest run tests/v4-ledger.test.ts`, which also fails a verified row whose cited test or journey
+  does not exist. Change a row's state in the same commit as the work, and regenerate the counts. The ledger was
+  written from an audit of `cd7472c`; edit the CSV directly.
+- **Milestones, in order** (the package's 05): A reconcile and retire the quotas; B source-first creation, the whole
+  brief, characters and Guide Me; C family funds, separate accounts, equipment; D method-specific production; E source
+  agreements, outside work, music; F historical boundaries, box office, audiences, renewals, outreach; G media, UI,
+  credits, performance; H final audits and J01 to J13.
+- **What the audit found (November 12, 2026):**
+  - The source catalog (576 Wikidata works) has title, creator, medium, year, genres, series and a one-line
+    description; no premise, characters, setting or adaptations, and no Sanderson works. Wikidata
+    (`query.wikidata.org`) and Wikipedia's page summaries (`en.wikipedia.org/api/rest_v1/page/summary/`) are both
+    reachable from this container. Sources are not yet limited to works published by the game date.
+  - The player has no money of their own: no personal account, no family support. Projects have ledgers.
+  - Equipment is a flat day fee (`production/rates.ts dayFees`); there is no catalog, ownership or reservation.
+  - There is no paid outside work; an agent only submits the player's projects to backers.
+  - Music: songs as works with writers and credits (`songs.ts`), a composer credit for score. No cue plan, licensing
+    scope, territory or expiry.
+  - Method-specific work graphs exist for live action, 2D, 3D, stop motion and hybrid (`production/tasks.ts`); D is a
+    gap-close (face method, travel and rest, revisions reopening only dependents), not a build.
+  - An applied preset's content was always written into the project; `Project.blueprint` keeps only its id, version,
+    title and names for the Script page's "Which Story It Is From". Old saves need no migration to lose the files.
+- **Plan for B:** the blueprint engine (`engine/blueprints.ts` previewBlueprint, applyBlueprint, locks, keep, rename,
+  undo) is the machinery a source proposal is applied through. A proposal composer builds a `Blueprint` from a source
+  record, the format, the method and the approach; every field carries whether it is sourced, a proposed adaptation
+  choice, user-edited or unknown. The importer is extended for recorded characters (P674), narrative location (P840),
+  period (P2408), installments (P155, P156, P179) and adaptations (works whose P144 is this one), plus a Wikipedia
+  summary kept with its CC BY-SA attribution as the premise. The preset picker, `src/blueprints/` and
+  `e2e/stories.spec.ts` are removed in the same pull request that adds source-first creation, because the coverage
+  walk reaches its relationship and rule dialogs through an applied story.
+- **Worktrees** `../slate-c-work` to `../slate-h-work` and `../slate-ui-work` are older branches with nothing
+  uncommitted; their commits are not ancestors of `main` (squash merges). They are left alone.
+
 ### Newest Request (November 12, 2026): the v3 package, and a phone overhaul with a whole-game UI cleanup
 
 **Read `docs/v3/LEDGER.md` first**, then `docs/v3/package/00-START-HERE.md` and `docs/v3/UI-BRIEF.md` (the owner's
 own words for the UI work). The ledger says where each step and each acceptance suite stands; `docs/v3/requirements.csv`
 has a row for each requirement built or owed.
 
-- **The story quota is the long pole:** 14,900 fully written stories (100 for each of 149 genres, 50 films and 50
-  series) and a mixed-genre library. They are written by hand into `src/blueprints/<genre>.bp`
-  (`docs/v3/BLUEPRINT-FORMAT.md`). After writing a batch: `V3_WRITE=1 npx vitest run tests/v3-content.test.ts`, read
-  `docs/v3/SIMILAR-STORIES.md`, fix what it finds, and commit the files with the regenerated counts. Never count a
-  story that is another with the names changed.
-  **The owner's instruction of November 12, 2026: keep the target at 14,900, and draw on the whole of history.** Each
-  story since then starts from a different piece of the record (an event, a trial, a voyage, a legend in the public
-  domain) and is an original story about it: never a retelling of a protected work, never a plot from the film
-  catalog. Its review line says what it was drawn from. People are given invented names unless what the story shows
-  them doing is what the record says they did. A time before the year 1000 is written `era: - | period` with the
-  century in the setting line, because a story's year must be 1000 to 2200. Write first for the genres that have no
-  story: `docs/v3/CONTENT-COUNTS.md` lists every genre with its count. As of this writing 64 genres have one story
-  (60 a film; Comedy, Legal Drama, Medical Drama and Nordic Noir a series) and 85 have none; the nonfiction formats among those 85 (documentary, nature documentary, docudrama, rockumentary, concert
-  film, mockumentary, true crime) need the documentary fields or a real case told as the record has it, so read
-  `docs/v3/BLUEPRINT-FORMAT.md` before starting one.
+- **The story quota was retired on November 12, 2026** by the v4 package (below). 64 stories with one primary genre and
+  1 mixed-genre story had been written into `src/blueprints/`; the files leave with the picker when source-first
+  creation replaces it (v4 milestone B). Do not write more.
 - **Pictures: gathered, packed and installable.** All 313,671 published pictures are in `.screen-images/` in the
   build container and packed in `packs/pictures/` (`pictures.mjs pack`), neither in the repository. A new container
   has neither: `inventory`, then `NODE_USE_ENV_PROXY=1 node tools/screen-catalog/pictures.mjs fetch --minutes=112`
