@@ -1,0 +1,56 @@
+// Comedy: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== comedy.t01 | series | episodic
+title: Second Sitting
+genre: comedy + slice-of-life
+tone: Fond, fast and a little bruised; jokes from pride, never from stupidity
+era: - | contemporary
+setting: Rosario's, a family restaurant in Naples, Florida | fictional | workplace
+logline: A retired Italian chef comes back to run her late husband's failing restaurant for one season and discovers the only staff who stayed are the ones nobody else would hire.
+premise: {lucia} sold her share of Rosario's to her husband twenty years ago so they would stay married. Now he is dead, the restaurant is hers again, and it serves an early-bird special to people who order by number. She has until the lease renews in May to make it a place she would eat in. Her kitchen is {deshawn}, a line cook who can't taste salt; {bea}, a server of forty years' standing who runs a book on the regulars; {milo}, her grandson, home from business school with a spreadsheet; and {ignatius}, the dishwasher, who may own the building.
+synopsis: The season runs from October to the lease in May, ten services. {lucia} arrives certain the problem is the menu. In the first episode she takes the early-bird special off and loses forty covers in a night; {bea} puts it back on a chalkboard without asking. Each episode is one service with one thing {lucia} is sure of and wrong about: the bread, the music, the health inspector, a food critic who turns out to be a regular's nephew, a wedding she caters to spite a rival and has to cook with {deshawn} tasting nothing and trusting her completely. Underneath runs the lease. {milo}'s numbers say close; {lucia}'s pride says never. {ignatius} says very little and is found, in episode six, to be the silent partner her husband took on the day she sold out, which means she has been shouting at her landlord since October. {deshawn} is offered a job at the rival's place and doesn't tell her. {bea} is seventy-one and cannot carry a tray up the two steps to the terrace any more, and everyone has been covering for her so smoothly that {lucia} takes it for laziness. The season turns on a hurricane warning in episode eight: the town empties, the regulars who have nowhere to go come to Rosario's, and {lucia} cooks whatever is in the walk-in for sixty people by gas ring and candle. It is the best service of her life, and it is the early-bird special. In the finale the lease is renewed by {ignatius} without discussion. {lucia} puts her husband's dish back on the menu, under her name, with one change.
+question: Can {lucia} run a restaurant for the people who actually eat there, instead of the people she wishes did?
+themes: pride as a way of grieving; who a place belongs to; competence found in people written off
+audience: Adults and families; anyone who has worked a shift
+viewpoint: Ensemble around {lucia}; each service gives one member of staff the B story
+stakes: The restaurant and six jobs by May; {lucia}'s last chance to be a chef on her own terms; {bea}'s place in the only room she is somebody in
+conflict: {lucia}'s standards against the restaurant's actual customers, and a staff's loyalty to each other against a boss who hasn't earned it yet
+ending: The lease is renewed. The early-bird stays, cooked properly. {bea} moves to the host stand, which she pretends was her idea. {deshawn} stays. {lucia} sits down at table nine at four-thirty and orders by number.
+experience: The comfort of a room you know, laughs that come from character, and one service that makes you hungry and tearful at once
+look: Warm tungsten over dated decor; the kitchen bright, tight and fast; Gulf light flat and white outside the windows
+sound: Tickets printing, a bell, Louis Prima on a failing speaker that {lucia} keeps unplugging and someone keeps plugging back in
+m: restore | self | order-vs-change | reconciled
+@ lucia | Lucia Ferrante-Rosario | lead | protagonist | human | she/her | 69 | To make the restaurant worthy of the name on it | She gave it up once for him and has resented and missed it every day | She does not know the people who eat here, and they know it | Exacting about food, careless with feelings, privately soft | From feeding an idea of customers to feeding these ones | Rapid, declarative, switches to Italian to lose arguments | Chef's whites pressed like a uniform, wedding ring on a chain
+@ deshawn | Deshawn Pruitt | ensemble-lead | deuteragonist | human | he/him | 33 | To be a cook somebody would poach | He lost taste and smell to an illness and hid it by cooking to the gram | A better offer he hasn't mentioned | The most precise cook in the building and the only one who can't tell if it's good | From following recipes to being trusted to make one | Low, courteous, deadpan | Immaculate station, forearm burns, a scale in his apron
+@ bea | Beatrice "Bea" Kowalczyk | ensemble-lead | foil | human | she/her | 71 | To finish on her own feet, in this room | She has outlasted two owners and one husband here | Her knees, and the two steps to the terrace | Knows every regular's order, feuds and prognosis; admits to no weakness | From being covered for to choosing her own post | Gravelly, affectionate insults, calls everyone "hon" | Orthopaedic shoes, a pencil in her hair since 1986
+@ milo | Milo Rosario | ensemble-lead | ally | human | he/him | 26 | To save his grandmother from the restaurant, or the restaurant from her | He adored his grandfather and thinks the place died with him | He is right about the numbers and wrong about what they are for | Brilliant on paper, hopeless with a tray | From consultant to busboy to partner | Earnest, jargon when nervous | Button-down under an apron that is always on wrong
+@ ignatius | Ignatius "Iggy" Duval | supporting | mentor | human | he/him | 74 | A quiet sink and the place kept open | He promised her husband he would never interfere | He owns forty percent and the building | The lowest job and the last word | From silent partner to speaking one | Almost nothing; when he does talk the kitchen stops | Rubber apron, Navy tattoo, reads the racing form in the dish pit
+@ carmine | Carmine Bellucci | featured | rival | human | he/him | 66 | To hire her best cook and be forgiven by her | He was her husband's best man and her first sous-chef | Thirty years of a feud neither can date | Vain, generous, lonely | From rival to the first to bring gas rings in the storm | Expansive, hand to his heart, lies about his golf | Linen suit, his own restaurant's name on his cufflinks
+~ lucia - bea | new boss and the server who was here first | each waits for the other to quit | {lucia} asks {bea} where she wants to stand
+~ lucia - deshawn | chef and the cook she doesn't know can't taste | she corrects his seasoning nightly | she seasons, he plates, and neither says why
+~ lucia - milo | grandmother and grandson | he brings her a closing plan | she makes him a partner and a busboy
+~ lucia - ignatius | owner and dishwasher | she gives him orders | he signs her lease
+~ deshawn - carmine | cook and the rival who wants him | an offer on a napkin | {deshawn} hands it back at the pass
+tv: 10 x 28
+engine: One service, open to close: {lucia} changes one thing she is sure about, the dining room answers back, a member of staff carries a secret through the rush, and the lease is one month nearer
+arc: From a chef trying to cook for customers she wishes she had, through a staff she misreads and a partner she didn't know about, to a storm service that shows her whose restaurant it is
+ep 1 | Number Four | {lucia} cancels the early-bird special and forty covers walk; {bea} reinstates it in chalk
+ep 2 | The Bread | She bakes her own; the regulars send it back for the rolls; {deshawn} weighs her salt and says nothing
+ep 3 | Inspector | A surprise inspection during lunch; {ignatius} knows the inspector, and where every temperature log is
+ep 4 | Table Nine | A critic is rumoured; the staff fawn on the wrong man; the right one is a regular's nephew with a blog
+ep 5 | The Offer | {carmine} offers {deshawn} a job on a napkin; {milo} finds it and thinks it is the health code
+ep 6 | Forty Percent | The lease comes due for signature and the landlord's name is the dishwasher's
+ep 7 | Two Steps | {lucia} catches the staff covering {bea}'s terrace tables and calls it laziness in front of the room
+ep 8 | Storm Service | A hurricane warning empties the town; the regulars come anyway; sixty covers by gas ring and candle
+ep 9 | The Spite Wedding | She caters {carmine}'s niece's wedding to prove a point, with a cook who can't taste and a partner who can't carry
+ep 10 | Second Sitting | The lease, the menu and the host stand are each settled without anyone admitting they lost
+changes: {lucia} stops correcting the room and starts reading it; {deshawn} tells her and is given the sauces anyway; {bea} takes the host stand as a promotion; {milo} learns the numbers were a description, not a verdict; {ignatius} speaks
+recurring: Rosario's Dining Room; Rosario's Kitchen And Pass; The Dish Pit; The Terrace With Two Steps; The Walk-In; Carmine's Across The Street
+continuation: A second season with Rosario's solvent and {lucia} unable to leave it alone: a second location she shouldn't open, {deshawn}'s own dish on the menu, and {bea} training her replacement
+# Open | INT | Rosario's Kitchen And Pass | DAY | lucia, deshawn, ignatius | Arrive and take charge | {lucia} walks in at ten, re-labels the walk-in, bins the special's sauce and tells the dishwasher to stand up straight | | 4 | props=chef's knives+labels+sauce tubs
+# Open | INT | Rosario's Dining Room | DAY | lucia, bea, milo | Meet the room | {bea} recites the four-thirty regulars by ailment; {milo} unrolls a spreadsheet on table nine; {lucia} takes the laminated numbers off the menus | {lucia} cancels Number Four | 4 | props=laminated menus+laptop
+# Service | INT/EXT | Rosario's Dining Room | DUSK | bea, lucia, milo, carmine | Let the customers answer | Four-thirty. The regulars read the new menu in silence, order the special by number anyway, and are told. Chairs scrape. Through the window, {carmine} is holding his own door open across the street, hand on his heart | Forty covers leave, and {lucia} sees where they go | 5 | crowd=40
+# Service | INT | Rosario's Kitchen And Pass | NIGHT | lucia, deshawn | Cook for nobody | A beautiful plate for a six-top that never fills. {lucia} tastes {deshawn}'s sauce, adds salt, and he writes down the grams | | 4 | props=scale+plated dishes
+# Service | INT | The Dish Pit | NIGHT | ignatius, bea | Undo it quietly | {bea} chalks "No. 4" on the specials board. {ignatius} takes the old sauce out of the bin, where he had put it in a clean tub | {bea} overrules her | 3 | props=chalkboard+sauce tub
+# Close | INT | Rosario's Dining Room | NIGHT | lucia, bea, milo, deshawn, ignatius | Count the night | Eleven covers. {milo} reads the number aloud. {lucia} sees the chalkboard, says nothing, and eats the special standing up | {lucia} leaves the board as it is | 4 | props=chalkboard+till receipt
+review: authored | 2026-11-12 | written whole; not yet read against the other comedies

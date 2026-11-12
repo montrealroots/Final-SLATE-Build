@@ -1,5 +1,13 @@
 {
+ "comedy": {
+  "film": 0,
+  "tv": 1
+ },
  "heist": {
+  "film": 1,
+  "tv": 0
+ },
+ "horror": {
   "film": 1,
   "tv": 0
  },

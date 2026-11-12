@@ -1,11 +1,11 @@
 {
  "totals": {
   "required": 14900,
-  "written": 6,
-  "complete": 6,
+  "written": 8,
+  "complete": 8,
   "reviewed": 2,
   "genresAtQuota": 0,
-  "genresStarted": 6,
+  "genresStarted": 8,
   "mixedWritten": 0,
   "mixedComplete": 0,
   "pairsWithTen": 0,
@@ -158,7 +158,7 @@
   },
   "comedy": {
    "film": 0,
-   "tv": 0,
+   "tv": 1,
    "filmReviewed": 0,
    "tvReviewed": 0
   },
@@ -415,7 +415,7 @@
    "tvReviewed": 0
   },
   "horror": {
-   "film": 0,
+   "film": 1,
    "tv": 0,
    "filmReviewed": 0,
    "tvReviewed": 0
