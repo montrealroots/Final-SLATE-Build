@@ -2,11 +2,12 @@
 // November 12, 2026 a release on television or a streaming service had monthly earnings and no audience at all.
 //
 // What is here, and what is not. Every figure is this game's own simulation and is labelled so wherever it is shown; no
-// recorded audience is imported, and none is made up to stand beside these. Nothing else in the game reads an audience
-// yet: a commissioner decides on another season thirty days after delivery, from how the season turned out, which is
-// before it has aired (continuation.ts), and no agreement pays by audience. So this is a report, and says so. Not
-// built: reach and promotion, competition from other programmes, ratings points, share, demographic ratings,
-// completion, rankings, sponsor or licence receipts tied to an audience, and recorded figures of real programmes.
+// recorded audience is imported, and none is made up to stand beside these. Until November 12, 2026 nothing read an
+// audience: a commissioner decided on another season thirty days after delivery, from how the season turned out, before
+// it had aired. Now a season that is going out on television or a streaming service is decided on once it has been
+// shown, from its audience (seasonAudience, read by continuation.ts). No agreement pays by audience yet. Not built:
+// reach and promotion, competition from other programmes, ratings points, share, demographic ratings, completion,
+// rankings, sponsor or licence receipts tied to an audience, and recorded figures of real programmes.
 //
 // The measures are kept apart and never turned into one another across kinds of release:
 // - Broadcast: the average audience of an episode's first showing, in people. One figure an episode, in the week it
@@ -122,4 +123,61 @@ export function audienceSummary(o: DistributionOffer): string | null {
   }
   const hours = a.filter((x) => x.metric === 'hours');
   return `${n(hours.reduce((s, x) => s + x.value, 0))} hours viewed in ${hours.length} ${hours.length === 1 ? 'week' : 'weeks'} reported.`;
+}
+
+/**
+ * What a commissioner looks for before paying for another season. Modeled assumptions, not measured renewal rates:
+ * a first showing has to draw two fifths of what one at full appeal would in the same territories, and the season has
+ * to keep 88% of its audience from one episode to the next; a streamed season has to be watched, over the weeks
+ * counted, for 1.2 times the views a week at full appeal brings.
+ */
+export const OPENING_BAR = 0.4;
+export const KEEP_BAR = 0.88;
+export const STREAMING_BAR = 1.2;
+/** A streamed season is judged once every episode is out and this many weeks have been reported from the last one's. */
+export const STREAMING_WEEKS_COUNTED = 4;
+
+export interface SeasonAudience {
+  distributor: string;
+  /** Every episode has been shown and its audience reported: there is nothing more to wait for. */
+  complete: boolean;
+  /** Whether what has been reported so far meets what a commissioner looks for. */
+  renew: boolean;
+  /** The figures and the bars they are held against, as a sentence. */
+  says: string;
+}
+
+/** The deal a season is going out under on television or a streaming service: the first one accepted that reports an audience. */
+export const airingDeal = (p: Project): DistributionOffer | null => p.offers.find((o) => o.status === 'accepted' && routeMetrics(o.route).length > 0) ?? null;
+
+/** A season's audience as a commissioner reads it, or null while nothing has been reported. */
+export function seasonAudience(p: Project, o: DistributionOffer): SeasonAudience | null {
+  const a = o.audience ?? [];
+  const n = (x: number) => Math.round(x).toLocaleString('en-US');
+  const places = (t: number) => (t === 1 ? 'one territory' : `${t} territories`);
+  if (o.route === 'broadcast') {
+    const v = a.filter((x) => x.metric === 'viewers' && x.episode !== undefined).sort((x, y) => x.episode! - y.episode!);
+    if (!v.length) return null;
+    const first = v[0]; const last = v.at(-1)!;
+    const bar = OPENING_BAR * BROADCAST_BASE * Math.sqrt(Math.max(1, first.territories));
+    const kept = v.length > 1 && first.value > 0 ? Math.pow(last.value / first.value, 1 / (v.length - 1)) : 1;
+    return {
+      distributor: o.distributor, complete: v.length >= p.episodes.length, renew: first.value >= bar && kept >= KEEP_BAR,
+      says: `Its first showing on ${o.distributor} drew an average audience of ${n(first.value)}, against the ${n(bar)} a commissioner looks for in ${places(first.territories)}${v.length > 1 ? `, and it kept ${Math.round(kept * 100)}% of its audience from one episode to the next, against ${Math.round(KEEP_BAR * 100)}%` : ''}.`,
+    };
+  }
+  const hours = a.filter((x) => x.metric === 'hours');
+  if (!hours.length) return null;
+  const shown = showingsOf(p, o);
+  const opened = shown[0]?.date;
+  const runtimeHours = shown.reduce((s, x) => s + x.runtimeMin / 60, 0);
+  const total = hours.reduce((s, x) => s + x.value, 0);
+  const through = runtimeHours > 0 ? total / runtimeHours : 0;
+  const territories = hours.at(-1)!.territories;
+  const bar = STREAMING_BAR * STREAMING_BASE * Math.sqrt(Math.max(1, territories));
+  const lastOut = opened ? weekOf(opened, shown.at(-1)!.date) : 1;
+  return {
+    distributor: o.distributor, complete: shown.length >= p.episodes.length && Math.max(...hours.map((x) => x.week)) >= lastOut + STREAMING_WEEKS_COUNTED - 1, renew: through >= bar,
+    says: `On ${o.distributor} it was watched for ${n(total)} hours in ${hours.length} ${hours.length === 1 ? 'week' : 'weeks'}, which the service counts as ${n(through)} views of what is out, against the ${n(bar)} a commissioner looks for in ${places(territories)}.`,
+  };
 }

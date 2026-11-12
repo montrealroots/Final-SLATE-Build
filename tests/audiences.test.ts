@@ -1,9 +1,9 @@
 // Weekly audiences (the v3 package, 02; requirement V3-T01): each measure for what it is and never turned into another,
 // figures that follow from what is out and how it was received, recorded once, and nothing paid by them.
 import { describe, expect, it } from 'vitest';
-import { DAY, acceptDistribution, processUntil } from './engine-api';
+import { DAY, RENEWAL_DECISION_DAYS, RENEWAL_WAIT_DAYS, acceptDistribution, processUntil, renewalStanding, scheduleRenewal } from './engine-api';
 import {
-  AUDIENCE_TAIL_WEEKS, BROADCAST_BASE, METRICS, STREAMING_DECAY, appeal, audienceSummary, audienceWeekDates, lastAudienceWeek, observeWeek, recordAudienceWeek, retention, routeMetrics, showingsOf, weekOf, type Showing,
+  AUDIENCE_TAIL_WEEKS, BROADCAST_BASE, KEEP_BAR, METRICS, OPENING_BAR, STREAMING_BAR, STREAMING_BASE, STREAMING_DECAY, STREAMING_WEEKS_COUNTED, airingDeal, appeal, seasonAudience, audienceSummary, audienceWeekDates, lastAudienceWeek, observeWeek, recordAudienceWeek, retention, routeMetrics, showingsOf, weekOf, type Showing,
 } from '../src/engine/audiences';
 import { deserialize, serialize } from '../src/engine/save';
 import type { AudienceObservation, DistributionOffer, GameState, Project } from '../src/engine/types';
@@ -179,4 +179,150 @@ describe('a release in the game', () => {
     expect(d.audience).toBeUndefined();
     expect(other.s.events.some((e) => e.kind === 'audience-week')).toBe(false);
   }, 120000);
+});
+
+// What reads an audience (November 12, 2026): a commissioner deciding on another season.
+describe('a commissioner reads a season', () => {
+  const monday = (n: number) => new Date(Date.parse('2027-01-04T00:00:00Z') + n * 7 * 86_400_000).toISOString().slice(0, 10);
+  /** A season of weekly episodes under one deal, each received as given, with every week so far recorded (labelled fixture). */
+  function season(route: 'broadcast' | 'streaming', receptions: number[], opts: { weeks?: number; territories?: number; atOnce?: boolean; total?: number } = {}): { p: Project; o: DistributionOffer } {
+    const o = offer(route);
+    const shows = receptions.map((r, i) => ep(i + 1, opts.atOnce ? monday(0) : monday(i), r));
+    const p = {
+      id: 'p1', episodes: Array.from({ length: opts.total ?? receptions.length }, (_, i) => ({ number: i + 1 })), offers: [o], axes: { targetRuntimeMin: 30 },
+      releases: [{ offerId: o.id, status: 'released', date: monday(0), territories: ['GB'], episodes: shows.map((x) => ({ number: x.number, date: x.date, status: 'released' })) }],
+      episodeQuality: Object.fromEntries(shows.map((x) => [String(x.number), { reception: x.reception }])),
+    } as unknown as Project;
+    for (let w = 1; w <= (opts.weeks ?? receptions.length); w++) recordAudienceWeek(o, observeWeek(7, 'p1', o, w, monday(0), shows, opts.territories ?? 1));
+    return { p, o };
+  }
+
+  it('a broadcast is renewed when it opened well enough and kept its audience, and the sentence gives both figures and both bars', () => {
+    const good = season('broadcast', [75, 75, 75, 75, 75, 75]);
+    const read = seasonAudience(good.p, good.o)!;
+    expect(read).toMatchObject({ distributor: 'Fixture Network', complete: true, renew: true });
+    expect(read.says).toMatch(/^Its first showing on Fixture Network drew an average audience of [\d,]+, against the 100,000 a commissioner looks for in one territory, and it kept \d+% of its audience from one episode to the next, against 88%\.$/);
+    expect(OPENING_BAR * BROADCAST_BASE).toBe(100_000);
+    // A weak opening is not renewed however well it holds.
+    expect(seasonAudience(...Object.values(season('broadcast', [45, 90, 90, 90])) as [Project, DistributionOffer])!.renew).toBe(false);
+    // A strong opening that loses its audience episode by episode is not renewed either: it is the keeping that fails.
+    const leaky = season('broadcast', [80, 35, 35, 35, 35, 35]);
+    const leak = seasonAudience(leaky.p, leaky.o)!;
+    expect(leak.renew).toBe(false);
+    expect(Number(/kept (\d+)%/.exec(leak.says)![1])).toBeLessThan(KEEP_BAR * 100);
+    // The bar rises with the territories it is shown in, by the same reach the audience does.
+    const wide = season('broadcast', [75, 75], { territories: 4 });
+    expect(seasonAudience(wide.p, wide.o)!.says).toContain('against the 200,000 a commissioner looks for in 4 territories');
+  });
+
+  it('is not complete until every episode has been shown, and says nothing before the first figure', () => {
+    const none = season('broadcast', [75, 75, 75], { weeks: 0 });
+    expect(seasonAudience(none.p, none.o)).toBeNull();
+    const part = season('broadcast', [75, 75, 75], { weeks: 2 });
+    expect(seasonAudience(part.p, part.o)).toMatchObject({ complete: false, renew: true });
+    // Three shown of a season of six is not the season.
+    const half = season('broadcast', [75, 75, 75], { total: 6 });
+    expect(seasonAudience(half.p, half.o)!.complete).toBe(false);
+    // One episode has nothing to keep: only its opening is read.
+    const one = season('broadcast', [75], { total: 2 });
+    expect(seasonAudience(one.p, one.o)!.says).not.toContain('kept');
+  });
+
+  it('a streamed season is read in views over the weeks counted, never in people', () => {
+    const good = season('streaming', [75, 75, 75, 75], { atOnce: true, weeks: STREAMING_WEEKS_COUNTED });
+    const read = seasonAudience(good.p, good.o)!;
+    expect(read).toMatchObject({ complete: true, renew: true });
+    expect(read.says).toMatch(/^On Fixture Network it was watched for [\d,]+ hours in 4 weeks, which the service counts as [\d,]+ views of what is out, against the 144,000 a commissioner looks for in one territory\.$/);
+    expect(STREAMING_BAR * STREAMING_BASE).toBe(144_000);
+    expect(read.says).not.toMatch(/audience of|people/);
+    const weak = season('streaming', [50, 50, 50, 50], { atOnce: true, weeks: STREAMING_WEEKS_COUNTED });
+    expect(seasonAudience(weak.p, weak.o)).toMatchObject({ complete: true, renew: false });
+    // A week short of the weeks counted, or an episode still to come, and it is not yet the season.
+    const early = season('streaming', [75, 75, 75, 75], { atOnce: true, weeks: STREAMING_WEEKS_COUNTED - 1 });
+    expect(seasonAudience(early.p, early.o)!.complete).toBe(false);
+    const weekly = season('streaming', [75, 75, 75, 75], { weeks: 4 });
+    expect(seasonAudience(weekly.p, weekly.o)!.complete).toBe(false);
+    const weeklyDone = season('streaming', [75, 75, 75, 75], { weeks: 4 + STREAMING_WEEKS_COUNTED - 1 });
+    expect(seasonAudience(weeklyDone.p, weeklyDone.o)).toMatchObject({ complete: true, renew: true });
+  });
+
+  it('only a release that reports an audience is waited for', () => {
+    expect(airingDeal({ offers: [{ ...offer('theatrical') }, { ...offer('digital') }] } as unknown as Project)).toBeNull();
+    expect(airingDeal({ offers: [{ ...offer('broadcast'), status: 'open' }] } as unknown as Project)).toBeNull();
+    expect(airingDeal({ offers: [offer('digital'), { ...offer('streaming'), id: 'o2' }] } as unknown as Project)!.id).toBe('o2');
+  });
+
+  /** A delivered, commissioned season in a game (labelled fixture: the commissioner's agreement and the assessment are set here). */
+  function commissioned(tag: string, overall: number): { s: GameState; p: Project } {
+    const s = startLife(tag);
+    const p = buildProject(s, { title: 'Tidewater', format: 'limited-series', medium: 'live-action', episodes: 2, runtime: 20 }, [{ name: 'Mara' }],
+      [{ place: 'Pier', chars: ['Mara'], minutes: 2, extra: { episode: 1 } }, { place: 'Pier', chars: ['Mara'], minutes: 2, extra: { episode: 2 } }]);
+    approve(s, p);
+    p.finance = { estimate: 1, target: 1, deals: [{ id: 'fd1', kind: 'commissioner', backer: 'A Broadcaster', amount: 900_000, status: 'accepted', askedAt: 0, reason: '', received: 900_000, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null } }] };
+    p.quality = { overall } as Record<string, number>;
+    p.delivered = { at: s.now, runtimeMin: 40 };
+    scheduleRenewal(s, p);
+    return { s, p };
+  }
+  const air = (p: Project, receptions: number[] | null) => {
+    const o = offer('broadcast');
+    p.offers = [o];
+    if (receptions) for (let w = 1; w <= receptions.length; w++) recordAudienceWeek(o, observeWeek(7, p.id, o, w, monday(0), receptions.map((r, i) => ep(i + 1, monday(i), r)), 1));
+    return o;
+  };
+
+  it('waits for a season that is going out, then decides on its audience and not on how it turned out', () => {
+    // The same season, assessed the same, with two different audiences: the audience decides.
+    for (const [receptions, outcome] of [[[78, 78], 'renewed'], [[42, 42], 'cancelled']] as const) {
+      const { s, p } = commissioned(`aud-renew-${outcome}`, 72);
+      const o = air(p, null);
+      processUntil(s, s.now + (RENEWAL_DECISION_DAYS + 1) * DAY, 'tick', 100000);
+      expect(p.renewal).toBeUndefined();
+      expect(s.log.filter((l) => l.text === 'The commissioner will decide on another season of Tidewater once this one has been shown on Fixture Network.')).toHaveLength(1);
+      expect(renewalStanding(s, p)).toBe('The commissioner will decide on another season once this one has been shown on Fixture Network.');
+      // A fortnight on, still nothing shown: still waiting, and it is said once, not every week.
+      processUntil(s, s.now + 14 * DAY, 'tick', 100000);
+      expect(p.renewal).toBeUndefined();
+      expect(s.log.filter((l) => l.text.startsWith('The commissioner will decide'))).toHaveLength(1);
+      // The first episode is shown: the standing says what has been reported so far.
+      recordAudienceWeek(o, observeWeek(7, p.id, o, 1, monday(0), [ep(1, monday(0), receptions[0])], 1));
+      expect(renewalStanding(s, p)).toMatch(/^The commissioner will decide on another season once this one has been shown on Fixture Network\. So far: its first showing on Fixture Network drew an average audience of [\d,]+, against the 100,000 a commissioner looks for in one territory\.$/);
+      processUntil(s, s.now + 7 * DAY, 'tick', 100000);
+      expect(p.renewal).toBeUndefined();
+      // The second and last: within a week it is decided.
+      recordAudienceWeek(o, observeWeek(7, p.id, o, 2, monday(0), receptions.map((r, i) => ep(i + 1, monday(i), r)), 1));
+      processUntil(s, s.now + 7 * DAY, 'tick', 100000);
+      expect(p.renewal?.outcome).toBe(outcome);
+      expect(p.renewal!.reason).toMatch(outcome === 'renewed'
+        ? /^The commissioner renewed Tidewater: they will offer to fund another season\. Its first showing on Fixture Network drew .* Audience figures are simulated\.$/
+        : /^The commissioner won't make another season of Tidewater\. Their agreement for this one is settled\. Its first showing on Fixture Network drew .* Audience figures are simulated\.$/);
+      expect(renewalStanding(s, p)).toBeNull();
+      expect(s.events.some((e) => e.kind === 'season-decision')).toBe(false);
+    }
+    // And the other way about: a season assessed poorly that found its audience is renewed.
+    const { s, p } = commissioned('aud-renew-poor', 41);
+    air(p, [78, 78]);
+    processUntil(s, s.now + (RENEWAL_DECISION_DAYS + 1) * DAY, 'tick', 100000);
+    expect(p.renewal?.outcome).toBe('renewed');
+  });
+
+  it('with no such release it is decided at thirty days on how it turned out; one never shown is decided so after a year', () => {
+    const plain = commissioned('aud-renew-none', 72);
+    expect(renewalStanding(plain.s, plain.p)).toBe('The commissioner is deciding on another season.');
+    processUntil(plain.s, plain.s.now + (RENEWAL_DECISION_DAYS + 1) * DAY, 'tick', 100000);
+    expect(plain.p.renewal).toMatchObject({ outcome: 'renewed', reason: 'The commissioner renewed Tidewater: they will offer to fund another season.' });
+    const { s, p } = commissioned('aud-renew-never', 41);
+    air(p, null);
+    processUntil(s, s.now + (RENEWAL_WAIT_DAYS - 1) * DAY, 'tick', 400000);
+    expect(p.renewal).toBeUndefined();
+    processUntil(s, s.now + 9 * DAY, 'tick', 100000);
+    expect(p.renewal).toMatchObject({ outcome: 'cancelled', reason: "The commissioner won't make another season of Tidewater. Their agreement for this one is settled." });
+    // A deal that falls through stops the wait: the next look decides.
+    const gone = commissioned('aud-renew-gone', 72);
+    const o = air(gone.p, null);
+    processUntil(gone.s, gone.s.now + (RENEWAL_DECISION_DAYS + 1) * DAY, 'tick', 100000);
+    o.status = 'cancelled';
+    processUntil(gone.s, gone.s.now + 8 * DAY, 'tick', 100000);
+    expect(gone.p.renewal?.outcome).toBe('renewed');
+  });
 });
