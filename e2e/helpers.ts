@@ -157,6 +157,9 @@ export async function nav(page: Page, label: 'Home' | 'Calendar' | 'World' | 'Pr
   await openMenuIfNeeded(page);
   const name = label === 'Profile' ? 'Player Profile' : label;
   await page.getByRole('navigation', { name: 'Main Navigation' }).getByRole('button', { name, exact: true }).click();
+  // Where the rail is a drawer, it slides shut over the page's left edge: wait until it has gone (November 12, 2026: a
+  // tap straight after landed on the closing drawer, and kept landing there until the test timed out).
+  if (await page.getByRole('button', { name: 'Menu', exact: true }).isVisible()) await expect(page.locator('#rail')).toBeHidden();
 }
 
 /** Save & Exit: in the bar, or in the drawer's foot where the rail is a drawer. */

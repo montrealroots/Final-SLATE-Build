@@ -99,6 +99,8 @@ export function deliver(state: GameState, p: Project): void {
   onProjectDelivered(state, p);
   scheduleRenewal(state, p);
   scheduleOpportunity(state, p);
+  // Someone saw it: an offer of work may follow (jobs.ts decides whether).
+  schedule(state, state.now + 21 * DAY, 'job-offer', { after: p.id }, { attention: 'silent', priority: 70 });
   p.phase = 'delivered';
   p.quality = assessQuality(state, p);
   if (isEpisodic(p.axes.format)) p.episodeQuality = assessEpisodes(state, p, p.quality);

@@ -1312,3 +1312,17 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `e2e/ui-coverage.spec.ts`, four sizes | 2 real layout defects, fixed | The kit card's two dropdown rows touched each other, and at 320 pixels the rental list's long names were cut off. Both are now wrapping lists with a button per item. |
 | `e2e/creation.spec.ts`, `money.spec.ts`, `equipment.spec.ts` on desktop, phone and iPhone 15 Plus | 0 | 55 passed. |
 | `npm run check` | 0 | 127 files, 1079 tests; startup 307 kB, budgets unchanged. |
+
+## v4 After PR #79: Split, Documentary Plan, Puppet Faces, Travel Days, Source History, Outside Jobs, Credits
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/characters.test.ts` (split) | 1 fixture mistake of mine | A partial hire fixture failed save validation; removed before the round trip. |
+| `tests/media.test.ts` (plan, faces) | 1 test mistake of mine | Units are kept to tenths, so the face pace is compared within a rounding step. |
+| `tests/destinations.test.ts` | 1 real gap, fixed | Rescheduled days ignored travel: after a lost day the unit went London to Tromsø and back on consecutive days. One rule (`travelFrom`) now dates the plan, moved days and pickups. The roof comparison's seed fell on a dry day after the change; a seed where the weather stops an open-air day was chosen and labelled. |
+| `tests/adaptation.test.ts` | 1 real gap, fixed | Choosing another work erased the option and a pending approval from the record while their payments stayed on the ledger. |
+| `tests/jobs.test.ts` | 1 calibration mistake of mine | Missed days counted only in threes, so a two-day job missed entirely changed nothing; each day now counts. |
+| `e2e/destinations.spec.ts`, desktop and phone | expected changes | Dates moved by the travel days; the candidate site no longer falls through on the new morning (fall-through stays covered in `tests/locations.test.ts`). |
+| `e2e/jobs.spec.ts`, desktop and phone | 2 journey mistakes of mine, 1 helper race | On phone a tap straight after navigating landed on the closing drawer; `nav` now waits for it. The phone calendar shows one day, so the plans are read from the save. |
+| `e2e/representation`, `earnings`, `first-project`, `career`, `sources`, `characters`, `media` (documentary), `journeys` (stop motion, unscripted), `viewports` (Settings) | 0 | Run after the changes that touch them. |
+

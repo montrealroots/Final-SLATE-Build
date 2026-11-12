@@ -165,9 +165,31 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
   - PR #79's first CI run timed out on desktop: the unscripted-series journeys waited 15 minutes each for a format the
     original form no longer offers. The helper now uses Develop A Documentary for them. Its second run failed on
     `e2e/creation.spec.ts`, which counted Review's cards before the Money card existed; I had not run it after C1.
-  - Not built yet in B: the character lifecycle extras (duplicate, combine, split, restore,
-    age stages, per-episode performers: V4-007), a documentary proposal (V4-004.03), and a title-by-title Sanderson
-    comparison with his official site.
+  - PR #79 merged November 12, 2026 (squash e205e4a, all seven checks green at 580b6bc): A, Guide Me, money, equipment.
+  - **After #79 (on the branch, next PR):**
+    - B: `projects.ts splitCharacter` (Split on a character card: a new character takes the ticked scenes, their lines
+      and arc beats; contracts stay with the original). Combining stays "set aside and give their scenes to another",
+      which merges a shared scene rather than refusing as the package asks; the ledger says so. `documentary.ts
+      proposeDocumentaryPlan` (The Plan on a documentary's Script page: open questions into Research, kinds of people to
+      approach, no finding and nobody named); Research now shows for a documentary with questions.
+    - D: `Character.faceMethod` (Puppet Face: replacement faces add a face set and animate at 0.9; a mechanical head adds
+      armature days and animates at 1.15; `rates.ts FACE_METHODS`). A kit is refused for an animated project. Travel
+      days: `schedule.ts travelFrom` adds a working day before a day 80 km or more from the last, in the plan, a moved
+      day and a pickup (`ShootDay.travelFrom`, shown on the Schedule); `relabelTravel` after a swap or move (it relabels,
+      it doesn't re-date). The Bergen journey's dates moved and its site no longer falls through; the roof unit test
+      uses seed `destinations-roof-3`.
+    - E: `adaptation.ts retireSource`: a work the project leaves keeps its option and approval in `sourceHistory`, read
+      by the chain of title. `jobs.ts`: paid work on invented productions, offered 21 days after a delivery or by an
+      agent every 30 days while represented; accepted days go on the calendar; each 9 a.m. the player must be in town
+      and awake; paid on the last day, less commission; refused over the player's own shoot days or another job;
+      withdrawing and missed days make offers rarer. Profile, Work For Others. Tests `tests/jobs.test.ts`,
+      `e2e/jobs.spec.ts`.
+    - G: Settings, Credits And Data Sources (`ui/Credits.tsx`).
+    - Journey helper `nav` now waits for the phone drawer to close (a tap straight after landed on it).
+  - Still not built: age stages and per-episode performers (V4-007.03/.04), Guide Me for cast, writing and music,
+    company accounts, the music system (V4-022 to 026), F (historical boundaries, territory box office, weekly
+    reports, renewal weighing, record books, reputation by role), the media-inventory work in G beyond what v3 built,
+    H's journeys J01 to J13 as whole runs, and a title-by-title Sanderson comparison.
 - **Worktrees** `../slate-c-work` to `../slate-h-work` and `../slate-ui-work` are older branches with nothing
   uncommitted; their commits are not ancestors of `main` (squash merges). They are left alone.
 

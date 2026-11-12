@@ -38,4 +38,5 @@ export * from './representation';
 export * from './mandates';
 export * from './personal';
 export * from './equipment';
+export * from './jobs';
 export * from './gear-catalog';

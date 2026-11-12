@@ -43,6 +43,7 @@ const REASONS: Record<string, string> = {
   'YourMoney.tsx | !!no': 'The reason shows under the field once an amount is typed: more than your account holds, more than the project still needs, or a script not yet approved.',
   'YourMoney.tsx | home.earnings <= 0': 'The line above says how much income the delivered project can send home: nothing, here.',
   'YourMoney.tsx | home.capital <= 0': 'The line above says how much of your own unspent money it can send home: nothing, here.',
+  'Jobs.tsx | !!no': 'Under the offer: your own project shoots on one of its days, you are working another job then, or it has lapsed.',
   'AdaptWork.tsx | locked': 'The budget size says it is available after you deliver a project.',
   'Equipment.tsx | !!service': 'Under the item: away being serviced, or not enough in your account; an item at 100% shows its condition and needs nothing.',
   'Equipment.tsx | !!sell': 'Under the item: it is in a project\'s kit, named.',

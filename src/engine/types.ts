@@ -1272,4 +1272,6 @@ export interface GameState {
   money?: import('./personal').PersonalMoney;
   /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */
   gear?: import('./equipment').GearInventory;
+  /** Paid work on others' productions (jobs.ts). Absent until the first offer. */
+  jobs?: import('./jobs').OutsideJob[];
 }

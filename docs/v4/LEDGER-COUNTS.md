@@ -5,7 +5,7 @@ A child requirement is verified only when a named unit test and a named browser 
 
 | | Children | Requested | Implemented | Verified | Retired |
 | --- | --- | --- | --- | --- | --- |
-| All | 125 | 38 | 57 | 30 | 0 |
+| All | 125 | 35 | 60 | 30 | 0 |
 | V4-001 Retire preset quotas and migrate saves | 4 | 0 | 3 | 1 | 0 |
 | V4-002 Source-first project creation | 5 | 0 | 4 | 1 | 0 |
 | V4-003 Verified source catalog and bibliography | 7 | 1 | 4 | 2 | 0 |
@@ -15,7 +15,7 @@ A child requirement is verified only when a named unit test and a named browser 
 | V4-007 Character lifecycle and multi-performer assignments | 4 | 2 | 1 | 1 | 0 |
 | V4-008 Original writing and era controls | 3 | 0 | 1 | 2 | 0 |
 | V4-009 Individual people and dated careers | 5 | 1 | 0 | 4 | 0 |
-| V4-010 Outside paid work and representation | 4 | 3 | 0 | 1 | 0 |
+| V4-010 Outside paid work and representation | 4 | 0 | 3 | 1 | 0 |
 | V4-011 Live-action production | 2 | 0 | 1 | 1 | 0 |
 | V4-012 2D animation production | 2 | 0 | 1 | 1 | 0 |
 | V4-013 3D animation production | 2 | 0 | 1 | 1 | 0 |
