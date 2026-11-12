@@ -10,11 +10,12 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { expect, test, type Page } from './test';
 import { addScene, advance, freshStart, nav, newProject, pinSeed, quickLife, saveAndApprove, section } from './helpers';
-import { audit, type Defect } from './ui-audit';
+import { audit, coveredWhenFocused, shiftSince, watchShifts, type Defect } from './ui-audit';
+import { serveCatalog } from './catalog-fixture';
 
 type Size = [number, number, string];
 const SIZES: Record<string, Size[]> = {
-  desktop: [[1280, 720, 'desktop'], [1024, 768, 'small laptop'], [768, 1024, 'tablet upright'], [600, 960, 'small tablet upright']],
+  desktop: [[1280, 720, 'desktop'], [1024, 768, 'small laptop'], [768, 1024, 'tablet upright'], [600, 960, 'small tablet upright'], [320, 568, 'desktop zoomed to 400 percent (320 wide)']],
   phone: [[390, 844, 'phone'], [360, 740, 'narrow phone'], [430, 932, 'large phone'], [844, 390, 'phone on its side'], [667, 375, 'small phone on its side']],
   'iphone-15-plus': [[430, 932, 'iPhone 15 Plus (WebKit)'], [932, 430, 'iPhone 15 Plus on its side (WebKit)']],
   'iphone-15-pro-max': [[430, 932, 'iPhone 15 Pro Max (WebKit)']],
@@ -64,6 +65,8 @@ async function visit(page: Page, project: string, id: string, area: string, name
     await page.setViewportSize({ width: w, height: h });
     await settled(page);
     const a = await audit(page);
+    // At the profile's own size: what moved by itself since the last screen, and what focus leaves under a bar.
+    if (sizes[0][0] === w && sizes[0][1] === h) a.defects.push(...await shiftSince(page), ...await page.evaluate(coveredWhenFocused));
     row.sizes[`${label} (${w} by ${h})`] = { defects: a.defects };
     if (SHOTS && (label === 'phone' || label === 'desktop' || label.includes('WebKit'))) await page.screenshot({ path: `${SHOTS}/${String(rows.length + 1).padStart(2, '0')}-${id}-${project}-${w}.png` });
     if (STYLES && (label === 'phone' || label === 'desktop')) styles[`${id} ${w}`] = await page.evaluate(styleSheetOf);
@@ -71,7 +74,8 @@ async function visit(page: Page, project: string, id: string, area: string, name
     for (const s of a.accepted) if (!row.accepted.includes(s)) row.accepted.push(s);
     if (label === 'phone') phoneSig = a.signature;
   }
-  if (project === 'phone' && phoneSig) {
+  // The drawer is the phone's own navigation: a desktop has the rail, and the page behind an open drawer is out of reach on purpose.
+  if (project === 'phone' && phoneSig && kind !== 'drawer') {
     // The same screen at a desktop size, in the same state: what does each offer that the other doesn't?
     await page.setViewportSize({ width: 1280, height: 720 });
     await settled(page);
@@ -86,6 +90,17 @@ async function visit(page: Page, project: string, id: string, area: string, name
   rows.push(row);
 }
 
+/** Writes what the walk has measured so far, and holds it to nothing found: no defect at any size, and a phone offering what a desktop does. */
+function finish(project: string): void {
+  const out = JSON.stringify({ project, at: new Date().toISOString(), rows }, null, 1);
+  mkdirSync('test-results', { recursive: true });
+  writeFileSync(`test-results/ui-coverage-${project}.json`, out);
+  if (STYLES) writeFileSync(STYLES, JSON.stringify(styles));
+  if (process.env.UI_COVERAGE_WRITE) { mkdirSync('docs/v3/ui-coverage', { recursive: true }); writeFileSync(`docs/v3/ui-coverage/walk-${project}.json`, `${out}\n`); }
+  expect(rows.flatMap((r) => Object.entries(r.sizes).flatMap(([size, v]) => v.defects.map((d) => `${r.id} at ${size}: ${d.kind}, ${d.what}, ${Math.round(d.by)} px`)))).toEqual([]);
+  expect(rows.filter((r) => r.parity && (r.parity.onlyDesktop.length || r.parity.onlyPhone.length || !r.parity.sameOrder)).map((r) => `${r.id}: desktop only ${JSON.stringify(r.parity!.onlyDesktop)}, phone only ${JSON.stringify(r.parity!.onlyPhone)}`)).toEqual([]);
+}
+
 test('the UI audit: one career, every screen it reaches, measured at each size', async ({ page }, info) => {
   const project = info.project.name;
   test.skip(!SIZES[project], 'Runs on desktop, phone and the two WebKit iPhone emulations.');
@@ -94,6 +109,7 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
 
   // ---------- Before a game ----------
   page.setDefaultTimeout(20_000); // a step that can't be taken fails here, not at the end of half an hour
+  await watchShifts(page);
   await freshStart(page);
   await v('start', 'Startup', 'Start Screen, No Saves');
   await page.getByRole('button', { name: 'Settings', exact: true }).click();
@@ -192,14 +208,47 @@ test('the UI audit: one career, every screen it reaches, measured at each size',
   const menu = page.getByRole('button', { name: 'Menu', exact: true });
   if (await menu.isVisible()) { await menu.click(); await v('menu', 'Shell', 'Menu Drawer', 'drawer'); await page.keyboard.press('Escape'); }
 
-  mkdirSync('test-results', { recursive: true });
-  const out = JSON.stringify({ project, at: new Date().toISOString(), rows }, null, 1);
-  mkdirSync('test-results', { recursive: true });
-  writeFileSync(`test-results/ui-coverage-${project}.json`, out);
-  if (STYLES) writeFileSync(STYLES, JSON.stringify(styles));
-  if (process.env.UI_COVERAGE_WRITE) { mkdirSync('docs/v3/ui-coverage', { recursive: true }); writeFileSync(`docs/v3/ui-coverage/walk-${project}.json`, `${out}\n`); }
   void addScene; void saveAndApprove;
-  // The gate: none of these screens has a defect at any size, and a phone offers what a desktop does.
-  expect(rows.flatMap((r) => Object.entries(r.sizes).flatMap(([size, v]) => v.defects.map((d) => `${r.id} at ${size}: ${d.kind}, ${d.what}, ${Math.round(d.by)} px`)))).toEqual([]);
-  expect(rows.filter((r) => r.parity && (r.parity.onlyDesktop.length || r.parity.onlyPhone.length || !r.parity.sameOrder)).map((r) => `${r.id}: desktop only ${JSON.stringify(r.parity!.onlyDesktop)}, phone only ${JSON.stringify(r.parity!.onlyPhone)}`)).toEqual([]);
+  finish(project);
+});
+
+test('the UI audit: the catalog, from a company to a film, a person, a series, its season and episode, a network and an executive', async ({ page }, info) => {
+  const project = info.project.name;
+  test.skip(!SIZES[project], 'Runs on desktop, phone and the two WebKit iPhone emulations.');
+  test.setTimeout(900_000);
+  page.setDefaultTimeout(20_000);
+  const v = (id: string, area: string, name: string, kind?: string) => visit(page, project, id, area, name, kind);
+  const card = (heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
+  const crumb = (label: string) => page.getByRole('navigation', { name: 'Breadcrumb' }).getByRole('button', { name: label, exact: true });
+  await watchShifts(page);
+  await serveCatalog(page); // a made-up catalog (catalog-fixture.ts): no TMDB record is in the repository
+  await quickLife(page, 'gb-london', '2026-01-05');
+  await nav(page, 'Home'); await v('home-industry', 'Home', 'Home, With The Industry\'s News');
+  await nav(page, 'Companies'); await v('companies', 'Industry', 'Companies, With The Catalog');
+  await page.getByRole('button', { name: 'Walt Disney Pictures', exact: true }).click();
+  await card('Films And Series').waitFor(); await v('company', 'Industry', 'A Company');
+  await card('Films And Series').getByRole('button', { name: 'The Lantern Keeper (Fixture)' }).click();
+  await card('Cast').waitFor(); await v('title-film', 'Industry', 'A Film');
+  await card('Cast').getByRole('button', { name: 'Ada Quill' }).click();
+  await card('Credits In The Catalog').waitFor(); await v('person', 'Industry', 'A Person');
+  await nav(page, 'Companies');
+  await page.getByRole('button', { name: 'Walt Disney Pictures', exact: true }).click();
+  await card('Films And Series').getByRole('button', { name: 'Tidewater Station (Fixture)' }).click();
+  await card('Seasons').waitFor(); await v('title-series', 'Industry', 'A Series');
+  await card('Seasons').getByRole('button', { name: 'Season 1' }).click();
+  await card('Episodes').waitFor(); await v('season', 'Industry', 'A Season');
+  await card('Episodes').getByRole('button', { name: 'Pilot' }).click();
+  await card('Guest Cast').waitFor(); await v('episode', 'Industry', 'An Episode');
+  await nav(page, 'Companies');
+  await card('Where The Series Aired').getByRole('button', { name: 'Networks And Streaming Services' }).click();
+  await page.getByRole('button', { name: 'ABC', exact: true }).waitFor(); await v('networks', 'Industry', 'Networks And Streaming Services');
+  await page.getByRole('button', { name: 'ABC', exact: true }).click();
+  await crumb('Networks And Streaming Services').waitFor(); await v('network', 'Industry', 'A Network');
+  await nav(page, 'Companies');
+  await page.getByRole('button', { name: 'The Walt Disney Company', exact: true }).click();
+  await page.getByRole('button', { name: 'Robert A. Iger' }).first().waitFor(); await v('company-group', 'Industry', 'A Company With Leadership');
+  await page.getByRole('button', { name: 'Robert A. Iger' }).first().click();
+  await page.getByRole('heading', { name: 'Robert A. Iger', level: 1 }).waitFor(); await v('executive', 'Industry', 'An Executive');
+  await nav(page, 'Calendar'); await v('calendar-industry', 'Your Day', 'Calendar, With The Industry\'s Dates');
+  finish(project);
 });

@@ -1,6 +1,6 @@
 {
  "project": "phone",
- "at": "2026-11-12T07:43:01.776Z",
+ "at": "2026-11-12T09:20:45.581Z",
  "rows": [
   {
    "id": "start",
@@ -600,9 +600,7 @@
      "defects": []
     }
    },
-   "scrollers": [
-    "div.tabs \"Project Sections\" in "
-   ],
+   "scrollers": [],
    "accepted": [],
    "parity": {
     "onlyDesktop": [],
@@ -1399,6 +1397,391 @@
    "area": "Shell",
    "name": "Menu Drawer",
    "kind": "drawer",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "home-industry",
+   "area": "Home",
+   "name": "Home, With The Industry's News",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "companies",
+   "area": "Industry",
+   "name": "Companies, With The Catalog",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "company",
+   "area": "Industry",
+   "name": "A Company",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "title-film",
+   "area": "Industry",
+   "name": "A Film",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "person",
+   "area": "Industry",
+   "name": "A Person",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "title-series",
+   "area": "Industry",
+   "name": "A Series",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "season",
+   "area": "Industry",
+   "name": "A Season",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "episode",
+   "area": "Industry",
+   "name": "An Episode",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "networks",
+   "area": "Industry",
+   "name": "Networks And Streaming Services",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "network",
+   "area": "Industry",
+   "name": "A Network",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "company-group",
+   "area": "Industry",
+   "name": "A Company With Leadership",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "executive",
+   "area": "Industry",
+   "name": "An Executive",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "calendar-industry",
+   "area": "Your Day",
+   "name": "Calendar, With The Industry's Dates",
+   "kind": "screen",
    "sizes": {
     "phone (390 by 844)": {
      "defects": []

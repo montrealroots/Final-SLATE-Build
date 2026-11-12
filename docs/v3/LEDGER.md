@@ -23,7 +23,7 @@ Counts are what a command printed, never an estimate, and say which command.
 | 6 | The whole catalog's pictures: inventory, manifest, fetch | in progress | `docs/PICTURE-COVERAGE.md` |
 | 6 | Pictures in the game: scoped packs, download all, pause, resume, retry, storage | not started | |
 | 7 | Audits, journeys, performance and UI checks on the final tree | not started | |
-| UI | Phone overhaul and whole-game cleanup: inventory, coverage matrix, foundation, parity tests | not started | `docs/v3/UI-COVERAGE.md` |
+| UI | Phone overhaul and whole-game cleanup: inventory, coverage matrix, foundation, parity tests | in progress: the foundation, the audit, the walk (59 screens, four profiles, desktop against phone) and the journey sweep are built; rows the matrix lists as not visited, and the limits it lists, are owed | `docs/v3/UI-COVERAGE.md`, `docs/v3/ui-inventory.json`, `e2e/ui-audit.ts`, `e2e/ui-coverage.spec.ts`, `tests/stylesheet.test.ts`, `tools/v3/ui-coverage.mjs` |
 
 ## Content Counts
 
@@ -44,7 +44,7 @@ the only place the counts are kept; this ledger does not repeat them, so they ca
 | T08 Finance and release | not started | |
 | T09 Audiences | not started | |
 | T10 Media | in progress: fixture tests pass; the real fetch is running; nothing in the game yet | `tests/pictures.test.ts` |
-| T11 UI | not started as a suite; the new screens are measured by `e2e/layout.ts` in their journeys | |
+| T11 UI | in progress: `e2e/ui-coverage.spec.ts` fails on any defect or desktop-and-phone difference on the screens it walks; the sweep measures the rest in journeys without failing them | `docs/v3/UI-COVERAGE.md` |
 | T12 Career | not started | |
 
 ## Decisions

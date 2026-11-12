@@ -86,8 +86,9 @@
   "kind": "screen",
   "screen": "home",
   "walk": [
+   "home",
    "home-empty",
-   "home"
+   "home-industry"
   ]
  },
  {
@@ -107,7 +108,8 @@
   "kind": "screen",
   "screen": "calendar",
   "walk": [
-   "calendar"
+   "calendar",
+   "calendar-industry"
   ]
  },
  {
@@ -141,6 +143,7 @@
   "kind": "screen",
   "screen": "companies",
   "walk": [
+   "companies",
    "companies-none"
   ]
  },
@@ -149,56 +152,82 @@
   "area": "Industry",
   "name": "A Company",
   "kind": "screen",
-  "screen": "company"
+  "screen": "company",
+  "walk": [
+   "company",
+   "company-group"
+  ]
  },
  {
   "id": "title",
   "area": "Industry",
   "name": "A Film Or Series",
   "kind": "screen",
-  "screen": "title"
+  "screen": "title",
+  "walk": [
+   "title-film",
+   "title-series"
+  ]
  },
  {
   "id": "season",
   "area": "Industry",
   "name": "A Season",
   "kind": "screen",
-  "screen": "season"
+  "screen": "season",
+  "walk": [
+   "season"
+  ]
  },
  {
   "id": "episode",
   "area": "Industry",
   "name": "An Episode",
   "kind": "screen",
-  "screen": "episode"
+  "screen": "episode",
+  "walk": [
+   "episode"
+  ]
  },
  {
   "id": "person",
   "area": "Industry",
   "name": "A Person",
   "kind": "screen",
-  "screen": "person"
+  "screen": "person",
+  "walk": [
+   "person"
+  ]
  },
  {
   "id": "networks",
   "area": "Industry",
   "name": "Networks And Streaming Services",
   "kind": "screen",
-  "screen": "networks"
+  "screen": "networks",
+  "walk": [
+   "networks"
+  ]
  },
  {
   "id": "network",
   "area": "Industry",
   "name": "A Network",
   "kind": "screen",
-  "screen": "network"
+  "screen": "network",
+  "walk": [
+   "network"
+  ]
  },
  {
   "id": "executive",
   "area": "Industry",
   "name": "An Executive",
   "kind": "screen",
-  "screen": "executive"
+  "screen": "executive",
+  "walk": [
+   "executive"
+  ]
  },
  {
   "id": "projects",
@@ -486,9 +515,9 @@
  {
   "id": "dlg-idea-list",
   "area": "Script",
-  "name": "Choose Ideas",
+  "name": "Choose Ideas (A Starting Idea, Blend Genres, Build A Logline And The Rest)",
   "kind": "dialog",
-  "dialog": "^Choose ",
+  "dialog": "^@idea-list$",
   "source": "IdeaPicker | {title}",
   "walk": [
    "idea-list"

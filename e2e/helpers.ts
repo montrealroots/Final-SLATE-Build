@@ -19,6 +19,9 @@ export async function freshStart(page: Page): Promise<void> {
   await openStart(page);
   await page.evaluate(() => localStorage.clear());
   await page.reload();
+  // The reloaded page starts its own loads; a caller that navigates at once cuts them short, which WebKit reports as
+  // errors (seen in CI on November 12, 2026, in a journey that called quickLife straight after this).
+  await page.locator('html[data-engine="ready"]').waitFor({ state: 'attached', timeout: 30_000 });
 }
 
 export interface CharacterOpts {

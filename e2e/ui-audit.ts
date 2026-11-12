@@ -11,7 +11,10 @@ import { findMisalignments, type Finding } from './layout';
  * - `bleed`: something is wider than the card, row, cell or button it is in;
  * - `clipped`: words are cut off by their own box, across or down, or a chooser is too narrow for the choice it shows;
  * - `target`: on a touch screen, something to tap is under 44 pixels in either direction;
- * - `dialog`: an open dialog is not wholly on the screen, or its buttons are not.
+ * - `dialog`: an open dialog is not wholly on the screen, or its buttons are not;
+ * - `covered` (coveredWhenFocused): a field or button, brought into view by focusing it, is under a bar that stays put;
+ * - `shift` (watchShifts, Chromium only): the page moved by itself after it was drawn, more than a tenth of the
+ *   screen (the layout-shift score browsers report), as it does when a picture or a list arrives late with no room kept.
  *
  * `accepted` lists what is under a rule's line for a reason the rule itself allows, said each time rather than
  * skipped quietly: a map's markers are small because the list beside the map opens the same places.
@@ -20,7 +23,7 @@ import { findMisalignments, type Finding } from './layout';
  * a form is not. The signature is what parity compares between a desktop and a phone: the same headings in the same
  * order, the same things to press, the same fields.
  */
-export interface Defect { kind: Finding['kind'] | 'sideways' | 'outside' | 'bleed' | 'clipped' | 'target' | 'dialog'; what: string; by: number; where: string }
+export interface Defect { kind: Finding['kind'] | 'sideways' | 'outside' | 'bleed' | 'clipped' | 'target' | 'dialog' | 'covered' | 'shift'; what: string; by: number; where: string }
 export interface Audit { signature: { headings: string[]; actions: string[]; fields: string[] }; defects: Defect[]; scrollers: string[]; accepted: string[] }
 
 /** Runs in the page, so it uses nothing from outside itself. */
@@ -67,8 +70,13 @@ export function auditPage(): Audit {
   for (const el of root.querySelectorAll('*')) {
     const st = getComputedStyle(el);
     if ((st.overflowX === 'auto' || st.overflowX === 'scroll') && el.scrollWidth > el.clientWidth + 1 && seen(el)) {
-      if (el.matches('main, .content, .shell-main, .page, body, #root > *') || el.clientWidth >= vw - 2 && el.clientHeight > vh / 2) add('sideways', el, el.scrollWidth - el.clientWidth);
-      else scrollers.add(`${words(el)} in ${where(el)}`);
+      if (el.matches('main, .content, .shell-main, .page, body, #root > *') || el.clientWidth >= vw - 2 && el.clientHeight > vh / 2) {
+        // What pushes it: the innermost thing that reaches furthest past the pane's right edge.
+        const edge = el.getBoundingClientRect().left + el.clientWidth;
+        let worst: Element | null = null, far = edge + 1;
+        for (const x of el.querySelectorAll('*')) { const r = x.getBoundingClientRect(); if (r.width > 0 && r.right >= far) { worst = x; far = r.right; } }
+        add('sideways', el, el.scrollWidth - el.clientWidth, worst ? `, pushed by ${words(worst)} in ${where(worst)}` : '');
+      } else scrollers.add(`${words(el)} in ${where(el)}`);
     }
   }
 
@@ -102,7 +110,11 @@ export function auditPage(): Audit {
     pen.font = `${st.fontStyle} ${st.fontWeight} ${st.fontSize} ${st.fontFamily}`;
     const need = pen.measureText(el.selectedOptions[0]?.textContent ?? '').width;
     const room = el.clientWidth - parseFloat(st.paddingLeft) - parseFloat(st.paddingRight);
-    if (need > room + 1) add('clipped', el, need - room, ' (the chosen value is cut short)');
+    if (need <= room + 1) continue;
+    // A choice longer than any phone is wide, where the screen says the whole of it beside the chooser.
+    const shown = el.closest('[data-value-shown]');
+    if (shown) accepted.add(`${where(el)}: a chooser's long choice is cut short in its box; "${shown.getAttribute('data-value-shown')}" beside it shows the whole`);
+    else add('clipped', el, need - room, ' (the chosen value is cut short)');
   }
   // Things to tap.
   if (coarse) for (const el of root.querySelectorAll('button, a[href], input, select, textarea, summary, [role="tab"], [role="button"]')) {
@@ -111,7 +123,15 @@ export function auditPage(): Audit {
     const t = (el as HTMLInputElement).type;
     const target = t === 'checkbox' || t === 'radio' ? el.closest('label') ?? el : el;
     if (el.tagName === 'A' && el.closest('p, li, dd, td') && !el.classList.contains('btn')) continue;
-    if (el.classList.contains('link') && [...(el.parentNode?.childNodes ?? [])].some((n) => n.nodeType === 3 && (n.textContent ?? '').trim().length > 1)) continue;
+    // A link in a sentence: words beside it in its own line of text, looking out through any inline wrapper.
+    const inSentence = (x: Element): boolean => {
+      const up = x.parentElement;
+      if (!up) return false;
+      const flow = !/flex|grid/.test(getComputedStyle(up).display);
+      if (flow && [...up.childNodes].some((n) => n !== x && (n.textContent ?? '').trim().length > 1 && (n.nodeType === 3 || (n.nodeType === 1 && getComputedStyle(n as Element).display === 'inline')))) return true;
+      return getComputedStyle(up).display === 'inline' && inSentence(up);
+    };
+    if (el.classList.contains('link') && inSentence(el)) continue;
     if (el.closest('svg')) { accepted.add(`${where(el)}: the map's markers are under 44 pixels; the list of places beside the map opens the same places`); continue; }
     const r = target.getBoundingClientRect();
     const small = Math.min(r.width, r.height);
@@ -144,4 +164,60 @@ export function auditPage(): Audit {
 export async function audit(page: Page): Promise<Audit> {
   const [a, rows] = await Promise.all([page.evaluate(auditPage), page.evaluate(findMisalignments)]);
   return { ...a, defects: [...a.defects, ...rows.map((f) => ({ kind: f.kind, what: `${f.a} | ${f.b}`, by: f.by, where: f.where.split(' / ').at(-1) ?? '' }))] };
+}
+
+/**
+ * Runs in the page. Focuses each field and button in turn, as Tab or a tap would, and reports any whose middle is then
+ * under something else: a bar stuck to the top or bottom, or a dialog's own head or foot. Puts focus and scroll back.
+ */
+export function coveredWhenFocused(): Defect[] {
+  const out: Defect[] = [];
+  const dialogs = [...document.querySelectorAll('[role="dialog"]')];
+  // The open drawer is the screen while it is open; the page behind it takes no focus.
+  const root = dialogs.at(-1) ?? document.querySelector('main:not([inert])') ?? document.querySelector('.rail[data-open="true"]') ?? document.body;
+  const was = document.activeElement as HTMLElement | null;
+  const scroller = document.querySelector('main') ?? document.scrollingElement;
+  const top = scroller?.scrollTop ?? 0;
+  const words = (el: Element) => `${el.tagName.toLowerCase()} "${(el.getAttribute('aria-label') ?? (el as HTMLInputElement).labels?.[0]?.textContent ?? el.textContent ?? '').trim().replace(/\s+/g, ' ').replace(/\d+/g, '#').slice(0, 50)}"`;
+  const all = [...root.querySelectorAll<HTMLElement>('input:not([type="hidden"]), select, textarea, button, a[href], summary')].filter((el) => !el.matches(':disabled, .visually-hidden, .sr-only, [tabindex="-1"]') && el.getClientRects().length > 0 && (typeof el.checkVisibility !== 'function' || el.checkVisibility({ checkVisibilityCSS: true })));
+  // Every field, and enough of the buttons to cross the page: a long list's hundredth button says what its first did.
+  const step = Math.max(1, Math.floor(all.length / 60));
+  for (const el of all.filter((e, i) => e.matches('input, select, textarea') || i % step === 0)) {
+    el.focus({ preventScroll: true });
+    // Where focus would bring it, at once: the page scrolls smoothly, and its end is what counts.
+    el.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'instant' });
+    const r = el.getBoundingClientRect();
+    if (r.width < 1 || r.height < 1) continue;
+    const x = Math.min(Math.max(r.left + r.width / 2, 1), innerWidth - 1), y = Math.min(Math.max(r.top + Math.min(r.height / 2, 20), 1), innerHeight - 1);
+    const hit = document.elementFromPoint(x, y);
+    if (!hit || hit === el || el.contains(hit) || hit.contains(el) || hit.closest('label')?.contains(el) || (el.id && hit.closest(`label[for="${el.id}"]`))) continue;
+    if (r.top < 0 || r.bottom > innerHeight) { out.push({ kind: 'covered', what: `${words(el)} is not brought onto the screen when focused`, by: Math.round(Math.max(-r.top, r.bottom - innerHeight)), where: '' }); continue; }
+    out.push({ kind: 'covered', what: `${words(el)} is under ${hit.tagName.toLowerCase()}.${String(hit.className).split(' ')[0]}`, by: Math.round(r.height), where: '' });
+  }
+  (was ?? document.body).focus?.({ preventScroll: true });
+  if (scroller) scroller.scrollTop = top;
+  return out;
+}
+
+/** Before the page loads: keeps the browser's own count of how far the page moved by itself (not after a press). */
+export async function watchShifts(page: Page): Promise<void> {
+  await page.addInitScript(() => {
+    const w = window as unknown as { __shift: number; __shifted: string[] };
+    w.__shift = 0; w.__shifted = [];
+    try {
+      new PerformanceObserver((list) => {
+        for (const e of list.getEntries() as unknown as { value: number; hadRecentInput: boolean; sources?: { node?: Node }[] }[]) {
+          if (e.hadRecentInput) continue;
+          w.__shift += e.value;
+          for (const s of e.sources ?? []) { const n = s.node as Element | undefined; if (n?.tagName) w.__shifted.push(`${n.tagName.toLowerCase()}.${String(n.className).split(' ')[0]}`); }
+        }
+      }).observe({ type: 'layout-shift', buffered: true });
+    } catch { /* WebKit has no layout-shift entries */ }
+  });
+}
+
+/** What moved since the last call, as a defect when it is more than a tenth of the screen; and starts counting again. */
+export async function shiftSince(page: Page): Promise<Defect[]> {
+  const { value, nodes } = await page.evaluate(() => { const w = window as unknown as { __shift?: number; __shifted?: string[] }; const out = { value: w.__shift ?? 0, nodes: [...new Set(w.__shifted ?? [])].slice(0, 4) }; w.__shift = 0; w.__shifted = []; return out; });
+  return value > 0.1 ? [{ kind: 'shift', what: `the page moved by itself (score ${value.toFixed(2)}): ${nodes.join(', ')}`, by: Math.round(value * 100), where: '' }] : [];
 }

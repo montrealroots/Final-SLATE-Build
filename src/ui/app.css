@@ -548,6 +548,8 @@ th { font-size: var(--size-xs); text-transform: uppercase; letter-spacing: .06em
 /* ---------- App shell ---------- */
 
 .shell { display: flex; flex-direction: column; height: 100%; }
+/* The game for its first moment on screen: see Shell.tsx. */
+.shell-arriving { pointer-events: none; }
 /* The height the browser shows now (from 2026-10-23, brief 23): a phone's address bar comes and goes, and 100% was the
    height with it gone, so the foot of the page sat under it. */
 @supports (height: 100dvh) { .shell { height: 100dvh; } }
@@ -975,10 +977,11 @@ td, th { overflow-wrap: break-word; }
 .rail-item { justify-content: flex-start; }
 @media (pointer: coarse) {
   .btn-sm { padding-inline: var(--s3); }
-  select, input:not([type]), input[type="text"], input[type="number"], input[type="date"], input[type="search"] { min-height: 44px; }
+  /* Every box a person types or chooses in (a passphrase's was 24 pixels until 2026-11-12: the list named four kinds). */
+  select, input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="hidden"], [type="color"]) { min-height: 44px; }
   summary { min-height: 44px; display: flex; align-items: center; gap: var(--s1); }
   details > summary { list-style-position: inside; }
-  .breadcrumbs button { min-height: 44px; padding: 0 var(--s1); }
+  .breadcrumbs button { min-height: 44px; min-width: 44px; padding: 0 var(--s1); }
   /* A `.link.strong` rule, 32 pixels tall, stood here from 2026-10-23 to 2026-10-24: no element carries both classes
      (Help's topics are `.help-link`), so it matched nothing and went (brief 26). */
   /* A slider's track as tall as a control, so a finger finds it (Sleep's hours, 16 pixels until 2026-10-23). */
@@ -986,11 +989,11 @@ td, th { overflow-wrap: break-word; }
   /* A tick box's own label, beside it rather than around it, is what a finger presses (from 2026-10-23). */
   input[type="checkbox"] + label, input[type="radio"] + label { min-height: var(--control); display: inline-flex; align-items: center; }
   /* And a label around its box, as the Playing chooser's are (brief 23's walk: 16-pixel radios in 38-pixel labels). */
-  label:has(> input[type="checkbox"]), label:has(> input[type="radio"]) { min-height: var(--control); }
+  label:has(> input[type="checkbox"]), label:has(> input[type="radio"]) { min-height: var(--control); min-width: var(--control); }
   .cal-day { cursor: pointer; }
   /* An idea's tag, and a name that leads a row and opens something, as tall as a control (from 2026-11-12: 32 and 21
      pixels until then). A link inside a sentence keeps the sentence's line. */
-  strong > button.link:only-child, li > button.link, .list-item > .grow > button.link { display: inline-flex; align-items: center; min-height: var(--control); }
+  strong > button.link:only-child, li > button.link, .list-item > .grow > button.link, dd > button.link:only-child { display: inline-flex; align-items: center; min-height: var(--control); min-width: var(--control); }
   /* A button of one glyph (‹, ›, ✕) as wide as it is tall, and the skip link as tall as a control (from 2026-10-23, brief
      23's walk: the Calendar's month arrows were 31 pixels wide, the skip link 37 tall). */
   .btn { min-width: var(--control); }
