@@ -164,8 +164,20 @@ export function auditPage(): Audit {
 export async function audit(page: Page): Promise<Audit> {
   // Not while something is sliding or fading: a drawer half way out is not where anything is.
   await page.waitForFunction(() => !document.getAnimations().some((a) => a.playState === 'running' && a.effect?.getComputedTiming().iterations !== Infinity), null, { timeout: 5_000 }).catch(() => undefined);
-  const [a, rows] = await Promise.all([page.evaluate(auditPage), page.evaluate(findMisalignments)]);
-  return { ...a, defects: [...a.defects, ...rows.map((f) => ({ kind: f.kind, what: `${f.a} | ${f.b}`, by: f.by, where: f.where.split(' / ').at(-1) ?? '' }))] };
+  const measure = async (): Promise<Audit> => {
+    const [a, rows] = await Promise.all([page.evaluate(auditPage), page.evaluate(findMisalignments)]);
+    return { ...a, defects: [...a.defects, ...rows.map((f) => ({ kind: f.kind, what: `${f.a} | ${f.b}`, by: f.by, where: f.where.split(' / ').at(-1) ?? '' }))] };
+  };
+  const first = await measure();
+  if (!first.defects.length) return first;
+  // Measured again a quarter of a second on, as the journey sweep does (test.ts): a defect is one that is still there.
+  // On November 12, 2026 the wait above let one measurement through with the phone's drawer part way shut (WebKit, once
+  // in about ten runs; the same wait holds in a page of its own in both browsers, so why is not known). A layout fault
+  // doesn't mend itself in a quarter of a second; a drawer finishes closing.
+  await page.waitForTimeout(250);
+  const second = await measure();
+  const still = new Set(second.defects.map((d) => `${d.kind}|${d.what}|${d.where}`));
+  return { ...second, defects: first.defects.filter((d) => still.has(`${d.kind}|${d.what}|${d.where}`)) };
 }
 
 /**
