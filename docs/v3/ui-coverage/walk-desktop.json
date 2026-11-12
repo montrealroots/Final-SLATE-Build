@@ -1,6 +1,6 @@
 {
  "project": "desktop",
- "at": "2026-11-12T10:20:00.115Z",
+ "at": "2026-11-12T10:28:29.025Z",
  "rows": [
   {
    "id": "start",
@@ -1149,6 +1149,808 @@
    "area": "Your Work",
    "name": "Projects",
    "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "home-industry",
+   "area": "Home",
+   "name": "Home, With The Industry's News",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "companies",
+   "area": "Industry",
+   "name": "Companies, With The Catalog",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "company",
+   "area": "Industry",
+   "name": "A Company",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "title-film",
+   "area": "Industry",
+   "name": "A Film",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "person",
+   "area": "Industry",
+   "name": "A Person",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "title-series",
+   "area": "Industry",
+   "name": "A Series",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "season",
+   "area": "Industry",
+   "name": "A Season",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "episode",
+   "area": "Industry",
+   "name": "An Episode",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "networks",
+   "area": "Industry",
+   "name": "Networks And Streaming Services",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "network",
+   "area": "Industry",
+   "name": "A Network",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "company-group",
+   "area": "Industry",
+   "name": "A Company With Leadership",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "executive",
+   "area": "Industry",
+   "name": "An Executive",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "calendar-industry",
+   "area": "Your Day",
+   "name": "Calendar, With The Industry's Dates",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [
+    "January #: span.dot keeps to one line and ends in an ellipsis; pressing it shows the whole"
+   ]
+  },
+  {
+   "id": "start-saved",
+   "area": "Startup",
+   "name": "Start Screen, With A Saved Game",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "start-saves",
+   "area": "Startup",
+   "name": "Saved Games From The Start Screen",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "rename-save",
+   "area": "Your Game",
+   "name": "Rename Save",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "delete-save",
+   "area": "Your Game",
+   "name": "Delete This Save?",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "start-draft",
+   "area": "Startup",
+   "name": "Start Screen, With An Unfinished Character",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "start-over",
+   "area": "Startup",
+   "name": "Start Over?",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "creation-review",
+   "area": "Startup",
+   "name": "Creation: Review",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "creation-background",
+   "area": "Startup",
+   "name": "Creation: Background And Languages",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "creation-starting-point",
+   "area": "Startup",
+   "name": "Creation: Starting Point",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "change-relationship",
+   "area": "Script",
+   "name": "Change The Relationship",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "rename-draft",
+   "area": "Script",
+   "name": "Rename Draft",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "compare-draft",
+   "area": "Script",
+   "name": "Compare Draft",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "script-confirm",
+   "area": "Script",
+   "name": "Combine The Scenes",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "shelve",
+   "area": "Project",
+   "name": "Shelve The Project",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "hire-writer",
+   "area": "Crew",
+   "name": "Hire A Writer",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "hire-crew",
+   "area": "Crew",
+   "name": "Hire A Crew Member",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "staff",
+   "area": "Crew",
+   "name": "Staff A Department",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "approve-draft",
+   "area": "Script",
+   "name": "Approve This Draft?",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    },
+    "desktop zoomed to 400 percent (320 wide) (320 by 568)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "rename-save-in-game",
+   "area": "Your Game",
+   "name": "Rename Save, In The Game",
+   "kind": "dialog",
    "sizes": {
     "desktop (1280 by 720)": {
      "defects": []

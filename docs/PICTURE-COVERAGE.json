@@ -1,0 +1,91 @@
+{
+ "at": "2026-11-12T10:36:17.945Z",
+ "renditions": {
+  "profile": "w185",
+  "poster": "w185",
+  "backdrop": "w300",
+  "season-poster": "w185",
+  "still": "w185",
+  "logo": "w154"
+ },
+ "coverage": {
+  "profile": {
+   "eligible": 458686,
+   "checked": 458686,
+   "available": 127767,
+   "downloaded": 127758,
+   "reused": 5,
+   "unavailable": 329886,
+   "failed": 9,
+   "permissionLimited": 0,
+   "excluded": 1033,
+   "remaining": 0,
+   "bytes": 1754231923
+  },
+  "poster": {
+   "eligible": 25322,
+   "checked": 25321,
+   "available": 23293,
+   "downloaded": 23276,
+   "reused": 108,
+   "unavailable": 2028,
+   "failed": 17,
+   "permissionLimited": 0,
+   "excluded": 0,
+   "remaining": 1,
+   "bytes": 446920781
+  },
+  "backdrop": {
+   "eligible": 25322,
+   "checked": 25321,
+   "available": 19418,
+   "downloaded": 19417,
+   "reused": 14,
+   "unavailable": 5903,
+   "failed": 1,
+   "permissionLimited": 0,
+   "excluded": 0,
+   "remaining": 1,
+   "bytes": 323984554
+  },
+  "season-poster": {
+   "eligible": 11268,
+   "checked": 11268,
+   "available": 8748,
+   "downloaded": 8748,
+   "reused": 1014,
+   "unavailable": 2520,
+   "failed": 0,
+   "permissionLimited": 0,
+   "excluded": 0,
+   "remaining": 0,
+   "bytes": 154897432
+  },
+  "still": {
+   "eligible": 257986,
+   "checked": 252403,
+   "available": 134101,
+   "downloaded": 128518,
+   "reused": 385,
+   "unavailable": 123885,
+   "failed": 0,
+   "permissionLimited": 0,
+   "excluded": 0,
+   "remaining": 5583,
+   "bytes": 1023204735
+  },
+  "logo": {
+   "eligible": 352,
+   "checked": 8,
+   "available": 344,
+   "downloaded": 0,
+   "reused": 0,
+   "unavailable": 8,
+   "failed": 0,
+   "permissionLimited": 0,
+   "excluded": 0,
+   "remaining": 344,
+   "bytes": 0
+  }
+ }
+}

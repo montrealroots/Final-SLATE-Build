@@ -158,7 +158,10 @@ export async function fetchPictures(man, { store, kinds = KINDS, limit = Infinit
       if (res.status === 404) { man.set({ ...r, status: 'no-image-published', note: 'TMDB lists this path and does not serve it (404)' }); settle(null); return; }
       if (res.status === 401 || res.status === 403) { man.set({ ...r, status: 'permission-limited', note: `the image host refused it (${res.status})` }); settle(null); return; }
       if (!res.ok) { note = `the image host answered ${res.status}`; await sleep(500 * 2 ** attempt); continue; }
-      const buf = Buffer.from(await res.arrayBuffer());
+      // The connection can drop after the answer has begun (seen November 12, 2026, at picture 40,000 of a run: the
+      // read rejected outside any catch and ended the run). It is tried again like any other network failure.
+      let buf;
+      try { buf = Buffer.from(await res.arrayBuffer()); } catch (e) { note = `network, part way through the picture: ${e.message}`; await sleep(500 * 2 ** attempt); continue; }
       const dim = dimensions(buf);
       if (!dim) { note = 'what came back is not a picture'; await sleep(500 * 2 ** attempt); continue; }
       mkdirSync(join(full, '..'), { recursive: true });
