@@ -90,7 +90,14 @@ has a row for each requirement built or owed.
   import before adding to it. The Script page finds a work, shows what is recorded and declares the script adapted
   from it, and the Budget page's Adaptation Rights card takes, renews and exercises the option that production waits
   for (`engine/adaptation.ts`). **Owed:** the rest of the adaptation loop (requirement V3-A06: brief, approvals,
-  compensation beyond the price, reporting); the people loops; more companies.
+  compensation beyond the price, reporting); more companies.
+- **People loops: the casting director and the line producer are built** (`engine/casting-director.ts`,
+  `engine/line-producer.ts`; requirements V3-L01 and V3-L02). Each is an optional Crew row. The casting director runs
+  a search for a part for two of their days and advises once everyone has read; the shortlist, callbacks and offers
+  stay the player's. The line producer negotiates a counteroffer for one of their days and brings back a lower rate
+  or the same one; accepting stays the player's. Both are paid on their own budget line
+  (`hiring.ts payDelegatedDays`) and credited for days worked. **Owed:** representation (agent search, mandate,
+  submissions, negotiation, commission, conflicts, renewal, termination): nothing of it is built.
 - **The phone overhaul, where it stands:** `docs/v3/UI-COVERAGE.md` is the matrix, written by
   `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json` (every screen, tab and dialog; a new one needs a
   row or `tests/ui-inventory.test.ts` fails), the walk (`UI_COVERAGE_WRITE=1 npx playwright test

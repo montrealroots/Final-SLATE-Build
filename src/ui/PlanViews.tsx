@@ -23,6 +23,8 @@ import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, roofed, scoutedPlaces, siteName, siteNote } from '../engine/locations';
 import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
 import { candidatesFor, childrenIn } from '../engine/hiring';
+import { searchAdvice, searchLine, searchPreview, searchRefusal, searchStatus, searchesFor, shortlistAdvice, startSearch } from '../engine/casting-director';
+import { negotiate, negotiationLine, negotiationPreview, negotiationRefusal, producerAccountLine } from '../engine/line-producer';
 import { chainOfTitle, exerciseOption, optionStanding, optionTerms, renewOption, takeOption } from '../engine/adaptation';
 import { consideredOn, isReal, jobLabel, stopConsidering, tmdbIdOf } from '../engine/guests';
 import { Picture } from './Picture';
@@ -56,6 +58,10 @@ function HireRow({ p, h }: { p: Project; h: Hire }) {
   const person = personById(g, h.personId);
   const [err, setErr] = useState<string | null>(null);
   const zone = getPlace(p.axes.basePlaceId).zone;
+  // A counteroffer the production's line producer can negotiate, said with its cost first (line-producer.ts).
+  const pre = h.status === 'countered' && !negotiationRefusal(p, h.id) ? negotiationPreview(g, p, h.id) : null;
+  const told = negotiationLine(h, (at) => longLocal(at, zone).date);
+  const account = h.roleId === 'line-producer' ? producerAccountLine(p, h) : null;
   return (
     <tr>
       <td data-label="Person">{person.name}</td>
@@ -65,12 +71,16 @@ function HireRow({ p, h }: { p: Project; h: Hire }) {
         <span className={`chip ${h.status === 'accepted' ? 'chip-positive' : h.status === 'declined' ? 'chip-negative' : h.status === 'countered' ? 'chip-warning' : ''}`}>{STATUS_LABEL[h.status]}</span>
         {h.status === 'offered' && <div className="dim">Offered {formatDateKey(dateKey(h.offeredAt, zone))}; answer by about {formatDateKey(dateKey(h.responseAt, zone))}</div>}
         {h.status === 'countered' && <div className="dim">Asks {money(h.counterRate ?? 0)} a day{h.counterUntil ? `, until ${formatDateKey(dateKey(h.counterUntil, zone))}` : ''}</div>}
+        {told && <div className="dim">{told}</div>}
+        {pre && <div className="dim">{pre.by}, your line producer, can negotiate this for {money(pre.fee)} (one of their days). {person.name} asks {money(pre.inQuestion)} more than you offered over about {plural(pre.days, 'day')}, and may come down part of the way or not at all. Accepting stays yours.</div>}
         {h.daysWorked > 0 && <div className="dim">{plural(h.daysWorked, 'day')} worked</div>}
+        {account && <div className="dim">{account}</div>}
         {err && <div role="alert" style={{ color: 'var(--negative)' }}>{err}</div>}
       </td>
       <td data-label="">
         <div className="row gap-2 wrap">
           {h.status === 'countered' && <><button className="btn btn-sm btn-primary" onClick={() => setErr(store.act((s) => void acceptCounter(s, p, h.id)))}>Accept Counteroffer</button><button className="btn btn-sm" onClick={() => setErr(store.act((s) => declineCounter(s, p, h.id)))}>Decline Counteroffer</button></>}
+          {pre && <button className="btn btn-sm" aria-label={`Ask ${pre.by} To Negotiate With ${person.name}`} onClick={() => setErr(store.act((s) => void negotiate(s, p, h.id)))}>Ask {pre.by} To Negotiate</button>}
           {h.status === 'offered' && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => withdrawOffer(s, p, h.id)))}>Withdraw Offer</button>}
           {h.status === 'accepted' && !p.delivered && <button className="btn btn-sm btn-danger" onClick={() => setErr(store.act((s) => releaseHire(s, p, h.id)))}>Release</button>}
         </div>
@@ -228,6 +238,7 @@ export function CastTab({ p }: { p: Project }) {
                         {!a && !pending && <button className="btn btn-sm" onClick={() => setErr(store.act((s) => void castPlayer(s, p, c.id, m)))}>Cast Yourself</button>}
                         {a?.performer === 'player' && !p.delivered && <button className="btn btn-sm" onClick={() => setErr(store.act(() => uncastPlayer(p, c.id)))}>Step Out Of This Role</button>}
                       </div>
+                      <CastingSearches p={p} characterId={c.id} method={m} open={!a && !pending && !p.delivered} onError={setErr} />
                       {auditionsFor(p, c.id, m).length > 0 && <AuditionList p={p} characterId={c.id} method={m} cast={!!a} pending={!!pending} onError={setErr} />}
                     </div>
                   );
@@ -248,6 +259,53 @@ export function CastTab({ p }: { p: Project }) {
         </Modal>
       )}
     </>
+  );
+}
+
+/**
+ * The casting director's searches for a part (casting-director.ts). With one on the production, the part can be handed
+ * to them: the line says who runs it, how many they bring, when, and what it costs, before the button. Each search
+ * then says what happened and, once everyone has read, who they advise. Taking the advice is the player's press.
+ */
+function CastingSearches({ p, characterId, method, open, onError }: { p: Project; characterId: string; method: PerformanceMethod; open: boolean; onError: (e: string | null) => void }) {
+  const g = useGame();
+  const searches = searchesFor(p, characterId, method);
+  const pre = open ? searchPreview(g, p) : null;
+  const no = pre ? searchRefusal(p, characterId, method) : null;
+  if (!pre && !searches.length) return null;
+  const part = p.characters.find((c) => c.id === characterId)!;
+  const zone = getPlace(p.axes.basePlaceId).zone;
+  return (
+    <div className="casting-search" style={{ flexBasis: '100%' }} role="group" aria-label={`Casting Search For ${part.name}`}>
+      {pre && !no && (
+        <div className="row-wrap">
+          <span className="grow dim small">{pre.by}, your casting director, can run the search: they would bring up to {pre.brings} performers to read on {formatDateKey(pre.on)}, for {money(pre.fee)} (two of their days). Who is shortlisted, called back and offered the part stays yours.</span>
+          <button className="btn btn-sm" aria-label={`Ask ${pre.by} To Run A Search For ${part.name}`} onClick={() => onError(store.act((s) => void startSearch(s, p, characterId, method)))}>Ask {pre.by} To Run A Search</button>
+        </div>
+      )}
+      {pre && no && searches.length > 0 && <p className="dim small">{no}</p>}
+      {searches.map((s) => {
+        const advice = searchAdvice(p, s);
+        const st = searchStatus(p, s);
+        const taken = advice.auditions.length > 0 && advice.auditions.every((a) => a.shortlisted);
+        return (
+          <div key={s.id} className="callout">
+            <p style={{ margin: 0 }}>{searchLine(p, s, (at) => longLocal(at, zone).date)}</p>
+            {s.passed.length > 0 && <details className="small"><summary>Who They Left Out, And Why</summary><ul className="dim">{s.passed.map((x) => <li key={x.name}>{x.name}: {x.why}</li>)}</ul></details>}
+            {advice.left ? <p className="dim small">{s.byName} is no longer on this production, so there is no advice from this search. The readings stand, below.</p>
+              : !st.done ? <p className="dim small">Their advice comes once everyone has read.</p>
+              : advice.auditions.length === 0 ? <p className="dim small">Nobody they brought read, so they advise nobody. You can ask for another search.</p>
+              : (
+                <>
+                  <p style={{ marginBottom: 0 }}>{s.byName} advises seeing again: {advice.auditions.map((a) => personById(g, a.personId).name).join(', ')}. It is advice from the same readings you see below.</p>
+                  {open && !taken && <button className="btn btn-sm" aria-label={`Shortlist ${s.byName}'s Advice For ${part.name}`} onClick={() => onError(store.act(() => void shortlistAdvice(p, s.id)))}>Shortlist Their Advice</button>}
+                  {taken && <p className="dim small">All of them are on your shortlist.</p>}
+                </>
+              )}
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
@@ -332,7 +390,8 @@ export function CrewTab({ p }: { p: Project }) {
         <section key={d} className="card">
           <div className="row-between wrap">
             <h2 style={{ margin: 0 }}>{d}</h2>
-            <button className="btn btn-sm" disabled={!!p.delivered} onClick={() => setProposal({ dept: d, ...proposeStaffing(g, p, d) })}>Staff This Department</button>
+            {/* It hires the required crew, so a department with only optional jobs has no such button (there was no such department until November 12, 2026). */}
+            {needed.some((r) => r.dept === d && r.required) && <button className="btn btn-sm" disabled={!!p.delivered} onClick={() => setProposal({ dept: d, ...proposeStaffing(g, p, d) })}>Staff This Department</button>}
           </div>
           <ul className="list spaced">
             {needed.filter((r) => r.dept === d).map((r) => {

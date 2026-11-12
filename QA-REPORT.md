@@ -69,6 +69,19 @@ wide, where the bar's Sleep and Advance wrap to a second row (nothing is cut off
 beyond one capture). The journey sweep's comparison of desktop and phone is a sampling of states, not a gate: it
 lists what one run caught and the other didn't, most of which is a save's own made-up titles.
 
+### After The First Part: Adaptation Rights, The Casting Director And The Line Producer (November 12, 2026)
+
+| Check | Failures | Result |
+| --- | --- | --- |
+| CI on the source catalog's head, `journeys (production, webkit)` | 1 | 109 passed, 1 failed: `e2e/picture-library.spec.ts`, "no room said before anything is fetched". The page showed no "There isn't room" because the test's own stand-in for the browser's storage report had gone. It was set on `navigator.storage` itself; WebKit collects that object when nothing holds it and a property set on it goes with it. Measured: in Playwright's WebKit the property was gone after the fourth round of garbage, in Chromium never in 400; set on the prototype it stayed in both for 400. The test now sets it there. The game's code was right and is unchanged. |
+| `tests/adaptation.test.ts`, `tests/casting-director.test.ts`, `tests/line-producer.test.ts` | 0 | 11, 5 and 7 tests. Mutations caught: the option's expiry and its fee counting towards the price (earlier); the funds check before a search or a negotiation (2 tests fail); a negotiation that always succeeds (1 test fails). |
+| `e2e/casting-director.spec.ts`, `e2e/line-producer.spec.ts` on desktop, phone and iPhone 15 Pro Max | 0 | Each hires through the Crew page's own row, asks with the cost said first, reads the saved budget line before and after, and audits the page on the phones (0 defects). |
+
+Defects found by this work and fixed in it: a casting director could be hired, by being considered from the film
+catalog, and did nothing; a line producer was in the table of jobs and no production could hire one; Staff This
+Department would have said "Every role here already has someone or an offer out" for a department with only an
+optional job, so such a department has no such button.
+
 ### Earlier: Screens Lined Up (November 11, 2026)
 
 The owner's request after seeing a capture of the Script page: "Fix all misalignments UI wise."

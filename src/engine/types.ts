@@ -320,6 +320,28 @@ export interface Scene {
 }
 
 /** An invitation to read for a part, and what came of it (auditions.ts, SLATE-09-02). */
+/**
+ * One search for one part, run by the production's casting director on the producer's say (casting-director.ts). The
+ * people they brought are ordinary auditions; this is the record of the mandate: who ran it, when, what it cost and
+ * which readings it covers. What they advise is worked out from those readings, and is advice: the shortlist, the
+ * callbacks and every offer stay the player's.
+ */
+export interface CastingSearch {
+  id: string;
+  characterId: string;
+  method: PerformanceMethod;
+  /** The casting director, by person and name as credited then. */
+  by: string;
+  byName: string;
+  at: number;
+  /** What the search cost: their days of preparation and the session, at their rate. */
+  fee: number;
+  /** The auditions this search arranged. */
+  auditionIds: string[];
+  /** Performers they considered and did not bring, each with why, so the search can be questioned. */
+  passed: { name: string; why: string }[];
+}
+
 export interface Audition {
   id: string;
   characterId: string;
@@ -481,6 +503,8 @@ export interface Hire {
   responseAt: number;
   obligationId: string | null;
   daysWorked: number;
+  /** A line producer's negotiation of this person's counteroffer (line-producer.ts): who, when, what it cost, and the rate asked before and after. */
+  negotiated?: { by: string; byName: string; at: number; fee: number; from: number; to: number };
   /** A child's pay set aside in trust under the shoot's rules (minors.ts), in total so far. */
   trustSetAside?: number;
 }
@@ -901,6 +925,8 @@ export interface Project {
   fromOpportunity?: string;
   /** Auditions and callbacks for its parts (auditions.ts). */
   auditions?: Audition[];
+  /** Searches a hired casting director ran (casting-director.ts): who they brought to read for a part, and what they then advised. */
+  castingSearches?: CastingSearch[];
   setups: SetupPayoff[];
   /** Acts or sequences, and story threads (structure.ts). Absent in older saves. */
   acts?: { id: string; name: string }[];
