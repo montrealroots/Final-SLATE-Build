@@ -1,0 +1,37 @@
+// Historical Drama: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== historical-drama.f01 | feature | three-act
+title: Two Hundred And Seventy Yards
+genre: historical-drama + political-drama
+tone: Brisk, wry and quietly furious
+era: 1893 | period
+setting: Christchurch and Wellington, New Zealand | real | town
+logline: In the winter of 1893 a publican's widow who has never signed anything agrees to carry a suffrage petition through the pubs of Canterbury, where the men who will vote on it drink.
+premise: The petition is glued sheet to sheet and will be rolled down the floor of Parliament. It needs every name. {nell} keeps a licensed house and so is, by the campaign's own leaflets, the enemy: the liquor trade is paying to stop the bill. {kate}, the organiser, needs her because {nell} can walk into rooms the temperance ladies cannot.
+synopsis: {nell} signs with a cross and is taught, that evening, to write her name; it is the first time the film shows what the petition is asking for. She takes the sheets where the campaign has no friends: shearing sheds, railway camps, the kitchens of hotels like her own, and the Maori settlement where {heni} tells her they have been running their own parliament and will sign if the word "women" means them too. The brewers' agent, {seddon_man}, who drinks at her bar, offers to buy her mortgage. A rival petition appears with forged names; {nell} can spot them because she knows who in the district can actually write. The sheets are pasted together on the floor of a church hall, two hundred and seventy yards of them, wound on a broom handle. In Wellington the bill is expected to fail in the upper house by two votes. It passes by two, because two men change sides to spite the Premier, and nobody on the floor is sure for an hour whether they have won. {nell} goes home to a house the brewery now owns. On polling day she walks to the booth past her own former customers, and writes her name.
+question: Who gets to ask for a right, and does it count if the wrong sort of woman carried the paper?
+themes: respectability against solidarity; literacy as power; winning by other people's spite
+audience: Adults and families; students
+viewpoint: With {nell}, who is suspicious of every side
+stakes: The vote for every woman in the colony; {nell}'s licence, her house and her standing with the people she serves
+conflict: A campaign that needs a publican and despises her trade, and a trade that needs her silence and will pay for it
+ending: The bill passes by two votes cast in spite. {nell} loses the hotel and votes.
+experience: The pleasure of a job done door to door, anger turned to stamina, and a win that feels accidental and total
+look: Rain, mud roads, gaslit bars and bare halls; the petition itself as a white road down a dark floor
+sound: Pen nibs, paste brushes, a pub piano; the roll unspooling in a silent chamber
+m: win | system | belonging-vs-identity | bittersweet
+@ nell | Nell Carmody | lead | protagonist | human | she/her | 44 | A say in the laws that license her | She has run a business for ten years under her dead husband's name | The campaign she serves wants her trade abolished | Shrewd, illiterate, proud of both | From a cross to a signature to a ballot | Irish New Zealander, dry, counts change aloud | Bar apron, good boots, ink on her thumb
+@ kate | Kate Rossiter | supporting | mentor | human | she/her | 46 | Every name | Two petitions have failed already | She must use a woman her own committee would not receive | Strategic, courteous, unsentimental | From using {nell} to standing beside her | Clear, quick, never wastes a word | Bicycle, white ribbon, a satchel of sheets
+@ heni | Heni Te Rangi | supporting | ally | human | she/her | 38 | That "women" means her people too | Her people hold their own parliament | The petition's friends have not thought to ask | Patient, political, amused | From being canvassed to canvassing | Speaks in two languages, chooses which deliberately | Cloak over a town dress, a pen of her own
+@ seddon_man | Albert Finch | supporting | antagonist | human | he/him | 50 | The bill dead and the trade safe | He is paid by the brewers | {nell} knows his handwriting | Genial, generous, dangerous | Unchanged; he simply forecloses | Bar-room warmth, never threatens aloud | Waistcoat, a cigar he never lights indoors
+~ nell - kate | publican and temperance organiser | mutual distrust | a seat kept for her in the gallery
+~ nell - heni | canvasser and the woman who sets terms | {nell} asks for names | {heni} brings four hundred
+~ nell - seddon_man | landlady and her best customer | a tab and a favour | a mortgage called in
+# The Sheets | INT | Carmody's Hotel, Bar | NIGHT | nell, seddon_man | Show her world | Closing time. {seddon_man} settles his tab and mentions, pleasantly, who holds her mortgage | | 4 | crowd=15, props=ledger+glasses
+# The Sheets | INT | Church Hall | DAY | nell, kate | Sign | {nell} makes her cross. {kate} turns the sheet over and shows her how to write her name | {nell} joins | 4 | props=petition sheets+pen
+# The Canvass | EXT | Shearing Shed, Canterbury Plains | DAY | nell | Go where they cannot | Forty shearers, their wives at the wool table. She gets twenty-two names and a proposal | | 4 | crowd=40, animals=sheep, props=petition sheets
+# The Canvass | INT | Meeting House | DAY | nell, heni | Be given terms | {heni} reads the petition's wording aloud and asks who it means. {nell} has no answer and says so | {heni} takes sheets of her own | 5 | crowd=30
+# The Canvass | INT | Church Hall | NIGHT | nell, kate, heni | Find the forgeries | A rival roll arrives. {nell} goes down it with her finger: this one cannot write, this one is dead | The false names are struck | 5 | props=petition roll+paste pot
+# Wellington | INT | Legislative Chamber, Gallery | DAY | nell, kate, heni | Win by spite | The roll is run down the floor. The vote is expected lost by two. It is carried by two | The bill passes | 6 | crowd=120, props=petition roll
+# Wellington | EXT | Polling Booth, Christchurch | DAY | nell, seddon_man | Vote | The hotel has a new sign. {nell} walks past {seddon_man} to the booth and writes her name | | 3 | crowd=50
+review: authored | 2026-11-12 | written whole; drawn from the 1893 petition, with invented people

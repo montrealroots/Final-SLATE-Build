@@ -1,0 +1,38 @@
+// Dance: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== dance.f01 | feature | three-act
+title: The Summer Nobody Could Stop
+genre: dance + historical-drama
+tone: Feverish, pitying and hard to look away from
+era: 1518 | period
+setting: A free imperial city on the Rhine in a famine summer | fictional | city
+logline: A woman steps into a narrow street in July and begins to dance, and does not stop for six days; within a month four hundred people are dancing beside her, and the city's remedy is to build them a stage and hire a band.
+premise: The harvest has failed three years running. There is a new pox, and the old fear that a certain saint curses sinners with dancing. {troffea} has not slept properly since her child was buried. One morning her feet begin, and she finds she cannot make them leave off, and that she does not altogether want to.
+synopsis: The first act is one body. {troffea} dances without music in the lane outside her house, sweating, expressionless. Her husband {husband} shouts, pleads, is ashamed. Neighbours laugh, then watch, then one of them, a serving girl, joins without knowing she has moved. By the week's end there are thirty. The film treats the dancing as dance: each person has a manner, a grief, a rhythm. The second act is the city's response. The council asks the physicians, who rule out the stars and diagnose hot blood; the cure for hot blood is to dance it out. So the guildhalls are cleared, a stage is built in the horse market, pipers and drummers are hired, and strong men are paid to hold the dancers upright and keep them moving. The young physician {doctor_wendel} carries out the policy and watches it fail: music draws people in like a tide. There are four hundred. Feet bleed through shoes. Some fall and do not get up. A councillor, {ammeister}, a decent man with a ledger, counts the cost of pipers against the cost of doing nothing. {troffea}, held up by a hired porter, sees a child in the crowd begin to sway and for the first time tries, with everything she has, to stop, in order to warn her; she cannot. In the third act the council reverses itself completely: music is banned in the city, the stage is torn down, gamblers and loose-livers are expelled for good measure, and the dancers are loaded on wagons and taken three days into the hills to the saint's shrine. They are given red shoes, sprinkled with oil, and led round the altar. The film does not say why it works. {troffea} sits down in the grotto and takes off the shoes. She sleeps. When she walks home in the autumn, her husband is sweeping the lane, and neither of them can find a word for it. A fiddler tuning up at a wedding next door makes them both go very still.
+question: When a whole city's grief gets into its feet, what would count as a cure?
+themes: despair with no other outlet; authority treating a symptom with more of it; the body saying what cannot be said
+audience: Adults; dance audiences; viewers who like history at its strangest
+viewpoint: With {troffea} from inside the compulsion, and with {doctor_wendel} from outside
+stakes: Hundreds of lives, a city's order, and a woman's way back into her own body
+conflict: People dancing themselves to death against a council and a medicine that can only think to add music
+ending: The dancers are taken to a shrine and stop. She comes home. Nobody can explain it and nobody is the same.
+experience: Mesmerised horror, compassion, bodies pushed past beauty into something else, and an uneasy quiet
+look: A narrow lane in July glare; a stage in a market like a scaffold; bleeding red shoes; a cool grotto
+sound: Breath and feet on cobbles before any music. Then pipes and drums that never resolve. Then nothing.
+m: escape | self | faith-vs-evidence | open
+@ troffea | Frau Troffea | lead | protagonist | human | she/her | 33 | To stop, and before that, not to | While she dances she does not think | Her body has taken the decision away | Silent, worn, far away in her own face | From first dancer to the one who tries to stop for a child's sake | Almost none; a name said once | Linen shift, bare then bloodied feet, red shoes
+@ husband | Hans | supporting | foil | human | he/him | 38 | His wife back, and the neighbours not looking | He buried the same child | He is ashamed, and ashamed of being ashamed | Gruff, baffled, loyal | From shouting to sweeping the lane and waiting | Short, embarrassed | Cooper's apron, a broom
+@ doctor_wendel | Doctor Lukas Wendel | co-lead | ally | human | he/him | 29 | A cure he can defend | He trained in the best schools and has a theory | The theory is killing people | Earnest, clever, capable of doubt | From prescribing music to begging the council to ban it | Latin terms, then plain speech | Black gown, a urine flask, sleepless eyes
+@ ammeister | Councillor Matthis Reiff | supporting | antagonist | human | he/him | 55 | Order, and a balanced ledger | The city is his charge | Every remedy costs and none works | Decent, managerial, frightened | From hiring pipers to banning them | Committee prose | Fur-trimmed gown, a chain, an abacus
+~ troffea - husband | wife and husband | he orders her to stop | he waits with a broom
+~ troffea - doctor_wendel | patient and physician | a case of hot blood | the first person he actually looks at
+~ doctor_wendel - ammeister | physician and councillor | an agreed remedy | a remedy reversed, too late for some
+# One | EXT | Narrow Lane | DAY | troffea, husband | Begin | She puts down a basket and her feet start. No music. He laughs, then orders, then pulls at her arm. She dances round him | {troffea} begins to dance | 6 | crowd=30, dance
+# One | EXT | Narrow Lane | NIGHT | troffea, husband | Not stop | The sixth night. Torches. A serving girl at a window is swaying. Then she is in the lane | Others join | 5 | crowd=50, dance
+# Four Hundred | INT | Council Chamber | DAY | doctor_wendel, ammeister | Prescribe | Not the stars. Hot blood. The cure is more dancing: clear the halls, hire pipers, pay strong men to keep them up | The city hires a band | 5 | crowd=30
+# Four Hundred | EXT | Horse Market, Stage | DAY | troffea, doctor_wendel, ammeister | Dance it out | A stage like a scaffold. Pipes, drums, four hundred dancers, porters gripping them under the arms. The crowd at the edge begins to nod in time | Music spreads it | 8 | crowd=500, dance, props=stage+pipes and drums
+# Four Hundred | EXT | Horse Market, Stage | DUSK | troffea, doctor_wendel | Try to stop | A child at the rope is swaying. {troffea} fights her own legs to reach her, and cannot. A man beside her falls and is not moving | The first deaths | 6 | crowd=500, dance, stunts=collapse
+# The Shrine | INT | Council Chamber | NIGHT | doctor_wendel, ammeister | Reverse it | The physician begs: no music. The councillor does the sum again. Ban the pipes; pull down the stage; send them to the saint | | 4 | crowd=30
+# The Shrine | INT | Hill Grotto | DAY | troffea, doctor_wendel | Stop | Wagons, three days, red shoes, oil, three circuits of an altar. She sits. She takes the shoes off. She sleeps | The dancing stops | 6 | crowd=120, dance, props=red shoes
+# The Shrine | EXT | Narrow Lane | DAY | troffea, husband | Come home | Autumn. He is sweeping. Next door a fiddler tunes for a wedding. They both stand very still | | 4 | props=broom
+review: authored | 2026-11-12 | written whole; drawn from a dancing epidemic of 1518, with the first dancer's recorded name and invented people around her

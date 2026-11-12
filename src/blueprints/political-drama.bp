@@ -1,0 +1,37 @@
+// Political Drama: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== political-drama.f01 | feature | real-time
+title: The Sticker
+genre: political-drama + thriller
+tone: Sleepless, practical and quietly momentous
+era: 1994 | period
+setting: A government printing works, Pretoria | real | workplace
+logline: Seven days before South Africa's first democratic election, a party that had boycotted it agrees to stand, and a print-shop manager must add its name to eighty million ballot papers that are already printed.
+premise: The ballots are done, boxed and on lorries. Late on a Tuesday the last holdout party joins the election, on condition that it appears on every paper. There is no time to reprint. {thandi}, night manager of the works, proposes the only thing a printer would think of: a sticker, at the bottom of each ballot, applied by hand.
+synopsis: {thandi} has run the night shift for six years under a white foreman, {kobus}, who has printed every apartheid-era form the state required and is very good at his job. The film is the week. The electoral commission's man, {farouk}, wants to know if it can be done and what it needs: paper stock, gum, a design nobody will challenge in court, and enough hands to place eighty million strips without covering the party above. They print the stickers on three shifts. The second act is distribution and doubt. A bomb goes off in the city. A rumour runs that the stickers are a trick to spoil ballots. {kobus} finds the gum is wrong for the humidity and the strips are curling off; he could say nothing. He stops the line and mixes another. {thandi}'s mother asks why she is working this hard to let those men stand. {thandi} says it is everyone or it is nothing. The strips go out by army helicopter to places with no road. On the night before the vote a district reports its stickers missing; {thandi} and {kobus} drive four hours with the last cartons in the boot of his car, through roadblocks of both kinds, and hand them to an old man, {mkhize}, who is presiding officer of a school with no electricity. In the morning the queue is a mile long. {thandi} places a sticker on her own ballot, crookedly, and votes. {kobus} stands in the same queue, for the first time behind someone.
+question: How much unglamorous work does a miracle rest on?
+themes: logistics as peacemaking; craft across a divide; inclusion as a physical act
+audience: Adults; students of the period
+viewpoint: Between {thandi} and {kobus}; the great men are voices on a telephone
+stakes: The legitimacy of the election in one province, a civil war that many expect, and whether two colleagues can be colleagues
+conflict: A deadline and a country's suspicion against a print shop that happens to be good at what it does
+ending: The stickers reach the last station by car boot. The queues form. Both of them vote.
+experience: The tension of a production line, relief that keeps being postponed, and a dawn that earns its tears
+look: Sodium light, guillotines and pallets; curling paper strips; a dawn queue across red earth
+sound: Presses, radios in three languages, tape guns. Then birds and shuffling feet.
+m: create | time | order-vs-change | triumph
+@ thandi | Thandiwe Nkosi | lead | protagonist | human | she/her | 34 | Every ballot complete by Wednesday | Her father never voted in his life | A week, and a foreman who has never taken an order from her | Calm, exacting, funnier than she lets on | From night manager to the person the commission telephones | Brisk, switches languages mid-sentence | Dust coat, pencil behind her ear
+@ kobus | Kobus Venter | co-lead | deuteragonist | human | he/him | 57 | A job done properly, whatever the job | He has printed for one state and now prints for its end | He could let it fail by saying nothing | Proud, gruff, honest about paper | From foreman to colleague to voter in a queue | Afrikaans-accented, technical, few words | Grey overall, ink-black nails
+@ farouk | Farouk Hendricks | supporting | ally | human | he/him | 45 | An election nobody can contest | He has been promising the impossible for a year | He does not know how printing works | Charming, exhausted, straight when it matters | From asking if it can be done to getting out of the way | Lawyerly, quick, apologises a lot | Suit slept in, three pagers
+@ mkhize | Baba Mkhize | featured | none | human | he/him | 72 | To open his station at seven | He has waited longer than anyone in the film | His stickers never came | Formal, unhurried, immovable | Unchanged; he is the reason | Slow isiZulu courtesy | Sunday jacket, a hurricane lamp
+~ thandi - kobus | manager and foreman | she nominally outranks him | he stands behind her in a queue
+~ thandi - farouk | printer and commissioner | he asks if it is possible | he asks what she needs
+~ kobus - mkhize | printer and presiding officer | strangers at a school door | cartons handed over, a hat lifted
+# Tuesday | INT | Printing Works, Night Office | NIGHT | thandi, farouk, kobus | Take the call | The party is in. Eighty million papers are already boxed. {thandi} tears a strip from a label roll and lays it on a ballot | The sticker is proposed | 5 | props=ballot papers+label roll+telephone
+# Tuesday | INT | Printing Works, Press Hall | NIGHT | thandi, kobus | Print | Plates made by two, presses running by four. {kobus} checks the register without being asked | | 4 | crowd=40, props=printing presses+sticker sheets
+# The Week | INT | Printing Works, Finishing Room | DAY | kobus, thandi | Stop the line | The strips are curling in the damp. {kobus} could keep quiet. He hits the stop and starts mixing gum | {kobus} saves the job | 5 | crowd=40, props=gum pots+curling stickers
+# The Week | EXT | Airfield Apron | DAY | thandi, farouk | Send them | Cartons into army helicopters. A radio reports a bomb in the city. Nobody stops loading | | 4 | crowd=30, vehicles=helicopters+lorries
+# The Night Before | INT/EXT | Kobus's Car, Provincial Road | NIGHT | thandi, kobus | Drive | The last cartons in the boot. Two roadblocks, one of each kind. They speak, eventually, about their fathers | | 6 | vehicles=saloon car, props=cartons
+# The Night Before | EXT | Rural School, Doorway | DAWN | thandi, kobus, mkhize | Deliver | {mkhize} is waiting with a lamp. He counts the cartons, signs, and lifts his hat to both of them | The last station is complete | 4 | props=hurricane lamp+cartons
+# Election Day | EXT | Rural School, Queue | DAY | thandi, kobus, mkhize | Vote | A mile of people. {thandi} sticks the strip on crooked and votes. {kobus} waits his turn behind a woman with a baby | | 4 | crowd=500
+review: authored | 2026-11-12 | written whole; drawn from the ballot stickers of April 1994, with invented people

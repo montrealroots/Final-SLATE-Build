@@ -9,20 +9,17 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#75 (the source-material catalog, the option on a work, a casting
-  director and a line producer who do paid work, three stories), squash-merged as `8e48876` on November 12, 2026, CI
-  green on its final commit (`checks` and all six journeys runs). Before it that day: #74 as `5388c46`, #73 as
-  `c1cab0e`, #72 as `b1c8343` (the phone overhaul's first part, pictures for the whole catalog); and #71 (Creative
-  Depth, milestones F, G and H) as `1f5cb1f`.
-- **Open when this was written (November 12, 2026, 15:30 UTC):** montrealroots/Final-SLATE-Build#76: representation,
-  a cinema run's weeks and the record book, four stories, the start screen no longer moving Continue Creation, the
-  rest of the adaptation loop (V3-A06), the coverage walk reaching the two rule dialogs, the ledger's suites and the
-  owed rows in `requirements.csv`. Its first head, `290a491`, had `checks` green and its journeys still running when
-  the later commits were pushed on top, which restarted CI. **Merge it only when `checks` and all six journeys runs
-  are green on its newest head** (squash, with that head as the expected sha), then confirm
-  `git diff --quiet <that head> origin/main`, merge `origin/main` back with `-s ours`, and push. Locally, before the
-  push, `npm run check` passed with 1,022 tests and `e2e/sources.spec.ts` 9 of 9 on desktop, phone and WebKit; the
-  later commits had not been through CI.
+- **Latest merge:** montrealroots/Final-SLATE-Build#76 (representation, a cinema run's weeks and the record book,
+  weekly audiences, the rest of the adaptation loop, four stories, the start screen no longer moving Continue
+  Creation), squash-merged as `7fcf9d2` on November 12, 2026, with `checks` and all six journeys runs green on its
+  final commit `cf5367d`. Before it that day: #75 as `8e48876` (the source-material catalog, the option on a work,
+  a casting director and a line producer who do paid work), #74 as `5388c46`, #73 as `c1cab0e`, #72 as `b1c8343`
+  and #71 as `1f5cb1f`.
+- **Open when this was written (November 12, 2026, 16:30 UTC):** the pull request after #76, which holds stories
+  only: 45 new films, one for each of 45 genres that had none, and the regenerated counts. No code changed in it.
+  **Merge it only when `checks` and all six journeys runs are green on its newest head** (squash, with that head as
+  the expected sha), then confirm `git diff --quiet <that head> origin/main`, merge `origin/main` back with
+  `-s ours`, and push.
 - **The package's eight milestones are all merged.** What it leaves undone is listed in one place:
   `docs/creative-depth/COVERAGE.md`, "Not Done, In One Place". Nothing is open on this branch.
 - **CI, from November 12, 2026:** `.github/workflows/ci.yml` has two jobs. `checks` is everything without a browser.
@@ -88,6 +85,16 @@ has a row for each requirement built or owed.
   (`docs/v3/BLUEPRINT-FORMAT.md`). After writing a batch: `V3_WRITE=1 npx vitest run tests/v3-content.test.ts`, read
   `docs/v3/SIMILAR-STORIES.md`, fix what it finds, and commit the files with the regenerated counts. Never count a
   story that is another with the names changed.
+  **The owner's instruction of November 12, 2026: keep the target at 14,900, and draw on the whole of history.** Each
+  story since then starts from a different piece of the record (an event, a trial, a voyage, a legend in the public
+  domain) and is an original story about it: never a retelling of a protected work, never a plot from the film
+  catalog. Its review line says what it was drawn from. People are given invented names unless what the story shows
+  them doing is what the record says they did. A time before the year 1000 is written `era: - | period` with the
+  century in the setting line, because a story's year must be 1000 to 2200. Write first for the genres that have no
+  story: `docs/v3/CONTENT-COUNTS.md` lists every genre with its count. As of this writing 56 genres have one story
+  (52 a film; Comedy, Legal Drama, Medical Drama and Nordic Noir a series) and 93 have none; the nonfiction formats among those 93 (documentary, nature documentary, docudrama, rockumentary, concert
+  film, mockumentary, true crime) need the documentary fields or a real case told as the record has it, so read
+  `docs/v3/BLUEPRINT-FORMAT.md` before starting one.
 - **Pictures: gathered, packed and installable.** All 313,671 published pictures are in `.screen-images/` in the
   build container and packed in `packs/pictures/` (`pictures.mjs pack`), neither in the repository. A new container
   has neither: `inventory`, then `NODE_USE_ENV_PROXY=1 node tools/screen-catalog/pictures.mjs fetch --minutes=112`
@@ -154,7 +161,7 @@ has a row for each requirement built or owed.
   (V3-C12); the schedule built from each filming place's calendar and child rules (V3-D01); more companies (V3-W01);
   ideas for the script fields that have none (V3-S10: 23 controls in `docs/creative-depth/FIELD-INVENTORY.csv` marked
   "Not yet", which need written ideas by genre family, not code); a career journey through everything the package
-  added (V3-Z01); and stories, which are the long pole (11 of 14,900, 1 mixed).
+  added (V3-Z01); and stories, which are the long pole (56 of 14,900, 1 mixed; `docs/v3/CONTENT-COUNTS.md` is the count).
 - **Things learned today that save time:** Playwright compiles a spec file once at the start of a run, so editing a
   spec while a run is going changes nothing in that run. Editing anything under `src/` while a dev-server run is going
   reloads the page under the journeys and fails them. Read a saved game in a journey with `expect.poll`: the save is

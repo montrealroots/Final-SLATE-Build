@@ -1,0 +1,37 @@
+// Spy: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== spy.f01 | feature | three-act
+title: The Decipherer's Apprentice
+genre: spy + historical-drama
+tone: Candlelit, clever and morally cold
+era: 1586 | period
+setting: London, and a moated house in Staffordshire | real | city
+logline: A printer's daughter recruited to break a captive queen's cipher discovers that her master is not waiting to read a plot but helping to write one.
+premise: Letters leave the house hidden in beer barrels. They are opened, copied, deciphered and sealed again before the beer is flat. {agnes} can see patterns the way other people hear tunes, and {phelippes}, the Secretary's decipherer, needs a second pair of eyes. The letters speak of rescuing a queen. They do not, yet, speak of killing one.
+synopsis: {agnes} sets type in her father's shop and reads proof backwards; {phelippes} finds her by the errors she corrects in a banned pamphlet. Her first act is apprenticeship: frequency tables, nulls, the symbols for names, and the forger {gregory}, who can lift a seal with a hot knife and lay it back. She is good, and she likes being good. The second act is the correspondence. A young gentleman, {babington}, writes to the captive queen with a plan, vain and vague. The reply, when it comes, is careful. {agnes} breaks it in a night and brings it to {phelippes}, who draws a gallows on the copy and is pleased. Then he dictates a postscript, in the queen's cipher, asking for the names of the six gentlemen who will do the deed, and has {gregory} add it in her hand. {agnes} sets the symbols herself. She has not uncovered a conspiracy; she has completed one. The third act is what she does with that. She tries to warn {babington} through the only channel she has, the barrels, with a null he does not know how to read. He answers eagerly and names the six. She watches them taken. {phelippes}, who is not a monster, tells her that the realm is safer and that this is what the work is. He offers her a pension and a room. She takes the alphabet she made, the one thing that is hers, and burns it in her father's forme. Then she goes back to setting type, where a wrong letter can be corrected.
+question: If you are the only one who can read the evidence, are you responsible for what is added to it?
+themes: skill as complicity; the state's appetite for certainty; honest work
+audience: Adults who like espionage without gadgets
+viewpoint: With {agnes}; the great are seen only as handwriting
+stakes: A queen's head, six men's lives, and what {agnes}'s gift is going to be used for
+conflict: A gifted apprentice against a master who is right about the danger and wrong about the means
+ending: The plot she helped manufacture succeeds. She refuses the pension and burns her alphabet.
+experience: The click of a code breaking, then the slower chill of understanding what it was for
+look: Wax, vellum, candle soot; symbols filling the frame; daylight only in the printing shop
+sound: Quills, a seal cracking, type dropped into a stick. Lute music from another room, never seen.
+m: understand | institution | loyalty-vs-truth | defeat
+@ agnes | Agnes Vautrollier | lead | protagonist | human | she/her | 22 | To be used at the top of her ability | Nobody has ever needed what she can do | What she can do hangs people | Exact, proud, slow to see malice | From delight in the work to refusing it | Quick, technical, a Huguenot's careful English | Ink to the wrists, composing stick in her apron
+@ phelippes | Thomas Phelippes | co-lead | antagonist | human | he/him | 30 | The proof his master needs | He believes the realm will not survive a second queen | The letters are one sentence short of treason | Brilliant, mild, entirely convinced | Unchanged, and kind about it | Soft, short-sighted, speaks to the page | Pockmarked, yellow-haired, spectacles on a ribbon
+@ gregory | Arthur Gregory | supporting | foil | human | he/him | 40 | To do the neatest work in England and not ask | He was a forger before he was a servant of the Crown | He knows exactly what the postscript is | Craftsman's pride, craftsman's silence | From jokes to not meeting her eye | Cheerful, West Country, hums while lifting a seal | Knife roll, wax-burned thumbs
+@ babington | Anthony Babington | supporting | none | human | he/him | 24 | To be the hero of something | He was a page in the captive queen's household | He cannot read a warning | Charming, careless, doomed | From conspirator to a name on a list | Verse-quoting, breathless | Fine doublet, a miniature at his neck
+~ agnes - phelippes | apprentice and master | a gift recognised | a pension refused
+~ agnes - gregory | the two craftsmen of the room | easy shop talk | a seal laid down between them in silence
+~ agnes - babington | decipherer and the man she reads | a hand she knows better than her own | a warning he answers with six names
+# The Alphabet | INT | Vautrollier's Printing House | DAY | agnes, phelippes | Find her | {phelippes} lays a pamphlet on the stone and asks who corrected the errors in it. She reads it to him backwards | {agnes} is recruited | 4 | props=type cases+proof sheets
+# The Alphabet | INT | Decipherer's Chamber | NIGHT | agnes, phelippes, gregory | Learn the trade | Tables of symbols; {gregory} lifts a seal with a hot blade. She breaks her first line before the candle gutters | | 5 | props=cipher tables+wax seals+candles
+# The Letters | EXT | Brewer's Yard, Staffordshire | DAWN | gregory, agnes | See the channel | A barrel, a bung, a leather packet. It is in their hands, copied and back before the dray is loaded | | 4 | props=beer barrels+leather packet, vehicles=dray
+# The Letters | INT | Decipherer's Chamber | NIGHT | agnes, phelippes | Break the reply | She has it by dawn. {phelippes} draws a small gallows in the margin and smiles like a man shown a proof | | 5 | props=deciphered letter
+# The Letters | INT | Decipherer's Chamber | NIGHT | agnes, phelippes, gregory | Add a sentence | He dictates a postscript in the queen's cipher. {gregory} writes it in her hand. {agnes} supplies the symbols | {agnes} helps forge the proof | 6 | props=forged letter
+# The Reckoning | INT | Babington's Lodging | NIGHT | babington | Miss the warning | He reads the postscript, sees nothing odd in a stray null, and writes six names with a flourish | The six are named | 3 | props=letter+quill
+# The Reckoning | INT | Vautrollier's Printing House | DAWN | agnes, phelippes | Refuse | He offers a pension and a room. She puts her alphabet in the forme and holds a candle to it, then picks up her composing stick | {agnes} leaves the work | 5 | props=cipher alphabet+candle
+review: authored | 2026-11-12 | written whole; drawn from the intercepted letters of 1586, with an invented apprentice among recorded names

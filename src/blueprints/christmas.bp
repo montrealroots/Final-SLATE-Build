@@ -1,0 +1,37 @@
+// Christmas: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== christmas.f01 | feature | three-act
+title: For Two Voices And Guitar
+genre: christmas + family
+tone: Snowbound, modest and glowing
+era: 1818 | period
+setting: A salt-barge village on a river border in the Alps | fictional | village
+logline: On Christmas Eve the church organ in a poor river village will not play, and a young assistant priest with a poem in his pocket walks through the snow to ask the schoolmaster whether he can write a tune for it by midnight, for a guitar.
+premise: The wars are over and have left a new border down the middle of the river; half the village is now abroad. The barge trade is dying. The organ has been failing for years and the damp has finished it. {father_josef}, born out of wedlock and never quite forgiven for it, wrote six verses two years ago and has shown them to no one. A guitar is a tavern instrument. His superior will not like it.
+synopsis: The film is one day. Morning: the bellows wheeze, a key sticks, a mouse runs out of the pipes. The parish priest {father_albrecht}, old and disapproving of his curate's fondness for singing with bargemen, says they will have a spoken mass and be done. {father_josef} thinks of the children. He walks three kilometres along the frozen river to the next village, where {franz}, schoolmaster and organist, lives over the schoolroom with a new wife and too many pupils. On the way the film shows what the song will be sung to: a bargeman's widow, {anna_m}, with a lodger's baby she is minding and no wood; boatwrights laid off; a customs post where yesterday there was none. Afternoon: the schoolroom. {franz} reads the six verses at his desk and says he needs an hour. He writes a melody in the rocking metre of a barge song, two voices in thirds, nothing a child could not sing. Evening: back along the river with the ink still damp. Rehearsal in the sacristy with the choir children, who learn it by ear in three goes. {father_albrecht} forbids a guitar before the altar. {father_josef}, who has obeyed all his life, says they will sing it after mass, then, by the crib. Midnight: the mass is said. Then two men stand in front of a wooden nativity, one with a guitar on a green ribbon, and sing six verses, the choir repeating the last line of each. Nobody in the church knows that anything has happened. The widow hears it from the porch with the baby asleep. An organ mender comes in the spring, asks what they sang at Christmas with the thing broken, and carries a copy over the mountains in his pack. The last image is the page, unsigned, in a bundle of other papers on a cart.
+question: What can be made in an afternoon out of what a poor place has?
+themes: making do as grace; the humble instrument; a gift that leaves its makers behind
+audience: Families; all ages
+viewpoint: With {father_josef}, on foot
+stakes: A village's one bright night in a hard year, and a diffident man's nerve
+conflict: A broken organ, a disapproving superior and twelve hours against a curate and a schoolmaster with a poem and a guitar
+ending: The song is sung once, by the crib, to a village that finds it pleasant. An organ mender takes it away in the spring.
+experience: Cold feet and warm rooms, the pleasure of watching a thing made, and a quiet tightening of the throat
+look: Blue snow dusk, candlelit plaster, a carved crib; frost on a barge's ropes; a guitar on a green ribbon
+sound: A dead organ's wheeze; a walk's worth of small sounds; then two men's voices and six strings, entire
+m: create | time | order-vs-change | triumph
+@ father_josef | Father Josef | lead | protagonist | human | he/him | 26 | A song for the children at midnight | He knows what it is to be a child the church frowns at | The organ is dead and the guitar is forbidden | Warm, musical, unassertive | From obedience to one quiet refusal | Soft, laughs easily | Patched cassock, a guitar, a folded poem
+@ franz | Franz | co-lead | ally | human | he/him | 31 | To do it well, quickly | He likes the curate and a problem | He has an hour | Methodical, cheerful, overworked | From favour to the making of his life, unknown to him | Schoolmaster's clarity | Chalky cuffs, a quill behind his ear
+@ father_albrecht | Father Albrecht | supporting | antagonist | human | he/him | 64 | A seemly mass | He has standards and little else | The parish prefers the curate | Dour, lonely, correct | From forbidding to standing at the back, listening | Reproofs | Black biretta, a cold in the head
+@ anna_m | Anna | supporting | none | human | she/her | 45 | Wood, and the baby quiet | The barge trade took her husband and then went itself | It is Christmas Eve and the stove is out | Tired, tart, tender | From a door half opened to the porch at midnight | Dialect, few words | Shawl, wooden shoes, a child on her hip
+~ father_josef - franz | poet and composer | a favour asked at the schoolroom door | two voices in thirds
+~ father_josef - father_albrecht | curate and superior | a lifetime of yielding | "after the mass, then"
+~ father_josef - anna_m | priest and parishioner | a basket of wood left at a door | she is the one the song is for
+# Morning | INT | Church, Organ Loft | DAY | father_josef, father_albrecht | Find it dead | Bellows wheeze. A key sticks. A mouse. The old priest says: a spoken mass. The curate looks down at the crib the children built | The organ fails | 5 | props=organ, animals=mouse
+# Morning | EXT | Frozen River Path | DAY | father_josef, anna_m | Walk | Three kilometres. A widow with no wood and someone else's baby. A customs hut on a river that had none. He leaves his own lunch and goes on | | 5 | vfx=snow, props=customs barrier
+# Afternoon | INT | Schoolroom | DAY | father_josef, franz | Ask | Six verses, two years old, never shown. For two voices and guitar. By tonight. {franz} reads them twice and asks for an hour | {franz} agrees | 5 | props=poem
+# Afternoon | INT | Schoolroom | DAY | franz | Write it | A desk, a quill, a rocking six-eight he has heard the bargemen sing. He tries it under his breath. He blots it | The melody is written | 5 | props=manuscript
+# Evening | INT | Sacristy | NIGHT | father_josef, franz, father_albrecht | Rehearse and be forbidden | Children learn it in three goes. The old priest: not before the altar, not with that. The curate, after a moment: after the mass, then. By the crib | He stands his ground | 6 | crowd=12, props=guitar
+# Midnight | INT | Church, By The Crib | NIGHT | father_josef, franz, father_albrecht, anna_m | Sing it | Two men, a guitar on a green ribbon, six verses. The children take up the last lines. At the back the old priest has stopped coughing. In the porch a baby sleeps | The song is sung | 7 | crowd=150, props=guitar+carved crib
+# Midnight | EXT | Church Door, Spring | DAY | franz | Give it away | An organ mender with his tools asks what they did at Christmas. A copy goes into his pack, unsigned, and over the pass | | 3 | props=manuscript
+review: authored | 2026-11-12 | written whole; drawn from the first singing of a carol in an Alpine village in 1818, with the makers' given names

@@ -1,0 +1,40 @@
+// Gothic Horror: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== gothic-horror.f01 | feature | three-act
+title: The Keening
+genre: gothic-horror + historical-drama
+tone: Wet, candlelit and accusing
+era: 1847 | period
+setting: A landlord's house in County Mayo | fictional | home
+logline: In the worst winter of the famine, the land agent's daughter begins to hear a woman crying outside the big house on the night before each eviction, and to find the ledger open at a name she did not turn to.
+premise: The estate is owed two years' rent by people who are eating grass. {constance}'s father, the agent, has orders from an absentee owner to clear the townlands for sheep. The house is full of food. Each time a family is to be put out, a woman's voice keens under the windows before dawn, and only {constance} and the servants admit to hearing it.
+synopsis: {constance} keeps the rent ledger because her handwriting is better than her father's. The first act is the house's comfortable blindness and the first cry. The housekeeper {brigid} says it is the bean si, who cries for the great families when a death is near; she does not say which family. {constance}'s father {mr_hartley} calls it wind and tenants' tricks. The second act is a haunting done by accounts. The ledger is found open each morning at the next name. A cabin they have tumbled is standing again by night, lit, and empty by day. {constance} rides out with the bailiffs and sees what the columns mean: a roof pulled down with a rope while children watch. She begins altering the book, crediting rents nobody paid. The crying stops for a week. Then the owner's auditor {pym} arrives, pleasant and precise, and the crying begins inside the house. Soup, bread and meat spoil overnight. A woman in a grey cloak is seen combing her hair on the back stair, and has {constance}'s own face, older. The third act is the truth of the tale: the keener does not cry for the tenants. She cries for the house, as she always has, because it is the house that is going to die. {mr_hartley} will not stop; {pym} has the dragoons called for the largest clearance yet. On that night {constance} opens the stores and the gates. The house is stripped by morning by quiet, orderly people. Her father is found in the rent office with the ledger, every page of it blank. {constance} leaves with {brigid} on the road to the port. Behind them the house is still standing and nobody will ever live in it.
+question: When a wrong is done in your name, in your handwriting, is the ghost haunting them or you?
+themes: complicity by bookkeeping; whom the old stories serve; a house as a moral fact
+audience: Adults who like their horror historical
+viewpoint: With {constance}, inside the house looking out
+stakes: Hundreds of tenants' lives, her father's soul, and whether she is the next keeper of the book
+conflict: A daughter's conscience against her father, the owner's law and a ledger that seems to have its own opinion
+ending: She empties the stores to the starving and walks away. The agent is destroyed with his book. The house stands empty for good.
+experience: Dread that is mostly shame, a few images that stay under the skin, and a harsh kind of relief
+look: Candle on damp plaster, rain on tall windows, fields of stones; white linen and black peat smoke
+sound: A voice outside, wordless, rising and falling. Pens. Rope under strain.
+m: atone | past | justice-vs-mercy | pyrrhic
+@ constance | Constance Hartley | lead | protagonist | human | she/her | 22 | For it to stop | She writes the names | Stopping it means betraying her father | Dutiful, clever, frightened of her own compliance | From clerk to forger to the one who opens the gates | Careful English; a few Irish words she is ashamed to know | Grey wool, ink-stained cuff, keys at her belt
+@ mr_hartley | Edmund Hartley | supporting | antagonist | human | he/him | 58 | To do his duty to the estate and keep his place | He has a family and no land of his own | He knows what he is doing | Upright, frightened, self-excusing | From denial to a room of blank pages | Reasonable, clipped, quotes the lease | Riding coat, a cough he hides
+@ brigid | Brigid Ni Mhaille | co-lead | mentor | human | she/her | 60 | To see the girl out of it | She nursed her | She knows the tale and what it means for this house | Wry, patient, unafraid | From hinting to telling to walking beside her | Mayo English over Irish; proverbs with teeth | Black shawl, bare forearms, a bunch of rushes
+@ pym | Mr. Septimus Pym | supporting | foil | human | he/him | 40 | Accounts that balance | It is his profession | The book has been altered and he can see it | Courteous, exact, bloodless | Unchanged; he leaves by the first coach | Gentle, numerical | Travelling cloak, spectacles, a portable desk
+@ keener | The Grey Woman | featured | none | supernatural | she/her | - | To cry the house's death | It is what she is for | Nobody hears what she is saying | Neither kind nor cruel | Unchanged; she stops when it is done | Wordless | Grey cloak, long hair, a comb
+~ constance - mr_hartley | daughter and father | his clerk | his judge
+~ constance - brigid | young mistress and housekeeper | a nurse's licence to speak | two women on a road
+~ constance - keener | the living daughter and the house's mourner | a voice outside | her own face on the stair
+~ mr_hartley - pym | agent and auditor | deference | a book that will not balance
+# The First Cry | INT | Rent Office | DAY | constance, mr_hartley | Write the names | She copies the list for Thursday's clearance in a fair hand. Her father blots it and praises her hand | | 4 | props=rent ledger+quill
+# The First Cry | INT | Constance's Bedroom | NIGHT | constance, brigid, keener | Hear it | A woman's voice under the window, rising and falling. {brigid}, in the door with a candle, says its name and does not say for whom | The keening begins | 5 | vfx=figure in rain
+# The Ledger | EXT | Townland Of Cloonagh | DAY | constance, mr_hartley | See what the column means | Bailiffs, a rope, a roof coming down. A woman sits on the ditch and says nothing. {constance} holds the list | | 6 | crowd=40, stunts=roof pulled down, animals=horses
+# The Ledger | INT | Rent Office | NIGHT | constance | Forge mercy | The book is open at the next name. She dips the pen and writes "paid" | {constance} falsifies the rents | 4 | props=rent ledger
+# The Ledger | INT | Dining Room | NIGHT | constance, mr_hartley, pym | Be audited | {pym} carves, praises the mutton and remarks on a curious pattern in October. The meat on the dish is green by the time he sets down the knife | The haunting comes indoors | 6 | vfx=food spoiling, props=dinner service+portable desk
+# The House's Death | INT | Back Stair | NIGHT | constance, keener, brigid | See her face | A woman combing grey hair on the stair turns: {constance}, at sixty. {brigid}, behind her, says: she cries for the house, child. She always did | {constance} understands whose death it is | 5 | vfx=apparition
+# The House's Death | EXT | Stable Yard And Gates | NIGHT | constance, brigid | Open everything | Keys in every lock. The stores, then the gates. A long silent line of people, carrying | The stores are given away | 6 | crowd=200, props=keys+grain sacks
+# The House's Death | INT | Rent Office | DAWN | mr_hartley, pym, constance | Read the book | Her father at the desk, turning blank pages. {pym} closes his portable desk and orders the coach. On the road, two women do not look back | | 4 | props=blank ledger
+review: authored | 2026-11-12 | written whole; drawn from the famine clearances and the bean si of Irish tradition, with invented people

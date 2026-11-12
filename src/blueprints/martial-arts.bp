@@ -1,0 +1,39 @@
+// Martial Arts: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== martial-arts.f01 | feature | three-act
+title: Roda
+genre: martial-arts + historical-drama
+tone: Percussive, sly and defiant
+era: 1890 | period
+setting: The docks and hill quarters of Rio de Janeiro | real | city
+logline: The year the new republic makes capoeira a crime punishable by exile, a dockworker who is the best fighter in his gang must decide whether the art survives by going underground or by learning to look like a dance.
+premise: Slavery was abolished two years ago. The republic's first penal code names one practice of the freed by name: to be seen doing "agility exercises known as capoeiragem" is six months on a prison island. The police chief means to clear the streets. {canario}, a stevedore, has never lost in the circle. His gang wants him to fight the police. An old woman wants him to teach her grandchildren.
+synopsis: The first act is the art in the open: a ring of men on a quay at dusk, one stringed bow, two players moving as if joking, until one is on his back. {canario} is quick, vain and loyal to the gang that fed him. The decree is read. That week the chief, {vidal}, raids the docks with cavalry; men are shipped to the island without trial. The second act is two futures. The gang's captain, {quincas}, hires out to politicians as election muscle and wants razors in the game; that way lies money, and the island. {tia_bibiana}, who runs a house on the hill where there is always drumming on a saint's day, has another idea: play slower, play to music, call it a dance, do it in her yard with the gate open and the police welcome to watch. {canario} thinks this is surrender. He fights {vidal}'s best man in an alley and wins, and three of his friends are deported for it. In the yard, a girl of ten, {dora}, is better than any of them at the one thing he never learned: getting out of the way. He begins to see that the game is the opposite of a brawl; it is how not to be where the blow lands, for three hundred years. In the third act {vidal} comes to the yard on a feast day to arrest him. He is invited in. A circle forms, the bow starts, and {canario} plays the chief's sergeant with the whole street watching: never strikes, is never touched, and ends with the man on the ground laughing in spite of himself. There is no law against a dance. {vidal} knows exactly what he has seen and goes away. {quincas} is on the island by Christmas. The last shot is {dora}, grown, in a ring of her own.
+question: Is it still resistance if it survives by smiling?
+themes: disguise as strategy; who inherits an art; the fight you win by not being hit
+audience: Adults and teenagers; martial-arts fans who want history with it
+viewpoint: With {canario}; fights are filmed whole, in the circle, without cuts to hide them
+stakes: Exile for anyone caught, the soul of an art, and the children in a yard
+conflict: A fighter's pride against a state that has outlawed his body, and against the two ways his own people offer to survive it
+ending: He beats the law by dancing in front of it. The street fighters are deported; the yard goes on.
+experience: The joy of bodies doing the impossible, anger with somewhere to go, and a final bout that is all wit
+look: Dusk on wet quays, white clothes kept clean in a fight, a hill yard strung with paper flags
+sound: One berimbau, hand claps, call and answer. Hooves on cobbles when the cavalry comes.
+m: keep | system | order-vs-change | triumph
+@ canario | Canario | lead | protagonist | human | he/him | 24 | To stay unbeaten and unowned | The circle is the only place he is somebody | What he is good at is now a crime | Vain, funny, fearless, slow to think ahead | From brawler to the art's best disguise | Dock slang, sung boasts | White suit, bare feet, a razor he stops carrying
+@ tia_bibiana | Tia Bibiana | co-lead | mentor | human | she/her | 46 | The children safe and the old ways alive | She has kept a house open through worse | The young men think patience is cowardice | Regal, shrewd, hospitable as a tactic | From offering him a way to watching him take it | Bahian warmth, gives orders as invitations | White lace, beads, a turban
+@ vidal | Chief Honorio Vidal | supporting | antagonist | human | he/him | 43 | Clean streets for the republic | He believes order is progress | The law names a thing he cannot define | Efficient, vain, not stupid | From raids to a silent withdrawal | Clipped, official | Uniform, kid gloves, a riding crop
+@ quincas | Quincas | supporting | rival | human | he/him | 35 | The gang paid and feared | He remembers being property | His road ends on an island | Hard, generous to his own, done with patience | From captain to deportee | Low, threatening, loyal | Hat tilted, a razor in the hatband
+@ dora | Dora | featured | foil | human | she/her | 10 | To play | Nobody has told her she cannot | She is small | Fearless, quick, amused by adults | From pupil to inheritor | Giggles; sings the responses | Cotton dress, cartwheels everywhere
+~ canario - tia_bibiana | fighter and matriarch | he calls it surrender | he plays in her yard
+~ canario - quincas | best man and captain | loyalty | a razor handed back
+~ canario - vidal | outlaw and police chief | prey | a performance the chief cannot arrest
+~ canario - dora | champion and child | she is underfoot | she teaches him to not be there
+# The Decree | EXT | Quay, Dusk | DUSK | canario, quincas | Play in the open | A ring, a bow, two men joking with their feet until one is down. Coins. Laughter. A paper is being nailed to the customs house door | The art is outlawed | 6 | crowd=60, stunts=capoeira game, props=berimbau
+# The Decree | EXT | Dock Street | NIGHT | canario, quincas, vidal | Be raided | Cavalry down a narrow street. {canario} goes over a wall. Twelve men go to the island | | 6 | crowd=50, animals=horses, stunts=street fight and wall escape
+# Two Roads | INT | Tavern Back Room | NIGHT | canario, quincas | Be offered razors | A politician's money on the table. {quincas} wants blades in the game and votes delivered. {canario} takes the coin | | 4 | props=razor+coins
+# Two Roads | EXT | Tia Bibiana's Yard | DAY | canario, tia_bibiana, dora | Be shown a dance | Drums for a saint. She has the children play slow, to music, gate open. He scoffs. {dora} sweeps him without touching him | {canario} is put on the ground by a child | 6 | crowd=40, dance, stunts=capoeira game, props=drums+paper flags
+# Two Roads | EXT | Alley | NIGHT | canario | Win the wrong way | He beats the chief's best man, fair, in an alley. By morning three friends are on the boat for it | His victory costs three men | 5 | stunts=alley fight
+# The Feast | EXT | Tia Bibiana's Yard | DAY | canario, tia_bibiana, vidal, dora | Play the law | The chief comes to arrest him and is offered a chair. The bow starts. {canario} plays the sergeant: never strikes, never touched. The man ends on his back, laughing | The art survives as a dance | 8 | crowd=120, dance, stunts=capoeira game, props=berimbau
+# The Feast | EXT | Quay | DAWN | quincas, canario | See him off | {quincas} in irons at the prison boat. {canario} hands him back the razor, closed | | 3 | water, crowd=20
+review: authored | 2026-11-12 | written whole; drawn from the criminalising of capoeira in 1890, with invented people

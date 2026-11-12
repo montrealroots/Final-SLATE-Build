@@ -1,0 +1,36 @@
+// Thriller: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== thriller.f01 | feature | real-time
+title: Three To Agree
+genre: thriller + military
+tone: Airless, hot and deafening; decisions made by sweating men
+era: 1962 | period
+setting: A diesel submarine in the Sargasso Sea | fictional | ship
+logline: Cut off from Moscow, out of air and being depth-charged, the captain of a Soviet submarine orders its nuclear torpedo armed; the rules require three officers to agree, and the third has to say no for four hours.
+premise: The boat has been submerged for days in tropical water with failed cooling; it is fifty degrees in the engine room. Above, destroyers are dropping practice charges to force it up, which those below cannot know are practice. The radio has been silent for a week. As far as anyone aboard can tell, the war has started. The torpedo in tube one is not an ordinary torpedo.
+synopsis: The film is one afternoon. {savin}, the captain, is brave, exhausted and certain that a commander who surfaces is a commander who surrenders. {maslov}, the political officer, agrees with him. On any other boat that would be enough. This boat also carries {arkady}, chief of staff of the flotilla, equal in rank to the captain, who is aboard by the accident of which hull he chose in Murmansk. His agreement is required. The first act is the heat and the first salvo; the second is an argument conducted in a control room where men are fainting, in low voices so the crew will not hear their officers disagree. {arkady} has no information the others lack. He has only a different reading of the same sounds: the charges are too small, too regular, and to one side. He has been irradiated once already, on another boat, in an accident he helped contain; he knows what the weapon does and that he is living on borrowed time, which {savin} throws at him as a reason his nerve cannot be trusted. The sonar man, {petya}, nineteen, is the only one who can say what he is actually hearing, and he is terrified of all three of them. The battery has an hour left. {savin} orders the tube flooded. {arkady} does not draw a pistol or make a speech. He asks {petya} one question, in front of everyone: are they hitting us, or are they knocking? In the third act the boat surfaces into searchlights and a jazz band playing on a destroyer's deck, under no flag of surrender, and turns for home. Nobody aboard is thanked. The film's last card says how many people the torpedo would have reached.
+question: What does it take to be the one who says no when no is the only thing you have?
+themes: procedure as the last safeguard; courage without action; the sounds a decision is made from
+audience: Adults who like their suspense real
+viewpoint: Inside the hull throughout; the surface is only sound until the end
+stakes: A carrier group, the boat, and by any reasonable reckoning the northern hemisphere
+conflict: One officer's doubt against a captain's certainty, with no new facts available to either
+ending: The tube is not fired. The boat surfaces to music and goes home in disgrace. The world does not learn why it is still there for forty years.
+experience: Heat you can almost smell, four hours of held breath, and a release that is nearly comic
+look: Red light, condensation, bodies stripped to the waist; faces filling the frame; then a blinding white searchlight
+sound: Charges like hammers on a tank, a failing fan, sonar. Then, impossibly, a saxophone.
+m: protect | person | order-vs-change | triumph
+@ arkady | Captain Arkady Volkonsky | lead | protagonist | human | he/him | 36 | To be sure before anything irreversible | He has seen what the weapon's fuel does to men | He has no proof, only an ear | Mild, slow-spoken, immovable | From guest aboard to the one voice that counts | Quiet, formal, asks questions instead of asserting | Sweat-soaked singlet, burn scars on his forearms
+@ savin | Captain Valentin Savin | co-lead | antagonist | human | he/him | 37 | Not to be the captain who surfaced | He was taught that a boat dies fighting | He may be wrong, and half knows it | Brave, furious, loved by his crew | From giving the order to giving the other one | Parade-ground voice kept low | Stripped to the waist, cap still on
+@ maslov | Ivan Maslov | supporting | foil | human | he/him | 40 | The correct decision, on the record | He will be asked afterwards who agreed | He is out of his depth and knows the doctrine | Dutiful, frightened, not a fool | From seconding the captain to looking at the floor | Slogans, then silence | Uniform shirt buttoned to the neck
+@ petya | Seaman Pyotr Glushko | supporting | ally | human | he/him | 19 | To report what he hears and be believed | He has the best ears in the flotilla | Three senior officers each want a different answer | Scared, honest, stubborn about sound | From stammering to one clear sentence | Barely audible; exact about bearings | Headphones, bitten lip
+~ arkady - savin | equals in rank on one boat | courtesy | an order countermanded without a word of reproach
+~ arkady - petya | senior officer and sonar man | a question asked gently | an answer given aloud to the whole room
+~ savin - maslov | captain and political officer | agreement | one of them stops agreeing
+# The Heat | INT | Submarine, Control Room | DAY | savin, arkady, maslov, petya | Establish the box | Fifty degrees. A man faints at the planes. No signal from Moscow for seven days. Then the first charges, close | The boat is being attacked, or signalled | 6 | water, crowd=20, vfx=depth charge concussion, stunts=crew thrown by blast
+# The Heat | INT | Submarine, Torpedo Room | DAY | savin, maslov | Give the order | {savin} has the special weapon's officer brought forward. {maslov} nods before he is asked | {savin} orders the torpedo armed | 5 | crowd=8, props=torpedo+arming key
+# Three To Agree | INT | Submarine, Captain's Cabin | DAY | arkady, savin, maslov | Withhold | The rule needs three. {arkady} says he is not yet persuaded. {savin} tells him why a dying man's nerve is not to be relied on | | 7
+# Three To Agree | INT | Submarine, Sonar Shack | DAY | arkady, petya | Listen | {arkady} puts on the second headset. Small, regular, off the port side. {petya} will not say what it means with the captain's shadow in the door | | 5 | props=sonar headsets
+# Three To Agree | INT | Submarine, Control Room | DAY | savin, arkady, maslov, petya | Ask the question | An hour of battery. The tube is flooded. {arkady} asks {petya}, aloud: hitting, or knocking? The boy says: knocking | The third officer says no | 7 | water, crowd=20, vfx=depth charge concussion
+# The Surface | EXT | Submarine, Bridge | NIGHT | savin, arkady, petya | Come up | Searchlights. A destroyer alongside, and on its deck a band, playing. {savin} orders a course for home and does not look at anyone | The boat surfaces | 5 | water, crowd=40, vehicles=destroyer, vfx=searchlights at sea
+review: authored | 2026-11-12 | written whole; drawn from a submarine incident of October 1962, with invented people and an invented boat

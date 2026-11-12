@@ -1,0 +1,38 @@
+// Espionage: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== espionage.f01 | feature | three-act
+title: The Housemaid's Memory
+genre: espionage + historical-drama
+tone: Polite, watchful and lethal under the china
+era: 1864 | period
+setting: The executive mansion of the Confederacy, Richmond | real | home
+logline: A freedwoman with a perfect memory is placed as a servant in the Confederate president's house, where she is assumed unable to read the papers she dusts.
+premise: {mary} was freed as a child and sent north to school by {eliza}, a Richmond spinster whom the town thinks merely eccentric. Now {eliza} runs the Union's best ring in the rebel capital and has got {mary} hired as a dining-room servant in the one house that matters. {mary} reads a page once and has it. Her whole cover is that nobody in the house can imagine this.
+synopsis: The first act is the placing. {mary} must act slow: mispronounce, fumble, be scolded by the butler {garland}, who is himself enslaved and has kept this household running for three years by noticing everything. She serves at table while generals unroll maps. At night she recites what she saw to a baker's boy who carries it out in a hollowed egg. The second act is the cost of being good at it. Troop movements she reported are met and men die on both sides of a river; she sees the casualty lists on the same desk. The president's wife, {varina}, clever, lonely and observant, begins talking to the new maid as to furniture, and then as to something closer, and {mary} finds it harder to despise a household whose children she is putting to bed. {garland} works out what she is. He does not expose her and does not help; he tells her that when she is gone it is the people who remain who will be whipped for what she took. A document goes missing from the president's study that she did not take, and suspicion needs somewhere to land. In the third act it lands on {garland}. {mary} can save him only by ending her usefulness. She does the thing a spy must never do: she lets {varina} see her read. One line, aloud, from a newspaper, in the voice she was educated in. Then she walks out of the back door with the kindling basket and keeps walking. {eliza} gets her to the Union lines. The house falls in April. After the war nobody can agree what her real name was, and she prefers it so.
+question: What does it cost to be invisible on purpose among people who made you invisible by law?
+themes: intelligence hidden in plain sight; divided loyalty within the unfree; the price others pay for your courage
+audience: Adults; students of the period
+viewpoint: With {mary}; we see documents as she does, whole and instantly
+stakes: An army's plans, {garland}'s back, and {mary}'s life if her schooling shows
+conflict: A spy's duty to keep taking against her debt to the servants who will answer for it
+ending: She burns her cover to save the butler and escapes. The record of her is left deliberately blurred.
+experience: The thrill of a perfect memory at work, a tightening conscience, and one line read aloud that changes the room
+look: Gilt and gaslight above stairs, whitewash and steam below; pages held a second too long
+sound: Cutlery, a ticking mantel clock, cannon very far off. Her recitations in whisper.
+m: expose | system | loyalty-vs-truth | escape
+@ mary | Mary Bowen | lead | protagonist | human | she/her | 25 | To take everything that desk holds | She was educated for something, and this is it | Those who remain will pay for what she takes | Brilliant, controlled, lonelier than she expected | From perfect instrument to someone who chooses whom to save | Two voices: the slow one she performs and her own | Plain servant's dress, eyes always lowered
+@ eliza | Eliza Vance | supporting | mentor | human | she/her | 46 | The Union restored and slavery ended | She freed her own family's people and was shunned for it | She uses people she loves | Shrewd, odd on purpose, ruthless when needed | From handler to the one who gets her out | Dithering in public, exact in private | Old bonnet, a basket of calf's-foot jelly for prisoners
+@ garland | Garland | co-lead | foil | human | he/him | 52 | To keep the household's people whole until it ends | He has outlasted worse than this | He sees what she is and what it will cost | Dignified, observant, tired | From warning her to being saved by her | Formal, low, never a wasted word | Butler's black, white gloves, a ring of keys
+@ varina | Varina Hale | supporting | antagonist | human | she/her | 38 | Someone to talk to who will not repeat it | She is cleverer than the room allows | She notices things | Witty, restless, kinder than her position | From confiding in a maid to seeing her | Quick, literary, bored | Mourning silk, a book always face down nearby
+~ mary - eliza | agent and handler | a girl sent north to school | a road to the lines at night
+~ mary - garland | new maid and butler | scolding | a debt she pays with her cover
+~ mary - varina | servant and mistress | furniture | one sentence read aloud between equals
+# The Placing | INT | Vance House, Kitchen | NIGHT | mary, eliza | Send her in | {eliza} drills her: slower, duller, drop the tray once. {mary} recites the day's newspaper back to her, page by page, to stop her fussing | {mary} takes the post | 4 | props=newspaper
+# The Placing | INT | Mansion, Dining Room | NIGHT | mary, garland, varina | Serve | Generals and a map among the gravy boats. {mary} pours and looks once. {garland} sees her look | | 5 | crowd=10, props=campaign map+dinner service
+# The Taking | INT | Mansion, Study | DAY | mary | Dust the desk | Six pages. She reads each in the time it takes to lift it and wipe beneath | | 4 | props=dispatches+feather duster
+# The Taking | INT | Mansion, Pantry | NIGHT | mary, garland | Be told the price | He knows. He will not tell and will not help. When she goes, he says, the ones who stay will answer for it | | 6 | props=silver+polishing cloth
+# The Taking | INT | Mansion, Nursery | NIGHT | mary, varina | Be confided in | {varina}, sleepless, talks about a book to a maid she assumes cannot follow. {mary} nearly answers | | 5
+# The Reckoning | INT | Mansion, Hall | DAY | mary, garland, varina | See him accused | A paper is missing that she never took. {garland} is to be sold south at the week's end | Suspicion falls on {garland} | 5 | crowd=8
+# The Reckoning | INT | Mansion, Morning Room | DAY | mary, varina | Read aloud | She picks up the newspaper and reads one line in her own voice. {varina} understands everything, about both of them | {mary} burns her cover | 6 | props=newspaper
+# The Reckoning | EXT | Richmond, Back Lane | DUSK | mary, eliza | Go | A kindling basket, a back door. {eliza}'s cart at the corner with its jelly jars | | 3 | vehicles=horse cart
+review: authored | 2026-11-12 | written whole; drawn from accounts of a Union agent in the Confederate executive mansion, with invented people

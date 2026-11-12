@@ -1,0 +1,37 @@
+// Disaster: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== disaster.f01 | feature | real-time
+title: All Saints
+genre: disaster + historical-drama
+tone: Bright, sudden and merciless; then very still
+era: 1755 | period
+setting: Lisbon, the morning of All Saints' Day | real | city
+logline: On the morning an earthquake, a wave and a fire destroy Lisbon in turn, a customs clerk who alone knows the river is about to return must turn a praying crowd away from the open quay.
+premise: It is a feast day; every candle in the city is lit. At twenty to ten the ground moves for six minutes. The survivors run from the falling streets to the widest open space they know, the new marble quay on the Tagus, and kneel. {joao}, a clerk in the customs house, has read a sea captain's account of Callao. He watches the river draw back from the walls.
+synopsis: The film runs from the first bell to nightfall. {joao} is late for mass, quarrelling with his sister {ines}, a novice, about their mother's house. The first shock throws the customs ledgers on him and that saves him. In the street the churches have come down on the people inside them. He finds {ines} digging at the convent with her hands. They go where everyone goes: downhill, to the quay. A Jesuit, {teles}, is leading the crowd in penitence; it is God's judgement, and the open sky is safe. Then the harbour empties. The riverbed lies bare, with wrecks and cargo in the mud, and people walk out to look. {joao} knows what a sea does when it goes away. He has perhaps a quarter of an hour, no authority, and a priest who says that to run is to doubt. He cannot move the crowd by argument. {ines} can: she takes off her veil, picks up a stranger's child and walks uphill, and women follow a nun where they would not follow a clerk. Some hundreds go. The wave takes the quay and everyone on it. By afternoon the candles have done the rest and the city is burning from the river to the castle. On the hill at dusk, {amaro}, an English wine factor who has lost his warehouse and found his neighbour's children, asks {joao} what is to be done. {joao} gives the answer a minister will make famous tomorrow: bury the dead and feed the living. Then he starts writing down the names of who is on the hill, because he is a clerk, and somebody must.
+question: When the ground itself fails, whom do people follow: the one who explains it, or the one who moves?
+themes: knowledge without authority; faith and flight; the first act of rebuilding is a list
+audience: Adults and older teenagers
+viewpoint: With {joao}, never more than a street's width from him
+stakes: The thousands kneeling on the quay; a brother and sister's last chance to stop arguing
+conflict: A clerk who has read one book against a city that has decided the open water is where God will spare it
+ending: The quay is gone. Those who walked uphill behind a novice are alive. The city burns. {joao} writes names.
+experience: Six minutes of terror, a quarter hour of unbearable suspense, and a strange calm in the ashes
+look: Blue-and-white tile, gold altars, then dust; the drained riverbed shining; fire seen from a hill
+sound: Bells that ring themselves as towers sway. Then no bells at all.
+m: protect | nature | faith-vs-evidence | pyrrhic
+@ joao | Joao Mascarenhas | lead | protagonist | human | he/him | 29 | To get people off the quay | He has read what happened at Callao | He is nobody, and a priest disagrees | Bookish, argumentative, physically timid | From knowing to acting to recording | Fast, precise, apologises mid-sentence | Ink-stained cuffs, one shoe lost by reel two
+@ ines | Sister Ines Mascarenhas | co-lead | deuteragonist | human | she/her | 24 | To do what is asked of her today | She took the veil to escape a family quarrel | Her vow of obedience, and a Jesuit giving orders | Stubborn, practical, more worldly than her brother | From obedience to leading | Plain, warm, will not raise her voice | A novice's white veil, then no veil
+@ teles | Father Gaspar Teles | supporting | antagonist | human | he/him | 66 | To save souls in the hour given | He believes this is judgement | He is sincere | Charismatic, fearless, immovable | Unchanged; he stays on the quay | Thunder, Italian-accented Portuguese | Black soutane grey with dust
+@ amaro | Thomas Amory | supporting | ally | human | he/him | 41 | His warehouse, then anyone at all | He is a Protestant in a city that blames them | He has two children who are not his by the hand | Brisk, commercial, unexpectedly brave | From saving stock to saving strangers | English merchant's Portuguese, counts everything | Wine-stained coat, a ledger under his arm
+~ joao - ines | brother and sister | a quarrel over a house | a hill, and a list they write together
+~ joao - teles | clerk and preacher | deference | a shouted argument at the water's edge
+~ ines - teles | novice and Jesuit | obedience | she turns her back and walks
+# The Shock | INT | Customs House, Counting Room | DAY | joao | Begin | Twenty to ten. A bell rings by itself. The shelves come down and bury him in ledgers, which is why he lives | The city falls | 5 | stunts=collapse, vfx=earthquake+falling masonry, props=ledgers
+# The Shock | EXT | Convent Ruins | DAY | joao, ines | Find her | {ines} digging with bare hands. He pulls her off the stones. Everyone is running downhill | | 5 | crowd=80, vfx=dust+ruins
+# The Quay | EXT | Terreiro Do Paco, Marble Quay | DAY | joao, ines, teles | Kneel | Thousands on the open quay; {teles} leading the Miserere. {joao} looks past him at the river | | 5 | crowd=600
+# The Quay | EXT | Terreiro Do Paco, River Wall | DAY | joao, teles, amaro | See the water leave | The Tagus draws out. Ships lie over in mud. People walk onto the riverbed. {joao} starts to shout and is told he blasphemes | The sea is coming back | 6 | water, crowd=600, vfx=drained riverbed
+# The Quay | EXT | Terreiro Do Paco, Steps | DAY | ines, joao, amaro | Walk uphill | {ines} takes off her veil, lifts a stranger's child and climbs. Women follow. Then men. {amaro} carries two more | Hundreds leave the quay | 6 | crowd=400
+# The Wave | EXT | Rua Nova, Rising Street | DAY | joao, ines, amaro | Outrun it | The wave takes the quay behind them and comes up the street to their knees. {teles} is not seen again | | 6 | water, crowd=200, stunts=flood run, vfx=tsunami
+# The Hill | EXT | Castle Hill | DUSK | joao, ines, amaro | Make a list | The city burning below. {amaro} asks what is to be done. {joao} answers, and begins writing names | | 4 | crowd=150, vfx=city on fire, props=ledger
+review: authored | 2026-11-12 | written whole; drawn from the earthquake of 1755, with invented people

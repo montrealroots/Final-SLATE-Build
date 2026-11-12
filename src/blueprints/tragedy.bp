@@ -1,0 +1,37 @@
+// Tragedy: original stories written for this game. Format: docs/v3/BLUEPRINT-FORMAT.md.
+
+== tragedy.f01 | feature | five-act
+title: The Room Of Gold
+genre: tragedy + historical-drama
+tone: Stately, sunlit and doomed
+era: 1533 | period
+setting: Cajamarca, in the Andes | real | town
+logline: The record-keeper charged with tallying the gold that will ransom his emperor fills the room to the promised line, knot by knot, while slowly understanding that the count was never the bargain.
+premise: The emperor is a prisoner of a hundred and sixty-eight strangers. He has offered to fill a room once with gold and twice with silver, to a line as high as he can reach. {waman} is a keeper of knotted cords, the empire's memory; every object carried in must pass through his hands and into his strings. His skill is exactness. He believes a debt recorded is a debt honoured.
+synopsis: Act one: the offer. The room is measured; a red line is drawn; {waman} ties the first knot. Act two: the gathering. From every temple, llama trains bring down plate, fountains, garden maize wrought in gold. {waman} records each piece by kind and weight, and beside him {felipe}, a boy from the coast taken to be interpreter, turns one language into another and neither faithfully. {waman}'s daughter {chaska}, one of the chosen women who weave for the sun, sees the temple walls stripped and says the cords are recording the wrong thing. Act three: the furnaces. The strangers' treasurer, {riquelme}, has the pieces melted into bars, because bars divide. {waman} watches a golden garden become ingots and understands that his categories mean nothing to them; he goes on counting, because to stop would be to say the promise is void. Act four: the line. The room is full. The emperor has kept his word in every particular, and {waman} can prove it, object by object, in a language no judge present can read. The strangers hold a trial instead. {felipe} translates the charges; whether from fear, malice or love of a woman of the court, he translates them badly. Act five: the garrote. The emperor dies in the square at dusk. {waman} is told he may keep his cords. He carries them up the mountain to the place of the ancestors, and reads the whole account aloud to the dead, every knot, so that someone has heard it. {chaska} cuts her loom from its posts and goes with the armies. The cords survive him. Nobody now alive can read them.
+question: What is a perfect record worth to people who never meant to be bound by it?
+themes: good faith against appetite; translation as fate; memory that outlives its readers
+audience: Adults; students of history
+viewpoint: With {waman}, for whom number is a kind of piety
+stakes: An emperor's life, an empire's word, and the meaning of a lifetime's exactness
+conflict: A man of perfect accounts against men for whom a contract is a way of gaining time
+ending: The ransom is paid in full and the emperor is killed. The record is complete, accurate and unreadable.
+experience: Splendour, mounting disbelief, and a grief that has the calm of arithmetic
+look: Thin mountain light on beaten gold; coloured cords against dark hands; molten metal at night
+sound: Llama bells, panpipes, a furnace roar. Knots being tied, close.
+m: keep | fate | faith-vs-evidence | tragic
+@ waman | Waman | lead | protagonist | human | he/him | 50 | To make the count exact | An account kept is a promise kept | Those owed the account cannot read it and do not care | Scrupulous, gentle, incapable of imagining bad faith | From certainty to continuing without it | Measured, numerical, prays in lists | Tunic of fine wool, a mantle of cords over his shoulder
+@ chaska | Chaska | co-lead | foil | human | she/her | 19 | To stop the stripping of the temples | She was raised to weave for the sun | Her father's faith in the bargain | Clear-sighted, angry, devout | From weaver to one who leaves to fight | Direct; speaks in images | Fine weaving, hair bound, a spindle always turning
+@ felipe | Felipillo | supporting | antagonist | human | he/him | 17 | To matter, and to live | He was taken as a child and belongs to nobody | He holds every word between two worlds | Clever, frightened, resentful | From go-between to the mouth of the verdict | Two halting languages | Spanish shirt, bare feet
+@ riquelme | Alonso de Riquelme | supporting | antagonist | human | he/him | 45 | The king's fifth, properly accounted | He too is a keeper of records | He recognises a colleague and melts his work | Meticulous, pious, incurious | Unchanged; he weighs and signs | Notarial Castilian | Black doublet, scales, a seal
+~ waman - chaska | father and daughter | she doubts; he reassures | she leaves; he reads to the dead
+~ waman - riquelme | two accountants | a nod between professionals | one account entered, the other ignored
+~ waman - felipe | record-keeper and interpreter | each needs the other | a count that cannot be translated
+# The Offer | INT | The Ransom Room | DAY | waman, felipe, riquelme | Draw the line | A hand raised, a red line on plaster. {waman} ties the first knot. {felipe} tells each side what the other said, more or less | The bargain is struck | 5 | props=khipu cords+red line
+# The Gathering | EXT | Royal Road Above The Town | DAY | waman, chaska | Bring it down | Llama trains to the horizon, loaded with golden maize and fountains. {chaska} says the walls of the sun's house are bare. He says: it is being counted | | 6 | crowd=200, animals=llamas, props=gold objects
+# The Furnaces | EXT | Smelting Yard | NIGHT | waman, riquelme, felipe | Watch it melt | A golden garden goes into the crucible and comes out bars. {riquelme} weighs them. {waman} looks at his cords, which name things that no longer exist, and ties another knot | {waman} sees they do not want what he is counting | 6 | crowd=40, vfx=molten gold, props=crucibles+scales
+# The Line | INT | The Ransom Room | DAY | waman, chaska, felipe | Reach it | Gold to the red line. He can prove every piece. He offers the cords. Nobody takes them | The ransom is complete | 5 | props=khipu cords+gold bars
+# The Line | INT | Council Chamber | DAY | felipe, riquelme, waman | Hear the charges | A trial. {felipe} translates treason, idolatry, a plot. He does not look at {waman} | | 6 | crowd=30
+# The Garrote | EXT | Town Square | DUSK | waman, chaska, felipe, riquelme | Lose him | The square, a post, a cord of a different kind. {chaska} turns and walks toward the hills where the armies are | The emperor is killed | 5 | crowd=300
+# The Garrote | EXT | Mountain Shrine | NIGHT | waman | Read it to the dead | He lays the cords out before the ancestors and reads the whole account aloud, knot by knot, so that someone has heard it | | 5 | props=khipu cords, vfx=night mountain
+review: authored | 2026-11-12 | written whole; drawn from the ransom of 1533, with an invented record-keeper and daughter beside recorded names
