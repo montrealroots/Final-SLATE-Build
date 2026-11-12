@@ -3,7 +3,7 @@
 // reload. The catalog is the repository's own (src/data/sources.json, from Wikidata, CC0), so nothing is intercepted.
 import { expect, test, type Page } from './test';
 import { audit } from './ui-audit';
-import { nav, newProject, quickLife, readSavedState, saveAndExit, section } from './helpers';
+import { advance, nav, newProject, quickLife, readSavedState, saveAndExit, section } from './helpers';
 
 const picker = (page: Page) => page.getByRole('dialog', { name: 'Choose A Work To Adapt' });
 async function openPicker(page: Page) {
@@ -194,9 +194,58 @@ test('an adaptation of a protected work is optioned, renewed and bought before i
   await expect(rights.getByRole('list', { name: 'Chain Of Title' })).toContainText(`The credit agreed: Based On ${title}`);
   await expect.poll(async () => (await project(page)).source?.option?.exercisedAt ?? 0).toBeGreaterThan(0);
 
+  // Bought, but the rights holder hasn't read the script: planning says so. The agreement taken was the faithful one.
+  await section(page, 'Schedule');
+  await page.getByRole('button', { name: 'Build Schedule' }).click();
+  await expect(page.getByRole('alert')).toContainText(`The rights holder of ${title} hasn't read this script. Send them the approved draft before planning production (Budget, Adaptation Rights).`);
+  await section(page, 'Budget');
+  await expect(rights.getByRole('list', { name: 'Chain Of Title' })).toContainText("It is for a faithful adaptation. The work's story, its people, its time and place and its ending, kept.");
+  await expect(rights).toContainText('Your agreement is for a faithful adaptation, which lets you change none of these.');
+  const approval = rights.getByRole('group', { name: "The Rights Holder's Approval" });
+  await expect(approval).toContainText('They answer within 7 days, from what you have declared above.');
+
+  // The script is declared to change the ending. The card says that is outside the agreement before anything is sent;
+  // sent anyway, the rights holder says no, for that reason.
+  await rights.getByLabel('How It Ends').check();
+  await expect(rights).toContainText('Outside your agreement: how it ends. The rights holder will not approve a draft declared this way.');
+  if (phone) expect((await audit(page)).defects, 'the rights card with its approval and changes, on a phone').toEqual([]);
+  await approval.getByRole('button', { name: 'Send Draft 1 To The Rights Holder' }).click();
+  await expect(approval).toContainText(/They are reading draft 1\. Their answer is due .+\./);
+  await expect(approval.getByRole('button')).toHaveCount(0);
+  await advance(page, 'week');
+  await advance(page, 'next-day');
+  await section(page, 'Budget');
+  await expect(approval).toContainText("They didn't approve draft 1. Your agreement is for a faithful adaptation, and the script changes how it ends. Keep that as the work has it, or widen the agreement.");
+
+  // Widened to a free adaptation for the difference in price, said on the button; then the same draft is approved.
+  const widen = rights.getByRole('button', { name: /^Widen To Freely Adapted For \$/ });
+  const more = Number((await widen.innerText()).replace(/[^\d]/g, ''));
+  const beforeWiden = await spent();
+  await widen.click();
+  expect(await spent()).toBe(beforeWiden + more);
+  await expect(rights.getByRole('list', { name: 'Chain Of Title' })).toContainText(/Widened .+ to freely adapted for \$[\d,]+\./);
+  await expect(rights).toContainText('Your agreement is for a freely adapted adaptation, which lets you change where it happens, when it happens, how it ends, who is in it.');
+  await expect(rights.getByText('Outside your agreement')).toHaveCount(0);
+  await approval.getByRole('button', { name: 'Send Draft 1 To The Rights Holder' }).click();
+  await advance(page, 'week');
+  await advance(page, 'next-day');
+  await section(page, 'Budget');
+  await expect(approval).toContainText('They approved draft 1.');
+  await expect(rights.getByRole('list', { name: 'Chain Of Title' })).toContainText(/Draft 1 approved by the rights holder, sent .+\./);
+  await expect(rights.getByRole('list', { name: 'Chain Of Title' })).toContainText('A sequel or another season is not covered: it needs an agreement of its own.');
+  await expect(rights).toContainText('The rights holder takes 2.5% of what the project earns, as it arrives: $0 so far');
+  await expect.poll(async () => (await project(page)).source?.approval?.outcome).toBe('approved');
+
   // Now production can be planned.
   await section(page, 'Schedule');
   await page.getByRole('button', { name: 'Build Schedule' }).click();
   await expect(page.getByRole('button', { name: 'Rebuild Schedule' })).toBeVisible();
   await expect(page.getByRole('alert')).toHaveCount(0);
+
+  // Declaring another change afterwards makes the approval old, and says so.
+  await section(page, 'Budget');
+  await rights.getByLabel('Who Is In It').check();
+  await expect(approval).toContainText('They approved draft 1 as it was declared then. The script has changed since: send them the approved draft again.');
+  await rights.getByLabel('Who Is In It').uncheck();
+  await expect(approval).toContainText('They approved draft 1.');
 });

@@ -25,7 +25,11 @@ import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, will
 import { candidatesFor, childrenIn } from '../engine/hiring';
 import { searchAdvice, searchLine, searchPreview, searchRefusal, searchStatus, searchesFor, shortlistAdvice, startSearch } from '../engine/casting-director';
 import { negotiate, negotiationLine, negotiationPreview, negotiationRefusal, producerAccountLine } from '../engine/line-producer';
-import { chainOfTitle, exerciseOption, optionStanding, optionTerms, renewOption, takeOption } from '../engine/adaptation';
+import {
+  APPROACHES, APPROACH_ORDER, APPROVAL_DAYS, CHANGES, CHANGE_ORDER, approvalRefusal, approvalStanding, chainOfTitle, changesOutsideGrant, exerciseOption, optionStanding, optionTerms, participationPaid,
+  renewOption, sendForApproval, setSourceChange, takeOption, widenAgreement, widenCost,
+} from '../engine/adaptation';
+import type { AdaptationApproach } from '../engine/types';
 import { consideredOn, isReal, jobLabel, stopConsidering, tmdbIdOf } from '../engine/guests';
 import { Picture } from './Picture';
 import { storyAge, storyAgeWords } from '../engine/story-age';
@@ -800,7 +804,13 @@ function AdaptationRights({ p }: { p: Project }) {
   const ref = p.source?.ref;
   if (!ref) return null;
   const st = optionStanding(p, g.now);
-  const terms = p.source?.option?.terms ?? optionTerms(p);
+  // How closely it follows the work is chosen before the option is taken, and is what its price and its grant come from.
+  const [approach, setApproach] = useState<AdaptationApproach>('faithful');
+  const terms = (st === 'held' || st === 'exercised' ? p.source?.option?.terms : undefined) ?? optionTerms(p, approach);
+  const agreed = st === 'held' || st === 'exercised' ? p.source?.option?.terms.approach : undefined;
+  const ap = approvalStanding(p);
+  const outside = changesOutsideGrant(p);
+  const noSend = approvalRefusal(p, g.now);
   const zone = getPlace(p.axes.basePlaceId).zone;
   const act = (fn: (s: GameState) => void) => setErr(store.act(fn));
   const SAYS: Record<typeof st, string> = {
@@ -818,6 +828,42 @@ function AdaptationRights({ p }: { p: Project }) {
       <ol className="list" aria-label="Chain Of Title">
         {chainOfTitle(p, (at) => longLocal(at, zone).date).map((line) => <li key={line}>{line}</li>)}
       </ol>
+      {(st === 'none' || st === 'expired') && !p.delivered && (
+        <>
+          <SelectField label="How Closely It Follows The Work" value={approach} options={APPROACH_ORDER.map((a) => ({ value: a, label: `${APPROACHES[a].label} (${money(optionTerms(p, a).price)})` }))} onChange={(v) => setApproach(v as AdaptationApproach)}
+            hint={`${APPROACHES[approach].says} The rights holder reads your approved draft against this before production. A freer adaptation costs more, and the agreement can be widened later for the difference.`} />
+        </>
+      )}
+      {agreed && (
+        <>
+          <fieldset style={{ border: 0, padding: 0 }}>
+            <legend>What Your Script Changes From The Work</legend>
+            <p className="dim small">Yours to say: the game reads no prose. Your agreement is for a {APPROACHES[agreed].label.toLowerCase()} adaptation{APPROACHES[agreed].allows.length ? `, which lets you change ${APPROACHES[agreed].allows.map((c) => CHANGES[c].toLowerCase()).join(', ')}` : ', which lets you change none of these'}.</p>
+            <div className="chip-row">{CHANGE_ORDER.map((c) => <Check key={c} label={CHANGES[c]} checked={(p.source?.changes ?? []).includes(c)} onChange={(v) => act((s) => setSourceChange(s.projects.find((x) => x.id === p.id)!, c, v))} />)}</div>
+            {outside.length > 0 && <p className="muted">Outside your agreement: {outside.map((c) => CHANGES[c].toLowerCase()).join(', ')}. The rights holder will not approve a draft declared this way.</p>}
+          </fieldset>
+          <div className="row-wrap" role="group" aria-label="The Rights Holder's Approval">
+            <span className="grow dim small">
+              {{
+                'not-needed': '',
+                'not-sent': `The rights holder reads your approved draft before production can be planned. They answer within ${APPROVAL_DAYS} days, from what you have declared above.`,
+                sent: `They are reading draft ${p.source?.approval?.draft}. Their answer is due ${longLocal(p.source?.approval?.answerAt ?? 0, zone).date}.`,
+                approved: `They approved draft ${p.source?.approval?.draft}.`,
+                refused: `They didn't approve draft ${p.source?.approval?.draft}. ${p.source?.approval?.reason ?? ''}`,
+                stale: `They approved draft ${p.source?.approval?.draft} as it was declared then. The script has changed since: send them the approved draft again.`,
+              }[ap]}
+              {noSend && ap !== 'approved' && ap !== 'sent' ? ` ${noSend}` : ''}
+            </span>
+            {!noSend && <button className="btn btn-sm btn-primary" onClick={() => act((s) => sendForApproval(s, s.projects.find((x) => x.id === p.id)!))}>Send Draft {p.approvedDraft} To The Rights Holder</button>}
+          </div>
+          <div className="row gap-2 wrap spaced">
+            {APPROACH_ORDER.filter((a) => widenCost(p, a) !== null).map((a) => (
+              <button key={a} className="btn btn-sm" onClick={() => act((s) => widenAgreement(s, s.projects.find((x) => x.id === p.id)!, a))}>Widen To {APPROACHES[a].label} For {money(widenCost(p, a)!)}</button>
+            ))}
+          </div>
+          {st === 'exercised' && <p className="dim small">The rights holder takes {Math.round((terms.participation ?? 0) * 1000) / 10}% of what the project earns, as it arrives: {money(participationPaid(p))} so far, each payment in the chain of title above.</p>}
+        </>
+      )}
       {st !== 'not-needed' && st !== 'exercised' && (
         <>
           <dl className="kv">
@@ -826,10 +872,11 @@ function AdaptationRights({ p }: { p: Project }) {
             <dt>One Renewal</dt><dd>{money(terms.renewalFee)} for {terms.renewalMonths} months more, not counted towards the price</dd>
             <dt>Covers</dt><dd>{terms.territory}, {terms.media} only, this project only</dd>
             <dt>Credit</dt><dd>{terms.credit}</dd>
+            {terms.participation ? <><dt>Their Share</dt><dd>{Math.round(terms.participation * 1000) / 10}% of what the project earns, as it arrives</dd></> : null}
           </dl>
-          <p className="dim small">Production can't be planned until the rights are bought. An option that runs out is gone, with what was paid for it.</p>
+          <p className="dim small">Production can't be planned until the rights are bought and the rights holder has approved the draft. An option that runs out is gone, with what was paid for it.</p>
           <div className="row-wrap">
-            {(st === 'none' || st === 'expired') && !p.delivered && <button className="btn btn-primary" onClick={() => act((s) => takeOption(s, p))}>Take The Option For {money(terms.fee)}</button>}
+            {(st === 'none' || st === 'expired') && !p.delivered && <button className="btn btn-primary" onClick={() => act((s) => takeOption(s, p, approach))}>Take The Option For {money(terms.fee)}</button>}
             {st === 'held' && p.source?.option?.renewedAt === undefined && <button className="btn" onClick={() => act((s) => renewOption(s, p))}>Renew For {money(terms.renewalFee)}</button>}
             {st === 'held' && <button className="btn btn-primary" onClick={() => act((s) => exerciseOption(s, p))}>Buy The Rights For {money(terms.price - terms.fee)}</button>}
           </div>

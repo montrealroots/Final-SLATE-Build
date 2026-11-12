@@ -646,6 +646,17 @@ export function onProjectDelivered(state: GameState, p: Project): void {
 export function receiveIncome(state: GameState, p: Project, amount: number, from: string): number {
   let left = Math.max(0, Math.round(amount));
   const notes: string[] = [];
+  // The rights holder of a work this project adapts takes their share first, of everything that arrives, once the rights
+  // are bought (adaptation.ts; from November 12, 2026). Each payment is a statement on the agreement.
+  const rights = p.source?.option;
+  if (rights?.exercisedAt !== undefined && rights.terms.participation && left > 0) {
+    const share = Math.round(left * rights.terms.participation);
+    if (share > 0) {
+      (rights.statements ??= []).push({ at: state.now, from, income: left, share });
+      left -= share;
+      notes.push(`${money(share)} to the rights holder of ${p.source!.ref!.title} (their share)`);
+    }
+  }
   for (const d of accepted(p)) {
     const owed = d.terms.recoup - d.repaid;
     if (owed > 0 && left > 0) {

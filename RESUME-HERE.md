@@ -89,8 +89,12 @@ has a row for each requirement built or owed.
   genre in the game comes only from `tools/sources/genre-map.mjs`; read `tools/sources/recorded-genres.tsv` after an
   import before adding to it. The Script page finds a work, shows what is recorded and declares the script adapted
   from it, and the Budget page's Adaptation Rights card takes, renews and exercises the option that production waits
-  for (`engine/adaptation.ts`). **Owed:** the rest of the adaptation loop (requirement V3-A06: brief, approvals,
-  compensation beyond the price, reporting); more companies.
+  for (`engine/adaptation.ts`). The option is taken for one of three approaches (faithful, moved to another time or
+  place, freely adapted), each priced and each allowing the script to change more; the player declares what the
+  script changes; the rights holder reads the approved draft (seven days) and refuses a change outside the agreement,
+  which can be widened for the difference; once the rights are bought they take 2.5% of each receipt
+  (`finance.ts receiveIncome`), each a statement in the chain of title; a sequel carries the work and needs its own
+  agreement (`sequel.ts`). **Owed:** more companies; a source work for the 104 genres that have none.
 - **People loops: the casting director and the line producer are built** (`engine/casting-director.ts`,
   `engine/line-producer.ts`; requirements V3-L01 and V3-L02). Each is an optional Crew row. The casting director runs
   a search for a part for two of their days and advises once everyone has read; the shortlist, callbacks and offers
