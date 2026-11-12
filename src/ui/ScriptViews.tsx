@@ -142,7 +142,7 @@ function CameraLightSound({ p }: { p: Project }) {
 }
 
 function IdeaField({ p, fields, title, children }: { p: Project; fields: IdeaField[]; title: string; children: ReactNode }) {
-  return <div className="col gap-1">{children}<Ideas p={p} fields={fields} title={title} /></div>;
+  return <div className="idea-field">{children}<Ideas p={p} fields={fields} title={title} /></div>;
 }
 
 /**
@@ -227,11 +227,6 @@ export function ScriptTab({ p }: { p: Project }) {
           <IdeaField p={p} fields={['experience']} title="Choose What It Should Feel Like"><TextField label="Intended Experience" multiline value={p.story.intendedExperience} onChange={(v) => edit(p, () => (p.story.intendedExperience = v))} /></IdeaField>
           <IdeaField p={p} fields={['tone']} title="Choose A Tone"><TextField label="Tone" value={p.axes.tone} maxLength={80} onChange={(v) => edit(p, () => (p.axes.tone = v))} /></IdeaField>
           <IdeaField p={p} fields={['setting']} title="Choose Where It Is Set"><TextField label="Story Setting" maxLength={120} value={p.axes.storySetting} onChange={(v) => edit(p, () => (p.axes.storySetting = v))} /></IdeaField>
-          <div className="col gap-1">
-            <PlacePicker label="Story Setting Place" value={p.axes.settingPlaceId ?? ''} onChange={(id, place) => setErr(store.act((s) => { snapshot(p); adoptPlace(s, place); p.axes.settingPlaceId = id; }))} />
-            <p className="dim small">{settingNote(p)}</p>
-            {p.axes.settingPlaceId && <button className="btn btn-sm" onClick={() => setErr(edit(p, () => { delete p.axes.settingPlaceId; }))}>No Setting Place</button>}
-          </div>
           <SelectField label="Competes As" value={p.axes.register ?? ''} hint="Where awards that split drama from comedy enter it, as you declare it. Left to its genres, it competes as comedy when a primary genre is comedy or musical; a secondary one doesn't change it."
             options={[{ value: '', label: 'By Its Genres' }, { value: 'drama', label: 'Drama' }, { value: 'comedy', label: 'Comedy Or Musical' }]}
             onChange={(v) => edit(p, () => { if (v) p.axes.register = v as 'comedy' | 'drama'; else delete p.axes.register; })} />
@@ -251,12 +246,18 @@ export function ScriptTab({ p }: { p: Project }) {
             <TextField label="The Look It Borrows" maxLength={40} value={p.axes.styleEra ?? ''} hint="A period whose look it borrows, whatever year it is set in or made in. A note for the departments: it changes no work and no date."
               onChange={(v) => edit(p, () => { if (v.trim()) p.axes.styleEra = v; else delete p.axes.styleEra; })} />
           </IdeaField>
+          {/* A country, a search box and a list of places: a row of its own, not a cell beside one-line boxes, which it stretched to its own height until November 11, 2026. */}
+          <div className="cell-wide place-cell">
+            <PlacePicker label="Story Setting Place" value={p.axes.settingPlaceId ?? ''} onChange={(id, place) => setErr(store.act((s) => { snapshot(p); adoptPlace(s, place); p.axes.settingPlaceId = id; }))} />
+            <p className="dim small">{settingNote(p)}</p>
+            {p.axes.settingPlaceId && <button className="btn btn-sm" onClick={() => setErr(edit(p, () => { delete p.axes.settingPlaceId; }))}>No Setting Place</button>}
+          </div>
         </div>
         {!nonfiction && <CameraLightSound p={p} />}
         <fieldset className="spaced" style={{ border: 0, padding: 0 }}>
           <legend style={{ fontWeight: 600 }}>What It's About</legend>
           <p className="dim">Some awards are for work about a subject. Declare the ones that are true of the story; nothing else reads them.</p>
-          <div className="row gap-2 wrap">{PROJECT_SUBJECTS.map((x) => (
+          <div className="chip-row">{PROJECT_SUBJECTS.map((x) => (
             <Check key={x.id} label={x.label} checked={!!p.subjects?.includes(x.id)}
               onChange={(on) => edit(p, () => { const set = new Set(p.subjects ?? []); if (on) set.add(x.id); else set.delete(x.id); p.subjects = [...set]; if (!p.subjects.length) delete p.subjects; })} />
           ))}</div>

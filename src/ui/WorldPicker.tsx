@@ -151,7 +151,7 @@ export function WorldPlacePicker(props: { label: string; headed?: boolean; value
       <CountryAndRegion ws={ws} featured purpose={props.label} />
       {/* Under a heading that says what the place is for, the field is a town or city, as 1221's; its name for screen
           readers keeps the purpose and contains the visible words. */}
-      <Field label={props.headed ? 'Town Or City' : props.label} error={props.error} hint={chosen ? `Chosen: ${placeLabel(chosen)}` : 'Search by city, or choose a country or territory to search all of its places.'}>
+      <Field hintFirst label={props.headed ? 'Town Or City' : props.label} error={props.error} hint={chosen ? `Chosen: ${placeLabel(chosen)}` : 'Search by city, or choose a country or territory to search all of its places.'}>
         {(id, db) => (
           <>
             <input id={id} type="search" value={ws.q} placeholder="Start typing a town name" aria-label={props.headed ? `${props.label}, Town Or City` : undefined} aria-describedby={db} aria-controls={listId} aria-invalid={!!props.error} onChange={(e) => ws.setQ(e.target.value)} />

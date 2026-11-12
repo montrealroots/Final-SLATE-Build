@@ -30,16 +30,17 @@ export function PageHead({ eyebrow, title, lede, actions, children }: { eyebrow?
   );
 }
 
-export function Field(props: { label: string; error?: string | null; hint?: string; children: (id: string, describedBy: string | undefined) => ReactNode }) {
+export function Field(props: { label: string; error?: string | null; hint?: string; /** Show the hint above the box, not under it: for a box with a list under it. */ hintFirst?: boolean; children: (id: string, describedBy: string | undefined) => ReactNode }) {
   const id = useId();
   const errId = `${id}-err`;
   const hintId = `${id}-hint`;
   const describedBy = [props.error ? errId : '', props.hint ? hintId : ''].filter(Boolean).join(' ') || undefined;
   return (
-    <div className="field">
+    <div className={props.hintFirst ? 'field field-std hint-lead' : 'field field-std'}>
       <label htmlFor={id}>{props.label}</label>
       {props.hint && <span className="hint" id={hintId}>{props.hint}</span>}
-      {props.children(id, describedBy)}
+      {/* One box for whatever the field holds, so a row of fields can share lines: label, hint, box, error (app.css, "Form rows that line up"). */}
+      <div className="field-box">{props.children(id, describedBy)}</div>
       {props.error && <span className="error" id={errId} role="alert">{props.error}</span>}
     </div>
   );

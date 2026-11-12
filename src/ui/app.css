@@ -1941,7 +1941,8 @@ table.data th { color: var(--text-dim); font-weight: 650; font-size: var(--size-
 }
 /* Checkboxes in a row (the calendar's filters): room between them, no field gap under the row. */
 .chip-row > .field { margin: 0 var(--s4) 0 0; }
-/* A field's hint sits on its own line, under the label. 1221 styles no time field; it gets the date field's look. */
+/* A field's hint sits on its own line. Until November 11, 2026 that line was under the label; it is under the box now
+   ("Form rows that line up", at the end). 1221 styles no time field; it gets the date field's look. */
 .field > .hint { display: block; }
 input[type='time'] { width: 100%; min-height: var(--control); padding: var(--s2) var(--s3); border-radius: var(--radius-sm); border: 1px solid var(--line-strong); background: var(--surface-2); color: var(--text); font: inherit; font-size: var(--size-sm); color-scheme: dark; }
 :root[data-theme='light'] input[type='time'] { color-scheme: light; }
@@ -2025,7 +2026,36 @@ input[type='time'] { width: 100%; min-height: var(--control); padding: var(--s2)
 
 /* Text after a row of buttons, a button or a list of facts starts a step below it. Until November 10, 2026 it sat against
    them: "Rebuild Schedule" with its note, the Cut card's buttons, a festival's Status line and its dates note. */
-.row + p, .btn + p, .kv + p { margin-top: var(--s3); }
+.row + p, .row-between + p, .btn + p, .kv + p, .field-act + p, .inline-form + p, :is(.field-act, .inline-form) + :empty + p { margin-top: var(--s3); }
+/* A heading and the button or boxes under it, and a heading after them: a step apart. Not in a row, where a heading
+   and its button sit side by side. Until November 11, 2026 "Add Scene To Episode 2" touched "Episode 2" above it, and
+   "Production Needs" touched the dialogue boxes it follows. */
+:not(.row, .row-between, .row-wrap) > :is(h3, h4) + :is(.btn, .field, .inline-form, .field-act, .grid, .chip-row, .ideas-row) { margin-top: var(--s2); }
+:not(.row, .row-between, .row-wrap, .list-item) > * + :is(h3, h4) { margin-top: var(--s4); }
+/* The same step under a row of boxes before a tick box (the catalog's "Include titles not released"), under a tick box
+   before what it switches (creation's "I Still Live Where I Was Born" and the map), and under a row of chips before
+   the count they filter (the idea picker). Each touched until November 11, 2026. */
+:is(.inline-form, .field-act) + .field { margin-top: var(--s2); }
+:is(fieldset, .inline-form, .field-act) + :is(.idea-field, .grid, .field-row) { margin-top: var(--s3); }
+.ideas-row + p { margin-top: var(--s2); }
+:not(.row, .row-between, .row-wrap, .chip-row) > label.check + :not(.hint, .check) { margin-top: var(--s3); }
+.chip-row + p { margin-top: var(--s2); }
+/* A group of boxes after something else (a character's Arc after Choose Ideas), and the logline builder's sentence
+   before its button. */
+:not(.row, .row-between, .row-wrap) > * + fieldset:not(.idea-block, .spaced) { margin-top: var(--s3); }
+.idea-block + .btn { margin-top: var(--s3); }
+/* A row of buttons under a table (the Crew page's "Hire A Writer" sat on the table's last line), and a part's heading
+   and the paragraph that explains it ("Writing Work"). A title and its one-line note in a list or a scene card are
+   left as close as they were. */
+:is(.table-scroll, .table-wrap, table) + .row { margin-top: var(--s3); }
+:is(section, fieldset, .card, .spaced, .stack) > :is(h3, h4) + p { margin-top: var(--s2); }
+/* A table row with a button in it: its words sit level with the button's, not 4 pixels above them ("Release" in Offers
+   And Contracts). Rows without one keep their words at the top, where a cell of several lines reads best. */
+table.data tr:has(.btn) > td { vertical-align: middle; }
+/* The count under a list of places ("Showing 60 of 1,204 places") sat against the list's last row. */
+.picklist + p { margin-top: var(--s2); }
+/* A button under a block of its card ("Rebuild Schedule" under the puppets, "Combine" under the dialogue boxes). */
+:is(section, article, fieldset, details, .card, .stack) > :is(div, ul, details, table) + .btn { margin-top: var(--s3); }
 /* Chips after a name, on its line: a step from the name and from each other. On the event page they touched both until
    November 10, 2026 ("Golden Lion For Best FilmPrize"). */
 .chips-after { display: inline-flex; flex-wrap: wrap; gap: var(--s1); vertical-align: middle; } /* the space before it collapses when the chips wrap under the name, so they start at its edge */
@@ -2055,7 +2085,7 @@ legend { padding: 0; }
 .idea-block ul { margin: 0; padding-left: var(--s5); }
 .idea-sentence { font-size: var(--size-lg); margin: 0; }
 .chip-button { cursor: pointer; font: inherit; font-size: var(--size-xs); min-height: 32px; }
-.ideas-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); margin-top: var(--s1); }
+.ideas-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); margin-top: var(--s2); }
 @media (max-width: 560px) {
   .overlay-sheet { padding: 0; align-items: stretch; }
   .modal-sheet { width: 100%; max-height: 100dvh; height: 100dvh; border-radius: 0; border: 0; }
@@ -2069,3 +2099,62 @@ legend { padding: 0; }
 .writing-work { background: var(--surface-2, transparent); box-shadow: none; }
 .writing-work + .writing-work { margin-top: var(--s3); }
 .writing-work > * + * { margin-top: var(--s3); }
+
+/* ---------- Form rows that line up (November 11, 2026) ----------
+   Until then a form grid was cells as tall as whatever was in them. A hint of two lines put its box below its
+   neighbour's; a Choose Ideas button sat on the label of the row under it; a hint touched the box it was for; a select
+   was 2 pixels shorter than the text box beside it. e2e/layout.ts measures all of these, and e2e/layout.spec.ts holds
+   the Script page to none.
+
+   One-line boxes are one height, and no shorter than a button. */
+:root { --box-h: max(var(--control), calc(var(--size-sm) * 1.5 + 2 * var(--s2) + 2px)); }
+input:not([type]), input[type="text"], input[type="number"], input[type="date"], input[type="search"], input[type="time"], select:not([multiple]):not([size]) {
+  box-sizing: border-box; height: var(--box-h);
+}
+/* A text area is a block: set in a line, it kept a few pixels under it for letters' tails, so what came after a text
+   area sat 5 pixels lower than what came after a text box. */
+textarea { display: block; }
+/* Boxes and a button in a row that wraps (a performer's screen time, a song's scene): the button is level with the
+   boxes, not with their labels, where it sat 21 pixels above them. */
+.row-wrap > .field ~ .btn { align-self: flex-end; min-height: var(--box-h); margin-bottom: var(--s4); }
+/* A button beside a box is as tall as the box, a small one too ("Rename" beside an episode's title sat 5 pixels off). */
+:is(.inline-form, .field-act) > .btn { min-height: var(--box-h); }
+/* A field's hint sits under its box, as the stylesheet's own note on hints always said ("a helper line under a
+   control"); the Field component had put it between the label and the box, so in a row of fields a longer hint pushed
+   its box down. It is still written before the box and read out with it; only where it is shown changed. Beside a
+   button it stays above, so the box is the last thing in its field and level with the button; and above a list of
+   results (the place picker), where under the list is too far from the box. */
+.field-std { display: flex; flex-direction: column; }
+.field-std > .error { order: 1; margin-top: var(--s1); }
+.field-std > .hint { order: 2; margin: var(--s1) 0 0; }
+:is(.field-act, .inline-form) .field-std > .hint, .row-wrap > .field-std > .hint, .field-std.hint-lead > .hint { order: 0; margin: 0 0 var(--s1); }
+/* A field with a button under it that opens ideas for it (ScriptViews.tsx IdeaField). */
+.idea-field { display: flex; flex-direction: column; margin-bottom: var(--s4); min-width: 0; }
+.idea-field > .field { margin-bottom: 0; }
+/* A cell that takes the whole row of a form grid, and what it holds kept to a readable width. */
+.cell-wide { grid-column: 1 / -1; }
+.place-cell { max-width: 36rem; margin-bottom: var(--s4); }
+fieldset > legend { margin-bottom: var(--s2); }
+.grid.form { row-gap: 0; }
+/* Each row of a form is five lines its cells share: label, box, error, the button that opens ideas for it, and hint.
+   The button comes before the hint so that it sits against its box and level with its neighbours'. The first four
+   are exactly as tall as what is in them: a maximum of 0, which the content floors, keeps a taller neighbour's height
+   out of them, so anything a cell has beyond its lines goes to the fifth. A cell that is not a field takes all five.
+   A sixth line is the space under the row: a cell's own bottom margin was not counted by WebKit when the cell's last
+   lines were empty, and the rows closed up on an iPhone. */
+@supports (grid-template-rows: subgrid) {
+  .grid.form, .field-row { row-gap: 0; grid-auto-rows: minmax(min-content, 0px) minmax(min-content, 0px) minmax(min-content, 0px) minmax(min-content, 0px) auto var(--s4); }
+  .grid.form > *, .field-row > * { grid-row: span 6; }
+  /* A field's own bottom margin gives way to the sixth line; a cell that is not a field keeps one, lying over it. */
+  :is(.grid.form, .field-row) > :is(.field-std, .idea-field) { margin-bottom: 0; }
+  :is(.grid.form, .field-row) > :not(.field-std, .idea-field) { margin-bottom: var(--s4); }
+  :is(.grid.form, .field-row) > :is(.field-std, .idea-field) { display: grid; grid-template-rows: subgrid; grid-template-columns: minmax(0, 1fr); }
+  :is(.grid.form, .field-row) > .idea-field > .field-std { display: contents; }
+  :is(.grid.form, .field-row) > .field-std > label, :is(.grid.form, .field-row) > .idea-field > .field-std > label { grid-row: 1; align-self: end; }
+  :is(.grid.form, .field-row) > .field-std > .field-box, :is(.grid.form, .field-row) > .idea-field > .field-std > .field-box { grid-row: 2; min-width: 0; }
+  /* With no button of its own, a hint starts where its neighbours' buttons do, right under its box. */
+  :is(.grid.form, .field-row) > .field-std > .hint { grid-row: 4 / 6; align-self: start; }
+  :is(.grid.form, .field-row) > .idea-field > .field-std > .hint { grid-row: 5; }
+  :is(.grid.form, .field-row) > .field-std > .error, :is(.grid.form, .field-row) > .idea-field > .field-std > .error { grid-row: 3; }
+  :is(.grid.form, .field-row) > .idea-field > .ideas-row { grid-row: 4; }
+}

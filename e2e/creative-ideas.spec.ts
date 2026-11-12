@@ -88,7 +88,7 @@ test('from a chosen idea to a delivered film: the picker, the 1986 zombie brief,
   await expect(page.getByLabel('Logline', { exact: true })).toHaveValue('My own logline: the night Saltmarsh answered.');
 
   // One field's ideas, a blend of genres, and the year.
-  await page.getByLabel('Central Conflict', { exact: true }).locator('xpath=ancestor::div[contains(@class,"col")][1]').getByRole('button', { name: 'Choose Ideas' }).click();
+  await page.getByLabel('Central Conflict', { exact: true }).locator('xpath=ancestor::div[contains(@class,"idea-field")][1]').getByRole('button', { name: 'Choose Ideas' }).click();
   await page.getByRole('dialog', { name: 'Choose A Central Conflict' }).getByRole('button', { name: /^Scarce Resource/ }).click();
   await page.getByRole('dialog', { name: 'Scarce Resource' }).getByRole('button', { name: 'Apply', exact: true }).click();
   await expect(page.getByLabel('Central Conflict', { exact: true })).toHaveValue('Scarce Resource: different groups need the same limited resource.');
@@ -199,7 +199,7 @@ test('a logline built from four parts, and a crowd extended in post from a scene
   await page.getByLabel('Working Title').fill('Built From Parts');
   await page.getByRole('button', { name: 'Create Project' }).click();
   await section(page, 'Script');
-  await page.getByLabel('Logline', { exact: true }).locator('xpath=ancestor::div[contains(@class,"col")][1]').getByRole('button', { name: 'Choose Ideas' }).click();
+  await page.getByLabel('Logline', { exact: true }).locator('xpath=ancestor::div[contains(@class,"idea-field")][1]').getByRole('button', { name: 'Choose Ideas' }).click();
   const build = page.getByRole('dialog', { name: 'Build A Logline' });
   await build.getByLabel('When It Starts').selectOption({ label: 'After the river takes the bridge' });
   await build.getByLabel('Who It Happens To').selectOption({ label: 'A school bus driver' });

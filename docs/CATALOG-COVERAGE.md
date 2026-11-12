@@ -6,7 +6,7 @@ are in `docs/CATALOG.md`. The catalog itself isn't in the repository.
 ## Retrieval
 
 - **Source:** TMDB's API (api.themoviedb.org/3), through the cloud session's proxy.
-- **Retrieved:** 2026-11-10T19:51:31.678Z to 2026-11-11T13:36:24.505Z.
+- **Retrieved:** 2026-11-10T19:51:31.678Z to 2026-11-11T23:42:49.762Z.
 - **Refreshing:** responses older than 180 days are fetched again, under TMDB's terms.
 - **Registry:** companies and leadership researched and checked 2026-11-10 (Disney's) and 2026-11-11 (NBCUniversal's).
 - **Failed requests left:** 0. **Stale responses left out:** 0.
@@ -15,18 +15,18 @@ are in `docs/CATALOG.md`. The catalog itself isn't in the repository.
 
 | What | Count |
 | --- | --- |
-| Companies in the registry | 54 (42 with titles gathered, 9 networks and services, 3 parents) |
-| Leadership roles recorded | 28, for 24 people |
-| Films | 8,354 |
-| Series | 1,654 |
-| Seasons | 4,840 |
-| Episodes | 100,327 |
-| People credited | 279,833 |
-| People with their details gathered | 279,833 |
-| Film and series cast credits | 440,878 |
-| Film and series crew credits | 355,212 |
-| Episode credits (crew and guest cast) | 638,501 |
-| Titles discovered but not fetched | 0 |
+| Companies in the registry | 119 (92 with titles gathered, 21 networks and services, 6 parents) |
+| Leadership roles recorded | 46, for 42 people |
+| Films | 21,471 |
+| Series | 3,850 |
+| Seasons | 11,268 |
+| Episodes | 257,986 |
+| People credited | 458,680 |
+| People with their details gathered | 458,680 |
+| Film and series cast credits | 968,972 |
+| Film and series crew credits | 787,067 |
+| Episode credits (crew and guest cast) | 1,331,995 |
+| Titles discovered but not fetched | 1 |
 | Seasons listed but not fetched | 0 |
 
 Every title is counted once by media type and TMDB ID, though many are credited to several of these companies.
@@ -80,12 +80,62 @@ titles whose details still credit the company, plus those found through discover
 | UCP | 7938 | 11 / 11 (1 pages) | 81 / 81 (5 pages) | 11 | 81 |
 | Universal International Studios | 87455 | 0 / 0 (1 pages) | 16 / 16 (1 pages) | 0 | 16 |
 | DreamWorks Animation Television | 42141 | 26 / 26 (2 pages) | 67 / 67 (4 pages) | 26 | 67 |
+| Paramount Pictures | 4 | 2,946 / 2,946 (148 pages) | 3 / 3 (1 pages) | 2,946 | 3 |
+| Paramount Animation | 24955 | 23 / 23 (2 pages) | 0 / 0 (1 pages) | 23 | 0 |
+| Paramount Players | 96540 | 18 / 18 (1 pages) | 0 / 0 (1 pages) | 18 | 0 |
+| Paramount Vantage | 838 | 24 / 24 (2 pages) | 0 / 0 (1 pages) | 24 | 0 |
+| Paramount Classics | 220287 | 16 / 16 (1 pages) | 0 / 0 (1 pages) | 16 | 0 |
+| Nickelodeon Movies | 2348 | 78 / 78 (4 pages) | 0 / 0 (1 pages) | 78 | 0 |
+| MTV Films | 746 | 51 / 51 (3 pages) | 0 / 0 (1 pages) | 51 | 0 |
+| CBS Films | 5490 | 17 / 17 (1 pages) | 0 / 0 (1 pages) | 17 | 0 |
+| Skydance Media | 82819 | 51 / 51 (3 pages) | 3 / 3 (1 pages) | 51 | 3 |
+| Skydance Animation | 115416 | 10 / 10 (1 pages) | 1 / 1 (1 pages) | 10 | 1 |
+| Paramount Television | 9223 | 170 / 170 (9 pages) | 147 / 147 (8 pages) | 170 | 147 |
+| Paramount Television Studios | 228633 | 4 / 4 (1 pages) | 41 / 41 (3 pages) | 4 | 41 |
+| CBS Studios | 1081 | 107 / 107 (6 pages) | 264 / 264 (14 pages) | 107 | 264 |
+| CBS Productions | 2161 | 68 / 68 (4 pages) | 43 / 43 (3 pages) | 68 | 43 |
+| Nickelodeon Animation Studio | 4859 | 136 / 136 (7 pages) | 105 / 105 (6 pages) | 136 | 105 |
+| Nickelodeon Productions | 5371 | 107 / 107 (6 pages) | 134 / 134 (7 pages) | 107 | 134 |
+| MTV Entertainment Studios | 6329 | 39 / 39 (2 pages) | 62 / 62 (4 pages) | 39 | 62 |
+| Showtime Networks | 4343 | 281 / 281 (15 pages) | 49 / 49 (3 pages) | 281 | 49 |
+| Skydance Television | 87731 | 0 / 0 (1 pages) | 14 / 14 (1 pages) | 0 | 14 |
+| Warner Bros. Pictures | 174 | 3,129 / 3,129 (157 pages) | 5 / 5 (1 pages) | 3,128 | 5 |
+| Warner Bros. Entertainment | 17 | 51 / 51 (3 pages) | 1 / 1 (1 pages) | 51 | 1 |
+| New Line Cinema | 12 | 437 / 437 (22 pages) | 10 / 10 (1 pages) | 437 | 10 |
+| Fine Line Features | 8 | 45 / 45 (3 pages) | 0 / 0 (1 pages) | 45 | 0 |
+| Warner Bros. Pictures Animation | 257419 | 19 / 18 (1 pages) | 0 / 0 (1 pages) | 18 | 0 |
+| Warner Animation Group | 25120 | 23 / 23 (2 pages) | 0 / 0 (1 pages) | 23 | 0 |
+| DC Studios | 184898 | 20 / 20 (1 pages) | 18 / 18 (1 pages) | 20 | 18 |
+| DC Films | 128064 | 17 / 17 (1 pages) | 0 / 0 (1 pages) | 17 | 0 |
+| DC Entertainment | 9993 | 51 / 51 (3 pages) | 61 / 61 (4 pages) | 51 | 61 |
+| Castle Rock Entertainment | 97 | 97 / 97 (5 pages) | 12 / 12 (1 pages) | 97 | 12 |
+| Warner Independent Pictures | 11509 | 11 / 11 (1 pages) | 0 / 0 (1 pages) | 11 | 0 |
+| HBO Films | 7429 | 187 / 187 (10 pages) | 11 / 11 (1 pages) | 187 | 11 |
+| Warner Bros. Television | 1957 | 205 / 205 (11 pages) | 467 / 467 (24 pages) | 205 | 467 |
+| Warner Horizon Television | 29347 | 6 / 6 (1 pages) | 43 / 43 (3 pages) | 6 | 43 |
+| Warner Bros. Animation | 2785 | 292 / 292 (15 pages) | 120 / 120 (6 pages) | 292 | 121 |
+| HBO | 3268 | 544 / 544 (28 pages) | 124 / 124 (7 pages) | 544 | 124 |
+| Cartoon Network Studios | 7899 | 172 / 172 (9 pages) | 84 / 84 (5 pages) | 172 | 84 |
+| Hanna-Barbera Cartoons | 1353 | 211 / 211 (11 pages) | 176 / 176 (9 pages) | 211 | 176 |
+| Williams Street | 6760 | 126 / 126 (7 pages) | 90 / 90 (5 pages) | 126 | 90 |
+| Columbia Pictures | 5 | 3,005 / 3,004 (151 pages) | 3 / 3 (1 pages) | 3,004 | 3 |
+| Sony Pictures | 34 | 136 / 136 (7 pages) | 1 / 1 (1 pages) | 136 | 1 |
+| TriStar Pictures | 559 | 204 / 204 (11 pages) | 0 / 0 (1 pages) | 204 | 0 |
+| Screen Gems | 3287 | 155 / 155 (8 pages) | 50 / 50 (3 pages) | 155 | 50 |
+| Sony Pictures Classics | 58 | 22 / 22 (2 pages) | 0 / 0 (1 pages) | 22 | 0 |
+| Sony Pictures Animation | 2251 | 68 / 67 (4 pages) | 9 / 9 (1 pages) | 67 | 9 |
+| 3000 Pictures | 130405 | 17 / 17 (1 pages) | 0 / 0 (1 pages) | 17 | 0 |
+| Stage 6 Films | 11341 | 85 / 85 (5 pages) | 0 / 0 (1 pages) | 85 | 0 |
+| Affirm Films | 10156 | 25 / 25 (2 pages) | 4 / 4 (1 pages) | 25 | 4 |
+| Sony Pictures Television | 11073 | 92 / 92 (5 pages) | 241 / 241 (13 pages) | 92 | 241 |
+| Columbia TriStar Television | 10471 | 40 / 40 (2 pages) | 60 / 60 (3 pages) | 40 | 60 |
+| Columbia Pictures Television | 3614 | 145 / 145 (8 pages) | 111 / 111 (6 pages) | 145 | 111 |
 
-Every query was read to its last page, and none found fewer titles than it reported. Company 3166's films found 2 more than reported, because TMDB's results changed while its pages were read. No query reached TMDB's 500-page cap, so none had to be split.
+Queries with failed pages or fewer titles found than reported: 257419 movie, 5 movie, 2251 movie. Company 3166's films found 2 more than reported, because TMDB's results changed while its pages were read. No query reached TMDB's 500-page cap, so none had to be split.
 
 ## What This Is, And Isn't
 
-- **What it is:** everything TMDB returned for these 42 companies' discovery queries, with full cast
+- **What it is:** everything TMDB returned for these 92 companies' discovery queries, with full cast
   and crew for each title, and every season and episode of each series.
 - **What it isn't:** every Disney production ever made. TMDB credits are contributed by its users, and some titles
   credit a different record of the same company, or none.
@@ -95,7 +145,7 @@ Every query was read to its last page, and none found fewer titles than it repor
   - TMDB records not covered: the second Touchstone Television record (141822), the older 20th Television record (21659)
     and Fox Television Studios (6529). The reasons are in `docs/CATALOG.md`.
   - Adult titles and video releases: TMDB's discovery leaves these out by default, and the queries kept those defaults.
-  - Person details: gathered for 279,833 people under the declared rule. No one credited is without them.
+  - Person details: gathered for 458,680 people under the declared rule. No one credited is without them.
   - Leadership: none is listed for 20th Century Studios, Searchlight Pictures or Walt Disney Pictures, nor for Universal
     Pictures, Focus Features, DreamWorks Animation or Working Title (`docs/CATALOG.md`).
 - **Rights exclusions:** no posters, stills or photographs are shown, because their rights belong to their holders. No

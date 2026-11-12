@@ -499,7 +499,7 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
                 <SelectField label={`${languageName(l.code)} Proficiency`} value={l.proficiency} options={PROFICIENCIES.map((p) => ({ value: p, label: p }))}
                   onChange={(v) => set({ languages: d.languages.map((x) => (x.code === l.code ? { ...x, proficiency: v } : x)) })} />
               </div>
-              <button className="btn btn-sm" style={{ marginBottom: 'var(--s4)', minHeight: 'var(--control)' }} onClick={() => set({ languages: d.languages.filter((x) => x.code !== l.code) })} aria-label={`Remove ${languageName(l.code)}`}>Remove</button>
+              <button className="btn btn-sm" style={{ marginBottom: 'var(--s4)', minHeight: 'var(--box-h)' }} onClick={() => set({ languages: d.languages.filter((x) => x.code !== l.code) })} aria-label={`Remove ${languageName(l.code)}`}>Remove</button>
             </li>
           ))}
         </ul>
