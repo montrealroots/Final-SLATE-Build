@@ -125,9 +125,9 @@ export function CalendarView() {
         </div>
       </fieldset>
       <div className="card">
-        <div className="row-between wrap">
+        <div className="month-bar">
           <button className="btn" onClick={() => move(-1)}>Previous Month</button>
-          <h2 style={{ margin: 0 }} aria-live="polite">{monthName(cursor.month)} {cursor.year}</h2>
+          <h2 aria-live="polite">{monthName(cursor.month)} {cursor.year}</h2>
           <button className="btn" onClick={() => move(1)}>Next Month</button>
         </div>
         <div className="cal-grid spaced" role="grid" aria-label={`${monthName(cursor.month)} ${cursor.year}`}>

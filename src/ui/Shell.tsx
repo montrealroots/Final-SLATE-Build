@@ -103,7 +103,7 @@ export function Shell({ children }: { children: ReactNode }) {
           )}
         </nav>
         {railOpen && <button type="button" className="rail-shade" aria-label="Close Navigation" onClick={() => setRailOpen(false)} />}
-        <main className="main" id="main" tabIndex={-1} ref={main}>
+        <main className="main" id="main" tabIndex={-1} ref={main} data-view={route.view} data-tab={route.view === 'project' ? route.tab ?? 'overview' : undefined}>
           <div className="main-inner">
             {s.readOnly && (
               <div className="callout callout-negative" role="alert">
@@ -242,12 +242,12 @@ function AdvanceDialog({ onClose }: { onClose: () => void }) {
     <Modal title="Advance" onClose={onClose} footer={<><button className="btn" onClick={onClose}>Cancel</button><button className="btn btn-primary" onClick={go}>Advance</button></>}>
       <p className="muted">Everything along the way still happens. Advancing stops early if something needs you.</p>
       <SelectField label="Advance To" value={mode} onChange={(v) => { setMode(v); setError(null); }} options={[
-        ...(next ? [{ value: 'next-event' as const, label: `Next Event (${describe(next.at)})` }] : []),
-        { value: 'next-day', label: `Same Time Tomorrow (${describe(addLocal(g.now, zone, { days: 1 }))})` },
-        { value: 'week', label: `One Week (${describe(addLocal(g.now, zone, { days: 7 }))})` },
-        { value: 'month', label: `One Month (${describe(addLocal(g.now, zone, { months: 1 }))})` },
+        ...(next ? [{ value: 'next-event' as const, label: 'Next Event' }] : []),
+        { value: 'next-day', label: 'Same Time Tomorrow' },
+        { value: 'week', label: 'One Week' },
+        { value: 'month', label: 'One Month' },
         { value: 'time', label: 'A Time I Choose' },
-      ]} />
+      ]} hint={mode !== 'time' && target ? `To ${describe(target)}.` : undefined} />
       {mode === 'time' && (
         <div className="grid grid-2 form">
           <TextField label="Date" type="date" value={date} onChange={setDate} />

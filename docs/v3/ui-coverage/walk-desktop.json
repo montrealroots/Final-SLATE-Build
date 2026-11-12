@@ -1,0 +1,1036 @@
+{
+ "project": "desktop",
+ "at": "2026-11-12T07:41:03.368Z",
+ "rows": [
+  {
+   "id": "start",
+   "area": "Startup",
+   "name": "Start Screen, No Saves",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "start-settings",
+   "area": "Startup",
+   "name": "Settings From The Start Screen",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "creation-identity",
+   "area": "Startup",
+   "name": "Creation: Identity",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "home-empty",
+   "area": "Home",
+   "name": "Home, Nothing Started",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "sleep",
+   "area": "Shell",
+   "name": "Sleep",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "advance",
+   "area": "Shell",
+   "name": "Advance",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "profile",
+   "area": "You",
+   "name": "Player Profile",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "calendar",
+   "area": "Your Day",
+   "name": "Calendar",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [
+    "January #: span.dot keeps to one line and ends in an ellipsis; pressing it shows the whole"
+   ]
+  },
+  {
+   "id": "add-plan",
+   "area": "Your Day",
+   "name": "Add Plan",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "world",
+   "area": "Your Day",
+   "name": "World",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "companies-none",
+   "area": "Industry",
+   "name": "Companies, No Catalog Installed",
+   "kind": "state",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "saves",
+   "area": "Your Game",
+   "name": "Saved Games",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "settings",
+   "area": "Your Game",
+   "name": "Settings",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "projects-empty",
+   "area": "Your Work",
+   "name": "Projects, None Yet",
+   "kind": "state",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "new-script",
+   "area": "Your Work",
+   "name": "New Script",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "overview-new",
+   "area": "Project",
+   "name": "Overview, Just Created",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "script-empty",
+   "area": "Project",
+   "name": "Script, Nothing Written",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "story-list",
+   "area": "Project",
+   "name": "Choose A Full Story",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "story-open",
+   "area": "Project",
+   "name": "A Full Story, Open",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "script-story",
+   "area": "Project",
+   "name": "Script, With A Story Applied",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "idea-list",
+   "area": "Project",
+   "name": "Choose A Starting Idea",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "scene-open",
+   "area": "Project",
+   "name": "A Scene, Open For Editing",
+   "kind": "panel",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "characters",
+   "area": "Project",
+   "name": "Characters",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "character-open",
+   "area": "Project",
+   "name": "A Character, Open For Editing",
+   "kind": "panel",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "set-aside",
+   "area": "Project",
+   "name": "Take A Character Out Of The Script",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "cast-before",
+   "area": "Project",
+   "name": "Cast, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "crew-before",
+   "area": "Project",
+   "name": "Crew, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "schedule-before",
+   "area": "Project",
+   "name": "Schedule, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "budget-before",
+   "area": "Project",
+   "name": "Budget, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "production-before",
+   "area": "Project",
+   "name": "Production, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "edit-before",
+   "area": "Project",
+   "name": "Edit, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "release-before",
+   "area": "Project",
+   "name": "Release, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "awards-before",
+   "area": "Project",
+   "name": "Festivals And Awards, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "script-approved",
+   "area": "Project",
+   "name": "Script, A Draft Approved",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "budget",
+   "area": "Project",
+   "name": "Budget",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "accept-terms",
+   "area": "Project",
+   "name": "Accept These Terms?",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "budget-funded",
+   "area": "Project",
+   "name": "Budget, Funded",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "cast",
+   "area": "Project",
+   "name": "Cast",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "find-performers",
+   "area": "Project",
+   "name": "Find Performers",
+   "kind": "dialog",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "cast-offer",
+   "area": "Project",
+   "name": "Cast, An Offer Out",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "crew",
+   "area": "Project",
+   "name": "Crew",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "schedule",
+   "area": "Project",
+   "name": "Schedule",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "overview",
+   "area": "Project",
+   "name": "Overview",
+   "kind": "tab",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": []
+  },
+  {
+   "id": "home",
+   "area": "Home",
+   "name": "Home, A Project Under Way",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "projects",
+   "area": "Your Work",
+   "name": "Projects",
+   "kind": "screen",
+   "sizes": {
+    "desktop (1280 by 720)": {
+     "defects": []
+    },
+    "small laptop (1024 by 768)": {
+     "defects": []
+    },
+    "tablet upright (768 by 1024)": {
+     "defects": []
+    },
+    "small tablet upright (600 by 960)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  }
+ ]
+}

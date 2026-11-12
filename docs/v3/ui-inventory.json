@@ -1,0 +1,701 @@
+[
+ {
+  "id": "start",
+  "area": "Startup",
+  "name": "Start Screen",
+  "kind": "screen",
+  "screen": "start:",
+  "walk": [
+   "start"
+  ]
+ },
+ {
+  "id": "start-loading",
+  "area": "Startup",
+  "name": "Opening Your Game (Loading)",
+  "kind": "state",
+  "screen": "start:Opening Your Game"
+ },
+ {
+  "id": "start-load-error",
+  "area": "Startup",
+  "name": "Couldn't Open This Save (Error)",
+  "kind": "state",
+  "screen": "start:Couldn't Open This Save"
+ },
+ {
+  "id": "start-repair",
+  "area": "Startup",
+  "name": "Choose Missing Places (Repair)",
+  "kind": "state",
+  "screen": "start:Choose Missing Places"
+ },
+ {
+  "id": "start-saves",
+  "area": "Startup",
+  "name": "Saved Games (From The Start Screen)",
+  "kind": "screen",
+  "screen": "start:Saved Games"
+ },
+ {
+  "id": "creation-identity",
+  "area": "Startup",
+  "name": "Creation: Identity",
+  "kind": "screen",
+  "screen": "creation:Identity",
+  "walk": [
+   "creation-identity"
+  ]
+ },
+ {
+  "id": "creation-background",
+  "area": "Startup",
+  "name": "Creation: Background And Languages",
+  "kind": "screen",
+  "screen": "creation:Background & Languages"
+ },
+ {
+  "id": "creation-starting-point",
+  "area": "Startup",
+  "name": "Creation: Starting Point",
+  "kind": "screen",
+  "screen": "creation:Starting Point"
+ },
+ {
+  "id": "creation-review",
+  "area": "Startup",
+  "name": "Creation: Review",
+  "kind": "screen",
+  "screen": "creation:Review"
+ },
+ {
+  "id": "menu",
+  "area": "Shell",
+  "name": "Menu Drawer (Phone And Tablet)",
+  "kind": "menu",
+  "screen": "",
+  "walk": [
+   "menu"
+  ],
+  "note": "The rail on a desktop; a drawer under 900 pixels."
+ },
+ {
+  "id": "home",
+  "area": "Home",
+  "name": "Home",
+  "kind": "screen",
+  "screen": "home",
+  "walk": [
+   "home-empty",
+   "home"
+  ]
+ },
+ {
+  "id": "profile",
+  "area": "You",
+  "name": "Player Profile",
+  "kind": "screen",
+  "screen": "profile",
+  "walk": [
+   "profile"
+  ]
+ },
+ {
+  "id": "calendar",
+  "area": "Your Day",
+  "name": "Calendar",
+  "kind": "screen",
+  "screen": "calendar",
+  "walk": [
+   "calendar"
+  ]
+ },
+ {
+  "id": "event",
+  "area": "Your Day",
+  "name": "Festival Or Awards Edition",
+  "kind": "screen",
+  "screen": "event"
+ },
+ {
+  "id": "world",
+  "area": "Your Day",
+  "name": "World",
+  "kind": "screen",
+  "screen": "world",
+  "walk": [
+   "world"
+  ]
+ },
+ {
+  "id": "place",
+  "area": "Your Day",
+  "name": "A Place",
+  "kind": "screen",
+  "screen": "place"
+ },
+ {
+  "id": "companies",
+  "area": "Industry",
+  "name": "Companies",
+  "kind": "screen",
+  "screen": "companies",
+  "walk": [
+   "companies-none"
+  ]
+ },
+ {
+  "id": "company",
+  "area": "Industry",
+  "name": "A Company",
+  "kind": "screen",
+  "screen": "company"
+ },
+ {
+  "id": "title",
+  "area": "Industry",
+  "name": "A Film Or Series",
+  "kind": "screen",
+  "screen": "title"
+ },
+ {
+  "id": "season",
+  "area": "Industry",
+  "name": "A Season",
+  "kind": "screen",
+  "screen": "season"
+ },
+ {
+  "id": "episode",
+  "area": "Industry",
+  "name": "An Episode",
+  "kind": "screen",
+  "screen": "episode"
+ },
+ {
+  "id": "person",
+  "area": "Industry",
+  "name": "A Person",
+  "kind": "screen",
+  "screen": "person"
+ },
+ {
+  "id": "networks",
+  "area": "Industry",
+  "name": "Networks And Streaming Services",
+  "kind": "screen",
+  "screen": "networks"
+ },
+ {
+  "id": "network",
+  "area": "Industry",
+  "name": "A Network",
+  "kind": "screen",
+  "screen": "network"
+ },
+ {
+  "id": "executive",
+  "area": "Industry",
+  "name": "An Executive",
+  "kind": "screen",
+  "screen": "executive"
+ },
+ {
+  "id": "projects",
+  "area": "Your Work",
+  "name": "Projects",
+  "kind": "screen",
+  "screen": "projects",
+  "walk": [
+   "projects-empty",
+   "projects"
+  ]
+ },
+ {
+  "id": "new-project",
+  "area": "Your Work",
+  "name": "New Script",
+  "kind": "screen",
+  "screen": "new-project",
+  "walk": [
+   "new-script"
+  ]
+ },
+ {
+  "id": "saves",
+  "area": "Your Game",
+  "name": "Saved Games",
+  "kind": "screen",
+  "screen": "saves",
+  "walk": [
+   "saves"
+  ]
+ },
+ {
+  "id": "settings",
+  "area": "Your Game",
+  "name": "Settings",
+  "kind": "screen",
+  "screen": "settings",
+  "walk": [
+   "settings"
+  ]
+ },
+ {
+  "id": "project-overview",
+  "area": "Project",
+  "name": "Project: Overview",
+  "kind": "tab",
+  "screen": "project:overview",
+  "walk": [
+   "overview-new",
+   "overview"
+  ]
+ },
+ {
+  "id": "project-script",
+  "area": "Project",
+  "name": "Project: Script",
+  "kind": "tab",
+  "screen": "project:script",
+  "walk": [
+   "script-empty",
+   "script-story",
+   "script-approved"
+  ]
+ },
+ {
+  "id": "project-characters",
+  "area": "Project",
+  "name": "Project: Characters",
+  "kind": "tab",
+  "screen": "project:characters",
+  "walk": [
+   "characters",
+   "character-open"
+  ]
+ },
+ {
+  "id": "project-cast",
+  "area": "Project",
+  "name": "Project: Cast",
+  "kind": "tab",
+  "screen": "project:cast",
+  "walk": [
+   "cast-before",
+   "cast",
+   "cast-offer"
+  ]
+ },
+ {
+  "id": "project-crew",
+  "area": "Project",
+  "name": "Project: Crew",
+  "kind": "tab",
+  "screen": "project:crew",
+  "walk": [
+   "crew-before",
+   "crew"
+  ]
+ },
+ {
+  "id": "project-schedule",
+  "area": "Project",
+  "name": "Project: Schedule",
+  "kind": "tab",
+  "screen": "project:schedule",
+  "walk": [
+   "schedule-before",
+   "schedule"
+  ]
+ },
+ {
+  "id": "project-budget",
+  "area": "Project",
+  "name": "Project: Budget",
+  "kind": "tab",
+  "screen": "project:budget",
+  "walk": [
+   "budget-before",
+   "budget",
+   "budget-funded"
+  ]
+ },
+ {
+  "id": "project-production",
+  "area": "Project",
+  "name": "Project: Production",
+  "kind": "tab",
+  "screen": "project:production",
+  "walk": [
+   "production-before"
+  ]
+ },
+ {
+  "id": "project-edit",
+  "area": "Project",
+  "name": "Project: Edit",
+  "kind": "tab",
+  "screen": "project:edit",
+  "walk": [
+   "edit-before"
+  ]
+ },
+ {
+  "id": "project-release",
+  "area": "Project",
+  "name": "Project: Release",
+  "kind": "tab",
+  "screen": "project:release",
+  "walk": [
+   "release-before"
+  ]
+ },
+ {
+  "id": "project-festivals",
+  "area": "Project",
+  "name": "Project: Festivals And Awards",
+  "kind": "tab",
+  "screen": "project:festivals",
+  "walk": [
+   "awards-before"
+  ]
+ },
+ {
+  "id": "dlg-sleep",
+  "area": "Shell",
+  "name": "Sleep",
+  "kind": "dialog",
+  "dialog": "^Sleep$",
+  "source": "Shell | \"Sleep\"",
+  "walk": [
+   "sleep"
+  ]
+ },
+ {
+  "id": "dlg-advance",
+  "area": "Shell",
+  "name": "Advance",
+  "kind": "dialog",
+  "dialog": "^Advance$",
+  "source": "Shell | \"Advance\"",
+  "walk": [
+   "advance"
+  ]
+ },
+ {
+  "id": "dlg-settings",
+  "area": "Startup",
+  "name": "Settings (From The Start Screen)",
+  "kind": "dialog",
+  "dialog": "^Settings$",
+  "source": "SavedGames | \"Settings\"",
+  "walk": [
+   "start-settings"
+  ]
+ },
+ {
+  "id": "dlg-start-over",
+  "area": "Startup",
+  "name": "Start Over?",
+  "kind": "dialog",
+  "dialog": "^Start Over\\?$",
+  "source": "Startup | \"Start Over?\""
+ },
+ {
+  "id": "dlg-add-plan",
+  "area": "Your Day",
+  "name": "Add Plan",
+  "kind": "dialog",
+  "dialog": "^Add Plan$",
+  "source": "Places | \"Add Plan\"",
+  "walk": [
+   "add-plan"
+  ]
+ },
+ {
+  "id": "dlg-delete-save",
+  "area": "Your Game",
+  "name": "Delete This Save?",
+  "kind": "dialog",
+  "dialog": "^Delete This Save\\?$",
+  "source": "SavedGames | \"Delete This Save?\""
+ },
+ {
+  "id": "dlg-rename-save",
+  "area": "Your Game",
+  "name": "Rename Save",
+  "kind": "dialog",
+  "dialog": "^Rename Save$",
+  "source": "SavedGames | \"Rename Save\""
+ },
+ {
+  "id": "dlg-save-here",
+  "area": "Your Game",
+  "name": "This Save Is Already Here",
+  "kind": "dialog",
+  "dialog": "^This Save Is Already Here$",
+  "source": "SavedGames | \"This Save Is Already Here\""
+ },
+ {
+  "id": "dlg-replace-save",
+  "area": "Your Game",
+  "name": "Replace This Save?",
+  "kind": "dialog",
+  "dialog": "^Replace This Save\\?$",
+  "source": "SavedGames | \"Replace This Save?\""
+ },
+ {
+  "id": "dlg-delete-copy",
+  "area": "Your Game",
+  "name": "Delete This Copy?",
+  "kind": "dialog",
+  "dialog": "^Delete This Copy\\?$",
+  "source": "SavedGames | \"Delete This Copy?\""
+ },
+ {
+  "id": "dlg-shelve",
+  "area": "Project",
+  "name": "Shelve The Project",
+  "kind": "dialog",
+  "dialog": "^Shelve The Project$",
+  "source": "Projects | \"Shelve The Project\""
+ },
+ {
+  "id": "dlg-story",
+  "area": "Script",
+  "name": "Choose A Full Story",
+  "kind": "dialog",
+  "dialog": "^Choose A Full Story$",
+  "source": "StoryPicker | \"Choose A Full Story\"",
+  "walk": [
+   "story-list"
+  ]
+ },
+ {
+  "id": "dlg-story-open",
+  "area": "Script",
+  "name": "A Full Story, Open",
+  "kind": "dialog",
+  "dialog": "^@story-open$",
+  "source": "StoryPicker | {b.title}",
+  "walk": [
+   "story-open"
+  ]
+ },
+ {
+  "id": "dlg-idea-list",
+  "area": "Script",
+  "name": "Choose Ideas",
+  "kind": "dialog",
+  "dialog": "^Choose ",
+  "source": "IdeaPicker | {title}",
+  "walk": [
+   "idea-list"
+  ]
+ },
+ {
+  "id": "dlg-idea-open",
+  "area": "Script",
+  "name": "An Idea, Open",
+  "kind": "dialog",
+  "dialog": "^@idea-open$",
+  "source": "IdeaPicker | {idea.label}"
+ },
+ {
+  "id": "dlg-approve-draft",
+  "area": "Script",
+  "name": "Approve This Draft?",
+  "kind": "dialog",
+  "dialog": "^Approve This Draft\\?$",
+  "source": "ScriptViews | \"Approve This Draft?\""
+ },
+ {
+  "id": "dlg-compare-draft",
+  "area": "Script",
+  "name": "Compare Draft",
+  "kind": "dialog",
+  "dialog": "^Compare Draft ",
+  "source": "ScriptViews | {`Compare Draft ${compare}"
+ },
+ {
+  "id": "dlg-rename-draft",
+  "area": "Script",
+  "name": "Rename Draft",
+  "kind": "dialog",
+  "dialog": "^Rename Draft$",
+  "source": "ScriptViews | \"Rename Draft\""
+ },
+ {
+  "id": "dlg-delete-scene",
+  "area": "Script",
+  "name": "Delete This Scene?",
+  "kind": "dialog",
+  "dialog": "^Delete This Scene\\?$",
+  "source": "ScriptViews | \"Delete This Scene?\""
+ },
+ {
+  "id": "dlg-confirm",
+  "area": "Script",
+  "name": "A Script Change That Touches Other Work",
+  "kind": "dialog",
+  "dialog": "^@script-confirm$",
+  "source": "ScriptViews | {confirm.title}",
+  "note": "Split The Scene, Combine The Scenes and the like: titled with the change."
+ },
+ {
+  "id": "dlg-change-rule",
+  "area": "Script",
+  "name": "Change The Rule",
+  "kind": "dialog",
+  "dialog": "^Change The Rule$",
+  "source": "ScriptViews | \"Change The Rule\""
+ },
+ {
+  "id": "dlg-remove-rule",
+  "area": "Script",
+  "name": "Remove The Rule",
+  "kind": "dialog",
+  "dialog": "^Remove The Rule$",
+  "source": "ScriptViews | \"Remove The Rule\""
+ },
+ {
+  "id": "dlg-change-relationship",
+  "area": "Script",
+  "name": "Change The Relationship",
+  "kind": "dialog",
+  "dialog": "^Change The Relationship$",
+  "source": "ScriptViews | \"Change The Relationship\""
+ },
+ {
+  "id": "dlg-remove-relationship",
+  "area": "Script",
+  "name": "Remove The Relationship",
+  "kind": "dialog",
+  "dialog": "^Remove The Relationship$",
+  "source": "ScriptViews | \"Remove The Relationship\""
+ },
+ {
+  "id": "dlg-set-aside",
+  "area": "Characters",
+  "name": "Take A Character Out Of The Script?",
+  "kind": "dialog",
+  "dialog": "^Take .+ Out Of The Script\\?$",
+  "source": "ScriptViews | {`Take ${removing.name}",
+  "walk": [
+   "set-aside"
+  ]
+ },
+ {
+  "id": "dlg-withdraws",
+  "area": "Script",
+  "name": "A Contributor Withdraws?",
+  "kind": "dialog",
+  "dialog": "Withdraws\\?$",
+  "source": "ScriptViews | {`${name}"
+ },
+ {
+  "id": "dlg-accept-terms",
+  "area": "Budget",
+  "name": "Accept These Terms?",
+  "kind": "dialog",
+  "dialog": "^Accept These Terms\\?$",
+  "source": "PlanViews | \"Accept These Terms?\"",
+  "walk": [
+   "accept-terms"
+  ]
+ },
+ {
+  "id": "dlg-find-performers",
+  "area": "Cast",
+  "name": "Cast A Character (Find Performers)",
+  "kind": "dialog",
+  "dialog": "^Cast ",
+  "source": "PlanViews | {`Cast ${approvedCharacters(p).find((c) => c.id === searching.characterId)?.name}",
+  "walk": [
+   "find-performers"
+  ]
+ },
+ {
+  "id": "dlg-hire",
+  "area": "Crew",
+  "name": "Hire A Crew Member",
+  "kind": "dialog",
+  "dialog": "^Hire An? ",
+  "source": "PlanViews | {`Hire ${/^[AEIOU]/.test(roleLabel(finding)) ? 'An' : 'A'}"
+ },
+ {
+  "id": "dlg-staff",
+  "area": "Crew",
+  "name": "Staff A Department",
+  "kind": "dialog",
+  "dialog": "^Staff ",
+  "source": "PlanViews | {`Staff ${proposal.dept}"
+ },
+ {
+  "id": "dlg-hire-extra",
+  "area": "Crew",
+  "name": "Hire A Writer Or Director",
+  "kind": "dialog",
+  "dialog": "^Hire An? .*(Writer|Director|Editor)",
+  "source": "PlanViews | {label}"
+ },
+ {
+  "id": "dlg-where",
+  "area": "Schedule",
+  "name": "Where A Place Is Filmed",
+  "kind": "dialog",
+  "dialog": "^Where ",
+  "source": "FilmedAt | {`Where ${label}"
+ },
+ {
+  "id": "dlg-cut-scene",
+  "area": "Edit",
+  "name": "Cut This Scene From The Edit?",
+  "kind": "dialog",
+  "dialog": "^Cut This Scene From The Edit\\?$",
+  "source": "FinishViews | \"Cut This Scene From The Edit?\""
+ },
+ {
+  "id": "dlg-episode-dates",
+  "area": "Release",
+  "name": "Change These Episode Dates?",
+  "kind": "dialog",
+  "dialog": "^Change These Episode Dates\\?$",
+  "source": "FinishViews | \"Change These Episode Dates?\""
+ },
+ {
+  "id": "dlg-cancel-release",
+  "area": "Release",
+  "name": "Cancel This Release?",
+  "kind": "dialog",
+  "dialog": "^Cancel This Release\\?$",
+  "source": "FinishViews | \"Cancel This Release?\""
+ },
+ {
+  "id": "dlg-submission",
+  "area": "Festivals And Awards",
+  "name": "Prepare Submission",
+  "kind": "dialog",
+  "dialog": "^Prepare Submission$",
+  "source": "FinishViews | \"Prepare Submission\""
+ },
+ {
+  "id": "dlg-approved-take",
+  "area": "Edit",
+  "name": "Change The Approved Take?",
+  "kind": "dialog",
+  "dialog": "^Change The Approved Take\\?$",
+  "source": "FinishViews | \"Change The Approved Take?\""
+ },
+ {
+  "id": "scene-open",
+  "area": "Script",
+  "name": "A Scene, Open",
+  "kind": "panel",
+  "screen": "project:script",
+  "walk": [
+   "scene-open"
+  ]
+ }
+]

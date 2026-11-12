@@ -1,0 +1,1428 @@
+{
+ "project": "phone",
+ "at": "2026-11-12T07:43:01.776Z",
+ "rows": [
+  {
+   "id": "start",
+   "area": "Startup",
+   "name": "Start Screen, No Saves",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "start-settings",
+   "area": "Startup",
+   "name": "Settings From The Start Screen",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "creation-identity",
+   "area": "Startup",
+   "name": "Creation: Identity",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "home-empty",
+   "area": "Home",
+   "name": "Home, Nothing Started",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "sleep",
+   "area": "Shell",
+   "name": "Sleep",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "advance",
+   "area": "Shell",
+   "name": "Advance",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "profile",
+   "area": "You",
+   "name": "Player Profile",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "calendar",
+   "area": "Your Day",
+   "name": "Calendar",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "add-plan",
+   "area": "Your Day",
+   "name": "Add Plan",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "world",
+   "area": "Your Day",
+   "name": "World",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [
+    "Map: the map's markers are under 44 pixels; the list of places beside the map opens the same places"
+   ],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "companies-none",
+   "area": "Industry",
+   "name": "Companies, No Catalog Installed",
+   "kind": "state",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "saves",
+   "area": "Your Game",
+   "name": "Saved Games",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "settings",
+   "area": "Your Game",
+   "name": "Settings",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "projects-empty",
+   "area": "Your Work",
+   "name": "Projects, None Yet",
+   "kind": "state",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "new-script",
+   "area": "Your Work",
+   "name": "New Script",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "overview-new",
+   "area": "Project",
+   "name": "Overview, Just Created",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "script-empty",
+   "area": "Project",
+   "name": "Script, Nothing Written",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "story-list",
+   "area": "Project",
+   "name": "Choose A Full Story",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "story-open",
+   "area": "Project",
+   "name": "A Full Story, Open",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "script-story",
+   "area": "Project",
+   "name": "Script, With A Story Applied",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "idea-list",
+   "area": "Project",
+   "name": "Choose A Starting Idea",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Ideas\" in Choose A Starting Idea"
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "scene-open",
+   "area": "Project",
+   "name": "A Scene, Open For Editing",
+   "kind": "panel",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "characters",
+   "area": "Project",
+   "name": "Characters",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "character-open",
+   "area": "Project",
+   "name": "A Character, Open For Editing",
+   "kind": "panel",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "set-aside",
+   "area": "Project",
+   "name": "Take A Character Out Of The Script",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "cast-before",
+   "area": "Project",
+   "name": "Cast, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "crew-before",
+   "area": "Project",
+   "name": "Crew, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "schedule-before",
+   "area": "Project",
+   "name": "Schedule, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "budget-before",
+   "area": "Project",
+   "name": "Budget, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "production-before",
+   "area": "Project",
+   "name": "Production, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "edit-before",
+   "area": "Project",
+   "name": "Edit, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "release-before",
+   "area": "Project",
+   "name": "Release, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "awards-before",
+   "area": "Project",
+   "name": "Festivals And Awards, Before A Draft Is Approved",
+   "kind": "state",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "script-approved",
+   "area": "Project",
+   "name": "Script, A Draft Approved",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "budget",
+   "area": "Project",
+   "name": "Budget",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "accept-terms",
+   "area": "Project",
+   "name": "Accept These Terms?",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "budget-funded",
+   "area": "Project",
+   "name": "Budget, Funded",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "cast",
+   "area": "Project",
+   "name": "Cast",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "find-performers",
+   "area": "Project",
+   "name": "Find Performers",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "cast-offer",
+   "area": "Project",
+   "name": "Cast, An Offer Out",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "crew",
+   "area": "Project",
+   "name": "Crew",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "schedule",
+   "area": "Project",
+   "name": "Schedule",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "overview",
+   "area": "Project",
+   "name": "Overview",
+   "kind": "tab",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [
+    "div.tabs \"Project Sections\" in "
+   ],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "home",
+   "area": "Home",
+   "name": "Home, A Project Under Way",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "projects",
+   "area": "Your Work",
+   "name": "Projects",
+   "kind": "screen",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "menu",
+   "area": "Shell",
+   "name": "Menu Drawer",
+   "kind": "drawer",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  }
+ ]
+}

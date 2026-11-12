@@ -525,7 +525,7 @@ function SceneCard({ p, s, onDelete }: { p: Project; s: Scene; onDelete: () => v
   return (
     <article className="scene-card" aria-label={label}>
       {confirm && (
-        <Modal title={confirm.title} onClose={() => setConfirm(null)} footer={<><button className="btn" onClick={() => setConfirm(null)}>Cancel</button><button className="btn btn-primary" onClick={() => { setErr(edit(p, confirm.act)); setConfirm(null); }}>{confirm.title}</button></>}>
+        <Modal title={confirm.title} kind="script-confirm" onClose={() => setConfirm(null)} footer={<><button className="btn" onClick={() => setConfirm(null)}>Cancel</button><button className="btn btn-primary" onClick={() => { setErr(edit(p, confirm.act)); setConfirm(null); }}>{confirm.title}</button></>}>
           <ul>{confirm.lines.map((x, i) => <li key={i}>{x}</li>)}</ul>
           <p className="dim">Your approved draft and anything filmed stay as they are until you approve a new draft.</p>
         </Modal>

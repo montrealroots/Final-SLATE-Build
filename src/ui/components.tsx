@@ -99,7 +99,7 @@ export function Check(props: { label: string; checked: boolean; onChange: (v: bo
 }
 
 /** `sheet`: on a phone it fills the screen's width and height, with its actions above the home indicator (the idea picker). */
-export function Modal(props: { title: string; onClose: () => void; children: ReactNode; footer: ReactNode; labelledBy?: string; sheet?: boolean }) {
+export function Modal(props: { title: string; onClose: () => void; children: ReactNode; footer: ReactNode; labelledBy?: string; sheet?: boolean; /** Which dialog this is, where its title is the name of the thing it shows. */ kind?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const titleId = useId();
   useEffect(() => {
@@ -135,7 +135,7 @@ export function Modal(props: { title: string; onClose: () => void; children: Rea
   }, []);
   return (
     <div className={props.sheet ? 'overlay overlay-sheet' : 'overlay'} onMouseDown={(e) => e.target === e.currentTarget && props.onClose()}>
-      <div className={props.sheet ? 'modal modal-sheet' : 'modal'} role="dialog" aria-modal="true" aria-labelledby={titleId} ref={ref} tabIndex={-1}>
+      <div className={props.sheet ? 'modal modal-sheet' : 'modal'} role="dialog" aria-modal="true" aria-labelledby={titleId} ref={ref} tabIndex={-1} data-dialog={props.kind}>
         <div className="modal-head">
           <div className="row-between">
             <h2 id={titleId}>{props.title}</h2>

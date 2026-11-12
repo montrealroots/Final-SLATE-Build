@@ -1,6 +1,7 @@
 import { appendFileSync, writeFileSync } from 'node:fs';
 import { test as base, expect } from '@playwright/test';
 import { findMisalignments, type Finding } from './layout';
+import { auditPage } from './ui-audit';
 
 /**
  * Every journey records console errors, uncaught page errors and failed requests, attaches them to the report, and
@@ -35,6 +36,42 @@ export const test = base.extend<{ diagnostics: void }>({
         for (const x of xs) { const k = JSON.stringify([x.kind, x.where, x.a, x.b]); if (!told.has(k)) { told.add(k); appendFileSync(sweep, `${JSON.stringify({ ...x, project: info.project.name, test: info.title })}\n`); } }
       });
       await page.addInitScript(`(() => { const find = ${findMisalignments.toString()}; let due = false; const run = () => { due = false; try { Promise.resolve(window.__layoutFound(find())).catch(() => {}); } catch { /* the page is going */ } };
+        new MutationObserver(() => { if (!due) { due = true; setTimeout(run, 400); } }).observe(document, { childList: true, subtree: true, attributes: true }); })();`);
+    }
+    // SLATE_UI_SWEEP=<file>: the whole audit (e2e/ui-audit.ts), on every screen and dialog a journey reaches, at the
+    // size the journey runs at. A line for each screen seen and for each defect that was still there at the next
+    // measure, so a drawer sliding in or a dialog opening isn't one. tools/v3/ui-coverage.mjs reads the file.
+    const ui = process.env.SLATE_UI_SWEEP;
+    if (ui) {
+      const told = new Set<string>();
+      await page.exposeFunction('__uiFound', (lines: Record<string, unknown>[]) => {
+        for (const x of lines) {
+          if (x.t === 'sig') { const fresh = (x.items as string[]).filter((i) => { const k = `${x.screen}|${x.dialog}|${i}`; if (told.has(k)) return false; told.add(k); return true; }); if (!fresh.length) continue; x.items = fresh; }
+          const k = JSON.stringify(x); if (x.t !== 'sig' && told.has(k)) continue; told.add(k);
+          appendFileSync(ui, `${JSON.stringify({ ...x, project: info.project.name, spec: info.file.split('/').at(-1), test: info.title.slice(0, 60) })}\n`);
+        }
+      });
+      await page.addInitScript(`(() => { const audit = ${auditPage.toString()}; const find = ${findMisalignments.toString()};
+        let due = false, lastKey = '', last = new Set();
+        const run = () => { due = false; try {
+          // Not while something is sliding or fading: a drawer half way in is not where anything is.
+          if (document.getAnimations().some((x) => x.playState === 'running' && x.effect?.getComputedTiming().iterations !== Infinity)) { due = true; setTimeout(run, 250); return; }
+          const main = document.querySelector('main[data-view]'), dlg = [...document.querySelectorAll('[role="dialog"]')].at(-1), step = document.querySelector('.creation-step[aria-current="step"]');
+          const screen = main ? main.dataset.view + (main.dataset.tab ? ':' + main.dataset.tab : '') : step ? 'creation:' + step.textContent.trim() : document.querySelector('.start-page') ? 'start:' + ([...document.querySelectorAll('h1, h2')].map((x) => x.textContent.trim()).find((x) => /^(Opening Your Game|Couldn.t Open This Save|Choose Missing Places|Saved Games)$/.test(x)) ?? '') : 'other';
+          const dialog = dlg ? (dlg.dataset.dialog ? '@' + dlg.dataset.dialog : (dlg.querySelector('.modal-head h2, h2, h3')?.textContent ?? 'dialog').trim()) : '';
+          const size = innerWidth + 'x' + innerHeight, key = screen + '|' + dialog + '|' + size;
+          const a = audit();
+          const defects = [...a.defects, ...find().map((f) => ({ kind: f.kind, what: f.a + ' | ' + f.b, by: f.by, where: f.where.split(' / ').at(-1) ?? '' }))];
+          const now = new Set(defects.map((d) => d.kind + '|' + d.what + '|' + d.where));
+          const out = [{ t: 'seen', screen, dialog, size, coarse: matchMedia('(pointer: coarse)').matches }];
+          if (key === lastKey) for (const d of defects) if (last.has(d.kind + '|' + d.what + '|' + d.where)) out.push({ t: 'defect', screen, dialog, size, kind: d.kind, what: d.what, where: d.where, by: Math.round(d.by) });
+          if (key === lastKey) { for (const x of a.accepted) out.push({ t: 'accepted', screen, dialog, size, what: x }); for (const x of a.scrollers) out.push({ t: 'scroller', screen, dialog, size, what: x }); }
+          // What the screen offers, for a desktop run and a phone run of the same journey to be compared.
+          const sig = [...a.signature.headings.map((x) => 'heading: ' + x), ...a.signature.actions.map((x) => 'press: ' + x), ...a.signature.fields.map((x) => 'field: ' + x)];
+          if (sig.length) out.push({ t: 'sig', screen, dialog, items: sig.map((x) => x.replace(/\d+/g, '#').slice(0, 70)) });
+          lastKey = key; last = now;
+          Promise.resolve(window.__uiFound(out)).catch(() => {});
+        } catch { /* the page is going */ } };
         new MutationObserver(() => { if (!due) { due = true; setTimeout(run, 400); } }).observe(document, { childList: true, subtree: true, attributes: true }); })();`);
     }
     page.on('pageerror', (e) => seen.push(`page error: ${e.message}`));

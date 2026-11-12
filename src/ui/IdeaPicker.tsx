@@ -116,7 +116,7 @@ function OpenIdea({ p, idea, characterId, sceneId, run, back, onClose, onApplied
   };
   const offered = idea.patch.flatMap((c) => (c.op === 'beats' ? c.beats : []));
   return (
-    <Modal title={idea.label} onClose={onClose} sheet footer={
+    <Modal title={idea.label} kind="idea-open" onClose={onClose} sheet footer={
       <>
         <button className="btn" onClick={back}>Back To Ideas</button>
         <button className="btn" onClick={() => void store.act(() => saveIdea(p, idea.id, !saved))}>{saved ? 'Remove From Saved' : 'Save For Later'}</button>

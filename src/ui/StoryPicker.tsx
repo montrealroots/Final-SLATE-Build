@@ -112,7 +112,7 @@ function OpenStory({ p, b, run, back, onClose, onApplied }: { p: Project; b: Blu
   const acts = [...new Set(b.scenes.map((s) => s.act))];
   const locks = new Set(p.locks ?? []);
   return (
-    <Modal title={b.title} onClose={onClose} sheet footer={
+    <Modal title={b.title} kind="story-open" onClose={onClose} sheet footer={
       <>
         <button className="btn" onClick={back}>Back To Stories</button>
         <button className="btn btn-primary" disabled={!!pre.refusal} onClick={apply}>Apply This Story</button>
