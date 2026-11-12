@@ -9,8 +9,9 @@ import { laterWindowTerritories, onDealReleased } from './distribution';
 import { EFFECTS_REVISION_GAIN, REVOICE_GAIN } from './revisions';
 import { scheduleRenewal } from './continuation';
 import { approvedTake, captureCredit } from './mocap';
-import { BROADCAST_EDIT_COST, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
-import { financeCredits, onProjectDelivered, receiveIncome } from './finance';
+import { BROADCAST_EDIT_COST, DUB_PER_MINUTE, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
+import { financeCredits, onProjectDelivered, projectFamilies, receiveIncome } from './finance';
+import { fitWeight } from './strategy';
 import { getPlace } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { cancel, closeSettled, ledgerTotals, money, reserve, settle } from './budget';
@@ -404,13 +405,116 @@ registerHandler('release', (state, ev) => {
     }
   }
   if (!p.premiere) p.premiere = { kind: 'world', date: r.date, country: r.territories[0], venue: ROUTE_LABELS[r.route] };
-  // A distributor's release reports its earnings and opens later windows (distribution.ts).
-  if (r.offerId) onDealReleased(state, p, r.offerId);
+  // A dubbed version is paid for now, once.
+  if (r.dubObligationId) {
+    const ob = p.obligations.find((x) => x.id === r.dubObligationId);
+    if (ob && (ob.state === 'reserved' || ob.state === 'committed')) { settle(state, p, ob.id, ob.amount - ob.settled, `${ob.id}:release`); closeSettled(p, ob.id); }
+  }
+  // A distributor's release reports its earnings and opens later windows (distribution.ts): from its first opening. A
+  // studio's release opens in several territories on their own dates, and the later ones add to the same reports.
+  if (r.offerId && !p.releases.some((x) => x !== r && x.offerId === r.offerId && x.status === 'released')) onDealReleased(state, p, r.offerId);
   const text = `${p.title} is out today (${ROUTE_LABELS[r.route].toLowerCase()}).`;
   addLog(state, text, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
   p.history.push({ at: state.now, text: `Released: ${ROUTE_LABELS[r.route]} on ${r.date}.` });
   return { message: text };
 });
+
+// ---------------- A studio's release, and the version each territory sees (milestone F) ----------------
+
+/** How long after delivery a studio first opens a film it backed, at the soonest: its marketing lead. Simulation assumption. */
+export const STUDIO_LEAD_DAYS = 60;
+/** A studio opens at home first, then four more territories every two weeks. Simulation assumption. */
+export const STAGGER_DAYS = 14;
+export const STAGGER_GROUP = 4;
+
+/** The first date at least `lead` days after `today` that falls in `month` (0 is January), on the 10th; with no month, `lead` days on. */
+export function windowDate(today: string, month: number | null, lead = STUDIO_LEAD_DAYS): string {
+  const soonest = addDaysToKey(today, lead);
+  if (month === null) return soonest;
+  let year = Number(soonest.slice(0, 4));
+  let date = `${year}-${String(month + 1).padStart(2, '0')}-10`;
+  if (date < soonest) { year += 1; date = `${year}-${String(month + 1).padStart(2, '0')}-10`; }
+  return date;
+}
+
+/**
+ * On delivery, a studio that backed the film sets its release: at home first in the month it most often opens a film,
+ * then its other territories four at a time every two weeks. Each opening is a release of its own, so everything that
+ * reads where and when a film came out (award rules, cinemas, the calendar) reads each territory's own date.
+ */
+registerHandler('studio-release', (state, ev) => {
+  const p = state.projects.find((x) => x.id === ev.payload.projectId);
+  const d = p?.finance?.deals.find((x) => x.id === ev.payload.dealId);
+  if (!p || !d || d.status !== 'accepted' || !d.studio?.territories.length || d.studio.releaseId || !p.delivered) return { suppressInterrupt: true };
+  const zone = getPlace(p.axes.basePlaceId).zone;
+  const today = dateKey(state.now, zone);
+  const [home, ...rest] = d.studio.territories;
+  const first = windowDate(today, d.studio.window);
+  const waves: { date: string; territories: string[] }[] = [{ date: first, territories: [home] }];
+  for (let i = 0; i < rest.length; i += STAGGER_GROUP) waves.push({ date: addDaysToKey(first, STAGGER_DAYS * (i / STAGGER_GROUP + 1)), territories: rest.slice(i, i + STAGGER_GROUP) });
+  const offer: DistributionOffer = {
+    id: newId(state, 'do'), distributor: d.backer, route: 'theatrical', minimumGuarantee: 0, territories: [...d.studio.territories], exclusive: true,
+    releaseWindowDays: Math.round((Date.parse(first) - Date.parse(today)) / 86_400_000), expiresAt: state.now, status: 'accepted',
+    exclusiveUntil: addDaysToKey(waves[waves.length - 1].date, EXCLUSIVE_DAYS), studioDeal: d.id,
+  };
+  p.offers.push(offer);
+  // Open offers its exclusive rights end, as any exclusive deal's would.
+  for (const other of offerConflicts(p, offer)) other.status = 'declined';
+  for (const w of waves) {
+    const rec = planRelease(state, p, { route: 'theatrical', date: w.date, territories: w.territories, distributor: d.backer });
+    rec.offerId = offer.id;
+    rec.note = `Released by ${d.backer}, which backed the film.`;
+    if (needsVersion(p, rec)) rec.version = 'subtitled';
+    d.studio.releaseId ??= rec.id;
+  }
+  const text = `${d.backer} set the release of ${p.title}: ${countryName(home)} on ${formatDateKey(first)}${rest.length ? `, then ${rest.length} more ${rest.length === 1 ? 'territory' : 'territories'} by ${formatDateKey(waves[waves.length - 1].date)}` : ''}.`;
+  addLog(state, text, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
+  return { message: text };
+});
+
+/** The languages a release's territories speak that the film's dialogue isn't in. None means there is nothing to translate. */
+export function versionLanguages(p: Project, r: Pick<ReleaseRecord, 'territories'>): string[] {
+  const spoken = new Set(p.axes.dialogueLanguages);
+  if (!spoken.size) return [];
+  return [...new Set(r.territories.map(countryLanguage))].filter((l) => !spoken.has(l));
+}
+const needsVersion = (p: Project, r: Pick<ReleaseRecord, 'territories'>) => versionLanguages(p, r).length > 0;
+
+/** What a dubbed version of this release costs: each language it needs, by the finished runtime. */
+export function dubbingCost(p: Project, r: Pick<ReleaseRecord, 'territories'>): number {
+  const minutes = p.delivered?.runtimeMin ?? Math.round(editScenes(p).reduce((a, s) => a + s.estMinutes, 0));
+  return versionLanguages(p, r).length * Math.ceil(minutes) * DUB_PER_MINUTE;
+}
+
+/** Why this release's version can't be chosen, or null. */
+export function versionRefusal(p: Project, r: ReleaseRecord): string | null {
+  if (r.status !== 'planned') return r.status === 'released' ? 'It is out already, in the version it opened in.' : 'This release was cancelled.';
+  if (!r.offerId) return 'Only a release with a distributor reports what it earns, so only there does the version count.';
+  if (!needsVersion(p, r)) return 'Everyone there speaks a language the film is in.';
+  return null;
+}
+
+/**
+ * Choose the version a planned release opens in. Subtitles come with the distributor's delivery materials. A dubbed
+ * version is yours to pay for: its cost is set aside now and paid on release, and the territories it is dubbed for
+ * count for more in the distributor's reports (script-effects.ts DUBBED_REACH).
+ */
+export function setReleaseVersion(state: GameState, p: Project, releaseId: string, version: 'subtitled' | 'dubbed'): void {
+  const r = p.releases.find((x) => x.id === releaseId);
+  if (!r) throw new Error('That release is no longer planned.');
+  const why = versionRefusal(p, r);
+  if (why) throw new Error(why);
+  if ((r.version ?? 'subtitled') === version) return;
+  if (version === 'dubbed') {
+    const ob = reserve(state, p, `Dubbing For ${r.territories.map(countryName).join(', ')}`, 'post', dubbingCost(p, r), `dub:${r.id}`);
+    r.dubObligationId = ob.id;
+  } else if (r.dubObligationId) {
+    cancel(state, p, r.dubObligationId);
+    delete r.dubObligationId;
+  }
+  r.version = version;
+  addLog(state, `${p.title} will open ${version} in ${r.territories.map(countryName).join(', ')}.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
+}
 
 /** Release history before a date, for festival premiere and award qualification rules. */
 export function publicShowingsBefore(p: Project, date: string): { date: string; country: string }[] {
@@ -469,7 +573,7 @@ registerHandler('distribution-offer', (state, ev) => {
     const scaled = Math.round((mg * terms.factor) / 1000) * 1000;
     // A followed studio may make the offer for a cinema release (docs/WORLD.md, "Careers"): from a stream of its own, so
     // every other offer a film got is as before.
-    const studio = route === 'theatrical' ? careerStudio(state, `distribution:${p.id}:${wave}:${i}`) : undefined;
+    const studio = route === 'theatrical' ? careerStudio(state, `distribution:${p.id}:${wave}:${i}`, (x) => fitWeight(x, projectFamilies(p), p.axes.medium)) : undefined;
     const distributor = studio ?? pick(r, DISTRIBUTORS);
     const offer: DistributionOffer = {
       id: newId(state, 'do'), distributor, route, minimumGuarantee: late ? Math.round((scaled * LATE_SLOT_SHARE) / 1000) * 1000 : scaled, territories: terms.territories,
@@ -605,6 +709,8 @@ export function releaseCancelTerms(p: Project, releaseId: string): string {
 export function cancelRelease(state: GameState, p: Project, releaseId: string): void {
   const r = p.releases.find((x) => x.id === releaseId);
   if (!r) throw new Error('That release is no longer planned.');
+  const backed = r.offerId ? p.offers.find((x) => x.id === r.offerId)?.studioDeal : undefined;
+  if (backed) throw new Error(`${r.distributor} releases the film as a term of the deal that financed it, so this opening isn't yours to cancel.`);
   if (r.status !== 'planned') throw new Error(r.status === 'released' ? 'This release has already happened.' : 'This release was already cancelled.');
   const offer = r.offerId ? p.offers.find((x) => x.id === r.offerId) : undefined;
   if (offer) {
@@ -618,6 +724,7 @@ export function cancelRelease(state: GameState, p: Project, releaseId: string): 
   r.note = offer ? `Cancelled; ${money(offer.minimumGuarantee)} went back to ${offer.distributor}.` : 'Cancelled before it happened.';
   cancelEvents(state, (e) => (e.kind === 'release' || e.kind === 'episode-release') && e.payload.releaseId === r.id);
   if (r.obligationId) cancel(state, p, r.obligationId);
+  if (r.dubObligationId) cancel(state, p, r.dubObligationId);
   const o = r.offerId ? p.offers.find((x) => x.id === r.offerId) : undefined;
   if (o) {
     o.status = 'cancelled';

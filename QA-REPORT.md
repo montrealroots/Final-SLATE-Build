@@ -8,7 +8,72 @@
 
 ## Commands And Results
 
-### Current: Creative Depth Package, Milestone E (November 11, 2026)
+### Current: Screens Lined Up (November 11, 2026)
+
+The owner's request after seeing a capture of the Script page: "Fix all misalignments UI wise."
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 | 918 tests. Startup 306 kB, 98 kB gzipped; budgets unchanged (700 and 220 kB). World check 0 problems. |
+| `e2e/layout.spec.ts` | 0 | New, two tests. The Script page and four more screens measured with nothing found, on desktop, phone and WebKit (iPhone 15 Pro Max). A row built for the purpose, in Chromium and WebKit at 1,100 pixels: labels, boxes and buttons level, each hint under its box, a tall neighbour changing none of it. |
+| Mutations | 1 or more for each | Eight were made to the stylesheet and each failed a test: shared lines off; the hint above the box; boxes at their natural heights; a tall neighbour stretching every line; no space under a row; a text area set in a line; the button after the hint; no space under a cell that is not a field. Two survived the first version of the tests, which is why the second test exists. |
+| Sweep, desktop, `SLATE_LAYOUT_SWEEP` | 0 journeys | 150 passed, 10 skipped by design, in 23.8 minutes, every screen measured as it changed. 8 findings, each fixed during or after the run (below). |
+| `npx playwright test`, whole suite, dev build, measure on | 0 journeys | 354 passed, 63 skipped by design, in 52.9 minutes, on desktop, phone and the three WebKit profiles. 12 findings, 5 of them only on a phone or in WebKit, each fixed after it was found. |
+| The 8 journeys those findings came from, every profile, measure on | 0 | 23 passed, 1 skipped by design, in 8.2 minutes: 1 finding left, fixed, and its journey run again on 3 profiles with none. |
+| `e2e/layout.spec.ts`, `e2e/viewports.spec.ts`, after the last fix | 0 | 18 passed, 6 skipped by design. |
+
+How it was measured: `e2e/layout.ts` reads boxes on the page, not styles. It reports boxes, labels or buttons in one
+form row that start at different heights; a box and the button beside it that are not level; a button or box with less
+than 4 pixels between it and its neighbour above or below; and one lying over another. Before any fix it reported 218
+findings on the Script page, 108 of them false (a scrolled list's hidden rows), which the measure now leaves out.
+
+Found and fixed:
+
+- **Rows of fields.** A hint of two lines pushed its box below its neighbour's; "Choose Ideas" sat on the label of the
+  row under it; a hint touched its box. Each row of a form now shares its lines: label, box, error, the ideas button,
+  hint. A hint sits under its box (above only beside a button, and above the place picker's list).
+- **Heights.** A select was 2 pixels shorter than a text box, a date and a time box 2 taller, and a small button beside
+  a box sat 5 pixels off. One-line boxes are one height and a button beside one matches it.
+- **The setting place picker** was a cell beside one-line boxes and stretched its row to its own 450 pixels. It is a
+  row of its own.
+- **Spacing.** A heading against the button under it or the boxes above it (an empty episode, Production Needs); a
+  tick box against the row above (the catalog's filter) or what it switches (creation's map); chips against their
+  count (the idea picker); the logline builder's sentence against its button; "Rebuild Schedule" against the puppets
+  above it; "Combine" against the dialogue boxes; the Drafts note against its box; a text area's 5 stray pixels; the
+  count under a list of places; a card's note against a button in its heading row (Story World Rules); a character's
+  Arc against the fields after it; "Hire A Writer" against the table above it; "Writing Work" against its paragraph.
+- **Buttons beside boxes.** "Record" and "Use In This Scene" sat level with their boxes' labels, 21 pixels above the
+  boxes (screen time, songs); "Remove" beside a language's proficiency sat 3 off. Each is level with its box.
+- **Tables.** In a row with a button ("Release" in Offers And Contracts) the words sat 4 pixels above the button's.
+  Found by eye, not by the measure, which leaves tables out.
+- **WebKit only:** a field's bottom margin was not counted when its last lines were empty, and rows closed up. The
+  space under a row is a line of the row now.
+- A journey found "Choose Ideas" through the wrapper's old class name; its locator follows the new one.
+
+Not measured: taste; text against text; anything inside a table, a tab bar or the navigation; screens no journey
+reaches. Not run locally: the production-build browser suite, which CI runs on the pull request.
+
+### Earlier: Creative Depth Package, Milestones F, G And H (November 11, 2026)
+
+Studio strategy, the remaining studios and territorial releases (F); the picture pack and storage controls (G); the
+journey index, the coverage report and the offer measure (H). `docs/creative-depth/LEDGER.md` has a section for each.
+
+| Command | Failures | Notes |
+| --- | --- | --- |
+| `npm run check` | 0 after one fix | 918 tests. The first run failed 2 in `tests/awards-ledger.test.ts`: journey J03 names the Emmys' comedy categories, so the ledger's browser column counts two more. The ledger was regenerated and the run above is the full check on the final tree. |
+| `npm run balance` | 0 | 2 files. |
+| `tests/strategy.test.ts`, `tests/competition.test.ts`, `tests/catalog.test.ts` | 0 | F: 10, and 28 for the catalog: how a studio reads a pitch, its slate room, offers by fit, the Skydance and Sony groups. |
+| `tests/offer-concentration.test.ts` | 0 | H: 100 seeds. 49.8% of offers come from a studio; the most any one studio makes is 25.1% (`docs/creative-depth/OFFER-CONCENTRATION.json`). |
+| `tests/packs.test.ts`, `tests/catalog-server.test.ts` | 0 | G: 17 tests: the picture pack's kinds, atomic install, resume by range, expiry, storage room, the owner alone. |
+| `e2e/studio-pitch.spec.ts` (J08) | 0 | Desktop and WebKit. Every studio in it is a made-up fixture. |
+| `e2e/data-packs.spec.ts` (J09) | 0 | Desktop, phone and WebKit. |
+| `e2e/creative-ideas.spec.ts` (J02), `e2e/awards.spec.ts` (J03) | 0 | Desktop, then all their profiles in the whole run. |
+| `npx playwright test`, whole suite, dev build | 0 | 349 passed, 62 skipped by design, in 57.7 minutes, on the tree before the layout changes. |
+| Catalog import, Skydance and Sony | 0 failed requests | 25,321 of 25,322 titles (1 not found at TMDB), 11,268 seasons, 458,680 people; 202,125 requests, 5 retried, none rate-limited. `docs/CATALOG-COVERAGE.md` is regenerated from it. |
+
+Not run locally: the production-build browser suite, which CI runs on the pull request.
+
+### Earlier: Creative Depth Package, Milestone E (November 11, 2026)
 
 Filming a script location in a real place somewhere else (`docs/creative-depth/LEDGER.md`, "Milestone E").
 

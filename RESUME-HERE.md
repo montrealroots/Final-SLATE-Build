@@ -9,14 +9,16 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#69 (Creative Depth, milestone D: real people castable and
-  hireable, and writers and directors who work and are paid), squash-merged as `e028194` on November 11, 2026, CI green
-  on its final commit. Before it, #68 (milestone B) as `fd095f1` and #67 (milestone A) as `562eac8`. Milestones C and E
-  are the next checkpoint, together, on this branch; F, G and H follow as one more (see the Creative Depth section).
+- **Latest merge:** montrealroots/Final-SLATE-Build#70 (Creative Depth, milestones C and E: camera, light, sound and
+  looks by scene; filming in real places elsewhere; and CI's journeys as their own job), squash-merged as `8d927fe` on
+  November 12, 2026, CI green on its final commit. Before it, #69 (milestone D) as `e028194`, #68 (milestone B) as
+  `fd095f1` and #67 (milestone A) as `562eac8`.
+- **Next checkpoint:** milestones F, G and H and the layout work below, together, on this branch.
 - **CI, from November 12, 2026:** `.github/workflows/ci.yml` has two jobs. `checks` is everything without a browser.
   `journeys` is the browser suite as six runs side by side: the dev server and the production build, each on desktop,
   phone and the WebKit profiles. Until then one job ran the suite twice in a row; #70's first run was cut at its
-  60-minute limit at journey 395 of about 400 with none failed. Merge only when `checks` and all six are green.
+  60-minute limit at journey 395 of about 400 with none failed. Its second, the first of the new layout, was green in
+  27 minutes. Merge only when `checks` and all six are green.
 - **Merged checkpoints:** montrealroots/Final-SLATE-Build#1 (base build), #2, #3 (gap fixes before the package), #4 (M1), #5 (M2), #6 (M3 and M4), #7 (M5), #8 (M6), #9 (M7), #10 (repair screen, Export Save), #11 (Move the Shoot, keyboard map markers, category audit), #12 (save recovery and validation, dates, processing rollback, ledger checks), #13 (production module split, CI budgets and balance), #14 (cross-save reliability fixes, CI browser-install resilience; merged as `7c7d15e`), #15 (faster rollback snapshots, smaller startup files; `2633269`), #16 (two-copy saving, recovery copies, full-storage handling; `19b513f`), #17 (organizer rulebooks, save version 3, CI in the Playwright image; `36da91f`), #19 (long-career storage: IndexedDB save vault, save version 4; `1c5f802`), #20 (rulebooks for Annecy, Venice, Berlinale, Golden Globes, Emmys; `4fa5d27`), #21 (country classifications, Suriname holidays, English names, climate source; `cb23eca`), #22 (deterministic journeys, production-build runs, browser diagnostics; `3a84bf3`), #23 (production-build suite in CI; `b2d7b31`), #24 (character creation fixes, Import Save; `e26d71d`), #25 (financing: money from backers, save version 5), #26 (screenwriting audit, dated motion-capture sessions, replacement credits, San Sebastián rules), #27 (the 1221 layout), #28 (1221's creation suite), #29 and #30 (pronouns settle the billing), #31 (backgrounds: kept holidays, casting information, languages), #32 (language suggestions for every background but Assyrian), #33 (script field effects), #34 (script rules review; `6e2abf0`), #35 (input loss, startup size, connected journey; `c00c261`), #36 (atomic genre catalog, careers, reload lock; `5e142f4`), #37 (micro-budget tuning; `fddd6b6`), #38 (budget-size wording; `b025147`), #39 to #41 (screen review, identity, depth stages 1 to 4), #42 (depth stages 5 to 8; `cfe7d71`), #43 and #44 (action previews audit, remaining browser journeys; `37123f5`). `main` was at `3845c2d` when the Gap Completion Package was applied.
 - **Package:** "SLATE Gap Completion Package" (predates #2 and #3). Its references are not committed; the imported data is under `src/world/` and `docs/world/`.
 - **Run first:**
@@ -64,6 +66,26 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
+### Newest Request (November 11, 2026, after the package's last milestone): fix all misalignments
+
+The owner saw a capture of the Script page and asked: "Fix all misalignments UI wise." Done on every screen a journey
+reaches, as far as the measure sees (`QA-REPORT.md`, "Screens Lined Up", lists what it does not).
+
+- **The measure:** `e2e/layout.ts` reads boxes on the page: boxes, labels or buttons in one form row at different
+  heights; a box and the button beside it not level; a button or box with less than 4 pixels above or below; one over
+  another. `SLATE_LAYOUT_SWEEP=<file> npx playwright test` measures every screen the journeys reach and appends what
+  it finds to the file. It never fails a journey. `e2e/layout.spec.ts` holds five screens to nothing found, and tests
+  the form row's rules directly in Chromium and WebKit.
+- **The rules,** at the end of `src/ui/app.css` ("Form rows that line up"): a row of a form grid (`.grid.form`,
+  `.field-row`) is six lines its cells share: label, box, error, the ideas button, hint, and the space under the row.
+  `Field` (components.tsx) writes `field-std` and wraps what it holds in `field-box` so it can take part. A new cell
+  that is not a `Field` takes all six lines and keeps its own bottom margin. A field with a button under it is
+  `idea-field` (ScriptViews.tsx `IdeaField`).
+- **A hint is under its box.** Above only beside a button (`.field-act`, `.inline-form`), so the box stays level with
+  the button, and above the place picker's list (`Field`'s `hintFirst`).
+- **Next, if more is found:** run the sweep, read the file, fix the rule rather than the screen where one rule covers
+  it, and add the screen to `e2e/layout.spec.ts` if it had its own fault.
+
 ### Newest Request (November 11, 2026): The Creative Depth And Living Industry Package
 
 The owner's package, version 2, is in `docs/creative-depth/package/` (start with `00-START-HERE.md`; the command is
@@ -103,8 +125,19 @@ Where it stands:
   unit away is moved once and housed each day (`src/engine/destinations.ts`, `src/ui/FilmedAt.tsx`; figures in
   `docs/ASSUMPTIONS.md`, "Filming Somewhere Else"). A soundstage or a stage set is under a roof. Journey J07 is
   `e2e/destinations.spec.ts`.
-- **F to H:** built on later branches and following as their own pull request; the ledger's milestone table has each
-  one's scope.
+- **F, done but for the gathering run:** Skydance (Paramount and Warner Bros.) and Sony are in the registry with
+  sourced dates (`docs/CATALOG.md`); a followed studio reads a pitch by fit, backs it on terms and releases it
+  territory by territory (`src/engine/strategy.ts`, `finance.ts`, `finish.ts`; `docs/ASSUMPTIONS.md`, "How A Studio
+  Reads A Pitch"). Journey J08 is `e2e/studio-pitch.spec.ts`. **Still to do:** when the catalog gathering run for the
+  50 new companies ends (`npm run screen-catalog:import`, resumable; then `npm run screen-catalog:build`,
+  `node tools/screen-catalog/networks.mjs`, `node tools/screen-catalog/coverage.mjs`, `node tools/pack.mjs catalog`),
+  commit the regenerated `docs/CATALOG-COVERAGE.md`. The cache and the pack stay out of the repository.
+- **G, done:** a pack replaces another in one step and the old one is kept if the new one fails; room is asked first;
+  an optional picture pack (`npm run screen-catalog:images`, `node tools/pack.mjs images`; `docs/DATA-PACKS.md`, "The
+  Picture Pack"). Journey J09 is in `e2e/data-packs.spec.ts`.
+- **H, done:** `docs/creative-depth/JOURNEYS.md` (the twelve journeys and what each does not do) and
+  `docs/creative-depth/COVERAGE.md` (the nine acceptance points, with what is open). Start from COVERAGE.md's "Not
+  Done, In One Place" for anything further.
 
 Rules that came with the package: one agent; no universal quality bonus for a preset; custom text is never claimed to
 be understood; real people's recorded credits stay apart from anything the game simulates about them; no credentials,

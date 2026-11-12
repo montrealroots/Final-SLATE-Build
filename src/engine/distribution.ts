@@ -8,6 +8,8 @@
 //   on), for the territories no exclusive deal still holds; a territory held exclusively opens once the exclusivity ends.
 // Earnings curves, the fee and the timing are game calibration.
 import { receiveIncome } from './finance';
+import { countryLanguage } from './people';
+import { DUBBED_REACH } from './script-effects';
 import { stream } from './rng';
 import { addLog, registerHandler, schedule } from './state';
 import { DAY } from './time';
@@ -25,13 +27,26 @@ export function onDealReleased(state: GameState, p: Project, offerId: string): v
   schedule(state, state.now + LATER_WINDOW_DAYS * DAY, 'distribution-offer', { projectId: p.id, wave: `window:${offerId}` }, { attention: 'notify', priority: 55 });
 }
 
-/** The gross a deal reports for a month: reception, route, territories, and a curve that falls off. Deterministic. */
+/**
+ * How many territories a deal's film has reached: each one it has opened in counts once, or DUBBED_REACH where the
+ * language isn't the film's and it is shown dubbed. A deal with one release for all its territories (every deal until
+ * November 11, 2026) has opened in all of them once that release is out, so its reports are what they were. A studio's
+ * release opens territory by territory (finish.ts 'studio-release'), and earns nothing where it hasn't opened yet.
+ */
+export function territoriesReached(p: Project, o: DistributionOffer): number {
+  const out = p.releases.filter((r) => r.offerId === o.id && r.status === 'released');
+  if (!out.length) return o.territories.length; // a report can only follow a release; a deal recorded without one counts as before
+  const spoken = new Set(p.axes.dialogueLanguages);
+  return out.reduce((a, r) => a + r.territories.reduce((b, c) => b + (r.version === 'dubbed' && spoken.size > 0 && !spoken.has(countryLanguage(c)) ? DUBBED_REACH : 1), 0), 0);
+}
+
+/** The gross a deal reports for a month: reception, route, the territories it has opened in, and a curve that falls off. Deterministic. */
 export function reportedGross(seed: number, p: Project, o: DistributionOffer, month: number): number {
   const reception = p.quality?.reception ?? 50;
   const routeScale = { theatrical: 1.3, streaming: 1, digital: 0.6, broadcast: 0.8 }[o.route];
   const curve = Math.pow(0.6, month - 1);
   const noise = 0.8 + stream(seed, 'report', p.id, o.id, String(month))() * 0.4;
-  return Math.round((Math.max(0, reception - 35) * 1500 * routeScale * Math.sqrt(o.territories.length) * curve * noise) / 100) * 100;
+  return Math.round((Math.max(0, reception - 35) * 1500 * routeScale * Math.sqrt(territoriesReached(p, o)) * curve * noise) / 100) * 100;
 }
 
 registerHandler('distribution-report', (state, ev) => {

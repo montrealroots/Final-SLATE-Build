@@ -36,6 +36,7 @@ applicability, and its status becomes "verified fact".
 | `CONSENT_RATE`, `RESTRICTION_RATE`, `CUT_REVIEW_DAYS` | `src/engine/documentary.ts` | 0.8 of contributors agree; the share who set a condition; 3 days to review the cut | 14-02 | Modeled assumption | None |
 | `EFFECTS_REVISION_GAIN`, `REVOICE_GAIN` | `src/engine/revisions.ts` | +5 capture, +4 performance | 15-03 | Modeled assumption | None |
 | `EXCLUSIVE_DAYS` | `src/engine/finish.ts` | 365 days | 16-01 | Modeled assumption | None |
+| `STUDIO_LEAD_DAYS`, `STAGGER_DAYS`, `STAGGER_GROUP` | `src/engine/finish.ts` | A studio first opens a film it backed at least 60 days after delivery, at home; then four more territories every 14 days | Creative Depth F | Modeled assumption | None |
 | `DELIVERY_MATERIALS` | `src/engine/finish.ts` | $6,000 theatrical, $4,000 streaming, $3,000 broadcast, $1,500 digital | 16-02 | Modeled assumption | None |
 | `REPORT_MONTHS`, `DISTRIBUTOR_FEE`, `LATER_WINDOW_DAYS` | `src/engine/distribution.ts` | 6 reports; 35% fee; 120 days | 16-04, 16-05 | Modeled assumption | None |
 | `OPPORTUNITY_DELAY_DAYS`, `OPPORTUNITY_OPEN_DAYS`, `OPPORTUNITY_DELIVER_DAYS` | `src/engine/opportunities.ts` | 45, 30 and 540 days | 18-03 | Modeled assumption | None |

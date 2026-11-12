@@ -100,6 +100,10 @@ export function documentsNeeded(p: Project, docs: DocumentId[], nonfiction: bool
 
 /** Subtitling, per finished minute for each language a territory needs that the dialogue isn't in. Simulation assumption. */
 export const SUBTITLE_PER_MINUTE = 12;
+/** Dubbing, per finished minute for each such language: voices recorded and mixed again. Simulation assumption. */
+export const DUB_PER_MINUTE = 140;
+/** What a dubbed territory counts for in a distributor's reports, against one for a subtitled one. Simulation assumption. */
+export const DUBBED_REACH = 1.5;
 
 // ---------------- Structure ----------------
 

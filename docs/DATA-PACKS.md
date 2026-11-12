@@ -43,13 +43,54 @@ They are written to `packs/`, which is kept out of the repository, as are all `*
 - **The file** (`tools/pack-format.mjs`): the bytes `SLATEPACK1`, a header listing each record's path and position, then
   each record gzipped. Reading the header is enough to slice out every record without unpacking any.
 - **Installing** (`src/catalog/packs.ts`): the header is checked, then each record's compressed bytes are stored in
-  IndexedDB (`slate-packs`), 400 to a transaction. The pack is listed only once every record is stored, so an install
-  cut short is never used. Bytes are stored, not file slices: WebKit can't keep a Blob in IndexedDB in a private window.
+  IndexedDB (`slate-packs`), 400 to a transaction. Bytes are stored, not file slices: WebKit can't keep a Blob in
+  IndexedDB in a private window.
+- **Replacing a pack, from November 11, 2026.** The new records are written beside the old ones, under a number of
+  their own (`catalog@2:titles/...`). Only when every one is stored does the pack's listing change to point at them,
+  in one step; the old records are deleted after that. An install that is cancelled, cut short or out of room leaves
+  the pack that was installed whole and in use. Until then the old pack was deleted first, so a failed update left
+  nothing. Records an unfinished install left behind are cleared the next time the packs are read.
+- **Room, asked first.** Before anything is written the browser is asked how much room it has. If it reports less than
+  the pack's size and a fifth more, nothing is written, and the message says how much is needed, how much is free, and
+  how much removing the installed pack would free. Settings shows what the browser reports and what the mods hold.
+- **Cancel, and going on.** Cancel stops a download or an install with nothing changed. What had been downloaded is
+  kept until the game is closed, and the next try asks the server for the rest (`Range: bytes=N-`).
 - **Reading** (`src/catalog/load.ts`): a catalog file comes from an installed pack of its kind first, decompressed when a
   page asks for it; with no pack of that kind, from the server as before. Pack code loads with the first catalog request,
   not at startup.
 - **Installed in a game.** The open game's living world starts from the new pack at once; removing the film pack pauses
   it, its decisions keeping their dates.
+
+## The Picture Pack
+
+Optional, added November 11, 2026 (the Creative Depth package, milestone G). It holds profile photos and posters for
+the companies the owner chooses. The game is the same without it: no engine reads a picture and none changes an
+outcome.
+
+- **Choosing and sizing.** `npm run screen-catalog:images -- --companies=company:pixar,company:lucasfilm --plan` prints
+  how many posters and photos the choice comes to and about how many megabytes, and fetches nothing. Without `--plan`
+  it fetches them. `--tier=small` (TMDB's `w185` photos and `w154` posters, about 13 kB each) or `--tier=medium`
+  (`h632` and `w342`); never the original size. `--people=8` is how many top-billed cast a title contributes, with its
+  directors and creators. Then `node tools/pack.mjs images` writes the pack.
+- **Where the pictures come from.** Each title's and person's picture path is read from the film catalog's own cache.
+  The picture is fetched from TMDB's image host, which needs no credential; none is read, held or sent. Measured on
+  November 11, 2026: Pixar's 155 titles came to 152 posters and 303 photos, 5.8 MB, in 23 seconds.
+- **What is kept about each picture** (`images/index.json` in the pack): the subject (`person:31`, `movie:13`), TMDB's
+  own path for it, its width and height as read from the file, the day it was fetched, and the language TMDB records
+  for it where it records one. The pack carries one statement about rights, shown with every picture's details: the
+  rights belong to each picture's owner, and nothing clears it for any use beyond the owner's own copy of the game.
+  That statement is not a licence and the game doesn't claim one.
+- **Showing them** (`src/ui/Picture.tsx`): a title's page, a person's page and the cast list. Every picture sits in a
+  box of fixed shape, so nothing moves when one arrives. A picture is read from storage only when its box comes near
+  the screen. With no pack, no picture for the subject, pictures switched off in Settings, or a device that asks its
+  browser for less data, the box is a plain placeholder. The game never draws a face for a real person.
+- **Six months.** The pack is under the same limit as the films: refused if older, and deleted once it passes. A game
+  left open is checked every hour (`packs.ts` `expirePacks`), for the film pack too, so a long-open page doesn't go on
+  showing what should be gone. `npm run screen-catalog:purge` deletes the gathered pictures with the rest.
+- **Who gets it.** The owner alone, as with the films: a server that isn't the owner's neither lists nor serves it.
+
+Not built: choosing people one by one, a progress bar for the gathering tool beyond its log lines, backdrops and
+logos, and a check of each picture's own licence. The pack must not be shared.
 
 ## TMDB's Terms, Kept In The Game
 

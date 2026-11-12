@@ -27,12 +27,12 @@ Nothing is called complete because a control exists or a field saves.
 | --- | --- | --- | --- |
 | A | Baseline audit, owner-data access, frozen world profiles | Built and tested; see below | With the first checkpoint of this package |
 | B | Shared picker, option records, starter libraries, field inventory, the zombie example | Built and tested; see below | With the second checkpoint |
-| C | Every creative input expanded; medium pipelines; controlled comparisons | Under way: see "Milestone C, So Far" below | |
+| C | Every creative input expanded; medium pipelines; controlled comparisons | Built and tested, with the limits below | |
 | D | Real people: identity, availability, auditions, hiring, contracts, pay, credits | Built and tested, with the limits below. Done before C: see `DECISIONS.md` | With the third checkpoint |
-| E | Real destinations, scouting, geography-aware production | Under way: see "Milestone E, So Far" below | |
-| F | Studio strategy, Warner Bros., Sony and Paramount, territorial releases, competition | Not started | |
-| G | Optional portraits and posters, pack refresh and storage controls | Not started | |
-| H | Connected playthroughs, performance, accessibility, migration, final coverage | Not started | |
+| E | Real destinations, scouting, geography-aware production | Built and tested, with the limits below | |
+| F | Studio strategy, Warner Bros., Sony and Paramount, territorial releases, competition | Built and tested, with the limits below; the catalog gathering run for the new groups is reported when it ends | |
+| G | Optional portraits and posters, pack refresh and storage controls | Built and tested, with the limits below | |
+| H | Connected playthroughs, performance, accessibility, migration, final coverage | Built and tested, with the limits below | |
 
 Do them in this order. Each is a vertical slice: interface, engine, save, failure behaviour and proof.
 
@@ -282,6 +282,80 @@ Not implemented in E, each a limit a player can meet:
   shown beside the picker.
 - J07 ran from one base (London) to one place abroad (Bergen, October) and one soundstage in the base's own city.
   Other seasons and regions are covered in the engine tests (Tromsø in January), not in a browser.
+
+## Milestone F
+
+Built after milestone E. Its checkpoint's checks are in `QA-REPORT.md`.
+
+| Piece | Where | Status | Evidence |
+| --- | --- | --- | --- |
+| Skydance (Paramount and Warner Bros.) and Sony in the company registry: 50 more companies with titles gathered, 12 networks and services, 18 leadership roles, each ownership date from an official source or left out | `src/catalog/registry.ts`; `docs/CATALOG.md` | Implemented, engine verified | `tests/catalog.test.ts`, 28 tests: acquisition dates, groups, leaders hidden before October 6, 2026 |
+| Their films, series, seasons, episodes and people gathered from TMDB into the owner's local catalog | `tools/screen-catalog/import.mjs` | Under way: the gathering run was started on November 11, 2026 and takes hours; its counts go in `docs/CATALOG-COVERAGE.md` when it ends | Not yet reported |
+| A studio's strategy from the pace its save froze: genres, animation and documentary shares, release month, slate, reach (modeled and said so) | `src/engine/strategy.ts` `strategyOf`, `slateRoom`, `strategyWords` | Implemented, browser verified | `tests/strategy.test.ts`; J08 reads "What Night Shift Pictures Makes" |
+| A pitch is read by fit, room, script and record, with no chance in it; two studios answer one film differently and say why | `strategy.ts` `pitchRead`; `finance.ts` `studioOption`, `pitchToStudio` | Implemented, browser verified | `tests/strategy.test.ts`, 10 tests, 6 mutations caught; `e2e/studio-pitch.spec.ts` (J08) on desktop and WebKit |
+| An offer for a proven filmmaker, an option for a first film, notes read again only with a newer draft, a pass that is final | `finance.ts` (kind `studio`) | Implemented, engine verified; the option is browser verified | `tests/strategy.test.ts`; J08 |
+| Which followed studio makes a distribution or commission offer is decided by fit, not by films a year | `studios.ts` `careerStudio`; `strategy.ts` `fitWeight` | Implemented, engine verified | `tests/competition.test.ts`: the busiest studio makes none of the offers for a film it wouldn't make. `tests/offer-concentration.test.ts`: 100 seeds, 20,000 draws, thresholds set before the run; its first run failed and the rule for a thin record was changed |
+| On delivery the studio opens the film at home, then four territories every two weeks, each a release of its own | `finish.ts` `'studio-release'`, `windowDate` | Implemented, browser verified | J08: US, then GB, FR, DE and ES fourteen days later |
+| Reports count only territories the film has opened in; one set of reports for the deal | `distribution.ts` `territoriesReached`; `finish.ts` release handler | Implemented, browser verified | `tests/strategy.test.ts`; J08: the studio is repaid from what it reports |
+| Subtitled at the distributor's cost or dubbed at yours, with the cost and the effect stated first | `finish.ts` `setReleaseVersion`, `dubbingCost`; the Release page | Implemented, browser verified | J08: $37,800 set aside and paid on the day it opens abroad |
+| Backers named properly in sentences ("Night Shift Pictures offered", not "the night shift pictures offered") | `src/engine/backer-words.ts` | Implemented, browser verified | J08 checks the log; this also fixes commissions from a named studio, which read wrongly before |
+
+Not implemented in F, each a limit a player can meet:
+
+- A studio is pitched feature films only. Television labels have no slate of their own to pitch a series to.
+- A distributor's own offer for several territories still opens them all on one day; only a studio's release is
+  staggered. The player's own releases can already be planned territory by territory with their own dates.
+- The films opening the same week are shown on the Release page for information. They change no figure.
+- Local holidays in a territory, marketing spend, and screens booked are not part of an opening.
+- Budget bands, franchises and who at a studio decides are not modeled. No real executive is given a preference.
+- Sony's ownership dates are not recorded: its own pages refuse automated readers.
+- International and independent groups beyond these four are not covered. Four Hollywood groups are not the whole world.
+
+## Milestone G
+
+Built after milestone F. Its checkpoint's checks are in `QA-REPORT.md`.
+
+| Piece | Where | Status | Evidence |
+| --- | --- | --- | --- |
+| A pack is installed beside the one it replaces and takes its place in one step; cancelled, cut short or out of room, the installed pack stays whole and in use | `src/catalog/packs.ts` `installPack`, `sweep` | Implemented, browser verified | `e2e/data-packs.spec.ts` J09 on desktop, phone and WebKit: an update cancelled part-way leaves every record of the installed pack as it was |
+| The browser's free room is asked before anything is written, and a refusal says what is needed and what removing the installed pack would free | `packs.ts` `storageRoom`, `STORAGE_MARGIN` | Implemented, browser verified | J09, with the browser made to report almost no room (labelled fixture) |
+| Settings shows what the browser reports free and what the mods hold; Cancel stops a download or an install | `src/ui/DataPacks.tsx` | Implemented, browser verified | J09 |
+| A download cut off goes on from where it stopped | `packs.ts` `installOffered`; `server/catalog-handler.mjs` (`Range`) | Implemented, engine verified on the server side; the browser side is not exercised by a journey | `tests/catalog-server.test.ts`: a 206 with the rest of the file, a 416 past its end |
+| The optional picture pack: its format, its index of what is known about each picture, and the same six months | `packs.ts` (kind `images`, `pictures`, `pictureUrl`); `tools/pack-format.mjs`, `tools/pack.mjs` | Implemented, browser verified | `tests/packs.test.ts`; J09 installs one and reads its details |
+| Gathering it: a plan with counts and megabytes before anything is fetched, two sizes, never the original, no credential | `tools/screen-catalog/images.mjs` | Implemented, engine verified; run for real once | `tests/packs.test.ts` "the picture gatherer"; a real run for Pixar on November 11, 2026: 455 pictures, 5.8 MB |
+| Pictures on a title's page, a person's page and the cast list, in boxes of fixed shape, read only near the screen, with a plain placeholder otherwise and a switch on the device | `src/ui/Picture.tsx`, `Catalog.tsx` | Implemented, browser verified | J09: the box is the same size before and after; the picture is a decoded image; off and on again |
+| A film or picture pack that passes six months while the game stays open is deleted within the hour | `packs.ts` `expirePacks`; `src/ui/App.tsx` | Implemented, browser verified | J09 moves the page's clock an hour on |
+| The picture pack is offered and served to the owner alone | `server/catalog-handler.mjs` `offeredMods` | Implemented, engine verified | `tests/catalog-server.test.ts` |
+| Removing a pack never touches saved games; the open game goes on and opens again after a reload | `packs.ts` `removePack` | Implemented, browser verified | J09 |
+
+Not implemented in G, each a limit:
+
+- People can't be chosen one by one for the picture pack: the choice is by company, and by how many top-billed cast.
+- Backdrops, logos and episode stills are not gathered.
+- Each picture's own licence is not checked. The pack states that rights belong to each owner and claims nothing more.
+- The picture pack built here covers one studio (Pixar), as a real test of the tool. Larger ones are the owner's choice.
+- Going on with a cut-off download is tested on the server; no browser journey cuts a download off.
+- J10 (a refreshed pack changes nothing a save has decided) is `e2e/world-refresh.spec.ts`, from milestone A; it was
+  not extended here.
+
+## Milestone H
+
+Built after milestone G. Its checkpoint's checks are in `QA-REPORT.md`.
+
+| Piece | Where | Status | Evidence |
+| --- | --- | --- | --- |
+| Where each of the package's twelve journeys is, and what each does not do | `docs/creative-depth/JOURNEYS.md` | Written from the tests | Each row names its test and its browsers |
+| J02: the zombie premise as stop motion | `e2e/creative-ideas.spec.ts`, "J02" | Implemented, browser verified | Puppets, sets, animation and voices are made; no makeup, costume or location requirement, no shoot day, no makeup hire |
+| J03: horror with a comic streak, and what it competes as | `e2e/awards.spec.ts`, "J03" | Implemented, browser verified | A secondary comedy tag leaves it a drama; declared a comedy it changes category; each page says why |
+| Which studio makes offers, over 100 worlds, against thresholds set beforehand | `tests/offer-concentration.test.ts`; `docs/creative-depth/OFFER-CONCENTRATION.json` | Implemented, engine verified | 49.8% of offers from a studio; no studio above 25.1% of them; the first run failed and the engine was changed |
+| The package's nine acceptance points, each with its evidence and what is open | `docs/creative-depth/COVERAGE.md` | Written from the audit tables and the tests | The counts are the audit tables' own |
+
+Not done in H:
+
+- The performance timings the package lists (picker search, pack install, long-career advance) were not re-measured
+  as a before-and-after set. Startup stayed inside its unchanged budgets on every milestone's check.
+- No single career passes through all twelve journeys, and none was run on a physical device.
+- The 100-seed measure is of studio offers. The balance runs remain 30 seeds for each of eight families.
 
 ## The Audit Artifacts
 

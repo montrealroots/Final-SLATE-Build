@@ -1,5 +1,6 @@
-import { writeFileSync } from 'node:fs';
+import { appendFileSync, writeFileSync } from 'node:fs';
 import { test as base, expect } from '@playwright/test';
+import { findMisalignments, type Finding } from './layout';
 
 /**
  * Every journey records console errors, uncaught page errors and failed requests, attaches them to the report, and
@@ -25,6 +26,17 @@ export const test = base.extend<{ diagnostics: void }>({
         return focus.call(this, o);
       };
     });
+    // SLATE_LAYOUT_SWEEP=<file>: every screen a journey reaches is measured as it changes, at most every 400 ms (e2e/layout.ts; the game's clock changes the page all the time, so waiting for it to settle never measured anything), and what is
+    // found is appended to the file, one finding a line. A measure to read, not a check: it never fails a journey.
+    const sweep = process.env.SLATE_LAYOUT_SWEEP;
+    if (sweep) {
+      const told = new Set<string>();
+      await page.exposeFunction('__layoutFound', (xs: Finding[]) => {
+        for (const x of xs) { const k = JSON.stringify([x.kind, x.where, x.a, x.b]); if (!told.has(k)) { told.add(k); appendFileSync(sweep, `${JSON.stringify({ ...x, project: info.project.name, test: info.title })}\n`); } }
+      });
+      await page.addInitScript(`(() => { const find = ${findMisalignments.toString()}; let due = false; const run = () => { due = false; try { Promise.resolve(window.__layoutFound(find())).catch(() => {}); } catch { /* the page is going */ } };
+        new MutationObserver(() => { if (!due) { due = true; setTimeout(run, 400); } }).observe(document, { childList: true, subtree: true, attributes: true }); })();`);
+    }
     page.on('pageerror', (e) => seen.push(`page error: ${e.message}`));
     page.on('console', (m) => { if (m.type() === 'error') seen.push(`console error: ${m.text()}`); });
     page.on('requestfailed', (r) => {

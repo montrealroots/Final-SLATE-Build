@@ -21,6 +21,7 @@
     "catalog": "node scripts/trim-genre-registry.mjs",
     "screen-catalog:import": "NODE_USE_ENV_PROXY=1 node --no-warnings tools/screen-catalog/import.mjs",
     "screen-catalog:build": "node --no-warnings tools/screen-catalog/build.mjs",
+    "screen-catalog:images": "NODE_USE_ENV_PROXY=1 node --no-warnings tools/screen-catalog/images.mjs",
     "screen-catalog:purge": "node tools/screen-catalog/purge.mjs",
     "packs": "node tools/pack.mjs",
     "world:check": "node scripts/world-import.mjs",

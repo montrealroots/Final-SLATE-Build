@@ -5,6 +5,7 @@ import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { PersonWork } from './PersonWork';
 import { currentZone, dateKey, formatDateKey } from '../engine';
 import type { Route } from '../engine/types';
+import { Picture, PictureDetails } from './Picture';
 import { COMPANIES, LEADERSHIP_GAPS, checkedFor, company as registryCompany, groupOf, joinedGroup, type CompanyRecord, type LeadershipRole } from '../catalog/registry';
 import {
   ageAt, executive, fileFor, filmographyView, happenedBy, leadershipAt, lifeAt, madeInGroup, moneyOrUnknown, ownersAt, parseRef, registryFor, titleStanding,
@@ -73,8 +74,8 @@ export function TmdbCredit() {
 
 const KIND_LABEL: Record<CompanyRecord['kind'], string> = { corporate: 'The Company', film: 'Film', television: 'Television', network: 'Networks And Streaming' };
 /** The groups the catalog follows, and companies whose films one of them releases without owning them (Illumination). */
-const GROUPS = ['company:the-walt-disney-company', 'company:comcast', 'other'] as const;
-const GROUP_LABEL: Record<(typeof GROUPS)[number], string> = { 'company:the-walt-disney-company': 'The Walt Disney Company', 'company:comcast': 'Comcast And NBCUniversal', other: 'Released By Universal Pictures' };
+const GROUPS = ['company:the-walt-disney-company', 'company:comcast', 'company:skydance', 'company:sony-group', 'other'] as const;
+const GROUP_LABEL: Record<(typeof GROUPS)[number], string> = { 'company:the-walt-disney-company': 'The Walt Disney Company', 'company:comcast': 'Comcast And NBCUniversal', 'company:skydance': 'Skydance (Paramount And Warner Bros.)', 'company:sony-group': 'Sony', other: 'Released By Universal Pictures' };
 const inGroup = (c: CompanyRecord, g: (typeof GROUPS)[number]) => {
   const top = groupOf(c.id)?.id;
   return g === 'other' ? top === c.id && c.kind !== 'corporate' : top === g;
@@ -85,7 +86,7 @@ export function CompaniesPage() {
   const counts = index.status === 'ready' ? new Map(index.data.companies.map((c) => [c.tmdbId, c])) : null;
   return (
     <>
-      <PageHead eyebrow="Industry" title="Companies" lede="The studios and labels of The Walt Disney Company and of NBCUniversal, their leadership, and the films and series credited to them, from TMDB." />
+      <PageHead eyebrow="Industry" title="Companies" lede="The studios and labels of The Walt Disney Company, NBCUniversal, Skydance (Paramount and Warner Bros.) and Sony, their leadership, and the films and series credited to them, from TMDB." />
       <CatalogStatus index={index} />
       <CatalogSearch ready={index.status === 'ready'} />
       {index.status === 'ready' && index.data.counts.networks ? (
@@ -366,6 +367,7 @@ function TitleView({ t, today }: { t: TitleRecord; today: string }) {
     <>
       <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, ...(firstDisney ? [{ label: firstDisney.name, route: { view: 'company', ref: firstDisney.id } as Route }] : []), { label: t.title }]} />
       <PageHead eyebrow={t.type === 'tv' ? 'Series' : 'Film'} title={t.title} lede={<Released t={t} today={today} />} />
+      <div className="row gap-2" style={{ alignItems: 'flex-start', marginBottom: 12 }}><Picture subject={t.ref} name={t.title} size="page" /><PictureDetails subject={t.ref} /></div>
       {standing !== 'released' && <p className="callout">At this point in your story this title hasn't come out. What's below is what TMDB listed on {retrieved}, and may change.</p>}
       <Panel title="About">
         {t.tagline && <p><em>{t.tagline}</em></p>}
@@ -442,7 +444,7 @@ function MovieCredits({ t }: { t: TitleRecord }) {
   return (
     <>
       <Panel title="Cast" subtitle={t.cast.length ? `${plural(t.cast.length, 'credit')}, in billing order.` : undefined}>
-        {t.cast.length ? <Expandable items={[...t.cast].sort((a, b) => a.order - b.order)} label="Cast" render={(c) => <li key={`${c.person}-${c.character}`} className="list-item"><span className="grow"><Link to={personRoute(c.person)}>{c.name}</Link></span><span className="dim small">{c.character ?? 'Role not recorded'}</span></li>} />
+        {t.cast.length ? <Expandable items={[...t.cast].sort((a, b) => a.order - b.order)} label="Cast" render={(c) => <li key={`${c.person}-${c.character}`} className="list-item"><Picture subject={`person:${c.person}`} name={c.name} size="thumb" /><span className="grow"><Link to={personRoute(c.person)}>{c.name}</Link></span><span className="dim small">{c.character ?? 'Role not recorded'}</span></li>} />
           : <p className="muted">TMDB lists no cast for this title.</p>}
       </Panel>
       <Panel title="Crew" subtitle={t.crew.length ? `${plural(t.crew.length, 'credit')} across ${plural(depts.length, 'department')}.` : undefined}>
@@ -766,6 +768,7 @@ export function PersonPage({ refId }: { refId: string }) {
       <>
         <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: p.name }]} />
         <PageHead eyebrow="Person" title={p.name} lede={p.details?.knownFor ? `Known for ${p.details.knownFor.toLowerCase()}, as TMDB lists it` : undefined} />
+        <div className="row gap-2" style={{ alignItems: 'flex-start', marginBottom: 12 }}><Picture subject={`person:${p.id}`} name={p.name} size="page" /><PictureDetails subject={`person:${p.id}`} /></div>
         <Panel title="About">
           {p.details ? (
             <>

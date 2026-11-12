@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { theBacker } from '../engine/backer-words';
 import { setShotPlan } from '../engine/takes-actions';
 import { RIGS, rigOf, type Rig } from '../engine/craft';
 import { chooseSite } from '../engine/locations-actions';
@@ -32,6 +33,8 @@ import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } 
 import { store, useGame } from './store';
 import { WritingWork } from './WritingWork';
 import { FilmedAtCard } from './FilmedAt';
+import { StudioPitchCard } from './StudioPitch';
+import { STRATEGY_VERSION } from '../engine/strategy';
 import { dayPlace, filmedAt, kindFee } from '../engine/destinations';
 
 function NeedsApproval({ p, what }: { p: Project; what: string }) {
@@ -854,6 +857,15 @@ function FinancingPanel({ p }: { p: Project }) {
                 )}
                 {d.status === 'considering' && <p className="muted">Their answer is due {formatDateKey(dateKey(d.decideAt ?? g.now, getPlace(p.axes.basePlaceId).zone))}.</p>}
                 {d.reason && <p className="muted">{d.reason}</p>}
+                {d.studio && (d.studio.for.length > 0 || d.studio.against.length > 0) && (
+                  <details className="small">
+                    <summary>How {d.backer} Read It</summary>
+                    {d.studio.for.length > 0 && <><p className="dim small" style={{ margin: 0 }}>For it:</p><ul className="dim">{d.studio.for.map((t) => <li key={t}>{t}</li>)}</ul></>}
+                    {d.studio.against.length > 0 && <><p className="dim small" style={{ margin: 0 }}>Against it:</p><ul className="dim">{d.studio.against.map((t) => <li key={t}>{t}</li>)}</ul></>}
+                    {d.studio.next && <p className="dim">{d.studio.next}</p>}
+                    <p className="dim small">Its read for {d.studio.year}, as it was given{d.studio.v !== STRATEGY_VERSION ? ', under an earlier version of how studios read a pitch' : ''}. It doesn't change afterwards.</p>
+                  </details>
+                )}
                 {d.transfer && <p className="dim">Moved from {d.transfer.sources.map((x) => `${g.projects.find((y) => y.id === x.projectId)?.title ?? 'a project'} (${money(x.amount)})`).join(', ')}.</p>}
                 {(d.status === 'offered' || d.status === 'accepted' || d.status === 'breached') && <ul className="dim">{dealTerms(d).map((t) => <li key={t}>{t}</li>)}</ul>}
                 {(d.status === 'accepted' || d.status === 'breached') && d.terms.recoup > 0 && <p className="dim">Repaid so far: {money(d.repaid)} of {money(d.terms.recoup)}.</p>}
@@ -909,12 +921,13 @@ function FinancingPanel({ p }: { p: Project }) {
         </ul>
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       </section>
+      {!p.delivered && <StudioPitchCard p={p} />}
       {accepting && (
         <Modal title="Accept These Terms?" onClose={() => setAccepting(null)} footer={<>
           <button className="btn" onClick={() => setAccepting(null)}>Not Yet</button>
           <button className="btn btn-primary" onClick={() => { setErr(store.act((s) => acceptDeal(s, live(s), accepting.id))); setAccepting(null); }}>Accept {money(accepting.amount)}</button>
         </>}>
-          <p>The {accepting.backer.toLowerCase()} backs {p.title} with {money(accepting.amount)} on these terms:</p>
+          <p>{theBacker(accepting, true)} backs {p.title} with {money(accepting.amount)} on these terms:</p>
           <ul>{dealTerms(accepting).map((t) => <li key={t}>{t}</li>)}</ul>
           <p className="muted">These terms apply for the life of the project.</p>
         </Modal>

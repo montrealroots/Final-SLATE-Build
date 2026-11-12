@@ -26,3 +26,4 @@ __pycache__/
 # Data packs built by tools/pack.mjs: the catalog one is TMDB content (docs/DATA-PACKS.md).
 packs/
 *.slatepack
+.screen-images/
