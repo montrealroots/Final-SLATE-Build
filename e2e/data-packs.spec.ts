@@ -162,7 +162,23 @@ test('J09: films and optional pictures installed and shown; pictures switched of
   await page.getByRole('checkbox', { name: 'Show Pictures From The Picture Pack' }).uncheck();
   await openLantern(page);
   await expect(poster).toHaveAttribute('data-picture', 'placeholder');
+  // The switch stays where it is first drawn. Here the browser takes 0.7 seconds to say how much room it has, as a slow
+  // device does; before November 12, 2026 that line was above the switch and its arrival moved the switch 19 pixels.
+  await page.evaluate(() => {
+    const proto = Object.getPrototypeOf(navigator.storage); const real = proto.estimate;
+    proto.estimate = function () { return new Promise((r) => setTimeout(() => r(real.call(this)), 700)); };
+  });
   await nav(page, 'Settings');
+  const tops = await page.evaluate(() => new Promise<number[]>((done) => {
+    const seen: number[] = []; const t0 = performance.now();
+    const tick = () => {
+      const el = [...document.querySelectorAll('label.check')].find((l) => l.textContent?.includes('Show Pictures From The Picture Pack'));
+      if (el) { const y = Math.round(el.getBoundingClientRect().top + window.scrollY + (document.getElementById('main')?.scrollTop ?? 0)); if (seen.at(-1) !== y) seen.push(y); }
+      if (performance.now() - t0 < 2000) requestAnimationFrame(tick); else done(seen);
+    };
+    tick();
+  }));
+  expect(tops, 'the picture switch moved after it was drawn').toHaveLength(1);
   await page.getByRole('checkbox', { name: 'Show Pictures From The Picture Pack' }).check();
 
   // An update cancelled part-way: the films that were installed are still there, whole, and nothing is left behind.
