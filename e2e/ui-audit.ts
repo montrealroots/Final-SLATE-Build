@@ -162,6 +162,8 @@ export function auditPage(): Audit {
 }
 
 export async function audit(page: Page): Promise<Audit> {
+  // Not while something is sliding or fading: a drawer half way out is not where anything is.
+  await page.waitForFunction(() => !document.getAnimations().some((a) => a.playState === 'running' && a.effect?.getComputedTiming().iterations !== Infinity), null, { timeout: 5_000 }).catch(() => undefined);
   const [a, rows] = await Promise.all([page.evaluate(auditPage), page.evaluate(findMisalignments)]);
   return { ...a, defects: [...a.defects, ...rows.map((f) => ({ kind: f.kind, what: `${f.a} | ${f.b}`, by: f.by, where: f.where.split(' / ').at(-1) ?? '' }))] };
 }

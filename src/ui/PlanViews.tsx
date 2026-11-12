@@ -23,7 +23,8 @@ import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, roofed, scoutedPlaces, siteName, siteNote } from '../engine/locations';
 import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
 import { candidatesFor, childrenIn } from '../engine/hiring';
-import { consideredOn, isReal, jobLabel, stopConsidering } from '../engine/guests';
+import { consideredOn, isReal, jobLabel, stopConsidering, tmdbIdOf } from '../engine/guests';
+import { Picture } from './Picture';
 import { storyAge, storyAgeWords } from '../engine/story-age';
 import { RULES_READ, licenceReady, projectRules, supervisionFor } from '../engine/minors';
 import { RULE_WORDS, ageWords, fitNotes, hoursWords } from '../engine/casting-notes';
@@ -128,6 +129,8 @@ function CandidateList({ p, roleId, characterId, method, onDone }: { p: Project;
           return (
             <li key={c.id}>
               <div className="row-wrap">
+                {/* A person from the film catalog has their photo here where the pictures are installed; nobody else has a face drawn for them. */}
+                {isReal(c.id) && <Picture subject={`person:${tmdbIdOf(c.id)}`} name={c.name} size="thumb" />}
                 <div className="grow">
                   <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{isReal(c.id) && <> <span className="chip chip-info">From The Film Catalog</span></>}{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
                   {isReal(c.id)

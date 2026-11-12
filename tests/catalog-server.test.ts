@@ -1,5 +1,6 @@
 // The production server (server/serve.mjs, server/catalog-handler.mjs, docs/DEPLOYMENT.md): the built game and its data
 // files with no Vite in the path. Run against made-up files in temporary directories; no real catalog is used.
+import { createHash } from 'node:crypto';
 import { mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { request } from 'node:http';
 import type { AddressInfo } from 'node:net';
@@ -184,6 +185,52 @@ describe('the mods the game offers', () => {
     } finally { other.close(); }
   });
 
+  it('offers the whole catalog\'s pictures shard by shard: each with its size and checksum, the rest of a cut-off download, nothing unlisted, nothing past six months', async () => {
+    const packs = join(root, 'shard-packs');
+    const store = join(root, 'shard-store');
+    const { Manifest, packShards, storePath } = await import('../tools/screen-catalog/pictures.mjs');
+    const man = new Manifest(join(root, 'shard-manifest'));
+    const png = (n: number) => { const b = Buffer.alloc(40); b.writeUInt32BE(0x89504e47, 0); b.writeUInt32BE(185, 16); b.writeUInt32BE(278, 20); b[30] = n; return b; };
+    const add = (entity: string, kind: string, path: string, n: number, status = 'ready') => {
+      const size = kind === 'backdrop' ? 'w300' : 'w185';
+      if (status === 'ready') write(join(store, storePath(size, path)), ''), writeFileSync(join(store, storePath(size, path)), png(n));
+      man.set({ provider: 'TMDB', entity, kind, path, size, status, file: storePath(size, path), bytes: 40, w: 185, h: 278, at: '2026-11-10', hash: String(n) });
+    };
+    add('person:1', 'profile', '/a1.jpg', 1); add('person:2', 'profile', '/a2.jpg', 2); add('movie:1', 'poster', '/p1.jpg', 3);
+    add('person:3', 'profile', '/a3.jpg', 4, 'no-image-published'); // nothing stands in for a picture that isn't there
+    const { index } = packShards(man, { store, out: join(packs, 'pictures'), now: () => Date.parse(RETRIEVED) });
+    expect(Object.keys(index.kinds).sort()).toEqual(['poster', 'profile']);
+    expect(index.kinds.profile.pictures).toBe(2);
+    writeFileSync(join(packs, 'pictures', 'stray.slatepack'), 'not in the listing');
+    const s = await start(catalog('shard-mods', null), undefined, packs);
+    try {
+      const listed = json(await get(s.port, '/mods/pictures/index.json'));
+      expect(listed.kinds.profile.shards.length).toBeGreaterThan(0);
+      for (const sh of [...listed.kinds.profile.shards, ...listed.kinds.poster.shards]) {
+        const got = await get(s.port, `/mods/pictures/${sh.file}`);
+        expect([got.status, got.body.length, createHash('sha256').update(got.body).digest('hex')]).toEqual([200, sh.bytes, sh.sha256]);
+        expect(String(got.headers['cache-control']).startsWith('private')).toBe(true);
+        const rest = await get(s.port, `/mods/pictures/${sh.file}`, { headers: { range: 'bytes=10-' } });
+        expect([rest.status, rest.body.equals(got.body.subarray(10))]).toEqual([206, true]);
+      }
+      expect((await get(s.port, '/mods/pictures/stray.slatepack')).status).toBe(404);
+      expect((await get(s.port, '/mods/pictures/..%2f..%2findex.json')).status).not.toBe(200);
+      expect((await get(s.port, '/mods/pictures/index.json', { method: 'POST' })).status).toBe(405);
+    } finally { s.close(); }
+    // Six months on from the first picture's day, nothing is offered or served.
+    const late = await start(catalog('shard-mods-late', null), () => Date.parse('2026-11-10T00:00:00Z') + (MAX_AGE_DAYS + 1) * 86_400_000, packs);
+    try {
+      expect(json(await get(late.port, '/mods/pictures/index.json'))).toEqual({ version: 1, kinds: {} });
+      expect((await get(late.port, `/mods/pictures/${index.kinds.profile.shards[0].file}`)).status).toBe(404);
+    } finally { late.close(); }
+    // A server that isn't the owner's has none.
+    const other = await start(catalog('shard-mods-other', null), undefined, packs, false);
+    try {
+      expect(json(await get(other.port, '/mods/pictures/index.json'))).toEqual({ version: 1, kinds: {} });
+      expect((await get(other.port, `/mods/pictures/${index.kinds.profile.shards[0].file}`)).status).toBe(404);
+    } finally { other.close(); }
+  });
+
   it('serves TMDB\'s data only when started as the owner\'s own (--owner or SLATE_OWNER=1), off by default', () => {
     const src = readFileSync('server/serve.mjs', 'utf8');
     expect(src).toMatch(/const films = process\.argv\.includes\('--owner'\) \|\| process\.env\.SLATE_OWNER === '1';/);
@@ -196,19 +243,26 @@ describe('the mods the game offers', () => {
 describe('who gets the owner\'s data', () => {
   const PASS = 'a passphrase the owner chose';
   const packsDir = join(root, 'owner-packs');
-  const FILM_ROUTES = ['/screen-catalog/titles/movie-1.json', '/mods/films.slatepack'];
+  const FILM_ROUTES = ['/screen-catalog/titles/movie-1.json', '/mods/films.slatepack', '/mods/pictures/profile-00.slatepack'];
   // A request from elsewhere, three ways: by another name, passed on by a proxy, and both.
   const ELSEWHERE: Record<string, string>[] = [{ host: 'slate.example.com' }, { 'x-forwarded-for': '203.0.113.9' }, { host: 'slate.example.com', 'x-forwarded-proto': 'https', via: '1.1 proxy' }];
   beforeAll(() => {
     mkdirSync(packsDir, { recursive: true });
     writeFileSync(join(packsDir, 'films.slatepack'), writePack({ kind: 'catalog', name: 'Films And Series', source: 'TMDB', builtAt: RETRIEVED, retrieved: { from: RETRIEVED, to: RETRIEVED, maxAgeDays: 180 } }, [['index.json', '{"version":1}']]));
     writeFileSync(join(packsDir, 'cinemas.slatepack'), writePack({ kind: 'cinemas', name: 'Cinemas', source: 'Wikidata (CC0)', builtAt: RETRIEVED }, [['cinemas/index.json', '{}']]));
+    // The whole catalog's pictures: a listing and one shard, as tools/screen-catalog/pictures.mjs pack writes them.
+    mkdirSync(join(packsDir, 'pictures'), { recursive: true });
+    const shard = writePack({ kind: 'pictures', part: 'profile-00', name: "People's Portraits, Part 00", source: 'TMDB', builtAt: RETRIEVED, retrieved: { from: RETRIEVED, to: RETRIEVED, maxAgeDays: 180 } }, [['pictures/profile-00/index.json', '{}']]);
+    writeFileSync(join(packsDir, 'pictures', 'profile-00.slatepack'), shard);
+    writeFileSync(join(packsDir, 'pictures', 'index.json'), JSON.stringify({ version: 1, provider: 'TMDB', builtAt: RETRIEVED, retrieved: { from: RETRIEVED, to: RETRIEVED, maxAgeDays: 180 }, kinds: { profile: { name: "People's Portraits", pictures: 0, bytes: shard.length, shards: [{ part: 'profile-00', file: 'profile-00.slatepack', pictures: 0, bytes: shard.length, sha256: 'x' }] } } }));
   });
   const nothingOwned = async (port: number, headers: Record<string, string>) => {
     expect(json(await get(port, '/screen-catalog/index.json', { headers })), JSON.stringify(headers)).toEqual({ installed: false, reason: 'missing' });
     expect(json(await get(port, '/screen-catalog/world.json', { headers }))).toEqual({ installed: false, reason: 'missing' });
     for (const path of FILM_ROUTES) expect((await get(port, path, { headers })).status, path).toBe(404);
     expect(json(await get(port, '/mods/index.json', { headers })).mods.map((m: { file: string }) => m.file)).toEqual(['cinemas.slatepack']);
+    // Nor is the pictures' listing: the same answer as a server that has none.
+    expect(json(await get(port, '/mods/pictures/index.json', { headers }))).toEqual({ version: 1, kinds: {} });
     // The cinemas (Wikidata, CC0) are everyone's.
     expect((await get(port, '/screen-catalog/cinemas/GB.json', { headers })).status).toBe(200);
   };

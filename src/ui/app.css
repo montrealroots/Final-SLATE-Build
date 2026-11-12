@@ -1496,3 +1496,6 @@ fieldset > legend { margin-bottom: var(--s2); }
   :is(.grid.form, .field-row) > .field-std > .error, :is(.grid.form, .field-row) > .idea-field > .field-std > .error { grid-row: 3; }
   :is(.grid.form, .field-row) > .idea-field > .ideas-row { grid-row: 4; }
 }
+
+/* A page's own picture, with what is known about it beside or under it. */
+.picture-row { align-items: flex-start; margin-bottom: var(--s3); }

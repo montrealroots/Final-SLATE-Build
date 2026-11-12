@@ -190,6 +190,7 @@ export function CompanyPage({ id }: { id: string }) {
     <>
       <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: c.name }]} />
       <PageHead eyebrow={KIND_LABEL[c.kind]} title={c.name} />
+      <div className="row gap-2 wrap picture-row"><Picture subject={c.id} name={c.name} kind="logo" size="page" /><PictureDetails subject={c.id} kind="logo" /></div>
       <Panel title="About">
         <dl className="kv">
           <dt>Roles</dt><dd>{c.roles.map((r) => ({ production: 'Production', distribution: 'Distribution', network: 'Network', streaming: 'Streaming Service', holding: 'Parent Company' }[r])).join(', ')}</dd>
@@ -367,7 +368,7 @@ function TitleView({ t, today }: { t: TitleRecord; today: string }) {
     <>
       <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, ...(firstDisney ? [{ label: firstDisney.name, route: { view: 'company', ref: firstDisney.id } as Route }] : []), { label: t.title }]} />
       <PageHead eyebrow={t.type === 'tv' ? 'Series' : 'Film'} title={t.title} lede={<Released t={t} today={today} />} />
-      <div className="row gap-2" style={{ alignItems: 'flex-start', marginBottom: 'var(--s3)' }}><Picture subject={t.ref} name={t.title} size="page" /><PictureDetails subject={t.ref} /></div>
+      <div className="row gap-2 wrap picture-row"><Picture subject={t.ref} name={t.title} size="page" /><Picture subject={t.ref} name={t.title} kind="backdrop" size="page" /><PictureDetails subject={t.ref} /></div>
       {standing !== 'released' && <p className="callout">At this point in your story this title hasn't come out. What's below is what TMDB listed on {retrieved}, and may change.</p>}
       <Panel title="About">
         {t.tagline && <p><em>{t.tagline}</em></p>}
@@ -570,6 +571,7 @@ export function SeasonPage({ refId }: { refId: string }) {
     <>
       <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: d.seriesTitle, route: titleRoute(d.series) }, { label: d.name }]} />
       <PageHead eyebrow={d.seriesTitle} title={d.name} lede={d.date ? (happenedBy(d.date, today) ? `First aired ${day(d.date)}` : `Not aired by ${formatDateKey(today)}: due ${day(d.date)}`) : 'No air date recorded'} />
+      <div className="row gap-2 wrap picture-row"><Picture subject={refId} name={`${d.seriesTitle}, ${d.name}`} kind="season-poster" size="page" /><PictureDetails subject={refId} kind="season-poster" /></div>
       {d.overview && <Panel title="About"><p>{d.overview}</p></Panel>}
       <Panel title="Episodes">
         {d.episodes.length ? (
@@ -725,6 +727,7 @@ export function EpisodePage({ refId }: { refId: string }) {
       <>
         <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: d.seriesTitle, route: titleRoute(d.series) }, { label: d.name, route: { view: 'season', ref: d.ref } as Route }, { label: `Episode ${e.number}` }]} />
         <PageHead eyebrow={`${d.seriesTitle}, ${d.name}`} title={e.name} lede={aired ? `Aired ${day(e.date!)}` : e.date ? `Not aired by ${formatDateKey(today)}: due ${day(e.date)}, as announced` : 'No air date recorded'} />
+        <div className="row gap-2 wrap picture-row"><Picture subject={refId} name={`${d.seriesTitle}: ${e.name}`} kind="still" size="page" /><PictureDetails subject={refId} kind="still" /></div>
         <Panel title="About">
           <p>{e.overview ?? 'TMDB has no overview for this episode.'}</p>
           <dl className="kv">
@@ -918,6 +921,7 @@ function NetworkView({ n, today }: { n: NetworkRecord; today: string }) {
     <>
       <Breadcrumbs items={[{ label: 'Companies', route: { view: 'companies' } }, { label: 'Networks And Streaming Services', route: { view: 'networks' } as Route }, { label: n.name }]} />
       <PageHead eyebrow="Network Or Streaming Service" title={n.name} lede={closed ? `Closed ${day(closed)}.` : launched ? `Since ${day(launched)}.` : undefined} />
+      <div className="row gap-2 wrap picture-row"><Picture subject={`network:${n.id}`} name={n.name} kind="logo" size="page" /><PictureDetails subject={`network:${n.id}`} kind="logo" /></div>
       <Panel title="About">
         <dl className="kv">
           <dt>Country</dt><dd>{regionName(n.country) ?? 'Not recorded'}</dd>

@@ -17,6 +17,7 @@ import { createHash } from 'node:crypto';
 import { existsSync, mkdirSync, readFileSync, readdirSync, renameSync, statSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { dimensions } from './images.mjs';
+import { writePack } from '../pack-format.mjs';
 
 export const IMAGE_BASE = 'https://image.tmdb.org/t/p/';
 export const STATUSES = ['ready', 'no-image-published', 'temporarily-failed', 'permission-limited', 'stale', 'intentionally-excluded', 'not-attempted'];
@@ -27,7 +28,7 @@ export const MAX_AGE_DAYS = 180;
 const DAY = 86_400_000;
 const BUCKETS = 64;
 
-const bucketOf = (entity) => { let h = 0; for (const c of entity) h = (h * 31 + c.charCodeAt(0)) >>> 0; return String(h % BUCKETS).padStart(2, '0'); };
+export const bucketOf = (entity) => { let h = 0; for (const c of entity) h = (h * 31 + c.charCodeAt(0)) >>> 0; return String(h % BUCKETS).padStart(2, '0'); };
 export const storePath = (size, path) => { const f = path.replace(/^\//, ''); return join(size, f.slice(0, 2), f); };
 
 /**
@@ -232,6 +233,54 @@ ${rows.join('\n')}
 `;
 }
 
+/** What the game calls each kind of picture, and what its shards are named for. */
+export const KIND_NAMES = { profile: "People's Portraits", poster: 'Film And Series Posters', backdrop: 'Film And Series Backdrops', 'season-poster': 'Season Posters', still: 'Episode Stills', logo: 'Company And Network Logos' };
+const RIGHTS = "These pictures are TMDB's, gathered for the owner's own copy of the game. The rights to each belong to its owner. Nothing here clears a picture for any other use, and the game does not claim a licence.";
+
+/**
+ * The downloaded store as packs the game can install (docs/DATA-PACKS.md, "Pictures For The Whole Catalog"): one pack
+ * for each of the manifest's shards, so one kind of picture is at most 64 downloads of a size a phone can take, and
+ * an index of them with each pack's size and SHA-256. A record is in exactly one shard, by its own identity, so a
+ * person credited at five studios is downloaded once. Only rows that are ready and whose file is there go in; nothing
+ * stands in for a picture that isn't.
+ */
+export function packShards(man, { store, out, now = () => Date.now(), log = () => {} }) {
+  const shards = new Map();
+  for (const r of man.rows()) {
+    if (r.status !== 'ready') continue;
+    const part = `${r.kind}-${bucketOf(r.entity)}`;
+    (shards.get(part) ?? shards.set(part, []).get(part)).push(r);
+  }
+  mkdirSync(out, { recursive: true });
+  const builtAt = new Date(now()).toISOString();
+  const kinds = {};
+  let from = '9999', to = '0000', missing = 0;
+  for (const [part, rows] of [...shards].sort(([a], [b]) => a.localeCompare(b))) {
+    const kind = rows[0].kind;
+    const entries = {}; const files = [];
+    for (const r of rows.sort((a, b) => a.entity.localeCompare(b.entity))) {
+      const full = join(store, r.file);
+      if (!existsSync(full)) { missing++; continue; }
+      entries[r.entity] = { p: r.path, w: r.w, h: r.h, at: r.at };
+      files.push([`pictures/${part}/${r.entity}`, readFileSync(full)]);
+      if (r.at < from) from = r.at; if (r.at > to) to = r.at;
+    }
+    if (!files.length) continue;
+    const retrieved = { from: rows.reduce((m, r) => (r.at < m ? r.at : m), '9999'), to: rows.reduce((m, r) => (r.at > m ? r.at : m), '0000'), maxAgeDays: MAX_AGE_DAYS };
+    const index = { version: 1, provider: 'TMDB', kind, size: RENDITION[kind], rights: RIGHTS, entries };
+    const buf = writePack({ kind: 'pictures', part, name: `${KIND_NAMES[kind]}, Part ${part.slice(-2)}`, source: 'TMDB', builtAt, retrieved }, [[`pictures/${part}/index.json`, JSON.stringify(index)], ...files]);
+    const file = `${part}.slatepack`;
+    writeFileSync(join(out, `${file}.tmp`), buf); renameSync(join(out, `${file}.tmp`), join(out, file));
+    const k = (kinds[kind] ??= { name: KIND_NAMES[kind], size: RENDITION[kind], pictures: 0, bytes: 0, shards: [] });
+    k.pictures += files.length; k.bytes += buf.length;
+    k.shards.push({ part, file, pictures: files.length, bytes: buf.length, sha256: createHash('sha256').update(buf).digest('hex') });
+    log(`${file}: ${files.length} pictures, ${(buf.length / 1048576).toFixed(1)} MB`);
+  }
+  const index = { version: 1, provider: 'TMDB', builtAt, retrieved: { from, to, maxAgeDays: MAX_AGE_DAYS }, rights: RIGHTS, kinds };
+  writeFileSync(join(out, 'index.json.tmp'), JSON.stringify(index)); renameSync(join(out, 'index.json.tmp'), join(out, 'index.json'));
+  return { index, missing };
+}
+
 async function main() {
   const [cmd] = process.argv.slice(2);
   const arg = (k, d) => process.argv.find((a) => a.startsWith(`--${k}=`))?.slice(k.length + 3) ?? d;
@@ -257,7 +306,11 @@ async function main() {
     const until = Date.now() + Number(arg('minutes', '100000')) * 60_000;
     const r = await fetchPictures(man, { store, kinds: arg('kinds', KINDS.join(',')).split(','), limit: Number(arg('limit', 'Infinity')), rate: Number(arg('rate', '20')), stop: () => Date.now() > until, log });
     log(`${r.stopped ? 'Stopped' : 'Done'}: wanted ${r.wanted}; ${r.fetched} fetched (${(r.bytes / 1048576).toFixed(1)} MB), ${r.reused} reused, ${r.failed} failed.`);
-  } else if (cmd !== 'report') { console.error('Usage: pictures.mjs inventory | fetch [--kinds=] [--limit=] [--minutes=] [--rate=] | report'); process.exit(2); }
+  } else if (cmd === 'pack') {
+    const r = packShards(man, { store, out: arg('out', 'packs/pictures'), log });
+    const all = Object.values(r.index.kinds);
+    log(`Packed ${all.reduce((n, k) => n + k.pictures, 0).toLocaleString('en-US')} pictures in ${all.reduce((n, k) => n + k.shards.length, 0)} packs, ${(all.reduce((n, k) => n + k.bytes, 0) / 1048576).toFixed(0)} MB${r.missing ? `; ${r.missing} listed as ready had no file and were left out` : ''}.`);
+  } else if (cmd !== 'report') { console.error('Usage: pictures.mjs inventory | fetch [--kinds=] [--limit=] [--minutes=] [--rate=] | report | pack [--out=]'); process.exit(2); }
   const by = coverage(man);
   if (cmd === 'report') {
     const manifest = JSON.parse(readFileSync(join(CACHE, 'manifest.json'), 'utf8'));
