@@ -9,7 +9,8 @@
 // - Episodes can be put in a different order while nothing is planned, hired or recorded for them; the scenes, drafts
 //   and the episode's writer and director move with it.
 import { assertEditable, isEpisodic, sceneLabel, sceneNumber } from './projects';
-import type { Project, Relationship, WorldRule } from './types';
+import { newId } from './state';
+import type { GameState, Project, Relationship, WorldRule } from './types';
 
 export interface FactImpact { episode: number; title: string; scenes: { id: string; label: string; short: string; recorded: boolean }[] }
 
@@ -64,6 +65,18 @@ export function removeWorldRule(p: Project, id: string): void {
   p.worldRules = p.worldRules.filter((x) => x.id !== id);
 }
 
+/** One relationship for a pair, whichever way round they are named: a second for the same two is refused, so a bond is never held twice (the v3 package, 01 section 4). Change the one they have instead. */
+export function addRelationship(state: GameState, p: Project, a: string, b: string, kind: string, start = '', end = ''): Relationship {
+  assertEditable(p);
+  const name = (id: string) => p.characters.find((c) => c.id === id)?.name;
+  if (!name(a) || !name(b) || a === b) throw new Error('Choose two different characters.');
+  if (!kind.trim()) throw new Error('Say what the relationship is.');
+  if (p.relationships.some((r) => (r.a === a && r.b === b) || (r.a === b && r.b === a))) throw new Error(`${name(a)} and ${name(b)} already have a relationship. Change that one instead of adding a second.`);
+  const r: Relationship = { id: newId(state, 'rel'), a, b, kind: kind.trim(), start: start.trim(), end: end.trim() };
+  p.relationships.push(r);
+  return r;
+}
+
 export function updateRelationship(p: Project, id: string, patch: Partial<Pick<Relationship, 'kind' | 'start' | 'end'>>): Relationship {
   assertEditable(p);
   const r = p.relationships.find((x) => x.id === id);
@@ -91,6 +104,15 @@ const episodeOf = (p: Project, n: number) => {
 export function setSeasonArc(p: Project, text: string): void {
   assertEditable(p);
   p.seasonArc = text.slice(0, 2000);
+}
+
+/** The series' own plan (the v3 package, 01 section 1): what an episode does, how its people change, the places it returns to, how it goes on or ends. Kept; never scored. */
+export function setSeriesPlan(p: Project, patch: Partial<NonNullable<Project['series']>>): void {
+  assertEditable(p);
+  const next = { ...p.series, ...patch };
+  for (const k of ['engine', 'changes', 'continuation'] as const) if (typeof next[k] === 'string') { next[k] = next[k]!.slice(0, 800); if (!next[k]) delete next[k]; }
+  if (next.recurring) { next.recurring = next.recurring.map((x) => x.slice(0, 80)).slice(0, 30); if (!next.recurring.length) delete next.recurring; }
+  if (Object.keys(next).length) p.series = next; else delete p.series;
 }
 
 export function setEpisodeTitle(p: Project, n: number, title: string): void {

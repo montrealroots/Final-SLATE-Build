@@ -135,6 +135,8 @@ export interface Brief {
   picks: IdeaPick[];
   /** Ideas the player marked to come back to, by ID. */
   saved?: string[];
+  /** A full story's suggestions for how it looks and sounds (blueprints.ts): notes for the departments, not choices. Each production choice is still made on its own. */
+  suggestions?: { look?: string; sound?: string };
 }
 
 // ---------------- Words ----------------

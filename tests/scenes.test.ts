@@ -116,7 +116,7 @@ describe('a character by its ID', () => {
   it('removing a character lists the scenes that use them before anything is removed', () => {
     const { p } = script('remove-char');
     const tomas = p.characters[1];
-    expect(removeCharacterImpact(p, tomas.id)).toEqual(['Scene 1 (Quay) uses this character.', 'Scene 2 (Boathouse) uses this character.']);
+    expect(removeCharacterImpact(p, tomas.id)).toEqual(['They are in 2 scenes: Scene 1 (Quay), Scene 2 (Boathouse).', 'They have 3 lines of dialogue.']);
     expect(p.characters).toHaveLength(2); // asking changes nothing
   });
 });

@@ -10,7 +10,7 @@ import { cancel, commit, ledgerTotals, money, reserve, FundsError } from './budg
 import { genre } from './genres';
 import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
 import { buildTasks, coachingNeeded, estimatedShootDays, planShootDays } from './production';
-import { approvalRights, approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneTechnique } from './projects';
+import { approvalRights, approvedCharacters, characterName, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneTechnique } from './projects';
 import { recordHistory, willingness } from './relationships';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
@@ -267,7 +267,7 @@ export function resolveOffer(state: GameState, p: Project, h: Hire): string {
   const r = stream(state.seed, 'offer', h.id)();
   const win = productionWindow(state, p);
   const avail = isAvailable(state, person, win.from, win.to, p.id);
-  const roleWord = h.characterId ? `the role of ${approvedCharacters(p).find((c) => c.id === h.characterId)?.name}` : `the ${roleLabel(h.roleId).toLowerCase()} job`;
+  const roleWord = h.characterId ? `the role of ${characterName(p, h.characterId)}` : `the ${roleLabel(h.roleId).toLowerCase()} job`;
   const lead = h.characterId && ['lead', 'co-lead', 'ensemble-lead'].includes(approvedCharacters(p).find((c) => c.id === h.characterId)?.roleSize ?? '');
   let text: string;
   if (!avail.ok) {

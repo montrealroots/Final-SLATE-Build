@@ -1,0 +1,7 @@
+id,choice,changed alone,intended outcome that changes,what stays the same,unit test,calibration
+V3-E01,"A scene's typed needs in a full story (props, crowd, stunts)",the needs are removed from an otherwise identical story,the approved draft's production requirements,the story's words; every other requirement,blueprints.test.ts: reaches the breakdown through the typed fields,none: existing breakdown rules
+V3-E02,Keep My <field>,one field kept,that field keeps the player's words,every other field is written,blueprints.test.ts: keeps the player's own words,none
+V3-E03,Lock <field>,one field locked,that field is not written and is listed as locked,every other field is written,blueprints.test.ts: keeps the player's own words,none
+V3-E04,Applying a full story,applied or not,"the project's script fields, characters, relationships, scenes","money, time, people, funding, cast, hires, obligations, schedule, drafts, phase",blueprints.test.ts: changes nothing it does not say,none
+V3-E05,Give Their Scenes To <character>,the character chosen,who is in the set-aside character's scenes and bonds,"contracts, offers, payments, cast",characters.test.ts: can give their scenes; with a performer contracted and paid,none
+V3-E06,Set Aside,set aside or not,the working script's characters and scenes,"hires, cast, obligations, ledger totals",characters.test.ts: with a performer contracted and paid,none

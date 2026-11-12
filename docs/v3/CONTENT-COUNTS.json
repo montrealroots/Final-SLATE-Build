@@ -1,0 +1,911 @@
+{
+ "totals": {
+  "required": 14900,
+  "written": 2,
+  "complete": 2,
+  "reviewed": 2,
+  "genresAtQuota": 0,
+  "genresStarted": 2,
+  "mixedWritten": 0,
+  "mixedComplete": 0,
+  "pairsWithTen": 0,
+  "genresInThreePairs": 0
+ },
+ "byGenre": {
+  "absurdist": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "action": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "action-comedy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "adventure": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "alternate-history": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "animated": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "anime": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "anthology": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "apocalyptic": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "art-house": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "avant-garde": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "backstage-musical": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "biker": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "biographical": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "black-comedy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "blaxploitation": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "body-horror": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "buddy-comedy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "buddy-cop": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "caper": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "chanbara": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "chase": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "childrens": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "christmas": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "comedy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "coming-of-age": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "concert-film": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "conspiracy-thriller": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "cosmic-horror": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "costume-drama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "courtroom-drama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "creature-feature": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "crime": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "cyberpunk": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "dance": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "dark-fantasy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "detective": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "disaster": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "docudrama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "docufiction": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "documentary": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "domestic-drama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "drama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "dystopian": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "eco-horror": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "epic": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "erotic-thriller": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "espionage": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "experimental": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "exploitation": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "fairy-tale": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "family": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "fantasy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "farce": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "film-noir": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "folk-horror": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "found-footage": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "gangster": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "giallo": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "gothic-horror": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "grindhouse": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "hangout": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "heist": {
+   "film": 1,
+   "tv": 0,
+   "filmReviewed": 1,
+   "tvReviewed": 0
+  },
+  "historical-drama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "historical-fiction": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "holiday": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "hood-film": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "horror": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "horror-comedy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "isekai": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "jidaigeki": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "jukebox-musical": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "kaiju": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "kitchen-sink-drama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "legal-drama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "magical-realism": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "martial-arts": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "medical-drama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "melodrama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "military": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "mockumentary": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "monster-movie": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "mumblecore": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "musical": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "mystery": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "nature-documentary": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "neo-noir": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "neorealism": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "new-wave": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "nordic-noir": {
+   "film": 0,
+   "tv": 1,
+   "filmReviewed": 0,
+   "tvReviewed": 1
+  },
+  "occult": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "parody": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "period-drama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "picaresque": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "police-procedural": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "political-drama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "political-thriller": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "post-apocalyptic": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "prison-film": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "psychological-horror": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "psychological-thriller": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "queer-cinema": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "revenge": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "road-movie": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "rockumentary": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "romance": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "romantic-comedy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "romantic-drama": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "samurai": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "satire": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "science-fantasy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "science-fiction": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "screwball-comedy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "sea-adventure": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "silent-film": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "slapstick": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "slasher": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "slice-of-life": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "social-realism": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "space-opera": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "spaghetti-western": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "splatter": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "sports": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "spy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "steampunk": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "stoner-comedy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "superhero": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "supernatural": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "surrealist": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "survival": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "swashbuckler": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "sword-and-sandal": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "sword-and-sorcery": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "techno-thriller": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "teen": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "thriller": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "time-travel": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "tokusatsu": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "tragedy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "tragicomedy": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "true-crime": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "vampire": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "war": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "werewolf": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "western": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "whodunit": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "wuxia": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "yakuza": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  },
+  "zombie": {
+   "film": 0,
+   "tv": 0,
+   "filmReviewed": 0,
+   "tvReviewed": 0
+  }
+ },
+ "pairs": {}
+}

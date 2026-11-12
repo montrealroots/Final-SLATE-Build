@@ -5,7 +5,7 @@ import { NATIONALITIES } from '../engine/identity';
 import { countryName } from '../world/gazetteer/gazetteer';
 import {
   MODULE_LABELS, TECHNIQUE_LABELS, addCharacter, addNote, addScene, noteFromIssue, applyDesignChange, approveDraft, composeGenres, deleteScene, describeImpact,
-  designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter,
+  designChangeImpact, diffDrafts, formatDuration, isEpisodic, isNonfiction, moveScene, newId, ordinal, projectModules, removeCharacter, archiveCharacter, restoreCharacter, duplicateCharacter, moveCharacter, removeCharacterRefusal,
   removeCharacterImpact, renameDraft, restoreDraft, revisionDurationHours, saveDraft, sceneDeleteImpact, sceneLabel, scriptIssues, setNoteStatus,
   startRevision, updateCharacter, updateScene, workingCopyDiffersFromLatestDraft, requestConsent, approvedScenes, type ModuleId,
   requirementRemovalImpact, addResearch, removeResearch, updateResearch, resolutionLabel,
@@ -13,7 +13,7 @@ import {
 } from '../engine';
 import { addAct, addBeat, addThread, removeAct, removeBeat, removeThread, setSceneAct, updateThread } from '../engine/structure-edit';
 // Loaded with this page, not at startup (the startup budget): the engine index leaves season.ts out.
-import { moveEpisode, removeRelationship, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule, type SharedFact } from '../engine/season';
+import { moveEpisode, addRelationship, removeRelationship, removeWorldRule, reorderRefusal, setEpisodeArc, setEpisodeTitle, setSeasonArc, setSeriesPlan, sharedFactImpact, sharedFactPreview, updateRelationship, updateWorldRule, type SharedFact } from '../engine/season';
 import { RESTRICTION_WORDS } from '../engine/documentary';
 import { PROJECT_SUBJECTS } from '../engine/awards-rules';
 import { money } from '../engine/budget';
@@ -21,6 +21,7 @@ import { approvalScope, type ScopeChange } from '../engine/cost-cuts';
 import { CONTENT_ISSUES, audienceContentNote, characterPronouns, contentSuggestions, contentSummary, placementExplained, spokenMinutes } from '../engine/script-explain';
 import type { ContentIssue, ContentLevel, Entity, NarrativeFunction, PerformanceMethod, Project, Realization, RevisionNote, RoleSize, Scene, StoryCharacter, Technique } from '../engine/types';
 import { Check, Modal, NumberField, SelectField, TextField, longLocal, plural } from './components';
+import { FIELD_LABELS, setLock } from '../engine/blueprints';
 import { formatStoryAge, storyAge } from '../engine/story-age';
 import { PLACEMENT_LABELS, attachSong, detachSong } from '../engine/song-actions';
 import { store, useGame } from './store';
@@ -32,14 +33,28 @@ import { MAKEUP, MAX_STATES, PERIOD_LABEL, WARDROBE, costumeCopies, madeIn, make
 
 // The idea picker and its library load the first time a picker is opened (IdeaPicker.tsx), never with the page.
 const IdeaPicker = lazy(() => import('./IdeaPicker').then((m) => ({ default: m.IdeaPicker })));
+const StoryPicker = lazy(() => import('./StoryPicker').then((m) => ({ default: m.StoryPicker })));
 const ideaLabel = (id: string) => import('../ideas').then((m) => m.ideaById(id)?.label ?? null);
 
 const undoStack = new Map<string, string[]>();
+// Everything the Script and Characters pages can change, so Undo takes back all of one change. Until November 12, 2026
+// the snapshot held the scenes, the characters, the story's words and four lists; an idea that set the tone, the year
+// or the genres, or a full story that set the title and the season, was only partly undone.
+const UNDO_TOP = ['title', 'scenes', 'characters', 'story', 'setups', 'worldRules', 'relationships', 'evidence', 'contributors', 'genreNotes', 'acts', 'threads', 'research', 'seasonArc', 'series', 'brief', 'blueprint', 'locks', 'archived', 'storyTime', 'source', 'subjects'] as const;
+const UNDO_AXES = ['tone', 'storyYear', 'styleEra', 'storySetting', 'settingPlaceId', 'genres', 'register', 'light', 'score', 'sound'] as const;
 function snapshot(p: Project) {
   const st = undoStack.get(p.id) ?? [];
-  st.push(JSON.stringify({ scenes: p.scenes, characters: p.characters, story: p.story, setups: p.setups, worldRules: p.worldRules, relationships: p.relationships, evidence: p.evidence, contributors: p.contributors, genreNotes: p.genreNotes }));
+  const pick = (o: object, keys: readonly string[]) => Object.fromEntries(keys.map((k) => [k, (o as Record<string, unknown>)[k] ?? null]));
+  st.push(JSON.stringify({ top: pick(p, UNDO_TOP), axes: pick(p.axes, UNDO_AXES), episodes: p.episodes.map((e) => ({ number: e.number, title: e.title, arc: e.arc ?? null })) }));
   if (st.length > 30) st.shift();
   undoStack.set(p.id, st);
+}
+/** Put a snapshot back: each field as it was, and a field that wasn't there removed. Episodes get back their titles and what they move; who writes and directs them is not the Script page's to undo. */
+function restore(p: Project, text: string) {
+  const snap = JSON.parse(text) as { top: Record<string, unknown>; axes: Record<string, unknown>; episodes: { number: number; title: string; arc: string | null }[] };
+  const put = (o: object, from: Record<string, unknown>) => { for (const [k, v] of Object.entries(from)) { if (v === null) delete (o as Record<string, unknown>)[k]; else (o as Record<string, unknown>)[k] = v; } };
+  put(p, snap.top); put(p.axes, snap.axes);
+  for (const e of snap.episodes) { const ep = p.episodes.find((x) => x.number === e.number); if (ep) { ep.title = e.title; if (e.arc === null) delete ep.arc; else ep.arc = e.arc; } }
 }
 /** Where the story is set, and what that asks of the designers (projects.ts deriveRequirements, production/tasks.ts). */
 function settingNote(p: Project): string {
@@ -109,6 +124,19 @@ function Ideas({ p, fields, title, label = 'Choose Ideas', characterId, sceneId 
   );
 }
 
+/** Opens the full-story picker (StoryPicker.tsx), and says what was applied, so the change is seen. */
+function FullStory({ p }: { p: Project }) {
+  const [open, setOpen] = useState(false);
+  const [applied, setApplied] = useState<string | null>(null);
+  return (
+    <span className="ideas-row">
+      <button type="button" className="btn btn-sm btn-primary" disabled={!!p.delivered} onClick={() => { setApplied(null); setOpen(true); }}>Choose A Full Story</button>
+      {applied && <span role="status" className="dim small">Applied: {applied}. Undo Last Change takes it back.</span>}
+      {open && <Suspense fallback={null}><StoryPicker p={p} run={(fn) => edit(p, fn)} onClose={() => setOpen(false)} onApplied={setApplied} /></Suspense>}
+    </span>
+  );
+}
+
 /** A story field with its Choose Ideas button under it: the field is Write My Own, as it always was. */
 /**
  * The light the film is shot in, its score and its sound choices (craft.ts): each one asks something of the work, and
@@ -154,7 +182,9 @@ function CreativeBrief({ p }: { p: Project }) {
   const [labels, setLabels] = useState<Record<string, string>>({});
   const missing = picks.map((k) => k.id).filter((id) => !(id in labels)).join();
   if (missing) void Promise.all(missing.split(',').map(async (id) => [id, (await ideaLabel(id)) ?? (id.startsWith('logline.') ? 'A Built Logline' : 'An Idea No Longer In The Library')] as const)).then((xs) => setLabels((old) => ({ ...old, ...Object.fromEntries(xs) })));
-  if (!picks.length && !p.axes.styleEra) return null;
+  const locks = p.locks ?? [];
+  const sug = p.brief?.suggestions;
+  if (!picks.length && !p.axes.styleEra && !p.blueprint && !locks.length && !sug) return null;
   const who = (k: (typeof picks)[number]) => {
     const names = [...(k.characterIds ?? []).map((id) => p.characters.find((c) => c.id === id)?.name), ...(k.sceneIds ?? []).map((id) => { const sc = p.scenes.find((x) => x.id === id); return sc ? sceneLabel(p, sc) : undefined; })].filter(Boolean);
     return names.length ? ` For ${names.join(', ')}.` : '';
@@ -163,6 +193,28 @@ function CreativeBrief({ p }: { p: Project }) {
     <section className="card" aria-label="Creative Brief">
       <h2>Creative Brief</h2>
       <p className="dim">What you chose from the idea pickers. Each set the fields it said it would; from then on the fields are what count, and you can change any of them. A note is kept here for the departments and changes nothing else.</p>
+      {p.blueprint && (
+        <>
+          <p><strong>Which Story It Is From:</strong> {p.blueprint.title}, an original story written for this game.</p>
+          <details>
+            <summary>More About Where It Is From</summary>
+            <p className="small">Story {p.blueprint.id}, version {p.blueprint.v}, applied on {longLocal(p.blueprint.at, 'UTC').date} in the game. It is not taken from a real film, series, book or game. {Object.keys(p.blueprint.names).length > 0 ? `It added ${Object.values(p.blueprint.names).map((id) => p.characters.find((c) => c.id === id)?.name).filter(Boolean).join(', ') || 'characters since removed'}.` : ''} Everything it wrote is yours to change.</p>
+          </details>
+        </>
+      )}
+      {sug && (sug.look || sug.sound) && (
+        <div>
+          <p><strong>Look And Sound Suggestions:</strong> notes for the departments, not choices. Each production choice is still made on its own.</p>
+          {sug.look && <p className="small">Look: {sug.look}</p>}
+          {sug.sound && <p className="small">Sound: {sug.sound}</p>}
+        </div>
+      )}
+      {locks.length > 0 && (
+        <div>
+          <p><strong>Locked Fields:</strong> a full story leaves these alone.</p>
+          <ul className="list" aria-label="Locked Fields">{locks.map((k) => <li key={k} className="list-item"><span className="grow">{FIELD_LABELS[k] ?? k}</span><button className="btn btn-sm" aria-label={`Unlock ${FIELD_LABELS[k] ?? k}`} onClick={() => void store.act(() => setLock(p, k, false))}>Unlock</button></li>)}</ul>
+        </div>
+      )}
       {p.axes.styleEra && <p><strong>The Look It Borrows:</strong> {p.axes.styleEra}. A reference for the departments, whatever year the story is set in.</p>}
       {picks.length > 0 && <ul className="list">{picks.map((k, i) => <li key={`${k.id}-${i}`} className="list-item"><span className="grow">{labels[k.id] ?? '…'}<span className="dim small">{who(k)}</span></span></li>)}</ul>}
     </section>
@@ -191,7 +243,7 @@ export function ScriptTab({ p }: { p: Project }) {
     const st = undoStack.get(p.id);
     const last = st?.pop();
     if (!last) return;
-    store.act(() => Object.assign(p, JSON.parse(last)));
+    store.act(() => restore(p, last));
   };
   return (
     <>
@@ -203,10 +255,17 @@ export function ScriptTab({ p }: { p: Project }) {
       <section className="card">
         <h2>{nonfiction ? 'Subject And Approach' : 'Story'}</h2>
         <p className="dim">Your own words for the project. The game never reads them for meaning, and they never change the script's quality or how fast anyone answers. They are also the documents some people ask for by name, and an approach that includes one can't be sent until its fields are written: the Pitch (logline and premise) for backers, festival entry forms and distribution contracts; the Treatment (central conflict, point of view and intended ending) for a commissioner or a grant; the Statement Of Intent (theme and stakes{nonfiction ? ', and the central question' : ''}) for a grant. What they decide doesn't depend on what you wrote.</p>
+        {nonfiction && (
+          <div className="callout">
+            <p style={{ margin: 0 }}>Not sure where to begin? A full story is a whole plan to develop: who to approach, what to ask and what it would have to show. Or write your own in any field below.</p>
+            <div className="row gap-2 wrap" style={{ marginTop: 8 }}><FullStory p={p} /></div>
+          </div>
+        )}
         {!nonfiction && (
           <div className="callout">
-            <p style={{ margin: 0 }}>Not sure where to begin? Choose an idea, make it yours, and change anything afterwards. Or write your own in any field below: what you type is never replaced unless you say so.</p>
+            <p style={{ margin: 0 }}>Not sure where to begin? Choose a full story, or one idea at a time, make it yours, and change anything afterwards. Or write your own in any field below: what you type is never replaced unless you say so.</p>
             <div className="row gap-2 wrap" style={{ marginTop: 8 }}>
+              <FullStory p={p} />
               <Ideas p={p} fields={['premise']} title="Choose A Starting Idea" label="Choose A Starting Idea" />
               <Ideas p={p} fields={['genre-blend']} title="Choose A Blend Of Genres" label="Blend Genres" />
               <Ideas p={p} fields={['genre-route']} title="Choose A Route Through Its Genre" label="Routes Through Its Genre" />
@@ -216,7 +275,9 @@ export function ScriptTab({ p }: { p: Project }) {
           </div>
         )}
         <div className="grid grid-2 form">
-          {nonfiction && <IdeaField p={p} fields={['question']} title="Choose The Question It Asks"><TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} /></IdeaField>}
+          {nonfiction ? <IdeaField p={p} fields={['question']} title="Choose The Question It Asks"><TextField label="Central Question" multiline value={p.story.question} onChange={(v) => edit(p, () => (p.story.question = v))} /></IdeaField>
+            : <TextField label="Central Question" multiline value={p.story.question} hint="What the audience waits to find out." onChange={(v) => edit(p, () => (p.story.question = v))} />}
+          <TextField label="Synopsis" multiline maxLength={3000} value={p.story.synopsis ?? ''} hint="The whole story in a paragraph, ending included. Part of the Treatment." onChange={(v) => edit(p, () => { if (v) p.story.synopsis = v; else delete p.story.synopsis; })} />
           <IdeaField p={p} fields={['logline']} title="Build A Logline"><TextField label="Logline" multiline value={p.story.logline} maxLength={300} onChange={(v) => edit(p, () => (p.story.logline = v))} /></IdeaField>
           <IdeaField p={p} fields={['premise']} title="Choose A Premise"><TextField label="Premise" multiline value={p.story.premise} onChange={(v) => edit(p, () => (p.story.premise = v))} /></IdeaField>
           <IdeaField p={p} fields={['stakes']} title="Choose What Is At Stake"><TextField label="Stakes" multiline value={p.story.stakes} onChange={(v) => edit(p, () => (p.story.stakes = v))} /></IdeaField>
@@ -225,6 +286,8 @@ export function ScriptTab({ p }: { p: Project }) {
           <IdeaField p={p} fields={['theme']} title="Choose A Theme"><TextField label="Theme" value={p.story.theme} onChange={(v) => edit(p, () => (p.story.theme = v))} /></IdeaField>
           <IdeaField p={p} fields={['ending']} title="Choose An Ending"><TextField label="Intended Ending" multiline value={p.story.ending} onChange={(v) => edit(p, () => (p.story.ending = v))} /></IdeaField>
           <IdeaField p={p} fields={['experience']} title="Choose What It Should Feel Like"><TextField label="Intended Experience" multiline value={p.story.intendedExperience} onChange={(v) => edit(p, () => (p.story.intendedExperience = v))} /></IdeaField>
+          <TextField label="Who It Is For" maxLength={200} value={p.story.audience ?? ''} hint="Who you are making it for, in your words. The audience's age range is chosen on the Overview page." onChange={(v) => edit(p, () => { if (v) p.story.audience = v; else delete p.story.audience; })} />
+          <TextField label="How It Is Built" maxLength={60} value={p.story.structure ?? ''} hint="Three acts, five, a circle, chapters. The acts themselves are under Acts And Threads." onChange={(v) => edit(p, () => { if (v) p.story.structure = v; else delete p.story.structure; })} />
           <IdeaField p={p} fields={['tone']} title="Choose A Tone"><TextField label="Tone" value={p.axes.tone} maxLength={80} onChange={(v) => edit(p, () => (p.axes.tone = v))} /></IdeaField>
           <IdeaField p={p} fields={['setting']} title="Choose Where It Is Set"><TextField label="Story Setting" maxLength={120} value={p.axes.storySetting} onChange={(v) => edit(p, () => (p.axes.storySetting = v))} /></IdeaField>
           <SelectField label="Competes As" value={p.axes.register ?? ''} hint="Where awards that split drama from comedy enter it, as you declare it. Left to its genres, it competes as comedy when a primary genre is comedy or musical; a secondary one doesn't change it."
@@ -288,7 +351,8 @@ export function ScriptTab({ p }: { p: Project }) {
       {!nonfiction && <Structure p={p} />}
       {!nonfiction && <Research p={p} />}
       {(!nonfiction || mods.has('clues') || mods.has('setups') || mods.has('threat') || p.setups.length > 0) && <Setups p={p} />}
-      {(mods.has('relationships') || p.relationships.length > 0) && <Relationships p={p} />}
+      {/* Any two characters can have something between them (the v3 package): until November 12, 2026 the card appeared only for genres that asked for it. */}
+      {(mods.has('relationships') || p.relationships.length > 0 || p.characters.length >= 2) && <Relationships p={p} />}
       {(nonfiction || mods.has('factual')) && <Facts p={p} />}
 
       <section className="card">
@@ -671,6 +735,12 @@ function Season({ p }: { p: Project }) {
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
       {p.continues?.previousArc && <p className="muted">Last season: {p.continues.previousArc}</p>}
       <IdeaField p={p} fields={['season-arc']} title="Choose A Season Arc"><TextField label="Season Arc" multiline maxLength={2000} value={p.seasonArc ?? ''} onChange={(v) => setErr(edit(p, () => setSeasonArc(p, v)))} /></IdeaField>
+      <div className="grid grid-2 form">
+        <TextField label="What An Episode Does" multiline maxLength={600} value={p.series?.engine ?? ''} hint="What happens every episode that makes it this show." onChange={(v) => setErr(edit(p, () => setSeriesPlan(p, { engine: v })))} />
+        <TextField label="How Its People Change" multiline maxLength={800} value={p.series?.changes ?? ''} hint="Who is different by the end of the season, and how." onChange={(v) => setErr(edit(p, () => setSeriesPlan(p, { changes: v })))} />
+        <TextField label="Places It Returns To" maxLength={400} value={(p.series?.recurring ?? []).join('; ')} hint="Separated by semicolons. Your record of the sets and places the season keeps." onChange={(v) => setErr(edit(p, () => setSeriesPlan(p, { recurring: v.split(';').map((x) => x.trim()).filter(Boolean) })))} />
+        <TextField label="How It Goes On Or Ends" multiline maxLength={600} value={p.series?.continuation ?? ''} hint={p.axes.format === 'limited-series' ? 'A limited series ends. Say how.' : 'What a next season would be about, or that this is the last.'} onChange={(v) => setErr(edit(p, () => setSeriesPlan(p, { continuation: v })))} />
+      </div>
       <ol className="list">{p.episodes.map((e, i) => (
         <EpisodePlan key={`${e.number}-${e.title}`} p={p} n={e.number} first={i === 0} last={i === p.episodes.length - 1} refusal={refusal} onError={setErr} />
       ))}</ol>
@@ -829,7 +899,7 @@ function Relationships({ p }: { p: Project }) {
         <TextField label="Where It Starts" value={start} onChange={setStart} />
         <TextField label="Where It Ends" value={end} onChange={setEnd} />
       </div>
-      <button className="btn" disabled={!a || !b || a === b || !kind.trim()} onClick={() => { edit(p, () => p.relationships.push({ id: newId(store.state!, 'rel'), a, b, kind: kind.trim(), start, end })); setKind(''); setStart(''); setEnd(''); }}>Add Relationship</button>
+      <button className="btn" disabled={!a || !b || a === b || !kind.trim()} onClick={() => { const e = edit(p, () => void addRelationship(store.state!, p, a, b, kind, start, end)); setErr(e); if (!e) { setKind(''); setStart(''); setEnd(''); } }}>Add Relationship</button>
       {changing && (
         <Modal title="Change The Relationship" onClose={() => setChanging(null)} footer={<>
           <button className="btn" onClick={() => setChanging(null)}>Keep It As It Is</button>
@@ -963,6 +1033,7 @@ export function CharactersTab({ p }: { p: Project }) {
   const [name, setName] = useState('');
   const [err, setErr] = useState<string | null>(null);
   const [removing, setRemoving] = useState<StoryCharacter | null>(null);
+  const [giveTo, setGiveTo] = useState('');
   const [impact, setImpact] = useState<string | null>(null);
   const locked = !!p.delivered;
   return (
@@ -983,16 +1054,40 @@ export function CharactersTab({ p }: { p: Project }) {
           <button className="btn btn-primary" disabled={locked} onClick={() => { const e = edit(p, () => void addCharacter(store.state!, p, name)); setErr(e); if (!e) setName(''); }}>Add Character</button>
         </div>
       </section>
-      {p.characters.map((c) => <CharacterCard key={c.id} p={p} c={c} onRemove={() => { const imp = removeCharacterImpact(p, c.id); if (imp.length) setRemoving(c); else edit(p, () => removeCharacter(p, c.id)); }} onDesignChange={() => p.tasks.length > 0 && setImpact(c.id)} />)}
-      {!p.characters.length && <div className="card"><p>No characters yet.</p></div>}
-      {removing && (
-        <Modal title="Remove This Character?" onClose={() => setRemoving(null)} footer={<>
-          <button className="btn btn-danger" onClick={() => { edit(p, () => removeCharacter(p, removing.id)); setRemoving(null); }}>Remove Character</button>
-          <button className="btn btn-primary" onClick={() => setRemoving(null)}>Keep Character</button>
-        </>}>
-          <ul>{removeCharacterImpact(p, removing.id).map((x, i) => <li key={i}>{x}</li>)}</ul>
-        </Modal>
+      {p.characters.map((c, i) => <CharacterCard key={c.id} p={p} c={c} first={i === 0} last={i === p.characters.length - 1} onRemove={() => { setGiveTo(''); setRemoving(c); }} onDesignChange={() => p.tasks.length > 0 && setImpact(c.id)} />)}
+      {!p.characters.length && <div className="card"><p>No characters yet. Add one above, or choose a full story on the Script page: either way they are yours to change.</p></div>}
+      {(p.archived?.length ?? 0) > 0 && (
+        <section className="card" aria-label="Set Aside">
+          <h2>Set Aside</h2>
+          <p className="dim">Out of the script, with everything about them kept. Any contract or payment for the part is in Cast, unchanged.</p>
+          <ul className="list">{p.archived!.map((a) => (
+            <li key={a.c.id} className="list-item">
+              <span className="grow">{a.c.name} <span className="dim small">· {title(a.c.roleSize)} · set aside on {longLocal(a.at, 'UTC').date}{a.reassignedTo ? ` · their scenes went to ${p.characters.find((c) => c.id === a.reassignedTo)?.name ?? 'someone since removed'}` : a.sceneIds.length ? ` · was in ${plural(a.sceneIds.length, 'scene')}` : ''}</span></span>
+              <button className="btn btn-sm" disabled={locked} aria-label={`Restore ${a.c.name}`} onClick={() => setErr(edit(p, () => restoreCharacter(p, a.c.id)))}>Restore</button>
+            </li>
+          ))}</ul>
+        </section>
       )}
+      {removing && (() => {
+        const lines = removeCharacterImpact(p, removing.id);
+        const refusal = removeCharacterRefusal(p, removing.id);
+        const others = p.characters.filter((c) => c.id !== removing.id);
+        const close = () => setRemoving(null);
+        return (
+          <Modal title={`Take ${removing.name} Out Of The Script?`} onClose={close} footer={<>
+            <button className="btn" onClick={close}>Keep Character</button>
+            <button className="btn btn-danger" disabled={!!refusal} onClick={() => { setErr(edit(p, () => removeCharacter(p, removing.id))); close(); }}>Remove For Good</button>
+            <button className="btn btn-primary" onClick={() => { setErr(edit(p, () => archiveCharacter(store.state!, p, removing.id, giveTo || undefined))); close(); }}>Set Aside</button>
+          </>}>
+            {lines.length > 0 ? <ul>{lines.map((x, i) => <li key={i}>{x}</li>)}</ul> : <p>Nothing else in the script refers to them.</p>}
+            <p><strong>Set Aside</strong> takes them out of the script and keeps everything about them, so Restore brings them back. <strong>Remove For Good</strong> deletes them.</p>
+            {refusal && <p className="callout callout-warning">{refusal}</p>}
+            {others.length > 0 && lines.length > 0 && (
+              <SelectField label="Give Their Scenes, Lines And Relationships To" value={giveTo} hint="Only when setting aside. Left with nobody, their scenes simply lose them." options={[{ value: '', label: 'Nobody' }, ...others.map((c) => ({ value: c.id, label: c.name }))]} onChange={setGiveTo} />
+            )}
+          </Modal>
+        );
+      })()}
     </>
   );
 }
@@ -1022,7 +1117,7 @@ function ArcBeats({ p, c }: { p: Project; c: StoryCharacter }) {
   );
 }
 
-function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: StoryCharacter; onRemove: () => void; onDesignChange: () => void }) {
+function CharacterCard({ p, c, first, last, onRemove, onDesignChange }: { p: Project; c: StoryCharacter; first: boolean; last: boolean; onRemove: () => void; onDesignChange: () => void }) {
   const [open, setOpen] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   const up = (patch: Partial<StoryCharacter>) => {
@@ -1041,7 +1136,10 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
         </div>
         <div className="row gap-2 wrap">
           <button className="btn btn-sm" aria-expanded={open} onClick={() => setOpen(!open)}>{open ? 'Close' : 'Edit Character'}</button>
-          <button className="btn btn-sm btn-danger" disabled={!!p.delivered} onClick={onRemove}>Remove</button>
+          <button className="btn btn-sm" disabled={!!p.delivered || first} aria-label={`Move ${c.name} Up`} onClick={() => setErr(edit(p, () => moveCharacter(p, c.id, -1)))}>Move Up</button>
+          <button className="btn btn-sm" disabled={!!p.delivered || last} aria-label={`Move ${c.name} Down`} onClick={() => setErr(edit(p, () => moveCharacter(p, c.id, 1)))}>Move Down</button>
+          <button className="btn btn-sm" disabled={!!p.delivered} aria-label={`Duplicate ${c.name}`} onClick={() => setErr(edit(p, () => void duplicateCharacter(store.state!, p, c.id)))}>Duplicate</button>
+          <button className="btn btn-sm btn-danger" disabled={!!p.delivered} aria-label={`Set Aside Or Remove ${c.name}`} onClick={onRemove}>Set Aside Or Remove</button>
         </div>
       </div>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
@@ -1074,10 +1172,15 @@ function CharacterCard({ p, c, onRemove, onDesignChange }: { p: Project; c: Stor
           <HowTheyLook p={p} c={c} onError={setErr} />
           <ArcBeats p={p} c={c} />
           <div className="grid grid-2 form">
-            {c.entity !== 'human' && <div className="col gap-1"><TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Your description for design and casting. Kept with the script; the game doesn't read it." onChange={(v) => up({ entityNote: v })} /><Ideas p={p} fields={['character-being']} title={`What Kind Of Being ${c.name} Is`} characterId={c.id} /></div>}
-            <div className="col gap-1"><TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown sent with offers. It doesn't change who accepts or how fast." onChange={(v) => up({ description: v })} /><Ideas p={p} fields={['character-description']} title={`How ${c.name} Comes Across`} characterId={c.id} /></div>
-            <div className="col gap-1"><TextField label="Wants" multiline value={c.wants} onChange={(v) => up({ wants: v })} /><Ideas p={p} fields={['character-goal']} title={`What ${c.name} Wants`} characterId={c.id} /></div>
-            <div className="col gap-1"><TextField label="Fears" multiline value={c.fears} onChange={(v) => up({ fears: v })} /><Ideas p={p} fields={['character-fear']} title={`What ${c.name} Fears`} characterId={c.id} /></div>
+            {c.entity !== 'human' && <div className="idea-field"><TextField label="What Kind Of Being" multiline value={c.entityNote} hint="Your description for design and casting. Kept with the script; the game doesn't read it." onChange={(v) => up({ entityNote: v })} /><Ideas p={p} fields={['character-being']} title={`What Kind Of Being ${c.name} Is`} characterId={c.id} /></div>}
+            <div className="idea-field"><TextField label="Description" multiline value={c.description} hint="With Wants and Fears, this is the casting breakdown sent with offers. It doesn't change who accepts or how fast." onChange={(v) => up({ description: v })} /><Ideas p={p} fields={['character-description']} title={`How ${c.name} Comes Across`} characterId={c.id} /></div>
+            <div className="idea-field"><TextField label="Wants" multiline value={c.wants} onChange={(v) => up({ wants: v })} /><Ideas p={p} fields={['character-goal']} title={`What ${c.name} Wants`} characterId={c.id} /></div>
+            <div className="idea-field"><TextField label="Fears" multiline value={c.fears} onChange={(v) => up({ fears: v })} /><Ideas p={p} fields={['character-fear']} title={`What ${c.name} Fears`} characterId={c.id} /></div>
+            <TextField label="Why They Want It" multiline maxLength={400} value={c.motivation ?? ''} onChange={(v) => up({ motivation: v || undefined })} />
+            <TextField label="What Stands In The Way" multiline maxLength={400} value={c.obstacle ?? ''} onChange={(v) => up({ obstacle: v || undefined })} />
+            <TextField label="What In Them Pulls Against It" multiline maxLength={400} value={c.contradiction ?? ''} hint="A contradiction: generous and unforgiving, careful hands and a careless life." onChange={(v) => up({ contradiction: v || undefined })} />
+            <TextField label="How They Change" multiline maxLength={400} value={c.arc ?? ''} hint="Their arc in a sentence. The beats above place it scene by scene." onChange={(v) => up({ arc: v || undefined })} />
+            <TextField label="How They Speak" multiline maxLength={400} value={c.voice ?? ''} hint="A brief for dialogue and for the performer. Kept with the part; the game doesn't read it." onChange={(v) => up({ voice: v || undefined })} />
           </div>
         </fieldset>
       )}

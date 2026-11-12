@@ -67,6 +67,23 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
 
 ## Remaining Work, In Order
 
+### Newest Request (November 12, 2026): the v3 package, and a phone overhaul with a whole-game UI cleanup
+
+**Read `docs/v3/LEDGER.md` first**, then `docs/v3/package/00-START-HERE.md` and `docs/v3/UI-BRIEF.md` (the owner's
+own words for the UI work). The ledger says where each step and each acceptance suite stands; `docs/v3/requirements.csv`
+has a row for each requirement built or owed.
+
+- **The story quota is the long pole:** 14,900 fully written stories (100 for each of 149 genres, 50 films and 50
+  series) and a mixed-genre library. They are written by hand into `src/blueprints/<genre>.bp`
+  (`docs/v3/BLUEPRINT-FORMAT.md`). After writing a batch: `V3_WRITE=1 npx vitest run tests/v3-content.test.ts`, read
+  `docs/v3/SIMILAR-STORIES.md`, fix what it finds, and commit the files with the regenerated counts. Never count a
+  story that is another with the names changed.
+- **Pictures:** `node tools/screen-catalog/pictures.mjs inventory`, then `NODE_USE_ENV_PROXY=1 node
+  tools/screen-catalog/pictures.mjs fetch --minutes=112` as many times as it takes (it goes on from where it stopped),
+  then `report`. The pictures and their manifest are in `.screen-images/` in the container, never in the repository.
+- **Next in order:** the phone overhaul's inventory and coverage matrix (`docs/v3/UI-COVERAGE.md`, not written yet);
+  ideas for the 11 structural fields; story batches; then steps 4 to 7 of the ledger.
+
 ### Newest Request (November 11, 2026, after the package's last milestone): fix all misalignments
 
 The owner saw a capture of the Script page and asked: "Fix all misalignments UI wise." Done on every screen a journey

@@ -288,6 +288,23 @@ c(f, '{`${c.name} Heard Only (Minutes)`}', D, 'edit.screenTime', 'screen-time.ts
 # that was checked. `kind` says whether the test is a targeted interaction journey (it stops once the decision has done
 # what it does) or a full playthrough (the project is made in the browser through production). Rows cited before this
 # pass keep their journey and take their kind from the spec file (PLAYTHROUGHS); their effect column says what they show.
+# The v3 package (November 12, 2026): full stories, the series plan, more of a character, and setting one aside.
+f = 'ScriptViews.tsx'
+c(f, '"Central Question"', I, 'story.question', 'shown in the Story panel; part of the Statement Of Intent for a documentary', 'Your words; the game doesn\'t read them', n=2)
+c(f, '"Synopsis"', I, 'story.synopsis', 'shown in the Story panel', 'The whole story in a paragraph; your words, never read for meaning')
+c(f, '"Who It Is For"', I, 'story.audience', 'shown in the Story panel', 'Your words; the audience age range that engines read is on the Overview page')
+c(f, '"How It Is Built"', I, 'story.structure', 'shown in the Story panel', 'A name for the shape; the acts themselves are under Acts And Threads')
+for lab, st in [('"What An Episode Does"', 'series.engine'), ('"How Its People Change"', 'series.changes'), ('"Places It Returns To"', 'series.recurring'), ('"How It Goes On Or Ends"', 'series.continuation')]:
+    c(f, lab, I, st, 'season.ts setSeriesPlan; shown in the season plan', 'Your plan for the series; the game doesn\'t score it')
+for lab, st in [('"Why They Want It"', 'motivation'), ('"What Stands In The Way"', 'obstacle'), ('"What In Them Pulls Against It"', 'contradiction'), ('"How They Change"', 'arc'), ('"How They Speak"', 'voice')]:
+    c(f, lab, I, f'character.{st}', 'shown with the part', 'Your words for the part; the game doesn\'t read them')
+c(f, '"Give Their Scenes, Lines And Relationships To"', D, 'who takes a set-aside character\'s scenes', 'projects.ts archiveCharacter', 'Their scenes, lines, relationships and threads go to the character chosen; with nobody chosen the scenes simply lose them', U('characters', 'can give their scenes, lines and bonds to someone else, with no bond to oneself and none twice'))
+f = 'StoryPicker.tsx'
+c(f, '"Genre"', V)
+c(f, '"Search These Stories"', V)
+c(f, '{`Name For ${c.name}`}', I, 'the names a full story writes', 'blueprints.ts named, applyBlueprint', "The player's own name for one of the story's people, used everywhere the story names them", U('blueprints', "uses the player's names everywhere the story names someone"))
+c(f, '{`Keep My ${c.label}`}', D, "which of the player's words a full story leaves alone", 'blueprints.ts applyBlueprint', 'A kept field is not replaced', U('blueprints', "keeps the player's own words where they choose to, leaves a locked field alone, and says so first"))
+
 PLAYTHROUGHS = {'journeys', 'careers', 'connected', 'journey-a', 'journey-c', 'release-schedule', 'rolling-delivery', 'live-action', 'first-project', 'media'}
 J = {}
 def cite(file, label, ref, kind, proves, n=1):

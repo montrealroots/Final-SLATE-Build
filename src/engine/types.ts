@@ -220,6 +220,20 @@ export interface StoryCharacter {
    * and how many appearance states they go through (clean, bloodied, turned...). Unset fields keep the older rules.
    */
   look?: { makeup?: import('./looks').MakeupId; wardrobe?: import('./looks').WardrobeId; states?: number; /** The states' names, in order (looks.ts): when given, there are as many states as names. */ named?: string[] };
+  /**
+   * More of who they are, in the writer's words (the v3 package, 01 section 4): why they want it, what stands in the way,
+   * what in them pulls against it, how they change, and how they speak. Kept and shown with the part; never scored.
+   */
+  motivation?: string;
+  obstacle?: string;
+  contradiction?: string;
+  arc?: string;
+  voice?: string;
+  /**
+   * Set aside, not deleted (projects.ts archiveCharacter): out of the script and the breakdown, with their contracts,
+   * payments and credits kept. Restoring brings them back as they were.
+   */
+  archived?: true;
   designVersion: number; // bumping invalidates downstream design-dependent work
 }
 
@@ -809,7 +823,24 @@ export interface Project {
   story: {
     logline: string; premise: string; stakes: string; conflict: string; viewpoint: string; theme: string;
     ending: string; intendedExperience: string; question: string;
+    /** The whole story in a paragraph, who it is meant for, and its shape in words (the v3 package, 01 section 1). Part of the Treatment; never read for meaning. */
+    synopsis?: string; audience?: string; structure?: string;
   };
+  /**
+   * A series' own plan (blueprints.ts): what kind it is, what an episode does every week, how the people in it change over
+   * the season, the places it keeps going back to, and whether and how it goes on. A limited series says it ends.
+   */
+  series?: { engine?: string; changes?: string; recurring?: string[]; continuation?: string };
+  /** The full story this project was started from, if one was applied: its ID, version and title, and which of its characters became which of the project's. */
+  blueprint?: { id: string; v: number; title: string; at: number; names: Record<string, string> };
+  /** Fields the player locked: a full story or a shuffle leaves them alone (blueprints.ts FIELD_LABELS has the keys). */
+  locks?: string[];
+  /**
+   * Characters set aside (projects.ts archiveCharacter): each as it was, with the scenes it was in, the lines it had and
+   * what it was to the others, so Restore can put it back. Contracts, payments and credits for the part are not here
+   * and are never touched by archiving: they stay where they are, in `hires`, `cast` and `obligations`.
+   */
+  archived?: { c: StoryCharacter; at: number; sceneIds: string[]; lines: { sceneId: string; index: number; line: DialogueLine }[]; relationships: Relationship[]; threadIds: string[]; reassignedTo?: string }[];
   genreNotes: Record<string, string>;
   worldRules: WorldRule[];
   relationships: Relationship[];
