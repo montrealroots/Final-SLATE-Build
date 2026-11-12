@@ -16,6 +16,7 @@ import { climateNote } from '../world/climate';
 import { CinemasNearby } from './Cinemas';
 import { RepresentationCard } from './Representation';
 import { YourMoneyCard } from './YourMoney';
+import { YourEquipmentCard } from './Equipment';
 import { RecordBookCard } from './RecordBook';
 
 
@@ -404,6 +405,7 @@ export function Profile() {
           ) : <p className="muted">Credits appear here when a project is delivered.</p>}
         </section>
         <YourMoneyCard />
+        <YourEquipmentCard />
         <RepresentationCard />
         <RecordBookCard />
         <section className="card">

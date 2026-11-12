@@ -24,6 +24,7 @@ import { SITES, roofed, scoutedPlaces, siteName, siteNote } from '../engine/loca
 import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
 import { candidatesFor, childrenIn } from '../engine/hiring';
 import { OwnAccountCard } from './YourMoney';
+import { ProjectKitCard } from './Equipment';
 import { activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted } from '../engine/mandates';
 import { searchAdvice, searchLine, searchPreview, searchRefusal, searchStatus, searchesFor, shortlistAdvice, startSearch } from '../engine/casting-director';
 import { negotiate, negotiationLine, negotiationPreview, negotiationRefusal, producerAccountLine } from '../engine/line-producer';
@@ -1079,6 +1080,7 @@ function FinancingPanel({ p }: { p: Project }) {
       )}
       <AdaptationRights p={p} />
       <OwnAccountCard p={p} />
+      <ProjectKitCard p={p} />
       <section className="card" aria-labelledby="raise-h">
         <h2 id="raise-h">Raise Money</h2>
         <ul className="list">

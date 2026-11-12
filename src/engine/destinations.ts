@@ -11,7 +11,7 @@
 // can stop the day, and how often noise spoils dialogue. Every figure is game calibration (docs/ASSUMPTIONS.md,
 // "Filming Somewhere Else"), not a quote, a rate or legal guidance.
 import { findPlace, getPlace, type Place } from '../data/places';
-import { dayFees } from './production/rates';
+import { dayFees, housePackageFee } from './production/rates';
 import { stream } from './rng';
 import { distanceKm } from './state';
 import type { Project, Scene, ShootDay } from './types';
@@ -50,9 +50,10 @@ export const SITE_KINDS: Record<SiteKind, SiteKindDef> = {
 
 /** A place this far from the base, or further, is away: the unit is moved there and housed. */
 export const AWAY_KM = 80;
-/** Housing and feeding the unit for a shooting day away, as a share of the budget size's day fees (location and equipment). */
+/** Housing and feeding the unit for a shooting day away, as a share of the budget size's day fees (location and the house
+ *  equipment package: a kit of your own, from November 12, 2026, changes what gear costs, not what the unit eats). */
 export const AWAY_DAY_SHARE = 0.6;
-/** Moving the unit there and back, once for a place: half the equipment day fee, and as much again for each 1,000 km, up to four times it. */
+/** Moving the unit there and back, once for a place: half the house equipment package's day fee, and as much again for each 1,000 km, up to four times it. */
 export const MOVE_BASE = 0.5;
 export const MOVE_PER_1000_KM = 1;
 export const MOVE_CAP = 4;
@@ -83,13 +84,13 @@ export const kindFee = (p: Project, label: string): number => { const at = filme
 export function awayDayCost(p: Project, label: string): number {
   if (!isAway(p, label)) return 0;
   const f = dayFees(p);
-  return Math.round((f.location + f.equipment) * AWAY_DAY_SHARE);
+  return Math.round((f.location + housePackageFee(p)) * AWAY_DAY_SHARE);
 }
 
 /** Moving the unit to this place and back, once: nothing at the base or near it. */
 export function moveCost(p: Project, label: string): number {
   if (!isAway(p, label)) return 0;
-  return Math.round(dayFees(p).equipment * Math.min(MOVE_CAP, MOVE_BASE + (kmFromBase(p, label) / 1000) * MOVE_PER_1000_KM));
+  return Math.round(housePackageFee(p) * Math.min(MOVE_CAP, MOVE_BASE + (kmFromBase(p, label) / 1000) * MOVE_PER_1000_KM));
 }
 
 /** What the days planned at each place away cost beyond their fees: the move, once for each place, and housing for each day. */

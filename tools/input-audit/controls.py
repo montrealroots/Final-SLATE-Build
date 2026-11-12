@@ -34,6 +34,7 @@ c(f, '{props.label}', 'component', '', '', 'PlacePicker definition, used by the 
 c(f, '"Your Savings"', D, 'draft.savings -> state.money (savings posting)', 'personal.ts openPersonalMoney, personalBalance, putInRefusal', 'What is in your own account at the start, and so what you can put into a project', U('personal', 'opens with what was chosen'))
 c(f, '"Your Family\'s Circumstances"', D, 'draft.family.circumstances', 'personal.ts familyTerms', 'The most your family could offer; it decides nothing else about you', U('personal', 'is bounded by their circumstances, and decides nothing else'))
 c(f, '"What Your Family Offers"', D, 'draft.family.support -> state.money.family', 'personal.ts familyTerms, openPersonalMoney, family-repayment, takeHome', 'A gift is yours; a loan is repaid monthly from your account; an investment takes a share of income you take home', U('personal', 'opens with what was chosen'))
+c(f, '{`${g.name}, ${money(g.price!)}`}', D, 'draft.family.gear -> state.gear (owner family)', 'equipment.ts onNewGame, lentValue; personal.ts familyTerms', 'What your family lends goes on your shelf, free to use, not yours to sell, and bounded by their circumstances', U('equipment', 'is bounded by their circumstances'))
 c(f, '"How Much"', D, 'draft.family.amount', 'personal.ts familyTerms, openingPreview', 'What your family puts in, and so what is owed', U('personal', 'is read on Review before the story starts'))
 c(f, '"Search Ethnicities"', V)
 c(f, '"Describe Your Ethnicity"', I, 'character.heritages (custom)', 'identity.ts splitBackgrounds', 'Your own words for your ethnicity, kept and shown', '', E('creation', 'an ethnicity in your own words'))
@@ -320,6 +321,9 @@ f = 'PlanViews.tsx'
 c(f, '"Spending Ceiling"', D, 'Project.mandates[].ceiling', 'mandates.ts guideMePlan, runMandate, guideMeRefusal', 'The most Guide Me may commit for a department: offers that do not fit are not sent, and a counteroffer past it comes back to the player', U('guide-me', 'never goes past the ceiling'))
 f = 'YourMoney.tsx'
 c(f, '"Put In From Your Own Money"', D, 'state.money postings; project finance deal (savings)', 'personal.ts putInOwnMoney, putInRefusal', 'Money leaves your account and arrives in the project as Your Own Money, nobody repaid from it', U('personal', 'puts money into a project only by your choice'))
+f = 'Equipment.tsx'
+c(f, '"Show"', V)
+c(f, '"Show"', V, n=2)
 f = 'SourcePicker.tsx'
 c(f, '"Search Works"', V)
 c(f, '"Medium"', V)

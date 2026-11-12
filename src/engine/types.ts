@@ -84,7 +84,7 @@ export interface CreationDraft {
   places?: Record<string, Place>;
   /** Your own savings at the start, and what your family offers (personal.ts). Absent in drafts from before November 12, 2026: none of either. */
   savings?: number;
-  family?: { circumstances: import('./personal').FamilyCircumstances; support: import('./personal').FamilySupportKind; amount: number };
+  family?: { circumstances: import('./personal').FamilyCircumstances; support: import('./personal').FamilySupportKind; amount: number; gear?: string[] };
 }
 
 export type Attention = 'interrupt' | 'notify' | 'silent';
@@ -961,6 +961,8 @@ export interface Project {
    */
   /** Departments staffed by Guide Me, past and present (mandates.ts). */
   mandates?: Mandate[];
+  /** Your own kit for this project's shoot days (equipment.ts); absent, it hires the rental house's package. */
+  kit?: import('./equipment').ProjectKit;
   proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string> };
   /** Fields the player locked: a full story or a shuffle leaves them alone (blueprints.ts FIELD_LABELS has the keys). */
   locks?: string[];
@@ -1259,4 +1261,6 @@ export interface GameState {
   places: Record<string, Place>;
   /** Your own account and your family's terms (personal.ts). Absent in saves from before November 12, 2026: no money of your own. */
   money?: import('./personal').PersonalMoney;
+  /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */
+  gear?: import('./equipment').GearInventory;
 }

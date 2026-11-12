@@ -2,7 +2,7 @@
 
 Written by `node tools/v3/ui-coverage.mjs` from `docs/v3/ui-inventory.json`, the walk (`e2e/ui-coverage.spec.ts`, last run 2026-11-12) and the journey sweep (`SLATE_UI_SWEEP`). The owner's brief is `docs/v3/UI-BRIEF.md`.
 
-85 rows. 74 measured, 11 not visited. 0 open defects.
+86 rows. 75 measured, 11 not visited. 0 open defects.
 
 What the columns mean. **Walked**: the screen was opened on purpose and measured at that many window sizes in each browser profile. **Desktop And Phone**: the same screen in the same state at 1280 and at 390 pixels wide, compared for headings, things to press, fields and their order. **Reached In Journeys**: a full play-through reached it and the same measure ran there, at the sizes listed. **Desktop And Phone, In Journeys**: what the screen offered when the same journeys ran in each layout. Browser emulation is not a real device: nothing here measures a virtual keyboard, and that is tracked in the limits below.
 
@@ -21,6 +21,7 @@ What the columns mean. **Walked**: the screen was opened on purpose and measured
 | Home | Home | screen | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 430x932 667x375 1280x720), desktop (1280x720 768x1024 320x568 390x844 1440x900), iphone-15-plus (430x739 430x932 932x430), iphone-15-pro-max (430x739 430x932), iphone-15-pro-max-landscape (814x380) | 441 things in both, 162 seen only on desktop, 101 only on phone (listed below) | none found |
 | You | Player Profile | screen | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1280x720 768x1024 320x568 390x844), iphone-15-plus (430x739 430x932), iphone-15-pro-max (430x739 430x932) | 10 things in both | none found |
 | You | Find An Agent | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | no | not compared | none found |
+| You | The Shop | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | no | not compared | none found |
 | You | Give Notice? | dialog | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | no | not compared | none found |
 | Your Day | Calendar | screen | desktop: 5, iphone-15-plus: 2, iphone-15-pro-max: 1, phone: 5 | same headings, actions and fields, same order | phone (390x844 667x375), desktop (1280x720 768x1024 320x568), iphone-15-plus (932x430 430x932), iphone-15-pro-max (430x739 430x932) | 99 things in both, 17 seen only on desktop, 16 only on phone (listed below) | none found |
 | Your Day | Festival Or Awards Edition | screen | no | not compared | phone (390x844), desktop (1280x720), iphone-15-plus (430x739), iphone-15-pro-max (430x739) | 84 things in both, 1 seen only on desktop, 2 only on phone (listed below) | none found |

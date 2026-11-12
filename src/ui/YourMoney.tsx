@@ -24,7 +24,7 @@ export function YourMoneyCard() {
           <ul className="list" aria-label="Your Account, By What It Is">
             {personalStatement(g).map((x) => <li key={x.kind} className="list-item"><span className="grow">{PERSONAL_LABELS[x.kind]}</span><span>{money(x.total)}</span></li>)}
           </ul>
-          {f && f.support !== 'none' && <p className="small"><strong>Your Family:</strong> {SUPPORT_LABELS[f.support]} of {money(f.amount)}.{loan ? ` ${money(loan.repaid)} repaid, ${money(loan.owed)} still owed at ${money(f.monthly!)} a month.` : ''}{f.support === 'investment' ? ` They take ${Math.round(f.share! * 100)}% of the income you take home, until they have had ${money(f.cap!)} back; ${money(shareBack)} so far.` : ''}</p>}
+          {f && f.support !== 'none' && <p className="small"><strong>Your Family:</strong> {f.support === 'equipment' ? `Lends you equipment worth ${money(f.amount)} at listed prices; it's under Your Equipment.` : `${SUPPORT_LABELS[f.support]} of ${money(f.amount)}.`}{loan ? ` ${money(loan.repaid)} repaid, ${money(loan.owed)} still owed at ${money(f.monthly!)} a month.` : ''}{f.support === 'investment' ? ` They take ${Math.round(f.share! * 100)}% of the income you take home, until they have had ${money(f.cap!)} back; ${money(shareBack)} so far.` : ''}</p>}
           <p className="dim small">Money moves between your account and a project only when you move it, on the project's Budget page. Amounts are game calibration.</p>
         </>
       )}

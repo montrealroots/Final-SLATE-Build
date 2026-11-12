@@ -147,8 +147,24 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
     loan repays monthly (`family-repayment` event); a month short is owed on. Money moves only on a project's Budget
     page: Put In From Your Own Money (a 'savings' deal, nobody repaid, unspent stays yours, never more than the account
     holds or the project still needs) and, once delivered, Take Home income kept or your own money unspent. A save
-    from before has no account and gains none. Tests: `tests/personal.test.ts` (10), `e2e/money.spec.ts`. Not built:
-    family-owned equipment, company accounts, the equipment catalog, shop, rentals and day reservations (next).
+    from before has no account and gains none. Tests: `tests/personal.test.ts` (10), `e2e/money.spec.ts`.
+  - **Milestone C, part 2: equipment (built November 12, 2026):** `engine/gear-catalog.ts`, `engine/equipment.ts`,
+    `ui/Equipment.tsx`, data `src/data/equipment.json` from `node tools/equipment/catalog.mjs` (22 items; specs from
+    Blackmagic's and Sennheiser's spec pages and product names; prices from one US retailer's public listings, dated).
+    Profile has Your Equipment and The Shop (buy from your own account; service; sell at half price less wear). A
+    family can lend items from the list at creation, bounded by its circumstances, not sellable. A project's Budget
+    page has Equipment: with nothing in it the project hires the house package as before; with a kit it pays only its
+    rentals' day rates. Kit checks: lens mount, card type, battery (PYXIS ships without one), lights for scenes lit as
+    usual and a stand each, a microphone for dialogue and inputs for each, shotgun and boom for Dialogue Clarity, a
+    tripod for tripod scenes; an owned stabilizer replaces the rented one. A day the kit can't serve (missing gear,
+    an item booked on another shoot that date, worn below 50%, away being serviced) hires the house package for that
+    day and logs why. A schedule that puts an owned item on two shoots at once is refused. Tests:
+    `tests/equipment.test.ts` (13; sixteen deliberate breaks, all caught), `e2e/equipment.spec.ts`. Not built:
+    damage, accessories beyond those listed, method-specific gear for animation and capture (milestone D), company
+    accounts, a family company. The LP-E6P battery is left out: not documented for a Blackmagic body.
+  - PR #79's first CI run timed out on desktop: the unscripted-series journeys waited 15 minutes each for a format the
+    original form no longer offers. The helper now uses Develop A Documentary for them. Its second run failed on
+    `e2e/creation.spec.ts`, which counted Review's cards before the Money card existed; I had not run it after C1.
   - Not built yet in B: the character lifecycle extras (duplicate, combine, split, restore,
     age stages, per-episode performers: V4-007), a documentary proposal (V4-004.03), and a title-by-title Sanderson
     comparison with his official site.

@@ -37,3 +37,5 @@ export * from './representation';
 // file arrives, and state.ts holds its decisions until then.
 export * from './mandates';
 export * from './personal';
+export * from './equipment';
+export * from './gear-catalog';

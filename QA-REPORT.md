@@ -1300,3 +1300,15 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `tests/personal.test.ts` | 4 fixture mistakes of mine, fixed | 10 tests. Eight deliberate breaks caught; a ninth, a duplicate-posting guard, survived because the repayment handler already pays only what is due for the month, so the guard was removed as redundant. Circumstances change only money: the same character either way. |
 | `e2e/money.spec.ts`, desktop and phone | 3 journey mistakes of mine, fixed | Savings and a gift chosen and read on Review, the account on Profile by kind, more than the account refused, nothing put in while the project had nothing left to raise, then put in after the target rose; kept after Save And Exit. |
 | `npm run check` | 0 | 126 files, 1066 tests; startup 307 kB, budgets unchanged. |
+| PR #79 CI, two runs | 2 failures of mine, fixed | Desktop timed out: the unscripted journeys' helper chose a form that no longer offers their format and waited 15 minutes each. Phone and WebKit: `e2e/creation.spec.ts` counted Review's cards, and Money is a new one; I had not run that spec after adding it. |
+
+## v4 Milestone C, Part 2: Equipment
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| Research | 2 claims withheld | The LP-E6P battery was left out: Canon documents it for Canon bodies, not a Blackmagic one. A wireless microphone was left out: its maker's page could not be read for its connectors. The MKE 600's XLR-3 output is from Sennheiser's specification sheet. |
+| `tests/equipment.test.ts` | 1 real gap found | 13 tests, sixteen deliberate breaks, all caught after one test was added (a real schedule refused for a clash). The gap: the account statement listed only the kinds it knew, so equipment would have been in the balance but missing from Profile; it now lists every kind. |
+| `e2e/equipment.spec.ts`, desktop and phone | 2 journey mistakes of mine, fixed | A family-lent camera, a kit bought to fit, the check filled until it covers the script, a rental in and out, and the short shot to delivery: no equipment day fee, and the camera at 100 less its shoot days. |
+| `e2e/ui-coverage.spec.ts`, four sizes | 2 real layout defects, fixed | The kit card's two dropdown rows touched each other, and at 320 pixels the rental list's long names were cut off. Both are now wrapping lists with a button per item. |
+| `e2e/creation.spec.ts`, `money.spec.ts`, `equipment.spec.ts` on desktop, phone and iPhone 15 Plus | 0 | 55 passed. |
+| `npm run check` | 0 | 127 files, 1079 tests; startup 307 kB, budgets unchanged. |

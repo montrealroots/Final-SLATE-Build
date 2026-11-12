@@ -5,9 +5,11 @@ import { LANGUAGES, PRONOUNS, languageName, searchEthnicities, searchLanguages, 
 import { findPlace, isCatalogPlace, placeLabel, type Place } from '../data/places';
 import { CREATION_STEPS, FIRST_START_YEAR, LAST_START_YEAR, MIN_START_AGE, NATIONALITIES, OBSERVANCES, ageOn, backgroundLabels, citizenshipFor, draftNames, latestBirthDate, creationStepIndex, formatClock, formatZoneAbbrev, monthName, weekdayName, weekdayOfKey, observance, observanceDates, parseYmd, suggestedObservances, validateDraft, type DraftProblem, type Observance } from '../engine';
 import type { CreationDraft, CreationStepId, Heritage, Proficiency } from '../engine/types';
-import { Check, Field, NumberField, Professions, SelectField, TextField } from './components';
+import { Check, ErrorText, Field, NumberField, Professions, SelectField, TextField } from './components';
 import { CIRCUMSTANCES, SAVINGS_MOST, SUPPORT_LABELS, familyTerms, openingPreview, type FamilyCircumstances, type FamilySupportKind } from '../engine/personal';
 import { money } from '../engine/budget';
+import { lentValue } from '../engine/equipment';
+import { GEAR } from '../engine/gear-catalog';
 import { store, useStore } from './store';
 import { WorldPlacePicker } from './WorldPicker';
 import { PortraitPicker } from './PortraitPicker';
@@ -329,7 +331,9 @@ function StartingPointStep({ d, set, err, head }: { d: CreationDraft; set: Set; 
 function MoneyAndFamily({ d, set, err }: { d: CreationDraft; set: Set; err: (f: string) => string | null }) {
   const f = d.family ?? { circumstances: 'getting-by' as FamilyCircumstances, support: 'none' as FamilySupportKind, amount: 0 };
   const put = (patch: Partial<typeof f>) => set({ family: { ...f, ...patch } });
-  const terms = familyTerms(f.circumstances, f.support, f.amount);
+  const terms = familyTerms(f.circumstances, f.support, f.amount, f.gear);
+  const lent = new Set(f.gear ?? []);
+  const lend = (id: string, on: boolean) => { const gear = GEAR.filter((g) => (g.id === id ? on : lent.has(g.id))).map((g) => g.id); put({ gear, amount: lentValue(gear) }); };
   const pre = openingPreview(d.savings ?? 0, typeof terms === 'string' ? null : terms);
   return (
     <section className="card" aria-labelledby="money-h">
@@ -340,9 +344,17 @@ function MoneyAndFamily({ d, set, err }: { d: CreationDraft; set: Set; err: (f: 
       </div>
       {CIRCUMSTANCES[f.circumstances].most > 0 && (
         <div className="field-row">
-          <SelectField label="What Your Family Offers" value={f.support} options={(Object.keys(SUPPORT_LABELS) as FamilySupportKind[]).map((k) => ({ value: k, label: SUPPORT_LABELS[k] }))} onChange={(v) => put({ support: v, amount: v === 'none' ? 0 : f.amount || Math.min(1_000, CIRCUMSTANCES[f.circumstances].most) })} />
-          {f.support !== 'none' && <NumberField label="How Much" value={f.amount} min={0} max={CIRCUMSTANCES[f.circumstances].most} error={err('family')} hint={`At most ${money(CIRCUMSTANCES[f.circumstances].most)}.`} onChange={(v) => put({ amount: v })} />}
+          <SelectField label="What Your Family Offers" value={f.support} options={(Object.keys(SUPPORT_LABELS) as FamilySupportKind[]).map((k) => ({ value: k, label: SUPPORT_LABELS[k] }))} onChange={(v) => put(v === 'equipment' ? { support: v, gear: [], amount: 0 } : { support: v, gear: undefined, amount: v === 'none' ? 0 : f.amount || Math.min(1_000, CIRCUMSTANCES[f.circumstances].most) })} />
+          {f.support !== 'none' && f.support !== 'equipment' && <NumberField label="How Much" value={f.amount} min={0} max={CIRCUMSTANCES[f.circumstances].most} error={err('family')} hint={`At most ${money(CIRCUMSTANCES[f.circumstances].most)}.`} onChange={(v) => put({ amount: v })} />}
         </div>
+      )}
+      {f.support === 'equipment' && CIRCUMSTANCES[f.circumstances].most > 0 && (
+        <fieldset className="field" aria-describedby="lend-hint">
+          <legend>What Your Family Lends</legend>
+          <p id="lend-hint" className="dim small" style={{ margin: 0 }}>Worth {money(f.amount)} at listed prices, of at most {money(CIRCUMSTANCES[f.circumstances].most)}. Lent for as long as you need it: it costs nothing to use and isn't yours to sell.</p>
+          <ErrorText error={err('family')} />
+          {GEAR.filter((g) => g.price !== null).map((g) => <Check key={g.id} label={`${g.name}, ${money(g.price!)}`} checked={lent.has(g.id)} onChange={(on) => lend(g.id, on)} />)}
+        </fieldset>
       )}
       <p className="small" style={{ marginTop: 'var(--s3)' }}><strong>You Start With:</strong> {money(pre.balance)} in your own account.{pre.owe.length ? ` ${pre.owe.join(' ')}` : ''} Amounts are game calibration, not real prices.</p>
     </section>
@@ -543,11 +555,12 @@ function LanguageStep({ d, set, error }: { d: CreationDraft; set: (p: Partial<Cr
 /** What you start with and what you will owe, read before the story starts. */
 function MoneyReview({ d, onEdit }: { d: CreationDraft; onEdit: () => void }) {
   const f = d.family;
-  const terms = f ? familyTerms(f.circumstances, f.support, f.amount) : null;
+  const terms = f ? familyTerms(f.circumstances, f.support, f.amount, f.gear) : null;
   const pre = openingPreview(d.savings ?? 0, typeof terms === 'string' ? null : terms);
   return (
     <ReviewCard title="Money" edit="Edit Money And Family" onEdit={onEdit}>
       {pre.lines.map((l) => <Line key={l.label} label={l.label} value={money(l.amount)} />)}
+      {f?.support === 'equipment' && <Line label="Lent By Your Family" value={(f.gear ?? []).map((id) => GEAR.find((g) => g.id === id)?.name ?? id).join(', ') || 'Nothing chosen'} />}
       <Line label="Your Own Account" value={money(pre.balance)} />
       <Line label="What You Will Owe" value={pre.owe.join(' ') || 'Nothing'} />
     </ReviewCard>

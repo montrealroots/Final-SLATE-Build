@@ -32,9 +32,13 @@ export const LOCATION_FEE_PER_DAY = 1200;
 export const EQUIPMENT_PER_DAY = 1500;
 /** Location and equipment costs scale with the production's scale (simulation assumption): micro shoots use borrowed gear and free locations. */
 export const DAY_COST_SCALE: Record<string, number> = { micro: 0.3, low: 1, mid: 2, commissioned: 3 };
+/** The rental house's equipment package for a day, by budget size. */
+export const housePackageFee = (p: Project): number => Math.round(EQUIPMENT_PER_DAY * (DAY_COST_SCALE[p.funding.scenarioId] ?? 1));
+/** A day's location fee, and its equipment: the house package, or, with a kit of your own (equipment.ts), only what it
+ *  rents. Owned and lent items cost nothing to use. */
 export function dayFees(p: Project): { location: number; equipment: number } {
   const k = DAY_COST_SCALE[p.funding.scenarioId] ?? 1;
-  return { location: Math.round(LOCATION_FEE_PER_DAY * k), equipment: Math.round(EQUIPMENT_PER_DAY * k) };
+  return { location: Math.round(LOCATION_FEE_PER_DAY * k), equipment: p.kit ? p.kit.items.reduce((a, x) => a + x.dayRate, 0) : housePackageFee(p) };
 }
 export const VOICE_SESSION_STUDIO = 400;
 /** Capture stage, suits and solving per session (simulation assumption). */
