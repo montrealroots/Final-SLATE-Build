@@ -1,9 +1,9 @@
 // The owner's v6 package, J03 (from November 13, 2026): a work whose story identifies one person, adapted through the
 // screens. The brief proposes that one person and says no other is identified; nobody is set against them and nobody is
 // invented. The project is approved, made with the player in the part, delivered and released, and its credits name
-// that one part only. The engine's rule, and the work that identifies nobody, is tests/work-cast.test.ts.
+// that one part only. Its one acting work then stands on the Profile (J22's reading). The engine's rule, and the work that identifies nobody, is tests/work-cast.test.ts.
 import { expect, test } from './test';
-import { adaptWork, advance, creditsTable, produceToDelivery, quickLife, readSavedState, saveAndApprove, section } from './helpers';
+import { adaptWork, advance, creditsTable, nav, produceToDelivery, quickLife, readSavedState, saveAndApprove, section } from './helpers';
 
 test.describe.configure({ timeout: Number(process.env.SLATE_JOURNEY_TIMEOUT) || 900_000 });
 test.beforeEach(({}, info) => test.skip(info.project.name !== 'desktop', 'Full media journeys run once, at desktop width.'));
@@ -49,4 +49,16 @@ test('J03: a story with one person is adapted with that one and nobody invented,
   await section(page, 'Release');
   await expect(page.locator('section', { hasText: 'Release History' }).getByText('Released', { exact: true }).first()).toBeVisible();
   expect((await readSavedState(page)).projects[0].characters).toHaveLength(1);
+
+  // J22's reading through the screens: one work in the part is one acting work, a grade needs more, and a reload counts
+  // nothing twice.
+  await nav(page, 'Profile');
+  const list = page.locator('dl[aria-label="Standing By Role"]');
+  await expect(list).toBeVisible();
+  const before = await list.textContent();
+  expect(before).toMatch(/Actor\s*Emerging, from 1 completed work \(standing \d+\)\. Established needs 2 completed works in this role; you have 1\./);
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await nav(page, 'Profile');
+  await expect(list).toHaveText(before!);
 });

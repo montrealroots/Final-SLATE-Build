@@ -34,10 +34,10 @@ none has been done for these journeys.
 | J19 Long career | Partly Covered | `e2e/j11.spec.ts`; `e2e/living-world.spec.ts` | `tests/world-records.test.ts`; `tests/box-office.test.ts` | Past the records' end the world is simulated and labelled; weeks in cinemas; a renewal or cancellation; the record book counted once. | Years of the player's own releases, and a check that events don't grow without end. |
 | J20 Phone parity | Partly Covered | `e2e/ui-coverage.spec.ts`; `e2e/phone-layout.spec.ts`; `e2e/devices.spec.ts`; `e2e/viewports.spec.ts` | | The UI audit walks a whole career on desktop, phone and two WebKit iPhones; most journeys here also run on phone and the iPhone 15 Pro Max. | Not every journey runs on WebKit (the iPhone project lists the ones that do, in `playwright.config.ts`). |
 | J21 History boundary | Partly Covered | `e2e/v6-history.spec.ts` | `tests/history.test.ts` | Each dataset's own cutoff; a result shown only from its published date; a correction as a revision with its own date; unknown publication hidden; nothing in the save (engine, and the browser for the award results). | A correction and a late report seen through the screens. |
-| J22 Reputation exploits | Partly Covered | | `tests/standing.test.ts` | A work counted once however many episodes or repeated credits; an extreme result no more than a fine one; one role's success no other role's standing; awards don't feed standing; a reload counts nothing twice. | Standing By Role on the Jobs page isn't read by any browser journey. |
+| J22 Reputation exploits | Covered | `e2e/v6-one-person.spec.ts` | `tests/standing.test.ts` | A work counted once however many episodes or repeated credits; an extreme result no more than a fine one; one role's success no other role's standing; awards don't feed standing; a reload counts nothing twice (engine). On the Profile, one delivered work in a part reads as one acting work, Emerging until there are more, and the same after a reload. | |
 
 ## Counts
 
-Covered: 6 (J03, J07, J08, J09, J11, J12). Partly Covered: 16. Not Covered: 0. The package
+Covered: 7 (J03, J07, J08, J09, J11, J12, J22). Partly Covered: 15. Not Covered: 0. The package
 also asks for each run to keep its code SHA, seed, environment and evidence; the CI keeps the run, and the seeds pinned in
 the journeys are written where they are set. A per-journey evidence record of that kind doesn't exist.

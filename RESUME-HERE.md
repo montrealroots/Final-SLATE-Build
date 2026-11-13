@@ -68,9 +68,9 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
   - J05: the animatic can be revised (`revisions.ts` reviseAnimatic, the Animatic card on Production, a preview of
     what starts over and the days lost); `e2e/v6-animatic.spec.ts` revises it before and after animation and delivers.
   - J03: `e2e/v6-one-person.spec.ts` adapts The Mystery of Marie Rogêt (one person) through the screens to release.
-    Matrix now 6 Covered, 16 Partly Covered.
-  - *Next:* the partly covered journeys, clearest first: J21 a correction seen on screen; J22 Standing By Role read in a
-    browser journey. Then grades feeding offers; cameras and composers into the shop and hiring once prices and terms are sourced; the TMDB
+    It then reads Standing By Role on the Profile, before and after a reload (J22). Matrix now 7 Covered, 15 Partly
+    Covered.
+  - *Next:* the partly covered journeys, clearest first: J21 a correction seen on screen. Then grades feeding offers; cameras and composers into the shop and hiring once prices and terms are sourced; the TMDB
     inventory import from ID exports (`docs/v7/package/reference/tmdb_inventory.py`).
   - *Research questions:* `docs/v7/RETURN-TO-RESEARCH.md`.
 
