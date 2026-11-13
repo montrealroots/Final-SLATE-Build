@@ -26,7 +26,7 @@
 import { closeSettled, money, reserve, settle } from './budget';
 import { deals, projectFamilies, trackRecord } from './finance';
 import { postPersonal } from './personal';
-import { FILM_FORMATS } from './blueprints';
+import { FILM_FORMATS, TV_FORMATS } from './blueprints';
 import { ANIMATION_HOUSE, fitWeight, strategyOf, type StudioStrategy } from './strategy';
 import { addLog, cancelEvents, newId, registerHandler, schedule } from './state';
 import { DAY } from './time';
@@ -43,7 +43,14 @@ export interface FirstLookTerms {
   fund: number;
   /** Animated films only, for a studio that makes little else; otherwise any film. */
   animatedOnly: boolean;
+  /**
+   * What the deal covers: films, or series (the owner's v6 package, 04, "Film and television scope are separate"; from
+   * November 13, 2026). Absent on deals made before then, which were all for films.
+   */
+  scope?: 'film' | 'television';
 }
+export const scopeOf = (t: FirstLookTerms): 'film' | 'television' => t.scope ?? 'film';
+const formatsOf = (scope: 'film' | 'television') => (scope === 'television' ? TV_FORMATS : FILM_FORMATS);
 export interface FirstLook {
   id: string;
   company: string;
@@ -78,13 +85,14 @@ export const FIRST_LOOK_FIT = 0.1;
 const MONTH = 30 * DAY;
 
 /** The terms a studio's recorded scale gives. Game calibration, by scale, not any studio's real terms. */
-export function firstLookTerms(s: StudioStrategy): FirstLookTerms {
+export function firstLookTerms(s: StudioStrategy, scope: 'film' | 'television' = 'film'): FirstLookTerms {
   const big = s.pace >= 8;
   const mid = s.pace >= 3;
   return {
     months: big ? 24 : 12, considerDays: big ? 90 : mid ? 60 : 30,
     overhead: big ? 6_000 : mid ? 3_500 : 1_500, fund: big ? 100_000 : mid ? 50_000 : 25_000,
-    animatedOnly: s.animation >= ANIMATION_HOUSE && s.families[0]?.genre === 'Animation',
+    animatedOnly: scope === 'film' && s.animation >= ANIMATION_HOUSE && s.families[0]?.genre === 'Animation',
+    ...(scope === 'television' ? { scope } : {}),
   };
 }
 
@@ -93,7 +101,7 @@ export const activeFirstLook = (state: GameState): FirstLook | null => firstLook
 export const openFirstLookOffer = (state: GameState): FirstLook | null => firstLooks(state).find((x) => x.status === 'offered') ?? null;
 
 /** Whether a deal's terms cover this project. */
-export const covers = (fl: FirstLook, p: Project): boolean => FILM_FORMATS.includes(p.axes.format) && (!fl.terms.animatedOnly || p.axes.medium === 'animation');
+export const covers = (fl: FirstLook, p: Project): boolean => formatsOf(scopeOf(fl.terms)).includes(p.axes.format) && (!fl.terms.animatedOnly || p.axes.medium === 'animation');
 
 /**
  * The first-look deal this project is bound to now, if any: the active deal if it covers it, or an ended one whose
@@ -133,6 +141,20 @@ export function firstLookHold(state: GameState, p: Project, company: string): st
 }
 const dateOf = (t: number) => new Date(t).toISOString().slice(0, 10);
 
+/**
+ * Why a commissioner can't be approached for this series now, because of a television first look, or ''. The deal's
+ * company is asked first (finance.ts submitSeries); once it passes, the series is free to go to a commissioner.
+ */
+export function commissionerHold(state: GameState, p: Project): string {
+  const s = submissionStanding(state, p);
+  if (!s || scopeOf(s.fl.terms) !== 'television') return '';
+  if (s.stage === 'not-submitted') return `Your first-look deal gives ${s.fl.name} the first chance at ${p.title}: submit it to them first.`;
+  if (s.stage === 'considering') return `${s.fl.name} is considering it under your first-look deal, until ${dateOf(s.deal!.decideAt!)}.`;
+  if (s.stage === 'offered') return `${s.fl.name} made an offer for it under your first-look deal: accept or refuse it first.`;
+  if (s.stage === 'taken') return `${s.fl.name} commissioned it under your first-look deal.`;
+  return '';
+}
+
 /** How long the first-look studio has to answer this project's submission, in days, or null if it isn't bound. */
 export function considerDaysFor(state: GameState, p: Project, company: string): number | null {
   const fl = bindingFor(state, p);
@@ -142,18 +164,19 @@ export function considerDaysFor(state: GameState, p: Project, company: string): 
 /** Record a pitch to the first-look studio as the project's submission under the deal. */
 export function noteSubmission(state: GameState, p: Project, deal: FinanceDeal): void {
   const fl = bindingFor(state, p);
-  if (!fl || deal.kind !== 'studio' || deal.studio?.company !== fl.company) return;
+  if (!fl || !((deal.kind === 'studio' && deal.studio?.company === fl.company) || (deal.kind === 'commissioner' && deal.firstLook === fl.id))) return;
   fl.submissions.push({ projectId: p.id, dealId: deal.id, at: state.now });
 }
 
 // ---------------- Offers ----------------
 
 /** The studio that would offer a first look now, and why, or null. Pure: the same save gives the same answer. */
-export function firstLookCandidate(state: GameState): { company: string; strategy: StudioStrategy; why: string } | null {
+export function firstLookCandidate(state: GameState, scope: 'film' | 'television' = 'film'): { company: string; strategy: StudioStrategy; why: string } | null {
   if (activeFirstLook(state) || openFirstLookOffer(state)) return null;
   const record = trackRecord(state);
   if (!record.works || !(record.wins > 0 || (record.reception ?? 0) >= FIRST_LOOK_RECEPTION)) return null;
-  const works = state.projects.filter((x) => x.delivered && x.quality && FILM_FORMATS.includes(x.axes.format));
+  // A television deal follows delivered series, a film deal delivered films: neither stands in for the other.
+  const works = state.projects.filter((x) => x.delivered && x.quality && formatsOf(scope).includes(x.axes.format));
   if (!works.length) return null;
   // A studio declined or let lapse in the last year doesn't ask again yet.
   const recent = new Set(firstLooks(state).filter((x) => (x.status === 'declined' || x.status === 'lapsed') && state.now - x.answerBy < 365 * DAY).map((x) => x.company));
@@ -164,22 +187,23 @@ export function firstLookCandidate(state: GameState): { company: string; strateg
   if (!best) return null;
   const strategy = strategyOf(best.profile);
   const led = strategy.families[0]?.genre;
-  const why = `Your ${works.length === 1 ? 'film' : `${works.length} films`} sit${works.length === 1 ? 's' : ''} with what ${strategy.name} makes${led ? `, most of all ${led.toLowerCase()}` : ''}. ${record.wins ? `${record.wins === 1 ? 'The award' : `The ${record.wins} awards`} your work won counted.` : 'How well your work was received counted.'}`;
+  const kind = scope === 'television' ? 'series' : works.length === 1 ? 'film' : 'films';
+  const why = `Your ${works.length === 1 ? kind : `${works.length} ${kind}`} sit${works.length === 1 ? 's' : ''} with what ${strategy.name} makes${led ? `, most of all ${led.toLowerCase()}` : ''}. ${record.wins ? `${record.wins === 1 ? 'The award' : `The ${record.wins} awards`} your work won counted.` : 'How well your work was received counted.'}`;
   return { company: best.profile.c, strategy, why };
 }
 
 /** Make the offer, if a studio would. Nothing binds the player until they accept. */
-export function offerFirstLook(state: GameState, renews?: FirstLook): FirstLook | null {
-  const c = renews ? (() => { const p = state.industry?.studios?.find((x) => x.c === renews.company); return p ? { company: p.c, strategy: strategyOf(p), why: renews.submissions.some((x) => isTaken(state, x)) ? `${renews.name} took a project you submitted, and wants to keep going.` : 'Your record still counts with it, and it wants to keep going.' } : null; })() : firstLookCandidate(state);
+export function offerFirstLook(state: GameState, renews?: FirstLook, scope: 'film' | 'television' = 'film'): FirstLook | null {
+  const c = renews ? (() => { const p = state.industry?.studios?.find((x) => x.c === renews.company); return p ? { company: p.c, strategy: strategyOf(p), why: renews.submissions.some((x) => isTaken(state, x)) ? `${renews.name} took a project you submitted, and wants to keep going.` : 'Your record still counts with it, and it wants to keep going.' } : null; })() : firstLookCandidate(state, scope);
   if (!c) return null;
-  const terms = renews ? { ...renews.terms } : firstLookTerms(c.strategy);
+  const terms = renews ? { ...renews.terms } : firstLookTerms(c.strategy, scope);
   const fl: FirstLook = {
     id: newId(state, 'fl'), company: c.company, name: c.strategy.name, status: 'offered', offeredAt: state.now, answerBy: state.now + FIRST_LOOK_OPEN_DAYS * DAY,
     terms, why: c.why, submissions: [], drawn: [], ...(renews ? { renews: renews.id } : {}),
   };
   (state.firstLooks ??= []).push(fl);
   schedule(state, fl.answerBy, 'first-look-lapse', { id: fl.id }, { attention: 'silent', priority: 60, id: `fl-lapse:${fl.id}` });
-  addLog(state, `${fl.name} offered you a${renews ? ' renewed' : ''} first-look deal: ${money(terms.overhead)} a month for ${terms.months} months, for the first chance at your ${terms.animatedOnly ? 'animated films' : 'films'}. It is open for ${FIRST_LOOK_OPEN_DAYS} days.`, 'money', { route: { view: 'profile' } });
+  addLog(state, `${fl.name} offered you a${renews ? ' renewed' : ''} first-look deal: ${money(terms.overhead)} a month for ${terms.months} months, for the first chance at your ${coveredWords(terms)}. It is open for ${FIRST_LOOK_OPEN_DAYS} days.`, 'money', { route: { view: 'profile' } });
   return fl;
 }
 const isTaken = (state: GameState, s: FirstLook['submissions'][number]) => {
@@ -187,13 +211,18 @@ const isTaken = (state: GameState, s: FirstLook['submissions'][number]) => {
   return !!p && deals(p).some((d) => d.id === s.dealId && (d.status === 'accepted' || d.status === 'breached'));
 };
 
+/** What a deal covers, in a few words: "films", "animated films" or "series". */
+export const coveredWords = (t: FirstLookTerms): string => (scopeOf(t) === 'television' ? 'series' : t.animatedOnly ? 'animated films' : 'films');
+
 /** Every term of a first-look offer, in the words shown before accepting. */
 export function firstLookWords(fl: FirstLook): string[] {
   const t = fl.terms;
+  const tv = scopeOf(t) === 'television';
   return [
     `It runs ${t.months} months from the day you accept.`,
     `${fl.name} pays ${money(t.overhead)} a month toward your overhead, into your company's account if you have one, or your own.`,
-    `It covers ${t.animatedOnly ? 'the animated films' : 'the films'} you make while it runs, not series. You submit each one to ${fl.name} before you pitch it to any other studio.`,
+    tv ? `It covers the series you make while it runs, not films. You submit each one to ${fl.name} before you take it to any commissioner.`
+      : `It covers ${t.animatedOnly ? 'the animated films' : 'the films'} you make while it runs, not series. You submit each one to ${fl.name} before you pitch it to any other studio.`,
     `${fl.name} has ${t.considerDays} days to answer each one. If it passes, you may take the project elsewhere.`,
     `Up to ${money(t.fund)} of development money for covered projects. If another studio or a commissioner later takes a project it passed on, what it put in is repaid from their money.`,
     'It ends at its term unless it is renewed. You may end it early: the overhead stops, and what it has in hand is still answered.',
@@ -218,7 +247,7 @@ export function acceptFirstLook(state: GameState, id: string): void {
   cancelEvents(state, (e) => e.id === `fl-lapse:${fl.id}`);
   payOverhead(state, fl, 1);
   schedule(state, fl.endsAt, 'first-look-end', { id: fl.id }, { attention: 'notify', priority: 45, id: `fl-end:${fl.id}` });
-  addLog(state, `You signed a first-look deal with ${fl.name}. Submit your ${fl.terms.animatedOnly ? 'animated films' : 'films'} to it first until ${dateOf(fl.endsAt)}.`, 'money', { route: { view: 'profile' } });
+  addLog(state, `You signed a first-look deal with ${fl.name}. Submit your ${coveredWords(fl.terms)} to it first until ${dateOf(fl.endsAt)}.`, 'money', { route: { view: 'profile' } });
 }
 
 export function declineFirstLook(state: GameState, id: string): void {
@@ -299,6 +328,7 @@ export function repayTurnaround(state: GameState, p: Project, by: FinanceDeal): 
   if (by.kind !== 'studio' && by.kind !== 'commissioner') return;
   for (const fl of firstLooks(state)) {
     if (by.kind === 'studio' && by.studio?.company === fl.company) continue;
+    if (by.kind === 'commissioner' && by.firstLook === fl.id) continue; // its own commission under the deal
     const owed = fl.drawn.filter((x) => x.projectId === p.id).reduce((a, x) => a + x.amount, 0);
     const ref = `turnaround:${fl.id}:${p.id}`;
     if (!owed || p.obligations.some((o) => o.ref === ref)) continue;
@@ -315,8 +345,10 @@ export function scheduleFirstLookCheck(state: GameState, p: Project): void {
   schedule(state, state.now + FIRST_LOOK_NOTICE_DAYS * DAY, 'first-look-check', { after: p.id }, { attention: 'silent', priority: 70, id: `fl-check:${p.id}` });
 }
 
-registerHandler('first-look-check', (state) => {
-  const fl = offerFirstLook(state);
+registerHandler('first-look-check', (state, ev) => {
+  // The delivery that prompted the check says which kind of deal a company would offer for it.
+  const after = state.projects.find((x) => x.id === ev.payload.after);
+  const fl = offerFirstLook(state, undefined, after && TV_FORMATS.includes(after.axes.format) ? 'television' : 'film');
   return fl ? { message: `${fl.name} offered you a first-look deal.` } : { suppressInterrupt: true };
 });
 registerHandler('first-look-lapse', (state, ev) => {

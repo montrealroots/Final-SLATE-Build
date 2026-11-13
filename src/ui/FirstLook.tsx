@@ -6,8 +6,9 @@ import { money } from '../engine/budget';
 import {
   acceptFirstLook, activeFirstLook, askMoreOverhead, declineFirstLook, developmentRefusal, drawDevelopment, endFirstLook, firstLookWords, firstLooks, fundLeft,
   openFirstLookOffer, submissionStanding,
+  scopeOf,
 } from '../engine/first-look';
-import { deals } from '../engine/finance';
+import { deals, submitSeries } from '../engine/finance';
 import type { Project } from '../engine/types';
 import { NumberField } from './components';
 import { store, useGame } from './store';
@@ -30,7 +31,7 @@ export function FirstLookCard() {
           <p><strong>{offer.name}</strong> offers you a first-look deal{offer.renews ? ', renewing the last one' : ''}. {offer.why}</p>
           <ul className="list" aria-label="Its Terms">{firstLookWords(offer).map((w) => <li key={w} className="list-item">{w}</li>)}</ul>
           {offer.counter && <p className="dim small">{offer.counter.outcome === 'agreed' ? `It agreed to ${money(offer.terms.overhead)} a month.` : offer.counter.outcome === 'held' ? `It kept its offer of ${money(offer.terms.overhead)} a month.` : `You asked for more overhead. It answers by ${day(offer.counter.answerAt)}.`}</p>}
-          <p className="dim small">Open until {day(offer.answerBy)}. Nothing binds you until you accept. Amounts are game calibration by the studio's recorded scale, not its real terms.</p>
+          <p className="dim small">Open until {day(offer.answerBy)}. Nothing binds you until you accept. Amounts are game calibration by the company's recorded scale, not its real terms.</p>
           <div className="row gap-2 wrap">
             <button className="btn primary" disabled={!!fl || (!!offer.counter && !offer.counter.outcome)} onClick={() => setErr(store.act((s) => acceptFirstLook(s, offer.id)))}>Accept The First-Look Deal</button>
             <button className="btn" disabled={!!offer.counter} onClick={() => setErr(store.act((s) => askMoreOverhead(s, offer.id)))}>Ask For {money(Math.round(offer.terms.overhead * 1.5))} A Month</button>
@@ -50,7 +51,7 @@ export function FirstLookCard() {
                 return <li key={x.dealId} className="list-item"><span className="grow">{p?.title ?? 'A project'}, submitted {day(x.at)}</span><span>{st ? STAGE[st.stage] : ''}{d?.status === 'considering' && d.decideAt ? `, answers by ${day(d.decideAt)}` : ''}</span></li>;
               })}
             </ul>
-          ) : <p className="muted">Nothing submitted yet. Submit a covered film by pitching it to {fl.name} from its Budget page.</p>}
+          ) : <p className="muted">{scopeOf(fl.terms) === 'television' ? `Nothing submitted yet. Submit a covered series to ${fl.name} from its Budget page.` : `Nothing submitted yet. Submit a covered film by pitching it to ${fl.name} from its Budget page.`}</p>}
           <button className="btn" onClick={() => setErr(store.act((s) => endFirstLook(s, fl.id)))}>End The Deal Early</button>
         </div>
       )}
@@ -74,16 +75,28 @@ export function FirstLookProjectCard({ p }: { p: Project }) {
   const no = developmentRefusal(g, p, amount);
   const drawn = st.fl.drawn.filter((x) => x.projectId === p.id).reduce((a, x) => a + x.amount, 0);
   const live = () => store.state!.projects.find((x) => x.id === p.id)!;
+  const tv = scopeOf(st.fl.terms) === 'television';
   return (
     <section className="card" aria-labelledby="firstlook-p-h">
       <h2 id="firstlook-p-h">First Look: {st.fl.name}</h2>
       <p className="muted">
-        {st.stage === 'not-submitted' ? `Your first-look deal gives ${st.fl.name} the first chance at ${p.title}. Pitch it to them under Studios before any other studio; they have ${st.fl.terms.considerDays} days to answer.`
-          : st.stage === 'considering' ? `${st.fl.name} is considering it until ${day(st.deal!.decideAt!)}. No other studio can be pitched it until then.`
-          : st.stage === 'offered' ? `${st.fl.name} made an offer for it. Accept or refuse it below.`
-          : st.stage === 'taken' ? `${st.fl.name} took it.`
-          : `${st.fl.name} passed. You may take it to another studio${drawn ? `; if one takes it, the ${money(drawn)} of development money is repaid from its money` : ''}.`}
+        {tv
+          ? (st.stage === 'not-submitted' ? `Your first-look deal gives ${st.fl.name} the first chance at ${p.title}. Submit it to them before you take it to any commissioner; they have ${st.fl.terms.considerDays} days to answer.`
+            : st.stage === 'considering' ? `${st.fl.name} is considering it until ${day(st.deal!.decideAt!)}. No commissioner can be approached for it until then.`
+            : st.stage === 'offered' ? `${st.fl.name} offered to commission it. Accept or refuse it below.`
+            : st.stage === 'taken' ? `${st.fl.name} commissioned it.`
+            : `${st.fl.name} passed. You may take it to a commissioner${drawn ? `; if one takes it, the ${money(drawn)} of development money is repaid from its money` : ''}.`)
+          : (st.stage === 'not-submitted' ? `Your first-look deal gives ${st.fl.name} the first chance at ${p.title}. Pitch it to them under Studios before any other studio; they have ${st.fl.terms.considerDays} days to answer.`
+            : st.stage === 'considering' ? `${st.fl.name} is considering it until ${day(st.deal!.decideAt!)}. No other studio can be pitched it until then.`
+            : st.stage === 'offered' ? `${st.fl.name} made an offer for it. Accept or refuse it below.`
+            : st.stage === 'taken' ? `${st.fl.name} took it.`
+            : `${st.fl.name} passed. You may take it to another studio${drawn ? `; if one takes it, the ${money(drawn)} of development money is repaid from its money` : ''}.`)}
       </p>
+      {tv && st.fl.status === 'active' && st.stage === 'not-submitted' && (
+        <div className="row gap-2 wrap">
+          <button className="btn btn-primary" onClick={() => setErr(store.act((s) => void submitSeries(s, live())))}>Submit To {st.fl.name}</button>
+        </div>
+      )}
       {st.fl.status === 'active' && st.stage === 'not-submitted' && (
         <>
           <div className="inline-form">

@@ -16,7 +16,7 @@ import { genre } from './genres';
 import { stream } from './rng';
 import { FORMAT_LABELS } from './projects';
 import { ANIMATION_HOUSE, MONTHS, familyKey, pitchRead, reachTerritories, slateRoom, strategyOf, type PitchRead, type StudioStrategy } from './strategy';
-import { bindingFor, considerDaysFor, firstLookHold, noteSubmission, repayTurnaround } from './first-look';
+import { bindingFor, commissionerHold, considerDaysFor, firstLookHold, noteSubmission, repayTurnaround, scopeOf } from './first-look';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY, dateKey } from './time';
 import type { FinanceDeal, FinanceDealKind, GameState, Obligation, Project } from './types';
@@ -326,7 +326,7 @@ export function backerOptions(state: GameState, p: Project, throughAgent = false
   out.push({ kind: 'co-producer', ready: false, needs: why('co-producer', promised <= 0 ? 'Get some funding promised first; they only match other backers.' : docs('co-producer')) });
   // A commissioner who didn't renew the series won't fund its next season (continuation.ts).
   const notRenewed = p.continues && state.projects.find((x) => x.id === p.continues!.from)?.renewal?.outcome === 'cancelled' ? "The commissioner didn't renew the series." : null;
-  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 && !throughAgent ? 'Deliver a project first.' : notRenewed ?? (!scriptApproved(p) ? 'Approve a script first.' : docs('commissioner'))) });
+  out.push({ kind: 'commissioner', ready: false, needs: why('commissioner', delivered(state) === 0 && !throughAgent ? 'Deliver a project first.' : notRenewed ?? (commissionerHold(state, p) || (!scriptApproved(p) ? 'Approve a script first.' : docs('commissioner')))) });
   for (const o of out) o.ready = o.needs === '';
   return out;
 }
@@ -438,6 +438,23 @@ function decide(state: GameState, p: Project, deal: FinanceDeal): void {
       break;
     }
     case 'commissioner':
+      if (deal.firstLook) {
+        // A series submitted under a television first look: the deal's company decides by its read of it, as a studio
+        // reads a film (strategy.ts pitchRead), with no chance in it. The deal covers series, so a series isn't ruled out
+        // for not being a film; what it makes, the script and the record still count, and so does its slate.
+        const fl = (state.firstLooks ?? []).find((x) => x.id === deal.firstLook);
+        const read = fl ? studioOption(state, p, fl.company)?.read : undefined;
+        if (!fl || !read) { refusal = 'It is no longer one of the companies your story follows.'; break; }
+        if (read.verdict === 'offer' || read.verdict === 'option') {
+          offer = stillToRaise;
+          t.onDelivery = Math.round(offer * 0.2);
+          t.incomeShare = 0.85;
+          t.approvalRights = ['Casting Approval', 'Picture Approval'];
+          t.credit = 'Commissioned By';
+          deal.reason = `It commissions the series under your first-look deal. ${read.for.join(' ')}`.trim();
+        } else refusal = `${read.verdict === 'notes' ? 'Not this one.' : 'It passed.'} ${read.against.join(' ')} You may take it to a commissioner.`.trim();
+        break;
+      }
       if (roll < 0.35 + Math.min(0.4, proven * 0.15) + record.bonus) {
         offer = stillToRaise;
         t.onDelivery = Math.round(offer * 0.2);
@@ -540,6 +557,34 @@ export function studioOptions(state: GameState, p: Project): StudioOption[] {
 }
 
 /** Send the pitch. The studio answers in two weeks, by the facts as they are then. */
+/**
+ * Submit a series to the company of a television first-look deal (first-look.ts). It is a commission, as a commissioner's
+ * is (the company owns the series and renews it or not, continuation.ts), answered in the deal's days by its read.
+ */
+export function submitSeries(state: GameState, p: Project): FinanceDeal {
+  const fl = bindingFor(state, p);
+  if (!fl || fl.status !== 'active' || scopeOf(fl.terms) !== 'television') throw new Error('No television first-look deal covers this project.');
+  if (commissionerHold(state, p) !== `Your first-look deal gives ${fl.name} the first chance at ${p.title}: submit it to them first.`) throw new Error(commissionerHold(state, p) || `${fl.name} has already answered for ${p.title}.`);
+  if (p.delivered) throw new Error('This project is delivered.');
+  if (!scriptApproved(p)) throw new Error('Approve a script first.');
+  const missing = documentsNeeded(p, BACKER_DOCUMENTS.commissioner, isNonfiction(p.axes.format), SUBMISSION.commissioner);
+  if (missing) throw new Error(missing);
+  p.finance ??= { estimate: p.funding.fund, target: p.funding.fund, deals: [] };
+  const nf = isNonfiction(p.axes.format);
+  const sent = BACKER_DOCUMENTS.commissioner.map((d) => DOCUMENTS[d].name);
+  const documents = BACKER_DOCUMENTS.commissioner.map((d) => ({ name: DOCUMENTS[d].name, fields: DOCUMENTS[d].fields(nf).map(([k, label]) => ({ label, text: String(p.story[k] ?? '') })) }));
+  const deal: FinanceDeal = {
+    id: newId(state, 'fd'), kind: 'commissioner', backer: fl.name, amount: 0, status: 'considering', askedAt: state.now, decideAt: state.now + fl.terms.considerDays * DAY,
+    reason: '', received: 0, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null, unspent: 'stays' },
+    sent, sentCopy: { draft: p.approvedDraft, documents }, firstLook: fl.id,
+  };
+  p.finance.deals.push(deal);
+  noteSubmission(state, p, deal);
+  schedule(state, deal.decideAt!, 'finance-decision', { projectId: p.id, dealId: deal.id }, { attention: 'notify', priority: 40 });
+  addLog(state, `You submitted ${p.title} to ${fl.name} under your first-look deal, sending the approved script and your ${sent.join(', ').toLowerCase()}. It answers by ${new Date(deal.decideAt!).toISOString().slice(0, 10)}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+  return deal;
+}
+
 export function pitchToStudio(state: GameState, p: Project, company: string): FinanceDeal {
   const opt = studioOption(state, p, company);
   if (!opt) throw new Error('That studio isn\'t one your story follows.');

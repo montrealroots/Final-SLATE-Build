@@ -610,6 +610,8 @@ export interface FinanceDeal {
   transfer?: { id: string; sources: { projectId: string; amount: number }[] };
   /** The agent who submitted this approach, and their rate when they did: commission is due on what it pays in (representation.ts). */
   via?: { agentId: string; name: string; rate: number };
+  /** A series submitted under a television first-look deal (first-look.ts), by the deal's id: its company decides it by its read, not by chance. */
+  firstLook?: string;
   /** The documents sent with the approach (names, as listed when it was made). */
   sent?: string[];
   /**
