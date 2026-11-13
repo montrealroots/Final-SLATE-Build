@@ -10,7 +10,7 @@ import { adaptWork, addScene, advance, castRoles, nav, pinSeed, quickLife, readS
 
 test.use({ actionTimeout: 20_000 });
 
-const SEED = Number(process.env.J03_SEED ?? 1);
+const SEED = Number(process.env.J03_SEED ?? 2);
 const TITLE = 'Test Chamber';
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -30,6 +30,10 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   expect(made.axes).toMatchObject({ medium: 'animation', technique: '2d-drawn' });
   expect(made.episodes).toHaveLength(2);
   expect(made.proposal.workId).toBeTruthy();
+  // Its story is the article's Synopsis, told across both episodes (from November 13, 2026).
+  expect(made.proposal.story).toMatchObject({ article: 'Portal (video game)', section: 'Synopsis', licence: 'CC BY-SA 4.0' });
+  expect(made.proposal.origin.scenes).toBe('sourced');
+  expect([1, 2].every((n) => made.scenes.some((x: { episode: number }) => x.episode === n))).toBe(true);
   const lead: string = made.characters[0].name;
   await section(page, 'Script');
   // The proposal's scenes are kept; an episode it left without one is given one (its card follows the episodes before it).
@@ -103,7 +107,8 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   expect(taken.audience.length).toBeGreaterThan(1);
   expect(new Set(taken.audience.map((a: { episode?: number }) => a.episode)).size).toBeGreaterThanOrEqual(2);
   expect(decided.renewal.reason).toContain('Audience figures are simulated.');
-  // Seed 1, as played here: a broadcaster, and a cancellation. Recorded so a change in either is seen, not absorbed.
+  // Seed 2, as played here: a broadcaster, and a cancellation. Recorded so a change in either is seen, not absorbed.
+  // (Seed 1 until November 13, 2026, when Portal's story gave the season more scenes and the draws moved.)
   expect([offer.route, decided.renewal.outcome]).toEqual(['broadcast', 'cancelled']);
   // The decision is the audience the broadcaster reported (audiences.ts seasonAudience): its first showing against the
   // bar, and the share it kept from one episode to the next against 88%. A season that met both would be renewed.

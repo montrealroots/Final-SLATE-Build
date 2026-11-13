@@ -16,6 +16,14 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
     (`proposal.ts`).
   - A work with no story section gets the game's own outline in every episode, labelled.
   - The credits name the article.
+  - Coverage, fetched November 13, 2026:
+    - 517 of 643 works have a story, including 41 of the 59 recorded as copyrighted.
+    - Every light novel has one, and 57 of 60 plays.
+    - Fewer for pure-play video games (42 of 71), poems (12 of 25) and online fiction (41 of 70).
+    - 30 works have no article at all.
+  - Scenes now share the running time to the quarter minute. Until then each was a whole minute at least, so a
+    two-minute episode in six scenes was six minutes of animation, and J03's season couldn't be drawn in time.
+  - J03 moved to seed 2.
 - **Copyright is credited, not cleared.** The owner chose credits only, with nothing blocking production.
   - The option, rights purchase and rights-holder approval are gone (`adaptation.ts`, "Copyright").
   - `creditLine` says what the work is based on and its recorded copyright, on the Budget page's Based On card and in
@@ -311,7 +319,8 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       the score's conform), and three things a run has to do as a player would: build the schedule once the cast and
       crew have said yes (offers take two or three days), accept a backer's offer before it lapses (three weeks), and
       take the option on a copyrighted work before planning. J03 records its seeded outcome in the spec so a change is
-      seen (seed 1: a broadcaster, then a cancellation at about 80% kept against 88%). J11 accepts either a renewal or a
+      seen (seed 2 since November 13, 2026, when Portal's story moved the draws; seed 1 before: a broadcaster, then a
+      cancellation at about 80% kept against 88%). J11 accepts either a renewal or a
       cancellation of Coastline's simulated season, and checks that it is labelled. The game clock runs in real time
       between a run's actions, so audience figures vary a little from run to run; the checks read them from the save.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id

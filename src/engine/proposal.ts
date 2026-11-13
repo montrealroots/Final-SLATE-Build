@@ -144,7 +144,11 @@ export function runsOf<T>(xs: T[], n: number): T[][] {
 const STORY_MIN = 5;
 /** The most of a story the synopsis keeps: the brief's Synopsis field holds 3,000 characters. */
 const SYNOPSIS_MOST = 3000;
-const sceneMinutes = (total: number, n: number) => Math.max(1, Math.min(30, Math.round(total / Math.max(1, n))));
+/**
+ * Each scene's share of the running time, to the quarter minute. Until November 13, 2026 a scene was a whole minute at
+ * least, so a two-minute episode told in six scenes was six minutes of work, and a drawn season couldn't be made in time.
+ */
+export const sceneMinutes = (total: number, n: number) => Math.max(0.25, Math.min(30, Math.round((total / Math.max(1, n)) * 4) / 4));
 
 /** Propose a whole brief for a work. Pure: the same inputs propose the same brief. */
 /** A sentence that ranks a work by sales or standing: kept out of a proposed premise. */

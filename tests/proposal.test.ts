@@ -288,3 +288,16 @@ describe('the work\'s story', () => {
     }
   });
 });
+
+describe('how long each proposed scene is', () => {
+  it('shares the running time to the quarter minute, so short episodes are not made longer by being told in scenes', () => {
+    // Five-minute episodes, each told in six scenes: a whole minute a scene made each six minutes long.
+    const { blueprint: b } = proposeFromSource({ work: full, format: 'series', approach: 'faithful', gameYear: 2027, episodes: 2, minutes: 5, genres: GENRES });
+    for (const e of [1, 2]) {
+      const total = b.scenes.filter((x) => x.episode === e).reduce((a, x) => a + x.minutes, 0);
+      expect(total, `episode ${e}`).toBeGreaterThan(3);
+      expect(total, `episode ${e}`).toBeLessThanOrEqual(5.5);
+    }
+    expect(blueprintProblems(b, GENRES)).toEqual([]);
+  });
+});
