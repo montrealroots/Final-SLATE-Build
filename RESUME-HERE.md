@@ -22,10 +22,16 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     and tested in `tests/release-plan.test.ts` and `e2e/v5-release-plan.spec.ts`.
   - **3 and 4. Music.** A real catalog from Wikidata (`tools/music/catalog.mjs`, `music-catalog.ts`,
     `MusicCatalog.tsx`), and briefs and cues from the project (`cues.ts`). `docs/v5/MUSIC.md` has the details.
+  - **7 and 8. The living industry and metrics.**
+    - Productions that persist, for outside work (`productions.ts`).
+    - Entry routes by evidence.
+    - A TV week's slot, season and competition (`audiences.ts`).
+    - The record book's money kept apart.
+    - A grade for everyone the player can hire, with what it is made of (`grades.ts`, on the hiring list).
 - **Next, in order.**
-  1. 7 and 8, the living industry, grades and metrics.
-  2. 2, production previews.
-  3. 10 and 11, phone parity and the ten journeys.
+  1. 2, production previews.
+  2. 10 and 11, phone parity and the ten journeys.
+  3. The final report.
 - **The story re-fetch is done.** `src/data/plots.json` was rebuilt from `.sources-cache/plots2`. A section that mixes
   the story with something else keeps only its story parts, and 47 works are narrowed that way. Tower of God keeps its
   world parts: it has no plot part.

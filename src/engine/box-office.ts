@@ -177,6 +177,17 @@ export interface BookRow {
   runs: number;
   /** Whether every week counted is settled; a book entry with a provisional week can still move. */
   settled: boolean;
+  /**
+   * The money kept apart (the owner's v5 brief, 8: gross, admissions, rental, profit and player earnings, from November
+   * 13, 2026):
+   * - rental: what the cinemas passed to the distributor, the gross less what they keep;
+   * - income: what the project received from every deal, guarantees and overages;
+   * - cost: what making it settled, its finance lines (backers repaid, money moved out) apart;
+   * - profit: income less cost;
+   * - yours: the kept income taken home or to your company.
+   * Each is read from the ledger and the weeks, never typed. Simulated, as everything in the book is.
+   */
+  money: { rental: number; income: number; cost: number; profit: number; yours: number };
   /** Ticket sales by the calendar year a week ended in. */
   byYear: Record<string, number>;
   /** Places in this career's book. Equal figures share a place; the earlier opening is listed first. */
@@ -201,8 +212,11 @@ export function recordBook(state: GameState): BookRow[] {
     for (const w of all) byYear[w.to.slice(0, 4)] = (byYear[w.to.slice(0, 4)] ?? 0) + gross(w);
     const best = all.reduce((b, w) => (gross(w) > b.gross ? { gross: gross(w), week: w.week } : b), { gross: 0, week: 0 });
     const lifetime = all.reduce((n, w) => n + gross(w), 0);
+    const cost = p.obligations.filter((o) => o.category !== 'finance').reduce((n, o) => n + o.settled, 0);
+    const yours = p.obligations.filter((o) => /^transfer:(home|company)-[^:]+:earnings$/.test(o.ref ?? '')).reduce((n, o) => n + o.settled, 0);
     rows.push({
       projectId: p.id, title: p.title, opened: runs[0].weeks![0].from, opening: gross(runs[0].weeks!.find((w) => w.week === 1) ?? runs[0].weeks![0]), best, lifetime,
+      money: { rental: all.reduce((n, w) => n + w.rental, 0), income: p.revenue, cost, profit: p.revenue - cost, yours },
       admissions: Math.round(lifetime / TICKET_PRICE), weeks: all.filter((w) => w.rental > 0).length, runs: runs.length, settled: all.every((w) => w.status === 'final'), byYear, rank: { opening: 0, lifetime: 0 },
     });
   }

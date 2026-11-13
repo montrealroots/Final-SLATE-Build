@@ -3,7 +3,7 @@
 import { describe, expect, it } from 'vitest';
 import { DAY, RENEWAL_DECISION_DAYS, RENEWAL_WAIT_DAYS, acceptDistribution, processUntil, renewalStanding, scheduleRenewal } from './engine-api';
 import {
-  AUDIENCE_TAIL_WEEKS, BREAK_LOSS, STRIP_HABIT, gapEffect, BROADCAST_BASE, KEEP_BAR, METRICS, OPENING_BAR, STREAMING_BAR, STREAMING_BASE, STREAMING_DECAY, STREAMING_WEEKS_COUNTED, airingDeal, appeal, seasonAudience, audienceSummary, audienceWeekDates, lastAudienceWeek, observeWeek, recordAudienceWeek, retention, routeMetrics, showingsOf, weekOf, type Showing,
+  AUDIENCE_TAIL_WEEKS, BREAK_LOSS, LATE_SLOT_AUDIENCE, seasonFactor, weekCompetition, STRIP_HABIT, gapEffect, BROADCAST_BASE, KEEP_BAR, METRICS, OPENING_BAR, STREAMING_BAR, STREAMING_BASE, STREAMING_DECAY, STREAMING_WEEKS_COUNTED, airingDeal, appeal, seasonAudience, audienceSummary, audienceWeekDates, lastAudienceWeek, observeWeek, recordAudienceWeek, retention, routeMetrics, showingsOf, weekOf, type Showing,
 } from '../src/engine/audiences';
 import { deserialize, serialize } from '../src/engine/save';
 import { addDaysToKey } from '../src/engine/time';
@@ -16,6 +16,8 @@ import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, s
 const offer = (route: DistributionOffer['route']): DistributionOffer => ({ id: 'o1', distributor: 'Fixture Network', route, minimumGuarantee: 1000, territories: ['GB'], releaseWindowDays: 20, expiresAt: 0, status: 'accepted' });
 const ep = (number: number, date: string, reception = 70, runtimeMin = 30): Showing => ({ number, date, reception, runtimeMin });
 const see = (route: DistributionOffer['route'], week: number, showings: Showing[], territories = 1, seed = 7) => observeWeek(seed, 'p1', offer(route), week, '2027-01-04', showings, territories);
+/** A figure without what its week stood against (slot, season, competition): for comparing weeks with each other. */
+const net = (x: AudienceObservation) => x.value / (x.context!.slot * x.context!.season * x.context!.competition);
 
 describe('the measures', () => {
   it('are three, each said for what it is, and each kind of release reports only its own', () => {
@@ -81,7 +83,7 @@ describe('a broadcast', () => {
     // Averaged over forty worlds: the effect is a few percent, inside one week's 5% draw either way.
     const second = (gap: number) => {
       let sum = 0;
-      for (let seed = 1; seed <= 40; seed++) sum += see('broadcast', Math.floor(gap / 7) + 1, [ep(1, '2027-01-04', 70), ep(2, addDaysToKey('2027-01-04', gap), 70)], 1, seed).find((x) => x.episode === 2)!.value;
+      for (let seed = 1; seed <= 40; seed++) sum += net(see('broadcast', Math.floor(gap / 7) + 1, [ep(1, '2027-01-04', 70), ep(2, addDaysToKey('2027-01-04', gap), 70)], 1, seed).find((x) => x.episode === 2)!);
       return sum / 40;
     };
     const daily = second(1), weekly = second(7), broken = second(21);
@@ -114,20 +116,36 @@ describe('a streaming release', () => {
 
   it('all at once falls week by week; weekly, the hours come as the episodes do', () => {
     const atOnce = [1, 2, 3, 4].map((n) => ep(n, '2027-01-04'));
-    const w = [1, 2, 3].map((week) => see('streaming', week, atOnce)[0].value);
+    const w = [1, 2, 3].map((week) => net(see('streaming', week, atOnce)[0]));
     expect(w[1]).toBeLessThan(w[0]);
     expect(w[2]).toBeLessThan(w[1]);
     expect(w[1] / w[0]).toBeGreaterThan(STREAMING_DECAY * 0.9);
     expect(w[1] / w[0]).toBeLessThan(STREAMING_DECAY * 1.12);
     const weekly = [ep(1, '2027-01-04'), ep(2, '2027-01-11'), ep(3, '2027-01-18'), ep(4, '2027-01-25')];
-    const first = see('streaming', 1, weekly)[0].value;
+    const first = net(see('streaming', 1, weekly)[0]);
     // One episode is out in the first week, against four: about a quarter of the hours.
     expect(first / w[0]).toBeGreaterThan(0.2);
     expect(first / w[0]).toBeLessThan(0.3);
     // In its second week a new episode arrives while the first fades, so the week holds up better than all-at-once does.
-    expect(see('streaming', 2, weekly)[0].value / first).toBeGreaterThan(w[1] / w[0]);
+    expect(net(see('streaming', 2, weekly)[0]) / first).toBeGreaterThan(w[1] / w[0]);
     // Before anything is out there is nothing to report.
     expect(see('streaming', 1, [ep(1, '2027-02-01')])).toEqual([]);
+  });
+});
+
+describe('what a week stands against', () => {
+  it('a late slot, the season and the week\'s competition each move the figure, and every show that week meets the same week', () => {
+    const shows = [ep(1, '2027-01-04', 70)];
+    const early = observeWeek(7, 'p1', { ...offer('broadcast'), slot: 'any' }, 1, '2027-01-04', shows, 1)[0];
+    const late = observeWeek(7, 'p1', { ...offer('broadcast'), slot: 'late' }, 1, '2027-01-04', shows, 1)[0];
+    expect(late.value / early.value).toBeCloseTo(LATE_SLOT_AUDIENCE, 1);
+    expect([seasonFactor('2027-07-05'), seasonFactor('2027-01-04'), seasonFactor('2027-04-05')]).toEqual([0.88, 1.08, 1]);
+    // Two different shows in the same calendar week meet the same competition; another week draws its own.
+    const other = observeWeek(7, 'p2', { ...offer('broadcast'), id: 'o2' }, 1, '2027-01-04', [ep(1, '2027-01-04', 55)], 1)[0];
+    expect(other.context!.competition).toBe(early.context!.competition);
+    const weeks = new Set(Array.from({ length: 10 }, (_, i) => weekCompetition(7, addDaysToKey('2027-01-04', i * 7))));
+    expect(weeks.size).toBeGreaterThan(5);
+    expect([...weeks].every((x) => x >= 0.85 && x <= 1.15)).toBe(true);
   });
 });
 

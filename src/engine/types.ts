@@ -942,7 +942,12 @@ export type AudienceMetric = 'viewers' | 'hours' | 'views';
  * One reported figure (audiences.ts): the week of the run and its dates, the measure, the figure, whether it is of one
  * episode or the whole title, and how many territories it was out in. It was recorded on the week's last day, as things stood then. Simulated, every one.
  */
-export interface AudienceObservation { week: number; from: string; to: string; metric: AudienceMetric; value: number; scope: 'title' | 'episode'; episode?: number; territories: number }
+/**
+ * `context` (from November 13, 2026): what the week stood against, each as the share of the audience it left. `slot`: a
+ * late slot on television; `season`: the time of year; `competition`: the week's other shows, the same for every title
+ * shown that week. Weeks recorded before then have none.
+ */
+export interface AudienceObservation { week: number; from: string; to: string; metric: AudienceMetric; value: number; scope: 'title' | 'episode'; episode?: number; territories: number; context?: { slot: number; season: number; competition: number } }
 
 /** The routes a Release Plan can intend (release-plan.ts PLAN_ROUTES). */
 export type PlanRoute = 'festival-first' | 'partner-theatrical' | 'distributor-sales' | 'broadcast-licence' | 'streaming-licence' | 'transactional' | 'direct';

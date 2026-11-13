@@ -1,4 +1,5 @@
 import { addStage, openParts, partMethods, partName, partScenes, removeStage, samePart, stageRefusal, stagesOf } from '../engine/parts';
+import { gradeOf } from '../engine/grades';
 import { Fragment, useState } from 'react';
 import { theBacker } from '../engine/backer-words';
 import { setShotPlan } from '../engine/takes-actions';
@@ -151,11 +152,12 @@ function CandidateList({ p, roleId, characterId, method, stage, onDone }: { p: P
                 {/* A person from the film catalog has their photo here where the pictures are installed; nobody else has a face drawn for them. */}
                 {isReal(c.id) && <Picture subject={`person:${tmdbIdOf(c.id)}`} name={c.name} size="thumb" />}
                 <div className="grow">
-                  <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{isReal(c.id) && <> <span className="chip chip-info">From The Film Catalog</span></>}{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
+                  <strong>{c.name}</strong> <span className="chip" title={gradeOf(g, c, roleId).madeOf.join(' ')}>Grade {gradeOf(g, c, roleId).grade}</span> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{isReal(c.id) && <> <span className="chip chip-info">From The Film Catalog</span></>}{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
                   {isReal(c.id)
                     ? <div className="dim">{c.samples}{c.born ? ` Age ${personAge(c, today)}.` : ' Date of birth not recorded.'}{plays(c) ? ` In this story they play ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''} Languages, background and nationality aren't recorded, and none is assumed. In this story they ask {money(c.dayRate)} a day.</div>
                     : <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{` Age ${personAge(c, today)}.`}{plays(c) ? ` Plays ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>}
                   {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip">Shares A Background: {sharedHeritages(g, p, characterId, c.id).join(', ')}</span></div>}
+                  <details className="dim small"><summary>What Grade {gradeOf(g, c, roleId).grade} Is Made Of</summary><ul>{gradeOf(g, c, roleId).madeOf.map((m) => <li key={m}>{m}</li>)}<li>{gradeOf(g, c, roleId).rate}</li></ul></details>
                   {!av.ok && <div className="dim" style={{ color: 'var(--warning)' }}>{av.reason}</div>}
                   {willingness(g, c.id).reason && <div className="dim">{willingness(g, c.id).reason}</div>}
                   {notes.map((n) => <div key={n} className="dim" style={{ color: 'var(--warning)' }}>{n}</div>)}

@@ -108,17 +108,42 @@ survives a reload, and has a test that fails without it. The order of work is at
 ## 7. Outside Work And The Living Industry
 
 - **Exists.** `jobs.ts` (outside jobs with agents, pay and credit, J10), `industry.ts` (series renewals after the records
-  end), `studios.ts` (simulated films at recorded paces), `continuation.ts` (a commissioner's season decision).
-- **Gaps.** Jobs come from ten made-up production titles and six company names (`jobs.ts` PRODUCTIONS, COMPANIES).
-  Writing and directing jobs need a released film. No persistent productions with their own schedules and casts.
+  end), `studios.ts` (simulated films at recorded paces), `continuation.ts` (a commissioner's season decision, renewal
+  offers and cancellation).
+- **Done on November 13, 2026.**
+  - **Productions that persist.** `productions.ts` keeps a slate of other people's productions in each place:
+    - each is made once from the seed and kept;
+    - each has a company: a followed studio where the world has them, or one of a recurring roster;
+    - each has a kind, genre, parts, shooting dates, a wrap and a release;
+    - the slate is topped up as productions wrap, never reset;
+    - each comes out on its date and is received (simulated).
+  - **Jobs.** A job is on one of those productions, inside its shooting days. It names the part, episode, rewrite or
+    second unit, the material to prepare from, and what is asked. Its rate can be asked up once.
+  - **Results count.** How the work the player did was received weighs on later offers.
+  - **Entry by evidence.** Writing opens on an approved script as a sample. Directing opens on a delivered project or
+    on two jobs on others' sets.
+- **Evidence.** `tests/productions.test.ts` (6 tests), `tests/jobs.test.ts`, and `e2e/j10.spec.ts` and
+  `e2e/jobs.spec.ts`, on desktop and phone.
+- **Still open.** Productions are local to the place the player is in. Delays and cancellations of others'
+  productions aren't modelled.
 
 ## 8. Metrics And Historical Continuation
 
 - **Exists.** Simulated weekly cinema results with screens and holdovers (`box-office.ts`), broadcast and streaming
   audiences (`audiences.ts`), recorded versus simulated world events (`catalog/world.ts historicalRecord`), the record
   book.
-- **Gaps.** No recorded box office or audience figures are imported; the record book doesn't separate profit and
-  player earnings from gross and rental. Weekly ratings don't depend on a week's competition and timeslot.
+- **Done on November 13, 2026.**
+  - **A TV week's context.** Each week's audience stands against three things, each kept on the observation and shown
+    in the weekly table:
+    - the timeslot: a late slot keeps 60%;
+    - the season: summer 88%, winter 108%;
+    - the week's competition, the same for every show that week.
+  - **The record book's money kept apart.** Ticket sales, admissions, film rental, the project's income, its cost, its
+    profit and what came to the player are each read from the ledger and the weeks.
+- **Evidence.** `tests/audiences.test.ts` (a test of the week's context, and older tests compared net of it) and
+  `tests/box-office.test.ts` (the money kept apart).
+- **Data-limited.** No recorded box office or audience figures are imported. TMDB's catalog holds no weekly figures,
+  and none is invented. Simulated figures are labelled everywhere they show.
 
 ## 9. Money And Equipment Approvals
 

@@ -16,7 +16,7 @@ export function RecordBookCard() {
       <h2 id="book-h">Record Book</h2>
       {rows.length ? (
         <>
-          <p className="dim">Your films in cinemas, by ticket sales. Simulated by the game, and only what happened in this story: no real box office is in this book. Ticket sales are not earnings; each film's Release page shows who kept what. Equal figures share a place.</p>
+          <p className="dim">Your films in cinemas, by ticket sales. Simulated by the game, and only what happened in this story: no real box office is in this book. Ticket sales are not earnings: under each film are the film rental, the project's income, what it cost, its profit and what came to you, each kept apart. Equal figures share a place.</p>
           <ul className="list">
             {rows.map((r) => (
               <li key={r.projectId}>
@@ -24,6 +24,14 @@ export function RecordBookCard() {
                 <div className="dim">
                   Opening week {money(r.opening)} ({place(r.rank.opening)}). Lifetime {money(r.lifetime)} ({place(r.rank.lifetime)}) from {r.admissions.toLocaleString('en-US')} admissions over {plural(r.weeks, 'week')}{r.runs > 1 ? ` and ${r.runs} runs` : ''}. Best week {money(r.best.gross)}, week {r.best.week}.{r.settled ? '' : ' Some weeks are provisional and can still move.'}
                 </div>
+                <dl className="kv small" aria-label={`${r.title}: The Money`}>
+                  <dt>Ticket Sales</dt><dd>{money(r.lifetime)}</dd>
+                  <dt>Film Rental</dt><dd>{money(r.money.rental)}, what the cinemas passed on</dd>
+                  <dt>The Project's Income</dt><dd>{money(r.money.income)}, from every deal</dd>
+                  <dt>Spent Making It</dt><dd>{money(r.money.cost)}</dd>
+                  <dt>Profit</dt><dd>{money(r.money.profit)}</dd>
+                  <dt>Yours</dt><dd>{money(r.money.yours)}, taken home or to your company</dd>
+                </dl>
               </li>
             ))}
           </ul>

@@ -174,6 +174,25 @@ describe('the record book', () => {
   });
 });
 
+describe('the record book\'s money', () => {
+  it('keeps ticket sales, rental, the project\'s income, cost, profit and what came to you apart, each from the ledger', () => {
+    const s = startLife('bo-money');
+    const p = buildProject(s, { title: 'Alder', format: 'short', medium: 'live-action', scenario: 'micro' }, [{ name: 'Ada', patch: { roleSize: 'lead' } }], [{ place: 'Pier', intExt: 'INT', chars: ['Ada'], minutes: 2 }]);
+    p.offers = [{ ...deal(), id: 'run', weeks: [{ week: 1, ...weekDates('2026-12-18', 1), territories: 1, rental: 10_000, status: 'final' }] }];
+    // Labelled fixtures: what the ledger would hold after the shoot, a backer repaid, and income taken home.
+    p.revenue = 30_000;
+    p.obligations.push(
+      { id: 'o1', label: 'Crew', category: 'crew', amount: 12_000, state: 'settled', settled: 12_000, postings: [] },
+      { id: 'o2', label: 'Repaid To A Backer', category: 'finance', amount: 5_000, state: 'settled', settled: 5_000, postings: [] },
+      { id: 'o3', label: 'Taken Home', category: 'finance', amount: 4_000, state: 'settled', settled: 4_000, ref: 'transfer:home-th1:earnings', postings: [] },
+      { id: 'o4', label: 'Taken Home', category: 'finance', amount: 1_000, state: 'settled', settled: 1_000, ref: 'transfer:home-th2:capital', postings: [] },
+    );
+    const [row] = recordBook(s);
+    expect(row.lifetime).toBe(20_000); // ticket sales: the rental is half of them
+    expect(row.money).toEqual({ rental: 10_000, income: 30_000, cost: 12_000, profit: 18_000, yours: 4_000 }); // your own unspent money back isn't earnings
+  });
+});
+
 describe('screens and holdovers', () => {
   it('a run opens on the screens its guarantee pays for, wider in more territories, within bounds', () => {
     expect(openingScreens(40_000, 1)).toBe(100);

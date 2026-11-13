@@ -25,7 +25,7 @@ import { roleLabel } from '../engine/people';
 import { applyFix, dailies } from '../engine/directing';
 import { isDirecting2 } from '../engine/takes';
 import { contentSummary, cutConsequences, placementExplained, watershedRule } from '../engine/script-explain';
-import type { CapturePart, Credit, Edition, EditionEntry, Format, GameState, Project, ReleaseRecord } from '../engine/types';
+import type { AudienceObservation, CapturePart, Credit, Edition, EditionEntry, Format, GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, NumberField, PageHead, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { ReleaseCinemas } from './Cinemas';
@@ -1262,6 +1262,13 @@ function WeeksInCinemas({ o }: { o: Project['offers'][number] }) {
  * What a broadcast or streaming release reported of its audience, week by week (engine/audiences.ts). Each measure is
  * said for what it is, none is turned into another, and every figure is the game's own simulation.
  */
+/** A week's slot, season and competition, as what each did to the figure. */
+function weekWords(c: AudienceObservation['context']): string {
+  if (!c) return 'Not recorded';
+  const pct = (x: number) => `${x >= 1 ? '+' : '−'}${Math.round(Math.abs(x - 1) * 100)}%`;
+  return [c.slot !== 1 ? `A late slot, ${pct(c.slot)}` : null, c.season !== 1 ? `${c.season < 1 ? 'Summer' : 'Winter'}, ${pct(c.season)}` : null, `${c.competition < 0.95 ? 'A crowded week' : c.competition > 1.05 ? 'A quiet week' : 'An ordinary week'}, ${pct(c.competition)}`].filter(Boolean).join('; ');
+}
+
 function WeeklyAudience({ o }: { o: Project['offers'][number] }) {
   const rows = o.audience ?? [];
   const n = (x: number) => x.toLocaleString('en-US');
@@ -1273,7 +1280,7 @@ function WeeklyAudience({ o }: { o: Project['offers'][number] }) {
       <ul className="dim">{routeMetrics(o.route).map((m) => <li key={m}><strong>{METRICS[m].label}:</strong> {METRICS[m].says}</li>)}</ul>
       <div className="table-wrap">
         <table className="data" aria-label={`Weekly Audience, ${o.distributor}`}>
-          <thead><tr><th>Week</th><th>Dates</th><th>Of</th><th>Measure</th><th>Figure</th><th>Territories Open</th></tr></thead>
+          <thead><tr><th>Week</th><th>Dates</th><th>Of</th><th>Measure</th><th>Figure</th><th>Territories Open</th><th>What The Week Stood Against</th></tr></thead>
           <tbody>
             {rows.map((r) => (
               <tr key={`${r.week}:${r.metric}:${r.episode ?? 0}`}>
@@ -1283,6 +1290,7 @@ function WeeklyAudience({ o }: { o: Project['offers'][number] }) {
                 <td data-label="Measure">{METRICS[r.metric].label}</td>
                 <td data-label="Figure">{n(r.value)}</td>
                 <td data-label="Territories Open">{r.territories}</td>
+                <td data-label="What The Week Stood Against">{weekWords(r.context)}</td>
               </tr>
             ))}
           </tbody>
