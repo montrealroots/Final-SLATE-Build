@@ -30,7 +30,7 @@ export default defineConfig({
     { name: 'phone', use: { ...devices['Desktop Chrome'], viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, deviceScaleFactor: 1 } },
     // WebKit emulation of the user's target phones. Emulation only: not physical-device or real Safari verification.
     { name: 'iphone-15-plus', testMatch: /(ui-coverage|live-action|devices|creation|focus|season|career|awards|readers|title-input)\.spec\.ts/, use: { ...devices['iPhone 15 Plus'], ...webkitLaunch } },
-    { name: 'iphone-15-pro-max', testMatch: /(ui-coverage|live-action|devices|creation|focus|phone-layout|connected|title-input|journey-e|decisions|catalog|children|foundation|data-packs|creative-ideas|real-people|craft|destinations|layout|stories|characters|picture-library|sources|studio-pitch|casting-director|line-producer|representation|v5-first-look|v5-release-plan|v5-music-catalog|v5-money-equipment)\.spec\.ts/, use: { ...devices['iPhone 15 Pro Max'], ...webkitLaunch } },
+    { name: 'iphone-15-pro-max', testMatch: /(ui-coverage|live-action|devices|creation|focus|phone-layout|connected|title-input|journey-e|decisions|catalog|children|foundation|data-packs|creative-ideas|real-people|craft|destinations|layout|stories|characters|picture-library|sources|studio-pitch|casting-director|line-producer|representation|v5-first-look|v5-release-plan|v5-music-catalog|v5-money-equipment|v6-history)\.spec\.ts/, use: { ...devices['iPhone 15 Pro Max'], ...webkitLaunch } },
     { name: 'iphone-15-pro-max-landscape', testMatch: /(devices|phone-layout)\.spec\.ts/, use: { ...devices['iPhone 15 Pro Max landscape'], ...webkitLaunch } },
   ],
 });

@@ -5264,6 +5264,13 @@
     }
    ],
    "official": {
+    "2026": {
+     "start": "2026-03-15",
+     "end": "2026-03-15",
+     "label": "98th Academy Awards",
+     "source": "https://www.oscars.org/oscars/ceremonies/2026",
+     "checked": "2026-11-13"
+    },
     "2027": {
      "start": "2027-03-14",
      "end": "2027-03-14",
@@ -5562,6 +5569,13 @@
     ]
    },
    "official": {
+    "2026": {
+     "start": "2026-01-11",
+     "end": "2026-01-11",
+     "label": "83rd Golden Globe Awards",
+     "source": "https://goldenglobes.com/articles/one-battle-after-another-and-hamnet-take-best-picture-prizes-at-golden-globes/",
+     "checked": "2026-11-13"
+    },
     "2027": {
      "start": "2027-01-10",
      "end": "2027-01-10",
