@@ -45,6 +45,9 @@ Today's commits listed above, and others, also fixed problems the work turned up
 - The brief's own words read wrong for Red Dead Redemption 2, and a sweep of all 643 works found more (Hamlet led by
   Laertes, a logline starting "He", pronouns not the character's). Fixed, with a test over every work
   (`tests/brief-language.test.ts`); what is left is in `RESUME-HERE.md`.
+- After #86, the owner asked for the rest. The rival comes from what the story shows, or there is none; works with too
+  little story are read from their record; undecided scenes are INT/EXT. `RESUME-HERE.md` has the numbers and what's
+  left.
 
 **Checks.** `npm run check` exits 0, with 143 test files and 1,205 tests, the typecheck, the build and the size budget.
 

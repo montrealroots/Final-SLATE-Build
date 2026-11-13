@@ -33,9 +33,6 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     found and fixed one defect. `docs/v5/JOURNEYS.md` says where each of the ten journeys stands.
 - **Still open** (`docs/v5/JOURNEYS.md`, `docs/v5/LEDGER.md`):
   1. A physical phone test.
-  2. In adapted briefs: where the story shows no one against the lead, the rival is the next most-named person
-     (Moby-Dick sets Ahab against Queequeg); a scene whose words name neither inside nor outside takes the arc's guess;
-     126 works too short of story still take a genre from their medium.
 - **Merged.** PR #86 was squash-merged into `main` on November 13, 2026 as `d1a103f`, from `df2ee1c`, with CI green on
   that head: `checks` and all six journey runs. `main` was merged back into the branch with `-s ours` (the trees were
   the same). The final report is `docs/v5/REPORT.md`. New work starts a new pull request from this branch.
@@ -47,6 +44,24 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **The remaining brief issues (the owner: "Fix the Moby-Dick rival and the remaining brief issues").** After #86:
+  - Who stands against the lead needs the story to show it: against them in more sentences than beside them, with
+    harpooning, biting, dragging, torturing, framing and arresting counted. A character is also named by how the
+    story introduces them ("Moby Dick, the white whale" makes "the whale" his), and a creature recorded by what it is
+    ("Frankenstein's monster") by "the monster", "the creature" or "the beast". A possessive isn't a name.
+    Moby-Dick is Ahab against Moby Dick, Frankenstein Victor against the monster, Hamlet against Claudius, Romeo
+    against Tybalt, Grand Theft Auto III Claude against Catalina.
+  - Where the story sets no one against the lead, no one is made the antagonist: the next person is a supporting
+    part, the relationship is "undecided", and the conflict is the lead's own (Pride and Prejudice, Nineteen
+    Eighty-Four). 433 of 643 film briefs have no antagonist this way, 210 have one.
+  - A work with too little story is read from its record (`recordGenres`): its recorded genres, its description and
+    its article's opening, then its subjects. 66 works are read this way; 60 still come from their medium, with
+    nothing recorded that names a genre (`docs/v5/GENRES.md`).
+  - A scene whose words, and its development's, name neither inside nor outside is INT/EXT, and the brief says how
+    many: 1,553 of 3,592 told scenes across the catalog. Riding, fleeing and fighting count as outside; talking,
+    writing and dining as inside.
+  - Known and left: Nineteen Eighty-Four's O'Brien is still Winston's ally (the story's sentences don't show the
+    betrayal); Dracula's lead is Mina Harker.
 - **Genres for adapted works (the owner: "in no way is 'GTA 3' an adventure").** A work whose recorded genres don't
   map (220 of 643, most video games, whose records name how they are played) was given a genre by its medium alone.
   `src/engine/story-genre.ts` now reads the work's summary and story for genre words (cartel, mafia, gang: gangster),

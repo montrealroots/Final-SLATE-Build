@@ -37,25 +37,35 @@ any other field. Recorded genres that map still lead, as before.
 | | Works |
 |---|---|
 | A recorded genre maps (unchanged) | 423 |
-| Read from the story (new) | 94 |
-| Still proposed from the medium | 126 |
+| Read from the story | 94 |
+| Read from the record: its recorded genres, its description, its article's opening, its subjects | 66 |
+| Still proposed from the medium | 60 |
 
-The 126 works still proposed from their medium have too little story recorded to read. Most are:
+The record reading was added later the same day, after the owner asked for the remaining brief issues to be fixed
+(`recordGenres` in `src/engine/story-genre.ts`). It reads what Wikidata and the article's opening say the work is:
 
-- games with no story, such as The Sims, Minecraft and Candy Crush Saga;
-- gag and slice-of-life webcomics;
-- poems, hymns and fables.
+- "theatre of the absurd" (Waiting for Godot) is absurdist;
+- "fable" (Aesop) is a fairy tale;
+- "an American zombie apocalypse comic book series" (The Walking Dead) is zombie;
+- "life simulation game" (The Sims) is slice of life;
+- "first-person shooter" is action.
 
-Their brief says so. A video game among them is still proposed as an adventure. That is wrong for some of them, and the
-player is told it came from the medium.
+Each brief quotes the words it was read from.
 
-Some readings are arguable. The game can't settle these from the words alone:
+The 60 works still proposed from their medium have nothing recorded that names a genre. Most are:
+
+- prayers, hymns and national anthems;
+- gag webcomics with no stated genre;
+- recent short works with no summary;
+- games with no story, such as Candy Crush Saga.
+
+Their brief says the genre came from the medium.
+
+Some readings are arguable, and each shows what it was read from:
 
 - Undertale reads as horror (from its monsters);
 - Far Cry 5 reads as war;
-- The Picture of Dorian Gray reads as a romance.
-
-These are game readings, and each one shows what it was read from.
+- Killing Stalking reads as romance (it is recorded as "boys' love").
 
 ## Every Work Not Given A Genre By Its Record
 
@@ -155,83 +165,113 @@ These are game readings, and each one shows what it was read from.
 | Red Dead Redemption 2 | video game | western, gangster | Its story |
 | The Elder Scrolls IV: Oblivion | video game | war, thriller | Its story |
 | Undertale | video game | horror | Its story |
-| Asterix | comic | action | Its medium |
-| Hetalia: Axis Powers | comic | action | Its medium |
+| Asterix | comic | alternate-history | Its record |
+| Hetalia: Axis Powers | comic | romance | Its record |
+| Ouran High School Host Club | comic | romantic-comedy, comedy, coming-of-age | Its record |
+| Sailor Moon | comic | fantasy | Its record |
+| Teenage Mutant Ninja Turtles | comic | martial-arts | Its record |
+| The Walking Dead | comic | zombie | Its record |
+| Weekly Shōnen Jump | comic | comedy | Its record |
+| Classroom of the Elite | light novel | psychological-thriller, coming-of-age | Its record |
+| Date A Live | light novel | romantic-comedy | Its record |
+| High School DxD | light novel | romantic-comedy, comedy, supernatural | Its record |
+| Calamity | novel | superhero | Its record |
+| Demian | novel | coming-of-age | Its record |
+| Dream of the Red Chamber | novel | domestic-drama | Its record |
+| Firefight | novel | superhero | Its record |
+| Germinal | novel | social-realism | Its record |
+| Martin Eden | novel | coming-of-age | Its record |
+| Songs of the Dead | novel | fantasy | Its record |
+| Steelheart | novel | superhero | Its record |
+| A Simple Thinking About Blood Type | online | comedy | Its record |
+| Ctrl+Alt+Del | online | comedy | Its record |
+| Cyanide and Happiness | online | satire | Its record |
+| Killing Stalking | online | romance | Its record |
+| Looking for Group | online | fantasy | Its record |
+| Lore Olympus | online | romance | Its record |
+| Penny Arcade | online | satire, comedy | Its record |
+| Polandball | online | satire | Its record |
+| Return of the Blossoming Blade | online | wuxia | Its record |
+| Sabrina Online | online | comedy | Its record |
+| The Gamer | online | fantasy | Its record |
+| The Girl Downstairs | online | romance | Its record |
+| xkcd | online | comedy, romance | Its record |
+| The Frogs | play | comedy | Its record |
+| Waiting for Godot | play | absurdist | Its record |
+| Bhagavad Gita | poem | epic | Its record |
+| Cantar de Mio Cid | poem | epic | Its record |
+| Jabberwocky | poem | absurdist | Its record |
+| The Backrooms | short story | horror | Its record |
+| The Boy Who Cried Wolf | short story | fairy-tale | Its record |
+| The Fox and the Crow | short story | fairy-tale | Its record |
+| The Fox and the Grapes | short story | fairy-tale | Its record |
+| The Lion and the Mouse | short story | fairy-tale | Its record |
+| The Old Man and the Sea | short story | sea-adventure | Its record |
+| The Three Little Pigs | short story | fairy-tale | Its record |
+| The Tortoise and the Hare | short story | fairy-tale | Its record |
+| Age of Empires | video game | war, historical-fiction | Its record |
+| Age of Empires II: The Age of Kings | video game | war, historical-fiction | Its record |
+| Clash of Clans | video game | war | Its record |
+| Grand Theft Auto VI | video game | action | Its record |
+| League of Legends | video game | action | Its record |
+| Minecraft | video game | survival | Its record |
+| Space Invaders | video game | action | Its record |
+| Spore | video game | war, slice-of-life | Its record |
+| Stardew Valley | video game | slice-of-life | Its record |
+| Super Mario 64 | video game | adventure | Its record |
+| Super Mario Bros. | video game | adventure | Its record |
+| Super Mario Bros. 3 | video game | adventure | Its record |
+| Tamagotchi | video game | slice-of-life | Its record |
+| Team Fortress 2 | video game | action | Its record |
+| The Sims | video game | slice-of-life | Its record |
+| The Sims 2 | video game | slice-of-life | Its record |
+| The Sims 3 | video game | slice-of-life | Its record |
+| The Sims 4 | video game | slice-of-life | Its record |
+| Travian | video game | war | Its record |
+| Valorant | video game | action | Its record |
+| War Thunder | video game | war | Its record |
+| World of Tanks | video game | war | Its record |
 | Lucky Luke | comic | action | Its medium |
-| Ouran High School Host Club | comic | action | Its medium |
-| Sailor Moon | comic | action | Its medium |
-| Teenage Mutant Ninja Turtles | comic | action | Its medium |
-| The Walking Dead | comic | action | Its medium |
-| Weekly Shōnen Jump | comic | action | Its medium |
-| Classroom of the Elite | light novel | fantasy | Its medium |
-| Date A Live | light novel | fantasy | Its medium |
 | Durarara!! | light novel | fantasy | Its medium |
 | Eromanga Sensei | light novel | fantasy | Its medium |
-| High School DxD | light novel | fantasy | Its medium |
-| Calamity | novel | drama | Its medium |
 | Children of the Nameless | novel | drama | Its medium |
 | Defiant | novel | drama | Its medium |
 | Deleted Scenes from the 2002 Version of The Way of Kings | novel | drama | Its medium |
-| Demian | novel | drama | Its medium |
-| Dream of the Red Chamber | novel | drama | Its medium |
-| Firefight | novel | drama | Its medium |
 | Four Great Classical Novels | novel | drama | Its medium |
-| Germinal | novel | drama | Its medium |
 | Lies of the Beholder | novel | drama | Its medium |
-| Martin Eden | novel | drama | Its medium |
 | Moment Zero | novel | drama | Its medium |
 | Secret History | novel | drama | Its medium |
 | Shadows for Silence in the Forests of Hell | novel | drama | Its medium |
 | Sixth of the Dusk | novel | drama | Its medium |
 | Skin Deep | novel | drama | Its medium |
-| Songs of the Dead | novel | drama | Its medium |
-| Steelheart | novel | drama | Its medium |
 | Steppenwolf | novel | drama | Its medium |
 | The House of the Dead | novel | drama | Its medium |
 | There Are Still Stories to Tell | novel | drama | Its medium |
 | Thus Spoke Zarathustra | novel | drama | Its medium |
 | 100 Nichi Go ni Shinu Wani | online | drama | Its medium |
-| A Simple Thinking About Blood Type | online | drama | Its medium |
 | All of Us Are Dead | online | drama | Its medium |
 | Along with the Gods | online | drama | Its medium |
 | Category:2000s webcomics | online | drama | Its medium |
-| Ctrl+Alt+Del | online | drama | Its medium |
 | Cupid's Chocolate | online | drama | Its medium |
-| Cyanide and Happiness | online | drama | Its medium |
 | Dinosaur Comics | online | drama | Its medium |
 | Doctor Elise | online | drama | Its medium |
-| Killing Stalking | online | drama | Its medium |
-| Looking for Group | online | drama | Its medium |
-| Lore Olympus | online | drama | Its medium |
 | Loss | online | drama | Its medium |
 | Ozy and Millie | online | drama | Its medium |
-| Penny Arcade | online | drama | Its medium |
 | Piled Higher and Deeper | online | drama | Its medium |
 | Please Take My Brother Away! | online | drama | Its medium |
-| Polandball | online | drama | Its medium |
-| Return of the Blossoming Blade | online | drama | Its medium |
-| Sabrina Online | online | drama | Its medium |
 | Sarah's Scribbles | online | drama | Its medium |
 | Tawawa on Monday | online | drama | Its medium |
-| The Gamer | online | drama | Its medium |
-| The Girl Downstairs | online | drama | Its medium |
 | The Perry Bible Fellowship | online | drama | Its medium |
 | The Sound of Heart | online | drama | Its medium |
 | User Friendly | online | drama | Its medium |
 | VG Cats | online | drama | Its medium |
 | Why Raeliana Ended Up at the Duke's Mansion | online | drama | Its medium |
 | ZooPhobia | online | drama | Its medium |
-| xkcd | online | drama | Its medium |
 | Measure for Measure | play | drama | Its medium |
-| The Frogs | play | drama | Its medium |
-| Waiting for Godot | play | drama | Its medium |
 | Angelus | poem | drama | Its medium |
-| Bhagavad Gita | poem | drama | Its medium |
-| Cantar de Mio Cid | poem | drama | Its medium |
 | Georgics | poem | drama | Its medium |
 | God Defend New Zealand | poem | drama | Its medium |
 | Hey, Slavs | poem | drama | Its medium |
-| Jabberwocky | poem | drama | Its medium |
 | Lord's Prayer | poem | drama | Its medium |
 | Psalms | poem | drama | Its medium |
 | Shakespeare's sonnets | poem | drama | Its medium |
@@ -243,41 +283,11 @@ These are game readings, and each one shows what it was read from.
 | I Hate Dragons | short story | drama | Its medium |
 | Mabinogion | short story | drama | Its medium |
 | Probability Approaching Zero | short story | drama | Its medium |
-| The Backrooms | short story | drama | Its medium |
-| The Boy Who Cried Wolf | short story | drama | Its medium |
-| The Fox and the Crow | short story | drama | Its medium |
-| The Fox and the Grapes | short story | drama | Its medium |
-| The Lion and the Mouse | short story | drama | Its medium |
-| The Old Man and the Sea | short story | drama | Its medium |
 | The Overcoat | short story | drama | Its medium |
-| The Three Little Pigs | short story | drama | Its medium |
-| The Tortoise and the Hare | short story | drama | Its medium |
 | Agar.io | video game | adventure | Its medium |
-| Age of Empires | video game | adventure | Its medium |
-| Age of Empires II: The Age of Kings | video game | adventure | Its medium |
 | Candy Crush Saga | video game | adventure | Its medium |
-| Clash of Clans | video game | adventure | Its medium |
-| Grand Theft Auto VI | video game | adventure | Its medium |
-| League of Legends | video game | adventure | Its medium |
-| Minecraft | video game | adventure | Its medium |
 | Pokémon Go | video game | adventure | Its medium |
 | Roblox | video game | adventure | Its medium |
 | Second Life | video game | adventure | Its medium |
-| Space Invaders | video game | adventure | Its medium |
-| Spore | video game | adventure | Its medium |
-| Stardew Valley | video game | adventure | Its medium |
 | Subway Surfers | video game | adventure | Its medium |
-| Super Mario 64 | video game | adventure | Its medium |
-| Super Mario Bros. | video game | adventure | Its medium |
-| Super Mario Bros. 3 | video game | adventure | Its medium |
-| Tamagotchi | video game | adventure | Its medium |
-| Team Fortress 2 | video game | adventure | Its medium |
 | Terraria | video game | adventure | Its medium |
-| The Sims | video game | adventure | Its medium |
-| The Sims 2 | video game | adventure | Its medium |
-| The Sims 3 | video game | adventure | Its medium |
-| The Sims 4 | video game | adventure | Its medium |
-| Travian | video game | adventure | Its medium |
-| Valorant | video game | adventure | Its medium |
-| War Thunder | video game | adventure | Its medium |
-| World of Tanks | video game | adventure | Its medium |

@@ -21,7 +21,7 @@
 /** Words that turn a story: something found out, won, lost, ended or begun. Game calibration, read whole-word. */
 export const TURNS = /\b(discover(s|ed)?|learn(s|ed)?|realis(es|ed)|realiz(es|ed)|reveal(s|ed)?|find(s)? out|found out|kill(s|ed)?|die(s|d)?|dead|murder(s|ed)?|escape(s|d)?|betray(s|ed)?|decide(s|d)?|refuse(s|d)?|confront(s|ed)?|defeat(s|ed)?|destroy(s|ed)?|captur(es|ed)|arrest(s|ed)?|rescue(s|d)?|marr(y|ies|ied)|flee(s)?|fled|attack(s|ed)?|abandon(s|ed)?|return(s|ed)? (to|home)|leave(s)? for good|confess(es|ed)?|wins?|won|loses|lost|vow(s|ed)?|agree(s|d)? to|sets out|set out|begins|traps?|trapped|trick(s|ed)?|recruit(s|ed)?|invite(s|d)?|summon(s|ed)?|hire(s|d)?|arrive(s|d)?)\b/i;
 /** Words for acting against someone. */
-const AGAINST = /\b(against|abandon(s|ed)?|double-cross(es|ed)?|turn(s|ed)? on|accuse(s|d)?|execute(s|d)?|shoot(s)?|shot|kill(s|ed)?|attack(s|ed)?|betray(s|ed)?|captur(es|ed)|imprison(s|ed)?|threaten(s|ed)?|fight(s)?|fought|defeat(s|ed)?|murder(s|ed)?|hunt(s|ed)?|chase(s|d)?|trap(s|ped)?|deceive(s|d)?|confront(s|ed)?|oppose(s|d)?|rival|enemy|enemies)\b/i;
+const AGAINST = /\b(against|tortur(es|ed)|interrogat(es|ed)|arrest(s|ed)?|frames?|framed|bites?|bit|harpoon(s|ed)?|smash(es|ed)?|sinks?|sank|ram(s|med)?|drag(s|ged)?|pursue(s|d)?|vengeance|revenge|abandon(s|ed)?|double-cross(es|ed)?|turn(s|ed)? on|accuse(s|d)?|execute(s|d)?|shoot(s)?|shot|kill(s|ed)?|attack(s|ed)?|betray(s|ed)?|captur(es|ed)|imprison(s|ed)?|threaten(s|ed)?|fight(s)?|fought|defeat(s|ed)?|murder(s|ed)?|hunt(s|ed)?|chase(s|d)?|trap(s|ped)?|deceive(s|d)?|confront(s|ed)?|oppose(s|d)?|rival|enemy|enemies)\b/i;
 /** Words for acting alongside someone. */
 const ALONGSIDE = /\b(help(s|ed)?|join(s|ed)?|rescue(s|d)?|marr(y|ies|ied)|befriend(s|ed)?|ally|allies|friend|together|accompan(y|ies|ied)|travel(s|led)? with|protect(s|ed)?|save(s|d)?|love(s|d)?|guide(s|d)?)\b/i;
 /**
@@ -172,9 +172,11 @@ export function readStory(paragraphs: string[], cast: Cast[], lead: string | nul
   // A rival or an ally only on clear evidence: at least two sentences of it, and twice as many as of the other kind.
   // Sentences don't say who does what to whom, so a weaker reading is left to the proposal (Nineteen Eighty-Four read
   // Julia as the rival and Big Brother as the ally until November 13, 2026).
-  const by = (f: (x: { against: number; alongside: number }) => [number, number]) => Object.entries(together).filter(([, v]) => { const [a, b] = f(v); return a >= 2 && a >= 2 * b; }).sort((x, y) => f(y[1])[0] - f(x[1])[0])[0]?.[0] ?? null;
-  const rival = by((v) => [v.against, v.alongside]);
-  const ally = by((v) => [v.alongside, v.against]);
+  const by = (f: (x: { against: number; alongside: number }) => [number, number], clear: (a: number, b: number) => boolean) => Object.entries(together).filter(([, v]) => { const [a, b] = f(v); return a >= 2 && clear(a, b); }).sort((x, y) => f(y[1])[0] - f(x[1])[0])[0]?.[0] ?? null;
+  // Against the lead in more sentences than beside them (from November 13, 2026; until then twice as many, which missed
+  // Catalina, who shoots Claude in Grand Theft Auto III, and the whale that drags Ahab to his death).
+  const rival = by((v) => [v.against, v.alongside], (a, b) => a > b);
+  const ally = by((v) => [v.alongside, v.against], (a, b) => a >= 2 * b);
   return { developments: devs, rival, ally: ally !== rival ? ally : null, together };
 }
 
@@ -271,11 +273,18 @@ export const PURPOSE: Record<Role, string> = {
  */
 const OUTSIDE = ['street', 'streets', 'road', 'field', 'fields', 'forest', 'woods', 'river', 'sea', 'ocean', 'shore', 'beach', 'desert', 'mountain', 'mountains', 'battlefield', 'battle', 'ranch', 'ferry', 'ship', 'boat', 'train', 'heist', 'shootout', 'ambush', 'chase', 'storm', 'garden', 'park', 'bridge', 'village', 'harbour', 'harbor', 'island', 'jungle', 'swamp', 'camp', 'outside', 'rooftop', 'horseback', 'sails', 'trench', 'front', 'graveyard', 'cemetery', 'square', 'docks', 'farm'];
 const INSIDE = ['room', 'house', 'home', 'office', 'apartment', 'hall', 'bar', 'saloon', 'church', 'prison', 'cell', 'hospital', 'palace', 'mansion', 'laboratory', 'chamber', 'bedroom', 'kitchen', 'ballroom', 'restaurant', 'hotel', 'inside', 'classroom', 'courtroom', 'library', 'study', 'castle', 'party', 'dinner', 'ball', 'facility', 'bunker', 'vault', 'bank', 'casino', 'club', 'theatre', 'theater', 'shop', 'school'];
+const DONE_OUTSIDE = ['drive', 'drives', 'drove', 'ride', 'rides', 'rode', 'flee', 'flees', 'fled', 'chase', 'chases', 'chased', 'race', 'races', 'fight', 'fights', 'fought', 'sail', 'sails', 'sailed', 'march', 'marches', 'marched', 'hunt', 'hunts', 'hunted', 'travels', 'travelled', 'traveled', 'journey', 'journeys', 'escape', 'escapes', 'escaped', 'shootout', 'battles', 'sights'];
+const DONE_INSIDE = ['talks', 'talked', 'tells', 'told', 'confesses', 'confessed', 'writes', 'wrote', 'reads', 'letter', 'dines', 'dined', 'discusses', 'discussed', 'interrogates', 'interrogated', 'proposes', 'proposed', 'sleeps', 'slept', 'wakes', 'woke', 'waking', 'revises', 'works', 'worked'];
 const TIMES: [Exclude<SceneLook['time'], null>, string[]][] = [['NIGHT', ['night', 'midnight', 'nightfall']], ['DAWN', ['dawn', 'sunrise', 'daybreak']], ['DUSK', ['dusk', 'sunset', 'evening', 'twilight']]];
 export interface SceneLook { intExt: 'INT' | 'EXT' | null; time: 'DAY' | 'NIGHT' | 'DUSK' | 'DAWN' | null }
 export function sceneLook(text: string): SceneLook {
   const t = text.toLowerCase();
   const out = OUTSIDE.filter((w) => hasWord(t, w)).length;
   const inn = INSIDE.filter((w) => hasWord(t, w)).length;
-  return { intExt: out > inn ? 'EXT' : inn > out ? 'INT' : null, time: TIMES.find(([, ws]) => ws.some((w) => hasWord(t, w)))?.[0] ?? null };
+  // Where the places say nothing, what people do: riding, fleeing and fighting are done outside; talking, writing and
+  // dining in (game reading, from November 13, 2026, so fewer scenes are left to the arc's guess).
+  const doneOut = out === inn ? DONE_OUTSIDE.filter((w) => hasWord(t, w)).length : 0;
+  const doneIn = out === inn ? DONE_INSIDE.filter((w) => hasWord(t, w)).length : 0;
+  const side = out !== inn ? out - inn : doneOut - doneIn;
+  return { intExt: side > 0 ? 'EXT' : side < 0 ? 'INT' : null, time: TIMES.find(([, ws]) => ws.some((w) => hasWord(t, w)))?.[0] ?? null };
 }

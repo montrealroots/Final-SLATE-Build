@@ -23,7 +23,7 @@ import { applyBlueprint, briefFields, type Blueprint, type BlueprintCharacter, t
 import { createProject, isEpisodic, isNonfiction, type NewProjectInput } from './projects';
 import { PURPOSE, ROLE_LABELS, WORD, episodeBreaks, sceneLook, episodePurpose, hasWord, readStory, selectDevelopments, sentencesOf, type Development, type Role } from './story-structure';
 import { plotSection, type SourceWork } from './sources';
-import { storyGenres } from './story-genre';
+import { recordGenres, storyGenres } from './story-genre';
 import type { AdaptationApproach, Format, GameState, Project } from './types';
 
 export type FieldOrigin = 'sourced' | 'proposed' | 'unknown';
@@ -179,7 +179,8 @@ export function namesOf(name: string, others: string[]): { first: string | null;
   const ws = name.split(/\s+/);
   const core = TITLES.has(ws[0]) && ws.length > 1 ? ws.slice(1) : ws;
   const theirs = new Set(others.filter((o) => o !== name).flatMap((o) => o.split(/\s+/)));
-  const own = (x: string | undefined) => (x && x.length >= 3 && x !== name && /^\p{Lu}/u.test(x) && !theirs.has(x) && !TITLES.has(x) ? x : null);
+  // A possessive isn't a name: "Frankenstein's monster" isn't called "Frankenstein's", which is Victor's.
+  const own = (x: string | undefined) => (x && x.length >= 3 && x !== name && /^\p{Lu}/u.test(x) && !/['’]s$/.test(x) && !theirs.has(x) && !TITLES.has(x) ? x : null);
   const first = own(core[0]);
   const last = core.length > 1 ? own(core.at(-1)) : null;
   return { first, also: last && last !== first ? [last] : [] };
@@ -202,12 +203,14 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   // proposed from its medium, said so.
   const recordedGenres = w.genres.map((g) => g.genre).filter((g) => i.genres.has(g));
   const read = recordedGenres.length ? [] : storyGenres(w, i.genres);
-  const mapped = recordedGenres.length ? recordedGenres : read.map((r) => r.genre);
+  const fromRecord = recordedGenres.length || read.length ? [] : recordGenres(w, i.genres);
+  const mapped = recordedGenres.length ? recordedGenres : read.length ? read.map((r) => r.genre) : fromRecord.map((r) => r.genre);
   const genre = mapped[0] ?? (i.genres.has(MEDIUM_GENRE[w.medium]) ? MEDIUM_GENRE[w.medium] : 'drama');
   const spoken = (g: string) => g.replace(/-/g, ' ');
   origin.genres = recordedGenres.length ? 'sourced' : 'proposed';
   if (read.length) why.genres = `No genre recorded for ${w.title} matches one of the game's, so its genres are read from its story, which speaks of ${read.slice(0, 3).map((r) => `${spoken(r.genre)} (${r.words.slice(0, 3).map(([x]) => x).join(', ')})`).join('; ')}.`;
-  else if (!recordedGenres.length) why.genres = `No genre recorded for ${w.title} matches one of the game's, and too little of its story is recorded to read one from; ${spoken(genre)} is proposed from its being a ${spoken(w.medium)}.`;
+  else if (fromRecord.length) why.genres = `No genre recorded for ${w.title} is one of the game's, and too little of its story is recorded to read one from, so its genres are read from what is recorded of it: ${fromRecord.map((r) => `${spoken(r.genre)} ("${r.phrase}")`).join('; ')}.`;
+  else if (!recordedGenres.length) why.genres = `No genre recorded for ${w.title} matches one of the game's, and too little of it is recorded to read one from; ${spoken(genre)} is proposed from its being a ${spoken(w.medium)}.`;
   let matrix = MATRIX.find(([re]) => re.test(genre))?.[1] ?? DEFAULT_MATRIX;
   const invented = INVENTED_WORLD.test(genre) || mapped.some((g) => INVENTED_WORLD.test(g));
 
@@ -262,7 +265,28 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const named = people.filter((x) => x.recorded);
   // A full name is written {key}, so a renamed character is renamed in the story; a first name alone stays as the
   // article wrote it, and only says who is in a scene.
-  const callers = named.map((x) => ({ key: x.key, ...namesOf(x.name, recorded.map((c) => c.name)) }));
+  // Someone the story calls by what they are, as it introduces them ("Moby Dick, the white whale which took his leg"),
+  // is named by that too: the whale is mostly "the whale" in his novel's story (November 13, 2026). Only where no other
+  // recorded character is called the same.
+  const calledBy = (name: string) => {
+    const at = storyText.indexOf(`${name}, the `);
+    const m = at < 0 ? null : /^((?:[a-z-]+ ){0,2}[a-z-]+)\b/.exec(storyText.slice(at + name.length + 6));
+    const words = m ? m[1].split(' ') : [];
+    const stop = words.findIndex((x) => /^(which|who|whom|whose|that|and|or|of|in|on|at|with|from|to|is|was|has|had|he|she|it)$/.test(x));
+    const kept = stop < 0 ? words : words.slice(0, stop);
+    return kept.length ? `the ${kept.at(-1)}` : null;
+  };
+  // A creature recorded by what it is ("Frankenstein's monster") is what its story calls it: the monster, the creature or
+  // the beast, where it is the only one recorded.
+  const CREATURE = /\b(monster|creature|beast)$/;
+  const creatures = named.filter((y) => CREATURE.test(y.name));
+  const callers = named.map((x) => {
+    const n = namesOf(x.name, recorded.map((c) => c.name));
+    const noun = calledBy(x.name);
+    const own = noun && named.filter((y) => calledBy(y.name) === noun).length === 1;
+    const creature = creatures.length === 1 && creatures[0] === x ? ['the monster', 'the creature', 'the beast'] : [];
+    return { key: x.key, ...n, also: [...n.also, ...(own ? [noun] : []), ...creature] };
+  });
   /** Every whole-word occurrence of a name, replaced: a scan, not a Unicode pattern (see story-structure.ts sentencesOf). */
   const swap = (t: string, name: string, to: string) => {
     let out = '';
@@ -328,6 +352,11 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   // Where the story has someone against the lead, the conflict is with them (from November 13, 2026; until then Red Dead
   // Redemption 2's was "Arthur Morgan against the way things are run", from its genre, with Dutch named against him).
   if (reading?.rival && rival.recorded) matrix = { ...matrix, opposition: 'person' };
+  // Where the story is read and sets no one against the lead, nobody is made their antagonist: the next person named is
+  // only that, and what stands in the way is the lead's own (November 13, 2026; until then Moby-Dick set Ahab against
+  // Queequeg, and Nineteen Eighty-Four Winston against Julia, for being named most after them).
+  const opposed = !reading || !!reading.rival;
+  if (!opposed && (matrix.opposition === 'person' || matrix.opposition === 'rival')) matrix = { ...matrix, opposition: 'self' };
   const say = (t: string, who: Who = lead) => t.replace(/\{(they|them|their|theirs|themselves)\}/g, (_, w: string) => PRONOUN_WORDS[pronounsOf(who.gender)][w]);
   const [choiceA, choiceB] = CHOICE[matrix.dilemma].map((x) => say(x));
   const against = AGAINST[matrix.opposition];
@@ -392,16 +421,16 @@ export function proposeFromSource(i: ProposalInput): Proposal {
 
   // ---- People.
   const char = (p: Who, n: number): BlueprintCharacter => {
-    const role = n === 0 ? 'lead' : n === 1 ? 'antagonist' : n === 2 ? 'ally' : 'supporting';
+    const role = n === 0 ? 'lead' : n === 1 ? (opposed ? 'antagonist' : 'supporting') : n === 2 ? 'ally' : 'supporting';
     const T: Record<string, Omit<BlueprintCharacter, 'key' | 'name' | 'size' | 'functions' | 'entity' | 'pronouns' | 'age'>> = {
-      lead: { wants: 'to {goal}', motivation: 'What {against} would take from {them}', obstacle: '{rival}, and {their} own doubt', contradiction: `Wants ${choiceA} and keeps choosing ${choiceB}`, arc: `From reacting to {against} to choosing between ${choiceA} and ${choiceB}`, voice: 'Proposed: set from the work', look: 'Proposed: set from the work' },
+      lead: { wants: 'to {goal}', motivation: 'What {against} would take from {them}', obstacle: opposed ? '{rival}, and {their} own doubt' : '{their} own doubt', contradiction: `Wants ${choiceA} and keeps choosing ${choiceB}`, arc: `From reacting to {against} to choosing between ${choiceA} and ${choiceB}`, voice: 'Proposed: set from the work', look: 'Proposed: set from the work' },
       antagonist: { wants: 'what {lead} is trying to stop', motivation: 'A reason of {their} own that the story must make clear', obstacle: '{lead}', contradiction: 'Right about something that matters', arc: 'From certainty to the moment {lead} proves {them} wrong, or right', voice: 'Proposed: set from the work', look: 'Proposed: set from the work' },
       ally: { wants: 'to see {lead} through it', motivation: 'What {lead} means to {them}', obstacle: 'The price of standing with {lead}', contradiction: 'Loyal, and keeping something back', arc: 'From following {lead} to choosing for {themselves}', voice: 'Proposed: set from the work', look: 'Proposed: set from the work' },
       supporting: { wants: '{their} own piece of what happens', motivation: 'A place in the story', obstacle: 'What {lead} needs from {them}', contradiction: 'Proposed: set from the work', arc: 'Proposed: set from the work', voice: 'Proposed: set from the work', look: 'Proposed: set from the work' },
     };
     const t = T[role];
     return {
-      key: p.key, name: p.name, size: n === 0 ? 'lead' : n < 3 ? 'supporting' : 'featured', functions: n === 0 ? ['protagonist'] : n === 1 ? ['antagonist'] : n === 2 ? ['ally'] : ['none'],
+      key: p.key, name: p.name, size: n === 0 ? 'lead' : n < 3 ? 'supporting' : 'featured', functions: n === 0 ? ['protagonist'] : n === 1 && opposed ? ['antagonist'] : n === 2 ? ['ally'] : ['none'],
       entity: entityOf(p.kind), pronouns: pronounsOf(p.gender), age: '-',
       // Each character's words are in that character's own pronouns; {lead}, {goal} and the rest are still the lead's.
       wants: fill(t.wants, n ? p : lead), motivation: fill(t.motivation, n ? p : lead), obstacle: fill(t.obstacle, n ? p : lead), contradiction: fill(t.contradiction, n ? p : lead), arc: fill(t.arc, n ? p : lead), voice: t.voice, look: t.look,
@@ -421,7 +450,8 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     return xs.length >= 2 ? { a: lead.key, b: k, kind, start: xs[0], end: xs.at(-1)! } : { a: lead.key, b: k, kind, start: fill(start), end: fill(end) };
   };
   const relationships = [
-    fromStory(rival.key, 'opponents', '{rival} stands where {lead} needs to go', endingProposed),
+    opposed ? fromStory(rival.key, 'opponents', '{rival} stands where {lead} needs to go', endingProposed)
+      : fromStory(rival.key, 'undecided', 'The story sets neither {rival} nor {lead} against the other; what they are to each other is yours to decide', 'Yours to decide'),
     fromStory(ally.key, 'allies', '{ally} is on {lead}\'s side', 'Changed by what it cost {ally}'),
   ];
   if (reading && (reading.rival || reading.ally)) why.relationships = `Who stands against ${lead.name} and who beside ${say('{them}')} is read from what the story has them do together${relationships.some((r) => !r.start.includes('{')) ? '; where both are named, each relationship starts and ends where the story has them together' : ''}. Proposed.`;
@@ -439,7 +469,6 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const count = scenesFor(i.format, minutes);
   const acts = tv ? ['Opening', 'Middle', 'Close'] : ['Beginning', 'Middle', 'End'];
   const episodes = tv ? Math.max(2, Math.min(26, i.episodes ?? 6)) : 0;
-  const beatAt = (f: number) => BEATS[Math.round(f * (BEATS.length - 1))];
   const actAt = (f: number) => acts[f < 0.25 ? 0 : f < 0.75 ? 1 : 2];
   /**
    * A scene from a development: what happens is the development's opening and the sentence that turns it (the article's
@@ -447,12 +476,12 @@ export function proposeFromSource(i: ProposalInput): Proposal {
    */
   const devScene = (d: Development, k: number, n: number, episode?: number): BlueprintScene => {
     const told1 = [d.sentences[0], ...(d.key !== d.sentences[0] ? [d.key] : [])];
-    const b = beatAt(d.at);
     // Inside or out, and when, from the scene's own words, then the whole development's; a told scene says nothing of
-    // the time is day. Only where its words say neither inside nor out does the arc's beat decide.
+    // the time is day. Where its words say neither inside nor out, it is INT/EXT, the script's word for either, for the
+    // player to decide (until a later fix on November 13, 2026, the arc's beat guessed).
     const look = sceneLook(told1.join(' '));
     const wider = sceneLook(d.sentences.join(' '));
-    return { act: actAt(d.at), intExt: look.intExt ?? wider.intExt ?? b.intExt, place: d.place ?? place(k), time: look.time ?? 'DAY', who: d.who.length ? d.who : [lead.key], objective: PURPOSE[d.role], action: told1.join(' '), turn: d.turns ? d.key : '', minutes: sceneMinutes(minutes, n), ...(episode ? { episode } : {}) };
+    return { act: actAt(d.at), intExt: look.intExt ?? wider.intExt ?? 'INT/EXT', place: d.place ?? place(k), time: look.time ?? 'DAY', who: d.who.length ? d.who : [lead.key], objective: PURPOSE[d.role], action: told1.join(' '), turn: d.turns ? d.key : '', minutes: sceneMinutes(minutes, n), ...(episode ? { episode } : {}) };
   };
   /** A development of one sentence each, where a story has too few developments to fill an outline. */
   const bySentence = (ds: Development[]): Development[] => ds.flatMap((d) => (d.sentences.length < 2 ? [d] : d.sentences.map((x, j) => ({ ...d, sentences: [x], key: x, turns: d.turns && x === d.key, role: j === 0 ? d.role : (d.role === 'setup' ? 'setup' : 'complication') as Role, weight: d.weight / d.sentences.length, at: d.at }))));
@@ -506,6 +535,8 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   for (const x of people) if (!scenes.some((sc) => sc.who.includes(x.key))) scenes.reduce((a, b) => (b.who.length > a.who.length ? b : a)).who.push(x.key);
   if (told) {
     const roles = [...new Set(devs.map((d) => ROLE_LABELS[d.role].toLowerCase()))].join(', ');
+    const either = scenes.filter((x) => x.intExt === 'INT/EXT').length;
+    if (either) notes.push(`${either === scenes.length ? "No scene's words say" : `The words of ${either} of the ${scenes.length} scenes don't say`} whether ${either === 1 ? 'it is' : 'they are'} inside or outside, so ${either === 1 ? 'it is' : 'they are'} marked INT/EXT for you to decide.`);
     why.scenes = `The story read as ${devs.length} developments (${roles}), from ${credit}${background ? `, less ${background} ${background === 1 ? 'passage' : 'passages'} about the work rather than its events` : ''}. Each scene is one, told in its opening and the sentence that turns it, and kept in order${left ? `; ${left} lesser ${left === 1 ? 'development is' : 'developments are'} left out for the format's room, and stay in the synopsis` : ''}${tv ? `. The season breaks where the story turns, each episode with a purpose${storyEpisodes < episodes ? `; the story runs out after episode ${storyEpisodes}, and the episodes after it are the game's own` : ''}` : ''}. Where a development begins and ends, its role, where each scene happens and what each is for are the game's reading, proposed.`;
     // Until November 13, 2026 this counted what was kept against the developments even where a short story is told a
     // sentence at a time, and said a 3-development story kept "-8" of them.

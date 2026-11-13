@@ -102,3 +102,69 @@ export const readingWords = (r: GenreReading): string => r.words.slice(0, 4).map
 export function storyGenres(work: { title: string; summary?: { text: string } | null; plot?: { paragraphs: string[] } | null }, have: ReadonlySet<string>): GenreReading[] {
   return readGenres(`${work.summary?.text ?? ''} ${(work.plot?.paragraphs ?? []).join(' ')}`, have, work.title).filter((r, n) => n === 0 || r.uses >= GENRE_SECONDARY_USES);
 }
+
+/**
+ * What a work's record says of it, read for a genre where none of its recorded genres is one of the game's and its
+ * story is too short to read (from November 13, 2026, for the 126 works that were given a genre by their medium alone).
+ * Its recorded genres first ("theatre of the absurd", "fable", "magical girl anime and manga"), then its description
+ * ("2026 fantasy novel", "American satirical webcomic"), then its recorded subjects ("humor", "Cold War"). Each phrase
+ * names a genre plainly or near enough; a genre of how a game is played is read for the story it implies only where it
+ * does imply one (a shooter is action, a real-time strategy game is war). Game reading, proposed, never sourced: the
+ * reviewed table in tools/sources/genre-map.mjs is what makes a recorded genre the game's own.
+ */
+const RECORD_WORDS: [RegExp, string][] = [
+  [/theatre of the absurd|\babsurd|nonsense verse/i, 'absurdist'],
+  [/family saga/i, 'domestic-drama'],
+  [/\bharem\b/i, 'romantic-comedy'],
+  [/satir/i, 'satire'],
+  [/\bcomedy\b|humou?r|sarcasm|\bgag\b/i, 'comedy'],
+  // Lower case: "Romance of the Three Kingdoms" is a title, not a genre.
+  [/\bromance\b|romantic love|boys' love|\byaoi\b/, 'romance'],
+  [/chanson de geste|\bepic\b/i, 'epic'],
+  [/\bfable\b|fairy tale/i, 'fairy-tale'],
+  [/psychological thriller/i, 'psychological-thriller'],
+  [/\bzombie/i, 'zombie'],
+  [/post-apocalyptic/i, 'post-apocalyptic'],
+  [/superhero|superhuman powers/i, 'superhero'],
+  [/science fiction|\bsci-fi\b/i, 'science-fiction'],
+  [/magical girl|\bfantasy\b/i, 'fantasy'],
+  [/supernatural|\bafterlife\b|kings of hell/i, 'supernatural'],
+  [/\bninj/i, 'martial-arts'],
+  [/school life|school anime|high school|künstlerroman|developmental novel|bildungsroman/i, 'coming-of-age'],
+  [/creepypasta|urban legend|\bhorror\b/i, 'horror'],
+  [/\bwulin\b|\bwuxia\b/i, 'wuxia'],
+  [/alternate history/i, 'alternate-history'],
+  [/detective/i, 'detective'],
+  [/\bcrime\b|\bgang\b|underworld/i, 'crime'],
+  [/\bcold war\b|eastern front|tank simulation|vehicular combat|real-time strategy|strategy (video )?game/i, 'war'],
+  [/historical video game/i, 'historical-fiction'],
+  [/survival game/i, 'survival'],
+  [/\bsea\b|fisherman|\bvoyage\b/i, 'sea-adventure'],
+  [/life sim|social simulation|farm(ing)? (life )?sim|virtual pet/i, 'slice-of-life'],
+  [/social fiction/i, 'social-realism'],
+  [/shooter|shoot 'em up|battle arena/i, 'action'],
+  [/platform (video )?game|platformer/i, 'adventure'],
+];
+export interface RecordReading { genre: string; phrase: string }
+/** A long phrase cut to the words around what matched: "an American zombie apocalypse comic book", not the sentence. */
+function around(phrase: string, re: RegExp): string {
+  if (phrase.length <= 60) return phrase;
+  const m = re.exec(phrase)!;
+  const before = phrase.slice(0, m.index).split(/\s+/).slice(-3).join(' ');
+  const after = phrase.slice(m.index + m[0].length).split(/\s+/).slice(0, 4).join(' ');
+  return `…${before}${m[0]}${after}`.replace(/\s+/g, ' ').replace(/["'.,;:]+$/, '') + '…';
+}
+export function recordGenres(work: { title?: string; description?: string | null; recordedGenres?: { label: string }[]; subjects?: string[]; summary?: { text: string } | null }, have: ReadonlySet<string>): RecordReading[] {
+  // Three tiers, each read whole before the next: its recorded genres; what it is said to be (its description, and the
+  // first two sentences of its article, which say "an American zombie apocalypse comic book series"); its subjects.
+  // The work's own title is taken out, as from its story: The Old Man and the Sea isn't read for "Sea".
+  const untitled = (t: string) => (work.title ? t.split(work.title).join(' ') : t);
+  const opening = untitled((work.summary?.text ?? '').split(/(?<=[.!?])\s+/).slice(0, 2).join(' '));
+  const tiers = [(work.recordedGenres ?? []).map((g) => g.label), [untitled(work.description ?? ''), opening], work.subjects ?? []].map((xs) => xs.filter((x) => x.trim()));
+  const out: RecordReading[] = [];
+  for (const phrases of tiers) for (const [re, genre] of RECORD_WORDS) {
+    const phrase = phrases.find((x) => re.test(x));
+    if (phrase && have.has(genre) && !out.some((x) => x.genre === genre)) out.push({ genre, phrase: around(phrase, re) });
+  }
+  return out.slice(0, 3);
+}

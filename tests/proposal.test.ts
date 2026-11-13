@@ -358,6 +358,26 @@ describe('genres read from the story when none recorded maps (November 13, 2026)
     expect(read('Red Dead Redemption 2').notes.join(' ')).toContain(`${rdr.scenes.length} scenes to build from`); // the scenes there are, not the room for them
     // Prince Hamlet is counted by "Hamlet", not "Prince", and leads his own play.
     expect(read('Hamlet').blueprint.characters[0].name).toBe('Prince Hamlet');
+    // Who stands against the lead is read from what the story has them do, not who is named next (the owner's request
+    // of November 13, 2026: "fix the Moby-Dick rival"). The whale is "the white whale" and then "the whale"; the
+    // monster is "the creature".
+    const against = (title: string) => { const b = read(title).blueprint; const n = (k: string) => b.characters.find((c) => c.key === k)!.name; return b.conflict.replace(/\{(\w+)\}/g, (_, k: string) => n(k)); };
+    expect(against('Moby-Dick')).toBe('Captain Ahab against Moby Dick');
+    expect(against('Frankenstein; or, The Modern Prometheus')).toBe("Victor Frankenstein against Frankenstein's monster");
+    expect(against('Hamlet')).toBe('Prince Hamlet against King Claudius');
+    // Where the story sets no one against the lead, no one is made the antagonist.
+    const pp = read('Pride and Prejudice').blueprint;
+    expect([pp.characters[1].functions, pp.relationships[0].kind]).toEqual([['none'], 'undecided']);
+    expect(pp.characters.some((c) => c.functions.includes('antagonist'))).toBe(false);
+    // A work too short of story is read from its record: what its article's opening says it is.
+    const twd = read('The Walking Dead');
+    expect([twd.blueprint.genre, twd.origin.genres]).toEqual(['zombie', 'proposed']);
+    expect(twd.why.genres).toContain('zombie ("…an American zombie apocalypse comic book');
+    // A scene whose words say neither inside nor out is INT/EXT, for the player, and the brief says how many.
+    const gta = read('Grand Theft Auto III');
+    const either = gta.blueprint.scenes.filter((x) => x.intExt === 'INT/EXT').length;
+    expect(either).toBeGreaterThan(0);
+    expect(gta.notes.join(' ')).toContain(`The words of ${either} of the ${gta.blueprint.scenes.length} scenes don't say`);
     // Recorded genres that map still lead, and are sourced.
     expect([read('Dracula').blueprint.genre, read('Dracula').origin.genres]).toEqual(['horror', 'sourced']);
   });
