@@ -18,7 +18,7 @@ const STUDIOS = [
 ];
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 
-async function horror(page: Page, title: string, format: string, runtime: string, first = true): Promise<void> {
+async function horror(page: Page, title: string, format: string, runtime: string, first = true, genre = 'Horror'): Promise<void> {
   await nav(page, 'Projects');
   await page.getByRole('button', { name: 'New Project' }).first().click();
   await page.getByRole('button', { name: 'Write An Original' }).click();
@@ -26,8 +26,8 @@ async function horror(page: Page, title: string, format: string, runtime: string
   await page.getByLabel('Format').selectOption({ label: format });
   await page.getByLabel(/Target Runtime In Minutes/).fill(runtime);
   await page.getByRole('radio', { name: /^Low Budget:/ }).check();
-  await page.getByRole('searchbox', { name: 'Search Genres' }).fill('horror');
-  await page.getByRole('button', { name: 'Add Horror', exact: true }).click();
+  await page.getByRole('searchbox', { name: 'Search Genres' }).fill(genre.toLowerCase());
+  await page.getByRole('button', { name: `Add ${genre}`, exact: true }).click();
   await page.getByRole('button', { name: 'Create Project' }).click();
   await expect(page.getByRole('heading', { name: title, level: 1 })).toBeVisible();
   await section(page, 'Characters');
@@ -91,8 +91,8 @@ test('a first-look deal: offered after delivered work, read in full, bargained, 
   await expect.poll(async () => (await readSavedState(page)).money.postings.slice(before).filter((x: { kind: string }) => x.kind === 'overhead').length, { timeout: 30_000 }).toBe(1);
   await expect(card(page, 'Your Money')).toContainText('Overhead From A First-Look Deal');
 
-  // The next film: the studio first. Another studio waits; development money goes in.
-  await horror(page, 'Night Bus', 'Short Film', '6', false);
+  // The next film, a family one: the studio first. Another studio waits; development money goes in.
+  await horror(page, 'Night Bus', 'Short Film', '6', false, 'Family');
   await section(page, 'Budget');
   const look = card(page, `First Look: ${NIGHT}`);
   await expect(look).toContainText(`Your first-look deal gives ${NIGHT} the first chance at Night Bus.`);
@@ -109,4 +109,28 @@ test('a first-look deal: offered after delivered work, read in full, bargained, 
   const sub = saved.projects[1].finance.deals.find((d: { kind: string }) => d.kind === 'studio');
   expect(Math.round((sub.decideAt - sub.askedAt) / 86_400_000)).toBe(60);
   await page.screenshot({ path: `test-results/first-look-${info.project.name}.png`, fullPage: true });
+
+  // A family film isn't what a horror studio makes: it passes, and the film is free to go elsewhere.
+  for (let i = 0; i < 12 && (await readSavedState(page)).projects[1].finance.deals.find((d: { kind: string }) => d.kind === 'studio').status === 'considering'; i++) await advance(page, 'week');
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Night Bus' }).first().click();
+  await section(page, 'Budget');
+  await expect(look).toContainText(`${NIGHT} passed. You may take it to another studio; if one takes it, the $5,000 of development money is repaid from its money.`);
+  // Taken elsewhere: the family studio can now be pitched, and is.
+  await expect(page.getByRole('button', { name: `Pitch To ${MATINEE}` })).toBeEnabled();
+  await page.getByRole('button', { name: `Pitch To ${MATINEE}` }).click();
+  await expect(pitch.getByRole('listitem', { name: MATINEE })).toContainText('It has this project in front of it now.');
+  await expect.poll(async () => (await readSavedState(page)).projects[1].finance.deals.filter((d: { kind: string }) => d.kind === 'studio').at(-1).backer, { timeout: 30_000 }).toBe(MATINEE);
+  for (let i = 0; i < 4 && (await readSavedState(page)).projects[1].finance.deals.filter((d: { kind: string }) => d.kind === 'studio').at(-1).status === 'considering'; i++) await advance(page, 'week');
+  const outside = (await readSavedState(page)).projects[1].finance.deals.filter((d: { kind: string }) => d.kind === 'studio').at(-1);
+  expect(outside.backer).toBe(MATINEE);
+  if (outside.status === 'offered') {
+    // Its offer accepted: the first look's development money is repaid from what it puts in, once.
+    await nav(page, 'Projects');
+    await page.getByRole('button', { name: 'Night Bus' }).first().click();
+    await section(page, 'Budget');
+    await card(page, 'Backers').locator('li', { hasText: MATINEE }).first().getByRole('button', { name: 'Accept Offer' }).click();
+    await page.getByRole('dialog', { name: 'Accept These Terms?' }).getByRole('button', { name: /^Accept \$/ }).click();
+    await expect.poll(async () => (await readSavedState(page)).projects[1].obligations.filter((o: { ref?: string }) => o.ref?.startsWith('turnaround:')).map((o: { settled: number }) => o.settled), { timeout: 30_000 }).toEqual([5_000]);
+  } else expect(outside.status).toBe('declined'); // its own answer, read on its own record; the pass left the route open either way
 });

@@ -91,4 +91,15 @@ test('a Release Plan: festivals first, a licence turned down and then signed, an
     expect(r.date).toBe(day(now, 70));
   }
   await page.screenshot({ path: `test-results/release-plan-${info.project.name}.png`, fullPage: true });
+
+  // What the licence paid, settled: backers are repaid first from income (finance.ts), and what the project keeps
+  // after that is the player's to take home, posted once on each side.
+  await section(page, 'Budget');
+  const takeHome = page.getByRole('button', { name: /^Take Home \$[\d,]+ Of Income$/ });
+  const kept = Number((await takeHome.innerText()).replace(/[^\d]/g, ''));
+  if (kept > 0) {
+    await takeHome.click();
+    await expect.poll(async () => (await readSavedState(page)).money.postings.filter((x: { kind: string }) => x.kind === 'from-project').reduce((a: number, x: { amount: number }) => a + x.amount, 0), { timeout: 30_000 }).toBe(kept);
+    await expect(page.getByRole('button', { name: 'Take Home $0 Of Income' })).toBeDisabled(); // taken once, not twice
+  } else await expect(takeHome).toBeDisabled(); // the licence went to repaying the backers first
 });

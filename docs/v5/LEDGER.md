@@ -185,18 +185,8 @@ survives a reload, and has a test that fails without it. The order of work is at
 
 ## 11. The Ten Journeys
 
-| Journey | Exists Today |
-| --- | --- |
-| Source through brief, delegated writing, casting, production, release | J01 and J03 cover source to release; no delegated writing |
-| Real composer through score and credits | J09 hires a game composer, not a real one |
-| Song refused, replaced, cleared | J08 (library replacement) |
-| First-look offer, submission, pass, outside release | v5-first-look.spec (offer, bargaining, acceptance, submission first); the pass and outside take are engine-tested |
-| Independent film and series on different release routes | v5-release-plan.spec (a film: festival hold, a licence turned down then signed, the stores); series routes engine-tested |
-| Paid outside job leading to an opportunity | J10, but the next offer isn't tied to the first job |
-| Renewal or cancellation with obligations | J03 (cancellation), renewal.spec (a labelled fixture) |
-| Equipment shortage needing approval | v5-money-equipment.spec |
-| Company transfers and settled earnings | v5-money-equipment.spec (company formed, money moved, put into a project) |
-| Phone pictures and mobile project management | owner-access.spec (fixture answer); no full phone run |
+Where each stands, journey by journey, is in `docs/v5/JOURNEYS.md`. That page is authoritative, and this one doesn't
+repeat it.
 
 ## The Owner's Goals Beyond The Command
 

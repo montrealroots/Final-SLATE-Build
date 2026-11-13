@@ -29,9 +29,14 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     - The record book's money kept apart.
     - A grade for everyone the player can hire, with what it is made of (`grades.ts`, on the hiring list).
   - **2. Production tailored.** A schedule preview, work by format, and a test that quality isn't bought.
-- **Next, in order.**
-  1. 10 and 11, phone parity and the ten journeys.
-  2. The final report.
+  - **10 and 11. Phone parity and the journeys.** The v5 journeys run on phone and iPhone WebKit, and the layout sweep
+    found and fixed one defect. `docs/v5/JOURNEYS.md` says where each of the ten journeys stands.
+- **Still open** (`docs/v5/JOURNEYS.md`, `docs/v5/LEDGER.md`):
+  1. One run from a source through delegated writing to release.
+  2. A series release route played through the screen.
+  3. Other people's productions delayed or cancelled.
+  4. A physical phone test.
+- **Then.** Merge PR #86 once its newest head is green, and write the final report.
 - **The story re-fetch is done.** `src/data/plots.json` was rebuilt from `.sources-cache/plots2`. A section that mixes
   the story with something else keeps only its story parts, and 47 works are narrowed that way. Tower of God keeps its
   world parts: it has no plot part.
