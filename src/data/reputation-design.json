@@ -1,0 +1,50 @@
+{
+  "provenance": "original_simulation_design_not_industry_formula",
+  "model_version": "v7-reference-1",
+  "dimensions": [
+    "recognition",
+    "commercial",
+    "critical",
+    "reliability",
+    "relationship"
+  ],
+  "role_scoped": true,
+  "event_contribution_bounds": [
+    -1,
+    1
+  ],
+  "single_event_weight_cap": 1,
+  "prior_weight": 4,
+  "score_midpoint": 50,
+  "score_scale": 50,
+  "grades": [
+    [
+      0,
+      "Emerging"
+    ],
+    [
+      55,
+      "Established"
+    ],
+    [
+      70,
+      "In Demand"
+    ],
+    [
+      85,
+      "Leading"
+    ]
+  ],
+  "requires_minimum_completed_works": {
+    "Established": 2,
+    "In Demand": 4,
+    "Leading": 8
+  },
+  "notes": [
+    "Weights require gameplay calibration.",
+    "No transfer from directing to acting unless the player held both roles.",
+    "Do not use this score as talent or a guaranteed quality multiplier.",
+    "Keep critical and commercial expectations separate.",
+    "Firm reputation requires multiple independent outcomes; repeated event IDs contribute once."
+  ]
+}

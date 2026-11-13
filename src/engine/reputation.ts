@@ -9,6 +9,7 @@
 // projects spent against their budgets and how many were shelved, audience from reception, commercial results from
 // what distributors paid against what was spent, relationships from the history people keep with you. What reads it:
 // an offer of outside work leans to the role the record is strongest in, and its day rate follows that role's craft.
+import design from '../data/reputation-design.json';
 import { ledgerTotals } from './budget';
 import { reliability, type JobRole } from './jobs';
 import type { GameState, Project } from './types';
@@ -67,3 +68,40 @@ export const roleWeight = (r: CraftRecord): number => (r.craft === null ? 1 : Ma
 
 /** What a role's craft does to its day rate: nothing with no record; more for strong work, less for weak, within bounds. */
 export const craftRate = (r: CraftRecord): number => (r.craft === null ? 1 : Math.min(CRAFT_RATE_BOUNDS[1], Math.max(CRAFT_RATE_BOUNDS[0], 1 + CRAFT_RATE_PER_POINT * (r.craft - 60))));
+
+// ---- Standing and grade by role (the owner's v7 package, 04 and reputation-design.json; from November 13, 2026). Its
+// calibration is the package's own, versioned, and original game design, not an industry formula. Each completed work in
+// a role is one event, counted once (it is read from the projects, never stored, so a reload can't count it twice), its
+// contribution bounded to [-1, 1]: a craft score of 50 is neutral. The standing leans to the midpoint by a prior worth
+// four works, so one result can't swing it far; a grade also needs enough completed works. A role's standing comes only
+// from work in that role: directing well raises no acting standing. It is not talent, and no quality multiplier reads it.
+
+export type StandingRole = 'writing' | 'directing' | 'acting' | 'producing';
+export const REPUTATION_MODEL = design as unknown as { model_version: string; event_contribution_bounds: [number, number]; prior_weight: number; score_midpoint: number; score_scale: number; grades: [number, string][]; requires_minimum_completed_works: Record<string, number> };
+export interface Standing { role: StandingRole; works: number; standing: number; grade: string; next: string | null }
+
+/** One work's contribution from its score in the role: (score - midpoint) / scale, bounded. */
+export const contribution = (score: number): number => {
+  const [lo, hi] = REPUTATION_MODEL.event_contribution_bounds;
+  return Math.min(hi, Math.max(lo, (score - REPUTATION_MODEL.score_midpoint) / REPUTATION_MODEL.score_scale));
+};
+
+/** A standing from a role's completed works' scores, and the grade it supports. Pure. */
+export function standingFrom(role: StandingRole, scores: number[]): Standing {
+  const m = REPUTATION_MODEL;
+  const standing = Math.round(m.score_midpoint + (m.score_scale * scores.reduce((a, x) => a + contribution(x), 0)) / (m.prior_weight + scores.length));
+  const ok = ([at, name]: [number, string]) => standing >= at && scores.length >= (m.requires_minimum_completed_works[name] ?? 0);
+  const grade = [...m.grades].reverse().find(ok)?.[1] ?? m.grades[0][1];
+  const higher = m.grades.find(([at, name]) => at > (m.grades.find((g) => g[1] === grade)![0]) && !ok([at, name]));
+  const need = higher ? m.requires_minimum_completed_works[higher[1]] ?? 0 : 0;
+  const next = !higher ? null : scores.length < need ? `${higher[1]} needs ${need} completed works in this role; you have ${scores.length}.` : `${higher[1]} needs a standing of ${higher[0]}; yours is ${standing}.`;
+  return { role, works: scores.length, standing, grade, next };
+}
+
+/** The player's standing in each role, from the delivered work they did in it. Producing reads how the work was received. */
+export function standings(s: GameState): Standing[] {
+  return [
+    ...(['writing', 'directing', 'acting'] as const).map((r) => standingFrom(r, roleCraft(s, r).works.map((w) => w.score))),
+    standingFrom('producing', delivered(s).map((p) => p.quality!.reception)),
+  ];
+}

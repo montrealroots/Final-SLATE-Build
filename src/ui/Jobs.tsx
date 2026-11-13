@@ -6,7 +6,7 @@ import { money } from '../engine/budget';
 import { formatDateKey } from '../engine/time';
 import { JOB_ROLES, acceptJob, acceptRefusal, askBetterRate, declineJob, evidenceFor, jobCredits, withdrawJob, type JobRole, type OutsideJob } from '../engine/jobs';
 import { PRODUCTION_KIND_LABELS, productionById } from '../engine/productions';
-import { reputation } from '../engine/reputation';
+import { REPUTATION_MODEL, standings, reputation } from '../engine/reputation';
 import { qualityWords } from '../engine/finish';
 import { agentById } from '../engine/representation';
 import { store, useGame } from './store';
@@ -104,6 +104,11 @@ export function ReputationCard() {
         <dt>Commercial Results</dt><dd>{r.commercial === null ? 'Nothing delivered yet.' : `${money(r.commercial.earned)} paid by distributors against ${money(r.commercial.spent)} spent.`}</dd>
         <dt>Relationships</dt><dd>{r.relationships.completed + r.relationships.letGo + r.relationships.declined === 0 ? 'Nobody has worked with you yet.' : `${r.relationships.completed} saw a project through with you, ${r.relationships.letGo} let go, ${r.relationships.declined} turned down after asking for more.`}</dd>
       </dl>
+      <h3>Standing By Role</h3>
+      <dl className="kv" aria-label="Standing By Role">
+        {standings(g).map((x) => <Fragment key={x.role}><dt>{{ writing: 'Screenwriter', directing: 'Director', acting: 'Actor', producing: 'Producer' }[x.role]}</dt><dd>{x.grade}{x.works ? `, from ${x.works} completed ${x.works === 1 ? 'work' : 'works'} (standing ${x.standing})` : ', with no completed work in it yet'}.{x.next ? <span className="dim"> {x.next}</span> : null}</dd></Fragment>)}
+      </dl>
+      <p className="dim small">Each role stands on its own work, each work counted once and none counting for too much. A grade needs several completed works. It is the industry's reading of your record, not your talent. Game design, version {REPUTATION_MODEL.model_version}.</p>
     </section>
   );
 }
