@@ -57,7 +57,9 @@ test.describe('the owner\'s server, reached from elsewhere', () => {
     await expect(page.getByRole('heading', { name: 'The Lantern Keeper (Fixture)', level: 1 })).toBeVisible();
     // The session is a cookie the page's scripts can't read, and the passphrase is kept nowhere in the browser.
     const cookie = (await page.context().cookies()).find((c) => c.name === 'slate_owner')!;
-    expect([cookie.httpOnly, cookie.secure, cookie.sameSite]).toEqual([true, true, 'Strict']);
+    // Secure only over HTTPS since November 13, 2026: this server is plain http, as the owner's home network is, where a
+    // Secure cookie is dropped and sign-in won't hold. tests/catalog-server.test.ts checks it is Secure behind HTTPS.
+    expect([cookie.httpOnly, cookie.secure, cookie.sameSite]).toEqual([true, false, 'Strict']);
     expect(await page.evaluate(() => JSON.stringify({ ...localStorage }) + document.cookie)).not.toContain('fixture passphrase');
     // Signed in or not, another visitor still gets nothing.
     for (const path of FILM_ROUTES) expect((await visitor.get(path)).status(), path).toBe(404);
