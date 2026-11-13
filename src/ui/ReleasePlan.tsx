@@ -8,7 +8,9 @@ import {
   AGENT_SHARE, BUYERS, BUYER_BAR, PLAN_ORDER, PLAN_ROUTES, SALES_AGENT, alternatives, buyerValue, planOf, planRefusal, planWords, proposalRefusal, proposeLicence,
   releaseYourself, selfCosts, selfRefusal, setReleasePlan, type SelfRoute,
 } from '../engine/release-plan';
-import { formatDateKey } from '../engine/time';
+import { dateKey, formatDateKey } from '../engine/time';
+import { routeStandings } from '../engine/platform-routes';
+import { getPlace } from '../data/places';
 import type { BuyerRoute, PlanRoute, Project, ReleasePlan as Plan } from '../engine/types';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { Check, NumberField, SelectField, TextField } from './components';
@@ -61,6 +63,30 @@ export function ReleasePlanCard({ p }: { p: Project }) {
           {plan.routes.includes('festival-first') && <p className="dim spaced">Enter festivals from the Festivals page. Nothing is released publicly before {formatDateKey(plan.festivalUntil!)}.</p>}
         </>
       )}
+      <RealServices p={p} />
+    </section>
+  );
+}
+
+const STANDING = { open: 'Open To It', needs: 'Not Yet', closed: 'Closed To It', unknown: 'Not Recorded' } as const;
+/** Real services and where this film stands with each (engine/platform-routes.ts; the v7 package, REL01-REL08). */
+function RealServices({ p }: { p: Project }) {
+  const g = useGame();
+  const today = dateKey(g.now, getPlace(g.locationId).zone);
+  const rows = routeStandings(g, p, today);
+  return (
+    <section className="spaced" aria-labelledby={`real-${p.id}`}>
+      <h3 id={`real-${p.id}`}>Real Services</h3>
+      <p className="dim small">How each service says it takes films, as its own page described it on November 13, 2026; what held before then isn't recorded. None of it is a contract or a price, and none guarantees income.</p>
+      <ul className="list" aria-label="Real Services">
+        {rows.map((r) => (
+          <li key={r.route.id} className="list-item">
+            <strong>{r.route.company}</strong> <span className="chip">{STANDING[r.standing]}</span>
+            <div className="dim">{r.door} {r.why}{r.inGame ? ` In this game it goes by ${PLAN_ROUTES[r.inGame].label}.` : ''}</div>
+            <div className="dim small"><a href={r.route.source.url} target="_blank" rel="noreferrer noopener">{r.route.source.title}</a>, read {formatDateKey(r.route.source.checked)}.</div>
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }
