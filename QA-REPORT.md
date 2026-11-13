@@ -1427,4 +1427,6 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `e2e/j10.spec.ts`, desktop | 1 real, fixed; 2 weak checks of mine | A shoot could be planned over outside work already taken (jobs.ts refused a job over a shoot day, but not the other way). `planShootDays` now skips those days; `tests/jobs.test.ts` and J10 both fail with the skip removed. The journey's first two checks never put a shoot day near the job (prep comes first); it now starts the shoot on each of the fourteen days before. |
 | `e2e/j08.spec.ts`, desktop | 2 of mine | Two songs move the seed's answers (the world request was quoted, so it is declined and asked again until refused); runToDelivery assumes a schedule (produceToDelivery builds it). Passes in 29 s. |
 | `e2e/j09.spec.ts`, desktop | 1 real, fixed; 3 of mine | A recut approved in post never added the score's conform: tasks waited for a schedule rebuild. The draft hook now brings the score's tasks in line (`tests/cues.test.ts`, a cut changed in post, fails without it). Mine: a save read before it landed, the approval's confirmation, the pickup the recut scene needs. Passes in 33 s. |
+| `e2e/j05.spec.ts`, desktop | 1 of mine | The second draft's approval: the last draft's button, and the confirmation if one shows. Passes in 23 s. |
+| `e2e/j04.spec.ts`, desktop | 0 | Passes in 32 s. |
 
