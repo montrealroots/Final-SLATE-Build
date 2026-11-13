@@ -233,9 +233,42 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       sets it unless a test is `phone-layout.spec.ts`); `e2e/phone-layout.spec.ts` tests the default on phone, iPhone
       15 Pro Max and its landscape. Home's cards are two stacks now (`.home-col`): Recent Updates sat under the full
       height of In The Industry. A panel title with help keeps 18rem before its actions go under it.
+    - A part played by more than one performer (V4-007.03, V4-007.04; November 13, 2026; `engine/parts.ts`): a stage of a
+      part (`Project.stages`: a label, an optional age, chosen scenes or whole episodes) is cast on its own on the Cast
+      page (Another Performer For Some Scenes). `castIn` answers who plays a character in a scene, and the shoot (who is
+      absent, who is paid, who is recorded, capture quality), call sheets (a line per stage), child rules (an uncast
+      stage's own age), the estimate, credits (`Credit.stage`, "as Mara (Age 10)"), version credits and performances
+      read it. A performer with two parts on one shoot day is paid for the day once (also true across two characters,
+      which paid twice before). Not built: casting calls and the casting director for a stage (offers through Find
+      Performers only), body and stunt doubles beside a performer, screen-time measures per stage for award rules.
+      Tests `tests/parts.test.ts` (6), `e2e/parts.spec.ts`.
+    - Guide Me for casting and music (November 13, 2026; `mandates.ts` dept `CAST`, `MusicTab.tsx MusicGuideMe`). Casting:
+      a performer for each part and stage nobody plays, free, of the part's age (a stage's own age), the cheapest who
+      fits, one person a part; approved, it offers those people only (`Mandate.picks`): a no, or an offer that can't be
+      made, returns the part to the player once. Music: one approval takes the proposed brief and cue plan (if none is
+      taken), optionally hands the themes' review to the composer, and staffs the Music department within a ceiling,
+      priced on a copy of the project with the brief applied (the plan before the brief left the composer out). Not
+      built: Guide Me for writing.
+    - Reputation by role (V4-031.01, November 13, 2026; `engine/reputation.ts`, Profile, Your Reputation): craft per
+      role from the assessments of delivered work the player did in it (script, direction, their performances),
+      reliability (jobs.ts), budget and delivery (spent against the estimate; shelved), audiences (reception),
+      commercial results (distributor payments against spending), relationships (people's history). Never stored.
+      Read by outside work: the role an offer is for is weighted by its craft (equal with no record, so seeded runs are
+      as before), and its day rate follows that role's craft within 0.8 to 1.3. Not yet read by backers' proposals.
+    - Music's own jobs (V4-022.02, November 13, 2026): an orchestrator orchestrates a score recorded with players
+      (`post:orchestration`, 5 minutes of score a day, before the sessions), a music editor conforms cues to a recut
+      (`post:conform`), an arranger arranges a song made for the film before it is recorded (`song:arrange`). A composer
+      covers orchestration, conform and supervision, and a music producer the arrangement, at small scale (COMBINES,
+      one task a day). The composer and supervisor loop (V4-009.04) is the crew loop with the themes' approval.
+    - Audiences and renewals (V4-029.03, V4-029.04, November 13, 2026): retention can pass 100% (up to 105% an episode past
+      a reception of 85), so a season can grow and a strong episode after a weak one wins viewers back; first showings a
+      day apart keep 3% more, a break of over two weeks loses 8% (`gapEffect`); release schedules offer Daily, One A Day.
+      A commissioner's bars rise by a quarter for a season over a tenth past its budget and by 0.15 when they renewed
+      another of your series in the past year (`commissionerRaise`), said in the decision. Not modelled: live
+      programmes, contract options for further seasons.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
-  - Still not built: age stages and per-episode performers (V4-007.03/.04), Guide Me for cast, writing and music,
+  - Still not built: Guide Me for writing,
     company accounts, the music system (V4-022 to 026), F (historical boundaries, territory box office, weekly
     reports, renewal weighing, record books, reputation by role), the media-inventory work in G beyond what v3 built,
     H's journeys J01 to J13 as whole runs, and a title-by-title Sanderson comparison.

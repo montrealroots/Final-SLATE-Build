@@ -1359,3 +1359,41 @@ November 12, 2026. Evidence for the pull request that carries them.
 | Not done | — | The four-size UI walk (`UI_COVERAGE_WRITE`) was not rerun for the scaled layout; at 961 wide it is the desktop layout, which the desktop walk covers at 1280. |
 | Carbon copy, compared pixel by pixel: the desktop at 1280 by 2200 against an iPhone 15 Pro Max (430 by 739 shown 1280 wide), Home, Budget, Crew, Music | 2 real, fixed | At 960 wide it was the desktop's narrowest layout, not its screen: 1280 now. The touch screen's 44-pixel controls made buttons taller than the desktop's: off in this layout. WebKit drew selects as white boxes with grey text: selects draw their own arrow now, in every browser. After: 0.14% to 1.48% of pixels differ, all text antialiasing between Chromium and WebKit. |
 | `phone-layout`, `layout`, `devices`, `viewports`, `creation` on desktop, phone, iPhone 15 Pro Max and its landscape | 0 | 74 passed. |
+
+## v4 People: A Part Played By More Than One Performer (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/parts.test.ts` | 2 fixture mistakes of mine, 1 assertion of mine | 6 tests: a stage takes its scenes and their days (and gives them back); refusals; cast on its own, each scene played by its stage's performer, credited with the stage; an uncast stage's age makes it a child's part in its scenes only; a recast from episode 2, kept across a save; a production that shoots both parts of one performer on one day and pays them once. The first assertion counted budget-reservation postings as days. |
+| Mutation: the once-a-day filter removed from `onSetHires` | caught | The shared day is paid twice and the test fails. Two parts on one day paid twice before this change too, across two characters. |
+| `e2e/parts.spec.ts`, desktop and phone | 0 | Age 10 added for two scenes, you cast as Mara grown up, the child offered; the hire table names Mara (Age 10); kept after a reload. |
+| `auditions`, `characters`, `children`, `decisions`, `careers`, `casting-director` specs, desktop and phone | 0 | 21 passed, 3 skipped by design. |
+| `npx vitest run` | 0 | 1,127 tests. |
+| `tests/guide-me.test.ts` (Guide Me for casting) | 0 | The plan names one performer a part, a child for the child's part; approved, those named are offered; a no comes back once and nobody else is offered. |
+| `e2e/guide-me.spec.ts`, desktop and phone | 1 real, fixed | Casting by Guide Me (the plan read, two offers out to those named); music by Guide Me. The music plan was priced before the brief, and taking the brief adds spotting, themes and stems, so the composer didn't fit the ceiling and nobody was offered: it is priced on a copy with the brief now. |
+
+## v4 Reputation By Role (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/reputation.test.ts` | 0 | Read from the work done in each role (writing and directing apart, someone else's direction not counted); a role's craft moves its own day rate within bounds and no other's; offers lean to the stronger role over 60 triggers. |
+| `tests/jobs.test.ts` | 0 | Unchanged: with no record the role draw is the one it always was. |
+| `e2e/jobs.spec.ts`, desktop and phone | 0 | Your Reputation on Profile before anything is delivered. |
+
+
+## v4 Music's Own Jobs (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/cues.test.ts` (the music's own jobs) | 1 test mistake of mine | Orchestration before a players' score's sessions, none for an electronic score; the conform is the music editor's; a composer covers both and a music producer the arrangement. |
+| `tests/songs.test.ts` | expected | A song made for the film is arranged before it is recorded; a licensed recording isn't. |
+| `music`, `journey-c`, `connected` specs, desktop and phone | 0 | 11 passed, 1 skipped by design (journey C runs at desktop width). |
+
+## v4 Audiences And Renewals (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/audiences.test.ts` | 1 expected, 2 test mistakes of mine | Retention passes 100% at high reception; growth and recovery; daily against weekly against a break, averaged over forty worlds (the effect is a few percent, inside a week's 5% draw); a season over budget and a fuller slate raise the bar. |
+| `renewal`, `earnings`, `release-schedule`, `rolling-delivery`, `journey-e`, `decisions` specs, desktop and phone | 0 | 14 passed, 2 skipped by design. |
+
+| PR #82 CI, `accessibility.spec.ts` | 1 real, fixed | Your Reputation's heading took the id `rep-h`, which Representation's heading already had on the same Profile page. It is `reputation-h` now; the spec failed locally before the fix and passes after, desktop and phone. |

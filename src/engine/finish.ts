@@ -27,6 +27,7 @@ import { redactionComplete } from './unscripted';
 import { songCredits, songUses } from './songs';
 import { releaseLicenceRefusal, releaseSongs, unlicensed } from './music';
 import { judgeScore } from './cues';
+import { castIn, partScenes, stageById, stageIn } from './parts';
 import { assumedDates, episodeDateProblem, episodesFor, hasEpisodes, holdUndelivered, onReleaseDay, presetDates, releaseHourPassed, syncReleaseEvents } from './episode-releases';
 import { DAY, addDaysToKey, dateKey, formatDateKey, isDateKey, localToInstant, parseYmd } from './time';
 import type { Credit, DistributionOffer, GameState, Project, ReleasePattern, ReleaseRecord, Scene } from './types';
@@ -165,24 +166,26 @@ export function computeCredits(state: GameState, p: Project): Credit[] {
   for (const a of cast) {
     const c = chars.find((x) => x.id === a.characterId);
     if (!c) continue;
-    const eps = [...new Set(approvedScenes(p).filter((s) => s.participants.includes(c.id)).map((s) => s.episode))];
+    // A stage's performer (parts.ts) for its own scenes' episodes, beside the part's name: "Mara (Age 10)".
+    const eps = [...new Set(partScenes(p, c.id, a.stage).map((s) => s.episode))];
     if (!eps.length) continue;
+    const stage = stageById(p, a.stage)?.label;
     // A series regular is credited in every episode; everyone else in the episodes they appear in.
-    const credited = episodic && c.seriesInvolvement === 'regular' ? 'all' : episodic ? eps : 'all';
+    const credited = episodic && c.seriesInvolvement === 'regular' && !stage ? 'all' : episodic ? eps : 'all';
     const name = a.performer === 'player' ? me : personById(state, a.performer).name;
-    add({ person: a.performer, personName: name, contribution: a.method === 'voice' ? 'Voice Cast' : a.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: a.method === 'voice' ? 'voice-actor' : 'actor', characterName: c.name, episodes: credited });
+    add({ person: a.performer, personName: name, contribution: a.method === 'voice' ? 'Voice Cast' : a.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: a.method === 'voice' ? 'voice-actor' : 'actor', characterName: c.name, ...(stage ? { stage } : {}), episodes: credited });
   }
   // Performers replaced after contributing keep their credit while their work is still in the film: a capture of a
   // scene they performed, or the approved motion-capture take.
   for (const h of p.hires.filter((x) => x.kind === 'cast' && x.status === 'released' && x.daysWorked > 0 && x.characterId)) {
     const c = chars.find((x) => x.id === h.characterId);
-    if (!c || p.cast.some((a) => a.characterId === c.id && a.performer === h.personId)) continue;
-    const scenesOf = approvedScenes(p).filter((s) => s.participants.includes(c.id));
+    if (!c || p.cast.some((a) => a.characterId === c.id && a.performer === h.personId && a.stage === h.stage)) continue;
+    const scenesOf = partScenes(p, c.id, h.stage);
     const inCapture = h.method !== 'voice' && h.method !== 'motion-capture' && p.captures.some((cp) => scenesOf.some((s) => s.id === cp.sceneId) && cp.performers?.includes(h.personId));
     const inTake = h.method === 'motion-capture' && approvedTake(p, c.id)?.performer === h.personId;
     if (!inCapture && !inTake) continue;
     const eps = [...new Set(scenesOf.map((s) => s.episode))];
-    add({ person: h.personId, personName: personById(state, h.personId).name, contribution: h.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: 'actor', characterName: c.name, episodes: episodic ? eps : 'all' });
+    add({ person: h.personId, personName: personById(state, h.personId).name, contribution: h.method === 'motion-capture' ? captureCredit(p.mocap?.[c.id]?.parts) : 'Cast', roleId: 'actor', characterName: c.name, ...(stageById(p, h.stage) ? { stage: stageById(p, h.stage)!.label } : {}), episodes: episodic ? eps : 'all' });
   }
   // Documentary contributors in the cut, under the name they agreed to (documentary.ts): withheld when they asked.
   if (nonfiction) {
@@ -198,7 +201,8 @@ export function computeCredits(state: GameState, p: Project): Credit[] {
   // Each song in the cut or a version: its writers, music and lyrics apart, and its performers. The score composer is
   // credited for the score above, and only writes a song they were credited with.
   songCredits(p, editScenes(p), (p.versions ?? []).map((v) => ({ v, scenes: editScenes(p).filter((sc) => !v.leaveOut.includes(sc.id)) })), add, me, (characterId) => {
-    const a = p.cast.find((x) => x.characterId === characterId);
+    // A song is credited to the part's main performer, else whoever plays it.
+    const a = p.cast.find((x) => x.characterId === characterId && !x.stage) ?? p.cast.find((x) => x.characterId === characterId);
     return a ? { person: a.performer, name: a.performer === 'player' ? me : personById(state, a.performer).name } : null;
   });
   return out;
@@ -304,7 +308,8 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
   for (const a of p.cast) {
     // A take's performance side, where takes were recorded (takes.ts); else the capture's quality, as before.
     // Directing 2: with singles, the editor cuts between takes for the best usable moments (takes.ts editPerformance).
-    const theirs = scenes.filter((s) => s.participants.includes(a.characterId));
+    // Their own scenes: a stage's performer is judged on its scenes alone (parts.ts).
+    const theirs = scenes.filter((s) => s.participants.includes(a.characterId) && stageIn(p, a.characterId, s) === a.stage);
     if (episode !== undefined && !theirs.length) continue; // not in this episode: nothing of theirs to assess
     const sc = theirs.map((s) => { const c = p.captures.find((x) => x.sceneId === s.id); return (c ? editPerformance(p, c) : undefined) ?? c?.quality ?? 60; });
     const base = a.performer === 'player' ? 58 + playerExperience(state, p, 'performer') + Math.min(14, p.schedule.rehearsalDays * 2) : personById(state, a.performer).capability;
@@ -313,7 +318,7 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
     // How they play with the others in each of their scenes (auditions.ts pairChemistry, -8 to +8), at half weight; a
     // chemistry read only reveals it. From November 8, 2026: before, performances ignored who they played against.
     const chem = theirs.map((s) => {
-      const others = p.cast.filter((b) => b.performer !== a.performer && b.characterId !== a.characterId && s.participants.includes(b.characterId));
+      const others = s.participants.filter((cid) => cid !== a.characterId).map((cid) => castIn(p, cid, s, () => true)).filter((b): b is NonNullable<typeof b> => !!b && b.performer !== a.performer);
       return avg(others.map((b) => pairChemistry(state, a.performer, b.performer)), 0);
     });
     // Re-recorded lines, once the session is done, count once toward the part's performance (revisions.ts).

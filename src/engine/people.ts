@@ -61,6 +61,8 @@ export const ROLES: RoleDef[] = [
   R('subtitler', 'Subtitler And Captioner', 'Post Production', 300), R('qc-technician', 'Delivery Quality Control', 'Post Production', 400),
   R('composer', 'Composer', 'Music', 600), R('music-supervisor', 'Music Supervisor', 'Music', 450),
   R('songwriter', 'Songwriter', 'Music', 500), R('lyricist', 'Lyricist', 'Music', 400), R('music-producer', 'Music Producer', 'Music', 500),
+  // Orchestration, a score's conform and a song's arrangement are their own jobs (the v4 package, 03; November 13, 2026).
+  R('orchestrator', 'Orchestrator', 'Music', 450), R('music-editor', 'Music Editor', 'Music', 400), R('arranger', 'Arranger', 'Music', 400),
   R('researcher', 'Researcher', 'Documentary', 350), R('archive-producer', 'Archive Producer', 'Documentary', 450), R('fact-checker', 'Fact Checker', 'Documentary', 350),
 ];
 
@@ -76,7 +78,10 @@ export const COMBINES: Record<string, string[]> = {
   dop: ['camera-operator', 'gaffer', 'stage-dp'],
   'production-designer': ['prop-master', 'art-director', 'set-builder', 'location-manager'],
   'costume-designer': ['hair-makeup'],
-  composer: ['music-supervisor'],
+  // A composer can orchestrate their own score, conform it and supervise the music at small scale; a music producer can
+  // arrange the song they record. One task a day still, so a specialist hired beside them is faster, not cheaper.
+  composer: ['music-supervisor', 'orchestrator', 'music-editor'],
+  'music-producer': ['arranger'],
   'first-ad': ['production-coordinator', 'script-supervisor'],
   researcher: ['fact-checker', 'archive-producer'],
   'character-designer': ['visdev-artist'],

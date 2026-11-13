@@ -216,7 +216,7 @@ export function restoreVersionSong(p: Project, versionId: string, sceneId: strin
   syncSongTasks(p);
 }
 
-const musicTask = (id: string) => /^post:(spotting|themes|themes-revision|stems|conform|music|score-session):/.test(id);
+const musicTask = (id: string) => /^post:(spotting|themes|themes-revision|stems|conform|music|score-session|orchestration):/.test(id);
 
 /**
  * Bring the score's work in the task list in line with the brief, the cue plan and the notes (cues.ts): add the steps a

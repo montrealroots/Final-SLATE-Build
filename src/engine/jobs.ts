@@ -8,6 +8,7 @@
 // days are done the pay comes into the player's own account, less the agent's commission when an agent found it, and
 // the credit is kept. The same days can't hold a shoot day of the player's own project, or another job. Withdrawing
 // costs the pay and makes later offers rarer; so does missing days. Rates, odds and lengths are game calibration.
+import { craftRate, roleCraft, roleWeight } from './reputation';
 import { personalBalance, postPersonal } from './personal';
 import { agentById, recordFor, representedBy } from './representation';
 import { stream } from './rng';
@@ -74,7 +75,8 @@ export function rolesOffered(s: GameState): JobRole[] {
 export function jobDayRate(s: GameState, role: JobRole, viaAgent: boolean): number {
   const r = recordFor(s);
   const base = Math.min(JOB_RATE_CAP, JOB_ROLES[role].base + JOB_ROLES[role].perDelivered * r.delivered + JOB_WIN_BONUS * Math.min(r.wins, 3));
-  return Math.round(base * (viaAgent ? 1 + AGENT_JOB_UPLIFT : 1));
+  // The role's own craft moves it, within bounds (reputation.ts): a strong director is paid more to direct, not to act.
+  return Math.round(base * craftRate(roleCraft(s, role)) * (viaAgent ? 1 + AGENT_JOB_UPLIFT : 1));
 }
 
 /** Consecutive weekdays from about two weeks out, in the place the player is now. */
@@ -94,8 +96,12 @@ registerHandler('job-offer', (state, ev) => {
   // Ids here are derived, not drawn from the shared counter, so an offer of work moves no other seeded draw (finish.ts).
   if (via) schedule(state, state.now + AGENT_SEARCH_DAYS * DAY, 'job-offer', { via }, { attention: 'silent', priority: 70, id: `job-offer:${via}:${state.now}` });
   if (rng() >= (via ? JOB_CHANCE.agent : JOB_CHANCE.delivery) * reliability(state)) return { suppressInterrupt: true };
+  // Which role: weighted by the craft the record shows in each (reputation.ts). Until November 13, 2026 each was as
+  // likely as the next, whatever the work said.
   const roles = rolesOffered(state);
-  const role = roles[Math.floor(rng() * roles.length)];
+  const weights = roles.map((r) => roleWeight(roleCraft(state, r)));
+  let pick = rng() * weights.reduce((a, b) => a + b, 0);
+  const role = roles.find((_, i) => (pick -= weights[i]) < 0) ?? roles[roles.length - 1];
   const def = JOB_ROLES[role];
   const n = def.days[0] + Math.floor(rng() * (def.days[1] - def.days[0] + 1));
   const place = currentPlace(state);

@@ -17,7 +17,7 @@ import { CinemasNearby } from './Cinemas';
 import { RepresentationCard } from './Representation';
 import { YourMoneyCard } from './YourMoney';
 import { YourEquipmentCard } from './Equipment';
-import { WorkForOthersCard } from './Jobs';
+import { ReputationCard, WorkForOthersCard } from './Jobs';
 import { RecordBookCard } from './RecordBook';
 
 
@@ -399,7 +399,7 @@ export function Profile() {
               {credits.map(({ p, x }) => (
                 <li key={p.id + x.id}>
                   <strong><button className="link" onClick={() => store.go({ view: 'project', projectId: p.id, tab: 'release' })}>{p.title}</button></strong>
-                  <div className="dim">{x.contribution}{x.characterName ? ` (${x.characterName})` : ''}{x.episodes !== 'all' ? `, ${plural(x.episodes.length, 'episode')}` : ''}</div>
+                  <div className="dim">{x.contribution}{x.characterName ? ` (${x.characterName}${x.stage ? `, ${x.stage}` : ''})` : ''}{x.episodes !== 'all' ? `, ${plural(x.episodes.length, 'episode')}` : ''}</div>
                 </li>
               ))}
             </ul>
@@ -407,6 +407,7 @@ export function Profile() {
         </section>
         <YourMoneyCard />
         <YourEquipmentCard />
+        <ReputationCard />
         <WorkForOthersCard />
         <RepresentationCard />
         <RecordBookCard />

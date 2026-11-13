@@ -54,7 +54,10 @@ export function songTasks(song: Song, used = true): Task[] {
     }
   }
   if (used && recorded(song)) {
-    out.push({ ...t(performedIn(song).length ? 'prep:song' : 'post:song', song.id, `Record The Song: ${song.title}`, 'Music', 'music-producer', 1, 'days', deps, { sceneIds: performedIn(song) }), id: recordTaskId(song) });
+    // Arranged for the recording first: the arranger's day, or the music producer's who arranges it themselves
+    // (people.ts COMBINES). From November 13, 2026; until then the producer recorded straight from the writing.
+    out.push(t('song:arrange', song.id, `Arrange The Song: ${song.title}`, 'Music', 'arranger', 1, 'days', deps));
+    out.push({ ...t(performedIn(song).length ? 'prep:song' : 'post:song', song.id, `Record The Song: ${song.title}`, 'Music', 'music-producer', 1, 'days', [...deps, `song:arrange:${song.id}`], { sceneIds: performedIn(song) }), id: recordTaskId(song) });
   }
   return out;
 }

@@ -168,6 +168,10 @@ c(f, '{i.label}', D, 'axes.content', 'script-explain.ts; finish.ts outlet requir
 # ---------------- Casting, crew, schedule, budget ----------------
 f = 'PlanViews.tsx'
 c(f, '"Only Show People Who Are Free"', V)
+c(f, '"What To Call It"', R, 'stage.label', 'parts.ts partName: the Cast page, call sheets, offers, credits', 'The stage is named by it beside the part: Mara (Age 10)', U('parts', 'is cast on its own'))
+c(f, '"Age In These Scenes (Optional)"', D, 'stage.age', 'minors.ts minorFor (an uncast stage)', 'Under 16, the stage is a child\'s part before anyone is cast: child rules, supervision and hours in its scenes', U('parts', 'with an age of its own'))
+c(f, '{`Episode ${e}`}', D, 'stage.episodes', 'parts.ts stageIn, partScenes; hiring.ts estimateDays', 'Every scene of the episode is the stage\'s: its performer\'s days, pay, call sheets and credit', U('parts', 'a whole episode from on'))
+c(f, '{sceneLabel(p, s)}', D, 'stage.sceneIds', 'parts.ts stageIn, castIn; production/shoot.ts; callsheet.ts; finish.ts', 'The scene is played by the stage\'s performer: who is called, paid, recorded, judged and credited for it', U('parts', 'shoots each scene with whoever plays it'))
 c(f, '"List Matching Pronouns First"', V)
 c(f, '{`Day Rate For ${c.name}`}', D, 'hire.dayRate', 'hiring.ts resolveOffer', 'What you offer decides whether they accept, counter or decline', U('relationships', 'someone who saw a project through with you takes a fair offer'), '')
 c(f, '{`Read ${who.name} With`}', D, 'audition.callback.partnerId', 'auditions.ts pairChemistry', 'A chemistry read reveals the pair\'s chemistry, which moves shared scenes', U('auditions', 'a chemistry read reveals the pair'), E('auditions', 'auditions'))
@@ -217,7 +221,7 @@ c(f, '"Project"', D, 'entry.projectId', 'awards.ts checkEligibility', 'Which pro
 c(f, '"Episode To Enter"', D, 'entry.episode', 'awards-actions.ts submitEntry; finish.ts assessEpisode', 'The entry is judged on that episode\'s own work', U('episode-assessment', 'a stronger and a weaker episode differ'), E('awards', 'Emmys directing'))
 c(f, '"Song To Enter"', D, 'entry.songId', 'awards-rules.ts songProblems', 'Which song competes, and who it goes to', U('awards-catalog', 'an original song goes to the song'), E('awards', 'Songs'))
 c(f, '"Version To Enter"', D, 'entry.versionId', 'awards-actions.ts entrySnapshot', 'Which cut is judged and timed', U('screen-time', 'a version is its own cut'), E('awards', 'Emmys guest'))
-c(f, '{`${c.personName} as ${c.characterName}`}', D, 'entry.recipients', 'awards-actions.ts submitEntry', 'Who the performance entry is for', U('recipient-rules', 'applies only to the performer categories'), E('awards', 'Emmys'))
+c(f, '{performerLabel(c)}', D, 'entry.recipients', 'awards-actions.ts submitEntry', 'Who the performance entry is for', U('recipient-rules', 'applies only to the performer categories'), E('awards', 'Emmys'))
 c(f, '{`What To Capture For ${name}`}', D, 'mocap.parts', 'mocap.ts bookMocap, sessionCost', 'Body, face or both: session cost and credits', U('lunar-mocap', 'waits for a booking, which reserves the stage'), '')
 
 # ---------------- Calendar, places, settings, shell ----------------
@@ -333,6 +337,8 @@ c(f, '"Show"', V)
 c(f, '"Show"', V, n=2)
 f = 'MusicTab.tsx'
 c(f, '"Let The Composer\'s Themes Stand Without My Review"', D, 'music.brief.delegateReview', 'cues.ts onThemesDone, themesGate; production/workday.ts', 'Composition starts as soon as the themes are written, with no review or notes rounds', U('cues', 'handed to the composer, the themes stand as written'))
+c(f, '"Let The Composer\'s Themes Stand Without My Review"', D, 'music.brief.delegateReview', 'cues.ts onThemesDone, themesGate; production/workday.ts', 'Composition starts as soon as the themes are written, with no review or notes rounds', U('cues', 'handed to the composer, the themes stand as written'), n=2)
+c(f, '"Music Spending Ceiling"', D, 'Project.mandates[].ceiling (Music)', 'mandates.ts guideMePlan, runMandate, guideMeRefusal', 'The most Guide Me may commit for the composer and music supervisor; past it, a counteroffer comes back to the player', U('guide-me', 'never goes past the ceiling'))
 c(f, '"Your Notes On The Themes"', D, 'music.themes.notes, rounds', 'cues.ts giveThemeNotes, themeTasks; song-actions.ts syncMusicTasks', 'A round of revision, days of the composer\'s work, before composition can start', U('cues', 'notes add a round of revision'))
 c(f, '"What Music It Has"', D, 'music.brief.approach', 'cues.ts proposeCues, scoreMinutes; production/tasks.ts (post:music, post:score-session)', 'Silence has no score work and needs no composer; songs only scores nothing; a score places cues', U('cues', 'silence has none and needs no composer'))
 c(f, '"The Score\'s Sound"', D, 'music.brief.style -> axes.score', 'craft.ts SCORES, scoreSessions; production/tasks.ts', 'Players are recorded in sessions; electronic needs none; percussion takes longer to write', U('craft', 'score'))

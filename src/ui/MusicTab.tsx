@@ -11,11 +11,14 @@ import {
 } from '../engine/music';
 import { detachSong, syncMusicTasks, syncSongTasks } from '../engine/song-actions';
 import { songsOf } from '../engine/songs';
-import { APPROACH_LABELS, PURPOSE_LABELS, applyBrief, approveThemes, cueSeconds, cuesToConform, editCue, giveThemeNotes, proposeBrief, scoreMinutes, scoreStyleLabel, type MusicApproach, type MusicBrief } from '../engine/cues';
+import { APPROACH_LABELS, PURPOSE_LABELS, applyBrief, proposeCues, approveThemes, cueSeconds, cuesToConform, editCue, giveThemeNotes, proposeBrief, scoreMinutes, scoreStyleLabel, type MusicApproach, type MusicBrief } from '../engine/cues';
 import { SCORES, type Score } from '../engine/craft';
 import { approvedScenes, sceneLabel } from '../engine/projects';
-import type { Project, Song } from '../engine/types';
-import { Check, SelectField, TextField } from './components';
+import type { GameState, Project, Song } from '../engine/types';
+import { Check, NumberField, SelectField, TextField } from './components';
+import { activeMandate, approveGuideMe, guideMePlan, guideMeRefusal } from '../engine/mandates';
+import { roleLabel } from '../engine/people';
+import { GuideMeStanding } from './PlanViews';
 import { store, useGame } from './store';
 
 const STATUS: Record<SongLicence['status'], string> = { requested: 'Asked', quoted: 'Quoted', countered: 'Counteroffer', refused: 'Refused', agreed: 'Agreed', expired: 'Run Out', declined: 'Declined' };
@@ -25,6 +28,7 @@ export function MusicTab({ p }: { p: Project }) {
   const licensed = songsOf(p).filter((s) => s.rights === 'licensed');
   return (
     <>
+    {p.music && !p.delivered && <MusicGuideMe p={p} />}
     {p.music && <BriefCard p={p} />}
     {p.music?.brief && <CuePlan p={p} />}
     <section className="card" aria-labelledby="licences-h">
@@ -41,6 +45,66 @@ export function MusicTab({ p }: { p: Project }) {
       )}
     </section>
     </>
+  );
+}
+
+/**
+ * Guide Me for music (the v4 package, 03: "Guide Me can propose the complete cue plan and shortlist composers/supervisors
+ * within the approved budget. The player can approve once ... or delegate routine review"; November 13, 2026): one
+ * approval takes the proposed brief and its cue plan, if none is taken yet, and staffs the Music department within a
+ * ceiling (mandates.ts). Licences, notes on the themes (unless handed over) and anything over the ceiling stay yours.
+ */
+function MusicGuideMe({ p }: { p: Project }) {
+  const g = useGame();
+  const [open, setOpen] = useState(false);
+  const [delegate, setDelegate] = useState(false);
+  const [err, setErr] = useState<string | null>(null);
+  const live = () => store.state!.projects.find((x) => x.id === p.id)!;
+  const brief = p.music!.brief ?? proposeBrief(p, g.now);
+  // The staff are priced as the work will be once the brief is taken (spotting, themes, the cued minutes, stems): a
+  // copy of the project with the brief and its cues, built aside; the game is not touched until Approve.
+  const preview = p.music!.brief ? p : (() => {
+    const q: Project = { ...p, axes: { ...p.axes, ...(brief.approach === 'score' || brief.approach === 'mixed' ? { score: brief.style } : {}) }, music: { ...p.music!, brief }, tasks: [] };
+    q.music!.cues = proposeCues({ idCounter: 0 } as GameState, q);
+    return q;
+  })();
+  const plan = guideMePlan(g, preview, 'Music');
+  const [ceiling, setCeiling] = useState(plan.total);
+  const staffing = plan.picks.length > 0 && !activeMandate(p, 'Music');
+  const no = staffing ? guideMeRefusal(p, 'Music', ceiling) : null;
+  return (
+    <section className="card" aria-labelledby="music-guide-h">
+      <h2 id="music-guide-h">Guide Me For Music</h2>
+      <GuideMeStanding p={p} dept="Music" />
+      {!open ? (
+        <>
+          <p className="muted">One approval: {p.music!.brief ? 'your brief stands' : "the brief the game proposes, and its cue plan"}{staffing ? ', and a composer and music supervisor within a ceiling you set' : ''}. Licences, and anything over the ceiling, stay yours.</p>
+          {(!p.music!.brief || staffing) && <button className="btn" onClick={() => { setCeiling(plan.total); setOpen(true); }}>Guide Me</button>}
+        </>
+      ) : (
+        <>
+          {!p.music!.brief && <p><strong>The Brief:</strong> {APPROACH_LABELS[brief.approach]}{brief.approach === 'score' || brief.approach === 'mixed' ? `, ${scoreStyleLabel(brief.style).toLowerCase()}, on about ${Math.round(brief.density * 100)}% of the scenes` : ''}. {brief.why.join(' ')}</p>}
+          {staffing && (
+            <>
+              <ul className="list" aria-label="Who Guide Me Would Offer">{plan.picks.map((x) => <li key={x.roleId} className="list-item"><span className="grow"><strong>{roleLabel(x.roleId)}</strong>: {x.name}, {money(x.dayRate)} a day for {x.days} {x.days === 1 ? 'day' : 'days'}</span><span>{money(x.total)}</span></li>)}</ul>
+              {plan.gaps.map((x) => <p key={x} className="callout small">{x}</p>)}
+              <NumberField label="Music Spending Ceiling" value={ceiling} min={0} max={100_000_000} onChange={setCeiling} hint="The most Guide Me may commit for the Music department's hires. It tries someone else when one says no." />
+            </>
+          )}
+          {!p.music!.brief && brief.approach !== 'silence' && <Check label="Let The Composer's Themes Stand Without My Review" hint="Otherwise they wait for you to approve them, or give notes for a round of revision." checked={delegate} onChange={setDelegate} />}
+          {no && <p className="small">{no}</p>}
+          <div className="row gap-2 wrap">
+            <button className="btn btn-primary" disabled={!!no} onClick={() => { const e = store.act((s) => {
+              const q = live();
+              if (!q.music!.brief) { applyBrief(s, q, { ...brief, ...(delegate ? { delegateReview: true } : {}) }); syncMusicTasks(q); }
+              if (staffing) approveGuideMe(s, q, 'Music', ceiling);
+            }); setErr(e); if (!e) setOpen(false); }}>Approve</button>
+            <button className="btn" onClick={() => setOpen(false)}>Keep It Manual</button>
+          </div>
+          {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+        </>
+      )}
+    </section>
   );
 }
 

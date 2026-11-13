@@ -15,12 +15,13 @@
 // costs more; the people who must be with them are crew the production hires and pays on the days they work; their
 // scenes can't be shot before the licence is granted, without those people, at night without approval, or the morning
 // after a late night; and their pay has a part that isn't theirs to spend until they are adults.
+import { castIn, stageById, stageIn } from './parts';
 import { getPlace, type Place } from '../data/places';
 import { placeHolidaysOn } from './holidays';
 import { personAge, personById } from './people';
 import { storyAge } from './story-age';
 import { addDaysToKey, ageOn, observedBirthday, weekdayOfKey } from './time';
-import type { GameState, Project } from './types';
+import type { CastAssignment, GameState, Project, Scene } from './types';
 
 export interface AgeBand {
   /** Ages in days, from and below: a band of 9 to 16 years is [9 years, 16 years). */
@@ -833,10 +834,13 @@ export function ageInDays(born: string, on: string): number {
  * yet cast is reckoned from the character's age: under 16 in the story, a child of that age is assumed, as children's
  * parts are played by children; at 16 and 17, by an adult, as is common, until someone younger is cast.
  */
-export function minorFor(state: GameState | undefined, p: Project, characterId: string, on: string, method: 'on-set' | 'voice' | 'motion-capture' = 'on-set'): Minor | null {
+export function minorFor(state: GameState | undefined, p: Project, characterId: string, on: string, method: 'on-set' | 'voice' | 'motion-capture' = 'on-set', scene?: Pick<Scene, 'id' | 'episode'>): Minor | null {
   const { rules } = projectRules(p, on);
   const ch = p.characters.find((c) => c.id === characterId);
-  const cast = p.cast.find((c) => c.characterId === characterId && (method === 'on-set' ? c.method !== 'voice' : c.method === method));
+  // In a scene, whoever plays the part there (a stage's performer, parts.ts); otherwise the part's main performer.
+  const which = (c: CastAssignment) => (method === 'on-set' ? c.method !== 'voice' : c.method === method);
+  const stage = scene ? stageIn(p, characterId, scene) : undefined;
+  const cast = scene ? castIn(p, characterId, scene, which) : p.cast.find((c) => c.characterId === characterId && !c.stage && which(c));
   if (cast && cast.performer === 'player') return null; // the player is never under 19 (state.ts MIN_START_AGE)
   if (cast && state) {
     const person = personById(state, cast.performer);
@@ -847,7 +851,9 @@ export function minorFor(state: GameState | undefined, p: Project, characterId: 
     const band = bandFor(rules, ageDays);
     return band ? { characterId, name: person.name, personId: person.id, ageDays, band, rules } : null;
   }
-  const a = storyAge(ch?.ageInStory);
+  // A stage with an age of its own (a part as a child) is reckoned from that age until someone is cast.
+  const stageAge = stageById(p, stage)?.age;
+  const a = stageAge !== undefined ? { min: stageAge, max: stageAge } : storyAge(ch?.ageInStory);
   if (!a || a.max >= 16 || a.max >= rules.adultAt) return null;
   const ageDays = Math.round(a.min * YEAR + YEAR / 2);
   const band = bandFor(rules, Math.max(rules.minAgeDays, ageDays));

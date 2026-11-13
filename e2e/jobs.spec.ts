@@ -22,6 +22,11 @@ test('an agent finds paid work: offered with its days and their share, taken, wo
   await addScene(page, { index: 0, place: 'Dock', chars: ['Ines'], minutes: '3' });
   await saveAndApprove(page);
   await nav(page, 'Profile');
+  // How the industry reads the record (reputation.ts): nothing delivered, nothing against them.
+  const reputation = page.getByRole('definition').filter({ hasText: /./ });
+  await expect(card(page, 'Your Reputation')).toContainText('DirectingNo delivered work in this role yet.');
+  await expect(card(page, 'Your Reputation')).toContainText('Nothing against you: no work withdrawn from, no day missed.');
+  expect(await reputation.count()).toBeGreaterThan(0);
   const work = card(page, 'Work For Others');
   await expect(work).toContainText('None yet.');
   const rep = card(page, 'Representation');

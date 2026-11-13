@@ -10,7 +10,8 @@ import { cancel, commit, ledgerTotals, money, obligation, reserve, settle, Funds
 import { genre } from './genres';
 import { COMBINES, candidates, countryLanguage, covers, isAvailable, personById, role, roleLabel, type Person } from './people';
 import { buildTasks, coachingNeeded, estimatedShootDays, planShootDays } from './production';
-import { approvalRights, approvedCharacters, characterName, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneTechnique } from './projects';
+import { castIn, partName, partScenes, samePart, stageById, stageIn } from './parts';
+import { approvalRights, approvedCharacters, approvedScenes, isEpisodic, isNonfiction, projectModules, sceneTechnique } from './projects';
 import { recordHistory, willingness } from './relationships';
 import { stream } from './rng';
 import { addLog, newId, registerHandler, schedule } from './state';
@@ -136,7 +137,7 @@ export function payDelegatedDays(state: GameState, p: Project, h: Hire, days: nu
 /** A casting search is two of the casting director's days: one to prepare the list, one for the session. */
 export const CASTING_SEARCH_DAYS = 2;
 
-export function estimateDays(p: Project, roleId: string, characterId?: string, method?: PerformanceMethod, state?: GameState): number {
+export function estimateDays(p: Project, roleId: string, characterId?: string, method?: PerformanceMethod, state?: GameState, stage?: string): number {
   if (WELFARE.has(roleId)) return Math.max(1, childDays(p, state));
   // A casting director's agreement covers one search; each further search adds its days (casting-director.ts).
   if (roleId === 'casting-director') return CASTING_SEARCH_DAYS;
@@ -148,13 +149,14 @@ export function estimateDays(p: Project, roleId: string, characterId?: string, m
       const cap = tasks.find((t) => t.kind === 'anim:mocap' && t.assetRef === characterId);
       if (cap) return Math.max(1, Math.ceil(cap.units));
     }
-    const scenes = approvedScenes(p).filter((s) => s.participants.includes(characterId) && sceneTechnique(p, s) === 'live');
+    // The part's scenes, or a stage's (parts.ts): a stage's performer is contracted for its scenes alone.
+    const scenes = partScenes(p, characterId, stage).filter((s) => sceneTechnique(p, s) === 'live');
     const ratio = scenes.length / Math.max(1, approvedScenes(p).filter((s) => sceneTechnique(p, s) === 'live').length);
     const ch = approvedCharacters(p).find((c) => c.id === characterId);
     let days = Math.max(1, Math.ceil(shootDays * Math.max(ratio, 0.15)) + Math.ceil(p.schedule.rehearsalDays / 2));
     // A series regular is contracted for every episode, so at least a day in each; a narrator adds a recording session
     // (the narration task in production/tasks.ts). Both read the part's own declared terms, never its prose.
-    if (ch && isEpisodic(p.axes.format) && ch.seriesInvolvement === 'regular') days = Math.max(days, p.axes.episodeCount);
+    if (ch && !stage && isEpisodic(p.axes.format) && ch.seriesInvolvement === 'regular') days = Math.max(days, p.axes.episodeCount);
     if (ch?.functions.includes('narrator')) days += 1;
     return days;
   }
@@ -212,6 +214,8 @@ export interface OfferInput {
   characterId?: string;
   method?: PerformanceMethod;
   episodes?: number[] | 'all';
+  /** A stage of the part (parts.ts): its scenes alone. */
+  stage?: string;
 }
 
 export function activeHireFor(p: Project, input: { roleId: string; characterId?: string; method?: PerformanceMethod; personId?: string }): Hire | undefined {
@@ -234,33 +238,35 @@ export function makeOffer(state: GameState, p: Project, input: OfferInput): Hire
   if (person.roleId !== input.roleId) throw new Error(`${person.name} doesn't work as ${roleLabel(input.roleId).toLowerCase()}.`);
   if (!(input.dayRate > 0) || !Number.isFinite(input.dayRate)) throw new Error('Offer a day rate above zero.');
   if (input.dayRate > person.dayRate * 3) throw new Error('That offer is far above any reasonable rate for this role.');
-  if (p.hires.some((h) => h.personId === input.personId && h.roleId === input.roleId && h.characterId === input.characterId && ['offered', 'accepted', 'countered'].includes(h.status))) {
+  if (input.stage && !stageById(p, input.stage)) throw new Error('That stage of the part no longer exists.');
+  if (p.hires.some((h) => h.personId === input.personId && h.roleId === input.roleId && h.characterId === input.characterId && h.stage === input.stage && ['offered', 'accepted', 'countered'].includes(h.status))) {
     throw new Error(`${person.name} already has an offer for this.`);
   }
   if (input.characterId) {
-    const existing = p.cast.find((c) => c.characterId === input.characterId && c.method === (input.method ?? 'on-camera'));
+    const existing = p.cast.find((c) => samePart(c, input.characterId!, input.method ?? 'on-camera', input.stage));
     if (existing) throw new Error('That role is already cast. Release the current performer first.');
-    if (p.hires.some((h) => h.characterId === input.characterId && h.method === (input.method ?? 'on-camera') && (h.status === 'offered' || h.status === 'countered'))) {
+    if (p.hires.some((h) => samePart(h, input.characterId!, input.method ?? 'on-camera', input.stage) && (h.status === 'offered' || h.status === 'countered'))) {
       throw new Error('There is already an open offer for this role.');
     }
   }
   if (input.characterId) {
-    // One performer may play several characters, but never two who share a scene in the same way.
+    // One performer may play several characters, but never two who share a scene in the same way: a scene this part (or
+    // stage) plays where they already play, or are offered, another character's part in it (parts.ts).
     const method = input.method ?? 'on-camera';
     const theirs = [
-      ...p.cast.filter((c) => c.performer === input.personId && c.method === method).map((c) => c.characterId),
-      ...p.hires.filter((h) => h.personId === input.personId && h.method === method && (h.status === 'offered' || h.status === 'countered') && h.characterId).map((h) => h.characterId!),
-    ];
-    const clash = approvedScenes(p).find((s) => s.participants.includes(input.characterId!) && theirs.some((c) => c !== input.characterId && s.participants.includes(c)));
+      ...p.cast.filter((c) => c.performer === input.personId && c.method === method).map((c) => ({ characterId: c.characterId, stage: c.stage })),
+      ...p.hires.filter((h) => h.personId === input.personId && h.method === method && (h.status === 'offered' || h.status === 'countered') && h.characterId).map((h) => ({ characterId: h.characterId!, stage: h.stage })),
+    ].filter((x) => x.characterId !== input.characterId);
+    const clash = partScenes(p, input.characterId, input.stage).find((s) => theirs.some((x) => s.participants.includes(x.characterId) && stageIn(p, x.characterId, s) === x.stage));
     if (clash) {
-      const other = approvedCharacters(p).find((c) => theirs.includes(c.id) && clash.participants.includes(c.id));
-      throw new Error(`${person.name} can't play both roles. ${other?.name ?? 'Their other character'} is in the same scene.`);
+      const other = theirs.find((x) => clash.participants.includes(x.characterId) && stageIn(p, x.characterId, clash) === x.stage);
+      throw new Error(`${person.name} can't play both roles. ${other ? partName(p, other.characterId, other.stage) : 'Their other character'} is in the same scene.`);
     }
   }
-  const days = estimateDays(p, input.roleId, input.characterId, input.method, state);
+  const days = estimateDays(p, input.roleId, input.characterId, input.method, state, input.stage);
   const amount = input.dayRate * days;
   const label = input.characterId
-    ? `${person.name} as ${approvedCharacters(p).find((c) => c.id === input.characterId)?.name ?? 'cast'}`
+    ? `${person.name} as ${partName(p, input.characterId, input.stage)}`
     : `${person.name}, ${roleLabel(input.roleId)}`;
   const o = reserve(state, p, label, role(input.roleId).cast ? 'cast' : 'crew', amount);
   const r = stream(state.seed, 'offer-delay', p.id, input.personId, p.hires.length);
@@ -271,7 +277,7 @@ export function makeOffer(state: GameState, p: Project, input: OfferInput): Hire
   const responseAt = state.now + DAY + Math.floor(r() * 2 * DAY) + approvalDelay;
   const hire: Hire = {
     id: newId(state, 'h'), personId: input.personId, roleId: input.roleId, kind: role(input.roleId).cast ? 'cast' : 'crew', characterId: input.characterId,
-    method: input.characterId ? input.method ?? 'on-camera' : undefined, episodes: input.episodes ?? 'all', dayRate: Math.round(input.dayRate), estDays: days,
+    method: input.characterId ? input.method ?? 'on-camera' : undefined, ...(input.stage ? { stage: input.stage } : {}), episodes: input.episodes ?? 'all', dayRate: Math.round(input.dayRate), estDays: days,
     status: 'offered', offeredAt: state.now, responseAt, obligationId: o.id, daysWorked: 0,
   };
   o.ref = hire.id;
@@ -295,7 +301,7 @@ export function resolveOffer(state: GameState, p: Project, h: Hire): string {
   const r = stream(state.seed, 'offer', h.id)();
   const win = productionWindow(state, p);
   const avail = isAvailable(state, person, win.from, win.to, p.id);
-  const roleWord = h.characterId ? `the role of ${characterName(p, h.characterId)}` : `the ${roleLabel(h.roleId).toLowerCase()} job`;
+  const roleWord = h.characterId ? `the role of ${partName(p, h.characterId, h.stage)}` : `the ${roleLabel(h.roleId).toLowerCase()} job`;
   const lead = h.characterId && ['lead', 'co-lead', 'ensemble-lead'].includes(approvedCharacters(p).find((c) => c.id === h.characterId)?.roleSize ?? '');
   let text: string;
   if (!avail.ok) {
@@ -375,11 +381,11 @@ function accept(state: GameState, p: Project, h: Hire, rate: number): void {
   ps.bookings = ps.bookings.filter((b) => b.projectId !== p.id);
   ps.bookings.push({ from: win.from, to: win.to, projectId: p.id });
   if (h.characterId) {
-    p.cast = p.cast.filter((c) => !(c.characterId === h.characterId && c.method === h.method));
+    p.cast = p.cast.filter((c) => !samePart(c, h.characterId!, h.method ?? 'on-camera', h.stage));
     // How the part was cast, as the cast list says it: after a callback, after a read, or on an offer alone.
     const read = p.auditions?.find((a) => a.personId === h.personId && a.characterId === h.characterId && a.status === 'seen');
     const note = read?.callback?.status === 'seen' ? 'Cast after a callback.' : read ? 'Cast after an audition.' : 'Cast on an offer, without an audition.';
-    p.cast.push({ characterId: h.characterId, performer: h.personId, method: h.method ?? 'on-camera', note, hireId: h.id });
+    p.cast.push({ characterId: h.characterId, performer: h.personId, method: h.method ?? 'on-camera', note, hireId: h.id, ...(h.stage ? { stage: h.stage } : {}) });
   }
 }
 
@@ -441,24 +447,25 @@ export function releaseHire(state: GameState, p: Project, hireId: string): void 
 }
 
 /** The player can take any role, or none. Acting in a project is a casting decision, not a title. */
-export function castPlayer(state: GameState, p: Project, characterId: string, method: PerformanceMethod): CastAssignment {
+export function castPlayer(state: GameState, p: Project, characterId: string, method: PerformanceMethod, stage?: string): CastAssignment {
   if (p.approvedDraft === null) throw new Error('Approve a draft before casting.');
   const c = approvedCharacters(p).find((x) => x.id === characterId);
   if (!c) throw new Error('That character is not in the approved draft.');
-  if (p.cast.some((x) => x.characterId === characterId && x.method === method)) throw new Error('That role is already cast. Release the current performer first.');
-  const a: CastAssignment = { characterId, performer: 'player', method, note: 'You play the part yourself.' };
+  if (stage && !stageById(p, stage)) throw new Error('That stage of the part no longer exists.');
+  if (p.cast.some((x) => samePart(x, characterId, method, stage))) throw new Error('That role is already cast. Release the current performer first.');
+  const a: CastAssignment = { characterId, performer: 'player', method, note: 'You play the part yourself.', ...(stage ? { stage } : {}) };
   p.cast.push(a);
   for (const d of p.schedule.days) {
-    if (approvedScenes(p).some((s) => d.sceneIds.includes(s.id) && s.participants.includes(characterId))) d.playerActing = true;
+    if (partScenes(p, characterId, stage).some((s) => d.sceneIds.includes(s.id))) d.playerActing = true;
   }
-  addLog(state, `You cast yourself as ${c.name}.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'cast' } });
+  addLog(state, `You cast yourself as ${partName(p, characterId, stage)}.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'cast' } });
   return a;
 }
 
-export function uncastPlayer(p: Project, characterId: string): void {
-  p.cast = p.cast.filter((x) => !(x.characterId === characterId && x.performer === 'player'));
+export function uncastPlayer(p: Project, characterId: string, stage?: string): void {
+  p.cast = p.cast.filter((x) => !(x.characterId === characterId && x.performer === 'player' && x.stage === stage));
   for (const d of p.schedule.days) {
-    d.playerActing = approvedScenes(p).some((s) => d.sceneIds.includes(s.id) && s.participants.some((cid) => p.cast.some((x) => x.characterId === cid && x.performer === 'player')));
+    d.playerActing = approvedScenes(p).some((s) => d.sceneIds.includes(s.id) && s.participants.some((cid) => castIn(p, cid, s)?.performer === 'player'));
   }
 }
 

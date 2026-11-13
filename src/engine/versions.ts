@@ -6,6 +6,7 @@
 import { computeCredits, editScenes } from './finish';
 import { assertEditable } from './projects';
 import { newId } from './state';
+import { stageIn } from './parts';
 import { t } from './production/tasks';
 import type { Credit, GameState, Project, ProjectVersion } from './types';
 
@@ -49,7 +50,12 @@ export function versionCredits(state: GameState, p: Project, v: ProjectVersion):
   const contributors = new Set(keep.flatMap((s) => s.contributorIds));
   const byName = new Map(p.characters.map((c) => [c.name, c.id]));
   return (p.credits?.length ? p.credits : computeCredits(state, p)).filter((c) => {
-    if (c.characterName) return characters.has(byName.get(c.characterName) ?? '');
+    if (c.characterName) {
+      // By the scenes it keeps that this performer plays: the part's, or its stage's (parts.ts).
+      const cid = byName.get(c.characterName) ?? '';
+      const stage = c.stage ? (p.stages ?? []).find((x) => x.characterId === cid && x.label === c.stage)?.id : undefined;
+      return characters.has(cid) && keep.some((s) => s.participants.includes(cid) && stageIn(p, cid, s) === stage);
+    }
     if (c.roleId === 'contributor') return contributors.has(c.person.replace(/^contributor:/, ''));
     return true;
   });

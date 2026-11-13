@@ -23,7 +23,7 @@ import { roleLabel } from '../engine/people';
 import { applyFix, dailies } from '../engine/directing';
 import { isDirecting2 } from '../engine/takes';
 import { contentSummary, cutConsequences, placementExplained, watershedRule } from '../engine/script-explain';
-import type { CapturePart, Edition, EditionEntry, Format, GameState, Project, ReleaseRecord } from '../engine/types';
+import type { CapturePart, Credit, Edition, EditionEntry, Format, GameState, Project, ReleaseRecord } from '../engine/types';
 import { Check, Modal, NumberField, PageHead, SelectField, TextField, longLocal, plural } from './components';
 import { Breadcrumbs } from './Shell';
 import { ReleaseCinemas } from './Cinemas';
@@ -78,6 +78,9 @@ function DesignsPanel({ p }: { p: Project }) {
   );
 }
 
+
+/** A performer's credit as an entry form names it: who, and the part, with its stage (parts.ts). */
+const performerLabel = (c: Credit): string => `${c.personName} as ${c.characterName}${c.stage ? ` (${c.stage})` : ''}`;
 export function ProductionTab({ p }: { p: Project }) {
   const g = useGame();
   const [songErr, setSongErr] = useState<string | null>(null);
@@ -471,7 +474,7 @@ export function ReleaseTab({ p }: { p: Project }) {
   const [err, setErr] = useState<string | null>(null);
   const [cancelling, setCancelling] = useState<string | null>(null);
   // A series' episode dates: a preset until you change one, then your own (episode-releases.ts).
-  const [pattern, setPattern] = useState<'all' | 'weekly' | 'premiere-weekly'>('weekly');
+  const [pattern, setPattern] = useState<'all' | 'weekly' | 'daily' | 'premiere-weekly'>('weekly');
   const [onPremiere, setOnPremiere] = useState(2);
   const [own, setOwn] = useState<string[] | null>(null);
   const [editing, setEditing] = useState<{ id: string; dates: string[] } | null>(null);
@@ -497,7 +500,7 @@ export function ReleaseTab({ p }: { p: Project }) {
                 <tr key={c.id}>
                   <td data-label="Credit">{c.contribution}</td>
                   <td data-label="Name">{c.person === 'player' ? <strong>{g.character.portrait && <img className="headshot headshot-sm" src={g.character.portrait} alt="" />}{c.personName}</strong> : c.personName}</td>
-                  <td data-label="Details">{c.characterName ? `as ${c.characterName}` : ''}{episodic && c.episodes !== 'all' ? `${c.characterName ? ', ' : ''}Episodes ${c.episodes.join(', ')}` : ''}</td>
+                  <td data-label="Details">{c.characterName ? `as ${c.characterName}${c.stage ? ` (${c.stage})` : ''}` : ''}{episodic && c.episodes !== 'all' ? `${c.characterName ? ', ' : ''}Episodes ${c.episodes.join(', ')}` : ''}</td>
                 </tr>
               ))}
             </tbody>
@@ -564,7 +567,7 @@ export function ReleaseTab({ p }: { p: Project }) {
           <fieldset className="form" style={{ border: 0, padding: 0, margin: 0 }}>
             <legend className="small" style={{ padding: 0 }}>Episode Dates</legend>
             <div className="grid grid-3 form">
-              <SelectField label="Episode Schedule" value={pattern} options={(['all', 'weekly', 'premiere-weekly'] as const).map((x) => ({ value: x, label: PATTERN_LABELS[x] }))} onChange={(v) => { setPattern(v); setOwn(null); }} />
+              <SelectField label="Episode Schedule" value={pattern} options={(['all', 'weekly', 'daily', 'premiere-weekly'] as const).map((x) => ({ value: x, label: PATTERN_LABELS[x] }))} onChange={(v) => { setPattern(v); setOwn(null); }} />
               {pattern === 'premiere-weekly' && <NumberField label="Episodes On The Premiere" value={onPremiere} min={1} max={count} onChange={(v) => { setOnPremiere(v); setOwn(null); }} />}
             </div>
             <p className="dim">Episode 1 comes out on the release date. Change any other date for a break or a split season{own ? '; these are now dates of your own' : ''}. Award rules read when each episode comes out.</p>
@@ -970,7 +973,7 @@ function SubmissionDialog({ editionId, cat, initialProject, onClose, onError }: 
       {personal && pool.length > 0 && (
         <fieldset style={{ border: 0, padding: 0 }}>
           <legend style={{ fontWeight: 600 }}>Performance To Enter</legend>
-          {pool.map((c) => <Check key={c.id} label={`${c.personName} as ${c.characterName}`} checked={recipients.includes(c.id)} onChange={(v) => setRecipients(v ? [c.id] : [])} />)}
+          {pool.map((c) => <Check key={c.id} label={performerLabel(c)} checked={recipients.includes(c.id)} onChange={(v) => setRecipients(v ? [c.id] : [])} />)}
         </fieldset>
       )}
       {screen && candidates.length > 0 && (

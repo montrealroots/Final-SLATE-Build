@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { FIT_PER_ROUND, OUT_OF_SYNC, UNDER_DIALOGUE, UNREVIEWED_FIT, applyBrief, approveThemes, editCue, giveThemeNotes, judgeScore, onThemesDone, proposeBrief, proposeCues, scoreMinutes, themesGate, timeCues } from '../src/engine/cues';
 import { buildTasks } from '../src/engine/production/tasks';
 import { neededRoles } from '../src/engine/hiring';
+import { covers } from '../src/engine/people';
 import { createSong, attachSong, syncMusicTasks } from '../src/engine/song-actions';
 import type { GameState, Project } from '../src/engine/types';
 import { approvedScenes } from '../src/engine/projects';
@@ -244,5 +245,24 @@ describe('how the score is judged', () => {
     }
     p.music!.brief!.delegateReview = true;
     expect(judgeScore(p, 60)!.fit).toBe(UNREVIEWED_FIT);
+  });
+});
+
+describe('the music\'s own jobs', () => {
+  it('a score for players is orchestrated before it is recorded, an orchestrator\'s job a composer can cover; the conform is the music editor\'s', () => {
+    const { s, p } = film('cue-roles', { genres: ['drama'] });
+    applyBrief(s, p, { ...proposeBrief(p, s.now), style: 'chamber' }); // players: recorded in sessions
+    const orch = buildTasks(p).find((t) => t.kind === 'post:orchestration')!;
+    expect(orch.roleId).toBe('orchestrator');
+    expect(buildTasks(p).find((t) => t.kind === 'post:score-session')!.dependsOn).toContain(orch.id);
+    expect(covers('composer', 'orchestrator')).toBe(true);
+    applyBrief(s, p, { ...proposeBrief(p, s.now), style: 'synth' }); // electronic: no players, nothing to orchestrate
+    expect(buildTasks(p).some((t) => t.kind === 'post:orchestration')).toBe(false);
+    timeCues(p, 1);
+    const scored = p.music!.cues!.find((c) => c.source === 'score')!;
+    approvedScenes(p).find((x) => x.id === scored.sceneId)!.estMinutes += 2;
+    expect(buildTasks(p).find((t) => t.kind === 'post:conform')?.roleId).toBe('music-editor');
+    expect(covers('composer', 'music-editor')).toBe(true);
+    expect(covers('music-producer', 'arranger')).toBe(true);
   });
 });

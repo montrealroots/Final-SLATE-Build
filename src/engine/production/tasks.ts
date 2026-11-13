@@ -8,6 +8,9 @@ import { ANIM_RATE, FACE_METHODS, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS } from './r
 import { CONFORM_DAYS_PER_CUE, MIX_DAYS_UNDER_DIALOGUE, STEMS_DAYS, cuesToConform, lastThemesTask, scoreMinutes, scoreSteps, themeTasks } from '../cues';
 import { recordTaskId, songTasks, songUses } from '../songs';
 import { RELAY_DAYS } from '../music';
+
+/** Game calibration: minutes of score orchestrated in a day, for players to read. */
+export const ORCHESTRATION_MINUTES_PER_DAY = 5;
 import { CREATURE_FOLEY_DAYS, LIGHTS, LOOP_GROUP_PER_SCENES, LOOP_GROUP_SESSION, WILD_TRACK_PER_LOCATIONS, cameraTestDays, lightOf, postFactors, rigRehearsalDays, scoreSessions, soundsOf } from '../craft';
 import { permitWork } from '../destinations';
 import { CROWD_POST_DAYS, PERIOD_WORK, costumeCopies, digitalCrowd, makeup, projectBand, statesOf, wardrobe } from '../looks';
@@ -292,11 +295,15 @@ export function buildTasks(p: Project): Task[] {
     }
     if (scored > 0) tasks.push(t('post:music', String(e), `Score${epSuffix(p, e)}`, 'Music', 'composer', compose, 'days', [lock, ...(steps ? [`post:spotting:${e}`, lastThemesTask(p)] : [])], { episode: e }));
     const conform = scored > 0 ? cuesToConform(p, e) : [];
-    if (conform.length) tasks.push(t('post:conform', String(e), `Conform Score To The Cut${epSuffix(p, e)}`, 'Music', 'composer', conform.length * CONFORM_DAYS_PER_CUE, 'days', [`post:music:${e}`], { episode: e, sceneIds: conform.map((c) => c.sceneId) }));
+    // The music editor conforms the cues to the recut (a composer covers it on a small production, people.ts COMBINES).
+    if (conform.length) tasks.push(t('post:conform', String(e), `Conform Score To The Cut${epSuffix(p, e)}`, 'Music', 'music-editor', conform.length * CONFORM_DAYS_PER_CUE, 'days', [`post:music:${e}`], { episode: e, sceneIds: conform.map((c) => c.sceneId) }));
     const underTalk = (p.music?.cues ?? []).filter((c) => c.episode === e && c.underDialogue).length;
     // A score with players is recorded in sessions, paid for as the task's materials; the mix waits for them.
     const sessions = scored > 0 ? scoreSessions(p, scored) : { sessions: 0, each: 0 };
-    if (sessions.sessions) tasks.push(t('post:score-session', String(e), `Score Recording${epSuffix(p, e)}`, 'Music', 'composer', sessions.sessions, 'sessions', [`post:music:${e}`], { episode: e, material: sessions.sessions * sessions.each }));
+    // Players read parts: the score is orchestrated for them first, its own job (the orchestrator's, or a composer's who
+    // does it themselves), at ORCHESTRATION_MINUTES_PER_DAY of score a day (game calibration). From November 13, 2026.
+    if (sessions.sessions) tasks.push(t('post:orchestration', String(e), `Orchestration${epSuffix(p, e)}`, 'Music', 'orchestrator', Math.max(0.5, scored / ORCHESTRATION_MINUTES_PER_DAY), 'days', [`post:music:${e}`], { episode: e }));
+    if (sessions.sessions) tasks.push(t('post:score-session', String(e), `Score Recording${epSuffix(p, e)}`, 'Music', 'composer', sessions.sessions, 'sessions', [`post:music:${e}`, `post:orchestration:${e}`], { episode: e, material: sessions.sessions * sessions.each }));
     if (steps) tasks.push(t('post:stems', String(e), `Score Mix And Stems${epSuffix(p, e)}`, 'Music', 'composer', STEMS_DAYS, 'days', [`post:music:${e}`, ...(sessions.sessions ? [`post:score-session:${e}`] : []), ...(conform.length ? [`post:conform:${e}`] : [])], { episode: e }));
     // A loop group records the crowd for the scenes that have one.
     const crowdScenes2 = soundsOf(p).includes('crowd') ? eScenes.filter((s) => s.crowd > 0) : [];

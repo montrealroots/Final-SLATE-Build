@@ -2,7 +2,7 @@
 // inside an approved ceiling, by ordinary in-game actions that take their time, with anything outside it returned once.
 import { describe, expect, it } from 'vitest';
 import { DAY, ledgerTotals, processUntil } from './engine-api';
-import { GUIDE_ME_LOOK_DAYS, activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted, runMandate } from '../src/engine/mandates';
+import { CAST, GUIDE_ME_LOOK_DAYS, activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted, runMandate } from '../src/engine/mandates';
 import { withdrawOffer } from '../src/engine/hiring';
 import { requiredCrewPlan } from '../src/engine/hiring';
 import { deserialize, serialize } from '../src/engine/save';
@@ -120,3 +120,28 @@ describe('Guide Me', () => {
     expect(p).toBeTruthy();
   });
 });
+
+describe('Guide Me for casting', () => {
+  it('offers each open part to the approved performer of its age, one person a part, and nobody else after a no', () => {
+    const { s, p } = film('gm-cast');
+    p.characters.push({ ...p.characters[0], id: 'kid', name: 'Young Mara', ageInStory: '9' }); // labelled fixture: a child's part
+    p.drafts.at(-1)!.characters.push({ ...p.drafts.at(-1)!.characters[0], id: 'kid', name: 'Young Mara', ageInStory: '9' });
+    p.drafts.at(-1)!.scenes[1].participants.push('kid');
+    const plan = guideMePlan(s, p, CAST);
+    expect(plan.picks.map((x) => x.part).sort()).toEqual(['Mara', 'Young Mara']);
+    expect(new Set(plan.picks.map((x) => x.personId)).size).toBe(2);
+    const kid = plan.picks.find((x) => x.part === 'Young Mara')!;
+    expect(s.people[kid.personId]).toBeUndefined(); // reading the plan books nobody
+    const m = approveGuideMe(s, p, CAST, plan.total);
+    expect(m.picks!.map((x) => x.personId).sort()).toEqual(plan.picks.map((x) => x.personId).sort());
+    const offered = p.hires.filter((h) => h.guided === m.id);
+    expect(offered.map((h) => h.personId).sort()).toEqual(plan.picks.map((x) => x.personId).sort());
+    // A no comes back to you; Guide Me doesn't choose anyone else for the part.
+    const first = offered[0];
+    withdrawOffer(s, p, first.id); // labelled fixture: as a decline, the offer is answered no
+    runMandate(s, p, m);
+    expect(p.hires.filter((h) => h.guided === m.id && h.characterId === first.characterId)).toHaveLength(1);
+    expect(m.told.some((t) => t.endsWith('they declined. Choose someone on the Cast page.'))).toBe(true);
+  });
+});
+

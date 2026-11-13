@@ -6,6 +6,7 @@ import { ledgerTotals, money, settle, FundsError } from '../budget';
 import { placeHolidaysOn } from '../holidays';
 import { covers, isAvailable, personById, roleLabel } from '../people';
 import { approvedCharacters, approvedScenes, isNonfiction, projectModules, sceneLabel } from '../projects';
+import { castIn, stageIn } from '../parts';
 import { addLog, cancelEvents, newId, registerHandler } from '../state';
 import { addDaysToKey, dateKey, formatDateKey } from '../time';
 import { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, HOLIDAY_PREMIUM, dayFees, housePackageFee } from './rates';
@@ -211,7 +212,9 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
   // 2026 a hired director was credited and moved the direction's assessment without a day's work or pay.
   const directing = new Set([d.episode, ...(d.episodes ?? [])].map((n) => p.episodes.find((e) => e.number === n)?.director).filter((x) => x && x !== 'player'));
   const onSetHires = p.hires.filter((h) => h.status === 'accepted' && h.obligationId &&
-    (SHOOT_CREW.has(h.roleId) || (h.roleId === 'episode-director' && directing.has(h.personId)) || (welfareRoles.has(h.roleId) && kidsToday.size > 0) || (h.kind === 'cast' && h.method !== 'voice' && scenes.some((s) => s.participants.includes(h.characterId ?? '')))));
+    (SHOOT_CREW.has(h.roleId) || (h.roleId === 'episode-director' && directing.has(h.personId)) || (welfareRoles.has(h.roleId) && kidsToday.size > 0) || (h.kind === 'cast' && h.method !== 'voice' && scenes.some((s) => s.participants.includes(h.characterId ?? '') && stageIn(p, h.characterId!, s) === h.stage))))
+    // A performer with two parts on the day (a stage and another character's part, parts.ts) is paid for the day once.
+    .filter((h, i, all) => h.kind !== 'cast' || all.findIndex((x) => x.kind === 'cast' && x.personId === h.personId) === i);
   const overrun = onSetHires.reduce((a, h) => {
     const o = p.obligations.find((x) => x.id === h.obligationId)!;
     const pay = h.dayRate * (holidayToday ? HOLIDAY_PREMIUM : 1);
@@ -268,7 +271,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
     const absent = s.participants.find((cid) => {
       const ch = approvedCharacters(p).find((c) => c.id === cid);
       if (!ch || ch.roleSize === 'background') return false;
-      const assignment = p.cast.find((c) => c.characterId === cid && c.method !== 'voice');
+      const assignment = castIn(p, cid, s);
       if (!assignment) return true;
       if (assignment.performer === 'player') return state.sleep.asleep && f.late;
       const h = p.hires.find((x) => x.id === assignment.hireId);
@@ -485,7 +488,7 @@ export function schedulePickups(state: GameState, p: Project, sceneIds: string[]
     const d: ShootDay = {
       ...(from ? { travelFrom: from } : {}),
       id: newId(state, 'd'), date, episode: Number(ep), sceneIds: list.map((s) => s.id), locationLabel: place, interior: ie === 'I', night: dn === 'N', status: 'scheduled',
-      playerActing: list.some((s) => s.participants.some((c) => p.cast.some((a) => a.characterId === c && a.performer === 'player'))), conflicts: [],
+      playerActing: list.some((s) => s.participants.some((c) => castIn(p, c, s, () => true)?.performer === 'player')), conflicts: [],
       ...(pickups && list.some((s) => pickups[s.id]) ? { pickups: Object.fromEntries(list.filter((s) => pickups[s.id]).map((s) => [s.id, pickups[s.id]])) } : {}),
     };
     p.schedule.days.push(d);
@@ -501,7 +504,7 @@ export function schedulePickups(state: GameState, p: Project, sceneIds: string[]
 export function markCaptured(p: Project, sceneId: string, captured: number, quality: number, weatherCompromised: boolean): void {
   const existing = p.captures.find((c) => c.sceneId === sceneId);
   const scene = p.scenes.find((s) => s.id === sceneId);
-  const now = p.cast.filter((c) => c.method !== 'voice' && scene?.participants.includes(c.characterId)).map((c) => c.performer);
+  const now = scene ? scene.participants.map((cid) => castIn(p, cid, scene)?.performer).filter((x): x is string => !!x) : [];
   const performers = [...new Set([...(existing?.performers ?? []), ...now])];
   const rec: SceneCapture = { sceneId, captured: Math.min(1, captured), quality, version: p.approvedDraft ?? 0, weatherCompromised, ...(performers.length ? { performers } : {}) };
   if (existing) Object.assign(existing, rec);
@@ -515,7 +518,7 @@ export function captureQuality(state: GameState, p: Project, s: Scene, compromis
     return h ? personById(state, h.personId).capability : 45;
   });
   const castCap = s.participants.map((cid) => {
-    const a = p.cast.find((c) => c.characterId === cid);
+    const a = castIn(p, cid, s, () => true);
     if (!a) return 50;
     // Dialogue in a language the performer doesn't speak, with no coach hired, costs quality.
     const coachPenalty = !personLanguagesFit(state, p, a) && !hasCrew(p, 'dialect-coach') ? 12 : 0;
