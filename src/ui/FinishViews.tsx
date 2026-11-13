@@ -31,7 +31,7 @@ import { Breadcrumbs } from './Shell';
 import { ReleaseCinemas } from './Cinemas';
 import { store, useGame } from './store';
 import { FollowButton } from './Places';
-import { RecordedResults } from './RecordedResults';
+import { ReadRules, RecordedResults } from './RecordedResults';
 import { editScenes } from '../engine/finish';
 import { reviseEffects, rerecordLines } from '../engine/revisions';
 import { countryName } from '../world/gazetteer/gazetteer';
@@ -781,6 +781,7 @@ export function EventDetail() {
           <p className="dim">{ed.provenance === 'official' ? `These dates were announced by the organizer.${ed.deadlinePlanned ? ' The entry deadline is a planning date.' : ''}` : "Dates haven't been announced. Planning dates are shown."} {rulebook(ed.rulesId) ? `${inst.kind === 'festival' ? 'Sections' : 'Categories'} marked Official Rules follow the organizer's rules for this edition; Projected Rules carry last year's forward until this year's are published. Everything else is simulated.` : 'Rules in this game are simulated.'}</p>
         </section>
         <RecordedResults ed={ed} today={dateKey(g.now, myZone)} />
+        <ReadRules ed={ed} projects={g.projects} />
         {(ed.screenings ?? []).length > 0 && <ScreeningsPanel editionId={ed.id} />}
         <CategoryBrowser ed={ed} onPrepare={(projectId, cat) => setPreparing({ projectId, cat })} />
         <section className="card">
