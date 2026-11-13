@@ -832,6 +832,12 @@ export interface Song {
   library?: true;
   /** The song this one replaced in the cut, and the episodes whose finished mix it has to be laid into (music.ts). */
   replaces?: { songId: string; remix: number[] };
+  /**
+   * A real recording licensed from the music catalog (music-catalog.ts licenseRecording), as Wikidata recorded it when
+   * read: its QID, performers, release date and length. `writersRecorded` false: Wikidata names no writer, and its
+   * performers stand as its writers until the player names them.
+   */
+  recording?: { id: string; performers: string[]; date?: string; seconds?: number; writersRecorded: boolean; retrieved: string };
   createdAt: number;
 }
 

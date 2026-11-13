@@ -20,11 +20,12 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     tested in `tests/first-look.test.ts` and `e2e/v5-first-look.spec.ts`.
   - **6. The Release Plan.** Researched in `docs/v5/RELEASE-PLAN.md`, built in `release-plan.ts` and `ReleasePlan.tsx`,
     and tested in `tests/release-plan.test.ts` and `e2e/v5-release-plan.spec.ts`.
+  - **3 and 4. Music.** A real catalog from Wikidata (`tools/music/catalog.mjs`, `music-catalog.ts`,
+    `MusicCatalog.tsx`), and briefs and cues from the project (`cues.ts`). `docs/v5/MUSIC.md` has the details.
 - **Next, in order.**
-  1. 3 and 4, music.
-  2. 7 and 8, the living industry, grades and metrics.
-  3. 2, production previews.
-  4. 10 and 11, phone parity and the ten journeys.
+  1. 7 and 8, the living industry, grades and metrics.
+  2. 2, production previews.
+  3. 10 and 11, phone parity and the ten journeys.
 - **The story re-fetch is done.** `src/data/plots.json` was rebuilt from `.sources-cache/plots2`. A section that mixes
   the story with something else keeps only its story parts, and 47 works are narrowed that way. Tower of God keeps its
   world parts: it has no plot part.

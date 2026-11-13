@@ -35,18 +35,34 @@ survives a reload, and has a test that fails without it. The order of work is at
 ## 3. Real Artists, Recordings And Composers
 
 - **Exists.** People share one identity across roles (`people.ts`, `guests.ts` for TMDB people). Music roles are
-  distinct: composer, songwriter, lyricist, music producer, arranger, orchestrator, music editor, supervisor. Songs can
-  be licensed (`songs.ts`), with library music as a fallback (`music.ts`).
-- **Gaps.** No catalog of real recording artists, recordings or composers (V4-022.01). The provider's terms must be read
-  before anything is imported.
+  distinct. Songs can be licensed (`songs.ts`), with library music as a fallback (`music.ts`).
+- **Done on November 13, 2026.** `docs/v5/MUSIC.md` has the provider's terms and what is kept.
+  - A real catalog from Wikidata (CC0), in `src/data/music.json`: 896 people and groups, 1,740 recordings and 497
+    composers with recorded scores, each record with its QID and provenance.
+  - A recording can be licensed into a project with its record.
+  - A composer can be considered for the job under the save's one identity for them (their TMDB ID). A film catalog
+    record of the same person is never replaced.
+  - Fees, answers and availability are simulation, and labelled.
+- **Evidence.** `tests/music-catalog.test.ts` (5 tests) and `e2e/v5-music-catalog.spec.ts`, on desktop and phone.
 
 ## 4. Music Specific To The Project
 
 - **Exists.** `cues.ts` proposeBrief and proposeCues, Guide Me for music (`mandates.ts`), score judged on fit, sync and
   dialogue, stems, conform, cue sheets, licences with territories and terms.
-- **Gaps.** The style comes from the genre (horror → percussive, fantasy → synth), and every night scene gets tension
-  music. The brief rules both out: proposals from scene purpose, character motifs, pacing and dialogue, intentional
-  period, songs already in the script, resources, and silence as a real choice.
+- **Done on November 13, 2026.** The brief comes from the project, not its genre:
+  - the player's tone and intended experience, quoted back;
+  - the period;
+  - its pace and talk;
+  - its action;
+  - its cast;
+  - its budget;
+  - its songs.
+
+  Nothing pointing one way leaves the style to the composer, and silence is proposed when the intent asks for it.
+  Cues follow what their scenes do: night isn't tension, and action is. Intensity climbs with the story, and motifs
+  follow the characters.
+- **Evidence.** `tests/cues.test.ts`, with controlled comparisons (a thriller and a drama that are the same film get the
+  same brief), and `e2e/music.spec.ts`, where the brief quotes the journey's own intended experience.
 
 ## 5. First-Look Deals
 

@@ -328,6 +328,10 @@ c(f, '{`Keep My ${c.label}`}', D, "which of the player's words a revision leaves
 c(f, '{`Keep My ${c.label} And Add None`}', D, "whether a revision adds the proposal's people or outline beside the project's", 'blueprints.ts applyBlueprint', 'Kept: nothing is added; unticked: the proposal\'s are added beside, and nothing is removed', U('proposal', 'revising'))
 f = 'PlanViews.tsx'
 c(f, '"Spending Ceiling"', D, 'Project.mandates[].ceiling', 'mandates.ts guideMePlan, runMandate, guideMeRefusal', 'The most Guide Me may commit for a department: offers that do not fit are not sent, and a counteroffer past it comes back to the player', U('guide-me', 'never goes past the ceiling'))
+# The real music catalog (music-catalog.ts, from November 13, 2026: the owner's v5 brief, 3).
+f = 'MusicCatalog.tsx'
+c(f, '"Find A Composer, Artist Or Recording"', D, 'none (a search of the music catalog)', 'music-catalog.ts searchMusic', 'Which real people, groups and recordings are listed, to license or consider', U('music-catalog', 'finds people by name and role'))
+c(f, '"Their Role"', D, 'none (a filter of the music catalog)', 'music-catalog.ts searchMusic', 'Only people credited in that role are listed, and recordings only for performers', U('music-catalog', 'finds people by name and role'))
 # The Release Plan (release-plan.ts, from November 13, 2026: the owner's v5 brief, 6).
 f = 'ReleasePlan.tsx'
 c(f, '{PLAN_ROUTES[r].label}', D, 'Project.releasePlan.routes', 'release-plan.ts setReleasePlan, proposalRefusal, selfRefusal; finish.ts festivalHold', 'Which routes can be worked: a buyer route opens proposals, a route you run opens its booking, festival-first holds every public release', U('release-plan', 'festival-first holds every public release'))
