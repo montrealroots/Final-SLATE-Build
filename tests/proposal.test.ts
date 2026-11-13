@@ -378,6 +378,18 @@ describe('genres read from the story when none recorded maps (November 13, 2026)
     const either = gta.blueprint.scenes.filter((x) => x.intExt === 'INT/EXT').length;
     expect(either).toBeGreaterThan(0);
     expect(gta.notes.join(' ')).toContain(`The words of ${either} of the ${gta.blueprint.scenes.length} scenes don't say`);
+    // The owner, November 13, 2026: "Fix O'Brien and Dracula's lead too, and ... make sure all adaptations have their
+    // real characters." O'Brien, who has Winston tortured, stands against him; the Count leads his own novel.
+    expect(against('Nineteen Eighty-Four')).toBe("Winston Smith against O'Brien");
+    expect(read('Dracula').blueprint.characters[0].name).toBe('Count Dracula');
+    // A work with no character recorded takes its people from its story, in "they" until the player sets them.
+    const caesar = read('Julius Caesar');
+    expect(caesar.blueprint.characters.slice(0, 3).map((c) => c.name)).toEqual(['Julius Caesar', 'Brutus', 'Mark Antony']);
+    expect(caesar.blueprint.characters.every((c) => c.pronouns === 'they/them')).toBe(true);
+    expect(caesar.why.characters).toContain('named in its story but not recorded');
+    expect(caesar.blueprint.characters.some((c) => /^The (Lead|Rival|Ally)$/.test(c.name))).toBe(false);
+    // And where some are recorded, the story's others join them: Red Dead Redemption 2's Micah.
+    expect(read('Red Dead Redemption 2').blueprint.characters.map((c) => c.name)).toContain('Micah');
     // Recorded genres that map still lead, and are sourced.
     expect([read('Dracula').blueprint.genre, read('Dracula').origin.genres]).toEqual(['horror', 'sourced']);
   });

@@ -99,3 +99,13 @@ describe('a real work\'s story', () => {
     expect(story.map((d) => d.at)).toEqual([...story.map((d) => d.at)].sort((a, b) => a - b));
   });
 });
+
+describe('the people a story names (November 13, 2026)', () => {
+  it('breaks names at punctuation, joins a first name to its full name, and leaves out places, peoples and groups', async () => {
+    const { storyPeople } = await import('../src/engine/story-structure');
+    const story = ['Dutch, Arthur and Micah rob a bank in Saint Denis. Arthur Morgan escapes. Arthur rides to Valentine. Micah betrays Arthur. The Pinkertons attack. Dutch flees to Valentine. Micah kills Dutch. Arthur dies.'];
+    const people = storyPeople(story, ['Saint Denis']).map((p) => p.name);
+    expect(people).toEqual(['Arthur Morgan', 'Dutch', 'Micah']);
+  });
+});
+

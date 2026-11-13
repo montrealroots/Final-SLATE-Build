@@ -48,6 +48,8 @@ Today's commits listed above, and others, also fixed problems the work turned up
 - After #86, the owner asked for the rest. The rival comes from what the story shows, or there is none; works with too
   little story are read from their record; undecided scenes are INT/EXT. `RESUME-HERE.md` has the numbers and what's
   left.
+- Then the owner asked for every adaptation to have its real characters. Briefs now take people and a setting from the
+  work's story where none is recorded. `docs/v5/CHARACTERS.md` is the sweep, with what is still wrong.
 
 **Checks.** `npm run check` exits 0, with 143 test files and 1,205 tests, the typecheck, the build and the size budget.
 

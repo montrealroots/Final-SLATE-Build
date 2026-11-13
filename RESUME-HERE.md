@@ -44,6 +44,19 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **Real characters, O'Brien and Dracula (the owner: "make sure all adaptations have their real characters and 100%
+  accuracy").** `docs/v5/CHARACTERS.md` lists every work's setting and people.
+  - `storyPeople` and `storyPlaces` in `story-structure.ts` read the people and places a story names.
+    - 199 works with a story had no character recorded and got "The Lead", "The Rival", "The Ally".
+    - 376 briefs now take someone from their story. Their pronouns are "they" until set: guessing them was wrong too
+      often.
+    - 38 works with no recorded place are set where their story names most, Julius Caesar in Rome among them.
+  - O'Brien stands against Winston: a sentence naming only the lead carries over who the one before it named.
+  - Dracula is led by the Count.
+  - An ally, like a rival, needs the story to show it.
+  - Not claimed as 100%: 29 works still have only placeholders and 65 have one or two. A few places and peoples still
+    read as people, and three people read as places. Some roles are the sentences', not the story's. All are listed
+    in `docs/v5/CHARACTERS.md`.
 - **The remaining brief issues (the owner: "Fix the Moby-Dick rival and the remaining brief issues").** After #86:
   - Who stands against the lead needs the story to show it: against them in more sentences than beside them, with
     harpooning, biting, dragging, torturing, framing and arresting counted. A character is also named by how the
