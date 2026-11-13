@@ -63,7 +63,7 @@ async function fetchAll() {
     const story = page?.extract ? storyOf(page.extract) : null;
     writeFileSync(join(CACHE, `${r.id.replace(':', '-')}.json`), JSON.stringify({ id: r.id, article: page?.title ?? title, retrieved: new Date().toISOString().slice(0, 10), story }));
     console.log(`${r.title}: ${story ? `${story.section}, ${story.paragraphs.length} paragraphs` : 'no story section'}`);
-    await sleep(15_000);
+    await sleep(6_000); // one request at a time, well inside what Wikimedia asks of serial clients; a 429 waits a minute and more
   }
 }
 

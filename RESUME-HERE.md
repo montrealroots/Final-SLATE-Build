@@ -6,6 +6,26 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## Newest Requests (November 13, 2026)
+
+- **Every adaptation has the work's story.** The owner: "All adapted material should have a story behind it, even
+  the copyrighted one." `tools/sources/plots.mjs` fetches each work's plot section from the English Wikipedia (CC BY-SA
+  4.0, credited) into `src/data/plots.json`, one request at a time with back-off. Rerun `node tools/sources/plots.mjs`
+  to fetch what is missing (it skips what is cached in `.sources-cache/plots/`), then `--build`.
+  - The proposal tells the premise, synopsis, a kept ending and every scene from the story, across every episode
+    (`proposal.ts`).
+  - A work with no story section gets the game's own outline in every episode, labelled.
+  - The credits name the article.
+- **Copyright is credited, not cleared.** The owner chose credits only, with nothing blocking production.
+  - The option, rights purchase and rights-holder approval are gone (`adaptation.ts`, "Copyright").
+  - `creditLine` says what the work is based on and its recorded copyright, on the Budget page's Based On card and in
+    the delivered credits.
+  - An agreement a save already made stands, and its share is still paid.
+- **The phone could not install pictures.** Three causes, all fixed:
+  - The dev server read no owner passphrase. It now reads `SLATE_OWNER_SECRET_FILE`.
+  - The session cookie was always `Secure`, which a browser drops over plain http. It is now Secure only over HTTPS.
+  - A device that couldn't sign in was told nothing. It is now told why and what to do (`docs/DEPLOYMENT.md`).
+
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
