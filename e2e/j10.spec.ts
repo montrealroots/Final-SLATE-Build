@@ -37,7 +37,8 @@ test('J10: an agent finds work, it is taken, worked, paid and credited; another 
   const first = (await offers.getByRole('button', { name: /^Accept / }).first().getAttribute('aria-label'))!.replace(/^Accept /, '');
   await offers.getByRole('button', { name: `Accept ${first}` }).click();
   const credits = work.getByRole('list', { name: 'Your Credits For Others' });
-  for (let i = 0; i < 8 && !(await credits.count()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
+  // The work is on a production's shooting days, which can be some months out (productions.ts, from November 13, 2026).
+  for (let i = 0; i < 20 && !(await credits.count()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
   await expect(credits).toContainText(first);
   await expect(card(page, 'Your Reputation')).toContainText('Nothing against you: no work withdrawn from, no day missed.');
 
@@ -45,7 +46,9 @@ test('J10: an agent finds work, it is taken, worked, paid and credited; another 
   const isNew = async () => (await readSavedState(page)).jobs.some((j: { production: string; status: string }) => j.status === 'offered' && j.production !== first);
   for (let i = 0; i < 12 && !(await isNew()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
   const second = (await readSavedState(page)).jobs.find((j: { production: string; status: string }) => j.status === 'offered' && j.production !== first);
-  expect(second.role).toBe('acting'); // nothing delivered yet: acting is what the record supports
+  // Nothing delivered yet. Until November 13, 2026 only acting could be offered. Since then an approved script of their
+  // own (Night Ferry's) is a writing sample, so writing can be too; directing still needs more (jobs.ts rolesOffered).
+  expect(['acting', 'writing']).toContain(second.role);
   await offers.getByRole('button', { name: `Accept ${second.production}` }).click();
 
   // Your own shoot aimed at the second job: built once to see where its first shoot day falls after prep, then started

@@ -42,6 +42,7 @@ const REASONS: Record<string, string> = {
   'PlanViews.tsx | !!no': 'The dialog says why under the ceiling field: no approved draft, a mandate already running, a ceiling of nothing, or more than the money uncommitted.',
   'FirstLook.tsx | !!fl || (!!offer.counter && !offer.counter.outcome)': 'The running deal shows on the same card, and a request for more overhead says when the studio answers it.',
   'FirstLook.tsx | !!offer.counter': 'The line above the buttons says what you asked for and what the studio answered.',
+  'Jobs.tsx | !!j.counter': 'The line above the buttons says what you asked for and what the production answered.',
   'MusicCatalog.tsx | listed': 'The button itself reads Considered For Composer, and the line under the list says where to approach them.',
   'MusicCatalog.tsx | have': 'The button itself reads In This Project.',
   'ReleasePlan.tsx | !!no': 'The reason shows under the button: a missing route, territory, date or document, money the project lacks, rights another deal holds, or a buyer who already answered.',

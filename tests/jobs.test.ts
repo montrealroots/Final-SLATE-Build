@@ -19,7 +19,8 @@ function offered(s: GameState, via?: string): OutsideJob {
   if (!j) throw new Error('no offer in forty triggers');
   return j;
 }
-const workAll = (s: GameState, _j: OutsideJob) => processUntil(s, s.now + 60 * DAY, 'tick', 100000);
+/** Run the clock to two days past the job's last day: a production's shoot can be months out (productions.ts). */
+const workAll = (s: GameState, j: OutsideJob) => processUntil(s, Date.parse(`${j.days[j.days.length - 1]}T00:00:00Z`) + 2 * DAY, 'tick', 100000);
 
 describe('an offer of work', () => {
   it('is priced from the record, never more than the cap; an agent negotiates it up', () => {

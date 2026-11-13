@@ -1377,4 +1377,6 @@ export interface GameState {
   gear?: import('./equipment').GearInventory;
   /** Paid work on others' productions (jobs.ts). Absent until the first offer. */
   jobs?: import('./jobs').OutsideJob[];
+  /** Other people's productions where the player has been, kept (productions.ts). Absent in saves from before November 13, 2026, until work is next offered. */
+  productions?: import('./productions').Production[];
 }
