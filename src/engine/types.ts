@@ -1068,7 +1068,7 @@ export interface Project {
   /** `story`: the article whose plot section its story was told from, credited with the project (adaptation.ts creditLine). */
   /** The player's company that produces it, named in its credits: set when the company puts money in (company.ts). */
   producedBy?: string;
-  proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string>; story?: StoryCredit };
+  proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string>; story?: StoryCredit; cast?: StoryCredit };
   /** Fields the player locked: a full story or a shuffle leaves them alone (blueprints.ts FIELD_LABELS has the keys). */
   locks?: string[];
   /**

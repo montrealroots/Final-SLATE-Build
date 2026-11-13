@@ -71,7 +71,13 @@ export interface SourceWork {
  * work's own text. `whole` is false where the section was longer than was kept, so its end is not here.
  */
 /** `parts`: the subsections kept when a section holds more than the story (Portal's Synopsis keeps its Plot). Absent when the whole section is the story. */
-export interface WorkPlot { from: string; article: string; link: string; licence: string; section: string; parts?: string[]; whole: boolean; retrieved: string; paragraphs: string[] }
+export interface WorkPlot { from: string; article: string; link: string; licence: string; section: string; parts?: string[]; whole: boolean; retrieved: string; paragraphs: string[]; cast?: WorkCast }
+/**
+ * The people an English Wikipedia article lists, in its order, for a work whose story names too few (from November 13,
+ * 2026; tools/sources/plots.mjs castOf): its Characters section, or the work's "List of … characters" article (`section`
+ * "whole article"). Names only, under the same licence as the story, and credited wherever they are used.
+ */
+export interface WorkCast { article: string; link: string; section: string; retrieved: string; names: { name: string; also?: string[] }[] }
 /** The section a story was read from, with the parts of it kept: "Synopsis (Plot)". */
 export const plotSection = (p: Pick<WorkPlot, 'section' | 'parts'>): string => (p.parts?.length ? `${p.section} (${p.parts.join(', ')})` : p.section);
 export interface SourceCatalog { version: 1; source: string; licence: string; retrieved: string; records: SourceWork[] }

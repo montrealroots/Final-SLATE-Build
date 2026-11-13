@@ -65,7 +65,7 @@ export interface Blueprint {
   /** The line it starts on in its file, for a problem's message. */
   line: number;
   /** Proposed from a real work (proposal.ts), not written for this game: applying it records the work and each field's origin. */
-  origin?: { kind: 'source'; workId: string; title: string; approach: import('./types').AdaptationApproach; story?: import('./types').StoryCredit };
+  origin?: { kind: 'source'; workId: string; title: string; approach: import('./types').AdaptationApproach; story?: import('./types').StoryCredit; cast?: import('./types').StoryCredit };
 }
 
 const split = (s: string, by = '|') => s.split(by).map((x) => x.trim());
@@ -408,6 +408,7 @@ export function applyBlueprint(state: GameState, p: Project, b: Blueprint, o: Bl
     const prior = p.proposal;
     p.proposal = {
       workId: b.origin.workId, title: b.origin.title, approach: b.origin.approach, at: state.now, ...(b.origin.story ? { story: b.origin.story } : prior?.workId === b.origin.workId && prior.story ? { story: prior.story } : {}),
+      ...(b.origin.cast ? { cast: b.origin.cast } : prior?.workId === b.origin.workId && prior.cast ? { cast: prior.cast } : {}),
       origin: { ...(prior?.workId === b.origin.workId ? prior.origin : {}), ...Object.fromEntries(written.map((k) => [k, origin?.origin[k] ?? 'proposed'])) },
       why: { ...(prior?.workId === b.origin.workId ? prior.why : {}), ...Object.fromEntries(written.filter((k) => origin?.why[k]).map((k) => [k, origin!.why[k]])) },
       applied: { ...(prior?.workId === b.origin.workId ? prior.applied : {}), ...Object.fromEntries(written.filter((k) => k in wrote).map((k) => [k, wrote[k]])) },

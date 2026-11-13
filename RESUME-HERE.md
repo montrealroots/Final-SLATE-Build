@@ -44,6 +44,19 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **"Those last two do those" (the owner, after #87).**
+  - *A first-look studio weighs a covered short.* Its deal covers every film, a short included (`first-look.ts covers`),
+    but `pitchRead` passed on anything not a feature first, so the deal's own studio said "Would Pass" on the short its
+    deal covered. Under a running deal its format no longer rules it out (`strategy.ts`, `PitchInput.firstLook`); genre,
+    script and record still count, so a family short gets the notes a family feature would. Another studio, or the same
+    one once the deal ends, still passes on a short. `tests/first-look.test.ts` pins it; v5-first-look still passes.
+  - *Works with one person or none: 18 and 2 became 3 and 1.* Sixteen articles list the work's people in a Characters
+    section, or in a "List of … characters" article (`node tools/sources/plots.mjs --characters "<title>" ...`, then
+    `--build`; `castOf` reads them). The brief adds them after the story's own, credits the article (and so do the
+    project's credits, `adaptation.ts creditLine`), and sets none against or beside the lead unless the story or a
+    review does. Elantris is Raoden against Hrathen, with Sarene (reviewed). Left: Marie Rogêt, Hop-o'-My-Thumb and the
+    Maelström name one person; Second Life none (`docs/v5/CHARACTERS.md`). `tests/work-cast.test.ts`.
+
 - **The four items the owner chose ("Yes, do all four, starting now.").**
   1. *Ledgers reconciled* (`249473a`). In `docs/v3/requirements.csv`, C12, S10, L04, L05, W01, D01, D02 and Z01 are done
      and verified; B03 stays partial (publicity, competition, territory results and currency aren't built); B04 and T02

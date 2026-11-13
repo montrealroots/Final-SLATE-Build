@@ -201,14 +201,16 @@
     "Claymore": { "against": "Priscilla", "ally": "Raki" },
     "The Masque of the Red Death": { "against": "Red Death" },
     "Oruchuban Ebichu": { "against": null, "ally": "Goshujin-sama" },
-    "WorldEnd": { "lead": "Willem" },
-    "ZooPhobia": { "lead": "Cameron" },
+    "WorldEnd": { "lead": "Willem Kmetsch" },
+    "ZooPhobia": { "lead": "Cameron Walden" },
     "Doctor Elise": { "lead": "Elise" },
     "Tawawa on Monday": { "lead": "Ai" },
     "Alya Sometimes Hides Her Feelings in Russian": { "drop": ["Alya"] },
     "The Summer Hikaru Died": { "lead": "Yoshiki (よしき)", "against": null, "drop": ["Hikaru"] },
     "Need for Speed: Most Wanted": { "drop": ["Wanted List"] },
     "Layla and Majnun": { "drop": ["Majnun"] },
-    "Timon of Athens": { "lead": "Timon", "against": null, "ally": "Flavius" }
+    "Timon of Athens": { "lead": "Timon", "against": null, "ally": "Flavius" },
+    "Elantris": { "lead": "Prince Raoden", "against": "Gyorn Hrathen", "ally": "Princess Sarene", "drop": ["Aons"] },
+    "Fox Spirit Matchmaker": { "lead": "Bai Yuechu", "ally": "Tushan Susu", "drop": ["The Fox"] }
   }
 }

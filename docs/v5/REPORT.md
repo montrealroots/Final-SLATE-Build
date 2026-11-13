@@ -77,7 +77,8 @@ These limits are stated in the game wherever they apply.
     the development money from another studio's money is covered by `tests/first-look.test.ts`.
   - Release plan: the stores release is booked, and the licence's income all goes to repaying the starting backing, so
     nothing is left to take home. Taking income home is played in J01.
-- **Adapted works with one person or none** (November 13, 2026). 18 works keep one person and a second part named for
-  what it does, and 2 (Second Life, Tower of God) keep all three. Their records and stories name no other person more
-  than once, and no name is invented for them. `docs/v5/CHARACTERS.md` lists them. Until that day it was 29 and 6.
+- **Adapted works with one person or none** (November 13, 2026). 3 works keep one person and a second part named for
+  what it does (The Mystery of Marie Rogêt, Hop-o'-My-Thumb, A Descent into the Maelström), and Second Life keeps all
+  three. Neither their records, their stories nor their articles name anyone else, and no name is invented for them.
+  It was 29 and 6, then 18 and 2, until the people their articles list were taken (`docs/v5/CHARACTERS.md`).
 - **Earlier v4 open items** stay as `RESUME-HERE.md` lists them.
