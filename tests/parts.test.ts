@@ -97,6 +97,37 @@ describe('a stage of a part', () => {
     const back = deserialize(serialize(s));
     expect(back.projects[0].stages).toEqual(p.stages);
   });
+
+  it('recast from episode 2, it changes that part\'s credits and no one else\'s (the v6 package, J04; November 13, 2026)', () => {
+    const s = startLife('parts-episode-credits');
+    const p = buildProject(s, { title: 'Harbour', format: 'series', medium: 'live-action', episodes: 2, runtime: 20 }, [{ name: 'Mara' }, { name: 'Ben' }],
+      [{ place: 'Pier', chars: ['Mara', 'Ben'] }, { place: 'Kitchen', chars: ['Mara', 'Ben'], extra: { episode: 2 } }]);
+    approve(s, p);
+    castPlayer(s, p, mara(p), 'on-camera'); // you play Mara
+    castAll(s, p);
+    p.delivered = { at: s.now, runtimeMin: 40 }; // labelled fixture: credits as on delivery
+    const strip = (cs: ReturnType<typeof computeCredits>) => cs.map(({ id: _, billing: __, ...c }) => c);
+    const before = strip(computeCredits(s, p));
+    p.delivered = null;
+    const st = addStage(s, p, { characterId: mara(p), label: 'From Episode 2', sceneIds: [], episodes: [2] });
+    // Labelled fixture: offered to adults in turn until one accepts (their answers are the world seed's).
+    let h: ReturnType<typeof makeOffer> | undefined;
+    for (const k of roleCandidates(s, p, 'actor').filter((x) => !p.cast.some((a) => a.performer === x.id)).slice(0, 12)) {
+      h = makeOffer(s, p, { personId: k.id, roleId: 'actor', dayRate: k.dayRate * 2, characterId: mara(p), method: 'on-camera', stage: st.id });
+      resolveOffer(s, p, h);
+      if (h.status === 'countered') { h.status = 'offered'; h.dayRate = h.counterRate!; resolveOffer(s, p, h); }
+      if (h.status === 'accepted') break;
+    }
+    expect(h!.status).toBe('accepted');
+    p.delivered = { at: s.now, runtimeMin: 40 };
+    const after = strip(computeCredits(s, p));
+    const isMara = (c: { characterName?: string }) => c.characterName === 'Mara';
+    // Everything that isn't Mara's is exactly as it was: Ben, the writing, the directing, the crew.
+    expect(after.filter((c) => !isMara(c))).toEqual(before.filter((c) => !isMara(c)));
+    // Mara: you for episode 1, the new performer for episode 2, as a stage of the part.
+    expect(after.filter(isMara).map((c) => [c.person === 'player', c.stage ?? null, c.episodes])).toEqual(expect.arrayContaining([[true, null, [1]], [false, 'From Episode 2', [2]]]));
+    expect(after.filter(isMara)).toHaveLength(2);
+  });
 });
 
 describe('a production with a stage', () => {
