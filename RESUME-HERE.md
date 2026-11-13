@@ -233,9 +233,18 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       sets it unless a test is `phone-layout.spec.ts`); `e2e/phone-layout.spec.ts` tests the default on phone, iPhone
       15 Pro Max and its landscape. Home's cards are two stacks now (`.home-col`): Recent Updates sat under the full
       height of In The Industry. A panel title with help keeps 18rem before its actions go under it.
+    - A part played by more than one performer (V4-007.03, V4-007.04; November 13, 2026; `engine/parts.ts`): a stage of a
+      part (`Project.stages`: a label, an optional age, chosen scenes or whole episodes) is cast on its own on the Cast
+      page (Another Performer For Some Scenes). `castIn` answers who plays a character in a scene, and the shoot (who is
+      absent, who is paid, who is recorded, capture quality), call sheets (a line per stage), child rules (an uncast
+      stage's own age), the estimate, credits (`Credit.stage`, "as Mara (Age 10)"), version credits and performances
+      read it. A performer with two parts on one shoot day is paid for the day once (also true across two characters,
+      which paid twice before). Not built: casting calls and the casting director for a stage (offers through Find
+      Performers only), body and stunt doubles beside a performer, screen-time measures per stage for award rules.
+      Tests `tests/parts.test.ts` (6), `e2e/parts.spec.ts`.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
-  - Still not built: age stages and per-episode performers (V4-007.03/.04), Guide Me for cast, writing and music,
+  - Still not built: Guide Me for cast, writing and music,
     company accounts, the music system (V4-022 to 026), F (historical boundaries, territory box office, weekly
     reports, renewal weighing, record books, reputation by role), the media-inventory work in G beyond what v3 built,
     H's journeys J01 to J13 as whole runs, and a title-by-title Sanderson comparison.

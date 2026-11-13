@@ -1,6 +1,7 @@
 // Shoot-day planning and plan generation (finished work is kept when a plan is rebuilt).
 // Part of the production engine; src/engine/production.ts is its public interface.
 
+import { castIn } from '../parts';
 import { adaptationBlocker } from '../adaptation';
 import type { Asset, GameState, Project, Scene, ShootDay } from '../types';
 import { getPlace } from '../../data/places';
@@ -101,8 +102,10 @@ export function planningDate(p: Project, state?: GameState): string {
  */
 export function minorsInScenes(p: Project, scenes: Scene[], on: string, state?: GameState): Map<string, Minor> {
   const out = new Map<string, Minor>();
-  for (const cid of new Set(scenes.flatMap((s) => s.participants))) {
-    const m = minorFor(state, p, cid, on);
+  // Per scene: a part's stages can be played by a child in some scenes and an adult in others (parts.ts).
+  for (const sc of scenes) for (const cid of sc.participants) {
+    if (out.has(cid)) continue;
+    const m = minorFor(state, p, cid, on, 'on-set', sc);
     if (m) out.set(cid, m);
   }
   return out;
@@ -204,7 +207,6 @@ export const lastDay = (p: Project): ShootDay | undefined => p.schedule.days.red
 export function planShootDays(state: GameState, p: Project, firstDay: string): ShootDay[] {
   const days: ShootDay[] = [];
   let cursor = nextWorkingDay(p, firstDay);
-  const playerChars = new Set(p.cast.filter((c) => c.performer === 'player').map((c) => c.characterId));
   const scenes = approvedScenes(p);
   // Each cast child's licence is applied for now (minors.ts), with night work if any of their scenes is at night. A day
   // with a child waits for their licence: days without children go first, and the child's days follow once it's granted.
@@ -234,7 +236,7 @@ export function planShootDays(state: GameState, p: Project, firstDay: string): S
     days.push({
       ...(from ? { travelFrom: from } : {}),
       id: newId(state, 'd'), date: cursor, episode: g.episodes[0], ...(g.episodes.length > 1 ? { episodes: g.episodes } : {}), sceneIds: g.sceneIds, locationLabel: g.place, interior: g.interior, night: g.night,
-      status: 'scheduled', playerActing: scenes.some((s) => g.sceneIds.includes(s.id) && s.participants.some((c) => playerChars.has(c))), conflicts: [],
+      status: 'scheduled', playerActing: scenes.some((s) => g.sceneIds.includes(s.id) && s.participants.some((c) => castIn(p, c, s, () => true)?.performer === 'player')), conflicts: [],
     });
     lastNightKids = new Set(g.night ? kids : []);
     at = g.place;

@@ -1,3 +1,4 @@
+import { samePart, stagesOf } from '../src/engine/parts';
 import {
   acceptCounter, addCharacter, addScene, approveDraft, assemblyComplete, castPlayer, castRoleFor, createProject, deliver, deliveryBlockers,
   emptyDraft, generatePlan, ledgerTotals, makeOffer, neededRoles, newGame, processUntil, proposeStaffing, roleCandidates,
@@ -109,15 +110,17 @@ export function castAll(state: GameState, p: Project, playerRoles: { character: 
     if (!approvedScenes(p).some((s) => s.participants.includes(c.id))) continue;
     const animated = p.axes.medium === 'animation' || (['cg', 'drawn', 'puppet'].includes(c.realization) && c.methods.includes('voice'));
     const methods: PerformanceMethod[] = animated ? ['voice', ...(c.methods.includes('motion-capture') ? ['motion-capture' as const] : [])] : ['on-camera'];
-    for (const method of methods) {
-      if (p.cast.some((a) => a.characterId === c.id && a.method === method)) continue;
-      if (p.hires.some((h) => h.characterId === c.id && h.method === method && ['offered', 'countered', 'accepted'].includes(h.status))) continue;
+    // The part and each of its stages (parts.ts), a stage by its own age where it has one.
+    for (const [method, stage] of methods.flatMap((m) => [[m, undefined] as const, ...stagesOf(p, c.id).map((st) => [m, st.id] as const)])) {
+      if (p.cast.some((a) => samePart(a, c.id, method, stage))) continue;
+      if (p.hires.some((h) => samePart(h, c.id, method, stage) && ['offered', 'countered', 'accepted'].includes(h.status))) continue;
       const roleId = castRoleFor(method);
-      const tried = new Set(p.hires.filter((h) => h.characterId === c.id && h.method === method).map((h) => h.personId));
+      const tried = new Set(p.hires.filter((h) => samePart(h, c.id, method, stage)).map((h) => h.personId));
       // As a producer would: someone who plays the part's age, or for a part with no age written, an adult. Until the pool
       // had children (November 11, 2026), the cheapest experienced performer was always one.
       const today = dateKey(state.now, 'UTC');
-      const want = storyAge(c.ageInStory);
+      const stageAge = stagesOf(p, c.id).find((x) => x.id === stage)?.age;
+      const want = stageAge !== undefined ? { min: stageAge, max: stageAge } : storyAge(c.ageInStory);
       const suits = (x: Person) => {
         const plays = playingAgeAt(x, today);
         return want ? !!plays && want.max >= plays[0] && want.min <= plays[1] : personAge(x, today) >= 18;
@@ -125,7 +128,7 @@ export function castAll(state: GameState, p: Project, playerRoles: { character: 
       const pool = roleCandidates(state, p, roleId).filter((x) => !tried.has(x.id) && isAvailable(state, x, win.from, win.to, p.id).ok && x.experience >= (want && want.max < 16 ? 1 : 3) && suits(x)).sort((a, b) => a.dayRate - b.dayRate);
       for (const pick of pool) {
         try {
-          makeOffer(state, p, { personId: pick.id, roleId, dayRate: pick.dayRate, characterId: c.id, method });
+          makeOffer(state, p, { personId: pick.id, roleId, dayRate: pick.dayRate, characterId: c.id, method, ...(stage ? { stage } : {}) });
           break;
         } catch {
           /* clash or funds: try the next candidate */

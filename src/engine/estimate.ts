@@ -17,6 +17,7 @@
 // Identifiable risks (a day lost to rain, a damaged puppet, a missed capture session) are named with what one costs,
 // against the contingency. Until November 8 the capture stage wasn't in the estimate until it was booked.
 
+import { partName, partScenes, samePart, stagesOf } from './parts';
 import { ledgerTotals, money } from './budget';
 import { castRoleFor, estimateDays, requiredCrewPlan, roleCandidates } from './hiring';
 import { roleLabel } from './people';
@@ -78,16 +79,18 @@ export function costBreakdown(state: GameState, p: Project): CostBreakdown {
     const methods: PerformanceMethod[] = p.axes.medium === 'animation'
       ? ['voice', ...(c.methods.includes('motion-capture') ? ['motion-capture' as const] : [])]
       : c.methods.filter((m) => m === 'on-camera' || m === 'voice' || m === 'motion-capture');
-    for (const m of methods) {
-      if (p.cast.some((a) => a.characterId === c.id && a.method === m)) continue;
+    // The part, and each stage of it (parts.ts): every one is cast and paid on its own.
+    for (const [m, stage] of methods.flatMap((m) => [[m, undefined] as const, ...stagesOf(p, c.id).map((st) => [m, st.id] as const)])) {
+      if (p.cast.some((a) => samePart(a, c.id, m, stage))) continue;
       // An offer out holds its own money (reserved), so it isn't priced again.
-      if (p.hires.some((h) => h.characterId === c.id && h.method === m && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
+      if (p.hires.some((h) => samePart(h, c.id, m, stage) && ['offered', 'accepted', 'countered'].includes(h.status))) continue;
+      if (!partScenes(p, c.id, stage).length) continue;
       const pool = roleCandidates(state, p, castRoleFor(m)).sort((a, b) => a.dayRate - b.dayRate);
       const cheapest = pool.find((x) => x.experience >= 2);
-      const days = estimateDays(p, castRoleFor(m), c.id, m, state);
+      const days = estimateDays(p, castRoleFor(m), c.id, m, state, stage);
       const rate = (cheapest ?? pool[0])?.dayRate ?? 0;
       const how = m.replace('-', ' ');
-      if (rate) lines.push({ area: 'cast', label: `${c.name} (${how})`, amount: rate * days, driver: `About ${days} ${days === 1 ? 'day' : 'days'} at ${money(rate)}` });
+      if (rate) lines.push({ area: 'cast', label: `${partName(p, c.id, stage)} (${how})`, amount: rate * days, driver: `About ${days} ${days === 1 ? 'day' : 'days'} at ${money(rate)}` });
       if (!cheapest) uncertain.push({ item: `${c.name} (${how}): no experienced performer is available${rate ? `; priced at ${money(rate)} a day, the lowest rate anyone asks` : ''}.`, resolve: 'Cast yourself, consider less experienced performers, or invite people to read.' });
     }
   }

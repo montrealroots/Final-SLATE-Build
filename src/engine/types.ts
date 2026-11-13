@@ -516,6 +516,8 @@ export interface Hire {
   kind: 'crew' | 'cast';
   characterId?: string;
   method?: PerformanceMethod;
+  /** The stage of the part this offer is for (parts.ts); absent, the part's main performer. */
+  stage?: string;
   episodes: number[] | 'all';
   dayRate: number;
   estDays: number;
@@ -554,7 +556,16 @@ export interface CastAssignment {
   method: PerformanceMethod;
   note: string;
   hireId?: string;
+  /** The part's stage this performer plays (parts.ts): absent, the part in every scene no stage takes. */
+  stage?: string;
 }
+
+/**
+ * A part played by another performer in some of its scenes (parts.ts, November 13, 2026): an age stage ("Age 10"), some
+ * episodes, or any scenes the player chooses. Cast, paid, booked and credited on its own; the part's main performer
+ * plays every scene no stage takes.
+ */
+export interface PartStage { id: string; characterId: string; label: string; age?: number; sceneIds: string[]; episodes: number[] }
 
 export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio' | 'savings';
 
@@ -842,6 +853,8 @@ export interface Credit {
   contribution: string; // e.g. 'Written By', 'Directed By', 'Cast'
   roleId: string;
   characterName?: string;
+  /** A stage of the part (parts.ts), credited beside its name: "Mara (Age 10)". */
+  stage?: string;
   episodes: number[] | 'all';
   billing: number;
   /** A songwriting or song performance credit: the song it is for (songs.ts). */
@@ -1043,6 +1056,8 @@ export interface Project {
   /** Design changes made after work began (production.ts applyDesignChange): the work they sent back to be done again. */
   changeOrders: { id: string; at: number; summary: string; affectedTasks: string[]; decision: 'accepted' | 'kept-old' }[];
   cast: CastAssignment[];
+  /** Parts played by more than one performer: their stages (parts.ts). Absent on projects that never split a part. */
+  stages?: PartStage[];
   hires: Hire[];
   obligations: Obligation[];
   schedule: {

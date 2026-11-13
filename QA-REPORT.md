@@ -1359,3 +1359,13 @@ November 12, 2026. Evidence for the pull request that carries them.
 | Not done | — | The four-size UI walk (`UI_COVERAGE_WRITE`) was not rerun for the scaled layout; at 961 wide it is the desktop layout, which the desktop walk covers at 1280. |
 | Carbon copy, compared pixel by pixel: the desktop at 1280 by 2200 against an iPhone 15 Pro Max (430 by 739 shown 1280 wide), Home, Budget, Crew, Music | 2 real, fixed | At 960 wide it was the desktop's narrowest layout, not its screen: 1280 now. The touch screen's 44-pixel controls made buttons taller than the desktop's: off in this layout. WebKit drew selects as white boxes with grey text: selects draw their own arrow now, in every browser. After: 0.14% to 1.48% of pixels differ, all text antialiasing between Chromium and WebKit. |
 | `phone-layout`, `layout`, `devices`, `viewports`, `creation` on desktop, phone, iPhone 15 Pro Max and its landscape | 0 | 74 passed. |
+
+## v4 People: A Part Played By More Than One Performer (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/parts.test.ts` | 2 fixture mistakes of mine, 1 assertion of mine | 6 tests: a stage takes its scenes and their days (and gives them back); refusals; cast on its own, each scene played by its stage's performer, credited with the stage; an uncast stage's age makes it a child's part in its scenes only; a recast from episode 2, kept across a save; a production that shoots both parts of one performer on one day and pays them once. The first assertion counted budget-reservation postings as days. |
+| Mutation: the once-a-day filter removed from `onSetHires` | caught | The shared day is paid twice and the test fails. Two parts on one day paid twice before this change too, across two characters. |
+| `e2e/parts.spec.ts`, desktop and phone | 0 | Age 10 added for two scenes, you cast as Mara grown up, the child offered; the hire table names Mara (Age 10); kept after a reload. |
+| `auditions`, `characters`, `children`, `decisions`, `careers`, `casting-director` specs, desktop and phone | 0 | 21 passed, 3 skipped by design. |
+| `npx vitest run` | 0 | 1,127 tests. |

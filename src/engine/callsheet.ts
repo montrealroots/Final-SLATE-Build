@@ -4,6 +4,7 @@
 // game schedules, the crew and the on-camera cast it pays that day, the parts still uncast, daylight for an exterior,
 // the forecast once there is one, and a public holiday's premium. It is derived, never stored, so it can't disagree
 // with the day. Loaded with the Schedule page, not at startup.
+import { castIn, partName, stageIn } from './parts';
 import { dayPlace, filmedAt, isAway } from './destinations';
 import { roofed } from './locations';
 import { placeHolidaysOn } from './holidays';
@@ -38,11 +39,16 @@ export function callSheet(state: GameState, p: Project, dayId: string): CallShee
   const cast: CallSheet['cast'] = [];
   const uncast: string[] = [];
   for (const c of chars.filter((x) => x.roleSize !== 'background' && scenes.some((s) => s.participants.includes(x.id)))) {
-    const its = scenes.filter((s) => s.participants.includes(c.id)).map((s) => sceneLabel(p, s));
-    // On camera only: a voice part is recorded in a session, not on set (runShootDay pays the same people).
-    const a = p.cast.find((x) => x.characterId === c.id && x.method === 'on-camera');
-    if (a) cast.push({ part: c.name, who: a.performer === 'player' ? 'You' : personById(state, a.performer).name, scenes: its });
-    else if (c.methods.includes('on-camera')) uncast.push(`${c.name} isn't cast yet (${its.join(', ')}).`);
+    // A part with stages (parts.ts) is a line for each stage the day's scenes call.
+    for (const stage of [...new Set(scenes.filter((s) => s.participants.includes(c.id)).map((s) => stageIn(p, c.id, s)))]) {
+      const mine = scenes.filter((s) => s.participants.includes(c.id) && stageIn(p, c.id, s) === stage);
+      const its = mine.map((s) => sceneLabel(p, s));
+      // On camera only: a voice part is recorded in a session, not on set (runShootDay pays the same people).
+      const a = castIn(p, c.id, mine[0], (x) => x.method === 'on-camera');
+      const part = partName(p, c.id, stage);
+      if (a) cast.push({ part, who: a.performer === 'player' ? 'You' : personById(state, a.performer).name, scenes: its });
+      else if (c.methods.includes('on-camera')) uncast.push(`${part} isn't cast yet (${its.join(', ')}).`);
+    }
   }
   const crew = p.hires.filter((h) => h.status === 'accepted' && SHOOT_CREW.has(h.roleId))
     .map((h) => ({ role: roleLabel(h.roleId), who: personById(state, h.personId).name }))
