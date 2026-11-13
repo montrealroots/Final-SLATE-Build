@@ -23,17 +23,57 @@ function film(tag: string, over: { genres?: string[]; scenario?: string; storyYe
 const units = (p: Project, kind: string) => buildTasks(p).filter((t) => t.kind === kind).reduce((a, t) => a + t.units, 0);
 
 describe('the brief', () => {
-  it('is proposed from the genre, the period, the dialogue, the pace and the budget, and says why for each', () => {
+  it('is proposed from the project, not its genre: its tone, period, pace, action, cast, songs and budget, each with its reason', () => {
     const drama = proposeBrief(film('cue-drama').p, 0);
     expect(drama).toMatchObject({ approach: 'score', style: 'chamber' });
     expect(drama.why.some((w) => /lines a minute/.test(w))).toBe(true);
-    expect(proposeBrief(film('cue-thriller', { genres: ['thriller'] }).p, 0).style).toBe('percussive');
+    // The genre alone moves nothing: a thriller and a drama that are the same film get the same brief (until November 13,
+    // 2026 a thriller was percussion whatever it was like).
+    expect(proposeBrief(film('cue-thriller', { genres: ['thriller'] }).p, 0).style).toBe(drama.style);
+    // What it says it wants, and what happens in it, do.
+    const t = film('cue-taut', { genres: ['drama'] });
+    const taut = t.p;
+    taut.axes.tone = 'taut and relentless';
+    taut.scenes.forEach((x) => { x.dialogue = []; x.stunts = 'A chase.'; });
+    approve(t.s, taut); // the brief reads the approved draft
+    expect(proposeBrief(taut, 0)).toMatchObject({ style: 'percussive', why: expect.arrayContaining(['Its tone, "taut and relentless", wants drive: percussion timed to the cut.', '4 of its 4 scenes are action: chases, fights, stunts or crowds.']) });
     expect(proposeBrief(film('cue-period', { genres: ['thriller'], storyYear: 1932 }).p, 0)).toMatchObject({ style: 'chamber', why: expect.arrayContaining([expect.stringMatching(/^Set in 1932/)]) });
-    expect(proposeBrief(film('cue-micro', { genres: ['thriller'], scenario: 'micro' }).p, 0).style).toBe('synth');
+    const m = film('cue-micro', { scenario: 'micro' });
+    const micro = m.p;
+    micro.scenes.forEach((x) => { x.dialogue = []; });
+    approve(m.s, micro);
+    expect(proposeBrief(micro, 0).style).toBe('synth');
+    // Nothing pointing any way leaves the style to the composer; silence is proposed when the intent asks for it.
+    const pl = film('cue-plain');
+    const plain = pl.p;
+    plain.scenes.forEach((x) => { x.dialogue = []; });
+    approve(pl.s, plain);
+    plain.characters.forEach((c) => { c.roleSize = 'minor' as typeof c.roleSize; });
+    expect(proposeBrief(plain, 0)).toMatchObject({ style: 'unset', why: expect.arrayContaining([expect.stringMatching(/^Nothing in its tone, period, pace or budget points one way/)]) });
+    plain.story.intendedExperience = 'Observational, without music.';
+    expect(proposeBrief(plain, 0).approach).toBe('silence');
     const { s, p } = film('cue-songs');
     const song = createSong(s, p, { title: 'Lantern', source: 'write' });
     attachSong(p, song.id, p.scenes[2].id, 'background', 2);
     expect(proposeBrief(p, 0).approach).toBe('mixed');
+  });
+
+  it('places cues for what scenes do: a night scene isn\'t tension for being at night; action is; motifs follow the characters', () => {
+    const { s, p } = film('cue-purpose');
+    applyBrief(s, p, { ...proposeBrief(p, s.now), density: 0.9 });
+    const night = p.music!.cues!.find((c) => c.sceneId === p.scenes[1].id);
+    expect(night?.purpose).not.toBe('tension');
+    p.scenes[1].stunts = 'A chase down the street.';
+    approve(s, p);
+    applyBrief(s, p, { ...proposeBrief(p, s.now), density: 0.9 });
+    expect(p.music!.cues!.find((c) => c.sceneId === approvedScenes(p)[1].id)?.purpose).toBe('tension');
+    // Two characters a relationship ties share a motif where they meet.
+    p.relationships = [{ id: 'r1', a: p.characters[0].id, b: p.characters[1].id, kind: 'siblings', start: '', end: '' }];
+    applyBrief(s, p, { ...proposeBrief(p, s.now), density: 0.9 });
+    const meeting = p.music!.cues!.find((c) => c.sceneId === approvedScenes(p)[3].id && c.source === 'score');
+    expect(meeting?.motif === 'Main Theme' || meeting?.motif === 'Wren And Dale').toBe(true);
+    const office = p.music!.cues!.find((c) => c.sceneId === approvedScenes(p)[2].id && c.source === 'score');
+    expect(office?.motif ?? null).not.toBe('Main Theme');
   });
 });
 
