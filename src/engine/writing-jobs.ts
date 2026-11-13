@@ -44,9 +44,12 @@ export function episodeMinutes(p: Project, episode: number): number {
   return approvedScenes(p).filter((s) => s.episode === episode).reduce((a, s) => a + s.estMinutes, 0);
 }
 
+/** The days a pass of a scope takes on an episode: its approved minutes at the scope's pace, never fewer than its least. */
+export const passDays = (p: Project, scope: WritingScope, episode: number): number => Math.max(SCOPE[scope].minDays, Math.ceil(episodeMinutes(p, episode) / SCOPE[scope].minutesPerDay));
+
 /** The days and the cost of a pass, before it is commissioned. */
 export function writingTerms(p: Project, h: Hire, scope: WritingScope, episode: number): { days: number; cost: number } {
-  const days = Math.max(SCOPE[scope].minDays, Math.ceil(episodeMinutes(p, episode) / SCOPE[scope].minutesPerDay));
+  const days = passDays(p, scope, episode);
   return { days, cost: days * h.dayRate };
 }
 

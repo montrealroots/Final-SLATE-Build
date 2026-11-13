@@ -554,6 +554,12 @@ export interface Mandate {
    * it offers these people only; one who declines returns the part to the player instead of being replaced.
    */
   picks?: { characterId: string; method: PerformanceMethod; stage?: string; personId: string }[];
+  /**
+   * Writing (dept 'Writing', mandates.ts, from November 13, 2026): the writers the player approved, each for the episodes
+   * and the pass the plan gave them. A pass that reads below the standard is revised while the contract allows; one
+   * still below, a refusal or a cost past the ceiling comes back to the player.
+   */
+  writers?: { roleId: string; personId: string; episodes: number[]; scope: WritingScope }[];
 }
 
 export interface CastAssignment {

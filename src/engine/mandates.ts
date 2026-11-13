@@ -21,15 +21,16 @@
 // offered the part, returns it to the player on the Cast page.
 import { ledgerTotals, money } from './budget';
 import { acceptCounter, castRoleFor, estimateDays, makeOffer, productionWindow, requiredCrewPlan, roleCandidates } from './hiring';
-import { isAvailable, personAge, playingAgeAt, roleLabel, type Person } from './people';
+import { isAvailable, personAge, personById, playingAgeAt, roleLabel, type Person } from './people';
 import { openParts, partName, samePart, stageById } from './parts';
-import { approvedCharacters } from './projects';
+import { approvedCharacters, isEpisodic } from './projects';
 import { storyAge } from './story-age';
 import { dateKey } from './time';
 import { getPlace } from '../data/places';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY } from './time';
-import type { GameState, Hire, Mandate, Project } from './types';
+import type { GameState, Hire, Mandate, Project, WritingScope } from './types';
+import { REVISION_SHARE, SCOPE, acceptWriting, commissionRefusal, commissionWriting, episodeMinutes, passDays, requestRevision, revisionRefusal, revisionTerms, writingTerms } from './writing-jobs';
 
 /** How often a mandate looks again at its department: a day, the shortest an offer takes to be answered. */
 export const GUIDE_ME_LOOK_DAYS = 1;
@@ -43,11 +44,22 @@ export const mandateCommitted = (p: Project, m: Mandate): number => hiresOf(p, m
 /** The department's required roles still to fill, with whoever is free and cheapest who fits, skipping anyone who already said no to this mandate. */
 /** The department name Guide Me uses for casting. */
 export const CAST = 'Cast';
+/** The department name Guide Me uses for writing (from November 13, 2026, the owner's v5 brief, 1). */
+export const WRITING = 'Writing';
+/**
+ * The read a delivered pass must reach for Guide Me to accept it: below it, the pass is revised while the contract
+ * allows (writing-jobs.ts MAX_REVISIONS), then returned to the player. Game calibration: the middle of the craft scale
+ * and a little more, so a writer at the median level gets through about half the time on a first pass.
+ */
+export const WRITING_STANDARD = 55;
+/** What a Guide Me revision is asked to look at: a label for the record, like the player's own (writing-jobs.ts). */
+const GUIDE_FOCUS = 'Structure';
 
-export interface GuidePick { roleId: string; personId: string; name: string; dayRate: number; days: number; total: number; characterId?: string; method?: import('./types').PerformanceMethod; stage?: string; part?: string }
+export interface GuidePick { roleId: string; personId: string; name: string; dayRate: number; days: number; total: number; characterId?: string; method?: import('./types').PerformanceMethod; stage?: string; part?: string; episodes?: number[]; scope?: WritingScope }
 
 export function guideMePlan(state: GameState, p: Project, dept: string, m?: Mandate): { picks: GuidePick[]; gaps: string[]; total: number } {
   if (dept === CAST) return castPlan(state, p);
+  if (dept === WRITING) return writingPlan(state, p);
   const room = m ? m.ceiling - mandateCommitted(p, m) : Infinity;
   const refused = new Set(m ? hiresOf(p, m).filter((h) => h.status === 'declined').map((h) => h.personId) : []);
   const win = productionWindow(state, p);
@@ -63,6 +75,98 @@ export function guideMePlan(state: GameState, p: Project, dept: string, m?: Mand
     picks.push({ roleId: nr.roleId, personId: pick.id, name: pick.name, dayRate: pick.dayRate, days, total: pick.dayRate * days });
   }
   return { picks, gaps, total: picks.reduce((a, x) => a + x.total, 0) };
+}
+
+/**
+ * Writing's plan (the owner's v5 brief, 1: "commission/delegate development, drafts and revisions within an approved
+ * mandate, with actual work, time, costs, review and delivery"). A series: an episode writer for each episode, each
+ * writing its own draft, a different writer for each where enough are free. A film: a co-writer for a rewrite of the
+ * approved script, then a script editor for a polish of it. Each the cheapest free who has worked before; each total
+ * is the contract's day and the pass's days, with one revision allowed for in the money the plan asks.
+ */
+function writingPlan(state: GameState, p: Project): { picks: GuidePick[]; gaps: string[]; total: number } {
+  const win = productionWindow(state, p);
+  const used = new Set<string>();
+  const picks: GuidePick[] = [];
+  const gaps: string[] = [];
+  const series = isEpisodic(p.axes.format);
+  const jobs: { roleId: string; scope: WritingScope; episode: number }[] = series
+    ? p.episodes.map((e) => ({ roleId: 'episode-writer', scope: 'draft' as WritingScope, episode: e.number }))
+    : [{ roleId: 'co-writer', scope: 'rewrite', episode: 1 }, { roleId: 'script-editor', scope: 'polish', episode: 1 }];
+  for (const j of jobs) {
+    const what = `${roleLabel(j.roleId)}${series ? `, Episode ${j.episode}` : ''}`;
+    if (!episodeMinutes(p, j.episode)) { gaps.push(`${what}: there is nothing in the approved script to write from yet.`); continue; }
+    const pool = roleCandidates(state, p, j.roleId).filter((c) => c.experience >= 2 && isAvailable(state, c, win.from, win.to, p.id).ok).sort((a, b) => a.dayRate - b.dayRate);
+    const pick = pool.find((c) => !used.has(c.id)) ?? pool[0];
+    if (!pick) { gaps.push(`${what}: nobody free can take it in your production window.`); continue; }
+    used.add(pick.id);
+    const pass = passDays(p, j.scope, j.episode);
+    const days = 1 + pass + Math.max(1, Math.ceil(pass * REVISION_SHARE));
+    picks.push({ roleId: j.roleId, personId: pick.id, name: pick.name, dayRate: pick.dayRate, days, total: pick.dayRate * days, part: `${what}: ${SCOPE[j.scope].label}`, episodes: [j.episode], scope: j.scope });
+  }
+  return { picks, gaps, total: picks.reduce((a, x) => a + x.total, 0) };
+}
+
+/**
+ * Writing's look: offer each approved writer their job; once they accept, commission their pass; accept a delivered
+ * pass that reaches the standard, revise one that doesn't while the contract allows, and return the rest. A script
+ * editor's polish waits for the rewrite it polishes to be accepted.
+ */
+function runWriting(state: GameState, p: Project, m: Mandate): void {
+  for (const w of m.writers ?? []) {
+    const what = `${roleLabel(w.roleId)}${isEpisodic(p.axes.format) ? `, Episode ${w.episodes[0]}` : ''}`;
+    if (m.told.some((t) => t.startsWith(`${what}:`))) continue;
+    const h = hiresOf(p, m).find((x) => x.personId === w.personId && x.roleId === w.roleId);
+    const person = roleCandidates(state, p, w.roleId).find((c) => c.id === w.personId);
+    if (!h) {
+      if (!person) { tell(state, p, m, `${what}: the approved writer can no longer be offered it. Hire someone in Writing on the Crew page.`); continue; }
+      if (mandateCommitted(p, m) + person.dayRate > m.ceiling) { tell(state, p, m, `${what}: offering it would go past the ceiling. Hire on the Crew page, or approve a higher ceiling.`); continue; }
+      try {
+        const made = makeOffer(state, p, { personId: w.personId, roleId: w.roleId, dayRate: person.dayRate, episodes: w.episodes });
+        made.guided = m.id;
+        const o = p.obligations.find((y) => y.id === made.obligationId);
+        if (o) o.label = `${o.label} (Guide Me)`;
+      } catch (e) { tell(state, p, m, `${what}: ${(e as Error).message}`); }
+      continue;
+    }
+    if (h.status === 'declined' || h.status === 'released') { tell(state, p, m, `${what}: ${personById(state, w.personId, w.roleId).name} said no. Hire someone in Writing on the Crew page.`); continue; }
+    if (h.status !== 'accepted') continue;
+    for (const ep of w.episodes) {
+      const job = (p.writing ?? []).filter((j) => j.hireId === h.id && j.episode === ep && j.scope === w.scope && j.status !== 'cancelled').at(-1);
+      if (!job) {
+        // The polish is of the rewrite: it waits until a rewrite of the episode has been accepted. Where the rewrite came
+        // back to the player, so does the polish: Guide Me can't know when, or whether, they will accept it. Until
+        // November 13, 2026 it waited, and the mandate never finished (found playing guide-me.spec).
+        const rewrite = (m.writers ?? []).find((x) => x.scope === 'rewrite' && x.episodes.includes(ep));
+        if (w.scope === 'polish' && rewrite && !(p.writing ?? []).some((j) => j.scope === 'rewrite' && j.episode === ep && j.status === 'accepted')) {
+          const back = m.told.some((t) => t.startsWith(`${roleLabel(rewrite.roleId)}${isEpisodic(p.axes.format) ? `, Episode ${ep}` : ''}:`));
+          if (back) tell(state, p, m, `${what}: the polish waits on the rewrite that came back to you. Commission it under Writing Work once you accept the rewrite.`);
+          continue;
+        }
+        const why = commissionRefusal(p, h, w.scope, ep);
+        if (why) { tell(state, p, m, `${what}: ${why}`); continue; }
+        const cost = writingTerms(p, h, w.scope, ep).cost;
+        if (mandateCommitted(p, m) + cost > m.ceiling) { tell(state, p, m, `${what}: the pass would go past the ceiling. Commission it under Writing Work, or approve a higher ceiling.`); continue; }
+        commissionWriting(state, p, h.id, { scope: w.scope, episode: ep });
+        continue;
+      }
+      if (job.status !== 'delivered') continue;
+      const read = job.passes.at(-1)!.read ?? 0;
+      if (read >= WRITING_STANDARD) { acceptWriting(state, p, job.id); continue; }
+      const cost = revisionTerms(p, job).cost;
+      if (!revisionRefusal(p, job) && mandateCommitted(p, m) + cost <= m.ceiling) { requestRevision(state, p, job.id, { focus: GUIDE_FOCUS, text: `Guide Me: it read ${read}, below the ${WRITING_STANDARD} it accepts.` }); continue; }
+      tell(state, p, m, `${what}: the pass reads ${read}, below the ${WRITING_STANDARD} Guide Me accepts, ${revisionRefusal(p, job) ? 'and its revisions are used' : 'and another revision would go past the ceiling'}. Accept it or commission more under Writing Work.`);
+    }
+  }
+}
+
+/** Whether every approved writer's work is accepted or has come back to the player. */
+function writingSettled(p: Project, m: Mandate): boolean {
+  return (m.writers ?? []).every((w) => {
+    const what = `${roleLabel(w.roleId)}${isEpisodic(p.axes.format) ? `, Episode ${w.episodes[0]}` : ''}`;
+    if (m.told.some((t) => t.startsWith(`${what}:`))) return true;
+    return w.episodes.every((ep) => (p.writing ?? []).some((j) => j.personId === w.personId && j.episode === ep && j.scope === w.scope && j.status === 'accepted'));
+  });
 }
 
 /** A performer for each part nobody plays: free, of the part's age, the cheapest who fits; one person for one part. */
@@ -106,8 +210,12 @@ export function approveGuideMe(state: GameState, p: Project, dept: string, ceili
   const m: Mandate = { id: newId(state, 'gm'), dept, ceiling: Math.round(ceiling), approvedAt: state.now, told: [] };
   // Casting: the performers in the plan the player read are the only ones it may offer.
   if (dept === CAST) m.picks = castPlan(state, p).picks.map((x) => ({ characterId: x.characterId!, method: x.method!, ...(x.stage ? { stage: x.stage } : {}), personId: x.personId }));
+  // Writing: the writers in the plan the player read, each for their episodes and pass.
+  if (dept === WRITING) m.writers = writingPlan(state, p).picks.map((x) => ({ roleId: x.roleId, personId: x.personId, episodes: x.episodes!, scope: x.scope! }));
   (p.mandates ??= []).push(m);
-  addLog(state, dept === CAST
+  addLog(state, dept === WRITING
+    ? `Guide Me is writing ${p.title} within ${money(m.ceiling)}. It offers the writers you approved their jobs, commissions their passes, accepts a pass that reads ${WRITING_STANDARD} or more, asks for a revision of one that doesn't, and brings you anything over the ceiling or still short.`
+    : dept === CAST
     ? `Guide Me is casting ${p.title} within ${money(m.ceiling)}. It offers the performers you approved at their asking rates, and brings you any who decline and anything over that.`
     : `Guide Me is staffing ${dept} on ${p.title} within ${money(m.ceiling)}. It sends offers at asking rates, tries someone else when one declines, and brings you anything over that.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: dept === CAST ? 'cast' : 'crew' } });
   runMandate(state, p, m);
@@ -161,6 +269,16 @@ export function runMandate(state: GameState, p: Project, m: Mandate): void {
     const extra = h.counterRate! * h.estDays - held;
     if (mandateCommitted(p, m) + extra <= m.ceiling && extra <= ledgerTotals(p).available) acceptCounter(state, p, h.id);
     else tell(state, p, m, `${h.characterId ? partName(p, h.characterId, h.stage) : roleLabel(h.roleId)}: the counteroffer of ${money(h.counterRate!)} a day needs ${money(extra)} more, beyond the ceiling. Accept or decline it on the ${m.dept === CAST ? 'Cast' : 'Crew'} page, or approve a higher ceiling.`);
+  }
+  if (m.dept === WRITING) {
+    runWriting(state, p, m);
+    if (writingSettled(p, m)) {
+      m.endedAt = state.now; m.ended = 'done';
+      addLog(state, `Guide Me finished writing ${p.title}: ${money(mandateCommitted(p, m))} of the ${money(m.ceiling)} ceiling committed.${m.told.length ? ' Some of it came back to you.' : ''}`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'crew' } });
+      return;
+    }
+    schedule(state, state.now + GUIDE_ME_LOOK_DAYS * DAY, 'guide-me', { projectId: p.id, mandateId: m.id }, { attention: 'silent', priority: 40, id: `guide-me:${m.id}:${state.now + GUIDE_ME_LOOK_DAYS * DAY}` });
+    return;
   }
   if (m.dept === CAST) {
     runCasting(state, p, m);

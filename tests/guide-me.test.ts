@@ -2,8 +2,9 @@
 // inside an approved ceiling, by ordinary in-game actions that take their time, with anything outside it returned once.
 import { describe, expect, it } from 'vitest';
 import { DAY, ledgerTotals, processUntil } from './engine-api';
-import { CAST, GUIDE_ME_LOOK_DAYS, activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted, runMandate } from '../src/engine/mandates';
+import { CAST, GUIDE_ME_LOOK_DAYS, WRITING, WRITING_STANDARD, activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted, runMandate } from '../src/engine/mandates';
 import { withdrawOffer } from '../src/engine/hiring';
+import { personById } from '../src/engine/people';
 import { requiredCrewPlan } from '../src/engine/hiring';
 import { deserialize, serialize } from '../src/engine/save';
 import type { GameState, Project } from '../src/engine/types';
@@ -145,3 +146,73 @@ describe('Guide Me for casting', () => {
   });
 });
 
+
+// Guide Me for writing (the owner's v5 brief, 1: "commission/delegate development, drafts and revisions within an
+// approved mandate, with actual work, time, costs, review and delivery"). From November 13, 2026.
+describe('Guide Me for writing', () => {
+  it('a film: hires a co-writer for a rewrite and a script editor for a polish, each pass worked, reviewed and accepted in turn', () => {
+    const { s, p } = film('gm-write');
+    const plan = guideMePlan(s, p, WRITING);
+    expect(plan.picks.map((x) => [x.roleId, x.scope])).toEqual([['co-writer', 'rewrite'], ['script-editor', 'polish']]);
+    expect(p.hires).toEqual([]); // reading the plan does nothing
+    const m = approveGuideMe(s, p, WRITING, plan.total * 2);
+    expect(p.hires.filter((h) => h.guided === m.id).map((h) => [h.roleId, h.status])).toEqual([['co-writer', 'offered'], ['script-editor', 'offered']]);
+    // The work takes its days: the rewrite is commissioned once they accept, and the polish only once the rewrite is accepted.
+    for (let i = 0; i < 60 && activeMandate(p, WRITING); i++) {
+      days(s, 1);
+      const rewrite = (p.writing ?? []).find((j) => j.scope === 'rewrite');
+      const polish = (p.writing ?? []).find((j) => j.scope === 'polish');
+      if (polish) expect(rewrite?.status).toBe('accepted');
+    }
+    expect(activeMandate(p, WRITING)).toBeUndefined();
+    const jobs = p.writing ?? [];
+    // Each pass was delivered, read, and accepted at the standard, or came back to the player.
+    for (const j of jobs.filter((x) => x.status === 'accepted')) expect(j.passes.at(-1)!.read!).toBeGreaterThanOrEqual(WRITING_STANDARD);
+    expect(jobs.filter((x) => x.status === 'accepted').length + p.mandates!.at(-1)!.told.length).toBeGreaterThanOrEqual(2);
+    // Every day of it was paid, and never past the ceiling.
+    expect(mandateCommitted(p, m)).toBeLessThanOrEqual(m.ceiling);
+    for (const j of jobs) expect(j.passes.reduce((a, x) => a + x.done, 0)).toBeGreaterThan(0);
+  });
+
+  it('revises a pass that reads below the standard while the contract allows, then brings it to the player', () => {
+    const { s, p } = film('gm-write-low');
+    const m = approveGuideMe(s, p, WRITING, guideMePlan(s, p, WRITING).total * 3);
+    // Labelled fixture: the co-writer is at the bottom of the craft scale, so their passes read low.
+    for (let i = 0; i < 10 && !p.hires.some((h) => h.guided === m.id && h.status === 'accepted'); i++) days(s, 1);
+    const writer = p.hires.find((h) => h.guided === m.id && h.roleId === 'co-writer')!;
+    personById(s, writer.personId, 'co-writer').capability = 5; // the generated person, as the game reads them
+    for (let i = 0; i < 80 && activeMandate(p, WRITING); i++) days(s, 1);
+    const rewrite = (p.writing ?? []).find((j) => j.scope === 'rewrite')!;
+    expect(rewrite.passes.length).toBe(3); // the pass and its two revisions
+    expect(rewrite.passes.slice(1).every((x) => x.focus === 'Structure')).toBe(true);
+    expect(rewrite.status).toBe('delivered'); // not accepted for the player
+    expect(m.told.some((t) => /^Co-Writer: the pass reads \d+, below the 55 Guide Me accepts, and its revisions are used\./.test(t))).toBe(true);
+    // The polish waited on that rewrite, so it comes back too, and the mandate finishes rather than waiting for ever.
+    expect(m.told).toContain('Script Editor: the polish waits on the rewrite that came back to you. Commission it under Writing Work once you accept the rewrite.');
+    expect([m.ended, (p.writing ?? []).some((j) => j.scope === 'polish')]).toEqual(['done', false]);
+  });
+
+  it('a series: an episode writer for each episode, each writing its own draft', () => {
+    const s = startLife('gm-write-series');
+    const p = buildProject(s, { title: 'Low Water', format: 'series', medium: 'live-action', episodes: 2, runtime: 20, scenario: 'low' }, [{ name: 'Ada', patch: { roleSize: 'lead' } }],
+      [{ place: 'Pier', chars: ['Ada'], minutes: 10, extra: { episode: 1 } }, { place: 'Pier', chars: ['Ada'], minutes: 10, extra: { episode: 2 } }]);
+    approve(s, p);
+    agreedFunding(p, 400_000); // labelled fixture: the money is raised
+    p.finance!.deals.at(-1)!.id = 'fd1';
+    const plan = guideMePlan(s, p, WRITING);
+    expect(plan.picks.map((x) => [x.roleId, x.scope, x.episodes])).toEqual([['episode-writer', 'draft', [1]], ['episode-writer', 'draft', [2]]]);
+    expect(new Set(plan.picks.map((x) => x.personId)).size).toBe(2);
+  });
+
+  it('carries on after saving and loading, without commissioning anything twice', () => {
+    const { s, p } = film('gm-write-save');
+    approveGuideMe(s, p, WRITING, guideMePlan(s, p, WRITING).total * 2);
+    days(s, 6);
+    const s2 = deserialize(serialize(s));
+    const p2 = s2.projects[0];
+    const before = (p2.writing ?? []).length;
+    days(s2, 1);
+    expect((p2.writing ?? []).filter((j) => j.scope === 'rewrite').length).toBeLessThanOrEqual(1);
+    expect((p2.writing ?? []).length).toBeGreaterThanOrEqual(before);
+  });
+});

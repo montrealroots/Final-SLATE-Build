@@ -26,7 +26,7 @@ import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, will
 import { candidatesFor, childrenIn } from '../engine/hiring';
 import { OwnAccountCard } from './YourMoney';
 import { ProjectKitCard } from './Equipment';
-import { CAST, activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted } from '../engine/mandates';
+import { CAST, WRITING, WRITING_STANDARD, activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted } from '../engine/mandates';
 import { searchAdvice, searchLine, searchPreview, searchRefusal, searchStatus, searchesFor, shortlistAdvice, startSearch } from '../engine/casting-director';
 import { negotiate, negotiationLine, negotiationPreview, negotiationRefusal, producerAccountLine } from '../engine/line-producer';
 import {
@@ -565,8 +565,22 @@ function EpisodeAssignments({ p }: { p: Project }) {
           {p.writing && <HireExtra p={p} roleId="script-editor" />}
         </div>
       )}
+      {p.writing && p.approvedDraft !== null && !p.delivered && <WritingGuide p={p} />}
       <WritingWork p={p} />
     </section>
+  );
+}
+
+/** Guide Me for writing (from November 13, 2026): the writers and their passes, within a ceiling the player approves. */
+function WritingGuide({ p }: { p: Project }) {
+  const [open, setOpen] = useState(false);
+  const active = !!activeMandate(p, WRITING);
+  return (
+    <>
+      {!active && <button className="btn btn-sm spaced" onClick={() => setOpen(true)}>Guide Me For Writing</button>}
+      <GuideMeStanding p={p} dept={WRITING} />
+      {open && <GuideMeDialog p={p} dept={WRITING} onClose={() => setOpen(false)} />}
+    </>
   );
 }
 
@@ -1156,7 +1170,9 @@ function GuideMeDialog({ p, dept, onClose }: { p: Project; dept: string; onClose
   const approve = () => { const e = store.act((s) => { approveGuideMe(s, s.projects.find((x) => x.id === p.id)!, dept, ceiling); }); if (e) setErr(e); else onClose(); };
   return (
     <Modal title={`Guide Me For ${dept}`} kind="guide-me" onClose={onClose} footer={<><button className="btn" onClick={onClose}>Keep It Manual</button><button className="btn btn-primary" disabled={!!no} onClick={approve}>Approve Guide Me</button></>}>
-      <p className="dim">{dept === CAST
+      <p className="dim">{dept === WRITING
+        ? `The game hires the writers below at their asking rates within the ceiling you set, commissions each one's pass once they accept, and accepts a delivered pass that reads ${WRITING_STANDARD} or more. One that reads less goes back for a revision while the contract allows and the money fits; one still short, a writer who says no, or anything over the ceiling comes back to you. The writing takes its days, and each day is paid.`
+        : dept === CAST
         ? 'The game offers each part to the performer below, at their asking rate, within the ceiling you set, and accepts a counteroffer only while it still fits. Who plays a part is your choice: anyone who says no is not replaced, and the part comes back to you. Each offer takes days to be answered.'
         : 'The game staffs this department for you within the ceiling you set: it offers these people at their asking rates, tries someone else when one says no, and accepts a counteroffer only while it still fits. Each offer takes days to be answered, and the work still has to be done. Anything over the ceiling comes back to you.'}</p>
       {plan.picks.length > 0 ? (
@@ -1166,7 +1182,7 @@ function GuideMeDialog({ p, dept, onClose }: { p: Project; dept: string; onClose
       ) : <p className="muted">Nobody free can be offered a job here now.</p>}
       {plan.gaps.map((x) => <p key={x} className="callout small">{x}</p>)}
       <p><strong>The Plan Costs:</strong> {money(plan.total)}. {money(ledgerTotals(p).available)} is uncommitted on this project.</p>
-      <NumberField label="Spending Ceiling" value={ceiling} min={0} max={100_000_000} onChange={setCeiling} hint={dept === CAST ? 'The most Guide Me may commit for the cast. It never goes past it.' : "The most Guide Me may commit for this department's hires. It never goes past it."} />
+      <NumberField label="Spending Ceiling" value={ceiling} min={0} max={100_000_000} onChange={setCeiling} hint={dept === CAST ? 'The most Guide Me may commit for the cast. It never goes past it.' : dept === WRITING ? 'The most Guide Me may commit for the writers, their passes and revisions. It never goes past it.' : "The most Guide Me may commit for this department's hires. It never goes past it."} />
       {no && <p className="small">{no}</p>}
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
     </Modal>
@@ -1181,7 +1197,7 @@ export function GuideMeStanding({ p, dept }: { p: Project; dept: string }) {
   const done = m.endedAt !== undefined;
   return (
     <div className="callout small spaced" role="region" aria-label={`Guide Me, ${dept}`}>
-      <p>{done ? (m.ended === 'done' ? (dept === CAST ? 'Guide Me cast the parts it was given' : `Guide Me staffed ${dept}`) : `Guide Me stopped`) : dept === CAST ? 'Guide Me is casting' : 'Guide Me is staffing this department'}: {money(mandateCommitted(p, m))} of the {money(m.ceiling)} ceiling committed{out ? `, ${plural(out, 'offer')} out` : ''}. Approved {longLocal(m.approvedAt, getPlace(p.axes.basePlaceId).zone).date}{done ? `; ended ${longLocal(m.endedAt!, getPlace(p.axes.basePlaceId).zone).date}` : ''}.</p>
+      <p>{done ? (m.ended === 'done' ? (dept === CAST ? 'Guide Me cast the parts it was given' : dept === WRITING ? 'Guide Me finished the writing it was given' : `Guide Me staffed ${dept}`) : `Guide Me stopped`) : dept === CAST ? 'Guide Me is casting' : dept === WRITING ? 'Guide Me is writing' : 'Guide Me is staffing this department'}: {money(mandateCommitted(p, m))} of the {money(m.ceiling)} ceiling committed{out ? `, ${plural(out, 'offer')} out` : ''}. Approved {longLocal(m.approvedAt, getPlace(p.axes.basePlaceId).zone).date}{done ? `; ended ${longLocal(m.endedAt!, getPlace(p.axes.basePlaceId).zone).date}` : ''}.</p>
       {m.told.length > 0 && <><p><strong>Returned to you:</strong></p><ul>{m.told.map((t) => <li key={t}>{t}</li>)}</ul></>}
       {!done && <button className="btn btn-sm" onClick={() => void store.act((s) => endGuideMe(s, s.projects.find((x) => x.id === p.id)!, dept))}>Back To Manual</button>}
     </div>
