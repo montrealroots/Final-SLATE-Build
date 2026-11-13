@@ -203,13 +203,16 @@ const theatricalRuns = (p: Project) => p.offers.filter((o) => o.route === 'theat
  * was not played. It is worked out from the weeks each time it is read, so a settled month or a corrected week is in
  * it at once and there is no second copy to fall behind.
  */
-export function recordBook(state: GameState): BookRow[] {
+export function recordBook(state: GameState, asOf?: string): BookRow[] {
   const gross = (w: BoxOfficeWeek) => Math.round(w.rental / RENTAL_SHARE);
   const rows: BookRow[] = [];
+  // As of a day (the v6 package, 02 C, from November 13, 2026): only the weeks that had ended by then, ranked among
+  // themselves, so the records read as they stood that day.
+  const counted = (w: BoxOfficeWeek) => !asOf || w.to <= asOf;
   for (const p of state.projects) {
-    const runs = theatricalRuns(p);
+    const runs = theatricalRuns(p).filter((o) => counted(o.weeks![0]));
     if (!runs.length) continue;
-    const all = runs.flatMap((o) => o.weeks!);
+    const all = runs.flatMap((o) => o.weeks!.filter(counted));
     const byYear: Record<string, number> = {};
     for (const w of all) byYear[w.to.slice(0, 4)] = (byYear[w.to.slice(0, 4)] ?? 0) + gross(w);
     const best = all.reduce((b, w) => (gross(w) > b.gross ? { gross: gross(w), week: w.week } : b), { gross: 0, week: 0 });
@@ -224,4 +227,14 @@ export function recordBook(state: GameState): BookRow[] {
   }
   for (const r of rows) r.rank = { opening: 1 + rows.filter((x) => x.opening > r.opening).length, lifetime: 1 + rows.filter((x) => x.lifetime > r.lifetime).length };
   return rows.sort((a, b) => b.lifetime - a.lifetime || a.opened.localeCompare(b.opened) || a.title.localeCompare(b.title));
+}
+
+/**
+ * Lifetime takings by the year each film opened, which is not the same as what was taken in a calendar year (BookRow
+ * byYear): a film that opens in December earns into January, and that January is its opening year's here.
+ */
+export function byReleaseYear(rows: BookRow[]): Record<string, number> {
+  const out: Record<string, number> = {};
+  for (const r of rows) out[r.opened.slice(0, 4)] = (out[r.opened.slice(0, 4)] ?? 0) + r.lifetime;
+  return out;
 }

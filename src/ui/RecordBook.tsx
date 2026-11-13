@@ -1,22 +1,35 @@
-// The record book on the Profile page (engine/box-office.ts): this career's films in cinemas, from their weeks.
+// Box Office Records on the Profile page (engine/box-office.ts): this career's films in cinemas, from their weeks. Titled
+// "Box Office Records" from November 13, 2026 (the owner's v6 package, 02 C; until then "Record Book"), with the records
+// as they stood at the end of any year they cover, and calendar-year takings kept apart from a release year's.
+import { useState } from 'react';
 import { money, formatDateKey } from '../engine';
-import { recordBook } from '../engine/box-office';
+import { byReleaseYear, recordBook } from '../engine/box-office';
+import { dateKey } from '../engine/time';
+import { getPlace } from '../data/places';
 import { store, useGame } from './store';
-import { plural } from './components';
+import { SelectField, plural } from './components';
 
 const place = (n: number) => `${n}${n % 100 >= 11 && n % 100 <= 13 ? 'th' : ['th', 'st', 'nd', 'rd'][n % 10] ?? 'th'}`;
 
 export function RecordBookCard() {
   const g = useGame();
-  const rows = recordBook(g);
+  const today = dateKey(g.now, getPlace(g.locationId).zone);
+  const [asOf, setAsOf] = useState('today');
+  const all = recordBook(g);
+  // The end of each year the records cover, before this one.
+  const first = all.map((r) => r.opened).sort()[0];
+  const ends = first ? Array.from({ length: Number(today.slice(0, 4)) - Number(first.slice(0, 4)) }, (_, k) => `${Number(first.slice(0, 4)) + k}-12-31`) : [];
+  const rows = asOf === 'today' ? all : recordBook(g, asOf);
   const years: Record<string, number> = {};
   for (const r of rows) for (const [y, v] of Object.entries(r.byYear)) years[y] = (years[y] ?? 0) + v;
+  const opened = byReleaseYear(rows);
   return (
     <section className="card" aria-labelledby="book-h">
-      <h2 id="book-h">Record Book</h2>
+      <h2 id="book-h">Box Office Records</h2>
+      {ends.length > 0 && <SelectField label="As Of" value={asOf} onChange={setAsOf} options={[{ value: 'today', label: `Today, ${formatDateKey(today)}` }, ...ends.reverse().map((k) => ({ value: k, label: formatDateKey(k) }))]} />}
       {rows.length ? (
         <>
-          <p className="dim">Your films in cinemas, by ticket sales. Simulated by the game, and only what happened in this story: no real box office is in this book. Ticket sales are not earnings: under each film are the film rental, the project's income, what it cost, its profit and what came to you, each kept apart. Equal figures share a place.</p>
+          <p className="dim">Your films in cinemas, by ticket sales{asOf === 'today' ? '' : `, as they stood on ${formatDateKey(asOf)}`}. Simulated by the game, and only what happened in this story: no real box office is in these records. Ticket sales are not earnings: under each film are the film rental, the project's income, what it cost, its profit and what came to you, each kept apart. Equal figures share a place.</p>
           <ul className="list">
             {rows.map((r) => (
               <li key={r.projectId}>
@@ -35,9 +48,10 @@ export function RecordBookCard() {
               </li>
             ))}
           </ul>
-          <p className="dim small">By the year a week ended in: {Object.keys(years).sort().map((y) => `${y}, ${money(years[y])}`).join('; ')}.</p>
+          <p className="dim small">Taken in each calendar year: {Object.keys(years).sort().map((y) => `${y}, ${money(years[y])}`).join('; ')}.</p>
+          <p className="dim small">Lifetime takings of the films that opened each year: {Object.keys(opened).sort().map((y) => `${y}, ${money(opened[y])}`).join('; ')}.</p>
         </>
-      ) : <p className="muted">A film you release in cinemas is entered here week by week: its opening, its best week and what it took in all. Every figure in it is the game's own simulation.</p>}
+      ) : <p className="muted">{asOf === 'today' ? 'A film you release in cinemas is entered here week by week: its opening, its best week and what it took in all. Every figure in it is the game\'s own simulation.' : `Nothing had played in cinemas by ${formatDateKey(asOf)}.`}</p>}
     </section>
   );
 }
