@@ -4,7 +4,9 @@
 // What is here, and what is not. Every figure is this game's own simulation and is labelled so wherever it is shown; no
 // recorded historical result is imported, and none is made up to stand beside these. The money a film earns is exactly
 // what it was: the distributor's monthly report (distribution.ts reportedGross) is still the amount, and these weeks are
-// that report in the four weeks it covers. Not built: publicity spending, and currency other than the game's dollars.
+// that report in the four weeks it covers. Not built: currency other than the game's dollars. (Until November 13, 2026
+// this also said publicity spending wasn't built; a self-release's promotion is, in release-plan.ts and distribution.ts
+// promoLift. A distributor's own campaign is not.)
 //
 // Screens and holdovers (November 13, 2026; the v4 package, 04, "bookings, screens ... holdovers/expansion or
 // withdrawal"). A run opens on as many screens as its distributor's guarantee pays for, in the territories it opens in.
