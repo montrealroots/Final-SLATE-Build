@@ -18,14 +18,14 @@ import { personalBalance, postPersonal } from './personal';
 import { addLog, newId } from './state';
 import type { FinanceDeal, GameState, Project } from './types';
 
-export type CompanyKind = 'capital' | 'draw' | 'to-project' | 'from-project' | 'formation';
+export type CompanyKind = 'capital' | 'draw' | 'to-project' | 'from-project' | 'formation' | 'overhead';
 export interface CompanyPosting { id: string; at: number; kind: CompanyKind; amount: number; label: string; key: string }
 export interface Company { name: string; foundedAt: number; postings: CompanyPosting[] }
 
 /** What forming a company costs, from your own account. Game calibration, not a registry's fee. */
 export const FORMATION_FEE = 300;
 export const COMPANY_LABELS: Record<CompanyKind, string> = {
-  capital: 'Put In By You', draw: 'Drawn By You', 'to-project': 'Put Into Projects', 'from-project': 'Back From Projects', formation: 'Formation',
+  capital: 'Put In By You', draw: 'Drawn By You', 'to-project': 'Put Into Projects', 'from-project': 'Back From Projects', formation: 'Formation', overhead: 'Overhead From A First-Look Deal',
 };
 
 const post = (state: GameState, kind: CompanyKind, amount: number, label: string, key: string) => {

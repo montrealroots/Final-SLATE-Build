@@ -168,7 +168,7 @@ function zoneOk(zone: string): boolean {
 }
 
 const FINANCE_STATUSES = ['considering', 'offered', 'declined', 'refused', 'accepted', 'breached', 'lapsed', 'withdrawn'];
-const FINANCE_KINDS = ['agreed', 'starting', 'grant', 'investor', 'co-producer', 'commissioner', 'earnings', 'capital', 'studio', 'savings', 'company'];
+const FINANCE_KINDS = ['agreed', 'starting', 'grant', 'investor', 'co-producer', 'commissioner', 'earnings', 'capital', 'studio', 'savings', 'company', 'first-look'];
 
 function validateProject(raw: unknown, i: number, seen: Set<string>): void {
   const where = `project ${i + 1}`;

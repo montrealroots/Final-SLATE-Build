@@ -9,6 +9,7 @@ import { laterWindowTerritories, onDealReleased } from './distribution';
 import { EFFECTS_REVISION_GAIN, REVOICE_GAIN } from './revisions';
 import { scheduleRenewal } from './continuation';
 import { approvedTake, captureCredit } from './mocap';
+import { scheduleFirstLookCheck } from './first-look';
 import { BROADCAST_EDIT_COST, DUB_PER_MINUTE, ESSENTIAL_CUT_COST, LATE_SLOT_SHARE, SUBTITLE_PER_MINUTE, broadcastSlotFor, contentLevel, documentsNeeded } from './script-effects';
 import { financeCredits, onProjectDelivered, projectFamilies, receiveIncome } from './finance';
 import { fitWeight } from './strategy';
@@ -107,6 +108,7 @@ export function deliver(state: GameState, p: Project): void {
   onProjectDelivered(state, p);
   scheduleRenewal(state, p);
   scheduleOpportunity(state, p);
+  scheduleFirstLookCheck(state, p);
   // Someone saw it: an offer of work may follow (jobs.ts decides whether).
   // Its id is its own, not the shared counter's: other draws are keyed on ids from that counter (a later window's on its
   // offer's), and an event added here must not move them.

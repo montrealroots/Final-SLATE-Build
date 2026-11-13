@@ -6,6 +6,27 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## The Owner's v5 Brief (From November 13, 2026)
+
+The brief is `docs/v5/00-OWNER-BRIEF.md`, word for word. `docs/v5/LEDGER.md` says where each section stands, and the
+order of work is at its end. The owner said: "Don't stop until 100% perfect completion and proof of it."
+
+- **Done.**
+  - **1. Adaptation.** Story structure (`story-structure.ts`), the whole brief from the story, and Guide Me for
+    writing. A journey for delegated writing through release is still to come.
+  - **9. Money and equipment.** A kit shortage waits for the player's approval, and the player has a company of their
+    own.
+  - **5. First-look deals.** Researched in `docs/v5/FIRST-LOOK.md`, built in `first-look.ts` and `FirstLook.tsx`, and
+    tested in `tests/first-look.test.ts` and `e2e/v5-first-look.spec.ts`.
+- **Next, in order.**
+  1. 6, the Release Plan.
+  2. 3 and 4, music.
+  3. 7 and 8, the living industry, grades and metrics.
+  4. 2, production previews.
+  5. 10 and 11, phone parity and the ten journeys.
+- **The story re-fetch.** It reads plot subsections into `.sources-cache/plots2`. When it is done, run
+  `node tools/sources/plots.mjs --build`. Then rerun the proposal, story-structure, adapt and J03 tests.
+
 ## Newest Requests (November 13, 2026)
 
 - **Every adaptation has the work's story.** The owner: "All adapted material should have a story behind it, even

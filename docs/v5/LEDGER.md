@@ -52,8 +52,21 @@ survives a reload, and has a test that fails without it. The order of work is at
 
 - **Exists.** Studios with recorded paces and genres (`studios.ts`); studio options on single films (`finance.ts`, the
   studio deal).
-- **Gaps.** No first-look agreement at all. The brief asks for researched terms, offers from the player's record and the
-  studio's strategy, submissions and passes, and the routes after a pass.
+- **Done on November 13, 2026.** First-look deals, researched first (`docs/v5/FIRST-LOOK.md`, with its sources and the
+  distinctions from options, distribution, overall deals and first refusal), are built in `first-look.ts`:
+  - offers come from the followed studio the player's delivered films fit, after work received at 60 or better, or a
+    win;
+  - terms follow the studio's recorded scale;
+  - nothing binds without acceptance, and the player may ask once for more overhead;
+  - one deal at a time;
+  - covered films are submitted to the studio first, with its days to answer, and no other studio can be pitched them
+    until then;
+  - development money goes in, and is repaid once from another studio's money after a pass (a burdened turnaround);
+  - one studio per film;
+  - monthly overhead goes to the company, or to the player's own account;
+  - the deal is renewed or ends at its term, or the player ends it early, and its obligations survive.
+- **Evidence.** `tests/first-look.test.ts` (11 tests) and `e2e/v5-first-look.spec.ts`, on desktop and phone.
+- **Left out, and said so.** Turnaround periods with reversion, overall deals, first refusal, and series deals.
 
 ## 6. Independent Release Plan
 
@@ -106,12 +119,12 @@ survives a reload, and has a test that fails without it. The order of work is at
 | Source through brief, delegated writing, casting, production, release | J01 and J03 cover source to release; no delegated writing |
 | Real composer through score and credits | J09 hires a game composer, not a real one |
 | Song refused, replaced, cleared | J08 (library replacement) |
-| First-look offer, submission, pass, outside release | None |
+| First-look offer, submission, pass, outside release | v5-first-look.spec (offer, bargaining, acceptance, submission first); the pass and outside take are engine-tested |
 | Independent film and series on different release routes | Parts in J01, J03 and release-schedule.spec |
 | Paid outside job leading to an opportunity | J10, but the next offer isn't tied to the first job |
 | Renewal or cancellation with obligations | J03 (cancellation), renewal.spec (a labelled fixture) |
-| Equipment shortage needing approval | None: the package is hired automatically |
-| Company transfers and settled earnings | J02 (personal account), no company account |
+| Equipment shortage needing approval | v5-money-equipment.spec |
+| Company transfers and settled earnings | v5-money-equipment.spec (company formed, money moved, put into a project) |
 | Phone pictures and mobile project management | owner-access.spec (fixture answer); no full phone run |
 
 ## The Owner's Goals Beyond The Command

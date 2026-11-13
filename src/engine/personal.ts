@@ -21,7 +21,7 @@ import type { FinanceDeal, GameState, Project } from './types';
 
 export type FamilyCircumstances = 'stretched' | 'getting-by' | 'comfortable' | 'wealthy';
 export type FamilySupportKind = 'none' | 'gift' | 'loan' | 'investment' | 'equipment';
-export type PersonalKind = 'savings' | 'gift' | 'loan' | 'investment' | 'repayment' | 'participation' | 'to-project' | 'from-project' | 'equipment' | 'equipment-sale' | 'paid-work' | 'commission' | 'company';
+export type PersonalKind = 'savings' | 'gift' | 'loan' | 'investment' | 'repayment' | 'participation' | 'to-project' | 'from-project' | 'equipment' | 'equipment-sale' | 'paid-work' | 'commission' | 'company' | 'overhead';
 export interface PersonalPosting { id: string; at: number; kind: PersonalKind; amount: number; label: string; key: string }
 export interface FamilyTerms {
   circumstances: FamilyCircumstances;
@@ -190,7 +190,7 @@ export function personalStatement(state: GameState): { kind: PersonalKind; total
 export const PERSONAL_LABELS: Record<PersonalKind, string> = {
   savings: 'Your Savings', gift: 'Gift From Your Family', loan: 'Loan From Your Family', investment: 'Investment From Your Family', 'from-project': 'Taken Home From Your Projects',
   'to-project': 'Put Into Your Projects', repayment: 'Repaid To Your Family', participation: "Your Family's Share Of What You Took Home",
-  equipment: 'Equipment Bought And Serviced', 'equipment-sale': 'Equipment Sold', 'paid-work': 'Paid For Work On Others\' Productions', commission: 'Commission To Your Agent', company: 'To And From Your Company',
+  equipment: 'Equipment Bought And Serviced', 'equipment-sale': 'Equipment Sold', 'paid-work': 'Paid For Work On Others\' Productions', commission: 'Commission To Your Agent', company: 'To And From Your Company', overhead: 'Overhead From A First-Look Deal',
 };
 void deals; void ownMoney;
 

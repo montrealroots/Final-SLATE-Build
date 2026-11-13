@@ -335,6 +335,9 @@ c(f, '"Company Name"', I, 'state.company.name', 'company.ts formCompany; FinishV
 c(f, '"Put In When It Is Formed"', D, 'state.company postings (capital); state.money postings (company)', 'company.ts formCompany, formRefusal', "Money leaves your account and arrives in the company's, with the formation fee", U('company', 'is formed with a name and capital'))
 c(f, '"Move Between You And The Company"', D, 'state.company postings (capital, draw); state.money postings (company)', 'company.ts moveCompanyMoney', 'Put in or drawn out, posted once on both sides, never more than the side holds', U('company', 'moves money in and draws it out'))
 c(f, '"Put In From The Company"', D, 'project finance deal (company); state.company postings; Project.producedBy', 'company.ts companyIntoProject, companyInRefusal', "The company's money arrives in the project, nobody repaid from it, and the company produces the project", U('company', 'puts money into a project'))
+f = 'FirstLook.tsx'
+c(f, '"Development Money From The Deal"', D, 'project finance deal (first-look); FirstLook.drawn', 'first-look.ts drawDevelopment, developmentRefusal, repayTurnaround', "The studio's development money arrives in a covered project, repaid from another studio's money if one takes it after a pass", U('first-look', 'puts development money into a covered film'))
+f = 'YourMoney.tsx'
 f = 'Equipment.tsx'
 c(f, "{`Hire The Rental House's Package On A Day The Kit Can't Serve (${money(housePackageFee(p))} A Day)`}", D, 'Project.kit.packageApproved', 'production/shoot.ts (a day the kit cannot serve); equipment.ts setPackageApproval', "Approved: such a day hires the package and is shot; not approved: the day is postponed, nothing paid, and the shortage waits", U('equipment', 'without approval, a day the kit'))
 c(f, '"Show"', V)

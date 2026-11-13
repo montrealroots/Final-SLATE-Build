@@ -579,7 +579,7 @@ export interface CastAssignment {
  */
 export interface PartStage { id: string; characterId: string; label: string; age?: number; sceneIds: string[]; episodes: number[] }
 
-export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio' | 'savings' | 'company';
+export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio' | 'savings' | 'company' | 'first-look';
 
 /** A backer approached for a project, and what was agreed (finance.ts). */
 export interface FinanceDeal {
@@ -1318,6 +1318,8 @@ export interface GameState {
   money?: import('./personal').PersonalMoney;
   /** The player's own production company (company.ts). Absent until they form one, and in saves from before November 13, 2026. */
   company?: import('./company').Company;
+  /** First-look deals offered, running and past (first-look.ts). Absent until the first offer, and in saves from before November 13, 2026. */
+  firstLooks?: import('./first-look').FirstLook[];
   /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */
   gear?: import('./equipment').GearInventory;
   /** Paid work on others' productions (jobs.ts). Absent until the first offer. */

@@ -16,6 +16,7 @@ import { climateNote } from '../world/climate';
 import { CinemasNearby } from './Cinemas';
 import { RepresentationCard } from './Representation';
 import { CompanyCard, YourMoneyCard } from './YourMoney';
+import { FirstLookCard } from './FirstLook';
 import { YourEquipmentCard } from './Equipment';
 import { ReputationCard, WorkForOthersCard } from './Jobs';
 import { RecordBookCard } from './RecordBook';
@@ -407,6 +408,7 @@ export function Profile() {
         </section>
         <YourMoneyCard />
         <CompanyCard />
+        <FirstLookCard />
         <YourEquipmentCard />
         <ReputationCard />
         <WorkForOthersCard />
