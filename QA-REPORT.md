@@ -1357,4 +1357,5 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `career`, `catalog`, `creation`, `readers`, `layout`, `devices`, `viewports` specs, desktop and phone | 0 | 70 passed, 8 skipped by design. |
 | `npm run check` | 0 | 1,121 tests; startup 308 kB. |
 | Not done | — | The four-size UI walk (`UI_COVERAGE_WRITE`) was not rerun for the scaled layout; at 961 wide it is the desktop layout, which the desktop walk covers at 1280. |
-
+| Carbon copy, compared pixel by pixel: the desktop at 1280 by 2200 against an iPhone 15 Pro Max (430 by 739 shown 1280 wide), Home, Budget, Crew, Music | 2 real, fixed | At 960 wide it was the desktop's narrowest layout, not its screen: 1280 now. The touch screen's 44-pixel controls made buttons taller than the desktop's: off in this layout. WebKit drew selects as white boxes with grey text: selects draw their own arrow now, in every browser. After: 0.14% to 1.48% of pixels differ, all text antialiasing between Chromium and WebKit. |
+| `phone-layout`, `layout`, `devices`, `viewports`, `creation` on desktop, phone, iPhone 15 Pro Max and its landscape | 0 | 74 passed. |

@@ -223,8 +223,12 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
         that releases a version.
     - Phones show the desktop layout (the owner, November 13, 2026: "make the phone screen the same as the desktop so if
       you have to shrink it for it to fit screen do so"). `src/ui/layout-mode.ts`: where the rail would be a drawer
-      (under 901 wide or 501 tall), the viewport tag lays the page out at least 960 wide (wider on a phone held sideways,
-      so the rail fits) and the browser shrinks it; pinch zoom still works. Settings, Phone Layout, brings back the
+      (under 901 wide or 501 tall), the viewport tag lays the page out 1280 wide, as the desktop is, and the browser
+      shrinks it; pinch zoom still works. In that layout the touch screen's larger controls (pointer: coarse) and the
+      browser's text enlargement are off, and every one-line select draws its own arrow (WebKit drew a white box), so
+      the phone is a carbon copy of the desktop: compared pixel by pixel at 1280 against an iPhone 15 Pro Max, under 1.5%
+      of pixels differ, all text antialiasing (the owner, later the same night: "a carbon copy of the desktop screen").
+      960 was the first width, for larger text; it was not the desktop's screen. Settings, Phone Layout, brings back the
       phone's own layout per device. The phone, iPhone and landscape journeys keep testing the phone layout (`e2e/test.ts`
       sets it unless a test is `phone-layout.spec.ts`); `e2e/phone-layout.spec.ts` tests the default on phone, iPhone
       15 Pro Max and its landscape. Home's cards are two stacks now (`.home-col`): Recent Updates sat under the full

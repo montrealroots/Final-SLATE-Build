@@ -3,13 +3,18 @@
 // the rail as a drawer, the bar in two rows, every grid in one column, so a Budget page ran 53,000 pixels tall.
 //
 // How: on a screen where the rail would fold into a drawer (under 901 CSS pixels wide, or under 501 tall), the page is
-// laid out at least DESKTOP_WIDTH wide, and wide enough that its height keeps the rail beside it, and the browser scales
-// it down to the screen. Pinch zoom still works. Settings can bring the phone layout back, per device. A desktop
+// laid out DESKTOP_WIDTH wide, as a desktop is, and the browser scales it down to the screen. Pinch zoom still works.
+// The touch screen's larger controls (app.css, pointer: coarse) and the browser's text enlargement are off in this
+// layout, so what is drawn is the desktop's, only smaller. Settings can bring the phone layout back, per device. A desktop
 // browser ignores the viewport tag, so a narrow window there keeps the layout it always had.
 const KEY = 'slate.v1.layout';
 const DEVICE = 'width=device-width, initial-scale=1, viewport-fit=cover';
-/** The layout width on a phone: just over the 901 pixels at which the rail stays beside the page. */
-export const DESKTOP_WIDTH = 960;
+/**
+ * The layout width on a phone: the desktop's own, 1280, the width the desktop journeys and captures run at. 960 for the
+ * first hours of November 13, 2026, the least that kept the rail: larger text, but not the desktop's screen (the owner:
+ * "I want it to be a carbon copy of the desktop screen").
+ */
+export const DESKTOP_WIDTH = 1280;
 /** The least height the desktop's rail needs beside the page is 501 pixels; this leaves room. */
 const DESKTOP_HEIGHT = 520;
 
