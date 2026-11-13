@@ -53,12 +53,15 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     from the save (`engine/platform-routes.ts`, the Release Plan's Real Services). 3. The package's 44 award events and
     the Netflix chart week in recorded history, visible from their published date in the player's calendar, inferred
     availability hidden unless opted into, figures comparable only in the same scope (`engine/history.ts`).
-  - *Next, in order:* 4. the six partial eligibility extracts as tri-state checks (a known violation fails; nothing is
-    approved by them); 5. the seven production pipelines' dependencies and transitive rework
-    (`docs/v7/package/data/production-blueprints.json`; reference `affected_tasks`); 6. reputation per the package's
-    design (`reputation-design.json`: role-scoped, bounded, idempotent, grades need several completed works); 7. film and
-    TV first-look obligations (resume from `wip/tv-first-look`); 8. equipment modes and composer credits; then the 22
-    journeys and the TMDB inventory import (`reference/tmdb_inventory.py`, ID exports first).
+  - *Also done:* 4. partial eligibility extracts as tri-state checks (`engine/rule-extracts.ts`); 5. task graphs checked
+    for every method, and a changed take reworks everything built on it (`production/tasks.ts` dependents, graphFaults);
+    6. standing and grade by role per `reputation-design.json` (`engine/reputation.ts` standings; read by the reputation
+    card only, offers still use craft); 7. television first-look deals (`first-look.ts` scope, `finance.ts`
+    submitSeries); 8. camera modes and composer credits as reference records (`engine/reference-records.ts`; nothing in
+    play reads them yet).
+  - *Next:* the 22 journeys as v6 asks (J01 and J03 exist; J13 is unit-tested in `tests/first-look.test.ts`); grades
+    feeding offers; cameras and composers into the shop and hiring once prices and terms are sourced; the TMDB
+    inventory import from ID exports (`docs/v7/package/reference/tmdb_inventory.py`).
   - *Research questions:* `docs/v7/RETURN-TO-RESEARCH.md`.
 
 - **The v6 package, "SLATE: Connected Realism" (the owner, November 13, 2026, after #88).** It is in `docs/v6/package`
