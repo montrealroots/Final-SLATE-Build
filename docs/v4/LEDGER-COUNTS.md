@@ -5,7 +5,7 @@ A child requirement is verified only when a named unit test and a named browser 
 
 | | Children | Requested | Implemented | Verified | Retired |
 | --- | --- | --- | --- | --- | --- |
-| All | 125 | 6 | 89 | 30 | 0 |
+| All | 125 | 5 | 90 | 30 | 0 |
 | V4-001 Retire preset quotas and migrate saves | 4 | 0 | 3 | 1 | 0 |
 | V4-002 Source-first project creation | 5 | 0 | 4 | 1 | 0 |
 | V4-003 Verified source catalog and bibliography | 7 | 0 | 5 | 2 | 0 |
@@ -43,4 +43,4 @@ A child requirement is verified only when a named unit test and a named browser 
 | V4-035 Desktop-phone parity and full-state audit | 3 | 1 | 1 | 1 | 0 |
 | V4-036 Save migrations and accounting invariants | 2 | 0 | 1 | 1 | 0 |
 | V4-037 Performance and long-career balance | 3 | 0 | 3 | 0 | 0 |
-| V4-038 J01-J13 full journeys and exact-tree CI | 13 | 4 | 9 | 0 | 0 |
+| V4-038 J01-J13 full journeys and exact-tree CI | 13 | 3 | 10 | 0 | 0 |
