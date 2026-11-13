@@ -302,6 +302,23 @@ describe('the work\'s story', () => {
   });
 });
 
+describe('a real work as the owner saw it (Grand Theft Auto III, November 13, 2026)', () => {
+  it('counts its outline truly, sets the recorded year, keeps cast notes out of the story, and asks a question that fits its lead', () => {
+    const stories = JSON.parse(readFileSync('src/data/plots.json', 'utf8')) as { plots: Record<string, SourceWork['plot']> };
+    const rec = catalog.records.find((w) => w.title === 'Grand Theft Auto III')!;
+    const { blueprint: b, notes } = proposeFromSource({ work: { ...rec, plot: stories.plots[rec.id] }, format: 'feature', approach: 'faithful', gameYear: 2027, minutes: 100, genres: GENRES });
+    // A three-development story told a sentence at a time: the note counts sentences, never a negative number.
+    expect(notes.join(' ')).not.toMatch(/keeps -\d/);
+    expect(notes.join(' ')).toMatch(/told a sentence at a time/);
+    // 'October 2001' names one year: it is the year the brief sets.
+    expect(b.year).toBe(2001);
+    // Who voiced whom is the game's making, not its story.
+    const told = [b.synopsis, b.premise, b.logline, ...b.scenes.map((x) => x.action)].join(' ');
+    expect(told).not.toMatch(/voiced by|\(Debi Mazar\)|\(Cynthia Farrell\)/);
+    expect(b.question).not.toContain('themselves');
+  });
+});
+
 describe('how long each proposed scene is', () => {
   it('shares the running time to the quarter minute, so short episodes are not made longer by being told in scenes', () => {
     // Five-minute episodes, each told in six scenes: a whole minute a scene made each six minutes long.

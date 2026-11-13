@@ -78,7 +78,7 @@ const AGAINST: Record<string, string> = {
   fate: 'what everyone believes is already decided', technology: 'a technology nobody fully controls', past: 'what happened before',
 };
 const CHOICE: Record<string, [string, string]> = {
-  'loyalty-vs-truth': ['loyalty', 'the truth'], 'safety-vs-freedom': ['safety', 'freedom'], 'love-vs-duty': ['love', 'duty'], 'self-vs-others': ['themselves', 'everyone else'],
+  'loyalty-vs-truth': ['loyalty', 'the truth'], 'safety-vs-freedom': ['safety', 'freedom'], 'love-vs-duty': ['love', 'duty'], 'self-vs-others': ['self-respect', 'everyone else'], // until November 13, 2026 'themselves', which read wrong for a lead who isn't 'they'
   'justice-vs-mercy': ['justice', 'mercy'], 'ambition-vs-integrity': ['ambition', 'integrity'], 'past-vs-future': ['the past', 'the future'], 'belonging-vs-identity': ['belonging', 'who they are'],
   'order-vs-change': ['order', 'change'], 'faith-vs-evidence': ['faith', 'evidence'], 'survival-vs-humanity': ['staying alive', 'staying human'], 'desire-vs-conscience': ['what they want', 'what is right'],
 };
@@ -236,7 +236,10 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     return out + t.slice(from);
   };
   const mark = (t: string) => named.reduce((acc, x) => swap(acc, x.name, `{${x.key}}`), t.replace(/[{}]/g, ''));
-  const paragraphs = plot ? plot.paragraphs.map(mark) : [];
+  // An article's notes of who voiced or played a part, '(voiced by Cynthia Farrell)', are about its making, not its story:
+  // left out of the story the brief is told from. A video game's article also gives them bare, '(Debi Mazar)'.
+  const castNote = w.medium === 'video-game' ? /\s*\((?:(?:voiced|played|portrayed) by )?[A-Z][\p{L}.'-]+(?: [A-Z][\p{L}.'-]+){1,3}\)/gu : /\s*\((?:voiced|played|portrayed) by [^)]+\)/g;
+  const paragraphs = plot ? plot.paragraphs.map((t) => mark(t.replace(castNote, ''))) : [];
   const story = paragraphs.length ? sentencesOf(paragraphs.join(' ')) : [];
   let told = story.length >= STORY_MIN;
   const credit = plot ? `the English Wikipedia article "${plot.article}", its ${plotSection(plot)} section, in its own words (${plot.licence})` : '';
@@ -264,6 +267,10 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   } else if (invented) {
     year = null; time = /science|space|cyber|apocalyp|dystop/.test(genre) ? 'future' : 'period'; origin.year = 'proposed';
     why.year = `${w.title} is ${genre.replace(/-/g, ' ')}; the proposal sets it in its own world with no calendar year.`;
+  } else if (period && new Set(period.match(/\b(1[0-9]{3}|20[0-9]{2})\b/g) ?? []).size === 1 && Number(period.match(/\b(1[0-9]{3}|20[0-9]{2})\b/)![0]) <= i.gameYear) {
+    // A period naming one year is that year (until November 13, 2026, 'October 2001' was read as no year at all).
+    year = Number(period.match(/\b(1[0-9]{3}|20[0-9]{2})\b/)![0]); time = year < i.gameYear - 15 ? 'period' : 'contemporary'; origin.year = 'sourced';
+    why.year = `Recorded as set in ${period}.`;
   } else if (period) {
     year = null; time = 'period'; origin.year = 'sourced';
     why.year = `Recorded as set in ${period}. No single year is recorded; choose one if the story needs it.`;
@@ -403,10 +410,12 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   let left = 0;
   const epMoves: string[] = [];
   let storyEpisodes = 0;
+  let poolSize = 0;
   if (told && !tv) {
     const pool = devs.length >= 5 ? devs : bySentence(devs);
     const sel = selectDevelopments(pool, count);
     left = sel.left;
+    poolSize = pool.length;
     scenes = sel.kept.map((d, k) => devScene(d, k, sel.kept.length));
   } else if (told) {
     const starts = episodeBreaks(devs, episodes);
@@ -420,6 +429,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
       const pool = mine.length >= 2 ? mine : bySentence(mine);
       const sel = selectDevelopments(pool, count);
       left += sel.left;
+      poolSize += pool.length;
       const heaviest = mine.reduce((x, y) => (y.weight > x.weight ? y : x));
       epMoves.push(`${episodePurpose(e, episodes, mine)}: ${heaviest.key}`);
       return sel.kept.map((d, k) => devScene(d, k, sel.kept.length, e + 1));
@@ -440,7 +450,11 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   if (told) {
     const roles = [...new Set(devs.map((d) => ROLE_LABELS[d.role].toLowerCase()))].join(', ');
     why.scenes = `The story read as ${devs.length} developments (${roles}), from ${credit}${background ? `, less ${background} ${background === 1 ? 'passage' : 'passages'} about the work rather than its events` : ''}. Each scene is one, told in its opening and the sentence that turns it, and kept in order${left ? `; ${left} lesser ${left === 1 ? 'development is' : 'developments are'} left out for the format's room, and stay in the synopsis` : ''}${tv ? `. The season breaks where the story turns, each episode with a purpose${storyEpisodes < episodes ? `; the story runs out after episode ${storyEpisodes}, and the episodes after it are the game's own` : ''}` : ''}. Where a development begins and ends, its role, where each scene happens and what each is for are the game's reading, proposed.`;
-    if (left) notes.push(`The outline keeps ${devs.length - left} of the story's ${devs.length} developments: every one that sets it up, turns it or ends it, then the heaviest of the rest.`);
+    // Until November 13, 2026 this counted what was kept against the developments even where a short story is told a
+    // sentence at a time, and said a 3-development story kept "-8" of them.
+    if (left) notes.push(poolSize > devs.length
+      ? `The story's ${devs.length} developments are told a sentence at a time, ${poolSize} in all; the outline keeps ${poolSize - left}: every one that sets it up, turns it or ends it, then the heaviest of the rest.`
+      : `The outline keeps ${devs.length - left} of the story's ${devs.length} developments: every one that sets it up, turns it or ends it, then the heaviest of the rest.`);
   }
   else why.scenes = `${plot ? `${w.title}'s article tells too little of its story to build scenes from` : `No story is recorded for ${w.title}`}${w.medium === 'video-game' ? ' (its article describes play)' : ''}. The outline is the game's own${tv ? `, a stretch of it in each of the ${episodes} episodes` : ''}; write the work's story into it.`;
 

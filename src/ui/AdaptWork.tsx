@@ -190,7 +190,7 @@ export function AdaptWork() {
         {acts.map((a) => (
           <div key={a}>
             <h3>{a}</h3>
-            <ol className="small">{b.scenes.filter((s) => s.act === a).map((s, i) => <li key={i}><strong>{s.intExt}. {s.place}, {s.time.toLowerCase()}.</strong> {say(s.action)}{s.turn ? ` ${say(s.turn)}` : ''}</li>)}</ol>
+            <ol className="small">{b.scenes.filter((s) => s.act === a).map((s, i) => <li key={i}><strong>{s.intExt}. {s.place}, {s.time.toLowerCase()}.</strong> {say(s.action)}{s.turn && !s.action.includes(s.turn) ? ` ${say(s.turn)}` : ''}</li>)}</ol>
           </div>
         ))}
       </section>
