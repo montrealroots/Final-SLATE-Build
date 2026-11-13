@@ -1,7 +1,7 @@
 // A project's music brief and cue plan (engine/cues.ts; the v4 package, 03; ledger V4-023, V4-025). Each comparison
 // changes one input and reads what the plan does with it.
 import { describe, expect, it } from 'vitest';
-import { applyBrief, approveThemes, editCue, giveThemeNotes, onThemesDone, proposeBrief, proposeCues, scoreMinutes, themesGate, timeCues } from '../src/engine/cues';
+import { FIT_PER_ROUND, OUT_OF_SYNC, UNDER_DIALOGUE, UNREVIEWED_FIT, applyBrief, approveThemes, editCue, giveThemeNotes, judgeScore, onThemesDone, proposeBrief, proposeCues, scoreMinutes, themesGate, timeCues } from '../src/engine/cues';
 import { buildTasks } from '../src/engine/production/tasks';
 import { neededRoles } from '../src/engine/hiring';
 import { createSong, attachSong, syncMusicTasks } from '../src/engine/song-actions';
@@ -186,5 +186,63 @@ describe('a brief taken once production has a task list', () => {
     expect(p.tasks.some((x) => x.id === 'post:music:1' || x.id === 'post:themes:all')).toBe(false);
     expect(p.tasks.find((x) => x.id === 'post:spotting:1')?.status).toBe('done');
     expect(p.tasks.find((x) => x.id === 'post:mix:1')!.dependsOn).not.toContain('post:music:1');
+  });
+});
+
+describe('how the score is judged', () => {
+  it('a project with no brief is judged on the composer as before; silence and songs only have no score to judge', () => {
+    const { s, p } = film('judge-none');
+    expect(judgeScore(p, 70)).toEqual({ score: 70 * 0.9 + 5, execution: 68, fit: 0, sync: 0, dialogue: 0 });
+    applyBrief(s, p, { ...proposeBrief(p, s.now), approach: 'silence' });
+    expect(judgeScore(p, 70)).toBeNull();
+    applyBrief(s, p, { ...proposeBrief(p, s.now), approach: 'songs' });
+    expect(judgeScore(p, 70)).toBeNull();
+  });
+
+  it('reads the composer\'s capability for execution and nothing else about them', () => {
+    const { s, p } = film('judge-exec');
+    applyBrief(s, p, { ...proposeBrief(p, s.now), density: 0.25 });
+    expect(judgeScore(p, 80)!.execution - judgeScore(p, 60)!.execution).toBe(18);
+    expect(judgeScore(p, 80)!.score - judgeScore(p, 60)!.score).toBe(18); // the rest doesn't move with who wrote it
+  });
+
+  it('a loud cue under dialogue costs the lines it covers; lowered, it costs nothing', () => {
+    const { s, p } = film('judge-talk');
+    applyBrief(s, p, { ...proposeBrief(p, s.now), density: 0.9 });
+    const talk = p.music!.cues!.filter((c) => c.source === 'score' && c.underDialogue);
+    expect(talk.length).toBeGreaterThan(0);
+    for (const c of talk) editCue(p, c.id, { intensity: 1 });
+    const quiet = judgeScore(p, 60)!;
+    expect(quiet.dialogue).toBe(0);
+    editCue(p, talk[0].id, { intensity: 3 });
+    expect(judgeScore(p, 60)!.dialogue).toBe(-UNDER_DIALOGUE.loud);
+    expect(judgeScore(p, 60)!.score).toBe(quiet.score - UNDER_DIALOGUE.loud);
+  });
+
+  it('a cue left out of time by a changed scene is judged lower until it is conformed', () => {
+    const { s, p } = film('judge-sync');
+    applyBrief(s, p, { ...proposeBrief(p, s.now), density: 0.5 });
+    timeCues(p, 1);
+    const before = judgeScore(p, 60)!.score;
+    const scored = p.music!.cues!.find((c) => c.source === 'score')!;
+    approvedScenes(p).find((x) => x.id === scored.sceneId)!.estMinutes += 2;
+    expect(judgeScore(p, 60)!.sync).toBe(-OUT_OF_SYNC);
+    expect(judgeScore(p, 60)!.score).toBe(before - OUT_OF_SYNC);
+    timeCues(p, 1);
+    expect(judgeScore(p, 60)!.score).toBe(before);
+  });
+
+  it('themes you gave notes on come closer to the brief, two rounds counted; themes nobody reviewed stand as the composer read it', () => {
+    const { s, p } = film('judge-fit');
+    applyBrief(s, p, proposeBrief(p, s.now));
+    onThemesDone(p, s.now);
+    approveThemes(p, s.now);
+    expect(judgeScore(p, 60)!.fit).toBe(0);
+    for (const rounds of [1, 2, 3]) {
+      p.music!.themes = { status: 'approved', rounds, notes: [], at: s.now };
+      expect(judgeScore(p, 60)!.fit).toBe(FIT_PER_ROUND * Math.min(2, rounds));
+    }
+    p.music!.brief!.delegateReview = true;
+    expect(judgeScore(p, 60)!.fit).toBe(UNREVIEWED_FIT);
   });
 });

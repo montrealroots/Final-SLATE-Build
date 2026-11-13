@@ -6,12 +6,12 @@ import { money } from '../engine/budget';
 import { formatDateKey, dateKey } from '../engine/time';
 import { getPlace } from '../data/places';
 import {
-  LICENCE_MEDIA, LICENCE_MEDIUM_LABELS, SCOPE_YEARS, agreeLicence, declineQuote, holderFee, licenceTotal, licencesOf, licensesSongs, renewLicence, renewalFee, requestLicence, requestRefusal, scopeWords, standingLicence,
+  LICENCE_MEDIA, LICENCE_MEDIUM_LABELS, SCOPE_YEARS, agreeLicence, libraryFee, libraryRefusal, replaceWithLibrary, declineQuote, holderFee, licenceTotal, licencesOf, licensesSongs, renewLicence, renewalFee, requestLicence, requestRefusal, scopeWords, standingLicence,
   type LicenceMedium, type LicenceScope, type SongLicence,
 } from '../engine/music';
-import { detachSong, syncMusicTasks } from '../engine/song-actions';
+import { detachSong, syncMusicTasks, syncSongTasks } from '../engine/song-actions';
 import { songsOf } from '../engine/songs';
-import { APPROACH_LABELS, PURPOSE_LABELS, applyBrief, approveThemes, cueSeconds, editCue, giveThemeNotes, proposeBrief, scoreMinutes, scoreStyleLabel, type MusicApproach, type MusicBrief } from '../engine/cues';
+import { APPROACH_LABELS, PURPOSE_LABELS, applyBrief, approveThemes, cueSeconds, cuesToConform, editCue, giveThemeNotes, proposeBrief, scoreMinutes, scoreStyleLabel, type MusicApproach, type MusicBrief } from '../engine/cues';
 import { SCORES, type Score } from '../engine/craft';
 import { approvedScenes, sceneLabel } from '../engine/projects';
 import type { Project, Song } from '../engine/types';
@@ -97,6 +97,7 @@ function CuePlan({ p }: { p: Project }) {
       <h2 id="cues-h">Cue Plan</h2>
       <p className="small">{episodes.map((e) => `${p.episodes.length > 1 ? `Episode ${e}: ` : ''}${scoreMinutes(p, e) ?? 0} minutes of score for the composer`).join('; ') || 'No cues: nothing is scored.'}. A cue is part of its scene, so its length follows the cut; one under dialogue adds to the mix.</p>
       <ThemesReview p={p} />
+      <ScoreJudgedOn p={p} />
       <ul className="list" aria-label="Cues">
         {cues.map((c) => {
           const scene = approvedScenes(p).find((x) => x.id === c.sceneId) ?? p.scenes.find((x) => x.id === c.sceneId);
@@ -121,6 +122,20 @@ function CuePlan({ p }: { p: Project }) {
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
     </section>
   );
+}
+
+/** What the score will be judged on that the player can still change (engine/cues.ts judgeScore), in plain words. */
+function ScoreJudgedOn({ p }: { p: Project }) {
+  const brief = p.music!.brief!;
+  if (brief.approach === 'silence' || brief.approach === 'songs') return null;
+  const loud = (p.music!.cues ?? []).filter((c) => c.source === 'score' && c.underDialogue && c.intensity === 3);
+  const late = [...new Set(approvedScenes(p).map((s) => s.episode))].flatMap((e) => cuesToConform(p, e));
+  const lines = [
+    loud.length ? `${loud.map((c) => c.code).join(', ')} ${loud.length === 1 ? 'plays' : 'play'} at high intensity under dialogue, covering lines: the score is judged lower for it. Lower the intensity to keep the lines clear.` : null,
+    late.length ? `${late.map((c) => c.code).join(', ')} no longer ${late.length === 1 ? 'fits its scene' : 'fit their scenes'}, which changed length: judged out of time until conformed.` : null,
+    brief.delegateReview ? 'Nobody reviews the themes: they stand as the composer read the brief, which the score is judged against.' : 'Themes you review, and give notes on, come closer to what you asked for; the score is judged on that.',
+  ].filter((x): x is string => !!x);
+  return <ul className="small" aria-label="What The Score Is Judged On">{lines.map((l) => <li key={l}>{l}</li>)}</ul>;
 }
 
 function SongLicences({ p, s }: { p: Project; s: Song }) {
@@ -162,14 +177,19 @@ function SongLicences({ p, s }: { p: Project; s: Song }) {
           ))}
         </ul>
       )}
-      {last?.status === 'refused' && inCut && (
+      {s.library && <p className="dim small">From a production music library, which licenses its tracks on its own terms{s.replaces ? `, in place of "${songsOf(p).find((x) => x.id === s.replaces!.songId)?.title ?? 'a song no longer in the project'}"` : ''}. The library and its fee are the game's invention.</p>}
+      {(last?.status === 'refused' || (last?.status === 'expired' && !standing)) && inCut && !s.library && (
         <div role="region" aria-label={`Other Routes For ${s.title}`}>
-          <p className="small">Other routes: ask again for less below; replace it with another song or an original on the Production page; or leave its scenes without it.</p>
-          <button className="btn btn-sm" disabled={p.edit.pictureLocked} aria-label={`Leave ${s.title}'s Scenes Silent`} onClick={() => setErr(store.act(() => { for (const u of [...s.uses]) detachSong(live(), s.id, u.sceneId); }))}>Leave Its Scenes Silent</button>
-          {p.edit.pictureLocked && <p className="dim small">The picture is locked: unlock it to take the song out.</p>}
+          <p className="small">Other routes: ask again for less below; replace it with another song or an original on the Production page; put a library track in its place; or leave its scenes without it.</p>
+          <div className="row gap-2 wrap">
+            <button className="btn btn-sm" disabled={!!libraryRefusal(p, s.id)} aria-label={`Replace ${s.title} With Library Music For ${money(libraryFee(p, s))}`} onClick={() => setErr(store.act((st) => { replaceWithLibrary(st, live(), s.id); syncSongTasks(live()); }))}>Replace With Library Music For {money(libraryFee(p, s))}</button>
+            <button className="btn btn-sm" disabled={p.edit.pictureLocked} aria-label={`Leave ${s.title}'s Scenes Silent`} onClick={() => setErr(store.act(() => { for (const u of [...s.uses]) detachSong(live(), s.id, u.sceneId); }))}>Leave Its Scenes Silent</button>
+          </div>
+          {libraryRefusal(p, s.id) && <p className="dim small">{libraryRefusal(p, s.id)}</p>}
+          <p className="dim small">A library track licenses every medium, worldwide, for 10 years. It can go in after the picture is locked; a finished mix takes half a day to lay it in.{p.edit.pictureLocked ? ' The picture is locked: unlock it to take the song out instead.' : ''}</p>
         </div>
       )}
-      {!open && (asking ? <AskForm p={p} s={s} onDone={() => setAsking(false)} /> : <button className="btn btn-sm" style={{ marginTop: 'var(--s2)' }} aria-label={`Ask To License ${s.title}`} onClick={() => setAsking(true)}>{all.length ? 'Ask Again' : 'Ask To License It'}</button>)}
+      {!open && !s.library && (asking ? <AskForm p={p} s={s} onDone={() => setAsking(false)} /> : <button className="btn btn-sm" style={{ marginTop: 'var(--s2)' }} aria-label={`Ask To License ${s.title}`} onClick={() => setAsking(true)}>{all.length ? 'Ask Again' : 'Ask To License It'}</button>)}
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
     </article>
   );

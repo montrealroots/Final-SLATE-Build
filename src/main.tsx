@@ -2,6 +2,7 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import './ui/app.css';
 import { App } from './ui/App';
+import { watchLayout } from './ui/layout-mode';
 
 try {
   const t = localStorage.getItem('slate.v1.text');
@@ -9,6 +10,8 @@ try {
 } catch {
   /* per-viewer convenience only */
 }
+
+watchLayout();
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

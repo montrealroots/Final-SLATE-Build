@@ -200,3 +200,34 @@ export function giveThemeNotes(p: Project, note: string, now: number, rebuild: (
   p.music!.themes = { status: 'notes', rounds: th.rounds + 1, notes: [...th.notes, n.slice(0, 300)], at: now };
   rebuild();
 }
+
+// ---------------- How the score is judged (the v4 package, 03; ledger V4-025.02) ----------------
+// Until November 13, 2026 the music score was the composer's capability alone (x 0.9 + 5), whatever was written. With a
+// brief it also reads what the package names. Execution: the composer's capability, as before. Fit to the approved
+// intent: themes you reviewed and gave notes on come closer to it, a round at a time; themes nobody reviewed stand as the
+// composer read the brief. Synchronization: a scored cue whose scene changed length and was never conformed plays out
+// of time. Dialogue: a loud or foreground cue under talk costs the lines it covers. A project with no brief is judged as
+// before; a brief with no score (silence, or songs only) has no score to judge. Name and fame are never read: the
+// composer counts by their capability. Weights are game calibration.
+export const FIT_PER_ROUND = 2;
+export const FIT_ROUNDS_COUNTED = 2;
+export const UNREVIEWED_FIT = -3;
+export const OUT_OF_SYNC = 3;
+export const UNDER_DIALOGUE = { loud: 2, foreground: 1, most: 10 };
+
+export interface ScoreJudgement { score: number; execution: number; fit: number; sync: number; dialogue: number }
+
+/** The score's assessment for the project (or one episode), or null when nothing is scored. */
+export function judgeScore(p: Project, composerCapability: number | null, episode?: number): ScoreJudgement | null {
+  const execution = (composerCapability ?? 45) * 0.9 + 5;
+  const brief = p.music?.brief;
+  if (!brief) return { score: execution, execution, fit: 0, sync: 0, dialogue: 0 };
+  if (!scoreSteps(p)) return null;
+  const th = p.music!.themes;
+  const fit = brief.delegateReview ? UNREVIEWED_FIT : th?.status === 'approved' ? FIT_PER_ROUND * Math.min(FIT_ROUNDS_COUNTED, th.rounds) : 0;
+  const eps = [...new Set(approvedScenes(p).map((s) => s.episode))].filter((e) => episode === undefined || e === episode);
+  const sync = -OUT_OF_SYNC * eps.reduce((a, e) => a + cuesToConform(p, e).length, 0) || 0;
+  const talk = (p.music!.cues ?? []).filter((c) => c.source === 'score' && c.underDialogue && (episode === undefined || c.episode === episode) && sceneOf(p, c.sceneId));
+  const dialogue = -Math.min(UNDER_DIALOGUE.most, talk.reduce((a, c) => a + (c.intensity === 3 ? UNDER_DIALOGUE.loud : c.layer === 'foreground' ? UNDER_DIALOGUE.foreground : 0), 0)) || 0;
+  return { score: execution + fit + sync + dialogue, execution, fit, sync, dialogue };
+}

@@ -18,7 +18,7 @@ function notDelivered(p: Project): void {
   assertEditable(p);
 }
 
-const songTask = (id: string) => id.startsWith('song:') || id === 'post:clearance:all';
+const songTask = (id: string) => id.startsWith('song:') || id.startsWith('post:relay:') || id === 'post:clearance:all';
 
 /**
  * Bring the song work in the task list in line with the songs: add what a new song or use needs, drop work not started

@@ -208,6 +208,9 @@ pre, code {
 .money { font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 html, body, #root { height: 100%; }
+/* A phone's browser enlarges text it thinks is too small in a page shrunk to fit; the desktop layout on a phone has to be
+   the desktop's to the letter (November 13, 2026), so it never does. */
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
 
 body {
   margin: 0;
@@ -322,6 +325,9 @@ a:hover { text-decoration: underline; }
   flex-wrap: wrap;
 }
 .panel-head > :first-child { min-width: 0; flex: 1 1 8rem; }
+/* A title with a line of help under it keeps a width the help reads at, and its actions go under it instead (November
+   13, 2026: in a card 250 pixels wide In The Industry's help ran a word or two a line beside Open Companies). */
+.panel-head > :first-child:has(> p) { flex-basis: 18rem; }
 /* Four actions do not fit across a phone. They wrap onto a second line rather
    than pushing the card open and bleeding out of its right edge. */
 .panel-head > .row { flex-wrap: wrap; justify-content: flex-end; }
@@ -436,6 +442,18 @@ input:not([type]), input[type="text"], input[type="number"], input[type="date"],
   border: 1px solid var(--line-strong); border-radius: var(--radius-sm);
 }
 input:focus, select:focus, textarea:focus { border-color: var(--accent); }
+/* A one-line select draws its own arrow, so it is the same box in every browser (November 13, 2026): left to the
+   browser, WebKit drew a white box with grey text where Chrome drew the dark one, and a phone shown the desktop layout
+   has to show the desktop's. The arrow is drawn in each theme's muted text colour (#a3aab6, #565d68). */
+select:not([multiple]):not([size]) {
+  -webkit-appearance: none; appearance: none;
+  padding-right: calc(var(--s3) + 14px);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0h10L5 6z' fill='%23a3aab6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right var(--s3) center; background-size: 10px 6px;
+}
+:root[data-theme="light"] select:not([multiple]):not([size]) {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0h10L5 6z' fill='%23565d68'/%3E%3C/svg%3E");
+}
 /* A field that reports rather than asks. Kept the same shape so the form still
    lines up, and visibly not one you can type in — styled the same as the rest,
    it read as a box somebody had simply not filled in yet. */
@@ -976,7 +994,7 @@ td, th { overflow-wrap: break-word; }
 }
 @media (max-width: 56.25em) { :root { --gutter: var(--s4); } }
 @media (max-height: 500px) { :root { --gutter: var(--s3); --nav-h: 48px; } }
-@media (pointer: coarse) { :root { --control: 44px; --control-sm: 44px; } }
+@media (pointer: coarse) { :root:not([data-layout="scaled"]) { --control: 44px; --control-sm: 44px; } }
 
 /* Controls, one height each. A link inside a sentence keeps the sentence's line (WCAG 2.5.8 excepts it). */
 .btn { min-height: var(--control); }
@@ -985,28 +1003,28 @@ td, th { overflow-wrap: break-word; }
 .btn, .tab, .rail-item { justify-content: center; }
 .rail-item { justify-content: flex-start; }
 @media (pointer: coarse) {
-  .btn-sm { padding-inline: var(--s3); }
+  :where(:root:not([data-layout="scaled"])) .btn-sm { padding-inline: var(--s3); }
   /* Every box a person types or chooses in (a passphrase's was 24 pixels until 2026-11-12: the list named four kinds). */
-  select, input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="hidden"], [type="color"]) { min-height: 44px; }
-  summary { min-height: 44px; display: flex; align-items: center; gap: var(--s1); }
-  details > summary { list-style-position: inside; }
-  .breadcrumbs button { min-height: 44px; min-width: 44px; padding: 0 var(--s1); }
+  :where(:root:not([data-layout="scaled"])) select, :where(:root:not([data-layout="scaled"])) input:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="hidden"], [type="color"]) { min-height: 44px; }
+  :where(:root:not([data-layout="scaled"])) summary { min-height: 44px; display: flex; align-items: center; gap: var(--s1); }
+  :where(:root:not([data-layout="scaled"])) details > summary { list-style-position: inside; }
+  :where(:root:not([data-layout="scaled"])) .breadcrumbs button { min-height: 44px; min-width: 44px; padding: 0 var(--s1); }
   /* A `.link.strong` rule, 32 pixels tall, stood here from 2026-10-23 to 2026-10-24: no element carries both classes
      (Help's topics are `.help-link`), so it matched nothing and went (brief 26). */
   /* A slider's track as tall as a control, so a finger finds it (Sleep's hours, 16 pixels until 2026-10-23). */
-  input[type="range"] { min-height: var(--control); }
+  :where(:root:not([data-layout="scaled"])) input[type="range"] { min-height: var(--control); }
   /* A tick box's own label, beside it rather than around it, is what a finger presses (from 2026-10-23). */
-  input[type="checkbox"] + label, input[type="radio"] + label { min-height: var(--control); display: inline-flex; align-items: center; }
+  :where(:root:not([data-layout="scaled"])) input[type="checkbox"] + label, :where(:root:not([data-layout="scaled"])) input[type="radio"] + label { min-height: var(--control); display: inline-flex; align-items: center; }
   /* And a label around its box, as the Playing chooser's are (brief 23's walk: 16-pixel radios in 38-pixel labels). */
-  label:has(> input[type="checkbox"]), label:has(> input[type="radio"]) { min-height: var(--control); min-width: var(--control); }
-  .cal-day { cursor: pointer; }
+  :where(:root:not([data-layout="scaled"])) label:has(> input[type="checkbox"]), :where(:root:not([data-layout="scaled"])) label:has(> input[type="radio"]) { min-height: var(--control); min-width: var(--control); }
+  :where(:root:not([data-layout="scaled"])) .cal-day { cursor: pointer; }
   /* An idea's tag, and a name that leads a row and opens something, as tall as a control (from 2026-11-12: 32 and 21
      pixels until then). A link inside a sentence keeps the sentence's line. */
-  strong > button.link:only-child, li > button.link, .list-item > .grow > button.link, dd > button.link:only-child { display: inline-flex; align-items: center; min-height: var(--control); min-width: var(--control); }
+  :where(:root:not([data-layout="scaled"])) strong > button.link:only-child, :where(:root:not([data-layout="scaled"])) li > button.link, :where(:root:not([data-layout="scaled"])) .list-item > .grow > button.link, :where(:root:not([data-layout="scaled"])) dd > button.link:only-child { display: inline-flex; align-items: center; min-height: var(--control); min-width: var(--control); }
   /* A button of one glyph (‹, ›, ✕) as wide as it is tall, and the skip link as tall as a control (from 2026-10-23, brief
      23's walk: the Calendar's month arrows were 31 pixels wide, the skip link 37 tall). */
-  .btn { min-width: var(--control); }
-  .skip-link { min-height: var(--control); display: inline-flex; align-items: center; }
+  :where(:root:not([data-layout="scaled"])) .btn { min-width: var(--control); }
+  :where(:root:not([data-layout="scaled"])) .skip-link { min-height: var(--control); display: inline-flex; align-items: center; }
 }
 
 /* The page's gutter and the notch. The bar, the drawer and the column keep clear of a phone's notch and its home bar
@@ -1105,16 +1123,17 @@ td, th { overflow-wrap: break-word; }
    waited under both. Two columns from 600 wide, as on a phone's side at 667, so What Needs You and Up Next both start in
    the first window. Until then 700 was the line: a column at 667 had no room for a head's title and its actions on one
    line, and in one column Up Next started below the first window. Its actions go on a second row under the title now. */
-.home-grid > :nth-child(1) { grid-column: 1; grid-row: 1; }
-.home-grid > :nth-child(2) { grid-column: 2; grid-row: 1 / span 2; }
-.home-grid > :nth-child(3) { grid-column: 1; grid-row: 2 / span 2; }
-.home-grid > :nth-child(4) { grid-column: 2; grid-row: 3; }
+/* From November 13, 2026 each column is its own stack (World.tsx), so a long card in one leaves no gap in the other. */
+.home-col { display: flex; flex-direction: column; gap: var(--s4); min-width: 0; }
+.home-col > .card { margin: 0; }
 @media (max-width: 620px) {
+  /* One column, in Home's own order: Projects, Up Next, In The Industry, Proposals, Recent Updates. */
   .home-grid { grid-template-columns: minmax(0, 1fr); }
-  /* As specific as the placements above, so it wins: as `.home-grid > *` (until later the same day, brief 22's final runs
-     on brief 24's commit) it lost to them, the cards kept their second column, and in a window 390 wide How You Are's
-     labels broke mid-word in a squeezed column with its help cut off by the card. */
-  .home-grid > :nth-child(n) { grid-column: auto; grid-row: auto; }
+  .home-col { display: contents; }
+  .home-col:first-child > :first-child { order: 1; }
+  .home-col:last-child > :first-child { order: 2; }
+  .home-col:first-child > :not(:first-child) { order: 3; }
+  .home-col:last-child > :not(:first-child) { order: 4; }
 }
 /* On a phone on its side a heading of Home's keeps its help beside it, its line under it wrapping instead: at 12rem, the
    head's own, What Needs You's help took a row of its own in a column at 667, and the first thing waiting started at the
@@ -1422,7 +1441,7 @@ legend { padding: 0; }
 .idea-block ul { margin: 0; padding-left: var(--s5); }
 .idea-sentence { font-size: var(--size-lg); margin: 0; }
 .chip-button { cursor: pointer; font: inherit; font-size: var(--size-xs); min-height: 32px; }
-@media (pointer: coarse) { .chip-button { min-height: var(--control); padding-inline: var(--s3); } }
+@media (pointer: coarse) { :where(:root:not([data-layout="scaled"])) .chip-button { min-height: var(--control); padding-inline: var(--s3); } }
 .ideas-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s2); margin-top: var(--s2); }
 @media (max-width: 620px) {
   .overlay-sheet { padding: 0; align-items: stretch; }

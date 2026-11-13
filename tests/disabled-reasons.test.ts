@@ -44,6 +44,7 @@ const REASONS: Record<string, string> = {
   'YourMoney.tsx | home.earnings <= 0': 'The line above says how much income the delivered project can send home: nothing, here.',
   'YourMoney.tsx | home.capital <= 0': 'The line above says how much of your own unspent money it can send home: nothing, here.',
   'MusicTab.tsx | !note.trim()': 'Waits for the note typed above it.',
+  'MusicTab.tsx | !!libraryRefusal(p, s.id)': 'The line under the buttons says why: the song is performed on screen in footage already shot, or the project is delivered.',
   'MusicTab.tsx | !!p.delivered': 'A delivered project says Delivered at the top of every page; its music is final.',
   'MusicTab.tsx | !!no': 'The line above the buttons says what is missing: a medium, a country, the years, or that a request is already open.',
   'MusicTab.tsx | p.edit.pictureLocked': 'The line under it says the picture is locked: unlock it, or use a version without the song.',

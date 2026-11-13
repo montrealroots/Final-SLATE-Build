@@ -7,6 +7,7 @@ import { MOCAP_CLEANUP_PER_SESSION } from '../mocap';
 import { ANIM_RATE, FACE_METHODS, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS } from './rates';
 import { CONFORM_DAYS_PER_CUE, MIX_DAYS_UNDER_DIALOGUE, STEMS_DAYS, cuesToConform, lastThemesTask, scoreMinutes, scoreSteps, themeTasks } from '../cues';
 import { recordTaskId, songTasks, songUses } from '../songs';
+import { RELAY_DAYS } from '../music';
 import { CREATURE_FOLEY_DAYS, LIGHTS, LOOP_GROUP_PER_SCENES, LOOP_GROUP_SESSION, WILD_TRACK_PER_LOCATIONS, cameraTestDays, lightOf, postFactors, rigRehearsalDays, scoreSessions, soundsOf } from '../craft';
 import { permitWork } from '../destinations';
 import { CROWD_POST_DAYS, PERIOD_WORK, costumeCopies, digitalCrowd, makeup, projectBand, statesOf, wardrobe } from '../looks';
@@ -306,6 +307,10 @@ export function buildTasks(p: Project): Task[] {
     tasks.push(t('post:mix', String(e), `Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', Math.max(1, (minutes / 30) * craft.mix + underTalk * MIX_DAYS_UNDER_DIALOGUE), 'days', [...(sessions.sessions ? [`post:score-session:${e}`] : []), ...(crowdScenes2.length ? [`post:loop-group:${e}`] : []), `post:sound:${e}`, ...(p.takesModel ? [`post:dialogue:${e}`, `post:foley:${e}`] : []), ...(scored > 0 ? [`post:music:${e}`] : []), ...(conform.length ? [`post:conform:${e}`] : []), ...(steps ? [`post:stems:${e}`] : []), ...songsHere, ...(licensed && tasks.some((x) => x.id === 'post:clearance:all') ? ['post:clearance:all'] : [])], { episode: e }));
     tasks.push(t('post:captions', String(e), `Captions And Subtitles${epSuffix(p, e)}`, 'Post Production', 'subtitler', Math.max(1, (minutes / 30) * p.axes.dialogueLanguages.length), 'days', [`post:mix:${e}`], { episode: e }));
     tasks.push(t('post:qc', String(e), `Delivery Quality Control${epSuffix(p, e)}`, 'Post Production', 'qc-technician', 1, 'days', [`post:color:${e}`, `post:mix:${e}`, `post:captions:${e}`], { episode: e }));
+  }
+  // A library track put in after an episode's final mix was finished is laid into that mix (music.ts replaceWithLibrary).
+  for (const song of (p.songs ?? []).filter((x) => x.replaces?.remix.length && used.includes(x))) {
+    for (const e of song.replaces!.remix) tasks.push(t('post:relay', `${song.id}:${e}`, `Lay "${song.title}" Into The Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', RELAY_DAYS, 'days', [`post:mix:${e}`], { episode: e }));
   }
   // A narrator records their narration once the picture is locked; every mix waits for it.
   for (const c of chars.filter((x) => x.functions.includes('narrator') && x.roleSize !== 'background')) {

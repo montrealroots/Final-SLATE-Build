@@ -805,6 +805,10 @@ export interface Song {
   license?: { holder: string };
   /** Who writes a song made for the project: you, or writers commissioned for it; lyrics with the music, apart, or none. */
   plan?: { music: 'you' | 'commission'; lyrics: 'with-music' | 'you' | 'commission' | 'none' };
+  /** A track from a production music library, licensed on the library's terms (music.ts replaceWithLibrary). */
+  library?: true;
+  /** The song this one replaced in the cut, and the episodes whose finished mix it has to be laid into (music.ts). */
+  replaces?: { songId: string; remix: number[] };
   createdAt: number;
 }
 
@@ -867,6 +871,8 @@ export interface ReleaseRecord {
   version?: 'subtitled' | 'dubbed';
   /** The budget line a dubbed version is paid from, on release. */
   dubObligationId?: string;
+  /** The version released, when not the main cut (versions.ts): its songs are the ones its licences must cover. */
+  cut?: string;
 }
 
 export type ReleasePattern = 'all' | 'weekly' | 'premiere-weekly' | 'custom' | 'assumed';

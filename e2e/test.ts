@@ -10,6 +10,10 @@ import { auditPage } from './ui-audit';
 export const test = base.extend<{ diagnostics: void }>({
   diagnostics: [async ({ page, browserName }, use, info) => {
     const seen: string[] = [];
+    // Phones are shown the desktop's layout, shrunk to fit (src/ui/layout-mode.ts, November 13, 2026), which the desktop
+    // projects already test at its widths. The journeys on phone sizes keep testing the phone layout a player can still
+    // choose in Settings; e2e/phone-layout.spec.ts tests the default.
+    if (!info.file.endsWith('phone-layout.spec.ts')) await page.addInitScript(() => { try { if (localStorage.getItem('slate.v1.layout') === null) localStorage.setItem('slate.v1.layout', 'phone'); } catch { /* nothing kept */ } });
     // WebKit only: a working title has twice been lost in CI and never here (QA-REPORT.md, Open). The page keeps a
     // bounded log of focus and input events, with who called focus(), and a failing test attaches it.
     if (browserName === 'webkit') await page.addInitScript(() => {

@@ -25,7 +25,8 @@ import { addLog, cancelEvents, newId, registerHandler, schedule } from './state'
 import { careerStudio } from './studios';
 import { redactionComplete } from './unscripted';
 import { songCredits, songUses } from './songs';
-import { releaseLicenceRefusal, unlicensed } from './music';
+import { releaseLicenceRefusal, releaseSongs, unlicensed } from './music';
+import { judgeScore } from './cues';
 import { assumedDates, episodeDateProblem, episodesFor, hasEpisodes, holdUndelivered, onReleaseDay, presetDates, releaseHourPassed, syncReleaseEvents } from './episode-releases';
 import { DAY, addDaysToKey, dateKey, formatDateKey, isDateKey, localToInstant, parseYmd } from './time';
 import type { Credit, DistributionOffer, GameState, Project, ReleasePattern, ReleaseRecord, Scene } from './types';
@@ -287,7 +288,11 @@ export function assessQuality(state: GameState, p: Project, episode?: number): R
   // A scene the producer declared essential and then cut from the edit leaves a gap (cutConsequences). The turning-point
   // text did this until the review of November 7, 2026; picture lock already required coverage, so it never applied.
   const gapsLeft = approved.filter((s) => s.essential && !inCut.has(s.id)).length;
-  const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10 - gapsLeft * ESSENTIAL_CUT_COST + coverageEdit(p, [...inCut])), music: clamp((crewCap('composer') ?? 45) * 0.9 + 5) };
+  const out: Record<string, number> = { script, direction, craft, editing: clamp((crewCap('editor') ?? 50) * 0.7 + cut * 2 + 10 - gapsLeft * ESSENTIAL_CUT_COST + coverageEdit(p, [...inCut])) };
+  // The score (cues.ts judgeScore): the composer's execution, and with a brief its fit, timing and room for dialogue.
+  // Nothing scored, nothing judged: a silent or songs-only brief has no music score.
+  const judged = judgeScore(p, crewCap('composer'), episode);
+  if (judged) out.music = clamp(judged.score);
   if (anim.length) out.animation = clamp(avg(anim) * 0.9 + 6);
   // Each credited craft on its own, for craft awards (docs/awards/DESIGN.md rule 3), on the same scale as `craft`.
   for (const h of p.hires.filter((x) => x.kind === 'crew' && x.daysWorked > 0 && covers(x.episodes))) out[`craft:${h.roleId}`] = Math.max(out[`craft:${h.roleId}`] ?? 0, clamp(personById(state, h.personId).capability * 0.85 + 8));
@@ -356,7 +361,7 @@ export const ROUTE_LABELS: Record<ReleaseRecord['route'], string> = {
  * premiere and then weekly) or dates of your own (`episodeDates`, one per episode, the first being the release date).
  * Without either it comes out as it did before November 10, 2026: weekly on television, all at once online.
  */
-export function planRelease(state: GameState, p: Project, input: { route: ReleaseRecord['route']; date: string; territories: string[]; distributor?: string | null; pattern?: Exclude<ReleasePattern, 'assumed'>; onPremiere?: number; episodeDates?: string[] }): ReleaseRecord {
+export function planRelease(state: GameState, p: Project, input: { route: ReleaseRecord['route']; date: string; territories: string[]; distributor?: string | null; pattern?: Exclude<ReleasePattern, 'assumed'>; onPremiere?: number; episodeDates?: string[]; cut?: string }): ReleaseRecord {
   // A series can come out as it is delivered, an episode at a time (episode-delivery.ts), on television or online.
   if (!p.delivered && !(hasEpisodes(p, input.route) && Object.keys(p.episodeDeliveries ?? {}).length)) {
     throw new Error(isEpisodic(p.axes.format) ? 'Deliver the season, or at least one episode, before planning a release.' : 'Deliver the project before planning a release.');
@@ -374,10 +379,12 @@ export function planRelease(state: GameState, p: Project, input: { route: Releas
   if ((input.route === 'theatrical' || input.route === 'broadcast') && !input.distributor) {
     throw new Error(input.route === 'theatrical' ? 'A theatrical release needs a distributor. Accept a distribution offer first.' : 'A broadcast needs a broadcaster. Accept an offer first.');
   }
-  // What its songs are licensed for (music.ts): a medium, territory or date outside the grant is refused.
-  const licence = releaseLicenceRefusal(p, [...new Set(songUses(p, editScenes(p)).map((x) => x.song))], { route: input.route, territories: input.territories, date: input.date }, state.now);
+  // What the songs of the cut it plays are licensed for (music.ts): a medium, territory or date outside the grant is
+  // refused. A version plays its own songs, so one that takes a song out doesn't need that song's licence (November 13,
+  // 2026; until then every release was checked against the main cut's songs).
+  const licence = releaseLicenceRefusal(p, releaseSongs(p, editScenes(p), input.cut), { route: input.route, territories: input.territories, date: input.date }, state.now);
   if (licence) throw new Error(licence);
-  const rec: ReleaseRecord = { id: newId(state, 'r'), route: input.route, date: input.date, territories: input.territories, distributor: input.distributor ?? null, note: '', status: 'planned' };
+  const rec: ReleaseRecord = { id: newId(state, 'r'), route: input.route, date: input.date, territories: input.territories, distributor: input.distributor ?? null, note: '', status: 'planned', ...(input.cut ? { cut: input.cut } : {}) };
   const episodic = hasEpisodes(p, input.route);
   if (episodic) {
     const n = Math.max(1, p.axes.episodeCount);
