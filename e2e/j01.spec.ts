@@ -52,6 +52,9 @@ test('J01: a family gift, a book, a live-action short on a kit bought for it, re
     await kit.getByRole('button', { name: `Add ${n} To Kit` }).click();
   }
   await expect(kit.getByRole('list', { name: 'The Kit' })).toContainText('Blackmagic Pocket Cinema Camera 4K');
+  // The kit has no lights for the story's interiors and nights. From November 13, 2026 a day it can't serve waits for
+  // the player (the owner's v5 brief, 9): the package for such days is the player's approval to give, and is given here.
+  await kit.getByRole('checkbox', { name: /^Hire The Rental House's Package On A Day The Kit Can't Serve/ }).check();
 
   // Cast (the player plays Teresa), staffed, shot, cut and delivered.
   await produceToDelivery(page, { yourself: ['Teresa'] });
