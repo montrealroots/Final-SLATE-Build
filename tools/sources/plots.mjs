@@ -31,7 +31,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
  * work's world rather than its events are left out (when anything else remains).
  */
 const PLOT_PART = /\b(plot|story|storyline|synopsis|summary|narrative|events)\b/i;
-const NOT_STORY = /\b(setting|characters?|background|world|cast|universe|gameplay|premise|themes?|style|reception|development)\b/i;
+const NOT_STORY = /^(the )?(main )?(setting|characters?|background|world|cast|universe|gameplay|premise|themes?|style|reception|development)\b/i; // a heading that starts so, not "Part 1: Alex's world"
 
 /** The raw text of a story section of a plain-text extract whose headings are `== Title ==`, its subsections kept. */
 export function storySection(extract) {
@@ -57,13 +57,18 @@ export function storyOf(found) {
     else if (l.trim()) parts.at(-1).paragraphs.push(l.trim());
   }
   const filled = parts.filter((x) => x.paragraphs.length);
+  // Only a section that mixes the story with something else (Portal's Synopsis: Setting, then Plot) is narrowed: to its
+  // plot parts, or failing those to what isn't the something else. One whose parts all tell the story keeps them all.
+  // Until November 13, 2026 the plot parts were kept wherever there were any, so Don Quixote's Summary kept only "The
+  // Ill-Advised Curiosity summary", a tale told inside the novel, and lost the novel's own story.
+  const other = filled.filter((x) => x.title && NOT_STORY.test(x.title));
   const plot = filled.filter((x) => x.title && PLOT_PART.test(x.title));
-  const told = plot.length ? plot : filled.filter((x) => !(x.title && NOT_STORY.test(x.title))).length ? filled.filter((x) => !(x.title && NOT_STORY.test(x.title))) : filled;
+  const told = !other.length ? filled : plot.length ? plot : filled.filter((x) => !other.includes(x)).length ? filled.filter((x) => !other.includes(x)) : filled;
   const paragraphs = told.flatMap((x) => x.paragraphs);
   const kept = [];
   let size = 0;
   for (const p of paragraphs) { if (size + p.length > MOST && kept.length) break; kept.push(p); size += p.length; }
-  return kept.length ? { section: found.section, parts: told.map((x) => x.title).filter(Boolean), paragraphs: kept, whole: kept.length === paragraphs.length } : null;
+  return kept.length ? { section: found.section, parts: told === filled ? [] : told.map((x) => x.title).filter(Boolean), paragraphs: kept, whole: kept.length === paragraphs.length } : null;
 }
 
 async function fetchOne(title) {

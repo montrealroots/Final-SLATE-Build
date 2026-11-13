@@ -22,7 +22,7 @@ import { adaptFrom } from './adaptation';
 import { applyBlueprint, briefFields, type Blueprint, type BlueprintCharacter, type BlueprintScene } from './blueprints';
 import { createProject, isEpisodic, isNonfiction, type NewProjectInput } from './projects';
 import { PURPOSE, ROLE_LABELS, WORD, episodeBreaks, episodePurpose, hasWord, readStory, selectDevelopments, sentencesOf, type Development, type Role } from './story-structure';
-import type { SourceWork } from './sources';
+import { plotSection, type SourceWork } from './sources';
 import type { AdaptationApproach, Format, GameState, Project } from './types';
 
 export type FieldOrigin = 'sourced' | 'proposed' | 'unknown';
@@ -239,7 +239,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const paragraphs = plot ? plot.paragraphs.map(mark) : [];
   const story = paragraphs.length ? sentencesOf(paragraphs.join(' ')) : [];
   let told = story.length >= STORY_MIN;
-  const credit = plot ? `the English Wikipedia article "${plot.article}", its ${plot.section} section, in its own words (${plot.licence})` : '';
+  const credit = plot ? `the English Wikipedia article "${plot.article}", its ${plotSection(plot)} section, in its own words (${plot.licence})` : '';
   // The story read as developments (story-structure.ts): what each does, and who is against or beside the lead.
   const reading = told ? readStory(paragraphs, callers, lead.key, (w.places ?? []).map((x) => x.name)) : null;
   if (reading) {
@@ -317,7 +317,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   origin['story.synopsis'] = told ? 'sourced' : 'proposed';
   why['story.synopsis'] = told
     ? `The story in brief: the sentence that says most in ${summaryOf.length === devs.length ? `each of its ${devs.length} developments` : `${summaryOf.length} of its ${devs.length} developments, those that turn it`}, from ${credit}. Where one development ends and the next begins is the game's reading${plot!.whole ? '' : '. The article tells more than was kept'}.`
-    : `A shape for the adaptation, not ${w.title}'s plot: ${plot ? `its article's ${plot.section} section is too short to tell it from` : `no story is recorded for ${w.title}`}, and the game writes none as if it were.`;
+    : `A shape for the adaptation, not ${w.title}'s plot: ${plot ? `its article's ${plotSection(plot)} section is too short to tell it from` : `no story is recorded for ${w.title}`}, and the game writes none as if it were.`;
   // Faithful and updated keep the work's ending (adaptation.ts APPROACHES); only a free adaptation proposes its own.
   const faithfulEnd = i.approach !== 'free';
   const endKnown = told && plot!.whole;
@@ -495,7 +495,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     } : {}),
     review: { status: 'authored', at: 'proposed', note: `Proposed from ${w.title} (${w.id}).` },
     line: 0,
-    origin: { kind: 'source', workId: w.id, title: w.title, approach: i.approach, ...(told ? { story: { article: plot!.article, link: plot!.link, section: plot!.section, licence: plot!.licence } } : {}) },
+    origin: { kind: 'source', workId: w.id, title: w.title, approach: i.approach, ...(told ? { story: { article: plot!.article, link: plot!.link, section: plotSection(plot!), licence: plot!.licence } } : {}) },
   };
   if (tv) {
     for (const k of ['series.engine', 'series.arc', 'series.episodes', 'series.changes', 'series.recurring']) origin[k] = 'proposed';

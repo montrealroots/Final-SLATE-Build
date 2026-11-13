@@ -70,7 +70,10 @@ export interface SourceWork {
  * the article's own words under CC BY-SA 4.0 and credited wherever it is shown: never the game's words, and never the
  * work's own text. `whole` is false where the section was longer than was kept, so its end is not here.
  */
-export interface WorkPlot { from: string; article: string; link: string; licence: string; section: string; whole: boolean; retrieved: string; paragraphs: string[] }
+/** `parts`: the subsections kept when a section holds more than the story (Portal's Synopsis keeps its Plot). Absent when the whole section is the story. */
+export interface WorkPlot { from: string; article: string; link: string; licence: string; section: string; parts?: string[]; whole: boolean; retrieved: string; paragraphs: string[] }
+/** The section a story was read from, with the parts of it kept: "Synopsis (Plot)". */
+export const plotSection = (p: Pick<WorkPlot, 'section' | 'parts'>): string => (p.parts?.length ? `${p.section} (${p.parts.join(', ')})` : p.section);
 export interface SourceCatalog { version: 1; source: string; licence: string; retrieved: string; records: SourceWork[] }
 
 let loaded: SourceCatalog | null = null;

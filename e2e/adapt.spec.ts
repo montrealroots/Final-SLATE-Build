@@ -46,7 +46,7 @@ test('a film made from a work: the whole brief with where each field came from, 
       await expect(brief.getByRole('listitem').filter({ hasText: /^Premise/ })).toContainText('From The Work');
       // The synopsis is the work's story now, from its article; until November 13, 2026 it was the game's shape.
       await expect(brief.getByRole('listitem').filter({ hasText: /^Synopsis/ })).toContainText('From The Work');
-      await expect(brief.getByRole('listitem').filter({ hasText: /^Synopsis/ })).toContainText('The story as the English Wikipedia article "Don Quixote", its Summary section');
+      await expect(brief.getByRole('listitem').filter({ hasText: /^Synopsis/ })).toContainText('from the English Wikipedia article "Don Quixote", its Summary section, in its own words');
       await expect(brief.getByRole('listitem').filter({ hasText: /^Intended Ending/ })).toContainText('Proposed'); // free: its own ending
       await page.getByLabel(/^Name For /).first().fill('Alonso The Knight');
     },

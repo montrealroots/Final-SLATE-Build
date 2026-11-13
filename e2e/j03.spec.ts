@@ -30,8 +30,9 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   expect(made.axes).toMatchObject({ medium: 'animation', technique: '2d-drawn' });
   expect(made.episodes).toHaveLength(2);
   expect(made.proposal.workId).toBeTruthy();
-  // Its story is the article's Synopsis, told across both episodes (from November 13, 2026).
-  expect(made.proposal.story).toMatchObject({ article: 'Portal (video game)', section: 'Synopsis', licence: 'CC BY-SA 4.0' });
+  // Its story is the article's Synopsis, told across both episodes (from November 13, 2026): its Plot part only, since the
+  // re-fetch that day; the Synopsis's Setting part tells the world, not events.
+  expect(made.proposal.story).toMatchObject({ article: 'Portal (video game)', section: 'Synopsis (Plot)', licence: 'CC BY-SA 4.0' });
   expect(made.proposal.origin.scenes).toBe('sourced');
   expect([1, 2].every((n) => made.scenes.some((x: { episode: number }) => x.episode === n))).toBe(true);
   const lead: string = made.characters[0].name;
@@ -107,16 +108,17 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   expect(taken.audience.length).toBeGreaterThan(1);
   expect(new Set(taken.audience.map((a: { episode?: number }) => a.episode)).size).toBeGreaterThanOrEqual(2);
   expect(decided.renewal.reason).toContain('Audience figures are simulated.');
-  // Seed 2, as played here: a broadcaster, and a cancellation. Recorded so a change in either is seen, not absorbed.
-  // (Seed 1 until November 13, 2026, when Portal's story gave the season more scenes and the draws moved.)
-  expect([offer.route, decided.renewal.outcome]).toEqual(['broadcast', 'cancelled']);
+  // Seed 2, as played here: a broadcaster, and a renewal. Recorded so a change in either is seen, not absorbed. (Seed 1
+  // until November 13, 2026, when Portal's story gave the season more scenes and the draws moved; a cancellation until
+  // later that day, when the story kept only the article's Plot part and the season it made held its audience.)
+  expect([offer.route, decided.renewal.outcome]).toEqual(['broadcast', 'renewed']);
   // The decision is the audience the broadcaster reported (audiences.ts seasonAudience): its first showing against the
   // bar, and the share it kept from one episode to the next against 88%. A season that met both would be renewed.
   const shown = taken.audience.filter((a: { metric: string; episode?: number }) => a.metric === 'viewers' && a.episode !== undefined).sort((a: { episode: number }, b: { episode: number }) => a.episode - b.episode);
   const kept = Math.round((shown.at(-1).value / shown[0].value) * 100);
   expect(decided.renewal.reason).toContain(`drew an average audience of ${shown[0].value.toLocaleString('en-US')}`);
   expect(decided.renewal.reason).toContain(`it kept ${kept}% of its audience from one episode to the next, against 88%`);
-  expect(kept).toBeLessThan(88);
+  expect(kept).toBeGreaterThanOrEqual(88); // a season that kept less would have been cancelled
   await open(page, 'Release');
   const earned = card(page, 'Earnings');
   const weeks = new Set(taken.audience.map((x: { week: number }) => x.week)).size;
