@@ -1,10 +1,12 @@
 // Work for others on screen (engine/jobs.ts; the v4 package, 01). Profile lists offers with their days, pay and who
 // found them; work taken, with Withdraw and what it costs; and the credits it earned. The productions are invented by
 // the game and say so.
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { money } from '../engine/budget';
 import { formatDateKey } from '../engine/time';
-import { JOB_ROLES, acceptJob, acceptRefusal, declineJob, jobCredits, withdrawJob, type OutsideJob } from '../engine/jobs';
+import { JOB_ROLES, acceptJob, acceptRefusal, declineJob, jobCredits, withdrawJob, type JobRole, type OutsideJob } from '../engine/jobs';
+import { reputation } from '../engine/reputation';
+import { qualityWords } from '../engine/finish';
 import { agentById } from '../engine/representation';
 import { store, useGame } from './store';
 
@@ -59,6 +61,34 @@ export function WorkForOthersCard() {
       )}
       <p className="dim small">Day rates, the odds of an offer and its length are game calibration. The pay comes to your own account when the days are done.</p>
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+    </section>
+  );
+}
+
+/**
+ * How the industry reads your record, role by role (engine/reputation.ts): each facet with what it is read from. It is
+ * worked out from what happened, never kept as a score, and offers of outside work follow it.
+ */
+export function ReputationCard() {
+  const g = useGame();
+  const r = reputation(g);
+  const craft = (role: JobRole) => {
+    const x = r.roles[role];
+    return x.craft === null ? 'No delivered work in this role yet.' : `${qualityWords(x.craft)}, from ${x.works.map((w) => `${w.title} (${qualityWords(w.score).toLowerCase()})`).join(', ')}.`;
+  };
+  const pct = (n: number, d: number) => `${n} of ${d}`;
+  return (
+    <section className="card" aria-labelledby="rep-h">
+      <h2 id="rep-h">Your Reputation</h2>
+      <p className="dim small">How the industry reads your record, from what happened. Offers of outside work lean to the role your work is strongest in, and pay by it.</p>
+      <dl className="kv" aria-label="Your Reputation">
+        {(['writing', 'directing', 'acting'] as const).map((role) => <Fragment key={role}><dt>{JOB_ROLES[role].label}</dt><dd>{craft(role)}</dd></Fragment>)}
+        <dt>Reliability</dt><dd>{r.reliability >= 1 ? 'Nothing against you: no work withdrawn from, no day missed.' : `Offers come ${Math.round((1 - r.reliability) * 100)}% less often for work withdrawn from or days missed.`}</dd>
+        <dt>Budget And Delivery</dt><dd>{r.budget.delivered ? `${pct(r.budget.onBudget, r.budget.delivered)} delivered projects came in on budget.` : 'Nothing delivered yet.'}{r.budget.shelved ? ` ${r.budget.shelved} shelved.` : ''}</dd>
+        <dt>Audiences</dt><dd>{r.audience === null ? 'Nothing delivered yet.' : `${qualityWords(r.audience)} reception, on average.`}</dd>
+        <dt>Commercial Results</dt><dd>{r.commercial === null ? 'Nothing delivered yet.' : `${money(r.commercial.earned)} paid by distributors against ${money(r.commercial.spent)} spent.`}</dd>
+        <dt>Relationships</dt><dd>{r.relationships.completed + r.relationships.letGo + r.relationships.declined === 0 ? 'Nobody has worked with you yet.' : `${r.relationships.completed} saw a project through with you, ${r.relationships.letGo} let go, ${r.relationships.declined} turned down after asking for more.`}</dd>
+      </dl>
     </section>
   );
 }

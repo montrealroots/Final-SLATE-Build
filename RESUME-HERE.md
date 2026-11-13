@@ -249,6 +249,12 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       taken), optionally hands the themes' review to the composer, and staffs the Music department within a ceiling,
       priced on a copy of the project with the brief applied (the plan before the brief left the composer out). Not
       built: Guide Me for writing.
+    - Reputation by role (V4-031.01, November 13, 2026; `engine/reputation.ts`, Profile, Your Reputation): craft per
+      role from the assessments of delivered work the player did in it (script, direction, their performances),
+      reliability (jobs.ts), budget and delivery (spent against the estimate; shelved), audiences (reception),
+      commercial results (distributor payments against spending), relationships (people's history). Never stored.
+      Read by outside work: the role an offer is for is weighted by its craft (equal with no record, so seeded runs are
+      as before), and its day rate follows that role's craft within 0.8 to 1.3. Not yet read by backers' proposals.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
   - Still not built: Guide Me for writing,

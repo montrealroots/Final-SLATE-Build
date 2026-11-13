@@ -17,7 +17,7 @@ import { CinemasNearby } from './Cinemas';
 import { RepresentationCard } from './Representation';
 import { YourMoneyCard } from './YourMoney';
 import { YourEquipmentCard } from './Equipment';
-import { WorkForOthersCard } from './Jobs';
+import { ReputationCard, WorkForOthersCard } from './Jobs';
 import { RecordBookCard } from './RecordBook';
 
 
@@ -407,6 +407,7 @@ export function Profile() {
         </section>
         <YourMoneyCard />
         <YourEquipmentCard />
+        <ReputationCard />
         <WorkForOthersCard />
         <RepresentationCard />
         <RecordBookCard />

@@ -1372,3 +1372,11 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `tests/guide-me.test.ts` (Guide Me for casting) | 0 | The plan names one performer a part, a child for the child's part; approved, those named are offered; a no comes back once and nobody else is offered. |
 | `e2e/guide-me.spec.ts`, desktop and phone | 1 real, fixed | Casting by Guide Me (the plan read, two offers out to those named); music by Guide Me. The music plan was priced before the brief, and taking the brief adds spotting, themes and stems, so the composer didn't fit the ceiling and nobody was offered: it is priced on a copy with the brief now. |
 
+## v4 Reputation By Role (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/reputation.test.ts` | 0 | Read from the work done in each role (writing and directing apart, someone else's direction not counted); a role's craft moves its own day rate within bounds and no other's; offers lean to the stronger role over 60 triggers. |
+| `tests/jobs.test.ts` | 0 | Unchanged: with no record the role draw is the one it always was. |
+| `e2e/jobs.spec.ts`, desktop and phone | 0 | Your Reputation on Profile before anything is delivered. |
+

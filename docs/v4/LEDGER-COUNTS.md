@@ -5,7 +5,7 @@ A child requirement is verified only when a named unit test and a named browser 
 
 | | Children | Requested | Implemented | Verified | Retired |
 | --- | --- | --- | --- | --- | --- |
-| All | 125 | 24 | 71 | 30 | 0 |
+| All | 125 | 23 | 72 | 30 | 0 |
 | V4-001 Retire preset quotas and migrate saves | 4 | 0 | 3 | 1 | 0 |
 | V4-002 Source-first project creation | 5 | 0 | 4 | 1 | 0 |
 | V4-003 Verified source catalog and bibliography | 7 | 0 | 5 | 2 | 0 |
@@ -36,7 +36,7 @@ A child requirement is verified only when a named unit test and a named browser 
 | V4-028 Territorial release and weekly box office | 3 | 1 | 1 | 1 | 0 |
 | V4-029 Weekly audiences and renewals cancellations | 4 | 2 | 0 | 2 | 0 |
 | V4-030 Persistent year-by-year world events | 2 | 1 | 1 | 0 | 0 |
-| V4-031 Reputation company outreach and contracts | 2 | 1 | 1 | 0 | 0 |
+| V4-031 Reputation company outreach and contracts | 2 | 0 | 2 | 0 | 0 |
 | V4-032 International companies and networks | 1 | 0 | 1 | 0 | 0 |
 | V4-033 Complete picture inventory and resumable installs | 4 | 0 | 1 | 3 | 0 |
 | V4-034 Credits attribution and clean UI | 2 | 0 | 2 | 0 | 0 |
