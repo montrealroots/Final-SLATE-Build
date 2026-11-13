@@ -1424,4 +1424,5 @@ November 12, 2026. Evidence for the pull request that carries them.
 | --- | --- | --- |
 | `e2e/j01.spec.ts`, desktop | 6 mistakes of mine, 1 finding | Save Draft is on the Script page, not Characters; the shop's filter is Recording Media; the second project has no starting backing to ask for; the log keeps 400 notices, so a birthday is read from the next one scheduled and lived to. The finding: a digital self-release with no distributor earns nothing, so settled receipts come from a distributor's offer, and they repay the backers before the project keeps any. Passes in 39 s. |
 | `docs/v4/JOURNEYS.md` | — | J01 to J13 mapped to their specs. J01 one run; J12 and J13 covered across specs; J02 to J11 not yet one run each. |
+| `e2e/j10.spec.ts`, desktop | 1 real, fixed; 2 weak checks of mine | A shoot could be planned over outside work already taken (jobs.ts refused a job over a shoot day, but not the other way). `planShootDays` now skips those days; `tests/jobs.test.ts` and J10 both fail with the skip removed. The journey's first two checks never put a shoot day near the job (prep comes first); it now starts the shoot on each of the fourteen days before. |
 
