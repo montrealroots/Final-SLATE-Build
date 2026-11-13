@@ -33,7 +33,12 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     found and fixed one defect. `docs/v5/JOURNEYS.md` says where each of the ten journeys stands.
 - **Still open** (`docs/v5/JOURNEYS.md`, `docs/v5/LEDGER.md`):
   1. A physical phone test.
-- **Then.** Merge PR #86 once its newest head is green, and write the final report.
+  2. In adapted briefs: where the story shows no one against the lead, the rival is the next most-named person
+     (Moby-Dick sets Ahab against Queequeg); a scene whose words name neither inside nor outside takes the arc's guess;
+     126 works too short of story still take a genre from their medium.
+- **Merged.** PR #86 was squash-merged into `main` on November 13, 2026 as `d1a103f`, from `df2ee1c`, with CI green on
+  that head: `checks` and all six journey runs. `main` was merged back into the branch with `-s ours` (the trees were
+  the same). The final report is `docs/v5/REPORT.md`. New work starts a new pull request from this branch.
 - **The story re-fetch is done.** `src/data/plots.json` was rebuilt from `.sources-cache/plots2`. A section that mixes
   the story with something else keeps only its story parts, and 47 works are narrowed that way. Tower of God keeps its
   world parts: it has no plot part.
