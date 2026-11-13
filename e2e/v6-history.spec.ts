@@ -53,13 +53,14 @@ test('J01: recorded award results appear only once announced, the nominees befor
   await weeksTo(page, '2026-01-23');
   await open(page, '98th Academy Awards');
   await expect(recorded(page)).toContainText('Best Picture, the nominees: One Battle after Another, Bugonia, F1, Frankenstein, Hamnet, Marty Supreme, The Secret Agent, Sentimental Value, Sinners, Train Dreams.');
-  await expect(recorded(page)).not.toContainText('Michael B. Jordan');
+  await expect(recorded(page)).toContainText('Actor In A Leading Role, the nominees:');
+  await expect(recorded(page)).not.toContainText('Best Picture: '); // a winner reads "Category: Winner"; none yet
   await page.screenshot({ path: `test-results/v6-history-oscars-nominees-${info.project.name}.png`, fullPage: true });
 
   // Saved and opened again: each result once, and none of it in the save.
   await page.reload();
   await page.getByRole('button', { name: 'Continue', exact: true }).click();
   await open(page, '98th Academy Awards');
-  await expect(recorded(page).getByRole('listitem')).toHaveCount(1);
+  await expect(recorded(page).getByRole('listitem')).toHaveCount(5); // Best Picture and the four acting categories' nominees, once each
   expect(JSON.stringify(await readSavedState(page))).not.toContain('Train Dreams');
 });

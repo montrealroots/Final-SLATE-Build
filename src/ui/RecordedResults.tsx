@@ -4,11 +4,11 @@ import { formatDateKey } from '../engine/time';
 import { holdsRecords, recordedResults, sourceOf } from '../engine/history';
 import type { Edition } from '../engine/types';
 
-export function RecordedResults({ ed, now }: { ed: Edition; now: number }) {
+export function RecordedResults({ ed, today }: { ed: Edition; today: string }) {
   if (!holdsRecords(ed.institutionId, ed.year)) return null;
-  const shown = recordedResults(ed.institutionId, ed.year, now);
+  const shown = recordedResults(ed.institutionId, ed.year, today);
   const label = shown[0]?.edition ?? ed.label;
-  const through = shown.map((o) => o.published).sort().at(-1);
+  const through = shown.map((o) => o.published!).sort().at(-1);
   const sources = [...new Map(shown.map((o) => { const s = sourceOf(o); return [s.url, s]; })).values()];
   return (
     <section className="card" aria-labelledby="recorded-h">
