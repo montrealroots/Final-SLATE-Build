@@ -8,8 +8,9 @@ On November 13, 2026, the owner asked:
 3. "Fix perfectly what needs to be fixed."
 4. "Fix it all."
 5. "Fix the single-person and no-person adapted works" (the fourth of four items the owner chose, November 13, 2026).
+6. "Those last two do those" (the same day): the works still left with one person or none.
 
-This is the sweep after all five. Every one of the 517 works with a story was proposed as a feature film. The
+This is the sweep after all six. Every one of the 517 works with a story was proposed as a feature film. The
 table lists each brief's setting and its people, in order, with the role the story gives them:
 
 - (lead) is the one the story names most;
@@ -24,12 +25,12 @@ own words, and its pronouns are "they" until the player sets them.
 | | Works |
 |---|---|
 | With a story | 517 |
-| With their roles reviewed by hand († in the table) | 160 |
-| With someone taken from their story | 407 |
-| With someone against the lead | 218 |
+| With their roles reviewed by hand († in the table) | 162 |
+| With someone taken from their story | 403 |
+| With someone against the lead | 199 |
 | Set where their story says, with no place recorded | 28 |
-| With one person and a second part named for what it does ("The Rival") | 18 |
-| With no one at all, all three parts named for what they do | 2 |
+| With one person, and no one invented beside them | 3 |
+| With no one at all: one part, The Lead, and the brief says its people are incomplete | 1 |
 
 Before these two requests, 199 works with a story had no character recorded and were given "The Lead", "The Rival"
 and "The Ally". A work with one or two people was given made-up parts to make three.
@@ -50,6 +51,13 @@ and "The Ally". A work with one or two people was given made-up parts to make th
     kept from November 13, 2026, as it can be the lead: Zarathustra, Timon, Kafka, Tress, Alcatraz. Until then every
     word was left out;
   - an age before a name ("Fifteen-year-old Kafka" is Kafka);
+- **People an article lists** (from November 13, 2026, for 16 works whose story named one person or none): the
+  Characters section of the same English Wikipedia article, or the work's own "List of … characters" article
+  (Tower of God, Great Teacher Onizuka, Assassination Classroom), read by `castOf` in `tools/sources/plots.mjs`
+  and kept in `src/data/plots.json` with the article credited. They come after the story's own people, in the list's
+  order. One already there under another name is not added again (Persepolis's Marjane is Marji); two full names that
+  share a word are two people (Rip Van Winkle and his son). None is set against or beside the lead unless the story
+  shows it or a review says so. The brief and the project's credits name the article.
   - voice actors' credits.
 - Where fewer than three are named that often, the people named once in full come next (a game's soldiers), then the
   people the story names without a name ("the narrator", "the old man").
@@ -104,17 +112,14 @@ it.
 
 ## What Isn't Right Yet
 
-- **18 works name only one person**, and keep a second part named for what it does, as a brief needs two.
-  **2 name no one.** Their briefs say so. Each story was read again on November 13, 2026, for any
-  other person it names; these are the ones whose story names no other person more than once (Rip Van Winkle's dog
-  Wolf is named twice; the stories run from 239 to 5,944 characters):
-  - one person: Great Teacher Onizuka (Eikichi Onizuka), Persepolis (Marji), Blindness (The Doctor), Rip Van Winkle (Rip Van Winkle), The Mystery of Marie Rogêt (C. Auguste Dupin), Hop-o'-My-Thumb (Hop-o'-My-Thumb), A Descent into the Maelström (The Narrator), Elantris (Hoid), Alcatraz Versus the Evil Librarians (Alcatraz Smedry), Assassination Classroom (Koro-sensei), The God of High School (Mori Jin), WorldEnd (Willem), Fox Spirit Matchmaker (The Fox), Time Prisoners (Mi Liu), Tawawa on Monday (Ai), Life Lessons with Uramichi Oniisan (Uramichi Omota), ZooPhobia (Cameron), Doctor Elise (Elise);
-  - no one: Second Life, Tower of God. Tower of God's story describes the tower, and the one person it names twice is
-    King Jahad, its ruler; leading the brief with him would be wrong, so the parts stay named for what they do.
-
-  Their records name no one else either. A name from outside the work's own record and story would be the game's
-  invention, so none is added.
-- **Elantris is led by Hoid**, the one character its record holds; its story, 239 characters long, names no one.
+- **3 works name only one person**, and from November 13, 2026 (the owner's v6 package, J03) have that one person
+  and no one else. The brief says "This story doesn't identify another character. You can add one or continue."
+  Until then a second part, "The Rival", was added because a brief needed two people:
+  The Mystery of Marie Rogêt (Dupin; Marie Rogêt herself is named in its story almost only as its title),
+  Hop-o'-My-Thumb (the ogre has no name) and A Descent into the Maelström (the old fisherman has none).
+  **1 names no one:** Second Life, a virtual world whose article tells no story and lists no characters. It has one
+  part, The Lead, and the brief says its people are incomplete (until then, three parts named for what they do).
+  None of the four articles has a characters section, and none has a list of characters of its own.
 - **Unreviewed works keep the reading's roles.** A work not in the review table has the roles its sentences give. The
   review covers every error found in this sweep; one not yet found would need adding to it.
 - **Recorded names stay as recorded:** Mina Harker, where the story calls her Mina Murray.
@@ -192,7 +197,7 @@ it.
 | Grand Theft Auto: Vice City | video game | Vice City | Tommy Vercetti (lead), Sonny Forelli (against), Victor Vance, Lance Vance, Juan Garcia Cortez*, Ricardo Diaz |
 | Grand Theft Auto IV | video game | Liberty City | Niko Bellic (lead), Dimitri Rascalov (against)*, Roman Bellic, Jimmy Pegorino*, Kenny Petrović*, Mallorie* |
 | A Midsummer Night's Dream | play | Athens | Titania (lead), Lysander, Oberon (ally), Nick Bottom, Theseus*, Hermia |
-| Second Life | video game | Not recorded | The Lead (lead), The Rival (against), The Ally (ally) |
+| Second Life | video game | Not recorded | The Lead (lead) |
 | Poor Folk | novel | Russian Empire | Varvara Dobroselova (lead), Pokrovsky*, Makar Devushkin (ally), Anna Fyodorovna* |
 | Shakugan no Shana | light novel | The world of Shakugan no Shana | Shana (lead), Kazumi Yoshida, Yūji Sakai (ally) † |
 | Crayon Shin-chan | comic | Not recorded | Shinnosuke Nohara (lead), Ume Matsuzaka, Hiroshi Nohara, Misae Nohara, Himawari Nohara, Action Mask |
@@ -363,7 +368,7 @@ it.
 | The Overcoat | short story | Saint Petersburg | Akaky Akakievich Bashmachkin (lead)*, Акакий Акакиевич Башмачкин*, Petrovich (ally)* |
 | Nana | comic | Not recorded | Nana K (lead)*, Nana O.*, Ren*, Black Stones'*, Black Stones* |
 | Siddhartha | novel | India | Siddhartha (lead)*, Kamala*, Vasudeva*, Govinda* |
-| Great Teacher Onizuka | comic | Not recorded | Eikichi Onizuka (lead)*, The Rival (against) |
+| Great Teacher Onizuka | comic | Not recorded | Eikichi Onizuka (lead)*, Azusa Fuyutsuki*, Ryoko Sakurai*, Hiroshi Uchiyamada*, Suguru Teshigawara*, Hajime Fukuroda* |
 | The Murders in the Rue Morgue | short story | Paris | C. Auguste Dupin (lead), Camille*, Le Bon* |
 | The Adventure of the Red-Headed League | short story | London | Sherlock Holmes (lead), John Clay (against)*, Jabez Wilson* † |
 | The Neverending Story | novel | Amarganth | Bastian Balthazar Bux (lead), Atreyu, Falkor, Gmork, Carl Conrad Coreander, Uyulala |
@@ -391,7 +396,7 @@ it.
 | The Lion, the Witch, and the Wardrobe | novel | England | Lucy Pevensie (lead), White Witch (against), Aslan (ally), Edmund Pevensie, Susan Pevensie, Peter Pevensie † |
 | Call of Duty: Modern Warfare 3 | video game | Berlin | Price (lead)*, Makarov (against)*, Soap (ally)*, Yuri*, Alena Vorshevsky*, Nikolai* † |
 | Call of Duty: Modern Warfare 2 | video game | Afghanistan | Soap (lead)*, Shepherd (against)*, John Price (ally)*, Vladimir Makarov*, Joseph Allen*, Roach* |
-| Tower of God | online | The world of Tower of God | The Lead (lead), The Rival (against), The Ally (ally) |
+| Tower of God | online | The world of Tower of God | Twenty-Fifth Bam (lead)*, Rachel*, Phantaminum*, Enryu*, Urek Mazino*, Khun Aguero Agnes* |
 | Noblesse | online | Not recorded | Rai (lead)*, Cadis Etrama Di Raizel* |
 | The Last of the Mohicans | novel | Northern America and Mexico | Hawk-eye (lead)*, Magua (against), Uncas (ally), Alice Munro*, Duncan Heyward*, David Gamut* † |
 | Future Diary | comic | Kinugawa Onsen | Yuno Gasai (lead), Aru Akise (against)*, Yukiteru Amano, Deus Ex Machina*, Minene Uryu*, Muru Muru* |
@@ -451,7 +456,7 @@ it.
 | Mrs Dalloway | novel | London | Clarissa Dalloway (lead)*, Peter Walsh*, Septimus Warren Smith* |
 | Uncle Vanya | play | Russian Empire | Vanya (lead)*, Aleksandr Vladimirovich Serebryakov (against), Yelena Andreevna Serebryakova (ally), Sonya*, Mikhail Lvovich Astrov, Marina Timofeevna |
 | Lysistrata | play | Propylaea of Athens | Lysistrata (lead), Myrrhine*, Scythian Archers* |
-| Persepolis | comic | Tehran | Marji (lead)*, The Rival (against) |
+| Persepolis | comic | Tehran | Marji (lead)*, Mrs. Taji Satrapi*, Mr. Satrapi*, Uncle Anoosh*, Mehridia*, Khosro* |
 | Sir Gawain and the Green Knight | poem | Not recorded | Gawain (lead), Green Knight, Arthur*, Guinevere* |
 | Jurassic Park | novel | Isla Nublar | Paleontologist Alan Grant (lead)*, John Hammond*, Ian Malcolm*, Dennis Nedry*, Donald Gennaro*, John Arnold* |
 | The Tell-Tale Heart | short story | Not recorded | The Narrator (lead)*, The Old Man* |
@@ -463,7 +468,7 @@ it.
 | The Frogs | play | Athens* | Dionysus (lead)*, Aeschylus*, Euripides*, Heracles*, Xanthias* |
 | God of War | video game | Athens | Kratos (lead), Ares (against), Athena* |
 | Death of a Salesman | play | Brooklyn | Willy Loman (lead), Biff Loman, Happy Loman, Linda Loman, Charley*, Howard* |
-| Blindness | novel | The world of Blindness | The Doctor (lead)*, The Rival (against) |
+| Blindness | novel | The world of Blindness | The Doctor (lead)*, The doctor's wife*, The girl with the dark glasses*, The old man with the black eye patch*, The dog of tears*, The boy with the squint* |
 | The Importance of Being Earnest | play | Not recorded | Algernon Moncrieff (lead)*, Jack*, Ernest (ally)*, Bracknell*, Cecily Cardew*, Gwendolen Fairfax* |
 | Catching Fire | novel | Panem | Katniss Everdeen (lead), Haymitch Abernathy*, Peeta Mellark (ally)*, Snow*, Beetee*, Johanna Mason* |
 | Flowers for Algernon | short story | The world of Flowers for Algernon | Charlie Gordon (lead)*, Algernon*, Nemur*, Alice Kinnian* |
@@ -490,7 +495,7 @@ it.
 | The Adventure of the Speckled Band | short story | London | Sherlock Holmes (lead), Grimesby Roylott (against)*, Dr. Watson (ally), Helen Stoner* † |
 | Rashōmon | short story | Not recorded | The Woman (lead)*, The Man*, The Old Woman* |
 | The Adventure of the Noble Bachelor | short story | London | Hatty Doran (lead)*, Moulton (against)*, Simon*, Inspector Lestrade |
-| Rip Van Winkle | short story | Catskill Mountains | Rip Van Winkle (lead), The Rival (against) |
+| Rip Van Winkle | short story | Catskill Mountains | Rip Van Winkle (lead), Dame Van Winkle*, Rip Van Winkle Jr.*, Judith Gardenier*, Derrick Van Bummel*, Nicolaus Vedder* |
 | The Cask of Amontillado | short story | Not recorded | Montresor (lead)*, Fortunato (against)* |
 | Sabrina Online | online | Not recorded | Thomas Woolfe (lead)*, Zig Zag* |
 | The Adventure of the Blue Carbuncle | short story | London | Sherlock Holmes (lead), James Ryder*, Henry Baker*, Peterson*, Dr. Watson, Inspector Bradstreet |
@@ -501,14 +506,14 @@ it.
 | The Man with the Twisted Lip | short story | London | Sherlock Holmes (lead), Clair*, Dr. Watson, Hugh Boone*, Inspector Bradstreet † |
 | The Adventure of Silver Blaze | short story | Dartmoor | Sherlock Holmes (lead), John Straker*, Bookmaker Fitzroy Simpson*, Watson*, Gregory*, Pyland* |
 | The House of the Dead | novel | Russian Empire | Aleksandr Petrovich (lead)*, Aleksandr Petrovich Goryanchikov*, Gradually Goryanchikov* |
-| The Mystery of Marie Rogêt | short story | Paris | C. Auguste Dupin (lead), The Rival (against) |
+| The Mystery of Marie Rogêt | short story | Paris | C. Auguste Dupin (lead) |
 | The Adventure of the Empty House | short story | Not recorded | Sherlock Holmes (lead), Sebastian Moran (against)*, Moriarty*, Inspector Lestrade † |
 | Max Payne | video game | Choir Communications Garage | Max Payne (lead), Angelo Punchinello (against), Michelle Payne, Nicole Horne, Jack Lupino*, Alfred Woden |
 | The Boscombe Valley Mystery | short story | Herefordshire | James (lead)*, Sherlock Holmes, Charles McCarthy (ally)*, John Turner*, Alice*, Watson* |
 | The Adventure of the Engineer's Thumb | short story | London | Victor Hatherley (lead)*, Lysander Stark (against)*, Sherlock Holmes, Dr. Watson, Inspector Bradstreet † |
 | The Five Orange Pips | short story | London | John Openshaw (lead)*, Elias*, Sherlock Holmes, Joseph* |
 | The Fall of the House of Usher | short story | Not recorded | Roderick Usher (lead)*, Madeline*, Ethelred* |
-| Hop-o'-My-Thumb | short story | The world of Hop-o'-My-Thumb | Hop-o'-My-Thumb (lead)*, The Rival (against) |
+| Hop-o'-My-Thumb | short story | The world of Hop-o'-My-Thumb | Hop-o'-My-Thumb (lead)* |
 | The Adventure of the Second Stain | short story | Not recorded | Sherlock Holmes (lead), Hilda Trelawney Hope*, Eduardo Lucas*, Inspector Lestrade, Dr. Watson † |
 | The Nightingale | short story | The world of The Nightingale | The Emperor (lead)*, The Nightingale* |
 | The Adventure of the Gloria Scott | short story | Not recorded | Victor Trevor (lead)*, Head-keeper Hudson*, Holmes (ally)*, Beddoes*, Born James Armitage* |
@@ -522,7 +527,7 @@ it.
 | The Invisible Man | novel | London | Griffin (lead), Kemp (against)*, Thomas Marvel*, Adye*, Griffanti |
 | The Handmaid's Tale | novel | United States | Offred (lead), Serena Joy, Nick* |
 | High School DxD | light novel | Not recorded | Issei Hyōdō (lead), Rias Gremory, Akeno Himejima, Asia Argento, Gasper Vladi, Irina Shidō |
-| A Descent into the Maelström | short story | The world of A Descent into the Maelström | The Narrator (lead)*, The Rival (against) |
+| A Descent into the Maelström | short story | The world of A Descent into the Maelström | The Narrator (lead)* |
 | A Game of Thrones | novel | Westeros | Ned (lead)*, Cersei Lannister (against)*, Drogo*, Daenerys Targaryen*, Jon Arryn*, Joffrey* † |
 | Oruchuban Ebichu | comic | Not recorded | Ebichu (lead)*, Goshujin-sama (ally)* † |
 | The Gathering Storm | novel | Arad Doman* | Rand al'Thor (lead), Egwene*, Elaida*, Semirhage*, Verin Mathwin* |
@@ -532,17 +537,17 @@ it.
 | The Way of Kings | novel | The world of The Way of Kings | Kaladin (lead)*, Dalinar*, Szeth*, Shallan*, Gavilar* |
 | Schlock Mercenary | online | The world of Schlock Mercenary | Kaff Tagon (lead)*, F'sherl-Ganni Gatekeepers*, Kevyn Andreyasn* |
 | The Lady with the Dog | short story | Russia | Anna Sergeyevna (lead), Dmitri Gurov |
-| Elantris | novel | The world of Elantris | Hoid (lead), The Rival (against) |
+| Elantris | novel | The world of Elantris | Prince Raoden (lead)*, Gyorn Hrathen (against)*, Princess Sarene (ally)*, Hoid † |
 | Towers of Midnight | novel | The world of Towers of Midnight | Perrin Aybara (lead)*, Galad Damodred (against)*, Isam*, Egwene*, Elayne Trakand*, Mesaana* |
 | Homestuck | online | Doc Scratch* | John Egbert (lead), Vriska Serket, Jack Noir*, Caliborn*, Dave Strider, Rose Lalonde |
 | Mistborn: The Final Empire | novel | Luthadel* | Kelsier (lead)*, Vin*, Valette Renoux*, Elend Venture*, Marsh* |
 | A Memory of Light | novel | The world of A Memory of Light | Rand (lead)*, Elayne Trakand*, Mat*, Egwene*, Demandred*, M'Hael* |
-| Alcatraz Versus the Evil Librarians | novel | The world of Alcatraz Versus the Evil Librarians | Alcatraz Smedry (lead)*, The Rival (against) |
+| Alcatraz Versus the Evil Librarians | novel | The world of Alcatraz Versus the Evil Librarians | Alcatraz Smedry (lead)*, Bastille*, Sing Sing*, Quentin* |
 | The Hitchhiker's Guide to the Galaxy | novel | The world of The Hitchhiker's Guide to the Galaxy | Arthur Dent (lead), Zaphod Beeblebrox, Ford Prefect (ally), Trillian, Marvin the Paranoid Android, Slartibartfast |
 | Cyberpunk 2077 | video game | Night City | V (lead), Yorinobu Arasaka (against), Johnny Silverhand, Hanako Arasaka, Saburo Arasaka, Alt Cunningham |
 | The Adventure of the Six Napoleons | short story | Not recorded | Sherlock Holmes (lead), Beppo*, Inspector Lestrade (ally) |
-| Assassination Classroom | comic | The world of Assassination Classroom | Koro-sensei (lead)*, The Rival (against) |
-| The God of High School | online | Not recorded | Mori Jin (lead)*, The Rival (against) |
+| Assassination Classroom | comic | The world of Assassination Classroom | Koro-sensei (lead)*, Nagisa Shiota*, Kaede Kayano*, Karma Akabane*, Gakuhō Asano*, Shiro* |
+| The God of High School | online | Not recorded | Mori Jin (lead)*, Daewi Han*, Mira Yoo*, Ilpyo Park*, Seungchul Baek*, Manseok Gang* |
 | Case Closed | comic | Not recorded | Shinichi Kudo (lead), Yukiko Kudo, Yusaku Kudo, James Black, Kogoro Mori, Hiroshi Agasa |
 | Mistborn: The Hero of Ages | novel | The world of Mistborn: The Hero of Ages | Vin (lead)*, Ruin (against)*, Elend (ally)*, Preservation*, Marsh*, Urteau* † |
 | The Witcher 3: Wild Hunt | video game | Kaer Morhen | Geralt of Rivia (lead), Yennefer of Vengerberg, Ciri (ally)*, Avallac'h*, Emhyr*, Eredin* † |
@@ -582,13 +587,13 @@ it.
 | KonoSuba | light novel | Not recorded | Kazuma Satou (lead), Megumin, Aqua (ally), Darkness, Chomusuke, Hyoizaburoo † |
 | Mushoku Tensei | light novel | The world of Mushoku Tensei | Rudeus Greyrat (lead), Orsted (against)*, Hitogami* |
 | The Rising of the Shield Hero | light novel | The world of The Rising of the Shield Hero | Naofumi Iwatani (lead), Raphtalia (ally)* † |
-| WorldEnd | light novel | The world of WorldEnd | Willem (lead)*, The Rival (against) † |
+| WorldEnd | light novel | The world of WorldEnd | Willem Kmetsch (lead)*, Chtholly Nota Seniorious*, Ithea Myse Valgulious*, Nephren Ruq Insania*, Rhantolk Ytri Historia*, Nopht Keh Desperatio* † |
 | Black Clover | comic | The world of Black Clover | Asta (lead), Yami Sukehiro*, Yuno (ally)* |
 | Re:Zero | light novel | The world of Re:Zero | Subaru Natsuki (lead), Emilia, Rem, Ram, Ferris, Beatrice |
 | Eromanga Sensei | light novel | The world of Eromanga Sensei | Sagiri Izumi (lead), Masamune Izumi, Elf Yamada |
 | Undertale | video game | The Underground | Asgore Dreemurr (lead), Flowey (against), Toriel (ally), Asriel Dreemurr, Alphys, Chara |
 | Mistborn: The Bands of Mourning | novel | Dulsing* | Wax (lead)*, Edwarn Ladrian (against)*, Marasi*, Wayne*, Harmony*, Kelesina Shores* |
-| Fox Spirit Matchmaker | online | Not recorded | The Fox (lead)*, The Rival (against) |
+| Fox Spirit Matchmaker | online | Not recorded | Bai Yuechu (lead)*, Tushan Yaya*, Tushan Susu (ally)*, Tushan Rongrong*, Wang Fugui*, Bai Qiuen* † |
 | That Time I Got Reincarnated as a Slime | light novel | Not recorded | Rimuru Tempest (lead), Satoru Mikami, Veldora Tempest, Milim Nava, Abiru, Adalman |
 | Violet Evergarden | light novel | Not recorded | Violet Evergarden (lead), Alberta, Cattleya Baudelaire, Charlotte Abelfreyja Drossel, Damian Baldur Flugel |
 | Unfettered | novel | The world of Unfettered | Shawn Speakman (lead)*, Patrick Rothfuss (against)*, Terry Brooks (ally)* |
@@ -598,8 +603,8 @@ it.
 | Classroom of the Elite | light novel | Not recorded | Kikyō Kushida (lead)*, Suzune Horikita* |
 | Under One Person | online | The world of Under One Person | Chou Soran (lead)*, Fu Hōhō (against)*, Feng Baobao (ally), Zhang Chulan |
 | Naruto | comic | Naruto World | Sasuke Uchiha (lead), Itachi Uchiha (against), Madara Uchiha, Obito Uchiha, Kakashi Hatake, Orochimaru |
-| Time Prisoners | online | The world of Time Prisoners | Mi Liu (lead)*, The Rival (against) |
-| Tawawa on Monday | online | Not recorded | Ai (lead)*, The Rival (against) † |
+| Time Prisoners | online | The world of Time Prisoners | Mi Liu (lead)*, Anji*, Lee Shin*, Lou Yao* |
+| Tawawa on Monday | online | Not recorded | Ai (lead)*, Salaryman*, Junior*, Senior*, Maegami*, Teacher* † |
 | Red Dead Redemption 2 | video game | United States | Arthur Morgan (lead), Dutch van der Linde (against), John Marston (ally), Micah*, Abigail*, Jack* |
 | Alcatraz Versus the Dark Talent | novel | The world of Alcatraz Versus the Dark Talent | Alcatraz (lead)*, Grandpa Smedry*, Dif Smedry* |
 | World's End Harem | online | The world of World's End Harem | Reito Mizuhara (lead)*, Elisa Tachibana (ally)* † |
@@ -616,7 +621,7 @@ it.
 | Spy × Family | comic | Not recorded | Twilight (lead)*, Anya Forger, Yor Forger (ally), Yuri Briar, Loid Forger, Bond Forger † |
 | Chainsaw Man | comic | Hell | Denji (lead), Makima (against), Power (ally), Pochita*, Yoru*, Asa Mitaka* † |
 | Hell's Paradise: Jigokuraku | online | The world of Hell's Paradise: Jigokuraku | Gabimaru (lead), Tensen*, Yamada Asaemon Sagiri, Yamada Asaemon Eizen, Yamada Asaemon Fuchi, Yamada Asaemon Genji † |
-| Life Lessons with Uramichi Oniisan | online | Not recorded | Uramichi Omota (lead)*, The Rival (against) |
+| Life Lessons with Uramichi Oniisan | online | Not recorded | Uramichi Omota (lead)*, Tobikichi Usahara*, Mitsuo Kumatani*, Iketeru Daga*, Utano Tadano*, Hanbee Kikaku* |
 | Summer Time Rendering | online | Not recorded | Shinpei Ajiro (lead)*, Ushio*, Mio* † |
 | Heartstopper | online | Not recorded | Charlie Spring (lead), Ben Hope (against), Nick Nelson (ally), Tori Spring † |
 | Starsight | novel | The world of Starsight | Spensa (lead)*, Winzik (against)*, Brade*, Cuna*, Alanik*, Detritus* |
@@ -627,14 +632,14 @@ it.
 | I Think I Turned My Childhood Friend into a Girl | online | Not recorded | Hiura Mihate (lead)*, Kenshiro Mido (against)* |
 | Sweet Home | online | The world of Sweet Home | Cha Hyun-soo (lead)*, Du-sik*, Lee Eun-hyuk*, Ahn Gil-seop*, Shin Joong-seop*, Byung-il* |
 | Alya Sometimes Hides Her Feelings in Russian | light novel | Not recorded | Masachika Kuze (lead), Alisa Mikhailovna Kujō |
-| ZooPhobia | online | Not recorded | Cameron (lead)*, The Rival (against) † |
+| ZooPhobia | online | Not recorded | Cameron Walden (lead)*, Zill*, Jack*, Kayla*, Damian*, Vanexa* † |
 | Cytonic | novel | The world of Cytonic | Spensa (lead)*, M-Bot*, Chet (ally)*, Hesho* |
 | Viral Hit | online | Not recorded | Yoo Ho-bin (lead)*, Woo Ji-hyuk (against)* |
 | Takopi's Original Sin | online | The world of Takopi's Original Sin | Shizuka Kuze (lead), Takopi, Marina Kirarazaka (ally), Naoki Azuma, Chappy* |
 | Mistborn: The Lost Metal | novel | Elendel* | Wax (lead)*, Autonomy*, Wayne (ally)*, Marasi*, Telsin* |
 | The Summer Hikaru Died | online | Japan | Yoshiki (よしき) (lead), Yamagishi Asako (山岸朝子), Tanaka (田中), "Hikaru" (ヒカル), Maki Yuuta (巻ゆうた), Tadokoro Yuuki (田所結希) † |
 | Tress of the Emerald Sea | novel | The world of Tress of the Emerald Sea | Tress (lead)*, Crow (against)*, Charlie (ally)*, Huck*, Hoid*, Ann* |
-| Doctor Elise | online | Not recorded | Elise (lead)*, The Rival (against) † |
+| Doctor Elise | online | Not recorded | Elise (lead)*, Linden*, Graham*, Lenne De Clorance*, Chris De Clorance*, Michael De Romanoff* † |
 | A Returner's Magic Should Be Special | online | Not recorded | Desir Herrman (lead)*, Romantica (ally)* † |
 | Yumi and the Nightmare Painter | novel | Komashi | Yumi (lead), Hoid, Nikaro (ally) |
 | The Guy She Was Interested In Wasn't a Guy at All | online | Not recorded | Aya Osawa (lead), Mitsuki Koga (against), Chizuru (ally), Joe, Kanna, Mao |

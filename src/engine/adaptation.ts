@@ -95,7 +95,9 @@ export function creditLine(p: Project): string | null {
     : ref.standing === 'public-domain-recorded' ? ` ${ref.title} is recorded as public domain.` : ` No copyright status is recorded for ${ref.title}.`;
   const story = p.proposal?.workId === ref.id ? p.proposal.story : undefined;
   const told = story ? ` Its story outline is from the ${story.section} section of the English Wikipedia article "${story.article}" (${story.licence}).` : '';
-  return `Based on ${ref.title}${by}.${owned}${told}`;
+  const cast = p.proposal?.workId === ref.id ? p.proposal.cast : undefined;
+  const listed = cast ? ` Some of its characters' names are from ${cast.section === 'whole article' ? '' : `the ${cast.section} section of `}the English Wikipedia article "${cast.article}" (${cast.licence}).` : '';
+  return `Based on ${ref.title}${by}.${owned}${told}${listed}`;
 }
 
 /** What the rights holder has been paid of the project's income, on an agreement made before November 13, 2026. */

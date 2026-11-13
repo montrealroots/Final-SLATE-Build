@@ -1,0 +1,21 @@
+Implement the attached SLATE-Connected-Realism-v6 package in montrealroots/Final-SLATE-Build. Read 00-START-HERE.md, then every numbered specification and the requirements CSV before editing. Treat this as implementation work, not a brainstorming request.
+
+Use exactly one agent. No subagents, parallel agents or agent workflows. Preserve the existing development tools and protected credentials; verify tools are actually available before reporting their use. Use normal repository CI for validation.
+
+Inspect latest main, active PRs, CI, owner instructions and existing systems. Reconcile changes already built. Do not duplicate or overwrite newer work. Carry forward the owner's latest explicit preferences when they supersede older packages. Keep working saves and player edits compatible.
+
+Implement the full connected scope: historical entertainment playback from January 1 through November 13, 2026 where verified evidence exists; Box Office and Box Office Records; weekly television/streaming reports and announcements; awards and festivals; comprehensive accessible catalog imports and images; accurate source adaptation; method-specific production; music; finance; worldwide scheduling; reputation; real-company first-look and release opportunities; desktop/phone parity. The package defines the nested decisions, state transitions and downstream effects.
+
+For each requirement, wire data → decision → persistent state → time/money/resources → result → downstream consumer → UI → test. Do not deliver decorative options or empty menus. Do not impose invented characters, generic roles, same-pipeline production methods or fictional historical results to fill gaps.
+
+Historical facts, derived figures, simulation parameters and player choices must stay distinct. No future knowledge leaks. Import dates do not equal publication dates. Missing facts remain missing, with evidence of attempted authorized alternatives. Continue implementing the surrounding functionality and resumable import tooling; do not declare full historical/catalog completion without coverage evidence.
+
+Work in dependency order using 10-DELIVERY-AND-COVERAGE.md. Update 08-REQUIREMENTS.csv with actual file paths, tests, evidence, status and remaining gaps. Keep existing ledgers reconciled. Build complete vertical slices and integrate them; do not turn the package into a disconnected collection of engines.
+
+Research official/authorized evidence as specified. Respect attribution and data/image terms. Never print or commit secrets. Real studio/artist names do not make simulated fees or offers real private contracts. Do not bundle copyrighted recordings or full source texts merely because metadata is available.
+
+Run repository checks, production build, data validators, migration tests, targeted simulation tests and the Playwright journeys in 07-VERIFICATION-AND-JOURNEYS.md. Test through visible UI actions and assert ledger, calendar, contract, credit and reputation consequences. Inspect phone/desktop screenshots. Distinguish emulation from physical-device testing. Fix failures without weakening checks or hiding unverified behavior.
+
+Commit completed tested sections with clear scope. Push the branch and maintain a reviewable PR. Merge only after required CI is green and conflicts/review requirements are satisfied. Never bypass checks or erase unrelated work. If environment/context limits interrupt work, save a precise continuation file with current SHA, completed items, next task and remaining verification; do not falsely mark the overall package finished.
+
+Final report: merged/unmerged status and exact SHA; implementation by requirement; historical/country/entity/metric coverage; sourced versus simulated versus unavailable data; tests actually run; performance/UI evidence; unresolved items with exact reasons; commit/PR/CI links. Do not promise 100% realism or completion from test counts. Demonstrate the connected behavior.

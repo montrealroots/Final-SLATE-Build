@@ -1,0 +1,46 @@
+{
+  "00-START-HERE.md": {
+    "bytes": 2779,
+    "sha256": "7e17d72b79507974780956261f1b02ff817960f763491074d3e8083773eb8a51"
+  },
+  "01-REALISM-CONTRACT.md": {
+    "bytes": 3971,
+    "sha256": "c059769e468e7e0fb78634f15e4f8f888bd95844ba45a0d1c9de45092e43d993"
+  },
+  "02-WORLD-AND-HISTORY.md": {
+    "bytes": 7507,
+    "sha256": "39c1b73fbf4c1d04a751f62877d0e6b4e2b0af3844a0cee4db51098fd04c506c"
+  },
+  "03-FULL-GAMEPLAY-LOOPS.md": {
+    "bytes": 13274,
+    "sha256": "0502603c6898e1f27af1af69443a4c0c1374517daffca377eb058ac6b91b1c7a"
+  },
+  "04-REPUTATION-AND-DEALS.md": {
+    "bytes": 5032,
+    "sha256": "d62aee63ef1687080919faf0ddc5b40c969160b3d9a6361da84eaaa295aececc"
+  },
+  "05-UI-AND-PLAYER-VOICE.md": {
+    "bytes": 3522,
+    "sha256": "d6306c49dacc0d9a09c1f1262430640b3541cf5043be6b59e1dc24917e061e09"
+  },
+  "06-ARCHITECTURE-AND-DATA.md": {
+    "bytes": 5376,
+    "sha256": "7fe314645d410c1399815d2159c02e130e2986b13c792d40b6bccb2732bca9b0"
+  },
+  "07-VERIFICATION-AND-JOURNEYS.md": {
+    "bytes": 6033,
+    "sha256": "6f25b30b77e0b99a68b8614eab771e59f7a00d5d536736498c90383f735638a4"
+  },
+  "08-REQUIREMENTS.csv": {
+    "bytes": 9221,
+    "sha256": "18246f046444cd4a09204c8f40a77f66a4b7a20b3eb7f00a7358f8f2564e0237"
+  },
+  "09-CLAUDE-COMMAND.txt": {
+    "bytes": 3951,
+    "sha256": "a36bf382f5d3a0468ff8464e4c6b46f2160ec5f7a73079cfe71b9c2d03bda3ef"
+  },
+  "10-DELIVERY-AND-COVERAGE.md": {
+    "bytes": 3763,
+    "sha256": "0386e5b5e405708a33d00cb1c9c5c0e90b4ba9c1f3c104dc0f514c3862eade73"
+  }
+}

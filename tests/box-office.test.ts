@@ -2,7 +2,7 @@
 // of its weeks, a correction is kept visible, every other figure follows from the rental, and the money is what it was.
 import { describe, expect, it } from 'vitest';
 import { DAY, DISTRIBUTOR_FEE, REPORT_MONTHS, acceptDistribution, processUntil, reportedGross } from './engine-api';
-import { COMPETITION_MAX, EXPAND_BAR, HOLD_BAR, RENTAL_SHARE, SCREENS_BOUNDS, TICKET_PRICE, WEEKS_PER_REPORT, WEEK_WEIGHTS, holdover, monthOfWeek, openingScreens, provisionalRental, recordBook, recordWeek, screenShare, screensAfter, settleMonth, weekDates, weekMoney } from '../src/engine/box-office';
+import { COMPETITION_MAX, EXPAND_BAR, HOLD_BAR, RENTAL_SHARE, SCREENS_BOUNDS, TICKET_PRICE, WEEKS_PER_REPORT, WEEK_WEIGHTS, holdover, monthOfWeek, openingScreens, provisionalRental, recordBook, byReleaseYear, recordWeek, screenShare, screensAfter, settleMonth, weekDates, weekMoney } from '../src/engine/box-office';
 import { deserialize, serialize } from '../src/engine/save';
 import type { BoxOfficeWeek, DistributionOffer, GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
@@ -161,6 +161,21 @@ describe('the record book', () => {
     expect(book[2]).toMatchObject({ projectId: c.id, opening: 20_000, lifetime: 20_000, weeks: 1 });
     // Alder and Birch took the same in all and share first place, the earlier opening listed first; Alder and Cedar opened the same.
     expect(book.map((r) => r.rank)).toEqual([{ opening: 1, lifetime: 1 }, { opening: 3, lifetime: 1 }, { opening: 1, lifetime: 3 }]);
+  });
+
+  it('reads as it stood on a past day, ranked among what had played by then; a release year is not a calendar year', () => {
+    const s = startLife('bo-asof');
+    film(s, 'Alder', [[week(1, 10_000, '2026-12-18'), week(2, 6_000, '2026-12-18'), week(3, 4_000, '2026-12-18')]]);
+    film(s, 'Birch', [[week(1, 8_000, '2027-03-05'), week(2, 12_000, '2027-03-05')]]);
+    // At the end of 2026: Alder's two weeks that had ended, and no Birch.
+    const then = recordBook(s, '2026-12-31');
+    expect(then.map((r) => [r.title, r.lifetime, r.weeks, r.rank.lifetime])).toEqual([['Alder', 32_000, 2, 1]]);
+    // Now: Alder took 32,000 in 2026 and 8,000 in 2027, but all 40,000 is 2026's as a release year (it opened then).
+    const now = recordBook(s);
+    const calendar: Record<string, number> = {};
+    for (const r of now) for (const [y, v] of Object.entries(r.byYear)) calendar[y] = (calendar[y] ?? 0) + v;
+    expect(calendar).toEqual({ 2026: 32_000, 2027: 48_000 });
+    expect(byReleaseYear(now)).toEqual({ 2026: 40_000, 2027: 40_000 });
   });
 
   it('a later run adds to the lifetime and is never the opening; a provisional week marks the row as able to move', () => {

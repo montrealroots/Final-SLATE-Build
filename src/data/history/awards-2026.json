@@ -1,0 +1,52 @@
+{
+  "dataset": "awards-2026",
+  "version": 1,
+  "about": "Recorded results of 2026 award ceremonies, read from each organizer's own page (the owner's v6 package, 02-WORLD-AND-HISTORY.md E; November 13, 2026). A small representative set, not the whole of any ceremony: only what the cited page states is here, word for word, and a category a page doesn't state is absent, not guessed. Each observation is reportable from its publication date, never earlier. Names are kept as each source writes them.",
+  "coverage": {
+    "requested": "2026-01-01 to 2026-11-13",
+    "observed": "2026-01-11 to 2026-03-15",
+    "editions": ["83rd Golden Globe Awards", "98th Academy Awards"],
+    "notInSet": "Every other 2026 ceremony and festival, and the categories of these two not listed below. The Golden Globes article names The Pitt and The Studio as series winners without saying which won which category, so neither is recorded."
+  },
+  "sources": {
+    "oscars-98": {
+      "url": "https://www.oscars.org/oscars/ceremonies/2026",
+      "title": "The 98th Academy Awards | 2026",
+      "provider": "Academy of Motion Picture Arts and Sciences",
+      "retrieved": "2026-11-13",
+      "section": "Nominees and winners by category",
+      "access": "Read through a fetching tool; a direct download was refused (HTTP 403). Titles and names as the page prints them."
+    },
+    "oscars-98-nominations-date": {
+      "url": "https://www.nbcnews.com/pop-culture/pop-culture-news/live-blog/oscar-nominations-2026-live-updates-rcna254762",
+      "title": "Oscar nominations 2026: live updates",
+      "provider": "NBC News",
+      "retrieved": "2026-11-13",
+      "section": "Live blog, last updated January 22, 2026",
+      "access": "News report of the announcement, corroborated by OPB's \"Complete list of 2026 Oscar nominees\" of the same day; the Academy's own press release was not found."
+    },
+    "globes-83": {
+      "url": "https://goldenglobes.com/articles/one-battle-after-another-and-hamnet-take-best-picture-prizes-at-golden-globes/",
+      "title": "'One Battle After Another' and 'Hamnet' Take Best Picture Prizes at Golden Globes",
+      "provider": "Golden Globes",
+      "retrieved": "2026-11-13",
+      "section": "Article published January 11, 2026",
+      "access": "Read through a fetching tool. Only the categories the article states are recorded."
+    }
+  },
+  "observations": [
+    { "id": "globes-83-drama", "kind": "winner", "institution": "golden-globes", "year": 2026, "edition": "83rd Golden Globe Awards", "category": "drama", "categoryName": "Best Motion Picture – Drama", "subjects": ["Hamnet"], "occurred": "2026-01-11", "published": "2026-01-11", "precision": "day", "source": "globes-83", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "globes-83-comedy", "kind": "winner", "institution": "golden-globes", "year": 2026, "edition": "83rd Golden Globe Awards", "category": "comedy", "categoryName": "Best Motion Picture – Musical or Comedy", "subjects": ["One Battle After Another"], "occurred": "2026-01-11", "published": "2026-01-11", "precision": "day", "source": "globes-83", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "globes-83-animated", "kind": "winner", "institution": "golden-globes", "year": 2026, "edition": "83rd Golden Globe Awards", "category": "animated", "categoryName": "Best Motion Picture – Animated", "subjects": ["KPop Demon Hunters"], "occurred": "2026-01-11", "published": "2026-01-11", "precision": "day", "source": "globes-83", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "globes-83-non-english", "kind": "winner", "institution": "golden-globes", "year": 2026, "edition": "83rd Golden Globe Awards", "category": "non-english", "categoryName": "Best Motion Picture – Non-English Language", "subjects": ["The Secret Agent"], "occurred": "2026-01-11", "published": "2026-01-11", "precision": "day", "source": "globes-83", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "globes-83-director", "kind": "winner", "institution": "golden-globes", "year": 2026, "edition": "83rd Golden Globe Awards", "category": "director", "categoryName": "Best Director – Motion Picture", "subjects": ["Paul Thomas Anderson"], "work": "One Battle After Another", "occurred": "2026-01-11", "published": "2026-01-11", "precision": "day", "source": "globes-83", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "oscars-98-picture-nominees", "kind": "nominees", "institution": "oscars", "year": 2026, "edition": "98th Academy Awards", "category": "picture", "categoryName": "Best Picture", "subjects": ["One Battle after Another", "Bugonia", "F1", "Frankenstein", "Hamnet", "Marty Supreme", "The Secret Agent", "Sentimental Value", "Sinners", "Train Dreams"], "occurred": "2026-01-22", "published": "2026-01-22", "precision": "day", "source": "oscars-98", "publishedSource": "oscars-98-nominations-date", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "oscars-98-picture", "kind": "winner", "institution": "oscars", "year": 2026, "edition": "98th Academy Awards", "category": "picture", "categoryName": "Best Picture", "subjects": ["One Battle after Another"], "credited": "Adam Somner, Sara Murphy and Paul Thomas Anderson, Producers", "occurred": "2026-03-15", "published": "2026-03-15", "precision": "day", "source": "oscars-98", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "oscars-98-director", "kind": "winner", "institution": "oscars", "year": 2026, "edition": "98th Academy Awards", "category": "director", "categoryName": "Directing", "subjects": ["Paul Thomas Anderson"], "work": "One Battle after Another", "occurred": "2026-03-15", "published": "2026-03-15", "precision": "day", "source": "oscars-98", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "oscars-98-actor", "kind": "winner", "institution": "oscars", "year": 2026, "edition": "98th Academy Awards", "category": "actor", "categoryName": "Actor in a Leading Role", "subjects": ["Michael B. Jordan"], "work": "Sinners", "occurred": "2026-03-15", "published": "2026-03-15", "precision": "day", "source": "oscars-98", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "oscars-98-actress", "kind": "winner", "institution": "oscars", "year": 2026, "edition": "98th Academy Awards", "category": "actress", "categoryName": "Actress in a Leading Role", "subjects": ["Jessie Buckley"], "work": "Hamnet", "occurred": "2026-03-15", "published": "2026-03-15", "precision": "day", "source": "oscars-98", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "oscars-98-international", "kind": "winner", "institution": "oscars", "year": 2026, "edition": "98th Academy Awards", "category": "international", "categoryName": "International Feature Film", "subjects": ["Sentimental Value"], "credited": "Norway", "occurred": "2026-03-15", "published": "2026-03-15", "precision": "day", "source": "oscars-98", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "oscars-98-animated", "kind": "winner", "institution": "oscars", "year": 2026, "edition": "98th Academy Awards", "category": "animated", "categoryName": "Animated Feature Film", "subjects": ["KPop Demon Hunters"], "credited": "Maggie Kang, Chris Appelhans and Michelle L.M. Wong", "occurred": "2026-03-15", "published": "2026-03-15", "precision": "day", "source": "oscars-98", "status": "verified", "revision": 1, "imported": "2026-11-13" },
+    { "id": "oscars-98-documentary", "kind": "winner", "institution": "oscars", "year": 2026, "edition": "98th Academy Awards", "category": "documentary", "categoryName": "Documentary Feature Film", "subjects": ["Mr. Nobody against Putin"], "credited": "David Borenstein, Pavel Talankin, Helle Faber and Alžběta Karásková", "occurred": "2026-03-15", "published": "2026-03-15", "precision": "day", "source": "oscars-98", "status": "verified", "revision": 1, "imported": "2026-11-13" }
+  ]
+}

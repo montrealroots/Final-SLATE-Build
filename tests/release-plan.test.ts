@@ -120,6 +120,9 @@ describe('releasing it yourself', () => {
     const bare = { ...o, promo: 0 };
     expect(reportedGross(s.seed, p, o, 1)).toBeGreaterThan(reportedGross(s.seed, p, bare, 1));
     expect(promoLift(0)).toBe(1);
+    // With limits, never a guarantee: each dollar reaches fewer new people than the last, and no spend lifts it past 2.5x.
+    expect(promoLift(160_000) - promoLift(40_000)).toBeLessThan(promoLift(40_000) - promoLift(0));
+    expect(promoLift(1e9)).toBe(2.5);
   });
 
   it('can\'t be booked without the money, or where an exclusive deal holds the rights', () => {

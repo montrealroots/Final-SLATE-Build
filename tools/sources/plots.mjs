@@ -83,6 +83,100 @@ async function fetchOne(title) {
   }
 }
 
+// ---- The people an article lists (the owner, November 13, 2026: the works whose story names one person or none were
+// to be fixed). Some stories are told without naming anyone twice (Rip Van Winkle's, Elantris's 239 characters), while
+// the same article lists the work's people in a Characters section, or a "List of … characters" article does. Their
+// names are taken from there, with the article credited as the story's is. Fetched only for the works asked for:
+//   node tools/sources/plots.mjs --characters "Elantris" "Rip Van Winkle" ...
+const CAST_CACHE = '.sources-cache/characters';
+const CAST_SECTION = /^(main )?(characters?|character list|cast|cast and characters)$/i;
+/** A line about who voiced or played a part, or an actor's credit: about the making, never a name. */
+const MAKING = /^((voiced|played|portrayed|performed) by|(japanese|korean|english|chinese) (live-action )?actor)\b/i;
+/** Words a sentence starts with, which no name does. */
+const NOT_A_NAME = /^(the|a|an|he|she|they|it|his|her|their|its|in|on|at|after|later|when|while|despite|formerly|this|these|those|there|as|also|both|each|one|throughout|through|during|with|from|by|despite|although|because|since|who|whose|which|however|unfortunately|fortunately|actually|eventually|meanwhile|originally|initially|finally|later|soon|then|now|still|instead|otherwise|together|afterwards|nevertheless|ultimately|apparently|currently|previously|recently)\b/i;
+const PARTICLE = /^(van|von|de|der|den|del|da|di|du|la|le|al|bin|ibn|of|the|jr\.?|sr\.?)$/i;
+
+/** A characters section's (or list article's) people, in its order: [{ name, also? }]. `title` is the work's, never a name. */
+export function castOf(raw, title, { actorsAs = false, most = 12 } = {}) {
+  const lines = raw.split('\n').map((l) => l.trim()).filter(Boolean);
+  const out = [];
+  const next = (i) => lines[i + 1] ?? '';
+  const bare = (x) => x.replace(/[(（][^)）]*[)）]?/g, '').replace(/\s+/g, ' ').trim();
+  const nameLike = (h) => !!h && h.length <= 40 && h.split(' ').length <= 5 && /^\p{Lu}/u.test(h) && !/\d/.test(h) && !/^\p{Lu}{2,}$/u.test(h)
+    && !/['’]s\b/.test(h) && !NOT_A_NAME.test(h) && !title.toLowerCase().includes(h.toLowerCase())
+    && h.split(' ').every((w) => /^[\p{Lu}"'“]/u.test(w) || PARTICLE.test(w));
+  const add = (name, also = []) => {
+    const quoted = /["“]([^"”]+)["”]/.exec(name);
+    if (quoted) { also = [quoted[1], ...also]; name = name.replace(quoted[0], '').replace(/\s+/g, ' ').trim(); }
+    if (!nameLike(name) || out.some((x) => x.name === name) || out.length >= most) return;
+    const more = also.map(bare).filter((a) => a && a !== name && nameLike(a));
+    out.push(more.length ? { name, also: [...new Set(more)] } : { name });
+  };
+  lines.forEach((l, i) => {
+    const h = /^(={3,})\s*(.+?)\s*\1$/.exec(l);
+    // A character's own heading (Blindness's "The doctor's wife"), at the third level: a heading with headings straight
+    // under it is a group (a list article's "Kunugigaoka Junior High School"), and deeper ones are groups within it.
+    if (h) {
+      const [first, ...rest] = h[2].split(/\s*\/\s*/);
+      const n = bare(first);
+      if (h[1].length === 3 && !/^=/.test(next(i)) && n.length <= 48 && n.split(' ').length <= 8 && !/\d/.test(n) && !title.toLowerCase().includes(n.toLowerCase()) && !out.some((x) => x.name === n) && out.length < most) {
+        const more = rest.map(bare).filter((a) => a && nameLike(a));
+        out.push(more.length ? { name: n, also: more } : { name: n });
+      }
+      return;
+    }
+    if (/^==/.test(l) || MAKING.test(l)) return;
+    if (actorsAs && / as /.test(l) && l.length < 100) { add(bare(l.split(' as ').slice(1).join(' as '))); return; }
+    const prose = l.length > 300; // a paragraph listing people between semicolons (Alcatraz's "Bastille, Grandpa's bodyguard; ...")
+    for (const seg of prose ? l.split(/;\s+/) : [l]) {
+      const s = seg.replace(/^and\s+/, '');
+      // Where its name ends: a colon, a dash, a bracket, or a comma before "a", "an" or "the" ("Zill, a student"); in a
+      // paragraph's list, any comma.
+      const at = [/:\s/, /\s[–—-]\s/, /\s?[(（]/, prose ? /,\s/ : /,\s(?=(a|an|the)\s)/].map((r) => r.exec(s)?.index ?? -1).filter((k) => k > 0);
+      const end = at.length ? Math.min(...at) : MAKING.test(next(i)) || s.split(' ').length <= 5 ? s.length : -1;
+      if (end < 0) continue;
+      const head = s.slice(0, end).trim();
+      const [first, ...rest] = head.split(/\s*\/\s*/);
+      const nick = [...s.slice(end).matchAll(/\b(?:nicknamed|known as|called)\s+["“]?(\p{Lu}[\p{L}'’-]*(?: \p{Lu}[\p{L}'’-]*)?)/gu)].map((m) => m[1]);
+      add(first.trim(), [...rest, ...s.split(' / ').slice(1), ...nick]);
+    }
+  });
+  return out;
+}
+
+/** A characters section of a plain-text extract, level 2, as raw text with its subsections. */
+function castSection(extract) {
+  const lines = extract.split('\n');
+  const heads = [];
+  lines.forEach((l, i) => { const m = /^(={2,})\s*(.+?)\s*\1\s*$/.exec(l); if (m) heads.push({ i, level: m[1].length, title: m[2] }); });
+  const h = heads.find((x) => x.level === 2 && CAST_SECTION.test(x.title));
+  if (!h) return null;
+  const end = heads.find((x) => x.i > h.i && x.level <= 2)?.i ?? lines.length;
+  return { section: h.title, raw: lines.slice(h.i + 1, end).join('\n') };
+}
+
+async function fetchCharacters(titles) {
+  mkdirSync(CAST_CACHE, { recursive: true });
+  const { records } = JSON.parse(readFileSync('src/data/sources.json', 'utf8'));
+  for (const t of titles) {
+    const r = records.find((x) => x.title === t);
+    if (!r?.article) { console.log(`${t}: not in the catalog, or no article`); continue; }
+    const article = decodeURIComponent(r.article.split('/wiki/')[1]).replace(/_/g, ' ');
+    const page = await fetchOne(article);
+    let found = page?.extract ? castSection(page.extract) : null;
+    let from = page?.title ?? article;
+    if (!found) {
+      // No section: the work's own list article, read whole, where there is one.
+      await sleep(6_000);
+      const list = await fetchOne(`List of ${t} characters`);
+      if (list?.extract) { found = { section: 'whole article', raw: list.extract }; from = list.title; }
+    }
+    writeFileSync(join(CAST_CACHE, `${r.id.replace(':', '-')}.json`), JSON.stringify({ id: r.id, title: t, article: from, retrieved: new Date().toISOString().slice(0, 10), found }));
+    console.log(`${t}: ${found ? `${from}, ${found.section}` : 'no characters section or list'}`);
+    await sleep(6_000);
+  }
+}
+
 async function fetchAll() {
   mkdirSync(CACHE, { recursive: true });
   const { records } = JSON.parse(readFileSync('src/data/sources.json', 'utf8'));
@@ -117,12 +211,17 @@ function build() {
     // Read again from the raw section each build, so a change to storyOf needs no new fetch.
     c.story = c.found ? storyOf(c.found) : null;
     if (!c.story) continue;
-    out[c.id] = { from: 'English Wikipedia', article: c.article, link: `https://en.wikipedia.org/wiki/${encodeURIComponent(c.article.replace(/ /g, '_'))}`, licence: 'CC BY-SA 4.0', section: c.story.section, ...(c.story.parts.length ? { parts: c.story.parts } : {}), whole: c.story.whole, retrieved: c.retrieved, paragraphs: storyParagraphs(c.story.paragraphs) };
+    const k = join(CAST_CACHE, f);
+    const listed = existsSync(k) ? JSON.parse(readFileSync(k, 'utf8')) : null;
+    const names = listed?.found ? castOf(listed.found.raw, listed.title, { actorsAs: /cast/i.test(listed.found.section) }) : [];
+    const cast = names.length ? { article: listed.article, link: `https://en.wikipedia.org/wiki/${encodeURIComponent(listed.article.replace(/ /g, '_'))}`, section: listed.found.section, retrieved: listed.retrieved, names } : null;
+    out[c.id] = { from: 'English Wikipedia', article: c.article, link: `https://en.wikipedia.org/wiki/${encodeURIComponent(c.article.replace(/ /g, '_'))}`, licence: 'CC BY-SA 4.0', section: c.story.section, ...(c.story.parts.length ? { parts: c.story.parts } : {}), whole: c.story.whole, retrieved: c.retrieved, paragraphs: storyParagraphs(c.story.paragraphs), ...(cast ? { cast } : {}) };
   }
   writeFileSync('src/data/plots.json', `${JSON.stringify({ version: 1, source: 'English Wikipedia', licence: 'CC BY-SA 4.0', plots: out })}\n`);
   console.log(`${Object.keys(out).length} works with a story written to src/data/plots.json`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  if (process.argv.includes('--build')) build(); else await fetchAll();
+  const at = process.argv.indexOf('--characters');
+  if (process.argv.includes('--build')) build(); else if (at >= 0) await fetchCharacters(process.argv.slice(at + 1)); else await fetchAll();
 }

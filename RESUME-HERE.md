@@ -44,6 +44,35 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **The v6 package, "SLATE: Connected Realism" (the owner, November 13, 2026, after #88).** It is in `docs/v6/package`
+  (unchanged; MANIFEST.json hashes match). Its 48 requirements are tracked in `docs/v6/requirements.csv`
+  (`tests/v6-ledger.test.ts` fails a missing row, a status not the package's own, a cited file that doesn't exist, or a
+  verified row without a test). Work goes in the package's phase order (10-DELIVERY-AND-COVERAGE.md).
+  - *Done:* the audit (Phase A); J03, no invented people (one person is a story; no one is incomplete, one part); the
+    first slice of recorded history (Phase B): `src/engine/history.ts`, `src/data/history/awards-2026.json` (2026 Golden
+    Globes and Oscars, read from the organizers' pages), the Recorded Results card, J01 as `e2e/v6-history.spec.ts`.
+    Coverage in the package's fields: `docs/v6/HISTORY-COVERAGE.md`.
+  - *Next, in order:* V6-038 publicity (not started: a campaign the player funds before a release, a bounded effect on
+    the distributor's monthly report in `distribution.ts`, diminishing returns, never guaranteed sales); V6-008 a page
+    titled "Box Office Records" with as-of history; V6-040 television first-look scope; V6-039 reputation calibration and
+    anti-farming (J22); more recorded editions, one source page at a time; then the journeys the ledger marks unbuilt
+    (J04, J05, J06, J13, J16, J19, J21, J22).
+  - *Research rule:* organizer pages read through the fetching tool (a direct download is refused with HTTP 403); record
+    only what the page states, with its URL, title, provider and date read.
+
+- **"Those last two do those" (the owner, after #87).**
+  - *A first-look studio weighs a covered short.* Its deal covers every film, a short included (`first-look.ts covers`),
+    but `pitchRead` passed on anything not a feature first, so the deal's own studio said "Would Pass" on the short its
+    deal covered. Under a running deal its format no longer rules it out (`strategy.ts`, `PitchInput.firstLook`); genre,
+    script and record still count, so a family short gets the notes a family feature would. Another studio, or the same
+    one once the deal ends, still passes on a short. `tests/first-look.test.ts` pins it; v5-first-look still passes.
+  - *Works with one person or none: 18 and 2 became 3 and 1.* Sixteen articles list the work's people in a Characters
+    section, or in a "List of … characters" article (`node tools/sources/plots.mjs --characters "<title>" ...`, then
+    `--build`; `castOf` reads them). The brief adds them after the story's own, credits the article (and so do the
+    project's credits, `adaptation.ts creditLine`), and sets none against or beside the lead unless the story or a
+    review does. Elantris is Raoden against Hrathen, with Sarene (reviewed). Left: Marie Rogêt, Hop-o'-My-Thumb and the
+    Maelström name one person; Second Life none (`docs/v5/CHARACTERS.md`). `tests/work-cast.test.ts`.
+
 - **The four items the owner chose ("Yes, do all four, starting now.").**
   1. *Ledgers reconciled* (`249473a`). In `docs/v3/requirements.csv`, C12, S10, L04, L05, W01, D01, D02 and Z01 are done
      and verified; B03 stays partial (publicity, competition, territory results and currency aren't built); B04 and T02
@@ -182,7 +211,11 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#77 (53 stories, one for each of 53 genres that had none; a
+- **Latest merge:** montrealroots/Final-SLATE-Build#87 (adapted briefs from the story with roles reviewed by hand; the
+  owner's four items: ledgers, UI coverage 88 of 88, two pinned journeys, works with one person or none), squash-merged
+  as `b08dc04` on November 13, 2026, 19:47 UTC, with `checks` and all six journeys runs green on its final commit
+  `6389249`; `main` merged back with `-s ours`, the tree unchanged. Nothing is open on this branch.
+- **Earlier merge:** montrealroots/Final-SLATE-Build#77 (53 stories, one for each of 53 genres that had none; a
   commissioner's decision on another season reading the season's audience), squash-merged as `cd7472c` on November
   12, 2026, with `checks` and all six journeys runs green on its final commit `b98f6d4`. Before it that day: #76 as
   `7fcf9d2` (representation, a cinema run's weeks and the record book, weekly audiences, the rest of the adaptation

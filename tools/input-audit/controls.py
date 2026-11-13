@@ -249,6 +249,7 @@ c(f, '{`Your Note To ${name} (Optional)`}', R, 'writing[].passes[].text', 'Writi
 f = 'Places.tsx'
 c(f, '{f}', V, 'calendarFilters', 'the calendar', 'Which kinds of event the calendar shows')
 c(f, '"Search Events"', V)
+c('RecordBook.tsx', '"As Of"', V)  # Box Office Records as they stood at a past year's end (v6 package, 02 C); changes nothing
 c(f, '"Title"', R, 'plan.title', 'the calendar, reminders', 'A plan\'s name', U('foundation', 'Advance stops at a reminder'))
 c(f, '"Start Time"', D, 'plan.start', 'state.ts addPlan', 'When the plan starts; Advance stops for it', U('foundation', 'Advance stops at a reminder'), E('viewports', 'Advance lists the plans it will pass'))
 c(f, '"Length In Minutes"', D, 'plan.durationMin', 'production/schedule.ts planShootDays (your commitments)', 'How long you are busy', U('foundation', 'Advance stops at a reminder'))

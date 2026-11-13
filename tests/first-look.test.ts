@@ -30,7 +30,7 @@ function world(tag: string, studios: StudioProfile[]): GameState {
   throw new Error('No world with room on every slate.');
 }
 function feature(s: GameState, o: { title?: string; format?: Format; medium?: Medium; genres?: string[] } = {}): Project {
-  const p = createProject(s, { title: o.title ?? 'The Long Night', scenarioId: 'low', axes: { format: o.format ?? 'feature', medium: o.medium ?? 'live-action', targetRuntimeMin: 90 } });
+  const p = createProject(s, { title: o.title ?? 'The Long Night', scenarioId: 'low', axes: { format: o.format ?? 'feature', medium: o.medium ?? 'live-action', targetRuntimeMin: o.format === 'short' ? 10 : 90 } });
   const q = buildProject(s, { title: 'tmp', format: 'short', medium: 'live-action', runtime: 10 }, [{ name: 'Ines', patch: { roleSize: 'lead' } }], [{ place: 'Dock', chars: ['Ines'], minutes: 3 }]);
   p.characters = q.characters;
   p.scenes = q.scenes;
@@ -144,6 +144,22 @@ describe('a running deal', () => {
     expect(studioOption(s, p, FAMILY.c)!.needs).toBe('');
     // A series isn't covered, nor is anything once no deal runs.
     expect(submissionStanding(s, createProject(s, { title: 'A Series', scenarioId: 'low', axes: { format: 'series', medium: 'live-action', targetRuntimeMin: 30 } }))).toBeNull();
+  });
+
+  it('a covered short is weighed by the deal\'s studio, not turned down for being a short; another studio still is', () => {
+    const s = signed('fl-short');
+    const short = feature(s, { title: 'Last Tram', format: 'short' });
+    const theirs = studioOption(s, short, HORROR.c)!.read;
+    expect(theirs.for).toContain('Your first-look deal with it covers this short film.');
+    expect(theirs.against.join(' ')).not.toContain("isn't something it takes on");
+    expect(theirs.verdict).not.toBe('pass'); // a horror short, from a filmmaker whose horror it wanted more of
+    // Under the deal, what the studio makes still counts: a family short gets the notes a family feature would, for that,
+    // not a pass for being a short (and notes under the deal leave the film free to go elsewhere, as Sunday Best does).
+    const family = studioOption(s, feature(s, { title: 'Night Bus', format: 'short', genres: ['family'] }), HORROR.c)!.read;
+    expect([family.verdict, family.against[0], family.next]).toEqual(['notes', 'Nothing like it is in its record: its films are mostly Horror, Thriller, Drama.', 'It would read a film nearer to what it makes.']);
+    expect(studioOption(s, short, FAMILY.c)!.read.against[0]).toBe("Sunday Matinee (Fixture)'s record here is feature films. A short film isn't something it takes on.");
+    endFirstLook(s, activeFirstLook(s)!.id);
+    expect(studioOption(s, short, HORROR.c)!.read.against[0]).toBe("Night Shift Pictures (Fixture)'s record here is feature films. A short film isn't something it takes on.");
   });
 
   it('puts development money into a covered film; repaid once from another studio\'s money when it takes a film the first look passed on', () => {

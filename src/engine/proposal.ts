@@ -262,7 +262,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const unrecorded = named0.filter((x) => !recorded.some((r) => isThem(r.name, x)));
   // A group recorded as a character ("Brides of Dracula") doesn't take a word from a person's name.
   const allNames = [...recorded.filter((c) => !/group/i.test(c.kind ?? '')).map((c) => c.name), ...unrecorded.map((x) => x.name)];
-  type Candidate = { name: string; gender?: string; kind?: string; sitelinks?: number; fromStory?: true; n: number };
+  type Candidate = { name: string; gender?: string; kind?: string; sitelinks?: number; fromStory?: true; fromCast?: true; n: number };
   const candidates: Candidate[] = [
     // A recorded character the story calls by another name is shown by that name, as the story uses it far more (the record
     // has "Alonso Quijano"; the story is about Don Quixote), and counted by it.
@@ -276,6 +276,12 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   // One person recorded twice under the same name (Death Note's L) is one person.
   for (let k = candidates.length - 1; k >= 0; k--) if (candidates.findIndex((c) => c.name === candidates[k].name) < k) candidates.splice(k, 1);
   candidates.sort((a, b) => b.n - a.n || Number(!!a.fromStory) - Number(!!b.fromStory) || (b.sitelinks ?? 0) - (a.sitelinks ?? 0) || at(a.name) - at(b.name) || a.name.localeCompare(b.name));
+  // The people the article lists, for a work whose story names too few (sources.ts WorkCast; from November 13, 2026, when
+  // 18 works had one person and 2 none): Rip Van Winkle's Dame Van Winkle, Elantris's Raoden. In the list's order, after
+  // the record's and the story's own, and none who is already here under a name of theirs (Persepolis's Marjane is Marji).
+  // Two full names that share a word are two people (Tushan Susu and Tushan Yaya, Rip Van Winkle and his son).
+  const listed = w.plot?.cast;
+  for (const x of listed?.names ?? []) if (!candidates.some((c) => [x.name, ...(x.also ?? [])].some((n) => n.toLowerCase() === c.name.toLowerCase() || (!(n.includes(' ') && c.name.includes(' ')) && sameAs(n, c.name))))) candidates.push({ name: x.name, fromCast: true, n: 0 });
   // The reviewed roles (ROLE_REVIEW): names that aren't people out; the lead, the one against them and the one beside
   // them in the first three places, kept whatever the room. A reviewed name the story uses but the reading missed joins.
   const review = ROLE_REVIEW[w.title];
@@ -295,22 +301,21 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const chosen = candidates.slice(0, room);
   if (candidates.length > room) notes.push(`${w.title} ${unrecorded.length ? `has ${candidates.length} characters, recorded or named in its story` : `records ${candidates.length} characters`}. A ${tv ? 'season' : minutes <= 25 ? 'short' : 'film'} can carry about ${room}, so the proposal keeps ${chosen.map((c) => c.name).join(', ')} and leaves the others for you to add back.`);
   const used = new Set<string>();
-  type Who = { key: string; name: string; gender?: string; kind?: string; recorded: boolean; fromStory?: true };
-  const people: Who[] = chosen.map((c) => ({ key: key(c.name, used), name: c.name, gender: c.gender, kind: c.kind, recorded: true, ...(c.fromStory ? { fromStory: true as const } : {}) }));
-  // Too few recorded: the missing parts are named for what they do, for the player to name.
-  const PARTS = ['The Lead', 'The Rival', 'The Ally'];
-  // Only where the work has no one at all are all three parts named for what they do. One with two people or more (The
-  // Cask of Amontillado's Montresor and Fortunato) has them and no others: until November 13, 2026 a third, "The Ally",
-  // was invented to fill the outline's template.
-  // A brief needs two people and what is between them (blueprints.ts), so a work with one has the second part named.
-  if (!people.length) for (const part of PARTS.slice(0, Math.min(3, room))) people.push({ key: key(part, used), name: part, recorded: false });
-  else if (people.length === 1) people.push({ key: key(PARTS[1], used), name: PARTS[1], recorded: false });
+  type Who = { key: string; name: string; gender?: string; kind?: string; recorded: boolean; fromStory?: true; fromCast?: true };
+  const people: Who[] = chosen.map((c) => ({ key: key(c.name, used), name: c.name, gender: c.gender, kind: c.kind, recorded: true, ...(c.fromStory ? { fromStory: true as const } : {}), ...(c.fromCast ? { fromCast: true as const } : {}) }));
+  // No one invented to fill a template (the owner's v6 package, J03, November 13, 2026): a work with one person has that
+  // one, and the brief says the story identifies no one else. Until then a second part, "The Rival", was added, and a
+  // work with no one at all had three parts named for what they do; it now has one, The Lead, and the brief says its
+  // people are incomplete until the player names them from the work.
+  if (!people.length) people.push({ key: key('The Lead', used), name: 'The Lead', recorded: false });
+  if (people.length === 1 && people[0].recorded) notes.push("This story doesn't identify another character. You can add one or continue.");
   origin.characters = people.some((p) => p.recorded) ? 'sourced' : 'unknown';
   const takenFromStory = people.filter((p) => p.fromStory).map((p) => p.name);
+  const takenFromList = people.filter((p) => p.fromCast).map((p) => p.name);
+  const listedNote = takenFromList.length ? ` ${takenFromList.length === 1 ? `${takenFromList[0]} is` : `${takenFromList.slice(0, -1).join(', ')} and ${takenFromList.at(-1)} are`} listed in ${listed!.section === 'whole article' ? '' : `the ${listed!.section} section of `}the English Wikipedia article "${listed!.article}" (${w.plot!.licence}), though its story doesn't name them often enough to take. Their pronouns aren't recorded, so the brief says "they" until you set them.` : '';
   const readNote = takenFromStory.length ? ` ${takenFromStory.length === 1 ? `${takenFromStory[0]} is` : `${takenFromStory.slice(0, -1).join(', ')} and ${takenFromStory.at(-1)} are`} named in its story but not recorded, so taken from it. Their pronouns aren't recorded, so the brief says "they" until you set them.` : '';
-  if (!people.some((p) => p.recorded)) why.characters = `No characters are recorded for ${w.title}, and its story names none often enough to take. The three parts an outline needs are named for what they do; name them from the work.`;
-  else if (people.some((p) => !p.recorded)) why.characters = `${w.title} ${recorded.length ? `records ${recorded.length === 1 ? 'one character' : `${recorded.length} characters`}` : 'records no characters'}${takenFromStory.length ? `, and its story names ${takenFromStory.length === 1 ? 'one more' : `${takenFromStory.length} more`}` : ''}; the other parts are named for what they do.${readNote}`;
-  else if (takenFromStory.length) why.characters = `${recorded.length ? 'Some names are recorded.' : `No characters are recorded for ${w.title}.`}${readNote} Who leads is proposed from the story: the one it names most. Who stands against them and who beside them come from what the story has them do together.`;
+  if (!people.some((p) => p.recorded)) why.characters = `No characters are recorded for ${w.title}, and neither its story nor its article names any. Its people are incomplete: the one part, The Lead, is named for what it does, for you to name from the work.`;
+  else if (takenFromStory.length || takenFromList.length) why.characters = `${recorded.length ? 'Some names are recorded.' : `No characters are recorded for ${w.title}.`}${readNote}${listedNote} Who leads is proposed from the story: the one it names most. Who stands against them and who beside them come from what the story has them do together.`;
   else why.characters = storyText
     ? 'The names are recorded. Who leads is proposed from the story: the one it names most. Who stands against them and who beside them come from what the story has them do together.'
     : 'The names are recorded. Who leads, and what each wants, are proposed: the record does not say who leads, so the ones most written about come first.';
@@ -429,9 +434,11 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   // Where the story is read and sets no one against the lead, nobody is made their antagonist: the next person named is
   // only that, and what stands in the way is the lead's own (November 13, 2026; until then Moby-Dick set Ahab against
   // Queequeg, and Nineteen Eighty-Four Winston against Julia, for being named most after them).
-  const opposed = !!rival && (reviewed(review, 'against') ? !!review!.against : !reading || !!reading.rival || !rival.recorded); // a part named for what it does is that part
+  // A person the article only lists (fromCast) is set against or beside the lead by a review, never by default: the story
+  // doesn't show them doing either (until November 13, 2026, Uramichi's co-host stood against him for being listed second).
+  const opposed = !!rival && (reviewed(review, 'against') ? !!review!.against : (!reading && !rival.fromCast) || !!reading?.rival || !rival.recorded); // a part named for what it does is that part
   // The same for an ally: Polonius was Hamlet's for being named third (until November 13, 2026).
-  const befriended = !!ally && (reviewed(review, 'ally') ? !!review!.ally : !reading || !!reading.ally || !ally.recorded);
+  const befriended = !!ally && (reviewed(review, 'ally') ? !!review!.ally : (!reading && !ally.fromCast) || !!reading?.ally || !ally.recorded);
   if (!opposed && (matrix.opposition === 'person' || matrix.opposition === 'rival')) matrix = { ...matrix, opposition: 'self' };
   const say = (t: string, who: Who = lead) => t.replace(/\{(they|them|their|theirs|themselves)\}/g, (_, w: string) => PRONOUN_WORDS[pronounsOf(who.gender)][w]);
   const [choiceA, choiceB] = CHOICE[matrix.dilemma].map((x) => say(x));
@@ -679,7 +686,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     } : {}),
     review: { status: 'authored', at: 'proposed', note: `Proposed from ${w.title} (${w.id}).` },
     line: 0,
-    origin: { kind: 'source', workId: w.id, title: w.title, approach: i.approach, ...(told ? { story: { article: plot!.article, link: plot!.link, section: plotSection(plot!), licence: plot!.licence } } : {}) },
+    origin: { kind: 'source', workId: w.id, title: w.title, approach: i.approach, ...(told ? { story: { article: plot!.article, link: plot!.link, section: plotSection(plot!), licence: plot!.licence } } : {}), ...(takenFromList.length ? { cast: { article: listed!.article, link: listed!.link, section: listed!.section, licence: w.plot!.licence } } : {}) },
   };
   if (tv) {
     for (const k of ['series.engine', 'series.arc', 'series.episodes', 'series.changes', 'series.recurring']) origin[k] = 'proposed';

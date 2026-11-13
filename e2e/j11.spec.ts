@@ -122,9 +122,9 @@ test('J11: the records to their end, the world after them simulated and labelled
 
   // The record book: the film once, its lifetime the weeks' sum.
   const lifetime = `Lifetime ${dollars(offer.reported.gross * 2)} (1st)`;
-  const book = async () => { await nav(page, 'Profile'); return card(page, 'Record Book'); };
+  const book = async () => { await nav(page, 'Profile'); return card(page, 'Box Office Records'); };
   let rb = await book();
-  await expect(rb).toContainText('Simulated by the game, and only what happened in this story: no real box office is in this book.');
+  await expect(rb).toContainText('Simulated by the game, and only what happened in this story: no real box office is in these records.');
   await expect(rb.getByRole('listitem').filter({ hasText: 'The Long Night' })).toHaveCount(1);
   await expect(rb.getByRole('listitem').filter({ hasText: 'The Long Night' })).toContainText(`Opening week ${dollars(weeks[0].rental * 2)} (1st). ${lifetime}`);
 
