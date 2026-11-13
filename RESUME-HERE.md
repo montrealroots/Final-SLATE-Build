@@ -28,10 +28,10 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     - A TV week's slot, season and competition (`audiences.ts`).
     - The record book's money kept apart.
     - A grade for everyone the player can hire, with what it is made of (`grades.ts`, on the hiring list).
+  - **2. Production tailored.** A schedule preview, work by format, and a test that quality isn't bought.
 - **Next, in order.**
-  1. 2, production previews.
-  2. 10 and 11, phone parity and the ten journeys.
-  3. The final report.
+  1. 10 and 11, phone parity and the ten journeys.
+  2. The final report.
 - **The story re-fetch is done.** `src/data/plots.json` was rebuilt from `.sources-cache/plots2`. A section that mixes
   the story with something else keeps only its story parts, and 47 works are narrowed that way. Tower of God keeps its
   world parts: it has no plot part.

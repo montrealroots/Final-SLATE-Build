@@ -67,6 +67,9 @@ describe('weather on a shoot day (SLATE-12-04)', () => {
     const p = buildProject(s, { title: 'Wet Streets', format: 'short', medium: 'live-action', scenario: 'micro', runtime: 12 }, [{ name: 'Ada', patch: { roleSize: 'lead' } }],
       Array.from({ length: 4 }, (_, i) => ({ place: `Street ${i + 1}`, intExt: 'EXT' as const, time: 'DAY' as const, chars: ['Ada'], minutes: 2 })));
     approve(s, p);
+    // Labelled fixture: money enough for every day, so a lost day is the weather's. From November 13, 2026 a short's editor
+    // also makes its festival screener (production/tasks.ts), and the micro budget alone fell a day short.
+    p.funding.fund += 5_000;
     castAll(s, p);
     staffAll(s, p);
     for (let i = 0; i < 8; i++) { manage(s, p); processUntil(s, s.now + DAY, 'tick', 100000); }

@@ -108,17 +108,19 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   expect(taken.audience.length).toBeGreaterThan(1);
   expect(new Set(taken.audience.map((a: { episode?: number }) => a.episode)).size).toBeGreaterThanOrEqual(2);
   expect(decided.renewal.reason).toContain('Audience figures are simulated.');
-  // Seed 2, as played here: a broadcaster, and a renewal. Recorded so a change in either is seen, not absorbed. (Seed 1
-  // until November 13, 2026, when Portal's story gave the season more scenes and the draws moved; a cancellation until
-  // later that day, when the story kept only the article's Plot part and the season it made held its audience.)
-  expect([offer.route, decided.renewal.outcome]).toEqual(['broadcast', 'renewed']);
+  // Seed 2, as played here: a broadcaster. Until November 13, 2026 the journey also recorded the decision (a cancellation,
+  // then a renewal, then a cancellation again as the story, the series' own work and each week's competition moved the
+  // figures). A recorded outcome caught every upstream change but not a wrong one, so the journey now checks the rule
+  // itself: the decision follows from the audience reported, against the bar the reason names.
+  expect(offer.route).toBe('broadcast');
   // The decision is the audience the broadcaster reported (audiences.ts seasonAudience): its first showing against the
   // bar, and the share it kept from one episode to the next against 88%. A season that met both would be renewed.
   const shown = taken.audience.filter((a: { metric: string; episode?: number }) => a.metric === 'viewers' && a.episode !== undefined).sort((a: { episode: number }, b: { episode: number }) => a.episode - b.episode);
   const kept = Math.round((shown.at(-1).value / shown[0].value) * 100);
   expect(decided.renewal.reason).toContain(`drew an average audience of ${shown[0].value.toLocaleString('en-US')}`);
   expect(decided.renewal.reason).toContain(`it kept ${kept}% of its audience from one episode to the next, against 88%`);
-  expect(kept).toBeGreaterThanOrEqual(88); // a season that kept less would have been cancelled
+  const bar = Number(/against the ([\d,]+) a commissioner looks for/.exec(decided.renewal.reason)![1].replace(/,/g, ''));
+  expect(decided.renewal.outcome).toBe(shown[0].value >= bar && shown.at(-1).value / shown[0].value >= 0.88 ? 'renewed' : 'cancelled'); // unrounded, as the engine compares it
   await open(page, 'Release');
   const earned = card(page, 'Earnings');
   const weeks = new Set(taken.audience.map((x: { week: number }) => x.week)).size;

@@ -342,6 +342,42 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   return { tasks: p.tasks.length, shootDays: planned.length, firstDay: startDate, lastShootDay: planned[planned.length - 1]?.date ?? null };
 }
 
+/**
+ * What building the schedule from this date would do, before it is done (the owner's v5 brief, 2: "Preview consequences
+ * before approving a plan"; November 13, 2026). The plan is built on a copy of the game, so nothing in the real one
+ * changes: the same rules give the same answer, or the same refusal, with its reason.
+ */
+export interface PlanPreview {
+  ok: boolean;
+  reason?: string;
+  tasks: number;
+  /** Tasks whose work is already done, kept as they are. */
+  kept: number;
+  shootDays: number;
+  firstShootDay: string | null;
+  lastShootDay: string | null;
+  /** Money the plan sets aside for its shoot days and materials, and what is left uncommitted after it. */
+  reserved: number;
+  leftAfter: number;
+}
+export function previewPlan(state: GameState, p: Project, startDate: string): PlanPreview {
+  const copy = structuredClone(state);
+  const q = copy.projects.find((x) => x.id === p.id)!;
+  const before = q.obligations.filter((o) => o.ref === 'plan:shoot' || o.ref === 'plan:materials').reduce((a, o) => a + Math.max(0, o.amount - o.settled), 0);
+  try {
+    const r = generatePlan(copy, q, startDate);
+    const live = q.obligations.filter((o) => (o.ref === 'plan:shoot' || o.ref === 'plan:materials') && (o.state === 'reserved' || o.state === 'committed'));
+    const shoot = q.schedule.days.filter((d) => d.status === 'scheduled').map((d) => d.date).sort();
+    return {
+      ok: true, tasks: r.tasks, kept: q.tasks.filter((t) => t.status === 'done').length, shootDays: r.shootDays,
+      firstShootDay: shoot[0] ?? null, lastShootDay: shoot[shoot.length - 1] ?? null,
+      reserved: live.reduce((a, o) => a + Math.max(0, o.amount - o.settled), 0) - before, leftAfter: ledgerTotals(q).available,
+    };
+  } catch (e) {
+    return { ok: false, reason: (e as Error).message, tasks: 0, kept: 0, shootDays: 0, firstShootDay: null, lastShootDay: null, reserved: 0, leftAfter: ledgerTotals(p).available };
+  }
+}
+
 export function ensureAssets(p: Project): void {
   const chars = approvedCharacters(p);
   const keep = new Map(p.assets.map((a) => [a.id, a]));

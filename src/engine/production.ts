@@ -13,7 +13,7 @@ import { syncMusicTasks } from './song-actions';
 
 export { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, DAY_COST_SCALE, EQUIPMENT_PER_DAY, HOLIDAY_PREMIUM, LOCATION_FEE_PER_DAY, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO, dayFees, housePackageFee } from './production/rates';
 export { buildTasks } from './production/tasks';
-export { ensureWorkEvent, generatePlan, groupShootDays, isWorkingDay, nextWorkingDay, planShootDays, sceneComplexity, sceneLoad, type ShootDayGroup } from './production/schedule';
+export { ensureWorkEvent, generatePlan, previewPlan, groupShootDays, isWorkingDay, nextWorkingDay, planShootDays, sceneComplexity, sceneLoad, type ShootDayGroup, type PlanPreview } from './production/schedule';
 export { depsMet, materialCost, playerDoes, puppetStatus, runWorkDay, teamFor } from './production/workday';
 export { addDialogueReplacement, keepWeatherPlan, moveShootDay, runShootDay, schedulePickups, swapWithInteriorDay } from './production/shoot';
 export type { PlanResult } from './production/schedule';

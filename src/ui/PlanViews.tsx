@@ -10,7 +10,7 @@ import { getPlace } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
 import {
   BACKERS, EXPERIENCE, betterTerms, COUNTER_DAYS, type BetterTerm, assignEpisodeRole, backerDocuments, moneyKept, ownMoney, ownMoneyNotes, OWN_MONEY, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
-  coachingNeeded, dateKey, declineCounter, estimateDays, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
+  coachingNeeded, dateKey, declineCounter, estimateDays, forecast, formatDateKey, generatePlan, previewPlan, type PlanPreview, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
   type StaffingProposal, covers, fundingScenario,
@@ -646,6 +646,7 @@ export function ScheduleTab({ p }: { p: Project }) {
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
         {p.delivered && <p className="dim">This project has been delivered; its schedule is final.</p>}
         {!p.delivered && approvedScenes(p).some((s) => sceneTechnique(p, s) === 'live') && <p className="dim">About {plural(estimatedShootDays(p, g), 'shoot day')}, each about {money(dayFees(p).location + dayFees(p).equipment)} for the location and equipment, reserved when the schedule is built.</p>}
+        <SchedulePreview p={p} start={start} />
         <button className="btn btn-primary" disabled={!!p.delivered} onClick={() => setErr(store.act((s) => void generatePlan(s, p, start)))}>{p.schedule.startDate ? 'Rebuild Schedule' : 'Build Schedule'}</button>
         {p.schedule.startDate && <p className="dim">Rebuilding keeps finished work and moves only what hasn't happened yet.</p>}
       </section>
@@ -1205,6 +1206,30 @@ export function GuideMeStanding({ p, dept }: { p: Project; dept: string }) {
       <p>{done ? (m.ended === 'done' ? (dept === CAST ? 'Guide Me cast the parts it was given' : dept === WRITING ? 'Guide Me finished the writing it was given' : `Guide Me staffed ${dept}`) : `Guide Me stopped`) : dept === CAST ? 'Guide Me is casting' : dept === WRITING ? 'Guide Me is writing' : 'Guide Me is staffing this department'}: {money(mandateCommitted(p, m))} of the {money(m.ceiling)} ceiling committed{out ? `, ${plural(out, 'offer')} out` : ''}. Approved {longLocal(m.approvedAt, getPlace(p.axes.basePlaceId).zone).date}{done ? `; ended ${longLocal(m.endedAt!, getPlace(p.axes.basePlaceId).zone).date}` : ''}.</p>
       {m.told.length > 0 && <><p><strong>Returned to you:</strong></p><ul>{m.told.map((t) => <li key={t}>{t}</li>)}</ul></>}
       {!done && <button className="btn btn-sm" onClick={() => void store.act((s) => endGuideMe(s, s.projects.find((x) => x.id === p.id)!, dept))}>Back To Manual</button>}
+    </div>
+  );
+}
+
+/** What building the schedule from this date would do, worked out before it is done (production/schedule.ts previewPlan). */
+function SchedulePreview({ p, start }: { p: Project; start: string }) {
+  const g = useGame();
+  const [shown, setShown] = useState<PlanPreview | null>(null);
+  if (p.delivered) return null;
+  return (
+    <div className="stack">
+      <button className="btn" onClick={() => setShown(previewPlan(g, p, start))}>Preview The Schedule</button>
+      {shown && (
+        <div role="region" aria-label="Schedule Preview" className="callout">
+          {shown.ok ? (
+            <ul className="list">
+              <li className="list-item">{plural(shown.tasks, 'task')}{shown.kept ? `, of which ${shown.kept} already done and kept` : ''}.</li>
+              <li className="list-item">{shown.shootDays ? `${plural(shown.shootDays, 'shoot day')}, ${formatDateKey(shown.firstShootDay!)} to ${formatDateKey(shown.lastShootDay!)}.` : 'No live-action shoot days.'}</li>
+              <li className="list-item">{money(shown.reserved)} set aside for shoot days and materials; {money(shown.leftAfter)} left uncommitted after it.</li>
+            </ul>
+          ) : <p>{shown.reason}</p>}
+          <p className="dim small">Nothing is booked or reserved until you build it.</p>
+        </div>
+      )}
     </div>
   );
 }

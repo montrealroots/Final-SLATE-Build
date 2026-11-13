@@ -126,8 +126,12 @@ test('writing by Guide Me: a co-writer\'s rewrite and a script editor\'s polish,
   // Days pass: offers answered, the rewrite worked and reviewed, then the polish; each day of it paid.
   for (let i = 0; i < 40 && !/^Guide Me finished the writing/.test(await box.innerText()); i++) { await advance(page, 'next-day'); await section(page, 'Crew'); }
   await expect(box).toContainText(/^Guide Me finished the writing it was given: \$[\d,]+ of the \$[\d,]+ ceiling committed\./);
-  const saved = (await readSavedState(page)).projects[0];
-  const jobs = saved.writing as { scope: string; status: string; passes: { read?: number; done: number }[] }[];
+  // The save is written a moment after the screen updates: read it once it holds the finished writing (no pass still being
+  // worked or waiting for an answer). Read at once, the production build's save could still be a day behind.
+  type Job = { scope: string; status: string; passes: { read?: number; done: number }[] };
+  const settled = (js: Job[] | undefined) => !!js?.length && js.every((j) => j.status !== 'offered' && j.status !== 'working' && j.status !== 'delivered');
+  await expect.poll(async () => settled((await readSavedState(page))?.projects?.[0]?.writing), { timeout: 30_000 }).toBe(true);
+  const jobs = (await readSavedState(page)).projects[0].writing as Job[];
   // Either both passes were accepted at the standard, or the rewrite came back to the player and the polish with it.
   const rewrite = jobs.find((j) => j.scope === 'rewrite')!;
   if (rewrite.status === 'accepted') expect(jobs.map((j) => j.scope).sort()).toEqual(['polish', 'rewrite']);
