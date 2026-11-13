@@ -1,0 +1,11 @@
+Implement the attached SLATE-Researched-World-v7 package in montrealroots/Final-SLATE-Build. Use one agent, no subagents or parallel agents. Read 00-START-HERE.md, 01-RESEARCH-FINDINGS.md, the integration/coverage documents, structured data and inherited specification before editing.
+
+Research has been done here: use the source-linked findings and provided decisions. Do not restart broad brainstorming or repeat every search. Do not treat research coverage as complete where 03-COVERAGE-AND-UNRESOLVED.md says otherwise. Keep missing factual questions in a precise return-to-research list for ChatGPT. Use existing authenticated catalog access to execute the documented imports without exposing secrets.
+
+Inspect latest main, PRs and CI. Reconcile existing work, preserve saves and owner edits, and extend existing engines rather than duplicate them. Start by correcting the source-autofill identity/role problems and connecting the researched release routes; then integrate historical event availability, compatible metrics, edition-specific partial rule checks, method-specific production dependencies, reputation and film/TV first-look obligations. Retain all 48 inherited requirements as scope, not proof of completion.
+
+The reference code is tested illustrative logic, not a drop-in replacement for the app. Port equivalent behavior into the existing stack with tests. Run the packet tests first. Keep incomplete eligibility rules tri-state; no missing rule may become automatic approval. Never infer missing history, rates, rights, nominees or recipients.
+
+Use the 22 inherited journeys plus reference/test_reference.py cases. Verify actual UI actions change money, schedules, contracts, credits and reputation. Inspect desktop/phone layouts. Do not weaken CI or declare physical-device testing from emulation. The latest owner phone preference governs, with reachable/readable controls.
+
+Commit tested sections and push a reviewable PR. Merge only after required checks pass and review/conflict requirements are satisfied. Report exact SHA, CI, actual imported coverage, source/metric/date limits, factual vs simulated behavior, verification evidence and outstanding research questions. Do not claim the entire catalog/year/all awards are loaded from the small reference datasets supplied here.

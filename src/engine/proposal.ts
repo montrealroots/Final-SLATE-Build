@@ -25,6 +25,7 @@ import { PURPOSE, ROLE_LABELS, WORD, episodeBreaks, sceneLook, storyPeople, stor
 import { plotSection, type SourceWork } from './sources';
 import { recordGenres, storyGenres } from './story-genre';
 import roleReview from '../data/role-review.json';
+import sourceCorrections from '../data/source-corrections.json';
 import type { AdaptationApproach, Format, GameState, Project } from './types';
 
 export type FieldOrigin = 'sourced' | 'proposed' | 'unknown';
@@ -173,8 +174,20 @@ export const sceneMinutes = (total: number, n: number) => Math.max(0.25, Math.mi
  * Who leads, who stands against them and who beside them, reviewed by hand where the reading gets it wrong
  * (src/data/role-review.json, from November 13, 2026). null: no such part. drop: names that aren't people.
  */
-export interface RoleReview { lead?: string; against?: string | null; ally?: string | null; drop?: string[] }
+export interface RoleReview { lead?: string; against?: string | null; ally?: string | null; drop?: string[]; /** Co-leads, each a protagonist (a source correction's viewpoint characters). */ leads?: string[] }
 export const ROLE_REVIEW = (roleReview as { works: Record<string, RoleReview> }).works;
+/**
+ * A work's source facts corrected from its publisher and author where the reading of its story was wrong (the owner's v7
+ * package, decision 7; src/data/source-corrections.json). canon is theirs; proposed is SLATE's own design, never the work's.
+ */
+export interface SourceCorrection {
+  author: string; coverage: string;
+  sources: { id: string; url: string; title: string; provider: string; retrieved: string }[];
+  canon: { viewpoint_characters: { name: string; description: string }[]; places: string[]; structure: string };
+  proposed: { status: string; logline: string };
+  missing: string[];
+}
+export const CORRECTIONS = (sourceCorrections as unknown as { works: Record<string, SourceCorrection> }).works;
 
 /** Words that come before a name and are not it: "Prince Hamlet" is Hamlet, "Captain Ahab" Ahab. */
 const TITLES = new Set(['Prince', 'Princess', 'King', 'Queen', 'Count', 'Countess', 'Captain', 'Mr', 'Mr.', 'Mrs', 'Mrs.', 'Ms', 'Miss', 'Dr', 'Dr.', 'Doctor', 'Lady', 'Lord', 'Sir', 'Dame', 'Professor', 'Father', 'Mother', 'Sister', 'Brother', 'Uncle', 'Aunt', 'Baron', 'Baroness', 'Duke', 'Duchess', 'Emperor', 'Empress', 'General', 'Colonel', 'Major', 'Lieutenant', 'Sergeant', 'Private', 'Agent', 'Detective', 'Inspector', 'Saint', 'Don', 'Madame', 'Monsieur', 'Herr', 'Frau', 'Little', 'Old', 'Young']);
@@ -284,11 +297,20 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   for (const x of listed?.names ?? []) if (!candidates.some((c) => [x.name, ...(x.also ?? [])].some((n) => n.toLowerCase() === c.name.toLowerCase() || (!(n.includes(' ') && c.name.includes(' ')) && sameAs(n, c.name))))) candidates.push({ name: x.name, fromCast: true, n: 0 });
   // The reviewed roles (ROLE_REVIEW): names that aren't people out; the lead, the one against them and the one beside
   // them in the first three places, kept whatever the room. A reviewed name the story uses but the reading missed joins.
-  const review = ROLE_REVIEW[w.title];
+  // A source correction (CORRECTIONS) names the work's viewpoint characters as its publisher and author give them: each
+  // leads, the reading's names for them become theirs ("Prince Raoden" is Raoden), and no one is set against or beside
+  // them, which is the adaptation's to decide (the v7 package: "do not force Hoid as lead or flatten Hrathen").
+  const correction = CORRECTIONS[w.title];
+  const viewpoints = correction?.canon.viewpoint_characters.map((x) => x.name) ?? [];
+  for (const nm of viewpoints) {
+    const k = candidates.findIndex((c) => c.name === nm || sameAs(c.name, nm));
+    if (k >= 0) candidates[k] = { ...candidates[k], name: nm }; else candidates.push({ name: nm, n: 0 });
+  }
+  const review: RoleReview | undefined = correction ? { ...ROLE_REVIEW[w.title], lead: viewpoints[0], against: null, ally: null, leads: viewpoints } : ROLE_REVIEW[w.title];
   const reviewed = (r: RoleReview | undefined, f: 'lead' | 'against' | 'ally') => r !== undefined && r[f] !== undefined;
   if (review) {
     for (const d of review.drop ?? []) { const k = candidates.findIndex((c) => c.name === d); if (k >= 0) candidates.splice(k, 1); }
-    ([review.lead, review.against, review.ally] as (string | null | undefined)[]).forEach((nm, slot) => {
+    ([...(review.leads ?? [review.lead]), review.against, review.ally] as (string | null | undefined)[]).forEach((nm, slot) => {
       if (!nm) return;
       let k = candidates.findIndex((c) => c.name === nm);
       if (k < 0 && storyText.includes(nm)) { candidates.push({ name: nm, fromStory: true, n: 0 }); k = candidates.length - 1; }
@@ -319,7 +341,8 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   else why.characters = storyText
     ? 'The names are recorded. Who leads is proposed from the story: the one it names most. Who stands against them and who beside them come from what the story has them do together.'
     : 'The names are recorded. Who leads, and what each wants, are proposed: the record does not say who leads, so the ones most written about come first.';
-  if (review && (review.lead !== undefined || review.against !== undefined || review.ally !== undefined)) why.characters = `${why.characters ?? ''} Who leads, and who stands against or beside them, were reviewed by hand for ${w.title}.`.trim();
+  if (correction) why.characters = `${viewpoints.slice(0, -1).join(', ')} and ${viewpoints.at(-1)} are ${w.title}'s viewpoint characters, as ${correction.sources.map((x) => x.provider).join(' and ')} describe it: each leads, and who stands against whom is yours to decide, so no one is set as an antagonist or ally. It isn't the whole cast: ${correction.missing.join(', ')} aren't recorded.`;
+  else if (review && (review.lead !== undefined || review.against !== undefined || review.ally !== undefined)) why.characters = `${why.characters ?? ''} Who leads, and who stands against or beside them, were reviewed by hand for ${w.title}.`.trim();
   // A work with one or two people has no rival or ally to name: those parts are absent, not invented.
   let lead = people[0];
   let rival = people[1] as Who | undefined;
@@ -464,8 +487,10 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   // A connective that leans on what came before ("Meanwhile, Cassius attempts…") is taken off; the sentence stands.
   const unlean = (x: string) => { const t = x.replace(/^(Meanwhile|Later|Then|Afterwards?|Soon|Eventually|Finally|However|Next|Elsewhere|Subsequently|Thereafter),\s+/, ''); return t.charAt(0).toUpperCase() + t.slice(1); };
   const told0 = inciting ? [inciting.key, inciting.sentences[0]].map(unlean).find(alone) : undefined;
-  const logline = told0 ?? fill(`${where}, {lead} must {goal} against {against}, and choose between {choiceA} and {choiceB}.`);
+  // A correction's logline is SLATE's own design (its status says so), used where the story doesn't tell one.
+  const logline = told0 ?? correction?.proposed.logline ?? fill(`${where}, {lead} must {goal} against {against}, and choose between {choiceA} and {choiceB}.`);
   origin['story.logline'] = told0 ? 'sourced' : 'proposed';
+  if (!told0 && correction) why['story.logline'] = `SLATE's own proposal for an adaptation of ${w.title}, written from ${correction.sources.map((x) => x.provider).join(' and ')}'s account of its viewpoint characters: not the book's words.`;
   if (origin['story.logline'] === 'sourced') why['story.logline'] = `The event that sets the story going${opensOnIt ? ', which it opens on' : ''}, as ${credit} tells it.`;
   // A premise is story. A sentence about sales or standing (best-selling, copies sold, of all time) is left out of it:
   // the game names no list, metric, year or territory for such a claim (the v4 package; ledger V4-003.05).
@@ -507,7 +532,8 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   // ---- People.
   const char = (p: Who, n: number): BlueprintCharacter => {
     // By who they are, not where they stand in the list (a work of two can have its second beside the lead).
-    const role = n === 0 ? 'lead' : p === rival && opposed ? 'antagonist' : p === ally && befriended ? 'ally' : 'supporting';
+    const co = n === 0 || !!review?.leads?.includes(p.name); // a co-lead (a correction's viewpoint character) leads too
+    const role = co ? 'lead' : p === rival && opposed ? 'antagonist' : p === ally && befriended ? 'ally' : 'supporting';
     const T: Record<string, Omit<BlueprintCharacter, 'key' | 'name' | 'size' | 'functions' | 'entity' | 'pronouns' | 'age'>> = {
       lead: { wants: 'to {goal}', motivation: 'What {against} would take from {them}', obstacle: opposed ? '{rival}, and {their} own doubt' : '{their} own doubt', contradiction: `Wants ${choiceA} and keeps choosing ${choiceB}`, arc: `From reacting to {against} to choosing between ${choiceA} and ${choiceB}`, voice: 'Proposed: set from the work', look: 'Proposed: set from the work' },
       antagonist: { wants: 'what {lead} is trying to stop', motivation: 'A reason of {their} own that the story must make clear', obstacle: '{lead}', contradiction: 'Right about something that matters', arc: 'From certainty to the moment {lead} proves {them} wrong, or right', voice: 'Proposed: set from the work', look: 'Proposed: set from the work' },
@@ -516,7 +542,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     };
     const t = T[role];
     return {
-      key: p.key, name: p.name, size: n === 0 ? 'lead' : n < 3 ? 'supporting' : 'featured', functions: n === 0 ? ['protagonist'] : p === rival && opposed ? ['antagonist'] : p === ally && befriended ? ['ally'] : ['none'],
+      key: p.key, name: p.name, size: co ? 'lead' : n < 3 ? 'supporting' : 'featured', functions: co ? ['protagonist'] : p === rival && opposed ? ['antagonist'] : p === ally && befriended ? ['ally'] : ['none'],
       entity: entityOf(p.kind), pronouns: pronounsOf(p.gender), age: '-',
       // Each character's words are in that character's own pronouns; {lead}, {goal} and the rest are still the lead's.
       wants: fill(t.wants, n ? p : lead), motivation: fill(t.motivation, n ? p : lead), obstacle: fill(t.obstacle, n ? p : lead), contradiction: fill(t.contradiction, n ? p : lead), arc: fill(t.arc, n ? p : lead), voice: t.voice, look: t.look,

@@ -1,0 +1,110 @@
+[
+  {
+    "id": "calendar:1",
+    "organization": "Oscars",
+    "event": "nomination_announcement",
+    "event_date": "2026-01-22",
+    "source_id": "AW02",
+    "time_of_day": null,
+    "timezone": null,
+    "precision": "day",
+    "knowledge_available_on": null,
+    "publication_policy": "Do not expose as pre-announced before an independently established publication date."
+  },
+  {
+    "id": "calendar:2",
+    "organization": "Oscars",
+    "event": "ceremony",
+    "event_date": "2026-03-15",
+    "source_id": "AW01",
+    "time_of_day": null,
+    "timezone": null,
+    "precision": "day",
+    "knowledge_available_on": null,
+    "publication_policy": "Do not expose as pre-announced before an independently established publication date."
+  },
+  {
+    "id": "calendar:3",
+    "organization": "International Emmys",
+    "event": "entry_deadline",
+    "event_date": "2026-01-31",
+    "source_id": "AW06",
+    "time_of_day": null,
+    "timezone": null,
+    "precision": "day",
+    "knowledge_available_on": null,
+    "publication_policy": "Do not expose as pre-announced before an independently established publication date."
+  },
+  {
+    "id": "calendar:4",
+    "organization": "Primetime Emmys",
+    "event": "entry_deadline",
+    "event_date": "2026-05-07",
+    "source_id": "AW05",
+    "time_of_day": null,
+    "timezone": null,
+    "precision": "day",
+    "knowledge_available_on": null,
+    "publication_policy": "Do not expose as pre-announced before an independently established publication date."
+  },
+  {
+    "id": "calendar:5",
+    "organization": "Primetime Emmys",
+    "event": "nominations",
+    "event_date": "2026-07-08",
+    "source_id": "AW05",
+    "time_of_day": null,
+    "timezone": null,
+    "precision": "day",
+    "knowledge_available_on": null,
+    "publication_policy": "Do not expose as pre-announced before an independently established publication date."
+  },
+  {
+    "id": "calendar:6",
+    "organization": "Primetime Emmys",
+    "event": "panel_nominations",
+    "event_date": "2026-07-15",
+    "source_id": "AW05",
+    "time_of_day": null,
+    "timezone": null,
+    "precision": "day",
+    "knowledge_available_on": null,
+    "publication_policy": "Do not expose as pre-announced before an independently established publication date."
+  },
+  {
+    "id": "calendar:7",
+    "organization": "Primetime Emmys",
+    "event": "creative_arts_start",
+    "event_date": "2026-09-05",
+    "source_id": "AW05",
+    "time_of_day": null,
+    "timezone": null,
+    "precision": "day",
+    "knowledge_available_on": null,
+    "publication_policy": "Do not expose as pre-announced before an independently established publication date."
+  },
+  {
+    "id": "calendar:8",
+    "organization": "Primetime Emmys",
+    "event": "creative_arts_end",
+    "event_date": "2026-09-06",
+    "source_id": "AW05",
+    "time_of_day": null,
+    "timezone": null,
+    "precision": "day",
+    "knowledge_available_on": null,
+    "publication_policy": "Do not expose as pre-announced before an independently established publication date."
+  },
+  {
+    "id": "calendar:9",
+    "organization": "Primetime Emmys",
+    "event": "telecast",
+    "event_date": "2026-09-14",
+    "source_id": "AW05",
+    "time_of_day": null,
+    "timezone": null,
+    "precision": "day",
+    "knowledge_available_on": null,
+    "publication_policy": "Do not expose as pre-announced before an independently established publication date."
+  }
+]

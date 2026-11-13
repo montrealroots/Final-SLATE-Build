@@ -1,0 +1,68 @@
+{
+  "work": "Elantris",
+  "author": "Brandon Sanderson",
+  "source_ids": [
+    "BOOK01",
+    "BOOK02"
+  ],
+  "coverage": "core viewpoints and premise; not exhaustive cast or scene-by-scene adaptation",
+  "canon": {
+    "viewpoint_characters": [
+      {
+        "name": "Raoden",
+        "description": "A prince confined to the ruined city after transformation."
+      },
+      {
+        "name": "Sarene",
+        "description": "A princess navigating a political marriage and Arelon’s vulnerability."
+      },
+      {
+        "name": "Hrathen",
+        "description": "A missionary pursuing conversion under an imperial threat."
+      }
+    ],
+    "places": [
+      "Elantris",
+      "Kae",
+      "Arelon"
+    ],
+    "structure": "interwoven viewpoints"
+  },
+  "proposed_adaptation": {
+    "status": "original_design_not_canonical_fact",
+    "logline": "A confined prince, a newly arrived princess and a driven missionary confront a kingdom’s crisis from opposing positions.",
+    "format_options": [
+      "feature with substantial compression",
+      "limited series"
+    ],
+    "tone": [
+      "political tension",
+      "mystery",
+      "hope amid decay"
+    ],
+    "pacing": "Alternate the city’s survival problem with political and religious pressure; converge the viewpoints rather than treating one as the entire story.",
+    "genres": [
+      "fantasy",
+      "political drama",
+      "mystery"
+    ],
+    "audience": "player-selected target; classification not predetermined",
+    "era": "invented world; do not assign a real historical year",
+    "character_policy": "editable ensemble; do not force Hoid as lead or flatten Hrathen into a fixed one-note role",
+    "production_effects": [
+      "ruined/intact environment contrast",
+      "makeup or character-look development",
+      "magic effect design",
+      "location/set continuity across viewpoints"
+    ],
+    "scene_plan": null,
+    "ending": null
+  },
+  "missing": [
+    "complete supporting cast",
+    "detailed chronology",
+    "source-verified ending",
+    "scene-by-scene adaptation"
+  ],
+  "import_behavior": "preview and merge; preserve player edits; never replace missing canon with generic roles"
+}

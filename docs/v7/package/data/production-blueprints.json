@@ -1,0 +1,630 @@
+{
+  "provenance": "original_simulation_design",
+  "research_basis": [
+    "PROD01",
+    "PROD02",
+    "PROD03",
+    "PROD04"
+  ],
+  "scope": "Dependency scaffolds, not universal mandatory linear industrial pipelines. Expand per shot/episode and preserve parallel human work with one coding agent.",
+  "pipelines": {
+    "live_action": [
+      {
+        "id": "breakdown",
+        "depends_on": [],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "locations",
+        "depends_on": [
+          "breakdown"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "cast_crew",
+        "depends_on": [
+          "breakdown"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "kit",
+        "depends_on": [
+          "breakdown"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "rehearsal",
+        "depends_on": [
+          "cast_crew"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "shoot",
+        "depends_on": [
+          "locations",
+          "kit",
+          "rehearsal"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "dailies",
+        "depends_on": [
+          "shoot"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "edit",
+        "depends_on": [
+          "dailies"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      },
+      {
+        "id": "finish",
+        "depends_on": [
+          "edit"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "qc",
+        "depends_on": [
+          "finish"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      }
+    ],
+    "animation_2d": [
+      {
+        "id": "script",
+        "depends_on": [],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "boards",
+        "depends_on": [
+          "script"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "voice",
+        "depends_on": [
+          "script"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "animatic",
+        "depends_on": [
+          "boards",
+          "voice"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      },
+      {
+        "id": "layout",
+        "depends_on": [
+          "animatic"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "animation",
+        "depends_on": [
+          "layout"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "cleanup_color",
+        "depends_on": [
+          "animation"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "composite",
+        "depends_on": [
+          "cleanup_color"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "mix",
+        "depends_on": [
+          "composite"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "qc",
+        "depends_on": [
+          "mix"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      }
+    ],
+    "animation_3d": [
+      {
+        "id": "design",
+        "depends_on": [],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      },
+      {
+        "id": "model",
+        "depends_on": [
+          "design"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "rig",
+        "depends_on": [
+          "model"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "lookdev",
+        "depends_on": [
+          "model"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "layout",
+        "depends_on": [
+          "rig"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "animate",
+        "depends_on": [
+          "layout"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "light",
+        "depends_on": [
+          "animate",
+          "lookdev"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "render",
+        "depends_on": [
+          "light"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "composite",
+        "depends_on": [
+          "render"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "qc",
+        "depends_on": [
+          "composite"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      }
+    ],
+    "stop_motion": [
+      {
+        "id": "design",
+        "depends_on": [],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      },
+      {
+        "id": "fabricate",
+        "depends_on": [
+          "design"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "stage",
+        "depends_on": [
+          "design"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "test",
+        "depends_on": [
+          "fabricate",
+          "stage"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "capture",
+        "depends_on": [
+          "test"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "cleanup",
+        "depends_on": [
+          "capture"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "edit",
+        "depends_on": [
+          "cleanup"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      },
+      {
+        "id": "mix",
+        "depends_on": [
+          "edit"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "qc",
+        "depends_on": [
+          "mix"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      }
+    ],
+    "hybrid": [
+      {
+        "id": "shot_design",
+        "depends_on": [],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "assets",
+        "depends_on": [
+          "shot_design"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "plates",
+        "depends_on": [
+          "shot_design"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "tracking",
+        "depends_on": [
+          "plates"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "rig",
+        "depends_on": [
+          "assets"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "capture",
+        "depends_on": [
+          "rig"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "retarget",
+        "depends_on": [
+          "capture"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "animate",
+        "depends_on": [
+          "tracking",
+          "retarget"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "composite",
+        "depends_on": [
+          "animate"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "qc",
+        "depends_on": [
+          "composite"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      }
+    ],
+    "documentary": [
+      {
+        "id": "research",
+        "depends_on": [],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "access",
+        "depends_on": [
+          "research"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "capture",
+        "depends_on": [
+          "access"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "log",
+        "depends_on": [
+          "capture"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "assembly",
+        "depends_on": [
+          "log"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "fact_review",
+        "depends_on": [
+          "assembly"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "edit",
+        "depends_on": [
+          "fact_review"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      },
+      {
+        "id": "finish",
+        "depends_on": [
+          "edit"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "qc",
+        "depends_on": [
+          "finish"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      }
+    ],
+    "series": [
+      {
+        "id": "season_plan",
+        "depends_on": [],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": true
+      },
+      {
+        "id": "episode_scripts",
+        "depends_on": [
+          "season_plan"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "continuity",
+        "depends_on": [
+          "episode_scripts"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "resource_plan",
+        "depends_on": [
+          "continuity"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "episode_production",
+        "depends_on": [
+          "resource_plan"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "episode_finish",
+        "depends_on": [
+          "episode_production"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "episode_qc",
+        "depends_on": [
+          "episode_finish"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "release_calendar",
+        "depends_on": [
+          "episode_qc"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "weekly_reports",
+        "depends_on": [
+          "release_calendar"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      },
+      {
+        "id": "renewal_review",
+        "depends_on": [
+          "weekly_reports"
+        ],
+        "status": "planned",
+        "cost_model": "task_specific_simulation",
+        "approval_required": false
+      }
+    ]
+  }
+}

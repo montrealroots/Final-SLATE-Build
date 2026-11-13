@@ -210,7 +210,7 @@
     "Need for Speed: Most Wanted": { "drop": ["Wanted List"] },
     "Layla and Majnun": { "drop": ["Majnun"] },
     "Timon of Athens": { "lead": "Timon", "against": null, "ally": "Flavius" },
-    "Elantris": { "lead": "Prince Raoden", "against": "Gyorn Hrathen", "ally": "Princess Sarene", "drop": ["Aons"] },
+    "Elantris": { "drop": ["Aons"] },
     "Fox Spirit Matchmaker": { "lead": "Bai Yuechu", "ally": "Tushan Susu", "drop": ["The Fox"] }
   }
 }

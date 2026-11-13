@@ -1,0 +1,46 @@
+[
+  {
+    "id": "camera:alexa35",
+    "name": "ARRI ALEXA 35",
+    "source_id": "CAM01",
+    "sensor": "Super 35",
+    "photosites": [
+      4608,
+      3164
+    ],
+    "manufacturer_dynamic_range_stops": 17,
+    "modes": [],
+    "price": null,
+    "availability_from": null,
+    "notes": "Mode/media limits must be selected from manufacturer specification; maxima cannot be combined."
+  },
+  {
+    "id": "camera:fx3",
+    "name": "Sony FX3",
+    "source_id": "CAM02",
+    "sensor": "full frame",
+    "max_4k_fps": 120,
+    "price": null,
+    "availability_from": "2021-02-23",
+    "availability_basis": "announcement_not_guaranteed_retail_stock",
+    "notes": "Lens, recording media, power and audio kit are separate resources."
+  },
+  {
+    "id": "camera:bmpcc6kpro",
+    "name": "Blackmagic Pocket Cinema Camera 6K Pro",
+    "source_id": "CAM03",
+    "sensor": "Super 35",
+    "mount": "active EF",
+    "manufacturer_dynamic_range_stops": 13,
+    "modes": [
+      {
+        "width": 6144,
+        "height": 3456,
+        "max_fps": 50
+      }
+    ],
+    "price": null,
+    "availability_from": null,
+    "notes": "Deliberately omits a current price from historical cost simulation."
+  }
+]

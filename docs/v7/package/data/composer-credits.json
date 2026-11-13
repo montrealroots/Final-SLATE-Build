@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Ludwig Göransson",
+    "work": "Sinners",
+    "credit": "score_composer",
+    "source_id": "AW11",
+    "fee": null,
+    "availability": null,
+    "simulation_required": [
+      "offer",
+      "schedule",
+      "rate",
+      "fit"
+    ]
+  },
+  {
+    "name": "Jerskin Fendrix",
+    "work": "Bugonia",
+    "credit": "score_composer",
+    "source_id": "AW11",
+    "fee": null,
+    "availability": null,
+    "simulation_required": [
+      "offer",
+      "schedule",
+      "rate",
+      "fit"
+    ]
+  },
+  {
+    "name": "Alexandre Desplat",
+    "work": "Frankenstein",
+    "credit": "score_composer",
+    "source_id": "AW11",
+    "fee": null,
+    "availability": null,
+    "simulation_required": [
+      "offer",
+      "schedule",
+      "rate",
+      "fit"
+    ]
+  },
+  {
+    "name": "Max Richter",
+    "work": "Hamnet",
+    "credit": "score_composer",
+    "source_id": "AW11",
+    "fee": null,
+    "availability": null,
+    "simulation_required": [
+      "offer",
+      "schedule",
+      "rate",
+      "fit"
+    ]
+  },
+  {
+    "name": "Jonny Greenwood",
+    "work": "One Battle after Another",
+    "credit": "score_composer",
+    "source_id": "AW11",
+    "fee": null,
+    "availability": null,
+    "simulation_required": [
+      "offer",
+      "schedule",
+      "rate",
+      "fit"
+    ]
+  }
+]
