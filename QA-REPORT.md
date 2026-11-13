@@ -1418,3 +1418,10 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `tests/world-records.test.ts` | 0 | What a record carries; recorded, announced and simulated apart; territory unknown; read only up to the day asked for. |
 | `catalog`, `world-refresh` specs, desktop and phone | 0 | 18 passed. |
 
+## v4 Journeys (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `e2e/j01.spec.ts`, desktop | 6 mistakes of mine, 1 finding | Save Draft is on the Script page, not Characters; the shop's filter is Recording Media; the second project has no starting backing to ask for; the log keeps 400 notices, so a birthday is read from the next one scheduled and lived to. The finding: a digital self-release with no distributor earns nothing, so settled receipts come from a distributor's offer, and they repay the backers before the project keeps any. Passes in 39 s. |
+| `docs/v4/JOURNEYS.md` | — | J01 to J13 mapped to their specs. J01 one run; J12 and J13 covered across specs; J02 to J11 not yet one run each. |
+

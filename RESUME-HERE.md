@@ -281,6 +281,10 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       metric (what happened), unit (a day), territory (unknown, null), period, as-of (the records' date), source (TMDB or
       this save's world), revision (the catalog build) and availability: recorded, announced (scheduled after the
       records were taken) or simulated. Home's In The Industry marks Announced and Simulated.
+    - Journeys (V4-038, November 13, 2026): `docs/v4/JOURNEYS.md` maps J01 to J13 step by step to the specs that play
+      them. J01 is one run (`e2e/j01.spec.ts`, 39 s, desktop): gift, book, character, kit bought and used, delivered, an
+      offer accepted and its receipts settled against the backers, own money into the next project, the birthday at
+      36 lived to, a reload. J12 and J13 are covered across their specs. J02 to J11 are still steps across specs.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
   - Still not built: Guide Me for writing,
