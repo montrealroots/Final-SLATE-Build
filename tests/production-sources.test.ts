@@ -3,8 +3,8 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 
-const FILES = ['production/rates', 'locations', 'takes', 'auditions', 'negotiation', 'hiring', 'documentary', 'revisions', 'finish', 'distribution', 'opportunities', 'casting-director', 'line-producer', 'representation', 'box-office', 'audiences'];
-const TEXT_ONLY = new Set(['NOT_NEGOTIABLE', 'RESTRICTION_WORDS', 'ROUTE_LABELS', 'EMPHASIS', 'SETUPS_OF', 'METRICS', 'DOC_SUBJECTS', 'CONSENT_PLAN']); // words, or which setups a coverage level means // words shown to the player, not calibration
+const FILES = ['production/rates', 'release-plan', 'first-look', 'locations', 'takes', 'auditions', 'negotiation', 'hiring', 'documentary', 'revisions', 'finish', 'distribution', 'opportunities', 'casting-director', 'line-producer', 'representation', 'box-office', 'audiences'];
+const TEXT_ONLY = new Set(['NOT_NEGOTIABLE', 'RESTRICTION_WORDS', 'ROUTE_LABELS', 'EMPHASIS', 'SETUPS_OF', 'METRICS', 'DOC_SUBJECTS', 'CONSENT_PLAN', 'PLAN_ROUTES', 'PLAN_ORDER', 'BUYERS', 'SALES_AGENT']); // words, or which setups a coverage level means // words shown to the player, not calibration
 
 describe('the production source register', () => {
   it('names every exported calibration constant, each with a status and a source column, and nothing stale', () => {

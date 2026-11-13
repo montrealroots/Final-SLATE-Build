@@ -938,6 +938,39 @@ export type AudienceMetric = 'viewers' | 'hours' | 'views';
  */
 export interface AudienceObservation { week: number; from: string; to: string; metric: AudienceMetric; value: number; scope: 'title' | 'episode'; episode?: number; territories: number }
 
+/** The routes a Release Plan can intend (release-plan.ts PLAN_ROUTES). */
+export type PlanRoute = 'festival-first' | 'partner-theatrical' | 'distributor-sales' | 'broadcast-licence' | 'streaming-licence' | 'transactional' | 'direct';
+export type BuyerRoute = 'distributor-sales' | 'broadcast-licence' | 'streaming-licence';
+/** A licence proposed to a buyer, and its answer. */
+export interface LicenceProposal {
+  id: string;
+  route: BuyerRoute;
+  buyer: string;
+  territories: string[];
+  ask: number;
+  exclusive: boolean;
+  sentAt: number;
+  answerAt: number;
+  status: 'sent' | 'accepted' | 'countered' | 'rejected';
+  /** Why, in the buyer's words; and, for a rejection, whether it was the work (final with this buyer) or the price. */
+  answer?: string;
+  over?: 'reception' | 'price';
+  /** The offer an acceptance or a counter made (finish.ts acceptDistribution signs it). */
+  offerId?: string;
+}
+export interface ReleasePlan {
+  routes: PlanRoute[];
+  territories: string[];
+  /** The first public date intended. */
+  date: string;
+  /** Festival-first: no public release before this date. */
+  festivalUntil: string | null;
+  version: 'subtitled' | 'dubbed';
+  /** Promotional spending on each route the player runs themselves. */
+  promo: number;
+  proposals: LicenceProposal[];
+}
+
 export interface DistributionOffer {
   id: string;
   distributor: string;
@@ -969,6 +1002,18 @@ export interface DistributionOffer {
   audience?: AudienceObservation[];
   /** A studio that backed the film releasing it as a term of its deal (finance.ts): the deal's id. No guarantee is paid. */
   studioDeal?: string;
+  /**
+   * From the Release Plan (release-plan.ts), November 13, 2026. `fee`: the share of what is reported that the
+   * distributor, store or partner keeps, where it isn't distribution.ts DISTRIBUTOR_FEE. `promo`: promotional spending the
+   * player paid for, which widens what it reaches. `self`: a route the player runs themselves, with nobody to accept it.
+   * `proposalId`: the licence proposal a buyer accepted or countered with this offer. `agentShare`: a sales agent's
+   * commission on the guarantee, taken when it is accepted.
+   */
+  fee?: number;
+  promo?: number;
+  self?: 'partner-theatrical' | 'transactional' | 'direct';
+  proposalId?: string;
+  agentShare?: number;
 }
 
 export interface Project {
@@ -1110,6 +1155,8 @@ export interface Project {
   credits: Credit[];
   releases: ReleaseRecord[];
   offers: DistributionOffer[];
+  /** The player's Release Plan and the licence proposals sent from it (release-plan.ts). Absent until one is made, and in saves from before November 13, 2026. */
+  releasePlan?: ReleasePlan;
   premiere: { kind: 'world' | 'international' | 'national'; date: string; country: string; venue: string; editionId?: string } | null;
   revenue: number;
   quality: Record<string, number> | null; // modeled, locked at delivery

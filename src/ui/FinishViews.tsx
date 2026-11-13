@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { ReleasePlanCard } from './ReleasePlan';
 import { creditLine } from '../engine/adaptation';
 import { approveDesign, askForDesignChanges } from '../engine/designs-actions';
 import { showCut } from '../engine/documentary-actions';
@@ -510,6 +511,7 @@ export function ReleaseTab({ p }: { p: Project }) {
           </table>
         </div>
       </section> : <p className="callout">Episodes {Object.keys(p.episodeDeliveries ?? {}).join(', ')} {Object.keys(p.episodeDeliveries ?? {}).length === 1 ? 'is' : 'are'} delivered. Credits are settled when the whole season is delivered, on the Edit tab.</p>}
+      <ReleasePlanCard p={p} />
       <section className="card">
         <h2>Distribution Offers</h2>
         <p className="muted">Declared content: {contentSummary(p)}. This is your declaration, not a rating: before release a classification body rates the film where the territory requires one.</p>
@@ -532,6 +534,7 @@ export function ReleaseTab({ p }: { p: Project }) {
                   {needs && <p className="dim" style={{ color: 'var(--warning)' }}>{needs}</p>}
                   {(() => { const ends = offerConflicts(p, o); return ends.length ? <p className="dim">Accepting it ends {ends.map((x) => `${x.distributor}'s ${ROUTE_LABELS[x.route].toLowerCase()} offer`).join(' and ')}{o.exclusive ? ': its rights are exclusive there' : ': they cover the same territories'}.</p> : null; })()}
                   {o.laterWindow && <p className="dim">A later window: it covers only territories and routes your earlier deals don't hold.</p>}
+                  {o.proposalId && <p className="dim">From your Release Plan: {o.distributor} answered your licence proposal with this offer.{o.agentShare ? ` ${Math.round(o.agentShare * 100)}% of the guarantee goes to the sales agent who sent it.` : ''}</p>}
                   {o.exclusive && <p className="dim">Exclusive for {EXCLUSIVE_DAYS} days from its release: no other deal in its territories until then.</p>}
                 </li>
               );
@@ -1219,13 +1222,13 @@ function ReleaseVersion({ p, r }: { p: Project; r: ReleaseRecord }) {
  */
 function WeeksInCinemas({ o }: { o: Project['offers'][number] }) {
   const weeks = o.weeks ?? [];
-  const rows = weeks.map((w) => ({ w, m: weekMoney(w, DISTRIBUTOR_FEE) }));
+  const rows = weeks.map((w) => ({ w, m: weekMoney(w, o.fee ?? DISTRIBUTOR_FEE) }));
   const total = rows.reduce((a, { m }) => ({ gross: a.gross + m.gross, admissions: a.admissions + m.admissions, cinemas: a.cinemas + m.cinemas, rental: a.rental + m.rental, fee: a.fee + m.fee, net: a.net + m.net }), { gross: 0, admissions: 0, cinemas: 0, rental: 0, fee: 0, net: 0 });
   const n = (x: number) => x.toLocaleString('en-US');
   return (
     <details className="small">
       <summary>Weeks In Cinemas ({weeks.length})</summary>
-      <p className="dim">Simulated by the game: no real box office is shown here. Ticket sales are not what you earn. Cinemas keep {Math.round((1 - RENTAL_SHARE) * 100)}% of them; the rest is the film rental {o.distributor} receives, its fee of {Math.round(DISTRIBUTOR_FEE * 100)}% comes off that, and what is left repays the guarantee before any of it reaches you. Admissions are ticket sales at {money(TICKET_PRICE)} a ticket. A week is provisional until the month's report settles it. Each week the cinemas decide from its takings a screen, less what other wide releases took, whether to expand it, hold it, cut its screens or withdraw it; the screens it ends a month on decide what the next month can earn.</p>
+      <p className="dim">Simulated by the game: no real box office is shown here. Ticket sales are not what you earn. Cinemas keep {Math.round((1 - RENTAL_SHARE) * 100)}% of them; the rest is the film rental {o.distributor} receives, its fee of {Math.round((o.fee ?? DISTRIBUTOR_FEE) * 100)}% comes off that, and what is left repays the guarantee before any of it reaches you. Admissions are ticket sales at {money(TICKET_PRICE)} a ticket. A week is provisional until the month's report settles it. Each week the cinemas decide from its takings a screen, less what other wide releases took, whether to expand it, hold it, cut its screens or withdraw it; the screens it ends a month on decide what the next month can earn.</p>
       <div className="table-wrap">
         <table className="data" aria-label={`Weeks In Cinemas, ${o.distributor}`}>
           <thead><tr><th>Week</th><th>Dates</th><th>Territories Open</th><th>Screens</th><th>Other Wide Releases</th><th>Next Week</th><th>Admissions</th><th>Ticket Sales</th><th>Cinemas Keep</th><th>Film Rental</th><th>Distributor's Fee</th><th>Towards The Guarantee</th><th>Status</th></tr></thead>

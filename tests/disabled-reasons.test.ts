@@ -42,6 +42,7 @@ const REASONS: Record<string, string> = {
   'PlanViews.tsx | !!no': 'The dialog says why under the ceiling field: no approved draft, a mandate already running, a ceiling of nothing, or more than the money uncommitted.',
   'FirstLook.tsx | !!fl || (!!offer.counter && !offer.counter.outcome)': 'The running deal shows on the same card, and a request for more overhead says when the studio answers it.',
   'FirstLook.tsx | !!offer.counter': 'The line above the buttons says what you asked for and what the studio answered.',
+  'ReleasePlan.tsx | !!no': 'The reason shows under the button: a missing route, territory, date or document, money the project lacks, rights another deal holds, or a buyer who already answered.',
   'FirstLook.tsx | !!no': 'The reason shows under the field once an amount is typed: more than the fund has left, a project already submitted, or a project the deal does not cover.',
   'YourMoney.tsx | !!no': 'The reason shows under the field once an amount is typed: more than your account holds, more than the project still needs, or a script not yet approved.',
   'YourMoney.tsx | home.earnings <= 0': 'The line above says how much income the delivered project can send home: nothing, here.',

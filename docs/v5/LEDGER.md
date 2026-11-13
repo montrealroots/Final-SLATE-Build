@@ -72,9 +72,22 @@ survives a reload, and has a test that fails without it. The order of work is at
 
 - **Exists.** `finish.ts` planRelease for a self-release, distributor offers drawn after delivery, festivals, later
   windows, exclusivity, episode schedules.
-- **Gaps.** No plan of intended outlets. Broadcast and streaming come only from offers the game makes; a player can't
-  propose a licence to a buyer, who must accept or refuse it. No partner-assisted theatrical, transactional digital or
-  direct-to-audience routes with their own requirements. No promotional spending.
+- **Done on November 13, 2026.** The research came first (`docs/v5/RELEASE-PLAN.md`, with its sources). Then
+  `release-plan.ts` and the Release Plan card (`ReleasePlan.tsx`):
+  - the routes, territories, date, festival hold, version abroad and promotion intended;
+  - licence proposals to distributors, broadcasters and, through a sales agent, streaming services, which accept,
+    counter or reject them in their own time;
+  - offers the player still has to sign;
+  - alternatives after a rejection;
+  - a partner-assisted theatrical release, the stores through an aggregator, and the player's own storefront, each with
+    its costs named before booking;
+  - festival-first, which holds every public release, an offer's too;
+  - exclusive rights kept;
+  - series taken by every route but the cinema ones.
+
+  Every route ends as a deal that reports, settles and opens later windows. Until then a self-release earned nothing.
+- **Evidence.** `tests/release-plan.test.ts` (9 tests) and `e2e/v5-release-plan.spec.ts`, on desktop and phone.
+- **Left out, and said so.** Real platforms and fees, festival markets, an agent's own territory sales, and tax.
 
 ## 7. Outside Work And The Living Industry
 
@@ -120,7 +133,7 @@ survives a reload, and has a test that fails without it. The order of work is at
 | Real composer through score and credits | J09 hires a game composer, not a real one |
 | Song refused, replaced, cleared | J08 (library replacement) |
 | First-look offer, submission, pass, outside release | v5-first-look.spec (offer, bargaining, acceptance, submission first); the pass and outside take are engine-tested |
-| Independent film and series on different release routes | Parts in J01, J03 and release-schedule.spec |
+| Independent film and series on different release routes | v5-release-plan.spec (a film: festival hold, a licence turned down then signed, the stores); series routes engine-tested |
 | Paid outside job leading to an opportunity | J10, but the next offer isn't tied to the first job |
 | Renewal or cancellation with obligations | J03 (cancellation), renewal.spec (a labelled fixture) |
 | Equipment shortage needing approval | v5-money-equipment.spec |

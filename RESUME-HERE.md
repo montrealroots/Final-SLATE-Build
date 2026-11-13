@@ -18,14 +18,18 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     own.
   - **5. First-look deals.** Researched in `docs/v5/FIRST-LOOK.md`, built in `first-look.ts` and `FirstLook.tsx`, and
     tested in `tests/first-look.test.ts` and `e2e/v5-first-look.spec.ts`.
+  - **6. The Release Plan.** Researched in `docs/v5/RELEASE-PLAN.md`, built in `release-plan.ts` and `ReleasePlan.tsx`,
+    and tested in `tests/release-plan.test.ts` and `e2e/v5-release-plan.spec.ts`.
 - **Next, in order.**
-  1. 6, the Release Plan.
-  2. 3 and 4, music.
-  3. 7 and 8, the living industry, grades and metrics.
-  4. 2, production previews.
-  5. 10 and 11, phone parity and the ten journeys.
-- **The story re-fetch.** It reads plot subsections into `.sources-cache/plots2`. When it is done, run
-  `node tools/sources/plots.mjs --build`. Then rerun the proposal, story-structure, adapt and J03 tests.
+  1. 3 and 4, music.
+  2. 7 and 8, the living industry, grades and metrics.
+  3. 2, production previews.
+  4. 10 and 11, phone parity and the ten journeys.
+- **The story re-fetch is done.** `src/data/plots.json` was rebuilt from `.sources-cache/plots2`. A section that mixes
+  the story with something else keeps only its story parts, and 47 works are narrowed that way. Tower of God keeps its
+  world parts: it has no plot part.
+- **Event names must be unique.** `tests/handlers-unique.test.ts` fails a second `registerHandler` of the same kind. One
+  such duplicate silently replaced the music licence handler on November 13, 2026.
 
 ## Newest Requests (November 13, 2026)
 

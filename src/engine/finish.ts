@@ -368,6 +368,16 @@ export const ROUTE_LABELS: Record<ReleaseRecord['route'], string> = {
  * premiere and then weekly) or dates of your own (`episodeDates`, one per episode, the first being the release date).
  * Without either it comes out as it did before November 10, 2026: weekly on television, all at once online.
  */
+/**
+ * Why a public release on `date` would break a festival-first Release Plan (release-plan.ts), or null: the plan holds the
+ * project for festivals until its date, so its premiere stays a premiere.
+ */
+export function festivalHold(p: Project, date: string): string | null {
+  const plan = p.releasePlan;
+  if (!plan?.routes.includes('festival-first') || !plan.festivalUntil || date >= plan.festivalUntil) return null;
+  return `Your Release Plan keeps ${p.title} for festivals until ${formatDateKey(plan.festivalUntil)}, so it can premiere there. Release it from then, or change the plan.`;
+}
+
 export function planRelease(state: GameState, p: Project, input: { route: ReleaseRecord['route']; date: string; territories: string[]; distributor?: string | null; pattern?: Exclude<ReleasePattern, 'assumed'>; onPremiere?: number; episodeDates?: string[]; cut?: string }): ReleaseRecord {
   // A series can come out as it is delivered, an episode at a time (episode-delivery.ts), on television or online.
   if (!p.delivered && !(hasEpisodes(p, input.route) && Object.keys(p.episodeDeliveries ?? {}).length)) {
@@ -382,6 +392,8 @@ export function planRelease(state: GameState, p: Project, input: { route: Releas
   const today = dateKey(state.now, zone);
   if (!isDateKey(input.date)) throw new Error('Choose a real release date.');
   if (input.date < today) throw new Error('Choose a release date from today onward.');
+  const hold = festivalHold(p, input.date);
+  if (hold) throw new Error(hold);
   if (releaseHourPassed(state, p, input.date)) throw new Error('Releases go out at 9 in the morning, and that has passed today. Choose tomorrow or later.');
   if ((input.route === 'theatrical' || input.route === 'broadcast') && !input.distributor) {
     throw new Error(input.route === 'theatrical' ? 'A theatrical release needs a distributor. Accept a distribution offer first.' : 'A broadcast needs a broadcaster. Accept an offer first.');
@@ -552,7 +564,7 @@ export function publicShowingsBefore(p: Project, date: string): { date: string; 
 
 // ---------------- Distribution offers (simulated distributors) ----------------
 
-const DISTRIBUTORS = ['Northlight Pictures', 'Meridian Releasing', 'Harbor & Vine', 'Blue Hour Films', 'Kestrel Media', 'Lanternfish Distribution', 'Cobalt Screen', 'Open Field Releasing'];
+export const DISTRIBUTORS = ['Northlight Pictures', 'Meridian Releasing', 'Harbor & Vine', 'Blue Hour Films', 'Kestrel Media', 'Lanternfish Distribution', 'Cobalt Screen', 'Open Field Releasing'];
 
 /**
  * Your own craft, from your credited, delivered work in the role (November 10, 2026). Until then it was the same on the
@@ -682,6 +694,9 @@ export function acceptDistribution(state: GameState, p: Project, offerId: string
     o.status = 'expired';
     throw new Error('That offer has expired.');
   }
+  // Checked before anything is signed: planRelease below would refuse the date after the materials were reserved.
+  const hold = festivalHold(p, addDaysToKey(dateKey(state.now, getPlace(p.axes.basePlaceId).zone), o.releaseWindowDays));
+  if (hold) throw new Error(hold);
   const needs = offerNeeds(p, o);
   if (needs) throw new Error(needs);
   const held = exclusiveHolder(p, o, dateKey(state.now, getPlace(p.axes.basePlaceId).zone));
@@ -695,6 +710,13 @@ export function acceptDistribution(state: GameState, p: Project, offerId: string
   // Offers this one ends: the same route where territories overlap, or any route if either is exclusive there.
   for (const other of offerConflicts(p, o)) other.status = 'declined';
   p.revenue += receiveIncome(state, p, o.minimumGuarantee, o.distributor); // backers are repaid first
+  // A sales agent who submitted the proposal takes its share of the guarantee now, a line of its own (release-plan.ts).
+  if (o.agentShare && o.minimumGuarantee > 0) {
+    const fee = Math.round(o.minimumGuarantee * o.agentShare);
+    const ob = reserve(state, p, `Sales Agent's Commission On ${o.distributor}'s Licence`, 'finance', fee, `agent:${o.id}`);
+    settle(state, p, ob.id, fee, `agent:${o.id}`);
+    closeSettled(p, ob.id);
+  }
   const zone = getPlace(p.axes.basePlaceId).zone;
   const date = addDaysToKey(dateKey(state.now, zone), o.releaseWindowDays);
   addLog(state, `You accepted ${o.distributor}'s offer of ${money(o.minimumGuarantee)} for ${p.title}.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
