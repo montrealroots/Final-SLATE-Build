@@ -331,3 +331,22 @@ describe('how long each proposed scene is', () => {
     expect(blueprintProblems(b, GENRES)).toEqual([]);
   });
 });
+
+describe('genres read from the story when none recorded maps (November 13, 2026)', () => {
+  it('reads Grand Theft Auto III as a gangster story, not an adventure for being a video game', () => {
+    const stories = JSON.parse(readFileSync('src/data/plots.json', 'utf8')) as { plots: Record<string, SourceWork['plot']> };
+    const read = (title: string) => {
+      const rec = catalog.records.find((w) => w.title === title)!;
+      return proposeFromSource({ work: { ...rec, plot: stories.plots[rec.id] }, format: 'feature', approach: 'faithful', gameYear: 2027, genres: GENRES });
+    };
+    const p = read('Grand Theft Auto III');
+    expect([p.blueprint.genre, p.origin.genres]).toEqual(['gangster', 'proposed']);
+    expect(p.why.genres).toMatch(/read from its story, which speaks of gangster \(cartel, mafia, gang\)/);
+    // A world leads what happens in it: Red Dead Redemption 2's gang is an outlaw gang in a western.
+    expect(read('Red Dead Redemption 2').blueprint.genre).toBe('western');
+    // Its name isn't its story: Grand Theft Auto VI's "theft" is its title.
+    expect(read('Grand Theft Auto VI').why.genres).not.toMatch(/theft/);
+    // Recorded genres that map still lead, and are sourced.
+    expect([read('Dracula').blueprint.genre, read('Dracula').origin.genres]).toEqual(['horror', 'sourced']);
+  });
+});

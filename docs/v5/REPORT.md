@@ -39,8 +39,11 @@ Today's commits listed above, and others, also fixed problems the work turned up
 - Three journeys read the save before it was written.
 - J03 recorded one seeded outcome. It now checks the renewal rule itself.
 - A real record was named as the film catalog's when it came from the music catalog.
+- Grand Theft Auto III was proposed as an adventure because it is a video game. 220 works with no recorded genre that
+  maps were given one by medium. 94 are now read from their story; 126 have too little story and still fall back to
+  their medium, and say so (`docs/v5/GENRES.md`).
 
-**Checks.** `npm run check` exits 0, with 142 test files and 1,202 tests, the typecheck, the build and the size budget.
+**Checks.** `npm run check` exits 0, with 142 test files and 1,204 tests, the typecheck, the build and the size budget.
 
 **CI.** It runs on every head of the PR. The last heads to pass `checks` and all six journey runs are named in
 `RESUME-HERE.md`, and the PR is merged only on a green head.

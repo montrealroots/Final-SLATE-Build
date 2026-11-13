@@ -23,6 +23,7 @@ import { applyBlueprint, briefFields, type Blueprint, type BlueprintCharacter, t
 import { createProject, isEpisodic, isNonfiction, type NewProjectInput } from './projects';
 import { PURPOSE, ROLE_LABELS, WORD, episodeBreaks, episodePurpose, hasWord, readStory, selectDevelopments, sentencesOf, type Development, type Role } from './story-structure';
 import { plotSection, type SourceWork } from './sources';
+import { readGenres } from './story-genre';
 import type { AdaptationApproach, Format, GameState, Project } from './types';
 
 export type FieldOrigin = 'sourced' | 'proposed' | 'unknown';
@@ -164,11 +165,17 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const notes: string[] = [];
   if (isNonfiction(i.format)) throw new Error("A documentary isn't adapted from a work of fiction. Develop a documentary instead.");
 
-  // ---- Genres: the work's own, through the reviewed table; otherwise one proposed from its medium.
-  const mapped = w.genres.map((g) => g.genre).filter((g) => i.genres.has(g));
+  // ---- Genres: the work's own, through the reviewed table; otherwise those its story marks (story-genre.ts, from November
+  // 13, 2026, when the owner saw Grand Theft Auto III proposed as an adventure for being a video game); otherwise one
+  // proposed from its medium, said so.
+  const recordedGenres = w.genres.map((g) => g.genre).filter((g) => i.genres.has(g));
+  const read = recordedGenres.length ? [] : readGenres(`${w.summary?.text ?? ''} ${(w.plot?.paragraphs ?? []).join(' ')}`, i.genres, w.title);
+  const mapped = recordedGenres.length ? recordedGenres : read.map((r) => r.genre);
   const genre = mapped[0] ?? (i.genres.has(MEDIUM_GENRE[w.medium]) ? MEDIUM_GENRE[w.medium] : 'drama');
-  origin.genres = mapped.length ? 'sourced' : 'proposed';
-  if (!mapped.length) why.genres = `No genre recorded for ${w.title} matches one of the game's; ${genre.replace(/-/g, ' ')} is proposed from its being a ${w.medium.replace(/-/g, ' ')}.`;
+  const spoken = (g: string) => g.replace(/-/g, ' ');
+  origin.genres = recordedGenres.length ? 'sourced' : 'proposed';
+  if (read.length) why.genres = `No genre recorded for ${w.title} matches one of the game's, so its genres are read from its story, which speaks of ${read.slice(0, 3).map((r) => `${spoken(r.genre)} (${r.words.slice(0, 3).map(([x]) => x).join(', ')})`).join('; ')}.`;
+  else if (!recordedGenres.length) why.genres = `No genre recorded for ${w.title} matches one of the game's, and too little of its story is recorded to read one from; ${spoken(genre)} is proposed from its being a ${spoken(w.medium)}.`;
   const matrix = MATRIX.find(([re]) => re.test(genre))?.[1] ?? DEFAULT_MATRIX;
   const invented = INVENTED_WORLD.test(genre) || mapped.some((g) => INVENTED_WORLD.test(g));
 

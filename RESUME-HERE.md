@@ -42,6 +42,14 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **Genres for adapted works (the owner: "in no way is 'GTA 3' an adventure").** A work whose recorded genres don't
+  map (220 of 643, most video games, whose records name how they are played) was given a genre by its medium alone.
+  `src/engine/story-genre.ts` now reads the work's summary and story for genre words (cartel, mafia, gang: gangster),
+  proposed with the words shown. The sweep, every such work and its result: `docs/v5/GENRES.md`.
+  - 94 are now read from their story. 126 have too little story to read and are still proposed from their medium,
+    and say so.
+  - Tested in `tests/proposal.test.ts`: GTA III is gangster, Red Dead Redemption 2 is western, Dracula is unchanged.
+  - Played: the adapt, sources, J03, v5-source-to-release and v5-series-release e2e on desktop.
 - **Every adaptation has the work's story.** The owner: "All adapted material should have a story behind it, even
   the copyrighted one." `tools/sources/plots.mjs` fetches each work's plot section from the English Wikipedia (CC BY-SA
   4.0, credited) into `src/data/plots.json`, one request at a time with back-off. Rerun `node tools/sources/plots.mjs`
