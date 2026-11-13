@@ -10,5 +10,7 @@ export declare const MIN_SECRET: number;
 export declare function isLoopback(address: string | undefined): boolean;
 export declare function isLocalRequest(req: IncomingMessage): boolean;
 export type SignIn = { ok: true; id: string } | { ok: false; reason: 'unavailable' | 'locked' | 'wrong'; retryAfter?: number };
-export declare function createOwnerGate(o?: { films?: boolean; secret?: string | null; now?: () => number }): { allows(req: IncomingMessage): boolean; status(req: IncomingMessage): { owner: boolean; signIn: boolean }; signIn(presented: unknown): SignIn; signOut(req: IncomingMessage): void; cookie(id: string): string; expiredCookie: string };
+export declare function createOwnerGate(o?: { films?: boolean; secret?: string | null; now?: () => number }): { allows(req: IncomingMessage): boolean; status(req: IncomingMessage): { owner: boolean; signIn: boolean; elsewhere: boolean }; signIn(presented: unknown): SignIn; signOut(req: IncomingMessage): void; cookie(id: string, req: IncomingMessage): string; expiredCookie(req: IncomingMessage): string };
+/** Whether a request came over HTTPS: to the server directly, or to a proxy in front of it that says so. */
+export declare function isHttps(req: IncomingMessage): boolean;
 export declare function createCatalogHandler(o: { catalogDir: string; cinemasDir: string; packsDir?: string | null; films?: boolean; ownerSecret?: string | null; now?: () => number }): (req: IncomingMessage, res: ServerResponse, next: () => void) => void;

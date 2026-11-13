@@ -66,6 +66,13 @@ function OwnerSignIn({ session, changed }: { session: OwnerSession; changed: () 
   const [passphrase, setPassphrase] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  // The owner's own server, reached from another device (a phone on the same network), with nothing to sign in with:
+  // said here, so the films and their pictures aren't simply missing (November 13, 2026).
+  if (session.elsewhere) {
+    return (
+      <p className="callout" role="note">The films, series and their pictures are this game's owner's alone, and this copy of the game gives them only to the computer it runs on. To have them on this device too, start the game on that computer with an owner passphrase, then sign in here with it.</p>
+    );
+  }
   if (!session.signIn) return null;
   if (session.owner) {
     return (

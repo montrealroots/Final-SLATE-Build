@@ -425,7 +425,8 @@ export async function installOffered(mod: OfferedMod, progress: (phase: 'downloa
 // ---------- the owner's sign-in (server/catalog-handler.mjs, /owner/session; docs/DEPLOYMENT.md) ----------
 
 /** Whether this browser is being answered as the owner, and whether the game's server offers sign-in at all. */
-export interface OwnerSession { owner: boolean; signIn: boolean }
+/** `elsewhere`: the owner's own server, reached from another device, with no passphrase to sign in with. */
+export interface OwnerSession { owner: boolean; signIn: boolean; elsewhere?: boolean }
 const SESSION_URL = `${import.meta.env.BASE_URL}owner/session`;
 const NOBODY: OwnerSession = { owner: false, signIn: false };
 
