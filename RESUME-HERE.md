@@ -151,7 +151,7 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     - 30 works have no article at all.
   - Scenes now share the running time to the quarter minute. Until then each was a whole minute at least, so a
     two-minute episode in six scenes was six minutes of animation, and J03's season couldn't be drawn in time.
-  - J03 moved to seed 2.
+  - J03 moved to seed 2, then to seed 11 when the reviewed roles changed Portal's cast (same day).
 - **Copyright is credited, not cleared.** The owner chose credits only, with nothing blocking production.
   - The option, rights purchase and rights-holder approval are gone (`adaptation.ts`, "Copyright").
   - `creditLine` says what the work is based on and its recorded copyright, on the Budget page's Based On card and in
@@ -447,7 +447,7 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
       the score's conform), and three things a run has to do as a player would: build the schedule once the cast and
       crew have said yes (offers take two or three days), accept a backer's offer before it lapses (three weeks), and
       take the option on a copyrighted work before planning. J03 records its seeded outcome in the spec so a change is
-      seen (seed 2 since November 13, 2026, when Portal's story moved the draws; seed 1 before: a broadcaster, then a
+      seen (seed 11 since the role review of November 13, 2026, seed 2 before it once Portal's story moved the draws; seed 1 before: a broadcaster, then a
       cancellation at about 80% kept against 88%). J11 accepts either a renewal or a
       cancellation of Coastline's simulated season, and checks that it is labelled. The game clock runs in real time
       between a run's actions, so audience figures vary a little from run to run; the checks read them from the save.
