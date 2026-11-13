@@ -408,6 +408,10 @@ describe('genres read from the story when none recorded maps (November 13, 2026)
     // Two people and no one invented to make three; a story that names no one has its people as it calls them.
     expect(cast('The Cask of Amontillado')).toEqual(['Montresor', 'Fortunato']);
     expect(cast('The Tell-Tale Heart')).toEqual(['The Narrator', 'The Old Man']);
+    // A single word of a long title can be the lead, and an age isn't part of a name (November 13, 2026; until then every
+    // word of the title was left out, and Kafka on the Shore was led by Nakata). Neither work's roles are reviewed.
+    expect(cast('Kafka on the Shore')[0]).toBe('Kafka');
+    expect(cast('Tress of the Emerald Sea').slice(0, 3)).toEqual(['Tress', 'Crow', 'Charlie']);
     // Who is beside the lead is read between the two of them, so a noun doesn't make an ally; who is against them is read
     // from the whole sentence, unless the act is plainly someone else's (November 13, 2026).
     const roles = (title: string) => { const b = read(title).blueprint; return Object.fromEntries(b.characters.filter((c) => c.functions[0] !== 'protagonist' && c.functions[0] !== 'none').map((c) => [c.functions[0], c.name])); };
