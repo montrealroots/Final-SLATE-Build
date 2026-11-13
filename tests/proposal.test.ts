@@ -404,6 +404,13 @@ describe('genres read from the story when none recorded maps (November 13, 2026)
     // Two people and no one invented to make three; a story that names no one has its people as it calls them.
     expect(cast('The Cask of Amontillado')).toEqual(['Montresor', 'Fortunato']);
     expect(cast('The Tell-Tale Heart')).toEqual(['The Narrator', 'The Old Man']);
+    // Who is beside the lead is read between the two of them, so a noun doesn't make an ally; who is against them is read
+    // from the whole sentence, unless the act is plainly someone else's (November 13, 2026).
+    const roles = (title: string) => { const b = read(title).blueprint; return Object.fromEntries(b.characters.filter((c) => c.functions[0] !== 'protagonist' && c.functions[0] !== 'none').map((c) => [c.functions[0], c.name])); };
+    expect(roles('Hamlet').ally).not.toBe('Polonius'); // "Hamlet's madness is due to love"
+    expect(roles('The Tempest').antagonist).not.toBe('Ariel'); // "chastises Antonio, Alonso, and Sebastian for their crimes against Prospero"
+    expect(roles('Nineteen Eighty-Four')).toEqual({ antagonist: "O'Brien", ally: 'Julia' });
+    expect(roles('Red Dead Redemption 2')).toEqual({ antagonist: 'Dutch van der Linde', ally: 'John Marston' });
     // Recorded genres that map still lead, and are sourced.
     expect([read('Dracula').blueprint.genre, read('Dracula').origin.genres]).toEqual(['horror', 'sourced']);
   });

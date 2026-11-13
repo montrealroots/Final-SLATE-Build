@@ -57,7 +57,13 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
   - A story that names fewer than three often gives its people named once, then its unnamed ones ("the narrator").
   - The reader's results are kept per story. The catalog-wide proposal tests have 30 seconds: on CI one took 5.2s
     against the 5s default (`d55fc45`).
-  - Left: Polonius and Ariel's roles. Two stricter readings fixed them and broke more, so they were taken out.
+  - Roles (`pairOf` in `story-structure.ts`, after the owner asked to "fix perfectly what needs to be fixed"): who
+    is beside the lead is read between the two of them; who is against them is read from the whole sentence, unless
+    the act is plainly someone else's; two named together as the doers are beside each other.
+    - Compared over all 517 works: Polonius and Ariel are fixed; Julia, John Marston, Sancho, Ron and Hermione become
+      allies; O'Brien, Claudius, Voldemort and Tybalt are kept.
+    - About 15 works got worse, among them Long John Silver, Rue and Leo Galante. They are listed in
+      `docs/v5/CHARACTERS.md`.
 - **Real characters, O'Brien and Dracula (the owner: "make sure all adaptations have their real characters and 100%
   accuracy").** `docs/v5/CHARACTERS.md` lists every work's setting and people.
   - `storyPeople` and `storyPlaces` in `story-structure.ts` read the people and places a story names.

@@ -156,6 +156,46 @@ export function readStory(paragraphs: string[], cast: Cast[], lead: string | nul
   const story = devs.filter((d) => !d.background);
   story.forEach((d, i) => { d.at = story.length > 1 ? i / (story.length - 1) : 0; });
   assignRoles(story);
+  // Where each person is named in a sentence: their {key}, first name or other names, by position.
+  const spots = (t: string): { k: string; at: number; end: number }[] => {
+    const out: { k: string; at: number; end: number }[] = [];
+    for (const c of cast) for (const nm of [`{${c.key}}`, ...(c.first ? [c.first] : []), ...(c.also ?? [])]) {
+      for (let at = t.indexOf(nm); at >= 0; at = t.indexOf(nm, at + nm.length)) if (nm.startsWith('{') || (!WORD.test(t[at - 1] ?? ' ') && !WORD.test(t[at + nm.length] ?? ' '))) out.push({ k: c.key, at, end: at + nm.length });
+    }
+    return out.sort((x, y) => x.at - y.at);
+  };
+  // What a sentence that names two people says of them (from November 13, 2026). Tried against the whole catalog:
+  // - Beside each other: only what is said between them, one named just before the word (alone, or in a list of names)
+  //   and the other just after: "with help from Ariel", "Hamlet and Horatio", not "Polonius concludes that Hamlet's
+  //   madness is due to love". Read over the whole sentence, nouns ("love", "calls for help") made allies.
+  // - Against each other: the whole sentence, as before, except where every act against in it is plainly someone
+  //   else's, its doers named just before it and neither of the two among them: in "Ariel … chastises Antonio, Alonso,
+  //   and Sebastian for their crimes against Prospero", the crimes are the three men's. Read only between the two, as
+  //   the allies are, Claudius, Voldemort, O'Brien and Long John Silver stopped being against anyone.
+  // - Named together as the ones who act ("Prospero and Ariel thwart the conspiracy"): beside each other.
+  const LIST = /^(?:[\s,]|\band\b|\bor\b|\p{Lu}[\p{L}'’.-]*)*$/u; // commas, "and", and other names between
+  const doersOf = (t: string, at: { k: string; at: number; end: number }[], index: number) => {
+    const before = at.filter((x) => x.end <= index);
+    if (!before.length) return new Set<string>();
+    const left = [before.at(-1)!];
+    for (let n = before.length - 2; n >= 0 && LIST.test(t.slice(before[n].end, left.at(-1)!.at)); n--) left.push(before[n]);
+    return new Set(left.map((x) => x.k));
+  };
+  const matches = (re: RegExp, t: string) => [...t.matchAll(new RegExp(re.source, 'gi'))];
+  const joinedIn = (t: string, at: { k: string; at: number; end: number }[], a: string, b: string) =>
+    at.some((x, n) => n + 1 < at.length && x.k !== at[n + 1].k && [a, b].includes(x.k) && [a, b].includes(at[n + 1].k) && /^\s+and\s+$/.test(t.slice(x.end, at[n + 1].at)));
+  const pairOf = (t: string, a: string, b: string): { against: boolean; alongside: boolean } => {
+    const at = spots(t);
+    if (joinedIn(t, at, a, b)) return { against: false, alongside: true };
+    const others = matches(AGAINST, t).every((m) => { const d = doersOf(t, at, m.index!); return d.size > 0 && !d.has(a) && !d.has(b); });
+    const against = AGAINST.test(t) && !others;
+    const alongside = matches(ALONGSIDE, t).some((m) => {
+      const d = doersOf(t, at, m.index!);
+      const after = at.find((x) => x.at >= m.index! + m[0].length);
+      return !!after && ((d.has(a) && after.k === b) || (d.has(b) && after.k === a));
+    });
+    return { against, alongside };
+  };
   // Who the story has with the lead, and how: against, or alongside.
   const together: StoryReading['together'] = {};
   if (lead) {
@@ -169,10 +209,18 @@ export function readStory(paragraphs: string[], cast: Cast[], lead: string | nul
       const withLead: string[] = inIt.length === 1 && inIt[0] === lead && others.length === 1 ? [...inIt, ...others] : inIt;
       prior = inIt;
       if (!withLead.includes(lead)) continue;
+      const carried = withLead.length > inIt.length;
       for (const k of withLead) if (k !== lead) {
         const t = (together[k] ??= { against: 0, alongside: 0 });
-        if (AGAINST.test(s)) t.against += 1;
-        if (ALONGSIDE.test(s)) t.alongside += 1;
+        // A sentence carried over from the one before counts whole; one that names both is read by pairOf.
+        if (carried) {
+          if (AGAINST.test(s)) t.against += 1;
+          if (ALONGSIDE.test(s)) t.alongside += 1;
+          continue;
+        }
+        const side = pairOf(s, lead, k);
+        if (side.against) t.against += 1;
+        if (side.alongside) t.alongside += 1;
       }
     }
   }
