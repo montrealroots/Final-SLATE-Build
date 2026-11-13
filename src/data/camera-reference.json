@@ -1,0 +1,64 @@
+{
+ "about": "Manufacturer-sourced camera records (the owner's v7 package, CAM01-CAM03). No price is recorded, and a missing price is not free; a mode is only what the manufacturer lists, and maxima are never combined into a mode that doesn't exist.",
+ "cameras": [
+  {
+   "id": "camera:alexa35",
+   "name": "ARRI ALEXA 35",
+   "source_id": "CAM01",
+   "sensor": "Super 35",
+   "photosites": [
+    4608,
+    3164
+   ],
+   "manufacturer_dynamic_range_stops": 17,
+   "modes": [],
+   "price": null,
+   "availability_from": null,
+   "notes": "Mode/media limits must be selected from manufacturer specification; maxima cannot be combined.",
+   "source": {
+    "url": "https://www.arri.com/en/cine-systems/cine-cameras/legacy-cine-cameras/alexa-35",
+    "title": "ARRI ALEXA 35 technical page",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "id": "camera:fx3",
+   "name": "Sony FX3",
+   "source_id": "CAM02",
+   "sensor": "full frame",
+   "max_4k_fps": 120,
+   "price": null,
+   "availability_from": "2021-02-23",
+   "availability_basis": "announcement_not_guaranteed_retail_stock",
+   "notes": "Lens, recording media, power and audio kit are separate resources.",
+   "source": {
+    "url": "https://sony.mediaroom.com/2021-02-23-Sony-Electronics-Launches-FX3-Full-Frame-Camera-for-Cinematic-Look-and-Enhanced-Operability-for-Creators",
+    "title": "Sony FX3 launch",
+    "checked": "2026-11-13"
+   }
+  },
+  {
+   "id": "camera:bmpcc6kpro",
+   "name": "Blackmagic Pocket Cinema Camera 6K Pro",
+   "source_id": "CAM03",
+   "sensor": "Super 35",
+   "mount": "active EF",
+   "manufacturer_dynamic_range_stops": 13,
+   "modes": [
+    {
+     "width": 6144,
+     "height": 3456,
+     "max_fps": 50
+    }
+   ],
+   "price": null,
+   "availability_from": null,
+   "notes": "Deliberately omits a current price from historical cost simulation.",
+   "source": {
+    "url": "https://www.blackmagicdesign.com/products/blackmagicpocketcinemacamera/techspecs",
+    "title": "Blackmagic 6K Pro specifications",
+    "checked": "2026-11-13"
+   }
+  }
+ ]
+}
