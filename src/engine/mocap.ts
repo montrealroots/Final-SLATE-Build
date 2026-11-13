@@ -4,6 +4,7 @@
 // Contract terms are explicit: a booking reserves every planned session's stage cost; sessions draw it down once each;
 // cancelling releases what is unused except a cancellation fee of MOCAP_CANCEL_SHARE of it.
 
+import { dependents } from './production/tasks';
 import { FundsError, cancel, ledgerTotals, money, obligation, reserve, settle } from './budget';
 import { getPlace } from '../data/places';
 import { personById } from './people';
@@ -289,8 +290,10 @@ export function requestRetake(state: GameState, p: Project, characterId: string)
 export function takeChangeImpact(p: Project, characterId: string): Task[] {
   const cleanup = taskOf(p, 'anim:mocap-cleanup', characterId);
   if (!cleanup || cleanup.done <= 0) return [];
-  const anim = p.tasks.filter((t) => t.kind === 'anim:animation' && t.dependsOn.includes(cleanup.id) && t.done > 0);
-  return [cleanup, ...anim];
+  // Everything built on the cleanup, however far down (animation, then lighting, rendering and compositing on it): from
+  // November 13, 2026 (the v7 package's transitive rework); until then only the animation straight after it.
+  const hit = dependents(p.tasks, cleanup.id);
+  return [cleanup, ...p.tasks.filter((t) => t !== cleanup && hit.has(t.id) && t.done > 0)];
 }
 
 /** Choose the take that goes forward. Changing it after cleanup started resets cleanup and the animation built on it. */
