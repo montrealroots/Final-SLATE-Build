@@ -147,6 +147,7 @@ Projects.tsx,"""Story Setting Place""",1,decision,PlacePicker,projects.ts derive
 Projects.tsx,"""Production Base""",1,decision,PlacePicker,production/schedule.ts isWorkingDay; weather.ts,None: the world search of real places (destinations: milestone E),n/a,tests/depth-gaps-production.test.ts::rain stops an exterior day ; e2e/journeys.spec.ts::live action in a wet October
 Projects.tsx,"""Search Genres""",1,view,TextField (search),,"None: a control of the screen, not of the game",n/a,
 Projects.tsx,"""Years That Pass In The Story""",1,decision,NumberField,sequel.ts continueProject,"None: a quantity, entered as a number within its range",n/a,tests/minors.test.ts::ages a series' characters by the years that pass between seasons
+RecordBook.tsx,"""As Of""",1,view,SelectField,,"None: a control of the screen, not of the game",n/a,
 ReleasePlan.tsx,{PLAN_ROUTES[r].label},1,decision,Check,"release-plan.ts setReleasePlan, proposalRefusal, selfRefusal; finish.ts festivalHold",None: a yes or no,n/a,tests/release-plan.test.ts::festival-first holds every public release
 ReleasePlan.tsx,"""Plan Territories""",1,decision,TextField,"release-plan.ts buyerValue, proposeLicence, selfCosts, releaseYourself",None: entered as text,Unchanged,tests/release-plan.test.ts::where an exclusive deal holds the rights
 ReleasePlan.tsx,"""First Public Date""",1,decision,TextField (date),"release-plan.ts leadDays, releaseYourself (planRelease date)","None: a date or time, entered as one",n/a,tests/release-plan.test.ts::names every cost first
