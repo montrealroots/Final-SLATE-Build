@@ -23,6 +23,8 @@ The rules for a reading:
 - A genre counts once it has three uses and at least two different words.
 - The work's own title is taken out first, so "Theft" in Grand Theft Auto doesn't count.
 - A world (a western, science fiction, fantasy, the post-apocalyptic, cyberpunk) leads what happens in it.
+- A second or third genre needs five uses. Until a later fix the same day, Red Dead Redemption 2's one passage of war in
+  Guarma made it a war story too.
 - Common background (family, love, death, crime) leads only when nothing more particular is marked.
 - Kings and kingdoms aren't read. They read the Mushroom Kingdom as history.
 
@@ -59,10 +61,10 @@ These are game readings, and each one shows what it was read from.
 
 | Work | Medium | Proposed Genres | From |
 |---|---|---|---|
-| Captain Tsubasa | comic | sports, domestic-drama, romance | Its story |
+| Captain Tsubasa | comic | sports, domestic-drama | Its story |
 | Kuroko's Basketball | comic | sports | Its story |
-| Maus | comic | war, domestic-drama, tragedy | Its story |
-| The Crab with the Golden Claws | comic | gangster, detective, crime | Its story |
+| Maus | comic | war, domestic-drama | Its story |
+| The Crab with the Golden Claws | comic | gangster, crime | Its story |
 | Shakugan no Shana | light novel | fantasy | Its story |
 | A Thousand Splendid Suns | novel | coming-of-age, domestic-drama, romance | Its story |
 | Anna Karenina | novel | domestic-drama, romance | Its story |
@@ -72,87 +74,87 @@ These are game readings, and each one shows what it was read from.
 | Fathers and Sons | novel | domestic-drama, romance | Its story |
 | Infinity Blade: Redemption | novel | war, domestic-drama | Its story |
 | Lady Chatterley's Lover | novel | romance | Its story |
-| Madame Bovary | novel | domestic-drama, tragedy, romance | Its story |
-| Mrs Dalloway | novel | domestic-drama, romance | Its story |
+| Madame Bovary | novel | domestic-drama, tragedy | Its story |
+| Mrs Dalloway | novel | domestic-drama | Its story |
 | On the Road | novel | domestic-drama | Its story |
 | One Hundred Years of Solitude | novel | war, domestic-drama, tragedy | Its story |
-| Poor Folk | novel | domestic-drama, romance | Its story |
+| Poor Folk | novel | domestic-drama | Its story |
 | Resurrection | novel | crime, romance | Its story |
 | Siddhartha | novel | romance | Its story |
 | Sophie's World | novel | domestic-drama | Its story |
-| The Brothers Karamazov | novel | domestic-drama, crime | Its story |
+| The Brothers Karamazov | novel | domestic-drama | Its story |
 | The Fountainhead | novel | domestic-drama | Its story |
-| The Gambler | novel | romance, domestic-drama | Its story |
+| The Gambler | novel | romance | Its story |
 | The Idiot | novel | domestic-drama, romance | Its story |
 | The Kite Runner | novel | domestic-drama, romance | Its story |
 | The Master and Margarita | novel | fantasy | Its story |
-| The Picture of Dorian Gray | novel | romance, crime, tragedy | Its story |
-| The Plague | novel | tragedy, crime, domestic-drama | Its story |
-| The Sound and the Fury | novel | domestic-drama, tragedy | Its story |
+| The Picture of Dorian Gray | novel | romance | Its story |
+| The Plague | novel | tragedy | Its story |
+| The Sound and the Fury | novel | domestic-drama | Its story |
 | The Sun Also Rises | novel | romance | Its story |
-| The Tenant of Wildfell Hall | novel | domestic-drama, romance | Its story |
-| The Unbearable Lightness of Being | novel | domestic-drama, romance, tragedy | Its story |
+| The Tenant of Wildfell Hall | novel | domestic-drama | Its story |
+| The Unbearable Lightness of Being | novel | domestic-drama, romance | Its story |
 | To the Lighthouse | novel | domestic-drama | Its story |
 | Uncle Tom's Cabin | novel | domestic-drama, tragedy | Its story |
-| Wind and Truth | novel | war, domestic-drama, thriller | Its story |
+| Wind and Truth | novel | war | Its story |
 | Cherry Magic! Thirty Years of Virginity Can Make You a Wizard?! | online | romance | Its story |
-| Concerned | online | zombie, tragedy | Its story |
+| Concerned | online | zombie | Its story |
 | Fox Spirit Matchmaker | online | romance | Its story |
 | Heartstopper | online | coming-of-age, romance | Its story |
 | Nimona | online | fantasy | Its story |
 | Questionable Content | online | science-fiction | Its story |
 | The God of High School | online | sports | Its story |
-| Zahra’s Paradise | online | crime, domestic-drama | Its story |
+| Zahra’s Paradise | online | crime | Its story |
 | A Doll's House | play | domestic-drama, romance | Its story |
 | A Streetcar Named Desire | play | domestic-drama, romance | Its story |
 | Abhigyanashakuntalam | play | domestic-drama | Its story |
 | Love's Labour's Lost | play | romance | Its story |
 | Lysistrata | play | war | Its story |
-| Peer Gynt | play | domestic-drama, romance | Its story |
+| Peer Gynt | play | domestic-drama | Its story |
 | The Imaginary Invalid | play | domestic-drama, romance | Its story |
 | The Misanthrope | play | romance | Its story |
-| The Winter's Tale | play | domestic-drama, romance | Its story |
+| The Winter's Tale | play | domestic-drama | Its story |
 | Three Sisters | play | war, romance, domestic-drama | Its story |
-| Titus Andronicus | play | revenge, war, domestic-drama | Its story |
+| Titus Andronicus | play | revenge, domestic-drama | Its story |
 | Uncle Vanya | play | romance, domestic-drama | Its story |
-| Layla and Majnun | poem | romance, tragedy, domestic-drama | Its story |
+| Layla and Majnun | poem | romance | Its story |
 | Le Roman de la Rose | poem | romance | Its story |
-| Orlando Furioso | poem | fantasy, romance, tragedy | Its story |
-| Paradise Lost | poem | war, domestic-drama | Its story |
+| Orlando Furioso | poem | fantasy, romance | Its story |
+| Paradise Lost | poem | war | Its story |
 | Sir Gawain and the Green Knight | poem | domestic-drama | Its story |
 | The Raven | poem | romance | Its story |
 | Rashōmon | short story | survival | Its story |
 | The Adventure of the Red-Headed League | short story | crime | Its story |
 | The Lady with the Dog | short story | romance, domestic-drama | Its story |
-| The Legend of Sleepy Hollow | short story | horror, mystery, romance | Its story |
-| The Tale of the Bamboo Cutter | short story | romance, domestic-drama | Its story |
+| The Legend of Sleepy Hollow | short story | horror | Its story |
+| The Tale of the Bamboo Cutter | short story | romance | Its story |
 | Assassin's Creed | video game | thriller | Its story |
 | Assassin's Creed II | video game | revenge, thriller, domestic-drama | Its story |
-| Assassin's Creed IV: Black Flag | video game | sea-adventure, thriller, crime | Its story |
+| Assassin's Creed IV: Black Flag | video game | sea-adventure, thriller | Its story |
 | Call of Duty 2 | video game | war, military | Its story |
 | Call of Duty 4: Modern Warfare | video game | war, military | Its story |
 | Call of Duty: Modern Warfare 2 | video game | war, military | Its story |
 | Call of Duty: Modern Warfare 3 | video game | military | Its story |
 | Call of Duty: World at War | video game | war, military | Its story |
 | Dota 2 | video game | sports | Its story |
-| Far Cry 3 | video game | sea-adventure, crime, romance | Its story |
-| Far Cry 4 | video game | war, domestic-drama, crime | Its story |
-| Far Cry 5 | video game | war, tragedy | Its story |
-| Genshin Impact | video game | fantasy, war | Its story |
-| God of War | video game | war, horror, domestic-drama | Its story |
+| Far Cry 3 | video game | sea-adventure, crime | Its story |
+| Far Cry 4 | video game | war, domestic-drama | Its story |
+| Far Cry 5 | video game | war | Its story |
+| Genshin Impact | video game | fantasy | Its story |
+| God of War | video game | war, domestic-drama | Its story |
 | Grand Theft Auto III | video game | gangster, crime | Its story |
 | Grand Theft Auto IV | video game | gangster, crime, domestic-drama | Its story |
-| Grand Theft Auto V | video game | heist, gangster, crime | Its story |
+| Grand Theft Auto V | video game | heist, crime, domestic-drama | Its story |
 | Grand Theft Auto: San Andreas | video game | gangster, crime, domestic-drama | Its story |
-| Grand Theft Auto: Vice City | video game | gangster, crime, domestic-drama | Its story |
+| Grand Theft Auto: Vice City | video game | gangster, crime | Its story |
 | Mafia II | video game | gangster, war, domestic-drama | Its story |
-| Max Payne | video game | gangster, war, crime | Its story |
+| Max Payne | video game | gangster, crime, domestic-drama | Its story |
 | Metal Gear Solid | video game | spy, military, thriller | Its story |
 | Need for Speed: Most Wanted | video game | crime | Its story |
-| Red Dead Redemption | video game | western, war, domestic-drama | Its story |
-| Red Dead Redemption 2 | video game | western, gangster, war | Its story |
-| The Elder Scrolls IV: Oblivion | video game | war, thriller, crime | Its story |
-| Undertale | video game | horror, war | Its story |
+| Red Dead Redemption | video game | western, domestic-drama | Its story |
+| Red Dead Redemption 2 | video game | western, gangster | Its story |
+| The Elder Scrolls IV: Oblivion | video game | war, thriller | Its story |
+| Undertale | video game | horror | Its story |
 | Asterix | comic | action | Its medium |
 | Hetalia: Axis Powers | comic | action | Its medium |
 | Lucky Luke | comic | action | Its medium |

@@ -346,6 +346,18 @@ describe('genres read from the story when none recorded maps (November 13, 2026)
     expect(read('Red Dead Redemption 2').blueprint.genre).toBe('western');
     // Its name isn't its story: Grand Theft Auto VI's "theft" is its title.
     expect(read('Grand Theft Auto VI').why.genres).not.toMatch(/theft/);
+    // Red Dead Redemption 2 as the owner saw it: one war passage isn't a third genre; the logline is the event it opens on;
+    // the conflict is with the one the story has against Arthur; the question reads as English, in his pronouns.
+    const rdr = read('Red Dead Redemption 2').blueprint;
+    const said = (t: string) => t.replace(/\{(\w+)\}/g, (_, k: string) => rdr.characters.find((c) => c.key === k)!.name);
+    expect([rdr.genre, ...rdr.secondary]).toEqual(['western', 'gangster']);
+    expect(rdr.logline).toMatch(/^After a botched ferry heist in 1899/);
+    expect(said(rdr.conflict)).toBe('Arthur Morgan against Dutch van der Linde');
+    expect(said(rdr.question)).toBe('Can Arthur Morgan survive, and which will he choose: saving himself or saving the others?');
+    expect(rdr.scenes[0]).toMatchObject({ intExt: 'EXT', time: 'DAY' }); // the ferry heist is outside
+    expect(read('Red Dead Redemption 2').notes.join(' ')).toContain(`${rdr.scenes.length} scenes to build from`); // the scenes there are, not the room for them
+    // Prince Hamlet is counted by "Hamlet", not "Prince", and leads his own play.
+    expect(read('Hamlet').blueprint.characters[0].name).toBe('Prince Hamlet');
     // Recorded genres that map still lead, and are sourced.
     expect([read('Dracula').blueprint.genre, read('Dracula').origin.genres]).toEqual(['horror', 'sourced']);
   });

@@ -50,6 +50,26 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     and say so.
   - Tested in `tests/proposal.test.ts`: GTA III is gangster, Red Dead Redemption 2 is western, Dracula is unchanged.
   - Played: the adapt, sources, J03, v5-source-to-release and v5-series-release e2e on desktop.
+- **The brief's own words, after the owner looked at Red Dead Redemption 2 (same day).** Fixed in `proposal.ts`,
+  `story-structure.ts`, `story-genre.ts`:
+  - The question reads as English: "Can Arthur Morgan survive, and which will he choose: saving himself or saving the
+    others?" Every template speaks of each person in their own pronouns (it said "them" of everyone).
+  - Where the story has someone against the lead, the conflict and stakes name them (Arthur Morgan against Dutch van der
+    Linde), not the genre's "the way things are run".
+  - A story that opens on its event has it as the logline (the ferry heist, not the later bank robbery). A logline that
+    leans on the sentence before it ("He intends to marry…") or talks about play is not used.
+  - A second or third genre read from the story needs five uses, so one passage of war doesn't make a western a war film.
+  - Scenes told from a work are inside or outside, and day or night, by their own words.
+  - The work's page says what its story reads as, not "none is guessed".
+  - Characters are counted by their first name and their surname after any title: Prince Hamlet leads Hamlet (Laertes
+    did), Mr Darcy and Jay Gatsby count. Sentences no longer split at "Dr." or "Mr.".
+  - A missing third part is named for its place (Portal's was "The Lead").
+  - Summaries and stories are tidied of what the extracts leave ("Sailor Moon  is", "Expected , abbreviated"):
+    `tools/sources/tidy.mjs`, applied to 103 summaries and 117 story paragraphs and in both fetch tools.
+  - `tests/brief-language.test.ts` proposes all 643 works as a film and a series and fails a pronoun that isn't the
+    person's, a placeholder left in, or a question that isn't one.
+  - Known and left: the rival is still the next most-named person where the story shows no one against the lead (Moby-Dick
+    sets Ahab against Queequeg, not the whale); inside or outside is the arc's guess where a scene's words name neither.
 - **Every adaptation has the work's story.** The owner: "All adapted material should have a story behind it, even
   the copyrighted one." `tools/sources/plots.mjs` fetches each work's plot section from the English Wikipedia (CC BY-SA
   4.0, credited) into `src/data/plots.json`, one request at a time with back-off. Rerun `node tools/sources/plots.mjs`

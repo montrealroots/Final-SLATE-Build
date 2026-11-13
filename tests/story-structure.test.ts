@@ -8,7 +8,10 @@ const cast: Cast[] = [{ key: 'ana', first: 'Ana' }, { key: 'rook', first: 'Rook'
 
 describe('reading a story', () => {
   it('splits sentences on their ends, keeping names written {key} and quotes', () => {
-    expect(sentencesOf('{ana} runs. "Stop!" she says. Mr. Pell waits. 3 men come.')).toEqual(['{ana} runs.', '"Stop!" she says.', 'Mr.', 'Pell waits.', '3 men come.']);
+    // A title isn't a sentence's end: until November 13, 2026 this gave 'Mr.' and 'Pell waits.' apart. An initial isn't
+    // either; a Roman numeral is.
+    expect(sentencesOf('{ana} runs. "Stop!" she says. Mr. Pell waits. 3 men come.')).toEqual(['{ana} runs.', '"Stop!" she says.', 'Mr. Pell waits.', '3 men come.']);
+    expect(sentencesOf('J. R. Hartley walks. It was World War I. Then peace.')).toEqual(['J. R. Hartley walks.', 'It was World War I.', 'Then peace.']);
     expect(hasWord('Anastasia came', 'Ana')).toBe(false);
     expect(hasWord('Then Ana came', 'Ana')).toBe(true);
   });

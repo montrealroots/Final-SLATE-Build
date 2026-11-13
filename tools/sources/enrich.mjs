@@ -15,6 +15,7 @@
 //
 // It also adds Brandon Sanderson's works as Wikidata records them (the v4 package names his bibliography as a research
 // target), and writes docs/v4/SOURCE-COVERAGE.md: what each field covers, by medium, and his works by form.
+import { tidy } from './tidy.mjs';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { GENRE_MAP } from './genre-map.mjs';
 import { toRecord } from './import.mjs';
@@ -122,7 +123,7 @@ async function summary(article, retrieved) {
   if (!title) return null;
   const s = await get(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`, 'application/json');
   if (!s?.extract || s.type === 'disambiguation') return null;
-  return { text: s.extract, from: 'English Wikipedia', article: s.titles?.normalized ?? title.replace(/_/g, ' '), link: s.content_urls?.desktop?.page ?? article, licence: 'CC BY-SA 4.0', retrieved };
+  return { text: tidy(s.extract), from: 'English Wikipedia', article: s.titles?.normalized ?? title.replace(/_/g, ' '), link: s.content_urls?.desktop?.page ?? article, licence: 'CC BY-SA 4.0', retrieved };
 }
 
 const pct = (n, d) => (d ? `${Math.round((n / d) * 100)}%` : '0%');

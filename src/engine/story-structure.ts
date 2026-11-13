@@ -21,7 +21,7 @@
 /** Words that turn a story: something found out, won, lost, ended or begun. Game calibration, read whole-word. */
 export const TURNS = /\b(discover(s|ed)?|learn(s|ed)?|realis(es|ed)|realiz(es|ed)|reveal(s|ed)?|find(s)? out|found out|kill(s|ed)?|die(s|d)?|dead|murder(s|ed)?|escape(s|d)?|betray(s|ed)?|decide(s|d)?|refuse(s|d)?|confront(s|ed)?|defeat(s|ed)?|destroy(s|ed)?|captur(es|ed)|arrest(s|ed)?|rescue(s|d)?|marr(y|ies|ied)|flee(s)?|fled|attack(s|ed)?|abandon(s|ed)?|return(s|ed)? (to|home)|leave(s)? for good|confess(es|ed)?|wins?|won|loses|lost|vow(s|ed)?|agree(s|d)? to|sets out|set out|begins|traps?|trapped|trick(s|ed)?|recruit(s|ed)?|invite(s|d)?|summon(s|ed)?|hire(s|d)?|arrive(s|d)?)\b/i;
 /** Words for acting against someone. */
-const AGAINST = /\b(kill(s|ed)?|attack(s|ed)?|betray(s|ed)?|captur(es|ed)|imprison(s|ed)?|threaten(s|ed)?|fight(s)?|fought|defeat(s|ed)?|murder(s|ed)?|hunt(s|ed)?|chase(s|d)?|trap(s|ped)?|deceive(s|d)?|confront(s|ed)?|oppose(s|d)?|rival|enemy|enemies)\b/i;
+const AGAINST = /\b(against|abandon(s|ed)?|double-cross(es|ed)?|turn(s|ed)? on|accuse(s|d)?|execute(s|d)?|shoot(s)?|shot|kill(s|ed)?|attack(s|ed)?|betray(s|ed)?|captur(es|ed)|imprison(s|ed)?|threaten(s|ed)?|fight(s)?|fought|defeat(s|ed)?|murder(s|ed)?|hunt(s|ed)?|chase(s|d)?|trap(s|ped)?|deceive(s|d)?|confront(s|ed)?|oppose(s|d)?|rival|enemy|enemies)\b/i;
 /** Words for acting alongside someone. */
 const ALONGSIDE = /\b(help(s|ed)?|join(s|ed)?|rescue(s|d)?|marr(y|ies|ied)|befriend(s|ed)?|ally|allies|friend|together|accompan(y|ies|ied)|travel(s|led)? with|protect(s|ed)?|save(s|d)?|love(s|d)?|guide(s|d)?)\b/i;
 /**
@@ -30,7 +30,7 @@ const ALONGSIDE = /\b(help(s|ed)?|join(s|ed)?|rescue(s|d)?|marr(y|ies|ied)|befri
  * also turns the story. Found November 13, 2026 in the stories of The Hobbit and Portal, where such sentences became
  * scenes and the real start of Portal's story was read as its climax.
  */
-const ABOUT = /\b(the (game|player|novel|book|series|story|film|comic|manga|reader|narrative|plot) (features|involves|is set|takes place|centres|centers|follows|opens)|gameplay|the player|takes place (in|within)|is set (in|within)|features (two|three|four|several|many)|the protagonist,|main characters?|prominent characters?|the plot involves)\b/i;
+const ABOUT = /\b(the (game|player|novel|book|series|story|film|comic|manga|reader|narrative|plot) (features|involves|is set|takes place|centres|centers|follows|opens)|gameplay|the player|takes place (in|within)|is set (in|within)|features (two|three|four|several|many)|the protagonist,|main characters?|prominent characters?|the plot involves|after the credits|(is|was) a reference to)\b/i;
 /** Where a story moves in time, which starts a new development. */
 const MOVES_ON = /^(Meanwhile|Later|Afterwards?|After that|The next (day|morning|night|week|year)|Years later|Months later|Weeks later|Some time later|Eventually|In the end|Finally|Back (in|at)|Elsewhere|That night|At dawn|On the way)\b/i;
 
@@ -58,7 +58,11 @@ export interface Development {
   at: number;
 }
 /** A person in the story: their {key}, and the first name that also names them where it is theirs alone. */
-export interface Cast { key: string; first: string | null }
+export interface Cast {
+  key: string; first: string | null;
+  /** Other single words that name them alone: a surname no one else has, or the name after a title ("Hamlet" of "Prince Hamlet"). */
+  also?: string[];
+}
 export interface StoryReading { developments: Development[]; rival: string | null; ally: string | null; together: Record<string, { against: number; alongside: number }> }
 
 /** A letter or digit: what a whole word must not run into, either side. */
@@ -70,6 +74,7 @@ export function hasWord(t: string, w: string): boolean {
 }
 
 const CLOSERS = '"\'\u201d)]';
+const ABBREVIATIONS = new Set(['Mr', 'Mrs', 'Ms', 'Dr', 'St', 'Mt', 'Jr', 'Sr', 'Prof', 'Capt', 'Col', 'Gen', 'Lt', 'Sgt', 'Rev', 'Hon', 'Gov', 'Sen', 'Rep', 'Fr', 'Messrs', 'vs']);
 const OPENERS = '"\'\u201c([{';
 const isUpper = (c: string) => c !== c.toLowerCase() || (c >= '0' && c <= '9');
 /**
@@ -91,6 +96,13 @@ export function sentencesOf(text: string): string[] {
     if (k === j || k >= text.length) continue;
     const n = text[k];
     if (!isUpper(n) && !OPENERS.includes(n)) continue;
+    // A title or an initial isn't the end of a sentence: "a walk with Dr. Watson" split into two until November 13, 2026.
+    if (c === '.' && j === i + 1) {
+      let b = i;
+      while (b > 0 && /[A-Za-z]/.test(text[b - 1])) b -= 1;
+      const word = text.slice(b, i);
+      if (ABBREVIATIONS.has(word) || (word.length === 1 && word !== word.toLowerCase() && !'IVX'.includes(word))) continue; // not a numeral: World War I.
+    }
     const x = text.slice(from, j).trim();
     if (x) out.push(x);
     from = k;
@@ -107,7 +119,7 @@ export function sentencesOf(text: string): string[] {
  * recorded places. Pure.
  */
 export function readStory(paragraphs: string[], cast: Cast[], lead: string | null, places: string[]): StoryReading {
-  const named = (t: string) => cast.filter((c) => t.includes(`{${c.key}}`) || (c.first !== null && hasWord(t, c.first))).map((c) => c.key);
+  const named = (t: string) => cast.filter((c) => t.includes(`{${c.key}}`) || (c.first !== null && hasWord(t, c.first)) || (c.also ?? []).some((a) => hasWord(t, a))).map((c) => c.key);
   const placeIn = (t: string) => places.find((x) => t.includes(x)) ?? null;
   // Split each paragraph where the story moves on in time or to another recorded place.
   const runs: string[][] = [];
@@ -251,3 +263,19 @@ export const PURPOSE: Record<Role, string> = {
   climax: 'Settle the conflict',
   resolution: 'Show what has changed',
 };
+
+/**
+ * Whether a scene is inside or outside, and when, from what its words name (from November 13, 2026). Until then a scene
+ * told from a work took both from the beat at its point in the arc, so Red Dead Redemption 2's ferry heist was an
+ * interior. A place word counts once; the side with more wins, and a tie or nothing leaves it to the caller. Game reading.
+ */
+const OUTSIDE = ['street', 'streets', 'road', 'field', 'fields', 'forest', 'woods', 'river', 'sea', 'ocean', 'shore', 'beach', 'desert', 'mountain', 'mountains', 'battlefield', 'battle', 'ranch', 'ferry', 'ship', 'boat', 'train', 'heist', 'shootout', 'ambush', 'chase', 'storm', 'garden', 'park', 'bridge', 'village', 'harbour', 'harbor', 'island', 'jungle', 'swamp', 'camp', 'outside', 'rooftop', 'horseback', 'sails', 'trench', 'front', 'graveyard', 'cemetery', 'square', 'docks', 'farm'];
+const INSIDE = ['room', 'house', 'home', 'office', 'apartment', 'hall', 'bar', 'saloon', 'church', 'prison', 'cell', 'hospital', 'palace', 'mansion', 'laboratory', 'chamber', 'bedroom', 'kitchen', 'ballroom', 'restaurant', 'hotel', 'inside', 'classroom', 'courtroom', 'library', 'study', 'castle', 'party', 'dinner', 'ball', 'facility', 'bunker', 'vault', 'bank', 'casino', 'club', 'theatre', 'theater', 'shop', 'school'];
+const TIMES: [Exclude<SceneLook['time'], null>, string[]][] = [['NIGHT', ['night', 'midnight', 'nightfall']], ['DAWN', ['dawn', 'sunrise', 'daybreak']], ['DUSK', ['dusk', 'sunset', 'evening', 'twilight']]];
+export interface SceneLook { intExt: 'INT' | 'EXT' | null; time: 'DAY' | 'NIGHT' | 'DUSK' | 'DAWN' | null }
+export function sceneLook(text: string): SceneLook {
+  const t = text.toLowerCase();
+  const out = OUTSIDE.filter((w) => hasWord(t, w)).length;
+  const inn = INSIDE.filter((w) => hasWord(t, w)).length;
+  return { intExt: out > inn ? 'EXT' : inn > out ? 'INT' : null, time: TIMES.find(([, ws]) => ws.some((w) => hasWord(t, w)))?.[0] ?? null };
+}

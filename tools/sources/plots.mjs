@@ -12,6 +12,7 @@
 // article's words and credited, never as the game's. A copyrighted work's article is Wikipedia's writing about the work,
 // not the work, and is credited the same way. A work whose article has no such section has no story here, and the game
 // says so. Requests go one at a time and back off when Wikimedia asks (429), as its rate-limit guidance says.
+import { tidy } from './tidy.mjs';
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
@@ -64,7 +65,7 @@ export function storyOf(found) {
   const other = filled.filter((x) => x.title && NOT_STORY.test(x.title));
   const plot = filled.filter((x) => x.title && PLOT_PART.test(x.title));
   const told = !other.length ? filled : plot.length ? plot : filled.filter((x) => !other.includes(x)).length ? filled.filter((x) => !other.includes(x)) : filled;
-  const paragraphs = told.flatMap((x) => x.paragraphs);
+  const paragraphs = told.flatMap((x) => x.paragraphs).map(tidy);
   const kept = [];
   let size = 0;
   for (const p of paragraphs) { if (size + p.length > MOST && kept.length) break; kept.push(p); size += p.length; }

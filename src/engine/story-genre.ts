@@ -48,6 +48,11 @@ export const GENRE_WORDS: Record<string, string[]> = {
 export const GENRE_MIN_USES = 3;
 export const GENRE_MIN_WORDS = 2;
 /**
+ * Uses a genre needs to stand beside the first. Red Dead Redemption 2's one passage of war in Guarma (army twice, war
+ * once) made it a war story as well as a western until November 13, 2026.
+ */
+export const GENRE_SECONDARY_USES = 5;
+/**
  * Genres a story can mark only as a background. These words come up in most stories (family, death, a king in the
  * past), so they lead only when nothing more particular does.
  */
@@ -89,3 +94,11 @@ export function readGenres(text: string, have: ReadonlySet<string>, title = ''):
 
 /** What a reading was made from, in words: "mafia (4), cartel (3), gang (2)". */
 export const readingWords = (r: GenreReading): string => r.words.slice(0, 4).map(([w, n]) => `${w} (${n})`).join(', ');
+
+/**
+ * The genres a work's story marks, as a brief proposes them: read from its summary and its story, the first and those
+ * strong enough to stand beside it. The work's page shows the same reading (SourcePicker.tsx), so the two never differ.
+ */
+export function storyGenres(work: { title: string; summary?: { text: string } | null; plot?: { paragraphs: string[] } | null }, have: ReadonlySet<string>): GenreReading[] {
+  return readGenres(`${work.summary?.text ?? ''} ${(work.plot?.paragraphs ?? []).join(' ')}`, have, work.title).filter((r, n) => n === 0 || r.uses >= GENRE_SECONDARY_USES);
+}
