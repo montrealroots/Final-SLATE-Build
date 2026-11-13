@@ -118,8 +118,9 @@ test('J02: a family loan, a feature on a rented kit, a harbour filmed abroad wit
   const plan = await guide((p) => p);
   for (let i = 0; i < 12 && !(await box.innerText()).startsWith('Guide Me staffed'); i++) { await advance(page, 'next-day'); await open(page, 'Crew'); }
   await expect(box).toContainText(/^Guide Me staffed Camera: \$[\d,]+ of the \$[\d,]+ ceiling committed\./);
-  const mandates = (await project(page)).mandates.filter((m: { dept: string }) => m.dept === 'Camera');
-  expect(mandates.map((m: { ceiling: number; ended?: string }) => [m.ceiling, m.ended])).toEqual([[100, expect.any(String)], [plan, 'done']]);
+  // The screen can say it before the save does (CI on 1dae13a, November 13, 2026): read the save until it has it.
+  const cameraMandates = async () => (await project(page)).mandates.filter((m: { dept: string }) => m.dept === 'Camera').map((m: { ceiling: number; ended?: string }) => [m.ceiling, m.ended]);
+  await expect.poll(cameraMandates, { timeout: 30_000 }).toEqual([[100, expect.any(String)], [plan, 'done']]);
 
   // Cast and crewed; the schedule built once they have said yes. The unit travels to Bergen the working day before.
   await castRoles(page);
