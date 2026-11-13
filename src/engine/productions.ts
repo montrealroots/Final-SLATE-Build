@@ -12,7 +12,8 @@
 // The slate is topped up as productions wrap, never reset, and nothing is made up to be dramatic: a production does
 // what its dates say. Names, companies and results are invented and labelled; so are the world's studios' slates.
 import { stream } from './rng';
-import { addLog, registerHandler, schedule } from './state';
+import { addLog, cancelEvents, registerHandler, schedule } from './state';
+import { moveJob, releaseJob } from './jobs';
 import { DAY, addDaysToKey, dateKey } from './time';
 import type { GameState } from './types';
 
@@ -33,6 +34,12 @@ export interface Production {
   releasesOn: string;
   /** How it was received when it came out: simulated, labelled so. */
   result?: { reception: number };
+  /**
+   * A week before it shoots, it is confirmed, put back, or cancelled (from November 13, 2026). `delayedDays`: how far its
+   * dates moved; `cancelled`: it won't be made. Decided once, from the seed, never to make news.
+   */
+  delayedDays?: number;
+  cancelled?: true;
 }
 
 /** How many productions the slate keeps before they wrap, and how far ahead they are dated. Game calibration. */
@@ -50,7 +57,7 @@ export const productionById = (s: GameState, id: string): Production | undefined
 export function slateHere(state: GameState, placeId: string, zone: string): Production[] {
   const all = (state.productions ??= []);
   const today = dateKey(state.now, zone);
-  const live = () => all.filter((p) => p.placeId === placeId && p.wrapsOn >= today);
+  const live = () => all.filter((p) => p.placeId === placeId && p.wrapsOn >= today && !p.cancelled);
   while (live().length < SLATE_SIZE) {
     // Its draw is keyed by how many productions this place has had: the same save makes the same slate, and a later one
     // never changes an earlier one.
@@ -77,14 +84,51 @@ export function slateHere(state: GameState, placeId: string, zone: string): Prod
     all.push(p);
     const [y, m, d] = releasesOn.split('-').map(Number);
     schedule(state, Date.UTC(y, m - 1, d, 9), 'production-release', { id: p.id }, { attention: 'silent', priority: 70, id: `prod-release:${p.id}` });
+    const [cy, cm, cd] = addDaysToKey(shootsFrom, -CONFIRM_DAYS).split('-').map(Number);
+    schedule(state, Math.max(state.now + 1, Date.UTC(cy, cm - 1, cd, 9)), 'production-confirm', { id: p.id }, { attention: 'silent', priority: 69, id: `prod-confirm:${p.id}` });
   }
   return live();
 }
 
+/**
+ * A week before it shoots, a production is confirmed, put back or cancelled, as productions are (the owner's v5 brief, 7:
+ * "delays", and "cancellation must resolve existing commitments"). Game calibration: one in ten is put back three to six
+ * weeks, one in twenty cancelled. Put back, its dates move and so do the days of the work taken on it, which the player
+ * keeps unless the new days clash with their own shoot or other work, when they are released and paid the kill fee.
+ * Cancelled, open offers on it close and work taken on it is paid the kill fee: two days' pay, with no mark on the
+ * player's record. Nothing here is drawn to make news: each production is decided once, from its own draw.
+ */
+export const CONFIRM_DAYS = 7;
+export const KILL_FEE_DAYS = 2;
+registerHandler('production-confirm', (state, ev) => {
+  const p = productionById(state, String(ev.payload.id));
+  if (!p || p.cancelled || p.delayedDays !== undefined) return { suppressInterrupt: true };
+  const r = stream(state.seed, 'production-confirm', p.id)();
+  const mine = (state.jobs ?? []).filter((j) => j.productionId === p.id && (j.status === 'offered' || j.status === 'accepted'));
+  if (r < 0.05) {
+    p.cancelled = true;
+    cancelEvents(state, (e) => e.id === `prod-release:${p.id}`);
+    for (const j of mine) releaseJob(state, j, `${p.title} was cancelled before it shot.`);
+    if (mine.length) return { message: `${p.title} was cancelled. Your work on it is released, with a fee for it.` };
+    return { suppressInterrupt: true };
+  }
+  if (r < 0.15) {
+    const by = 21 + Math.floor(stream(state.seed, 'production-delay', p.id)() * 22);
+    p.delayedDays = by;
+    p.shootsFrom = addDaysToKey(p.shootsFrom, by); p.wrapsOn = addDaysToKey(p.wrapsOn, by); p.releasesOn = addDaysToKey(p.releasesOn, by);
+    cancelEvents(state, (e) => e.id === `prod-release:${p.id}`);
+    const [y, m, d] = p.releasesOn.split('-').map(Number);
+    schedule(state, Date.UTC(y, m - 1, d, 9), 'production-release', { id: p.id }, { attention: 'silent', priority: 70, id: `prod-release:${p.id}` });
+    for (const j of mine) moveJob(state, j, by);
+    if (mine.length) return { message: `${p.title} was put back ${by} days.` };
+  } else p.delayedDays = 0;
+  return { suppressInterrupt: true };
+});
+
 /** A production comes out on its date and is received. Simulated. The player hears of it only if they worked on it. */
 registerHandler('production-release', (state, ev) => {
   const p = productionById(state, String(ev.payload.id));
-  if (!p || p.result) return { suppressInterrupt: true };
+  if (!p || p.result || p.cancelled) return { suppressInterrupt: true };
   const r = stream(state.seed, 'production-result', p.id);
   p.result = { reception: Math.round(35 + r() * 50) };
   const worked = (state.jobs ?? []).filter((j) => j.productionId === p.id && j.attended.length > 0);

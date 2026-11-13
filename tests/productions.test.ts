@@ -1,11 +1,13 @@
 // Other people's productions, kept (src/engine/productions.ts; jobs.ts; the owner's v5 brief, 7). Names, companies and
 // results are the game's, labelled; these tests are about what persists and what follows from what.
 import { describe, expect, it } from 'vitest';
-import { SLATE_SIZE, industryStanding, productionById, slateHere } from '../src/engine/productions';
-import { acceptRefusal, askBetterRate, evidenceFor, rolesOffered, type OutsideJob } from '../src/engine/jobs';
+import { KILL_FEE_DAYS, SLATE_SIZE, industryStanding, productionById, slateHere } from '../src/engine/productions';
+import { personalBalance } from '../src/engine/personal';
+import { stream } from '../src/engine/rng';
+import { acceptJob, acceptRefusal, askBetterRate, evidenceFor, reliability, rolesOffered, type OutsideJob } from '../src/engine/jobs';
 import { deserialize, serialize } from '../src/engine/save';
 import { processUntil, schedule } from '../src/engine/state';
-import { DAY } from '../src/engine/time';
+import { DAY, addDaysToKey } from '../src/engine/time';
 import type { GameState } from '../src/engine/types';
 import { approve, buildProject, startLife } from './helpers';
 
@@ -84,5 +86,42 @@ describe('work on one', () => {
     expect(industryStanding(s)).toBeCloseTo(1.2);
     p.result = { reception: 40 };
     expect(industryStanding(s)).toBeCloseTo(0.8);
+  });
+});
+
+describe('confirmed, put back or cancelled', () => {
+  /** A production of the slate whose confirmation draw says what is asked for, and a job taken on it (labelled fixture). */
+  function withJob(tag: string, want: (r: number) => boolean) {
+    for (let i = 0; i < 400; i++) {
+      const s = startLife(`${tag}-${i}`);
+      const p = slateHere(s, s.locationId, 'Europe/London').find((x) => want(stream(s.seed, 'production-confirm', x.id)()));
+      if (!p) continue;
+      const days = [p.shootsFrom, addDaysToKey(p.shootsFrom, 1)];
+      (s.jobs ??= []).push({ id: 'taken', role: 'acting', production: p.title, company: p.company, productionId: p.id, part: `The part of ${p.parts[1].name}`, dayRate: 400, days, placeId: s.locationId, zone: 'Europe/London', status: 'offered', offeredAt: s.now, answerBy: s.now + 7 * DAY, attended: [], missed: [] });
+      acceptJob(s, 'taken');
+      return { s, p, j: s.jobs!.find((x) => x.id === 'taken')! };
+    }
+    throw new Error('no such production in 400 worlds');
+  }
+
+  it('cancelled, the work taken on it is released and paid its kill fee, with nothing against the player', () => {
+    const { s, p, j } = withJob('prod-cancel', (r) => r < 0.05);
+    const before = personalBalance(s);
+    processUntil(s, Date.parse(`${p.shootsFrom}T00:00:00Z`) - DAY, 'tick', 100_000);
+    expect([p.cancelled, j.status]).toEqual([true, 'cancelled']);
+    expect(personalBalance(s) - before).toBe(400 * KILL_FEE_DAYS);
+    expect(s.events.some((e) => e.kind === 'job-day' && e.payload.jobId === j.id)).toBe(false);
+    expect(reliability(s)).toBe(1);
+    expect(slateHere(s, s.locationId, 'Europe/London').some((x) => x.id === p.id)).toBe(false); // the slate moves on
+  });
+
+  it('put back, its dates move and so do the days of the work taken on it', () => {
+    const { s, p, j } = withJob('prod-delay', (r) => r >= 0.05 && r < 0.15);
+    const first = j.days[0];
+    processUntil(s, Date.parse(`${p.shootsFrom}T00:00:00Z`) - DAY, 'tick', 100_000);
+    expect(p.delayedDays).toBeGreaterThanOrEqual(21);
+    expect(j.days[0]).toBe(addDaysToKey(first, p.delayedDays!));
+    expect(j.status).toBe('accepted');
+    expect(s.events.filter((e) => e.kind === 'job-day' && e.payload.jobId === j.id).map((e) => e.payload.date)).toEqual(j.days);
   });
 });

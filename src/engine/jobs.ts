@@ -13,10 +13,10 @@ import { personalBalance, postPersonal } from './personal';
 import { agentById, recordFor, representedBy } from './representation';
 import { stream } from './rng';
 import { addLog, cancelEvents, currentPlace, newId, registerHandler, schedule } from './state';
-import { dateKey, DAY, formatDateKey, localToInstant, parseYmd, weekdayOfKey } from './time';
+import { addDaysToKey, dateKey, DAY, formatDateKey, localToInstant, parseYmd, weekdayOfKey } from './time';
 import { money } from './budget';
 import { getPlace } from '../data/places';
-import { PRODUCTION_KIND_LABELS, daysUntil, industryStanding, shootingDays, slateHere, type Production } from './productions';
+import { KILL_FEE_DAYS, PRODUCTION_KIND_LABELS, daysUntil, industryStanding, shootingDays, slateHere, type Production } from './productions';
 import type { GameState } from './types';
 
 export type JobRole = 'acting' | 'writing' | 'directing';
@@ -41,7 +41,8 @@ export interface OutsideJob {
   days: string[];
   placeId: string;
   zone: string;
-  status: 'offered' | 'accepted' | 'declined' | 'lapsed' | 'withdrawn' | 'done';
+  /** 'cancelled': the production was cancelled under it (productions.ts), from November 13, 2026; the player is paid a fee for it. */
+  status: 'offered' | 'accepted' | 'declined' | 'lapsed' | 'withdrawn' | 'done' | 'cancelled';
   offeredAt: number;
   answerBy: number;
   /** An agent found it: their share of the pay. */
@@ -252,7 +253,7 @@ export function withdrawJob(state: GameState, id: string): void {
 }
 
 /** What the job pays for the days worked, less commission, posted once. */
-function pay(state: GameState, j: OutsideJob): void {
+export function pay(state: GameState, j: OutsideJob): void {
   const gross = j.dayRate * j.attended.length;
   if (gross <= 0) return; // earned pay opens an account even in a story from before one existed
   postPersonal(state, 'paid-work', gross, `Paid For ${JOB_ROLES[j.role].label} On ${j.production}`, `job:${j.id}`);
@@ -276,6 +277,36 @@ registerHandler('job-day', (state, ev) => {
   addLog(state, text, there ? 'personal' : 'warning', { route: { view: 'profile' } });
   return { message: text, suppressInterrupt: there };
 });
+
+/**
+ * The production let the work go (productions.ts): an offer closes; work taken is paid the kill fee for it (two days),
+ * its days come off the calendar, and nothing counts against the player.
+ */
+export function releaseJob(state: GameState, j: OutsideJob, why: string): void {
+  if (j.status === 'offered') { j.status = 'lapsed'; cancelEvents(state, (e) => e.id === `job-lapse:${j.id}` || e.id === `job-counter:${j.id}`); addLog(state, `${why} Its offer of work is closed.`, 'personal', { route: { view: 'profile' } }); return; }
+  j.status = 'cancelled';
+  for (const pid of j.planIds ?? []) { const plan = state.plans.find((x) => x.id === pid); if (plan?.status === 'upcoming') plan.status = 'cancelled'; }
+  cancelEvents(state, (e) => e.kind === 'job-day' && e.payload.jobId === j.id);
+  pay(state, j); // the days already worked
+  const fee = j.dayRate * KILL_FEE_DAYS;
+  postPersonal(state, 'paid-work', fee, `Kill Fee: ${j.production}`, `job-kill:${j.id}`);
+  if (j.viaAgent) postPersonal(state, 'commission', -Math.round(fee * j.viaAgent.rate), `Commission To ${agentById(j.viaAgent.agentId).name}: ${Math.round(j.viaAgent.rate * 100)}% Of ${money(fee)}`, `job-kill-commission:${j.id}`);
+  addLog(state, `${why} You are paid ${money(fee)} for the work it let go, and nothing counts against you.`, 'personal', { route: { view: 'profile' } });
+}
+
+/** The production was put back: the work's days move with it, unless the new days clash, when the work is let go. */
+export function moveJob(state: GameState, j: OutsideJob, by: number): void {
+  const moved = { ...j, days: j.days.map((k) => addDaysToKey(k, by)) };
+  if (j.status === 'accepted' && jobClash(state, moved)) return releaseJob(state, j, `${j.production} was put back ${by} days, onto days you already have work.`);
+  const was = j.status;
+  if (was === 'accepted') {
+    for (const pid of j.planIds ?? []) { const plan = state.plans.find((x) => x.id === pid); if (plan?.status === 'upcoming') plan.status = 'cancelled'; }
+    cancelEvents(state, (e) => e.kind === 'job-day' && e.payload.jobId === j.id);
+  }
+  j.days = moved.days;
+  if (was === 'accepted') { j.status = 'offered'; j.answerBy = Math.max(j.answerBy, state.now); acceptJob(state, j.id); }
+  addLog(state, `${j.production} was put back ${by} days. Your work on it moves with it: ${formatDateKey(j.days[0])} to ${formatDateKey(j.days.at(-1)!)}.`, 'personal', { route: { view: 'profile' } });
+}
 
 /** Credits from work for others: a job with a day worked. */
 export const jobCredits = (s: GameState): OutsideJob[] => (s.jobs ?? []).filter((j) => (j.status === 'done' || j.status === 'withdrawn') && j.attended.length > 0);

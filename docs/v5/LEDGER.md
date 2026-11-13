@@ -141,8 +141,12 @@ survives a reload, and has a test that fails without it. The order of work is at
     on two jobs on others' sets.
 - **Evidence.** `tests/productions.test.ts` (6 tests), `tests/jobs.test.ts`, and `e2e/j10.spec.ts` and
   `e2e/jobs.spec.ts`, on desktop and phone.
-- **Still open.** Productions are local to the place the player is in. Delays and cancellations of others'
-  productions aren't modelled.
+- **Delays and cancellations (added later on November 13, 2026).** A week before it shoots, a production is confirmed,
+  put back three to six weeks (one in ten), or cancelled (one in twenty). Each production is decided once, from its own
+  draw. Put back, the work taken on it moves with it, unless the new days clash with the player's own shoot or other
+  work. Cancelled, or released by a clash, the work is paid a kill fee of two days' pay, with nothing against the
+  player. Open offers close.
+- **Still open.** Productions are local to the place the player is in.
 
 ## 8. Metrics And Historical Continuation
 

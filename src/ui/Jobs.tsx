@@ -18,7 +18,8 @@ function ProductionLine({ j }: { j: OutsideJob }) {
   const g = useGame();
   const p = j.productionId ? productionById(g, j.productionId) : undefined;
   if (!p) return null;
-  return <div className="dim small">{PRODUCTION_KIND_LABELS[p.kind]}{p.episodes ? ` of ${p.episodes} episodes` : ''}, {p.genre}: it shoots {formatDateKey(p.shootsFrom)} to {formatDateKey(p.wrapsOn)} and comes out {formatDateKey(p.releasesOn)}.</div>;
+  if (p.cancelled) return <div className="dim small">{PRODUCTION_KIND_LABELS[p.kind]}, {p.genre}: cancelled before it shot.</div>;
+  return <div className="dim small">{PRODUCTION_KIND_LABELS[p.kind]}{p.episodes ? ` of ${p.episodes} episodes` : ''}, {p.genre}: it shoots {formatDateKey(p.shootsFrom)} to {formatDateKey(p.wrapsOn)} and comes out {formatDateKey(p.releasesOn)}.{p.delayedDays ? ` Put back ${p.delayedDays} days.` : ''}</div>;
 }
 
 export function WorkForOthersCard() {
