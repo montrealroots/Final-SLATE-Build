@@ -44,6 +44,22 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **The v6 package, "SLATE: Connected Realism" (the owner, November 13, 2026, after #88).** It is in `docs/v6/package`
+  (unchanged; MANIFEST.json hashes match). Its 48 requirements are tracked in `docs/v6/requirements.csv`
+  (`tests/v6-ledger.test.ts` fails a missing row, a status not the package's own, a cited file that doesn't exist, or a
+  verified row without a test). Work goes in the package's phase order (10-DELIVERY-AND-COVERAGE.md).
+  - *Done:* the audit (Phase A); J03, no invented people (one person is a story; no one is incomplete, one part); the
+    first slice of recorded history (Phase B): `src/engine/history.ts`, `src/data/history/awards-2026.json` (2026 Golden
+    Globes and Oscars, read from the organizers' pages), the Recorded Results card, J01 as `e2e/v6-history.spec.ts`.
+    Coverage in the package's fields: `docs/v6/HISTORY-COVERAGE.md`.
+  - *Next, in order:* V6-038 publicity (not started: a campaign the player funds before a release, a bounded effect on
+    the distributor's monthly report in `distribution.ts`, diminishing returns, never guaranteed sales); V6-008 a page
+    titled "Box Office Records" with as-of history; V6-040 television first-look scope; V6-039 reputation calibration and
+    anti-farming (J22); more recorded editions, one source page at a time; then the journeys the ledger marks unbuilt
+    (J04, J05, J06, J13, J16, J19, J21, J22).
+  - *Research rule:* organizer pages read through the fetching tool (a direct download is refused with HTTP 403); record
+    only what the page states, with its URL, title, provider and date read.
+
 - **"Those last two do those" (the owner, after #87).**
   - *A first-look studio weighs a covered short.* Its deal covers every film, a short included (`first-look.ts covers`),
     but `pitchRead` passed on anything not a feature first, so the deal's own studio said "Would Pass" on the short its
