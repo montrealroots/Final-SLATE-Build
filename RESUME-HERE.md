@@ -44,6 +44,23 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **The v7 package, "SLATE Researched World" (the owner, November 13, 2026).** It is in `docs/v7/package` (its 33 MANIFEST
+  hashes match; its 15 Python reference tests pass: `python3 -I -m unittest discover -s reference -v` from that folder).
+  It supersedes the v6 command's research steps; the v6 ledger (`docs/v6/requirements.csv`) is still the scope.
+  The half-built v6 television first look is on the local branch `wip/tv-first-look` (not pushed).
+  - *Done, in the package's order:* 1. Elantris corrected from its publisher and author (three viewpoint co-leads;
+    `src/data/source-corrections.json`). 2. The seven real release routes, each a different door, with a film's standing
+    from the save (`engine/platform-routes.ts`, the Release Plan's Real Services). 3. The package's 44 award events and
+    the Netflix chart week in recorded history, visible from their published date in the player's calendar, inferred
+    availability hidden unless opted into, figures comparable only in the same scope (`engine/history.ts`).
+  - *Next, in order:* 4. the six partial eligibility extracts as tri-state checks (a known violation fails; nothing is
+    approved by them); 5. the seven production pipelines' dependencies and transitive rework
+    (`docs/v7/package/data/production-blueprints.json`; reference `affected_tasks`); 6. reputation per the package's
+    design (`reputation-design.json`: role-scoped, bounded, idempotent, grades need several completed works); 7. film and
+    TV first-look obligations (resume from `wip/tv-first-look`); 8. equipment modes and composer credits; then the 22
+    journeys and the TMDB inventory import (`reference/tmdb_inventory.py`, ID exports first).
+  - *Research questions:* `docs/v7/RETURN-TO-RESEARCH.md`.
+
 - **The v6 package, "SLATE: Connected Realism" (the owner, November 13, 2026, after #88).** It is in `docs/v6/package`
   (unchanged; MANIFEST.json hashes match). Its 48 requirements are tracked in `docs/v6/requirements.csv`
   (`tests/v6-ledger.test.ts` fails a missing row, a status not the package's own, a cited file that doesn't exist, or a
