@@ -55,7 +55,10 @@ describe('songs are works with their own writers, rights and uses', () => {
     const by = (id: string) => tasks.find((x) => x.id === id);
     expect(by(`song:music:${ids.salt}`)?.roleId).toBe('songwriter');
     expect(by(`song:lyrics:${ids.salt}`)?.roleId).toBe('lyricist');
-    expect(by(`song:record:${ids.salt}`)).toMatchObject({ kind: 'prep:song', roleId: 'music-producer', dependsOn: [`song:music:${ids.salt}`, `song:lyrics:${ids.salt}`], sceneIds: [ids.ferry] });
+    // Arranged first (an arranger's day, or the music producer's), then recorded (November 13, 2026).
+    expect(by(`song:arrange:${ids.salt}`)).toMatchObject({ roleId: 'arranger', dependsOn: [`song:music:${ids.salt}`, `song:lyrics:${ids.salt}`] });
+    expect(by(`song:record:${ids.salt}`)).toMatchObject({ kind: 'prep:song', roleId: 'music-producer', dependsOn: [`song:music:${ids.salt}`, `song:lyrics:${ids.salt}`, `song:arrange:${ids.salt}`], sceneIds: [ids.ferry] });
+    expect(by(`song:arrange:${ids.lights}`)).toBeUndefined(); // a licensed recording isn't arranged again
     expect(by(`song:music:${ids.lantern}`)?.roleId).toBe('writer'); // yours: you work it, like the script
     expect(by(`song:record:${ids.lantern}`)?.kind).toBe('post:song'); // not performed on screen: recorded before the mix
     expect(by(`song:record:${ids.lights}`)).toBeUndefined(); // licensed with its recording

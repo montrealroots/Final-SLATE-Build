@@ -255,6 +255,11 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       commercial results (distributor payments against spending), relationships (people's history). Never stored.
       Read by outside work: the role an offer is for is weighted by its craft (equal with no record, so seeded runs are
       as before), and its day rate follows that role's craft within 0.8 to 1.3. Not yet read by backers' proposals.
+    - Music's own jobs (V4-022.02, November 13, 2026): an orchestrator orchestrates a score recorded with players
+      (`post:orchestration`, 5 minutes of score a day, before the sessions), a music editor conforms cues to a recut
+      (`post:conform`), an arranger arranges a song made for the film before it is recorded (`song:arrange`). A composer
+      covers orchestration, conform and supervision, and a music producer the arrangement, at small scale (COMBINES,
+      one task a day). The composer and supervisor loop (V4-009.04) is the crew loop with the themes' approval.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
   - Still not built: Guide Me for writing,

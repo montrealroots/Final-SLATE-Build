@@ -5,7 +5,7 @@ A child requirement is verified only when a named unit test and a named browser 
 
 | | Children | Requested | Implemented | Verified | Retired |
 | --- | --- | --- | --- | --- | --- |
-| All | 125 | 23 | 72 | 30 | 0 |
+| All | 125 | 21 | 74 | 30 | 0 |
 | V4-001 Retire preset quotas and migrate saves | 4 | 0 | 3 | 1 | 0 |
 | V4-002 Source-first project creation | 5 | 0 | 4 | 1 | 0 |
 | V4-003 Verified source catalog and bibliography | 7 | 0 | 5 | 2 | 0 |
@@ -14,7 +14,7 @@ A child requirement is verified only when a named unit test and a named browser 
 | V4-006 Guide Me delegation and spending mandates | 3 | 0 | 3 | 0 | 0 |
 | V4-007 Character lifecycle and multi-performer assignments | 4 | 0 | 3 | 1 | 0 |
 | V4-008 Original writing and era controls | 3 | 0 | 1 | 2 | 0 |
-| V4-009 Individual people and dated careers | 5 | 1 | 0 | 4 | 0 |
+| V4-009 Individual people and dated careers | 5 | 0 | 1 | 4 | 0 |
 | V4-010 Outside paid work and representation | 4 | 0 | 3 | 1 | 0 |
 | V4-011 Live-action production | 2 | 0 | 1 | 1 | 0 |
 | V4-012 2D animation production | 2 | 0 | 1 | 1 | 0 |
@@ -27,7 +27,7 @@ A child requirement is verified only when a named unit test and a named browser 
 | V4-019 Equipment compatibility and reservation | 3 | 0 | 3 | 0 | 0 |
 | V4-020 Location calendars travel rest and child-policy handling | 4 | 0 | 2 | 2 | 0 |
 | V4-021 Source agreements approvals and revisions | 2 | 0 | 1 | 1 | 0 |
-| V4-022 Song artist and composer catalog | 2 | 2 | 0 | 0 | 0 |
+| V4-022 Song artist and composer catalog | 2 | 1 | 1 | 0 | 0 |
 | V4-023 Project-specific music brief and cue plan | 2 | 0 | 2 | 0 | 0 |
 | V4-024 Song clearance request negotiation replacement | 2 | 0 | 2 | 0 | 0 |
 | V4-025 Original-score commission recording delivery | 2 | 0 | 2 | 0 | 0 |

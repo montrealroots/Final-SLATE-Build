@@ -1380,3 +1380,11 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `tests/jobs.test.ts` | 0 | Unchanged: with no record the role draw is the one it always was. |
 | `e2e/jobs.spec.ts`, desktop and phone | 0 | Your Reputation on Profile before anything is delivered. |
 
+
+## v4 Music's Own Jobs (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/cues.test.ts` (the music's own jobs) | 1 test mistake of mine | Orchestration before a players' score's sessions, none for an electronic score; the conform is the music editor's; a composer covers both and a music producer the arrangement. |
+| `tests/songs.test.ts` | expected | A song made for the film is arranged before it is recorded; a licensed recording isn't. |
+| `music`, `journey-c`, `connected` specs, desktop and phone | 0 | 11 passed, 1 skipped by design (journey C runs at desktop width). |
