@@ -72,9 +72,9 @@ These limits are stated in the game wherever they apply.
 
 - **No physical phone test.** All phone testing is Chromium at phone size and iPhone 15 Pro Max WebKit emulation.
 - **Productions are local.** Other people's productions exist only where the player is.
-- **Two journeys are not fully pinned.**
-  - In the pinned world, the first-look journey's outside studio gives its own answer, and the journey handles either
-    answer.
-  - In the release-plan journey the licence income went to repaying the backers, so taking income home is played in
-    J01 instead.
+- **Two journeys each pin one outcome** (from November 13, 2026; until then each took either path).
+  - First look: the outside studio passes, because its record is feature films and Night Bus is a short. Repayment of
+    the development money from another studio's money is covered by `tests/first-look.test.ts`.
+  - Release plan: the stores release is booked, and the licence's income all goes to repaying the starting backing, so
+    nothing is left to take home. Taking income home is played in J01.
 - **Earlier v4 open items** stay as `RESUME-HERE.md` lists them.
