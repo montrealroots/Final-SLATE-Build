@@ -3,7 +3,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { applyMusicCatalog, composerRecord, considerComposer, licenseRecording, searchMusic, type MusicCatalog } from '../src/engine/music-catalog';
-import { considerPerson, recordEnds, realPerson } from '../src/engine/guests';
+import { asPerson, considerPerson, recordEnds, realPerson } from '../src/engine/guests';
 import { deserialize, serialize } from '../src/engine/save';
 import { buildProject, startLife } from './helpers';
 
@@ -57,6 +57,8 @@ describe('in a save', () => {
     expect(real.sim.jobs.composer.exp).toBe(5); // a level from his recorded scores, the game's calibration
     expect(real.rec!.cc0).toBe(true);
     expect(recordEnds(real)).toBe(Number.POSITIVE_INFINITY); // TMDB's six months don't bind a CC0 record
+    // The record's source is named as it is, not as the film catalog (a phone screenshot of November 13, 2026 caught it).
+    expect(asPerson(s, real.id, 'composer').samples).toMatch(/^\d+ recorded credits in the music catalog \(Wikidata\)\.$/);
     // The film catalog's own record, once in the save, stands: the music catalog's copy doesn't replace it.
     const s2 = startLife('mc-composer-2');
     considerPerson(s2, { id: 947, name: 'Hans Zimmer', details: { birthday: '1957-09-12', deathday: null, retrievedAt: '2026-11-01' }, credits: [{ kind: 'crew', role: 'Original Music Composer', date: '2010-07-16' }] }, '2026-11-01');

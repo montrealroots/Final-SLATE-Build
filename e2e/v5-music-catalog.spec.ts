@@ -9,7 +9,7 @@ test.use({ actionTimeout: 20_000 });
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 
 test('real music: a recording licensed with its record, a composer considered under one identity', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
   await quickLife(page, 'gb-london', '2026-03-02');
   await nav(page, 'Projects');
   await newProject(page, { title: 'Harbour Lights', format: 'Short Film', runtime: '6', budget: 'Low Budget' });
@@ -48,5 +48,7 @@ test('real music: a recording licensed with its record, a composer considered un
   const composer = page.getByRole('listitem').filter({ has: page.getByText('Composer', { exact: true }) }).first();
   await composer.getByRole('button', { name: 'Find Candidates' }).click();
   await expect(page.getByText('Hans Zimmer').first()).toBeVisible();
+  await expect(page.getByText(/\d+ recorded credits in the music catalog \(Wikidata\)\./).first()).toBeVisible();
+  await expect(page.getByText('From The Music Catalog').first()).toBeVisible();
   await page.screenshot({ path: `test-results/music-catalog-${info.project.name}.png`, fullPage: true });
 });

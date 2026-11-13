@@ -34,7 +34,7 @@ import { negotiate, negotiationLine, negotiationPreview, negotiationRefusal, pro
 import {
   chainOfTitle, creditLine, participationPaid,
 } from '../engine/adaptation';
-import { consideredOn, isReal, jobLabel, stopConsidering, tmdbIdOf } from '../engine/guests';
+import { consideredOn, isReal, jobLabel, realPerson, stopConsidering, tmdbIdOf } from '../engine/guests';
 import { Picture } from './Picture';
 import { storyAge, storyAgeWords } from '../engine/story-age';
 import { RULES_READ, licenceReady, projectRules, supervisionFor } from '../engine/minors';
@@ -152,7 +152,7 @@ function CandidateList({ p, roleId, characterId, method, stage, onDone }: { p: P
                 {/* A person from the film catalog has their photo here where the pictures are installed; nobody else has a face drawn for them. */}
                 {isReal(c.id) && <Picture subject={`person:${tmdbIdOf(c.id)}`} name={c.name} size="thumb" />}
                 <div className="grow">
-                  <strong>{c.name}</strong> <span className="chip" title={gradeOf(g, c, roleId).madeOf.join(' ')}>Grade {gradeOf(g, c, roleId).grade}</span> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{isReal(c.id) && <> <span className="chip chip-info">From The Film Catalog</span></>}{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
+                  <strong>{c.name}</strong> <span className="chip" title={gradeOf(g, c, roleId).madeOf.join(' ')}>Grade {gradeOf(g, c, roleId).grade}</span> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{isReal(c.id) && <> <span className="chip chip-info">{realPerson(g, c.id)?.rec?.cc0 ? 'From The Music Catalog' : 'From The Film Catalog'}</span></>}{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
                   {isReal(c.id)
                     ? <div className="dim">{c.samples}{c.born ? ` Age ${personAge(c, today)}.` : ' Date of birth not recorded.'}{plays(c) ? ` In this story they play ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''} Languages, background and nationality aren't recorded, and none is assumed. In this story they ask {money(c.dayRate)} a day.</div>
                     : <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{` Age ${personAge(c, today)}.`}{plays(c) ? ` Plays ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>}
@@ -1216,7 +1216,7 @@ function SchedulePreview({ p, start }: { p: Project; start: string }) {
   const [shown, setShown] = useState<PlanPreview | null>(null);
   if (p.delivered) return null;
   return (
-    <div className="stack">
+    <div className="spaced">
       <button className="btn" onClick={() => setShown(previewPlan(g, p, start))}>Preview The Schedule</button>
       {shown && (
         <div role="region" aria-label="Schedule Preview" className="callout">

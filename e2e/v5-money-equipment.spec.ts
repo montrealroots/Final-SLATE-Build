@@ -62,7 +62,7 @@ test('a kit that can\'t light an interior: the day waits for the player, who ren
 });
 
 test('a company of your own: formed from your account, money moved both ways, put into a project it then produces', async ({ page }, info) => {
-  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Desktop and phone.');
+  test.skip(!['desktop', 'phone', 'iphone-15-pro-max'].includes(info.project.name), 'Desktop, phone and the iPhone 15 Pro Max (WebKit).');
   // A story with $5,000 of savings, chosen on Review.
   await openStart(page);
   await quickDraft(page, 'gb-london', '2026-03-02');

@@ -37,7 +37,7 @@ export function ReleasePlanCard({ p }: { p: Project }) {
     <section className="card" aria-labelledby="plan-h">
       <h2 id="plan-h">Release Plan</h2>
       <p className="muted">Choose the routes you intend, where and when. A buyer must accept a licence, so a proposal can be turned down. The routes you run yourself have their own requirements and costs. Buyers, the sales agent and the services are fictional, and amounts are game calibration.</p>
-      <fieldset className="stack">
+      <fieldset className="spaced">
         <legend>Intended Routes</legend>
         {PLAN_ORDER.filter((r) => !(episodic && PLAN_ROUTES[r].films)).map((r) => (
           <Check key={r} label={PLAN_ROUTES[r].label} hint={PLAN_ROUTES[r].how} checked={routes.includes(r)} onChange={(on) => toggle(r, on)} />
@@ -58,7 +58,7 @@ export function ReleasePlanCard({ p }: { p: Project }) {
           <ul className="list" aria-label="The Plan">{planWords(plan).map((w) => <li key={w} className="list-item">{w}</li>)}</ul>
           {plan.routes.filter((r) => PLAN_ROUTES[r].kind === 'buyer').map((r) => <Proposals key={r} p={p} route={r as BuyerRoute} />)}
           {plan.routes.filter((r) => PLAN_ROUTES[r].kind === 'self').map((r) => <SelfRelease key={r} p={p} route={r as SelfRoute} />)}
-          {plan.routes.includes('festival-first') && <p className="dim">Enter festivals from the Festivals page. Nothing is released publicly before {formatDateKey(plan.festivalUntil!)}.</p>}
+          {plan.routes.includes('festival-first') && <p className="dim spaced">Enter festivals from the Festivals page. Nothing is released publicly before {formatDateKey(plan.festivalUntil!)}.</p>}
         </>
       )}
     </section>
@@ -78,7 +78,7 @@ function Proposals({ p, route }: { p: Project; route: BuyerRoute }) {
   const sent = plan.proposals.filter((x) => x.route === route);
   const label = PLAN_ROUTES[route].label;
   return (
-    <div role="region" aria-label={`${label} Proposals`} className="stack">
+    <div role="region" aria-label={`${label} Proposals`} className="spaced">
       <h3>{label}</h3>
       <p className="dim small">{route === 'streaming-licence' ? `${SALES_AGENT}, a sales agent, sends it and takes ${Math.round(AGENT_SHARE * 100)}% of the fee. ` : ''}Buyers of this kind take work received at {BUYER_BAR[route]} or better. Rights like these, for {plan.territories.map(countryName).join(', ')}, sell for about {money(comparable)}. A buyer answers in three or four weeks.</p>
       <div className="inline-form">
@@ -113,7 +113,7 @@ function SelfRelease({ p, route }: { p: Project; route: SelfRoute }) {
   const label = PLAN_ROUTES[route].label;
   const verb = route === 'partner-theatrical' ? 'Book The Service Deal' : route === 'transactional' ? 'Release Through The Aggregator' : 'Open Your Storefront';
   return (
-    <div role="region" aria-label={label} className="stack">
+    <div role="region" aria-label={label} className="spaced">
       <h3>{label}</h3>
       <ul className="list" aria-label={`${label}: Costs`}>
         {costs.map((c) => <li key={c.label} className="list-item"><span className="grow">{c.label}</span><span>{money(c.amount)}, {c.when === 'now' ? 'paid when booked' : 'paid on release'}</span></li>)}

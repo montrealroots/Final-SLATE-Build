@@ -172,6 +172,8 @@ const yearsBetween = (born: string, on: string): number => {
 };
 
 export const realPerson = (state: GameState, id: string): RealPerson | undefined => peek(state)[id];
+/** Where a real person's record came from, in words: the film catalog (TMDB), or the music catalog (Wikidata). */
+export const catalogOf = (p: RealPerson | undefined): string => (p?.rec?.cc0 ? 'the music catalog (Wikidata)' : 'the film catalog');
 export const realPeople = (state: GameState): RealPerson[] => Object.values(peek(state));
 
 /** Treat someone with no recorded birth date as an adult in this story, or stop doing so. The player's choice, and labelled. */
@@ -260,7 +262,9 @@ export function asPerson(state: GameState, id: string, job?: string): Person {
     // Someone with no recorded birth date, treated as an adult, is given no date: every rule that asks one is told so.
     born: p.rec?.born ?? '',
     skills: [],
-    samples: e ? `${e.n} recorded ${e.n === 1 ? 'credit' : 'credits'} in the film catalog.` : 'No recorded credit of this kind in the film catalog.',
+    // The catalog the record came from, named as it is (a composer brought in from the music catalog's Wikidata record, from
+    // November 13, 2026, isn't "in the film catalog").
+    samples: e ? `${e.n} recorded ${e.n === 1 ? 'credit' : 'credits'} in ${catalogOf(p)}.` : `No recorded credit of this kind in ${catalogOf(p)}.`,
     busy: p.sim.busy,
   };
 }
