@@ -32,9 +32,8 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
   - **10 and 11. Phone parity and the journeys.** The v5 journeys run on phone and iPhone WebKit, and the layout sweep
     found and fixed one defect. `docs/v5/JOURNEYS.md` says where each of the ten journeys stands.
 - **Still open** (`docs/v5/JOURNEYS.md`, `docs/v5/LEDGER.md`):
-  1. A series release route played through the screen.
-  2. Other people's productions delayed or cancelled.
-  3. A physical phone test.
+  1. Other people's productions delayed or cancelled.
+  2. A physical phone test.
 - **Then.** Merge PR #86 once its newest head is green, and write the final report.
 - **The story re-fetch is done.** `src/data/plots.json` was rebuilt from `.sources-cache/plots2`. A section that mixes
   the story with something else keeps only its story parts, and 47 works are narrowed that way. Tower of God keeps its

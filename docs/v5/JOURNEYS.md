@@ -21,10 +21,7 @@ iPhone 15 Pro Max WebKit emulation. WebKit emulation is not a physical phone, an
 | | | - a family film is submitted first, with development money in; | |
 | | | - another studio is blocked until the pass; | |
 | | | - the pass comes, and the family studio is pitched. | |
-| 5 | An independent film and series choosing and completing different release routes | `v5-release-plan.spec`, a film: | **The film is played; the series isn't.** A series' routes are engine-tested (`tests/release-plan.test.ts`), and series release schedules are played in `release-schedule.spec` (v4). |
-| | | - a festival hold; | |
-| | | - a broadcast licence turned down for its price, then accepted and signed; | |
-| | | - the stores release booked. | |
+| 5 | An independent film and series choosing and completing different release routes | Film, `v5-release-plan.spec`: a festival hold, a broadcast licence turned down for its price then accepted and signed, and the stores. Series, `v5-series-release.spec`: a drawn 2D series of two episodes, delivered and released through the stores, an episode a week, with the cinema routes not offered to it. | **Played, both.** Desktop for the series; desktop, phone and iPhone for the film. |
 | 6 | A paid outside job leading to a relevant future opportunity | J10 and `jobs.spec`: an agent's offer on a production that persists, worked, paid and credited; another offer follows, for work the record supports. | **Played.** That a production's reception weighs on later offers is engine-tested (`tests/productions.test.ts`). |
 | 7 | Renewal or cancellation with actual downstream obligations | J03: the decision follows from the reported audience against the commissioner's bar. A renewal brings the commissioner's offer for season two; a cancellation shuts their door. | **Played.** The journey checks the rule, not one recorded outcome. |
 | 8 | Equipment shortage requiring approval | `v5-money-equipment.spec`: a kit with no lights, the day postponed with nothing paid, the shortage shown with priced fixes, and approved by renting what's missing. | **Played.** Desktop. |
