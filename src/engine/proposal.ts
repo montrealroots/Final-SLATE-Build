@@ -303,21 +303,18 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const used = new Set<string>();
   type Who = { key: string; name: string; gender?: string; kind?: string; recorded: boolean; fromStory?: true; fromCast?: true };
   const people: Who[] = chosen.map((c) => ({ key: key(c.name, used), name: c.name, gender: c.gender, kind: c.kind, recorded: true, ...(c.fromStory ? { fromStory: true as const } : {}), ...(c.fromCast ? { fromCast: true as const } : {}) }));
-  // Too few recorded: the missing parts are named for what they do, for the player to name.
-  const PARTS = ['The Lead', 'The Rival', 'The Ally'];
-  // Only where the work has no one at all are all three parts named for what they do. One with two people or more (The
-  // Cask of Amontillado's Montresor and Fortunato) has them and no others: until November 13, 2026 a third, "The Ally",
-  // was invented to fill the outline's template.
-  // A brief needs two people and what is between them (blueprints.ts), so a work with one has the second part named.
-  if (!people.length) for (const part of PARTS.slice(0, Math.min(3, room))) people.push({ key: key(part, used), name: part, recorded: false });
-  else if (people.length === 1) people.push({ key: key(PARTS[1], used), name: PARTS[1], recorded: false });
+  // No one invented to fill a template (the owner's v6 package, J03, November 13, 2026): a work with one person has that
+  // one, and the brief says the story identifies no one else. Until then a second part, "The Rival", was added, and a
+  // work with no one at all had three parts named for what they do; it now has one, The Lead, and the brief says its
+  // people are incomplete until the player names them from the work.
+  if (!people.length) people.push({ key: key('The Lead', used), name: 'The Lead', recorded: false });
+  if (people.length === 1 && people[0].recorded) notes.push("This story doesn't identify another character. You can add one or continue.");
   origin.characters = people.some((p) => p.recorded) ? 'sourced' : 'unknown';
   const takenFromStory = people.filter((p) => p.fromStory).map((p) => p.name);
   const takenFromList = people.filter((p) => p.fromCast).map((p) => p.name);
   const listedNote = takenFromList.length ? ` ${takenFromList.length === 1 ? `${takenFromList[0]} is` : `${takenFromList.slice(0, -1).join(', ')} and ${takenFromList.at(-1)} are`} listed in ${listed!.section === 'whole article' ? '' : `the ${listed!.section} section of `}the English Wikipedia article "${listed!.article}" (${w.plot!.licence}), though its story doesn't name them often enough to take. Their pronouns aren't recorded, so the brief says "they" until you set them.` : '';
   const readNote = takenFromStory.length ? ` ${takenFromStory.length === 1 ? `${takenFromStory[0]} is` : `${takenFromStory.slice(0, -1).join(', ')} and ${takenFromStory.at(-1)} are`} named in its story but not recorded, so taken from it. Their pronouns aren't recorded, so the brief says "they" until you set them.` : '';
-  if (!people.some((p) => p.recorded)) why.characters = `No characters are recorded for ${w.title}, and its story names none often enough to take. The three parts an outline needs are named for what they do; name them from the work.`;
-  else if (people.some((p) => !p.recorded)) why.characters = `${w.title} ${recorded.length ? `records ${recorded.length === 1 ? 'one character' : `${recorded.length} characters`}` : 'records no characters'}${takenFromStory.length ? `, and its story names ${takenFromStory.length === 1 ? 'one more' : `${takenFromStory.length} more`}` : ''}; the other parts are named for what they do.${readNote}${listedNote}`;
+  if (!people.some((p) => p.recorded)) why.characters = `No characters are recorded for ${w.title}, and neither its story nor its article names any. Its people are incomplete: the one part, The Lead, is named for what it does, for you to name from the work.`;
   else if (takenFromStory.length || takenFromList.length) why.characters = `${recorded.length ? 'Some names are recorded.' : `No characters are recorded for ${w.title}.`}${readNote}${listedNote} Who leads is proposed from the story: the one it names most. Who stands against them and who beside them come from what the story has them do together.`;
   else why.characters = storyText
     ? 'The names are recorded. Who leads is proposed from the story: the one it names most. Who stands against them and who beside them come from what the story has them do together.'

@@ -5,7 +5,9 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { castOf } from '../tools/sources/plots.mjs';
-import { proposeFromSource } from '../src/engine/proposal';
+import { createFromSource, proposeFromSource } from '../src/engine/proposal';
+import { blueprintProblems } from '../src/engine/blueprints';
+import { startLife } from './helpers';
 import { creditLine } from '../src/engine/adaptation';
 import type { SourceWork } from '../src/engine/sources';
 import type { Project } from '../src/engine/types';
@@ -51,5 +53,18 @@ describe('the people an article lists', () => {
     // The project's credits name the article the names came from.
     const p = { source: { kind: 'adapted', ref: { id: work('Rip Van Winkle').id, title: 'Rip Van Winkle', creators: [], standing: 'public-domain-recorded' } }, proposal: { workId: work('Rip Van Winkle').id, cast: rip.blueprint.origin!.cast } } as unknown as Project;
     expect(creditLine(p)).toContain('Some of its characters\' names are from the Characters section of the English Wikipedia article "Rip Van Winkle" (CC BY-SA 4.0).');
+  }, 30_000);
+
+  it('a story with one person has that one, no antagonist, and says so; the project is whole with one character', () => {
+    const r = propose('The Mystery of Marie Rogêt');
+    expect(r.blueprint.characters.map((c) => [c.name, c.functions[0]])).toEqual([['C. Auguste Dupin', 'protagonist']]);
+    expect(r.notes).toContain("This story doesn't identify another character. You can add one or continue.");
+    expect(blueprintProblems(r.blueprint, GENRES)).toEqual([]);
+    const s = startLife('one-person');
+    const p = createFromSource(s, { work: work('The Mystery of Marie Rogêt'), axes: { format: 'feature', medium: 'live-action' }, scenarioId: 'low', approach: 'faithful', genres: GENRES });
+    expect(p.characters.map((c) => c.name)).toEqual(['C. Auguste Dupin']);
+    expect(p.relationships).toEqual([]);
+    expect(p.scenes.length).toBeGreaterThan(0);
+    expect(p.scenes.every((x) => x.participants.every((id) => p.characters.some((c) => c.id === id)))).toBe(true);
   }, 30_000);
 });

@@ -71,12 +71,16 @@ describe('a proposal from a work', () => {
     expect(b.characters.map((c) => c.entity)).toEqual(['human', 'animal', 'human']);
   });
 
-  it('with nothing recorded, says so field by field and names the parts for what they do', () => {
+  it('with nothing recorded, says so field by field, and its people are incomplete rather than three invented parts', () => {
     const { blueprint: b, origin, why } = propose(bare);
     expect(blueprintProblems(b, GENRES)).toEqual([]);
     expect(origin.characters).toBe('unknown');
-    expect(b.characters.map((c) => c.name)).toEqual(['The Lead', 'The Rival', 'The Ally']);
+    // One part named for what it does, and the brief says its people are incomplete (the owner's v6 package, J03; until
+    // November 13, 2026 it was The Lead, The Rival and The Ally).
+    expect(b.characters.map((c) => c.name)).toEqual(['The Lead']);
+    expect(b.relationships).toEqual([]);
     expect(why.characters).toContain('No characters are recorded for Untold');
+    expect(why.characters).toContain('Its people are incomplete');
     expect(origin.setting).toBe('unknown');
     expect(origin['story.premise']).toBe('proposed');
     expect(why['story.premise']).toContain('the game\'s proposal, not the work\'s story');

@@ -27,10 +27,10 @@ own words, and its pronouns are "they" until the player sets them.
 | With a story | 517 |
 | With their roles reviewed by hand († in the table) | 162 |
 | With someone taken from their story | 403 |
-| With someone against the lead | 203 |
+| With someone against the lead | 199 |
 | Set where their story says, with no place recorded | 28 |
-| With one person and a second part named for what it does ("The Rival") | 3 |
-| With no one at all, all three parts named for what they do | 1 |
+| With one person, and no one invented beside them | 3 |
+| With no one at all: one part, The Lead, and the brief says its people are incomplete | 1 |
 
 Before these two requests, 199 works with a story had no character recorded and were given "The Lead", "The Rival"
 and "The Ally". A work with one or two people was given made-up parts to make three.
@@ -112,10 +112,13 @@ it.
 
 ## What Isn't Right Yet
 
-- **3 works name only one person**, and keep a second part named for what it does, as a brief needs two:
+- **3 works name only one person**, and from November 13, 2026 (the owner's v6 package, J03) have that one person
+  and no one else. The brief says "This story doesn't identify another character. You can add one or continue."
+  Until then a second part, "The Rival", was added because a brief needed two people:
   The Mystery of Marie Rogêt (Dupin; Marie Rogêt herself is named in its story almost only as its title),
   Hop-o'-My-Thumb (the ogre has no name) and A Descent into the Maelström (the old fisherman has none).
-  **1 names no one:** Second Life, a virtual world whose article tells no story and lists no characters.
+  **1 names no one:** Second Life, a virtual world whose article tells no story and lists no characters. It has one
+  part, The Lead, and the brief says its people are incomplete (until then, three parts named for what they do).
   None of the four articles has a characters section, and none has a list of characters of its own.
 - **Unreviewed works keep the reading's roles.** A work not in the review table has the roles its sentences give. The
   review covers every error found in this sweep; one not yet found would need adding to it.
@@ -194,7 +197,7 @@ it.
 | Grand Theft Auto: Vice City | video game | Vice City | Tommy Vercetti (lead), Sonny Forelli (against), Victor Vance, Lance Vance, Juan Garcia Cortez*, Ricardo Diaz |
 | Grand Theft Auto IV | video game | Liberty City | Niko Bellic (lead), Dimitri Rascalov (against)*, Roman Bellic, Jimmy Pegorino*, Kenny Petrović*, Mallorie* |
 | A Midsummer Night's Dream | play | Athens | Titania (lead), Lysander, Oberon (ally), Nick Bottom, Theseus*, Hermia |
-| Second Life | video game | Not recorded | The Lead (lead), The Rival (against), The Ally (ally) |
+| Second Life | video game | Not recorded | The Lead (lead) |
 | Poor Folk | novel | Russian Empire | Varvara Dobroselova (lead), Pokrovsky*, Makar Devushkin (ally), Anna Fyodorovna* |
 | Shakugan no Shana | light novel | The world of Shakugan no Shana | Shana (lead), Kazumi Yoshida, Yūji Sakai (ally) † |
 | Crayon Shin-chan | comic | Not recorded | Shinnosuke Nohara (lead), Ume Matsuzaka, Hiroshi Nohara, Misae Nohara, Himawari Nohara, Action Mask |
@@ -503,14 +506,14 @@ it.
 | The Man with the Twisted Lip | short story | London | Sherlock Holmes (lead), Clair*, Dr. Watson, Hugh Boone*, Inspector Bradstreet † |
 | The Adventure of Silver Blaze | short story | Dartmoor | Sherlock Holmes (lead), John Straker*, Bookmaker Fitzroy Simpson*, Watson*, Gregory*, Pyland* |
 | The House of the Dead | novel | Russian Empire | Aleksandr Petrovich (lead)*, Aleksandr Petrovich Goryanchikov*, Gradually Goryanchikov* |
-| The Mystery of Marie Rogêt | short story | Paris | C. Auguste Dupin (lead), The Rival (against) |
+| The Mystery of Marie Rogêt | short story | Paris | C. Auguste Dupin (lead) |
 | The Adventure of the Empty House | short story | Not recorded | Sherlock Holmes (lead), Sebastian Moran (against)*, Moriarty*, Inspector Lestrade † |
 | Max Payne | video game | Choir Communications Garage | Max Payne (lead), Angelo Punchinello (against), Michelle Payne, Nicole Horne, Jack Lupino*, Alfred Woden |
 | The Boscombe Valley Mystery | short story | Herefordshire | James (lead)*, Sherlock Holmes, Charles McCarthy (ally)*, John Turner*, Alice*, Watson* |
 | The Adventure of the Engineer's Thumb | short story | London | Victor Hatherley (lead)*, Lysander Stark (against)*, Sherlock Holmes, Dr. Watson, Inspector Bradstreet † |
 | The Five Orange Pips | short story | London | John Openshaw (lead)*, Elias*, Sherlock Holmes, Joseph* |
 | The Fall of the House of Usher | short story | Not recorded | Roderick Usher (lead)*, Madeline*, Ethelred* |
-| Hop-o'-My-Thumb | short story | The world of Hop-o'-My-Thumb | Hop-o'-My-Thumb (lead)*, The Rival (against) |
+| Hop-o'-My-Thumb | short story | The world of Hop-o'-My-Thumb | Hop-o'-My-Thumb (lead)* |
 | The Adventure of the Second Stain | short story | Not recorded | Sherlock Holmes (lead), Hilda Trelawney Hope*, Eduardo Lucas*, Inspector Lestrade, Dr. Watson † |
 | The Nightingale | short story | The world of The Nightingale | The Emperor (lead)*, The Nightingale* |
 | The Adventure of the Gloria Scott | short story | Not recorded | Victor Trevor (lead)*, Head-keeper Hudson*, Holmes (ally)*, Beddoes*, Born James Armitage* |
@@ -524,7 +527,7 @@ it.
 | The Invisible Man | novel | London | Griffin (lead), Kemp (against)*, Thomas Marvel*, Adye*, Griffanti |
 | The Handmaid's Tale | novel | United States | Offred (lead), Serena Joy, Nick* |
 | High School DxD | light novel | Not recorded | Issei Hyōdō (lead), Rias Gremory, Akeno Himejima, Asia Argento, Gasper Vladi, Irina Shidō |
-| A Descent into the Maelström | short story | The world of A Descent into the Maelström | The Narrator (lead)*, The Rival (against) |
+| A Descent into the Maelström | short story | The world of A Descent into the Maelström | The Narrator (lead)* |
 | A Game of Thrones | novel | Westeros | Ned (lead)*, Cersei Lannister (against)*, Drogo*, Daenerys Targaryen*, Jon Arryn*, Joffrey* † |
 | Oruchuban Ebichu | comic | Not recorded | Ebichu (lead)*, Goshujin-sama (ally)* † |
 | The Gathering Storm | novel | Arad Doman* | Rand al'Thor (lead), Egwene*, Elaida*, Semirhage*, Verin Mathwin* |

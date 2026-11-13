@@ -205,9 +205,10 @@ export function blueprintProblems(b: Blueprint, genres: ReadonlySet<string>): st
     if (!b.doc || !b.doc.subjects.length || !b.doc.asks.length || !b.doc.evidence.length) say('a documentary needs its subjects with an access plan, what it asks, and what it would have to show.');
     for (const s of b.doc?.subjects ?? []) if (!has(s.name) || !has(s.role) || !has(s.access)) say('a documentary subject needs a name or description, who they are, and how they might be reached.');
   } else {
-    if (b.characters.length < 2) say('it needs at least two characters.');
+    // One character is a story (a one-person source, from November 13, 2026); two or more need what is between them.
+    if (!b.characters.length) say('it has no characters.');
     if (!b.characters.some((c) => c.functions.includes('protagonist'))) say('nobody in it is a protagonist.');
-    if (!b.relationships.length) say('it has no relationships.');
+    if (b.characters.length > 1 && !b.relationships.length) say('it has no relationships.');
   }
   for (const r of b.relationships) {
     if (!keys.has(r.a) || !keys.has(r.b) || r.a === r.b) say(`a relationship names "${r.a}" and "${r.b}", who are not two of its characters.`);
