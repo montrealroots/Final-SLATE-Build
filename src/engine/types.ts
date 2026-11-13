@@ -893,7 +893,7 @@ export interface ReleaseRecord {
   cut?: string;
 }
 
-export type ReleasePattern = 'all' | 'weekly' | 'premiere-weekly' | 'custom' | 'assumed';
+export type ReleasePattern = 'all' | 'weekly' | 'daily' | 'premiere-weekly' | 'custom' | 'assumed';
 
 /** One episode in one release: planned until its day comes, then released, and never moved after that. */
 export interface EpisodeRelease {

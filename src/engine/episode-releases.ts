@@ -15,7 +15,7 @@ export const EPISODE_ROUTES: ReleaseRecord['route'][] = ['broadcast', 'streaming
 const ON: Record<string, string> = { broadcast: 'on television', streaming: 'on streaming', digital: 'online' };
 
 export const PATTERN_LABELS: Record<Exclude<ReleasePattern, 'assumed'>, string> = {
-  all: 'All Episodes At Once', weekly: 'Weekly', 'premiere-weekly': 'Several On The Premiere, Then Weekly', custom: 'Dates Of My Own',
+  all: 'All Episodes At Once', weekly: 'Weekly', daily: 'Daily, One A Day', 'premiere-weekly': 'Several On The Premiere, Then Weekly', custom: 'Dates Of My Own',
 };
 
 /** Whether this release puts a series out episode by episode. */
@@ -25,6 +25,8 @@ export function hasEpisodes(p: Project, route: ReleaseRecord['route']): boolean 
 
 /** A preset's dates, one per episode, from the premiere: the starting point the player edits. */
 export function presetDates(pattern: Exclude<ReleasePattern, 'custom' | 'assumed'>, premiere: string, episodes: number, onPremiere = 2): string[] {
+  // Daily (from November 13, 2026): one a day from the premiere, as a limited series stripped across a week is.
+  if (pattern === 'daily') return Array.from({ length: episodes }, (_, i) => addDaysToKey(premiere, i));
   const first = pattern === 'all' ? episodes : pattern === 'weekly' ? 1 : Math.max(1, Math.min(episodes, onPremiere));
   return Array.from({ length: episodes }, (_, i) => (i < first ? premiere : addDaysToKey(premiere, 7 * (i - first + 1))));
 }

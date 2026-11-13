@@ -3,9 +3,13 @@
 import { describe, expect, it } from 'vitest';
 import { DAY, RENEWAL_DECISION_DAYS, RENEWAL_WAIT_DAYS, acceptDistribution, processUntil, renewalStanding, scheduleRenewal } from './engine-api';
 import {
-  AUDIENCE_TAIL_WEEKS, BROADCAST_BASE, KEEP_BAR, METRICS, OPENING_BAR, STREAMING_BAR, STREAMING_BASE, STREAMING_DECAY, STREAMING_WEEKS_COUNTED, airingDeal, appeal, seasonAudience, audienceSummary, audienceWeekDates, lastAudienceWeek, observeWeek, recordAudienceWeek, retention, routeMetrics, showingsOf, weekOf, type Showing,
+  AUDIENCE_TAIL_WEEKS, BREAK_LOSS, STRIP_HABIT, gapEffect, BROADCAST_BASE, KEEP_BAR, METRICS, OPENING_BAR, STREAMING_BAR, STREAMING_BASE, STREAMING_DECAY, STREAMING_WEEKS_COUNTED, airingDeal, appeal, seasonAudience, audienceSummary, audienceWeekDates, lastAudienceWeek, observeWeek, recordAudienceWeek, retention, routeMetrics, showingsOf, weekOf, type Showing,
 } from '../src/engine/audiences';
 import { deserialize, serialize } from '../src/engine/save';
+import { addDaysToKey } from '../src/engine/time';
+import { OVERRUN_RAISE, SLATE_RAISE, commissionerRaise } from '../src/engine/continuation';
+import { spend } from '../src/engine/budget';
+import { presetDates } from '../src/engine/episode-releases';
 import type { AudienceObservation, DistributionOffer, GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
 
@@ -62,7 +66,31 @@ describe('a broadcast', () => {
     // The second episode keeps what the first one earned it: more after a strong opener than a weak one.
     const second = (first: number) => see('broadcast', 2, [ep(1, '2027-01-04', first), ep(2, '2027-01-11', 70)])[0].value;
     expect(second(90)).toBeGreaterThan(second(40));
-    expect([retention(0), retention(50), retention(98), retention(100)]).toEqual([0.8, 0.86, 0.98, 0.98]);
+    expect([retention(0), retention(50), retention(85), retention(100)]).toEqual([0.8, 0.86, 1, 1.05]);
+  });
+
+  it('can grow and recover: a strongly received episode brings more back, and a strong one after a weak one wins some back', () => {
+    // Same appeal for the episode measured (70), so only what came before moves it.
+    const third = (a: number, b: number) => see('broadcast', 3, [ep(1, '2027-01-04', a), ep(2, '2027-01-11', b), ep(3, '2027-01-18', 70)])[0].value;
+    const opener = see('broadcast', 1, [ep(1, '2027-01-04', 70)])[0].value;
+    expect(third(95, 95)).toBeGreaterThan(opener); // word of mouth: the third draws more than an opener of the same appeal
+    expect(third(40, 95)).toBeGreaterThan(third(40, 40)); // recovery after a weak episode
+  });
+
+  it('daily, weekly and after a break differ: a day apart keeps the habit, a break of over two weeks loses some', () => {
+    // Averaged over forty worlds: the effect is a few percent, inside one week's 5% draw either way.
+    const second = (gap: number) => {
+      let sum = 0;
+      for (let seed = 1; seed <= 40; seed++) sum += see('broadcast', Math.floor(gap / 7) + 1, [ep(1, '2027-01-04', 70), ep(2, addDaysToKey('2027-01-04', gap), 70)], 1, seed).find((x) => x.episode === 2)!.value;
+      return sum / 40;
+    };
+    const daily = second(1), weekly = second(7), broken = second(21);
+    expect(daily / weekly).toBeCloseTo(STRIP_HABIT, 1);
+    expect(broken / weekly).toBeCloseTo(BREAK_LOSS, 1);
+    expect(daily).toBeGreaterThan(weekly);
+    expect(weekly).toBeGreaterThan(broken);
+    expect(gapEffect(7)).toBe(1);
+    expect(presetDates('daily', '2027-01-04', 3)).toEqual(['2027-01-04', '2027-01-05', '2027-01-06']);
   });
 
   it('is the same figure every time for the same world and week, and another world draws its own', () => {
@@ -213,6 +241,24 @@ describe('a commissioner reads a season', () => {
     // The bar rises with the territories it is shown in, by the same reach the audience does.
     const wide = season('broadcast', [75, 75], { territories: 4 });
     expect(seasonAudience(wide.p, wide.o)!.says).toContain('against the 200,000 a commissioner looks for in 4 territories');
+  });
+
+  it('a season that ran over its budget, or a commissioner with less room on their slate, needs more of an audience', () => {
+    const edge = season('broadcast', [52, 90, 90]); // an opening a little over the bar, and a season that keeps it
+    expect(seasonAudience(edge.p, edge.o)!.renew).toBe(true);
+    expect(seasonAudience(edge.p, edge.o, 1 + OVERRUN_RAISE)!.renew).toBe(false);
+    expect(seasonAudience(edge.p, edge.o, 1 + OVERRUN_RAISE)!.says).toContain('against the 125,000 a commissioner looks for');
+    // What raises it is read from the season: its spending against its budget, and the commissioner's other renewals.
+    const s = startLife('aud-raise');
+    const p = buildProject(s, { title: 'Harbour', format: 'series', medium: 'live-action', episodes: 2, runtime: 20 }, [{ name: 'Mara' }], [{ place: 'Pier', chars: ['Mara'] }]);
+    p.finance = { estimate: 10_000, target: 10_000, deals: [{ ...p.finance!.deals[0], kind: 'commissioner', backer: 'Fixture Network', amount: 50_000 }] };
+    expect(commissionerRaise(s, p).raise).toBe(1);
+    spend(s, p, 'Fixture: spent past the budget', 'materials', 12_000, 'fixture-over'); // labelled fixture
+    expect(commissionerRaise(s, p)).toMatchObject({ raise: 1 + OVERRUN_RAISE, why: ['It cost 20% more than its budget, so they want more of an audience for another.'] });
+    const other = buildProject(s, { title: 'Low Tide', format: 'series', medium: 'live-action', episodes: 2, runtime: 20 }, [{ name: 'Ben' }], [{ place: 'Quay', chars: ['Ben'] }]);
+    other.finance = { estimate: 1, target: 1, deals: [{ ...p.finance.deals[0], id: 'fd2' }] };
+    other.renewal = { decidedAt: s.now, outcome: 'renewed', reason: 'Fixture.' };
+    expect(commissionerRaise(s, p).raise).toBe(1 + OVERRUN_RAISE + SLATE_RAISE);
   });
 
   it('is not complete until every episode has been shown, and says nothing before the first figure', () => {

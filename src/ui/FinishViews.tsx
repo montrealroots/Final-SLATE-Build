@@ -474,7 +474,7 @@ export function ReleaseTab({ p }: { p: Project }) {
   const [err, setErr] = useState<string | null>(null);
   const [cancelling, setCancelling] = useState<string | null>(null);
   // A series' episode dates: a preset until you change one, then your own (episode-releases.ts).
-  const [pattern, setPattern] = useState<'all' | 'weekly' | 'premiere-weekly'>('weekly');
+  const [pattern, setPattern] = useState<'all' | 'weekly' | 'daily' | 'premiere-weekly'>('weekly');
   const [onPremiere, setOnPremiere] = useState(2);
   const [own, setOwn] = useState<string[] | null>(null);
   const [editing, setEditing] = useState<{ id: string; dates: string[] } | null>(null);
@@ -567,7 +567,7 @@ export function ReleaseTab({ p }: { p: Project }) {
           <fieldset className="form" style={{ border: 0, padding: 0, margin: 0 }}>
             <legend className="small" style={{ padding: 0 }}>Episode Dates</legend>
             <div className="grid grid-3 form">
-              <SelectField label="Episode Schedule" value={pattern} options={(['all', 'weekly', 'premiere-weekly'] as const).map((x) => ({ value: x, label: PATTERN_LABELS[x] }))} onChange={(v) => { setPattern(v); setOwn(null); }} />
+              <SelectField label="Episode Schedule" value={pattern} options={(['all', 'weekly', 'daily', 'premiere-weekly'] as const).map((x) => ({ value: x, label: PATTERN_LABELS[x] }))} onChange={(v) => { setPattern(v); setOwn(null); }} />
               {pattern === 'premiere-weekly' && <NumberField label="Episodes On The Premiere" value={onPremiere} min={1} max={count} onChange={(v) => { setOnPremiere(v); setOwn(null); }} />}
             </div>
             <p className="dim">Episode 1 comes out on the release date. Change any other date for a break or a split season{own ? '; these are now dates of your own' : ''}. Award rules read when each episode comes out.</p>

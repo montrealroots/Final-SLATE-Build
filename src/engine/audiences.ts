@@ -48,8 +48,19 @@ export const audienceWeekDates = (opened: string, week: number) => ({ from: addD
 
 /** How much of the possible audience something draws, from how it was received: none at 30 of 100, all of the base at 80. A modeled assumption. */
 export const appeal = (reception: number): number => Math.max(0, reception - 30) / 50;
-/** How much of the audience the next episode keeps, from how this one was received: four fifths at worst, nearly all at best. A modeled assumption. */
-export const retention = (reception: number): number => Math.min(0.98, Math.max(0.8, 0.86 + (reception - 50) / 400));
+/**
+ * How much of the audience the next episode keeps, from how this one was received: four fifths at worst; past a
+ * reception of about 85 it grows, by word of mouth, up to 5% an episode. Until November 13, 2026 it never passed 98%,
+ * so every season lost viewers episode by episode whatever it was. A modeled assumption.
+ */
+export const retention = (reception: number): number => Math.min(1.05, Math.max(0.8, 0.86 + (reception - 50) / 250));
+/**
+ * What the time between two first showings does to the audience that comes back (from November 13, 2026): episodes a
+ * day apart keep the habit, a break of over two weeks loses some of it. Weekly is the measure. Modeled assumptions.
+ */
+export const STRIP_HABIT = 1.03;
+export const BREAK_LOSS = 0.92;
+export const gapEffect = (daysApart: number): number => (daysApart <= 1 ? STRIP_HABIT : daysApart > 14 ? BREAK_LOSS : 1);
 
 const thousand = (n: number) => Math.round(n / 1000) * 1000;
 
@@ -90,7 +101,8 @@ export function observeWeek(seed: number, projectId: string, o: Pick<Distributio
     // Each episode first shown this week; what it keeps of the audience depends on the episodes shown before it.
     showings.forEach((s, i) => {
       if (s.date < from || s.date > to) return;
-      const kept = showings.slice(0, i).reduce((k, earlier) => k * retention(earlier.reception), 1);
+      // Each earlier episode passes on what it keeps, and the time to the next showing what comes back after it.
+      const kept = showings.slice(0, i).reduce((k, earlier, j) => k * retention(earlier.reception) * (j + 1 <= i ? gapEffect(days(earlier.date, showings[j + 1].date)) : 1), 1);
       out.push({ ...base, metric: 'viewers', value: thousand(BROADCAST_BASE * appeal(s.reception) * reach * kept * noise(`v${s.number ?? 0}`)), scope: s.number === null ? 'title' : 'episode', ...(s.number === null ? {} : { episode: s.number }) });
     });
   } else if (o.route === 'streaming') {
@@ -151,7 +163,7 @@ export interface SeasonAudience {
 export const airingDeal = (p: Project): DistributionOffer | null => p.offers.find((o) => o.status === 'accepted' && routeMetrics(o.route).length > 0) ?? null;
 
 /** A season's audience as a commissioner reads it, or null while nothing has been reported. */
-export function seasonAudience(p: Project, o: DistributionOffer): SeasonAudience | null {
+export function seasonAudience(p: Project, o: DistributionOffer, raise = 1): SeasonAudience | null {
   const a = o.audience ?? [];
   const n = (x: number) => Math.round(x).toLocaleString('en-US');
   const places = (t: number) => (t === 1 ? 'one territory' : `${t} territories`);
@@ -159,7 +171,7 @@ export function seasonAudience(p: Project, o: DistributionOffer): SeasonAudience
     const v = a.filter((x) => x.metric === 'viewers' && x.episode !== undefined).sort((x, y) => x.episode! - y.episode!);
     if (!v.length) return null;
     const first = v[0]; const last = v.at(-1)!;
-    const bar = OPENING_BAR * BROADCAST_BASE * Math.sqrt(Math.max(1, first.territories));
+    const bar = raise * OPENING_BAR * BROADCAST_BASE * Math.sqrt(Math.max(1, first.territories));
     const kept = v.length > 1 && first.value > 0 ? Math.pow(last.value / first.value, 1 / (v.length - 1)) : 1;
     return {
       distributor: o.distributor, complete: v.length >= p.episodes.length, renew: first.value >= bar && kept >= KEEP_BAR,
@@ -174,7 +186,7 @@ export function seasonAudience(p: Project, o: DistributionOffer): SeasonAudience
   const total = hours.reduce((s, x) => s + x.value, 0);
   const through = runtimeHours > 0 ? total / runtimeHours : 0;
   const territories = hours.at(-1)!.territories;
-  const bar = STREAMING_BAR * STREAMING_BASE * Math.sqrt(Math.max(1, territories));
+  const bar = raise * STREAMING_BAR * STREAMING_BASE * Math.sqrt(Math.max(1, territories));
   const lastOut = opened ? weekOf(opened, shown.at(-1)!.date) : 1;
   return {
     distributor: o.distributor, complete: shown.length >= p.episodes.length && Math.max(...hours.map((x) => x.week)) >= lastOut + STREAMING_WEEKS_COUNTED - 1, renew: through >= bar,

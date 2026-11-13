@@ -260,6 +260,12 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       (`post:conform`), an arranger arranges a song made for the film before it is recorded (`song:arrange`). A composer
       covers orchestration, conform and supervision, and a music producer the arrangement, at small scale (COMBINES,
       one task a day). The composer and supervisor loop (V4-009.04) is the crew loop with the themes' approval.
+    - Audiences and renewals (V4-029.03, V4-029.04, November 13, 2026): retention can pass 100% (up to 105% an episode past
+      a reception of 85), so a season can grow and a strong episode after a weak one wins viewers back; first showings a
+      day apart keep 3% more, a break of over two weeks loses 8% (`gapEffect`); release schedules offer Daily, One A Day.
+      A commissioner's bars rise by a quarter for a season over a tenth past its budget and by 0.15 when they renewed
+      another of your series in the past year (`commissionerRaise`), said in the decision. Not modelled: live
+      programmes, contract options for further seasons.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
   - Still not built: Guide Me for writing,

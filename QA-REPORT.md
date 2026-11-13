@@ -1388,3 +1388,11 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `tests/cues.test.ts` (the music's own jobs) | 1 test mistake of mine | Orchestration before a players' score's sessions, none for an electronic score; the conform is the music editor's; a composer covers both and a music producer the arrangement. |
 | `tests/songs.test.ts` | expected | A song made for the film is arranged before it is recorded; a licensed recording isn't. |
 | `music`, `journey-c`, `connected` specs, desktop and phone | 0 | 11 passed, 1 skipped by design (journey C runs at desktop width). |
+
+## v4 Audiences And Renewals (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/audiences.test.ts` | 1 expected, 2 test mistakes of mine | Retention passes 100% at high reception; growth and recovery; daily against weekly against a break, averaged over forty worlds (the effect is a few percent, inside a week's 5% draw); a season over budget and a fuller slate raise the bar. |
+| `renewal`, `earnings`, `release-schedule`, `rolling-delivery`, `journey-e`, `decisions` specs, desktop and phone | 0 | 14 passed, 2 skipped by design. |
+
