@@ -284,13 +284,22 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
     - Journeys (V4-038, November 13, 2026): `docs/v4/JOURNEYS.md` maps J01 to J13 step by step to the specs that play
       them. J01 is one run (`e2e/j01.spec.ts`, 39 s, desktop): gift, book, character, kit bought and used, delivered, an
       offer accepted and its receipts settled against the backers, own money into the next project, the birthday at
-      36 lived to, a reload. J12 and J13 are covered across their specs. J02 to J11 are still steps across specs.
+      36 lived to, a reload. J12 and J13 are covered across their specs. Until later that day J02 to J11 were steps
+      across specs; each is now one run of its own (`e2e/j02.spec.ts` to `e2e/j11.spec.ts`, desktop only, about a
+      minute each), and each has been mutation-checked on one rule it reads. Writing them found two engine faults, both
+      fixed with unit tests (a shoot planned over outside work already taken; a recut approved in post that never added
+      the score's conform), and three things a run has to do as a player would: build the schedule once the cast and
+      crew have said yes (offers take two or three days), accept a backer's offer before it lapses (three weeks), and
+      take the option on a copyrighted work before planning. J03 records its seeded outcome in the spec so a change is
+      seen (seed 1: a broadcaster, then a cancellation at about 80% kept against 88%). J11 accepts either a renewal or a
+      cancellation of Coastline's simulated season, and checks that it is labelled. The game clock runs in real time
+      between a run's actions, so audience figures vary a little from run to run; the checks read them from the save.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
-  - Still not built: Guide Me for writing,
-    company accounts, the music system (V4-022 to 026), F (historical boundaries, territory box office, weekly
-    reports, renewal weighing, record books, reputation by role), the media-inventory work in G beyond what v3 built,
-    H's journeys J01 to J13 as whole runs, and a title-by-title Sanderson comparison.
+  - Still not built: Guide Me for writing, company accounts, the recordings catalog (V4-022.01, which needs research),
+    the media-inventory work in G beyond what v3 built, checks on a real phone by a person (V4-035.03), and a
+    title-by-title Sanderson comparison. The music system, F and the journeys J01 to J13 were on this list until
+    November 13, 2026.
 - **Worktrees** `../slate-c-work` to `../slate-h-work` and `../slate-ui-work` are older branches with nothing
   uncommitted; their commits are not ancestors of `main` (squash merges). They are left alone.
 
