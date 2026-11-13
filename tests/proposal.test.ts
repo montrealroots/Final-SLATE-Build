@@ -223,13 +223,18 @@ describe('the work\'s story', () => {
   const names = (t: string, b: { characters: { key: string; name: string }[] }) => b.characters.reduce((a, c) => a.split(`{${c.key}}`).join(c.name), t);
   const sentences = STORY.join(' ').split(/(?<=\.)\s+/);
 
-  it('tells the premise, the synopsis and a kept ending from the story, each saying where it is from', () => {
+  it('tells the premise, the logline, a concise synopsis and a kept ending from the story, each saying where it is from', () => {
     const { blueprint: b, origin, why } = propose(told);
+    // The setup: how the story begins.
     expect(names(b.premise, b)).toBe(STORY[0]);
     expect(origin['story.premise']).toBe('sourced');
-    expect(why['story.premise']).toBe('How the story begins: the first paragraph of the English Wikipedia article "The Glass Harbour", its Plot section, in its own words (CC BY-SA 4.0).');
-    expect(names(b.synopsis, b)).toBe(STORY.join('\n\n'));
-    expect(origin['story.synopsis']).toBe('sourced');
+    expect(why['story.premise']).toBe('How the story begins: its setup, as the English Wikipedia article "The Glass Harbour", its Plot section, in its own words (CC BY-SA 4.0) tells it.');
+    // The logline is the event that sets it going: the development after the setup, where none turns earlier.
+    expect(names(b.logline, b)).toBe(sentences[2]);
+    expect(origin['story.logline']).toBe('sourced');
+    // The synopsis is concise: the sentence that says most in each development, not the article's paragraphs whole.
+    expect(names(b.synopsis, b)).toBe([sentences[0], sentences[2], sentences[5], sentences[8]].join(' '));
+    expect(why['story.synopsis']).toContain('the sentence that says most in each of its 4 developments');
     expect(names(b.ending, b)).toBe(STORY[3]);
     expect(origin['story.ending']).toBe('sourced');
     // A story whose end wasn't kept leaves the ending unrecorded; a free adaptation writes its own.
@@ -237,22 +242,30 @@ describe('the work\'s story', () => {
     expect(propose(told, 'feature', 'free').origin['story.ending']).toBe('proposed');
   });
 
-  it('tells every scene from the story in order, with the people it names and the places it records', () => {
+  it('tells the scenes from the story\'s developments, in order, each with its purpose, not cut into equal runs', () => {
     const { blueprint: b, origin, why } = propose(told);
     expect(origin.scenes).toBe('sourced');
-    expect(why.scenes).toContain('Each scene\'s action is a stretch of the English Wikipedia article "The Glass Harbour"');
-    expect(b.scenes.map((x) => names(x.action, b)).join(' ')).toBe(sentences.join(' '));
-    const first = b.scenes[0];
-    expect(first.place).toBe('Lisbon'); // the story names it there
-    expect(first.who.map((k) => b.characters.find((c) => c.key === k)!.name).sort()).toEqual(['Ines Carvalho', 'Tomas Reyes']);
+    expect(why.scenes).toContain('The story read as 4 developments (setup, inciting event, climax, resolution)');
+    // Every scene is told in the story's own sentences, in the story's order.
+    const at = b.scenes.map((x) => sentences.indexOf(names(x.action, b)));
+    expect(at.every((x) => x >= 0)).toBe(true);
+    expect(at).toEqual([...at].sort((x, y) => x - y));
+    // Their purposes follow the developments' roles: the setup first, the resolution last, the climax before it.
+    expect(b.scenes[0].objective).toBe('Establish the world and the people in it');
+    expect(b.scenes.at(-1)!.objective).toBe('Show what has changed');
+    expect(b.scenes.some((x) => x.objective === 'Settle the conflict')).toBe(true);
+    // The parts follow the story's order.
+    expect(b.scenes.map((x) => x.act)).toEqual([...b.scenes.map((x) => x.act)].sort((x, y) => ['Beginning', 'Middle', 'End'].indexOf(x) - ['Beginning', 'Middle', 'End'].indexOf(y)));
+    expect(b.scenes[0].place).toBe('Lisbon'); // the story names it there
     expect(blueprintProblems(b, GENRES)).toEqual([]);
   });
 
-  it('a series tells it across every episode, and the project has scenes in each', () => {
+  it('a series breaks its episodes at the story\'s developments, each with a purpose, and the project has scenes in each', () => {
     const { blueprint: b } = proposeFromSource({ work: told, format: 'series', approach: 'faithful', gameYear: 2027, episodes: 4, minutes: 25, genres: GENRES });
     expect([...new Set(b.scenes.map((x) => x.episode))]).toEqual([1, 2, 3, 4]);
     expect(b.scenes.map((x) => names(x.action, b)).join(' ')).toBe(sentences.join(' '));
-    expect(names(b.tv!.eps[1].moves, b)).toBe(sentences[Math.round(sentences.length / 4)]); // what episode 2 moves is how its stretch of the story begins
+    expect(names(b.tv!.eps[0].moves, b)).toMatch(/^Sets up the world and its people, and ends on what starts the story: /);
+    expect(names(b.tv!.eps[3].moves, b)).toMatch(/^Brings it to its climax and shows what has changed: /);
     expect(blueprintProblems(b, GENRES)).toEqual([]);
     const s = newGame(draft(), 0, 'save-story');
     const p = createFromSource(s, { work: told, axes: { format: 'series', medium: 'live-action', episodeCount: 4, targetRuntimeMin: 25 }, scenarioId: 'low', approach: 'faithful', genres: GENRES });

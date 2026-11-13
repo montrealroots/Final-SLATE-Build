@@ -15,7 +15,9 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const CACHE = '.sources-cache/plots';
+// A second cache from November 13, 2026: it keeps each story section's raw text with its subsection headings, so how a
+// story is read can change without fetching it again. The first kept only the paragraphs.
+const CACHE = '.sources-cache/plots2';
 const UA = 'slate-source-catalog/1.0 (a game\'s catalog build; Wikipedia CC BY-SA)';
 /** Section titles that hold a work's story, in the order they are preferred. */
 export const STORY_SECTIONS = ['Plot', 'Plot summary', 'Synopsis', 'Story', 'Storyline', 'Plot overview', 'Summary', 'Narrative', 'Premise', 'Plot and characters', 'Contents', 'Content', 'Outline', 'Setting and plot', 'Plot and setting'];
@@ -23,8 +25,16 @@ export const STORY_SECTIONS = ['Plot', 'Plot summary', 'Synopsis', 'Story', 'Sto
 export const MOST = 6000;
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
-/** The story section of a plain-text extract whose headings are `== Title ==`: its paragraphs, subsections included. */
-export function storyOf(extract) {
+/**
+ * Subsections of a story section that tell its events, where it has any: an article like Portal's divides its Synopsis
+ * into Characters, Setting and Plot, and only the last is the story. Without such a subsection, the ones about the
+ * work's world rather than its events are left out (when anything else remains).
+ */
+const PLOT_PART = /\b(plot|story|storyline|synopsis|summary|narrative|events)\b/i;
+const NOT_STORY = /\b(setting|characters?|background|world|cast|universe|gameplay|premise|themes?|style|reception|development)\b/i;
+
+/** The raw text of a story section of a plain-text extract whose headings are `== Title ==`, its subsections kept. */
+export function storySection(extract) {
   const lines = extract.split('\n');
   const heads = [];
   lines.forEach((l, i) => { const m = /^(={2,})\s*(.+?)\s*\1\s*$/.exec(l); if (m) heads.push({ i, level: m[1].length, title: m[2] }); });
@@ -32,13 +42,28 @@ export function storyOf(extract) {
     const h = heads.find((x) => x.level === 2 && x.title.toLowerCase() === want.toLowerCase());
     if (!h) continue;
     const end = heads.find((x) => x.i > h.i && x.level <= 2)?.i ?? lines.length;
-    const paragraphs = lines.slice(h.i + 1, end).filter((l) => l.trim() && !/^={2,}/.test(l)).map((l) => l.trim());
-    const kept = [];
-    let size = 0;
-    for (const p of paragraphs) { if (size + p.length > MOST && kept.length) break; kept.push(p); size += p.length; }
-    if (kept.length) return { section: h.title, paragraphs: kept, whole: kept.length === paragraphs.length };
+    return { section: h.title, raw: lines.slice(h.i + 1, end).join('\n') };
   }
   return null;
+}
+
+/** A story section's paragraphs: its plot subsections where it has them, otherwise all but those about its world. */
+export function storyOf(found) {
+  if (!found) return null;
+  const parts = [{ title: null, paragraphs: [] }];
+  for (const l of found.raw.split('\n')) {
+    const m = /^(={3,})\s*(.+?)\s*\1\s*$/.exec(l);
+    if (m) parts.push({ title: m[2], paragraphs: [] });
+    else if (l.trim()) parts.at(-1).paragraphs.push(l.trim());
+  }
+  const filled = parts.filter((x) => x.paragraphs.length);
+  const plot = filled.filter((x) => x.title && PLOT_PART.test(x.title));
+  const told = plot.length ? plot : filled.filter((x) => !(x.title && NOT_STORY.test(x.title))).length ? filled.filter((x) => !(x.title && NOT_STORY.test(x.title))) : filled;
+  const paragraphs = told.flatMap((x) => x.paragraphs);
+  const kept = [];
+  let size = 0;
+  for (const p of paragraphs) { if (size + p.length > MOST && kept.length) break; kept.push(p); size += p.length; }
+  return kept.length ? { section: found.section, parts: told.map((x) => x.title).filter(Boolean), paragraphs: kept, whole: kept.length === paragraphs.length } : null;
 }
 
 async function fetchOne(title) {
@@ -60,8 +85,9 @@ async function fetchAll() {
   for (const r of todo) {
     const title = decodeURIComponent(r.article.split('/wiki/')[1]).replace(/_/g, ' ');
     const page = await fetchOne(title);
-    const story = page?.extract ? storyOf(page.extract) : null;
-    writeFileSync(join(CACHE, `${r.id.replace(':', '-')}.json`), JSON.stringify({ id: r.id, article: page?.title ?? title, retrieved: new Date().toISOString().slice(0, 10), story }));
+    const found = page?.extract ? storySection(page.extract) : null;
+    const story = storyOf(found);
+    writeFileSync(join(CACHE, `${r.id.replace(':', '-')}.json`), JSON.stringify({ id: r.id, article: page?.title ?? title, retrieved: new Date().toISOString().slice(0, 10), found, story }));
     console.log(`${r.title}: ${story ? `${story.section}, ${story.paragraphs.length} paragraphs` : 'no story section'}`);
     await sleep(6_000); // one request at a time, well inside what Wikimedia asks of serial clients; a 429 waits a minute and more
   }
@@ -82,8 +108,10 @@ function build() {
   const out = {};
   for (const f of readdirSync(CACHE)) {
     const c = JSON.parse(readFileSync(join(CACHE, f), 'utf8'));
+    // Read again from the raw section each build, so a change to storyOf needs no new fetch.
+    c.story = c.found ? storyOf(c.found) : null;
     if (!c.story) continue;
-    out[c.id] = { from: 'English Wikipedia', article: c.article, link: `https://en.wikipedia.org/wiki/${encodeURIComponent(c.article.replace(/ /g, '_'))}`, licence: 'CC BY-SA 4.0', section: c.story.section, whole: c.story.whole, retrieved: c.retrieved, paragraphs: storyParagraphs(c.story.paragraphs) };
+    out[c.id] = { from: 'English Wikipedia', article: c.article, link: `https://en.wikipedia.org/wiki/${encodeURIComponent(c.article.replace(/ /g, '_'))}`, licence: 'CC BY-SA 4.0', section: c.story.section, ...(c.story.parts.length ? { parts: c.story.parts } : {}), whole: c.story.whole, retrieved: c.retrieved, paragraphs: storyParagraphs(c.story.paragraphs) };
   }
   writeFileSync('src/data/plots.json', `${JSON.stringify({ version: 1, source: 'English Wikipedia', licence: 'CC BY-SA 4.0', plots: out })}\n`);
   console.log(`${Object.keys(out).length} works with a story written to src/data/plots.json`);

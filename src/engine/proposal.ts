@@ -21,6 +21,7 @@
 import { adaptFrom } from './adaptation';
 import { applyBlueprint, briefFields, type Blueprint, type BlueprintCharacter, type BlueprintScene } from './blueprints';
 import { createProject, isEpisodic, isNonfiction, type NewProjectInput } from './projects';
+import { PURPOSE, ROLE_LABELS, WORD, episodeBreaks, episodePurpose, hasWord, readStory, selectDevelopments, sentencesOf, type Development, type Role } from './story-structure';
 import type { SourceWork } from './sources';
 import type { AdaptationApproach, Format, GameState, Project } from './types';
 
@@ -134,7 +135,7 @@ const BEATS: { act: 0 | 1 | 2; objective: string; action: string; turn: string; 
 const BEAT_SETS: Record<number, number[]> = { 5: [0, 1, 3, 5, 6], 6: [0, 1, 2, 3, 5, 6], 8: [0, 1, 2, 3, 4, 5, 6, 7] };
 
 /** A story's sentences, in order. */
-export const sentencesOf = (text: string): string[] => text.split(/(?<=[.!?]["'\u201d)\]]?)\s+(?=[\p{Lu}0-9"'\u201c(\[{])/u).map((x) => x.trim()).filter(Boolean);
+export { sentencesOf } from './story-structure';
 /** Split a list into `n` runs in order, as even as possible; never an empty run while items remain. */
 export function runsOf<T>(xs: T[], n: number): T[][] {
   const k = Math.max(1, Math.min(n, xs.length));
@@ -176,7 +177,22 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const summary = w.summary?.text ?? '';
   const recorded = [...(w.characters ?? [])];
   const at = (n: string) => { const k = summary.indexOf(n.split(' ')[0]); return k < 0 ? Infinity : k; };
-  recorded.sort((a, b) => (b.sitelinks ?? 0) - (a.sitelinks ?? 0) || at(a.name) - at(b.name) || a.name.localeCompare(b.name));
+  // Where the work's story is told, who it names most leads, and the rest follow by how often it names them: the story
+  // says who matters to it; how widely a character is written about elsewhere only breaks ties (November 13, 2026).
+  const storyText = (w.plot?.paragraphs ?? []).join(' ');
+  const counted = new Map<string, number>();
+  const mentions = (name: string) => {
+    if (!storyText) return 0;
+    if (counted.has(name)) return counted.get(name)!;
+    const first = name.split(/\s+/)[0];
+    const firstOwn = first.length >= 3 && first !== name && recorded.filter((c) => c.name.split(/\s+/)[0] === first).length === 1;
+    // A plain search with a word-boundary check (see story-structure.ts sentencesOf for what it saved).
+    const n = (t: string) => { let k = 0; for (let at = storyText.indexOf(t); at >= 0; at = storyText.indexOf(t, at + t.length)) if (!WORD.test(storyText[at - 1] ?? ' ') && !WORD.test(storyText[at + t.length] ?? ' ')) k += 1; return k; };
+    const out = firstOwn ? n(first) : n(name);
+    counted.set(name, out);
+    return out;
+  };
+  recorded.sort((a, b) => mentions(b.name) - mentions(a.name) || (b.sitelinks ?? 0) - (a.sitelinks ?? 0) || at(a.name) - at(b.name) || a.name.localeCompare(b.name));
   const room = castFor(i.format, minutes);
   const chosen = recorded.slice(0, room);
   if (recorded.length > room) notes.push(`${w.title} records ${recorded.length} characters. A ${tv ? 'season' : minutes <= 25 ? 'short' : 'film'} can carry about ${room}, so the proposal keeps ${chosen.map((c) => c.name).join(', ')} and leaves the others for you to add back.`);
@@ -189,8 +205,10 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   origin.characters = people.some((p) => p.recorded) ? 'sourced' : 'unknown';
   if (!recorded.length) why.characters = `No characters are recorded for ${w.title}. The three parts an outline needs are named for what they do; name them from the work.`;
   else if (people.some((p) => !p.recorded)) why.characters = `${w.title} records ${recorded.length === 1 ? 'one character' : `${recorded.length} characters`}; the other parts are named for what they do.`;
-  else why.characters = 'The names are recorded. Who leads, and what each wants, are proposed: the record does not say who leads, so the ones most written about come first.';
-  const [lead, rival, ally] = people;
+  else why.characters = storyText
+    ? 'The names are recorded. Who leads is proposed from the story: the one it names most. Who stands against them and who beside them come from what the story has them do together.'
+    : 'The names are recorded. Who leads, and what each wants, are proposed: the record does not say who leads, so the ones most written about come first.';
+  let [lead, rival, ally] = people;
   const place = (n: number) => {
     const places = (w.places ?? []).map((p) => p.name);
     return places.length ? places[n % places.length] : invented ? `The World Of ${w.title}` : (n % 2 ? 'A Public Place' : 'Home');
@@ -200,25 +218,41 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const plot = w.plot?.paragraphs?.length ? w.plot : null;
   const named = people.filter((x) => x.recorded);
   const firsts = named.map((x) => x.name.split(/\s+/)[0]);
-  const esc = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const word = (t: string) => new RegExp(`(?<![\\p{L}\\p{N}])${esc(t)}(?![\\p{L}\\p{N}])`, 'gu');
   // A full name is written {key}, so a renamed character is renamed in the story; a first name alone stays as the
   // article wrote it, and only says who is in a scene.
-  const marks: [RegExp, string][] = named.map((x) => [word(x.name), `{${x.key}}`]);
   const callers = named.map((x, n) => {
     const first = firsts[n];
-    return { key: x.key, re: first.length >= 3 && first !== x.name && firsts.filter((f) => f === first).length === 1 ? word(first) : null };
+    return { key: x.key, first: first.length >= 3 && first !== x.name && firsts.filter((f) => f === first).length === 1 ? first : null };
   });
-  const mark = (t: string) => marks.reduce((acc, [re, k]) => acc.replace(re, k), t.replace(/[{}]/g, ''));
+  /** Every whole-word occurrence of a name, replaced: a scan, not a Unicode pattern (see story-structure.ts sentencesOf). */
+  const swap = (t: string, name: string, to: string) => {
+    let out = '';
+    let from = 0;
+    for (let at = t.indexOf(name); at >= 0; at = t.indexOf(name, at + name.length)) {
+      if (WORD.test(t[at - 1] ?? ' ') || WORD.test(t[at + name.length] ?? ' ')) continue;
+      out += t.slice(from, at) + to;
+      from = at + name.length;
+    }
+    return out + t.slice(from);
+  };
+  const mark = (t: string) => named.reduce((acc, x) => swap(acc, x.name, `{${x.key}}`), t.replace(/[{}]/g, ''));
   const paragraphs = plot ? plot.paragraphs.map(mark) : [];
   const story = paragraphs.length ? sentencesOf(paragraphs.join(' ')) : [];
-  const told = story.length >= STORY_MIN;
+  let told = story.length >= STORY_MIN;
   const credit = plot ? `the English Wikipedia article "${plot.article}", its ${plot.section} section, in its own words (${plot.licence})` : '';
-  const whoIn = (t: string) => {
-    const ks = people.filter((x) => t.includes(`{${x.key}}`) || callers.some((c) => c.key === x.key && c.re && new RegExp(c.re.source, 'u').test(t))).map((x) => x.key);
-    return ks.length ? ks : [lead.key];
-  };
-  const placeIn = (t: string, k: number) => (w.places ?? []).find((x) => t.includes(x.name))?.name ?? place(k);
+  // The story read as developments (story-structure.ts): what each does, and who is against or beside the lead.
+  const reading = told ? readStory(paragraphs, callers, lead.key, (w.places ?? []).map((x) => x.name)) : null;
+  if (reading) {
+    const move = (k: string | null, to: number) => { const at = people.findIndex((x) => x.key === k); if (k && at > 0 && at !== to && people.length > to) { const [x] = people.splice(at, 1); people.splice(to, 0, x); } };
+    move(reading.rival, 1);
+    move(reading.ally, 2);
+    [lead, rival, ally] = people;
+  }
+  // The story's developments, background left out: what the outline, the synopsis and the premise are told from.
+  const devs = (reading?.developments ?? []).filter((d) => !d.background);
+  const background = (reading?.developments ?? []).filter((d) => d.background).length;
+  // A story that is all background (a game's article describing only its world) tells nothing to build from.
+  if (told && !devs.length) told = false;
 
   // ---- When and where.
   const recordedPlace = (w.places ?? [])[0]?.name;
@@ -254,34 +288,42 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     .replace(/\{lead\}/g, `{${lead.key}}`).replace(/\{rival\}/g, `{${rival.key}}`).replace(/\{ally\}/g, `{${ally.key}}`);
   const where = recordedPlace ? `In ${recordedPlace}` : invented ? `In the world of ${w.title}` : 'Where the story is set';
   const by = w.creators.map((c) => c.name).join(' and ');
-  const logline = fill(`${where}, {lead} must {goal} against {against}, and choose between {choiceA} and {choiceB}.`);
-  origin['story.logline'] = 'proposed';
+  // The logline is the event that sets the work's story going, where it is told in one sentence the field holds;
+  // otherwise the game's proposal.
+  const inciting = devs.find((d) => d.role === 'inciting');
+  const logline = inciting && inciting.key.length <= 300 ? inciting.key : fill(`${where}, {lead} must {goal} against {against}, and choose between {choiceA} and {choiceB}.`);
+  origin['story.logline'] = inciting && inciting.key.length <= 300 ? 'sourced' : 'proposed';
+  if (origin['story.logline'] === 'sourced') why['story.logline'] = `The event that sets the story going, as ${credit} tells it.`;
   // A premise is story. A sentence about sales or standing (best-selling, copies sold, of all time) is left out of it:
   // the game names no list, metric, year or territory for such a claim (the v4 package; ledger V4-003.05).
   const sentences = summary ? summary.split(/(?<=[.!?])\s+(?=[A-Z"'(])/) : [];
   const lead1 = sentences.filter((x) => !SALES_CLAIM.test(x));
   const dropped = sentences.length - lead1.length;
   // The premise is the story's opening where the article tells one; otherwise its lead, less any claim about sales.
-  const opening = told ? sentencesOf(paragraphs[0]).filter((x) => !SALES_CLAIM.test(x)) : [];
+  // The premise is how the story begins (its setup, at most three sentences); otherwise the article's lead.
+  const opening = told ? devs[0].sentences.filter((x) => !SALES_CLAIM.test(x)).slice(0, 3) : [];
   const premise = opening.length ? opening.join(' ') : lead1.length ? lead1.join(' ') : fill(`An adaptation of ${w.title}${by ? ` by ${by}` : ''}${w.description ? `, ${w.description}` : ''}. {lead} sets out to {goal}.`);
   origin['story.premise'] = opening.length || lead1.length ? 'sourced' : 'proposed';
-  why['story.premise'] = opening.length ? `How the story begins: the first paragraph of ${credit}.`
+  why['story.premise'] = opening.length ? `How the story begins: its setup, as ${credit} tells it.`
     : lead1.length ? `The English Wikipedia article "${w.summary!.article}", in its own words (${w.summary!.licence})${dropped ? `, less ${dropped === 1 ? 'a sentence' : `${dropped} sentences`} about its sales or standing, which the game can't vouch for` : ''}.` : `No summary is recorded for ${w.title}; this premise is the game's proposal, not the work's story.`;
-  // The synopsis is the whole story, in whole paragraphs, as far as the brief's field holds it.
-  const kept: string[] = [];
-  for (const x of paragraphs) { if (kept.join('\n\n').length + x.length + 2 > SYNOPSIS_MOST && kept.length) break; kept.push(x); }
-  const synopsis = told ? kept.join('\n\n').slice(0, SYNOPSIS_MOST)
+  // The synopsis is concise: the sentence that says most in each development, in order, as far as the field's length.
+  // Where they don't all fit, the ones that turn the story are kept first. The whole story is on the work's page.
+  const keys = devs.map((d) => d.key);
+  const fits = (xs: string[]) => xs.join(' ').length <= SYNOPSIS_MOST;
+  const told2 = fits(keys) ? devs : devs.filter((d) => d.role !== 'complication' || d.turns);
+  const summaryOf = fits(told2.map((d) => d.key)) ? told2 : told2.filter((d) => d.role !== 'complication');
+  const synopsis = told ? summaryOf.map((d) => d.key).join(' ').slice(0, SYNOPSIS_MOST)
     : fill('{lead} lives a life that {against} is about to upend. When it arrives, {lead} decides to {goal}, first with {ally} and the obvious way, which fails. Facing {rival}, {lead} learns the real size of the problem, and the cost of each victory falls on someone close. Forced at last to choose between {choiceA} and {choiceB}, {lead} chooses. ') + fill(endingProposed);
   origin['story.synopsis'] = told ? 'sourced' : 'proposed';
   why['story.synopsis'] = told
-    ? `The story as ${credit}${kept.length < paragraphs.length ? `: its first ${kept.length} of ${paragraphs.length} paragraphs, as much as the Synopsis holds` : ''}${plot!.whole ? '' : '. The article tells more than was kept'}.`
+    ? `The story in brief: the sentence that says most in ${summaryOf.length === devs.length ? `each of its ${devs.length} developments` : `${summaryOf.length} of its ${devs.length} developments, those that turn it`}, from ${credit}. Where one development ends and the next begins is the game's reading${plot!.whole ? '' : '. The article tells more than was kept'}.`
     : `A shape for the adaptation, not ${w.title}'s plot: ${plot ? `its article's ${plot.section} section is too short to tell it from` : `no story is recorded for ${w.title}`}, and the game writes none as if it were.`;
   // Faithful and updated keep the work's ending (adaptation.ts APPROACHES); only a free adaptation proposes its own.
   const faithfulEnd = i.approach !== 'free';
   const endKnown = told && plot!.whole;
-  const ending = !faithfulEnd ? fill(endingProposed) : endKnown ? paragraphs.at(-1)! : `The work's own ending, kept. The game does not record how ${w.title} ends; write it here from the work.`;
+  const ending = !faithfulEnd ? fill(endingProposed) : endKnown ? devs.at(-1)!.sentences.slice(-3).join(' ') : `The work's own ending, kept. The game does not record how ${w.title} ends; write it here from the work.`;
   origin['story.ending'] = !faithfulEnd ? 'proposed' : endKnown ? 'sourced' : 'unknown';
-  if (faithfulEnd) why['story.ending'] = endKnown ? `This approach keeps the work's ending: the last paragraph of ${credit}.` : `This approach keeps the work's ending, which is not recorded${told ? ': the story kept stops before it' : ''}.`;
+  if (faithfulEnd) why['story.ending'] = endKnown ? `This approach keeps the work's ending: how ${credit} ends it.` : `This approach keeps the work's ending, which is not recorded${told ? ': the story kept stops before it' : ''}.`;
   for (const k of ['story.question', 'story.stakes', 'story.conflict', 'story.viewpoint', 'story.audience', 'story.intendedExperience', 'story.structure', 'tone', 'suggestions', 'relationships']) origin[k] = 'proposed';
   origin.scenes = told ? 'sourced' : 'proposed';
   const themes = (w.subjects ?? []).slice(0, 3);
@@ -306,23 +348,50 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     };
   };
   const characters = people.map(char);
+  // Where the story has the lead and another together, the relationship starts and ends where it does: the first and
+  // last sentences that name both (the article's). Otherwise it is the game's proposal.
+  const allSentences = devs.flatMap((d) => d.sentences);
+  const both = (k: string) => {
+    const first = callers.find((c) => c.key === k)?.first ?? null;
+    const leadFirst = callers.find((c) => c.key === lead.key)?.first ?? null;
+    return allSentences.filter((x) => (x.includes(`{${lead.key}}`) || (leadFirst !== null && hasWord(x, leadFirst))) && (x.includes(`{${k}}`) || (first !== null && hasWord(x, first))));
+  };
+  const fromStory = (k: string, kind: string, start: string, end: string) => {
+    const xs = both(k);
+    return xs.length >= 2 ? { a: lead.key, b: k, kind, start: xs[0], end: xs.at(-1)! } : { a: lead.key, b: k, kind, start: fill(start), end: fill(end) };
+  };
   const relationships = [
-    { a: lead.key, b: rival.key, kind: 'opponents', start: fill('{rival} stands where {lead} needs to go'), end: fill(endingProposed) },
-    { a: lead.key, b: ally.key, kind: 'allies', start: fill('{ally} is on {lead}\'s side'), end: fill('Changed by what it cost {ally}') },
+    fromStory(rival.key, 'opponents', '{rival} stands where {lead} needs to go', endingProposed),
+    fromStory(ally.key, 'allies', '{ally} is on {lead}\'s side', 'Changed by what it cost {ally}'),
   ];
+  if (reading && (reading.rival || reading.ally)) why.relationships = `Who stands against ${lead.name} and who beside them is read from what the story has them do together${relationships.some((r) => !r.start.includes('{')) ? '; where both are named, each relationship starts and ends where the story has them together' : ''}. Proposed.`;
+  // Where a character first and last appears in the story, by role: what their arc is anchored to.
+  if (reading) for (const c of characters) {
+    const at = devs.filter((d) => d.who.includes(c.key));
+    if (!at.length) continue;
+    const [f, l] = [at[0].role, at.at(-1)!.role];
+    c.arc = `Enters in the story's ${ROLE_LABELS[f].toLowerCase()}${l !== f || at.length > 1 ? ` and is in ${at.length} of its ${devs.length} developments, the last its ${ROLE_LABELS[l].toLowerCase()}` : ''}. ${c.arc}`;
+  }
 
-  // ---- The outline: every episode of a series, each scene a stretch of the story in order where one is told.
+  // ---- The outline: the story's developments, as many as the format has room for, in order (story-structure.ts). A
+  // series breaks its episodes where the story turns, each episode with a purpose. Until November 13, 2026 the story was
+  // cut into equal runs of sentences, which the owner ruled out.
   const count = scenesFor(i.format, minutes);
   const acts = tv ? ['Opening', 'Middle', 'Close'] : ['Beginning', 'Middle', 'End'];
   const episodes = tv ? Math.max(2, Math.min(26, i.episodes ?? 6)) : 0;
   const beatAt = (f: number) => BEATS[Math.round(f * (BEATS.length - 1))];
   const actAt = (f: number) => acts[f < 0.25 ? 0 : f < 0.75 ? 1 : 2];
-  /** A scene told from a stretch of the story: its words are the story's; its purpose and turn follow the arc. */
-  const toldScene = (part: string[], k: number, f: number, episode?: number, n = count): BlueprintScene => {
-    const b = beatAt(f);
-    const text = part.join(' ');
-    return { act: actAt(f), intExt: b.intExt, place: placeIn(text, k), time: b.time, who: whoIn(text), objective: fill(b.objective), action: text, turn: b.turn ? part.at(-1)! : '', minutes: sceneMinutes(minutes, n), ...(episode ? { episode } : {}) };
+  /**
+   * A scene from a development: what happens is the development's opening and the sentence that turns it (the article's
+   * words, two at most); its purpose comes from its role; where it is, from the place it names or the work's places.
+   */
+  const devScene = (d: Development, k: number, n: number, episode?: number): BlueprintScene => {
+    const told1 = [d.sentences[0], ...(d.key !== d.sentences[0] ? [d.key] : [])];
+    const b = beatAt(d.at);
+    return { act: actAt(d.at), intExt: b.intExt, place: d.place ?? place(k), time: b.time, who: d.who.length ? d.who : [lead.key], objective: PURPOSE[d.role], action: told1.join(' '), turn: d.turns ? d.key : '', minutes: sceneMinutes(minutes, n), ...(episode ? { episode } : {}) };
   };
+  /** A development of one sentence each, where a story has too few developments to fill an outline. */
+  const bySentence = (ds: Development[]): Development[] => ds.flatMap((d) => (d.sentences.length < 2 ? [d] : d.sentences.map((x, j) => ({ ...d, sentences: [x], key: x, turns: d.turns && x === d.key, role: j === 0 ? d.role : (d.role === 'setup' ? 'setup' : 'complication') as Role, weight: d.weight / d.sentences.length, at: d.at }))));
   /** A scene of the game's own, from the arc's beat at that point. */
   const ownScene = (n: number, k: number, episode?: number, size = count): BlueprintScene => {
     const b = BEATS[n];
@@ -331,18 +400,29 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     return { act: acts[b.act], intExt: b.intExt, place: here, time: b.time, who, objective: fill(b.objective), action: fill(b.action).replace(place(0), here), turn: fill(b.turn), minutes: sceneMinutes(minutes, size), ...(episode ? { episode } : {}) };
   };
   let scenes: BlueprintScene[];
-  const parts = told && tv ? runsOf(story, episodes) : [];
+  let left = 0;
+  const epMoves: string[] = [];
+  let storyEpisodes = 0;
   if (told && !tv) {
-    const runs = runsOf(story, count);
-    scenes = runs.map((part, k) => toldScene(part, k, runs.length > 1 ? k / (runs.length - 1) : 0, undefined, runs.length));
+    const pool = devs.length >= 5 ? devs : bySentence(devs);
+    const sel = selectDevelopments(pool, count);
+    left = sel.left;
+    scenes = sel.kept.map((d, k) => devScene(d, k, sel.kept.length));
   } else if (told) {
-    // The story across the season, then each episode's stretch across its scenes; an episode past the story's end (a
-    // story shorter than the season) is the game's own, from where the arc stands then.
+    const starts = episodeBreaks(devs, episodes);
+    storyEpisodes = starts.length;
     scenes = Array.from({ length: episodes }, (_, e) => {
-      const part = parts[e];
-      if (!part) return [0, 1].map((j) => ownScene(Math.min(BEATS.length - 1, 6 + j), j, e + 1, 2));
-      const runs = runsOf(part, count);
-      return runs.map((r, k) => toldScene(r, k, (e + (runs.length > 1 ? k / (runs.length - 1) : 0)) / episodes, e + 1, runs.length));
+      if (e >= starts.length) {
+        epMoves.push(fill(e === episodes - 1 ? '{lead} makes the choice' : '{lead} and {ally} push on'));
+        return [0, 1].map((j) => ownScene(Math.min(BEATS.length - 1, 6 + j), j, e + 1, 2));
+      }
+      const mine = devs.slice(starts[e], starts[e + 1] ?? devs.length);
+      const pool = mine.length >= 2 ? mine : bySentence(mine);
+      const sel = selectDevelopments(pool, count);
+      left += sel.left;
+      const heaviest = mine.reduce((x, y) => (y.weight > x.weight ? y : x));
+      epMoves.push(`${episodePurpose(e, episodes, mine)}: ${heaviest.key}`);
+      return sel.kept.map((d, k) => devScene(d, k, sel.kept.length, e + 1));
     }).flat();
   } else if (tv) {
     // No story to tell from: the game's own arc, a stretch of it in each episode, so no episode is left empty.
@@ -357,8 +437,29 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   if (new Set(scenes.map((x) => x.act)).size < 3) scenes.forEach((x, k) => { x.act = actAt(scenes.length > 1 ? k / (scenes.length - 1) : 0); });
   // Everyone in the cast is in a scene: whoever the story never names joins the scene with the most people in it.
   for (const x of people) if (!scenes.some((sc) => sc.who.includes(x.key))) scenes.reduce((a, b) => (b.who.length > a.who.length ? b : a)).who.push(x.key);
-  if (told) why.scenes = `Each scene's action is a stretch of ${credit}, in order${tv ? `, across all ${episodes} episodes${parts.length < episodes ? `; the story runs out after episode ${parts.length}, and the episodes after it are the game's own` : ''}` : ''}. Where each happens, and what each is for, are proposed.`;
+  if (told) {
+    const roles = [...new Set(devs.map((d) => ROLE_LABELS[d.role].toLowerCase()))].join(', ');
+    why.scenes = `The story read as ${devs.length} developments (${roles}), from ${credit}${background ? `, less ${background} ${background === 1 ? 'passage' : 'passages'} about the work rather than its events` : ''}. Each scene is one, told in its opening and the sentence that turns it, and kept in order${left ? `; ${left} lesser ${left === 1 ? 'development is' : 'developments are'} left out for the format's room, and stay in the synopsis` : ''}${tv ? `. The season breaks where the story turns, each episode with a purpose${storyEpisodes < episodes ? `; the story runs out after episode ${storyEpisodes}, and the episodes after it are the game's own` : ''}` : ''}. Where a development begins and ends, its role, where each scene happens and what each is for are the game's reading, proposed.`;
+    if (left) notes.push(`The outline keeps ${devs.length - left} of the story's ${devs.length} developments: every one that sets it up, turns it or ends it, then the heaviest of the rest.`);
+  }
   else why.scenes = `${plot ? `${w.title}'s article tells too little of its story to build scenes from` : `No story is recorded for ${w.title}`}${w.medium === 'video-game' ? ' (its article describes play)' : ''}. The outline is the game's own${tv ? `, a stretch of it in each of the ${episodes} episodes` : ''}; write the work's story into it.`;
+
+  // The tone, where the story says enough: deaths make it grave, a story of attacks and escapes makes it tense, one of
+  // help and love makes it warm; how often it turns sets its pace. Proposed from the story's words.
+  let storyTone: string | null = null;
+  if (reading) {
+    const txt = devs.flatMap((d) => d.sentences).join(' ');
+    const count1 = (re: RegExp) => (txt.match(new RegExp(re.source, 'gi')) ?? []).length;
+    const deaths = count1(/\b(die[sd]?|dead|death|kill(s|ed)?|murder(s|ed)?)\b/);
+    const danger = count1(/\b(attack(s|ed)?|escape[sd]?|flee[sd]?|fled|chase[sd]?|captur(es|ed)|fight(s)?|fought|trap(s|ped)?|threat(en)?(s|ed)?)\b/);
+    const warmth = count1(/\b(love[sd]?|friend(s|ship)?|help(s|ed)?|marr(y|ies|ied)|together|rescue[sd]?|famil(y|ies))\b/);
+    const turns = devs.filter((d) => d.turns).length;
+    const mood = deaths >= 3 ? 'Grave' : danger > warmth ? 'Tense' : warmth > danger ? 'Warm' : 'Steady';
+    const pace = turns / Math.max(1, devs.length) >= 0.6 ? 'quick to turn' : turns / Math.max(1, devs.length) >= 0.3 ? 'measured' : 'patient';
+    storyTone = `${mood} and ${pace}`;
+    origin.tone = 'proposed';
+    why.tone = `Read from the story: ${deaths} ${deaths === 1 ? 'death' : 'deaths'} or killings, ${danger} moments of danger, ${warmth} of help or affection, and ${turns} of its ${devs.length} developments turn it. Proposed.`;
+  }
 
   // ---- Fitting it to the format.
   if (LONG.has(w.medium) && !tv && minutes <= 25) notes.push(`A short can hold one strand of a ${w.medium.replace(/-/g, ' ')}. The outline follows ${lead.name} through one conflict and leaves the rest of ${w.title} out.`);
@@ -375,7 +476,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const blueprint: Blueprint = {
     id: `${genre}.${tv ? 't' : 'f'}01`, v: 1, format: i.format, structure: tv ? 'episodic' : 'three-act',
     title: w.title, genre, secondary: mapped.slice(1, 3),
-    tone: fill(matrix.resolution === 'tragic' ? 'Grave, close and unsentimental' : matrix.goal === 'win' ? 'Quick, warm and sharp' : matrix.goal === 'survive' ? 'Tense, physical and uneasy' : 'Close to its people, steady and clear'),
+    tone: storyTone ?? fill(matrix.resolution === 'tragic' ? 'Grave, close and unsentimental' : matrix.goal === 'win' ? 'Quick, warm and sharp' : matrix.goal === 'survive' ? 'Tense, physical and uneasy' : 'Close to its people, steady and clear'),
     year, time, setting: { name: settingName, kind: invented || !recordedPlace ? 'fictional' : 'real', type: invented ? 'otherworld' : 'city' },
     logline, premise, synopsis,
     question: fill(`Can {lead} {goal} without giving up ${choiceA}, or ${choiceB}?`),
@@ -387,7 +488,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
       tv: {
         episodes, minutes,
         engine: fill('Each episode {lead} takes one more step toward the goal, and pays for it'), arc: fill('Over the season {lead} sets out to {goal}, and is brought to choose between {choiceA} and {choiceB}'),
-        eps: Array.from({ length: episodes }, (_, n) => ({ n: n + 1, title: PHASES[Math.min(PHASES.length - 1, Math.floor((n / Math.max(1, episodes - 1)) * (PHASES.length - 1)))] + (episodes > PHASES.length && n > 0 ? ` ${n + 1}` : ''), moves: parts[n]?.[0] ?? fill(n === 0 ? 'The trouble reaches {lead}' : n === episodes - 1 ? '{lead} makes the choice' : n === Math.floor(episodes / 2) ? '{lead} learns what {rival} wants' : '{lead} and {ally} push on') })),
+        eps: Array.from({ length: episodes }, (_, n) => ({ n: n + 1, title: PHASES[Math.min(PHASES.length - 1, Math.floor((n / Math.max(1, episodes - 1)) * (PHASES.length - 1)))] + (episodes > PHASES.length && n > 0 ? ` ${n + 1}` : ''), moves: epMoves[n] ?? fill(n === 0 ? 'The trouble reaches {lead}' : n === episodes - 1 ? '{lead} makes the choice' : n === Math.floor(episodes / 2) ? '{lead} learns what {rival} wants' : '{lead} and {ally} push on') })),
         changes: fill('{lead} learns what the goal costs; {ally} learns to choose'), recurring: [...new Set([place(0), place(1)])],
         continuation: next ? `Open: the work is followed by ${next.title} in ${w.series!.name} (recorded), which a later season could adapt.` : i.format === 'limited-series' ? 'It ends with this season.' : 'Proposed: open, if the season is renewed.',
       },
