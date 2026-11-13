@@ -41,6 +41,10 @@ test('J06: a hybrid of a live scene and a 3D one, you in both, one crew and a le
   await section(page, 'Budget');
   const kit = page.locator('section', { has: page.getByRole('heading', { name: 'Equipment', exact: true }) });
   for (const n of ['Blackmagic Pocket Cinema Camera 4K', 'SanDisk 256GB Extreme PRO UHS-II SDXC']) await kit.getByRole('button', { name: `Add ${n} To Kit` }).click();
+  // A camera and a card, and no lights for the kitchen. From November 13, 2026 a day the kit can't serve waits for the
+  // player (the owner's v5 brief, 9); until then the rental house's package was hired by itself, and this journey relied
+  // on that. The approval is the player's to give, and is given here.
+  await kit.getByRole('checkbox', { name: /^Hire The Rental House's Package On A Day The Kit Can't Serve/ }).check();
   await castRoles(page, ['Mara', 'Sprite']);
   await staffEveryDepartment(page);
   await advance(page, 'next-day');
