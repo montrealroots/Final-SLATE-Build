@@ -167,3 +167,35 @@ export function worldEventsBetween(w: WorldSeed, state: GameState, from: string,
   });
   return [...recorded, ...simulatedEvents(state, from, to)].sort((a, b) => a.d.localeCompare(b.d));
 }
+
+/**
+ * A world event as a historical record (the v4 package, 04: "Historical records carry entity ID, metric, unit/currency,
+ * territory, period, published/as-of date, source, revision and confidence/availability. Reveal information only on its
+ * appropriate in-game date. Keep observed, projected and simulated records distinct. Missing data is unknown, not zero";
+ * ledger V4-027.01). From November 13, 2026. The catalog's records are dates, not figures: no box office or audience is
+ * imported, so the metric is what happened and the unit a day. Where it happened is unknown (null), never a guess.
+ * - recorded: TMDB recorded it as having happened by the day the records were taken.
+ * - announced: TMDB had it scheduled after that day; it is a plan, and may change.
+ * - simulated: this save's world made it after the records end.
+ */
+export interface HistoricalRecord {
+  entity: string;
+  metric: 'film-release' | 'season-premiere' | 'episode-airs' | 'series-ends' | 'decision';
+  unit: 'day';
+  territory: string | null;
+  period: string;
+  asOf: string;
+  source: 'TMDB' | "This save's world";
+  revision: string;
+  availability: 'recorded' | 'announced' | 'simulated';
+}
+
+const METRIC: Record<WorldEvent['k'], HistoricalRecord['metric']> = { film: 'film-release', season: 'season-premiere', episode: 'episode-airs', end: 'series-ends', decision: 'decision' };
+
+export function historicalRecord(w: Pick<WorldSeed, 'horizon' | 'builtAt'>, e: WorldEvent): HistoricalRecord {
+  return {
+    entity: e.r, metric: METRIC[e.k], unit: 'day', territory: null, period: e.d, asOf: w.horizon,
+    source: e.sim ? "This save's world" : 'TMDB', revision: w.builtAt,
+    availability: e.sim ? 'simulated' : e.d <= w.horizon ? 'recorded' : 'announced',
+  };
+}

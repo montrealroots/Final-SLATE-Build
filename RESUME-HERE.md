@@ -266,6 +266,25 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       A commissioner's bars rise by a quarter for a season over a tenth past its budget and by 0.15 when they renewed
       another of your series in the past year (`commissionerRaise`), said in the decision. Not modelled: live
       programmes, contract options for further seasons.
+    - The v4 spread and event frequency (V4-030.02, V4-037.03, November 13, 2026): `tests/balance/v4-spread.bal.ts`
+      (in `npm run balance`) runs six formats and methods at micro, low and mid levels in London, Los Angeles, Lagos and
+      Tokyo, ten seeds each (240 runs, 34 s), against targets written in the file; writes `docs/v4/SPREAD-RESULTS.json`
+      and `docs/v4/EVENT-FREQUENCY.md` (every notice reduced to its template and counted). `docs/v4/BALANCE-TARGETS.md`
+      reads them. No misses.
+    - Screens and holdovers (V4-028.02, November 13, 2026; `box-office.ts`): a run opens on a screen per $400 of guarantee
+      (times the square root of its territories, 10 to 4,000); each week records its screens, the other wide releases
+      against it (a seeded 0 to 4, each taking 8% of its takings a screen) and the cinemas' decision from admissions a
+      screen (900 expands by a quarter, 250 holds, less cuts to three fifths, under 5 screens withdraws). The screens a
+      month ends on scale the next month's report (`screenShare`, up to 1.5). Weeks In Cinemas shows them. Not modelled:
+      publicity spending.
+    - World records as historical records (V4-027.01, November 13, 2026; `catalog/world.ts historicalRecord`): entity,
+      metric (what happened), unit (a day), territory (unknown, null), period, as-of (the records' date), source (TMDB or
+      this save's world), revision (the catalog build) and availability: recorded, announced (scheduled after the
+      records were taken) or simulated. Home's In The Industry marks Announced and Simulated.
+    - Journeys (V4-038, November 13, 2026): `docs/v4/JOURNEYS.md` maps J01 to J13 step by step to the specs that play
+      them. J01 is one run (`e2e/j01.spec.ts`, 39 s, desktop): gift, book, character, kit bought and used, delivered, an
+      offer accepted and its receipts settled against the backers, own money into the next project, the birthday at
+      36 lived to, a reload. J12 and J13 are covered across their specs. J02 to J11 are still steps across specs.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
   - Still not built: Guide Me for writing,

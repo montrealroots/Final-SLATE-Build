@@ -2,7 +2,7 @@
 // of its weeks, a correction is kept visible, every other figure follows from the rental, and the money is what it was.
 import { describe, expect, it } from 'vitest';
 import { DAY, DISTRIBUTOR_FEE, REPORT_MONTHS, acceptDistribution, processUntil, reportedGross } from './engine-api';
-import { RENTAL_SHARE, TICKET_PRICE, WEEKS_PER_REPORT, WEEK_WEIGHTS, monthOfWeek, provisionalRental, recordBook, recordWeek, settleMonth, weekDates, weekMoney } from '../src/engine/box-office';
+import { COMPETITION_MAX, EXPAND_BAR, HOLD_BAR, RENTAL_SHARE, SCREENS_BOUNDS, TICKET_PRICE, WEEKS_PER_REPORT, WEEK_WEIGHTS, holdover, monthOfWeek, openingScreens, provisionalRental, recordBook, recordWeek, screenShare, screensAfter, settleMonth, weekDates, weekMoney } from '../src/engine/box-office';
 import { deserialize, serialize } from '../src/engine/save';
 import type { BoxOfficeWeek, DistributionOffer, GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction } from './helpers';
@@ -171,5 +171,54 @@ describe('the record book', () => {
     // Change a week and the book changes: it is worked out from the weeks, with no copy of its own.
     s.projects[0].offers[1].weeks![1].rental = 6_000;
     expect(recordBook(s)[0].lifetime).toBe(92_000);
+  });
+});
+
+describe('screens and holdovers', () => {
+  it('a run opens on the screens its guarantee pays for, wider in more territories, within bounds', () => {
+    expect(openingScreens(40_000, 1)).toBe(100);
+    expect(openingScreens(40_000, 4)).toBe(200);
+    expect(openingScreens(0, 1)).toBe(SCREENS_BOUNDS[0]);
+    expect(openingScreens(1e9, 9)).toBe(SCREENS_BOUNDS[1]);
+  });
+
+  it('the cinemas expand, hold, cut or withdraw it by its takings a screen, and competition takes from them', () => {
+    expect(holdover(100 * EXPAND_BAR, 100, 0).next).toBe('expanded');
+    expect(holdover(100 * HOLD_BAR, 100, 0).next).toBe('held');
+    expect(holdover(100 * HOLD_BAR, 100, 4).next).toBe('cut'); // the same takings, against four wide releases
+    expect(holdover(10, 100, 0)).toEqual({ next: 'cut', screens: 60 });
+    expect(holdover(10, 8, 0)).toEqual({ next: 'withdrawn', screens: 0 });
+    expect([screensAfter(100, 'expanded'), screensAfter(100, 'held'), screensAfter(100, 'cut'), screensAfter(100, 'withdrawn')]).toEqual([125, 100, 60, 0]);
+  });
+
+  it('each week records its screens, its competition and the decision; the next week plays on what was decided', () => {
+    const o = { ...deal(), minimumGuarantee: 40_000 };
+    for (let w = 1; w <= 4; w++) recordWeek(o, w, '2026-03-06', 1, 45_700, 7);
+    const ws = o.weeks!;
+    expect(ws[0].screens).toBe(100);
+    for (let k = 1; k < 4; k++) expect(ws[k].screens).toBe(screensAfter(ws[k - 1].screens!, ws[k - 1].next!));
+    expect(ws.every((w) => w.competitors! >= 0 && w.competitors! <= COMPETITION_MAX)).toBe(true);
+    // Recorded again with the same world, the same; weeks recorded without screens leave the report as it was.
+    const again = { ...deal(), minimumGuarantee: 40_000 };
+    for (let w = 1; w <= 4; w++) recordWeek(again, w, '2026-03-06', 1, 45_700, 7);
+    expect(again.weeks).toEqual(ws);
+    const old = deal();
+    for (let w = 1; w <= 4; w++) recordWeek(old, w, '2026-03-06', 1, 45_700);
+    expect(screenShare(old, 2)).toBe(1);
+  });
+
+  it('the next month\'s report follows the screens it was kept on: cut earns less, expanded more, withdrawn nothing', () => {
+    const { s, p } = delivered('bo-screens');
+    const o = inCinemas(s, p, 'oS', 80);
+    const month2 = (next: NonNullable<BoxOfficeWeek['next']>) => {
+      o.weeks = [{ week: 1, from: 'a', to: 'b', territories: 1, rental: 1000, status: 'final', screens: 100, competitors: 0, next: 'held' },
+        { week: 4, from: 'a', to: 'b', territories: 1, rental: 1000, status: 'final', screens: 100, competitors: 0, next }]; // labelled fixture
+      return reportedGross(s.seed, p, o, 2);
+    };
+    const held = month2('held');
+    expect(month2('cut')).toBeLessThan(held);
+    expect(month2('expanded')).toBeGreaterThan(held);
+    expect(month2('withdrawn')).toBe(0);
+    expect(screenShare(o, 1)).toBe(1);
   });
 });

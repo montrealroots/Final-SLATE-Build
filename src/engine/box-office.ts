@@ -4,8 +4,15 @@
 // What is here, and what is not. Every figure is this game's own simulation and is labelled so wherever it is shown; no
 // recorded historical result is imported, and none is made up to stand beside these. The money a film earns is exactly
 // what it was: the distributor's monthly report (distribution.ts reportedGross) is still the amount, and these weeks are
-// that report in the four weeks it covers. Not built: screens and bookings, holdovers decided week by week, publicity
-// spending, competition from other films, and currency other than the game's dollars.
+// that report in the four weeks it covers. Not built: publicity spending, and currency other than the game's dollars.
+//
+// Screens and holdovers (November 13, 2026; the v4 package, 04, "bookings, screens ... holdovers/expansion or
+// withdrawal"). A run opens on as many screens as its distributor's guarantee pays for, in the territories it opens in.
+// Each week it has its takings a screen, less what the week's other wide releases take from it (a seeded count, none to
+// four, simulated); from that the cinemas decide the next week: expand it, hold it, cut its screens or withdraw it. The
+// screens it ends a month on decide the next month: the distributor's report for that month is scaled by them against
+// the opening, so a film cut early earns less, one expanded earns more, and one withdrawn earns nothing more. Every
+// figure and threshold is game calibration.
 //
 // - A week's posting is one number: the film rental, which is what the cinemas paid the distributor. The rest is worked
 //   out from it and never stored, so nothing can drift from it: ticket sales are the rental over the share cinemas pass
@@ -19,6 +26,7 @@
 //   each of those has its own column.
 import type { BoxOfficeWeek, DistributionOffer, GameState, Project } from './types';
 import { addDaysToKey } from './time';
+import { stream } from './rng';
 
 /** A distributor's report covers four weeks in cinemas; a run is reported for as many months as distribution.ts REPORT_MONTHS. */
 export const WEEKS_PER_REPORT = 4;
@@ -33,6 +41,55 @@ export const TICKET_PRICE = 10;
 export const WEEK_WEIGHTS = [300, 264, 232, 204] as const;
 
 const hundred = (n: number) => Math.round(n / 100) * 100;
+
+/** Game calibration: the guarantee that pays for a screen, the takings a screen a week that hold or expand a film. */
+export const GUARANTEE_PER_SCREEN = 400;
+export const SCREENS_BOUNDS: [number, number] = [10, 4000];
+export const HOLD_BAR = 250;
+export const EXPAND_BAR = 900;
+export const CUT_SHARE = 0.6;
+export const EXPAND_SHARE = 1.25;
+export const WITHDRAW_BELOW = 5;
+export const COMPETITION_MAX = 4;
+export const COMPETITION_COST = 0.08;
+/** The most and least a month's report can be scaled by the screens: up to half again, down to nothing. */
+export const SCREEN_SHARE_MAX = 1.5;
+
+export const openingScreens = (guarantee: number, territories: number): number =>
+  Math.round(Math.min(SCREENS_BOUNDS[1], Math.max(SCREENS_BOUNDS[0], (guarantee / GUARANTEE_PER_SCREEN) * Math.sqrt(Math.max(1, territories)))));
+
+/** The cinemas' decision for next week from a week's admissions a screen, after what the competition took. */
+export function holdover(admissions: number, screens: number, competitors: number): { next: NonNullable<BoxOfficeWeek['next']>; screens: number } {
+  const perScreen = screens > 0 ? (admissions / screens) * (1 - COMPETITION_COST * competitors) : 0;
+  if (perScreen >= EXPAND_BAR) return { next: 'expanded', screens: Math.min(SCREENS_BOUNDS[1], Math.round(screens * EXPAND_SHARE)) };
+  if (perScreen >= HOLD_BAR) return { next: 'held', screens };
+  const cut = Math.floor(screens * CUT_SHARE);
+  return cut < WITHDRAW_BELOW ? { next: 'withdrawn', screens: 0 } : { next: 'cut', screens: cut };
+}
+
+/** The screens a decision leaves: half as many again and a quarter more, the same, three fifths, or none. */
+export const screensAfter = (screens: number, next: NonNullable<BoxOfficeWeek['next']>): number =>
+  next === 'expanded' ? Math.min(SCREENS_BOUNDS[1], Math.round(screens * EXPAND_SHARE)) : next === 'held' ? screens : next === 'cut' ? Math.floor(screens * CUT_SHARE) : 0;
+
+/** The screens a week plays on: the opening for the first, else what the cinemas decided after the week before, as decided then. */
+export function screensFor(o: DistributionOffer, week: number, territories: number): number {
+  if (week === 1) return openingScreens(o.minimumGuarantee, territories);
+  const prev = (o.weeks ?? []).find((w) => w.week === week - 1);
+  if (prev?.screens === undefined) return openingScreens(o.minimumGuarantee, territories);
+  return prev.next ? screensAfter(prev.screens, prev.next) : prev.screens;
+}
+
+/**
+ * What the screens make of a month's report: the screens decided after the last week of the month before, against the
+ * opening. 1 for the first month, and for a run whose weeks have no screens (recorded before screens were kept).
+ */
+export function screenShare(o: DistributionOffer, month: number): number {
+  if (month <= 1) return 1;
+  const last = (o.weeks ?? []).find((w) => w.week === (month - 1) * WEEKS_PER_REPORT);
+  const first = (o.weeks ?? []).find((w) => w.week === 1);
+  if (last?.screens === undefined || !first?.screens) return 1;
+  return Math.min(SCREEN_SHARE_MAX, (last.next ? screensAfter(last.screens, last.next) : last.screens) / first.screens);
+}
 export const monthOfWeek = (week: number): number => Math.ceil(week / WEEKS_PER_REPORT);
 const weeksOfMonth = (o: DistributionOffer, month: number): BoxOfficeWeek[] => (o.weeks ?? []).filter((w) => monthOfWeek(w.week) === month);
 
@@ -55,9 +112,15 @@ export function provisionalRental(week: number, monthToday: number): number {
 }
 
 /** Record a week as it ends. Recorded once: a week already there is left alone. */
-export function recordWeek(o: DistributionOffer, week: number, opened: string, territories: number, monthToday: number): BoxOfficeWeek | null {
+export function recordWeek(o: DistributionOffer, week: number, opened: string, territories: number, monthToday: number, seed?: number): BoxOfficeWeek | null {
   if ((o.weeks ?? []).some((w) => w.week === week)) return null;
   const w: BoxOfficeWeek = { week, ...weekDates(opened, week), territories, rental: provisionalRental(week, monthToday), status: 'provisional' };
+  // With the world's seed: its screens, the competition it met, and what the cinemas decide for the next week.
+  if (seed !== undefined) {
+    w.screens = screensFor(o, week, territories);
+    w.competitors = Math.floor(stream(seed, 'competition', o.id, String(week))() * (COMPETITION_MAX + 1));
+    w.next = w.screens ? holdover(weekMoney(w, 0).admissions, w.screens, w.competitors).next : 'withdrawn';
+  }
   (o.weeks ??= []).push(w);
   o.weeks.sort((a, b) => a.week - b.week);
   return w;

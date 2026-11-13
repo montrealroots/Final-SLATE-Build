@@ -159,7 +159,7 @@ test('J08: a horror film pitched to two studios, optioned by one for its reasons
 
   // Its weeks in cinemas (box-office.ts): twenty-four, all settled, adding up to what the studio reported; and the weeks
   // before it opened abroad were corrected when the first month's report came, which the table says.
-  type Week = { week: number; rental: number; status: string; territories: number; first?: number };
+  type Week = { week: number; rental: number; status: string; territories: number; first?: number; screens?: number; next?: string };
   const weeks: Week[] = offer.weeks;
   expect(weeks.map((w) => w.week)).toEqual(Array.from({ length: 24 }, (_, i) => i + 1));
   expect(weeks.every((w) => w.status === 'final' && w.rental % 100 === 0)).toBe(true);
@@ -174,6 +174,9 @@ test('J08: a horror film pitched to two studios, optioned by one for its reasons
   const table = earnings.getByRole('table', { name: `Weeks In Cinemas, ${NIGHT}` });
   await expect(table.locator('tbody tr')).toHaveCount(24);
   await expect(table.locator('tbody tr').first()).toContainText(dollars(weeks[0].rental * 2)); // ticket sales: the rental is half of them
+  // The screens it played on each week and what the cinemas decided (box-office.ts holdover), as the save has them.
+  await expect(table.locator('tbody tr').first().locator('td[data-label="Screens"]')).toHaveText(String(weeks[0].screens));
+  await expect(table.locator('tbody tr').first().locator('td[data-label="Next Week"]')).toHaveText(({ expanded: 'Expanded', held: 'Held', cut: 'Screens Cut', withdrawn: 'Withdrawn' } as Record<string, string>)[weeks[0].next!]);
   await expect(table.locator('tfoot')).toContainText(dollars(offer.reported.gross * 2));
   await expect(table.locator('tfoot')).toContainText(dollars(offer.reported.gross));
   await expect(table.locator('tfoot')).toContainText(dollars(offer.reported.net));

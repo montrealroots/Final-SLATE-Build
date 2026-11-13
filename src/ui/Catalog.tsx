@@ -12,7 +12,7 @@ import {
   type CatalogIndex, type CompanyFilmography, type NetworkRecord, type PersonCredit, type PersonRecord, type SeasonRecord, type SortKey, type TitleRecord,
 } from '../catalog/model';
 import { retryCatalog, useCatalogFile, type Loaded } from '../catalog/load';
-import { describe as describeWorld, inStory, isNews, simRoute, useWorld, worldEventsBetween } from '../catalog/world';
+import { describe as describeWorld, historicalRecord, inStory, isNews, simRoute, useWorld, worldEventsBetween } from '../catalog/world';
 import { episodeDates, outletOf, profileFor, recordedModel, recordedUpTo, type SimSeason } from '../engine/industry';
 import { ageOn, announcedSeason, breakLength, breaksOf, castFor, decisionsFor, nightsOf, usualDecision } from '../catalog/simseason';
 import { addDaysToKey } from '../engine';
@@ -855,7 +855,7 @@ export function IndustryCard() {
   const soon = pick(addDaysToKey(today, 1), addDaysToKey(today, 14)).slice(0, 6);
   const row = (e: (typeof recent)[number]) => (
     <li key={`${e.r}-${e.k}-${e.d}`} className="list-item">
-      <span className="grow"><Link to={e.sim ? simRoute(e) : { view: e.k === 'episode' ? 'episode' : e.k === 'season' ? 'season' : 'title', ref: e.r } as Route}>{describeWorld(e, today)}</Link>{e.sim ? <> <span className="chip">Simulated</span></> : null}</span>
+      <span className="grow"><Link to={e.sim ? simRoute(e) : { view: e.k === 'episode' ? 'episode' : e.k === 'season' ? 'season' : 'title', ref: e.r } as Route}>{describeWorld(e, today)}</Link>{(() => { const a = historicalRecord(w.data, e).availability; return a === 'recorded' ? null : <> <span className="chip">{a === 'simulated' ? 'Simulated' : 'Announced'}</span></>; })()}</span>
       <span className="dim small nowrap">{formatDateKey(e.d)}</span>
     </li>
   );

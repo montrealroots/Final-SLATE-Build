@@ -11,7 +11,7 @@ import { receiveIncome } from './finance';
 import { countryLanguage } from './people';
 import { DUBBED_REACH } from './script-effects';
 import { stream } from './rng';
-import { WEEKS_PER_REPORT, monthOfWeek, recordWeek, settleMonth, weekMoney } from './box-office';
+import { WEEKS_PER_REPORT, monthOfWeek, recordWeek, screenShare, settleMonth, weekMoney } from './box-office';
 import { money } from './budget';
 import { lastAudienceWeek, observeWeek, recordAudienceWeek, routeMetrics, showingsOf } from './audiences';
 import { addLog, registerHandler, schedule } from './state';
@@ -55,7 +55,9 @@ export function reportedGross(seed: number, p: Project, o: DistributionOffer, mo
   const routeScale = { theatrical: 1.3, streaming: 1, digital: 0.6, broadcast: 0.8 }[o.route];
   const curve = Math.pow(0.6, month - 1);
   const noise = 0.8 + stream(seed, 'report', p.id, o.id, String(month))() * 0.4;
-  return Math.round((Math.max(0, reception - 35) * 1500 * routeScale * Math.sqrt(territoriesReached(p, o)) * curve * noise) / 100) * 100;
+  // A cinema run's later months follow the screens the cinemas kept it on (box-office.ts screenShare).
+  const screens = o.route === 'theatrical' ? screenShare(o, month) : 1;
+  return Math.round((Math.max(0, reception - 35) * 1500 * routeScale * Math.sqrt(territoriesReached(p, o)) * curve * noise * screens) / 100) * 100;
 }
 
 /** How many territories a deal's film is out in: a count, where territoriesReached weighs a dubbed one more. */
@@ -85,7 +87,7 @@ registerHandler('box-office-week', (state, ev) => {
   const opened = p && o ? openedOn(p, o) : null;
   if (!p || !o || o.status !== 'accepted' || !opened) return { suppressInterrupt: true };
   const week = ev.payload.week as number;
-  const w = recordWeek(o, week, opened, territoriesOpen(p, o), reportedGross(state.seed, p, o, monthOfWeek(week)));
+  const w = recordWeek(o, week, opened, territoriesOpen(p, o), reportedGross(state.seed, p, o, monthOfWeek(week)), state.seed);
   if (w && week === 1) {
     const m = weekMoney(w, DISTRIBUTOR_FEE);
     addLog(state, `${p.title} took ${money(m.gross)} in its first week in cinemas, from ${m.admissions.toLocaleString('en-US')} admissions. Simulated; provisional until ${o.distributor} reports the month.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });

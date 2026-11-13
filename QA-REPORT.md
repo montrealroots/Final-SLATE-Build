@@ -1397,3 +1397,31 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `renewal`, `earnings`, `release-schedule`, `rolling-delivery`, `journey-e`, `decisions` specs, desktop and phone | 0 | 14 passed, 2 skipped by design. |
 
 | PR #82 CI, `accessibility.spec.ts` | 1 real, fixed | Your Reputation's heading took the id `rep-h`, which Representation's heading already had on the same Profile page. It is `reputation-h` now; the spec failed locally before the fix and passes after, desktop and phone. |
+
+## v4 Spread, Balance Targets And Event Frequency (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `npx vitest run --config vitest.balance.config.ts tests/balance/v4-spread.bal.ts` | 0 | 240 runs in 34 s: every cell delivered in every run, books kept, mean overall 57.7 to 61.9. 9,993 notices in 315 templates; the most any run says one template is 7 (a task finished). |
+
+## v4 Screens And Holdovers (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/box-office.test.ts` (screens and holdovers) | 1 design flaw of mine, fixed before commit | A week's figure moves when its month settles, so the next week's screens were first recomputed from the settled figure and could disagree with the decision recorded; they now follow the recorded decision (`screensAfter`). 4 tests: opening screens; the four decisions and competition tipping a hold to a cut; each week recorded and the next playing on its decision; the next month's report cut, expanded and withdrawn. |
+| `earnings`, `studio-pitch` (J08, with the screens and decision checked against the save), `journey-c`, `cinemas` specs | 0 | 8 passed, 2 skipped by design; J08 again after the new assertion. |
+
+## v4 World Records (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/world-records.test.ts` | 0 | What a record carries; recorded, announced and simulated apart; territory unknown; read only up to the day asked for. |
+| `catalog`, `world-refresh` specs, desktop and phone | 0 | 18 passed. |
+
+## v4 Journeys (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `e2e/j01.spec.ts`, desktop | 6 mistakes of mine, 1 finding | Save Draft is on the Script page, not Characters; the shop's filter is Recording Media; the second project has no starting backing to ask for; the log keeps 400 notices, so a birthday is read from the next one scheduled and lived to. The finding: a digital self-release with no distributor earns nothing, so settled receipts come from a distributor's offer, and they repay the backers before the project keeps any. Passes in 39 s. |
+| `docs/v4/JOURNEYS.md` | — | J01 to J13 mapped to their specs. J01 one run; J12 and J13 covered across specs; J02 to J11 not yet one run each. |
+
