@@ -70,8 +70,11 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
   - J03: `e2e/v6-one-person.spec.ts` adapts The Mystery of Marie Rogêt (one person) through the screens to release.
     It then reads Standing By Role on the Profile, before and after a reload (J22). Matrix now 7 Covered, 15 Partly
     Covered.
-  - *Next:* the partly covered journeys (J21's correction on screen waits for a real correction in a recorded dataset;
-    none is invented for a test). Then grades feeding offers; cameras and composers into the shop and hiring once prices and terms are sourced; the TMDB
+  - Engine tests added for J04 (a part recast from episode 2 leaves every other credit whole, `parts.test.ts`) and J19
+    (ten years of the world: the event queue bounded, the save growing evenly, `long-run.test.ts`); J16's and J17's rows
+    now cite the engine tests that already ran them (`rulebooks.test.ts`).
+  - *Next:* the partly covered journeys, each row saying what doesn't run (J21's correction on screen waits for a real
+    correction in a recorded dataset; none is invented for a test). Then grades feeding offers; cameras and composers into the shop and hiring once prices and terms are sourced; the TMDB
     inventory import from ID exports (`docs/v7/package/reference/tmdb_inventory.py`).
   - *Research questions:* `docs/v7/RETURN-TO-RESEARCH.md`.
 
