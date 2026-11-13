@@ -44,6 +44,19 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **Roles reviewed by hand (the owner: "Fix it all.").** No sentence reading gets every role right: each rule tried
+  fixed some works and broke others. So roles are reviewed, as genres are.
+  - `src/data/role-review.json` covers every error found in the sweep. For each work it gives the lead, who is against
+    them and who beside them (or null for none), and the names that aren't people. 141 works' roles are reviewed.
+  - `proposal.ts` applies it after the reading, and the brief says so.
+  - `tests/role-review.test.ts` fails a reviewed work whose brief doesn't come out as reviewed.
+  - Roles are given by who each person is, not their place in the list, so a work of two can have an ally and no
+    antagonist (Rascal Does Not Dream).
+  - A title's word goes to a character only by a word of their own, so Lady Macbeth no longer leads Macbeth.
+  - J03's commission is a draw keyed to the seed and the project's ids. Portal's reviewed cast changed the ids, so J03's
+    seed was searched again, as it was when the stories came in.
+  - Left: 29 works whose stories name one person keep a second part named for what it does. 6 that name no one keep all
+    three. An unreviewed error found later goes into the review table.
 - **The remaining wrong characters and placeholders (the owner, same day).** `docs/v5/CHARACTERS.md` has the numbers.
   - One person under two names is joined where the story joins them, under the name it uses more: Don Quixote, and
     Kira into Light Yagami.

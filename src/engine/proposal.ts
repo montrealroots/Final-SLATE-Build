@@ -24,6 +24,7 @@ import { createProject, isEpisodic, isNonfiction, type NewProjectInput } from '.
 import { PURPOSE, ROLE_LABELS, WORD, episodeBreaks, sceneLook, storyPeople, storyPlaces, episodePurpose, hasWord, readStory, selectDevelopments, sentencesOf, type Development, type Role } from './story-structure';
 import { plotSection, type SourceWork } from './sources';
 import { recordGenres, storyGenres } from './story-genre';
+import roleReview from '../data/role-review.json';
 import type { AdaptationApproach, Format, GameState, Project } from './types';
 
 export type FieldOrigin = 'sourced' | 'proposed' | 'unknown';
@@ -168,6 +169,13 @@ const SYNOPSIS_MOST = 3000;
 export const sceneMinutes = (total: number, n: number) => Math.max(0.25, Math.min(30, Math.round((total / Math.max(1, n)) * 4) / 4));
 
 /** Propose a whole brief for a work. Pure: the same inputs propose the same brief. */
+/**
+ * Who leads, who stands against them and who beside them, reviewed by hand where the reading gets it wrong
+ * (src/data/role-review.json, from November 13, 2026). null: no such part. drop: names that aren't people.
+ */
+export interface RoleReview { lead?: string; against?: string | null; ally?: string | null; drop?: string[] }
+export const ROLE_REVIEW = (roleReview as { works: Record<string, RoleReview> }).works;
+
 /** Words that come before a name and are not it: "Prince Hamlet" is Hamlet, "Captain Ahab" Ahab. */
 const TITLES = new Set(['Prince', 'Princess', 'King', 'Queen', 'Count', 'Countess', 'Captain', 'Mr', 'Mr.', 'Mrs', 'Mrs.', 'Ms', 'Miss', 'Dr', 'Dr.', 'Doctor', 'Lady', 'Lord', 'Sir', 'Dame', 'Professor', 'Father', 'Mother', 'Sister', 'Brother', 'Uncle', 'Aunt', 'Baron', 'Baroness', 'Duke', 'Duchess', 'Emperor', 'Empress', 'General', 'Colonel', 'Major', 'Lieutenant', 'Sergeant', 'Private', 'Agent', 'Detective', 'Inspector', 'Saint', 'Don', 'Madame', 'Monsieur', 'Herr', 'Frau', 'Little', 'Old', 'Young']);
 /**
@@ -180,7 +188,10 @@ export function namesOf(name: string, others: string[], title = ''): { first: st
   const core = TITLES.has(ws[0]) && ws.length > 1 ? ws.slice(1) : ws;
   // A word two characters share is the one's the work is named for: Metal Gear Solid's "Snake" is Solid Snake, not
   // Liquid Snake, who led it until November 13, 2026.
-  const titled = (n: string) => n.split(/\s+/).some((x) => x.length >= 3 && title.split(/\s+/).includes(x));
+  // Only by a word of their own that the title has: Solid Snake's "Solid". Lady Macbeth's only word in the title is the one
+  // she shares with Macbeth, so it stays shared (she led Macbeth for a moment on November 13, 2026).
+  const theirWords = new Set(others.filter((o) => o !== name).flatMap((o) => o.split(/\s+/)));
+  const titled = (n: string) => n.split(/\s+/).some((x) => x.length >= 3 && !TITLES.has(x) && title.split(/\s+/).includes(x) && !(n === name ? theirWords : new Set(name.split(/\s+/))).has(x));
   const theirs = new Set(others.filter((o) => o !== name && !(titled(name) && !titled(o))).flatMap((o) => o.split(/\s+/)));
   // A possessive isn't a name: "Frankenstein's monster" isn't called "Frankenstein's", which is Victor's.
   const own = (x: string | undefined) => (x && x.length >= 3 && x !== name && /^\p{Lu}/u.test(x) && !/['’]s$/.test(x) && !theirs.has(x) && !TITLES.has(x) ? x : null);
@@ -265,6 +276,21 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   // One person recorded twice under the same name (Death Note's L) is one person.
   for (let k = candidates.length - 1; k >= 0; k--) if (candidates.findIndex((c) => c.name === candidates[k].name) < k) candidates.splice(k, 1);
   candidates.sort((a, b) => b.n - a.n || Number(!!a.fromStory) - Number(!!b.fromStory) || (b.sitelinks ?? 0) - (a.sitelinks ?? 0) || at(a.name) - at(b.name) || a.name.localeCompare(b.name));
+  // The reviewed roles (ROLE_REVIEW): names that aren't people out; the lead, the one against them and the one beside
+  // them in the first three places, kept whatever the room. A reviewed name the story uses but the reading missed joins.
+  const review = ROLE_REVIEW[w.title];
+  const reviewed = (r: RoleReview | undefined, f: 'lead' | 'against' | 'ally') => r !== undefined && r[f] !== undefined;
+  if (review) {
+    for (const d of review.drop ?? []) { const k = candidates.findIndex((c) => c.name === d); if (k >= 0) candidates.splice(k, 1); }
+    ([review.lead, review.against, review.ally] as (string | null | undefined)[]).forEach((nm, slot) => {
+      if (!nm) return;
+      let k = candidates.findIndex((c) => c.name === nm);
+      if (k < 0 && storyText.includes(nm)) { candidates.push({ name: nm, fromStory: true, n: 0 }); k = candidates.length - 1; }
+      if (k < 0) return;
+      const [c] = candidates.splice(k, 1);
+      candidates.splice(Math.min(slot, candidates.length), 0, c);
+    });
+  }
   const room = castFor(i.format, minutes);
   const chosen = candidates.slice(0, room);
   if (candidates.length > room) notes.push(`${w.title} ${unrecorded.length ? `has ${candidates.length} characters, recorded or named in its story` : `records ${candidates.length} characters`}. A ${tv ? 'season' : minutes <= 25 ? 'short' : 'film'} can carry about ${room}, so the proposal keeps ${chosen.map((c) => c.name).join(', ')} and leaves the others for you to add back.`);
@@ -288,6 +314,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   else why.characters = storyText
     ? 'The names are recorded. Who leads is proposed from the story: the one it names most. Who stands against them and who beside them come from what the story has them do together.'
     : 'The names are recorded. Who leads, and what each wants, are proposed: the record does not say who leads, so the ones most written about come first.';
+  if (review && (review.lead !== undefined || review.against !== undefined || review.ally !== undefined)) why.characters = `${why.characters ?? ''} Who leads, and who stands against or beside them, were reviewed by hand for ${w.title}.`.trim();
   // A work with one or two people has no rival or ally to name: those parts are absent, not invented.
   let lead = people[0];
   let rival = people[1] as Who | undefined;
@@ -349,10 +376,17 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const reading = told ? readStory(paragraphs, callers, lead.key, knownPlaces) : null;
   if (reading) {
     const move = (k: string | null, to: number) => { const at = people.findIndex((x) => x.key === k); if (k && at > 0 && at !== to && people.length > to) { const [x] = people.splice(at, 1); people.splice(to, 0, x); } };
-    move(reading.rival, 1);
-    move(reading.ally, 2);
+    if (!reviewed(review, 'against')) move(reading.rival, 1);
+    if (!reviewed(review, 'ally')) move(reading.ally, 2);
+    // A reviewed part keeps its place whatever the reading moved.
+    ([review?.lead, review?.against, review?.ally] as (string | null | undefined)[]).forEach((nm, slot) => {
+      const k = nm ? people.findIndex((x) => x.name === nm) : -1;
+      if (k >= 0 && k !== slot && people.length > slot) { const [x] = people.splice(k, 1); people.splice(slot, 0, x); }
+    });
     [lead, rival, ally] = [people[0], people[1] as Who | undefined, people[2] as Who | undefined];
   }
+  // Two people, the second reviewed as beside the lead and no one against them: that one is the ally.
+  if (review?.against === null && review.ally && people.length === 2 && people[1].name === review.ally) [rival, ally] = [undefined, people[1]];
   // The story's developments, background left out: what the outline, the synopsis and the premise are told from.
   const devs = (reading?.developments ?? []).filter((d) => !d.background);
   const background = (reading?.developments ?? []).filter((d) => d.background).length;
@@ -391,13 +425,13 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   // ---- Words.
   // Where the story has someone against the lead, the conflict is with them (from November 13, 2026; until then Red Dead
   // Redemption 2's was "Arthur Morgan against the way things are run", from its genre, with Dutch named against him).
-  if (reading?.rival && rival?.recorded) matrix = { ...matrix, opposition: 'person' };
+  if ((reviewed(review, 'against') ? !!review!.against : !!reading?.rival) && rival?.recorded) matrix = { ...matrix, opposition: 'person' };
   // Where the story is read and sets no one against the lead, nobody is made their antagonist: the next person named is
   // only that, and what stands in the way is the lead's own (November 13, 2026; until then Moby-Dick set Ahab against
   // Queequeg, and Nineteen Eighty-Four Winston against Julia, for being named most after them).
-  const opposed = !!rival && (!reading || !!reading.rival || !rival.recorded); // a part named for what it does is that part
+  const opposed = !!rival && (reviewed(review, 'against') ? !!review!.against : !reading || !!reading.rival || !rival.recorded); // a part named for what it does is that part
   // The same for an ally: Polonius was Hamlet's for being named third (until November 13, 2026).
-  const befriended = !!ally && (!reading || !!reading.ally || !ally.recorded);
+  const befriended = !!ally && (reviewed(review, 'ally') ? !!review!.ally : !reading || !!reading.ally || !ally.recorded);
   if (!opposed && (matrix.opposition === 'person' || matrix.opposition === 'rival')) matrix = { ...matrix, opposition: 'self' };
   const say = (t: string, who: Who = lead) => t.replace(/\{(they|them|their|theirs|themselves)\}/g, (_, w: string) => PRONOUN_WORDS[pronounsOf(who.gender)][w]);
   const [choiceA, choiceB] = CHOICE[matrix.dilemma].map((x) => say(x));
@@ -465,7 +499,8 @@ export function proposeFromSource(i: ProposalInput): Proposal {
 
   // ---- People.
   const char = (p: Who, n: number): BlueprintCharacter => {
-    const role = n === 0 ? 'lead' : n === 1 ? (opposed ? 'antagonist' : 'supporting') : n === 2 && befriended ? 'ally' : 'supporting';
+    // By who they are, not where they stand in the list (a work of two can have its second beside the lead).
+    const role = n === 0 ? 'lead' : p === rival && opposed ? 'antagonist' : p === ally && befriended ? 'ally' : 'supporting';
     const T: Record<string, Omit<BlueprintCharacter, 'key' | 'name' | 'size' | 'functions' | 'entity' | 'pronouns' | 'age'>> = {
       lead: { wants: 'to {goal}', motivation: 'What {against} would take from {them}', obstacle: opposed ? '{rival}, and {their} own doubt' : '{their} own doubt', contradiction: `Wants ${choiceA} and keeps choosing ${choiceB}`, arc: `From reacting to {against} to choosing between ${choiceA} and ${choiceB}`, voice: 'Proposed: set from the work', look: 'Proposed: set from the work' },
       antagonist: { wants: 'what {lead} is trying to stop', motivation: 'A reason of {their} own that the story must make clear', obstacle: '{lead}', contradiction: 'Right about something that matters', arc: 'From certainty to the moment {lead} proves {them} wrong, or right', voice: 'Proposed: set from the work', look: 'Proposed: set from the work' },
@@ -474,7 +509,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     };
     const t = T[role];
     return {
-      key: p.key, name: p.name, size: n === 0 ? 'lead' : n < 3 ? 'supporting' : 'featured', functions: n === 0 ? ['protagonist'] : n === 1 && opposed ? ['antagonist'] : n === 2 && befriended ? ['ally'] : ['none'],
+      key: p.key, name: p.name, size: n === 0 ? 'lead' : n < 3 ? 'supporting' : 'featured', functions: n === 0 ? ['protagonist'] : p === rival && opposed ? ['antagonist'] : p === ally && befriended ? ['ally'] : ['none'],
       entity: entityOf(p.kind), pronouns: pronounsOf(p.gender), age: '-',
       // Each character's words are in that character's own pronouns; {lead}, {goal} and the rest are still the lead's.
       wants: fill(t.wants, n ? p : lead), motivation: fill(t.motivation, n ? p : lead), obstacle: fill(t.obstacle, n ? p : lead), contradiction: fill(t.contradiction, n ? p : lead), arc: fill(t.arc, n ? p : lead), voice: t.voice, look: t.look,

@@ -366,9 +366,13 @@ describe('genres read from the story when none recorded maps (November 13, 2026)
     expect(against('Frankenstein; or, The Modern Prometheus')).toBe("Victor Frankenstein against Frankenstein's monster");
     expect(against('Hamlet')).toBe('Prince Hamlet against King Claudius');
     // Where the story sets no one against the lead, no one is made the antagonist.
+    const emma = read('Emma').blueprint;
+    expect([emma.characters[1].functions, emma.relationships[0].kind]).toEqual([['none'], 'undecided']);
+    expect(emma.characters.some((c) => c.functions.includes('antagonist'))).toBe(false);
+    // Pride and Prejudice is reviewed (src/data/role-review.json): Elizabeth leads, Wickham against her, Darcy beside her.
     const pp = read('Pride and Prejudice').blueprint;
-    expect([pp.characters[1].functions, pp.relationships[0].kind]).toEqual([['none'], 'undecided']);
-    expect(pp.characters.some((c) => c.functions.includes('antagonist'))).toBe(false);
+    expect(pp.characters.slice(0, 3).map((c) => [c.name, c.functions[0]])).toEqual([['Elizabeth Bennet', 'protagonist'], ['George Wickham', 'antagonist'], ['Mr. Darcy', 'ally']]);
+    expect(read('Pride and Prejudice').why.characters).toContain('reviewed by hand');
     // A work too short of story is read from its record: what its article's opening says it is.
     const twd = read('The Walking Dead');
     expect([twd.blueprint.genre, twd.origin.genres]).toEqual(['zombie', 'proposed']);
