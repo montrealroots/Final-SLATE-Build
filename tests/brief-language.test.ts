@@ -25,5 +25,5 @@ describe('the words of every proposed brief', () => {
       if (!/^Can .+\?$/.test(show(b.question))) wrong.push(`${w.title}: ${b.question}`);
     }
     expect(wrong).toEqual([]);
-  });
+  }, 30_000); // the whole catalog, twice
 });

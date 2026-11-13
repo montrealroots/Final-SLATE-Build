@@ -141,7 +141,7 @@ const BEATS: { act: 0 | 1 | 2; objective: string; action: string; turn: string; 
   { act: 0, objective: 'Show {lead} before anything changes', action: 'We meet {lead} at {place}, in the life the story is about to take away.', turn: '', intExt: 'INT', time: 'DAY' },
   { act: 0, objective: 'Bring the trouble to {lead}', action: 'The first sign of {against} reaches {lead}, and it cannot be ignored.', turn: '{lead} decides to {goal}.', intExt: 'EXT', time: 'DAY' },
   { act: 1, objective: 'Try the obvious way', action: '{lead} and {ally} try the straightforward way, and it fails in a way that teaches them something.', turn: '', intExt: 'EXT', time: 'DUSK' },
-  { act: 1, objective: 'Learn what the other side wants', action: '{lead} comes face to face with {rival} and learns what {rival} is really after.', turn: 'What {lead} thought the problem was turns out to be smaller than the real one.', intExt: 'INT', time: 'NIGHT' },
+  { act: 1, objective: 'Learn what the other side wants', action: '{lead} comes face to face with {rival} and learns what the other side is really after.', turn: 'What {lead} thought the problem was turns out to be smaller than the real one.', intExt: 'INT', time: 'NIGHT' },
   { act: 1, objective: 'Pay for the first victory', action: 'A gain for {lead} costs {ally} something, and the two of them are no longer sure of each other.', turn: '', intExt: 'INT', time: 'DAY' },
   { act: 1, objective: 'Force the choice', action: '{lead} is left with two ways forward: {choiceA} or {choiceB}.', turn: '{lead} chooses, and cannot take it back.', intExt: 'EXT', time: 'NIGHT' },
   { act: 2, objective: 'Settle it', action: 'At {place}, {lead} and {rival} meet for the last time.', turn: '{ending}', intExt: 'EXT', time: 'DAWN' },
@@ -175,10 +175,13 @@ const TITLES = new Set(['Prince', 'Princess', 'King', 'Queen', 'Count', 'Countes
  * where no other recorded character has it (from November 13, 2026: until then only the first word counted, so Prince
  * Hamlet was counted by "Prince", Jay Gatsby by "Jay", and Laertes led Hamlet).
  */
-export function namesOf(name: string, others: string[]): { first: string | null; also: string[] } {
+export function namesOf(name: string, others: string[], title = ''): { first: string | null; also: string[] } {
   const ws = name.split(/\s+/);
   const core = TITLES.has(ws[0]) && ws.length > 1 ? ws.slice(1) : ws;
-  const theirs = new Set(others.filter((o) => o !== name).flatMap((o) => o.split(/\s+/)));
+  // A word two characters share is the one's the work is named for: Metal Gear Solid's "Snake" is Solid Snake, not
+  // Liquid Snake, who led it until November 13, 2026.
+  const titled = (n: string) => n.split(/\s+/).some((x) => x.length >= 3 && title.split(/\s+/).includes(x));
+  const theirs = new Set(others.filter((o) => o !== name && !(titled(name) && !titled(o))).flatMap((o) => o.split(/\s+/)));
   // A possessive isn't a name: "Frankenstein's monster" isn't called "Frankenstein's", which is Victor's.
   const own = (x: string | undefined) => (x && x.length >= 3 && x !== name && /^\p{Lu}/u.test(x) && !/['’]s$/.test(x) && !theirs.has(x) && !TITLES.has(x) ? x : null);
   const first = own(core[0]);
@@ -231,7 +234,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     // counts once; a first name or surname counts where it isn't part of the full name.
     const at = (t: string) => { const xs: number[] = []; for (let k = storyText.indexOf(t); k >= 0; k = storyText.indexOf(t, k + t.length)) if (!WORD.test(storyText[k - 1] ?? ' ') && !WORD.test(storyText[k + t.length] ?? ' ')) xs.push(k); return xs; };
     const full = at(name);
-    const { first, also } = namesOf(name, allNames);
+    const { first, also } = namesOf(name, allNames, w.title);
     const inFull = (k: number) => full.some((f) => k >= f && k < f + name.length);
     const out = full.length + [first, ...also].filter((x): x is string => !!x).reduce((sum, x) => sum + at(x).filter((k) => !inFull(k)).length, 0);
     counted.set(name, out);
@@ -244,12 +247,19 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const sameAs = (a: string, b: string) => wordsOf(a).some((x) => wordsOf(b).includes(x));
   const cleanStory = (w.plot?.paragraphs ?? []).map((t) => t.replace(castNote, ''));
   const named0 = cleanStory.length ? storyPeople(cleanStory, [...(w.places ?? []).map((x) => x.name), ...(w.title.split(/\s+/).length >= 3 ? [w.title] : [])]) : [];
-  const unrecorded = named0.filter((x) => !recorded.some((r) => sameAs(r.name, x.name)));
+  const isThem = (r: string, x: { name: string; also?: string[] }) => sameAs(r, x.name) || (x.also ?? []).some((a) => sameAs(r, a));
+  const unrecorded = named0.filter((x) => !recorded.some((r) => isThem(r.name, x)));
   // A group recorded as a character ("Brides of Dracula") doesn't take a word from a person's name.
   const allNames = [...recorded.filter((c) => !/group/i.test(c.kind ?? '')).map((c) => c.name), ...unrecorded.map((x) => x.name)];
   type Candidate = { name: string; gender?: string; kind?: string; sitelinks?: number; fromStory?: true; n: number };
   const candidates: Candidate[] = [
-    ...recorded.map((c) => ({ name: c.name, gender: c.gender, kind: c.kind, sitelinks: c.sitelinks, n: mentions(c.name) })),
+    // A recorded character the story calls by another name is shown by that name, as the story uses it far more (the record
+    // has "Alonso Quijano"; the story is about Don Quixote), and counted by it.
+    ...recorded.map((c) => {
+      const as = named0.find((x) => isThem(c.name, x));
+      const byOther = as && !sameAs(c.name, as.name);
+      return { name: byOther ? as.name : c.name, gender: c.gender, kind: c.kind, sitelinks: c.sitelinks, n: Math.max(mentions(c.name), as?.mentions ?? 0) };
+    }),
     ...unrecorded.map((x) => ({ name: x.name, fromStory: true as const, n: x.mentions })),
   ];
   // One person recorded twice under the same name (Death Note's L) is one person.
@@ -263,9 +273,12 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const people: Who[] = chosen.map((c) => ({ key: key(c.name, used), name: c.name, gender: c.gender, kind: c.kind, recorded: true, ...(c.fromStory ? { fromStory: true as const } : {}) }));
   // Too few recorded: the missing parts are named for what they do, for the player to name.
   const PARTS = ['The Lead', 'The Rival', 'The Ally'];
-  // Each missing part is the one its place needs: with two recorded, the third is the ally (Portal's was "The Lead" until
-  // November 13, 2026).
-  for (const part of PARTS.slice(people.length)) if (people.length < Math.min(3, room)) people.push({ key: key(part, used), name: part, recorded: false });
+  // Only where the work has no one at all are all three parts named for what they do. One with two people or more (The
+  // Cask of Amontillado's Montresor and Fortunato) has them and no others: until November 13, 2026 a third, "The Ally",
+  // was invented to fill the outline's template.
+  // A brief needs two people and what is between them (blueprints.ts), so a work with one has the second part named.
+  if (!people.length) for (const part of PARTS.slice(0, Math.min(3, room))) people.push({ key: key(part, used), name: part, recorded: false });
+  else if (people.length === 1) people.push({ key: key(PARTS[1], used), name: PARTS[1], recorded: false });
   origin.characters = people.some((p) => p.recorded) ? 'sourced' : 'unknown';
   const takenFromStory = people.filter((p) => p.fromStory).map((p) => p.name);
   const readNote = takenFromStory.length ? ` ${takenFromStory.length === 1 ? `${takenFromStory[0]} is` : `${takenFromStory.slice(0, -1).join(', ')} and ${takenFromStory.at(-1)} are`} named in its story but not recorded, so taken from it. Their pronouns aren't recorded, so the brief says "they" until you set them.` : '';
@@ -275,9 +288,12 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   else why.characters = storyText
     ? 'The names are recorded. Who leads is proposed from the story: the one it names most. Who stands against them and who beside them come from what the story has them do together.'
     : 'The names are recorded. Who leads, and what each wants, are proposed: the record does not say who leads, so the ones most written about come first.';
-  let [lead, rival, ally] = people;
+  // A work with one or two people has no rival or ally to name: those parts are absent, not invented.
+  let lead = people[0];
+  let rival = people[1] as Who | undefined;
+  let ally = people[2] as Who | undefined;
   // Where nothing is recorded, the places its story names (story-structure.ts storyPlaces).
-  const storyPlaceNames = cleanStory.length ? storyPlaces(cleanStory, w.title.split(/\s+/).length >= 3 ? [w.title] : []).map((x) => x.name).filter((x) => !candidates.some((c) => sameAs(c.name, x)) && !named0.some((c) => sameAs(c.name, x)) && !/(ity|ism)$/.test(x)) : []; // not a person ("to Susan"), not a faith
+  const storyPlaceNames = cleanStory.length ? storyPlaces(cleanStory, [...(w.places ?? []).map((x) => x.name), ...(w.title.split(/\s+/).length >= 3 ? [w.title] : [])]).map((x) => x.name).filter((x) => !candidates.some((c) => sameAs(c.name, x)) && !named0.some((c) => sameAs(c.name, x)) && !/(ity|ism)$/.test(x)) : []; // not a person ("to Susan"), not a faith
   const knownPlaces = (w.places ?? []).length ? (w.places ?? []).map((p) => p.name) : storyPlaceNames;
   const place = (n: number) => {
     const places = knownPlaces;
@@ -305,7 +321,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const CREATURE = /\b(monster|creature|beast)$/;
   const creatures = named.filter((y) => CREATURE.test(y.name));
   const callers = named.map((x) => {
-    const n = namesOf(x.name, allNames);
+    const n = namesOf(x.name, allNames, w.title);
     const noun = calledBy(x.name);
     const own = noun && named.filter((y) => calledBy(y.name) === noun).length === 1;
     const creature = creatures.length === 1 && creatures[0] === x ? ['the monster', 'the creature', 'the beast'] : [];
@@ -335,7 +351,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     const move = (k: string | null, to: number) => { const at = people.findIndex((x) => x.key === k); if (k && at > 0 && at !== to && people.length > to) { const [x] = people.splice(at, 1); people.splice(to, 0, x); } };
     move(reading.rival, 1);
     move(reading.ally, 2);
-    [lead, rival, ally] = people;
+    [lead, rival, ally] = [people[0], people[1] as Who | undefined, people[2] as Who | undefined];
   }
   // The story's developments, background left out: what the outline, the synopsis and the premise are told from.
   const devs = (reading?.developments ?? []).filter((d) => !d.background);
@@ -375,13 +391,13 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   // ---- Words.
   // Where the story has someone against the lead, the conflict is with them (from November 13, 2026; until then Red Dead
   // Redemption 2's was "Arthur Morgan against the way things are run", from its genre, with Dutch named against him).
-  if (reading?.rival && rival.recorded) matrix = { ...matrix, opposition: 'person' };
+  if (reading?.rival && rival?.recorded) matrix = { ...matrix, opposition: 'person' };
   // Where the story is read and sets no one against the lead, nobody is made their antagonist: the next person named is
   // only that, and what stands in the way is the lead's own (November 13, 2026; until then Moby-Dick set Ahab against
   // Queequeg, and Nineteen Eighty-Four Winston against Julia, for being named most after them).
-  const opposed = !reading || !!reading.rival || !rival.recorded; // a part named for what it does is that part
+  const opposed = !!rival && (!reading || !!reading.rival || !rival.recorded); // a part named for what it does is that part
   // The same for an ally: Polonius was Hamlet's for being named third (until November 13, 2026).
-  const befriended = !reading || !!reading.ally || !ally.recorded;
+  const befriended = !!ally && (!reading || !!reading.ally || !ally.recorded);
   if (!opposed && (matrix.opposition === 'person' || matrix.opposition === 'rival')) matrix = { ...matrix, opposition: 'self' };
   const say = (t: string, who: Who = lead) => t.replace(/\{(they|them|their|theirs|themselves)\}/g, (_, w: string) => PRONOUN_WORDS[pronounsOf(who.gender)][w]);
   const [choiceA, choiceB] = CHOICE[matrix.dilemma].map((x) => say(x));
@@ -391,7 +407,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   // The template's own {them} is its subject's (`who`); the goal, the opposition and the ending are always the lead's.
   const fill = (t: string, who: Who = lead) => say(t, who).replace(/\{goal\}/g, say(goal)).replace(/\{against\}/g, say(against)).replace(/\{choiceA\}/g, choiceA).replace(/\{choiceB\}/g, choiceB)
     .replace(/\{place\}/g, place(0)).replace(/\{ending\}/g, say(endingProposed))
-    .replace(/\{lead\}/g, `{${lead.key}}`).replace(/\{rival\}/g, `{${rival.key}}`).replace(/\{ally\}/g, `{${ally.key}}`);
+    .replace(/\{lead\}/g, `{${lead.key}}`).replace(/\{rival\}/g, rival ? `{${rival.key}}` : `those against {${lead.key}}`).replace(/\{ally\}/g, ally ? `{${ally.key}}` : `those beside {${lead.key}}`);
   const where = recordedPlace ?? storyPlace ? `In ${recordedPlace ?? storyPlace}` : invented ? `In the world of ${w.title}` : 'Where the story is set';
   const by = w.creators.map((c) => c.name).join(' and ');
   // The logline is the event that sets the work's story going, where it is told in one sentence the field holds;
@@ -478,11 +494,12 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     return xs.length >= 2 ? { a: lead.key, b: k, kind, start: xs[0], end: xs.at(-1)! } : { a: lead.key, b: k, kind, start: fill(start), end: fill(end) };
   };
   const relationships = [
-    opposed ? fromStory(rival.key, 'opponents', '{rival} stands where {lead} needs to go', endingProposed)
-      : fromStory(rival.key, 'undecided', 'The story sets neither {rival} nor {lead} against the other; what they are to each other is yours to decide', 'Yours to decide'),
-    befriended ? fromStory(ally.key, 'allies', '{ally} is on {lead}\'s side', 'Changed by what it cost {ally}')
-      : fromStory(ally.key, 'undecided', 'The story sets neither {ally} nor {lead} beside the other; what they are to each other is yours to decide', 'Yours to decide'),
+    ...(rival ? [opposed ? fromStory(rival.key, 'opponents', '{rival} stands where {lead} needs to go', endingProposed)
+      : fromStory(rival.key, 'undecided', 'The story sets neither {rival} nor {lead} against the other; what they are to each other is yours to decide', 'Yours to decide')] : []),
+    ...(ally ? [befriended ? fromStory(ally.key, 'allies', '{ally} is on {lead}\'s side', 'Changed by what it cost {ally}')
+      : fromStory(ally.key, 'undecided', 'The story sets neither {ally} nor {lead} beside the other; what they are to each other is yours to decide', 'Yours to decide')] : []),
   ];
+
   if (reading && (reading.rival || reading.ally)) why.relationships = `Who stands against ${lead.name} and who beside ${say('{them}')} is read from what the story has them do together${relationships.some((r) => !r.start.includes('{')) ? '; where both are named, each relationship starts and ends where the story has them together' : ''}. Proposed.`;
   // Where a character first and last appears in the story, by role: what their arc is anchored to.
   if (reading) for (const c of characters) {
@@ -518,7 +535,7 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   const ownScene = (n: number, k: number, episode?: number, size = count): BlueprintScene => {
     const b = BEATS[n];
     const here = place(k);
-    const who = [lead.key, ...(b.action.includes('{rival}') ? [rival.key] : []), ...(b.action.includes('{ally}') ? [ally.key] : [])];
+    const who = [lead.key, ...(rival && b.action.includes('{rival}') ? [rival.key] : []), ...(ally && b.action.includes('{ally}') ? [ally.key] : [])];
     return { act: acts[b.act], intExt: b.intExt, place: here, time: b.time, who, objective: fill(b.objective), action: fill(b.action).replace(place(0), here), turn: fill(b.turn), minutes: sceneMinutes(minutes, size), ...(episode ? { episode } : {}) };
   };
   let scenes: BlueprintScene[];

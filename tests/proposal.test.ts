@@ -34,7 +34,7 @@ describe('a proposal from a work', () => {
       const { blueprint } = proposeFromSource({ work: w, format: f, approach: 'faithful', gameYear: 2027, genres: GENRES });
       expect(blueprintProblems(blueprint, GENRES), `${w.id} ${f}`).toEqual([]);
     }
-  });
+  }, 30_000); // the whole catalog, twice
 
   it('says which fields are the work\'s and which are the game\'s, and invents nothing it presents as the work\'s', () => {
     const { blueprint: b, origin, why } = propose(full);
@@ -299,7 +299,7 @@ describe('the work\'s story', () => {
       expect(blueprintProblems(blueprint, GENRES), `${w.id} ${f}`).toEqual([]);
       if (origin.scenes === 'sourced' && f === 'series') expect(new Set(blueprint.scenes.map((x) => x.episode)).size, `${w.id}`).toBe(6);
     }
-  });
+  }, 30_000); // the whole catalog, twice
 });
 
 describe('a real work as the owner saw it (Grand Theft Auto III, November 13, 2026)', () => {
@@ -390,6 +390,20 @@ describe('genres read from the story when none recorded maps (November 13, 2026)
     expect(caesar.blueprint.characters.some((c) => /^The (Lead|Rival|Ally)$/.test(c.name))).toBe(false);
     // And where some are recorded, the story's others join them: Red Dead Redemption 2's Micah.
     expect(read('Red Dead Redemption 2').blueprint.characters.map((c) => c.name)).toContain('Micah');
+    // The owner, November 13, 2026: "Fix the remaining wrong characters and placeholders too."
+    const cast = (title: string) => read(title).blueprint.characters.map((c) => c.name);
+    // One person under two names, joined where the story joins them ("He renames himself 'Don Quixote'").
+    expect(cast('Don Quixote')[0]).toBe('Don Quixote');
+    expect(cast('Don Quixote')).not.toContain('Quixote');
+    expect(cast('Death Note')).not.toContain('Kira');
+    // The work named for him is his: "Snake" is Solid Snake.
+    expect(cast('Metal Gear Solid')[0]).toBe('Solid Snake');
+    // A place named as one ("his home country of Kyrat") isn't a person, and is where the story is set if nothing is recorded.
+    expect(cast('Far Cry 4')).not.toContain('Kyrat');
+    expect(read('Julius Caesar').blueprint.setting.name).toBe('Rome');
+    // Two people and no one invented to make three; a story that names no one has its people as it calls them.
+    expect(cast('The Cask of Amontillado')).toEqual(['Montresor', 'Fortunato']);
+    expect(cast('The Tell-Tale Heart')).toEqual(['The Narrator', 'The Old Man']);
     // Recorded genres that map still lead, and are sourced.
     expect([read('Dracula').blueprint.genre, read('Dracula').origin.genres]).toEqual(['horror', 'sourced']);
   });

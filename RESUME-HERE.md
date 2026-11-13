@@ -44,6 +44,20 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **The remaining wrong characters and placeholders (the owner, same day).** `docs/v5/CHARACTERS.md` has the numbers.
+  - One person under two names is joined where the story joins them, under the name it uses more: Don Quixote, and
+    Kira into Light Yagami.
+  - Places named as places (Kyrat, Luthadel) and groups ("Denizens who…") aren't people. "To" isn't a place's word,
+    so Susan isn't a setting.
+  - A name word two characters share is the title's character's: Solid Snake leads Metal Gear Solid.
+  - No made-up people:
+    - a work with two people or more has only them;
+    - one with a single person has a second part named for what it does, as a brief needs two;
+    - only a work with no one has all three placeholders (5 works).
+  - A story that names fewer than three often gives its people named once, then its unnamed ones ("the narrator").
+  - The reader's results are kept per story. The catalog-wide proposal tests have 30 seconds: on CI one took 5.2s
+    against the 5s default (`d55fc45`).
+  - Left: Polonius and Ariel's roles. Two stricter readings fixed them and broke more, so they were taken out.
 - **Real characters, O'Brien and Dracula (the owner: "make sure all adaptations have their real characters and 100%
   accuracy").** `docs/v5/CHARACTERS.md` lists every work's setting and people.
   - `storyPeople` and `storyPlaces` in `story-structure.ts` read the people and places a story names.
