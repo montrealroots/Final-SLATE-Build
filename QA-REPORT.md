@@ -1348,3 +1348,13 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `e2e/music.spec.ts`, desktop and phone | see below | New journey: a refused song replaced with library music, its licence shown, paid once after a reload. |
 | Not run in a browser | — | Releasing a version (unit-tested through `planRelease`); the judged-on notes with a loud cue under dialogue (unit-tested). |
 
+## Phones Show The Desktop Layout (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| Pages walked at 961 wide (the layout a phone gets): Home, Profile, World, Companies, a project's Overview, Characters, Script, Budget, Crew, Cast, Schedule, Production, Music, Release, Settings | 2 real, fixed | Home's Recent Updates sat under the full height of In The Industry; In The Industry's help ran a few words a line beside Open Companies. |
+| `e2e/phone-layout.spec.ts` on phone, iPhone 15 Pro Max, its landscape | 0 | The viewport tag, the scale, nothing past the edge, the rail beside the page; Phone Layout in Settings, kept after a reload, and back. |
+| `career`, `catalog`, `creation`, `readers`, `layout`, `devices`, `viewports` specs, desktop and phone | 0 | 70 passed, 8 skipped by design. |
+| `npm run check` | 0 | 1,121 tests; startup 308 kB. |
+| Not done | — | The four-size UI walk (`UI_COVERAGE_WRITE`) was not rerun for the scaled layout; at 961 wide it is the desktop layout, which the desktop walk covers at 1280. |
+

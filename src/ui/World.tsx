@@ -108,65 +108,71 @@ export function Home() {
       </div>
 
       <div className="home-grid">
-        <Panel title="Projects" subtitle={projects.length ? 'What you are making, and where each one stands.' : undefined}
-          actions={<button className="btn btn-sm btn-primary" onClick={() => store.go({ view: 'new-project' })}>New Project</button>}>
-          {projects.length ? (
-            <div className="col gap-2">
-              {projects.map((pr) => (
-                <div key={pr.id} className="row-between wrap">
-                  {/* A long title wraps, and the phase goes under it on a narrow screen (until November 12, 2026 neither could, and the row pushed the page sideways at 320 pixels). */}
-                  <button className="btn btn-ghost btn-sm" style={{ marginLeft: 'calc(-1 * var(--s3))', whiteSpace: 'normal', textAlign: 'left', minWidth: 0 }} onClick={() => store.go({ view: 'project', projectId: pr.id, tab: 'overview' })}>{pr.title}{startedNote(g.projects, pr, zone) ? <span className="dim">{`, ${startedNote(g.projects, pr, zone)}`}</span> : null}</button>
-                  <span className="xs dim nowrap">{PHASE_LABEL[pr.phase]}</span>
-                </div>
-              ))}
-            </div>
-          ) : <p className="muted small" style={{ margin: 0 }}>You haven't started a project yet.</p>}
-        </Panel>
-
-        <Panel title="Up Next" subtitle={next ? 'What’s coming up, and when.' : undefined}
-          actions={<button className="btn btn-sm btn-primary" onClick={() => store.go({ view: 'calendar' })}>Open Calendar</button>}>
-          {next ? (
-            <button type="button" className="stat link" onClick={() => store.go(next.route)} style={{ background: 'none', border: 0, padding: 0, textAlign: 'left', color: 'inherit', cursor: 'pointer' }}>
-              <span className="stat-label">{inWords(next.at - now)}</span>
-              <span className="stat-value" style={{ fontSize: 'var(--size-md)' }}>{next.label}</span>
-              <span className="stat-note">{(() => { const lt = longLocal(next.at, zone); return `${lt.date} at ${lt.time}`; })()}</span>
-            </button>
-          ) : null}
-          {!todays.length && <p className="muted small" style={{ margin: next ? 'var(--s3) 0 0' : 0 }}>You have nothing scheduled today.</p>}
-          {soon.length > 1 && (
-            <>
-              <hr className="divider" />
+        {/* Two columns that each stack (the owner, November 13, 2026, with phones shown the desktop layout): until then the
+            cards were placed on one grid by their order, and once In The Industry and Proposals joined Home, Recent Updates
+            waited under the full height of In The Industry with a column of nothing above it. */}
+        <div className="home-col">
+          <Panel title="Projects" subtitle={projects.length ? 'What you are making, and where each one stands.' : undefined}
+            actions={<button className="btn btn-sm btn-primary" onClick={() => store.go({ view: 'new-project' })}>New Project</button>}>
+            {projects.length ? (
               <div className="col gap-2">
-                {soon.slice(1, 6).map((c, i) => (
-                  <div key={i} className="row-between">
-                    <button className="btn btn-ghost btn-sm clamp-2" style={{ marginLeft: 'calc(-1 * var(--s3))' }} onClick={() => store.go(c.route)}>{c.label}</button>
-                    <span className="xs dim nowrap">{inWords(c.at - now)}</span>
+                {projects.map((pr) => (
+                  <div key={pr.id} className="row-between wrap">
+                    {/* A long title wraps, and the phase goes under it on a narrow screen (until November 12, 2026 neither could, and the row pushed the page sideways at 320 pixels). */}
+                    <button className="btn btn-ghost btn-sm" style={{ marginLeft: 'calc(-1 * var(--s3))', whiteSpace: 'normal', textAlign: 'left', minWidth: 0 }} onClick={() => store.go({ view: 'project', projectId: pr.id, tab: 'overview' })}>{pr.title}{startedNote(g.projects, pr, zone) ? <span className="dim">{`, ${startedNote(g.projects, pr, zone)}`}</span> : null}</button>
+                    <span className="xs dim nowrap">{PHASE_LABEL[pr.phase]}</span>
                   </div>
                 ))}
               </div>
-            </>
-          )}
-        </Panel>
+            ) : <p className="muted small" style={{ margin: 0 }}>You haven't started a project yet.</p>}
+          </Panel>
 
-        <Suspense fallback={null}><IndustryCard /></Suspense>
-
-        <Proposals />
-
-        <Panel title="Recent Updates" subtitle={g.log.length ? 'The newest first.' : undefined} flush>
-          {g.log.length ? (
-            <div className="list">
-              {g.log.slice(0, 8).map((l) => (
-                <div key={l.id} className="list-item list-static notice-row">
-                  <div className="grow">
-                    <div className="small">{l.text}</div>
-                    <div className="xs dim">{agoWords(now - l.at)}</div>
-                  </div>
-                  {l.route && <div className="row gap-2 notice-row-actions"><button className="btn btn-sm" onClick={() => store.go(l.route!)}>Go There</button></div>}
+          <Suspense fallback={null}><IndustryCard /></Suspense>
+        </div>
+        <div className="home-col">
+          <Panel title="Up Next" subtitle={next ? 'What’s coming up, and when.' : undefined}
+            actions={<button className="btn btn-sm btn-primary" onClick={() => store.go({ view: 'calendar' })}>Open Calendar</button>}>
+            {next ? (
+              <button type="button" className="stat link" onClick={() => store.go(next.route)} style={{ background: 'none', border: 0, padding: 0, textAlign: 'left', color: 'inherit', cursor: 'pointer' }}>
+                <span className="stat-label">{inWords(next.at - now)}</span>
+                <span className="stat-value" style={{ fontSize: 'var(--size-md)' }}>{next.label}</span>
+                <span className="stat-note">{(() => { const lt = longLocal(next.at, zone); return `${lt.date} at ${lt.time}`; })()}</span>
+              </button>
+            ) : null}
+            {!todays.length && <p className="muted small" style={{ margin: next ? 'var(--s3) 0 0' : 0 }}>You have nothing scheduled today.</p>}
+            {soon.length > 1 && (
+              <>
+                <hr className="divider" />
+                <div className="col gap-2">
+                  {soon.slice(1, 6).map((c, i) => (
+                    <div key={i} className="row-between">
+                      <button className="btn btn-ghost btn-sm clamp-2" style={{ marginLeft: 'calc(-1 * var(--s3))' }} onClick={() => store.go(c.route)}>{c.label}</button>
+                      <span className="xs dim nowrap">{inWords(c.at - now)}</span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          ) : <p className="muted small" style={{ padding: '0 var(--s4) var(--s4)', margin: 0 }}>You're up to date.</p>}
-        </Panel>
+              </>
+            )}
+          </Panel>
+
+          <Proposals />
+
+          <Panel title="Recent Updates" subtitle={g.log.length ? 'The newest first.' : undefined} flush>
+            {g.log.length ? (
+              <div className="list">
+                {g.log.slice(0, 8).map((l) => (
+                  <div key={l.id} className="list-item list-static notice-row">
+                    <div className="grow">
+                      <div className="small">{l.text}</div>
+                      <div className="xs dim">{agoWords(now - l.at)}</div>
+                    </div>
+                    {l.route && <div className="row gap-2 notice-row-actions"><button className="btn btn-sm" onClick={() => store.go(l.route!)}>Go There</button></div>}
+                  </div>
+                ))}
+              </div>
+            ) : <p className="muted small" style={{ padding: '0 var(--s4) var(--s4)', margin: 0 }}>You're up to date.</p>}
+          </Panel>
+        </div>
       </div>
     </>
   );

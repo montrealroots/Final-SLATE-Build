@@ -221,6 +221,14 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
         (composer shortlist within budget), distinct music roles beyond composer, songwriter, lyricist, music
         supervisor and mixer (V4-022.02), a composer who declines or is replaced mid-score, and a browser journey
         that releases a version.
+    - Phones show the desktop layout (the owner, November 13, 2026: "make the phone screen the same as the desktop so if
+      you have to shrink it for it to fit screen do so"). `src/ui/layout-mode.ts`: where the rail would be a drawer
+      (under 901 wide or 501 tall), the viewport tag lays the page out at least 960 wide (wider on a phone held sideways,
+      so the rail fits) and the browser shrinks it; pinch zoom still works. Settings, Phone Layout, brings back the
+      phone's own layout per device. The phone, iPhone and landscape journeys keep testing the phone layout (`e2e/test.ts`
+      sets it unless a test is `phone-layout.spec.ts`); `e2e/phone-layout.spec.ts` tests the default on phone, iPhone
+      15 Pro Max and its landscape. Home's cards are two stacks now (`.home-col`): Recent Updates sat under the full
+      height of In The Industry. A panel title with help keeps 18rem before its actions go under it.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
   - Still not built: age stages and per-episode performers (V4-007.03/.04), Guide Me for cast, writing and music,

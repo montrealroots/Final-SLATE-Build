@@ -264,6 +264,7 @@ c(f, '"Set An Alarm"', D, 'sleep.alarm', 'state.ts snooze', 'An alarm lets you s
 f = 'SavedGames.tsx'
 c(f, '"Save Name"', R, 'saveName', 'the saved games list', 'The save\'s name')
 c(f, '"Larger Text"', V, 'the browser (not the save)', 'document data-text', 'Larger text on this device')
+c(f, '"Phone Layout"', V, 'the browser (not the save)', 'layout-mode.ts applyLayout (the viewport tag)', "On a phone: the desktop's layout shrunk to fit, or the phone's own layout", '', E('phone-layout', 'a phone shows the desktop layout shrunk to fit'))
 c(f, '"Wake Me For Obligations"', D, 'settings.wakeForObligations', 'state.ts runEvents', 'Reminders and call times wake you', U('foundation', 'sleep wakes for obligations by default'))
 f = 'Startup.tsx'
 c(f, '{`Replacement Place ${i + 1}`}', D, 'repair replacements', 'save.ts repairSave', 'Which place replaces one a save can\'t find', U('migration', 'open after a repair that keeps a backup and changes only the places'), E('failures', 'asks for a replacement, keeping a backup'))

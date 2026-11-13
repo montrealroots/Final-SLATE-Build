@@ -1,5 +1,6 @@
 // The saved games list, Import Save, Storage and the settings (November 11, 2026): moved from Startup.tsx so the start
 // screen doesn't load them before they're asked for.
+import { layoutMode, setLayoutMode, smallScreen } from './layout-mode';
 import { useRef, useState } from 'react';
 import { Check, Modal, TextField, realTimestamp } from './components';
 import { CreditsAndSources } from './Credits';
@@ -238,6 +239,9 @@ export function SettingsPanel() {
         try { localStorage.setItem('slate.v1.text', v ? 'large' : ''); } catch { /* ignore */ }
         store.emit();
       }} />
+      {(smallScreen() || layoutMode() === 'phone') && (
+        <Check label="Phone Layout" hint="Off, this screen shows the desktop's layout, shrunk to fit; pinch to zoom in. On, the page rearranges for the phone: a menu for the sections, one column, larger text." checked={layoutMode() === 'phone'} onChange={(v) => { setLayoutMode(v ? 'phone' : 'desktop'); store.emit(); }} />
+      )}
       {s.state && (
         <Check label="Wake Me For Obligations" hint="Reminders and call times wake you during Sleep." checked={s.state.settings.wakeForObligations}
           onChange={(v) => store.act((g) => (g.settings.wakeForObligations = v))} />

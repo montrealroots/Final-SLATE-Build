@@ -322,6 +322,9 @@ a:hover { text-decoration: underline; }
   flex-wrap: wrap;
 }
 .panel-head > :first-child { min-width: 0; flex: 1 1 8rem; }
+/* A title with a line of help under it keeps a width the help reads at, and its actions go under it instead (November
+   13, 2026: in a card 250 pixels wide In The Industry's help ran a word or two a line beside Open Companies). */
+.panel-head > :first-child:has(> p) { flex-basis: 18rem; }
 /* Four actions do not fit across a phone. They wrap onto a second line rather
    than pushing the card open and bleeding out of its right edge. */
 .panel-head > .row { flex-wrap: wrap; justify-content: flex-end; }
@@ -1105,16 +1108,17 @@ td, th { overflow-wrap: break-word; }
    waited under both. Two columns from 600 wide, as on a phone's side at 667, so What Needs You and Up Next both start in
    the first window. Until then 700 was the line: a column at 667 had no room for a head's title and its actions on one
    line, and in one column Up Next started below the first window. Its actions go on a second row under the title now. */
-.home-grid > :nth-child(1) { grid-column: 1; grid-row: 1; }
-.home-grid > :nth-child(2) { grid-column: 2; grid-row: 1 / span 2; }
-.home-grid > :nth-child(3) { grid-column: 1; grid-row: 2 / span 2; }
-.home-grid > :nth-child(4) { grid-column: 2; grid-row: 3; }
+/* From November 13, 2026 each column is its own stack (World.tsx), so a long card in one leaves no gap in the other. */
+.home-col { display: flex; flex-direction: column; gap: var(--s4); min-width: 0; }
+.home-col > .card { margin: 0; }
 @media (max-width: 620px) {
+  /* One column, in Home's own order: Projects, Up Next, In The Industry, Proposals, Recent Updates. */
   .home-grid { grid-template-columns: minmax(0, 1fr); }
-  /* As specific as the placements above, so it wins: as `.home-grid > *` (until later the same day, brief 22's final runs
-     on brief 24's commit) it lost to them, the cards kept their second column, and in a window 390 wide How You Are's
-     labels broke mid-word in a squeezed column with its help cut off by the card. */
-  .home-grid > :nth-child(n) { grid-column: auto; grid-row: auto; }
+  .home-col { display: contents; }
+  .home-col:first-child > :first-child { order: 1; }
+  .home-col:last-child > :first-child { order: 2; }
+  .home-col:first-child > :not(:first-child) { order: 3; }
+  .home-col:last-child > :not(:first-child) { order: 4; }
 }
 /* On a phone on its side a heading of Home's keeps its help beside it, its line under it wrapping instead: at 12rem, the
    head's own, What Needs You's help took a row of its own in a column at 667, and the first thing waiting started at the
