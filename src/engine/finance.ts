@@ -16,7 +16,7 @@ import { genre } from './genres';
 import { stream } from './rng';
 import { FORMAT_LABELS } from './projects';
 import { ANIMATION_HOUSE, MONTHS, familyKey, pitchRead, reachTerritories, slateRoom, strategyOf, type PitchRead, type StudioStrategy } from './strategy';
-import { considerDaysFor, firstLookHold, noteSubmission, repayTurnaround } from './first-look';
+import { bindingFor, considerDaysFor, firstLookHold, noteSubmission, repayTurnaround } from './first-look';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY, dateKey } from './time';
 import type { FinanceDeal, FinanceDealKind, GameState, Obligation, Project } from './types';
@@ -518,6 +518,7 @@ export function studioOption(state: GameState, p: Project, company: string): Stu
     deliveredForThem: theirs.filter(({ x, d }) => d.status === 'accepted' && x.delivered).length, brokenWithThem: theirs.filter(({ d }) => d.status === 'breached').length,
     year, room: slateRoom(state.seed, ind.horizon, profile, year, held),
     ...(better && (animated ? better.animation >= 0.15 : better.animation < ANIMATION_HOUSE) ? { betterFit: better.name } : {}),
+    ...(bindingFor(state, p)?.status === 'active' && bindingFor(state, p)!.company === company ? { firstLook: true } : {}),
   });
   const { stillToRaise } = financeSummary(p);
   const before = deals(p).filter(mine);

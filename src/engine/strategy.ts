@@ -126,6 +126,8 @@ export interface PitchInput {
   room: { capacity: number; taken: number; room: number };
   /** Another followed studio whose record fits the medium better, for a pass that names a route. */
   betterFit?: string;
+  /** The project is a film this studio's running first-look deal covers: a short is one, so its format doesn't rule it out. */
+  firstLook?: boolean;
 }
 
 export type PitchVerdict = 'pass' | 'notes' | 'option' | 'offer';
@@ -153,8 +155,11 @@ export function pitchRead(s: StudioStrategy, x: PitchInput): PitchRead {
   const cons: string[] = [];
   const pass = (why: string, next: string): PitchRead => ({ verdict: 'pass', score: 0, for: pros, against: [why, ...cons], next });
 
-  // 1. The kind of work. Its record here is feature films.
-  if (!FILM_FORMATS.has(x.format)) {
+  // 1. The kind of work. Its record here is feature films, but a first-look deal covers every film, a short included
+  // (first-look.ts covers), and was offered for delivered work that can be one: under the deal, the rest is weighed
+  // (the owner, November 13, 2026; until then the deal's own studio would pass on a covered short for being one).
+  if (!FILM_FORMATS.has(x.format) && x.firstLook) pros.push(`Your first-look deal with it covers this ${x.formatLabel.toLowerCase()}.`);
+  else if (!FILM_FORMATS.has(x.format)) {
     return pass(`${s.name}'s record here is feature films. A ${x.formatLabel.toLowerCase()} isn't something it takes on.`,
       'A commissioner, a festival run or releasing it yourself is the route for this one.');
   }
