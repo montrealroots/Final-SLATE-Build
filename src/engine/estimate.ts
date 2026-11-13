@@ -17,7 +17,7 @@
 // Identifiable risks (a day lost to rain, a damaged puppet, a missed capture session) are named with what one costs,
 // against the contingency. Until November 8 the capture stage wasn't in the estimate until it was booked.
 
-import { partName, partScenes, samePart, stagesOf } from './parts';
+import { partMethods, partName, partScenes, samePart, stagesOf } from './parts';
 import { ledgerTotals, money } from './budget';
 import { castRoleFor, estimateDays, requiredCrewPlan, roleCandidates } from './hiring';
 import { roleLabel } from './people';
@@ -28,7 +28,7 @@ import { awayCosts } from './destinations';
 import { makeupDayCost, physicalCrowd } from './looks';
 import { sessionCost } from './mocap';
 import { approvedCharacters, approvedScenes, fundingScenario, onDraftApproved } from './projects';
-import type { GameState, PerformanceMethod, Project, Task } from './types';
+import type { GameState, Project, Task } from './types';
 
 /** A tenth on top, the usual allowance for what goes wrong (lost days, counteroffers, reshoots). */
 export const CONTINGENCY = 0.1;
@@ -76,9 +76,7 @@ export function costBreakdown(state: GameState, p: Project): CostBreakdown {
   // Every part still to cast, by the methods the Cast page offers for it.
   for (const c of approvedCharacters(p)) {
     if (c.roleSize === 'background' || !approvedScenes(p).some((s) => s.participants.includes(c.id))) continue;
-    const methods: PerformanceMethod[] = p.axes.medium === 'animation'
-      ? ['voice', ...(c.methods.includes('motion-capture') ? ['motion-capture' as const] : [])]
-      : c.methods.filter((m) => m === 'on-camera' || m === 'voice' || m === 'motion-capture');
+    const methods = partMethods(p, c);
     // The part, and each stage of it (parts.ts): every one is cast and paid on its own.
     for (const [m, stage] of methods.flatMap((m) => [[m, undefined] as const, ...stagesOf(p, c.id).map((st) => [m, st.id] as const)])) {
       if (p.cast.some((a) => samePart(a, c.id, m, stage))) continue;

@@ -55,3 +55,44 @@ test('a department staffed by Guide Me within a ceiling, by offers that take day
   expect(committed).toBeLessThanOrEqual(m.ceiling);
   expect(m.ended).toBe('done');
 });
+
+test('casting and music by Guide Me: the cast plan read and approved, offers out to those named; the music brief and its staff in one approval', async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-02-02');
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Low Tide', format: 'Short Film', runtime: '12', budget: 'Low Budget' });
+  await section(page, 'Characters');
+  for (const name of ['Mara', 'Ben']) { await page.getByLabel('Character Name').fill(name); await page.getByRole('button', { name: 'Add Character' }).click(); }
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Pier', chars: ['Mara', 'Ben'], minutes: '4' });
+  await addScene(page, { index: 1, place: 'Kitchen', chars: ['Mara'], minutes: '4' });
+  await saveAndApprove(page);
+
+  // Casting: who for each part, read first; approved, those named are offered and nobody else.
+  await section(page, 'Cast');
+  const roles = page.locator('section.card', { hasText: 'Roles' }).first();
+  await roles.getByRole('button', { name: 'Guide Me' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Guide Me For Cast' });
+  const plan = dialog.getByRole('list', { name: 'The Plan' }).getByRole('listitem');
+  await expect(plan).toHaveCount(2);
+  await expect(dialog).toContainText('anyone who says no is not replaced, and the part comes back to you');
+  const named = (await plan.allInnerTexts()).map((t) => t.match(/^(Mara|Ben): (.+?), \$/)!.slice(1, 3));
+  await dialog.getByRole('button', { name: 'Approve Guide Me' }).click();
+  await expect(page.getByRole('region', { name: 'Guide Me, Cast' })).toContainText(/Guide Me is casting: \$[\d,]+ of the \$[\d,]+ ceiling committed, 2 offers out\./);
+  for (const [, who] of named) await expect(roles).toContainText(`On Camera: Offer out to ${who}`);
+  expect(named.map((x) => x[0]).sort()).toEqual(['Ben', 'Mara']);
+
+  // Music: the proposed brief and its cue plan, and a composer within a ceiling, in one approval.
+  await section(page, 'Music');
+  const card = page.locator('section.card', { has: page.getByRole('heading', { name: 'Guide Me For Music' }) });
+  await card.getByRole('button', { name: 'Guide Me' }).click();
+  await expect(card).toContainText('The Brief: A Score');
+  await expect(card.getByRole('list', { name: 'Who Guide Me Would Offer' })).toContainText('Composer');
+  await card.getByRole('checkbox', { name: "Let The Composer's Themes Stand Without My Review" }).check();
+  await card.getByRole('button', { name: 'Approve' }).click();
+  await expect(page.getByRole('list', { name: 'Cues' }).getByRole('listitem').first()).toBeVisible();
+  await expect(page.getByRole('region', { name: 'Guide Me, Music' })).toContainText(/Guide Me is staffing this department: \$[\d,]+ of the \$[\d,]+ ceiling committed/);
+  await expect.poll(async () => {
+    const p = (await readSavedState(page))?.projects?.[0];
+    return p ? [p.music?.brief?.delegateReview, p.hires.some((h: { roleId: string; guided?: string }) => h.roleId === 'composer' && !!h.guided)] : null;
+  }).toEqual([true, true]);
+});

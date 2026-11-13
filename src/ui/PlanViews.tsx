@@ -1,4 +1,4 @@
-import { addStage, partName, partScenes, removeStage, samePart, stageRefusal, stagesOf } from '../engine/parts';
+import { addStage, openParts, partMethods, partName, partScenes, removeStage, samePart, stageRefusal, stagesOf } from '../engine/parts';
 import { Fragment, useState } from 'react';
 import { theBacker } from '../engine/backer-words';
 import { setShotPlan } from '../engine/takes-actions';
@@ -26,7 +26,7 @@ import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, will
 import { candidatesFor, childrenIn } from '../engine/hiring';
 import { OwnAccountCard } from './YourMoney';
 import { ProjectKitCard } from './Equipment';
-import { activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted } from '../engine/mandates';
+import { CAST, activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted } from '../engine/mandates';
 import { searchAdvice, searchLine, searchPreview, searchRefusal, searchStatus, searchesFor, shortlistAdvice, startSearch } from '../engine/casting-director';
 import { negotiate, negotiationLine, negotiationPreview, negotiationRefusal, producerAccountLine } from '../engine/line-producer';
 import {
@@ -192,6 +192,7 @@ function CandidateList({ p, roleId, characterId, method, stage, onDone }: { p: P
 export function CastTab({ p }: { p: Project }) {
   const g = useGame();
   const [searching, setSearching] = useState<{ characterId: string; method: PerformanceMethod; stage?: string } | null>(null);
+  const [guiding, setGuiding] = useState(false);
   const [err, setErr] = useState<string | null>(null);
   if (p.approvedDraft === null) return <NeedsApproval p={p} what="The cast list" />;
   const chars = approvedCharacters(p).filter((c) => approvedScenes(p).some((s) => s.participants.includes(c.id)));
@@ -219,13 +220,15 @@ export function CastTab({ p }: { p: Project }) {
         </section>
       )}
       <section className="card">
-        <h2>Roles</h2>
+        <div className="row-between wrap">
+          <h2 style={{ margin: 0 }}>Roles</h2>
+          {!activeMandate(p, CAST) && openParts(p).length > 0 && <button className="btn btn-sm" disabled={!!p.delivered} onClick={() => setGuiding(true)}>Guide Me</button>}
+        </div>
         <p className="muted">You can cast yourself in any role, or stay behind the camera. Writing a character doesn't earn an acting credit.</p>
+        <GuideMeStanding p={p} dept={CAST} />
         <ul className="list">
           {chars.map((c) => {
-            const methods: PerformanceMethod[] = c.roleSize === 'background' ? [] : p.axes.medium === 'animation'
-              ? ['voice', ...(c.methods.includes('motion-capture') ? ['motion-capture' as const] : [])]
-              : c.methods.filter((m) => m === 'on-camera' || m === 'voice' || m === 'motion-capture');
+            const methods = partMethods(p, c);
             return (
               <li key={c.id}>
                 <div className="row-wrap">
@@ -269,6 +272,7 @@ export function CastTab({ p }: { p: Project }) {
         <HireTable p={p} hires={p.hires.filter((h) => h.kind === 'cast')} />
         {!p.hires.some((h) => h.kind === 'cast') && <p className="muted">No offers yet.</p>}
       </section>
+      {guiding && <GuideMeDialog p={p} dept={CAST} onClose={() => setGuiding(false)} />}
       {searching && (
         <Modal title={`Cast ${partName(p, searching.characterId, searching.stage)}`} onClose={() => setSearching(null)} footer={<button className="btn" onClick={() => setSearching(null)}>Close</button>}>
           <CandidateList p={p} roleId={castRoleFor(searching.method)} characterId={searching.characterId} method={searching.method} stage={searching.stage} onDone={() => setSearching(null)} />
@@ -1229,15 +1233,17 @@ function GuideMeDialog({ p, dept, onClose }: { p: Project; dept: string; onClose
   const approve = () => { const e = store.act((s) => { approveGuideMe(s, s.projects.find((x) => x.id === p.id)!, dept, ceiling); }); if (e) setErr(e); else onClose(); };
   return (
     <Modal title={`Guide Me For ${dept}`} kind="guide-me" onClose={onClose} footer={<><button className="btn" onClick={onClose}>Keep It Manual</button><button className="btn btn-primary" disabled={!!no} onClick={approve}>Approve Guide Me</button></>}>
-      <p className="dim">The game staffs this department for you within the ceiling you set: it offers these people at their asking rates, tries someone else when one says no, and accepts a counteroffer only while it still fits. Each offer takes days to be answered, and the work still has to be done. Anything over the ceiling comes back to you.</p>
+      <p className="dim">{dept === CAST
+        ? 'The game offers each part to the performer below, at their asking rate, within the ceiling you set, and accepts a counteroffer only while it still fits. Who plays a part is your choice: anyone who says no is not replaced, and the part comes back to you. Each offer takes days to be answered.'
+        : 'The game staffs this department for you within the ceiling you set: it offers these people at their asking rates, tries someone else when one says no, and accepts a counteroffer only while it still fits. Each offer takes days to be answered, and the work still has to be done. Anything over the ceiling comes back to you.'}</p>
       {plan.picks.length > 0 ? (
         <ul className="list" aria-label="The Plan">
-          {plan.picks.map((x) => <li key={x.roleId} className="list-item"><span className="grow"><strong>{roleLabel(x.roleId)}</strong>: {x.name}, {money(x.dayRate)} a day for {plural(x.days, 'day')}</span><span>{money(x.total)}</span></li>)}
+          {plan.picks.map((x) => <li key={x.part ?? x.roleId} className="list-item"><span className="grow"><strong>{x.part ?? roleLabel(x.roleId)}</strong>: {x.name}, {money(x.dayRate)} a day for {plural(x.days, 'day')}</span><span>{money(x.total)}</span></li>)}
         </ul>
       ) : <p className="muted">Nobody free can be offered a job here now.</p>}
       {plan.gaps.map((x) => <p key={x} className="callout small">{x}</p>)}
       <p><strong>The Plan Costs:</strong> {money(plan.total)}. {money(ledgerTotals(p).available)} is uncommitted on this project.</p>
-      <NumberField label="Spending Ceiling" value={ceiling} min={0} max={100_000_000} onChange={setCeiling} hint="The most Guide Me may commit for this department's hires. It never goes past it." />
+      <NumberField label="Spending Ceiling" value={ceiling} min={0} max={100_000_000} onChange={setCeiling} hint={dept === CAST ? 'The most Guide Me may commit for the cast. It never goes past it.' : "The most Guide Me may commit for this department's hires. It never goes past it."} />
       {no && <p className="small">{no}</p>}
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
     </Modal>
@@ -1245,14 +1251,14 @@ function GuideMeDialog({ p, dept, onClose }: { p: Project; dept: string; onClose
 }
 
 /** Where Guide Me stands on a department: what it has committed against its ceiling, and what it has returned to you. */
-function GuideMeStanding({ p, dept }: { p: Project; dept: string }) {
+export function GuideMeStanding({ p, dept }: { p: Project; dept: string }) {
   const m = activeMandate(p, dept) ?? [...(p.mandates ?? [])].reverse().find((x) => x.dept === dept);
   if (!m) return null;
   const out = p.hires.filter((h) => h.guided === m.id && (h.status === 'offered' || h.status === 'countered')).length;
   const done = m.endedAt !== undefined;
   return (
     <div className="callout small spaced" role="region" aria-label={`Guide Me, ${dept}`}>
-      <p>{done ? (m.ended === 'done' ? `Guide Me staffed ${dept}` : `Guide Me stopped`) : 'Guide Me is staffing this department'}: {money(mandateCommitted(p, m))} of the {money(m.ceiling)} ceiling committed{out ? `, ${plural(out, 'offer')} out` : ''}. Approved {longLocal(m.approvedAt, getPlace(p.axes.basePlaceId).zone).date}{done ? `; ended ${longLocal(m.endedAt!, getPlace(p.axes.basePlaceId).zone).date}` : ''}.</p>
+      <p>{done ? (m.ended === 'done' ? (dept === CAST ? 'Guide Me cast the parts it was given' : `Guide Me staffed ${dept}`) : `Guide Me stopped`) : dept === CAST ? 'Guide Me is casting' : 'Guide Me is staffing this department'}: {money(mandateCommitted(p, m))} of the {money(m.ceiling)} ceiling committed{out ? `, ${plural(out, 'offer')} out` : ''}. Approved {longLocal(m.approvedAt, getPlace(p.axes.basePlaceId).zone).date}{done ? `; ended ${longLocal(m.endedAt!, getPlace(p.axes.basePlaceId).zone).date}` : ''}.</p>
       {m.told.length > 0 && <><p><strong>Returned to you:</strong></p><ul>{m.told.map((t) => <li key={t}>{t}</li>)}</ul></>}
       {!done && <button className="btn btn-sm" onClick={() => void store.act((s) => endGuideMe(s, s.projects.find((x) => x.id === p.id)!, dept))}>Back To Manual</button>}
     </div>

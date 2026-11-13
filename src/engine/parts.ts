@@ -9,7 +9,7 @@
 // character in a scene is asked here (castIn), never by finding the first performer of the part.
 import { approvedCharacters, approvedScenes, sceneLabel } from './projects';
 import { newId } from './state';
-import type { CastAssignment, GameState, PartStage, Project, Scene } from './types';
+import type { CastAssignment, GameState, PartStage, PerformanceMethod, Project, Scene } from './types';
 
 export const stagesOf = (p: Project, characterId: string): PartStage[] => (p.stages ?? []).filter((s) => s.characterId === characterId);
 export const stageById = (p: Project, id: string | undefined): PartStage | undefined => (id ? (p.stages ?? []).find((s) => s.id === id) : undefined);
@@ -81,4 +81,30 @@ export function removeStage(p: Project, id: string): void {
   if (!st) throw new Error('That stage no longer exists.');
   if (p.cast.some((a) => a.stage === id) || p.hires.some((h) => h.stage === id && ['offered', 'countered', 'accepted'].includes(h.status))) throw new Error(`Release or withdraw whoever plays ${partName(p, st.characterId, id)} first.`);
   p.stages = (p.stages ?? []).filter((s) => s.id !== id);
+}
+
+/** The ways a part is cast, as the Cast page offers them: animation by voice (and capture), live action by its methods. */
+export function partMethods(p: Project, c: { roleSize: string; methods: PerformanceMethod[] }): PerformanceMethod[] {
+  if (c.roleSize === 'background') return [];
+  return p.axes.medium === 'animation'
+    ? ['voice', ...(c.methods.includes('motion-capture') ? ['motion-capture' as const] : [])]
+    : c.methods.filter((m) => m === 'on-camera' || m === 'voice' || m === 'motion-capture');
+}
+
+export interface OpenPart { characterId: string; method: PerformanceMethod; stage?: string }
+
+/** Every part and stage with scenes that nobody plays and nobody has an offer out for. */
+export function openParts(p: Project): OpenPart[] {
+  const out: OpenPart[] = [];
+  for (const c of approvedCharacters(p)) {
+    for (const method of partMethods(p, c)) {
+      for (const stage of [undefined, ...stagesOf(p, c.id).map((s) => s.id)]) {
+        if (!partScenes(p, c.id, stage).length) continue;
+        if (p.cast.some((a) => samePart(a, c.id, method, stage))) continue;
+        if (p.hires.some((h) => samePart(h, c.id, method, stage) && ['offered', 'countered', 'accepted'].includes(h.status))) continue;
+        out.push({ characterId: c.id, method, ...(stage ? { stage } : {}) });
+      }
+    }
+  }
+  return out;
 }

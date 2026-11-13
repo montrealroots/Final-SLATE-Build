@@ -1369,3 +1369,6 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `e2e/parts.spec.ts`, desktop and phone | 0 | Age 10 added for two scenes, you cast as Mara grown up, the child offered; the hire table names Mara (Age 10); kept after a reload. |
 | `auditions`, `characters`, `children`, `decisions`, `careers`, `casting-director` specs, desktop and phone | 0 | 21 passed, 3 skipped by design. |
 | `npx vitest run` | 0 | 1,127 tests. |
+| `tests/guide-me.test.ts` (Guide Me for casting) | 0 | The plan names one performer a part, a child for the child's part; approved, those named are offered; a no comes back once and nobody else is offered. |
+| `e2e/guide-me.spec.ts`, desktop and phone | 1 real, fixed | Casting by Guide Me (the plan read, two offers out to those named); music by Guide Me. The music plan was priced before the brief, and taking the brief adds spotting, themes and stems, so the composer didn't fit the ceiling and nobody was offered: it is priced on a copy with the brief now. |
+

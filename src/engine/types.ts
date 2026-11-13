@@ -548,6 +548,11 @@ export interface Mandate {
   ended?: 'done' | 'manual';
   /** What it returned to the player, each said once. */
   told: string[];
+  /**
+   * Casting (dept 'Cast', mandates.ts): the performers the player approved, part by part. Casting is creative intent, so
+   * it offers these people only; one who declines returns the part to the player instead of being replaced.
+   */
+  picks?: { characterId: string; method: PerformanceMethod; stage?: string; personId: string }[];
 }
 
 export interface CastAssignment {

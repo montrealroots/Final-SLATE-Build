@@ -242,9 +242,16 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       which paid twice before). Not built: casting calls and the casting director for a stage (offers through Find
       Performers only), body and stunt doubles beside a performer, screen-time measures per stage for award rules.
       Tests `tests/parts.test.ts` (6), `e2e/parts.spec.ts`.
+    - Guide Me for casting and music (November 13, 2026; `mandates.ts` dept `CAST`, `MusicTab.tsx MusicGuideMe`). Casting:
+      a performer for each part and stage nobody plays, free, of the part's age (a stage's own age), the cheapest who
+      fits, one person a part; approved, it offers those people only (`Mandate.picks`): a no, or an offer that can't be
+      made, returns the part to the player once. Music: one approval takes the proposed brief and cue plan (if none is
+      taken), optionally hands the themes' review to the composer, and staffs the Music department within a ceiling,
+      priced on a copy of the project with the brief applied (the plan before the brief left the composer out). Not
+      built: Guide Me for writing.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
-  - Still not built: Guide Me for cast, writing and music,
+  - Still not built: Guide Me for writing,
     company accounts, the music system (V4-022 to 026), F (historical boundaries, territory box office, weekly
     reports, renewal weighing, record books, reputation by role), the media-inventory work in G beyond what v3 built,
     H's journeys J01 to J13 as whole runs, and a title-by-title Sanderson comparison.
