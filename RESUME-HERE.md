@@ -182,7 +182,11 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#77 (53 stories, one for each of 53 genres that had none; a
+- **Latest merge:** montrealroots/Final-SLATE-Build#87 (adapted briefs from the story with roles reviewed by hand; the
+  owner's four items: ledgers, UI coverage 88 of 88, two pinned journeys, works with one person or none), squash-merged
+  as `b08dc04` on November 13, 2026, 19:47 UTC, with `checks` and all six journeys runs green on its final commit
+  `6389249`; `main` merged back with `-s ours`, the tree unchanged. Nothing is open on this branch.
+- **Earlier merge:** montrealroots/Final-SLATE-Build#77 (53 stories, one for each of 53 genres that had none; a
   commissioner's decision on another season reading the season's audience), squash-merged as `cd7472c` on November
   12, 2026, with `checks` and all six journeys runs green on its final commit `b98f6d4`. Before it that day: #76 as
   `7fcf9d2` (representation, a cinema run's weeks and the record book, weekly audiences, the rest of the adaptation
