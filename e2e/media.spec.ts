@@ -88,6 +88,17 @@ test('documentary through the UI: contributors, consent, facts, no scripted dial
   await page.getByLabel('Format').selectOption({ label: 'Documentary Short' });
   await page.getByRole('button', { name: 'Create Project' }).click();
   await expect(page.getByRole('heading', { name: 'Subject And Approach' })).toBeVisible();
+  // A plan from the subject: open questions in Research and kinds of people to approach; nothing found, nobody named.
+  const plan = page.getByRole('region', { name: 'The Plan' });
+  await plan.getByLabel('What It Is About').fill('The Amsterdam canal locks');
+  await plan.getByLabel('Kind Of Subject').selectOption({ label: 'A Place' });
+  await plan.getByRole('button', { name: 'Propose A Plan' }).click();
+  await expect(plan).toContainText('About: The Amsterdam canal locks (A Place).');
+  await expect(page.getByRole('heading', { name: 'Research', exact: true })).toBeVisible();
+  await expect(page.getByText('What is The Amsterdam canal locks like now, and how has it changed?')).toBeVisible();
+  await expect(page.getByText('Consent Requested')).toHaveCount(0);
+  await plan.getByRole('button', { name: 'Approach Someone who works there' }).click();
+  await expect(page.getByLabel('Who They Are')).toHaveValue('Someone who works there');
   await page.getByLabel('Contributor Name').fill('Joost de Vries');
   await page.getByLabel('Who They Are').fill('Lock keeper');
   await page.getByRole('button', { name: 'Add Contributor' }).click();

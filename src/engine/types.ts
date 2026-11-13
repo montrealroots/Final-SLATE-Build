@@ -246,6 +246,9 @@ export interface StoryCharacter {
   entityNote: string;
   methods: PerformanceMethod[];
   realization: Realization;
+  /** A stop-motion puppet's face (production/tasks.ts): swapped replacement faces, or a mechanical head. Unset: sculpted
+   *  and moved by hand, the work as before November 12, 2026. */
+  faceMethod?: 'replacement' | 'mechanical';
   ageInStory: string;
   /** Other names the character goes by (SLATE-05-01.02): a record for the writer, shown with the part in casting. */
   aliases?: string[];
@@ -681,6 +684,8 @@ export interface ShootDay {
   conflicts: string[];
   late?: boolean;
   weatherAnyway?: boolean;
+  /** The unit travelled the working day before, from this place (schedule.ts planShootDays). */
+  travelFrom?: string;
   /** Directing 2: on a pickup day, what each scene's pickup shoots (directing.ts). */
   pickups?: Record<string, 'take' | 'singles' | 'inserts'>;
 }
@@ -963,6 +968,9 @@ export interface Project {
   mandates?: Mandate[];
   /** Your own kit for this project's shoot days (equipment.ts); absent, it hires the rental house's package. */
   kit?: import('./equipment').ProjectKit;
+  /** Its music: licences for existing songs (music.ts). Absent on a project made before November 12, 2026, whose
+   *  licensed songs are cleared as they always were, by the music supervisor's days and one fee. */
+  music?: import('./music').MusicPlan;
   proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string> };
   /** Fields the player locked: a full story or a shuffle leaves them alone (blueprints.ts FIELD_LABELS has the keys). */
   locks?: string[];
@@ -1011,6 +1019,8 @@ export interface Project {
   /** Research questions and references for a fiction script (research.ts). Absent in older saves. */
   research?: ResearchNote[];
   evidence: Evidence[];
+  /** A documentary's proposed plan (documentary.ts proposeDocumentaryPlan): its subject and the kinds of people to approach. */
+  docPlan?: import('./documentary').DocPlan;
   contributors: Contributor[];
   drafts: Draft[];
   approvedDraft: number | null;
@@ -1077,6 +1087,8 @@ export interface Project {
    * save never depends on the catalog: its rights are what Wikidata recorded then, and nothing the game works out.
    */
   source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef; option?: SourceOption; changes?: SourceChange[]; approval?: SourceApproval };
+  /** Works this project was adapted from and left, with what was agreed for each (adaptation.ts retireSource). Absent until one is left. */
+  sourceHistory?: { ref: SourceRef; option?: SourceOption; approval?: SourceApproval; endedAt: number }[];
   /** When the story is set, as declared: costume, makeup and design awards split by it. Missing means contemporary. */
   storyTime?: 'contemporary' | 'period' | 'future';
   /** Subjects the story takes on, as declared (some awards and sections are for work about them); never read from prose. */
@@ -1263,4 +1275,6 @@ export interface GameState {
   money?: import('./personal').PersonalMoney;
   /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */
   gear?: import('./equipment').GearInventory;
+  /** Paid work on others' productions (jobs.ts). Absent until the first offer. */
+  jobs?: import('./jobs').OutsideJob[];
 }

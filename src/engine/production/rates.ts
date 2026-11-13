@@ -25,9 +25,16 @@ export const HOLIDAY_PREMIUM = 1.5;
 export const CROWD_DAY_RATE = 180;
 
 export const MATERIAL_COST: Record<string, number> = {
-  'prep:design': 900, 'prep:costume': 600, 'prep:creature': 4000, 'sm:armature': 900, 'sm:puppet': 1500, 'sm:costume': 300, 'sm:sets': 2500,
+  'prep:design': 900, 'prep:costume': 600, 'prep:creature': 4000, 'sm:armature': 900, 'sm:puppet': 1500, 'sm:faces': 1200, 'sm:costume': 300, 'sm:sets': 2500,
   'doc:archive': 2500, 'post:clearance': 8000, 'anim:modeling': 0, 'prep:locations': 500,
 };
+/** A stop-motion puppet's face (the v4 package, 02; ledger V4-014.02). Replacement faces are sculpted or printed as a
+ *  set and swapped between frames: build days for the set, its materials, and quicker animating. A mechanical head moves
+ *  by a mechanism inside: more armature days and slower animating. Game calibration, not studio data. */
+export const FACE_METHODS = {
+  replacement: { label: 'Replacement Faces', faceDays: 4, perScene: 0.5, armatureDays: 0, pace: 0.9 },
+  mechanical: { label: 'Mechanical Head', faceDays: 0, perScene: 0, armatureDays: 3, pace: 1.15 },
+} as const;
 export const LOCATION_FEE_PER_DAY = 1200;
 export const EQUIPMENT_PER_DAY = 1500;
 /** Location and equipment costs scale with the production's scale (simulation assumption): micro shoots use borrowed gear and free locations. */

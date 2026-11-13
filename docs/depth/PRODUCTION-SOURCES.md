@@ -48,3 +48,4 @@ applicability, and its status becomes "verified fact".
 | `DELIVERY_MATERIALS` | `src/engine/finish.ts` | $6,000 theatrical, $4,000 streaming, $3,000 broadcast, $1,500 digital | 16-02 | Modeled assumption | None |
 | `REPORT_MONTHS`, `DISTRIBUTOR_FEE`, `LATER_WINDOW_DAYS` | `src/engine/distribution.ts` | 6 reports; 35% fee; 120 days | 16-04, 16-05 | Modeled assumption | None |
 | `OPPORTUNITY_DELAY_DAYS`, `OPPORTUNITY_OPEN_DAYS`, `OPPORTUNITY_DELIVER_DAYS` | `src/engine/opportunities.ts` | 45, 30 and 540 days | 18-03 | Modeled assumption | None |
+| `FACE_METHODS` | `src/engine/production/rates.ts` | Replacement faces: 4 build days and half a day a scene, animation at 0.9; mechanical head: 3 armature days a copy, animation at 1.15 | v4 V4-014.02 | Modeled assumption | None |

@@ -2,6 +2,7 @@
 // flag on a scene, and the original song award went to the score composer of any project with an unlicensed one. These
 // tests play songs through the production loop: commissioned and written, recorded, shot, credited and entered.
 import { describe, expect, it } from 'vitest';
+import { agreeLicence, licencesOf, requestLicence } from '../src/engine/music';
 import { DAY, announce, buildTasks, categoryRuleStatus, categoryRules, checkEligibility, institution, processUntil, rulebook, submitEntry } from './engine-api';
 import { attachSong, changeVersionSong, createSong, detachSong, playFirstOverEndCredits, removeSong, setSongPerformers, setSongWriters } from '../src/engine/song-actions';
 import { migrateV7toV8, songUses, writtenForProject } from '../src/engine/songs';
@@ -32,6 +33,13 @@ function songFilm(tag: string, deliver = true): { s: GameState; p: Project; ids:
   approve(s, p);
   castAll(s, p);
   staffAll(s, p);
+  // The licensed song is licensed before delivery (music.ts): asked until its holders quote, then agreed.
+  for (let i = 0; i < 10 && !licencesOf(p, lights.id).some((l) => l.status === 'agreed'); i++) {
+    requestLicence(s, p, lights.id, { territories: ['US'], media: ['festival', 'digital'], years: 3 });
+    processUntil(s, s.now + 7 * DAY, 'tick', 100000);
+    const open = licencesOf(p, lights.id).find((l) => l.status === 'quoted' || l.status === 'countered');
+    if (open) agreeLicence(s, p, open.id);
+  }
   if (deliver) {
     for (let i = 0; i < 6; i++) { manage(s, p); processUntil(s, s.now + DAY, 'tick', 100000); }
     startProduction(s, p, 5);

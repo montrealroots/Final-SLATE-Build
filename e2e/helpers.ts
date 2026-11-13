@@ -157,6 +157,9 @@ export async function nav(page: Page, label: 'Home' | 'Calendar' | 'World' | 'Pr
   await openMenuIfNeeded(page);
   const name = label === 'Profile' ? 'Player Profile' : label;
   await page.getByRole('navigation', { name: 'Main Navigation' }).getByRole('button', { name, exact: true }).click();
+  // Where the rail is a drawer, it slides shut over the page's left edge: wait until it has gone (November 12, 2026: a
+  // tap straight after landed on the closing drawer, and kept landing there until the test timed out).
+  if (await page.getByRole('button', { name: 'Menu', exact: true }).isVisible()) await expect(page.locator('#rail')).toBeHidden();
 }
 
 /** Save & Exit: in the bar, or in the drawer's foot where the rail is a drawer. */
@@ -511,4 +514,36 @@ export async function adaptWork(page: Page, o: { query: string; work: RegExp; ti
   await o.onStep?.('preview');
   await page.getByRole('button', { name: 'Create Project' }).click();
   await page.getByRole('button', { name: 'Save Draft' }).waitFor();
+}
+
+/**
+ * License an existing song on the Music page (the v4 package, 03; engine/music.ts): ask both holders for these media in
+ * the production's own country for three years, wait for their answer, agree a quote or a counteroffer, and ask again
+ * after a refusal. The holders' answers are the world seed's, so a pinned seed answers the same way every run.
+ */
+export async function licenseSong(page: Page, project: string, title: string, media: string[] = ['Festivals', 'Digital Sale And Rental'], countries?: string): Promise<void> {
+  for (let i = 0; i < 10; i++) {
+    if (!(await page.getByRole('tab', { name: 'Music', exact: true }).count())) { await nav(page, 'Projects'); await page.getByRole('button', { name: project }).first().click(); }
+    await section(page, 'Music');
+    const card = page.getByRole('article', { name: `Licence For ${title}` });
+    const agree = card.getByRole('button', { name: new RegExp(`^Agree ${title} For `) });
+    if (await agree.count()) { await agree.click(); await expect(card).toContainText('Licensed for'); return; }
+    await askLicence(page, title, media, countries);
+    await advance(page, 'week');
+  }
+  throw new Error(`"${title}" was not licensed in ten weeks.`);
+}
+
+/** Ask both holders of a song for a licence, on the Music page, without waiting for the answer. Nothing if one is open. */
+export async function askLicence(page: Page, title: string, media: string[] = ['Festivals', 'Digital Sale And Rental'], countries?: string): Promise<void> {
+  const all = ['Festivals', 'Cinemas', 'Streaming', 'Television', 'Digital Sale And Rental'];
+  await section(page, 'Music');
+  const card = page.getByRole('article', { name: `Licence For ${title}` });
+  const ask = card.getByRole('button', { name: `Ask To License ${title}` });
+  if (!(await ask.count())) return;
+  await ask.click();
+  for (const m of all) { const box = card.getByRole('checkbox', { name: m, exact: true }); if ((await box.isChecked()) !== media.includes(m)) await box.click(); }
+  if (countries) await card.getByLabel('Countries, By Two-Letter Code').fill(countries);
+  await card.getByRole('button', { name: 'Ask Both Holders' }).click();
+  await expect(card).toContainText('Asked:');
 }

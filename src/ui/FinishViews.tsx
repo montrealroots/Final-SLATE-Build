@@ -329,14 +329,14 @@ function TakesCard({ p, onError }: { p: Project; onError: (e: string | null) => 
 }
 
 export function EditTab({ p }: { p: Project }) {
-  useGame();
+  const g = useGame();
   const [err, setErr] = useState<string | null>(null);
   const [pick, setPick] = useState<string[]>([]);
   const [cutting2, setCutting2] = useState<string | null>(null);
   const gaps = coverageGaps(p);
   const cut = [...cutScenes(p)].map((id) => approvedScenes(p).find((s) => s.id === id)).filter((s): s is NonNullable<typeof s> => !!s);
   const lb = lockBlockers(p);
-  const db = deliveryBlockers(p);
+  const db = deliveryBlockers(p, g.now);
   const cutting = p.tasks.find((t) => t.kind === 'post:cutpass' && t.status !== 'done');
   return (
     <>

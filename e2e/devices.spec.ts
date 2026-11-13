@@ -31,7 +31,7 @@ test('phone device: screens fit, drawer works, focused fields stay visible', asy
   await expect(runtime).toBeInViewport();
   await page.getByLabel('Working Title').fill('Winter Tram');
   await page.getByRole('button', { name: 'Create Project' }).tap();
-  for (const t of ['Overview', 'Script', 'Characters', 'Cast', 'Crew', 'Schedule', 'Budget', 'Production', 'Edit', 'Release', 'Festivals And Awards']) {
+  for (const t of ['Overview', 'Script', 'Characters', 'Cast', 'Crew', 'Schedule', 'Budget', 'Production', 'Music', 'Edit', 'Release', 'Festivals And Awards']) {
     await section(page, t);
     expect(await overflow(), t).toBeLessThanOrEqual(1);
   }

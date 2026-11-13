@@ -1,8 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import {
   DAY, approvedScenes, buildTasks, describeImpact, designChangeImpact, applyDesignChange, ledgerTotals, processUntil, requestConsent, runWorkDay,
-  updateCharacter, generatePlan, dateKey, addDaysToKey, deliveryBlockers,
+  updateCharacter, generatePlan, dateKey, addDaysToKey, deliveryBlockers, proposeDocumentaryPlan, DOC_SUBJECTS, materialCost,
 } from './engine-api';
+import { FACE_METHODS } from '../src/engine/production/rates';
 import { approve, buildProject, castAll, manage, runDays, staffAll, startLife, startProduction, summary } from './helpers';
 import type { GameState, Project } from '../src/engine/types';
 
@@ -70,6 +71,33 @@ describe('3D CG animation', () => {
 });
 
 describe('stop motion', () => {
+  it('a puppet face is a choice of work: replacement faces add a face set and animate quicker; a mechanical head adds armature days and animates slower', () => {
+    const s = startLife('sm-face');
+    const make = (face?: 'replacement' | 'mechanical') => {
+      const p = buildProject(s, { title: `Tin Heart ${face ?? 'sculpted'}`, format: 'short', medium: 'animation', technique: 'stop-motion', genres: ['mystery'], runtime: 4, quality: 'feature' },
+        [{ name: 'Pip', patch: { roleSize: 'lead', ...(face ? { faceMethod: face } : {}) } }],
+        [{ place: 'Attic', chars: ['Pip'], minutes: 1 }, { place: 'Clock Room', chars: ['Pip'], minutes: 1 }]);
+      approve(s, p);
+      p.schedule.puppetCopies[p.characters[0].id] = 2;
+      return buildTasks(p);
+    };
+    const units = (ts: ReturnType<typeof buildTasks>, kind: string) => ts.filter((x) => x.kind === kind).reduce((a, x) => a + x.units, 0);
+    const [plain, swap, mech] = [make(), make('replacement'), make('mechanical')];
+    expect(units(plain, 'sm:faces')).toBe(0);
+    expect(units(swap, 'sm:faces')).toBe(FACE_METHODS.replacement.faceDays + 2 * FACE_METHODS.replacement.perScene); // one set, two scenes
+    expect(units(mech, 'sm:faces')).toBe(0);
+    expect(units(mech, 'sm:armature')).toBe(units(plain, 'sm:armature') + FACE_METHODS.mechanical.armatureDays * 2); // for each copy
+    expect(units(swap, 'sm:animation')).toBeCloseTo(units(plain, 'sm:animation') * FACE_METHODS.replacement.pace, 0); // units are kept to tenths
+    expect(units(mech, 'sm:animation')).toBeCloseTo(units(plain, 'sm:animation') * FACE_METHODS.mechanical.pace, 0);
+    // Animation waits for the faces; the face set costs its materials once.
+    expect(swap.filter((x) => x.kind === 'sm:animation').every((x) => x.dependsOn.some((d) => d.startsWith('sm:faces:')))).toBe(true);
+    expect(materialCost(swap.find((x) => x.kind === 'sm:faces')!)).toBeGreaterThan(0);
+    // Everything else is the same work.
+    const rest = (ts: ReturnType<typeof buildTasks>) => ts.filter((x) => !['sm:faces', 'sm:armature', 'sm:animation'].includes(x.kind)).map((x) => [x.kind, x.units]);
+    expect(rest(swap)).toEqual(rest(plain));
+    expect(rest(mech)).toEqual(rest(plain));
+  });
+
   it('a puppet cannot serve two stages at once without a duplicate', () => {
     const s = startLife('sm');
     const make = (copies: number) => {
@@ -187,6 +215,26 @@ describe('documentary', () => {
     expect(p.delivered).toBeNull();
     expect(s.log.some((l) => /skipped: Nomvula Dube hasn't given consent/.test(l.text))).toBe(true);
   }, 60000);
+});
+
+describe('a documentary plan proposed from its subject', () => {
+  it('adds open questions and kinds of people to approach, and finds nothing and names nobody', () => {
+    const s = startLife('doc-plan', 'za-durban');
+    const p = buildProject(s, { title: 'Tide Keepers', format: 'documentary-short', medium: 'live-action', genres: ['documentary'], runtime: 15 }, [], []);
+    const plan = proposeDocumentaryPlan(s, p, 'The Durban lifeguard strike', 'event');
+    expect(plan).toMatchObject({ subject: 'The Durban lifeguard strike', kind: 'event', approach: DOC_SUBJECTS.event.approach });
+    expect(p.research!.map((n) => [n.question.includes('The Durban lifeguard strike') || n.question.startsWith('Who was there'), n.status, n.reference])).toEqual(DOC_SUBJECTS.event.questions('x').map(() => [true, 'open', '']));
+    expect(p.evidence).toEqual([]); // nothing found
+    expect(p.contributors).toEqual([]); // nobody named
+    // Proposed again, nothing is added twice; another kind changes the questions and the people.
+    proposeDocumentaryPlan(s, p, 'The Durban lifeguard strike', 'event');
+    expect(p.research!.length).toBe(DOC_SUBJECTS.event.questions('x').length);
+    proposeDocumentaryPlan(s, p, 'Durban beachfront', 'place');
+    expect(p.docPlan!.approach).toEqual(DOC_SUBJECTS.place.approach);
+    expect(() => proposeDocumentaryPlan(s, p, '  ', 'event')).toThrow('Say what the film is about.');
+    const fiction = buildProject(s, { title: 'Not A Documentary', format: 'short', medium: 'live-action' }, [], []);
+    expect(() => proposeDocumentaryPlan(s, fiction, 'Anything', 'event')).toThrow('Only a documentary or unscripted show has a documentary plan.');
+  });
 });
 
 describe('TV season', () => {

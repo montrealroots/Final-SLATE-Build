@@ -215,3 +215,26 @@ export function restoreVersionSong(p: Project, versionId: string, sceneId: strin
   v.songChanges = (v.songChanges ?? []).filter((c) => !(c.sceneId === sceneId && c.songId === songId));
   syncSongTasks(p);
 }
+
+const musicTask = (id: string) => /^post:(spotting|themes|themes-revision|stems|conform|music|score-session):/.test(id);
+
+/**
+ * Bring the score's work in the task list in line with the brief, the cue plan and the notes (cues.ts): add the steps a
+ * brief or a round of notes asks for, drop score work not started that a silent brief no longer needs, resize work not
+ * started, and let the mixes wait for what they now need. Before production has a task list, scheduling builds it all.
+ */
+export function syncMusicTasks(p: Project): void {
+  if (!p.tasks.length) return;
+  const fresh = buildTasks(p);
+  const wanted = new Map(fresh.filter((x) => musicTask(x.id)).map((x) => [x.id, x]));
+  p.tasks = p.tasks.filter((x) => !musicTask(x.id) || wanted.has(x.id) || x.done > 0);
+  for (const w of wanted.values()) {
+    const have = p.tasks.find((x) => x.id === w.id);
+    if (!have) p.tasks.push(w);
+    else if (have.status !== 'done') Object.assign(have, { units: Math.max(w.units, have.done), dependsOn: w.dependsOn, label: w.label });
+  }
+  for (const f of fresh.filter((x) => x.kind === 'post:mix')) {
+    const have = p.tasks.find((x) => x.id === f.id);
+    if (have && have.status !== 'done') Object.assign(have, { dependsOn: f.dependsOn, units: Math.max(f.units, have.done) });
+  }
+}

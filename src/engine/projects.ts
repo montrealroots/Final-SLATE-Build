@@ -170,6 +170,7 @@ export function createProject(state: GameState, input: NewProjectInput): Project
     assets: [],
     captures: [],
     edit: { assembly: false, cutPasses: 0, pickupsNeeded: [], pictureLocked: false, versions: [] },
+    music: { licences: [] },
     delivered: null,
     credits: [],
     releases: [],
@@ -265,14 +266,14 @@ export function addCharacter(state: GameState, p: Project, name: string): StoryC
 }
 
 /** Fields whose change alters a character's physical/visual design. */
-const DESIGN_FIELDS: (keyof StoryCharacter)[] = ['entity', 'realization', 'entityNote', 'description'];
+const DESIGN_FIELDS: (keyof StoryCharacter)[] = ['entity', 'realization', 'entityNote', 'description', 'faceMethod'];
 
 export function updateCharacter(p: Project, id: string, patch: Partial<StoryCharacter>): { designChanged: boolean } {
   assertEditable(p);
   const c = p.characters.find((x) => x.id === id);
   if (!c) throw new Error('That character no longer exists.');
   if (patch.name !== undefined && !patch.name.trim()) throw new Error('A character needs a name.');
-  const designChanged = DESIGN_FIELDS.some((f) => patch[f] !== undefined && patch[f] !== c[f]);
+  const designChanged = DESIGN_FIELDS.some((f) => f in patch && patch[f] !== c[f]);
   Object.assign(c, patch);
   if (designChanged) c.designVersion += 1;
   return { designChanged };
@@ -408,6 +409,39 @@ export function duplicateCharacter(state: GameState, p: Project, id: string): St
   const { beats: _beats, awardPlacement: _placement, ...rest } = c;
   const copy: StoryCharacter = { ...JSON.parse(JSON.stringify(rest)), id: newId(state, 'c'), name, designVersion: 1 };
   p.characters.splice(p.characters.indexOf(c) + 1, 0, copy);
+  return copy;
+}
+
+/**
+ * Split a character in two (the v4 package, 01; ledger V4-007.02): a new character, named by the player, takes the chosen
+ * scenes, the lines spoken in them and the arc beats set in them; the original keeps the rest and everything else: relationships, threads, look,
+ * arc, cast and contracts, and so whatever was paid or shot. A scene can't go to both, and at least one stays.
+ */
+export function splitCharacter(state: GameState, p: Project, id: string, sceneIds: string[], name: string): StoryCharacter {
+  assertEditable(p);
+  const c = p.characters.find((x) => x.id === id);
+  if (!c) throw new Error('That character is no longer in the script.');
+  const theirs = p.scenes.filter((s) => s.participants.includes(id));
+  const moving = theirs.filter((s) => sceneIds.includes(s.id));
+  if (!moving.length) throw new Error('Choose the scenes the new character takes.');
+  if (moving.length === theirs.length) throw new Error(`Leave ${c.name} at least one scene, or set them aside and give their scenes to someone.`);
+  const n = name.trim();
+  if (!n) throw new Error('Name the new character.');
+  if (p.characters.some((x) => x.name === n)) throw new Error(`There is already a character called ${n}.`);
+  const copy = duplicateCharacter(state, p, id);
+  copy.name = n;
+  for (const s of moving) {
+    s.participants = s.participants.map((x) => (x === id ? copy.id : x));
+    for (const d of s.dialogue) if (d.characterId === id) d.characterId = copy.id;
+    if (s.states?.[id] !== undefined) { s.states[copy.id] = s.states[id]; delete s.states[id]; }
+  }
+  // An arc beat belongs to the scene it is in: it goes with the scene.
+  const moved = new Set(moving.map((s) => s.id));
+  const beats = c.beats ?? [];
+  if (beats.some((b) => moved.has(b.sceneId))) {
+    copy.beats = beats.filter((b) => moved.has(b.sceneId));
+    c.beats = beats.filter((b) => !moved.has(b.sceneId));
+  }
   return copy;
 }
 

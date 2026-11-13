@@ -7,7 +7,7 @@ import {
   AWAY_DAY_SHARE, AWAY_KM, SITE_KINDS, awayCosts, awayDayCost, candidateSite, dayPlace, filmPlace, filmedAtPreview, isAway, kindFee, kmFromBase, moveCost, noisyDay, permitWork, setFilmedAt, underCover,
 } from '../src/engine/destinations';
 import { dayFees } from '../src/engine/production/rates';
-import { approvedScenes, buildTasks, costBreakdown, deserialize, serialize } from './engine-api';
+import { addDaysToKey, approvedScenes, buildTasks, costBreakdown, deserialize, serialize } from './engine-api';
 import type { GameState, Project } from '../src/engine/types';
 import { approve, buildProject, castAll, runDays, staffAll, startLife, startProduction, summary } from './helpers';
 
@@ -117,6 +117,14 @@ describe('a film with a location filmed far away, made', () => {
     expect(postings.filter((x) => x.key.startsWith('move:')).map((x) => x.amount)).toEqual([moveCost(p, 'Quay')]);
     expect(postings.filter((x) => x.key.startsWith('away:')).length).toBe(quayDays.length);
     expect(postings.filter((x) => x.key.startsWith('away:')).every((x) => x.amount === awayDayCost(p, 'Quay'))).toBe(true);
+    // Getting there takes a working day: the first day at the Quay says where the unit came from, and isn't the next
+    // working day after the one before it. Coming back to the base takes one too.
+    const days = [...p.schedule.days].sort((a, b) => (a.date < b.date ? -1 : 1));
+    for (let i = 1; i < days.length; i++) {
+      const moved = days[i].locationLabel !== days[i - 1].locationLabel;
+      expect(days[i].travelFrom).toBe(moved ? (days[i].locationLabel === 'Quay' ? getPlace(p.axes.basePlaceId).name : getPlace('no-tromso').name) : undefined);
+      if (moved) expect(days[i].date > addDaysToKey(days[i - 1].date, 1)).toBe(true);
+    }
     // You stayed at the base, so the day there started without you, and the log names where.
     expect(s.log.some((e) => e.text.includes(`You weren't in ${getPlace('no-tromso').name} for the call`))).toBe(true);
     expect(p.tasks.find((t) => t.kind === 'prep:permit')).toMatchObject({ status: 'done' });
@@ -128,7 +136,9 @@ describe('a roof over an exterior', () => {
   // The same film three times, one seed, the Quay filmed in Tromsø from early January: in the open at a port, on a
   // soundstage, and at a port whose chosen site is the stage set built to match. Only the roof differs.
   const made = (roof: 'none' | 'soundstage' | 'stage-set') => {
-    const { s, p } = film('destinations-roof');
+    // Labelled fixture: the seed. From November 12, 2026 a travel day moves the Quay days one working day on; seed
+    // 'destinations-roof' then fell on a dry, light day in the open, so this one was chosen for a day the weather stops.
+    const { s, p } = film('destinations-roof-3');
     setFilmedAt(p, 'Quay', { placeId: 'no-tromso', kind: roof === 'soundstage' ? 'soundstage' : 'port' });
     if (roof === 'stage-set') p.locationChoices!.Quay.main = 'stage';
     p.tasks = buildTasks(p);

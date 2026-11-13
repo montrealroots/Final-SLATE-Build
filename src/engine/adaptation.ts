@@ -37,13 +37,28 @@ export const basedOn = (w: Pick<SourceWork, 'title' | 'creators'>): string => {
 export function adaptFrom(state: GameState, p: Project, w: SourceWork): void {
   const no = adaptRefusal(p);
   if (no) throw new Error(no);
+  // The same work again is recorded afresh, and what was agreed for it stands; another work leaves the first in the record.
+  const same = p.source?.ref?.id === w.id ? p.source : undefined;
+  if (!same) retireSource(p, state.now);
   const ref: SourceRef = { id: w.id, title: w.title, medium: w.medium, year: w.year, creators: w.creators.map((c) => c.name), standing: rightsStanding(w), recorded: rightsLine(w), at: state.now };
-  p.source = { kind: 'adapted', work: basedOn(w).slice(0, 120), ref };
+  p.source = { kind: 'adapted', work: basedOn(w).slice(0, 120), ref, ...(same?.option ? { option: same.option } : {}), ...(same?.changes ? { changes: same.changes } : {}), ...(same?.approval ? { approval: same.approval } : {}) };
 }
 
 /** Keep the script adapted, by the player's own words alone: the catalog work is let go. */
-export function forgetSourceWork(p: Project): void {
-  if (p.source?.ref) p.source = { kind: 'adapted', work: p.source.work ?? '' };
+export function forgetSourceWork(state: GameState, p: Project): void {
+  if (!p.source?.ref) return;
+  retireSource(p, state.now);
+  p.source = { kind: 'adapted', work: p.source.work ?? '' };
+}
+
+/**
+ * A work the project leaves behind keeps what was agreed for it in the record (the v4 package, 03; ledger V4-021.02):
+ * its option, what was paid, and a draft out for approval, whose answer then changes nothing. What was paid stays on the
+ * ledger under its own keys. Until November 12, 2026 choosing another work, or letting one go, erased all of it.
+ */
+function retireSource(p: Project, at: number): void {
+  const s = p.source;
+  if (s?.ref && (s.option || s.approval)) (p.sourceHistory ??= []).push({ ref: s.ref, ...(s.option ? { option: s.option } : {}), ...(s.approval ? { approval: s.approval } : {}), endedAt: at });
 }
 
 /** What a chosen work means for the script, said plainly: one line for each standing. */
@@ -255,8 +270,15 @@ export const participationPaid = (p: Project): number => (p.source?.option?.stat
 
 /** The chain of title, in this story: each step with its date and what was paid. */
 export function chainOfTitle(p: Project, date: (at: number) => string): string[] {
+  const paidFor = (key: string) => p.obligations.filter((x) => x.postings.some((q) => q.key === key)).reduce((n, x) => n + x.settled, 0);
+  const before = (p.sourceHistory ?? []).map((h) => {
+    const o = h.option;
+    const paid = o ? paidFor(`option:${p.id}:${o.takenAt}`) + paidFor(`option-exercise:${p.id}:${o.takenAt}`) + (o.widened ?? []).reduce((n, w) => n + w.paid, 0) : 0;
+    const pending = h.approval && !h.approval.outcome ? ` Draft ${h.approval.draft} was with its rights holder; their answer no longer applies.` : '';
+    return `Earlier: ${h.ref.title}.${o ? ` Option taken ${date(o.takenAt)}; ${money(paid)} paid, which stays paid.` : ''} Let go ${date(h.endedAt)}: no right to it remains.${pending}`;
+  });
   const ref = p.source?.ref;
-  if (!ref) return [];
+  if (!ref) return before;
   const o = p.source!.option;
   const out = [`The work: ${ref.title}${ref.creators.length ? `, by ${ref.creators.join(' and ')}` : ''}. ${ref.recorded}`];
   if (!needsOption(p)) out.push('No option is asked: the record says public domain somewhere. That is the game\'s rule.');
@@ -274,5 +296,5 @@ export function chainOfTitle(p: Project, date: (at: number) => string): string[]
     for (const x of o.statements ?? []) out.push(`Statement ${date(x.at)}: ${money(x.share)} to the rights holder, their share of ${money(x.income)} from ${x.from}.`);
     if (o.terms.approach) out.push('A sequel or another season is not covered: it needs an agreement of its own.');
   }
-  return out;
+  return [...out, ...before];
 }

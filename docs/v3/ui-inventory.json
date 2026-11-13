@@ -442,6 +442,16 @@
   ]
  },
  {
+  "id": "project-music",
+  "area": "Project",
+  "name": "Project: Music",
+  "kind": "tab",
+  "screen": "project:music",
+  "walk": [
+   "music-before"
+  ]
+ },
+ {
   "id": "project-edit",
   "area": "Project",
   "name": "Project: Edit",
@@ -615,6 +625,17 @@
   "source": "ReviseBrief | \"Revise From The Work\"",
   "walk": [
    "revise-brief"
+  ]
+ },
+ {
+  "id": "dlg-split-character",
+  "area": "Your Work",
+  "name": "Split A Character",
+  "kind": "dialog",
+  "dialog": "^@split-character$",
+  "source": "ScriptViews | {`Split ",
+  "walk": [
+   "split-character"
   ]
  },
  {

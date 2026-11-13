@@ -66,10 +66,12 @@ test('a harbour filmed in Bergen from a London base: asked, scouted, rained on, 
   const harbour = shootDays.locator('li', { hasText: 'Harbour (Exterior)' }).first();
   await expect(harbour).toContainText('Filmed in Bergen, Norway.');
   await expect(shootDays.locator('li', { hasText: 'Kitchen (Interior)' }).first()).not.toContainText('Filmed in');
-  await expect.poll(async () => (await days(page)).map((d) => `${d.date} ${d.locationLabel}`), { timeout: 30_000 }).toEqual(['2026-10-27 Harbour', '2026-10-28 Kitchen']);
+  await expect.poll(async () => (await days(page)).map((d) => `${d.date} ${d.locationLabel}`), { timeout: 30_000 }).toEqual(['2026-10-28 Harbour', '2026-10-30 Kitchen']);
+  // Getting to Bergen takes a working day, and so does coming back (November 12, 2026).
+  await expect(harbour).toContainText('The unit travels from London the working day before.');
   // Rain is likely in Bergen that day. The answer is the interior day: the two swap dates.
   await harbour.getByRole('button', { name: 'Film an Interior Scene' }).click();
-  await expect.poll(async () => (await days(page)).filter((d) => d.status === 'scheduled').map((d) => `${d.date} ${d.locationLabel}`).sort()).toEqual(['2026-10-27 Kitchen', '2026-10-28 Harbour']);
+  await expect.poll(async () => (await days(page)).filter((d) => d.status === 'scheduled').map((d) => `${d.date} ${d.locationLabel}`).sort()).toEqual(['2026-10-28 Kitchen', '2026-10-30 Harbour']);
   await harbour.getByText('Call Sheet', { exact: true }).click();
   await expect(harbour).toContainText("Harbour, exterior. Filmed in Bergen, Norway, on Bergen's clock: be there for the call");
   await page.screenshot({ path: `test-results/destinations-${info.project.name}-02-days.png`, fullPage: true });
@@ -119,14 +121,16 @@ test('a harbour filmed in Bergen from a London base: asked, scouted, rained on, 
   await expect.poll(async () => !!(await readSavedState(page)).projects[0]?.delivered, { timeout: 30_000 }).toBe(true);
 
   // What happened, from the save. The Kitchen was shot at the base without the player. In Bergen, rain stopped the first
-  // Harbour day; the next morning the candidate site fell through, the shoot went to the stage set, and under its roof
-  // both scenes were shot. The unit's move was paid once, and its housing for each day it was called there.
+  // Harbour day, and the next day both scenes were shot at the candidate site. The unit's move was paid once, and its
+  // housing for each day it was called there. Until November 12, 2026, when moving between London and Bergen took no
+  // time, the Harbour days fell two days earlier and the site fell through on the second (that is tests/locations.test.ts's
+  // to cover now).
   const s = await readSavedState(page);
   const done = s.projects[0];
   expect(done.schedule.days.map((d: Day) => [d.date, d.locationLabel, d.status, d.result])).toEqual([
-    ['2026-10-28', 'Harbour', 'lost', 'Rain stopped Scene 1 (Harbour).'],
-    ['2026-10-27', 'Kitchen', 'shot', 'Shot 1 of 1 scene.'],
-    ['2026-10-29', 'Harbour', 'shot', 'Shot 2 of 2 scenes.'],
+    ['2026-10-30', 'Harbour', 'lost', 'Rain stopped Scene 1 (Harbour).'],
+    ['2026-10-28', 'Kitchen', 'shot', 'Shot 1 of 1 scene.'],
+    ['2026-11-02', 'Harbour', 'shot', 'Shot 2 of 2 scenes.'],
   ]);
   const paid = (key: RegExp): number[] => done.obligations.flatMap((o: { postings: { key: string; kind: string; amount: number }[] }) => o.postings).filter((x: { key: string; kind: string }) => x.kind === 'settle' && key.test(x.key)).map((x: { amount: number }) => x.amount);
   expect(paid(/^move:/)).toHaveLength(1);
@@ -136,10 +140,11 @@ test('a harbour filmed in Bergen from a London base: asked, scouted, rained on, 
   const logs: string[] = s.log.map((l: { text: string }) => l.text);
   expect(logs).toContain("You weren't in London for the call on North Water. The day started late without you.");
   expect(logs.some((t) => t.includes("You weren't in Bergen for the call"))).toBe(false);
-  expect(logs).toContain('North Water, October 28, 2026: Rain stopped Scene 1 (Harbour). The remaining work moved to a new day.');
-  expect(logs).toContain('North Water: The Candidate Site for Harbour fell through this morning. The shoot went to your backup, a stage set built to match.');
+  expect(logs).toContain('North Water, October 30, 2026: Rain stopped Scene 1 (Harbour). The remaining work moved to a new day.');
+  expect(logs.some((t) => t.includes('fell through'))).toBe(false);
   expect(done.tasks.find((t: { kind: string }) => t.kind === 'prep:permit')).toMatchObject({ status: 'done', units: 2 });
-  expect(done.locationChoices.Harbour).toMatchObject({ at: { placeId: 'gn:3161732', kind: 'coast' }, main: 'stage', lost: ['real'] });
+  expect(done.locationChoices.Harbour).toMatchObject({ at: { placeId: 'gn:3161732', kind: 'coast' }, main: 'real', backup: 'stage' });
+  expect(done.schedule.days.find((d: Day) => d.date === '2026-10-30').travelFrom).toBe('London');
   await section(page, 'Schedule');
   await expect(page.getByText('Rain stopped Scene 1 (Harbour).').first()).toBeVisible();
   await page.screenshot({ path: `test-results/destinations-${info.project.name}-03-made.png`, fullPage: true });

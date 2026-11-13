@@ -87,7 +87,7 @@ test('every main screen fits each viewport without sideways scrolling', async ({
     ['Saved Games', () => nav(page, 'Saved Games')],
     ['Settings', () => nav(page, 'Settings')],
   ];
-  const tabs = ['Overview', 'Script', 'Characters', 'Cast', 'Crew', 'Schedule', 'Budget', 'Production', 'Edit', 'Release', 'Festivals And Awards'];
+  const tabs = ['Overview', 'Script', 'Characters', 'Cast', 'Crew', 'Schedule', 'Budget', 'Production', 'Music', 'Edit', 'Release', 'Festivals And Awards'];
   for (const [w, h] of VIEWPORTS) {
     await page.setViewportSize({ width: w, height: h });
     for (const [name, go] of screens) {
@@ -212,6 +212,11 @@ test('in-game Saved Games and Settings come from the same navigation', async ({ 
   await expect(page.getByRole('heading', { name: 'Settings', level: 1 })).toBeVisible();
   await page.getByRole('button', { name: 'Light', exact: true }).click();
   expect(await page.evaluate(() => document.documentElement.dataset.theme)).toBe('light');
+  // Credits And Data Sources (the v4 package, 04): each source with its terms, in one place.
+  const credits = page.getByRole('list', { name: "Where The Game's Facts Come From" });
+  await expect(credits).toContainText('Data from GeoNames, CC BY 4.0.');
+  await expect(credits).toContainText('This product uses the TMDB API but is not endorsed or certified by TMDB.');
+  await expect(credits).toContainText(/Prices are from Glazer's Camera, a US retailer's public product listings, read on [A-Z][a-z]+ \d{1,2}, \d{4}/);
   // Phones never get entry fields under 16px (they would zoom the page).
   if (info.project.name === 'phone') {
     await nav(page, 'World');

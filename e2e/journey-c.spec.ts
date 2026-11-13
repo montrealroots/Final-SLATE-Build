@@ -19,7 +19,7 @@
 import type { Locator } from '@playwright/test';
 import { expect, test, type Page } from './test';
 import {
-  addScene, advance, approveDesigns, castRoles, nav, newProject, pinSeed, pressSaveAndExit, quickLife, readSavedState, saveAndApprove, section, staffEveryDepartment,
+  addScene, advance, approveDesigns, askLicence, castRoles, licenseSong, nav, newProject, pinSeed, pressSaveAndExit, quickLife, readSavedState, saveAndApprove, section, staffEveryDepartment,
 } from './helpers';
 
 test.use({ actionTimeout: 20_000 });
@@ -66,6 +66,11 @@ test('journey C: songs written, recorded and cleared in production, placed in sc
   await use('Tidewater', /Pier/, 'In The Background');
   await song('Salt Water').getByRole('checkbox', { name: 'Lena Performs Salt Water' }).check();
   await saveAndApprove(page);
+  // The licensed song is asked of both its holders now, for what this film will need (the v4 package, 03); the answer
+  // comes while the film is made, and is agreed before delivery.
+  // Labelled fixture: the pinned seed's theatrical offer goes to the US, Great Britain, France and Canada.
+  const licensed = ['Festivals', 'Cinemas', 'Digital Sale And Rental'];
+  await askLicence(page, 'Harbour Lights', licensed, 'US, GB, FR, CA');
 
   // Cast, crewed and scheduled; then production until picture lock: the songs are written, recorded and cleared as
   // work, by the people hired for it.
@@ -102,6 +107,8 @@ test('journey C: songs written, recorded and cleared in production, placed in sc
   await versions.getByLabel(/Distribution Cut: .*Pier.*, In Place Of "Harbour Lights"/).selectOption({ label: '"Lantern" Instead' });
   await section(page, 'Production');
   await expect(song('Harbour Lights').locator('span.grow', { hasText: /Pier.*In The Background/ })).toBeVisible(); // the main cut keeps it
+  // Its holders answered while the film was made: the licence is agreed, or asked again until it can be.
+  await licenseSong(page, 'Night Ferry', 'Harbour Lights', licensed, 'US, GB, FR, CA');
   // Delivery waits for the version's conform day and any song work the swap added.
   for (let i = 0; i < 12; i++) {
     await section(page, 'Edit');

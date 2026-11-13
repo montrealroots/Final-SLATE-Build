@@ -2,6 +2,7 @@
 // screen doesn't load them before they're asked for.
 import { useRef, useState } from 'react';
 import { Check, Modal, TextField, realTimestamp } from './components';
+import { CreditsAndSources } from './Credits';
 import { DataPacks } from './DataPacks';
 import { SaveLine } from './Startup';
 import { store, useStore } from './store';
@@ -243,6 +244,7 @@ export function SettingsPanel() {
       )}
       <p className="dim">Motion follows your device's reduced-motion setting.</p>
       <DataPacks />
+      <CreditsAndSources />
     </>
   );
 }

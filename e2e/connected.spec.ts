@@ -4,7 +4,8 @@
 // iphone-15-pro-max runs in WebKit with the iPhone's viewport and user agent. All are browser emulation, not devices.
 // The only fixture is the pinned world seed (helpers.ts pinSeed), chosen so a broadcaster makes an offer.
 import { expect, test, type Page } from './test';
-import { addScene, advance, castRoles, createCharacter, freshStart, nav, pinSeed, pressSaveAndExit, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch } from './helpers';
+import { addScene, advance, castRoles, createCharacter, freshStart, nav, pinSeed, pressSaveAndExit, runToDelivery, section, secureStartingBacking, staffEveryDepartment, writePitch, readSavedState,
+} from './helpers';
 
 const SEED = 7;
 const shot = (page: Page, project: string, name: string) => page.screenshot({ path: `test-results/connected-${project}-${name}.png`, fullPage: true });
@@ -182,12 +183,14 @@ test('a connected career, from creation to a broadcast deal, saved and reloaded 
   await expect(earnings).toContainText(/Received By You\s*\$[\d,]+/);
   // Later windows (SLATE-16-05): some months after the broadcast, distributors look at a later window. Kestrel's exclusive
   // rights still hold what they would offer, and Home says so rather than reading as no interest.
-  const laterNotice = page.getByText(/later window of Hard Water/);
-  for (let i = 0; i < 30 && !(await laterNotice.count()); i++) {
+  // Read from the log itself: Home shows the newest eight updates, and from November 12, 2026 an offer of work can follow a
+  // delivery and push the notice down (jobs.ts).
+  const laterNotices = async () => ((await readSavedState(page))?.log ?? []).map((l: { text: string }) => l.text).filter((t: string) => /later window of Hard Water/.test(t));
+  for (let i = 0; i < 30 && !(await laterNotices()).length; i++) {
     await advance(page, 'week');
     await nav(page, 'Home');
   }
-  await expect(laterNotice.first()).toHaveText('Distributors looked at a later window of Hard Water, but your earlier deals still hold the rights they wanted, so there is nothing to accept.');
+  await expect.poll(async () => (await laterNotices()).at(-1)).toBe('Distributors looked at a later window of Hard Water, but your earlier deals still hold the rights they wanted, so there is nothing to accept.');
   await nav(page, 'Projects');
   await page.getByRole('button', { name: 'Hard Water' }).click();
 

@@ -1,6 +1,7 @@
 // Daily work: who works on which task, readiness, payments and finished-task effects.
 // Part of the production engine; src/engine/production.ts is its public interface.
 
+import { onThemesDone, themesGate, timeCues } from '../cues';
 import { onSongTaskDone } from '../songs';
 import type { GameState, Obligation, Project, Task } from '../types';
 import { getPlace } from '../../data/places';
@@ -87,6 +88,7 @@ export function depsMet(p: Project, task: Task): { ok: boolean; reason?: string 
   }
   const design = designGate(p, task);
   if (design) return { ok: false, reason: design };
+  if (task.kind === 'post:music') { const th = themesGate(p); if (th) return { ok: false, reason: th }; }
   if (task.kind === 'anim:voice' && task.assetRef) {
     const cast = p.cast.find((c) => c.characterId === task.assetRef && c.method === 'voice');
     if (!cast) return { ok: false, reason: 'This character has no voice performer yet.' };
@@ -356,6 +358,9 @@ export function plannedRemaining(p: Project, ref: string): number {
 }
 
 export function onTaskDone(state: GameState, p: Project, task: Task, date: string): void {
+  // The score written, or its cues conformed: the scored cues are timed to their scenes as they are now (cues.ts).
+  if ((task.kind === 'post:music' || task.kind === 'post:conform') && task.episode !== undefined) timeCues(p, task.episode);
+  if (task.kind === 'post:themes' || task.kind === 'post:themes-revision') { onThemesDone(p, state.now); addLog(state, p.music?.themes?.status === 'approved' ? `${p.title}: the composer's themes are written, and stand as you asked.` : `${p.title}: the composer's themes are ready. Approve them, or give notes, on the Music page.`, 'project', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'music' } }); }
   if (materialCost(task) > 0) {
     try {
       payPlanned(state, p, 'plan:materials', `${task.label} Materials`, task.kind.startsWith('post:clearance') || task.kind === 'doc:archive' ? 'licensing' : 'materials', materialCost(task), `mat:${task.id}`);
