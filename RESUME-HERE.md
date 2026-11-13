@@ -277,6 +277,10 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       screen (900 expands by a quarter, 250 holds, less cuts to three fifths, under 5 screens withdraws). The screens a
       month ends on scale the next month's report (`screenShare`, up to 1.5). Weeks In Cinemas shows them. Not modelled:
       publicity spending.
+    - World records as historical records (V4-027.01, November 13, 2026; `catalog/world.ts historicalRecord`): entity,
+      metric (what happened), unit (a day), territory (unknown, null), period, as-of (the records' date), source (TMDB or
+      this save's world), revision (the catalog build) and availability: recorded, announced (scheduled after the
+      records were taken) or simulated. Home's In The Industry marks Announced and Simulated.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
   - Still not built: Guide Me for writing,

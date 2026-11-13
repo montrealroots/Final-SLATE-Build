@@ -1411,3 +1411,10 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `tests/box-office.test.ts` (screens and holdovers) | 1 design flaw of mine, fixed before commit | A week's figure moves when its month settles, so the next week's screens were first recomputed from the settled figure and could disagree with the decision recorded; they now follow the recorded decision (`screensAfter`). 4 tests: opening screens; the four decisions and competition tipping a hold to a cut; each week recorded and the next playing on its decision; the next month's report cut, expanded and withdrawn. |
 | `earnings`, `studio-pitch` (J08, with the screens and decision checked against the save), `journey-c`, `cinemas` specs | 0 | 8 passed, 2 skipped by design; J08 again after the new assertion. |
 
+## v4 World Records (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `tests/world-records.test.ts` | 0 | What a record carries; recorded, announced and simulated apart; territory unknown; read only up to the day asked for. |
+| `catalog`, `world-refresh` specs, desktop and phone | 0 | 18 passed. |
+
