@@ -9,7 +9,8 @@
 // reaches is listed there as not visited; nothing is called checked that wasn't.
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { expect, test, type Page } from './test';
-import { adaptWork, addScene, advance, freshStart, nav, openStart, pinSeed, quickLife, saveAndApprove, saveAndExit, section } from './helpers';
+import { adaptWork, addScene, advance, castRoles, freshStart, nav, newProject, openStart, pinSeed, quickLife, saveAndApprove, saveAndExit, section, staffEveryDepartment } from './helpers';
+import { firstSaveId, readRecord, writeRecords } from './vault';
 import { audit, coveredWhenFocused, shiftSince, watchShifts, type Defect } from './ui-audit';
 import { serveCatalog } from './catalog-fixture';
 
@@ -401,5 +402,65 @@ test('the UI audit: the rest of creation, and the dialogs the first walk does no
   await nav(page, 'Saved Games');
   await page.getByRole('heading', { name: 'Saved Games', level: 1 }).waitFor();
   await dialog(page.getByRole('button', { name: /^Rename Save/ }), 'rename-save-in-game', 'Your Game', 'Rename Save, In The Game');
+  finish(project);
+});
+
+// Changing the approved take asks first once cleanup has begun on it, which no journey reaches: the motion capture
+// journey (journeys.spec.ts) plays capture to a missed and rebooked session, and cleanup starts weeks after that.
+test('the UI audit: deleting a scene with work built on it, and changing an approved motion capture take, on a labelled fixture', async ({ page }, info) => {
+  const project = info.project.name;
+  test.skip(!SIZES[project], 'Runs on desktop, phone and the two WebKit iPhone emulations.');
+  test.setTimeout(600_000);
+  page.setDefaultTimeout(20_000);
+  await quickLife(page, 'ca-vancouver', '2026-01-05');
+  await newProject(page, { title: 'Iron Orchard', format: 'Short Film', medium: 'Animation', technique: '3D CG', finish: 'Limited Animation', runtime: '2' });
+  await section(page, 'Characters');
+  for (const n of ['Wren', 'The Golem']) {
+    await page.getByLabel('Character Name').fill(n);
+    await page.getByRole('button', { name: 'Add Character' }).click();
+  }
+  const golem = page.getByRole('article', { name: 'The Golem' });
+  await golem.getByRole('button', { name: 'Edit Character' }).click();
+  await golem.getByLabel('Entity').selectOption({ label: 'Monster' });
+  await golem.getByRole('checkbox', { name: 'Motion Capture' }).check();
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Orchard', chars: ['Wren', 'The Golem'], minutes: '0.5' });
+  await saveAndApprove(page);
+  await castRoles(page, ['Wren']);
+  await staffEveryDepartment(page);
+  await advance(page, 'next-day');
+  await section(page, 'Schedule');
+  await page.getByRole('button', { name: /Build Schedule|Rebuild Schedule/ }).click();
+  // With its work built, a scene asks before it is deleted (walk 3 deletes one before that, and isn't asked).
+  await section(page, 'Script');
+  const scene = page.locator('article.scene-card').first();
+  await scene.getByRole('button', { name: 'Edit Scene' }).click();
+  await scene.getByRole('button', { name: /^Delete Scene/ }).click();
+  await expect(page.getByRole('dialog', { name: 'Delete This Scene?' })).toBeVisible();
+  await visit(page, project, 'delete-scene', 'Script', 'Delete This Scene?', 'dialog');
+  await page.getByRole('dialog', { name: 'Delete This Scene?' }).getByRole('button', { name: 'Keep Scene' }).click();
+  // Labelled fixture: two takes recorded, the first approved, and cleanup begun on it.
+  await saveAndExit(page);
+  const id = await firstSaveId(page);
+  const env = JSON.parse((await readRecord(page, `slate.v1.save.${id}`))!);
+  const state = JSON.parse(env.data);
+  const p = state.projects[0];
+  const cid = p.characters.find((c: { name: string }) => c.name === 'The Golem').id;
+  const cleanup = p.tasks.find((t: { id: string }) => t.id === `anim:mocap-cleanup:${cid}`);
+  expect(cleanup, 'an approved script with a captured character has a cleanup task').toBeTruthy();
+  cleanup.done = 1;
+  p.mocap = { [cid]: { bookingId: null, status: 'unbooked', takes: [{ id: 'take-fixture-1', date: '2026-01-20', quality: 61, retake: false }, { id: 'take-fixture-2', date: '2026-01-27', quality: 74, retake: true }], approvedTakeId: 'take-fixture-1', retakes: 1 } };
+  const data = JSON.stringify(state);
+  const { hashString } = await import('../src/engine/rng');
+  await writeRecords(page, { [`slate.v1.save.${id}`]: JSON.stringify({ ...env, checksum: hashString(data), data }) });
+  await page.reload();
+  await page.getByRole('button', { name: 'Continue', exact: true }).click();
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Iron Orchard' }).first().click();
+  await section(page, 'Production');
+  await page.getByRole('button', { name: 'Approve Take 2 For The Golem' }).click();
+  await expect(page.getByRole('dialog', { name: 'Change The Approved Take?' })).toContainText('Capture Cleanup And Retargeting: The Golem');
+  await visit(page, project, 'approved-take', 'Edit', 'Change The Approved Take?', 'dialog');
+  await page.getByRole('dialog', { name: 'Change The Approved Take?' }).getByRole('button', { name: 'Keep The Current Take' }).click();
   finish(project);
 });

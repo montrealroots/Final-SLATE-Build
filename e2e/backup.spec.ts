@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { expect, expectErrors, test, type Page } from './test';
+import { expect, expectErrors, sweepSees, test, type Page } from './test';
 import { hashString } from '../src/engine/rng';
 import { advance, newProject, quickLife, readSavedState, saveAndExit } from './helpers';
 import { listRecords, readRecord, refuseSaveWrites } from './vault';
@@ -87,6 +87,7 @@ test('importing a save that is already here: a separate copy, or a replacement o
   await page.getByRole('dialog', { name: 'This Save Is Already Here' }).getByRole('button', { name: 'Replace The Save Here' }).click();
   const confirm = page.getByRole('dialog', { name: 'Replace This Save?' });
   await expect(confirm).toContainText('kept as this save\'s backup');
+  await sweepSees(page);
   await confirm.getByRole('button', { name: 'Keep The Save Here' }).click();
   await expect(page.getByRole('dialog', { name: 'This Save Is Already Here' })).toBeVisible();
   expect(await readRecord(page, `slate.v1.save.${id}`)).toBe(here);

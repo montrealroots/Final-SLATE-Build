@@ -1,4 +1,4 @@
-import { expect, test, type Page } from './test';
+import { expect, sweepSees, test, type Page } from './test';
 import { advance, nav, quickLife, saveAndExit } from './helpers';
 import { clearStorage, firstSaveId, listRecords, readRecord, refuseSaveWrites, writeRecords } from './vault';
 
@@ -40,6 +40,7 @@ test('full storage: saving says why, the last save stays, recovery copies can be
   await copies.getByRole('button', { name: /^Delete Damaged save of / }).click();
   const confirm = page.getByRole('dialog', { name: 'Delete This Copy?' });
   await expect(confirm).toContainText("Your saved game and its backup won't change.");
+  await sweepSees(page);
   await confirm.getByRole('button', { name: 'Delete Copy' }).click();
   await expect(page.getByText('None. Each game also keeps its previous save as a backup')).toBeVisible();
   expect((await listRecords(page)).some((k) => k.includes('.damaged-'))).toBe(false);

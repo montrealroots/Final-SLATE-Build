@@ -888,7 +888,10 @@
   "name": "Change The Approved Take?",
   "kind": "dialog",
   "dialog": "^Change The Approved Take\\?$",
-  "source": "FinishViews | \"Change The Approved Take?\""
+  "source": "FinishViews | \"Change The Approved Take?\"",
+  "walk": [
+   "approved-take"
+  ]
  },
  {
   "id": "scene-open",

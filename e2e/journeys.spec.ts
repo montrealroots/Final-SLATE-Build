@@ -1,4 +1,4 @@
-import { expect, test, type Page } from './test';
+import { expect, sweepSees, test, type Page } from './test';
 import { addScene, advance, approveDesigns, castRoles, creditsTable, nav, produceToDelivery, quickLife, readSavedState, runToDelivery, saveAndApprove, section, saveAndExit, seededLife, newProject, staffEveryDepartment } from './helpers';
 import { firstSaveId, readRecord, writeRecords } from './vault';
 
@@ -43,6 +43,7 @@ test('2D animation: deliver, release digitally, enter the Annie Awards and reach
   const history = page.locator('section', { hasText: 'Release History' });
   await history.locator('li', { hasText: 'in CA' }).getByRole('button', { name: 'Cancel Release' }).click();
   await expect(page.getByRole('dialog', { name: 'Cancel This Release?' })).toBeVisible();
+  await sweepSees(page);
   await page.getByRole('dialog', { name: 'Cancel This Release?' }).getByRole('button', { name: 'Cancel Release' }).click();
   await expect(history.locator('li', { hasText: 'in CA' }).getByText('Cancelled', { exact: true })).toBeVisible();
   await advance(page, 'month');
@@ -249,6 +250,7 @@ test('documentary: a contributor who withdraws after filming is redacted before 
   await page.locator('li', { hasText: 'Fenna Bakker' }).getByRole('button', { name: 'Record Withdrawal' }).click();
   const dialog = page.getByRole('dialog', { name: 'Fenna Bakker Withdraws?' });
   await expect(dialog).toContainText('Footage already recorded with them will be redacted by your editor before the film can be delivered.');
+  await sweepSees(page);
   await dialog.getByRole('button', { name: 'Record Withdrawal' }).click();
   await expect(consentOf(page, 'Fenna Bakker')).toHaveText('Withdrew');
   await expect.poll(async () => (await readSavedState(page)).log.map((l: { text: string }) => l.text)).toContain('Fenna Bakker withdrew from Lock Keepers. Their footage is being redacted from the film.');

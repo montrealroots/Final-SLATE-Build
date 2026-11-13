@@ -1,4 +1,4 @@
-import { expect, expectErrors, test } from './test';
+import { expect, expectErrors, sweepSees, test } from './test';
 import { readFileSync } from 'node:fs';
 import { hashString } from '../src/engine/rng';
 import { advance, nav, openStart, pressSaveAndExit, quickLife, saveAndExit } from './helpers';
@@ -168,9 +168,10 @@ test('a failure while time passes pauses time, keeps the game as it was, and nev
 test('a genre catalog that fails to load stops the game from opening with the reason, and Try Again opens it', async ({ page }) => {
   expectErrors('Aborts the genre catalog request.');
   let fail = true;
+  let held: Promise<void> | null = null;
   // The catalog is fetched on its own since November 7, 2026 (genre-catalog-<hash>.json in the production build). Only
   // the data fetch is refused: the dev server also serves the file's URL as a module, with a query string.
-  await page.route((url) => /genre-catalog/.test(url.pathname) && !url.search, (route) => (fail ? route.abort() : route.continue()));
+  await page.route((url) => /genre-catalog/.test(url.pathname) && !url.search, async (route) => { if (fail) return route.abort(); await held; return route.continue(); });
   await openStart(page);
   await page.evaluate(() => {
     localStorage.clear();
@@ -184,8 +185,16 @@ test('a genre catalog that fails to load stops the game from opening with the re
   await page.getByRole('button', { name: 'Continue Creation' }).click();
   await page.getByRole('button', { name: 'Start My Story' }).click();
   await expect(page.getByText("The game's genre catalog couldn't be loaded. Check your connection and try again.")).toBeVisible();
+  await sweepSees(page);
+  // Try Again, with the catalog held back for a moment: the game says it is opening, then opens.
+  let release!: () => void;
+  held = new Promise((r) => { release = r; });
   fail = false;
   await page.getByRole('button', { name: 'Try Again' }).click();
+  await expect(page.getByRole('heading', { name: 'Opening Your Game', level: 2 })).toBeVisible();
+  await expect(page.getByText('Your saved game is loading.')).toBeVisible();
+  await sweepSees(page);
+  release();
   await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   // The whole catalog arrived: Write An Original offers all 149 entries.
   await nav(page, 'Projects');

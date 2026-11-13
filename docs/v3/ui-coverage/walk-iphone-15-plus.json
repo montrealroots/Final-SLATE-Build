@@ -1,6 +1,6 @@
 {
  "project": "iphone-15-plus",
- "at": "2026-11-12T23:16:51.335Z",
+ "at": "2026-11-13T18:45:56.990Z",
  "rows": [
   {
    "id": "start",
@@ -1556,6 +1556,38 @@
    "id": "rename-save-in-game",
    "area": "Your Game",
    "name": "Rename Save, In The Game",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "delete-scene",
+   "area": "Script",
+   "name": "Delete This Scene?",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Plus (WebKit) (430 by 932)": {
+     "defects": []
+    },
+    "iPhone 15 Plus on its side (WebKit) (932 by 430)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "approved-take",
+   "area": "Edit",
+   "name": "Change The Approved Take?",
    "kind": "dialog",
    "sizes": {
     "iPhone 15 Plus (WebKit) (430 by 932)": {
