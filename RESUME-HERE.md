@@ -59,8 +59,15 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     card only, offers still use craft); 7. television first-look deals (`first-look.ts` scope, `finance.ts`
     submitSeries); 8. camera modes and composer credits as reference records (`engine/reference-records.ts`; nothing in
     play reads them yet).
-  - *Next:* the 22 journeys as v6 asks (J01 and J03 exist; J13 is unit-tested in `tests/first-look.test.ts`); grades
-    feeding offers; cameras and composers into the shop and hiring once prices and terms are sourced; the TMDB
+  - *The 22 journeys (after PR #89):* `docs/v6/JOURNEYS.md` maps J01 to J22 to the tests that run them, checked by
+    `tests/v6-journeys.test.ts`: 5 Covered, 17 Partly Covered, each saying which steps don't run. New: J13 through the
+    screens (`e2e/v6-first-look-tv.spec.ts`, seed 3, desktop, phone and iPhone 15 Pro Max), and J22's exploits in
+    `tests/standing.test.ts`. On an unpinned world desktop and phone got different answers from the company, by their
+    slates, so the journey pins the seed. V6-039 and V6-040 in `docs/v6/requirements.csv` no longer say TV scope and
+    anti-farming aren't built.
+  - *Next:* the partly covered journeys, clearest first: J05 animatic revision compared before and after animation;
+    J03 one-person adaptation through the screens; J21 a correction seen on screen; J22 Standing By Role read in a
+    browser journey. Then grades feeding offers; cameras and composers into the shop and hiring once prices and terms are sourced; the TMDB
     inventory import from ID exports (`docs/v7/package/reference/tmdb_inventory.py`).
   - *Research questions:* `docs/v7/RETURN-TO-RESEARCH.md`.
 
