@@ -797,6 +797,9 @@
   "project:cast|Cast Ben": {
    "phone": [
     "390x844"
+   ],
+   "desktop": [
+    "1280x720"
    ]
   },
   "project:festivals|": {
@@ -898,11 +901,13 @@
   },
   "start:|": {
    "phone": [
-    "844x390"
+    "844x390",
+    "390x844"
    ],
    "desktop": [
     "600x960",
-    "320x568"
+    "320x568",
+    "1280x720"
    ],
    "iphone-15-plus": [
     "430x739",
@@ -1184,6 +1189,9 @@
   "project:script|Advance": {
    "desktop": [
     "1280x720"
+   ],
+   "phone": [
+    "390x844"
    ]
   },
   "project:production|Advance": {
@@ -1340,6 +1348,73 @@
   "project:schedule|Where Street 3 Is Filmed": {
    "iphone-15-pro-max": [
     "430x739"
+   ]
+  },
+  "project:cast|Cast Bea": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:cast|Cast The Golem": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:release|Change These Episode Dates?": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:edit|Cut This Scene From The Edit?": {
+   "phone": [
+    "390x844"
+   ]
+  },
+  "start:Choose Missing Places|": {
+   "phone": [
+    "390x844"
+   ]
+  },
+  "start:Saved Games|Replace This Save?": {
+   "desktop": [
+    "1280x720"
+   ],
+   "phone": [
+    "390x844"
+   ]
+  },
+  "saves|Delete This Copy?": {
+   "desktop": [
+    "1280x720"
+   ],
+   "phone": [
+    "390x844"
+   ]
+  },
+  "start:Opening Your Game|": {
+   "phone": [
+    "390x844"
+   ],
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "start:Couldn't Open This Save|": {
+   "desktop": [
+    "1280x720"
+   ],
+   "phone": [
+    "390x844"
+   ]
+  },
+  "project:release|Cancel This Release?": {
+   "desktop": [
+    "1280x720"
+   ]
+  },
+  "project:script|Fenna Bakker Withdraws?": {
+   "desktop": [
+    "1280x720"
    ]
   }
  },
@@ -1696,313 +1771,131 @@
  "parity": {
   "journeyParity": {
    "creation-review": {
-    "both": 13,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "home": {
-    "both": 441,
-    "onlyD": 162,
-    "onlyP": 101
-   },
-   "calendar": {
-    "both": 99,
-    "onlyD": 17,
-    "onlyP": 16
-   },
-   "world": {
-    "both": 30,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "projects": {
-    "both": 41,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "profile": {
-    "both": 10,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "saves": {
-    "both": 21,
-    "onlyD": 2,
-    "onlyP": 0
-   },
-   "settings": {
-    "both": 33,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "project-script": {
-    "both": 625,
-    "onlyD": 88,
-    "onlyP": 13
-   },
-   "project-cast": {
-    "both": 58,
-    "onlyD": 0,
-    "onlyP": 1
-   },
-   "project-overview": {
-    "both": 69,
-    "onlyD": 2,
-    "onlyP": 2
-   },
-   "event": {
-    "both": 84,
-    "onlyD": 1,
-    "onlyP": 2
-   },
-   "project-budget": {
-    "both": 212,
-    "onlyD": 3,
-    "onlyP": 0
-   },
-   "dlg-submission": {
-    "both": 6,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "new-project": {
-    "both": 43,
-    "onlyD": 28,
-    "onlyP": 1
-   },
-   "dlg-advance": {
-    "both": 30,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "project-production": {
-    "both": 72,
-    "onlyD": 2,
-    "onlyP": 4
-   },
-   "start-saves": {
-    "both": 10,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "dlg-find-performers": {
-    "both": 208,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "project-crew": {
-    "both": 71,
-    "onlyD": 5,
-    "onlyP": 0
-   },
-   "project-schedule": {
-    "both": 63,
-    "onlyD": 1,
-    "onlyP": 2
-   },
-   "dlg-staff": {
-    "both": 40,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "project-edit": {
-    "both": 98,
-    "onlyD": 10,
-    "onlyP": 6
-   },
-   "project-release": {
-    "both": 48,
-    "onlyD": 3,
-    "onlyP": 4
-   },
-   "person": {
-    "both": 20,
-    "onlyD": 1,
-    "onlyP": 1
-   },
-   "episode": {
-    "both": 22,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "title": {
-    "both": 28,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "companies": {
-    "both": 147,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "season": {
     "both": 12,
     "onlyD": 0,
     "onlyP": 0
    },
-   "project-characters": {
-    "both": 133,
+   "home": {
+    "both": 40,
     "onlyD": 0,
     "onlyP": 0
    },
-   "place": {
-    "both": 42,
-    "onlyD": 0,
-    "onlyP": 9
-   },
-   "creation-background": {
-    "both": 77,
-    "onlyD": 3,
-    "onlyP": 14
-   },
-   "dlg-idea-list": {
-    "both": 96,
-    "onlyD": 13,
-    "onlyP": 0
-   },
-   "creation-identity": {
-    "both": 87,
+   "new-project": {
+    "both": 47,
     "onlyD": 0,
     "onlyP": 0
    },
-   "project-festivals": {
-    "both": 52,
+   "project-script": {
+    "both": 4,
     "onlyD": 0,
-    "onlyP": 0
+    "onlyP": 160
    },
-   "dlg-where": {
-    "both": 9,
-    "onlyD": 0,
-    "onlyP": 19
+   "start-saves": {
+    "both": 22,
+    "onlyD": 1,
+    "onlyP": 1
    },
-   "dlg-accept-terms": {
+   "dlg-replace-save": {
     "both": 4,
     "onlyD": 0,
     "onlyP": 0
    },
-   "dlg-story-open": {
-    "both": 37,
+   "dlg-delete-copy": {
+    "both": 5,
     "onlyD": 0,
+    "onlyP": 0
+   },
+   "saves": {
+    "both": 12,
+    "onlyD": 2,
     "onlyP": 0
    },
    "start": {
-    "both": 4,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "dlg-settings": {
-    "both": 9,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "dlg-sleep": {
     "both": 7,
     "onlyD": 0,
     "onlyP": 0
    },
-   "dlg-add-plan": {
-    "both": 8,
+   "start-loading": {
+    "both": 2,
     "onlyD": 0,
     "onlyP": 0
    },
-   "dlg-story": {
-    "both": 6,
+   "start-load-error": {
+    "both": 4,
     "onlyD": 0,
     "onlyP": 0
    },
-   "dlg-set-aside": {
-    "both": 6,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "company": {
-    "both": 29,
-    "onlyD": 1,
-    "onlyP": 1
-   },
-   "networks": {
-    "both": 8,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "network": {
-    "both": 14,
-    "onlyD": 0,
-    "onlyP": 0
-   },
-   "executive": {
-    "both": 9,
-    "onlyD": 0,
+   "projects": {
+    "both": 3,
+    "onlyD": 2,
     "onlyP": 0
    }
   },
   "parityNotes": [
-   "| Home | desktop only | heading: Time Is Paused |",
-   "| Calendar | desktop only | heading: August # |",
-   "| Calendar | phone only | heading: June # |",
-   "| Project: Script | desktop only | heading: Night Ward |",
-   "| Project: Script | desktop only | heading: Episode #, Scene # (Ward) |",
-   "| Project: Script | desktop only | heading: Episode #, Scene # (Corridor) |",
-   "| Project: Script | desktop only | heading: Les Dunes |",
-   "| Project: Script | desktop only | heading: Episode #, Scene # |",
-   "| Project: Script | desktop only | heading: Episode #, Scene # (Harbor) |",
-   "| Project: Script | desktop only | heading: Episode #, Scene # (Dock) |",
-   "| Project: Script | desktop only | heading: Episode #, Scene # (Market) |",
-   "| Project: Script | desktop only | heading: Scene # (Ferry) |",
-   "| Project: Script | desktop only | heading: Scene # (Pier) |",
-   "| Project: Script | desktop only | heading: Tide Notes |",
-   "| Project: Script | desktop only | heading: Subject And Approach |",
-   "| Project: Script | desktop only | heading: Facts And Contributors |",
-   "| Project: Script | desktop only | heading: Facts |",
-   "| Project: Script | desktop only | heading: Contributors |",
-   "| Project: Script | desktop only | field: Claim |",
-   "| Project: Script | desktop only | field: Source Note |",
-   "| Project: Script | desktop only | field: Contributor Name |",
-   "| Project: Script | desktop only | field: Who They Are |",
-   "| Project: Script | desktop only | heading: One Room |",
-   "| Project: Script | desktop only | heading: North Line |",
-   "| Project: Script | desktop only | heading: Scene # (Stairwell) |",
-   "| Project: Script | desktop only | field: Marco |",
-   "| Project: Script | desktop only | field: Ines's Look In This Scene |",
-   "| Project: Script | desktop only | heading: Scene # (Library) |",
-   "| Project: Script | desktop only | heading: Scene # (Lido) |",
-   "| Project: Script | desktop only | heading: Scene # (Lighthouse Roof) |",
-   "| Project: Script | phone only | field: Adapted From |",
-   "| Project: Script | phone only | heading: Same Day |",
-   "| Project: Script | phone only | heading: Far Shore |",
-   "| Project: Script | phone only | field: Story Setting Place, State Or Region |",
-   "| Project: Overview | desktop only | heading: Late Light |",
-   "| Project: Overview | phone only | heading: Till Morning |",
-   "| Festival Or Awards Edition | phone only | heading: Advance Stopped |",
-   "| Project: Budget | desktop only | field: Ask The Private Investor For |",
-   "| New Script | desktop only | heading: What These Add To Your Project |",
-   "| Project: Production | phone only | field: Music By |",
-   "| Project: Production | phone only | field: Lyrics By |",
-   "| Project: Production | phone only | field: Rights Holder |",
-   "| Project: Crew | desktop only | field: What Fen Ward's Revision Should Look At |",
-   "| Project: Crew | desktop only | field: Your Note To Fen Ward (Optional) |",
-   "| Project: Schedule | phone only | field: Site For Ferry Dock |",
-   "| Project: Schedule | phone only | field: Backup For Ferry Dock |",
-   "| Project: Edit | desktop only | field: Scene # (Quay) |",
-   "| Project: Edit | desktop only | field: Scene # (Boathouse) |",
-   "| Project: Edit | desktop only | field: Scene # (Pumping Station) |",
-   "| Project: Edit | desktop only | field: Odile On Screen (Minutes) |",
-   "| Project: Edit | desktop only | field: Odile Heard Only (Minutes) |",
-   "| Project: Edit | desktop only | field: The Ferryman On Screen (Minutes) |",
-   "| Project: Edit | desktop only | field: The Ferryman Heard Only (Minutes) |",
-   "| Project: Edit | desktop only | field: Scene # (Dock) |",
-   "| Project: Edit | phone only | field: Scene # (Boathouse): Nothing has been shot for it yet. |",
-   "| Project: Edit | phone only | field: Scene # (Harbour) |",
-   "| Project: Edit | phone only | field: Scene # (Kitchen) |",
-   "| Project: Release | phone only | field: Version In United Kingdom, France, Germany, Brazil |",
-   "| Project: Release | phone only | field: New Date For Episode # |",
-   "| A Place | phone only | heading: In Cinemas In Finland |",
-   "| A Place | phone only | heading: Vatican City, Vatican |",
-   "| Creation: Background And Languages | phone only | field: Pesach (Passover) |",
-   "| Creation: Background And Languages | phone only | field: Shavuot |",
-   "| Creation: Background And Languages | phone only | field: Rosh Hashanah |",
-   "| Creation: Background And Languages | phone only | field: Yom Kippur |",
-   "| Creation: Background And Languages | phone only | field: Sukkot |"
+   "| Project: Script | phone only | heading: Harbour Lights |",
+   "| Project: Script | phone only | heading: Story |",
+   "| Project: Script | phone only | heading: Light, Sound And Score |",
+   "| Project: Script | phone only | heading: What It's About |",
+   "| Project: Script | phone only | heading: Content |",
+   "| Project: Script | phone only | heading: Acts And Threads |",
+   "| Project: Script | phone only | heading: Acts |",
+   "| Project: Script | phone only | heading: Threads |",
+   "| Project: Script | phone only | heading: Research |",
+   "| Project: Script | phone only | heading: Setups, Clues And Reveals |",
+   "| Project: Script | phone only | heading: Scenes |",
+   "| Project: Script | phone only | heading: Readiness |",
+   "| Project: Script | phone only | heading: Drafts |",
+   "| Project: Script | phone only | heading: Revision Notes |",
+   "| Project: Script | phone only | field: Central Question |",
+   "| Project: Script | phone only | field: Synopsis |",
+   "| Project: Script | phone only | field: Logline |",
+   "| Project: Script | phone only | field: Premise |",
+   "| Project: Script | phone only | field: Stakes |",
+   "| Project: Script | phone only | field: Central Conflict |",
+   "| Project: Script | phone only | field: Point Of View |",
+   "| Project: Script | phone only | field: Theme |",
+   "| Project: Script | phone only | field: Intended Ending |",
+   "| Project: Script | phone only | field: Intended Experience |",
+   "| Project: Script | phone only | field: Who It Is For |",
+   "| Project: Script | phone only | field: How It Is Built |",
+   "| Project: Script | phone only | field: Tone |",
+   "| Project: Script | phone only | field: Story Setting |",
+   "| Project: Script | phone only | field: Competes As |",
+   "| Project: Script | phone only | field: Source Material |",
+   "| Project: Script | phone only | field: When It Is Set |",
+   "| Project: Script | phone only | field: Year It Is Set In |",
+   "| Project: Script | phone only | field: The Look It Borrows |",
+   "| Project: Script | phone only | field: Story Setting Place, Country Or Territory |",
+   "| Project: Script | phone only | field: Story Setting Place |",
+   "| Project: Script | phone only | field: The Light It Is Shot In |",
+   "| Project: Script | phone only | field: The Score |",
+   "| Project: Script | phone only | field: Natural Location Texture |",
+   "| Project: Script | phone only | field: Dialogue Clarity |",
+   "| Project: Script | phone only | field: Sparse Soundscape |",
+   "| Project: Script | phone only | field: Heightened Creature Foley |",
+   "| Project: Script | phone only | field: Layered Crowd Sound |",
+   "| Project: Script | phone only | field: Climate Or The Environment |",
+   "| Project: Script | phone only | field: Civil Rights |",
+   "| Project: Script | phone only | field: Social Issues |",
+   "| Project: Script | phone only | field: Current Events |",
+   "| Project: Script | phone only | field: The Arts |",
+   "| Project: Script | phone only | field: Food |",
+   "| Project: Script | phone only | field: Violence |",
+   "| Project: Script | phone only | field: Threat And Horror |",
+   "| Project: Script | phone only | field: Sexual Content |",
+   "| Project: Script | phone only | field: Nudity |",
+   "| Project: Script | phone only | field: Language |",
+   "| Project: Script | phone only | field: Drug Use |",
+   "| Project: Script | phone only | field: New Act Or Sequence |",
+   "| Project: Script | phone only | field: New Thread |",
+   "| Project: Script | phone only | field: New Question |",
+   "| Project: Script | phone only | field: What Is Set Up |",
+   "| Project: Script | phone only | field: Kind |",
+   "| Project: Script | phone only | field: Draft Name |",
+   "| Project: Script | phone only | field: Note |",
+   "| Project: Script | phone only | field: Area |",
+   "| Project: Script | phone only | field: About |",
+   "| Projects | desktop only | heading: Projects |"
   ]
  }
 }

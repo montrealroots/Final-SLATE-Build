@@ -34,7 +34,7 @@ describe('a proposal from a work', () => {
       const { blueprint } = proposeFromSource({ work: w, format: f, approach: 'faithful', gameYear: 2027, genres: GENRES });
       expect(blueprintProblems(blueprint, GENRES), `${w.id} ${f}`).toEqual([]);
     }
-  });
+  }, 30_000); // the whole catalog, twice
 
   it('says which fields are the work\'s and which are the game\'s, and invents nothing it presents as the work\'s', () => {
     const { blueprint: b, origin, why } = propose(full);
@@ -299,7 +299,7 @@ describe('the work\'s story', () => {
       expect(blueprintProblems(blueprint, GENRES), `${w.id} ${f}`).toEqual([]);
       if (origin.scenes === 'sourced' && f === 'series') expect(new Set(blueprint.scenes.map((x) => x.episode)).size, `${w.id}`).toBe(6);
     }
-  });
+  }, 30_000); // the whole catalog, twice
 });
 
 describe('a real work as the owner saw it (Grand Theft Auto III, November 13, 2026)', () => {
@@ -358,6 +358,67 @@ describe('genres read from the story when none recorded maps (November 13, 2026)
     expect(read('Red Dead Redemption 2').notes.join(' ')).toContain(`${rdr.scenes.length} scenes to build from`); // the scenes there are, not the room for them
     // Prince Hamlet is counted by "Hamlet", not "Prince", and leads his own play.
     expect(read('Hamlet').blueprint.characters[0].name).toBe('Prince Hamlet');
+    // Who stands against the lead is read from what the story has them do, not who is named next (the owner's request
+    // of November 13, 2026: "fix the Moby-Dick rival"). The whale is "the white whale" and then "the whale"; the
+    // monster is "the creature".
+    const against = (title: string) => { const b = read(title).blueprint; const n = (k: string) => b.characters.find((c) => c.key === k)!.name; return b.conflict.replace(/\{(\w+)\}/g, (_, k: string) => n(k)); };
+    expect(against('Moby-Dick')).toBe('Captain Ahab against Moby Dick');
+    expect(against('Frankenstein; or, The Modern Prometheus')).toBe("Victor Frankenstein against Frankenstein's monster");
+    expect(against('Hamlet')).toBe('Prince Hamlet against King Claudius');
+    // Where the story sets no one against the lead, no one is made the antagonist.
+    const emma = read('Emma').blueprint;
+    expect([emma.characters[1].functions, emma.relationships[0].kind]).toEqual([['none'], 'undecided']);
+    expect(emma.characters.some((c) => c.functions.includes('antagonist'))).toBe(false);
+    // Pride and Prejudice is reviewed (src/data/role-review.json): Elizabeth leads, Wickham against her, Darcy beside her.
+    const pp = read('Pride and Prejudice').blueprint;
+    expect(pp.characters.slice(0, 3).map((c) => [c.name, c.functions[0]])).toEqual([['Elizabeth Bennet', 'protagonist'], ['George Wickham', 'antagonist'], ['Mr. Darcy', 'ally']]);
+    expect(read('Pride and Prejudice').why.characters).toContain('reviewed by hand');
+    // A work too short of story is read from its record: what its article's opening says it is.
+    const twd = read('The Walking Dead');
+    expect([twd.blueprint.genre, twd.origin.genres]).toEqual(['zombie', 'proposed']);
+    expect(twd.why.genres).toContain('zombie ("…an American zombie apocalypse comic book');
+    // A scene whose words say neither inside nor out is INT/EXT, for the player, and the brief says how many.
+    const gta = read('Grand Theft Auto III');
+    const either = gta.blueprint.scenes.filter((x) => x.intExt === 'INT/EXT').length;
+    expect(either).toBeGreaterThan(0);
+    expect(gta.notes.join(' ')).toContain(`The words of ${either} of the ${gta.blueprint.scenes.length} scenes don't say`);
+    // The owner, November 13, 2026: "Fix O'Brien and Dracula's lead too, and ... make sure all adaptations have their
+    // real characters." O'Brien, who has Winston tortured, stands against him; the Count leads his own novel.
+    expect(against('Nineteen Eighty-Four')).toBe("Winston Smith against O'Brien");
+    expect(read('Dracula').blueprint.characters[0].name).toBe('Count Dracula');
+    // A work with no character recorded takes its people from its story, in "they" until the player sets them.
+    const caesar = read('Julius Caesar');
+    expect(caesar.blueprint.characters.slice(0, 3).map((c) => c.name)).toEqual(['Julius Caesar', 'Brutus', 'Mark Antony']);
+    expect(caesar.blueprint.characters.every((c) => c.pronouns === 'they/them')).toBe(true);
+    expect(caesar.why.characters).toContain('named in its story but not recorded');
+    expect(caesar.blueprint.characters.some((c) => /^The (Lead|Rival|Ally)$/.test(c.name))).toBe(false);
+    // And where some are recorded, the story's others join them: Red Dead Redemption 2's Micah.
+    expect(read('Red Dead Redemption 2').blueprint.characters.map((c) => c.name)).toContain('Micah');
+    // The owner, November 13, 2026: "Fix the remaining wrong characters and placeholders too."
+    const cast = (title: string) => read(title).blueprint.characters.map((c) => c.name);
+    // One person under two names, joined where the story joins them ("He renames himself 'Don Quixote'").
+    expect(cast('Don Quixote')[0]).toBe('Don Quixote');
+    expect(cast('Don Quixote')).not.toContain('Quixote');
+    expect(cast('Death Note')).not.toContain('Kira');
+    // The work named for him is his: "Snake" is Solid Snake.
+    expect(cast('Metal Gear Solid')[0]).toBe('Solid Snake');
+    // A place named as one ("his home country of Kyrat") isn't a person, and is where the story is set if nothing is recorded.
+    expect(cast('Far Cry 4')).not.toContain('Kyrat');
+    expect(read('Julius Caesar').blueprint.setting.name).toBe('Rome');
+    // Two people and no one invented to make three; a story that names no one has its people as it calls them.
+    expect(cast('The Cask of Amontillado')).toEqual(['Montresor', 'Fortunato']);
+    expect(cast('The Tell-Tale Heart')).toEqual(['The Narrator', 'The Old Man']);
+    // A single word of a long title can be the lead, and an age isn't part of a name (November 13, 2026; until then every
+    // word of the title was left out, and Kafka on the Shore was led by Nakata). Neither work's roles are reviewed.
+    expect(cast('Kafka on the Shore')[0]).toBe('Kafka');
+    expect(cast('Tress of the Emerald Sea').slice(0, 3)).toEqual(['Tress', 'Crow', 'Charlie']);
+    // Who is beside the lead is read between the two of them, so a noun doesn't make an ally; who is against them is read
+    // from the whole sentence, unless the act is plainly someone else's (November 13, 2026).
+    const roles = (title: string) => { const b = read(title).blueprint; return Object.fromEntries(b.characters.filter((c) => c.functions[0] !== 'protagonist' && c.functions[0] !== 'none').map((c) => [c.functions[0], c.name])); };
+    expect(roles('Hamlet').ally).not.toBe('Polonius'); // "Hamlet's madness is due to love"
+    expect(roles('The Tempest').antagonist).not.toBe('Ariel'); // "chastises Antonio, Alonso, and Sebastian for their crimes against Prospero"
+    expect(roles('Nineteen Eighty-Four')).toEqual({ antagonist: "O'Brien", ally: 'Julia' });
+    expect(roles('Red Dead Redemption 2')).toEqual({ antagonist: 'Dutch van der Linde', ally: 'John Marston' });
     // Recorded genres that map still lead, and are sourced.
     expect([read('Dracula').blueprint.genre, read('Dracula').origin.genres]).toEqual(['horror', 'sourced']);
   });

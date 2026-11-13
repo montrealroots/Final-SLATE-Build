@@ -33,7 +33,9 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     found and fixed one defect. `docs/v5/JOURNEYS.md` says where each of the ten journeys stands.
 - **Still open** (`docs/v5/JOURNEYS.md`, `docs/v5/LEDGER.md`):
   1. A physical phone test.
-- **Then.** Merge PR #86 once its newest head is green, and write the final report.
+- **Merged.** PR #86 was squash-merged into `main` on November 13, 2026 as `d1a103f`, from `df2ee1c`, with CI green on
+  that head: `checks` and all six journey runs. `main` was merged back into the branch with `-s ours` (the trees were
+  the same). The final report is `docs/v5/REPORT.md`. New work starts a new pull request from this branch.
 - **The story re-fetch is done.** `src/data/plots.json` was rebuilt from `.sources-cache/plots2`. A section that mixes
   the story with something else keeps only its story parts, and 47 works are narrowed that way. Tower of God keeps its
   world parts: it has no plot part.
@@ -42,6 +44,87 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **The four items the owner chose ("Yes, do all four, starting now.").**
+  1. *Ledgers reconciled* (`249473a`). In `docs/v3/requirements.csv`, C12, S10, L04, L05, W01, D01, D02 and Z01 are done
+     and verified; B03 stays partial (publicity, competition, territory results and currency aren't built); B04 and T02
+     are data-limited. V4-022.01 is implemented, and `docs/v4/LEDGER-COUNTS.md` is regenerated.
+  2. *Every row of the UI coverage matrix is measured* (`fa5becd`): 88 of 88, none open. Journeys that answered a dialog
+     before the sweep's next look now let it look first (`sweepSees`, `e2e/test.ts`, a no-op without the sweep); a walk
+     step on a labelled fixture opens Delete This Scene? (once its work is built) and Change The Approved Take?. That
+     step found the capture row's field 2.6 px out of level; it is an inline-form now. V3-U01 is done; the matrix's
+     limits stay owed (no real phone, no virtual keyboard).
+  3. *Two journeys pin one outcome* (`07cb025`): first-look's outside studio passes a short; the release plan books the
+     stores and takes home $0, all of it repaying the starting backing.
+  4. *Adapted works with one person or none* (`cc7135f`). 25 reviewed entries, and a reading fix: a title's single word
+     is no longer left out (Zarathustra, Timon, Kafka, Tress, Alcatraz), and an age isn't part of a name. 18 works keep
+     one person and 2 none; their records and stories name no other person more than once (`docs/v5/CHARACTERS.md`
+     lists them). 160 works' roles are reviewed.
+
+- **Roles reviewed by hand (the owner: "Fix it all.").** No sentence reading gets every role right: each rule tried
+  fixed some works and broke others. So roles are reviewed, as genres are.
+  - `src/data/role-review.json` covers every error found in the sweep. For each work it gives the lead, who is against
+    them and who beside them (or null for none), and the names that aren't people. 141 works' roles are reviewed.
+  - `proposal.ts` applies it after the reading, and the brief says so.
+  - `tests/role-review.test.ts` fails a reviewed work whose brief doesn't come out as reviewed.
+  - Roles are given by who each person is, not their place in the list, so a work of two can have an ally and no
+    antagonist (Rascal Does Not Dream).
+  - A title's word goes to a character only by a word of their own, so Lady Macbeth no longer leads Macbeth.
+  - J03's commission is a draw keyed to the seed and the project's ids. Portal's reviewed cast changed the ids, so J03's
+    seed was searched again, as it was when the stories came in.
+  - Left until the four items below: 29 works whose stories name one person kept a second part named for what it does,
+    and 6 that name no one kept all three. An unreviewed error found later goes into the review table.
+- **The remaining wrong characters and placeholders (the owner, same day).** `docs/v5/CHARACTERS.md` has the numbers.
+  - One person under two names is joined where the story joins them, under the name it uses more: Don Quixote, and
+    Kira into Light Yagami.
+  - Places named as places (Kyrat, Luthadel) and groups ("Denizens who…") aren't people. "To" isn't a place's word,
+    so Susan isn't a setting.
+  - A name word two characters share is the title's character's: Solid Snake leads Metal Gear Solid.
+  - No made-up people:
+    - a work with two people or more has only them;
+    - one with a single person has a second part named for what it does, as a brief needs two;
+    - only a work with no one has all three placeholders (5 works).
+  - A story that names fewer than three often gives its people named once, then its unnamed ones ("the narrator").
+  - The reader's results are kept per story. The catalog-wide proposal tests have 30 seconds: on CI one took 5.2s
+    against the 5s default (`d55fc45`).
+  - Roles (`pairOf` in `story-structure.ts`, after the owner asked to "fix perfectly what needs to be fixed"): who
+    is beside the lead is read between the two of them; who is against them is read from the whole sentence, unless
+    the act is plainly someone else's; two named together as the doers are beside each other.
+    - Compared over all 517 works: Polonius and Ariel are fixed; Julia, John Marston, Sancho, Ron and Hermione become
+      allies; O'Brien, Claudius, Voldemort and Tybalt are kept.
+    - About 15 works got worse, among them Long John Silver, Rue and Leo Galante. They are listed in
+      `docs/v5/CHARACTERS.md`.
+- **Real characters, O'Brien and Dracula (the owner: "make sure all adaptations have their real characters and 100%
+  accuracy").** `docs/v5/CHARACTERS.md` lists every work's setting and people.
+  - `storyPeople` and `storyPlaces` in `story-structure.ts` read the people and places a story names.
+    - 199 works with a story had no character recorded and got "The Lead", "The Rival", "The Ally".
+    - 376 briefs now take someone from their story. Their pronouns are "they" until set: guessing them was wrong too
+      often.
+    - 38 works with no recorded place are set where their story names most, Julius Caesar in Rome among them.
+  - O'Brien stands against Winston: a sentence naming only the lead carries over who the one before it named.
+  - Dracula is led by the Count.
+  - An ally, like a rival, needs the story to show it.
+  - Not claimed as 100%: when this was written, 29 works had only placeholders and 65 had one or two (18 and 2 from the
+    four items above). A few places and peoples still
+    read as people, and three people read as places. Some roles are the sentences', not the story's. All are listed
+    in `docs/v5/CHARACTERS.md`.
+- **The remaining brief issues (the owner: "Fix the Moby-Dick rival and the remaining brief issues").** After #86:
+  - Who stands against the lead needs the story to show it: against them in more sentences than beside them, with
+    harpooning, biting, dragging, torturing, framing and arresting counted. A character is also named by how the
+    story introduces them ("Moby Dick, the white whale" makes "the whale" his), and a creature recorded by what it is
+    ("Frankenstein's monster") by "the monster", "the creature" or "the beast". A possessive isn't a name.
+    Moby-Dick is Ahab against Moby Dick, Frankenstein Victor against the monster, Hamlet against Claudius, Romeo
+    against Tybalt, Grand Theft Auto III Claude against Catalina.
+  - Where the story sets no one against the lead, no one is made the antagonist: the next person is a supporting
+    part, the relationship is "undecided", and the conflict is the lead's own (Pride and Prejudice, Nineteen
+    Eighty-Four). 433 of 643 film briefs have no antagonist this way, 210 have one.
+  - A work with too little story is read from its record (`recordGenres`): its recorded genres, its description and
+    its article's opening, then its subjects. 66 works are read this way; 60 still come from their medium, with
+    nothing recorded that names a genre (`docs/v5/GENRES.md`).
+  - A scene whose words, and its development's, name neither inside nor outside is INT/EXT, and the brief says how
+    many: 1,553 of 3,592 told scenes across the catalog. Riding, fleeing and fighting count as outside; talking,
+    writing and dining as inside.
+  - Known and left: Nineteen Eighty-Four's O'Brien is still Winston's ally (the story's sentences don't show the
+    betrayal); Dracula's lead is Mina Harker.
 - **Genres for adapted works (the owner: "in no way is 'GTA 3' an adventure").** A work whose recorded genres don't
   map (220 of 643, most video games, whose records name how they are played) was given a genre by its medium alone.
   `src/engine/story-genre.ts` now reads the work's summary and story for genre words (cartel, mafia, gang: gangster),
@@ -85,7 +168,7 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     - 30 works have no article at all.
   - Scenes now share the running time to the quarter minute. Until then each was a whole minute at least, so a
     two-minute episode in six scenes was six minutes of animation, and J03's season couldn't be drawn in time.
-  - J03 moved to seed 2.
+  - J03 moved to seed 2, then to seed 11 when the reviewed roles changed Portal's cast (same day).
 - **Copyright is credited, not cleared.** The owner chose credits only, with nothing blocking production.
   - The option, rights purchase and rights-holder approval are gone (`adaptation.ts`, "Copyright").
   - `creditLine` says what the work is based on and its recorded copyright, on the Budget page's Based On card and in
@@ -381,7 +464,7 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
       the score's conform), and three things a run has to do as a player would: build the schedule once the cast and
       crew have said yes (offers take two or three days), accept a backer's offer before it lapses (three weeks), and
       take the option on a copyrighted work before planning. J03 records its seeded outcome in the spec so a change is
-      seen (seed 2 since November 13, 2026, when Portal's story moved the draws; seed 1 before: a broadcaster, then a
+      seen (seed 11 since the role review of November 13, 2026, seed 2 before it once Portal's story moved the draws; seed 1 before: a broadcaster, then a
       cancellation at about 80% kept against 88%). J11 accepts either a renewal or a
       cancellation of Coastline's simulated season, and checks that it is labelled. The game clock runs in real time
       between a run's actions, so audience figures vary a little from run to run; the checks read them from the save.
@@ -464,9 +547,7 @@ has a row for each requirement built or owed.
   tools/v3/ui-coverage.mjs --fresh --sweep <file> --sweep <file>`). Do not run `npm run check` while a production
   sweep runs: both build into `dist/`. The stylesheet turns at four widths, listed at its head;
   `tests/stylesheet.test.ts` fails a fifth, a rule for a class nothing wears and an inline pixel margin. `QA-REPORT.md`
-  has every finding and fix. **Owed:** the 11 rows the matrix lists as not visited (dialogs that open only in a
-  played career: cutting a scene from the edit, cancelling a release, episode dates, a withdrawn contributor, rules,
-  the approved take; and the loading, error and repair states of the start screen); the WebKit sweep folded in;
+  has every finding and fix. **Owed:** the WebKit sweep folded in;
   before-and-after screenshots for the report; a real phone's keyboard, which no emulation shows.
 - **Next in order:** `docs/v3/requirements.csv` lists every requirement with its status; the ones marked `not started`
   or `partial` are the work left, and `docs/v3/LEDGER.md`'s suites table says the same by acceptance suite. In the

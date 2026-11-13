@@ -10,7 +10,10 @@ import { adaptWork, addScene, advance, castRoles, nav, pinSeed, quickLife, readS
 
 test.use({ actionTimeout: 20_000 });
 
-const SEED = Number(process.env.J03_SEED ?? 2);
+// Seed 11 from November 13, 2026: the reviewed roles changed Portal's cast and so the project's ids, which the
+// commissioner's draw is keyed to, and seed 2 drew "no slot". Seeds 3 to 10 were played: six were refused, one had no
+// platform offer, and one went to a streaming service, which reports by the week and can't show this broadcaster's rule.
+const SEED = Number(process.env.J03_SEED ?? 11);
 const TITLE = 'Test Chamber';
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -108,7 +111,7 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   expect(taken.audience.length).toBeGreaterThan(1);
   expect(new Set(taken.audience.map((a: { episode?: number }) => a.episode)).size).toBeGreaterThanOrEqual(2);
   expect(decided.renewal.reason).toContain('Audience figures are simulated.');
-  // Seed 2, as played here: a broadcaster. Until November 13, 2026 the journey also recorded the decision (a cancellation,
+  // Seed 11, as played here: a broadcaster. Until November 13, 2026 the journey also recorded the decision (a cancellation,
   // then a renewal, then a cancellation again as the story, the series' own work and each week's competition moved the
   // figures). A recorded outcome caught every upstream change but not a wrong one, so the journey now checks the rule
   // itself: the decision follows from the audience reported, against the bar the reason names.

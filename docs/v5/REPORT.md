@@ -45,6 +45,11 @@ Today's commits listed above, and others, also fixed problems the work turned up
 - The brief's own words read wrong for Red Dead Redemption 2, and a sweep of all 643 works found more (Hamlet led by
   Laertes, a logline starting "He", pronouns not the character's). Fixed, with a test over every work
   (`tests/brief-language.test.ts`); what is left is in `RESUME-HERE.md`.
+- After #86, the owner asked for the rest. The rival comes from what the story shows, or there is none; works with too
+  little story are read from their record; undecided scenes are INT/EXT. `RESUME-HERE.md` has the numbers and what's
+  left.
+- Then the owner asked for every adaptation to have its real characters. Briefs now take people and a setting from the
+  work's story where none is recorded. `docs/v5/CHARACTERS.md` is the sweep, with what is still wrong.
 
 **Checks.** `npm run check` exits 0, with 143 test files and 1,205 tests, the typecheck, the build and the size budget.
 
@@ -67,9 +72,12 @@ These limits are stated in the game wherever they apply.
 
 - **No physical phone test.** All phone testing is Chromium at phone size and iPhone 15 Pro Max WebKit emulation.
 - **Productions are local.** Other people's productions exist only where the player is.
-- **Two journeys are not fully pinned.**
-  - In the pinned world, the first-look journey's outside studio gives its own answer, and the journey handles either
-    answer.
-  - In the release-plan journey the licence income went to repaying the backers, so taking income home is played in
-    J01 instead.
+- **Two journeys each pin one outcome** (from November 13, 2026; until then each took either path).
+  - First look: the outside studio passes, because its record is feature films and Night Bus is a short. Repayment of
+    the development money from another studio's money is covered by `tests/first-look.test.ts`.
+  - Release plan: the stores release is booked, and the licence's income all goes to repaying the starting backing, so
+    nothing is left to take home. Taking income home is played in J01.
+- **Adapted works with one person or none** (November 13, 2026). 18 works keep one person and a second part named for
+  what it does, and 2 (Second Life, Tower of God) keep all three. Their records and stories name no other person more
+  than once, and no name is invented for them. `docs/v5/CHARACTERS.md` lists them. Until that day it was 29 and 6.
 - **Earlier v4 open items** stay as `RESUME-HERE.md` lists them.

@@ -47,7 +47,9 @@ test('an agent finds paid work: offered with its days and their share, taken, wo
   // Its days are on the calendar, one plan each morning (the phone's calendar shows a day at a time, so the save is read).
   await expect.poll(async () => {
     const st = await readSavedState(page);
-    const j = st?.jobs?.find((x: { production: string }) => x.production === production);
+    // The job taken, not an earlier offer on the same production that lapsed unanswered (CI on d55fc45, production phone:
+    // a slow run let the first offer on Late Weather lapse, and a second, of 7 days, was the one taken).
+    const j = st?.jobs?.find((x: { production: string; status: string }) => x.production === production && x.status === 'accepted');
     return !!j && st.plans.filter((x: { title: string; status: string }) => x.title.endsWith(`On ${production}`) && x.status === 'upcoming').length === j?.days.length;
   }).toBe(true);
 

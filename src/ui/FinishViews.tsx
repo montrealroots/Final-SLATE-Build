@@ -1053,7 +1053,8 @@ function MocapPanel({ p }: { p: Project }) {
               {booked ? 'The capture stage is booked.' : rec?.status === 'cancelled' ? 'The booking was cancelled.' : 'The capture stage isn\'t booked yet.'}{' '}
               {cap.done} of {plural(cap.units, 'session')} captured{rec?.retakes ? `, including ${plural(rec.retakes, 'retake')}` : ''}.
             </p>
-            <div className="row gap-2 wrap">
+            {/* A field beside its buttons, level with them (the UI audit, November 13, 2026: 2.6 px apart in a row). */}
+            <div className="inline-form">
               {!booked && cap.status !== 'done' && (
                 <>
                   <SelectField label={`What To Capture For ${name}`} value={parts[charId] ?? 'both'} onChange={(v) => setParts({ ...parts, [charId]: v })}

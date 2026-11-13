@@ -8,7 +8,7 @@ import type { Project } from '../engine/types';
 import { MEDIUM_LABELS, loadPlots, plotSection, loadSources, rightsLine, rightsStanding, searchSources, type RightsStanding, type SourceCatalog, type SourceMedium, type SourceWork } from '../engine/sources';
 import { STANDING_SAYS, adaptFrom, adaptRefusal, basedOn } from '../engine/adaptation';
 import { GENRES, genreCatalogLoaded, loadGenreCatalog } from '../engine/genres';
-import { storyGenres } from '../engine/story-genre';
+import { recordGenres, storyGenres } from '../engine/story-genre';
 import { Modal, SelectField, TextField, plural } from './components';
 import { store, useGame } from './store';
 
@@ -23,8 +23,11 @@ export const genreName = (id: string) => GENRES.find((g) => g.id === id)?.name ?
  * November 13, 2026; until then this said "none is guessed" while the brief proposed its medium's genre).
  */
 function StoryGenres({ work }: { work: SourceWork }) {
-  const read = storyGenres(work, new Set(GENRES.map((g) => g.id)));
-  if (!read.length) return <>None. Nothing recorded is plainly one of the game's genres, and too little of its story is recorded to read one from, so an adaptation proposes one from its medium.</>;
+  const have = new Set(GENRES.map((g) => g.id));
+  const read = storyGenres(work, have);
+  const record = read.length ? [] : recordGenres(work, have);
+  if (record.length) return <>None recorded. Read from what is recorded of it, an adaptation proposes {record.map((r) => `${genreName(r.genre)} ("${r.phrase}")`).join(' and ')}.</>;
+  if (!read.length) return <>None. Nothing recorded is plainly one of the game's genres, and too little of it is recorded to read one from, so an adaptation proposes one from its medium.</>;
   return <>None recorded. Read from its story, an adaptation proposes {read.map((r) => `${genreName(r.genre)} (${r.words.slice(0, 3).map(([x]) => x).join(', ')})`).join(' and ')}.</>;
 }
 

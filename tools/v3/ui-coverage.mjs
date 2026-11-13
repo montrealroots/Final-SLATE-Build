@@ -16,6 +16,7 @@ const sweepPath = `${DIR}/sweep.json`;
 const args = process.argv.slice(2);
 const files = args.flatMap((a, i) => (args[i - 1] === '--sweep' ? [a] : []));
 let sweep = existsSync(sweepPath) && !args.includes('--fresh') ? JSON.parse(readFileSync(sweepPath, 'utf8')) : { seen: {}, defects: {}, accepted: {}, scrollers: {}, sig: {} };
+for (const k of ['seen', 'defects', 'accepted', 'scrollers', 'sig']) sweep[k] ??= {}; // a sweep.json written before a field was added
 // A later file's run of a spec on a profile replaces an earlier file's: a spec run again after a fix is the one that counts.
 const lines = files.flatMap((f, n) => readFileSync(f, 'utf8').split('\n').filter(Boolean).map((l) => ({ n, x: JSON.parse(l) })));
 const lastFile = {}; for (const { n, x } of lines) lastFile[`${x.project}|${x.spec}`] = n;

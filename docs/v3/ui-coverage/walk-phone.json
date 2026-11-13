@@ -1,6 +1,6 @@
 {
  "project": "phone",
- "at": "2026-11-12T23:14:44.812Z",
+ "at": "2026-11-13T18:45:44.081Z",
  "rows": [
   {
    "id": "start",
@@ -2867,6 +2867,66 @@
    "id": "rename-save-in-game",
    "area": "Your Game",
    "name": "Rename Save, In The Game",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "delete-scene",
+   "area": "Script",
+   "name": "Delete This Scene?",
+   "kind": "dialog",
+   "sizes": {
+    "phone (390 by 844)": {
+     "defects": []
+    },
+    "narrow phone (360 by 740)": {
+     "defects": []
+    },
+    "large phone (430 by 932)": {
+     "defects": []
+    },
+    "phone on its side (844 by 390)": {
+     "defects": []
+    },
+    "small phone on its side (667 by 375)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": [],
+   "parity": {
+    "onlyDesktop": [],
+    "onlyPhone": [],
+    "sameOrder": true
+   }
+  },
+  {
+   "id": "approved-take",
+   "area": "Edit",
+   "name": "Change The Approved Take?",
    "kind": "dialog",
    "sizes": {
     "phone (390 by 844)": {

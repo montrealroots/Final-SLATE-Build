@@ -1,6 +1,6 @@
 {
  "project": "iphone-15-pro-max",
- "at": "2026-11-12T23:18:17.704Z",
+ "at": "2026-11-13T18:46:09.089Z",
  "rows": [
   {
    "id": "start",
@@ -1272,6 +1272,32 @@
    "id": "rename-save-in-game",
    "area": "Your Game",
    "name": "Rename Save, In The Game",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "delete-scene",
+   "area": "Script",
+   "name": "Delete This Scene?",
+   "kind": "dialog",
+   "sizes": {
+    "iPhone 15 Pro Max (WebKit) (430 by 932)": {
+     "defects": []
+    }
+   },
+   "scrollers": [],
+   "accepted": []
+  },
+  {
+   "id": "approved-take",
+   "area": "Edit",
+   "name": "Change The Approved Take?",
    "kind": "dialog",
    "sizes": {
     "iPhone 15 Pro Max (WebKit) (430 by 932)": {

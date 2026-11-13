@@ -1,5 +1,5 @@
 import { appendFileSync, writeFileSync } from 'node:fs';
-import { test as base, expect } from '@playwright/test';
+import { test as base, expect, type Page } from '@playwright/test';
 import { findMisalignments, type Finding } from './layout';
 import { auditPage } from './ui-audit';
 
@@ -85,6 +85,13 @@ export const test = base.extend<{ diagnostics: void }>({
           // being resized, or a list arriving, passes through states nobody sees.
           setTimeout(() => { try { const again = measure(); if (again.key !== first.key) return; const still = new Set(again.defects.map((d) => d.kind + '|' + d.what)); tell(again, first.defects.filter((d) => still.has(d.kind + '|' + d.what))); } catch { /* the page is going */ } }, 200);
         } catch { /* the page is going */ } };
+        // The same look, asked for by a journey (sweepSees below), which waits until it is told.
+        window.__uiMeasureNow = () => new Promise((done) => { const go = () => { try {
+          if (document.getAnimations().some((x) => x.playState === 'running' && x.effect?.getComputedTiming().iterations !== Infinity)) { setTimeout(go, 100); return; }
+          const first = measure();
+          if (!first.defects.length) { tell(first, []); done(); return; }
+          setTimeout(() => { try { const again = measure(); if (again.key === first.key) { const still = new Set(again.defects.map((d) => d.kind + '|' + d.what)); tell(again, first.defects.filter((d) => still.has(d.kind + '|' + d.what))); } } catch { /* the page is going */ } done(); }, 200);
+        } catch { done(); } }; go(); });
         new MutationObserver(() => { if (!due) { due = true; setTimeout(run, 400); } }).observe(document, { childList: true, subtree: true, attributes: true }); })();`);
     }
     page.on('pageerror', (e) => seen.push(`page error: ${e.message}`));
@@ -110,10 +117,19 @@ export const test = base.extend<{ diagnostics: void }>({
   }, { auto: true }],
 });
 
+/**
+ * With SLATE_UI_SWEEP on, the sweep measures the screen now, as it is, and the journey waits for it. A journey that answers
+ * a dialog at once moves on before the sweep's next look, 400 ms after the page changes: measured November 13, 2026, eight
+ * rows of docs/v3/UI-COVERAGE.md that journeys open were never seen. Does nothing when the sweep is off.
+ */
+export async function sweepSees(page: Page): Promise<void> {
+  if (process.env.SLATE_UI_SWEEP) await page.evaluate(() => (window as unknown as { __uiMeasureNow?: () => Promise<void> }).__uiMeasureNow?.());
+}
+
 /** Marks the running test as one that causes errors on purpose (failure injection). */
 export function expectErrors(reason: string): void {
   test.info().annotations.push({ type: 'expected-errors', description: reason });
 }
 
 export { expect };
-export type { Page } from '@playwright/test';
+export type { Page };

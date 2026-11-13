@@ -131,13 +131,17 @@ test('writing by Guide Me: a co-writer\'s rewrite and a script editor\'s polish,
   // is finished for Guide Me (until a later fix on November 13, 2026 this waited for it, and timed out on the phone).
   // Read at once, the production build's save could still be a day behind.
   type Job = { scope: string; status: string; passes: { read?: number; done: number }[] };
-  const settled = (js: Job[] | undefined) => !!js?.length && js.every((j) => j.status !== 'working') && (js.find((j) => j.scope === 'rewrite')?.status !== 'accepted' || js.some((j) => j.scope === 'polish'));
+  // A co-writer can say no to the offer (CI on 880b91c, production phone: "Zeynep Wójcik said no"), and then there is
+  // no rewrite at all: the writing is returned to the player, who is told to hire someone, and the polish waits.
+  const settled = (js: Job[] | undefined) => Array.isArray(js) && js.every((j) => j.status !== 'working') && (js.find((j) => j.scope === 'rewrite')?.status !== 'accepted' || js.some((j) => j.scope === 'polish'));
   await expect.poll(async () => settled((await readSavedState(page))?.projects?.[0]?.writing), { timeout: 30_000 }).toBe(true);
   const jobs = (await readSavedState(page)).projects[0].writing as Job[];
-  // Either both passes were accepted at the standard, or the rewrite came back to the player and the polish with it.
-  const rewrite = jobs.find((j) => j.scope === 'rewrite')!;
-  if (rewrite.status === 'accepted') expect(jobs.map((j) => j.scope).sort()).toEqual(['polish', 'rewrite']);
+  // Both passes accepted at the standard; or the rewrite came back to the player, and the polish with it; or the
+  // co-writer said no, and both came back.
+  const rewrite = jobs.find((j) => j.scope === 'rewrite');
+  if (rewrite?.status === 'accepted') expect(jobs.map((j) => j.scope).sort()).toEqual(['polish', 'rewrite']);
   else await expect(box).toContainText('Script Editor: the polish waits on the rewrite that came back to you.');
+  if (!rewrite) await expect(box).toContainText(/Co-Writer: .+ said no\. Hire someone in Writing on the Crew page\./);
   for (const j of jobs.filter((x) => x.status === 'accepted')) expect(j.passes.at(-1)!.read!).toBeGreaterThanOrEqual(55);
   for (const j of jobs) expect(j.passes.reduce((a, x) => a + x.done, 0)).toBeGreaterThan(0);
 });

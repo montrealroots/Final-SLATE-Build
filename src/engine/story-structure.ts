@@ -21,7 +21,7 @@
 /** Words that turn a story: something found out, won, lost, ended or begun. Game calibration, read whole-word. */
 export const TURNS = /\b(discover(s|ed)?|learn(s|ed)?|realis(es|ed)|realiz(es|ed)|reveal(s|ed)?|find(s)? out|found out|kill(s|ed)?|die(s|d)?|dead|murder(s|ed)?|escape(s|d)?|betray(s|ed)?|decide(s|d)?|refuse(s|d)?|confront(s|ed)?|defeat(s|ed)?|destroy(s|ed)?|captur(es|ed)|arrest(s|ed)?|rescue(s|d)?|marr(y|ies|ied)|flee(s)?|fled|attack(s|ed)?|abandon(s|ed)?|return(s|ed)? (to|home)|leave(s)? for good|confess(es|ed)?|wins?|won|loses|lost|vow(s|ed)?|agree(s|d)? to|sets out|set out|begins|traps?|trapped|trick(s|ed)?|recruit(s|ed)?|invite(s|d)?|summon(s|ed)?|hire(s|d)?|arrive(s|d)?)\b/i;
 /** Words for acting against someone. */
-const AGAINST = /\b(against|abandon(s|ed)?|double-cross(es|ed)?|turn(s|ed)? on|accuse(s|d)?|execute(s|d)?|shoot(s)?|shot|kill(s|ed)?|attack(s|ed)?|betray(s|ed)?|captur(es|ed)|imprison(s|ed)?|threaten(s|ed)?|fight(s)?|fought|defeat(s|ed)?|murder(s|ed)?|hunt(s|ed)?|chase(s|d)?|trap(s|ped)?|deceive(s|d)?|confront(s|ed)?|oppose(s|d)?|rival|enemy|enemies)\b/i;
+const AGAINST = /\b(against|re-educat\w*|starve(s|d)?|tortur(es|ed)|interrogat(es|ed)|arrest(s|ed)?|frames?|framed|bites?|bit|harpoon(s|ed)?|smash(es|ed)?|sinks?|sank|ram(s|med)?|drag(s|ged)?|pursue(s|d)?|vengeance|revenge|abandon(s|ed)?|double-cross(es|ed)?|turn(s|ed)? on|accuse(s|d)?|execute(s|d)?|shoot(s)?|shot|kill(s|ed)?|attack(s|ed)?|betray(s|ed)?|captur(es|ed)|imprison(s|ed)?|threaten(s|ed)?|fight(s)?|fought|defeat(s|ed)?|murder(s|ed)?|hunt(s|ed)?|chase(s|d)?|trap(s|ped)?|deceive(s|d)?|confront(s|ed)?|oppose(s|d)?|rival|enemy|enemies)\b/i;
 /** Words for acting alongside someone. */
 const ALONGSIDE = /\b(help(s|ed)?|join(s|ed)?|rescue(s|d)?|marr(y|ies|ied)|befriend(s|ed)?|ally|allies|friend|together|accompan(y|ies|ied)|travel(s|led)? with|protect(s|ed)?|save(s|d)?|love(s|d)?|guide(s|d)?)\b/i;
 /**
@@ -156,25 +156,82 @@ export function readStory(paragraphs: string[], cast: Cast[], lead: string | nul
   const story = devs.filter((d) => !d.background);
   story.forEach((d, i) => { d.at = story.length > 1 ? i / (story.length - 1) : 0; });
   assignRoles(story);
+  // Where each person is named in a sentence: their {key}, first name or other names, by position.
+  const spots = (t: string): { k: string; at: number; end: number }[] => {
+    const out: { k: string; at: number; end: number }[] = [];
+    for (const c of cast) for (const nm of [`{${c.key}}`, ...(c.first ? [c.first] : []), ...(c.also ?? [])]) {
+      for (let at = t.indexOf(nm); at >= 0; at = t.indexOf(nm, at + nm.length)) if (nm.startsWith('{') || (!WORD.test(t[at - 1] ?? ' ') && !WORD.test(t[at + nm.length] ?? ' '))) out.push({ k: c.key, at, end: at + nm.length });
+    }
+    return out.sort((x, y) => x.at - y.at);
+  };
+  // What a sentence that names two people says of them (from November 13, 2026). Tried against the whole catalog:
+  // - Beside each other: only what is said between them, one named just before the word (alone, or in a list of names)
+  //   and the other just after: "with help from Ariel", "Hamlet and Horatio", not "Polonius concludes that Hamlet's
+  //   madness is due to love". Read over the whole sentence, nouns ("love", "calls for help") made allies.
+  // - Against each other: the whole sentence, as before, except where every act against in it is plainly someone
+  //   else's, its doers named just before it and neither of the two among them: in "Ariel … chastises Antonio, Alonso,
+  //   and Sebastian for their crimes against Prospero", the crimes are the three men's. Read only between the two, as
+  //   the allies are, Claudius, Voldemort, O'Brien and Long John Silver stopped being against anyone.
+  // - Named together as the ones who act ("Prospero and Ariel thwart the conspiracy"): beside each other.
+  const LIST = /^(?:[\s,]|\band\b|\bor\b|\p{Lu}[\p{L}'’.-]*)*$/u; // commas, "and", and other names between
+  const doersOf = (t: string, at: { k: string; at: number; end: number }[], index: number) => {
+    const before = at.filter((x) => x.end <= index);
+    if (!before.length) return new Set<string>();
+    const left = [before.at(-1)!];
+    for (let n = before.length - 2; n >= 0 && LIST.test(t.slice(before[n].end, left.at(-1)!.at)); n--) left.push(before[n]);
+    return new Set(left.map((x) => x.k));
+  };
+  const matches = (re: RegExp, t: string) => [...t.matchAll(new RegExp(re.source, 'gi'))];
+  const joinedIn = (t: string, at: { k: string; at: number; end: number }[], a: string, b: string) =>
+    at.some((x, n) => n + 1 < at.length && x.k !== at[n + 1].k && [a, b].includes(x.k) && [a, b].includes(at[n + 1].k) && /^\s+and\s+$/.test(t.slice(x.end, at[n + 1].at)));
+  const pairOf = (t: string, a: string, b: string): { against: boolean; alongside: boolean } => {
+    const at = spots(t);
+    if (joinedIn(t, at, a, b)) return { against: false, alongside: true };
+    const others = matches(AGAINST, t).every((m) => { const d = doersOf(t, at, m.index!); return d.size > 0 && !d.has(a) && !d.has(b); });
+    const against = AGAINST.test(t) && !others;
+    const alongside = matches(ALONGSIDE, t).some((m) => {
+      const d = doersOf(t, at, m.index!);
+      const after = at.find((x) => x.at >= m.index! + m[0].length);
+      return !!after && ((d.has(a) && after.k === b) || (d.has(b) && after.k === a));
+    });
+    return { against, alongside };
+  };
   // Who the story has with the lead, and how: against, or alongside.
   const together: StoryReading['together'] = {};
   if (lead) {
+    // A sentence that names only the lead goes on from the one before it: "O'Brien also shows himself to be a member of
+    // the Thought Police… Over several months, Winston is starved and relentlessly tortured." Whoever that one named, alone
+    // beside the lead, is counted with them (from November 13, 2026, when O'Brien read as Winston's ally).
+    let prior: string[] = [];
     for (const d of devs) for (const s of d.sentences) {
-      const here = named(s);
-      if (!here.includes(lead)) continue;
-      for (const k of here) if (k !== lead) {
+      const inIt: string[] = named(s);
+      const others = prior.filter((k) => k !== lead);
+      const withLead: string[] = inIt.length === 1 && inIt[0] === lead && others.length === 1 ? [...inIt, ...others] : inIt;
+      prior = inIt;
+      if (!withLead.includes(lead)) continue;
+      const carried = withLead.length > inIt.length;
+      for (const k of withLead) if (k !== lead) {
         const t = (together[k] ??= { against: 0, alongside: 0 });
-        if (AGAINST.test(s)) t.against += 1;
-        if (ALONGSIDE.test(s)) t.alongside += 1;
+        // A sentence carried over from the one before counts whole; one that names both is read by pairOf.
+        if (carried) {
+          if (AGAINST.test(s)) t.against += 1;
+          if (ALONGSIDE.test(s)) t.alongside += 1;
+          continue;
+        }
+        const side = pairOf(s, lead, k);
+        if (side.against) t.against += 1;
+        if (side.alongside) t.alongside += 1;
       }
     }
   }
   // A rival or an ally only on clear evidence: at least two sentences of it, and twice as many as of the other kind.
   // Sentences don't say who does what to whom, so a weaker reading is left to the proposal (Nineteen Eighty-Four read
   // Julia as the rival and Big Brother as the ally until November 13, 2026).
-  const by = (f: (x: { against: number; alongside: number }) => [number, number]) => Object.entries(together).filter(([, v]) => { const [a, b] = f(v); return a >= 2 && a >= 2 * b; }).sort((x, y) => f(y[1])[0] - f(x[1])[0])[0]?.[0] ?? null;
-  const rival = by((v) => [v.against, v.alongside]);
-  const ally = by((v) => [v.alongside, v.against]);
+  const by = (f: (x: { against: number; alongside: number }) => [number, number], clear: (a: number, b: number) => boolean) => Object.entries(together).filter(([, v]) => { const [a, b] = f(v); return a >= 2 && clear(a, b); }).sort((x, y) => f(y[1])[0] - f(x[1])[0])[0]?.[0] ?? null;
+  // Against the lead in more sentences than beside them (from November 13, 2026; until then twice as many, which missed
+  // Catalina, who shoots Claude in Grand Theft Auto III, and the whale that drags Ahab to his death).
+  const rival = by((v) => [v.against, v.alongside], (a, b) => a > b);
+  const ally = by((v) => [v.alongside, v.against], (a, b) => a >= 2 * b);
   return { developments: devs, rival, ally: ally !== rival ? ally : null, together };
 }
 
@@ -271,11 +328,213 @@ export const PURPOSE: Record<Role, string> = {
  */
 const OUTSIDE = ['street', 'streets', 'road', 'field', 'fields', 'forest', 'woods', 'river', 'sea', 'ocean', 'shore', 'beach', 'desert', 'mountain', 'mountains', 'battlefield', 'battle', 'ranch', 'ferry', 'ship', 'boat', 'train', 'heist', 'shootout', 'ambush', 'chase', 'storm', 'garden', 'park', 'bridge', 'village', 'harbour', 'harbor', 'island', 'jungle', 'swamp', 'camp', 'outside', 'rooftop', 'horseback', 'sails', 'trench', 'front', 'graveyard', 'cemetery', 'square', 'docks', 'farm'];
 const INSIDE = ['room', 'house', 'home', 'office', 'apartment', 'hall', 'bar', 'saloon', 'church', 'prison', 'cell', 'hospital', 'palace', 'mansion', 'laboratory', 'chamber', 'bedroom', 'kitchen', 'ballroom', 'restaurant', 'hotel', 'inside', 'classroom', 'courtroom', 'library', 'study', 'castle', 'party', 'dinner', 'ball', 'facility', 'bunker', 'vault', 'bank', 'casino', 'club', 'theatre', 'theater', 'shop', 'school'];
+const DONE_OUTSIDE = ['drive', 'drives', 'drove', 'ride', 'rides', 'rode', 'flee', 'flees', 'fled', 'chase', 'chases', 'chased', 'race', 'races', 'fight', 'fights', 'fought', 'sail', 'sails', 'sailed', 'march', 'marches', 'marched', 'hunt', 'hunts', 'hunted', 'travels', 'travelled', 'traveled', 'journey', 'journeys', 'escape', 'escapes', 'escaped', 'shootout', 'battles', 'sights'];
+const DONE_INSIDE = ['talks', 'talked', 'tells', 'told', 'confesses', 'confessed', 'writes', 'wrote', 'reads', 'letter', 'dines', 'dined', 'discusses', 'discussed', 'interrogates', 'interrogated', 'proposes', 'proposed', 'sleeps', 'slept', 'wakes', 'woke', 'waking', 'revises', 'works', 'worked'];
 const TIMES: [Exclude<SceneLook['time'], null>, string[]][] = [['NIGHT', ['night', 'midnight', 'nightfall']], ['DAWN', ['dawn', 'sunrise', 'daybreak']], ['DUSK', ['dusk', 'sunset', 'evening', 'twilight']]];
 export interface SceneLook { intExt: 'INT' | 'EXT' | null; time: 'DAY' | 'NIGHT' | 'DUSK' | 'DAWN' | null }
 export function sceneLook(text: string): SceneLook {
   const t = text.toLowerCase();
   const out = OUTSIDE.filter((w) => hasWord(t, w)).length;
   const inn = INSIDE.filter((w) => hasWord(t, w)).length;
-  return { intExt: out > inn ? 'EXT' : inn > out ? 'INT' : null, time: TIMES.find(([, ws]) => ws.some((w) => hasWord(t, w)))?.[0] ?? null };
+  // Where the places say nothing, what people do: riding, fleeing and fighting are done outside; talking, writing and
+  // dining in (game reading, from November 13, 2026, so fewer scenes are left to the arc's guess).
+  const doneOut = out === inn ? DONE_OUTSIDE.filter((w) => hasWord(t, w)).length : 0;
+  const doneIn = out === inn ? DONE_INSIDE.filter((w) => hasWord(t, w)).length : 0;
+  const side = out !== inn ? out - inn : doneOut - doneIn;
+  return { intExt: side > 0 ? 'EXT' : side < 0 ? 'INT' : null, time: TIMES.find(([, ws]) => ws.some((w) => hasWord(t, w)))?.[0] ?? null };
+}
+
+/**
+ * The people a story names, from its own words (from November 13, 2026: 199 works with a story had no character
+ * recorded, Julius Caesar and David Copperfield among them, and were given "The Lead", "The Rival" and "The Ally").
+ * A name is a run of capitalised words used at least three times, or twice as a full name, that isn't a place, a
+ * group, a month, a people or a word that starts sentences. A word that is part of one longer name is that person
+ * ("Winston" is Winston Smith). Their pronouns aren't read: guessing them from the sentences around a name was wrong
+ * too often (John Seward came out "she"), and a wrong guess misnames a real character. Game reading.
+ */
+export interface StoryPerson {
+  name: string; mentions: number;
+  /** Other names the story gives them ("Alonso Quixano" for Don Quixote): how a recorded character is matched. */
+  also?: string[];
+}
+const NOT_NAMES = new Set(['The', 'A', 'An', 'After', 'Before', 'When', 'While', 'Meanwhile', 'Later', 'Then', 'However', 'Although', 'Though', 'As', 'At', 'In', 'On', 'Upon', 'With', 'Without', 'During', 'Despite', 'Since', 'Once', 'Eventually', 'Finally', 'Soon', 'Following', 'Having', 'Because', 'Unable', 'Realizing', 'Realising', 'Back', 'Now', 'Still', 'That', 'This', 'These', 'Those', 'There', 'Here', 'Some', 'Many', 'Most', 'Both', 'Each', 'Every', 'All', 'One', 'Two', 'Three', 'Several', 'Other', 'Another', 'His', 'Her', 'Their', 'Its', 'He', 'She', 'They', 'It', 'We', 'You', 'I', 'My', 'Our', 'Your', 'If', 'But', 'And', 'Or', 'So', 'Yet', 'For', 'Not', 'No', 'Nor', 'Of', 'To', 'From', 'By', 'Into', 'Onto', 'Over', 'Under', 'About', 'Against', 'Among', 'Between', 'Through', 'Throughout', 'Across', 'Along', 'Around', 'Behind', 'Beyond', 'Near', 'Outside', 'Inside', 'Within', 'Next', 'Years', 'Days', 'Weeks', 'Months', 'Act', 'Scene', 'Chapter', 'Part', 'Book', 'Volume', 'Episode', 'Season', 'Prologue', 'Epilogue', 'Ultimately', 'Instead', 'Shortly', 'Afterwards', 'Afterward', 'Elsewhere', 'Together', 'Alone', 'Only', 'Even', 'Just', 'Also', 'Unbeknownst', 'Unknown', 'Determined', 'Desperate', 'Angered', 'Furious', 'Horrified', 'Convinced', 'Believing', 'Seeing', 'Learning', 'Hearing', 'Knowing', 'Fearing', 'Hoping', 'Using', 'Taking', 'Leaving', 'Returning', 'Arriving', 'Mr', 'Mrs', 'Ms', 'Dr', 'Sir', 'Lady', 'Lord', 'God', 'English', 'French', 'German', 'British', 'American', 'Spanish', 'Italian', 'Russian', 'Chinese', 'Japanese', 'Korean', 'Indian', 'Roman', 'Greek', 'Christian', 'Jewish', 'Muslim', 'Catholic', 'Protestant', 'Soviet', 'Nazi', 'European', 'African', 'Asian', 'Western', 'Eastern', 'Northern', 'Southern', 'January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday', 'Christmas', 'Easter', 'Thou', 'Thee', 'Thy', 'Director', 'Captain', 'King', 'Queen', 'Prince', 'Princess', 'Emperor', 'Duke', 'Count', 'Professor', 'Doctor', 'Father', 'Mother', 'Uncle', 'Aunt', 'Miss', 'Master', 'General', 'Colonel', 'Major', 'Sergeant', 'Private', 'Lieutenant', 'Agent', 'Detective', 'Inspector', 'Saint', 'Don', 'Madame', 'Monsieur', 'Holocaust', 'Nevermore', 'Like', 'Unlike', 'Athenian', 'Trojan', 'Spartan', 'Persian', 'Egyptian', 'Corinthian', 'Theban', 'Venetian', 'Florentine', 'Parisian', 'Bohemian', 'Sicilian', 'Carthaginian', 'Macedonian', 'Babylonian', 'Assyrian', 'Martian', 'Victorian', 'Elizabethan', 'Dalmatian']);
+const GROUP = /\b(Party|Ministry|Brotherhood|Army|Navy|Company|Empire|Kingdom|City|Island|Islands|Street|Castle|Church|School|University|College|Society|Agency|Corporation|Republic|Union|States|Council|Order|Guild|Clan|Family|House|Hall|Manor|Abbey|Palace|Tower|Mountains?|River|Sea|Ocean|Lake|Forest|Valley|Bay|Station|Hotel|Hospital|Prison|Academy|Institute|War|Battle|Revolution|Court|Times|Bible|Gospel|Quran|Mass|Day|Night|Year|Age|Era|Corps|Regiment|Division|Battalion|Fleet|Squad|Team|Gang|Mafia|Cartel|Police|Guard|Guards|Federation|Alliance|Resistance|Rebellion|Empire|Dynasty|Earth|Moon|Mars|Heaven|Hell|Paradise|Room|Korps|Language|Weapons|State|Knights|Templars?|Sisters|Brothers|Industries|Inc|Entertainment|Studios|Games|Observatory|Temple|Museum|Library|Laboratory|Lab|Base|Ship|Station)\b/;
+/** A name of three words or more passed to exclude is a work's title, not a place (proposal.ts passes both). */
+const titleLike = (x: string) => x.split(/\s+/).length >= 3;
+export const storyPeople = (paragraphs: string[], exclude: string[] = []): StoryPerson[] => readNamesOnce(paragraphs, exclude).people;
+/**
+ * The places a story names: a name used at least twice, at least half the time after "in", "to", "at", "from" and the
+ * like, that isn't a people (from November 13, 2026: Julius Caesar's setting was "not recorded" and its scenes were at
+ * "Home" and "A Public Place", with Rome named ten times). Most named first. Game reading.
+ */
+export const storyPlaces = (paragraphs: string[], exclude: string[] = []): StoryPerson[] => readNamesOnce(paragraphs, exclude).places;
+// The people and the places are read together, once per story, and kept: a proposal asks for both, and the same work is
+// proposed again as each format is tried (measured November 13, 2026: the catalog proposed as a film and as a series went
+// over the five-second test limit when each read the story itself).
+const readCache = new Map<string, ReturnType<typeof readNames>>();
+function readNamesOnce(paragraphs: string[], exclude: string[]): ReturnType<typeof readNames> {
+  const key = `${exclude.join('\u0001')}\u0000${paragraphs.join('\u0002')}`;
+  let out = readCache.get(key);
+  if (!out) {
+    out = readNames(paragraphs, exclude);
+    if (readCache.size >= 2000) readCache.delete(readCache.keys().next().value!); // the oldest: a bound, not a policy
+    readCache.set(key, out);
+  }
+  return out;
+}
+function readNames(paragraphs: string[], exclude: string[]): { people: StoryPerson[]; places: StoryPerson[] } {
+  const text = paragraphs.join(' ');
+  const sentences = sentencesOf(text);
+  // A place's words are each excluded ("Saint", "Denis"), a title's are not: Thus Spoke Zarathustra's Zarathustra is its
+  // lead, named 24 times, and was dropped until November 13, 2026. A title is excluded whole, and any run of two words
+  // or more inside it (the check below).
+  const excluded = new Set(exclude.flatMap((x) => [x, ...(titleLike(x) ? [] : x.split(/\s+/))]));
+  // Capitalised, not all capitals (ADAM is a substance in BioShock), not a possessive, not a word that starts sentences.
+  // Not an age either: "Fifteen-year-old Kafka" is Kafka (November 13, 2026).
+  // A name can be a letter and a number (We's D-503 and I-330).
+  const cap = (w: string) => !!w && w[0] !== w[0].toLowerCase() && (/^\p{Lu}-\d+$/u.test(w) || /^\p{Lu}[\p{L}'’.-]*$/u.test(w)) && !/^\p{Lu}{2,}$/u.test(w) && !/['’]s$/.test(w) && !/-year-old$/i.test(w) && !NOT_NAMES.has(w);
+  const PARTICLE = /^(van|von|de|der|den|del|da|di|du|la|le|al|bin|ibn)$/;
+  // Every run of capitalised words, broken at punctuation: "Dutch, Arthur, Bill and Javier" is four people.
+  const runsOf = (s: string): { name: string; at: number }[] => {
+    const toks = s.split(/(\s+|[,;:!?()“”"\[\]—–]|\.(?=\s|$))/).filter((x) => x && !/^\s+$/.test(x));
+    const out: { name: string; at: number }[] = [];
+    let run: string[] = [];
+    let pos = 0;
+    const end = () => { if (run.length) { while (run.length && PARTICLE.test(run.at(-1)!)) run.pop(); if (run.length) out.push({ name: run.join(' '), at: pos }); } run = []; };
+    toks.forEach((t, k) => {
+      const bare = t.replace(/['’]s$/, '');
+      if (cap(bare)) { if (!run.length) pos = k; run.push(bare); if (bare !== t) end(); }
+      else if (run.length && PARTICLE.test(t) && cap(toks[k + 1] ?? '')) run.push(t);
+      else end();
+    });
+    end();
+    return out;
+  };
+  const counts = new Map<string, number>();
+  const after = new Map<string, number>(); // uses after "in", "to", "at", "from": a place
+  const plural = new Map<string, number>(); // followed by "are", "were", "have": a people, not a person ("Jews are")
+  const inPlace = new Map<string, number>(); // after "in", "to", "at", "from": where something happens
+  const acts = new Map<string, number>(); // followed by a verb: "Brutus joins", "Micah kills", "Vladek was"
+  const single = new Map<string, number>(); // followed by "is", "was", "has" or a verb in -s: one person
+  const several = new Map<string, number>(); // followed by "who", "with", "that": with no "is" anywhere, a group ("Denizens who")
+  const PLACE_NOUN = /^(country|city|capital|kingdom|province|town|village|island|planet|empire|nations?|region|continent|realm|land|homeland|state|district)[,]?$/i;
+  for (const s of sentences) {
+    const toks = s.split(/\s+/);
+    const bare = toks.map((x) => x.replace(/[^\p{L}\p{N}'’.-]/gu, '').replace(/\.+$/, '').replace(/['’]s$/, '')); // once per sentence
+    for (const r of runsOf(s)) {
+      if (GROUP.test(r.name) || excluded.has(r.name) || exclude.some((x) => x.includes(r.name) && r.name.includes(' '))) continue; // a part of the title: "Tell-Tale Heart"
+      counts.set(r.name, (counts.get(r.name) ?? 0) + 1);
+      const k = bare.findIndex((x, n) => x === r.name.split(' ')[0] && n > 0);
+      if (k > 0 && /^(in|to|at|from|near|towards?|into|across|through|outside|inside|of|the|a|an)$/i.test(toks[k - 1])) after.set(r.name, (after.get(r.name) ?? 0) + 1);
+      // "to" isn't a place's word: "a few questions to Susan" made Susan a setting until November 13, 2026.
+      if (k > 0 && /^(in|at|from|near|into|across|through|outside|inside|reach(es|ed)?|leaves?|left|fled|flees|visits?|visited)$/i.test(toks[k - 1])) inPlace.set(r.name, (inPlace.get(r.name) ?? 0) + 1);
+      // "the capital city, Luthadel", "his home country of Kyrat", "nations, Alethkar": named as a place.
+      if (k > 0 && (PLACE_NOUN.test(toks[k - 1]) || (/^of$/i.test(toks[k - 1]) && PLACE_NOUN.test(toks[k - 2] ?? '')))) inPlace.set(r.name, (inPlace.get(r.name) ?? 0) + 2);
+      const last = bare.findIndex((x, n) => n >= Math.max(0, k) && x === r.name.split(' ').at(-1));
+      if (last >= 0 && /^(are|were|have|their)$/i.test(toks[last + 1] ?? '')) plural.set(r.name, (plural.get(r.name) ?? 0) + 1);
+      if (last >= 0 && /^(is|was|has|had|and|who|then|also|later|finally|eventually|soon|now|still|[a-z]+(s|ed))$/.test(toks[last + 1] ?? '')) acts.set(r.name, (acts.get(r.name) ?? 0) + 1);
+      if (last >= 0 && /^(is|was|has|had|[a-z]+s)$/.test(toks[last + 1] ?? '')) single.set(r.name, (single.get(r.name) ?? 0) + 1);
+      if (last >= 0 && /^(who|with|that|do|did)$/.test(toks[last + 1] ?? '')) several.set(r.name, (several.get(r.name) ?? 0) + 1);
+    }
+  }
+  const names = [...counts.keys()];
+  // A place: named after "in", "at", "from" and the like three times (twice for a name of two words), or as "the city of",
+  // twice as often as it does anything. Not a people.
+  const isPlace = (n: string) => {
+    const at = inPlace.get(n) ?? 0;
+    return (at >= 3 || (at >= 2 && n.includes(' '))) && at >= 2 * (acts.get(n) ?? 0) && !/(ans|ers|ists|ites|ians|ese)$/.test(n) && !(plural.get(n) ?? 0);
+  };
+  // Not a person: a plural or a people ("Germans", "Templars", "Pinkertons"); a word most often after "in" or "to" (a
+  // place); or after "the" or "a" (the Apple, the Third Crusade).
+  const notPersonSeen = new Map<string, boolean>();
+  const notPerson = (n: string): boolean => {
+    if (!notPersonSeen.has(n)) notPersonSeen.set(n, notPerson0(n));
+    return notPersonSeen.get(n)!;
+  };
+  const wordsIn = new Map<string, string[]>(); // each word, the longer names it is part of
+  for (const m of names) if (m.includes(' ')) for (const x of m.split(' ')) (wordsIn.get(x) ?? wordsIn.set(x, []).get(x)!).push(m);
+  const notPerson0 = (n: string) => {
+    const one = !n.includes(' ');
+    // A one-word name must do something at least once: "Eden" and "Beta" in a story are never followed by a verb.
+    if (one && !acts.get(n) && !(wordsIn.get(n) ?? []).some((m) => acts.get(m))) return true;
+    if (one && /(ian|ish)$/.test(n) && !acts.get(n)) return true; // a people in the singular: "Athenian"
+    if (/^\p{Lu}\p{Ll}+ing\b/u.test(n)) return true; // "Accompanying Alcibiades": a word that starts a clause
+    if (isPlace(n)) return true; // Kyrat, Luthadel, Alethkar
+    if (one && n.endsWith('s') && (several.get(n) ?? 0) >= 2 && !single.get(n)) return true; // "Denizens who", "Denizens with"
+    if (one && counts.has(`${n}s`)) return true; // "Assassin" beside "Assassins": a member of a group, by its name
+    if (one && (/(ans|ers|ists|ites|ians|ese)$/.test(n) || (n.endsWith('s') && counts.has(n.slice(0, -1))) || (n.endsWith('s') && (plural.get(n) ?? 0) > 0))) return true;
+    return (after.get(n) ?? 0) * 2 >= (counts.get(n) ?? 0) && (counts.get(n) ?? 0) > 0;
+  };
+  // A single word that is part of exactly one longer name is that person; the longer form is the name kept.
+  const longer = (n: string) => (wordsIn.get(n) ?? []).filter((m) => !notPerson(m));
+  const merged = new Map<string, number>();
+  for (const [n, c] of counts) {
+    if (notPerson(n)) continue;
+    // Part of several: the one of them named most in full, then the shortest ("Castorp" is Hans Castorp, not his
+    // grandfather Hans Lorenz Castorp).
+    const into = !n.includes(' ') ? longer(n).sort((a, b) => (counts.get(b) ?? 0) - (counts.get(a) ?? 0) || a.split(' ').length - b.split(' ').length) : [];
+    const key = into.length ? into[0] : n;
+    if (key) merged.set(key, (merged.get(key) ?? 0) + c);
+  }
+  // One person under two names, where the story joins them: "He renames himself 'Don Quixote'", "Kira's identity as
+  // Light", "Wang Lun, known as …", "under the alias …". The second name's uses are the first's (November 13, 2026).
+  const resolve = (n: string): string | null => {
+    if (merged.has(n)) return n;
+    const into = longer(n).sort((a, b) => (counts.get(b) ?? 0) - (counts.get(a) ?? 0));
+    return into.find((m) => merged.has(m)) ?? null;
+  };
+  const firstNamed = (t: string): string | null => {
+    for (const r of runsOf(t)) { const k = resolve(r.name); if (k) return k; }
+    return null;
+  };
+  const N = `[“"]?(\\p{Lu}[\\p{L}'’-]+(?: \\p{Lu}[\\p{L}'’-]+)*)`;
+  const SELF = new RegExp(`\\b(?:renames?|re-names?|calls?|names?|styles?|dubs?) (?:himself|herself) ${N}`, 'u');
+  const IDENTITY = new RegExp(`${N}['’]s (?:true |real |secret )?identity as ${N}`, 'u');
+  const KNOWN = new RegExp(`${N},? (?:also |better |later )?known as ${N}`, 'u');
+  const ALIAS = new RegExp(`\\bunder the (?:alias|name) ${N}`, 'u');
+  const alsoOf = new Map<string, string[]>();
+  const join = (alias: string, owner: string | null) => {
+    const a = alias.split(' ').filter((x) => !NOT_NAMES.has(x)).join(' ');
+    const from = resolve(a) ?? (merged.has(a) ? a : null);
+    if (!owner || !from || from === owner || !merged.has(from) || !merged.has(owner)) return;
+    // The name used more is the one kept, as the story writes it: Don Quixote, not Alonso Quixano.
+    const total = (merged.get(owner) ?? 0) + (merged.get(from) ?? 0);
+    const [keep, drop] = (merged.get(from) ?? 0) > (merged.get(owner) ?? 0) ? [alias, owner] : [owner, from];
+    const others = [...(alsoOf.get(owner) ?? []), ...(alsoOf.get(from) ?? []), drop, ...(keep === alias ? [from] : [])].filter((x) => x !== keep);
+    merged.delete(owner); merged.delete(from); alsoOf.delete(owner); alsoOf.delete(from);
+    merged.set(keep, total); alsoOf.set(keep, [...new Set(others)]);
+  };
+  sentences.forEach((t, k) => {
+    // "He renames himself …": whoever the sentence, or one of the three before it, names first.
+    let m = SELF.exec(t); if (m) join(m[1], firstNamed(t.slice(0, m.index)) ?? firstNamed(sentences[k - 1] ?? '') ?? firstNamed(sentences[k - 2] ?? '') ?? firstNamed(sentences[k - 3] ?? ''));
+    m = IDENTITY.exec(t); if (m) join(m[1], resolve(m[2]));
+    m = KNOWN.exec(t); if (m && resolve(m[1])) join(m[2], resolve(m[1]));
+    m = ALIAS.exec(t); if (m) join(m[1], firstNamed(t.slice(0, m.index)));
+  });
+  const out: StoryPerson[] = [];
+  for (const [name, mentions] of merged) {
+    const full = counts.get(name) ?? 0;
+    if (!(mentions >= 3 || (name.includes(' ') && full >= 2))) continue;
+    out.push({ name, mentions, ...(alsoOf.get(name)?.length ? { also: alsoOf.get(name) } : {}) });
+  }
+  // A story that names fewer than three people that often gives the rest once, in full: a game's soldiers, "Private
+  // Vasili Koslov" and "Sergeant John Davis". Then its unnamed people, as it calls them: "the narrator", "the old man".
+  if (out.length < 3) {
+    const once = [...merged.keys()].filter((n) => n.includes(' ') && !out.some((o) => o.name === n)).sort((a, b) => text.indexOf(a) - text.indexOf(b));
+    for (const name of once) if (out.length < 3) out.push({ name, mentions: merged.get(name) ?? 1 });
+  }
+  if (out.length < 3) {
+    const ROLE = /\b[Tt]he ((?:old |young |little |elderly |wicked |big bad |poor |rich )?(?:narrator|man|woman|boy|girl|servant|king|queen|prince|princess|wife|husband|mother|father|son|daughter|doctor|soldier|captain|stranger|child|fox|crow|lion|mouse|tortoise|hare|raven|wolf|cat|dog|emperor|nightingale|fisherman|maiden|knight|witch|giant|thief|monk|priest|lady|gentleman|officer|student|teacher|shepherd|farmer|merchant|sailor|hunter|peasant|traveller|traveler|beggar|landlord|innkeeper|widow|orphan|duke|count|bird|frog|bear|toad|swan|duckling|swallow|swallows))\b/g;
+    const roles = new Map<string, number>();
+    for (const m of text.matchAll(ROLE)) { const r = m[1].toLowerCase(); roles.set(r, (roles.get(r) ?? 0) + 1); }
+    for (const [r, c] of [...roles].filter(([, c]) => c >= 2).sort((a, b) => b[1] - a[1])) {
+      const name = `The ${r.replace(/\b\p{Ll}/gu, (x) => x.toUpperCase())}`;
+      if (out.length < 3 && !out.some((o) => o.name === name)) out.push({ name, mentions: c });
+    }
+  }
+  const places: StoryPerson[] = [...counts].filter(([n]) => isPlace(n) && !merged.has(n)).map(([name, mentions]) => ({ name, mentions }));
+  return {
+    people: out.sort((a, b) => b.mentions - a.mentions || a.name.localeCompare(b.name)),
+    places: places.sort((a, b) => b.mentions - a.mentions || a.name.localeCompare(b.name)),
+  };
 }

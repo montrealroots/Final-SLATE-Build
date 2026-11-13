@@ -124,13 +124,13 @@ test('a first-look deal: offered after delivered work, read in full, bargained, 
   for (let i = 0; i < 4 && (await readSavedState(page)).projects[1].finance.deals.filter((d: { kind: string }) => d.kind === 'studio').at(-1).status === 'considering'; i++) await advance(page, 'week');
   const outside = (await readSavedState(page)).projects[1].finance.deals.filter((d: { kind: string }) => d.kind === 'studio').at(-1);
   expect(outside.backer).toBe(MATINEE);
-  if (outside.status === 'offered') {
-    // Its offer accepted: the first look's development money is repaid from what it puts in, once.
-    await nav(page, 'Projects');
-    await page.getByRole('button', { name: 'Night Bus' }).first().click();
-    await section(page, 'Budget');
-    await card(page, 'Backers').locator('li', { hasText: MATINEE }).first().getByRole('button', { name: 'Accept Offer' }).click();
-    await page.getByRole('dialog', { name: 'Accept These Terms?' }).getByRole('button', { name: /^Accept \$/ }).click();
-    await expect.poll(async () => (await readSavedState(page)).projects[1].obligations.filter((o: { ref?: string }) => o.ref?.startsWith('turnaround:')).map((o: { settled: number }) => o.settled), { timeout: 30_000 }).toEqual([5_000]);
-  } else expect(outside.status).toBe('declined'); // its own answer, read on its own record; the pass left the route open either way
+  // Pinned (from November 13, 2026; until then the journey took either answer): in this world the family studio passes,
+  // for a reason that is a fact of its record, not a draw. A short isn't what it makes. Made a feature, Night Bus meets
+  // its full 2028 slate instead. Repayment from another studio's money, when one takes the film, is tests/first-look.test.ts
+  // ("repaid once from another studio's money").
+  expect([outside.status, outside.studio.verdict, outside.studio.against]).toEqual(['declined', 'pass', [`${MATINEE}'s record here is feature films. A short film isn't something it takes on.`]]);
+  await nav(page, 'Projects');
+  await page.getByRole('button', { name: 'Night Bus' }).first().click();
+  await section(page, 'Budget');
+  await expect(pitch.getByRole('listitem', { name: MATINEE })).toContainText("A short film isn't something it takes on.");
 });
