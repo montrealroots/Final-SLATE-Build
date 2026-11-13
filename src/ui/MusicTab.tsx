@@ -20,6 +20,7 @@ import { activeMandate, approveGuideMe, guideMePlan, guideMeRefusal } from '../e
 import { roleLabel } from '../engine/people';
 import { GuideMeStanding } from './PlanViews';
 import { store, useGame } from './store';
+import { MusicCatalogCard, RecordingFacts } from './MusicCatalog';
 
 const STATUS: Record<SongLicence['status'], string> = { requested: 'Asked', quoted: 'Quoted', countered: 'Counteroffer', refused: 'Refused', agreed: 'Agreed', expired: 'Run Out', declined: 'Declined' };
 
@@ -31,12 +32,13 @@ export function MusicTab({ p }: { p: Project }) {
     {p.music && !p.delivered && <MusicGuideMe p={p} />}
     {p.music && <BriefCard p={p} />}
     {p.music?.brief && <CuePlan p={p} />}
+    <MusicCatalogCard p={p} />
     <section className="card" aria-labelledby="licences-h">
       <h2 id="licences-h">Licences For Existing Songs</h2>
       {!licensesSongs(p) ? (
         <p className="muted">This project was made before licences, and clears its songs as it always has: the music supervisor's days and one fee.</p>
       ) : !licensed.length ? (
-        <p className="muted">No licensed songs. Add an existing song on the Production page, and license it here.</p>
+        <p className="muted">No licensed songs. License a real recording under Real Music, or add an existing song on the Production page, and license it here.</p>
       ) : (
         <>
           <p className="dim small">An existing recording is two works with two owners: the composition, through its publisher, and the recording. Both are asked, and both must say yes. The holders, their answers and their prices are the game's invention; nothing agreed here is permission to use a real recording.</p>
@@ -216,6 +218,7 @@ function SongLicences({ p, s }: { p: Project; s: Song }) {
   return (
     <article className="card" aria-label={`Licence For ${s.title}`} style={{ marginTop: 'var(--s3)' }}>
       <h3 style={{ marginTop: 0 }}>{s.title}</h3>
+      <RecordingFacts s={s} />
       <p className="small">{standing ? `Licensed for ${scopeWords(standing.scope)}, until ${formatDateKey(dateKey(standing.expires!, zone))}.` : inCut ? 'No licence stands: delivery waits for one.' : 'Not in the cut; no licence is needed unless it goes back in.'}</p>
       {all.length > 0 && (
         <ul className="list" aria-label={`Requests For ${s.title}`}>

@@ -2,8 +2,9 @@
 // J09). The owner's own server, with a passphrase, on port 4180 (e2e/serve-prod.ts), holding the labelled made-up catalog
 // and mods of catalog-fixture.ts. Every request here carries a forwarding header, as one passed on by a proxy from
 // somewhere else would: the server treats it as a visitor's, not as this machine's. No request is intercepted.
-// It runs only with SLATE_E2E_PROD=1, on Chromium: a browser keeps the session cookie (marked Secure) on plain-HTTP
-// localhost only there. The same rules are tested request by request in tests/catalog-server.test.ts.
+// It runs only with SLATE_E2E_PROD=1, on Chromium. Until November 13, 2026 the session cookie was always marked Secure,
+// which a browser keeps from plain-HTTP localhost only in Chromium; it is now Secure only over HTTPS. The same rules are
+// tested request by request in tests/catalog-server.test.ts.
 import { expect, expectErrors, test, type Page } from './test';
 import { nav, quickLife } from './helpers';
 
@@ -56,7 +57,9 @@ test.describe('the owner\'s server, reached from elsewhere', () => {
     await expect(page.getByRole('heading', { name: 'The Lantern Keeper (Fixture)', level: 1 })).toBeVisible();
     // The session is a cookie the page's scripts can't read, and the passphrase is kept nowhere in the browser.
     const cookie = (await page.context().cookies()).find((c) => c.name === 'slate_owner')!;
-    expect([cookie.httpOnly, cookie.secure, cookie.sameSite]).toEqual([true, true, 'Strict']);
+    // Secure only over HTTPS since November 13, 2026: this server is plain http, as the owner's home network is, where a
+    // Secure cookie is dropped and sign-in won't hold. tests/catalog-server.test.ts checks it is Secure behind HTTPS.
+    expect([cookie.httpOnly, cookie.secure, cookie.sameSite]).toEqual([true, false, 'Strict']);
     expect(await page.evaluate(() => JSON.stringify({ ...localStorage }) + document.cookie)).not.toContain('fixture passphrase');
     // Signed in or not, another visitor still gets nothing.
     for (const path of FILM_ROUTES) expect((await visitor.get(path)).status(), path).toBe(404);
@@ -85,4 +88,16 @@ test.describe('the owner\'s server, reached from elsewhere', () => {
     await nav(page, 'Home');
     await expect(page.getByRole('heading', { name: /^Good (Morning|Afternoon|Evening), /, level: 1 })).toBeVisible();
   });
+});
+
+// The owner's own server reached from a phone on their network, started with no passphrase (November 13, 2026): the
+// server says so (`elsewhere`, tests/catalog-server.test.ts), and Settings tells the phone why it is offered nothing and
+// what would change that, where it used to say nothing at all. The server's answer is the labelled fixture here.
+test('a device the owner\'s server can\'t sign in is told why the films and pictures aren\'t offered', async ({ page }, info) => {
+  test.skip(!['desktop', 'phone'].includes(info.project.name), 'Runs on desktop and phone.');
+  await page.route('**/owner/session', (r) => r.fulfill({ json: { owner: false, signIn: false, elsewhere: true } }));
+  await quickLife(page, 'gb-london', '2026-01-05');
+  await nav(page, 'Settings');
+  await expect(page.getByRole('note').filter({ hasText: "The films, series and their pictures are this game's owner's alone" })).toContainText('To have them on this device too, start the game on that computer with an owner passphrase, then sign in here with it.');
+  await expect(page.getByLabel('Owner Passphrase')).toHaveCount(0);
 });

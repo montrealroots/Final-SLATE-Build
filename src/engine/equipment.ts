@@ -48,7 +48,13 @@ export interface KitItem {
   dayRate: number;
   at: number;
 }
-export interface ProjectKit { items: KitItem[] }
+/**
+ * A project's kit. `packageApproved`: the player approved hiring the rental house's package on a day the kit can't
+ * serve. Without it, such a day is postponed and the shortage waits for the player (`shortage`), with what would fix it:
+ * the owner's v5 brief, 9, "Do not automatically rent a replacement package outside an approved spending mandate". Until
+ * November 13, 2026 the package was hired automatically.
+ */
+export interface ProjectKit { items: KitItem[]; packageApproved?: boolean; shortage?: { date: string; problems: KitProblem[] } }
 
 const live = (s: GameState) => (s.gear?.items ?? []).filter((x) => !x.sold);
 export const ownedItem = (s: GameState, id: string) => (s.gear?.items ?? []).find((x) => x.id === id);
@@ -225,6 +231,13 @@ export function dayKitProblems(state: GameState, p: Project, d: ShootDay, at: nu
     if (clash) out.push({ need: 'booked', text: clash, fix: [] });
   }
   return out;
+}
+
+/** Approve, or take back, hiring the rental house's package on a day the kit can't serve. */
+export function setPackageApproval(p: Project, on: boolean): void {
+  if (!p.kit) throw new Error('This project has no kit of its own: each shoot day hires the package already.');
+  if (p.delivered) throw new Error('This project is delivered.');
+  if (on) { p.kit.packageApproved = true; delete p.kit.shortage; } else delete p.kit.packageApproved;
 }
 
 /** Shoot days on these dates would put an owned item on two shoots at once: why, or null. Read when a schedule is made. */

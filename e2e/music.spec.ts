@@ -89,7 +89,11 @@ test('a music brief proposed with its reasons, a cue plan the composer works fro
   await section(page, 'Music');
   const brief = page.locator('section.card', { has: page.getByRole('heading', { name: 'Music Brief' }) });
   await brief.getByRole('button', { name: 'Propose A Brief' }).click();
-  await expect(brief.getByRole('list', { name: 'Why This Brief' })).toContainText('A score, written for the film.');
+  // From the project's own words (since November 13, 2026; until then its genre chose the style): the intended experience
+  // the journey wrote, "Quiet, then hopeful.", asks for a few players.
+  const why = brief.getByRole('list', { name: 'Why This Brief' });
+  await expect(why).toContainText('A score, written for this project.');
+  await expect(why).toContainText('Its intended experience, "Quiet, then hopeful.", wants a few players close to the characters.');
   await brief.getByLabel('How Much Of It Is Scored').selectOption({ label: 'Moderate: Half Of The Scenes' });
   await brief.getByRole('button', { name: 'Take This Brief' }).click();
   const cues = page.locator('section.card', { has: page.getByRole('heading', { name: 'Cue Plan' }) });

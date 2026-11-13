@@ -315,6 +315,22 @@ export function buildTasks(p: Project): Task[] {
     tasks.push(t('post:captions', String(e), `Captions And Subtitles${epSuffix(p, e)}`, 'Post Production', 'subtitler', Math.max(1, (minutes / 30) * p.axes.dialogueLanguages.length), 'days', [`post:mix:${e}`], { episode: e }));
     tasks.push(t('post:qc', String(e), `Delivery Quality Control${epSuffix(p, e)}`, 'Post Production', 'qc-technician', 1, 'days', [`post:color:${e}`, `post:mix:${e}`, `post:captions:${e}`], { episode: e }));
   }
+  // What the format itself asks for (the owner's v5 brief, 2: "A short, feature, documentary, limited series and ongoing
+  // series must not follow one generic task list"; November 13, 2026). Until then the work followed the scenes and the
+  // episodes alone, so a short and a feature of the same scenes, or a limited and an ongoing series, had the same list.
+  // Each is done by a job every project already hires (the editor, the colorist), so nothing new can hold delivery up.
+  const n = p.axes.episodeCount;
+  const allQc = Array.from({ length: n }, (_, i) => `post:qc:${i + 1}`);
+  if (p.axes.format === 'feature' || p.axes.format === 'documentary-feature') tasks.push(t('post:dcp', 'all', 'Cinema Master (DCP)', 'Post Production', 'colorist', 1, 'days', allQc));
+  if (p.axes.format === 'short' || p.axes.format === 'documentary-short') tasks.push(t('post:screener', 'all', 'Festival Screener And Submission Copy', 'Post Production', 'editor', 0.5, 'days', allQc));
+  if (isEpisodic(p.axes.format)) {
+    tasks.push(t('post:titles', 'all', 'Main Title Sequence', 'Post Production', 'editor', 1, 'days', ['milestone:lock:1']));
+    for (const qc of allQc) tasks.find((x) => x.id === qc)?.dependsOn.push('post:titles:all');
+  }
+  // A limited series is one closed story: its episodes are checked together for continuity once all are cut.
+  if (p.axes.format === 'limited-series' && n > 1) tasks.push(t('post:continuity', 'all', 'Continuity Pass Across The Series', 'Post Production', 'editor', Math.max(0.5, n * 0.25), 'days', Array.from({ length: n }, (_, i) => `milestone:lock:${i + 1}`)));
+  // An ongoing series is watched over seasons: each episode after the first opens with what came before.
+  if (p.axes.format === 'series') for (let e = 2; e <= n; e++) tasks.push(t('post:recap', String(e), `"Previously On" Recap, Episode ${e}`, 'Post Production', 'editor', 0.25, 'days', [`milestone:lock:${e}`, `post:assembly:${e - 1}`], { episode: e }));
   // A library track put in after an episode's final mix was finished is laid into that mix (music.ts replaceWithLibrary).
   for (const song of (p.songs ?? []).filter((x) => x.replaces?.remix.length && used.includes(x))) {
     for (const e of song.replaces!.remix) tasks.push(t('post:relay', `${song.id}:${e}`, `Lay "${song.title}" Into The Final Mix${epSuffix(p, e)}`, 'Post Production', 're-recording-mixer', RELAY_DAYS, 'days', [`post:mix:${e}`], { episode: e }));

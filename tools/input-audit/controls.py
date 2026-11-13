@@ -193,8 +193,6 @@ c(f, '{`Coverage For ${sceneLabel(p, s)}`}', D, 'shotPlan.coverage', 'takes.ts r
 c(f, '{`Takes For ${sceneLabel(p, s)}`}', D, 'shotPlan.takes', 'takes.ts setupTime', 'Time on the day and the chance of a usable take', U('directing', 'under the same resources, covering what each scene needs'))
 c(f, '{`Site For ${place}`}', D, 'locationChoices.main', 'locations.ts', 'The day fee and what happens if it falls through', U('locations', 'after scouting, a chosen site sets the day fee'))
 c(f, '{`Backup For ${place}`}', D, 'locationChoices.backup', 'locations.ts', 'Where the day goes if the site falls through', U('locations', 'a site that falls through goes to the backup'))
-c(f, '"How Closely It Follows The Work"', D, 'source.option.terms.approach', 'adaptation.ts optionTerms, changesOutsideGrant', "The option's price, and what the rights holder will approve the script changing", U('adaptation', 'latitude is priced: a freer adaptation costs more, by the same rule for every production'), E('sources', 'an adaptation of a protected work is optioned, renewed and bought before its production can be planned'))
-c(f, '{CHANGES[c]}', D, 'source.changes', 'adaptation.ts changesOutsideGrant, approvalStanding', 'Whether the rights holder approves the draft, and whether an approval already given still stands', U('adaptation', 'they approve a draft whose declared changes the agreement allows, and refuse one that goes past it, naming what'), E('sources', 'an adaptation of a protected work is optioned, renewed and bought before its production can be planned'))
 c(f, '"Change Financing Target"', D, 'finance.target', 'finance.ts financeSummary, decide', 'What is still to raise, and whether backers can be approached', U('decision-effects', 'sets what is still to raise'), E('careers', 'stop motion: refused for lack of money'))
 c(f, '{`Ask The ${d.backer} For`}', D, 'deal.counter.term', 'negotiation.ts', 'Asking for better terms: they agree, hold or withdraw', U('negotiation', 'leverage rises with another offer open'), E('negotiation', 'an investor offer'))
 
@@ -330,9 +328,33 @@ c(f, '{`Keep My ${c.label}`}', D, "which of the player's words a revision leaves
 c(f, '{`Keep My ${c.label} And Add None`}', D, "whether a revision adds the proposal's people or outline beside the project's", 'blueprints.ts applyBlueprint', 'Kept: nothing is added; unticked: the proposal\'s are added beside, and nothing is removed', U('proposal', 'revising'))
 f = 'PlanViews.tsx'
 c(f, '"Spending Ceiling"', D, 'Project.mandates[].ceiling', 'mandates.ts guideMePlan, runMandate, guideMeRefusal', 'The most Guide Me may commit for a department: offers that do not fit are not sent, and a counteroffer past it comes back to the player', U('guide-me', 'never goes past the ceiling'))
+# The real music catalog (music-catalog.ts, from November 13, 2026: the owner's v5 brief, 3).
+f = 'MusicCatalog.tsx'
+c(f, '"Find A Composer, Artist Or Recording"', D, 'none (a search of the music catalog)', 'music-catalog.ts searchMusic', 'Which real people, groups and recordings are listed, to license or consider', U('music-catalog', 'finds people by name and role'))
+c(f, '"Their Role"', D, 'none (a filter of the music catalog)', 'music-catalog.ts searchMusic', 'Only people credited in that role are listed, and recordings only for performers', U('music-catalog', 'finds people by name and role'))
+# The Release Plan (release-plan.ts, from November 13, 2026: the owner's v5 brief, 6).
+f = 'ReleasePlan.tsx'
+c(f, '{PLAN_ROUTES[r].label}', D, 'Project.releasePlan.routes', 'release-plan.ts setReleasePlan, proposalRefusal, selfRefusal; finish.ts festivalHold', 'Which routes can be worked: a buyer route opens proposals, a route you run opens its booking, festival-first holds every public release', U('release-plan', 'festival-first holds every public release'))
+c(f, '"Plan Territories"', D, 'Project.releasePlan.territories', 'release-plan.ts buyerValue, proposeLicence, selfCosts, releaseYourself', "Where proposals and your own releases go: more territories are worth more, cost more and can't include one an exclusive deal holds", U('release-plan', 'where an exclusive deal holds the rights'))
+c(f, '"First Public Date"', D, 'Project.releasePlan.date', 'release-plan.ts leadDays, releaseYourself (planRelease date)', 'The day your own releases go out and how long after signing a buyer releases', U('release-plan', 'names every cost first'))
+c(f, '"Held For Festivals Until"', D, 'Project.releasePlan.festivalUntil', 'finish.ts festivalHold in planRelease and acceptDistribution', 'No public release, and no offer signed for one, before this date', U('release-plan', 'festival-first holds every public release'))
+c(f, '"Version Abroad"', D, 'Project.releasePlan.version', 'release-plan.ts releaseYourself (finish.ts setReleaseVersion)', 'A dubbed version is reserved and paid on release, and reaches more people where it is dubbed', U('release-plan', 'keeps the plan and its proposals through a save'))
+c(f, '"Promotion Budget"', D, 'Project.releasePlan.promo; DistributionOffer.promo', 'release-plan.ts selfCosts; distribution.ts promoLift in reportedGross', 'Paid on release, and the same release reports more with it than without', U('release-plan', 'more with promotion'))
+c(f, '{`${label}: Buyer`}', D, 'LicenceProposal.buyer', 'release-plan.ts proposeLicence, answerProposal', 'Who answers, and who a rejection on the work rules out for good', U('release-plan', 'finally for that buyer'))
+c(f, '{`${label}: Your Ask`}', D, 'LicenceProposal.ask', 'release-plan.ts answerProposal', 'Accepted at or under what the buyer would pay, countered up to half again, rejected beyond', U('release-plan', 'is accepted at or under what the buyer would pay'))
+c(f, '{`${label}: Exclusive`}', D, 'LicenceProposal.exclusive; DistributionOffer.exclusive', 'release-plan.ts buyerValue; distribution.ts heldTerritories', 'Worth a fifth more, and holds its territories from every other deal for a year from release', U('release-plan', 'goes through a sales agent'))
 f = 'YourMoney.tsx'
 c(f, '"Put In From Your Own Money"', D, 'state.money postings; project finance deal (savings)', 'personal.ts putInOwnMoney, putInRefusal', 'Money leaves your account and arrives in the project as Your Own Money, nobody repaid from it', U('personal', 'puts money into a project only by your choice'))
+# Your company (company.ts, from November 13, 2026: the owner's v5 brief, 9).
+c(f, '"Company Name"', I, 'state.company.name', 'company.ts formCompany; FinishViews.tsx credits (A ... Production)', "The company's name, in its account and in the credits of what it produces", U('company', 'is formed with a name and capital'))
+c(f, '"Put In When It Is Formed"', D, 'state.company postings (capital); state.money postings (company)', 'company.ts formCompany, formRefusal', "Money leaves your account and arrives in the company's, with the formation fee", U('company', 'is formed with a name and capital'))
+c(f, '"Move Between You And The Company"', D, 'state.company postings (capital, draw); state.money postings (company)', 'company.ts moveCompanyMoney', 'Put in or drawn out, posted once on both sides, never more than the side holds', U('company', 'moves money in and draws it out'))
+c(f, '"Put In From The Company"', D, 'project finance deal (company); state.company postings; Project.producedBy', 'company.ts companyIntoProject, companyInRefusal', "The company's money arrives in the project, nobody repaid from it, and the company produces the project", U('company', 'puts money into a project'))
+f = 'FirstLook.tsx'
+c(f, '"Development Money From The Deal"', D, 'project finance deal (first-look); FirstLook.drawn', 'first-look.ts drawDevelopment, developmentRefusal, repayTurnaround', "The studio's development money arrives in a covered project, repaid from another studio's money if one takes it after a pass", U('first-look', 'puts development money into a covered film'))
+f = 'YourMoney.tsx'
 f = 'Equipment.tsx'
+c(f, "{`Hire The Rental House's Package On A Day The Kit Can't Serve (${money(housePackageFee(p))} A Day)`}", D, 'Project.kit.packageApproved', 'production/shoot.ts (a day the kit cannot serve); equipment.ts setPackageApproval', "Approved: such a day hires the package and is shot; not approved: the day is postponed, nothing paid, and the shortage waits", U('equipment', 'without approval, a day the kit'))
 c(f, '"Show"', V)
 c(f, '"Show"', V, n=2)
 f = 'MusicTab.tsx'

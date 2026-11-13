@@ -16,12 +16,13 @@ import { genre } from './genres';
 import { stream } from './rng';
 import { FORMAT_LABELS } from './projects';
 import { ANIMATION_HOUSE, MONTHS, familyKey, pitchRead, reachTerritories, slateRoom, strategyOf, type PitchRead, type StudioStrategy } from './strategy';
+import { considerDaysFor, firstLookHold, noteSubmission, repayTurnaround } from './first-look';
 import { addLog, newId, registerHandler, schedule } from './state';
 import { DAY, dateKey } from './time';
 import type { FinanceDeal, FinanceDealKind, GameState, Obligation, Project } from './types';
 
 /** The kinds of backer that are approached as a kind. A followed studio is approached by name (pitchToStudio). */
-export type BackerKind = Exclude<FinanceDealKind, 'agreed' | 'studio'>;
+export type BackerKind = Exclude<FinanceDealKind, 'agreed' | 'studio' | 'company' | 'first-look'>;
 
 /** What each kind of backer is, said once, the same everywhere. */
 export const BACKERS: Record<BackerKind, { name: string; who: string; why: string; decideDays: number }> = {
@@ -528,7 +529,7 @@ export function studioOption(state: GameState, p: Project, company: string): Stu
     : last && last.status === 'refused' ? 'You turned its offer down.'
     : last && last.sentCopy?.draft === p.approvedDraft ? 'It has read this draft. It reads a project again only with a newer approved draft.'
     : last && last.studio?.verdict === 'pass' ? 'It passed on this project.'
-    : documentsNeeded(p, STUDIO_DOCUMENTS, isNonfiction(p.axes.format), 'A pitch to a studio') ?? '';
+    : firstLookHold(state, p, company) || (documentsNeeded(p, STUDIO_DOCUMENTS, isNonfiction(p.axes.format), 'A pitch to a studio') ?? '');
   return { company, name: strategy.name, strategy, year, read, needs };
 }
 
@@ -545,14 +546,15 @@ export function pitchToStudio(state: GameState, p: Project, company: string): Fi
   const nf = isNonfiction(p.axes.format);
   const documents = STUDIO_DOCUMENTS.map((d) => ({ name: DOCUMENTS[d].name, fields: DOCUMENTS[d].fields(nf).map(([k, label]) => ({ label, text: String(p.story[k] ?? '') })) }));
   const deal: FinanceDeal = {
-    id: newId(state, 'fd'), kind: 'studio', backer: opt.name, amount: 0, status: 'considering', askedAt: state.now, decideAt: state.now + STUDIO_DECIDE_DAYS * DAY,
+    id: newId(state, 'fd'), kind: 'studio', backer: opt.name, amount: 0, status: 'considering', askedAt: state.now, decideAt: state.now + (considerDaysFor(state, p, company) ?? STUDIO_DECIDE_DAYS) * DAY,
     reason: '', received: 0, repaid: 0, terms: { recoup: 0, incomeShare: 0, approvalRights: [], credit: null, onDelivery: 0, deliverBy: null, unspent: 'stays' },
     sent: STUDIO_DOCUMENTS.map((d) => DOCUMENTS[d].name), sentCopy: { draft: p.approvedDraft, documents },
     studio: { company, v: opt.strategy.v, verdict: opt.read.verdict, for: [], against: [], next: '', year: opt.year, territories: [], window: null },
   };
   (p.finance ??= { estimate: p.funding.fund, target: p.funding.fund, deals: [] }).deals.push(deal);
+  noteSubmission(state, p, deal);
   schedule(state, deal.decideAt!, 'finance-decision', { projectId: p.id, dealId: deal.id }, { attention: 'notify', priority: 40 });
-  addLog(state, `You pitched ${p.title} to ${opt.name}, sending the approved script and your ${deal.sent!.join(' and ').toLowerCase()}. It will answer in about ${STUDIO_DECIDE_DAYS} days.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
+  addLog(state, `You pitched ${p.title} to ${opt.name}, sending the approved script and your ${deal.sent!.join(' and ').toLowerCase()}. It will answer in about ${Math.round((deal.decideAt! - state.now) / DAY)} days.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
   return deal;
 }
 
@@ -587,6 +589,8 @@ export function acceptDeal(state: GameState, p: Project, dealId: string): void {
   if (!d || d.status !== 'offered' || (d.expiresAt !== undefined && state.now >= d.expiresAt)) throw new Error('That offer is no longer open.');
   if (d.counter && !d.counter.outcome) throw new Error('They are considering the better terms you asked for. Wait for their answer.');
   if (p.delivered && d.terms.onDelivery) throw new Error('This project is already delivered.');
+  const rival = d.kind === 'studio' && deals(p).find((x) => x.kind === 'studio' && x.id !== d.id && (x.status === 'accepted' || x.status === 'breached'));
+  if (rival) throw new Error(`${rival.backer} already backs it as its studio, with its own release. One studio releases a film.`);
   if (OWN_MONEY.has(d.kind)) moveOwnMoney(state, p, d);
   d.status = 'accepted';
   const now = d.amount - d.terms.onDelivery;
@@ -594,6 +598,7 @@ export function acceptDeal(state: GameState, p: Project, dealId: string): void {
   p.funding.fund += now;
   if (d.terms.deliverBy) schedule(state, d.terms.deliverBy, 'finance-deadline', { projectId: p.id, dealId: d.id }, { attention: 'interrupt', priority: 35 });
   p.history.push({ at: state.now, text: `${d.backer} backs the project with ${money(d.amount)}.` });
+  repayTurnaround(state, p, d);
   addLog(state, `You accepted ${money(d.amount)} from ${theBacker(d)} for ${p.title}. ${money(now)} is now in the budget.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'budget' } });
   payCommission(state, p, d, now);
 }

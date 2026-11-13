@@ -112,6 +112,9 @@ export function isLocalRequest(req) {
   return isLoopback(req.socket?.remoteAddress) && LOOPBACK_HOST.test(req.headers.host ?? '') && !FORWARDED.some((h) => req.headers[h] !== undefined);
 }
 
+/** Whether a request came over HTTPS: to this server directly, or to a proxy in front of it that says so. */
+export const isHttps = (req) => !!req?.socket?.encrypted || String(req?.headers?.['x-forwarded-proto'] ?? '').split(',')[0].trim() === 'https';
+
 const SESSION_HOURS = 12;
 const COOKIE = 'slate_owner';
 const digest = (s) => createHash('sha256').update(s).digest();
@@ -139,8 +142,12 @@ export function createOwnerGate({ films = false, secret = null, now = () => Date
   return {
     /** Whether this request may have the owner's data. */
     allows: (req) => films && (isLocalRequest(req) || signedIn(req)),
-    /** For the game's Settings: whether sign-in is offered here, and whether this request is already the owner's. */
-    status: (req) => ({ owner: films && (isLocalRequest(req) || signedIn(req)), signIn: films && !!want && !isLocalRequest(req) }),
+    /**
+     * For the game's Settings: whether sign-in is offered here, whether this request is already the owner's, and whether
+     * it is the owner's own server reached from another device with no passphrase configured, so nothing could sign in
+     * (`elsewhere`: until November 13, 2026 that device was told nothing, and the owner's phone showed no pictures).
+     */
+    status: (req) => ({ owner: films && (isLocalRequest(req) || signedIn(req)), signIn: films && !!want && !isLocalRequest(req), elsewhere: films && !want && !isLocalRequest(req) }),
     /** Present the passphrase. Returns a session ID on success, or why not: 'unavailable', 'locked', 'wrong'. */
     signIn(presented) {
       if (!films || !want) return { ok: false, reason: 'unavailable' };
@@ -157,8 +164,10 @@ export function createOwnerGate({ films = false, secret = null, now = () => Date
       return { ok: true, id };
     },
     signOut(req) { const id = cookieOf(req); if (id) sessions.delete(id); },
-    cookie: (id) => `${COOKIE}=${id}; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=${SESSION_HOURS * 3600}`,
-    expiredCookie: `${COOKIE}=; HttpOnly; Secure; SameSite=Strict; Path=/; Max-Age=0`,
+    // Secure only where the page came over HTTPS: a browser keeps no Secure cookie from a plain-http address, so until
+    // November 13, 2026 the owner's phone on their own network signed in and was forgotten at once.
+    cookie: (id, req) => `${COOKIE}=${id}; HttpOnly;${isHttps(req) ? ' Secure;' : ''} SameSite=Strict; Path=/; Max-Age=${SESSION_HOURS * 3600}`,
+    expiredCookie: (req) => `${COOKIE}=; HttpOnly;${isHttps(req) ? ' Secure;' : ''} SameSite=Strict; Path=/; Max-Age=0`,
   };
 }
 
@@ -169,7 +178,7 @@ function serveSession(req, res, gate) {
   res.setHeader('x-content-type-options', 'nosniff');
   const json = (status, body) => { res.statusCode = status; res.setHeader('content-type', 'application/json'); res.end(req.method === 'HEAD' ? undefined : JSON.stringify(body)); };
   if (req.method === 'GET' || req.method === 'HEAD') return json(200, gate.status(req));
-  if (req.method === 'DELETE') { gate.signOut(req); res.setHeader('set-cookie', gate.expiredCookie); return json(200, gate.status(req)); }
+  if (req.method === 'DELETE') { gate.signOut(req); res.setHeader('set-cookie', gate.expiredCookie(req)); return json(200, gate.status(req)); }
   if (req.method !== 'POST') { res.setHeader('allow', 'GET, HEAD, POST, DELETE'); return json(405, {}); }
   // Only the game's own page signs in: a form on another site can't send JSON without asking first.
   if (!/^application\/json\b/.test(req.headers['content-type'] ?? '')) return json(415, {});
@@ -180,7 +189,7 @@ function serveSession(req, res, gate) {
     let passphrase;
     try { passphrase = JSON.parse(Buffer.concat(parts).toString('utf8')).passphrase; } catch { return json(400, {}); }
     const r = gate.signIn(passphrase);
-    if (r.ok) { res.setHeader('set-cookie', gate.cookie(r.id)); return json(200, { owner: true, signIn: true }); }
+    if (r.ok) { res.setHeader('set-cookie', gate.cookie(r.id, req)); return json(200, { owner: true, signIn: true, elsewhere: false }); }
     if (r.reason === 'locked') res.setHeader('retry-after', String(r.retryAfter));
     return json(r.reason === 'locked' ? 429 : r.reason === 'unavailable' ? 404 : 401, { owner: false, reason: r.reason });
   });

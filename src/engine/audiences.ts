@@ -91,24 +91,38 @@ export function lastAudienceWeek(p: Project, o: DistributionOffer, opened: strin
  * The observations for one week, from what is out by its last day. Deterministic for a world: the same release in the
  * same week always reports the same figures.
  */
-export function observeWeek(seed: number, projectId: string, o: Pick<DistributionOffer, 'id' | 'route'>, week: number, opened: string, showings: Showing[], territories: number): AudienceObservation[] {
+/**
+ * What a week stands against (the owner's goal: "tv ratings being fresh and different each week"; November 13, 2026):
+ * - a late slot leaves a broadcast about three fifths of the audience an earlier one gets;
+ * - summer weeks draw fewer viewers and winter weeks more, as television seasons go;
+ * - the week's competition is drawn once for the calendar week, from the save's seed, so every show that week meets the
+ *   same week, and a busy week for one is a busy week for all.
+ * Game calibration, each factor shown with the figure it moved.
+ */
+export const LATE_SLOT_AUDIENCE = 0.6;
+export const seasonFactor = (date: string): number => { const m = Number(date.slice(5, 7)); return m >= 6 && m <= 8 ? 0.88 : m === 12 || m <= 2 ? 1.08 : 1; };
+export const weekCompetition = (seed: number, weekFrom: string): number => Math.round((0.85 + stream(seed, 'tv-week', weekFrom)() * 0.3) * 100) / 100;
+
+export function observeWeek(seed: number, projectId: string, o: Pick<DistributionOffer, 'id' | 'route' | 'slot'>, week: number, opened: string, showings: Showing[], territories: number): AudienceObservation[] {
   const { from, to } = audienceWeekDates(opened, week);
   const out: AudienceObservation[] = [];
   const reach = Math.sqrt(Math.max(1, territories));
   const noise = (what: string) => 0.95 + stream(seed, 'audience', projectId, o.id, String(week), what)() * 0.1;
-  const base = { week, from, to, territories };
+  const context = { slot: o.route === 'broadcast' && o.slot === 'late' ? LATE_SLOT_AUDIENCE : 1, season: seasonFactor(from), competition: weekCompetition(seed, from) };
+  const against = context.slot * context.season * context.competition;
+  const base = { week, from, to, territories, context };
   if (o.route === 'broadcast') {
     // Each episode first shown this week; what it keeps of the audience depends on the episodes shown before it.
     showings.forEach((s, i) => {
       if (s.date < from || s.date > to) return;
       // Each earlier episode passes on what it keeps, and the time to the next showing what comes back after it.
       const kept = showings.slice(0, i).reduce((k, earlier, j) => k * retention(earlier.reception) * (j + 1 <= i ? gapEffect(days(earlier.date, showings[j + 1].date)) : 1), 1);
-      out.push({ ...base, metric: 'viewers', value: thousand(BROADCAST_BASE * appeal(s.reception) * reach * kept * noise(`v${s.number ?? 0}`)), scope: s.number === null ? 'title' : 'episode', ...(s.number === null ? {} : { episode: s.number }) });
+      out.push({ ...base, metric: 'viewers', value: thousand(BROADCAST_BASE * appeal(s.reception) * reach * kept * against * noise(`v${s.number ?? 0}`)), scope: s.number === null ? 'title' : 'episode', ...(s.number === null ? {} : { episode: s.number }) });
     });
   } else if (o.route === 'streaming') {
     const available = showings.filter((s) => s.date <= to);
     if (!available.length) return out;
-    const hours = thousand(available.reduce((n, s) => n + STREAMING_BASE * appeal(s.reception) * reach * (s.runtimeMin / 60) * Math.pow(STREAMING_DECAY, week - Math.max(1, weekOf(opened, s.date))), 0) * noise('h'));
+    const hours = thousand(available.reduce((n, s) => n + STREAMING_BASE * appeal(s.reception) * reach * (s.runtimeMin / 60) * Math.pow(STREAMING_DECAY, week - Math.max(1, weekOf(opened, s.date))), 0) * against * noise('h'));
     const runtimeHours = available.reduce((n, s) => n + s.runtimeMin / 60, 0);
     out.push({ ...base, metric: 'hours', value: hours, scope: 'title' });
     out.push({ ...base, metric: 'views', value: runtimeHours > 0 ? Math.round(hours / runtimeHours / 100) * 100 : 0, scope: 'title' });

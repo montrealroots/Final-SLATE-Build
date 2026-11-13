@@ -15,7 +15,8 @@ import { loadWorldHolidays } from '../world/holidays/holidays';
 import { climateNote } from '../world/climate';
 import { CinemasNearby } from './Cinemas';
 import { RepresentationCard } from './Representation';
-import { YourMoneyCard } from './YourMoney';
+import { CompanyCard, YourMoneyCard } from './YourMoney';
+import { FirstLookCard } from './FirstLook';
 import { YourEquipmentCard } from './Equipment';
 import { ReputationCard, WorkForOthersCard } from './Jobs';
 import { RecordBookCard } from './RecordBook';
@@ -406,6 +407,8 @@ export function Profile() {
           ) : <p className="muted">Credits appear here when a project is delivered.</p>}
         </section>
         <YourMoneyCard />
+        <CompanyCard />
+        <FirstLookCard />
         <YourEquipmentCard />
         <ReputationCard />
         <WorkForOthersCard />

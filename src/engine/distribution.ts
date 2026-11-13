@@ -21,6 +21,13 @@ import type { DistributionOffer, GameState, Project } from './types';
 export const REPORT_MONTHS = 6;
 /** The distributor's fee: its share of gross before anything recoups the guarantee. Simulation assumption. */
 export const DISTRIBUTOR_FEE = 0.35;
+/**
+ * Routes the player runs themselves (release-plan.ts) reach fewer people than a distributor's for the same film, until
+ * promotion widens them: promotional spending lifts what is reported, by the square root of what was spent, up to two and
+ * a half times at $90,000. Simulation assumptions.
+ */
+export const SELF_REACH: Record<NonNullable<DistributionOffer['self']>, number> = { 'partner-theatrical': 0.8, transactional: 0.55, direct: 0.3 };
+export const promoLift = (promo = 0): number => 1 + Math.min(1.5, Math.sqrt(Math.max(0, promo) / 40_000));
 /** When the offers for later windows come, after a release. Simulation assumption. */
 export const LATER_WINDOW_DAYS = 120;
 
@@ -57,7 +64,8 @@ export function reportedGross(seed: number, p: Project, o: DistributionOffer, mo
   const noise = 0.8 + stream(seed, 'report', p.id, o.id, String(month))() * 0.4;
   // A cinema run's later months follow the screens the cinemas kept it on (box-office.ts screenShare).
   const screens = o.route === 'theatrical' ? screenShare(o, month) : 1;
-  return Math.round((Math.max(0, reception - 35) * 1500 * routeScale * Math.sqrt(territoriesReached(p, o)) * curve * noise * screens) / 100) * 100;
+  const own = o.self ? SELF_REACH[o.self] * promoLift(o.promo) : 1;
+  return Math.round((Math.max(0, reception - 35) * 1500 * routeScale * Math.sqrt(territoriesReached(p, o)) * curve * noise * screens * own) / 100) * 100;
 }
 
 /** How many territories a deal's film is out in: a count, where territoriesReached weighs a dubbed one more. */
@@ -89,7 +97,7 @@ registerHandler('box-office-week', (state, ev) => {
   const week = ev.payload.week as number;
   const w = recordWeek(o, week, opened, territoriesOpen(p, o), reportedGross(state.seed, p, o, monthOfWeek(week)), state.seed);
   if (w && week === 1) {
-    const m = weekMoney(w, DISTRIBUTOR_FEE);
+    const m = weekMoney(w, o.fee ?? DISTRIBUTOR_FEE);
     addLog(state, `${p.title} took ${money(m.gross)} in its first week in cinemas, from ${m.admissions.toLocaleString('en-US')} admissions. Simulated; provisional until ${o.distributor} reports the month.`, 'money', { projectId: p.id, route: { view: 'project', projectId: p.id, tab: 'release' } });
   }
   return { suppressInterrupt: true };
@@ -105,7 +113,7 @@ registerHandler('distribution-report', (state, ev) => {
   if (opened) settleMonth(o, ev.payload.month as number, gross, opened, territoriesOpen(p, o));
   const rep = (o.reported ??= { gross: 0, net: 0, overagePaid: 0 });
   rep.gross += gross;
-  rep.net += Math.round(gross * (1 - DISTRIBUTOR_FEE));
+  rep.net += Math.round(gross * (1 - (o.fee ?? DISTRIBUTOR_FEE)));
   const due = Math.max(0, rep.net - o.minimumGuarantee) - rep.overagePaid;
   if (due > 0) {
     rep.overagePaid += due;

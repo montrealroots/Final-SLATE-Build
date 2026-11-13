@@ -96,3 +96,48 @@ test('casting and music by Guide Me: the cast plan read and approved, offers out
     return p ? [p.music?.brief?.delegateReview, p.hires.some((h: { roleId: string; guided?: string }) => h.roleId === 'composer' && !!h.guided)] : null;
   }).toEqual([true, true]);
 });
+
+// Guide Me for writing (from November 13, 2026, the owner's v5 brief, 1): the plan read first, approved within a
+// ceiling, the writers hired, their passes worked day by day, reviewed against the standard and accepted, on screen.
+test('writing by Guide Me: a co-writer\'s rewrite and a script editor\'s polish, commissioned, worked, reviewed and accepted', async ({ page }) => {
+  await quickLife(page, 'gb-london', '2026-02-02');
+  await nav(page, 'Projects');
+  await newProject(page, { title: 'Harbour Lights', format: 'Short Film', runtime: '12', budget: 'Low Budget' });
+  await section(page, 'Characters');
+  await page.getByLabel('Character Name').fill('Mara');
+  await page.getByRole('button', { name: 'Add Character' }).click();
+  await section(page, 'Script');
+  await addScene(page, { index: 0, place: 'Pier', chars: ['Mara'], minutes: '4' });
+  await addScene(page, { index: 1, place: 'Kitchen', chars: ['Mara'], minutes: '4' });
+  await saveAndApprove(page);
+  await section(page, 'Crew');
+  await page.getByRole('button', { name: 'Guide Me For Writing' }).click();
+  const dialog = page.getByRole('dialog', { name: 'Guide Me For Writing' });
+  const plan = dialog.getByRole('list', { name: 'The Plan' });
+  await expect(plan.getByRole('listitem')).toHaveCount(2);
+  await expect(plan.getByRole('listitem').nth(0)).toContainText('Co-Writer: A Rewrite');
+  await expect(plan.getByRole('listitem').nth(1)).toContainText('Script Editor: A Polish');
+  await expect(dialog).toContainText('accepts a delivered pass that reads 55 or more');
+  const cost = Number((await dialog.getByText('The Plan Costs:').locator('..').innerText()).match(/The Plan Costs: \$([\d,]+)/)![1].replace(/,/g, ''));
+  await dialog.getByLabel('Spending Ceiling').fill(String(cost * 2));
+  await dialog.getByRole('button', { name: 'Approve Guide Me' }).click();
+  const box = page.getByRole('region', { name: 'Guide Me, Writing' });
+  await expect(box).toContainText(/^Guide Me is writing: \$[\d,]+ of the \$[\d,]+ ceiling committed, 2 offers out\./);
+  // Days pass: offers answered, the rewrite worked and reviewed, then the polish; each day of it paid.
+  for (let i = 0; i < 40 && !/^Guide Me finished the writing/.test(await box.innerText()); i++) { await advance(page, 'next-day'); await section(page, 'Crew'); }
+  await expect(box).toContainText(/^Guide Me finished the writing it was given: \$[\d,]+ of the \$[\d,]+ ceiling committed\./);
+  // The save is written a moment after the screen updates: read it once it holds the finished writing. No pass is still
+  // being worked, and an accepted rewrite has its polish. A pass that came back to the player stays 'delivered', which
+  // is finished for Guide Me (until a later fix on November 13, 2026 this waited for it, and timed out on the phone).
+  // Read at once, the production build's save could still be a day behind.
+  type Job = { scope: string; status: string; passes: { read?: number; done: number }[] };
+  const settled = (js: Job[] | undefined) => !!js?.length && js.every((j) => j.status !== 'working') && (js.find((j) => j.scope === 'rewrite')?.status !== 'accepted' || js.some((j) => j.scope === 'polish'));
+  await expect.poll(async () => settled((await readSavedState(page))?.projects?.[0]?.writing), { timeout: 30_000 }).toBe(true);
+  const jobs = (await readSavedState(page)).projects[0].writing as Job[];
+  // Either both passes were accepted at the standard, or the rewrite came back to the player and the polish with it.
+  const rewrite = jobs.find((j) => j.scope === 'rewrite')!;
+  if (rewrite.status === 'accepted') expect(jobs.map((j) => j.scope).sort()).toEqual(['polish', 'rewrite']);
+  else await expect(box).toContainText('Script Editor: the polish waits on the rewrite that came back to you.');
+  for (const j of jobs.filter((x) => x.status === 'accepted')) expect(j.passes.at(-1)!.read!).toBeGreaterThanOrEqual(55);
+  for (const j of jobs) expect(j.passes.reduce((a, x) => a + x.done, 0)).toBeGreaterThan(0);
+});

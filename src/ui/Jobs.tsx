@@ -4,13 +4,23 @@
 import { Fragment, useState } from 'react';
 import { money } from '../engine/budget';
 import { formatDateKey } from '../engine/time';
-import { JOB_ROLES, acceptJob, acceptRefusal, declineJob, jobCredits, withdrawJob, type JobRole, type OutsideJob } from '../engine/jobs';
+import { JOB_ROLES, acceptJob, acceptRefusal, askBetterRate, declineJob, evidenceFor, jobCredits, withdrawJob, type JobRole, type OutsideJob } from '../engine/jobs';
+import { PRODUCTION_KIND_LABELS, productionById } from '../engine/productions';
 import { reputation } from '../engine/reputation';
 import { qualityWords } from '../engine/finish';
 import { agentById } from '../engine/representation';
 import { store, useGame } from './store';
 
 const span = (j: OutsideJob) => `${j.days.length} ${j.days.length === 1 ? 'day' : 'days'}, ${formatDateKey(j.days[0])} to ${formatDateKey(j.days.at(-1)!)}`;
+
+/** The production a job is on: its kind, genre and dates, as the game keeps them. */
+function ProductionLine({ j }: { j: OutsideJob }) {
+  const g = useGame();
+  const p = j.productionId ? productionById(g, j.productionId) : undefined;
+  if (!p) return null;
+  if (p.cancelled) return <div className="dim small">{PRODUCTION_KIND_LABELS[p.kind]}, {p.genre}: cancelled before it shot.</div>;
+  return <div className="dim small">{PRODUCTION_KIND_LABELS[p.kind]}{p.episodes ? ` of ${p.episodes} episodes` : ''}, {p.genre}: it shoots {formatDateKey(p.shootsFrom)} to {formatDateKey(p.wrapsOn)} and comes out {formatDateKey(p.releasesOn)}.{p.delayedDays ? ` Put back ${p.delayedDays} days.` : ''}</div>;
+}
 
 export function WorkForOthersCard() {
   const g = useGame();
@@ -30,10 +40,15 @@ export function WorkForOthersCard() {
               <li key={j.id} className="list-item" style={{ flexWrap: 'wrap', gap: 'var(--s2)' }}>
                 <div className="grow" style={{ minWidth: 0 }}>
                   <strong>{JOB_ROLES[j.role].label}: {j.production}</strong> <span className="dim small">({j.company}; an invented production)</span>
+                  <ProductionLine j={j} />
+                  {j.part && <div className="small"><strong>{j.part}.</strong> {j.material} {j.requirement}</div>}
                   <div className="small">{span(j)}, {money(j.dayRate)} a day: {money(j.dayRate * j.days.length)} if every day is worked{j.viaAgent ? `, less ${Math.round(j.viaAgent.rate * 100)}% to ${agentById(j.viaAgent.agentId).name}, who found it` : ''}.</div>
+                  {j.role !== 'acting' && <div className="dim small">{evidenceFor(g, j.role)}</div>}
+                  {j.counter && <div className="dim small">{j.counter.outcome === 'agreed' ? `It agreed to ${money(j.dayRate)} a day.` : j.counter.outcome === 'held' ? `It kept its rate of ${money(j.dayRate)} a day.` : `You asked for ${money(j.counter.rate)} a day; it answers in a couple of days.`}</div>}
                   {no && <div className="dim small">{no}</div>}
                 </div>
                 <button className="btn btn-sm btn-primary" disabled={!!no} aria-label={`Accept ${j.production}`} onClick={() => setErr(store.act((s) => acceptJob(s, j.id)))}>Accept</button>
+                <button className="btn btn-sm" disabled={!!j.counter} aria-label={`Ask For ${money(Math.round(j.dayRate * 1.2))} A Day On ${j.production}`} onClick={() => setErr(store.act((s) => askBetterRate(s, j.id)))}>Ask For {money(Math.round(j.dayRate * 1.2))} A Day</button>
                 <button className="btn btn-sm" aria-label={`Decline ${j.production}`} onClick={() => setErr(store.act((s) => declineJob(s, j.id)))}>Decline</button>
               </li>
             );
@@ -56,7 +71,7 @@ export function WorkForOthersCard() {
       {taken.length > 0 && <p className="dim small">Withdrawing pays the days worked and nothing more, and offers come less often for a while; so does a missed day.</p>}
       {credits.length > 0 && (
         <ul className="list" aria-label="Your Credits For Others">
-          {credits.map((j) => <li key={j.id} className="list-item">{JOB_ROLES[j.role].label}, {j.production} ({j.company}), {j.attended.length} {j.attended.length === 1 ? 'day' : 'days'}</li>)}
+          {credits.map((j) => { const p = j.productionId ? productionById(g, j.productionId) : undefined; return <li key={j.id} className="list-item">{JOB_ROLES[j.role].label}{j.part ? ` (${j.part.replace(/^The part of /, 'as ')})` : ''}, {j.production} ({j.company}), {j.attended.length} {j.attended.length === 1 ? 'day' : 'days'}{p ? (p.result ? `. Out ${formatDateKey(p.releasesOn)}, received at ${p.result.reception} (simulated).` : `. Comes out ${formatDateKey(p.releasesOn)}.`) : ''}</li>; })}
         </ul>
       )}
       <p className="dim small">Day rates, the odds of an offer and its length are game calibration. The pay comes to your own account when the days are done.</p>

@@ -272,10 +272,11 @@ describe('who gets the owner\'s data', () => {
     try {
       expect(json(await get(s.port, '/screen-catalog/index.json')).version).toBe(1);
       for (const path of FILM_ROUTES) expect((await get(s.port, path)).status, path).toBe(200);
-      expect(json(await get(s.port, '/owner/session'))).toEqual({ owner: true, signIn: false });
+      expect(json(await get(s.port, '/owner/session'))).toEqual({ owner: true, signIn: false, elsewhere: false });
       for (const headers of ELSEWHERE) {
         await nothingOwned(s.port, headers);
-        expect(json(await get(s.port, '/owner/session', { headers }))).toEqual({ owner: false, signIn: false });
+        // Another device is told it can't sign in here, so its Settings can say why nothing is offered (November 13, 2026).
+        expect(json(await get(s.port, '/owner/session', { headers }))).toEqual({ owner: false, signIn: false, elsewhere: true });
         // With no passphrase configured there is nothing to sign in with.
         expect((await get(s.port, '/owner/session', { method: 'POST', headers: { ...headers, 'content-type': 'application/json' }, body: JSON.stringify({ passphrase: PASS }) })).status).toBe(404);
       }
@@ -289,7 +290,7 @@ describe('who gets the owner\'s data', () => {
     const signIn = (passphrase: unknown, type = 'application/json') => get(s.port, '/owner/session', { method: 'POST', headers: { ...far, 'content-type': type }, body: JSON.stringify({ passphrase }) });
     try {
       await nothingOwned(s.port, far);
-      expect(json(await get(s.port, '/owner/session', { headers: far }))).toEqual({ owner: false, signIn: true });
+      expect(json(await get(s.port, '/owner/session', { headers: far }))).toEqual({ owner: false, signIn: true, elsewhere: false });
       // A made-up or malformed cookie is no session.
       for (const cookie of ['slate_owner=' + 'a'.repeat(64), 'slate_owner=1', 'other=1']) await nothingOwned(s.port, { ...far, cookie });
       expect((await signIn('not it')).status).toBe(401);
@@ -298,7 +299,11 @@ describe('who gets the owner\'s data', () => {
       const ok = await signIn(PASS);
       expect(ok.status).toBe(200);
       const set = String(ok.headers['set-cookie']);
-      expect(set).toMatch(/^slate_owner=[0-9a-f]{64}; HttpOnly; Secure; SameSite=Strict; Path=\/; Max-Age=43200$/);
+      // Over plain http (a phone on the owner's own network) the cookie can't be Secure, or the browser drops it.
+      expect(set).toMatch(/^slate_owner=[0-9a-f]{64}; HttpOnly; SameSite=Strict; Path=\/; Max-Age=43200$/);
+      // Through a proxy that says the page came over HTTPS, it is.
+      const secure = await get(s.port, '/owner/session', { method: 'POST', headers: { ...far, 'x-forwarded-proto': 'https', 'content-type': 'application/json' }, body: JSON.stringify({ passphrase: PASS }) });
+      expect(String(secure.headers['set-cookie'])).toMatch(/^slate_owner=[0-9a-f]{64}; HttpOnly; Secure; SameSite=Strict; Path=\/; Max-Age=43200$/);
       const cookie = set.split(';')[0];
       // The passphrase is never sent back, and nothing about a session is kept by a cache.
       expect(ok.body.toString()).not.toContain(PASS);
@@ -310,7 +315,7 @@ describe('who gets the owner\'s data', () => {
       const pack = await get(s.port, FILM_ROUTES[1], { headers: mine });
       expect([pack.status, pack.headers['cache-control'], pack.headers.vary]).toEqual([200, 'private, max-age=3600', 'cookie']);
       expect(json(await get(s.port, '/mods/index.json', { headers: mine })).mods.map((m: { file: string }) => m.file)).toEqual(['cinemas.slatepack', 'films.slatepack']);
-      expect(json(await get(s.port, '/owner/session', { headers: mine }))).toEqual({ owner: true, signIn: true });
+      expect(json(await get(s.port, '/owner/session', { headers: mine }))).toEqual({ owner: true, signIn: true, elsewhere: false });
       // Another visitor, without the cookie, still gets nothing while the owner is signed in.
       await nothingOwned(s.port, far);
       // Twelve hours on, the session has ended.
@@ -341,7 +346,7 @@ describe('who gets the owner\'s data', () => {
     const s = await start(catalog('public', good), undefined, packsDir, false, PASS);
     try {
       await nothingOwned(s.port, {});
-      expect(json(await get(s.port, '/owner/session'))).toEqual({ owner: false, signIn: false });
+      expect(json(await get(s.port, '/owner/session'))).toEqual({ owner: false, signIn: false, elsewhere: false });
       expect((await get(s.port, '/owner/session', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ passphrase: PASS }) })).status).toBe(404);
     } finally { s.close(); }
   });

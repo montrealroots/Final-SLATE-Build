@@ -5,9 +5,10 @@
 // is not offered.
 import { useEffect, useMemo, useState } from 'react';
 import type { Project } from '../engine/types';
-import { MEDIUM_LABELS, loadSources, rightsLine, rightsStanding, searchSources, type RightsStanding, type SourceCatalog, type SourceMedium, type SourceWork } from '../engine/sources';
+import { MEDIUM_LABELS, loadPlots, plotSection, loadSources, rightsLine, rightsStanding, searchSources, type RightsStanding, type SourceCatalog, type SourceMedium, type SourceWork } from '../engine/sources';
 import { STANDING_SAYS, adaptFrom, adaptRefusal, basedOn } from '../engine/adaptation';
 import { GENRES, genreCatalogLoaded, loadGenreCatalog } from '../engine/genres';
+import { storyGenres } from '../engine/story-genre';
 import { Modal, SelectField, TextField, plural } from './components';
 import { store, useGame } from './store';
 
@@ -16,6 +17,16 @@ const STANDING_LABEL: Record<RightsStanding, string> = { 'public-domain-recorded
 const when = (w: SourceWork) => (w.year === null ? 'No year recorded' : w.year < 0 ? `${-w.year} BC` : String(w.year));
 const makers = (w: SourceWork) => w.creators.map((c) => c.name).join(', ') || 'No creator recorded';
 export const genreName = (id: string) => GENRES.find((g) => g.id === id)?.name ?? id;
+
+/**
+ * Where no recorded genre is one of the game's, what its story reads as: the same reading the brief proposes (from
+ * November 13, 2026; until then this said "none is guessed" while the brief proposed its medium's genre).
+ */
+function StoryGenres({ work }: { work: SourceWork }) {
+  const read = storyGenres(work, new Set(GENRES.map((g) => g.id)));
+  if (!read.length) return <>None. Nothing recorded is plainly one of the game's genres, and too little of its story is recorded to read one from, so an adaptation proposes one from its medium.</>;
+  return <>None recorded. Read from its story, an adaptation proposes {read.map((r) => `${genreName(r.genre)} (${r.words.slice(0, 3).map(([x]) => x).join(', ')})`).join(' and ')}.</>;
+}
 
 /** The catalog, loaded once and tried again on request, with the game's genre names. */
 export function useSourceCatalog(): { catalog: SourceCatalog | null; failed: boolean; retry: () => void } {
@@ -88,6 +99,9 @@ const list = (xs: string[] | undefined) => (xs?.length ? xs.join(', ') : 'Not re
 /** What is recorded about a work, its rights, and where each part comes from. */
 export function WorkFacts({ w }: { w: SourceWork }) {
   const standing = rightsStanding(w);
+  // The work's story is fetched when a work is opened (sources.ts loadPlots): undefined until then.
+  const [, setStories] = useState(0);
+  useEffect(() => { let live = true; if (w.plot === undefined) loadPlots().catch(() => {}).finally(() => { if (live) setStories((n) => n + 1); }); return () => { live = false; }; }, [w]);
   return (
     <>
       <p className="idea-sentence">{w.description ?? `${MEDIUM_LABELS[w.medium]}.`}</p>
@@ -98,6 +112,15 @@ export function WorkFacts({ w }: { w: SourceWork }) {
           <p className="dim small">From the English Wikipedia article <a href={w.summary.link} target="_blank" rel="noreferrer noopener">{w.summary.article}</a>, under {w.summary.licence}, read {w.summary.retrieved}. Its words, not the game's.</p>
         </section>
       )}
+      <section className="idea-block" aria-label="The Story">
+        <h3>The Story</h3>
+        {w.plot === undefined ? <p className="dim small">Reading the story…</p> : w.plot ? (
+          <>
+            {w.plot.paragraphs.map((x, i) => <p key={i} className="small">{x}</p>)}
+            <p className="dim small">From the {plotSection(w.plot)} section of the English Wikipedia article <a href={w.plot.link} target="_blank" rel="noreferrer noopener">{w.plot.article}</a>, under {w.plot.licence}, read {w.plot.retrieved}{w.plot.whole ? '' : '; the article tells more than is kept here'}. Its words, not the game's or the work's. An adaptation's outline is told from it, and its credits name the article.</p>
+          </>
+        ) : <p className="muted small">No story is recorded for {w.title}: its article has no plot section{w.medium === 'video-game' ? ' (it describes how the game is played)' : ''}. An adaptation of it starts from the game's own outline, for you to write the work's story into.</p>}
+      </section>
       <section className="idea-block" aria-label="What Is Recorded">
         <h3>What Is Recorded</h3>
         <dl className="kv">
@@ -113,7 +136,7 @@ export function WorkFacts({ w }: { w: SourceWork }) {
           <dt>Characters</dt><dd>{w.characters?.length ? w.characters.map((c) => c.name).join(', ') : 'None recorded'}</dd>
           <dt>What It Is About, As Recorded</dt><dd>{list(w.subjects)}</dd>
           <dt>Genres, As Recorded</dt><dd>{w.recordedGenres.map((x) => x.label).join(', ') || 'None recorded'}</dd>
-          <dt>In The Game's Genres</dt><dd>{w.genres.length ? w.genres.map((x) => `${genreName(x.genre)}: ${x.because}`).join('. ') : "None: nothing recorded is plainly one of the game's genres, and none is guessed."}</dd>
+          <dt>In The Game's Genres</dt><dd>{w.genres.length ? w.genres.map((x) => `${genreName(x.genre)}: ${x.because}`).join('. ') : <StoryGenres work={w} />}</dd>
           <dt>Adapted Before</dt><dd>{w.adaptationCount ? `${w.adaptationCount} recorded: ${(w.adaptations ?? []).map((a) => `${a.title}${a.kind ? ` (${a.kind}${a.year ? `, ${a.year}` : ''})` : a.year ? ` (${a.year})` : ''}`).join('; ')}${w.adaptationCount > (w.adaptations?.length ?? 0) ? ', and more' : ''}. You can still make your own.` : 'None recorded'}</dd>
         </dl>
       </section>

@@ -6,6 +6,96 @@ Read this first. It lists what is finished, what the Gap Completion Package stil
 
 At every stopping point, open a pull request into `main` and merge it (see `CLAUDE.md`, certified by the user on November 6, 2026). Never merge red checks.
 
+## The Owner's v5 Brief (From November 13, 2026)
+
+The brief is `docs/v5/00-OWNER-BRIEF.md`, word for word. `docs/v5/LEDGER.md` says where each section stands, and the
+order of work is at its end. The owner said: "Don't stop until 100% perfect completion and proof of it."
+
+- **Done.**
+  - **1. Adaptation.** Story structure (`story-structure.ts`), the whole brief from the story, and Guide Me for
+    writing. A journey for delegated writing through release is still to come.
+  - **9. Money and equipment.** A kit shortage waits for the player's approval, and the player has a company of their
+    own.
+  - **5. First-look deals.** Researched in `docs/v5/FIRST-LOOK.md`, built in `first-look.ts` and `FirstLook.tsx`, and
+    tested in `tests/first-look.test.ts` and `e2e/v5-first-look.spec.ts`.
+  - **6. The Release Plan.** Researched in `docs/v5/RELEASE-PLAN.md`, built in `release-plan.ts` and `ReleasePlan.tsx`,
+    and tested in `tests/release-plan.test.ts` and `e2e/v5-release-plan.spec.ts`.
+  - **3 and 4. Music.** A real catalog from Wikidata (`tools/music/catalog.mjs`, `music-catalog.ts`,
+    `MusicCatalog.tsx`), and briefs and cues from the project (`cues.ts`). `docs/v5/MUSIC.md` has the details.
+  - **7 and 8. The living industry and metrics.**
+    - Productions that persist, for outside work (`productions.ts`).
+    - Entry routes by evidence.
+    - A TV week's slot, season and competition (`audiences.ts`).
+    - The record book's money kept apart.
+    - A grade for everyone the player can hire, with what it is made of (`grades.ts`, on the hiring list).
+  - **2. Production tailored.** A schedule preview, work by format, and a test that quality isn't bought.
+  - **10 and 11. Phone parity and the journeys.** The v5 journeys run on phone and iPhone WebKit, and the layout sweep
+    found and fixed one defect. `docs/v5/JOURNEYS.md` says where each of the ten journeys stands.
+- **Still open** (`docs/v5/JOURNEYS.md`, `docs/v5/LEDGER.md`):
+  1. A physical phone test.
+- **Then.** Merge PR #86 once its newest head is green, and write the final report.
+- **The story re-fetch is done.** `src/data/plots.json` was rebuilt from `.sources-cache/plots2`. A section that mixes
+  the story with something else keeps only its story parts, and 47 works are narrowed that way. Tower of God keeps its
+  world parts: it has no plot part.
+- **Event names must be unique.** `tests/handlers-unique.test.ts` fails a second `registerHandler` of the same kind. One
+  such duplicate silently replaced the music licence handler on November 13, 2026.
+
+## Newest Requests (November 13, 2026)
+
+- **Genres for adapted works (the owner: "in no way is 'GTA 3' an adventure").** A work whose recorded genres don't
+  map (220 of 643, most video games, whose records name how they are played) was given a genre by its medium alone.
+  `src/engine/story-genre.ts` now reads the work's summary and story for genre words (cartel, mafia, gang: gangster),
+  proposed with the words shown. The sweep, every such work and its result: `docs/v5/GENRES.md`.
+  - 94 are now read from their story. 126 have too little story to read and are still proposed from their medium,
+    and say so.
+  - Tested in `tests/proposal.test.ts`: GTA III is gangster, Red Dead Redemption 2 is western, Dracula is unchanged.
+  - Played: the adapt, sources, J03, v5-source-to-release and v5-series-release e2e on desktop.
+- **The brief's own words, after the owner looked at Red Dead Redemption 2 (same day).** Fixed in `proposal.ts`,
+  `story-structure.ts`, `story-genre.ts`:
+  - The question reads as English: "Can Arthur Morgan survive, and which will he choose: saving himself or saving the
+    others?" Every template speaks of each person in their own pronouns (it said "them" of everyone).
+  - Where the story has someone against the lead, the conflict and stakes name them (Arthur Morgan against Dutch van der
+    Linde), not the genre's "the way things are run".
+  - A story that opens on its event has it as the logline (the ferry heist, not the later bank robbery). A logline that
+    leans on the sentence before it ("He intends to marry…") or talks about play is not used.
+  - A second or third genre read from the story needs five uses, so one passage of war doesn't make a western a war film.
+  - Scenes told from a work are inside or outside, and day or night, by their own words.
+  - The work's page says what its story reads as, not "none is guessed".
+  - Characters are counted by their first name and their surname after any title: Prince Hamlet leads Hamlet (Laertes
+    did), Mr Darcy and Jay Gatsby count. Sentences no longer split at "Dr." or "Mr.".
+  - A missing third part is named for its place (Portal's was "The Lead").
+  - Summaries and stories are tidied of what the extracts leave ("Sailor Moon  is", "Expected , abbreviated"):
+    `tools/sources/tidy.mjs`, applied to 103 summaries and 117 story paragraphs and in both fetch tools.
+  - `tests/brief-language.test.ts` proposes all 643 works as a film and a series and fails a pronoun that isn't the
+    person's, a placeholder left in, or a question that isn't one.
+  - Known and left: the rival is still the next most-named person where the story shows no one against the lead (Moby-Dick
+    sets Ahab against Queequeg, not the whale); inside or outside is the arc's guess where a scene's words name neither.
+- **Every adaptation has the work's story.** The owner: "All adapted material should have a story behind it, even
+  the copyrighted one." `tools/sources/plots.mjs` fetches each work's plot section from the English Wikipedia (CC BY-SA
+  4.0, credited) into `src/data/plots.json`, one request at a time with back-off. Rerun `node tools/sources/plots.mjs`
+  to fetch what is missing (it skips what is cached in `.sources-cache/plots/`), then `--build`.
+  - The proposal tells the premise, synopsis, a kept ending and every scene from the story, across every episode
+    (`proposal.ts`).
+  - A work with no story section gets the game's own outline in every episode, labelled.
+  - The credits name the article.
+  - Coverage, fetched November 13, 2026:
+    - 517 of 643 works have a story, including 41 of the 59 recorded as copyrighted.
+    - Every light novel has one, and 57 of 60 plays.
+    - Fewer for pure-play video games (42 of 71), poems (12 of 25) and online fiction (41 of 70).
+    - 30 works have no article at all.
+  - Scenes now share the running time to the quarter minute. Until then each was a whole minute at least, so a
+    two-minute episode in six scenes was six minutes of animation, and J03's season couldn't be drawn in time.
+  - J03 moved to seed 2.
+- **Copyright is credited, not cleared.** The owner chose credits only, with nothing blocking production.
+  - The option, rights purchase and rights-holder approval are gone (`adaptation.ts`, "Copyright").
+  - `creditLine` says what the work is based on and its recorded copyright, on the Budget page's Based On card and in
+    the delivered credits.
+  - An agreement a save already made stands, and its share is still paid.
+- **The phone could not install pictures.** Three causes, all fixed:
+  - The dev server read no owner passphrase. It now reads `SLATE_OWNER_SECRET_FILE`.
+  - The session cookie was always `Secure`, which a browser drops over plain http. It is now Secure only over HTTPS.
+  - A device that couldn't sign in was told nothing. It is now told why and what to do (`docs/DEPLOYMENT.md`).
+
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
@@ -291,7 +381,8 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       the score's conform), and three things a run has to do as a player would: build the schedule once the cast and
       crew have said yes (offers take two or three days), accept a backer's offer before it lapses (three weeks), and
       take the option on a copyrighted work before planning. J03 records its seeded outcome in the spec so a change is
-      seen (seed 1: a broadcaster, then a cancellation at about 80% kept against 88%). J11 accepts either a renewal or a
+      seen (seed 2 since November 13, 2026, when Portal's story moved the draws; seed 1 before: a broadcaster, then a
+      cancellation at about 80% kept against 88%). J11 accepts either a renewal or a
       cancellation of Coastline's simulated season, and checks that it is labelled. The game clock runs in real time
       between a run's actions, so audience figures vary a little from run to run; the checks read them from the save.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id

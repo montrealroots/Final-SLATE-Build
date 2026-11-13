@@ -1,4 +1,5 @@
 import { addStage, openParts, partMethods, partName, partScenes, removeStage, samePart, stageRefusal, stagesOf } from '../engine/parts';
+import { gradeOf } from '../engine/grades';
 import { Fragment, useState } from 'react';
 import { theBacker } from '../engine/backer-words';
 import { setShotPlan } from '../engine/takes-actions';
@@ -9,7 +10,7 @@ import { getPlace } from '../data/places';
 import { countryName } from '../world/gazetteer/gazetteer';
 import {
   BACKERS, EXPERIENCE, betterTerms, COUNTER_DAYS, type BetterTerm, assignEpisodeRole, backerDocuments, moneyKept, ownMoney, ownMoneyNotes, OWN_MONEY, acceptCounter, acceptDeal, approachBacker, approvedCharacters, approvedScenes, backerOptions, castPlayer, dealTerms, deals, financeSummary, refuseDeal, setFinanceTarget, castRoleFor, categoryTotals,
-  coachingNeeded, dateKey, declineCounter, estimateDays, forecast, formatDateKey, generatePlan, isAvailable, isEpisodic, keepWeatherPlan,
+  coachingNeeded, dateKey, declineCounter, estimateDays, forecast, formatDateKey, generatePlan, previewPlan, type PlanPreview, isAvailable, isEpisodic, keepWeatherPlan,
   ledgerTotals, makeOffer, money, neededRoles, personById, productionWindow, sharedHeritages, observance, proposeStaffing, puppetStatus, releaseHire, roleLabel,
   sceneLabel, sceneTechnique, sendStaffingOffers, skillLabel, moveShootDay, swapWithInteriorDay, uncastPlayer, withdrawOffer, addDaysToKey, type Person,
   type StaffingProposal, covers, fundingScenario,
@@ -24,17 +25,16 @@ import { askForBetterTerms, askRefusal } from '../engine/negotiation-actions';
 import { SITES, roofed, scoutedPlaces, siteName, siteNote } from '../engine/locations';
 import { currentZone, dayFees, estimatedShootDays, personAge, playingAgeAt, willingness } from '../engine';
 import { candidatesFor, childrenIn } from '../engine/hiring';
-import { OwnAccountCard } from './YourMoney';
+import { CompanyProjectCard, OwnAccountCard } from './YourMoney';
+import { FirstLookProjectCard } from './FirstLook';
 import { ProjectKitCard } from './Equipment';
-import { CAST, activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted } from '../engine/mandates';
+import { CAST, WRITING, WRITING_STANDARD, activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRefusal, mandateCommitted } from '../engine/mandates';
 import { searchAdvice, searchLine, searchPreview, searchRefusal, searchStatus, searchesFor, shortlistAdvice, startSearch } from '../engine/casting-director';
 import { negotiate, negotiationLine, negotiationPreview, negotiationRefusal, producerAccountLine } from '../engine/line-producer';
 import {
-  APPROACHES, APPROACH_ORDER, APPROVAL_DAYS, CHANGES, CHANGE_ORDER, approvalRefusal, approvalStanding, chainOfTitle, changesOutsideGrant, exerciseOption, optionStanding, optionTerms, participationPaid,
-  renewOption, sendForApproval, setSourceChange, takeOption, widenAgreement, widenCost,
+  chainOfTitle, creditLine, participationPaid,
 } from '../engine/adaptation';
-import type { AdaptationApproach } from '../engine/types';
-import { consideredOn, isReal, jobLabel, stopConsidering, tmdbIdOf } from '../engine/guests';
+import { consideredOn, isReal, jobLabel, realPerson, stopConsidering, tmdbIdOf } from '../engine/guests';
 import { Picture } from './Picture';
 import { storyAge, storyAgeWords } from '../engine/story-age';
 import { RULES_READ, licenceReady, projectRules, supervisionFor } from '../engine/minors';
@@ -152,11 +152,12 @@ function CandidateList({ p, roleId, characterId, method, stage, onDone }: { p: P
                 {/* A person from the film catalog has their photo here where the pictures are installed; nobody else has a face drawn for them. */}
                 {isReal(c.id) && <Picture subject={`person:${tmdbIdOf(c.id)}`} name={c.name} size="thumb" />}
                 <div className="grow">
-                  <strong>{c.name}</strong> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{isReal(c.id) && <> <span className="chip chip-info">From The Film Catalog</span></>}{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
+                  <strong>{c.name}</strong> <span className="chip" title={gradeOf(g, c, roleId).madeOf.join(' ')}>Grade {gradeOf(g, c, roleId).grade}</span> <span className="chip">{EXPERIENCE[c.experience - 1]}</span>{isReal(c.id) && <> <span className="chip chip-info">{realPerson(g, c.id)?.rec?.cc0 ? 'From The Music Catalog' : 'From The Film Catalog'}</span></>}{part && characterPronouns(part) && fits(c) && <> <span className="chip chip-positive">Pronouns Match</span></>}
                   {isReal(c.id)
                     ? <div className="dim">{c.samples}{c.born ? ` Age ${personAge(c, today)}.` : ' Date of birth not recorded.'}{plays(c) ? ` In this story they play ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''} Languages, background and nationality aren't recorded, and none is assumed. In this story they ask {money(c.dayRate)} a day.</div>
                     : <div className="dim">{c.samples} Speaks {c.languages.map(languageName).join(', ')}.{` Age ${personAge(c, today)}.`}{plays(c) ? ` Plays ages ${plays(c)![0]} to ${plays(c)![1]}.` : ''}{c.heritages.length ? ` Ethnicity: ${c.heritages.join(', ')}.` : ''} Nationality: {c.nationalities.map(countryName).join(', ')}. Asks {money(c.dayRate)} a day.</div>}
                   {characterId && sharedHeritages(g, p, characterId, c.id).length > 0 && <div><span className="chip">Shares A Background: {sharedHeritages(g, p, characterId, c.id).join(', ')}</span></div>}
+                  <details className="dim small"><summary>What Grade {gradeOf(g, c, roleId).grade} Is Made Of</summary><ul>{gradeOf(g, c, roleId).madeOf.map((m) => <li key={m}>{m}</li>)}<li>{gradeOf(g, c, roleId).rate}</li></ul></details>
                   {!av.ok && <div className="dim" style={{ color: 'var(--warning)' }}>{av.reason}</div>}
                   {willingness(g, c.id).reason && <div className="dim">{willingness(g, c.id).reason}</div>}
                   {notes.map((n) => <div key={n} className="dim" style={{ color: 'var(--warning)' }}>{n}</div>)}
@@ -567,8 +568,22 @@ function EpisodeAssignments({ p }: { p: Project }) {
           {p.writing && <HireExtra p={p} roleId="script-editor" />}
         </div>
       )}
+      {p.writing && p.approvedDraft !== null && !p.delivered && <WritingGuide p={p} />}
       <WritingWork p={p} />
     </section>
+  );
+}
+
+/** Guide Me for writing (from November 13, 2026): the writers and their passes, within a ceiling the player approves. */
+function WritingGuide({ p }: { p: Project }) {
+  const [open, setOpen] = useState(false);
+  const active = !!activeMandate(p, WRITING);
+  return (
+    <>
+      {!active && <button className="btn btn-sm spaced" onClick={() => setOpen(true)}>Guide Me For Writing</button>}
+      <GuideMeStanding p={p} dept={WRITING} />
+      {open && <GuideMeDialog p={p} dept={WRITING} onClose={() => setOpen(false)} />}
+    </>
   );
 }
 
@@ -631,6 +646,7 @@ export function ScheduleTab({ p }: { p: Project }) {
         {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
         {p.delivered && <p className="dim">This project has been delivered; its schedule is final.</p>}
         {!p.delivered && approvedScenes(p).some((s) => sceneTechnique(p, s) === 'live') && <p className="dim">About {plural(estimatedShootDays(p, g), 'shoot day')}, each about {money(dayFees(p).location + dayFees(p).equipment)} for the location and equipment, reserved when the schedule is built.</p>}
+        <SchedulePreview p={p} start={start} />
         <button className="btn btn-primary" disabled={!!p.delivered} onClick={() => setErr(store.act((s) => void generatePlan(s, p, start)))}>{p.schedule.startDate ? 'Rebuild Schedule' : 'Build Schedule'}</button>
         {p.schedule.startDate && <p className="dim">Rebuilding keeps finished work and moves only what hasn't happened yet.</p>}
       </section>
@@ -854,102 +870,27 @@ function MoneyKeptCard({ p }: { p: Project }) {
 }
 
 /**
- * The rights to the work a script adapts (engine/adaptation.ts; the v3 package, 02): where the option stands, what it
- * costs, and the chain of title so far. Shown only for a script adapted from a work chosen in the catalog. Every
- * figure and party here is this story's own, and the card says so.
+ * What the script is based on (engine/adaptation.ts), as the credits say it: the work, who made it, and its recorded
+ * copyright. The owner decided on November 13, 2026 that a copyrighted work is credited, and nothing blocks the
+ * production; until then this card was Adaptation Rights, where an option was taken, the rights bought and the draft
+ * sent to the rights holder before production could be planned. An agreement a save made then is listed as it was.
  */
-function AdaptationRights({ p }: { p: Project }) {
-  const g = useGame();
-  const [err, setErr] = useState<string | null>(null);
-  const ref = p.source?.ref;
-  // A work let go leaves its agreements in the record (adaptation.ts retireSource), shown here even with no work now.
-  if (!ref) return p.sourceHistory?.length ? (
-    <section className="card" aria-labelledby="rights-h">
-      <h2 id="rights-h">Adaptation Rights</h2>
-      <p className="muted">Your script no longer adapts a recorded work. What was agreed for the works it left is kept here.</p>
-      <ol className="list" aria-label="Chain Of Title">{chainOfTitle(p, (at) => longLocal(at, getPlace(p.axes.basePlaceId).zone).date).map((line) => <li key={line}>{line}</li>)}</ol>
-    </section>
-  ) : null;
-  const st = optionStanding(p, g.now);
-  // How closely it follows the work is chosen before the option is taken, and is what its price and its grant come from.
-  const [approach, setApproach] = useState<AdaptationApproach>('faithful');
-  const terms = (st === 'held' || st === 'exercised' ? p.source?.option?.terms : undefined) ?? optionTerms(p, approach);
-  const agreed = st === 'held' || st === 'exercised' ? p.source?.option?.terms.approach : undefined;
-  const ap = approvalStanding(p);
-  const outside = changesOutsideGrant(p);
-  const noSend = approvalRefusal(p, g.now);
+function BasedOn({ p }: { p: Project }) {
+  const line = creditLine(p);
+  if (!line) return null;
   const zone = getPlace(p.axes.basePlaceId).zone;
-  const act = (fn: (s: GameState) => void) => setErr(store.act(fn));
-  const SAYS: Record<typeof st, string> = {
-    'not-needed': 'No Option Asked',
-    none: 'No Option Yet',
-    held: 'Option Held',
-    expired: 'Option Ran Out',
-    exercised: 'Rights Bought',
-  };
+  const earlier = !!p.source?.option || !!p.sourceHistory?.length;
   return (
-    <section className="card" aria-labelledby="rights-h">
-      <h2 id="rights-h">Adaptation Rights</h2>
-      <p><span className={`chip${st === 'exercised' || st === 'not-needed' ? ' chip-positive' : st === 'expired' ? ' chip-warning' : ''}`}>{SAYS[st]}</span></p>
-      <p className="muted">Your script is adapted from {ref.title}. This is your story's own agreement with the work's rights holder, who is nobody real, on terms the game makes up from the size of your production. It grants no right to a real work, and is not advice about one.</p>
-      <ol className="list" aria-label="Chain Of Title">
-        {chainOfTitle(p, (at) => longLocal(at, zone).date).map((line) => <li key={line}>{line}</li>)}
-      </ol>
-      {(st === 'none' || st === 'expired') && !p.delivered && (
-        <>
-          <SelectField label="How Closely It Follows The Work" value={approach} options={APPROACH_ORDER.map((a) => ({ value: a, label: `${APPROACHES[a].label} (${money(optionTerms(p, a).price)})` }))} onChange={(v) => setApproach(v as AdaptationApproach)}
-            hint={`${APPROACHES[approach].says} The rights holder reads your approved draft against this before production. A freer adaptation costs more, and the agreement can be widened later for the difference.`} />
-        </>
-      )}
-      {agreed && (
-        <>
-          <fieldset style={{ border: 0, padding: 0 }}>
-            <legend>What Your Script Changes From The Work</legend>
-            <p className="dim small">Yours to say: the game reads no prose. Your agreement is for a {APPROACHES[agreed].label.toLowerCase()} adaptation{APPROACHES[agreed].allows.length ? `, which lets you change ${APPROACHES[agreed].allows.map((c) => CHANGES[c].toLowerCase()).join(', ')}` : ', which lets you change none of these'}.</p>
-            <div className="chip-row">{CHANGE_ORDER.map((c) => <Check key={c} label={CHANGES[c]} checked={(p.source?.changes ?? []).includes(c)} onChange={(v) => act((s) => setSourceChange(s.projects.find((x) => x.id === p.id)!, c, v))} />)}</div>
-            {outside.length > 0 && <p className="muted">Outside your agreement: {outside.map((c) => CHANGES[c].toLowerCase()).join(', ')}. The rights holder will not approve a draft declared this way.</p>}
-          </fieldset>
-          <div className="row-wrap" role="group" aria-label="The Rights Holder's Approval">
-            <span className="grow dim small">
-              {{
-                'not-needed': '',
-                'not-sent': `The rights holder reads your approved draft before production can be planned. They answer within ${APPROVAL_DAYS} days, from what you have declared above.`,
-                sent: `They are reading draft ${p.source?.approval?.draft}. Their answer is due ${longLocal(p.source?.approval?.answerAt ?? 0, zone).date}.`,
-                approved: `They approved draft ${p.source?.approval?.draft}.`,
-                refused: `They didn't approve draft ${p.source?.approval?.draft}. ${p.source?.approval?.reason ?? ''}`,
-                stale: `They approved draft ${p.source?.approval?.draft} as it was declared then. The script has changed since: send them the approved draft again.`,
-              }[ap]}
-              {noSend && ap !== 'approved' && ap !== 'sent' ? ` ${noSend}` : ''}
-            </span>
-            {!noSend && <button className="btn btn-sm btn-primary" onClick={() => act((s) => sendForApproval(s, s.projects.find((x) => x.id === p.id)!))}>Send Draft {p.approvedDraft} To The Rights Holder</button>}
-          </div>
-          <div className="row gap-2 wrap spaced">
-            {APPROACH_ORDER.filter((a) => widenCost(p, a) !== null).map((a) => (
-              <button key={a} className="btn btn-sm" onClick={() => act((s) => widenAgreement(s, s.projects.find((x) => x.id === p.id)!, a))}>Widen To {APPROACHES[a].label} For {money(widenCost(p, a)!)}</button>
-            ))}
-          </div>
-          {st === 'exercised' && <p className="dim small">The rights holder takes {Math.round((terms.participation ?? 0) * 1000) / 10}% of what the project earns, as it arrives: {money(participationPaid(p))} so far, each payment in the chain of title above.</p>}
-        </>
-      )}
-      {st !== 'not-needed' && st !== 'exercised' && (
-        <>
-          <dl className="kv">
-            <dt>Price Of The Rights</dt><dd>{money(terms.price)}</dd>
-            <dt>Option</dt><dd>{money(terms.fee)} for {terms.months} months, counted towards the price</dd>
-            <dt>One Renewal</dt><dd>{money(terms.renewalFee)} for {terms.renewalMonths} months more, not counted towards the price</dd>
-            <dt>Covers</dt><dd>{terms.territory}, {terms.media} only, this project only</dd>
-            <dt>Credit</dt><dd>{terms.credit}</dd>
-            {terms.participation ? <><dt>Their Share</dt><dd>{Math.round(terms.participation * 1000) / 10}% of what the project earns, as it arrives</dd></> : null}
-          </dl>
-          <p className="dim small">Production can't be planned until the rights are bought and the rights holder has approved the draft. An option that runs out is gone, with what was paid for it.</p>
-          <div className="row-wrap">
-            {(st === 'none' || st === 'expired') && !p.delivered && <button className="btn btn-primary" onClick={() => act((s) => takeOption(s, p, approach))}>Take The Option For {money(terms.fee)}</button>}
-            {st === 'held' && p.source?.option?.renewedAt === undefined && <button className="btn" onClick={() => act((s) => renewOption(s, p))}>Renew For {money(terms.renewalFee)}</button>}
-            {st === 'held' && <button className="btn btn-primary" onClick={() => act((s) => exerciseOption(s, p))}>Buy The Rights For {money(terms.price - terms.fee)}</button>}
-          </div>
-        </>
-      )}
-      {err && <p role="alert" className="error">{err}</p>}
+    <section className="card" aria-labelledby="based-on-h">
+      <h2 id="based-on-h">Based On</h2>
+      <p>{line}</p>
+      {p.proposal?.story && p.proposal.workId === p.source?.ref?.id && <p className="small"><a href={p.proposal.story.link} target="_blank" rel="noreferrer noopener">Read the article the story is from</a></p>}
+      <p className="dim small">This is what the credits say. Nothing more is asked in the game: a copyrighted work is credited, and nothing here stands in for its rights holder's permission in the real world.</p>
+      {earlier && <>
+        <h3>Agreed Before</h3>
+        <ol className="list" aria-label="Chain Of Title">{chainOfTitle(p, (at) => longLocal(at, zone).date).map((x) => <li key={x}>{x}</li>)}</ol>
+        {p.source?.option?.exercisedAt !== undefined && <p className="dim small">The rights holder takes {Math.round((p.source.option.terms.participation ?? 0) * 1000) / 10}% of what the project earns, as it arrives, as agreed: {money(participationPaid(p))} so far.</p>}
+      </>}
     </section>
   );
 }
@@ -1134,8 +1075,10 @@ function FinancingPanel({ p }: { p: Project }) {
           </ul>
         </section>
       )}
-      <AdaptationRights p={p} />
+      <BasedOn p={p} />
       <OwnAccountCard p={p} />
+      <CompanyProjectCard p={p} />
+      <FirstLookProjectCard p={p} />
       <ProjectKitCard p={p} />
       <section className="card" aria-labelledby="raise-h">
         <h2 id="raise-h">Raise Money</h2>
@@ -1233,7 +1176,9 @@ function GuideMeDialog({ p, dept, onClose }: { p: Project; dept: string; onClose
   const approve = () => { const e = store.act((s) => { approveGuideMe(s, s.projects.find((x) => x.id === p.id)!, dept, ceiling); }); if (e) setErr(e); else onClose(); };
   return (
     <Modal title={`Guide Me For ${dept}`} kind="guide-me" onClose={onClose} footer={<><button className="btn" onClick={onClose}>Keep It Manual</button><button className="btn btn-primary" disabled={!!no} onClick={approve}>Approve Guide Me</button></>}>
-      <p className="dim">{dept === CAST
+      <p className="dim">{dept === WRITING
+        ? `The game hires the writers below at their asking rates within the ceiling you set, commissions each one's pass once they accept, and accepts a delivered pass that reads ${WRITING_STANDARD} or more. One that reads less goes back for a revision while the contract allows and the money fits; one still short, a writer who says no, or anything over the ceiling comes back to you. The writing takes its days, and each day is paid.`
+        : dept === CAST
         ? 'The game offers each part to the performer below, at their asking rate, within the ceiling you set, and accepts a counteroffer only while it still fits. Who plays a part is your choice: anyone who says no is not replaced, and the part comes back to you. Each offer takes days to be answered.'
         : 'The game staffs this department for you within the ceiling you set: it offers these people at their asking rates, tries someone else when one says no, and accepts a counteroffer only while it still fits. Each offer takes days to be answered, and the work still has to be done. Anything over the ceiling comes back to you.'}</p>
       {plan.picks.length > 0 ? (
@@ -1243,7 +1188,7 @@ function GuideMeDialog({ p, dept, onClose }: { p: Project; dept: string; onClose
       ) : <p className="muted">Nobody free can be offered a job here now.</p>}
       {plan.gaps.map((x) => <p key={x} className="callout small">{x}</p>)}
       <p><strong>The Plan Costs:</strong> {money(plan.total)}. {money(ledgerTotals(p).available)} is uncommitted on this project.</p>
-      <NumberField label="Spending Ceiling" value={ceiling} min={0} max={100_000_000} onChange={setCeiling} hint={dept === CAST ? 'The most Guide Me may commit for the cast. It never goes past it.' : "The most Guide Me may commit for this department's hires. It never goes past it."} />
+      <NumberField label="Spending Ceiling" value={ceiling} min={0} max={100_000_000} onChange={setCeiling} hint={dept === CAST ? 'The most Guide Me may commit for the cast. It never goes past it.' : dept === WRITING ? 'The most Guide Me may commit for the writers, their passes and revisions. It never goes past it.' : "The most Guide Me may commit for this department's hires. It never goes past it."} />
       {no && <p className="small">{no}</p>}
       {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
     </Modal>
@@ -1258,9 +1203,33 @@ export function GuideMeStanding({ p, dept }: { p: Project; dept: string }) {
   const done = m.endedAt !== undefined;
   return (
     <div className="callout small spaced" role="region" aria-label={`Guide Me, ${dept}`}>
-      <p>{done ? (m.ended === 'done' ? (dept === CAST ? 'Guide Me cast the parts it was given' : `Guide Me staffed ${dept}`) : `Guide Me stopped`) : dept === CAST ? 'Guide Me is casting' : 'Guide Me is staffing this department'}: {money(mandateCommitted(p, m))} of the {money(m.ceiling)} ceiling committed{out ? `, ${plural(out, 'offer')} out` : ''}. Approved {longLocal(m.approvedAt, getPlace(p.axes.basePlaceId).zone).date}{done ? `; ended ${longLocal(m.endedAt!, getPlace(p.axes.basePlaceId).zone).date}` : ''}.</p>
+      <p>{done ? (m.ended === 'done' ? (dept === CAST ? 'Guide Me cast the parts it was given' : dept === WRITING ? 'Guide Me finished the writing it was given' : `Guide Me staffed ${dept}`) : `Guide Me stopped`) : dept === CAST ? 'Guide Me is casting' : dept === WRITING ? 'Guide Me is writing' : 'Guide Me is staffing this department'}: {money(mandateCommitted(p, m))} of the {money(m.ceiling)} ceiling committed{out ? `, ${plural(out, 'offer')} out` : ''}. Approved {longLocal(m.approvedAt, getPlace(p.axes.basePlaceId).zone).date}{done ? `; ended ${longLocal(m.endedAt!, getPlace(p.axes.basePlaceId).zone).date}` : ''}.</p>
       {m.told.length > 0 && <><p><strong>Returned to you:</strong></p><ul>{m.told.map((t) => <li key={t}>{t}</li>)}</ul></>}
       {!done && <button className="btn btn-sm" onClick={() => void store.act((s) => endGuideMe(s, s.projects.find((x) => x.id === p.id)!, dept))}>Back To Manual</button>}
+    </div>
+  );
+}
+
+/** What building the schedule from this date would do, worked out before it is done (production/schedule.ts previewPlan). */
+function SchedulePreview({ p, start }: { p: Project; start: string }) {
+  const g = useGame();
+  const [shown, setShown] = useState<PlanPreview | null>(null);
+  if (p.delivered) return null;
+  return (
+    <div className="spaced">
+      <button className="btn" onClick={() => setShown(previewPlan(g, p, start))}>Preview The Schedule</button>
+      {shown && (
+        <div role="region" aria-label="Schedule Preview" className="callout">
+          {shown.ok ? (
+            <ul className="list">
+              <li className="list-item">{plural(shown.tasks, 'task')}{shown.kept ? `, of which ${shown.kept} already done and kept` : ''}.</li>
+              <li className="list-item">{shown.shootDays ? `${plural(shown.shootDays, 'shoot day')}, ${formatDateKey(shown.firstShootDay!)} to ${formatDateKey(shown.lastShootDay!)}.` : 'No live-action shoot days.'}</li>
+              <li className="list-item">{money(shown.reserved)} set aside for shoot days and materials; {money(shown.leftAfter)} left uncommitted after it.</li>
+            </ul>
+          ) : <p>{shown.reason}</p>}
+          <p className="dim small">Nothing is booked or reserved until you build it.</p>
+        </div>
+      )}
     </div>
   );
 }

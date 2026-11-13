@@ -40,8 +40,11 @@ export type Evidence = Record<string, { n: number; first?: number; last?: number
 export interface RealPerson {
   /** `tp_<TMDB person ID>`: the same wherever they were credited. */
   id: string;
-  /** The catalog's record, copied. Absent once it has been withdrawn for its age. */
-  rec?: { name: string; born?: string; died?: string; ev: Evidence; from: string };
+  /**
+   * The catalog's record, copied. Absent once it has been withdrawn for its age. `cc0`: copied from the music catalog
+   * (music-catalog.ts, Wikidata, CC0), which TMDB's six months don't bind; a TMDB record of the same person replaces it.
+   */
+  rec?: { name: string; born?: string; died?: string; ev: Evidence; from: string; cc0?: true };
   /** This story's own, made by the game when they were first considered, and kept. */
   sim: {
     at: number;
@@ -119,7 +122,7 @@ export function jobsOf(p: RealPerson): string[] {
  * the game makes up about them is made once, the first time, from this save's seed and their recorded credits, and
  * never again: a later catalog renews their name and dates and nothing else.
  */
-export function considerPerson(state: GameState, record: RecordedPerson, gathered: string): RealPerson {
+export function considerPerson(state: GameState, record: RecordedPerson, gathered: string, opts: { cc0?: true } = {}): RealPerson {
   const id = realId(record.id);
   const real = realOf(state);
   const ev = evidenceOf(record.credits);
@@ -127,6 +130,9 @@ export function considerPerson(state: GameState, record: RecordedPerson, gathere
   if (record.details?.birthday) rec.born = record.details.birthday;
   if (record.details?.deathday) rec.died = record.details.deathday;
   const have = real[id];
+  if (opts.cc0) rec.cc0 = true;
+  // The music catalog's copy never replaces the film catalog's fuller one.
+  if (have?.rec && !have.rec.cc0 && opts.cc0) return have;
   // A record brought back puts their name on their credits in the story again.
   if (have) { const back = !have.rec; have.rec = rec; if (back) restoreNames(state); return have; }
   const jobs: RealPerson['sim']['jobs'] = {};
@@ -166,6 +172,8 @@ const yearsBetween = (born: string, on: string): number => {
 };
 
 export const realPerson = (state: GameState, id: string): RealPerson | undefined => peek(state)[id];
+/** Where a real person's record came from, in words: the film catalog (TMDB), or the music catalog (Wikidata). */
+export const catalogOf = (p: RealPerson | undefined): string => (p?.rec?.cc0 ? 'the music catalog (Wikidata)' : 'the film catalog');
 export const realPeople = (state: GameState): RealPerson[] => Object.values(peek(state));
 
 /** Treat someone with no recorded birth date as an adult in this story, or stop doing so. The player's choice, and labelled. */
@@ -254,7 +262,9 @@ export function asPerson(state: GameState, id: string, job?: string): Person {
     // Someone with no recorded birth date, treated as an adult, is given no date: every rule that asks one is told so.
     born: p.rec?.born ?? '',
     skills: [],
-    samples: e ? `${e.n} recorded ${e.n === 1 ? 'credit' : 'credits'} in the film catalog.` : 'No recorded credit of this kind in the film catalog.',
+    // The catalog the record came from, named as it is (a composer brought in from the music catalog's Wikidata record, from
+    // November 13, 2026, isn't "in the film catalog").
+    samples: e ? `${e.n} recorded ${e.n === 1 ? 'credit' : 'credits'} in ${catalogOf(p)}.` : `No recorded credit of this kind in ${catalogOf(p)}.`,
     busy: p.sim.busy,
   };
 }
@@ -262,7 +272,7 @@ export function asPerson(state: GameState, id: string, job?: string): Person {
 // ---------------- Six months ----------------
 
 /** When a person's copied record must be renewed or removed. */
-export const recordEnds = (p: RealPerson): number | null => (p.rec ? Date.parse(`${p.rec.from}T00:00:00Z`) + RECORD_DAYS * DAY : null);
+export const recordEnds = (p: RealPerson): number | null => (p.rec?.cc0 ? Number.POSITIVE_INFINITY : p.rec ? Date.parse(`${p.rec.from}T00:00:00Z`) + RECORD_DAYS * DAY : null);
 
 /** Text the game wrote that can carry a person's name: the log, each project's history, credits and shoot-day results. */
 function eachGameText(state: GameState, fn: (text: string) => string): void {

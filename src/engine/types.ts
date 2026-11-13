@@ -127,15 +127,18 @@ export interface SourceRef {
  * An option on the work a script adapts (adaptation.ts): this story's own agreement, with made-up terms. It is not an
  * agreement with anyone real and grants no right to a real work.
  */
-/** How closely an adaptation follows its work, which is what its agreement lets the script change (adaptation.ts). */
+/** The article a proposed story was told from (proposal.ts): credited, under its licence, wherever the project is. */
+export interface StoryCredit { article: string; link: string; section: string; licence: string }
+/** How closely an adaptation follows its work: the proposal moves it in time or writes its own ending (proposal.ts). */
 export type AdaptationApproach = 'faithful' | 'updated' | 'free';
-/** What a script is declared to change from the work it adapts. Declared by the player; the game reads no prose. */
-export type SourceChange = 'setting' | 'period' | 'ending' | 'people';
 /**
  * A draft sent to the rights holder, and their answer (adaptation.ts): the draft's number, what the script was declared
  * to change on that day, and why they said no when they did.
  */
-export interface SourceApproval { draft: number; changes: SourceChange[]; sentAt: number; answerAt: number; outcome?: 'approved' | 'refused'; reason?: string }
+// Until November 13, 2026 an approval also kept the changes the draft declared and when the answer was due, and an option
+// when it ran out: what the rights holder read and the clocks the option ran on. Nothing reads them since (adaptation.ts,
+// "Copyright"); a save that has them keeps them unread.
+export interface SourceApproval { draft: number; sentAt: number; outcome?: 'approved' | 'refused'; reason?: string }
 
 export interface SourceOption {
   /**
@@ -149,8 +152,6 @@ export interface SourceOption {
   /** Each payment of the rights holder's share, as income arrived (finance.ts receiveIncome). What they have been paid is these added up. */
   statements?: { at: number; from: string; income: number; share: number }[];
   takenAt: number;
-  /** When it runs out unless renewed or exercised. */
-  expires: number;
   renewedAt?: number;
   exercisedAt?: number;
 }
@@ -553,6 +554,12 @@ export interface Mandate {
    * it offers these people only; one who declines returns the part to the player instead of being replaced.
    */
   picks?: { characterId: string; method: PerformanceMethod; stage?: string; personId: string }[];
+  /**
+   * Writing (dept 'Writing', mandates.ts, from November 13, 2026): the writers the player approved, each for the episodes
+   * and the pass the plan gave them. A pass that reads below the standard is revised while the contract allows; one
+   * still below, a refusal or a cost past the ceiling comes back to the player.
+   */
+  writers?: { roleId: string; personId: string; episodes: number[]; scope: WritingScope }[];
 }
 
 export interface CastAssignment {
@@ -572,7 +579,7 @@ export interface CastAssignment {
  */
 export interface PartStage { id: string; characterId: string; label: string; age?: number; sceneIds: string[]; episodes: number[] }
 
-export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio' | 'savings';
+export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio' | 'savings' | 'company' | 'first-look';
 
 /** A backer approached for a project, and what was agreed (finance.ts). */
 export interface FinanceDeal {
@@ -825,6 +832,12 @@ export interface Song {
   library?: true;
   /** The song this one replaced in the cut, and the episodes whose finished mix it has to be laid into (music.ts). */
   replaces?: { songId: string; remix: number[] };
+  /**
+   * A real recording licensed from the music catalog (music-catalog.ts licenseRecording), as Wikidata recorded it when
+   * read: its QID, performers, release date and length. `writersRecorded` false: Wikidata names no writer, and its
+   * performers stand as its writers until the player names them.
+   */
+  recording?: { id: string; performers: string[]; date?: string; seconds?: number; writersRecorded: boolean; retrieved: string };
   createdAt: number;
 }
 
@@ -929,7 +942,45 @@ export type AudienceMetric = 'viewers' | 'hours' | 'views';
  * One reported figure (audiences.ts): the week of the run and its dates, the measure, the figure, whether it is of one
  * episode or the whole title, and how many territories it was out in. It was recorded on the week's last day, as things stood then. Simulated, every one.
  */
-export interface AudienceObservation { week: number; from: string; to: string; metric: AudienceMetric; value: number; scope: 'title' | 'episode'; episode?: number; territories: number }
+/**
+ * `context` (from November 13, 2026): what the week stood against, each as the share of the audience it left. `slot`: a
+ * late slot on television; `season`: the time of year; `competition`: the week's other shows, the same for every title
+ * shown that week. Weeks recorded before then have none.
+ */
+export interface AudienceObservation { week: number; from: string; to: string; metric: AudienceMetric; value: number; scope: 'title' | 'episode'; episode?: number; territories: number; context?: { slot: number; season: number; competition: number } }
+
+/** The routes a Release Plan can intend (release-plan.ts PLAN_ROUTES). */
+export type PlanRoute = 'festival-first' | 'partner-theatrical' | 'distributor-sales' | 'broadcast-licence' | 'streaming-licence' | 'transactional' | 'direct';
+export type BuyerRoute = 'distributor-sales' | 'broadcast-licence' | 'streaming-licence';
+/** A licence proposed to a buyer, and its answer. */
+export interface LicenceProposal {
+  id: string;
+  route: BuyerRoute;
+  buyer: string;
+  territories: string[];
+  ask: number;
+  exclusive: boolean;
+  sentAt: number;
+  answerAt: number;
+  status: 'sent' | 'accepted' | 'countered' | 'rejected';
+  /** Why, in the buyer's words; and, for a rejection, whether it was the work (final with this buyer) or the price. */
+  answer?: string;
+  over?: 'reception' | 'price';
+  /** The offer an acceptance or a counter made (finish.ts acceptDistribution signs it). */
+  offerId?: string;
+}
+export interface ReleasePlan {
+  routes: PlanRoute[];
+  territories: string[];
+  /** The first public date intended. */
+  date: string;
+  /** Festival-first: no public release before this date. */
+  festivalUntil: string | null;
+  version: 'subtitled' | 'dubbed';
+  /** Promotional spending on each route the player runs themselves. */
+  promo: number;
+  proposals: LicenceProposal[];
+}
 
 export interface DistributionOffer {
   id: string;
@@ -962,6 +1013,18 @@ export interface DistributionOffer {
   audience?: AudienceObservation[];
   /** A studio that backed the film releasing it as a term of its deal (finance.ts): the deal's id. No guarantee is paid. */
   studioDeal?: string;
+  /**
+   * From the Release Plan (release-plan.ts), November 13, 2026. `fee`: the share of what is reported that the
+   * distributor, store or partner keeps, where it isn't distribution.ts DISTRIBUTOR_FEE. `promo`: promotional spending the
+   * player paid for, which widens what it reaches. `self`: a route the player runs themselves, with nobody to accept it.
+   * `proposalId`: the licence proposal a buyer accepted or countered with this offer. `agentShare`: a sales agent's
+   * commission on the guarantee, taken when it is accepted.
+   */
+  fee?: number;
+  promo?: number;
+  self?: 'partner-theatrical' | 'transactional' | 'direct';
+  proposalId?: string;
+  agentShare?: number;
 }
 
 export interface Project {
@@ -1002,7 +1065,10 @@ export interface Project {
   /** Its music: licences for existing songs (music.ts). Absent on a project made before November 12, 2026, whose
    *  licensed songs are cleared as they always were, by the music supervisor's days and one fee. */
   music?: import('./music').MusicPlan;
-  proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string> };
+  /** `story`: the article whose plot section its story was told from, credited with the project (adaptation.ts creditLine). */
+  /** The player's company that produces it, named in its credits: set when the company puts money in (company.ts). */
+  producedBy?: string;
+  proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string>; story?: StoryCredit };
   /** Fields the player locked: a full story or a shuffle leaves them alone (blueprints.ts FIELD_LABELS has the keys). */
   locks?: string[];
   /**
@@ -1100,6 +1166,8 @@ export interface Project {
   credits: Credit[];
   releases: ReleaseRecord[];
   offers: DistributionOffer[];
+  /** The player's Release Plan and the licence proposals sent from it (release-plan.ts). Absent until one is made, and in saves from before November 13, 2026. */
+  releasePlan?: ReleasePlan;
   premiere: { kind: 'world' | 'international' | 'national'; date: string; country: string; venue: string; editionId?: string } | null;
   revenue: number;
   quality: Record<string, number> | null; // modeled, locked at delivery
@@ -1119,7 +1187,7 @@ export interface Project {
    * source-material catalog (sources.ts, from November 12, 2026), kept as it was recorded on the day it was chosen so a
    * save never depends on the catalog: its rights are what Wikidata recorded then, and nothing the game works out.
    */
-  source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef; option?: SourceOption; changes?: SourceChange[]; approval?: SourceApproval };
+  source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef; option?: SourceOption; approval?: SourceApproval };
   /** Works this project was adapted from and left, with what was agreed for each (adaptation.ts retireSource). Absent until one is left. */
   sourceHistory?: { ref: SourceRef; option?: SourceOption; approval?: SourceApproval; endedAt: number }[];
   /** When the story is set, as declared: costume, makeup and design awards split by it. Missing means contemporary. */
@@ -1306,8 +1374,14 @@ export interface GameState {
   places: Record<string, Place>;
   /** Your own account and your family's terms (personal.ts). Absent in saves from before November 12, 2026: no money of your own. */
   money?: import('./personal').PersonalMoney;
+  /** The player's own production company (company.ts). Absent until they form one, and in saves from before November 13, 2026. */
+  company?: import('./company').Company;
+  /** First-look deals offered, running and past (first-look.ts). Absent until the first offer, and in saves from before November 13, 2026. */
+  firstLooks?: import('./first-look').FirstLook[];
   /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */
   gear?: import('./equipment').GearInventory;
   /** Paid work on others' productions (jobs.ts). Absent until the first offer. */
   jobs?: import('./jobs').OutsideJob[];
+  /** Other people's productions where the player has been, kept (productions.ts). Absent in saves from before November 13, 2026, until work is next offered. */
+  productions?: import('./productions').Production[];
 }

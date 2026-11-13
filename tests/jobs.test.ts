@@ -19,7 +19,12 @@ function offered(s: GameState, via?: string): OutsideJob {
   if (!j) throw new Error('no offer in forty triggers');
   return j;
 }
-const workAll = (s: GameState, _j: OutsideJob) => processUntil(s, s.now + 60 * DAY, 'tick', 100000);
+/** Run the clock to two days past the job's last day: a production's shoot can be months out (productions.ts). */
+const workAll = (s: GameState, j: OutsideJob) => {
+  // A production can be put back a week before it shoots (productions.ts), and the job's days with it: run on until
+  // its last day as it stands.
+  for (let i = 0; i < 4 && (j.status === 'accepted' || j.status === 'offered'); i++) processUntil(s, Date.parse(`${j.days[j.days.length - 1]}T00:00:00Z`) + 2 * DAY, 'tick', 100000);
+};
 
 describe('an offer of work', () => {
   it('is priced from the record, never more than the cap; an agent negotiates it up', () => {
@@ -42,7 +47,9 @@ describe('an offer of work', () => {
 
 describe('a job taken', () => {
   it('goes on the calendar, is worked each morning in the town, and is paid for the days worked once they are done', () => {
-    const s = startLife('jobs-work');
+    // The world 'jobs-work' had its production cancelled a week out once productions could be (November 13, 2026);
+    // that case is tests/productions.test.ts's. This one is about the work done.
+    const s = startLife('jobs-work-2');
     const j = offered(s);
     acceptJob(s, j.id);
     expect(s.plans.filter((p) => j.planIds!.includes(p.id)).map((p) => p.status)).toEqual(j.days.map(() => 'upcoming'));

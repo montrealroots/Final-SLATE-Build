@@ -93,8 +93,24 @@ check who is asking. Now every request is checked (`server/catalog-handler.mjs`,
 
   The file holds a passphrase the owner chose, at least 16 characters. The game then shows Owner Passphrase in
   Settings, Mods. A correct passphrase gives that browser a session for twelve hours, in a cookie scripts can't read
-  (`HttpOnly`, `Secure`, `SameSite=Strict`). The cookie is `Secure`, so the server must sit behind HTTPS; over plain
-  HTTP from another machine the browser won't keep it, and sign-in won't hold.
+  (`HttpOnly`, `SameSite=Strict`, and `Secure` when the page came over HTTPS, directly or through a proxy that sends
+  `X-Forwarded-Proto: https`).
+
+  Until November 13, 2026 the cookie was always `Secure`. A browser keeps no `Secure` cookie from a plain-HTTP address,
+  so the owner's phone on their home network signed in and was forgotten at once, and was shown no pictures to install.
+  Over plain HTTP the passphrase and the session travel unencrypted: that is the owner's own network's to guard. Anywhere
+  else, put the server behind HTTPS.
+- **A phone on the same network, from the dev server.** The dev server reads the same passphrase file, named in
+  `SLATE_OWNER_SECRET_FILE`, and `--host` lets the phone reach it. In PowerShell 7:
+
+  ```powershell
+  $env:SLATE_OWNER_SECRET_FILE = "C:\path\outside\the\repository\passphrase.txt"
+  npm run dev -- --host
+  ```
+
+  Open the address Vite prints under Network on the phone, then Settings, Mods, and sign in. Without a passphrase file
+  the phone is told that the films and their pictures go only to the computer the game runs on, and how to change that.
+  Until November 13, 2026 the dev server read no passphrase, and the phone was told nothing.
 - **It won't start unguarded.** With `--owner` and an address other than this machine's, and no passphrase file, the
   server refuses to start and says why. A passphrase under 16 characters is refused too.
 - **What a visitor gets.** Without a session, every film route answers as a server with no catalog does: the index says
@@ -108,7 +124,7 @@ check who is asking. Now every request is checked (`server/catalog-handler.mjs`,
 - **No passphrase is built in.** None is in the source, the build or the repository, and the server reads it only from
   the file the owner names. The game sends it to its own server and keeps it nowhere in the browser.
 - **Vite's dev and preview servers** use the same gate, so the real catalog on a development machine is answered to
-  that machine alone.
+  that machine alone, and to a device that has signed in with the passphrase in `SLATE_OWNER_SECRET_FILE`.
 
 What it is not: a login system for players. There is one owner and one passphrase. Choosing a host, a domain and HTTPS
 is still the owner's; none is set up from here.

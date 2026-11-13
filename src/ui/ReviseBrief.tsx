@@ -4,11 +4,12 @@
 // player's own words is kept unless they untick it, a locked field is never written, and the people and the outline the
 // project already has are kept unless the player chooses to add the proposal's beside them. Nothing changes until Apply,
 // and Undo Last Change takes the whole revision back. It replaced the full-story picker on November 12, 2026.
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { FIELD_LABELS, applyBlueprint, previewBlueprint, setLock } from '../engine/blueprints';
 import { GENRES } from '../engine/genres';
 import { isEpisodic } from '../engine/projects';
 import { ORIGIN_LABELS, proposeFromSource } from '../engine/proposal';
+import { loadPlots } from '../engine/sources';
 import type { Project } from '../engine/types';
 import { Check, Modal } from './components';
 import { useSourceCatalog } from './SourcePicker';
@@ -21,8 +22,11 @@ const ADDED = ['characters', 'relationships', 'scenes', 'rules'];
 export function ReviseBrief({ p, run, onClose, onApplied }: { p: Project; run: (fn: () => void) => string | null; onClose: () => void; onApplied: (title: string) => void }) {
   const g = useGame();
   const { catalog, failed, retry } = useSourceCatalog();
-  const work = catalog?.records.find((w) => w.id === p.proposal?.workId) ?? null;
-  const prop = useMemo(() => (work ? proposeFromSource({ work, format: p.axes.format, approach: p.proposal!.approach, gameYear: new Date(g.now).getUTCFullYear(), episodes: isEpisodic(p.axes.format) ? p.episodes.length : undefined, minutes: p.axes.targetRuntimeMin, genres: GENRE_IDS }) : null), [work, p.axes.format, p.proposal, g.now, p.episodes.length, p.axes.targetRuntimeMin]);
+  // The work's story is read before anything is proposed from it (sources.ts loadPlots), so a revision tells it too.
+  const [stories, setStories] = useState(false);
+  useEffect(() => { let live = true; void loadPlots().catch(() => {}).finally(() => { if (live) setStories(true); }); return () => { live = false; }; }, []);
+  const work = stories ? catalog?.records.find((w) => w.id === p.proposal?.workId) ?? null : null;
+  const prop = useMemo(() => (work ? proposeFromSource({ work, format: p.axes.format, approach: p.proposal!.approach, gameYear: new Date(g.now).getUTCFullYear(), episodes: isEpisodic(p.axes.format) ? p.episodes.length : undefined, minutes: p.axes.targetRuntimeMin, genres: GENRE_IDS }) : null), [work, stories, p.axes.format, p.proposal, g.now, p.episodes.length, p.axes.targetRuntimeMin]);
   const [keep, setKeep] = useState<string[] | null>(null);
   const [err, setErr] = useState<string | null>(null);
   if (failed) return <Modal title="Revise From The Work" kind="revise-brief" onClose={onClose} footer={<button className="btn" onClick={onClose}>Close</button>}><div className="callout callout-negative" role="alert"><p>The works couldn't be loaded.</p><button className="btn btn-sm" onClick={retry}>Try Again</button></div></Modal>;

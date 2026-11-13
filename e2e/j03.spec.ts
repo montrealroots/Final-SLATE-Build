@@ -1,7 +1,8 @@
 // J03 as one run (the v4 package, 05: "Game adaptation -> 2D series -> platform -> weekly audience ->
 // renewal/cancellation -> season two"; ledger V4-038.03). One game, through the interface: a video game from the works
-// catalog adapted as a drawn 2D series, commissioned through an agent, made, sold to a broadcaster or streaming service,
-// its audience reported week by week, the commissioner's decision made on that audience, and the second season begun.
+// catalog adapted as a drawn 2D series and credited as copyrighted, commissioned through an agent, made, sold to a
+// broadcaster or streaming service, its audience reported week by week, the commissioner's decision made on that
+// audience, and the second season begun.
 // Nothing is written into the save. The world seed is pinned (a labelled fixture), chosen so the commissioner says yes
 // and a broadcaster or streamer makes an offer.
 import { expect, test, type Page } from './test';
@@ -9,7 +10,7 @@ import { adaptWork, addScene, advance, castRoles, nav, pinSeed, quickLife, readS
 
 test.use({ actionTimeout: 20_000 });
 
-const SEED = Number(process.env.J03_SEED ?? 1);
+const SEED = Number(process.env.J03_SEED ?? 2);
 const TITLE = 'Test Chamber';
 const card = (page: Page, heading: string) => page.locator('section.card', { has: page.getByRole('heading', { name: heading, exact: true }) });
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -29,6 +30,11 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   expect(made.axes).toMatchObject({ medium: 'animation', technique: '2d-drawn' });
   expect(made.episodes).toHaveLength(2);
   expect(made.proposal.workId).toBeTruthy();
+  // Its story is the article's Synopsis, told across both episodes (from November 13, 2026): its Plot part only, since the
+  // re-fetch that day; the Synopsis's Setting part tells the world, not events.
+  expect(made.proposal.story).toMatchObject({ article: 'Portal (video game)', section: 'Synopsis (Plot)', licence: 'CC BY-SA 4.0' });
+  expect(made.proposal.origin.scenes).toBe('sourced');
+  expect([1, 2].every((n) => made.scenes.some((x: { episode: number }) => x.episode === n))).toBe(true);
   const lead: string = made.characters[0].name;
   await section(page, 'Script');
   // The proposal's scenes are kept; an episode it left without one is given one (its card follows the episodes before it).
@@ -60,19 +66,10 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   await page.getByRole('dialog', { name: 'Accept These Terms?' }).getByRole('button', { name: /^Accept \$/ }).click();
   await expect(commissioner.getByText('Backing', { exact: true })).toBeVisible();
 
-  // Portal is recorded as copyrighted: the story's own option on it, taken for a free adaptation, the rights bought,
-  // and the approved draft read and approved by the rights holder, before production can be planned.
+  // Portal is recorded as copyrighted: the credits say so, and nothing more is asked before production (the owner's
+  // decision of November 13, 2026; until then this run took an option, bought the rights and had the draft approved).
   await open(page, 'Budget');
-  const rights = card(page, 'Adaptation Rights');
-  await rights.getByLabel('How Closely It Follows The Work').selectOption('free');
-  await rights.getByRole('button', { name: /^Take The Option For \$/ }).click();
-  await rights.getByRole('button', { name: /^Buy The Rights For \$/ }).click();
-  await expect(rights).toContainText('Rights Bought');
-  await rights.getByRole('group', { name: "The Rights Holder's Approval" }).getByRole('button', { name: /^Send Draft \d+ To The Rights Holder$/ }).click();
-  await advance(page, 'week');
-  await advance(page, 'next-day');
-  await open(page, 'Budget');
-  await expect(rights.getByRole('group', { name: "The Rights Holder's Approval" })).toContainText(/They approved draft \d+\./);
+  await expect(card(page, 'Based On')).toContainText('Portal is recorded as copyrighted; its rights belong to their holders.');
 
   // Made and delivered: the commissioner's decision is now due.
   // Offers are answered in two or three days: the schedule is built once the cast and crew have said yes.
@@ -93,6 +90,8 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   const offer = await platform();
   expect(offer, `seed ${SEED}: offers ${JSON.stringify((await project(page)).offers.map((o: { route: string }) => o.route))}`).toBeTruthy();
   await open(page, 'Release');
+  // The delivered credits say what it is based on, and that it is recorded as copyrighted.
+  await expect(card(page, 'Credits')).toContainText(/Based on Portal, by .+\. Portal is recorded as copyrighted; its rights belong to their holders\./);
   const row = card(page, 'Distribution Offers').getByRole('listitem').filter({ hasText: `${offer.distributor}` }).filter({ hasText: offer.route === 'broadcast' ? 'Broadcast release' : 'Streaming release' }).first();
   await row.getByRole('button', { name: /^Accept (Offer|The Late Slot)$/ }).click();
   await expect.poll(async () => (await project(page)).offers.find((o: { id: string }) => o.id === offer.id).status).toBe('accepted');
@@ -109,15 +108,19 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   expect(taken.audience.length).toBeGreaterThan(1);
   expect(new Set(taken.audience.map((a: { episode?: number }) => a.episode)).size).toBeGreaterThanOrEqual(2);
   expect(decided.renewal.reason).toContain('Audience figures are simulated.');
-  // Seed 1, as played here: a broadcaster, and a cancellation. Recorded so a change in either is seen, not absorbed.
-  expect([offer.route, decided.renewal.outcome]).toEqual(['broadcast', 'cancelled']);
+  // Seed 2, as played here: a broadcaster. Until November 13, 2026 the journey also recorded the decision (a cancellation,
+  // then a renewal, then a cancellation again as the story, the series' own work and each week's competition moved the
+  // figures). A recorded outcome caught every upstream change but not a wrong one, so the journey now checks the rule
+  // itself: the decision follows from the audience reported, against the bar the reason names.
+  expect(offer.route).toBe('broadcast');
   // The decision is the audience the broadcaster reported (audiences.ts seasonAudience): its first showing against the
   // bar, and the share it kept from one episode to the next against 88%. A season that met both would be renewed.
   const shown = taken.audience.filter((a: { metric: string; episode?: number }) => a.metric === 'viewers' && a.episode !== undefined).sort((a: { episode: number }, b: { episode: number }) => a.episode - b.episode);
   const kept = Math.round((shown.at(-1).value / shown[0].value) * 100);
   expect(decided.renewal.reason).toContain(`drew an average audience of ${shown[0].value.toLocaleString('en-US')}`);
   expect(decided.renewal.reason).toContain(`it kept ${kept}% of its audience from one episode to the next, against 88%`);
-  expect(kept).toBeLessThan(88);
+  const bar = Number(/against the ([\d,]+) a commissioner looks for/.exec(decided.renewal.reason)![1].replace(/,/g, ''));
+  expect(decided.renewal.outcome).toBe(shown[0].value >= bar && shown.at(-1).value / shown[0].value >= 0.88 ? 'renewed' : 'cancelled'); // unrounded, as the engine compares it
   await open(page, 'Release');
   const earned = card(page, 'Earnings');
   const weeks = new Set(taken.audience.map((x: { week: number }) => x.week)).size;

@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import registry from '../src/data/genre-registry.json';
 import { applyBlueprint, blueprintProblems, briefFields } from '../src/engine/blueprints';
 import { SALES_CLAIM, createFromSource, fieldOrigin, proposeFromSource } from '../src/engine/proposal';
+import { creditLine } from '../src/engine/adaptation';
 import { deserialize, serialize } from '../src/engine/save';
 import type { SourceWork } from '../src/engine/sources';
 import { newGame } from '../src/engine/state';
@@ -133,7 +134,7 @@ describe('creating a project from a work', () => {
   it('makes one project, adapted from the work, with the whole brief, the people, the outline and each field\'s origin', () => {
     const { s, p } = make();
     expect(s.projects).toEqual([p]);
-    expect(p.source).toMatchObject({ kind: 'adapted', ref: { id: 'wd:Q1', title: 'The Glass Harbour' }, changes: [] });
+    expect(p.source).toMatchObject({ kind: 'adapted', ref: { id: 'wd:Q1', title: 'The Glass Harbour' } });
     expect(p.characters.map((c) => c.name)).toContain('Tomás Reyes');
     expect(p.scenes.length).toBe(8);
     expect(p.relationships.length).toBe(2);
@@ -150,9 +151,8 @@ describe('creating a project from a work', () => {
     expect(briefFields(p)['story.logline']).toBe('My own logline.');
   });
 
-  it('declares what a free adaptation changes, which the rights holder reads against the agreement', () => {
-    expect(make(start(), 'free').p.source!.changes).toEqual(['period', 'ending']);
-  });
+  // Until November 13, 2026 a project declared what a free adaptation changes, for the rights holder to read against an
+  // agreement (adaptation.ts, "Copyright"). Nothing read it after that, and the field went.
 
   it('revising from the work keeps the player\'s words and people unless they choose, and writes only the fields left open', () => {
     const { s, p } = make();
@@ -205,5 +205,160 @@ describe('a claim of sales or standing', () => {
     const files = (dir: string): string[] => readdirSync(dir, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? files(`${dir}/${e.name}`) : /\.tsx?$/.test(e.name) ? [`${dir}/${e.name}`] : []));
     const said = ['src/engine', 'src/ui'].flatMap(files).filter((f) => !f.endsWith('proposal.ts')).filter((f) => /best[- ]?sell/i.test(readFileSync(f, 'utf8')));
     expect(said).toEqual([]);
+  });
+});
+
+// The work's story (November 13, 2026, the owner: "All adapted material should have a story behind it, even the
+// copyrighted one"): the article's plot section, credited, tells the premise, the synopsis, a kept ending and every
+// scene, across every episode of a series. A labelled fixture story for The Glass Harbour, four paragraphs.
+describe('the work\'s story', () => {
+  const STORY = [
+    'Tomas Reyes, a customs clerk in Lisbon, finds Ines Carvalho hiding a ledger in the harbour office. He keeps her secret.',
+    'Ines tells Tomas the ledger records the smuggling run by The Harbourmaster. Old Pell warns them both to leave it alone. Tomas copies the pages at night.',
+    'The Harbourmaster discovers the copy and has Old Pell arrested. Ines and Tomas flee across the river. Mara Quill hides them in her loft.',
+    'Tomas takes the ledger to the harbour court. The Harbourmaster is tried and convicted. Ines leaves Lisbon, and Tomas stays.',
+  ];
+  const plot = { from: 'English Wikipedia', article: 'The Glass Harbour', link: 'https://en.wikipedia.org/wiki/The_Glass_Harbour', licence: 'CC BY-SA 4.0', section: 'Plot', whole: true, retrieved: '2026-11-13', paragraphs: STORY };
+  const told: SourceWork = { ...full, plot };
+  const names = (t: string, b: { characters: { key: string; name: string }[] }) => b.characters.reduce((a, c) => a.split(`{${c.key}}`).join(c.name), t);
+  const sentences = STORY.join(' ').split(/(?<=\.)\s+/);
+
+  it('tells the premise, the logline, a concise synopsis and a kept ending from the story, each saying where it is from', () => {
+    const { blueprint: b, origin, why } = propose(told);
+    // The setup: how the story begins.
+    expect(names(b.premise, b)).toBe(STORY[0]);
+    expect(origin['story.premise']).toBe('sourced');
+    expect(why['story.premise']).toBe('How the story begins: its setup, as the English Wikipedia article "The Glass Harbour", its Plot section, in its own words (CC BY-SA 4.0) tells it.');
+    // The logline is the event that sets it going: the development after the setup, where none turns earlier.
+    expect(names(b.logline, b)).toBe(sentences[2]);
+    expect(origin['story.logline']).toBe('sourced');
+    // The synopsis is concise: the sentence that says most in each development, not the article's paragraphs whole.
+    expect(names(b.synopsis, b)).toBe([sentences[0], sentences[2], sentences[5], sentences[8]].join(' '));
+    expect(why['story.synopsis']).toContain('the sentence that says most in each of its 4 developments');
+    expect(names(b.ending, b)).toBe(STORY[3]);
+    expect(origin['story.ending']).toBe('sourced');
+    // A story whose end wasn't kept leaves the ending unrecorded; a free adaptation writes its own.
+    expect(propose({ ...told, plot: { ...plot, whole: false } }).origin['story.ending']).toBe('unknown');
+    expect(propose(told, 'feature', 'free').origin['story.ending']).toBe('proposed');
+  });
+
+  it('tells the scenes from the story\'s developments, in order, each with its purpose, not cut into equal runs', () => {
+    const { blueprint: b, origin, why } = propose(told);
+    expect(origin.scenes).toBe('sourced');
+    expect(why.scenes).toContain('The story read as 4 developments (setup, inciting event, climax, resolution)');
+    // Every scene is told in the story's own sentences, in the story's order.
+    const at = b.scenes.map((x) => sentences.indexOf(names(x.action, b)));
+    expect(at.every((x) => x >= 0)).toBe(true);
+    expect(at).toEqual([...at].sort((x, y) => x - y));
+    // Their purposes follow the developments' roles: the setup first, the resolution last, the climax before it.
+    expect(b.scenes[0].objective).toBe('Establish the world and the people in it');
+    expect(b.scenes.at(-1)!.objective).toBe('Show what has changed');
+    expect(b.scenes.some((x) => x.objective === 'Settle the conflict')).toBe(true);
+    // The parts follow the story's order.
+    expect(b.scenes.map((x) => x.act)).toEqual([...b.scenes.map((x) => x.act)].sort((x, y) => ['Beginning', 'Middle', 'End'].indexOf(x) - ['Beginning', 'Middle', 'End'].indexOf(y)));
+    expect(b.scenes[0].place).toBe('Lisbon'); // the story names it there
+    expect(blueprintProblems(b, GENRES)).toEqual([]);
+  });
+
+  it('a series breaks its episodes at the story\'s developments, each with a purpose, and the project has scenes in each', () => {
+    const { blueprint: b } = proposeFromSource({ work: told, format: 'series', approach: 'faithful', gameYear: 2027, episodes: 4, minutes: 25, genres: GENRES });
+    expect([...new Set(b.scenes.map((x) => x.episode))]).toEqual([1, 2, 3, 4]);
+    expect(b.scenes.map((x) => names(x.action, b)).join(' ')).toBe(sentences.join(' '));
+    expect(names(b.tv!.eps[0].moves, b)).toMatch(/^Sets up the world and its people, and ends on what starts the story: /);
+    expect(names(b.tv!.eps[3].moves, b)).toMatch(/^Brings it to its climax and shows what has changed: /);
+    expect(blueprintProblems(b, GENRES)).toEqual([]);
+    const s = newGame(draft(), 0, 'save-story');
+    const p = createFromSource(s, { work: told, axes: { format: 'series', medium: 'live-action', episodeCount: 4, targetRuntimeMin: 25 }, scenarioId: 'low', approach: 'faithful', genres: GENRES });
+    expect([1, 2, 3, 4].map((n) => p.scenes.filter((x) => x.episode === n).length).every((n) => n > 0)).toBe(true);
+  });
+
+  it('a work with no story told gets the game\'s own outline in every episode, and says it is the game\'s', () => {
+    const { blueprint: b, origin, why } = proposeFromSource({ work: full, format: 'series', approach: 'faithful', gameYear: 2027, episodes: 5, genres: GENRES });
+    expect([...new Set(b.scenes.map((x) => x.episode))]).toEqual([1, 2, 3, 4, 5]);
+    expect(origin.scenes).toBe('proposed');
+    expect(why.scenes).toBe('No story is recorded for The Glass Harbour. The outline is the game\'s own, a stretch of it in each of the 5 episodes; write the work\'s story into it.');
+    expect(blueprintProblems(b, GENRES)).toEqual([]);
+  });
+
+  it('renames a character everywhere the story says them, and credits the article with the project', () => {
+    const s = newGame(draft(), 0, 'save-story');
+    const p = createFromSource(s, { work: told, axes: { format: 'feature', medium: 'live-action' }, scenarioId: 'low', approach: 'faithful', genres: GENRES, names: { tomas_reyes: 'Tomás Reyes' } });
+    expect(p.story.premise).toBe(STORY[0].replace('Tomas Reyes', 'Tomás Reyes'));
+    expect(p.scenes.map((x) => x.action).join(' ')).not.toContain('Tomas Reyes');
+    expect(p.proposal!.story).toEqual({ article: 'The Glass Harbour', link: plot.link, section: 'Plot', licence: 'CC BY-SA 4.0' });
+    expect(creditLine(p)).toBe('Based on The Glass Harbour, by A. Writer. No copyright status is recorded for The Glass Harbour. Its story outline is from the Plot section of the English Wikipedia article "The Glass Harbour" (CC BY-SA 4.0).');
+    expect(deserialize(serialize(s)).projects[0].proposal).toEqual(p.proposal);
+  });
+
+  it('every work whose article tells a story proposes a complete brief from it, as a film and as a series', () => {
+    const stories = JSON.parse(readFileSync('src/data/plots.json', 'utf8')) as { version: 1; plots: Record<string, SourceWork['plot']> };
+    const with_ = catalog.records.filter((w) => stories.plots[w.id]).map((w) => ({ ...w, plot: stories.plots[w.id] }));
+    expect(with_.length).toBeGreaterThan(0);
+    for (const w of with_) for (const f of ['feature', 'series'] as const) {
+      const { blueprint, origin } = proposeFromSource({ work: w, format: f, approach: 'faithful', gameYear: 2027, genres: GENRES });
+      expect(blueprintProblems(blueprint, GENRES), `${w.id} ${f}`).toEqual([]);
+      if (origin.scenes === 'sourced' && f === 'series') expect(new Set(blueprint.scenes.map((x) => x.episode)).size, `${w.id}`).toBe(6);
+    }
+  });
+});
+
+describe('a real work as the owner saw it (Grand Theft Auto III, November 13, 2026)', () => {
+  it('counts its outline truly, sets the recorded year, keeps cast notes out of the story, and asks a question that fits its lead', () => {
+    const stories = JSON.parse(readFileSync('src/data/plots.json', 'utf8')) as { plots: Record<string, SourceWork['plot']> };
+    const rec = catalog.records.find((w) => w.title === 'Grand Theft Auto III')!;
+    const { blueprint: b, notes } = proposeFromSource({ work: { ...rec, plot: stories.plots[rec.id] }, format: 'feature', approach: 'faithful', gameYear: 2027, minutes: 100, genres: GENRES });
+    // A three-development story told a sentence at a time: the note counts sentences, never a negative number.
+    expect(notes.join(' ')).not.toMatch(/keeps -\d/);
+    expect(notes.join(' ')).toMatch(/told a sentence at a time/);
+    // 'October 2001' names one year: it is the year the brief sets.
+    expect(b.year).toBe(2001);
+    // Who voiced whom is the game's making, not its story.
+    const told = [b.synopsis, b.premise, b.logline, ...b.scenes.map((x) => x.action)].join(' ');
+    expect(told).not.toMatch(/voiced by|\(Debi Mazar\)|\(Cynthia Farrell\)/);
+    expect(b.question).not.toContain('themselves');
+  });
+});
+
+describe('how long each proposed scene is', () => {
+  it('shares the running time to the quarter minute, so short episodes are not made longer by being told in scenes', () => {
+    // Five-minute episodes, each told in six scenes: a whole minute a scene made each six minutes long.
+    const { blueprint: b } = proposeFromSource({ work: full, format: 'series', approach: 'faithful', gameYear: 2027, episodes: 2, minutes: 5, genres: GENRES });
+    for (const e of [1, 2]) {
+      const total = b.scenes.filter((x) => x.episode === e).reduce((a, x) => a + x.minutes, 0);
+      expect(total, `episode ${e}`).toBeGreaterThan(3);
+      expect(total, `episode ${e}`).toBeLessThanOrEqual(5.5);
+    }
+    expect(blueprintProblems(b, GENRES)).toEqual([]);
+  });
+});
+
+describe('genres read from the story when none recorded maps (November 13, 2026)', () => {
+  it('reads Grand Theft Auto III as a gangster story, not an adventure for being a video game', () => {
+    const stories = JSON.parse(readFileSync('src/data/plots.json', 'utf8')) as { plots: Record<string, SourceWork['plot']> };
+    const read = (title: string) => {
+      const rec = catalog.records.find((w) => w.title === title)!;
+      return proposeFromSource({ work: { ...rec, plot: stories.plots[rec.id] }, format: 'feature', approach: 'faithful', gameYear: 2027, genres: GENRES });
+    };
+    const p = read('Grand Theft Auto III');
+    expect([p.blueprint.genre, p.origin.genres]).toEqual(['gangster', 'proposed']);
+    expect(p.why.genres).toMatch(/read from its story, which speaks of gangster \(cartel, mafia, gang\)/);
+    // A world leads what happens in it: Red Dead Redemption 2's gang is an outlaw gang in a western.
+    expect(read('Red Dead Redemption 2').blueprint.genre).toBe('western');
+    // Its name isn't its story: Grand Theft Auto VI's "theft" is its title.
+    expect(read('Grand Theft Auto VI').why.genres).not.toMatch(/theft/);
+    // Red Dead Redemption 2 as the owner saw it: one war passage isn't a third genre; the logline is the event it opens on;
+    // the conflict is with the one the story has against Arthur; the question reads as English, in his pronouns.
+    const rdr = read('Red Dead Redemption 2').blueprint;
+    const said = (t: string) => t.replace(/\{(\w+)\}/g, (_, k: string) => rdr.characters.find((c) => c.key === k)!.name);
+    expect([rdr.genre, ...rdr.secondary]).toEqual(['western', 'gangster']);
+    expect(rdr.logline).toMatch(/^After a botched ferry heist in 1899/);
+    expect(said(rdr.conflict)).toBe('Arthur Morgan against Dutch van der Linde');
+    expect(said(rdr.question)).toBe('Can Arthur Morgan survive, and which will he choose: saving himself or saving the others?');
+    expect(rdr.scenes[0]).toMatchObject({ intExt: 'EXT', time: 'DAY' }); // the ferry heist is outside
+    expect(read('Red Dead Redemption 2').notes.join(' ')).toContain(`${rdr.scenes.length} scenes to build from`); // the scenes there are, not the room for them
+    // Prince Hamlet is counted by "Hamlet", not "Prince", and leads his own play.
+    expect(read('Hamlet').blueprint.characters[0].name).toBe('Prince Hamlet');
+    // Recorded genres that map still lead, and are sourced.
+    expect([read('Dracula').blueprint.genre, read('Dracula').origin.genres]).toEqual(['horror', 'sourced']);
   });
 });

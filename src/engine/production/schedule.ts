@@ -2,7 +2,6 @@
 // Part of the production engine; src/engine/production.ts is its public interface.
 
 import { castIn } from '../parts';
-import { adaptationBlocker } from '../adaptation';
 import type { Asset, GameState, Project, Scene, ShootDay } from '../types';
 import { getPlace } from '../../data/places';
 import { cancel, ledgerTotals, money, reserve, FundsError } from '../budget';
@@ -276,8 +275,8 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   if (p.approvedDraft === null) throw new Error('Approve a draft before planning production.');
   if (p.delivered) throw new Error('This project has already been delivered.');
   if (p.shelved) throw new Error('This project is shelved. Take it up again to plan it.');
-  const rights = adaptationBlocker(p, state.now);
-  if (rights) throw new Error(rights);
+  // Until November 13, 2026 a copyrighted work's rights had to be bought and the draft approved first
+  // (adaptation.ts, "Copyright"); the owner decided it is credited instead, and blocks nothing.
   if (!isDateKey(startDate)) throw new Error('Choose a start date.');
   const today = dateKey(state.now, getPlace(p.axes.basePlaceId).zone);
   if (startDate < today) throw new Error('Choose a start date from today onward.');
@@ -341,6 +340,42 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   });
   p.history.push({ at: state.now, text: `Production scheduled from ${formatDateKey(startDate)}.` }); // until November 10, 2026 the raw 2026-03-17
   return { tasks: p.tasks.length, shootDays: planned.length, firstDay: startDate, lastShootDay: planned[planned.length - 1]?.date ?? null };
+}
+
+/**
+ * What building the schedule from this date would do, before it is done (the owner's v5 brief, 2: "Preview consequences
+ * before approving a plan"; November 13, 2026). The plan is built on a copy of the game, so nothing in the real one
+ * changes: the same rules give the same answer, or the same refusal, with its reason.
+ */
+export interface PlanPreview {
+  ok: boolean;
+  reason?: string;
+  tasks: number;
+  /** Tasks whose work is already done, kept as they are. */
+  kept: number;
+  shootDays: number;
+  firstShootDay: string | null;
+  lastShootDay: string | null;
+  /** Money the plan sets aside for its shoot days and materials, and what is left uncommitted after it. */
+  reserved: number;
+  leftAfter: number;
+}
+export function previewPlan(state: GameState, p: Project, startDate: string): PlanPreview {
+  const copy = structuredClone(state);
+  const q = copy.projects.find((x) => x.id === p.id)!;
+  const before = q.obligations.filter((o) => o.ref === 'plan:shoot' || o.ref === 'plan:materials').reduce((a, o) => a + Math.max(0, o.amount - o.settled), 0);
+  try {
+    const r = generatePlan(copy, q, startDate);
+    const live = q.obligations.filter((o) => (o.ref === 'plan:shoot' || o.ref === 'plan:materials') && (o.state === 'reserved' || o.state === 'committed'));
+    const shoot = q.schedule.days.filter((d) => d.status === 'scheduled').map((d) => d.date).sort();
+    return {
+      ok: true, tasks: r.tasks, kept: q.tasks.filter((t) => t.status === 'done').length, shootDays: r.shootDays,
+      firstShootDay: shoot[0] ?? null, lastShootDay: shoot[shoot.length - 1] ?? null,
+      reserved: live.reduce((a, o) => a + Math.max(0, o.amount - o.settled), 0) - before, leftAfter: ledgerTotals(q).available,
+    };
+  } catch (e) {
+    return { ok: false, reason: (e as Error).message, tasks: 0, kept: 0, shootDays: 0, firstShootDay: null, lastShootDay: null, reserved: 0, leftAfter: ledgerTotals(p).available };
+  }
 }
 
 export function ensureAssets(p: Project): void {

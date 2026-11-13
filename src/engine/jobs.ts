@@ -15,6 +15,8 @@ import { stream } from './rng';
 import { addLog, cancelEvents, currentPlace, newId, registerHandler, schedule } from './state';
 import { addDaysToKey, dateKey, DAY, formatDateKey, localToInstant, parseYmd, weekdayOfKey } from './time';
 import { money } from './budget';
+import { getPlace } from '../data/places';
+import { KILL_FEE_DAYS, PRODUCTION_KIND_LABELS, daysUntil, industryStanding, shootingDays, slateHere, type Production } from './productions';
 import type { GameState } from './types';
 
 export type JobRole = 'acting' | 'writing' | 'directing';
@@ -24,12 +26,23 @@ export interface OutsideJob {
   /** Invented by the game, and labelled so wherever it is shown. */
   production: string;
   company: string;
+  /**
+   * The production it is on (productions.ts), what the work is in it, what the player is given to prepare from, and what
+   * is asked of them. Offers made before November 13, 2026 have none: their production existed only in the offer.
+   */
+  productionId?: string;
+  part?: string;
+  material?: string;
+  requirement?: string;
+  /** The one request for a better rate an offer allows, and the answer. */
+  counter?: { askedAt: number; answerAt: number; rate: number; outcome?: 'agreed' | 'held' };
   dayRate: number;
   /** Working days, as date keys in the job's place. */
   days: string[];
   placeId: string;
   zone: string;
-  status: 'offered' | 'accepted' | 'declined' | 'lapsed' | 'withdrawn' | 'done';
+  /** 'cancelled': the production was cancelled under it (productions.ts), from November 13, 2026; the player is paid a fee for it. */
+  status: 'offered' | 'accepted' | 'declined' | 'lapsed' | 'withdrawn' | 'done' | 'cancelled';
   offeredAt: number;
   answerBy: number;
   /** An agent found it: their share of the pay. */
@@ -51,8 +64,6 @@ export const AGENT_JOB_UPLIFT = 0.15;
 export const JOB_ANSWER_DAYS = 7;
 export const AGENT_SEARCH_DAYS = 30;
 export const JOB_CHANCE = { delivery: 0.5, agent: 0.6 };
-const PRODUCTIONS = ['The Long Quiet', 'Salt And Iron', 'A House Of Doors', 'Night Ferry', 'The Glass Orchard', 'Low Tide', 'Paper Kings', 'The Last Signal', 'Winter Harbour', 'Small Hours'];
-const COMPANIES = ['Halfmoon Pictures', 'Copperline Films', 'Northlight Television', 'Fieldwork Productions', 'Gannet Media', 'Stillwater Studios'];
 
 const jobs = (s: GameState): OutsideJob[] => (s.jobs ??= []);
 export const jobById = (s: GameState, id: string) => (s.jobs ?? []).find((j) => j.id === id);
@@ -66,9 +77,23 @@ export function reliability(s: GameState): number {
   return Math.max(0.2, 1 - WITHDRAWAL_COST * js.filter((j) => j.status === 'withdrawn').length - MISSED_DAY_COST * missed);
 }
 
-/** The roles the record supports: anyone can act; writing and directing for hire once a project of their own is delivered. */
+/**
+ * The roles the record supports, each on evidence a hirer would ask for (the owner's v5 brief, 7: "credible entry routes
+ * based on appropriate evidence"). Anyone can act. Writing: an approved script of their own (a sample), a delivered
+ * project, or writing done for others. Directing: a delivered project, or two jobs on others' sets. Until November 13,
+ * 2026 writing and directing came only with a delivered project of the player's own.
+ */
 export function rolesOffered(s: GameState): JobRole[] {
-  return recordFor(s).delivered > 0 ? ['acting', 'writing', 'directing'] : ['acting'];
+  const r = recordFor(s);
+  const done = (role?: JobRole) => (s.jobs ?? []).filter((j) => j.status === 'done' && j.attended.length > 0 && (!role || j.role === role)).length;
+  return ['acting', ...(r.scripts > 0 || r.delivered > 0 || done('writing') > 0 ? ['writing' as const] : []), ...(r.delivered > 0 || done() >= 2 ? ['directing' as const] : [])];
+}
+/** Why the record supports a role, in words, for the offer and the Profile. */
+export function evidenceFor(s: GameState, role: JobRole): string {
+  const r = recordFor(s);
+  if (role === 'acting') return 'Anyone can be cast.';
+  if (role === 'writing') return r.scripts > 0 ? `Your approved ${r.scripts === 1 ? 'script stands' : 'scripts stand'} as a writing sample.` : r.delivered > 0 ? 'Your delivered work stands as a writing sample.' : 'Your writing for others is on your record.';
+  return r.delivered > 0 ? 'Your delivered work shows you can direct.' : 'Your days on others\' sets count as experience.';
 }
 
 /** The day rate an offer for this role carries, from the record; an agent negotiates it up. */
@@ -79,13 +104,56 @@ export function jobDayRate(s: GameState, role: JobRole, viaAgent: boolean): numb
   return Math.round(base * craftRate(roleCraft(s, role)) * (viaAgent ? 1 + AGENT_JOB_UPLIFT : 1));
 }
 
-/** Consecutive weekdays from about two weeks out, in the place the player is now. */
-function jobDays(s: GameState, zone: string, n: number, lead: number): string[] {
-  let k = addDaysToKey(dateKey(s.now, zone), lead);
-  const out: string[] = [];
-  while (out.length < n) { if (weekdayOfKey(k) !== 0 && weekdayOfKey(k) !== 6) out.push(k); k = addDaysToKey(k, 1); }
-  return out;
+/** The first n weekdays of a production's shoot: fewer if it wraps first. */
+function workDays(p: Production, n: number): string[] {
+  return shootingDays(p).filter((k) => weekdayOfKey(k) !== 0 && weekdayOfKey(k) !== 6).slice(0, n);
 }
+
+/** What the work is on this production, what the player gets to prepare from, and what is asked of them. */
+function workOn(state: GameState, p: Production, role: JobRole, rng: () => number): Pick<OutsideJob, 'part' | 'material' | 'requirement'> {
+  const where = getPlace(p.placeId).name;
+  const taken = new Set((state.jobs ?? []).filter((j) => j.productionId === p.id && j.status !== 'declined' && j.status !== 'lapsed').map((j) => j.part));
+  if (role === 'acting') {
+    const part = p.parts.filter((x) => x.size !== 'lead' && !taken.has(`The part of ${x.name}`))[Math.floor(rng() * Math.max(1, p.parts.length - 1))] ?? p.parts[p.parts.length - 1];
+    return { part: `The part of ${part.name}`, material: `Sides for ${part.name}, a ${part.size} part in ${PRODUCTION_KIND_LABELS[p.kind].toLowerCase()} (${p.genre}).`, requirement: `Lines learned by the first day, in ${where} each morning at nine.` };
+  }
+  if (role === 'writing') {
+    const ep = p.episodes ? 1 + Math.floor(rng() * p.episodes) : 0;
+    return ep
+      ? { part: `Writing episode ${ep}`, material: `The series bible and the outline for episode ${ep}.`, requirement: `In the writers' room in ${where}; the draft is due on the last day.` }
+      : { part: 'A rewrite of the second act', material: 'The current draft and the director\'s notes on it.', requirement: `In ${where} with the director; the pages are due on the last day.` };
+  }
+  const ep = p.episodes ? 1 + Math.floor(rng() * p.episodes) : 0;
+  return ep
+    ? { part: `Directing episode ${ep}`, material: `The episode's script and the series' look book.`, requirement: `Prep from the first day in ${where}; the shoot follows the series' schedule.` }
+    : { part: 'Directing the second unit', material: 'The second unit\'s shot list and the storyboards.', requirement: `In ${where} from the first day, with the second unit's crew.` };
+}
+
+/** Ask once for a better rate: a fifth more. The production answers in two days; the offer stays open until then. */
+export const JOB_COUNTER_DAYS = 2;
+export function askBetterRate(state: GameState, id: string): void {
+  const j = jobById(state, id);
+  if (!j || j.status !== 'offered' || state.now > j.answerBy) throw new Error('That offer is no longer open.');
+  if (j.counter) throw new Error('You have asked once already.');
+  const rate = Math.round(j.dayRate * 1.2);
+  j.counter = { askedAt: state.now, answerAt: state.now + JOB_COUNTER_DAYS * DAY, rate };
+  j.answerBy = Math.max(j.answerBy, j.counter.answerAt + 3 * DAY);
+  cancelEvents(state, (e) => e.id === `job-lapse:${j.id}`);
+  schedule(state, j.answerBy, 'job-lapse', { jobId: j.id }, { attention: 'silent', priority: 70, id: `job-lapse:${j.id}` });
+  schedule(state, j.counter.answerAt, 'job-counter', { jobId: j.id }, { attention: 'notify', priority: 60, id: `job-counter:${j.id}` });
+  addLog(state, `You asked ${j.company} for ${money(rate)} a day on ${j.production}.`, 'personal', { route: { view: 'profile' } });
+}
+registerHandler('job-counter', (state, ev) => {
+  const j = jobById(state, String(ev.payload.jobId));
+  if (!j || j.status !== 'offered' || !j.counter || j.counter.outcome) return { suppressInterrupt: true };
+  // It pays more for an agent's client, or a record its craft shows. Game calibration.
+  const agreed = !!j.viaAgent || craftRate(roleCraft(state, j.role)) >= 1.05;
+  j.counter.outcome = agreed ? 'agreed' : 'held';
+  if (agreed) j.dayRate = j.counter.rate;
+  const text = agreed ? `${j.company} agreed to ${money(j.dayRate)} a day on ${j.production}.` : `${j.company} kept its rate of ${money(j.dayRate)} a day on ${j.production}. The offer is still open.`;
+  addLog(state, text, 'personal', { route: { view: 'profile' } });
+  return { message: text };
+});
 
 /** A trigger has fired (a delivery, or an agent looking): an offer may follow. */
 registerHandler('job-offer', (state, ev) => {
@@ -95,7 +163,7 @@ registerHandler('job-offer', (state, ev) => {
   const rng = stream(state.seed, 'job-offer', ev.id);
   // Ids here are derived, not drawn from the shared counter, so an offer of work moves no other seeded draw (finish.ts).
   if (via) schedule(state, state.now + AGENT_SEARCH_DAYS * DAY, 'job-offer', { via }, { attention: 'silent', priority: 70, id: `job-offer:${via}:${state.now}` });
-  if (rng() >= (via ? JOB_CHANCE.agent : JOB_CHANCE.delivery) * reliability(state)) return { suppressInterrupt: true };
+  if (rng() >= (via ? JOB_CHANCE.agent : JOB_CHANCE.delivery) * reliability(state) * industryStanding(state)) return { suppressInterrupt: true };
   // Which role: weighted by the craft the record shows in each (reputation.ts). Until November 13, 2026 each was as
   // likely as the next, whatever the work said.
   const roles = rolesOffered(state);
@@ -105,14 +173,19 @@ registerHandler('job-offer', (state, ev) => {
   const def = JOB_ROLES[role];
   const n = def.days[0] + Math.floor(rng() * (def.days[1] - def.days[0] + 1));
   const place = currentPlace(state);
+  // A production on the slate where the player is, shooting far enough ahead to prepare and long enough for the work.
+  const slate = slateHere(state, place.id, place.zone).filter((p) => daysUntil(state, p) >= 10 && workDays(p, n).length === n && (role !== 'writing' || p.kind !== 'short'));
+  if (!slate.length) return { suppressInterrupt: true };
+  const prod = slate[Math.floor(rng() * slate.length)];
+  const what = workOn(state, prod, role, rng);
   const job: OutsideJob = {
-    id: `job-${ev.id}`, role, production: PRODUCTIONS[Math.floor(rng() * PRODUCTIONS.length)], company: COMPANIES[Math.floor(rng() * COMPANIES.length)],
-    dayRate: jobDayRate(state, role, !!via), days: jobDays(state, place.zone, n, 14 + Math.floor(rng() * 14)), placeId: place.id, zone: place.zone,
+    id: `job-${ev.id}`, role, production: prod.title, company: prod.company, productionId: prod.id, ...what,
+    dayRate: jobDayRate(state, role, !!via), days: workDays(prod, n), placeId: prod.placeId, zone: prod.zone,
     status: 'offered', offeredAt: state.now, answerBy: state.now + JOB_ANSWER_DAYS * DAY, ...(via ? { viaAgent: { agentId: via, rate: agentById(via).rate } } : {}), attended: [], missed: [],
   };
   jobs(state).push(job);
   schedule(state, job.answerBy, 'job-lapse', { jobId: job.id }, { attention: 'silent', priority: 70, id: `job-lapse:${job.id}` });
-  const text = `${via ? `${agentById(via).name} found you work: ` : 'An offer of work: '}${def.label.toLowerCase()} on ${job.production}, ${money(job.dayRate)} a day for ${n} days from ${formatDateKey(job.days[0])}. Answer by ${formatDateKey(dateKey(job.answerBy, job.zone))}.`;
+  const text = `${via ? `${agentById(via).name} found you work: ` : 'An offer of work: '}${job.part} on ${job.production}, ${money(job.dayRate)} a day for ${n} days from ${formatDateKey(job.days[0])}. Answer by ${formatDateKey(dateKey(job.answerBy, job.zone))}.`;
   addLog(state, text, 'personal', { route: { view: 'profile' } });
   return { message: text };
 });
@@ -140,6 +213,7 @@ export function jobClash(state: GameState, j: OutsideJob): string | null {
 export function acceptRefusal(state: GameState, id: string): string | null {
   const j = jobById(state, id);
   if (!j || j.status !== 'offered') return 'That offer is no longer open.';
+  if (j.counter && !j.counter.outcome) return `${j.company} is answering the rate you asked for.`;
   if (state.now > j.answerBy) return 'That offer has lapsed.';
   return jobClash(state, j);
 }
@@ -179,7 +253,7 @@ export function withdrawJob(state: GameState, id: string): void {
 }
 
 /** What the job pays for the days worked, less commission, posted once. */
-function pay(state: GameState, j: OutsideJob): void {
+export function pay(state: GameState, j: OutsideJob): void {
   const gross = j.dayRate * j.attended.length;
   if (gross <= 0) return; // earned pay opens an account even in a story from before one existed
   postPersonal(state, 'paid-work', gross, `Paid For ${JOB_ROLES[j.role].label} On ${j.production}`, `job:${j.id}`);
@@ -203,6 +277,36 @@ registerHandler('job-day', (state, ev) => {
   addLog(state, text, there ? 'personal' : 'warning', { route: { view: 'profile' } });
   return { message: text, suppressInterrupt: there };
 });
+
+/**
+ * The production let the work go (productions.ts): an offer closes; work taken is paid the kill fee for it (two days),
+ * its days come off the calendar, and nothing counts against the player.
+ */
+export function releaseJob(state: GameState, j: OutsideJob, why: string): void {
+  if (j.status === 'offered') { j.status = 'lapsed'; cancelEvents(state, (e) => e.id === `job-lapse:${j.id}` || e.id === `job-counter:${j.id}`); addLog(state, `${why} Its offer of work is closed.`, 'personal', { route: { view: 'profile' } }); return; }
+  j.status = 'cancelled';
+  for (const pid of j.planIds ?? []) { const plan = state.plans.find((x) => x.id === pid); if (plan?.status === 'upcoming') plan.status = 'cancelled'; }
+  cancelEvents(state, (e) => e.kind === 'job-day' && e.payload.jobId === j.id);
+  pay(state, j); // the days already worked
+  const fee = j.dayRate * KILL_FEE_DAYS;
+  postPersonal(state, 'paid-work', fee, `Kill Fee: ${j.production}`, `job-kill:${j.id}`);
+  if (j.viaAgent) postPersonal(state, 'commission', -Math.round(fee * j.viaAgent.rate), `Commission To ${agentById(j.viaAgent.agentId).name}: ${Math.round(j.viaAgent.rate * 100)}% Of ${money(fee)}`, `job-kill-commission:${j.id}`);
+  addLog(state, `${why} You are paid ${money(fee)} for the work it let go, and nothing counts against you.`, 'personal', { route: { view: 'profile' } });
+}
+
+/** The production was put back: the work's days move with it, unless the new days clash, when the work is let go. */
+export function moveJob(state: GameState, j: OutsideJob, by: number): void {
+  const moved = { ...j, days: j.days.map((k) => addDaysToKey(k, by)) };
+  if (j.status === 'accepted' && jobClash(state, moved)) return releaseJob(state, j, `${j.production} was put back ${by} days, onto days you already have work.`);
+  const was = j.status;
+  if (was === 'accepted') {
+    for (const pid of j.planIds ?? []) { const plan = state.plans.find((x) => x.id === pid); if (plan?.status === 'upcoming') plan.status = 'cancelled'; }
+    cancelEvents(state, (e) => e.kind === 'job-day' && e.payload.jobId === j.id);
+  }
+  j.days = moved.days;
+  if (was === 'accepted') { j.status = 'offered'; j.answerBy = Math.max(j.answerBy, state.now); acceptJob(state, j.id); }
+  addLog(state, `${j.production} was put back ${by} days. Your work on it moves with it: ${formatDateKey(j.days[0])} to ${formatDateKey(j.days.at(-1)!)}.`, 'personal', { route: { view: 'profile' } });
+}
 
 /** Credits from work for others: a job with a day worked. */
 export const jobCredits = (s: GameState): OutsideJob[] => (s.jobs ?? []).filter((j) => (j.status === 'done' || j.status === 'withdrawn') && j.attended.length > 0);

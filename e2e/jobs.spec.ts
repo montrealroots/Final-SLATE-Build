@@ -53,7 +53,8 @@ test('an agent finds paid work: offered with its days and their share, taken, wo
 
   // Worked to the end: the pay comes in, less commission, and the credit is listed.
   const credits = work.getByRole('list', { name: 'Your Credits For Others' });
-  for (let i = 0; i < 8 && !(await credits.count()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
+  // The work is on a production's shooting days, which can be some months out (productions.ts, from November 13, 2026).
+  for (let i = 0; i < 20 && !(await credits.count()); i++) { await advance(page, 'week'); await nav(page, 'Profile'); }
   await expect(credits).toContainText(production);
   const mine = card(page, 'Your Money');
   await expect(mine.getByRole('list', { name: 'Your Account, By What It Is' })).toContainText("Paid For Work On Others' Productions");

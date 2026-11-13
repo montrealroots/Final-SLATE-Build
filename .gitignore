@@ -27,3 +27,6 @@ __pycache__/
 packs/
 *.slatepack
 .screen-images/
+
+# Wikipedia plot sections gathered by tools/sources/plots.mjs before src/data/plots.json is built from them.
+.sources-cache/

@@ -8,7 +8,7 @@ import { FIELD_LABELS, STRUCTURES, named } from '../engine/blueprints';
 import { GENRES } from '../engine/genres';
 import { FORMAT_LABELS, FUNDING_SCENARIOS, MEDIUM_LABELS, TECHNIQUE_LABELS, hasTrackRecord, isEpisodic, isNonfiction, money } from '../engine';
 import { ORIGIN_LABELS, createFromSource, proposeFromSource, type FieldOrigin } from '../engine/proposal';
-import type { SourceWork } from '../engine/sources';
+import { loadPlots, rightsStanding, type SourceWork } from '../engine/sources';
 import { projectStages } from '../engine/stages';
 import type { AdaptationApproach, Format, Medium, Technique } from '../engine/types';
 import { NumberField, PageHead, SelectField, TextField } from './components';
@@ -91,7 +91,7 @@ export function AdaptWork() {
         </section>
         <section className="card" aria-labelledby="approach-h">
           <h2 id="approach-h">How Closely It Follows The Work</h2>
-          <p className="dim">The rights holder reads your drafts against this, and a freer adaptation costs more when you take an option on the work.</p>
+          <p className="dim">This shapes the brief: moved to another time, the story is set now; freely adapted, the ending is your own.</p>
           {APPROACH_ORDER.map((a) => (
             <label key={a} className="check" style={{ alignItems: 'flex-start', marginBottom: 'var(--s2)' }}>
               <input type="radio" name="approach" value={a} checked={approach === a} onChange={() => setApproach(a)} />
@@ -120,7 +120,7 @@ export function AdaptWork() {
         <div className="row gap-2 wrap">
           <button className="btn" onClick={() => setWork(null)}>Back To The Work</button>
           <button className="btn" onClick={() => store.back()}>Cancel</button>
-          <button className="btn btn-primary" onClick={() => setShaped(true)}>Preview The Brief</button>
+          <button className="btn btn-primary" onClick={() => { void loadPlots().catch(() => {}).finally(() => setShaped(true)); }}>Preview The Brief</button>
         </div>
       </>
     );
@@ -190,7 +190,7 @@ export function AdaptWork() {
         {acts.map((a) => (
           <div key={a}>
             <h3>{a}</h3>
-            <ol className="small">{b.scenes.filter((s) => s.act === a).map((s, i) => <li key={i}><strong>{s.intExt}. {s.place}, {s.time.toLowerCase()}.</strong> {say(s.action)}{s.turn ? ` ${say(s.turn)}` : ''}</li>)}</ol>
+            <ol className="small">{b.scenes.filter((s) => s.act === a).map((s, i) => <li key={i}><strong>{s.intExt}. {s.place}, {s.time.toLowerCase()}.</strong> {say(s.action)}{s.turn && !s.action.includes(s.turn) ? ` ${say(s.turn)}` : ''}</li>)}</ol>
           </div>
         ))}
       </section>
@@ -204,7 +204,7 @@ export function AdaptWork() {
       )}
       <section className="card" aria-labelledby="after-h">
         <h2 id="after-h">What Comes After</h2>
-        <p className="small">This is a brief and an outline, not a screenplay: the writing, the rights, the money, the casting and the production are all still to do. The project is adapted from {work.title}, declared {APPROACHES[approach].label.toLowerCase()}, and its Adaptation Rights card is where an option on the work is taken. Cancel now and nothing is made.</p>
+        <p className="small">This is a brief and an outline, not a screenplay: the writing, the rights, the money, the casting and the production are all still to do. The project is adapted from {work.title}, declared {APPROACHES[approach].label.toLowerCase()}, and its credits say what it is based on{rightsStanding(work) === 'copyrighted-recorded' ? ', and that it is recorded as copyrighted' : ''}. Cancel now and nothing is made.</p>
       </section>
       {error && <p role="alert" style={{ color: 'var(--negative)' }}>{error}</p>}
       <div className="row gap-2 wrap">

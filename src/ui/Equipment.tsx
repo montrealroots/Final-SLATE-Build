@@ -5,11 +5,11 @@ import { useState } from 'react';
 import { money } from '../engine/budget';
 import { formatDateKey } from '../engine/time';
 import { GEAR, GEAR_KIND_LABELS, GEAR_SOURCE, RENT_SHARE, SERVICE_BELOW, gearById, gearFacts, rentDayRate, type GearKind } from '../engine/gear-catalog';
-import { addToKit, buyGear, buyRefusal, kitAddRefusal, kitDayRate, kitProblems, ownedGear, removeFromKit, resaleValue, sellGear, sellRefusal, serviceCost, serviceGear, serviceRefusal } from '../engine/equipment';
+import { addToKit, buyGear, buyRefusal, kitAddRefusal, kitDayRate, kitProblems, ownedGear, removeFromKit, resaleValue, sellGear, sellRefusal, serviceCost, serviceGear, serviceRefusal, setPackageApproval } from '../engine/equipment';
 import { housePackageFee } from '../engine/production/rates';
 import { personalBalance } from '../engine/personal';
 import type { Project } from '../engine/types';
-import { Modal, SelectField } from './components';
+import { Check, Modal, SelectField } from './components';
 import { store, useGame } from './store';
 
 const listed = () => formatDateKey(GEAR_SOURCE.retrieved);
@@ -82,6 +82,44 @@ function Shop({ onClose }: { onClose: () => void }) {
   );
 }
 
+/**
+ * A shoot day the kit couldn't serve, postponed (the owner's v5 brief, 9): what it lacked, and the choices, each with its
+ * cost and time: rent what's missing for the project, service what's worn or away, approve the package for such days,
+ * or change the scenes. The schedule has already moved the day's scenes on.
+ */
+function KitShortage({ p, shortage, onError }: { p: Project; shortage: NonNullable<NonNullable<Project['kit']>['shortage']>; onError: (e: string | null) => void }) {
+  const g = useGame();
+  const owned = (p.kit?.items ?? []).filter((k) => k.itemId).map((k) => ({ k, it: g.gear?.items.find((x) => x.id === k.itemId) })).filter((x) => x.it && !x.it.sold);
+  const needsService = owned.filter((x) => shortage.problems.some((pr) => (pr.need === 'worn' || pr.need === 'away') && pr.text.includes(gearById(x.k.gearId)!.name)));
+  return (
+    <div className="callout callout-warning" role="region" aria-label="Kit Shortage">
+      <p><strong>{formatDateKey(shortage.date)} was postponed.</strong> {shortage.problems.map((x) => x.text).join(' ')} Its scenes have moved to a later day.</p>
+      <ul className="list">
+        {shortage.problems.flatMap((x) => x.fix.slice(0, 2)).filter((id, i, a) => a.indexOf(id) === i).map((id) => {
+          const gear = gearById(id)!;
+          const no = kitAddRefusal(g, p, { gearId: id });
+          return (
+            <li key={id} className="list-item" style={{ flexWrap: 'wrap', gap: 'var(--s2)' }}>
+              <span className="grow" style={{ minWidth: 0 }}>Rent {gear.name} for the project, {money(rentDayRate(gear))} a shoot day{no ? <span className="dim small" style={{ display: 'block' }}>{no}</span> : null}</span>
+              <button className="btn btn-sm" disabled={!!no} aria-label={`Rent ${gear.name} For The Shortage`} onClick={() => onError(store.act((s) => void addToKit(s, s.projects.find((x) => x.id === p.id)!, { gearId: id })))}>Rent It</button>
+            </li>
+          );
+        })}
+        {needsService.map(({ k, it }) => {
+          const no = serviceRefusal(g, it!.id);
+          return (
+            <li key={k.id} className="list-item" style={{ flexWrap: 'wrap', gap: 'var(--s2)' }}>
+              <span className="grow" style={{ minWidth: 0 }}>Service the {gearById(k.gearId)!.name}, {money(serviceCost(it!))} from your own account{no ? <span className="dim small" style={{ display: 'block' }}>{no}</span> : null}</span>
+              <button className="btn btn-sm" disabled={!!no} onClick={() => onError(store.act((s) => serviceGear(s, it!.id)))}>Service It</button>
+            </li>
+          );
+        })}
+      </ul>
+      <p className="dim small">Or approve the rental house's package below for days like this, or change the scenes that need what's missing on the Script page.</p>
+    </div>
+  );
+}
+
 /** A project's Budget page: its kit, or the rental house's package. */
 export function ProjectKitCard({ p }: { p: Project }) {
   const g = useGame();
@@ -99,7 +137,9 @@ export function ProjectKitCard({ p }: { p: Project }) {
         <p className="muted">Each shoot day hires the rental house's package, {money(housePackageFee(p))} a day at this budget size. Add something of your own or rent an item, and this project shoots on its own kit instead.</p>
       ) : (
         <>
-          <p className="muted">This project shoots on its own kit: {kitDayRate(p) ? `${money(kitDayRate(p))} a shoot day in rentals` : 'nothing a day, all of it yours'}. A day the kit can't serve hires the house package for that day, {money(housePackageFee(p))}.</p>
+          <p className="muted">This project shoots on its own kit: {kitDayRate(p) ? `${money(kitDayRate(p))} a shoot day in rentals` : 'nothing a day, all of it yours'}. {p.kit.packageApproved ? `On a day the kit can't serve, the rental house's package is hired for that day, ${money(housePackageFee(p))}, as you approved.` : `A day the kit can't serve is postponed until you choose what to do. Nothing is hired without your approval.`}</p>
+          {p.kit.shortage && <KitShortage p={p} shortage={p.kit.shortage} onError={setErr} />}
+          <Check label={`Hire The Rental House's Package On A Day The Kit Can't Serve (${money(housePackageFee(p))} A Day)`} checked={!!p.kit.packageApproved} hint="Your standing approval for this project. Without it, such a day waits for you." onChange={(v) => setErr(store.act(() => setPackageApproval(live(), v)))} />
           <ul className="list" aria-label="The Kit">
             {p.kit.items.map((k) => {
               const gear = gearById(k.gearId)!;
