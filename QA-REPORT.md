@@ -1397,3 +1397,10 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `renewal`, `earnings`, `release-schedule`, `rolling-delivery`, `journey-e`, `decisions` specs, desktop and phone | 0 | 14 passed, 2 skipped by design. |
 
 | PR #82 CI, `accessibility.spec.ts` | 1 real, fixed | Your Reputation's heading took the id `rep-h`, which Representation's heading already had on the same Profile page. It is `reputation-h` now; the spec failed locally before the fix and passes after, desktop and phone. |
+
+## v4 Spread, Balance Targets And Event Frequency (November 13, 2026)
+
+| Check | Failures found | Notes |
+| --- | --- | --- |
+| `npx vitest run --config vitest.balance.config.ts tests/balance/v4-spread.bal.ts` | 0 | 240 runs in 34 s: every cell delivered in every run, books kept, mean overall 57.7 to 61.9. 9,993 notices in 315 templates; the most any run says one template is 7 (a task finished). |
+

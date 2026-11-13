@@ -266,6 +266,11 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       A commissioner's bars rise by a quarter for a season over a tenth past its budget and by 0.15 when they renewed
       another of your series in the past year (`commissionerRaise`), said in the decision. Not modelled: live
       programmes, contract options for further seasons.
+    - The v4 spread and event frequency (V4-030.02, V4-037.03, November 13, 2026): `tests/balance/v4-spread.bal.ts`
+      (in `npm run balance`) runs six formats and methods at micro, low and mid levels in London, Los Angeles, Lagos and
+      Tokyo, ten seeds each (240 runs, 34 s), against targets written in the file; writes `docs/v4/SPREAD-RESULTS.json`
+      and `docs/v4/EVENT-FREQUENCY.md` (every notice reduced to its template and counted). `docs/v4/BALANCE-TARGETS.md`
+      reads them. No misses.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
   - Still not built: Guide Me for writing,
