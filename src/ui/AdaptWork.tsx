@@ -8,7 +8,7 @@ import { FIELD_LABELS, STRUCTURES, named } from '../engine/blueprints';
 import { GENRES } from '../engine/genres';
 import { FORMAT_LABELS, FUNDING_SCENARIOS, MEDIUM_LABELS, TECHNIQUE_LABELS, hasTrackRecord, isEpisodic, isNonfiction, money } from '../engine';
 import { ORIGIN_LABELS, createFromSource, proposeFromSource, type FieldOrigin } from '../engine/proposal';
-import { rightsStanding, type SourceWork } from '../engine/sources';
+import { loadPlots, rightsStanding, type SourceWork } from '../engine/sources';
 import { projectStages } from '../engine/stages';
 import type { AdaptationApproach, Format, Medium, Technique } from '../engine/types';
 import { NumberField, PageHead, SelectField, TextField } from './components';
@@ -120,7 +120,7 @@ export function AdaptWork() {
         <div className="row gap-2 wrap">
           <button className="btn" onClick={() => setWork(null)}>Back To The Work</button>
           <button className="btn" onClick={() => store.back()}>Cancel</button>
-          <button className="btn btn-primary" onClick={() => setShaped(true)}>Preview The Brief</button>
+          <button className="btn btn-primary" onClick={() => { void loadPlots().catch(() => {}).finally(() => setShaped(true)); }}>Preview The Brief</button>
         </div>
       </>
     );

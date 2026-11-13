@@ -13,6 +13,7 @@
 //   its licence, never as the game's.
 // - A work first published after the game's year is not offered (searchSources byYear).
 import sourcesUrl from '../data/sources.json?url';
+import plotsUrl from '../data/plots.json?url';
 
 export type SourceMedium = 'novel' | 'short-story' | 'play' | 'poem' | 'comic' | 'video-game' | 'online' | 'light-novel';
 export const MEDIUM_LABELS: Record<SourceMedium, string> = {
@@ -61,7 +62,15 @@ export interface SourceWork {
   /** The English Wikipedia article's own lead summary, with its licence: never the game's words. */
   summary?: { text: string; from: string; article: string; link: string; licence: string; retrieved: string } | null;
   enriched?: { source: string; retrieved: string };
+  /** The work's story, from its article's plot section (tools/sources/plots.mjs), attached by loadPlots. Null: none recorded. */
+  plot?: WorkPlot | null;
 }
+/**
+ * A work's story as the English Wikipedia article tells it in its plot section (Plot, Synopsis, Story and the like), in
+ * the article's own words under CC BY-SA 4.0 and credited wherever it is shown: never the game's words, and never the
+ * work's own text. `whole` is false where the section was longer than was kept, so its end is not here.
+ */
+export interface WorkPlot { from: string; article: string; link: string; licence: string; section: string; whole: boolean; retrieved: string; paragraphs: string[] }
 export interface SourceCatalog { version: 1; source: string; licence: string; retrieved: string; records: SourceWork[] }
 
 let loaded: SourceCatalog | null = null;
@@ -86,6 +95,26 @@ export function loadSources(): Promise<SourceCatalog> {
   return loading;
 }
 export const sourcesLoaded = (): SourceCatalog | null => loaded;
+
+/**
+ * The works' stories (src/data/plots.json), fetched only when a work is opened or adapted: they are as large as the
+ * catalog itself. Each loaded work is given its story, or null where its article has none. From November 13, 2026.
+ */
+let plots: Promise<void> | null = null;
+export function applyPlots(data: unknown, catalog: SourceCatalog | null = loaded): void {
+  const d = data as { version?: number; plots?: Record<string, WorkPlot> };
+  if (d?.version !== 1 || typeof d.plots !== 'object') throw new Error("The works' stories couldn't be read.");
+  for (const w of catalog?.records ?? []) w.plot = d.plots![w.id] ?? null;
+}
+export function loadPlots(): Promise<void> {
+  if (!plots) {
+    const attempt: Promise<void> = Promise.all([loadSources(), fetch(plotsUrl).then((r) => { if (!r.ok) throw new Error(`Couldn't load the works' stories (${r.status}).`); return r.json() as Promise<unknown>; })])
+      .then(([c, d]) => applyPlots(d, c))
+      .catch((e) => { if (plots === attempt) plots = null; throw e; });
+    plots = attempt;
+  }
+  return plots;
+}
 
 export type RightsStanding = 'public-domain-recorded' | 'copyrighted-recorded' | 'not-recorded';
 /**

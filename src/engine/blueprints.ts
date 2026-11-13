@@ -44,6 +44,8 @@ export interface BlueprintCharacter {
 }
 export interface BlueprintScene {
   act: string; intExt: IntExt; place: string; time: TimeOfDay; who: string[]; objective: string; action: string; turn: string; minutes: number;
+  /** A series' episode, from 1 (a proposal from a work's story, proposal.ts); the first where none is given. */
+  episode?: number;
   crowd?: number; stunts?: string; water?: true; intimacy?: true; dance?: true; vfx?: string[]; animals?: string[]; vehicles?: string[]; props?: string[];
 }
 export interface Blueprint {
@@ -63,7 +65,7 @@ export interface Blueprint {
   /** The line it starts on in its file, for a problem's message. */
   line: number;
   /** Proposed from a real work (proposal.ts), not written for this game: applying it records the work and each field's origin. */
-  origin?: { kind: 'source'; workId: string; title: string; approach: import('./types').AdaptationApproach };
+  origin?: { kind: 'source'; workId: string; title: string; approach: import('./types').AdaptationApproach; story?: import('./types').StoryCredit };
 }
 
 const split = (s: string, by = '|') => s.split(by).map((x) => x.trim());
@@ -307,7 +309,8 @@ export function previewBlueprint(p: Project, b: Blueprint, o: BlueprintOptions =
   if (b.rules.length) add('rules', b.rules.map((r) => r.rule).join(' '));
   if (b.characters.length) add('characters', b.characters.map((c) => `${nameOf(b, o)(c.key)} (${c.size.replace(/-/g, ' ')})`).join(', '));
   if (b.relationships.length) add('relationships', b.relationships.map((r) => `${nameOf(b, o)(r.a)} and ${nameOf(b, o)(r.b)}: ${r.kind}`).join('; '));
-  add('scenes', `${b.scenes.length} scenes${b.tv ? ' for the first episode' : ''}, about ${b.scenes.reduce((a, s) => a + s.minutes, 0)} minutes, in ${[...new Set(b.scenes.map((s) => s.act))].length} parts`);
+  const across = new Set(b.scenes.map((s) => s.episode ?? 1)).size;
+  add('scenes', `${b.scenes.length} scenes${b.tv ? (across > 1 ? ` across ${across} episodes` : ' for the first episode') : ''}, about ${b.scenes.reduce((a, s) => a + s.minutes, 0)} minutes, in ${[...new Set(b.scenes.map((s) => s.act))].length} parts`);
   if (b.tv) {
     add('series.engine', say(b.tv.engine)); add('series.arc', say(b.tv.arc));
     add('series.episodes', b.tv.eps.map((e) => `${e.n}. ${e.title}`).join('; '));
@@ -369,7 +372,9 @@ export function applyBlueprint(state: GameState, p: Project, b: Blueprint, o: Bl
     const acts = new Map((p.acts ?? []).map((a) => [a.name, a.id]));
     for (const s of b.scenes) {
       if (!acts.has(s.act)) { const id = newId(state, 'a'); (p.acts ??= []).push({ id, name: s.act }); acts.set(s.act, id); }
-      const made = addScene(state, p, 1);
+      // Its own episode, where it has one and the project has that many; the first otherwise. Until November 13, 2026
+      // every scene went to the first, and a proposed series' later episodes were empty.
+      const made = addScene(state, p, Math.min(Math.max(1, s.episode ?? 1), Math.max(1, p.axes.episodeCount)));
       const patch: Partial<Scene> = {
         heading: { intExt: s.intExt, place: s.place, time: s.time }, storyLocation: s.place, participants: s.who.map((k) => ids[k]).filter(Boolean), objective: say(s.objective), action: say(s.action),
         turningPoint: say(s.turn), estMinutes: s.minutes, act: acts.get(s.act), ...(s.turn ? { essential: true } : {}),
@@ -402,7 +407,7 @@ export function applyBlueprint(state: GameState, p: Project, b: Blueprint, o: Bl
     const written = pre.changes.map((c) => c.key).filter(on);
     const prior = p.proposal;
     p.proposal = {
-      workId: b.origin.workId, title: b.origin.title, approach: b.origin.approach, at: state.now,
+      workId: b.origin.workId, title: b.origin.title, approach: b.origin.approach, at: state.now, ...(b.origin.story ? { story: b.origin.story } : prior?.workId === b.origin.workId && prior.story ? { story: prior.story } : {}),
       origin: { ...(prior?.workId === b.origin.workId ? prior.origin : {}), ...Object.fromEntries(written.map((k) => [k, origin?.origin[k] ?? 'proposed'])) },
       why: { ...(prior?.workId === b.origin.workId ? prior.why : {}), ...Object.fromEntries(written.filter((k) => origin?.why[k]).map((k) => [k, origin!.why[k]])) },
       applied: { ...(prior?.workId === b.origin.workId ? prior.applied : {}), ...Object.fromEntries(written.filter((k) => k in wrote).map((k) => [k, wrote[k]])) },

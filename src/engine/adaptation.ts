@@ -93,7 +93,9 @@ export function creditLine(p: Project): string | null {
   const by = ref.creators.length ? `, by ${ref.creators.join(' and ')}` : '';
   const owned = ref.standing === 'copyrighted-recorded' ? ` ${ref.title} is recorded as copyrighted; its rights belong to their holders.`
     : ref.standing === 'public-domain-recorded' ? ` ${ref.title} is recorded as public domain.` : ` No copyright status is recorded for ${ref.title}.`;
-  return `Based on ${ref.title}${by}.${owned}`;
+  const story = p.proposal?.workId === ref.id ? p.proposal.story : undefined;
+  const told = story ? ` Its story outline is from the ${story.section} section of the English Wikipedia article "${story.article}" (${story.licence}).` : '';
+  return `Based on ${ref.title}${by}.${owned}${told}`;
 }
 
 /** What the rights holder has been paid of the project's income, on an agreement made before November 13, 2026. */

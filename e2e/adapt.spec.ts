@@ -34,12 +34,19 @@ test('a film made from a work: the whole brief with where each field came from, 
   await adaptWork(page, {
     query: 'quixote', work: /^Don Quixote/, title: 'The Knight Of La Mancha', format: 'Short Film', runtime: '12', approach: 'Freely Adapted',
     onStep: async (step) => {
+      // The work's page tells its story, from its article, credited (from November 13, 2026).
+      if (step === 'open') {
+        const story = page.getByRole('region', { name: 'The Story' });
+        await expect(story).toContainText('Alonso Quixano is an hidalgo');
+        await expect(story).toContainText('From the Summary section of the English Wikipedia article Don Quixote, under CC BY-SA 4.0');
+      }
       if (step !== 'preview') return;
       await expect(page.getByRole('region', { name: /^Fitting It To/ }).or(page.locator('section', { has: page.getByRole('heading', { name: /^Fitting It To/ }) }))).toContainText('A short can hold one strand of a novel');
       const brief = page.getByRole('list', { name: 'Brief Fields' });
       await expect(brief.getByRole('listitem').filter({ hasText: /^Premise/ })).toContainText('From The Work');
-      await expect(brief.getByRole('listitem').filter({ hasText: /^Synopsis/ })).toContainText('Proposed');
-      await expect(brief.getByRole('listitem').filter({ hasText: /^Synopsis/ })).toContainText("not Don Quixote's plot");
+      // The synopsis is the work's story now, from its article; until November 13, 2026 it was the game's shape.
+      await expect(brief.getByRole('listitem').filter({ hasText: /^Synopsis/ })).toContainText('From The Work');
+      await expect(brief.getByRole('listitem').filter({ hasText: /^Synopsis/ })).toContainText('The story as the English Wikipedia article "Don Quixote", its Summary section');
       await expect(brief.getByRole('listitem').filter({ hasText: /^Intended Ending/ })).toContainText('Proposed'); // free: its own ending
       await page.getByLabel(/^Name For /).first().fill('Alonso The Knight');
     },
@@ -90,6 +97,9 @@ test('a film made from a work: the whole brief with where each field came from, 
   expect(saved.projects[0].proposal).toMatchObject({ workId: 'wd:Q480', approach: 'free' });
   expect(saved.projects[0].source).toMatchObject({ kind: 'adapted', ref: { id: 'wd:Q480' } });
   expect(saved.projects[0].source.changes).toBeUndefined(); // declared for a rights holder until November 13, 2026; nothing reads it now
+  // Its scenes are the story's, in order, and its credit names the article it is told from.
+  expect(saved.projects[0].scenes[0].action).toContain('La Mancha');
+  expect(saved.projects[0].proposal.story).toMatchObject({ article: 'Don Quixote', section: 'Summary', licence: 'CC BY-SA 4.0' });
 });
 
 test('a series made from a work arrives with its season, and the installment that follows it is named as recorded', async ({ page }) => {

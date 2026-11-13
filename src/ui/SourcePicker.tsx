@@ -5,7 +5,7 @@
 // is not offered.
 import { useEffect, useMemo, useState } from 'react';
 import type { Project } from '../engine/types';
-import { MEDIUM_LABELS, loadSources, rightsLine, rightsStanding, searchSources, type RightsStanding, type SourceCatalog, type SourceMedium, type SourceWork } from '../engine/sources';
+import { MEDIUM_LABELS, loadPlots, loadSources, rightsLine, rightsStanding, searchSources, type RightsStanding, type SourceCatalog, type SourceMedium, type SourceWork } from '../engine/sources';
 import { STANDING_SAYS, adaptFrom, adaptRefusal, basedOn } from '../engine/adaptation';
 import { GENRES, genreCatalogLoaded, loadGenreCatalog } from '../engine/genres';
 import { Modal, SelectField, TextField, plural } from './components';
@@ -88,6 +88,9 @@ const list = (xs: string[] | undefined) => (xs?.length ? xs.join(', ') : 'Not re
 /** What is recorded about a work, its rights, and where each part comes from. */
 export function WorkFacts({ w }: { w: SourceWork }) {
   const standing = rightsStanding(w);
+  // The work's story is fetched when a work is opened (sources.ts loadPlots): undefined until then.
+  const [, setStories] = useState(0);
+  useEffect(() => { let live = true; if (w.plot === undefined) loadPlots().catch(() => {}).finally(() => { if (live) setStories((n) => n + 1); }); return () => { live = false; }; }, [w]);
   return (
     <>
       <p className="idea-sentence">{w.description ?? `${MEDIUM_LABELS[w.medium]}.`}</p>
@@ -98,6 +101,15 @@ export function WorkFacts({ w }: { w: SourceWork }) {
           <p className="dim small">From the English Wikipedia article <a href={w.summary.link} target="_blank" rel="noreferrer noopener">{w.summary.article}</a>, under {w.summary.licence}, read {w.summary.retrieved}. Its words, not the game's.</p>
         </section>
       )}
+      <section className="idea-block" aria-label="The Story">
+        <h3>The Story</h3>
+        {w.plot === undefined ? <p className="dim small">Reading the story…</p> : w.plot ? (
+          <>
+            {w.plot.paragraphs.map((x, i) => <p key={i} className="small">{x}</p>)}
+            <p className="dim small">From the {w.plot.section} section of the English Wikipedia article <a href={w.plot.link} target="_blank" rel="noreferrer noopener">{w.plot.article}</a>, under {w.plot.licence}, read {w.plot.retrieved}{w.plot.whole ? '' : '; the article tells more than is kept here'}. Its words, not the game's or the work's. An adaptation's outline is told from it, and its credits name the article.</p>
+          </>
+        ) : <p className="muted small">No story is recorded for {w.title}: its article has no plot section{w.medium === 'video-game' ? ' (it describes how the game is played)' : ''}. An adaptation of it starts from the game's own outline, for you to write the work's story into.</p>}
+      </section>
       <section className="idea-block" aria-label="What Is Recorded">
         <h3>What Is Recorded</h3>
         <dl className="kv">

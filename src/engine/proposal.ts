@@ -9,7 +9,15 @@
 // - proposed: an adaptation choice the game makes from those facts and the player's choices, and says it made;
 // - unknown: not recorded, and not guessed. The field says what is missing and asks for it (a faithful adaptation's
 //   ending is the work's own, which the game does not have, so it says so instead of inventing one).
-// Nothing here reconstructs a protected work's plot, and nothing proposed is presented as the author's.
+// Nothing proposed is presented as the author's.
+//
+// The work's story (from November 13, 2026, the owner: "All adapted material should have a story behind it, even the
+// copyrighted one"): where the work's English Wikipedia article has a plot section (sources.ts WorkPlot), the premise,
+// the synopsis, a kept ending and every scene's action are that section's words, in order, across every episode of a
+// series, each credited to the article (CC BY-SA 4.0). A copyrighted work's article is Wikipedia's writing about it,
+// not the work. Until then the synopsis said "the game does not have the work's story", and a series' outline filled
+// its first episode alone. A work whose article tells no story (a game of pure play, a poem with none) is given the
+// game's own outline for every episode, and says it is the game's.
 import { adaptFrom } from './adaptation';
 import { applyBlueprint, briefFields, type Blueprint, type BlueprintCharacter, type BlueprintScene } from './blueprints';
 import { createProject, isEpisodic, isNonfiction, type NewProjectInput } from './projects';
@@ -125,6 +133,19 @@ const BEATS: { act: 0 | 1 | 2; objective: string; action: string; turn: string; 
 /** Which beats a given number of scenes uses: always the opening, the trouble, the choice and the end. */
 const BEAT_SETS: Record<number, number[]> = { 5: [0, 1, 3, 5, 6], 6: [0, 1, 2, 3, 5, 6], 8: [0, 1, 2, 3, 4, 5, 6, 7] };
 
+/** A story's sentences, in order. */
+export const sentencesOf = (text: string): string[] => text.split(/(?<=[.!?]["'\u201d)\]]?)\s+(?=[\p{Lu}0-9"'\u201c(\[{])/u).map((x) => x.trim()).filter(Boolean);
+/** Split a list into `n` runs in order, as even as possible; never an empty run while items remain. */
+export function runsOf<T>(xs: T[], n: number): T[][] {
+  const k = Math.max(1, Math.min(n, xs.length));
+  return Array.from({ length: k }, (_, i) => xs.slice(Math.round((i * xs.length) / k), Math.round(((i + 1) * xs.length) / k)));
+}
+/** The fewest sentences a story needs before its scenes are told from it. */
+const STORY_MIN = 5;
+/** The most of a story the synopsis keeps: the brief's Synopsis field holds 3,000 characters. */
+const SYNOPSIS_MOST = 3000;
+const sceneMinutes = (total: number, n: number) => Math.max(1, Math.min(30, Math.round(total / Math.max(1, n))));
+
 /** Propose a whole brief for a work. Pure: the same inputs propose the same brief. */
 /** A sentence that ranks a work by sales or standing: kept out of a proposed premise. */
 export const SALES_CLAIM = /\b(best[- ]?sell(ing|er)s?|copies sold|million copies|sold (over|more than)|of all time|most (popular|successful|widely read|translated))\b/i;
@@ -166,11 +187,34 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   else if (people.some((p) => !p.recorded)) why.characters = `${w.title} records ${recorded.length === 1 ? 'one character' : `${recorded.length} characters`}; the other parts are named for what they do.`;
   else why.characters = 'The names are recorded. Who leads, and what each wants, are proposed: the record does not say who leads, so the ones most written about come first.';
   const [lead, rival, ally] = people;
-  const extras = people.slice(3);
   const place = (n: number) => {
     const places = (w.places ?? []).map((p) => p.name);
     return places.length ? places[n % places.length] : invented ? `The World Of ${w.title}` : (n % 2 ? 'A Public Place' : 'Home');
   };
+
+  // ---- The work's story, where its article tells one: names written {key}, so renaming a character renames them in it.
+  const plot = w.plot?.paragraphs?.length ? w.plot : null;
+  const named = people.filter((x) => x.recorded);
+  const firsts = named.map((x) => x.name.split(/\s+/)[0]);
+  const esc = (t: string) => t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const word = (t: string) => new RegExp(`(?<![\\p{L}\\p{N}])${esc(t)}(?![\\p{L}\\p{N}])`, 'gu');
+  // A full name is written {key}, so a renamed character is renamed in the story; a first name alone stays as the
+  // article wrote it, and only says who is in a scene.
+  const marks: [RegExp, string][] = named.map((x) => [word(x.name), `{${x.key}}`]);
+  const callers = named.map((x, n) => {
+    const first = firsts[n];
+    return { key: x.key, re: first.length >= 3 && first !== x.name && firsts.filter((f) => f === first).length === 1 ? word(first) : null };
+  });
+  const mark = (t: string) => marks.reduce((acc, [re, k]) => acc.replace(re, k), t.replace(/[{}]/g, ''));
+  const paragraphs = plot ? plot.paragraphs.map(mark) : [];
+  const story = paragraphs.length ? sentencesOf(paragraphs.join(' ')) : [];
+  const told = story.length >= STORY_MIN;
+  const credit = plot ? `the English Wikipedia article "${plot.article}", its ${plot.section} section, in its own words (${plot.licence})` : '';
+  const whoIn = (t: string) => {
+    const ks = people.filter((x) => t.includes(`{${x.key}}`) || callers.some((c) => c.key === x.key && c.re && new RegExp(c.re.source, 'u').test(t))).map((x) => x.key);
+    return ks.length ? ks : [lead.key];
+  };
+  const placeIn = (t: string, k: number) => (w.places ?? []).find((x) => t.includes(x.name))?.name ?? place(k);
 
   // ---- When and where.
   const recordedPlace = (w.places ?? [])[0]?.name;
@@ -211,20 +255,31 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   // A premise is story. A sentence about sales or standing (best-selling, copies sold, of all time) is left out of it:
   // the game names no list, metric, year or territory for such a claim (the v4 package; ledger V4-003.05).
   const sentences = summary ? summary.split(/(?<=[.!?])\s+(?=[A-Z"'(])/) : [];
-  const told = sentences.filter((x) => !SALES_CLAIM.test(x));
-  const premise = told.length ? told.join(' ') : fill(`An adaptation of ${w.title}${by ? ` by ${by}` : ''}${w.description ? `, ${w.description}` : ''}. {lead} sets out to {goal}.`);
-  const dropped = sentences.length - told.length;
-  origin['story.premise'] = told.length ? 'sourced' : 'proposed';
-  why['story.premise'] = told.length ? `The English Wikipedia article "${w.summary!.article}", in its own words (${w.summary!.licence})${dropped ? `, less ${dropped === 1 ? 'a sentence' : `${dropped} sentences`} about its sales or standing, which the game can't vouch for` : ''}.` : `No summary is recorded for ${w.title}; this premise is the game's proposal, not the work's story.`;
-  const synopsis = fill('{lead} lives a life that {against} is about to upend. When it arrives, {lead} decides to {goal}, first with {ally} and the obvious way, which fails. Facing {rival}, {lead} learns the real size of the problem, and the cost of each victory falls on someone close. Forced at last to choose between {choiceA} and {choiceB}, {lead} chooses. ') + fill(endingProposed);
-  origin['story.synopsis'] = 'proposed';
-  why['story.synopsis'] = `A shape for the adaptation, not ${w.title}'s plot: the game does not have the work's story, and writes none as if it were.`;
+  const lead1 = sentences.filter((x) => !SALES_CLAIM.test(x));
+  const dropped = sentences.length - lead1.length;
+  // The premise is the story's opening where the article tells one; otherwise its lead, less any claim about sales.
+  const opening = told ? sentencesOf(paragraphs[0]).filter((x) => !SALES_CLAIM.test(x)) : [];
+  const premise = opening.length ? opening.join(' ') : lead1.length ? lead1.join(' ') : fill(`An adaptation of ${w.title}${by ? ` by ${by}` : ''}${w.description ? `, ${w.description}` : ''}. {lead} sets out to {goal}.`);
+  origin['story.premise'] = opening.length || lead1.length ? 'sourced' : 'proposed';
+  why['story.premise'] = opening.length ? `How the story begins: the first paragraph of ${credit}.`
+    : lead1.length ? `The English Wikipedia article "${w.summary!.article}", in its own words (${w.summary!.licence})${dropped ? `, less ${dropped === 1 ? 'a sentence' : `${dropped} sentences`} about its sales or standing, which the game can't vouch for` : ''}.` : `No summary is recorded for ${w.title}; this premise is the game's proposal, not the work's story.`;
+  // The synopsis is the whole story, in whole paragraphs, as far as the brief's field holds it.
+  const kept: string[] = [];
+  for (const x of paragraphs) { if (kept.join('\n\n').length + x.length + 2 > SYNOPSIS_MOST && kept.length) break; kept.push(x); }
+  const synopsis = told ? kept.join('\n\n').slice(0, SYNOPSIS_MOST)
+    : fill('{lead} lives a life that {against} is about to upend. When it arrives, {lead} decides to {goal}, first with {ally} and the obvious way, which fails. Facing {rival}, {lead} learns the real size of the problem, and the cost of each victory falls on someone close. Forced at last to choose between {choiceA} and {choiceB}, {lead} chooses. ') + fill(endingProposed);
+  origin['story.synopsis'] = told ? 'sourced' : 'proposed';
+  why['story.synopsis'] = told
+    ? `The story as ${credit}${kept.length < paragraphs.length ? `: its first ${kept.length} of ${paragraphs.length} paragraphs, as much as the Synopsis holds` : ''}${plot!.whole ? '' : '. The article tells more than was kept'}.`
+    : `A shape for the adaptation, not ${w.title}'s plot: ${plot ? `its article's ${plot.section} section is too short to tell it from` : `no story is recorded for ${w.title}`}, and the game writes none as if it were.`;
   // Faithful and updated keep the work's ending (adaptation.ts APPROACHES); only a free adaptation proposes its own.
   const faithfulEnd = i.approach !== 'free';
-  const ending = faithfulEnd ? `The work's own ending, kept. The game does not record how ${w.title} ends; write it here from the work.` : fill(endingProposed);
-  origin['story.ending'] = faithfulEnd ? 'unknown' : 'proposed';
-  if (faithfulEnd) why['story.ending'] = `This approach keeps the work's ending, which is not recorded.`;
-  for (const k of ['story.question', 'story.stakes', 'story.conflict', 'story.viewpoint', 'story.audience', 'story.intendedExperience', 'story.structure', 'tone', 'suggestions', 'relationships', 'scenes']) origin[k] = 'proposed';
+  const endKnown = told && plot!.whole;
+  const ending = !faithfulEnd ? fill(endingProposed) : endKnown ? paragraphs.at(-1)! : `The work's own ending, kept. The game does not record how ${w.title} ends; write it here from the work.`;
+  origin['story.ending'] = !faithfulEnd ? 'proposed' : endKnown ? 'sourced' : 'unknown';
+  if (faithfulEnd) why['story.ending'] = endKnown ? `This approach keeps the work's ending: the last paragraph of ${credit}.` : `This approach keeps the work's ending, which is not recorded${told ? ': the story kept stops before it' : ''}.`;
+  for (const k of ['story.question', 'story.stakes', 'story.conflict', 'story.viewpoint', 'story.audience', 'story.intendedExperience', 'story.structure', 'tone', 'suggestions', 'relationships']) origin[k] = 'proposed';
+  origin.scenes = told ? 'sourced' : 'proposed';
   const themes = (w.subjects ?? []).slice(0, 3);
   origin['story.theme'] = themes.length ? 'sourced' : 'proposed';
   if (!themes.length) themes.push(cap(choiceA), cap(choiceB));
@@ -252,18 +307,54 @@ export function proposeFromSource(i: ProposalInput): Proposal {
     { a: lead.key, b: ally.key, kind: 'allies', start: fill('{ally} is on {lead}\'s side'), end: fill('Changed by what it cost {ally}') },
   ];
 
-  // ---- The outline.
+  // ---- The outline: every episode of a series, each scene a stretch of the story in order where one is told.
   const count = scenesFor(i.format, minutes);
   const acts = tv ? ['Opening', 'Middle', 'Close'] : ['Beginning', 'Middle', 'End'];
-  const each = Math.max(1, Math.min(30, Math.round((tv ? minutes : minutes) / count)));
-  const scenes: BlueprintScene[] = BEAT_SETS[count].map((n, k) => {
+  const episodes = tv ? Math.max(2, Math.min(26, i.episodes ?? 6)) : 0;
+  const beatAt = (f: number) => BEATS[Math.round(f * (BEATS.length - 1))];
+  const actAt = (f: number) => acts[f < 0.25 ? 0 : f < 0.75 ? 1 : 2];
+  /** A scene told from a stretch of the story: its words are the story's; its purpose and turn follow the arc. */
+  const toldScene = (part: string[], k: number, f: number, episode?: number, n = count): BlueprintScene => {
+    const b = beatAt(f);
+    const text = part.join(' ');
+    return { act: actAt(f), intExt: b.intExt, place: placeIn(text, k), time: b.time, who: whoIn(text), objective: fill(b.objective), action: text, turn: b.turn ? part.at(-1)! : '', minutes: sceneMinutes(minutes, n), ...(episode ? { episode } : {}) };
+  };
+  /** A scene of the game's own, from the arc's beat at that point. */
+  const ownScene = (n: number, k: number, episode?: number, size = count): BlueprintScene => {
     const b = BEATS[n];
     const here = place(k);
     const who = [lead.key, ...(b.action.includes('{rival}') ? [rival.key] : []), ...(b.action.includes('{ally}') ? [ally.key] : [])];
-    return { act: acts[b.act], intExt: b.intExt, place: here, time: b.time, who, objective: fill(b.objective), action: fill(b.action).replace(place(0), here), turn: fill(b.turn), minutes: each };
-  });
-  // Everyone in the cast is in a scene: the extras join the scene with the ally.
-  for (const x of extras) scenes.find((s) => s.who.includes(ally.key))!.who.push(x.key);
+    return { act: acts[b.act], intExt: b.intExt, place: here, time: b.time, who, objective: fill(b.objective), action: fill(b.action).replace(place(0), here), turn: fill(b.turn), minutes: sceneMinutes(minutes, size), ...(episode ? { episode } : {}) };
+  };
+  let scenes: BlueprintScene[];
+  const parts = told && tv ? runsOf(story, episodes) : [];
+  if (told && !tv) {
+    const runs = runsOf(story, count);
+    scenes = runs.map((part, k) => toldScene(part, k, runs.length > 1 ? k / (runs.length - 1) : 0, undefined, runs.length));
+  } else if (told) {
+    // The story across the season, then each episode's stretch across its scenes; an episode past the story's end (a
+    // story shorter than the season) is the game's own, from where the arc stands then.
+    scenes = Array.from({ length: episodes }, (_, e) => {
+      const part = parts[e];
+      if (!part) return [0, 1].map((j) => ownScene(Math.min(BEATS.length - 1, 6 + j), j, e + 1, 2));
+      const runs = runsOf(part, count);
+      return runs.map((r, k) => toldScene(r, k, (e + (runs.length > 1 ? k / (runs.length - 1) : 0)) / episodes, e + 1, runs.length));
+    }).flat();
+  } else if (tv) {
+    // No story to tell from: the game's own arc, a stretch of it in each episode, so no episode is left empty.
+    scenes = Array.from({ length: episodes }, (_, e) => {
+      const at = Math.round((e / Math.max(1, episodes - 1)) * (BEATS.length - 3));
+      return [at, at + 1, at + 2].map((n, k) => ownScene(n, k, e + 1, 3));
+    }).flat();
+  } else scenes = BEAT_SETS[count].map((n, k) => ownScene(n, k));
+  // Two scenes turn the story at least: where a told outline's beats give fewer, its first and last scenes do.
+  if (scenes.filter((x) => x.turn).length < 2) for (const x of [scenes[0], scenes.at(-1)!]) if (!x.turn) x.turn = told ? x.action.split(/(?<=[.!?])\s+/).at(-1)! : fill('{lead} decides to {goal}.');
+  // Three parts at least, whatever the story's length.
+  if (new Set(scenes.map((x) => x.act)).size < 3) scenes.forEach((x, k) => { x.act = actAt(scenes.length > 1 ? k / (scenes.length - 1) : 0); });
+  // Everyone in the cast is in a scene: whoever the story never names joins the scene with the most people in it.
+  for (const x of people) if (!scenes.some((sc) => sc.who.includes(x.key))) scenes.reduce((a, b) => (b.who.length > a.who.length ? b : a)).who.push(x.key);
+  if (told) why.scenes = `Each scene's action is a stretch of ${credit}, in order${tv ? `, across all ${episodes} episodes${parts.length < episodes ? `; the story runs out after episode ${parts.length}, and the episodes after it are the game's own` : ''}` : ''}. Where each happens, and what each is for, are proposed.`;
+  else why.scenes = `${plot ? `${w.title}'s article tells too little of its story to build scenes from` : `No story is recorded for ${w.title}`}${w.medium === 'video-game' ? ' (its article describes play)' : ''}. The outline is the game's own${tv ? `, a stretch of it in each of the ${episodes} episodes` : ''}; write the work's story into it.`;
 
   // ---- Fitting it to the format.
   if (LONG.has(w.medium) && !tv && minutes <= 25) notes.push(`A short can hold one strand of a ${w.medium.replace(/-/g, ' ')}. The outline follows ${lead.name} through one conflict and leaves the rest of ${w.title} out.`);
@@ -276,7 +367,6 @@ export function proposeFromSource(i: ProposalInput): Proposal {
   if ((w.adaptationCount ?? 0) > 0) notes.push(`${w.title} has been adapted before (${w.adaptationCount} recorded, among them ${(w.adaptations ?? []).slice(0, 3).map((a) => `${a.title}${a.year ? `, ${a.year}` : ''}`).join('; ')}). Yours is its own version.`);
   if (i.approach === 'updated' && !invented) notes.push(`Moved to ${i.gameYear}: the period is changed from the work, which the rights holder reads a draft against.`);
 
-  const episodes = tv ? Math.max(2, Math.min(26, i.episodes ?? 6)) : 0;
   const PHASES = ['Arrival', 'First Steps', 'The Other Side', 'What It Costs', 'Turning', 'The Choice', 'Closing In', 'The Reckoning', 'After'];
   const blueprint: Blueprint = {
     id: `${genre}.${tv ? 't' : 'f'}01`, v: 1, format: i.format, structure: tv ? 'episodic' : 'three-act',
@@ -293,14 +383,14 @@ export function proposeFromSource(i: ProposalInput): Proposal {
       tv: {
         episodes, minutes,
         engine: fill('Each episode {lead} takes one more step toward the goal, and pays for it'), arc: fill('Over the season {lead} sets out to {goal}, and is brought to choose between {choiceA} and {choiceB}'),
-        eps: Array.from({ length: episodes }, (_, n) => ({ n: n + 1, title: PHASES[Math.min(PHASES.length - 1, Math.floor((n / Math.max(1, episodes - 1)) * (PHASES.length - 1)))] + (episodes > PHASES.length && n > 0 ? ` ${n + 1}` : ''), moves: fill(n === 0 ? 'The trouble reaches {lead}' : n === episodes - 1 ? '{lead} makes the choice' : n === Math.floor(episodes / 2) ? '{lead} learns what {rival} wants' : '{lead} and {ally} push on') })),
+        eps: Array.from({ length: episodes }, (_, n) => ({ n: n + 1, title: PHASES[Math.min(PHASES.length - 1, Math.floor((n / Math.max(1, episodes - 1)) * (PHASES.length - 1)))] + (episodes > PHASES.length && n > 0 ? ` ${n + 1}` : ''), moves: parts[n]?.[0] ?? fill(n === 0 ? 'The trouble reaches {lead}' : n === episodes - 1 ? '{lead} makes the choice' : n === Math.floor(episodes / 2) ? '{lead} learns what {rival} wants' : '{lead} and {ally} push on') })),
         changes: fill('{lead} learns what the goal costs; {ally} learns to choose'), recurring: [...new Set([place(0), place(1)])],
         continuation: next ? `Open: the work is followed by ${next.title} in ${w.series!.name} (recorded), which a later season could adapt.` : i.format === 'limited-series' ? 'It ends with this season.' : 'Proposed: open, if the season is renewed.',
       },
     } : {}),
     review: { status: 'authored', at: 'proposed', note: `Proposed from ${w.title} (${w.id}).` },
     line: 0,
-    origin: { kind: 'source', workId: w.id, title: w.title, approach: i.approach },
+    origin: { kind: 'source', workId: w.id, title: w.title, approach: i.approach, ...(told ? { story: { article: plot!.article, link: plot!.link, section: plot!.section, licence: plot!.licence } } : {}) },
   };
   if (tv) {
     for (const k of ['series.engine', 'series.arc', 'series.episodes', 'series.changes', 'series.recurring']) origin[k] = 'proposed';

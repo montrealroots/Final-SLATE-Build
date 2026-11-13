@@ -866,6 +866,7 @@ function BasedOn({ p }: { p: Project }) {
     <section className="card" aria-labelledby="based-on-h">
       <h2 id="based-on-h">Based On</h2>
       <p>{line}</p>
+      {p.proposal?.story && p.proposal.workId === p.source?.ref?.id && <p className="small"><a href={p.proposal.story.link} target="_blank" rel="noreferrer noopener">Read the article the story is from</a></p>}
       <p className="dim small">This is what the credits say. Nothing more is asked in the game: a copyrighted work is credited, and nothing here stands in for its rights holder's permission in the real world.</p>
       {earlier && <>
         <h3>Agreed Before</h3>

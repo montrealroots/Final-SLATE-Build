@@ -127,6 +127,8 @@ export interface SourceRef {
  * An option on the work a script adapts (adaptation.ts): this story's own agreement, with made-up terms. It is not an
  * agreement with anyone real and grants no right to a real work.
  */
+/** The article a proposed story was told from (proposal.ts): credited, under its licence, wherever the project is. */
+export interface StoryCredit { article: string; link: string; section: string; licence: string }
 /** How closely an adaptation follows its work: the proposal moves it in time or writes its own ending (proposal.ts). */
 export type AdaptationApproach = 'faithful' | 'updated' | 'free';
 /**
@@ -1001,7 +1003,8 @@ export interface Project {
   /** Its music: licences for existing songs (music.ts). Absent on a project made before November 12, 2026, whose
    *  licensed songs are cleared as they always were, by the music supervisor's days and one fee. */
   music?: import('./music').MusicPlan;
-  proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string> };
+  /** `story`: the article whose plot section its story was told from, credited with the project (adaptation.ts creditLine). */
+  proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string>; story?: StoryCredit };
   /** Fields the player locked: a full story or a shuffle leaves them alone (blueprints.ts FIELD_LABELS has the keys). */
   locks?: string[];
   /**
