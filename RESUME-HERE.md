@@ -271,6 +271,12 @@ At every stopping point, open a pull request into `main` and merge it (see `CLAU
       Tokyo, ten seeds each (240 runs, 34 s), against targets written in the file; writes `docs/v4/SPREAD-RESULTS.json`
       and `docs/v4/EVENT-FREQUENCY.md` (every notice reduced to its template and counted). `docs/v4/BALANCE-TARGETS.md`
       reads them. No misses.
+    - Screens and holdovers (V4-028.02, November 13, 2026; `box-office.ts`): a run opens on a screen per $400 of guarantee
+      (times the square root of its territories, 10 to 4,000); each week records its screens, the other wide releases
+      against it (a seeded 0 to 4, each taking 8% of its takings a screen) and the cinemas' decision from admissions a
+      screen (900 expands by a quarter, 250 holds, less cuts to three fifths, under 5 screens withdraws). The screens a
+      month ends on scale the next month's report (`screenShare`, up to 1.5). Weeks In Cinemas shows them. Not modelled:
+      publicity spending.
     - PR #80's journeys failed on connected.spec: a later window's draw is keyed on an offer id from the shared id
       counter, and the delivery-triggered job-offer event took an id from it. Job events now take derived ids.
   - Still not built: Guide Me for writing,

@@ -914,7 +914,14 @@ export interface EpisodeRelease {
  * month's report settles it; `first` is what it said before a settlement moved it; `late` marks a week first recorded
  * by that settlement.
  */
-export interface BoxOfficeWeek { week: number; from: string; to: string; territories: number; rental: number; status: 'provisional' | 'final'; first?: number; late?: true }
+export interface BoxOfficeWeek {
+  week: number; from: string; to: string; territories: number; rental: number; status: 'provisional' | 'final'; first?: number; late?: true;
+  /**
+   * Screens it played on that week, the other wide releases that opened against it, and what the cinemas decided for
+   * the next week from its takings a screen (box-office.ts holdover). Weeks recorded before November 13, 2026 have none.
+   */
+  screens?: number; competitors?: number; next?: 'expanded' | 'held' | 'cut' | 'withdrawn';
+}
 
 /** The measures of an audience, kept apart: people at a first showing; hours streamed; a service's views (audiences.ts). */
 export type AudienceMetric = 'viewers' | 'hours' | 'views';
