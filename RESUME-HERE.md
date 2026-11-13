@@ -44,6 +44,22 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 
 ## Newest Requests (November 13, 2026)
 
+- **The four items the owner chose ("Yes, do all four, starting now.").**
+  1. *Ledgers reconciled* (`249473a`). In `docs/v3/requirements.csv`, C12, S10, L04, L05, W01, D01, D02 and Z01 are done
+     and verified; B03 stays partial (publicity, competition, territory results and currency aren't built); B04 and T02
+     are data-limited. V4-022.01 is implemented, and `docs/v4/LEDGER-COUNTS.md` is regenerated.
+  2. *Every row of the UI coverage matrix is measured* (`fa5becd`): 88 of 88, none open. Journeys that answered a dialog
+     before the sweep's next look now let it look first (`sweepSees`, `e2e/test.ts`, a no-op without the sweep); a walk
+     step on a labelled fixture opens Delete This Scene? (once its work is built) and Change The Approved Take?. That
+     step found the capture row's field 2.6 px out of level; it is an inline-form now. V3-U01 is done; the matrix's
+     limits stay owed (no real phone, no virtual keyboard).
+  3. *Two journeys pin one outcome* (`07cb025`): first-look's outside studio passes a short; the release plan books the
+     stores and takes home $0, all of it repaying the starting backing.
+  4. *Adapted works with one person or none* (`cc7135f`). 25 reviewed entries, and a reading fix: a title's single word
+     is no longer left out (Zarathustra, Timon, Kafka, Tress, Alcatraz), and an age isn't part of a name. 18 works keep
+     one person and 2 none; their records and stories name no other person more than once (`docs/v5/CHARACTERS.md`
+     lists them). 160 works' roles are reviewed.
+
 - **Roles reviewed by hand (the owner: "Fix it all.").** No sentence reading gets every role right: each rule tried
   fixed some works and broke others. So roles are reviewed, as genres are.
   - `src/data/role-review.json` covers every error found in the sweep. For each work it gives the lead, who is against
@@ -55,8 +71,8 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
   - A title's word goes to a character only by a word of their own, so Lady Macbeth no longer leads Macbeth.
   - J03's commission is a draw keyed to the seed and the project's ids. Portal's reviewed cast changed the ids, so J03's
     seed was searched again, as it was when the stories came in.
-  - Left: 29 works whose stories name one person keep a second part named for what it does. 6 that name no one keep all
-    three. An unreviewed error found later goes into the review table.
+  - Left until the four items below: 29 works whose stories name one person kept a second part named for what it does,
+    and 6 that name no one kept all three. An unreviewed error found later goes into the review table.
 - **The remaining wrong characters and placeholders (the owner, same day).** `docs/v5/CHARACTERS.md` has the numbers.
   - One person under two names is joined where the story joins them, under the name it uses more: Don Quixote, and
     Kira into Light Yagami.
@@ -87,7 +103,8 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
   - O'Brien stands against Winston: a sentence naming only the lead carries over who the one before it named.
   - Dracula is led by the Count.
   - An ally, like a rival, needs the story to show it.
-  - Not claimed as 100%: 29 works still have only placeholders and 65 have one or two. A few places and peoples still
+  - Not claimed as 100%: when this was written, 29 works had only placeholders and 65 had one or two (18 and 2 from the
+    four items above). A few places and peoples still
     read as people, and three people read as places. Some roles are the sentences', not the story's. All are listed
     in `docs/v5/CHARACTERS.md`.
 - **The remaining brief issues (the owner: "Fix the Moby-Dick rival and the remaining brief issues").** After #86:
@@ -530,9 +547,7 @@ has a row for each requirement built or owed.
   tools/v3/ui-coverage.mjs --fresh --sweep <file> --sweep <file>`). Do not run `npm run check` while a production
   sweep runs: both build into `dist/`. The stylesheet turns at four widths, listed at its head;
   `tests/stylesheet.test.ts` fails a fifth, a rule for a class nothing wears and an inline pixel margin. `QA-REPORT.md`
-  has every finding and fix. **Owed:** the 11 rows the matrix lists as not visited (dialogs that open only in a
-  played career: cutting a scene from the edit, cancelling a release, episode dates, a withdrawn contributor, rules,
-  the approved take; and the loading, error and repair states of the start screen); the WebKit sweep folded in;
+  has every finding and fix. **Owed:** the WebKit sweep folded in;
   before-and-after screenshots for the report; a real phone's keyboard, which no emulation shows.
 - **Next in order:** `docs/v3/requirements.csv` lists every requirement with its status; the ones marked `not started`
   or `partial` are the work left, and `docs/v3/LEDGER.md`'s suites table says the same by acceptance suite. In the
