@@ -1396,3 +1396,4 @@ November 12, 2026. Evidence for the pull request that carries them.
 | `tests/audiences.test.ts` | 1 expected, 2 test mistakes of mine | Retention passes 100% at high reception; growth and recovery; daily against weekly against a break, averaged over forty worlds (the effect is a few percent, inside a week's 5% draw); a season over budget and a fuller slate raise the bar. |
 | `renewal`, `earnings`, `release-schedule`, `rolling-delivery`, `journey-e`, `decisions` specs, desktop and phone | 0 | 14 passed, 2 skipped by design. |
 
+| PR #82 CI, `accessibility.spec.ts` | 1 real, fixed | Your Reputation's heading took the id `rep-h`, which Representation's heading already had on the same Profile page. It is `reputation-h` now; the spec failed locally before the fix and passes after, desktop and phone. |

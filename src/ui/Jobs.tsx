@@ -78,8 +78,8 @@ export function ReputationCard() {
   };
   const pct = (n: number, d: number) => `${n} of ${d}`;
   return (
-    <section className="card" aria-labelledby="rep-h">
-      <h2 id="rep-h">Your Reputation</h2>
+    <section className="card" aria-labelledby="reputation-h">
+      <h2 id="reputation-h">Your Reputation</h2>
       <p className="dim small">How the industry reads your record, from what happened. Offers of outside work lean to the role your work is strongest in, and pay by it.</p>
       <dl className="kv" aria-label="Your Reputation">
         {(['writing', 'directing', 'acting'] as const).map((role) => <Fragment key={role}><dt>{JOB_ROLES[role].label}</dt><dd>{craft(role)}</dd></Fragment>)}
