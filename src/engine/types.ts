@@ -127,15 +127,16 @@ export interface SourceRef {
  * An option on the work a script adapts (adaptation.ts): this story's own agreement, with made-up terms. It is not an
  * agreement with anyone real and grants no right to a real work.
  */
-/** How closely an adaptation follows its work, which is what its agreement lets the script change (adaptation.ts). */
+/** How closely an adaptation follows its work: the proposal moves it in time or writes its own ending (proposal.ts). */
 export type AdaptationApproach = 'faithful' | 'updated' | 'free';
-/** What a script is declared to change from the work it adapts. Declared by the player; the game reads no prose. */
-export type SourceChange = 'setting' | 'period' | 'ending' | 'people';
 /**
  * A draft sent to the rights holder, and their answer (adaptation.ts): the draft's number, what the script was declared
  * to change on that day, and why they said no when they did.
  */
-export interface SourceApproval { draft: number; changes: SourceChange[]; sentAt: number; answerAt: number; outcome?: 'approved' | 'refused'; reason?: string }
+// Until November 13, 2026 an approval also kept the changes the draft declared and when the answer was due, and an option
+// when it ran out: what the rights holder read and the clocks the option ran on. Nothing reads them since (adaptation.ts,
+// "Copyright"); a save that has them keeps them unread.
+export interface SourceApproval { draft: number; sentAt: number; outcome?: 'approved' | 'refused'; reason?: string }
 
 export interface SourceOption {
   /**
@@ -149,8 +150,6 @@ export interface SourceOption {
   /** Each payment of the rights holder's share, as income arrived (finance.ts receiveIncome). What they have been paid is these added up. */
   statements?: { at: number; from: string; income: number; share: number }[];
   takenAt: number;
-  /** When it runs out unless renewed or exercised. */
-  expires: number;
   renewedAt?: number;
   exercisedAt?: number;
 }
@@ -1119,7 +1118,7 @@ export interface Project {
    * source-material catalog (sources.ts, from November 12, 2026), kept as it was recorded on the day it was chosen so a
    * save never depends on the catalog: its rights are what Wikidata recorded then, and nothing the game works out.
    */
-  source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef; option?: SourceOption; changes?: SourceChange[]; approval?: SourceApproval };
+  source?: { kind: 'original' | 'adapted'; work?: string; ref?: SourceRef; option?: SourceOption; approval?: SourceApproval };
   /** Works this project was adapted from and left, with what was agreed for each (adaptation.ts retireSource). Absent until one is left. */
   sourceHistory?: { ref: SourceRef; option?: SourceOption; approval?: SourceApproval; endedAt: number }[];
   /** When the story is set, as declared: costume, makeup and design awards split by it. Missing means contemporary. */

@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { creditLine } from '../engine/adaptation';
 import { approveDesign, askForDesignChanges } from '../engine/designs-actions';
 import { showCut } from '../engine/documentary-actions';
 import { chooseTake } from '../engine/takes-actions';
@@ -492,6 +493,7 @@ export function ReleaseTab({ p }: { p: Project }) {
       {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
       {p.delivered ? <section className="card">
         <h2>Credits</h2>
+        {creditLine(p) && <p>{creditLine(p)}</p>}
         <div className="table-wrap">
           <table className="data">
             <thead><tr><th>Credit</th><th>Name</th><th>Details</th></tr></thead>

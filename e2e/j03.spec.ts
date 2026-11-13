@@ -1,7 +1,8 @@
 // J03 as one run (the v4 package, 05: "Game adaptation -> 2D series -> platform -> weekly audience ->
 // renewal/cancellation -> season two"; ledger V4-038.03). One game, through the interface: a video game from the works
-// catalog adapted as a drawn 2D series, commissioned through an agent, made, sold to a broadcaster or streaming service,
-// its audience reported week by week, the commissioner's decision made on that audience, and the second season begun.
+// catalog adapted as a drawn 2D series and credited as copyrighted, commissioned through an agent, made, sold to a
+// broadcaster or streaming service, its audience reported week by week, the commissioner's decision made on that
+// audience, and the second season begun.
 // Nothing is written into the save. The world seed is pinned (a labelled fixture), chosen so the commissioner says yes
 // and a broadcaster or streamer makes an offer.
 import { expect, test, type Page } from './test';
@@ -60,19 +61,10 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   await page.getByRole('dialog', { name: 'Accept These Terms?' }).getByRole('button', { name: /^Accept \$/ }).click();
   await expect(commissioner.getByText('Backing', { exact: true })).toBeVisible();
 
-  // Portal is recorded as copyrighted: the story's own option on it, taken for a free adaptation, the rights bought,
-  // and the approved draft read and approved by the rights holder, before production can be planned.
+  // Portal is recorded as copyrighted: the credits say so, and nothing more is asked before production (the owner's
+  // decision of November 13, 2026; until then this run took an option, bought the rights and had the draft approved).
   await open(page, 'Budget');
-  const rights = card(page, 'Adaptation Rights');
-  await rights.getByLabel('How Closely It Follows The Work').selectOption('free');
-  await rights.getByRole('button', { name: /^Take The Option For \$/ }).click();
-  await rights.getByRole('button', { name: /^Buy The Rights For \$/ }).click();
-  await expect(rights).toContainText('Rights Bought');
-  await rights.getByRole('group', { name: "The Rights Holder's Approval" }).getByRole('button', { name: /^Send Draft \d+ To The Rights Holder$/ }).click();
-  await advance(page, 'week');
-  await advance(page, 'next-day');
-  await open(page, 'Budget');
-  await expect(rights.getByRole('group', { name: "The Rights Holder's Approval" })).toContainText(/They approved draft \d+\./);
+  await expect(card(page, 'Based On')).toContainText('Portal is recorded as copyrighted; its rights belong to their holders.');
 
   // Made and delivered: the commissioner's decision is now due.
   // Offers are answered in two or three days: the schedule is built once the cast and crew have said yes.
@@ -93,6 +85,8 @@ test('J03: a video game adapted as a 2D series, commissioned, sold to a platform
   const offer = await platform();
   expect(offer, `seed ${SEED}: offers ${JSON.stringify((await project(page)).offers.map((o: { route: string }) => o.route))}`).toBeTruthy();
   await open(page, 'Release');
+  // The delivered credits say what it is based on, and that it is recorded as copyrighted.
+  await expect(card(page, 'Credits')).toContainText(/Based on Portal, by .+\. Portal is recorded as copyrighted; its rights belong to their holders\./);
   const row = card(page, 'Distribution Offers').getByRole('listitem').filter({ hasText: `${offer.distributor}` }).filter({ hasText: offer.route === 'broadcast' ? 'Broadcast release' : 'Streaming release' }).first();
   await row.getByRole('button', { name: /^Accept (Offer|The Late Slot)$/ }).click();
   await expect.poll(async () => (await project(page)).offers.find((o: { id: string }) => o.id === offer.id).status).toBe('accepted');

@@ -2,7 +2,6 @@
 // Part of the production engine; src/engine/production.ts is its public interface.
 
 import { castIn } from '../parts';
-import { adaptationBlocker } from '../adaptation';
 import type { Asset, GameState, Project, Scene, ShootDay } from '../types';
 import { getPlace } from '../../data/places';
 import { cancel, ledgerTotals, money, reserve, FundsError } from '../budget';
@@ -276,8 +275,8 @@ export function generatePlan(state: GameState, p: Project, startDate: string): P
   if (p.approvedDraft === null) throw new Error('Approve a draft before planning production.');
   if (p.delivered) throw new Error('This project has already been delivered.');
   if (p.shelved) throw new Error('This project is shelved. Take it up again to plan it.');
-  const rights = adaptationBlocker(p, state.now);
-  if (rights) throw new Error(rights);
+  // Until November 13, 2026 a copyrighted work's rights had to be bought and the draft approved first
+  // (adaptation.ts, "Copyright"); the owner decided it is credited instead, and blocks nothing.
   if (!isDateKey(startDate)) throw new Error('Choose a start date.');
   const today = dateKey(state.now, getPlace(p.axes.basePlaceId).zone);
   if (startDate < today) throw new Error('Choose a start date from today onward.');

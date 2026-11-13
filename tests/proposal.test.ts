@@ -133,7 +133,7 @@ describe('creating a project from a work', () => {
   it('makes one project, adapted from the work, with the whole brief, the people, the outline and each field\'s origin', () => {
     const { s, p } = make();
     expect(s.projects).toEqual([p]);
-    expect(p.source).toMatchObject({ kind: 'adapted', ref: { id: 'wd:Q1', title: 'The Glass Harbour' }, changes: [] });
+    expect(p.source).toMatchObject({ kind: 'adapted', ref: { id: 'wd:Q1', title: 'The Glass Harbour' } });
     expect(p.characters.map((c) => c.name)).toContain('Tomás Reyes');
     expect(p.scenes.length).toBe(8);
     expect(p.relationships.length).toBe(2);
@@ -150,9 +150,8 @@ describe('creating a project from a work', () => {
     expect(briefFields(p)['story.logline']).toBe('My own logline.');
   });
 
-  it('declares what a free adaptation changes, which the rights holder reads against the agreement', () => {
-    expect(make(start(), 'free').p.source!.changes).toEqual(['period', 'ending']);
-  });
+  // Until November 13, 2026 a project declared what a free adaptation changes, for the rights holder to read against an
+  // agreement (adaptation.ts, "Copyright"). Nothing read it after that, and the field went.
 
   it('revising from the work keeps the player\'s words and people unless they choose, and writes only the fields left open', () => {
     const { s, p } = make();

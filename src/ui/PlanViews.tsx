@@ -30,10 +30,8 @@ import { CAST, activeMandate, approveGuideMe, endGuideMe, guideMePlan, guideMeRe
 import { searchAdvice, searchLine, searchPreview, searchRefusal, searchStatus, searchesFor, shortlistAdvice, startSearch } from '../engine/casting-director';
 import { negotiate, negotiationLine, negotiationPreview, negotiationRefusal, producerAccountLine } from '../engine/line-producer';
 import {
-  APPROACHES, APPROACH_ORDER, APPROVAL_DAYS, CHANGES, CHANGE_ORDER, approvalRefusal, approvalStanding, chainOfTitle, changesOutsideGrant, exerciseOption, optionStanding, optionTerms, participationPaid,
-  renewOption, sendForApproval, setSourceChange, takeOption, widenAgreement, widenCost,
+  chainOfTitle, creditLine, participationPaid,
 } from '../engine/adaptation';
-import type { AdaptationApproach } from '../engine/types';
 import { consideredOn, isReal, jobLabel, stopConsidering, tmdbIdOf } from '../engine/guests';
 import { Picture } from './Picture';
 import { storyAge, storyAgeWords } from '../engine/story-age';
@@ -854,102 +852,26 @@ function MoneyKeptCard({ p }: { p: Project }) {
 }
 
 /**
- * The rights to the work a script adapts (engine/adaptation.ts; the v3 package, 02): where the option stands, what it
- * costs, and the chain of title so far. Shown only for a script adapted from a work chosen in the catalog. Every
- * figure and party here is this story's own, and the card says so.
+ * What the script is based on (engine/adaptation.ts), as the credits say it: the work, who made it, and its recorded
+ * copyright. The owner decided on November 13, 2026 that a copyrighted work is credited, and nothing blocks the
+ * production; until then this card was Adaptation Rights, where an option was taken, the rights bought and the draft
+ * sent to the rights holder before production could be planned. An agreement a save made then is listed as it was.
  */
-function AdaptationRights({ p }: { p: Project }) {
-  const g = useGame();
-  const [err, setErr] = useState<string | null>(null);
-  const ref = p.source?.ref;
-  // A work let go leaves its agreements in the record (adaptation.ts retireSource), shown here even with no work now.
-  if (!ref) return p.sourceHistory?.length ? (
-    <section className="card" aria-labelledby="rights-h">
-      <h2 id="rights-h">Adaptation Rights</h2>
-      <p className="muted">Your script no longer adapts a recorded work. What was agreed for the works it left is kept here.</p>
-      <ol className="list" aria-label="Chain Of Title">{chainOfTitle(p, (at) => longLocal(at, getPlace(p.axes.basePlaceId).zone).date).map((line) => <li key={line}>{line}</li>)}</ol>
-    </section>
-  ) : null;
-  const st = optionStanding(p, g.now);
-  // How closely it follows the work is chosen before the option is taken, and is what its price and its grant come from.
-  const [approach, setApproach] = useState<AdaptationApproach>('faithful');
-  const terms = (st === 'held' || st === 'exercised' ? p.source?.option?.terms : undefined) ?? optionTerms(p, approach);
-  const agreed = st === 'held' || st === 'exercised' ? p.source?.option?.terms.approach : undefined;
-  const ap = approvalStanding(p);
-  const outside = changesOutsideGrant(p);
-  const noSend = approvalRefusal(p, g.now);
+function BasedOn({ p }: { p: Project }) {
+  const line = creditLine(p);
+  if (!line) return null;
   const zone = getPlace(p.axes.basePlaceId).zone;
-  const act = (fn: (s: GameState) => void) => setErr(store.act(fn));
-  const SAYS: Record<typeof st, string> = {
-    'not-needed': 'No Option Asked',
-    none: 'No Option Yet',
-    held: 'Option Held',
-    expired: 'Option Ran Out',
-    exercised: 'Rights Bought',
-  };
+  const earlier = !!p.source?.option || !!p.sourceHistory?.length;
   return (
-    <section className="card" aria-labelledby="rights-h">
-      <h2 id="rights-h">Adaptation Rights</h2>
-      <p><span className={`chip${st === 'exercised' || st === 'not-needed' ? ' chip-positive' : st === 'expired' ? ' chip-warning' : ''}`}>{SAYS[st]}</span></p>
-      <p className="muted">Your script is adapted from {ref.title}. This is your story's own agreement with the work's rights holder, who is nobody real, on terms the game makes up from the size of your production. It grants no right to a real work, and is not advice about one.</p>
-      <ol className="list" aria-label="Chain Of Title">
-        {chainOfTitle(p, (at) => longLocal(at, zone).date).map((line) => <li key={line}>{line}</li>)}
-      </ol>
-      {(st === 'none' || st === 'expired') && !p.delivered && (
-        <>
-          <SelectField label="How Closely It Follows The Work" value={approach} options={APPROACH_ORDER.map((a) => ({ value: a, label: `${APPROACHES[a].label} (${money(optionTerms(p, a).price)})` }))} onChange={(v) => setApproach(v as AdaptationApproach)}
-            hint={`${APPROACHES[approach].says} The rights holder reads your approved draft against this before production. A freer adaptation costs more, and the agreement can be widened later for the difference.`} />
-        </>
-      )}
-      {agreed && (
-        <>
-          <fieldset style={{ border: 0, padding: 0 }}>
-            <legend>What Your Script Changes From The Work</legend>
-            <p className="dim small">Yours to say: the game reads no prose. Your agreement is for a {APPROACHES[agreed].label.toLowerCase()} adaptation{APPROACHES[agreed].allows.length ? `, which lets you change ${APPROACHES[agreed].allows.map((c) => CHANGES[c].toLowerCase()).join(', ')}` : ', which lets you change none of these'}.</p>
-            <div className="chip-row">{CHANGE_ORDER.map((c) => <Check key={c} label={CHANGES[c]} checked={(p.source?.changes ?? []).includes(c)} onChange={(v) => act((s) => setSourceChange(s.projects.find((x) => x.id === p.id)!, c, v))} />)}</div>
-            {outside.length > 0 && <p className="muted">Outside your agreement: {outside.map((c) => CHANGES[c].toLowerCase()).join(', ')}. The rights holder will not approve a draft declared this way.</p>}
-          </fieldset>
-          <div className="row-wrap" role="group" aria-label="The Rights Holder's Approval">
-            <span className="grow dim small">
-              {{
-                'not-needed': '',
-                'not-sent': `The rights holder reads your approved draft before production can be planned. They answer within ${APPROVAL_DAYS} days, from what you have declared above.`,
-                sent: `They are reading draft ${p.source?.approval?.draft}. Their answer is due ${longLocal(p.source?.approval?.answerAt ?? 0, zone).date}.`,
-                approved: `They approved draft ${p.source?.approval?.draft}.`,
-                refused: `They didn't approve draft ${p.source?.approval?.draft}. ${p.source?.approval?.reason ?? ''}`,
-                stale: `They approved draft ${p.source?.approval?.draft} as it was declared then. The script has changed since: send them the approved draft again.`,
-              }[ap]}
-              {noSend && ap !== 'approved' && ap !== 'sent' ? ` ${noSend}` : ''}
-            </span>
-            {!noSend && <button className="btn btn-sm btn-primary" onClick={() => act((s) => sendForApproval(s, s.projects.find((x) => x.id === p.id)!))}>Send Draft {p.approvedDraft} To The Rights Holder</button>}
-          </div>
-          <div className="row gap-2 wrap spaced">
-            {APPROACH_ORDER.filter((a) => widenCost(p, a) !== null).map((a) => (
-              <button key={a} className="btn btn-sm" onClick={() => act((s) => widenAgreement(s, s.projects.find((x) => x.id === p.id)!, a))}>Widen To {APPROACHES[a].label} For {money(widenCost(p, a)!)}</button>
-            ))}
-          </div>
-          {st === 'exercised' && <p className="dim small">The rights holder takes {Math.round((terms.participation ?? 0) * 1000) / 10}% of what the project earns, as it arrives: {money(participationPaid(p))} so far, each payment in the chain of title above.</p>}
-        </>
-      )}
-      {st !== 'not-needed' && st !== 'exercised' && (
-        <>
-          <dl className="kv">
-            <dt>Price Of The Rights</dt><dd>{money(terms.price)}</dd>
-            <dt>Option</dt><dd>{money(terms.fee)} for {terms.months} months, counted towards the price</dd>
-            <dt>One Renewal</dt><dd>{money(terms.renewalFee)} for {terms.renewalMonths} months more, not counted towards the price</dd>
-            <dt>Covers</dt><dd>{terms.territory}, {terms.media} only, this project only</dd>
-            <dt>Credit</dt><dd>{terms.credit}</dd>
-            {terms.participation ? <><dt>Their Share</dt><dd>{Math.round(terms.participation * 1000) / 10}% of what the project earns, as it arrives</dd></> : null}
-          </dl>
-          <p className="dim small">Production can't be planned until the rights are bought and the rights holder has approved the draft. An option that runs out is gone, with what was paid for it.</p>
-          <div className="row-wrap">
-            {(st === 'none' || st === 'expired') && !p.delivered && <button className="btn btn-primary" onClick={() => act((s) => takeOption(s, p, approach))}>Take The Option For {money(terms.fee)}</button>}
-            {st === 'held' && p.source?.option?.renewedAt === undefined && <button className="btn" onClick={() => act((s) => renewOption(s, p))}>Renew For {money(terms.renewalFee)}</button>}
-            {st === 'held' && <button className="btn btn-primary" onClick={() => act((s) => exerciseOption(s, p))}>Buy The Rights For {money(terms.price - terms.fee)}</button>}
-          </div>
-        </>
-      )}
-      {err && <p role="alert" className="error">{err}</p>}
+    <section className="card" aria-labelledby="based-on-h">
+      <h2 id="based-on-h">Based On</h2>
+      <p>{line}</p>
+      <p className="dim small">This is what the credits say. Nothing more is asked in the game: a copyrighted work is credited, and nothing here stands in for its rights holder's permission in the real world.</p>
+      {earlier && <>
+        <h3>Agreed Before</h3>
+        <ol className="list" aria-label="Chain Of Title">{chainOfTitle(p, (at) => longLocal(at, zone).date).map((x) => <li key={x}>{x}</li>)}</ol>
+        {p.source?.option?.exercisedAt !== undefined && <p className="dim small">The rights holder takes {Math.round((p.source.option.terms.participation ?? 0) * 1000) / 10}% of what the project earns, as it arrives, as agreed: {money(participationPaid(p))} so far.</p>}
+      </>}
     </section>
   );
 }
@@ -1134,7 +1056,7 @@ function FinancingPanel({ p }: { p: Project }) {
           </ul>
         </section>
       )}
-      <AdaptationRights p={p} />
+      <BasedOn p={p} />
       <OwnAccountCard p={p} />
       <ProjectKitCard p={p} />
       <section className="card" aria-labelledby="raise-h">

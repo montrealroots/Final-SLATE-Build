@@ -88,7 +88,8 @@ test('a film made from a work: the whole brief with where each field came from, 
   await expect(page.getByRole('region', { name: 'Creative Brief' })).toContainText('Adapted From: Don Quixote');
   const saved = await readSavedState(page);
   expect(saved.projects[0].proposal).toMatchObject({ workId: 'wd:Q480', approach: 'free' });
-  expect(saved.projects[0].source).toMatchObject({ kind: 'adapted', ref: { id: 'wd:Q480' }, changes: ['period', 'ending'] });
+  expect(saved.projects[0].source).toMatchObject({ kind: 'adapted', ref: { id: 'wd:Q480' } });
+  expect(saved.projects[0].source.changes).toBeUndefined(); // declared for a rights holder until November 13, 2026; nothing reads it now
 });
 
 test('a series made from a work arrives with its season, and the installment that follows it is named as recorded', async ({ page }) => {

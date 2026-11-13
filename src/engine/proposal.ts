@@ -14,7 +14,7 @@ import { adaptFrom } from './adaptation';
 import { applyBlueprint, briefFields, type Blueprint, type BlueprintCharacter, type BlueprintScene } from './blueprints';
 import { createProject, isEpisodic, isNonfiction, type NewProjectInput } from './projects';
 import type { SourceWork } from './sources';
-import type { AdaptationApproach, Format, GameState, Project, SourceChange } from './types';
+import type { AdaptationApproach, Format, GameState, Project } from './types';
 
 export type FieldOrigin = 'sourced' | 'proposed' | 'unknown';
 export const ORIGIN_LABELS: Record<FieldOrigin | 'edited', string> = { sourced: 'From The Work', proposed: 'Proposed', unknown: 'Not Recorded', edited: 'Your Words' };
@@ -322,14 +322,6 @@ export interface CreateFromSource {
   names?: Record<string, string>;
 }
 
-/** What the approach changes from the work, declared for the rights holder (adaptation.ts reads it against the agreement). */
-export function changesFor(approach: AdaptationApproach, b: Blueprint): SourceChange[] {
-  const moved = b.origin && b.year !== null && b.time === 'contemporary';
-  if (approach === 'faithful') return [];
-  if (approach === 'updated') return moved ? ['period'] : [];
-  return [...(moved ? ['period' as const] : []), 'ending'];
-}
-
 /**
  * Make a project from a work in one step (the v4 package, 01): the project, the work it is adapted from, the approach's
  * declared changes, and the whole proposed brief. If any part fails the project is removed again, so nothing half-made
@@ -341,7 +333,6 @@ export function createFromSource(state: GameState, c: CreateFromSource): Project
   const p = createProject(state, { title: c.title?.trim() || c.work.title, axes: c.axes, scenarioId: c.scenarioId });
   try {
     adaptFrom(state, p, c.work);
-    p.source!.changes = changesFor(c.approach, prop.blueprint);
     applyBlueprint(state, p, prop.blueprint, { names: c.names }, prop);
     if (c.title?.trim()) p.title = c.title.trim();
     return p;
