@@ -330,7 +330,13 @@ f = 'PlanViews.tsx'
 c(f, '"Spending Ceiling"', D, 'Project.mandates[].ceiling', 'mandates.ts guideMePlan, runMandate, guideMeRefusal', 'The most Guide Me may commit for a department: offers that do not fit are not sent, and a counteroffer past it comes back to the player', U('guide-me', 'never goes past the ceiling'))
 f = 'YourMoney.tsx'
 c(f, '"Put In From Your Own Money"', D, 'state.money postings; project finance deal (savings)', 'personal.ts putInOwnMoney, putInRefusal', 'Money leaves your account and arrives in the project as Your Own Money, nobody repaid from it', U('personal', 'puts money into a project only by your choice'))
+# Your company (company.ts, from November 13, 2026: the owner's v5 brief, 9).
+c(f, '"Company Name"', I, 'state.company.name', 'company.ts formCompany; FinishViews.tsx credits (A ... Production)', "The company's name, in its account and in the credits of what it produces", U('company', 'is formed with a name and capital'))
+c(f, '"Put In When It Is Formed"', D, 'state.company postings (capital); state.money postings (company)', 'company.ts formCompany, formRefusal', "Money leaves your account and arrives in the company's, with the formation fee", U('company', 'is formed with a name and capital'))
+c(f, '"Move Between You And The Company"', D, 'state.company postings (capital, draw); state.money postings (company)', 'company.ts moveCompanyMoney', 'Put in or drawn out, posted once on both sides, never more than the side holds', U('company', 'moves money in and draws it out'))
+c(f, '"Put In From The Company"', D, 'project finance deal (company); state.company postings; Project.producedBy', 'company.ts companyIntoProject, companyInRefusal', "The company's money arrives in the project, nobody repaid from it, and the company produces the project", U('company', 'puts money into a project'))
 f = 'Equipment.tsx'
+c(f, "{`Hire The Rental House's Package On A Day The Kit Can't Serve (${money(housePackageFee(p))} A Day)`}", D, 'Project.kit.packageApproved', 'production/shoot.ts (a day the kit cannot serve); equipment.ts setPackageApproval', "Approved: such a day hires the package and is shot; not approved: the day is postponed, nothing paid, and the shortage waits", U('equipment', 'without approval, a day the kit'))
 c(f, '"Show"', V)
 c(f, '"Show"', V, n=2)
 f = 'MusicTab.tsx'

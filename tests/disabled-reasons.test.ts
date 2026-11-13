@@ -42,6 +42,8 @@ const REASONS: Record<string, string> = {
   'PlanViews.tsx | !!no': 'The dialog says why under the ceiling field: no approved draft, a mandate already running, a ceiling of nothing, or more than the money uncommitted.',
   'YourMoney.tsx | !!no': 'The reason shows under the field once an amount is typed: more than your account holds, more than the project still needs, or a script not yet approved.',
   'YourMoney.tsx | home.earnings <= 0': 'The line above says how much income the delivered project can send home: nothing, here.',
+  'YourMoney.tsx | !(amount > 0) || amount > personalBalance(g)': 'The line under the buttons says how much you hold and how much the company holds; the field above waits for an amount.',
+  'YourMoney.tsx | !(amount > 0) || amount > companyBalance(g)': 'The line under the buttons says how much you hold and how much the company holds; the field above waits for an amount.',
   'YourMoney.tsx | home.capital <= 0': 'The line above says how much of your own unspent money it can send home: nothing, here.',
   'MusicTab.tsx | !note.trim()': 'Waits for the note typed above it.',
   'MusicTab.tsx | !!libraryRefusal(p, s.id)': 'The line under the buttons says why: the song is performed on screen in footage already shot, or the project is delivered.',

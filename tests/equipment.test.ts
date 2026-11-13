@@ -2,7 +2,7 @@
 // Each comparison changes one thing: whether the project has a kit, what is in it, or what the day's scenes need.
 import { describe, expect, it } from 'vitest';
 import { GEAR, GEAR_SOURCE, RENT_LEAST, RENT_SHARE, SERVICE_BELOW, gearById, rentDayRate } from '../src/engine/gear-catalog';
-import { addToKit, buyGear, buyRefusal, dayKitProblems, kitAddRefusal, kitClash, kitProblems, lentValue, removeFromKit, resaleValue, sellGear, sellRefusal, serviceCost, serviceGear, serviceRefusal } from '../src/engine/equipment';
+import { addToKit, buyGear, buyRefusal, dayKitProblems, kitAddRefusal, kitClash, kitProblems, lentValue, removeFromKit, resaleValue, sellGear, sellRefusal, serviceCost, serviceGear, serviceRefusal, setPackageApproval } from '../src/engine/equipment';
 import { personalBalance, personalStatement } from '../src/engine/personal';
 import { dayFees, housePackageFee } from '../src/engine/production/rates';
 import { rigDayCost } from '../src/engine/craft';
@@ -126,15 +126,16 @@ describe('a kit of your own', () => {
 });
 
 describe('shooting on the kit', () => {
-  const made = (tag: string, kit: string[] | null) => {
+  const made = (tag: string, kit: string[] | null, approved = false, days = 200) => {
     const s = rich(tag);
     const p = short(s);
     if (kit) own(s, p, kit);
+    if (approved) setPackageApproval(p, true);
     castAll(s, p);
     staffAll(s, p);
     runDays(s, p, 30);
     startProduction(s, p);
-    runDays(s, p, 200);
+    runDays(s, p, days);
     const eq = p.obligations.flatMap((o) => o.postings).filter((x) => x.kind === 'settle' && x.key.startsWith('eq:'));
     return { s, p, eq };
   };
@@ -153,11 +154,32 @@ describe('shooting on the kit', () => {
     expect(cam.condition).toBe(100 - shot(mine.p));
   }, 60_000);
 
-  it('a day the kit can\'t serve hires the house package for that day, and says why', () => {
-    const { s, p, eq } = made('short-kit', FULL.filter((id) => id !== 'videomic-ntg'));
+  // The owner's v5 brief, 9: "Do not automatically rent a replacement package outside an approved spending mandate. Show
+  // the shortage and offer a compatible rental, repair, reschedule or creative change, with its cost and timing." Until
+  // November 13, 2026 the package was hired without asking.
+  it('without approval, a day the kit can\'t serve is postponed, nothing is hired, and the shortage waits with its fixes', () => {
+    const { s, p, eq } = made('short-kit-ask', FULL.filter((id) => id !== 'videomic-ntg'), false, 40);
+    const held = p.schedule.days.filter((d) => d.result?.startsWith('Postponed: Scenes have dialogue, and the kit has no microphone.'));
+    expect(held.length).toBeGreaterThan(0);
+    for (const d of held) expect(eq.find((x) => x.key === `eq:${d.id}`)).toBeUndefined(); // nobody called, nothing paid
+    expect(p.delivered).toBeFalsy();
+    expect(p.kit!.shortage).toMatchObject({ problems: [expect.objectContaining({ need: 'microphone', fix: expect.arrayContaining(['videomic-ntg']) })] });
+    // Its scenes were moved on to a later day, not lost.
+    const talkScene = p.scenes[0].id;
+    expect(p.schedule.days.some((d) => d.status === 'scheduled' && d.sceneIds.includes(talkScene))).toBe(true);
+    expect(s.log.some((l) => l.text.includes('is postponed.') && l.text.includes('Choose what to do under Equipment on the Budget page'))).toBe(true);
+    // Renting the missing microphone clears it: the day is shot on the kit.
+    addToKit(s, p, { gearId: 'videomic-ntg' });
+    runDays(s, p, 200);
+    expect(p.delivered).toBeTruthy();
+    expect(p.kit!.shortage).toBeUndefined();
+  }, 60_000);
+
+  it('with the package approved, a day the kit can\'t serve hires it for that day, and says why', () => {
+    const { s, p, eq } = made('short-kit', FULL.filter((id) => id !== 'videomic-ntg'), true);
     const talkDay = p.schedule.days.find((d) => d.sceneIds.includes(p.scenes[0].id))!;
     expect(eq.find((x) => x.key === `eq:${talkDay.id}`)!.amount).toBe(housePackageFee(p));
-    expect(s.log.some((l) => l.text.includes("your kit couldn't serve") && l.text.includes('Scenes have dialogue, and the kit has no microphone.'))).toBe(true);
+    expect(s.log.some((l) => l.text.includes("your kit couldn't serve") && l.text.includes('Scenes have dialogue, and the kit has no microphone.') && l.text.includes('As you approved'))).toBe(true);
     const quiet = p.schedule.days.filter((d) => d.id !== talkDay.id && d.status === 'shot');
     for (const d of quiet) expect(eq.find((x) => x.key === `eq:${d.id}`)).toBeUndefined();
   }, 60_000);

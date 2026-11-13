@@ -188,6 +188,17 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
   const locationFee = Math.round(dayFees(p).location * siteFactor(p, d.locationLabel) * kindFee(p, d.locationLabel));
   // Equipment (equipment.ts): your own kit costs only what it rents; a day it can't serve hires the house package instead.
   const kitWhy = p.kit ? dayKitProblems(state, p, d, state.now) : [];
+  // A day the kit can't serve, without the player's approval to hire the package: postponed before anyone is called,
+  // nothing paid, its scenes moved on; the shortage waits for the player with what would fix it (the owner's v5 brief, 9).
+  if (p.kit && kitWhy.length && !p.kit.packageApproved) {
+    d.status = 'lost';
+    d.result = `Postponed: ${kitWhy[0].text} Nothing is hired without your approval.`;
+    p.kit.shortage = { date: d.date, problems: kitWhy };
+    rescheduleScenes(state, p, d.sceneIds, d);
+    addLogOnce(state, p, `kit-short:${d.date}`, `${p.title}: ${formatDateKey(d.date)} is postponed. ${kitWhy.map((x) => x.text).join(' ')} Choose what to do under Equipment on the Budget page: rent what's missing, service what's worn, approve the rental house's package for such days, or change the scenes.`);
+    return d.result;
+  }
+  if (p.kit?.shortage) delete p.kit.shortage;
   const onKit = !!p.kit && !kitWhy.length;
   const gearFee = onKit ? kitDayRate(p) : housePackageFee(p);
   // A unit away from its base is housed for the day, and moved there and back once for the place.
@@ -420,7 +431,7 @@ export function runShootDay(state: GameState, p: Project, d: ShootDay): string {
   try {
     payPlanned(state, p, 'plan:shoot', `Location Fee (${d.date})`, 'locations', locationFee, `loc:${d.id}`);
     payPlanned(state, p, 'plan:shoot', onKit ? `Rented Equipment (${d.date})` : p.kit ? `Equipment Package, Hired For The Day (${d.date})` : `Equipment Package (${d.date})`, 'equipment', gearFee, `eq:${d.id}`);
-    if (p.kit && !onKit) addLogOnce(state, p, `kit:${d.id}`, `${p.title}: your kit couldn't serve ${formatDateKey(d.date)}. ${kitWhy[0].text} The rental house's package was hired for the day, for ${money(gearFee)}.`);
+    if (p.kit && !onKit) addLogOnce(state, p, `kit:${d.id}`, `${p.title}: your kit couldn't serve ${formatDateKey(d.date)}. ${kitWhy[0].text} As you approved, the rental house's package was hired for the day, for ${money(gearFee)}.`);
     const crowd = scenes.reduce((a, s) => a + physicalCrowd(s), 0);
     if (crowd) payPlanned(state, p, 'plan:shoot', `Background Performers (${d.date})`, 'cast', crowd * CROWD_DAY_RATE, `crowd:${d.id}`);
     // The day's makeup materials (looks.ts), once for the day, for the scenes that were called.

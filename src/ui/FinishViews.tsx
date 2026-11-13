@@ -493,6 +493,7 @@ export function ReleaseTab({ p }: { p: Project }) {
       {err && <div className="callout callout-negative" role="alert"><p>{err}</p></div>}
       {p.delivered ? <section className="card">
         <h2>Credits</h2>
+        {p.producedBy && <p><strong>A {p.producedBy} Production.</strong></p>}
         {creditLine(p) && <p>{creditLine(p)}</p>}
         <div className="table-wrap">
           <table className="data">

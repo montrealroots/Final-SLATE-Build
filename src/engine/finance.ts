@@ -21,7 +21,7 @@ import { DAY, dateKey } from './time';
 import type { FinanceDeal, FinanceDealKind, GameState, Obligation, Project } from './types';
 
 /** The kinds of backer that are approached as a kind. A followed studio is approached by name (pitchToStudio). */
-export type BackerKind = Exclude<FinanceDealKind, 'agreed' | 'studio'>;
+export type BackerKind = Exclude<FinanceDealKind, 'agreed' | 'studio' | 'company'>;
 
 /** What each kind of backer is, said once, the same everywhere. */
 export const BACKERS: Record<BackerKind, { name: string; who: string; why: string; decideDays: number }> = {

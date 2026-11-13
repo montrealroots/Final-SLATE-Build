@@ -579,7 +579,7 @@ export interface CastAssignment {
  */
 export interface PartStage { id: string; characterId: string; label: string; age?: number; sceneIds: string[]; episodes: number[] }
 
-export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio' | 'savings';
+export type FinanceDealKind = 'agreed' | 'starting' | 'grant' | 'investor' | 'co-producer' | 'commissioner' | 'earnings' | 'capital' | 'studio' | 'savings' | 'company';
 
 /** A backer approached for a project, and what was agreed (finance.ts). */
 export interface FinanceDeal {
@@ -1010,6 +1010,8 @@ export interface Project {
    *  licensed songs are cleared as they always were, by the music supervisor's days and one fee. */
   music?: import('./music').MusicPlan;
   /** `story`: the article whose plot section its story was told from, credited with the project (adaptation.ts creditLine). */
+  /** The player's company that produces it, named in its credits: set when the company puts money in (company.ts). */
+  producedBy?: string;
   proposal?: { workId: string; title: string; approach: AdaptationApproach; at: number; origin: Record<string, 'sourced' | 'proposed' | 'unknown'>; why: Record<string, string>; applied: Record<string, string>; story?: StoryCredit };
   /** Fields the player locked: a full story or a shuffle leaves them alone (blueprints.ts FIELD_LABELS has the keys). */
   locks?: string[];
@@ -1314,6 +1316,8 @@ export interface GameState {
   places: Record<string, Place>;
   /** Your own account and your family's terms (personal.ts). Absent in saves from before November 12, 2026: no money of your own. */
   money?: import('./personal').PersonalMoney;
+  /** The player's own production company (company.ts). Absent until they form one, and in saves from before November 13, 2026. */
+  company?: import('./company').Company;
   /** Equipment you own or your family lends (equipment.ts). Absent in saves from before November 12, 2026: none. */
   gear?: import('./equipment').GearInventory;
   /** Paid work on others' productions (jobs.ts). Absent until the first offer. */
