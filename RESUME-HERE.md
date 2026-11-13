@@ -65,8 +65,9 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
     `tests/standing.test.ts`. On an unpinned world desktop and phone got different answers from the company, by their
     slates, so the journey pins the seed. V6-039 and V6-040 in `docs/v6/requirements.csv` no longer say TV scope and
     anti-farming aren't built.
-  - *Next:* the partly covered journeys, clearest first: J05 animatic revision compared before and after animation;
-    J03 one-person adaptation through the screens; J21 a correction seen on screen; J22 Standing By Role read in a
+  - J05: the animatic can be revised (`revisions.ts` reviseAnimatic, the Animatic card on Production, a preview of
+    what starts over and the days lost); `e2e/v6-animatic.spec.ts` revises it before and after animation and delivers.
+  - *Next:* the partly covered journeys, clearest first: J03 one-person adaptation through the screens; J21 a correction seen on screen; J22 Standing By Role read in a
     browser journey. Then grades feeding offers; cameras and composers into the shop and hiring once prices and terms are sourced; the TMDB
     inventory import from ID exports (`docs/v7/package/reference/tmdb_inventory.py`).
   - *Research questions:* `docs/v7/RETURN-TO-RESEARCH.md`.

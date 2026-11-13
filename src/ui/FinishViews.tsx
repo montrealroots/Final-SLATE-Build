@@ -33,7 +33,7 @@ import { store, useGame } from './store';
 import { FollowButton } from './Places';
 import { ReadRules, RecordedResults } from './RecordedResults';
 import { editScenes } from '../engine/finish';
-import { reviseEffects, rerecordLines } from '../engine/revisions';
+import { animaticRevisionImpact, reviseAnimatic, reviseEffects, rerecordLines } from '../engine/revisions';
 import { countryName } from '../world/gazetteer/gazetteer';
 import { EXCLUSIVE_DAYS, dubbingCost, offerConflicts, setReleaseVersion, versionLanguages, versionRefusal } from '../engine/finish';
 import { DUBBED_REACH } from '../engine/script-effects';
@@ -137,6 +137,7 @@ export function ProductionTab({ p }: { p: Project }) {
           ))}</ul>
         </section>
       )}
+      {p.tasks.some((t) => t.id === 'anim:animatic:all') && <AnimaticCard p={p} />}
       {songs}
       {p.tasks.some((t) => t.kind === 'anim:mocap') && <MocapPanel p={p} />}
       {puppets.length > 0 && (
@@ -169,6 +170,34 @@ export function ProductionTab({ p }: { p: Project }) {
         </section>
       ))}
     </>
+  );
+}
+
+/** Revising the animatic (revisions.ts; the owner's v6 package, J05): what starts over, and the days lost, before anything is reset. */
+function AnimaticCard({ p }: { p: Project }) {
+  const [preview, setPreview] = useState<{ names: string[]; days: number } | null>(null);
+  const [err, setErr] = useState<string | null>(null);
+  const a = p.tasks.find((t) => t.id === 'anim:animatic:all')!;
+  return (
+    <section className="card" aria-labelledby="animatic-h">
+      <h2 id="animatic-h">Animatic</h2>
+      <p className="dim">{a.status === 'done' ? 'The animatic is cut.' : a.done > 0 ? 'The animatic is being cut.' : 'The animatic hasn\'t been started.'} Revised before animation, the animatic is cut again, with any layouts and backgrounds begun on it. Revised after, the animation and everything built on it start over too. You see what starts over before anything does.</p>
+      {a.done > 0 && !p.edit.pictureLocked && (
+        <button className="btn" onClick={() => { const i = animaticRevisionImpact(p); setPreview({ names: i.reset.map((x) => x.label), days: i.days }); }}>Revise The Animatic</button>
+      )}
+      {err && <p role="alert" style={{ color: 'var(--negative)' }}>{err}</p>}
+      {preview && (
+        <Modal title="Revise The Animatic?" onClose={() => setPreview(null)} footer={
+          <>
+            <button className="btn" onClick={() => setPreview(null)}>Keep The Animatic</button>
+            <button className="btn btn-danger" onClick={() => { setErr(store.act((s) => void reviseAnimatic(s.projects.find((x) => x.id === p.id)!))); setPreview(null); }}>Revise It</button>
+          </>
+        }>
+          <p>This work starts over, and the {plural(preview.days, 'day')} already worked on it are lost:</p>
+          <ul aria-label="Work That Starts Over">{preview.names.map((n) => <li key={n}>{n}</li>)}</ul>
+        </Modal>
+      )}
+    </section>
   );
 }
 
