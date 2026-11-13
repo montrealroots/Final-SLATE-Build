@@ -9,6 +9,7 @@ import { newId, registerCommitmentSource } from './state';
 import { HOUR, dayNumber, localToInstant, parseYmd } from './time';
 import type { GameState, Project, ShootDay } from './types';
 import { ensureWorkEvent, groupShootDays } from './production/schedule';
+import { syncMusicTasks } from './song-actions';
 
 export { BASE_MINUTES_PER_SHOOT_DAY, CROWD_DAY_RATE, DAY_COST_SCALE, EQUIPMENT_PER_DAY, HOLIDAY_PREMIUM, LOCATION_FEE_PER_DAY, MOCAP_ANIMATION_FACTOR, OUTPUT_FPS, RENDER_NODE_DAY_COST, VOICE_SESSION_STUDIO, dayFees, housePackageFee } from './production/rates';
 export { buildTasks } from './production/tasks';
@@ -148,5 +149,9 @@ onDraftApproved((_state, p, d, prev) => {
       t.doneAt = undefined;
     }
   }
+  // A scene whose length changed after its score was written needs its cues conformed (cues.ts cuesToConform): the
+  // score's tasks follow the new draft. Until November 13, 2026 they waited for a schedule rebuild, so a recut approved
+  // in post was delivered with its cue out of time.
+  if (p.tasks.length && p.music?.brief) syncMusicTasks(p);
 });
 

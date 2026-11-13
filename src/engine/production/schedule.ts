@@ -206,7 +206,11 @@ export const lastDay = (p: Project): ShootDay | undefined => p.schedule.days.red
 
 export function planShootDays(state: GameState, p: Project, firstDay: string): ShootDay[] {
   const days: ShootDay[] = [];
-  let cursor = nextWorkingDay(p, firstDay);
+  // Days the player has taken outside work (jobs.ts) are not shoot days: until November 13, 2026 a shoot could be planned
+  // over them, and the player was booked twice, though a job was refused over a shoot day.
+  const away = new Set((state.jobs ?? []).filter((j) => j.status === 'accepted').flatMap((j) => j.days));
+  const workday = (k: string) => { let d = nextWorkingDay(p, k); for (let n = 0; n < 60 && away.has(d); n++) d = nextWorkingDay(p, addDaysToKey(d, 1)); return d; };
+  let cursor = workday(firstDay);
   const scenes = approvedScenes(p);
   // Each cast child's licence is applied for now (minors.ts), with night work if any of their scenes is at night. A day
   // with a child waits for their licence: days without children go first, and the child's days follow once it's granted.
@@ -226,13 +230,13 @@ export function planShootDays(state: GameState, p: Project, firstDay: string): S
   while (pending.length) {
     const i = pending.findIndex((x) => x.ready <= cursor);
     // Nothing can go yet: wait for the first licence.
-    if (i < 0) { cursor = nextWorkingDay(p, pending.reduce((m, x) => (x.ready < m ? x.ready : m), pending[0].ready)); continue; }
+    if (i < 0) { cursor = workday(pending.reduce((m, x) => (x.ready < m ? x.ready : m), pending[0].ready)); continue; }
     const { g } = pending.splice(i, 1)[0];
     const kids = kidsIn(g).map((m) => m.characterId);
     // Twelve hours between a child's dismissal and their next call: a day call after a night shoot moves a day on.
-    if (!g.night && kids.some((k) => lastNightKids.has(k))) cursor = nextWorkingDay(p, addDaysToKey(cursor, 1));
+    if (!g.night && kids.some((k) => lastNightKids.has(k))) cursor = workday(addDaysToKey(cursor, 1));
     const from = travelFrom(p, at, g.place);
-    if (from) cursor = nextWorkingDay(p, addDaysToKey(cursor, 1));
+    if (from) cursor = workday(addDaysToKey(cursor, 1));
     days.push({
       ...(from ? { travelFrom: from } : {}),
       id: newId(state, 'd'), date: cursor, episode: g.episodes[0], ...(g.episodes.length > 1 ? { episodes: g.episodes } : {}), sceneIds: g.sceneIds, locationLabel: g.place, interior: g.interior, night: g.night,
@@ -240,7 +244,7 @@ export function planShootDays(state: GameState, p: Project, firstDay: string): S
     });
     lastNightKids = new Set(g.night ? kids : []);
     at = g.place;
-    cursor = nextWorkingDay(p, addDaysToKey(cursor, 1));
+    cursor = workday(addDaysToKey(cursor, 1));
   }
   // Note conflicts with the player's own appointments.
   for (const d of days) {

@@ -6,7 +6,8 @@ import { deserialize, serialize } from '../src/engine/save';
 import { processUntil, schedule } from '../src/engine/state';
 import { DAY } from '../src/engine/time';
 import type { GameState } from '../src/engine/types';
-import { buildProject, startLife } from './helpers';
+import { approve, buildProject, startLife } from './helpers';
+import { planShootDays } from '../src/engine/production/schedule';
 
 /** Labelled fixture: the triggers a delivery or an agent would schedule, fired until one brings an offer (the odds are the seed's). */
 function offered(s: GameState, via?: string): OutsideJob {
@@ -126,5 +127,24 @@ describe('saving', () => {
     const j = offered(s);
     acceptJob(s, j.id);
     expect(deserialize(serialize(s)).jobs).toEqual(s.jobs);
+  });
+});
+
+describe('the player can\'t be in two places', () => {
+  it('a shoot planned after outside work is taken skips its days; a job over a planned shoot day is refused', () => {
+    const s = startLife('jobs-both', 'gb-london');
+    const p = buildProject(s, { title: 'Pier', format: 'short', medium: 'live-action', runtime: 6 }, [{ name: 'Mara' }], [{ place: 'Pier', chars: ['Mara'], minutes: 3 }, { place: 'Quay', chars: ['Mara'], minutes: 3 }]);
+    approve(s, p);
+    // Labelled fixture: an accepted job on the very days the shoot would otherwise take.
+    const first = planShootDays(s, p, '2026-03-02').map((d) => d.date);
+    (s.jobs ??= []).push({ id: 'job-x', role: 'acting', production: 'Fixture', company: 'Fixture', dayRate: 300, days: first, placeId: s.locationId, zone: 'Europe/London', status: 'accepted', offeredAt: s.now, answerBy: s.now, attended: [], missed: [] });
+    const planned = planShootDays(s, p, '2026-03-02').map((d) => d.date);
+    expect(planned.some((d) => first.includes(d))).toBe(false);
+    // And the other way: an offer over a planned shoot day says why it can't be taken.
+    s.jobs!.pop();
+    p.schedule.days = planShootDays(s, p, '2026-03-02');
+    const offer = { id: 'job-y', role: 'acting' as const, production: 'Fixture', company: 'Fixture', dayRate: 300, days: [p.schedule.days[0].date], placeId: s.locationId, zone: 'Europe/London', status: 'offered' as const, offeredAt: s.now, answerBy: s.now + 7 * DAY, attended: [], missed: [] };
+    s.jobs!.push(offer);
+    expect(acceptRefusal(s, 'job-y')).toMatch(/^Your own project Pier shoots on /);
   });
 });

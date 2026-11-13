@@ -7,7 +7,7 @@ import { neededRoles } from '../src/engine/hiring';
 import { covers } from '../src/engine/people';
 import { createSong, attachSong, syncMusicTasks } from '../src/engine/song-actions';
 import type { GameState, Project } from '../src/engine/types';
-import { approvedScenes } from '../src/engine/projects';
+import { approveDraft, approvedScenes, saveDraft } from '../src/engine/projects';
 import { approve, buildProject, castAll, runDays, staffAll, startLife, startProduction } from './helpers';
 
 /** Four scenes: a talky office, a night street, a quiet quay, a talky ending. */
@@ -264,5 +264,21 @@ describe('the music\'s own jobs', () => {
     expect(buildTasks(p).find((t) => t.kind === 'post:conform')?.roleId).toBe('music-editor');
     expect(covers('composer', 'music-editor')).toBe(true);
     expect(covers('music-producer', 'arranger')).toBe(true);
+  });
+});
+
+describe('a cut changed in post', () => {
+  it('approved as a new draft after the score is written, adds the conform for that scene\'s cues alone', () => {
+    const { s, p } = film('cue-recut');
+    applyBrief(s, p, { ...proposeBrief(p, s.now), density: 0.5 });
+    p.tasks = buildTasks(p);
+    timeCues(p, 1); // the score is written
+    const scored = p.music!.cues!.find((c) => c.source === 'score')!;
+    saveDraft(s, p);
+    const draft = p.drafts.at(-1)!;
+    draft.scenes.find((x) => x.id === scored.sceneId)!.estMinutes += 1; // labelled fixture: the new draft's recut
+    approveDraft(s, p, draft.number);
+    const conform = p.tasks.find((t) => t.kind === 'post:conform')!;
+    expect(conform.sceneIds).toEqual([scored.sceneId]);
   });
 });
