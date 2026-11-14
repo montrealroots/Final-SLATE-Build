@@ -73,7 +73,7 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
   - Engine tests added for J04 (a part recast from episode 2 leaves every other credit whole, `parts.test.ts`) and J19
     (ten years of the world: the event queue bounded, the save growing evenly, `long-run.test.ts`); J16's and J17's rows
     now cite the engine tests that already ran them (`rulebooks.test.ts`).
-  - *After #90 (November 14, 2026, on the branch, for the next PR):*
+  - *After #90 (November 14, 2026; merged in #91):*
     - Unlocking the picture asks first, and its rework reaches everything built after the lock except the score's
       composition, which is conformed (V6-035).
     - Can It Go Ahead? on Overview names the bottleneck and the ways round it (`feasibility.ts`, V6-023).
@@ -262,7 +262,11 @@ order of work is at its end. The owner said: "Don't stop until 100% perfect comp
 ## State
 
 - **Branch:** `claude/clever-archimedes-x0r26v`, pushed to https://github.com/montrealroots/Final-SLATE-Build. After each merge the branch restarts from `main`.
-- **Latest merge:** montrealroots/Final-SLATE-Build#90 (television first looks judged on series; a forecast finish
+- **Latest merge:** montrealroots/Final-SLATE-Build#91 (v6 gaps closed: feasibility, unlock rework, voice, datasets
+  ledger, Venice recorded vs simulated, grades feed offers), squash-merged as `84775c7` on November 14, 2026, 04:14 UTC,
+  with `checks` and all six journeys runs green on its final commit `86f1b68`; `main` merged back with `-s ours`. Its CI
+  first failed twice on the Guide Me writing journey, which depended on an unpinned world; it now plays seed 3.
+- **Earlier merge:** montrealroots/Final-SLATE-Build#90 (television first looks judged on series; a forecast finish
   that rig faults, render farms and animatic revisions move: J05, J06), squash-merged as `7516edd` on November 14, 2026,
   02:08 UTC, with `checks` and all six journeys runs green on its final commit `bd59d31`; `main` merged back with `-s ours`.
 - **Earlier merge:** montrealroots/Final-SLATE-Build#89 (v7 steps 1 to 8, and the v6 22 journeys mapped and extended),
